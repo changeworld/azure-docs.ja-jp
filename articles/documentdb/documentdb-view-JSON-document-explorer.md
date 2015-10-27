@@ -2,7 +2,7 @@
 	pageTitle="DocumentDB Document Explorer を使用した JSON ドキュメントの表示、編集、作成、およびアップロード | Microsoft Azure"
 	description="DocumentDB Document Explorer を使用して JSON ドキュメントを表示、編集、作成、およびアップロードするための Azure プレビュー ポータル ツールである DocumentDB Document Explorer について説明します。"
 	services="documentdb"
-	authors="stephbaron"
+	authors="AndrewHoh"
 	manager="jhubbard"
 	editor="monicar"
 	documentationCenter=""/>
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="get-started-article" 
 	ms.date="09/09/2015"
-	ms.author="stbaro"/>
+	ms.author="anhoh"/>
 
 # DocumentDB Document Explorer を使用した JSON ドキュメントの表示、編集、作成、およびアップロード #
 
@@ -144,4 +144,4 @@ Document Explorer では、1 つまたは複数の既存の JSON ドキュメン
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

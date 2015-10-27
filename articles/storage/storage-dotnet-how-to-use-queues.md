@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article" 
-	ms.date="08/04/2015"
+	ms.date="10/21/2015"
 	ms.author="tamram"/>
 
 # .NET から Queue ストレージを使用する方法
@@ -123,9 +123,9 @@
 
 	// Get the message from the queue and update the message contents.
     CloudQueueMessage message = queue.GetMessage();
-    message.SetMessageContent("Updated contents.") ;
+    message.SetMessageContent("Updated contents.");
     queue.UpdateMessage(message,
-        TimeSpan.FromSeconds(0.0),  // Make it visible immediately.
+        TimeSpan.FromSeconds(60.0),  // Make it visible for another 60 seconds.
         MessageUpdateFields.Content | MessageUpdateFields.Visibility);
 
 ## 次のメッセージをデキューする
@@ -199,7 +199,7 @@
 
 ## キューの長さを取得する
 
-キュー内のメッセージの概数を取得できます。**FetchAttributes** メソッドは、メッセージ数などのキューの属性を取得するようキュー サービスに要求します。**ApproximateMethodCount** プロパティは、キュー サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
+キュー内のメッセージの概数を取得できます。**FetchAttributes** メソッドは、メッセージ数などのキューの属性を取得するよう Queue サービスに要求します。**ApproximateMessageCount** プロパティは、Queue サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -241,7 +241,7 @@
 
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
-- 利用可能な API の詳細については、キュー サービスのリファレンス ドキュメントを参照してください。
+- 利用可能な API の詳細については、Queue サービスのリファレンス ドキュメントを参照してください。
     - [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
     - [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
 - Azure Storage を使用して実行できるさらに高度なタスクについては、「[Azure のデータの格納とアクセス](http://msdn.microsoft.com/library/azure/gg433040.aspx)」をご覧ください。
@@ -263,4 +263,4 @@
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

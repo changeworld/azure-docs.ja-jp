@@ -16,9 +16,11 @@
     ms.date="10/07/2015"
     ms.author="sethm"/>
 
-# Azure Service Bus キューの使用方法
+# Service Bus キューの使用方法
 
-この記事では、Service Bus キューの使用方法について説明します。サンプルは C# で記述され、.NET API を利用しています。紹介するシナリオはキューの作成とメッセージの送受信です。キューの詳細については、「[次のステップ](#Next-steps)」セクションを参照してください。
+[AZURE.INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
+
+この記事では、Service Bus キューの使用方法について説明します。サンプルは C# で記述され、.NET API を利用しています。紹介するシナリオはキューの作成とメッセージの送受信です。キューの詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
 
 [AZURE.INCLUDE [アカウント作成メモ](../../includes/create-account-note.md)]
 
@@ -144,7 +146,7 @@ if (!namespaceManager.QueueExists("TestQueue"))
 }
 ```
 
-> [AZURE.NOTE]指定した名前のキューがサービス空間に既に存在するかどうかを確認するには、[NamespaceManager][] オブジェクトで [QueueExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.queueexists.aspx) メソッドを使用できます。
+> [AZURE.NOTE]指定した名前のキューがサービス名前空間に既に存在するかどうかを確認するには、[NamespaceManager][] オブジェクトで [QueueExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.queueexists.aspx) メソッドを使用できます。
 
 ## メッセージをキューに送信する
 
@@ -162,7 +164,7 @@ QueueClient Client =
 Client.Send(new BrokeredMessage());
 ```
 
-Service Bus キューに送信されたメッセージおよび Service Bus キューから受信したメッセージは、[BrokeredMessage][] クラスのインスタンスになります。[BrokeredMessage][] オブジェクトには、([Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)、[TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体が備わっています。アプリケーションでは、[BrokeredMessage][] オブジェクトのコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切な **DataContractSerializer** を使用してオブジェクトをシリアル化します。または、**System.IO.Stream** オブジェクトを提供することもできます。
+Service Bus キューに送信されたメッセージ (および Service Bus キューから受信したメッセージ) は、[BrokeredMessage][] クラスのインスタンスになります。[BrokeredMessage][] オブジェクトには、([Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)、[TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体が備わっています。アプリケーションでは、[BrokeredMessage][] オブジェクトのコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切な **DataContractSerializer** を使用してオブジェクトをシリアル化します。または、**System.IO.Stream** オブジェクトを提供することもできます。
 
 以下の例では、上のコード例で取得した `TestQueue` [QueueClient][] オブジェクトにテスト メッセージを 5 件送信する方法を示しています。
 
@@ -181,7 +183,7 @@ for (int i=0; i<5; i++)
 }
 ```
 
-Service Bus キューでは、[最大 256 Kb までのメッセージ](service-bus-quotas.md)をサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。パーティション分割が有効な場合、上限が高くなります。詳細については、「[メッセージング エンティティのパーティション分割](service-bus-partitioning.md)」を参照してください。
+Service Bus キューでは、[最大 256 KB までのメッセージ](service-bus-quotas.md)をサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。パーティション分割が有効な場合、上限が高くなります。詳細については、「[メッセージング エンティティのパーティション分割](service-bus-partitioning.md)」を参照してください。
 
 ## キューからメッセージを受信する方法
 
@@ -241,13 +243,13 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 これで、Service Bus キューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 -   [キュー、トピック、サブスクリプション][]での Service Bus メッセージング エンティティについて読んでください。
--   [Service Bus が仲介するメッセージングに関する .NET チュートリアル][]で、Service Bus キューとの間でメッセージを送受信する実用アプリケーションを作成してください。
+-   [Service Bus ブローカー メッセージングに関する .NET チュートリアル][]で、Service Bus キューとの間でメッセージを送受信する実用アプリケーションを作成してください。
 -   Service Bus のサンプルを [Azure のサンプル][]からダウンロードするか、[Service Bus サンプルの概要][]を参照してください。
 
   [Azure portal]: http://manage.windowsazure.com
   [7]: ./media/service-bus-dotnet-how-to-use-queues/getting-started-multi-tier-13.png
   [キュー、トピック、サブスクリプション]: service-bus-queues-topics-subscriptions.md
-  [Service Bus が仲介するメッセージングに関する .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
+  [Service Bus ブローカー メッセージングに関する .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
   [Service Bus サンプルの概要]: service-bus-samples.md
   [GetSetting]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.getsetting.aspx
@@ -257,4 +259,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
   [Complete]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -1,75 +1,464 @@
-<properties 
-	pageTitle="Azure SQL Database 接続の問題" 
-	description="SQL Database接続エラーを特定して確認します。" 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="stevestein" 
-	manager="jeffreyg" 
+<properties
+	pageTitle="一過性の接続障害から復旧するための対策 | Microsoft Azure"
+	description="接続エラーなど、Azure SQL Database とやり取りする際に発生する一過性の障害を防止、診断、復旧するための対策。"
+	services="sql-database"
+	documentationCenter=""
+	authors="MightyPen"
+	manager="jeffreyg"
 	editor=""/>
 
-<tags 
-	ms.service="sql-database" 
-	ms.devlang="NA" 
-	ms.workload="data-management" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="NA" 
-	ms.date="07/24/2015" 
-	ms.author="sstein"/>
+<tags
+	ms.service="sql-database"
+	ms.workload="sql-database"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="10/19/2015"
+	ms.author="genemi"/>
 
 
-# SQL Database への接続の問題
-
-この記事では、Azure SQL Database に接続できない場合のさまざまなトラブルシューティングの概要について説明します。
+# SQL Database における接続エラーと一過性の障害から復旧するための対策
 
 
-## 接続の問題が個々のアプリケーションに特有のものか、単にデータベースに接続できないだけなのかを確認します。
-
-SQL Server Management Studio か SQLCMD を使用します。EXE をデータベースに接続できることを確認します。
-
-- SQL Server Management Studio (SSMS) を使用して SQL Database に接続する方法については、「[SSMSを使用して Azure SQL Database に接続する方法](sql-database-connect-to-database.md)」をご覧ください。
-- SQLCM を使用して SQL Database に接続する方法については、「[方法: sqlcmd を使用したAzure SQL Database への接続](https://msdn.microsoft.com/library/azure/ee336280.aspx)」をご覧ください。
+このトピックでは、クライアント プログラムが Azure SQL Database とやり取りする際に発生する接続エラーと一過性の障害を防止、診断、軽減する方法について説明します。
 
 
+## 接続: 接続文字列
 
-## アプリケーションは Azure で実行されている SQL Database に接続しようとしていますか (たとえば、データベースへの接続に失敗しているアプリケーションはクラウド サービスですか、それともWeb アプリケーションですか)。
 
-ファイアウォール ルールが、サーバーとデータベースに対して、すべての Azure サービスを許可していることを確認します。
+Azure SQL Database に接続するために必要な接続文字列は、Microsoft SQL Server に接続するための文字列とは少し異なります。データベースの接続文字列は [Azure プレビュー ポータル](http://portal.azure.com/)からコピーすることができます。
 
-- ファイアウォール ルールと Azure からの接続を有効にする方法については、「[Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)」をご覧ください。
+
+[AZURE.INCLUDE [sql-database-include-connection-string-20-portalshots](../../includes/sql-database-include-connection-string-20-portalshots.md)]
 
 
 
-## アプリケーションは、プライベート ネットワークから SQL Database に接続しようとしていますか。
-
-ファイアウォール ルールが、サーバーとデータベースに対して、特定のネットワークからのアクセスを許可するようになっていることを確認します。
-
-- ファイアウォール ルールの一般的な情報については、「[Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx)」をご覧ください。
-- ファイアウォール ルールの設定方法については、「[方法: ファイアウォール設定を構成する (Azure SQL Database)](https://msdn.microsoft.com/library/azure/jj553530.aspx)」をご覧ください。
+#### 接続タイムアウトの 30 秒
 
 
-## ファイアウォール ルールが正しく構成されたら、「[Microsoft Azure SQL Database 接続の問題のトラブルシューティング](https://support2.microsoft.com/common/survey.aspx?scid=sw;en;3844&showpage=1)」をご覧ください。
-
-上記のサポート記事には、次の SQL Database 接続の問題についてヘルプが紹介されています。
-
-- ファイアウォール設定のためにサーバー接続を開くことができない 
-- サーバーが見つからなかったか、アクセスできなかった 
-- サーバーにログインできない 
-- 接続のタイムアウト エラー 
-- 一時エラー 
-- システム定義の制限に達したための接続終了 
-- SQL Server Management Studio (SSMS) からの接続の失敗 
+インターネットを介した接続は、プライベート ネットワークに比べ堅牢性が低くなります。そのため、接続文字列は次のように設定することをお勧めします。- **[接続タイムアウト]** パラメーターを (15 秒ではなく) **30** 秒に設定します。
 
 
-## 追加情報
+## 接続: IP アドレス
 
-- SQL Database への接続に関する詳細については、「[プログラムで Azure SQL Database に接続するためのガイドライン](https://msdn.microsoft.com/library/azure/ee336282.aspx)」をご覧ください。   
 
-- 特定の接続エラーの詳細については、「[SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md#bkmk_connection_errors)」の**一時的な障害や接続が失われるエラー**に関するセクションをご覧ください。
+SQL Database サーバーは、クライアント プログラムのホストとなるコンピューターの IP アドレスからの通信を許可するように構成する必要があります。この構成は、[Azure プレビュー ポータル](http://portal.azure.com/)を介してファイアウォールの設定を編集することによって行います。
 
-- 接続イベント データは、[**sys.event\_log (Azure SQL Database)**](https://msdn.microsoft.com/library/dn270018.aspx) ビューを使用して、接続イベントを照会して確認できます。
 
-- データベースの接続イベントのメトリックは、クエリを実行してアクセスできる、[**sys.database\_connection\_stats (Azure SQL Database)**](https://msdn.microsoft.com/library/dn269986.aspx) ビューを照会して確認できます。
+IP アドレスの構成を怠った場合、必要な IP アドレスを示した親切なエラー メッセージがプログラムで表示されます。
 
- 
 
-<!---HONumber=Oct15_HO3-->
+[AZURE.INCLUDE [sql-database-include-ip-address-22-v12portal](../../includes/sql-database-include-ip-address-22-v12portal.md)]
+
+
+詳細については、「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+
+
+## 接続: ポート
+
+
+通常、必要な設定は、クライアント プログラムのホストとなるコンピューターのポート 1433 の送信方向を開放するだけです。
+
+
+たとえば、クライアント プログラムが Windows コンピューターでホストされている場合、そのホストの Windows ファイアウォールでポート 1433 を開放することができます。
+
+
+1. コントロール パネルを開く
+2. &gt; [すべてのコントロール パネル項目]
+3. &gt; [Windows ファイアウォール]
+4. &gt; [詳細設定]
+5. &gt; [送信の規則]
+6. &gt; [操作]
+7. &gt; [新しい規則]
+
+
+Azure 仮想マシン (VM) でクライアント プログラムがホストされている場合、次のように表示されます。<br/>[ADO.NET 4.5、SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
+
+
+ポートと IP アドレスの構成に関する背景情報については、[Azure SQL Database のファイアウォール](sql-database-firewall-configure.md)に関するページを参照してください。
+
+
+## 接続: ADO.NET 4.5
+
+
+**System.Data.SqlClient.SqlConnection** などの ADO.NET クラスを使って Azure SQL Database に接続する場合、.NET Framework Version 4.5 以降の使用をお勧めします。
+
+
+ADO.NET 4.5:- サポート対象プロトコルに TDS 7.4 が追加されています。4.0 の後に行われた接続の機能強化も含まれています。- 接続プーリングがサポートされます。加えて、プログラムに割り当てた接続オブジェクトが正常に動作しているかどうかを効率的に検証することが可能です。
+
+
+接続プールから取得した接続オブジェクトを使用するとき、すぐに使用しないのであれば、プログラムで一時的に接続を閉じるようお勧めします。接続を再度開いたとしても、新しい接続の作成に伴う処理負荷はわずかです。
+
+
+ADO.NET 4.0 以前のバージョンを使用している場合、最新の ADO.NET. にアップグレードすることをお勧めします。2015 年 7 月時点では、[ADO.NET 4.6 をダウンロード](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx)してください。
+
+
+## 診断: ユーティリティから接続できるかどうかをテストする
+
+
+プログラムから Azure SQL Database に接続できないときの診断方法として 1 つ考えられるのは、ユーティリティ プログラムを使用して接続する方法です。診断対象のプログラムと同じライブラリを使用して接続するユーティリティがあれば理想的です。
+
+
+Windows コンピューターでは、次のユーティリティが利用できます。- SQL Server Management Studio (ssms.exe)。接続には ADO.NET が使用されます。- sqlcmd.exe。接続には [ODBC](http://msdn.microsoft.com/library/jj730308.aspx) が使用されます。
+
+
+接続後、短い SQL SELECT クエリが正しく動作するかどうかをテストしてください。
+
+
+## 診断: 開放ポートを確認する
+
+
+ポートの問題から接続に失敗している可能性があるとします。ポートの構成に関するレポート作成に対応したユーティリティをご使用のコンピューターから実行してください。
+
+
+Linux では、次のユーティリティが利用できます。 - `netstat -nap` - `nmap -sS -O 127.0.0.1` - (IP アドレスの部分は適宜置き換えてください)
+
+
+Windows では [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。以下の例では、Azure SQL Database サーバー上のポートの状況と、ノート PC 上で動作しているポートとを照会しています。
+
+
+```
+[C:\Users\johndoe]
+>> portqry.exe -n johndoesvr9.database.windows.net -p tcp -e 1433
+
+Querying target system called:
+ johndoesvr9.database.windows.net
+
+Attempting to resolve name to IP address...
+Name resolved to 23.100.117.95
+
+querying...
+TCP port 1433 (ms-sql-s service): LISTENING
+
+[C:\Users\johndoe]
+>>
+```
+
+
+## 診断: エラーのログを記録する
+
+
+断続的な問題は、過去数日から数週間にわたる一般的なパターンを検出することによって診断できる場合が多々あります。
+
+
+診断には、クライアントで発生したエラーのログが役立ちます。Azure SQL Database が内部的に記録するエラー データとそれらのログ エントリを相互に関連付けることも可能です。
+
+
+Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ クラスが用意されています。 - [Logging アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440731.aspx)に関するページ
+
+
+## 診断: エラーの発生をシステム ログで調べる
+
+
+以下に示したのは、エラーや各種情報のログを照会する Transact-SQL SELECT ステートメントの例です。
+
+
+| ログのクエリ | 説明 |
+| :-- | :-- |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、個々のイベントに関する情報が表示されます。再構成、スロットル、リソースの過剰消費などに関連した接続エラーが対象となります。<br/><br/>クライアント プログラムでいつ問題が発生したかの情報に対し、**start\_time** や **end\_time** の値を相互に関連付けることをお勧めします。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` | [sys.database\_connection\_stats](http://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
+
+
+### 診断: SQL Database のログから問題のイベントを検索する
+
+
+Azure SQL Database のログで問題のイベントに関するエントリを検索することができます。**master** データベースで次の Transact-SQL SELECT ステートメントを試してみてください。
+
+
+```
+SELECT
+   object_name
+  ,CAST(f.event_data as XML).value
+      ('(/event/@timestamp)[1]', 'datetime2')                      AS [timestamp]
+  ,CAST(f.event_data as XML).value
+      ('(/event/data[@name="error"]/value)[1]', 'int')             AS [error]
+  ,CAST(f.event_data as XML).value
+      ('(/event/data[@name="state"]/value)[1]', 'int')             AS [state]
+  ,CAST(f.event_data as XML).value
+      ('(/event/data[@name="is_success"]/value)[1]', 'bit')        AS [is_success]
+  ,CAST(f.event_data as XML).value
+      ('(/event/data[@name="database_name"]/value)[1]', 'sysname') AS [database_name]
+FROM
+  sys.fn_xe_telemetry_blob_target_read_file('el', null, null, null) AS f
+WHERE
+  object_name != 'login_event'  -- Login events are numerous.
+  and
+  '2015-06-21' < CAST(f.event_data as XML).value
+        ('(/event/@timestamp)[1]', 'datetime2')
+ORDER BY
+  [timestamp] DESC
+;
+```
+
+
+#### sys.fn\_xe\_telemetry\_blob\_target\_read\_file から返される行の例
+
+
+次に示したのは、クエリから返される行の例です。ここに示した行では null 値が表示されていますが、null 以外の場合も多くあります。
+
+
+```
+object_name                   timestamp                    error  state  is_success  database_name
+
+database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL        AdventureWorks
+```
+
+
+## 一過性の障害
+
+
+一過性の障害とは、根本的な原因が短時間で自然に解決するエラーです。一過性の障害を起こす偶発的原因として、Azure システムが、各種ワークロードの負荷分散を行うために行うハードウェア リソースの瞬間的切り替えがあります。この再構成の進行中、Azure SQL Database への接続が失われる可能性があります。
+
+
+クライアント プログラムで ADO.NET を使用している場合、**SqlException** のスローによって一過性の障害が報告されます。[SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages)のトピックの冒頭付近に一過性の障害の一覧があります。この表に記載されているエラー番号と **Number** プロパティを比較してください。
+
+
+### 接続とコマンド
+
+
+接続の試行中に一過性のエラーが発生した場合、数秒待って接続を再試行する必要があります。
+
+
+SQL クエリ コマンドの実行中に一過性のエラーが発生した場合、そのコマンドをすぐに再試行することは避けてください。ある程度の時間差を伴って接続が新たに確立されます。その後でコマンドを再試行してください。
+
+
+## 一過性の障害のための再試行ロジック
+
+
+一過性の障害が多少なりとも生じるクライアント プログラムは、再試行ロジックを組み込むことで堅牢性を高めることができます。
+
+
+Azure SQL Database との通信にサード パーティのミドルウェアを使用する場合、一過性の障害に対する再試行ロジックがそのミドルウェアに備わっているかどうかをベンダーに確認してください。
+
+
+### 再試行の原則
+
+
+- エラーが一過性の障害である場合、再度、接続を開いてみる。
+
+
+- 一過性の障害で失敗した SQL SELECT ステートメントをそのまま再試行することはしない。
+ - 新しい接続を確立してから、SELECT を再試行してください。
+
+
+- SQL UPDATE ステートメントが一過性の障害で失敗した場合、新たに接続を確立したうえで UPDATE を再試行する。
+ - データベース トランザクション全体が完了するかトランザクション全体がロールバックされたことを再試行ロジックで確認する必要があります。
+
+
+#### 再試行に関するその他の注意点
+
+
+- 業務終了時刻に自動的に起動されて翌朝にかけて完了するようなバッチ プログラムは、再試行間隔をある程度長めにしても問題ありません。
+
+
+- 人間の心理として、待ち時間があまり長いと途中でキャンセルされる可能性があります。ユーザー インターフェイス プログラムはその点を考慮するようにしてください。
+ - ただし、数秒おきに再試行するようなやり方は避けてください。そのような方法を用いると、大量の要求でシステムが処理しきれなくなる可能性があります。
+
+
+### 再試行の間隔を長くする
+
+
+プログラムの開発においては、少なくとも 6 ～ 10 秒待って初回再試行を行うようにしてください。そうしないと、クラウド サービスがたちまち要求で溢れ、処理しきれなくなってしまいます。
+
+
+複数回にわたる再試行が必要な場合、最大間隔を上限として、後になるほど間隔が大きくなるようにしてください。次の 2 とおりの方法があります。
+
+
+- 単調に間隔を増やす。たとえば、間隔ごとに 5 秒ずつ加算します。
+
+
+- 指数関数的に間隔を増やす。たとえば、間隔ごとに 1.5 を掛けます。
+
+
+加えて、最大再試行回数を設定し、プログラムが自動的に終了するように配慮する必要があります。
+
+
+### 再試行ロジックを含んだコード サンプル
+
+
+さまざまなプログラミング言語での再試行ロジックが使われているコード サンプルは次のリンクからアクセスできます。
+
+- [クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md) 
+
+
+## 再試行ロジックのテスト
+
+
+再試行ロジックをテストするには、プログラムの実行中に修復可能なエラーをシミュレートする (人為的に発生させる) 必要があります。
+
+
+### ネットワークから切断することによるテスト
+
+
+再試行ロジックをテストする手段として、プログラムの実行中にクライアント コンピューターをネットワークから切断する方法が挙げられます。この場合、次のエラーが発生します。- **SqlException.Number** = 11001 - メッセージ: "そのようなホストは不明です。"
+
+
+最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
+
+
+具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。 1.エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。2.通常と同様に初回接続を試みます。3.エラーが捕捉された後、11001 をリストから削除します。4.コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。- それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。5.再度接続を試みます。
+
+
+### 接続時に間違った綴りのデータベース名を使用することによるテスト
+
+
+意図的に間違ったユーザー名を使って初回接続を試みます。この場合、次のエラーが発生します。- **SqlException.Number** = 18456 - メッセージ: "ユーザー 'WRONG\_MyUserName' はログインできませんでした。"
+
+
+最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
+
+
+具体的には、プログラムで実行時パラメーターを通じ、次の処理を行います。 1.エラーのリストに対して一時的に 18456 を追加し、一過性と見なします。2.意図的に 'WRONG\_' をユーザー名に追加します。3.エラーが捕捉された後、18456 をリストから削除します。4.ユーザー名から 'WRONG\_' を削除します。5.再度接続を試みます。
+
+
+## Enterprise Library 6
+
+
+Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (Azure SQL Database サービスもその一つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。EntLib60 の利便性が発揮される個々の領域の説明については、まず以下のトピックにアクセスしてください。 - [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
+
+
+EntLib60 を活かせる領域のひとつとして、一過性の障害を処理するための再試行ロジックがあります。 - [Transient Fault Handling アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
+
+
+再試行ロジックに EntLib60 を使用した簡単な C# コード サンプルは、以下のページからダウンロードできます。 - [Enterprise Library 6 の再試行ロジックを使って SQL Database に接続するコード サンプル (C#)](sql-database-develop-entlib-csharp-retry-windows.md)
+
+
+### 一過性の障害と再試行に関連した EntLib60 のクラス
+
+
+再試行ロジックで特に利用する機会の多い EntLib60 のクラスは次のとおりです。いずれのクラス (そのメソッドなども含む) も、**Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 名前空間に属しています。
+
+***Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 名前空間:*
+
+- **RetryPolicy** クラス
+ - **ExecuteAction** メソッド
+
+
+- **ExponentialBackoff** クラス
+
+
+- **SqlDatabaseTransientErrorDetectionStrategy** クラス
+
+
+- **ReliableSqlConnection** クラス
+ - **ExecuteCommand** メソッド
+
+
+**Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSupport** 名前空間:
+
+- **AlwaysTransientErrorDetectionStrategy** クラス
+
+- **NeverTransientErrorDetectionStrategy** クラス
+
+
+EntLib60 に関する情報は以下のリンクから入手できます。
+
+- 無料の[電子ブック: Microsoft Enterprise Library 開発者ガイド、第 2 版](http://www.microsoft.com/download/details.aspx?id=41145)
+
+- ベスト プラクティス: [再試行全般のガイダンス](best-practices-retry-general.md)には、再試行のロジックが詳しく解説されていてお勧めです。
+
+- NuGet ダウンロード ([Enterprise Library - Transient Fault Handling アプリケーション ブロック 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/))
+
+
+### EntLib60: Logging ブロック
+
+
+- Logging ブロックは、きわめて柔軟性に優れた構成可能なソリューションです。
+ - ログ メッセージをさまざまな場所に作成して保存する。
+ - メッセージを分類したりフィルタリングしたりする。
+ - デバッグやトレース、監査要件、全般的なログ要件に利用できるコンテキスト情報を収集する。
+
+
+- Logging ブロックは、ログ出力先が備えるログ機能を抽象化したものです。対象となるログ ストアの場所や種類に関係なく、アプリケーション コードの一貫性を確保することができます。
+
+
+詳細については、[Logging アプリケーション ブロックの使用](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)に関するページを参照してください。
+
+
+### EntLib60 IsTransient メソッドのソース コード
+
+
+以下に示したのは、**SqlDatabaseTransientErrorDetectionStrategy** クラスの **IsTransient** メソッドの C# ソース コードです。どのようなエラーが一過性で、再試行する価値があるかは、このソース コードを見るとはっきりわかります。
+
+このソース コードのコピーは、読みやすくするために、大部分の**コメント (//)** 行を省略しています。
+
+
+```
+public bool IsTransient(Exception ex)
+{
+  if (ex != null)
+  {
+    SqlException sqlException;
+    if ((sqlException = ex as SqlException) != null)
+    {
+      // Enumerate through all errors found in the exception.
+      foreach (SqlError err in sqlException.Errors)
+      {
+        switch (err.Number)
+        {
+            // SQL Error Code: 40501
+            // The service is currently busy. Retry the request after 10 seconds.
+            // Code: (reason code to be decoded).
+          case ThrottlingCondition.ThrottlingErrorNumber:
+            // Decode the reason code from the error message to
+            // determine the grounds for throttling.
+            var condition = ThrottlingCondition.FromError(err);
+
+            // Attach the decoded values as additional attributes to
+            // the original SQL exception.
+            sqlException.Data[condition.ThrottlingMode.GetType().Name] =
+              condition.ThrottlingMode.ToString();
+            sqlException.Data[condition.GetType().Name] = condition;
+
+            return true;
+
+          case 10928:
+          case 10929:
+          case 10053:
+          case 10054:
+          case 10060:
+          case 40197:
+          case 40540:
+          case 40613:
+          case 40143:
+          case 233:
+          case 64:
+            // DBNETLIB Error Code: 20
+            // The instance of SQL Server you attempted to connect to
+            // does not support encryption.
+          case (int)ProcessNetLibErrorCode.EncryptionNotSupported:
+            return true;
+        }
+      }
+    }
+    else if (ex is TimeoutException)
+    {
+      return true;
+    }
+    else
+    {
+      EntityException entityException;
+      if ((entityException = ex as EntityException) != null)
+      {
+        return this.IsTransient(entityException.InnerException);
+      }
+    }
+  }
+
+  return false;
+}
+```
+
+
+EntLib60 のソース コードをダウンロードする必要はありません。ソース コードをダウンロードする場合は、次のトピックにアクセスし、[コードのダウンロード](http://go.microsoft.com/fwlink/p/?LinkID=290898) ボタンをクリックしてください。 - [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
+
+
+## 詳細情報
+
+
+- [SQL Server の接続プーリング (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)
+
+
+- [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
+
+<!---HONumber=Oct15_HO4-->

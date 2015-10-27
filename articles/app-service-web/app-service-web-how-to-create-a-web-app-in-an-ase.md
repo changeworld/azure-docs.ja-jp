@@ -1,14 +1,14 @@
 <properties
 	pageTitle="App Service 環境内で Web アプリを作成する方法"
 	description="App Service 環境内での Web アプリおよび App Service プランの作成フロー"
-	services="app-service\web"
+	services="app-service"
 	documentationCenter=""
 	authors="ccompy"
 	manager="stefsch"
 	editor=""/>
 
 <tags
-	ms.service="app-service-web"
+	ms.service="app-service"
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -100,4 +100,4 @@ Web アプリと ASP を作成した後はこれをスケールアップする�
 [ResourceGroups]: http://azure.microsoft.com/documentation/articles/resource-group-portal/
 [AzurePowershell]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

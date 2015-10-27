@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Service Bus トピックの使用方法 (.NET) | Microsoft Azure"
-    description="Azure での Service Bus のトピックとサブスクリプションの使用方法について学習します。コード サンプルは .NET アプリケーション向けに作成されています。"
+    pageTitle="Service Bus トピックの使用 (.NET) | Microsoft Azure"
+    description="Azure における Service Bus のトピックとサブスクリプションを .NET で使用する方法について学習します。コード サンプルは .NET アプリケーション向けに作成されています。"
     services="service-bus"
     documentationCenter=".net"
     authors="sethmanheim"
@@ -9,14 +9,16 @@
 
 <tags
     ms.service="service-bus"
-    ms.workload="tbd"
+    ms.workload="na"
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="get-started-article"
-    ms.date="10/06/2015"
+    ms.date="10/15/2015"
     ms.author="sethm"/>
 
-# Azure Service Bus のトピックとサブスクリプションの使用方法
+# Service Bus のトピックとサブスクリプションの使用方法
+
+[AZURE.INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
 この記事では、Service Bus のトピックとサブスクリプションの使用方法について説明します。サンプルは C# で記述され、.NET API を利用しています。ここでは、トピックとサブスクリプションの作成、サブスクリプション フィルターの作成、トピックへのメッセージの送信、サブスクリプションからのメッセージの受信、トピックとサブスクリプションの削除などのシナリオについて説明します。トピックとサブスクリプションの詳細については、「[次の手順](#Next-steps)」を参照してください。
 
@@ -102,7 +104,7 @@ Websites または Virtual Machines を使用する場合には、.NET 構成シ
 
 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスによって Service Bus のトピックとサブスクリプションに対する管理操作を実行できます。このクラスにはトピックの作成、列挙、削除のためのメソッドが用意されています。
 
-次の例では、Azure の `CloudConfigurationManager` クラスと接続文字列を使用して `NamespaceManager` オブジェクトを作成します。この接続文字列は、Service Bus サービス名前空間のベース アドレスと、それを管理する権限を備えた適切な資格情報で構成されます。この接続文字列は、次のようになっています。
+次の例では、Azure の `CloudConfigurationManager` クラスと接続文字列を使用して `NamespaceManager` オブジェクトを作成します。この接続文字列は、Service Bus サービス名前空間のベース アドレスと、それを管理する権限を備えた適切な SAS 資格情報で構成されます。この接続文字列は、次のようになっています。
 
 ```
 Endpoint=sb://<yourServiceNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey
@@ -310,19 +312,19 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 
 これで、Service Bus のトピックとサブスクリプションの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   「[キュー、トピック、サブスクリプション][]」を参照してください。
+-   [キュー、トピック、およびサブスクリプション][]に関するページをご覧ください。
 -   [SqlFilter][] の API のリファレンス
--   Service Bus キューとの間でメッセージを送受信する実用アプリケーションの作成: [Service Bus が仲介するメッセージングに関する .NET チュートリアル][]。
+-   Service Bus キューとの間でメッセージを送受信する実用アプリケーションの作成: [Service Bus ブローカー メッセージングに関する .NET チュートリアル][]。
 -   Service Bus のサンプル: [Azure のサンプル][]からダウンロードするか、「[概要](service-bus-samples.md)」を参照してください。
 
   [Azure portal]: http://manage.windowsazure.com
 
   [7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
 
-  [キュー、トピック、サブスクリプション]: service-bus-queues-topics-subscriptions.md
+  [キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
   [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
   [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-  [Service Bus が仲介するメッセージングに関する .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
+  [Service Bus ブローカー メッセージングに関する .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

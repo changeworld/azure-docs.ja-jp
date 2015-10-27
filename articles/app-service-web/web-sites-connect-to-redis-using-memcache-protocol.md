@@ -1,14 +1,14 @@
 <properties
 	pageTitle="Memcache プロトコルを経由して Azure App Service の Web アプリを Redis Cache に接続する | Microsoft Azure"
 	description="Memcache プロトコルを使用して Azure App Service の Web アプリを Redis Cache に接続する"
-	services="app-service"
+	services="app-service\web"
 	documentationCenter="php"
 	authors="SyntaxC4"
 	manager="wpickett"
 	editor="riande"/>
 
 <tags
-	ms.service="app-service"
+	ms.service="app-service-web"
 	ms.devlang="php"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="windows"
@@ -198,4 +198,4 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 [12]: /services/cache/
 [13]: http://memcached.org
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -1,7 +1,7 @@
 >[AZURE.NOTE]この手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。
 
 
-1. <a href="http://cloud.google.com/console" target="_blank">Google Cloud Console</a> Web サイトに移動し、Google アカウント資格情報でサインインして、**[CREATE PROJECT]** をクリックします。
+1. [Google Cloud Console](https://console.developers.google.com/project) に移動し、Google アカウント資格情報でサインインして、**[CREATE PROJECT]** をクリックします。
 
    	![](./media/notification-hubs-android-get-started/mobile-services-google-new-project.png)
 
@@ -17,7 +17,7 @@
 
 	![](./media/notification-hubs-android-get-started/mobile-services-google-enable-GCM.png)
 
-5. **[Credentials]**、**[Create new Key]** の順にクリックします。
+5. **[資格情報]** をクリックし、**[資格情報の追加]** と **[API キー]** をクリックします。
 
    	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key.png)
 
@@ -25,10 +25,11 @@
 
    	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key2.png)
 
-7. **[API KEY]** の値をメモしておきます。
+   	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key2-2.png)
 
-   	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key3.png)
+
+7. **[API KEY]** の値をメモしておきます。
 
 	この API キー値を使用して、Azure が GCM で認証し、アプリの代わりにプッシュ通知を送信できるようにします。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

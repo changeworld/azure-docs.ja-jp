@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="hero-article"
-	ms.date="10/15/2015"
+	ms.date="10/21/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用 (Android アプリ)
@@ -38,7 +38,7 @@
 このチュートリアルには、次のものが必要です。
 
 + Android Studio。<a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android サイト</a>からダウンロードできます。
-+ アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started%2F)を参照してください。
++ アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started%2F)を参照してください。
 
 
 このチュートリアルを完了することは、Android アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。
@@ -51,9 +51,19 @@
 
 ##新しい Notification Hub を構成する
 
-[AZURE.INCLUDE [notification-hubs-android-configure-push](../../includes/notification-hubs-android-configure-push.md)]
 
-##<a id="connecting-app"></a>Notification Hub にアプリケーションを接続する
+[AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
+
+
+<ol start="7">
+<li><p>上部にある <b>[構成]</b> タブをクリックし、前のセクションで取得した <b>API キー</b>値を入力して、<b>[保存]</b> をクリックします。</p>
+</li>
+</ol>
+&emsp;&emsp;![](./media/notification-hubs-android-get-started/notification-hub-configure-android.png)
+
+これで、通知ハブが GCM と連動するように構成されました。接続文字列により、アプリが通知を受信すると共に、プッシュ通知を送信するように登録されます。
+
+##<a id="connecting-app"></a>通知ハブにアプリを接続する
 
 ###新しい Android プロジェクトを作成する
 
@@ -65,7 +75,7 @@
 
    	![][14]
 
-3. 主なアクティビティに **[空のアクティビティ]** を選択し、**[次へ]** をクリックし、**[完了]** をクリックします。
+3. 主なアクティビティに **[空のアクティビティ]** を選択し、**[次へ]** をクリックして、**[完了]** をクリックします。
 
 ###プロジェクトへの Google Play Services の追加
 
@@ -73,7 +83,13 @@
 
 ###コードの追加
 
-1. <a href="https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409">Notification Hubs Android SDK</a> をダウンロードします。.zip ファイルを展開し、**notificationhubs\\notification-hubs-0.3.jar** と **notifications\\notifications-1.0.1.jar** をプロジェクトの **app\\libs** ディレクトリにコピーします。Android Studio の [Project View (プロジェクト ビュー)] ウィンドウにある **libs** フォルダーへファイルを直接ドラッグできます。**libs** フォルダーを更新します。
+1. <a href="https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409">Notification Hubs Android SDK</a> をダウンロードします。.zip ファイルを展開し、**notificationhubs\\notification-hubs-0.4.jar** と **notifications\\notifications-1.0.1.jar** をプロジェクトの **app\\libs** ディレクトリにコピーします。Android Studio の [Project View (プロジェクト ビュー)] ウィンドウにある **libs** フォルダーへファイルを直接ドラッグできます。**libs** フォルダーを更新します。
+
+
+
+	これら 2 つのパッケージのリファレンス ドキュメントはリンク
+	* [com.microsoft.windowsazure.messaging](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/messaging/package-summary.html)
+	* [com.microsoft.windowsazure.notifications](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/notifications/package-summary.html)
 
 
     > [AZURE.NOTE]ファイル名の末尾にある数値は、今後の SDK リリースで変更される可能性があります。
@@ -113,7 +129,7 @@
 	次の 3 つのプレースホルダーを必ず更新します。
 	* **SENDER\_ID**: `SENDER_ID` を [Google Cloud Console](http://cloud.google.com/console) で作成したプロジェクトから取得したプロジェクト番号に設定します。
 	* **HubListenConnectionString**: `HubListenConnectionString` をハブ用の **DefaultListenAccessSignature** 接続文字列に設定します。[Azure ポータル]のハブにある **[ダッシュボード]** タブの **[接続文字列の表示]** をクリックすると接続文字列をコピーできます。
-	* **HubName**: ハブの Azure のページ上部に表示される通知ハブの名前 (完全な URL では**ありません**) を使用します。たとえば、`"myhub"` を使用します。
+	* **HubName**: ハブの Azure のページ上部に表示される通知ハブの名前 (完全な URL では**ありません**) を使用します。たとえば、`"myhub"` です。
 
 
 
@@ -286,7 +302,7 @@
 ## (省略可能) アプリから通知を送信する
 
 
-1. Android Studio の [プロジェクト] ビューで**[アプリ]**、**[src]**、**[main]**、**[res]**、**[layout]** の順に展開します。**activity\_main.xml** レイアウト ファイルを開き、**[テキスト]** タブをクリックしてファイルのテキスト内容の更新します。次のコードで更新します。このコードで通知ハブに通知メッセージを送信するための新しい `Button` と `EditText` コントロールを追加します。このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
+1. Android Studio の [プロジェクト] ビューで **[アプリ]**、**[src]**、**[main]**、**[res]**、**[layout]** の順に展開します。**activity\_main.xml** レイアウト ファイルを開き、**[テキスト]** タブをクリックしてファイルのテキスト内容の更新します。次のコードで更新します。このコードで通知ハブに通知メッセージを送信するための新しい `Button` と `EditText` コントロールを追加します。このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
 
 	    <Button
         android:layout_width="wrap_content"
@@ -306,7 +322,7 @@
         android:layout_marginBottom="42dp"
         android:hint="@string/notification_message_hint" />
 
-2. Android Studio の [Project] ビューで**[App]**、**[src]**、**[main]**、**[res]**、**[values]** の順に展開します。**strings.xml** ファイルを開き、新しい `Button` と `EditText` コントロールで参照される文字列の値を追加します。これらはファイルの一番下の `</resources>` のすぐ前に追加します。
+2. Android Studio の [Project] ビューで **[App]**、**[src]**、**[main]**、**[res]**、**[values]** の順に展開します。**strings.xml** ファイルを開き、新しい `Button` と `EditText` コントロールで参照される文字列の値を追加します。これらはファイルの一番下の `</resources>` のすぐ前に追加します。
 
         <string name="send_button">Send Notification</string>
         <string name="notification_message_hint">Enter notification message text</string>
@@ -338,7 +354,7 @@
 	    private String HubSasKeyValue = null;
 		private String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
 
-4. アクティビティではハブの名前と、ハブの完全な共有アクセス接続文字列を保持します。通知ハブにメッセージを送信するには、POST 要求を認証するためのソフトウェア アクセス署名 (SaS) トークンを作成する必要があります。これを実行するには、接続文字列からキーのデータを解析し、「[共通概念](http://msdn.microsoft.com/library/azure/dn495627.aspx)」のREST API リファレンスで説明したように SaS トークンを作成します。
+4. アクティビティではハブの名前と、ハブの完全な共有アクセス接続文字列を保持します。通知ハブにメッセージを送信するには、POST 要求を認証するためのソフトウェア アクセス署名 (SaS) トークンを作成する必要があります。これを実行するには、接続文字列からキーのデータを解析し、「[共通概念](http://msdn.microsoft.com/library/azure/dn495627.aspx)」の REST API リファレンスで説明したように SaS トークンを作成します。
 
 	**MainActivity.java** で、次のメソッドを `MainActivity` クラスに追加して接続文字列を解析します。
 
@@ -498,7 +514,7 @@
 
 この簡単な例では、すべての Windows デバイスにブロードキャスト通知を送信します。次のステップとして「[Notification Hubs を使用したユーザーへのプッシュ通知]」チュートリアルをお勧めします。このチュートリアルでは、特定のユーザーに対してタグを使用して ASP.NET バックエンドから通知を送信する方法について説明しています。
 
-対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。
+対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。
 
 Notification Hubs の全般的な情報については、「[Notification Hubs の概要]」を参照してください。
 
@@ -506,11 +522,6 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 
 
 <!-- Images. -->
-[1]: ./media/notification-hubs-android-get-started/mobile-services-google-new-project.png
-[2]: ./media/notification-hubs-android-get-started/mobile-services-google-create-server-key.png
-[3]: ./media/notification-hubs-android-get-started/mobile-services-google-create-server-key2.png
-[4]: ./media/notification-hubs-android-get-started/mobile-services-google-create-server-key3.png
-[5]: ./media/notification-hubs-android-get-started/mobile-services-google-enable-GCM.png
 [6]: ./media/notification-hubs-android-get-started/notification-hub-android-new-class.png
 
 [12]: ./media/notification-hubs-android-get-started/notification-hub-connection-strings.png
@@ -542,6 +553,6 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [Azure ポータル]: https://manage.windowsazure.com/
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-android-notify-users.md
-[通知ハブを使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
+[Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

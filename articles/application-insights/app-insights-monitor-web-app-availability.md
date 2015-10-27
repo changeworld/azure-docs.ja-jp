@@ -170,6 +170,8 @@ Web セッションを記録するには、Visual Studio Enterprise または Ul
 
     ![複数手順の Web テストを選択します。](./media/app-insights-monitor-web-app-availability/appinsights-71webtestUpload.png)
 
+    ping テストについても同様に、テストの場所、頻度、アラートのパラメーターを設定してください。
+
 単一 URL のテストと同じように、テストの結果とエラーを表示します。
 
 失敗の一般的な理由は、テストの実行時間が長すぎることです。テストの実行は、2 分未満にする必要があります。
@@ -244,4 +246,4 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->
