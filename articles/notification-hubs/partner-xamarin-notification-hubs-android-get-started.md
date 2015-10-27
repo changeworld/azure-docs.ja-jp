@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Notification Hubs の使用 (Xamarin.Android アプリケーション) | Microsoft Azure"
 	description="このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.Android アプリケーションにプッシュ通知を送信する方法について学習します。"
-	authors="ysxu"
+	authors="wesmc7777"
 	manager="dwrede"
 	editor=""
 	services="notification-hubs"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="09/24/2015"
+	ms.date="10/21/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用
@@ -38,39 +38,58 @@
 
 このチュートリアルを完了することは、Xamarin.Android アプリの他のすべての Notification Hubs チュートリアルの前提条件です。
 
-> [AZURE.IMPORTANT]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F)を参照してください。
+> [AZURE.IMPORTANT]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F)を参照してください。
 
-##<a name="register"></a>Google Cloud Messaging を有効にする
+##Google Cloud Messaging を有効にする
 
 [AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
-##<a name="configure-hub"></a>通知ハブを構成する
+##通知ハブを構成する
 
-[AZURE.INCLUDE [notification-hubs-android-configure-push](../../includes/notification-hubs-android-configure-push.md)]
+[AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-##<a name="connecting-app"></a>Notification Hub にアプリケーションを接続する
 
-### 新しいプロジェクトを作成する
+<ol start="7">
+<li><p>上部にある <b>[構成]</b> タブをクリックし、前のセクションで取得した <b>API キー</b>値を入力して、<b>[保存]</b> をクリックします。</p>
+</li>
+</ol>
+&emsp;&emsp;![](./media/notification-hubs-android-get-started/notification-hub-configure-android.png)
 
-1. Xamarin Studio (または Visual Studio) で、**[ファイル]**、**[新規]** をクリックした後、**[新しいソリューション]** ダイアログで **[Android アプリケーション]** をクリックし、最後に **[OK]** をクリックします。
 
-   	![][14]
+これで、通知ハブが GCM と連動するように構成されました。接続文字列により、アプリが通知を受信すると共に、プッシュ通知を送信するように登録されます。
+
+##通知ハブにアプリケーションを接続する
+
+###新しいプロジェクトを作成する
+
+1. Xamarin Studio で **[New Solution]** をクリックし、**[Android App]** をクリックして、**[Next]** をクリックします。
+
+   	![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project1.png)
+
+2. **アプリケーション名**と**識別子**を入力します。サポートする**ターゲット プラットフォーム**をクリックし、**[Next]**、**[Create]** の順にクリックします。
+
+   	![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project2.png)
+
 
 	これにより、新しい Android プロジェクトが作成されます。
 
 2. [ソリューション] ビューで新しいプロジェクトを右クリックして **[オプション]** を選択し、プロジェクトのプロパティを開きます。**[Build]** セクションで **[Android Application]** 項目を選択します。
 
-   	![][15]
-
-3. **[最小 Android バージョン]** を [API Level 8] に設定します。
-
-4. **[ターゲット Android バージョン]** を、ターゲットとする API バージョンに設定します (API レベル 8 以上にする必要があります)。
-
-5. **パッケージ名**の先頭の文字は、小文字にしてください。
+	**パッケージ名**の先頭の文字は、小文字にしてください。
 
 	> [AZURE.IMPORTANT]パッケージ名の先頭の文字は、小文字にする必要があります。小文字にしないと、以下のプッシュ通知に **BroadcastReceiver** と **IntentFilter** を登録するときに、アプリケーション マニフェスト エラーが発生します。
 
-### プロジェクトに必要なコンポーネントを追加します。
+   	![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub--xamarin-android-app-options.png)
+
+
+3. 必要に応じて、**[Minimum Android version]** の API レベルを変更します。
+
+4. 必要に応じて、**[Target Android version]** の API バージョンを変更します (API レベル 8 以上にする必要があります)。
+
+**[OK]** をクリックして、[Project Options] ダイアログを閉じます。
+
+
+###プロジェクトに必要なコンポーネントを追加します。
 
 Xamarin コンポーネント ストアから入手できる Google Cloud Messaging クライアントにより、Xamarin.Android でプッシュ通知をサポートするプロセスが効率化されます。
 
@@ -81,7 +100,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 3. 「**Google Cloud Messaging Client**」というコンポーネントを検索し、それをプロジェクトに追加します。
 
 
-### プロジェクトで Notification Hubs を設定する
+###プロジェクトで Notification Hubs を設定する
 
 1. Android アプリケーションと通知ハブについて次の情報を収集します。
 
@@ -91,9 +110,12 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 
 	Xamarin プロジェクトの **Constants.cs** クラスを作成し、このクラスに次の定数値を定義します。プレースホルダーを実際の値に置き換えます。
 
-		public const string SenderID = "<GoogleProjectNumber>"; // Google API Project Number
-		public const string ListenConnectionString = "<Listen connection string>";
-		public const string NotificationHubName = "<hub name>";
+		public static class Constants
+		{
+			public const string SenderID = "<GoogleProjectNumber>"; // Google API Project Number
+			public const string ListenConnectionString = "<Listen connection string>";
+			public const string NotificationHubName = "<hub name>";
+		}
 
 2. 次の using ステートメントを **MainActivity.cs** に追加します。
 
@@ -118,7 +140,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 			GcmClient.Register(this, Constants.SenderID);
 		}
 
-4. **MainActivity.cs** の `OnCreate` メソッドに `RegisterWithGCM` の呼び出しを追加します。
+4. **MainActivity.cs** の `OnCreate` メソッドで `instance` 変数を初期化し、`RegisterWithGCM` の呼び出しを追加します。
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -151,7 +173,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 		using Gcm.Client;
 		using WindowsAzure.Messaging;
 
-5. **using** ステートメントと **namespace** 宣言の間に次のアクセス許可要求を追加します。
+5. **MyBroadcastReceiver.cs** で、**using** ステートメントと **namespace** 宣言の間に次のアクセス許可要求を追加します。
 
 		[assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
 		[assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -193,7 +215,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
     	}
 
 
-8. **GcmServiceBase** は、**OnRegistered()** メソッド、**OnUnRegistered()** メソッド、**OnMessage()** メソッド、**OnRecoverableError()** メソッド、および **OnError()** メソッドを実装しています。実装クラス **PushHandlerService** は、これらのメソッドをオーバーライドする必要があります。これらのメソッドは、通知ハブとのやり取りに応答して呼び出されます。
+8. **GcmServiceBase** は、**OnRegistered()** メソッド、**OnUnRegistered()** メソッド、**OnMessage()** メソッド、**OnRecoverableError()** メソッド、および **OnError()** メソッドを実装しています。**PushHandlerService** クラスの実装で、これらのメソッドをオーバーライドする必要があります。これらのメソッドは、通知ハブとのやり取りに応答して呼び出されます。
 
 
 9. **PushHandlerService** の **OnRegistered()** メソッドを次のコードでオーバーライドします。
@@ -323,13 +345,13 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 		}
 
 
-##<a name="run-app"></a>エミュレーターを使用してアプリケーションを実行する
+##エミュレーターを使用してアプリケーションを実行する
 
 このアプリケーションをエミュレーターで実行する場合は、Google API をサポートしている Android Virtual Device (AVD) を使用してください。
 
 > [AZURE.IMPORTANT]プッシュ通知を受信するには、Android Virtual Device で Google アカウントを設定する必要があります (エミュレーターで、**[Settings]** に移動して **[Add Account]** をクリックします)。 さらに、エミュレーターがインターネットに接続されていることを確認します。
 
->[AZURE.NOTE]Android バージョン 5.0 以降の通知デザインは、以前のバージョンとはかなり異なるものになっています。Android 5.0 以降でこのテストを行う場合は、通知を受信するためにアプリを実行する必要があります。詳細については、[Android の通知](http://go.microsoft.com/fwlink/?LinkId=615880)に関する記事をご覧ください。
+>[AZURE.NOTE]Android バージョン 5.0 以降の通知デザインは、以前のバージョンとはかなり異なるものになっています。詳細については、[Android の通知](http://go.microsoft.com/fwlink/?LinkId=615880)に関する記事をご覧ください。
 
 
 1. **[ツール]** で **[Android エミュレーター マネージャーを開く]** をクリックし、デバイスを選択してから **[編集]** をクリックします。
@@ -363,26 +385,31 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 
 チュートリアルの以下のサブセクションでは、.NET コンソール アプリと、ノード スクリプトを使用するモバイル サービスで通知を送信します。
 
-###.NET アプリケーションを使用して通知を送信する
+####(省略可能).NET アプリケーションを使用して通知を送信する
 
-
-Microsoft では、.NET プラットフォームに通知を送信するための Azure Service Bus SDK を用意しています。このセクションでは、Azure Service Bus SDK を使用して通知を送信するために .NET コンソール アプリケーションを Visual Studio で作成します。
+このセクションでは、.NET コンソール アプリケーションを使用して通知を送信します。
 
 1. Visual C# の新しいコンソール アプリケーションを作成します。
 
    	![][20]
 
-2. <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet パッケージ</a>を使用して、Azure Service Bus SDK に参照を追加します。Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。次に、コンソール ウィンドウで次のように入力します。
+2. Visual Studio で、**[ツール]**、**[Nuget パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
 
-        Install-Package WindowsAzure.ServiceBus
+	Visual Studio のパッケージ マネージャー コンソールが表示されます。
 
-    次に、Enter キーを押します。
+3. パッケージ マネージャー コンソール ウィンドウで **[既定のプロジェクト]** に新しいコンソール アプリケーション プロジェクトを設定した後、そのコンソール ウィンドウから次のコマンドを実行します。
 
-2. Program.cs ファイルを開き、次の using ステートメントを追加します。
+        Install-Package Microsoft.Azure.NotificationHubs
 
-        using Microsoft.ServiceBus.Notifications;
+	これにより <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet パッケージ</a>を利用して Azure Notification Hubs SDK に参照が追加されます。
 
-3. `Program` クラスで、次のメソッドを追加します。プレースホルダーのテキストを、Azure ポータルからの接続文字列 *DefaultFullSharedAccessSignature* とハブの名前で更新します。
+	![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+
+4. Program.cs ファイルを開き、次の `using` ステートメントを追加します。
+
+        using Microsoft.Azure.NotificationHubs;
+
+5. `Program` クラスで、次のメソッドを追加します。プレースホルダーのテキストを、Azure ポータルからの接続文字列 *DefaultFullSharedAccessSignature* とハブの名前で更新します。
 
         private static async void SendNotificationAsync()
         {
@@ -390,16 +417,16 @@ Microsoft では、.NET プラットフォームに通知を送信するため�
             await hub.SendGcmNativeNotificationAsync("{ "data" : {"message":"Hello from Azure!"}}");
         }
 
-4. **Main** メソッド内に次の行を追加します。
+6. **Main** メソッド内に次の行を追加します。
 
          SendNotificationAsync();
 		 Console.ReadLine();
 
-5. F5 キーを押してアプリケーションを実行します。アプリで通知を受信します。
+7. F5 キーを押してアプリケーションを実行します。アプリで通知を受信します。
 
    	![][21]
 
-###モバイル サービスを使用して通知を送信する
+####(省略可能) モバイル サービスを使用して通知を送信する
 
 1. 「[Mobile Services の使用]」に従って、以下の操作を行います。
 
@@ -434,7 +461,7 @@ Microsoft では、.NET プラットフォームに通知を送信するため�
 
 6. 下部のバーにある **[一度だけ実行する]** をクリックします。トースト通知を受信します。
 
-## <a name="next-steps"> </a>次のステップ
+##次のステップ
 
 この簡単な例では、すべての Android デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[Notification Hubs を使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。Notification Hubs の使用方法の詳細については、「[Microsoft Azure Notification Hubs の概要]」と「[方法: Microsoft Azure Notification Hubs (Android アプリ)]」を参照してください。
 
@@ -447,20 +474,10 @@ Microsoft では、.NET プラットフォームに通知を送信するため�
 [Next steps]: #next-steps
 
 <!-- Images. -->
-[1]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-developers.png
-[2]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server.png
-[3]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server2.png
-[4]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server3.png
 
-[7]: ./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-from-portal.png
-[8]: ./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-from-portal2.png
-[9]: ./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-select-from-portal.png
-[10]: ./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-select-from-portal2.png
 [11]: ./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-configure-android.png
-[12]: ./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-connection-strings.png
 
 [13]: ./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-app1.png
-[14]: ./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-app2.png
 [15]: ./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-app3.png
 
 [18]: ./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-android-app7.png
@@ -496,4 +513,4 @@ Microsoft では、.NET プラットフォームに通知を送信するため�
 [Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
 [Azure Messaging コンポーネント]: http://components.xamarin.com/view/azure-messaging
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

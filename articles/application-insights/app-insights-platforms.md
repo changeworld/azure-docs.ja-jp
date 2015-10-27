@@ -19,6 +19,7 @@
 
 [AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
+以下は、これまでに把握している実装です (サード パーティによるものも含む)。
 
 ## 言語
 
@@ -37,21 +38,24 @@
 
 + [Angular](https://www.npmjs.com/package/angular-applicationinsights)
 + [ASP.NET](app-insights-start-monitoring-app-health-usage.md)
-+ [既にライブの ASP.NET](app-insights-monitor-performance-live-website-now.md)
++ [ASP.NET - 既にライブとなっているアプリ用](app-insights-monitor-performance-live-website-now.md)
 + [ASP.NET 5](app-insights-asp-net-five.md)
 + [Android](https://github.com/Microsoft/ApplicationInsights-Android)
 + [Azure Web アプリと VM](../insights-perf-analytics.md)
 + [Azure Cloud Services](app-insights-cloudservices.md) &#151; Web ロールと worker ロールの両方を含む
++ [Concrete](https://github.com/fidmor89/appInsights-Concrete)
 + [Microsoft Dynamics からの CRM オンライン](app-insights-sample-mscrm.md)
++ [Drupal](https://github.com/fidmor89/AppInsights-Drupal)
 + [iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
 + [J2EE](app-insights-java-get-started.md)
-+ [既にライブの J2EE](app-insights-java-live.md)
++ [J2EE - 既にライブとなっているアプリ用](app-insights-java-live.md)
 + [Joomla](https://github.com/fidmor89/AppInsights-Joomla)
 + [Microsoft CRM](app-insights-sample-mscrm.md)
 + [Node.JS](https://www.npmjs.com/package/applicationinsights)
 + [Orchard](https://orchardazureappinsights.codeplex.com) 
 + [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 + [SharePoint](app-insights-sharepoint.md)
++ [SLAB](https://github.com/fidmor89/SLAB_AppInsights) セマンティック ログ
 + [Windows ストア C#|VB](app-insights-windows-get-started.md)
 + [Windows ストア C++](app-insights-windows-cpp.md)
 + [Windows デスクトップのアプリケーションとサービス、および worker ロール](app-insights-windows-desktop.md)
@@ -79,4 +83,4 @@
 
 <!--Link references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

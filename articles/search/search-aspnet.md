@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Search と ASP.NET Web Apps の接続 |Microsoft Azure"
+	pageTitle="Azure Search と ASP.NET MVC Web アプリの接続 | Microsoft Azure"
 	description="ASP.NET Web アプリと Azure Search を接続します。.NET ライブラリまたは REST API を使用して接続、クエリ、結果の表示を行う方法について説明します。"
 	services="search"
 	documentationCenter=""
@@ -16,9 +16,9 @@
 	ms.date="08/26/2015"
 	ms.author="heidist"/>
 
-#Azure Search を ASP.NET Web Apps と統合する方法
+#Azure Search を ASP.NET MVC Web アプリと統合する方法
 
-ASP.NET は、Azure Search と統合できるカスタム ソリューションの主要 Web アプリケーション フレームワークです。この記事では、ASP.NET Web アプリを Azure Search と接続し、一般的な操作に合わせて設計パターンを調整する方法について説明します。また、開発作業をスムーズにするために役立つコーディング方法もいくつか紹介します。
+ASP.NET MVC は、Azure Search と統合できるカスタム ソリューションの主要 Web アプリケーション フレームワークです。この記事では、ASP.NET Web アプリを Azure Search と接続し、一般的な操作に合わせて設計パターンを調整する方法について説明します。また、開発作業をスムーズにするために役立つコーディング方法もいくつか紹介します。
 
 ##ASP.NET と Azure Search を使用したサンプルとデモ
 
@@ -462,4 +462,4 @@ Azure Search と ASP.NET の統合についてさらに理解を深めるには�
 - [Azure Search 開発者向けのケース スタディ](search-dev-case-study-whattopedia.md)
 - [Azure Search 開発の一般的ワークフロー](search-workflow.md) 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

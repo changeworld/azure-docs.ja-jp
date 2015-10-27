@@ -3,7 +3,7 @@
 	description="Microsoft Azure Media Services を使用すると、MPEG DASH、Smooth Streaming、および HTTP ライブ ストリーミング (HLS) のストリームを Microsoft PlayReady DRM で保護して配信できます。Widevine DRM で暗号化された DASH を配信することもできます。このトピックでは、PlayReady と Widevine DRM を使用して動的に暗号化する方法について説明します。"
 	services="media-services"
 	documentationCenter=""
-	authors="Juliako"
+	authors="Juliako,Mingfeiy"
 	manager="dwrede"
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="10/14/2015"
+	ms.date="10/15/2015"
 	ms.author="juliako"/>
 
 
@@ -60,7 +60,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 前述したワークフローを図にすると、次のようになります。ここでは、認証のためにトークンが使用されています。
 
-![Protect with PlayReady](./media/media-services-content-protection-overview/media-services-content-protection-with-drm.png)
+![PlayReady による保護](./media/media-services-content-protection-overview/media-services-content-protection-with-drm.png)
 
 このトピックの残りの部分では、詳細な説明、コード例、および前述したタスクの実行方法を説明するトピックへのリンクを紹介します。
 
@@ -569,4 +569,4 @@ AMS のラーニング パスについては、以下を参照してください
 
 [Configure Widevine packaging with AMS (AMS を使用して Widevine パッケージを構成する)](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/07/2015"
+   ms.date="10/21/2015"
    ms.author="lodipalm"/>
 
 #TSQL で SQL Data Warehouse を作成する 
@@ -67,13 +67,13 @@ SERVICE\_OBJECTIVE は、インスタンスに最初に割り当てられる DWU
 これらのパラメーターと課金の関係については、[価格のページ][]を参照してください。
 
 ## 次のステップ
-SQL Data Warehouse のプロビジョニングが済めば、[サンプル データを読み込んだり][]、[開発][]、[読み込み][]、[移行][]の方法を調べたりできます。
+SQL Data Warehouse のプロビジョニングが完了すると、[サンプル データを読み込んだり][]、[開発][]、[読み込み][]、[移行][]の方法を確認したりできます。
 
-[接続とクエリ]: ./sql-data-warehouse-get-started-connect-query.md
-[移行]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-migrate/
-[開発]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-develop/
-[読み込み]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-load/
-[サンプル データを読み込んだり]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-get-started-manually-load-samples/
-[価格のページ]: https://azure.microsoft.com/ja-jp/pricing/details/sql-data-warehouse/
+[接続とクエリ]: ./sql-data-warehouse-get-started-connect.md
+[移行]: ./sql-data-warehouse-overview-migrate.md
+[開発]: ./sql-data-warehouse-overview-develop.md
+[読み込み]: ./sql-data-warehouse-overview-load.md
+[サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-manually-load-samples.md
+[価格のページ]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

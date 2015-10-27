@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="10/11/2015"
+	ms.date="10/21/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用 (Windows ストア アプリ)
@@ -41,7 +41,7 @@
 
 + アクティブな Windows ストア アカウント
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-store-dotnet-get-started%2F)を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-store-dotnet-get-started%2F)を参照してください。
 
 このチュートリアルを完了することは、Windows ストア アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。
 
@@ -90,31 +90,15 @@ Windows ストア アプリにプッシュ通知を送信するには、アプ�
 
 ##通知ハブを構成する
 
-1. [Azure ポータル]にサインインし、画面の下部にある **[+新規]** をクリックします。
+[AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-2. **[App Services]**、**[Service Bus]**、**[Notification Hub]** の順にクリックし、**[簡易作成]** をクリックします。
+<ol start="7">
+<li><p>上部にある <b>[構成]</b> タブを選択し、前のセクションで WNS から取得した <b>[クライアント シークレット]</b> と <b>[パッケージ SID]</b> の値を入力して、<b>[保存]</b> をクリックします。</p>
+</li>
+</ol>
 
-   	![][7]
+&emsp;&emsp;![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
-3. 通知ハブの名前を入力して、目的のリージョンを選択し、**[新しい通知ハブを作成する]** をクリックします。
-
-   	![][8]
-
-4. 前の手順で作成した名前空間 (通常は ***通知ハブ名*-ns**) をクリックし、上部にある **[構成]** タブをクリックします。
-
-   	![][9]
-
-5. 上部にある **[Notification Hubs]** タブをクリックし、前の手順で作成した通知ハブをクリックします。
-
-   	![][10]
-
-6. 上部にある **[構成]** タブを選択し、前のセクションで WNS から取得した **[クライアント シークレット]** と **[パッケージ SID]** の値を入力して、**[保存]** をクリックします。
-
-   	![][11]
-
-7. ページ上部の **[ダッシュボード]** タブを選択し、下部の **[接続情報]** をクリックします。2 つの接続文字列をメモします。
-
-   	![][12]
 
 これで、通知ハブが WNS と連動するように構成されました。接続文字列にアプリケーションを登録し、通知を送信できます。
 
@@ -217,11 +201,11 @@ Windows ストア アプリにプッシュ通知を送信するには、アプ�
 
 	これにより、新しい Visual C# コンソール アプリケーションがソリューションに追加されます。個別のソリューションでこの操作を行うこともできます。
 
-4. Visual Studio で、**[ツール]**、**[Nuget パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+2. Visual Studio で、**[ツール]**、**[Nuget パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
 
 	Visual Studio のパッケージ マネージャー コンソールが表示されます。
 
-6. パッケージ マネージャー コンソール ウィンドウで **[既定のプロジェクト]** に新しいコンソール アプリケーション プロジェクトを設定した後、そのコンソール ウィンドウから次のコマンドを実行します。
+3. パッケージ マネージャー コンソール ウィンドウで **[既定のプロジェクト]** に新しいコンソール アプリケーション プロジェクトを設定した後、そのコンソール ウィンドウから次のコマンドを実行します。
 
         Install-Package Microsoft.Azure.NotificationHubs
 
@@ -230,11 +214,11 @@ Windows ストア アプリにプッシュ通知を送信するには、アプ�
 	![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 
-5. Program.cs ファイルを開き、次の `using` ステートメントを追加します。
+4. Program.cs ファイルを開き、次の `using` ステートメントを追加します。
 
         using Microsoft.Azure.NotificationHubs;
 
-6. **Program** クラスで、次のメソッドを追加します。
+5. **Program** クラスで、次のメソッドを追加します。
 
         private static async void SendNotificationAsync()
         {
@@ -248,12 +232,12 @@ Windows ストア アプリにプッシュ通知を送信するには、アプ�
 
 	>[AZURE.NOTE]**リッスン** アクセスではなく**フル** アクセスを持つ接続文字列を使用してください。リッスン アクセス文字列には通知を送信するアクセス許可はありません。
 
-7. **Main** メソッド内に、次の行を追加します。
+6. **Main** メソッド内に、次の行を追加します。
 
          SendNotificationAsync();
 		 Console.ReadLine();
 
-8. Visual Studio でコンソール アプリケーション プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックすることにより、それをスタートアップ プロジェクトとして設定します。**F5** キーを押して、アプリケーションを実行します。
+7. Visual Studio でコンソール アプリケーション プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックすることにより、それをスタートアップ プロジェクトとして設定します。**F5** キーを押して、アプリケーションを実行します。
 
    	![][14]
 
@@ -265,7 +249,7 @@ MSDN の [トースト カタログ]、[タイル カタログ]、[バッジの�
 
 この簡単な例では、すべての Windows デバイスにブロードキャスト通知を送信します。次のステップとして「[Notification Hubs を使用したユーザーへのプッシュ通知]」チュートリアルをお勧めします。このチュートリアルでは、特定のユーザーに対してタグを使用して ASP.NET バックエンドから通知を送信する方法について説明しています。
 
-対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。
+対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。
 
 Notification Hubs の全般的な情報については、「[Notification Hubs の概要]」を参照してください。
 
@@ -279,12 +263,7 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [3]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-win8-app.png
 [4]: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-select-app-name.png
 [6]: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-win8-app-push-auth.png
-[7]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-from-portal.png
-[8]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-from-portal2.png
-[9]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-select-from-portal.png
-[10]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-select-from-portal2.png
 [11]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png
-[12]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-connection-strings.png
 [13]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-console-app.png
 [14]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-windows-toast.png
 [15]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-scheduler1.png
@@ -294,14 +273,14 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [20]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-windows-universal-app-install-package.png
 
 <!-- URLs. -->
-[Azure ポータル]: https://manage.windowsazure.com/
+[Azure portal]: https://manage.windowsazure.com/
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
-[通知ハブを使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
+[Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 
 [トースト カタログ]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
 [タイル カタログ]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
 [バッジの概要]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

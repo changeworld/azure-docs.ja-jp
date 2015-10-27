@@ -1,6 +1,6 @@
 <properties
 	pageTitle="ロジック アプリを作成する | Microsoft Azure"
-	description="基本的な App Services ロジック アプリを作成する方法を説明します。"
+	description="SaaS サービスを接続するロジック アプリの作成方法について説明します。"
 	authors="stepsic-microsoft-com"
 	manager="dwrede"
 	editor=""
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/10/2015"
+	ms.date="10/16/2015"
 	ms.author="stepsic"/>
 
-# 新しいロジック アプリを作成する
+# SaaS サービスを接続する新しいロジック アプリを作成します。
 
 | クイック リファレンス |
 | --------------- |
 | [Logic Apps の定義言語](https://msdn.microsoft.com/library/azure/dn948512.aspx?f=255&MSPPError=-2147217396) |
-| [Logic Apps コネクターのドキュメント](https://azure.microsoft.com/ja-jp/documentation/articles/app-service-logic-connectors-list/) |
-| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=azurelogicapps) |
+| [Logic Apps コネクターのドキュメント](https://azure.microsoft.com/ja-JP/documentation/articles/app-service-logic-connectors-list/) |
+| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurelogicapps) |
 
 このトピックでは、初めての方に向けて [App Service Logic Apps](app-service-logic-what-are-logic-apps.md) の使い方を簡単に説明します。今回は、興味を持ったツイートを Dropbox フォルダーに保存できるようにするまでの流れを見ていきます。
 
@@ -76,7 +76,7 @@
 
 次は、新しいロジック アプリを作成します。
 
-1. 画面左下の **[+ 新規]** をクリックします。**[Web + Mobile]** を展開し、**[Logic App]** をクリックします。
+1. 画面左下の **[+ 新規]** をクリックします。**[Web + Mobile]** を展開し、**[ロジック アプリ]** をクリックします。
 
  	[ロジック アプリの作成] ビューが表示されるので、開始するための基本設定を入力していきます。
 
@@ -94,15 +94,19 @@
 
 1. **[ロジック アプリの作成]** ビューで、**[トリガーとアクション]** をクリックします。
 
-	フローを表示するデザイナーが全画面表示されます。右側に、トリガーを設定できるサービスが一覧表示されています。
+	フローを表示するデザイナーが全画面表示されるほか、作業のひな形となるテンプレートが表示されます。
+	
+2. このチュートリアルでは、**ゼロから作成**します。利用できそうなテンプレートがあれば、適宜使用してください。
+    
+    右側には、トリガーを設定できるサービスが一覧表示されています。
 
-2. 上部のセクションで、**[繰り返し]** をクリックします。
+3. 上部のセクションで、**[繰り返し]** をクリックします。
 
 	繰り返しの設定を指定するためのボックスが表示されます。
 
 	![定期的なアイテム](./media/app-service-logic-create-a-logic-app/recurrence.png)
 
-3.  (1 時間ごとなど) 繰り返しの **[頻度]** と **[間隔]** を選択し、緑色のチェック マークをクリックします。
+4.  (1 時間ごとなど) 繰り返しの **[頻度]** と **[間隔]** を選択し、緑色のチェック マークをクリックします。
 
 次に、フローにアクションを追加します。
 
@@ -118,7 +122,7 @@
 
 	![アクション](./media/app-service-logic-create-a-logic-app/actions.png)
 
-	> [AZURE.NOTE]**[承認]** ボタンは、OAUTH セキュリティを使用して、Twitter などの SaaS サービスに接続します。OAUTH の詳細については、「[SaaS コネクタでの OAUTH セキュリティについて](app-service-logic-oauth-security.md)」を参照してください。
+	> [AZURE.NOTE]**[承認]** ボタンは、OAUTH セキュリティを使用して、Twitter などの SaaS サービスに接続します。OAUTH の詳細については、[OAUTH のセキュリティ](app-service-logic-oauth-security.md)に関するページを参照してください。
 
 3. **[ツイートの検索]** をクリックし、**[クエリの指定]** に「`#MicrosoftAzure`」などの文字を入力して、緑色のチェック マークをクリックします。
 
@@ -177,11 +181,11 @@
 
 5. アプリを無効にするには、コマンド バーで **[無効化]** をクリックします。
 
-クラウド上で実行できる簡単なロジック アプリを 5 分もしないうちに作成できました。Logic Apps の機能の使用について詳しくは、「[ロジック アプリの機能を使用する]」をご覧ください。Logic App の定義自体の詳細については、「[Logic App の定義を作成する](app-service-logic-author-definitions.md)」を参照してください。
+クラウド上で実行できる簡単なロジック アプリを 5 分もしないうちに作成できました。Logic Apps の機能の使用について詳しくは、「[ロジック アプリの機能を使用する]」をご覧ください。ロジック アプリの定義自体の詳細については、「[ロジック アプリの定義を作成する](app-service-logic-author-definitions.md)」を参照してください。
 
 <!-- Shared links -->
 [Azure portal]: https://portal.azure.com
 [Use logic app features]: app-service-logic-use-logic-app-features.md
 [ロジック アプリの機能を使用する]: app-service-logic-use-logic-app-features.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

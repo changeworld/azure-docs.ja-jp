@@ -45,7 +45,7 @@ Azure リソース マネージャー テンプレートや Azure プレビュ�
 
 ## Azure PowerShell
 
-開始する前に、適切なバージョンの Azure PowerShell がインストールされていること、ログインしていること、新しいリソース マネージャー モードに切り替えていることを確認します。詳細については、[こちら](virtual-machines-deploy-rmtemplates-powershell.md#setting-up-powershell-for-resource-manager-templates)をクリックします。
+[AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
 
 次のコマンド セットに、Azure のデプロイ名、新しいリソース グループ名、Azure データ センターの場所を入力します。引用符内のすべての文字 (< and > を含む) を削除します。
 
@@ -67,7 +67,7 @@ Azure リソース マネージャー テンプレートや Azure プレビュ�
 
 次に、Azure PowerShell プロンプトでコマンド ブロックを実行します。
 
-**New-AzureRmResourceGroupDeployment** コマンドを実行すると、一連のパラメーターの値を指定するよう求められます。すべてのパラメーター値を指定したら、**New-AzureRmResourceGroupDeployment** により仮想マシンが作成、構成されます。
+**New-AzureRmResourceGroupDeployment** コマンドを実行すると、一連のパラメーターの値を指定するよう求められます。すべてのパラメーターの値を指定すると、**New-AzureRmResourceGroupDeployment** により仮想マシンが作成、構成されます。
 
 テンプレートの実行が完了すると、5 サーバーの新しい SQL Server AlwaysOn 構成が新しいリソース グループに作成されます。
 
@@ -107,4 +107,4 @@ Azure リソース マネージャー テンプレートや Azure プレビュ�
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

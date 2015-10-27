@@ -29,6 +29,8 @@ Data Factory は、オンプレミスとクラウドのデータ ソースおよ
 
 必要があればいつでも Data Factory を使用して、異なる形状とサイズのデータを収集し、変換し、発行して深い洞察を抽出することのすべてを、信頼できるスケジュールで実行できます。Data Factory を使えば、さまざまな業界の分析とパイプラインのニーズに対応し、数多くのシナリオにも対応する、可用性の高いデータ フロー パイプラインを作成できます。たとえば、オンラインの小売業者であれば、Data Factory を使って顧客の閲覧行動に基づいて顧客一人一人に合わせた[お勧めの商品](data-factory-product-reco-usecase.md)を生成することが考えられます。また、ゲーム スタジオが自らの[マーケティング キャンペーンの効果](data-factory-customer-profiling-usecase.md)の測定に使用することもできるでしょう。お客様が Data Factory を使用する方法と理由については、[お客様導入事例](data-factory-customer-case-studies.md)を直接ご覧ください。
 
+> [AZURE.VIDEO azure-data-factory-overview]
+
 ## 主要な概念
 
 Azure Data Factory には、入力および出力データ、処理イベント、および目的のデータ フローの実行に必要なスケジュールとリソースを定義するために連携するいくつかの重要なエンティティがあります。
@@ -55,7 +57,4 @@ Azure Data Factory には、入力および出力データ、処理イベント�
 
 データセット、アクティビティ、パイプライン、およびリンクされたサービスという 4 つの簡単な概念を理解すれば、Azure Data Factory を使用できます。 何もない状態から[最初のパイプラインを作成する](data-factory-build-your-first-pipeline.md)ことも、[Data Factory のサンプル](data-factory-samples.md)を示した記事の説明に従って既成のサンプルをデプロイすることもできます。
 
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-introduction.md)でフィードバックをお寄せください。
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

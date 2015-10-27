@@ -10,10 +10,10 @@
 <tags
    ms.service="sql-data-warehouse"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/08/2015"
+   ms.date="10/20/2015"
    ms.author="lodipalm"/>
 
 # Powershell を使用して SQL Data Warehouse を作成する
@@ -61,14 +61,14 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 <!--Image references-->
 
 <!--Article references-->
-[移行]: https://azure.microsoft.com/JA-JP/documentation/articles/sql-data-warehouse-overview-migrate/
-[開発]: https://azure.microsoft.com/JA-JP/documentation/articles/sql-data-warehouse-overview-develop/
-[読み込み]: https://azure.microsoft.com/JA-JP/documentation/articles/sql-data-warehouse-overview-load/
-[サンプル データを読み込んだり]: https://azure.microsoft.com/JA-JP/documentation/articles/sql-data-warehouse-get-started-manually-load-samples/
-[Powershell]: https://azure.microsoft.com/JA-JP/documentation/articles/sql-data-warehouse-reference-powershell-cmdlets/
+[移行]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-migrate/
+[開発]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-develop/
+[読み込み]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-load/
+[サンプル データを読み込んだり]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-get-started-manually-load-samples/
+[Powershell]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-reference-powershell-cmdlets/
 [REST API]: https://msdn.microsoft.com/library/azure/dn505719.aspx
-[MSDN]: https://msdn.microsoft.com/JA-JP/library/azure/dn546722.aspx
-[firewall rules]: https://azure.microsoft.com/JA-JP/documentation/articles/sql-database-configure-firewall-settings/
+[MSDN]: https://msdn.microsoft.com/ja-JP/library/azure/dn546722.aspx
+[firewall rules]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-database-configure-firewall-settings/
 [Azure PowerShell のインストールと構成の方法]: powershell-install-configure.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

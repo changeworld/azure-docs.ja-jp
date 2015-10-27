@@ -1,14 +1,14 @@
 <properties
 	pageTitle="Azure App Service に .NET Web ジョブを作成する | Microsoft Azure"
 	description="ASP.NET MVC と Azure を使用して多層アプリケーションを作成します。フロントエンドは Azure App Service の Web アプリケーションで実行され、バックエンドは Web ジョブとして実行されます。このアプリは、Entity Framework、SQL Database、Azure ストレージ キューおよび BLOB を使用しています。"
-	services="app-service\web"
+	services="app-service"
 	documentationCenter=".net"
 	authors="tdykstra"
 	manager="wpickett"
 	editor="mollybos"/>
 
 <tags
-	ms.service="app-service-web"
+	ms.service="app-service"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -22,7 +22,7 @@
 
 このサンプル アプリケーションは、広告の掲示板です。ユーザーは広告の画像をアップロードでき、バックエンド プロセスにより、その画像は縮小表示に変換されます。広告の一覧ページには縮小表示画像が表示され、広告の詳細ページにはフル サイズの画像が表示されます。スクリーンショットを次に示します。
 
-![Ad list](./media/websites-dotnet-webjobs-sdk-get-started/list.png)
+![広告リスト](./media/websites-dotnet-webjobs-sdk-get-started/list.png)
 
 ## <a id="prerequisites"></a>前提条件
 
@@ -51,11 +51,11 @@
 
 このアプリでは、広告を SQL データベースに格納します。その際、テーブルを作成してデータにアクセスするために Entity Framework Code First を使用します。それぞれの広告に対し、フルサイズ画像用と縮小表示画像用の 2 つの URL がデータベースに格納されます。
 
-![Ad table](./media/websites-dotnet-webjobs-sdk-get-started/adtable.png)
+![広告表](./media/websites-dotnet-webjobs-sdk-get-started/adtable.png)
 
 ユーザーが画像をアップロードすると、Web アプリによってその画像が [Azure BLOB](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) に格納され、広告情報がその BLOB を示す URL と共にデータベースに格納されます。同時に、メッセージが Azure キューに書き込まれます。Azure Web ジョブとして実行されるバックエンド プロセスでは、Web ジョブ SDK は、キューをポーリングして新しいメッセージの有無を確認します。新しいメッセージが出現すると、Web ジョブはその画像の縮小表示を作成し、その広告の縮小表示 URL データベース フィールドを更新します。次の図に、アプリケーションの各パーツのやり取りを示します。
 
-![Contoso Ads architecture](./media/websites-dotnet-webjobs-sdk-get-started/apparchitecture.png)
+![Contoso Ads アーキテクチャ](./media/websites-dotnet-webjobs-sdk-get-started/apparchitecture.png)
 
 [AZURE.INCLUDE [install-sdk](../../includes/install-sdk-2015-2013.md)]
 
@@ -93,7 +93,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 5. **[作成]** をクリックします。
 
-	![New storage account](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
+	![新しいストレージ アカウント](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
 
 ## <a id="download"></a> アプリケーションのダウンロード
 
@@ -119,40 +119,28 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 	SQL 接続文字列は、ストレージ アカウント名とアクセス キーのプレースホルダーを持つ場合の例です。これは、ストレージ アカウントの名前とキーを持つ接続文字列と置き換えられます。
 
-	<pre class="prettyprint">&lt;connectionStrings&gt;
-	  &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" /&gt;
-	  &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
-	&lt;/connectionStrings&gt;</pre>
-
-	ストレージ接続文字列は AzureWebJobsStorage という名前になります。これは、Web ジョブ SDK が既定で使用する名前であるためです。Azure 環境では 1 つの接続文字列を設定する必要しかないため、ここでも同じ名前が使用されます。
+	<pre class="prettyprint">&lt;connectionStrings>
+  &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" />
+  &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/>
+&lt;/connectionStrings></pre>ストレージ接続文字列は AzureWebJobsStorage という名前になります。これは、Web ジョブ SDK が既定で使用する名前であるためです。Azure 環境では 1 つの接続文字列を設定する必要しかないため、ここでも同じ名前が使用されます。
 
 2. **サーバー エクスプローラー**で、**[Storage]** ノードの下にあるストレージ アカウントを右クリックし、**[プロパティ]** をクリックします。
 
-	![Click Storage Account Properties](./media/websites-dotnet-webjobs-sdk-get-started/storppty.png)
+	![ストレージ アカウント プロパティのクリック](./media/websites-dotnet-webjobs-sdk-get-started/storppty.png)
 
 3. **[プロパティ]** ウィンドウで **[ストレージ アカウント キー]** をクリックし、省略記号ボタンをクリックします。
 
-	![New storage account](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
+	![新しいストレージ アカウント](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
 
 4. **接続文字列**をコピーします。
 
-	![Storage Account Keys dialog](./media/websites-dotnet-webjobs-sdk-get-started/cpak.png)
+	![[ストレージ アカウント キー] ダイアログ](./media/websites-dotnet-webjobs-sdk-get-started/cpak.png)
 
 5. *Web.config* ファイル内のストレージ接続文字列を、コピーした接続文字列で置き換えます。貼り付ける前に、引用符の内側の文字列がすべてコピーされ、引用符が含まれていないことを確認してください。
 
 6. ContosoAdsWeb プロジェクトで *Web.config* ファイルを開きます。
 
-	このファイルには、アプリケーション データ用に 1 つとログ用に 1 つの計 2 つのストレージ接続文字列があります。このチュートリアルでは、どちらも同じアカウントを使用します。接続文字列には、ストレージ アカウント キーのプレースホルダーがあります。
-  	<pre class="prettyprint">&lt;configuration&gt;
-    &lt;connectionStrings&gt;
-        &lt;add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
-        &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
-        &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;"/&gt;
-    &lt;/connectionStrings&gt;
-        &lt;startup&gt;
-            &lt;supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" /&gt;
-    &lt;/startup&gt;
-&lt;/configuration&gt;</pre>
+	このファイルには、アプリケーション データ用に 1 つとログ用に 1 つの計 2 つのストレージ接続文字列があります。このチュートリアルでは、どちらも同じアカウントを使用します。接続文字列には、ストレージ アカウント キーのプレースホルダーがあります。<pre class="prettyprint">&lt;configuration&gt; &lt;connectionStrings&gt; &lt;add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt; &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt; &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;"/&gt; &lt;/connectionStrings&gt; &lt;startup&gt; &lt;supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" /&gt; &lt;/startup&gt; &lt;/configuration&gt;</pre>
 
 	既定では、Web ジョブ SDK は、AzureWebJobsStorage および AzureWebJobsDashboard という名前の接続文字列を探します。代替として、[希望する接続文字列を格納し、それを明示的に `JobHost` オブジェクトに渡すこともできます。](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#config)
 
@@ -166,25 +154,25 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 	既定のブラウザーでホーム ページが開きます(Web プロジェクトをスタートアップ プロジェクトとしているため、Web プロジェクトが実行されます)。
 
-	![Contoso Ads home page](./media/websites-dotnet-webjobs-sdk-get-started/home.png)
+	![「Contoso Ads」 ホームページ](./media/websites-dotnet-webjobs-sdk-get-started/home.png)
 
 2. アプリケーションの Web ジョブ バックエンドを起動するには、**ソリューション エクスプローラー**で ContosoAdsWebJob プロジェクトを右クリックし、次に、**[デバッグ]**、**[新しいインスタンスを開始]** の順にクリックします。
 
 	コンソール アプリケーション ウィンドウが開き、Web ジョブ SDK JobHost オブジェクトの実行が開始されたことを示すログ メッセージが表示されます。
 
-	![Console application window showing that the backend is running](./media/websites-dotnet-webjobs-sdk-get-started/backendrunning.png)
+	![コンソール アプリケーション ウィンドウが「バックエンドが動作中」と表示](./media/websites-dotnet-webjobs-sdk-get-started/backendrunning.png)
 
 3. ブラウザーで、**[広告を作成]** をクリックします。
 
 4. 何らかのテスト データを入力し、アップロードする画像を選択したら、**[Create]** をクリックします。
 
-	![Create page](./media/websites-dotnet-webjobs-sdk-get-started/create.png)
+	![作成ページ](./media/websites-dotnet-webjobs-sdk-get-started/create.png)
 
 	[Index] ページが表示されますが、新しい広告の処理が完了していないため、縮小表示はまだ表示されません。
 
 	その間、しばらく待機した後、コンソール アプリケーション ウィンドウのログ メッセージによって、キュー メッセージが受信され処理されたことが示されます。
 
-	![Console application window showing that a queue message has been processed](./media/websites-dotnet-webjobs-sdk-get-started/backendlogs.png)
+	![コンソール アプリケーション ウィンドウが「キュー メッセージの処理が完了」と表示](./media/websites-dotnet-webjobs-sdk-get-started/backendlogs.png)
 
 5. コンソール アプリケーション ウィンドウでログ メッセージを確認した後、[インデックス] ページを更新すると縮小表示が現れます。
 
@@ -192,7 +180,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 6. 広告に対応する **[Details]** をクリックすると、フルサイズの画像が表示されます。
 
-	![Details page](./media/websites-dotnet-webjobs-sdk-get-started/details.png)
+	![詳細ページ](./media/websites-dotnet-webjobs-sdk-get-started/details.png)
 
 アプリケーションはローカル コンピューター上で実行されており、同じコンピューター上の SQL Server データベースを使用していますが、クラウド内のキューおよび BLOB と連携動作しています。次のセクションでは、クラウド データベースおよびクラウドの BLOB とキューを使用して、アプリケーションをクラウド内で実行します。
 
@@ -213,7 +201,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 3. **Web の発行**ウィザードの **[プロファイル]** ステップで、**[Microsoft Azure Web アプリ]** をクリックします。
 
-	![Select Azure web app publish target](./media/websites-dotnet-webjobs-sdk-get-started/pubweb.png)
+	![Azure Web アプリの発行対象を選択](./media/websites-dotnet-webjobs-sdk-get-started/pubweb.png)
 
 4. まだサインインしていない場合は Azure にサインインします。
 
@@ -221,7 +209,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 	ダイアログ ボックスの見た目は、インストールした Azure SDK for .NET のバージョンによって若干異なる場合があります。
 
-	![Click New](./media/websites-dotnet-webjobs-sdk-get-started/clicknew.png)
+	![[新規] をクリック](./media/websites-dotnet-webjobs-sdk-get-started/clicknew.png)
 
 6. **[Microsoft Azure で Web アプリを作成]** ダイアログ ボックスで、**[Web アプリ名]** ボックスに一意の名前を入力します。
 
@@ -241,7 +229,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 12. サーバー名が一意になるように、データベース サーバーの名前 (contosoadsserver に数字または名前を追加したもの) を入力します。
 
-	サーバー名は一意にする必要があります。これには、小文字、数字、およびハイフンを含めることができます。末尾にハイフンを使用することはできません。
+	サーバー名は一意にする必要があります。小文字、数字、ハイフンを使用できます。末尾にハイフンを使用することはできません。
 
 	または、サブスクリプションに既にサーバーが設定されている場合は、ドロップダウン リストからそのサーバーを選択します。
 
@@ -251,17 +239,17 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 13. **[作成]** をクリックします。
 
-	![Create web app on Microsoft Azure dialog](./media/websites-dotnet-webjobs-sdk-get-started/newdb.png)
+	![Microsoft Azure ダイアログで Web アプリを作成](./media/websites-dotnet-webjobs-sdk-get-started/newdb.png)
 
 	Visual Studio でソリューション、Web プロジェクト、Azure の Web アプリ、および Azure SQL Database インスタンスが作成されます。
 
 14. **Web の発行**ウィザードの **[接続]** ステップで、**[次へ]** をクリックします。
 
-	![Connection step](./media/websites-dotnet-webjobs-sdk-get-started/connstep.png)
+	![[接続] ステップ](./media/websites-dotnet-webjobs-sdk-get-started/connstep.png)
 
 15. **[設定]** ステップで、**[実行時にこの接続文字列を使用する]** チェック ボックスをオフにして **[次へ]** をクリックします。
 
-	![Settings step](./media/websites-dotnet-webjobs-sdk-get-started/settingsstep.png)
+	![[設定] 手順](./media/websites-dotnet-webjobs-sdk-get-started/settingsstep.png)
 
 	SQL 接続文字列を設定するために発行ダイアログを使用する必要はありません。後から Azure 環境で値を設定します。
 
@@ -275,13 +263,13 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 16. **[プレビュー]** ステップで、**[プレビューの開始]** をクリックします。
 
-	![Click Start Preview](./media/websites-dotnet-webjobs-sdk-get-started/previewstep.png)
+	![[プレビュー開始] をクリック](./media/websites-dotnet-webjobs-sdk-get-started/previewstep.png)
 
 	データベースが発行されていないことに関する警告は無視します。Entity Framework Code First によってデータベースが作成されます。発行する必要はありません。
 
 	プレビュー ウィンドウに、Web ジョブ プロジェクトのバイナリ ファイルと構成ファイルが Web アプリの *app\_data\\jobs\\continuous* フォルダーにコピーされることが示されます。
 
-	![WebJobs files in preview window](./media/websites-dotnet-webjobs-sdk-get-started/previewwjfiles.png)
+	![プレビュー ウィンドウの Web ジョブ ファイル](./media/websites-dotnet-webjobs-sdk-get-started/previewwjfiles.png)
 
 17. **[発行]** をクリックします。
 
@@ -379,7 +367,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 5. **[認証の変更]** をクリックします。
 
-	![Change Authentication](./media/websites-dotnet-webjobs-sdk-get-started/chgauth.png)
+	![認証の変更](./media/websites-dotnet-webjobs-sdk-get-started/chgauth.png)
 
 7. **[認証の変更]** ダイアログで、**[認証なし]** をクリックし、**[OK]** をクリックします。
 
@@ -401,7 +389,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 1. Web プロジェクト (ソリューションまたはクラス ライブラリ プロジェクトではなく) を右クリックし、**[追加]**、**[新しい Azure Web ジョブ プロジェクト]** の順にクリックします。
 
-	![New Azure WebJob Project menu selection](./media/websites-dotnet-webjobs-sdk-get-started/newawjp.png)
+	![[新規 Azure Web ジョブ プロジェクト] メニュー選択](./media/websites-dotnet-webjobs-sdk-get-started/newawjp.png)
 
 2. **[Azure Web ジョブの追加]** ダイアログで、**[プロジェクト名]** と **[Web ジョブ名]** の両方に「ContosoAdsWebJob」と入力します。**[Web ジョブ実行モード]** は **[連続的に実行]** に設定したままにします。
 
@@ -466,7 +454,7 @@ Web と Web ジョブ プロジェクトはどちらも SQL Database と連携�
 	- *Global.asax.cs*  
 	- *Controllers* フォルダー: *AdController.cs*
 	- *Views\\Shared* フォルダー: *\_Layout.cshtml* ファイル
-- *Views\\Home* フォルダー: *Index.cshtml*
+	- *Views\\Home* フォルダー: *Index.cshtml*
 	- *Views\\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル<br/><br/>
 
 3. ContosoAdsWebJob プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
@@ -813,4 +801,4 @@ https://{webappname}.scm.azurewebsites.net/azurejobs/#/functions
 
 詳細については、「[Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?LinkId=390226)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

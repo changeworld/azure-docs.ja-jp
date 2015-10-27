@@ -1,14 +1,14 @@
 <properties
 	pageTitle="ハイブリッド接続を使用して Azure Mobile App をオンプレミスの SQL Server に接続する | Microsoft Azure"
 	description="ハイブリッド接続を使用して App Service Mobile App からオンプレミスの SQL Server に接続する方法について説明します。"
-	services="app-service"
+	services="app-service\mobile"
 	documentationCenter=""
 	authors="ggailey777"
 	manager="dwrede"
 	editor=""/>
 
 <tags
-	ms.service="app-service"
+	ms.service="app-service-mobile"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
@@ -164,4 +164,4 @@
 [Azure Management Portal]: http://go.microsoft.com/fwlink/p/?linkid=213885
 [Get started with Mobile Services]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->
