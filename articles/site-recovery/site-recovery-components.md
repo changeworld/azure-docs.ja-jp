@@ -111,10 +111,10 @@ Providerは、VMM サーバー、Hyper-V ホスト サーバー (デプロイに
 - プロキシ サーバーを使用して、プロバイダーを実行するサーバーをインターネットに接続する場合、既存のプロキシ設定を使用するか、カスタム プロキシを指定できます。
 - プロキシでは、ファイアウォール経由の次のアドレスを許可します。
 
-	-  **.accesscontrol.windows.net
--  .backup.windowsazure.com
-	-  **.blob.core.windows.net
--  **.store.core.windows.net
+	-  *.accesscontrol.windows.net
+	-  .backup.windowsazure.com
+	-  *.blob.core.windows.net
+	-  *.store.core.windows.net
 
 - ファイアウォールに IP アドレスベースの規則がある場合、構成サーバーから、「[Azure データ センターの IP の範囲](https://www.microsoft.com/download/details.aspx?id=41653)」に記載されている IP アドレスへの通信と、HTTP (443) の通信を許可します。使用する予定がある Azure リージョンと米国西部の IP アドレスの範囲をホワイトリストに登録する必要があります。
 - VMM を対象にして Site Recovery をデプロイし、カスタム プロキシを使用する場合、VMM の RunAs アカウント (DRAProxyAccount) が、Site Recovery ポータルからカスタム プロキシの設定で指定したプロキシの資格情報を使用して、自動的に作成されます。このアカウントを正しく認証できるように、プロキシ サーバーを設定する必要があります。
@@ -178,4 +178,4 @@ VMware 仮想マシンまたは物理サーバーにインストールします�
 
 デプロイ シナリオに合わせてコンポーネントを構成します。[詳細情報](site-recovery-overview.md)。
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->

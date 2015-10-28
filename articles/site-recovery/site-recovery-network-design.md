@@ -64,7 +64,8 @@ Hyper-V レプリカを使用して VM に VMM を 1 つデプロイするには
 
 [クラスターに VMM をデプロイする](https://technet.microsoft.com/ja-jp/library/gg610675.aspx)と、可用性を向上させ、ハードウェア フェールオーバーを防止することができます。Site Recovery と一緒に VMM クラスターをデプロイする場合は、以下の点に注意してください。
 
-VMM サーバーは、地理的に離れたサイトにまたがる拡張クラスターにデプロイする必要があります。VMM によって使用される SQL Server データベースは、セカンダリ サイト上にレプリカを配置して、SQL Server AlwaysOn 可用性グループで保護する必要があります。災害が発生した場合は、VMM サーバーとそれに対応する SQL Server が自動的に復旧サイトにフェールオーバーされます。Site Recovery を使用してワークロードをフェールオーバーすることができます。
+VMM サーバーは、地理的に離れたサイトにまたがる拡張クラスターにデプロイする必要があります。
+VMM によって使用される SQL Server データベースは、セカンダリ サイト上にレプリカを配置して、SQL Server AlwaysOn 可用性グループで保護する必要があります。災害が発生した場合は、VMM サーバーとそれに対応する SQL Server が自動的に復旧サイトにフェールオーバーされます。Site Recovery を使用してワークロードをフェールオーバーすることができます。
 
 ![拡張された VMM クラスター](./media/site-recovery-network-design/ASR_NetworkDesign1.png)
 
@@ -124,7 +125,10 @@ Site Recovery では、特定の仮想マシンに対して保護を有効にす
 3. 同じ IP アドレスが利用できない場合、Site Recovery はプールから別のアドレスを割り当てます。
 4. 仮想マシンの保護が有効になった後、次のサンプル スクリプトを使用して、仮想マシンに割り当てられている IP アドレスを確認することができます。同じ IP アドレスであれば、フェールオーバー IP アドレスとして設定され、フェールオーバー時に仮想マシンに割り当てられます。
 
-    $vm = Get-SCVirtualMachine -Name $na = $vm[0].VirtualNetworkAdapters $ip = Get-SCIPAddress -GrantToObjectID $na[0].id $ip.address
+    $vm = Get-SCVirtualMachine -Name 
+    $na = $vm[0].VirtualNetworkAdapters
+    $ip = Get-SCIPAddress -GrantToObjectID $na[0].id 
+    $ip.address
 
 仮想マシンで DHCP が使用されている場合、Site Recovery によって IP アドレスの管理は行われないので注意してください。復旧サイトに対して IP アドレスを割り当てる DHCP サーバーが、プライマリ サイトの場合と同じ範囲からアドレスを割り当てることができることを確認する必要があります。
 
@@ -151,10 +155,12 @@ Woodgrove がレプリケーションをデプロイし、IP アドレスを維�
 
 	![Azure ネットワーク](./media/site-recovery-network-design/ASR_NetworkDesign7.png)
 
-- VM の IP アドレスが確実に保持されるようにするために、Site Recovery の VM プロパティで、同じ IP アドレスが使用されるように指定します。フェールオーバー後、Site Recover は指定した IP アドレスを VM に割り当てます。![Azure ネットワーク](./media/site-recovery-network-design/ASR_NetworkDesign8.png)
+- VM の IP アドレスが確実に保持されるようにするために、Site Recovery の VM プロパティで、同じ IP アドレスが使用されるように指定します。フェールオーバー後、Site Recover は指定した IP アドレスを VM に割り当てます。
+	![Azure ネットワーク](./media/site-recovery-network-design/ASR_NetworkDesign8.png)
 
 
-- フェールオーバーをトリガーし、回復ネットワーク内に必要な IP アドレスを使用して VM を作成する場合、VM への接続は を使用して確立することができます。この操作はスクリプト化することができます。サブネットのフェールオーバーについて前のセクションで説明したように、Azure へのフェールオーバーの場合も、192.168.1.0/24 が Azure に移動されたことを反映するためにルートを適切に変更する必要があります。![Azure ネットワーク](./media/site-recovery-network-design/ASR_NetworkDesign9.png)
+- フェールオーバーをトリガーし、回復ネットワーク内に必要な IP アドレスを使用して VM を作成する場合、VM への接続は を使用して確立することができます。この操作はスクリプト化することができます。サブネットのフェールオーバーについて前のセクションで説明したように、Azure へのフェールオーバーの場合も、192.168.1.0/24 が Azure に移動されたことを反映するためにルートを適切に変更する必要があります。
+	![Azure ネットワーク](./media/site-recovery-network-design/ASR_NetworkDesign9.png)
 
 ### オプション 2: 変更される IP アドレス
 
@@ -177,10 +183,17 @@ Woodgrove がレプリケーションをデプロイし、IP アドレスを維�
 - 仮想マシンは起動後に使用されている DNS サーバーを更新します。DNS エントリは、通常、ネットワーク全体で変更またはフラッシュする必要あります。ネットワーク テーブル内のキャッシュされたエントリも更新またはフラッシュする必要があります。したがって、これらの状態が変更が発生している間、ダウンタイムが発生するのは珍しいことではありません。これは以下の方法で軽減できます。
 
 	- イントラネット アプリケーションに低 TTL 値を使用する。
-	- イントラネット ベースのアプリケーションに対して [Azure Traffic Manger と Site Recovery]http://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/ を使用する。
+	- イントラネット ベースのアプリケーションに対して [Azure Traffic Manger と Site Recovery](http://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/) を使用する。
 	- タイムリーな更新を可能にするために、復旧計画で次のスクリプトを使用して DNS サーバーを更新する (動的 DNS 登録が構成されている場合、このスクリプトは必要ありません)。
 
-    [string]$Zone, [string]$name, [string]$IP ) $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name $newrecord = $record.clone() $newrecord.RecordData[0].IPv4Address = $IP Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
+    [string]$Zone,
+    [string]$name,
+    [string]$IP
+    )
+    $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
+    $newrecord = $record.clone()
+    $newrecord.RecordData[0].IPv4Address  =  $IP
+    Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecor
 
 #### 例: Azure へのフェールオーバー
 
@@ -190,4 +203,4 @@ Woodgrove がレプリケーションをデプロイし、IP アドレスを維�
 
 [学習内容](site-recovery-network-mapping.md): Site Recovery がソースおよびターゲット ネットワークをマップする方法。
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->
