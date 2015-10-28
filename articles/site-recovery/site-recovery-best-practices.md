@@ -63,7 +63,11 @@ FC ディスク | サポートされていません | サポートされてい�
 
 ## VMM サーバー
 
-Site Recovery は、System Center Virtual Machine Manager (VMM) クラウド内の Hyper-V ホスト サーバーにある仮想マシンのレプリケーションを、次のように調整できます。 - オンプレミスの VMM サーバーから Azure に (Hyper-V レプリカを使用して) レプリケートします。 - セカンダリのオンプレミス サイトに (Hyper-V レプリカを使用して) レプリケートします。プライマリ サイトに 1 つの VMM サーバーをデプロイし、セカンダリ サイトにもう 1 つの VMM サーバーをデプロイすることをお勧めします。ただし、必要であれば、両方のサイト用に[単一の VMM サーバーをデプロイ](site-recovery-single-vmm.md)することができます。 - セカンダリのオンプレミス サイトに (SAN を使用して) レプリケートします。プライマリとセカンダリのデータセンターで、各サイトに VMM サーバーがあることが必要になります。VMM を Site Recovery と一緒にデプロイする場合は、VMM インフラストラクチャを設定する必要があります。VMM サーバーを使用していない場合の詳細については、[こちら](site-recovery-hyper-v-site-to-azure.md)を参照してください。
+Site Recovery は、System Center Virtual Machine Manager (VMM) クラウド内の Hyper-V ホスト サーバーにある仮想マシンのレプリケーションを、次のように調整できます。
+	- オンプレミスの VMM サーバーから Azure に (Hyper-V レプリカを使用して) レプリケートします。
+	- セカンダリのオンプレミス サイトに (Hyper-V レプリカを使用して) レプリケートします。プライマリ サイトに 1 つの VMM サーバーをデプロイし、セカンダリ サイトにもう 1 つの VMM サーバーをデプロイすることをお勧めします。ただし、必要であれば、両方のサイト用に[単一の VMM サーバーをデプロイ](site-recovery-single-vmm.md)することができます。
+	- セカンダリのオンプレミス サイトに (SAN を使用して) レプリケートします。プライマリとセカンダリのデータセンターで、各サイトに VMM サーバーがあることが必要になります。
+VMM を Site Recovery と一緒にデプロイする場合は、VMM インフラストラクチャを設定する必要があります。VMM サーバーを使用していない場合の詳細については、[こちら](site-recovery-hyper-v-site-to-azure.md)を参照してください。
 
 
 ### VMM のバージョンの確認
@@ -103,11 +107,11 @@ System Center 2012 SP1 (最新の累積アップデートをインストール�
 
 	- プロバイダーをインストールする前に、カスタム プロキシ サーバーを設定します。
 	- 次の URL に、ファイアウォールを通過して接続できるようにします。
-		- **.hypervrecoverymanager.windowsazure.com
-- **.accesscontrol.windows.net
-- **.backup.windowsazure.com
-- **.blob.core.windows.net
-- **.store.core.windows.net
+		- *.hypervrecoverymanager.windowsazure.com
+		- *.accesscontrol.windows.net
+		- *.backup.windowsazure.com
+		- *.blob.core.windows.net
+		- *.store.core.windows.net
 
 	- VMM を対象にして Site Recovery をデプロイし、カスタム プロキシを使用する場合、VMM の RunAs アカウント (DRAProxyAccount) が、Site Recovery ポータルからカスタム プロキシの設定で指定したプロキシの資格情報を使用して、自動的に作成されます。このアカウントを正しく認証できるように、プロキシ サーバーを設定する必要があります。
 
@@ -194,4 +198,4 @@ System Center 2012 SP1 (最新の累積アップデートをインストール�
 - [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->

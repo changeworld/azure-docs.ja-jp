@@ -89,7 +89,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
 5.  入力した名前空間の名前が利用できることを確認できたら、名前空間をホストする国またはリージョンを選択します (コンピューティング リソースを展開する国またはリージョンと同じ国またはリージョンを必ず使用してください)。
 
-    > [AZURE.IMPORTANT]アプリケーションをデプロイする予定の国またはリージョンと*同じ国/リージョン*を選択してください。そうすることで、パフォーマンスが最高になります。
+    > [AZURE.IMPORTANT] アプリケーションをデプロイする予定の国またはリージョンと*同じ国/リージョン*を選択してください。そうすることで、パフォーマンスが最高になります。
 
 6.	ダイアログ ボックスの他のフィールドは、既定値 (**[メッセージング]** と **[Standard]** レベル) のままにして、チェック マークをクリックします。これで、システムによってサービス名前空間が作成され、有効になります。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
 
@@ -119,7 +119,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
 まず、仮のオンプレミスの商品カタログ システムを構築します。かなり単純なものですが、これがこれから統合しようとしている完全なサービス機能を備えた実際のオンプレミスの商品カタログ システムであると考えてください。
 
-このプロジェクトは、Visual Studio コンソール アプリケーションとして開始します。Service Bus NuGet パッケージを使用して、Service Bus ライブラリと構成設定を組み込みます。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet や Service Bus パッケージの使用方法の詳細については、「[0NuGet Service Bus パッケージの使用][]」を参照してください。
+このプロジェクトは、Visual Studio コンソール アプリケーションとして開始します。Service Bus NuGet パッケージを使用して、Service Bus ライブラリと構成設定を組み込みます。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet や Service Bus パッケージの使用方法の詳細については、「[NuGet Service Bus パッケージの使用][]」を参照してください。
 
 ### プロジェクトを作成する
 
@@ -141,13 +141,13 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
     ![][12]
 
-7.  既に Visual Studio 用の NuGet パッケージ マネージャーをインストールしている場合は、次のステップに進みます。まだインストールしていない場合は、[NuGet][] にアクセスし、[[Install NuGet]](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) をクリックします。メッセージに従って NuGet パッケージ マネージャーをインストールし、Visual Studio を再起動します。
+7.  既に Visual Studio 用の NuGet パッケージ マネージャーをインストールしている場合は、次のステップに進みます。まだインストールしていない場合は、[NuGet][] にアクセスし、[Install NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) をクリックします。メッセージに従って NuGet パッケージ マネージャーをインストールし、Visual Studio を再起動します。
 
 7.  ソリューション エクスプローラーで **[参照]** を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 
-8.  **[NuGet]** ダイアログ ボックスの左側の列で、**[オンライン]** をクリックします。
+8.  **\[NuGet\]** ダイアログ ボックスの左側の列で、**[オンライン]** をクリックします。
 
-9. 	右側の列で、**[検索]** ボックスをクリックして「**Service Bus**」と入力し、**[Microsoft Azure Service Bus]** 項目を選択します。**[インストール] **をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
+9. 	右側の列で、**[検索]** ボックスをクリックして「**Service Bus**」と入力し、**[Microsoft Azure Service Bus]** 項目を選択します。**[インストール]**をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
 
     ![][13]
 
@@ -569,7 +569,7 @@ Service Bus の詳細については、次のリソースを参照してくだ�
 
 
 
-  [0NuGet Service Bus パッケージの使用]: https://msdn.microsoft.com/library/azure/dn741354.aspx
+  [NuGet Service Bus パッケージの使用]: https://msdn.microsoft.com/library/azure/dn741354.aspx
   [10]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-1.png
   [11]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-1.png
   [12]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-3.png
@@ -610,4 +610,4 @@ Service Bus の詳細については、次のリソースを参照してくだ�
   [sbwacomqhowto]: service-bus-dotnet-how-to-use-queues.md
   [executionmodels]: ../cloud-services/fundamentals-application-models.md
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->

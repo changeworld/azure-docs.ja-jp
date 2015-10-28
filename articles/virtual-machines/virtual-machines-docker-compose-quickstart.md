@@ -34,7 +34,7 @@ Azure のさまざまな手順と Azure Markeplace で入手できるイメー�
 
 Docker がインストールされた Linux VM を実行したら、SSH を使用してクライアント コンピューターから VM に接続します。必要に応じて、次の 2 つのコマンドを実行して [Compose](https://github.com/docker/compose/blob/882dc673ce84b0b29cd59b6815cb93f74a6c4134/docs/install.md) をインストールします。
 
->[AZURE.TIP]Docker VM 拡張機能を使用して VM を作成した場合、Compose は既にインストールされています。これらのコマンドを省略して、手順 3. に進んでください。VM に Docker を自分でインストールした場合は、Compose をインストールするだけでかまいません。
+>[AZURE.TIP] Docker VM 拡張機能を使用して VM を作成した場合、Compose は既にインストールされています。これらのコマンドを省略して、手順 3. に進んでください。VM に Docker を自分でインストールした場合は、Compose をインストールするだけでかまいません。
 
 ```
 $ curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
@@ -49,6 +49,7 @@ Compose のインストールをテストするには、次のコマンドを実
 $ docker-compose --version
 ```
 
+のような出力が表示されます。
 ```
 docker-compose 1.3.2
 ```
@@ -76,7 +77,7 @@ db:
 
 ```
 
-## Step 4: Start the containers with Compose
+## 手順4: Start the containers with Compose
 
 In the working directory on your VM, simply run the following command.
 
@@ -92,7 +93,7 @@ Creating wordpress\_db\_1...
 Creating wordpress\_wordpress\_1...
 ```
 
->[AZURE.NOTE]コンテナーがバックグラウンドで継続的に実行されるように、必ず起動時に **-d** オプションを使用してください。
+>[AZURE.NOTE] コンテナーがバックグラウンドで継続的に実行されるように、必ず起動時に **-d** オプションを使用してください。
 
 コンテナーが起動していることを確認するために、「`docker-compose ps`」と入力します。次のような結果が表示されます。
 
@@ -129,4 +130,4 @@ WordPress スタート画面が表示されます。この画面の手順に従�
 
 [wordpress_start]: ./media/virtual-machines-docker-compose-quickstart/WordPress.png
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->
