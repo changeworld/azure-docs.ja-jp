@@ -134,7 +134,8 @@ passport.use(new OIDCStrategy({
 Passport は、すべての戦略ライターが従うすべての戦略 (Twitter や Facebook など) に対して類似するパターンを使用します。戦略を調べると、それは、パラメーターとして token と done を持つ function() が渡されることがわかります。戦略は、その処理をすべて終えると、必ず戻ってきます。戻ったら、再度要求しなくてもいいように、ユーザーを保存し、トークンを隠します。
 
 
-> [AZURE.IMPORTANT]上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。これは、自動登録と呼ばれます。運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。これは、Facebook への登録は許可するが、その後で追加情報の入力を求めるコンシューマー アプリで通常見られるパターンです。これがサンプル アプリケーションでなければ、返されるトークン オブジェクトから電子メールを抽出した後、追加情報の入力を要求できます。これはテスト サーバーなので、単純にユーザーをメモリ内データベースに追加します。
+> [AZURE.IMPORTANT]
+上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。これは、自動登録と呼ばれます。運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。これは、Facebook への登録は許可するが、その後で追加情報の入力を求めるコンシューマー アプリで通常見られるパターンです。これがサンプル アプリケーションでなければ、返されるトークン オブジェクトから電子メールを抽出した後、追加情報の入力を要求できます。これはテスト サーバーなので、単純にユーザーをメモリ内データベースに追加します。
 
 - 次に、Passport で必要な、ログオンしているユーザーの追跡を可能にするメソッドを追加します。これには、ユーザーの情報のシリアル化と逆シリアル化が含まれます。
 
@@ -252,13 +253,25 @@ app.post('/auth/openid/return',
 
 // ルート (セクション 4)
 
-app.get('/', function(req, res){ res.render('index', { user: req.user }); });
+app.get('/', function(req, res){
+  res.render('index', { user: req.user });
+});
 
-app.get('/account', ensureAuthenticated, function(req, res){ res.render('account', { user: req.user }); });
+app.get('/account', ensureAuthenticated, function(req, res){
+  res.render('account', { user: req.user });
+});
 
-app.get('/login', passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }), function(req, res) { log.info('Login was called in the Sample'); res.redirect('/'); });
+app.get('/login',
+  passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
+  function(req, res) {
+    log.info('Login was called in the Sample');
+    res.redirect('/');
+});
 
-app.get('/logout', function(req, res){ req.logout(); res.redirect('/'); });
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 ```
 
@@ -275,7 +288,15 @@ app.get('/logout', function(req, res){ req.logout(); res.redirect('/'); });
 
 // ユーザーが認証されることを保証する単純なルート ミドルウェアです。(セクション 4)
 
-// 保護する必要がある任意のリソースでこのルート ミドルウェアを使用します。If // 要求が認証された場合 (通常は永続的なログイン セッションを経由します)、// 要求は先に進みます。それ以外の場合、ユーザーは // ログインページにリダイレクトされます。function ensureAuthenticated(req, res, next) { if (req.isAuthenticated()) { return next(); } res.redirect('/login') } ```
+//   保護する必要がある任意のリソースでこのルート ミドルウェアを使用します。  If
+//   要求が認証された場合 (通常は永続的なログイン セッションを経由します)、
+//   要求は先に進みます。それ以外の場合、ユーザーは
+//   ログインページにリダイレクトされます。
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/login')
+}
+```
 
 - 最後に、`app.js` でサーバーそのものを実際に作成します。
 
@@ -286,7 +307,7 @@ app.listen(3000);
 ```
 
 
-## 5\.Web サイトにユーザーを表示する express のビューとルートを作成する
+## 5.Web サイトにユーザーを表示する express のビューとルートを作成する
 
 `app.js` が完成しました。次に実行する必要があるのは、取得した情報をユーザーに表示するルートとビューを追加し、作成した `/logout` ルートと `/login` ルートを処理することだけです。
 
@@ -374,7 +395,8 @@ exports.list = function(req, res){
 		<% } %>
 		<%- body %>
 	</body>
-</html>```
+</html>
+```
 
 最後に、アプリを構築して実行します。
 
@@ -394,4 +416,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->
