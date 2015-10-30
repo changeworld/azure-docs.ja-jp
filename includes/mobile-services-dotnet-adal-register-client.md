@@ -1,6 +1,6 @@
 ## <a name="register-app-aad"></a>Azure Active Directory へのクライアント アプリケーションの登録
 
-1. **Azure の管理ポータル**の [Active Directory] に移動し、目的のディレクトリをクリックします。
+1. [Azure の管理ポータル]の **Active Directory** に移動し、目的のディレクトリをクリックします。
 
    ![](./media/mobile-services-dotnet-adal-register-client/mobile-services-select-aad.png)
 
@@ -31,4 +31,4 @@
 
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 
-<!----HONumber=Oct15_HO3-->
+<!-----HONumber=Oct15_HO3-->
