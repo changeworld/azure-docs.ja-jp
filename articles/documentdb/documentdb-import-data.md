@@ -57,8 +57,8 @@ DocumentDB データ移行ツールはオープン ソース ソリューショ�
 
 移行ツールのソース コードは GitHub の[こちらのリポジトリ](https://github.com/azure/azure-documentdb-datamigrationtool)から、コンパイル済みバージョンは [Microsoft ダウンロード センター](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)から入手できます。ソリューションをコンパイルすることも、コンパイル済みバージョンをダウンロードして任意のディレクトリに展開することもできます。その後で、いずれかを実行します。
 
-- **Dtui.exe**: グラフィカル インターフェイス バージョンのツール
-- **Dt.exe**: コマンド ライン バージョンのツール
+- Dtui.exe: グラフィカル インターフェイス バージョンのツール
+- Dt.exe: コマンド ライン バージョンのツール
 
 ##<a id="JSON"></a>JSON ファイルのインポート ##
 

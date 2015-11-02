@@ -57,9 +57,11 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 |ランディング ページ|サービス レベルのページ|デバイス レベルのページ|デバイス レベルのページ|
 |---|---|---|---|
 |StorSimple Manager サービス|サービスのダッシュボード|デバイス ダッシュボード||
-||デバイス →|監視| ||バックアップ カタログ|ボリューム コンテナー →|ボリューム| ||構成 (サービス)|バックアップ ポリシー|| ||ジョブ|構成 (デバイス)| ||アラート|メンテナンス|
-
-![ビデオ](./media/storsimple-manager-service-administration/Video_icon.png) **ビデオ**
+||デバイス →|監視|| 
+||バックアップ カタログ|ボリューム コンテナー →|ボリューム| 
+||構成 (サービス)|バックアップ ポリシー|| 
+||ジョブ|構成 (デバイス)|| 
+||アラート|メンテナンス||
 
 StorSimple Manager サービスのユーザー インターフェイスのチュートリアル ビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-manager-service-overview/)を参照してください。
 

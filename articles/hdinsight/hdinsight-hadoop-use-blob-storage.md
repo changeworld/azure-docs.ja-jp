@@ -144,7 +144,7 @@ HDInsight から BLOB ストレージ内のファイルにアクセスするた�
 	wasb[s]://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
 
 
-> [AZURE.NOTE](HDInsight のエミュレーター上で実行されている) ストレージ エミュレーター上にあるファイルを指定するための構文は、<i>wasb://&lt;ContainerName&gt;@storageemulator</i> です。
+> [AZURE.NOTE] \(HDInsight のエミュレーター上で実行されている) ストレージ エミュレーター上にあるファイルを指定するための構文は、<i>wasb://&lt;ContainerName&gt;@storageemulator</i> です。
 
 
 
