@@ -34,6 +34,8 @@ App Service 環境で高スケールおよびセキュリティで保護され�
 
 複数の App Service 環境を使用する水平方向のスケーリングの詳細については、[地理的に分散されたアプリのフットプリント][GeodistributedAppFootprint]のセットアップ方法に関する記事を参照してください。
 
+AzureCon Deep Dive に示されたセキュリティ アーキテクチャがどのように構成されたかを確認するには、App Service 環境での[レイヤード セキュリティ アーキテクチャ](app-service-app-service-environment-layered-security.md)のインプリメントに関する記事を参照してください。
+
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## 専用のコンピューティング リソース ##
@@ -101,4 +103,4 @@ ExpressRoute での App Service 環境の使用方法の詳細については、
 
 <!-- IMAGES -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

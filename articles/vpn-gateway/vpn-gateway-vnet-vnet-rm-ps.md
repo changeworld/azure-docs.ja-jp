@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/13/2015"
+   ms.date="10/20/2015"
    ms.author="cherylmc"/>
 
 # Azure リソース マネージャーおよび PowerShell を使用した VNet 間の接続の構成
@@ -78,9 +78,11 @@
 
 - Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-- 最新バージョンの Azure PowerShell コマンドレット。最新バージョンは、 [ダウンロード ページ](http://azure.microsoft.com/downloads/)の Windows PowerShell のセクションからダウンロードしてインストールできます。この記事は、Azure PowerShell *0.9.8* 向けに書かれています。
+- Azure PowerShell 0.9.8 コマンドレットこのバージョンは、[ダウンロード ページ](http://azure.microsoft.com/downloads/)の Windows PowerShell のセクションからダウンロードしてインストールできます。この記事は PowerShell 0.9.8 を対象にしていますが、次の手順は、コマンドレットをわずかに変更するだけで PowerShell 1.0 Preview で使用できます。
 
->[AZURE.NOTE]ミッション クリティカルなアプリを実行している場合は、Azure PowerShell 0.9.8 を使用し続けてください。ほとんどの場合、2 つのバージョンは、1.0 プレビューのコマンドレット名が {verb}-AzureRm{noun} というパターンであり、0.9.8 の名前には Rm が含まれないという点のみ異なります。たとえば、New-AzureResourceGroup は New-AzureRmResourceGroup になっています。Azure PowerShell 1.0 プレビューについては、この[ブログ記事](https://azure.microsoft.com/blog/azps-1-0-pre/)をご覧ください。Azure PowerShell 1.0 プレビューのコマンドレットの詳細については、[Azure リソース マネージャーのコマンドレット](https://msdn.microsoft.com/library/mt125356.aspx)に関するページをご覧ください。
+**Azure PowerShell 1.0 Preview で次の手順を使用する方法**
+
+	[AZURE.INCLUDE [powershell-preview-inline-include](../../includes/powershell-preview-inline-include.md)] 
 
 
 ## 1\.IP アドレス範囲を決める
@@ -113,9 +115,7 @@ VNet2 の値:
 
 ## 2\.サブスクリプションへの接続 
 
-PowerShell コンソールを開き、アカウントに接続します。以下の説明では、Azure PowerShell バージョン 0.9.8 が使用されています。このバージョンは、[ダウンロード ページ](http://azure.microsoft.com/downloads/)の Windows PowerShell のセクションからダウンロードしてインストールできます。
-
-接続するには、次のサンプルを参照してください。
+PowerShell コンソールを開き、アカウントに接続します。接続するには、次のサンプルを参照してください。
 
 		Add-AzureAccount
 
@@ -253,4 +253,4 @@ VNet にゲートウェイ サブネットを追加する必要がある場合�
 
 VPN Gateway の詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-faq.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

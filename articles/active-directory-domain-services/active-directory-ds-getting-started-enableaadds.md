@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/12/2015"
+	ms.date="10/16/2015"
 	ms.author="maheshu"/>
 
 # Azure AD Domain Services *(プレビュー)* - 作業の開始
@@ -43,11 +43,16 @@
 
 7. **[ドメイン サービスの DNS ドメイン名]** を指定します。
    - ディレクトリの既定のドメイン名 (**.onmicrosoft.com** ドメイン サフィックスで終わる名前) が既定で選択されます。
-   - ボックスの一覧には、Azure AD ディレクトリに対して構成されたすべてのドメインが表示されます (検証済みのドメインだけではなく、[ドメイン] タブで構成した未検証のドメインも含まれます)。
-   - さらに、この編集可能なボックスに入力することで、カスタム ドメイン名を指定することもできます。
+   - 一覧には、Azure AD ディレクトリに対して構成されたすべてのドメインが含まれます。検証対象のドメインおよび [ドメイン] タブで構成する検証対象外のドメインなどがあります。
+   - さらに、この一覧には、カスタム ドメイン名を入力して追加することもできます。
+
+     >[AZURE.WARNING]指定したドメイン名のドメイン プレフィックス (たとえば、'contoso.local' ドメイン名の 'contoso') が 15 文字未満であることを確認します 。ドメイン プレフィックスが 15 文字より長いと、Azure AD Domain Services ドメインを作成することはできません。
 
 8. 次の手順は、Azure AD Domain Services を利用できる仮想ネットワークを選択することです。先ほど作成した仮想ネットワークを、**[ドメイン サービスをこの仮想ネットワークに接続します]** というタイトルのボックスの一覧から選択します。
-9. 上記のオプションを選択したら、ページ下部のタスク ウィンドウで [保存] をクリックして、Azure AD Domain Services を有効にします。
+   - 指定した仮想ネットワークが Azure AD Domain Services でサポートされている Azure リージョンに属することを確認します。
+   - サポートされている Azure リージョンの一覧を表示するには、[リージョン ページ](active-directory-ds-regions.md)を参照してください。
+
+9. 上記のオプションを選択したら、ページ下部のタスク ウィンドウで **[保存]** をクリックして、Azure AD Domain Services を有効にします。
 10. ディレクトリに対して Azure AD Domain Services を有効にしている間、ページは保留状態になり、[保留中] と表示されます。
 
     ![Domain Services の有効化 - 保留中状態](./media/active-directory-domain-services-getting-started/enable-domain-services-pendingstate.png)
@@ -62,10 +67,10 @@
 
     ![Domain Services が有効化された - 2 つの IP がプロビジョニングされた](./media/active-directory-domain-services-getting-started/domain-services-enabled-bothdcs-available.png)
 
-  >[AZURE.NOTE]Azure AD ディレクトリのサイズ (ユーザーやグループの数など) によっては、Azure AD Domain Services でディレクトリの内容が利用できるようになるまで、多少時間がかかります。この同期処理は、バック グラウンドで発生します。数万のオブジェクトがある大きなディレクトリの場合、すべてのユーザー、グループ メンバーシップ、資格情報を同期して Azure AD Domain Services で利用できるようになるまで、1 ～ 2 日かかることがあります。
+> [AZURE.NOTE]Azure AD ディレクトリのサイズ (ユーザーやグループの数など) によっては、Azure AD Domain Services でディレクトリの内容が利用できるようになるまで、多少時間がかかります。この同期処理は、バック グラウンドで発生します。数万のオブジェクトがある大きなディレクトリの場合、すべてのユーザー、グループ メンバーシップ、資格情報を同期して Azure AD Domain Services で利用できるようになるまで、1 ～ 2 日かかることがあります。
 
 
 ---
 [**次の手順: Azure 仮想ネットワークの DNS 設定を更新する**](active-directory-ds-getting-started-dns.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

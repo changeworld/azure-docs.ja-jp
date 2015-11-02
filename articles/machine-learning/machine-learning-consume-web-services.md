@@ -2,7 +2,6 @@
 	pageTitle="Machine Learning Web サービスを使用する | Microsoft Azure"
 	description="機械学習サービスがデプロイされると、利用可能になっている RESTFul Web サービスを、要求応答サービスまたはバッチ実行サービスのいずれかとして使用できます。"
 	services="machine-learning"
-	solutions="big-data"
 	documentationCenter=""
 	authors="bradsev"
 	manager="paulettm"
@@ -14,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="tbd"
-	ms.date="09/09/2015" 
+	ms.date="10/19/2015"
 	ms.author="bradsev" />
 
 
@@ -34,11 +33,13 @@ Azure Machine Learning の実験は、Web サービスとしてデプロイさ�
 
 Azure Machine Learning の Web サービスは、要求応答サービスまたはバッチ実行サービスの 2 つの異なる方法で使用できます。各シナリオでは、実験がデプロイされてから使用できる RESTFul Web サービスを通じて機能が提供されます。Azure Web サービス エンドポイントを使用して Azure で Machine Learning Web サービスを配置すると、サービスが利用状況に基づいて自動的に規模変更されるので、ハードウェア リソースに対する先行投資と継続的なコストを回避できます。
 
+> [AZURE.TIP]予測 Web サービスにアクセスする Web アプリケーションを作成する簡単な方法については、[Web アプリケーション テンプレートを利用した Azure Machine Learning Web サービスの使用](machine-learning-consume-web-service-with-web-app-template.md)についてのページを参照してください。
+
 <!-- When this article gets published, fix the link and uncomment
 For more information on how to manage Azure Machine Learning web service endpoints using the REST API, see **Azure machine learning web service endpoints**.
 -->
 
-Azure Machine Learning Web サービスの作成とデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする][publish]」をご覧ください。Machine Learning の実験の作成とデプロイに関する詳しい手順については、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する][walkthrough]」をご覧ください。
+Azure Machine Learning Web サービスの作成とデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする][publish]」を参照してください。Machine Learning の実験の作成とデプロイに関する詳しい手順については、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する][walkthrough]」を参照してください。
 
 [publish]: machine-learning-publish-a-machine-learning-web-service.md
 [walkthrough]: machine-learning-walkthrough-develop-predictive-solution.md
@@ -55,12 +56,12 @@ RRS の例では、アプリケーションの信頼性を検証しています�
 
 ## バッチ実行サービス (BES)
 
-バッチ実行サービス (BES) は、データ レコードのバッチに対して、大量に非同期でスコリングを処理するためのサービスです。BES の入力には、blob、Azure のテーブル、SQL Azure、HDInsight (Hive クエリの結果など)、HTTP のソースなど、さまざまなソースからのレコードのバッチが含まれています。BES の出力には、スコアの結果が含まれます。結果は、Azure blob ストレージ内のファイルに出力し、記憶域のエンドポイントからのデータは、応答で返されます。
+バッチ実行サービス (BES) は、データ レコードのバッチに対して、大量に非同期でスコアリングを処理するためのサービスです。BES の入力には、blob、Azure のテーブル、SQL Azure、HDInsight (Hive クエリの結果など)、HTTP のソースなど、さまざまなソースからのレコードのバッチが含まれています。BES の出力には、スコアの結果が含まれます。結果は、Azure blob ストレージ内のファイルに出力し、記憶域のエンドポイントからのデータは、応答で返されます。
 
 BES は、個人やモノのインターネット (IOT) の定期的にスケジュールされたスコア付けなど、応答がすぐには必要でない場合に役立ちます。
 
 ## 例
-RRS と BES の両方の動作方法を示すために、Azure の Web サービスの例を使用します。このサービスは、IOT (モ ノのインターネット) のシナリオで使用されます。ここではシンプルにするために、デバイスは、`cog_speed` という値を 1 つのみ送信し、1 つの応答を取得します。
+RRS と BES の両方の動作方法を示すために、Azure の Web サービスの例を使用します。このサービスは、IOT (モノのインターネット) のシナリオで使用されます。ここではシンプルにするために、デバイスは、`cog_speed` という値を 1 つのみ送信し、1 つの応答を取得します。
 
 RR または BES のいずれかのサービスを呼び出すために必要な 4 つの情報があります。この情報は、実験をデプロイしたら、[Azure Machine Learning サービスのページ](https://studio.azureml.net)からすぐに利用できます。画面の左側にある Web サービスのリンクをクリックすると、デプロイされたサービスが表示されます。特定のサービスに関する情報を検索するために、RRS と BES の両方の API ヘルプ ページのリンクがあります。
 
@@ -432,4 +433,4 @@ Web サービスとしてデプロイされる Azure ML の実験には Web サ�
 	    }
 	}
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

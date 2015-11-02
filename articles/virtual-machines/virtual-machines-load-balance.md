@@ -19,6 +19,7 @@
 
 # Azure インフラストラクチャ サービスの負荷分散#
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 Azure インフラストラクチャ サービスで利用できる負荷分散には 2 つのレベルがあります。
 
@@ -84,4 +85,4 @@ Azure の負荷分散と同様、内部負荷分散セットを構成すると�
 
 <!-- LINKS -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -19,7 +19,9 @@
 
 # Service Bus のトピックとサブスクリプションの使用方法
 
-このガイドでは、Node.js アプリケーションから Service Bus のトピックとサブスクリプションを使用する方法について説明します。ここでは、**トピックとサブスクリプションの作成**、**サブスクリプション フィルターの作成**、トピックへの**メッセージの送信**、**サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。トピックとサブスクリプションの詳細については、「[次の手順](#next-steps)」を参照してください。
+[AZURE.INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
+
+このガイドでは、Node.js アプリケーションから Service Bus のトピックとサブスクリプションを使用する方法について説明します。ここでは、**トピックとサブスクリプションの作成**、**サブスクリプション フィルターの作成**、**トピックへのメッセージの送信**、**サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。トピックとサブスクリプションの詳細については、「[次の手順](#next-steps)」を参照してください。
 
 [AZURE.INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
@@ -65,9 +67,9 @@ var azure = require('azure');
 
 Azure モジュールは、Service Bus に接続するために必要な情報として、環境変数 AZURE\_SERVICEBUS\_NAMESPACE と AZURE\_SERVICEBUS\_ACCESS\_KEY を読み取ります。これらの環境変数が設定されていない場合、**createServiceBusService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure クラウド サービスの構成ファイルで環境変数を設定する例については、[Storage を使用する Node.js クラウド サービスに関するトピック][]を参照してください。
+Azure Cloud Service の構成ファイルで環境変数を設定する例については、[Storage を使用する Node.js Cloud Service に関するトピック][]を参照してください。
 
-Azure Websites の管理ポータルで環境変数を設定する例については、「[Azure テーブル サービスを使用する Node.js Web アプリケーション][]」を参照してください。
+Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Storage 使用する Node.js Web アプリケーション][]」を参照してください。
 
 ## トピックを作成する
 
@@ -150,7 +152,7 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 
 フィルターをサブスクリプションに追加するには、**ServiceBusService** オブジェクトの **createRule** メソッドを使用します。このメソッドによって、新しいフィルターを既存のサブスクリプションに追加できます。
 
-> [AZURE.NOTE]既定のフィルターはすべての新しいサブスクリプションに自動的に適用されるので、最初に既定のフィルターを削除する必要があります。削除しないと **MatchAll** は指定される他のすべてのフィルターをオーバーライドします。既定のルールを削除するには、**ServiceBusService** オブジェクトの **deleteRule** メソッドを使用します。
+> [AZURE.NOTE]既定のフィルターはすべての新しいサブスクリプションに自動的に適用されるため、最初に既定のフィルターを削除する必要があります。削除しなければ、指定された他のすべてのフィルターは **MatchAll** によってオーバーライドされます。既定のルールを削除するには、**ServiceBusService** オブジェクトの **deleteRule** メソッドを使用します。
 
 次の例では、`HighMessages` という名前のサブスクリプションを作成し、**SqlFilter** を適用します。このフィルターでは、カスタム **messagenumber** プロパティが 3 を超えるメッセージのみが選択されます。
 
@@ -282,7 +284,7 @@ Service Bus トピックでは、最大 256 MB までのメッセージをサポ
 
 ## アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
 
-Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、**ServiceBusService** オブジェクトの **unlockMessage** メソッドを呼び出すことができます。このメソッドが呼び出されると、サブスクリプション内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。このメッセージは、同じコンシューマー側アプリケーションまたは他のコンシューマー側アプリケーションで受信されます。
+Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、**ServiceBusService** オブジェクトの **unlockMessage** メソッドを呼び出すことができます。このメソッドが呼び出されると、Service Bus によってサブスクリプション内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。このメッセージは、同じコンシューマー側アプリケーションまたは他のコンシューマー側アプリケーションで受信されます。
 
 サブスクリプション内でロックされているメッセージにはタイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、Service Bus によりメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
@@ -310,7 +312,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 これで、Service Bus トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   「[キュー、トピック、およびサブスクリプション][]」を参照してください。
+-   [キュー、トピック、およびサブスクリプション][]に関するページをご覧ください。
 -   [SqlFilter][] の API のリファレンス
 -   GitHub の [Azure SDK for Node][] リポジトリ
 
@@ -321,8 +323,8 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
   [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
   [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
-  [Storage を使用する Node.js クラウド サービスに関するトピック]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-  [Azure テーブル サービスを使用する Node.js Web アプリケーション]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
+  [Storage を使用する Node.js Cloud Service に関するトピック]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+  [Storage 使用する Node.js Web アプリケーション]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

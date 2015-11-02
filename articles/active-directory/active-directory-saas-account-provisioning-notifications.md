@@ -1,10 +1,10 @@
 <properties
-	pageTitle="アカウント プロビジョニング通知"
+	pageTitle="アカウント プロビジョニング通知 | Microsoft Azure"
 	description="アカウント プロビジョニング通知を有効にすることで、注意が必要なユーザー プロビジョニングに関連する問題を確実に知る方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="swadhwa"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/27/2015"
+	ms.date="10/20/2015"
 	ms.author="markusvi"/>
 
 
@@ -46,4 +46,4 @@
 [1]: ./media/active-directory-saas-account-provisioning-notifications/ic766307.png
 [2]: ./media/active-directory-saas-account-provisioning-notifications/ic766308.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

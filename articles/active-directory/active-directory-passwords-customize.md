@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/08/2015" 
+	ms.date="10/08/2015" 
 	ms.author="asteen"/>
 
 # Password Management を組織のニーズに合わせてカスタマイズする
-ユーザーに最良のエクスペリエンスを与えるため、Password Management の使用可能なすべての構成オプションを調べて試してみることをお勧めします。[Azure 管理ポータル](https://manage.windowsazure.com)で、**[Active Directory 拡張機能]** の [構成] タブに移動することで、今すぐ調査を開始できます。このトピックでは、[Azure 管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブから管理者として実行できる以下の Password Management のカスタマイズについて、そのすべてを説明します。
+ユーザーに最良のエクスペリエンスを与えるため、Password Management の使用可能なすべての構成オプションを調べて試してみることをお勧めします。[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で、**[Active Directory 拡張機能]** の [構成] タブに移動することで、今すぐ調査を開始できます。このトピックでは、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブから管理者として実行できる以下の Password Management のカスタマイズについて、そのすべてを説明します。
 
 - [**Password Management の外観のカスタマイズ**](#password-managment-look-and-feel)
 - [**User Password Management の動作のカスタマイズ**](#password-management-behavior)
 - [**Password Management 通知のカスタマイズ**](#password-management-notifications)
 
 ## Password Managment の外観
-次の表は、各コントロールが、パスワード リセットの登録とリセットを行うユーザーのエクスペリエンスに対して、どのように影響するかを説明しています。これらのオプションは、[Azure 管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブにある **[ディレクトリのプロパティ]** セクションで構成できます。
+次の表は、各コントロールが、パスワード リセットの登録とリセットを行うユーザーのエクスペリエンスに対して、どのように影響するかを説明しています。これらのオプションは、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブにある **[ディレクトリのプロパティ]** セクションで構成できます。
 
 <table>
             <tbody><tr>
@@ -110,7 +110,7 @@
           </tbody></table>
 
 ## Password Management の動作
-次の表は、各コントロールが、パスワード リセットの登録とリセットを行うユーザーのエクスペリエンスに対して、どのように影響するかを説明しています。これらのオプションは、[Azure 管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブにある **[ユーザー パスワードのリセット ポリシー]** セクションで構成できます。
+次の表は、各コントロールが、パスワード リセットの登録とリセットを行うユーザーのエクスペリエンスに対して、どのように影響するかを説明しています。これらのオプションは、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブにある **[ユーザー パスワードのリセット ポリシー]** セクションで構成できます。
 
 > [AZURE.NOTE]これらのポリシー コントロールを表示するには、使用している管理者アカウントに AAD Premium ライセンスが割り当てられている必要があります。<br><br>これらのポリシー コントロールは、パスワードをリセットするエンド ユーザーにのみ適用され、管理者には適用されません。**管理者には、Microsoft が管理者のために指定した連絡用メールと携帯電話の既定のポリシーがあり、これらは変更できません。**
 
@@ -393,7 +393,56 @@
             </tr>
             <tr>
               <td>
-                <p>セキュリティの質問</p>
+                <p>ナレッジ ベースのセキュリティに関する質問</p>
+              </td>
+              <td>
+                <p>パスワード リセットの登録時とパスワードのリセット時に、ユーザーが選択できる、事前に用意されたセキュリティの質問を定義します。</p>
+                <p>
+                  
+                </p>
+                <p>(<strong>[セキュリティの質問]</strong> チェック ボックスがオンの場合のみ表示されます)。</p>
+              </td>
+              <td>
+                <p>
+                  <strong>注:</strong>
+                </p>
+                <ul>
+                  <li class="unordered">
+												ナレッジ ベースの質問はすべて、ユーザーのブラウザーのロケールに基づいて O365 言語の完全なセットにローカライズされます。<br><br></li>
+                  <li class="unordered">
+												最大で合計 20 の質問を定義できます (カスタムおよびナレッジ ベースの質問の合計)。<br><br></li>
+                 <li class="unordered">
+												回答の最小文字数は 3 文字です。<br><br></li>
+                  <li class="unordered">
+												回答の最大文字数は 40 文字です。<br><br></li>
+                  <li class="unordered">
+												ユーザーは、同じ質問に 2 度回答することはできません。<br><br></li>
+                  <li class="unordered">
+												ユーザーは、2 つの異なる質問に同じ回答をすることはできません。<br><br></li>
+                  <li class="unordered">
+												Unicode 文字を含む任意の文字セットを使用して回答を定義できます。<br><br></li>
+                  <li class="unordered">
+												定義する質問の数は、登録するために必要な質問の数以上にする必要があります。<br><br></li>
+                </ul>
+                <p>
+                  <strong>登録ポータル:</strong>
+                </p>
+                <ul>
+                  <li class="unordered">
+												パスワード リセットの登録時にユーザーが回答できる質問を決定します。<br><br></li>
+                </ul>
+                <p>
+                  <strong>パスワード リセット ポータル:</strong>
+                </p>
+                <ul>
+                  <li class="unordered">
+												パスワードをリセットするためにユーザーが使用できる質問を決定します。<br><br></li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>カスタムのセキュリティに関する質問</p>
               </td>
               <td>
                 <p>パスワード リセットの登録時とパスワードのリセット時に、ユーザーが選択できるセキュリティの質問を定義します </p>
@@ -408,7 +457,7 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												最大 20 個の質問を定義できます。<br><br></li>
+												最大で合計 20 の質問を定義できます (カスタムおよびナレッジ ベースの質問の合計)。<br><br></li>
                   <li class="unordered">
 												質問の最大文字数は 200 文字です。<br><br></li>
                   <li class="unordered">
@@ -424,7 +473,7 @@
                   <li class="unordered">
 												定義する質問の数は、登録するために必要な質問の数以上にする必要があります。<br><br></li>
                   <li class="unordered">
-												ロケールごとに異なる質問を定義することはまだサポートされていませんが、将来実現される予定です。<br><br></li>
+												カスタムの質問については、ロケールごとに異なる質問を定義することはサポートされていません。カスタムの質問はすべて、管理用の UI に入力したときの言語で表示されます。ユーザーのブラウザーのロケールが異なる場合でもそのように表示されます。これらの質問をローカライズ対象とする必要がある場合は、"ナレッジ ベース" の質問を使用してください。<br><br></li>
                 </ul>
                 <p>
                   <strong>登録ポータル:</strong>
@@ -642,7 +691,7 @@
           </tbody></table>
 
 ## Password Management 通知のカスタマイズ
-次の表は、各コントロールが、パスワード リセット通知を受信するユーザーと管理者のエクスペリエンスに対して、どのように影響するかを説明しています。これらのオプションは、[Azure 管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブにある **[通知]** セクションで構成できます。
+次の表は、各コントロールが、パスワード リセット通知を受信するユーザーと管理者のエクスペリエンスに対して、どのように影響するかを説明しています。これらのオプションは、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブにある **[通知]** セクションで構成できます。
 
 <table>
             <tbody><tr>
@@ -727,6 +776,6 @@
 * [パスワード管理に関する FAQ](active-directory-passwords-faq.md)
 * [パスワード管理のトラブルシューティング](active-directory-passwords-troubleshoot.md)
 * [詳細情報](active-directory-passwords-learn-more.md)
-* [MSDN のパスワード管理](https://msdn.microsoft.com/library/azure/dn510386.aspx) 
+* [MSDN のパスワード管理](https://msdn.microsoft.com/library/azure/dn510386.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

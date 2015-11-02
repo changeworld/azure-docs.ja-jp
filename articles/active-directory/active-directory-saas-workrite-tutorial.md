@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="10/16/2015"
 	ms.author="markusvi"/>
 
 
@@ -64,8 +64,7 @@ Azure AD への Workrite の統合を構成するには、ギャラリーから�
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. [検索] ボックスに、「**Workrite**」と入力します。<br><br> ![アプリケーション][5]<br>
-7. 結果ウィンドウで **[Workrite]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br>
-
+7. 結果ウィンドウで **[Workrite]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>![アプリケーション][500]<br>
 
 
 ##  Azure AD シングル サインオンの構成とテスト
@@ -91,7 +90,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
 2. **[ユーザーの Workrite へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD Single Sign-On][7] <br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD Single Sign-On][8] <br>
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD Single Sign-On][8]<br>
  
      a.**[サインオン URL]** ボックスに、ユーザーが Workrite サイトへのサインオンに使用する URL を入力します (例: **https://app.workrite.co.uk/securelogin/samlgateway.aspx?id=1a82b5aa-4dd6-4472-9721-7d0193f59e22*))。
 
@@ -124,11 +123,11 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_03.png) <br>
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_03.png)<br>
  
-4. 下部にあるツールバーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログを開きます。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_04.png) <br>
+4. 下部にあるツールバーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログを開きます。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_04.png)<br>
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_05.png) <br>
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_05.png)<br>
 
     a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
@@ -136,7 +135,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_06.png) <br>
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_06.png)<br>
  
     a.**[名]** テキスト ボックスに「**Britta**」と入力します。
 
@@ -148,7 +147,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_07.png) <br>
  
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_08.png) <br>
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_08.png)<br>
   
     a.**[新しいパスワード]** の値を書き留めます。
 
@@ -168,7 +167,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
 3. クイック リンクに移動し、**[ユーザーの作成]** をクリックします。<br><br>![ユーザーの割り当て][401]<br>
 
-4. **ユーザーの作成]** ダイアログで、次の手順に従います。<br><br>![ユーザーの割り当て][402]<br>
+4. **[ユーザーの作成]** ダイアログで、次の手順に従います。<br><br>![ユーザーの割り当て][402]<br>
 
     a.プロビジョニングする有効な Azure AD ユーザーの**電子メール**、**名**、**姓**を入力します。
 
@@ -210,6 +209,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 [3]: ./media/active-directory-saas-workrite-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-workrite-tutorial/tutorial_general_04.png
 [5]: ./media/active-directory-saas-workrite-tutorial/tutorial_workrite_01.png
+[500]: ./media/active-directory-saas-workrite-tutorial/tutorial_workrite_05.png
 
 [6]: ./media/active-directory-saas-workrite-tutorial/tutorial_general_05.png
 [7]: ./media/active-directory-saas-workrite-tutorial/tutorial_workrite_02.png
@@ -231,4 +231,4 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 [401]: ./media/active-directory-saas-workrite-tutorial/tutorial_workrite_401.png
 [402]: ./media/active-directory-saas-workrite-tutorial/tutorial_workrite_402.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

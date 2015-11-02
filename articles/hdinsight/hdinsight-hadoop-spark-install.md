@@ -13,17 +13,25 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/02/2015"
+	ms.date="10/15/2015"
 	ms.author="nitinme"/>
 
-# HDInsight Hadoop クラスターで Spark をインストールして使用する
+# スクリプト アクションを使用して、HDInsight Hadoop クラスターで Spark をインストールして使用する
 
+> [AZURE.IMPORTANT]この記事は現在、推奨されていません。現在、HDInsight は、Spark を Windows ベースのクラスターに対する最上位のクラスターの種類として提供します。つまり、現在、スクリプト アクションを使用して Hadoop クラスターを変更しなくても、Spark クラスターを直接作成できます。Spark クラスターの種類を使用して、Spark バージョン 1.3.1 の HDInsight バージョン 3.2 クラスターを取得します。Spark のさまざまなバージョンをインストールするために、Script Action を使用できます。HDInsight には、Script Action のサンプル スクリプトがあります。
 
 スクリプト アクションを使用して Windows ベースの HDInsight に Spark をインストールし、HDInsight クラスターで Spark クエリを実行する方法について説明します。
 
-HDInsight は、Spark を Windows ベースのクラスターに対する最上位のクラスターの種類として提供します。つまり、Hadoop クラスターを変更しなくても、Spark クラスターを直接作成できます。Spark クラスターの種類を使用して、Spark バージョン 1.3.1 の HDInsight バージョン 3.2 クラスターを取得します。Spark のさまざまなバージョンをインストールするために、Script Action を使用できます。HDInsight には、Script Action のサンプル スクリプトがあります。
 
-**関連記事** - [Linux ベースの HDInsight クラスターに Spark をインストールする](hdinsight-hadoop-spark-install-linux.md) - [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md): HDInsight クラスターの作成に関する一般情報 - [HDInsight での Apache Spark の使用](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md): Windows OS で Spark タイプのクラスターを作成する - [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: Script Action を使用した HDInsight クラスターのカスタマイズに関する一般情報 - [HDInsight の Script Action のスクリプトを開発する](hdinsight-hadoop-script-actions.md)
+**関連記事** - [Linux ベースの HDInsight クラスターでの Spark のインストール](hdinsight-hadoop-spark-install-linux.md)
+
+- [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md): HDInsight クラスターの作成に関する一般情報。
+
+- [HDInsight での Apache Spark の使用](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md): Windows OS で Spark タイプのクラスターを作成します。
+
+- [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: Script Action を使用した HDInsight クラスターのカスタマイズに関する一般情報。
+
+- [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions.md)。
 
 ## Spark とは
 
@@ -46,8 +54,8 @@ HDInsight クラスターに Spark をインストールするためのサンプ
 
 1. 「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md#portal)」の説明に基づき、**CUSTOM CREATE** オプションを使用してクラスターの作成を開始します。次に基づいてクラスター バージョンを選択します。
 
-	- **Spark 1.2.0** をインストールする場合、HDInsight 3.2 クラスターを作成します。
-	- **Spark 1.0.2** をインストールする場合、HDInsight 3.1 クラスターを作成します。
+	- **Spark 1.2.0** をインストールする場合は、HDInsight 3.2 クラスターを作成します。
+	- **Spark 1.0.2** をインストールする場合は、HDInsight 3.1 クラスターを作成します。
 
 
 2. ウィザードの **[スクリプトのアクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
@@ -78,7 +86,7 @@ Spark は Scala、Python、および Java で API を提供します。対話型
 ###<a name="sparkshell"></a>Spark シェルを使用して、対話型のクエリを実行する
 次の手順を実行して、対話型の Spark シェルから Spark クエリを実行します。このセクションでは、既定で HDInsight クラスターに用意されているサンプル データ ファイル (/example/data/gutenberg/davinci.txt) に対して Spark クエリを実行します。
 
-1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」をご覧ください。
+1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>￼」をご覧ください。
 
 2. Remote Desktop Protocol (RDP) セッションで、デスクトップから Hadoop コマンド ライン (デスクトップ ショートカットから) を開き、Spark がインストールされている場所、たとえば **C:\\apps\\dist\\spark-1.2.0** に移動します。
 
@@ -110,9 +118,9 @@ Spark は Scala、Python、および Java で API を提供します。対話型
 
 Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、Scala で表されるリレーショナル クエリを実行することができます。このセクションでは、Spark を使用した Hive テーブルのサンプルにおける Hive クエリの実行について確認します。このセクションで使用する Hive テーブル (**hivesampletable**) は、クラスターを作成する際に既定で使用できます。
 
->[AZURE.NOTE]下記のサンプルは HDInsight 3.2 クラスターの作成中に Script Action を実行するとインストールされる **Spark 1.2.0** に対して作成されました。
+>[AZURE.NOTE]下記のサンプルは HDInsight 3.2 クラスターの作成中にスクリプト アクションを実行するとインストールされる **Spark 1.2.0** に対して作成されました。
 
-1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」をご覧ください。
+1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>￼」をご覧ください。
 
 2. RDP セッションで、デスクトップから Hadoop コマンドライン (デスクトップ ショートカットから) を開き、Spark がインストールされている場所、たとえば **C:\\apps\\dist\\spark-1.2.0** に移動します。
 
@@ -299,7 +307,7 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 - [HDInsight で Hadoop を作成する](hdinsight-provision-clusters.md): HDInsight クラスターを作成します。
 - [HDInsight で Apache Spark を使用する](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md): HDInsight で Spark を使用します。
 - [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: Script Action を使用して HDInsight クラスターをカスタマイズします。
-- [HDInsight の Script Action のスクリプトを開発する](hdinsight-hadoop-script-actions.md): Script Action のスクリプトを開発します。
+- [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions.md): Script Action スクリプトを開発します。
 - 「[HDInsight Hadoop クラスターでの R のインストール][hdinsight-install-r]」に関するページでは、HDInsight Hadoop クラスターで R をインストールして使用するためのクラスター カスタマイズの使用法に関する手順が説明されています。R は、統計計算用のオープン ソースの言語および環境です。R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。また、広範なグラフィカル機能も提供します。
 - [HDInsight クラスターでの Giraph のインストール](hdinsight-hadoop-giraph-install.md): クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
 - [HDInsight クラスターでの Solr のインストール](hdinsight-hadoop-solr-install.md):クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。Solr は、格納されたデータに対して強力な検索操作を実行することができます。
@@ -309,4 +317,4 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [powershell-install-configure]: ../install-configure-powershell.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

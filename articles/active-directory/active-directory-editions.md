@@ -3,7 +3,7 @@
 	description="Azure Active Directory の無料エディションと有料エディションの選択について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="MarkusVi"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,402 +13,70 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/01/2015"
+	ms.date="10/17/2015"
 	ms.author="markvi"/>
 
 # Azure Active Directory のエディション
 
-Azure Active Directory は、クラウドで包括的な ID およびアクセス管理機能を提供するサービスです。開発者向けにディレクトリ サービス、高度な ID 管理、アプリケーション アクセス管理、および標準に準拠した機能豊富なプラットフォームが集約されています。詳細については、[このビデオを参照してください](http://azure.microsoft.com/documentation/videos/teched-europe-2014-cloud-identity-microsoft-azure-active-directory-explained/)。
+Microsoft のオンライン ビジネス サービスはすべて、サインオンやその他の ID のニーズを Azure Active Directory に依存しています。Microsoft のオンライン ビジネス サービス (Office 365、Microsoft Azure など) をサブスクライブすると、Azure Active Directory (Azure AD) と、以下で説明する Free エディションのすべての機能へのアクセス許可が与えられます。
 
-Microsoft Azure Active Directory の多くの無料機能セットが基になっている Azure Active Directory Premium および Basic エディションでは、ID およびアクセスの管理に対するニーズがさらに厳しい企業のためにいっそう高度な機能セットが提供されています。これらのエディションの価格オプションについては、「[Azure Active Directory 料金](http://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。Azure をサブスクライブするときは、Azure Active Directory の以下の無料および有料エディションから選択できます。
+Azure Active Directory は、従業員、パートナー、顧客向けにクラウドで包括的な ID およびアクセス管理機能を提供するサービスです。このサービスには、開発者向けにディレクトリ サービス、高度な ID 管理、標準に準拠した機能豊富なプラットフォーム、および独自のアプリケーションや事前に統合された多数のアプリケーションに対応したアプリケーション アクセス管理が集約されています。Azure Active Directory Free エディションでは、ユーザーとグループの管理、オンプレミスのディレクトリとの同期、Azure、Office 365、および Salesforce、Workday、Concur、DocuSign、Google Apps、Box、ServiceNow、Dropbox などの多くの人気のある SaaS アプリケーション間でのシングル サインオンを実現することができます。Azure Active Directory の詳細については、「[Azure AD とは](active-directory-whatis.md)」を参照してください。
 
-- **Free** - Azure Active Directory の Free エディションは、すべての Azure サブスクリプションに含まれています。ライセンスの取得やインストールは必要ありません。このエディションでは、ユーザー アカウントを管理し、オンプレミス ディレクトリと同期し、Azure、Office 365、および Salesforce、Workday、Concur、DocuSign、Google Apps、Box、ServiceNow、Dropbox などの多くの人気のある SaaS アプリケーション間でのシングル サインオンを実現することができます。
-- **Basic** - Azure Active Directory Basic エディションでは、クラウド優先のニーズを持つタスク ワーカーのために、アプリケーション アクセスおよびセルフ サービス ID 管理の要件が提供されます。Azure Active Directory Basic エディションでは、Azure Active Directory Free の全機能に加えて、グループ ベースのアクセス管理、クラウド アプリケーション向けのセルフサービスのパスワード リセット、Azure Active Directory アプリケーション プロキシ (Azure Active Directory を使用してオンプレミス Web アプリケーションを発行するため)、エンタープライズおよびコンシューマー向けクラウド アプリケーションを起動するためのカスタマイズ可能な環境、アップタイム 99.9% のエンタープライズ レベルの SLA が提供されます。Azure Active Directory Basic エディションのライセンスを所有する管理者は、Azure Active Directory Premium 試用版もアクティブ化できます。
-- **Premium** - Azure Active Directory Premium Edition では、Azure Active Directory Free および Basic エディションの全機能に加えて、以下で説明する機能豊富なエンタープライズ レベルの ID 管理機能が提供されます。
+
+Azure Active Directory を強化するには、Azure Active Directory Basic エディションおよび Premium エディションを使用することで有料の機能を追加できます。Azure Active Directory の有料エディションは、既存の無料のディレクトリ上に構築されます。セルフサービス、拡張された監視機能、セキュリティ レポート、Multi-Factor Authentication (MFA)、セキュリティで保護されたモバイル ユーザーのアクセスなどエンタープライズ クラスの機能を提供します。
+
+Office 365 サブスクリプションには、下の比較表に記載されているその他の Azure Active Directory 機能が含まれます。
+
+
+> [AZURE.NOTE]これらのエディションの価格オプションについては、「[Azure Active Directory の価格](https://azure.microsoft.com/ja-JP/pricing/details/active-directory/)」を参照してください。<br>Azure Active Directory Premium と Azure Active Directory Basic は、現在、中国ではサポートされていません。詳細については、Azure Active Directory フォーラムからお問い合わせください。
+
+
+- **Azure Active Directory Basic**: このエディションは、クラウド優先のニーズを持つタスク ワーカー向けに設計されており、クラウド中心のアプリケーション アクセスおよびセルフサービス ID 管理のソリューションを提供します。Azure Active Directory Basic エディションでは、グループベースのアクセス管理、クラウド アプリケーション向けのセルフサービスのパスワード リセット、Azure Active Directory アプリケーション プロキシ (Azure Active Directory を使用してオンプレミス Web アプリケーションを発行するため) などの生産性の強化とコスト削減の機能が提供され、すべてがアップタイム 99.9% のエンタープライズレベルの SLA によって保証されます。
+ 
+- **Azure Active Directory Premium**: Azure Active Directory Premium エディションは、より要求の厳しい ID およびアクセスの管理を必要とする組織を支援することを目的として、機能豊富なエンタープライズレベルの ID 管理機能が追加され、ハイブリッド ユーザーがオンプレミスの機能とクラウドの機能にシームレスにアクセスできるようになっています。このエディションには、クラウド内のアプリケーション アクセス、セルフサービスの ID とアクセスの管理 (IAM)、ID 保護とセキュリティに関して、ハイブリッド環境のインフォメーション ワーカーと ID 管理者が必要とするすべてが含まれています。また、動的なグループやセルフサービス グループ管理のような高度な管理と委任のリソースをサポートします。さらに、Microsoft Identity Manager (オンプレミスの ID およびアクセス管理スイート) が含まれており、オンプレミス ユーザー向けのセルフ サービスのパスワード リセットなどのソリューションを実現するクラウドの書き戻し機能を提供します。
 
 すぐに Active Directory Premium にサインアップして使用する方法については、「[Azure Active Directory Premium の概要](active-directory-get-started-premium.md)」を参照してください。
 
-> [AZURE.NOTE]Azure Active Directory Premium と Azure Active Directory Basic は、現在、中国ではサポートされていません。詳細については、[Azure Active Directory フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)からお問い合わせください。
 
-## Azure Active Directory Basic の機能
+> [AZURE.NOTE]さまざまな Azure Active Directory の機能を "従量課金制" のエディションで使用できます。
+>
+>- Active Directory B2C は、コンシューマー向けアプリケーションの ID およびアクセスの管理ソリューションです。詳しくは、「[Azure Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/)」を参照してください。
+ 
+>-	Azure Multi-Factor Authentication は、ユーザーごとまたは認証プロバイダーごとに使用できます。詳細については、「[Azure Multi-Factor Authentication とは](multi-factor-authentication.md)」を参照してください。
 
-Active Directory Basic エディションは Azure Active Directory の有料プランであり、以下の機能が含まれます。
 
-- **企業のブランド化** - エンド ユーザー エクスペリエンスをよりよくするために、会社のロゴや配色パターンを組織のサインインおよびアクセス パネル ページに追加できます。ロゴを追加した後は、異なる言語およびロケール用にローカライズ版のロゴを追加することもできます。詳細については、「[サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)」を参照してください。
-- **グループ ベースのアプリケーション アクセス** - グループを使用してユーザーをプロビジョニングし、何千もの SaaS アプリケーションにユーザー アクセスを一括して割り当てます。これらのグループは、クラウド内でのみ作成することも、オンプレミスの Active Directory から同期化されている既存のグループを利用することもできます。詳細については、「[Assign access for a group to a SaaS application in Azure AD (Azure AD で SaaS アプリケーションへのアクセスをグループに割り当てる)](active-directory-accessmanagement-group-saasapps.md)」を参照してください。
-- **セルフ サービスのパスワード リセット** - Azure では、ディレクトリ管理者は常にパスワードをリセットできます。Azure Active Directory Basic では、ディレクトリ内のすべてのユーザーは Office 365 と同じサインイン エクスペリエンスを使用してパスワードをリセットできるので、ユーザーがパスワードを忘れてヘルプデスクに問い合わせることが減ります。詳細については、「[任意の場所からのパスワードの管理](active-directory-passwords.md)」をご覧ください。
-- **99.9% のエンタープライズ SLA** - Azure Active Directory Basic サービスでは 99.9% 以上の可用性が保証されます。
-- [**オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法**](active-directory-application-proxy-get-started.md) - Azure Active Directory を使用して、クラウドから SharePoint や Exchange/OWA などのオンプレミス アプリケーションに安全にアクセスできます。
-
-## Azure Active Directory Premium の機能
-
-Active Directory Premium Edition は、Azure Active Directory の有料プランであり、Free エディションと Basic エディションのすべての機能に加えて、以下の機能が含まれています。
-
-- **セルフ サービスのグループ管理** - Azure Active Directory Premium では、グループの作成、他のグループへのアクセスの要求、他のユーザーが要求を承認できるようにグループの所有権の委任、グループのメンバーシップの管理などを、ユーザーができるようにすることで、日常的なグループの管理が簡略化されます。
-
-    詳細については、「[Azure AD でのユーザーのセルフ サービス グループ管理](https://msdn.microsoft.com/library/azure/dn641267.aspx)」を参照してください。
-
-- **高度なセキュリティ レポートとアラート** - より高度な異常性を示す詳細なログおよび一貫性のないアクセス パターンのレポートを表示することにより、クラウド アプリケーションへのアクセスを監視および保護できます。高度なレポートは Machine Learning に基づいており、アクセスのセキュリティを強化して潜在的な脅威に対応するための新しい知見を得ることができます。
-
-    詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
-
-- **Multi-Factor Authentication** - Multi-Factor Authentication が Premium に含まれるようになり、オンプレミス アプリケーション (VPN、RADIUS など)、Azure、Microsoft Online Services (Office 365、Dynamics CRM Online など)、および Azure Active Directory と事前に統合されている MS 以外の多数のクラウド サービスに安全にアクセスできます。Azure Active Directory の ID に対する Multi-factor Authentication を有効にするだけで、ユーザーは次回サインイン時に追加検証の設定を求められます。
-
-    詳細については、「[Azure Multi-Factor Authentication とは](multi-factor-authentication.md)」を参照してください。
-
-- **Microsoft Identity Manager** - Premium には、ハイブリッド ID ソリューションの任意の組み合わせをサポートするためにオンプレミス ネットワーク内で MIM サーバー (および CAL) を使用する権限を付与するオプションがあります。これは、オンプレミスのディレクトリとデータベースを Azure Active Directory に直接同期する必要がある場合に便利なオプションです。使用できる MIM サーバーの数に制限はありませんが、MIM CAL は Azure Active Directory Premium ユーザー ライセンスの割り当てに基づいて許可されます。
-
-    詳細については、「[Microsoft Identity Manager](http://www.microsoft.com/ja-jp/server-cloud/products/microsoft-identity-manager/default.aspx)」参照してください。
-
-- **99.9% のエンタープライズ SLA** - Azure Active Directory Premium サービスでは 99.9% 以上の可用性が保証されます。
-
-    詳細については、「[Active Directory Premium の SLA](http://azure.microsoft.com/support/legal/sla/)」を参照してください。
-
-- **ライトバック機能付きパスワード リセット** - セルフ サービスのパスワード リセットはオンプレミス ディレクトリにライトバックできます。
-
-- [Azure Active Directory Connect Health](active-directory-aadconnect-health.md): オンプレミスの Active Directory インフラストラクチャで正常性を監視し、使用状況の分析を取得します。
+<br>
 
 
 
-## Free、Basic、Premium エディションの比較
 
-<br>そのエディションで利用可能: ![チェック リスト](./media/active-directory-editions/ic195031.png)
+| 機能の種類| 特徴| Free エディション| Basic エディション| Premium エディション |
+| --- | --- | --- | --- | --- |
+| **共通機能**| サービスとしてのディレクトリ| ![○][12] 最大 500,000 ユーザー [1]| ![○][12] オブジェクトの制限なし| ![○][12] オブジェクトの制限なし|
+| | [UI または Windows PowerShell コマンドレットを使用するユーザーとグループの管理](active-directory-administer.md)| ![○][12]| ![○][12]| ![○][12]|
+| | [デバイス登録](active-directory-conditional-access-device-registration-overview.md)| ![○][12]| ![○][12]| ![○][12]|
+| | [SaaS アプリケーションとカスタム アプリケーションへの SSO ベースのユーザー アクセスのためのアクセス パネル ポータル](active-directory-saas-access-panel-introduction.md)| ![○][12] ユーザーごとに最大 10 個のアプリケーション [2]| ![○][12] ユーザーごとに最大 1 個のアプリケーション [2]| ![○][12] アプリケーションの制限なし|
+| | [ユーザー ベースのアプリケーション アクセス管理とプロビジョニング](active-directory-saas-app-provisioning.md)| ![○][12]| ![○][12]| ![○][12]|
+| | クラウド ユーザーに対するセルフ サービスのパスワード変更| ![○][12]| ![○][12]| ![○][12]|
+| | [Azure AD Connect - オンプレミスのディレクトリと Azure Active Directory 間の同期に使用](active-directory-aadconnect.md)| ![○][12]| ![○][12]| ![○][12]|
+| | [標準的なセキュリティ レポート](active-directory-view-access-usage-reports.md)| ![○][12]| ![○][12]| ![○][12]|
+| | [B2B コラボレーション (組織間のコラボレーション) (プレビュー)](active-directory-b2b-collaboration-overview.md)| ![○][12]| ![○][12]| ![○][12]|
+| **Premium および Basic の機能**| [サインインおよびアクセス パネル ページでの会社のロゴと色のカスタマイズ](active-directory-add-company-branding.md)| Office 365 サブスクリプションに含まれる [4]| ![○][12]| ![○][12]|
+| | [クラウド ユーザーに対するセルフ サービスのパスワード リセット](active-directory-passwords.md)| Office 365 サブスクリプションに含まれる [4]| ![○][12]| ![○][12]|
+| | [アプリケーション プロキシ: オンプレミスの Web アプリケーションに対するセキュリティで保護されたリモート アクセスと SSO](active-directory-application-proxy-get-started.md)| | ![○][12]| ![○][12]|
+| | [グループ ベースのアプリケーション アクセス管理とプロビジョニング](active-directory-accessmanagement-group-saasapps.md)| | ![○][12]| ![○][12]|
+| | [高可用性 SLA アップタイム (99.9%)](https://azure.microsoft.com/ja-JP/support/legal/sla/)| Microsoft Online Services SLA [5]| ![○][12]| ![○][12]|
+| **Premium のみの機能**| [高度なアプリケーション使用状況レポート](active-directory-view-access-usage-reports.md)| | | ![○][12]|
+| | [クラウド ユーザーに対するセルフ サービスのグループ管理](Self-service group management for users in Azure AD)| | | ![○][12]|
+| | [オンプレミスへのライトバックを備えたセルフ サービスのパスワード リセット](active-directory-passwords-getting-started.md/#enable-users-to-reset-or-change-their-ad-passwords)| | | ![○][12]|
+| | [Microsoft Identity Manager (MIM) ユーザー ライセンス - オンプレミスの ID とアクセスの管理用](http://www.microsoft.com/ja-JP/server-cloud/products/microsoft-identity-manager/default.aspx)| | | ![○][12] [3]|
+| | [詳細な異常セキュリティ レポート (Machine Learning に基づく)](active-directory-view-access-usage-reports.md)| | | ![○][12]|
+| | [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)| | | ![○][12]|
+| | [クラウド ユーザー向けの Multi-factor Authentication サービス](multi-factor-authentication.md)| Office 365 サブスクリプションに含まれる [4]| | ![○][12]|
+| | [オンプレミス ユーザー向けの Multi-factor Authentication サーバー](multi-factor-authentication.md)| | | ![○][12]|
+| | オンプレミスの Active Directory インフラストラクチャの正常性を監視し、利用状況分析を取得する [Azure Active Directory Connect Health](active-directory-aadconnect-health.md)| | | ![○][12]|
 
 
-<table>
-	<tr>
-		<th>&#160;</th>
-		<th>特徴 </th>
-		<th>Free エディション </th>
-		<th>Basic エディション </th>
-		<th>Premium Edition </th>
-	</tr>
-	<tr>
-		<td rowspan="8">
-		<p>共通機能</p>
-		</td>
-		<td>
-		<p>サービスとしてのディレクトリ</p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /><br />
-		最大 500K のオブジェクト [1]</p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /><br />
-		オブジェクトの制限なし</p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /><br />
-		オブジェクトの制限なし</p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>UI または Windows PowerShell コマンドレットを使用するユーザーとグループの管理</p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>デバイス登録</p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>SaaS アプリケーションとカスタム アプリケーションへの SSO ベースのユーザー アクセスのためのアクセス パネル ポータル</p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /><br />
-		ユーザーごとに最大 10 個のアプリケーション [2]</p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /><br />
-		ユーザーごとに最大 10 個のアプリケーション [2]</p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /><br />
-		アプリケーションの制限なし</p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>ユーザー ベースのアプリケーション アクセス管理とプロビジョニング</p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>クラウド ユーザーに対するセルフ サービスのパスワード変更</p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>Azure AD Connect - オンプレミスのディレクトリと Azure Active Directory 間の同期に使用</p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>標準的なセキュリティ レポート</p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td rowspan="5">
-		<p>Premium および Basic の機能</p>
-		</td>
-		<td>
-		<p>高可用性 SLA アップタイム (99.9%)</p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>グループ ベースのアプリケーション アクセス管理とプロビジョニング</p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>サインインおよびアクセス パネル ページでの会社のロゴと色のカスタマイズ</p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>クラウド ユーザーに対するセルフ サービスのパスワード リセット</p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>アプリケーション プロキシ: オンプレミスの Web アプリケーションに対するセキュリティで保護されたリモート アクセスと SSO</p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td rowspan="9">
-		<p>Premium のみの機能</p>
-		</td>
-		<td>
-		<p>高度なアプリケーション使用状況レポート</p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>クラウド ユーザーに対するセルフ サービスのグループ管理</p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>オンプレミスへのライトバックを備えたセルフ サービスのパスワード リセット</p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>Microsoft Identity Manager (MIM) ユーザー ライセンス - オンプレミスの ID とアクセスの管理用</p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /> [3]</p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>詳細な異常セキュリティ レポート (Machine Learning に基づく)</p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>
-		<a href="http://channel9.msdn.com/Series/EMS/Azure-Cloud-App-Discovery">Cloud App Discovery</a> </p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>クラウド ユーザー向けの Multi-factor Authentication サービス</p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>オンプレミス ユーザー向けの Multi-factor Authentication サーバー</p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<p>
-		オンプレミスの Active Directory インフラストラクチャの正常性を監視し、利用状況分析を取得する <a href="https://msdn.microsoft.com/ja-jp/library/azure/dn906722.aspx">Azure Active Directory Connect Health</a></p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p></p>
-		</td>
-		<td>
-		<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img id="2b05dce3-938f-4168-9b8f-1f4398cbdb9b" alt="チェックリスト" src="./media/active-directory-editions/ic195031.png" title="チェックリスト" xmlns="" /></p>
-		</td>
-	</tr>
-</table>
 
 
 [1] ディレクトリ サービスとして Azure Active Directory を利用する Office 365、Microsoft Intune、その他の Microsoft オンライン サービスには、500 K オブジェクトの制限は適用されません。
@@ -417,37 +85,21 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 
 [3] Microsoft Identity Manager サーバー ソフトウェアの使用権は、Windows Server ライセンス (任意のエディション) と共に付与されます。Microsoft Identity Manager は Windows Server オペレーティング システム上で実行されるので、サーバーで Windows Server の有効なライセンス版が実行されていれば、そのサーバーに Microsoft Identity Manager をインストールして使用できます。Microsoft Identity Manager サーバーに他の個別のライセンスは不要です。
 
+[4] Office 365 に含まれる Azure AD の有料機能は、Office 365 アプリケーションにアクセスするときのみ使用できるように制限されています。
 
-
-<br> <br>
-
-
-
+[5] Microsoft の各オンライン ビジネス サービス、Office 365、Microsoft Intune、その他、ディレクトリ サービスに Azure Active Directory を使用するすべての Microsoft オンライン サービスに、Azure Active Directory の使用にも適用される独自のサービス SLA が付随しています。詳細については、[Microsoft online services SLA](https://gallery.technet.microsoft.com/online-SLA-ea09109e) に関するページを参照してください。
 
 
 
 
-
-
-## 現時点でパブリック プレビュー段階の機能
-
-以下の機能は、現在パブリック プレビュー段階であり、間もなく追加される予定です。
-
-- [管理単位](https://msdn.microsoft.com/library/azure/dn832057.aspx): Azure Active Directory の新しいリソース コンテナーであり、管理アクセス許可をユーザーのサブセットに委任したり、ユーザーのサブセットにポリシーを適用したりする場合に使用できます。
-- Azure Active Directory に[独自の SaaS アプリケーション](https://msdn.microsoft.com/library/azure/dn893637.aspx)を追加します。
-- Facebook、Twitter、LinkedIn にパスワードをロールオーバーします。詳細については、[こちらの記事](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx)を参照してください。
-- 動的グループ メンバーシップ。詳細については、[こちらの記事](https://msdn.microsoft.com/library/azure/dn913807.aspx)を参照してください。
-- [条件付きアクセス](https://msdn.microsoft.com/library/azure/dn906877.aspx): アプリケーションごとの多要素認証です。
-- HR アプリケーション統合: Workday
-- Privileged Identity Management: Privileged Identity Management では、サービス レベル アグリーメントと法令遵守の要件を満たすために監視が強化されています。
-- アプリケーションのセルフ サービス要求: 管理者が SaaS アプリの一覧をユーザーに提供して、ユーザーはその一覧から使用するアプリを選択できます。アプリケーションは、すぐに使用できる場合も、承認後に使用できる場合もあります。
-- Azure Reporting API: Azure Active Directory のすべてのセキュリティ レポートのデータは、他の監視ツールや SIEM ツールで使用できます。
-
-
-## 参照トピック
+## 次の手順
 
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 - [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
 
-<!---HONumber=Oct15_HO3-->
+
+<!--Image references-->
+[12]: ./media/active-directory-editions/ic195031.png
+
+<!---HONumber=Oct15_HO4-->

@@ -207,20 +207,24 @@
 
 21. Data Factory の構成ページで、次の操作を行います。
 	1. **[Data Factory の新規作成]** オプションを選択します。
-	2. **[名前]** に「**VSTutorialFactory**」と入力します。
+	2. **[名前]** に「**VSTutorialFactory**」と入力します。  
+	
+		> [AZURE.NOTE]Azure Data Factor の名前はグローバルに一意にする必要があります。発行時にデータ ファクトリの名前に関するエラーが発生した場合は、そのデータ ファクトリの名前を変更して (yournameVSTutorialFactory など)、発行し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
+		> 
+		> データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 	3. **[サブスクリプション]** フィールドで適切なサブスクリプションを選択します。 
-	4. 作成する Data Factory の **[ソース グループ]** を選択します。 
-	5. Data Factory の **[リージョン]** を選択します。 
+	4. 作成するデータ ファクトリの**ソース グループ**を選択します。 
+	5. データ ファクトリの**リージョン**を選択します。 
 	6. **[次へ]** をクリックし、**[項目の発行]** ページに切り替えます。 
-23. **[項目の公開]** ページで、すべての Data Factory エンティティが選択されていることを確認し、**[次へ]** をクリックして **[概要]** ページに切り替えます。     
-24. 概要を確認し、**[次へ]** をクリックし、デプロイ プロセスを開始し、**[デプロイ ステータス]** を表示します。
-25. **[デプロイ ステータス]** ページに、デプロイ プロセスのステータスが表示されます。デプロイが完了したら、[完了] をクリックします。 
+23. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、**[次へ]** をクリックして **[概要]** ページに切り替えます。     
+24. 概要を確認し、**[次へ]** をクリックし、デプロイメント プロセスを開始し、**[デプロイ ステータス]** を表示します。
+25. **[デプロイ ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。デプロイメントが完了したら、[完了] をクリックします。 
 
 
 ## サーバー エクスプローラーを使用して Data Factory のエンティティを確認する
 
 1. **Visual Studio** のメニューで **[ビュー]** をクリックし、**[サーバー エクスプローラー]** をクリックします。
-2. [サーバー エクスプローラー] ウィンドウで、**[Azure]** を展開し、**[Data Factory]** を展開します。**[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力して **[続行]** をクリックします。**パスワード**を入力し、**[サインイン]** をクリックします。Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。**[Data Factory タスク リスト]** ウィンドウで、この操作のステータスを確認できます。![Server Explorer](./media/data-factory-get-started-using-vs/server-explorer.png)
+2. [サーバー エクスプローラー] ウィンドウで、**[Azure]** を展開し、**[Data Factory]** を展開します。**[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力して **[続行]** をクリックします。**パスワード**を入力し、**[サインイン]** をクリックします。Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。**[Data Factory タスク リスト]** ウィンドウで、この操作のステータスを確認します。![Server Explorer](./media/data-factory-get-started-using-vs/server-explorer.png)
 3. データ ファクトリを右クリックし、[Data Factory を新しいプロジェクトにエクスポートする] を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。![Data Factory の Visual Studio プロジェクトへのエクスポート](./media/data-factory-get-started-using-vs/export-data-factory-menu.png)  
 
 ## Visual Studio の Data Factory ツールを更新する
@@ -230,10 +234,10 @@ Visual Studio の Azure Data Factory ツールを更新するには、次のよ�
 2. 左ウィンドウで **[更新]** を選択し、**[Visual Studio ギャラリー]** を選択します。
 4. **[Visual Studio の Azure Data Factory ツール]** を選択して、**[更新]** をクリックします。このエントリが表示されない場合は、ツールは既に最新バージョンです。 
 
-Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-get-started-using-editor.md#MonitorDataSetsAndPipeline)に関する記事を参照してください。
+Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、「[データセットとパイプラインを監視する](data-factory-get-started-using-editor.md#MonitorDataSetsAndPipeline)」を参照してください。
 
 
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-get-started-using-vs.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-get-started-using-vs.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

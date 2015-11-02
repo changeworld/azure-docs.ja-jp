@@ -257,6 +257,8 @@ StorSimple デバイスで Update 1 を実行している場合、次の診断�
 
 `Test-Connection` コマンドレットを使用すると、StorSimple デバイスを外部ネットワークに接続できるかどうかを確認できます。セットアップ ウィザードですべてのネットワーク パラメーター (DNS など) が正しく構成されている場合は、`Test-Connection` コマンドレットを使用して、outlook.com など、ネットワークの外部の既知のアドレスに ping を実行できます。
 
+このコマンドレットでの接続の問題のトラブルシューティングを行うには、ping を有効にする必要があります。
+
 `Test-Connection` コマンドレットの次の出力サンプルをご覧ください。
 
 > [AZURE.NOTE]最初のサンプルでは、デバイスで DNS が正しく構成されていません。2 番目のサンプルでは、DNS が正しく構成されています。
@@ -302,7 +304,7 @@ StorSimple Manager サービスに既に接続され、登録されているデ�
    - ErrorCode.CiSApplianceAgentNotOnline
    - ErrorCode.CisPowershellScriptHcsError – Get-ClusterResource を実行したときに例外が発生したことを示します。
 
-4. アクセス制御サービス (ACS) トークンを確認します。Web の例外がスローされた場合は、ゲートウェイの問題が発生した、プロキシ認証が行われなかった、DNS が正しくない、認証に失敗した、などの原因が考えられます。次のエラーが表示されることがあります。
+4. Access Control Service (ACS) トークンを確認します。Web の例外がスローされた場合は、ゲートウェイの問題が発生した、プロキシ認証が行われなかった、DNS が正しくない、認証に失敗した、などの原因が考えられます。次のエラーが表示されることがあります。
 
    - ErrorCode.CiSApplianceGateway – HttpStatusCode.BadGateway 例外を示します。名前解決サービスがホスト名を解決できませんでした。 
    - ErrorCode.CiSApplianceProxy – HttpStatusCode.ProxyAuthenticationRequired 例外 (HTTP ステータス コード 407) を示します。クライアントがプロキシ サーバーで認証できませんでした。 
@@ -513,7 +515,7 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
        
       Controller0>
  
-## ステップ バイ ステップのトラブルシューティングの例
+## StorSimple のステップ バイ ステップのトラブルシューティングの例
 
 次の例では、StorSimple デプロイメントのステップ バイ ステップのトラブルシューティングを示します。この例では、ネットワーク設定または DNS 名に誤りがあるという内容のエラー メッセージが表示されてデバイスの登録に失敗する、というシナリオを取り上げています。
 
@@ -568,11 +570,11 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
 9. 以上の手順で問題を解決できない場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
 
 ## 次のステップ
-[運用デバイスのトラブルシューティングの方法](storsimple-troubleshoot-operational-device.md)
+[運用デバイスのトラブルシューティングの方法](storsimple-troubleshoot-operational-device.md)。
 
 <!--Link references-->
 
 [1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
 [2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

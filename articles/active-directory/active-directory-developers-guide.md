@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/02/2015"
+   ms.date="10/16/2015"
    ms.author="mbaldwin"/>
 
 
@@ -46,9 +46,9 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 ### Web アプリケーション クイック スタート ガイド
 
-|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md)|[![JavaScript](./media/active-directory-developers-guide/javascript.png)](active-directory-devquickstarts-angular.md)|[![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs)
+|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md)|[![JavaScript](./media/active-directory-developers-guide/javascript.png)](active-directory-devquickstarts-angular.md)|[![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs.md)
 |:--:|:--:|:--:|
-|[.NET](active-directory-devquickstarts-webapp-dotnet.md)|[Javascript](active-directory-devquickstarts-angular.md)|[Node.JS](active-directory-devquickstarts-openidconnect-nodejs)
+|[.NET](active-directory-devquickstarts-webapp-dotnet.md)|[Javascript](active-directory-devquickstarts-angular.md)|[Node.JS](active-directory-devquickstarts-openidconnect-nodejs.md)
 
 ### Web API クイック スタート ガイド
 
@@ -137,4 +137,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

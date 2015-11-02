@@ -15,10 +15,10 @@
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 	- [Salesforce を統合する方法](active-directory-saas-salesforce-tutorial.md)
 	- [Google Apps を統合する方法](active-directory-saas-google-apps-tutorial.md)
-	- [Box を統合する方法](https://msdn.microsoft.com/library/azure/dn308589.aspx)
-	- [ServiceNow を統合する方法](https://msdn.microsoft.com/library/azure/dn510971.aspx)
-	- [Dropbox for Business を統合する方法](https://msdn.microsoft.com/library/azure/dn510978.aspx)
-	- [Workday を統合する方法](http://go.microsoft.com/fwlink/?LinkId=690250) 
+	- [Box を統合する方法](active-directory-saas-box-tutorial.md)
+	- [ServiceNow を統合する方法](active-directory-saas-servicenow-tutorial.md)
+	- [Dropbox for Business を統合する方法](active-directory-saas-dropboxforbusiness-tutorial.md)
+	- [Workday を統合する方法](active-directory-saas-workday-tutorial.md) 
 	- [その他のSaaS アプリケーション用チュートリアル](active-directory-saas-tutorial-list.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -19,6 +19,7 @@
 
 # Azure 用の Ubuntu 仮想マシンの準備
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 ##前提条件##
 
@@ -118,4 +119,4 @@ Ubuntu HardWare Enablement (HWE) カーネル
 - [http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html](http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html)
 - [http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html](http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

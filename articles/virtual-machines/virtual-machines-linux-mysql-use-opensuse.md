@@ -21,6 +21,12 @@
 
 [MySQL][MySQL] は広く普及しているオープン ソースの SQL Database です。このチュートリアルでは、OpenSUSE Linux を実行する仮想マシンを作成してから、MySQL をインストールする方法を説明します。
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
+
+<br>
+
+
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
 ## OpenSUSE Linux を実行する仮想マシンの作成
@@ -38,4 +44,4 @@ MySQL の詳細については、[MySQL のドキュメント][MySQLDocs]を参�
 [MySQL]: http://www.mysql.com
 [AzurePortal]: http://manage.windowsazure.com
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

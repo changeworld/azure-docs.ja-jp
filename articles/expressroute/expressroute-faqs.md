@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/02/2015"
+   ms.date="10/20/2015"
    ms.author="cherylmc"/>
 
 # ExpressRoute の FAQ
@@ -25,13 +25,13 @@ ExpressRoute は、Microsoft のデータセンターとオンプレミスや共
 ExpressRoute 接続はパブリックなインターネットを経由しないため、インターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も一貫して短く、高速です。オンプレミスのデバイスと Azure の間のデータ転送に ExpressRoute 接続を使用することで、大きなコスト上のメリットが得られる場合があります。
 
 ### ExpressRoute でサポートされる Microsoft クラウド サービスはどれですか。
-現時点では、ほとんどの Microsoft Azure サービスが ExpressRoute でサポートされています。また、Office 365 サービスに対する ExpressRoute のサポートも近く発表する予定です。一般公開に関する最新情報をチェックしてください。
+現時点では、Office 365 を含むほとんどの Microsoft Azure サービスが ExpressRoute でサポートされています。一般公開に関する最新情報をチェックしてください。
 
 ### このサービスはどこで使用できますか。
 サービスの場所と提供状況については、[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページを参照してください。
 
 ### ExpressRoute のパートナー通信会社のいずれとも契約していない場合は、どのようにして ExpressRoute を使用して Microsoft に接続できますか。
-地域の通信会社と地上イーサネット接続を選択して、Exchange プロバイダーの所在地のいずれかに接続します。この Exchange プロバイダーの所在地で Microsoft とピアリングできます。「[ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」の最後のセクションで、ご利用のネットワーク プロバイダーが Exchange の提供地域のいずれかに存在するかどうかを確認してください。存在すれば、Exchange プロバイダーを通じて ExpressRoute 回線を Azure に接続するように依頼できます。
+地域の通信会社と地上イーサネット接続を選択して、Exchange プロバイダーの所在地のいずれかに接続します。その後、このプロバイダーの所在地で Microsoft とピアリングできます。「[ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」の最後のセクションで、サービス プロバイダーが Exchange の提供地域のいずれかに存在するかどうかを確認してください。存在すれば、サービス プロバイダーを通じて ExpressRoute 回線を Azure に接続するように依頼できます。
 
 ### ExpressRoute の料金はいくらですか。
 料金情報については、「[ExpressRoute 料金](http://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
@@ -53,6 +53,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 
 - 仮想ネットワークにデプロイされている Virtual Machines と Cloud Services への接続は、プライベート ピアリング パス経由でサポートされます。
 - Azure Websites は、パブリック ピアリング パス経由でサポートされます。
+- Office 365 は、Microsoft ピアリング パス経由でサポートされます。
 - その他のサービスには、パブリック ピアリング パス経由でアクセスできます。ただし、次のような例外があります。
 
 	**次のサービスはサポートされません。**
@@ -69,10 +70,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 ### ExpressRoute でサポートされる接続速度はどれくらいですか。
 サポートされる帯域幅:
 
-|**プロバイダー**|**帯域幅**|
-|---|---|
-|**ネットワーク プロバイダー**|10 Mbps、50 Mbps、100 Mbps、500 Mbps、1 Gbps|
-|**Exchange プロバイダー**|200 Mbps、500 Mbps、1 Gbps、10 Gbps|
+|50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、2 Gbps、5 Gbps、10 Gbps|
 
 ### どのサービス プロバイダーを使用できますか。
 サービス プロバイダーとサービスの場所の一覧については、[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページを参照してください。
@@ -89,7 +87,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 クロス接続の一方に障害が発生しても、接続が失われることはありません。ネットワークの負荷に対応できる冗長接続が用意されています。さらに、耐障害性を実現するために、複数の回線を別のピアリング場所に作成することもできます。
 
 ### このサービスを機能させるには、両方のリンクを構成する必要がありますか。
-ネットワーク サービス プロバイダー経由で接続している場合は、そのプロバイダーがお客様に代わって冗長リンクを構成します。既に EXP と同じ場所にいる場合は、EXP クラウド エクスチェンジ プラットフォームへの 2 本の LAN リンクを構成する必要があります。プライベート データセンターから単一の WAN リンク経由で EXP に接続する場合は、独自のルートの WAN リンクを EXP で終結させた後、EXP クラウド エクスチェンジ プラットフォームへの 2 本のリンクを構成する必要があります。
+レイヤー 3 サービスを提供するパートナー経由で接続している場合は、そのパートナーがお客様に代わって冗長リンクを構成します。ただし、クラウド エクスチェンジ プロバイダーと同じ場所にいる場合は、クラウド エクスチェンジ プラットフォームへの 2 本の LAN リンクを構成する必要があります。プライベート データセンターから単一の WAN リンク経由でクラウド プロバイダーに接続する場合は、独自のルーターの WAN リンクを終結させてから、クラウド エクスチェンジ プラットフォームへの 2 本の LAN リンクを構成する必要があります。
 
 ### 自社の VLAN を、ExpressRoute を使用して Azure に拡張することはできますか。
 いいえ。Azure へのレイヤー 2 接続の拡張はサポートされません。
@@ -104,14 +102,10 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 基本的な手順の概略は次のとおりです。
 
 - ExpressRoute 回線を確立し、サービス プロバイダーに依頼してその回線を有効にします。
-- プライベート ピアリング用に BGP を構成します (Exchange プロバイダーを使用している場合)。
+- お客様またはプロバイダーは、BGP ピアリングを構成する必要があります。
 - 仮想ネットワークを ExpressRoute 回線に接続します。
 
-次のチュートリアルが役立ちます。
-
-- [ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)。
-- [Exchange プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-exps.md)。
-- [ExpressRoute 用の仮想ネットワークとゲートウェイの構成](expressroute-configuring-vnet-gateway.md)
+詳細については、「[回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー](expressroute-workflows.md)」を参照してください。
 
 ### 当社の ExpressRoute 回線に接続境界はありますか。
 はい。[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページに、ExpressRoute 回線の接続境界に関する概要が記載されています。ExpressRoute 回線の接続は、1 つの地理的リージョンに制限されます。ExpressRoute Premium 機能を有効にすると、地理的リージョンを越えて接続を拡張できます。
@@ -189,25 +183,17 @@ ExpressRoute Premium は、次に示す機能で構成されたサービスで�
 ### ExpressRoute Premium を有効にすると、どれくらいの VNET を ExpressRoute 回線に接続できますか。
 ExpressRoute 回線に接続できる VNET 数の上限の増加分は、次の表のとおりです。既定の上限は 10 です。
 
-**NSP で作成する回線の上限**
+**回線の制限**
 
 | **回線のサイズ** | **既定で設定される VNET リンクの数** | **ExpressRoute Premium の VNET リンクの数** |
 |--------------|----------------------------------------|-----------------------------------------------|
-| 10 Mbps | 10 | サポートされていません |
-| 50 Mbps | 10 | 20 |
-| 100 Mbps | 10 | 25 |
-| 500 Mbps | 10 | 40 |
-| 1 Gbps | 10 | 50
-|
-
-
-**EXP で作成する回線の上限**
-
-| **回線のサイズ** | **既定で設定される VNET リンクの数** | **ExpressRoute Premium の VNET リンクの数** |
-|--------------|-----------------------------------|------------------------------------------------|
+| 50 Mbps | 10 | サポートされていません |
+| 100 Mbps | 10 | 20 |
 | 200 Mbps | 10 | 25 |
 | 500 Mbps | 10 | 40 |
 | 1 Gbps | 10 | 50 |
+| 2 Gbps | 10 | 60 |
+| 5 Gbps | 10 | 75 |
 | 10 Gbps | 10 | 100 |
 
 
@@ -227,10 +213,6 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 ### ExpressRoute Premium の料金は、標準の ExpressRoute 料金に追加して支払うのですか。
 はい。ExpressRoute Premium 料金は、ExpressRoute 回線の料金と接続プロバイダーに必要な料金に追加する形で適用されます。
 
-### ExpressRoute Premium は EXP モデルと NSP モデルの両方で機能するのですか。
-はい。ExpressRoute Premium は EXP と NSP のどちらを経由して接続されている ExpressRoute 回線にも適用できます。
-
-
 ## ExpressRoute と Office 365
 
 ### Office 365 サービスに接続する ExpressRoute 回線はどのようにして作成しますか。
@@ -238,18 +220,10 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 1. 「[ExpressRoute の前提条件](expressroute-prerequisites.md)」ページを参照して、要件を満たしていることを確認します。
 2. [ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページでサービス プロバイダーとサービスの場所の一覧を参照し、接続ニーズが満たされることを確認します。
 3. 「[Office 365 のネットワーク計画とパフォーマンスのチューニング](http://aka.ms/tune/)」を参照して、容量の要件を計画します。
-4. 以下のワークフローに示されている手順に従って、接続を設定します。
-
-	- [ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)。
-	- [Exchange プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-exps.md)。
+4. 以下のワークフローに示されている手順に従って、接続を設定します。[回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー](expressroute-workflows.md)。
 
 ### 既存の ExpressRoute 回線で Office 365 サービスへの接続をサポートできますか。
-はい。既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。Office 365 サービスに接続するのに十分な容量があることを確認してください。[Office 365 のネットワーク プランニングとパフォーマンス チューニング](http://aka.ms/tune/)に関するページが、接続ニーズを計画するのに役立ちます。
-
-次のチュートリアルが役立ちます。
-
-- [ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)。
-- [Exchange プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-exps.md)。
+はい。既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。Office 365 サービスに接続するのに十分な容量があることを確認してください。[Office 365 のネットワーク プランニングとパフォーマンス チューニング](http://aka.ms/tune/)に関するページが、接続ニーズを計画するのに役立ちます。「[ExpressRoute 回線の作成と変更](expressroute-howto-circuit-classic.md)」も参照してください。
 
 ### ExpressRoute 接続経由でアクセスできる Office 365 のサービスはどれですか。
 
@@ -280,11 +254,8 @@ ExpressRoute 経由で Office 365 に接続するのに追加コストはかか�
 ### ExpressRoute for Office 365 はどのリージョンでサポートされていますか。
 ExpressRoute がサポートされているパートナーと地域の一覧については、[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページを参照してください。
 
-### Office 365 サービスへの接続に、NSP と EXP を使用できますか。
-NSP 経由と EXP 経由の両方で Office 365 サービスへの接続がサポートされています。サポートされているパートナーと地域の一覧については、[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページを参照してください。
-
 ### 自社で ExpressRoute が構成されている場合でも、インターネット経由で Office 365 にアクセスできますか。
 はい。自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

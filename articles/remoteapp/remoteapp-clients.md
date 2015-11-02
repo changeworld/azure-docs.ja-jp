@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="09/09/2015"
+    ms.date="10/10/2015"
     ms.author="elizapo" />
 
 
@@ -28,11 +28,10 @@ Azure RemoteApp の優れた点の 1 つは、どのデバイスからでもア�
 
 デバイスがこれらのいずれかのオペレーティング システムを実行している場合は、次の手順を使用して RemoteApp にアクセスできます。
 
- - Windows 10 プレビュー
+ - Windows 10 
  - Windows 8.1
  - Windows 8
  - Windows 7 Service Pack 1
- - Windows RT
  - Windows Phone 8.1
  - iOS
  - Mac OS X
@@ -79,7 +78,7 @@ Google Play ストアから、Microsoft リモート デスクトップ アプ�
 
 	![フィードによる接続センター](./media/remoteapp-clients/Android5.png)
 
-6. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**「無料試用版を試す」** をタップします。
+6. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**[無料試用版を試す]** をタップします。
 
 	![デモ フィードのプロンプト](./media/remoteapp-clients/Android6.png)
 
@@ -107,7 +106,7 @@ Google Play ストアから、Microsoft リモート デスクトップ アプ�
 
 	![フィードによる接続センター](./media/remoteapp-clients/IOS4.png)
 
-5. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**「無料試用版を試す」** をタップします。
+5. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**[無料試用版を試す]** をタップします。
 
 	![デモ フィードのプロンプト](./media/remoteapp-clients/IOS5.png)
 
@@ -139,7 +138,7 @@ Google Play ストアから、Microsoft リモート デスクトップ アプ�
 
 	![フィードによる接続センター](./media/remoteapp-clients/Mac5.png)
 
-6. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**「無料試用版を試す」** をタップします。
+6. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**[無料試用版を試す]** をタップします。
 
 	![デモ フィードのプロンプト](./media/remoteapp-clients/Mac6.png)
 
@@ -208,4 +207,4 @@ Windows Phone 8.1 ストアから、Microsoft リモート デスクトップ �
 	![Azure RemoteApp のデモ フィード](./media/remoteapp-clients/WinPhone8.png)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

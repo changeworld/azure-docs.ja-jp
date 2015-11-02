@@ -1,33 +1,33 @@
-<properties
-	pageTitle="しくみ: Azure AD でのパスワード管理 | Microsoft Azure"
-	description="ユーザーによるパスワードの登録、リセット、および変更、そして管理者によるオンプレミスの Active Directory パスワードの構成、レポート作成、および管理を含む、Azure AD でのパスワード管理について学習します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="asteen"
-	manager="kbrint"
+<properties 
+	pageTitle="しくみ: Azure AD でのパスワード管理 | Microsoft Azure" 
+	description="ユーザーによるパスワードの登録、リセット、および変更、そして管理者によるオンプレミスの Active Directory パスワードの構成、レポート作成、および管理を含む、Azure AD でのパスワード管理について学習します。" 
+	services="active-directory" 
+	documentationCenter="" 
+	authors="asteen" 
+	manager="kbrint" 
 	editor="billmath"/>
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/18/2015" 
+<tags 
+	ms.service="active-directory" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/08/2015" 
 	ms.author="asteen"/>
 
 # パスワード管理のしくみ
 Azure Active Directory でのパスワード管理は、以下に説明するいくつかの論理コンポーネントで構成されます。コンポーネントの詳細については、各リンクをクリックしてください。
 
-- [**パスワード管理の構成ポータル **](#password-management-configuration-portal) – 管理者は[ Azure 管理ポータル](https://manage.windowsazure.com)にある自分のディレクトリの [構成] タブから、テナント内のパスワード管理方法のさまざまな側面を制御できます。
+- [**パスワード管理の構成ポータル **](#password-management-configuration-portal) – 管理者は[ Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にある自分のディレクトリの [構成] タブから、テナント内のパスワード管理方法のさまざまな側面を制御できます。
 - [**ユーザー登録ポータル**](#user-registration-portal) – ユーザーはこの Web ポータルから、パスワード リセットのための自己登録ができます。
 - [**ユーザー パスワードのリセット ポータル**](#user-password-reset-portal) – ユーザーは、管理者の定めるパスワード リセット ポリシーに従っていくつかのチャレンジをクリアすることにより、自分のパスワードをリセットできます。
 - [**ユーザー パスワードの変更ポータル**](#user-password-change-portal) – ユーザーはこの Web ポータルを使用すると、古いパスワードを入力し、新しいパスワードを選択することにより、自分のパスワードをいつでも変更できます。
-- [**パスワード管理レポート**](#password-management-reports) – 管理者は[ Azure 管理ポータル](https://manage.windowsazure.com)にある自分のディレクトリの [レポート] タブの [活動レポート] から、テナント内のパスワードのリセットと登録のアクティビティを参照および分析できます
+- [**パスワード管理レポート**](#password-management-reports) – 管理者は[ Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にある自分のディレクトリの [レポート] タブの [活動レポート] から、テナント内のパスワードのリセットと登録のアクティビティを参照および分析できます
 - [**Azure AD Connect のパスワード ライトバック コンポーネント**](#password-writeback-component-of-azure-ad-connect) – 管理者は Azure AD Connect のインストール時に、必要に応じてパスワード ライトバック機能を有効にし、クラウドからのフェデレーション ユーザーまたはパスワード同期ユーザーのパスワード管理を有効化できます。
 
 ## パスワード管理の構成ポータル
-特定のディレクトリについて、[Azure 管理ポータル](https://manage.windowsazure.com)を使用してパスワード管理ポリシーを構成するには、ディレクトリの [**構成**] タブにある [**ユーザー パスワードのリセット ポリシー**] セクションに移動します。この構成ページでは、パスワードが組織内でどのように管理されるかを、以下をはじめとするさまざまな側面から制御できます。
+特定のディレクトリについて、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)を使用してパスワード管理ポリシーを構成するには、ディレクトリの [**構成**] タブにある [**ユーザー パスワードのリセット ポリシー**] セクションに移動します。この構成ページでは、パスワードが組織内でどのように管理されるかを、以下をはじめとするさまざまな側面から制御できます。
 
 - ディレクトリのユーザー全員に対してパスワードのリセットの有効と無効を切り替える
 - パスワードをリセットする前にユーザーがクリアする必要があるチャレンジの数 (1 つまたは 2 つ) を設定する
@@ -38,15 +38,16 @@ Azure Active Directory でのパスワード管理は、以下に説明するい
  - セキュリティの質問 (ナレッジ ベースの認証)
 - セキュリティの質問の認証方法 (セキュリティの質問が有効な場合のみ表示される) を使用するために、登録する必要がある質問の数を設定する
 - セキュリティの質問の認証方法 (セキュリティの質問が有効な場合のみ表示される) を使用するために、リセット時に指定する必要がある質問の数を設定する
-- セキュリティの質問の認証方法 (セキュリティの質問が有効な場合のみ表示される) を使用するために、ユーザーが選択して登録できるカスタムのセキュリティの質問を定義する
+- ユーザーがパスワード リセットに登録する際に使用する可能性がある事前に準備されたローカライズ済みのセキュリティに関する質問を使用する (セキュリティの質問が有効になっている場合にのみ表示される)
+- ユーザーがパスワード リセットに登録する際に使用する可能性があるカスタムのセキュリティに関する質問を定義する (セキュリティの質問が有効になっている場合にのみ表示される)
 - [http://myapps.microsoft.com](http://myapps.microsoft.com) のアプリケーション アクセス パネルへのアクセス時に、パスワード リセットの登録をユーザーに求める
 - 設定可能な日数が経過した後、以前登録したデータを再確認することをユーザーに求める (適用されている登録が有効な場合のみ表示される)
 - パスワードのリセットに際して問題が発生した場合に表示される、カスタムのヘルプデスクの電子メール アドレスまたは URL を指定する
 - パスワード ライトバック機能を有効化または無効化する (AAD Connect を使用してパスワード ライトバックがデプロイされている場合)
 - パスワード ライトバック エージェントの状態を表示する (AAD Connect を使用してパスワード ライトバックがデプロイされている場合)
-- パスワードがリセットされた場合のユーザーへの電子メール通知を有効化する ([Azure 管理ポータル](https://manage.windowsazure.com)の [**通知**] セクションで確認できる)
-- 管理者のパスワードを他の管理者がリセットした場合の管理者への電子メール通知を有効化する ([Azure 管理ポータル](https://manage.windowsazure.com)の [**通知**] セクション)
-- テナント ブランド化のカスタマイズ機能 ([Azure 管理ポータル](https://manage.windowsazure.com)の [**ディレクトリのプロパティ**] セクション) を使用して、ユーザー パスワードのリセット ポータルとパスワード リセットの電子メールを組織のロゴおよび名前によりブランド化する
+- パスワードがリセットされた場合のユーザーへの電子メール通知を有効化する ([Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の [**通知**] セクションで確認できる)
+- 管理者のパスワードを他の管理者がリセットした場合の管理者への電子メール通知を有効化する ([Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の [**通知**] セクション)
+- テナント ブランド化のカスタマイズ機能 ([Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の [**ディレクトリのプロパティ**] セクション) を使用して、ユーザー パスワードのリセット ポータルとパスワード リセットの電子メールを組織のロゴおよび名前によりブランド化する
 
 組織内のパスワード管理を構成する方法の詳細については、[概要: Azure AD でのパスワード管理](active-directory-passwords-getting-started.md)を参照してください。
 
@@ -82,7 +83,7 @@ Azure Active Directory でのパスワード管理は、以下に説明するい
 ユーザーが自分のオンプレミスの Active Directory パスワードを変更する方法の詳細については、[概要: Azure AD でのパスワード管理](active-directory-passwords-getting-started.md)を参照してください。
 
 ##パスワード管理レポート
-[**レポート**] タブに移動すると、[**アクティビティ ログ**] セクションに、[**パスワード リセット アクティビティ**] および [**パスワード リセット登録アクティビティ**] の 2 つのパスワード管理レポートが表示されます。これら 2 つのレポートを使用すると、組織内でパスワード リセットに登録しているユーザー、およびパスワード リセットを使用しているユーザーのビューを参照できます。[Azure 管理ポータル](https://manage.windowsazure.com)でのこれらのレポートの外観を示します。
+[**レポート**] タブに移動すると、[**アクティビティ ログ**] セクションに、[**パスワード リセット アクティビティ**] および [**パスワード リセット登録アクティビティ**] の 2 つのパスワード管理レポートが表示されます。これら 2 つのレポートを使用すると、組織内でパスワード リセットに登録しているユーザー、およびパスワード リセットを使用しているユーザーのビューを参照できます。[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)でのこれらのレポートの外観を示します。
 
   ![][006]
 
@@ -121,4 +122,4 @@ Azure AD Connect の詳細については、[Azure Active Directory Connect](act
 [006]: ./media/active-directory-passwords-how-it-works/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-how-it-works/007.jpg "Image_007.jpg"
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

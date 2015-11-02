@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/06/2015"
+	ms.date="10/15/2015"
 	ms.author="spelluru"/>
 
 # Azure PowerShell を使用した初めての Azure Data Factory パイプラインの作成
@@ -54,7 +54,9 @@
 
 		New-AzureDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name DataFactoryMyFirstPipelinePSH –Location "West US"
 
-	Azure Data Factory の名前はグローバルに一意にする必要があります。"**"DataFactoryMyFirstPipelinePSH" という名前のデータ ファクトリは使用できません**" というエラーが発生した場合は、名前を変更します (yournameADFTutorialDataFactoryPSH など)。このチュートリアルの手順の実行中に、この名前を ADFTutorialFactoryPSH の代わりに使用します。
+	> [AZURE.IMPORTANT]Azure Data Factory の名前はグローバルに一意にする必要があります。"**"DataFactoryMyFirstPipelinePSH" という名前のデータ ファクトリは使用できません**" というエラーが発生した場合は、名前を変更します (yournameADFTutorialDataFactoryPSH など)。このチュートリアルの手順の実行中に、この名前を ADFTutorialFactoryPSH の代わりに使用します。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
+	> 
+	> データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 
 以降の手順では、このチュートリアルで使用するリンクされたサービス、データセット、およびパイプラインを作成する方法を説明します。
 
@@ -75,7 +77,7 @@
 		    }
 		}
 
-	**accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピーおよび再生成](http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#view-copy-and-regenerate-storage-access-keys)」をご覧ください。
+	**accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピーおよび再生成](http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#view-copy-and-regenerate-storage-access-keys)」を参照してください。
 
 2.	Azure PowerShell で ADFGetStartedPSH フォルダーに切り替えます。
 3.	**New-AzureDataFactoryLinkedService** コマンドレットを使用して、リンクされたサービスを作成できます。このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、*ResourceGroupName* および *DataFactoryName* パラメーターの値を渡す必要があります。または、**Get-AzureDataFactory** を使用して **DataFactory** オブジェクトを取得すると、コマンドレットを実行するたびに *ResourceGroupName* と *DataFactoryName* を入力しなくてもオブジェクトを渡すことができます。**Get-AzureDataFactory** コマンドレットの出力を **$df** 変数に割り当てるには、次のコマンドを実行します。
@@ -263,9 +265,9 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 
 
 ## 次のステップ
-この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](./data-factory-get-started.md)」をご覧ください。
+この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](./data-factory-get-started.md)」を参照してください。
 
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-powershell.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-powershell.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

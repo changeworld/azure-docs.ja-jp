@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Windows デバイスの Application Insights のトラブルシューティング" 
-	description="トラブルシューティング ガイド、質問と回答" 
+	description="Windows デバイスの Application Insights に関するトラブルシューティング ガイドと質疑応答です。" 
 	services="application-insights" 
     documentationCenter="windows"
 	authors="alancameronwills" 
@@ -29,7 +29,7 @@
 * Check that you have an instrumentation key defined in the ApplicationInsights.config file, and that it is the same as the key in the Application Insights portal.キーを表示するには、概要ブレードで [Essentials] をクリックします。
 * アプリが[外向きのネットワーク アクセスを要求すること](https://msdn.microsoft.com/library/windows/apps/hh452752.aspx)を確認します。
 * エミュレーターまたはテスト デバイスと Application Insights ポータルの間にファイアウォールはありますか。 You might have to open TCP ports 80 and 443 for outgoing traffic to dc.services.visualstudio.com and f5.services.visualstudio.com.
-* In the Microsoft Azure start board, look at the service status map.アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
+* Microsoft Azure のスタート ボードで、サービス状態マップをご確認ください。アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
 
 
 #### データが表示されていたのに停止しました。
@@ -120,4 +120,4 @@ To help correlate events in the client and server, generate an operation id for 
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

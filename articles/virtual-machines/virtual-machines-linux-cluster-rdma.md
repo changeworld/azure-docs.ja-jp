@@ -52,7 +52,7 @@ ms.service="virtual-machines"
 
 *   **Azure CLI** - Azure CLI を[インストール](../xplat-cli-install.md)し、クライアント コンピューターから Azure サブスクリプションに接続するように[構成](../xplat-cli-connect.md)します。
 
-*   **Intel MPI** - クラスター用の Linux VM イメージのカスタマイズの一環として (この記事の後半の説明を参照)、Intel MPI Library 5 ランタイムを [Intel.com のサイト](https://software.intel.com/JA-JP/intel-mpi-library/)からダウンロードし、プロビジョニングする Azure Linux VM にインストールする必要があります。この準備をするために、Intel に登録した後、確認の電子メールに含まれる関連 Web ページへのリンクをクリックし、適切なバージョンの Intel MPI (.tgz ファイル) のダウンロード リンクをコピーします。この記事は、Intel MPI バージョン 5.0.3.048 に基づきます。
+*   **Intel MPI** - クラスター用の Linux VM イメージのカスタマイズの一環として (この記事の後半の説明を参照)、Intel MPI Library 5 ランタイムを [Intel.com のサイト](https://software.intel.com/ja-JP/intel-mpi-library/)からダウンロードし、プロビジョニングする Azure Linux VM にインストールする必要があります。この準備をするために、Intel に登録した後、確認の電子メールに含まれる関連 Web ページへのリンクをクリックし、適切なバージョンの Intel MPI (.tgz ファイル) のダウンロード リンクをコピーします。この記事は、Intel MPI バージョン 5.0.3.048 に基づきます。
 
 ### SLES 12 VM のプロビジョニング
 
@@ -146,7 +146,7 @@ VM のプロビジョニングの完了後、VM の外部 IP アドレス (ま�
     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
     ```
 
-    ~/.ssh ディレクトリにある、ssh\_config ファイルを編集 (存在しない場合は作成) します。Azure で使用するプライベート ネットワークの IP アドレスの範囲を指定します (この例では 10.32.0.0/16)。
+    ~/.ssh ディレクトリにある "config" ファイルを編集 (存在しない場合は作成) します。Azure で使用するプライベート ネットワークの IP アドレスの範囲を指定します (この例では 10.32.0.0/16)。
 
     ```
     host 10.32.0.*
@@ -368,6 +368,6 @@ cluster12
 
 * Linux クラスター上で、Linux MPI アプリケーションのデプロイと実行を試します。
 
-* Intel MPI のガイダンスについては、[Intel MPI Library のドキュメント](https://software.intel.com/JA-JP/articles/intel-mpi-library-documentation/)を参照してください。
+* Intel MPI のガイダンスについては、[Intel MPI Library のドキュメント](https://software.intel.com/ja-JP/articles/intel-mpi-library-documentation/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

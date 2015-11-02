@@ -14,13 +14,12 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/21/2015"
+	ms.date="10/20/2015"
 	ms.author="josephd"/>
 
 # 構成テーブルを使用してクロスプレミス仮想ネットワークを作成する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
- 
+[AZURE.INCLUDE [learn-about-deployment-models-classic-include](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャーのデプロイ モデル。
 
 このトピックでは、以下の構成テーブルのセットで先に指定した設定を使用してクロスプレミス仮想ネットワークを作成する手順について説明します。
 
@@ -70,4 +69,4 @@
 
 [Azure Virtual Network へのクロスプレミスのサイト間接続の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

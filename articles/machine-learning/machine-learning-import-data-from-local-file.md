@@ -1,7 +1,7 @@
 <properties
 	pageTitle="ローカル ファイルのデータを Machine Learning Studio にインポートする | Microsoft Azure"
 	description="ローカル ファイルのトレーニング データを Azure Machine Learning Studio にインポートする方法。"
-	keywords="import data,data format,data types,data sources,training data"
+	keywords="データのインポート、データ形式、データ型、データ ソース、トレーニング データ"
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
@@ -40,4 +40,4 @@
 
 データがアップロードされると、データセット モジュールに格納され、ワークスペース内のすべての実験で使用できるようになります。実験の編集中に、モジュール パレットの **[保存されたデータセット]** リストに、あらかじめ読み込まれているすべてのサンプル データセットやデータセットが表示されます。データ セットを別の分析と機械学習のために使用する場合、実験キャンバスのデータセットをドラッグ アンド ドロップできます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

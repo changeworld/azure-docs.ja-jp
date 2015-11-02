@@ -1,6 +1,6 @@
 <properties 
-pageTitle="Cloud Services でロール インスタンスの通信を有効化する | Microsoft Azure" 
-description="" 
+pageTitle="Cloud Services でのロールの通信 | Microsoft Azure" 
+description="Cloud Services のロール インスタンスには、外部または他のロール インスタンスとの通信用のエンドポイント (http、https、tcp、udp) を定義できます。" 
 services="cloud-services" 
 documentationCenter="" 
 authors="Thraka" 
@@ -359,4 +359,4 @@ namespace WorkerRole1
 ## 次のステップ
 Cloud Service [モデル](cloud-services-model-and-package.md)の詳細について参照できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

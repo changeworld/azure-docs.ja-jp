@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="エンコード占有ユニットの規模の設定方法" 
-	description="アカウントにプロビジョニングする [オンデマンド ストリーミング占有ユニット] および [エンコード占有ユニット] の数を指定することでメディア サービスの規模を設定する方法について説明します。" 
+	pageTitle="Azure ポータルを利用し、エンコード占有ユニットの規模を設定する方法" 
+	description="アカウントにプロビジョニングする [オンデマンド ストリーミング占有ユニット] および [エンコード占有ユニット] の数を指定することで Media Services の規模を設定する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,milangada" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015"
+	ms.date="10/15/2015"
 	ms.author="juliako"/>
 
 
-#エンコードの規模の設定方法
+#Azure ポータルを利用し、エンコードの規模を設定する方法
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-dotnet-encoding-units.md)
@@ -33,7 +33,7 @@ Media Services アカウントは、エンコード ジョブを処理する速�
 
 占有ユニットの種類とエンコード占有ユニットの数を変更するには、以下の手順に従います。
 
-1. [管理ポータル](https://manage.windowsazure.com/)で、**[メディア サービス]** をクリックします。次に、メディア サービスの名前をクリックします。
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
 
 2. **[エンコード]** ページを選択します。
 
@@ -69,4 +69,4 @@ AMS のラーニング パスについては、以下を参照してください
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

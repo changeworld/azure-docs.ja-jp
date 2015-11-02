@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="cloud-services"
+   ms.service="multiple"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -56,4 +56,4 @@ SQL Server 2012 で導入された AlwaysOn 可用性グループは、Azure Inf
 
 [バッチ処理層](https://gallery.technet.microsoft.com/Cloud-Platform-Integration-0bc3f8b1)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

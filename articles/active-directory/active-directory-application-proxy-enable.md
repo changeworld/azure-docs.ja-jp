@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD アプリケーション プロキシの有効化"
+	pageTitle="Azure AD アプリケーション プロキシの有効化 | Microsoft Azure"
 	description="Azure AD アプリケーション プロキシをセットアップする方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/12/2015"
+	ms.date="10/19/2015"
 	ms.author="rkarlin"/>
 
 # Azure AD アプリケーション プロキシの有効化
@@ -56,10 +56,7 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 1. 用意したサーバーで AADApplicationProxyConnectorInstaller.exe を実行します (「アプリケーション プロキシの前提条件」を参照してください)。
 2. ウィザードの指示に従ってインストールします。
 3. インストール時に、コネクタをアクティブなアプリケーション プロキシ アカウントに登録するよう求められます。
-<p>Azure AD グローバル管理者の資格情報を指定します。 
-- コネクタを登録する管理者が、アプリケーション プロキシ サービスを有効にしたディレクトリに存在することを確認します。たとえば、テナント ドメインが contoso.com の場合、管理者は admin@contoso.com またはそのドメイン上の他のいずれかのエイリアスであることが必要です。また、Azure AD テナントのグローバル管理者である必要があります。グローバル管理者のテナントは、Microsoft Azure の資格情報とは異なることがあります。
-- Azure AD コネクタをインストールするサーバーで [IE セキュリティ強化の構成] を [オン] に設定している場合、登録画面がブロックされることがあります。その場合は、エラー メッセージに示された指示に従って、アクセスを許可します。Internet Explorer のセキュリティ強化がオフであることを確認してください。
-- コネクタの登録が成功しなかった場合は、「アプリケーション プロキシのトラブルシューティング」を参照してください。
+<p>Azure AD グローバル管理者の資格情報を指定します。 - コネクタを登録する管理者が、アプリケーション プロキシ サービスを有効にしたディレクトリに存在することを確認します。たとえば、テナント ドメインが contoso.com の場合、管理者は admin@contoso.com またはそのドメイン上の他のいずれかのエイリアスであることが必要です。また、Azure AD テナントのグローバル管理者である必要があります。グローバル管理者のテナントは、Microsoft Azure の資格情報とは異なることがあります。- Azure AD コネクタをインストールするサーバーで [IE セキュリティ強化の構成] を **[オン]** に設定している場合、登録画面がブロックされることがあります。その場合は、エラー メッセージに示された指示に従って、アクセスを許可します。Internet Explorer のセキュリティ強化がオフであることを確認してください。- コネクタの登録が成功しなかった場合は、「アプリケーション プロキシのトラブルシューティング」を参照してください。
 
 4. インストールが完了したら、次に示す 2 つの新しいサービスがサーバーに追加されます。接続を可能にするコネクタ サービスと、定期的にコネクタの新しいバージョンをチェックし必要に応じてコネクタを更新する自動更新サービスです。インストール ウィンドウで、[完了] をクリックしてインストールを終了します。![アプリケーション プロキシ コネクタ サービス!](./media/active-directory-application-proxy-enable/app_proxy_services.png) <p>
 5. プリケーション プロキシを使用してアプリケーションを発行する準備がこれで整いました。
@@ -85,8 +82,8 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 
 ## その他のリソース
 
-* [Azure への組織としてのサインアップ](..sign-up-organization.md)
-* [Azure ID](..fundamentals-identity.md)
+* [Azure への組織としてのサインアップ](sign-up-organization.md)
+* [Azure ID](fundamentals-identity.md)
 * [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

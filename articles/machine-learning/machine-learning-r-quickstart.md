@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Machine Learning 向け R 言語のクイック スタート チュートリアル | Microsoft Azure"
 	description="この R プログラミング チュートリアルは、Azure Machine Learning Studio と R 言語を使った予測ソリューションの作成に必要な基本的な事柄を短期間で習得できるように作成されています。"
-	keywords="quickstart,r language,r programming language,r programming tutorial"
+	keywords="クイック スタート、r 言語、r プログラミング言語、r プログラミングのチュートリアル"
 	services="machine-learning"
 	documentationCenter=""
 	authors="Blackmist"
@@ -1284,7 +1284,7 @@ RStudio はドキュメントが非常に整っているため、この付録で
 
 この R プログラミングのチュートリアルでは、Azure Machine Learning Studio で、R 言語を使用するために必要な基本事項について説明します。R に精通していない場合、CRAN に 2 つの入門書が用意されています。
 
-- Emmanuel Paradis による『R for Beginners』 (http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) が初心者に適しています。。  
+- Emmanuel Paradis による『R for Beginners』 (http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) が初心者に適しています。  
 
 - W. N. Venables 他による『An Introduction to R』 (http://cran.r-project.org/doc/manuals/R-intro.html) は、少し詳しく説明しています。
 
@@ -1346,4 +1346,4 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

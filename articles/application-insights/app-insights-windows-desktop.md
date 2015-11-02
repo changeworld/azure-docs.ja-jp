@@ -62,11 +62,11 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
 
     * コア API パッケージ Microsoft.ApplicationInsights のみをインストールする場合は、コードにキーを設定する必要があります。たとえば、main() で次のように設定します。 
 
-     `TelemetryConfiguration.Active.InstrumentationKey = "`*your key*`";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "`*your key*`";`
 
     * その他のパッケージの 1 つをインストールした場合は、コードを使用してキーを設定するか、ApplicationInsights.config 内でキーを設定します。
  
-     `<InstrumentationKey>`*your key*`</InstrumentationKey>`
+    `<InstrumentationKey>`*your key*`</InstrumentationKey>`
 
 
 
@@ -299,4 +299,4 @@ namespace ConsoleApplication1
 [CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

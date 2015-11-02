@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="コード サンプル: Application Insights からエクスポートされたデータの解析" 
-	description="連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。" 
+	description="連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。データを SQL に保存します。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="mazharmicrosoft" 
@@ -543,4 +543,4 @@ Visual Studio で、ストレージ アカウントの接続文字列で worker 
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

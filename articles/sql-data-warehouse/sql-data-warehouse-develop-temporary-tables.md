@@ -3,7 +3,7 @@
    description="ソリューション開発のための、Azure SQL Data Warehouse での一時テーブルの使用に関するヒント。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="jrowlandjones"
+   authors="twounder"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="10/19/2015"
+   ms.author="twounder;JRJ@BigBangData.co.uk;barbkess"/>
 
 # SQL Data Warehouse の一時テーブル
 SQL Data Warehouse では、一時テーブルはセッション レベルで存在します。一時テーブルはローカル一時テーブルとして定義されます。SQL Server テーブルとは異なり、セッション内のどこからでもアクセスできます。
@@ -34,7 +34,7 @@ SQL Data Warehouse では、一時テーブルはセッション レベルで存
 ```
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
 (   @update_type    tinyint -- 1 default 2 fullscan 3 sample 4 resample
-,   @sample_pct     tinyint
+	,@sample_pct     tinyint
 )
 AS
 
@@ -49,9 +49,10 @@ BEGIN;
 END;
 
 CREATE TABLE #stats_ddl
-WITH    (   DISTRIBUTION = HASH([seq_nmbr])
-        ,   LOCATION     = USER_DB
-        )
+WITH
+(
+	DISTRIBUTION = HASH([seq_nmbr])
+)
 AS
 (
 SELECT
@@ -146,4 +147,4 @@ SQL Data Warehouse では、一時テーブルを実装するときに制限事�
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

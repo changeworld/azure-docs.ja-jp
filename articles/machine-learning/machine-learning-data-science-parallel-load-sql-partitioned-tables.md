@@ -2,9 +2,8 @@
 	pageTitle="SQL パーティション テーブルを使用した並列の一括データ インポート | Microsoft Azure" 
 	description="SQL パーティション テーブルを使用した並列の一括データ インポート" 
 	services="machine-learning" 
-	solutions="" 
 	documentationCenter="" 
-	authors="msolhab"
+	authors="bradsev"
 	manager="paulettm" 
 	editor="cgronlun" />
 
@@ -15,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="09/01/2015" 
-	ms.author="msolhab" />
+	ms.author="bradsev" />
 
 # SQL パーティション テーブルを使用した並列の一括データ インポート
 
@@ -180,9 +179,9 @@ SQL データベースへのビッグ データの読み込み/転送では、_�
 
  >[AZURE.NOTE]データを一括インポートする前に、インデックスを作成することもできます。一括インポートする前にインデックスを作成すると、データの読み込みが低下します。
 
-### 実行中の Advanced Analytics Process and Technology の例
+## 実行中の Advanced Analytics Process and Technology の例
 
-Advanced Analytics Process and Technology (ADAPT) とパブリック データセットを使用した完全なチュートリアルの例については、「[実行中の Advanced Analytics Process and Technology: SQL Sever の使用](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
+パブリック データセットを使用した Cortana Analytics Process のエンドツーエンドのチュートリアル例については、「[Cortana Analytics Process の活用: SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

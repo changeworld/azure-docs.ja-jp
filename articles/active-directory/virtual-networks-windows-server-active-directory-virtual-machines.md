@@ -1,11 +1,10 @@
 <properties 
-	pageTitle="Azure VM 上の Windows Server Active Directory" 
+	pageTitle="Azure VM 上の Windows Server Active Directory | Microsoft Azure" 
 	description="Azure 仮想マシンでは、Windows Server Active Directory Domain Services (AD DS) または Active Directory フェデレーション サービス (AD FS) を実行できます。" 
 	services="active-directory" 
 	documentationCenter="" 
 	authors="markusvi" 
-	manager="terrylan" 
-	editor="LisaToft"
+	manager="stevenpo" 
 	tags="azure-classic-portal"/>
 
 <tags 
@@ -14,18 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/23/2015" 
+	ms.date="10/20/2015" 
 	ms.author="markusvi"/>
 
 
 # Azure VM 上の Windows Server Active Directory
 
 
-このナビゲーション トピックには、Azure 仮想マシン (VM) に Windows Server Active Directory Domain Services (AD DS) または Active Directory フェデレーション サービス (AD FS) を配置する方法に関する他のトピックへのリンクが含まれています。
+このナビゲーション トピックには、Azure 仮想マシン (VM) に Windows Server Active Directory Domain Services (AD DS) または Active Directory フェデレーション サービス (AD FS) をデプロイする方法に関する他のトピックへのリンクが含まれています。
 
 ## 概念的なガイドライン
 
-- [Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx) 
+- [Azure Virtual Machines での Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx) 
 
 ## ビデオ
 
@@ -33,8 +32,8 @@
 
 ## 作業方法に関する記事
 
-- [Azure の仮想ネットワークでの Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)
-- [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-networks-install-replica-active-directory-domain-controller.md) 
+- [Azure Virtual Network での Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)
+- [Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-networks-install-replica-active-directory-domain-controller.md) 
 - [テスト用のハイブリッド クラウド環境の設定](../virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
 
@@ -48,4 +47,4 @@
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

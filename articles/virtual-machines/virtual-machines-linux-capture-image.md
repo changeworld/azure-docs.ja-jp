@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/16/2015"
+	ms.date="10/14/2015"
 	ms.author="dkshir"/>
 
 
@@ -95,9 +95,9 @@ Azure ではこのテンプレートをイメージとして扱い、**[イメ�
 
 [管理ポータル]: http://manage.windowsazure.com
 [Linux を実行する仮想マシンにログオンする方法]: virtual-machines-linux-how-to-log-on.md
-[Azure の仮想マシン イメージについて]: http://msdn.microsoft.com/library/azure/dn790290.aspx
-[カスタム仮想マシンの作成方法]: virtual-machines-create-custom.md
+[Azure の仮想マシン イメージについて]: virtual-machines-images.md
+[カスタム仮想マシンの作成方法]: virtual-machines-linux-create-custom.md
 [How to Attach a Data Disk to a Virtual Machine]: storage-windows-attach-disk.md
 [How to Create a Virtual Machine Running Linux (Linux を実行する仮想マシンの作成方法)]: virtual-machines-linux-tutorial.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

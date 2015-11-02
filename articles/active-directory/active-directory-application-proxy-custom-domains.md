@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD アプリケーション プロキシでのカスタム ドメインの使用"
+	pageTitle="Azure AD アプリケーション プロキシでのカスタム ドメインの使用 | Microsoft Azure"
 	description="Azure AD アプリケーション プロキシでカスタム ドメインを使用する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/07/2015"
+	ms.date="10/19/2015"
 	ms.author="rkarlin"/>
 
 # Azure AD アプリケーション プロキシでのカスタム ドメインの使用
@@ -50,7 +50,7 @@ Q: 既にアップロードされている証明書は、もう一度アップ�
 
 ## その他のリソース
 
-* [Azure への組織としてのサインアップ](..sign-up-organization.md)
-* [Azure ID](..fundamentals-identity.md)
+* [Azure への組織としてのサインアップ](sign-up-organization.md)
+* [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

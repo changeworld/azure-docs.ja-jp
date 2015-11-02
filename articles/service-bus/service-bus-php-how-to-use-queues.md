@@ -18,6 +18,8 @@
 
 # Service Bus キューの使用方法
 
+[AZURE.INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
+
 このガイドでは、Service Bus キューの使用方法について説明します。サンプルは PHP で記述され、[Azure SDK for PHP](../php-download-sdk.md) を利用しています。紹介するシナリオは、**キューの作成**、**メッセージの送受信**、**キューの削除**です。
 
 [AZURE.INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
@@ -198,13 +200,13 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 ## 次のステップ
 
-これで、Service Bus キューの基本を学習できました。詳細については、「[キュー、トピック、およびサブスクリプション][]」を参照してください。
+これで、Service Bus キューの基本を学習できました。詳細については、「[Service Bus キュー、トピック、およびサブスクリプション][]」をご覧ください。
 
 詳細については、[PHP デベロッパー センター](/develop/php/)も参照してください。
 
-[キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
+[Service Bus キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
 [require_once]: http://php.net/require_once
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

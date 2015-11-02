@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="DocumentDB のプログラミング: ストアド プロシージャ、データベース トリガー、UDF | Microsoft Azure" 
 	description="DocumentDB を使用して、ストアド プロシージャ、データベース トリガー、ユーザー定義関数 (UDF) を JavaScript で記述する方法について説明します。データベース プログラミングのヒントなどが得られます。" 
-	keywords="Database triggers, stored procedure, stored procedure, database program, sproc, documentdb, azure, Microsoft azure"
+	keywords="データベース トリガー, ストアド プロシージャ, ストアド プロシージャ, データベース プログラム, sproc, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	documentationCenter="" 
 	authors="aliuy" 
@@ -475,69 +475,9 @@ DocumentDB には、ドキュメントの操作によって実行またはトリ
 ## JavaScript 統合言語クエリ API
 DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の SDK では、SQL の知識がなくても、流れるような JavaScript インターフェイスで最適化されたクエリを実行できます。JavaScript クエリ API では、述語関数を連鎖可能な関数の呼び出しに渡すことでクエリをプログラミングできます。構文は ECMAScript5 のアレイ ビルトインや lodash のような人気の JavaScript ライブラリでおなじみのものです。クエリは JavaScript ランタイムで解析され、DocumentDB のインデックスで効率的に実行されます。
 
-> [AZURE.NOTE]`__` (二重下線) は `getContext().getCollection()` のエイリアスです。
-> <br/>
-> 言い換えると、`__` または `getContext().getCollection()` を利用し、JavaScript クエリ API にアクセスできます。
+> [AZURE.NOTE]`__` (二重下線) は `getContext().getCollection()` のエイリアスです。<br/> 言い換えると、`__` または `getContext().getCollection()` を利用し、JavaScript クエリ API にアクセスできます。
 
-サポートされる関数:
-<ul>
-<li>
-<b>chain() ... .value([callback] [, options])</b>
-<ul>
-<li>
-連鎖呼び出しを開始します。これは value() で終了しなければなりません。
-</li>
-</ul>
-</li>
-<li>
-<b>filter(predicateFunction [, options] [, callback])</b>
-<ul>
-<li>
-入力ドキュメントを結果セットに追加するか、除外する目的で真/偽を返す述語関数を利用し、入力を絞り込みます。この動作は SQL の WHERE 句に似ています。
-</li>
-</ul>
-</li>
-<li>
-<b>map(transformationFunction [, options] [, callback])</b>
-<ul>
-<li>
-各入力項目を JavaScript オブジェクトまたは値にマッピングする変換関数を所与としてプロジェクションを適用します。この動作は SQL の SELECT 句に似ています。
-</li>
-</ul>
-</li>
-<li>
-<b>pluck([propertyName] [, options] [, callback])</b>
-<ul>
-<li>
-これは各入力項目から 1 つのプロパティの値を抽出するマップのショートカットです。
-</li>
-</ul>
-</li>
-<li>
-<b>flatten([isShallow] [, options] [, callback])</b>
-<ul>
-<li>
-各入力項目の配列を結合し、1 つの配列に平坦化します。この動作は LINQ の SelectMany に似ています。
-</li>
-</ul>
-</li>
-<li>
-<b>sortBy([predicate] [, options] [, callback])</b>
-<ul>
-<li>
-与えられた述語を利用し、入力ドキュメントのストリームを昇順で並べ替え、ドキュメントの新しいセットを作ります。この動作は SQL の ORDER BY 句に似ています。
-</li>
-</ul>
-</li>
-<li>
-<b>sortByDescending([predicate] [, options] [, callback])</b>
-<ul>
-<li>
-与えられた述語を利用し、入力ドキュメントのストリームを降順で並べ替え、ドキュメントの新しいセットを作ります。この動作は SQL の ORDER BY x DESC 句に似ています。
-</li>
-</ul>
-</li>
-</ul>
+サポートされる関数: <ul> <li> <b>chain() ... .value([callback] [, options])</b> <ul> <li> 連鎖呼び出しを開始します。これは value() で終了しなければなりません。 </li> </ul> </li> <li> <b>filter(predicateFunction [, options] [, callback])</b> <ul> <li> 入力ドキュメントを結果セットに追加するか、除外する目的で真/偽を返す述語関数を利用し、入力を絞り込みます。この動作は SQL の WHERE 句に似ています。 </li> </ul> </li> <li> <b>map(transformationFunction [, options] [, callback])</b> <ul> <li> 各入力項目を JavaScript オブジェクトまたは値にマッピングする変換関数を付与としてプロジェクションを適用します。この動作は SQL の SELECT 句に似ています。 </li> </ul> </li> <li> <b>pluck([propertyName] [, options] [, callback])</b> <ul> <li> これは各入力項目から 1 つのプロパティの値を抽出するマップのショートカットです。 </li> </ul> </li> <li> <b>flatten([isShallow] [, options] [, callback])</b> <ul> <li> 各入力項目の配列を結合し、1 つの配列に平坦化します。この動作は LINQ の SelectMany に似ています。 </li> </ul> </li> <li> <b>sortBy([predicate] [, options] [, callback])</b> <ul> <li> 与えられた述語を利用し、入力ドキュメント ストリーム内のドキュメントを昇順で並べ替え、ドキュメントの新しいセットを生成します。この動作は SQL の ORDER BY 句に似ています。 </li> </ul> </li> <li> <b>sortByDescending([predicate] [, options] [, callback])</b> <ul> <li> 与えられた述語を利用し、入力ドキュメント ストリーム内のドキュメントを降順で並べ替え、ドキュメントの新しいセットを生成します。この動作は SQL の ORDER BY x DESC 句に似ています。 </li> </ul> </li> </ul>
 
 
 述語またはセレクター関数の中に含まれるとき、次の JavaScript コンストラクトは自動的に最適化され、DocumentDB インデックスで直接実行されます。
@@ -614,140 +554,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 
 SQL クエリと同様に、ドキュメント プロパティ キー (`doc.id` など) では大文字と小文字が区別されます。
 
-<br/>
-<table border="1" width="100%">
-<colgroup>
-<col span="1" style="width: 40%;">
-<col span="1" style="width: 40%;">
-<col span="1" style="width: 20%;">
-</colgroup>
-<tbody>
-<tr>
-<th>SQL</th>
-<th>JavaScript クエリ API</th>
-<th>詳細</th>
-</tr>
-<tr>
-<td>
-<pre>
- SELECT *
-FROM docs
-</pre>
-</td>
-<td>
-<pre>
-_.map(function(doc) {
-    return doc;
-});
-</pre>
-</td>
-<td>結果的にすべてのドキュメントがそのまま生成されます (継続トークンでページが付けられます)。</td>
-</tr>
-<tr>
-<td>
-<pre>
-SELECT docs.id, docs.message AS msg, docs.actions
-FROM docs
-</pre>
-</td>
-<td>
-<pre>
-_.map(function(doc) {
-    return {
-        id: doc.id,
-        msg: doc.message,
-        actions: doc.actions
-    };
-});
-</pre>
-</td>
-<td>すべてのドキュメントから ID、メッセージ (エイリアスは msg)、アクションをプロジェクションします。</td>
-</tr>
-<tr>
-<td>
-<pre>
-SELECT * 
-FROM docs
-WHERE docs.id="X998_Y998"
-</pre>
-</td>
-<td>
-<pre>
-_.filter(function(doc) {
-    return doc.id === "X998\_Y998";
-});
-</pre>
-</td>
-<td>述語があるドキュメントのクエリ: id = "X998_Y998".</td>
-</tr>
-<tr>
-<td>
-<pre>
-SELECT *
-FROM docs
-WHERE ARRAY_CONTAINS(docs.Tags, 123)
-</pre>
-</td>
-<td>
-<pre>
-_.filter(function(x) {
-    return x.Tags && x.Tags.indexOf(123) > -1;
-});
-</pre>
-</td>
-<td>Tags プロパティを持つドキュメントのクエリ。Tags は値 123 を含む配列です。</td>
-</tr>
-<tr>
-<td>
-<pre>
-SELECT docs.id, docs.message AS msg
-FROM docs
-WHERE docs.id="X998_Y998"
-</pre>
-</td>
-<td>
-<pre>
-_.chain()
-    .filter(function(doc) {
-        return doc.id === "X998_Y998";
-    })
-    .map(function(doc) {
-        return {
-            id: doc.id,
-            msg: doc.message
-        };
-    })
-    .value();
-</pre>
-</td>
-<td>述語があり、id = "X998_Y998" のドキュメントのクエリ。ID とメッセージ (エイリアスは msg) をプロジェクションします。</td>
-</tr>
-<tr>
-<td>
-<pre>
-SELECT VALUE tag
-FROM docs
-JOIN tag IN docs.Tags
-ORDER BY docs._ts
-</pre>
-</td>
-<td>
-<pre>
-_.chain()
-    .filter(function(doc) {
-        return doc.Tags && Array.isArray(doc.Tags);
-    })
-    .sortBy(function(doc) {
-    	return doc.\_ts;
-    })
-    .pluck("Tags")
-    .flatten()
-    .value()
-</pre>
-</td> <td>配列プロパティの Tags のあるドキュメントをフィルター処理し、結果的に生成されたドキュメントを \_ts タイムスタンプ システム プロパティで並べ替え、Tags 配列をプロジェクションし、平坦化します。</td>
-</tr>
-</tbody>
-</table>
+<br/> <table border="1" width="100%"> <colgroup> <col span="1" style="width: 40%;"> <col span="1" style="width: 40%;"> <col span="1" style="width: 20%;"> </colgroup> <tbody> <tr> <th>SQL</th> <th>JavaScript クエリ API</th> <th>詳細</th> </tr> <tr> <td> <pre> SELECT * FROM docs </pre> </td> <td> <pre> \_\_.map(function(doc) { return doc; }); </pre> </td> <td>結果的にすべてのドキュメントがそのまま生成されます (継続トークンでページが付けられます)。</td> </tr> <tr> <td> <pre> SELECT docs.id, docs.message AS msg, docs.actions FROM docs </pre> </td> <td> <pre> \_\_.map(function(doc) { return { id: doc.id, msg: doc.message, actions: doc.actions }; }); </pre> </td> <td>すべてのドキュメントから ID、メッセージ (エイリアスは msg)、アクションをプロジェクションします。</td> </tr> <tr> <td> <pre> SELECT * FROM docs WHERE docs.id="X998\_Y998" </pre> </td> <td> <pre> \_\_.filter(function(doc) { return doc.id === "X998\_Y998"; }); </pre> </td> <td>述語があるドキュメントのクエリ: id = "X998\_Y998"。</td> </tr> <tr> <td> <pre> SELECT * FROM docs WHERE ARRAY\_CONTAINS(docs.Tags, 123) </pre> </td> <td> <pre> \_\_.filter(function(x) { return x.Tags && x.Tags.indexOf(123) > -1; }); </pre> </td> <td>Tags プロパティを持つドキュメントのクエリ。Tags は値 123 を含む配列です。</td> </tr> <tr> <td> <pre> SELECT docs.id, docs.message AS msg FROM docs WHERE docs.id="X998\_Y998" </pre> </td> <td> <pre> \_\_.chain() .filter(function(doc) { return doc.id === "X998\_Y998"; }) .map(function(doc) { return { id: doc.id, msg: doc.message }; }) .value(); </pre> </td> <td>述語があり、id = "X998\_Y998" のドキュメントのクエリ。ID とメッセージ (エイリアスは msg) をプロジェクションします。</td> </tr> <tr> <td> <pre> SELECT VALUE tag FROM docs JOIN tag IN docs.Tags ORDER BY docs.\_ts </pre> </td> <td> <pre> \_\_.chain() .filter(function(doc) { return doc.Tags && Array.isArray(doc.Tags); }) .sortBy(function(doc) { return doc.\_ts; }) .pluck("Tags") .flatten() .value() </pre> </td> <td>配列プロパティの Tags のあるドキュメントをフィルター処理し、結果的に生成されたドキュメントを \_ts タイムスタンプ システム プロパティで並べ替え、Tags 配列をプロジェクションし、平坦化します。</td> </tr> </tbody> </table>
 
 ## ランタイム サポート
 [DocumentDB JavaScript サーバー側 SDK](http://dl.windowsazure.com/documentDB/jsserverdocs/) では、[ECMA-262](documentdb-interactions-with-resources.md) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています。
@@ -919,4 +726,4 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 -	[サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 -	[Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

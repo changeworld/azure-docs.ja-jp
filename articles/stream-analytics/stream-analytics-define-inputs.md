@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="入力の定義 | Microsoft Azure" 
 	description="Stream Analytics 入力について" 
-	keywords="big data analytics,cloud service,internet of things,managed service,stream processing,streaming analytics,streaming data"
+	keywords="ビッグ データ分析,クラウド サービス,モノのインターネット,管理サービス,ストリーム処理,ストリーミング分析,ストリーミング データ"
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -22,7 +22,7 @@
 Azure Stream Analytics 入力はデータ ソースへの接続として定義されます。Stream Analytics では、ジョブが実行されている Azure サブスクリプションの内外からの Azure ソース Event Hub、IoT Hub および BLOB ストレージとの最上位の統合が行われます。データがそのデータ ソースにプッシュされると、Stream Analytics ジョブによって使用され、リアルタイムで処理されます。入力は 2 つの個別のタイプであるデータ ストリーム入力と参照データ入力に分けられます。
 
 - **データ ストリーム入力**: データ ストリームは、時間をかけて受け取る、制約のない一連のイベントです。Stream Analytics のジョブには、ジョブで使用および変換される少なくとも 1 つのデータ ストリームの入力を含める必要があります。BLOB ストレージ、Event Hubs および IoT Hub は、データ ストリーム入力ソースとしてサポートされます。Event Hubs は複数のデバイスとソースから、ソーシャル メディア アクティビティ フィード、株式取引情報、センサーからのデータなどのイベント ストリームを回収するために使用されます。IoT Hub はモノのインターネット化 (IoT) シナリオ内で、接続されているデバイスからデータを収集するように最適化されています。ストリームとしてバルク データを取り込むための入力ソースとして、BLOB ストレージを使用できます。  
-- **参照データ**: Stream Analytics は、参照データと呼ばれる 2 番目のタイプの入力をサポートします。これは静的データまたは変更頻度の低い補足データであり、通常は相関関係の関連付けと参照を実行するために使用されます。現在、Azure BLOB ストレージは参照データをサポートする唯一の入力ソースです。参照データ ソースの BLOB のサイズは、最大で 50 MB に制限されています。参照データ入力を作成する方法については、[参照データの使用](stream-analytics-use-reference-data.md)に関するページを参照してください。  
+- **参照データ**: Stream Analytics は、参照データと呼ばれる 2 番目のタイプの入力をサポートします。これは静的データまたは変更頻度の低い補足データであり、通常は相関関係の関連付けと参照を実行するために使用されます。現在、Azure BLOB ストレージは参照データをサポートする唯一の入力ソースです。参照データ ソースの BLOB のサイズは、最大で 50 MB に制限されています。参照データ入力を作成する方法については、「[参照データの使用](stream-analytics-use-reference-data.md)」を参照してください。  
 
 ## イベント ハブ データ入力ストリームの作成
 
@@ -183,7 +183,7 @@ FROM Input
 
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/JA-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。このサービスの詳細については、以下の情報をご覧ください。
@@ -201,4 +201,4 @@ FROM Input
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/24/2015"
+	ms.date="10/16/2015"
 	ms.author="cephalin"/>
 
 
@@ -264,7 +264,7 @@ Git Shell で、次のコマンドを実行します。
 
 ## 概要 ##
 
-アジャイル ソフトウェア開発は、アプリケーション プラットフォームとして Azure を採用することを希望する多くの企業になくてはならないものです。このチュートリアルでは、運用環境の完全なまたは完全に近いレプリカの作成と削除を容易に実行する方法について説明しました。これは複雑なアプリケーションでも同じです。すべてのコミットを Azure でビルドして構築できる開発プロセス作成機能を活用する方法についても説明しました。このチュートリアルが、Azure App Service と Azure リソース マネージャーを最大限に利用して、アジャイル手法に対応する DevOps ソリューションを作成する方法の十分な説明になっていれば幸いです。
+アジャイル ソフトウェア開発は、アプリケーション プラットフォームとして Azure を採用することを希望する多くの企業になくてはならないものです。このチュートリアルでは、運用環境の完全なまたは完全に近いレプリカの作成と削除を容易に実行する方法について説明しました。これは複雑なアプリケーションでも同じです。すべてのコミットを Azure でビルドして構築できる開発プロセス作成機能を活用する方法についても説明しました。このチュートリアルが、Azure App Service と Azure リソース マネージャーを最大限に利用して、アジャイル手法に対応する DevOps ソリューションを作成する方法の十分な説明になっていれば幸いです。次に、このシナリオを基にしてビルドするには、[運用環境でのテスト](app-service-web-test-in-production-get-start.md)などの高度な DevOps テクニックを実行します。一般的な運用環境でのテスト シナリオについては、「[Azure App Service でのフライト デプロイメント (ベータ テスト)](app-service-web-test-in-production-controlled-test-flight.md)」を参照してください。
 
 ## その他のリソース ##
 
@@ -281,4 +281,4 @@ Git Shell で、次のコマンドを実行します。
 -	[Azure AD でのユーザーの作成または編集](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 -	[Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

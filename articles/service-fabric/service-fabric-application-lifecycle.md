@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Service Fabric アプリケーションのライフサイクル | Microsoft Azure"
+   pageTitle="Service Fabric のアプリケーション ライフサイクル | Microsoft Azure"
    description="Service Fabric アプリケーションの開発、デプロイ、テスト、アップグレード、保守、および削除について説明します。"
    services="service-fabric"
    documentationCenter=".net"
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/17/2015"
+   ms.date="10/15/2015"
    ms.author="ryanwi; mani-ramaswamy"/>
 
 
@@ -118,4 +118,4 @@ Service Fabric アプリケーションとサービスの開発、テスト、�
 - [REST-Based Application Lifecycle Sample (REST ベースのアプリケーション ライフ サイクルのサンプル)](service-fabric-rest-based-application-lifecycle-sample.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Azure Machine Learning FAQ | Microsoft Azure"
 	description="Azure Machine Learning の概要: 効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。"
-	keywords="machine learning introduction,predictive modeling,what is machine learning"
+	keywords="機械の概要、予測モデリング、機械学習とは"
 	services="machine-learning"
 	documentationCenter=""
 	authors="pablissima"
@@ -93,8 +93,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **Amazon S3 からデータを読み取ることはできますか。**
 
-少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。
-<!--
+少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。<!--
 <SEE CLOUD DS PROCESS>
 -->
 
@@ -130,7 +129,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 ###アルゴリズム
 **Machine Learning Studio では既存のどの ML アルゴリズムがサポートされていますか。**
 
-Machine Learning Studio は、拡張性の高い強化された意思決定ツリー、ベイズの推薦システム、ディープ ニューラル ネットワーク、Microsoft Research で開発された意思決定のジャングルなど、最先端のアルゴリズムを提供します。Vowpal Wabbit のような拡張性が高いオープン ソース機械学習パッケージも含まれます。Machine Learning Studio は、複数クラスと二項分類、回帰、クラスタリングで、機械学習アルゴリズムをサポートします。「[機械学習のモジュール][machine-learning-modules]」の完全な一覧をご覧ください。
+Machine Learning Studio は、拡張性の高い強化された意思決定ツリー、ベイズの推薦システム、ディープ ニューラル ネットワーク、Microsoft Research で開発された意思決定のジャングルなど、最先端のアルゴリズムを提供します。Vowpal Wabbit のような拡張性が高いオープン ソース機械学習パッケージも含まれます。Machine Learning Studio は、複数クラスと二項分類、回帰、クラスタリングで、機械学習アルゴリズムをサポートします。「[Machine Learning のモジュール][machine-learning-modules]」の完全な一覧をご覧ください。
 
 **データを使用するための正しい Machine Learning アルゴリズムを自動的に提案していますか。**
 
@@ -161,7 +160,7 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 ###R モジュール
 **Machine Learning Studio で使用できるのはどの R パッケージですか。**
 
-Machine Learning Studio は、現在、400 を超える R パッケージをサポートしています。サポートされるパッケージは常に増加しています。サポートされる R パッケージの一覧を取得する方法については、「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」をご覧ださい。必要なパッケージがこの一覧にない場合は、[ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)でパッケージの名前を指定してください。
+Machine Learning Studio は、現在、400 を超える R パッケージをサポートしています。サポートされるパッケージは常に増加しています。サポートされる R パッケージの一覧を取得する方法については、「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」を参照してください。必要なパッケージがこの一覧にない場合は、[ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)でパッケージの名前を指定してください。
 
 **カスタム R モジュールを構築することはできますか。**
 
@@ -179,7 +178,7 @@ Machine Learning Studio は、現在、400 を超える R パッケージをサ�
 
 **Python 用の REPL 環境はありますか。**
 
-Machine Learning Studio では Jupyter Notebooks を使用できます。詳細については、「[Introducing Jupyter Notebooks in Azure ML Studio (Azure ML Studio に Jupyter Notebooks を導入する)](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx)」をご覧ください。
+Machine Learning Studio では Jupyter Notebooks を使用できます。詳細については、「[Introducing Jupyter Notebooks in Azure ML Studio (Azure ML Studio に Jupyter Notebooks を導入する)](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx)」を参照してください。
 
 ## Web サービス
 ###モデルをプログラムによって再トレーニングする
@@ -215,8 +214,7 @@ Retraining API を使用することもできます。サンプル コードは[
 
 RRS の場合は通常、Web サービスの応答に結果が表示されます。BLOB に書き込むこともできます。BES の場合、既定では BLOB に出力が書き込まれます。また、ライター モジュールを使用してデータベースやテーブルに出力を書き込むこともできます。
 
- **Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 
-いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
+ ****Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
 
 
 ##拡張性
@@ -309,4 +307,4 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="R で構築された Machine Learning Web サービスの例 | Microsoft Azure" 
 	description="R コードと Machine Learning を使用して作成され、Microsoft Azure Marketplace に発行された便利な Web サービスの例を参照できます。" 
-	keywords="csharp,r code,web services examples"
+	keywords="csharp、r コード、Web サービスの例"
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="jaymathe" 
@@ -74,4 +74,4 @@ Web サービスの使用や Marketplace への発行に関するよく寄せら
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

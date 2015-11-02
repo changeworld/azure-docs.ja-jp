@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure リソース マネージャーでの Windows PowerShell の使用" 
-	description="Azure PowerShell を使用すると、リソース グループとして複数のリソースを Azure にデプロイできます。" 
+	pageTitle="リソース マネージャーでの Azure PowerShell | Microsoft Azure" 
+	description="Azure PowerShell を使用して複数のリソースをリソース グループとして Azure にデプロイする方法について、概要を示します。" 
 	services="azure-resource-manager" 
 	documentationCenter="" 
 	authors="tfitzmac" 
@@ -13,318 +13,406 @@
 	ms.tgt_pltfrm="powershell" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/15/2015" 
+	ms.date="10/16/2015" 
 	ms.author="tomfitz"/>
 
-# Azure リソース マネージャーでの Windows PowerShell の使用
+# Azure リソース マネージャーでの Azure PowerShell の使用
 
 > [AZURE.SELECTOR]
 - [Azure PowerShell](powershell-azure-resource-manager.md)
 - [Azure CLI](xplat-cli-azure-resource-manager.md)
 
-Azure リソース マネージャーでは、Azure リソースに関するまったく新しい考え方が導入されています。個々のリソースを作成して管理するのではなく、まず、ブログ、フォト ギャラリー、SharePoint ポータル、Wiki などの複雑なサービスを想定して開始します。サービスのリソース モデルであるテンプレートを使用して、サービスをサポートするために必要なリソースでリソース グループを作成します。これにより、そのリソース グループを論理ユニットとして管理して、デプロイできます。
+Azure リソース マネージャーでは、Azure リソースに関するまったく新しい考え方が導入されています。個々のリソースを作成して管理するのではなく、まず、ブログ、フォト ギャラリー、SharePoint ポータル、Wiki など、ソリューション全体の構想を練ります。ソリューションの宣言型表現であるテンプレートを使用して、ソリューションをサポートするために必要なすべてのリソースが含まれているリソース グループを作成します。その後、そのリソース グループを論理ユニットとして管理してデプロイします。
 
-このチュートリアルでは、Azure PowerShell を Microsoft Azure の Azure リソース マネージャーで使用する方法について説明します。ここでは、サポートするために必要なすべてのリソースを含む、SQL データベースを備えた Azure でホストされる Web アプリケーションのリソース グループを作成し、デプロイするプロセスを説明します。
+このチュートリアルでは、Azure リソース マネージャーで Azure PowerShell を使用する方法について説明します。ここでは、サポートするために必要なすべてのリソースを含む、SQL データベースを備えた Azure でホストされる Web アプリケーションのリソース グループを作成し、デプロイするプロセスを説明します。
 
 ## 前提条件
 
-このチュートリアルを完了するには、 Azure PowerShell version 0.8.0 以降が必要です。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](powershell-install-configure.md)」をご覧ください。
+このチュートリアルを完了するには、次のものが必要です。
+
+- Azure アカウント
+  + [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。
+  
+  + [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。MSDN サブスクリプションにより、有料の Azure サービスを使用できるクレジットが毎月提供されます。
+- Azure PowerShell
+
+[AZURE.INCLUDE [powershell-preview-inline-include](../includes/powershell-preview-inline-include.md)]
 
 このチュートリアルは、PowerShell の初心者向けに設計されていますが、モジュール、コマンドレット、セッションなどの基本概念を理解していることを前提としています。Windows PowerShell の詳細については、「[Getting Started with Windows PowerShell (Windows PowerShell の概要)](http://technet.microsoft.com/library/hh857337.aspx)」を参照してください。
+
+## デプロイ対象
+
+このチュートリアルでは、Azure PowerShell を使用して Web アプリと SQL Database をデプロイします。ただし、この Web アプリと SQL Database ソリューションは、連携して動作する数種類のリソースで構成されています。実際にデプロイするリソースは次のとおりです。
+
+- データベースをホストする SQL Server
+- データを格納する SQL Database
+- Web アプリにデータベースへの接続を許可するファイアウォール ルール
+- Web アプリの機能とコストを定義するための App Service プラン
+- Web アプリを実行するための Web サイト
+- データベースへの接続文字列を格納するための Web 構成 
+
+## コマンドレットのヘルプの取得
 
 このチュートリアルに表示されているすべてのコマンドレットの詳細なヘルプを取得するには、Get-Help コマンドレットを使用します。
 
 	Get-Help <cmdlet-name> -Detailed
 
-たとえば、Add-AzureAccount コマンドレットについてのヘルプを確認するには、次のように入力します。
+たとえば、Get-AzureRmResource コマンドレットのヘルプを取得するには、次のように入力します。
 
-	Get-Help Add-AzureAccount -Detailed
+	Get-Help Get-AzureRmResource -Detailed
 
-## Azure PowerShell モジュールについて
-Version 0.8.0 以降、Azure PowerShell のインストールには次の複数の Windows PowerShell モジュールが含まれています。Azure モジュールまたは Azure リソース マネージャー モジュールで利用できるコマンドを使用するかどうかを明示的に指定する必要があります。これらを簡単に切り替えるために、新しいコマンドレット **Switch-AzureMode** を Azure Profile モジュールに追加しました。
+ヘルプの概要と Resources モジュールのコマンドレットの一覧を取得するには、次のように入力します。
 
-Azure PowerShell を使用する場合、Azure モジュールのコマンドレットが既定でインポートされます。Azure Resource Manager モジュールに切り替えるには、Switch-AzureMode コマンドレットを使用します。これによって、Azure モジュールはセッションから削除され、Azure リソース マネージャーおよび Azure プロファイル モジュールがインポートされます。
-
-AzureResoureManager モジュールに切り替えるには、次のように入力します。
-
-    PS C:\> Switch-AzureMode -Name AzureResourceManager
-
-Azure モジュールに切り替えるには、次のように入力します。
-
-    PS C:\> Switch-AzureMode -Name AzureServiceManagement
-
-既定では、Switch-AzureMode は、現在のセッションのみに影響します。スイッチをすべての PowerShell セッションで有効にするには、Switch-AzureMode の **Global** パラメーターを使用します。
-
-Switch-AzureMode コマンドレットについての質問は、`Get-Help Switch-AzureMode` と入力するか、[Switch-AzureMode に関するページ](http://go.microsoft.com/fwlink/?LinkID=394398)を参照してください。
-  
-ヘルプの概要と AzureResourceManager モジュールのコマンドレットの一覧を取得するには、次のように入力します。
-
-    PS C:\> Get-Command -Module AzureResourceManager | Get-Help | Format-Table Name, Synopsis
+    PS C:\> Get-Command -Module AzureRM.Resources | Get-Help | Format-Table Name, Synopsis
 
 次のような出力が表示されます。
 
 	Name                                   Synopsis
 	----                                   --------
-	Add-AlertRule                          Adds or updates an alert rule of either metric, event, o...
-	Add-AzureAccount                       Adds the Azure account to Windows PowerShell
-	Add-AzureEnvironment                   Creates an Azure environment
-	Add-AzureKeyVaultKey                   Creates a key in a vault or imports a key into a vault.
-        ...
+	Find-AzureRmResource                   Searches for resources using the specified parameters.
+	Find-AzureRmResourceGroup              Searches for resource group using the specified parameters.
+	Get-AzureRmADGroup                     Filters active directory groups.
+	Get-AzureRmADGroupMember               Get a group members.
+	...
 
 コマンドレットの完全なヘルプを取得するには、次の形式でコマンドを入力します。
 
 	Get-Help <cmdlet-name> -Full
-
-たとえば、次のように入力します。
-
-	Get-Help Get-AzureLocation -Full
-
-Azure リソース マネージャーのコマンドの全セットについては、[Azure リソース マネージャー コマンドレットに関するページ](http://go.microsoft.com/fwlink/?LinkID=394765)を参照してください。
   
-## リソース グループの作成
+## Azure アカウントへのログイン
 
-チュートリアルのこのセクションでは、SQL データベースを使用して Web アプリケーションのリソース グループを作成およびデプロイするプロセスを説明します。
+ソリューションを操作する前に、ご使用のアカウントにログインする必要があります。
 
-このタスクを実行するためには、Azure、SQL、Web アプリケーション、またはリソース管理の専門家である必要はありません。テンプレートには、リソース グループのモデルと必要になる可能性のあるすべてのリソースが用意されています。タスクを自動化するために Windows PowerShell を使用しているため、これらのプロセスを大規模なタスクのスクリプトのモデルとして使用することができます。
+Azure アカウントにログインするには、**Login-AzureRmAccount** コマンドレットを使用します。Azure PowerShell 1.0 Preview より前のバージョンでは、**Add-AzureAccount** コマンドを使用します。
 
-### 手順 1. Azure リソース マネージャーに切り替える 
-1. PowerShell の起動Azure PowerShell コンソールや Windows PowerShell ISE など、必要なホスト プログラムを使用することができます。
+    PS C:\> Login-AzureRmAccount
 
-2. **Switch-AzureMode** コマンドレットを使用して、AzureResourceManager モジュールおよび AzureProfile モジュールのコマンドレットをインポートします。
+このコマンドレットは、Azure アカウントのログイン資格情報をユーザーに求めます。ログイン後にアカウント設定がダウンロードされるため、Azure PowerShell で使用できるようになります。
 
-        PS C:\> Switch-AzureMode AzureResourceManager
+アカウント設定の有効期限が切れるため、ときどき更新する必要があります。アカウント設定を更新するには、**Login-AzureRmAccount** をもう一度実行します。
 
-3. Azure アカウントを Windows PowerShell セッションに追加するには、**Add-AzureAccount** コマンドレットを使用します。
+>[AZURE.NOTE]リソース マネージャー モジュールでは Login-AzureRmAccount が必要になります。発行設定ファイルでは不十分です。
 
-        PS C:\> Add-AzureAccount
+## リソースの種類の場所を取得する
 
-このコマンドレットは、Azure アカウントのログイン資格情報をユーザーに求めます。ログイン後にアカウント設定がダウンロードされるため、Windows PowerShell で使用できるようになります。
+リソースをデプロイするときに、リソースをホストする場所を指定する必要があります。すべてのリージョンですべてのリソースの種類がサポートされているわけではありません。Web アプリと SQL Database をデプロイする前に、どのリージョンでこれらのリソースの種類がサポートされているかを確認する必要があります。リソース グループには、異なるリージョンに存在するリソースを含めることができます。ただし、可能であれば、パフォーマンスを最適化するために同じ場所にリソースを作成することをお勧めします。特に、アプリケーションがデータベースにアクセスする場所とデータベースが同じ場所にあるかどうかを確認することをお勧めします。
 
-アカウント設定の有効期限が切れるため、ときどき更新する必要があります。アカウント設定を更新するには、**Add-AzureAccount** をもう一度実行します。
+各リソースの種類をサポートする場所を取得するには、**Get-AzureRmResourceProvider** コマンドレットを使用する必要があります。まず、このコマンドによって表示される情報を見てみましょう。
 
->[AZURE.NOTE]AzureResourceManager モジュールには、Add-AzureAccount が必要です。発行設定ファイルでは不十分です。
+    PS C:\> Get-AzureRmResourceProvider -ListAvailable
 
-### 手順 2. ギャラリー テンプレートを選択する
+    ProviderNamespace               RegistrationState ResourceTypes
+    -----------------               ----------------- -------------
+    Microsoft.ApiManagement         Unregistered      {service, validateServiceName, checkServiceNameAvailability}
+    Microsoft.AppService            Registered        {apiapps, appIdentities, gateways, deploymenttemplates...}
+    Microsoft.Batch                 Registered        {batchAccounts}
+    ...
 
-リソース グループとそのリソースを作成するにはいくつかの方法がありますが、最も簡単な方法はリソース グループ テンプレートを使用することです。*リソース グループ テンプレート* は、リソース グループのリソースを定義する JSON 文字列です。文字列には、名前やサイズなどのユーザー定義の値の "パラメーター" と呼ばれるプレースホルダーが含まれます。
+ProviderNamespace は、関連するリソースの種類のコレクションを表します。通常、これらの名前空間は Azure で作成するサービスに一致します。**Unregistered** として示されたリソース プロバイダーを使用する場合は、**Register-AzureRmResourceProvider** コマンドレットを実行して登録するプロバイダーの名前空間を指定することで、そのリソース プロバイダーを登録できます。ほとんどの場合、このチュートリアルで使用するリソース プロバイダーは、サブスクリプションで既に登録されています。
 
-Azure にはリソース グループ テンプレートのギャラリーがホストされ、独自のテンプレートを最初から、またはギャラリー テンプレートを編集して、作成することができます。このチュートリアルでは、ギャラリー テンプレートを使用します。
+その名前空間を指定すると、プロバイダーについての詳細が表示されます。
 
-Azure リソース グループ テンプレート ギャラリーのすべてのテンプレートを表示するには、**Get-azureresourcegroupgallerytemplate** コマンドレットを使用します。 ただし、このコマンドでは、多数のテンプレートが返されます。表示するテンプレートの数を減らすには、発行元のパラメーターを指定します。
+    PS C:\> Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Sql
 
-PowerShell プロンプトで、次のように入力します。
+    ProviderNamespace RegistrationState ResourceTypes                                 Locations
+    ----------------- ----------------- -------------                                 ---------
+    Microsoft.Sql     Registered        {operations}                                  {East US 2, South Central US, Cent...
+    Microsoft.Sql     Registered        {locations}                                   {East US 2, South Central US, Cent...
+    Microsoft.Sql     Registered        {locations/capabilities}                      {East US 2, South Central US, Cent...
+    ...
+
+Web サイトなどの特定の種類のリソースについてサポートされている場所に出力を制限するには、次のコマンドを使用します。
+
+    PS C:\> ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
     
-    PS C:\> Get-AzureResourceGroupGalleryTemplate -Publisher Microsoft
-
-コマンドレットは、発行元が Microsoft であるギャラリー テンプレートの一覧を返します。**Identity** プロパティを使用して、コマンドのテンプレートを識別します。
-
-Microsoft.WebSiteSQLDatabase.0.2.6-preview テンプレートは、興味深いものです。新しいバージョンがリリースされたために、コマンドを実行する時点で、テンプレートのバージョンは少し異なる場合があります。最新バージョンのテンプレートを使用します。ギャラリー テンプレートの詳細を確認するには、**Identity** パラメーターを使用します。Identity パラメーターの値は、そのテンプレートの ID です。
-
-    PS C:\> Get-AzureResourceGroupGalleryTemplate -Identity Microsoft.WebSiteSQLDatabase.0.2.6-preview
-
-コマンドレットは、概要や説明など、テンプレートに関するより多くの情報を持つオブジェクトを返します。
-
-このテンプレートは、ニーズを満たしているようです。ディスクに保存して、詳しく見てみましょう。
-
-### 手順 3. テンプレートを確認する
-
-テンプレートをディスク上の JSON ファイルに保存します。この手順は必須ではありませんが、テンプレートを簡単に表示することができます。テンプレートを保存するには、**Save-AzureResourceGroupGalleryTemplate** コマンドレットを使用します。テンプレートを指定するには **Identity** パラメーターを使用し、ディスク上のパスを指定するには **Path** パラメーターを使用します。
-
-Save-AzureResourceGroupGalleryTemplate はテンプレートを保存して、パス、JSON テンプレート ファイルのファイル名を返します。
-
-	PS C:\> Save-AzureResourceGroupGalleryTemplate -Identity Microsoft.WebSiteSQLDatabase.0.2.6-preview -Path C:\Azure\Templates\New_WebSite_And_Database.json
-
-	Path
-	----
-	C:\Azure\Templates\New_WebSite_And_Database.json
-
-
-テンプレート ファイルは、メモ帳などのテキスト エディターで表示できます。各テンプレートには、**parameters** セクションと **resources** セクションがあります。
-
-テンプレートの **parameters** セクションはすべてのリソースで定義されるパラメーターのコレクションです。これには、リソース グループを設定する場合に指定できるプロパティの値が含まれます。
-
-    "parameters": {
-      "siteName": {
-        "type": "string"
-      },
-      "hostingPlanName": {
-        "type": "string"
-      },
-      "siteLocation": {
-        "type": "string"
-      },
-      ...
-    }
-
-一部のパラメーターには既定値があります。テンプレートを使用する場合、これらのパラメーターには値を指定する必要がありません。値を指定しないと、既定値が使用されます。
-
-    "collation": {
-      "type": "string",
-      "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
-    },
-
-列挙値があるパラメーターの場合は、有効な値がパラメーターと共に一覧表示されます。たとえば、**sku** パラメーターには Free、Shared、Basic、または Standard の値を指定できます。**sku** パラメーターに値を指定しないと、既定値 Free が使用されます。
-
-    "sku": {
-      "type": "string",
-      "allowedValues": [
-        "Free",
-        "Shared",
-        "Basic",
-        "Standard"
-      ],
-      "defaultValue": "Free"
-    },
-
-
-**administratorLoginPassword** パラメーターは、プレーンテキストではなく、セキュリティ保護された文字列を使用します。セキュリティ保護された文字列の値を指定すると、値が隠されます。
-
-	"administratorLoginPassword": {
-      "type": "securestring"
-    },
-
-テンプレートの **resources** セクションには、テンプレートを作成するリソースが一覧表示されます。このテンプレートによって、SQL データベース サーバーと SQL データベース、サーバー ファームと Web サイト、およびいくつかの管理設定が作成されます。
-  
-各リソースの定義には、名前、種類と場所、ユーザー定義の値のパラメーターなどのプロパティが含まれます。たとえば、テンプレートのこのセクションでは、SQL データベースを定義します。データベース名のパラメーター ([parameters('databaseName')])、データベース サーバーの場所のパラメーター [parameters('serverLocation')]、および照合順序プロパティのパラメーター [parameters('collation')] が含まれます。
-
-    {
-        "name": "[parameters('databaseName')]",
-        "type": "databases",
-        "location": "[parameters('serverLocation')]",
-        "apiVersion": "2.0",
-        "dependsOn": [
-          "[concat('Microsoft.Sql/servers/', parameters('serverName'))]"
-        ],
-        "properties": {
-          "edition": "[parameters('edition')]",
-          "collation": "[parameters('collation')]",
-          "maxSizeBytes": "[parameters('maxSizeBytes')]",
-          "requestedServiceObjectiveId": "[parameters('requestedServiceObjectiveId')]"
-        }
-    },
-
-
-テンプレートを使用する準備が整いましたが、実行する前に、各リソースの場所を見つける必要があります。
-
-### 手順 4. リソースの種類の場所を取得する
-
-ほとんどのテンプレートでは、リソース グループ内の各リソースの場所を指定するように求められます。すべてのリソースは Azure データ センターにありますが、すべての Azure データ センターがすべてのリソースの種類をサポートしているわけではありません。
-
-そのリソースの種類をサポートしている任意の場所を選択します。リソース グループ内のすべてのリソースを同じ場所に作成する必要はありません。ただし、パフォーマンスを最適化するために、可能な限り、同じ場所にリソースを作成することをお勧めします。特に、アプリケーションがデータベースにアクセスする場所とデータベースが同じ場所にあるかどうかを確認することをお勧めします。
-
-各リソースの種類をサポートする場所を取得するには、**Get-AzureLocation** コマンドレットを使用します。ResourceGroup などの特定の種類のリソースに出力を制限するには、次のコマンドレットを使用します。
-
-    Get-AzureLocation | Where-Object Name -eq "ResourceGroup" | Format-Table Name, LocationsString -Wrap
-
 次のように出力されます。
 
-    Name                                 LocationsString
-    ----                                 ---------------
-    ResourceGroup                        East Asia, South East Asia, East US, West US, North
-                                         Central US, South Central US, Central US, North Europe,
-                                         West Europe
+    Brazil South
+    East Asia
+    East US
+    Japan East
+    Japan West
+    North Central US
+    North Europe
+    South Central US
+    West Europe
+    West US
+    Southeast Asia
+    Central US
+    East US 2
 
-これで、リソース グループを作成するために必要な情報が得られました。
+表示される場所は、以前の結果と多少異なる場合があります。結果が異なる場合があるのは、組織の管理者がお使いのサブスクリプションで使用できるリージョンを制限するポリシーを作成したか、お住まいの国の租税政策に関する制限があるためです。
 
-### ステップ 5. リソース グループを作成する
- 
-この手順では、リソース グループ テンプレートを使用してリソース グループを作成します。詳細については、ディスク上の New\_WebSite\_And\_Database.json ファイルを開いて、理解してください。テンプレート ファイルは、リソースの正しい ApiVersion など、渡すパラメーターの値を決定するために非常に役立つことがあります。
+データベースに対して同じコマンドを実行します。
 
-リソース グループを作成するには、**New-AzureResourceGroup** コマンドレットを使用します。
+    PS C:\> ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Sql).ResourceTypes | Where-Object ResourceTypeName -eq servers).Locations
+    East US 2
+    South Central US
+    Central US
+    North Central US
+    West US
+    East US
+    East Asia
+    Southeast Asia
+    Japan West
+    Japan East
+    North Europe
+    West Europe
+    Brazil South
 
-コマンドは **Name** パラメーターを使用してリソース グループの名前を指定し、**Location** パラメーターを使用して場所を指定します。**Get-AzureLocation** の出力を使用して、リソース グループの場所を選択します。**GalleryTemplateIdentity** パラメーターを使用して、ギャラリー テンプレートを指定します。
+これらのリソースは多くのリージョンで利用可能であることがわかります。このトピックでは、**West US** を使用しますが、サポートされているいずれかのリージョンを指定できます。
 
-	PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview
-            ....
+## リソース グループの作成
 
-テンプレート名を入力すると、New-AzureResourceGroup がテンプレートを取得し、解析して、テンプレート パラメーターをコマンドに動的に追加します。これにより、テンプレート パラメーターの値の指定が非常に簡単になります。また、必須のパラメーター値を忘れた場合は、Windows PowerShell から値を求められます。
+チュートリアルのこのセクションでは、リソース グループを作成する手順について説明します。リソース グループは、ライフサイクルが同じである、ソリューション内のすべてのリソースのコンテナーとして機能します。チュートリアルの後半で、このリソース グループに Web アプリと SQL Database をデプロイします。
 
-**動的なテンプレート パラメーター**
+リソース グループを作成するには、**New-AzureRmResourceGroup** コマンドレットを使用します。
 
-パラメーターを取得するには、マイナス記号 (-) を入力してパラメーター名を示し、Tab キーを押します。または、siteName などのパラメーター名の最初の数文字を入力して、Tab キーを押します。
+コマンドは **Name** パラメーターを使用してリソース グループの名前を指定し、**Location** パラメーターを使用して場所を指定します。前のセクションで検出した内容に基づいて、"West US" を場所に指定します。
 
-    PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -si<TAB>
+    PS C:\> New-AzureRmResourceGroup -Name TestRG1 -Location "West US"
+    
+    ResourceGroupName : TestRG1
+    Location          : westus
+    ProvisioningState : Succeeded
+    Tags              :
+    Permissions       :
+                    Actions  NotActions
+                    =======  ==========
+                    *
 
-PowerShell がパラメーター名を完了します。パラメーター名を順番に繰り返し、Tab キーも繰り返し押します。
+    ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1
 
-    PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName 
+リソース グループが正常に作成されました。
 
-Web サイトの名前を入力して、各パラメーターの Tab 処理を繰り返します。既定値があるパラメーターは省略可能です。既定値をそのまま使用するには、コマンドのパラメーターを省略します。
 
-テンプレート パラメーターにこのテンプレートの sku パラメーターのような列挙値がある場合は、パラメーターの値を周期的に繰り返して Tab キーを押します。
+## リソースで使用可能な API バージョンの取得
 
-    PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName TestSite -sku <TAB>
+テンプレートをデプロイするとき、リソースの作成に使用する API バージョンを指定する必要があります。利用可能な API バージョンは、リソース プロバイダーがリリースする REST API のバージョンに一致します。リソース プロバイダーは、新しい機能を有効にすると、REST API の新しいバージョンをリリースします。そのため、テンプレートで指定した API のバージョンにより、テンプレートを作成する時に利用可能なプロパティが変わります。一般的に、新しいテンプレートを作成するときは、最新の API バージョンを選択します。既存のテンプレートがある場合は、デプロイを変更せずに済む API バージョンの使用を続けるか、テンプレートを最新版に更新して新しい機能を最大限に活用するかを決定できます。
 
-    PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName TestSite -sku Basic<TAB>
+この手順は一見複雑に見えますが、お使いのリソースで利用可能な API バージョンを検出するのは難しくありません。もう一度 **Get-AzureRmResourceProvider** コマンドを使用します。
 
-    PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName TestSite -sku Free<TAB>
+    PS C:\> ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
+    2015-08-01
+    2015-07-01
+    2015-06-01
+    2015-05-01
+    2015-04-01
+    2015-02-01
+    2014-11-01
+    2014-06-01
+    2014-04-01-preview
+    2014-04-01
 
-必要なテンプレート パラメーターと **Verbose** 共通パラメーターのみを指定する New-AzureResourceGroup コマンドの例を次に示します。**administratorLoginPassword** は省略します
+ご覧のように、この API は頻繁に更新されています。通常、同じバージョン番号の API はリソース プロバイダー内のすべてのリソースで利用可能です。唯一の例外は、ある時点でリソースが追加または削除された場合です。サーバー ファームのリソースには同じ API バージョンを利用できると想定しているものの、利用可能な API バージョンが異なる可能性がある場合は、該当するリソースを再確認してください。
 
-	PS C:\> New-AzureResourceGroup -Name TestRG -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName TestSite -hostingPlanName TestPlan -siteLocation "East Asia" -serverName testserver -serverLocation "East Asia" -administratorLogin Admin01 -databaseName TestDB -Verbose
+データベースについては、次のように表示されます。
+
+    PS C:\> ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Sql).ResourceTypes | Where-Object ResourceTypeName -eq servers/databases).ApiVersions
+    2014-04-01-preview
+    2014-04-01 
+
+## テンプレートの作成
+
+このトピックでは、テンプレートの作成方法やテンプレートの構造については説明しません。詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。デプロイするテンプレートを以下に示します。このテンプレートでは前のセクションで取得した API バージョンが使用されていることに注意してください。すべてのリソースを同じリージョンに配置するために、テンプレート式 **resourceGroup().location** を使ってリソース グループの場所を使用します。
+
+パラメーターのセクションにも注意してください。このセクションでは、リソースをデプロイするときに指定できる値を定義します。これらの値は、このチュートリアルの後半で使用します。
+
+テンプレートをコピーして .json ファイルとしてローカルで保存できます。このチュートリアルでは、このテンプレートの保存場所は c:\\Azure\\Templates\\azuredeploy.json と想定していますが、アクセスしやすい任意の場所に、要件に適った名前で保存できます。
+
+    {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "hostingPlanName": {
+                "type": "string"
+            },
+            "serverName": {
+                "type": "string"
+            },
+            "databaseName": {
+                "type": "string"
+            },
+            "administratorLogin": {
+                "type": "string"
+            },
+            "administratorLoginPassword": {
+                "type": "securestring"
+            }
+        },
+        "variables": {
+            "siteName": "[concat('ExampleSite', uniqueString(resourceGroup().id))]"
+        },
+        "resources": [
+            {
+                "name": "[parameters('serverName')]",
+                "type": "Microsoft.Sql/servers",
+                "location": "[resourceGroup().location]",
+                "apiVersion": "2014-04-01",
+                "properties": {
+                    "administratorLogin": "[parameters('administratorLogin')]",
+                    "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+                    "version": "12.0"
+                },
+                "resources": [
+                    {
+                        "name": "[parameters('databaseName')]",
+                        "type": "databases",
+                        "location": "[resourceGroup().location]",
+                        "apiVersion": "2014-04-01",
+                        "dependsOn": [
+                            "[concat('Microsoft.Sql/servers/', parameters('serverName'))]"
+                        ],
+                        "properties": {
+                            "edition": "Basic",
+                            "collation": "SQL_Latin1_General_CP1_CI_AS",
+                            "maxSizeBytes": "1073741824",
+                            "requestedServiceObjectiveName": "Basic"
+                        }
+                    },
+                    {
+                        "name": "AllowAllWindowsAzureIps",
+                        "type": "firewallrules",
+                        "location": "[resourceGroup().location]",
+                        "apiVersion": "2014-04-01",
+                        "dependsOn": [
+                            "[concat('Microsoft.Sql/servers/', parameters('serverName'))]"
+                        ],
+                        "properties": {
+                            "endIpAddress": "0.0.0.0",
+                            "startIpAddress": "0.0.0.0"
+                        }
+                    }
+                ]
+            },
+            {
+                "apiVersion": "2015-08-01",
+                "type": "Microsoft.Web/serverfarms",
+                "name": "[parameters('hostingPlanName')]",
+                "location": "[resourceGroup().location]",
+                "sku": {
+                    "tier": "Free",
+                    "name": "f1",
+                    "capacity": 0
+                },
+                "properties": {
+                    "numberOfWorkers": 1
+                }
+            },
+            {
+                "apiVersion": "2015-08-01",
+                "name": "[variables('siteName')]",
+                "type": "Microsoft.Web/sites",
+                "location": "[resourceGroup().location]",
+                "dependsOn": [
+                    "[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]"
+                ],
+                "properties": {
+                    "serverFarmId": "[parameters('hostingPlanName')]"
+                },
+                "resources": [
+                    {
+                        "name": "web",
+                        "type": "config",
+                        "apiVersion": "2015-08-01",
+                        "dependsOn": [
+                            "[concat('Microsoft.Web/Sites/', variables('siteName'))]"
+                        ],
+                        "properties": {
+                            "connectionStrings": [
+                                {
+                                    "ConnectionString": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', parameters('serverName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('databaseName'), ';User Id=', parameters('administratorLogin'), '@', parameters('serverName'), ';Password=', parameters('administratorLoginPassword'), ';')]",
+                                    "Name": "DefaultConnection",
+                                    "Type": 2
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+
+
+## テンプレートのデプロイ
+
+リソース グループとテンプレートの作成が終わり、これでテンプレート内で定義されたインフラストラクチャをリソース グループにデプロイする準備が整いました。**New-AzureRmResourceGroupDeployment** コマンドレットを使用してリソースをデプロイします。基本的な構文は次のようになります。
+
+    PS C:\> New-AzureRmResourceGroupDeployment -ResourceGroupName TestRG1 -TemplateFile c:\Azure\Templates\azuredeploy.json
+
+リソース グループとテンプレートの場所を指定します。テンプレートがローカルでない場合は、-TemplateUri パラメーターを使用してテンプレートの URI を指定できます。
+
+###動的なテンプレート パラメーター
+
+PowerShell に慣れている場合は、マイナス記号 (-) を入力して Tab キーを押すことで、コマンドレットで利用可能なパラメーターを順番に表示できることをご存じのことと思われます。この機能は、テンプレートで定義するパラメーターでも同様に使用できます。テンプレート名を入力すると、コマンドレットがすぐにテンプレートをフェッチし、解析して、テンプレート パラメーターをコマンドに動的に追加します。これにより、テンプレート パラメーターの値の指定が非常に簡単になります。また、必須のパラメーター値を忘れた場合は、PowerShell から値を求められます。
+
+パラメーターが含まれている完全なコマンドを以下に示します。リソースの名前には独自の値を指定できます。
+
+    PS C:\> New-AzureRmResourceGroupDeployment -ResourceGroupName TestRG1 -TemplateFile c:\Azure\Templates\azuredeploy.json -hostingPlanName freeplanwest -serverName exampleserver -databaseName exampledata -administratorLogin exampleadmin
 
 コマンドを入力すると、不足している必須パラメーター **administratorLoginPassword** を入力するように求められます。パスワードを入力すると、セキュリティ保護された文字列値が隠されます。この対策によって、プレーンテキストでパスワードを提供することの危険性が解消されます。
 
-	cmdlet New-AzureResourceGroup at command pipeline position 1
-	Supply values for the following parameters:
-	(Type !? for Help.)
-	administratorLoginPassword: **********
+    cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
+    Supply values for the following parameters:
+    (Type !? for Help.)
+    administratorLoginPassword: ********
 
-**New-AzureResourceGroup** は作成してデプロイしたリソース グループを返します。
+コマンドを実行してリソースが作成されると、メッセージが返されます。最終的に、デプロイの結果が表示されます。
 
-わずかな手順で、複雑な Web サイトに必要なリソースを作成してデプロイしました。テンプレート ギャラリーには、このタスクを実行するために必要なほとんどすべての情報が用意されています。また、タスクは簡単に自動化されます。
+    DeploymentName    : azuredeploy
+    ResourceGroupName : TestRG1
+    ProvisioningState : Succeeded
+    Timestamp         : 10/16/2015 12:55:50 AM
+    Mode              : Incremental
+    TemplateLink      :
+    Parameters        :
+                    Name             Type                       Value
+                    ===============  =========================  ==========
+                    hostingPlanName  String                     freeplanwest
+                    serverName       String                     exampleserver
+                    databaseName     String                     exampledata
+                    administratorLogin  String                  exampleadmin
+                    administratorLoginPassword  SecureString
+
+    Outputs           :
+
+わずかな手順で、複雑な Web サイトに必要なリソースを作成してデプロイしました。
 
 ## リソース グループに関する情報を取得します。
 
-リソース グループを作成すると、AzureResourceManager モジュールのコマンドレットを使用してリソース グループを管理できます。
+リソース グループを作成したら、リソース マネージャー モジュールでコマンドレットを使用してリソース グループを管理できます。
 
-- サブスクリプションのすべてのリソース グループを取得するには、**Get-AzureResourceGroup** コマンドレットを使用します。
+- サブスクリプションのすべてのリソース グループを取得するには、**Get-AzureRmResourceGroup** コマンドレットを使用します。
 
-		PS C:\>Get-AzureResourceGroup
+		PS C:\>Get-AzureRmResourceGroup
 
 		ResourceGroupName : TestRG
-		Location          : eastasia
+		Location          : westus
 		ProvisioningState : Succeeded
 		Tags              :
-		ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
+		ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG
 		
 		...
 
-- リソース グループのリソースを取得するには、**Get-AzureResource** コマンドレットおよびその ResourceGroupName パラメーターを使用します。パラメーターがない場合、Get-AzureResource は Azure サブスクリプション内のすべてのリソースを取得します。
+- リソース グループのリソースを取得するには、**Get-AzureRmResource** コマンドレットとその ResourceGroupName パラメーターを使用します。パラメーターがない場合、Get-AzureRmResource は Azure サブスクリプション内のすべてのリソースを取得します。
 
-		PS C:\> Get-AzureResource -ResourceGroupName TestRG
+		PS C:\> Get-AzureRmResource -ResourceGroupName TestRG1
 		
-		ResourceGroupName : TestRG
-		Location          : eastasia
-		ProvisioningState : Succeeded
-		Tags              :
-		
-		Resources         :
-				Name                   Type                          Location
-				----                   ------------                  --------
-				ServerErrors-TestSite  microsoft.insights/alertrules         eastasia
-	        	TestPlan-TestRG        microsoft.insights/autoscalesettings  eastus
-	        	TestSite               microsoft.insights/components         centralus
-	         	testserver             Microsoft.Sql/servers                 eastasia
-	        	TestDB                 Microsoft.Sql/servers/databases       eastasia
-	        	TestPlan               Microsoft.Web/serverFarms             eastasia
-	        	TestSite               Microsoft.Web/sites                   eastasia
-		ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
+		Name              : exampleserver
+                ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1/providers/Microsoft.Sql/servers/tfserver10
+                ResourceName      : exampleserver
+                ResourceType      : Microsoft.Sql/servers
+                Kind              : v12.0
+                ResourceGroupName : TestRG1
+                Location          : westus
+                SubscriptionId    : {guid}
+                
+                ...
+	        
 
 ## リソース グループへの追加
 
-- リソース グループにリソースを追加するには、**New-AzureResource** コマンドレットを使用します。このコマンドは、新しい Web サイトを TestRG リソース グループに追加します。このコマンドは、テンプレートを使用しないため、もう少し複雑です。 
-
-        PS C:\>New-AzureResource -Name TestSite2 -Location "North Europe" -ResourceGroupName TestRG -ResourceType "Microsoft.Web/sites" -ApiVersion 2014-06-01 -PropertyObject @{"name" = "TestSite2"; "siteMode"= "Limited"; "computeMode" = "Shared"}
-
-- テンプレート ベースの新しいデプロイをリソース グループに追加するには、**New-AzureResourceGroup デプロイ** コマンドを使用します。
-
-		PS C:\>New-AzureResourceGroupDeployment ` 
-		-ResourceGroupName TestRG `
-		-GalleryTemplateIdentity Microsoft.WebSite.0.2.6-preview `
-		-siteName TestWeb2 `
-		-hostingPlanName TestDeploy2 `
-		-siteLocation "North Europe" 
+リソース グループにリソースを追加するには、**New-AzureRmResource** コマンドレットを使用できます。ただし、この方法でリソースを追加した場合は、その新しいリソースがテンプレート内には存在しないため、将来混乱が生じる可能性があります。元のテンプレートを再度デプロイすると、不完全なソリューションがデプロイされることになります。頻繁にデプロイしていれば、新しいリソースをテンプレートに追加して再度デプロイする方が簡単で確実であることがわかります。
 
 ## リソースの移動
 
@@ -332,49 +420,27 @@ Web サイトの名前を入力して、各パラメーターの Tab 処理を�
 
 ## リソース グループの削除
 
-- リソース グループからリソースを削除するには、**Remove-AzureResource** コマンドレットを使用します。このコマンドレットはリソースを削除しますが、リソース グループは削除しません。
+- リソース グループからリソースを削除するには、**Remove-AzureRmResource** コマンドレットを使用します。このコマンドレットはリソースを削除しますが、リソース グループは削除しません。
 
-	このコマンドは、TestRG リソース グループから TestSite2 Web サイトを削除します。
+	このコマンドは、TestRG リソース グループから TestSite Web サイトを削除します。
 
-		Remove-AzureResource -Name TestSite2 -ResourceGroupName TestRG -ResourceType "Microsoft.Web/sites" -ApiVersion 2014-06-01
+		Remove-AzureRmResource -Name TestSite -ResourceGroupName TestRG1 -ResourceType "Microsoft.Web/sites" -ApiVersion 2015-08-01
 
-- リソース グループを削除するには、**Remove-AzureResourceGroup** コマンドレットを使用します。このコマンドレットは、リソース グループとそのリソースを削除します。
+- リソース グループを削除するには、**Remove-AzureRmResourceGroup** コマンドレットを使用します。このコマンドレットは、リソース グループとそのリソースを削除します。
 
-		PS C:\ps-test> Remove-AzureResourceGroup -Name TestRG
+		PS C:\> Remove-AzureRmResourceGroup -Name TestRG1
 		
 		Confirm
-		Are you sure you want to remove resource group 'TestRG'
+		Are you sure you want to remove resource group 'TestRG1'
 		[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 
-
-## リソース グループのトラブルシューティング
-AzureResourceManager モジュールのコマンドレットで試してみたように、エラーが発生する可能性があります。このセクションのヒントを使用してエラーを解決してください。
-
-### エラーの防止
-
-AzureResourceManager モジュールにはエラーを防止するためのコマンドレットが含まれています。
-
-
-- **Get-AzureLocation**: このコマンドレットは、各種のリソースをサポートする場所を取得します。リソースの場所を入力する前に、このコマンドレットを使用してその場所がリソースの種類をサポートしていることを確認します。
-
-
-- **Test-AzureResourceGroupTemplate**: テンプレートとテンプレート パラメーターを使用する前にテストします。カスタム テンプレートまたはギャラリー テンプレートと、使用するテンプレート パラメーター値を入力します。このコマンドレットは、テンプレートが内部的に一貫性があるかどうか、およびパラメーター値セットがテンプレートと一致するかどうかをテストします。
-
-
-
-### エラーの修正
-
-- **Get-AzureResourceGroupLog**: このコマンドレットは、リソース グループの各デプロイのログのエントリを取得します。問題が生じた場合は、デプロイ ログを調べることにから開始します。 
-
-- **Verbose および Debug**: AzureResourceManager モジュールのこのコマンドレットは、実際の作業を行う REST API を呼び出します。API が返すメッセージを表示するには、$DebugPreference 変数を "Continue" に設定して、コマンドで Verbose 共通パラメーターを使用します。多くの場合、メッセージはエラーの原因に関する重要な手掛かりを提供します。
-
-- **Azure の資格情報が設定されていないか、期限が切れています**: Windows PowerShell セッションの資格情報を更新するには、Add-AzureAccount コマンドレットを使用します。発行設定ファイルの資格情報は、AzureResourceManager モジュールのコマンドレットには十分ではありません。
 
 
 ## 次のステップ
 
-- リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)に関するページを参照してください。
-- テンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./resource-group-template-deploy.md)」を参照してください。
-- プロジェクトをデプロイする方法の詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
+- リソース マネージャーのテンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)」を参照してください。
+- テンプレートをデプロイする方法の詳細については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./resource-group-template-deploy.md)」を参照してください。
+- プロジェクトのデプロイの詳細な例については、[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)方法に関するページを参照してください。
+- 失敗したデプロイのトラブルシューティングについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](./virtual-machines/resource-group-deploy-debug.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

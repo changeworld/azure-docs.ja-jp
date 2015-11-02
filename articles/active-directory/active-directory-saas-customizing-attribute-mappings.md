@@ -1,10 +1,10 @@
 <properties
-	pageTitle="属性マッピングのカスタマイズ"
+	pageTitle="属性マッピングのカスタマイズ | Microsoft Azure"
 	description="Azure Active Directory における SaaS アプリの属性マッピングとは何かと、この属性マッピングをビジネス ニーズに合わせて変更する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="swadhwa"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/27/2015"
+	ms.date="10/20/2015"
 	ms.author="markusvi"/>
 
 
 # 属性マッピングのカスタマイズ
 
 
-Microsoft Azure AD では、Salesforce、Google Apps、およびその他のサードパーティの SaaS アプリケーションへのユーザー プロビジョニングのサポートを提供します。サード パーティの SaaS アプリケーションでユーザー プロビジョニングを有効にした場合、Azure 管理ポータルでは「属性マッピング」と呼ばれる構成の形でその属性値を管理します。
+Microsoft Azure AD では、Salesforce、Google Apps、およびその他のサードパーティの SaaS アプリケーションへのユーザー プロビジョニングのサポートを提供します。サード パーティの SaaS アプリケーションでユーザー プロビジョニングを有効にした場合、Microsoft Azure 管理ポータルでは「属性マッピング」と呼ばれる構成の形でその属性値を管理します。
 
 Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オブジェクトの間には、構成済みの一連の属性マッピングが存在します。アプリによっては、グループや連絡先といった他のタイプのオブジェクトを管理するものもあります。<br>既定の属性マッピングをビジネスのニーズに合わせてカスタマイズできます。つまり、既存の属性マッピングを変更、削除したり、新規の属性マッピングを作成したりすることができます。
 
@@ -90,4 +90,4 @@ Microsoft Azure AD では、同期プロセスの非常に効率的な実装を�
 [3]: ./media/active-directory-saas-customizing-attribute-mappings/ic775420.png
 [4]: ./media/active-directory-saas-customizing-attribute-mappings/ic775421.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -3,7 +3,7 @@
 	description="この記事では、PlayReady と Widevine DRM の両方を使用して AMS で動的に暗号化されたストリームを、Azure Media Services (AMS) を使用して配信する方法について説明します。PlayReady ライセンスは Media Services PlayReady サーバーから取得し、Widevine ライセンスは Axinom ライセンス サーバーから取得します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="willzhan,Juliako" 
+	authors="willzhan,Mingfeiy,rajputam,Juliako" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/14/2015"  
+	ms.date="10/15/2015"  
 	ms.author="juliako"/>
 
 #Axinom を使用して Azure Media Services に Widevine ライセンスを配信する  
@@ -24,7 +24,7 @@
 
 ##概要
 
-Azure Media Services (AMS) で Google Widevine の動的な保護がサポートされるようになりました (詳細については、[Mingfei のブログ](https://azure.microsoft.com/JA-JP/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)を参照してください)。さらに、Azure Media Player (AMP) では、Widevine がサポートされるようになりました (詳細については、[AMP のドキュメント](http://amp.azure.net/libs/amp/latest/docs/)を参照してください)。これは、MSE と EME を搭載する最新のブラウザー上でマルチネイティブ DRM (PlayReady と Widevine) による CENC で保護された DASH コンテンツのストリーミングにおける大きな成果です。
+Azure Media Services (AMS) で Google Widevine の動的な保護がサポートされるようになりました (詳細については、[Mingfei のブログ](https://azure.microsoft.com/ja-JP/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)を参照してください)。さらに、Azure Media Player (AMP) では、Widevine がサポートされるようになりました (詳細については、[AMP のドキュメント](http://amp.azure.net/libs/amp/latest/docs/)を参照してください)。これは、MSE と EME を搭載する最新のブラウザー上でマルチネイティブ DRM (PlayReady と Widevine) による CENC で保護された DASH コンテンツのストリーミングにおける大きな成果です。
 
 >[AZURE.NOTE]現在、Media Services では、Widevine ライセンス サーバーは提供されていません。Widevine ライセンスは、AMS パートナーの [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) を通して配信できます。
 
@@ -190,14 +190,11 @@ Axinom Widevine ライセンス サーバーを利用する解決策では、次
 
 パラメーター|使用方法
 ---|---
-通信キー ID|JWT トークンのクレーム "com\_key\_id" の値として含める必要があります ([この](media-services-axinom-integration.md#jwt-token-generation) セクションを参照してください)。
+通信キー ID|JWT トークンの要求 "com\_key\_id" の値として含める必要があります ([この](media-services-axinom-integration.md#jwt-token-generation) セクションを参照してください)。
 通信キー|JWT トークンの署名キーとして使用する必要があります ([この](media-services-axinom-integration.md#jwt-token-generation)セクションを参照してください)。
 キー シード|任意のコンテンツ キー ID でコンテンツ キーを生成するために使用する必要があります ([この](media-services-axinom-integration.md#content-protection)セクションを参照してください)。
 Widevine ライセンス取得 URL|DASH ストリーミングの資産配信ポリシーの構成で使用する必要があります ([この](media-services-axinom-integration.md#content-protection)セクションを参照してください)。
-コンテンツ キー ID|JWT トークンの権利メッセージ クレームの値の一部として含める必要があります ([この](media-services-axinom-integration.md#jwt-token-generation)セクションを参照してください)。 
-
-
-
+コンテンツ キー ID|JWT トークンの権利メッセージ 要求の値の一部として含める必要があります ([この](media-services-axinom-integration.md#jwt-token-generation)セクションを参照してください)。 
 
 ##Media Services のラーニング パス
 
@@ -206,4 +203,8 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-<!---HONumber=Oct15_HO3-->
+###謝辞 
+
+この文書の作成に協力してくださった Axinom 社の Kristjan Jõgi、Mingfei Yan、Amit Rajput に感謝します。
+
+<!---HONumber=Oct15_HO4-->

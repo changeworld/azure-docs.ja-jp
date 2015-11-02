@@ -14,13 +14,12 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/21/2015"
+	ms.date="10/20/2015"
 	ms.author="josephd"/>
 
 # SharePoint イントラネット ファーム ワークロードのフェーズ 5: 可用性グループの作成と SharePoint データベースの追加
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
- 
+[AZURE.INCLUDE [learn-about-deployment-models-classic-include](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャーのデプロイ モデル。
 
 イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこの最終フェーズでは、新しい AlwaysOn 可用性グループを作成し、SharePoint ファームのデータベースを追加します。
 
@@ -129,4 +128,4 @@ SharePoint と SQL Server AlwaysOn 可用性グループの追加情報につい
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

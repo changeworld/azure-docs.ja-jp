@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="10/16/2015"
 	ms.author="markusvi"/>
 
 
@@ -64,8 +64,7 @@ Azure AD への QuickHelp の統合を構成するには、ギャラリーから
 4. ページの下部にある **[追加]** をクリックします。<br><br>![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br>![アプリケーション][4]<br>
 6. 検索ボックスに、「**QuickHelp**」と入力します。<br><br>![アプリケーション][5]<br>
-7. 結果ウィンドウで **[QuickHelp]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br>
-
+7. 結果ウィンドウで **[QuickHelp]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>![アプリケーション][500]<br>
 
 
 ##  Azure AD シングル サインオンの構成とテスト
@@ -83,7 +82,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 ### Azure AD シングル サインオンの構成
 
-このセクションの目的は、Azure AD ポータルで Azure AD のシングル サインオンを有効にすることと、QuickHelp アプリケーションでシングル サインオンを構成するにです。<br>
+このセクションの目的は、Azure AD ポータルで Azure AD のシングル サインオンを有効にすることと、QuickHelp アプリケーションでシングル サインオンを構成することです。<br>
 
 **QuickHelp で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
@@ -107,14 +106,14 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 1. QuickHelp 企業サイトに管理者としてサインオンします。
 
-2. 上部のメニューで **[管理者]** をクリックします。<br><br>![Configure Single Sign-On][21]<br>
+2. 上部のメニューで **[管理者]** をクリックします。<br><br>![シングル サインオンの構成][21]<br>
 
 
-1. **[QuickHelp の管理者]** メニューの **[設定]** をクリックします。<br><br>![Configure Single Sign-On][22]<br>
+1. **[QuickHelp の管理者]** メニューの **[設定]** をクリックします。<br><br>![シングル サインオンの構成][22]<br>
 
 1. **[認証設定]** をクリックします。
 
-1. **[認証設定]** ページで、次の手順に従います。<br><br>![Configure Single Sign-On][23]<br>
+1. **[認証設定]** ページで、次の手順に従います。<br><br>![シングル サインオンの構成][23]<br>
 
     a.**SSO 型** として **WSFederation** を選びます。
 
@@ -140,13 +139,13 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_03.png)<br>
  
-4. 下部にあるツールバーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログを開きます。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_04.png)<br>
+4. 下部にあるツールバーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログを開きます。 <br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_04.png)<br>
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_05.png)<br>
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 <br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_05.png)<br>
 
     a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
-    b.[ユーザー名] **テキスト ボックス**に「**BrittaSimon**」と入力します。
+    b.**[ユーザー名]** テキスト ボックスに「**BrittaSimon**」と入力します。
 
     c.**[次へ]** をクリックします。
 
@@ -158,9 +157,9 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
     c.**[表示名]** テキスト ボックスに「**Britta Simon**」と入力します。
 
-    d.**[ロール]** 一覧で **[ユーザー]** を選択します。**[次へ]** をクリックします。
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。e.**[次へ]** をクリックします。
 
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_07.png)<br>
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_07.png) <br>
  
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_08.png)<br>
   
@@ -217,7 +216,7 @@ Britta が正常にインポートされた場合は、ユーザーの一覧の�
 
 2. アプリケーションの一覧で **[QuickHelp]** を選択します。<br><br>![ユーザーの割り当て][202]<br>
 
-1. 上部のメニューで **[ユーザー]** をクリックします。<br> <br>![ユーザーの割り当て][203]<br>
+1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
 
 1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
@@ -243,6 +242,8 @@ Britta が正常にインポートされた場合は、ユーザーの一覧の�
 [3]: ./media/active-directory-saas-quickhelp-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-quickhelp-tutorial/tutorial_general_04.png
 [5]: ./media/active-directory-saas-quickhelp-tutorial/tutorial_quickhelp_01.png
+[500]: ./media/active-directory-saas-quickhelp-tutorial/tutorial_quickhelp_14.png
+
 
 [6]: ./media/active-directory-saas-quickhelp-tutorial/tutorial_general_05.png
 [7]: ./media/active-directory-saas-quickhelp-tutorial/tutorial_quickhelp_02.png
@@ -272,4 +273,4 @@ Britta が正常にインポートされた場合は、ユーザーの一覧の�
 [401]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_401.png
 [402]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_402.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

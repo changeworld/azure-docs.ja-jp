@@ -3,7 +3,7 @@
 	description="このトピックでは、Elemental Live エンコーダーを構成して、ライブ エンコードで有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="Juliako,cenkdin,anilmur" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -11,9 +11,9 @@
 	ms.service="media-services" 
 	ms.workload="media" 
 	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
+	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="09/29/2015"    
+	ms.date="10/15/2015"  
 	ms.author="juliako"/>
 
 #Elemental Live エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する 
@@ -171,4 +171,4 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

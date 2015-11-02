@@ -5,7 +5,7 @@
    documentationCenter="NA"
    authors="TwoUnder"
    manager="barbkess"
-   editor="JRJ@BigBangData.co.uk"/>
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="10/21/2015"
    ms.author="mausher;barbkess"/>
 
 
@@ -22,12 +22,22 @@
 
 bcp を使用すれば、すばやく、簡単に SQL Data Warehouse データベースとの間で小規模なデータ セットを読み込み/抽出できます。bcp を使用して読み込み/抽出する場合に推奨される正確なデータ量は、Azure データ センターへのネットワーク接続によって異なります。一般に、ディメンション テーブルは読み込んで抽出できますが、非常に大容量のファクト テーブルは読み込みや抽出に非常に時間がかかる場合があります。
 
-bcp を使用して次を行うことができます。- 簡単なコマンド ライン ユーティリティを使用して、SQL Data Warehouse にデータを読み込む。- 簡単なコマンド ライン ユーティリティを使用して、SQL Data Warehouse からデータを抽出する。
+bcp では次のことができます。
 
-このチュートリアルでは次を行う方法を説明します。- bcp の in コマンドを使用してテーブルにデータをインポートする。- bcp の out コマンドを使用してテーブルからデータをエクスポートする。
+- 簡単なコマンド ライン ユーティリティを使用して、SQL Data Warehouse にデータを読み込みます。
+- 簡単なコマンド ライン ユーティリティを使用して、SQL Data Warehouse からデータを抽出します。
+
+ここでは、次の操作方法について説明します。
+ 
+- bcp in コマンドを使用してテーブルにデータをインポートする
+- bcp out コマンドを使用してテーブルからデータをエクスポートする
 
 ## 前提条件
-このチュートリアルを進めるには、次を行っておく必要があります。- SQL Data Warehouse のデータベースを準備する。- bcp コマンド ライン ユーティリティをインストールする。- SQLCMD コマンド ライン ユーティリティをインストールする。
+このチュートリアルを進めるには、次が必要です。
+
+- SQL Data Warehouse データベース
+- インストールされた bcp コマンド ライン ユーティリティ
+- インストールされた SQLCMD コマンド ライン ユーティリティ
 
 >[AZURE.NOTE]bcp および sqlcmd ユーティリティは [Microsoft ダウンロード センター][]からダウンロードできます。
 
@@ -152,4 +162,4 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 <!--Other Web references-->
 [Microsoft ダウンロード センター]: http://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

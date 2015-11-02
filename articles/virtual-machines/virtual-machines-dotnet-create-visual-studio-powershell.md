@@ -1,11 +1,12 @@
 <properties
 	pageTitle="Visual Studio を使用して Web プロジェクト用の VM を作成する | Microsoft Azure"
-	description="Web サイト用の仮想マシンを作成します。"
+	description="Web アプリケーション用の仮想マシンを作成します"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="kempb"
 	manager="douge"
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -13,21 +14,23 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/10/2015"
+	ms.date="10/19/2015"
 	ms.author="kempb"/>
 
-# Visual Studio で Web サイト用の仮想マシンを作成する
+# Visual Studio での Web アプリケーション用仮想マシンの作成
 
-Azure の Web サイト用の Web プロジェクトを作成する際に、Azure 内で仮想マシンをプロビジョニングできます。さらに、他のソフトウェアで仮想マシンを構成したり、診断やデバッグのために仮想マシンを使用したりすることができます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
-Web サイトを作成する際に仮想マシンを作成するには、次の手順に従います。
+Azure 用の Web アプリケーション プロジェクトを作成するとき、Azure 内で仮想マシンをプロビジョニングできます。さらに、他のソフトウェアで仮想マシンを構成したり、診断やデバッグのために仮想マシンを使用したりすることができます。
+
+Web アプリケーションを作成するときに仮想マシンを作成するには、次の手順に従います。
 
 1. Visual Studio で、**[ファイル]** > **[新規作成]** > **[プロジェクト]** > **[Web]** の順にクリックし、(**[Visual C#]** ノードまたは **[Visual Basic]** ノードの) **[ASP.NET Web アプリケーション]** を選択します。
 2. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、必要な Web アプリケーションの種類を選択します。このダイアログ ボックスの Azure セクション (右下隅) にある **[クラウドでのホスト]** チェック ボックスがオンになっていることを確認してください (インストールによっては、このチェック ボックスに **"リモート リソースの作成"** というラベルが付いている場合もあります)。
 
 	![][0]
 
-3. [Microsoft Azure] の下のドロップダウン リストから **[仮想マシン]** を選択し、**[OK]** をクリックします。
+3. この例では、[Microsoft Azure] の下のドロップダウン リストから **[仮想マシン (v1)]** を選択し、**[OK]** をクリックします。
 4. サインインを要求されたら Azure にサインインします。**[仮想マシンを作成する]** ダイアログ ボックスが表示されます。
 
 	![][2]
@@ -46,13 +49,13 @@ Web サイトを作成する際に仮想マシンを作成するには、次の�
 
 	* 既存の仮想マシンがない場合は、作成します。
 	* `devtest` で始まる名前のストレージ アカウントを作成します。ただし、指定リージョンにこのストレージ アカウントがない場合に限ります。
-	* 仮想マシン用のコンテナーとしてクラウド サービスを作成し、Web サイト用の Web ロールを作成します。
+	* 仮想マシン用のコンテナーとしてクラウド サービスを作成し、Web アプリケーション用の Web ロールを作成します。
 	* 仮想マシンで Web デプロイを構成します。
 	* 仮想マシンで IIS および ASP.NET を構成します。
 
 	![][4]
 
-<br/> 13.(必要に応じて) 新しい仮想マシンに接続できます。**サーバー エクスプローラー**で、**[仮想マシン]** ノードを展開し、作成した仮想マシンのノードをクリックします。そのショートカット メニューで、**[リモート デスクトップを使用して接続する]** をクリックします。
+13. (必要に応じて) 新しい仮想マシンに接続できます。**サーバー エクスプローラー**で、**[Virtual Machines]** ノードを展開し、作成した仮想マシンのノードをクリックします。そのショートカット メニューで、**[リモート デスクトップを使用して接続する]** をクリックします。または、**クラウド エクスプローラー**でショートカット メニューの **[ポータルで開く]** を選択し、仮想マシンに接続することもできます。
 
  ![][5]
 
@@ -68,4 +71,4 @@ Web サイトを作成する際に仮想マシンを作成するには、次の�
 [4]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/CreateVM_SolutionExplorer.png
 [5]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/VS_Create_VM_Connect.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

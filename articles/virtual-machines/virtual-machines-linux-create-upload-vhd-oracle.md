@@ -23,6 +23,8 @@
 - [Azure 用の Oracle Linux 6.4 以上の仮想マシンの準備](#oracle6)
 - [Azure 用の Oracle Linux 7.0 以上の仮想マシンの準備](#oracle7)
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 ##前提条件##
 
 この記事では、既に Oracle Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。.vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
@@ -229,4 +231,4 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

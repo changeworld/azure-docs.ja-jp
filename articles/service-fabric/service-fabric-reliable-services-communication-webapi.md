@@ -1,6 +1,6 @@
 <properties
-   pageTitle="OWIN 自己ホストによる Service Fabric Web API |Microsoft Azure"
-   description="この Service Fabric の記事では、Reliable Services で OWIN 自己ホストと ASP.NET Web API を使用して、サービスの通信を実装する方法を説明しています。"
+   pageTitle="ASP.NET Web API によるサービス通信 | Microsoft Azure"
+   description="Reliable Services API で OWIN 自己ホストと ASP.NET Web API を使用して、サービスの通信を実装する方法を説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -614,4 +614,4 @@ ASP.NET 5 でも、Web アプリケーションで*ホスト*から*アプリケ
 
 [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

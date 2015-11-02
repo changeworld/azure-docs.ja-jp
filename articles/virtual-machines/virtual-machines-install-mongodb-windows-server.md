@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/13/2015"
+	ms.date="10/14/2015"
 	ms.author="dkshir"/>
 
-#Windows Server を実行する仮想マシンに MongoDB をインストールする
+#Windows VM への MongoDB のインストール
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
@@ -51,4 +51,4 @@
 [MongoDB]: http://www.mongodb.org/
 [AzureManagementPortal]: http://manage.windowsazure.com
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

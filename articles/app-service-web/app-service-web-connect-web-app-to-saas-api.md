@@ -1,14 +1,14 @@
 <properties 
 	pageTitle="Azure App Service の API アプリに Web アプリを接続する" 
 	description="このチュートリアルでは、Azure App Service でホストされる ASP.NET Web アプリから API アプリを使用する方法について示します。" 
-	services="app-service" 
+	services="app-service\web" 
 	documentationCenter=".net" 
 	authors="syntaxc4" 
 	manager="yochayk" 
 	editor="jimbe"/>
 
 <tags
-	ms.service="app-service"
+	ms.service="app-service-web"
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
@@ -81,9 +81,7 @@
         &lt;li>&lt;a href="mailto:@contact.EmailAddress">@contact.Name &amp;lt;@contact.EmailAddress&amp;gt;&lt;/a>&lt;/li>
     }
 &lt;/ul> 
-	</pre>
-
-	![Contact.cshtml コードの更新](./media/app-service-web-connect-web-app-to-saas-api/6-Update-View-To-Reflect-Changes.png)
+</pre>![Contact.cshtml コードの更新](./media/app-service-web-connect-web-app-to-saas-api/6-Update-View-To-Reflect-Changes.png)
 
 ## App Service の Web Apps に Web アプリケーションをデプロイする
 
@@ -96,4 +94,4 @@
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -35,15 +35,15 @@
 * Azure SQL Database を使用してリレーショナル データをクラウドに保存する方法
 * データベースを使用する Web プロジェクトを、Azure App Service の [Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)にデプロイする方法
 
->[AZURE.NOTE]これは長いチュートリアルです。Azure App Service と Visual Studio Web プロジェクトの簡単な概要については、「[Azure App Service での ASP.NET Web アプリの作成](web-sites-dotnet-get-started.md)」をご覧ください。
+>[AZURE.NOTE]これは長いチュートリアルです。Azure App Service と Visual Studio Web プロジェクトの簡単な概要については、「[Azure App Service での ASP.NET Web アプリの作成](web-sites-dotnet-get-started.md)」をご覧ください。トラブルシューティングの情報については、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
 >
->Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 前提条件
 
 このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 
-開発環境をセットアップするには、[Visual Studio 2013 Update 4](http://go.microsoft.com/fwlink/?LinkId=390521) 以降および最新バージョンの [Azure SDK for .NET](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409) をインストールする必要があります。この記事は、Visual Studio Update 4 および SDK 2.7.1 を対象にしています。同じ手順が最新の [Azure SDK for .NET](http://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409) をインストールした Visual Studio 2015 に適用されますが、画面によっては画像のものと異なる場合があります。
+開発環境をセットアップするには、[Visual Studio 2013 Update 4](http://go.microsoft.com/fwlink/?LinkId=390521) 以降および最新バージョンの [Azure SDK for .NET](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409) をインストールする必要があります。この記事は、Visual Studio Update 4 および SDK 2.7.1 を対象にしています。同じ手順は、最新の [Azure SDK for .NET](http://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409) がインストールされている Visual Studio 2015 でも使用できますが、一部の画面は画像と異なる場合があります。
 
 ## ASP.NET MVC 5 アプリケーションを作成する
 
@@ -67,19 +67,19 @@
 
 1. **[OK]** をクリックします。
 
-3. **[Microsoft Azure Web アプリ設定の構成]** ダイアログが表示されたら、Azure にサインインしていることを確認してください。サインインしていない場合はサインインしてください。あるいは、ログインが失効している場合、資格情報を再入力してください。
+3. **[Microsoft Azure Web アプリ設定の構成]** ダイアログが表示されたら、Azure にサインインしていることを確認してください。まだサインインしていない場合はサインインしてください。また、ログインが失効している場合は資格情報を再入力してください。
 
 	![資格情報を再入力する](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/reentercredentials.png)
 
-2. Web アプリの名前を指定する場合、**[Web アプリ名]** ボックスの値を変更してください。
+2. Web アプリに名前を指定する場合は、**[Web アプリ名]** ボックスの値を変更します。
 
 	Web アプリの URL は「{名前}.azurewebsites.net」になります。そのため、名前は azurewebsites.net ドメインで一意にする必要があります。構成ウィザードからはプロジェクト名の「ContactManager」に数字を付けたものが一意の名前として提案されます。このチュートリアルではそれで問題ありません。
 
-5. **[App Service プラン]** ドロップダウンから **[新しい App Service プランの作成]** を選択し、図のように「StandardWeb」のような名前を入力します。
+5. **[App Service プラン]** ドロップダウンから **[新しい App Service プランの作成]** を選択し、図に示すように「StandardWeb」などの名前を入力します。
 
 	既存の App Service プランを選択することもできます。App Service プランの詳細については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
 
-5. **[リソース グループ]** ドロップダウンから **[新規リソース グループの作成]** を選択し、図のように「ExampleMVC」のような名前を入力します。
+5. **[リソース グループ]** ドロップダウンから **[新規リソース グループの作成]** を選択し、図に示すように「ExampleMVC」などの名前を入力します。
 
 	既存のリソース グループを選択することもできます。ただし、新しいリソース グループを作成し、このチュートリアルでそれだけを使用した場合、完了後、チュートリアルのために作成したすべての Azure リソースを簡単に削除できます。リソース グループの詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
 
@@ -288,11 +288,11 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. **[追加]** をクリックします。
 
-   Visual Studio によって、**Contact** オブジェクトの CRUD データベース操作に対応したメソッドとビューでコントローラーが作成されます。
+   Visual Studio によって、**Contact** オブジェクトの CRUD データベース操作に対応したメソッドとビューを含むコントローラーが作成されます。
 
 ## Migrations の有効化、データベースの作成、サンプル データとデータ初期化子の追加 ##
 
-次の作業では、作成したデータ モデルに基づいてデータベース テーブルを作成するための [Code First Migrations](http://msdn.microsoft.com/library/hh770484.aspx) 機能を有効化すると共に、
+次の作業では、作成したデータ モデルに基づいてデータベース テーブルを作成するための [Code First Migrations](http://msdn.microsoft.com/library/hh770484.aspx) 機能を有効にします。
 
 1. **[ツール]** メニューの **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** を順に選択します。
 
@@ -390,15 +390,17 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 ## OAuth2 プロバイダーを追加する
 
-[OAuth](http://oauth.net/ "http://oauth.net/") は、Web、モバイル、およびデスクトップのアプリケーションからシンプルで標準的な方法で安全に認証するためのオープン プロトコルです。ASP.NET MVC インターネット テンプレートは OAuth を使用して、Facebook、Twitter、Google、Microsoft を認証プロバイダーとしてサポートします。このチュートリアルでは Google のみを認証プロバイダーとして使用しますが、コードを少し変更すれば他のプロバイダーも使用できます。他のプロバイダーを実装する手順は、このチュートリアルで説明する手順とほとんど同じです。Facebook を認証プロバイダーとして使用する方法については、「[MVC 5 App with Facebook, Twitter, LinkedIn and Google OAuth2 Sign-on (Facebook や Google の OAuth2/OpenID サインオンを使用した ASP.NET MVC 5 アプリケーション)](http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on)」を参照してください。
+>[AZURE.NOTE]Google および Facebook の開発者ポータル サイトの使用方法の詳細な手順については、このチュートリアルから ASP.NET サイト上のチュートリアルへのリンクを参照してください。ただし、Google と Facebook のサイトの更新頻度はこれらのチュートリアルよりも高いため、チュートリアルは最新の状態でない場合もあります。手順に従っていて問題が発生した場合は、このチュートリアルの最後にある Disqus のお勧めのコメントで、変更内容の一覧を確認してください。
+
+[OAuth](http://oauth.net/ "http://oauth.net/") は、Web、モバイル、およびデスクトップのアプリケーションからシンプルで標準的な方法で安全に認証するためのオープン プロトコルです。ASP.NET MVC インターネット テンプレートは OAuth を使用して、Facebook、Twitter、Google、Microsoft を認証プロバイダーとしてサポートします。このチュートリアルでは Google のみを認証プロバイダーとして使用しますが、コードを少し変更すれば他のプロバイダーも使用できます。他のプロバイダーを実装する手順は、このチュートリアルで説明する手順とほとんど同じです。Facebook を認証プロバイダーとして使用する方法については、[Facebook、Twitter、LinkedIn、Google の OAuth2 サインオンを使用した MVC 5 アプリケーション](http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on)に関するページを参照してください。
 
 このチュートリアルでは、認証の他にロールを使用して権限を付与します。*canEdit* ロールに追加したユーザーのみがデータを変更 (連絡先を作成、編集、削除) できます。
 
-1. 「[MVC 5 App with Facebook, Twitter, LinkedIn and Google OAuth2 Sign-on (Facebook や Google の OAuth2/OpenID サインオンを使用した ASP.NET MVC 5 アプリケーション)](http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on#goog)」の「**Creating a Google app for OAuth 2 to set up a Google app for OAuth2 (OAuth 2 用の Google アプリを作成して OAuth2 用に Google アプリをセットアップする)**」の手順に従います。
+1. [Facebook、Twitter、LinkedIn、Google の OAuth2/OpenID サインオンを使用した MVC 5 アプリケーション](http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on#goog)に関するページの**OAuth 2 用の Google アプリを作成して OAuth2 用に Google アプリをセットアップする方法**に関するセクションの手順に従います。
 
 3. アプリケーションを実行してテストし、Google 認証を使用してログオンできることを確認します。
 
-2. プロバイダー固有のアイコンを使用してソーシャル ログイン ボタンを作成する場合は、「[Pretty social login buttons for ASP.NET MVC 5 (ASP.NET MVC 5 用ソーシャル ログイン ボタン)](http://www.jerriepelser.com/blog/pretty-social-login-buttons-for-asp-net-mvc-5)」をご覧ください。
+2. プロバイダー固有のアイコンを使用してソーシャル ログイン ボタンを作成する場合は、[ASP.NET MVC 5 用ソーシャル ログイン ボタン](http://www.jerriepelser.com/blog/pretty-social-login-buttons-for-asp-net-mvc-5)に関するページを参照してください。
 
 ## メンバーシップ API を使用する
 
@@ -439,15 +441,15 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 		        // Code removed for brevity
 		}
 
-	次の画像は、*Seed* メソッドの変更を示しています。
+	次の画像は、*Seed* メソッドに対する変更を示しています。
 
 	![code image](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss24.PNG)
 
-	このコードでは、*canEdit* という名前の新しいロールを作成し、新しいローカル ユーザー **user1@contoso.com* を作成して、**user1@contoso.com* を *canEdit* ロールに追加します。詳細については、ASP.NET サイトの [ASP.NET Identity のチュートリアル](http://www.asp.net/identity/overview/features-api)をご覧ください。
+	このコードでは、*canEdit* という名前の新しいロールを作成し、新しいローカル ユーザー **user1@contoso.com* を作成して、**user1@contoso.com* を *canEdit* ロールに追加します。詳細については、ASP.NET サイトの [ASP.NET Identity のチュートリアル](http://www.asp.net/identity/overview/features-api)を参照してください。
 
 ## 一時的なコードを使用して新しいソーシャル ログイン ユーザーを canEdit ロールに追加する  ##
 
-このセクションでは、Account コントローラーの **ExternalLoginConfirmation** メソッドを一時的に変更して、*canEdit* ロールに新しいユーザーを追加し、OAuth プロバイダーに登録します。将来的には、ユーザー アカウントとロールの作成および編集のために、[WSAT](http://msdn.microsoft.com/library/ms228053.aspx) と同様のツールを提供する予定です。そのときまで、一時的なコードを利用し、同じ機能を実現できます。
+このセクションでは、Account コントローラーの **ExternalLoginConfirmation** メソッドを一時的に変更して、*canEdit* ロールに新しいユーザーを追加し、OAuth プロバイダーに登録します。将来的には、ユーザー アカウントとロールの作成、編集のために、[WSAT](http://msdn.microsoft.com/library/ms228053.aspx) と同様のツールを提供する予定です。そのときまで、一時的なコードを利用し、同じ機能を実現できます。
 
 1. **Controllers\\AccountController.cs** ファイルを開いて、**ExternalLoginConfirmation** メソッドに移動します。
 
@@ -503,7 +505,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 ## SSL と Authorize 属性を使用してアプリケーションを保護する ##
 
-このセクションでは、[Authorize](http://msdn.microsoft.com/library/system.web.mvc.authorizeattribute.aspx) 属性を適用してアクション メソッドへのアクセスを制限します。匿名ユーザーが表示できるのは、home コントローラーの **Index** アクション メソッドだけになります。登録ユーザーは、連絡先データ (Cm コントローラーの **[Index]** ページと **[Details]** ページ)、[About] ページ、[Contact] ページを表示することができます。*canEdit* ロールを与えられているユーザーのみがアクション メソッドを実行してデータを変更できます。
+このセクションでは、[Authorize](http://msdn.microsoft.com/library/system.web.mvc.authorizeattribute.aspx) 属性を適用してアクション メソッドへのアクセスを制限します。匿名ユーザーが表示できるのは、home コントローラーの **Index** アクション メソッドだけになります。登録ユーザーは、連絡先データ (Cm コントローラーの **[Index]** ページと **[Details]** ページ)、[About] ページ、[Contact] ページを表示できます。*canEdit* ロールを与えられているユーザーのみがアクション メソッドを実行してデータを変更できます。
 
 1. *App\_Start\\FilterConfig.cs* ファイルを開き、*RegisterGlobalFilters* メソッドを次の内容に置き換えます (2 つのフィルターを追加します)。
 
@@ -578,7 +580,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. **[About]** または **[Contact]** リンクをクリックします。匿名ユーザーはこれらのページを表示できないため、ログイン ページにリダイレクトされます。
 
-1. **[Register as a new user]** リンクをクリックし、電子メールが **joe@contoso.com* であるローカル ユーザーを追加します。*Joe* であれば Home ページ、About ページ、Contact ページを表示できることを確認します。
+1. **[Register as a new user]** リンクをクリックし、メール アドレスが **joe@contoso.com* であるローカル ユーザーを追加します。*Joe* であれば Home ページ、About ページ、Contact ページを表示できることを確認します。
 
 	![login](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss14.PNG)
 
@@ -622,17 +624,17 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 ### Web アプリを停止して第三者の登録を防ぐ  
 
-1. **サーバー エクスプ ローラー**で、**Azure > App Service > {リソース グループ} > {web アプリ}** の順に移動します。
+1. **サーバー エクスプローラー**で、**[Azure]、[App Service]、{リソース グループ}、{Web アプリ}** の順に移動します。
 
 4. Web アプリを右クリックし、**[停止]** を選択します。
 
-	[Azure ポータル](https://portal.azure.com/)から Web アプリのブレードに進み、ブレード上部の **[停止]** アイコンをクリックする方法もあります。
+	また、[Azure プレビュー ポータル](https://portal.azure.com/)から Web アプリのブレードに進み、ブレード上部の **[停止]** アイコンをクリックする方法もあります。
 
 	![web アプリ ポータルの停止](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/stopweb.png)
 
 ### AddToRoleAsync の削除、発行、テスト
 
-1. Account コントローラーの **ExternalLoginConfirmation** メソッドから次のコードをコメント アウト、または削除します。
+1. Account コントローラーの **ExternalLoginConfirmation** メソッドから次のコードをコメント アウトまたは削除します。
 
 		await UserManager.AddToRoleAsync(user.Id, "canEdit");
 
@@ -658,7 +660,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 	![Register](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss16.PNG)
 
-1. *About* ページと *Contact* ページにアクセスできることを確認します。
+1. *[About]* ページと *[Contact]* ページにアクセスできることを確認します。
 
 	![ログオフ](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss17.PNG)
 
@@ -680,7 +682,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 ## SQL Azure DB を調べる ##
 
-1. **サーバー エクスプ ローラー**で、**Azure > SQL Database > {データベース}** の順に移動します。
+1. **サーバー エクスプローラー**で、**[Azure]、[SQL Databases]、{データベース}** の順に移動します。
 
 2. データベースを右クリックし、**[SQL Server オブジェクト エクスプローラーで開く]** を選択します。
  
@@ -706,6 +708,16 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
  
 3. **UserId** が、**user1@contoso.com* と、登録した Google アカウントの ID であることを確認します。
 
+## トラブルシューティング
+
+問題が発生した場合の対処方法について推奨事項を次に示します。
+
+* SQL データベースのプロビジョニング エラー - 最新の SDK がインストールされていることを確認してください。2.7.1 より前のバージョンでは、一部のシナリオで、VS でデータベース サーバーまたはデータベースを作成しようとするとエラーが発生するというバグがあります。
+* Azure リソースの作成時のエラー メッセージ "お使いのサブスクリプション プランの種類では操作がサポートされていません" - 同上。
+* デプロイ時のエラー - [基本的な ASP.NET のデプロイ](web-sites-dotnet-get-started.md)に関する記事の内容を確認することを検討してください。そのデプロイのシナリオはより単純であるため、同じ問題が発生した場合に分離が簡単になる可能性があります。たとえば、一部のエンタープライズ環境では、企業のファイアウォールにより、Web デプロイから必要な Azure に接続できない場合があります。
+* デプロイ時に Web の発行ウィザードで接続文字列を選択できない - 別の方法を使用して Azure リソースを作成した場合 (例: ポータルで作成した Web アプリや SQL データベースにデプロイする場合)、SQL データベースを Web アプリに関連付けることはできません。最も簡単な解決策として、このチュートリアルで示すように、VS を使用して新しい Web アプリとデータベースを作成します。チュートリアルをもう一度やり直す必要はありません。Web の発行ウィザードで、新しい Web アプリの作成を選択すると、プロジェクトの作成時と同じ Azure リソースの作成ダイアログが表示されます。
+* Google または Facebook の開発者ポータルの指示が古い - このチュートリアルの最後にある Disqus のお勧めのコメントを参照してください。
+
 ## 次のステップ
 
 ユーザーを認証する基本 ASP.NET MVC Web アプリケーションが作成されました。一般的な認証タスクと機密データの保持方法に関する詳細については、次のチュートリアルを参照してください。
@@ -716,7 +728,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 - [Create an ASP.NET MVC 5 App with Facebook and Google OAuth2 (Facebook や Google の OAuth2 を使用した ASP.NET MVC 5 アプリケーションの作成)](http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on)。このチュートリアルでは、ユーザー登録データベースにプロファイル データを追加する方法や、Facebook を認証プロバイダーとして使用する詳細な手順について説明しています。
 - [Getting Started with ASP.NET MVC 5 (ASP.NET MVC 5 の使用)](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
 
-Entity Framework の使用方法に関する詳しいチュートリアルが必要な場合、「[Getting Started with EF and MVC (EF と MVC の使用)](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)」を参照してください。
+Entity Framework の使用方法に関する詳しいチュートリアルについては、[EF と MVC の使用](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)に関するページを参照してください。
 
 このチュートリアルは、Tom Dykstra と Barry Dorrans (Twitter [@blowdart](http://blogs.msdn.com/b/rickandy/)) の協力の下、[Rick Anderson](https://twitter.com/RickAndMSFT) (Twitter [@RickAndMSFT](https://twitter.com/blowdart)) が執筆しました。
 
@@ -786,4 +798,4 @@ Entity Framework の使用方法に関する詳しいチュートリアルが必
 [ImportPublishSettings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ImportPublishSettings.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

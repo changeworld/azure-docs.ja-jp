@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="10/09/2015"
+	ms.date="10/16/2015"
 	ms.author="ryanwi"/>
 
 # PowerShell を使用した Service Fabric アプリケーションのデプロイ、アップグレード、テスト、および削除
@@ -34,13 +34,13 @@ Connect-ServiceFabricCluster
 
 ## タスク: Service Fabric アプリケーションのデプロイ
 
-アプリケーションをビルドし、アプリケーションの種類をパッケージ化したら、Service Fabric クラスターにアプリケーションをデプロイできます。最初に、ソリューション エクスプ ローラーで、**HelloWorldStatefulApplication** を右クリックし、**[パッケージ]** を選択して、Visual Studio で HelloWorldStateful アプリケーションをパッケージ化します。サービス、アプリケーション マニフェスト、およびパッケージ レイアウトの情報については、「[Service Fabric でのアプリケーションのモデル化](service-fabric-application-model.md)」を参照してください。デプロイメントには、アプリケーションの種類の登録、アプリケーション インスタンスの作成、およびアプリケーション インスタンスの作成が含まれます。クラスターに新しいアプリケーションをデプロイするには、このセクションの手順を使用します。
+アプリケーションをビルドし、アプリケーションの種類をパッケージ化したら、ローカル Service Fabric クラスターにアプリケーションをデプロイできます。最初に、ソリューション エクスプ ローラーで、**HelloWorldStatefulApplication** を右クリックし、**[パッケージ]** を選択して、Visual Studio で HelloWorldStateful アプリケーションをパッケージ化します。サービス、アプリケーション マニフェスト、およびパッケージ レイアウトの情報については、「[Service Fabric でのアプリケーションのモデル化](service-fabric-application-model.md)」を参照してください。デプロイメントには、アプリケーションの種類の登録、アプリケーション インスタンスの作成、およびアプリケーション インスタンスの作成が含まれます。クラスターに新しいアプリケーションをデプロイするには、このセクションの手順を使用します。
 
 ### 手順 1: アプリケーション パッケージのアップロード
 アプリケーション パッケージを ImageStore にアップロードすると、そのパッケージは内部 Service Fabric コンポーネントがアクセスできる場所に置かれます。アプリケーション パッケージには、必要なアプリケーション マニフェスト、サービス マニフェスト、およびアプリケーションとサービス インスタンスを作成するコード、構成、データのパッケージが含まれています。[Copy-ServiceFabricApplicationPackage](https://msdn.microsoft.com/library/azure/mt125905.aspx) コマンドは、パッケージをアップロードします。次に例を示します。
 
 ```powershell
-Copy-ServiceFabricApplicationPackage C:\ServiceFabricSamples\Services\VS2015\HelloWorldStateful\HelloWorldStatefulApplication\pkg\Debug -ImageStoreConnectionString file:C:\SfDevCluster\Data\ImageStore -ApplicationPackagePathInImageStore HelloWorldStateful
+Copy-ServiceFabricApplicationPackage C:\ServiceFabricSamples\Services\VS2015\HelloWorldStateful\HelloWorldStatefulApplication\pkg\Debug -ImageStoreConnectionString fabric:ImageStore -ApplicationPackagePathInImageStore HelloWorldStateful
 ```
 
 ### 手順 2: アプリケーションの種類の登録
@@ -107,7 +107,7 @@ HelloWorldStateful サービス内のコードを変更します。
 次に、更新されたアプリケーション パッケージを Service Fabric ImageStore (アプリケーション パッケージが Service Fabric により保存される場所) にコピーします。*ApplicationPackagePathInImageStore* パラメーターから、Service Fabric にアプリケーション パッケージが見つかる場所が通知されます。次のコマンドは、アプリケーション パッケージを、ImageStore の *HelloWorldStatefulV2* にコピーします。
 
 ```powershell
-Copy-ServiceFabricApplicationPackage  -ApplicationPackagePath C:\ServiceFabricSamples\Services\VS2015\HelloWorldStateful\HelloWorldStatefulApplication\pkg\Debug -ImageStoreConnectionString file:C:\SfDevCluster\Data\ImageStore   -ApplicationPackagePathInImageStore HelloWorldStatefulV2
+Copy-ServiceFabricApplicationPackage  -ApplicationPackagePath C:\ServiceFabricSamples\Services\VS2015\HelloWorldStateful\HelloWorldStatefulApplication\pkg\Debug -ImageStoreConnectionString fabric:ImageStore -ApplicationPackagePathInImageStore HelloWorldStatefulV2
 ```
 
 次の手順では、Service Fabric を使用して、アプリケーションの新しいバージョンを登録します。これは、[Register-ServiceFabricApplicationType](https://msdn.microsoft.com/library/azure/mt125958.aspx) コマンドレットを使用して実行できます。
@@ -190,7 +190,7 @@ Unregister-ServiceFabricApplicationType HelloWorldStatefulApplication 1.0.0.0
 アプリケーションの種類を登録解除した後、[Remove-ServiceFabricApplicationPackage](https://msdn.microsoft.com/library/azure/mt163532.aspx) コマンドレットを使用して、ImageStore からアプリケーション パッケージを削除することができます。
 
 ```powershell
-Remove-ServiceFabricApplicationPackage -ImageStoreConnectionString file:C:\SfDevCluster\Data\ImageStore -ApplicationPackagePathInImageStore HelloWorldStateful
+Remove-ServiceFabricApplicationPackage -ImageStoreConnectionString fabric:ImageStore -ApplicationPackagePathInImageStore HelloWorldStateful
 ```
 
 ## その他のリソース
@@ -202,4 +202,4 @@ Remove-ServiceFabricApplicationPackage -ImageStoreConnectionString file:C:\SfDev
 
 [Azure Service Fabric Testability コマンドレット](https://msdn.microsoft.com/library/azure/mt125844.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

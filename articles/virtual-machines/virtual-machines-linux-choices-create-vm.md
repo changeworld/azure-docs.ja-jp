@@ -19,6 +19,8 @@
 
 # Linux 仮想マシンを作成するさまざまな方法
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 VM は多様なユーザーや目的に適しているため、Azure には VM を作成するためのさまざまな方法が用意されています。このため、VM とその作成方法について、いくつかの選択をする必要があります。この記事には、これらの選択肢の概要と、手順へのリンクが記載されています。
 
 仮想マシンとその各種リソースを 1 つの論理的なデプロイメント単位として作成および管理する手段として、Azure リソース マネージャー テンプレートが最近導入されました。このアプローチに関する手順が、以下で該当する箇所に記載されています。Azure リソース マネージャー、およびリソースを 1 つの単位として管理する方法の詳細については、[概要][]に関するページを参照してください。
@@ -27,7 +29,7 @@ VM は多様なユーザーや目的に適しているため、Azure には VM �
 
 ### GUI: Azure ポータルまたは Azure プレビュー ポータル
 
-Azure ポータルのグラフィカル ユーザー インターフェイスを使用すれば、特に Azure を初めて使用する場合に、仮想マシンを簡単に試すことができます。VM の作成は、[Azure ポータル](http://manage.windowsazure.com)と [Azure プレビュー ポータル](http://portal.azure.com)のいずれかを使用して行います。一般的な手順については、「[カスタム仮想マシンの作成][]」をご覧ください。その後、**[ギャラリー]** から Linux イメージを選びます。 [Azure ポータル](http://manage.windowsazure.com)は、クラシック デプロイ モデルのみを使用して仮想マシンを作成することにご注意ください。
+Azure ポータルのグラフィカル ユーザー インターフェイスを使用すれば、特に Azure を初めて使用する場合に、仮想マシンを簡単に試すことができます。VM の作成は、[Azure ポータル](http://manage.windowsazure.com)と [Azure プレビュー ポータル](http://portal.azure.com)のいずれかを使用して行います。一般的な手順については、「[カスタム仮想マシンの作成][]」をご覧ください。その後、**[ギャラリー]** から Linux イメージを選びます。[Azure ポータル](http://manage.windowsazure.com)は、クラシック デプロイ モデルのみを使用して仮想マシンを作成することにご注意ください。
 
 ### コマンド シェル: Azure CLI または Azure PowerShell
 
@@ -35,13 +37,13 @@ Azure ポータルのグラフィカル ユーザー インターフェイスを
 
 Azure CLI については、「[Linux を実行する仮想マシンの作成][]」をご覧ください。テンプレートを使用する場合は、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理][]」を参照してください。
 
-Azure PowerShell の場合は、「[Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する][]」を参照してください。テンプレートを使用する場合は、「[Azure リソース マネージャー テンプレートと PowerShell を使用した Virtual Machines のデプロイと管理][]」を参照してください。
+Azure PowerShell の場合は、「[Azure PowerShell を使用して Linux ベースの Virtual Machines を作成と事前構成する][]」を参照してください。テンプレートを使用する場合は、「[Azure リソース マネージャー テンプレートと PowerShell を使用した Virtual Machines のデプロイと管理][]」を参照してください。
 
 ### 開発環境: Visual Studio
 
 [Visual Studio で Web サイト用の仮想マシンを作成する][]
 
-[Compute、ネットワーク、およびストレージの .NET ライブラリを使用した Azure リソースのデプロイ][]
+[Compute、Network、および Storage の .NET ライブラリを使用した Azure リソースのデプロイ][]
 
 ## オペレーティング システムとイメージの選択肢
 
@@ -81,7 +83,7 @@ Azure PowerShell の場合は、「[Azure PowerShell を使用して Linux ベ�
 [Mac、Linux、および Windows 用 Azure CLI での VM 操作に使用するリソース マネージャーおよびサービス管理コマンドの対応]: xplat-cli-azure-manage-vm-asm-arm.md
 [Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理]: virtual-machines-deploy-rmtemplates-azure-cli.md
 [Azure リソース マネージャー テンプレートと PowerShell を使用した Virtual Machines のデプロイと管理]: virtual-machines-deploy-rmtemplates-powershell.md
-[Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する]: virtual-machines-ps-create-preconfigure-linux-vms.md
+[Azure PowerShell を使用して Linux ベースの Virtual Machines を作成と事前構成する]: virtual-machines-ps-create-preconfigure-linux-vms.md
 
 [Azure 上で Linux を実行するカスタム仮想マシンを作成する方法]: virtual-machines-linux-create-custom.md
 [テンプレートとして使用するために CLI を使って Linux 仮想マシンをキャプチャする方法]: virtual-machines-linux-capture-image.md
@@ -89,7 +91,7 @@ Azure PowerShell の場合は、「[Azure PowerShell を使用して Linux ベ�
 [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード]: virtual-machines-linux-create-upload-vhd.md
 
 [Visual Studio で Web サイト用の仮想マシンを作成する]: virtual-machines-dotnet-create-visual-studio-powershell.md
-[Compute、ネットワーク、およびストレージの .NET ライブラリを使用した Azure リソースのデプロイ]: virtual-machines-arm-deployment.md
+[Compute、Network、および Storage の .NET ライブラリを使用した Azure リソースのデプロイ]: virtual-machines-arm-deployment.md
 
 [仮想マシンへのログオン]: virtual-machines-linux-how-to-log-on.md
 
@@ -101,4 +103,4 @@ Azure PowerShell の場合は、「[Azure PowerShell を使用して Linux ベ�
 [Linux を実行する仮想マシンの作成]: virtual-machines-linux-tutorial.md
 [カスタム仮想マシンの作成]: virtual-machines-create-custom.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

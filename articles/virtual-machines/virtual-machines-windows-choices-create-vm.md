@@ -21,6 +21,8 @@
 
 仮想マシンは多様なユーザーや目的に適しているため、Azure には仮想マシンを作成するためのさまざまな方法が用意されています。これは、仮想マシンとその作成方法について、いくつかの選択を行う必要があることを意味します。この記事には、これらの選択肢の概要と、手順へのリンクが記載されています。
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 仮想マシンとその各種リソースを 1 つの論理的なデプロイメント単位として作成および管理する手段として、Azure リソース マネージャー テンプレートが最近導入されました。このアプローチに関する手順が、以下で該当する箇所に記載されています。Azure リソース マネージャー、およびリソースを 1 つの単位として管理する方法の詳細については、[概要][]に関するページを参照してください。
 
 ## ツールの選択肢
@@ -35,15 +37,15 @@ Azure ポータルのグラフィカル ユーザー インターフェイスを
 
 コマンド シェルを使用する場合は、Mac および Linux ユーザー向けの Azure コマンド ライン インターフェイス (CLI) と、Azure 用 Windows PowerShell コマンドレットおよびカスタム コンソールを備えた Azure PowerShell のいずれかを選択します。
 
-Azure CLI については、「[Mac、Linux、および Windows 用 Azure CLI での VM 操作に使用するリソース マネージャーおよびサービス管理コマンドの対応][]」を参照してください。テンプレートを使用するには、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理][]」を参照してください。
+Azure CLI については、「[Mac、Linux、および Windows 用 Azure CLI での VM 操作に使用するリソース マネージャーおよびサービス管理コマンドの対応][]」を参照してください。テンプレートを使用する場合は、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理][]」を参照してください。
 
-Azure PowerShell については、「[Use Azure PowerShell to create and preconfigure Windows virtual machines (Azure PowerShell を使用して Windows 仮想マシンを作成し事前構成する)][]」を参照してください。テンプレートを使用するには、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理][]」を参照してください。サービス管理スタック内で仮想マシンを作成するには、「[Use Azure PowerShell to create and preconfigure Windows virtual machines (Azure PowerShell を使用して Windows 仮想マシンを作成し事前構成する)][]」を参照してください。
+Azure PowerShell については、「[Azure PowerShell を使用して Windows 仮想マシンを作成し事前構成する][]」を参照してください。テンプレートを使用するには、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理][]」を参照してください。サービス管理スタック内で仮想マシンを作成するには、「[Azure PowerShell を使用して Windows 仮想マシンを作成し事前構成する][]」を参照してください。
 
 ### 開発環境: Visual Studio
 
 [Visual Studio による、 Web サイト用の仮想マシンの作成][]
 
-[Compute、ネットワーク、およびストレージの .NET ライブラリを使用した Azure リソースのデプロイ][]
+[Compute、Network、および Storage の .NET ライブラリを使用した Azure リソースのデプロイ][]
 
 ## オペレーティング システムとイメージの選択肢
 
@@ -80,7 +82,7 @@ Azure PowerShell については、「[Use Azure PowerShell to create and precon
 [Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理]: virtual-machines-deploy-rmtemplates-azure-cli.md
 [Create and preconfigure a Windows virtual machine with Resource Manager and Azure PowerShell]: virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md
 [Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理]: virtual-machines-deploy-rmtemplates-powershell.md
-[Use Azure PowerShell to create and preconfigure Windows virtual machines (Azure PowerShell を使用して Windows 仮想マシンを作成し事前構成する)]: virtual-machines-ps-create-preconfigure-windows-vms.md
+[Azure PowerShell を使用して Windows 仮想マシンを作成し事前構成する]: virtual-machines-ps-create-preconfigure-windows-vms.md
 [Windows を実行するカスタム仮想マシンを作成する方法]: virtual-machines-windows-create-custom.md
 
 [イメージとして使用する Windows 仮想マシンのキャプチャ方法]: virtual-machines-capture-image-windows-server.md
@@ -89,7 +91,7 @@ Azure PowerShell については、「[Use Azure PowerShell to create and precon
 
 
 [Visual Studio による、 Web サイト用の仮想マシンの作成]: virtual-machines-dotnet-create-visual-studio-powershell.md
-[Compute、ネットワーク、およびストレージの .NET ライブラリを使用した Azure リソースのデプロイ]: virtual-machines-arm-deployment.md
+[Compute、Network、および Storage の .NET ライブラリを使用した Azure リソースのデプロイ]: virtual-machines-arm-deployment.md
 
 [仮想マシンへのサインイン]: virtual-machines-log-on-windows-server.md
 
@@ -99,4 +101,4 @@ Azure PowerShell については、「[Use Azure PowerShell to create and precon
 
 [Azure ハイブリッド クラウド テスト環境]: virtual-machines-hybrid-cloud-test-environments.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/21/2015"
+   ms.date="10/15/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用したボリュームの表示と管理
@@ -39,7 +39,7 @@ StorSimple Snapshot Manager の **[ボリューム]** ノード (**スコープ*
  
 ## ボリュームのマウント
 
-Azure StorSimple ボリュームをマウントし、初期化してフォーマットするには、次の手順に従います。
+Azure StorSimple ボリュームをマウントし、初期化してフォーマットするには、次の手順に従います。この手順で使用するディスクの管理は、ハード ディスクとハード ディスクに含まれるボリュームまたはパーティションを管理するためのシステム ユーティリティです。ディスクの管理の詳細については、Microsoft TechNet Web サイトの「[Disk Management (ディスクの管理)](https://technet.microsoft.com/library/cc770943.aspx)」をご覧ください。
 
 #### ボリュームをマウントするには
 
@@ -47,11 +47,11 @@ Azure StorSimple ボリュームをマウントし、初期化してフォーマ
 
 2. ターゲット ポータルとしてインターフェイス IP アドレスのいずれかを入力するか、検出 IP アドレスを入力し、デバイスに接続します。デバイスに接続したら、ボリュームは Windows システムにアクセスできるようになります。Microsoft iSCSI イニシエーターの使用方法の詳細については、「[Microsoft iSCSI イニシエーターのインストールと構成][1]」の「iSCSI ターゲット デバイスへの接続」をご覧ください。
 
-3. 次のいずれかの方法を使用して、ディスクの管理スナップインを起動します。
+3. 次のいずれかの方法を使用して、ディスクの管理を起動します。
 
     - **[ファイル名を指定して実行]** ボックスに「Diskmgmt.msc」と入力します。
 
-    - サーバー マネージャーを起動し、**[ストレージ]** ノードを展開して、**[ディスクの管理]** を選択します。
+    - サーバー マネージャーを起動し、**[Storage]** ノードを展開して、**[ディスクの管理]** を選択します。
 
     - **[管理ツール]** を起動し、**[コンピューターの管理]** ノードを展開して、**[ディスクの管理]** を選択します。
 
@@ -110,7 +110,9 @@ Azure StorSimple ボリュームをマウントし、初期化してフォーマ
 
 StorSimple Snapshot Manager からボリュームを削除するには、次の手順に従います。
 
->[AZURE.NOTE]ボリューム グループに属するボリュームは削除できません (ボリューム グループのメンバーであるボリュームでは、削除オプションは使用できません)。 ボリュームを削除するには、ボリューム グループ全体を削除する必要があります。<br>
+>[AZURE.NOTE]ボリューム グループに属するボリュームは削除できません (ボリューム グループのメンバーであるボリュームでは、削除オプションは使用できません)。 ボリュームを削除するには、ボリューム グループ全体を削除する必要があります。
+
+
 #### ボリュームを削除するには
 
 1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
@@ -209,7 +211,7 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 
    - **[ファイル名を指定して実行]** ボックスを開き、「**Diskmgmt.msc**」と入力して、Enter キーを押します。
 
-   - サーバー マネージャーを起動し、**[ストレージ]** ノードを展開して、**[ディスクの管理]** を選択します。
+   - サーバー マネージャーを起動し、**[Storage]** ノードを展開して、**[ディスクの管理]** を選択します。
 
    - **[管理ツール]** を起動し、**[コンピューターの管理]** ノードを展開して、**[ディスクの管理]** を選択します。
 
@@ -263,10 +265,10 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 
 ## 次のステップ
 
-- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
-- [StorSimple Snapshot Manager を使用したボリューム グループの作成と管理方法](storsimple-snapshot-manager-manage-volume-groups.md)
+- [StorSimple Snapshot Manager を使用して StorSimple ソリューションを管理する](storsimple-snapshot-manager-admin.md)方法を確認します。
+- [StorSimple Snapshot Manager を使用してボリューム グループを作成および管理する](storsimple-snapshot-manager-manage-volume-groups.md)方法を確認します。
 
 <!--Reference links-->
 [1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

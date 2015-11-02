@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Linux を実行する仮想マシンを Azure ポータルで作成する"
+	pageTitle="Linux を実行する仮想マシンを Azure ポータルで作成する | Microsoft Azure"
 	description="Azure ポータルを使用して、Azure リソース グループで Linux を実行する Azure 仮想マシン (VM) を作成します。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/13/2015"
+	ms.date="10/21/2015"
 	ms.author="rasquill"/>
 
 # Linux を実行する仮想マシンを Azure プレビュー ポータルを使用して作成する
@@ -22,6 +22,8 @@
 > [AZURE.SELECTOR]
 - [Azure CLI](virtual-machines-linux-tutorial.md)
 - [Azure Preview Portal](virtual-machines-linux-tutorial-portal-rm.md)
+
+<br>[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
 Linux を実行する Azure 仮想マシン (VM) は簡単に作成できます。このチュートリアルでは、Azure プレビュー ポータルを使用して仮想マシンを簡単に作成する方法について説明し、`~/.ssh/id_rsa.pub` 公開キー ファイルを使用して、VM への **SSH** 接続をセキュリティで保護します。また、[独自のイメージをテンプレートとして](virtual-machines-linux-create-upload-vhd.md)使用して、Linux VM を作成することもできます。
 
@@ -35,13 +37,13 @@ Linux を実行する Azure 仮想マシン (VM) は簡単に作成できます�
 
 1. [プレビュー ポータル](https://portal.azure.com)にログインします。
 
-2. ハブ メニューで、**[新規]**、**[コンピューティング]**、**[Ubuntu Server 14.04 LTS]** の順にクリックします。
+2. ハブ メニューで、**[新規]**、**[Compute]**、**[Ubuntu Server 14.04 LTS]** の順にクリックします。
 
 	![VM イメージの選択](media/virtual-machines-linux-tutorial-portal-rm/chooseubuntuvm.png)
 
 	> [AZURE.TIP]その他のイメージを見つけるには、**[Marketplace]** をクリックし、使用可能な項目を検索するか、フィルターで抽出します。
 
-3. **[Ubuntu Server 14.04 LTS]** ページの下部にある **[リソース マネージャー スタックを使用]** を選択して、Azure リソース マネージャーで VM を作成します。新しいワークロードのほとんどについて、リソース マネージャー スタックを使用することをお勧めします。考慮事項については、「[Azure リソース マネージャーにおける Azure コンピューティング、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)」をご覧ください。
+3. **[Ubuntu Server 14.04 LTS]** ページの下部にある **[リソース マネージャー スタックを使用]** を選択して、Azure リソース マネージャーで VM を作成します。新しいワークロードのほとんどについて、リソース マネージャー スタックを使用することをお勧めします。考慮事項については、「[Azure リソース マネージャーにおける Azure Compute、Network、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)」をご覧ください。
 
 4. 次に、![[作成] ボタン](media/virtual-machines-linux-tutorial-portal-rm/createbutton.png) をクリックします。
 
@@ -59,7 +61,7 @@ Linux を実行する Azure 仮想マシン (VM) は簡単に作成できます�
 
 2. **[サイズ]** をクリックし、ニーズに応じた VM サイズを選択します。それぞれのサイズによって、コンピューティング コアの数、メモリ、および Premium Storage サポートなどの他の機能が指定されており、これが価格に影響します。Azure では、ユーザーが選択したイメージに応じて、特定のサイズが自動的に推奨されます。完了したら、![[選択] ボタン](media/virtual-machines-linux-tutorial-portal-rm/selectbutton-size.png) をクリックします。
 
-	>[AZURE.NOTE]プレミアム ストレージは、特定のリージョンの DS シリーズの仮想マシンで使用できます。プレミアム ストレージは、データベースなどの高負荷のワークロードに最適なストレージ オプションです。詳細については、[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)に関するページを参照してください。
+	>[AZURE.NOTE]Premium Storage は、特定のリージョンの DS シリーズの仮想マシンで使用できます。Premium Storage は、データベースなどの高負荷のワークロードに最適なストレージ オプションです。詳細については、[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)に関するページを参照してください。
 
 3. **[設定]** をクリックして、新しい VM のストレージおよびネットワークの設定を表示します。最初の VM については、通常、既定の設定をそのまま使用します。Premium Storage がサポートされる VM サイズを選択した場合は、**[ディスクの種類]** の **[Premium (SSD)]** を選択することで、Premium Storage をお試しいただくことができます。完了したら、![[OK] ボタン](media/virtual-machines-linux-tutorial-portal-rm/okbutton.png) をクリックします。
 
@@ -128,4 +130,4 @@ Azure 上の Linux の詳細については、次の内容を参照してくだ�
 
 - [Azure の Linux 用 Docker 仮想マシン拡張機能](virtual-machines-docker-vm-extension.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

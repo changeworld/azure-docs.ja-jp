@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/26/2015" 
+	ms.date="10/20/2015" 
 	ms.author="tdykstra"/>
 
 # Azure Active Directory で認証された Web アプリ クライアントからの Azure API アプリの呼び出し
@@ -227,4 +227,4 @@ App Service API Apps のクライアント フローの認証方法は確認し�
 [Azure ポータル]: https://manage.windowsazure.com/
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

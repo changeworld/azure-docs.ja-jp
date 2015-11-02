@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="web" 
-	ms.date="09/29/2015" 
+	ms.date="10/14/2015" 
 	ms.author="cephalin"/>
 
 # Azure Active Directory の認証を使用して Azure App Service で .NET MVC Web アプリを作成する #
@@ -52,45 +52,33 @@
 <a name="bkmk_sample"></a>
 ## サンプル アプリケーションを基幹業務テンプレートとして使用する ##
 
-このチュートリアルの [WebApp-GroupClaims-DotNet](https://github.com/AzureADSamples/WebApp-GroupClaims-DotNet) サンプル アプリケーションは、Azure Active Directory チームが作成し、テンプレートとして使うことで、新しい基幹業務アプリケーションを容易に作成できます。以下の機能が組み込まれています。
+このチュートリアルの [WebApp-RoleClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) サンプル アプリケーションは、Azure Active Directory チームが作成し、テンプレートとして使うことで、新しい基幹業務アプリケーションを容易に作成できます。以下の機能が組み込まれています。
 
 - [OpenID Connect](http://openid.net/connect/) を使用して Azure Active Directory で認証する
-- Azure Active Directory 検索フィルターを備え、アプリケーション ロールに Azure Active Directory のユーザーやグループを簡単にマッピングできる `Roles` コントローラー
-- `[Authorize]` の標準的な使用も含めて、アプリケーションで特定の操作に対してさまざまなロールを承認する方法を示すサンプルの `TaskTracker` コントローラー 
-
-![](./media/web-sites-dotnet-lob-application-azure-ad/role-management.png)
+- `[Authorize]` の標準的な使用も含めて、アプリケーションで特定の操作に対してさまざまなロールを承認する方法を示すサンプルの `TaskTracker` コントローラーが含まれています。 
+- ユーザーとグループを即座に割り当てることができる、定義済みロールを持つマルチテナント アプリケーションです。 
 
 <a name="bkmk_run" />
 ## サンプル アプリケーションを実行する ##
 
-1.	[WebApp-GroupClaims-DotNet](https://github.com/AzureADSamples/WebApp-GroupClaims-DotNet) からサンプル ソリューションをローカル ディレクトリに複製またはダウンロードします。
+1.	[WebApp-RoleClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) からサンプル ソリューションをローカル ディレクトリに複製またはダウンロードします。
 
-2.	[README.md](https://github.com/AzureADSamples/WebApp-GroupClaims-DotNet/blob/master/README.md) の手順に従って、Azure Active Directory アプリケーションとプロジェクトを設定します。
+2.	[シングル テナント アプリケーションとしてのサンプルの実行方法](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims#how-to-run-the-sample-as-a-single-tenant-app)に関するページの手順に従って、Azure Active Directory アプリケーションとプロジェクトを設定します。アプリケーションをマルチテナントからシングル テナントに変換するには、必ずすべての手順に従ってください。
 
-	> [AZURE.NOTE]Azure Active Directory アプリケーションに構成されたアクセス許可に必要となるのは、<strong>ユーザー</strong> ロールのみで、**全体管理者**は不要です。
-	
-3.	アプリケーションの構成が完了したら、`F5` キーを押してアプリケーションを実行します。
+3.	先ほど作成した Azure Active Directory アプリケーションの [Azure ポータル](https://manage.windowsazure.com) ビューで、**[ユーザー]** タブをクリックします。次に、必要なロールに目的のユーザーを割り当てます。
 
-4.	アプリケーションが読み込まれたら、**[サインイン]** をクリックします。
+	>[AZURE.NOTE]ロールをユーザーだけでなくグループにも割り当てる場合は、Azure Active Directory テナントを [Azure Active Directory Premium](/pricing/details/active-directory/) にアップグレードする必要があります。アプリケーションのポータル UI に **[ユーザーとグループ] タブではなく **[ユーザー]** タブが表示される場合は、Azure Active Directory テナントの **[ライセンス]** タブに移動して Azure Active Directory Premium を試すことができます。
+
+3.	アプリケーションの構成が完了したら、Visual Studio で `F5` キーを押して ASP.NET アプリケーションを実行します。
+
+4.	アプリケーションが読み込まれたら、**[サインイン]** をクリックし、Azure ポータルで管理者ロールを持つユーザーでサインインします。
 
 5.	Azure Active Directory アプリケーションを適切に構成し、Web.config で対応する設定項目を設定している場合は、ログイン ページにリダイレクトされます。Azure ポータルで Azure Active Directory アプリケーションを作成するために使用したアカウントは Azure Active Directory アプリケーションの既定の所有者であるため、そのアカウントでログオンします。
 	
-	> [AZURE.NOTE]サンプル プロジェクトの Startup.Auth.cs アプリケーションは <code>AddOwnerAdminClaim</code> と呼ばれるメソッドを持ち、このメソッドはアプリケーションの所有者を管理ロールに追加します。これにより、<code>ロール</code> コントローラーでアプリケーション ロールの管理をすぐに始めることができます。
-	
-4.	サインインしたら、**[ロール]** をクリックしてアプリケーション ロールを管理します。
-
-5.	**[ユーザー/グループの検索]** で目的のユーザー名またはグループ名の入力を開始します。ドロップダウン リストに Azure Active Directory テナントのユーザーまたはグループのフィルタリングされた一覧が表示されることに注目してください。
-
-	![](./media/web-sites-dotnet-lob-application-azure-ad/select-user-group.png)
-
-	> [AZURE.NOTE]Views\\Roles\\Index.cshtml を見ると、<code>Roles</code> コントローラーの <code>Search</code> アクションにアクセスするために、<code>AadPicker</code> (Scripts\\AadPickerLibrary.js で定義) という JavaScript オブジェクトがビューで使用されていることがわかります。<pre class="prettyprint">var searchUrl = window.location.protocol + "//" + window.location.host + "<mark>/Roles/Search</mark>"; ... var picker = new <mark>AadPicker(searchUrl, maxResultsPerPage, input, token, tenant)</mark>;</pre> Controllers\\RolesController.cs では、<code>Search</code> アクションによって、Azure Active Directory Graph API に実際の要求が送信され、ページに応答が返されます。後でアプリケーションで同じメソッドを使って単純な機能を作成します。
-
-6.	ドロップダウンからユーザーまたはグループを選択し、ロールを選択したら、**[ロールの割り当て]** をクリックします。
-
 <a name="bkmk_deploy"></a>
 ## サンプル アプリケーションを Azure App Service Web Apps にデプロイする
 
-ここでは、アプリケーションを Azure App Service の Web アプリに発行します。[README.md](https://github.com/AzureADSamples/WebApp-GroupClaims-DotNet/blob/GroupClaims/README.md) には App Service Web Apps にデプロイするための手順が記載されていますが、それらの手順を実行すると、ローカルのデバッグ環境の構成が無効になります。デバッグ構成を維持したままデプロイする方法について説明します。
+ここでは、アプリケーションを Azure App Service の Web アプリに発行します。[README.md](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims/blob/master/README.md) には App Service Web Apps にデプロイするための手順が記載されていますが、それらの手順を実行すると、ローカルのデバッグ環境の構成が無効になります。デバッグ構成を維持したままデプロイする方法について説明します。
 
 1. プロジェクトを右クリックし、**[発行]** を選択します。
 
@@ -98,7 +86,7 @@
 
 2. **[Microsoft Azure Web Apps]** を選択します。
 
-3. Azure にサインインしていない場合は、**[サインイン]** をクリックし、Azure サブスクリプションの Microsoft アカウントを使用してサインインします。
+3. Azure にサインインしていない場合は、**[アカウントの追加]** をクリックし、Azure サブスクリプションの Microsoft アカウントを使用してサインインします。
 
 4. サインインしたら、**[新規]** をクリックして Azure で新しい Web アプリを作成します。
 
@@ -114,7 +102,9 @@
 
 8. **[組織認証を有効にする]** チェック ボックスをオフにします。
 
-	![](./media/web-sites-dotnet-lob-application-azure-ad/6-disable-organizational-authentication.png)
+	![](./media/web-sites-dotnet-lob-application-azure-ad/6-enable-code-first-migrations.png)
+
+8. **[RoleClaimContext]** を展開し、**[Code First Migrations の実行 (アプリケーションの起動時に実行)]** チェック ボックスをオンにします。[Code First Migrations](https://msdn.microsoft.com/data/jj591621.aspx) は、後で追加の Code First データ モデルを定義するときに Azure でアプリのデータベース スキーマを更新するのに役立ちます。
 
 9. **[発行]** をクリックして Web への発行に進む代わりに、**[閉じる]** をクリックします。**[はい]** をクリックし、発行プロファイルへの変更を保存します。
 
@@ -122,19 +112,25 @@
 
 2. ページの下部にある **[追加]** をクリックします。
 
+2. **[組織で開発中のアプリケーションを追加]** をクリックします。
+
 3. **[Web アプリケーションや Web API]** を選択します。
 
 4. アプリケーションに名前を付けて、**[次へ]** をクリックします。
 
-5. アプリケーションのプロパティで、**[サインオン URL]** を、前の手順で保存した Web アプリの URL (例: `https://<site-name>.azurewebsites.net`) に設定し、**[APP ID URI]** を `https://<aad-tenanet-name>/<app-name>` に設定します。次に、**[完了]** をクリックします。
+5. アプリケーションのプロパティで、**[サインオン URL]** を、前の手順で保存した Web アプリの URL (例: `https://<site-name>.azurewebsites.net/`) に設定し、**[APP ID URI]** を `https://<aad-tenanet-name>/<app-name>` に設定します。次に、**[完了]** をクリックします。
 
 	![](./media/web-sites-dotnet-lob-application-azure-ad/7-app-properties.png)
 
-6. アプリケーションが作成されたら、**[構成]** をクリックします。
+2.	アプリケーションが作成されたら、[アプリケーション ロールの定義](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims#step-2-define-your-application-roles)に関するセクションの手順に従って以前実行したようにアプリケーション マニフェストを更新します。
+
+3.	先ほど作成した Azure Active Directory アプリケーションの [Azure ポータル](https://manage.windowsazure.com) ビューで、**[ユーザー]** タブをクリックします。次に、必要なロールに目的のユーザーを割り当てます。
+
+6. **[構成]** タブをクリックします。
 
 7. **[キー]** で、ドロップダウンから **[1 年]** を選択して新しいキーを作成します。
 
-8. **[他のアプリケーションに対するアクセス許可]** の **Azure Active Directory** エントリで、**[デリゲートされたアクセス許可]** ボックスから **[組織のディレクトリにアクセス]** を選択します。
+8. **[他のアプリケーションに対するアクセス許可]** の **Azure Active Directory** エントリで、**[デリゲートされたアクセス許可]** ボックスの一覧から **[サインインとユーザー プロファイルの読み取り]** と **[ディレクトリ データの読み取り]** を選択します。
 
 	> [AZURE.NOTE]ここで実際に必要となるアクセス許可は、アプリケーションに含める機能によって異なります。中には**全体管理者**ロールを設定する必要があるアクセス許可もありますが、このチュートリアルで必要となるのは**ユーザー** ロールのみです。
 
@@ -166,11 +162,11 @@
 
 チュートリアルのこのセクションでは、サンプル アプリケーションを利用して、目的の基幹業務の機能を構築する方法について説明します。単純な CRUD 作業項目トラッカーを作成します。これは、TaskTracker コントローラーに似ていますが、使うのは CRUD の標準的なスキャフォールディングと設計パターンです。また、そこに含まれている Scripts\\AadPickerLibrary.js を使い、Azure Active Directory Graph API からのデータでアプリケーションを強化します。
 
-5.	Models フォルダーに WorkItem.cs という名前の新しいモデルを作成し、そのコードを以下のコードと置き換えます。
+5.	Models フォルダーに WorkItem.cs という名前の新しい [Code First](http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) モデルを作成し、そのコードを次のコードに置き換えます。
 
 		using System.ComponentModel.DataAnnotations;
 		
-		namespace WebAppGroupClaimsDotNet.Models
+		namespace WebApp_RoleClaims_DotNet.Models
 		{
 		    public class WorkItem
 		    {
@@ -191,13 +187,12 @@
 		    }
 		}
 
-6.	DAL\\GroupClaimContext.cs を開き、以下の強調表示されたコードを追加します。
+6.	DAL\\RoleClaimContext.cs を開き、次の強調表示されたコードを追加します。
 	<pre class="prettyprint">
-public class GroupClaimContext : DbContext
+public class RoleClaimContext : DbContext
 {
-    public GroupClaimContext() : base("GroupClaimContext") { }
+    public RoleClaimContext() : base("RoleClaimContext") { }
 
-    public DbSet&lt;RoleMapping> RoleMappings { get; set; }
     public DbSet&lt;Task> Tasks { get; set; }
     <mark>public DbSet&lt;WorkItem> WorkItems { get; set; }</mark>
     public DbSet&lt;TokenCacheEntry> TokenCacheEntries { get; set; }
@@ -247,18 +242,32 @@ public class WorkItemsController : Controller
     <mark>[Authorize(Roles = "Admin, Writer, Approver")]</mark>
     public async Task&lt;ActionResult> DeleteConfirmed(int id)
     ...
-}</pre>ロール マッピングの処理はロール コントローラーで行うため、必要となるのは、各操作で正しいロールが承認されているかどうかを確認することだけです。
+}</pre>ロール マッピングの処理は Azure ポータルの UI で行うため、必要となるのは、各操作で正しいロールが承認されているかどうかを確認することだけです。
 
 	> [AZURE.NOTE]一部の操作では <code>[ValidateAntiForgeryToken]</code> 装飾を使用します。[Brock Allen](https://twitter.com/BrockLAllen) が [MVC 4 の AntiForgeryToken とクレーム](http://brockallen.com/2012/07/08/mvc-4-antiforgerytoken-and-claims/)に関するページで説明している動作により、HTTP POST が偽造防止トークンの検証に次の理由で失敗する可能性があります。+ 既定で偽造防止トークンに必要となる http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider を Azure Active Directory が送信しない。+ Azure Active Directory が AD FS とディレクトリを同期している場合、AD FS トラストは既定で http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider の要求を送信しない。ただし、AD FS を手動で構成してこの要求を送信することはできます。これについては次の手順で対処します。
 
-12.  App\_Start\\Startup.Auth.cs で、以下のコード行を `ConfigureAuth` メソッドに追加します。
+12.  App\_Start\\Startup.Auth.cs で、以下のコード行を `ConfigureAuth` メソッドに追加します。各名前付け解決エラーを右クリックすると、そのエラーが修正されます。
 
 		AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
 	
 	`ClaimTypes.NameIdentifies` は、Azure Active Directory が提供する要求 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` を指定します。承認の手順についてはこれで終わりましたので (短い時間で済みました)、操作の実際の機能に時間を割くことができます。
 
-13.	Create() と Edit() に以下のコードを追加して、後で JavaScript でいくつかの変数を使用できるようにします。ViewData["token"] = GraphHelper.AcquireToken(ClaimsPrincipal.Current.FindFirst(Globals.ObjectIdClaimType).Value); ViewData["tenant"] = ConfigHelper.Tenant;
+13.	Create() と Edit() に次のコードを追加すると、後で JavaScript でいくつかの変数を使用できるようにします。各名前付け解決エラーを右クリックすると、そのエラーが修正されます。
 
+        ViewData["token"] = AcquireToken(ClaimsPrincipal.Current.FindFirst(Globals.ObjectIdClaimType).Value);
+        ViewData["tenant"] = ConfigHelper.Tenant;
+
+13.	`AcquireToken()` メソッドはまだ定義されていないため、今すぐ `WorkItemsController` クラスで定義します。各名前付け解決エラーを右クリックすると、そのエラーが修正されます。
+
+        static string AcquireToken(string userObjectId)
+        {
+            ClientCredential cred = new ClientCredential(ConfigHelper.ClientId, ConfigHelper.AppKey);
+            Claim tenantIdClaim = ClaimsPrincipal.Current.FindFirst(Globals.TenantIdClaimType);
+            AuthenticationContext authContext = new AuthenticationContext(String.Format(CultureInfo.InvariantCulture, ConfigHelper.AadInstance, tenantIdClaim.Value), new TokenDbCache(userObjectId));
+            AuthenticationResult result = authContext.AcquireTokenSilent(ConfigHelper.GraphResourceId, cred, new UserIdentifier(userObjectId, UserIdentifierType.UniqueId));
+            return result.AccessToken;
+        }
+		
 14.	Views\\WorkItems\\Create.cshtml (自動的にスキャフォールディングされた項目) で、`Html.BeginForm` ヘルパー メソッドを探し、以下のように変更します。
 	<pre class="prettyprint">@using (Html.BeginForm(<mark>"Create", "WorkItems", FormMethod.Post, new { id = "main-form" }</mark>))
 {
@@ -310,12 +319,11 @@ public class WorkItemsController : Controller
     <mark>&lt;script>
             // People/Group Picker Code
             var maxResultsPerPage = 14;
-            var searchUrl = window.location.protocol + "//" + window.location.host + "/Roles/Search";
             var input = document.getElementById("AssignedToName");
             var token = "@ViewData["token"]";
             var tenant = "@ViewData["tenant"]";
 
-            var picker = new AadPicker(searchUrl, maxResultsPerPage, input, token, tenant);
+            var picker = new AadPicker(maxResultsPerPage, input, token, tenant);
 
             // Submit the selected user/group to be asssigned.
             $("#submit-button").click({ picker: picker }, function () {
@@ -325,9 +333,11 @@ public class WorkItemsController : Controller
             });
     &lt;/script></mark>
 
-}</pre>スクリプトでは、AadPicker オブジェクトは、入力に一致する Azure Active Directory ユーザーとグループに `~/Roles/Search` アクションを検索します。その後、[送信] ボタンをクリックすると、AadPicker オブジェクトは非表示の `AssignedToID` フィールドにユーザー ID を保存します。
+}</pre>スクリプトでは、AadPicker オブジェクトが [Azure Active Directory Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) を呼び出し、入力に一致するユーザーとグループを検索します。
 
-15. Visual Studio デバッガーでアプリを実行するか、Azure App Service Web Apps に発行します。アプリケーションの所有者としてログインし、`~/WorkItems/Create` に移動します。自分で発行した基幹業務アプリケーションの場合は、`https://mylobapp.azurewebsites.net/WorkItems/Create` に移動しますご覧のとおり、同じ AadPicker 検索フィルターで Azure Active Directory ユーザーを選択できます。
+15. [パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console)を開き、**Enable-Migrations –EnableAutomaticMigrations** を実行します。アプリを Azure に発行したときに選択したオプションと同様、このコマンドは、Visual Studio でデバッグする際に [LocalDB](https://msdn.microsoft.com/library/hh510202.aspx) でアプリのデータベース スキーマを更新するのに役立ちます。
+
+15. ここで、Visual Studio デバッガーでアプリを実行するか、Azure App Service Web Apps に再発行します。アプリケーションの所有者としてログインし、`https://<webappname>.azurewebsites.net/WorkItems/Create` に移動します。これで、ドロップダウン リストから Azure Active Directory のユーザーまたはグループを選択するか、一覧をフィルター処理するためのデータを入力できます。
 
 	![](./media/web-sites-dotnet-lob-application-azure-ad/9-create-workitem.png)
 
@@ -339,7 +349,7 @@ public class WorkItemsController : Controller
 
 これで完了です。
 
-これで、承認とさまざまな操作の基幹業務機能を WorkItems コントローラーに構成できましたので、さまざまなアプリケーション ロールのユーザーとしてログインしてみてください。
+承認とさまざまな操作の基幹業務機能を WorkItems コントローラーに構成できましたので、さまざまなアプリケーション ロールのユーザーとしてログインし、アプリケーションの応答を確認してみてください。
 
 ![](./media/web-sites-dotnet-lob-application-azure-ad/11-edit-unauthorized.png)
 
@@ -362,4 +372,4 @@ public class WorkItemsController : Controller
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

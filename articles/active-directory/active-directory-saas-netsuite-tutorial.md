@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/15/2015"
+   ms.date="10/20/2015"
    ms.author="liviodlc"/>
 
 #チュートリアル: Azure Active Directory と NetSuite を統合する方法
@@ -22,13 +22,13 @@
 
 ##前提条件
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com)から Azure Active Directory にアクセスするには、まず有効な Azure サブスクリプションが必要です。
+1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)から Azure Active Directory にアクセスするには、まず有効な Azure サブスクリプションが必要です。
 
 2. [NetSuite](http://www.netsuite.com/portal/home.shtml) サブスクリプションに対する管理者アクセス権が必要です。どちらのサービスにも無料試用版のアカウントを使用できます。
 
 ##手順 1. NetSuite をディレクトリに追加する
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Select Active Directory from the left navigation pane.][0]
 
@@ -66,13 +66,13 @@
 
 	> [AZURE.NOTE]さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)してください。
 
-3. **[アプリケーション設定の構成]** ページで、**[サインオン URL]** フィールドに、NetSuite のテナントの URL を次のいずれかの形式を使用して入力します。
-	- `https://<tenant-name>.netsuite.com`
-	- `https://<tenant-name>.na1.netsuite.com`
-	- `https://<tenant-name>.na2.netsuite.com`
-	- `https://<tenant-name>.sandbox.netsuite.com`
-	- `https://<tenant-name>.na1.sandbox.netsuite.com`
-	- `https://<tenant-name>.na2.sandbox.netsuite.com`
+3. **[アプリケーション設定の構成]** ページで、**[応答 URL]** フィールドに、NetSuite のテナントの URL を次のいずれかの形式を使用して入力します。
+	- `https://<tenant-name>.netsuite.com/saml2/acs`
+	- `https://<tenant-name>.na1.netsuite.com/saml2/acs`
+	- `https://<tenant-name>.na2.netsuite.com/saml2/acs`
+	- `https://<tenant-name>.sandbox.netsuite.com/saml2/acs`
+	- `https://<tenant-name>.na1.sandbox.netsuite.com/saml2/acs`
+	- `https://<tenant-name>.na2.sandbox.netsuite.com/saml2/acs`
 
 	![Type in your tenant URL][8]
 
@@ -142,23 +142,23 @@
 
 	- 上部のナビゲーション メニューで、**[Setup]**、**[Setup Manager]** の順にクリックします。
 
-	![Go to Setup Manager][10]
+		![Go to Setup Manager][10]
 
 	- 左側のナビゲーション メニューで、**[Users/Roles]**、**[Manage Roles]** の順にクリックします。
 
-	![Go to Manage Roles][22]
+		![Go to Manage Roles][22]
 
 	- **[New Role]** をクリックします。
 
 	- 新しいロールの **[Name]** を入力し、**[Single Sign-On Only]** チェック ボックスをオンにします。
 
-	![Name the new role.][23]
+		![Name the new role.][23]
 
 	- **[保存]** をクリックします。
 
 	- 上部のメニューで、**[Permissions]** をクリックします。**[Setup]** をクリックします。
 
-	![Go to Permissions][24]
+		![Go to Permissions][24]
 
 	- **[Set Up SAM Single Sign-on]**、**[Add]** の順にクリックします。
 
@@ -166,25 +166,27 @@
 
 	- 上部のナビゲーション メニューで、**[Setup]**、**[Setup Manager]** の順にクリックします。
 
-	![Go to Setup Manager][10]
+		![Go to Setup Manager][10]
 
 	- 左側のナビゲーション メニューで、**[Users/Roles]**、**[Manage Users]** の順にクリックします。
 
-	![Go to Manage Users][25]
+		![Go to Manage Users][25]
 
 	- テスト ユーザーを選択します。**[Edit]** をクリックします。
 
-	![Go to Manage Users][26]
+		![Go to Manage Users][26]
 
 	- [Roles] ダイアログ ボックスで、作成したロールを選択し、**[Add]** をクリックします。
 
-	![Go to Manage Users][27]
+		![Go to Manage Users][27]
 
 	- **[保存]** をクリックします。
 
 19. 構成をテストするには、この後にある「[NetSuite にユーザーを割り当てる](#step-4-assign-users-to-netsuite)」というタイトルのセクションを参照してください。
 
 ##手順 3. 自動化されたユーザー プロビジョニングを有効にする
+
+> [AZURE.NOTE]既定では、プロビジョニングされたユーザーは NetSuite 環境のルートの下位項目に追加されます。
 
 1. Azure Active Directory の NetSuite の [クイック スタート] ページで、**[ユーザー プロビジョニングの構成]** をクリックします。
 
@@ -254,4 +256,4 @@
 [31]: ./media/active-directory-saas-netsuite-tutorial/assign-users.png
 [32]: ./media/active-directory-saas-netsuite-tutorial/assign-confirm.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

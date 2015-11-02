@@ -7,7 +7,7 @@
    manager="jwhit"
    editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/13/2015" ms.author="jimpark"; "aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/21/2015" ms.author="jimpark"; "aashishr"/>
 
 # Windows Server または Windows クライアント コンピューターへのファイルの復元
 この記事では、復元操作に必要な 2 種類の手順を説明します。
@@ -109,4 +109,4 @@
 - [Azure 仮想マシンのバックアップ](backup-azure-vms-introduction.md)
 - [Microsoft ワークロードのバックアップ](backup-azure-dpm-introduction.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

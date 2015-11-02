@@ -14,10 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/09/2015"
+	ms.date="10/21/2015"
 	ms.author="rasquill"/>
 
 # Azure インフラストラクチャ サービス実装ガイドライン
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 Azure は、わずかな投資でソリューションの実装に対する具体的なアプローチをテストできる、開発/テストまたは概念実証の構成を実装するのに最適なプラットフォームです。ただし、開発/テスト環境の簡単な作業と、それよりはるかに困難で詳細な、IT ワークロードの全機能を備えた実稼動可能な実装の作業を、区別する必要があります。
 
@@ -153,9 +155,9 @@ Azure を使用するには、1 つまたは複数の Azure サブスクリプ�
 
 - 名前付け規則を使用してサブスクリプションとアカウントのセットを作成します。
 
-## 3\.ストレージ
+## 3\.Storage
 
-Azure ストレージは多くの Azure ソリューションにおいて不可欠な構成要素です。Azure ストレージにはファイル データ、構造化されていないデータ、メッセージを保存するためのサービスを提供します。仮想マシンをサポートするインフラストラクチャの一部でもあります。
+Azure Storage は多くの Azure ソリューションにおいて不可欠な構成要素です。Azure Storage にはファイル データ、構造化されていないデータ、メッセージを保存するためのサービスを提供します。仮想マシンをサポートするインフラストラクチャの一部でもあります。
 
 Azure では 2 種類のストレージ アカウントを使用できます。標準ストレージ アカウントでは、BLOB ストレージ (Azure 仮想マシン ディスクの保存に利用)、テーブル ストレージ、キュー ストレージ、ファイル ストレージにアクセスできます。Premium Storage は、AlwaysOn クラスター内の SQL Server などの高パフォーマンス アプリケーション用に設計されており、現在は Azure 仮想マシン ディスクのみをサポートします。
 
@@ -168,7 +170,7 @@ BLOB の最大サイズは 1024 ギガバイト (GB) で、それには VHD フ�
 ### ストライピングされたディスク
 データ ディスクにストライピングを使用すると、1023 GB より大きいディスクを作成できるだけでなく、多くの場合に複数の BLOB で単一ボリュームのストレージをバックアップできるので、パフォーマンスが向上します。ストライピングにより、単一の論理ディスクのデータを読み書きするのに必要な I/O が並列化されます。
 
-Azure では、仮想マシンのサイズにより、使用できるデータ ディスクの量と帯域幅が制限されます。詳細については、「[仮想マシンのサイズ](virtual-machines-size-specs.md)」をご覧ください。
+Azure では、仮想マシンのサイズにより、使用できるデータ ディスクの量と帯域幅が制限されます。詳細については、「[仮想マシンのサイズ](virtual-machines-size-specs.md)」を参照してください。
 
 Azure データ ディスクにディスク ストライピングを使用する場合は、次のガイドラインを考慮してください。
 
@@ -178,7 +180,7 @@ Azure データ ディスクにディスク ストライピングを使用する
 - ストレージ ストライピングの構成を使用します
 - Azure データ ディスクのキャッシュ オプションを使わないようにします (キャッシュ ポリシー = なし)
 
-詳細については、「[Storage Spaces - Designing for Performance](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx)」(記憶域スペース - パフォーマンスのための設計) を参照してください。
+詳細については、「[Storage Spaces - Designing for Performance (記憶域スペース - パフォーマンスのための設計)](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx)」を参照してください。
 
 ### 複数のストレージ アカウント
 
@@ -440,4 +442,4 @@ Contoso は、Azure Virtual Machines に対して次の名前を決定しまし�
 
 [Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

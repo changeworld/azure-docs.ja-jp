@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="チュートリアル: Application Insights から SQL Database へのテレメトリのエクスポート" 
-	description="連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。" 
+	description="Stream Analytics を使用して Application Insights データを SQL へ継続的にエクスポートします。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="noamben" 
@@ -17,7 +17,7 @@
  
 # チュートリアル: Stream Analytics を使用した Application Insights から SQL へのエクスポート
 
-この記事では、[連続エクスポート][export]と [Azure Stream Analytics](http://azure.microsoft.com/services/stream-analytics/) を使用してテレメトリ データを [Visual Studio Application Insights][start] から Azure SQL データベースに移動する方法を示します。
+この記事では、[連続エクスポート][export]と [Azure Stream Analytics](http://azure.microsoft.com/services/stream-analytics/) を使用してテレメトリ データを [Visual Studio Application Insights][start] から Azure SQL Database に移動する方法を示します。
 
 連続エクスポートにより、JSON 形式でテレメトリ データが Azure Storage に移動されます。Azure Stream Analytics を使って JSON オブジェクトを解析し、データベース テーブルに行を作成します。
 
@@ -61,7 +61,7 @@
 
 1. [Azure ポータル][portal]で、サブスクリプションの "クラシック" ストレージ アカウントを作成します。
 
-    ![Azure ポータルで、[新規]、[データ]、[ストレージ] の順に選択します[クラシック] を選択し、[作成] をクリックします。ストレージの名前を指定します。](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
+    ![Azure ポータルで、[新規]、[データ]、[Storage] の順に選択します[クラシック] を選択し、[作成] をクリックします。Storage の名前を指定します。](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
 
 2. コンテナーを作成する
 
@@ -97,7 +97,7 @@
 
     また、データはストレージにもエクスポートされます。
 
-4. エクスポートされたデータを、ポータルまたは Visual Studio で調べます。ポータルの場合は、**[参照]**、ストレージ アカウント、**[コンテナー]**の順に選択します。Visual Studio の場合は、**[表示]、[Cloud Explorer]** の順に選択し、[Azure]、[ストレージ] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
+4. エクスポートされたデータを、ポータルまたは Visual Studio で調べます。ポータルの場合は、**[参照]**、ストレージ アカウント、**[コンテナー]**の順に選択します。Visual Studio の場合は、**[表示]、[Cloud Explorer]** の順に選択し、[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
 
     ![Visual Studio で次の順に開きます。[サーバー ブラウザー]、[Azure]、[Storage]](./media/app-insights-code-sample-export-sql-stream-analytics/087-explorer.png)
 
@@ -188,7 +188,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/42-sa-wizard1.png)
 
-ここで、Storage アカウントからのプライマリ アクセス キーが必要になります。これは前にメモしておいたものです。Storage アカウント キーとしてこれを設定します。
+ここで、ストレージ アカウントからのプライマリ アクセス キーが必要になります。これは前にメモしておいたものです。ストレージ アカウント キーとしてこれを設定します。
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/46-sa-wizard2.png)
 
@@ -314,4 +314,4 @@ SQL データベースを指定します。
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

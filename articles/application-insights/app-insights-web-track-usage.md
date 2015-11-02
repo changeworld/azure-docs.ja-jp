@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Application Insights による Web アプリケーションの利用状況の分析" 
-	description="Application Insights による利用状況分析の概要" 
+	description="Application Insights による Web アプリの利用状況分析の概要" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -391,4 +391,4 @@ You can set up a universal initializer so that all new TelemetryClients automati
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

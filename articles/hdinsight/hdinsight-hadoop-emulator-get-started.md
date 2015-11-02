@@ -1,7 +1,7 @@
 <properties
 	pageTitle="HDInsight 用の Hadoop Emulator の概要 |Microsoft Azure"
 	description="MapReduce チュートリアルでインストールされるエミュレーターおよび他のサンプルを使用して、Hadoop エコシステムについて学びます。HDInsight Emulator は、Hadoop サンドボックスに似た動作をします。"
-	keywords="emulator,hadoop ecosystem,hadoop sandbox,mapreduce tutorial"
+	keywords="エミュレーター,hadoop エコシステム,hadoop サンドボックス,mapreduce のチュートリアル"
 	editor="cgronlun"
 	manager="paulettm"
 	services="hdinsight"
@@ -109,9 +109,9 @@ HDInsight Visual Studio ツールのインストール方法については、[�
 
 ## トラブルシューティング: HDInsight Emulator への HDInsight ツールの接続
 
-1. HDInsight Emulator の接続中に、ダイアログ ボックスに HiveServer2 の接続成功が表示された場合でも、C:\\hdp\\hive-*version*\\conf\\hive-site.xml にある Hive 構成ファイルの **hive.security.authorization.enabled プロパティ**を手動で **false** に設定し、ローカル エミュレーターを再起動する必要があります。HDInsight Tools for Visual Studio は、テーブルの上位 100 行をプレビューしている場合のみ、HiveServer2 に接続します。このようなクエリを使用しない場合は、Hive 構成をそのままにすることができます。
+1. HDInsight Emulator への接続中に、ダイアログ ボックスに HiveServer2 の接続の成功が示された場合でも、C:\\hdp\\hive-*version*\\conf\\hive-site.xml にある Hive 構成ファイルの **hive.security.authorization.enabled プロパティ**を手動で **false** に設定し、ローカル エミュレーターを再起動する必要があります。HDInsight Tools for Visual Studio は、テーブルの上位 100 行をプレビューしている場合のみ、HiveServer2 に接続します。このようなクエリを使用しない場合は、Hive 構成をそのままにすることができます。
 
-2. HDInsight Emulator を実行するコンピューターで動的 IP の割り当て (DHCP) を使用している場合は、C:\\hdp\\hadoop-*version*\\etc\\hadoop\\core-site.xml を更新し、**hadoop.proxyuser.hadoop.hosts** プロパティの値を (*) に変更することが必要である可能性があります。これにより、Hadoop ユーザーは、すべてのホストから接続して Visual Studio で入力されたユーザーに偽装することができます。
+2. HDInsight Emulator を実行するコンピューターで動的 IP の割り当て (DHCP) を使用している場合は、C:\\hdp\\hadoop-*version*\\etc\\hadoop\\core-site.xml を更新し、**hadoop.proxyuser.hadoop.hosts** プロパティの値を (*) に変更することが必要になる可能性があります。これにより、Hadoop ユーザーは、すべてのホストから接続して Visual Studio で入力されたユーザーに偽装することができます。
 
 		<property>
 			<name>hadoop.proxyuser.hadoop.hosts</name>
@@ -398,13 +398,13 @@ HDInsight Emulator は、既定のファイル システムとして HDFS を使
 **コンテナーを作成するには**
 
 1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)にサインインします。
-2. 左側の **[新規]** をクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。
+2. 左側の **[新規]** をクリックし、**[データ + ストレージ]**、**[Storage]** の順にクリックします。
 3. [ストレージ アカウント] ブレードで、以下の画面キャプチャに示すように、プロパティを構成します。
 	
 	![ストレージ アカウントの作成](./media/hdinsight-hadoop-emulator-get-started/hdi.emulator.create.storage.png)
 
 	**[スタート画面にピン留めする]** を選択し、**[作成]** をクリックします。
-4. ストレージ アカウントが作成されたら、新しいストレージ アカウント ブレードで **[コンテナー]** をクリックし、コンテナー ブレードを開いて、**[追加]** をクリックします。
+4. ストレージ アカウントが作成されたら、新しいストレージ アカウント ブレードで **[コンテナー]** をクリックし、コンテナー ブレードを開いて **[追加]** をクリックします。
 5. コンテナーの名前を入力し、**[選択]** をクリックします。
 
 	![コンテナーを作成する](./media/hdinsight-hadoop-emulator-get-started/hdi.emulator.create.container.png)
@@ -498,4 +498,4 @@ Emulator をインストールしたコンピューターでコントロール �
 [image-hdi-emulator-services]: ./media/hdinsight-hadoop-emulator-get-started/HDI.Emulator.Services.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -43,11 +43,7 @@ Azure PowerShell とリソース マネージャー テンプレートを使用�
 - [仮想マシンの再起動](#restart)
 - [仮想マシンの削除](#delete)
 
-開始する前に、Azure PowerShell を使用する準備が整っていることを確認してください。
-
-[AZURE.INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
-
-
+[AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
 
 ## Azure リソース マネージャー テンプレートとリソース グループ
 
@@ -59,7 +55,7 @@ JSON ベースのリソース テンプレートを定義すると、PowerShell 
 
 Azure リソース マネージャー テンプレートを使用して作成するリソースは、新規または既存の *Azure リソース グループ*にデプロイされます。リソース グループでは、デプロイした複数のリソースを論理グループとしてまとめて管理できます。つまり、グループやアプリケーションのライフサイクル全体を管理できます。
 
-テンプレートの作成に興味がある場合は、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。
+テンプレートの作成に興味がある場合は、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
 ### リソース グループの作成
 
@@ -71,7 +67,7 @@ Azure リソース マネージャー テンプレートを使用して作成す
 
 ## <a id="windowsvm"></a>タスク: 仮想マシンの作成
 
-このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、[米国西部での簡単な Windows VM のデプロイ](https://azure.microsoft.com/documentation/templates/101-simple-windows-vm/)に関するページをご覧ください。
+このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、「[Deploy a simple Windows VM in West US (米国西部での簡単な Windows VM のデプロイ)](https://azure.microsoft.com/documentation/templates/101-simple-windows-vm/)」をご覧ください。
 
 ![](./media/virtual-machines-deploy-rmtemplates-powershell/windowsvm.png)
 
@@ -130,7 +126,7 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 
 ## <a id="customvm"></a>タスク: 専用ディスクを使用した仮想マシンの作成
 
-このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、[専用 VHD ディスクからの VM の作成](https://azure.microsoft.com/documentation/templates/201-vm-from-specialized-vhd/)に関するページをご覧ください。
+このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、「[Create a VM from a specialized VHD disk (専用 VHD ディスクからの VM の作成)](https://azure.microsoft.com/documentation/templates/201-vm-from-specialized-vhd/)」をご覧ください。
 
 次のコマンドで、*deployment name* をそのデプロイメントに使用する名前で置き換え、*resource group name* を既存のリソース グループの名前で置き換えた後、このコマンドを実行します。
 
@@ -159,7 +155,7 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 
 ## <a id="multivm"></a>タスク: 外部ロード バランサーを使用した仮想ネットワーク内での複数の仮想マシンの作成
 
-このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、[専用 VHD ディスクからの VM の作成](https://azure.microsoft.com/documentation/templates/201-2-vms-loadbalancer-lbrules/)に関するページをご覧ください。
+このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、「[Create a VM from a specialized VHD disk (専用 VHD ディスクからの VM の作成)](https://azure.microsoft.com/documentation/templates/201-2-vms-loadbalancer-lbrules/)」をご覧ください。
 
 ![](./media/virtual-machines-deploy-rmtemplates-powershell/multivmextlb.png)
 
@@ -374,10 +370,10 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 ## その他のリソース
 [Azure のクイック スタート テンプレート](http://azure.microsoft.com/documentation/templates/)と[アプリケーション フレームワーク](virtual-machines-app-frameworks.md)
 
-[Azure リソース マネージャーにおける Azure コンピューティング、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
+[Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
 
 [Azure リソース マネージャーの概要](resource-group-overview.md)
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Stream Analytics でのリアルタイム Twitter センチメント分析 |Microsoft Azure"
 	description="リアルタイム Twitter センチメント分析で Stream Analytics を使用する方法について説明します。イベントの生成からライブ ダッシュボード上でのデータ操作までの手順。"
-	keywords="real-time twitter,sentiment analysis,social media analysis,social media analytics tools"
+	keywords="リアルタイム Twitter,センチメント分析,ソーシャル メディア分析,ソーシャル メディア分析ツール"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -34,7 +34,7 @@
 
 ## イベント ハブ入力とコンシューマー グループの作成
 
-サンプル アプリケーションでは、イベントを生成し、それらを Event Hubs インスタンス (略して、イベント ハブ) にプッシュします。Service Bus イベント ハブは、Stream Analytics に推奨されるイベント取り込み方法です。イベント ハブのドキュメントについては、[Service Bus のドキュメント](/documentation/services/service-bus/)を参照してください。
+サンプル アプリケーションでは、イベントを生成し、それらを Event Hubs インスタンス (略して、イベント ハブ) にプッシュします。Service Bus Event Hubs は、Stream Analytics に推奨されるイベント取り込み方法です。Event Hubs のドキュメントについては、[Service Bus のドキュメント](/documentation/services/service-bus/)を参照してください。
 
 Event Hub を作成するには、次の手順に従います。
 
@@ -187,7 +187,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 BLOB ストレージ用のコンテナーがまだない場合は、次の手順に従って作成します。
 
-1.	既存のストレージ アカウントを使用するか、新しいストレージ アカウントを作成します。新しいストレージ アカウントを作成するには、**[新規]**、**[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックして、画面の指示に従います。
+1.	既存のストレージ アカウントを使用するか、新しいストレージ アカウントを作成します。新しいストレージ アカウントを作成するには、**[新規]**、**[データ サービス]**、**[Storage]**、**[簡易作成]** の順にクリックして、画面の指示に従います。
 2.	ストレージ アカウントを選択し、ページ上部にある **[コンテナー]** をクリックし、**[追加]** をクリックします。
 3.	コンテナーの **[名前]** を指定し、パブリック BLOB に対する **[アクセス]** を設定します。
 
@@ -224,7 +224,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 ![ソーシャル メディア分析: Power BI ダッシュ ボードでの Stream Analytics センチメント分析 (意見マイニング) 出力。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-output-power-bi.png)
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -236,4 +236,4 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

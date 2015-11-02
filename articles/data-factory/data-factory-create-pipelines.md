@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" y
-	ms.date="07/28/2015" 
+	ms.date="10/20/2015" 
 	ms.author="spelluru"/>
 
 # パイプラインとアクティビティの概要
@@ -224,18 +224,7 @@ Azure Data Factory でパイプラインを作成する一般的な手順は次�
 
 タグ | 説明 | 必須
 --- | ----------- | --------
-name | アクティビティまたはパイプラインの名前です。アクティビティまたはパイプラインが実行するように構成されているアクションを表す名前を指定します<br/><ul><li>最大文字数: 260</li><li>文字、数字、またはアンダースコア (_) で始める必要があります</li><li>次の文字は使用できません: “.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\\”</li></ul> | ○
-description | アクティビティまたはパイプラインの用途を説明するテキスト | ○
-type | アクティビティの種類を指定します。アクティビティの種類については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」および「[データ変換アクティビティ](data-factory-data-transformation-activities.md)」を参照してください。 | ○
-inputs | アクティビティによって使用される入力テーブル<p>// 1 つの入力テーブル<br/>"inputs": [ { "name": "inputtable1" } ],</p><p>// 2 つの入力テーブル<br/>"inputs": [ { "name": "inputtable1" }, { "name": "inputtable2" } ],</p> | ○
-outputs | アクティビティによって使用される出力テーブル。<p>// 1 つの出力テーブル<br/>"outputs": [ { "name": “outputtable1” } ],</p><p>// 2 つの出力テーブル<br/>"outputs": [ { "name": “outputtable1” }, { "name": “outputtable2” } ],</p> | ○
-linkedServiceName | アクティビティで使用されるリンクされたサービスの名前。<p>アクティビティでは、必要なコンピューティング環境にリンクするリンクされたサービスの指定が必要な場合があります。</p> | ○: HDInsight アクティビティおよび Azure Machine Learning バッチ スコアリング アクティビティの場合<p>×: 他のすべての場合</p>
-typeProperties | typeProperties セクションのプロパティは、アクティビティの種類に依存します。詳細については、各個別アクティビティの記事を参照してください | ×
-policy | アクティビティの実行時の動作に影響を与えるポリシー。指定されていない場合は、既定のポリシーが使用されます。詳細については後で説明します | ×
-start | パイプラインの開始日時。[ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)にする必要があります。(例: 2014-10-14T16:32:41Z)。start プロパティと end プロパティで、パイプラインの有効期間を指定します。出力スライスは、この有効期間内でのみ生成されます。| ×<p>パイプラインの有効期間は、Set-AzureDataFactoryPipelineActivePeriod コマンドレットを使用して設定することも</p>
-End | パイプラインの終了日時。ISO 形式で指定する必要があります。例: 2014-10-14T17:32:41Z <p> 指定しないと、「開始 + 48 時間」として計算されます。パイプラインを無期限に実行するには、end プロパティの値として 9999-09-09 を指定します。</p>| ×
-isPaused | true に設定すると、パイプラインは実行されません。既定値 = false。このプロパティを使用して有効または無効にできます。 | ×
-scheduler | アクティビティのスケジュールを定義します。サブプロパティは、[データセットの availability プロパティ](data-factory-create-datasets.md#Availability)と同じです。 | × | 
+name | アクティビティまたはパイプラインの名前です。アクティビティまたはパイプラインが実行するように構成されているアクションを表す名前を指定します<br/><ul><li>最大文字数: 260</li><li>文字、数字、またはアンダースコア (\_) で始める必要があります</li><li>次の文字は使用できません: “.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\\”</li></ul> | ○ description | アクティビティまたはパイプラインの用途を説明するテキスト | ○ type | アクティビティの種類を指定します。アクティビティの種類については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」および「[データ変換アクティビティ](data-factory-data-transformation-activities.md)」を参照してください。 | ○ inputs | アクティビティによって使用される入力テーブル<p>// 1 つの入力テーブル<br/>"inputs": [ { "name": "inputtable1" } ],</p><p>// 2 つの入力テーブル<br/>"inputs": [ { "name": "inputtable1" }, { "name": "inputtable2" } ],</p> | ○ outputs | アクティビティによって使用される出力テーブル。<p>// 1 つの出力テーブル<br/>"outputs": [ { "name": “outputtable1” } ],</p><p>// 2 つの出力テーブル<br/>"outputs": [ { "name": “outputtable1” }, { "name": “outputtable2” } ],</p> | ○ linkedServiceName | アクティビティで使用されるリンクされたサービスの名前。<p>アクティビティでは、必要なコンピューティング環境にリンクするリンクされたサービスの指定が必要な場合があります。</p> | ○: HDInsight アクティビティおよび Azure Machine Learning バッチ スコアリング アクティビティの場合<p>×: 他のすべての場合</p> typeProperties | typeProperties セクションのプロパティは、アクティビティの種類に依存します。詳細については、各個別アクティビティの記事を参照してください | × policy | アクティビティの実行時の動作に影響を与えるポリシー。指定されていない場合は、既定のポリシーが使用されます。詳細については後で説明します | × start | パイプラインの開始日時。[ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)にする必要があります。(例: 2014-10-14T16:32:41Z)。start プロパティと end プロパティで、パイプラインの有効期間を指定します。出力スライスは、この有効期間内でのみ生成されます。| ×<p>パイプラインの有効期間は、Set-AzureDataFactoryPipelineActivePeriod コマンドレットを使用して設定することも</p> End | パイプラインの終了日時。ISO 形式で指定する必要があります。例: 2014-10-14T17:32:41Z <p> 指定しないと、「開始 + 48 時間」として計算されます。パイプラインを無期限に実行するには、end プロパティの値として 9999-09-09 を指定します。</p>| × isPaused | true に設定すると、パイプラインは実行されません。既定値 = false。このプロパティを使用して有効または無効にできます。 | × scheduler | アクティビティのスケジュールを定義します。サブプロパティは、[データセットの availability プロパティ](data-factory-create-datasets.md#Availability)と同じです。 | × | 
 
 ### アクティビティの種類
 Azure Data Factory には、[データ移動](data-factory-data-movement-activities.md)および[データ変換](data-factory-data-transformation-activities.md)のための広範なアクティビティがあります。
@@ -336,4 +325,4 @@ REST API を使用してパイプラインを作成およびデプロイする�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

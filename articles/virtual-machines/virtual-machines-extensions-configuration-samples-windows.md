@@ -19,6 +19,10 @@
 
 # Azure Windows VM 拡張機能の構成サンプル
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+
+
+
 この記事には、Windows VM に対して Azure VM 拡張機能を構成する際の構成のサンプルが記載されています。
 
 
@@ -304,4 +308,4 @@ Azure 診断拡張機能の概要については、[こちら](https://msdn.micr
 
 [Windows VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

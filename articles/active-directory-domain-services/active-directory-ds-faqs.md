@@ -13,14 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/12/2015"
+	ms.date="10/16/2015"
 	ms.author="maheshu"/>
 
 # Azure Active Directory ドメイン サービス プレビュー: FAQ
 
 このページでは、Azure Active Directory ドメイン サービス プレビューに関してよく寄せられる質問への回答が記載されています。常に最新情報をチェックしてください。
 
-### 1\.構成
+### トラブルシューティング ガイド
+Azure AD Domain Services を構成または管理する際に生じる一般的な問題の解決策については、「[トラブルシューティング ガイド](active-directory-ds-troubleshooting.md)」を参照してください。
+
+
+### 構成
 
 #### 1 つの Azure AD ディレクトリに対して複数のドメインを作成することはできますか。
 いいえ。1 つの Azure AD ディレクトリに対して Azure AD Domain Services によって対応されるドメインは 1 つだけ作成できます。
@@ -35,7 +39,7 @@ PowerShell/Azure AD Domain Services の自動デプロイは、現時点では�
 いいえ。Azure AD Domain Services は、古い Microsoft Azure 管理ポータル (https://manage.windowsazure.com)) でのみ構成できます。今後、新しい Microsoft Azure 管理ポータル (https://portal.azure.com) までサポートを拡大する予定です。
 
 
-### 2\.管理と操作
+### 管理と操作
 
 #### Azure AD Domain Services を有効にしています。このドメインに参加しているドメイン コンピューターでは、どのユーザー アカウントを使用できますか。
 管理グループに追加したユーザー アカウント (つまり、AAD DC 管理者) を、ドメインに参加しているコンピューターで使用できます。さらに、このグループのユーザーには、ドメインに参加しているコンピューターへのリモート デスクトップ アクセス権が付与されます。
@@ -47,13 +51,13 @@ PowerShell/Azure AD Domain Services の自動デプロイは、現時点では�
 いいえ。Azure AD Domain Services によってサービスされるドメインのグループ メンバーシップは変更できません。ユーザー属性に対しても同様です。ただし、Azure AD またはオンプレミスのドメインのいずれかで、グループ メンバーシップまたはユーザー属性を変更できます。このような変更は、Azure AD Domain Services に自動的に同期されます。
 
 
-### 3\.課金と可用性
+### 課金と可用性
 
 #### これは有料のサービスですか。
 このサービスは、パブリック プレビュー期間中は特別割引価格で利用できます。正規料金の課金は、サービスが一般公開 (GA) されたときに開始されます。詳細については、価格に関するページを参照してください。
 
-#### サービスの無料評価版はありますか。
-このサービスは、Azure の無料評価版に含まれています。[1 か月間の無料評価版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+#### サービスの無料試用版はありますか。
+このサービスは、Azure の無料試用版に含まれています。[1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
 #### Enterprise Mobility Suite (EMS) の一部として Azure AD Domain Services を取得できますか。
 いいえ。Azure AD Domain Services は従量課金の Azure サービスであり、EMS には含まれていません。Azure AD Domain Services は、Azure AD のすべての SKU (無料、Basic、Premium) で利用でき、使用状況に応じて 1 時間単位で課金されます。
@@ -64,4 +68,4 @@ Azure AD Domain Services を利用できる Azure のリージョンの一覧に
 #### Azure AD Domain Services はいつ一般公開される予定ですか。
 現時点では、このサービスの一般公開予定は決まっていません。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

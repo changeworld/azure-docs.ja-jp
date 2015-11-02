@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="DocumentDB リソースの RESTful な操作 | Microsoft Azure" 
 	description="この RESTful Web サービス チュートリアルで HTTP メソッドを確認してください。HTTP 動詞を使用して Microsoft Azure DocumentDB リソースの RESTful な操作を行う方法について説明します。"
-	keywords="http methods, restful services tutorial, restful web services tutorial, http verbs, documentdb, azure, Microsoft azure"
+	keywords="http メソッド, restful サービス チュートリアル, restful web サービス チュートリアル, http 動詞, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	authors="h0n" 
 	manager="jhubbard" 
@@ -205,4 +205,4 @@ REST API を使用してリソースを操作する方法については、「[A
 [1]: ./media/documentdb-interactions-with-resources/interactions-with-resources2.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

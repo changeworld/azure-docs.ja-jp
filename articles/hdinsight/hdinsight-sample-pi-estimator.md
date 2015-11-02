@@ -14,29 +14,36 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/09/2015"
+	ms.date="10/15/2015"
 	ms.author="jgao"/>
 
-# HDInsight での Pi 推定 Hadoop サンプル
+# HDInsight の Hadoop クラスターで Pi 推定 MapReduce プログラムを実行する
 
-このトピックでは、Azure PowerShell を使用して Azure HDinsight で数学定数パイ (Pi) の値を推定する Hadoop MapReduce プログラムを実行する方法を紹介します。また、Pi の検査値を計算するための MapReduce プログラムで使用する Java コードについても説明します。
+HDInsight クラスターには、いくつかの MarReduce サンプルが含まれた jar ファイルが付属しています。この記事では、Azure PowerShell を使用して Pi 推定サンプルを実行する方法について説明します。Pi 推定サンプルでは、円周率 Pi の値を推定します。
 
 > [AZURE.NOTE]このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。Linux ベースのクラスターでこれと他のサンプルを実行する方法については、「[HDInsight での Hadoop のサンプルの実行](hdinsight-hadoop-run-samples-linux.md)」をご覧ください。
 
 プログラムでは統計的手法 (準モンテカルロ法) に基づいて Pi の値を計算します。単位正方形の内部にランダムに配置された点は、その正方形に内接する円の内部にも円の面積に等しい確率 (Pi/4) で配置されます。Pi の値は 4R という値で計算されます。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。サンプルの点の数が大きくなるほど、推定値の精度が上がります。
 
-検査に利用できる mapper 関数と reducer 関数を含む Pi 推定 Java コードを次に挙げます。mapper プログラムは、指定された数の点を生成して単位正方形内にランダムに配置して、円の内部にある点の数を計算します。reducer プログラムは、mapper が計算した点の数を累計して、4R という公式から Pi の値を推定します。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。
-
 このサンプルで示したスクリプトでは、Hadoop jar ジョブを送信し、マップ数を 16 として実行し、それぞれがパラメーター値として指定された 1,000 万個のサンプル点を計算します。このパラメーター値を変更すると、Pi の推定値の精度を高めることができます。参考のために、Pi の小数点以下 10 桁までは 3.1415926535 です。
-
-Hadoop on Azure でアプリケーションをデプロイするときに必要なファイルを含む jar ファイルは zip ファイルでダウンロードできます。さまざまな圧縮ユーティリティを使ってファイルの圧縮を解除して、自由にファイルを調べることができます。
 
 HDInsight を使用して MapReduce ジョブをすばやく実行するのに役立つその他のサンプルは、その実行方法のリンクと共に、「[HDInsight での Hadoop のサンプルの実行][hdinsight-samples]」に挙げられています。
 
-**学習内容:**
 
-* Azure PowerShell を使用して Pi 推定 MapReduce プログラムを Azure HDInsight で実行する方法。
-* Java で記述された MapReduce プログラムの実例。
+**その他の関連記事:**
+
+* [Azure HDInsight の概要][hdinsight-get-started]
+* [HDInsight での Hadoop 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce.md)
+* [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
+* [サンプル: 10 GB GraySort][hdinsight-sample-10gb-graysort]
+* [サンプル: ワードカウント][hdinsight-sample-wordcount]
+* [サンプル: C ストリーミング][hdinsight-sample-cs-streaming]
+
+
+
+
+
+
 
 **前提条件**:
 
@@ -46,7 +53,7 @@ HDInsight を使用して MapReduce ジョブをすばやく実行するのに�
 
 
 
-## <a id="run-sample"></a>Azure PowerShell を使用したサンプルの実行
+## Azure PowerShell を使用したサンプルの実行
 
 **MapReduce ジョブを送信するには**
 
@@ -80,8 +87,9 @@ HDInsight を使用して MapReduce ジョブをすばやく実行するのに�
 	比較のために、Pi の小数点以下 10 桁までは 3.1415926535 です。
 
 
-## <a id="java-code"></a>Pi 推定 MapReduce プログラムの Java コード
+## MapReduce Java ソース コード
 
+検査に利用できる mapper 関数と reducer 関数を含む Pi 推定 Java コードを次に挙げます。mapper プログラムは、指定された数の点を生成して単位正方形内にランダムに配置して、円の内部にある点の数を計算します。reducer プログラムは、mapper が計算した点の数を累計して、4R という公式から Pi の値を推定します。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。
 
 
  	/**
@@ -474,5 +482,6 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
+[hdinsight-sample-cs-streaming]: hdinsight-sample-csharp-streaming.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

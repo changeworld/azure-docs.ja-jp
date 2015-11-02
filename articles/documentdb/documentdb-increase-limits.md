@@ -2,7 +2,7 @@
 	pageTitle="DocumentDB アカウント制限の引き上げ要求 | Microsoft Azure" 
 	description="使用できるコレクション数、ストアド プロシージャ数、クエリ句数など、DocumentDB 制限の調整を要求する方法について説明します。" 
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="AndrewHoh" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=""/>
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="07/28/2015" 
-	ms.author="stbaro"/>
+	ms.author="anhoh"/>
 
 # DocumentDB アカウント制限の引き上げを要求する
 
@@ -48,47 +48,47 @@ Azure サポートに問い合わせて調整できる DocumentDB クォータ�
 
 1. [Azure プレビュー ポータル](https://portal.azure.com)の **[参照]**、**[ヘルプとサポート]** を順にクリックします。
 
-	![Screenshot of launching help and support](media/documentdb-increase-limits/helpsupport.png)
+	![ヘルプとサポート起動時のスクリーンショット](media/documentdb-increase-limits/helpsupport.png)
 
 2. **[ヘルプとサポート]** ブレードで **[サポートを受ける]** をクリックします。
 
-	![Screenshot of creating a support ticket](media/documentdb-increase-limits/getsupport.png)
+	![サポート チケット作成のスクリーンショット](media/documentdb-increase-limits/getsupport.png)
 
 3. **[新しいサポート リクエスト]** ブレードで **[要求の種類]** をクリックし、**[要求の種類]** ブレードで **[クォータ]** をクリックします。
 
-	![Screenshot of support ticket request type](media/documentdb-increase-limits/supportrequest1.png)
+	![サポート チケットのリクエストの種類のスクリーンショット](media/documentdb-increase-limits/supportrequest1.png)
 
 4. **[サブスクリプション]** ブレードで、ご使用の DocumentDB アカウントをホストしているサブスクリプションを選択します。
 
-	![Screenshot of support ticket subscription picker](media/documentdb-increase-limits/supportrequest2.png)
+	![サポート チケットのサブスクリプション選択のスクリーンショット](media/documentdb-increase-limits/supportrequest2.png)
 
 5. **[リソース]** ブレードで **[DocumentDB アカウント]** を選択します。
 
-	![Screenshot of support ticket resource picker](media/documentdb-increase-limits/supportrequest3.png)
+	![サポート チケットのリソース選択のスクリーンショット](media/documentdb-increase-limits/supportrequest3.png)
 
 6. **[サポート プラン]** ブレードで **[クォータの無料サポート]** を選択します。
 
-	![Screenshot of support ticket support plan picker](media/documentdb-increase-limits/supportrequest4.png)
+	![サポート チケットのサポート プラン選択のスクリーンショット](media/documentdb-increase-limits/supportrequest4.png)
 
 7. **[問題]** ブレードで、問題のカテゴリとして **[クォータまたはコアの増加の要求 DocumentDB]** を選択します。
 
-	![Screenshot of support ticket problem category picker](media/documentdb-increase-limits/supportrequest5.png)
+	![サポート チケットの問題のカテゴリ選択のスクリーンショット](media/documentdb-increase-limits/supportrequest5.png)
 
 8. **[説明]** ブレードに、要求の説明を入力します。必ず、調整が必要なアカウント (複数ある場合はすべて) と、要求しているクォータ調整の具体的な内容を含めてください。
 
-	![Screenshot of support ticket description textbox](media/documentdb-increase-limits/supportrequest6.png)
+	![サポート チケットの詳細テキストボックスのスクリーンショット](media/documentdb-increase-limits/supportrequest6.png)
 
 9. **[作成]** をクリックします。
 
-	![Screenshot of support ticket create button](media/documentdb-increase-limits/supportrequest7.png)
+	![サポート チケットの作成ボタンのスクリーンショット](media/documentdb-increase-limits/supportrequest7.png)
 
 サポート チケットが作成されると、サポート要求番号が電子メールで届きます。サポート要求は、**[ヘルプとサポート]** ブレードの **[サポート要求]** をクリックして表示することもできます。
 
-![Screenshot of support requests blade](media/documentdb-increase-limits/supportrequest8.png)
+![サポート リクエスト ブレードのスクリーンショット](media/documentdb-increase-limits/supportrequest8.png)
   
 
 ##<a name="NextSteps"></a>次のステップ
 - DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

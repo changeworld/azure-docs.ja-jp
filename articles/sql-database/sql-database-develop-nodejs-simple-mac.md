@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="07/20/2015" 
-	ms.author="mebha"/>
+	ms.date="10/20/2015" 
+	ms.author="meetb"/>
 
 
 # Mac OS X 上で Tedious を含む Node.js を使用して SQL Database に接続する
@@ -170,4 +170,4 @@ SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.asp
 		connection.execSql(request);
 	}
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

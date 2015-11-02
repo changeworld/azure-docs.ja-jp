@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Windows VM のリモート デスクトップ接続のトラブルシューティング |Microsoft Azure"
-	description="Windows を実行する Azure 仮想マシンへの Remote Desktop (RDP) 接続のトラブルシューティングを行います。"
+	description="RDP を使用した Windows 仮想マシンへの接続での一般的な問題を調べて対処します。簡単な軽減手順、エラー メッセージごとの具体的なヘルプ、および詳細なネットワーク トラブルシューティングを説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
@@ -17,48 +17,34 @@
 	ms.date="09/16/2015"
 	ms.author="dkshir"/>
 
-# Windows を実行する Azure 仮想マシンへの Remote Desktop 接続に関するトラブルシューティング
+# Windows を実行する Azure Virtual Machines への Remote Desktop 接続に関するトラブルシューティング
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
-Windows を実行する Azure 仮想マシンに対する Remote Desktop (RDP) は、さまざまな理由で失敗する可能性があります。この記事は、原因を特定して修正するために役立ちます。
+Windows を実行する Azure 仮想マシンに対する Remote Desktop (RDP) は、さまざまな理由で失敗する可能性があります。VM 上の RDP ソフトウェア、基になっているホスト コンピューター、ネットワーク接続、接続元のクライアント側などに関する問題が発生します。この記事は、原因を特定して修正するために役立ちます。
 
-> [AZURE.NOTE]この記事は、Windows を実行する Azure 仮想マシンにのみ適用されます。Linux を実行する Azure 仮想マシンに対する接続のトラブルシューティングを行う場合は、[この記事](virtual-machines-troubleshoot-ssh-connections.md)を参照してください。
+この記事は、Windows を実行する Azure 仮想マシンにのみ適用されます。*Linux を実行する Azure 仮想マシン*に対する接続のトラブルシューティングを行う場合は、[この記事](virtual-machines-troubleshoot-ssh-connections.md)を参照してください。
 
-## Azure カスタマー サポートへの問い合わせ
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
-
-または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](http://azure.microsoft.com/support/faq/)」を参照してください。
-
+最初の「基本的な手順」セクションでは、一般的な接続の問題に対処する手順を示します。2 番目のセクションでは、具体的なエラー メッセージごとに解決手順を説明します。最後のセクションでは、各ネットワーク コンポーネントの詳細なトラブルシューティングの実行について説明します。
 
 ## 基本的な手順
 
-次の基本的な手順に従うと、Remote Desktop 接続エラーの大半を解決できます。
+次の基本的な手順に従うと、一般的な Remote Desktop 接続エラーの大半を解決できます。各手順を実行した後、VM に再接続してみてください。
 
-- Remote Desktop サービスを [Azure ポータル](https://portal.azure.com)からリセットします。**[すべて参照]**、**[仮想マシン (クラシック)]**、ご使用の Windows 仮想マシン、**[リモート アクセスのリセット]** の順にクリックします。
+- RDP サーバーでの起動の問題を解決するには、[Azure ポータル](https://portal.azure.com)からリモート デスクトップ サービスをリセットします。<br> [すべて参照]、[仮想マシン (クラシック)]、ご使用の Windows 仮想マシン、**[リモート アクセスのリセット]** の順にクリックします。
 
-![リモート アクセスのリセット](./media/virtual-machines-troubleshoot-remote-desktop-connections/Portal-RDP-Reset-Windows.png)
+    ![リモート アクセスのリセット](./media/virtual-machines-troubleshoot-remote-desktop-connections/Portal-RDP-Reset-Windows.png)
 
-- [仮想マシンを再起動します。](https://msdn.microsoft.com/library/azure/dn763934.aspx)
+- その他の起動の問題に対処するには仮想マシンを再起動します。<br> [すべて参照]、[仮想マシン (クラシック)]、Windows 仮想マシン、**[再起動]** の順にクリックします。
 
-- [仮想マシンのサイズを変更します。](https://msdn.microsoft.com/library/dn168976.aspx)
+- ホストの問題を解決するには、VM のサイズを変更します。<br> [すべて参照]、[仮想マシン (クラシック)]、Windows 仮想マシン、[設定]、**[サイズ]** の順にクリックします。詳細な手順については、「[Resize the virtual machine (仮想マシンのサイズの変更)](https://msdn.microsoft.com/library/dn168976.aspx)」を参照してください。
 
+- 起動の問題を修正するには、VM のコンソール ログまたはスクリーンショットを確認してください。[すべて参照]、[仮想マシン (クラシック)]、Windows 仮想マシン、**[起動の診断]** の順にクリックします。
 
-## Windows の Azure IaaS 診断パッケージを実行する
-
-Windows 8、Windows 8.1、Windows Server 2012、または Windows Server 2012 R2 を実行中のコンピューターでトラブルシューティングを実行する場合は、[Azure IaaS (Windows) 診断パッケージ](http://support.microsoft.com/kb/2976864)を試すことができます。このパッケージは、Remote Desktop でよく見られる多くの問題に対応できます。
-
-1.	[[サポート診断] ページ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)で、**[Microsoft Azure IaaS (Windows) 診断パッケージ]** をクリックします。**[作成]** をクリックして新しい診断セッションを開始します。このセッションは、別のターゲット コンピューターと**共有**するか、お使いのローカル コンピューターに**ダウンロード**できます。
-2.	セッションを**実行**し、マイクロソフト使用許諾契約書に**同意**して、診断ツールを**開始**します。
-3.	ポップアップ ウィンドウで Azure サブスクリプションを認証し、画面の指示に従います。
-4.	[**Azure VM で発生している問題**] ページで、[**Azure VM との RDP 接続 (再起動が必要)**] の問題を選択します。
-
-Azure IaaS 診断パッケージを実行できなかった、または役に立たなかった場合は、次のセクションに進んで、Remote Desktop クライアントから取得したエラーに基づいて問題を解決します。
-
-
-## 一般的な RDP エラー
+## 一般的な RDP エラーのトラブルシューティング
 
 Azure 仮想マシンに Remote Desktop 接続しようとしたときに発生する可能性がある一般的なエラーは次のとおりです。
 
@@ -140,7 +126,6 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 接続するために使用しているアカウントに、Remote Desktop ログオン権限があることを確認してください。回避策として、ドメイン管理者アカウントまたはローカル管理者アカウントを使用して Remote Desktop で接続した後、コンピューターの管理スナップイン (**[システム ツール] > [ローカル ユーザーとグループ] > [グループ] > [リモート デスクトップ ユーザー]**) を使用して、必要なアカウントをリモート デスクトップ ユーザーのローカル グループに追加します。
 
-
 ## 詳細なトラブルシューティング
 
 上記のエラーが発生していないにもかかわらず、Remote Desktop を介して仮想マシンに接続できない場合は、[この記事](virtual-machines-rdp-detailed-troubleshoot.md)で他の原因を見つけてください。
@@ -158,4 +143,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

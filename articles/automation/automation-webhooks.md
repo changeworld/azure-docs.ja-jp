@@ -169,7 +169,7 @@ Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要
 
 ## Azure アラートに応じて Runbook を開始する
 
-Webhook 対応の Runbook を使用して、[Azure アラート](Azure-portal/insights-receive-alert-notifications.md)に対応することができます。Azure 内のリソースは、Azure アラートを活用してパフォーマンス、可用性、および利用状況などの統計を収集することで監視できます。Azure リソースの監視メトリックまたはイベントに基づいて通知を受け取ることができます。指定したメトリックの値が割り当て済みのしきい値を超えた場合、または構成済みのイベントがトリガーされた場合に、アラートの解決を担当するサービス管理者または共同管理者に通知が送信されます。メトリックとイベントの詳細については、[Azure アラート](Azure-portal/insights-receive-alert-notifications.md)に関する記事を参照してください。
+Webhook 対応の Runbook を使用して、[Azure アラート](Azure-portal/insights-receive-alert-notifications.md)に対応することができます。Azure 内のリソースは、Azure アラートを活用してパフォーマンス、可用性、および利用状況などの統計を収集することで監視できます。Azure リソースの監視メトリックまたはイベントに基づいて通知を受け取ることができます。現在、Automation アカウントではメトリックしかサポートしていません。指定したメトリックの値が割り当て済みのしきい値を超えた場合、または構成済みのイベントがトリガーされた場合に、アラートの解決を担当するサービス管理者または共同管理者に通知が送信されます。メトリックとイベントの詳細については、[Azure アラート](Azure-portal/insights-receive-alert-notifications.md)に関する記事を参照してください。
 
 Azure アラートを通知システムとして使用するだけでなく、アラートに応じて Runbook を開始することもできます。Azure Automation には、Azure アラートを使用して Webhook 対応の Runbook を開始する機能があります。メトリックが構成済みのしきい値を超えると、アラート ルールがアクティブになって Automation Webhook がトリガーされ、この Webhook により Runbook が実行されます。
 
@@ -255,4 +255,4 @@ Azure アラートを通知システムとして使用するだけでなく、�
 - [Runbook ジョブの状態の表示](automation-viewing-the-status-of-a-runbook-job.md)
 - [Using Azure Automation to take actions on Azure Alerts (Azure Automation を使用した Azure アラートに対するアクションの実行)](https://azure.microsoft.com/blog/using-azure-automation-to-take-actions-on-azure-alerts/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

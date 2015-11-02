@@ -18,6 +18,8 @@
 
 # Service Bus キューの使用方法
 
+[AZURE.INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
+
 この記事では、Service Bus キューの使用方法について説明します。サンプルは Java で記述され、[Azure SDK for Java][] を利用しています。紹介するシナリオは、**キューの作成**、**メッセージの送受信**、**キューの削除**です。
 
 [AZURE.INCLUDE [service-bus-java-how-to-create-queue](../../includes/service-bus-java-how-to-create-queue.md)]
@@ -90,7 +92,7 @@ Service Bus キューの管理処理は **ServiceBusContract** クラスを使�
         System.exit(-1);
     }
 
-Service Bus キューに送信されたメッセージおよび Service Bus キューから受信したメッセージは、[BrokeredMessage][] クラスのインスタンスになります。[BrokeredMessage][] オブジェクトには、([Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)、[TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体が備わっています。アプリケーションでは、[BrokeredMessage][] のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切なシリアライザーを使用してオブジェクトをシリアル化します。または、**java.IO.InputStream** オブジェクトを提供することもできます。
+Service Bus キューに送信されたメッセージ (および Service Bus キューから受信したメッセージ) は、[BrokeredMessage][] クラスのインスタンスになります。[BrokeredMessage][] オブジェクトには、([Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)、[TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体が備わっています。アプリケーションでは、[BrokeredMessage][] のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切なシリアライザーを使用してオブジェクトをシリアル化します。または、**java.IO.InputStream** オブジェクトを提供することもできます。
 
 以下の例では、上のコード スニペットで取得した `TestQueue` **MessageSender** にテスト メッセージを 5 件送信する方法を示しています。
 
@@ -177,7 +179,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 ## 次のステップ
 
-これで、Service Bus キューの基本を学習できました。詳細については、「[キュー、トピック、およびサブスクリプション][]」を参照してください。
+これで、Service Bus キューの基本を学習できました。詳細については、「[Service Bus キュー、トピック、およびサブスクリプション][]」をご覧ください。
 
 詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
@@ -185,7 +187,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
   [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
   [Azure Management Portal]: http://manage.windowsazure.com/
-  [キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
+  [Service Bus キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
   [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

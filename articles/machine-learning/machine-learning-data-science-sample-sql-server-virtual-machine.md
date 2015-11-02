@@ -13,14 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
+	ms.date="10/18/2015" 
 	ms.author="fashah;garye;bradsev" />
 
 #<a name="heading"></a>Azure の SQL Server 内のデータのサンプリング
 
-このドキュメントでは、Azure の SQL Server に保存されているデータを、SQL と Python プログラミング言語を使用してサンプリングする方法について説明します。
+このドキュメントでは、SQL と Python プログラミング言語の両方を使用して Azure 上の SQL Server に格納されているデータをサンプリングする方法について説明します。また、ファイルを保存して、サンプリングしたデータを Azure Machine Learning に移動し、そのデータを Azure BLOB にアップロードし、Azure ML に読み込む方法についても説明します。
 
->[AZURE.NOTE]このドキュメントにあるサンプルの SQL コードは、データが Azure の SQL Server に存在することを前提としています。存在しない場合は、「[学習ガイド: Azure での高度なデータ処理](machine-learning-data-science-advanced-data-processing.md)」の「[Azure の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」トピックの説明を参照して、Azure の SQL Server にデータを移動します。
+Python のサンプリングでは、[pyodbc](https://code.google.com/p/pyodbc/) ODBC ライブラリを使用して、Azure 上の SQL Server に接続し、[Pandas](http://pandas.pydata.org/) ライブラリを使用してサンプリングを実行します。
+
+>[AZURE.NOTE]このドキュメントにあるサンプルの SQL コードは、データが Azure の SQL Server に存在することを前提としています。データが SQL Server に格納されていない場合は、データを Azure 上の SQL Server に移動する手順について説明した「[Azure Virtual Machine 上の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」を参照してください。
 
 ##<a name="SQL"></a>SQL の使用
 
@@ -55,13 +57,13 @@ Azure ML リーダー モジュールで上記のサンプル クエリを直接
 
 ##<a name="python"></a>Python プログラミング言語の使用 
 
-このセクションでは、Python で pyodbc ライブラリを使用した SQL Server データベースへの接続について説明します。データベース接続文字列は次のようになります (サーバー名、データベース名、ユーザー名、およびパスワードは、使用する構成に置き換えます)。
+このセクションでは、Python で [pyodbc ライブラリ](https://code.google.com/p/pyodbc/)を使用して SQL Server データベースに対する ODBC 接続を確立する方法について説明します。データベース接続文字列は次のようになります (サーバー名、データベース名、ユーザー名、およびパスワードは、使用する構成に置き換えます)。
 
 	#Set up the SQL Azure connection
 	import pyodbc	
 	conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python プログラミングでデータを操作するためのデータ構造とデータ解析ツールの豊富なセットが用意されています。次のコードは、Azure SQL データベースから 0.1% のデータのサンプルを Pandas のデータに読み込みます。
+Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python プログラミングでデータを操作するためのデータ構造とデータ解析ツールの豊富なセットが用意されています。次のコードは、Azure SQL Database から 0.1% のデータのサンプルを Pandas のデータに読み込みます。
 
 	import pandas as pd
 
@@ -104,13 +106,13 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
  
 ![リーダー BLOB][2]
 
-## Advanced Analytics Process and Technology (ADAPT) の活用の例
+## Cortana Analytics Process の活用例
 
-Advanced Analytics Process and Technology (ADAPT) とパブリック データセットを使用した完全なチュートリアルの例については、「[Advanced Analytics Process and Technology の活用: SQL Sever の使用](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
+パブリック データセットを使用した Cortana Analytics Process のエンドツーエンドのチュートリアル例については、「[Cortana Analytics Process の活用: SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
 
 [1]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_blob.png
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

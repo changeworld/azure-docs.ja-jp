@@ -1,19 +1,19 @@
-<properties
-	pageTitle="詳細情報: Azure AD のパスワード管理 | Microsoft Azure"
-	description="パスワード ライトバックのしくみ、パスワード ライトバックのセキュリティ、パスワード リセット ポータルのしくみ、パスワードのリセットで使用されるデータなど、Azure AD のパスワード管理に関する高度なトピック。"
-	services="active-directory"
-	documentationCenter=""
-	authors="asteen"
-	manager="kbrint"
+<properties 
+	pageTitle="詳細情報: Azure AD のパスワード管理 | Microsoft Azure" 
+	description="パスワード ライトバックのしくみ、パスワード ライトバックのセキュリティ、パスワード リセット ポータルのしくみ、パスワードのリセットで使用されるデータなど、Azure AD のパスワード管理に関する高度なトピック。" 
+	services="active-directory" 
+	documentationCenter="" 
+	authors="asteen" 
+	manager="kbrint" 
 	editor="billmath"/>
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/18/2015" 
+<tags 
+	ms.service="active-directory" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/08/2015" 
 	ms.author="asteen"/>
 
 # パスワード管理の詳細情報
@@ -73,7 +73,7 @@
 パスワード ライトバックは、安全性と信頼性の高いサービスです。ユーザーの情報を確実に保護するために、以下で説明する 4 層のセキュリティ モデルを実現しています。
 
 - **テナント固有の Service Bus Relay** – サービスを設定すると、マイクロソフトでもアクセスできない、ランダムに生成された強力なパスワードで保護されたテナント固有の Service Bus Relay が設定されます。
-- **ロックダウンされ、暗号強度の高いパスワード暗号化キー** – Service Bus Relay が作成されると、強力な非対称キー ペアが作成され、ネットワーク経由でパスワードが渡されるときに暗号化に使用されます。このキーは、クラウド内のテナントのシークレット ストアのみ存在し、厳重にロックダウンされ、ディレクトリ内のパスワードと同様に監査されます。
+- **ロックダウンされ、暗号強度の高いパスワード暗号化キー** – Service Bus Relay が作成されると、強力な非対称キー ペアが作成され、ネットワーク経由でパスワードが渡されるときに暗号化に使用されます。このキーは、クラウド内の会社のシークレット ストアのみに存在し、厳重にロックダウンされ、ディレクトリ内のパスワードと同様に監査されます。
 - **業界標準の TLS** – クラウド内でパスワードのリセットや変更操作が行われる場合は、プレーン テキスト パスワードが取得され、公開キーを使用して暗号化されます。次に、これを HTTPS メッセージにして、マイクロソフトの SSL 証明書を使用して暗号化されたチャネルを介して Service Bus Relay に送信されます。このメッセージが Service Bus に到着すると、オンプレミスのエージェントがアクティブになり、前に生成された強力なパスワードを使用して Service Bus に認証され、暗号化されたメッセージを取得し、生成された秘密キーを使用して復号化され、AD DS SetPassword API を使用してパスワードの設定を試みます。この手順に従うと、クラウドで AD オンプレミスのパスワード ポリシー (複雑さ、年齢、履歴、フィルターなど) を適用できます。
 - **メッセージの有効期限ポリシー** - 最後に、何らかの理由でオンプレミス サービスが停止しているために Service Bus でメッセージが表示される場合は、セキュリティをさらに強化するために数分後にタイムアウトになり、削除されます。
 
@@ -281,4 +281,4 @@
 [001]: ./media/active-directory-passwords-learn-more/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -14,13 +14,12 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.date="10/20/2015" 
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーションのワークロード フェーズ 1: Azure を構成する
  
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
+[AZURE.INCLUDE [learn-about-deployment-models-rm-include](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
  
 イントラネット専用の高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、Azure のネットワークおよびストレージ インフラストラクチャを構築します。[フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-workload-high-availability-LOB-application-overview.md)」をご覧ください。
 
@@ -46,7 +45,6 @@ Azure コンポーネントの構成を開始する前に、次の表を作成�
 6\. | 仮想ネットワークの最初の DNS サーバー | 仮想ネットワークの、2 番目のサブネットのアドレス空間に対して可能な 4 番目の IP アドレス (表 S を参照)。IT 部門と相談してこのアドレスを決定します。 | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 7\. | 仮想ネットワークの 2 番目の DNS サーバー | 仮想ネットワークの、2 番目のサブネットのアドレス空間に対して可能な 5 番目の IP アドレス (表 S を参照)。IT 部門と相談してこのアドレスを決定します。 | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 8\. | IPsec 共有キー | サイト間 VPN 接続の両側で認証に使用される、32 文字のランダムな英数文字列。IT 部門またはセキュリティ部門と相談して、このキーの値を決定します。あるいは、「[IPsec 事前共有キーのランダムな文字列を作成する](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx)」を参照してください。| \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-
 
 **表 V: クロスプレミス仮想ネットワークの構成**
 
@@ -87,37 +85,21 @@ IT 部門と相談して、仮想ネットワーク アドレス空間からこ�
 
 **表 L: ローカル ネットワークのアドレス プレフィックス**
 
-> [AZURE.NOTE]この記事には、バージョン 0.9.5 以上、1.0.0 *未満*の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。この記事に示す Azure PowerShell コマンド ブロックは、Azure PowerShell のバージョン 1.0.0 以降の新しいコマンドレットをサポートするためにテストおよび更新を行っている段階にあります。もうしばらくお待ちください。
+> [AZURE.NOTE]この記事には、Azure PowerShell プレビュー 1.0 のコマンドが使用されています。Azure PowerShell 0.9.8 以前のバージョンでこれらのコマンドを実行するには、"-AzureRM" のすべてのインスタンスを "-Azure" に置き換え、すべてのコマンド実行の前に **Switch-AzureMode AzureResourceManager** コマンドを追加します。詳細については、「[Azure PowerShell 1.0 プレビュー](https://azure.microsoft.com/blog/azps-1-0-pre/)」を参照してください。
 
 Azure PowerShell プロンプトを開きます。
-
-まず以下のコマンドで、適切な Azure サブスクリプションを選択します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
-
-	$subscr="<Subscription name>"
-	Select-AzureSubscription -SubscriptionName $subscr –Current
-
-**Get-AzureSubscription** コマンドの出力の **SubscriptionName** プロパティで、サブスクリプション名を取得できます。
-
-次に、以下のコマンドを実行して、Azure PowerShell をリソース マネージャー モードに切り替えます。
-
-	Switch-AzureMode AzureResourceManager 
 
 次に、基幹業務アプリケーション用の新しいリソース グループを作成します。
 
 一意のリソース グループ名を確認するには、次のコマンドを実行して、既存のリソース グループの一覧を取得します。
 
-	Get-AzureResourceGroup | Sort ResourceGroupName | Select ResourceGroupName
-
-リソース マネージャー ベースの仮想マシンを作成できる Azure の場所一覧を取得するには、次のコマンドを実行します。
-
-	$loc=Get-AzureLocation | where { $_.Name –eq "Microsoft.Compute/virtualMachines" }
-	$loc.Locations
+	Get-AzureRMResourceGroup | Sort ResourceGroupName | Select ResourceGroupName
 
 これらのコマンドを使用して、新しいリソース グループを作成します。
 
 	$rgName="<resource group name>"
 	$locName="<an Azure location, such as West US>"
-	New-AzureResourceGroup -Name $rgName -Location $locName
+	New-AzureRMResourceGroup -Name $rgName -Location $locName
 
 リソース マネージャー ベースの仮想マシンには、リソース マネージャー ベースのストレージ アカウントが必要です。
 
@@ -132,30 +114,19 @@ Azure PowerShell プロンプトを開きます。
 
 それぞれのストレージ アカウントには、小文字のアルファベットと数字のみが含まれる、グローバルに一意の名前を選択する必要があります。既存のストレージ アカウントの一覧を取得するには、次のコマンドを実行します。
 
-	Get-AzureStorageAccount | Sort Name | Select Name
-
-選択したストレージ アカウント名がグローバルに一意かどうかをテストするには、PowerShell の Azure サービス管理モードで **Test-AzureName** コマンドを実行する必要があります。次のコマンドを実行します。
-
-	Switch-AzureMode AzureServiceManagement
-	Test-AzureName -Storage <Proposed storage account name>
-
-Test-AzureName コマンドで **False** と表示される場合、指定した名前は一意です。両方のストレージ アカウントに一意の名前を指定したら、表 ST を更新し、次のコマンドを実行して Azure PowerShell をリソース マネージャー モードに戻します。
-
-	Switch-AzureMode AzureResourceManager 
+	Get-AzureRMStorageAccount | Sort Name | Select Name
 
 最初のストレージ アカウントを作成するには、次のコマンドを実行します。
 
 	$rgName="<your new resource group name>"
 	$locName="<the location of your new resource group>"
 	$saName="<Table ST – Item 1 - Storage account name column>"
-	New-AzureStorageAccount -Name $saName -ResourceGroupName $rgName –Type Premium_LRS -Location $locName
+	New-AzureRMStorageAccount -Name $saName -ResourceGroupName $rgName –Type Premium_LRS -Location $locName
 
 2 番目のストレージ アカウントを作成するには、次のコマンドを実行します。
 
-	$rgName="<your new resource group name>"
-	$locName="<the location of your new resource group>"
 	$saName="<Table ST – Item 2 - Storage account name column>"
-	New-AzureStorageAccount -Name $saName -ResourceGroupName $rgName –Type Standard_LRS -Location $locName
+	New-AzureRMStorageAccount -Name $saName -ResourceGroupName $rgName –Type Standard_LRS -Location $locName
 
 次に、基幹業務アプリケーションをホストする Azure Virtual Network 作成します。
 
@@ -167,42 +138,42 @@ Test-AzureName コマンドで **False** と表示される場合、指定した
 	$lobSubnetPrefix="<Table S – Item 2 – Subnet address space column>"
 	$gwSubnetPrefix="<Table S – Item 1 – Subnet address space column>"
 	$dnsServers=@( "<Table D – Item 1 – DNS server IP address column>", "<Table D – Item 2 – DNS server IP address column>" )
-	$gwSubnet=New-AzureVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix $gwSubnetPrefix
-	$lobSubnet=New-AzureVirtualNetworkSubnetConfig -Name $lobSubnetName -AddressPrefix $lobSubnetPrefix
-	New-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $locName -AddressPrefix $vnetAddrPrefix -Subnet $gwSubnet,$lobSubnet -DNSServer $dnsServers
+	$gwSubnet=New-AzureRMVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix $gwSubnetPrefix
+	$lobSubnet=New-AzureRMVirtualNetworkSubnetConfig -Name $lobSubnetName -AddressPrefix $lobSubnetPrefix
+	New-AzureRMVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $locName -AddressPrefix $vnetAddrPrefix -Subnet $gwSubnet,$lobSubnet -DNSServer $dnsServers
 
 次に、以下のコマンドを使用して、サイト間 VPN 接続用のゲートウェイを作成します。
 
 	$vnetName="<Table V – Item 1 – Value column>"
-	$vnet=Get-AzureVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
+	$vnet=Get-AzureRMVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
 	
 	# Attach a virtual network gateway to a public IP address and the gateway subnet
 	$publicGatewayVipName="LOBAppPublicIPAddress"
 	$vnetGatewayIpConfigName="LOBAppPublicIPConfig"
-	New-AzurePublicIpAddress -Name $vnetGatewayIpConfigName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
-	$publicGatewayVip=Get-AzurePublicIpAddress -Name $vnetGatewayIpConfigName -ResourceGroupName $rgName
-	$vnetGatewayIpConfig=New-AzureVirtualNetworkGatewayIpConfig -Name $vnetGatewayIpConfigName -PublicIpAddressId $publicGatewayVip.Id -SubnetId $vnet.Subnets[0].Id
+	New-AzureRMPublicIpAddress -Name $vnetGatewayIpConfigName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
+	$publicGatewayVip=Get-AzureRMPublicIpAddress -Name $vnetGatewayIpConfigName -ResourceGroupName $rgName
+	$vnetGatewayIpConfig=New-AzureRMVirtualNetworkGatewayIpConfig -Name $vnetGatewayIpConfigName -PublicIpAddressId $publicGatewayVip.Id -SubnetId $vnet.Subnets[0].Id
 
 	# Create the Azure gateway
 	$vnetGatewayName="LOBAppAzureGateway"
-	$vnetGateway=New-AzureVirtualNetworkGateway -Name $vnetGatewayName -ResourceGroupName $rgName -Location $locName -GatewayType Vpn -VpnType RouteBased -IpConfigurations $vnetGatewayIpConfig
+	$vnetGateway=New-AzureRMVirtualNetworkGateway -Name $vnetGatewayName -ResourceGroupName $rgName -Location $locName -GatewayType Vpn -VpnType RouteBased -IpConfigurations $vnetGatewayIpConfig
 	
 	# Create the gateway for the local network
 	$localGatewayName="LOBAppLocalNetGateway"
 	$localGatewayIP="<Table V – Item 4 – Value column>"
 	$localNetworkPrefix=@( <comma-separated, double-quote enclosed list of the local network address prefixes from Table L, example: "10.1.0.0/24", "10.2.0.0/24"> )
-	$localGateway=New-AzureLocalNetworkGateway -Name $localGatewayName -ResourceGroupName $rgName -Location $locName -GatewayIpAddress $localGatewayIP -AddressPrefix $localNetworkPrefix
+	$localGateway=New-AzureRMLocalNetworkGateway -Name $localGatewayName -ResourceGroupName $rgName -Location $locName -GatewayIpAddress $localGatewayIP -AddressPrefix $localNetworkPrefix
 	
 	# Define the Azure virtual network VPN connection
 	$vnetConnectionName="LOBAppS2SConnection"
 	$vnetConnectionKey="<Table V – Item 8 – Value column>"
-	$vnetConnection=New-AzureVirtualNetworkGatewayConnection -Name $vnetConnectionName -ResourceGroupName $rgName -Location $locName -ConnectionType IPsec -SharedKey $vnetConnectionKey -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localGateway
+	$vnetConnection=New-AzureRMVirtualNetworkGatewayConnection -Name $vnetConnectionName -ResourceGroupName $rgName -Location $locName -ConnectionType IPsec -SharedKey $vnetConnectionKey -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localGateway
 
 次に、Azure VPN Gateway に接続するオンプレミスの VPN デバイスを構成します。詳細については、「[VPN デバイスの構成](../virtual-networks/vpn-gateway-configure-vpn-gateway-mp.md#configure-your-vpn-device)」を参照してください。
 
 オンプレミスの VPN デバイスを構成するには、次のものが必要です。
 
-- 仮想ネットワーク用の Azure VPN Gateway のパブリック IPv4 アドレス (**Get-AzurePublicIpAddress -Name $publicGatewayVipName -ResourceGroupName $rgName** コマンドで表示)
+- 仮想ネットワーク用の Azure VPN Gateway のパブリック IPv4 アドレス (**Get-AzureRMPublicIpAddress -Name $publicGatewayVipName -ResourceGroupName $rgName** コマンドで表示)
 - サイト間 VPN 接続用の IPsec 事前共有キー (表 V - 項目 8 - "値" 列)
 
 次に、仮想ネットワークのアドレス空間がオンプレミス ネットワークから到達できることを確認します。これは、通常、仮想ネットワークのアドレス空間に対応するルートを VPN デバイスに追加した後、組織ネットワークのルーティング インフラストラクチャの他の部分にそのルートをアドバタイズすることによって行います。IT 部門と相談してこの方法を決定します。
@@ -224,11 +195,11 @@ Test-AzureName コマンドで **False** と表示される場合、指定した
 	$rgName="<your new resource group name>"
 	$locName="<the Azure location for your new resource group>"
 	$avName="<Table A – Item 1 – Availability set name column>"
-	New-AzureAvailabilitySet –Name $avName –ResourceGroupName $rgName -Location $locName
+	New-AzureRMAvailabilitySet –Name $avName –ResourceGroupName $rgName -Location $locName
 	$avName="<Table A – Item 2 – Availability set name column>"
-	New-AzureAvailabilitySet –Name $avName –ResourceGroupName $rgName -Location $locName
+	New-AzureRMAvailabilitySet –Name $avName –ResourceGroupName $rgName -Location $locName
 	$avName="<Table A – Item 3 – Availability set name column>"
-	New-AzureAvailabilitySet –Name $avName –ResourceGroupName $rgName -Location $locName
+	New-AzureRMAvailabilitySet –Name $avName –ResourceGroupName $rgName -Location $locName
 
 次の図は、このフェーズが問題なく完了したときの構成を示しています。
 
@@ -250,4 +221,4 @@ Test-AzureName コマンドで **False** と表示される場合、指定した
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

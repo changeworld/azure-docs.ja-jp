@@ -8,7 +8,7 @@
 	editor=""/>
 
 <tags
-	ms.service="app-service"
+	ms.service="app-service-mobile"
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
@@ -18,9 +18,7 @@
 
 # Windows アプリに認証を追加する
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
 このトピックでは、クライアント アプリケーションから App Service モバイル アプリのユーザーを認証する方法について説明します。このチュートリアルでは、App Service でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル アプリによって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
@@ -62,4 +60,4 @@
 [モバイル アプリの使用]: app-service-mobile-dotnet-backend-windows-store-dotnet-get-started-preview.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

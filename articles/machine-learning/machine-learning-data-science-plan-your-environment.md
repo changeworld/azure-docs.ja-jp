@@ -2,9 +2,8 @@
 	pageTitle="Azure Machine Learning の高度な分析環境を計画する | Microsoft Azure" 
 	description="重要事項を考慮して、高度な分析環境を計画します。" 
 	services="machine-learning" 
-	solutions="" 
 	documentationCenter="" 
-	authors="msolhab"
+	authors="bradsev"
 	manager="paulettm" 
 	editor="cgronlun" />
 
@@ -14,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/22/2015" 
-	ms.author="mohabib;bradsev" />
+	ms.date="10/18/2015" 
+	ms.author="bradsev" />
 
 
-# Azure Machine Learning の高度な分析環境を計画する
+# Cortana Analytics Process の環境を計画する
 
-Azure Machine Learning で高度な分析を実行する環境をセットアップするための準備を進めている場合、現在の分析の問題に適合するのはどのようなシナリオでしょうか。 必要なリソースに関する選択は、データの種類、サイズ、およびソースの場所と、そのデータの宛先に基づきます。この記事では、シナリオの特定に役立つこれらの考慮事項について説明します。
+高度な分析プロセスを実行する環境をセットアップするための準備を進めている場合、現在の分析の問題に適合するのはどのようなシナリオでしょうか。 必要なリソースに関する選択は、データの種類、サイズ、およびソースの場所と、そのデータの宛先に基づきます。この記事では、シナリオの特定に役立つこれらの考慮事項について説明します。
 
-該当するシナリオを特定したら、「[Azure で高度な分析ソリューションを構築する](machine-learning-data-science-how-to-create-machine-learning-service.md)」に記載されている Advanced Analytics Process and Technology (ADAPT) ワークフローに従います。このワークフローでは、データセットを取得してから、アプリケーションで利用できるように Azure Web サービスとしてモデルを作成し、そのモデルを発行するまでの一連のタスクを示しています。
+該当するシナリオを特定したら、「[ラーニング パス: Azure で高度な分析ソリューションを構築する](machine-learning-data-science-how-to-create-machine-learning-service.md)」に記載されている Cortana Analytics Process ワークフローに従います。このワークフローでは、データセットを取得してから、アプリケーションで利用できるように Azure Web サービスとしてモデルを作成し、そのモデルを発行するまでの一連のタスクを示しています。
 
 このトピックでは、この高度な分析プロセスで使用するリソースとツールも紹介します。
 
@@ -68,7 +67,7 @@ Azure Machine Learning で高度な分析を実行する環境をセットアッ
 	* 	[Azure PowerShell SDK](../install-configure-powershell.md) 
 	* 	[Azure Storage Explorer](http://azurestorageexplorer.codeplex.com/)
 	* 	[AzCopy](../storage-use-azcopy.md)
-2.  SQL Server を実行する Azure Virtual Machine
+2.  SQL Server を実行する Azure Virtual Machines
 3.  Azure HDInsight (Hadoop)
 4.  Azure とオンプレミスのファイル共有に使用する Azure 仮想ネットワーク
 5.  スケジュールされたデータ移動のための Azure データ ファクトリ
@@ -80,4 +79,4 @@ Azure Machine Learning で高度な分析を実行する環境をセットアッ
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

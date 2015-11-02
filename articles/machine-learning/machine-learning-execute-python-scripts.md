@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Python Machine Learning スクリプトの実行 |Microsoft Azure" 
 	description="Azure Machine Learning における Python スクリプトのサポート、基本的な使用シナリオ、機能、制限事項の基になる設計原則について説明します。" 
-	keywords="python machine learning,pandas,python pandas,python scripts, execute python scripts"
+	keywords="python の機械の学習、pandas、python pandas、python スクリプト、python スクリプトの実行"
 	services="machine-learning"
 	documentationCenter="" 
 	authors="bradsev" 
@@ -174,4 +174,4 @@ Azure Machine Learning にインストールされている Anaconda 環境に�
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

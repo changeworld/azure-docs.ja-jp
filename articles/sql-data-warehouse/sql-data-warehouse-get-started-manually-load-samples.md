@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="10/21/2015"
    ms.author="lodipalm;barbkess"/>
 
 #SQL Data Warehouse へのサンプル データのロード
@@ -42,7 +42,7 @@ SQL Data Warehouse インスタンスをセットアップしたら、あとは�
 
 ## サンプルへの接続とクエリ
 
-「[接続とクエリ][]」のドキュメントで述べたように、このデータベースには Visual Studio や SSDT を使用して接続できます。SQL Data Warehouse にサンプル データをロードしたら、いくつかのクエリの実行をすぐに開始できます。
+[接続][]のドキュメントで述べたように、このデータベースには Visual Studio や SSDT を使用して接続できます。SQL Data Warehouse にサンプル データをロードしたら、いくつかのクエリの実行をすぐに開始できます。
 
 簡単な SELECT ステートメントを実行して、従業員のすべての情報を取得できます。
 
@@ -71,16 +71,16 @@ WHERE 句を使用して、ある日付以前の注文をフィルター処理�
 <!--Image references-->
 
 <!--Article references-->
-[移行]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-migrate/
-[開発]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-develop/
-[ロード]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-load/
-[接続とクエリ]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-get-started-connect-query/
-[コードの移行]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-migrate-code/
+[移行]: ./sql-data-warehouse-overview-migrate.md
+[開発]: ./sql-data-warehouse-overview-develop.md
+[ロード]: ./sql-data-warehouse-overview-load.md
+[接続]: ./sql-data-warehouse-get-started-connect.md
+[コードの移行]: ./sql-data-warehouse-migrate-code.md
 
 <!--MSDN references-->
-[Microsoft Command Line Utilities for SQL Server]: http://www.microsoft.com/ja-jp/download/details.aspx?id=36433
+[Microsoft Command Line Utilities for SQL Server]: http://www.microsoft.com/download/details.aspx?id=36433/
 
 <!--Other Web references-->
-[サンプル データ スクリプト]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksPDW2012.zip
+[サンプル データ スクリプト]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksPDW2012.zip/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

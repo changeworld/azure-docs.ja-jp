@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="07/20/2015" 
-	ms.author="mebha"/>
+	ms.date="10/20/2015" 
+	ms.author="meetb"/>
 
 
 # Windows 上で Python を使用して SQL Database に接続する
@@ -100,11 +100,11 @@ SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.asp
 このコード例は、以下のトランザクションの使用について示します。
 
 
--トランザクションの開始
+- トランザクションの開始
 
--データの挿入
+- データの挿入
 
--トランザクションをロールバックして、挿入を元に戻す
+- トランザクションをロールバックして、挿入を元に戻す
 
 
 	import pymssql
@@ -118,4 +118,4 @@ SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.asp
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

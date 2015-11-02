@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/24/2015"
+	ms.date="10/14/2015"
 	ms.author="dkshir"/>
 
-# Azure 上で Linux を実行するカスタム仮想マシンを作成する方法
+# カスタム Linux VM を作成する方法
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] []リソース マネージャー モデル](virtual-machines-linux-tutorial.md)。
 
@@ -30,14 +30,9 @@
 
 > [AZURE.IMPORTANT]仮想マシンが仮想ネットワークを使用して、ホスト名を使用した直接接続またはクロスプレミス接続の設定ができるには、仮想マシンの作成時に必ず仮想ネットワークを指定する必要があります。仮想マシンが仮想ネットワークに接続するように設定できるのは、仮想マシンの作成時に限られています。仮想ネットワークの詳細については、「[Virtual Network の概要](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
 
-<p/>
-
-
-- [Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)
-
 
 ## クラシック デプロイ モデルを使用して Linux 仮想マシンを作成する方法
 
 [AZURE.INCLUDE [virtual-machines-create-LinuxVM](../../includes/virtual-machines-create-linuxvm.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

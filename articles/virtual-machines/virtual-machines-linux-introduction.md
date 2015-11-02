@@ -21,6 +21,8 @@
 
 このトピックでは、Azure クラウドで Linux 仮想マシンを使用するさまざまな局面について概説します。Linux 仮想マシンのデプロイは、ギャラリー内に存在するイメージを使用する際に簡単に使用できるプロセスです。
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 ## 認証: ユーザー名、パスワード、SSH 鍵。
 
 Microsoft Azure 管理ポータルを使用して Linux 仮想マシンを作成すると、ユーザー名、パスワードまたは SSH 公開キーの入力が求められます。Azure で Linux 仮想マシンをデプロイするユーザー名を選択する場合、root など、既に仮想マシン内に存在するシステム アカウント (UID <100) の名前は許可されない、という制約があります。
@@ -97,4 +99,4 @@ Linux では、データ ディスクはカーネルによって `/dev/sdc` と�
 
  - **関連項目:** [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

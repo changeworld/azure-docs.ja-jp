@@ -1,8 +1,7 @@
 <properties 
-	pageTitle="高度な分析プロセスで HDInsight Hadoop クラスターに Hive クエリを送信する | Microsoft Azure" 
+	pageTitle="Cortana Analytics Process で Hadoop クラスターに Hive クエリを送信する | Microsoft Azure" 
 	description="ハイブ テーブルからのデータの処理" 
 	services="machine-learning" 
-	solutions="" 
 	documentationCenter="" 
 	authors="hangzh-msft" 
 	manager="paulettm" 
@@ -14,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/17/2015" 
+	ms.date="10/18/2015" 
 	ms.author="hangzh;bradsev" />
 
-#<a name="heading"></a>高度な分析プロセスで HDInsight Hadoop クラスターに Hive クエリを送信する
+#<a name="heading"></a>Cortana Analytics Process で HDInsight Hadoop クラスターに Hive クエリを送信する
 
 このドキュメントでは、Azure の HDInsight サービスが管理する Hadoop クラスターに Hive クエリを送信するさまざまな方法について説明します。Hive クエリは、以下のものを使用して送信できます。
 
@@ -35,10 +34,10 @@
 ## 前提条件
 この記事では、以下のことを前提としています。
  
-* Azure のストレージ アカウントを作成している。この作業の手順については、「[Azure ストレージ アカウントの作成](../hdinsight-get-started.md#storage)」をご覧ください。 
+* Azure のストレージ アカウントが作成されている。この作業の手順については、「[Azure ストレージ アカウントの作成](../hdinsight-get-started.md#storage)」をご覧ください。 
 * HDInsight サービスで Hadoop クラスターをプロビジョニングしている。手順については、[HDInsight クラスターのプロビジョニング](../hdinsight-get-started.md#provision)に関するページをご覧ください。
-* Azure HDInsight Hadoop クラスターのハイブ テーブルにデータがアップロードされている。アップロードされていない場合は、まず「[データを作成して Hive テーブルに読み込む](machine-learning-data-science-hive-tables.md)」にある指示に従って Hive テーブルにデータをアップロードします。
-* クラスターへのリモート アクセスが有効にされている。手順については、「[Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#remoteaccess)」をご覧ください。 
+* データが Azure HDInsight Hadoop クラスターの Hive テーブルにアップロードされている。アップロードされていない場合は、まず「[データを作成して Hive テーブルに読み込む](machine-learning-data-science-hive-tables.md)」にある指示に従って Hive テーブルにデータをアップロードします。
+* クラスターへのリモート アクセスが有効になっている。手順については、「[Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#remoteaccess)」をご覧ください。 
 
 
 ## <a name="submit"></a>Hive クエリを送信する方法
@@ -326,4 +325,4 @@ Hive 埋め込み UDF のリストについては、[こちら](https://cwiki.ap
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

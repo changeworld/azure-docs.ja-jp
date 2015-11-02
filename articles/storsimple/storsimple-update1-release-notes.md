@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/09/2015"
+   ms.date="10/20/2015"
    ms.author="alkohli" />
 
 # StorSimple 8000 シリーズ Update 1.2 リリース ノート  
@@ -55,7 +55,7 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 
 - **他のクラウド サービス プロバイダーのサポート** – サポートされているその他のクラウド サービス プロバイダーは、Amazon S3、Amazon S3 with RRS、HP、OpenStack (ベータ) です。
 
-- **最新の Storage API への更新** – 今回のリリースでは、StorSimple が最新の Azure Storage サービス API に更新されています。Update 1 より前のソフトウェア バージョン (Release、0.1、0.2、0.3) を実行している StorSimple 8000 シリーズ デバイスには、2012 年 2 月 12 日よりも古い Azure Storage サービス API のバージョンが使用されます。[Storage サービスのバージョンの削除に関するお知らせ](http://azure.microsoft.com/blog/2014/08/04/microsoft-azure-storage-service-version-removal/)に記載のとおり、これらの API は 2015 年 12 月 10 日で廃止されます。つまり、2015 年 12 月 9 日までに、StorSimple 8000 シリーズ Update 1 を適用する必要があります。期日までに Update 1.0 を適用しないと、StorSimple デバイスが正常に機能しなくなります。
+- **最新の Storage API への更新** – 今回のリリースでは、StorSimple が最新の Azure Storage サービス API に更新されています。Update 1 より前のソフトウェア バージョン (Release、0.1、0.2、0.3) を実行している StorSimple 8000 シリーズ デバイスには、2009 年 7 月 17 日よりも古い Azure Storage サービス API のバージョンが使用されます。更新された [Storage サービスのバージョンの削除に関するお知らせ](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)に記載のとおり、これらの API は 2016 年 8 月 1 日で廃止されます。つまり、2016 年 8 月 1 日までに、StorSimple 8000 シリーズ Update 1 を適用する必要があります。期日までに Update 1.0 を適用しないと、StorSimple デバイスが正常に機能しなくなります。
 
 - **ゾーン冗長ストレージ (ZRS) のサポート** – Storage API を最新バージョンにアップグレードすると、StorSimple 8000 シリーズで、ローカル冗長ストレージ (LRS) と地理冗長ストレージ (GRS) に加えて、ゾーン冗長ストレージ (ZRS) もサポートできるようになります。ZRS の詳細については、[Azure Storage の冗長オプションに関する記事](../storage/storage-redundancy.md)を参照してください。
 
@@ -124,4 +124,4 @@ Update 1 より前のバージョンを実行している物理デバイスに�
 - [デバイスに Update 1.2 をインストールします](storsimple-install-update-1.md)。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->
