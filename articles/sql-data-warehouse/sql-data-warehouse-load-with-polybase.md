@@ -36,7 +36,13 @@ PolyBase テクノロジを使用して、複数のソースからデータを�
 
 まず、Azure BLOB ストレージ内のデータに接続し、クエリを実行するために PolyBase で必要なオブジェクトを作成します。
 
-> [AZURE.IMPORTANT]PolyBase でサポートされている Azure ストレージ アカウントの種類は次のとおりです。+ Standard ローカル冗長ストレージ (Standard-LRS) + Standard geo 冗長ストレージ (Standard-GRS) + Standard 読み取りアクセス geo 冗長ストレージ (Standard-RAGRS) Standard ゾーン冗長ストレージ (Standard-ZRS) と Premium ローカル冗長ストレージ (Premium-LRS) のアカウントは PolyBase ではサポートされていません。新しい Azure ストレージ アカウントを作成する場合は、価格レベルから PolyBase でサポートされているアカウントの種類を選択していることを確認してください。
+> [AZURE.IMPORTANT]PolyBase でサポートされている Azure ストレージ アカウントの種類は次のとおりです。
+> 
+> + Standard ローカル冗長ストレージ (Standard-LRS)
+> + Standard 地理冗長ストレージ (Standard-GRS)
+> + Standard 読み取りアクセス 地理冗長ストレージ (Standard-RAGRS)
+>
+> PolyBase では、Standard ゾーン冗長ストレージ (Standard-ZRS) および Premium ローカル冗長ストレージ (Premium-LRS) のアカウント種類はサポートされていません。新しい Azure ストレージ アカウントを作成する場合は、価格レベルから PolyBase でサポートされているアカウントの種類を選択していることを確認してください。
 
 
 ## データベース マスター キーの作成
@@ -175,7 +181,7 @@ DROP EXTERNAL TABLE [ext].[CarSensor_Data]
 ;
 ```
 
-> [AZURE.NOTE]外部テーブルを削除するときは `DROP EXTERNAL TABLE` を使用する必要があります。`DROP TABLE` は使用**できません**。
+> [AZURE.NOTE]外部テーブルを削除するときは、`DROP EXTERNAL TABLE` を使用する必要があります。`DROP TABLE` は使用**できません**。
 
 リファレンス トピック: [DROP EXTERNAL TABLE (Transact-SQL)][]。
 
@@ -319,13 +325,13 @@ $write.Dispose()
 [CREATE EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/dn935026(v=sql.130).aspx
 [CREATE EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935021(v=sql.130).aspx
 
-[DROP EXTERNAL DATA SOURCE (Transact-SQL)]: https://msdn.microsoft.com/JA-JP/library/mt146367.aspx
-[DROP EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/JA-JP/library/mt146379.aspx
-[DROP EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/JA-JP/library/mt130698.aspx
+[DROP EXTERNAL DATA SOURCE (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/mt146367.aspx
+[DROP EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/mt146379.aspx
+[DROP EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/mt130698.aspx
 
 [CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
-[CREATE MASTER KEY (Transact-SQL)]: https://msdn.microsoft.com/JA-JP/library/ms174382.aspx
-[CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/JA-JP/library/ms189522.aspx
-[DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/JA-JP/library/ms189450.aspx
+[CREATE MASTER KEY (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms174382.aspx
+[CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189522.aspx
+[DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189450.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

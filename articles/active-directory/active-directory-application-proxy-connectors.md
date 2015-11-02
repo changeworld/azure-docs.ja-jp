@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD アプリケーション プロキシ コネクタの使用"
+	pageTitle="Azure AD アプリケーション プロキシ コネクタの使用 | Microsoft Azure"
 	description="Azure AD アプリケーション プロキシにおけるコネクタのグループの作成と管理の方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="10/19/2015"
 	ms.author="rkarlin"/>
 
 
 # コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する
 
-> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-edition.md)」をご覧ください。
+> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 コネクタ グループは、以下をはじめとする、さまざまなシナリオで役立ちます。
 
@@ -38,7 +38,7 @@
 ## 手順 1: コネクタ グループを作成する
 必要な数のコネクタ グループを作成します。コネクタ グループの作成は、Azure ポータルで実行します。ディレクトリを選択し、**[構成]** をクリックします。次に、[アプリケーション プロキシ] の **[コネクタ グループの管理]** をクリックし、グループに名前を付けて、新しいコネクタ グループを作成します。![](./media/active-directory-application-proxy-connectors/app_proxy_connectors_creategroup.png) ![](./media/active-directory-application-proxy-connectors/app_proxy_connectors_namegroup.png)
 ## 手順 2: コネクタをグループに割り当てる
-コネクタ グループを作成したら、コネクタを適切なグループに移動します。**[アプリケーション プロキシ]** の **[コネクタの管理]** をクリックし、**[グループ]** で、コネクタごとに目的のグループを選択します。コネクタが新しいグループでアクティブになるのに最大 10 分かかる場合があります。![](./media/active-directory-application-proxy-connectors/app_proxy_connectors_connectorlist.png)
+コネクタ グループを作成したら、コネクタを適切なグループに移動します。**[アプリケーション プロキシ]** で、**[コネクタの管理]** をクリックし、**[グループ]** でコネクタごとに目的のグループを選択します。コネクタが新しいグループでアクティブになるのに最大 10 分かかる場合があります。![](./media/active-directory-application-proxy-connectors/app_proxy_connectors_connectorlist.png)
 ## 手順 3: コネクタ グループにアプリケーションを割り当てる
 最後の手順は、アプリケーションにサービスを提供するコネクタ グループへの各アプリケーションの設定です。Azure ポータルのディレクトリで、グループに割り当てるアプリケーションを選択し、**[構成]** をクリックします。**[コネクタ グループ]** で、アプリケーションで使用するグループを選択します。この変更は直ちに適用されます。![](./media/active-directory-application-proxy-connectors/app_proxy_connectors_newgroup.png) アプリケーションの発行に関する詳細については、「[独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)」を参照してください。
 ## 関連項目
@@ -59,4 +59,4 @@
 
 * [Kerberos の制約付き委任について](http://technet.microsoft.com/library/cc995228.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

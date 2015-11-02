@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="10/06/2015"
+	ms.date="10/15/2015"
 	ms.author="spelluru"/>
 
 # Data Factory Editor (Azure ポータル) を使用した初めての Azure Data Factory パイプラインの作成
@@ -47,7 +47,10 @@
 
 	![[新しいデータ ファクトリ] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
-	> [AZURE.IMPORTANT]Azure Data Factory の名前はグローバルで一意となります。ファクトリを作成するには、データ ファクトリの名前の先頭にあなたの名前を付ける必要があります。 
+	> [AZURE.IMPORTANT]Azure Data Factor の名前はグローバルに一意にする必要があります。"**"DataFactoryMyFirstPipeline" という名前のデータ ファクトリは使用できません**" というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameDataFactoryMyFirstPipeline など) 作成し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
+	>  
+	> データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
+
 3.	リソース グループを作成していない場合は、リソース グループを作成する必要があります。これを行うには、次の手順を実行します。
 	1.	**[リソース グループ名]** をクリックします。
 	2.	**[リソース グループ]** ブレードで、**[新規リソース グループの作成]** を選択します。
@@ -62,7 +65,7 @@
 	![Data factory を作成中の状態](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 7. ご利用ありがとうございます。 これで、最初のデータ ファクトリが正常に作成されました。データ ファクトリが正常に作成されると、データ ファクトリの内容を表示するデータ ファクトリ ページが表示されます。 	
 
-	![[データ ファクトリ] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
+	![[Data Factory] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
 
 以降の手順では、このチュートリアルで使用するリンクされたサービス、データセット、およびパイプラインを作成する方法を説明します。
 
@@ -78,7 +81,7 @@
 	![Azure Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
 	Azure Storage のリンクされたサービスを作成するための JSON スクリプトがエディターに表示されます。 
-4. **accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md/#view-copy-and-regenerate-storage-access-keys)」をご覧ください。
+4. **accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md/#view-copy-and-regenerate-storage-access-keys)」を参照してください。
 5. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
 	![デプロイ ボタン](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
@@ -125,7 +128,7 @@
 1. **Data Factory エディター**で、コマンド バーの **[新しいデータセット]** をクリックし、**[Azure BLOB ストレージ]** を選択します。  
 
 	![新しいデータセット](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
-2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。この JSON スニペットでは、**AzureBlobOutput** という名前のデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。さらに、結果を **data** という BLOB コンテナーおよび **partitioneddata** というフォルダーに格納することを指定します。**availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
+2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。この JSON スニペットでは、**AzureBlobOutput** というデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。さらに、結果を **data** という BLOB コンテナーおよび **partitioneddata** というフォルダーに格納することを指定します。**availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
 	
 		{
 		  "name": "AzureBlobOutput",
@@ -220,19 +223,19 @@
 8. ダイアグラム ビューで、**AzureBlobOutput** データセットをダブルクリックします。現在処理中のスライスが表示されます。
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
-9. 処理が完了すると、スライスの状態が **[準備完了]** と示されます。オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかることに注意してください。 
+9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されますオンデマンド HDInsight クラスターの作成には通常しばらく時間がかかることに注意してください。 
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)	
-10. スライスが **[準備完了]** 状態になったら、BLOB ストレージの **data** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
+10. スライスが**準備完了**状態になったら、BLOB ストレージの **data** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
  
 
  
 
 ## 次のステップ
-この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](./data-factory-get-started.md)」をご覧ください。
+この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](./data-factory-get-started.md)」を参照してください。
   
 
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-editor.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-editor.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

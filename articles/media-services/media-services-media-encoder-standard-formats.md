@@ -3,7 +3,7 @@
 	description="このトピックでは、Azure Media Encoder Standard の形式とコーデックの概要を示します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,anilmur" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/16/2015"
+	ms.date="10/15/2015"  
 	ms.author="juliako"/>
 
 #Media Encoder Standard の形式とコーデック
@@ -119,4 +119,4 @@ AMS のラーニング パスについては、以下を参照してください
 
 [メディア エンコーダー スタンダードを使用したエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

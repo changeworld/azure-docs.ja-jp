@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Application Insights for Java のリリース ノート" 
-	description="最新の更新プログラム。" 
+	description="Java SDK 用の最新の更新プログラム。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -68,4 +68,4 @@
 - 報告された項目に ```SyntheticSource``` プロパティを追加し、利用統計情報項目に合成のタグを付けることができます。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

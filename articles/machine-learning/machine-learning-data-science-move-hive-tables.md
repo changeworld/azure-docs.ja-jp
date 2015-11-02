@@ -41,7 +41,101 @@
 
 _NYC タクシー乗車データ_の実習を行う場合は、まず 24 個の <a href="http://www.andresmh.com/nyctaxitrips/" target="_blank">NYC タクシー乗車データ</a> ファイル (12 個の Trip ファイルと 12 個の Fare ファイル) をダウンロードし、すべてのファイルを .csv ファイルに**解凍**します。次に、「[Advanced Analytics Process and Technology 向けに Azure HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md)」で説明する手順で作成された Azure ストレージ アカウントの既定のコンテナー (または適切なコンテナー) にそれらのファイルをアップロードする必要があります。ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この[ページ](machine-learning-data-science-process-hive-walkthrough/#upload)をご覧ください。
 
-## Hive クエリを送信する方法
+## <a name="submit"></a>Hive クエリを送信する方法
+Hive クエリは、以下のものを使用して送信できます。
+
+* クラスターのヘッドノードでの Hadoop コマンド ライン
+* IPython Notebook
+* Hive エディター
+* Azure PowerShell スクリプト
+
+Hive クエリは SQL に似ています。SQL を使い慣れているユーザーには、<a href="http://hortonworks.com/wp-content/uploads/downloads/2013/08/Hortonworks.CheatSheet.SQLtoHive.pdf" target="_blank">SQL-to-Hive チート シート</a>が役立つ場合があります。
+
+Hive クエリの送信時、Hive クエリの出力先を、画面上、ヘッド ノード上のローカル ファイル、または Azure BLOB のどれにするか制御できます。
+
+### Hadoop クラスターのヘッド ノードにある Hadoop コマンド ライン コンソールを介して
+
+クエリが複雑な場合は、一般に、Hadoop クラスターのヘッド ノードから直接 Hive クエリを送信すれば、Hive エディターで送信したり、Azure PowerShell スクリプトを使用した場合よりもターンアラウンド時間が短くなります。
+
+Hadoop クラスターのヘッド ノードにログインし、ヘッド ノードのデスクトップで Hadoop コマンド ラインを開き、次のコマンドを入力します。
+
+    cd %hive_home%\bin
+
+Hadoop コマンド ライン コンソールで Hive クエリを送信する方法は 3 つあります。
+
+* 直接 Hadoop コマンドラインから
+* .hql ファイルの使用
+* Hive コマンド コンソールから
+
+#### Hive クエリを直接 Hadoop コマンドラインから送信する
+
+ユーザーは、次のようなコマンドを実行して、
+
+	hive -e "<your hive query>;
+
+Hadoop コマンド ラインで簡単な Hive クエリを直接送信できます。次に例を示します。ここで赤いボックスは Hive クエリを送信するコマンドを囲んでいます。緑色のボックスは Hive クエリの出力を囲んでいます。
+
+![Create workspace](./media/machine-learning-data-science-process-hive-tables/run-hive-queries-1.png)
+
+#### .hql ファイルで Hive クエリを送信する
+
+Hive クエリがより複雑で、複数の行がある場合、Hadoop コマンド ラインまたは Hive コマンド コンソールでクエリを編集することは実用的ではありません。別の方法は、Hadoop クラスターのヘッド ノードでテキスト エディターを使用して、ヘッド ノードのローカル ディレクトリにある .hql ファイルに Hive クエリを保存することです。続いて、次のように `hive` コマンドで `-f` 引数を使用して、.hql ファイル内の Hive クエリを送信します。
+
+	`hive -f "<path to the .hql file>"`
+
+
+#### Hive クエリの進行状況ステータス画面の出力を抑制する
+
+既定では、Hive クエリが Hadoop コマンド ライン コンソールで送信されると、 Map/Reduce ジョブの進行状況が画面に出力されます。Map/Reduce ジョブの進行状況の画面出力を抑制するには、次のように、コマンド ラインで引数 `-S` (大文字と小文字が区別されます) を使用します。
+
+	hive -S -f "<path to the .hql file>"
+	hive -S -e "<Hive queries>"
+
+#### Hive コマンド コンソールで Hive クエリを送信する。
+
+Hadoop コマンドラインから `hive` コマンドを実行して Hive コマンド コンソールに入った後、Hive コマンド コンソールの **hive>** プロンプトで Hive クエリを送信することもできます。たとえば次のようになります。
+
+![Create workspace](./media/machine-learning-data-science-process-hive-tables/run-hive-queries-2.png)
+
+この例では、2 つの赤いボックスは、それぞれ Hive コマンド コンソールに入るために使用するコマンドと、Hive コマンド コンソールで送信された Hive クエリを強調表示しています。緑色のボックスは、Hive クエリからの出力を強調表示しています。
+
+前の例では、画面上に直接 Hive クエリの結果を出力しています。ユーザーは、ヘッド ノードにあるローカル ファイルや Azure BLOB に出力を書き込むこともできます。その後、他のツールを使用して Hive クエリからの出力をさらに分析することもできます。
+
+#### Hive クエリの結果をローカル ファイルに出力する。
+
+Hive クエリの結果をヘッド ノード上のローカル ディレクトリに出力するには、次のように Hadoop コマンド ラインで Hive クエリを送信する必要があります。
+
+	`hive -e "<hive query>" > <local path in the head node>`
+
+
+#### Hive クエリの結果を Azure BLOB に出力する
+
+ユーザーは、Hadoop クラスターの既定のコンテナー内にある Azure BLOB に Hive クエリの結果を出力することもできます。これを行う Hive クエリは次のようになります。
+
+	insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+
+次の例では、Hive クエリの出力が、Hadoop クラスターの既定のコンテナー内にある BLOB ディレクトリ `queryoutputdir` に書き込まれます。ここでは、ディレクトリ名のみを指定する必要があります。BLOB 名を指定する必要はありません。**wasb:///queryoutputdir/queryoutput.txt* のように、ディレクトリ名と BLOB 名の両方を指定すると、エラーがスローされます。
+
+![Create workspace](./media/machine-learning-data-science-process-hive-tables/output-hive-results-2.png)
+
+Azure ストレージ エクスプローラーの (またはそれと同等の) ツールを使用して、Hadoop クラスターの既定のコンテナーを開くと、Hive クエリの出力を BLOB ストレージで確認できます。指定された文字が名前に含まれる BLOB のみを取得する場合は、フィルター (赤いボックスで強調表示) を適用できます。
+
+![Create workspace](./media/machine-learning-data-science-process-hive-tables/output-hive-results-3.png)
+
+### Hive エディターまたは Azure PowerShell コマンドを介して
+
+ユーザーは、クエリのコンソール (Hive エディター) を使用するために、URL
+
+*https://&#60;Hadoop クラスター名>.azurehdinsight.net/Home/HiveEditor*
+
+を Web ブラウザーに入力することもできます。ログインするために、Hadoop クラスターの資格情報の入力を求められます。また、[PowerShell を使用して Hive ジョブを送信する](../hdinsight/hdinsight-submit-hadoop-jobs-programmatically.md#hive-powershell)こともできます。
+
+
+## Hive クエリを送信する方法 (旧)
+
+このドキュメントでは、Azure の HDInsight サービスが管理する Hadoop クラスターに Hive クエリを送信するさまざまな方法について説明します。(古い導入部 - TBD の組み込み)
+
+
 Hive クエリは、Hadoop クラスターのヘッド ノード上の Hadoop コマンド ライン コンソールから送信できます。そのためには、Hadoop クラスターのヘッド ノードにログインし、Hadoop コマンド ライン コンソールを開き、そこから Hive クエリを送信します。この方法については、「[高度な分析プロセスで HDInsight Hadoop クラスターに Hive クエリを送信する](machine-learning-data-science-process-hive-tables.md)」をご覧ください。
 
 ユーザーは、クエリのコンソール (Hive エディター) を使用するために、URL
@@ -165,4 +259,9 @@ Hive テーブルをパーティション分割することに加え、Optimized
 
 この手順が終了すれば、すぐに使用できる ORC 形式のデータを含むテーブルが手に入ったことになります。
 
-<!---HONumber=Oct15_HO3-->
+
+##チューニングに関するセクションがここに入ります
+
+最後のセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターについて説明します。
+
+<!---HONumber=Oct15_HO4-->

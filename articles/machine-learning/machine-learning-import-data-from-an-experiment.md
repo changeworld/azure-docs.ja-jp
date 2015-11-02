@@ -1,7 +1,7 @@
 <properties
 	pageTitle="別の実験のデータを Machine Learning Studio にインポートする | Microsoft Azure"
 	description="Azure Machine Learning Studio にトレーニング データを保存して別の実験で保存する方法。"
-	keywords="import data,data,data sources,training data"
+	keywords="データのインポート、データ、データ ソース、トレーニング データ"
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
@@ -35,4 +35,4 @@
 
 保存が完了すると、ワークスペースのどの実験でもデータセットを使用できるようになります。データセットは、モジュール パレットの **[保存されたデータセット]** リストから検索できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

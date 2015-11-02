@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/30/2015" 
+	ms.date="10/15/2015" 
 	ms.author="tdykstra"/>
 
 # API Apps とは
 
-API Apps は、クラウドとオンプレミスで API をビルド、ホスト、使用、配布するためのリッチなプラットフォームとエコシステムを提供するものです。API アプリとして API をデプロイすると、エンタープライズ レベルのセキュリティ、簡単なアクセス制御、ハイブリッド接続、SaaS の接続、SDK の自動生成、[Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) とのシームレスな統合などを活用できます。
+API Apps は、クラウドとオンプレミスで API をビルド、ホスト、および使用するためのリッチなプラットフォームです。API アプリとして API をデプロイすると、エンタープライズ レベルのセキュリティ、簡単なアクセス制御、ハイブリッド接続、SaaS の接続、SDK の自動生成、[Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) とのシームレスな統合などを活用できます。
 
 API Apps は、Web Apps、Mobile Apps、Logic Apps と同様に、[Azure App Service](../app-service/app-service-value-prop-what-is.md) を構成する要素の 1 つです。
 
@@ -46,18 +46,6 @@ API Apps は、REST ベースの Web Api を開発、デプロイ、発行、使
 >
 >API Apps は現在、パブリック プレビューの段階です。[App Service Web Apps](../app-service-web/app-service-web-overview.md) は、セキュリティで保護されたミッションクリティカルなアプリケーションを世界規模で構築およびホストするための一般公開 (GA) サービスです。現在、API を構築するために GA サービスをお探しなら、Web Apps をお勧めします。API Apps が一般公開されたら、既存の Web Apps を使用しつつ API Apps の追加機能を活用する手順をご案内します。
 
-### 将来利用可能になる API Apps 機能
-
-近い将来、API Apps プラットフォームには、コードの共有を簡単にすることで、次のようなリッチな API のエコシステムが生まれます。
-
-- **パブリックおよびプライベートのマーケットプレース** - [Azure Marketplace](http://azure.microsoft.com/marketplace/) は、マイクロソフトやサード パーティによって開発された事前にパッケージ済みの API アプリを簡単に見つけて、自分の Azure サブスクリプションにデプロイできるようになります。また、独自に開発した API アプリをパッケージ化して発行できるようになるため、他の開発者はこの API を自らの Azure サブスクリプションにデプロイできます。Azure Marketplace に独自の API を発行するときに、組織の他のメンバーにのみ表示されるようにできるようになります。 
-
-- **依存関係の自動デプロイメント** - Marketplace から Azure サブスクリプションに API アプリをデプロイすると、Azure によって依存する API アプリが自動的にデプロイされ、必要なリソースが作成されるようになる予定です。依存する API アプリと必要な Azure のリソースは、API アプリのパッケージによって指定されます。
-
-- **自動更新** - 共有したいずれかの API アプリ パッケージのコードを更新するときに、API アプリをインストールしたユーザーと実行しているユーザー全員に更新プログラムをプッシュできるようになります。これは、重大でない変更の場合に、更新プログラムの受信をオプトインしているユーザーに機能します。
-
-パブリック マーケットプレースや自動更新など、これらの機能の多くは、マイクロソフトが提供する API アプリに既に使用できる状態になっています。
-
 ## API Apps の概念 ##
 
 - **ゲートウェイ** - リソース グループのすべての API アプリの API の管理機能と認証を処理する Web アプリです。 
@@ -70,10 +58,10 @@ API Apps は、REST ベースの Web Api を開発、デプロイ、発行、使
 
 API アプリの使用を開始するには、[API アプリの作成に関するチュートリアル](app-service-dotnet-create-api-app.md)に従ってください。
 
-API のアプリに関する既知の問題の一覧については、[MSDN フォーラムのこの投稿](https://social.msdn.microsoft.com/Forums/ja-jp/7f8b42f2-ac0d-48b8-a35e-3b4934e1c25e/api-app-known-issues?forum=AzureAPIApps)を参照してください。
+API のアプリに関する既知の問題の一覧については、[MSDN フォーラムのこの投稿](https://social.msdn.microsoft.com/Forums/ja-JP/7f8b42f2-ac0d-48b8-a35e-3b4934e1c25e/api-app-known-issues?forum=AzureAPIApps)を参照してください。
 
 Azure App Service プラットフォームの詳細については、[Azure App Service](../app-service/app-service-value-prop-what-is.md) に関するページを参照してください。
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

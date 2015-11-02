@@ -2,7 +2,6 @@
 	pageTitle="SQL Azure からデータを処理する | Microsoft Azure" 
 	description="SQL Azure からのデータを処理する" 
 	services="machine-learning" 
-	solutions="" 
 	documentationCenter="" 
 	authors="fashah" 
 	manager="paulettm" 
@@ -127,7 +126,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 
 ##<a name="python"></a>Python などのプログラミング言語の使用
 
-データが SQL Server に存在する場合にデータを探索したり特徴を生成するために Python を使用することは、[ここ](machine-learning-data-science-process-data-blob.md)で説明されている Python を使用して Azure BLOB でデータを処理することと類似しています。データは、データベースから pandas データ フレームに読み込む必要があります。その後、さらに処理することができます。このセクションでは、データベースに接続して、データ フレームにデータを読み込むプロセスについて記載します。
+データが SQL Server に格納されている場合に、Python を使用してデータを探索し、特徴を生成する手順は、「[Azure BLOB データを高度な分析を使用して処理する](machine-learning-data-science-process-data-blob.md)」で説明されているように、Python を使用して Azure BLOB のデータを処理する手順と似ています。データは、データベースから pandas データ フレームに読み込む必要があります。その後、さらに処理することができます。このセクションでは、データベースに接続して、データ フレームにデータを読み込むプロセスについて記載します。
 
 次の接続文字列形式を使用して pyodbc を使用し Python から SQL Server データベースに接続することができます (サーバー名、データベース名、ユーザー名およびパスワードは使用する特定の値に置き換えてください)。
 
@@ -153,4 +152,4 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD アプリケーション プロキシの有効化"
+	pageTitle="Azure AD アプリケーション プロキシの有効化 | Microsoft Azure"
 	description="Azure AD アプリケーション プロキシをセットアップする方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/12/2015"
+	ms.date="10/19/2015"
 	ms.author="rkarlin"/>
 
 # Azure AD アプリケーション プロキシの有効化
@@ -85,8 +85,8 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 
 ## その他のリソース
 
-* [Azure への組織としてのサインアップ](..sign-up-organization.md)
-* [Azure ID](..fundamentals-identity.md)
+* [Azure への組織としてのサインアップ](sign-up-organization.md)
+* [Azure ID](fundamentals-identity.md)
 * [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

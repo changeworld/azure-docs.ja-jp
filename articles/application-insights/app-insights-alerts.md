@@ -17,7 +17,7 @@
  
 # Application Insights のアラートの設定
 
-[Visual Studio の Application Insights][start] は、アプリケーションのパフォーマンスまたは使用状況のメトリックの変化についてアラートを発行できます。
+[Visual Studio Application Insights][start] は、アプリケーションのパフォーマンスまたは使用状況のメトリックの変化についてアラートを発行できます。
 
 Application Insights は、[さまざまなプラットフォーム][platforms]で実行中のアプリケーションを監視して、パフォーマンスの問題の診断と使用パターンの把握を支援します。
 
@@ -106,14 +106,22 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
 以前に Azure サブスクリプションで PowerShell を使用したことがない場合
 
-1. スクリプトを実行するコンピューターに Azure PowerShell モジュールをインストールします。 
- * [Microsoft Web Platform Installer (v5 以上)](http://www.microsoft.com/web/downloads/platform.aspx) をインストールする。
- * このインストーラーを使用して Microsoft Azure PowerShell をインストールする。
-2. Azure PowerShell を起動して、[サブスクリプションに接続](powershell-install-configure.md)します。
+スクリプトを実行するコンピューターに Azure PowerShell モジュールをインストールします。
 
-    ```
+ * [Microsoft Web Platform Installer (v5 以上)](http://www.microsoft.com/web/downloads/platform.aspx) をインストールします。
+ * このインストーラーを使用して Microsoft Azure PowerShell をインストールする。
+
+
+#### Connect to Azure
+
+Azure PowerShell を起動して、[サブスクリプションに接続](powershell-install-configure.md)します。
+
+```PowerShell
+
     Add-AzureAccount
-    ```
+    Switch-AzureMode AzureResourceManager
+```
+
 
 #### アラートの取得
 
@@ -217,4 +225,4 @@ request、<br/>requestFailed|[サーバー要求](app-insights-configuration-wit
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

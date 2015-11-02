@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="DocumentDB の制限とクォータ | Microsoft Azure" 
 	description="DocumentDB の制限とクォータの適用について説明します。Azure データベース サービスの使用に備えてクォータを確認します。"
-	keywords="Quotas, database, documentdb, azure, Microsoft azure"
+	keywords="クォータ, データベース, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	authors="mimig1" 
 	manager="jhubbard" 
@@ -24,4 +24,4 @@
 
 [AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

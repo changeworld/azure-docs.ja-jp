@@ -4,7 +4,7 @@
    services="cloud-services" 
    documentationCenter=".net" 
    authors="cawaMS" 
-   manager="dwrede" 
+   manager="paulyuk" 
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/29/2015"
+   ms.date="10/14/2015"
    ms.author="cawa"/>
 
 # Visual Studio を使用してクラウド サービス コンテナーを作成する方法
@@ -33,4 +33,4 @@ Visual Studio で**サーバー エクスプローラー**を表示するには�
 クラウド サービス コンテナーを作成した後は、クラウド サービスを[作成してデプロイ](cloud-services-how-to-create-deploy.md)できます。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

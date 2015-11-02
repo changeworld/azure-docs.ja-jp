@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Java Web プロジェクトでの Application Insights のトラブルシューティング" 
-	description="トラブルシューティング ガイド、質問と回答" 
+	description="トラブルシューティング ガイド - Application Insights でライブ Java アプリケーションを監視します。" 
 	services="application-insights" 
     documentationCenter="java"
 	authors="alancameronwills" 
@@ -138,4 +138,4 @@ XML メソッドを使用するうえで、値を変更した場合はアプリ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

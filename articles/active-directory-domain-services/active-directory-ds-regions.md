@@ -18,18 +18,6 @@
 
 # Azure AD ドメイン サービス *(プレビュー)*
 
-## サポートされている Azure リージョン
-Azure Active Directory ドメイン サービスは次の Azure リージョンで利用できます。
+Azure サービスを利用できる場所については、「[リージョン別のサービス](https://azure.microsoft.com/ja-JP/regions/#services)」を参照してください。
 
-- 米国
-  - 米国中央部
-  - 米国東部
-  - 米国東部 2
-  - 米国中南部
-  - 米国西部
-
-- アジア
-  - 東アジア
-  - 東南アジア
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

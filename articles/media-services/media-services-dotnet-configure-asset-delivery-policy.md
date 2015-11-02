@@ -1,9 +1,9 @@
 <properties 
-	pageTitle=".NET を使用して資産の配信ポリシーを構成する" 
-	description="このトピックでは、さまざまな資産配信ポリシーを構成する方法を示します。" 
+	pageTitle=".NET SDK を使用して資産の配信ポリシーを構成する" 
+	description="このトピックでは、Azure Media Services .NET SDK を利用し、さまざまな資産配信ポリシーを構成する方法を示します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,Mingfeiy" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/20/2015"  
+	ms.date="10/18/2015"  
 	ms.author="juliako"/>
 
-#方法: 資産の配信ポリシーを構成する
+#.NET SDK を使用して資産の配信ポリシーを構成する
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
 Media Services で暗号化した資産を配信する場合、コンテンツ配信ワークフローの手順の 1 つとして、資産の配信ポリシーを構成します。資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
@@ -328,4 +328,4 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

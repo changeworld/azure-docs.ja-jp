@@ -1,11 +1,10 @@
 <properties 
-	pageTitle="Cloud App Discovery のプロキシ サービス用レジストリ設定" 
+	pageTitle="Cloud App Discovery のプロキシ サービス用レジストリ設定 | Microsoft Azure" 
 	description="このトピックでは、Cloud App Discovery エージェントを実行しているコンピューターで、必要なポートを設定するために実行する必要がある手順を説明します。" 
 	services="active-directory" 
 	documentationCenter="" 
 	authors="markusvi" 
-	manager="swadhwa" 
-	editor="lisatoft"/>
+	manager="stevenpo"/>
 
 <tags 
 	ms.service="active-directory" 
@@ -13,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/23/2015" 
+	ms.date="10/20/2015" 
 	ms.author="markusvi"/>
 
 # Cloud App Discovery のプロキシ サービス用レジストリ設定
@@ -48,4 +47,4 @@
 
 * [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md) 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

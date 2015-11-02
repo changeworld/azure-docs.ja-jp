@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="10/21/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # SQL Data Warehouse への接続 
@@ -151,11 +151,11 @@ WHERE   s.[session_id] <> SESSION_ID()
 <!--Image references-->
 
 <!--Azure.com references-->
-[接続およびクエリ]: sql-data-warehouse-get-started-connect-query.md
-[Table design in SQL Data Warehouse (SQL Data Warehouse でのテーブルの デザイン)]: sql-data-warehouse-develop-table-design.md
+[接続およびクエリ]: ./sql-data-warehouse-get-started-connect.md
+[Table design in SQL Data Warehouse (SQL Data Warehouse でのテーブルの デザイン)]: ./sql-data-warehouse-develop-table-design.md
 
 <!--MSDN references-->
 
 <!--Other references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

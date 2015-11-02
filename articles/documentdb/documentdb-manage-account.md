@@ -1,10 +1,10 @@
 <properties 
 	pageTitle="Azure プレビュー ポータルを使用して DocumentDB アカウントを管理する | Microsoft Azure" 
 	description="Azure プレビュー ポータルを使用して DocumentDB アカウントを管理する方法Azure プレビュー ポータルを使用してアカウントを表示、コピー、削除、およびアカウントにアクセスする方法について説明したガイドを紹介します。" 
-	keywords="Azure preview portal, documentdb, azure, Microsoft azure"
+	keywords="Azure プレビュー ポータル, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	documentationCenter="" 
-	authors="stephbaron" 
+	authors="AndrewHoh" 
 	manager="jhubbard" 
 	editor="cgronlun"/>
 
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="07/28/2015" 
-	ms.author="stbaro"/>
+	ms.author="anhoh"/>
 
 # Azure プレビュー ポータルで DocumentDB アカウントを管理する方法
 
@@ -113,4 +113,4 @@ DocumentDB の詳細については、[azure.com](http://go.microsoft.com/fwlink
  
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

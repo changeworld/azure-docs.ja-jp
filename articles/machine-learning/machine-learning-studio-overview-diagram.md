@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Machine Learning Studio 機能の概要図 | Microsoft Azure"
 	description="Azure Machine Learning Studio を使用して予測分析実験を開発し、それを Azure クラウドで運用可能にする方法を示す、Azure Machine Learning Studio の機能の印刷可能な図です。"
-	keywords="machine learning studio,overview diagram,download"
+	keywords="Machine Learning Studio、概要図、ダウンロード"
 	services="machine-learning"
 	documentationCenter=""
 	authors="hning86"
@@ -41,10 +41,10 @@
 
 ## Machine Learning Studio に役立つその他の情報
 
-* Microsoft Azure Machine Learning の概要については、「[Microsoft Azure での機械学習の概要](machine-learning-what-is-machine-learning.md)」をご覧ください。
-* Machine Learning Studio の概要については、「[Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」をご覧ください。
-* Machine Learning Studio で使用可能な機械学習アルゴリズムの詳細については、「[Microsoft Azure Machine Learning のアルゴリズムの選択方法](machine-learning-algorithm-choice.md)」をご覧ください。
+* Microsoft Azure Machine Learning の概要については、「[Microsoft Azure での機械学習の概要](machine-learning-what-is-machine-learning.md)」を参照してください。
+* Machine Learning Studio の概要については、「[Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
+* Machine Learning Studio で使用可能な機械学習アルゴリズムの詳細については、「[Microsoft Azure Machine Learning のアルゴリズムの選択方法](machine-learning-algorithm-choice.md)」を参照してください。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

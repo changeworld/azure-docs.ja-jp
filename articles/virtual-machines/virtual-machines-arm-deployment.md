@@ -30,8 +30,9 @@
 
 - [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
 - [Azure ストレージ アカウント](../storage-create-storage-account.md)
-- [Windows Management Framework 3.0](http://www.microsoft.com/JA-JP/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/JA-JP/download/details.aspx?id=40855)
-- [Azure PowerShell](../install-configure-powershell.md)
+- [Windows Management Framework 3.0](http://www.microsoft.com/ja-JP/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/ja-JP/download/details.aspx?id=40855)
+
+[AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
 
 これらの手順を実行するには約 30 分かかります。
 
@@ -383,4 +384,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/virtual-machines-arm-deployment/crpportal.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

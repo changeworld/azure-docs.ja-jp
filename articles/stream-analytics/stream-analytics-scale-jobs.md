@@ -1,7 +1,7 @@
 <properties
 	pageTitle="スループット向上のための Stream Analytics ジョブのスケーリング | Microsoft Azure"
 	description="Stream Analytics ジョブをスケールするために入力パーティションの構成、クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。"
-	keywords="analytics jobs,data stream,data streaming"
+	keywords="分析ジョブ,データ ストリーム,データ ストリーミング"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -232,7 +232,7 @@ Azure プレビュー ポータルの [設定] からスケールの設定にア
 ![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## 問い合わせ ##
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ ##
@@ -265,4 +265,4 @@ Azure プレビュー ポータルの [設定] からスケールの設定にア
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

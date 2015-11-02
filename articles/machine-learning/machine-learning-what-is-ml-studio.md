@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="What is Azure Machine Learning Studio とは|Microsoft Azure"
 	description="そのまま使うことのできるアルゴリズムやモジュールを含んだライブラリから、ドラッグ アンド ドロップでモデルをすばやく構築できるツール Azure ML Studio の概要です。"
-	keywords="azure machine learning,azure ml, ml studio"
+	keywords="azure machine learning、azure ml、ml studio"
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
@@ -115,4 +115,4 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

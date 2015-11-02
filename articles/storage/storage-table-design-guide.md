@@ -3,8 +3,8 @@
    description="Azure テーブル ストレージでスケーラビリティとパフォーマンスに優れたテーブルを設計する"
    services="storage"
    documentationCenter="na"
-   authors="tamram" 
-   manager="carolz"
+   authors="jasonnewyork" 
+   manager="tadb"
    editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="storage"
    ms.date="08/03/2015"
-   ms.author="tamram"/>
+   ms.author="jahogg"/>
 
 # Azure ストレージ テーブルの設計ガイド: スケーラブルな設計とハイパフォーマンスなテーブル
 
@@ -1551,4 +1551,4 @@ Azure チームの功績の次のメンバーに感謝いたします。 Dominic
 [29]: ./media/storage-table-design-guide/storage-table-design-IMAGE29.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

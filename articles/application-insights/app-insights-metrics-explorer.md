@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Application Insights を使用したメトリックの探索" 
-	description="オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。" 
+	description="メトリック エクスプローラーでグラフを解釈する方法と、メトリック エクスプローラー ブレードをカスタマイズする方法です。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -212,4 +212,4 @@
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

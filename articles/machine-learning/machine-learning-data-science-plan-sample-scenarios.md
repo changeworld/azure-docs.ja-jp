@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/22/2015"
+	ms.date="10/18/2015"
 	ms.author="msolhab;bradsev" />
 
 
 # Azure Machine Learning での高度な分析のシナリオ
 
-この記事では、Azure Machine Learning で Advanced Analytics Process and Technology (ADAPT) を使用して処理できるさまざまなサンプル データ ソースとターゲット シナリオについて説明します。データの特性、ソースの場所、および Azure でのターゲット リポジトリによって決まる、シーケンス処理で使用できるオプションを示します。
+この記事では、Cortana Analytics Process (CAP) で処理できる多様なデータ ソースとターゲット シナリオの例について概要を説明します。データの特性、ソースの場所、および Azure でのターゲット リポジトリによって決まる、シーケンス処理で使用できるオプションを示します。
 
 最後のセクションに、データと目標に適したサンプル シナリオを選択するための**デシジョン ツリー**を示します。
 
@@ -32,8 +32,6 @@
 
 *   [ストレージ アカウントの作成](storage-whatis-account.md)
 *   [Azure ML ワークスペースを作成する](machine-learning/machine-learning-create-workspace.md)
-
-
 
 
 ## <a name="smalllocal"></a>シナリオ 1: ローカル ファイルの小規模から中規模の表形式のデータセット
@@ -182,9 +180,9 @@
 
 9. アップロードされたデータセットで始まる Azure ML の実験フローを構築します。
 
-## <a name="largedbtodb"></a>シナリオ 6: 内部設置型の SQL Server データベースの大規模データセット (Azure 仮想マシンの SQL Server を対象)
+## <a name="largedbtodb"></a>シナリオ 6: オンプレミスの SQL Server データベースの大規模データセット (Azure 仮想マシンの SQL Server を対象)
 
-![Azure の SQL DB への内部設置型の大規模な SQL DB][6]
+![Azure の SQL DB へのオンプレミスの大規模な SQL DB][6]
 
 #### その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
 
@@ -192,7 +190,7 @@
 
 2.  いずれかのデータ エクスポート方法を使用して、SQL Server からダンプ ファイルにデータをエクスポートします。
 
-    a.注: 内部設置型のデータベースからすべてのデータを移動する場合、より速い方法は、完全なデータベースを Azure の SQL Server インスタンスに移動することです。データのエクスポート、データベースの作成、ターゲット データベースへのデータの読み込み/インポートの手順を省略し、別の方法を続行します。
+    a.注: オンプレミスのデータベースからすべてのデータを移動する場合、より速い方法は、完全なデータベースを Azure の SQL Server インスタンスに移動することです。データのエクスポート、データベースの作成、ターゲット データベースへのデータの読み込み/インポートの手順を省略し、別の方法を続行します。
 
 3.  ダンプ ファイルを Azure ストレージ コンテナーにアップロードします。
 
@@ -222,7 +220,7 @@
 
 9. アップロードされたデータセットで始まる Azure ML の実験フローを構築します。
 
-### 内部設置型 SQL Server から Azure SQL データベースに完全なデータベースをコピーする別の方法
+### オンプレミス SQL Server から Azure SQL Database に完全なデータベースをコピーする別の方法
 
 ![ローカル DB をデタッチし、Azure の SQL DB にアタッチする][7]
 
@@ -298,8 +296,8 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 Advanced Analytics Process and Technology とパブリック データセットを使用する Azure Machine Learning の完全な チュートリアルについては、以下を参照してください。
 
 
-* [Advanced Analytics Process and Technology の活用: SQL Server の使用](machine-learning/machine-learning-data-science-process-sql-walkthrough.md)。
-* [Advanced Analytics Process and Technology の活用: HDInsight Hadoop クラスターの使用](machine-learning/machine-learning-data-science-process-hive-walkthrough.md)。
+* [Cortana Analytics Process の活用: SQL Server を使用する](machine-learning/machine-learning-data-science-process-sql-walkthrough.md)
+* [Cortana Analytics Process の活用: HDInsight Hadoop クラスターを使用する](machine-learning/machine-learning-data-science-process-hive-walkthrough.md)
 
 
 [1]: ./media/machine-learning-data-science-plan-sample-scenarios/dsp-plan-small-in-aml.png
@@ -316,4 +314,4 @@ Advanced Analytics Process and Technology とパブリック データセット�
 <!-- Module References -->
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

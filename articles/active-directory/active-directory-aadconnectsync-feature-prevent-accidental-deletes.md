@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="10/13/2015"
+   ms.date="10/20/2015"
    ms.author="andkjell"/>
 
 # 誤って削除されないように保護する
@@ -39,7 +39,7 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 
 すべての削除が望まれる場合、次のように操作します。
 
-1. この保護を一時的に無効にし、これらの削除を行うには、PowerShell コマンドレットの `Disable-ADSyncExportDeletionThreshold` を実行します。
+1. この保護を一時的に無効にし、これらの削除を行うには、PowerShell コマンドレットの `Disable-ADSyncExportDeletionThreshold` を実行します。資格情報を求められたら、Azure AD グローバル管理者のアカウントとパスワードを入力します。![資格情報](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/credentials.png)
 2. Azure Active Directory Connector が選択されている状態で、**[実行]** アクションを選択し、**[エクスポート]** を選択します。
 3. 保護を再度有効にするには、PowerShell コマンドレットの `Enable-ADSyncExportDeletionThreshold` を実行します。
 
@@ -48,4 +48,4 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

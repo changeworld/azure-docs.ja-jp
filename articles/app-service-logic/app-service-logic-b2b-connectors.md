@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="10/15/2015" 
 	ms.author="mandia"/>
 
 # Microsoft Azure App Service の企業間コネクタと API Apps
@@ -206,4 +206,4 @@ Microsoft Azure App Service では、これらの B2B API Apps を使用でき�
 
 [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

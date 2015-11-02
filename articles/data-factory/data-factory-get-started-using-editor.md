@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/25/2015" 
+	ms.date="10/15/2015" 
 	ms.author="spelluru"/>
 
 # チュートリアル: コピー アクティビティがあるパイプラインを Data Factory Editor で作成する
@@ -58,9 +58,11 @@
 7. **[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加する]** が選択されていることを確認してください。
 8. **[新しいデータ ファクトリ]** ブレードで **[作成]** をクリックします。
 
-	Azure Data Factor の名前はグローバルに一意にする必要があります。**""ADFTutorialDataFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialFactory の代わりに使用します。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則][data-factory-naming-rules]に関するトピックを参照してください。
+	Azure Data Factor の名前はグローバルに一意にする必要があります。**""ADFTutorialDataFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
 	 
 	![使用できないデータ ファクトリ名][image-data-factory-name-not-available]
+	
+	> [AZURE.NOTE]データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 
 9. 左側の **[通知]** ハブをクリックし、作成プロセスからの通知を探します。**[通知]** ブレードが開いている場合は、**[X]** をクリックして閉じます。
 10. 作成が完了すると、次に示すような **[Data Factory]** ブレードが表示されます。
@@ -293,7 +295,7 @@
 ### ダイアグラム ビューでの Data Factory の表示 
 1. **[Data Factory]** ブレードで、**[ダイアグラム]** をクリックします。
 
-	![[データ ファクトリ] ブレードの [ダイアグラム] タイル][image-datafactoryblade-diagramtile]
+	![[Data Factory] ブレードの [ダイアグラム] タイル][image-datafactoryblade-diagramtile]
 
 2. 以下のような図が表示されるはずです。
 
@@ -362,14 +364,14 @@
 
 	
 12. **[X]** をクリックすると、すべてのブレードが閉じられ、**ADFTutorialDataFactory** のホーム ブレードに戻ります。
-14. (省略可能) **ADFTutorialDataFactory** のホーム ページで **[パイプライン]** をクリックし、**[パイプライン]** ブレードの **[ADFTutorialPipeline]** をクリックし、入力テーブル (**Consumed**) または出力テーブル (**Produced**) を表示します。
+14. (省略可能) **ADFTutorialDataFactory** のホーム ページで **[パイプライン]** をクリックし、**[パイプライン]** ブレードの **[ADFTutorialPipeline]** をクリックして、入力テーブル (**Consumed**) または出力テーブル (**Produced**) を表示します。
 15. **SQL Server Management Studio** を起動し、Azure SQL Database に接続して、データベース内の **emp** テーブルに行が挿入されていることを確認します。
 
 	![SQL クエリの結果][image-data-factory-get-started-sql-query-results]
 
 
 ## 概要 
-このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL データベースにデータをコピーしました。また、Azure プレビュー ポータルを使用して、データ ファクトリ、リンクされたサービス、テーブル、パイプラインを作成しました。以下は、このチュートリアルで実行した手順の概要です。
+このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。また、Azure プレビュー ポータルを使用して、データ ファクトリ、リンクされたサービス、テーブル、パイプラインを作成しました。以下は、このチュートリアルで実行した手順の概要です。
 
 1.	**Azure Data Factory を作成します**。
 2.	データ ストアとコンピューティングをデータ ファクトリに**リンクするサービス** (**リンクされたサービス**と呼びます) を作成します。
@@ -501,4 +503,4 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

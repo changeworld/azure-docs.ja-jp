@@ -1,14 +1,14 @@
 <properties
 	pageTitle="Web アプリ リソースを他のリソース グループに移動する"
 	description="Web アプリおよびアプリ サービスを一つのリソース グループから他のリソース グループに移動するシナリオについて記述しています。"
-	services="app-service\web"
+	services="app-service"
 	documentationCenter=""
 	authors="ZainRizvi"
 	manager="wpickett"
 	editor=""/>
 
 <tags
-	ms.service="app-service-web"
+	ms.service="app-service"
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -26,4 +26,4 @@ Azure Web アプリ リソースを [ARM Move Resources Api](../resource-group-m
 	* 注: このシナリオでは、変換先のリソース グループにすべてのMicrosoft.Web リソースを含めることはできません。
 * 個々の Web アプリをそれぞれの異なるリソース グループに移動しますが、この時 Web アプリはまだ現行のアプリのサービス プランでホストされています (アプリのサービス プランは古いリソース グループにとどまっています)。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

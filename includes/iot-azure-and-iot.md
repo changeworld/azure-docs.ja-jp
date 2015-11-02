@@ -28,9 +28,9 @@ IoT ソリューションには、自動フィードバックのループが含�
 
 多くの IoT ソリューションでは、ユーザーが、デバイスから収集されたデータを表示して分析することができます。それらの表示は、ダッシュボードや BI レポートの形式の場合があります。
 
-[img-solution-architecture]: media/iot-azure-and-iot/iot-reference-architecture.png
+[img-solution-architecture]: ./media/iot-azure-and-iot/iot-reference-architecture.png
 
 [lnk-machinelearning]: http://azure.microsoft.com/services/machine-learning/
 [Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -42,6 +42,7 @@ CPU、メモリ消費、ネットワーク帯域幅、ストレージに関し�
 - CPU 消費率: 約 1% 上昇
 - メモリ消費量: システム メモリ合計の最大 10%
 - ネットワーク帯域幅の使用量: 1000 件の ADFS 要求につき約 1 MB
+
 >[AZURE.NOTE]エージェントは、Azure と通信できない場合、定義済みの上限に達するまで、データをローカルに保存します。上限に達した後、エージェントがサービスにデータをアップロードできなくなった場合は、新しい ADFS トランザクションによって、“処理された時期が最も古い” トランザクションから順に、“キャッシュされた” トランザクションが上書きされます。
 
 - AD Health エージェントのローカル バッファー ストレージ: 約 20 MB
@@ -98,4 +99,4 @@ Azure AD Health サービス エンドポイントと通信できるようにす
 * [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
 * [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

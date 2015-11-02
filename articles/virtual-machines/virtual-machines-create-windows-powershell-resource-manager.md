@@ -29,7 +29,7 @@ Azure PowerShell をインストール済みである場合、Azure PowerShell V
 
 	Get-Module azure | format-table version
 
-Azure PowerShell をまだインストールしていない場合やバージョンを更新する必要がある場合は、[Azure PowerShell のインストールと構成の方法](install-configure-powershell.md)に関するページの手順に従って、ローカル コンピューターに Azure PowerShell をインストールしてください。次に、Azure PowerShell コマンド プロンプトを開きます。
+[AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
 
 まず、次のコマンドで Azure にログオンする必要があります。
 
@@ -125,7 +125,7 @@ Azure データセンターの場所を指定する必要があります。Azure
 
 ## その他のリソース
 
-[Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
+[Azure リソース マネージャーにおける Azure Compute、Network、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
 
 [Azure リソース マネージャーの概要](resource-group-overview.md)
 
@@ -137,4 +137,4 @@ Azure データセンターの場所を指定する必要があります。Azure
 
 [Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

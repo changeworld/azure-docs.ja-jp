@@ -1,6 +1,6 @@
 <properties
-   	pageTitle="Azure CLI を使用した HDInsight の Linux での Hadoop、HBase、または Storm クラスターの作成 | Microsoft Azure"
-   	description="Azure CLI を使用して、HDInsight の Linux で Hadoop、HBase、または Storm クラスターを作成する方法について説明します。"
+   	pageTitle="クロスプラットフォーム Azure CLI を使用した HDInsight での Linux ベースの Hadoop、HBase、または Storm クラスターの作成 | Microsoft Azure"
+   	description="クロスプラットフォーム Azure CLI、Azure リソース マネージャー テンプレート、および Azure REST API を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。クラスターの種類 (Hadoop、HBase、または Storm) を指定するか、スクリプトを使用してカスタム コンポーネントをインストールすることができます。"
    	services="hdinsight"
    	documentationCenter=""
    	authors="Blackmist"
@@ -117,4 +117,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

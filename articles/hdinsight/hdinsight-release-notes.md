@@ -20,6 +20,26 @@
 
 # Azure HDInsight の Hadoop コンポーネントのリリース ノート
 
+## HDInsight 3.1 の 2015 年 10 月 20 日リリース
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 2.1.10.716.1846990 (Windows) (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight 3.0.6.716.1846990 (Windows) (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight 3.1.4.716.1846990 (Windows) (HDP 2.1.16.0-2374)
+* HDInsight 3.2.7.716.1846990 (Windows) (HDP 2.2.7.1-0004)
+* HDInsight 3.2.1000.0.5930166 (Linux) (HDP 2.2.7.1-0004)
+* SDK 1.5.8
+
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| 既定 HDP バージョンが HDP 2.2 に変更されました | HDInsight Windows クラスターの既定のバージョンが HDP 2.2 に変更されました。HDInsight バージョン 3.2 (HDP 2.2) が 2015 年 2 月から一般公開されました。この変更によって、Azure ポータル、PowerShell コマンドレット、または SDK を使用してクラスターをプロビジョニングするときに、クラスター バージョンを明示的に選択していない場合の既定のバージョンのみが変わります。 | サービス | すべて| 該当なし |
+|1 つの Virtual Network の Linux クラスターに複数の HDInsight をデプロイする場合の VM 名の形式の変更 | 今回のリリースで、1 つの仮想ネットワークに複数の HDInsight Linux クラスターをデプロイできるようになりました。その一環で、クラスター内の仮想ネットワーク名の形式が headnode*、workernode*、zookeepernode* からそれぞれ hn*、wn*、zk* に変更されました。仮想ネットワーク名は変更される可能性があるため、仮想ネットワーク名の形式に直接依存することは推奨されません。ローカル コンピューターで "hostname -f" を使用するか、Ambari API を使用して、ホスト一覧と、コンポーネントからホストへのマッピングを取得してください。詳細については、[https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md) と [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md) を参照してください。 | サービス | Linux 上の HDInsight クラスター | 該当なし |
+| 構成の変更 | HDInsight 3.1 クラスターでは、次の構成を使用できるようになりました: <ul><li>tez.yarn.ats.enabled and yarn.log.server.url。これにより、Application Timeline Server とログ サーバーからログを提供できるようになりました。</li></ul>HDInsight 3.2 クラスターで、次の構成が変更されました: <ul><li>mapreduce.fileoutputcommitter.algorithm.version has been set to 2。これにより、V2 バージョンの FileOutputCommitter を使用できるようになりました。</li></ul> | サービス | すべて | 該当なし |
+
+
 ## HDInsight の 2015 年 9 月 9 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
@@ -861,7 +881,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 
 <tr>
 <td><a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-customize-cluster/" target="_blank">クラスターのカスタマイズの一般公開</a></td>
-<td><p>カスタマイズ機能により、Apache Hadoop エコシステムから利用できるプロジェクトで Azure HDInsight クラスターをカスタマイズできます。この新しい機能により、Hadoop プロジェクトを実験し、Azure HDInsight にデプロイできます。これは、カスタム スクリプトを使用して、Hadoop クラスターを任意の方法で変更できる **スクリプト アクション** 機能により実現します。このカスタマイズ機能は、Hadoop、HBase、および Storm などあらゆる種類の HDInsight クラスターで利用できます。この機能の能力を示すために、一般的な <a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-spark-install/" target="_blank">Spark</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-r-scripts/" target="_blank">R</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-solr-install/" target="_blank">Solr</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-giraph-install/" target="_blank">Giraph</a> モジュールをインスト―ルするプロセスを説明しています。またこのリリースでは、ユーザーが Azure ポータルを使用してカスタム スクリプト アクションを指定する機能が追加され、ヘルパー メソッドを使用してカスタム スクリプト アクションを作成するためのガイドラインとベスト プラクティスの提供、さらにスクリプト アクションをテストする方法に関するガイドラインが提供されます。</p></td>
+<td><p>カスタマイズ機能により、Apache Hadoop エコシステムから利用できるプロジェクトで Azure HDInsight クラスターをカスタマイズできます。この新しい機能により、Hadoop プロジェクトを実験し、Azure HDInsight にデプロイできます。これは、カスタム スクリプトを使用して、Hadoop クラスターを任意の方法で変更できる **スクリプト アクション** 機能により実現します。このカスタマイズ機能は、Hadoop、HBase、および Storm などあらゆる種類の HDInsight クラスターで利用できます。この機能の能力を示すために、一般的な <a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-spark-install/" target="_blank">Spark</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-r-scripts/" target="_blank">R</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-solr-install/" target="_blank">Solr</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-giraph-install/" target="_blank">Giraph</a> モジュールをインストールするプロセスを説明しています。またこのリリースでは、ユーザーが Azure ポータルを使用してカスタム スクリプト アクションを指定する機能が追加され、ヘルパー メソッドを使用してカスタム スクリプト アクションを作成するためのガイドラインとベスト プラクティスの提供、さらにスクリプト アクションをテストする方法に関するガイドラインが提供されます。</p></td>
 <td>機能の一般公開</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -1006,7 +1026,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 <p>**既にあるデータを使用するソリューション**:<br>
 データ分析のなかでも特によくあるもののいくつかについて、ジョブを作成しました。自分でソリューションを作成する際の第一歩として役立ちます。各ジョブには既にお持ちのデータを使って、どのように動作するかを確認できます。その後準備ができたら、これまでに得た知識を使って、既成のジョブを手本にソリューションを作成します。</p>
 <p>**サンプルのデータを使用するソリューション**:<br>
-Web ログやセンサー データの分析など、基本的なシナリオをいくつかなぞっていくことによって、HDInsight の使い方を学習できます。HDInsight を使ってデータを分析する方法だけでなく、その他のアプリケーションやサービスにこのデータを接続する方法も学べます。こちらは、Microsoft Excel に接続してデータを視覚化する場合などにこ役立ちます。</p></td>
+Web ログやセンサー データの分析など、基本的なシナリオをいくつかなぞっていくことによって、HDInsight の使い方を学習できます。HDInsight を使ってデータを分析する方法だけでなく、その他のアプリケーションやサービスにこのデータを接続する方法も学べます。こちらは、Microsoft Excel に接続してデータを視覚化する場合などに役立ちます。</p></td>
 <td>クエリ コンソール</td>
 <td>Hadoop は、</td>
 <td>該当なし</td>
@@ -1136,7 +1156,7 @@ Azure PowerShell または HDInsight SDK とクラスター間でのバージョ
 
 ## 2014 年 7 月 28 日リリース
 
-* **このリ―ジョン利用可能な HDInsight**: HDInsight の地理的なプレゼンスを以下の 3 つのリージョンに拡張しています。HDInsight の顧客は、これらのリージョンでクラスターを作成できます。
+* **このリージョン利用可能な HDInsight**: HDInsight の地理的なプレゼンスを以下の 3 つのリージョンに拡張しています。HDInsight の顧客は、これらのリージョンでクラスターを作成できます。
 	* 東アジア
 	* 米国中北部
 	* 米国中南部
@@ -1346,4 +1366,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

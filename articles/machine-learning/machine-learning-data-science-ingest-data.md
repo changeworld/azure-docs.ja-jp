@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="データの取り込み | Microsoft Azure" 
+	pageTitle="分析用のストレージ環境にデータを読み込む | Microsoft Azure" 
 	description="Azure Blob ストレージとの間のデータの移動" 
 	services="machine-learning,storage" 
 	documentationCenter="" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/12/2015" 
+	ms.date="10/19/2015" 
 	ms.author="bradsev" />
 
-# データの取り込み
+# 分析用のストレージ環境にデータを読み込む
 
 ## はじめに
 
@@ -28,4 +28,4 @@ Cortana Analytics Process (CAP) では、さまざまなストレージ環境に
 
 分析の目的を達成するためにデータを取り込む必要があるターゲット環境は、技術上およびビジネス上のニーズと、データの最初の保存場所、形式、およびサイズによって決まります。予測モデルを構築するために必要なさまざまなタスクを実行するために、複数の環境間でデータを移動する必要があるシナリオも珍しくありません。この一連のタスクには、データ探索、前処理、クリーニング、サンプリング、モデル トレーニングなどが含まれます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

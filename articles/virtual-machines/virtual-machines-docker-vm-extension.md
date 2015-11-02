@@ -13,10 +13,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="06/29/2015"
+	ms.date="10/21/2015"
 	ms.author="rasquill"/>
 
 # Azure の Linux 用 Docker 仮想マシン拡張機能
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 [Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、アプリケーション データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。[Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)に対して [Azure Docker VM 拡張機能](https://github.com/Azure/azure-docker-extension/blob/master/README.md)を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。
 
 このトピックの内容:
@@ -80,6 +83,5 @@ Docker 対応 VM の作成をすぐに開始するには、以下を参照して
 [Docker と Linux コンテナー]: #Docker-and-Linux-Containers
 [Azure で Docker VM 拡張機能を使用する方法]: #How-to-use-the-Docker-VM-Extension-with-Azure
 [Linux および Windows 向けの仮想マシン拡張機能]: #Virtual-Machine-Extensions-For-Linux-and-Windows
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

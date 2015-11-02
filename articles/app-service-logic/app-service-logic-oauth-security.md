@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/10/2015"
+	ms.date="10/15/2015"
 	ms.author="mandia"/>
 
 
 # SaaS コネクタでの OAUTH セキュリティについて
-Facebook、Twitter、DropBox など、サービスとしてのソフトウェア (SaaS) の多くは、ユーザーが OAUTH プロトコルを使用して承認する必要があります。Logic Apps からこれらの SaaS コネクタを使用する場合、ロジック アプリ デザイナーで [承認] をクリックするだけという、シンプルなユーザー エクスペリエンスが用意されています。**承認**を実行する場合、まだサインインしていない場合はサインインし、SaaS のサービスへの接続に同意するよう求められます。同意して承認すると、ロジック アプリからこれらの SaaS サービスにアクセスできます。
+Facebook、Twitter、DropBox など、サービスとしてのソフトウェア (SaaS) の多くは、ユーザーが OAUTH プロトコルを使用して認証する必要があります。Logic Apps からこれらの SaaS コネクタを使用する場合、Logic Apps デザイナーで [承認] をクリックするだけという、シンプルなユーザー エクスペリエンスが用意されています。**承認**を実行する場合、まだサインインしていない場合はサインインし、SaaS のサービスへの接続に同意するよう求められます。同意して承認すると、Logic Apps からこれらの SaaS サービスにアクセスできます。
 
 ## 独自の SaaS アプリの作成
 これらの SaaS サービスで既にアプリケーションを作成して登録しているために、このようなシンプルなエクスペリエンスが可能になります。場合によっては、独自のアプリケーションを登録し、使用することがあります。たとえば、[SaaS コネクタ API アプリのデプロイ](app-service-api-connnect-your-app-to-saas-connector.md)に関するページの例にあるようなカスタム アプリケーションで、これらの SaaS コネクタを使用する場合に必要となります。この例では DropBox コネクタを使用しますが、そのプロセスは、OAUTH に依存するすべてのコネクタで同じです。
@@ -48,4 +48,4 @@ Logic Apps の場合でも、既定のアプリケーションを使用する代
 [4]: ./media/app-service-logic-oauth-security/TwitterApp.png
 [5]: ./media/app-service-logic-oauth-security/TwitterKeys.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

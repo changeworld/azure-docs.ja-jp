@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="REST による資産配信ポリシーの構成" 
-	description="このトピックでは、さまざまな資産配信ポリシーを構成する方法を示します。" 
+	pageTitle="Media Services REST API による資産配信ポリシーの構成" 
+	description="このトピックでは、Media Services REST API を利用し、さまざまな資産配信ポリシーを構成する方法を示します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/20/2015" 
+	ms.date="10/18/2015" 
 	ms.author="juliako"/>
 
 #方法: 資産の配信ポリシーを構成する
@@ -436,4 +436,4 @@ AMS のラーニング パスについては、以下を参照してください
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

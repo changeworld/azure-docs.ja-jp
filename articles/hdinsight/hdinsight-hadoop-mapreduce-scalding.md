@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="09/23/2015"
+ ms.date="10/15/2015"
  ms.author="larryfr"/>
 
 # HDInsight での Apache Hadoop による Scalding MapReduce ジョブの開発
@@ -233,30 +233,88 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 1. [Azure PowerShell をインストールして構成します](../install-configure-powershell.md)。
 
-2. [hdinsight-tools.psm1](https://github.com/Blackmist/hdinsight-tools/blob/master/hdinsight-tools.psm1) をダウンロードし、**hdinsight-tools.psm1** というファイル名で保存します。
+2. Azure PowerShell を起動し、Azure アカウントにログインします。資格情報を提供すると、コマンドがアカウントの情報を返します。
 
-3. 新しい **Azure PowerShell** セッションを開き、次のコマンドを入力します。hdinsight-tools.psm1 が現在のディレクトリにない場合は、ファイルのパスを指定します。
+		Add-AzureRMAccount
 
-        import-module hdinsight-tools.psm1
+		Id                             Type       ...
+		--                             ----
+		someone@example.com            User       ...
 
-    これにより、HDInsight でファイルを操作するためのいくつかの関数がインポートされます。
+3. 複数のサブスクリプションがある場合、デプロイメントに使用するサブスクリプション ID を提供します。
 
-4. 次のコマンドを使用して、WordCount ジョブを含む jar ファイルをアップロードします。`CLUSTERNAME` を、使用する HDInsight クラスターの名前に置き換えます。
+		Select-AzureRMSubscription -SubscriptionID <YourSubscriptionId>
 
-        $clusterName="CLUSTERNAME"
-        Add-HDInsightFile -clusterName $clusterName -localPath \path\to\scaldingwordcount-1.0-SNAPSHOT.jar -destinationPath example/jars/scaldingwordcount-1.0-SNAPSHOT.jar
+    > [AZURE.NOTE]`Get-AzureRMSubscription` を使用して、アカウントに関連付けられているすべてのサブスクリプションのリストを取得することができます。これには、各サブスクリプション ID が含まれます。
 
-5. アップロードが完了した後、次のコマンドを使用してジョブを実行します。
+4. WordCount ジョブをアップロードして実行するには、次のスクリプトを使用します。`CLUSTERNAME` は HDInsight クラスターの名前に置き換え、`$fileToUpload` が __scaldingwordcount-1.0-SNAPSHOT.jar__ ファイルへの正しいパスであることを確認します。
 
-        $jobDef=New-AzureHDInsightMapReduceJobDefinition -JobName ScaldingWordCount -JarFile wasb:///example/jars/scaldingwordcount-1.0-SNAPSHOT.jar -ClassName com.microsoft.example.WordCount -arguments "--hdfs", "--input", "wasb:///example/data/gutenberg/davinci.txt", "--output", "wasb:///example/wordcountout"
-        $job = start-azurehdinsightjob -cluster $clusterName -jobdefinition $jobDef
-        wait-azurehdinsightjob -Job $job -waittimeoutinseconds 3600
+        #Cluster name, file to be uploaded, and where to upload it
+        $clustername = "CLUSTERNAME"
+        $fileToUpload = "scaldingwordcount-1.0-SNAPSHOT.jar"
+        $blobPath = "example/jars/scaldingwordcount-1.0-SNAPSHOT.jar"
+        
+        #Get HTTPS/Admin credentials for submitting the job later
+        $creds = Get-Credential
+        #Get the cluster info so we can get the resource group, storage, etc.
+        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+        $resourceGroup = $clusterInfo.ResourceGroup
+        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
+        $container=$clusterInfo.DefaultStorageContainer
+        $storageAccountKey=Get-AzureRmStorageAccountKey `
+            -Name $storageAccountName `
+            -ResourceGroupName $resourceGroup `
+            | %{ $_.Key1 }
+        
+        #Create a storage content and upload the file
+        $context = New-AzureStorageContext `
+            -StorageAccountName $storageAccountName `
+            -StorageAccountKey $storageAccountKey
+            
+        Set-AzureStorageBlobContent `
+            -File $fileToUpload `
+            -Blob $blobPath `
+            -Container $container `
+            -Context $context
+            
+        #Create a job definition and start the job
+        $jobDef=New-AzureRmHDInsightMapReduceJobDefinition `
+            -JobName ScaldingWordCount `
+            -JarFile wasb:///example/jars/scaldingwordcount-1.0-SNAPSHOT.jar `
+            -ClassName com.microsoft.example.WordCount `
+            -arguments "--hdfs", `
+                       "--input", `
+                       "wasb:///example/data/gutenberg/davinci.txt", `
+                       "--output", `
+                       "wasb:///example/wordcountout"
+        $job = Start-AzureRmHDInsightJob `
+            -clustername $clusterName `
+            -jobdefinition $jobDef `
+            -HttpCredential $creds
+        Write-Output "Job ID is: " + $job.JobId
+        Wait-AzureRmHDInsightJob `
+            -ClusterName $clusterName `
+            -JobId $job.JobId `
+            -HttpCredential $creds
+        #Download the output of the job
+        Get-AzureStorageBlobContent `
+            -Blob example/wordcountout/part-r-00000 `
+            -Container $container `
+            -Destination output.txt `
+            -Context $context
+        #Log any errors that occured
+        Get-AzureRmHDInsightJobOutput `
+            -Clustername $clusterName `
+            -JobId $job.JobId `
+            -DefaultContainer $container `
+            -DefaultStorageAccountName $storageAccountName `
+            -DefaultStorageAccountKey $storageAccountKey `
+            -HttpCredential $creds `
+            -DisplayOutputType StandardError
 
-6. ジョブが完了した後、次の方法でジョブの出力をダウンロードします。
-
-        Get-HDInsightFile -clusterName $clusterName -remotePath example/wordcountout/part-00000 -localPath output.txt
-
-7. 出力は、タブで区切られた単語と個数の値で構成されます。結果を表示するには、次のコマンドを使用します。
+     スクリプトの実行時に、HDInsight クラスターの管理者のユーザー名とパスワードを入力するように求められます。ジョブが実行されているときに発生したエラーは、コンソールに記録されます。
+     
+6. ジョブが完了すると、出力は現在のディレクトリにある __output.txt__ ファイルにダウンロードされます。次のコマンドを実行して、結果を表示します。
 
         cat output.txt
 
@@ -276,10 +334,6 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
         wrotefootnote   1
         wrought 7
 
-7. 出力が空の場合、またはファイルが存在しない場合は、ジョブを実行するときに発生したエラーを次のようにして表示できます。
-
-        Get-AzureHdinsightJobOutput -cluster $clusterName -jobId $job.JobId -standarderror
-
 ## 次のステップ
 
 これで、Scalding を使用して HDInsight 用の MapRedcue ジョブを作成する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
@@ -290,4 +344,4 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

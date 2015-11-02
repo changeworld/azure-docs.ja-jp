@@ -17,6 +17,8 @@ ms.author="diviso"/>
 
 # Chef で Azure 仮想マシンのデプロイメントを自動化する
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 Chef は自動化と必要な状態の構成を提供する優れたツールです。
 
 Chef は最新の cloud-api リリースで Azure とのシームレスな統合を提供しており、1 つのコマンドで構成状態をプロビジョニングしてデプロイできます。
@@ -237,4 +239,4 @@ Azure 仮想マシンをデプロイして、IIS Web サービスと既定のWeb
 
 <!--Link references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

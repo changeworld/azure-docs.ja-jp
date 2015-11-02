@@ -14,13 +14,12 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/21/2015"
+	ms.date="10/20/2015"
 	ms.author="josephd"/>
 
 # SharePoint イントラネット ファーム ワークロードのフェーズ 3: SQL Server インフラストラクチャの構成
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
-
+[AZURE.INCLUDE [learn-about-deployment-models-classic-include](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャーのデプロイ モデル。
 
 イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、サービス管理で 2 台の SQL Server コンピューターとクラスター マジョリティ ノード コンピューターを作成および構成し、Windows Server クラスターに統合します。
 
@@ -144,11 +143,11 @@ SQL サーバーごとに次の手順を実行します。
 
 SQL Server には、クライアントがデータベース サーバーへのアクセスに使用するポートが必要です。また、SQL Server Management Studio に接続するためのポートと、高可用性グループを管理するためのポートも必要です。次に、管理者レベルの Windows PowerShell コマンド プロンプトで次のコマンドを 2 回 (SQL サーバーごとに 1 回) 実行して、SQL サーバーへの受信トラフィックを許可するファイアウォール ルールを追加します。
 
-	New-NetFirewallRule -DisplayName "SQL Server ports 1433, 4234, and 5022" -Direction Inbound –Protocol TCP –LocalPort 1433,1434,5022 -Action Allow
+	New-NetFirewallRule -DisplayName "SQL Server ports 1433, 1434, and 5022" -Direction Inbound –Protocol TCP –LocalPort 1433,1434,5022 -Action Allow
 
 SQL Server 仮想マシンごとに、ローカル管理者としてサインアウトします。
 
-Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」をご覧ください。SharePoint ファームのストレージ アカウントの geo 冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
+Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」をご覧ください。SharePoint ファームのストレージ アカウントの 地理冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
 
 ## クラスター マジョリティ ノード サーバーの構成
 
@@ -164,7 +163,7 @@ SQL Server AlwaysOn 可用性グループでは、Windows Server の Windows Ser
 - セカンダリ SQL サーバー
 - クラスター マジョリティ ノード
 
-フェールオーバー クラスターには少なくとも 3 つの VM が必要です。2 台のコンピューターで SQL Server をホストします。2 番目の SQL Server VM は同期セカンダリ レプリカであり、プライマリ コンピューターで障害が発生した場合にデータの損失を防ぎます。3 台目のコンピューターでは、SQL Server をホストする必要はありません。クラスター マジョリティ ノードは、WSFC でクォーラム監視として機能します。WSFC クラスターではクォーラムを利用して正常性を監視するため、WSFC クラスターがオンラインであるためには、常に過半数存在する必要があります。クラスターにコンピューターが 2 台しかない場合、2 台のうち 1 台で障害が発生すると、過半数に届かなくなります。詳細については、「[WSFC クォーラム モードと投票の構成 (SQL Server)](http://msdn.microsoft.com/library/hh270280.aspx)」をご覧ください。
+フェールオーバー クラスターには少なくとも 3 つの VM が必要です。2 台のコンピューターで SQL Server をホストします。2 番目の SQL Server VM は同期セカンダリ レプリカであり、プライマリ コンピューターで障害が発生した場合にデータの損失を防ぎます。3 台目のコンピューターでは、SQL Server をホストする必要はありません。クラスター マジョリティ ノードが、WSFC でクォーラムを提供します。WSFC クラスターではクォーラムを利用して正常性を監視するため、WSFC クラスターがオンラインであるためには、常に過半数存在する必要があります。クラスターにコンピューターが 2 台しかない場合、2 台のうち 1 台で障害が発生すると、過半数に届かなくなります。詳細については、「[WSFC クォーラム モードと投票の構成 (SQL Server)](http://msdn.microsoft.com/library/hh270280.aspx)」をご覧ください。
 
 両方の SQL サーバー コンピューターとクラスター マジョリティ ノードに対して、管理者レベルの Windows PowerShell コマンド プロンプトで次のコマンドを実行します。
 
@@ -233,4 +232,4 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -14,13 +14,12 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/21/2015"
+	ms.date="10/20/2015"
 	ms.author="josephd"/>
 
 # SharePoint イントラネット ファーム ワークロードのフェーズ 2: ドメイン コントローラーの構成
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
-
+[AZURE.INCLUDE [learn-about-deployment-models-classic-include](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャーのデプロイ モデル。
 
 イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこの第 1 フェーズでは、サービス管理で Azure 仮想ネットワーク内の 2 つのドメイン コント ローラーを構成します。これで、SharePoint ファーム リソースに対するクライアント Web 要求は、VPN または Azure ExpressRoute 接続経由でオンプレミス ネットワークに認証のトラフィックを送信する代わりに、Azure の仮想ネットワーク内で認証できるようになります。
 
@@ -36,7 +35,7 @@
 2\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (2 番目のドメイン コントローラー (例: DC2)) | Windows Server 2012 R2 Datacenter | A2 (Medium)
 3\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (最初の SQL Server コンピューター (例: SQL1)) | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | 	A7
 4\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (2 番目の SQL Server コンピューター (例: SQL2)) | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | 	A7
-5\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (クラスターのマジョリティ ノード監視 (例: MN1)) | Windows Server 2012 R2 Datacenter | A1 (Small)
+5\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (クラスターのマジョリティ ノード (例: MN1)) | Windows Server 2012 R2 Datacenter | A1 (Small)
 6\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (最初の SharePoint アプリケーション サーバー (例: APP1)) | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
 7\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (2 番目の SharePoint アプリケーション サーバー (例: APP2)) | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
 8\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (最初の SharePoint Web サーバー (例: WEB1)) | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
@@ -186,7 +185,7 @@ SharePoint ファームでは、次のユーザー アカウントが必要で�
 
 	New-ADUser -SamAccountName sp_install -AccountPassword (read-host "Set user password" -assecurestring) -name "sp_install" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false
 
-	New-	ADUser -SamAccountName sqlservice -AccountPassword (read-host "Set user password" -assecurestring) -name "sqlservice" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false
+	New-ADUser -SamAccountName sqlservice -AccountPassword (read-host "Set user password" -assecurestring) -name "sqlservice" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false
 
 コマンドごとにパスワードの入力を求められます。これらのアカウント名とパスワードを記録し、安全な場所に保管しておきます。
 
@@ -249,4 +248,4 @@ SharePoint ファームでは、次のユーザー アカウントが必要で�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

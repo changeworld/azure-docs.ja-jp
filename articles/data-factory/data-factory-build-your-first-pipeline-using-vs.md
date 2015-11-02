@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="10/09/2015"
+	ms.date="10/15/2015"
 	ms.author="spelluru"/>
 
 # Visual Studio を使用した初めての Azure Data Factory パイプラインの作成
@@ -205,23 +205,27 @@
 
 21. Data Factory の構成ページで、次の操作を行います。
 	1. **[Data Factory の新規作成]** オプションを選択します。
-	2. **[名前]** に「**FirstPipelineUsingVS**」と入力します。
+	2. **[名前]** に「**FirstPipelineUsingVS**」と入力します。 
+	
+		> [AZURE.IMPORTANT]Azure Data Factory の名前はグローバルに一意にする必要があります。発行時に "**"FirstPipelineUsingVS" という名前のデータ ファクトリは使用できません**" というエラーが発生した場合は、名前を変更します (yournameFirstPipelineUsingVS など)。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
+		> 
+		> データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 	3. **[サブスクリプション]** フィールドで適切なサブスクリプションを選択します。 
-	4. 作成する Data Factory の**リソース グループ**を選択します。 
-	5. Data Factory の**リージョン**を選択します。 
-	6. **[次へ]** をクリックして、**[項目の発行]** ページに切り替えます (**[次へ]** ボタンが無効になっている場合は、**Tab** キーを押して [名前] フィールドの外に移動します)。 
+	4. 作成するデータ ファクトリの**ソース グループ**を選択します。 
+	5. データ ファクトリの**リージョン**を選択します。 
+	6. **[次へ]** をクリックし、**[項目の発行]** ページに切り替えます。(**[次へ]** ボタンが無効になっている場合は、**Tab** キーを押して [名前] フィールドの外に移動します)。 
 23. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、**[次へ]** をクリックして **[概要]** ページに切り替えます。     
-24. 概要を確認したら、**[次へ]** をクリックしてデプロイメント プロセスを開始し、**[デプロイメント ステータス]** を表示します。
-25. **[デプロイメント ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。デプロイメントが完了したら、[完了] をクリックします。 
+24. 概要を確認し、**[次へ]** をクリックし、デプロイメント プロセスを開始し、**[デプロイ ステータス]** を表示します。
+25. **[デプロイ ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。デプロイメントが完了したら、[完了] をクリックします。 
  
 
 ## サーバー エクスプローラーを使用して Data Factory のエンティティを確認する
 
 1. **Visual Studio** のメニューで **[ビュー]** をクリックし、**[サーバー エクスプローラー]** をクリックします。
-2. [サーバー エクスプローラー] ウィンドウで、**[Azure]** を展開し、**[Data Factory]** を展開します。**[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力し、**[続行]** をクリックします。**パスワード**を入力し、**[サインイン]** をクリックします。Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。**[Data Factory タスク リスト]** ウィンドウで、この操作の状態を確認します。
+2. [サーバー エクスプローラー] ウィンドウで、**[Azure]** を展開し、**[Data Factory]** を展開します。**[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力して **[続行]** をクリックします。**パスワード**を入力し、**[サインイン]** をクリックします。Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。**[Data Factory タスク リスト]** ウィンドウで、この操作のステータスを確認します。
 
 	![Server Explorer](./media/data-factory-build-your-first-pipeline-using-vs/server-explorer.png)
-3. Data Factory を右クリックし、**[Data Factory を新しいプロジェクトにエクスポートする]** を選択すると、既存の Data Factory に基づいて Visual Studio プロジェクトを作成できます。
+3. データ ファクトリを右クリックし、**[Data Factory を新しいプロジェクトにエクスポートする]** を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。
 
 	![データ ファクトリのエクスポート](./media/data-factory-build-your-first-pipeline-using-vs/export-data-factory-menu.png)
 
@@ -230,16 +234,16 @@
 Visual Studio の Azure Data Factory ツールを更新するには、次のように行います。
 
 1. メニューで **[ツール]** をクリックし、**[拡張機能と更新プログラム]** を選択します。
-2. 左側のウィンドウで **[更新]** を選択し、**[Visual Studio ギャラリー]** を選択します。
-3. **[Visual Studio の Azure Data Factory ツール]** を選択し、**[更新]** をクリックします。このエントリが表示されない場合は、ツールは既に最新バージョンです。 
+2. 左ウィンドウで **[更新]** を選択し、**[Visual Studio ギャラリー]** を選択します。
+3. **[Visual Studio の Azure Data Factory ツール]** を選択して、**[更新]** をクリックします。このエントリが表示されない場合は、ツールは既に最新バージョンです。 
 
-Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、「[Azure Data Factory のパイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)」をご覧ください。
+Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、「[データセットとパイプラインを監視する](data-factory-monitor-manage-pipelines.md)」を参照してください。
  
 
 ## 次のステップ
-この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started.md)」をご覧ください。
+この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started.md)」を参照してください。
   
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-vs.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-vs.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

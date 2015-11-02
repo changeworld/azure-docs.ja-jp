@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/09/2015"
+	ms.date="10/16/2015"
 	ms.author="larryfr"/>
 
 #HDInsight で Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する
@@ -77,11 +77,35 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 		166	346	1	886397596
 
 
-3. __u.data__ ファイルを、HDInsight クラスターの __example/data/u.data__ にアップロードします。[Azure PowerShell][aps] を持っている場合は、[HDInsight-Tools][tools] モジュールを使用してファイルをアップロードできます。ファイルをアップロードするその他の方法については、「[データを HDInsight にアップロードする方法][upload]」を参照してください。次のコマンドは `Add-HDInsightFile` を使用してファイルをアップロードします。
+3. __u.data__ ファイルを、HDInsight クラスターの __example/data/u.data__ にアップロードします。次のコマンドでは、PowerShell を使用してデータをアップロードします。ファイルをアップロードするその他の方法については、「[データを HDInsight にアップロードする方法][upload]」を参照してください。
 
-    	PS C:\> Add-HDInsightFile -LocalPath "path\to\u.data" -DestinationPath "example/data/u.data" -ClusterName "your cluster name"
-
-    これは、使用するクラスターの既定のストレージ内の __example/data/u.data__ に __u.data__ ファイルをアップロードします。これにより、HDInsight ジョブから \_\___wasb:///example/data/u.data__ URI を使用してこのデータにアクセスできます。
+        # Put your cluster name below
+        $clusterName="Your HDInsight cluster name"
+        # Put the path to the u.data file below
+        $fileToUpload="The path to the u.data file"
+        
+        #Get the cluster info so we can get the resource group, storage, etc.
+        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+        $resourceGroup = $clusterInfo.ResourceGroup
+        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
+        $container=$clusterInfo.DefaultStorageContainer
+        $storageAccountKey=Get-AzureRmStorageAccountKey `
+            -Name $storageAccountName `
+            -ResourceGroupName $resourceGroup `
+            | %{ $_.Key1 }
+        
+        #Create a storage content and upload the file
+        $context = New-AzureStorageContext `
+            -StorageAccountName $storageAccountName `
+            -StorageAccountKey $storageAccountKey
+            
+        Set-AzureStorageBlobContent `
+            -File $fileToUpload `
+            -Blob "example/data/u.data" `
+            -Container $container `
+            -Context $context
+    
+    これは、使用するクラスターの既定のストレージ内の __example/data/u.data__ に __u.data__ ファイルをアップロードします。これで、HDInsight ジョブから \_\___wasb:///example/data/u.data__ URI を使用してこのデータにアクセスできるようになります。
 
 ###ジョブを実行する
 
@@ -89,14 +113,27 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 	# The HDInsight cluster name.
 	$clusterName = "the cluster name"
-
+    
+    #Get HTTPS/Admin credentials for submitting the job later
+    $creds = Get-Credential
+    #Get the cluster info so we can get the resource group, storage, etc.
+    $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+    $resourceGroup = $clusterInfo.ResourceGroup
+    $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
+    $container=$clusterInfo.DefaultStorageContainer
+    $storageAccountKey=Get-AzureRmStorageAccountKey `
+        -Name $storageAccountName `
+        -ResourceGroupName $resourceGroup `
+        | %{ $_.Key1 }
+            
+    #Create a storage content and upload the file
+    $context = New-AzureStorageContext `
+        -StorageAccountName $storageAccountName `
+        -StorageAccountKey $storageAccountKey
+            
 	# NOTE: The version number portion of the file path
 	# may change in future versions of HDInsight.
-	# So dynamically grab it using Hive.
-	$mahoutPath = Invoke-Hive -Query '!${env:COMSPEC} /c dir /b /s ${env:MAHOUT_HOME}\examples\target*-job.jar' | where {$_.startswith("C:\apps\dist")}
-	$noCRLF = $mahoutPath -replace "`r`n", ""
-	$cleanedPath = $noCRLF -replace "\", "/"
-	$jarFile = "file:///$cleanedPath"
+	$jarFile = "file:///C:/apps/dist/mahout-0.9.0.2.1.15.1-1234/examples/target/mahout-examples-0.9.0.2.1.15.1-1234-job.jar"
     #
 	# If you are using an earlier version of HDInsight,
 	# set $jarFile to the jar file you
@@ -108,35 +145,51 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 	# * input - the path to the data uploaded to HDInsight
 	# * output - the path to store output data
 	# * tempDir - the directory for temp files
-	$jobArguments = "-s", "SIMILARITY_COOCCURRENCE",
+	$jobArguments = "--similarityClassname", "recommenditembased", `
+                    "-s", "SIMILARITY_COOCCURRENCE", `
 	                "--input", "wasb:///example/data/u.data",
 	                "--output", "wasb:///example/out",
-	                "--tempDir", "wasb:///temp/mahout"
+	                "--tempDir", "wasb:///example/temp"
 
 	# Create the job definition
-	$jobDefinition = New-AzureHDInsightMapReduceJobDefinition `
+	$jobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
 	  -JarFile $jarFile `
 	  -ClassName "org.apache.mahout.cf.taste.hadoop.item.RecommenderJob" `
 	  -Arguments $jobArguments
 
 	# Start the job
-	$job = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $jobDefinition
+	$job = Start-AzureRmHDInsightJob `
+        -ClusterName $clusterName `
+        -JobDefinition $jobDefinition `
+        -HttpCredential $creds
 
 	# Wait on the job to complete
 	Write-Host "Wait for the job to complete ..." -ForegroundColor Green
-	Wait-AzureHDInsightJob -Job $job
-
+	Wait-AzureRmHDInsightJob `
+            -ClusterName $clusterName `
+            -JobId $job.JobId `
+            -HttpCredential $creds
+    # Download the output
+    Get-AzureStorageBlobContent `
+            -Blob example/out/part-r-00000 `
+            -Container $container `
+            -Destination output.txt `
+            -Context $context
+            
 	# Write out any error information
 	Write-Host "STDERR"
-	Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $job.JobId -StandardError
+	Get-AzureRmHDInsightJobOutput `
+            -Clustername $clusterName `
+            -JobId $job.JobId `
+            -DefaultContainer $container `
+            -DefaultStorageAccountName $storageAccountName `
+            -DefaultStorageAccountKey $storageAccountKey `
+            -HttpCredential $creds `
+            -DisplayOutputType StandardError
 
-> [AZURE.NOTE]Mahout ジョブは、ジョブの処理中に作成された一時データを削除しません。このサンプル ジョブでは `--tempDir` パラメーターを指定し、一時ファイルを特定のパスに分離して簡単に削除できるようにしています。
->
-> これらのファイルを削除するには、「[HDInsight での Hadoop ジョブ用データのアップロード][upload]」で説明されているツールのいずれかを使用できます。または、[HDInsight-Tools][tools] モジュールの `Remove-HDInsightFile` 関数を使用します。
->
-> 一時ファイルまたは出力ファイルを削除しなかった場合、ジョブをもう一度実行するとエラー メッセージが返されます。
+> [AZURE.NOTE]Mahout ジョブは、ジョブの処理中に作成された一時データを削除しません。このサンプル ジョブでは `--tempDir` パラメーターを指定し、一時ファイルを特定のディレクトリに分離します。
 
-Mahout ジョブは出力を STDOUT に返しません。代わりに、指定された出力ディレクトリに __part-r-00000__ として格納します。ファイルをダウンロードして表示するには、[HDInsight-Tools][tools] モジュールの `Get-HDInsightFile` 関数を使用します。
+Mahout ジョブは出力を STDOUT に返しません。代わりに、指定された出力ディレクトリに __part-r-00000__ として格納します。このファイルは、ワークステーションの現在のディレクトリ内の __output.txt__ にダウンロードされます。
 
 ファイルの内容の例を次に示します。
 
@@ -145,7 +198,7 @@ Mahout ジョブは出力を STDOUT に返しません。代わりに、指定�
 	3	[284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
 	4	[690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-最初の列は `userID` です。'[' と ']' の間に入る値は `movieId`:`recommendationScore` です。
+最初の列は `userID` です。"[" と "]" に含まれる値は `movieId`:`recommendationScore` です。
 
 ###出力を表示する
 
@@ -233,7 +286,7 @@ Mahout ジョブは出力を STDOUT に返しません。代わりに、指定�
 	                        @{Expression={$_.Value};Label="Score"}
 	$recommendations | format-table $recommendationFormat
 
-このスクリプトを使用するには、以前に抽出された __ml-100k__ フォルダーと Mahout ジョブで生成された __part-r-00000__ 出力ファイルのローカル コピーが必要です。スクリプトを実行する例を次に示します。
+このスクリプトを使用するには、事前に __ml-100k__ フォルダーを抽出しておく必要があります。スクリプトを実行する例を次に示します。
 
 	PS C:\> show-recommendation.ps1 -userId 4 -userDataFile .\ml-100k\u.data -movieFile .\ml-100k\u.item -recommendationFile .\output.txt
 
@@ -282,7 +335,31 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 
 2. 各ファイルを開き、'@' で始まる先頭の数行を削除して、ファイルを保存します。これらが削除されていない場合、このデータを Mahout で使用するとエラー メッセージが返されます。
 
-2. __example/data__ にファイルをアップロードします。これは、[HDInsight-Tools][tools] モジュール内の `Add-HDInsightFile` 関数を使用して実行できます。
+2. __example/data__ にファイルをアップロードします。この処理には、次のスクリプトを使用できます。__CLUSTERNAME__ を HDInsight クラスターの名前に置き換えます。FILENAME をアップロードするファイルの名前に置き換えます。
+
+        #Get the cluster info so we can get the resource group, storage, etc.
+        $clusterName="CLUSTERNAME"
+        $fileToUpload="FILENAME"
+        $blobPath="example/data/FILENAME"
+        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+        $resourceGroup = $clusterInfo.ResourceGroup
+        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
+        $container=$clusterInfo.DefaultStorageContainer
+        $storageAccountKey=Get-AzureRmStorageAccountKey `
+            -Name $storageAccountName `
+            -ResourceGroupName $resourceGroup `
+            | %{ $_.Key1 }
+        
+        #Create a storage content and upload the file
+        $context = New-AzureStorageContext `
+            -StorageAccountName $storageAccountName `
+            -StorageAccountKey $storageAccountKey
+            
+        Set-AzureStorageBlobContent `
+            -File $fileToUpload `
+            -Blob $blobPath `
+            -Container $container `
+            -Context $context
 
 ###ジョブを実行する
 
@@ -302,7 +379,7 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 
 		hadoop jar c:/apps/dist/mahout-0.9.0.2.1.3.0-1887/examples/target/mahout-examples-0.9.0.2.1.3.0-1887-job.jar org.apache.mahout.classifier.df.mapreduce.BuildForest -Dmapred.max.split.size=1874231 -d wasb:///example/data/KDDTrain+.arff -ds wasb:///example/data/KDDTrain+.info -sl 5 -p -t 100 -o nsl-forest
 
-    この操作の出力は、HDInsight クラスターのストレージにある __nsl-forest__ ディレクトリに格納されます (__wasb://user/&lt;username>/nsl-forest/nsl-forest.seq)。&lt;username> は、リモート デスクトップ セッションに使用されるユーザー名です。これは、人間が判読できないファイルです。
+    この操作の出力は、HDInsight クラスターのストレージにある __nsl-forest__ ディレクトリに格納されます (\_\___wasb://user/&lt;username>/nsl-forest/nsl-forest.seq)。&lt;username> は、リモート デスクトップ セッションに使用されるユーザー名です。これは、人間が判読できないファイルです。
 
 5. __KDDTest+.arff__ データセットを分類してフォレストをテストします。次のコマンドを使用します。
 
@@ -334,7 +411,7 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 	    Reliability                                53.4921%
 	    Reliability (standard deviation)            0.4933
 
-  このジョブでも、__wasb:///example/data/predictions/KDDTest+.arff.out__ にファイルが生成されますが、これは、人間が判読できないファイルです。
+  このジョブでも、\_\___wasb:///example/data/predictions/KDDTest+.arff.out__ にファイルが生成されますが、これは、人間が判読できないファイルです。
 
 > [AZURE.NOTE]Mahout ジョブはファイルを上書きしません。これらのジョブをもう一度実行する場合は、前のジョブで作成したファイルを削除する必要があります。
 
@@ -355,13 +432,34 @@ Mahout は HDInsight 3.1 クラスターにインストールされますが、�
 
 			mvn -Dhadoop2.version=2.2.0 -DskipTests clean package
 
-    	ビルドが完了した後、__mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__ で JAR ファイルを入手できます。
+    	After the build completes, you can find the JAR file at __mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__.
 
-    	> [AZURE.NOTE] Mahout 1.0 がリリースされると、HDInsight 3.0 で既成のパッケージを使用できるようになります。
+    	> [AZURE.NOTE] When Mahout 1.0 is released, you should be able to use the prebuilt packages with HDInsight 3.0.
 
-2. この jar ファイルを、使用しているクラスターの既定のストレージ内の __example/jars__ にアップロードします。次の例では、[HDInsight-Tools][tools] の add-hdinsightfile を使用してファイルをアップロードします。
+2. この jar ファイルを、使用しているクラスターの既定のストレージ内の __example/jars__ にアップロードします。次のスクリプトの CLUSTERNAME を HDInsight クラスターの名前に置き換えます。また、FILENAME を __mahout-coure-0.9-job.jar__ ファイルのパスに置き換えます。
 
-    	PS C:\> .\Add-HDInsightFile -LocalPath "path\to\mahout-core-0.9-job.jar" -DestinationPath "example/jars/mahout-core-0.9-job.jar" -ClusterName "your cluster name"
+        #Get the cluster info so we can get the resource group, storage, etc.
+        $clusterName = "CLUSTERNAME"
+        $fileToUpload = "FILENAME"
+        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+        $resourceGroup = $clusterInfo.ResourceGroup
+        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
+        $container=$clusterInfo.DefaultStorageContainer
+        $storageAccountKey=Get-AzureRmStorageAccountKey `
+            -Name $storageAccountName `
+            -ResourceGroupName $resourceGroup `
+            | %{ $_.Key1 }
+        
+        #Create a storage content and upload the file
+        $context = New-AzureStorageContext `
+            -StorageAccountName $storageAccountName `
+            -StorageAccountKey $storageAccountKey
+            
+        Set-AzureStorageBlobContent `
+            -File $fileToUpload `
+            -Blob "example/jars/mahout-core-0.9-job.jar" `
+            -Container $container `
+            -Context $context
 
 ###ファイルを上書きできない
 
@@ -422,4 +520,4 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

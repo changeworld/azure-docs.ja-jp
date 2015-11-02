@@ -8,6 +8,8 @@
 
         azure vm image list | grep "Linux"
 
+   Windows コマンド プロンプト ウィンドウでは、grep ではなく find を使用します。
+
 4. `azure vm create` を使用して、上記のリストの Linux イメージで新しい仮想マシンを作成します。この手順では、新しいクラウド サービスだけでなく新しいストレージ アカウントも作成されます。`-c` オプションを使用して、この仮想マシンを既存のクラウド サービスに接続することもできます。`-e` オプションを使用すると、Linux 仮想マシンにログインするための SSH エンドポイントも作成されます。
 
         ~$ azure vm create "MyTestVM" b4590d9e3ed742e4a1d46e5424aa335e__suse-opensuse-13.1-20141216-x86-64 "adminUser" -z "Small" -e -l "West US"
@@ -39,4 +41,4 @@
 
 これらすべての Azure CLI 仮想マシン コマンドの詳細については、「[サービス管理 API での Azure CLI の使用](../articles/virtual-machines/virtual-machines-command-line-tools.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

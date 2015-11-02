@@ -1,7 +1,7 @@
 <properties
 	pageTitle="HDInsight での Hadoop とは: クラウドのビッグ データ分析 | Microsoft Azure"
 	description="HDInsight のクラウドでの Hadoop コンポーネントの紹介です。HDInsight が Hadoop クラスターを使用してビッグ データを管理、分析、レポート生成する方法について説明します。"
-	keywords="big data,big data analysis,hadoop,introduction to hadoop,what is hadoop"
+	keywords="ビッグ データ,ビッグ データの分析,hadoop,hadoop の概要,hadoop とは"
 	services="hdinsight"
 	documentationCenter=""
 	authors="cjgronlund"
@@ -78,7 +78,7 @@ HDInsight チームによって提供されるスクリプトの例は次のと�
 * [Hue](hdinsight-hadoop-hue-linux.md)
 
 	> [AZURE.NOTE]Hue スクリプトは、Linux ベースのクラスターでのみ使用できます。
-	
+
 * [Giraph](hdinsight-hadoop-giraph-install-linux.md)
 
 * [R](hdinsight-hadoop-r-scripts-linux.md)
@@ -87,7 +87,7 @@ HDInsight チームによって提供されるスクリプトの例は次のと�
 
 * [Spark](hdinsight-hadoop-spark-install-linux.md)
 
-独自のスクリプト アクションを開発する方法については、「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
+独自のスクリプト アクションを開発する方法の詳細については、「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」を参照してください。
 
 ## Hadoop コンポーネントとは
 
@@ -185,7 +185,7 @@ HDInsight の Hadoop は、Azure クラウド エコシステムの一部とし�
 
 * [Web アプリ](../documentation/services/app-service/web/) や [SQL Database](../documentation/services/sql-database/) などの他の Azure サービスとの統合。
 
-* 低い導入コスト。[無料評価版](/pricing/free-trial/)から始めることができます。「[HDInsight の料金詳細](/pricing/details/hdinsight/)」も参照してください。
+* 低い導入コスト。[無料試用版](/pricing/free-trial/)から始めることができます。「[HDInsight の料金詳細](/pricing/details/hdinsight/)」も参照してください。
 
 
 HDInsight の Hadoop を使うその他のメリットについては、[HDInsight 向けの Azure の機能のページ][marketing-page]を参照してください。
@@ -229,7 +229,7 @@ HDInsight の Hadoop を使うその他のメリットについては、[HDInsig
 
 * <a target="_blank" href="http://hadoop.apache.org/">Apache Hadoop</a> - 大規模なデータ セットを複数のコンピューター クラスターで分散処理するためのフレームワークとなる Apache Hadoop ソフトウェア ライブラリについて説明します。
 
-* <a target="_blank" href="http://hadoop.apache.org/docs/r0.18.1/hdfs_design.html">HDFS</a> - Hadoop アプリケーションで使用する主要なストレージ システムである Hadoop 分散ファイル システムのアーキテクチャと設計について説明します。
+* <a target="_blank" href="http://hadoop.apache.org/docs/r1.0.4/hdfs_design.html">HDFS</a> - Hadoop アプリケーションで使用する主要なストレージ システムである Hadoop 分散ファイル システムのアーキテクチャと設計について説明します。
 
 * <a target="_blank" href="http://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html">MapReduce チュートリアル</a> - 複数の大規模な計算ノード クラスターを使用して大量のデータを高速で並列処理する Hadoop アプリケーションを作成するためのプログラミング フレームワークについて説明します。
 
@@ -272,6 +272,5 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 [marketing-page]: ../services/hdinsight/
 [component-versioning]: hdinsight-component-versioning.md
 [zookeeper]: http://zookeeper.apache.org/
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

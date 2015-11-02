@@ -13,18 +13,26 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="10/09/2015"
+   ms.date="10/16/2015"
    ms.author="maroche"/>
 
 # Azure Data Catalog の新機能
 
 定期的に **Azure Data Catalog** の更新がリリースされます。すべてのリリースにユーザー向けの新機能が含まれているわけではなく、一部のリリースはバックエンド サービス機能向けです。ここでは、**Azure Data Catalog** サービスに追加されたユーザー向けの新機能について説明します。
 
+## 2015 年 10 月 16 日の週のリリースの新機能
+
+2015 年 10 月 16 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
+
+- オンプレミス Hive データ ソースのサポート。ユーザーは、Hadoop オンプレミス データ ソースで Apache Hive 用の Hive テーブルを登録し、検出できるようになりました。
+- **Azure Data Catalog** ポータルにおける保存された検索のサポート。ユーザーは検索語句とフィルター選択項目を保存することで、簡単に以前の検索を繰り返し、カタログのコンテンツの便利なビューを定義することができます。また、ユーザーは既定の検索として保存した検索をマークすることもできます。ユーザーが **Azure Data Catalog** ポータルのホーム ページまたは "概要" ページから "虫眼鏡" の検索アイコンをクリックすると、既定値としてフラグが付けられた保存した検索が直接示されます。
+
+
 ## 2015 年 10 月 9 日の週のリリースの新機能
 
 2015 年 10 月 9 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
 
-- Azure Data Catalog ポータルで、登録済みのデータ資産とコンテナーに関するリッチ テキスト ドキュメントがサポートされるようになりました。ユーザーは、タグや説明が不十分なシナリオで、データ資産 (テーブル、ビュー、レポートなど) とコンテナー (データベース、モデルなど) に関するドキュメントを提供できます。 
+- Azure Data Catalog ポータルで、登録済みのデータ資産とコンテナーに関するリッチ テキスト ドキュメントがサポートされるようになりました。ユーザーは、タグや説明が不十分なシナリオで、データ資産 (テーブル、ビュー、レポートなど) とコンテナー (データベース、モデルなど) に関するドキュメントを提供できます。
 
 ## 2015 年 10 月 2 日の週のリリースの新機能
 
@@ -47,9 +55,9 @@
 
 2015 年 9 月 18 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
 
-- **Azure Data Catalog** ポータルでの新しい "概要" データ ソース検出エクスペリエンス。ユーザーが **Azure Data Catalog** ポータルの "検出" ページで検索用語を入力していないときに、最も頻繁に使用されるタグ、エキスパート、データ ソースの種類とオブジェクトの種類を含むカタログ コンテンツの概要が示されます。
-- Azure SQL Data Warehouse のオブジェクトおよびデータベースを登録して検出するためのサポート。Azure SQL Data Warehouse の詳細については、「[SQL Data Warehouse](http://azure.microsoft.com/services/sql-data-warehouse/)」をご覧ください。
-- SQL Server Analysis Services モデルおよび SQL Server Reporting Services サーバーをコンテナーとして登録して検出するためのサポート。SSAS および SSRS のオブジェクトの登録時に、**Azure Data Catalog** は、レポートやその他のオブジェクトだけでなく、SSAS モデルと SSRS サーバーのエントリも作成します。コンテナーは、**Azure Data Catalog** ポータルを使用して検出し、注釈を付けることができます。カタログのコンテンツを検索し、フィルター処理するだけでなく、モデルまたはサーバーのコンテンツを検索し、フィルター処理することもできます。
+- **Azure Data Catalog** ポータルでの新しい "概要" データ ソースの検出エクスペリエンス。ユーザーが **Azure Data Catalog** ポータルの "検出" ページで検索語句を入力していない場合、最も頻繁に使用されるタグ、エキスパート、データ ソースの種類とオブジェクトの種類を含むカタログ コンテンツの概要が示されます。
+- Azure SQL Data Warehouse のオブジェクトおよびデータベースを登録して検出するためのサポート。Azure SQL Data Warehouse の詳細については、「[SQL Data Warehouse](http://azure.microsoft.com/services/sql-data-warehouse/)」を参照してください。
+- SQL Server Analysis Services モデルおよび SQL Server Reporting Services サーバーをコンテナーとして登録して検出するためのサポート。SSAS および SSRS のオブジェクトの登録時に、**Azure Data Catalog** は、レポートや他のオブジェクトだけでなく、SSAS モデルと SSRS サーバーのエントリも作成します。コンテナーは、**Azure Data Catalog** ポータルを使用して検出し、注釈を付けることができます。カタログのコンテンツを検索し、フィルター処理するだけでなく、モデルまたはサーバーのコンテンツを検索し、フィルター処理することもできます。
 
 > [AZURE.NOTE]9 月 18 日のリリースより前に登録された SSAS および SSRS のオブジェクトについては、モデルまたはサーバーのエントリをカタログに追加する前に、データ ソース登録ツールを使用して再登録する必要があります。データ ソースを再登録しても、**Azure Data Catalog** ポータルでユーザーによって追加された注釈に影響はありません。
 
@@ -57,8 +65,8 @@
 
 2015 年 9 月 11 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
 
-- HTTP/HTTPS を介した SQL Server Analysis Services オブジェクトの登録および検出をサポートします。ユーザーは、サーバー名ではなく URL (https://servername/olap/msmdpump.dll など) を使用して SSAS サーバーに接続できるようになりました。さらに、Windows 認証に加えて、基本認証と匿名接続も使用することができます。SSAS への HTTP/HTTPS 接続の詳細については、「[インターネット インフォメーション サービス (IIS) 8.0 上の Analysis Services への HTTP アクセスの構成](https://msdn.microsoft.com/library/gg492140.aspx)」をご覧ください。
-- HDInsight で Hive データ ソースをサポートします。ユーザーは、HDInsight データ ソースにおいて、Hadoop の Apache Hive に対する Hive テーブルを登録および検出できるようになりました。HDInsight での Hive の詳細については、[HDInsight ドキュメント センター](../hdinsight-use-hive/)をご覧ください。
+- HTTP/HTTPS を介した SQL Server Analysis Services オブジェクトの登録および検出をサポートします。ユーザーは、サーバー名ではなく URL (https://servername/olap/msmdpump.dll など) を使用して SSAS サーバーに接続できるようになりました。さらに、Windows 認証に加えて、基本認証と匿名接続も使用することができます。SSAS への HTTP/HTTPS 接続の詳細については、「[インターネット インフォメーション サービス (IIS) 8.0 上の Analysis Services への HTTP アクセスの構成](https://msdn.microsoft.com/library/gg492140.aspx)」を参照してください。
+- HDInsight で Hive データ ソースをサポートします。ユーザーは、HDInsight データ ソースにおいて、Hadoop の Apache Hive に対する Hive テーブルを登録および検出できるようになりました。HDInsight での Hive の詳細については、[HDInsight ドキュメント センター](../hdinsight-use-hive/)を参照してください。
 - Oracle データベースと HDFS クラスターをコンテナーとして登録し、検出できるようになりました。Oracle のテーブルとビューまたは HDFS の登録時に、**Azure Data Catalog** はテーブルとビューだけでなく、データベースのエントリも作成します。データベースは、**Azure Data Catalog** ポータルを使用して検出し、注釈を付けることができます。カタログのコンテンツを検索し、フィルター処理するだけでなく、データベースまたはクラスターのコンテンツを検索し、フィルター処理することもできます。
 
 
@@ -90,4 +98,4 @@
 - Standard Edition のみ: データ資産に所有者を追加するときに、**Azure Data Catalog** は所有者としてユーザー アカウントとセキュリティ グループの両方をサポートするようになりました。選択したデータ資産の所有者としてセキュリティ グループを追加する場合、グループの表示名またはグループの UPN 電子メール アドレス (ある場合) のいずれかを入力できます。
 - Azure BLOB ストレージ データ ソースのサポート。ユーザーは、Azure Storage の BLOB およびディレクトリを登録および検出できるようになりました。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

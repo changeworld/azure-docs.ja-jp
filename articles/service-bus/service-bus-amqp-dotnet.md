@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/07/2015"
+   ms.date="10/15/2015"
    ms.author="sethm" />
 
 # AMQP 1.0 で .NET から Service Bus を使用する
@@ -201,4 +201,4 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

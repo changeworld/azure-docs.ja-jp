@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Data Factory SDK を使用して Azure Data Factory を作成、監視、管理する" 
-	description="Data Factory SDK を使用して Azure データ ファクトリをプログラムによって作成、監視、管理する方法について説明します。" 
+	description="Data Factory SDK を使用して Azure Data Factory をプログラムによって作成、監視、管理する方法について説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -378,11 +378,8 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 18. **adftutorial** コンテナーの **apifactoryoutput** フォルダーに出力ファイルが作成されることを確認します。
 
 
-## 関連項目
 
-記事 | 説明
------- | ---------------
-[Azure Data Factory の開発者用リファレンス][developer-reference] | この開発者用リファレンスは、.NET クラス ライブラリ、コマンドレット、JSON スクリプト、関数などの包括的なリファレンス コンテンツです。 
+> [AZURE.NOTE]上記のサンプル コードでは、Azure 資格情報を入力するためのダイアログ ボックスが起動されます。ダイアログ ボックスを使用せずにプログラムでサインインする必要がある場合は、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md#authenticate-service-principal-with-certificate---powershell)」を参照してください。
 
 
 [data-factory-introduction]: data-factory-introduction.md
@@ -395,4 +392,4 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

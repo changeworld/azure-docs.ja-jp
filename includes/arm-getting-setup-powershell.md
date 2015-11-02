@@ -23,20 +23,6 @@ Windows PowerShell Version 3.0 または 4.0 があることを確認します�
 
 **PSVersion** の値が 3.0 または 4.0 であることを確認します。3.0 または 4.0 でない場合は、[Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855) のダウンロード ページを参照してください。
 
-また、Azure PowerShell Version 1.0.0 以降も必要です。Azure PowerShell をまだインストールおよび構成していない場合は、[こちら](powershell-install-configure.md)で手順を参照してください。
-
-インストールした Azure PowerShell のバージョンは、Azure PowerShell コマンド プロンプトで次のコマンドを使用して確認できます。
-
-	Get-Module azure | format-table version
-
-次の種類の情報が表示されます。
-
-	Version
-	-------
-	1.0.0
-
-1\.0.0 以降でない場合は、コントロール パネルの [プログラムと機能] を使用して Azure PowerShell を削除してから、最新バージョンをインストールする必要があります。詳細については、[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)に関するページを参照してください。
-
 ### Azure アカウントとサブスクリプションを設定する
 
 Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
@@ -69,4 +55,4 @@ Azure PowerShell コマンド プロンプトで次のコマンドを実行し�
 
 Azure サブスクリプションとアカウントの詳細については、[サブスクリプションへの接続方法](powershell-install-configure.md#Connect)に関するトピックを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

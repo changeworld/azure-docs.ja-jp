@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/09/2015"
+	ms.date="10/20/2015"
 	ms.author="larryfr"/>
 
 # HDInsight Hadoop クラスターに R をインストールして使用する
@@ -62,7 +62,7 @@ HDInsight クラスターへの R のインストールには、[https://hdiconf
 
 > [AZURE.NOTE]Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
 
-1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
+1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
 
 2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下の情報を指定します。
 
@@ -75,7 +75,7 @@ HDInsight クラスターへの R のインストールには、[https://hdiconf
 
 3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
 
-4. 「[Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-provision-linux-clusters.md#portal)」の説明に従って、クラスターのプロビジョニングを続行します。
+4. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md#portal)に関するページの説明に従って、クラスターのプロビジョニングを続行します。
 
 ## R スクリプトの実行
 
@@ -148,4 +148,4 @@ HDInsight クラスターへの R のインストールには、[https://hdiconf
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -3,7 +3,7 @@
     description="この記事では、Azure Search インデクサーとデータ ソースとして DocumentDB を使用する方法を説明します。"
     services="documentdb" 
     documentationCenter="" 
-    authors="aliuy" 
+    authors="AndrewHoh" 
     manager="jhubbard" 
     editor="mimig"/>
 
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="NA" 
     ms.workload="data-services" 
     ms.date="06/16/2015" 
-    ms.author="andrl"/>
+    ms.author="anhoh"/>
 
 #インデクサーを使用した DocumentDB と Azure Search の接続
 
@@ -270,4 +270,4 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
  - Azure Search の詳細については、[ここ](/services/search/)をクリックしてください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

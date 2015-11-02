@@ -76,7 +76,7 @@ Azure Automation DSC では、Azure Automation での DSC 構成のインポー�
 
 ###ノード構成###
 
-DSC 構成がコンパイルされると、構成内のノード ブロックに応じて、1 つ以上のノード構成が生成されます。ノード構成は「MOF」、つまり「構成ドキュメント」と同じで (これらの PS DSC 利用規約をよく理解している場合)、Web サーバーや worker などの「ロール」(必要な状態を 1 つ以上のノードが想定する必要がある) を示します。Azure Automation DSC でのノード構成の名前は、“<Configuration-name>.<Node configuration-block-name>” という形式です。
+DSC 構成がコンパイルされると、構成内のノード ブロックに応じて、1 つ以上のノード構成が生成されます。ノード構成は「MOF」、つまり「構成ドキュメント」と同じで (これらの PS DSC 利用規約をよく理解している場合)、Web サーバーや worker などの「ロール」(必要な状態を 1 つ以上のノードが想定する必要がある) を示します。Azure Automation DSC でのノード構成の名前は、“Configuration Name.NodeConfigurationBlockName” という形式です。
 
 PS DSC ノードは、DSC プッシュまたはプル メソッドのいずれかを使用して制定する必要があるノード構成を認識するようになります。Azure Automation DSC は、Azure Automation DSC プル サーバーから適用する必要があるノード構成をノードが要求する DSC プル方式に依存します。ノードは Azure Automation DSC に対して要求を行うため、ファイアウォールの内側に配置したり、受信ポートをすべて閉じたりすることができます。これらに必要なのは、インターネットへの発信アクセスのみです。
 
@@ -97,7 +97,7 @@ Azure Automation DSC には、PS DSC と同じ組み込み DSC リソースが�
 
 
 ###コンパイル ジョブ###
-Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード構成を作成するための構成のコンパイルのインスタンスです。Azure Automation Runbook ジョブに似ていますが、ノード構成を作成する場合を除き、タスクを実際に実行しないという点が異なります。コンパイル ジョブによって作成されたノード構成は、Azure Automation DSC プル サーバーに自動的に配置され、以前のバージョンのノード構成は、この構成のために存在している場合、上書きされます。コンパイル ジョブによって生成されたノード構成の名前には、"<Configuration-name>.<Node configuration-block-name>" という形式を使用します。たとえば、以下の構成をコンパイルすると、"MyConfiguration.webserver" という単一のノード構成が生成されます。
+Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード構成を作成するための構成のコンパイルのインスタンスです。Azure Automation Runbook ジョブに似ていますが、ノード構成を作成する場合を除き、タスクを実際に実行しないという点が異なります。コンパイル ジョブによって作成されたノード構成は、Azure Automation DSC プル サーバーに自動的に配置され、以前のバージョンのノード構成は、この構成のために存在している場合、上書きされます。コンパイル ジョブによって生成されたノード構成の名前には、"ConfigurationName.NodeConfigurationBlockName" という形式を使用します。たとえば、以下の構成をコンパイルすると、"MyConfiguration.webserver" という単一のノード構成が生成されます。
 
 
 ![alt text](./media/automation-dsc-overview/AADSC_5.png)
@@ -121,7 +121,7 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - 現時点では、Azure Automation DSC では部分的または複合 DSC 構成はサポートされていません。
 
-- Windows 用 PowerShell DSC エージェントを Azure Automation と通信できるようにするには、最新バージョンの WMF 5 をインストールする必要があります。現時点では、Linux 用 PowerShell DSC エージェントでは Azure Automation との通信はサポートされていません。at this time.これはすぐに更新する必要があります。
+- Windows 用 PowerShell DSC エージェントを Azure Automation と通信できるようにするには、最新バージョンの WMF 5 をインストールする必要があります。Linux を Azure Automation と通信できるようにするには、最新バージョンの Linux 用 PowerShell DSC エージェントをインストールする必要があります。
 
 - Azure Automation では、複数の PowerShell モジュールを同時に使用することはできません。つまり、Automation アカウント内のすべての構成では、その Automation アカウントにインポートされた最新バージョンの PowerShell モジュールと、構成で使用されるモジュールに含まれる PowerShell DSC リソースを使用する必要があります。
 
@@ -145,4 +145,4 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 - [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](http://azure.microsoft.com/pricing/details/automation/)
 - [Azure Automation DSC と Chocolatey を使用した IaaS VM への継続的なデプロイ](automation-dsc-cd-chocolatey.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

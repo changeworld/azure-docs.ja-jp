@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/09/2015"
+   ms.date="10/15/2015"
    ms.author="jgao"/>
 
 #Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続
@@ -31,21 +31,21 @@ Microsoft のビッグ データ ソリューションでは、Azure HDInsight �
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-- **HDInsight クラスター**。その構成方法については、「[Azure HDInsight の概要][hdinsight-get-started]」を参照してください。
+- **HDInsight クラスター**。その作成方法については、「[Azure HDInsight の概要][hdinsight-get-started]」を参照してください。
 - Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone、または Office 2010 Professional Plus がインストールされた**ワークステーション**。
 
 
-##<a id="InstallHiveODBCDriver"></a>Microsoft Hive ODBC ドライバーのインストール
+##Microsoft Hive ODBC ドライバーのインストール
 
 Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-odbc-driver-download]からダウンロードしてインストールします。
 
-このドライバーは Windows 7、Windows 8、Windows Server 2008 R2、Windows Server 2012 のいずれかの 32 ビットまたは 64 ビット バージョンにインストールすることができ、これによって Azure HDInsight (バージョン 1.6 以降) および Azure HDInsight Emulator (v.1.0.0.0 以降) への接続が許可されます。ODBC ドライバーを使用するアプリケーションのバージョンに合致したバージョンをインストールする必要があります。このチュートリアルでは、Office Excel のドライバーが使用されます。
+このドライバーは Windows 7、Windows 8、Windows 10、Windows Server 2008 R2、Windows Server 2012 のいずれかの 32 ビットまたは 64 ビット バージョンにインストールすることができ、これによって Azure HDInsight (バージョン 1.6 以降) および Azure HDInsight Emulator (v.1.0.0.0 以降) への接続が許可されます。ODBC ドライバーを使用するアプリケーションのバージョンに合致したバージョンをインストールする必要があります。このチュートリアルでは、Office Excel のドライバーが使用されます。
 
-##<a id="CreateHiveODBCDataSource"></a>Hive ODBC データ ソースの作成
+##Hive ODBC データ ソースの作成
 
 次の手順に従って、Hive ODBC データ ソースを作成します。
 
-1. Windows 8 で、Windows キーを押してスタート画面を開き、**データ ソース**を入力します。
+1. Windows 8 または Windows 10 で、Windows キーを押してスタート画面を開き、**データ ソース**を入力します。
 2. 使用している Office バージョンに応じて、**[ODBC データ ソースのセットアップ (32 ビット)]** または **[ODBC データ ソースのセットアップ (64 ビット)]** をクリックします。Windows 7 を使用している場合は、**[管理ツール]** の **[ODBC データ ソース (32 ビット)]** または **[ODBC データ ソース (64 ビット)]** をクリックします。**[ODBC データ ソース アドミニストレーター]** ダイアログが開きます。
 
 	![ODBC データ ソース アドミニストレーター][img-hdi-simbahiveodbc-datasource-admin]
@@ -83,7 +83,7 @@ HTTP パス|空白のままにします。
 7. **[OK]** をクリックして [テスト] ダイアログを閉じます。これで新しいデータ ソースが **[ODBC データ ソース アドミニストレーター]** ダイアログに表示されます。
 8. **[OK]** をクリックしてウィザードを終了します。
 
-##<a id="ImportData"></a>HDInsight クラスターから Excel へのデータのインポート
+##HDInsight クラスターから Excel へのデータのインポート
 
 ここでは、上記の手順で作成した ODBC データ ソースを使用して、Hive テーブルから Excel ブックへデータをインポートする方法を説明します。
 
@@ -108,7 +108,7 @@ HTTP パス|空白のままにします。
 12. **[OK]** をクリックして **[データのインポート]** ダイアログを閉じます。  
 13. パスワードを再入力して **[OK]** をクリックします。データが Excel にインポートされるまでに、数秒かかります。
 
-##<a id="nextsteps"></a>次のステップ
+##次のステップ
 
 この記事では、Microsoft Hive ODBC ドライバーを使用して HDInsight サービスから Excel にデータを取得する方法を学習しました。同様に、SQL Database に HDInsight サービスからデータを取得することもできます。また、HDInsight サービスにデータをアップロードすることもできます。詳細については、次を参照してください。
 
@@ -131,4 +131,4 @@ HTTP パス|空白のままにします。
 [img-hdi-simbahiveodbc-excel-connectionproperties]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveODBC.Excel.ConnectionProperties1.png
 [img-hdi-simbahiveodbc.excel.dataconnection]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveOdbc.Excel.DataConnection1.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Azure App Service Web Apps での PHP の構成方法"
 	description="Azure App Service の Web Apps 用に既定の PHP インストールを構成する方法、またはカスタム PHP インストールを追加する方法を説明します。"
-	services="app-service\web"
+	services="app-service"
 	documentationCenter="php"
 	authors="tfitzmac"
 	manager="wpickett"
@@ -182,4 +182,4 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

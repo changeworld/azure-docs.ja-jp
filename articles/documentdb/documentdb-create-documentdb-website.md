@@ -2,7 +2,7 @@
 	pageTitle="Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ | Microsoft Azure" 
 	description="Azure リソース マネージャーのテンプレートを使用して DocumentDB アカウント、Azure App Service Web Apps、サンプルの Web アプリケーションをデプロイする方法を説明します。" 
 	services="documentdb, app-service\web" 
-	authors="stephbaron" 
+	authors="ryancrawcour" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=""/>
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/28/2015" 
-	ms.author="stbaro"/>
+	ms.date="10/16/2015" 
+	ms.author="ryancraw"/>
 
 # Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ #
 
@@ -33,7 +33,7 @@
 
 - Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](http://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 - Azure ストレージ アカウント。詳細については、「[Azure ストレージ アカウントについて](../storage-whatis-account.md)」を参照してください
-- Azure PowerShell を実行できるワークステーション。手順については、[Azure PowerShell のインストールおよび構成に関するページ](../install-configure-powershell.md)を参照してください。
+- Azure PowerShell 0.9.8 を実行できるワークステーション。手順については、[Azure PowerShell のインストールおよび構成に関するページ](../install-configure-powershell.md)を参照してください。Azure PowerShell 1.0 プレビューについては、このチュートリアルはまだ更新されていません。 
 
 ##<a id="CreateDB"></a>手順 1: サンプル ファイルのダウンロードと抽出 ##
 このチュートリアルで使用するサンプル ファイルをダウンロードすることから始めましょう。
@@ -210,4 +210,4 @@
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

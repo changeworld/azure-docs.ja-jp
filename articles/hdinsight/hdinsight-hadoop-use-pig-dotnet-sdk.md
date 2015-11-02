@@ -43,7 +43,7 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 
 この方法に関する手順については、「[自己署名証明書の作成](http://go.microsoft.com/fwlink/?LinkId=511138)」をご覧ください。
 
-> [AZURE.NOTE] 後で使用するため、証明書にはわかりやすい名前を付けてください。
+> [AZURE.NOTE]後で使用するため、証明書にはわかりやすい名前を付けてください。
 
 ##<a id="subscriptionid"></a>サブスクリプション ID の検索
 
@@ -158,4 +158,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 [preview-portal]: https://portal.azure.com/
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

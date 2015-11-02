@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="cloud-services"
+   ms.service="multiple"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -52,4 +52,4 @@ CPIF は、組織、顧客、パートナー向けに、Azure、System Center、
 
 [Azure Search 層](https://gallery.technet.microsoft.com/Cloud-Platform-Integration-e581d65d)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

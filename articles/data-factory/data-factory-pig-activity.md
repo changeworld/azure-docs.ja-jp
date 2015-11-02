@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/26/2015" 
+	ms.date="10/20/2015" 
 	ms.author="spelluru"/>
 
 # Pig アクティビティ
@@ -191,4 +191,4 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-pig-activity.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

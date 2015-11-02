@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Hive と HiveQL の使用方法の説明 |Microsoft Azure"
 	description="Apache Hive と HDInsight での Hadoop との使用方法について説明します。Hive ジョブを実行し、HiveQL を使用して Apache log4j サンプル ファイルを分析する方法を選択します。"
-	keywords="hiveql,what is hive"
+	keywords="hiveql、hive とは"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -132,7 +132,7 @@ SQL Server Integration Services (SSIS) を利用して Hive ジョブを実行�
 - [Azure サブスクリプション接続マネージャー][connectionmanager]
 
 
-Azure Feature Pack for SSIS の詳細については、[ここ][ssispack]を参照してください。
+Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を参照してください。
 
 
 ##<a id="nextsteps"></a>次のステップ
@@ -159,9 +159,9 @@ Azure Feature Pack for SSIS の詳細については、[ここ][ssispack]を参�
 [apache-log4j]: http://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
 [import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-[hivetask]: http://msdn.microsoft.com/ja-jp/library/mt146771(v=sql.120).aspx
-[connectionmanager]: http://msdn.microsoft.com/ja-jp/library/mt146773(v=sql.120).aspx
-[ssispack]: http://msdn.microsoft.com/ja-jp/library/mt146770(v=sql.120).aspx
+[hivetask]: http://msdn.microsoft.com/ja-JP/library/mt146771(v=sql.120).aspx
+[connectionmanager]: http://msdn.microsoft.com/ja-JP/library/mt146773(v=sql.120).aspx
+[ssispack]: http://msdn.microsoft.com/ja-JP/library/mt146770(v=sql.120).aspx
 
 [hdinsight-use-pig]: hdinsight-use-pig.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -183,4 +183,4 @@ Azure Feature Pack for SSIS の詳細については、[ここ][ssispack]を参�
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

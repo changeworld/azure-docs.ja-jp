@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="10/16/2015"
    ms.author="larryfr"/>
 
 #PowerShell を使用した Pig ジョブの実行
@@ -40,27 +40,39 @@ Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行で
 
 リモート HDInsight クラスターで Pig ジョブを実行するときに次のコマンドレットを使用します。
 
-* **Add-AzureAccount**: Azure サブスクリプションに対して Azure PowerShell を認証します。
+* **Login-AzureRmAccount**: Azure サブスクリプションに対して Azure PowerShell を認証します。
 
-* **New-AzureHDInsightPigJobDefinition**: 指定された Pig Latin ステートメントを使用して新しい*ジョブ定義*を作成します。
+* **New-AzureRmHDInsightPigJobDefinition**: 指定された Pig Latin ステートメントを使用して、新しい*ジョブ定義*を作成します。
 
-* **Start-AzureHDInsightJob**: ジョブ定義を HDInsight に送信し、ジョブを開始して、ジョブのステータスの確認に使用できる*ジョブ* オブジェクトを返します。
+* **Start-AzureRmHDInsightJob**: ジョブ定義を HDInsight に送信し、ジョブを開始して、ジョブのステータスの確認に使用できる*ジョブ* オブジェクトを返します。
 
-* **Wait-AzureHDInsightJob**: ジョブ オブジェクトを使用して、ジョブのステータスを確認します。ジョブの完了を待機するか、待機時間が上限に達します。
+* **Wait-AzureRmHDInsightJob**: ジョブ オブジェクトを使用して、ジョブのステータスを確認します。ジョブの完了を待機するか、待機時間が上限に達します。
 
-* **Get-AzureHDInsightJobOutput**: ジョブの出力を取得します。
+* **Get-AzureRmHDInsightJobOutput**: ジョブの出力を取得する場合に使用します。
 
 これらのコマンドレットを使用して、HDInsight クラスターでジョブを実行するための手順を以下に示します。
 
 1. エディターを使用して、次のコードを **pigjob.ps1** として保存します。**CLUSTERNAME** を HDInsight クラスターの名前に置き換えます。
 
 		#Login to your Azure subscription
-		Add-AzureAccount
+		Login-AzureRmAccount
+        #Get credentials for the admin/HTTPs account
+        $creds=Get-Credential
 
 		#Specify the cluster name
 		$clusterName = "CLUSTERNAME"
 		#Where the output will be saved
 		$statusFolder = "/tutorial/pig/status"
+        
+        #Get the cluster info so we can get the resource group, storage, etc.
+        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+        $resourceGroup = $clusterInfo.ResourceGroup
+        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
+        $container=$clusterInfo.DefaultStorageContainer
+        $storageAccountKey=Get-AzureRmStorageAccountKey `
+            -Name $storageAccountName `
+            -ResourceGroupName $resourceGroup `
+            | %{ $_.Key1 }
 
 		#Store the Pig Latin into $QueryString
 		$QueryString =  "LOGS = LOAD 'wasb:///example/data/sample.log';" +
@@ -72,50 +84,62 @@ Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行で
 		"DUMP RESULT;"
 
 		#Create a new HDInsight Pig Job definition
-		$pigJobDefinition = New-AzureHDInsightPigJobDefinition -Query $QueryString -StatusFolder $statusFolder
+		$pigJobDefinition = New-AzureRmHDInsightPigJobDefinition `
+            -Query $QueryString `
 
 		# Start the Pig job on the HDInsight cluster
 		Write-Host "Start the Pig job ..." -ForegroundColor Green
-		$pigJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $pigJobDefinition
+		$pigJob = Start-AzureRmHDInsightJob `
+            -ClusterName $clusterName `
+            -JobDefinition $pigJobDefinition `
+            -ClusterCredential $creds
 
 		# Wait for the Pig job to complete
 		Write-Host "Wait for the Pig job to complete ..." -ForegroundColor Green
-		Wait-AzureHDInsightJob -Job $pigJob -WaitTimeoutInSeconds 3600
+		Wait-AzureRmHDInsightJob `
+            -ClusterName $clusterName `
+            -JobId $pigJob.JobId `
+            -HttpCredential $creds
 
-		# Print the output of the Pig job.
+		# Display the output of the Pig job.
 		Write-Host "Display the standard output ..." -ForegroundColor Green
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $pigJob.JobId -StandardOutput
+		Get-AzureRmHDInsightJobOutput `
+            -ClusterName $clusterName `
+            -JobId $pigJob.JobId `
+            -DefaultContainer $container `
+            -DefaultStorageAccountName $storageAccountName `
+            -DefaultStorageAccountKey $storageAccountKey `
+            -HttpCredential $creds
 
 2. Azure PowerShell コマンド プロンプトを開きます。ディレクトリを **pigjob.ps1** ファイルの場所に変更し、次のコマンドを使用してスクリプトを実行します。
 
 		.\pigjob.ps1
+        
+    最初に、Azure サブスクリプションへのログインが求められます。次に、HDInsight クラスターの HTTPS/管理者アカウント名とパスワードの入力が求められます。
 
 7. ジョブが完了すると、次のような情報が返されます。
 
 		Start the Pig job ...
 		Wait for the Pig job to complete ...
 
-		Cluster         : CLUSTERNAME
-		ExitCode        : 0
-		Name            :
-		PercentComplete : 100% complete
-		Query           : LOGS = LOAD 'wasb:///example/data/sample.log';LEVELS = foreach LOGS generate REGEX_EXTRACT($0,
-			'(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is
-			not null;GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;FREQUENCIES = foreach GROUPEDLEVELS
-			generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;RESULT = order FREQUENCIES by
-			COUNT desc;DUMP RESULT;
-			State           : Completed
-			StatusDirectory : /tutorial/pig/status
-			SubmissionTime  : 11/20/2014 4:04:58 PM
-			JobId           : job_1415949758166_0023
-
-			Display the standard output ...
-			(TRACE,816)
-			(DEBUG,434)
-			(INFO,96)
-			(WARN,11)
-			(ERROR,6)
-			(FATAL,2)
+		Cluster         : CLUSTERNAME.
+        HttpEndpoint    : CLUSTERNAME.azurehdinsight.net
+        State           : SUCCEEDED
+        JobId           : job_1444852971289_0018
+        ParentId        :
+        PercentComplete : 100% complete
+        ExitValue       : 0
+        User            : admin
+        Callback        :
+        Completed       : done
+        
+        Display the standard output ...
+        (TRACE,816)
+        (DEBUG,434)
+        (INFO,96)
+        (WARN,11)
+        (ERROR,6)
+        (FATAL,2)
 
 ##<a id="troubleshooting"></a>トラブルシューティング
 
@@ -123,7 +147,14 @@ Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行で
 
 	# Print the output of the Pig job.
 	Write-Host "Display the standard output ..." -ForegroundColor Green
-	Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $pigJob.JobId -StandardError
+    Get-AzureRmHDInsightJobOutput `
+            -Clustername $clusterName `
+            -JobId $pigJob.JobId `
+            -DefaultContainer $container `
+            -DefaultStorageAccountName $storageAccountName `
+            -DefaultStorageAccountKey $storageAccountKey `
+            -HttpCredential $creds
+            -DisplayOutputType StandardError
 
 これにより、ジョブの実行時にサーバー上の STDERR に書き込まれた情報が返されるため、ジョブ失敗の特定に役立ちます。
 
@@ -143,4 +174,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

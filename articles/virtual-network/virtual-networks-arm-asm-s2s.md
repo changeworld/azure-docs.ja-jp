@@ -272,9 +272,9 @@ ARM VNet (vnet02) 用に作成されたゲートウェイの IP アドレスが�
 
 4. ダウンロードしたファイルを開き、上記の手順 1 で取得した新しい VNet 用のゲートウェイの IP アドレスが追加されるように、**vnet02** の **LocalNetworkSite** 要素を編集します。この要素は、次の例のように表示されます。
 
-	      <LocalNetworkSite name="vnet03">
+	      <LocalNetworkSite name="vnet02">
 	        <AddressSpace>
-	          <AddressPrefix>10.3.0.0/16</AddressPrefix>
+	          <AddressPrefix>10.2.0.0/16</AddressPrefix>
 	        </AddressSpace>
 	        <VPNGatewayAddress>23.99.213.28</VPNGatewayAddress>
 	      </LocalNetworkSite>
@@ -363,4 +363,4 @@ ARM VNet (vnet02) 用に作成されたゲートウェイの IP アドレスが�
 - [ネットワーク リソース プロバイダー](../resource-groups-networking.md)についてさらに学習できます。
 - [create a S2S VPN connection between a classic VNet and an ARM VNet (従来の VNet と ARM VNet の間の S2S VPN 接続を作成する)](../virtual-networks-arm-asm-s2s-howto.md) 方法に関する一般的なガイドラインを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->
