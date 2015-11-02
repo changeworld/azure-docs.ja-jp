@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Script Action を使用して Hadoop クラスターに Spark をインストールする | Microsoft Azure" 
-	description="Spark を使用して HDInsight クラスターをカスタマイズする方法について説明します。Spark をインストールするスクリプトを使用するために、Script Action の構成オプションを使用します。" 
+	pageTitle="スクリプト アクションを使用した Linux ベースの HDInsight (Hadoop) での Apache Spark のインストール | Microsoft Azure" 
+	description="スクリプト アクションを使用して Linux ベースの HDInsight クラスターに Spark をインストールする方法について説明します。スクリプト アクションでは、クラスター構成を変更するか、サービスとユーティリティをインストールすることで、クラスターを作成時にカスタマイズできます。" 
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="Blackmist" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/01/2015" 
+	ms.date="10/19/2015" 
 	ms.author="larryfr"/>
 
 # HDInsight Hadoop クラスターで Spark をインストールして使用する
@@ -40,26 +40,30 @@ Spark を使用して、従来のディスク ベースのデータ処理を実�
 
 このスクリプトでは、`/usr/hdp/current/spark` に Spark バージョン 1.5.1 をインストールします。
 
+> [AZURE.WARNING]HDInsight クラスターに既定でいくつかの Spark 1.3.1 バイナリがインストールされている場合があります。これらは使用しないでください。今後の更新プログラムで HDInsight クラスターのイメージから削除される予定です。
+
 ## <a name="install"></a>スクリプト アクションを使用した Spark のインストール
 
 HDInsight クラスターに Spark をインストールするためのサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh](https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh) の読み取り専用の Azure ストレージ BLOB から入手できます。このセクションでは、Azure ポータルを使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE]Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+> [AZURE.NOTE]Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の使用の詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 1. [Linux ベースの HDInsight クラスターの作成](hdinsight-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターの作成を開始します。ただし、作成を完了しないでください。
 
 2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下の情報を指定します。
 
-	* __[名前]__: スクリプト アクションの表示名を入力します。
+	* __[名前]__: スクリプト アクションのわかりやすい名前を入力します。
 	* __[スクリプト URI]__: https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh
 	* __[ヘッド]__: このオプションをオンにします。
-	* __[ワーカー]__: このオプションをオンにします。
-	* __[Zookeeper]__: Zookeeper ノードにインストールするには、このオプションをオンにします。
+	* __[worker]__: このオプションをオフにします。
+	* __[ZooKeeper]__: このオプションをオフにします。
 	* __[パラメーター]__: このフィールドは空のままにします。
+    
+    > [AZURE.NOTE]Spark スクリプトの例では、コンポーネントをヘッド ノードにのみインストールしているため、他のノードの種類をオフにすることができます。
 
-3. 下部にある **[スクリプト アクション]** で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** ボタンを使用し、オプションの構成情報を保存します。
+3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
 
-4. 「[Linux ベースの HDInsight クラスターの作成](hdinsight-provision-linux-clusters.md#portal)」の説明に従って、クラスターのプロビジョニングを続行します。
+4. [Linux ベースの HDInsight クラスターの作成](hdinsight-provision-linux-clusters.md#portal)に関するページの説明に従って、クラスターのプロビジョニングを続行します。
 
 ## <a name="usespark"></a>HDInsight で Spark を使用する方法
 
@@ -130,9 +134,9 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 
 6. 出力次のように表示されます。
 
-		[820,11:35:17,ja-jp,Android,HTC,Inspire 4G,Louisiana,UnitedStates, 2.7383836,0,1]
-		[1055,17:24:08,ja-jp,Android,HTC,Incredible,Ohio,United States,18.0894738,0,0]
-		[1067,03:42:29,ja-jp,Windows Phone,HTC,HD7,District Of Columbia,United States,null,0,0]
+		[820,11:35:17,ja-JP,Android,HTC,Inspire 4G,Louisiana,UnitedStates, 2.7383836,0,1]
+		[1055,17:24:08,ja-JP,Android,HTC,Incredible,Ohio,United States,18.0894738,0,0]
+		[1067,03:42:29,ja-JP,Windows Phone,HTC,HD7,District Of Columbia,United States,null,0,0]
 
 7. :q を入力して、Scala プロンプトを終了します。
 
@@ -174,7 +178,7 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 	
 	__Ctrl + X__ キーを押した後、__Y__ キーと __Enter__ キーを押してファイルを保存します。
 
-4. 次のコマンドを使用して、__SimpleScalaApp/src/main/scala__ ディレクトリに、__SimpleApp.scala__ という名前の新しいファイルを作成します。
+4. 次のコマンドを使用して、__SimpleScalaApp/src/main/scala__ ディレクトリに __SimpleApp.scala__ という名前の新しいファイルを作成します。
 
 		nano src/main/scala/SimpleApp.scala
 
@@ -197,9 +201,9 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 		  }
 		}
 
-	__Ctrl + X__ キーを押した後、__Y__ キーと __Enter__ キーを押してファイルを保存します。
+	__Ctrl + X__ キーを押してから、__Y__ キーと __Enter__ キーを押してファイルを保存します。
 
-5. __SimpleScalaApp__ ディレクトリで次のコマンドを使用し、アプリケーションをビルドして jar ファイルに保存します。
+5. __SimpleScalaApp__ ディレクトリで次のコマンドを使用し、アプリケーションをビルドして jar ファイルに格納します。
 
 		sbt package
 
@@ -234,4 +238,4 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 [powershell-install-configure]: ../install-configure-powershell.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

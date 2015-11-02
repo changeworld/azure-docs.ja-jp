@@ -1,6 +1,6 @@
 <properties
-	pageTitle="プログラムで Hadoop YARN アプリケーション ログにアクセスする| Microsoft Azure"
-	description="HDInsight の Hadoop クラスター上のアプリケーション ログにプログラムを使用してアクセスします。"
+	pageTitle="Linux ベースの HDInsight での Hadoop YARN アプリケーション ログへのアクセス | Microsoft Azure"
+	description="コマンドラインと Web ブラウザーの両方を使用して、Linux ベース HDInsight (Hadoop) クラスターで YARN アプリケーション ログにアクセスする方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
 	tags="azure-portal"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/09/2015"
+	ms.date="10/19/2015"
 	ms.author="larryfr"/>
 
 # Linux ベースの HDInsight での YARN アプリケーション ログへのアクセス
@@ -96,4 +96,4 @@ SSH トンネルを作成したら、次の手順に従って YARN のログを�
 [binary-format]: https://issues.apache.org/jira/browse/HADOOP-3315
 [YARN-concepts]: http://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

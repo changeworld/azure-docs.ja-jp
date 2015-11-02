@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/12/2015"
+	ms.date="10/16/2015"
 	ms.author="maheshu"/>
 
 # Azure AD Domain Services *(プレビュー)* - 作業の開始
@@ -55,6 +55,18 @@ Azure AD Connect の GA リリースを、ドメイン参加コンピュータ�
 Azure AD Connect のインストール手順については、次の記事を参照してください。 - [ の概要](../active-directory/active-directory-aadconnect.md)
 
 
+#### Azure AD への従来の資格情報の同期を有効にする
+
+Azure AD Domain Services での NTLM 認証に必要な従来の資格情報の同期を有効にします。そのためには、Azure AD Connect がインストールされているコンピューターで次のレジストリ キーを作成します。
+
+次の DWORD レジストリ キーを作成し、1 に設定します。
+
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSOLCoExistence\PasswordSync\EnableWindowsLegacyCredentialsSync
+
+Set its value to 1.
+```
+
 #### Azure AD へのパスワードの完全同期を強制する
 
 パスワードの完全同期を強制し、オンプレミスの全ユーザーの (NTLM/Kerberos 認証で必要な資格情報のハッシュを含む) パスワード ハッシュが Azure AD テナントと同期できるようにするには、各 AD フォレストで、次の PowerShell スクリプトを実行します。
@@ -75,4 +87,4 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 ディレクトリのサイズ (ユーザーやグループの数など) によっては、Azure AD と Azure AD Domain Services で資格情報が同期されるまで時間がかかります。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -40,7 +40,7 @@
 
 6. **[イベント]** を選択することもできます。この場合は、特定のイベントが発生すると通知を受け取ります。![イベント](./media/insights-receive-alert-notifications/Insights_Events.png)
     
->[AZURE.NOTE]現時点では、[イベント] は Web アプリでのみサポートされています。
+>[AZURE.NOTE]現時点では、[イベント] は Web Apps でのみサポートされています。
 
 7. 最後に、担当の管理者にメール通知を送信できます。
 
@@ -57,6 +57,7 @@
 
 ## 次のステップ
 
+* [アラートに Webhook を構成して](insights-webhooks-alerts.md)多様なチャネルに通知をルーティングする
 * [サービス メトリックスを監視](insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
 * [監視と診断を有効](insights-how-to-use-diagnostics.md)にしてサービスに関する詳細な頻度の高いメトリックを収集します。
 * Application Insights で [Web ページの可用性と応答性を監視](../app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
@@ -65,4 +66,4 @@
 * [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

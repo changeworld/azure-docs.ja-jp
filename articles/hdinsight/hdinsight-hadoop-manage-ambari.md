@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="10/20/2015"
    ms.author="larryfr"/>
 
 #Ambari を使用した HDInsight クラスターの管理 (プレビュー)
@@ -28,6 +28,10 @@ Ambari を使用して Linux ベースの Azure HDInsight クラスターを管�
 <a href="http://ambari.apache.org" target="_blank">Apache Ambari</a> は、Hadoop クラスターのプロビジョニング、管理、監視に使用する Web UI を簡単に使用できる方法を提供することで Hadoop の管理を簡略化します。開発者は、<a href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md" target="_blank">Ambari REST API</a> を使用して、これらの機能をアプリケーションに統合することができます。
 
 Ambari は既定で Linux ベースの HDInsight クラスターに付属しています。Windows ベースの HDInsight クラスターには、Ambari REST API を介した監視機能が用意されています。
+
+##接続
+
+HDInsight クラスターの Ambari への接続には、HTTPS を使用する必要があります。クラスターの作成時に指定した管理者アカウント名 (既定値は __admin__) とパスワードを使用して、Ambari を認証する必要もあります。
 
 ##SSH プロキシ
 
@@ -228,4 +232,4 @@ Ambari Web は基になる REST API に依存します。この REST API を活�
 
 REST API の完全なリファレンスについては、「[Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.date="10/16/2015" 
 	ms.author="robb"/>
 
 #Microsoft Azure のアプリケーションのアーキテクチャ
@@ -44,7 +44,7 @@ Microsoft は、お客様独自の設計を作成するのに便利な一連の�
 ##設計パターンのポスター
 Microsoft Patterns and Practices は、MSDN と PDF ダウンロードの両方で利用可能な書籍「[クラウド設計パターン](http://msdn.microsoft.com/library/dn568099.aspx)」を発行しました。すべてのパターンを一覧表示する大型のポスターもあります。
 
-![Patterns and Practices Cloud Patterns Poster](./media/architecture-overview/PnPPatternPosterThumb.jpg)
+![パターンとプラクティス クラウド パターンのポスター](./media/architecture-overview/PnPPatternPosterThumb.jpg)
 
 
 
@@ -67,7 +67,7 @@ Microsoft は、Microsoft 製品を使用する特定の種類のシステム構
 
 ブループリントには、[クラウドおよびエンタープライズ用シンボル セット](#symbol-and-icon-sets)が使用されています。
 
-![Microsoft Architecture Blueprint 3D diagram](./media/architecture-overview/BluePrintThumb.jpg)
+![[Microsoft アーキテクチャ ブループリント 3D] ダイアグラム](./media/architecture-overview/BluePrintThumb.jpg)
 
 
 
@@ -95,7 +95,7 @@ CnE シンボルは、Visio 形式と PNG 形式で提供されます。セッ�
 
 シンボル セットは四半期に 1 回発行され、新しいサービスがリリースされるたびに更新されます。
 
-CnE セットのようにアーキテクチャ ダイアグラム向けに最適化されてはいませんが、[Microsoft Office Visio ステンシル](http://www.microsoft.com/JA-JP/download/details.aspx?id=35772)で、Microsoft Office と関連テクノロジの追加のシンボルを入手できます。
+CnE セットのようにアーキテクチャ ダイアグラム向けに最適化されてはいませんが、[Microsoft Office Visio ステンシル](http://www.microsoft.com/ja-JP/download/details.aspx?id=35772)で、Microsoft Office と関連テクノロジの追加のシンボルを入手できます。
 
 **フィードバック:** CnE シンボルを使用した場合は、簡単な 5 つの質問の[アンケート](http://aka.ms/azuresymbolssurveyv2)にご記入いただくか、[CnESymbols@microsoft.com](mailto:CnESymbols@microsoft.com) 宛てに具体的な質問や課題をお送りください。ご意見、ご感想をお寄せください。この機能を継続的に改善できるよう、役立てたいと考えております。
 
@@ -108,4 +108,4 @@ Microsoft は、ポスター/インフォグラフィックに関連するいく
 
 ![Azure Architecture Infographics](./media/architecture-overview/AzureArchInfographicThumb.jpg)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -132,7 +132,7 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
 
 ただし、Azure Key Vault にアップロードする softkey.pem という名前の、ローカル ファイルとして保存された .pem ファイル内に既存のキーがある場合には、キーを .PEM ファイルからインポートするために次のコマンドを入力します。これにより Key Vault サービスでソフトウェアによりキーが保護されます。
 
-    azure keyvault key import --vaultName 'ContosoKeyVault' --key-name 'ContosoFirstKey' --pem-file './softkey.pem' –-password 'PaSSWORD' --destination software
+    azure keyvault key import --vaultName 'ContosoKeyVault' --key-name 'ContosoFirstKey' --pem-file './softkey.pem' --password 'PaSSWORD' --destination software
 
 作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。常に現在のバージョンを取得するには ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、この特定バージョンを取得するには ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** を使用します。
 
@@ -145,7 +145,7 @@ Azure Key Vault に追加したパスワードは、その URI を使用する�
 作成したキーやシークレットを表示してみましょう。
 
 - キーを表示するには、次のように入力します。`azure keyvault key list --vault-name 'ContosoKeyVault'`
-- シークレットを表示するには、次のように入力します。`azure keyvault secret list -–vault-name 'ContosoKeyVault'`
+- シークレットを表示するには、次のように入力します。`azure keyvault secret list --vault-name 'ContosoKeyVault'`
 
 
 ## Azure Active Directory にアプリケーションを登録します
@@ -207,7 +207,7 @@ Azure Active Directory にアプリケーションを登録するには:
 
 次のコマンドを使用して、自分のコンピューターの .pem ファイルからキーをインポートできます。このコマンドでは、Key Vault サービスでキーを HSM にインポートします。
 
-    azure keyvault key import --vault-name 'ContosoKeyVaultHSM' --key-name 'ContosoFirstHSMKey' --pem-file '/.softkey.pem' --destination 'HSM' –-password 'PaSSWORD'
+    azure keyvault key import --vault-name 'ContosoKeyVaultHSM' --key-name 'ContosoFirstHSMKey' --pem-file '/.softkey.pem' --destination 'HSM' --password 'PaSSWORD'
 
 次のコマンドは、“bring your own key" (BYOK) パッケージをインポートします。これを使用すると、ローカルの HSM でキーを生成し、これを Key Vault サービスで HSM に転送でき、キーは HSM の境界内から出ることはありません。
 
@@ -237,7 +237,7 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 このコマンドは、指定されたキーのプロパティの完全な一覧を表示します。
 
-    azure keyvault key show --vault-name 'ContosoKeyVault' –-key-name 'ContosoFirstKey'
+    azure keyvault key show --vault-name 'ContosoKeyVault' --key-name 'ContosoFirstKey'
 
 このコマンドは、すべてのシークレットの名前と選択したプロパティを表形式で一覧表示します。
 
@@ -256,4 +256,4 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

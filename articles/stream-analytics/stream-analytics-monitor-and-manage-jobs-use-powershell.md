@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="PowerShell | Microsoft Azure を使用した Stream Analytics ジョブの監視および管理" 
 	description="Azure PowerShell およびコマンドレットを使用して Stream Analytics ジョブを監視および管理する方法について説明します。" 
-	keywords="azure powershell,azure powershell cmdlets,powershell command"	
+	keywords="azure powershell,azure powershell コマンドレット,powershell コマンド"	
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -258,7 +258,7 @@ Microsoft Azure で実行中の Stream Analytics ジョブを非同期的に停�
 この PowerShell コマンドは、StreamingJob 内の出力 Output の接続状態をテストします。
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -287,4 +287,4 @@ Microsoft Azure で実行中の Stream Analytics ジョブを非同期的に停�
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

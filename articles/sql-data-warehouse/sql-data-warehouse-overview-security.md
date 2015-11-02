@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="10/15/2015"
    ms.author="sahajs"/>
 
 # SQL Data Warehouse でのデータベース保護
@@ -24,7 +24,7 @@
 
 接続のセキュリティとは、ファイアウォール ルールと接続の暗号化を使用して、データベースへの接続を制限し、保護する方法のことです。
 
-ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。新しいデータベースへの接続を試行するために、アプリケーションまたはクライアント コンピューターのパブリック IP アドレスを許可するには、まず Azure の管理ポータル、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。詳細については、「[Azure SQL データベース ファイアウォール][]」を参照してください。
+ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。新しいデータベースへの接続を試行するために、アプリケーションまたはクライアント コンピューターのパブリック IP アドレスを許可するには、まず Microsoft Azure 管理ポータル、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。詳細については、「[Azure SQL Database ファイアウォール][]」を参照してください。
 
 
 ## 認証
@@ -52,7 +52,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 
 ```
 
-SQL Database の認証の詳細については、「[Azure SQL データベースにおけるデータベース、ログイン、およびユーザーの管理][]」を参照してください。
+SQL Database の認証の詳細については、「[Azure SQL Database におけるデータベース、ログイン、およびユーザーの管理][]」を参照してください。
 
 
 ## 承認
@@ -78,7 +78,7 @@ Microsoft Azure 管理ポータルまたは Azure リソース マネージャ�
 
 ## 暗号化
 
-Azure SQL Data Warehouse では、[透過的なデータ暗号化][]を使用して、データが "静止" 状態のとき、またはデータベース ファイルやバックアップに格納されているときに、そのデータを暗号化することでデータを保護できます。データベースを暗号化するには、データベースの所有者として接続し、次のコマンドを実行します。
+Azure SQL Data Warehouse では、[透過的なデータ暗号化][]を使用して、データが "静止" 状態のとき、またはデータベース ファイルやバックアップに格納されているときに、そのデータを暗号化することでデータを保護できます。データベースを暗号化するには、サーバーの master データベースに接続して以下を実行します。
 
 
 ```
@@ -107,9 +107,9 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 
 <!--MSDN references-->
-[Azure SQL データベース ファイアウォール]: https://msdn.microsoft.com/library/ee621782.aspx
+[Azure SQL Database ファイアウォール]: https://msdn.microsoft.com/library/ee621782.aspx
 [データベース ロール]: https://msdn.microsoft.com/library/ms189121.aspx
-[Azure SQL データベースにおけるデータベース、ログイン、およびユーザーの管理]: https://msdn.microsoft.com/library/ee336235.aspx
+[Azure SQL Database におけるデータベース、ログイン、およびユーザーの管理]: https://msdn.microsoft.com/library/ee336235.aspx
 [アクセス許可]: https://msdn.microsoft.com/library/ms191291.aspx
 [ストアド プロシージャ]: https://msdn.microsoft.com/library/ms190782.aspx
 [透過的なデータ暗号化]: http://go.microsoft.com/fwlink/?LinkId=526242
@@ -119,4 +119,4 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 <!--Other Web references-->
 [Azure プレビュー ポータルでのロール ベースのアクセス制御]: http://azure.microsoft.com/documentation/articles/role-based-access-control-configure.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

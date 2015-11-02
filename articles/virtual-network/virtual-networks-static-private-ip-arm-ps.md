@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn"
    tags="azure-resource-manager"
 />
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/08/2015"
+   ms.date="10/21/2015"
    ms.author="telmos" />
 
 # PowerShell での静的プライベート IP アドレスの設定方法
@@ -32,6 +32,8 @@
 ## VM 作成時に静的プライベート IP アドレスを指定する方法
 静的プライベート IP *192.168.1.101* を使用して、*TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、以下の手順に従います。
 
+[AZURE.INCLUDE [powershell-preview-include.md](../../includes/powershell-preview-include.md)]
+
 1. ストレージ アカウント、場所、リソース グループ、および使用する資格情報の変数を設定します。VM のユーザー名とパスワードを入力する必要があります。ストレージ アカウントおよびリソース グループが既に存在している必要があります。
 
 		$stName = "vnetstorage"
@@ -41,26 +43,26 @@
 
 3. 仮想ネットワークと VM を作成するサブネットを取得します。
 
-	    $vnet = Get-AzureRMVirtualNetwork -ResourceGroupName TestRG -Name TestVNet	
+	    $vnet = Get-AzureVirtualNetwork -ResourceGroupName TestRG -Name TestVNet	
 	    $subnet = $vnet.Subnets[0].Id
 
 4. 必要に応じて、インターネットから VM にアクセスするためのパブリック IP アドレスを作成します。
 
-		$pip = New-AzureRMPublicIpAddress -Name TestPIP -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
+		$pip = New-AzurePublicIpAddress -Name TestPIP -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
 
 5. VM に割り当てる静的プライベート IP アドレスを使用して、NIC を作成します。IP が、VM を追加するサブネットの範囲内であることを確認します。これはこの記事の主要な手順です (プライベート IP が静的になるように設定する場合)。
 
-		$nic = New-AzureRMNetworkInterface -Name TestNIC -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -PrivateIpAddress 192.168.1.101
+		$nic = New-AzureNetworkInterface -Name TestNIC -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -PrivateIpAddress 192.168.1.101
 
 6. 上記で作成した NIC を使用して VM を作成します。
 
-		$vm = New-AzureRMVMConfig -VMName DNS01 -VMSize "Standard_A1"
-		$vm = Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName DNS01  -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-		$vm = Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
-		$vm = Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id
+		$vm = New-AzureVMConfig -VMName DNS01 -VMSize "Standard_A1"
+		$vm = Set-AzureVMOperatingSystem -VM $vm -Windows -ComputerName DNS01  -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+		$vm = Set-AzureVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
+		$vm = Add-AzureVMNetworkInterface -VM $vm -Id $nic.Id
 		$osDiskUri = $storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/WindowsVMosDisk.vhd"
-		$vm = Set-AzureRMVMOSDisk -VM $vm -Name "windowsvmosdisk" -VhdUri $osDiskUri -CreateOption fromImage
-		New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm 
+		$vm = Set-AzureVMOSDisk -VM $vm -Name "windowsvmosdisk" -VhdUri $osDiskUri -CreateOption fromImage
+		New-AzureVM -ResourceGroupName $rgName -Location $locName -VM $vm 
 
 	予想される出力:
 
@@ -77,7 +79,7 @@
 ## VM 用の静的プライベート IP アドレス情報を取得する方法
 上記のスクリプトで作成された VM の静的プライベート IP アドレス情報を表示するには、次の PowerShell コマンドを実行し、*PrivateIpAddress* と *PrivateIpAllocationMethod* の値を確認します。
 
-	Get-AzureRMNetworkInterface -Name TestNIC -ResourceGroupName TestRG
+	Get-AzureNetworkInterface -Name TestNIC -ResourceGroupName TestRG
 
 予想される出力:
 
@@ -127,9 +129,9 @@
 ## VM から静的プライベート IP アドレスを削除する方法
 上記のスクリプトで VM に追加された静的プライベート IP アドレスを削除するには、次の PowerShell コマンドを実行します。
 	
-	$nic=Get-AzureRMNetworkInterface -Name TestNIC -ResourceGroupName TestRG
+	$nic=Get-AzureNetworkInterface -Name TestNIC -ResourceGroupName TestRG
 	$nic.IpConfigurations[0].PrivateIpAllocationMethod = "Dynamic"
-	Set-AzureRMNetworkInterface -NetworkInterface $nic
+	Set-AzureNetworkInterface -NetworkInterface $nic
 
 予想される出力:
 
@@ -179,10 +181,10 @@
 ## 既存の VM に静的プライベート IP アドレスを追加する方法
 上記のスクリプトを使用して作成した VM に静的プライベート IP アドレスを追加するには、次のコマンドを実行します。
 
-	$nic=Get-AzureRMNetworkInterface -Name TestNIC -ResourceGroupName TestRG
+	$nic=Get-AzureNetworkInterface -Name TestNIC -ResourceGroupName TestRG
 	$nic.IpConfigurations[0].PrivateIpAllocationMethod = "Static"
 	$nic.IpConfigurations[0].PrivateIpAddress = "192.168.1.101"
-	Set-AzureRMNetworkInterface -NetworkInterface $nic
+	Set-AzureNetworkInterface -NetworkInterface $nic
 
 ## 次のステップ
 
@@ -190,4 +192,4 @@
 - [インスタンスレベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip) アドレスについて理解する。
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

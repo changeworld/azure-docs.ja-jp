@@ -3,7 +3,7 @@
 	description="このトピックでは、Azure Media Services の概要を説明します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="Juliako" 
+	authors="Juliako,anilmur" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/28/2015"
+	ms.date="10/15/2015"
 	ms.author="juliako"/>
 
 #Azure Media Services の概要と一般的なシナリオ
@@ -49,8 +49,8 @@ AMS のラーニング パスについては、以下を参照してください
 
 Azure Media Services を使用するには、次が必要です。
  
-3. Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](azure.microsoft.com)を参照してください。
-2. Azure Media Services アカウントを作成します。Azure Media Services アカウントを作成するには、Windows Azure 管理ポータル、.NET、REST API を使用します。詳細については、「[アカウントの作成](media-services-create-account.md)」を参照してください。
+3. Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](azure.microsoft.com)を参照してください。
+2. Azure Media Services アカウントを作成します。Azure Media Services アカウントを作成するには、Windows Microsoft Azure 管理ポータル、.NET、REST API を使用します。詳細については、「[アカウントの作成](media-services-create-account.md)」を参照してください。
 3. (省略可能) 開発環境をセットアップします。開発環境の .NET または REST API を選択します。詳細については、「[環境を設定する](media-services-dotnet-how-to-use.md)」を参照してください。 
 
 	また、プログラミングによる[接続](media-services-dotnet-connect_programmatically.md)方法についても確認してください
@@ -74,7 +74,7 @@ Azure Media Services を使用するには、次が必要です。
 	
 	ストレージ暗号化オプションを資産に適用し、アップロード中のコンテンツとストレージ内のコンテンツを保護することをお勧めします。
  
-1. アダプティブ ビットレート MP4 セットにエンコードします。
+1. アダプティブ ビットレート MP4 ファイルのセットにエンコードする。
 
 	ストレージ暗号化オプションを出力資産に適用し、保存されているコンテンツを保護することをお勧めします。
 	
@@ -93,7 +93,7 @@ Azure Media Services を使用するには、次が必要です。
 動的暗号化を使用するには、暗号化されたコンテンツのストリーミング元となるストリーミング エンドポイントに、少なくとも 1 つのストリーミング予約ユニットが必要です。
 
 1. 高品質な中間ファイルを資産にアップロードします。ストレージ暗号化オプションを資産に適用します。
-1. アダプティブ ビットレート MP4 セットにエンコードします。ストレージ暗号化オプションを出力資産に適用します。
+1. アダプティブ ビットレート MP4 ファイルのセットにエンコードする。ストレージ暗号化オプションを出力資産に適用します。
 1. 再生中に動的に暗号化する資産の、暗号化コンテンツ キーを作成します。
 2. コンテンツ キー承認ポリシーを構成します。
 1. 資産配信ポリシーを構成します (動的パッケージと動的暗号化で使用)。
@@ -113,7 +113,7 @@ Azure Media Services を使用するには、次が必要です。
 ###プログレッシブ ダウンロードの提供 
 
 1. 高品質な中間ファイルを資産にアップロードします。
-1. アダプティブ ビットレート MP4 セットまたは単一の MP4 にエンコードします。
+1. 単一 MP4 ファイルにエンコードする。
 1. OnDemand または SAS ロケーターを作成して資産を発行します。
 
 	OnDemand ロケーターを使用する場合、コンテンツを徐々にダウンロードするストリーミング エンドポイントに、少なくとも 1 つのストリーミング予約ユニットがあることをご確認ください。
@@ -227,4 +227,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

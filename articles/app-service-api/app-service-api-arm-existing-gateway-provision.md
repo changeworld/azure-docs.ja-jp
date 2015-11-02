@@ -1,14 +1,14 @@
 <properties 
 	pageTitle="既存のゲートウェイを使用する API アプリのデプロイ" 
 	description="Azure リソース マネージャーのテンプレートを使用して、既存のゲートウェイと App Service プランを使用する API アプリをデプロイします。" 
-	services="app-service\api" 
+	services="app-service" 
 	documentationCenter="" 
 	authors="tfitzmac" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-api" 
+	ms.service="app-service" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -191,4 +191,4 @@ API アプリを作成します。
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

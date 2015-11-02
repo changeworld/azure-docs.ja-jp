@@ -1,6 +1,6 @@
 <properties
-	pageTitle="HDInsight の Hadoop を使用した Twitter データの分析 | Microsoft Azure"
-	description="HDInsight の Hadoop に格納されている Twitter データを Hive で分析し、特定の単語の使用頻度を調べる方法について説明します。"
+	pageTitle="HDInsight の Apache Hive を使用した Twitter データの分析 | Microsoft Azure"
+	description="Python を使用して特定のキーワードを含むツイートを格納してから、HDInsight で Hive と Hadoop を使用して未加工の Twitter データを検索可能な Hive テーブルに変換する方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/09/2015"
+	ms.date="10/19/2015"
 	ms.author="larryfr"/>
 
 # HDInsight での Hive を使用した Twitter データの分析
@@ -319,4 +319,4 @@ WASB (HDInsight で使用される分散ファイル システム) にデータ�
 [twitter-streaming-api]: https://dev.twitter.com/docs/streaming-apis
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

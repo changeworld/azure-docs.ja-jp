@@ -24,6 +24,8 @@
 
 Azure ギャラリーにある Linux イメージは多くのパートナーから提供されており、Microsoft はさまざまな Linux コミュニティと協力して、動作保証済みディストリビューションの一覧をよりいっそう充実させようと努めています。ギャラリーから利用できないディストリビューションの場合も、[このページ](virtual-machines-linux-create-upload-vhd.md)の指針に従うことにより、いつでも独自の Linux を展開することができます。
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 ## サポートされているディストリビューションとバージョン ##
 
@@ -35,10 +37,10 @@ Azure Linux エージェントは、Azure ギャラリーのイメージにあ�
 
 ディストリビューション|バージョン|ドライバー|エージェント
 ---|---|---|---
-Canonical Ubuntu|Ubuntu 12.04、14.04、14.10、15.04|カーネル内|パッケージ: リポジトリ内の "walinuxagent" <p><p>ソース: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
+Canonical Ubuntu|Ubuntu 12.04、14.04、14.10、15.04|カーネル内|パッケージ: リポジトリ内の "WALinuxAgent"<p><p> ソース: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
 CentOS by OpenLogic |CentOS 6.3+、7.0+| CentOS 6.3:[LIS ダウンロード](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4 以上、カーネル内。|パッケージ: <a href="http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/">OpenLogic リポジトリ内の "WALinuxAgent"<p><p> ソース: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
 [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)|494\.4.0+ |カーネル内|ソース: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent)
-Oracle Linux| 6\.4+、7.0+|カーネル内|パッケージ: リポジトリ内の "WALinuxAgent"<p><p> ソース: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
+Oracle Linux| 6\.4+、7.0+|カーネル内|パッケージ: リポジトリ内の "WALinuxAgent" <p><p>ソース: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
 SUSE Linux Enterprise |SLES 11 SP3 +、SLES 12 + と <p><p>SAP 11.3 + 向け SLES |カーネル内|パッケージ: [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "WALinuxAgent"<p><p> ソース: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
 openSUSE |openSUSE 13.1+|カーネル内|パッケージ: [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "WALinuxAgent"<p><p> ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
 
@@ -79,4 +81,4 @@ SUSE Linux Enterprise Server on Azure は、クラウド コンピューティ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

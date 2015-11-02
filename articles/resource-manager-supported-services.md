@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/13/2015"
+   ms.date="10/19/2015"
    ms.author="tomfitz"/>
 
-# Azure リソース マネージャーによるサービスとリージョンのサポート
+# リソース マネージャーによるサービス、リージョン、API バージョンのサポート
 
 Azure リソース マネージャーは、アプリケーションを構成するサービスをデプロイして管理するための新しい方法を提供します。すべてではありませんがほとんどのサービスはリソース マネージャーをサポートし、一部のサービスはリソース マネージャーを部分的にのみサポートします。Microsoft は将来のソリューションに重要なすべてのサービスに対してリソース マネージャーを有効にする予定ですが、サポートが一貫したものになるまでは、各サービスの現在の状態を把握する必要があります。このトピックでは、Azure リソース マネージャーに対してサポートされるリソース プロバイダーの一覧を示します。
 
-リソースをデプロイするときは、リソースをサポートしているリージョンも知っておく必要があります。「[サポートされているリージョン](#supported-regions)」セクションでは、サブスクリプションおよびリソースで有効なリージョンを確認する方法が示されています。
+リソースをデプロイするときは、リソースをサポートしているリージョンとリソースで利用できる API バージョンも知っておく必要があります。「[サポートされているリージョン](#supported-regions)」セクションでは、サブスクリプションおよびリソースで有効なリージョンを確認する方法が示されています。「[サポートされる API バージョン](#supported-api-versions)」セクションでは、利用できる API バージョンを決定する方法について紹介します。
 
 次の表では、各サービスがリソース マネージャーによるデプロイメントと管理をサポートするかどうかを示します。「**リソースの移動**」列は、この種類のリソースを新しいリソース グループおよび新しいサブスクリプションの両方に移動できるかどうかを示します。「**プレビュー ポータル**」列は、プレビュー ポータルを使用してサービスを作成できるかどうかを示します。
 
@@ -33,7 +33,7 @@ Azure リソース マネージャーは、アプリケーションを構成す�
 | Batch  
  | はい | いいえ | | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | |
 | Dynamics Lifecycle Services | はい | いいえ | | | |
-| Virtual Machines (クラシック) | 限定的 | いいえ | 部分的 (後述参照) | - | - | | RemoteApp | いいえ | - | - | - | - | | Service Fabric | いいえ | - | - | - | - |
+| Virtual Machines (クラシック) | 限定的 | はい | 部分的 (後述参照) | - | - | | RemoteApp | いいえ | - | - | - | - | | Service Fabric | いいえ | - | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイメント モデルではなくクラシック デプロイメント モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイメント モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 
@@ -56,15 +56,15 @@ Web アプリを使用している場合、App Service プランのみを移動�
 - Web アプリは別のリソース グループに移動しますが、App Service プランは元のリソース グループで保持します。
 
 
-## データとストレージ
+## データ + ストレージ
 
 | サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | ------- | -------------- | -------- | ------ |
-| DocumentDB | はい | はい | はい | [DocumentDB REST](https://msdn.microsoft.com/library/azure/dn781481.aspx) | |
-| ストレージ | はい | はい | | [ストレージの作成](https://msdn.microsoft.com/library/azure/mt163564.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Storage.json) |
-| Redis Cache | はい | はい | はい | | [2014-04-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01-preview/Microsoft.Cache.json) |
-| SQL Database | はい | はい | はい | [データベースの作成](https://msdn.microsoft.com/library/azure/mt163685.aspx) | [2014-04-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01-preview/Microsoft.Sql.json) |
-| 検索 | はい | はい | はい | [Search REST](https://msdn.microsoft.com/library/azure/dn798935.aspx) | |
+| DocumentDB | はい | あり | はい | [DocumentDB REST](https://msdn.microsoft.com/library/azure/dn781481.aspx) | |
+| Storage | はい | はい | | [Storage の作成](https://msdn.microsoft.com/library/azure/mt163564.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Storage.json) |
+| Redis Cache | はい | あり | はい | | [2014-04-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01-preview/Microsoft.Cache.json) |
+| SQL Database | はい | あり | はい | [データベースの作成](https://msdn.microsoft.com/library/azure/mt163685.aspx) | [2014-04-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01-preview/Microsoft.Sql.json) |
+| 検索 | はい | あり | はい | [Search REST](https://msdn.microsoft.com/library/azure/dn798935.aspx) | |
 | SQL Data Warehouse | はい | はい | | | |
 | StorSimple | いいえ | いいえ | - | - | - | | Backup |いいえo | いいえ | - | - | - | | Site Recovery | いいえ | いいえ | - | - | - | | Managed cache | いいえ | いいえ | - | - | - | | Data Catalog | いいえ | いいえ | - | - | - |
 
@@ -75,7 +75,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | イベント ハブ | はい | いいえ | | [Event Hub の作成](https://msdn.microsoft.com/library/azure/dn790676.aspx) | |
 | Stream Analytics | はい | はい | | | |
 | HDInsights | はい | はい | | | |
-| Data Factory | はい | はい | はい | [Data Factory の作成](https://msdn.microsoft.com/library/azure/dn906717.aspx) | |
+| Data Factory | はい | あり | はい | [Data Factory の作成](https://msdn.microsoft.com/library/azure/dn906717.aspx) | |
 | Machine Learning | いいえ | いいえ | - | - | - |
 
 ## ネットワーク
@@ -87,7 +87,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | Load Balancer | はい | | | [Load Balancer の作成](https://msdn.microsoft.com/library/azure/mt163574.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Network.json) |
 | Virtual Networks | はい | はい | いいえ | [Create Virtual Network](https://msdn.microsoft.com/library/azure/mt163661.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Network.json) |
 | Traffic Manager | はい | いいえ | | [Traffic Manager プロファイルの作成](https://msdn.microsoft.com/library/azure/mt163581.aspx) | |
-| Express Route | いいえ | いいえ | - | - | - |
+| ExpressRoute | あり | なし | いいえ | [ExpressRoute REST](https://msdn.microsoft.com/library/azure/mt586720.aspx) | |
 
 ## メディアと CDN
 
@@ -136,7 +136,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 ### REST API
 
-特定のリソースの種類で使用可能なリージョンを確認するための最善のオプションは、[すべてのリソース プロバイダーの一覧表示](https://msdn.microsoft.com/library/azure/dn790524.aspx)操作です。この操作は、サブスクリプションとリソースの種類に対して使用できるリージョンのみを返します。
+ご利用のサブスクリプションの特定のリソースの種類で使用可能なリージョンを確認するには、[すべてのリソース プロバイダーの一覧表示](https://msdn.microsoft.com/library/azure/dn790524.aspx)操作を利用します。
 
 ### PowerShell
 
@@ -166,7 +166,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
     azure location list
 
-また、**jq** などのツールを使用して場所の結果をフィルターすることもできます。jq などのツールについては、「[Azure とやり取りする便利なツール](/virtual-machines/resource-group-deploy-debug/#useful-tools-to-interact-with-azure)」を参照してください。
+また、**jq** などのツールを使用して場所の結果をフィルターすることもできます。jq などのツールについて学習するには、「[Azure とやり取りする便利なツール](/virtual-machines/resource-group-deploy-debug/#useful-tools-to-interact-with-azure)」を参照してください。
 
     azure location list --json | jq '.[] | select(.name == "Microsoft.Web/sites")'
 
@@ -178,4 +178,44 @@ Web アプリを使用している場合、App Service プランのみを移動�
             North Europe,South Central US,West Europe,West US,Southeast Asia,Central US,East US 2"
     }
 
-<!---HONumber=Oct15_HO3-->
+## サポートされている API バージョン
+
+テンプレートをデプロイするとき、各リソースの作成に使用する API バージョンを指定する必要があります。API バージョンは、リリース プロバイダーがリリースする REST API のバージョンに一致します。リソース プロバイダーは新しい機能を有効にするとき、REST API の新しいバージョンをリリースします。そのため、テンプレートで指定した API のバージョンにより、テンプレートで指定できるプロパティが変わります。一般的に、新しいテンプレートを作成するとき、最新の API バージョンを選択します。既存のテンプレートの場合、以前の API バージョンの使用を続けるか、テンプレートを最新版に更新して新しい機能を最大限に活用するか決定できます。
+
+### REST API
+
+リソースの種類で使用可能な API バージョンを確認するには、[すべてのリソース プロバイダーの一覧表示](https://msdn.microsoft.com/library/azure/dn790524.aspx)操作を利用します。
+
+### PowerShell
+
+次の例では、Azure PowerShell 1.0 プレビューを利用し、特定のリソースの種類で利用できる API バージョンを取得する方法を示します。
+
+    ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
+    
+次のように出力されます。
+    
+    2015-08-01
+    2015-07-01
+    2015-06-01
+    2015-05-01
+    2015-04-01
+    2015-02-01
+    2014-11-01
+    2014-06-01
+    2014-04-01-preview
+    2014-04-01
+
+### Azure CLI
+
+次のコマンドで、リソース プロバイダーの情報 (利用可能な API バージョンを含む) をファイルに保存できます。
+
+    azure provider show Microsoft.Web -vv --json > c:\temp.json
+
+ファイルを開き、**apiVersions** 要素を検索できます。
+
+## 次のステップ
+
+- リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
+- リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./azure-portal/resource-group-template-deploy.md)」を参照してください。
+
+<!---HONumber=Oct15_HO4-->

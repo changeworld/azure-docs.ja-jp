@@ -5,17 +5,23 @@
    documentationCenter="na"
    authors="cherylmc"
    manager="carolz"
-   editor="tysonn" />
+   editor=""
+   tags="azure-service-management"/>
+
 <tags 
    ms.service="vpn-gateway"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/04/2015"
+   ms.date="10/21/2015"
    ms.author="cherylmc" />
 
 # 複数のオンプレミスのサイトを仮想ネットワークに接続
+
+>[AZURE.NOTE]Azure は現在、2 つのデプロイメント モデル (リソース マネージャーおよびクラシック) で使用できることを理解しておくことは重要です。構成を開始する前に、デプロイ モデルとツールについて理解しておくようにしてください。デプロイメント モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
+
+この記事は、クラシック デプロイメント モデル (サービス管理) を使用して作成された VNet および VPN ゲートウェイを対象としています。
 
 複数のオンプレミスのサイトを単一の仮想ネットワークに接続できます。これは、ハイブリッドなクラウドのソリューションを構築する際は特に魅力的です。Azure 仮想ネットワーク ゲートウェイに複数の接続を行うことは、他のサイト間接続に非常に似ています。実際は、仮想ネットワークに対してルート ベース (または動的ルーティング) の VPN ゲートウェイが構成されている場合は、既存の Azure VPN ゲートウェイを使用できます。
 
@@ -33,7 +39,7 @@
 
 - Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-- 各オンプレミスのロケーションと互換性のある VPN ハードウェア「[Virtual Netowrk に使用する VPN デバイスについて](http://go.microsoft.com/fwlink/p/?linkid=615099)」を参照して、使用するデバイスが互換性のあるものであることを確認してください。
+- 各オンプレミスのロケーションと互換性のある VPN ハードウェア「[Virtual Network に使用する VPN デバイスについて](http://go.microsoft.com/fwlink/p/?linkid=615099)」を参照して、使用するデバイスが互換性のあるものであることを確認してください。
 
 - 各 VPN デバイスの外部接続用パブリック IPv4 IP アドレス。IP アドレスを NAT の内側に割り当てることはできません。これが要件です。
 
@@ -49,7 +55,7 @@
 
 1. **動的ルーティング ゲートウェイでサイト間 VPN を作成します** すでに作成されている場合は、作業の必要はありません。 [仮想ネットワーク構成設定のエクスポート](#export)に進んでください。まだ作成していない場合は、以下の作業を行います。
 
-	**サイト間仮想ネットワークがすでに存在するが、静的ルーティング ゲートウェイである場合:** **1.** ゲートウェイ タイプを動的ルーティングに変更します。マルチサイトの VPN は動的ルーティング ゲートウェイを必要とします。ゲートウェイ タイプを変更するには、最初に既存のゲートウェイを削除し、新規で作成します。手順については、「[VPN ゲートウェイ ルーティング タイプの変更](vpn-gateway-configure-vpn-gateway-mp.md/#how-to-change-your-vpn-gateway-type)」を参照してください。**2.** 新しいゲートウェイを構成し、VPN トンネルを作成します。手順については、「[管理ポータルでの VPN ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md)」を参照してください。
+	**サイト間仮想ネットワークが既に存在するが、静的ルーティング ゲートウェイである場合:** **1.** ゲートウェイ タイプを動的ルーティングに変更します。マルチサイトの VPN は動的ルーティング ゲートウェイを必要とします。ゲートウェイ タイプを変更するには、最初に既存のゲートウェイを削除し、新規で作成します。手順については、「[VPN ゲートウェイ ルーティング タイプの変更](vpn-gateway-configure-vpn-gateway-mp.md/#how-to-change-your-vpn-gateway-type)」を参照してください。**2.** 新しいゲートウェイを構成し、VPN トンネルを作成します。手順については、「[管理ポータルでの VPN ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md)」を参照してください。
 	
 	**サイト間仮想ネットワークが存在しない場合:** **1.** 次の手順によりサイト間仮想ネットワークを作成します。[管理ポータルでのサイト間 VPN を使用した仮想ネットワークの作成](vpn-gateway-site-to-site-create.md)**2.** 次の手順により動的ルーティング ゲートウェイを構成します。[管理ポータルでの VPN ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md)必ずゲートウェイ タイプに**動的ルーティング**を選択してください。
 
@@ -135,7 +141,7 @@
 
 		PS C:\> Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site2"
 
-	必要に応じて、*Get Virual Network Gateway Shared Key* という REST API を使用して事前共有キーを取得することもできます。
+	必要に応じて、*Get Virtual Network Gateway Shared Key* という REST API を使用して事前共有キーを取得することもできます。
 
 ## 接続の確認
 
@@ -169,6 +175,6 @@
 
 ## 次のステップ
 
-VPN ゲートウェイについてより詳しくは、「[VPN Gateway について](../vpn-gateway/vpn-gateway-about-vpngateways.md)」を参照してください。
+VPN Gateway について詳しくは、「[VPN Gateway について](../vpn-gateway/vpn-gateway-about-vpngateways.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

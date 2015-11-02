@@ -1,23 +1,23 @@
-<properties 
-	pageTitle="Machine Learning ワークスペースの管理 | Microsoft Azure" 
-	description="Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="garyericson" 
-	manager="paulettm" 
+<properties
+	pageTitle="Machine Learning ワークスペースの管理 | Microsoft Azure"
+	description="Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します"
+	services="machine-learning"
+	documentationCenter=""
+	authors="garyericson"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/10/2015" 
+<tags
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="10/15/2015"
 	ms.author="garye"/>
 
 
-# Azure Machine Learning ワークスペースの管理 
+# Azure Machine Learning ワークスペースの管理
 Microsoft Azure 管理ポータルを使用すると、Machine Learning ワークスペースで次の操作を管理できます。
 
 - ワークスペースの使用方法を監視する
@@ -43,7 +43,7 @@ Microsoft Azure 管理ポータルを使用すると、Machine Learning ワー�
 - **[構成]** - ワークスペースへのアクセスを管理します
 - **[WEB サービス]** - このワークスペースから公開されている Web サービスを管理できます
 
-  
+
 ## ワークスペースの使用方法を監視するには
 
 **[ダッシュボード]** タブをクリックします。
@@ -62,11 +62,11 @@ Microsoft Azure 管理ポータルを使用すると、Machine Learning ワー�
 **[構成]** タブをクリックします。
 
 [構成] タブで次の操作を実行できます。
- 
-- [拒否] をクリックして、Machine Learning ワークスペースへのアクセスを中断します。ユーザーは、Machine Learning Studio でワークスペースを開くことができなくなります。アクセスを復元するには、[許可] をクリックします。
-- 他の Microsoft アカウントを指定して、ワークスペースの所有者を変更します。 
 
-Machine Learning Studio のワークスペースにアクセスできるユーザーを管理するには、[**ダッシュ ボード**] タブで [**ML Studio にサインイン**] をクリックします ([**ML Studio にサインイン**] については、上記注を参照してください)。Machine Learning Studio でワークスペースが開きます。ここで、**[設定]** タブの **[ユーザー]** をクリックします。**[INVITE MORE USERS]** をクリックしてユーザーにワークスペースへのアクセス権を付与するか、ユーザーを選択して **[削除]** をクリックします。
+- [拒否] をクリックして、Machine Learning ワークスペースへのアクセスを中断します。ユーザーは、Machine Learning Studio でワークスペースを開くことができなくなります。アクセスを復元するには、[許可] をクリックします。
+- 他の Microsoft アカウントを指定して、ワークスペースの所有者を変更します。
+
+Machine Learning Studio のワークスペースにアクセスできる追加アカウントを管理するには、[**ダッシュ ボード**] タブで [**ML Studio にサインイン**] をクリックします ([**ML Studio にサインイン**] については、上記注を参照してください)。Machine Learning Studio でワークスペースが開きます。ここで、**[設定]** タブの **[ユーザー]** をクリックします。**[INVITE MORE USERS]** をクリックしてユーザーにワークスペースへのアクセス権を付与するか、ユーザーを選択して **[削除]** をクリックします。
 
 
 ## このワークスペースの Web サービスを管理するには
@@ -80,7 +80,7 @@ Web サービスには、1 つ以上のエンドポイントが定義されて�
 - "既定" のエンドポイントの他に追加のエンドポイントを定義できます。エンドポイントを追加するには、ページの下部にある **[エンドポイントの追加]** をクリックします。
 
 - エンドポイントを削除するには ("既定" のエンドポイントを削除することはできません)、エンドポイント行の名前以外の任意の場所をクリックし、ページの下部にある **[エンドポイントの削除]** をクリックします。Web サービスからエンドポイントが削除されます。
- 
+
     > [AZURE.NOTE]Web サービス エンドポイントの使用中にエンドポイントが削除された場合は、アプリケーションが次回サービスにアクセスを試みるとエラーが表示されます。
 
 Web サービス エンドポイントの名前をクリックして開きます。使用状況グラフに、Web サービス エンドポイントで使用されているコンピューティングと予測のリソースが表示されます。ビューを変更して相対値または絶対値を表示したり、グラフに表示される期間を変更したりできます。
@@ -89,9 +89,9 @@ Web サービス エンドポイントの名前をクリックして開きます
 
 このページから Azure Marketplace に Web サービスを発行することもできます。詳細については、「[Azure Marketplace への Azure Machine Learning Web サービスの発行][marketplace]」をご覧ください。
 
+**[構成]** タブをクリックして説明を編集するか、Web サービスに使用できる現在の接続数を制御するか、診断トレースを設定します。
+
 [consume]: machine-learning-consume-web-services.md
 [marketplace]: machine-learning-publish-web-service-to-azure-marketplace.md
 
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

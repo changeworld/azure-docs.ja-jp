@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="管理ポータルを使用して、シングル ビットレートからマルチ ビットレート ストリームへのライブ エンコードを実行するチャネルを作成する" 
-	description="このチュートリアルでは、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードするチャネルを作成する手順について説明します。" 
+	pageTitle="Azure ポータルを利用し、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する" 
+	description="このチュートリアルでは、Azure ポータルを利用し、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードするチャネルを作成する手順について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="Juliako" 
+	authors="juliako,anilmur" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -11,13 +11,13 @@
 	ms.service="media-services" 
 	ms.workload="media" 
 	ms.tgt_pltfrm="na" 
-	ms.devlang="ne" 
+	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/14/2015" 
+	ms.date="10/15/2015"  
 	ms.author="juliako"/>
 
 
-#管理ポータルを使用して、シングル ビットレートからマルチ ビットレート ストリームへのライブ エンコードを実行するチャネルを作成する 
+#Azure ポータルを利用し、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する
 
 > [AZURE.SELECTOR]
 - [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
@@ -58,7 +58,7 @@
 
 ##このチュートリアルの内容
 
-このチュートリアルでは、Azure 管理ポータルを使用して、次のタスクを実行します。
+このチュートリアルでは、Microsoft Azure 管理ポータルを使用して、次のタスクを実行します。
 
 2.  ストリーミング エンドポイントを構成します。
 3.  ライブ エンコードを実行できるチャネルを作成します。
@@ -100,7 +100,7 @@
 	 
 	>[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
 	>
-	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格設定の詳細については、「[Azure の価格早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格設定の詳細については、「[Media Services の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 
  
 ##チャネルの作成
@@ -273,4 +273,4 @@ AMS のラーニング パスについては、以下を参照してください
 [standard4]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard4.png
 [standard5]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard_encode.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -1,7 +1,7 @@
 <properties
 	pageTitle="HDFS と互換性のある BLOB ストレージのデータのクエリ | Microsoft Azure"
 	description="HDInsight では、BLOB ストレージを HDFS のビッグ データ ストアとして使用します。BLOB ストレージのデータに対するクエリを実行し、分析結果を格納する方法について説明します。"
-	keywords="blob storage,hdfs,structured data,unstructured data"
+	keywords="blob ストレージ,hdfs,構造化データ,非構造化データ"
 	services="hdinsight,storage"
 	documentationCenter=""
 	tags="azure-portal"
@@ -60,12 +60,12 @@ Hadoop は、既定のファイル システムの概念をサポートしてい
 
 	> [AZURE.NOTE]> パブリック コンテナーの場合、そのコンテナー内に配置されているすべての BLOB のリストとコンテナー メタデータを取得できます。パブリック BLOB の場合、正確な URL がわかっているときのみ、その BLOB にアクセスできます。詳細については、「<a href="http://msdn.microsoft.com/library/windowsazure/dd179354.aspx">コンテナーと BLOB へのアクセスの制限</a>」をご覧ください。
 
-- **クラスターに接続されていないストレージ アカウント内のプライベート コンテナー:** WebHCat ジョブを送信するときに、ストレージ アカウントを定義しない限り、コンテナー内の BLOB にアクセスできません。詳しくは、この記事の後半で説明します。
+- **クラスターに接続されていないストレージ アカウント内のプライベート コンテナー:** WebHCat ジョブを送信するときにストレージ アカウントを定義しない限り、コンテナー内の BLOB にはアクセスできません。詳しくは、この記事の後半で説明します。
 
 
 プロビジョニング処理で定義されたストレージ アカウントとそのキーは、クラスター ノードの %HADOOP\_HOME%/conf/core-site.xml に格納されます。HDInsight の既定の動作では、core-site.xml ファイルに定義されたストレージ アカウントが使用されます。core-site.xml ファイルを編集することは推奨されません。クラスター ヘッドノード (マスター) はいつでも再イメージングしたり移行したりでき、そうなると core-site.xml ファイルに加えた変更がすべて失われるためです。
 
-Hive、MapReduce、Hadoop ストリーミング、Pig など、複数の WebHCat ジョブを利用して、ストレージ アカウントの説明とそのメタデータを伝達できます (現在、ストレージ アカウントについては Pig が対応していますが、メタデータについては対応していません)。 この記事の「[Azure PowerShell を使用した BLOB へのアクセス](#powershell)」で、この機能のサンプルを紹介しています。詳細については、「[Using an HDInsight Cluster with Alternate Storage Accounts and Metastores (代替のストレージ アカウントおよびメタストアでの HDInsight クラスターの使用)](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)」を参照してください。
+Hive、MapReduce、Hadoop ストリーミング、Pig など、複数の WebHCat ジョブを利用して、ストレージ アカウントの説明とそのメタデータを伝達できます。(現在、ストレージ アカウントについては Pig が対応していますが、メタデータについては対応していません)。 この記事の「[Azure PowerShell を使用した BLOB へのアクセス](#powershell)」で、この機能のサンプルを紹介しています。詳細については、「[Using an HDInsight Cluster with Alternate Storage Accounts and Metastores (代替のストレージ アカウントおよびメタストアでの HDInsight クラスターの使用)](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)」を参照してください。
 
 BLOB ストレージは、構造化データと非構造化データに使用できます。BLOB ストレージ コンテナーには、"キーと値のペア" としてデータが格納されます。ディレクトリ階層はありません。ただし、キー名でスラッシュ (/) を使用すれば、ファイルがディレクトリ階層に保存されているように見せかけることができます。たとえば、BLOB のキー名を「*input/log1.txt*」とします。この場合、*input* ディレクトリは実際に存在しませんが、キー名でスラッシュが使用されているのでファイル パスのように見えます。
 
@@ -74,9 +74,9 @@ BLOB ストレージは、構造化データと非構造化データに使用で
 
 HDFS ではなく、Azure BLOB ストレージにデータを格納することにはいくつかの利点があります。
 
-* **データの再使用と共有:** HDFS のデータはコンピューティング クラスター内に配置されます。HDFS API を使用してデータを操作できるのは、コンピューティング クラスターへのアクセスが許可されているアプリケーションだけです。Azure BLOB ストレージ内のデータは、HDFS API または [BLOB ストレージ REST API][blob-storage-restAPI] を使用してアクセスできます。したがって、さまざまなアプリケーション (その他の HDInsight クラスターを含む) やツールを使用してデータの生成と利用ができます。
+* **データの再使用と共有:** HDFS のデータは計算クラスター内に配置されます。HDFS API を使用してデータを操作できるのは、コンピューティング クラスターへのアクセスが許可されているアプリケーションだけです。Azure BLOB ストレージ内のデータは、HDFS API または [BLOB ストレージ REST API][blob-storage-restAPI] を使用してアクセスできます。したがって、さまざまなアプリケーション (その他の HDInsight クラスターを含む) やツールを使用してデータの生成と利用ができます。
 * **データのアーカイブ:** Azure BLOB ストレージにデータを格納した場合、計算で使用する HDInsight クラスターを削除してもユーザー データは失われません。
-* **データ ストレージ コスト:** コンピューティング クラスターは Azure BLOB ストレージ コンテナーよりコストがかかるため、DFS に長期間データを格納すると、Azure BLOB ストレージにデータを格納した場合よりコストが高くなります。さらに、コンピューティング クラスターを生成するたびにデータを読み込む必要がないので、データの読み込みコストも節約できます。
+* **データ ストレージ コスト:** 計算クラスターは Azure BLOB ストレージ コンテナーよりコストがかかるため、DFS に長期間データを格納すると、Azure BLOB ストレージにデータを格納した場合よりコストが高くなります。さらに、コンピューティング クラスターを生成するたびにデータを読み込む必要がないので、データの読み込みコストも節約できます。
 * **柔軟なスケールアウト:** HDFS は大規模なファイル システムを提供しますが、規模を拡張するにはクラスターのノード数を増やさなければならないので、作業が複雑になります。一方、Azure BLOB ストレージには柔軟なスケール機能がもともと備わっています。
 * **geo レプリケーション:** Azure BLOB ストレージ コンテナーは、別の拠点に geo レプリケートできます。災害発生時には別の拠点でデータを回復でき、データの冗長性が高まりますが、geo レプリケートした別拠点へのフェールオーバーはパフォーマンスに大きな影響を与え、追加コストが発生する可能性もあります。geo レプリケーションを利用するときは、追加コストがかかっても保護する価値のあるデータかどうかを十分に考慮してください。
 
@@ -105,7 +105,7 @@ BLOB を使用するには、まず、[Azure ストレージ アカウント][az
 
 	azure storage account create <storageaccountname> --type LRS
 
-> [AZURE.NOTE]`--type` パラメーターは、ストレージ アカウントのレプリケート方法を指定します。詳細については、[Azure ストレージのレプリケーション](../storage-redundancy.md)に関するページを参照してください。
+> [AZURE.NOTE]`--type` パラメーターは、ストレージ アカウントのレプリケート方法を指定します。詳細については、[Azure Storage のレプリケーション](../storage-redundancy.md)に関するページを参照してください。
 
 ストレージ アカウントを配置する地理的リージョンを指定するよう要求されます。ストレージ アカウントは、HDInsight クラスターの作成を計画しているリージョンと同じリージョンに作成する必要があります。
 
@@ -255,7 +255,7 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 
 **Azure PowerShell を使用して、フォルダーでファイルを一覧表示する例**
 
-次のスクリプトで、フォルダーの内部にあるファイルを一覧表示する方法を説明します (次の例では、**Invoke-Hive** コマンドレットを使用して **dfs ls** コマンドを実行し、フォルダーの内容を一覧表示する方法を示しています)。
+次のスクリプトで、フォルダーの内部にあるファイルを一覧表示する方法を説明します。(次の例では、**Invoke-Hive** コマンドレットを使用して **dfs ls** コマンドを実行し、フォルダーの内容を一覧表示する方法を示しています)。
 
 	$storageAccountName = "<AzureStorageAccountName>"   # The storage account used for the default file system specified at provision.
 	$containerName = "<BlobStorageContainerName>"  # The default file system container has the same name as the cluster.
@@ -316,4 +316,4 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 [img-hdi-quick-create]: ./media/hdinsight-hadoop-use-blob-storage/HDI.QuickCreateCluster.png
 [img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

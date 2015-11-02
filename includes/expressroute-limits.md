@@ -24,8 +24,8 @@
 | 200 Mbps | 10 | 25 |
 | 500 Mbps | 10 | 40 |
 | 1 Gbps | 10 | 50 |
-| 2 Gbps | 10 | 50 |
-| 5 Gbps | 10 | 50 |
+| 2 Gbps | 10 | 60 |
+| 5 Gbps | 10 | 75 |
 | 10 Gbps | 10 | 100 |
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

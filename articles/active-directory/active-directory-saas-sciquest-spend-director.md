@@ -1,5 +1,5 @@
 <properties
-	pageTitle="チュートリアル: Azure Active Directory と SciQuest Spend Director の統合"
+	pageTitle="チュートリアル: Azure Active Directory と SciQuest Spend Director の統合 | Microsoft Azure"
 	description="Azure Active Directory と SciQuest Spend Director の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/30/2015"
+	ms.date="10/20/2015"
 	ms.author="markusvi"/>
 
 
@@ -56,7 +56,7 @@ Azure AD への SciQuest Spend Director の統合を構成するには、ギャ�
 
 **ギャラリーから SciQuest Spend Director を追加するには、次の手順に従います。**
 
-1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br> ![Active Directory][1]
+1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br> ![Active Directory][1]
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -195,4 +195,4 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 [204]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_19.png
 [205]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_20.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

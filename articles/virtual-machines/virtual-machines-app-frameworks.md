@@ -14,12 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="infrastructure"
-   ms.date="07/02/2015"
+   ms.date="10/21/2015"
    ms.author="rasquill"/>
 
 # テンプレートを使用したアプリケーション フレームワークの作成
 
-仮想マシンは、テンプレートを使ってすばやく作成できます。
+仮想マシンは、テンプレートを使ってすばやく作成できます。これらのテンプレートだけでなく、テンプレートを検索できます (https://azure.microsoft.com/documentation/templates/))。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
@@ -53,4 +53,4 @@
 
 [Azure リソース マネージャー](../resource-group-template-deploy.md)の詳細を確認します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

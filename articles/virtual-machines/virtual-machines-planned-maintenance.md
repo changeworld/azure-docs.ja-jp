@@ -20,6 +20,8 @@
 
 # Azure Virtual Machines に対する計画的なメンテナンス
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 ## Azure が計画的なメンテナンスを実行する理由
 
 Microsoft Azure は、世界各地で定期的に更新を行い、仮想マシンの基盤となるホスト インフラストラクチャの信頼性、パフォーマンス、セキュリティの向上に努めています。これらの更新の多くは、仮想マシンや Cloud Services に影響を及ぼさずに実行されます (たとえば、メモリ保護更新など)。
@@ -118,4 +120,4 @@ Azure では、一連のリージョン ペアとしてリージョンがまと�
 [Virtual Machines Manage Availability]: virtual-machines-windows-tutorial.md
 [Understand planned versus unplanned maintenance]: virtual-machines-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -1,7 +1,7 @@
 <properties
 	pageTitle="機械学習アルゴリズム チート シート | Microsoft Azure"
 	description="印刷可能な機械学習アルゴリズム チート シートは、Azure Machine Learning Studio で予測モデルに適したアルゴリズムを選択するのに役立ちます。"
-	keywords="algorithm cheat sheet,cheat sheet,machine learning algorithm"
+	keywords="アルゴリズム チート シート、チート シート、Machine Learning アルゴリズム"
 	services="machine-learning"
 	documentationCenter=""
 	authors="brohrer"
@@ -28,18 +28,18 @@
 
 ## 機械学習アルゴリズム チート シートのダウンロード
 
-機械学習アルゴリズム チート シートをダウンロードし、ソリューションに適した機械学習アルゴリズムの選択方法を確認するのに役立てます。チート シートをタブロイド サイズ (11 x 17 インチ) で印刷し、手元に置いておくことができます。
+Machine Learning アルゴリズム チート シートをダウンロードし、ソリューションに適した機械学習アルゴリズムの選択方法を確認するのに役立てます。チート シートをタブロイド サイズ (11 x 17 インチ) で印刷し、手元に置いておくことができます。
 
 **チート シートをダウンロードする: [Microsoft Azure Machine Learning Algorithm Cheat Sheet](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
 
-![Machine Learning Algorithm Cheat Sheet : 機械学習アルゴリズムの選択方法][cheat-sheet]
+![Machine Learning Algorithm Cheat Sheet : Machine Learning アルゴリズムの選択方法][cheat-sheet]
 
 [cheat-sheet]: ./media/machine-learning-algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
 
 
 ## アルゴリズムに関するその他のヘルプ
 
-* さまざまな種類の機械学習アルゴリズムの詳細、その使用方法、このチート シートを使用して適切なアルゴリズムを選択する方法については、「[Microsoft Azure Machine Learning のアルゴリズムを選択する方法](machine-learning-algorithm-choice.md)」をご覧ください。
+* さまざまな種類の機械学習アルゴリズムの詳細、その使用方法、このチート シートを使用して適切なアルゴリズムを選択する方法については、「[Microsoft Azure Machine Learning のアルゴリズムを選択する方法](machine-learning-algorithm-choice.md)」を参照してください。
 * Machine Learning Studio で使用可能な機械学習アルゴリズムのカテゴリ別の一覧については、Machine Learning Studio アルゴリズムとモジュールのヘルプの[モデルの初期化][initialize-model]に関するページを参照してください。
 * Machine Learning Studio で使用可能なすべてのアルゴリズムとモジュールの一覧については、Machine Learning Studio アルゴリズムとモジュールのヘルプの「[Machine Learning Studio モジュールの一覧 (アルファベット順)][a-z-list]」を参照してください。
 * Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」参照してください。
@@ -87,4 +87,4 @@
 [k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
 [one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

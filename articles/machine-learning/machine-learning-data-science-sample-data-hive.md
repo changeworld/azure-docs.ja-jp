@@ -1,8 +1,7 @@
 <properties
 	pageTitle="Azure HDInsight Hive テーブル内のデータのサンプリング | Microsoft Azure"
-	description="Azure HDInsight Hive テーブルのデータのダウンサンプリング"
+	description="Azure HDInsight (Hadopop) Hive テーブルのデータをダウンサンプリングする"
 	services="machine-learning,hdinsight"
-	solutions=""
 	documentationCenter=""
 	authors="hangzh-msft"
 	manager="paulettm" 
@@ -14,12 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.date="10/20/2015"
 	ms.author="hangzh;bradsev" />
 
 # Azure HDInsight Hive テーブル内のデータのサンプリング
 
-分析しようとしているデータセットが大規模な場合、通常、ダウンサンプリングして、より小さく、しかし典型的なものにして、管理できるサイズにデータを縮小することは賢明なことです。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。Azure Machine Learning の Advanced Analytics Process and Technology (ADAPT) におけるその役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
+この**メニュー**は、多様なストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。このタスクは、Cortana Analytics Process (CAP) の 1 ステップです。
+
+[AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
+
+## はじめに
+
+分析しようとしているデータセットが大規模な場合、通常、ダウンサンプリングして、より小さく、しかし典型的なものにして、管理できるサイズにデータを縮小することは賢明なことです。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。Cortana Analytics Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
 
 この記事では、Hive クエリを使用して Azure HDInsight Hive テーブルのデータをダウンサンプリングする方法を説明します。一般的に使用されている 3 つのサンプリング方法である、
 
@@ -100,4 +105,4 @@ Hadoop クラスターのヘッド ノードで、Hadoop コマンド ライン 
 Hive で使用できるより高度なサンプリング方法については、「[LanguageManual Sampling (LanguageManual のサンプリング)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)」をご覧ください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

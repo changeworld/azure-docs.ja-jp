@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="10/09/2015"
+    ms.date="10/19/2015"
     ms.author="larryfr"/>
 
 # HDInsight での Script Action 開発
@@ -36,15 +36,18 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 
 - [Hadoop のバージョンを対象にする](#bPS1)
 - [スクリプト リソースへの安定したリンクの提供](#bPS2)
+- [プリコンパイル済みリソースの使用](#bPS4)
 - [クラスターのカスタマイズ スクリプトはべき等にする](#bPS3)
 - [クラスターのアーキテクチャの高可用性を確保](#bPS5)
 - [Azure BLOB ストレージを使用するカスタム コンポーネントの構成](#bPS6)
 - [STDOUT および STDERR に情報を書き込む](#bPS7)
 - [LF 行の終わりで、ファイルを ASCII として保存する](#bps8)
 
+> [AZURE.IMPORTANT]スクリプト アクションは 15 分以内に完了する必要があります。そうしないと、タイムアウトします。ノードのプロビジョニング時に、スクリプトは他のセットアップと構成のプロセスと同時に実行されます。CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
+
 ### <a name="bPS1"></a>Hadoop のバージョンを対象にする
 
-HDInsight のバージョンが異なれば、異なるバージョンの Hadoop サービスとコンポーネントがインストールされます。スクリプトに特定のバージョンのサービスまたはコンポーネントが期待される場合、必要なコンポーネントを含むバージョンの HDInsight スクリプトのみを使用する必要があります。HDInsight に含まれているコンポーネントのバージョンの情報は、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)」で確認できます。
+HDInsight のバージョンが異なれば、異なるバージョンの Hadoop サービスとコンポーネントがインストールされます。スクリプトに特定のバージョンのサービスまたはコンポーネントが期待される場合、必要なコンポーネントを含むバージョンの HDInsight スクリプトのみを使用する必要があります。HDInsight に含まれているコンポーネントのバージョンの情報は、[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)に関するドキュメントで確認できます。
 
 ### <a name="bPS2"></a>スクリプト リソースへの安定したリンクの提供
 
@@ -55,6 +58,10 @@ HDInsight のバージョンが異なれば、異なるバージョンの Hadoop
 > [AZURE.IMPORTANT]使用されるストレージ アカウントは、クラスターの既定のストレージ アカウントかその他のストレージ アカウントにおける読み取り専用のパブリック コンテナーのいずれかにする必要があります。
 
 たとえば、マイクロソフトから提供されるサンプルは、HDInsight チームによって管理される読み取り専用のパブリック コンテナーである、[https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) ストレージ アカウントに格納されています。
+
+### <a name="bPS4"></a>プリコンパイル済みリソースの使用
+
+スクリプトの実行にかかる時間を最小限に抑えるために、ソース コードからリソースをコンパイルする操作を行わないようにしてください。代わりに、リソースを事前にコンパイルし、バイナリ バージョンを Azure Blob ストレージに格納して、スクリプトからクラスターにすばやくダウンロードできるようにします。
 
 ### <a name="bPS3"></a>クラスターのカスタマイズ スクリプトはべき等にする
 
@@ -88,9 +95,9 @@ STDOUT および STDERR に書き込まれる情報はログに記録され、Am
 
         >&2 echo "An error occured installing Foo"
 
-これにより、STDOUT (既定の 1 であるため記載していません) に送信された情報が STDERR (2) にリダイレクトされます。IO リダイレクトの詳細については、 [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html) を参照してください。
+これにより、STDOUT (既定の 1 であるため記載していません) に送信された情報が STDERR (2) にリダイレクトされます。IO リダイレクトの詳細については、[http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html) を参照してください。
 
-Script Action によってログ記録される情報の表示の詳細については、「[Script Action を使用って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)」を参照してください。
+スクリプト アクションによってログに記録される情報の表示の詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)」を参照してください。
 
 ###<a name="bps8"></a>LF 行の終わりで、ファイルを ASCII として保存する
 
@@ -150,7 +157,7 @@ VARIABLENAME は、変数の名前です。この後に変数にアクセスす�
 
 クラスター (既定のストレージ アカウントなど) からアクセスできる Azure のストレージ アカウントにファイルを格納すると、このストレージが Azure ネットワーク内にあるため、アクセスが速くなります。
 
-## <a name="deployScript"></a>Script Action のデプロイ用チェックリスト
+## <a name="deployScript"></a>スクリプト アクションの展開用チェックリスト
 
 スクリプトのデプロイを準備する際に実行した手順を次に示します。
 
@@ -176,7 +183,7 @@ Microsoft は、HDInsight クラスターにコンポーネントをインスト
 - [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
 - [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)  
 
-> [AZURE.NOTE]上のリンクのドキュメントは、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースの HDInsight と連携するスクリプトについては、「[HDInsight での Script Action の開発 (Windows)](hdinsight-hadoop-script-actions.md)」を参照するか、各記事の上部にあるリンクを使用します。
+> [AZURE.NOTE]上のリンクのドキュメントは、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースの HDInsight と連携するスクリプトについては、[HDInsight でのスクリプト アクションの開発 (Windows)](hdinsight-hadoop-script-actions.md) に関する記述を参照するか、各記事の上部にあるリンクを使用します。
 
 ##トラブルシューティング
 
@@ -201,7 +208,7 @@ _解決_: これがテキスト エディターのオプションである場合
 
 __エラー__: `line 1: #!/usr/bin/env: No such file or directory`。
 
-_原因_: このエラーはスクリプトがバイト オーダー マーク (BOM) を含む UTF-8 で保存された場合に発生します。
+_原因_: このエラーはスクリプトがバイト オーダー マーク (BOM) を含む UTF-8 として保存された場合に発生します。
 
 _解決_: ファイルを ASCII として、または BOM なしの UTF-8 として保存します。Linux または Unix システムで次のコマンドを使用して、BOM なしの新しいファイルを作成することもできます。
 
@@ -213,4 +220,4 @@ _解決_: ファイルを ASCII として、または BOM なしの UTF-8 とし
 
 [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

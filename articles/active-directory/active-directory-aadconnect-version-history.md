@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="10/13/2015"
+   ms.date="10/20/2015"
    ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
@@ -42,12 +42,32 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 - Active Directory Connector での正しくないパスワードのために、一部の構成ではパスワード ライトバックが失敗します。
 - 属性フィルターで dn が使用されている場合、DirSync をアップグレードできません。
 
+**削除されたプレビュー機能:**
+
+- [ユーザーの書き戻し](active-directory-aadconnect-feature-preview.md#user-writeback)プレビュー機能は、プレビューを利用されているお客様からのフィードバックに基づいて一時的に削除されました。このプレビュー機能は、提供されたフィードバックに対処した後で、再度追加されます。
+
 ## 1\.0.8641.0
 リリース日: 2015 年 6 月
 
 **Azure AD Connect の最初のリリースです。**
 
 名前が Azure AD Sync から Azure AD Connect に変更されました。
+
+**新機能:**
+
+- [簡単設定](active-directory-aadconnect-get-started-express.md)を使用したインストール
+- [ADFS の構成](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs)
+- [DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
+- [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
+- [ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)の導入
+
+**新しいプレビュー機能:**
+
+- [ユーザーの書き戻し](active-directory-aadconnect-feature-preview.md#user-writeback)
+- [グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback)
+- [デバイスの書き戻し](active-directory-aadconnect-get-started-custom-device-writeback.md)
+- [ディレクトリ拡張機能](active-directory-aadconnect-feature-preview.md#directory-extensions)
+
 
 ## 1\.0.494.0501
 リリース日: 2015 年 5 月
@@ -96,7 +116,7 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 **新機能:**
 
-- 属性ベースのフィルターでのパスワード同期がサポートされるようになりました。詳細については、フィルターによるパスワード同期に関するページを参照してください。
+- 属性ベースのフィルターでのパスワード同期がサポートされるようになりました。詳細については、[フィルターによるパスワード同期](active-directory-aadconnectsync-configure-filtering.md)に関するページを参照してください。
 - 属性 msDS-ExternalDirectoryObjectID が AD に書き戻されます。これによって、ハイブリッド Exchange デプロイでオンラインとオンプレミスの両方のメールボックスにアクセスするために OAuth2 を使用する Office 365 アプリケーションのサポートが追加されます。
 
 **修正されたアップグレードの問題:**
@@ -140,4 +160,4 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

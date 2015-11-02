@@ -52,9 +52,13 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 アプリケーションに SendGrid NuGet パッケージをインストールするには、次のステップを行います。
 
-1.  新しいプロジェクトを作成します。![新しいプロジェクトを作成する][create-new-project]
+1.  新しいプロジェクトを作成します。
 
-2.  テンプレートを選択します。![テンプレートの選択][select-a-template]
+    ![新しいプロジェクトを作成する][create-new-project]
+
+2.  テンプレートを選択します。
+
+    ![テンプレートの選択][select-a-template]
 
 3.  **[ソリューション エクスプローラー]** で、**[参照]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
@@ -258,4 +262,4 @@ SendGrid の Web ベース API と webhook を使用して、Azure アプリケ�
   [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

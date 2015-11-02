@@ -1,14 +1,14 @@
 <properties 
 	pageTitle="Azure App Service での認証には、Active Directory を使用します" 
 	description="Azure アプリ サービスの Web アプリにデプロイされている基幹業務アプリケーションのさまざまな認証オプションと承認オプションについて説明します。" 
-	services="app-service\web" 
+	services="app-service" 
 	documentationCenter="" 
 	authors="cephalin" 
 	manager="wpickett" 
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
+	ms.service="app-service" 
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
@@ -53,4 +53,4 @@
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

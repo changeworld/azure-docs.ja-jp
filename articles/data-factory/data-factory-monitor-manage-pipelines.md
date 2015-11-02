@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/27/2015" 
+	ms.date="10/20/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory のパイプラインの監視と管理
@@ -40,7 +40,7 @@ Data Factory のダイアグラム ビューでは、Data Factory とその資�
 
 Data Factory のダイアグラム ビューを表示するには、Data Factory のホーム ページで **[ダイアグラム]** をクリックします。
 
-![Diagram view](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
+![[ダイアグラム] ビュー](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
 拡大、縮小、ウィンドウのサイズに合わせて大きさを変更、100% に拡大、ダイアグラムのレイアウトのロック、パイプラインとテーブルの自動的な配置、系列情報の表示 (選択した項目の上位項目や下位項目の表示) などが可能です。
  
@@ -297,8 +297,8 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 -------------- | ------ | ----------
 RunStarted | 開始済み | Starting
 RunFinished | Failed / Succeeded | <p>FailedResourceAllocation</p><p>Succeeded</p><p>FailedExecution</p><p>TimedOut</p><p><Canceled/p><p>FailedValidation</p><p>Abandoned</p>
-SliceOnTime | In Progress | Ontime
-SliceDelayed | In Progress | Late
+SliceOnTime | 進行中 | Ontime
+SliceDelayed | 進行中 | Late
 OnDemandClusterCreateStarted | 開始済み
 OnDemandClusterCreateSuccessful | Succeeded
 OnDemandClusterDeleted | Succeeded
@@ -475,4 +475,4 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-monitor-manage-pipelines.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

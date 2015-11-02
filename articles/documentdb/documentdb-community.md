@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="10/12/2015"
+  ms.date="10/20/2015"
   ms.author="andrl"/>
 
 # コミュニティ ポータル
@@ -126,7 +126,8 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 | ------------------------------------------- | ------------------ | ------- |
 | Integration User Group | 2015 年 10 月 5 日 | [医療の統合のための Azure DocumentDB](http://www.integrationusergroup.com/?event=azure-documentdb-and-biztalk) |
 | DX Italy - #TecHeroes | 2015 年 10 月 2 日 | [#TecHeroes - DocumentDB](https://channel9.msdn.com/Shows/TecHeroes/TecHeroes-DocumentDB) |
-| .NET Rocks! Podcast | 2015 年 9 月 29 日 | [Data on DocumentDB with Ryan CrawCour (Ryan CrawCour が提供する DocumentDB に関するデータ)](https://www.dotnetrocks.com/?show=1197) |
+| Microsoft Cloud Show - Podcast | 2015 年 9 月 30 日 | [エピソード 099 - Azure DocumentDB with Andrew Liu (Azure DocumentDB に関する Andrew Liu とのトーク)](http://www.microsoftcloudshow.com/podcast/Episodes/099-azure-documentdb-with-andrew-liu) |
+| .NET Rocks! - Podcast | 2015 年 9 月 29 日 | [Data on DocumentDB with Ryan CrawCour (Ryan CrawCour が提供する DocumentDB に関するデータ)](https://www.dotnetrocks.com/?show=1197) |
 | Data Exposed | 2015 年 9 月 28 日 | [What's New with Azure DocumentDB Since GA (GA 以降の Azure DocumentDB の新機能)](https://channel9.msdn.com/Shows/Data-Exposed/Whats-New-with-Azure-DocumentDB-Since-GA) |
 | The Azure Podcast | 2015 年 9 月 17 日 | [Episode 94: azpodcast.com re-architecture (エピソード 94: azpodcast.com の再アーキテクチャ)](http://azpodcast.azurewebsites.net/post/Episode-94-azpodcastcom-re-architecture) |
 | Cloud Cover | 2015 年 9 月 4 日 | [Episode 185: DocumentDB Updates with Ryan CrawCour (Ryan CrawCour が提供する DocumentDB の最新情報)](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-185-DocDB-Updates-with-Ryan-CrawCour) |
@@ -142,7 +143,7 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | ラーニング パートナー | 説明 |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://www.microsoftvirtualacademy.com/JA-JP/training-courses/developing-solutions-with-azure-documentdb-10554) | [**Microsoft Virtual Academy**](https://www.microsoftvirtualacademy.com/JA-JP/training-courses/developing-solutions-with-azure-documentdb-10554)<br/><br/>Microsoft Virtual Academy では、Azure DocumentDB の構築を支援する人々によるトレーニングを提供しています。 |
+| [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://www.microsoftvirtualacademy.com/ja-JP/training-courses/developing-solutions-with-azure-documentdb-10554) | [**Microsoft Virtual Academy**](https://www.microsoftvirtualacademy.com/ja-JP/training-courses/developing-solutions-with-azure-documentdb-10554)<br/><br/>Microsoft Virtual Academy では、Azure DocumentDB の構築を支援する人々によるトレーニングを提供しています。 |
 | [![Pluralsight](./media/documentdb-community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction) | [**Pluralsight**](http://www.pluralsight.com/courses/azure-documentdb-introduction)<br/><br/>Pluralsight は、Azure トレーニングを提供する Microsoft の主要パートナーです。MSDN サブスクライバーの場合、特典を使って Microsoft Azure トレーニングにアクセスしてください。 |
 | [![OpsGility](./media/documentdb-community/opsgility.png)](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) | [**OpsGility**](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb)<br/><br/>OpsGility は、Microsoft Azure の詳細なテクニカル トレーニングを提供します。業界で定評のあるトレーナーによるインストラクター主導のトレーニングを、オンサイトまたはリモート クラスルームで受けることができます。 |
 
@@ -184,7 +185,7 @@ Twitter で [@DocumentDB](https://twitter.com/DocumentDB) をフォローし、[
 
 | | |
 | -------------------------------------------------------- | --- |
-|![チーム](./media/documentdb-community/documentdb-team.png) | 技術的なサポートが必要ですか? ご不明な点がありますか? NoSQL が適合するかどうか不安に感じていますか?<br/><br/>[DocumentDB エンジニアリング チームとの 1 対 1 の直接のチャットをスケジュールすることができます](http://www.askdocdb.com/)。<br/><br/>[また、電子メール](mailto:askdocdb@microsoft.com)でのお問い合わせや、[@DocumentDB](https://twitter.com/DocumentDB) でのツイートも可能です。 |
+|![チーム](./media/documentdb-community/documentdb-team.png) | 技術的なサポートが必要ですか? ご不明な点がありますか? NoSQL が適合するかどうか不安に感じていますか?<br/><br/>[DocumentDB エンジニアリング チームとの 1 対 1 の直接のチャットをスケジュール](http://www.askdocdb.com/)することができます。<br/><br/>[また、電子メール](mailto:askdocdb@microsoft.com)でのお問い合わせや、[@DocumentDB](https://twitter.com/DocumentDB) でのツイートも可能です。 |
 
 
 <br/><br/>
@@ -211,6 +212,6 @@ Twitter で [@DocumentDB](https://twitter.com/DocumentDB) をフォローし、[
 | ------------------- | ------------------------------------------------------------------------------------------------- | ------- |
 | ドキュメント | [azure-content](https://github.com/Azure/azure-content/tree/master/articles/documentdb) | [ドキュメント Web サイト](https://azure.microsoft.com/documentation/services/documentdb/) |
 | Hadoop コネクタ | [azure-documentdb-hadoop](https://github.com/Azure/azure-documentdb-hadoop) | [Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-documentdb-hadoop%22) |
-| データ移行ツール | [azure-documentdb-datamigrationtool](https://github.com/Azure/azure-documentdb-datamigrationtool) | [Microsoft ダウンロード センター](http://www.microsoft.com/JA-JP/download/details.aspx?id=46436) |
+| データ移行ツール | [azure-documentdb-datamigrationtool](https://github.com/Azure/azure-documentdb-datamigrationtool) | [Microsoft ダウンロード センター](http://www.microsoft.com/ja-JP/download/details.aspx?id=46436) |
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

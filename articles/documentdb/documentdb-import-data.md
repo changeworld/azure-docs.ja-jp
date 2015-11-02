@@ -2,7 +2,7 @@
 	pageTitle="DocumentDB へのデータのインポート | Microsoft Azure" 
 	description="オープン ソースの DocumentDB データ移行ツールを使用して、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、DocumentDB コレクションなど、さまざまなソースからデータを DocumentDB にインポートする方法について説明します。" 
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="andrewhoh" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=""/>
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/10/2015" 
-	ms.author="stbaro"/>
+	ms.date="10/16/2015" 
+	ms.author="anhoh"/>
 
 # DocumentDB にデータをインポートする #
 
@@ -35,7 +35,7 @@
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-- [Microsoft .NET Framework 4.51](http://www.microsoft.com/net/downloads) 以降
+- [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) 以降
 
 ##<a id="Overviewl"></a>DocumentDB データ移行ツールの概要 ##
 
@@ -477,4 +477,4 @@ DocumentDB JSON エクスポーターを使用して、使用可能な任意の�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

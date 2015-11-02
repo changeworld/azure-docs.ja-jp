@@ -1,19 +1,19 @@
-<properties
-	pageTitle="ベスト プラクティス: Azure AD Password Management | Microsoft Azure"
-	description="Azure Active Directory での Password Management のデプロイと使用のベスト プラクティス、サンプル エンド ユーザー マニュアル、およびトレーニング ガイドです。"
-	services="active-directory"
-	documentationCenter=""
-	authors="asteen"
-	manager="kbrint"
+<properties 
+	pageTitle="ベスト プラクティス: Azure AD Password Management | Microsoft Azure" 
+	description="Azure Active Directory での Password Management のデプロイと使用のベスト プラクティス、サンプル エンド ユーザー マニュアル、およびトレーニング ガイドです。" 
+	services="active-directory" 
+	documentationCenter="" 
+	authors="asteen" 
+	manager="kbrint" 
 	editor="billmath"/>
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/18/2015" 
+<tags 
+	ms.service="active-directory" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/08/2015" 
 	ms.author="asteen"/>
 
 # Password Management のデプロイとユーザー トレーニング
@@ -24,6 +24,7 @@
   * [認証データを管理者が設定する方法](#ways-to-populate-authentication-data)
 * [**パスワード リセットを組織内に展開する最善の方法**](#what-is-the-best-way-to-roll-out-password-reset-for-users)
   * [電子メール ベースの展開 + サンプル メール通信](#email-based-rollout)
+  * [ユーザー用に独自のカスタム パスワード管理ポータルを作成する](#creating-your-own-password-portal)
   * [ユーザーのサインイン時に登録を強制する強制登録の使用方法](#using-enforced-registration)
   * [ユーザー アカウントの認証データをアップロードする方法](#uploading-data-yourself)
 * [**サンプル ユーザーとサポート トレーニング資料 (準備中)**](#sample-training-materials)
@@ -46,7 +47,7 @@
 ### 認証データを設定する方法
 組織内のユーザーがパスワード リセットで使用するデータを指定する方法はいくつかあります。
 
-- [Azure 管理ポータル](https://manage.windowsazure.com)または[ Office 365 管理ポータル](https://portal.microsoftonline.com)でユーザーを編集する
+- [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)または[ Office 365 管理ポータル](https://portal.microsoftonline.com)でユーザーを編集する
 - AADSync を使用して、ユーザー プロパティをオンプレミスの Active Directory ドメインから Azure AD に同期する
 - Windows PowerShell を使用してユーザーのプロパティを編集する
 - ユーザーが登録ポータル ([http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)) に移動できるように設定して、自分のデータを登録してもらう
@@ -57,10 +58,10 @@
 ## ユーザーにパスワード リセットを展開する最善の方法
 パスワード リセットの一般的な展開手順を次に示します。
 
-1.	[Azure 管理ポータル](https://manage.windowsazure.com)で、**[構成]** タブに移動し、**[パスワードのリセットが有効になっているユーザー]** オプションで **[はい]** を選択することで、ディレクトリでパスワード リセットを有効にします。
-2.	[Azure 管理ポータル](https://manage.windowsazure.com)で、**[ライセンス]** タブに移動し、パスワード リセットを許可するユーザーに適切なライセンスを割り当てます。
+1.	[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で、**[構成]** タブに移動し、**[パスワードのリセットが有効になっているユーザー]** オプションで **[はい]** を選択することで、ディレクトリでパスワード リセットを有効にします。
+2.	[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で、**[ライセンス]** タブに移動し、パスワード リセットを許可するユーザーに適切なライセンスを割り当てます。
 3.	必要に応じて、**[パスワード リセットへのアクセスの制限]** オプションを **[はい]** に設定し、パスワード リセットを有効にするセキュリティ グループを選択することで、パスワード リセットをユーザー グループに制限して、この機能を時間をかけて展開します (これらのユーザーにはライセンスが割り当てられている必要があります)。
-4.	登録手順を説明した電子メールをユーザーに送信するかアクセス パネルでの強制登録を有効にすることで、ユーザーにパスワード リセットを使用するように指示します。または、DirSync、PowerShell、[Azure 管理ポータル](https://manage.windowsazure.com)を使用して、ユーザー用の適切な認証データを管理者がアップロードします。詳細は後述します。
+4.	登録手順を説明した電子メールをユーザーに送信するかアクセス パネルでの強制登録を有効にすることで、ユーザーにパスワード リセットを使用するように指示します。または、DirSync、PowerShell、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)を使用して、ユーザー用の適切な認証データを管理者がアップロードします。詳細は後述します。
 5.	時間の経過したら、[レポート] タブに移動し、[**[パスワード リセット登録アクティビティ]**](active-directory-passwords-get-insights.md#view-password-reset-registration-activity) レポートを表示して、ユーザーの登録状況を確認します。
 6.	十分な数のユーザーが登録されたら、[レポート] タブに移動し、[**[パスワード リセット アクティビティ]**](active-directory-passwords-get-insights.md#view-password-reset-activity) レポートを表示して、ユーザーによるパスワード リセットの使用状況を確認します。
 
@@ -72,6 +73,17 @@
   ![][001]
 
 電子メール テンプレートを[ここ](http://1drv.ms/1xWFtQM)からダウンロードできます。
+
+### 独自のパスワードのポータルを作成する
+パスワード管理機能をデプロイする多くの顧客にとって有効な 1 つの手法は、1 つの場所でパスワードに関係するすべてのことを管理するのに使用できる単一の「パスワード ポータル」を作成することです。
+
+最大規模のお客様の多くは、Azure AD パスワード リセット ポータル、パスワード リセット登録ポータル、およびパスワード変更ページへのリンクを使用して、https://passwords.contoso.com のようなルート DNS エントリを作成する方法を選択します。この方法では、ユーザーがサービスの使用を開始するまでに少し時間がある場合にアクセス可能な覚えやすい URL を 1 つ、送信する任意の電子メールまたは広告に含めることができます。
+
+ここでは、最新の応答性の高い UI 設計パラダイムを使用する単純なページを作成してあります。これは、すべてのブラウザーおよびモバイル デバイスで動作します。
+
+  ![][007]
+  
+[ここで Web サイト テンプレートをダウンロードする](https://github.com/kenhoff/password-reset-page)ことができます。組織のニーズに合わせてロゴおよび色をカスタマイズすることをお勧めします。
 
 ### 強制登録の使用
 ユーザー自身にパスワード リセットの登録を行ってもらう場合は、ユーザーがアクセス パネル ([http://myapps.microsoft.com](http://myapps.microsoft.com)) にサインインしたときに、登録を強制することもできます。このオプションは、ディレクトリの **[構成]** タブで **[ユーザーが初めてアクセス パネルにサインインするときに登録を要求しますか?]** オプションを有効にすることで、有効にできます。
@@ -93,17 +105,17 @@
 
 AAD Connect または Windows PowerShell を使用して設定できるプロパティについては、「[パスワードのリセットで使用されるデータ](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset)] を参照してください。
 
-認証データは、次の手順に従って、[Azure 管理ポータル](https://manage.windowsazure.com)でアップロードできます。
+認証データは、次の手順に従って、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)でアップロードできます。
 
-1.	[Azure 管理ポータル](https://manage.windowsazure.com)の **[Active Directory 拡張機能]** で、ディレクトリに移動します。
+1.	[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の **[Active Directory 拡張機能]** で、ディレクトリに移動します。
 2.	**[ユーザー]** タブをクリックします。
 3.	対象のユーザーを一覧から選択します。
-4.	最初のタブに、パスワードのリセットを有効にするためのプロパティとして使用できる **[連絡用メール アドレス]** が表示されます。
+4.	最初のタブに、パスワードのリセットを有効にするためのプロパティとして使用できる **[連絡用メール アドレス]** が表示されます。 
 
     ![][005]
 
 5.	**[勤務先の情報]** タブをクリックします。
-6.	ページに、**[会社電話]**、**[携帯電話]**、**[認証用電話]**、および **[認証用メール]** が表示されます。これらのプロパティを設定して、ユーザーがパスワードをリセットできるようにすることも可能です。
+6.	ページに、**[会社電話]**、**[携帯電話]**、**[認証用電話]**、および **[認証用メール]** が表示されます。これらのプロパティを設定して、ユーザーがパスワードをリセットできるようにすることも可能です。 
 
     ![][006]
 
@@ -136,5 +148,6 @@ AAD Connect または Windows PowerShell を使用して設定できるプロパ
 [004]: ./media/active-directory-passwords-best-practices/004.jpg "Image_004.jpg"
 [005]: ./media/active-directory-passwords-best-practices/005.jpg "Image_005.jpg"
 [006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
+[007]: ./media/active-directory-passwords-best-practices/007.jpg "Image_007.jpg"
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

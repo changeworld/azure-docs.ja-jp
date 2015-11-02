@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/24/2015"
+	ms.date="10/20/2015"
 	ms.author="adegeo"/>
 
 
@@ -70,4 +70,4 @@ Virtual Machines は、インストール後に証明書の秘密キーにアク
 ## 次のステップ
 [サービス定義 XML](https://msdn.microsoft.com/library/azure/ee758711.aspx) スキーマと [サービス構成 XML](https://msdn.microsoft.com/library/azure/ee758710.aspx) スキーマを確認します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

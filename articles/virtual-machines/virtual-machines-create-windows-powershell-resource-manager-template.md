@@ -25,9 +25,7 @@ Windows ベースの Azure 仮想マシンは、Azure PowerShell からリソー
 
 ![](./media/virtual-machines-create-windows-powershell-resource-manager-template/windowsvm.png)
 
-実際の作業を開始する前に、Azure PowerShell が構成され、準備が整っていることを確認してください。
-
-[AZURE.INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
+[AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
 
 ## Azure PowerShell を使用してリソース マネージャー テンプレートで Windows 仮想マシンを作成する
 
@@ -290,4 +288,4 @@ Azure のデプロイ名、リソース グループ名、Azure データ セン
 
 [Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

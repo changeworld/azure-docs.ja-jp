@@ -13,12 +13,23 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="09/14/2015"
+   ms.date="10/18/2015"
    ms.author="yuemlu"/>
 
 # Azure ゲスト OS 
 
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## 10 月のゲスト OS
+
+| セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
+| MS15-106 | [3096441] | Internet Explorer 用の累積的なセキュリティ更新プログラム | 4\.25、3.32、2.44 | 2015 年 10 月 13 日 |
+| MS15-108 | [3089659] | 潜在的なリモートでのコード実行に対処する JScript および VBScript 用のセキュリティ更新プログラム | 2\.44 | 2015 年 10 月 13 日 |
+| MS15-109 | [3096443] | リモートでのコード実行に対処する Windows Shell 用のセキュリティ更新プログラム | 4\.25、3.32、2.44 | 2015 年 10 月 13 日 |
+| MS15-111 | [3096447] | 特権の昇格に対処する Windows カーネル用のセキュリティ更新プログラム | 4\.25、3.32、2.44 | 2015 年 10 月 13 日 |
+| マイクロソフト セキュリティ アドバイザリ | [3092627] | セキュリティ更新プログラム 3076895 のインストール後に Windows またはアプリケーションがフリーズする問題を修正するための 2015 年 9 月の更新プログラム | 4\.25、3.32、2.44 | 2015 年 10 月 13 日 |
+
 
 ## 9 月のゲスト OS
 
@@ -172,6 +183,12 @@
 | 該当なし | [2896881][2896881] | Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い | 4\.15、3.22、2.34 | 2015 年 1 月 13 日 |
 
 
+[3096441]: http://support.microsoft.com/kb/3096441
+[3089659]: http://support.microsoft.com/kb/3089659
+[3096443]: http://support.microsoft.com/kb/3096443
+[3096447]: http://support.microsoft.com/kb/3096447
+[3092627]: http://support.microsoft.com/kb/3092627
+
 [3088903]: http://support.microsoft.com/kb/3088903
 [3089548]: http://support.microsoft.com/kb/3089548
 [3072595]: http://support.microsoft.com/kb/3072595
@@ -208,7 +225,7 @@
 
 [MS15-034]: https://technet.microsoft.com/library/security/MS15-034
 
-[3042553]: https://support.microsoft.com/ja-jp/kb/3042553/
+[3042553]: https://support.microsoft.com/ja-JP/kb/3042553/
 
 [3034682]: http://support.microsoft.com/kb/3034682
 [3036220]: http://support.microsoft.com/kb/3036220
@@ -288,4 +305,4 @@
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

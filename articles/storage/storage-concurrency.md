@@ -3,8 +3,8 @@
 	description="BLOB、キュー、テーブル、およびファイル サービスの同時実行制御を管理する方法" 
 	services="storage" 
 	documentationCenter="" 
-	authors="tamram" 
-	manager="adinah" 
+	authors="jasonnewyork" 
+	manager="tadb" 
 	editor=""/>
 
 <tags 
@@ -14,7 +14,7 @@
 	ms.devlang="dotnet" 
 	ms.topic="article" 
 	ms.date="09/03/2015" 
-	ms.author="tamram"/>
+	ms.author="jahogg"/>
 
 # Microsoft Azure Storage での同時実行制御の管理
 
@@ -88,12 +88,12 @@ Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、*
 
 操作 |コンテナーの ETag 値を返す|	条件ヘッダーを受け取る|
 ------------|-----------------------|------------------------------------|
-Create Container|	あり|	いいえ|
-Get Container Properties|	あり|	いいえ|
-Get Container Metadata|	あり|	いいえ|
-Set Container Metadata|	あり|	あり|
-Get Container ACL|	あり|	いいえ|
-Set Container ACL|	あり|	あり (*)| Delete Container| なし| あり| Lease Container| あり| あり| List BLOB| なし| なし 
+コンテナーの作成|	あり|	いいえ|
+コンテナーのプロパティの取得|	あり|	いいえ|
+コンテナーのメタデータの取得|	あり|	いいえ|
+コンテナーのメタデータの設定|	あり|	あり|
+コンテナー ACL の取得|	あり|	いいえ|
+コンテナー ACL の設定|	あり|	あり (*)| Delete Container| なし| あり| Lease Container| あり| あり| List BLOB| なし| なし 
 
 (*) SetContainerACL で定義されたアクセス許可はキャッシュされます。このアクセス許可の更新の伝達には 30 秒間かかり、その間は更新の整合性は保証されません。
 
@@ -150,16 +150,16 @@ BLOB をロックして排他的に使用する場合は、[リース](http://ms
 
 -   Put Blob
 -	Get Blob
--	Get Blob Properties
--	Set Blob Properties
--	Get Blob Metadata
--	Set Blob Metadata
--	Delete Blob
+-	BLOB のプロパティの取得
+-	BLOB のプロパティの設定
+-	BLOB のメタデータの取得
+-	BLOB のメタデータの設定
+-	BLOB の削除
 -	Put Block
 -	Put Block List
 -	Get Block List
 -	Put Page
--	Get Page Ranges
+-	ページ範囲の取得
 -	Snapshot Blob - リースが存在する場合にオプションでリース ID を使用
 -	Copy Blob - コピー先の BLOB でリースが存在する場合はリース ID が必要
 -	Abort Copy Blob - コピー先の BLOB で無制限のリースが存在する場合はリース ID が必要
@@ -170,12 +170,12 @@ BLOB をロックして排他的に使用する場合は、[リース](http://ms
 
 次のコンテナー操作では、ペシミスティック同時実行制御の管理にリースを使用できます。
 
--	Delete Container
--	Get Container Properties
--	Get Container Metadata
--	Set Container Metadata
--	Get Container ACL
--	Set Container ACL
+-	コンテナーの削除
+-	コンテナーのプロパティの取得
+-	コンテナーのメタデータの取得
+-	コンテナーのメタデータの設定
+-	コンテナー ACL の取得
+-	コンテナー ACL の設定
 -	Lease Container  
 
 詳細情報
@@ -222,13 +222,13 @@ customer.ETag = "*";
 
 操作 |ETag 値を返す |If-Match 要求ヘッダーが必須|
 ------------|-------------------|--------------------------------|
-Query Entities|	あり|	いいえ|
-Insert Entity|	あり|	いいえ|
-Update Entity|	あり|	あり|
-Merge Entity|	あり|	あり|
-Delete Entity|	いいえ|	あり|
-Insert or Replace Entity|	あり|	いいえ|
-Insert or Merge Entity|	あり|	いいえ 
+エンティティのクエリ|	あり|	いいえ|
+エンティティの挿入|	あり|	いいえ|
+エンティティの更新|	あり|	あり|
+エンティティの統合|	あり|	あり|
+エンティティの削除|	いいえ|	あり|
+エンティティの挿入または置換|	あり|	いいえ|
+エンティティの挿入または統合|	あり|	いいえ 
 
 **Insert or Replace Entity** および **Insert or Merge Entity** の各操作では、ETag の値は Table サービスに送信されないため、同時実行制御の確認は*行われません*。
 
@@ -273,4 +273,4 @@ Azure Storage の詳細については、以下を参照してください。
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

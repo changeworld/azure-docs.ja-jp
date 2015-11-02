@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/15/2015"
+   ms.date="10/20/2015"
    ms.author="liviodlc"/>
 
 #チュートリアル: Azure Active Directory と Salesforce を統合する方法
@@ -48,29 +48,29 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 1. [Azure 管理ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-	![Select Active Directory from the left navigation pane.][0]
+	![左側のナビゲーション ウィンドウから [Active Directory] を選択][0]
 
 2. **[ディレクトリ]** ボックスの一覧から、Salesforce を追加するディレクトリを選択します。
 
 3. 上部のメニューで **[アプリケーション]** をクリックします。
 
-	![Click on Applications.][1]
+	![[アプリケーション] をクリック][1]
 
 4. ページの下部にある **[追加]** をクリックします。
 
-	![Click Add to add a new application.][2]
+	![[追加] をクリックして新しいアプリケーションを追加][2]
 
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-	![Click Add an application from the gallery.][3]
+	![[ギャラリーからアプリケーションを追加] をクリック][3]
 
 6. **検索ボックス**に「**Salesforce**」と入力します。次に、結果の一覧から **[Salesforce]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-	![Add Salesforce.][4]
+	![Salesforce の追加][4]
 
 7. これで、Salesforce の [クイック スタート] ページが表示されます。
 
-	![Salesforce's Quick Start page in Azure AD][5]
+	![Azure AD の Salesforce の [クイック スタート] ページ][5]
 
 ##手順 2. シングル サインオンを有効にする
 
@@ -78,11 +78,11 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 2. Azure AD の Salesforce の [クイック スタート] ページで、**[シングル サインオンの構成]** ボタンをクリックします。
 
-	![The configure single sign-on button][6]
+	![[シングル サインオンの構成] ボタン][6]
 
 3. ダイアログが開き、ユーザーが Salesforce にサインオンする方法について質問する画面が表示されます。 **[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-	![Select Azure AD Single Sign-On][7]
+	![Azure AD Single Sign-On 選択肢][7]
 
 	> [AZURE.NOTE]さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)してください。
 
@@ -90,35 +90,35 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
  - エンタープライズ アカウント: `https://<domain>.my.salesforce.com`
  - 開発者アカウント: `https://<domain>-dev-ed.my.salesforce.com` 
 
-	![Type in your Sign On URL][8]
+	![自分のサインオン URL を入力][8]
 
 5. **[Salesforce でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
-	![Download certificate][9]
+	![証明書のダウンロード][9]
 
 6. ブラウザーで新しいタブを開き、Salesforce の管理者アカウントにログインします。
 
 7. **[管理者]** ナビゲーション ウィンドウで **[セキュリティ コントロール]** をクリックし、関連するセクションを展開します。次に、**[シングル サインオンの設定]** をクリックします。
 
-	![Click on Single Sign-On Settings under Security Controls][10]
+	![[セキュリティ コントロール] から [シングル サインオンの設定] をクリック][10]
 
 8. **[シングル サインオンの設定]** ページで **[編集]** ボタンをクリックします。
 
-	![Click the Edit button][11]
+	![[編集] ボタンをクリック][11]
 
 	> [AZURE.NOTE]Salesforce アカウント用のシングル サインオン設定を有効にできない場合は、必要に応じて、この機能を有効にするために Salesforce のサポートにお問い合わせください。
 
 9. **[SAML 有効]** を選択し、**[保存]** をクリックします。
 
-	![Select SAML Enabled][12]
+	![[SAML 有効] を選択][12]
 
 10. SAML のシングル サインオン設定を構成するには、**[新規]** をクリックします。
 
-	![Select SAML Enabled][13]
+	![[SAML 有効] を選択][13]
 
 11. **[SAML シングル サインオン設定の編集]** ページで、次の構成を行います。
 
-	![Screenshot of the configurations that you should make][14]
+	![作成すべき構成のスクリーンショット][14]
 
  - **[名前]** フィールドに、この構成の表示名を入力します。**[名前]** の値を指定すると、**[API 名]** ボックスが自動的に入力されます。
 
@@ -142,25 +142,25 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 12. Salesforce の左側のナビゲーション ウィンドウで、**[ドメインの管理]** をクリックして関連するセクションを展開し、**[マイ ドメイン]** をクリックします。
 
-	![Click on My Domain][15]
+	![[マイ ドメイン] をクリック][15]
 
 13. **[認証の構成]** セクションまで下へスクロールし、**[編集]** ボタンをクリックします。
 
-	![Click the Edit button][16]
+	![[編集] ボタンをクリック][16]
 
 14. **[認証サービス]** セクションで SAML SSO 構成の表示名を選択し、**[保存]** をクリックします。
 
-	![Select your SSO configuration][17]
+	![自分の SSO 構成を選択][17]
 
 	> [AZURE.NOTE]複数の認証サービスを選択した場合、ユーザーが Salesforce 環境へのシングル サインオンを開始しようとすると、サインインに使用する認証サービスを選択するよう要求されます。このメッセージが表示されないようにするには、**その他すべての認証サービスをオフのままに**しておいてください。
 
 15. Salesforce にアップロードした証明書を有効にするには、Azure AD でシングル サインオンの構成確認のチェック ボックスをオンにします。その後、**[次へ]** をクリックします。
 
-	![Check the confirmation checkbox][18]
+	![確認のチェックボックスにチェックを入れる][18]
 
 16. ダイアログの最後のページでは、このシングル サインオン構成のメンテナンスに関連するエラーと警告の電子メール通知を受信する場合、電子メール アドレスを入力します。
 
-	![Type in your email address.][19]
+	![自分のメール アドレスを入力][19]
 
 17. **[完了]** をクリックしてダイアログを閉じます。構成をテストするには、「[Salesforce にユーザーを割り当てる](#step-4-assign-users-to-salesforce)」というタイトルの以下のセクションを参照してください。
 
@@ -168,35 +168,35 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 1. Azure AD の Salesforce の [クイック スタート] ページで、**[ユーザー プロビジョニングの構成]** ボタンをクリックします。
 
-	![Click the Configure User Provisioning button][20]
+	![[ユーザー プロビジョニングの構成] ボタンをクリック][20]
 
 2. **[ユーザー プロビジョニングの構成]** ダイアログで、Salesforce の管理者のユーザー名とパスワードを入力します。
 
-	![Type in your admin username or password][21]
+	![管理者のユーザー名またはパスワードを入力][21]
 
 	> [AZURE.NOTE]運用環境を構成している場合は、特にこの手順で Salesforce の新しい管理者アカウントを作成することをお勧めします。このアカウントには、Salesforce の**システム管理者**プロファイルが割り当てられている必要があります。
 
 3. Salesforce のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce の管理者アカウントにサインインします。ページの右上にある自分の名前をクリックし、**[個人の設定]** をクリックします。
 
-	![Click on your name, then click on My Settings][22]
+	![自分の名前をクリックして、[個人の設定] をクリック][22]
 
 4. 左側のナビゲーション ウィンドウで **[個人用]** をクリックして関連するセクションを展開し、**[個人のセキュリティ トークンのリセット]** をクリックします。
 
-	![Click on your name, then click on My Settings][23]
+	![自分の名前をクリックして、[個人の設定] をクリック][23]
 
 5. **[個人のセキュリティ トークンのリセット**] ページで、**[セキュリティ トークンのリセット]** ボタンをクリックします。
 
-	![Read the warnings.][24]
+	![警告文を確認][24]
 
 6. この管理アカウントに関連付けられている電子メールの受信トレイを確認します。新しいセキュリティ トークンが記載された Salesforce.com からの電子メールを探します。
 
 7. トークンをコピーして Azure AD のウィンドウに移動し、**[ユーザー セキュリティ トークン]** フィールドに貼り付けます。その後、**[次へ]** をクリックします。
 
-	![Paste in the security token][25]
+	![セキュリティ トークンへの貼り付け][25]
 
 8. 確認ページで、プロビジョニング エラー発生時の電子メール通知の受信を選択できます。**[完了]** をクリックしてダイアログを閉じます。
 
-	![Type in your email address to receive notifications][26]
+	![お知らせを受け取るメール アドレスを入力][26]
 
 ##手順 4. Salesforce にユーザーを割り当てる
 
@@ -204,7 +204,7 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 2. Salesforce の [クイック スタート] ページで **[ユーザーの割り当て]** ボタンをクリックします。
 
-	![Click on Assign Users][27]
+	![[ユーザーの割り当て] をクリック][27]
 
 3. テスト ユーザーを選択し、画面の下部にある **[割り当て]** ボタンをクリックします。
 
@@ -253,4 +253,4 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 [28]: ./media/active-directory-saas-salesforce-tutorial/assign-confirm.png
 [29]: ./media/active-directory-saas-salesforce-tutorial/assign-sf-profile.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

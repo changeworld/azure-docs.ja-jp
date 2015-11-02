@@ -1,8 +1,7 @@
 <properties
-	pageTitle="Advanced Analytics Process and Technology の活用: SQL Server を使用する | Microsoft Azure"
+	pageTitle="Cortana Analytics Process の活用: SQL Server を使用する | Microsoft Azure"
 	description="Advanced Analytics Process and Technology の活用"  
 	services="machine-learning"
-	solutions=""
 	documentationCenter=""
 	authors="msolhab"
 	manager="paulettm"
@@ -14,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/09/2015" 
+	ms.date="10/18/2015" 
 	ms.author="mohabib;fashah;bradsev"/>
 
 
-# Advanced Analytics Process and Technology の活用: SQL Server を使用する
+# Cortana Analytics Process の活用: SQL Server を使用する
 
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) を使ってモデルのビルドとデプロイを行う方法を説明します。Advanced Analytics Process and Technology (ADAPT) ガイドに従って操作できます。
 
@@ -715,4 +714,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

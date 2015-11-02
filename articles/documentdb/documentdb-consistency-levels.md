@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="DocumentDB の一貫性レベル | Microsoft Azure" 
 	description="DocumentDB には 4 つの一貫性レベルと、それに関連付けられたパフォーマンス レベルがあります。これによって、Eventual 一貫性、可用性、待機時間のトレードオフをどのように調整できるかを確認します。" 
-	keywords="eventual consistency, documentdb, azure, Microsoft azure"
+	keywords="eventual 一貫性, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	authors="mimig1" 
 	manager="jhubbard" 
@@ -40,9 +40,9 @@
  
 強い一貫性では、データの一貫性に関して揺るぎない保証が得られますが、読み取りと書き込みのパフォーマンス レベルは最も低くなります。
 
-**Bounded staleness**: 書き込みが伝播するトータルな順序は保証されますが、読み取りに関しては、書き込みよりも最大で K プレフィックス分の遅れが生じる可能性があります。読み取りに関しては常に、レプリカのマジョリティ クォーラムから確認応答が返されます。読み取り要求の応答に、その相対的な鮮度が (K の観点で) 記述されます。
+**Bounded staleness**: 書き込みが伝播するトータルな順序は保証されますが、読み取りに関しては、書き込みよりも最大で K プレフィックス分の遅れが生じる可能性があります。読み取りに関しては常に、レプリカのマジョリティ クォーラムから確認応答が返されます。読み取り要求の応答に、その相対的な鮮度が (K の観点で) 記述されます。Bounded Staleness では、安定状態での待機時間と一貫性のトレードオフのために読み取りに対して staleness の構成可能なしきい値を (プレフィックスまたは時間として) 設定できます。
 
-Bounded staleness は、読み取りの一貫性に関して、より予測可能な動作となり、書き込みの待機時間は最も小さくなります。読み取りは、マジョリティ クォーラムからの確認応答を伴うため、読み取りの待機時間はシステムで最短とはなりません。
+Bounded staleness は、読み取りの一貫性に関して、より予測可能な動作となり、書き込みの待機時間は最も小さくなります。読み取りは、マジョリティ クォーラムからの確認応答を伴うため、読み取りの待機時間はシステムで最短とはなりません。Bounded Staleness は、強力な一貫性は必要ではあるものの、実用的ではない場合のシナリオのオプションです。Bounded Staleness 一貫性の "staleness 間隔" を構成して任意の大きさにしても、書き込みのトータルなグローバル順序は維持されます。これにより、Session や Eventual よりも強力な保証が得られます。
 
 >[AZURE.NOTE]Bounded staleness は、明示的な読み取り要求のモノトニックな読み取りのみを保証します。書き込み要求に対するエコーされたサーバー応答では、Bounded staleness の保証は提供されません。
 
@@ -62,7 +62,7 @@ Eventual の一貫性は、読み取りの一貫性という点は最も弱い�
 
 3. アカウントのブレードで、**[構成]** レンズの **[既定の一貫性]** タイルをクリックします。
 
-4. **[既定の整合性]** ブレードで、新しい整合性レベルを選択し、**[保存]** をクリックします。
+4. **[既定の一貫性]** ブレードで、新しい一貫性レベルを選択し、**[保存]** をクリックします。
 
 	![[既定の一貫性] タイル、一貫性の設定、および [保存] ボタンを強調表示したスクリーン ショット](./media/documentdb-consistency-levels/database-consistency-level.png)
 
@@ -88,4 +88,4 @@ Eventual の一貫性は、読み取りの一貫性という点は最も弱い�
 -	Werner Vogels 著:Eventual Consistent - Revisited (結果的な一貫性 - 改訂版) [http://allthingsdistributed.com/2008/12/eventually\_consistent.html](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

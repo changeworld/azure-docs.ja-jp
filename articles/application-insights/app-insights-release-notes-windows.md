@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Windows 向けの Application Insights のリリース ノート" 
-	description="最新の更新プログラム。" 
+	description="Windows ストア SDK 用の最新の更新プログラムです。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -86,7 +86,7 @@
 
 ## バージョン 0.15
 
-- 新しいプロパティ ```Operation.SyntheticSource``` が ```TelemetryContext``` で利用できるようになりました。利用統計情報項目を「本物のユーザー トラフィックではない」として設定し、そのトラフィックが生成された背景を指定できるようになりました。このプロパティを設定する例としては、テスト自動化のトラフィックを負荷テストのトラフィックと区別できます。
+- 新しいプロパティ ```Operation.SyntheticSource``` が ```TelemetryContext``` で利用できるようになりました。テレメトリ項目を「本物のユーザー トラフィックではない」として設定し、そのトラフィックが生成された背景を指定できるようになりました。このプロパティを設定する例としては、テスト自動化のトラフィックを負荷テストのトラフィックと区別できます。
 - チャネル ロジックは「Microsoft.ApplicationInsights.PersistenceChannel」と呼ばれる別個の NuGet に移動されました。既定のチャネルは「InMemoryChannel」という名前になりました。
 - 新しいメソッド ```TelemetryClient.Flush``` では、バッファーからの利用統計情報項目を同期的にフラッシュできます。
 
@@ -94,4 +94,4 @@
 
 使用可能な以前のバージョンのリリース ノートはありません。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

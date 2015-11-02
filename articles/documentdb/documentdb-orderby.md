@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/19/2015" 
+	ms.date="10/20/2015" 
 	ms.author="arramac"/>
 
 # Order By を使用した DocumentDB の並べ替え
@@ -125,7 +125,7 @@ Title プロパティ (文字列) のみに対する Order By のインデック
         });
 
 ## サンプル
-この [Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-net/tree/master/samples/orderby)は、Order By を使用したインデックス作成ポリシーの作成やページングを含む、Order By の使用方法を示しています。サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。
+この [Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.OrderBy)は、Order By を使用したインデックス作成ポリシーの作成やページングを含む、Order By の使用方法を示しています。サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。
 
 ## 今後予定された機能
 
@@ -152,7 +152,7 @@ Order By では参照に DocumentDB インデックスを利用するため、Or
 
 **Order By を使用して DocumentDB の既存のデータにクエリを実行する方法を教えてください。**
 
-これは、「[今後予定された機能](what's-coming-next)」で説明された動的なインデックス作成ポリシーの機能強化でサポートされる予定です。これを現時点で行うには、データをエクスポートし、Range/Order By インデックスを使用して作成した新しい DocumentDB コレクションにそれを再インポートする必要があります。DocumentDB インポート ツールを使用して、コレクション間でデータを移行できます。
+Order By を使用してクエリ結果を並べ替えるには、並べ替えに使用されるプロパティに対してインデックスの種類として範囲を使用するように、コレクションのインデックス作成ポリシーを変更する必要があります。[インデックス作成ポリシーの変更](documentdb-indexing-policies.md#modifying-the-indexing-policy-of-a-collection)に関する記述を参照してください。
 
 **Order By の現在の制限を教えてください。**
 
@@ -168,13 +168,13 @@ Order By では参照に DocumentDB インデックスを利用するため、Or
 
 ## 次のステップ
 
-[Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-net/tree/master/samples/orderby)をフォークして、データの並べ替えを始めましょう。
+[Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.OrderBy)をフォークして、データの並べ替えを始めましょう。
 
 ## 参照
 * [DocumentDB クエリのリファレンス](documentdb-sql-query.md)
 * [DocumentDB インデックス作成ポリシー リファレンス](documentdb-indexing-policies.md)
 * [DocumentDB SQL リファレンス](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-* [DocumentDB Order By のサンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/orderby)
+* [DocumentDB Order By のサンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.OrderBy)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

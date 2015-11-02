@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="08/03/2015"
+	ms.date="10/21/2015"
 	ms.author="rasquill"/>
 
 # Azure 上で CoreOS を使用する方法
@@ -24,7 +24,7 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager deployment model](https://azure.microsoft.com/documentation/templates/coreos-with-fleet-multivm/)。
 
 
-## <a id='intro'>CoreOS、クラスター、Linux コンテナー</a>
+## CoreOS、クラスター、Linux コンテナー
 
 CoreOS は、Linux の軽量バージョンです。唯一のパッケージ化のメカニズムとして [Docker] コンテナーなどの Linux コンテナーを使用する、きわめて大規模になる可能性がある VM のクラスターの迅速な作成をサポートします。CoreOS は、以下をサポートすることを目的としています。
 
@@ -40,10 +40,10 @@ CoreOS は、Linux の軽量バージョンです。唯一のパッケージ化�
 
 以上は、CoreOS とその機能の一般的な説明です。CoreOS の詳細については、「[CoreOS Overview]」を参照してください。
 
-## <a id='security'>セキュリティに関する考慮事項</a>
+## セキュリティに関する考慮事項
 現在、CoreOS では、SSH でクラスターと通信できるユーザーには、そのクラスターを管理するためのアクセス許可が与えられていることを前提としています。そのため、CoreOS クラスターは、変更しなくてもテスト環境および開発環境として優れています。ただし、運用環境では、より強力なセキュリティ対策を実施する必要があります。
 
-## <a id='usingcoreos'>方法: Azure での CoreOS の使用</a>
+## Azure 上で CoreOs を使用する方法
 
 このセクションでは、[Azure コマンドライン インターフェイス (Azure CLI)] を使用して、3 台の CoreOS 仮想マシンを含む Azure クラウド サービスを作成する方法について説明します。基本的な手順は次のとおりです。
 
@@ -209,4 +209,4 @@ azure vm create --custom-data=cloud-config.yaml --ssh=22 --ssh-cert=./myCert.pem
 [YAML]: http://yaml.org/
 [Azure 上の CoreOS で fleet を使ってみる]: virtual-machines-linux-coreos-fleet-get-started.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

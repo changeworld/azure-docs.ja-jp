@@ -3,7 +3,7 @@
 	description="この記事では、PlayReady と Widevine DRM の両方を使用して AMS で動的に暗号化されたストリームを、Azure Media Services (AMS) を使用して配信する方法について説明します。PlayReady ライセンスは Media Services PlayReady サーバーから取得し、Widevine ライセンスは castLabs ライセンス サーバーから取得します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="Mingfeiy,Juliako" 
+	authors="Mingfeiy,willzhan,Juliako" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -26,6 +26,8 @@
 ##概要
 
 この記事では、PlayReady と Widevine DRM の両方を使用して AMS で動的に暗号化されたストリームを、Azure Media Services (AMS) を使用して配信する方法について説明します。PlayReady ライセンスは Media Services PlayReady サーバーから取得し、Widevine ライセンスは **castLabs** ライセンス サーバーから取得します。
+
+CENC で保護されているストリーミング コンテンツを再生するには (PlayReady や Widevine)、[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用できます。詳細については、[AMP のドキュメント](http://amp.azure.net/libs/amp/latest/docs/)を参照してください。
 
 次の図は、Azure Media Services と castLabs の統合アーキテクチャを大まかに示しています。
 
@@ -98,24 +100,18 @@ Web アプリケーション (STS) を使用するには、次の手順に従い
 
 ##ビデオを再生する
 
-共通暗号化 (PlayReady) で暗号化されたビデオを再生するために、[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用できます。コンソール アプリケーションを実行すると、コンテンツ キー ID とマニフェスト URL がエコーされます。
+共通暗号化 (PlayReady や Widevine) で暗号化されたビデオを再生するために、[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用できます。コンソール アプリケーションを実行すると、コンテンツ キー ID とマニフェスト URL がエコーされます。
 
 1.	新しいタブを開き、次の STS を起動します。http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid]
 2.	[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) に移動します。
 3.	ストリーミング URL に貼り付けます。
 4.	**[詳細オプション]** チェックボックスをクリックします。
-5.	**[保護]** ドロップダウンから PlayReady を選択します。
-6.	STS から取得したトークンを [トークン] テキストボックスに貼り付けます。
+5.	**[保護]** ドロップダウンで、PlayReady や Widevine を選択します。
+6.	STS から取得したトークンを [トークン] テキストボックスに貼り付けます。 
+	
+	castLab ライセンス サーバーの場合は、トークンの前に “Bearer=” プレフィックスを置く必要はありません。トークンを送信する前にプレフィックスを削除してください。
 7.	プレーヤーを更新します。
 8.	ビデオが再生されるはずです。
-
-castLabs プレイヤーを使用して Chrome の HTML5 で保護されたビデオを再生する場合は、プレイヤーへのアクセス権について yanmf@microsoft.com にお問い合わせください。アクセス権がある場合、次の 2 点にご注意ください。
-
-1.	castLabs プレーヤーは MPEG DASH のマニフェスト ファイルにアクセスする必要があるため、(format=mpd-time-csf) をマニフェスト ファイルに追加して、既定の Smooth Streaming のファイルではなく MPEG DASH マニフェスト ファイルを取得してください。
-
-2.	castLab ライセンス サーバーの場合は、トークンの前に “Bearer=” プレフィックスを置く必要はありません。トークンを送信する前にプレフィックスを削除してください。
-
- 
 
 ##Media Services のラーニング パス
 
@@ -124,4 +120,4 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

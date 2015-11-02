@@ -1,6 +1,6 @@
 <properties
 	pageTitle="リモート デスクトップの詳細なトラブルシューティング |Microsoft Azure"
-	description="Windows を実行する Azure 仮想マシンへの RDP 接続に関する詳細なトラブルシューティングの手順について説明します。"
+	description="Windows を実行する Azure Virtual Machines への RDP 接続に関する詳細なトラブルシューティングの手順について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
@@ -17,7 +17,9 @@
 	ms.date="09/16/2015"
 	ms.author="dkshir"/>
 
-# Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関する詳細なトラブルシューティング
+# Windows ベースの Azure Virtual Machines へのリモート デスクトップ接続に関する詳細なトラブルシューティング
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 この記事では、リモート デスクトップの複雑なエラーの詳細なトラブルシューティング手順を示します。
 
@@ -25,9 +27,9 @@
 
 ## Azure カスタマー サポートへの問い合わせ
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
 
-または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
+または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](http://azure.microsoft.com/support/faq/)」を参照してください。
 
 
 ## 一般的なリモート デスクトップのエラー メッセージ
@@ -141,7 +143,7 @@
 - Windows ファイアウォールまたは他のローカルのファイアウォールで、リモート デスクトップのトラフィックを妨げている送信ルールが設定されている。
 - Azure 仮想マシンで実行されている侵入検出ソフトウェアまたは監視ソフトウェアが、リモート デスクトップ接続を妨げている。
 
-サービス管理 API を使用して作成された仮想マシンについて考えられるこれらの問題を修正するには、リモート Azure PowerShell セッションを Azure 仮想マシンに使用します。最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。「[Azure 仮想マシンへの安全なリモート PowerShell アクセスを構成する](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)」を参照し、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上のフォルダーにダウンロードします。
+サービス管理 API を使用して作成された仮想マシンについて考えられるこれらの問題を修正するには、リモート Azure PowerShell セッションを Azure 仮想マシンに使用します。最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。「[Azure Virtual Machines への安全なリモート PowerShell アクセスを構成する](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)」を参照し、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上のフォルダーにダウンロードします。
 
 次に、まだ Azure PowerShell がインストールされていなければ、インストールします。「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」を参照してください。
 
@@ -205,4 +207,4 @@ Azure 仮想マシンのリモート デスクトップのエンドポイント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

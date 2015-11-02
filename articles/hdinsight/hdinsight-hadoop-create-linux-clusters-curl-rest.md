@@ -1,6 +1,6 @@
 <properties
    	pageTitle="cURL と Azure REST API を使用した HDInsight 用の Linux ベースの Hadoop、HBase、または Storm クラスターの作成 | Microsoft Azure"
-   	description="cURL と Azure REST API を使用して、HDInsight 用の Linux ベースの Hadoop、HBase、または Storm クラスターを作成する方法について説明します。"
+   	description="cURL、Azure リソース マネージャー テンプレート、および Azure REST API を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。クラスターの種類 (Hadoop、HBase、または Storm) を指定するか、スクリプトを使用してカスタム コンポーネントをインストールすることができます。"
    	services="hdinsight"
    	documentationCenter=""
    	authors="Blackmist"
@@ -270,7 +270,7 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 > * アプリケーション ID - サービス プリンシパルの作成時に返されます
 > * サービス プリンシパルのパスワード - サービス プリンシパルの作成時に使用
 
-「[Azure リソース マネージャーでのサービス プリンシパルの認証](https://azure.microsoft.com/JA-JP/documentation/articles/resource-group-authenticate-service-principal/#authenticate-service-principal-with-password---azure-cli)」ドキュメントの「_パスワードによるサービス プリンシパルの認証 - Azure CLI_」の手順に従います。これにより、クラスター作成要求の認証に使用できる新しいサービス プリンシパルが作成されます。
+「[Azure リソース マネージャーでのサービス プリンシパルの認証](https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-authenticate-service-principal/#authenticate-service-principal-with-password---azure-cli)」ドキュメントの「_パスワードによるサービス プリンシパルの認証 - Azure CLI_」の手順に従います。これにより、クラスター作成要求の認証に使用できる新しいサービス プリンシパルが作成されます。
 
 ##認証トークンの取得
 
@@ -351,4 +351,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

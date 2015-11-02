@@ -21,6 +21,8 @@
 
 #Azure Linux エージェント ユーザー ガイド
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 ##はじめに
 
 Azure Linux エージェント (usr/sbin/waagent) は仮想マシンと Azure ファブリック コントローラーとの相互動作を管理します。その内容は次のとおりです。
@@ -318,4 +320,4 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

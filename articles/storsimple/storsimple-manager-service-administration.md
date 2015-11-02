@@ -63,6 +63,7 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 ||ジョブ|構成 (デバイス)|| 
 ||アラート|メンテナンス||
 
+StorSimple Manager サービスのユーザー インターフェイスのチュートリアル ビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-manager-service-overview/)を参照してください。
 
 ## StorSimple Manager サービスを使用した StorSimple デバイスの管理
 
@@ -102,9 +103,6 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 |サポート パッケージを作成する|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[サポート パッケージを作成および管理する](storsimple-create-manage-support-package.md)|
 |Install software updates|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[デバイスを更新する](storsimple-update-device.md)|
 
-![ビデオ](./media/storsimple-manager-service-administration/Video_icon.png) **ビデオ**
-
-StorSimple Manager サービスのユーザー インターフェイスのチュートリアル ビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-manager-service-overview/)を参照してください。
 
 ##次のステップ
 StorSimple デバイスの日常的な操作または StorSimple デバイスのハードウェア コンポーネントのいずれかで問題が発生した場合は、次のトピックを参照してください。
@@ -116,4 +114,4 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 
 -  [Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

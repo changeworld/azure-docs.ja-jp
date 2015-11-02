@@ -30,8 +30,9 @@
 
 - [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
 - [Azure ストレージ アカウント](../storage-create-storage-account.md)
-- [Windows Management Framework 3.0](http://www.microsoft.com/JA-JP/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/JA-JP/download/details.aspx?id=40855)
-- [Azure PowerShell](../powershell-install-configure.md)
+- [Windows Management Framework 3.0](http://www.microsoft.com/ja-JP/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/ja-JP/download/details.aspx?id=40855)
+
+[AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
 
 これらの手順を実行するには約 30 分かかります。
 
@@ -297,7 +298,7 @@ Azure リソース マネージャー テンプレートによって、リソー
           }
         }
 
-    >[AZURE.NOTE]イメージの vhd 名はイメージ ギャラリーで定期的に変更されるので、仮想マシンをデプロイするには現在のイメージ名を取得する必要があります。これを行うには、「[仮想マシンのイメージについて](https://azure.microsoft.com/JA-JP/documentation/articles/virtual-machines-images/)」を参照し、{source-image-name} を、使用する vhd ファイルの名前に置き換えます。たとえば、"a699494373c04fc0bc8f2bb1389d6106\_\_Windows-Server-2012-R2-201412.01-en.us-127GB.vhd" などです。{subscription-id} を、サブスクリプションの ID に置き換えます。
+    >[AZURE.NOTE]イメージの vhd 名はイメージ ギャラリーで定期的に変更されるので、仮想マシンをデプロイするには現在のイメージ名を取得する必要があります。これを行うには、「[仮想マシンのイメージについて](https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-images/)」を参照し、{source-image-name} を、使用する vhd ファイルの名前に置き換えます。たとえば、"a699494373c04fc0bc8f2bb1389d6106\_\_Windows-Server-2012-R2-201412.01-en.us-127GB.vhd" などです。{subscription-id} を、サブスクリプションの ID に置き換えます。
 
 
 4.	作成したパラメーター ファイルを保存します。
@@ -446,4 +447,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/arm-template-deployment/crpportal.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -7,7 +7,7 @@
    manager="jwhit"
    editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/13/2015" ms.author="jimpark"; "aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/21/2015" ms.author="jimpark"; "aashishr"/>
 
 # Windows Server または Windows クライアントのファイルとフォルダーを Azure にバックアップする
 この記事では、Windows Server または Windows クライアントのファイルおよびフォルダーを、Azure にバックアップする手順について説明します。
@@ -24,7 +24,7 @@
 
     ![Schedule Backup](./media/backup-azure-backup-windows-server/schedulebackup.png)
 
-3. バックアップする項目を選択します。Windows サーバーまたは Windows クライアントで Azure Buckup を使用して (つまり System Center Data Protection Manager を使用しない)、ファイルとフォルダーを保護することができます。
+3. バックアップする項目を選択します。Windows サーバーまたは Windows クライアントで Azure Backup を使用して (つまり System Center Data Protection Manager を使用しない)、ファイルとフォルダーを保護することができます。
 
     ![Items to Backup](./media/backup-azure-backup-windows-server/items.png)
 
@@ -47,4 +47,4 @@
 - [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

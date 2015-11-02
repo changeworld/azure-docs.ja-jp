@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/14/2015" 
+	ms.date="10/15/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した DocumentDB との間でのデータの移動
@@ -60,7 +60,7 @@
 
 このサンプルでは、「**Person**」というコレクションが Azure DocumentDB データベースにあるものと想定しています。
  
-「“external”: ”true”」を設定して externalData ポリシーを指定すると、テーブルが Data Factory に対して外部にあり、 Data Factory のアクティビティでは生成されていないことが Azure Data Factory のサービスに通知されます。
+「“external”: ”true”」を設定して externalData ポリシーを指定すると、テーブルが Data Factory に対して外部にあり、Data Factory のアクティビティでは生成されていないことが Azure Data Factory のサービスに通知されます。
 
 	{
 	  "name": "PersonDocumentDbTable",
@@ -416,4 +416,4 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 	**回答:** いいえ。現時点では、1 つのコレクションだけを指定できます。
      
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

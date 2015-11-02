@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/08/2015"
+	ms.date="10/15/2015"
 	ms.author="jgao"/>
 
 
@@ -34,7 +34,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 - Azure HDInsight で同じ MapReduce ジョブを実行する
 - MapReduce ジョブの結果を取得する
 
-##<a name="prerequisites"></a>前提条件
+##前提条件
 
 このチュートリアルを開始する前に、次の作業を完了している必要があります。
 
@@ -43,7 +43,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 - Azure サブスクリプションの入手。手順については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料試用版][azure-free-trial]に関するページを参照してください。
 
 
-##<a name="develop"></a>C# でワード カウント Hadoop ストリーミング プログラムを開発する
+##C&#35; でワード カウント Hadoop ストリーミング プログラムを開発する
 
 ワード カウント ソリューションには、mapper と reducer という 2 つのコンソール アプリケーション プロジェクトが含まれます。mapper アプリケーションは、コンソールに各単語をストリーミングします。reducer アプリケーションは、ドキュメントからストリーミングされた単語の数をカウントします。mapper と reducer はどちらも標準入力ストリーム (stdin) から 1 行ずつ文字を読み取って、標準出力ストリーム (stdout) に書き込みます。
 
@@ -156,7 +156,7 @@ mapper と reducer の実行可能ファイルは次の場所にあります。
 - C:\\Tutorials\\WordCount\\WordCountReducer\\bin\\Debug\\WordCountReducer.exe
 
 
-##<a name="test"></a>エミュレーターでプログラムをテストする
+##エミュレーターでプログラムをテストする
 
 次の操作を行って、HDInsight Emulator でプログラムをテストします。
 
@@ -288,7 +288,7 @@ mapper と reducer の実行可能ファイルは次の場所にあります。
 
 	"|more" をコマンドの最後に付けることで、ページ ビューを得られます。
 
-##<a id="upload"></a>Azure BLOB ストレージにデータをアップロードする
+##Azure BLOB ストレージにデータをアップロードする
 Azure HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。データ ファイル用に追加の Azure BLOB ストレージを使用するように HDInsight クラスターを構成できます。このセクションでは、Azure ストレージ アカウントを作成し、データ ファイルを BLOB ストレージにアップロードします。データ ファイルは %hadoop\_home%\\share\\doc\\hadoop\\common ディレクトリ内の .txt ファイルです。
 
 
@@ -377,7 +377,7 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 	両方のアプリケーション ファイルがそこに一覧表示されます。
 
 
-##<a name="run"></a>Azure HDInsight で MapReduce ジョブを実行する
+##Azure HDInsight で MapReduce ジョブを実行する
 
 このセクションでは、MapReduce ジョブの実行に関連するすべてのタスクを実行する Azure PowerShell スクリプトについて説明します。これらのタスクには次のタスクが含まれます。
 
@@ -493,7 +493,7 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サンプルについては、「[プログラムによる Hadoop ジョブの送信][hdinsight-submit-jobs]」をご覧ください。
 
 
-##<a name="retrieve"></a>MapReduce ジョブの出力を取得する
+##MapReduce ジョブの出力を取得する
 このセクションでは、出力をダウンロードして表示する方法を示します。Excel で結果を表示する方法については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-ODBC]」と「[Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]」をご覧ください。
 
 
@@ -520,7 +520,7 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
 
 
 
-##<a id="nextsteps"></a>次のステップ
+##次のステップ
 このチュートリアルでは、Hadoop ストリーミング MapReduce ジョブを作成する方法、HDInsight Emulator でアプリケーションをテストする方法、HDInsight クラスターをプロビジョニングしてクラスターで MapReduce ジョブを実行する Azure PowerShell スクリプトを記述する方法について説明しました。詳細については、次の記事を参照してください。
 
 - [Azure HDInsight の概要](../hdinsight-get-started.md)
@@ -555,4 +555,4 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-hadoop-develop-deploy-streaming-jobs/HDI.WordCountDiagram.gif "MapReduce ワード カウント アプリケーションのフロー"
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

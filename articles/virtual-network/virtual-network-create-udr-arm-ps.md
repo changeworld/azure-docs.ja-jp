@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-resource-manager"
 />
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/08/2015"
+   ms.date="10/21/2015"
    ms.author="telmos" />
 
 #PowerShell でユーザー定義のルート (UDR) を作成する
@@ -34,25 +34,33 @@
 ## フロントエンドのサブネットの UDR を作成する
 上記のシナリオに基づいて、フロントエンドのサブネットに必要なルート テーブルとルートを作成するには、次の手順に従います。
 
+[AZURE.INCLUDE [powershell-preview-include.md](../../includes/powershell-preview-include.md)]
+
 3. 送信したバックエンド サブネット (192.168.2.0/24) 宛てのすべてのトラフィックが **FW1** 仮想アプライアンス (192.168.0.4) にルーティングされるようにするためのルートを作成します。
 
-		$route = New-AzureRMRouteConfig -Name RouteToBackEnd `
+		$route = New-AzureRouteConfig -Name RouteToBackEnd `
 		    -AddressPrefix 192.168.2.0/24 -NextHopType VirtualAppliance `
 		    -NextHopIpAddress 192.168.0.4
 
 4. 上記で作成したルートが含まれる **westus** リージョンに **UDR-FrontEnd** という名前のルート テーブルを作成します。
 
-		$routeTable = New-AzureRMRouteTable -ResourceGroupName TestRG -Location westus `
+		$routeTable = New-AzureRouteTable -ResourceGroupName TestRG -Location westus `
 		    -Name UDR-FrontEnd -Route $route
 
 5. サブネットが存在する VNet が格納される変数を作成します。このシナリオでは、VNet の名前は **TestVNet** です。
 
-		$vnet = Get-AzureRMVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
+		$vnet = Get-AzureVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
 
 6. 上記で作成したルート テーブルを **FrontEnd** サブネットに関連付けます。
 		
-		Set-AzureRMVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd `
+		Set-AzureVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd `
 			-AddressPrefix 192.168.1.0/24 -RouteTable $routeTable
+
+>[AZURE.WARNING]上のコマンドの出力では、仮想ネットワーク構成オブジェクトの内容が示されます。これは、PowerShell を実行しているコンピューターにのみ存在します。これらの設定を Azure に保存するには、**Set-AzureVirtualNetwork** コマンドレットを実行する必要があります。
+
+7. 新しいサブネット構成を Azure に保存します。
+
+		Set-AzureVirtualNetwork -VirtualNetwork $vnet
 
 	予想される出力:
 
@@ -92,7 +100,7 @@
 		                          }
 		                        ],
 		                        "NetworkSecurityGroup": {
-		                          "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-BackEnd"
+		                          "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd"
 		                        },
 		                        "RouteTable": {
 		                          "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-FrontEnd"
@@ -100,26 +108,30 @@
 		                        "ProvisioningState": "Succeeded"
 		                      },
 								...
-		                    ]
+		                    ]	
 
 ## バックエンドのサブネットの UDR を作成する
 上記のシナリオに基づいて、バックエンドのサブネットに必要なルート テーブルとルートを作成するには、次の手順に従います。
 
 1. 送信したフロントエンド サブネット (192.168.1.0/24) 宛てのすべてのトラフィックが **FW1** 仮想アプライアンス (192.168.0.4) にルーティングされるようにするためのルートを作成します。
 
-		$route = New-AzureRMRouteConfig -Name RouteToFrontEnd `
+		$route = New-AzureRouteConfig -Name RouteToFrontEnd `
 		    -AddressPrefix 192.168.1.0/24 -NextHopType VirtualAppliance `
 		    -NextHopIpAddress 192.168.0.4
 
 4. 上記で作成したルートが含まれる **uswest** リージョンに **UDR-BackEnd** という名前のルート テーブルを作成します。
 
-		$routeTable = New-AzureRMRouteTable -ResourceGroupName TestRG -Location westus `
+		$routeTable = New-AzureRouteTable -ResourceGroupName TestRG -Location westus `
 		    -Name UDR-BackEnd -Route $route
 
 5. 上記で作成したルート テーブルを **BackEnd** サブネットに関連付けます。
 
-		Set-AzureRMVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name BackEnd `
+		Set-AzureVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name BackEnd `
 			-AddressPrefix 192.168.2.0/24 -RouteTable $routeTable
+
+7. 新しいサブネット構成を Azure に保存します。
+
+		Set-AzureVirtualNetwork -VirtualNetwork $vnet
 
 	予想される出力:
 
@@ -159,7 +171,7 @@
 		                          }
 		                        ],
 		                        "NetworkSecurityGroup": {
-		                          "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd"
+		                          "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-BacEnd"
 		                        },
 		                        "RouteTable": {
 		                          "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd"
@@ -173,12 +185,12 @@
 
 1. FW1 によって使用される NIC の設定が格納される変数を作成します。このシナリオでは、NIC の名前は **NICFW1** です。
 
-		$nicfw1 = Get-AzureRMNetworkInterface -ResourceGroupName TestRG -Name NICFW1
+		$nicfw1 = Get-AzureNetworkInterface -ResourceGroupName TestRG -Name NICFW1
 
 2. IP 転送を有効にし、NIC の設定を保存します。
 
 		$nicfw1.EnableIPForwarding = 1
-		Set-AzureRMNetworkInterface -NetworkInterface $nicfw1
+		Set-AzureNetworkInterface -NetworkInterface $nicfw1
 
 	予想される出力:
 
@@ -224,4 +236,4 @@
 		NetworkSecurityGroup : null
 		Primary              : True
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/21/2015"
+	ms.date="10/14/2015"
 	ms.author="dkshir"/>
 
 # Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法
@@ -103,15 +103,15 @@ VMAccess 拡張機能によって仮想マシンで次の 2 つのコマンド�
 
 詳細については、「[Microsoft Azure IaaS (Windows) の診断パッケージ](http://support.microsoft.com/kb/2976864)」ナレッジベース記事を参照してください。
 
-Azure IaaS (Windows) 診断パッケージを実行できないか、実行しても問題が解決しない場合は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)」を参照してください。
+Azure IaaS (Windows) 診断パッケージを実行できないか、実行しても問題が解決しない場合は、「[Windows ベースの Azure Virtual Machines へのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)」を参照してください。
 
 
 ## その他のリソース
 
 [Azure VM 拡張機能とその機能](http://msdn.microsoft.com/library/azure/dn606311.aspx)
 
-[RDP または SSH を使用した Azure 仮想マシンへの接続](http://msdn.microsoft.com/library/azure/dn535788.aspx)
+[RDP または SSH を使用した Azure Virtual Machines への接続](http://msdn.microsoft.com/library/azure/dn535788.aspx)
 
-[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)
+[Windows ベースの Azure Virtual Machines へのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

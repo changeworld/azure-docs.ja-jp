@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric フレームワークの選択 | Microsoft Azure"
-   description="Service Fabric では、アクター フレームワークとサービス フレームワークという、サービスを構築するための 2 つの高度なフレームワークが提供されています。それぞれの価値を理解すると、アプリケーションのアーキテクチャを正しく決定するのに役立ちます。"
+   pageTitle="Service Fabric プログラミング モデル | Microsoft Azure"
+   description="Service Fabric では、アクター フレームワークとサービス フレームワークという、サービスを構築するための 2 つのフレームワークが提供されています。それぞれ、シンプル性とコントロールという、両極端の特性を持っています。"
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/13/2015"
+   ms.date="10/15/2015"
    ms.author="seanmck"/>
 
-# サービスのフレームワークの選択
+# サービスのフレームワークを選択する
 
 Service Fabric は、Reliable Actors API と Reliable Services API という、サービスを構築するための 2 つの高度なフレームワークを提供します。いずれも同一の Service Fabric コア上に構築されていますが、同時実行、パーティション分割、および通信の点で、簡潔性と柔軟性の釣り合いの取り方に違いがあります。アプリケーション内の特定のサービスに適切なフレームワークを選択できるように、両方のモデルを理解しておくと便利です。
 
@@ -36,4 +36,4 @@ Service Fabric は、Reliable Actors API と Reliable Services API という、�
 - [Reliable Actors API についての詳細](service-fabric-reliable-actors-introduction.md)
 - [Reliable Services API についての詳細](../Service-Fabric/service-fabric-reliable-services-introduction.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="DocumentDB のプログラミング: ストアド プロシージャ、データベース トリガー、UDF | Microsoft Azure" 
 	description="DocumentDB を使用して、ストアド プロシージャ、データベース トリガー、ユーザー定義関数 (UDF) を JavaScript で記述する方法について説明します。データベース プログラミングのヒントなどが得られます。" 
-	keywords="Database triggers, stored procedure, stored procedure, database program, sproc, documentdb, azure, Microsoft azure"
+	keywords="データベース トリガー, ストアド プロシージャ, ストアド プロシージャ, データベース プログラム, sproc, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	documentationCenter="" 
 	authors="aliuy" 
@@ -919,4 +919,4 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 -	[サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 -	[Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

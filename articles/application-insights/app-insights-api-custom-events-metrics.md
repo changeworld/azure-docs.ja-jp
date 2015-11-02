@@ -535,133 +535,47 @@ ASP.NET Web MVC アプリケーションでの例:
     // ...
 
 
+## データのフラッシュ
 
-## テレメトリの初期化子
-
-テレメトリ初期化子を使用して、すべてのテレメトリで送信されるグローバル プロパティを定義し、標準テレメトリ モジュールの選択された動作を上書きします。
-
-たとえば、Web 向けの Application Insights パッケージでは HTTP 要求に関するテレメトリが収集されます。既定では、応答コードが 400 以上の要求はすべて失敗としてフラグが設定されます。これに対して 400 を成功として処理する場合は、"成功" プロパティを設定するテレメトリ初期化子を指定できます。
-
-テレメトリ初期化子を指定すると、Track*() メソッドのいずれかが呼び出されるたびに、テレメトリ初期化子も呼び出されます。これには、標準のテレメトリ モジュールによって呼び出されるメソッドも含まれます。通常、これらのモジュールでは、初期化子によって既に設定されているプロパティは設定されません。
-
-**初期化子を定義する**
+通常、SDK は、ユーザーへの影響を最小限に抑えるために選択した時間帯に、データを送信します。ただし、場合によっては、バッファーをフラッシュする必要が生じることがあります (たとえば、終了するアプリケーションで SDK を使用している場合)。
 
 *C#*
 
-```C#
+    telemetry.Flush();
 
-    using System;
-    using Microsoft.ApplicationInsights.Channel;
-    using Microsoft.ApplicationInsights.DataContracts;
-    using Microsoft.ApplicationInsights.Extensibility;
+    // Allow some time for flushing before shutdown.
+    System.Threading.Thread.Sleep(1000);
 
-    namespace MvcWebRole.Telemetry
-    {
-      /*
-       * Custom TelemetryInitializer that overrides the default SDK 
-       * behavior of treating response codes >= 400 as failed requests
-       * 
-       */
-      public class MyTelemetryInitializer : ITelemetryInitializer
-      {
-        public void Initialize(ITelemetry telemetry)
-        {
-            var requestTelemetry = telemetry as RequestTelemetry;
-            // Is this a TrackRequest() ?
-            if (requestTelemetry == null) return;
-            int code;
-            bool parsed = Int32.TryParse(requestTelemetry.ResponseCode, out code);
-            if (!parsed) return;
-            if (code >= 400 && code < 500)
-            {
-                // If we set the Success property, the SDK won't change it:
-                requestTelemetry.Success = true;
-                // Allow us to filter these requests in the portal:
-                requestTelemetry.Context.Properties["Overridden400s"] = "true";
-            }
-            // else leave the SDK to set the Success property      
-        }
-      }
-    }
-```
-
-**初期化子を読み込む**
-
-ApplicationInsights.config で:
-
-    <ApplicationInsights>
-      <TelemetryInitializers>
-        <!-- Fully qualified type name, assembly name: -->
-        <Add Type="MvcWebRole.Telemetry.MyTelemetryInitializer, MvcWebRole"/> 
-        ...
-      </TelemetryInitializers>
-    </ApplicationInsights>
-
-*または、*Global.aspx.cs などのコード内で初期化子をインスタンス化することもできます。
+この関数はインメモリ チャネルでは非同期ですが、[永続化チャネル](app-insights-windows-desktop.md#persistence-channel)の使用を選択した場合は同期になることに注意してください。
 
 
-```C#
-    protected void Application_Start()
-    {
-        // ...
-        TelemetryConfiguration.Active.TelemetryInitializers
-        .Add(new MyTelemetryInitializer());
-    }
-```
+
+## テレメトリの初期化子とプロセッサ
+
+テレメトリが Application Insights サービスに送信される前にテレメトリのキャプチャおよび処理方法を Application Insights SDK でカスタマイズできるようにプラグインを作成および構成します。
+
+[詳細情報](app-insights-telemetry-processors.md)
 
 
-[このトピックのその他のサンプルについては、こちらをご覧ください。](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
+## 標準のテレメトリを無効にする
 
-<a name="js-initializer"></a>
-### JavaScript テレメトリ初期化子
+`ApplicationInsights.config` を編集し、[標準のテレメトリから選択した部分を無効にできます][config]。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
-*JavaScript*
-
-ポータルから取得した初期化コードの直後にテレメトリ初期化子を挿入します。
-
-```JS
-
-    <script type="text/javascript">
-        // ... initialization code
-        ...({
-            instrumentationKey: "your instrumentation key"
-        });
-        window.appInsights = appInsights;
+[詳細情報][config]。
 
 
-        // Adding telemetry initializer.
-        // This is called whenever a new telemetry item
-        // is created.
+## <a name="debug"></a>開発者モード
 
-        appInsights.queue.push(function () {
-            appInsights.context.addTelemetryInitializer(function (envelope) {
-                var telemetryItem = envelope.data.baseData;
+デバッグ中、結果をすぐに確認できるように、テレメトリをパイプラインから送信すると便利です。テレメトリで問題を追跡する際に役立つ付加的なメッセージも取得できます。アプリケーションを遅くする可能性があるため、本稼働ではオフにします。
 
-                // To check the telemetry item’s type - for example PageView:
-                if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
-                    // this statement removes url from all page view documents
-                    telemetryItem.url = "URL CENSORED";
-                }
 
-                // To set custom properties:
-                telemetryItem.properties = telemetryItem.properties || {};
-                telemetryItem.properties["globalProperty"] = "boo";
+*C#*
+    
+    TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 
-                // To set custom metrics:
-                telemetryItem.measurements = telemetryItem.measurements || {};
-                telemetryItem.measurements["globalMetric"] = 100;
-            });
-        });
+*VB*
 
-        // End of inserted code.
-
-        appInsights.trackPageView();
-    </script>
-```
-
-telemetryItem で使用できる非カスタムプロパティの概要については、[データ モデル](app-insights-export-data-model.md/#lttelemetrytypegt)に関するページを参照してください。
-
-任意の数の初期化子を追加できます。
+    TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 ## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
@@ -700,42 +614,6 @@ Web ページで、スクリプトに一語一語コーディングするので�
     }) // ...
 
 
-
-## データのフラッシュ
-
-通常、SDK は、ユーザーへの影響を最小限に抑えるために選択した時間帯に、データを送信します。ただし、場合によっては、バッファーをフラッシュする必要が生じることがあります (たとえば、終了するアプリケーションで SDK を使用している場合)。
-
-*C#*
-
-    telemetry.Flush();
-
-    // Allow some time for flushing before shutdown.
-    System.Threading.Thread.Sleep(1000);
-
-この関数はインメモリ チャネルでは非同期ですが、[永続化チャネル](app-insights-windows-desktop.md#persistence-channel)の使用を選択した場合は同期になることに注意してください。
-
-
-
-## 標準のテレメトリを無効にする
-
-`ApplicationInsights.config` を編集し、[標準のテレメトリから選択した部分を無効にできます][config]。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
-
-[詳細情報][config]。
-
-
-## <a name="debug"></a>開発者モード
-
-デバッグ中、結果をすぐに確認できるように、テレメトリをパイプラインから送信すると便利です。テレメトリで問題を追跡する際に役立つ付加的なメッセージも取得できます。アプリケーションを遅くする可能性があるため、本稼働ではオフにします。
-
-
-*C#*
-    
-    TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
-
-*VB*
-
-    TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
-
 ## TelemetryContext
 
 TelemetryClient には、すべてのテレメトリ データとともに送信される値の数が含まれるコンテキスト プロパティがあります。通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。次に例を示します。
@@ -754,93 +632,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
  * **SyntheticSource**: null 値または空ではない場合、この文字列は、要求元がロボットまたは Web テストとして識別されたことを示します。既定で、これはメトリックス エクスプ ローラーでの計算から除外されます。
 * **Properties**: すべてのテレメトリ データとともに送信されるプロパティ。個々 の Track* 呼び出しでオーバーライドできます。
 * **Session** は、ユーザーのセッションを識別します。Id は、生成される値に設定されます。これは、ユーザーがしばらくの間アクティブ化されていない場合に、変更されます。
-* **ユーザー**: ユーザー情報。 
-
-
-## <a name="default-properties"></a>コンテキストの初期化子 - すべてのテレメトリに既定のプロパティを設定する
-
-すべての新しい TelemetryClients が自動的にコンテキストを使用できるように、汎用の初期化子を設定できます。これには、Web サーバー要求追跡など、プラットフォーム固有のテレメトリ モジュールにより送信される標準の利用統計情報が含まれます。
-
-一般的な使用方法では、アプリケーションのさまざまなバージョンやコンポーネントからのテレメトリを識別します。ポータルでは、"アプリケーションのバージョン" プロパティによって結果にフィルターを適用し、グループ化することができます。
-
-一般に、[コンテキスト初期化子ではなく、テレメトリ初期化子を使用することをお勧めします](http://apmtips.com/blog/2015/06/09/do-not-use-context-initializers/)。
-
-#### コンテキスト初期化子を定義する
-
-
-*C#*
-
-```C#
-
-    using System;
-    using Microsoft.ApplicationInsights.Channel;
-    using Microsoft.ApplicationInsights.DataContracts;
-    using Microsoft.ApplicationInsights.Extensibility;
-
-    namespace MyNamespace
-    {
-      // Context initializer class
-      public class MyContextInitializer : IContextInitializer
-      {
-        public void Initialize (TelemetryContext context)
-        {
-            if (context == null) return;
-
-            context.Component.Version = "v2.1";
-        }
-      }
-    }
-```
-
-*Java*
-
-```Java
-
-    import com.microsoft.applicationinsights.extensibility.ContextInitializer;
-    import com.microsoft.applicationinsights.telemetry.TelemetryContext;
-
-    public class MyContextInitializer implements ContextInitializer {
-      @Override
-      public void initialize(TelemetryContext context) {
-        context.Component.Version = "2.1";
-      }
-    }
-```
-
-#### コンテキスト初期化子を読み込む
-
-ApplicationInsights.config で:
-
-    <ApplicationInsights>
-      <ContextInitializers>
-        <!-- Fully qualified type name, assembly name: -->
-        <Add Type="MyNamespace.MyContextInitializer, MyAssemblyName"/> 
-        ...
-      </ContextInitializers>
-    </ApplicationInsights>
-
-*または、*コード内で初期化子をインスタンス化することもできます。
-
-*C#*
-
-```C#
-
-    protected void Application_Start()
-    {
-        // ...
-        TelemetryConfiguration.Active.ContextInitializers
-        .Add(new MyContextInitializer());
-    }
-```
-
-*Java*
-
-```Java
-
-    // load the context initializer
-    TelemetryConfiguration.getActive().getContextInitializers().add(new MyContextInitializer());
-```
-
+* **ユーザー** ユーザー情報。 
 
 
 
@@ -916,4 +708,4 @@ ApplicationInsights.config で:
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

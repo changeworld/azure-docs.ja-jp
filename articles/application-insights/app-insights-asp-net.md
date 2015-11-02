@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="ASP.NET 向けの Application Insights" 
-	description="オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。" 
+	description="オンプレミスまたは Microsoft Azure Web アプリケーションのパフォーマンス、可用性、使用状況を Application Insights で分析します。" 
 	services="application-insights" 
     documentationCenter=".net"
 	authors="alancameronwills" 
@@ -174,4 +174,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

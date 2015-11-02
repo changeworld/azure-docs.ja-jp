@@ -3,7 +3,7 @@
 	description="このトピックでは、Azure オンデマンド メディア エンコーダーの概要と比較を提供します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,anilmur" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,22 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/23/2015"  
+	ms.date="10/15/2015"  
 	ms.author="juliako"/>
 
 #Azure オンデマンド メディア エンコーダーの概要と比較
 
 ##エンコードの概要
 
-エンコーダーは、コーデックを使用してデジタル メディアを圧縮します。エンコーダーには、通常、生成されるメディアのプロパティ (使用するコーデック、ファイル形式、解像度、ビットレートなど) を指定する各種設定があります。ファイル形式は、圧縮されたビデオおよびビデオの圧縮に使用されたコーデックに関する情報を保持するコンテナーです。
+Azure Media Services には、クラウド内のメディア エンコーディングに使用できる複数のオプションが用意されています。
 
-コーデックには 2 つのコンポーネントがあります。デジタル メディア ファイルを転送用に圧縮するコンポーネントと、デジタル メディア ファイルを再生用に展開するコンポーネントです。オーディオを圧縮および展開するオーディオ コーデックと、ビデオを圧縮および展開するビデオ コーデックがあります。コーデックは、無損失圧縮または損失圧縮を使用できます。無損失コーデックでは、圧縮時にすべての情報が維持されます。ファイルを展開したときに、その結果は入力メディアと同じファイルになるため、無損失コーデックの作成はアーカイブおよびストレージに適しています。損失コーデックでは、エンコード時に情報の一部が失われ、元のファイルよりも小さいファイルが生成されて、ビデオ品質が低下します。これは、インターネットでのストリーミングに適しています。
-
-コーデックとファイル形式の違いについて理解することは重要です。コーデックは圧縮/展開アルゴリズムを実装するソフトウェアで、ファイル形式は圧縮されたビデオを保持するコンテナーです。詳細については、「[エンコーディングとパッケージング](http://blog-ndrouin.azurewebsites.net/streaming-media-terminology-explained/)」をご覧ください。
+Media Services を使い始める場合、コーデックとファイル形式の違いを理解することが重要です。コーデックは圧縮/展開アルゴリズムを実装するソフトウェアで、ファイル形式は圧縮されたビデオを保持するコンテナーです。
 
 Media Services には動的パッケージ化機能があり、アダプティブ ビットレート MP4 またはスムーズ ストリーミングでエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、スムーズ ストリーミング、HDS) でそのまま配信することができます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。
 
-[動的パッケージ化機能](media-services-dynamic-packaging-overview.md)を利用するには、次の作業が必要となります。
+[動的パッケージ化](media-services-dynamic-packaging-overview.md)機能を利用するには、次の作業が必要となります。
 
 - メザニン (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードします (エンコードの手順は、このチュートリアルの後半で説明しています)。
 - コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[How to Scale On-Demand Streaming Reserved Unit (オンデマンド ストリーミング占有ユニットの規模変更方法)](media-services-manage-origins.md#scale_streaming_endpoints/)」をご覧ください。
@@ -66,7 +64,7 @@ Azure Media Encoder と比較すると、このエンコーダーではサポー
 
 ###プリセット
 
-メディア エンコーダー スタンダードは、[ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
+Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
 
 ###入力メタデータと出力メタデータ
 
@@ -102,7 +100,7 @@ Azure Media Encoder は Media Services がサポートするエンコーダー�
 
 ###プリセット
 
-Azure Media Encoder は、[ここ](https://msdn.microsoft.com/library/azure/dn619392.aspx)で説明されているエンコーダーのプリセットのいずれかを使用して構成されています。実際の Azure Media Encoder のプリセット ファイルは、[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)で入手できます。
+Azure Media Encoder は、[ここ](https://msdn.microsoft.com/library/azure/dn619392.aspx)で説明されているエンコーダーのプリセットのいずれかを使用して構成されています。実際の Azure メディア エンコーダーのプリセット ファイルは、[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)で入手できます。
 
 ###入力メタデータと出力メタデータ
 
@@ -164,10 +162,10 @@ MPEG-2 プログラム ストリーム |あり|あり |あり
 MPEG-4/MP4 |あり|あり |あり
 Windows Media/ASF |あり|あり |あり
 AVI (非圧縮 8-bit/10-bit)|あり|あり |あり
-3GPP/3GPP2 |あり|あり |いいえ
-スムーズ ストリーミング ファイル形式 (PIFF 1.3)|あり|あり|いいえ
-[Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|あり|いいえ|いいえ
-Matroska/WebM |あり|いいえ|いいえ
+3GPP/3GPP2 |あり|はい |いいえ
+スムーズ ストリーミング ファイル形式 (PIFF 1.3)|あり|はい|いいえ
+[Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|あり|なし|いいえ
+Matroska/WebM |あり|なし|いいえ
 
 ###入力ビデオ コーデック
 
@@ -181,8 +179,8 @@ MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プ
 MPEG-1 |あり|あり|あり
 Windows Media ビデオ/VC-1 |あり|あり|あり
 Canopus HQ/HQX |いいえ|あり|いいえ
-MPEG-4 Part 2 |あり|いいえ|いいえ
-[Theora](https://en.wikipedia.org/wiki/Theora) |あり|いいえ|いいえ
+MPEG-4 Part 2 |あり|なし|いいえ
+[Theora](https://en.wikipedia.org/wiki/Theora) |あり|なし|いいえ
 
 ###入力オーディオ コーデック
 
@@ -197,9 +195,9 @@ MPEG Layer 2|あり|あり|あり
 MP3 (MPEG-1 Audio Layer 3)|あり|あり|あり
 Windows Media オーディオ|あり|あり|あり
 WAV/PCM|あり|あり|あり
-[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|あり|いいえ|いいえ
-[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |あり|いいえ|いいえ
-[Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|あり|いいえ|いいえ
+[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|あり|なし|いいえ
+[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |あり|なし|いいえ
+[Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|あり|なし|いいえ
 
 
 ###出力コンテナー/ファイル形式
@@ -256,4 +254,4 @@ AMS のラーニング パスについては、以下を参照してください
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

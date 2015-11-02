@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="10/16/2015"
    ms.author="larryfr"/>
 
 #PowerShell を使用して HDInsight の Hadoop で Hive クエリを実行
@@ -37,55 +37,94 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 リモート HDInsight クラスターで MapReduce ジョブを実行するときに次のコマンドレットを使用します。
 
-* **Add-AzureAccount**: Azure サブスクリプションに対して Azure PowerShell を認証します。
+* **Login-AzureRmAccount**: Azure サブスクリプションに対して Azure PowerShell を認証します。
 
-* **New-AzureHDInsightMapReduceJobDefinition**: 指定された MapReduce 情報を使用して新しい*ジョブ定義*を作成します。
+* **New-AzureRmHDInsightMapReduceJobDefinition**: 指定された MapReduce 情報を使用して、新しい*ジョブ定義*を作成します。
 
-* **Start-AzureHDInsightJob**: ジョブ定義を HDInsight に送信し、ジョブを開始して、ジョブのステータスの確認に使用できる*ジョブ* オブジェクトを返します。
+* **Start-AzureRmHDInsightJob**: ジョブ定義を HDInsight に送信し、ジョブを開始して、ジョブのステータスの確認に使用できる*ジョブ* オブジェクトを返します。
 
-* **Wait-AzureHDInsightJob**: ジョブ オブジェクトを使用して、ジョブのステータスを確認します。ジョブの完了を待機するか、待機時間が上限に達します。
+* **Wait-AzureRmHDInsightJob**: ジョブ オブジェクトを使用して、ジョブのステータスを確認します。ジョブの完了を待機するか、待機時間が上限に達します。
 
-* **Get-AzureHDInsightJobOutput**: ジョブの出力を取得します。
+* **Get-AzureRmHDInsightJobOutput**: ジョブの出力を取得する場合に使用します。
 
 これらのコマンドレットを使用して、HDInsight クラスターでジョブを実行するための手順を以下に示します。
 
 1. エディターを使用して、次のコードを **mapreducejob.ps1** として保存します。**CLUSTERNAME** を HDInsight クラスターの名前に置き換えます。
 
-		#Login to your Azure subscription
+		#Specify the values
+		$clusterName = "CLUSTERNAME"
+		$creds=Get-Credential
+        		
+		# Login to your Azure subscription
 		# Is there an active Azure subscription?
-		$sub = Get-AzureSubscription -ErrorAction SilentlyContinue
+		$sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
 		if(-not($sub))
 		{
-		    Add-AzureAccount
+		    Login-AzureRmAccount
 		}
+        
+        #Get HTTPS/Admin credentials for submitting the job later
+        $creds = Get-Credential
+        #Get the cluster info so we can get the resource group, storage, etc.
+        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+        $resourceGroup = $clusterInfo.ResourceGroup
+        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
+        $container=$clusterInfo.DefaultStorageContainer
+        $storageAccountKey=Get-AzureRmStorageAccountKey `
+            -Name $storageAccountName `
+            -ResourceGroupName $resourceGroup `
+            | %{ $_.Key1 }
 
-		#Specify the cluster name
-		$clusterName = "CLUSTERNAME"
-
+        #Create a storage content and upload the file
+        $context = New-AzureStorageContext `
+            -StorageAccountName $storageAccountName `
+            -StorageAccountKey $storageAccountKey
+            
 		#Define the MapReduce job
 		#NOTE: If using an HDInsight 2.0 cluster, use hadoop-examples.jar instead.
 		# -JarFile = the JAR containing the MapReduce application
 		# -ClassName = the class of the application
 		# -Arguments = The input file, and the output directory
-		$wordCountJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
-		                          -ClassName "wordcount" `
-		                          -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
+		$wordCountJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
+            -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
+            -ClassName "wordcount" `
+            -Arguments `
+                "wasb:///example/data/gutenberg/davinci.txt", `
+                "wasb:///example/data/WordCountOutput"
 
 		#Submit the job to the cluster
 		Write-Host "Start the MapReduce job..." -ForegroundColor Green
-		$wordCountJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $wordCountJobDefinition
+		$wordCountJob = Start-AzureRmHDInsightJob `
+            -ClusterName $clusterName `
+            -JobDefinition $wordCountJobDefinition `
+            -HttpCredential $creds
 
 		#Wait for the job to complete
 		Write-Host "Wait for the job to complete..." -ForegroundColor Green
-		Wait-AzureHDInsightJob -Job $wordCountJob -WaitTimeoutInSeconds 3600
-
+		Wait-AzureRmHDInsightJob `
+            -ClusterName $clusterName `
+            -JobId $wordCountJob.JobId `
+            -HttpCredential $creds
+        # Download the output
+        Get-AzureStorageBlobContent `
+            -Blob example/data/WordCountOutput/* `
+            -Container $container `
+            -Destination output.txt `
+            -Context $context
 		# Print the output
-		Write-Host "Display the standard output..." -ForegroundColor Green
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $wordCountJob.JobId -StandardOutput
-
+		Get-AzureRmHDInsightJobOutput `
+            -Clustername $clusterName `
+            -JobId $wordCountJob.JobId `
+            -DefaultContainer $container `
+            -DefaultStorageAccountName $storageAccountName `
+            -DefaultStorageAccountKey $storageAccountKey `
+            -HttpCredential $creds
+            
 2. **Azure PowerShell** コマンド プロンプトを開きます。ディレクトリを **mapreducejob.ps1** ファイルの場所に変更し、次のコマンドを使用してスクリプトを実行します。
 
 		.\mapreducejob.ps1
+    
+    スクリプトの実行時に、Azure サブスクリプションに対して認証を行うように求められる場合があります。HDInsight クラスターの HTTPS/管理者アカウント名とパスワードの入力も求められます。
 
 3. コマンドが完了すると、次のような出力が返されます。
 
@@ -103,46 +142,9 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 	> [AZURE.NOTE]**ExitCode** が 0 以外の値の場合は、[トラブルシューティング](#troubleshooting)をご覧ください
 
-##<a id="results"></a>ジョブの出力の表示
+    この例では、スクリプトが実行されるディレクトリにある **example/data/WordCountOutput** フォルダーへのダウンロードしたファイルの格納も行います。
 
-MapReduce ジョブは Azure BLOB ストレージの操作の結果を、ジョブの引数として指定された ****wasb:///example/data/WordCountOutput** パスに格納しました。Azure BLOB ストレージは Azure PowerShell からアクセスできますが、ストレージ アカウント名、キー、ファイルに直接アクセスするために HDInsight クラスターが使用するコンテナーの情報が必要です。
-
-これらの情報は次の Azure PowerShell コマンドレットを使用して取得できます。
-
-* **Get-AzureHDInsightCluster**: HDInsight クラスターやそれに関連付けられたストレージ アカウントに関する情報を返します。クラスターには常に既定のストレージ アカウントが関連付けられます。
-* **New-AzureStorageContext**: **Get-AzureHDInsightCluster** を使用して取得されるストレージ アカウント名とキーを指定することで、ストレージ アカウントへのアクセスに使用できるコンテキスト オブジェクトを返します。
-* **Get-AzureStorageBlob**: コンテキスト オブジェクトとコンテナー名を指定することで、コンテナー内の BLOB の一覧を返します。
-* **Get-AzureStorageBlobContent**: **Get-AzureHDinsightCluster** から返されるコンテキスト オブジェクト、ファイル パス、ファイル名、コンテナー名を指定することで、Azure BLOB ストレージからファイルをダウンロードします。
-
-次の例では、****wasb:///example/data/WordCountOutput** からストレージ情報を取得し、出力をダウンロードします。**CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。
-
-		#Login to your Azure subscription
-		# Is there an active Azure subscription?
-		$sub = Get-AzureSubscription -ErrorAction SilentlyContinue
-		if(-not($sub))
-		{
-		    Add-AzureAccount
-		}
-
-		#Specify the cluster name
-		$clusterName = "CLUSTERNAME"
-
-		#Retrieve the cluster information
-		$clusterInfo = Get-AzureHDInsightCluster -ClusterName $clusterName
-
-		#Get the storage account information
-		$storageAccountName = $clusterInfo.DefaultStorageAccount.StorageAccountName
-		$storageAccountKey = $clusterInfo.DefaultStorageAccount.StorageAccountKey
-		$storageContainer = $clusterInfo.DefaultStorageAccount.StorageContainerName
-
-		#Create the context object
-		$context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
-
-		#Download the files from wasb:///example/data/WordCountOutput
-		#Use the -blob switch to filter only blobs contained in example/data/WordCountOutput
-		Get-AzureStorageBlob -Container $storageContainer -Blob example/data/WordCountOutput/* -Context $context | Get-AzureStorageBlobContent -Context $context
-
-> [AZURE.NOTE]この例では、スクリプトが実行されるディレクトリにある **example/data/WordCountOutput** フォルダーにダウンロードしたファイルを格納します。
+##出力の表示
 
 MapReduce ジョブの出力は *part-r-#####* という名前のファイルに格納されます。テキスト エディターで **example/data/WordCountOutput/part-r-00000** ファイルを開き、ジョブによって生成された文字と回数を確認します。
 
@@ -154,7 +156,14 @@ MapReduce ジョブの出力は *part-r-#####* という名前のファイルに
 
 	# Print the output of the WordCount job.
 	Write-Host "Display the standard output ..." -ForegroundColor Green
-	Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $wordCountJob.JobId -StandardError
+	Get-AzureRmHDInsightJobOutput `
+            -Clustername $clusterName `
+            -JobId $wordCountJob.JobId `
+            -DefaultContainer $container `
+            -DefaultStorageAccountName $storageAccountName `
+            -DefaultStorageAccountKey $storageAccountKey `
+            -HttpCredential $creds
+            -DisplayOutputType StandardError
 
 これにより、ジョブの実行時にサーバー上の STDERR に書き込まれた情報が返されるため、ジョブ失敗の特定に役立ちます。
 
@@ -174,4 +183,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

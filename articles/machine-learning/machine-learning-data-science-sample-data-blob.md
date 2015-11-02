@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="Azure BLOB ストレージ内のデータのサンプリング | Microsoft Azure" 
+	pageTitle="Azure BLOB ストレージのデータをサンプリングする | Microsoft Azure" 
 	description="Azure BLOB ストレージのサンプル データ" 
 	services="machine-learning,storage" 
 	documentationCenter="" 
-	authors="msolhab" 
+	authors="bradsev" 
 	manager="paulettm" 
 	editor="cgronlun" />
 
@@ -13,10 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
-	ms.author="sunliangms;fashah;msolhab;garye;bradsev" />
+	ms.date="10/20/2015" 
+	ms.author="sunliangms;fashah;garye;bradsev" />
 
-#<a name="heading"></a>Azure BLOB ストレージ内のデータのサンプリング
+#<a name="heading"></a>Azure BLOB ストレージのデータをサンプリングする
+
+この**メニュー**は、多様なストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。このタスクは、Cortana Analytics Process (CAP) の 1 ステップです。
+
+[AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
+
+## はじめに
 
 このドキュメントでは、Azure BLOB ストレージに格納されたデータのサンプリングについて説明します。これは、プログラムを使用してこのデータをダウンロードしてから、Python のサンプル コードでサンプリングして行います。これを行う手順は、次のとおりです。
 
@@ -46,7 +52,7 @@
 	    #directly ready from file on disk
     	dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-3. 次のように、`numpy` の `random.choice` を使用してデータをダウン サンプリングします。
+3. 次のように、`numpy` の `random.choice` を使用してデータをダウンサンプリングします。
 
 	    # A 1 percent sample
     	sample_ratio = 0.01 
@@ -97,4 +103,4 @@
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

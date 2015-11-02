@@ -3,7 +3,7 @@
 	description="ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,johndeu,anilmur" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,16 +13,24 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015"
+	ms.date="10/16/2015"  
 	ms.author="juliako"/>
 
 
 #ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する
 
 ##概要
-**ワークフロー デザイナー**は、**メディア エンコーダー プレミアム ワークフロー**でエンコードするカスタム ワークフローの設計と構築に使用する Windows デスクトップ ツールです。
 
-このツールは、[既存のワークフロー](media-services-workflow-designer.md#existing_workflows)を変更する場合にも使用できます
+**ワークフロー デザイナー**は、**メディア エンコーダー プレミアム ワークフロー**でエンコードするカスタム ワークフローの設計と構築に使用する Windows デスクトップ ツールです。ワークフロー デザイナー ツールの機能を利用することで、**メディア エンコーダー プレミアム**で実行する複雑なワークフローを設計し、作成できます。
+
+ワークフローには、入力ソース ファイルのプロパティに基づいて顧客の意志決定ロジックとブランチを含めることができます。上書き可能なプロパティと動的な値を含むワークフローを作成すれば、最も複雑なエンコーディング タスクをクラウドで簡単に繰り返し、カスタマイズできます。
+
+作成可能なワークフローの例は次のとおりです。
+
+- 解決を求めてソース コンテンツを検査し、必要な出力トラックだけをエンコードする決定基準のワークフロー。不注意でソース コンテンツをスケールアップし、生成される無駄なトラックをなくするので便利です。
+- 複数の入力ファイルを使用し、キャプション、オーバーレイ、結合コンテンツをサポートできます。 
+
+このツールはまた、[公開済みワークフロー](media-services-workflow-designer.md#existing_workflows)の変更に使用できます。
 
 >[AZURE.NOTE]ワークフロー デザイナー ツールのコピーを取得するには、mepd@microsoft.com にお問い合わせください。
 
@@ -31,7 +39,7 @@
 
 ##<a id="existing_workflows"></a>既存のワークフローを変更する
 
-デザイナー ツールを使用して、既定のワークフロー ファイルを変更できます。既定のワークフロー ファイルは[こちら](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)から入手できます。フォルダーにはこれらのファイルの説明も含まれています。
+デザイナー ツールを使用して、[既定の公開済みワークフロー](media-services-workflow-designer.md#existing_workflows)を変更できます。既定のワークフロー ファイルは[こちら](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)から入手できます。フォルダーにはこれらのファイルの説明も含まれています。
 
 以下のビデオでは、デザイナーの使用方法を示しています。
 
@@ -74,9 +82,10 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
+ワークフロー デザイナー ツールでカスタム ワークフローを作成するとき、サポートが必要になりましたら、あるいはご質問がございましたら、mepd@microsoft.com までメールを送信してください。
 
 ##関連項目
 
 [Azure プレミアム エンコーダー ワークフロー デザイナーのトレーニング ビデオ](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

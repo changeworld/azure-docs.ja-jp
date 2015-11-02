@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Service Bus の Premium および Standard メッセージング レベルの概要 | Microsoft Azure"
+	pageTitle="Service Bus の Premium および Standard メッセージング価格レベルの概要 | Microsoft Azure"
 	description="Service Bus の Premium および Standard メッセージング"
 	services="service-bus"
 	documentationCenter=".net"
@@ -9,12 +9,12 @@
 
 <tags
 	ms.service="service-bus"
-	ms.workload="tbd"
+	ms.workload="na"
 	ms.tgt_pltfrm="na"
-	ms.devlang="multiple"
+	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/03/2015"
-	ms.author="sethm"/>
+	ms.date="10/15/2015"
+	ms.author="darosa"/>
 
 # Service Bus の Premium および Standard メッセージング レベル 
 
@@ -41,7 +41,7 @@ Premium および Standard メッセージング レベルの間でのいくつ�
 
 ### パーティション分割されたエンティティ
 
-パーティション分割されたエンティティは Premium メッセージングでサポートされますが、Standard および Basic レベルの Service Bus メッセージングと同様には機能しません。Premium メッセージングは SQL をデータ ストアとして使用しないため、共有プラットフォームに関連するリソース競合が発生する可能性がなくなりました。その結果、パーティション分割は必要ありません。さらに、パーティション数は、Standard メッセージングでの 16 から、Premium メッセージングでは 2 に変更されました。2 個のパーティションによって可用性が確保されます。また、Premium の実行時環境にとって、2 個というのはより適切なパーティション数です。詳細については、「[メッセージング エンティティのパーティション分割](https://msdn.microsoft.com/library/dn520246.aspx)」を参照してください。
+パーティション分割されたエンティティは Premium メッセージングでサポートされますが、Standard および Basic レベルの Service Bus メッセージングと同様には機能しません。Premium メッセージングは SQL をデータ ストアとして使用しないため、共有プラットフォームに関連するリソース競合が発生する可能性がなくなりました。その結果、パーティション分割は必要ありません。さらに、パーティション数は、Standard メッセージングでの 16 から、Premium メッセージングでは 2 に変更されました。2 個のパーティションによって可用性が確保されます。また、Premium の実行時環境にとって、2 個というのはより適切なパーティション数です。詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」を参照してください。
 
 ### エクスプレス エンティティ
 
@@ -54,7 +54,7 @@ Service Bus メッセージングの詳細については、次のトピック�
 - [Azure Service Bus Premium メッセージングの概要 (ブログの投稿)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 - [Azure Service Bus Premium メッセージングの概要(Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 - [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-- [Azure Service Bus アーキテクチャの概要](fundamentals-service-bus-hybrid-solutions.md)
+- [Azure Service Bus アーキテクチャの概要](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

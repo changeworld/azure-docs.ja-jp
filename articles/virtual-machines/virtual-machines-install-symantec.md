@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/14/2015"
+	ms.date="10/14/2015"
 	ms.author="dkshir"/>
 
-# How to install and configure Symantec Endpoint Protection on an Azure VM (Azure VM に Symantec Endpoint Protection をインストールし、構成する方法)
+# Windows VM に Symantec Endpoint Protection をインストールし、構成する方法
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
@@ -30,7 +30,7 @@ Symantec のオンプレミス ソリューション用サブスクリプショ�
 
 ## 新しい仮想マシンに Symantec Endpoint Protection をインストールする
 
-[[ギャラリーから]][Portal] オプションを使用して仮想マシンを作成する際に、**Azure 管理ポータル**で、VM エージェントと Symantec のセキュリティ拡張機能をインストールできます。仮想マシンを 1 つだけ作成する場合には、この方法が Symantec の保護機能を追加する最も簡単な方法です。
+[[ギャラリーから]][Portal] オプションを使用して仮想マシンを作成する際に、**Microsoft Azure 管理ポータル**で、VM エージェントと Symantec のセキュリティ拡張機能をインストールできます。仮想マシンを 1 つだけ作成する場合には、この方法が Symantec の保護機能を追加する最も簡単な方法です。
 
 この **[ギャラリーから]** をクリックすると、仮想マシンの設定を支援するウィザードが起動します。ウィザードの最後のページで、VM エージェントと Symantec のセキュリティ拡張機能をインストールします。
 
@@ -88,7 +88,7 @@ Symantec のセキュリティ拡張機能がインストールされ、最新�
 
 [Portal]: http://manage.windowsazure.com
 
-[Create]: virtual-machines-windows-tutorial.md
+[Create]: virtual-machines-windows-tutorial-classic-portal.md
 
 [PS]: ../powershell-install-configure.md
 
@@ -98,4 +98,4 @@ Symantec のセキュリティ拡張機能がインストールされ、最新�
 
 [Ext]: http://go.microsoft.com/fwlink/p/?linkid=390493
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

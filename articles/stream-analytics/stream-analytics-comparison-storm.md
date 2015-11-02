@@ -1,7 +1,7 @@
 <properties
 	pageTitle="比較: Apache Storm vs.Azure Stream Analytics | Microsoft Azure"
 	description="リアルタイム Twitter センチメント分析で Stream Analytics を使用する方法について説明します。イベントの生成からライブ ダッシュボード上でのデータ操作までの手順。"
-	keywords="real-time twitter,sentiment analysis,social media analysis,social media analytics tools"
+	keywords="リアルタイム Twitter,センチメント分析,ソーシャル メディア分析,ソーシャル メディア分析ツール"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -590,4 +590,4 @@
     </tbody>
 </table>
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->
