@@ -38,7 +38,7 @@
 
 2. **[新規]**、**[データ + ストレージ]**、**[SQL Data Warehouse]** の順にクリックします。
 
-	![データ ウェアハウスの作成](./media/sql-data-warehouse-get-started-provision/new-data-warehouse.png)
+    ![作成](./media/sql-data-warehouse-get-started-provision/create-sample.gif)
 
 1. [SQL Data Warehouse ] ブレードにデータベースの名前を入力します。この例では、データベースに AdventureWorksDW という名前を付けます。
 
@@ -128,4 +128,4 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 
 SQL Data Warehouse のサンプル データベースの作成は以上で完了です。いつでもデータベースに[接続](./sql-data-warehouse-get-started-connect.md)することができます。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

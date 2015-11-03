@@ -34,7 +34,7 @@
 
 ![基本的な VETR フロー][1]
 
-次の BizTalk API は、このパターンを作成する際に役立ちます。
+次の BizTalk API Apps は、このパターンを作成する際に役立ちます。
 
 * **HTTP トリガー** - メッセージ イベントをトリガーするソース。
 * **検証** - 受信データが正確であるかどうかを検証する。
@@ -51,12 +51,12 @@ Microsoft Azure 管理ポータルで、画面左下の **[+ 新規]** ボタン
 
 
 ## HTTP トリガーの追加
-
+1. **[最初から作成]** を選択します。
 1. ギャラリーから **[HTTP リスナー]** を選択して新しいリスナーを作成します。このリスナーを **HTTP1** と呼びます。
 2. **[応答を自動的に送信しますか?]** の設定は、[いいえ] のままにしておきます。_HTTP メソッド_を _[投稿]_ に、_相対 URL_ を _[/OneWayPipeline]_ に設定して、トリガーのアクションを構成します。  
 
 	![HTTP トリガー][2]
-
+3. 緑色のチェックマークをクリックします。
 
 ## 検証アクションの追加
 
@@ -74,7 +74,7 @@ Microsoft Azure 管理ポータルで、画面左下の **[+ 新規]** ボタン
 ## 変換アクションの追加
 受信データを正規化するために変換を構成します。
 
-1. ギャラリーから **[変換]** を追加します。
+1. ギャラリーから **BizTalk 変換サービス**を追加します。
 2. 変換を構成して受信 XML メッセージを変換するには、この API が呼び出されたときに実行するアクションとして **[変換]** アクションを選択します。次に、_inputXml_ の値として ```triggers(‘httplistener’).outputs.Content``` を選択します。受信データは、構成済みのすべての変換に適合しますが、スキーマに一致するものだけが適用されるため、*Map* はオプションのパラメーターです。
 3. 最後に、検証が成功した場合にのみ、変換が実行されるようにします。この条件を構成するには、右上にある歯車アイコンをクリックし、_[満たされる条件を追加する]_ を選択します。条件を ```equals(actions('xmlvalidator').status,'Succeeded')``` に設定します。  
 
@@ -85,7 +85,8 @@ Microsoft Azure 管理ポータルで、画面左下の **[+ 新規]** ボタン
 次に、データを書き込む場所である出力先 (Service Bus キュー) を追加します。
 
 1. ギャラリーから **Service Bus コネクタ**を追加します。**[名前]** を _Servicebus1_ に、**[接続文字列]** をユーザーのサービス バス インスタンスへの接続文字列に、**[エンティティ名]** を _[キュー]_ に設定します。**[サブスクリプション名]** はスキップします。
-2. **メッセージの送信**アクションを選択し、このアクションの **[メッセージ]** フィールドを _actions('transformservice').outputs.OutputXml_ に設定します。
+2. **メッセージの送信**アクションを選択し、このアクションの **[コンテンツ]** フィールドを _actions('transformservice').outputs.OutputXml_ に設定します。
+3. **[コンテンツの種類]** を application/xml に設定します。
 
 ![Service Bus][5]
 
@@ -94,18 +95,21 @@ Microsoft Azure 管理ポータルで、画面左下の **[+ 新規]** ボタン
 パイプライン処理の完了後、成功した場合と失敗した場合のそれぞれについて HTTP 応答を返すように構成します。手順は次のとおりです。
 
 1. ギャラリーから **HTTP リスナー**を追加し、**HTTP 応答の送信**アクションを選択します。
-2. **[応答コンテンツ]** を *[パイプライン処理が完了しました]* に設定し、HTTP 200 が OK であることを示すために **[応答状態コード]** を *[200]* に設定します。また、式の **[条件]** を次のように設定します。```@equals(actions('servicebusconnector').status,'Succeeded')``` <br/>
+2. **[応答 ID]** を "*メッセージの送信*" に設定します。
+2. **[応答コンテンツ]** を "*パイプライン処理が完了しました*" に設定します。
+3. HTTP 200 OK を指定するために **[応答状態コード]** を "*200*" に設定します。
+4. 右上のドロップダウン メニューをクリックし、**[満たされる条件を追加する]** を選択します。[条件] を次の式に設定します。```@equals(actions('azureservicebusconnector').status,'Succeeded')``` <br/>
+5. 失敗した場合も HTTP 応答を送信するために、同じ手順を繰り返します。**[条件]** を次の式に変更します。```@not(equals(actions('azureservicebusconnector').status,'Succeeded'))``` <br/>
+6. **[OK]**、**[作成]** の順にクリックします。
 
-
-失敗した場合も HTTP 応答を送信するために、同じ手順を繰り返します。**[条件]** を次の式に変更します。```@not(equals(actions('servicebusconnector').status,'Succeeded'))``` <br/>
 
 
 ## 完了
-メッセージが HTTP エンドポイントに送信されるたびに、エンドポイントがアプリをトリガーし、上記で作成したアクションが実行されます。このようにして作成したロジック アプリを管理するには、Azure ポータルで **[参照]** をクリックし、 **[Logic Apps]** をクリックします。確認するアプリを選択すると、詳細が表示されます。
+メッセージが HTTP エンドポイントに送信されるたびに、エンドポイントがアプリをトリガーし、上記で作成したアクションが実行されます。このようにして作成したロジック アプリを管理するには、Azure ポータルで **[参照]** をクリックし、**[Logic Apps]** を選択します。確認するアプリを選択すると、詳細が表示されます。
 
 いくつかの役に立つトピック:
 
-[組み込み API Apps とコネクタの管理と監視を実行する](app-service-logic-monitor-your-connectors.md) <br/> [Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)
+[API Apps とコネクタの管理と監視を実行する](app-service-logic-monitor-your-connectors.md) <br/> [Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)
 
 <!--image references -->
 [1]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/BasicVETR.PNG
@@ -114,4 +118,4 @@ Microsoft Azure 管理ポータルで、画面左下の **[+ 新規]** ボタン
 [4]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/BizTalkTransforms.PNG
 [5]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/AzureServiceBus.PNG
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

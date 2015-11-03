@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="09/09/2015"
+	ms.date="10/26/2015"
 	ms.author="anhoh"/>
 
 # DocumentDB Document Explorer を使用した JSON ドキュメントの表示、編集、作成、およびアップロード #
@@ -141,7 +141,8 @@ Document Explorer では、1 つまたは複数の既存の JSON ドキュメン
 ##<a name="NextSteps"></a>次のステップ
 
 - DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
+- コードの使用を開始するには、[ここ](documentdb-get-started.md)をクリックしてください。
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/09/2015"
+	ms.date="10/22/2015"
 	ms.author="tdykstra"/>
 
 # Azure App Service に .NET Web ジョブを作成する
@@ -70,7 +70,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 1. Visual Studio で**サーバー エクスプローラー** ウィンドウを開きます。
 
 2. **[Azure]** ノードを右クリックし、**[Microsoft Azure に接続]** をクリックします。
-![Connect to Azure](./media/websites-dotnet-webjobs-sdk-get-started/connaz.png)
+![Azure への接続](./media/websites-dotnet-webjobs-sdk-get-started/connaz.png)
 
 3. Azure の資格情報を使用してサインインします。
 
@@ -132,7 +132,8 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 3. **[プロパティ]** ウィンドウで **[ストレージ アカウント キー]** をクリックし、省略記号ボタンをクリックします。
 
-	![新しいストレージ アカウント](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
+	![新しいストレージ アカウント  
+](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
 
 4. **接続文字列**をコピーします。
 
@@ -261,7 +262,8 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 15. **[設定]** ステップで、**[実行時にこの接続文字列を使用する]** チェック ボックスをオフにして **[次へ]** をクリックします。
 
-	![[設定] 手順](./media/websites-dotnet-webjobs-sdk-get-started/settingsstep.png)
+	![[設定] 手順  
+](./media/websites-dotnet-webjobs-sdk-get-started/settingsstep.png)
 
 	SQL 接続文字列を設定するために発行ダイアログを使用する必要はありません。後から Azure 環境で値を設定します。
 
@@ -337,7 +339,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 3. Web ジョブの [ログ] 列で URL をクリックします。
 
-	![WebJobs tab](./media/websites-dotnet-webjobs-sdk-get-started/wjtab.png)
+	![[Web ジョブ] タブ](./media/websites-dotnet-webjobs-sdk-get-started/wjtab.png)
 
 	新しいブラウザー タブが開き、Web ジョブ SDK ダッシュボードが表示されます。ダッシュボードには、Web ジョブが実行中であることと、Web ジョブ SDK がトリガーしたコード内の関数の一覧が表示されます。
 
@@ -379,7 +381,8 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 5. **[認証の変更]** をクリックします。
 
-	![認証の変更](./media/websites-dotnet-webjobs-sdk-get-started/chgauth.png)
+	![認証の変更  
+](./media/websites-dotnet-webjobs-sdk-get-started/chgauth.png)
 
 7. **[認証の変更]** ダイアログで、**[認証なし]** をクリックし、**[OK]** をクリックします。
 
@@ -813,4 +816,4 @@ https://{webappname}.scm.azurewebsites.net/azurejobs/#/functions
 
 詳細については、「[Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?LinkId=390226)」を参照してください。
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/02/2015"
+   ms.date="10/27/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーの概要
@@ -97,27 +97,31 @@ Marketplace からソリューションを作成すると、ソリューショ�
 
 リソース マネージャーを使用すると、組織に対する特定アクションにアクセスできるユーザーを制御できます。Azure リソース マネージャーでは、OAuth およびロールベースのアクセス制御 (RBAC) が管理プラットフォームにネイティブに統合されているため、そのアクセス制御がリソース グループ内のすべてのサービスに適用されます。ユーザーを事前定義されたプラットフォームおよびリソース固有のロールに追加し、これらのロールをサブスクリプション、リソース グループ、またはリソースに適用することで、アクセスを制限できます。たとえば、ユーザーにデータベース管理は許可するが、データベース サーバーやセキュリティ ポリシーの管理は許可しない SQL DB 共同作業者と呼ばれる事前定義済みのロールを利用するとします。このようなアクセスを必要とする組織内ユーザーを、SQL DB 共同作業者ロールに追加して、このロールをサブスクリプション、リソース グループ、またはリソースに適用します。
 
-リソース マネージャーでは、監査のために、自動的にユーザー操作が記録されます。
+リソース マネージャーでは、監査のために、自動的にユーザー操作が記録されます。監査ログを使用する方法の詳細については、「[リソース マネージャーの監査操作](resource-group-audit.md)」を参照してください。
 
-ロールベースのアクセス制御の詳細については、[Azure プレビュー ポータルでのロール ベースのアクセス制御](role-based-access-control-configure.md)を参照してください。このトピックには、組み込みのロールと許可されているアクションの一覧が含まれています。組み込みのロールには、所有者、閲覧者、共同作業者などの一般的なロールに加え、Virtual Machine の共同作業者、Virtual Network の共同作業者、SQL セキュリティ管理者など、サービス固有のロールがあります (使用可能なロールの数例にすぎません)。
+ロールベースのアクセス制御の詳細については、[Microsoft Azure プレビュー ポータルでのロール ベースのアクセス制御](role-based-access-control-configure.md)に関するページを参照してください。このトピックには、組み込みのロールと許可されているアクションの一覧が含まれています。組み込みのロールには、所有者、閲覧者、共同作業者などの一般的なロールに加え、仮想マシンの共同作業者、Virtual Network の共同作業者、SQL セキュリティ管理者など、サービス固有のロールがあります (使用可能なロールの数例にすぎません)。
 
-アクセス ポリシー設定の例については、「[リソースへのアクセスの管理と監査](azure-portal/resource-group-rbac.md)」を参照してください。
+ロールの割り当ての例については、「[リソースへのアクセスの管理](azure-portal/resource-group-rbac.md)」を参照してください。
 
 重要なリソースを、ユーザーによって削除または変更されないように、明示的にロックすることもできます。詳細については、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
 
 ベスト プラクティスについては、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
 
+## カスタマイズしたポリシーによるリソースの管理
+
+リソース マネージャーでは、リソースを管理するためにカスタマイズされたポリシーを作成できます。作成できるポリシーの種類には、リソースに名前付け規則を適用する、特定の種類のリソースをホストできるリージョンを制限する、部門別に課金を整理するためにリソースにタグ値を義務付けるなど、さまざまなシナリオがあります。詳細については、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」を参照してください。
+
 ## 一貫性のある管理レイヤー
 
 リソース マネージャーでの操作は、Azure PowerShell、Mac、Linux、および Windows 用の Azure CLI、Azure プレビュー ポータル、または REST API の操作と完全な互換性があります。ユーザーに最適なインターフェイスを使用できるほか、インターフェイス間を混乱せずにすばやく移動できます。ポータルでは、ポータルの外で実行された操作さえも表示されます。
 
-PowerShell に関する詳細については、[リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)および [Azure Resource Manager Cmdlets (Azure リソース マネージャのコマンドレッド)](https://msdn.microsoft.com/library/azure/dn757692.aspx) を参照してください。
+PowerShell に関する詳細については、[リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)に関するページと、[Azure リソース マネージャのコマンドレッド](https://msdn.microsoft.com/library/azure/dn757692.aspx)に関するページを参照してください。
 
 Azure CLI の詳細については、[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](./virtual-machines/xplat-cli-azure-resource-manager.md)を参照してください。
 
 REST API の詳細については、[Azure リソース マネージャー REST API リファレンス](https://msdn.microsoft.com/library/azure/dn790568.aspx)を参照してください。
 
-プレビュー ポータルの使用方法の詳細については、[Azure プレビュー ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)に関するページを参照してください。
+プレビュー ポータルの使用方法の詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)」を参照してください。
 
 
 ## 次のステップ
@@ -125,10 +129,10 @@ REST API の詳細については、[Azure リソース マネージャー REST 
 - テンプレート作成の詳細については、[テンプレートの作成](./resource-group-authoring-templates.md)に関するページを参照してください。
 - 作成したテンプレートをデプロイするには、[テンプレートのデプロイ](azure-portal/resource-group-template-deploy.md)に関するページを参照してください。
 - テンプレートで使用できる関数については、[テンプレートの関数](./resource-group-template-functions.md)に関するページを参照してください。
-- テンプレートのデザインのガイダンスについては、[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](best-practices-resource-manager-design-templates.md)に関するページを参照してください。
+- テンプレートの設計のガイダンスについては、「[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](best-practices-resource-manager-design-templates.md)」を参照してください。
 
 この概要のデモンストレーション ビデオを次に示します。
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->
