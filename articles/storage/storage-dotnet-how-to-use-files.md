@@ -12,10 +12,12 @@
       ms.tgt_pltfrm="na"
       ms.devlang="dotnet"
       ms.topic="hero-article"
-      ms.date="09/28/2015"
+      ms.date="10/26/2015"
       ms.author="tamram" />
 
 # Windows で Azure File ストレージを使用する方法
+
+[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
 ## 概要
 
@@ -35,6 +37,12 @@ File ストレージのスケーラビリティ ターゲットの詳細につ�
 
 [AZURE.INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
 
+## ビデオ: Windows で Azure File ストレージを使用する方法
+
+このビデオでは、Windows で Azure のファイル共有を作成して使用する方法について説明しています。
+
+> [AZURE.VIDEO azure-file-storage-with-windows]
+
 ## このチュートリアルについて
 
 この概要チュートリアルでは、Microsoft Azure File ストレージの基本的な使用方法を説明します。このチュートリアルでは、次のことを行います。
@@ -48,7 +56,7 @@ File ストレージのスケーラビリティ ターゲットの詳細につ�
 	- ファイルを、同じストレージ アカウント内の別のファイルにコピーする
 	- ファイルを、同じストレージ アカウント内の BLOB にコピーする
 
-File ストレージは、すべてのストレージ アカウントでサポートされているため、既存のストレージ アカウントを使用することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントの作成方法の詳細については、「[ストレージ アカウントの作成、管理および削除方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+File ストレージは、すべてのストレージ アカウントでサポートされているため、既存のストレージ アカウントを使用することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントの作成方法の詳細については、[ストレージ アカウントの作成、管理、および削除の方法](storage-create-storage-account.md#create-a-storage-account)に関するページを参照してください。
 
 ## ファイル共有を管理するための Azure プレビュー ポータルの使用
 
@@ -144,8 +152,8 @@ SMB 3.0 のサポートにより、File ストレージでは、SMB 3.0 クラ�
 
 Azure のファイル共有をマウントする方法を示すために、ここでは Windows を実行する Azure の仮想マシンを作成します。このマシンにリモート接続して、共有をマウントします。
 
-1. 最初に、「[Windows Server を実行する仮想マシンの作成](../virtual-machines-windows-tutorial.md)」の説明に従って、Azure の仮想マシンを新規作成します。
-2. 次に、「[Windows Server を実行する仮想マシンにログオンする方法](../virtual-machines-log-on-windows-server.md)」の説明に従って仮想マシンにリモート接続します。
+1. 最初に、[Windows Server を実行する仮想マシンの作成](../virtual-machines-windows-tutorial.md)に関するページの説明に従って、Azure の仮想マシンを新規作成します。
+2. 次に、[Windows Server を実行する仮想マシンにログオンする方法](../virtual-machines-log-on-windows-server.md)に関するページの説明に従って仮想マシンにリモート接続します。
 3. 仮想マシンで PowerShell ウィンドウを開きます。
 
 ### ストレージ アカウントの資格情報を仮想マシンに適用
@@ -195,7 +203,7 @@ File ストレージをプログラミングする場合、.NET と Java のス�
 
 Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage NuGet パッケージをインストールするには、次の手順を実行します。
 
-1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows]、\[コンソール アプリケーション\]** (Visual C# テンプレートの一覧から)をクリックします。
+1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から [コンソール アプリケーション]**をクリックします。
 2. コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
 3. プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
@@ -353,7 +361,7 @@ Azure ストレージ クライアント ライブラリのバージョン 5.x �
         Console.WriteLine(fileSas.DownloadText());
     }
 
-Shared Access Signature の作成および使用の詳細については、「[Shared Access Signature: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」と「[BLOB サービスによる SAS の作成および使用](storage-dotnet-shared-access-signature-part-2.md)」を参照してください。
+共有アクセス署名の作成および使用の詳細については、「[Shared Access Signatures: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」と「[BLOB サービスによる SAS の作成および使用](storage-dotnet-shared-access-signature-part-2.md)」を参照してください。
 
 ### ファイルのコピー
 
@@ -518,8 +526,9 @@ Azure ポータルから File ストレージのメトリックを有効にす�
 
 Azure File ストレージの詳細については、次のリンクを参照してください。
 
-### 概念についての記事
+### 概念に関する記事とビデオ
 
+- [Azure File ストレージ: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
 - [Linux で Azure File ストレージを使用する方法](storage-how-to-use-files-linux.md)
 
 ### File ストレージ用のツールのサポート
@@ -540,4 +549,4 @@ Azure File ストレージの詳細については、次のリンクを参照し
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

@@ -38,7 +38,7 @@
 
 2. **[新規]**、**[データ + ストレージ]**、**[SQL Data Warehouse]** の順にクリックします。
 
-	![データ ウェアハウスの作成](./media/sql-data-warehouse-get-started-provision/new-data-warehouse.png)
+    ![作成](./media/sql-data-warehouse-get-started-provision/create-sample.gif)
 
 1. [SQL Data Warehouse ] ブレードにデータベースの名前を入力します。この例では、データベースに AdventureWorksDW という名前を付けます。
 
@@ -48,12 +48,7 @@
 ## 手順 2: サーバーを構成して作成する
 SQL Database および SQL Data Warehouse では、各データベースがサーバーに割り当てられ、それぞれのサーバーが地理的な場所に割り当てられます。このサーバーを論理 SQL サーバーといいます。
 
-> [AZURE.NOTE]<a name="note"></a>論理 SQL サーバーの特徴:
-  >
-  > + 地理的に同じ場所にある複数のデータベースの構成に一貫性を与える効果があります。
-  > + オンプレミス サーバーに使用されるような物理的なハードウェアではありません。サービスのソフトウェアの構成要素です。*論理サーバー*と呼ばれるのはそのためです。
-  > + パフォーマンスを損ねずに複数のデータベースをホストすることができます。
-  > + 名前は SQL Server ではなく *SQL サーバー*です。SQL **サーバー**が Azure の論理サーバーであるのに対し、SQL **Server** は Microsoft のオンプレミス データベース製品です。
+> [AZURE.NOTE]<a name="note"></a>論理 SQL サーバーの特徴: > > + 地理的に同じ場所にある複数のデータベースの構成に一貫性を与える効果があります。 > + オンプレミス サーバーに使用されるような物理的なハードウェアではありません。サービスのソフトウェアの構成要素です。*論理サーバー*と呼ばれるのはそのためです。 > + パフォーマンスを損ねずに複数のデータベースをホストすることができます。 > + 名前は SQL Server ではなく *SQL サーバー*です。SQL **サーバー**が Azure の論理サーバーであるのに対し、SQL **Server** は Microsoft のオンプレミス データベース製品です。
 
 1. **[サーバー]**、**[新しいサーバーの作成]** をクリックします。サーバーの料金は発生しません。使用する V12 論理 SQL サーバーが既にある場合は、既存のサーバーを選択し、次の手順に進みます。 
 
@@ -128,4 +123,4 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 
 SQL Data Warehouse のサンプル データベースの作成は以上で完了です。いつでもデータベースに[接続](./sql-data-warehouse-get-started-connect.md)することができます。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

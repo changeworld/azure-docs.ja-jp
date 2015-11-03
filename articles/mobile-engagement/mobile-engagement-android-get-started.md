@@ -135,9 +135,15 @@ SDK ライブラリをダウンロードして統合する
 
 データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面 (アクティビティ) を Mobile Engagement のバックエンドに送信する必要があります。
 
-**MainActivity.java** に移動して、**MainActivity** の基本クラスを **ActionBarActivity** から **EngagementActivity** に置き換えます。
+**MainActivity.java** に移動して、**MainActivity** の基本クラスを **EngagementActivity** に置き換えます。
 
 	public class MainActivity extends EngagementActivity {
+
+この簡単なサンプル シナリオでは、次の行をコメント アウト (除外) する必要があります。
+
+    // setSupportActionBar(toolbar);
+
+これを残しておきたい場合は、[Android の高度な統合]に関するページの「基本的なレポート」シナリオを参照してください。
 
 ##<a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
 
@@ -149,7 +155,7 @@ Mobile Engagement を導入すると、プッシュ通知とアプリ内メッ�
 
 ### アプリ内メッセージングの有効化
 
-1. Manifest.xml の `<application>` タグと `</application>` タグの間に、次のアプリ内メッセージングのリソースをコピーします。
+1. Manifest.xml の `<application>` タグと `</application>` タグの間に、次のアプリ内メッセージング リソースをコピーします。
 
 		<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light">
   			<intent-filter>
@@ -218,6 +224,10 @@ Mobile Engagement を導入すると、プッシュ通知とアプリ内メッ�
 
 >[AZURE.TIP]適切な解像度のアイコンを使用するには、[これらの例](https://www.google.com/design/icons)を参考にしてください。**[Notification]** セクションまでスクロールして 1 つのアイコンをクリックし、`PNGS` をクリックして描画可能なアイコンのセットをダウンロードします。アイコンのバージョンごとに、使用する描画可能なフォルダーと解像度を確認できます。
 
+##API キーを使用して Google Cloud Messaging プロジェクトを作成する 
+
+[AZURE.INCLUDE [mobile-engagement-enable-Google-cloud-messaging](../../includes/mobile-engagement-enable-google-cloud-messaging.md)]
+
 ###GCM のプッシュ通知を受信するようにアプリを設定する
 
 1. Google Play コンソールから取得した `project number` を置き換えた後、Manifest.xml の `<application>` タグと `</application>` タグ間に次を貼り付けます。\\n は意図的に付けられています。プロジェクト番号の末尾には必ずこれを付けてください。
@@ -265,7 +275,7 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
 	  
 	![][17]
 
-4. ポップアップ画面で、「[Google Cloud Messaging を有効にする](#register)」セクションで取得した GCM サーバー キーを貼り付け、**[OK]** をクリックします。
+4. ポップアップ画面で、前に取得した GCM サーバー キーを貼り付け、**[OK]** をクリックします。
 
 	![][18]
 
@@ -293,11 +303,11 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
 
 	e.次に、**メッセージ**を入力します。
 
-4. 下にスクロールし、**[コンテンツ]** セクションで **[通知のみ]** を選択します。
+4. 下へスクロールし、**[コンテンツ]** セクションで **[通知のみ]** を選択します。
 
 	![][22]
 
-5. 最も基本的なキャンペーンの設定が完了しました。もう一度下にスクロールし、**[作成]** ボタンをクリックしてキャンペーンを保存します。
+5. 最も基本的なキャンペーンの設定が完了しました。もう一度下へスクロールし、**[作成]** ボタンをクリックして、キャンペーンを保存します。
 
 6. 最後の手順として、**[アクティブ化]** をクリックしてキャンペーンをアクティブにし、プッシュ通知を送信します。
     
@@ -306,6 +316,8 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
 <!-- URLs. -->
 [Mobile Engagement Android SDK]: http://go.microsoft.com/?linkid=9863935
 [Mobile Engagement Android SDK documentation]: http://go.microsoft.com/?linkid=9874682
+[Android の高度な統合]: https://azure.microsoft.com/ja-JP/documentation/articles/mobile-engagement-android-integrate-engagement/#basic-reporting
+
 <!-- Images. -->
 [1]: ./media/mobile-engagement-android-get-started/android-studio-new-project.png
 [2]: ./media/mobile-engagement-android-get-started/android-studio-project-props.png
@@ -327,4 +339,4 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
 [22]: ./media/mobile-engagement-android-get-started/campaign-content.png
 [24]: ./media/mobile-engagement-android-get-started/campaign-activate.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

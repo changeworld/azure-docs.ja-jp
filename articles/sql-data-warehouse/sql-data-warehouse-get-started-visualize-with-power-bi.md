@@ -17,12 +17,15 @@
     ms.author="lodipalm"/>
 
 # Power BI でデータを視覚化する
-このチュートリアルでは、Power BI を使用して、SQL Data Warehouse に接続し、いくつかの基本的な視覚化を作成する方法を示します。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、AdventureWorksDW サンプル データベースを事前に読み込まれている SQL Data Warehouse データベースが必要です。「[Create a SQL Data Warehouse (SQL Data Warehouse の作成)](sql-data-warehouse-get-started-provision.md)」では、作成方法が示されています。
+
+> [AZURE.NOTE]このチュートリアルを完了するには、AdventureWorksDW サンプル データベースを事前に読み込まれている SQL Data Warehouse データベースが必要です。[SQL Data Warehouse の作成](sql-data-warehouse-get-started-provision.md)に関するページで、作成方法が説明されています。
 > 
 > SQL Data Warehouse データベースは既にあっても、サンプル データがない場合は、[サンプル データを手動で読み込む][]ことができます。
 
+このチュートリアルでは、Power BI を使用して、SQL Data Warehouse に接続し、いくつかの基本的な視覚化を作成する方法を示します。
+
+> [AZURE.VIDEO azure-sql-data-warehouse-sample-data-and-powerbi]
 
 ## AdventureWorksDW に接続する
 
@@ -108,4 +111,4 @@ Power BI を使用して AdventureWorksDW サンプル データを分析する�
 [connecting to SQL Data Warehouse]: ./sql-data-warehouse-integrate-power-bi.md
 [Create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

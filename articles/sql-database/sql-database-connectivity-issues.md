@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/19/2015"
+	ms.date="10/26/2015"
 	ms.author="genemi"/>
 
 
@@ -23,186 +23,7 @@
 このトピックでは、クライアント プログラムが Azure SQL Database とやり取りする際に発生する接続エラーと一過性の障害を防止、診断、軽減する方法について説明します。
 
 
-## 接続: 接続文字列
-
-
-Azure SQL Database に接続するために必要な接続文字列は、Microsoft SQL Server に接続するための文字列とは少し異なります。データベースの接続文字列は [Azure プレビュー ポータル](http://portal.azure.com/)からコピーすることができます。
-
-
-[AZURE.INCLUDE [sql-database-include-connection-string-20-portalshots](../../includes/sql-database-include-connection-string-20-portalshots.md)]
-
-
-
-#### 接続タイムアウトの 30 秒
-
-
-インターネットを介した接続は、プライベート ネットワークに比べ堅牢性が低くなります。そのため、接続文字列は次のように設定することをお勧めします。- **[接続タイムアウト]** パラメーターを (15 秒ではなく) **30** 秒に設定します。
-
-
-## 接続: IP アドレス
-
-
-SQL Database サーバーは、クライアント プログラムのホストとなるコンピューターの IP アドレスからの通信を許可するように構成する必要があります。この構成は、[Azure プレビュー ポータル](http://portal.azure.com/)を介してファイアウォールの設定を編集することによって行います。
-
-
-IP アドレスの構成を怠った場合、必要な IP アドレスを示した親切なエラー メッセージがプログラムで表示されます。
-
-
-[AZURE.INCLUDE [sql-database-include-ip-address-22-v12portal](../../includes/sql-database-include-ip-address-22-v12portal.md)]
-
-
-詳細については、「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
-
-
-## 接続: ポート
-
-
-通常、必要な設定は、クライアント プログラムのホストとなるコンピューターのポート 1433 の送信方向を開放するだけです。
-
-
-たとえば、クライアント プログラムが Windows コンピューターでホストされている場合、そのホストの Windows ファイアウォールでポート 1433 を開放することができます。
-
-
-1. コントロール パネルを開く
-2. &gt; [すべてのコントロール パネル項目]
-3. &gt; [Windows ファイアウォール]
-4. &gt; [詳細設定]
-5. &gt; [送信の規則]
-6. &gt; [操作]
-7. &gt; [新しい規則]
-
-
-Azure 仮想マシン (VM) でクライアント プログラムがホストされている場合、次のように表示されます。<br/>[ADO.NET 4.5、SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
-
-
-ポートと IP アドレスの構成に関する背景情報については、[Azure SQL Database のファイアウォール](sql-database-firewall-configure.md)に関するページを参照してください。
-
-
-## 接続: ADO.NET 4.5
-
-
-**System.Data.SqlClient.SqlConnection** などの ADO.NET クラスを使って Azure SQL Database に接続する場合、.NET Framework Version 4.5 以降の使用をお勧めします。
-
-
-ADO.NET 4.5:- サポート対象プロトコルに TDS 7.4 が追加されています。4.0 の後に行われた接続の機能強化も含まれています。- 接続プーリングがサポートされます。加えて、プログラムに割り当てた接続オブジェクトが正常に動作しているかどうかを効率的に検証することが可能です。
-
-
-接続プールから取得した接続オブジェクトを使用するとき、すぐに使用しないのであれば、プログラムで一時的に接続を閉じるようお勧めします。接続を再度開いたとしても、新しい接続の作成に伴う処理負荷はわずかです。
-
-
-ADO.NET 4.0 以前のバージョンを使用している場合、最新の ADO.NET. にアップグレードすることをお勧めします。2015 年 7 月時点では、[ADO.NET 4.6 をダウンロード](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx)してください。
-
-
-## 診断: ユーティリティから接続できるかどうかをテストする
-
-
-プログラムから Azure SQL Database に接続できないときの診断方法として 1 つ考えられるのは、ユーティリティ プログラムを使用して接続する方法です。診断対象のプログラムと同じライブラリを使用して接続するユーティリティがあれば理想的です。
-
-
-Windows コンピューターでは、次のユーティリティが利用できます。- SQL Server Management Studio (ssms.exe)。接続には ADO.NET が使用されます。- sqlcmd.exe。接続には [ODBC](http://msdn.microsoft.com/library/jj730308.aspx) が使用されます。
-
-
-接続後、短い SQL SELECT クエリが正しく動作するかどうかをテストしてください。
-
-
-## 診断: 開放ポートを確認する
-
-
-ポートの問題から接続に失敗している可能性があるとします。ポートの構成に関するレポート作成に対応したユーティリティをご使用のコンピューターから実行してください。
-
-
-Linux では、次のユーティリティが利用できます。 - `netstat -nap` - `nmap -sS -O 127.0.0.1` - (IP アドレスの部分は適宜置き換えてください)
-
-
-Windows では [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。以下の例では、Azure SQL Database サーバー上のポートの状況と、ノート PC 上で動作しているポートとを照会しています。
-
-
-```
-[C:\Users\johndoe]
->> portqry.exe -n johndoesvr9.database.windows.net -p tcp -e 1433
-
-Querying target system called:
- johndoesvr9.database.windows.net
-
-Attempting to resolve name to IP address...
-Name resolved to 23.100.117.95
-
-querying...
-TCP port 1433 (ms-sql-s service): LISTENING
-
-[C:\Users\johndoe]
->>
-```
-
-
-## 診断: エラーのログを記録する
-
-
-断続的な問題は、過去数日から数週間にわたる一般的なパターンを検出することによって診断できる場合が多々あります。
-
-
-診断には、クライアントで発生したエラーのログが役立ちます。Azure SQL Database が内部的に記録するエラー データとそれらのログ エントリを相互に関連付けることも可能です。
-
-
-Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ クラスが用意されています。 - [Logging アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440731.aspx)に関するページ
-
-
-## 診断: エラーの発生をシステム ログで調べる
-
-
-以下に示したのは、エラーや各種情報のログを照会する Transact-SQL SELECT ステートメントの例です。
-
-
-| ログのクエリ | 説明 |
-| :-- | :-- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、個々のイベントに関する情報が表示されます。再構成、スロットル、リソースの過剰消費などに関連した接続エラーが対象となります。<br/><br/>クライアント プログラムでいつ問題が発生したかの情報に対し、**start\_time** や **end\_time** の値を相互に関連付けることをお勧めします。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` | [sys.database\_connection\_stats](http://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
-
-
-### 診断: SQL Database のログから問題のイベントを検索する
-
-
-Azure SQL Database のログで問題のイベントに関するエントリを検索することができます。**master** データベースで次の Transact-SQL SELECT ステートメントを試してみてください。
-
-
-```
-SELECT
-   object_name
-  ,CAST(f.event_data as XML).value
-      ('(/event/@timestamp)[1]', 'datetime2')                      AS [timestamp]
-  ,CAST(f.event_data as XML).value
-      ('(/event/data[@name="error"]/value)[1]', 'int')             AS [error]
-  ,CAST(f.event_data as XML).value
-      ('(/event/data[@name="state"]/value)[1]', 'int')             AS [state]
-  ,CAST(f.event_data as XML).value
-      ('(/event/data[@name="is_success"]/value)[1]', 'bit')        AS [is_success]
-  ,CAST(f.event_data as XML).value
-      ('(/event/data[@name="database_name"]/value)[1]', 'sysname') AS [database_name]
-FROM
-  sys.fn_xe_telemetry_blob_target_read_file('el', null, null, null) AS f
-WHERE
-  object_name != 'login_event'  -- Login events are numerous.
-  and
-  '2015-06-21' < CAST(f.event_data as XML).value
-        ('(/event/@timestamp)[1]', 'datetime2')
-ORDER BY
-  [timestamp] DESC
-;
-```
-
-
-#### sys.fn\_xe\_telemetry\_blob\_target\_read\_file から返される行の例
-
-
-次に示したのは、クエリから返される行の例です。ここに示した行では null 値が表示されていますが、null 以外の場合も多くあります。
-
-
-```
-object_name                   timestamp                    error  state  is_success  database_name
-
-database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL        AdventureWorks
-```
-
+<a id="i-transient-faults" name="i-transient-faults"></a>
 
 ## 一過性の障害
 
@@ -221,6 +42,8 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 SQL クエリ コマンドの実行中に一過性のエラーが発生した場合、そのコマンドをすぐに再試行することは避けてください。ある程度の時間差を伴って接続が新たに確立されます。その後でコマンドを再試行してください。
 
+
+<a id="j-retry-logic-transient-faults" name="j-retry-logic-transient-faults"></a>
 
 ## 一過性の障害のための再試行ロジック
 
@@ -281,6 +104,8 @@ Azure SQL Database との通信にサード パーティのミドルウェアを
 - [クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md) 
 
 
+<a id="k-test-retry-logic" name="k-test-retry-logic"></a>
+
 ## 再試行ロジックのテスト
 
 
@@ -311,16 +136,218 @@ Azure SQL Database との通信にサード パーティのミドルウェアを
 具体的には、プログラムで実行時パラメーターを通じ、次の処理を行います。 1.エラーのリストに対して一時的に 18456 を追加し、一過性と見なします。2.意図的に 'WRONG\_' をユーザー名に追加します。3.エラーが捕捉された後、18456 をリストから削除します。4.ユーザー名から 'WRONG\_' を削除します。5.再度接続を試みます。
 
 
+<a id="a-connection-connection-string" name="a-connection-connection-string"></a>
+
+## 接続: 接続文字列
+
+
+Azure SQL Database に接続するために必要な接続文字列は、Microsoft SQL Server に接続するための文字列とは少し異なります。データベースの接続文字列は [Azure プレビュー ポータル](http://portal.azure.com/)からコピーすることができます。
+
+
+[AZURE.INCLUDE [sql-database-include-connection-string-20-portalshots](../../includes/sql-database-include-connection-string-20-portalshots.md)]
+
+
+
+#### 接続タイムアウトの 30 秒
+
+
+インターネットを介した接続は、プライベート ネットワークに比べ堅牢性が低くなります。そのため、接続文字列は次のように設定することをお勧めします。- **[接続タイムアウト]** パラメーターを (15 秒ではなく) **30** 秒に設定します。
+
+
+<a id="b-connection-ip-address" name="b-connection-ip-address"></a>
+
+## 接続: IP アドレス
+
+
+SQL Database サーバーは、クライアント プログラムのホストとなるコンピューターの IP アドレスからの通信を許可するように構成する必要があります。この構成は、[Azure プレビュー ポータル](http://portal.azure.com/)を介してファイアウォールの設定を編集することによって行います。
+
+
+IP アドレスの構成を怠った場合、必要な IP アドレスを示した親切なエラー メッセージがプログラムで表示されます。
+
+
+[AZURE.INCLUDE [sql-database-include-ip-address-22-v12portal](../../includes/sql-database-include-ip-address-22-v12portal.md)]
+
+
+詳細については、「[方法: ファイアウォール設定を構成する (SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+
+
+<a id="c-connection-ports" name="c-connection-ports"></a>
+
+## 接続: ポート
+
+
+通常、必要な設定は、クライアント プログラムのホストとなるコンピューターのポート 1433 の送信方向を開放するだけです。
+
+
+たとえば、クライアント プログラムが Windows コンピューターでホストされている場合、そのホストの Windows ファイアウォールでポート 1433 を開放することができます。
+
+
+1. コントロール パネルを開く
+2. &gt; [すべてのコントロール パネル項目]
+3. &gt; [Windows ファイアウォール]
+4. &gt; [詳細設定]
+5. &gt; [送信の規則]
+6. &gt; [操作]
+7. &gt; [新しい規則]
+
+
+Azure 仮想マシン (VM) でクライアント プログラムがホストされている場合、次のように表示されます。<br/>[ADO.NET 4.5、SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
+
+
+ポートと IP アドレスの構成に関する背景情報については、「[Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)」を参照してください。
+
+
+<a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
+
+## 接続: ADO.NET 4.5
+
+
+**System.Data.SqlClient.SqlConnection** などの ADO.NET クラスを使って Azure SQL Database に接続する場合、.NET Framework Version 4.5 以降の使用をお勧めします。
+
+
+ADO.NET 4.5:- サポート対象プロトコルに TDS 7.4 が追加されています。4.0 の後に行われた接続の機能強化も含まれています。- 接続プーリングがサポートされます。加えて、プログラムに割り当てた接続オブジェクトが正常に動作しているかどうかを効率的に検証することが可能です。
+
+
+接続プールから取得した接続オブジェクトを使用するとき、すぐに使用しないのであれば、プログラムで一時的に接続を閉じるようお勧めします。接続を再度開いたとしても、新しい接続の作成に伴う処理負荷はわずかです。
+
+
+ADO.NET 4.0 以前のバージョンを使用している場合、最新の ADO.NET. にアップグレードすることをお勧めします。2015 年 7 月時点では、[ADO.NET 4.6 をダウンロード](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx)してください。
+
+
+<a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
+
+## 診断: ユーティリティから接続できるかどうかをテストする
+
+
+プログラムから Azure SQL Database に接続できないときの診断方法として 1 つ考えられるのは、ユーティリティ プログラムを使用して接続する方法です。診断対象のプログラムと同じライブラリを使用して接続するユーティリティがあれば理想的です。
+
+
+Windows コンピューターでは、次のユーティリティが利用できます。- SQL Server Management Studio (ssms.exe)。接続には ADO.NET が使用されます。- sqlcmd.exe。接続には [ODBC](http://msdn.microsoft.com/library/jj730308.aspx) が使用されます。
+
+
+接続後、短い SQL SELECT クエリが正しく動作するかどうかをテストしてください。
+
+
+<a id="f-diagnostics-check-open-ports" name="f-diagnostics-check-open-ports"></a>
+
+## 診断: 開放ポートを確認する
+
+
+ポートの問題から接続に失敗している可能性があるとします。ポートの構成に関するレポート作成に対応したユーティリティをご使用のコンピューターから実行してください。
+
+
+Linux では、次のユーティリティが利用できます。 - `netstat -nap` - `nmap -sS -O 127.0.0.1` - (IP アドレスの部分は適宜置き換えてください)
+
+
+Windows では [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。以下の例では、Azure SQL Database サーバー上のポートの状況と、ノート PC 上で動作しているポートとを照会しています。
+
+
+```
+[C:\Users\johndoe]
+>> portqry.exe -n johndoesvr9.database.windows.net -p tcp -e 1433
+
+Querying target system called:
+ johndoesvr9.database.windows.net
+
+Attempting to resolve name to IP address...
+Name resolved to 23.100.117.95
+
+querying...
+TCP port 1433 (ms-sql-s service): LISTENING
+
+[C:\Users\johndoe]
+>>
+```
+
+
+<a id="g-diagnostics-log-your-errors" name="g-diagnostics-log-your-errors"></a>
+
+## 診断: エラーのログを記録する
+
+
+断続的な問題は、過去数日から数週間にわたる一般的なパターンを検出することによって診断できる場合が多々あります。
+
+
+診断には、クライアントで発生したエラーのログが役立ちます。Azure SQL Database が内部的に記録するエラー データとそれらのログ エントリを相互に関連付けることも可能です。
+
+
+Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ クラスが用意されています。 - [Logging アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440731.aspx)に関するページ
+
+
+<a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
+
+## 診断: エラーの発生をシステム ログで調べる
+
+
+以下に示したのは、エラーや各種情報のログを照会する Transact-SQL SELECT ステートメントの例です。
+
+
+| ログのクエリ | 説明 |
+| :-- | :-- |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、個々のイベントに関する情報が表示されます。再構成、スロットル、リソースの過剰消費などに関連した接続エラーが対象となります。<br/><br/>クライアント プログラムでいつ問題が発生したかの情報に対し、**start\_time** や **end\_time** の値を相互に関連付けることをお勧めします。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` | [sys.database\_connection\_stats](http://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
+
+
+### 診断: SQL Database のログから問題のイベントを検索する
+
+
+Azure SQL Database のログで問題のイベントに関するエントリを検索することができます。**master** データベースで次の Transact-SQL SELECT ステートメントを試してみてください。
+
+
+```
+SELECT
+   object_name
+  ,CAST(f.event_data as XML).value
+      ('(/event/@timestamp)[1]', 'datetime2')                      AS [timestamp]
+  ,CAST(f.event_data as XML).value
+      ('(/event/data[@name="error"]/value)[1]', 'int')             AS [error]
+  ,CAST(f.event_data as XML).value
+      ('(/event/data[@name="state"]/value)[1]', 'int')             AS [state]
+  ,CAST(f.event_data as XML).value
+      ('(/event/data[@name="is_success"]/value)[1]', 'bit')        AS [is_success]
+  ,CAST(f.event_data as XML).value
+      ('(/event/data[@name="database_name"]/value)[1]', 'sysname') AS [database_name]
+FROM
+  sys.fn_xe_telemetry_blob_target_read_file('el', null, null, null) AS f
+WHERE
+  object_name != 'login_event'  -- Login events are numerous.
+  and
+  '2015-06-21' < CAST(f.event_data as XML).value
+        ('(/event/@timestamp)[1]', 'datetime2')
+ORDER BY
+  [timestamp] DESC
+;
+```
+
+
+#### sys.fn\_xe\_telemetry\_blob\_target\_read\_file から返される行の例
+
+
+次に示したのは、クエリから返される行の例です。ここに示した行では null 値が表示されていますが、null 以外の場合も多くあります。
+
+
+```
+object_name                   timestamp                    error  state  is_success  database_name
+
+database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL        AdventureWorks
+```
+
+
+<a id="l-enterprise-library-6" name="l-enterprise-library-6"></a>
+
 ## Enterprise Library 6
 
 
 Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (Azure SQL Database サービスもその一つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。EntLib60 の利便性が発揮される個々の領域の説明については、まず以下のトピックにアクセスしてください。 - [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
 
 
-EntLib60 を活かせる領域のひとつとして、一過性の障害を処理するための再試行ロジックがあります。 - [Transient Fault Handling アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
+EntLib60 を活かせる領域の 1 つとして、一過性の障害を処理するための再試行ロジックがあります。 - [Transient Fault Handling アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
 
 
 再試行ロジックに EntLib60 を使用した簡単な C# コード サンプルは、以下のページからダウンロードできます。 - [Enterprise Library 6 の再試行ロジックを使って SQL Database に接続するコード サンプル (C#)](sql-database-develop-entlib-csharp-retry-windows.md)
+
+
+> [AZURE.NOTE]EntLib60 のソース コードは、[ダウンロード サイト](http://go.microsoft.com/fwlink/p/?LinkID=290898)から入手できます。EntLib に対して機能の追加や保守目的での更新を行う予定はありません。
 
 
 ### 一過性の障害と再試行に関連した EntLib60 のクラス
@@ -378,7 +405,7 @@ EntLib60 に関する情報は以下のリンクから入手できます。
 ### EntLib60 IsTransient メソッドのソース コード
 
 
-以下に示したのは、**SqlDatabaseTransientErrorDetectionStrategy** クラスの **IsTransient** メソッドの C# ソース コードです。どのようなエラーが一過性で、再試行する価値があるかは、このソース コードを見るとはっきりわかります。
+以下に示したのは、**SqlDatabaseTransientErrorDetectionStrategy** クラスの **IsTransient** メソッドの C# ソース コードです。どのようなエラーが一過性で、再試行する価値があるかは、このソース コードを見るとはっきりわかります (2013 年 4 月時点)。
 
 このソース コードのコピーは、読みやすくするために、大部分の**コメント (//)** 行を省略しています。
 
@@ -450,9 +477,6 @@ public bool IsTransient(Exception ex)
 ```
 
 
-EntLib60 のソース コードをダウンロードする必要はありません。ソース コードをダウンロードする場合は、次のトピックにアクセスし、[コードのダウンロード](http://go.microsoft.com/fwlink/p/?LinkID=290898) ボタンをクリックしてください。 - [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
-
-
 ## 詳細情報
 
 
@@ -461,4 +485,4 @@ EntLib60 のソース コードをダウンロードする必要はありませ�
 
 - [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

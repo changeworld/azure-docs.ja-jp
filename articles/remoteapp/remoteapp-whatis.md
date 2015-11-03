@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure RemoteApp とは | Microsoft Azure" 
-	description="Azure RemoteApp について説明します。" 
+	description="Azure RemoteApp を使用してアプリとリソースを任意のデバイスと共有する方法について説明します。" 
 	services="remoteapp" 
 	documentationCenter="" 
 	authors="lizap" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="09/28/2015" 
+	ms.date="10/23/2015" 
 	ms.author="elizapo"/>
 
 # Azure RemoteApp とは
@@ -22,7 +22,7 @@ Azure RemoteApp は、Azure をサポートするリモート デスクトップ
 
 Azure RemoteApp では、ほぼすべてのデバイスでアプリとリソースを共有できます。アプリはクラウドでホストされます。つまり、管理者は、ユーザーの需要を満たすためにハードウェアとスケーリングに対処する必要はありません。管理者が実行する必要があるのは共有するアプリのアップロードだけであり、後はユーザーにそれらのアプリを使用してもらうだけです。[ユーザーはデバイスを持ち続け](remoteapp-clients.md)、管理者が Azure ポータルを通してすべてを管理します。さらに、会社の資格情報を使用することを選択して、アプリとデータのセキュリティを確保することもできます。
 
-RemoteApp の詳細については、以下を参照してください。既に説明に納得いただいた場合は、[今すぐお試しになれます](http://azure.microsoft.com/services/remoteapp/)。
+Azure RemoteApp の詳細については、以下を参照してください。既に説明に納得いただいた場合は、[今すぐお試しになれます](http://azure.microsoft.com/services/remoteapp/)。
 
 Azure の RemoteApp について質問はありますか。 「[FAQ (よく寄せられる質問)](remoteapp-faq.md)」を参照してください。
 
@@ -30,7 +30,7 @@ Azure RemoteApp は、[Microsoft の仮想デスクトップ インフラスト�
 
 **新しい情報!** Azure RemoteApp について詳細を知りたいですか。 または、実際に検証する準備ができていますか。 毎週開催される[専門家にたずねるウェビナー](https://azureinfo.microsoft.com/AzureRemoteAppAskTheExperts-Registration-Page.html?ls=Website)に参加してください。
 
-## RemoteApp コレクション
+## Azure RemoteApp コレクション
 [Azure RemoteApp のコレクション](remoteapp-collections.md)には、次の 2 種類があります。
 
 
@@ -56,25 +56,28 @@ Azure RemoteApp は、[Microsoft の仮想デスクトップ インフラスト�
 
 カスタム テンプレート イメージを使用するクラウド コレクションとハイブリッド コレクションでは、イメージとアプリを保守する必要があります。ドメインに参加しているイメージでは、Windows Update、グループ ポリシー、または System Center などのツールを使用して更新プログラムを制御できます。
 
-カスタム テンプレート イメージの更新後に、Azure クラウドに新しいイメージをアップロードし、新しいイメージを使用するコレクションを更新します。(RemoteApp の **[クイック スタート]** ページまたはダッシュボードから実行できます)。
+カスタム テンプレート イメージの更新後に、Azure クラウドに新しいイメージをアップロードし、新しいイメージを使用するコレクションを更新します。(Azure RemoteApp の **[クイック スタート]** ページまたはダッシュボードから実行できます)。
 
 詳細については、[コレクションの更新](remoteapp-update.md)に関するページを参照してください。
 
 ## サポートされている RemoteApp クライアント
-Azure RemoteApp は、Windows および Windows RT の RemoteApp クライアント アプリケーションと Mac、iOS および Android 用の Microsoft のリモート デスクトップ アプリでサポートされています。ユーザーは、モバイル デバイスまたはコンピューティング デバイスでこれらのアプリを使用して、新しい RemoteApp プログラムにアクセスできます。
+Azure RemoteApp は、Windows および Windows RT の RemoteApp クライアント アプリケーションと Mac、iOS および Android 用の Microsoft のリモート デスクトップ アプリでサポートされています。ユーザーは、モバイル デバイスまたはコンピューティング デバイスでこれらのアプリを使用して、新しい Azure RemoteApp プログラムにアクセスできます。
 
 クライアントの詳細については、[Azure RemoteApp でのアプリへのアクセス](remoteapp-clients.md)に関するページを参照してください。
 
 ## 次のステップ
-始めましょう。 実際に使ってみてください。 これらの記事は RemoteApp を開始するために役立ちます:
+始めましょう。 実際に使ってみてください。 以下の記事が Azure RemoteApp を開始するのに役立ちます。
 
 - [Azure RemoteApp にはどのような種類のコレクションが必要ですか。](remoteapp-collections.md)
-- [RemoteApp イメージの作成](remoteapp-imageoptions.md)
-- [RemoteApp のクラウド コレクションの作成方法](remoteapp-create-cloud-deployment.md)
-- [RemoteApp のハイブリッド コレクションの作成方法](remoteapp-create-hybrid-deployment.md)
-- [RemoteApp のライセンスはどのような仕組みになっていますか?](remoteapp-licensing.md)
+- [Azure RemoteApp イメージの作成](remoteapp-imageoptions.md)
+- [Azure RemoteApp のクラウド コレクションの作成方法](remoteapp-create-cloud-deployment.md)
+- [Azure RemoteApp のハイブリッド コレクションの作成方法](remoteapp-create-hybrid-deployment.md)
+- [RemoteApp のライセンスはどのような仕組みになっていますか。](remoteapp-licensing.md)
 - [Azure RemoteApp を構成し、使用するためのベスト プラクティス](remoteapp-bestpractices.md)
 - [Azure RemoteApp よく寄せられる質問](remoteapp-faq.md)
  
 
-<!---HONumber=Oct15_HO3-->
+### サポートのお願い 
+記事を評価したり、下欄にコメントを投稿したりするだけでなく、記事そのものに変更を加えられることをご存じですか。 何かが不足している場合 誤りがある場合、 わかりにくいことが書いてある場合は、 上へスクロールし、**[GitHub で編集]** をクリックして、変更を加えることができます。変更はこちらで確認し、承認されると、変更点や改善点がこのページに反映されます。
+
+<!---HONumber=Nov15_HO1-->
