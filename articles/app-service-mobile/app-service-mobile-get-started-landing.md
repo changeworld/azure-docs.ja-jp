@@ -21,12 +21,12 @@ App Service Mobile Apps を使用すると、ネイティブ アプリとクロ�
 
 最初に、これらのチュートリアルに従って、App Service のモバイル バックエンドに接続する To-Do アプリを作成します。ご自分のクライアント プラットフォームを選んでください。
 
-  * [iOS](../app-service-mobile-dotnet-backend-ios-get-started-preview.md)
-  * [Xamarin.iOS](../app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md)
-  * [Xamarin.Android](../app-service-mobile-dotnet-backend-xamarin-android-get-started-preview.md)
-  * [Xamarin.Forms](../app-service-mobile-dotnet-backend-xamarin-forms-get-started-preview.md)
-  * [Windows](../app-service-mobile-dotnet-backend-windows-store-dotnet-get-started-preview.md)
-  * [HTML](../app-service-mobile-dotnet-backend-html-get-started-preview.md)
+  * [iOS](../app-service-mobile-ios-get-started.md)
+  * [Xamarin.iOS](../app-service-mobile-xamarin-ios-get-started.md)
+  * [Xamarin.Android](../app-service-mobile-xamarin-android-get-started.md)
+  * [Xamarin.Forms](../app-service-mobile-xamarin-forms-get-started.md)
+  * [Windows](../app-service-mobile-windows-store-dotnet-get-started.md)
+  * [HTML](../app-service-mobile-html-get-started.md)
 
 ##ビデオ
 
@@ -34,4 +34,4 @@ App Service Mobile Apps を使用すると、ネイティブ アプリとクロ�
 
 App Service Mobile Apps と Kirill Gavrylyuk
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Apache Storm チュートリアル: HDInsight での Linux ベースの Storm の使用 |Microsoft Azure"
 	description="Linux ベースの HDInsight での Apache Storm および Storm Starter サンプルを使用したビッグ データ分析の概要Storm を使用してデータをリアルタイムに処理する方法について説明します。"
-	keywords="apache storm,apache storm tutorial,big data analytics,storm starter"
+	keywords="Apache Storm, Apache Storm チュートリアル, ビッグ データの分析, Storm Starter"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/09/2015"
+   ms.date="10/26/2015"
    ms.author="larryfr"/>
 
 
@@ -54,7 +54,7 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
 	
 4. 複数のサブスクリプションがある場合は、__[サブスクリプション]__ エントリを選択し、クラスターで使用する Azure サブスクリプションを選択します。
 
-5. __[リソース グループ]__ では、エントリを選択して既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択できします。または、__[新規作成]__ をクリックし、新しいリソース グループの名前を入力できます。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
+5. __[リソース グループ]__ では、エントリを選択して既存のリソース グループの一覧を表示し、クラスターを作成するグループを選択できます。または、__[新規作成]__ をクリックし、新しいリソース グループの名前を入力できます。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
 
 	> [AZURE.NOTE]このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
 
@@ -78,21 +78,21 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
 	
 	- __新規作成__: これを使用して、新しいストレージ アカウントを作成します。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
 	
-	- __既定のコンテナーの選択__: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
+	- __既定のコンテナーの選択__: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
 	
-	- __場所__: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。
+	- __場所__: ストレージ アカウントが存在するリージョン、またはストレージ アカウントが作成されるリージョン。
 	
 		> [AZURE.IMPORTANT]既定のデータ ソースの場所を選択すると、HDInsight クラスターの場所も設定されます。クラスターと既定のデータ ソースは、同じリージョンに存在する必要があります。
 		
 	- __選択__: これを使用してデータ ソースの構成を保存します。
 	
-7. __[ノード価格レベル]__ を選択して、このクラスターのために作成されるノードに関する情報を表示します。既定では、worker ノードの数は __4__ に設定されます。クラスターの推定コストがブレードの下部に表示されます。
+7. __[ノード価格レベル]__ を選択して、このクラスターに対して作成されるノードに関する情報を表示します。既定では、worker ノードの数は __4__ に設定されます。クラスターの推定コストがブレードの下部に表示されます。
 
 	![[ノード価格レベル] ブレード](./media/hdinsight-apache-storm-tutorial-get-started-linux/nodepricingtiers.png)
 	
 	__[選択]__ ボタンをクリックして、__[ノード価格レベル]__ 情報を保存します。
 
-8. __[オプションの構成]__ を選択します。このブレードでは、クラスターのバージョンを選択し、__Virtual Network__ への参加や Hive と Oozie 用のデータを保持する__外部メタストア__の設定などのその他のオプションの設定を構成できます。
+8. __[オプションの構成]__ を選択します。このブレードでは、クラスターのバージョンを選択し、__Virtual Network__ への参加や Hive と Oozie 用のデータを保持する__カスタム メタストア__の設定などのその他のオプションの設定を構成できます。
 
 	![[オプションの構成] ブレード](./media/hdinsight-apache-storm-tutorial-get-started-linux/optionalconfiguration.png)
 
@@ -102,7 +102,7 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
 	| ------------------ | --------------------- |
 	| ![スタート画面のプロビジョニング中インジケーター](./media/hdinsight-apache-storm-tutorial-get-started-linux/provisioning.png) | ![プロビジョニングされたクラスターのタイル](./media/hdinsight-apache-storm-tutorial-get-started-linux/provisioned.png) |
 
-	> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の __[通知]__ エントリを使用します。
+	> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスを確認するには、スタート画面のタイルまたはページの左側の __[通知]__ エントリを使用します。
 
 ##HDInsight での Storm Starter サンプルの実行
 
@@ -122,7 +122,7 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
 
 2. 次のコマンドを実行してトポロジの例を開始します。
 
-        storm jar storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-0.9.3.2.2.4.9-1.jar storm.starter.WordCountTopology wordcount
+        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-0.9.3.2.2.4.9-1.jar storm.starter.WordCountTopology wordcount
 		
 	> [AZURE.NOTE]HDinsight が新しいバージョンの Storm で更新されると、ファイル名の `0.9.3.2.2.4.9-1` の部分は変わる可能性があります。
 
@@ -233,4 +233,4 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

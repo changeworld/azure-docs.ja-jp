@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/16/2015"
+	ms.date="10/21/2015"
 	ms.author="stepsic"/>
 
 # SaaS サービスを接続する新しいロジック アプリを作成します。
@@ -188,4 +188,4 @@
 [Use logic app features]: app-service-logic-use-logic-app-features.md
 [ロジック アプリの機能を使用する]: app-service-logic-use-logic-app-features.md
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

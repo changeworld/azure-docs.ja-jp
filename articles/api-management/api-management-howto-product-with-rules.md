@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/05/2015"
+	ms.date="10/27/2015"
 	ms.author="sdanie"/>
 
 # Azure API Management でレート制限を使用して API を保護する
@@ -22,7 +22,7 @@
 
 このチュートリアルでは、開発者が毎分最大 10 回、1 週間に最大 200 回まで呼び出すことができる "無料試用版" の API 成果物を作成します。次に、API を発行し、レート制限ポリシーをテストします。
 
->[AZURE.NOTE] 既に成果物を構成済みで、このチュートリアルで使用する場合は、「[呼び出しレート制限ポリシーとクォータ ポリシーの構成][]」に進み、無料試用版の成果物の代わりに独自の成果物を使用して、そこで説明されているチュートリアルに従ってください。
+>[AZURE.NOTE]既に成果物を構成済みで、このチュートリアルで使用する場合は、「[呼び出しレート制限ポリシーとクォータ ポリシーの構成][]」に進み、無料試用版の成果物の代わりに独自の成果物を使用して、そこで説明されているチュートリアルに従ってください。
 
 ## <a name="create-product"> </a>成果物を作成するには
 
@@ -96,7 +96,7 @@ API Management の成果物は、保護することも開くこともできま�
 
 ![ポリシー エディター][api-management-policy-editor-inbound]
 
-このチュートリアルでは、[呼び出しレート制限][] と [使用量クォータの設定][] という 2 つのポリシーを追加します。
+このチュートリアルでは、[[呼び出しレート制限]][] と [[使用量クォータの設定]][] という 2 つのポリシーを追加します。
 
 ![ポリシー ステートメント][api-management-limit-policies]
 
@@ -193,7 +193,7 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 
 ![サブスクリプションの追加][api-management-add-subscription]
 
->[AZURE.NOTE] このチュートリアルの場合、無料試用版の成果物の複数の同時サブスクリプションは無効になっています。有効になっている場合は、次の例に示すように、サブスクリプションに名前を付けるように促されます。
+>[AZURE.NOTE]このチュートリアルの場合、無料試用版の成果物の複数の同時サブスクリプションは無効になっています。有効になっている場合は、次の例に示すように、サブスクリプションに名前を付けるように促されます。
 
 ![サブスクリプションの追加][api-management-add-subscription-multiple]
 
@@ -219,7 +219,7 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 
 ![サブスクリプション キー][api-management-select-key]
 
->[AZURE.NOTE] 複数のサブスクリプションがある場合は、必ず、**[無料試用版]** のキーを選択してください。そうしないと、これまでの手順で構成したポリシーが有効になりません。
+>[AZURE.NOTE]複数のサブスクリプションがある場合は、必ず、**[無料試用版]** のキーを選択してください。そうしないと、これまでの手順で構成したポリシーが有効になりません。
 
 **[HTTP GET]** をクリックして応答を確認します。**[応答のステータス]** が "**200 OK**" と表示されることに注目してください。
 
@@ -289,7 +289,7 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 [Call an operation and test the rate limit]: #test-rate-limit
 [Azure API Management の詳細な構成について]: api-management-get-started-advanced.md
 
-[呼び出しレート制限]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
-[使用量クォータの設定]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
+[[呼び出しレート制限]]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
+[[使用量クォータの設定]]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

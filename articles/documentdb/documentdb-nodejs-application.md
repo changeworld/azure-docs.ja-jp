@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Node.js について学習する - DocumentDB Node.js チュートリアル | Microsoft Azure" 
 	description="Node.js について学習する このチュートリアルでは、Microsoft Azure DocumentDB を使用して、Azure Websites にホストされた Node.js Express Web アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。" 
-	keywords="Application development, database tutorial, learn node.js, node.js tutorial, documentdb, azure, Microsoft azure"
+	keywords="アプリケーション開発, データベース チュートリアル, node.js の学習, node.js チュートリアル, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	documentationCenter="nodejs" 
 	authors="ryancrawcour" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="hero-article" 
-	ms.date="07/24/2015" 
+	ms.date="10/20/2015" 
 	ms.author="ryancraw"/>
 
 # <a name="_Toc395783175"></a>DocumentDB を使用した Node.js Web アプリケーションの作成
@@ -53,7 +53,7 @@
 - [Express ジェネレーター](http://www.expressjs.com/starter/generator.html) (`npm install express-generator -g` によってこれをインストールできます)
 - [Git][]
 
-## <a name="_Toc395637761"></a>手順 1: DocumentDB データベース アカウントを作成する
+## <a name="_Toc395637761"></a>手順 1: DocumentDB データベース アカウントの作成
 
 最初に、DocumentDB アカウントを作成します。既にアカウントを持っている場合は、この手順を省略して「[手順2: 新しい Node.js アプリケーションの作成](#_Toc395783178)」に進んでください。
 
@@ -61,7 +61,7 @@
 
 [AZURE.INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
-## <a name="_Toc395783178"></a>手順 2: 新しい Node.js アプリケーションを作成する
+## <a name="_Toc395783178"></a>手順 2: 新しい Node.js アプリケーションの作成
 
 それでは、[Express](http://expressjs.com/) フレームワークを使用して、基本的な Hello World Node.js プロジェクトを作成する方法を学習しましょう。
 
@@ -569,4 +569,4 @@
 [Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

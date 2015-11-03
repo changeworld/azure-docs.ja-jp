@@ -1,6 +1,6 @@
 <properties
-	pageTitle="App Service 環境内で Web アプリを作成する方法"
-	description="App Service 環境内での Web アプリおよび App Service プランの作成フロー"
+	pageTitle="App Service 環境で Web アプリを作成する"
+	description="App Service 環境で Web アプリと App Service プランを作成する方法について説明します。"
 	services="app-service"
 	documentationCenter=""
 	authors="ccompy"
@@ -13,76 +13,94 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="09/15/2015"
+	ms.date="10/26/2015"
 	ms.author="ccompy"/>
 
-# App Service 環境内で Web アプリを作成する方法 #
+# App Service 環境で Web アプリを作成する
 
-Web アプリの作成方法は、App Service 環境 (ASE) においてもほぼ同じです。App Service 環境の機能に慣れていない場合は、[App Service 環境の概要](app-service-app-service-environment-intro.md)に関するページにあるドキュメントを参照してください。
+## 概要
 
-ASE で Web アプリを作成するには、最初に ASE を作成する必要があります。ASE を作成する方法の詳細については、「[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。
+このチュートリアルでは、[App Service 環境](app-service-app-service-environment-intro.md) (ASE) で Web アプリと App Service プランを作成する方法について説明します。
 
-Web アプリを作成するには、まずサブスクリプションを選びます。複数のサブスクリプションがある場合、ASE でアプリを作成するには、ASE を作成するときに使用したものと同じサブスクリプションを使用する必要があります。その次の手順で、リソース グループを選択または作成します。リソース グループについて詳しく把握していない場合は、[Azure リソースの管理][ResourceGroups]に関するページで詳細を確認してください。リソース グループは、リソースの管理に役立つだけでなく、アプリの RBAC 規則を確立するときにも重要です。
+> [AZURE.NOTE]Web アプリを作成する方法を知りたいが、App Service 環境で行う必要はない場合は、「[.NET web アプリを作成する](web-sites-dotnet-get-started.md)」か、その他の言語やフレームワーク向けの関連するチュートリアルを参照してください。
 
-サブスクリプションとリソース グループを選んだ後で、App Service プラン (ASP) を作成または選択する必要があります。ASE で新しい ASP を作成する必要がある場合は、ASP の名前を指定し、使用する ASE を場所から選択すると共に、ASP を使用するワーカー プールを選択する必要があります。これについては、以下で詳しく説明します。ASE で ASP を選択する場合のアプリの作成フローは、通常のアプリを作成する場合と同じです。[新規作成]、[Web + モバイル]、[Web アプリ] から始まる Web アプリ作成フローに従ってください。
+## 前提条件
 
-![][1]
+このチュートリアルは、App Service 環境が作成済みであることを前提としています。まだ完了していない場合は、「[App Service 環境を作成する](app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。
 
+## Web アプリを作成する
 
-App Service 環境内で既に作成済みの App Service プランを使用する場合は、目的のプランを選択した後で Web アプリの名前を入力し、[作成] を選択します。これは、通常どおりに Web アプリを作成するのと同じフローです。ASP 名の下にある場所を見て、ASE の ASP を識別できます。
+1. [Azure プレビュー ポータル](https://portal.azure.com/)で、**[新規]、[Web + モバイル]、[Web アプリ]** の順にクリックします。 
 
-![][5]
+	![][1]
 
-作成したアプリのアドレスは、
+2. サブスクリプションを選択します。
 
-[*sitename*].[*App Service 環境の名前*].p.azurewebsites.net
+	サブスクリプションを複数保有している場合、App Service 環境でアプリを作成するには、App Service 環境を作成するときに使用したものと同じサブスクリプションを使用する必要があります。
 
-となります。次のアドレスにはなりません。
+3. リソース グループを選択または作成します。
 
-[*sitename*].azurewebsites.net
+	*リソース グループ*を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に*ロール ベースのアクセス制御* (RBAC) 規則を作成する際に便利です。詳細については、[Azure リソースの管理][ResourceGroups]に関するページを参照してください。
 
-ここで、Web アプリ名は、Azure App Service 全体で一意である必要があります。たとえば、"thisismywebapp" という名前の Web アプリ名を作成する場合、Azure App Service に "thisismywebapp" という名前の他の Web アプリが現在存在していないことが条件となります。
+4. App Service プランを選択または作成します。
 
-### App Service プラン ###
+	*App Service プラン*は、管理された Web アプリのセットです。価格を選択すると、課金される価格は個々のアプリではなく App Service プランに適用されます。Web アプリのインスタンスの数をスケールアップするには、App Service プランのインスタンスをスケールアップします。これにより、そのプラン内のすべての Web アプリが影響を受けます。サイトのスロット、VNET 統合などのいくつかの機能には、プラン内での数量制限があります。詳細については、[Azure App Service プランの概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)に関するページを参照してください。
 
-App Service プランは、管理された Web アプリのセットです。価格を選択するとき、価格は個々 のアプリではなく App Service プランに適用されます。Web アプリのインスタンスの数をスケールアップするには、ASP のインスタンスをスケールアップします。すると、そのプラン内のすべての Web アプリが影響を受けます。サイトのスロット、VNET 統合などのいくつかの機能には、プラン内での数量制限があります。App Service プランの詳細については、[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)に関するページにあるドキュメントを参照してください。
+	ASE 内の App Service プランを識別するには、プラン名の下に表示されている場所を確認します。
 
-新しい App Service プランを作成する場合は、App Service 環境で ASP を作成する場合といくつかの違いがあります。特に、ワーカーの選択肢が異なります。これは、ASE では共有ワーカーがないためです。使用する必要があるワーカーは、管理者によって ASE に割り当てられたワーカーです。これは、新しい ASP を作成するには、ASE ワーカー プールに、そのワーカー プールに既に存在するすべての ASP におけるインスタンスの総数よりも多くのワーカーを割り当てる必要があることを意味します。ASP を作成するのに十分なワーカーが ASE ワーカー プールにない場合は、ASE の管理者に依頼してワーカーを追加してもらう必要があります。
+	![][5]
 
-App Service 環境でホストされる ASP に関するもう 1 つの違いは、価格の選択肢がないことです。App Service 環境を利用する場合、システムによって使用されるコンピューティング リソースについて料金を支払い、その環境内の ASP に対する追加料金はありません。通常、ASP を作成するときに、価格プランを選択します。これに基づいて、支払い価格が決定されます。App Service 環境は、基本的に、コンテンツを作成できるプライベートな場所です。支払いは環境に対するもので、コンテンツをホストする操作を対象にしたものではありません。
+	App Service 環境に既に存在する App Service プランを使用する場合は、そのプランを選択します。App Service プランを新たに作成する場合は、このチュートリアルの次のセクション「[App Service 環境で App Service プランを作成する](#createplan)」を参照してください。
 
-### App Service 環境の ASP の作成 ###
+5. Web アプリの名前を入力し、**[作成]** をクリックします。
 
-ASE で ASP を作成するには、まず ASP の選択 UI で [新規作成] を選択し、ASE 以外で通常行う場合と同様に、ASP の名前を指定します。次の手順では、使用する ASE を場所の選択コントロールで選択します。App Service 環境は、実質的にプライベートなデプロイの場所であるため、[場所] に表示されます。
+	Web アプリ名は、Azure App Service 内で一意である必要があります。たとえば、"thisismywebapp" という名前の Web アプリ名を作成する場合、Azure App Service 内に "thisismywebapp" という名前の Web アプリが他に存在していないことが条件となります。
 
-![][2]
+	ASE 内にある Web アプリの URL は次のとおりです。
 
-場所の選択コントロールで ASE を選択すると、ASP の作成 UI が更新されます。場所に ASE システムの名前とそのリージョンが表示され、価格プランの選択コントロールがワーカー プールの選択コントロールに置き換えられます。
+	[*sitename*].[*App Service 環境の名前*].p.azurewebsites.net
 
-![][3]
+	となります。次のアドレスにはなりません。
 
-### ワーカー プールの選択 ###
+	[*sitename*].azurewebsites.net
 
-Azure App Service 内および App Service 環境外では、通常、3 つのコンピューティング サイズが専用の価格プランで選択できるようになっています。同様に、ASE を所有しているお客様は、ワーカーのプールを 3 つまで定義でき、そのワーカー プールで使用するコンピューティング サイズを指定することができます。テナントの場合は、ASP の価格プランとコンピューティング サイズを選択する代わりに、ワーカー プールと呼ばれるものを選択することになります。
+## <a name="createplan"></a>App Service プランを作成する
 
-ワーカー プールの選択 UI では、そのワーカー プールに使用されるコンピューティング サイズがその名の下に表示されます。"使用可能" な数は、そのプールで使用できるコンピューティング インスタンスの数を示します。プール全体ではこの数を超えるインスタンスが実際に含まれている可能性がありますが、この値は単に使用されていないインスタンスの数を表します。App Service 環境を調整してさらに多くのコンピューティング リソースを追加する必要がある場合は、[App Service 環境の構成](app-service-web-configure-an-app-service-environment.md)に関するページを参照してください。
+App Service 環境に App Service プランを作成する場合、ASE には共有ワーカーがないため、ワーカーの選択肢が異なります。使用する必要があるワーカーは、管理者によって ASE に割り当てられたワーカーです。つまり、新しいプランを作成するには、ASE ワーカー プールに既に存在しているすべてのプランのインスタンス総数よりも多くのワーカーが ASE ワーカー プールに割り当てられている必要があります。プランを作成するのに十分なワーカーが ASE ワーカー プールにない場合は、ASE の管理者に依頼してワーカーを追加してもらう必要があります。
+
+App Service 環境でホストされる App Service プランに関するもう 1 つの違いは、価格の選択肢がないことです。App Service 環境を利用する場合、システムによって使用されるコンピューティング リソースについて料金を支払い、環境内のプランに対する追加料金はありません。通常の App Service プランでは作成時に価格プランを選択し、これに基づいて支払い価格が決定されます。App Service 環境は、基本的に、コンテンツを作成できるプライベートな場所です。支払いは環境に対するもので、コンテンツをホストする操作を対象にしたものではありません。
+
+次の手順は、チュートリアルの前のセクションで説明した、Web アプリの作成時に App Service プランを作成する方法を示しています。
+
+1. プランの選択用 UI で **[新規作成]** をクリックし、ASE 以外の通常の場合と同じように、プランの名前を指定します。
+
+2. 使用する ASE を場所の選択コントロールで選択します。
+
+	App Service 環境は、実質的にプライベートなデプロイの場所であるため、[場所] に表示されます。
+
+	![][2]
+
+	場所の選択コントロールで ASE を選択すると、App Service プランの作成用 UI が更新されます。場所に ASE システムの名前とそのリージョンが表示され、価格プランの選択コントロールがワーカー プールの選択コントロールに置き換えられます。
+
+	![][3]
+
+### ワーカー プールの選択
+
+Azure App Service 内の App Service 環境以外の通常の操作では、3 つのコンピューティング サイズが専用の価格プランで選択できるようになっています。これと似た方法として、ASE では、ワーカーのプールを 3 つまで定義でき、そのワーカー プールで使用するコンピューティング サイズを指定することができます。ASE のテナントから見れば、App Service プランの価格プランとコンピューティング サイズを選択する代わりに、*ワーカー プール*と呼ばれるものを選択することになります。
+
+ワーカー プールの選択 UI では、そのワーカー プールに使用されるコンピューティング サイズがその名の下に表示されます。"使用可能" な数は、そのプールで使用できるコンピューティング インスタンスの数を示します。プール全体ではこの数を超えるインスタンスが実際に含まれている可能性がありますが、この値は単に使用されていないインスタンスの数を表します。App Service 環境を調整してコンピューティング リソースを追加する必要がある場合は、「[App Service 環境の構成](app-service-web-configure-an-app-service-environment.md)」を参照してください。
 
 ![][4]
 
 この例では、使用できるワーカー プールが 2 つしかありません。これは、ASE 管理者によってこれらの 2 つのワーカー プールのみにホストが割り当てられているためです。3 つ目のワーカー プールは、VM が割り当てられているときに表示されます。
 
-### Web アプリを作成した後 ###
+## Web アプリを作成した後
 
-ASE 内での Web アプリの実行と ASP の管理に関しては、いくつかの点を考慮する必要があります。
+ASE 内での Web アプリの実行と App Service プランの管理に関して、いくつかの点を考慮する必要があります。
 
-既に説明したように、ASE の所有者は、システムのサイズに責任を持つため、目的の ASP をホストするのに十分な容量があることも保証する必要があります。利用可能なワーカーがない場合は、ASP を作成できません。これは、Web アプリをスケールアップする場合も同じです。より多くのインスタンスが必要な場合は、App Service 環境の管理者に依頼してワーカーを追加してもらう必要があります。
+既に説明したように、ASE の所有者は、システムのサイズに責任を持つため、目的の App Service プランをホストするのに十分な容量があることも保証する必要があります。利用可能なワーカーがない場合は、App Service プランを作成できません。これは、Web アプリをスケールアップする場合も同じです。より多くのインスタンスが必要な場合は、App Service 環境の管理者に依頼してワーカーを追加してもらう必要があります。
 
-Web アプリと ASP を作成した後はこれをスケールアップすることをお勧めします。ASE でアプリのフォールト トレランスを提供するには、常に ASP のインスタンスが 2 つ以上存在している必要があります。ASE 内の ASP のスケーリングは、通常どおり ASP UI を使用して実行します。スケーリングの詳細については、[App Service 環境内で Web アプリをスケーリングする方法](app-service-web-scale-a-web-app-in-an-app-service-environment.md)についてのこちらのドキュメントを参照してください。
-
-
-[AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
-
-[AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
+Web アプリと App Service プランを作成した後はこれをスケールアップすることをお勧めします。ASE でアプリのフォールト トレランスを提供するには、常に App Service プランのインスタンスが 2 つ以上存在している必要があります。ASE 内の App Service プランのスケーリングは、通常と同じく App Service プラン用 UI を使用して実行します。スケーリングの詳細については、「[App Service 環境内で Web アプリをスケーリングする方法](app-service-web-scale-a-web-app-in-an-app-service-environment.md)」を参照してください。
 
 <!--Image references-->
 [1]: ./media/app-service-web-how-to-create-a-web-app-in-an-ase/createaspnewwebapp.png
@@ -100,4 +118,4 @@ Web アプリと ASP を作成した後はこれをスケールアップする�
 [ResourceGroups]: http://azure.microsoft.com/documentation/articles/resource-group-portal/
 [AzurePowershell]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

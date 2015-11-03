@@ -1,10 +1,10 @@
 <properties
-   pageTitle="作業開始: Azure SQL Data Warehouse への接続 | Microsoft Azure"
+   pageTitle="Visual Studio で SQL Data Warehouse に接続する | Microsoft Azure"
    description="SQL Data Warehouse に接続して、クエリを実行する"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="twounder"
-   manager=""
+   manager="barbkess"
    editor=""/>
 
 <tags
@@ -13,82 +13,99 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/20/2015"
-   ms.author="twounder"/>
+   ms.date="10/22/2015"
+   ms.author="twounder;barbkess"/>
 
-# Visual Studio を使用した接続とクエリ
+# Visual Studio で SQL Data Warehouse に接続する
 
 > [AZURE.SELECTOR]
 - [Visual Studio](sql-data-warehouse-get-started-connect.md)
 - [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
 
-このチュートリアルでは、Visual Studio を使用して、Azure SQL Data Warehouse データベースへの接続とクエリを数分で実行する方法について説明します。このチュートリアルでは次を行います。
-
-+ 前提条件のソフトウェアをインストールする
-+ AdventureWorksDW サンプル データベースを含んだデータベースに接続する
-+ サンプル データベースに対してクエリを実行する  
+このチュートリアルでは、Visual Studio の SQL Server Data Tools を使用して、Azure SQL Data Warehouse データベースにわずか数分で接続する方法について説明します。接続後に、簡単なクエリを実行します。
 
 ## 前提条件
 
-+ Visual Studio 2013/2015 - Visual Studio 2015 および SSDT をダウンロードしてインストールするには、[Visual Studio と SSDTのインストール](sql-data-warehouse-install-visual-studio.md)に関するページを参照してください。
++ SQL Data Warehouse に含まれる AdventureWorksDW サンプル データベースこのデータベースの作成方法については、[SQL Data Warehouse データベースの作成](sql-data-warehouse-get-started-create.md)に関するページを参照してください。 
++ Visual Studio の SQL Server Data Tools手順とオプションの詳細については、[Visual Studio と SSDT のインストール](sql-data-warehouse-install-visual-studio.md)に関するページを参照してください。
 
-## 完全修飾 Azure SQL サーバー名を取得します。
+## 手順 1. Azure SQL サーバーの完全修飾名を検索します。
 
-データベースに接続するには、接続先のデータベースを含むサーバーの完全名が必要です (****servername**.database.windows.net*)。
+データベースは、Azure SQL サーバーに関連付けられます。データベースに接続する際に、完全修飾サーバー名 (**servername**.database.windows.net*) が必要になります。
+
+完全修飾サーバー名を検索するには:
 
 1. [Azure プレビュー ポータル](https://portal.azure.com)にアクセスします。
-2. 接続先のデータベースを探します。
-3. サーバーの完全名を見つけます (これを次の手順で使用します)。
+2. **[SQL データベース]** をクリックし、接続するデータベースをクリックします。この例では、AdventureWorksDW サンプル データベースを使用します。
+3. サーバーの完全名を見つけます。
 
-![][1]
+    ![Full server name][1]
 
-## SQL Database に接続する
+## 手順 2. SQL Database に接続する
 
 1. Visual Studio を開きます。
-2. [表示] メニューから **SQL Server オブジェクト エクスプローラー**を開きます。
+2. SQL Server オブジェクト エクスプローラーを開きます。これを行うには、**[表示]**、**[SQL Server オブジェクト エクスプローラー]** の順にクリックします。
  
-![][2]
+    ![SQL Server Object Explorer][2]
 
-3. **[SQL Server の追加]** をクリックします。
+3. **[SQL Server の追加]** アイコンをクリックします。
 
-![][3]
+    ![Add SQL Server][3]
 
-4. 前の手順で取得した*サーバー名*を入力します。
-5. **[認証]** リストで、**[SQL Server 認証]** を選択します。
-6. SQL Database サーバーを作成したときに指定した**ログイン情報**と**パスワード**を入力し、**[接続]** をクリックします。
+1. [サーバーへの接続] ウィンドウのフィールドに入力します。
 
-## サンプル クエリの実行
+    ![サーバーへの接続][4]
 
-サーバーの登録が完了したので、次はクエリを記述してみましょう。
+    - **サーバー名**: 前の手順で特定した*サーバー名*を入力します。
+    - **認証**: [SQL Server 認証] を選択します。
+    - **ログイン**と**パスワード**: Azure SQL Server のログインとパスワードを入力します。
+    - **[接続]** をクリックします。
 
-1. SSDT でユーザー データベースをクリックします。
+1. 確認のために、Azure SQL Server を展開します。サーバーに関連付けられているデータベースが表示されます。AdventureWorksDW を展開すると、サンプル データベース内のテーブルが表示されます。
 
-2. **[新しいクエリ]** をクリックします。新しいウィンドウが開きます。
+    ![Explore AdventureWorksDW][5]
 
-![][4]
 
-3. クエリ ウィンドウに次のコードを入力します。
+## 手順 3. サンプル クエリを実行する
+
+サーバーへの接続が完了したので、次はクエリを記述してみましょう。
+
+1. SQL Server オブジェクト エクスプローラーでデータベースを右クリックします。 
+
+2. **[新しいクエリ]** を選択します。新しいクエリ ウィンドウが開きます。
+
+    ![新しいクエリ][6]
+
+3. 次の TSQL クエリをクエリ ウィンドウにコピーします。
 
 	```
 	SELECT COUNT(*) FROM dbo.FactInternetSales;
 	```
 
-4. クエリを実行します。
+4. クエリを実行します。これを行うには、緑色の矢印をクリックするか、`CTRL`+`SHIFT`+`E` のショートカット キーを使用します。
 
-	クエリを実行するには、緑色の矢印をクリックするか、`CTRL`+`SHIFT`+`E` のショートカット キーを使用します。
+    ![Run query][7]
+
+1. クエリ結果を確認します。この例では、FactInternetSales テーブルに 60,398 行が含まれています。
+
+    ![Query results][8]
 
 ## 次のステップ
 
-これで接続してクエリを実行することができます。[PowerBI で接続][]してみてください。
+これで接続してクエリを実行することができます。[Power BI でデータを視覚化][]してみてください。
 
-[PowerBI で接続]: ./sql-data-warehouse-integrate-power-bi.md
+[Power BI でデータを視覚化]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
 
 
 <!--Image references-->
 
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 [2]: ./media/sql-data-warehouse-get-started-connect/open-ssdt.png
-[3]: ./media/sql-data-warehouse-get-started-connect/connection-dialog.png
-[4]: ./media/sql-data-warehouse-get-started-connect/new-query.png
+[3]: ./media/sql-data-warehouse-get-started-connect/add-server.png
+[4]: ./media/sql-data-warehouse-get-started-connect/connection-dialog.png
+[5]: ./media/sql-data-warehouse-get-started-connect/explore-sample.png
+[6]: ./media/sql-data-warehouse-get-started-connect/new-query2.png
+[7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
+[8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="10/05/2015"
+   	ms.date="10/23/2015"
    	ms.author="nitinme"/>
 
 # Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する
@@ -101,6 +101,10 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 8. **[ノード価格レベル]** をクリックして、このクラスターのために作成されるノードに関する情報を表示します。クラスターで必要なワーカー ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
 
 	![[ノード価格レベル] ブレード](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.5.png "クラスター ノード数の指定")
+    
+    > [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードを選択する必要があります。
+    >
+    > ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 	**[選択]** をクリックして、ノードの価格構成を保存します。
 
@@ -110,7 +114,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 ------------------|---------------------
 	![スタート画面のプロビジョニング中インジケーター](./media/hdinsight-hadoop-linux-tutorial-get-started/provisioning.png)|![プロビジョニングされたクラスターのタイル](./media/hdinsight-hadoop-linux-tutorial-get-started/provisioned.png)
 
-> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
+> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスを確認するには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
 
 プロビジョニングが完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。
 
@@ -239,21 +243,21 @@ HDInsight でデータを分析する方法の詳細については、次を参�
 
 - Hadoop 上のデータを処理するプログラムを作成する方法の 1 つである MapReduce の詳細については、「[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]」を参照してください。
 
-- HDInsight Tools for Visual Studio を使用して HDInsight 上のデータを分析する方法については、[HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
+- HDInsight Tools for Visual Studio を使用して HDInsight 上のデータを分析する方法については、[HDInsight Hadoop Tools for Visual Studio の使用](hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
 
 実際のデータを使用する準備が整っていて、HDInsight のデータの格納方法や HDInsight にデータを取り込む方法を確認する場合は、以下を参照してください。
 
 - HDInsight で Azure BLOB ストレージを使用する方法の詳細については、[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)に関するページを参照してください。
 
-- データを HDInsight にアップロードする方法については、「[データを HDInsight にアップロードする方法][hdinsight-upload-data]」を参照してください。
+- データを HDInsight にアップロードする方法については、[HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページを参照してください。
 
 HDInsight クラスターの作成または管理の詳細については、以下を参照してください。
 
-- Linux ベースの HDInsight クラスターを管理する方法については、「[Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
+- Linux ベースの HDInsight クラスターを管理する方法については、[Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページを参照してください。
 
-- HDInsight クラスターの作成時に選択できるオプションの詳細については、「[カスタム オプションを使用した Linux での HDInsight のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+- HDInsight クラスターの作成時に選択できるオプションの詳細については、[カスタム オプションを使用した Linux での HDInsight のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 
-- Linux と Hadoop を使い慣れていて、HDInsight 上の Hadoop に関する詳細情報を確認するには、「[Linux での HDInsight の使用](hdinsight-hadoop-linux-information.md)」を参照してください。次のような情報が掲載されています。
+- Linux と Hadoop を使い慣れていて、HDInsight 上の Hadoop に関する詳細情報を確認するには、[Linux での HDInsight の使用](hdinsight-hadoop-linux-information.md)に関するページを参照してください。次のような情報が掲載されています。
 
 	* クラスターでホストされる URL (Ambari や WebHCat など)
 	* Hadoop ファイルの場所とローカル ファイル システムの例
@@ -282,4 +286,4 @@ HDInsight クラスターの作成または管理の詳細については、以�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->
