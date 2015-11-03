@@ -338,13 +338,29 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 
 次のようなテーブルが作成されます。
 
-	+----+--------+
-	| id | value  |
-	+----+--------+
-	|  1 | Value1 |
-	|  4 | Value2 |
-	+----+--------+
-	2 rows in set (0.00 sec)
+<pre class="prettyprint copy-to-clipboard  prettyprinted" id="clipboard-element-40"><span class="pun">+----+--------+</span><span class="pln">
+</span><span class="pun">|</span><span class="pln" style="
+    padding-left: 6px;
+    padding-right: 6px;
+"> id </span><span class="pun">|</span><span class="pln" style="
+    padding-left: 8px;
+"> value  </span><span class="pun">|</span><span class="pln">
+</span><span class="pun">+----+--------+</span><span class="pln">
+</span><span class="pun">|</span><span class="pln">  </span><span class="lit" style="
+    padding-left: 6px;
+    border-right-width: 5px;
+    padding-right: 6px;
+">1</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="typ" style="
+    padding-left: 4px;
+">Value1</span><span class="pln"> </span><span class="pun">|</span><span class="pln">
+</span><span class="pun">|</span><span class="pln">  </span><span class="lit" style="
+    padding-left: 6px;
+    padding-right: 6px;
+">4</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="typ" style="
+    padding-left: 4px;
+">Value2</span><span class="pln"> </span><span class="pun">|</span><span class="pln">
+</span><span class="pun">+----+--------+</span><span class="pln">
+</span><span class="lit">2</span><span class="pln"> rows </span><span class="kwd">in</span><span class="pln"> </span><span class="kwd">set</span><span class="pln"> </span><span class="pun">(</span><span class="lit">0.00</span><span class="pln"> sec</span><span class="pun">)</span></pre>
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
