@@ -51,8 +51,7 @@
 
 このアプリでは、広告を SQL データベースに格納します。その際、テーブルを作成してデータにアクセスするために Entity Framework Code First を使用します。それぞれの広告に対し、フルサイズ画像用と縮小表示画像用の 2 つの URL がデータベースに格納されます。
 
-![広告表  
-](./media/websites-dotnet-webjobs-sdk-get-started/adtable.png)
+![広告表](./media/websites-dotnet-webjobs-sdk-get-started/adtable.png)
 
 ユーザーが画像をアップロードすると、Web アプリによってその画像が [Azure BLOB](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) に格納され、広告情報がその BLOB を示す URL と共にデータベースに格納されます。同時に、メッセージが Azure キューに書き込まれます。Azure Web ジョブとして実行されるバックエンド プロセスでは、Web ジョブ SDK は、キューをポーリングして新しいメッセージの有無を確認します。新しいメッセージが出現すると、Web ジョブはその画像の縮小表示を作成し、その広告の縮小表示 URL データベース フィールドを更新します。次の図に、アプリケーションの各パーツのやり取りを示します。
 
@@ -70,11 +69,13 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 1. Visual Studio で**サーバー エクスプローラー** ウィンドウを開きます。
 
-2. **[Azure]** ノードを右クリックし、**[Microsoft Azure に接続]** をクリックします。![Azure への接続](./media/websites-dotnet-webjobs-sdk-get-started/connaz.png)
+2. **[Azure]** ノードを右クリックし、**[Microsoft Azure に接続]** をクリックします。
+![Azure への接続](./media/websites-dotnet-webjobs-sdk-get-started/connaz.png)
 
 3. Azure の資格情報を使用してサインインします。
 
-5. Azure ノードの **[Storage]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。![ストレージ アカウントの作成](./media/websites-dotnet-webjobs-sdk-get-started/createstor.png)
+5. Azure ノードの **[Storage]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。
+![ストレージ アカウントの作成](./media/websites-dotnet-webjobs-sdk-get-started/createstor.png)
 
 3. **[ストレージ アカウントの作成]** ダイアログ ボックスで、ストレージ アカウントの名前を入力します。
 
@@ -92,8 +93,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 5. **[作成]** をクリックします。
 
-	![新しいストレージ アカウント  
-](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
+	![新しいストレージ アカウント](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
 
 ## <a id="download"></a> アプリケーションのダウンロード
 
@@ -119,10 +119,12 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 	SQL 接続文字列は、ストレージ アカウント名とアクセス キーのプレースホルダーを持つ場合の例です。これは、ストレージ アカウントの名前とキーを持つ接続文字列と置き換えられます。
 
-	<pre class="prettyprint">&lt;connectionStrings>
-  &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" />
-  &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/>
-&lt;/connectionStrings></pre>ストレージ接続文字列は AzureWebJobsStorage という名前になります。これは、Web ジョブ SDK が既定で使用する名前であるためです。Azure 環境では 1 つの接続文字列を設定する必要しかないため、ここでも同じ名前が使用されます。
+	<pre class="prettyprint">&lt;connectionStrings&gt;
+	  &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" /&gt;
+	  &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
+	&lt;/connectionStrings&gt;</pre>
+
+	ストレージ接続文字列は AzureWebJobsStorage という名前になります。これは、Web ジョブ SDK が既定で使用する名前であるためです。Azure 環境では 1 つの接続文字列を設定する必要しかないため、ここでも同じ名前が使用されます。
 
 2. **サーバー エクスプローラー**で、**[Storage]** ノードの下にあるストレージ アカウントを右クリックし、**[プロパティ]** をクリックします。
 
@@ -141,7 +143,17 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 6. ContosoAdsWeb プロジェクトで *Web.config* ファイルを開きます。
 
-	このファイルには、アプリケーション データ用に 1 つとログ用に 1 つの計 2 つのストレージ接続文字列があります。このチュートリアルでは、どちらも同じアカウントを使用します。接続文字列には、ストレージ アカウント キーのプレースホルダーがあります。<pre class="prettyprint">&lt;configuration&gt; &lt;connectionStrings&gt; &lt;add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt; &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt; &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;"/&gt; &lt;/connectionStrings&gt; &lt;startup&gt; &lt;supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" /&gt; &lt;/startup&gt; &lt;/configuration&gt;</pre>
+	このファイルには、アプリケーション データ用に 1 つとログ用に 1 つの計 2 つのストレージ接続文字列があります。このチュートリアルでは、どちらも同じアカウントを使用します。接続文字列には、ストレージ アカウント キーのプレースホルダーがあります。
+  	<pre class="prettyprint">&lt;configuration&gt;
+    &lt;connectionStrings&gt;
+        &lt;add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
+        &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
+        &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;"/&gt;
+    &lt;/connectionStrings&gt;
+        &lt;startup&gt;
+            &lt;supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" /&gt;
+    &lt;/startup&gt;
+&lt;/configuration&gt;</pre>
 
 	既定では、Web ジョブ SDK は、AzureWebJobsStorage および AzureWebJobsDashboard という名前の接続文字列を探します。代替として、[希望する接続文字列を格納し、それを明示的に `JobHost` オブジェクトに渡すこともできます。](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#config)
 
@@ -457,7 +469,7 @@ Web と Web ジョブ プロジェクトはどちらも SQL Database と連携�
 	- *Global.asax.cs*  
 	- *Controllers* フォルダー: *AdController.cs*
 	- *Views\\Shared* フォルダー: *\_Layout.cshtml* ファイル
-- *Views\\Home* フォルダー: *Index.cshtml*
+	- *Views\\Home* フォルダー: *Index.cshtml*
 	- *Views\\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル<br/><br/>
 
 3. ContosoAdsWebJob プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
