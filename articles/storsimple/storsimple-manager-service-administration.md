@@ -63,6 +63,8 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 ||ジョブ|構成 (デバイス)|| 
 ||アラート|メンテナンス||
 
+![ビデオ](./media/storsimple-manager-service-administration/Video_icon.png) **ビデオ**
+
 StorSimple Manager サービスのユーザー インターフェイスのチュートリアル ビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-manager-service-overview/)を参照してください。
 
 ## StorSimple Manager サービスを使用した StorSimple デバイスの管理
@@ -114,4 +116,4 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 
 -  [Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)
 
-<!---HONumber=Oct15_HO4-->
+<!----HONumber=Oct15_HO4-->
