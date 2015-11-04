@@ -118,7 +118,20 @@
 |[デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn906015.aspx)|●|○| |6| |
 |[デシジョン ジャングル](https://msdn.microsoft.com/library/azure/dn905963.aspx)|●|○| |6|低メモリ フットプリント|
 |[ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn906030.aspx)|●| | |9|[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867)|
-|[一対全多クラス](https://msdn.microsoft.com/library/azure/dn905887.aspx)|-|-|-|-|選択された 2 クラス法のプロパティを参照| |**回帰**| | | | | | |[線形](https://msdn.microsoft.com/library/azure/dn905978.aspx)| |●|●|4| | |[ベイズ線形](https://msdn.microsoft.com/library/azure/dn906022.aspx)| |○|●|2| | |[デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn905862.aspx)|●|○| |6| | |[ブースト デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn905801.aspx)|●|○| |5|大メモリ フットプリント| |[高速フォレスト分位点回帰](https://msdn.microsoft.com/library/azure/dn913093.aspx)|●|○| |9|ポイント予測より速い分布| |[ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn905924.aspx)|●| | |9|[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867)| |[ポワソン回帰](https://msdn.microsoft.com/library/azure/dn905988.aspx)| | |●|5|技術的にログ線形。カウント予測の場合| |[順序回帰](https://msdn.microsoft.com/library/azure/dn906029.aspx)| | | |0|ランク順序予測の場合| |**異常検出**| | | | | | |[サポート ベクター マシン](https://msdn.microsoft.com/library/azure/dn913103.aspx)|○|○| |2|大きい特徴セットに特に好適| |[PCA ベースの異常検出](https://msdn.microsoft.com/library/azure/dn913102.aspx)| |○|●|3| | |[K-Means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/)| |○|●|4|クラスタリング アルゴリズム|
+|[一対全多クラス](https://msdn.microsoft.com/library/azure/dn905887.aspx)|-|-|-|-|選択された 2 クラス法のプロパティを参照|
+|**回帰**| | | | | |
+|[線形](https://msdn.microsoft.com/library/azure/dn905978.aspx)| |●|●|4| |
+|[ベイズ線形](https://msdn.microsoft.com/library/azure/dn906022.aspx)| |○|●|2| |
+|[デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn905862.aspx)|●|○| |6| |
+|[ブースト デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn905801.aspx)|●|○| |5|大メモリ フットプリント|
+|[高速フォレスト分位点回帰](https://msdn.microsoft.com/library/azure/dn913093.aspx)|●|○| |9|ポイント予測より速い分布|
+|[ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn905924.aspx)|●| | |9|[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867)|
+|[ポワソン回帰](https://msdn.microsoft.com/library/azure/dn905988.aspx)| | |●|5|技術的にログ線形。カウント予測の場合|
+|[順序回帰](https://msdn.microsoft.com/library/azure/dn906029.aspx)| | | |0|ランク順序予測の場合|
+|**異常検出**| | | | | |
+|[サポート ベクター マシン](https://msdn.microsoft.com/library/azure/dn913103.aspx)|○|○| |2|大きい特徴セットに特に好適|
+|[PCA ベースの異常検出](https://msdn.microsoft.com/library/azure/dn913102.aspx)| |○|●|3| |
+|[K-Means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/)| |○|●|4|クラスタリング アルゴリズム|
 
 
 **アルゴリズムのプロパティ:**
@@ -143,7 +156,7 @@
 
 ![特徴が 1 つだけの 2 クラス データに対するロジスティック回帰][4]
 
-***特徴が 1 つだけの 2 クラス データへのロジスティック回帰**** - クラス境界はロジスティック曲線が両方のクラスに近いポイントです*
+***特徴が 1 つだけの 2 クラス データへのロジスティック回帰*** *- クラス境界はロジスティック曲線が両方のクラスに近いポイントです*
 
 ### ツリー、フォレスト、ジャングル
 
@@ -224,4 +237,4 @@ Azure Machine Learning には、[Vowpal Wabbit](https://msdn.microsoft.com/libra
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->
