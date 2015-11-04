@@ -23,7 +23,7 @@ Azure Active Directory Connect Synchronization Service (Azure AD Connect Sync) �
 
 宣言型のプロビジョニングの不可欠な要素は、属性フローに使用される式言語です。使用される言語は、Microsoft ® Visual Basic ® for Applications (VBA) のサブセットです。この言語は、Microsoft Office で使用され、VBScript の経験を持つユーザーも理解できます。宣言型のプロビジョニングの式言語は、関数を使用するだけであり、構造化言語ではありません。メソッドやステートメントはありません。代わりに、関数を入れ子にして、プログラム フローを記述します。
 
-詳細については、「Office 2013 Visual Basic for Applications 言語リファレンスへようこそ」をご覧ください。https://msdn.microsoft.com/library/gg264383(v=office.15).aspx)
+詳細については、「[Office 2013 Visual Basic for Applications 言語リファレンスへようこそ」をご覧ください](https://msdn.microsoft.com/library/gg264383(v=office.15).aspx)
 
 属性は厳密に型指定されます。単一値の文字列属性を想定している関数では、複数値や異なる型の属性は受け入れられません。また、大文字と小文字が区別されます。関数名と属性名のいずれも、適切に大文字と小文字を使用する必要があります。そのようにしない場合、エラーがスローされます。
 
@@ -67,7 +67,8 @@ Azure Active Directory Connect Synchronization Service (Azure AD Connect Sync) �
 Active Directory Connector は、受信同期ルールについて次のパラメーターを提供しています。
 
 
-| Domain.Netbios | Domain.FQDN | Domain.LDAP | | Forest.Netbios | Forest.FQDN | Forest.LDAP |
+| Domain.Netbios | Domain.FQDN | Domain.LDAP |
+| Forest.Netbios | Forest.FQDN | Forest.LDAP |
 
 
 システムは次のパラメーターを提供しています。
@@ -135,4 +136,4 @@ ImportedValues 関数は、属性名を角かっこではなく引用符で囲�
 
 <!--Image references-->
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->

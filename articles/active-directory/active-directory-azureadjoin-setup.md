@@ -31,7 +31,7 @@ Azure AD にユーザーを手動で作成して管理する方法について�
 3. **[ディレクトリ]** タブで、ディレクトリを選択します。
 4. **[構成]** タブをクリックします。
 5. **[デバイス]** セクションまでスクロールします。
-6. **[デバイス] **タブで、次のように設定します。  
+6. **[デバイス]**タブで、次のように設定します。  
    * **[ユーザーあたりのデバイスの最大数]**: Azure AD でユーザーが持つことができるデバイスの最大数を選択します。ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。
    * **[デバイスを参加させるには Multi-factor Auth が必要]**: 有効にした場合、ユーザーはデバイスを Azure AD に参加させるために 2 つ目の認証要素を提供する必要があります。多要素認証の詳細については、「[クラウドでの Azure Multi-Factor Authentication の概要](multi-factor-authentication-get-started-cloud/)」を参照してください。
    *  **[ユーザーはデバイスの Azure AD 参加を実行できます]**: デバイスを Azure AD に参加させることができるユーザーとグループを選択します。   
@@ -55,4 +55,4 @@ Azure AD 参加をユーザーが設定できるようにする 3 つのシナ�
 * [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->

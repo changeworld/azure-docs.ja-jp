@@ -220,7 +220,7 @@ Visual Studio によって、Application Insights にリソースが作成され
 
 #### 既存のプロジェクトの場合
 
-ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights の追加] ** を選択します。
+ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights の追加]** を選択します。
 
 ![[Application Insights の追加] を選択する](./media/app-insights-start-monitoring-app-health-usage/appinsights-03-addExisting.png)
 
@@ -268,4 +268,4 @@ Visual Studio によって、Application Insights にリソースが作成され
 [roles]: app-insights-resources-roles-access-control.md
 [start]: app-insights-overview.md
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->
