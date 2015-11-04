@@ -65,7 +65,8 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 		CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
 		GO
 
-	Id は一意の識別子で、datetimestamp 列は、対応する ID が生成された日時です。 ![サンプル データ](./media/data-factory-stored-proc-activity/sample-data.png)
+	Id は一意の識別子で、datetimestamp 列は、対応する ID が生成された日時です。
+	![サンプル データ](./media/data-factory-stored-proc-activity/sample-data.png)
 
 2. **sampletable** にデータを挿入する**ストアド プロシージャ**を作成します。
 
@@ -77,7 +78,7 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 		    VALUES (newid(), @DateTime)
 		END
 
-	> [AZURE.IMPORTANT]パラメーターの**名前**と**大文字と小文字**は (この例では DateTime) は、パイプライン/アクティビティ JSON に指定されたパラメーターのものと一致する必要があります。ストアド プロシージャ定義で、**@** がパラメーターのプレフィックスとして使用されていることを確認します。
+	> [AZURE.IMPORTANT] パラメーターの**名前**と**大文字と小文字**は (この例では DateTime) は、パイプライン/アクティビティ JSON に指定されたパラメーターのものと一致する必要があります。ストアド プロシージャ定義で、**@** がパラメーターのプレフィックスとして使用されていることを確認します。
 	
 ### Data Factory を作成する。  
 4. [Azure プレビュー ポータル](http://portal.azure.com/)にログインした後、次の操作を行います。
@@ -99,7 +100,7 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 
 7.	**[SProcDF]** の **[DATA FACTORY]** ブレードの **[作成とデプロイ]** をクリックします。Data Factory エディタが起動します。 
 2.	コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure SQL]** を選択します。Azure SQL のリンク サービスを作成するための JSON スクリプトがエディターに表示されます。 
-4. **servername** に、ご使用の Azure SQL Database サーバーの名前を指定します。**databasename** には、テーブルとストアド プロシージャの作成先となったデータベースを指定します。****username@servername** には、そのデータベースへのアクセス権を持ったユーザー アカウントを、**password** には、そのユーザー アカウントのパスワードを指定してください。
+4. **servername** に、ご使用の Azure SQL Database サーバーの名前を指定します。**databasename** には、テーブルとストアド プロシージャの作成先となったデータベースを指定します。**username@servername** には、そのデータベースへのアクセス権を持ったユーザー アカウントを、**password** には、そのユーザー アカウントのパスワードを指定してください。
 5. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
 ### 出力データセットの作成
@@ -125,7 +126,7 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 ### SqlServerStoredProcedure アクティビティでパイプラインを作成する
 今度は、SqlServerStoredProcedure アクティビティでパイプラインを作成しましょう。
  
-9. コマンド バーの **[...] (省略記号)** をクリックし、**[新しいパイプライン]** をクリックします。 
+9. コマンド バーの **... (省略記号)** をクリックし、**[新しいパイプライン]** をクリックします。 
 9. 次の JSON スニペットをコピーして貼り付けます。**storedProcedureName** は **sp\_sample** に設定します。パラメーター **DateTime** の名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義と一致させる必要があります。  
 
 		{
@@ -170,7 +171,7 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 
 	Azure Data Factory パイプラインの監視の詳細については、[パイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するページを参照してください。
 
-> [AZURE.NOTE]上の例では、SprocActivitySample に入力がありません。アップストリームのアクティビティ (つまり前の処理) とこれを関連付ける場合、アップストリーム アクティビティの出力をこのアクティビティの入力として使用できます。この場合、このアクティビティは、アップストリーム アクティビティが完了し、アップストリーム アクティビティの出力を使用できる状態 (Ready 状態) になるまで実行されません。入力は、ストアド プロシージャ アクティビティのパラメーターとして直接使用できません。
+> [AZURE.NOTE] 上の例では、SprocActivitySample に入力がありません。アップストリームのアクティビティ (つまり前の処理) とこれを関連付ける場合、アップストリーム アクティビティの出力をこのアクティビティの入力として使用できます。この場合、このアクティビティは、アップストリーム アクティビティが完了し、アップストリーム アクティビティの出力を使用できる状態 (Ready 状態) になるまで実行されません。入力は、ストアド プロシージャ アクティビティのパラメーターとして直接使用できません。
 
 ## 静的な値を渡す 
 次に、‘Document sample’ という静的値を含む ‘Scenario’ という別の列をテーブルに追加する例を考えてましょう。
@@ -198,4 +199,4 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 		}
 	}
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->
