@@ -19,7 +19,7 @@
 # パスワード管理に関するよく寄せられる質問 (FAQ)
 次に示すのは、パスワード管理に関連するあらゆる事に対してよく寄せられる質問です。
 
-回答がわからない疑問がある場合や、発生している特定の問題の解決方法を探している場合は、そのようなトピックが以下で取り上げられているかを確認してください。 トピックがここで取り上げられていなくても心配はいりません。 [Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)で取り上げられていない質問については、マイクソフトにご連絡ください。できる限り早く回答いたします。
+回答がわからない疑問がある場合や、発生している特定の問題の解決方法を探している場合は、そのようなトピックが以下で取り上げられているかを確認してください。 トピックがここで取り上げられていなくても心配はいりません。 [Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)で取り上げられていない質問については、マイクロソフトにご連絡ください。できる限り早く回答いたします。
 
 この FAQ は、次のセクションに分かれています。
 
@@ -204,4 +204,4 @@
 [001]: ./media/active-directory-passwords-faq/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-faq/002.jpg "Image_002.jpg"
 
-<!---HONumber=Oct15_HO4-->
+<!----HONumber=Oct15_HO4-->
