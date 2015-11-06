@@ -47,7 +47,8 @@ CNAME レコード (またはエイリアス レコード) および A レコー
 CNAME レコードは、*contoso.com* や **www.contoso.com** などの**特定の**ドメインを正規のドメイン名にマップします。この場合、正規のドメイン名は Azure ホステッド アプリケーションの **[myapp].cloudapp.net** ドメイン名です。作成すると、CNAME は **[myapp].cloudapp.net** のエイリアスを作成します。CNAME エントリは **[myapp].cloudapp.net** サービスの IP アドレスを自動的に解決するため、クラウド サービスの IP アドレスが変更されても、特別な対応をする必要はありません。
 
 > [AZURE.NOTE]
-> いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (contoso.com など) ではなく、サブドメイン (www.contoso.com など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、「[the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)](http://en.wikipedia.org/wiki/CNAME_record)」、または「[IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)](http://tools.ietf.org/html/rfc1035)」を参照してください。
+> いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (contoso.com など) ではなく、サブドメイン (www.contoso.com など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、「[the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)](http://en.wikipedia.org/w
+> iki/CNAME_record)」、または「[IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)](http://tools.ietf.org/html/rfc1035)」を参照してください。
 
 ### A レコード
 
@@ -56,7 +57,7 @@ A レコードは、ドメイン (**contoso.com**、**www.contoso.com** など) 
 > [AZURE.NOTE]
 > A レコードは静的 IP にマップされるため、変更をクラウド サービスの IP アドレスに自動的に解決することはできません。クラウド サービスによって使用される IP アドレスは、空のスロット (運用またはステージング) に初めてデプロイしたときに割り当てられます。 スロットのデプロイを削除すると、IP アドレスは Azure によって解放され、そのスロットへの今後のデプロイは新しい IP アドレスに与えられます。
 >
-> 都合が良いのは、ステージング デプロイと運用デプロイとの間のスワッピングまたは既存のデプロイのインプレース アップグレードを実行する場合に、所定のデプロイ スロット (運用またはステージング) の IP アドレスが保持されることです。これらの操作の実行の詳細については、「[How to manage cloud services (クラウド サービスの管理方法)](cloud-services-how-to-manage.md)」を参照してください。
+> 都合が良いのは、ステージング デプロイと運用デプロイとの間のスワップまたは既存のデプロイのインプレース アップグレードを実行する場合に、所定のデプロイ スロット (運用またはステージング) の IP アドレスが保持されることです。これらの操作の実行の詳細については、「[How to manage cloud services (クラウド サービスの管理方法)](cloud-services-how-to-manage.md)」を参照してください。
 
 
 ## カスタム ドメインの CNAME レコードの追加
