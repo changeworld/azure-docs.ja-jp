@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/16/2015"
+   ms.date="10/22/2015"
    ms.author="kareni"/>
 
 
@@ -24,7 +24,15 @@ Microsoft Azure サブスクリプションの課金額は、料金プランに�
 
 前の請求期間の潜在的使用時間のうち、最大 24 時間が現在の請求期間として報告される場合があることにご注意ください。
 
-消費量、使用量、および料金プランの詳細については、「[Microsoft Azure の購入オプション」ページ](http://azure.microsoft.com/pricing/purchase-options/)を参照してください。
+消費量と料金プランの詳細については、「[Microsoft Azure の購入オプション」](http://azure.microsoft.com/pricing/purchase-options/)ページを参照してください。
+
+次のリンクは、Microsoft Azure サービスの完全な一覧を示します。
+
+- [サービス詳細リスト (csv1)](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv1.xlsx)
+- [サービス詳細リスト (csv2)](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv2.xlsx)
+
+*注: **csv1** リンクは csv バージョン 1 の列ヘッダー名を参照し、**csv2** リンクは csv バージョン 2 の新しい列ヘッダー名を参照します。これらのファイルは毎月更新されます。*
+
 
 ## 内容:
 
@@ -212,9 +220,9 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 消費量 | 消費量 | その日に消費されたリソースの量が表示されます。
 サブ リージョン | リソースの場所 | リソースが実行されているデータ センターを特定します。
 サービス | 使用サービス | この列を使用して、[名前] 列だけでは詳しく識別できない、個々の Azure Platform サービスを追跡します。この列が表示されサービス固有のサービスの使用法に関するものです。
-該当なし | リソース グループ | _**新しい列の追加。**_ デプロイされたリソースが実行されるリソース グループ。http://azure.microsoft.com/documentation/articles/resource-group-overview/ を参照してください。
+該当なし | リソース グループ | _**新しい列の追加。**_ デプロイされたリソースが実行されるリソース グループ。「http://azure.microsoft.com/documentation/articles/resource-group-overview/」を参照してください。
 コンポーネント | インスタンス ID | 実行中のリソースの識別子です。識別子には、リソースの作成時に指定した名前が含まれています。
-該当なし | タグ | _**新しい列の追加。**_ Azure の新しいリソースの種類では、リソースにタグを付けることができます。http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/ を参照してください。
+該当なし | タグ | _**新しい列の追加。**_ Azure の新しいリソースの種類では、リソースにタグを付けることができます。「http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/」を参照してください。
 追加情報 | 追加情報 | サービスに関連する追加のメタデータ。
 サービス情報 1 | サービス情報 1 | この列は、サブスクリプションでサービスが属しているプロジェクトの名前を特定します。
 サービス情報 2 | サービス情報 2 | これは、サービス固有の省略可能なメタデータをキャプチャする、以前から使用されているフィールドです。
@@ -230,20 +238,12 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 ![additionalinfo\_csv2](./media/billing-understand-your-bill/AdditionaInfo_csv2.png)
 
 - **タグ**: この列には、ユーザーが指定したリソース タグが含まれます。タグは、課金記録のグループ化に使用できます。たとえば、タグを使用して、サービスを使用する部門ごとにコストを配分することができます。タグの使用方法については、[Azure リソースの整理](./resource-group-using-tags.md)を参照してください。タグの生成をサポートするサービスは、次のとおりです。  
-    - 仮想マシン
+    - Virtual Machines
     - 記憶域
     - [Azure リソース マネージャー API を使用してプロビジョニングされたネットワーク サービス。](https://msdn.microsoft.com/library/azure/dn790567.aspx)
 
 ![tags](./media/billing-understand-your-bill/tags.png)
 
-
-各サービスの詳細については、これらの関連情報を参照してください。これらのファイルは毎月更新されます。翌月分は 25 日に発行されます。.csv Version 1 については **2015 年 5 月**、.csv Version 2 については **2015 年 6 月**から利用できます。サービス ダウンロード フィールドの基本ファイルの URL を以下に示します。
-
->>  https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_v1_MMYYYY.xlsx https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_v2_MMYYYY.xlsx
-
-
-
-最新バージョンを検索するには、[年] と [月] を入力します (2015 年 5 月のファイルを検索する場合、上の URL のセクション _**"MMYYYY"**_ に「**052015**」と入力します)。このスプレッドシートでは、**使用状況ダウンロード レポート**の関連するサービスの可能なすべての組み合わせの一覧が提供されます。
 
 ## その他のリソース
 「[サービスの管理](https://msdn.microsoft.com/library/azure/dn578292.aspx)」の「**アカウント、サブスクリプション、管理者ロールの管理**」セクションには、役に立つリンクが掲載されています。
@@ -262,4 +262,4 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 
 <!--Image references-->
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

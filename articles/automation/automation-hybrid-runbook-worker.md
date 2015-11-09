@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/17/2015"
+   ms.date="10/23/2015"
    ms.author="bwren" />
 
 # Azure Automation の Hybrid Runbook Worker
@@ -30,6 +30,8 @@ Hybrid Runbook Worker として機能し、Azure Automation の Runbook を実�
 >[AZURE.NOTE]Operational Insights は Operations Management Suite への統合作業中であり、ポータルおよびドキュメントではどちらかの名前が使用されている場合があります。
 
 Hybrid Runbook Worker をサポートするための受信ファイアウォールの要件はありません。ローカル コンピューター上のエージェントは、クラウドでの Azure Automation とのすべての通信を開始します。Runbook が開始されると、Azure Automation はエージェントによって取得される指示を作成します。次に、エージェントは、それを実行する前に、Runbook と任意のパラメーターをプル ダウンします。Azure Automation の Runbook で使用される[資産](http://msdn.microsoft.com/library/dn939988.aspx)も取得します。
+
+>[AZURE.NOTE]Hybrid Runbook Worker は、現時点では [DSC 構成](automation-dsc-overview.md)をサポートしていません。
 
 ## Hybrid Runbook Worker のグループ
 
@@ -66,14 +68,14 @@ Microsoft 管理エージェントは Operations Management Suite にコンピ�
 
 「[Operational Insights にコンピューターを直接接続する](../operational-insights/operational-insights-direct-agent.md)」の手順に従って、オンプレミスのコンピューターにエージェントをインストールします。コンピューターごとにこのプロセスを繰り返して、複数の worker を環境に追加できます。
 
-エージェントが Operations Management Suite に正常に接続すると、Operations Management Suite の **[設定]** ウィンドウの **[接続されているソース]** タブにエージェントが表示されます。C:\\Program Files\\Microsoft Monitoring Agent\\Agent に **AzureAutomationFiles** という名前のフォルダーが作成されていることを調べて、エージェントが Automation ソリューションを正常にダウンロードしたことを確認できます。
+エージェントが Operations Management Suite に正常に接続すると、Operations Management Suite の **[設定]** ウィンドウの **[接続されているソース]** タブにエージェントが表示されます。C:\\Program Files\\Microsoft Monitoring Agent\\Agent に **AzureAutomationFiles** という名前のフォルダーが作成されていることで、エージェントが Automation ソリューションを正常にダウンロードしたことを確認できます。
 
 ### 4\.Runbook 環境をインストールして、Azure Automation に接続する
 エージェントを Operations Management Suite に追加すると、Automation ソリューションは、**Add-HybridRunbookWorker** コマンドレットを含む **HybridRegistration** PowerShell モジュールをプッシュダウンします。コンピューターに Runbook 環境をインストールして、Azure Automation に登録する場合は、このコマンドレットを使用します。
 
 管理者モードで PowerShell セッションを開き、次のコマンドを実行してモジュールをインポートします。
 
-	cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\5.2.20826.0\HybridRegistration"
+	cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation<version>\HybridRegistration"
 	Import-Module HybridRegistration.psd1
 
 
@@ -85,9 +87,9 @@ Microsoft 管理エージェントは Operations Management Suite にコンピ�
 
 ![Hybrid Runbook Worker の概要](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-- **Name** は、Hybrid Runbook Worker グループの名前です。オートメーション アカウントにこのグループが既に存在する場合は、現在のコンピューターがそれに追加されます。If it does not already exist, then it is added.
+- **Name** は、Hybrid Runbook Worker グループの名前です。オートメーション アカウントにこのグループが既に存在する場合は、現在のコンピューターがそれに追加されます。まだ存在しない場合は、追加されます。
 - **EndPoint** は、**[キーの管理]** ブレードの **[URL]** フィールドです。
-- **Token** は、**[キーの管理]** ブレードの **[プライマリ アクセス キー]** です。  
+- **Token** は、[**キーの管理**] ブレードの [**プライマリ アクセス キー**] です。  
 
 インストールに関する詳細な情報を受け取るには、**Add-HybridRunbookWorker** で **-Verbose** スイッチを使用します。
 
@@ -104,15 +106,13 @@ Hybrid Runbook Worker 機能の主な目的はローカル リソースを管理
 
 「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」では、Runbook を開始するためのさまざまな方法を説明しています。Hybrid Runbook Worker は、Hybrid Runbook Worker グループの名前を指定できる **RunOn** オプションを追加します。グループが指定されている場合は、Runbook が取得され、そのグループ内のワーカーによって実行されます。このオプションが指定されていない場合は、Azure Automation で通常どおり実行されます。
 
-Azure プレビュー ポータルで Runbook を開始する際に、**Azure** または **Hybrid Worker** を選択できる **Run on** オプションが表示されます。**Hybrid Worker** を選択した場合は、ドロップダウン リストからグループを選択できます。
+Azure プレビュー ポータルで Runbook を開始する際に、**Azure** または **ハイブリッド worker** を選択できる **Run on** オプションが表示されます。**ハイブリッド worker** を選択した場合は、ドロップダウン リストからグループを選択できます。
 
 **RunOn** パラメーターを使用します。次のコマンドを使用し、Windows PowerShell を使用して MyHybridGroup という名前の Hybrid Runbook Worker グループで Test-Runbook という名前の Runbook を開始できます。
 
 	Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 
 >[AZURE.NOTE]**RunOn** パラメーターは、バージョン 0.9.1 の Microsoft Azure PowerShell で **Start-AzureAutomationRunbook** コマンドレットに追加されました。以前のバージョンがインストールされている場合は、[最新バージョンをダウンロード](http://azure.microsoft.com/downloads)する必要があります。Windows PowerShell から Runbook を開始するワークステーションでは、このバージョンをインストールするだけです。ワーカー コンピューターから Runbook を開始する場合を除き、そのコンピューターにインストールする必要はありません。Automation アカウントに最新バージョンの Azure Powershell をインストールする必要があるため、現時点ではある Runbook を別の Runbook の Hybrid Runbook Worker で開始することはできません。最新バージョンは Azure Automation で自動的に更新され、自動的にワーカーにすぐにプッシュダウンされます。
-
->[AZURE.NOTE]Hybrid Runbook Worker は、[グラフィカル Runbook と PowerShell ワークフロー Runbook](automation-runbook-types.md) のみを実行できます。現在は、Hybrid Runbook Worker で [PowerShell Runbook](automation-runbook-types.md) を開始することはできません。
 
 ## Hybrid Runbook Worker での Runbook のトラブルシューティング
 
@@ -164,4 +164,4 @@ Hybrid Runbook Worker 機能を持つ Azure Automation と Service Management Au
 - [Azure Automation での Runbook の編集](https://msdn.microsoft.com/library/dn879137.aspx)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/27/2015"
+	ms.date="10/26/2015"
 	ms.author="selcint"/>
 
 # Azure Storage での Azure PowerShell の使用
@@ -21,7 +21,7 @@
 
 このガイドでは、[Storage 用 Azure サービス管理コマンドレット](https://msdn.microsoft.com/library/azure/dn806401.aspx)を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。
 
-Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。タスクベースのコマンドライン シェルとスクリプト言語であり、システム管理に特化して設計されています。PowerShell を使用すると、Azure サービスやアプリケーションの管理を容易に制御して自動化できます。たとえば、このコマンドレットを使用して、Azure 管理ポータルで実行できるタスクと同じタスクを実行できます。
+Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。タスクベースのコマンドライン シェルとスクリプト言語であり、システム管理に特化して設計されています。PowerShell を使用すると、Azure サービスやアプリケーションの管理を容易に制御して自動化できます。たとえば、このコマンドレットを使用して、Microsoft Azure 管理ポータルで実行できるタスクと同じタスクを実行できます。
 
 このガイドは、[Azure Storage](http://azure.microsoft.com/documentation/services/storage/) と [Windows PowerShell](http://technet.microsoft.com/library/bb978526.aspx) を使用した経験がある読者を対象としています。また、PowerShell と Azure Storage の使用方法を示すための多くのスクリプトを用意しています。各スクリプトの実行前に、使用する構成に基づいてスクリプト変数を更新する必要があります。
 
@@ -107,9 +107,9 @@ Azure サブスクリプションの詳細については、「[アカウント�
        		Get-AzureSubscription | Format-Table SubscriptionName, IsDefault, IsCurrent, CurrentStorageAccountName
 
 
-		b.Azure で現在サポートされているポータルは、[Azure 管理ポータル](https://manage.windowsazure.com/)と [Azure プレビュー ポータル](https://portal.azure.com/)の 2 つです。現在の [Azure 管理ポータル](https://portal.azure.com/)にサインインした場合は、下へスクロールして、ポータルの左側にある **[設定]** をクリックします。**[サブスクリプション]** をクリックします。このガイドで取り上げられているスクリプトを実行する際に使用するサブスクリプションの名前をコピーします。例として次のスクリーンショットをご覧ください。
+		b.Azure で現在サポートされているポータルは、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)と [Azure プレビュー ポータル](https://portal.azure.com/)の 2 つです。現在の [Azure 管理ポータル](https://portal.azure.com/)にサインインした場合は、下へスクロールして、ポータルの左側にある **[設定]** をクリックします。**[サブスクリプション]** をクリックします。このガイドで取り上げられているスクリプトを実行する際に使用するサブスクリプションの名前をコピーします。例として次のスクリーンショットをご覧ください。
 
-		![Azure 管理ポータル][Image1]
+		![Microsoft Azure 管理ポータル][Image1]
 
 		c.[Azure プレビュー ポータル](https://portal.azure.com/)にサインインした場合は、左側の [ハブ] メニューの **[参照]** をクリックします。**[すべて]** をクリックし、**[サブスクリプション]** をクリックします。このガイドのスクリプトを実行する際に使用するサブスクリプションの名前をコピーします。例として次のスクリーンショットをご覧ください。
 
@@ -237,7 +237,7 @@ Azure ストレージ コンテキストは、ストレージ資格情報をカ�
 
 これで、コンピューターを設定できました。また、Azure PowerShell を使用してサブスクリプションとストレージ アカウントを管理する方法を確認できました。次のセクションでは、Azure BLOB と BLOB のスナップショットを管理する方法について確認します。
 
-## Azure BLOB と BLOB のスナップショットを管理する方法
+## Azure BLOB の管理方法
 Azure BLOB ストレージは、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。このセクションでは、Azure BLOB ストレージ サービスの概念について理解しているユーザーを対象としています。詳細については、[.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)に関するページと「[BLOB サービスの概念](http://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
 
 ### コンテナーを作成する方法
@@ -600,7 +600,7 @@ Azure File ストレージは、標準的な SMB プロトコルを使用して�
 Azure File ストレージの詳細については、「[How to use Azure File storage with Windows (Windows で Azure File ストレージを使用する方法)](storage-dotnet-how-to-use-files.md)」と「[File サービス REST API](http://msdn.microsoft.com/library/azure/dn167006.aspx)」を参照してください。
 
 ## ストレージ分析を設定して照会する方法
-[Azure Storage Analytics](storage-analytics.md) を使用して、Azure ストレージ アカウントからメトリックを収集し、ストレージ アカウントに送信される要求に関するログ データを収集することができます。ストレージ メトリックを使用すると、ストレージ アカウントの正常性を監視でき、ストレージ ログを使用すると、ストレージ アカウントに関する問題の診断とトラブルシューティングができます。既定では、Storage サービスに対してストレージ メトリックは有効になっていません。Azure 管理ポータルか Windows PowerShell を利用するか、ストレージ API にプログラムを作成することで監視を有効にできます。ストレージ ログはサーバー側で発生し、ストレージ アカウント内の成功した要求と失敗した要求の両方について詳細を記録することが可能になります。これらのログを使用すると、読み取り、書き込み、削除の各操作の詳細、失敗した要求の原因を確認できます。
+[Azure Storage Analytics](storage-analytics.md) を使用して、Azure ストレージ アカウントからメトリックを収集し、ストレージ アカウントに送信される要求に関するログ データを収集することができます。ストレージ メトリックを使用すると、ストレージ アカウントの正常性を監視でき、ストレージ ログを使用すると、ストレージ アカウントに関する問題の診断とトラブルシューティングができます。既定では、Storage サービスに対してストレージ メトリックは有効になっていません。Microsoft Azure 管理ポータルか Windows PowerShell を利用するか、ストレージ API にプログラムを作成することで監視を有効にできます。ストレージ ログはサーバー側で発生し、ストレージ アカウント内の成功した要求と失敗した要求の両方について詳細を記録することが可能になります。これらのログを使用すると、読み取り、書き込み、削除の各操作の詳細、失敗した要求の原因を確認できます。
 
 PowerShell を使用し、ストレージ メトリックのデータを有効にして表示する方法については、「[PowerShell を利用してストレージ メトリックを有効にする方法](http://msdn.microsoft.com/library/azure/dn782843.aspx#HowtoenableStorageMetricsusingPowerShell)」を参照してください。
 
@@ -736,4 +736,4 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 [Next Steps]: #next
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

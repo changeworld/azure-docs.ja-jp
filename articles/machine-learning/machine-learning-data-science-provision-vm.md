@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="10/27/2015" 
 	ms.author="bradsev" />
 
 
@@ -48,10 +48,10 @@ Azure VM を作成するには、以下のものが必要です。
 データ サイエンス用 VM のインスタンスを作成するための手順は、次のとおりです。
 
 1.	Azure ポータルにログインします。
-2.	**[新規作成]**、**[Compute]**、**[Marketplace]** の順に移動し、*[データ サイエンス用仮想マシン]* を検索します。Microsoft 発行の "**Data Science Virtual Machine**" という名前の VM を選択し、Data Science Virtual Machine の説明のパネルを表示します。
-3.	下部にある **[作成]** ボタンをクリックして、ウィザードを起動します。![provision-data-science-vm](./media/machine-learning-data-science-provision-vm/provision-data-science-virtual-machine.png)
-4.	 以下のセクションでは、データ サイエンス用 VM を作成するウィザードの各ステップでの入力について説明します。
-
+2.	**[新規作成]**、**[Compute]**、**[Marketplace]** の順に移動し、*[データ サイエンス用仮想マシン]* を検索します。![provision-data-science-vm](./media/machine-learning-data-science-provision-vm/provision-data-science-virtual-machine.png)
+3.	Microsoft 発行の "Data Science Virtual Machine" という名前の VM を選択し、Data Science Virtual Machine の説明のパネルを表示します。 	
+4.	 下部にある **[作成]** ボタンをクリックして、ウィザードを起動します。![configure-data-science-vm](./media/machine-learning-data-science-provision-vm/configure-data-science-virtual-machine.png)
+5.	 以下のセクションでは、データ サイエンス用 VM を作成するウィザードの 5 つのステップ (上の図の右に列挙してあります) の各ステップでの入力について説明します。以下は、これらの各ステップを構成するために必要な入力項目です。
 
  **1.基本**:
 
@@ -119,4 +119,4 @@ SQL Server の制限付きバージョンも、Visual Studio Community エディ
 ## その他の Microsoft 開発ツール
 [**Microsoft Web Platform Installer**](https://www.microsoft.com/web/downloads/platform.aspx) は、他の Microsoft 開発ツールを検出し、ダウンロードするために使用できます。VM デスクトップには、ツールへのショートカットもあります。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="ExpressRoute を操作するためのネットワーク構成の詳細" 
-	description="App Service 環境を ExpressRoute 回線に接続された Virtual Networks 内で実行するためのネットワーク構成の詳細です。" 
+	description="App Service Environment を ExpressRoute 回線に接続された Virtual Networks 内で実行するためのネットワーク構成の詳細です。" 
 	services="app-service" 
 	documentationCenter="" 
 	authors="stefsch" 
@@ -13,53 +13,65 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/11/2015" 
+	ms.date="10/23/2015" 
 	ms.author="stefsch"/>
 
-# ExpressRoute を使用した App Service 環境のネットワーク構成の詳細 
+# ExpressRoute を使用した App Service Environment のネットワーク構成の詳細 
 
 ## 概要 ##
-顧客は、[Azure ExpressRoute][ExpressRoute] 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。この[仮想ネットワーク][virtualnetwork] インフラストラクチャのサブネットの中に App Service 環境を作成できます。App Service 環境で実行されるアプリは、ExpressRoute 接続でのみアクセスできる、バックエンド リソースに対する安全な接続を確立できます。
+顧客は、[Azure ExpressRoute][ExpressRoute] 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。この[仮想ネットワーク][virtualnetwork] インフラストラクチャのサブネットの中に App Service Environment を作成できます。App Service Environment で実行されるアプリは、ExpressRoute 接続でのみアクセスできる、バックエンド リソースに対する安全な接続を確立できます。
 
-**注:** "v2"仮想ネットワーク内で App Service 環境を作成することはできません。App Service 環境は現在、クラシック "v1" 仮想ネットワークでしかサポートされていません。
+**注:** "v2"仮想ネットワーク内で App Service Environment を作成することはできません。App Service Environment は現在、クラシック "v1" 仮想ネットワークでしかサポートされていません。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## 必要なネットワーク接続 ##
-ExpressRoute に接続された仮想ネットワークでは最初は満たされていない場合がある App Service 環境のネットワーク接続要件があります。
-
-App Service 環境が正常に機能するには、次のすべてを満たす必要があります。
+ExpressRoute に接続された仮想ネットワークでは最初は満たされていない場合がある App Service Environment のネットワーク接続要件があります。App Service Environment が正常に機能するには、次のすべてを満たす必要があります。
 
 
--  Azure Storage ワールドワイドに対する発信ネットワーク接続と、App Service 環境と同じリージョンに配置されている SQL DB リソースに対する接続。このネットワーク パスは、社内のプロキシを通過することはできません。それを行うと、発信ネットワーク トラフィックの有効な NAT アドレスが変更される可能性があるためです。Azure Storage エンドポイントと SQL DB エンドポイント向けの App Service 環境の発信ネットワーク トラフィックの NAT アドレスを変更すると、接続エラーが発生します。
--  仮想ネットワークの DNS 構成は、Azure が管理する次のドメイン内のエンドポイントを解決できる必要があります。**.file.core.windows.net*、**.blob.core.windows.net*、**.database.windows.net*。
--  仮想ネットワークの DNS 構成は、App Service 環境の作成時だけではなく、App Service 環境の再構成とスケーリングの変更を行っている間も、安定を維持する必要があります。   
--  VPN ゲートウェイの他端にカスタム DNS サーバーが存在する場合、その DNS サーバーは到達可能、かつ使用可能である必要があります。 
--  この[記事][requiredports]の説明に従って、App Service 環境の必要なポートへの着信ネットワーク アクセスを許可する必要があります。
+-  世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続これには、App Service Environment と同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。  
+-  App Service Environment と同じリージョンにある Sql DB エンドポイントに対する発信ネットワーク接続。SQL DB エンドポイントは、次のドメインで解決されます: *database.windows.net*。
+-  Azure 管理プレーン エンドポイント (ASM エンドポイントと ARM エンドポイントの両方) に対する発信ネットワーク接続これには、*management.core.windows.net* と *management.azure.com* の両方に対する発信接続が含まれます。 
+-  *mscrl.microsoft.com* と *crl.microsoft.com* に対する発信ネットワーク接続。これは、SSL 機能をサポートするために必要です。
+-  仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。これらのエンドポイントを解決できない場合、App Service Environment の作成処理に失敗し、既存の App Service Environment は異常とマークされます。
+-  カスタム DNS サーバーが VPN ゲートウェイの相手側にある場合、DNS サーバーは App Service Environment を含むサブネットから到達できる必要があります。 
+-  発信ネットワーク パスは、社内プロキシを経由したり、オンプレミスに強制的にトンネリングしたりすることができません。実行した場合、App Service Environment からの発信ネットワーク トラフィックの実質的な NAT アドレスが変わります。App Service Environment の発信ネットワーク トラフィックの NAT アドレスを変更すると、上記の多数のエンドポイントに対して接続エラーが発生します。その結果、App Service Environment の作成処理は失敗し、以前は正常動作していた App Service Environment も異常とマークされます。  
+-  この[記事][requiredports]の説明に従って、App Service Environment の必要なポートへの着信ネットワーク アクセスを許可する必要があります。
 
-DNS 要件は、仮想ネットワークの有効な DNS 構成を保証することによって満たすことができます。
+DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。何らかの理由で、App Service Environment の作成後に DNS 構成が変わった場合、開発者は強制的に App Service Environment から新しい DNS 構成を選択することができます。[新しい管理ポータル][NewPortal]の App Service Environment 管理ブレードの上部にある [再起動] アイコンを使用して、ローリングする環境の再起動をトリガーすると、新しい DNS 構成が自動的に選択されます。
 
-着信ネットワーク アクセスの要件は、この[記事][requiredports]の説明に従って、必要なアクセスを許可する[ネットワーク セキュリティ グループ][NetworkSecurityGroups]を App Service 環境のサブネットに対して構成することによって満たすことができます。
+着信ネットワーク アクセスの要件は、この[記事][requiredports]の説明に従って、必要なアクセスを許可する[ネットワーク セキュリティ グループ][NetworkSecurityGroups]を App Service Environment のサブネットに対して構成することによって満たすことができます。
 
-## App Service 環境の発信ネットワーク接続を有効にする##
-既定では、新しく作成された ExpressRoute 回線は、発信インターネット接続を許可する既定のルートをアドバタイズします。この構成によって、App Service 環境は、他の Azure エンドポイントに接続できます。
+## App Service Environment の発信ネットワーク接続を有効にする##
+既定では、新しく作成された ExpressRoute 回線は、発信インターネット接続を許可する既定のルートをアドバタイズします。この構成によって、App Service Environment は、他の Azure エンドポイントに接続できます。
 
-ただし、顧客の一般的な構成では、発信インターネット トラフィックを強制的に顧客のプロキシ/ファイアウォール インフラストラクチャにフローさせる独自の既定のルートを定義しています。このトラフィック フローでは、発信トラフィックはオンプレミスでブロックされるか、Azure エンドポイントではもはや有効ではない、認識できないアドレス セットに NAT 処理されるため、App Service 環境では接続は必ず切断されます。
+ただし、顧客の一般的な構成では、発信インターネット トラフィックを強制的にオンプレミスにフローさせる独自の既定のルート (0.0.0.0/0) を定義しています。このトラフィック フローでは、発信トラフィックはオンプレミスでブロックされるか、Azure エンドポイントではもはや有効ではない、認識できないアドレス セットに NAT 処理されるため、App Service Environment では接続は必ず切断されます。
 
-解決策は、App Service 環境を含むサブネットに、1 つ (以上) のユーザー定義ルート (UDR) を定義することです。UDR は、既定のルートに優先するサブネット固有のルートを定義します。
+解決策は、App Service Environment を含むサブネットに、1 つ (以上) のユーザー定義ルート (UDR) を定義することです。UDR は、既定のルートに優先するサブネット固有のルートを定義します。
+
+可能であれば、次の構成を使用することをお勧めします。
+
+- ExpressRoute 構成は 0.0.0.0/0 をアドバタイズし、既定でオンプレミスのすべての発信トラフィックを強制的にトンネリングします。
+- App Service Environment を含むサブネットに適用される UDR では、次ホップの種類がインターネットの 0.0.0.0/0 を定義します (例について、この記事の後半を参照してください)。
+
+これらの手順の複合的な結果として、サブネット レベル UDR は ExpressRoute 強制トンネリングよりも優先されるので、App Service Environment からの発信インターネット アクセスを確保できます。
+
+**重要:** ExpressRoute 構成でアドバタイズされたルートよりも優先するには、UDR に定義されているルートを詳細にする**必要があります**。以下の例では、0.0.0.0/0 の広域なアドレス範囲を使用しているので、より詳細なアドレス範囲を使用するルート アドバタイズで誤って上書きされる可能性があります。
+
+**非常に重要:** App Service Environment は、**パブリック ピアリング パスからプライベート ピアリング パスに誤ってルートをクロスアドバタイズした** ExpressRoute 構成ではサポートされません。パブリック ピアリングが構成された ExpressRoute 構成は、大規模な Microsoft Azure の IP アドレス範囲について Microsoft からルート アドバタイズを受信します。これらのアドレス範囲がプライベート ピアリング パスで誤ってクロスアドバタイズされている場合、App Service Environment のサブネットからのすべての発信ネットワーク パケットは、誤って顧客のオンプレミス ネットワーク インフラストラクチャに強制的にトンネリングされます。このネットワーク フローでは、App Service Environment が機能しません。この問題を解決するには、パブリック ピアリング パスからプライベート ピアリング パスへのルートのクロスアドバタイズを停止します。
 
 ユーザー定義ルートの背景情報については、この[概要][UDROverview]を参照してください。
 
-ユーザー定義ルートの作成と成の詳細については、この[ハウツー ガイド][UDRHowTo]を参照してください。
+ユーザー定義ルートの作成と構成の詳細については、この[ハウツー ガイド][UDRHowTo]を参照してください。
 
-## App Service 環境のサンプル UDR 構成 ##
+## App Service Environment のサンプル UDR 構成 ##
 
 **前提条件**
 
 1. [Azure ダウンロード ページ][AzureDownloads](2015 年 6 月以降) から最新の Azure Powershell をインストールします。[コマンド ライン ツール] の [Windows Powershell] の中に、最新の Powershell コマンドレットをインストールする [インストール] リンクがあります。
 
-2. App Service 環境が独占的に使用する一意のサブネットを作成することをお勧めします。これにより、サブネットに適用される UDR で、App Service 環境用の発信トラフィックのみが開くことが保証されます。
-3. **重要**: App Service 環境は、以下の構成手順が**終了するまで**デプロイしないでください。これにより、App Service 環境をデプロイする前に、発信ネットワーク接続を使用できることを確認できます。
+2. App Service Environment が独占的に使用する一意のサブネットを作成することをお勧めします。これにより、サブネットに適用される UDR で、App Service Environment 用の発信トラフィックのみが開くことが保証されます。
+3. **重要**: App Service Environment は、以下の構成手順が**終了するまで**デプロイしないでください。これにより、App Service Environment をデプロイする前に、発信ネットワーク接続を使用できることを確認できます。
 
 **手順 1: 名前付きのルート テーブルを作成する**
 
@@ -69,26 +81,22 @@ DNS 要件は、仮想ネットワークの有効な DNS 構成を保証する�
 
 **手順 2: ルーティング テーブルに 1 つ以上のルートを作成する**
 
-発信インターネット アクセスを有効にするために、ルート テーブルに 1 つ以上のルートを追加する必要があります。次の例では、米国西部リージョンで使用される可能性があるすべての Azure アドレスに対応できるルートを追加しています。
+発信インターネット アクセスを有効にするために、ルート テーブルに 1 つ以上のルートを追加する必要があります。
 
-    Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 1' -AddressPrefix 23.0.0.0/8 -NextHopType Internet
-    Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 2' -AddressPrefix 40.0.0.0/8 -NextHopType Internet
-    Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 3' -AddressPrefix 65.0.0.0/8 -NextHopType Internet
-    Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 4' -AddressPrefix 104.0.0.0/8 -NextHopType Internet
-    Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 5' -AddressPrefix 137.0.0.0/8 -NextHopType Internet
-    Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 6' -AddressPrefix 138.0.0.0/8 -NextHopType Internet
-    Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 7' -AddressPrefix 157.0.0.0/8 -NextHopType Internet
-    Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 8' -AddressPrefix 168.0.0.0/8 -NextHopType Internet
-    Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 9' -AddressPrefix 191.0.0.0/8 -NextHopType Internet
+インターネットへの発信アクセスを構成する場合、次のように 0.0.0.0/0 のルートを定義することをお勧めします。
+  
+    Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 0' -AddressPrefix 0.0.0.0/0 -NextHopType Internet
+
+前述したように、0.0.0.0/0 は広範なアドレス範囲なので、ExpressRoute からアドバタイズされた詳細なアドレス範囲によって上書きされます。前述の推奨に従い、0.0.0.0/0 ルートの UDR を、0.0.0.0/0 のみをアドバタイズする ExressRoute 構成と組み合わせます。
+
+または、Azure で使用されている CIDR 範囲の最新の全一覧をダウンロードする方法もあります。すべての Azure IP アドレス範囲を含む Xml ファイルは、[Microsoft ダウンロード センター][DownloadCenterAddressRanges]で入手できます。
+
+ただし、これらの範囲は時間が経つと変わるので、定期的に UDR を手動で更新して同期状態を保つ必要があります。また、1 つの UDR には 100 ルートという上限があるので、100 ルートの上限に会わせて Azure IP アドレス範囲を "まとめる" 必要があります。このとき、UDR が定義されたルートが、ExpressRoute からアドバタイズされるルートよりも詳細になるようにします。
 
 
-Azure で使用される包括的な最新の CIDR 範囲の一覧については、すべての範囲を含む Xml ファイルを [Microsoft ダウンロード センター][DownloadCenterAddressRanges]からダウンロードできます。
+**手順 3: App Service Environment が含まれるサブネットにルート テーブルを関連付ける**
 
-**注:** 今後、CIDR の略語 0.0.0.0/0 を *AddressPrefix* パラメーターで使用可能になる予定です。この略語は、"すべてのインターネット アドレス" に相当します。現時点では、開発者は、対象となり得るすべての Azure のアドレス範囲をカバーする、CIDR 範囲の幅広いセットを使用する必要があります。
-
-**手順 3: App Service 環境が含まれるサブネットにルート テーブルを関連付ける**
-
-最後の構成手順は、App Service 環境がデプロイされるサブネットにルート テーブルを関連付けることです。次のコマンドは、"DirectInternetRouteTable" を、最終的に App Service 環境を含む "ASESubnet" に関連付けます。
+最後の構成手順は、App Service Environment がデプロイされるサブネットにルート テーブルを関連付けることです。次のコマンドは、"DirectInternetRouteTable" を、最終的に App Service Environment を含む "ASESubnet" に関連付けます。
 
     Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'
 
@@ -98,14 +106,16 @@ Azure で使用される包括的な最新の CIDR 範囲の一覧について�
 ルート テーブルをサブネットにバインドしたら、まずテストを行って、意図した効果が出ていることを確認することを勧めします。たとえば、仮想マシンをサブネットにデプロイし、以下の点を確認します。
 
 
-- Azure エンドポイントへの発信トラフィックが ExpressRoute 回線をフローしていない。
-- Azure エンドポイントの DNS ルックアップが正しく解決されている。 
+- この記事で前述した Azure エンドポイントと Azure 以外のエンドポイントに対する発信トラフィックは、ExpressRoute 回線を**フローしません**。サブネットからの発信トラフィックは、オンプレミスで強制トンネリングされ、App Service Environment の作成は常に失敗するので、この動作を検証することが重要です。 
+- 前述のエンドポイントの DNS 参照は、すべて正しく解決されます。 
 
-上記の手順を確認したら、仮想マシンを削除して、App Service 環境の作成に進むことができます。
+上記の手順を確認したら、仮想マシンを削除する必要があります。これは、App Service Environment の作成時にサブネットを "空" にする必要があるからです。
+ 
+次は、App Service Environment の作成です。
 
 ## 使用の開始
 
-App Service 環境の使用を開始するには、「[App Service 環境の概要][IntroToAppServiceEnvironment]」を参照してください。
+App Service Environment の使用を開始するには、「[App Service Environment の概要][IntroToAppServiceEnvironment]」を参照してください。
 
 Azure App Service プラットフォームの詳細については、[Azure App Service][AzureAppService] に関するページを参照してください。
 
@@ -122,8 +132,9 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
 [IntroToAppServiceEnvironment]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-intro/
+[NewPortal]: https://portal.azure.com
  
 
 <!-- IMAGES -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

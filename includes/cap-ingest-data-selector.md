@@ -4,6 +4,5 @@
 - [SQL Server on Azure VM](../articles/machine-learning/machine-learning-data-science-move-sql-server-virtual-machine.md)
 - [Azure SQL database](../articles/machine-learning/machine-learning-data-science-move-sql-azure.md)
 - [HDInsight(Hadoop on Azure)](../articles/machine-learning/machine-learning-data-science-move-hive-tables.md)
-- [Azure Machine Learning Studio](../articles/machine-learning/machine-learning-import-data.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

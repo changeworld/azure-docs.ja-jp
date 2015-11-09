@@ -27,26 +27,14 @@
 
 ## 手順 1. Azure PowerShell をインストールする
 
-また、Azure PowerShell Version 1.0.0 以降も必要です。Azure PowerShell をまだインストールおよび構成していない場合は、[こちら](../powershell-install-configure.md)で手順を参照してください。
-
-インストールした Azure PowerShell のバージョンは、Azure PowerShell プロンプトで次のコマンドを実行して確認できます。
-
-	Get-Module azure | format-table version
-
-たとえば次のようになります。
-
-	Version
-	-------
-	1.0.0
-
-バージョン 1.0.0 以降でない場合は、コントロール パネルの [プログラムと機能] を使用して Azure PowerShell を削除してから、最新バージョンをインストールする必要があります。詳細については、[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)に関するページを参照してください。
+[AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
 
 ## 手順2. サブスクリプションを設定する
 
 まず Azure PowerShell プロンプトを開始します。
 
 ご使用のアカウントにログインします。
-	
+
 	Login-AzureRmAccount
 
 次のコマンドを使用して、サブスクリプション名を取得します。
@@ -130,8 +118,8 @@ DNSNameAvailability が"True"の場合、指定の名前はグローバルに一
 
 	Get-AzureRmAvailabilitySet –ResourceGroupName $rgName | Sort Name | Select Name
 
-### NAT 規則	
-	
+### NAT 規則
+
 リソース マネージャーを基盤とする仮想マシンは、インターネットから入ってくるトラフィックを許可し、負荷を分散して配置するように受信 NAT ルールで構成できます。いずれの場合でも、ロード バランサーのインスタンスとその他の設定を指定する必要があります。詳細については、「[Azure リソース マネージャーを使用したロード バランサーの作成](../load-balancer/load-balancer-arm-powershell.md)」を参照してください。
 
 リソース マネージャーのデプロイ モデルを使用して作成された VM には、リソース マネージャーの仮想ネットワークが必要です。必要に応じて、新しい仮想マシンの少なくとも 1 つのサブネットを含む、新しいリソース マネージャー ベースの仮想ネットワークを作成します。次に、**frontendSubnet** と **backendSubnet** という 2 つのサブネットを含む、**TestNet** という名前の新しい仮想ネットワークの例を示します。
@@ -396,4 +384,4 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

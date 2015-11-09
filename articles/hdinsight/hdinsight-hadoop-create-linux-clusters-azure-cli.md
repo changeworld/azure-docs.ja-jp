@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="10/14/2015"
+   	ms.date="10/23/2015"
    	ms.author="larryfr"/>
 
 #Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成
@@ -26,6 +26,10 @@ Azure CLI は、Azure サービスを管理できる、プラットフォーム�
 Azure リソース管理テンプレートは、__リソース グループ__とグループ内のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。 このテンプレート ベースの手法では、1 つのテンプレートで HDInsight に必要なすべてのリソースを定義でき、グループに変更を適用する__デプロイメント__によって、グループに対する変更をまとめて管理できます。
 
 このドキュメントの手順では、Azure CLI とテンプレートを使用して新しい HDInsight クラスターを作成するプロセスを示します。
+
+> [AZURE.IMPORTANT]この文書の手順では、HDInsight クラスターにワーカー ノードの既定数 (4) を使用します。クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+>
+> ノードのサイズと関連コストに関する詳細については、「[HDInsight 料金](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 ##前提条件
 
@@ -117,4 +121,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/15/2015" 
+	ms.date="10/26/2015" 
 	ms.author="genemi"/>
 
 
@@ -23,6 +23,8 @@
 
 このトピックは、Azure SQL Database にクライアント接続を開始するときにお勧めします。ここには、SQL Database に接続して対話的に作業するためのさまざまなテクノロジのコード サンプルへのリンクがあります。これらのテクノロジは、Enterprise Library、JDBC、PHP を含め、その他にもいくつかあります。提供される情報は、SQL Database への接続に使用する特定のテクノロジとは関係なく適用されます。
 
+
+<a id="a-tech-independent-recommend" name="a-tech-independent-recommend"></a>
 
 ## テクノロジに依存しない推奨事項
 
@@ -36,12 +38,14 @@
  - 調整
 
 
+<a id="b-authentication-recommend" name="b-authentication-recommend"></a>
+
 ## 認証における推奨事項
 
 
 - Azure SQL Database で使用できない Windows 認証ではなく、Azure SQL Database 認証を使用します。
 - 既定の*マスター* データベースではなく、特定のデータベースを明示的に指定してください。
- - Transact-SQL の **USE myDatabaseName;** ステートメントを SQL Database に対して使用して別のデータベースに切り替えることはできません。
+ - Transact-SQL の **USE myDatabaseName;** ステートメントを SQL Database に対して使用して、別のデータベースに切り替えることはできません。
 
 
 ### 包含ユーザー
@@ -49,9 +53,9 @@
 
 SQL Database へのユーザー追加には、以下の選択肢があります。
 
-- **マスター**データベースに*ログイン*とパスワードを追加し、それから同じサーバーの 1 つ以上の他のデータベースに対応する*ユーザー*を追加する。
+- **master** データベースに*ログイン*とパスワードを追加し、対応する*ユーザー*を、同じサーバー上の 1 つ以上の他のデータベースに追加する。
 
-- 1 つ以上のデータベースに*包含ユーザー*とパスワードを追加し、**マスター**へのいかなる*ログイン*にもリンクしないようにする。
+- 1 つ以上のデータベースに*包含ユーザー*とパスワードを追加し、**master** 内のどの*ログイン*にもリンクしないようにする。
 
 
 包含ユーザーのアプローチには以下のような長所と短所があります。
@@ -63,8 +67,10 @@ SQL Database へのユーザー追加には、以下の選択肢があります�
  - 複数のデータベースにおいて包含ユーザーである作業者は、より多くのパスワードの記憶や更新が必要となります。
 
 
-詳細情報は、[包含データベース](http://msdn.microsoft.com/library/ff929071.aspx)を参照してください。
+詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](http://msdn.microsoft.com/library/ff929188.aspx)」をご覧ください。
 
+
+<a id="c-connection-recommend" name="c-connection-recommend"></a>
 
 ## 接続における推奨事項
 
@@ -73,14 +79,13 @@ SQL Database へのユーザー追加には、以下の選択肢があります�
  - 既定では 15 秒ですが、インターネットに依存する接続の場合、それでは短すぎます。
 
 
-- [Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)で、ポート 1433 の TCP 発信が許可されていることを確認してください。
- - ファィアウォールの設定値は、SQL Database サーバーについて、あるいは個々のデータベースについて構成することができます。
+- クライアント プログラムをホストするコンピューターのファイアウォールで、ポート 1433 での発信 TCP が許可されていることを確認します。
 
 
 - クライアントが Azure 仮想マシン (VM) で実行されるとき、クライアント プログラムが SQL Database V12 に接続する場合、VM でポート範囲の 11000-11999 と 14000-14999 を開く必要があります。詳細については、[ここ](sql-database-develop-direct-route-ports-adonet-v12.md)をクリックしてください。
 
 
-- *一時的エラー*を処理するには、Azure SQL Database と対話するクライアントのプログラムに[*再試行*ロジック](#TransientFaultsAndRetryLogicGm)を追加してください。
+- *一時的なエラー*を処理するには、Azure SQL Database と対話するクライアント プログラムに[*再試行*ロジック](#TransientFaultsAndRetryLogicGm)を追加します。
 
 
 ### 接続プール
@@ -98,7 +103,7 @@ SQL Database へのユーザー追加には、以下の選択肢があります�
 #### プール使用時の例外スロー
 
 
-接続プールを有効にしているときに、タイムアウト エラーあるいはその他のログイン エラーが起きると、例外がスローされます。それ以降の接続の試行は次の 5 秒は失敗しますが、これを*ブロック期間*と呼びます。
+接続プールを有効にしているときに、タイムアウト エラーあるいはその他のログイン エラーが起きると、例外がスローされます。それ以降の接続試行は、次の 5 秒間は失敗します。これを*ブロック期間*と呼びます。
 
 アプリケーションがブロック期間に接続を試みた場合、最初の例外が再びスローされます。ブロック期間が終わると、それ以降の失敗によって新しいブロック期間が開始され、そのブロック期間は前回のブロック期間の 2 倍の長さの時間続きます。
 
@@ -108,7 +113,7 @@ SQL Database へのユーザー追加には、以下の選択肢があります�
 ### V12 の 1433 以外のポート
 
 
-Azure SQL Database V12 へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。1433 以外のポートが重要になります。詳細については、「<br/> [ADO.NET 4.5 および SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
+Azure SQL Database V12 へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。1433 以外のポートが重要になります。詳細については、<br/>「[Ports beyond 1433 for ADO.NET 4.5, and SQL Database V12 (ADO.NET 4.5、SQL Database V12 における 1433 以外のポート)](sql-database-develop-direct-route-ports-adonet-v12.md)」をご覧ください。
 
 
 次のセクションでは、再試行のロジックと一時的なエラーの処理についてさらに説明します。
@@ -124,11 +129,11 @@ Azure SQL Database V12 へのクライアント接続はプロキシを使用せ
 
 Azure システムには、SQL Database サービス内で負荷の大きいワークロードが生じた場合に、サーバーを動的に再構成する機能があります。
 
-ただし、再構成をすることでクライアントのプログラム側では SQL Database への接続が失われます。このエラーを*一時障害*と呼びます。
+ただし、再構成をすることでクライアントのプログラム側では SQL Database への接続が失われます。このエラーを*一時的なエラー*と呼びます。
 
 クライアント プログラムは再試行までの間、6 ～ 60 秒待機した後に、接続の再確立を試みることができます。クライアント側に再試行ロジックを提供する必要があります。
 
-再試行ロジックについて示すコード サンプルについては、「[SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)」をご覧ください。
+再試行ロジックを示すコード サンプルについては、「[SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)」をご覧ください。
 
 
 ### 一時障害のエラー番号
@@ -138,12 +143,14 @@ SQL Database でエラーが発生した場合、[SqlException](http://msdn.micr
 
 
 - [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md#bkmk_connection_errors)
- - このメッセージの **Transient Errors, Connection-Loss Errors** セクションには、自動再試行が必ず実行される一時エラーのリストが示されています。
+ - このメッセージの **Transient Errors, Connection-Loss Errors** セクションには、自動再試行が必ず実行される一時的なエラーのリストが示されています。
  - たとえば、「<br/>*サーバー 'theserver' 上のデータベース 'mydatabase' は現在使用できません。*」などのような番号 40613 のエラーが発生した場合、再試行されます。
 
 
-詳細については、次を参照してください「[Azure SQL Database 開発: 操作方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)」、「[Azure SQL Database への接続に関する問題のトラブルシューティング](http://support.microsoft.com/kb/2980233/)」
+詳細については、「[Azure SQL データベース開発: 操作方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)」および「[Azure SQL データベースへの接続の問題のトラブルシューティング](http://support.microsoft.com/kb/2980233/)」をご覧ください。
 
+
+<a id="e-technologies" name="e-technologies"></a>
 
 ## テクノロジ
 
@@ -154,12 +161,12 @@ SQL Database でエラーが発生した場合、[SqlException](http://msdn.micr
 Windows、Linux、および Mac OS X で実行するクライアントに使用できるさまざまなコード サンプルがあります。
 
 
-**一般的なサンプル:** PHP、Python、Node.js、および .NET CSharp などのさまざまなプログラミング言語の[コード サンプル](sql-database-develop-quick-start-client-code-samples.md)があります。また、Windows、Linux、および Mac OS X 上で実行されるクライアント用のサンプルもあります。
+**一般的なサンプル:** PHP、Python、Node.js、.NET CSharp などのさまざまなプログラミング言語の[コード サンプル](sql-database-develop-quick-start-client-code-samples.md)があります。また、Windows、Linux、および Mac OS X 上で実行されるクライアント用のサンプルもあります。
 
 
 **Elastic Scale:** Elastic Scale データベースへの接続に関する詳細については、次を参照してください。
 
-- [Azure SQL Database Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
+- [Azure SQL データベース Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
 - [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)
 
 
@@ -167,4 +174,4 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 
 - [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

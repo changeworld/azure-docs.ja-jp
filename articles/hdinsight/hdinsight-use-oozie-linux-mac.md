@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/09/2015"
+	ms.date="10/26/2015"
 	ms.author="larryfr"/>
 
 
@@ -48,9 +48,9 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 1. Hive アクションでは、HiveQL スクリプトを実行して、HDInsight に含まれている **hivesampletable** からレコードを抽出します。各データ行は、特定のモバイル デバイスからのアクセスを表します。レコードの形式は次のようになります。
 
-		8       18:54:20        JA-JP   Android Samsung SCH-i500        California     United States    13.9204007      0       0
-		23      19:19:44        JA-JP   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
-		23      19:19:46        JA-JP   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+		8       18:54:20        ja-JP   Android Samsung SCH-i500        California     United States    13.9204007      0       0
+		23      19:19:44        ja-JP   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
+		23      19:19:46        ja-JP   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
 
 	このドキュメントで使用する Hive スクリプトは、プラットフォームごと (Android や iPhone など) の合計アクセス数をカウントし、カウントしたアクセス数を新しい Hive テーブルに保存します。
 
@@ -292,9 +292,9 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 	次のような情報が返されます。
 
-		headnode0.CLUSTERNAME-ssh.j7.internal.cloudapp.net
+		hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net
 
-	JobTracker に使用するポートは 8050 です。したがって、JobTracker に使用する完全なアドレスは、**headnode0.CLUSTERNAME-ssh.j7.internal.cloudapp.net:8050** になります。
+	JobTracker に使用するポートは 8050 です。したがって、JobTracker に使用する完全なアドレスは、**hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8050** になります。
 
 1. 次のコマンドを使用して、Oozie ジョブ定義構成を作成します。
 
@@ -390,13 +390,13 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 	次のような値が返されます。
 
 		<name>oozie.base.url</name>
-		<value>http://headnode0.CLUSTERNAME-ssh.j7.internal.cloudapp.net:11000/oozie</value>
+		<value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
 
-	****http://headnode0.CLUSTERNAME-ssh.j7.internal.cloudapp.net:11000/oozie** の部分が Oozie コマンドで使用する URL です。
+	****http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie** の部分が Oozie コマンドで使用する URL です。
 
 2. 次のコマンドを使用して、URL の環境変数を作成します。すべてのコマンドでこれを入力する必要があるわけではありません。
 
-		export OOZIE_URL=http://headnode0.CLUSTERNAME-ssh.j7.internal.cloudapp.net:11000/oozie
+		export OOZIE_URL=http://HOSTNAMEt:11000/oozie
 
 	URL を前に返された URL に置き換えます。
 
@@ -711,7 +711,7 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: powershell-install-configure.md
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
-[powershell-script]: https://technet.microsoft.com/JA-JP/library/ee176961.aspx
+[powershell-script]: https://technet.microsoft.com/ja-JP/library/ee176961.aspx
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
@@ -721,4 +721,4 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

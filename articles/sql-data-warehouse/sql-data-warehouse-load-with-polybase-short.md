@@ -18,6 +18,12 @@
 
 
 # PolyBase を使用したデータのロード
+
+> [AZURE.SELECTOR]
+- [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)
+- [PolyBase](sql-data-warehouse-load-with-polybase-short.md)
+- [BCP](sql-data-warehouse-load-with-bcp.md)
+
 このチュートリアルでは、PolyBase を使用して SQL Data Warehouse にデータを読み込む方法を説明します。
 
 
@@ -166,4 +172,4 @@ PolyBase の詳細については、「[SQL Data Warehouse の PolyBase チュ�
 [CREATE DATABASE SCOPED CREDENTIAL ]: https://msdn.microsoft.com/ja-JP/library/mt270260.aspx
 [CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

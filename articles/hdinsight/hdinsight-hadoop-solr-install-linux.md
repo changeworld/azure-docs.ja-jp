@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/09/2015"
+	ms.date="10/26/2015"
 	ms.author="larryfr"/>
 
 # HDInsight Hadoop クラスターに Solr をインストールして使用する
@@ -158,7 +158,17 @@ Solr ダッシュボードは、Web ブラウザーを介して Solr を操作�
 
 SSH トンネルを確立したら、Solr ダッシュボードを使用するために次の手順を実行します。
 
-1. ブラウザーで、\_\___http://headnode0:8983/solr/#/__ に接続します。このトラフィックは、SSH トンネルを介して HDInsight クラスターの headnode0 にルーティングする必要があります。次のようなページが表示されます。
+1. ヘッド ノードのホスト名を決定します。
+
+    1. ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスします。ダイアログ ボックスが表示されたら、認証に管理者のユーザー名とパスワードを使用してサイトに入ります。
+    
+    2. ページ上部のメニューから、__[ホスト]__ を選択します。
+    
+    3. 「__hn0__」で始まるエントリを選択します。ページが開くと、一番上にホスト名が表示されます。ホスト名の形式は「__hn0-PARTOFCLUSTERNAME.randomcharacters.cx.internal.cloudapp.net__」です。これは Solr ダッシュボードに接続するときに使用するホスト名です。
+    
+1. ブラウザーで、\_\___http://HOSTNAME:8983/solr/#/__ に接続します。__HOSTNAME__ は前の手順で決定した名前です。
+
+    この要求は、SSH トンネルを介して HDInsight クラスターのヘッド ノードにルーティングする必要があります。次のようなページが表示されます。
 
 	![Solr ダッシュボードのイメージ](./media/hdinsight-hadoop-solr-install-linux/solrdashboard.png)
 
@@ -240,9 +250,13 @@ Solar を手動で停止または開始する必要がある場合は、次の�
 
 インデックス付きデータを Solr のクラスター ノードから Azure BLOB ストレージ にバックアップすることをお勧めします。そのために、次の手順を実行してください。
 
-1. SSH を使用してクラスターに接続した後、次のコマンドを使用して、インデックス付きデータのスナップショットを作成します。
+1. SSH を使用してクラスターに接続した後、次のコマンドを使用して、ヘッド ノードのホスト名を取得します。
 
-		curl http://headnode0:8983/solr/replication?command=backup
+        hostname -f
+        
+2. 次を使用し、インデックス付きデータのスナップショットを作成します。__HOSTNAME__ を前のコマンドで返された名前に変えます。
+
+		curl http://HOSTNAME:8983/solr/replication?command=backup
 
 	次のように、応答が表示されます。
 
@@ -294,4 +308,4 @@ Solr のバックアップと復元の操作の詳細については、[SolrCore
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

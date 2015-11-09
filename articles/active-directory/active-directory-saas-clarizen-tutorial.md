@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Clarizen の統合 | Microsoft Azure" description="Azure Active Directory で Clarizen を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Clarizen の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Clarizen を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Clarizen の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=526793)をクリックしてください。
 
 このチュートリアルでは、Azure と Clarizen の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Clarizen でのシングル サインオンが有効なサブスクリプション
 
-このチュートリアルを完了すると、Clarizen に割り当てた Azure AD ユーザーは、Clarizen 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Clarizen に割り当てた Azure AD ユーザーは、Clarizen 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -36,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-clarizen-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-clarizen-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -55,17 +68,17 @@
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **Clarizen** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **Clarizen** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-clarizen-tutorial/IC784682.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-clarizen-tutorial/IC784682.png "シングル サインオンの構成")
 
 2.  **[ユーザーの Clarizen へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-clarizen-tutorial/IC784683.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-clarizen-tutorial/IC784683.png "シングル サインオンの構成")
 
 3.  **[Clarizen でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-clarizen-tutorial/IC784684.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-clarizen-tutorial/IC784684.png "シングル サインオンの構成")
 
 4.  別の Web ブラウザー ウィンドウで、**Clarizen** 企業サイトに管理者としてログインします (例：**https://app2.clarizen.com/Clarizen/Pages/Service/Login.aspx*))。
 
@@ -82,14 +95,14 @@
     ![フェデレーション認証](./media/active-directory-saas-clarizen-tutorial/IC785892.png "フェデレーション認証")
 
     1.  **[アップロード]** をクリックして、ダウンロードした証明書をアップロードします。
-    2.  Azure ポータルの **[Clarizen でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[サインイン URL]** テキストボックスに貼り付けます。
-    3.  Azure ポータルの **[Clarizen でのシングル サインアウトの構成]** ダイアログ ページで、**[シングル サインアウト サービス URL]** の値をコピーし、**[サインアウト URL]** テキストボックスに貼り付けます。
+    2.  Azure ポータルの **[Clarizen でのシングル サインオンの構成]** ダイアログ ページで **[シングル サインオン サービス URL]** の値をコピーし、**[サインイン URL]** ボックスに貼り付けます。
+    3.  Azure ポータルの **[Clarizen でのシングル サインアウトの構成]** ダイアログ ページで **[シングル サインアウト サービス URL]** の値をコピーし、**[サインアウト URL]** ボックスに貼り付けます。
     4.  **[POST を使用]** を選択します。
     5.  **[保存]** をクリックします。
 
-8.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+8.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-clarizen-tutorial/IC784688.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-clarizen-tutorial/IC784688.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
 
 Azure AD ユーザーが Clarizen にログインできるようにするには、そのユーザーを Clarizen にプロビジョニングする必要があります。Clarizen の場合、プロビジョニングは手動で行います。
@@ -110,7 +123,7 @@ Azure AD ユーザーが Clarizen にログインできるようにするには�
 
     ![ユーザーの招待](./media/active-directory-saas-clarizen-tutorial/IC784691.png "ユーザーの招待")
 
-    1.  **[電子メール]** テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力します。
+    1.  **[電子メール]** ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力します。
     2.  **[招待]** をクリックします。
 
     >[AZURE.NOTE]Azure Active Directory アカウント所有者がメールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。
@@ -127,10 +140,10 @@ Azure AD ユーザーが Clarizen にログインできるようにするには�
 
     ![ユーザーの割り当て](./media/active-directory-saas-clarizen-tutorial/IC784692.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
 
     ![あり](./media/active-directory-saas-clarizen-tutorial/IC767830.png "あり")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を参照してください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Kudos の統合 | Microsoft Azure" description="Azure Active Directory で Kudos を使用して、シングル サインオン、自動化されたプロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Kudos の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Kudos を使用して、シングル サインオン、自動化されたプロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Kudos の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=528191)をクリックしてください。
   
 このチュートリアルの目的は、Azure と Kudos の統合を紹介することです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Kudos テナント
   
-このチュートリアルを終了すると、Kudos に割り当てた Azure AD ユーザーは、Kudos の企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを終了すると、Kudos に割り当てた Azure AD ユーザーは、Kudos の企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -51,7 +64,7 @@
     ![Kudos](./media/active-directory-saas-kudos-tutorial/IC787801.png "Kudos")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Kudos に対する認証を行えるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Kudos に対する認証を行えるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (バイナリ証明書をテキスト ファイルに変換する方法)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
@@ -59,7 +72,7 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-kudos-tutorial/IC787802.png "シングル サインオンの構成")
 
-2.  **[ユーザーの Kudos へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  **[ユーザーの Kudos へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![シングル サインオンの構成](./media/active-directory-saas-kudos-tutorial/IC787803.png "シングル サインオンの構成")
 
@@ -83,17 +96,17 @@
 
     ![SSO](./media/active-directory-saas-kudos-tutorial/IC787807.png "SSO")
 
-    1.  Azure ポータルの **[Kudos でのシングル サインオンの構成]** ダイアログ ページで、**シングル サインオン サービス URL** の値をコピーし、** [シングル サインオン サービス URL]** テキストボックスに貼り付けます。
+    1.  Azure ポータルの **[Kudos でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、** [シングル サインオン サービス URL]** テキストボックスに貼り付けます。
 2.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
-        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        >[AZURE.TIP]詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
-    3.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 証明書]** テキストボックスに貼り付けます。
+    3.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 証明書]** テキスト ボックスに貼り付けます。
     4.  Azure ポータルで、**[Kudos でのシングル サインオンの構成]** ダイアログ ページの **[シングル サインアウト サービス URL]** の値をコピーし、**[ログアウト リダイレクト]** ボックスに貼り付けます。
-5.  **[Your Kudos URL (Kudos の URL)]** テキストボックスに、企業名を入力します。
+5.  **[Your Kudos URL]** テキストボックスに、企業名を入力します。
     6.  **[保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-kudos-tutorial/IC787808.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
@@ -104,7 +117,7 @@ Azure AD ユーザーが Kudos にログインできるようにするには、�
 
 1.  **Kudos** の企業サイトに管理者としてログインします。
 
-2.  上部のメニューで **[設定]** をクリックします。
+2.  上部のメニューで [**設定**] をクリックします。
 
     ![設定](./media/active-directory-saas-kudos-tutorial/IC787806.png "設定")
 
@@ -118,8 +131,8 @@ Azure AD ユーザーが Kudos にログインできるようにするには、�
 
     ![ユーザーの追加](./media/active-directory-saas-kudos-tutorial/IC787810.png "ユーザーの追加")
 
-    1.  プロビジョニングする有効な Azure Active Directory アカウントの**[名]**、**[姓]**、**[メール]**、その他の詳細を該当するボックスに入力します。
-    2.  **[ユーザーの作成]** をクリックします。
+    1.  関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの **[名]**、**[姓]**、**[メール]**、およびその他の詳細を入力します。
+    2.  [**ユーザーの作成**] をクリックします。
 
 >[AZURE.NOTE]Kudos から提供されている他の Canvas ユーザー アカウント作成ツールや API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -139,6 +152,6 @@ Azure AD ユーザーが Kudos にログインできるようにするには、�
 
     ![あり](./media/active-directory-saas-kudos-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

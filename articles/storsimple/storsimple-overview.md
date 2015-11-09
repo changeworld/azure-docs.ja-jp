@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="10/09/2015"
+   ms.date="10/14/2015"
    ms.author="v-sharos@microsoft.com"/>
 
 # StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション 
@@ -24,7 +24,7 @@ Microsoft Azure StorSimple へようこそ。StorSimple は、オンプレミス
 
 StorSimple では、[ストレージ階層化](#automatic-storage-tiering)を使用し、さまざまなストレージ メディアに格納されているデータを管理します。現在作業中のセットはオンプレミスのソリッド ステート ドライブ (SSD) へ、あまり頻繁に使用しないデータはハード ディスク ドライブ (HDD) へ格納され、アーカイブ化したデータはクラウドへプッシュされます。また、StorSimple 圧縮を使用して、データが消費するストレージの量を削減します。詳細については、「[重複除去と圧縮](#deduplication-and-compression)」を参照してください。StorSimple 8000 シリーズの文書で使用されている他の用語と概念の定義については、本記事の終わりに収録されている「[StorSimple 用語集](#storsimple-terminology)」を参照してください。
 
-ストレージ管理のほか、StorSimple データ保護機能では、オン デマンドやスケジュールされたバックアップを作成して、それをローカルやクラウドで格納できるようになります。バックアップは増分スナップショットの形式で実行されます。これは短時間で作成し、復元できることを意味しています。クラウド スナップショットはセカンダリ ストレージ システム (テープ バックアップなど) を置き換え、データセンターにデータを復元したり、必要に応じてサイトを交代できるため、非常に重要になります。
+ストレージ管理のほか、StorSimple データ保護機能では、オン デマンドやスケジュールされたバックアップを作成して、それをローカルやクラウドで格納できるようになります。バックアップは増分スナップショットの形式で実行されます。これは短時間で作成し、復元できることを意味しています。クラウド スナップショットはセカンダリ ストレージ システム (テープ バックアップなど) を置き換え、データセンターにデータを復元したり、必要に応じてサイトを交代できるため、障害復旧シナリオで非常に重要になります。
 
 ![動画アイコン](./media/storsimple-overview/video_icon.png) この動画を観ると、Microsoft Azure StorSimple を簡単にインストールできます。
 
@@ -44,9 +44,9 @@ StorSimple では、[ストレージ階層化](#automatic-storage-tiering)を使
 |他のクラウド サービス プロバイダーのサポート |ソフトウェア Update 1 以降の StorSimple 8000 シリーズでは、Amazon S3 with RRS、HP、OpenStack クラウド サービス、Microsoft Azure をサポートします(デバイスの管理が目的の場合は Microsoft Azure ストレージ アカウントが必要になります)。 詳細については、「[Update 1.2 の新機能](storsimple-update1-release-notes.md#whats-new-in-update-12)」を参照してください。|
 |ビジネス継続性 | Update 1.2 には新しい移行機能が追加されました。StorSimple 5000-7000 シリーズのユーザーはデータを StorSimple 8000 シリーズ デバイスに移行できます。|
 |Azure Government ポータルで入手可能 | StorSimple は現在、Azure Government ポータルから入手できます。詳細については、「[Government Portal でのオンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-gov.md)」を参照してください。|
-|ゾーン冗長ストレージのサポート | Storage API を最新バージョンにアップグレードすると、StorSimple 8000 シリーズで、ローカル冗長ストレージ (LRS) と地理冗長ストレージ (GRS) に加えて、ゾーン冗長ストレージ (ZRS) もサポートできるようになります。ZRS の詳細については、[Azure Storage の冗長オプションに関する記事](https://azure.microsoft.com/documentation/articles/storage-redundancy/)を参照してください。
+|ゾーン冗長ストレージのサポート | Storage API を最新バージョンにアップグレードすると、StorSimple 8000 シリーズで、ローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) に加えて、ゾーン冗長ストレージ (ZRS) もサポートできるようになります。ZRS の詳細については、[Azure Storage の冗長オプションに関する記事](https://azure.microsoft.com/documentation/articles/storage-redundancy/)を参照してください。
 
-![動画アイコン](./media/storsimple-overview/video_icon.png) StorSimple 8000 シリーズの機能と長所の概要については、[この動画](https://www.youtube.com/watch?v=4MhJT5xrvQw&feature=youtu.be)をご覧ください。
+![動画アイコン](./media/storsimple-overview/video_icon.png) StorSimple 8000 シリーズの機能と長所の紹介については、[このビデオ](http://azure.microsoft.com/documentation/videos/guru-pangals-welcome-to-wpc--july-2015)をご覧ください。
 
 ## StorSimple のコンポーネント
 
@@ -65,6 +65,8 @@ Microsoft Azure StorSimple ソリューションには、次のコンポーネ�
 ![StorSimple のアーキテクチャ](./media/storsimple-overview/overview-big-picture.png)
 
 以降のセクションでは、これらのコンポーネントについてそれぞれ説明します。また、このソリューションでデータを整理し、ストレージを割り当て、ストレージ管理とデータ保護を容易にする方法について説明します。最後のセクションでは、StorSimple のコンポーネントとその管理に関連する重要な用語と概念を定義します。
+
+![動画アイコン](./media/storsimple-overview/video_icon.png)StorSimple デバイス、StorSimple 仮想デバイス、および StorSimple Manager サービスの紹介については、[このビデオ](https://www.youtube.com/watch?v=4MhJT5xrvQw&feature=youtu.be)をご覧ください。
 
 ## StorSimple デバイス
 
@@ -221,7 +223,7 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 | クラウド ストレージ暗号化キー | デバイスがクラウドに送信する暗号化されたデータにアクセスするために StorSimple デバイスによって使用されるパスワードまたはキー。|
 | クラスター対応更新 | フェールオーバー クラスター内のサーバーでのソフトウェア更新の管理。更新によるサービスの可用性への影響を最小限にするか、まったくないようにします|
 | データパス | 相互接続されたデータ処理操作を実行する機能単位のコレクション。|
-| 非アクティブ化 | StorSimple デバイスと関連付けられたクラウド サービスの間の接続を解除する永続的な操作。デバイスのクラウド スナップショットはこのプロセスの後も残っていて、複製したり、災害復旧に使用できます。|
+| 非アクティブ化 | StorSimple デバイスと関連付けられたクラウド サービスの間の接続を解除する永続的な操作。デバイスのクラウド スナップショットはこのプロセスの後も残っていて、複製したり、障害復旧に使用できます。|
 | ディスク ミラーリング | 継続的な可用性を確保するためにリアルタイムで行われる、論理ディスク ボリュームの別のハード ドライブへのレプリケーション。|
 | ダイナミック ディスク ミラーリング | ダイナミック ディスクへの論理ディスク ボリュームのレプリケーション。|
 | ダイナミック ディスク | 論理ディスク マネージャー (LDM) を使用して複数の物理ディスクにデータを格納して管理するディスク ボリューム形式。より多くの空き領域を提供するようにダイナミック ディスクを拡張できます。|
@@ -269,4 +271,4 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

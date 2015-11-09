@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/05/2015"
+   ms.date="10/26/2015"
    ms.author="larryfr"/>
 
 #Beeline による HDInsight での Hive と Hadoop の使用
@@ -55,17 +55,23 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 ##<a id="beeline"></a>Beeline コマンドを使用する
 
-2. 接続したら、次のコマンドを使用して Hive CLI を起動します。
+1. 接続したら、次を使用して、ヘッド ノードのホスト名を取得します。
+
+        hostname -f
+    
+    Beeline から HiveServer2 に接続する際に使用できるよう、返されたホスト名を保存します。
+    
+2. 次のコマンドを使用して Hive CLI を起動します。
 
         beeline
 
-2. `beeline>` プロンプトから、次を使用して HiveServer2 サービスに接続します。
+2. `beeline>` プロンプトから、次を使用して HiveServer2 サービスに接続します。前にヘッド ノードで返されたホスト名で __HOSTNAME__ を置き換えます。
 
-        !connect jdbc:hive2://headnode0:10001/;transportMode=http admin
+        !connect jdbc:hive2://HOSTNAME:10001/;transportMode=http admin
 
     メッセージが表示されたら、HDInsight クラスターの管理者 (admin) アカウントのパスワードを入力します。接続が確立されると、プロンプトが次に変わります。
     
-        jdbc:hive2://headnode0:10001/>
+        jdbc:hive2://HOSTNAME:10001/>
 
 3. Beeline コマンドは、通常、`!` 文字で始まります。たとえば、「`!help`」でヘルプが表示されます。ただし、`!` は、多くの場合、省略できます。たとえば、「`help`」も機能します。
 
@@ -147,7 +153,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 4. Beeline を終了するには、`!quit` を使用します。
 
-##<a id="file"></a>HiveQL ファイルを実行する
+##<a id="file"></a>HiveQL ファイルの実行
 
 Beeline を使用し、HiveQL ステートメントを含むファイルを実行することもできます。次の手順でファイルを作成し、Beeline を使用してそれを実行します。
 
@@ -170,11 +176,11 @@ Beeline を使用し、HiveQL ステートメントを含むファイルを実�
     
 3. ファイルを保存するには、__Ctrl__ キーを押しながら ___X__ キーを押し、__Y__ キー、__Enter__ キーの順に押します。
 
-4. 次を使用し、Beeline でファイルを実行します。
+4. 次を使用し、Beeline でファイルを実行します。前にヘッド ノードで取得した名前で __HOSTNAME__ を置き換え、管理者アカウントのパスワードで __PASSWORD__ を置き換えます。
 
-        beeline -u 'jdbc:hive2://headnode0:10001/;transportMode=http' -n admin -p GiantR0b0! -f query.hql
+        beeline -u 'jdbc:hive2://HOSTNAME:10001/;transportMode=http' -n admin -p PASSWORD -f query.hql
 
-5. **errorLogs** テーブルが作成されたことを確認するには、Beeline を起動し、HiveServer2 に接続し、**errorLogs** からすべての行を返す次のステートメントを使用します。
+5. **errorLogs** テーブルが作成されたことを確認するには、Beeline を起動し、HiveServer2 に接続して、**errorLogs** からすべての行を返す、次のステートメントを使用します。
 
         SELECT * from errorLogs;
 
@@ -237,4 +243,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

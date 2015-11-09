@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Boomi の統合 | Microsoft Azure" description="Azure Active Directory で Boomi を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Boomi の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Boomi を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="MarkusVi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Boomi の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=529589)をクリックしてください。
 
 このチュートリアルでは、Azure と Boomi の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Boomi でのシングル サインオンが有効なサブスクリプション
 
-このチュートリアルを終了すると、Boomi に割り当てた Azure AD ユーザーは、Boomi 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Boomi に割り当てた Azure AD ユーザーは、Boomi 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -36,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-boomi-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-boomi-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -57,19 +70,19 @@
 
 1.  Azure AD ポータルの **Boomi** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/IC790824.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-boomi-tutorial/IC790824.png "シングル サインオンの構成")
 
-2.  **[ユーザーの Boomi へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  **[ユーザーの Boomi へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/IC790825.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-boomi-tutorial/IC790825.png "シングル サインオンの構成")
 
-3.  **[アプリの URL の構成]** ページで、**[Boomi 応答 URL]** ボックスに **Boomi AtomSphere ログイン URL** (例: "*https://platform.boomi.com/sso/AccountName/saml*”) を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページで、**[Boomi 応答 URL]** ボックスに **Boomi AtomSphere ログイン URL** (例: "*https://platform.boomi.com/sso/AccountName/saml*”) を入力し、**[次へ]** をクリックします。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-boomi-tutorial/IC790826.png "アプリケーション URL の構成")
 
-4.  **[Boomi でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、コンピューターで証明書ファイルをローカルに保存します。
+4.  **[Boomi でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターのローカルに保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/IC790827.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-boomi-tutorial/IC790827.png "シングル サインオンの構成")
 
 5.  別の Web ブラウザー ウィンドウで、Boomi 企業サイトに管理者としてログインします。
 
@@ -83,17 +96,17 @@
 
 8.  **[Single Sign-On Options]** セクションで、次の手順を実行します。
 
-    ![Single Sign-On Options](./media/active-directory-saas-boomi-tutorial/IC790830.png "Single Sign-On Options")
+    ![シングル サインオンの構成](./media/active-directory-saas-boomi-tutorial/IC790830.png "Single Sign-On Options")
 
     1.  **[Enable SAML Single Sign-On]** を選択します。
     2.  **[Import]** をクリックして、ダウンロードした証明書をアップロードします。
-    3.  Azure ポータルで、**[Boomi でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[Identity Provider Login URL]** ボックスに貼り付けます。
+    3.  Azure ポータルの **[Boomi でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーし、**[Identity Provider Login URL]** ボックスに貼り付けます。
     4.  **[Federation Id Location]** で、**[Federation Id is in NameID element of the Subject]** を選択します。
     5.  **[保存]** をクリックします。
 
-9.  Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/IC775560.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-boomi-tutorial/IC775560.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
 
 Azure AD ユーザーが Boomi にログインできるようにするには、ユーザーを Boomi にプロビジョニングする必要があります。Boomi の場合、プロビジョニングは手動で行います。
@@ -102,7 +115,7 @@ Azure AD ユーザーが Boomi にログインできるようにするには、�
 
 1.  **Boomi** 企業サイトに管理者としてログインします。
 
-2.  **[User Management]、[Users]** の順にクリックします。
+2.  **[User Management] > [Users]** に移動します。
 
     ![ユーザー](./media/active-directory-saas-boomi-tutorial/IC790831.png "ユーザー")
 
@@ -131,10 +144,10 @@ Azure AD ユーザーが Boomi にログインできるようにするには、�
 
     ![ユーザーの割り当て](./media/active-directory-saas-boomi-tutorial/IC790834.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確認します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-boomi-tutorial/IC767830.png "あり")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

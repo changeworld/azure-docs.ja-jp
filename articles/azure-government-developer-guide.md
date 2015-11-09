@@ -4,7 +4,7 @@
 	services="" 
 	documentationCenter="" 
 	authors="Joharve2" 
-	manager="carolz" 
+	manager="Chrisnie" 
 	editor=""/>
 
 <tags 
@@ -13,11 +13,11 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="azure-government" 
-	ms.date="01/21/2014" 
+	ms.date="10/29/2015" 
 	ms.author="jharve"/>
 
 
-#  「Microsoft Azure Government Developer Guide (Microsoft Azure Government 開発者向けガイド)」をご覧ください 
+#  Microsoft Azure Government 開発者向けガイド 
 
 <p> Microsoft Azure Government は、Microsoft Azure の物理的、ネットワーク的に独立したインスタンスです。この開発者向けガイドには、アプリケーション開発者と管理者が、Azure のこれらの異なるリージョンとやり取りし、操作する必要がある場合の相違点についての詳しい説明が記載されています。
 
@@ -42,7 +42,7 @@ Microsoft では、クラウド アプリケーションの作成、Microsoft �
 
 アプリケーションを作成し、グローバル サービスではなく Azure Government サービスにデプロイするとき、開発者はその 2 つのサービスの主な違いを把握する必要があります(特に、プログラム環境の設定と構成、エンドポイントの構成、アプリケーションの記述、それらをサービスとした Azure Government へのデプロイについて)。
 
-このドキュメント内の情報は、これらの相違点をまとめ、[Azure Government](http://www.azure.com/gov "Azure Government") サイトと MSDN の [Microsoft Azure のテクニカル ライブラリ](http://msdn.microsoft.com/cloud-app-development-msdn "MSDN")に記載されている情報を補足するものです。公式の情報は、[Microsoft Azure のトラスト センター](http://azure.microsoft.com/support/trust-center/ "Microsoft Azure トラスト センター")、[Azure ドキュメント センター](http://azure.microsoft.com/documentation/)、[Azure ブログ](http://azure.microsoft.com/blog/ "Azure ブログ")など、他のさまざまな場所にも記載されています。
+このドキュメント内の情報は、これらの相違点をまとめ、[Azure Government](http://www.azure.com/gov "Azure Government") サイトと MSDN の [Microsoft Azure のテクニカル ライブラリ](http://msdn.microsoft.com/cloud-app-development-msdn "MSDN")に記載されている情報を補足するものです。公式の情報は、[Microsoft Azure セキュリティ センター](http://azure.microsoft.com/support/trust-center/ "Microsoft Azure セキュリティ センター")、[Azure ドキュメント センター](http://azure.microsoft.com/documentation/)、[Azure ブログ](http://azure.microsoft.com/blog/ "Azure ブログ")など、他のさまざまな場所にも記載されています。
 
 このコンテンツは、Microsoft Azure Government にデプロイしているパートナーと開発者に適しています。
 
@@ -53,7 +53,7 @@ Microsoft では、クラウド アプリケーションの作成、Microsoft �
 
 - まず、サービスと機能に相違点があります。これは、グローバル サービスの特定のリージョンにある特定の機能は、Azure Government では使用できないことを意味します。
 
-- 第 2 に、Azure Government で提供されている機能の場合、グローバル サービスとは構成上の相違点があります。そのため、サンプル コード、構成、手順を確認し、Azure Government クラウド サービス環境内で確実に構築と実行するようにしてください。
+- 第 2 に、Azure Government で提供されている機能の場合、グローバル サービスとは構成上の相違点があります。そのため、サンプル コード、構成、手順を確認し、Azure Government Cloud Services 環境内で確実に構築と実行するようにしてください。
 
 
 ## <a name="Features"></a> Microsoft Azure Government で現在使用できる機能
@@ -66,6 +66,16 @@ Microsoft では、クラウド アプリケーションの作成、Microsoft �
 - Scheduler
 - 仮想ネットワーク
 - SQL Database
+- Azure Files
+- Media Services
+- Traffic Manager
+- Service Bus
+- StorSimple
+- Redis Cache
+- Azure Backup
+- Automation
+- ExpressRoute
+- など
 
 その他のサービスを利用でき、より多くのサービスが継続的に追加される予定です。最新のサービスのリストについては、各リージョンで提供されているサービスを紹介している[リージョンに関するページ](http://azure.microsoft.com/regions/#services)を参照してください。
 
@@ -73,12 +83,11 @@ Microsoft では、クラウド アプリケーションの作成、Microsoft �
 
 ## <a name="Endpoint"></a>エンドポイント マッピング
 
-次の表を使用すると、Microsoft Azure と SQL データベースのパブリック エンドポイントを Azure Government 特定のエンドポイントにマッピングするときに役立ちます。
+次の表を使用すると、Microsoft Azure と SQL Database のパブリック エンドポイントを Azure Government 特定のエンドポイントにマッピングするときに役立ちます。
 
 
 サービスの種類|Azure Public|Azure Government
 ---|---|---
-Azure Government Home|windowsazure.com|microsoftazure.us
 管理ポータル|manage.windowsazure.com|manage.windowsazure.us
 全般|*.windows.net|*.usgovcloudapi.net
 コア|*.core.windows.net|*.core.usgovcloudapi.net
@@ -87,9 +96,23 @@ BLOB ストレージ|*.blob.core.windows.net| *.blob.core.usgovcloudapi.net Queu
 テーブル ストレージ|*.table.core.windows.net|*.table.core.usgovcloudapi.net
 サービス管理|management.core.windows.net|management.core.usgovcloudapi.net
 SQL Database|*.database.windows.net|*.database.usgovcloudapi.net
+ARM の負荷分散されたエンドポイント|https://management.windows.net|https://management.usgovcloudapi.net  
+
+* Azure AD 経由の ARM 認証については、「[Azure Resource Manager 要求の認証](https://msdn.microsoft.com/library/azure/dn790557.aspx)」を参照してください 。
 
 ## <a name="next"></a>次のステップ
-さらに詳しい情報、Azure Government、組織がアクセス資格を満たすための方法について関心をお持ちの場合は、<A href="http://azure.com/gov">http://www.azure.com/gov</a> に進んでください
+
+Azure Government のさらに詳細については、次のページをご覧ください。
+
+- **[Sign up for a trial (サインアップして試用)](https://azuregov.microsoft.com/trial/azuregovtrial)**
+
+- **[Azure Government の入手とアクセス](http://azure.com/gov)**
+
+- **[Azure Government Overview (Azure Government の概要)](/azure-government-overview)**
+
+- **[Azure Government のブログ](http://blogs.msdn.com/b/azuregov/)**
+
+- **[Microsoft Azure セキュリティ センター: コンプライアンス](http://azure.microsoft.com/support/trust-center/compliance/)**
 
 <!--Anchors-->
 
@@ -105,4 +128,4 @@ SQL Database|*.database.windows.net|*.database.usgovcloudapi.net
 [Link 2 to another azure.microsoft.com documentation topic]: web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

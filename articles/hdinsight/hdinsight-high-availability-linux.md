@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="10/19/2015"
+	ms.date="10/26/2015"
 	ms.author="larryfr"/>
 
 #HDInsight における Hadoop クラスターの可用性と信頼性
@@ -37,7 +37,7 @@ HDInsight クラスターには、セカンダリ ヘッド ノードが用意�
 
 一般に、パブリック ゲートウェイ (Ambari Web と REST API) 経由のクラスターに対するすべてのアクセスは、ヘッド ノードが複数あっても影響を受けることはありません。要求はアクティブなヘッド ノードにルーティングされ、適切に処理されます。
 
-SSH を使用してクラスターにアクセスする場合は、ポート 22 (SSH の既定値) 経由で接続すると headnode0 に接続され、ポート 23 経由で接続すると headnode1 に接続されます。
+SSH を使用してクラスターにアクセスする場合は、ポート 22 (SSH の既定値) 経由で接続するとヘッド ノード 0 に接続され、ポート 23 経由で接続するとヘッド ノード 1 に接続されます。
 
 ### 内部完全修飾ドメイン名 (FQDN)
 
@@ -49,7 +49,7 @@ HDInsight クラスター内のノードには、クラスターからのみア�
 
 これにより、`oozie` コマンドで使用する内部 URL を含む、次に似た値が返ります。
 
-	"oozie.base.url": "http://headnode0.CLUSTERNAME-ssh.d9.internal.cloudapp.net:11000/oozie"
+	"oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
 
 ## サービスの状態を確認する方法
 
@@ -74,7 +74,7 @@ Ambari Web UI または Ambari REST API のいずれかを使用して、ヘッ�
 応答は次のようになります。
 
 	{
-	  "href" : "http://headnode0.mycluster-ssh.j7.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
+	  "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
 	  "ServiceInfo" : {
 	    "cluster_name" : "mycluster",
 	    "service_name" : "HDFS",
@@ -82,7 +82,7 @@ Ambari Web UI または Ambari REST API のいずれかを使用して、ヘッ�
 	  }
 	}
 
-URL から、サービスが現在 **headnode0** で実行されていることがわかります。
+URL から、サービスが現在**ヘッド ノード 0** で実行されていることがわかります。
 
 「state」から、サービスが現在実行されている(**STARTED**) ことがわかります。
 
@@ -166,4 +166,4 @@ Ambari Web UI から、ログを表示するサービス (例: YARN) を選択�
 [azure-powershell]: ../powershell-install-configure.md
 [azure-cli]: ../xplat-cli-install.md
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

@@ -151,7 +151,7 @@ Entity Framework を使用して Azure SQL Database のデータにアクセス�
 
 3. 認証が必要なすべてのコントローラーまたはメソッドに `[Authorize]` 属性を追加します。これで、ユーザーはエンドポイントや特定の API にアクセスするときに認証を受ける必要があるようになりました。
 
-Mobile Apps バックエンドに対してクライアントを認証する方法については、「[アプリケーションに認証を追加する](app-service-mobile-dotnet-backend-ios-get-started-users-preview.md)」をご覧ください。
+Mobile Apps バックエンドに対してクライアントを認証する方法については、「[アプリケーションに認証を追加する](app-service-mobile-dotnet-backend-ios-get-started-users.md)」をご覧ください。
 
 ## 方法: サーバー プロジェクトにプロジェクトを追加する
 
@@ -191,13 +191,13 @@ Mobile Apps バックエンドに対してクライアントを認証する方�
         NotificationHubClient hub = NotificationHubClient
         .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
-これで、Notification Hubs クライアントを使用して、登録済みデバイスにプッシュ通知を送信できるようになりました。詳細については、「[アプリケーションにプッシュ通知を追加する](app-service-mobile-dotnet-backend-ios-get-started-push-preview.md)」をご覧ください。Notification Hubs で実行可能なすべての操作については、「[Azure 通知ハブ](../notification-hubs/notification-hubs-overview.md)」をご覧ください。
+これで、Notification Hubs クライアントを使用して、登録済みデバイスにプッシュ通知を送信できるようになりました。詳細については、「[アプリケーションにプッシュ通知を追加する](app-service-mobile-ios-get-started-push.md)」をご覧ください。Notification Hubs で実行可能なすべての操作については、「[Azure 通知ハブ](../notification-hubs/notification-hubs-overview.md)」をご覧ください。
 
 ## 方法: サーバー プロジェクトの発行
 
 サーバー プロジェクトを Azure に発行するには、次の手順に従います。
 
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service-preview](../../includes/app-service-mobile-dotnet-backend-publish-service-preview.md)]
+[AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service](../../includes/app-service-mobile-dotnet-backend-publish-service.md)]
 
 
 [NuGet.org]: http://www.nuget.org/
@@ -205,4 +205,4 @@ Mobile Apps バックエンドに対してクライアントを認証する方�
 [Microsoft.Azure.Mobile.Server.Authentication]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

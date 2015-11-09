@@ -84,14 +84,6 @@ Azure Multi-Factor Authentication Server を使用すると、Azure AD アカウ
 - IIS 6 以降が必要です。
 - ASP.NET v2.0.507207 をインストールして登録する必要があります。
 - このサーバーは境界ネットワークにデプロイできます。
-- このサーバーと Azure の間の通信をフィルター処理するファイアウォールがある場合は、次の URL との通信を許可するために、送信方向の TCP ポート 443 が必要になります。
-	- https://pfd.phonefactor.net 
-	- https://pfd2.phonefactor.net 
-	- https://css.phonefactor.net
-- 送信ファイアウォールがポート 443 で制限されている場合、次の IP アドレス範囲で送信を許可する必要があります。
-	- 134\.170.116.0/25
-	- 134\.170.165.0/25
-	- 70\.37.154.128/25
 
 
 
@@ -129,4 +121,4 @@ Azure Multi-Factor Authentication Server を使用すると、Azure AD アカウ
 - [Azure Multi-Factor Authentication のセットアップ エクスペリエンス](multi-factor-authentication-end-user-first-time.md)
 - [Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)](multi-factor-authentication-faq.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

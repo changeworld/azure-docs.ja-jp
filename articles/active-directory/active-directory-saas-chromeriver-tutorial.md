@@ -1,14 +1,28 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Chromeriver の統合 | Microsoft Azure" description="Azure Active Directory で Chromeriver を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Chromeriver の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Chromeriver を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
+
 #チュートリアル: Azure Active Directory と Chromeriver の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=615279)をクリックしてください。
 
 このチュートリアルでは、Azure と Chromeriver の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Chromeriver でのシングル サインオンが有効なサブスクリプション
 
-このチュートリアルを終了すると、Chromeriver に割り当てた Azure AD ユーザーは、Chromeriver 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを終了すると、Chromeriver に割り当てた Azure AD ユーザーは、Chromeriver 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -55,11 +69,11 @@
 
 1.  Azure AD ポータルの **Chromeriver** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-chromeriver-tutorial/IC802757.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-chromeriver-tutorial/IC802757.png "シングル サインオンの構成")
 
 2.  **[ユーザーの Chromeriver へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-chromeriver-tutorial/IC802758.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-chromeriver-tutorial/IC802758.png "Configure Single Sign-On")
 
 3.  **[アプリケーション設定の構成]** ページで、次の手順を実行します。
 
@@ -71,17 +85,17 @@
 
     2.  **[次へ]** をクリックします。
 
-4.  **[Chromeriver でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターに保存します。
+4.  **[Chromeriver でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックしてメタデータ ファイルをコンピューターに保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-chromeriver-tutorial/IC802760.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-chromeriver-tutorial/IC802760.png "シングル サインオンの構成")
 
 5.  ダウンロードしたメタデータ ファイルを Chromeriver サポート チームに送信します。
 
     >[AZURE.NOTE]Chromeriver サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
 
-6.  Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-chromeriver-tutorial/IC802761.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-chromeriver-tutorial/IC802761.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
 
 Azure AD ユーザーが Chromeriver にログインできるようにするには、ユーザーを Chromeriver にプロビジョニングする必要があります。Chromeriver の場合、Chromeriver サポート チームがユーザー アカウントを作成する必要があります。
@@ -100,10 +114,10 @@ Azure AD ユーザーが Chromeriver にログインできるようにするに�
 
     ![ユーザーの割り当て](./media/active-directory-saas-chromeriver-tutorial/IC802762.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確認します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-chromeriver-tutorial/IC767830.png "あり")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

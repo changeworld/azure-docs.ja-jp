@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="keboyd"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/26/2015" 
+	ms.date="10/21/2015" 
 	ms.author="awills"/>
  
 # Java Web アプリケーションでの HTTP 要求の追跡
@@ -36,7 +36,7 @@ Java Web アプリケーションを実行している場合、要求された�
       <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>applicationinsights-web</artifactId>
-        <version>[0.9,)</version>
+        <version>[1.0,)</version>
       </dependency>
     </dependencies>
 
@@ -47,7 +47,7 @@ Java Web アプリケーションを実行している場合、要求された�
 次に、バイナリがダウンロードされるように、プロジェクトの依存関係を更新します。
 
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '0.9.+'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '1.0.+'
     }
 
 ## プロジェクトへの Application Insights HTTP フィルターの追加
@@ -139,4 +139,4 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

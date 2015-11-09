@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/15/2015"
+   ms.date="10/26/2015"
    ms.author="larryfr"/>
 
 #HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する
@@ -137,7 +137,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 6. プロンプトが表示されたら、クラスターの作成時に入力したユーザーを入力します。ユーザーにパスワードを指定している場合は、その入力も求められます。
 
-> [AZURE.NOTE]上記の手順ではポート 22 を使用していると仮定しています。これは、HDInsight クラスターの headnode0 に接続します。ポート 23 を使用した場合は、headnode1 に接続します。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
+> [AZURE.NOTE]上記の手順ではポート 22 を使用していると想定しています。これは、HDInsight クラスターのヘッド ノード 0 に接続します。ポート 23 を使用した場合は、ヘッド ノード 1 に接続します。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
 
 ###ワーカー ノードへの接続
 
@@ -233,4 +233,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

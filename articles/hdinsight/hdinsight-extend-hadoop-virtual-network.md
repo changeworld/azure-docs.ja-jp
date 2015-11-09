@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="10/28/2015"
    ms.author="larryfr"/>
 
 
@@ -22,8 +22,7 @@
 Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL Server などのオンプレミスのリソースに組み込むことや、クラウドのリソース間にセキュリティで保護されたプライベート ネットワークを作成することができます。
 
 > [AZURE.NOTE]HDInsight ではアフィニティ ベースの Azure の仮想ネットワークはサポートされていません。HDInsight を使用するときは、場所ベースの仮想ネットワークを使用する必要があります。
->
-> 現時点 (2015 年 8 月 25 日) において、Azure Virtual Network では 1 つの Linux ベースの HDInsight クラスターのみをプロビジョニングできます。
+
 
 ##<a id="whatis"></a>Azure Virtual Network とは
 
@@ -45,7 +44,7 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 
 	サイト間構成では、ハードウェア VPN を使用するか、ルーティングとリモート アクセス サービスを使用して、データセンターから複数のリソースを Azure 仮想ネットワークに接続できます。
 
-	![サイト間構成の図](media/hdinsight-extend-hadoop-virtual-network/site-to-site.png)
+	![diagram of site-to-site configuration](media/hdinsight-extend-hadoop-virtual-network/site-to-site.png)
 
 	ポイント対サイト構成では、ソフトウェア VPN を使用して、特定のリソースを Azure の仮想ネットワークに接続できます。
 
@@ -175,6 +174,6 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 
 * [HDInsight での Hadoop と Sqoop の使用](hdinsight-use-sqoop-mac-linux.md) - SQL Server と Sqoop を使用した仮想ネットワーク経由のデータ転送に関する情報を提供します。
 
-Azure の仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
+Azure のかそうネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

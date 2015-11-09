@@ -127,7 +127,9 @@ QR コードが取得できたら、アプリを起動します。「+」をク�
 Microsoft アカウントなど、Azure 以外のアカウントを手動で追加する場合は、次の手順に従います。
 
 
-- まず、アカウントが関連付けられているサイトからシークレット キーを取得する必要があります。たとえば、Outlook.com では、[アカウント設定] のセキュリティに関する設定に移動し、Authentication アプリの設定を選択します。[バーコードをスキャンしてシークレット キーを取得できない] を選択する必要があります。
+- Azure 以外のアカウントの手動での追加は、QR コードをスキャンするかシークレット キーを入力することで実行できます。
+- シークレット キーを手動で入力する場合は、アカウントが関連付けられているサイトからシークレット キーを取得します。たとえば、Outlook.com では、[アカウント設定] のセキュリティに関する設定に移動し、Authentication アプリの設定を選択します。[バーコードをスキャンしてシークレット キーを取得できない] を選択する必要があります。
+- 
 
 ![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/secretkey.png)
 
@@ -135,11 +137,11 @@ Microsoft アカウントなど、Azure 以外のアカウントを手動で追�
 
 ![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/addaccount3.png)
 
-- 下部にある [手動で入力] ボタンをクリックします。
+- QR キーをスキャンするか、下部にある [手動で入力] ボタンをクリックします。QR コードをスキャンする場合は次の手順をスキップします。これはアクティブ化がすぐに開始されるためです。
 
 ![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/scan.png)
 
-- バーコードが表示されているページに記載されたアカウント名とシークレット キーを入力します。この操作により、モバイル アプリのコードおよび URL ボックスに移動します。これにより、アクティブ化が開始されます。
+- シークレット キーを手動で入力する場合は、アカウント名とバーコードと同じページに表示されるシークレット キーを入力します。この操作により、モバイル アプリのコードおよび URL ボックスに移動します。これにより、アクティブ化が開始されます。
 
 ![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/manual.png)
 
@@ -162,4 +164,4 @@ Azure Authenticator による Touch ID の設定はとても簡単で、PIN を�
 
 ![Touch ID](./media/multi-factor-authentication-azure-authenticator/touchid2.png)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

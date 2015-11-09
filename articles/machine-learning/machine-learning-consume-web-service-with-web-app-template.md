@@ -14,12 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/19/2015"
+	ms.date="10/26/2015"
 	ms.author="garye;raymondl"/>
 
 # Web アプリ テンプレートによる Azure Machine Learning Web サービスの使用
 
-Machine Learning Studio での実験の予測 Web サービスを作成およびデプロイしたので、REST API を使用して予測モデルにアクセスできるようになりました。REST API を使用して Web サービスにアクセスする方法は、いろいろあります。たとえば、Web サービスをデプロイしたときに生成されたサンプル コード (Machine Learning Studio の Web サービス ダッシュボードにある API ヘルプ ページで利用可能) を使用して、C#、R、または Python でアプリケーションを記述できます。また、作成されたサンプル Microsoft Excel ブック (これも Studio の Web サービス ダッシュボードで利用可能) を使用することもできます。
+予測モデルを開発し、Machine Learning Studio を使用するか、R または Python などのツールを使用してそれを Azure Web サービスとしてデプロイしたら、REST API を使用して運用可能モデルにアクセスできます。
+
+REST API を使用して Web サービスにアクセスする方法は、いろいろあります。たとえば、Web サービスをデプロイしたときに生成されたサンプル コード (Machine Learning Studio の Web サービス ダッシュボードにある API ヘルプ ページで利用可能) を使用して、C#、R、または Python でアプリケーションを記述できます。また、作成されたサンプル Microsoft Excel ブック (これも Studio の Web サービス ダッシュボードで利用可能) を使用することもできます。
 
 しかし、Web サービスにアクセスするための最もすばやくて簡単な方法は、[Azure Web アプリケーション Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/)で入手できる Web アプリ テンプレートを利用する方法です。
 
@@ -100,7 +102,7 @@ BES Web アプリ テンプレートは、RRS テンプレートと同じよう�
 
 2. 結果の格納先を指定するには、Web アプリのホーム ページで格納先コンテナーの情報を入力します。Web アプリが入力値を取得する場所として、ローカル ファイルまたは Azure ストレージ コンテナーも指定します。**[Submit]** をクリックします。
 
-	![ストレージ情報][image7]
+	![Storage 情報][image7]
 
 ページが表示され、ジョブの状態が示されます。ジョブが完了すると、Azure BLOB ストレージ内の結果の場所が表示されます。結果をローカル ファイルにダウンロードするためのオプションも表示されます。
 
@@ -123,4 +125,4 @@ BES Web アプリ テンプレートは、RRS テンプレートと同じよう�
 [image6]: media\machine-learning-consume-web-service-with-web-app-template\web-service-info.png
 [image7]: media\machine-learning-consume-web-service-with-web-app-template\storage.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

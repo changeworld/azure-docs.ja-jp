@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="10/28/2015" 
 	ms.author="spelluru"/>
 
 # コンピューティングのリンクされたサービス
@@ -234,6 +234,40 @@ mlEndpoint | バッチ スコアリング URL です。 | あり
 apiKey | 公開されたワークスペース モデルの API です。 | あり
 
 
+## Azure Data Lake Analytics リンク サービス
+**Azure Data Lake Analytics** リンク サービスを作成して、Azure Data Lake Analytics コンピューティング サービスを Azure Data Factory にリンクしてから、パイプラインで [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)を使用します。
+
+次の例は、Azure Data Lake Analytics リンク サービスの JSON 定義です。
+
+	{
+	    "name": "AzureDataLakeAnalyticsLinkedService",
+	    "properties": {
+	        "type": "AzureDataLakeAnalytics",
+	        "typeProperties": {
+	            "accountName": "adftestaccount",
+	            "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
+	            "authorization": "<authcode>",
+				"sessionId": "<session ID>", 
+	            "subscriptionId": "<subscription id>",
+	            "resourceGroupName": "<resource group name>"
+	        }
+	    }
+	}
+
+
+次の表は、JSON 定義で使用されるプロパティの説明です。
+
+プロパティ | 説明 | 必須
+-------- | ----------- | --------
+型 | type プロパティを **AzureDataLakeAnalytics** に設定する必要があります。 | あり
+accountName | Azure Data Lake Analytics アカウント名。 | あり
+dataLakeAnalyticsUri | Azure Data Lake Analytics URI。 | いいえ 
+承認 | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | あり 
+subscriptionId | Azure サブスクリプション ID | いいえ (指定されていない場合は Data Factory のサブスクリプションが使用されます)。 
+resourceGroupName | Azure リソース グループ名 | いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。
+sessionId | OAuth 承認セッションのセッション ID です。各セッション ID は一意であり、使用されるのが 1 回のみの場合があります。セッション ID は、Data Factory Editor で自動生成されます。 | あり
+
+
 ## Azure SQL のリンクされたサービス
 
 Azure SQL のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。このリンクされたサービスの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)に関する記事を参照してください。
@@ -247,4 +281,4 @@ Azure SQL のリンクされたサービスを作成し、[ストアド プロ�
  
    
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

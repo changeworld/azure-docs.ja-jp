@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/09/2015"
+	ms.date="10/26/2015"
 	ms.author="larryfr"/>
 
 # HDInsight Hadoop クラスターに Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
@@ -99,9 +99,13 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 		hadoop fs -copyFromLocal tiny_graph.txt /example/data/tiny_graph.txt
 
-4. 次のコマンドを使用して、サンプル SimpleShortestPathsComputation を実行します。
+3. クラスターのヘッド ノードの完全修飾ドメイン名 (FQDN) を取得するには、次を使用します。
 
-		 hadoop jar /usr/hdp/current/giraph/giraph-examples.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca mapred.job.tracker=headnode0:9010 -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip /example/data/tiny_graph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op /example/output/shortestpaths -w 2
+        hostname -f
+        
+4. 次のコマンドを使用して、サンプル SimpleShortestPathsComputation を実行します。__HEADNODE__ は、前の手順から返された FQDN に置き換えます。
+
+		 hadoop jar /usr/hdp/current/giraph/giraph-examples.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca mapred.job.tracker=HEADNODE:9010 -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip /example/data/tiny_graph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op /example/output/shortestpaths -w 2
 
 	このコマンドで使用されるパラメーターを次の表に示します。
 
@@ -110,7 +114,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 	| `jar /usr/hdp/current/giraph/giraph-examples.jar` | サンプルを含む jar ファイル。 |
 	| `org.apache.giraph.GiraphRunner` | サンプルを開始するために使用するクラス。 |
 	| `org.apache.giraph.examples.SimpleShortestPathsCoputation` | 実行されるサンプル。この場合は、ID 1 とグラフ内の他のすべての ID の間の最短パスを計算します。 |
-	| `-ca mapred.job.tracker=headnode0:9010` | クラスターのヘッド ノード。 |
+	| `-ca mapred.job.tracker=HEADNODE:9010` | クラスターのヘッド ノード。 |
 	| `-vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFromat` | 入力データに使用する入力形式。 |
 	| `-vip /example/data/tiny_graph.txt` | 入力データ ファイル。 |
 	| `-vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat` | 出力形式。この場合は、ID と値をプレーンテキストとして出力します。 |
@@ -119,7 +123,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 	これらのパラメーターと Giraph サンプルで使用されるその他のパラメーターの詳細については、[Giraph のクイックスタート](http://giraph.apache.org/quick_start.html)のページを参照してください。
 
-5. ジョブが完了すると、結果が \_\___wasb:///example/out/shotestpaths__ ディレクトリに格納されます。作成されたファイルの名前の先頭は "__part-m-__"、末尾はファイルの順番を示す数字です。次のコマンドを使用して、出力を表示します。
+5. ジョブが完了すると、結果が __wasb:///example/out/shotestpaths__ ディレクトリに格納されます。作成されたファイルの名前の先頭は "__part-m-__"、末尾はファイルの順番を示す数字です。次のコマンドを使用して、出力を表示します。
 
 		hadoop fs -text /example/output/shortestpaths/*
 
@@ -148,4 +152,4 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 - [HDInsight クラスターでの Solr のインストール](hdinsight-hadoop-solr-install-linux.md):クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。Solr は、格納されたデータに対して強力な検索操作を実行することができます。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="リソースへのアクセスの管理と監査"
-   description="ロールベースのアクセス制御 (RBAC) を使用して、Azure に展開されたリソースに対するアクセス許可を管理します。"
+   pageTitle="リソースへのアクセスの管理"
+   description="ロールベースのアクセス制御 (RBAC) を使用して、Azure にデプロイされたリソースに対するアクセス許可を管理します。"
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="AzurePortal"
    ms.workload="na"
-   ms.date="10/14/2015"
+   ms.date="10/28/2015"
    ms.author="tomfitz"/>
 
 # リソースへのアクセスの管理
@@ -265,7 +265,8 @@ Azure リソース マネージャーの REST API を介してロールベース
 - ロールベースのアクセス制御の詳細については、「[Microsoft Azure ポータルでのロールベースのアクセス制御](../role-based-access-control-configure.md)」をご覧ください。
 - サービス プリンシパルを使用してサブスクリプション内のアプリケーションのアクセスを管理する方法の詳細については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](../resource-group-authenticate-service-principal.md)」および「[Azure ポータルを使用した Azure サービス プリンシパルの新規作成](../resource-group-create-service-principal-portal.md)」をご覧ください。
 - 組織での監査操作の詳細については、「[リソース マネージャーの監査操作](../resource-group-audit.md)」をご覧ください。
+- カスタマイズしたポリシーを使用して、サブスクリプションの制約と規則を適用できます。詳細については、「[ポリシーを使用したリソース管理とアクセス制御](../resource-manager-policy.md)」を参照してください。
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

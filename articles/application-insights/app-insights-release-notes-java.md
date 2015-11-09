@@ -11,7 +11,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/18/2015" 
+	ms.date="09/21/2015" 
 	ms.author="awills"/>
  
 # Java 向けの Application Insights SDK のリリース ノート
@@ -35,31 +35,36 @@
 
 * 最新バージョンの [Azure Libraries for Java](http://dl.msopentech.com/lib/PackageForWindowsAzureLibrariesForJava.html) をダウンロードして、旧バージョンと置き換えます。 
  
-新旧の ApplicationInsights.xml を比較します。Many of the changes you see are because we added and removed modules.以前のカスタマイズをもう一度設定します。
+新旧の ApplicationInsights.xml を比較します。確認できる変更の多くは、モジュールの追加と削除によって発生しています。以前のカスタマイズをもう一度設定します。
+
+## バージョン 1.0.2
+
+- Docker との互換性
+- バグ修正 - すべての例外をキャッチし、すべての成功を示すステータス コードを処理します
 
 ## バージョン 1.0.1
 - [Java エージェント](app-insights-java-agent.md)は、次の項目に関する依存関係情報を収集します。
 	- HttpClient、OkHttp、RestTemplate (Spring) 経由で行われた HTTP 呼び出し。
-	- Calls to Redis made via the Jedis client.When a configurable threshold is passed, the SDK will also fetch the call arguments.
+	- クライアント経由で行われた Radius への呼び出し。構成可能なしきい値が渡されると、SDK は、呼び出し引数もフェッチします。
 	- Oracle DB クライアントと Apache Derby DB クライアントを使用して行われた JDBC 呼び出し。
 	- 準備されたステートメントに対する ‘executeBatch’ クエリ タイプのサポート。SDK はステートメントをバッチ番号付きで表示します。
 	- JDBC クライアントをサポートするクエリ プランの提供 (MySql、PostgreSql)。クエリ プランは構成できるしきい値が交差した場合のみフェッチされます。
 
 ## バージョン 1.0.0
 - CollectD 用の Application Insights ライター プラグインのサポートを追加しました。
-- Adding support for the Application Insights Java agent.
+- Application Insights Java エージェントのサポートを追加しました。
 - HttpClient バージョン 4.2 以降のサポートでの互換性の問題を修正しました。
 
 ## バージョン 0.9.6
 - Java SDK が servlet v2.5 および HttpClient pre-v4.3 に対応するようになりました。
-- Adding support for Java EE interceptors.
+- Java EE インターセプターのサポートを追加しました。
 - Logback アペンダーから重複する依存関係を削除しました。
 
 ## バージョン 0.9.5  
 
 - Cookie の解析エラーによりカスタム イベントがユーザーやセッションに関連付けられなくなる問題を修正しました。  
-- Improved logic for resolving the location of the ApplicationInsights.xml configuration file.
-- Anonymous User and Session cookies will not be generated on the server side.To implement user and session tracking for web apps, instrumentation with the JavaScript SDK is now required – cookies from the JavaScript SDK are still respected.この変更により、ユーザー数とセッション数の大幅な再計算が発生する場合があることに注意してください。これは、ユーザーが開始したセッションのみがカウントされるようになったためです。
+- ApplicationInsights.xml 構成ファイルの場所を解決するためのロジックが改善されました。
+- 匿名ユーザーとセッションの Cookie は、サーバー側では生成されません。Web アプリのユーザーおよびセッションの追跡を実装するために JavaScript SDK によるインストルメンテーションが必要になりました。JavaScript SDK の Cookie は引き続き適用されます。この変更により、ユーザー数とセッション数の大幅な再計算が発生する場合があることに注意してください。これは、ユーザーが開始したセッションのみがカウントされるようになったためです。
 
 ## バージョン 0.9.4
 
@@ -68,4 +73,4 @@
 - 報告された項目に ```SyntheticSource``` プロパティを追加し、利用統計情報項目に合成のタグを付けることができます。
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

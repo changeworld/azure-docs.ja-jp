@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Projectplace の統合 | Microsoft Azure" description="Azure Active Directory で Projectplace を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Projectplace の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Projectplace を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Projectplace の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=529080)をクリックしてください。
   
 このチュートリアルでは、Azure と Projectplace の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Projectplace でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを終了すると、Projectplace に割り当てた Azure AD ユーザーは、Projectplace の企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを終了すると、Projectplace に割り当てた Azure AD ユーザーは、Projectplace の企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -86,7 +99,7 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
 
 1.  **Projectplace** 企業サイトに管理者としてログインします。
 
-2.  **[People]** 、に移動し、**[Members]** をクリックします。
+2.  **[People]** に移動し、**[Members]** をクリックします。
 
     ![ユーザー](./media/active-directory-saas-projectplace-tutorial/IC790228.png "ユーザー")
 
@@ -98,7 +111,7 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
 
     ![新しいメンバー](./media/active-directory-saas-projectplace-tutorial/IC790233.png "新しいメンバー")
 
-    1.  **[New Members]** テキストボックスに、プロビジョニングする有効な AAD アカウントのメール アドレスを入力します。
+    1.  **[New Members]** テキスト ボックスに、プロビジョニングする有効な AAD アカウントのメール アドレスを入力します。
     2.  **[Send]** をクリックします。
 
 	    >[AZURE.NOTE]Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含むメールが送信されます。
@@ -117,10 +130,10 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
 
     ![ユーザーの割り当て](./media/active-directory-saas-projectplace-tutorial/IC790234.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-projectplace-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

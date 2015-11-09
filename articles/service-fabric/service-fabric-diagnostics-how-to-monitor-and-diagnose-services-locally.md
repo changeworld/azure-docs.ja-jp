@@ -4,7 +4,7 @@
    services="service-fabric"
    documentationCenter=".net"
    authors="kunaldsingh"
-   manager="samgeo"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -41,9 +41,9 @@ Service Fabric は ETW イベントを出力して、アプリケーションの
 
 3. ステートフルまたはステートレスなアクターまたはサービスのプロジェクトを作成します (または既存のプロジェクトを開きます)。
 
-  ![Create a Service Fabric Application](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/CreateServiceFabricProject.png)
+  ![Service Fabric アプリケーションの作成](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/CreateServiceFabricProject.png)
 
-  ![Create a Service Fabric Service](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/CreateServiceFabricProject-2.png)
+  ![Service Fabric サービスの作成](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/CreateServiceFabricProject-2.png)
 
 4. F5 を押して、アプリケーションをデバッグします。Service Fabric イベントが、[診断イベント] ウィンドウに表示されます。各イベントには、イベントの送信元のノード、アプリケーション、およびサービスを示す標準的なメタデータ情報があります。また、ウィンドウ上部にある [イベントのフィルター] ボックスを使用して、ノード名やサービス名でフィルターするなど、イベントの一覧をフィルターすることもできます。
 
@@ -79,4 +79,4 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 * [Azure Service Fabric アクターの診断とパフォーマンス監視](service-fabric-reliable-actors-diagnostics.md)
 * [ステートフル Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

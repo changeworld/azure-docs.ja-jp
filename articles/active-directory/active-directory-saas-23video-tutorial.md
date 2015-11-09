@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/22/2015"
+	ms.date="10/23/2015"
 	ms.author="markusvi"/>
 
 
@@ -55,7 +55,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 **ギャラリーから 23 Video を追加するには、次の手順に従います。**
 
-1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br> ![Active Directory][1]<br>
+1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br> ![Active Directory][1]<br>
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -63,8 +63,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログ ボックスで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに、「**23 Video**」と入力します。<br><br> ![アプリケーション][5]<br>
-7. 結果ウィンドウで **[23 Video]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-
+7. 結果ウィンドウで **[23 Video]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>![アプリケーション][25]<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、23 Video で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -118,13 +117,13 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_09.png) <br> 
+1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_09.png) <br> 
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_03.png) <br>
+3. ユーザーの一覧を表示するには、上部のメニューで **[ユーザー]** をクリックします。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_03.png) <br>
  
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_04.png) <br>
+4. **[ユーザーの追加]** ダイアログを開くには、下部にあるツール バーで **[ユーザーの追加]** をクリックします。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_04.png) <br>
 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_05.png) <br>
 
@@ -140,7 +139,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
     b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c.**[表示名]** テキスト ボックスに「**Britta Simon**」と入力します。
 
     d.**[ロール]** 一覧で **[ユーザー]** を選択します。e.**[次へ]** をクリックします。
 
@@ -182,9 +181,9 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 **23 Video に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br>![ユーザーの割り当て][201] <br>
+1. Azure ポータルでアプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br> <br>![ユーザーの割り当て][201]<br>
 2. アプリケーションの一覧で **[23 Video]** を選択します。<br><br>![ユーザーの割り当て][202] <br>
-1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
+1. 上部のメニューで **[ユーザー]** をクリックします。<br> <br>![ユーザーの割り当て][203]<br>
 1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
 2. 下部にあるツール バーで **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][205]
@@ -208,6 +207,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 [3]: ./media/active-directory-saas-23video-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-23video-tutorial/tutorial_general_04.png
 [5]: ./media/active-directory-saas-23video-tutorial/tutorial_23video_01.png
+[25]: ./media/active-directory-saas-23video-tutorial/tutorial_23video_02.png
 
 [6]: ./media/active-directory-saas-23video-tutorial/tutorial_general_05.png
 [7]: ./media/active-directory-saas-23video-tutorial/tutorial_23video_03.png
@@ -228,4 +228,4 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 [401]: ./media/active-directory-saas-23video-tutorial/tutorial_23video_11.png
 [402]: ./media/active-directory-saas-23video-tutorial/tutorial_23video_12.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

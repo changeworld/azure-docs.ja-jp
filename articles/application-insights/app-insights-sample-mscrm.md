@@ -40,10 +40,10 @@
 
 **このコードのページは開いたまま**、別のブラウザー ウィンドウで次の手順を行います。このコードはすぐに必要になります。
 
-### Microsoft CRM で JavaScript の Web リソースを作成する
+### Microsoft Dynamics CRM で JavaScript の Web リソースを作成する
 
 1. CRM Online インスタンスを開き、管理者権限でログインします。
-2. Microsoft Dynamics CRM の [設定]、[カスタマイズ]、[システム] を開きます。
+2. Microsoft Dynamics CRM で、[設定]、[カスタマイズ]、[システムのカスタマイズ] の順に開きます。
 
     ![](./media/app-insights-sample-mscrm/04.png)
     
@@ -60,7 +60,7 @@
 
     ![](./media/app-insights-sample-mscrm/08.png)
     
-4. Application Insights からコードをコピーします。コピーの際は <script> タグを無視します。次のスクリーン ショットを参照してください。
+4. Application Insights からコードをコピーします。コピーの際はスクリプト タグを無視します。次のスクリーン ショットを参照してください。
 
     ![](./media/app-insights-sample-mscrm/09.png)
 
@@ -149,9 +149,9 @@
 
 [データを Microsoft Power BI にエクスポート](app-insights-export-power-bi.md)すると、より深い分析を行うことができます。
 
-## Dynamics CRM ソリューションのサンプル
+## Microsoft Dynamics CRM ソリューションのサンプル
 
-[Dynamics CRM で実装されたサンプルのソリューションを示します](https://dynamicsandappinsights.codeplex.com/)。
+[ で実装されたサンプル ソリューションを示します](https://dynamicsandappinsights.codeplex.com/)。
 
 ## 詳細情報
 
@@ -161,4 +161,4 @@
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

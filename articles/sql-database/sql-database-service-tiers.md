@@ -3,7 +3,7 @@
    description="Azure SQL Database のサービス階層のパフォーマンスとビジネス継続性機能を比較し、ダウンタイムもなくオンデマンドで拡張する際のコストと機能の適切なバランスを見つけてください。"
    services="sql-database"
    documentationCenter=""
-   authors="shontnew"
+   authors="rothja"
    manager="jeffreyg"
    editor="monicar"/>
 
@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="10/13/2015"
-   ms.author="shkurhek"/>
+   ms.date="10/29/2015"
+   ms.author="jroth"/>
 
 # SQL Database のサービス階層
-
+ 
 ## 概要
 [Azure SQL Database](sql-database-technical-overview.md) では、さまざまな種類のワークロードを処理する複数のサービス階層を提供します。特性と価格が定義された[単一のデータベースを作成](sql-database-get-started.md)できます。または、[エラスティック データベース プールを作成して](sql-database-elastic-pool-portal.md)複数のデータベースを管理できます。いずれの場合も、階層には **Basic**、**Standard**、および **Premium** があります。ただし、これらの階層の特性は、個別のデータベースを作成するのか、それともエラスティック データベース プール内にデータベースを作成するのかで、異なります。この記事では、両方のケースでのサービス階層について概要を示します。
 
@@ -39,6 +39,11 @@ Basic、Standard、および Premium のサービス階層は、いずれも稼�
 
 [AZURE.INCLUDE [SQL DB のサービス階層表](../../includes/sql-database-service-tiers-table.md)]
 
+
+DTU について理解を深めるためには、このトピックの[「DTU」セクション](#understanding-dtus)を参照してください。
+
+>[AZURE.NOTE]このサービス層テーブルのその他すべての行の詳細については、「[サービス層の機能と制限](sql-database-performance-guidance.md#service-tier-capabilities-and-limits)」を参照してください。
+
 ### エラスティック データベース プールのサービス階層
 単一のデータベースを作成したり、スケーリングしたりするだけでなく、[エラスティック データベース プール](sql-database-elastic-pool.md)で複数のデータベースを管理することもできます。エラスティック データベース プール内のデータベースはすべて、共通のリソース セットを共有します。パフォーマンス特性は、*エラスティック データベース トランザクション ユニット* (eDTU) で測定されます。単一のデータベースの場合と同様に、エラスティック データベース プールにも **Basic**、**Standard**、**Premium** という 3 つのパフォーマンス階層があります。エラスティック データベースの場合もやはり、この 3 つのサービス階層によってパフォーマンス全体に関する制限事項といくつかの機能が定義されます。
 
@@ -48,9 +53,9 @@ Basic、Standard、および Premium のサービス階層は、いずれも稼�
 
 [AZURE.INCLUDE [エラスティック データベースの SQL DB サービス階層を示す表](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
->[AZURE.NOTE]プール内の各データベースはまた、該当する層における単一のデータベースの特性に従います。たとえば、Basic プールでは、プールあたりの最大セッションが 2400 ～ 28800 の範囲に制限されますが、このプール内の個々のデータベースの場合、データベースあたりセッションが 300 に制限されます (前のセクションで指定した単一の Basic データベースに対する制限)。
+プール内の各データベースはまた、該当する層における単一のデータベースの特性に従います。たとえば、Basic プールでは、プールあたりの最大セッションが 2400 ～ 28800 の範囲に制限されますが、このプール内の個々のデータベースの場合、データベースあたりセッションが 300 に制限されます (前のセクションで指定した単一の Basic データベースに対する制限)。
 
-## DTU について
+### DTU について
 
 [AZURE.INCLUDE [SQL DB DTU の説明](../../includes/sql-database-understanding-dtus.md)]
 
@@ -68,7 +73,7 @@ SQL Database のパフォーマンスの監視は、データベースに選択�
 - データ IO の割合
 - Storage の割合
 
-これらのメトリックを追加すると、**[メトリック]** ウインドウに示される詳細と共に、**[監視]** グラフでこれらを継続的に確認できます。4 つのメトリックはいずれも、データベースの **DTU** を基準とする平均使用率を示しています。
+これらのメトリックを追加すると、**[メトリック]** ウィンドウの **[監視]** グラフで、追加したメトリックのより詳細な情報を継続的に確認することができます。4 つのメトリックはいずれも、データベースの **DTU** を基準とする平均使用率を示しています。
 
 ![サービス階層の監視](./media/sql-database-service-tiers/sqldb_service_tier_monitoring.png)
 
@@ -78,16 +83,16 @@ SQL Database のパフォーマンスの監視は、データベースに選択�
 
 下位のパフォーマンス レベルにダウングレードできるかどうかを判断するために、パフォーマンス メトリックを利用することもできます。たとえば、Standard S2 データベースを使用していて、すべてのパフォーマンス メトリックは、どの時点でもデータベースの平均的な使用率が 10% を超えないとします。この場合、データベースは Standard S1 で快適に動作します。ただし、下位のパフォーマンス レベルへの移行を決定する前に、急上昇や変動するワークロードに注意してください。
 
-ポータルに公開されているのと同じメトリックがシステム ビューからも入手できます。サーバーの論理 master データベースの [sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) とユーザー データベースの [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) (**sys.dm\_db\_resource\_stats** は、Basic、Standard、Premium の各ユーザー データベースに作成されます。Web および Business Edition のデータベースは空の結果セットを返します)。詳細度の低いデータをより長い期間で監視する必要がある場合は、**sys.resource\_stats** を使用します。詳細度の高いデータをより短い期間で監視する必要がある場合は、**sys.dm\_db\_resource\_stats** を使用します。詳細については、「[Azure SQL データベースのパフォーマンス ガイダンス](https://msdn.microsoft.com/library/azure/dn369873.aspx)」を参照してください。
+ポータルに公開されているのと同じメトリックがシステム ビューからも入手できます。サーバーの論理 **master** データベースの [sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) とユーザー データベースの [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) (**sys.dm\_db\_resource\_stats** は、Basic、Standard、Premium の各ユーザー データベースに作成されます。Web および Business Edition のデータベースは空の結果セットを返します)。詳細度の低いデータをより長い期間で監視する必要がある場合は、**sys.resource\_stats** を使用します。詳細度の高いデータをより短い期間で監視する必要がある場合は、**sys.dm\_db\_resource\_stats** を使用します。詳細については、「[Azure SQL データベースのパフォーマンス ガイダンス](sql-database-performance-guidance.md#monitoring-resource-use-with-sysresourcestats)」を参照してください。
 
 エラスティック データベース プールでは、このセクションで説明した手法を使用して、プール内の個々のデータベースを監視することができます。ただし、プールを全体として監視することもできます。詳細については、「[エラスティック データベース プールの監視と管理](sql-database-elastic-pool-portal.md#monitor-and-manage-an-elastic-database-pool)」を参照してください。
 
 ## 次のステップ
-これらの階層の価格の詳細については、「[SQL Database 価格](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
+これらの階層の料金の詳細については、「[SQL Database 料金](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 
 複数のデータベースをグループとして管理する必要がある場合は、[エラスティック データベース プール](sql-database-elastic-pool-guidance.md)と、これに関連する[エラスティック データベース プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)を検討してください。
 
 SQL Database の階層については、これで理解できました。では、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)で実際に試してみましょう。また、[初めて SQL Database を作成する方法](sql-database-get-started.md)について詳しく学びましょう。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

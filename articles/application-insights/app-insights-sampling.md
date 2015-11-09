@@ -30,22 +30,32 @@
 サンプリングは、現在 ASP.NET SDK または[任意の Web ページ](#other-web-pages)で利用できます。
 
 ### ASP.NET サーバー
-アプリケーションでサンプリングを構成するには、次のコード スニペットを Global.asax.cs 内の `Application_Start()` メソッドに挿入します。
 
-```C#
+1. プロジェクトの NuGet パッケージを Application Insights の最新の*プレリリース* バージョンに更新します。ソリューション エクスプ ローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択し、**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。 
 
-    using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
-    // This configures sampling percentage at 10%:
-    TelemetryConfiguration.Active.TelemetryChannel = new TelemetryChannelBuilder().UseSampling(10.0).Build();
+2. 次のスニペットを ApplicationInsights.config に追加します。
+
+```XML
+
+    <TelemetryProcessors>
+     <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+
+     <!-- Set a percentage close to 100/N where N is an integer. -->
+     <!-- E.g. 50 (=100/2), 33.33 (=100/3), 25 (=100/4), 20, 1 (=100/100), 0.1 (=100/1000) -->
+     <SamplingPercentage>10</SamplingPercentage>
+     </Add>
+   </TelemetryProcessors>
+
 ```
 
-> [AZURE.NOTE]サンプリング率には、N を整数として 100/N に近い割合を選択します。たとえば、有効な値として 50 (=1/2)、33.33 (= 1/3)、25 (=1/4)、20 (=1/5) などがあります。サンプリングでは現在、その他の値はサポートされていません。
+> [AZURE.NOTE]サンプリング率には、N を整数として 100/N に近い割合を選択します。サンプリングでは現在、その他の値はサポートされていません。
 
+<a name="other-web-pages"></a>
 ### JavaScript を使用した Web ページ
 
 任意のサーバーからのサンプリング用に Web ページを構成できます。ASP.NET サーバーの場合は、クライアント側とサーバー側の両方を構成します。
 
-[Application Insights 用に Web ページを構成する](app-insights-javascript.md)場合は、Application Insights ポータルからスニペットを入手して、それを変更します(ASP.NET では、\_Layout.cshtml 内にあります)。 `samplingPercentage: 10,` のような行をインストルメンテーション キーの前に挿入します。
+[Application Insights 用に Web ページを構成する](app-insights-javascript.md)場合は、Application Insights ポータルからスニペットを入手して、それを変更します (ASP.NET では、\_Layout.cshtml 内にあります)。 `samplingPercentage: 10,` のような行をインストルメンテーション キーの前に挿入します。
 
     <script>
 	var appInsights= ... 
@@ -63,6 +73,26 @@
 JavaScript 内で指定しているサンプリング率が、サーバー側で指定した値と同じであることを確認します。
 
 [API の詳細はこちら](app-insights-api-custom-events-metrics.md)
+
+
+### 代替手順: サーバー コードでサンプリングを設定します。
+
+
+.config ファイルにサンプリング パラメーターを設定する代わりに、コードを使用できます。これにより、サンプリングをオンまたはオフにできます。
+
+*C#*
+
+```C#
+
+    using Microsoft.ApplicationInsights.Extensibility;
+    using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
+
+    // It's recommended to set SamplingPercentage in the .config file instead.
+
+    // This configures sampling percentage at 10%:
+    TelemetryConfiguration.Active.TelemetryChannel = new TelemetryChannelBuilder().UseSampling(10.0).Build();
+
+```
 
 
 ## サンプリングを使用する場合
@@ -132,4 +162,4 @@ Application Insights では、精度が問題のあるレベルまで低下す�
 
 * 残念ですが、デバイス アプリケーション向けのサンプリングは、現時点ではサポートされていません。 
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

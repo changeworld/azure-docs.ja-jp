@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/15/2015" 
+	ms.date="10/26/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management ポリシー リファレンス
@@ -32,6 +32,8 @@
 	-	[JWT を検証する][] - 指定された HTTP ヘッダーまたは指定されたクエリ パラメーターから抽出した JWT の存在と有効性を適用します。
 -	[高度なポリシー][]
 	-	[制御フロー][] - ブール[式][]の評価の結果に基づいてポリシー ステートメントを条件付きで適用します。
+	-	[要求の転送][] - バックエンド サービスに要求を転送します。
+	-	[Event Hub へのログ記録][] - [Logger](https://msdn.microsoft.com/library/azure/mt592020.aspx#Logger) エンティティによって定義されたメッセージ ターゲットに、指定された形式でメッセージを送信します。
 	-	[変数の設定][] - 名前付き[コンテキスト][]変数の値を、後でアクセスできるように保持します。
 -	[認証ポリシー][]
 	-	[基本認証][] -基本認証を使用してバックエンド サービスで認証します。
@@ -73,6 +75,8 @@
 [変数の設定]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
 [式]: https://msdn.microsoft.com/library/azure/dn910913.aspx
 [コンテキスト]: https://msdn.microsoft.com/library/azure/ea160028-fc04-4782-aa26-4b8329df3448#ContextVariables
+[要求の転送]: https://msdn.microsoft.com/library/azure/dn894085.aspx#ForwardRequest
+[Event Hub へのログ記録]: https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub
 
 [認証ポリシー]: https://msdn.microsoft.com/library/azure/dn894079.aspx
 [基本認証]: https://msdn.microsoft.com/library/azure/061702a7-3a78-472b-a54a-f3b1e332490d#Basic
@@ -106,4 +110,4 @@
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="10/09/2015"
+ms.date="10/26/2015"
 ms.author="larryfr"/>
 
 #SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする
@@ -144,21 +144,11 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 4. **[URL パターン]** タブを選択し、**[新しいパターンの追加]** を選択します。以下を使用してパターンを定義し、**[OK]** をクリックします。
 
-	* **[パターン名]** - **headnode** - パターンのフレンドリ名です。
+	* **パターン名** - **clusternodes** - パターンのフレンドリ名です。
 
-	* **[URL パターン]** - ***headnode*** - **headnode** という単語を含む URL と一致するパターンを定義します。
+	* **URL パターン** - ***internal.cloudapp.net*** -クラスター ノードの内部の完全修飾ドメイン名と一致するパターンを定義します。
 
 	![foxyproxy のパターン](./media/hdinsight-linux-ambari-ssh-tunnel/foxypattern.png)
-
-	> [AZURE.NOTE]__HBase__ クラスターを使用している場合、クラスターの zookeeper ノードで Web UI をホストするので、次のパターンも追加する必要があります。
-	>
-	> * __Pattern Name__ - __zookeeper__
-	> * __URL pattern__ - __*zookeeper*__
-	>
-	> __Storm__ クラスターを使用している場合、ログの取得時に Storm UI は worker ノードの IP アドレスにリンクされるので、次のパターンを追加する必要があります。今後の更新では、ドメイン名を使用するように変更する予定です。
-	>
-	> * __Pattern Name__ - __nodesbyip__
-	> * __URL pattern__ - __*10.0.0.*__
 
 4. **[OK]** をクリックしてプロキシを追加し、**[プロキシの設定]** を閉じます。
 
@@ -166,7 +156,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	![foxyproxy の選択モード](./media/hdinsight-linux-ambari-ssh-tunnel/selectmode.png)
 
-これらを完了すると、**headnode** という文字列を含む URL の要求のみが SSL トンネル経由で送信されます。
+これらを完了すると、__internal.cloudapp.net__ という文字列を含む URL の要求のみが SSL トンネル経由で送信されます。
 
 ##Ambari Web UI を使用して確認する
 
@@ -193,7 +183,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	![YARN ResourceManager の UI の画像](./media/hdinsight-linux-ambari-ssh-tunnel/yarnresourcemanager.png)
 
-	> [AZURE.TIP]このページの URL は、\_\___http://headnode1.CLUSTERNAME-ssh.j8.internal.cloudapp.net:8088/cluster__ のようになります。この URL は、ノードの内部の完全修飾ドメイン名 (FQDN) を使用しているので、アクセスするには SSH トンネルを使用する必要があります。
+	> [AZURE.TIP]このページの URL は、\_\___http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster__ のようになります。この URL は、ノードの内部の完全修飾ドメイン名 (FQDN) を使用しているので、アクセスするには SSH トンネルを使用する必要があります。
 
 ##次のステップ
 
@@ -207,4 +197,4 @@ HDInsight での SSH の使用方法の詳細については、以下の記事�
 
 * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

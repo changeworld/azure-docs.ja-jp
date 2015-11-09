@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と SmarterU の統合 | Microsoft Azure" description="SmarterU と Azure Active Directory を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と SmarterU の統合 | Microsoft Azure" 
+    description="SmarterU と Azure Active Directory を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と SmarterU の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=524463)をクリックしてください。
   
 このチュートリアルでは、Azure と SmarterU の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   SmarterU テナント
   
-このチュートリアルを完了すると、SmarterU に割り当てた Azure AD ユーザーは、SmarterU 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、SmarterU に割り当てた Azure AD ユーザーは、SmarterU 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -59,19 +72,19 @@
 
 1.  Azure AD ポータルの **[SmarterU]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-smarteru-tutorial/IC777323.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-smarteru-tutorial/IC777323.png "シングル サインオンの構成")
 
 2.  **[ユーザーの SmarterU へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-smarteru-tutorial/IC777324.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-smarteru-tutorial/IC777324.png "シングル サインオンの構成")
 
 3.  **[SmarterU でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために **[メタデータのダウンロード]** をクリックし、データ ファイルを **c:\\SmarterUMetaData.cer** としてローカルに保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-smarteru-tutorial/IC777325.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-smarteru-tutorial/IC777325.png "Configure Single Sign-On")
 
 4.  別の Web ブラウザー ウィンドウで、SmarterU 企業サイトに管理者としてログインします。
 
-5.  上部のメニューで **[Account Settings]** をクリックします。
+5.  上部のツールバーで **[Account Settings]** をクリックします。
 
     ![アカウント設定](./media/active-directory-saas-smarteru-tutorial/IC777326.png "アカウント設定")
 
@@ -86,7 +99,7 @@
     5.  ダウンロードしたメタデータ ファイルの内容をコピーし、**[Okta Metadata]** テキスト ボックスに貼り付けます。
     6.  **[保存]** をクリックします。
 
-7.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+7.  Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-smarteru-tutorial/IC777328.png "Configure Single Sign-On")
 
@@ -123,10 +136,10 @@ Azure AD ユーザーが SmarterU にログインできるようにするには�
 
     ![ユーザーの割り当て](./media/active-directory-saas-smarteru-tutorial/IC777330.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![あり](./media/active-directory-saas-smarteru-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

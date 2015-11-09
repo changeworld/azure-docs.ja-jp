@@ -18,6 +18,12 @@
 
 
 # bcp を使用したデータの読み込み
+
+> [AZURE.SELECTOR]
+- [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)
+- [PolyBase](sql-data-warehouse-load-with-polybase-short.md)
+- [BCP](sql-data-warehouse-load-with-bcp.md)
+
 **[bcp][]** はコマンド ライン形式の一括読み込みユーティリティの一種であり、これを使用して SQL Server、データ ファイル、および SQL Data Warehouse の間でデータをコピーできます。bcp を使用して SQL Data Warehouse のテーブルに多数の行をインポートしたり、SQL Server のテーブルからデータ ファイルにデータをエクスポートしたりします。queryout オプションと併用する場合を除き、bcp を使用するときに Transact-SQL の知識は必要ありません。
 
 bcp を使用すれば、すばやく、簡単に SQL Data Warehouse データベースとの間で小規模なデータ セットを読み込み/抽出できます。bcp を使用して読み込み/抽出する場合に推奨される正確なデータ量は、Azure データ センターへのネットワーク接続によって異なります。一般に、ディメンション テーブルは読み込んで抽出できますが、非常に大容量のファクト テーブルは読み込みや抽出に非常に時間がかかる場合があります。
@@ -32,7 +38,10 @@ bcp では次のことができます。
 - bcp in コマンドを使用してテーブルにデータをインポートする
 - bcp out コマンドを使用してテーブルからデータをエクスポートする
 
+>[AZURE.VIDEO loading-data-into-azure-sql-data-warehouse-with-bcp]
+
 ## 前提条件
+
 このチュートリアルを進めるには、次が必要です。
 
 - SQL Data Warehouse データベース
@@ -41,10 +50,12 @@ bcp では次のことができます。
 
 >[AZURE.NOTE]bcp および sqlcmd ユーティリティは [Microsoft ダウンロード センター][]からダウンロードできます。
 
-##SQL Data Warehouse へのデータのインポート
+## SQL Data Warehouse へのデータのインポート
+
 このチュートリアルでは、Azure SQL Data Warehouse でテーブルを作成し、そのデータをテーブルにインポートします。
 
 ### 手順 1: Azure SQL Data Warehouse でテーブルを作成する
+
 コマンド プロンプトから次のコマンドを使用してインスタンスに接続します。値は適宜置き換えて使用してください。
 
 ```
@@ -162,4 +173,4 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 <!--Other Web references-->
 [Microsoft ダウンロード センター]: http://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

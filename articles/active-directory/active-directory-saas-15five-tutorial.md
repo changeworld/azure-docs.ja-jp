@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と 15Five の統合 | Microsoft Azure" description="Azure Active Directory で 15Five を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と 15Five の統合 | Microsoft Azure" 
+    description="Azure Active Directory で 15Five を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と 15Five の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=528017)をクリックしてください。
 
 このチュートリアルの目的は、Azure と 15Five の統合を紹介することです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   15Five でのシングル サインオンが有効なサブスクリプション
 
-このチュートリアルを完了すると、15Five に割り当てた Azure AD ユーザーは、15Five 企業サイト (サービス プロバイダーが開始したサインオン) で、または[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、15Five に割り当てた Azure AD ユーザーは、15Five 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -42,11 +55,11 @@
 
     ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-15five-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  [**検索**] ボックスに、「**15Five**」と入力します。
+6.  **検索ボックス**に、「**15Five**」と入力します。
 
     ![アプリケーション ギャラリー](./media/active-directory-saas-15five-tutorial/IC784668.png "アプリケーション ギャラリー")
 
-7.  結果ウィンドウで [**15Five**] を選択し、[**完了**] をクリックしてアプリケーションを追加します。
+7.  結果ウィンドウで **[15Five]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![15Five](./media/active-directory-saas-15five-tutorial/IC784669.png "15Five")
 ##シングル サインオンの構成
@@ -55,15 +68,15 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **15Five** アプリケーション統合ページで [**シングル サインオンの構成**] をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **15Five** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-15five-tutorial/IC784670.png "シングル サインオンの構成")
 
-2.  [**ユーザーの 15Five へのアクセスを設定してください**] ページで、[**Microsoft Azure AD のシングル サインオン**] を選択し、[**次へ**] をクリックします。
+2.  **[ユーザーの 15Five へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![シングル サインオンの構成](./media/active-directory-saas-15five-tutorial/IC784671.png "シングル サインオンの構成")
 
-3.  [**アプリケーション URL の構成**] ページの [**15Five サインイン URL]** テキスト ボックスに、"**https://company.15Five.com*" というパターンの URL を入力し、[**次へ**] をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[15Five サインイン URL]** テキスト ボックスに、"**https://company.15Five.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-15five-tutorial/IC784672.png "アプリケーション URL の構成")
 
@@ -73,7 +86,7 @@
 
     >[AZURE.NOTE]15Five サポート チームがシングル サインオンを有効にする必要があります。
 
-5.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、[**完了**] をクリックして [**シングル サインオンの構成**] ダイアログを閉じます。
+5.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-15five-tutorial/IC784674.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
@@ -84,7 +97,7 @@ Azure AD ユーザーが 15Five にログインできるようにするには、
 
 1.  **15Five** 企業サイトに管理者としてログインします。
 
-2.  [**会社の管理**] に移動します。
+2.  **[会社の管理]** に移動します。
 
     ![会社の管理](./media/active-directory-saas-15five-tutorial/IC784675.png "会社の管理")
 
@@ -111,14 +124,14 @@ Azure AD ユーザーが 15Five にログインできるようにするには、
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  **15Five** アプリケーション統合ページで、[**ユーザーの割り当て**] をクリックします。
+2.  **15Five** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-15five-tutorial/IC784678.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
 
     ![あり](./media/active-directory-saas-15five-tutorial/IC767830.png "あり")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を参照してください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

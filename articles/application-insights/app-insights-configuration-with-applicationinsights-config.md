@@ -213,58 +213,9 @@ SDK のメモリー内ストレージに格納できるテレメトリ項目の�
    </ApplicationInsights>
 ```
 
-## カスタム初期化子
+## テレメトリの初期化子
 
-
-標準の初期化子がアプリケーションに適切でない場合、独自の初期化子を作成できます。
-
-テレメトリのすべてのクライアントを初期化するために使用される値を設定するには、コンテキスト初期化子を使用します。次の例では、アプリの複数のバージョンを発行した場合、カスタム プロパティでフィルター処理してデータを分離できるようにすることができます。
-
-    plublic class MyContextInitializer: IContextInitializer
-    {
-        public void Initialize(TelemetryContext context)
-        {
-          context.Properties["AppVersion"] = "v2.1";
-        }
-    }
-
-処理を各イベントに追加するには、テレメトリの初期化子を使用します。たとえば、Web SDK は、応答コードが 400 以上の要求をすべて失敗としてフラグ設定します。動作をオーバーライドすることもできます。
-
-    public class MyTelemetryInitializer : ITelemetryInitializer
-    {
-        public void Initialize(ITelemetry telemetry)
-        {
-            var requestTelemetry = telemetry as RequestTelemetry;
-            if (requestTelemetry == null) return;
-            int code;
-            bool parsed = Int32.TryParse(requestTelemetry.ResponseCode, out code);
-            if (!parsed) return;
-            if (code >= 400 && code < 500)
-            {
-                requestTelemetry.Success = true;
-                requestTelemetry.Context.Properties["Overridden400s"] = "true";
-            }            
-        }
-    }
- 
-初期化子をインストールするには、ApplicationInsights.config に行を追加します。
-
-    <TelemetryInitializers> <!-- or ContextInitializers -->
-    <Add Type="MyNamespace.MyTelemetryInitializer, MyAssemblyName" />
-
-
-あるいは、アプリケーション実行の早い段階で初期化子をインストールするコードを記述することもできます。次に例を示します。
-
-
-    // In the app initializer such as Global.asax.cs:
-
-    protected void Application_Start()
-    {
-      TelemetryConfiguration.Active.TelemetryInitializers.Add(
-                new MyTelemetryInitializer());
-            ...
-
-
+アプリから収集されたテレメトリのフィルター処理と変更を行うテレメトリの初期化子を記述できます。これらは、.config ファイルと標準モジュールから初期化できます。[詳細情報](app-insights-api-filtering-sampling.md)
 
 
 ## InstrumentationKey
@@ -313,4 +264,4 @@ TelemetryClient のすべてのインスタンスのキーを設定するには 
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

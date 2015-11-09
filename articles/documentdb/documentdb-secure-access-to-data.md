@@ -2,7 +2,7 @@
 	pageTitle="DocumentDB のデータへのアクセスをセキュリティで保護する方法 | Microsoft Azure" 
 	description="マスター キー、読み取り専用キー、ユーザー、アクセス許可など、DocumentDB のアクセス制御の概念について説明します。" 
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="ryancrawcour" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=""/>
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
-	ms.author="stbaro"/>
+	ms.date="10/16/2015" 
+	ms.author="ryancraw"/>
 
 # DocumentDB のデータへのアクセスのセキュリティ保護 #
 
@@ -163,4 +163,4 @@ DocumentDB アクセス許可リソースは DocumentDB ユーザーに関連付
 - DocumentDB 認証トークンを作成する方法については、[ここ](https://msdn.microsoft.com/library/azure/dn783368.aspx)をクリックしてください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

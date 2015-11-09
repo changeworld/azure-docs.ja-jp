@@ -92,7 +92,7 @@ iOS アプリケーションの場合、BLOB ストレージに対するクラ�
 
 2. 次に、Azure CLI で次のコマンドを入力し、アカウントの接続文字列を取得します。
 
-		azure storage account connectionString show youraccountname
+		azure storage account connectionstring show youraccountname
 
 3. 生成した接続文字列で環境変数を作成します。
 
@@ -352,10 +352,10 @@ NSString からブロック BLOB をアップロードする場合だけでな�
 - [Azure Storage REST API]
 - [Azure Storage チーム ブログ]
 
-このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/ja-jp/home?forum=windowsazuredata)または[スタック オーバーフロー](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)に投稿してください。Azure Storage の機能についてご提案がある場合は、[Azure Storage のフィードバック](http://feedback.azure.com/forums/217298-storage)に投稿してください。
+このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/ja-JP/home?forum=windowsazuredata)または[スタック オーバーフロー](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)に投稿してください。Azure Storage の機能についてご提案がある場合は、[Azure Storage のフィードバック](http://feedback.azure.com/forums/217298-storage)に投稿してください。
 
 [Azure Storage iOS ライブラリ]: https://github.com/azure/azure-storage-ios
 [Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

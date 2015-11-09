@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Abintegro の統合 | Microsoft Azure" description="Azure Active Directory で Abintegro を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Abintegro の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Abintegro を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Abintegro の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=529073)をクリックしてください。
 
 このチュートリアルでは、Azure と Abintegro の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Abintegro でのシングル サインオンが有効なサブスクリプション
 
-このチュートリアルを完了すると、Abintegro に割り当てた Azure AD ユーザーは、Abintegro 企業サイト (サービス プロバイダーが開始したサインオン) で、または[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Abintegro に割り当てた Azure AD ユーザーは、Abintegro 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -42,11 +55,11 @@
 
     ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-abintegro-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  [**検索**] ボックスに、「**Abintegro**」と入力します。
+6.  [**検索ボックス**に、「**Abintegro**」と入力します。
 
     ![アプリケーション ギャラリー](./media/active-directory-saas-abintegro-tutorial/IC790077.png "アプリケーション ギャラリー")
 
-7.  結果ウィンドウで [**Abintegro**] を選択し、[**完了**] をクリックしてアプリケーションを追加します。
+7.  結果ウィンドウで **[Abintegro]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![Abintegro](./media/active-directory-saas-abintegro-tutorial/IC790078.png "Abintegro")
 ##シングル サインオンの構成
@@ -63,11 +76,11 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-abintegro-tutorial/IC790080.png "シングル サインオンの構成")
 
-3.  **[アプリケーション URL の構成]** ページの **[Abintegro サインオン URL]** テキスト ボックスに、ユーザーが Abintegro アプリケーションのサインオンに使用する URL (例: `https://dev.abintegro.com/Shibboleth.sso/Login?entityID=<Issuer>&target=https://dev.abintegro.com/secure/`) を入力して、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Abintegro サインオン URL]** テキスト ボックスに、ユーザーが Abintegro アプリケーションのサインオンに使用する URL (例: `https://dev.abintegro.com/Shibboleth.sso/Login?entityID=<Issuer>&target=https://dev.abintegro.com/secure/`) を入力し、**[次へ]** をクリックします。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-abintegro-tutorial/IC790081.png "アプリケーション URL の構成")
 
-4.  **[Abintegro でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+4.  **[Abintegro でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてコンピューターにメタデータ ファイルを保存します。
 
     ![シングル サインオンの構成](./media/active-directory-saas-abintegro-tutorial/IC790082.png "シングル サインオンの構成")
 
@@ -93,10 +106,10 @@ Abintegro へのユーザー プロビジョニングの構成にあたって必
 
     ![ユーザーの割り当て](./media/active-directory-saas-abintegro-tutorial/IC790084.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-abintegro-tutorial/IC767830.png "あり")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を参照してください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

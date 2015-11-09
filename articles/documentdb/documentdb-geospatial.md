@@ -13,7 +13,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="data-services" 
-    ms.date="08/11/2015" 
+    ms.date="10/27/2015" 
     ms.author="arramac"/>
     
 # Azure DocumentDB で地理空間データを扱う
@@ -31,7 +31,7 @@
 空間データは、物体の空間における位置と形状を表現します。ほとんどのアプリケーションにおける空間データは、地球上の物体、つまり地理空間データに対応します。空間データを使用することで、人物の位置や、関心のある場所、都市や湖の境界を表現することができます。代表的な使用例に近接検索クエリがあります (例: "現在地付近に存在するコーヒー ショップをすべて検索")。
 
 ### GeoJSON
-DocumentDB は、[GeoJSON 仕様](http://geojson.org/geojson-spec.html)に基づいて表現された地理空間データのインデックスとクエリをサポートしています。GeoJSON データの構造は常に有効な JSON オブジェクトであるため、特殊なツールやライブラリがなくても、DocumentDB を使って保存したりクエリを実行したりすることができます。DocumentDB SDK には、空間データを簡単に扱うことができるヘルパー クラスとヘルパー メソッドが用意されています。
+DocumentDB は、[GeoJSON 仕様](http://geojson.org/geojson-spec.html)を使用して表現された地理空間ポイント データのインデックスとクエリをサポートしています。GeoJSON データの構造は常に有効な JSON オブジェクトであるため、特殊なツールやライブラリがなくても、DocumentDB を使って保存したりクエリを実行したりすることができます。DocumentDB SDK には、空間データを簡単に扱うことができるヘルパー クラスとヘルパー メソッドが用意されています。
 
 ### Point、LineString、Polygon
 **Point** は、空間における一点の位置を表します。スーパーやキオスクの所在地、自動車、都市などの位置は、地理空間データにおけるポイントによって正確に表されます。GeoJSON (と DocumentDB) では、ポイントがその座標ペアまたは経度/緯度によって表されます。次に示したのは、ポイントを表す JSON の例です。
@@ -81,7 +81,7 @@ GeoJSON は、Point に加え、LineString と Polygon をサポートしてい�
 >
 >ポリゴン内のポイントは、反時計回りに指定する必要があります。時計回りに指定されたポリゴンは、その中の領域を逆にしたものを表します。
 
-GeoJSON では、Point、LineString、Polygon に加え、複数の地理空間位置をグループ化したり、位置情報を持った任意のプロパティを **Feature** として関連付けたりする場合の表現方法も規定されています。これらのオブジェクトは有効な JSON であるため、いずれも DocumentDB で保存、処理することができます。
+GeoJSON では、Point、LineString、Polygon に加え、複数の地理空間位置をグループ化したり、位置情報を持った任意のプロパティを **Feature** として関連付けたりする場合の表現方法も規定されています。これらのオブジェクトは有効な JSON であるため、いずれも DocumentDB で保存、処理することができます。ただし、DocumentDB では、ポイントのインデックス作成のみサポートします。
 
 ### 座標参照系
 
@@ -355,4 +355,4 @@ DocumentDB の地理空間機能の基本的な使い方を身に付けたら、
 - [DocumentDB クエリ](documentdb-sql-query.md)についてさらに理解を深める
 - [DocumentDB のインデックス作成ポリシー](documentdb-indexing-policies.md)についてさらに理解を深める
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

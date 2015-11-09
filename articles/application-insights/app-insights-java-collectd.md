@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/14/2015" 
+	ms.date="10/21/2015" 
 	ms.author="awills"/>
  
 # collectd: Application Insights での Unix パフォーマンス メトリック
@@ -143,4 +143,4 @@ Application Insights のリソースで、[メトリックス エクスプロー
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

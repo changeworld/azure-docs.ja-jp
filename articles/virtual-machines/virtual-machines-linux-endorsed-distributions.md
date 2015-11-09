@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="動作保証済み Linux ディストリビューション | Microsoft Azure" 
-	description="Azure での動作保証済み Linux ディストリビューションについて、Ubuntu、OpenLogic、Oracle、および SUSE に関する指針も含めて、説明します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="szarkos" 
-	manager="timlt" 
+<properties
+	pageTitle="動作保証済み Linux ディストリビューション | Microsoft Azure"
+	description="Azure での動作保証済み Linux ディストリビューションについて、Ubuntu、OpenLogic、Oracle、および SUSE に関する指針も含めて、説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="szarkos"
+	manager="timlt"
 	editor="tysonn"
-	tags="azure-service-management,azure-resource-manager" 
+	tags="azure-service-management,azure-resource-manager"
 	/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-linux" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/03/2015" 
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/03/2015"
 	ms.author="szark"/>
 
 
@@ -37,7 +37,7 @@ Azure Linux エージェントは、Azure ギャラリーのイメージにあ�
 
 ディストリビューション|バージョン|ドライバー|エージェント
 ---|---|---|---
-Canonical Ubuntu|Ubuntu 12.04、14.04、14.10、15.04|カーネル内|パッケージ: リポジトリ内の "WALinuxAgent"<p><p> ソース: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
+Canonical Ubuntu|Ubuntu 12.04、14.04、15.04、および 15.10|カーネル内|パッケージ: リポジトリ内の "WALinuxAgent"<p><p> ソース: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
 CentOS by OpenLogic |CentOS 6.3+、7.0+| CentOS 6.3:[LIS ダウンロード](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4 以上、カーネル内。|パッケージ: <a href="http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/">OpenLogic リポジトリ内の "WALinuxAgent"<p><p> ソース: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
 [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)|494\.4.0+ |カーネル内|ソース: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent)
 Oracle Linux| 6\.4+、7.0+|カーネル内|パッケージ: リポジトリ内の "WALinuxAgent" <p><p>ソース: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
@@ -79,6 +79,4 @@ Oracle の戦略は、パブリック クラウドとプライベート クラ�
 
 SUSE Linux Enterprise Server on Azure は、クラウド コンピューティングで優れた信頼性とセキュリティを実現する実績あるプラットフォームです。SUSE の多機能な Linux プラットフォームは Azure クラウド サービスとシームレスに統合され、管理の容易なクラウド環境を実現します。SUSE Linux Enterprise Server には、1,800 社を超える独立系ソフトウェア ベンダーによる 9,200 本を超える公認アプリケーションが存在し、SUSE は、データ センターで実行されているワークロードを Azure に安心して自信を持ってデプロイできることを保証しています。
 
- 
-
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->
