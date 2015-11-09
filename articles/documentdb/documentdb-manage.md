@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/27/2015" 
+	ms.date="10/28/2015" 
 	ms.author="mimig"/>
 
 # DocumentDB 容量のニーズの管理
@@ -77,4 +77,4 @@ Azure プレビュー ポータルでパフォーマンス レベルを監視す
 コレクションのパフォーマンス レベルの選択の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

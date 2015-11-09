@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="10/20/2015"
+	ms.date="10/23/2015"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -28,9 +28,10 @@
 
 この記事では、PowerShell を使用して Azure SQL Database の BACPAC をエクスポートする手順について説明します。
 
-BACPAC は、データベース スキーマとデータを含む .bacpac ファイルです。詳細については、「[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx)」の「バックアップ パッケージ (.bacpac)」を参照してください。
+[BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) は、データベース スキーマとデータを含む .bacpac ファイルです。BACPAC は、サーバー間でのデータベースの移動、[ローカル データベースのクラウドへの移行](sql-database-cloud-migrate.md)、既存のデータベースのオープン フォーマットでのアーカイブに主に使用します。
 
-> [AZURE.NOTE]Azure SQL Database では、すべてのユーザー データベースのバックアップが自動的に作成されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
+> [AZURE.NOTE]BACPAC はバックアップおよび復元操作に使用するためのものでありません。Azure SQL Database では、すべてのユーザー データベースのバックアップが自動的に作成されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
+
 
 BACPAC は Azure Storage BLOB コンテナーにエクスポートされます。操作が正常に完了した後にダウンロードできます。
 
@@ -55,11 +56,11 @@ BACPAC は Azure Storage BLOB コンテナーにエクスポートされます�
 
 ### Azure サブスクリプションを選択します。
 
-サブスクリプションを選択するには、サブスクリプション ID またはサブスクリプション名 (**-SubscriptionName**) が必要になります。サブスクリプション ID は前の手順で示された情報からコピーできます。または、複数のサブスクリプションがあり、詳しい情報が必要な場合は、**Get-AzureSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。ご利用のサブスクリプションを取得したら次のコマンドレットを実行します。
+サブスクリプションを選択するには、サブスクリプション ID またはサブスクリプション名 (**-SubscriptionName**) が必要です。サブスクリプション ID は前の手順で示された情報からコピーできます。複数のサブスクリプションがあり、詳しい情報が必要な場合は、**Get-AzureSubscription** コマンドレットを実行し、結果セットから目的のサブスクリプション情報をコピーできます。ご利用のサブスクリプションを取得したら次のコマンドレットを実行します。
 
 	Select-AzureSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
 
-**Select-AzureSubscription** を正常に実行すると、PowerShell プロンプトに戻ります。サブスクリプションが複数ある場合は、**Get-AzureSubscription** を実行して、使用するサブスクリプションが **IsCurrent: True** と表示されていることを確認できます。
+**Select-AzureSubscription** を正常に実行すると、PowerShell プロンプトに戻ります。サブスクリプションが複数ある場合は、**Get-AzureSubscription** を実行し、使用するサブスクリプションが **IsCurrent: True** と表示されていることを確認できます。
 
 
 ## 特定の環境用の変数の設定
@@ -69,10 +70,10 @@ BACPAC は Azure Storage BLOB コンテナーにエクスポートされます�
 サーバーとデータベースの名前は、アカウントに現在存在するサーバーとデータベースに置き換えます。BLOB 名については、作成される BACPAC ファイル名を入力します。BACPAC ファイル名として任意の名前を入力できますが、.bacpac 拡張子を含める必要があります。
 
     $ServerName = "servername"
-    $DatabaseName = "nameofdatabasetobackup"
+    $DatabaseName = "nameofdatabasetoexport"
     $BlobName = "filename.bacpac"
 
-[Azure プレビュー ポータル](https://portal.azure.com)でストレージ アカウントを参照し、これらの値を取得します。プライマリ アクセス キーは、ストレージ アカウントのブレードで **[すべての設定]** をクリックしてから **[キー]** をクリックすることで検索できます。
+[Azure プレビュー ポータル](https://portal.azure.com)で、ストレージ アカウントを参照して、これらの値を取得します。プライマリ アクセス キーは、ストレージ アカウントのブレードで **[すべての設定]** をクリックし、**[キー]** をクリックすることで検索できます。
 
     $StorageName = "storageaccountname"
     $ContainerName = "blobcontainername"
@@ -147,4 +148,4 @@ BACPAC は Azure Storage BLOB コンテナーにエクスポートされます�
 - [災害復旧訓練](sql-database-disaster-recovery-drills.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

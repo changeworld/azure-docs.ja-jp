@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="10/19/2015" 
+    ms.date="10/23/2015" 
     ms.author="elizapo" />
 
 
@@ -42,8 +42,8 @@ Azure RemoteApp では、USB デバイスをリダイレクトするために、
 
 さらに優れた方法、つまり 2 番目のオプションでは、次の手順に従って、特定のデバイス クラス GUID を見つけます。
 
-1. デバイス マネージャーを開き、リダイレクトするデバイスを探して右クリックし、プロパティを開きます。![Open the Device Manager](./media/remoteapp-usbredir/ra-devicemanager.png)
-2. **[詳細]** タブで、**[クラス GUID]** プロパティを選択します。表示された値は、その種類のデバイスのクラス GUID です。![Camera properties](./media/remoteapp-usbredir/ra-classguid.png)
+1. デバイス マネージャーを開き、リダイレクトするデバイスを探して右クリックし、プロパティを開きます。![デバイス マネージャーを開く](./media/remoteapp-usbredir/ra-devicemanager.png)
+2. **[詳細]** タブで、**[クラス GUID]** プロパティを選択します。表示された値は、その種類のデバイスのクラス GUID です。![カメラのプロパティ](./media/remoteapp-usbredir/ra-classguid.png)
 3. このクラス GUID 値を使用して、それに対応するデバイスをリダイレクトします。
 
 次に例を示します。
@@ -64,7 +64,7 @@ Azure RemoteApp では、USB デバイスをリダイレクトするために、
 
 1. 「[デバイスやリソースをリモート デスクトップ セッションで使用する方法](http://windows.microsoft.com/ja-JP/windows7/How-can-I-use-my-devices-and-resources-in-a-Remote-Desktop-session)」の説明に従い、リモート デスクトップ セッションでデバイス リダイレクトを有効にします。
 2. リモート デスクトップ接続を開き、**[オプションの表示]** をクリックします。
-3. **[名前を付けて保存]** をクリックし、現在の接続設定を RDP ファイルに保存します。![Save the settings as an RDP file](./media/remoteapp-usbredir/ra-saveasrdp.png)
+3. **[名前を付けて保存]** をクリックし、現在の接続設定を RDP ファイルに保存します。![設定を RDP ファイルとして開く](./media/remoteapp-usbredir/ra-saveasrdp.png)
 4. ファイル名と場所 (たとえば、"MyConnection.rdp" と "This PC\\Documents") を選択し、ファイルを保存します。
 5. テキスト エディターで MyConnection.rdp ファイルを開き、リダイレクトするデバイスのインスタンス ID を検索します。
 
@@ -72,4 +72,9 @@ Azure RemoteApp では、USB デバイスをリダイレクトするために、
 
 	Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "nusbdevicestoredirect:s: USB<Device InstanceID value>"
 
-<!---HONumber=Oct15_HO4-->
+
+
+### サポートのお願い 
+記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上へスクロールし、**[GitHub で編集]** をクリックして、変更を加えることができます。変更はこちらで確認し、承認されると、変更点や改善点がこのページに反映されます。
+
+<!---HONumber=Nov15_HO1-->

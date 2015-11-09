@@ -25,6 +25,6 @@
 これで、アプリケーションが AAD 内に構成され、ユーザーは AAD サインオンを使用してログインできます。
 
 [Microsoft Azure の管理ポータル]: https://manage.windowsazure.com/
-[Azure Active Directory でモバイル アプリを構成する方法]: ../articles/app-service-how-to-configure-active-directory-authentication-preview.md
+[Azure Active Directory でモバイル アプリを構成する方法]: ../articles/app-service-how-to-configure-active-directory-authentication.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/16/2015"
+	ms.date="10/20/2015"
 	ms.author="cephalin"/>
 
 # Azure App Service の Web アプリの診断ログの有効化
@@ -46,7 +46,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 
 実行時にこれらのログを取得してトラブルシューティングに役立てることができます。詳細については、[Visual Studio での Azure Web アプリのトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)に関するページを参照してください。
 
-App Service Web Apps は、Web アプリにコンテンツをパブリッシュしたときのデプロイ情報もログに記録します。これは自動的に行われ、デプロイ ログの構成設定はありません。デプロイ ログでは、デプロイが失敗した理由を特定できます。たとえば、カスタムのデプロイ スクリプトを使用している場合は、デプロイ ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
+App Service Web Apps は、Web アプリにコンテンツを発行したときのデプロイ情報もログに記録します。これは自動的に行われ、デプロイ ログの構成設定はありません。デプロイ ログでは、デプロイが失敗した理由を特定できます。たとえば、カスタムのデプロイ スクリプトを使用している場合は、デプロイ ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
 
 ## <a name="enablediag"></a>診断を有効にする方法
 
@@ -67,6 +67,11 @@ App Service Web Apps は、Web アプリにコンテンツをパブリッシュ�
 * **テーブル ストレージ** - 指定された Azure ストレージ アカウントおよびテーブル名にアプリケーション診断情報が保存されます。
 * **BLOB ストレージ** - 指定された Azure ストレージ アカウントおよび BLOB コンテナーにアプリケーション診断情報が保存されます。
 * **保有期間** - 既定では、**BLOB ストレージ**からログが自動的に削除されることはありません。ログを自動的に削除するには、**[保有期間の設定]** を選択して、ログを保有する日数を入力します。
+
+>[AZURE.NOTE][ストレージ アカウントのアクセス キーを再生成する](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)場合は、該当するログ構成を更新後のキーを使用するように設定し直す必要があります。これを行うには、次の手順を実行します。
+>
+> 1. **[構成]** タブで、該当するログ機能を **[オフ]** に設定します。設定を保存します。
+> 2. ストレージ アカウントの BLOB またはテーブルへのログを再び有効にします。設定を保存します。
 
 ファイル システム、テーブル ストレージ、BLOB ストレージへのログ記録は、任意に組み合わせて同時に有効にすることができます。また、それぞれ個別にログ レベルを設定できます。たとえば、BLOB ストレージへのエラーと警告の長期間のログ記録、ファイル システムへの詳細レベルのログ記録を同時に有効にすることができます。
 
@@ -254,15 +259,15 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 
 ##<a name="nextsteps"></a>次のステップ
 
-- [Web Apps を監視する方法](/ja-jp/manage/services/web-sites/how-to-monitor-websites/)
+- [Web Apps を監視する方法](/ja-JP/manage/services/web-sites/how-to-monitor-websites/)
 - [Visual Studio での Azure の Web Apps のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)
 - [HDInsight での Web アプリ ログの分析](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
 > [AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

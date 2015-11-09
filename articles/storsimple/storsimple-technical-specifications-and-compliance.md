@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/26/2015"
+   ms.date="10/27/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスの技術的仕様とコンプライアンス
@@ -20,8 +20,6 @@
 ## 概要
 
 Microsoft Azure StorSimple デバイスのハードウェア コンポーネントは、この記事で説明されている技術的仕様と規制標準に準拠します。技術的仕様では、電源と冷却モジュール (PCM)、ディスク ドライブ、エンクロージャについて説明します。対応情報では、国際標準、安全性と排出量、ケーブルなどについて説明します。
-
-> [AZURE.NOTE]StorSimple デバイスの詳細については、[StorSimple 8000 シリーズ データシート](http://www.microsoft.com/server-cloud/products/storsimple/resources.aspx)をダウンロードしてください。
 
 ## 電源および冷却モジュールの仕様  
 
@@ -170,6 +168,8 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
 10 GbE ネットワーク インターフェイス、DATA 2、DATA 3 については、[サポートされるネットワーク ケーブルとモジュールの一覧](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)をご覧ください。
 
- 
+## 次のステップ
 
-<!---HONumber=Oct15_HO3-->
+StorSimple デバイスの仕様については、[StorSimple 8000 シリーズの仕様](http://storsimple.seagate.com/Specifications-8000)をダウンロードしてください。
+
+<!---HONumber=Nov15_HO1-->

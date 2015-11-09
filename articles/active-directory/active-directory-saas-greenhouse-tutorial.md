@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Greenhouse の統合 | Microsoft Azure" description="Azure Active Directory で Greenhouse を使用してシングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Greenhouse の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Greenhouse を使用してシングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Greenhouse の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=528192)をクリックしてください。
   
 このチュートリアルでは、Azure と Greenhouse の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Greenhouse シングル サインオンでのサブスクリプション
   
-このチュートリアルを完了すると、Greenhouse に割り当てた Azure AD ユーザーは、Greenhouse 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Greenhouse に割り当てた Azure AD ユーザーは、Greenhouse 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -63,11 +76,11 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-greenhouse-tutorial/IC790787.png "シングル サインオンの構成")
 
-3.  **[アプリケーション URL の構成]** ページの **[サインオン URL]** テキストボックスに、"**https://company.greenhouse.io*"" というパターンの URL を入力して、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページで、**[サインオン URL]** ボックスに、*https://company.greenhouse.io*" パターンの URL を入力し、**[次へ]** をクリックします。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-greenhouse-tutorial/IC790788.png "アプリケーション URL の構成")
 
-4.  **[Greenhouse でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにローカルでメタデータ ファイルを保存します。
+4.  **[Greenhouse でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックして、コンピューターにローカルでメタデータ ファイルを保存します。
 
     ![シングル サインオンの構成](./media/active-directory-saas-greenhouse-tutorial/IC790789.png "シングル サインオンの構成")
 
@@ -75,7 +88,7 @@
 
     >[AZURE.NOTE]Greenhouse サポート チームがシングル サインオンを有効にする必要があります。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-greenhouse-tutorial/IC790790.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
@@ -86,19 +99,19 @@ Azure AD ユーザーが Greenhouse にログインできるようにするに�
 
 1.  **Greenhouse** 企業サイトに管理者としてログインします。
 
-2.  上部のメニューで、**[構成]**、**[ユーザー]** の順にクリックします。
+2.  上部のメニューで、**[Configure]**、**[Users]** の順にクリックします。
 
     ![ユーザー](./media/active-directory-saas-greenhouse-tutorial/IC790791.png "ユーザー")
 
-3.  **[新しいユーザー]** をクリックします。
+3.  **[New Users]** をクリックします。
 
     ![新しいユーザー](./media/active-directory-saas-greenhouse-tutorial/IC790792.png "新しいユーザー")
 
-4.  **[新しいユーザーの追加]** セクションで、次の手順を実行します。
+4.  **[Add New User]** セクションで、次の手順を実行します。
 
     ![新しいユーザー名の追加](./media/active-directory-saas-greenhouse-tutorial/IC790793.png "新しいユーザー名の追加")
 
-    1.  **[ユーザー電子メールの入力]** テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力します。
+    1.  **[Enter user emails]** テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力します。
     2.  **[保存]** をクリックします。
         
 		>[AZURE.NOTE]Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
@@ -117,10 +130,10 @@ Azure AD ユーザーが Greenhouse にログインできるようにするに�
 
     ![ユーザーの割り当て](./media/active-directory-saas-greenhouse-tutorial/IC790794.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-greenhouse-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

@@ -1,7 +1,20 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Bonus.ly の統合 | Microsoft Azure" description="Azure Active Directory で Bonus.ly を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Bonus.ly の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Bonus.ly を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Bonus.ly の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=523806)をクリックしてください。
 
 このチュートリアルでは、Azure と Bonus.ly の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
@@ -49,7 +62,7 @@
     ![Bonusly](./media/active-directory-saas-bonus-tutorial/IC773682.png "Bonusly")
 ##シングル サインオンの構成
 
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Bonus.ly に対する認証を行えるようにする方法を説明します。Bonus.ly のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI) (証明書のサムプリント値を取得する方法)」をご覧ください。
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Bonus.ly に対する認証を行えるようにする方法を説明します。Bonus.ly のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI) を参照してください。
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
@@ -71,11 +84,11 @@
 
 5.  別のブラウザー ウィンドウで、**Bonus.ly** テナントにログインします。
 
-6.  上部のツール バーの **[Settings]** をクリックし、**[Integrations and apps]** を選択します。
+6.  上部のツール バーの **[設定]** をクリックし、**[Integrations and apps]** を選択します。
 
     ![Bonusly](./media/active-directory-saas-bonus-tutorial/IC773686.png "Bonusly")
 
-7.  **[Single Sign-On]** の **[SAML]** を選択します。
+7.  **[シングル サインオン]** の **[SAML]** を選択します。
 
 8.  **[SAML]** ダイアログ ページで、次の手順を実行します。
 
@@ -86,9 +99,9 @@
     3.  Azure ポータルで、**[Bonus.ly でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[IdP Login URL]** ボックスに貼り付けます。
     4.  エクスポートした証明書から **[サムプリント]** の値をコピーし、**[Cert Fingerprint]** ボックスに貼り付けます。
 
-        >[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI) (証明書のサムプリント値を取得する方法)」をご覧ください。
+        >[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value （証明書の拇印の値を取得する方法）](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
-9.  **[Save]** をクリックします。
+9.  **[保存]** をクリックします。
 
 10. Microsoft Azure AD ポータルで、構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -109,7 +122,7 @@ Azure AD ユーザーが Bonus.ly にログインできるようにするには�
 
     ![Users and bonuses](./media/active-directory-saas-bonus-tutorial/IC781042.png "Users and bonuses")
 
-4.  **[Manage Users]** をクリックします。
+4.  **[ユーザーの管理]** をクリックします。
 
     ![Manage Users](./media/active-directory-saas-bonus-tutorial/IC781043.png "Manage Users")
 
@@ -121,7 +134,7 @@ Azure AD ユーザーが Bonus.ly にログインできるようにするには�
 
     ![ユーザーの追加](./media/active-directory-saas-bonus-tutorial/IC781045.png "ユーザーの追加")
 
-    1.  **[Email]**、**[First name]**、**[Last name]** の各ボックスに、プロビジョニングする有効な AAD アカウントの対応する値を入力します。
+    1.  関連するテキスト ボックスに、プロビジョニングする有効な AAD アカウントの **[電子メール]**、**[名]**、**[姓]** を入力します。
     2.  **[保存]** をクリックします。
 
     >[AZURE.NOTE]アカウントがアクティブになる前に、AAD アカウント所有者に、アカウント確認用のリンクを含む電子メールが送信されます。
@@ -144,6 +157,6 @@ Azure AD ユーザーが Bonus.ly にログインできるようにするには�
 
     ![あり](./media/active-directory-saas-bonus-tutorial/IC767830.png "あり")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

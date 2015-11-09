@@ -1,11 +1,21 @@
-<properties pageTitle="チュートリアル: 受信同期のための Workday の構成 | Microsoft Azure" description="Azure Active Directory で受信同期を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法を説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: 受信同期のための Workday の構成 | Microsoft Azure" 
+    description="Azure Active Directory で受信同期を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法を説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: 受信同期のための Workday の構成
 >[AZURE.NOTE]Azure AD のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory (AD) Premium を利用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure AD Premium は現在サポートされていません。
-
-&nbsp;
-
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=330042)をクリックしてください。
 
 このチュートリアルでは、Workday から Microsoft Azure AD にユーザーをインポートするために、Workday と Microsoft Azure AD で実行する必要のある手順について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
@@ -153,9 +163,9 @@
 
 	![設定と管理者の資格情報](./media/active-directory-saas-inbound-synchronization-tutorial/IC750995.png "設定と管理者の資格情報")
 
-	1.  **[WORKDAY 管理ユーザー名]** テキストボックスに、「[統合システム ユーザーの作成](https://msdn.microsoft.com/library/azure/Dn762434.aspx#BKMK_CreateUser)」セクションで作成したユーザーの名前を入力します。    
+	1.  **[WORKDAY 管理ユーザー名]** テキスト ボックスに、「[統合システム ユーザーの作成](https://msdn.microsoft.com/library/azure/Dn762434.aspx#BKMK_CreateUser)」セクションで作成したユーザーの名前を入力します。    
     2.  **[WORKDAY 管理パスワード]** テキストボックスに、「[統合システム ユーザーの作成](https://msdn.microsoft.com/library/azure/Dn762434.aspx#BKMK_CreateUser)」セクションで作成したユーザーのパスワードを入力します。    
-    3.  **[WORKDAY テナント URL]** テキストボックスに、URL または Workday テナントを入力します。    
+    3.  **[WORKDAY テナント URL]** テキスト ボックスに、URL または Workday テナントを入力します。    
 
 3.  **[接続テスト]** ページで、**[テスト開始]** をクリックして接続を確認し、**[次へ]** をクリックします。
 
@@ -171,4 +181,4 @@
 
 これで、**[ユーザー]** セクションに移動して、Workday ユーザーがインポートされたかどうかを確認できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

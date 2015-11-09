@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="09/24/2015"
+   ms.date="10/22/2015"
    ms.author="alkohli"/>
 
 # StorSimple ソフトウェア、高可用性、ネットワークの要件
@@ -163,6 +163,9 @@ StorSimple デバイスはロックされたデバイスです。ただし、iSC
 
 <sup>3</sup> StorSimple デバイスのコントローラーの固定の IP アドレスがルーティング可能でインターネットに接続可能である必要があります。固定の IP アドレスは、デバイスに更新プログラムを提供するために使用されます。デバイスのコントローラーが固定の IP アドレスを使用してインターネットに接続できない場合は、StorSimple デバイスを更新できません。
 
+> [AZURE.IMPORTANT]StorSimple デバイスと Azure 間でファイアウォールが SSL トラフィックの変更や暗号化解除を行わないことを確認します。
+
+<br></br>
 ### ポートのルーティング
 
 ポートのルーティングは、StorSimple デバイスで実行されているソフトウェアのバージョンによって異なります。
@@ -197,4 +200,4 @@ StorSimple ソリューションの最適なパフォーマンスを得るため
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

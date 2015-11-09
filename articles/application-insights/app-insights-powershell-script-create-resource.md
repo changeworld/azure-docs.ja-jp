@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/17/2015" 
+	ms.date="10/21/2015" 
 	ms.author="awills"/>
 
 #  Application Insights リソースを作成するための PowerShell スクリプト
@@ -21,15 +21,15 @@
 
 [Visual Studio Application Insights](https://azure.microsoft.com/services/application-insights/) を使って新しいアプリケーションを監視する際や、新しいバージョンのアプリケーションを監視する際、Microsoft Azure で新しいリソースをセットアップします。このリソースは、アプリのテレメトリ データを分析、表示する場所です。
 
-You can automate the creation of a new resource by using PowerShell.
+PowerShell を使用して、新しいリソースの作成を自動化できます。
 
-For example, if you are developing a mobile device app, it's likely that, at any time, there will be several published versions of your app in use by your customers.You don't want to get the telemetry results from different versions mixed up.それで、ビルド プロセスを取得して、各ビルドで新しいリソースを作成します。
+たとえば、モバイル デバイス アプリを開発している場合、顧客によって使用されている発行済みのアプリのバージョンは常に複数存在する可能性があります。複数のバージョンから取得したテレメトリの結果を混在させないようにします。それで、ビルド プロセスを取得して、各ビルドで新しいリソースを作成します。
 
 ## Application Insights リソースを作成するスクリプト
 
 *出力*
 
-* App Insights 名 = erimattestapp
+* App Insights Name = mytestapp
 * IKey = 00000000-0000-0000-0000-000000000000
 
 *PowerShell スクリプト*
@@ -43,7 +43,8 @@ cls
 # Set Values
 ##################################################################
 
-#If running manually, comment this out before the first execution to login to the Azure Portal
+#If running manually, comment this out before the first execution to login to the Azure Portal:
+
 #Add-AzureAccount
 
 #Set the name of the Application Insights Resource
@@ -65,14 +66,14 @@ Switch-AzureMode AzureResourceManager
 Select-AzureSubscription -SubscriptionName "MySubscription"
 
 #Create the App Insights Resource
-$resource = New-AzureResource -Name $appInsightsName -ResourceGroupName $resourceGroupName -Tag @{ Name = "AppInsightsApp"; Value = $applicationTagName} -ResourceType "Microsoft.Insights/Components" -Location "Central US" -ApiVersion "2014-08-01" -PropertyObject @{"Type"="ASP.NET"} -Force 
+$resource = New-AzureResource -ResourceName $appInsightsName -ResourceGroupName $resourceGroupName -Tag @{ Name = "AppInsightsApp"; Value = $applicationTagName} -ResourceType "Microsoft.Insights/Components" -Location "Central US" -ApiVersion "2014-08-01" -PropertyObject @{"Type"="ASP.NET"} -Force -OutputObjectFormat New
 
 #Give team owner access - http://azure.microsoft.com/documentation/articles/role-based-access-control-powershell/
 New-AzureRoleAssignment -Mail "myTeam@fabrikam.com" -RoleDefinitionName Owner -Scope $resource.ResourceId | Out-Null
 
 #Display iKey
-Write-Host "App Insights Name = " $resource.Properties["Name"]
-Write-Host "IKey = " $resource.Properties["InstrumentationKey"]
+Write-Host "App Insights Name = " $resource.Name
+Write-Host "IKey = " $resource.Properties.InstrumentationKey
 
 ```
 
@@ -94,4 +95,4 @@ iKey を SDK で使用できるようにする方法は 2 つあります。
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

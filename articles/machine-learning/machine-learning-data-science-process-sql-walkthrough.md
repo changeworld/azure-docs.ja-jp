@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/18/2015" 
+	ms.date="10/27/2015" 
 	ms.author="mohabib;fashah;bradsev"/>
 
 
 # Cortana Analytics Process の活用: SQL Server を使用する
 
-このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) を使ってモデルのビルドとデプロイを行う方法を説明します。Advanced Analytics Process and Technology (ADAPT) ガイドに従って操作できます。
+このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) を使ってモデルのビルドとデプロイを行う方法を説明します。手順は、Cortana Analytics Process (CAP) ワークフローに従います。
 
 
 ## <a name="dataset"></a>NYC タクシー乗車データセットの説明
@@ -714,4 +714,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

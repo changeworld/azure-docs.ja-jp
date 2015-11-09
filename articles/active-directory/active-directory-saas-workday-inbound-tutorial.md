@@ -1,25 +1,23 @@
 <properties 
-  pageTitle="チュートリアル: 受信同期のための Workday の構成 | Microsoft Azure" 
-  description="Workday を Azure Active Directory の ID データのソースとして使用する方法について説明します。" 
-  services="active-directory" 
-  authors="MarkusVi"  
-  documentationCenter="na" 
-  manager="msStevenPo"/>
+    pageTitle="チュートリアル: 受信同期のための Workday の構成 | Microsoft Azure" 
+    description="Workday を Azure Active Directory の ID データのソースとして使用する方法について説明します。" 
+    services="active-directory" 
+    authors="MarkusVi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
 <tags 
-  ms.service="active-directory" 
-  ms.devlang="na" 
-  ms.topic="article" 
-  ms.tgt_pltfrm="na" 
-  ms.workload="identity" 
-  ms.date="08/01/2015" 
-  ms.author="markvi" />
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
 
 
 #チュートリアル: 受信同期のための Workday の構成
 
 
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=521880)をクリックしてください。
-  
 このチュートリアルでは、Workday から Azure AD にユーザーをインポートするために、Workday と Azure AD で実行する必要のある手順について説明します。
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
@@ -211,7 +209,7 @@
 3. **[接続テスト]** ページで、**[テスト開始]** をクリックして接続を確認し、**[次へ]** をクリックします。<br><br> ![接続テスト](./media/active-directory-saas-workday-inbound-tutorial/IC750996.png "接続テスト")  
  
 
-4. **[プロビジョニング]** オプション ページで、**[次へ]** をクリックします。<br><br> ![プロビジョニングのオプション](./media/active-directory-saas-workday-inbound-tutorial/IC750997.png "プロビジョニングのオプション")
+4. **[プロビジョニング オプション]** ページで、**[次へ]** をクリックします。<br><br> ![プロビジョニングのオプション](./media/active-directory-saas-workday-inbound-tutorial/IC750997.png "プロビジョニングのオプション")
 
 
 5. **[プロビジョニングの開始]** ダイアログで、**[完了]** をクリックします。<br><br> ![プロビジョニングの開始](./media/active-directory-saas-workday-inbound-tutorial/IC750998.png "プロビジョニングの開始")
@@ -226,4 +224,4 @@
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

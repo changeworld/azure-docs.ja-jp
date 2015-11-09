@@ -1,11 +1,13 @@
 
-Follow these steps to create a new App Service gateway to handle authentication. If you already have a gateway in the same resource group, you do not need to complete this section.
+認証を処理するための新しい App Service ゲートウェイを作成するには、次の手順に従います。同じリソース グループ内に既にゲートウェイがある場合、このセクションを完了する必要はありません。
 
-1. Visit the [Azure Portal]. Click **Browse All** > **Mobile Apps** > the backend that you just created. Click **Settings** > **Mobile** > **User authentication**. 
+1. [Azure ポータル]にアクセスします。**[すべて参照]**、**[Mobile Apps]**、作成したバックエンドの順にクリックします。**[設定]**、**[モバイル]**、**[ユーザー認証]** の順にクリックします。 
 
-2. You will be presented with a blade for creating your gateway. You do not need to enter any information, and the name of this gateway is automatically generated for you. Click **Create**.
+2. ゲートウェイを作成するためのブレードが表示されます。情報を入力する必要はありません。このゲートウェイの名前は自動的に生成されます。**[作成]** をクリックします。
 
-Next, you will use this gateway with an authentication provider.
+次は、認証プロバイダーでこのゲートウェイを使用します。
 
 <!-- URLs. -->
-[Azure Portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
+
+<!---HONumber=Nov15_HO1-->

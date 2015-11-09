@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="10/09/2015"
+      ms.date="10/28/2015"
       ms.author="hascipio; v-divte" />
 
 # Azure Marketplace 向けソリューション テンプレートの作成ガイド
@@ -44,20 +44,10 @@
 
 zip ファイルをアップロードしたら、[**証明書の要求**]　をクリックします。Microsoft の認定チームがファイルを確認し、トポロジを認定します。
 
-以下の手順を実行すると、エンドユーザー向けに実際にデプロイしなくても、作成エクスペリエンスを検証することもできます。
-
-1. *createUiDefinition.json* を保存して、絶対 URL を生成します。この URL は、パブリックにアクセスできるようにする必要があります。
-2. URL [[http://www.url-encode-decode.com/](http://www.url-encode-decode.com/)] をエンコードします。
-3. 強調表示されたテキストを、検証が必要な *createUiDefinition.json* の場所 (エンコードされた URL) に置き換えます。
-
-  https://portal.azure.com/?clientOptimizations=false#blade/Microsoft_Azure_Compute/CreateMultiVmWizardBlade/internal_bladeCallId/anything/internal_bladeCallerParams/ **{"initialData":{},"providerConfig":{"createUiDefinition":"http://yoururltocreateuidefinition.jsonURLencoded"}}**
-  
-4. 任意のブラウザーで URL をコピーして貼り付けると、createUiDefinition.json ファイルのエンド ユーザー エクスペリエンスを参照できます。
-
 > [AZURE.TIP]開発者がソリューション テンプレートのトポロジを作成して認定を取得する間、会社のビジネス、マーケティング、法務の部門はマーケティングおよび法的なコンテンツの作業を進めることができます。
 
 ## 次のステップ
-ソリューション テンプレートを作成し、認定に必要なファイルを含む zip ファイルを送信したら、ステージング環境でテストする前に、[Marketplace Marketing Content Guide (Marketplace マーケティング コンテンツ ガイド)](marketplace-publishing-push-to-staging.md) の指示に従います。
+ソリューション テンプレートを作成し、認定に必要なファイルを含む zip ファイルを送信したら、ステージング環境でテストする前に、「[マーケティング コンテンツを使用したプラン作成の実行](marketplace-publishing-push-to-staging.md)」の指示に従います。
 
 ## 関連項目
 - [Getting Started: How to publish an offer to the Azure Marketplace (概要: Azure Marketplace へのプランの発行方法)](marketplace-publishing-getting-started.md)
@@ -66,13 +56,13 @@ zip ファイルをアップロードしたら、[**証明書の要求**]　を�
 
 **VM 拡張機能** - [VM エージェントと VM 拡張機能の概要](https://msdn.microsoft.com/library/azure/dn832621.aspx) - [Azure VM 拡張機能とその機能](https://msdn.microsoft.com/library/azure/dn606311.aspx)
 
-**ARM** - [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates/) - [Simple ARM Template Examples (単純な ARM テンプレートの例)](https://github.com/rjmax/ArmExamples)
+**ARM** - [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates/) - [単純な ARM テンプレートの例](https://github.com/rjmax/ArmExamples)
 
-**Storage Account Throttles (ストレージ アカウントのスロットル)** - [How to Monitor for Storage Account Throttling (ストレージ アカウントのスロットルの監視方法)](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) - [Premium Storage](../storage/storage-premium-storage-preview-portal/#scalability-and-performance-targets-whJA-JPing-premium-storage)
+**Storage Account Throttles (ストレージ アカウントのスロットル)** - [How to Monitor for Storage Account Throttling (ストレージ アカウントのスロットルの監視方法)](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) - [Premium Storage](../storage/storage-premium-storage-preview-portal/#scalability-and-performance-targets-whja-JPing-premium-storage)
 
 [img-pubportal-menu-sol-templ]: media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
 [img-pubportal-sol-templ-new]: media/marketplace-publishing-solution-template-creation/pubportal-solution-template-new.png
 [link-acct-creation]: marketplace-publishing-microsoft-accounts-creation-registration.md
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

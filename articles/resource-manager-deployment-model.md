@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/07/2015"
+   ms.date="10/26/2015"
    ms.author="tomfitz"/>
 
 # リソース マネージャー デプロイと従来のデプロイを理解する
@@ -22,7 +22,7 @@
 
 従来のデプロイ モデルはサービス管理モデルとしても知られています。
 
-このトピックでは、2 つのモデルの違いと、従来のモデルからリソース マネージャーに移行するときに遭遇する問題について説明します。モデルの概要は説明しますが、個々のサービスの細かな違いについては取り上げません。Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
+このトピックでは、2 つのモデルの違いと、従来のモデルからリソース マネージャーに移行するときに遭遇する問題について説明します。モデルの概要は説明しますが、個々のサービスの細かな違いについては取り上げません。Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーにおける Azure Compute、Network、Storage プロバイダー](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
 
 多くのリソースは従来のモデルとリソース マネージャーの両方で問題なく動作します。これらのリソースは、従来のモデルで作成された場合でも、リソース マネージャーに完全対応します。何の心配もなく、特別な労力も必要とせず、リソース マネージャーに移行できます。
 
@@ -46,7 +46,7 @@
 
         ![preview portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        Compute、Storage、ネットワークのリソースについては、リソース マネージャーと従来のデプロイのどちらかを使用できます。 **[リソース マネージャー]** を選択します。
+        For Compute, Storage, and Networking resources, you have the option of using either Resourece Manager or Classic deployment. Select **Resource Manager**.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -77,7 +77,7 @@
 
         ![Azure portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-        または、プレビュー ポータルを使い、**クラシック** デプロイを指定 (Compute、Storage、ネットワーク).
+        Or, the preview portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
 
         ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
@@ -105,7 +105,7 @@
 - アプリケーションをアプリのライフサイクルを通して繰り返しデプロイできます。常にリソースが一貫した状態でデプロイされます。
 - 宣言型のテンプレートを利用し、デプロイを定義できます。 
 - 正しい順序でデプロイされるようにリソース間の依存性を定義できます。
-- ロールベースのアクセス制御 (RBAC) が管理プラットフォームにネイティブ統合されるため、リソース グループのすべてのサービスにアクセス制御を適用できます。
+- ロールベースの Access Control (RBAC) が管理プラットフォームにネイティブ統合されるため、リソース グループのすべてのサービスにアクセス制御を適用できます。
 - タグをリソースに適用し、サブスクリプションのすべてのリソースを論理的に整理できます。
 
 
@@ -155,15 +155,17 @@ Virtual Machines を使用するときには、重要な考慮事項がいくつ
 - リソース マネージャーのデプロイ モデルでデプロイされた仮想マシンは仮想ネットワークに含める必要があります。
 - 従来のデプロイ モデルでデプロイされた仮想マシンは仮想ネットワークに含める必要がありません。
 
-従来のデプロイからリソース マネージャーに移行するときの同等の Azure CLI コマンドの一覧については、「[VM 操作のためのリソース マネージャーとサービス管理の同等コマンド](./virtual-machines/xplat-cli-azure-manage-vm-asm-arm.md)」を参照してください。
+Virtual Machines のダウンロードに十分な時間を費やすことができる場合は、クラシック デプロイから [ASM2ARM PowerShell スクリプト](https://github.com/fullscale180/asm2arm)を使用するリソース マネージャーに移行できます。
 
-Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
+クラシック デプロイからリソース マネージャーに移行した場合の同等の Azure CLI コマンドの一覧については、「[VM 操作のためのリソース マネージャーとサービス管理の同等コマンド](./virtual-machines/xplat-cli-azure-manage-vm-asm-arm.md)」を参照してください。
 
-さまざまなデプロイ モデルから仮想ネットワークを接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](./virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーにおける Azure Compute、Network、Storage プロバイダー](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
+
+さまざまなデプロイ モデルから仮想ネットワークを接続する方法の詳細については、「[従来の VNet を新しい VNet に接続する](./virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
 
 ## 次のステップ
 
 - 宣言型デプロイ テンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイするためのコマンドについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

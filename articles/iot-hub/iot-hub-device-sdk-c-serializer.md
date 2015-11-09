@@ -12,7 +12,7 @@
      ms.devlang="cpp"
      ms.topic="article"
      ms.tgt_pltfrm="na"
-     ms.workload="nana"
+     ms.workload="na"
      ms.date="09/29/2015"
      ms.author="michelb"/>
 
@@ -656,4 +656,4 @@ serializer_deinit();
 
 また、この記事は、**C 用 Azure IoT デバイス SDK** を使用したアプリケーションの開発方法に関する 3 部構成のシリーズの最終回でもあります。この記事を読むことで、API の概要だけでなく、API のしくみについて理解するための十分な情報を得ることができます。さらに詳細な情報が必要な場合は、上で説明されていない SDK のサンプルもいくつか用意されています。さらに、詳細を知るために役立つリソースとして、[SDK ドキュメント](https://github.com/Azure/azure-iot-sdks)も参照してください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

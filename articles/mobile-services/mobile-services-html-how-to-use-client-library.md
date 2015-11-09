@@ -1,5 +1,5 @@
 <properties
-	pageTitle="HTML クライアントを使用する方法 | Microsoft Azure"
+	pageTitle="Azure Mobile Services での HTML クライアントの使用方法 | Microsoft Azure"
 	description="Azure Mobile Services 向け HTML クライアントを使用する方法について説明します。"
 	services="mobile-services"
 	documentationCenter=""
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="mobile-html"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="09/24/2015"
+	ms.date="10/23/2015"
 	ms.author="glenga"/>
 
-# Azure モバイル サービス向け HTML/JavaScript クライアントを使用する方法
+# Azure Mobile Services 向け HTML/JavaScript クライアントを使用する方法
 
 [AZURE.INCLUDE [mobile-services-selector-client-library](../../includes/mobile-services-selector-client-library.md)]
 
 ##概要
 
-このガイドでは、Azure のモバイル サービス向け HTML/JavaScript クライアントを使用して一般的なシナリオを実行する方法について説明します。Windows ストア JavaScript アプリと PhoneGap/Cordova アプリが含まれます。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。モバイル サービスを初めて使用する場合は、まず「[モバイル サービスの使用](mobile-services-html-get-started.md)」を完了することを検討してください。このクイック スタート チュートリアルでは、アカウントを構成し、初めてのモバイル サービスを作成します。
+このガイドでは、Azure Mobile Services 向け HTML/JavaScript クライアントを使用して一般的なシナリオを実行する方法について説明します。Windows ストア JavaScript アプリと PhoneGap/Cordova アプリが含まれます。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。Mobile Services を初めて使用する場合は、まず「[モバイル サービスの使用](mobile-services-html-get-started.md)」を完了することを検討してください。このクイック スタート チュートリアルでは、アカウントを構成し、初めてのモバイル サービスを作成します。
 
 [AZURE.INCLUDE [mobile-services-concepts](../../includes/mobile-services-concepts.md)]
 
@@ -66,7 +66,7 @@ SQL Database テーブルのデータにアクセスまたは変更するすべ�
 	    alert("Error: " + err);
 	});
 
-Query オブジェクトに呼び出し元の `where` を追加し、オブジェクトをパラメーターとして渡すことにより、`complete` 列に `false` 値が含まれる行のみを返すようにモバイル サービスに指示しています。また、次の要求 URI からわかるように、クエリ文字列自体にも変更を加えています。
+Query オブジェクトに呼び出し元の `where` を追加し、オブジェクトをパラメーターとして渡すことにより、`complete` 列に `false` 値が含まれる行のみを返すように Mobile Services に指示しています。また、次の要求 URI からわかるように、クエリ文字列自体にも変更を加えています。
 
 	GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
 
@@ -246,7 +246,7 @@ select 関数のパラメーターは、取得するテーブルの列の名で�
 
 ##<a name="odata-query"></a>OData クエリ操作を実行する
 
-モバイル サービスでは、REST クエリの作成と実行に OData クエリ URI 慣例を使用します。組み込まれているクエリ関数ですべての OData クエリ (特にプロパティないのサブストリング検索などの複雑なフィルター操作) が作成できるわけではありません。複雑なクエリには、次のように有効な OData クエリ オプション文字列を `read` 関数に渡すことができます。
+Mobile Services では、REST クエリの作成と実行に OData クエリ URI 慣例を使用します。組み込まれているクエリ関数ですべての OData クエリ (特にプロパティないのサブストリング検索などの複雑なフィルター操作) が作成できるわけではありません。複雑なクエリには、次のように有効な OData クエリ オプション文字列を `read` 関数に渡すことができます。
 
 	function refreshTodoItems() {
 	    todoItemTable.read("$filter=substringof('search_text',text)").then(function(items) {
@@ -386,7 +386,7 @@ Windows ストア アプリでは、クエリの結果を使用して、[ListVie
 
 ##<a name="authentication"></a>方法: ユーザーを認証する
 
-モバイル サービスは、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル [「モバイル サービスでの認証の使用」] を参照してください。
+Mobile Services は、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル [「モバイル サービスでの認証の使用」] を参照してください。
 
 >[AZURE.NOTE]PhoneGap または Cordova アプリで認証を使用するときは、次のプラグインもプロジェクトに追加する必要があります。
 >
@@ -397,7 +397,7 @@ Windows ストア アプリでは、クエリの結果を使用して、[ListVie
 _サーバー フロー_と_クライアント フロー_という 2 つの認証フローがサポートされます。サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
 
 ###サーバー フロー
-モバイル サービスによって Windows ストア アプリまたは HTML5 アプリの認証プロセスが管理されるようにするには、アプリケーションを ID プロバイダーに登録する必要があります。その後、モバイル サービス内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。詳細については、チュートリアル「[アプリへの認証の追加](mobile-services-html-get-started-users.md)」を参照してください。
+Mobile Services によって Windows ストア アプリまたは HTML5 アプリの認証プロセスが管理されるようにするには、アプリケーションを ID プロバイダーに登録する必要があります。その後、モバイル サービス内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。詳細については、チュートリアル「[アプリへの認証の追加](mobile-services-html-get-started-users.md)」を参照してください。
 
 ID プロバイダーを登録した後は、単純にプロバイダーの [MobileServiceAuthenticationProvider] 値で [LoginAsync メソッド] を呼び出すだけです。たとえば、Facebook にログインするには、次のコードを使用します。
 
@@ -409,10 +409,10 @@ ID プロバイダーを登録した後は、単純にプロバイダーの [Mob
 
 Facebook 以外の ID プロバイダーを使用している場合は、上の `login` メソッドに渡す値を `microsoftaccount`、`facebook`、`twitter`、`google`、`windowsazureactivedirectory` のいずれかに変更します。
 
-この場合、モバイル サービスは、選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後でモバイル サービス認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[login] 関数は、完了すると、**userId** フィールドのユーザー ID と **authenticationToken** フィールドのモバイル サービス認証トークンの両方を公開する JSON オブジェクト (**user**) を返します。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「認証トークンをキャッシュする」を参照してください。
+この場合、Mobile Services は、選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後で Mobile Services 認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[login] 関数は、完了すると、**userId** フィールドのユーザー ID と **authenticationToken** フィールドの Mobile Services 認証トークンの両方を公開する JSON オブジェクト (**user**) を返します。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「認証トークンをキャッシュする」を参照してください。
 
 ###クライアント フロー
-アプリケーションは個別に ID プロバイダーにアクセスして、返されたトークンを認証のためにモバイル サービスに提供することもできます。このクライアント フローでは、ユーザーにシングル サインイン エクスペリエンスを提供したり、ID プロバイダーから追加のユーザー データを取得したりすることができます。
+アプリケーションは個別に ID プロバイダーにアクセスして、返されたトークンを認証のために Mobile Services に提供することもできます。このクライアント フローでは、ユーザーにシングル サインイン エクスペリエンスを提供したり、ID プロバイダーから追加のユーザー データを取得したりすることができます。
 
 ####Facebook/Google SDK の基本的な例
 
@@ -444,7 +444,7 @@ Facebook 以外の ID プロバイダーを使用している場合は、上の 
 	      });
 	});
 
-この簡略化された例では、トークンを Live Connect から取得します。このトークンは、[login] 関数を呼び出すことによって、モバイル サービスに渡されます。
+この簡略化された例では、トークンを Live Connect から取得します。このトークンは、[login] 関数を呼び出すことによって、Mobile Services に渡されます。
 
 
 ####Microsoft アカウントの完全な例
@@ -504,10 +504,9 @@ Facebook 以外の ID プロバイダーを使用している場合は、上の 
 	// Start the sign-in process.
 	authenticate();
 
-これにより、Live Connect クライアントが初期化され、新しいログイン要求が Microsoft アカウントに送信され、返された認証トークンが Mobile Services に送信され、サインイン済みのユーザーに関する情報が表示されます。アプリは、認証が成功するまで起動しません。
-
-###認証トークンをキャッシュする
-場合によっては、最初のユーザー認証の後の login メソッドの呼び出しを避けることができます。そのためには、[sessionStorage] または [localStorage] を使用して、ユーザーが初めてログインするときに使用した現在のユーザー ID をキャッシュし、それ以降はユーザー ID がキャッシュに保存されているかどうかをチェックします。キャッシュが空の場合や呼び出しが失敗した場合 (現在のログイン セッションが期限切れになったことを示します) は、ログオン プロセスを実行する必要があります。
+これにより、Live Connect クライアントが初期化され、新しいログイン要求が Microsoft アカウントに送信され、返された認証トークンが Mobile Services に送信され、サインイン済みのユーザーに関する情報が表示されます。アプリは、認証が成功するまで起動しません。<!--- //this guidance may be bad from an XSS vulnerability standpoint. We need to find better guidance for this
+###Caching the authentication token
+In some cases, the call to the login method can be avoided after the first time the user authenticates. We can use [sessionStorage] or [localStorage] to cache the current user identity the first time they log in and every subsequent time we check whether we already have the user identity in our cache. If the cache is empty or calls fail (meaning the current login session has expired), we still need to go through the login process.
 
     // After logging in
     sessionStorage.loggedInUser = JSON.stringify(client.currentUser);
@@ -517,11 +516,12 @@ Facebook 以外の ID プロバイダーを使用している場合は、上の 
        client.currentUser = JSON.parse(sessionStorage.loggedInUser);
     } else {
        // Regular login flow
-   {
+   }
 
      // Log out
     client.logout();
     sessionStorage.loggedInUser = null;
+-->
 
 ##<a name="push-notifications"></a>方法: プッシュ通知に登録する
 
@@ -531,7 +531,7 @@ Facebook 以外の ID プロバイダーを使用している場合は、上の 
 
 ##<a name="errors"></a>方法: エラーを処理する
 
-モバイル サービスには、エラーの検出、検証、回避のためのさまざまな方法があります。
+Mobile Services には、エラーの検出、検証、回避のためのさまざまな方法があります。
 
 たとえば、サーバー スクリプトは、モバイル サービスに登録され、挿入や更新が行われるデータでの広範な操作 (検証やデータの修正を含む) の実行に使用できます。次のようにデータを検証および変更するサーバー スクリプトを定義し、登録するとします。
 
@@ -624,7 +624,7 @@ promise はいくつかの異なる方法で使用することができます。
 
 ##<a name="hostnames"></a>方法: クロス オリジン リソース共有を使用する
 
-モバイル サービスとの対話やモバイル サービスへの要求の送信を許可する Web サイトを制御するには、ホストする Web サイトのホスト名をクロス オリジン リソース共有 (CORS) ホワイトリストに追加してください。JavaScript バックエンド モバイル サービスの場合、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の [構成] タブでホワイトリストを構成できます。必要に応じて、ワイルドカードを使用できます。既定では、新しいモバイル サービスは `localhost` からのアクセスのみを許可するようブラウザーに指示します。クロス オリジン リソース共有 (CORS) により、外部ホスト名のブラウザーで実行されている JavaScript コードがモバイル サービスと対話できるようになります。この構成は、WinJS アプリケーションには必要ありません。
+モバイル サービスとの対話やモバイル サービスへの要求の送信を許可する Web サイトを制御するには、ホストする Web サイトのホスト名をクロス オリジン リソース共有 (CORS) ホワイトリストに追加してください。JavaScript バックエンド モバイル サービスの場合、[Azure 管理ポータル](https://manage.windowsazure.com)の [構成] タブでホワイトリストを構成できます。必要に応じて、ワイルドカードを使用できます。既定では、新しい Mobile Services は `localhost` からのアクセスのみを許可するようブラウザーに指示します。クロス オリジン リソース共有 (CORS) により、外部ホスト名のブラウザーで実行されている JavaScript コードが Mobile Services と対話できるようになります。この構成は、WinJS アプリケーションには必要ありません。
 
 <!-- Anchors. -->
 [What is Mobile Services]: #what-is
@@ -665,4 +665,4 @@ promise はいくつかの異なる方法で使用することができます。
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [OData システム クエリ オプション リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=444502
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

@@ -1,15 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と BambooHR の統合 | Microsoft Azure" description="Azure Active Directory で BambooHR を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
-#チュートリアル: Azure Active Directory と Bamboo HR の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=529837)をクリックしてください。
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と BambooHR の統合 | Microsoft Azure" 
+    description="Azure Active Directory で BambooHR を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
 
-このチュートリアルでは、Azure と Bamboo HR の統合について説明します。  
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+#チュートリアル: Azure Active Directory と Bamboo HR の統合
+
+このチュートリアルでは、Azure と Bamboo HR の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Bamboo HR でのシングル サインオンが有効なサブスクリプション
 
-このチュートリアルを完了すると、Bamboo HR に割り当てた Azure AD ユーザーは、Bamboo HR 企業サイト (サービス プロバイダーが開始したサインオン) で、または[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Bamboo HR に割り当てた Azure AD ユーザーは、Bamboo HR 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -37,13 +49,13 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-bamboo-hr-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-bamboo-hr-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
     ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-bamboo-hr-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  **[検索]** ボックスに、「**BambooHR**」と入力します。
+6.  **検索ボックス**に、「**BambooHR**」と入力します。
 
     ![アプリケーション ギャラリー](./media/active-directory-saas-bamboo-hr-tutorial/IC796686.png "アプリケーション ギャラリー")
 
@@ -52,13 +64,11 @@
     ![BambooHR](./media/active-directory-saas-bamboo-hr-tutorial/IC796687.png "BambooHR")
 ##シングル サインオンの構成
 
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで BambooHR に対する認証を行えるようにする方法を説明します。  
-この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
-この手順に慣れていない場合は、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで BambooHR に対する認証を行えるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **BambooHR** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure AD ポータルの **BambooHR** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シナリオ](./media/active-directory-saas-bamboo-hr-tutorial/IC796685.png "シナリオ")
 
@@ -66,11 +76,11 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-bamboo-hr-tutorial/IC796688.png "シングル サインオンの構成")
 
-3.  **[アプリケーション URL の構成]** ページの **[BambooHR のサインオン URL]** テキスト ボックスに、ユーザーが BambooHR アプリケーションにサインオンする際に使用する URL (例: https://company.bamboohr.com)) を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページで、**[BambooHR サインオン URL]** ボックスに、ユーザーが BambooHR アプリケーションのサインオンに使用する URL (例: https://company.bamboohr.com)) を入力し、**[次へ]** をクリックします。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-bamboo-hr-tutorial/IC796689.png "アプリケーション URL の構成")
 
-4.  **[BambooHR でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
+4.  **[BambooHR でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
     ![シングル サインオンの構成](./media/active-directory-saas-bamboo-hr-tutorial/IC796690.png "シングル サインオンの構成")
 
@@ -84,43 +94,42 @@
     2.  左側の [Apps] メニューで、**[Single Sign-On]** をクリックします。
     3.  **[SAML Single Sign-On]** をクリックします。
 
-7.  **[SAML Single Sign-On]** セクションで、次の手順に従います。
+7.  **[SAML Single Sign-On]** セクションで、次の手順を実行します。
 
     ![SAML シングル サインオン](./media/active-directory-saas-bamboo-hr-tutorial/IC796692.png "SAML シングル サインオン")
 
-    1.  Azure ポータルの **[BambooHR でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、[SSO Login URL] テキストボックスに貼り付けます。
-    2.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
+    1.  Azure ポータルの **[BambooHR でのシングル サインオンの構成]** ダイアログ ページで **[シングル サインオン サービス URL]** の値をコピーし、**[SSO Login URL]** ボックスに貼り付けます。
+2.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
-        >[AZURE.TIP] 詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
+        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-    3.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 Certificate]** テキスト ボックスに貼り付けます。
+    3.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 証明書]** テキストボックスに貼り付けます。
     4.  **[保存]** をクリックします。
 
-8.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+8.  Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-bamboo-hr-tutorial/IC796693.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
 
-Azure AD ユーザーが BambooHR にログインできるようにするには、そのユーザーを BambooHR にプロビジョニングする必要があります。  
-BambooHR の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが BambooHR にログインできるようにするには、そのユーザーを BambooHR にプロビジョニングする必要があります。BambooHR の場合、プロビジョニングは手動で行います。
 
 ###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
 1.  **BambooHR** 企業サイトに管理者としてログインします。
 
-2.  上部のツールバーで **[設定]** をクリックします。
+2.  上部のツール バーで **[Settings]** をクリックします。
 
     ![Setting](./media/active-directory-saas-bamboo-hr-tutorial/IC796694.png "Setting")
 
-3.  **[概要]** をクリックします。
+3.  **[Overview]** をクリックします。
 
-4.  左側のナビゲーション ウィンドウの **[セキュリティ] > [ユーザー]** を選択します。
+4.  左側のナビゲーション ウィンドウで、**[Security] > [Users]** に移動します。
 
 5.  関連するテキスト ボックスに、プロビジョニングする有効な AAD アカウントのユーザー名、パスワード、および電子メール アドレスを入力します。
 
 6.  **[保存]** をクリックします。
 
->[AZURE.NOTE] 他の BambooHR ユーザー アカウントの作成ツールまたは BambooHR から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE]他の BambooHR ユーザー アカウントの作成ツールまたは BambooHR から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
@@ -130,14 +139,14 @@ BambooHR の場合、プロビジョニングは手動で行います。
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  BambooHR アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **BambooHR** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-bamboo-hr-tutorial/IC796695.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]**の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-bamboo-hr-tutorial/IC767830.png "あり")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を参照してください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

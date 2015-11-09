@@ -36,6 +36,8 @@ App Service 環境で高スケールおよびセキュリティで保護され�
 
 AzureCon Deep Dive に示されたセキュリティ アーキテクチャがどのように構成されたかを確認するには、App Service 環境での[レイヤード セキュリティ アーキテクチャ](app-service-app-service-environment-layered-security.md)のインプリメントに関する記事を参照してください。
 
+App Service 環境で実行されるアプリへのアクセスは、Web アプリケーション ファイアウォール (WAF) などのアップ ストリーム デバイスによって制限できます。このシナリオについては、記事「[App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する](app-service-app-service-environment-web-application-firewall.md)」で説明します。
+
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## 専用のコンピューティング リソース ##
@@ -103,4 +105,4 @@ ExpressRoute での App Service 環境の使用方法の詳細については、
 
 <!-- IMAGES -->
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

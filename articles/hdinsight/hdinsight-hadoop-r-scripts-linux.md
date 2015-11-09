@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
+	ms.date="10/26/2015"
 	ms.author="larryfr"/>
 
 # HDInsight Hadoop クラスターに R をインストールして使用する
 
-**Script Action** クラスターのカスタマイズを使用して HDInsight 上の Hadoop で任意の種類のクラスターに R をインストールできます。これにより、R を使用して強力な MapReduce/YARN プログラミング フレームワークをデプロイし、HDInsight に展開される Hadoop クラスター上で大量のデータを処理できます。
+**Script Action** クラスターのカスタマイズを使用して HDInsight 上の Hadoop で任意の種類のクラスターに R をインストールできます。これにより、R を使用して強力な MapReduce/YARN プログラミング フレームワークをデプロイし、HDInsight にデプロイされる Hadoop クラスター上で大量のデータを処理できます。
 
 > [AZURE.NOTE]このドキュメントの手順では、Linux ベースの HDInsight クラスターが必要です。Windows ベースのクラスターでの R の操作については、「[HDInsight Hadoop クラスターに R をインストールして使用する (Windows)](hdinsight-hadoop-r-scripts.md)」を参照してください。
 
@@ -91,7 +91,7 @@ HDInsight クラスターへの R のインストールには、[https://hdiconf
 
 	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-2. `username@headnode1:~$` プロンプトで次のコマンドを入力し、R の対話型セッションを開始します。
+2. `username@hn0-CLUSTERNAME:~$` プロンプトで次のコマンドを入力し、R の対話型セッションを開始します。
 
 		R
 
@@ -148,4 +148,4 @@ HDInsight クラスターへの R のインストールには、[https://hdiconf
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

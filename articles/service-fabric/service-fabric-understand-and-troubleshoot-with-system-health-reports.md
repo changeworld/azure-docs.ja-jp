@@ -1,6 +1,6 @@
 <properties
-   pageTitle="トラブルシューティングのためのシステム正常性レポートの使用"
-   description="システム正常性レポートについて説明し、システム正常性レポートを使用してクラスターまたはアプリケーションに関する問題のトラブルシューティングを行う方法を示します"
+   pageTitle="システム正常性レポートを使用してトラブルシューティングを行う |Microsoft Azure"
+   description="Azure Service Fabric のコンポーネントよって送信される正常性レポートと、クラスターやアプリケーションの問題をトラブルシューティングするための使い方について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="oanapl"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/03/2015"
+   ms.date="10/23/2015"
    ms.author="oanapl"/>
 
 # トラブルシューティングのためのシステム正常性レポートの使用
@@ -530,4 +530,4 @@ System.Hosting は、アップグレード中に検証が失敗した場合、�
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

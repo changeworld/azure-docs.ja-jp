@@ -3,8 +3,8 @@
 	description="New Relic サービスを使用して Azure アプリケーションを管理および監視する方法について説明します。" 
 	services="" 
 	documentationCenter=".net" 
-	authors="stepsic-microsoft-com" 
-	manager="carolz" 
+	authors="nickfloyd" 
+	manager="timlt" 
 	editor=""/>
 
 <tags 
@@ -14,23 +14,22 @@
 	ms.devlang="dotnet" 
 	ms.topic="article" 
 	ms.date="03/16/2015" 
-	ms.author="stepsic"/>
+	ms.author="nickfloyd@newrelic.com"/>
 
 
 
-#Azure の New Relic によるアプリケーション パフォーマンス管理
+# Azure の New Relic によるアプリケーション パフォーマンス管理
 
 このガイドでは、Azure でホストされるアプリケーションに New Relic による世界クラスのパフォーマンスの監視を追加する方法について説明します。アプリケーションに New Relic をすぐに追加できる簡単なプロセスについて説明し、New Relic の機能をいくつか紹介します。New Relic の使い方の詳細については、「[New Relic の使用](#using-new-relic)」を参照してください。
 
-New Relic とは
---
+## New Relic とは
 
 New Relic は、実稼働アプリケーションを監視してそのパフォーマンスと信頼性を詳しく把握できるようにする開発者向けのツールです。パフォーマンス上の問題を特定して診断する時間を短縮できるように設計されており、その問題の解決に必要な情報をすぐに確認できます。
 
 New Relic は、Web トランザクションの読み込み時間とスループットを、サーバーとユーザーのブラウザーの両方から追跡します。データベースでの処理にかかった時間の表示、時間がかかったクエリと Web 要求の分析、アップタイムの監視と通知、アプリケーションの例外の追跡など、多数の処理を実行します。
 
-Azure ストアの New Relic 特別料金
---
+## Azure ストアの New Relic 特別料金
+
 
 New Relic Standard は、Azure ユーザーであれば無料でご利用いただけます。New Relic Pro は、Azure Cloud Services のインスタンス サイズに基づいて提供されます。
 
@@ -40,16 +39,15 @@ New Relic Standard は、Azure ユーザーであれば無料でご利用いた�
 
 Azure ユーザーは、New Relic エージェントのデプロイ時に、New Relic Pro の 2 週間の試用サブスクリプションをご利用になれます。
 
-Azure ストアを使用して New Relic にサインアップする
---
+## Azure ストアを使用して New Relic にサインアップする
 
-New Relic は、Azure の Web ロールおよびワーカー ロールとシームレスに統合されます。
+New Relic は、Azure の Web ロールおよび worker ロールとシームレスに統合されます。
 
 Azure ストアから New Relic に直接サインアップするには、次の簡単な 3 つの手順を実行します。
 
 ### 手順 1.Azure ストアからサインアップする
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
+1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
 2. 管理ポータルの下のウィンドウの **[新規]** をクリックします。
 3. **[ストア]** をクリックします。
 4. **[アドインの選択]** ダイアログで、**[New Relic]** をクリックし、**[次へ]** をクリックします。
@@ -95,7 +93,7 @@ Azure ストアから New Relic に直接サインアップするには、次の
 	![クラウド プロジェクトの発行](./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget09.png)
 
 
-**メモ:** 初めてこのアプリケーションを Azure にデプロイする場合は、Azure の資格情報を入力するように求められます。詳細については、「<a href="/develop/net/tutorials/get-started/">Deploying an ASP.NET Web Application to an Azure Website</a>」を参照してください。
+**メモ:** 初めてこのアプリケーションを Azure にデプロイする場合は、Azure の資格情報を入力するように求められます。詳細については、「[Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションの Azure Web サイトへのデプロイ)](app-service-web\web-sites-dotnet-get-started.md)」を参照してください。
 
 ![発行の設定](./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget10.png)
 
@@ -117,49 +115,23 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 
 [アプリケーション] メニューの一覧からアプリケーションを選択すると、[概要] ダッシュボードに、現在のアプリ サーバーとブラウザーの情報が表示されます。2 つのビューを切り替えるには、**[アプリ サーバー]** または **[ブラウザー]** をクリックします。
 
-<a href="https://newrelic.com/docs/site/the-new-relic-ui#functions">標準の New Relic UI</a> と<a href="https://newrelic.com/docs/site/the-new-relic-ui#drilldown">ダッシュボードのドリルダウン</a>機能のほかにも、アプリケーションの [概要] ダッシュボードにはさまざまな機能があります。
+[](https://newrelic.com/docs/site/the-new-relic-ui#functions")標準の New Relic UI[ と](https://newrelic.com/docs/site/the-new-relic-ui#drilldown)ダッシュボードのドリルダウン機能のほかにも、アプリケーションの [概要] ダッシュボードにはさまざまな機能があります。
 
-<table border="1">
-  <thead>
-    <tr>
-      <th><b>目的の操作</b></th>
-      <th><b>実行する手順</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-       <td>選択したアプリケーションのサーバーまたはブラウザーのダッシュボード情報を表示する</td>
-       <td><b>[アプリ サーバー]</b> または <b>[ブラウザー]</b> をクリックします。</td>
-    </tr>
-     <tr>
-       <td>アプリケーションの <a href="https://newrelic.com/docs/site/apdex" target="_blank">Apdex</a> スコアのしきい値レベルを表示する</td>
-       <td>[Apdex スコア] の <b>[?]<b> アイコン</b></b>をポイントします。</td>
-    </tr>
-    <tr>
-       <td>世界規模の Apdex の詳細を表示する</td>
-       <td>[概要] の<b>ブラウザー</b> ビューで、グローバル Apdex マップの任意の場所をポイントします。<br /><b>ヒント:</b> 選択したアプリケーションの <a href="https://docs.newrelic.com/docs/new-relic-browser/geography-dashboard" target="_blank">[地理]</a> ダッシュボードに直接移動するには、<b>グローバル Apdex</b> のタイトルをクリックするか、グローバル Apdex マップの任意の場所をクリックします。</td>
-    </tr>
-    <tr>
-       <td><a href="https://newrelic.com/docs/applications-dashboards/web-transactions" target="_blank">[Web トランザクション]</a> ダッシュボードを表示する</td>
-       <td>アプリケーションの [概要] ダッシュボードの [Web トランザクション] テーブルをクリックします。または、特定の Web トランザクションに関する詳細 (<a href="https://newrelic.com/docs/site/key-transactions" target="_blank">主要トランザクション</a>など) を表示するには、その名前をクリックします。</td>
-    </tr>
-    <tr>
-       <td><a href="https://newrelic.com/docs/site/errors" target="_blank">[エラー]</a> ダッシュボードを表示する</td>
-       <td>アプリケーションの [概要] ダッシュボードの [エラー率] グラフのタイトルをクリックします。<br /><b>ヒント:</b> [エラー] ダッシュボードは、<b>[アプリケーション]</b>、(アプリ)、[イベント]、[エラー] の順にクリックして表示することもできます。</td>
-    </tr>
-    <tr>
-       <td>アプリケーションのサーバーの詳細を表示する</td>
-       <td><p>次のいずれかを実行します。<p>
-        <ul>
-          <li>ホストのテーブル ビューと各ホストのメトリックの詳細内訳を切り替えます。</li>
-          <li>個々のサーバーの名前をクリックします。</li>
-          <li>個々のサーバーの Apdex スコアをポイントします。</li>
-          <li>個々のサーバーの CPU 使用率またはメモリをクリックします。</li>
-        </ul>
-       </p></p></td>
-    </tr>
-  </tbody>
-</table>
+| 目的操作 | これを行うには、次の手順を実行します。 |
+| ----------------- | ---------- |
+| 選択したアプリのサーバーまたはブラウザーのダッシュボード情報を表示する | **[アプリ サーバー]** または **[ブラウザー]** をクリックします。 |
+| アプリケーションの [Apdex](https://newrelic.com/docs/site/apdex) スコアのしきい値レベルを表示する | [Apdex スコア] の **[?]** アイコンをポイントします。 |
+| 世界規模の Apdex の詳細を表示します。 | [概要] の**ブラウザー** ビューで、グローバル Apdex マップの任意の場所をポイントします。**ヒント:** 選択したアプリケーションの [[地理]](https://docs.newrelic.com/docs/new-relic-browser/geography-dashboard") ダッシュボードに直接移動するには、**グローバル Apdex** のタイトルをクリックするか、グローバル Apdex マップの任意の場所をクリックします。 |
+| [[Web トランザクション]](https://newrelic.com/docs/applications-dashboards/web-transactions) ダッシュボードを表示します。 | アプリケーションの [概要] ダッシュボードの [Web トランザクション] テーブルをクリックします。または、特定の Web トランザクションに関する詳細 ([主要トランザクション](https://newrelic.com/docs/site/key-transactions")など) を表示するには、その名前をクリックします。 |
+| [[エラー]](https://newrelic.com/docs/site/errors) ダッシュボードを表示します。 | アプリケーションの [概要] ダッシュボードの [エラー率] グラフのタイトルをクリックします。**ヒント:** [エラー] ダッシュボードは、**[アプリケーション]**、(アプリ)、[イベント]、[エラー] の順にクリックして表示することもできます。 |
+
+
+さらに、アプリのサーバーの詳細を表示する場合は、次のいずれかを実行します。
+
+- ホストのテーブル ビューと各ホストのメトリックの詳細内訳を切り替えます。
+- 個々のサーバーの名前をクリックします。
+- 個々のサーバーの Apdex スコアをポイントします。
+- 個々のサーバーの CPU 使用率またはメモリをクリックします。
 
 以下に、ブラウザー ビューを選択したときのアプリケーションの [概要] ダッシュボードの例を示します。
 
@@ -176,4 +148,4 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
  * [Real User Monitoring](https://newrelic.com/docs/features/real-user-monitoring): Real User Monitoring (RUM) を使用して、ユーザーのブラウザーで Web ページの読み込みにかかった時間、アクセス元の地域、および使用しているブラウザーに関する詳細を確認する方法の概要
  * [Finding Help (ヘルプの利用)](https://newrelic.com/docs/site/finding-help): New Relic のオンライン ヘルプ センターで利用できるリソース
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

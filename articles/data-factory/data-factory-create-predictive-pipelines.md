@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="10/28/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する 
@@ -27,7 +27,7 @@ Azure Data Factory を使用すると、公開された [Azure Machine Learning]
 2. Batch 実行 API の**要求 URI**。要求 URI は、Web サービス ページ (下図) で **[バッチ実行]** リンクをクリックするとわかります。
 3. 発行済みの Azure Machine Learning Web サービスの **API キー**。この情報は、発行した Web サービスをクリックするとわかります。 
 
-	![Machine Learning Dashboard][machine-learning-dashboard]
+	![Machine Learning ダッシュボード][machine-learning-dashboard]
 
 **予測パイプライン**は、次から構成されます。
 
@@ -315,4 +315,4 @@ Azure Machine Learning の実験でリーダー モジュールを使用する�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

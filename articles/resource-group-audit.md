@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/14/2015" 
+	ms.date="10/27/2015" 
 	ms.author="tomfitz"/>
 
 # リソース マネージャーの監査操作
@@ -21,6 +21,11 @@
 ソリューションのデプロイ中または使用中に問題を見つけたら、その原因を究明する必要があります。リソース マネージャーでは、発生した問題とその原因を 2 通りの方法で発見できます。デプロイ コマンドを利用し、特定のデプロイと操作に関する情報を取得できます。あるいは、監査ログを利用し、デプロイとソリューションの使用期間中に行われたその他のアクションに関する情報を取得できます。このトピックでは、監査ログに重点を置いて説明します。
 
 監査ログには、リソースで実行されたすべての操作が含まれています。そのため、組織のユーザーがリソースを変更した場合、そのアクション、時刻、ユーザーを特定できます。
+
+監査ログを使用する際に留意するべき 2 つの重要な制限があります。
+
+1. 監査ログは、90 日間のみ保持されます。
+2. 15 日以内の範囲のみ照会することができます。
 
 Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを利用し、監査ログから情報を取得できます。
 
@@ -30,13 +35,17 @@ Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを�
 
 ログ エントリを取得するには、**Get-AzureRmLog** コマンドを実行します (1.0 プレビューよりも前のバージョンの PowerShell では **Get-AzureResourceGroupLog** を実行します)。パラメーターを追加し、エントリの一覧を絞り込むことができます。
 
-次の例は、監査ログを利用し、ソリューションの使用期間中に行われたアクションを調査する方法を示すものです。アクションが発生したタイミングとそれを要請したユーザーを確認できます。
+次の例は、監査ログを利用し、ソリューションの使用期間中に行われたアクションを調査する方法を示すものです。アクションが発生したタイミングとそれを要請したユーザーを確認できます。開始日と終了日は、日付の形式で指定されます。
 
-    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00
+    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00
+
+または、日付関数を使用して、最後の 15 日など、日付の範囲を指定します。
+
+    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-15)
 
 指定した開始時刻によっては、前のコマンドを実行したとき、そのリソース グループのアクションが長い一覧で返されることがあります。検索基準を指定すると、探しものの結果を絞り込むことができます。たとえば、Web アプリが停止した理由を調査する場合、次のコマンドを実行すると、someone@example.com が停止アクションを実行したことが判明します。
 
-    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
+    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-15) | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
 
     Authorization     :
                         Scope     : /subscriptions/xxxxx/resourcegroups/ExampleGroup/providers/Microsoft.Web/sites/ExampleSite
@@ -56,7 +65,7 @@ Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを�
 
 次の例では、指定した開始時刻後に失敗したアクションがわかります。エラー メッセージを表示するには、**DetailedOutput** パラメーターも追加します。
 
-    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-27T12:00 -Status Failed –DetailedOutput
+    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-15) -Status Failed –DetailedOutput
     
 このコマンドで返されるエントリとプロパティの数が多すぎる場合、**properties** プロパティを取得することで監査に集中できます。
 
@@ -153,4 +162,4 @@ Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを�
 - サービス プリンシパルにアクセスを付与する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
 - すべてのユーザーのリソースに対するアクションについては、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

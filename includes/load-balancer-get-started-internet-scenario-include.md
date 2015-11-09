@@ -1,7 +1,7 @@
-## Scenario
+## シナリオ
 
-The following scenario will show how to add a load balancer for 2 virtual machines named "web1" and "web2" using port 80 to receive Internet traffic, and send load balanced network traffic also to port 80 on the 2 servers.
+次のシナリオでは、"web1" と "web2" という名前の 2 台の仮想マシン向けのロード バランサーを追加する方法を示します。このロード バランサーは、ポート 80 を使用してインターネット トラフィックを受信し、負荷分散されたネットワーク トラフィックを 2 台のサーバーのポート 80 に送信します。
 
-![Load balancer scenario](./media/load-balancer-get-started-internet-scenario-include/scenario-classic.png)
+![ロード バランサーのシナリオ](./media/load-balancer-get-started-internet-scenario-include/scenario-classic.png)
 
-
+<!---HONumber=Nov15_HO1-->

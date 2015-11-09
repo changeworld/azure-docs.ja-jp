@@ -1,7 +1,21 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Jive の統合 | Microsoft Azure" description="Azure Active Directory で Jive を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Jive の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Jive を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Jive の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=330042)をクリックしてください。このトピックの詳細については、「[Azure Active Directory のアプリケーション アクセスの高度化に対処するためのベスト プラクティス](http://go.microsoft.com/fwlink/?LinkId=329963)」をご覧ください。
+
   
 このチュートリアルでは、Azure と Jive の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
@@ -56,9 +70,9 @@
 
     1.  **[JIVE 管理ユーザー名]** テキストボックスに、Jive.com の**システム管理者**プロファイルが割り当てられている Jive アカウント名を入力します。
 
-    2.  **[JIVE 管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
+    2.  **[JIVE 管理パスワード]** テキスト ボックスに、このアカウントのパスワードを入力します。
 
-    3.  **[JIVE テナント URL]** テキストボックスに、Jive テナント URL を入力します。
+    3.  **[JIVE テナント URL]** テキスト ボックスに、Jive テナント URL を入力します。
 
         >[AZURE.NOTE]Jive テナント URL は、組織が Jive にログインするために使用する URL です。通常、URL の形式は **www.<組織名>.jive.com** のようになります。
 
@@ -70,4 +84,4 @@
   
 ここで、テスト アカウントを作成して 10 分間待機し、アカウントが Jive.com と同期されていることを確認します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

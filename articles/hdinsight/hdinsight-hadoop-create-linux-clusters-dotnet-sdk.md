@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="10/14/2015"
+   	ms.date="10/23/2015"
    	ms.author="jgao"/>
 
 #.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成
@@ -22,6 +22,10 @@
 [AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。このドキュメントでは、.NET SDK を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。
+
+> [AZURE.IMPORTANT]このドキュメントの手順では、ワーカー ノードが 1 つあるクラスターを作成します。クラスター作成または作成後のスケーリングで 32 を超えるワーカー ノードを予定している場合は、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードを選択する必要があります。
+>
+> ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 ##前提条件
 
@@ -99,7 +103,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
                 //Replace SSHUSER with the user name you want to use with logging in to the cluster through SSH
                 private const string NewClusterSshUserName = "SSHUSER";
                 
-                //Replace SSHPUBLICKEY with the public key certificate to use when authenticating the SSH user. For more information on generating and using SSH keys with HDInsight, see https://azure.microsoft.com/JA-JP/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/ and https://azure.microsoft.com/JA-JP/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/
+                //Replace SSHPUBLICKEY with the public key certificate to use when authenticating the SSH user. For more information on generating and using SSH keys with HDInsight, see https://azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/ and https://azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/
                 private const string NewClusterSshPublicKey = @"SSHPUBLICKEY";
         
                 private static void Main(string[] args)
@@ -185,18 +189,18 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 ###Hadoop クラスター
 
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
-* [HDInsight での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
 ###HBase クラスター
 
-* [HDInsight での Hbase の使用](hdinsight-hbase-tutorial-get-stared-linux.md)
+* [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-stared-linux.md)
 * [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux)
 
 ###Storm クラスター
 
 * [HDInsight での Storm の Java トポロジの開発](hdinsight-storm-develop-java-topology.md)
-* [HDInsight での Storm の Python コンポーネントの使用](hdinsight-storm-develop-python.md)
+* [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python.md)
 * [HDInsight での Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

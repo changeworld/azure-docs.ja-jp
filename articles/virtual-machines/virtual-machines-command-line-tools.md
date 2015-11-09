@@ -19,15 +19,15 @@
 
 # Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルで CLI コマンドを使用してリソースを作成および管理する方法を説明します。また、[リソース マネージャー デプロイメント モデル](azure-cli-arm-commands.md)で CLI コマンドを使用してリソースを作成および管理することもできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model]((azure-cli-arm-commands.md)。
 
 この記事では、サービス管理モード (asm モード) で Azure CLI を使用し、Mac、Linux、および Windows コンピューターのコマンド ライン上でサービスを作成、管理、削除する方法について説明します。Azure SDK のさまざまなライブラリや、Azure PowerShell、Azure ポータルを使用しても同じタスクの多くを実行できます。サービス管理モードで Azure サービスを使用する場合であっても、Websites、Virtual Machines、Virtual Networks、Storage など、個々の Azure の概念やサービスを作成および管理する場合と概念上はほぼ変わりません。
 
-> [AZURE.NOTE]開始するには、まず [Azure CLI をインストール](../xplat-cli-install.md)して、[ログオンし、アカウントに関連付けられている Azure のリソースを使用](../xplat-cli-connect.md)します。
+> [AZURE.NOTE]開始するには、まず [Azure CLI をインストール](../xplat-cli-install.md)し、[アカウントに関連付けられている使用する Azure のリソースにログオン](../xplat-cli-connect.md)します。
 
 ## 記事の適用範囲
 
-この記事では、クラシック (サービス管理) デプロイメント モデルで一般的に使用されている Azure CLI コマンドの構文とオプションについて触れています。これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。サービス管理モードのコマンド ラインでの現在のコマンド構文とオプションについては `azure help` と入力します。特定のコマンドのヘルプを表示するには、`azure help [command]` と入力します。ドキュメントには、特定の Azure サービスを作成および管理するための CLI の例もあります。
+この記事では、クラシック (サービス管理) デプロイメント モデルで一般的に使用されている Azure CLI コマンドの構文とオプションについて触れています。これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。サービス管理モードのコマンド ラインでの現在のコマンド構文とオプションを確認するには、「`azure help`」と入力します。特定のコマンドのヘルプを表示するには、「`azure help [command]`」と入力します。ドキュメントには、特定の Azure サービスを作成および管理するための CLI の例もあります。
 
 オプション パラメーターは、ブラケットで囲んで表記しています (例 [parameter])。その他のパラメーターはすべて指定する必要があります。
 
@@ -212,7 +212,7 @@ Windows 仮想マシンでは、エンドポイントとしてポート 3389 を
 
 **-c, --connect** ホスティング サービスで作成済みのデプロイ内に仮想マシンを作成します。このオプションに -vmname を使用しなかった場合には、新しい仮想マシンの名前が自動的に生成されます。<br /> **-n、--vm-name** 仮想マシンの名前を指定します。このパラメーターは既定でホスティング サービス名を参照します。-vmname を指定しない場合、新しい仮想マシンの名前は &lt;service-name>&lt;id> の形式で生成されます。この &lt;id> はサービス内の既存の仮想マシンの数に 1 を足した数です。たとえば、このコマンドで既存の仮想マシンが 1 つだけのホスティング サービス MyService に新しい仮想マシンを追加すると、MyService2 という名前になります。<br /> **-u、--blob-url** 仮想マシン システム ディスクの作成場所となる、ターゲット BLOB ストレージの URL を指定します。<br /> **-z、--vm-size** 仮想マシンのサイズを指定します。有効な値を次に示します。"ExtraSmall"、"Small"、"Medium"、"Large"、"ExtraLarge"、"A5"、"A6"、"A7"、"A8"、"A9"、"A10"、"A11"、"Basic\_A0"、"Basic\_A1"、"Basic\_A2"、"Basic\_A3"、"Basic\_A4"、"Standard\_D1"、"Standard\_D2"、"Standard\_D3"、"Standard\_D4"、"Standard\_D11"、"Standard\_D12"、"Standard\_D13"、"Standard\_D14"、"Standard\_DS1"、"Standard\_DS2"、"Standard\_DS3"、"Standard\_DS4"、"Standard\_DS11"、"Standard\_DS12"、"Standard\_DS13"、"Standard\_DS14"、"Standard\_G1"、"Standard\_G2"、"Standard\_G3"、"Standard\_G4"、"Standard\_G55"。既定値は "Small" です。<br /> **-r** Windows 仮想マシンに RDP 接続を追加します。<br /> **-e、--ssh** Windows 仮想マシンに SSH 接続を追加します。<br /> **-t、--ssh-cert** SSH 証明書を指定します。<br /> **-s** サブスクリプション。<br /> **-o、--community** 指定されるイメージはコミュニティ イメージです。<br /> **-w** 仮想ネットワーク名。<br/> **-l、--location** 場所を指定します ("North Central US" など)。<br /> **-a、--affinity-group** アフィニティ グループを指定します。<br /> **-w、--virtual-network-name** 新しい仮想マシンの追加先の仮想ネットワークを指定します。仮想ネットワークは、Azure ポータルから設定および管理できます。<br /> **-b、--subnet-names** 仮想マシンを割り当てるサブネット名を指定します。
 
-この例では、MSFT\_\_Win2K8R2SP1-120514-1520-141205-01-JA-JP-30GB が、プラットフォームによって提供されるイメージです。オペレーティング システムのイメージの詳細については、「vm image list」を参照してください。
+この例では、MSFT\_\_Win2K8R2SP1-120514-1520-141205-01-ja-JP-30GB が、プラットフォームによって提供されるイメージです。オペレーティング システムのイメージの詳細については、「vm image list」を参照してください。
 
 	~$ azure vm create my-vm-name MSFT__Windows-Server-2008-R2-SP1.11-29-2011 username --location "West US" -r
 	info:   Executing command vm create
@@ -424,15 +424,15 @@ info:   vm shutdown command OK
 	~$ azure vm image list
 	data:   Name                                                                   Category   OS
 	data:   ---------------------------------------------------------------------  ---------  -------
-	data:   CANONICAL__Canonical-Ubuntu-12-04-20120519-2012-05-19-JA-JP-30GB.vhd   Canonical  Linux
+	data:   CANONICAL__Canonical-Ubuntu-12-04-20120519-2012-05-19-ja-JP-30GB.vhd   Canonical  Linux
 	data:   MSFT__Windows-Server-2008-R2-SP1.11-29-2011                            Microsoft  Windows
 	data:   MSFT__Windows-Server-2008-R2-SP1-with-SQL-Server-2012-Eval.11-29-2011  Microsoft  Windows
-	data:   MSFT__Windows-Server-8-Beta.JA-JP.30GB.2012-03-22                      Microsoft  Windows
+	data:   MSFT__Windows-Server-8-Beta.ja-JP.30GB.2012-03-22                      Microsoft  Windows
 	data:   MSFT__Windows-Server-8-Beta.2-17-2012                                  Microsoft  Windows
-	data:   MSFT__Windows-Server-2008-R2-SP1.JA-JP.30GB.2012-3-22                  Microsoft  Windows
-	data:   OpenLogic__OpenLogic-CentOS-62-20120509-JA-JP-30GB.vhd                 OpenLogic  Linux
-	data:   SUSE__SUSE-Linux-Enterprise-Server-11SP2-20120521-JA-JP-30GB.vhd       SUSE       Linux
-	data:   SUSE__OpenSUSE64121-03192012-JA-JP-15GB.vhd                            SUSE       Linux
+	data:   MSFT__Windows-Server-2008-R2-SP1.ja-JP.30GB.2012-3-22                  Microsoft  Windows
+	data:   OpenLogic__OpenLogic-CentOS-62-20120509-ja-JP-30GB.vhd                 OpenLogic  Linux
+	data:   SUSE__SUSE-Linux-Enterprise-Server-11SP2-20120521-ja-JP-30GB.vhd       SUSE       Linux
+	data:   SUSE__OpenSUSE64121-03192012-ja-JP-15GB.vhd                            SUSE       Linux
 	data:   WIN2K8-R2-WINRM                                                        User       Windows
 	info:   vm image list command OK
 
@@ -503,7 +503,7 @@ azure vm disk detach コマンドでデータ ディスクを切断する場合�
 	data:   LogicalDiskSizeInGB "30"
 	data:   MediaLink "http://mystorageaccount.blob.core.azure-preview.com/vhd-store/mycentos-cb39b8223b01f95c.vhd"
 	data:   Name "mycentos-mycentos-0-20120524070008"
-	data:   SourceImageName "OpenLogic__OpenLogic-CentOS-62-20120509-JA-JP-30GB.vhd"
+	data:   SourceImageName "OpenLogic__OpenLogic-CentOS-62-20120509-ja-JP-30GB.vhd"
 	info:   vm disk show command OK
 
 **vm disk list [options] [vm-name]**
@@ -1448,7 +1448,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 ### <a name="Mobile_Scripts"></a>スクリプトの管理用コマンド
 
-このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。詳細については、[モバイル サービスのサーバー スクリプトの操作に関するページ](../mobile-services/mobile-services-how-to-use-server-scripts.md)を参照してください。
+このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。詳細については、[Mobile Services のサーバー スクリプトの操作に関するページ](../mobile-services/mobile-services-how-to-use-server-scripts.md)を参照してください。
 
 **mobile script list [options] [servicename]**
 
@@ -2240,9 +2240,9 @@ SQL Server の新しいファイアウォール ルールを作成します。
 	+ Removing firewall rule
 	info:    sql firewallrule delete command OK
 
-## 仮想ネットワークの管理用コマンド
+## Virtual Network の管理用コマンド
 
-これらのコマンドを使用して、仮想ネットワークを管理します。
+これらのコマンドを使用して、Virtual Network を管理します。
 
 **network vnet create [options] &lt;location>**
 
@@ -2283,7 +2283,7 @@ Virtual Network の詳細を表示します。
 
 **vnet list**
 
-既存のすべての仮想ネットワークの一覧を表示します。
+既存のすべての Virtual Network の一覧を表示します。
 
 	~$ azure network vnet list
 	info:    Executing command network vnet list
@@ -2350,4 +2350,4 @@ Virtual Network の詳細を表示します。
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

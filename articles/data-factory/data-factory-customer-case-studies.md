@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="10/28/2015" 
 	ms.author="spelluru"/>
 
 # お客様導入事例
@@ -48,4 +48,4 @@ Data Factory は、データの移動や変換を自動化するクラウド ベ
 
 [Cloud Machine Learning により、顧客とのつながりを強化](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

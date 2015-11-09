@@ -20,7 +20,7 @@
 
 この**メニュー**は、多様なストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。このタスクは、Cortana Analytics Process (CAP) の 1 ステップです。
 
-[AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-explore-data-selector.md)]
+[AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
 ## はじめに
 
@@ -32,4 +32,4 @@
 - **SQL Server データ**をサンプリングするには、SQL と Python プログラミング言語の両方を使用します。 
 - **Hive テーブル データ**をサンプリングするには、Hive クエリを使用します。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

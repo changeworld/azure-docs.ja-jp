@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Huddle の統合 | Microsoft Azure" description="Azure Active Directory で Huddle を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Huddle の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Huddle を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Huddle の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=528081)をクリックしてください。
   
 このチュートリアルでは、Azure と Huddle の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Huddle でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを完了すると、Huddle に割り当てた Azure AD ユーザーは、Huddle 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Huddle に割り当てた Azure AD ユーザーは、Huddle 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -17,7 +30,7 @@
 3.  ユーザー プロビジョニングの構成
 4.  ユーザーの割り当て
 
-![Configure Single Sign-On](./media/active-directory-saas-huddle-tutorial/IC787830.png "Configure Single Sign-On")
+![シングル サインオンの構成](./media/active-directory-saas-huddle-tutorial/IC787830.png "Configure Single Sign-On")
 ##Huddle のアプリケーション統合の有効化
   
 このセクションでは、Huddle のアプリケーション統合を有効にする方法について説明します。
@@ -57,11 +70,11 @@
 
 1.  Azure AD ポータルの **[Huddle]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-huddle-tutorial/IC787833.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-huddle-tutorial/IC787833.png "シングル サインオンの構成")
 
 2.  **[ユーザーの Huddle へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-huddle-tutorial/IC787834.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-huddle-tutorial/IC787834.png "Configure Single Sign-On")
 
 3.  **[アプリケーション URL の構成]** ページの **[Huddle サインオン URL]** テキストボックスに、"**http://company.huddle.com*" のパターンを使用して Huddle テナントの URL を入力し、**[次へ]** をクリックします。
 
@@ -69,16 +82,16 @@
 
 4.  **[Huddle でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-huddle-tutorial/IC787836.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-huddle-tutorial/IC787836.png "シングル サインオンの構成")
 
     1.  **[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
     2.  **[発行者の URL]** の値、**[SAML SSO URL]** の値、およびダウンロードした証明書をコピーし、それらを Huddle サポート チームに送信します。
 
     >[AZURE.NOTE]Huddle サポート チームがシングル サインオンを有効にする必要があります。構成が完了すると、通知が届きます。
 
-5.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+5.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-huddle-tutorial/IC787837.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-huddle-tutorial/IC787837.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
   
 Azure AD ユーザーが Huddle にログインできるようにするには、そのユーザーを Huddle にプロビジョニングする必要があります。Huddle の場合、プロビジョニングは手動で行います。
@@ -117,10 +130,10 @@ Azure AD ユーザーが Huddle にログインできるようにするには、
 
     ![ユーザーの割り当て](./media/active-directory-saas-huddle-tutorial/IC787840.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-huddle-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/23/2015"
+   ms.date="10/26/2015"
    ms.author="joaoma" />
 
 # クラウド サービスごとの複数の VIP
@@ -20,7 +20,7 @@ Azure Cloud Services は、Azure によって提供される IP アドレスを�
 
 ただし、同じクラウド サービスへのエントリ ポイントとして 1 つ以上の VIP が必要な場合のあるシナリオがあります。たとえば、クラウド サービスは、既定の SLSL ポート 443 を使用して SSL 接続を必要とする複数の Web サイト、異なる顧客をホストする各サイト、テナントをホストできます。このようなシナリオでは、Web サイトごとに異なるパブリック IP アドレスを持つ必要があります。次の図は、同じパブリック ポートで複数の SSL 証明書が必要な一般的なマルチテナント Web ホスティングを示しています。
 
-![Multi VIP SSL scenario](./media/load-balancer-multivip/Figure1.png)
+![Multi VIP SSL シナリオ](./media/load-balancer-multivip/Figure1.png)
 
 前のシナリオでは、すべての VIP は同じパブリック ポート (443) を使用し、トラフィックはすべての Web サイトをホストするクラウド サービスの内部 IP アドレス用の一意のプライベート ポート上の 1 つ以上の負荷分散された VM にリダイレクトされます。
 
@@ -155,4 +155,4 @@ VIP をサービスを追加するには、次の PowerShell コマンドを実�
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

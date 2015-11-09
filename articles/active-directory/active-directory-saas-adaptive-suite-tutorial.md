@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Adaptive Suite の統合 | Microsoft Azure" description="Azure Active Directory で Adaptive Suite を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Adaptive Suite の統合 | Microsoft Azure"
+    description="Azure Active Directory で Adaptive Suite を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Adaptive Suite の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=615749)をクリックしてください。
 
 このチュートリアルでは、Azure と Adaptive Suite の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Adaptive Suite のテナント
 
-このチュートリアルを完了すると、Adaptive Suite に割り当てた Azure AD ユーザーは、Adaptive Suite 企業サイト (サービス プロバイダーが開始したサインオン) で、または[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Adaptive Suite に割り当てた Azure AD ユーザーは、Adaptive Suite 企業サイト (サービス プロバイダーが開始したサインオン) で、または[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を使用して、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -24,7 +37,7 @@
 
 ###Adaptive Suite のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-adaptive-suite-tutorial/IC700993.png "Active Directory")
 
@@ -51,17 +64,17 @@
     ![Adaptive Suite](./media/active-directory-saas-adaptive-suite-tutorial/IC805639.png "Adaptive Suite")
 ##シングル サインオンの構成
 
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Adaptive Suite に対する認証を行えるようにする方法を説明します。Adaptive Suite にシングル サインオンを構成するには、証明書の拇印の値を取得する必要があります。この手順に慣れていない場合は、[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI) を参照してください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Adaptive Suite に対する認証を行えるようにする方法を説明します。Adaptive Suite にシングル サインオンを構成するには、証明書の拇印の値を取得する必要があります。この手順に慣れていない場合は、[証明書の拇印の値を取得する方法](http://youtu.be/YKQF266SAxI)についてのビデオをご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
 1.  Azure AD ポータルの **Adaptive Suite** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-adaptive-suite-tutorial/IC805640.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-adaptive-suite-tutorial/IC805640.png "シングル サインオンの構成")
 
 2.  **[ユーザーの Adaptive Suite へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-adaptive-suite-tutorial/IC805641.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-adaptive-suite-tutorial/IC805641.png "Configure Single Sign-On")
 
 3.  **[アプリケーション設定の構成]** ページの **[応答 URL]** テキスト ボックスに、次のパターン ”*https://login.adaptiveinsights.com:443/samlsso/RlJFRVRSSUFMMTI3MTE=*" を使用して URL を入力してから、**[次へ]** をクリックします。
 
@@ -75,7 +88,7 @@
 
 5.  別の Web ブラウザーのウィンドウで、管理者として Adaptive Suite 企業サイトにログインします。
 
-6.  **[管理者]** に移動します。
+6.  **[管理者]**に移動します。
 
     ![管理者](./media/active-directory-saas-adaptive-suite-tutorial/IC805644.png "管理者")
 
@@ -98,7 +111,7 @@
     9.  **[SAML を有効にする]** として、**[SAML SSO を許可して、Adaptive Insights に直接ログインする]** を選択します。
     10. **[保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]**をクリックして **[シングル サインオンの構成] **ダイアログを閉じます。
+9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-adaptive-suite-tutorial/IC805647.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -123,7 +136,7 @@ Azure AD ユーザーが Adaptive Suite にログインできるようにする�
 
     1.  関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory ユーザーの **[名前]**、**[ログイン]**、**[電子メール]**、**[パスワード]** を入力します。
     2.  **[ロール]** を選択します。
-    3.  **[送信]** をクリックします。
+    3.  **[Submit]** をクリックします。
 
 >[AZURE.NOTE]他の Adaptive Suite ユーザー アカウント作成ツールまたは Adaptive Suite から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -139,10 +152,10 @@ Azure AD ユーザーが Adaptive Suite にログインできるようにする�
 
     ![ユーザーの割り当て](./media/active-directory-saas-adaptive-suite-tutorial/IC805650.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![あり](./media/active-directory-saas-adaptive-suite-tutorial/IC767830.png "あり")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を参照してください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Active Directory の企業間 (B2B) コラボレーション"
+   pageTitle="Azure Active Directory の B2B コラボレーション | Microsoft Azure"
    description="Azure Active Directory の B2B コラボレーションは、ビジネス パートナーが会社のアプリケーションにアクセスできるようにします。パートナーの各ユーザーは、1 つの Azure AD アカウントによって表されます。"
    services="active-directory"
    documentationCenter=""
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/17/2015"
+   ms.date="10/27/2015"
    ms.author="curtand"/>
 
-# Azure Active Directory の B2B コラボレーション
+# Azure Active Directory (Azure AD) の B2B コラボレーション
 
-Azure Active Directory の B2B コラボレーションは、パートナーによって管理されるユーザーが会社のアプリケーションにアクセスできるようにします。パートナー企業のユーザーを招待し、リソースにアクセスできるように認証することで、会社間の関係を作成できます。いったん各企業と Azure Active Directory (Azure AD) をフェデレーションすると各ユーザーが 1 つの Azure AD アカウントで表されるようになるため、複雑さが軽減されます。パートナーのユーザーが組織を離れるとアクセス権が取り消されるほか、内部ディレクトリ内のメンバーシップを使用した意図しないアクセスが防止されるため、高いレベルのセキュリティが確保されます。B2B コラボレーションには、Azure AD をまだ保有していないビジネス パートナー向けに、Azure AD のアカウントをビジネス パートナーに提供するための合理化されたサインアップ エクスペリエンスが用意されています。
+Azure AD の B2B コラボレーションは、パートナーによって管理されるユーザーが会社のアプリケーションにアクセスできるようにします。パートナー企業のユーザーを招待し、リソースにアクセスできるように認証することで、会社間の関係を作成できます。いったん各企業と Azure Active Directoryをフェデレーションすると各ユーザーが 1 つの Azure AD アカウントで表されるようになるため、複雑さが軽減されます。パートナーのユーザーが組織を離れるとアクセス権が取り消されるほか、内部ディレクトリ内のメンバーシップを使用した意図しないアクセスが防止されるため、高いレベルのセキュリティが確保されます。B2B コラボレーションには、Azure AD をまだ保有していないビジネス パートナー向けに、Azure AD のアカウントをビジネス パートナーに提供するための合理化されたサインアップ エクスペリエンスが用意されています。
 
 -   ビジネス パートナーはサインインに自分の資格情報を使用するため、あなたが外部パートナーのディレクトリを管理する必要はありません。またユーザーがパートナー組織から離れたときにアクセス権を削除する必要もありません。
 
@@ -34,7 +34,7 @@ Azure Active Directory B2B コラボレーションは、構成が簡単で、�
 
 1. Azure AD B2B コラボレーションを利用する会社の管理者が、外部ユーザーを招待および承認するために、2,000 行以下のコンマ区切り値 (CSV) ファイルを B2B コラボレーション ポータルにアップロードします。
 
-  ![CSV file upload dialog](./media/active-directory-b2b-collaboration-overview/upload-csv.png)
+  ![CSV [ファイルのアップロード] ダイアログ](./media/active-directory-b2b-collaboration-overview/upload-csv.png)
 
 2. ポータルを介して、これらの外部ユーザーに電子メール招待状が送信されます。
 
@@ -42,7 +42,7 @@ Azure Active Directory B2B コラボレーションは、構成が簡単で、�
 
 4. サインインすると、ユーザーは、共有されているアプリにリダイレクトされます。
 
-一般消費者向け電子メール アドレス (gmail、[*comcast.net*](http://comcast.net/) など) への招待状は現在サポートされていません。
+一般消費者向け電子メール アドレス (Gmail や [*comcast.net*](http://comcast.net/) など) への招待状は現在サポートされていません。
 
 B2B コラボレーションのしくみについては、[このビデオ](http://aka.ms/aadshowb2b)を参照してください。
 
@@ -61,5 +61,15 @@ wharp@contoso.com,Walter Harp,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.
 jsmith@contoso.com,Jeff Smith,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.microsoft.com/services/active-directory/,,,http://azure.microsoft.com/services/active-directory/
 bsmith@contoso.com,Ben Smith,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.microsoft.com/services/active-directory/,,,http://azure.microsoft.com/services/active-directory/
 ```
+## 次のステップ
+Azure B2B コラボレーションに関する他の記事を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+- [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [動作のしくみ](active-directory-b2b-how-it-works.md)
+- [詳細なチュートリアル](active-directory-b2b-detailed-walkthrough.md)
+- [CSV ファイル形式リファレンス](active-directory-b2b-references-csv-file-format.md)
+- [外部ユーザー トークンの形式](active-directory-b2b-references-external-user-token-format.md)
+- [外部ユーザー オブジェクト属性の変更](active-directory-b2b-references-external-user-object-attribute-changes.md)
+- [現在のプレビューの制限事項](active-directory-b2b-current-preview-limitations.md)
+
+<!---HONumber=Nov15_HO1-->

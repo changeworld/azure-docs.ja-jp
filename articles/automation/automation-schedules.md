@@ -12,12 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/18/2015"
+   ms.date="10/26/2015"
    ms.author="bwren" />
 
 # Azure Automation のスケジュール
 
-Automation のスケジュールは、Runbook を自動的に実行するためのスケジュール設定に使用します。This could be either a single date and time for the runbook to run once.Or it could be a recurring schedule to start the runbook multiple times.スケジュールは、Runbook からは通常はアクセスできません。
+Automation のスケジュールは、Runbook を自動的に実行するためのスケジュール設定に使用します。Runbook を 1 回実行する単一の日付時刻が可能です。または、Runbook を複数回実行する反復スケジュールが可能です。スケジュールは、Runbook からは通常はアクセスできません。
+
+>[AZURE.NOTE]スケジュールは、現時点では Azure Automation DSC 構成をサポートしていません。
 
 ## Windows PowerShell コマンドレット
 
@@ -66,4 +68,4 @@ Automation のスケジュールは、Runbook を自動的に実行するため�
 - [Azure Automation の Runbook をスケジュール設定する](automation-scheduling-a-runbook.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

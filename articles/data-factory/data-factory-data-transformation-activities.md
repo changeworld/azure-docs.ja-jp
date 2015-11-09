@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="10/27/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した変換と分析
@@ -24,13 +24,11 @@ Azure Data Factory の変換アクティビティにより、未加工のデー�
 
 変換アクティビティ | Compute 環境 
 ----------------------- | --------------------
-[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop] 
-[Pig](data-factory-pig-activity.md) | HDInsight [Hadoop]  
-[MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop]  
-[Hadoop Streaming](https://msdn.microsoft.com/library/mt185698.aspx) | HDInsight [Hadoop]
-[Machine Learning Batch Scoring](data-factory-create-predictive-pipelines.md) | Azure VM 
-[ストアド プロシージャ](data-factory-stored-proc-activity.md) | Azure SQL | 
-[DotNet](data-factory-use-custom-activities.md) | HDInsight [Hadoop] または Azure Batch    
+[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop] [Pig](data-factory-pig-activity.md) | HDInsight [Hadoop] [MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop] [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) | HDInsight [Hadoop] [Machine Learning Batch Execution](data-factory-azure-ml-batch-execution-activity.md) | Azure VM 
+[ストアド プロシージャ](data-factory-stored-proc-activity.md) | Azure SQL |
+[Data Lake Analytics U-SQL](data-factory-usql-activity.md) | Azure Data Lake Analytics 
+[DotNet](data-factory-use-custom-activities.md) | HDInsight [Hadoop] または Azure Batch
+   
 
 変換アクティビティを定義するときには、コンピューティング環境のリンクされたサービスを作成したうえで、そのサービスを使用する必要があります。Data Factory でサポートされているコンピューティング環境は 2 種類あります。
 
@@ -40,6 +38,6 @@ Azure Data Factory の変換アクティビティにより、未加工のデー�
 Data Factory でサポートされているコンピューティングにリンクされたサービスの詳細については、記事「[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md)」を参照してください。
 
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-data-transformation-activities.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-data-transformation-activities.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

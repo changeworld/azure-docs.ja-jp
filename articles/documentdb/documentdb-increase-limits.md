@@ -1,24 +1,24 @@
-<properties 
-	pageTitle="DocumentDB アカウント制限の引き上げ要求 | Microsoft Azure" 
-	description="使用できるコレクション数、ストアド プロシージャ数、クエリ句数など、DocumentDB 制限の調整を要求する方法について説明します。" 
-	services="documentdb" 
-	authors="AndrewHoh" 
-	manager="jhubbard" 
-	editor="monicar" 
+<properties
+	pageTitle="DocumentDB アカウント制限の引き上げ要求 | Microsoft Azure"
+	description="使用できるコレクション数、ストアド プロシージャ数、クエリ句数など、DocumentDB 制限の調整を要求する方法について説明します。"
+	services="documentdb"
+	authors="AndrewHoh"
+	manager="jhubbard"
+	editor="monicar"
 	documentationCenter=""/>
 
-<tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/28/2015" 
+<tags
+	ms.service="documentdb"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="10/22/2015"
 	ms.author="anhoh"/>
 
 # DocumentDB アカウント制限の引き上げを要求する
 
-[Microsoft Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) には既定で、複数の制限とクォータの適用が設定されています。一部のクォータは、Azure サポートに問い合わせて調整できます。この記事では、アカウント制限の引き上げを要求する方法について説明します。
+[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) には既定で、複数の制限とクォータの適用が設定されています。一部のクォータは、Azure サポートに問い合わせて調整できます。この記事では、アカウント制限の引き上げを要求する方法について説明します。
 
 この記事を読むと、次の質問に回答できるようになります。
 
@@ -35,11 +35,12 @@ Azure サポートに問い合わせて調整できる DocumentDB クォータ�
 |コレクションあたりのストアド プロシージャ、トリガー、UDF の数 |それぞれ 25 個
 |データベース アカウントあたりの最大コレクション |100
 |データベースあたりの最大ドキュメント ストレージ (100 コレクション単位) |1 TB (テラバイト)
-|クエリあたりの最大 UDF 数 |1
-|クエリあたりの最大 JOIN 数 |2
-|クエリあたりの AND 句の最大数 |5
-|クエリあたりの OR 句の最大数 |5
+|クエリあたりの最大 UDF 数 |2
+|クエリあたりの最大 JOIN 数 |5
+|クエリあたりの AND 句の最大数 |20
+|クエリあたりの OR 句の最大数 |10
 |IN 式あたりの値の最大数 |100
+|ST\_WITHIN クエリ内のポリゴン引数の最大ポイント数 |16
 |1 分あたりのコレクション作成の最大数 |5
 |1 分あたりのスケール操作の最大数 |5
 
@@ -54,41 +55,24 @@ Azure サポートに問い合わせて調整できる DocumentDB クォータ�
 
 	![サポート チケット作成のスクリーンショット](media/documentdb-increase-limits/getsupport.png)
 
-3. **[新しいサポート リクエスト]** ブレードで **[要求の種類]** をクリックし、**[要求の種類]** ブレードで **[クォータ]** をクリックします。
+3. **[新しいサポート要求]** ブレードで、**[基本]** をクリックします。次に、**[問題の種類]** を **[クォータ]** に、**[サブスクリプション]** を自分のDocumentDB アカウントをホストするサブスクリプションに、**[サービス]** を **[DocumentDB]** に、**[サポート プラン]** を **[クォータのサポートを含む]** に設定します。最後に、**[次へ]** をクリックします。
 
 	![サポート チケットのリクエストの種類のスクリーンショット](media/documentdb-increase-limits/supportrequest1.png)
 
-4. **[サブスクリプション]** ブレードで、ご使用の DocumentDB アカウントをホストしているサブスクリプションを選択します。
+4. **[問題]** ブレードで、重大度を選択します。**[問題の種類]** を **[DocumentDB]** に設定し、クォータの増大に関する情報を **[詳細]** に入力します。**[次へ]** をクリックします。
 
 	![サポート チケットのサブスクリプション選択のスクリーンショット](media/documentdb-increase-limits/supportrequest2.png)
 
-5. **[リソース]** ブレードで **[DocumentDB アカウント]** を選択します。
+5. 最後に、連絡先情報を **[連絡先情報]** ブレードに入力します。
 
 	![サポート チケットのリソース選択のスクリーンショット](media/documentdb-increase-limits/supportrequest3.png)
 
-6. **[サポート プラン]** ブレードで **[クォータの無料サポート]** を選択します。
-
-	![サポート チケットのサポート プラン選択のスクリーンショット](media/documentdb-increase-limits/supportrequest4.png)
-
-7. **[問題]** ブレードで、問題のカテゴリとして **[クォータまたはコアの増加の要求 DocumentDB]** を選択します。
-
-	![サポート チケットの問題のカテゴリ選択のスクリーンショット](media/documentdb-increase-limits/supportrequest5.png)
-
-8. **[説明]** ブレードに、要求の説明を入力します。必ず、調整が必要なアカウント (複数ある場合はすべて) と、要求しているクォータ調整の具体的な内容を含めてください。
-
-	![サポート チケットの詳細テキストボックスのスクリーンショット](media/documentdb-increase-limits/supportrequest6.png)
-
-9. **[作成]** をクリックします。
-
-	![サポート チケットの作成ボタンのスクリーンショット](media/documentdb-increase-limits/supportrequest7.png)
-
 サポート チケットが作成されると、サポート要求番号が電子メールで届きます。サポート要求は、**[ヘルプとサポート]** ブレードの **[サポート要求]** をクリックして表示することもできます。
 
-![サポート リクエスト ブレードのスクリーンショット](media/documentdb-increase-limits/supportrequest8.png)
-  
+![サポート リクエスト ブレードのスクリーンショット](media/documentdb-increase-limits/supportrequest4.png)
+
 
 ##<a name="NextSteps"></a>次のステップ
 - DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
- 
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

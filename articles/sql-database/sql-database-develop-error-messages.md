@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/15/2015" 
+	ms.date="10/26/2015" 
 	ms.author="genemi"/>
 
 
@@ -65,6 +65,8 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 **注:** フェデレーション エラーである 10053 と 10054 も再試行ロジックに含めることを検討してください。
 
 
+<a id="bkmk_b_database_copy_errors" name="bkmk_b_database_copy_errors">&nbsp;</a>
+
 ## データベース コピー エラー
 
 
@@ -88,6 +90,8 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 |40571|16|データベースのコピーに失敗しました。内部エラーが発生しました。ターゲット データベースを削除してやり直してください。|
 
 
+<a id="bkmk_c_resource_gov_errors" name="bkmk_c_resource_gov_errors">&nbsp;</a>
+
 ## リソース ガバナンス エラー
 
 
@@ -97,7 +101,7 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 - トランザクションを長時間開いたままにした。
 - トランザクションで保持しているロックが多すぎる。
 - プログラムのメモリ使用量が多すぎる。
-- プログラムで使用している `TempDb` の領域が多すぎる可能性があります。
+- プログラムで使用している `TempDb` の領域が多すぎる。
 
 
 **ヒント:** 次のリンク先には、このセクションで取り上げた大半またはすべてのエラーに共通する情報が記載されています。
@@ -108,7 +112,7 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 
 |エラー番号|重大度|説明|
 |---:|---:|:---|
-|10928|20|リソース ID: %d。データベースの %s 制限の %d に達しました。詳細については、[http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637)を参照してください。<br/><br/>リソース ID は、制限に達したリソースを示します。ワーカー スレッドの場合、リソース ID = 1 となります。セッションの場合、リソース ID = 2 となります。<br/><br/>*注:* このエラーの詳細および解決方法については、次のページを参照してください。<br/>• [Azure SQL Database リソース ガバナンス](http://msdn.microsoft.com/library/azure/dn338078.aspx) |
+|10928|20|リソース ID: %d。データベースの %s 制限の %d に達しました。詳細については、[http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) を参照してください。<br/><br/>リソース ID は、制限に達したリソースを示します。ワーカー スレッドの場合、リソース ID = 1 となります。セッションの場合、リソース ID = 2 となります。<br/><br/>*注:* このエラーの詳細および解決方法については、次のページを参照してください。<br/>• [Azure SQL Database リソース ガバナンス](http://msdn.microsoft.com/library/azure/dn338078.aspx) |
 |10929|20|リソース ID: %d。%S の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。詳細については、[http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) を参照してください。それ以外の場合は、後でもう一度お試しください。<br/><br/>リソース ID は、制限に達したリソースを示します。ワーカー スレッドの場合、リソース ID = 1 となります。セッションの場合、リソース ID = 2 となります。<br/><br/>*注:* このエラーの詳細および解決方法については、次のページを参照してください。<br/>• [Azure SQL Database リソース ガバナンス](http://msdn.microsoft.com/library/azure/dn338078.aspx)|
 |40544|20|データベースのサイズ クォータに達しました。データをパーティション分割するか、データを削除するか、インデックスを削除してください。その他の解決方法についてはドキュメントを参照してください。|
 |40549|16|トランザクションが長時間実行されているため、セッションを終了しました。トランザクションを短くしてください。|
@@ -123,6 +127,8 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 
 - [Azure SQL Database リソース ガバナンス](http://msdn.microsoft.com/library/azure/dn338078.aspx)
 
+
+<a id="bkmk_d_federation_errors" name="bkmk_d_federation_errors">&nbsp;</a>
 
 ## フェデレーション エラー
 
@@ -149,7 +155,7 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 |45000|16|<statement> 操作に失敗しました。指定されたフェデレーション名 <federation_name> は無効です。|Federation\_name がフェデレーション名の規則に準拠していないか、有効な識別子ではありません。|
 |45001|16|<statement> 操作に失敗しました。指定されたフェデレーション名は存在しません。|フェデレーション名が存在しません。|
 |45002|16|<statement> 操作に失敗しました。指定されたフェデレーション キー名 <distribution_name> は無効です。|フェデレーション キーが存在しないか、無効です。|
-|45004|16|<statement> 操作に失敗しました。フェデレーション キー <distribution_name> とフェデレーション <federation_name> に対して指定された値が無効です。|`USE FEDERATION`: フェデレーション キーのデータ型のドメインに存在する境界値 (つまり NULL 以外の値) を使用してください。<br/><br/>`ALTER FEDERATION SPLIT`:まだ分割点になっていないフェデレーション キーのドメインに存在する有効な値を使用してください。<br/><br/>`ALTER FEDERATION DROP`:既に分割点になっているフェデレーション キーのドメインに存在する有効な値を使用してください。|
+|45004|16|<statement> 操作に失敗しました。フェデレーション キー <distribution_name> とフェデレーション <federation_name> に対して指定された値が無効です。|`USE FEDERATION`: フェデレーション キーのデータ型のドメインに存在する境界値 (つまり NULL 以外の値) を使用してください。<br/><br/>`ALTER FEDERATION SPLIT`: まだ分割点になっていないフェデレーション キーのドメインに存在する有効な値を使用してください。<br/><br/>`ALTER FEDERATION DROP`: 既に分割点になっているフェデレーション キーのドメインに存在する有効な値を使用してください。|
 |45005|16|フェデレーション <federation_name> とメンバー (ID: <member_id>) で別のフェデレーション操作が実行されている間は、<statement> を実行できません。|同時実行操作の終了を待ちます。|
 |45006|16|<statement> 操作に失敗しました。フェデレーション テーブルを参照する参照テーブルの外部キー リレーションシップをフェデレーション メンバーに含めることはできません。|サポートされていません。|
 |45007|16|<statement> 操作に失敗しました。フェデレーション テーブル間の外部キー リレーションシップは、フェデレーション キー列を含んでいる必要があります。|サポートされていません|
@@ -163,6 +169,8 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 |45022|16|<statement> 操作に失敗しました。フェデレーション キー <distribution_name> とフェデレーション <federation_name> には、指定された境界値が既に存在します。|既に境界値になっている値を指定してください。|
 |45023|16|<statement> 操作に失敗しました。フェデレーション キー <distribution_name> とフェデレーション <federation_name> には、指定された境界値が存在しません。|まだ境界値になっていない値を指定してください。|
 
+
+<a id="bkmk_e_general_errors" name="bkmk_e_general_errors">&nbsp;</a>
 
 ## 一般エラー
 
@@ -242,4 +250,4 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 - [Azure SQL Database の一般的なガイドラインと制限事項](http://msdn.microsoft.com/library/azure/ee336245.aspx)
 - [リソース管理](http://msdn.microsoft.com/library/azure/dn338083.aspx)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

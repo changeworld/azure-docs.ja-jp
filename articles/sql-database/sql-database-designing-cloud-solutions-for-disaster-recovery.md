@@ -87,11 +87,11 @@
 1. 読み取り/書き込みの SQL 接続文字列を新しいプライマリに合わせて変更する。
 2. 指定したセカンダリ データベースを呼び出して[データベースのフェールオーバーを開始する](https://msdn.microsoft.com/library/azure/dn509573.aspx)。 
 
-次の図は、フェールオーバー後の新しい構成を示しています。![Figure 5](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-2.png)
+次の図は、フェールオーバー後の新しい構成を示しています。![図 5](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-2.png)
 
 いずれかのセカンダリ リージョンの機能が停止した場合、Traffic Manager は、そのリージョンのオフライン エンド ポイントをルーティング テーブルから自動的に削除します。そのリージョンのセカンダリ データベースへのレプリケーション チャンネルが中断状態となります。残っているリージョンへのユーザー トラフィックが増えるという点で、機能が停止している間はアプリケーション パフォーマンスに影響が生じる可能性があります。停止していた機能が復旧すると、影響のあったリージョンのセカンダリ データベースがプライマリ データベースと直ちに同期されます。同期対象のデータの量によっては、プライマリのパフォーマンスが同期中やや低下する場合があります。次の図は、セカンダリ リージョンの 1 つで機能が停止した場合の例です。
 
-![Figure 6](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-3.png)
+![図 6](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-3.png)
 
 この設計パターンの主な**利点**は、アプリケーション ワークロードを複数のセカンダリにスケールして最適なエンド ユーザー パフォーマンスを実現できることです。このオプションの**トレードオフ**は次のとおりです。
 
@@ -109,11 +109,11 @@
 
 このパターンでは、アプリケーションが、セカンダリ データベースに接続された時点で読み取り専用モードに切り替わります。プライマリ リージョンのアプリケーション ロジックは、プライマリ データベースと併置され、読み取り/書き込みモード (RW) で動作します。一方、セカンダリ リージョンのアプリケーション ロジックはセカンダリ データベースと併置され、読み取り専用モード (RO) で動作できる状態にあります。Traffic Manager は、[フェールオーバーによるルーティング](traffic-manager-configure-failover-load-balancing.md)を使用するように設定し、[エンドポイントの監視](traffic-manager-monitoring.md)を両方のアプリケーション インスタンスに対して有効にします。
 
-この構成の機能停止前の状態を示したのが次の図です。![Figure 7](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-1.png)
+この構成の機能停止前の状態を示したのが次の図です。![図 7](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-1.png)
 
 Traffic Manager は、プライマリ リージョンへの接続障害を検出すると、セカンダリ リージョンのアプリケーション インスタンスにユーザー トラフィックを自動的に切り替えます。このパターンでは、機能停止が検出された後にデータベース フェールオーバーを開始**しない**ことが大切です。セカンダリ リージョンのアプリケーションは、セカンダリ データベースを使用して読み取り専用モードで起動、動作します。これを示したのが次の図です。
 
-![Figure 8](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-2.png)
+![図 8](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-2.png)
 
 プライマリ リージョンの停止していた機能が回復すると、プライマリ リージョンの接続の復旧を Traffic Manager が検出し、ユーザー トラフィックをプライマリ リージョンのアプリケーション インスタンスに戻します。プライマリ リージョンのアプリケーション インスタンスが再開し、プライマリ データベースを使用して読み取り/書き込みモードで動作します。
 
@@ -121,7 +121,7 @@ Traffic Manager は、プライマリ リージョンへの接続障害を検出
 
 セカンダリ リージョンの機能が停止した場合、Traffic Manager は、プライマリ リージョンのアプリケーション エンド ポイントを "機能低下" として標識し、レプリケーション チャンネルは中断状態となります。ただし、機能が停止している間もアプリケーションのパフォーマンスは低下しません。停止していた機能が復旧すると、セカンダリ データベースがプライマリ データベースと直ちに同期されます。同期対象のデータの量によっては、プライマリのパフォーマンスが同期中やや低下する場合があります。
 
-![Figure 8](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-3.png)
+![図 8](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-3.png)
 
 この設計パターンには次のようにいくつかの**利点**があります。
 
@@ -147,4 +147,4 @@ Traffic Manager は、プライマリ リージョンへの接続障害を検出
 | アクティブ/アクティブ デプロイによるアプリケーション負荷分散 | 読み取り/書き込みアクセス = 5 秒未満 | 障害検出時間 + フェールオーバー API 呼び出し + SQL 接続文字列の変更 + アプリケーション検証テスト
 | アクティブ/パッシブ デプロイによるデータ保存 | 読み取り専用アクセス = 5 秒未満、読み取り/書き込みアクセス = 0 | 読み取り専用アクセス = 接続障害検出時間 + アプリケーション検証テスト <br>読み取り/書き込みアクセス = 停止していた機能の回復にかかる時間 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

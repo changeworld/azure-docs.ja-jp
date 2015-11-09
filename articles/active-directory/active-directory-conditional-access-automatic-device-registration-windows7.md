@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/02/2015"
+	ms.date="10/26/2015"
 	ms.author="femila"/>
 
 # Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成
@@ -22,7 +22,7 @@ IT 管理者は、Windows 7 ドメイン参加済みデバイスを、自動的�
 
 ##Windows 7 ドメイン参加済みデバイスへのデバイスの登録ソフトウェア パッケージのインストール
 
-Windows 7 のデバイス登録は、ダウンロード可能な MSI パッケージとして利用できます。このパッケージは、Active Directory ドメインに参加している Windows 7 コンピューターにインストールする必要があります。System Center Configuration Manager などのソフトウェア配布システムを使用して、パッケージをデプロイしてください。MSI パッケージは、/quiet パラメーターを使用する、標準のサイレント インストール オプションをサポートしています。このソフトウェア パッケージは、Microsoft Connect Web サイトからダウンロードできます。ここで、Windows 7 用の社内参加を選択し、ダウンロードします。
+Windows 7 のデバイス登録は、[ダウンロード可能な MSI パッケージ](https://connect.microsoft.com/site1164)として利用できます。このパッケージは、Active Directory ドメインに参加している Windows 7 コンピューターにインストールする必要があります。System Center Configuration Manager などのソフトウェア配布システムを使用して、パッケージをデプロイしてください。MSI パッケージは、/quiet パラメーターを使用する、標準のサイレント インストール オプションをサポートしています。このソフトウェア パッケージは、[Microsoft Connect Web サイト](https://connect.microsoft.com/site1164)からダウンロードできます。ここで、Windows 7 用の社内参加を選択し、ダウンロードします。
 
 ![](./media/active-directory-conditional-access/device-registration-process-windows7.gif)
 
@@ -52,4 +52,4 @@ Windows 7 コンピューターでコマンド プロンプトを開き、次の
 
 Windows 7 コンピューターの Windows イベント ログには、社内参加に関連するメッセージが表示されます。社内参加の成功したイベントと失敗したイベントの両方のメッセージが表示されます。イベント ログは、イベント ビューアーの [アプリケーションとサービス ログ] の [Microsoft - 社内参加] にあります。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

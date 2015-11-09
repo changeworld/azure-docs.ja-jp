@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Jobscience の統合 | Microsoft Azure" description="Azure Active Directory で Jobscience を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Jobscience の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Jobscience を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Jobscience の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=526255)をクリックしてください。
   
 このチュートリアルの目的は、Azure と Jobscience の統合を示すことです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Jobscience でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを終了すると、Jobscience に割り当てた Azure AD ユーザーは、Jobscience の企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリにシングル サインオンできるようになります。
+このチュートリアルを終了すると、Jobscience に割り当てた Azure AD ユーザーは、Jobscience の企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -24,7 +37,7 @@
 
 ###Jobscience のアプリ統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-jobscience-tutorial/IC700993.png "Active Directory")
 
@@ -51,35 +64,33 @@
     ![Jobscience](./media/active-directory-saas-jobscience-tutorial/IC784357.png "Jobscience")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Jobscience に対する認証を行えるようにする方法を説明します。  
-Jobscience のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。  
-この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Jobscience に対する認証を行えるようにする方法を説明します。Jobscience のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。この手順に慣れていない場合は、[証明書の拇印の値を取得する方法](http://youtu.be/YKQF266SAxI)についてのビデオをご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
 1.  Jobscience の企業サイトに管理者としてログインします。
 
-2.  **[セットアップ]** に移動します。
+2.  **[Setup]** に移動します。
 
     ![セットアップ](./media/active-directory-saas-jobscience-tutorial/IC784358.png "セットアップ")
 
-3.  左側のナビゲーション ウィンドウの **[管理]** セクションで、**[ドメインの管理]** をクリックして関連するセクションを展開し、**[マイ ドメイン]** をクリックして**[マイ ドメイン]** ページを開きます。
+3.  左側のナビゲーション ウィンドウの **[Administer]** セクションで、**[Domain Management]** をクリックして関連するセクションを展開し、**[My Domain]** をクリックして**[My Domain]** ページを開きます。
 
     ![マイ ドメイン](./media/active-directory-saas-jobscience-tutorial/IC767825.png "マイ ドメイン")
 
-4.  ドメインが正しく設定されていることを確認するには、“**Step 4 Deployed to Users**” で “**My Domain Settings**” を確認します。
+4.  ドメインが正しく設定されていることを確認するには、“**ステップ 4 ユーザーへのデプロイ**” で “**マイ ドメインの設定**” を確認します。
 
     ![ユーザーにデプロイされたドメイン](./media/active-directory-saas-jobscience-tutorial/IC784377.png "ユーザーにデプロイされたドメイン")
 
 5.  別の Web ブラウザー ウィンドウで、Azure ポータルにログインします。
 
-6.  **Jobscience** のアプリ統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+6.  **Jobscience** のアプリ統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-jobscience-tutorial/IC784360.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-jobscience-tutorial/IC784360.png "シングル サインオンの構成")
 
 7.  **[Jobscience にサインオンする方法について尋ねる]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-jobscience-tutorial/IC784361.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-jobscience-tutorial/IC784361.png "Configure Single Sign-On")
 
 8.  **[アプリ URL の構成]** ページの **[Jobscience サインイン URL]** ボックスに、"**http://company.my.salesforce.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
@@ -93,44 +104,44 @@ Jobscience のシングル サインオンを構成するには、証明書か�
 
     ![セキュリティ コントロール](./media/active-directory-saas-jobscience-tutorial/IC784364.png "セキュリティ コントロール")
 
-11. **[シングル サインオンの設定]** セクションで、次の手順に従います。
+11. **[Single Sign-On Settings]** セクションで、次の手順に従います。
 
     ![シングル サインオンの設定](./media/active-directory-saas-jobscience-tutorial/IC781026.png "シングル サインオンの設定")
 
-    1.  **[SAML を有効化]** を選択します。
-    2.  **[新規]** をクリックします。
+    1.  **[SAML Enabled]** を選択します。
+    2.  **[New]** をクリックします。
 
-12. **[SAML シングル サインオン設定の編集]** ページで、次の手順に従います。
+12. **[SAML Single Sign-On Setting Edit]** ページで、次の手順に従います。
 
     ![SAML シングル サインオンの設定](./media/active-directory-saas-jobscience-tutorial/IC784365.png "SAML シングル サインオンの設定")
 
-    1.  **[名前]** テキストボックスに、構成の名前を入力します。
+    1.  **[Name]** テキスト ボックスに、構成の名前を入力します。
     2.  Azure ポータルの **[Jobscience でのシングル サインオンの構成]** ダイアログ ページで **[発行者 URL]** の値をコピーし、それを **[発行者]** テキストボックスに貼り付けます。
-    3.  **[エンティティ ID]** ボックスに、「****https://salesforce-jobscience.com**」と入力します。
+    3.  **[エンティティ ID]** ボックスに、「**https://salesforce-jobscience.com**」と入力します。
 4.  **[参照]** をクリックして、Azure AD の証明書をアップロードします。
-    5.  **[SAML ID の種類]** として、**[アサーション には、ユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
+    5.  **[SAML ID の種類]** では、**[アサーションには、ユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
     6.  **[SAML ID の場所]** として、**[ID を Subject ステートメントの NameIdentifier 要素にする]** チェックボックスをオンにします。
     7.  Azure ポータルの **[Jobscience でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーし、****[ID プロバイダー ログイン URL]**** ボックスに貼り付けます。
     8.  Azure ポータルの **[Jobscience でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーし、****[ID プロバイダー ログアウト URL]**** ボックスに貼り付けます。
     9.  **[保存]** をクリックします。
 
-13. 左側のナビゲーション ウィンドウの **[管理]** セクションで、**[ドメインの管理]** をクリックして関連するセクションを展開し、**[マイ ドメイン]** をクリックして**[マイ ドメイン]** ページを開きます。
+13. 左側のナビゲーション ウィンドウの **[Administer]** セクションで、**[Domain Management]** をクリックして関連するセクションを展開し、**[My Domain]** をクリックして**[My Domain]** ページを開きます。
 
     ![マイ ドメイン](./media/active-directory-saas-jobscience-tutorial/IC767825.png "マイ ドメイン")
 
-14. **[マイ ドメイン]** ページの **[Login Page Branding (ログイン ページのブランド)**] をクリックして、**[編集]** をクリックします。
+14. **[マイ ドメイン]** ページの **[ログイン ページのブランド]** をクリックして、**[編集]** をクリックします。
 
     ![ログイン ページのブランド](./media/active-directory-saas-jobscience-tutorial/IC767826.png "ログイン ページのブランド")
 
-15. **[Login Page Branding (ログイン ページのブランド)]** ページの **[認証サービス]** セクションに、**[SAML SSO 設定]** の名前が表示されます。それを選んで、**[保存]** をクリックします。
+15. **[ログイン ページのブランド]** ページの **[認証サービス]** セクションに、**[SAML SSO 設定]** の名前が表示されます。それを選んで、**[保存]** をクリックします。
 
     ![ログイン ページのブランド](./media/active-directory-saas-jobscience-tutorial/IC784366.png "ログイン ページのブランド")
 
-16. Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+16. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-jobscience-tutorial/IC784367.png "Configure Single Sign-On")
   
-SP によって開始されるシングル サインオンのログイン URL を取得するには、**[Security Controls (セキュリティ コントロール)**] メニュー セクションの **[シングル サインオンの設定]** をクリックします。
+SP によって開始されるシングル サインオンのログイン URL を取得するには、**[セキュリティ コントロール]** メニュー セクションの **[シングル サインオンの設定]** をクリックします。
 
 ![セキュリティ コントロール](./media/active-directory-saas-jobscience-tutorial/IC784368.png "セキュリティ コントロール")
   
@@ -143,19 +154,19 @@ Azure AD ユーザーが Jobscience にログインできるようにするに�
 
 1.  **Jobscience** の企業サイトに管理者としてログインします。
 
-2.  [セットアップ] に移動します。
+2.  [Setup] に移動します。
 
     ![セットアップ](./media/active-directory-saas-jobscience-tutorial/IC784358.png "セットアップ")
 
-3.  **[ユーザーの管理] の [ユーザー]** に移動します。
+3.  **[Manage Users]、[Users]** の順に移動します。
 
     ![ユーザー](./media/active-directory-saas-jobscience-tutorial/IC784369.png "ユーザー")
 
-4.  **[新しいユーザー]** をクリックします。
+4.  **[New User]** をクリックします。
 
     ![すべてのユーザー](./media/active-directory-saas-jobscience-tutorial/IC784370.png "すべてのユーザー")
 
-5.  **[ユーザーの編集]** ダイアログで、次の手順に従います。
+5.  **[Edit User]** ダイアログで、次の手順に従います。
 
     ![ユーザーの編集](./media/active-directory-saas-jobscience-tutorial/IC784371.png "ユーザーの編集")
 
@@ -174,14 +185,14 @@ Azure AD ユーザーが Jobscience にログインできるようにするに�
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  **Jobscience ** アプリ統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  Jobscience アプリ統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-jobscience-tutorial/IC784372.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-jobscience-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

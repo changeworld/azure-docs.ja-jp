@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Replicon の統合 | Microsoft Azure" description="Azure Active Directory で Replicon を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Replicon の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Replicon を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Replicon の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=525008)をクリックしてください。
   
 このチュートリアルでは、Azure と Replicon の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Replicon テナント
   
-このチュートリアルを完了すると、Replicon に割り当てた Azure AD ユーザーは、Replicon 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Replicon に割り当てた Azure AD ユーザーは、Replicon 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -36,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-replicon-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-replicon-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -46,7 +59,7 @@
 
     ![アプリケーション ギャラリー](./media/active-directory-saas-replicon-tutorial/IC777799.png "アプリケーション ギャラリー")
 
-7.  結果ウィンドウで **[Replicon]** を選び、**[完了]** をクリックしてアプリケーションを追加します。
+7.  結果ウィンドウで **[Replicon]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![Replicon](./media/active-directory-saas-replicon-tutorial/IC777800.png "Replicon")
 ##シングル サインオンの構成
@@ -59,7 +72,7 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-replicon-tutorial/IC777801.png "シングル サインオンの構成")
 
-2.  **[ユーザーの Replicon へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選び、**[次へ]** をクリックします。
+2.  **[ユーザーの Replicon へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![シングル サインオンの構成](./media/active-directory-saas-replicon-tutorial/IC777802.png "シングル サインオンの構成")
 
@@ -74,7 +87,7 @@
 
     3.  **[次へ]** をクリックします。
 
-4.  **[ Replicon でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、メタデータをコンピューターに保存します。
+4.  **[Replicon でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、メタデータをコンピューターに保存します。
 
     ![シングル サインオンの構成](./media/active-directory-saas-replicon-tutorial/IC777804.png "シングル サインオンの構成")
 
@@ -84,12 +97,12 @@
 
     ![SAML 認証の有効化](./media/active-directory-saas-replicon-tutorial/IC777805.png "SAML 認証の有効化")
 
-    1.  **[EnableSAML Authentication2]** ダイアログを表示するには、お使いの URL の company key に続けて、次を追加します。**/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2**完全な URL のスキーマは次のようになります。**https://na2.replicon.com/\<YourCompanyKey>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2**
+    1.  **[EnableSAML Authentication2]** ダイアログを表示するには、お使いの URL の company key の後に次を追加します。**/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2**完全な URL のスキーマは次のようになります。**https://na2.replicon.com/\<YourCompanyKey>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2**
     2.  **[+]** をクリックして、**[v20Configuration]** セクションを展開します。
     3.  **[+]** をクリックして、**[metaDataConfiguration]** セクションを展開します。
-    4.  **[Choose File]** をクリックして、ID プロバイダー メタデータ XML ファイルを選び、**[送信]** をクリックします。
+    4.  **[Choose File]** をクリックして、ID プロバイダー メタデータ XML ファイルを選択し、**[Submit]** をクリックします。
 
-7.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+7.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-replicon-tutorial/IC778418.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
@@ -108,14 +121,14 @@ Azure AD ユーザーが Replicon にログインできるようにするには�
 
     ![ユーザーの追加](./media/active-directory-saas-replicon-tutorial/IC777807.png "ユーザーの追加")
 
-4.  **[User Profile]** セクションで、次の手順に従います。
+4.  **[User Profile]** セクションで、次の手順を実行します。
 
     ![ユーザー プロファイル](./media/active-directory-saas-replicon-tutorial/IC777808.png "ユーザー プロファイル")
 
     1.  **[Login Name]** ボックスに、プロビジョニングする Azure AD ユーザーの Azure AD メール アドレスを入力します。
-    2.  **[Authentication Type]** は **[SSO]** を選びます。
-    3.  **[Department]** テキストボックスに、ユーザーの所属を入力します。
-    4.  **[Employee Type]** は **[Administrator]** を選びます。
+    2.  **[Authentication Type]** で **[SSO]** を選択します。
+    3.  **[Department]** ボックスに、ユーザーの所属を入力します。
+    4.  **[Employee Type]** で **[Administrator]** を選択します。
     5.  **[Save User Profile]** をクリックします。
 
 >[AZURE.NOTE]Replicon から提供されている他の Replicon ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
@@ -128,14 +141,14 @@ Azure AD ユーザーが Replicon にログインできるようにするには�
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  **Replicon ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Replicon** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-replicon-tutorial/IC777809.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-replicon-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

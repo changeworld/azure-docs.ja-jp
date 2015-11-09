@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Azure Automation での資格情報資産 | Microsoft Azure"
-   description="Azure Automation の資格情報資産には、Runbook によってアクセスされるリソースの認証に使用できるセキュリティ資格情報が含まれます。この記事では、資格情報資産を作成し、Runbook でそれを使用する方法について説明します。"
+   description="Azure Automation の資格情報資産には、Runbook または DSC 構成によってアクセスされるリソースの認証に使用できるセキュリティ資格情報が含まれます。この記事では、資格情報資産を作成し、Runbook または DSC 構成でそれを使用する方法について説明します。"
    services="automation"
    documentationCenter=""
    authors="bwren"
@@ -12,18 +12,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/18/2015"
+   ms.date="10/23/2015"
    ms.author="bwren" />
 
 # Azure Automation での資格情報資産
 
-Automation の資格情報資産は、ユーザー名やパスワードなどのセキュリティ資格情報を含む [PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) オブジェクトを保持しています。Runbook では、認証に PSCredential オブジェクトを受け付けるコマンドレットを使用したり、PSCredential オブジェクトのユーザー名とパスワードを抽出して認証を必要とするアプリケーションやサービスに提供したりできます。資格情報のプロパティは、Azure Automation に安全に格納されており、Runbook で [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) アクティビティを使用してアクセスできます。
+Automation の資格情報資産は、ユーザー名やパスワードなどのセキュリティ資格情報を含む [PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) オブジェクトを保持しています。Runbook および DSC 構成では、認証に PSCredential オブジェクトを受け付けるコマンドレットを使用したり、PSCredential オブジェクトのユーザー名とパスワードを抽出して認証を必要とするアプリケーションやサービスに提供したりできます。資格情報のプロパティは、Azure Automation に安全に格納されており、Runbook または DSC 構成で [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) アクティビティを使用してアクセスできます。
 
->[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。These assets are encrypted and stored in the Azure Automation using a unique key that is generated for each automation account.This key is encrypted by a master certificate and stored in Azure Automation.セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
+>[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。これらの資産は暗号化され、各オートメーション アカウント用に生成された一意のキーを使用して Azure Automation に保存されます。このキーはマスター証明書によって暗号化され、Azure Automation に保存されます。セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
 
 ## Windows PowerShell コマンドレット
 
-Windows PowerShell でオートメーション資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。これらは、Automation Runbook で使用できる [Azure PowerShell モジュール](../powershell-install-configure.md)に付属しています。
+Windows PowerShell でオートメーション資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。これらは、Automation Runbook および DSC 構成で使用できる [Azure PowerShell モジュール](../powershell-install-configure.md)に付属しています。
 
 |コマンドレット|説明|
 |:---|:---|
@@ -34,13 +34,13 @@ Windows PowerShell でオートメーション資格情報資産を作成およ�
 
 ## Runbook アクティビティ
 
-次の表のアクティビティは、Runbook で資格情報にアクセスするために使用されます。
+次の表のアクティビティは、Runbook および DSC 構成で資格情報にアクセスするために使用されます。
 
-|Activities|Description|
+|アクティビティ|説明|
 |:---|:---|
-|Get-AutomationPSCredential|Runbook で使用する資格情報を取得します。[System.Management.Automation.PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) オブジェクトを返します。|
+|Get-AutomationPSCredential|Runbook または DSC 構成で使用する資格情報を取得します。[System.Management.Automation.PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) オブジェクトを返します。|
 
->[AZURE.NOTE]Get-AutomationPSCredential の –Name パラメーターを使用すると、設計時に Runbook と資格情報資産の間の依存関係の検出が複雑になる可能性があるため、使用しないようにする必要があります。
+>[AZURE.NOTE]Get-AutomationPSCredential の –Name パラメーターを使用すると、設計時に Runbook または DSC 構成と資格情報資産の間の依存関係の検出が複雑になる可能性があるため、使用しないようにする必要があります。
 
 ## 新しい資格情報の作成
 
@@ -71,9 +71,9 @@ Windows PowerShell でオートメーション資格情報資産を作成およ�
 	$cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $user, $pw
 	New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name "MyCredential" -Value $cred
 
-## Runbook での PowerShell 資格情報の使用
+## PowerShell 資格情報の使用
 
-Runbook で資格情報資産を取得するには、**Get-AutomationPSCredential** アクティビティを使用します。このアクティビティが返す [PSCredential オブジェクト](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx)を、PSCredential パラメーターを必要とするアクティビティまたはコマンドレットで使用できます。また、資格情報オブジェクトのプロパティを取得して個別に使用することもできます。オブジェクトにはユーザー名と安全なパスワードのプロパティがあります。または、**GetNetworkCredential** メソッドを使用して、安全ではないバージョンのパスワードを提供する [NetworkCredential](http://msdn.microsoft.com/library/system.net.networkcredential.aspx) オブジェクトを取得することもできます。
+Runbook または DSC 構成で資格情報資産を取得するには、**Get-AutomationPSCredential** アクティビティを使用します。このアクティビティが返す [PSCredential オブジェクト](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx)を、PSCredential パラメーターを必要とするアクティビティまたはコマンドレットで使用できます。また、資格情報オブジェクトのプロパティを取得して個別に使用することもできます。オブジェクトにはユーザー名と安全なパスワードのプロパティがあります。または、**GetNetworkCredential** メソッドを使用して、安全ではないバージョンのパスワードを提供する [NetworkCredential](http://msdn.microsoft.com/library/system.net.networkcredential.aspx) オブジェクトを取得することもできます。
 
 ### テキストの Runbook のサンプル
 
@@ -96,6 +96,8 @@ Runbook で資格情報資産を取得するには、**Get-AutomationPSCredentia
 
 ![キャンバスに資格情報を追加する](media/automation-credentials/get-credential.png)
 
+## DSC での PowerShell 資格情報の使用
+Azure Automation の DSC 構成では **Get-AutomationPSCredential** を使用して資格情報資産を参照できますが、必要に応じて、パラメーターを使用して資格情報資産を渡すこともできます。詳細については、「[Azure Automation DSC での構成のコンパイル](automation-dsc-compile.md#credential-assets)」を参照してください。
 
 ## 関連記事:
 
@@ -103,4 +105,4 @@ Runbook で資格情報資産を取得するには、**Get-AutomationPSCredentia
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->
