@@ -13,10 +13,22 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="09/29/2015" 
+	ms.date="10/22/2015" 
 	ms.author="jeffstok"/>
 
 #Microsoft Stream Analytics リリース ノート
+
+## Stream Analytics の 2015 年 10 月 22 日のリリースに関するノート ##
+
+このリリースには、次の更新プログラムが含まれています。
+
+タイトル | 説明
+---|---
+Additional query language features（追加のクエリ言語機能） | Stream Analytics では、機能: [ABS](https://msdn.microsoft.com/library/azure/mt574054.aspx)、[CEILING](https://msdn.microsoft.com/library/azure/mt605286.aspx)、[EXP](https://msdn.microsoft.com/library/azure/mt605289.aspx)、[FLOOR](https://msdn.microsoft.com/library/azure/mt605240.aspx)、[POWER](https://msdn.microsoft.com/library/azure/mt605287.aspx)、[SIGN](https://msdn.microsoft.com/library/azure/mt605290.aspx)、[SQUARE](https://msdn.microsoft.com/library/azure/mt605288.aspx)、および [SQRT](https://msdn.microsoft.com/library/azure/mt605238.aspx) を含めることでクエリ言語が拡張されました。
+Removed aggregate limitations（集計の制限を削除） | このリリースでは、クエリにおける 15 の集計の制限が削除されます。クエリごとの集計の数に制限がなくなりました。
+Added GROUP BY System.Timestamp feature (GROUP BY System.Timestamp 機能を追加) | [GROUP BY](https://msdn.microsoft.com/library/azure/dn835023.aspx) 関数で、window\_type と [System.Timestamp](https://msdn.microsoft.com/library/azure/mt598501.aspx) のいずれかが可能になりました。
+Added OFFSET for Tumbling and Hopping windows (タンブリング ウィンドウとホッピング ウィンドウのオフセットを追加) | 既定では、 [タンブリング](https://msdn.microsoft.com/library/azure/dn835055.aspx) ウィンドウと[ホッピング](https://msdn.microsoft.com/library/azure/dn835041.aspx) ウィンドウは 0 時間にアラインされます (1/1/0001 12:00:00 AM UTC)。新しい (省略可能) パラメーター 'offsetsize' では、カスタム オフセット (またはアライメント) を指定できます。
+
 
 ## Stream Analytics の 2015 年 9 月 29 日付けリリースに関するノート ##
 
@@ -25,7 +37,7 @@
 タイトル | 説明
 ---|---
 Azure IoT Suite のパブリック プレビュー | Stream Analytics は、Azure IoT Suite のパブリック プレビューに含まれています。
-Azure プレビュー ポータルの統合 | Microsoft Azure 管理ポータルで引き続き使用されている Stream Analytics が、[Azure プレビュー ポータル](http://azure.microsoft.com/overview/preview-portal/)にも統合されました。現在、プレビュー ポータルの Stream Analytics 機能は Microsoft Azure 管理ポータルで提供されている機能のサブセットであり、ブラウザ内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。
+Azure プレビュー ポータルの統合 | Microsoft Azure 管理ポータルで引き続き使用されている Stream Analytics が、[Azure プレビュー ポータル](http://azure.microsoft.com/overview/preview-portal/)にも統合されました。現在、プレビュー ポータルの Stream Analytics 機能は Microsoft Azure 管理ポータルで提供されている機能のサブセットであり、ブラウザー内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。
 DocumentDB 出力のサポート | Stream Analytics のジョブを [DocumentDB](http://azure.microsoft.com/services/documentdb/) に出力できるようになりました。
 IoT Hub 入力に対するサポート | Stream Analytics ジョブで、IoT Hub からデータを取り込めるようになりました。
 多様なイベントに対する TIMESTAMP BY | 単一のデータ ストリームに、異なるフィールドにタイムスタンプを持つ複数のイベント タイプが含まれている場合、式と共に [TIMESTAMP BY](http://msdn.microsoft.com/library/mt573293.aspx) を使用してケースごとに異なるタイムスタンプ フィールドを指定できるようになりました。
@@ -65,7 +77,7 @@ Service Bus トピックの出力のサポート|[Service Bus トピック](stre
 
 タイトル|説明
 ---|---
-カスタム Blob 出力のパーティション分割|Blob ストレージ出力で、出力 blob が書き込まれる頻度、よび出力データ パス フォルダーの構造と形式を指定するオプションが使用できるようになりました。 
+カスタム Blob 出力のパーティション分割|Blob ストレージ出力で、出力 blob が書き込まれる頻度、および出力データ パス フォルダーの構造と形式を指定するオプションが使用できるようになりました。 
 
 ## Stream Analytics の 2015 年 5 月 3 日付けリリースに関するノート ##
 
@@ -93,7 +105,7 @@ SQL Database イベントのボリューム制限|出力ターゲットとして
 PowerBI データセットにはテーブルを 1 つしか含めることができない|PowerBI では、特定のデータセット内で複数のテーブルがサポートされていません。
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 
@@ -104,4 +116,4 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 - [Stream Analytics 管理 REST API 参照](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

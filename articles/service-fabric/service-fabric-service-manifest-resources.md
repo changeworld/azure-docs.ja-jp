@@ -4,7 +4,7 @@
    services="service-fabric"
    documentationCenter=".net"
    authors="sumukhs"
-   manager="anuragg"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -69,4 +69,4 @@ HTTP エンドポイントは Service Fabric によって自動的に ACL に登
 ```
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

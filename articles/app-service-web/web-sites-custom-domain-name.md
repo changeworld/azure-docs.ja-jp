@@ -3,9 +3,10 @@
 	description="Azure App Service の Web アプリでカスタム ドメイン名を使用する方法について説明します。"
 	services="app-service"
 	documentationCenter=""
-	authors="MikeWasson"
+	authors="cephalin"
 	manager="wpickett"
-	editor="jimbe"/>
+	editor="jimbe"
+	tags="top-support-issue"/>
 
 <tags
 	ms.service="app-service"
@@ -13,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/16/2015"
-	ms.author="mwasson"/>
+	ms.date="10/23/2015"
+	ms.author="cephalin"/>
 
 # Azure App Service のカスタム ドメイン名の構成
 
@@ -26,15 +27,17 @@
 
 Web アプリを作成するときに、Azure は azurewebsites.net のサブドメインにそのアプリを割り当てます。たとえば、Web アプリの名前が **contoso** の場合、URL は **contoso.azurewebsites.net** になります。また Azure によって仮想 IP アドレスも割り当てられます。
 
-運用 Web アプリでは、通常、カスタム ドメイン名をユーザーに表示します。この記事では、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) を使用してカスタム ドメインを予約または構成する方法について説明します
+運用 Web アプリでは、通常、カスタム ドメイン名をユーザーに表示します。この記事では、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) を使用してカスタム ドメインを構成する方法について説明します
 
-[AZURE.INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
 
 [AZURE.INCLUDE [introfooter](../../includes/custom-dns-web-site-intro-notes.md)]
 
 ## 概要
 
-既にドメイン名を持っている場合や、他のドメイン レジストラーからドメインを予約する場合、ここに示す手順は、Web アプリにカスタム ドメイン名を設定する一般的な手順です。
+外部ドメイン名をまだ登録していない (つまり、*.azurewebsites.net ではない) 場合、カスタム ドメインを設定する最も簡単な方法としては [Azure プレビュー ポータル](https://portal.azure.com)で直接購入します。このプロセスでは、Web アプリのドメイン名を GoDaddy などのサードパーティ サイトにアクセスして管理する代わりに、ポータルで直接管理できます。同様に、Web アプリで [Azure Traffic Manager](web-sites-traffic-manager-custom-domain-name.md) を使用しているかどうかにかかわらず、Web アプリでのドメイン名の構成が大幅に簡略化されます。詳細については、[Azure App Service でのカスタム ドメイン名の購入と構成](custom-dns-web-site-buydomains-web-app.md)に関するページを参照してください。
+
+既にドメイン名を持っている場合や、他のドメイン レジストラーからドメインを予約する場合、ここに示す手順は、Web アプリにカスタム ドメイン名を設定する一般的な手順です ([GoDaddy.com の特定の手順](web-sites-godaddy-custom-domain-name.md)を参照)。
 
 1. ドメイン名を予約します。使用できるレジストラーの種類は数多く存在するため、ここでは、この手順については説明しません。サインアップすると、サイトによってプロセスが順に表示されます。
 1. ドメインを Azure Web アプリにマップする DNS レコードを作成します。
@@ -70,7 +73,7 @@ CNAME レコードを作成している場合は、この手順をスキップ�
 3.	**[Web Apps]** ブレードをクリックします。
 4.	Web アプリの名前をクリックします。
 5.	**[Essentials]** ページで、**[すべての設定]** をクリックします。
-6.	**[カスタム ドメインと SSL]** をクリックします。 
+6.	**[カスタム ドメインと SSL]** をクリックします。
 7.	**[カスタム ドメインと SSL]** ブレードで **[外部ドメインの使用]** をクリックします。IP アドレスは、この部分の下部にあります。
 
 ## DNS レコードの作成
@@ -95,7 +98,7 @@ CNAME レコードを作成している場合は、この手順をスキップ�
   <tr>
     <td>@</td>
     <td>A (アドレス)</td>
-    <td>127.0.0.1</td>
+    <td>168.62.48.183</td>
   </tr>
   <tr>
     <td>www</td>
@@ -106,7 +109,7 @@ CNAME レコードを作成している場合は、この手順をスキップ�
 
 ここでカスタム ドメイン名を "contoso.com" とすると、次のレコードが作成されます。
 
-- 127\.0.0.1 にマップされた **contoso.com**
+- 168\.62.48.183 にマップされた **contoso.com**
 - **contoso.azurewebsites.net** にマップされた **www.contoso.com**
 
 >[AZURE.NOTE]Azure DNS を使用すると、Web アプリに必要なドメイン レコードをホストできます。Azure DNS でカスタム ドメインを構成し、レコードを作成するには、「[Web アプリのカスタム DNS レコードの作成](../dns-web-sites-custom-domain)」をご覧ください。
@@ -127,6 +130,13 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
+## DNS への反映を確認する
+
+構成手順が終了した後、DNS プロバイダーによっては、変更が反映されるまでしばらく時間がかかることがあります。[http://digwebinterface.com/](http://digwebinterface.com/) を使用して、DNS への反映が想定どおりに行われていることを確認できます。サイトを参照してから、テキストボックスにホスト名を指定し、**[Dig]** をクリックします。結果を確認して、最新の変更が有効になっているかどうかを確認します。
+
+![](./media/web-sites-custom-domain-name/1-digwebinterface.png)
+
+> [AZURE.NOTE]DNS エントリの反映には、最大 48 時間 (場合によってはそれ以上) かかります。すべてを正しく構成している場合でも、反映が正常に行われるまで待つ必要があります。
 
 ## 次のステップ
 
@@ -145,6 +155,5 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

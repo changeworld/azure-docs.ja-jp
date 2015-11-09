@@ -12,7 +12,7 @@
       ms.tgt_pltfrm="na"
       ms.devlang="na"
       ms.topic="article"
-      ms.date="10/06/2015"
+      ms.date="10/26/2015"
       ms.author="jutang;tamram" />
 
 
@@ -27,6 +27,12 @@ Azure のファイル共有は、Azure プレビュー ポータル、Azure Stor
 Azure で実行されているアプリケーションでは、Azure の仮想マシンのファイル共有を簡単にマウントできます。また、File ストレージの最新のリリースでは、SMB 3.0 をサポートしているオンプレミス アプリケーションからファイル共有をマウントできます。
 
 Linux の SMB クライアントでは暗号化はまだサポートされていないため、Linux からファイル共有をマウントするには、クライアントがファイル共有と同じ Azure リージョンに存在する必要があります。ただし、Linux での暗号化のサポートは、SMB 機能を担当している Linux 開発者によって実装される予定です。今後の暗号化をサポートする Linux ディストリビューションによって、任意の場所から Azure File 共有をマウントできるようになります。
+
+## ビデオ: Linux で Azure File ストレージを使用する方法
+
+このビデオでは、Linux で Azure のファイル共有を作成して使用する方法について説明しています。
+
+> [AZURE.VIDEO azure-file-storage-with-linux]
 
 ## 使用する Linux ディストリビューションの選択 ##
 
@@ -92,7 +98,7 @@ Open SUSE 13.2 を使用する場合は、次に示すようにファイルを�
 - ファイル共有のサイズ クォータの調整
 - Windows クライアントからファイル共有をマウントするために使用する `net use` コマンドのコピー 
 
-また、Linux から Azure のクロスプラットフォームのコマンドライン インターフェイス (Azure CLI) を使用してファイル共有を管理することもできます。Azure CLI には、File ストレージなど、Azure Storage を処理できるオープン ソースのクロスプラットフォーム コマンド セットが用意されています。豊富なデータ アクセス機能だけでなく、Azure ポータルにあるものと同じ機能の多くを使用できます。たとえば、「[Azure Storage での Azure CLI の使用](storage-azure-cli.md)」をご覧ください。
+また、Linux から Azure のクロスプラットフォームのコマンドライン インターフェイス (Azure CLI) を使用してファイル共有を管理することもできます。Azure CLI には、File ストレージなど、Azure Storage を処理できるオープン ソースのクロスプラットフォーム コマンド セットが用意されています。豊富なデータ アクセス機能だけでなく、Azure ポータルにあるものと同じ機能の多くを使用できます。例については、「[Azure Storage での Azure CLI の使用](storage-azure-cli.md)」をご覧ください。
 
 ## File ストレージを使用した開発 ##
 
@@ -110,8 +116,9 @@ Azure File storage for Linux ユーザーのグループによって、File ス�
 
 Azure File ストレージの詳細については、次のリンクを参照してください。
 
-### 概念についての記事
+### 概念に関する記事とビデオ
 
+- [Azure File ストレージ: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
 - [Windows で Azure File ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
 
 ### File ストレージ用のツールのサポート
@@ -130,4 +137,4 @@ Azure File ストレージの詳細については、次のリンクを参照し
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

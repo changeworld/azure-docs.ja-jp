@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="コンテナーと BLOB への匿名アクセスを管理する |Microsoft Azure" 
-	description="コンテナーと BLOB で匿名アクセスを使用できるようにする方法について説明します。" 
+	pageTitle="コンテナーと BLOB への匿名読み取りアクセスを管理する |Microsoft Azure" 
+	description="コンテナーと BLOB で匿名アクセスを使用できるようにする方法、およびこれらにプログラムでアクセスする方法について説明します。" 
 	services="storage" 
 	documentationCenter="" 
 	authors="tamram" 
-	manager="jdial" 
+	manager="carmonm" 
 	editor=""/>
 
 <tags 
@@ -13,20 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/28/2015" 
-	ms.author="micurd;tamram"/>
+	ms.date="10/26/2015" 
+	ms.author="tamram"/>
 
-# Microsoft Azure ストレージ リソースへのアクセスの管理
+# コンテナーと BLOB への匿名読み取りアクセスを管理する
 
 ## 概要
 
-既定では、ストレージ アカウントの所有者のみがそのアカウントを使ってストレージ リソースにアクセスできます。サービスまたはアプリケーションでアクセス キーを共有せずに他のクライアントがこれらのリソースを使用できるようにする必要がある場合は、次の方法でアクセスを許可できます。
+既定では、ストレージ アカウントの所有者のみがそのアカウントを使ってストレージ リソースにアクセスできます。BLOB ストレージの場合にのみ、コンテナーとその BLOB への匿名読み取りアクセスを許可するように、コンテナーのアクセス許可を設定できます。これにより、アカウント キーを共有せずにこれらのリソースへのアクセスを許可できます。
 
-- コンテナーのアクセス許可を、コンテナーとその BLOB への匿名読み取りアクセスを許可するように設定できます。匿名の読み取りアクセスは、コンテナーと BLOB のみで利用できます。 
-
-- 共有アクセス署名によってリソースを公開できます。これにより、リソースが使用可能になる間隔とクライアントに与える許可を指定することで、コンテナー、BLOB、テーブル、キュー、ファイル共有、ファイルへのアクセス制限を委任できるようになります。
-
-- 保存されているアクセス ポリシーを使用して、コンテナーまたは BLOB の共有アクセス署名や、キュー、テーブル、ファイル共有やそのファイルの共有アクセス署名を管理できます。保存されているアクセス ポリシーでは、共有アクセス署名を制御する追加手段とそれらを失効させる直接的な機能が提供されます。
+匿名アクセスは、特定の BLOB で匿名読み取りアクセスを常に使用できるようにするシナリオに最適です。詳細な制御では、さまざまなアクセス許可を使用し、指定された期間において、制限付きアクセスを委任するための共有アクセス署名を作成できます。共有アクセス署名の作成の詳細については、「[Shared Access Signatures: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 ## コンテナーと BLOB への匿名ユーザーのアクセス許可を付与します。
 
@@ -40,7 +36,84 @@
 
 - **パブリック読み取りアクセスなし:** コンテナーと BLOB のデータはアカウント所有者に限り読み取ることができます。
 
->[AZURE.NOTE]サービスで BLOB リソースをさらに緻密に制御する必要がある場合、または読み取り操作以外の操作のアクセス許可を設定する必要がある場合は、Shared Access Signature を使用して、リソースへのアクセス権をユーザーに付与できます。
+コンテナー アクセス許可は次の方法で設定できます。
+
+- [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)から設定。
+- ストレージ クライアント ライブラリまたは REST API を使用して、プログラムで設定。
+- PowerShell を使用して設定。Azure PowerShell からのコンテナー アクセス許可の設定については、[Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full#how-to-manage-azure-blobs)に関するページを参照してください。
+
+### Azure ポータルからコンテナー アクセス許可を設定する
+
+Azure ポータルからコンテナー アクセス許可を設定するには、次の手順に従います。
+
+1. ストレージ アカウントのダッシュボードに移動します。
+2. 一覧からコンテナーの名前を選択します。コンテナーの名前を選択するには、[名前] 列の右側をクリックする必要があります。名前をクリックすると、コンテナーにドリル ダウンしてその BLOB が表示されます。
+3. ツール バーで、**[編集]** を選択します。
+4. 次のスクリーン ショットに示すように、**[コンテナー メタデータの編集]** ダイアログ ボックスで、**[アクセス]** フィールドから目的のレベルのアクセス許可を選択します。
+
+	![[コンテナー メタデータの編集] ダイアログ ボックス](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-1.png)
+
+### .NET を使用してプログラムでコンテナー アクセス許可を設定する
+
+.NETクライアント ライブラリを使用してコンテナーのアクセス許可を設定するには、まず **GetPermissions** メソッドを呼び出して、コンテナーの既存のアクセス許可を取得します。次に、**GetPermissions** メソッドによって返される **BlobContainerPermissions** オブジェクトに対して **PublicAccess** プロパティを設定します。最後に、更新されたアクセス許可を使用して **SetPermissions** メソッドを呼び出します。
+
+次の例では、コンテナーのアクセス許可を完全なパブリック読み取りアクセスに設定します。アクセス許可を BLOB 限定のパブリック読み取りアクセスに設定するには、**PublicAccess** プロパティを **BlobContainerPublicAccessType.Blob** に設定します。匿名ユーザーのすべてのアクセス許可を削除するには、このプロパティを **BlobContainerPublicAccessType.Off** に設定します。
+
+    public static void SetPublicContainerPermissions(CloudBlobContainer container)
+    {
+        BlobContainerPermissions permissions = container.GetPermissions();
+        permissions.PublicAccess = BlobContainerPublicAccessType.Container;
+        container.SetPermissions(permissions);
+    }
+
+## コンテナーと BLOB に匿名でアクセスする
+
+コンテナーと BLOB に匿名でアクセスするクライアントは、資格情報を必要としないコンストラクターを使用できます。次の例では、BLOB サービス リソースを匿名で参照するいくつかの方法を示します。
+
+### 匿名クライアント オブジェクトを作成する
+
+アカウントに BLOB サービス エンドポイントを指定することで、匿名アクセスの対象となる新しいサービス クライアント オブジェクトを作成できます。ただし、匿名アクセスを使用できる、そのアカウントのコンテナーの名前も知っておく必要があります。
+
+    public static void CreateAnonymousBlobClient()
+    {
+        // Create the client object using the Blob service endpoint.
+        CloudBlobClient blobClient = new CloudBlobClient(new Uri(@"https://storagesample.blob.core.windows.net"));
+
+        // Get a reference to a container that's available for anonymous access.
+        CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
+
+        // Read the container's properties. Note this is only possible when the container supports full public read access.
+        container.FetchAttributes();
+        Console.WriteLine(container.Properties.LastModified);
+        Console.WriteLine(container.Properties.ETag);
+    }
+
+### コンテナーを匿名で参照する
+
+匿名で使用できるコンテナーの URL がある場合は、この URL を使用してコンテナーを直接参照することができます。
+
+    public static void ListBlobsAnonymously()
+    {
+        // Get a reference to a container that's available for anonymous access.
+        CloudBlobContainer container = new CloudBlobContainer(new Uri(@"https://storagesample.blob.core.windows.net/sample-container"));
+
+        // List blobs in the container.
+        foreach (IListBlobItem blobItem in container.ListBlobs())
+        {
+            Console.WriteLine(blobItem.Uri);
+        }
+    }
+
+
+### BLOB を匿名で参照する
+
+匿名アクセスを使用できる BLOB の URL がある場合は、この URL を使用して BLOB を直接参照することができます。
+
+    public static void DownloadBlobAnonymously()
+    {
+        CloudBlockBlob blob = new CloudBlockBlob(new Uri(@"https://storagesample.blob.core.windows.net/sample-container/logfile.txt"));
+        blob.DownloadToFile(@"C:\Temp\logfile.txt", System.IO.FileMode.Create);
+    }
 
 ## 匿名ユーザーが利用できる機能
 
@@ -73,6 +146,7 @@
 | Lease Blob | 所有者のみ | 所有者のみ |
 | Put Page | 所有者のみ | 所有者のみ |
 | Get Page Ranges | すべて | すべて |
+| Append Blob | 所有者のみ | 所有者のみ |
 
 
 ## 関連項目
@@ -81,4 +155,4 @@
 - [共有アクセス署名: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)
 - [Shared Access Signature を使用したアクセスの委任](https://msdn.microsoft.com/library/azure/ee395415.aspx) 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

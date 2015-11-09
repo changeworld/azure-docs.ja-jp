@@ -1,15 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と TOPdesk - Public の統合 | Microsoft Azure" description="Azure Active Directory で TOPdesk - Public を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と TOPdesk - Public の統合 | Microsoft Azure" 
+    description="Azure Active Directory で TOPdesk - Public を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と TOPdesk - Public の統合
 
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=529788)をクリックしてください。
-  
 このチュートリアルでは、Azure と TOPdesk - Public の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   TOPdesk - Public でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを完了すると、TOPdesk - Public に割り当てた Azure AD ユーザーは、TOPdesk - Public の企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、TOPdesk - Public に割り当てた Azure AD ユーザーは、TOPdesk - Public の企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -26,7 +38,7 @@
 
 ###TOPdesk - Public のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-topdesk-public-tutorial/IC700993.png "Active Directory")
 
@@ -84,15 +96,15 @@
 
 6.  別の Web ブラウザーのウィンドウで、**Azure Active Directory** ポータルに管理者としてログインします。
 
-7.  **TOPdesk - Public** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+7.  **TOPdesk - Public** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-topdesk-public-tutorial/IC790620.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-topdesk-public-tutorial/IC790620.png "シングル サインオンの構成")
 
 8.  **[ユーザーの TOPdesk - Public へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-topdesk-public-tutorial/IC790621.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-topdesk-public-tutorial/IC790621.png "Configure Single Sign-On")
 
-9.  **[アプリケーション URL の構成]** ページで、次の手順に従います。
+9.  **[アプリケーション URL の構成]** ページで、次の手順を実行します。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-topdesk-public-tutorial/IC790622.png "アプリケーション URL の構成")
 
@@ -133,10 +145,10 @@
 
     ![SAML Configuration Assistant](./media/active-directory-saas-topdesk-public-tutorial/IC790608.png "SAML Configuration Assistant")
 
-    1.  ダウンロードしたメタデータ ファイルをアップロードするには、**[Federation Metadata]** で **[Browse]** をクリックします。
-    2.  証明書ファイルをアップロードするには、**[Certificate (RSA)]** で **[Browse]** をクリックします。
-    3.  TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、**[Logo icon]** の下の **[Browse]** をクリックします。
-    4.  **[User name attribute]** テキストボックスに、「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
+    1.  ダウンロードしたメタデータ ファイルをアップロードするには、**[Federation Metadata]** で **[参照]** をクリックします。
+    2.  証明書ファイルをアップロードするには、**[Certificate (RSA)]** で **[参照]** をクリックします。
+    3.  TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、**[ログイン アイコン]** の下の **[Browse]** をクリックします。
+    4.  **[User name attribute]** テキストボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
 5.  **[Display name]** テキスト ボックスに、構成の名前を入力します。
     6.  **[保存]** をクリックします。
 
@@ -162,7 +174,7 @@ Azure AD ユーザーが TOPdesk - Public にログインできるようにす�
 
     1.  [General] タブをクリックします。
     2.  [Surname] テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの姓を入力します。
-    3.  アカウントの **[Site]** を選択します。
+    3.  アカウントの **[サイト]** を選択します。
     4.  **[保存]** をクリックします。
 
 >[AZURE.NOTE]他の TOPdesk - Public ユーザー アカウントの作成ツールまたは TOPdesk - Public から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
@@ -175,14 +187,14 @@ Azure AD ユーザーが TOPdesk - Public にログインできるようにす�
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  **TOPdesk - Public** アプリ統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  TOPdesk - Public アプリ統合ページで、**[Assign users]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-topdesk-public-tutorial/IC790630.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-topdesk-public-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

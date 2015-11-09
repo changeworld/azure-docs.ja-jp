@@ -74,9 +74,37 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
 	
 > 連続的に実行する Web ジョブをすべてのインスタンス上で確実に実行するには、Web アプリで [常時接続]* 構成設定を有効にします。そうしないと、SCM ホスト サイトが長時間アイドル状態になったときに Web ジョブが実行を停止する可能性があります。
 
-## <a name="CreateScheduled"></a>スケジュールされた Web ジョブの作成
+## <a name="CreateScheduledCRON"></a>CRON 式を使用してスケジュール済みの WebJob を作成する
 
-Azure 管理ポータルには、スケジュールされた Web ジョブを作成する機能がまだありません。ただし、この機能が追加されるまで、[以前のポータル](http://manage.windowsazure.com)を使用して、これを行うことができます。
+この方法は、Standard または Premium モードで実行されている Web Apps に使用でき、アプリで **Always On** 設定が有効になっている必要があります。
+
+オンデマンドの WebJob をスケジュール済みの WebJob に変換するには、単に WebJob zip ファイルの root に `settings.job` ファイルを追加します。この JSON ファイルには、次の例のように `schedule` プロパティを [CRON 式](https://en.wikipedia.org/wiki/Cron)と共に含める必要があります。
+
+CRON 式は 6 つのフィールド: `{second} {minute} {hour} {day} {month} {day of the week}` から成ります。
+
+たとえば、15 分ごとに WebJob をトリガーする場合、`settings.job` は次のようになります。
+
+```json
+{
+    "schedule": "0 */15 * * * *"
+}
+``` 
+
+その他の CRON スケジュールの例:
+
+- 1 時間ごと (分の値が 0 のとき): `* 0 * * * *` 
+- 午前 9 時から午後 5 時まで 1 時間ごと: `* 0 9-17 * * *` 
+- 毎日午前 9 時 30 分: `* 30 9 * * *`
+- 平日の毎日午前 9 時 30 分: `* 30 9 * * 1-5`
+
+**注**: WebJobを Visual Studio からデプロイする場合は、必ず `settings.job` ファイルのプロパティを [新しい場合はコピーする] に設定してください。
+
+
+## <a name="CreateScheduled"></a>Azure Scheduler を使用してスケジュール済みの WebJob を作成する
+
+次の代替の方法では、Azure Scheduler を使用します。この場合、WebJob によってスケジュールは直接認識されません。代わりに、スケジュールに基づいて WebJob をトリガーするように Azure Scheduler を構成します。
+
+Microsoft Azure 管理ポータルには、スケジュールされた Web ジョブを作成する機能がまだありません。ただし、この機能が追加されるまで、[以前のポータル](http://manage.windowsazure.com)を使用して、これを行うことができます。
 
 1. [以前のポータル](http://manage.windowsazure.com)で、[Web ジョブ] ページに移動し、**[追加]** をクリックします。
 
@@ -84,7 +112,7 @@ Azure 管理ポータルには、スケジュールされた Web ジョブを作
 	
 	![スケジュールに従って実行する新しいジョブ][NewScheduledJob]
 	
-2. **[Scheduler のリージョン]** ボックスの一覧で、ジョブに応じたリージョンを選択し、ダイアログ ボックスの右下にある右矢印をクリックして、次の画面に進みます。
+2. **[スケジューラのリージョン]** ボックスの一覧で、ジョブに応じたリージョンを選択し、ダイアログ ボックスの右下にある右矢印をクリックして、次の画面に進みます。
 
 3. **[ジョブの作成]** ダイアログ ボックスの **[繰り返し]** ボックスで、繰り返しの種類として **[一度だけのジョブ]** または **[定期的なジョブ]** を選択します。
 	
@@ -211,4 +239,4 @@ Azure 管理ポータルには、スケジュールされた Web ジョブを作
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

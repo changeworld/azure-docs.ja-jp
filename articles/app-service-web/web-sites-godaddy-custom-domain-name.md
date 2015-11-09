@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/16/2015"
+	ms.date="10/23/2015"
 	ms.author="erikre"/>
 
 # Azure App Service でのカスタム ドメイン名の構成 (GoDaddy から直接購入した場合)
@@ -23,8 +23,6 @@
 [AZURE.INCLUDE [intro](../../includes/custom-dns-web-site-intro.md)]
 
 Azure App Service Web Apps からドメインを購入した場合は、「<a href="/documentation/articles/custom-dns-web-site-buydomains-web-app" title="Web Apps" class="current">Web アプリ用のドメインの購入</a>」の記事の最後の手順をご覧ください。
-
-[AZURE.INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
 この記事では、[Go Daddy](https://godaddy.com) から直接購入したカスタム ドメイン名を [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) で使用する手順を示します。
 
@@ -64,14 +62,12 @@ Azure App Service Web Apps からドメインを購入した場合は、「<a hr
 
 	* **A (ホスト) レコード**を追加するときは、**[Host]** フィールドを、**@** (**contoso.com** などのルート ドメイン名)、* (複数のサブドメインに一致するワイルドカード)、または使用するサブドメイン (**www** など) のいずれかに設定する必要があります。 **[Points to]** フィールドを、Azure Web アプリの IP アドレスに設定する必要があります。
 
-		> [AZURE.NOTE]A (ホスト) レコードを使用する場合は、次の構成を持つ CNAME レコードも追加する必要があります。
-		>
-		> * **[Host]** 値 **awverify**、**[Points to]** 値 **awverify.&lt;yourwebappname&gt;.azurewebsites.net**。
-		>
-		> この CNAME レコードは Azure で使用されて、A レコードで参照されるドメインの所有者が検証されます。
-
 	* **CNAME (エイリアス) レコード**を追加するときは、**[Host]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Points to]** フィールドを、Azure Web アプリの **.azurewebsites.net** ドメイン名に設定する必要があります。たとえば **contoso.azurwebsites.net** にします。
 
+5. **[Add Another]** をクリックします。
+6. レコードの種類として **[CNAME]** を選択し、**[Host]** 値として **[awverify]**、**[Points to]** 値として **[awverify.&lt;yourwebappname&gt;.azurewebsites.net]** を指定します。
+
+	> [AZURE.NOTE]この CNAME レコードが Azure で使用され、A レコードまたは最初の CNAME レコードで記述されたドメインの所有者であることが検証されます。ドメインが Azure プレビュー ポータルで Web アプリにマップされた後、 **awverify** エントリを削除できます。
 
 5. レコードの追加または変更が完了したら、**[Finish]** をクリックして変更を保存します。
 
@@ -83,8 +79,7 @@ Azure App Service Web Apps からドメインを購入した場合は、「<a hr
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

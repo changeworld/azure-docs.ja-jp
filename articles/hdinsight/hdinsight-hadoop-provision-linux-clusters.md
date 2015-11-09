@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="10/14/2015"
+   	ms.date="10/23/2015"
    	ms.author="nitinme"/>
 
 
@@ -45,6 +45,8 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
 
 各クラスターの種類にはクラスター内のノードの独自の用語と、ノードの種類ごとにノード数および既定の VM サイズがあります。
 
+> [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+
 ![HDInsight Hadoop クラスター ノード](./media/hdinsight-provision-clusters/HDInsight.Hadoop.roles.png)
 
 HDInsight 用 Hadoop クラスターには次の 2 種類のノードがあります。
@@ -69,7 +71,7 @@ HDInsight 用 Spark クラスターには、ヘッド ノード (2 ノード) - 
 
 各クラスターの種類には、クラスターに関連付けられている 1 つ以上の Azure ストレージ アカウントもあります。HDInsight は、クラスターのデータ ストアとして、これらのストレージ アカウントの Azure BLOB を使用します。データをクラスターから分離しておくことで、使用されていないクラスターを削除した場合でもデータを引き続き保持できます。したがって、さらに分析が必要な場合に、新しいクラスターでも同じストレージ アカウントを使用できます。詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)に関するページを参照してください。
 
-## <a id="configuration">基本的な構成オプション</a>
+## <a id="configuration"></a>基本的な構成オプション
 
 次のセクションでは、HDInsight クラスターの作成時に使用できる必要な構成オプションについて説明します。
 
@@ -138,7 +140,7 @@ HDInsight では、クラスターの基になるストレージとして Azure 
 
 > [AZURE.IMPORTANT]クラスターは既定のストレージ アカウントと同じデータ センター内にある必要があるため、ストレージ アカウントに対して選択する地理的な場所によって HDInsight クラスターの場所が決まります。
 >
-> サポートされているリージョンのリストについては、「[HDInsight の価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」の **[リージョン]** ドロップダウン リストをクリックしてください。
+> サポートされているリージョンの一覧については、「[HDInsight 価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」の **[リージョン]** ボックスの一覧をクリックしてください。
 
 ####既定のストレージ コンテナー
 
@@ -152,11 +154,13 @@ HDInsight は、ストレージ アカウントで_既定のストレージ コ�
 
 クラスターで使用されるコンピューティング リソースのサイズを選択できます。たとえば、大量のメモリを必要とする操作を実行することがわかっている場合は、より多くのメモリを持つコンピューティング リソースを選択できます。
 
-> [AZURE.NOTE]クラスターの種類によって、ノードの種類、ノードの数およびノードのサイズは異なります。たとえば、Hadoop クラスターの種類には 2 つの_ヘッド ノード_と 4 つの_データ ノード_ (既定) がありますが、Storm クラスターの種類には 2 つの _Nimbus ノード_、3 つの _Zookeeper ノード_と 4 つの_Supervisor ノード_ (既定) があります。
+クラスターの種類によって、ノードの種類、ノードの数およびノードのサイズは異なります。たとえば、Hadoop クラスターの種類には 2 つの_ヘッド ノード_と 4 つの_データ ノード_ (既定) がありますが、Storm クラスターの種類には 2 つの _Nimbus ノード_、3 つの _Zookeeper ノード_と 4 つの_Supervisor ノード_ (既定) があります。
+
+> [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
 
 Azure プレビュー ポータルを使用してクラスターを構成する場合、ノード サイズは __[ノード価格レベル]__ ブレードを介して公開され、別のノード サイズに関連付けられているコストも表示されます。
 
-> [AZURE.IMPORTANT]クラスターが作成されると課金が開始され、クラスターが削除された場合にのみ停止します。価格の詳細については、[HDInsight の価格詳細](https://azure.microsoft.com/JA-JP/pricing/details/hdinsight/)に関する記述を参照してください。
+> [AZURE.IMPORTANT]クラスターが作成されると課金が開始され、クラスターが削除された場合にのみ停止します。価格の詳細については、[HDInsight の価格詳細](https://azure.microsoft.com/pricing/details/hdinsight/)に関する記述を参照してください。
 
 ##<a id="optionalconfiguration"></a>オプションの構成
 
@@ -164,7 +168,7 @@ Azure プレビュー ポータルを使用してクラスターを構成する�
 
 ### HDInsight のバージョン
 
-このクラスターに使用する HDInsight のバージョンを指定するためにこれを使用します。詳細については、[HDInsight での Hadoop クラスターのバージョンとコンポーネント](https://go.microsoft.com/fwLink/?LinkID=320896&clcid=0x409)に関するページを参照してください。
+このクラスターに使用する HDInsight のバージョンを指定するためにこれを使用します。詳細については、[HDInsight での Hadoop クラスターのバージョンとコンポーネント](https://go.microsoft.com/fwLink/?LinkID=320896&clcid=0x409)に関するページをご覧ください。
 
 ### Azure Virtual Network の使用
 
@@ -182,12 +186,12 @@ Azure プレビュー ポータルを使用してクラスターを構成する�
 
 Virtual Network の機能、利点の詳細については、「[Azure Virtual Network の概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
 
-> [AZURE.NOTE]クラスターを作成する前に、Azure Virtual Network を作成する必要があります。詳細については、「[Virtual Network の作成方法](virtual-networks-create-vnet.md)」を参照してください。
+> [AZURE.NOTE]クラスターを作成する前に、Azure Virtual Network を作成する必要があります。詳細については、「[Virtual Network の作成方法](virtual-networks-create-vnet.md)」をご覧ください
 >
 > Azure HDInsight は場所ベースの Virtual Networks のみをサポートし、アフィニティ グループ ベースの Virtual Networks は現在取り扱っていません。既存の Azure Virtual Network が場所ベースかどうかを確認するには、Azure PowerShell コマンドレットの Get-AzureVNetConfig を使用します。Virtual Network が場所ベースでない場合、次のオプションがあります。
 >
 > - 既存の Virtual Network 構成をエクスポートし、新しい Virtual Network を作成します。既定では、新しい Virtual Networks はすべて場所ベースになります。
-> - 場所ベースの Virtual Network に移行します。[リージョン スコープへの既存のサービスの移行](http://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)に関するページを参照してください。
+> - 場所ベースの Virtual Network に移行します。「[Migrating Existing Services to Regional Scope](http://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)」 (リージョン スコープへの既存のサービスの移行) をご覧ください。
 >
 > 1 つのクラスターには単一のサブネットを指定することを強くお勧めします。
 >
@@ -195,13 +199,13 @@ Virtual Network の機能、利点の詳細については、「[Azure Virtual N
 >
 > Linux ベースの HDInsight で v1 (クラシック) Azure Virtual Network を使用することはできません。Azure プレビュー ポータルでの HDInsight クラスターの作成プロセスで Virtual Network をオプションとして表示したり、Azure CLI または Azure PowerShell からクラスターを作成するときに Virtual Network を使用できるようにしたりするには、Virtual Network が v2 (Azure リソース マネージャー) である必要があります。
 >
-> v1 ネットワーク上にリソースがあり、HDInsight から仮想ネットワークを介してそれらのリソースに直接アクセスできるようにする場合、v2 Virtual Network を v1 Virtual Network に接続する方法については、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。この接続が確立されると、v2 Virtual Network で HDInsight クラスターを作成できます。
+> v1 ネットワーク上にリソースがあり、HDInsight から仮想ネットワークを介してそれらのリソースに直接アクセスできるようにする場合、v2 Virtual Network を v1 Virtual Network に接続する方法については、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」をご覧ください。この接続が確立されると、v2 Virtual Network で HDInsight クラスターを作成できます。
 
 ### メタストア
 
 メタストアには、Hive テーブル、パーティション、スキーマ、列に関する情報などの Hive と Oozie メタデータが含まれます。メタストアを使用すると Hive と Oozie メタデータを保持できるため、新しいクラスターを作成するときに、Hive テーブルまたは Oozie ジョブを再作成する必要はありません。
 
-メタストアの構成オプションを使用すると、SQL Database を使用して外部のメタストアを指定することができます。これにより、クラスターを削除するときに、データベースに外付けで格納されているメタデータ情報を保持できます。Azure での SQL Database の作成方法について詳しくは、「[最初の Azure SQL データベースを作成する](sql-database-get-started.md)」を参照してください。
+メタストアの構成オプションを使用すると、SQL Database を使用して外部のメタストアを指定することができます。これにより、クラスターを削除するときに、データベースに外付けで格納されているメタデータ情報を保持できます。Azure での SQL データベースの作成方法について詳しくは、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」をご覧ください。
 
 ###<a id="scriptaction"></a>スクリプト アクション
 
@@ -276,4 +280,4 @@ Virtual Network の機能、利点の詳細については、「[Azure Virtual N
 
   [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

@@ -3,7 +3,7 @@
 	description="Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。このトピックでは、Media Indexer の使用方法について説明します。"
 	services="media-services"
 	documentationCenter=""
-	authors="Juliako,johndeu"
+	authors="Juliako,Asolanki,johndeu"
 	manager="dwrede"
 	editor=""/>
 
@@ -294,7 +294,7 @@ MediaLength: 秒単位の入力メディア ファイルの長さ。Can be 0 は
 エラー: このメディア ファイルが正常にインデックスを作成するかどうかを示します。正常に作成された場合は 0、それ以外の場合は失敗です。具体的なエラーについては、<a href="#error_codes">エラー コード</a>をご覧ください。
 </td></tr>
 <tr><td>Media_1.aib </td>
-<td>File #0 - Audio indexing blob file.</td></tr>
+<td>File #1 - オーディオ インデックス BLOB ファイル。</td></tr>
 <tr><td>Media_1.smi<br/>Media_1.ttml</td>
 <td>File #0 - SAMI、TTML、および WebVTT 形式のクローズド キャプション (CC) ファイル</td></tr>
 <tr><td>Media_1.kw.xml</td>
@@ -359,4 +359,4 @@ AMS のラーニング パスについては、以下を参照してください
 
 <!-- URLs. -->
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

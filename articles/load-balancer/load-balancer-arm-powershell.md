@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/03/2015"
+   ms.date="10/26/2015"
    ms.author="joaoma" />
 
 # Azure リソース マネージャーを使用したインターネットに接続するロード バランサーの構成の開始
@@ -44,7 +44,7 @@
 
 Azure リソース マネージャーでのロード バランサー コンポーネントの詳細については、「[Azure リソース マネージャーによるロード バランサーのサポート](load-balancer-arm.md)」をご覧ください。
 
-次の手順は、2 台の仮想マシン間で負荷分散が行われるようにロード バランサーを構成する方法を示しています。
+次の手順は、2 台の仮想マシン間でロード バランサーを構成する方法を示しています。
 
 
 ## PowerShell を使用した手順
@@ -109,6 +109,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 	$publicIP = New-AzurePublicIpAddress -Name PublicIp -ResourceGroupName NRP-RG -Location "West US" –AllocationMethod Dynamic -DomainNameLabel lbip 
 
+>[AZURE.NOTE]パブリック IP アドレスのドメイン名のラベル プロパティは、ロード バランサーの FQDN になります。
 
 ## フロント エンド IP プールとバックエンド アドレス プールの作成
 
@@ -241,7 +242,37 @@ PS C:\> $backendnic1
 
 コマンド Add-AzureVMNetworkInterface を使用して、NIC を仮想マシンに割り当てます。
 
-「[リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md#Example)」の手順に従って、仮想マシンを作成し、NIC に割り当てます。
+ドキュメント「[リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md#Example)」のオプション 4 または 5 に従って手順を確認しながら仮想マシンを作成し、NIC に割り当てることができます。
+
+## 既存のロード バランサーの更新
+
+
+### 手順 1
+
+上の例のロード バランサーを使用し、ロード バランサーのオブジェクトを変数 $slb using Get-AzureLoadBalancer に割り当てます。
+
+	$slb=get-azureLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
+
+### 手順 2
+
+次の例では、フロント エンドでポート 81、バック エンド プールでポート 8181 を使用し、既存のロード バランサーに新しい受信 NAT 規則を追加します。
+
+	$slb | Add-AzureLoadBalancerInboundNatRuleConfig -Name NewRule -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81  -BackendPort 8181 -Protocol Tcp
+
+
+### 手順 3.
+
+Set-AzureLoadBalancer を使用して、新しい構成を保存します。
+
+	$slb | Set-AzureLoadBalancer
+
+## ロード バランサーの削除
+
+コマンド Remove-AzureLoadBalancer を使用して、リソース グループ "NRP-RG" から、前に作成された "NRP-LB" という名前のロード バランサーを削除します。
+
+	Remove-AzureLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
+
+>[AZURE.NOTE]オプションのスイッチ -Force を使用することで、削除のためのプロンプトを回避できます。
 
 
 ## 関連項目
@@ -251,4 +282,4 @@ PS C:\> $backendnic1
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

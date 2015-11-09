@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric の正常性モニタリングの概要"
-   description="この記事では、正常性エンティティ、レポート、および評価を含む、 Azure Service Fabric 正常性監視モデルについて説明します。"
+   pageTitle="Service Fabric の正常性モニタリング | Microsoft Azure"
+   description="クラスター、アプリケーション、およびサービスを監視する Azure Service Fabric の正常性監視モデルの紹介です。"
    services="service-fabric"
    documentationCenter=".net"
    authors="oanapl"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/03/2015"
+   ms.date="10/23/2015"
    ms.author="oanapl"/>
 
 # Service Fabric の正常性モニタリングの概要
@@ -336,4 +336,4 @@ HealthEvents                    :
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

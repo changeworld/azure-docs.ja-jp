@@ -336,4 +336,4 @@ REST API を使用してパイプラインを作成およびデプロイする�
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

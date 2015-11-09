@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と SimpleNexus の統合 | Microsoft Azure" description="SimpleNexus と Azure Active Directory を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と SimpleNexus の統合 | Microsoft Azure" 
+    description="SimpleNexus と Azure Active Directory を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と SimpleNexus の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=528205)をクリックしてください。
   
 このチュートリアルの目的は、Azure と SimpleNexus の統合を示すことです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   SimpleNexus でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを終了すると、SimpleNexus に割り当てた Azure AD ユーザーは、SimpleNexus 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを終了すると、SimpleNexus に割り当てた Azure AD ユーザーは、SimpleNexus 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -57,11 +70,11 @@
 
 1.  Azure AD ポータルの **SimpleNexus** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-simplenexus-tutorial/IC785896.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-simplenexus-tutorial/IC785896.png "シングル サインオンの構成")
 
 2.  **[ユーザーの SimpleNexus へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-simplenexus-tutorial/IC785897.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-simplenexus-tutorial/IC785897.png "Configure Single Sign-On")
 
 3.  **[アプリケーション URL の構成]** ページで、**[SimpleNexus サインイン URL]** ボックスに、*https://simplenexus.com/CompanyName\_login*" というパターンで URL を入力し、**[次へ]** をクリックします。
 
@@ -69,13 +82,13 @@
 
 4.  **[SimpleNexus でのシングルサインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、メタ データファイルを SimpleNexus サポート チームに転送します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-simplenexus-tutorial/IC785899.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-simplenexus-tutorial/IC785899.png "シングル サインオンの構成")
 
     >[AZURE.NOTE]シングル サインオンは SimpleNexus サポート チームが有効にする必要があります。
 
 5.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-simplenexus-tutorial/IC785900.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-simplenexus-tutorial/IC785900.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
   
 Azure AD ユーザーが SimpleNexus にログインできるようにするには、ユーザーを SimpleNexus にプロビジョニングする必要があります。SimpleNexus の場合、プロビジョニングは、テナント管理者が手動で実行するタスクです。
@@ -94,10 +107,10 @@ Azure AD ユーザーが SimpleNexus にログインできるようにするに�
 
     ![ユーザーの割り当て](./media/active-directory-saas-simplenexus-tutorial/IC785901.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確認します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-simplenexus-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

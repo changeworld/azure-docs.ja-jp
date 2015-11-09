@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="09/29/2015" 
+    ms.date="10/28/2015" 
     ms.author="elizapo" />
 
 
@@ -30,7 +30,7 @@ Azure RemoteApp では、デバイスとセッションにわたってユーザ�
 
 ## 管理者がデータにアクセスするには、どうすればよいですか。
 
-いずれかのユーザーのデータにアクセスする必要がある場合は (災害復旧やユーザーの退職時)、[Azure RemoteApp](mailto:remoteappforum@microsoft.com) に連絡して、コレクションとユーザー ID のサブスクリプション情報を伝えます。Azure RemoteApp チームから、データにアクセスするための URL が提供されたら、その URL から、データが保存されている場所にアクセスし、必要なドキュメントまたはファイルを入手できます。
+いずれかのユーザーのデータにアクセスする必要がある場合は (障害復旧やユーザーの退職時)、[Azure RemoteApp](mailto:remoteappforum@microsoft.com) に連絡して、コレクションとユーザー ID のサブスクリプション情報を伝えます。Azure RemoteApp チームによって、VHD の URL が提供されます。VHD をダウンロードし、必要なドキュメントやファイルを取得します。VHD は 50 GB あるため、ダウンロードに少し時間がかかることに注意してください。
 
 
 ## データはバックアップされていますか。
@@ -126,4 +126,4 @@ OneDrive for Business などのデータ同期アプリを使用することも�
 
 いいえ。Azure RemoteApp ではサポートされません。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

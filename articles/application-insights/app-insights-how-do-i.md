@@ -195,21 +195,40 @@
 
 ## アプリから Application Insights へのトラフィックの削減
 
-* [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) で不要なモジュール (パフォーマンス カウンターなど) を無効にします。
+* [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) で不要なモジュール (パフォーマンス カウンター コレクターなど) を無効にします。
+* SDK で、[サンプリングとフィルター処理](app-insights-api-filtering-sampling.md)を使用します。
 * [TrackMetric](app-insights-api-custom-events-metrics.md#track-metric) を使用する場合は、結果を送信する前にメトリック値のバッチの集計を計算します。これに対して提供される TrackMetric() のオーバーロードを考慮します。
+
 
 詳細については、[価格とクォータ](app-insights-pricing.md)に関するページを参照してください。
 
+## 遠隔測定を無効にする
+
+サーバーからテレメトリの収集と送信を**動的に停止および開始**するには:
+
+```
+
+    using  Microsoft.ApplicationInsights.Extensibility;
+
+    TelemetryConfiguration.Active.DisableTelemetry = true;
+```
+
+
+
+パフォーマンス カウンター、HTTP 要求、依存関係などの**選択されている標準のコレクターを無効にする**には、[ApplicationInsights.config](app-insights-api-custom-events-metrics.md) 内の該当する行を削除するか、コメント アウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
+
+
+
 ## システム パフォーマンス カウンターの表示
 
-メトリックス エクスプローラーに表示できるメトリックには、一連のシステム パフォーマンス カウンターがあります。事前定義された**サーバー**というブレードに、それらのいくつかが表示されます。
+メトリックス エクスプローラーに表示できるメトリックには、一連のシステム パフォーマンス カウンターがあります。事前定義された **[サーバー]** というブレードに、それらのいくつかが表示されます。
 
 ![Application Insights リソースを開いて、[サーバー] をクリック](./media/app-insights-how-do-i/121-servers.png)
 
 ### パフォーマンス カウンターのデータが表示されない場合
 
 * 自身のコンピューターまたは VM の**IIS サーバー**の場合。[Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)します。 
-* **Azure の Web サイト**の場合。パフォーマンス カウンターにまだ対応していません。Azure Web サイトのコントロール パネルの標準パーツとして取得できるメトリックがいくつか用意されています。
+* **Azure Web サイト**の場合。まだパフォーマンス カウンターに対応していません。Azure Web サイトのコントロール パネルの標準パーツとして取得できるメトリックがいくつか用意されています。
 * **Unix サーバー**の場合。[collectd をインストールします](app-insights-java-collectd.md)。
 
 ### 表示するパフォーマンス カウンターの数を増やすには
@@ -224,4 +243,4 @@
 
 現在、以下に関するパフォーマンス カウンターを監視していません。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

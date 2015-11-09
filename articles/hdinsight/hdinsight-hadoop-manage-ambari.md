@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Ambari を使用した HDInsight クラスターの管理 | Microsoft Azure"
-   description="Ambari を使用して Linux ベースの HDInsight クラスターを監視および管理する方法を説明します。"
+   pageTitle="Apache Ambari Web UI を使用して HDInsight クラスターを監視および管理する |Microsoft Azure"
+   description="Ambari を使用して Linux ベースの HDInsight クラスターを監視および管理する方法を説明します。このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
@@ -14,24 +14,30 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/20/2015"
+   ms.date="10/27/2015"
    ms.author="larryfr"/>
 
-#Ambari を使用した HDInsight クラスターの管理 (プレビュー)
+#Ambari Web UI を使用した HDInsight クラスターの管理
 
-Ambari を使用して Linux ベースの Azure HDInsight クラスターを管理し、監視する方法を説明します。
+[AZURE.INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-> [AZURE.NOTE]この記事の多くの情報は、Linux ベースの HDInsight クラスターにのみ適用されます。Windows ベースの HDInsight クラスターでは、Ambari REST API を使用した監視のみを利用できます。「[Ambari API を使用した HDInsight の Windows ベースの Hadoop の監視](hdinsight-monitor-use-ambari-api.md)」をご覧ください。
+Apache Ambari には使いやすい Web UI と REST API が用意されているため、Hadoop クラスターを簡単に管理および監視できます。Linux ベースの HDInsight クラスターに含まれている Ambari は、クラスターの監視と構成の変更を行うために使用します。
+
+このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。
+
+> [AZURE.NOTE]この記事の情報は、Linux ベースの HDInsight クラスターにのみ適用されます。Windows ベースの HDInsight クラスターでは、Ambari REST API を使用した監視のみを利用できます。「[Ambari API を使用した HDInsight の Windows ベースの Hadoop の監視](hdinsight-monitor-use-ambari-api.md)」をご覧ください。
 
 ##<a id="whatis"></a>Ambari とは
 
 <a href="http://ambari.apache.org" target="_blank">Apache Ambari</a> は、Hadoop クラスターのプロビジョニング、管理、監視に使用する Web UI を簡単に使用できる方法を提供することで Hadoop の管理を簡略化します。開発者は、<a href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md" target="_blank">Ambari REST API</a> を使用して、これらの機能をアプリケーションに統合することができます。
 
-Ambari は既定で Linux ベースの HDInsight クラスターに付属しています。Windows ベースの HDInsight クラスターには、Ambari REST API を介した監視機能が用意されています。
+Ambari Web UI は既定で Linux ベースの HDInsight クラスターに付属しています。
 
 ##接続
 
-HDInsight クラスターの Ambari への接続には、HTTPS を使用する必要があります。クラスターの作成時に指定した管理者アカウント名 (既定値は __admin__) とパスワードを使用して、Ambari を認証する必要もあります。
+Ambari Web UI はお使いの HDInsight クラスター( HTTPS://CLUSTERNAME.azurehdidnsight.net) にあります。__CLUSTERNAME__ はお使いのクラスターの名前になります。
+
+> [AZURE.IMPORTANT]HDInsight の Ambari に接続するには、HTTPS が必要です。クラスターの作成時に指定した管理者アカウント名 (既定値は __admin__) とパスワードを使用して、Ambari を認証する必要もあります。
 
 ##SSH プロキシ
 
@@ -41,15 +47,7 @@ Ambari と連携する SSH トンネルの作成の詳細については、「[S
 
 ##Ambari Web UI
 
-Ambari Web UI は、**https://&lt;clustername>.azurehdinsight.net** で作成した Linux ベースの各 HDInsight クラスターで利用できます。
-
-ページ認証のプロンプトは 2 回表示されます。最初のプロンプトは HDInsight クラスター用、2 回目は Ambari 用の認証です。
-
-* **Cluster authentication** - クラスター管理者のユーザー名 (既定では **admin**) とパスワードを使用します。
-
-* **Ambari authentication** - ユーザー名とパスワードの既定値はいずれも **admin** です。
-
-	> [AZURE.NOTE]**admin** ユーザーのパスワードを変更している場合、新しいパスワードを入力する必要があります。
+Ambari Web UI に接続すると、そのページに対する認証が求められます。クラスターの作成時に利用したクラスター管理者ユーザー (既定では Admin) とパスワードを使用します。
 
 ページが開くと、上部にバーがあります。ここには、次の情報とコントロールが含まれています。
 
@@ -147,7 +145,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 ###Ambari ユーザー、グループ、およびアクセス許可
 
-ユーザー、グループ、アクセス許可の管理は、Linux ベースの HDInsight プレビュー版では使用しないことをお勧めします。
+ユーザー、グループ、アクセス許可の管理は、HDInsight クラスターでは使用しないことをお勧めします。
 
 ###ホスト
 
@@ -218,18 +216,4 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 3. 表示されたフィールドを使用して構成を変更し、**[Save]** を選択します。または、以前の構成を選択し、**[Make current]** を選択して以前の設定にロールバックします。
 
-##REST API
-
-Ambari Web は基になる REST API に依存します。この REST API を活用することで、独自の管理および監視ツールを作成できます。API は比較的簡単に使用できる一方で、Azure 固有の注意が必要な要件があります。
-
-* **[Authentication]** - クラスター管理者のユーザー名 (既定では **admin**) とパスワードを使用してサービスを認証する必要があります。
-
-* **[Security]** - Ambari では基本的な認証が使用されるため、API との通信には常に Secure HTTP (HTTPS) を使用する必要があります。
-
-* **[IP Addresses]** - クラスター内のホストに返されるアドレスには、クラスターが Azure の仮想ネットワークのメンバーでない限り、クラスター外部からはアクセスできません。仮想ネットワークの他のメンバーは IP アドレスにアクセスできますが、ネットワーク外部からはアクセスできません。
-
-* **[Some functionality is not enabled]** - HDInsight クラウド サービスが管理しているため、一部の Ambari 機能が無効になっています (クラスターに対するホストの追加または削除、新規サービスの追加など)。Linux ベースの HDInsight のプレビューでは、その他の機能を完全に実装できない場合があります。
-
-REST API の完全なリファレンスについては、「[Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
-
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

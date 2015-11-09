@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/06/2015" 
+	ms.date="10/23/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -191,4 +191,33 @@ Microsoft Azure Redis Cache は、広く普及しているオープン ソース
 
 クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントに加えて、Azure.com の[ Redis Cache のドキュメント](http://azure.microsoft.com/documentatgion/services/redis-cache/)のページには、さまざまな言語およびキャッシュ クライアントを使用して Azure Redis Cache を使用する方法に関するいくつかのチュートリアルがあります。
 
-<!---HONumber=Oct15_HO3-->
+
+## どの Azure Cache を利用すればよいですか。
+
+>[AZURE.IMPORTANT]すべての新規の開発に Azure Redis Cache を使用することをお勧めします。
+
+現在、Azure Cache には 3 つのサービスがあります。
+
+-	Azure Redis Cache
+-	Azure Managed Cache Service
+-	Azure In-Role Cache
+
+
+### Azure Redis Cache
+Azure Redis Cache は、最大 53 GB で一般公開されています。可用性の SLA は 99.9% です。新しい [Premium 階層](cache-premium-tier.md)はプレビュー期間です。最大 530 GB のサイズを提供し、クラスタリング、VNET、永続化をサポートしています。
+
+Azure Redis Cache では、Microsoft が管理する安全な専用 Redis Cache を利用できます。このサービスでは、Redis が提供する豊富な機能セットとエコシステムを利用し、Microsoft による信頼性の高いホスティングと監視を受けられます。
+
+キーと値ペアのみを扱う従来のキャッシュとは異なり、Redis は高パフォーマンスな種類のデータに人気があります。また、Redis は、このようなデータに対するアトミックな操作 (文字列の付加、ハッシュ内の値のインクリメント、リストへのプッシュ、積集合、和集合、および差集合の計算、並べ替えられた集合内で最高ランクのメンバーの取得など) の実行もサポートしています。その他の機能として、トランザクションのサポート、パブリッシュ/サブスクライブ、Lua スクリプト、有効期限が制限されたキー、Redis を従来のキャッシュのように動作させるための構成設定があります。
+
+Redis が正常に動作するために重要な点は、Redis を中心として正常に動作する強力なオープン ソース エコシステムが構築されていることです。また、その環境を複数の言語で使用できる多様な Redis クライアントに反映します。そうすることで、Azure 内に構築するほとんどすべてのワークロードに使用できるようになります。
+
+Azure Redis Cache の使用方法については、「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」と [Azure Redis Cache のドキュメント](https://azure.microsoft.com/documentation/services/redis-cache/)に関するページを参照してください。
+
+### Managed Cache Service
+既存の Azure Managed Cache Service のお客様は、既存のサービスを引き続き利用することも、Azure Redis Cache へ移行して豊富な機能セットを利用することもできます。また、Azure Managed Cache Service は一般公開されており、可用性の SLA は 99.9% です。
+
+### In-Role Cache
+In-role Cache を使用してキャッシュを自己ホストしている場合は、自己ホストを継続できます。In-Role Cache は自己ホスト型コンポーネントであり、Microsoft ホスト型サービスではないので、SLA は用意されていません。In-Role Cache ユーザーは、Azure Redis Cache に移行することで、豊富な機能を利用し、SLA を受けることができます。
+
+<!---HONumber=Nov15_HO1-->

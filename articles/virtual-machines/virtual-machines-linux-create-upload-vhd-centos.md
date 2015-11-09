@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/05/2015"
+	ms.date="10/22/2015"
 	ms.author="szarkos"/>
 
 # Azure 用の CentOS ベースの仮想マシンの準備
@@ -32,7 +32,7 @@
 
 **CentOS のインストールに関する注記**
 
-- 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
+- VHDX 形式は Azure ではサポートされていません。サポートされるのは **固定 VHD** のみです。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
 - Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、LVM または [RAID](virtual-machines-linux-configure-raid.md) をデータ ディスク上で使用できます。
 
@@ -82,33 +82,12 @@
 		# sudo chkconfig network on
 
 
-8. **CentOS 6.3 のみ**: Linux Integration Services 用ドライバーをインストールします。
+8. **CentOS 6.3 のみ**: Linux Integration Services (LIS) 用ドライバーをインストールします。
 
-	**重要: この手順は CentOS 6.3 以下にのみ有効です。** CentOS 6.4 以上では、Linux Integration Services は*カーネルに組み込み済み*です。
+	**重要: この手順は CentOS 6.3 以下にのみ有効です。** CentOS 6.4 以上では、Linux Integration Services は*標準カーネルに組み込み済み*です。
 
-	a) [Microsoft ダウンロード センター](http://www.microsoft.com/download/details.aspx?id=41554)から Linux Integration Services 用ドライバーが格納されている .iso ファイルを入手します。
+	- [LIS ダウンロード ページ](https://www.microsoft.com/ja-JP/download/details.aspx?id=46842)のインストール手順に従って、RPM をイメージにインストールします。  
 
-	b) Hyper-V マネージャーの **[アクション]** ウィンドウで **[設定]** をクリックします。
-
-	![Hyper-V の設定を開く](./media/virtual-machines-linux-create-upload-vhd-centos/settings.png)
-
-	c) **[ハードウェア]** ウィンドウで **[IDE コントローラー 1]** をクリックします。
-
-	![インストール メディアがセットされた DVD ドライブの追加](./media/virtual-machines-linux-create-upload-vhd-centos/installiso.png)
-
-	d) **[IDE コントローラー]** ボックスで、**[DVD ドライブ]** をクリックし、**[追加]** をクリックします。
-
-	e) **[イメージ ファイル]** を選択し、**Linux IC v3.2.iso** を参照して、**[開く]** をクリックします。
-
-	f) **[設定]** ページで **[OK]** をクリックします。
-
-	g) **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
-
-	h) コマンド プロンプト ウィンドウに次のコマンドを入力します。
-
-		# sudo mount /dev/cdrom /media
-		# sudo /media/install.sh
-		# sudo reboot
 
 9. 次のコマンドを実行して python-pyasn1 パッケージをインストールします。
 
@@ -365,4 +344,4 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 
 16. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

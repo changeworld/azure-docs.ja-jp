@@ -135,7 +135,6 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 必要に応じて、同じ効果を持つ次のようなコードを記述できます。
 
     var perfCollector = new PerformanceCollectorModule();
-    perfCollector.Counters = new List<CustomPerformanceCounterCollectionRquest>();
     perfCollector.Counters.Add(new CustomPerformanceCounterCollectionRquest(
       @"\Sales(electronics)# Items Sold", "Items sold"));
     perfCollector.Initialize(TelemetryConfiguration.Active);
@@ -194,4 +193,4 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect の前提条件 | Microsoft Azure"
+   pageTitle="Azure Active Directory Connect (Azure AD Connect) の前提条件 | Microsoft Azure"
    description="ランディング ページやほとんどの検索結果に表示されるアーティクルの説明"
    services="active-directory"
    documentationCenter=""
@@ -16,7 +16,7 @@
    ms.date="10/13/2015"
    ms.author="andkjell;billmath"/>
 
-# Azure AD Connect の前提条件
+# Azure Active Directory Connect (Azure AD Connect) の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
 
 ## Azure AD Connect をインストールする前に
@@ -39,7 +39,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 **Accounts**
 
 - 統合する Azure AD ディレクトリの Azure AD グローバル管理者アカウント。
-- Express 設定を使用する場合は、ローカルの Active Directory のエンタープライズ管理者アカウント。
+- Express 設定を使用する、または DirSync からアップグレードする場合は、ローカルの Active Directory のエンタープライズ管理者アカウント。
 - カスタム設定のインストール パスを使用する場合は、[Active Directory 内のアカウント](active-directory-aadconnect-accounts-permissions.md)。
 
 **接続**
@@ -58,7 +58,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
     </system.net>
 ```
 
-このテキストは、ファイルの末尾に入力する必要があります。このコードの &lt;PROXYADRESS&gt; は、実際のプロキシ IP アドレスまたはホスト名を表します。 - プロキシがアクセスできる URL を制限している場合は、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/JA-JP/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL をプロキシで開く必要があります。
+このテキストは、ファイルの末尾に入力する必要があります。このコードの &lt;PROXYADRESS&gt; は、実際のプロキシ IP アドレスまたはホスト名を表します。 - プロキシがアクセスできる URL を制限している場合は、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/ja-JP/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL をプロキシで開く必要があります。
 
 **その他**
 
@@ -114,4 +114,4 @@ AD FS または Web アプリケーション サーバーを実行するコン�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

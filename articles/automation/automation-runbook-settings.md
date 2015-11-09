@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/22/2015"
+   ms.date="10/22/2015"
    ms.author="bwren" />
 
 # Runbook の設定
@@ -60,4 +60,4 @@ Runbook の設定変更は、Azure 管理ポータルで対象 Runbook の **[�
 - [Runbook の出力とメッセージ](../automation-runbook-output-and-messages) 
 - [Runbook の作成またはインポート](https://msdn.microsoft.com/library/dn643637.aspx) 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

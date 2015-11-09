@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/17/2015" 
+	ms.date="10/21/2015" 
 	ms.author="awills"/>
  
 # Java 用 Application Insights のトラブルシューティングおよび Q&A
@@ -24,7 +24,7 @@
 
 *Eclipse で、Maven または Gradle を使用して Application Insights SDK を追加すると、ビルドまたはチェックサムの検証エラーが発生します。*
 
-* 依存 <version> 要素にワイルドカード文字を含むパターン (例: (Maven) `<version>[0.9,)</version>`、または (Gradle) `version:'0.9.+'`) を使用している場合、代わりに特定のバージョン (`0.9.3` など) を指定してみてください。
+* 依存 <version> 要素にワイルドカード文字を含むパターン (例: (Maven) `<version>[1.0,)</version>`、または (Gradle) `version:'1.0.+'`) を使用している場合、代わりに特定のバージョン (`1.0.2` など) を指定してみてください。最新のバージョンの[リリース ノート](app-insights-release-notes-java.md)を参照してください。
 
 ## データが表示されない 
 
@@ -44,7 +44,7 @@
 #### データが表示されていたのに停止しました。
 
 * [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
-* データ ポイントの月間クォータに達していませんか? Open Settings/Quota and Pricing to find out.上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
+* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
 
 
@@ -138,4 +138,4 @@ XML メソッドを使用するうえで、値を変更した場合はアプリ�
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

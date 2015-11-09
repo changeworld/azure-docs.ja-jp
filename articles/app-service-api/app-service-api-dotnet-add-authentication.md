@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/05/2015" 
+	ms.date="10/27/2015" 
 	ms.author="tdykstra"/>
 
 # API アプリの保護: Azure Active Directory またはソーシャル プロバイダーの認証の追加
@@ -263,7 +263,7 @@ Visual Studio でリソース グループが作成されたときに、*ゲー�
 
 	応答メッセージに、ログインするときに使用したユーザーの名前と ID が表示されます。
 
-	![Response message with logged on user](./media/app-service-api-dotnet-add-authentication/chromegetuserinfo.png)
+	![ログイン時に使用したユーザー名が応答メッセージに表示](./media/app-service-api-dotnet-add-authentication/chromegetuserinfo.png)
 
 ## 次のステップ
 
@@ -272,4 +272,4 @@ Visual Studio でリソース グループが作成されたときに、*ゲー�
 [Azure ポータル]: https://manage.windowsazure.com/
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

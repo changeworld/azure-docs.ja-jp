@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Innotas の統合 | Microsoft Azure" description="Azure Active Directory で Innotas を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Innotas の統合 | Microsoft Azure"
+    description="Azure Active Directory で Innotas を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Innotas の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=524479)をクリックしてください。
   
 このチュートリアルでは、Azure と Innotas の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Innotas テナント
   
-このチュートリアルを完了すると、Innotas に割り当てた Azure AD ユーザーは、Innotas 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Innotas に割り当てた Azure AD ユーザーは、Innotas 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -63,7 +76,7 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-innotas-tutorial/IC777335.png "シングル サインオンの構成")
 
-3.  **[アプリケーション URL の構成]** ページで、**[サインオン URL]** テキストボックスに、"*https://\<テナント名>.Innotas.com*" のパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページで、**[サインオン URL]** テキスト ボックスに、"*https://\<テナント名>.Innotas.com*" のパターンで URL を入力し、**[次へ]** をクリックします。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-innotas-tutorial/IC777336.png "アプリケーション URL の構成")
 
@@ -73,7 +86,7 @@
 
 5.  メタデータ ファイルを Innotas サポート チームに転送します。サポート チームは、シングル サインオンを構成する必要があります。
 
-6.  [シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-innotas-tutorial/IC777338.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
@@ -91,10 +104,10 @@ Innotas へのユーザー プロビジョニングの構成にあたって必�
 
     ![ユーザーの割り当て](./media/active-directory-saas-innotas-tutorial/IC777339.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-innotas-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を参照してください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

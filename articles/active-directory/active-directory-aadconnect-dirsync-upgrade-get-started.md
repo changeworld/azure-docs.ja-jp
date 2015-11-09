@@ -3,9 +3,9 @@
    description="DirSync から Azure AD Connect にアップグレードする方法について説明します。この記事では、Windows Azure AD 同期 ツール (DirSync) を Azure AD Connect へアップグレードするための手順について説明します。"
    services="active-directory"
    documentationCenter=""
-   authors="shoatman"
+   authors="andkjell"
    manager="stevenpo"
-   editor="billmath"/>
+   editor=""/>
 
 <tags
    ms.service="active-directory"
@@ -13,196 +13,182 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="09/02/2015"
-   ms.author="shoatman"/>
+   ms.date="10/26/2015"
+   ms.author="shoatman;billmath"/>
 
-# Azure Active Directory Connect に Windows Azure Active Directory 同期 (DirSync) をアップグレードします。
+# Azure Active Directory Connect (Azure AD Connect) に Windows Azure Active Directory 同期 (DirSync) をアップグレードする
 
 次のドキュメントは、既存の DirSync インストールの Azure AD Connect へのアップグレードに役立ちます。
 
-## Azure AD Connect のダウンロード
+## 関連ドキュメント
+[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関するドキュメントをまだお読みでない方のために、次の表に関連トピックへのリンクを示します。DirSync からのアップグレードを開始する前に、太字で表示した最初の 2 つのトピックをお読みいただく必要があります。
 
-Azure AD Connect の使用を開始するには、[Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771) のページから最新バージョンをダウンロードします。
+| トピック | |
+| --------- | --------- |
+| **Azure AD Connect のダウンロード** | [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771) |
+| **ハードウェアと前提条件** | [Azure AD Connect: ハードウェアと前提条件](active-directory-aadconnect-prerequisites.md) |
+| **インストールで使用するアカウント** | [Azure AD Connect アカウントとアクセス許可の詳細](active-directory-aadconnect-accounts-permissions.md) |
 
+## DirSync からのアップグレード
+現在の DirSync のデプロイメントに応じて、アップグレードのさまざまなオプションがあります。予想されるアップグレード時間が 3 時間未満の場合は、インプレース アップグレードを実行することをお勧めします。予想されるアップグレード時間が 3 時間を超える場合は、別のサーバーで並列デプロイメントを行うことをお勧めします。オブジェクトの数が 50,000 を超える場合は、アップグレード時間が 3 時間を超えることが予想されます。
 
-## Azure AD Connect をインストールする前に
-Azure AD Connect をインストールし、DirSync からアップグレードする前に、いくつか必要な項目があります。
+| シナリオ | |
+| ---- | ---- |
+| [インプレース アップグレード](#in-place-upgrade) | アップグレード時間が 3 時間未満と予想される場合に推奨されるオプションです。 |
+| [並列デプロイ](#parallel-deployment) | アップグレード時間が 3 時間を超えると予想される場合に推奨されるオプションです。 |
 
-- Azure AD インスタンスの既存のグローバル管理者アカウントのパスワード (どのアカウントかはインストール時に表示されます)
-- ローカルの Active Directory のエンタープライズ管理者アカウント
-- 省略可能: SQL Server の完全バージョンを使用するように DirSync を構成する場合 - 該当するデータベース インスタンスの情報
+>[AZURE.NOTE]DirSync から Azure AD Connect へのアップグレードを計画している場合は、アップグレードより前に DirSync を自分でアンインストールしないでください。Azure AD Connect が DirSync から構成を読み取って移行し、サーバーを検査した後に、アンインストールします。
 
-### 並列デプロイ
+**インプレース アップグレード**
 
-現在 50K 以上のオブジェクトを同期している場合、並列デプロイの実行オプションを選択できます。並列デプロイには、個別のサーバーまたはサーバーのセット (SQL Server に個別のサーバーが必要な場合) が必要です。並列デプロイの利点は、同期のダウンタイムを回避する機会を得られることです。Azure AD Connect のインストールでは、予期されるダウンタイムを予測しますが、過去に DirSync をアップグレードしたことがある場合は、その経験が最善の指標となります。
+ウィザードに、アップグレードを完了する予定時刻が表示されます。この推定値は、50,000 のオブジェクト (ユーザー、連絡先、およびグループ) を含むデータベースのアップグレードが完了するまでに 3 時間かかるという前提に基づいています。Azure AD Connect は、現在の DirSync の設定を分析し、データベース内のオブジェクトの数が 50,000 未満である場合は、インプレース アップグレードをお勧めします。続行すると、現在の設定がアップグレード中に自動的に適用され、サーバーが自動的にアクティブな同期を再開します。
 
-## Azure AD Connect のインストール
+構成の移行を実行して、並列デプロイメントを実行する場合は、インプレース アップグレードに関する推奨事項をオーバーライドできます。たとえば、ハードウェアとオペレーティング システムを更新することができます。詳細については、[並列デプロイメント](#parallel-deployment)のセクションを参照してください。
 
-Azure AD Connect をダウンロードし、既存の DirSync サーバーにコピーします。
+**並列デプロイ**
 
-1. AzureADConnect.msi を検索し、ダブルクリックします。
-2. ウィザードの手順を開始します。
+オブジェクトの数が 50,000 を超える場合は、並列デプロイメントの使用をお勧めします。これにより、ユーザーによって発生する操作時の遅延が回避されます。Azure AD Connect のインストールでは、アップグレードのためのダウンタイムを予測しますが、過去に DirSync をアップグレードしたことがある場合は、その経験が最善の指標となります。
 
-インプレース アップグレードでは、次の高レベルの手順を実行する必要があります。
+### アップグレード対象の、サポートされている DirSync の構成
+DirSync では次の構成の変更が サポートされており、アップグレードされます。
+
+- ドメインと OU のフィルター処理
+- 別の ID (UPN)
+- パスワード同期と Exchange ハイブリッドの設定
+- フォレスト/ドメインと Azure AD の設定
+
+次のような変更をアップグレードすることはできません。これらの変更を加えた場合は、アップグレードがブロックされます。そのような場合、[モードのステージング](active-directory-aadconnectsync-operations.md#staging-mode)で新しい Azure AD Connect サーバーをインストールし、古い DirSync と新しい Azure AD Connect の構成を確認することが推奨されます。
+
+- サポートされていない DirSync の変更 (削除された属性やカスタム拡張 DLL の使用など)
+- ユーザー属性に基づくフィルター処理
+
+DirSync がサービス アカウントで使用したパスワードは取得できず、移行されません。これらのパスワードはアップグレード中にリセットされます。
+
+### DirSync から Azure AD Connect へのアップグレードの大まかな手順
 
 1. Azure AD Connect へようこそ
 2. 現在の DirSync 構成の分析
 3. Azure AD のグローバル管理者のパスワードの収集
 4. エンタープライズ管理者アカウントの資格情報の収集 (Azure AD Connect のインストール時にのみ使用)
-5. AAD Connect のインストール
+5. Azure AD Connect のインストール
     * DirSync をアンインストールします。
-	* AAD Connect をインストールします。
+	* Azure AD Connect をインストールする
 	* 必要に応じて、同期を開始します。
 
-次の場合、追加の手順と情報が必要になります。
+次の場合、追加の手順が必要になります。
 
 * 完全バージョンの SQL Server を現在使用している場合 - ローカルまたはリモート
-* 同期に 50K 以上のオブジェクトがある場合
+* 同期するオブジェクトが 50,000 以上ある場合
 
-## インプレース アップグレード - 50K 未満のオブジェクト - SQL Express (チュートリアル)
+## インプレース アップグレード
 
-0. Azure AD Connect インストーラー (MSI) を起動します。
-
-1. ライセンス条項とプライバシーに関する声明を確認し、同意します。
-
-![Azure AD へようこそ](./media/active-directory-aadconnect-dirsync-upgrade-get-started/Welcome.png)
-
-2. [次へ] をクリックして、既存の DirSync インストールを分析します。
-
-![既存のディレクトリ同期のインストールの分析](./media/active-directory-aadconnect-dirsync-upgrade-get-started/Analyze.png)
-
-3. 分析が完了すると、続行方法の推奨事項が提示されます。このシナリオ (SQL Express を使用、50K 未満のオブジェクト) では、次の画面が表示されます。
-
-![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReady.png)
-
-4. Azure AD への接続に現在使用しているアカウントのパスワードを入力します。
-
-![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToAzureAD.png)
-
-5. Active Directory のエンタープライズ管理者アカウントを指定します。
-
-![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToADDS.png)
-
-6. 構成する準備が整いました。[次へ] をクリックすると、DirSync がアンインストールされ、Azure AD Connect が構成されて、同期が開始されます。  
-
-![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ReadyToConfigure.png)
+1. Azure AD Connect インストーラー (MSI) を起動します。
+2. ライセンス条項とプライバシーに関する声明を確認し、同意します。![Azure AD へようこそ](./media/active-directory-aadconnect-dirsync-upgrade-get-started/Welcome.png)
+3. [次へ] をクリックして、既存の DirSync インストールを分析します。![既存のディレクトリ同期のインストールの分析](./media/active-directory-aadconnect-dirsync-upgrade-get-started/Analyze.png)
+4. 分析が完了すると、続行方法の推奨事項が提示されます。  
+    - SQL Server Express を使用しており、オブジェクトの数が 50,000 未満である場合は、次の画面が表示されます。 ![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReady.png)
+    - DirSync に完全バージョンの SQL Server を使用する場合、代わりに次のページが表示されます。![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)<BR/> DirSync で使用されている既存の SQL Server データベースのサーバーに関する情報が表示されます。必要に応じて、適切に調整を行います。**[次へ]** をクリックしてインストールを続行します。
+    - オブジェクトの数が 50,000 を超える場合は、代わりに次のページが表示されます。![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)<BR/> インプレース アップグレードを続行するには、**[このコンピューター上の DirSync のアップグレードを続行する]** の横のチェックボックスをオンにします。 代わりに[並列デプロイメント](#parallel-deployment)を行うには、DirSync の構成設定をエクスポートして、新しいサーバーに移します。
+5. Azure AD への接続に現在使用しているアカウントのパスワードを入力します。これは、DirSync によって現在使用されているアカウントでなければなりません。![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToAzureAD.png)
+6. Active Directory のエンタープライズ管理者アカウントを指定します。![ADDS の資格情報を入力する](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToADDS.png)
+7. 構成する準備が整いました。**[アップグレード]** をクリックすると、DirSync がアンインストールされ、Azure AD Connect が構成されて、同期が開始されます。![構成の準備完了](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ReadyToConfigure.png)
 
 
-## インプレース アップグレード - 50K 以上のオブジェクト
-同期に 50K 以上のオブジェクトが存在する場合、手順 3 では別のメッセージが表示されます。次のような画面が表示されます。
+## 並列デプロイ
 
-![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)
+### DirSync の構成をエクスポートする
+**並列デプロイメント - 50,000 以上のオブジェクト**
 
-この場合、個別のサーバーでの並列アップグレードの検討をお勧めします。これを推奨する理由は、組織の規模によっては、ローカルの Active Directory での変更がどの程度の速度で Azure AD/Office 365 に反映されるかという点で、インプレース アップグレードがビジネスのサービス レベル契約に影響を与える可能性があるためです。Azure AD Connect を使用した最初の同期にどの程度の時間がかかるかについて推定します。前述のように、DirSync のインストールまたは DirSync へのアップグレードを実行した経験が最善の指標となります。
+50,000 以上のオブジェクトがある場合、Azure AD Connect のインストールでは並列デプロイメントが推奨されます。
 
-並列デプロイには、個別のサーバーまたはサーバーのセットが必要です (Azure AD Connect から SQL Server を個別のサーバーで実行する必要がある場合)。このような理由から、組織への影響を回避するようにスケジュールを設定できる場合は、インプレース アップグレードを検討することが合理的です。
+次のような画面が表示されます。
 
-インプレース アップグレードを続行するには、[このコンピューター上の DirSync のアップグレードを続行する] の横のチェックボックスをオンにします。
-
-## インプレース アップグレード - 完全バージョンの SQL Server
-
-DirSync のインストールにおいて、ローカルまたはリモートで完全バージョンの SQL Server を使用している場合、手順 3 では別のメッセージが表示されます。次のような画面が表示されます。
-
-![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)
-
-DirSync によって使用されている既存の SQL Server データベース サーバーに関する情報が表示されます。必要に応じて、適切に調整を行います。[次へ] をクリックすると、インストールが続行されます。
-
-## 並列デプロイ - 50K 以上のオブジェクト
-
-手順 3 で、50K 以上のオブジェクトがある場合、Azure AD Connect のインストールでは並列デプロイが推奨されます。Azure AD Connect のインプレースまたは並列デプロイの選択について詳しくは、上述の「インプレース アップグレード - 50K 以上のオブジェクト」を参照してください次のような画面が表示されます。
-
-![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)
+![分析完了](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)
 
 並列デプロイを開始する場合は、次の手順を実行する必要があります。
 
-- [設定のエクスポート] をクリックします。Azure AD Connect を別のサーバーにインストールすると、これらの設定がインポートされ、現在の DirSync から新しい AAD Connect インストールにすべての設定が移行されます。
+- **[設定のエクスポート]** をクリックします。Azure AD Connect を別のサーバーにインストールすると、これらの設定がインポートされ、現在の DirSync から新しい Azure AD Connect インストールにすべての設定が移行されます。
 
-設定が正常にエクスポートされたら、DirSync サーバーで、Azure AD Connect ウィザードを終了できます。
+設定が正常にエクスポートされたら、DirSync サーバーで、Azure AD Connect ウィザードを終了できます。次の手順に進み、[別のサーバーに Azure AD Connect をインストール](#installation-of-azure-ad-connect-on-separate-server)します
 
-### 個別のサーバーでの Azure AD Connect のインストール
+**並列デプロイメント - 50,000 未満のオブジェクト**
 
-Azure AD Connect を新しいサーバーでインストールする場合、DirSync は検出されず、Azure AD Connect のクリーン インストールを実行するものとみなされます。ここでは、いくつかの特別な手順があります。
+オブジェクトの数が 50,000 未満の場合に並列デプロイメントを実行するには、次の手順を実行します。
 
 1. Azure AD Connect インストーラー (MSI) を実行します。
-2. [Azure AD Connect へようこそ] 画面が表示されたら、ウィンドウの右上隅にある [X] をクリックしてウィザードを終了します。
+2. **[Azure AD Connect へようこそ]** 画面が表示されたら、ウィンドウの右上隅にある [X] をクリックしてインストール ウィザードを終了します。
 3. コマンド プロンプトを開きます。
-4. Azure AD Connect のインストール場所から (既定: C:\\Program files \\microsoft Azure Active Directory の接続)、次のコマンドを実行します。
-    * `AzureADConnect.exe /migrate`
+4. Azure AD Connect のインストール場所 (既定: C:\\Program Files\\Microsoft Azure Active Directory Connect) から、次のコマンドを実行します。`AzureADConnect.exe /ForceExport`
+5. **[設定のエクスポート]** をクリックします。Azure AD Connect を別のサーバーにインストールすると、これらの設定がインポートされ、現在の DirSync から新しい Azure AD Connect インストールにすべての設定が移行されます。
 
-Azure AD Connect に接続され、次の UI が表示されます。
+![分析完了](./media/active-directory-aadconnect-dirsync-upgrade-get-started/forceexport.png)
 
-![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ImportSettings.png)
+設定が正常にエクスポートされたら、DirSync サーバーで、Azure AD Connect ウィザードを終了できます。次の手順に進み、[別のサーバーに Azure AD Connect をインストール](#installation-of-azure-ad-connect-on-separate-server)します
 
+### 別のサーバーに Azure AD Connect をインストールする
+
+Azure AD Connect を新しいサーバーにインストールする場合、Azure AD Connect のクリーン インストールを実行するものと見なされます。DirSync の構成を使用する必要があるため、実行する手順が増えます。
+
+1. Azure AD Connect インストーラー (MSI) を実行します。
+2. **[Azure AD Connect へようこそ]** 画面が表示されたら、ウィンドウの右上隅にある [X] をクリックしてインストール ウィザードを終了します。
+3. コマンド プロンプトを開きます。
+4. Azure AD Connect のインストール場所 (既定: C:\\Program Files\\Microsoft Azure Active Directory Connect) から、次のコマンドを実行します。`AzureADConnect.exe /migrate`Azure AD Connect のインストール ウィザードが起動し、次の画面が表示されます。 ![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ImportSettings.png)
 5. DirSync インストールからエクスポートされた設定ファイルを選択します。
 6. 次の高度なオプションを構成します。
-    * Azure AD Connect のカスタム インストール場所
-	* SQL Server の既存のインスタンス (既定: Azure AD Connect は、SQL Server 2012 Express をインストールします)
-	* SQL Server への接続に使用するサービス アカウント (SQL Server データベースがリモートの場合、このアカウントはドメイン サービス アカウントにする必要があります)
+    - Azure AD Connect のカスタムのインストール場所。
+	- SQL Server の既存のインスタンス (既定: Azure AD Connect は、SQL Server 2012 Express をインストールします)。DirSync サーバーと同じデータベース インスタンスは使用しないでください。
+	- SQL Server への接続に使用するサービス アカウント (SQL Server データベースがリモートの場合、このアカウントはドメイン サービス アカウントにする必要があります)。これらのオプションは、次の画面で表示されます。![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/advancedsettings.png)
+7. **[次へ]** をクリックします。
+8. **[構成の準備完了]** ページで **[構成が完了したら、同期処理を開始してください。]** チェック ボックスをオンのままにします。サーバーが[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)に移行するため、この時点では Azure AD に変更がエクスポートされません。
+9. **[インストール]** をクリックします。
 
-次の UI でこれらのオプションを参照してください。
+>[AZURE.NOTE]Windows Server Active Directory と Azure Active Directory の間で同期が開始されますが、変更は Azure AD にエクスポートされません。一度にアクティブにし変更をエクスポートできる同期ツールは 1 つだけです。これは[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)と呼ばれます。
 
-![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/advancedsettings.png)
+### Azure AD Connect の同期を開始する準備が完了していることを確認する
 
-7. [次へ] をクリックします。
-8. [構成の準備完了] ページで [構成が完了したらすぐに同期プロセスを開始する] チェック ボックスをオンのままにします。[AZURE.NOTE]Windows Server Active Directory と Azure Active Directory の間で同期が開始されますが、変更は Azure AD にエクスポートされません。一度にアクティブにし変更をエクスポートできる同期ツールは 1 つだけです。
-9. [インストール] をクリックします。
+Azure AD Connect が DirSync からの引き継ぎの準備を完了しているかどうかを確認するために、[スタート] メニューから **[Azure AD Connect]** グループの **[Synchronization Service Manager]** を開く必要があります。
 
-[AZURE.NOTE][同期の開始] チェックボックスをオフにして、DirSync (現時点ではインストールされており、実行されています) と Azure AD Connect が同時に AAD への書き込みを試行しないようにします。
+アプリケーション内で、**[操作]** タブを表示する必要があります。このタブでは、次の操作が完了していることを確認します。
 
-### Azure AD Connect が同期の開始準備を完了していることを確認します。
+- AD コネクタへのインポート
+- Azure AD コネクタへのインポート
+- AD コネクタへの完全な同期
+- Azure AD コネクタへの完全な同期
 
-Azure AD Connect が DirSync からの引き継ぎの準備を完了しているかどうかを確認するために、Azure AD Connect Synchronization Service Manager を開く必要があります。[スタート] メニューで "Synchronization" を検索すると、このアプリケーションが表示されます。
+これらの操作の結果を確認し、エラーが発生しないことを確認します。
 
-アプリケーション内で、[操作] タブを表示する必要があります。このタブでは、次の操作が完了していることを確認します。
+どの変更が Azure AD にエクスポートされるのかを確認して検査するには、[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)で構成を確認する方法をお読みください。予期しない内容が表示されなくなるまで構成の変更を行ってください。
 
-- AD Management Agent でのインポート
-- Azure AD Management Agent でのインポート
-- AD Management Agent での完全な同期
-- Azure AD Management Agent での完全な同期
+上記の 4 つの操作が完了し、エラーがなくなり、エクスポートされる変更に問題がないことが確認されると、DirSync のアンインストールと、Azure AD Connect の同期の有効化ができるようになります。移行を完了するには、次の 2 つの手順を実行します。
 
-これらの 4 つの操作が完了すると、DirSync をアンインストールして Azure AD Connect の同期を有効にする準備が整います。
+### DirSync (古いサーバー) をアンインストールする
 
-### DirSync (古いサーバー) のアンインストール
+- **[プログラムと機能]** で **[Windows Azure Active Directory 同期ツール]** を検索します。
+- **[Windows Azure Active Directory 同期ツール]** をアンインストールします。
+- アンインストールが完了するまで 15 分ほどかかる場合があります。
 
-- [プログラムの追加と削除] 内で「Windows Azure Active Directory 同期ツール」を検索します。
-- 「Windows Azure Active Directory 同期ツール」をアンインストールします。
+DirSync がアンインストールされていると、アクティブなサーバーが Azure AD にエクスポートされません。オンプレミスの Active Directory のすべての変更が引き続き Azure AD に同期されるには、次の手順を完了する必要があります。
 
-### Azure AD Connect (新しいサーバー) を開く
-インストール後に、Azure AD Connect をもう一度開くと、構成エクスペリエンスが提供されます。Azure AD Connect を開きます。
+### Azure AD Connect (新しいサーバー) を有効化する
+インストール後に Azure AD Connect をもう一度開くと、追加の構成変更ができるようになります。[スタート] メニューから、またはデスクトップのショートカットから **[Azure AD Connect]** を開始します。MSI のインストールをもう一度実行しようとしないでください。
 
 次のように表示されます。
 
-![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AdditionalTasks.png)
+![追加のタスク](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AdditionalTasks.png)
 
-* [ステージング モードの構成] の選択
-    * エクスポートされた設定を使用して DirSync からアップグレードすると、Azure AD Connect はステージング モードになります。ステージング モードでは基本的に Azure AD Connect 内で同期が実行されますが、Azure AD または AD へ変更がエクスポートされません。
-* [Enabled staging mode] チェックボックスをオフにして、ステージングを停止します。
+- **[ステージング モードの構成]** を選択します。
+- **[有効なステージング モード]** チェックボックスをオフにして、ステージングを停止します。
 
 ![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/configurestaging.png)
 
-* [インストール] ボタンをクリックします。
+- **[次へ]** をクリックします。
+- [確認] ページで **[インストール]** をクリックします。
 
-ご利用ありがとうございます。 並列デプロイを使用した Azure AD Connect への移行が正常に完了しました。
+これで、Azure AD Connect がアクティブなサーバーになりました。
 
-## Azure AD Connect でサポートされるコンポーネント
+## 次のステップ
+Azure AD Connect がインストールされたので、[インストールを確認し、ライセンスを割り当てる](active-directory-aadconnect-whats-next.md)ことができます。
 
-前提条件と Azure AD Connect をセットアップしたサーバーにインストールされるサポート コンポーネントを次に示します。この一覧は、基本的な高速インストール用です。[同期サービスのインストール] ページで別の SQL Server を使用することを選択した場合、次に示す SQL Server 2012 のコンポーネントはインストールされません。
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-- Forefront Identity Manager の Azure Active Directory コネクタ
-- Microsoft SQL Server 2012 のコマンド ライン ユーティリティ
-- Microsoft SQL Server 2012 Native Client
-- Microsoft SQL Server 2012 Express LocalDB
-- Windows PowerShell 用の Azure Active Directory モジュール
-- IT プロフェッショナル向け Microsoft Online Services サインイン アシスタント
-- Microsoft Visual C++ 2013 再配布パッケージ
-
-
-**その他のリソース**
-
-* [クラウド内のオンプレミスの ID インフラストラクチャの使用](active-directory-aadconnect.md)
-* [Azure AD Connect の動作](active-directory-aadconnect-how-it-works.md)
-* [Azure AD Connect の次のトピック](active-directory-aadconnect-whats-next.md)
-* [詳細情報](active-directory-aadconnect-learn-more.md)
-* [MSDN の Azure AD Connect](active-directory-aadconnect.md)
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

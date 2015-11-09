@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/04/2015"
+   ms.date="10/26/2015"
    ms.author="larryfr"/>
 
 # Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理
@@ -143,7 +143,14 @@ Storm UI は、REST API を基に構築されているため、REST API を使�
 
 ### ベース URI
 
-Linux ベースの HDInsight クラスターの REST API のベース URI は **https://headnode0:8744/api/v1/</a>** です。
+Linux ベースの HDInsight クラスターの REST API のベース URI はヘッド ノード (**https://HEADNODEFQDN:8744/api/v1/**) で確認できますが、ヘッド ノードのドメイン名はクラスター作成時に生成され、静的ではありません。
+
+クラスター ヘッド ノードの完全修飾ドメイン名 (FQDN) はいくつかの方法で確認できます。
+
+* __SSH セッションから__: SSH セッションからクラスターに `headnode -f` コマンドを使用します。
+* __Ambari Web から__: ページの一番上から __[サービス]__ を選択し、__[Storm]__ を選択します。__[概要__ ] タブで __[Storm UI Server]__ を選択します。Storm UI と REST API が実行されているノードの FQDN はページの一番上で確認できます。
+* __Ambari REST API から__: `curl -u admin:PASSWORD -G "https://CLUSTERNAME
+.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` コマンドを使用し、Storm UI と REST API が実行されているノードに関する情報を取得します。__PASSWORD__ をクラスターの管理者パスワードに替えます。__CLUSTERNAME__ をクラスター名に替えます。応答の「host\_name」エントリにノードの FQDN が含まれます。
 
 ### 認証
 
@@ -161,4 +168,4 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 
 その他の Storm トポロジ例は、「[HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/09/2015"
+   ms.date="10/26/2015"
    ms.author="larryfr"/>
 
 # Linux での HDInsight の使用方法
@@ -23,7 +23,19 @@ Linux ベースの Azure HDInsight クラスターは、Azure クラウドで実
 
 ## ドメイン名
 
-クラスターへの接続時に使用する完全修飾ドメイン名 (FQDN) は、**<clustername>.azurehdinsight.net** または (SSH のみ) **<clustername-ssh>.azurehdinsight.net** です。
+インターネットからクラスターへの接続時に使用する完全修飾ドメイン名 (FQDN) は、**<clustername>.azurehdinsight.net** または (SSH のみ) **<clustername-ssh>.azurehdinsight.net** です。
+
+内部的には、クラスターの各ノードに、クラスターの構成時に割り当てられた名前が与えられます。クラスター名を見つけるには、Ambari Web UI の __[ホスト]__ ページにアクセスするか、次の方法で、[cURL](http://curl.haxx.se/) と [jq](https://stedolan.github.io/jq/) を利用し、Ambari REST API からホストの一覧を返します。
+
+    curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
+
+いずれかの対話形式で__PASSWORD__ を管理者アカウントのパスワードに、__CLUSTERNAME__ をクラスターの名前に変えます。これで返される JSON ドキュメントにクラスター内のホストの一覧が含まれます。jq により、クラスター内の各ホストの `host_name` 要素値が取り出されます。
+
+特定のサービスのノード名を見つける必要がある場合、そのコンポーネントについて Ambari に問い合わせることができます。たとえば、HDFS 名のノードのホストを見つけるには、次の方法を利用します。
+
+    curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
+
+これでサービスの説明が記載された JSON ドキュメントが返されます。jq により、ホストの `host_name` 値のみが引き出されます。
 
 ## サービスへのリモート アクセス
 
@@ -49,7 +61,7 @@ Linux ベースの Azure HDInsight クラスターは、Azure クラウドで実
 	>
 	> 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
-* **SSH** - ポート 22 または 23 上の &lt;clustername>-ssh.azurehdinsight.net。ポート 22 は headnode0 への接続に、23 は headnode1 への接続に使用されます。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
+* **SSH** - ポート 22 または 23 上の &lt;clustername>-ssh.azurehdinsight.net。ポート 22 はヘッド ノード 0 への接続に、23 はヘッド ノード 1 への接続に使用されます。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
 
 	> [AZURE.NOTE]クラスター ヘッド ノードにアクセスするには、クライアント コンピューターから SSH を使用する必要があります。接続されたら、ヘッド ノードから SSH を使用して worker ノードにアクセスできます。
 
@@ -76,7 +88,7 @@ HDInsight の既定の保管場所であるため、通常は何もしなくて�
 
 	hadoop fs -ls /example/data
 
-一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして ****WASB://** を付けることができます。
+一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして **WASB://** を付けることができます。
 
 HDInsight では、クラスターに複数の BLOB ストレージ アカウントを関連付けることもできます。既定以外の BLOB ストレージ アカウントのデータにアクセスするには、**WASB://&lt;container-name>@<account-name>.blob.core.windows.net/** という形式を使用できます。たとえば、次のコマンドは、指定したコンテナーと BLOB ストレージ アカウントについて、**/example/data** ディレクトリの内容を表示します。
 
@@ -232,7 +244,7 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 
 > [AZURE.WARNING]HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[MSDN の HDInsight フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-jp/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
 
 ## 次のステップ
 
@@ -240,4 +252,4 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

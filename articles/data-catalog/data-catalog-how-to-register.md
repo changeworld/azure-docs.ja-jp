@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="10/12/2015"
+   ms.date="10/23/2015"
    ms.author="maroche"/>
 
 
@@ -39,8 +39,9 @@
 * Azure Storage BLOB およびディレクトリ
 * HDFS のファイルとディレクトリ
 * HDInsight Hive テーブル
+* Teradata テーブルと Teradata ビュー
 
-> [AZURE.NOTE]SQL Server のサポートには Microsoft Azure SQL Database も含まれます
+> [AZURE.NOTE]SQL Server のサポートには Microsoft Azure SQL Database と Microsoft Azure SQL Data Warehouse も含まれます
 
 <br/>
 
@@ -94,4 +95,4 @@
 ## 概要
 **Azure Data Catalog** でデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされることによって、データ ソースの検出と理解が容易になります。登録されたデータ ソースは、**Azure Data Catalog** ポータルを使用して注釈付け、管理、および検出することができます。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Benefitsolver の統合 | Microsoft Azure" description="Azure Active Directory で Benefitsolver を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Benefitsolver の統合 | Microsoft Azure"
+    description="Azure Active Directory で Benefitsolver を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="MarkusVi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Benefitsolver の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=615070)をクリックしてください。
 
 このチュートリアルでは、Azure と Benefitsolver の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Benefitsolver でのシングル サインオンが有効なサブスクリプション
 
-このチュートリアルを終了すると、Benefitsolver に割り当てた Azure AD ユーザーは、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Benefitsolver に割り当てた Azure AD ユーザーは、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -36,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-benefitsolver-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-benefitsolver-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -51,7 +64,7 @@
     ![Benefitssolver](./media/active-directory-saas-benefitsolver-tutorial/IC804822.png "Benefitssolver")
 ##シングル サインオンの構成
 
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Benefitsolver に対する認証を行えるようにする方法を説明します。Benefitsolver アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを **saml トークン属性**構成に追加する必要があります。次のスクリーンショットにこの例を示します。
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Benefitsolver に対する認証を行えるようにする方法を説明します。Benefitsolver アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性**の構成に追加する必要があります。次のスクリーンショットにこの例を示します。
 
 ![属性](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "属性")
 
@@ -59,36 +72,36 @@
 
 1.  Azure AD ポータルの **Benefitsolver** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-benefitsolver-tutorial/IC804824.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-benefitsolver-tutorial/IC804824.png "シングル サインオンの構成")
 
-2.  **[ユーザーの Benefitsolver へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  **[ユーザーの Benefitsolver へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-benefitsolver-tutorial/IC804825.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-benefitsolver-tutorial/IC804825.png "シングル サインオンの構成")
 
 3.  **[アプリケーション設定の構成]** ページで、次の手順を実行します。
 
-    ![Configure App Settings](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "Configure App Settings")
+    ![アプリケーションの設定の構成](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "アプリケーションの設定の構成")
 
-    1.  **[サインオン URL]** ボックスに、ユーザーが Benefitsolver アプリケーションへのサインオンに使用する URL を入力します (例: "*http://azure-dev.benefitsolver.com*)。
+    1.  **[サインオン URL]** ボックスに、ユーザーが Benefitsolver アプリケーションのサインオンに使用する URL を入力します (例: "*http://azure-dev.benefitsolver.com*)。
     2.  **[応答 URL]** ボックスに、Benefitsolver AssertionConsumerService URL を入力します (例: "*https://dev.benefitsolver.com/benefits/BenefitSolverView?page\_name=single\_signon\_saml*”))。  
 
         >[AZURE.NOTE]ご使用の環境の実際の値は、Benefitsolver サポート チームから入手できます。
 
     3.  **[次へ]** をクリックします。
 
-4.  **[Benefitsolver でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックし、コンピューターでメタデータ ファイルをローカルに保存します。
+4.  **[Benefitsolver でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、メタデータ ファイルをコンピューターのローカルに保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-benefitsolver-tutorial/IC804827.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-benefitsolver-tutorial/IC804827.png "シングル サインオンの構成")
 
 5.  ダウンロードしたメタデータ ファイルを Benefitsolver サポート チームに送信します。
 
     >[AZURE.NOTE]Benefitsolver サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
 
-6.  Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-benefitsolver-tutorial/IC804828.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-benefitsolver-tutorial/IC804828.png "シングル サインオンの構成")
 
-7.  上部のメニューで、**[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
+7.  上部のメニューで **[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
 
     ![属性](./media/active-directory-saas-benefitsolver-tutorial/IC795920.png "属性")
 
@@ -127,10 +140,10 @@ Azure AD ユーザーが Benefitsolver にログインできるようにする�
 
     ![ユーザーの割り当て](./media/active-directory-saas-benefitsolver-tutorial/IC804829.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確認します。
+3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
 
     ![あり](./media/active-directory-saas-benefitsolver-tutorial/IC767830.png "あり")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

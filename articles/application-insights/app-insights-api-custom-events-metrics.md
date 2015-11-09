@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="10/23/2015" 
 	ms.author="awills"/>
 
 # カスタムのイベントとメトリックのための Application Insights API 
@@ -526,14 +526,6 @@ ASP.NET Web MVC アプリケーションでの例:
 **JavaScript Web クライアント**の場合、[JavaScript テレメトリ初期化子](#js-initializer)を使用します。
 
 
-## <a name="ikey"></a> 選択したカスタム テレメトリにインストルメンテーション キーを設定する
-
-*C#*
-    
-    var telemetry = new TelemetryClient();
-    telemetry.Context.InstrumentationKey = "---my key---";
-    // ...
-
 
 ## データのフラッシュ
 
@@ -550,19 +542,33 @@ ASP.NET Web MVC アプリケーションでの例:
 
 
 
-## テレメトリの初期化子とプロセッサ
-
-テレメトリが Application Insights サービスに送信される前にテレメトリのキャプチャおよび処理方法を Application Insights SDK でカスタマイズできるようにプラグインを作成および構成します。
-
-[詳細情報](app-insights-telemetry-processors.md)
 
 
-## 標準のテレメトリを無効にする
+## テレメトリのサンプリング、フィルター処理、および処理 
 
-`ApplicationInsights.config` を編集し、[標準のテレメトリから選択した部分を無効にできます][config]。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
+SDK からテレメトリを送信する前に、テレメトリを処理するコードを記述することができます。この処理では、HTTP 要求のコレクションや依存関係のコレクションなど、標準的なテレメトリ モジュールから送信されるデータも対象となります。
 
-[詳細情報][config]。
+* テレメトリへの[プロパティの追加](app-insights-api-filtering-sampling.md#add-properties) - たとえば、バージョン番号や、他のプロパティから算出された値などです。
+* [サンプリング](app-insights-api-filtering-sampling.md#sampling)では、表示されるメトリックに影響を与えることなく、また、例外、要求、ページ ビューなどの関連する項目間を移動して問題を診断する機能に影響を与えることなく、アプリからポータルに送信するデータの量が削減されます。
+* [フィルター処理](app-insights-api-filtering-sampling.md#filtering)の場合もまたデータ量が削減されます。何を送信して何を破棄するかを操作できますが、メトリックへの影響を考慮する必要があります。項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
 
+[詳細情報](app-insights-api-filtering-sampling.md)
+
+
+## テレメトリの無効化
+
+テレメトリの収集と送信を**動的に停止および開始**するには
+
+*C#*
+
+```C#
+
+    using  Microsoft.ApplicationInsights.Extensibility;
+
+    TelemetryConfiguration.Active.DisableTelemetry = true;
+```
+
+**選択されている標準のコレクターを無効にする**には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config][config] 内の該当する行を削除するか、またはコメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
 ## <a name="debug"></a>開発者モード
 
@@ -577,9 +583,19 @@ ASP.NET Web MVC アプリケーションでの例:
 
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
+
+## <a name="ikey"></a> 選択したカスタム テレメトリにインストルメンテーション キーを設定する
+
+*C#*
+    
+    var telemetry = new TelemetryClient();
+    telemetry.Context.InstrumentationKey = "---my key---";
+    // ...
+
+
 ## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
-開発、テスト、および運用環境からのテレメトリの混合を回避するために、[別の Application Insights リソースを作成し、][create]環境に応じてそれぞれのキーを変更することができます。
+開発、テスト、および実稼働環境からのテレメトリの混合を回避するために、[別の Application Insights リソースを作成し、][create]環境に応じてそれぞれのキーを変更することができます。
 
 インストルメンテーション キーは構成ファイルから取得する代わりにコードで設定できます。ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
@@ -618,7 +634,7 @@ Web ページで、スクリプトに一語一語コーディングするので�
 
 TelemetryClient には、すべてのテレメトリ データとともに送信される値の数が含まれるコンテキスト プロパティがあります。通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。次に例を示します。
 
-    telemetryClient.Context.Operation.Name = “MyOperationName”;
+    telemetryClient.Context.Operation.Name = "MyOperationName";
 
 いずれかの値を自分で設定した場合は、その値と標準の値が混同されないように、[ApplicationInsights.config][config] から関連する行を削除することを検討します。
 
@@ -632,7 +648,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
  * **SyntheticSource**: null 値または空ではない場合、この文字列は、要求元がロボットまたは Web テストとして識別されたことを示します。既定で、これはメトリックス エクスプ ローラーでの計算から除外されます。
 * **Properties**: すべてのテレメトリ データとともに送信されるプロパティ。個々 の Track* 呼び出しでオーバーライドできます。
 * **Session** は、ユーザーのセッションを識別します。Id は、生成される値に設定されます。これは、ユーザーがしばらくの間アクティブ化されていない場合に、変更されます。
-* **ユーザー** ユーザー情報。 
+* **User**: ユーザー情報。 
 
 
 
@@ -708,4 +724,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

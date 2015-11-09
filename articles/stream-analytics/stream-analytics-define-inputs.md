@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="10/13/2015"
+	ms.date="10/23/2015"
 	ms.author="jeffstok"/>
 
 # Stream Analytics 入力について
@@ -47,7 +47,7 @@ Stream Analytics イベント ハブの各入力は、独自のコンシュー�
 | イベント ハブ ポリシー キー | Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 |
 | イベント ハブ コンシューマー グループ (省略可能) | イベント ハブからのデータを取り込むためのコンシューマー グループです。指定しないと、Stream Analytics ジョブは既定のコンシューマー グループを使用してイベント ハブからデータを取り込みます。Stream Analytics ジョブごとに個別のコンシューマー グループを使用することをお勧めします。 |
 | イベントのシリアル化の形式 | クエリを予想どおりに動作させるには、入ってくるデータ ストリームに使用しているシリアル化形式 (JSON、CSV、Avro) が Stream Analytics で認識される必要があります。 |
-| エンコード | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
+| Encoding | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 
 データがイベント ハブのソースから送信されるとき、Stream Analytics クエリでアクセスできるメタデータ フィールドはほとんどありません。次の表に、そのフィールドと説明を一覧表示します。
 
@@ -88,7 +88,7 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 | 共有アクセス ポリシー キー | IoT Hub へのアクセスを認証するために使用する共有アクセス キー。 |
 | コンシューマー グループ (省略可能) | IoT Hub からのデータを取り込むためのコンシューマー グループです。指定しないと、Stream Analytics ジョブは既定のコンシューマー グループを使用して IoT Hub からデータを取り込みます。Stream Analytics ジョブごとに個別のコンシューマー グループを使用することをお勧めします。 |
 | イベントのシリアル化の形式 | クエリを予想どおりに動作させるには、入ってくるデータ ストリームに使用しているシリアル化形式 (JSON、CSV、Avro) が Stream Analytics で認識される必要があります。 |
-| エンコード | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
+| Encoding | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 
 データが IoT Hub のソースから送信されるとき、Stream Analytics クエリでアクセスできるメタデータ フィールドはほとんどありません。次の表に、そのフィールドと説明を一覧表示します。
 
@@ -137,7 +137,7 @@ Stream Analytics の BLOB ストレージ イベントの既定のタイムス�
 </tr>
 <tr>
 <td>パス プレフィックスのパターン [省略可能]</td>
-<td>指定されたコンテナー内に BLOB を配置するために使用されるファイル パス。このパス内に、次の 3 つの変数のいずれかまたはすべてのインスタンスを指定できます。<BR>{date}, {time},<BR>{partition}<BR>例 1: cluster1/logs/{date}/{time}/{partition}<BR>例 2: cluster1/logs/{date}</td>
+<td>指定されたコンテナー内に BLOB を配置するために使用されるファイル パス。このパス内に、次の 3 つの変数のいずれかまたはすべてのインスタンスを指定できます。<BR>{date}, {time},<BR>{partition}<BR>例 1: cluster1/logs/{date}/{time}/{partition}<BR>例 2: cluster1/logs/{date}<P>"*" は Pathprefix の許容値ではありません。許容値は、有効な <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure BLOB 文字</a>のみです。</td>
 </tr>
 <tr>
 <td>日付形式 [省略可能]</td>
@@ -152,7 +152,7 @@ Stream Analytics の BLOB ストレージ イベントの既定のタイムス�
 <td>クエリを予想どおりに動作させるには、入ってくるデータ ストリームに使用しているシリアル化形式 (JSON、CSV、Avro) が Stream Analytics で認識される必要があります。</td>
 </tr>
 <tr>
-<td>エンコード</td>
+<td>Encoding</td>
 <td>CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。</td>
 </tr>
 <tr>
@@ -162,7 +162,7 @@ Stream Analytics の BLOB ストレージ イベントの既定のタイムス�
 </tbody>
 </table>
 
-データが BLOB ストレージのソースから送信されるとき、Stream Analytics クエリでアクセスできるメタデータ フィールドはほとんどありません。次の表に、そのフィールドと説明を一覧表示します。
+データが BLOB ストレージのソースから送信されるとき、Stream Analytics クエリでアクセスできるメタデータ フィールドはわずかです。次の表に、そのフィールドと説明を一覧表示します。
 
 | プロパティ | 説明 |
 |------|------|
@@ -201,4 +201,4 @@ FROM Input
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

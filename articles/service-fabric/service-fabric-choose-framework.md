@@ -4,7 +4,7 @@
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
-   manager="coreysa"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -36,4 +36,4 @@ Service Fabric は、Reliable Actors API と Reliable Services API という、�
 - [Reliable Actors API についての詳細](service-fabric-reliable-actors-introduction.md)
 - [Reliable Services API についての詳細](../Service-Fabric/service-fabric-reliable-services-introduction.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO1-->

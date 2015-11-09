@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/14/2015" 
+	ms.date="10/28/2015" 
 	ms.author="LuisCa"/>
 
 #Azure Machine Learning Recommendations API のドキュメント
@@ -806,7 +806,8 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-||| | Request Body | NONE |
+||| 
+| Request Body | NONE |
 
 **応答**:
 
@@ -911,8 +912,7 @@ OData XML
 |	modelId |	モデルの一意識別子 |
 |	filterId |	フィルターの一意識別子 |
 |	apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+||| | Request Body | NONE |
 
 **応答**:
 
@@ -2904,4 +2904,4 @@ HTTP ステータス コード: 200
 このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。<br><br> 使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。<br><br> このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br> © 2015 Microsoft.All rights reserved.
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

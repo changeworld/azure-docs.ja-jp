@@ -12,7 +12,7 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="nana"
+   ms.workload="na"
    ms.date="09/29/2015"
    ms.author="hegate"/>
 
@@ -28,7 +28,7 @@
 
 ### IoT Suite をプロビジョニングする
 
-リモート監視の事前構成済みソリューションをまだプロビジョニングしていない場合は、[こちら](http://www.microsoft.com/JA-JP/server-cloud/internet-of-things/getting-started.aspx)でプロビジョニングできます。
+リモート監視の事前構成済みソリューションをまだプロビジョニングしていない場合は、[こちら](http://www.microsoft.com/ja-JP/server-cloud/internet-of-things/getting-started.aspx)でプロビジョニングできます。
 
 
 ### リモート監視ソリューションでデバイスをプロビジョニングする
@@ -65,8 +65,7 @@ Note: if you have already provisioned a device on your solution, you can skip th
 
 1. テキスト エディターで **c/serializer/samples/serializer/remote\_monitoring.c** ファイルを開きます。
 
-2. ファイル内で次のコードを見つけます。
-    ```
+2. ファイル内で次のコードを見つけます。```
     static const char* deviceId = "[Device Id]";
     static const char* deviceKey = "[Device Key]";
     static const char* hubName = "[IoTHub Name]";
@@ -105,8 +104,7 @@ Note: if you have already provisioned a device on your solution, you can skip th
 
 2. Visual Studio の**ソリューション エクスプローラー**で、samples フォルダーに移動します。**remote\_monitoring** プロジェクトの **remote\_monitoring.c** ファイルを開きます。
 
-2. ファイル内で次のコードを見つけます。
-    ```
+2. ファイル内で次のコードを見つけます。```
     static const char* deviceId = "[Device Id]";
     static const char* deviceKey = "[Device Key]";
     static const char* hubName = "[IoTHub Name]";
@@ -173,8 +171,7 @@ mbed プロジェクトを作成してサンプル コードをインポート�
 
 	![][8]
 
-- remote\_monitoring\\remote\_monitoring.c を開き、ファイル内で次のコードを見つけます。
-    ```
+- remote\_monitoring\\remote\_monitoring.c を開き、ファイル内で次のコードを見つけます。```
     static const char* deviceId = "[Device Id]";
     static const char* deviceKey = "[Device Key]";
     static const char* hubName = "[IoTHub Name]";
@@ -237,10 +234,10 @@ mbed プロジェクトを作成してサンプル コードをインポート�
 
 
    ```
-   static const char* deviceId = "[Device Id]";
-   static const char* deviceKey = "[Device Key]";
-   static const char* hubName = "[IoTHub Name]";
-   static const char* hubSuffix = "[IoTHub Suffix, i.e. azure-devices.net]";
+   var deviceID = "[DeviceID]";
+   var deviceKey = "[Device Key]";
+   var hubName = "[IoT Hub Name]";
+   var hubSuffix = "[IoT Hub Suffix i.e azure-devices.net]";
    ```
 
 -  "[Device Id]" および "[Device Key]" を自身のデバイス データに置き換えます。
@@ -251,10 +248,10 @@ mbed プロジェクトを作成してサンプル コードをインポート�
 
 
    ```
-     static const char* deviceId = "mydevice";
-   static const char* deviceKey = "mykey";
-   static const char* hubName = "Contoso";
-   static const char* hubSuffix = "azure-devices.net";
+   var deviceID = "mydevice";
+   var deviceKey = "mykey";
+   var hubName = "Contoso";
+   var hubSuffix = "azure-devices.net";
    ```
 
 
@@ -312,4 +309,4 @@ node .
 
 このサンプルの機能を拡張するには、実際のセンサーをデバイスに接続して実際のデータを送信する、コマンドと制御機能を実装するなど、複数の方法があります。詳細を確認するには、リモート監視ソリューションの拡張方法に関する[ガイド](articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions.md)を使用してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

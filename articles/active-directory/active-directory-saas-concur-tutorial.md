@@ -1,8 +1,21 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Concur の統合 | Microsoft Azure" description="Azure Active Directory で Concur を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Concur の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Concur を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Concur の統合  
 
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=522413)をクリックしてください。
 
 このチュートリアルでは、Azure と Concur の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
@@ -55,15 +68,15 @@
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **Concur** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **Concur** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-concur-tutorial/IC769767.png "シングル サインオンの構成")
 
-2.  **[ユーザーの Concur へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  **[ユーザーの Concur へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![シングル サインオンの構成](./media/active-directory-saas-concur-tutorial/IC769768.png "シングル サインオンの構成")
 
-3.  **[アプリの URL の構成]** ページの **[Concur サインイン URL]** ボックスに、Concur のテナント サインイン URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Concur サインイン URL]** ボックスに、Concur のテナント サインイン URL を入力し、**[次へ]** をクリックします。
 
     ![サインイン URL の構成](./media/active-directory-saas-concur-tutorial/IC769769.png "サインイン URL の構成")
 
@@ -134,12 +147,12 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 
     ![ユーザーの割り当て](./media/active-directory-saas-concur-tutorial/IC769771.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
 
     ![あり](./media/active-directory-saas-concur-tutorial/IC767830.png "あり")
 
 ここで 10 分間待機し、アカウントが Concur に同期されたことを確認します。
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を参照してください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

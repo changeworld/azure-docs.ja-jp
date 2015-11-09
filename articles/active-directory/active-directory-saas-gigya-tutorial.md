@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Gigya の統合 | Microsoft Azure" description="Azure Active Directory で Gigya を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Gigya の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Gigya を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/20/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Gigya の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=528575)をクリックしてください。
   
 このチュートリアルでは、Azure と Gigya の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Gigya でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを完了すると、Gigya に割り当てた Azure AD ユーザーは、Gigya 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Gigya に割り当てた Azure AD ユーザーは、Gigya 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -17,14 +30,14 @@
 3.  ユーザー プロビジョニングの構成
 4.  ユーザーの割り当て
 
-![Configure Single Sign-On](./media/active-directory-saas-gigya-tutorial/IC789512.png "Configure Single Sign-On")
+![シングル サインオンの構成](./media/active-directory-saas-gigya-tutorial/IC789512.png "Configure Single Sign-On")
 ##Gigya のアプリケーション統合の有効化
   
 このセクションでは、Gigya のアプリケーション統合を有効にする方法について説明します。
 
 ###Gigya のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-gigya-tutorial/IC700993.png "Active Directory")
 
@@ -51,17 +64,17 @@
     ![Gigya](./media/active-directory-saas-gigya-tutorial/IC789527.png "Gigya")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Gigya に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Gigya に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[バイナリ証明書をテキスト ファイルに変換する方法](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **Gigya** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **Gigya** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、[シングル サインオンの構成] ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-gigya-tutorial/IC789528.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-gigya-tutorial/IC789528.png "シングル サインオンの構成")
 
 2.  **[ユーザーの Gigya へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-gigya-tutorial/IC789529.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-gigya-tutorial/IC789529.png "Configure Single Sign-On")
 
 3.  **[アプリケーション URL の構成]** ページの **[Gigya サインオン URL]** テキストボックスに、"**http://company.gigya.com*"" というパターンの URL を入力し、**[次へ]** をクリックします。
 
@@ -73,26 +86,26 @@
 
 5.  別の Web ブラウザー ウィンドウで、Gigya 企業サイトに管理者としてログインします。
 
-6.  **[設定]、[SAML ログイン]** の順にクリックし、**[追加]** をクリックします。
+6.  **[Settings]、[SAML Login]** の順にクリックし、**[追加]** をクリックします。
 
     ![SAML のログイン](./media/active-directory-saas-gigya-tutorial/IC789532.png "SAML のログイン")
 
-7.  **[SAML ログイン]** セクションで、次の手順を実行します。
+7.  **[SAML Login]** セクションで、次の手順を実行します。
 
     ![SAML の構成](./media/active-directory-saas-gigya-tutorial/IC789533.png "SAML の構成")
 
-    1.  **[名前]** テキスト ボックスに、構成の名前を入力します。
+    1.  **[Name]** テキスト ボックスに、構成の名前を入力します。
     2.  Azure ポータルの **[Gigya でのシングル サインオンの構成]** ダイアログ ページで **[発行者の URL]** の値をコピーし、それを **[発行者]** テキストボックスに貼り付けます。
     3.  Azure ポータルの **[Gigya でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[シングル サインオン サービス URL]** テキストボックスに貼り付けます。
     4.  Azure ポータルの **[Gigya でのシングル サインオンの構成]** ダイアログ ページで、**[名前識別子形式]** の値をコピーし、**[名前識別子形式]** テキストボックスに貼り付けます。
     5.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
         
-		>[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+		>[AZURE.TIP]詳細については、「[バイナリ証明書をテキスト ファイルに変換する方法](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-    6.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 証明書]** テキストボックスに貼り付けます。
+    6.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 Certificate]** テキスト ボックスに貼り付けます。
     7.  **[設定の保存]** をクリックします。
 
-8.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+8.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-gigya-tutorial/IC789534.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -126,7 +139,7 @@ Azure AD ユーザーが Gigya にログインできるようにするには、�
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  **Gigya ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  Gigya アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-gigya-tutorial/IC789537.png "ユーザーの割り当て")
 
@@ -134,6 +147,6 @@ Azure AD ユーザーが Gigya にログインできるようにするには、�
 
     ![あり](./media/active-directory-saas-gigya-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

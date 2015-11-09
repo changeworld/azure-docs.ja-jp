@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="10/14/2015"
+   	ms.date="10/23/2015"
    	ms.author="nitinme"/>
 
 
@@ -81,6 +81,10 @@ Azure プレビュー ポータルは、Microsoft Azure クラウドでホスト
 8. **[ノード価格レベル]** をクリックして、このクラスターのために作成されるノードに関する情報を表示します。クラスターで必要なワーカー ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
 
 	![[ノード価格レベル] ブレード](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.5.png "クラスター ノード数の指定")
+    
+    > [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+    >
+    > ノードのサイズと関連コストに関する詳細については、「[HDInsight 料金](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 	**[選択]** をクリックして、ノードの価格構成を保存します。
 
@@ -106,7 +110,7 @@ Azure プレビュー ポータルは、Microsoft Azure クラウドでホスト
 
 		![[Script ction] ブレード](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.8.png "スクリプト アクションの指定")
 
-	* **[Azure ストレージ キー]** をクリックして、クラスターに関連付ける追加のストレージ アカウントを指定します。**[Azure ストレージ キー]** ブレードで、**[ストレージ キーの追加]** をクリックし、既存のストレージ アカウントを選択するか新しいアカウントを作成します。
+	* **[Azure ストレージ キー]** をクリックして、クラスターに関連付ける追加のストレージ アカウントを指定します。 **[Azure ストレージ キー]** ブレードで、**[ストレージ キーの追加]** をクリックし、既存のストレージ アカウントを選択するか新しいアカウントを作成します。
 
 		![[追加ストレージ] ブレード](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.9.png "追加ストレージ アカウントの指定")
 
@@ -118,29 +122,29 @@ Azure プレビュー ポータルは、Microsoft Azure クラウドでホスト
 	| ------------------ | --------------------- |
 	| ![スタート画面のプロビジョニング中インジケーター](./media/hdinsight-hadoop-create-linux-cluster-portal/provisioning.png) | ![プロビジョニングされたクラスターのタイル](./media/hdinsight-hadoop-create-linux-cluster-portal/provisioned.png) |
 
-	> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
+	> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスを確認するには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
 
 11. プロビジョニングが完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。クラスター ブレードには、名前、属しているリソース グループ、場所、オペレーティング システム、クラスター ダッシュボードの URL などのクラスターに関する基本情報が表示されます。
 
 	![クラスター ブレード](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.Cluster.Blade.png "クラスターのプロパティ")
 
-	このブレードの上部と **[要点]** セクションにあるアイコンについては、次の説明を参照してください。
+	次の説明を参照して、このブレードの上部と **[要点]** セクションにあるアイコンについて理解してください。
 
-	* **設定**と**すべての設定**: クラスター用の **[設定]** ブレードを表示します。このブレードを使用して、クラスターの詳細な構成情報にアクセスできます。
+	* **[設定]** と **[すべての設定]**: クラスター用の **[設定]** ブレードを表示します。このブレードを使用して、クラスターの詳しい構成情報にアクセスできます。
 
-	* **[ダッシュボード]**、**[クラスター ダッシュボード]**、**[URL]**: これらはすべて、クラスター ダッシュボードにアクセスする方法です。クラスター ダッシュボードは、クラスターに関するジョブを実行するための Web ポータルです。
+	* **[ダッシュボード]**、**[クラスター ダッシュボード]**、**[URL]**: これらはいつでもクラスター ダッシュボードにアクセスする方法です。クラスター ダッシュボードは、クラスターに関するジョブを実行するための Web ポータルです。
 
 	* **[Secure Shell]**: SSH を使用してクラスターにアクセスするために必要な情報です。
 
-	* **削除**: HDInsight クラスターを削除します。
+	* **[削除]**: HDInsight クラスターを削除します。
 
-	* **クイック スタート** (![雲と雷のアイコン = クイック スタート](./media/hdinsight-hadoop-create-linux-cluster-portal/quickstart.png)): HDInsight の操作を開始するために役立つ情報を表示します。
+	* **[クイック スタート]** (![雲と雷のアイコン = クイック スタート](./media/hdinsight-hadoop-create-linux-cluster-portal/quickstart.png)): HDInsight の操作を開始するために役立つ情報を表示します。
 
-	* **ユーザー** (![ユーザー アイコン](./media/hdinsight-hadoop-create-linux-cluster-portal/users.png)): このクラスターの_ポータル管理_に対する権限を、Azure サブスクリプションの他のユーザーに設定できます。
+	* **[ユーザー]** (![ユーザー アイコン](./media/hdinsight-hadoop-create-linux-cluster-portal/users.png)): このクラスターの_ポータル管理_に対する、Azure サブスクリプションの他のユーザーの権限を設定できます。
 
-		> [AZURE.IMPORTANT]これは、Azure プレビュー ポータルでのこのクラスターへのアクセスと権限_のみ_に影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
+		> [AZURE.IMPORTANT]これは、Azure プレビュー ポータルでのこのクラスターへのアクセスと権限_だけ_に影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
 
-	* **タグ** (![タグ アイコン](./media/hdinsight-hadoop-create-linux-cluster-portal/tags.png)): タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。たとえば、__プロジェクト__という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスで共通の値を使用できます。
+	* **[タグ]** (![タグ アイコン](./media/hdinsight-hadoop-create-linux-cluster-portal/tags.png)): タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。たとえば、__プロジェクト__という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。
 
 ##次のステップ
 
@@ -154,7 +158,7 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 
 ###HBase クラスター
 
-* [HDInsight での Hbase の使用](hdinsight-hbase-tutorial-get-stared-linux.md)
+* [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-stared-linux.md)
 * [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux)
 
 ###Storm クラスター
@@ -163,4 +167,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

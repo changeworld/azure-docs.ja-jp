@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Service Fabric のエンティティの正常性の集計を確認する方法"
+   pageTitle="Azure Service Fabric のエンティティの正常性の集計を確認する方法 | Microsoft Azure"
    description="正常性クエリと一般クエリを通じて、Azure Service Fabric のエンティティの正常性の集計をクエリ、表示、評価する方法について説明します。"
    services="service-fabric"
    documentationCenter=".net"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/03/2015"
+   ms.date="10/23/2015"
    ms.author="oanapl"/>
 
 # Service Fabric の正常性レポートの確認方法
@@ -836,4 +836,4 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

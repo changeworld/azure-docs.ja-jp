@@ -1,15 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と Work.com の統合 | Microsoft Azure" description="Azure Active Directory で Work.com を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と Work.com の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Work.com を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と Work.com の統合
-  
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=529836)をクリックしてください。
   
 このチュートリアルでは、Azure と Work.com の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Work.com でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを完了すると、Work.com に割り当てた Azure AD ユーザーは、Work.com 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Work.com に割り当てた Azure AD ユーザーは、Work.com 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -26,7 +38,7 @@
 
 ###Work.com のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-work-com-tutorial/IC700993.png "Active Directory")
 
@@ -62,11 +74,11 @@
 
 1.  管理者として Work.com テナントにログインします。
 
-2.  **[セットアップ]** に移動します。
+2.  **[Setup]** に移動します。
 
     ![セットアップ](./media/active-directory-saas-work-com-tutorial/IC794108.png "セットアップ")
 
-3.  左側のナビゲーション ウィンドウの **[管理]** セクションで、**[ドメインの管理]** をクリックして関連するセクションを展開し、**[マイ ドメイン]** をクリックして**[マイ ドメイン]** ページを開きます。
+3.  左側のナビゲーション ウィンドウの **[Administer]** セクションで、**[Domain Management]** をクリックして関連するセクションを展開し、**[My Domain]** をクリックして**[My Domain]** ページを開きます。
 
     ![マイ ドメイン](./media/active-directory-saas-work-com-tutorial/IC767825.png "マイ ドメイン")
 
@@ -76,13 +88,13 @@
 
 5.  別の Web ブラウザー ウィンドウで、Azure ポータルにログインします。
 
-6.  **[Work.com]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+6.  [Work.com] アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-work-com-tutorial/IC794109.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-work-com-tutorial/IC794109.png "シングル サインオンの構成")
 
 7.  **[ユーザーの Work.com へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-work-com-tutorial/IC794110.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-work-com-tutorial/IC794110.png "Configure Single Sign-On")
 
 8.  **[アプリケーション URL の構成]** ページの **[Work.com サインオン URL]** テキストボックスに、ユーザーが Work.com アプリケーションにサインオンするときに使用する URL (例: **http://company.my.salesforce.com*”)) を入力し、**[次へ]** をクリックします。
 
@@ -94,37 +106,37 @@
 
 10. Work.com テナントにログインします。
 
-11. **[セットアップ]** に移動します。
+11. **[Setup]** に移動します。
 
     ![セットアップ](./media/active-directory-saas-work-com-tutorial/IC794108.png "セットアップ")
 
-12. **[セキュリティ制御]** メニューを展開表示し、**[シングル サインオンの設定]** をクリックします。
+12. **[Security Controls]** メニューを展開表示し、**[Single Sign-On Settings]** をクリックします。
 
     ![シングル サインオンの設定](./media/active-directory-saas-work-com-tutorial/IC794113.png "シングル サインオンの設定")
 
-13. **[シングル サインオンの設定]** ダイアログ ページで、次の手順を実行します。
+13. **[Single Sign-On Settings]** ダイアログ ページで、次の手順を実行します。
 
     ![SAML 有効](./media/active-directory-saas-work-com-tutorial/IC781026.png "SAML 有効")
 
-    1.  **[SAML 有効]** を選択します。
+    1.  **[SAML Enabled]** を選択します。
     2.  **[新規]** をクリックします。
 
-14. **[SAML シングル サインオンの設定]** セクションで、次の手順に従います。
+14. **[SAML Single Sign-On Settings]** セクションで、次の手順に従います。
 
     ![SAML シングル サインオンの設定](./media/active-directory-saas-work-com-tutorial/IC794114.png "SAML シングル サインオンの設定")
 
-    1.  **[名前]** テキスト ボックスに、構成の名前を入力します。  
+    1.  **[Name]** テキスト ボックスに、構成の名前を入力します。  
 
-        >[AZURE.NOTE]**[名前]** の値を指定すると、**[API 名]** ボックスが自動的に入力されます。
+        >[AZURE.NOTE]**[Name]** の値を指定すると、**[API Name]** ボックスが自動的に入力されます。
 
     2.  Azure ポータルの **[Work.com でのシングル サインオンの構成]** ダイアログ ページで **[発行者の URL]** の値をコピーし、それを **[発行者]** テキストボックスに貼り付けます。
     3.  **[参照]** をクリックして、ダウンロードした証明書をアップロードします。
-    4.  **[エンティティ ID]** ボックスに、「****https://salesforce-work.com**」と入力します。
-5.  **[SAML ID の種類]** として、**[アサーションにはユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
-    6.  **[SAML ID の場所]** で、**[ID を Subject ステートメントの NameIdentifier 要素にする]** チェックボックスをオンにします。
+    4.  **[エンティティ ID]** ボックスに、「**https://salesforce-work.com**」と入力します。
+5.  **[SAML ID の種類]** では、**[アサーションには、ユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
+    6.  **[SAML ID の場所]** として、**[ID を Subject ステートメントの NameIdentifier 要素にする]** チェックボックスをオンにします。
     7.  Azure ポータルで、**[Work.com でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[ID プロバイダー ログイン URL]** ボックスに貼り付けます。
     8.  Azure ポータルで、**[Work.com でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[ID プロバイダー ログアウト URL]** ボックスに貼り付けます。
-    9.  **[サービス プロバイダーが開始した要求のバインド]** で **[HTTP POST]** を選択します。
+    9.  **[サービス プロバイダーが開始した要求のバインド]** では、**[HTTP Post]** を選択します。
     10. **[保存]** をクリックします。
 
 15. Work.com ポータルで、左側のナビゲーション ウィンドウの **[ドメインの管理]** をクリックして関連するセクションを展開し、**[マイ ドメイン]** をクリックして **[マイ ドメイン]** ページを開きます。
@@ -135,7 +147,7 @@
 
     ![ログイン ページのブランド](./media/active-directory-saas-work-com-tutorial/IC767826.png "ログイン ページのブランド")
 
-17. **[ログイン ページのブランド]** ページの **[認証サービス]** セクションに、**[SAML SSO 設定]** の名前が表示されます。それを選択して、**[保存]** をクリックします。
+17. **[ログイン ページのブランド]** ページの **[認証サービス]** セクションに、**[SAML SSO 設定]** の名前が表示されます。それを選んで、**[保存]** をクリックします。
 
     ![ログイン ページのブランド](./media/active-directory-saas-work-com-tutorial/IC784366.png "ログイン ページのブランド")
 
@@ -151,25 +163,25 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
 
 1.  Work.com 企業サイトに管理者としてサインオンします。
 
-2.  **[セットアップ]** に移動します。
+2.  **[Setup]** に移動します。
 
     ![セットアップ](./media/active-directory-saas-work-com-tutorial/IC794108.png "セットアップ")
 
-3.  **[ユーザーの管理] の [ユーザー]** に移動します。
+3.  **[Manage Users]、[Users]** の順に移動します。
 
     ![ユーザーの管理](./media/active-directory-saas-work-com-tutorial/IC784369.png "ユーザーの管理")
 
-4.  **[新しいユーザー]** をクリックします。
+4.  **[New User]** をクリックします。
 
     ![すべてのユーザー](./media/active-directory-saas-work-com-tutorial/IC794117.png "すべてのユーザー")
 
-5.  [ユーザーの編集] セクションで、次の手順を実行します。
+5.  [User Edit section] セクションで、次の手順を実行します。
 
     ![ユーザーの編集](./media/active-directory-saas-work-com-tutorial/IC794118.png "ユーザーの編集")
 
-    1.  関連するテキストボックスにプロビジョニングする有効な Azure Active Directory アカウントの **[姓]**、**[エイリアス]**、**[電子メール]**、**[ユーザー名]**、**[ニックネーム]** の属性を入力します。
-    2.  **[ロール]**、**[ユーザー ライセンス]**、**[プロファイル]** を選択します。
-    3.  **[保存]** をクリックします。  
+    1.  関連するテキストボックスにプロビジョニングする有効な Azure Active Directory アカウントの **[Last Name]**、**[Alias]**、**[Email]**、**[Username]**、**[Nickname]** の属性を入力します。
+    2.  **[Role]**、**[User License]**、**[Profile]** を選択します。
+    3.  **[Save]** をクリックします。  
 
         >[AZURE.NOTE]Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
 
@@ -187,12 +199,12 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
 
     ![ユーザーの割り当て](./media/active-directory-saas-work-com-tutorial/IC794119.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-work-com-tutorial/IC767830.png "あり")
   
 ここで 10 分間待機し、アカウントが Work.com に同期されたことを確認します。
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

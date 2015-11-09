@@ -14,7 +14,7 @@
   ms.tgt_pltfrm="na" 
   ms.devlang="na" 
   ms.topic="article" 
-  ms.date="09/03/2015" 
+  ms.date="10/26/2015" 
   ms.author="tamram"/>
 
 
@@ -28,15 +28,17 @@ Azure Storage のオブジェクトは、含まれるデータのほかにもシ
 
 *   **ユーザー定義のメタデータ。** ユーザー定義のメタデータは、名前と値のペアの形式で、特定のリソースで指定したメタデータです。メタデータを使用すると、ストレージ リソースで追加の値を格納できます。つまり、これらの値は、自身の目的のためだけに存在するため、リソースの動作には影響しません。
 
-## プロパティの設定と取得
-
-ストレージ リソースのプロパティとメタデータの値を取得するには、2 つの手順が必要です。値の読み取りができるようになる前に、**FetchAttributes** か **FetchAttributesAsync** メソッドのいずれかを呼び出して値を明確に取得する必要があります。
+ストレージ リソースのプロパティとメタデータの値を取得するには、2 つの手順が必要です。これらの値を読み取るには、**FetchAttributes** メソッドを呼び出して値を明示的に取得しておく必要があります。
 
 > [AZURE.IMPORTANT]ストレージ リソースのプロパティとメタデータの値は、いずれかの **FetchAttributes** メソッドを呼び出さない限り、設定されません。
 
-BLOB でプロパティを設定するには、プロパティ値を指定してから、**SetProperties** または **SetPropertiesAsync** メソッドを呼び出します。
+## プロパティの設定と取得
 
-次のコード例では、コンテナーを作成し、プロパティ値をコンソール ウィンドウに書き込みます。
+プロパティ値を取得するには、BLOB またはコンテナーで **FetchAttributes** メソッドを呼び出してプロパティを設定した後、値を読み取ります。
+
+オブジェクトでプロパティを設定するには、プロパティ値を指定し、**SetProperties** メソッドを呼び出します。
+
+次のコード例では、コンテナーを作成し、プロパティ値の一部をコンソール ウィンドウに書き込みます。
 
     //Parse the connection string for the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -64,46 +66,37 @@ BLOB でプロパティを設定するには、プロパティ値を指定して
 
 > [AZURE.NOTE]\: メタデータの名前は、C# 識別子の名前付け規則に従う必要があります。
  
-メタデータを取得するには、BLOB またはコンテナーで **FetchAttributes** メソッドを呼び出して **Metadata** コレクションを設定した後、値を読み取ります。
+次のコード例では、コンテナーでメタデータを設定します。一方の値は、コレクションの **Add** メソッドを使用して設定されます。もう一方の値は、暗黙的なキーと値の構文を使用して設定されます。どちらも有効です。
 
-次のコード例では、新しいコンテナーを作成してそのメタデータを設定した後、メタデータの値を読み取ります。
+    public static void AddContainerMetadata(CloudBlobContainer container)
+    {
+        //Add some metadata to the container.
+        container.Metadata.Add("docType", "textDocuments");
+        container.Metadata["category"] = "guidance";
 
-         
-	// Account name and key.  Modify for your account.
-	<span style="color:Blue;">string accountName = <span style="color:#A31515;">"myaccount";
-	<span style="color:Blue;">string accountKey = <span style="color:#A31515;">"SzlFqgzqhfkj594cFoveYqCuvo8v9EESAnOLcTBeBIo31p16rJJRZx/5vU/oY3ZsK/VdFNaVpm6G8YSD2K48Nw==";
+        //Set the container's metadata.
+        container.SetMetadata();
+    }
 
-	// Get a reference to the storage account and client with authentication credentials.
-	StorageCredentials credentials = <span style="color:Blue;">new StorageCredentials(accountName, accountKey);
-	CloudStorageAccount storageAccount = <span style="color:Blue;">new CloudStorageAccount(credentials, <span style="color:Blue;">true);
-	CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+メタデータを取得するには、次の例に示すように、BLOB またはコンテナーで **FetchAttributes** メソッドを呼び出して **Metadata** コレクションを設定した後、値を読み取ります。
 
-	// Retrieve a reference to a container. 
-	CloudBlobContainer container = blobClient.GetContainerReference(<span style="color:#A31515;">"mycontainer");
+    public static void ListContainerMetadata(CloudBlobContainer container)
+    {
+        //Fetch container attributes in order to populate the container's properties and metadata.
+        container.FetchAttributes();
 
-	// Create the container if it does not already exist.
-	container.CreateIfNotExists();
-
-	// Set metadata for the container.
-	container.Metadata[<span style="color:#A31515;">"category"] = <span style="color:#A31515;">"images";
-	container.Metadata[<span style="color:#A31515;">"owner"] = <span style="color:#A31515;">"azure";
-	container.SetMetadata();
-
-	// Get container metadata.
-	container.FetchAttributes();
-	<span style="color:Blue;">foreach (<span style="color:Blue;">string key <span style="color:Blue;">in container.Metadata.Keys)
-	{
-	   Console.WriteLine(<span style="color:#A31515;">"Metadata key: " + key);
-	   Console.WriteLine(<span style="color:#A31515;">"Metadata value: " + container.Metadata[key]);
-	}
-
-	//Clean up.
-	container.Delete();
+        //Enumerate the container's metadata.
+        Console.WriteLine("Container metadata:");
+        foreach (var metadataItem in container.Metadata)
+        {
+            Console.WriteLine("\tKey: {0}", metadataItem.Key);
+            Console.WriteLine("\tValue: {0}", metadataItem.Value);
+        }
+    }
 
 ## 関連項目  
 
-- [Azure Storage クライアント ライブラリ リファレンス](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
-- [.NET 用の BLOB ストレージの概要](storage-dotnet-how-to-use-blobs.md)  
- 
+- [.NET 用 Azure Storage クライアント ライブラリ リファレンス](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
+- [.NET 用 Azure Storage クライアント ライブラリ パッケージ](https://www.nuget.org/packages/WindowsAzure.Storage/) 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

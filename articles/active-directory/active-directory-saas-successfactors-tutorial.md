@@ -1,14 +1,27 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と SuccessFactors の統合 | Microsoft Azure" description="SuccessFactors と Azure Active Directory を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と SuccessFactors の統合 | Microsoft Azure"
+    description="SuccessFactors と Azure Active Directory を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と SuccessFactors の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=529792)をクリックしてください。
   
 このチュートリアルでは、Azure と SuccessFactors を **サービス プロバイダー (SP) によって開始されたシングル サインオン モード**で統合する方法について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   SP によって開始されたモードで SuccessFactors でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを完了すると、SuccessFactors に割り当てた Azure AD ユーザーは、SuccessFactors 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、SuccessFactors に割り当てた Azure AD ユーザーは、SuccessFactors 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -61,11 +74,11 @@
 
 1.  Azure AD ポータルの **SuccessFactors** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-successfactors-tutorial/IC791138.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-successfactors-tutorial/IC791138.png "シングル サインオンの構成")
 
 2.  **[ユーザーの SuccessFactors へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-successfactors-tutorial/IC791139.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-successfactors-tutorial/IC791139.png "Configure Single Sign-On")
 
 3.  **[アプリケーション URL の構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
 
@@ -78,7 +91,7 @@
 
 4.  **[SuccessFactors でのシングル サインオンの構成]** ページで、証明書をダウンロードするために **[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-successfactors-tutorial/IC791141.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-successfactors-tutorial/IC791141.png "シングル サインオンの構成")
 
 5.  SAML ベースのシングル サインオンを構成するために、SuccessFactors サポート チームに連絡し、次の項目をチームに提供します。
 
@@ -90,9 +103,9 @@
 
     Successfactors サポート チームから、**[アプリケーション URL の構成]** ダイアログで必要な、適切な **Successfactors 応答 URL** が送信されます。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-successfactors-tutorial/IC791142.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-successfactors-tutorial/IC791142.png "Configure Single Sign-On")
 
 ##ユーザー プロビジョニングの構成
   
@@ -112,10 +125,10 @@ SuccessFactors でユーザーを作成するには、SuccessFactors のサポ�
 
     ![ユーザーの割り当て](./media/active-directory-saas-successfactors-tutorial/IC791143.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確認します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-successfactors-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

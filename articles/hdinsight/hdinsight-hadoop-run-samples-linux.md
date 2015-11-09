@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Linux ベースの HDInsight での Hadoop サンプルの実行 | Microsoft Azure"
+	pageTitle="Linux ベースの HDInsight での Hadoop MapReduce サンプルの実行 | Microsoft Azure"
 	description="Linux ベースの HDInsight で MapReduce サンプルの使用を開始します。SSH を使用してクラスターに接続し、Hadoop コマンドを使用してサンプル ジョブを実行します。"
 	services="hdinsight"
 	documentationCenter=""
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/09/2015"
+	ms.date="10/29/2015"
 	ms.author="larryfr"/>
 
 
@@ -79,7 +79,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 
     - [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-2. `username@headnode0:~$` プロンプトで、次のコマンドを使用してサンプルの一覧を表示します。
+2. `username@#######:~$` プロンプトで、次のコマンドを使用してサンプルの一覧を表示します。
 
         hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
 
@@ -243,4 +243,4 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->

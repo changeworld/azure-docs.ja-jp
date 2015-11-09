@@ -1,9 +1,22 @@
-<properties pageTitle="チュートリアル: Azure Active Directory と ThousandEyes の統合 | Microsoft Azure" description="Azure Active Directory で ThousandEyes を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
+<properties 
+    pageTitle="チュートリアル: Azure Active Directory と ThousandEyes の統合 | Microsoft Azure" 
+    description="Azure Active Directory で ThousandEyes を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
 #チュートリアル: Azure Active Directory と ThousandEyes の統合
->[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=529081)をクリックしてください。
   
-このチュートリアルでは、Azure Active Directory (AAD) と ThousandEyes の間でのシングル サインオンを設定する方法を説明します。
+このチュートリアルでは、Azure Active Directory (Azure AD) と ThousandEyes の間でのシングル サインオンを設定する方法を説明します。
   
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
@@ -13,7 +26,7 @@
 このチュートリアルを完了すると、ThousandEyes に割り当てた AAD ユーザーは、ThousandEyes 企業サイト (サービス プロバイダーが開始したサインオン) で、または AAD アクセス パネルを使用して、アプリケーションにシングル サインオンできるようになります。
 
 1.  ThousandEyes のアプリケーション統合の有効化
-2.  [シングル サインオンの構成](https://msdn.microsoft.com/library/eae8a61c-8e48-4f15-974d-867adbaf40ca#configuresso)
+2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
 4.  ユーザーの割り当て
 
@@ -25,7 +38,7 @@
 
 ###ThousandEyes のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-thousandeyes-tutorial/IC700993.png "Active Directory")
 
@@ -57,7 +70,7 @@
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **[ThousandEyes]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **[ThousandEyes]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-thousandeyes-tutorial/IC790062.png "シングル サインオンの構成")
 
@@ -79,7 +92,7 @@
 
     ![設定](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "設定")
 
-7.  **[Account]** をクリックします。
+7.  **[Account]** クリックします。
 
     ![アカウント](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "アカウント")
 
@@ -110,24 +123,24 @@ Azure AD ユーザーが ThousandEyes にログインできるようにするに
 
 1.  ThousandEyes 企業サイトに管理者としてログインします。
 
-2.  **[Settings]** をクリックします。
+2.  **[設定]** をクリックします。
 
     ![設定](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "設定")
 
-3.  **[Account]** をクリックします。
+3.  **[アカウント]** をクリックします。
 
     ![アカウント](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "アカウント")
 
-4.  **[Accounts & Users]** タブをクリックします。
+4.  **[アカウントとユーザー]** タブをクリックします。
 
     ![アカウントとユーザー](./media/active-directory-saas-thousandeyes-tutorial/IC790073.png "アカウントとユーザー")
 
-5.  **[Add Users & Accounts]** セクションで、次の手順を実行します。
+5.  **[ユーザーの追加とアカウント]** セクションで、次の手順を実行します。
 
     ![ユーザー アカウントの追加](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "ユーザー アカウントの追加")
 
-    1.  プロビジョニングする有効な Azure Active Directory アカウントの**[Name]**、**[Email]**、その他の詳細を該当するボックスに入力します。
-    2.  **[Add New User to Account]** をクリックします。
+    1.  プロビジョニングする有効な Azure Active Directory アカウントの**[名前]**、**[電子メール]**、その他の詳細を該当するボックスに入力します。
+    2.  **[アカウントに新規ユーザーを追加する]** をクリックします。
 
         >[AZURE.NOTE]AAD アカウントの所有者にアカウントの確認およびアクティブ化用のリンクを含む電子メールが送信されます。
 
@@ -145,10 +158,10 @@ Azure AD ユーザーが ThousandEyes にログインできるようにするに
 
     ![ユーザーの割り当て](./media/active-directory-saas-thousandeyes-tutorial/IC790075.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
 
     ![あり](./media/active-directory-saas-thousandeyes-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO1-->
