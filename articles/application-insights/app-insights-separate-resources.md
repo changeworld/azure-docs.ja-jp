@@ -20,7 +20,7 @@
 
 アプリのデバッグ、テスト、実稼働の各バーションのテレメトリの混同を避けるために、各バージョンからデータを受け取るために個別の [Application Insights][start] リソースを作成します。
 
-アプリケーションから受け取ったデータは Microsoft Azure *リソース*に格納され、Application Insights によって処理されます。各リソースは、*インストルメンテーション キー*によって識別されます。 アプリ内で、Application Insights SDK にキーが提供され、これにより、収集したデータを適切なリソースに送信できます。キーは、コード内または ApplicationInsights.config で指定できます。SDK 内のキーを変更することで、データをさまざまなリソースに送信できます。
+アプリケーションから受け取ったデータは Microsoft Azure リソースに格納され、Application Insights によって処理されます。各リソースは、インストルメンテーション キーによって識別されます。 アプリ内で、Application Insights SDK にキーが提供され、これにより、収集したデータを適切なリソースに送信できます。キーは、コード内または ApplicationInsights.config で指定できます。SDK 内のキーを変更することで、データをさまざまなリソースに送信できます。
 
 
 ## Application Insights リソースの作成
@@ -53,7 +53,7 @@
 
 ## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
-通常、SDK が ApplicationInsights.config から iKey を取得します。Instead, make it more easy to change by setting it in your code.
+通常、SDK が ApplicationInsights.config から iKey を取得します。 代わりにコードの中で設定すると、変更しやすくなります。
 
 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
@@ -98,4 +98,4 @@ iKey は、アプリの Web ページや、[クイック スタート ブレー�
 
  
 
-<!----HONumber=Oct15_HO3-->
+<!-----HONumber=Oct15_HO3-->

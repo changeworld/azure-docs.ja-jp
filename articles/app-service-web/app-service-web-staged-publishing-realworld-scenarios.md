@@ -362,9 +362,9 @@ Umbraco CMS の Web アプリが既にアップされ実行されている場合
   </repositories>
  ```
 
-Under `<repositories>`, enter the production site URL and user information. If you are using default Umbraco Membership provider, then add the ID for the Administration user in <user> section . If you are using a custom Umbraco membership provider, use `<login>`,`<password>` to Courier2 module know how to connect to the production site. For more details, review the [documentation](http://umbraco.com/help-and-support/customer-area/courier-2-support-and-download/developer-documentation) for Courier module.
+`<repositories>` には、運用サイトの URL とユーザー情報を入力します。 既定の Umbraco メンバーシップ プロバイダーを使用している場合には、<user> セクションに管理ユーザーの ID を追加します。 カスタムの Umbraco メンバーシップ プロバイダーを使用している場合には、`<login>` と `<password>` を使って、Courier2 モジュールが運用サイトに接続する方法を指定します。 詳しくは、Courier モジュールの[ドキュメント](http://umbraco.com/help-and-support/customer-area/courier-2-support-and-download/developer-documentation)をご覧ください。
 
-Similarly, install Courier module on your production site and configure it point to stage web app in its respective courier.config file as shown here
+同じく、運用サイトに Courier モジュールをインストールし、ここに示すようにそれぞれの courier.config ファイルで、ステージ Web アプリを参照するように構成します。
 
 ```xml
   <!-- Repository connection settings -->
@@ -429,4 +429,4 @@ Web アプリとデータベースの両方をスワップすることのメリ�
 
 [運用環境以外のデプロイメント スロットへの Web アクセスを禁止する方法](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
 
-<!----HONumber=Oct15_HO3-->
+<!-----HONumber=Oct15_HO3-->
