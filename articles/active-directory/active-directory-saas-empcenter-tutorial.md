@@ -81,7 +81,7 @@
     ![アプリケーションの設定の構成](./media/active-directory-saas-empcenter-tutorial/IC802921.png "アプリケーションの設定の構成")
 
     1.  **[サインオン URL]** ボックスに、ユーザーが EmpCenter アプリケーションへのサインオンに使用する URL (例: **https://partner-authenticati.empcenter.com/workforce/SSO.do*)) を入力します。
-2.  **[次へ]** をクリックします。
+    2.  **[次へ]** をクリックします。
 
 4.  **[EmpCenter でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターに保存します。
 

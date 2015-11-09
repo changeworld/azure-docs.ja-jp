@@ -64,7 +64,9 @@
     ![Samanage](./media/active-directory-saas-samanage-tutorial/IC771708.png "Samanage")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Samanage に対する認証を行えるようにする方法について説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Samanage に対する認証を行えるようにする方法について説明します。  
+この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
+この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
@@ -96,17 +98,20 @@
 
 8.  **[Login using SAML]** ダイアログ ページで、次の手順を実行し、**[Save Changes]** をクリックします。
 
-    1.  **[Enable Single Sign-On with SAML]** をクリックします。![SAML を使用してログイン](./media/active-directory-saas-samanage-tutorial/IC771719.png "SAML を使用してログイン")
-    2.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで **[プロバイダー ID の識別]** の値をコピーし、**[Identity Provider URL]** ボックスに貼り付けます。![シングル サインオンの構成](./media/active-directory-saas-samanage-tutorial/IC771720.png "シングル サインオンの構成")
-3.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーし、**[Login URL]** ボックスに貼り付けます。
-    4.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログアウト URL]** の値をコピーし、**[Logout URL]** ボックスに貼り付けます。
+    1.  **[Enable Single Sign-On with SAML]** をクリックします。
+        ![SAML を使用してログイン](./media/active-directory-saas-samanage-tutorial/IC771719.png "SAML を使用してログイン")
+    2.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの ID]** 値をコピーして、[ID プロバイダーの URL]
+        ![Configure Single Sign-On](./media/active-directory-saas-samanage-tutorial/IC771720.png "Configure Single Sign-On") テキストボックスに貼り付けます。
+    3.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーして、**[ログイン URL]** テキストボックスに貼り付けます。
+    4.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログアウト URL]** の値をコピーして、**[ログアウト URL]** テキストボックスに貼り付けます。
     5.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
         >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」を参照してください。
 
-    6.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 Certificate]** テキスト ボックスに貼り付けます。
-    7.  **[Create users if they do not exist in Samanage]** をクリックします。![更新](./media/active-directory-saas-samanage-tutorial/IC771722.png "更新")
-    8.  **[Update]** をクリックします。
+    6.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 証明書]** テキストボックスに貼り付けます。
+    7.  **[Samanage に存在しない場合にユーザーを作成する]** をクリックします。
+        ![更新](./media/active-directory-saas-samanage-tutorial/IC771722.png "更新")
+    8.  **[更新]** をクリックします。
 
 9.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 

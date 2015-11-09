@@ -40,7 +40,9 @@
 
 7. アナウンスをテストまたはアクティブ化すると、指定どおりの絵文字を含む通知が表示されます。
 
-	![][3] ![][4] ![][5]
+	![][3] 
+	![][4] 
+	![][5]
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-use-emoji-with-push/notification_input.png

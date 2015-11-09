@@ -81,7 +81,7 @@
     ![Configure App Settings](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807728.png "Configure App Settings")
 
     1.  **[サインオン URL]** テキスト ボックスに、ユーザーが Aba Sainsburys Connect アプリケーションへのサインオンに使用する URL を入力します (例: *https://myaba.co.uk/client-access/sainsburys/saml.php*))。
-2.  **[次へ]** をクリックします。
+    2.  **[次へ]** をクリックします。
 
 4.  **[Aba Sainsburys Connect でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックしてメタデータ ファイルをコンピューターに保存します。
 

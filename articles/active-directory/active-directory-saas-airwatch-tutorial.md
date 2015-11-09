@@ -127,13 +127,13 @@
 
     ![Attribute](./media/active-directory-saas-airwatch-tutorial/IC791927.png "Attribute")
 
-    1.  **[Object Identifier]** テキスト ボックスに「**http://schemas.microsoft.com/identity/claims/objectidentifier**」と入力します。
-2.  **[Username]** テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
-3.  **[Display Name]** テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
-4.  **[First Name]** テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
-5.  **[Last Name]** テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
-6.  **[Email]** テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
-7.  **[保存]** をクリックします。
+    1.  [**Object Identifier**] テキスト ボックスに「**http://schemas.microsoft.com/identity/claims/objectidentifier**」と入力します。
+    2.  [**Username**] テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 」と入力します。
+    3.  [**Display Name**] テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
+    4.  [**First Name**] テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
+    5.  [**Last Name**] テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
+    6.  [**Email**] テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
+    7.  [**Save**] をクリックします。
 
 14. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
