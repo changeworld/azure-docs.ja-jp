@@ -425,10 +425,10 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Using Power BI in a Hybrid Environment (ハイブリッド環境での Power BI の使用)](https://msdn.microsoft.com/library/dn798994.aspx)
 
->[AZURE.NOTE] [Submit feedback and contact information through Microsoft SQL Server Connect](https://connect.microsoft.com/SQLServer/Feedback)
+>[AZURE.NOTE] [Microsoft SQL Server Connect でフィードバックと連絡先情報を送信する](https://connect.microsoft.com/SQLServer/Feedback)
 
 ### コミュニティ コンテンツ
 
 - [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->

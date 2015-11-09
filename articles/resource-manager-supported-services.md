@@ -33,7 +33,9 @@ Azure リソース マネージャーは、アプリケーションを構成す�
 | Batch  
  | あり | [あり (クラシックのみ)](https://portal.azure.com/#create/Microsoft.BatchAccount) | | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | |
 | Dynamics Lifecycle Services | はい | いいえ | | | |
-| Virtual Machines (クラシック) | 限定的 | あり、多くのオプション | 部分的 (後述参照) | - | - | | RemoteApp | いいえ | いいえ | - | - | - | | Service Fabric | いいえ | いいえ | - | - | - |
+| Virtual Machines (クラシック) | 限定的 | あり、多くのオプション | 部分的 (後述参照) | - | - |
+| RemoteApp | いいえ | いいえ | - | - | - |
+| Service Fabric | いいえ | いいえ | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイメント モデルではなくクラシック デプロイメント モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイメント モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 
@@ -108,7 +110,9 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 | サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | -------------- | -------------- | -------- | ------ |
-| Azure Active Directory | いいえ | いいえ | - | - | - | | Azure Actice Directory B2C | いいえ | いいえ | - | - | - | | Multi-Factor Authentication | いいえ | いいえ | - | - | - |
+| Azure Active Directory | いいえ | いいえ | - | - | - |
+| Azure Actice Directory B2C | いいえ | いいえ | - | - | - |
+| Multi-Factor Authentication | いいえ | いいえ | - | - | - |
 
 ## 開発者サービス 
 
@@ -227,4 +231,4 @@ Azure PowerShell 0.9.8 では、次を使用します。
 - リソース マネージャーのテンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./azure-portal/resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=Nov15_HO1-->
+<!----HONumber=Nov15_HO1-->
