@@ -99,7 +99,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ## パフォーマンス テレメトリの表示
 
-[Azure プレビュー ポータル](http://portal.azure.com)にサインインし、Application Insights を参照して、作成したリソースを開きます。
+[Azure ポータル](http://portal.azure.com)にサインインし、Application Insights を参照して、作成したリソースを開きます。
 
 ![[参照]、[Application Insights] の順に選択し、アプリを選択します。](./media/app-insights-monitor-performance-live-website-now/appinsights-08openApp.png)
 
@@ -216,4 +216,4 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

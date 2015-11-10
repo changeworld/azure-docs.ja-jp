@@ -45,11 +45,11 @@ SQL Database で作業を行う場合、最新のバージョンの SSMS を使�
 
 接続の失敗の最も一般的な原因は、サーバー名、ユーザー名、パスワードの間違いや、サーバーがセキュリティ上の理由で接続を許可しないといったものです。サーバーのファイアウォールの設定が、ローカルのコンピューターの IP アドレスからの接続や SSMS クライアントが使用する IP アドレスからの接続を許可するようになっているか確認してください。この 2 つの IP アドレスが異なることがあります。
 
-ファイアウォール規則が原因で接続が失敗した場合、IP アドレスがエラーメッセージに報告されています。この IP アドレスをサーバーのファイアウォール規則に追加してください。詳細については、「[方法: ファイアウォール設定を構成する (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+ファイアウォール設定が原因で接続が失敗した場合、最新バージョンの SSMS では、ユーザーへの確認の後、ファイアウォール規則が作成されます。最新バージョンの SSMS を入手するには、[SSMS のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)に関するページを参照してください。以前のバージョンを使用している場合は、エラー メッセージで IP アドレスが報告されます。この IP アドレスをサーバーのファイアウォール規則に追加する必要があります。詳細については、「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 ## サンプル クエリの実行
 
-接続後は、サンプル クエリを実行できます。[Microsoft Azure SQL Database の概要](sql-database-get-started.md)で AdventureWorks サンプルを使用してデータベースを作成していないと、このクエリは機能しません。学習を進めるには、飛ばして次のステップに進んでください。
+接続後は、サンプル クエリを実行できます。「[Microsoft Azure SQL Database の概要](sql-database-get-started.md)」で AdventureWorks サンプルを使用してデータベースを作成していないと、このクエリは機能しません。学習を進めるには、飛ばして次のステップに進んでください。
 
 1. **オブジェクト エクスプローラー**で、**[AdventureWorks]** データベースに移動します。
 2. データベースを右クリックし、**[新しいクエリ]** を選択します。
@@ -72,8 +72,8 @@ SQL Database で作業を行う場合、最新のバージョンの SSMS を使�
 
 ## 次のステップ
 
-SQL Server で可能な方法とほぼ同じように、Transact-SQL ステートメントを使用して Azure にデータベースを作成して管理することもできます。SQL Server で Transact-SQL を使用するのに慣れている場合は、「[Azure SQL Database Transact-SQL 情報](sql-database-transact-sql-information.md)」で相違点の概要を参照してください。
+SQL Server で可能な方法とほぼ同じように、Transact-SQL ステートメントを使用して Azure にデータベースを作成して管理することもできます。SQL Server で Transact-SQL を使用するのに慣れている場合は、[Azure SQL Database Transact-SQL の情報](sql-database-transact-sql-information.md)に関するページで相違点の概要を参照してください。
 
 Transact-SQL が初めての場合は、「[チュートリアル: TRANSACT-SQL ステートメントの作成](https://msdn.microsoft.com/library/ms365303.aspx)」と「[TRANSACT-SQL リファレンス (データベース エンジン)](https://msdn.microsoft.com/library/bb510741.aspx)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

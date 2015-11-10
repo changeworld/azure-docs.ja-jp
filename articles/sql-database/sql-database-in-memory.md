@@ -21,9 +21,9 @@
 # インメモリの使用 (プレビュー)
 
 
-SQL インメモリは、トランザクション ワークロードと分析ワークロードのパフォーマンスを大幅に向上するテクノロジです。インメモリ OLTP によってトランザクションのスループットが最大で 30 倍向上でき、インメモリ分析によってクエリのパフォーマンスがワークロードによっては最大 100 倍向上できます。
+SQL インメモリは、トランザクション ワークロードと分析ワークロードのパフォーマンスを大幅に向上するテクノロジです。インメモリ OLTP によってトランザクションのスループットが最大で 30 倍向上でき、インメモリ分析によってクエリのパフォーマンスがワークロードによっては最大 100 倍向上できます。リアルタイム分析では、これらのテクノロジを組み合わせて、運用データに基づくビジネスについての洞察をリアルタイムで得ることができます。
 
-インメモリ分析は一般提供されています。インメモリ OLTP はプレビューとして Premium の Azure SQL Database で提供されています。
+インメモリ分析は Azure DB で一般提供されています。インメモリ OLTP とリアルタイム運用分析はプレビューとして Premium の Azure SQL Database で提供されています。
 
 
 ## 使用の開始
@@ -31,18 +31,18 @@ SQL インメモリは、トランザクション ワークロードと分析ワ
 トランザクション ワークロード向けのインメモリ OLTP を試す場合:
 
 
-- [インメモリ OLTP のサンプルを使用して AdventureWorksLT データベースを強化する](#Enrich-an-AdventureWorksLT-database-with-In-Memory-OLTP-samples)。
+- [インメモリ OLTP のサンプルをインストールする](#install-the-in-memory-oltp-sample)。
 - [既存の Azure SQL アプリケーションでインメモリ OLTP を使用する](sql-database-in-memory-oltp-migration.md)。
 - [インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)。
 
 
-トランザクション ワークロード向けのインメモリ分析を試す場合:
+分析ワークロード向けのインメモリ分析を試す場合:
 
-- [インメモリ分析をインストール](#Install-the-In-Memory-Analytics-sample)する。
+- [メモリ分析のサンプルをインストールする](#install-the-in-memory-analytics-sample)。
 - 詳細については、MSDN の[列ストア インデックス](https://msdn.microsoft.com/library/gg492088.aspx)に関するトピックを参照してください。
 
 
-## インメモリ OLTP のサンプルを使用して AdventureWorksLT データベースを強化する。
+## インメモリ OLTP のサンプルをインストールする
 
 Azure プレビュー ポータルで数回クリックするだけで、AdventureWorksLT [V12] のサンプル データベースを作成できます。以下の手順では、インメモリ OLTP オブジェクトの具体例として、テーブルとネイティブ コンパイル ストアド プロシージャを使用して AdventureWorksLT データベースを強化する方法について説明します。
 
@@ -241,9 +241,11 @@ Transact-SQL の機能の一部はインメモリ OLTP でサポートされま�
 
 ## その他のリソース
 
-インメモリ OLTP およびインメモリ分析の詳細: [インメモリ OLTP (インメモリ最適化)](https://msdn.microsoft.com/library/dn133186.aspx)
+[MSDN のインメモリ OLTP に関する記事](https://msdn.microsoft.com/library/dn133186.aspx)
 
-[MSDN の列ストア インデックスに関する記事](https://msdn.microsoft.com/library/gg492088.aspx)
+[MSDN のインメモリ分析 (列ストア) に関する記事](https://msdn.microsoft.com/library/gg492088.aspx)
+
+[MSDN のリアルタイム運用分析に関する記事](https://msdn.microsoft.com/library/dn817827.aspx)
 
 [一般的なワークロード パターンと移行の考慮事項に関するホワイト ペーパー](https://msdn.microsoft.com/library/dn673538.aspx)。インメモリ OLTP によってパフォーマンスが大幅に向上する一般的なワークロード パターンが記載されています。
 
@@ -253,4 +255,4 @@ Transact-SQL の機能の一部はインメモリ OLTP でサポートされま�
 
 インメモリ OLTP のために[インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

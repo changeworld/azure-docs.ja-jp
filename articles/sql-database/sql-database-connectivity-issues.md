@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/26/2015"
+	ms.date="11/02/2015"
 	ms.author="genemi"/>
 
 
@@ -81,17 +81,10 @@ Azure SQL Database との通信にサード パーティのミドルウェアを
 ### 再試行の間隔を長くする
 
 
-プログラムの開発においては、少なくとも 6 ～ 10 秒待って初回再試行を行うようにしてください。そうしないと、クラウド サービスがたちまち要求で溢れ、処理しきれなくなってしまいます。
 
+最初に再試行する前に、5 秒間待つことをお勧めします。5 秒未満で再試行すると、クラウド サービスに過度の負荷がかかるおそれがあります。再試行するたびに、待ち時間を比例して、最大 60 秒まで長くする必要があります。
 
-複数回にわたる再試行が必要な場合、最大間隔を上限として、後になるほど間隔が大きくなるようにしてください。次の 2 とおりの方法があります。
-
-
-- 単調に間隔を増やす。たとえば、間隔ごとに 5 秒ずつ加算します。
-
-
-- 指数関数的に間隔を増やす。たとえば、間隔ごとに 1.5 を掛けます。
-
+ADO.NET を使用するクライアントの*ブロック期間*については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
 
 加えて、最大再試行回数を設定し、プログラムが自動的に終了するように配慮する必要があります。
 
@@ -121,7 +114,7 @@ Azure SQL Database との通信にサード パーティのミドルウェアを
 最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
 
 
-具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。 1.エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。2.通常と同様に初回接続を試みます。3.エラーが捕捉された後、11001 をリストから削除します。4.コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。- それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。5.再度接続を試みます。
+具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。 1.エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。2.通常と同様に初回接続を試みます。3.エラーが捕捉された後、11001 をリストから削除します。4.コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。5.再度接続を試みます。
 
 
 ### 接続時に間違った綴りのデータベース名を使用することによるテスト
@@ -151,7 +144,7 @@ Azure SQL Database に接続するために必要な接続文字列は、Microso
 #### 接続タイムアウトの 30 秒
 
 
-インターネットを介した接続は、プライベート ネットワークに比べ堅牢性が低くなります。そのため、接続文字列は次のように設定することをお勧めします。- **[接続タイムアウト]** パラメーターを (15 秒ではなく) **30** 秒に設定します。
+インターネットを介した接続は、プライベート ネットワークに比べ堅牢性が低くなります。そのため、接続文字列は次のように設定することをお勧めします。**[接続タイムアウト]** パラメーターを (15 秒ではなく) **30** 秒に設定します。
 
 
 <a id="b-connection-ip-address" name="b-connection-ip-address"></a>
@@ -194,7 +187,7 @@ IP アドレスの構成を怠った場合、必要な IP アドレスを示し�
 Azure 仮想マシン (VM) でクライアント プログラムがホストされている場合、次のように表示されます。<br/>[ADO.NET 4.5、SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
 
 
-ポートと IP アドレスの構成に関する背景情報については、「[Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)」を参照してください。
+ポートと IP アドレスの構成に関する背景情報については、[Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)に関するページを参照してください。
 
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
@@ -239,7 +232,7 @@ Windows コンピューターでは、次のユーティリティが利用でき
 Linux では、次のユーティリティが利用できます。 - `netstat -nap` - `nmap -sS -O 127.0.0.1` - (IP アドレスの部分は適宜置き換えてください)
 
 
-Windows では [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。以下の例では、Azure SQL Database サーバー上のポートの状況と、ノート PC 上で動作しているポートとを照会しています。
+Windows では [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。以下の例では、Azure SQL Database サーバー上のポートの状況と、ノート PC 上で動作しているポートとをクエリしています。
 
 
 ```
@@ -279,12 +272,12 @@ Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ
 ## 診断: エラーの発生をシステム ログで調べる
 
 
-以下に示したのは、エラーや各種情報のログを照会する Transact-SQL SELECT ステートメントの例です。
+以下に示したのは、エラーや各種情報のログをクエリする Transact-SQL SELECT ステートメントの例です。
 
 
 | ログのクエリ | 説明 |
 | :-- | :-- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、個々のイベントに関する情報が表示されます。再構成、スロットル、リソースの過剰消費などに関連した接続エラーが対象となります。<br/><br/>クライアント プログラムでいつ問題が発生したかの情報に対し、**start\_time** や **end\_time** の値を相互に関連付けることをお勧めします。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、一時障害や接続エラーの原因となるおそれのあるイベントなど、個々のイベントに関する情報が表示されます。<br/><br/>クライアント プログラムでいつ問題が発生したかの情報に対し、**start\_time** や **end\_time** の値を相互に関連付けることをお勧めします。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` | [sys.database\_connection\_stats](http://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
 
 
@@ -485,4 +478,4 @@ public bool IsTransient(Exception ex)
 
 - [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

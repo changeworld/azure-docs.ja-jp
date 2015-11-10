@@ -1,7 +1,7 @@
 <properties
 	pageTitle="HBase のチュートリアル: Hadoop での HBase の使用 | Microsoft Azure"
 	description="HDInsight の Hadoop で Apache HBase を使用するには、この HBase チュートリアルの手順に従ってください。HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。"
-	keywords="apache hbase,hbase,hbase shell,hbase tutorial"
+	keywords="Apache HBase, HBase, HBase シェル, HBase チュートリアル"
 	services="hdinsight"
 	documentationCenter=""
 	authors="mumian"
@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/28/2015"
+	ms.date="10/29/2015"
 	ms.author="jgao"/>
 
 
 
 # HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する
 
-HDInsight で HBase クラスターをプロビジョニングする方法、HBase テーブルを作成する方法、Hive を使用してテーブルを照会する方法について説明します。HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関するページを参照してください。
+HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Hive を使用してテーブルをクエリする方法について説明します。HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関するページを参照してください。
 
 [AZURE.INCLUDE [hdinsight-azure-preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
 
@@ -38,31 +38,31 @@ HDInsight で HBase クラスターをプロビジョニングする方法、HBa
 - **Microsoft Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - Visual Studio 2013 がインストールされている**ワークステーション**: 手順については、「[Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)」を参照してください。
 
-## HBase クラスターのプロビジョニング
+## HBase クラスターの作成
 
 [AZURE.INCLUDE [provisioningnote](../../includes/hdinsight-provisioning.md)]
 
-**Azure ポータルを使用して HBase クラスターをプロビジョニングするには**
+**Azure ポータルを使用して HBase クラスターを作成するには**
 
 
-1. [Azure ポータル][azure-management-portal]にサインインします。
+1. [Azure プレビュー ポータル][azure-management-portal]にサインインします。
 2. 左上の **[新規]** をクリックし、**[データ + 分析]**、**[HDInsight]** の順にクリックします。
 3. 次の値を入力します。
 
-	- **クラスター名** - このクラスターを識別するための名前を入力します
+	- **クラスター名**: このクラスターを識別するための名前を入力します。
 	- **クラスターの種類** - HBase
-	- **クラスターのオペレーティング システム** - HDInsight HBase クラスターでは、現在 Windows オペレーティング システムのみ使用できます
-	- **サブスクリプション** - このクラスターをプロビジョニングするために使用する Azure サブスクリプションを選択します
-	- **リソース グループ** - Azure リソース グループを追加するか選択します。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」をご覧ください。
-	- **資格情報の構成** - Windows ベースのクラスターでは、クラスター ユーザー (別名 HTTP ユーザー、HTTP Web サービス ユーザー) とリモート デスクトップ ユーザーを作成できます
-	- **データ ソース** - クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを新しく作成するか、既存の Azure ストレージ アカウントを選択します。この Azure ストレージ アカウントは、HDInsight HBase クラスターと同じ場所にある必要があります
-	- **ノード価格レベル** - HBase クラスター用のリージョン サーバーの数を選択します
+	- **クラスターのオペレーティング システム** - HDInsight HBase クラスターでは、現在 Windows オペレーティング システムのみ使用できます。
+	- **サブスクリプション**: このクラスターを作成するために使用する Azure サブスクリプションを選択します。
+	- **リソース グループ**: Azure リソース グループを追加するか選択します。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+	- **資格情報の構成**: Windows ベースのクラスターでは、クラスター ユーザー (別名 HTTP ユーザー、HTTP Web サービス ユーザー) とリモート デスクトップ ユーザーを作成できます。
+	- **データ ソース**: クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを新しく作成するか、既存の Azure ストレージ アカウントを選択します。この Azure ストレージ アカウントは、HDInsight HBase クラスターと同じ場所にある必要があります
+	- **ノード価格レベル**: HBase クラスター用のリージョン サーバーの数を選択します。
 
-		> [AZURE.WARNING]HBase サービスの高可用性には、最低 **3 つ** のノードを含むクラスターをプロビジョニングする必要があります。これで 1 つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
+		> [AZURE.WARNING]HBase サービスの高可用性には、最低 **3 つ** のノードを含むクラスターを作成する必要があります。これで 1 つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
 
 		> 学習目的で HBase を使用する場合は、コスト削減のため、クラスター サイズには必ず 1 を選択し、クラスターの使用後にクラスターを削除してください。
 
-	- **オプションの構成** - クラスターのバージョンの選択、Azure 仮想ネットワークの構成、Hive/oozie メタストアの構成、スクリプト アクションの構成、および追加ストレージ アカウントの追加を行います。
+	- **オプションの構成**: クラスターのバージョンの選択、Azure virtual network の構成、Hive/oozie メタストアの構成、スクリプト アクションの構成、および追加ストレージ アカウントの追加を行います。
 
 4. **[作成]** をクリックします。
 
@@ -167,14 +167,14 @@ Web UI を開くには、RDP を使用してクラスターに接続した後、
 
 
 
-## Hive を使用して HBase テーブルを照会する
+## Hive を使用して HBase テーブルをクエリする
 
-Hive を使用して HBase テーブルのデータを照会できます。このセクションでは、HBase テーブルにマッピングする Hive テーブルを作成し、作成した Hive テーブルを使用して HBase テーブルのデータを照会します。
+Hive を使用して HBase テーブルのデータをクエリできます。このセクションでは、HBase テーブルにマッピングする Hive テーブルを作成し、作成した Hive テーブルを使用して HBase テーブルのデータをクエリします。
 
 **クラスターのダッシュボードを開くには**
 
 1. **https://<HDInsightClusterName>.azurehdinsight.net/** にアクセスします。
-5. Hadoop ユーザー アカウントとパスワードを入力します。デフォルトのユーザー名は **admin** で、パスワードはプロビジョニング処理中に入力したパスワードです。新しいブラウザーのタブが開きます。
+5. Hadoop ユーザー アカウントとパスワードを入力します。既定のユーザー名は **admin** で、パスワードは作成処理中に入力したパスワードです。新しいブラウザーのタブが開きます。
 6. ページ上部の **[Hive エディター]** をクリックします。次のような Hive エディターが開きます。
 
 	![HDInsight クラスターのダッシュボード][img-hdinsight-hbase-hive-editor]
@@ -190,7 +190,7 @@ Hive を使用して HBase テーブルのデータを照会できます。こ�
 
 	**[状態]** が **[完了]** に更新されるまで待機します。
 
-2. 次の HiveQL スクリプトを Hive エディターに入力してから、**[送信]** をクリックします。次のように Hive クエリが HBase テーブル内のデータを照会します。
+2. 次の HiveQL スクリプトを Hive エディターに入力してから、**[送信]** をクリックします。次のように Hive クエリが HBase テーブル内のデータをクエリします。
 
      	SELECT count(*) FROM hbasecontacts;
 
@@ -296,12 +296,12 @@ GitHub から HBase REST API Client Library for .NET をダウンロードして
 
 
 ## 次の手順
-この HDInsight の HBase のチュートリアルでは、HBase クラスターのプロビジョニング方法、テーブルの作成方法、作成したテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
+この HDInsight の HBase のチュートリアルでは、HBase クラスターのプロビジョニング方法、テーブルの作成方法、作成したテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータをクエリする方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
 
 詳細については、次を参照してください。
 
 - [HDInsight HBase の概要][hdinsight-hbase-overview]。HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
-- [Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]。アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
+- [Azure Virtual Network での HBase クラスターの作成][hdinsight-hbase-provision-vnet]。アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
 - [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md)。2 つの Azure データ センター間に HBase レプリケーションを構成する方法について説明します。
 - [HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する][hbase-twitter-sentiment]。HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[センチメントを分析](http://en.wikipedia.org/wiki/Sentiment_analysis)する方法について学習します。
 
@@ -332,4 +332,4 @@ GitHub から HBase REST API Client Library for .NET をダウンロードして
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->
