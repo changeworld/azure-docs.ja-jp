@@ -225,8 +225,7 @@
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
 9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されますオンデマンド HDInsight クラスターの作成には通常しばらく時間がかかることに注意してください。 
 
-	![データセット  
-](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)	
+	![データセット](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)	
 10. スライスが**準備完了**状態になったら、BLOB ストレージの **data** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
  
 

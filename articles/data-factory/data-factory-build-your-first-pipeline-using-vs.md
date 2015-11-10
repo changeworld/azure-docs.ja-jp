@@ -51,13 +51,11 @@
 1. **Visual Studio 2013** または **Visual Studio 2015** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。  
 2. **[新しいプロジェクト]** ダイアログで、**[DataFactory]** テンプレートを選択し、**[空の Data Factory プロジェクト]** をクリックします。   
 
-	![[新しいプロジェクト] ダイアログ ボックス  
-](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
+	![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
 
 3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
 
-	![ソリューション エクスプローラー  
-](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
+	![ソリューション エクスプローラー](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
 ### リンクされたサービスの作成
 この手順では、Azure ストレージ アカウントとオンデマンド Azure HDInsight クラスターをデータ ファクトリにリンクした後、Hive 処理からの出力データを表すデータセットを作成します。
