@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Search で Chrome Postman を使用する | Microsoft Azure"
-	description="Azure Search で Chrome Postman を使用するPostman をインストールおよび構成するAzure Search インデックスを作成する。Postman を使用してドキュメントをインデックスにポストし、インデックスに対してクエリを実行します。"
+	description="ホステッド クラウド検索サービスである Azure Search で Chrome Postman をします。Postman をインストールおよび構成するAzure Search インデックスを作成する。Postman を使用してドキュメントをインデックスにポストし、インデックスに対してクエリを実行します。"
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="09/08/2015"
+	ms.date="11/04/2015"
 	ms.author="heidist"/>
 
 # Azure Search で Chrome Postman を使用する方法 #
@@ -118,4 +118,4 @@ REST API のドキュメントは、[MSDN](https://msdn.microsoft.com/library/az
 [5]: ./media/search-chrome-postman/upload_documents.png
 [6]: ./media/search-chrome-postman/query.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

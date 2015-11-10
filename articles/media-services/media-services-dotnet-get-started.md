@@ -252,22 +252,23 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 
 	static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
 	{
-		// Prepare a job with a single task to transcode the specified asset
-        // into a multi-bitrate asset.
-
+	
+	    // Prepare a job with a single task to transcode the specified asset
+	    // into a multi-bitrate asset.
+	
 	    IJob job = _context.Jobs.CreateWithSingleTask(
-	        MediaProcessorNames.AzureMediaEncoder,
-	        MediaEncoderTaskPresetStrings.H264AdaptiveBitrateMP4Set720p,
+	        "Media Encoder Standard",
+	        "H264 Multiple Bitrate 720p",
 	        asset,
 	        "Adaptive Bitrate MP4",
 	        options);
-
-		Console.WriteLine("Submitting transcoding job...");
-
-
+	
+	    Console.WriteLine("Submitting transcoding job...");
+	
+	
 	    // Submit the job and wait until it is completed.
 	    job.Submit();
-
+	
 	    job = job.StartExecutionProgressTask(
 	        j =>
 	        {
@@ -275,11 +276,11 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 	            Console.WriteLine("Job progress: {0:0.##}%", j.GetOverallProgress());
 	        },
 	        CancellationToken.None).Result;
-
+	
 	    Console.WriteLine("Transcoding job finished.");
-
+	
 	    IAsset outputAsset = job.OutputMediaAssets[0];
-
+	
 	    return outputAsset;
 	}
 
@@ -440,4 +441,4 @@ AMS のラーニング パスについては、以下を参照してください
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
   [Portal]: http://manage.windowsazure.com/
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

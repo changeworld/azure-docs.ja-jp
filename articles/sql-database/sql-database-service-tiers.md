@@ -1,20 +1,20 @@
 <properties
-   pageTitle="SQL Database のサービス階層"
-   description="Azure SQL Database のサービス階層のパフォーマンスとビジネス継続性機能を比較し、ダウンタイムもなくオンデマンドで拡張する際のコストと機能の適切なバランスを見つけてください。"
-   services="sql-database"
-   documentationCenter=""
-   authors="rothja"
-   manager="jeffreyg"
-   editor="monicar"/>
+	pageTitle="SQL Database のサービス階層"
+	description="Azure SQL Database のサービス階層のパフォーマンスとビジネス継続性機能を比較し、ダウンタイムもなくオンデマンドで拡張する際のコストと機能の適切なバランスを見つけてください。"
+	services="sql-database"
+	documentationCenter=""
+	authors="rothja"
+	manager="jeffreyg"
+	editor="monicar"/>
 
 <tags
-   ms.service="sql-database"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="data-management"
-   ms.date="10/29/2015"
-   ms.author="jroth"/>
+	ms.service="sql-database"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="na"
+	ms.workload="data-management"
+	ms.date="11/03/2015"
+	ms.author="jroth"/>
 
 # SQL Database のサービス階層
  
@@ -45,7 +45,7 @@ DTU について理解を深めるためには、このトピックの[「DTU」
 >[AZURE.NOTE]このサービス層テーブルのその他すべての行の詳細については、「[サービス層の機能と制限](sql-database-performance-guidance.md#service-tier-capabilities-and-limits)」を参照してください。
 
 ### エラスティック データベース プールのサービス階層
-単一のデータベースを作成したり、スケーリングしたりするだけでなく、[エラスティック データベース プール](sql-database-elastic-pool.md)で複数のデータベースを管理することもできます。エラスティック データベース プール内のデータベースはすべて、共通のリソース セットを共有します。パフォーマンス特性は、*エラスティック データベース トランザクション ユニット* (eDTU) で測定されます。単一のデータベースの場合と同様に、エラスティック データベース プールにも **Basic**、**Standard**、**Premium** という 3 つのパフォーマンス階層があります。エラスティック データベースの場合もやはり、この 3 つのサービス階層によってパフォーマンス全体に関する制限事項といくつかの機能が定義されます。
+単一のデータベースを作成したり、スケーリングしたりするだけでなく、[エラスティック データベース プール](sql-database-elastic-pool.md)で複数のデータベースを管理することもできます。エラスティック データベース プール内のデータベースはすべて、共通のリソース セットを共有します。パフォーマンス特性は、*エラスティック データベース トランザクション ユニット* (eDTU) で測定されます。単一のデータベースの場合と同様に、エラスティック データベース プールにも **Basic**、**Standard**、**Premium** という 3 つのサービス階層があります。エラスティック データベースの場合もやはり、この 3 つのサービス階層によってパフォーマンス全体に関する制限事項といくつかの機能が定義されます。
 
 エラスティック データベース プールの場合、これらのデータベースは DTU リソースを共有して使用することができ、プール内のデータベースに特定のパフォーマンス レベルを割り当てる必要はありません。たとえば、Standard プール内の単一のデータベースで使用できるのは 0 eDTU から最大データベース eDTU (サービス階層によって定義された 100 eDTU またはユーザーが定義するカスタム値) までとなります。　これにより、プール全体に提供された eDTU リソースを、多様なワークロードを持つ複数のデータベースが効率的に使用することができます。
 
@@ -83,16 +83,16 @@ SQL Database のパフォーマンスの監視は、データベースに選択�
 
 下位のパフォーマンス レベルにダウングレードできるかどうかを判断するために、パフォーマンス メトリックを利用することもできます。たとえば、Standard S2 データベースを使用していて、すべてのパフォーマンス メトリックは、どの時点でもデータベースの平均的な使用率が 10% を超えないとします。この場合、データベースは Standard S1 で快適に動作します。ただし、下位のパフォーマンス レベルへの移行を決定する前に、急上昇や変動するワークロードに注意してください。
 
-ポータルに公開されているのと同じメトリックがシステム ビューからも入手できます。サーバーの論理 **master** データベースの [sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) とユーザー データベースの [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) (**sys.dm\_db\_resource\_stats** は、Basic、Standard、Premium の各ユーザー データベースに作成されます。Web および Business Edition のデータベースは空の結果セットを返します)。詳細度の低いデータをより長い期間で監視する必要がある場合は、**sys.resource\_stats** を使用します。詳細度の高いデータをより短い期間で監視する必要がある場合は、**sys.dm\_db\_resource\_stats** を使用します。詳細については、「[Azure SQL データベースのパフォーマンス ガイダンス](sql-database-performance-guidance.md#monitoring-resource-use-with-sysresourcestats)」を参照してください。
+ポータルに公開されているのと同じメトリックがシステム ビューからも入手できます。サーバーの論理 **master** データベースの [sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) とユーザー データベースの [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) (**sys.dm\_db\_resource\_stats** は、Basic、Standard、Premium の各ユーザー データベースに作成されます。Web および Business Edition のデータベースは空の結果セットを返します)。詳細度の低いデータをより長い期間で監視する必要がある場合は、**sys.resource\_stats** を使用します。詳細度の高いデータをより短い期間で監視する必要がある場合は、**sys.dm\_db\_resource\_stats** を使用します。詳細については、「[Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md#monitoring-resource-use-with-sysresourcestats)」を参照してください。
 
 エラスティック データベース プールでは、このセクションで説明した手法を使用して、プール内の個々のデータベースを監視することができます。ただし、プールを全体として監視することもできます。詳細については、「[エラスティック データベース プールの監視と管理](sql-database-elastic-pool-portal.md#monitor-and-manage-an-elastic-database-pool)」を参照してください。
 
 ## 次のステップ
-これらの階層の料金の詳細については、「[SQL Database 料金](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
+これらの階層の価格の詳細については、「[SQL Database の価格](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 
 複数のデータベースをグループとして管理する必要がある場合は、[エラスティック データベース プール](sql-database-elastic-pool-guidance.md)と、これに関連する[エラスティック データベース プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)を検討してください。
 
 SQL Database の階層については、これで理解できました。では、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)で実際に試してみましょう。また、[初めて SQL Database を作成する方法](sql-database-get-started.md)について詳しく学びましょう。
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

@@ -28,7 +28,7 @@
 - ソリューションを開発のライフサイクル全体で繰り返しデプロイできます。また、常にリソースが一貫した状態でデプロイされます。
 - 宣言型のテンプレートを利用し、デプロイメントを定義できます。
 - 正しい順序でデプロイされるようにリソース間の依存性を定義できます。
-- ロールベースのアクセス制御 (RBAC) が管理プラットフォームにネイティブ統合されるため、リソース グループのすべてのサービスにアクセス制御を適用できます。
+- ロールベースの Access Control (RBAC) が管理プラットフォームにネイティブ統合されるため、リソース グループのすべてのサービスにアクセス制御を適用できます。
 - タグをリソースに適用し、サブスクリプションのすべてのリソースを論理的に整理できます。
 - グループ全体、または同じタグを共有するリソース グループのロールアップ コストを表示すると、組織への課金を明確に把握できます。  
 
@@ -79,7 +79,7 @@ Marketplace からソリューションを作成すると、ソリューショ�
 
 テンプレートのスキーマについては、「[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)」を参照してください。
 
-デプロイメントにテンプレートを使用する方法については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)」を参照してください。
+デプロイメントにテンプレートを使用する方法については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
 テンプレートを構造化する方法のガイダンスについては、「[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](best-practices-resource-manager-design-templates.md)」を参照してください。
 
@@ -101,7 +101,7 @@ Marketplace からソリューションを作成すると、ソリューショ�
 
 ロールベースのアクセス制御の詳細については、[Microsoft Azure プレビュー ポータルでのロール ベースのアクセス制御](role-based-access-control-configure.md)に関するページを参照してください。このトピックには、組み込みのロールと許可されているアクションの一覧が含まれています。組み込みのロールには、所有者、閲覧者、共同作業者などの一般的なロールに加え、仮想マシンの共同作業者、Virtual Network の共同作業者、SQL セキュリティ管理者など、サービス固有のロールがあります (使用可能なロールの数例にすぎません)。
 
-ロールの割り当ての例については、「[リソースへのアクセスの管理](azure-portal/resource-group-rbac.md)」を参照してください。
+ロールの割り当ての例については、「[リソースへのアクセスの管理](resource-group-rbac.md)」を参照してください。
 
 重要なリソースを、ユーザーによって削除または変更されないように、明示的にロックすることもできます。詳細については、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
 
@@ -115,7 +115,7 @@ Marketplace からソリューションを作成すると、ソリューショ�
 
 リソース マネージャーでの操作は、Azure PowerShell、Mac、Linux、および Windows 用の Azure CLI、Azure プレビュー ポータル、または REST API の操作と完全な互換性があります。ユーザーに最適なインターフェイスを使用できるほか、インターフェイス間を混乱せずにすばやく移動できます。ポータルでは、ポータルの外で実行された操作さえも表示されます。
 
-PowerShell に関する詳細については、[リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)に関するページと、[Azure リソース マネージャのコマンドレッド](https://msdn.microsoft.com/library/azure/dn757692.aspx)に関するページを参照してください。
+PowerShell に関する詳細については、[リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)に関するページと、[Azure リソース マネージャーのコマンドレット](https://msdn.microsoft.com/library/azure/dn757692.aspx)に関するページを参照してください。
 
 Azure CLI の詳細については、[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](./virtual-machines/xplat-cli-azure-resource-manager.md)を参照してください。
 
@@ -127,7 +127,7 @@ REST API の詳細については、[Azure リソース マネージャー REST 
 ## 次のステップ
 
 - テンプレート作成の詳細については、[テンプレートの作成](./resource-group-authoring-templates.md)に関するページを参照してください。
-- 作成したテンプレートをデプロイするには、[テンプレートのデプロイ](azure-portal/resource-group-template-deploy.md)に関するページを参照してください。
+- 作成したテンプレートをデプロイするには、「[テンプレートのデプロイ](resource-group-template-deploy.md)」を参照してください。
 - テンプレートで使用できる関数については、[テンプレートの関数](./resource-group-template-functions.md)に関するページを参照してください。
 - テンプレートの設計のガイダンスについては、「[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](best-practices-resource-manager-design-templates.md)」を参照してください。
 
@@ -135,4 +135,4 @@ REST API の詳細については、[Azure リソース マネージャー REST 
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

@@ -150,6 +150,26 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で Multi
 
 ![Email templates](./media/multi-factor-authentication-get-started-server/email2.png)
 
+## Azure Multi-Factor Authentication サーバーでのユーザー データの処理方法
+
+オンプレミスで Multi-Factor Authentication (MFA) サーバーを使用すると、ユーザーのデータはオンプレミス サーバーに格納されます。永続的なユーザー データはクラウドに格納されません。ユーザーが 2 要素認証を実行すると、MFA サーバーから Azure MFA クラウド サービスにデータが送信され、認証が実行されます。これらの認証要求がクラウド サービスに送信されると、次のフィールドが要求で送信され、ログに記録されるので、ユーザーの認証/使用状況レポートで使用できます。一部のフィールドは省略可能なので、Multi-Factor Authentication サーバー内で有効または無効にすることができます。MFA サーバーから MFA クラウド サービスへの通信には、送信方向のポート 443 上で SSL/TLS が使用されます。以下のフィールドが対象です。
+
+- 一意の ID - ユーザー名または内部 MFA サーバー ID
+- 姓と名 - (省略可能)
+- 電子メール アドレス - (省略可能)
+- 電話番号 - 音声通話または SMS 認証を行う場合
+- デバイス トークン - モバイル アプリ認証を行う場合
+- 認証モード 
+- 認証の結果 
+- MFA サーバー名 
+- MFA サーバー IP 
+- クライアント IP - 使用可能な場合
+
+
+
+以上のフィールドに加え、認証結果 (成功/拒否) と拒否の理由も認証データと共に格納され、認証/使用状況レポートで使用できます。
+
+
 ## Azure Multi-Factor Authentication Server の高度な構成
 高度な設定や構成に関する追加情報は、次の表に記載されています。
 
@@ -165,4 +185,4 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で Multi
 [Windows Server Active Directory との同期](multi-factor-authentication-get-started-server-dirint.md)|Active Directory と Azure MFA Server 間の同期のセットアップと構成に関する情報です。
 [Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](multi-factor-authentication-get-started-server-webservice.md)|Azure MFA Server Web サービスのセットアップと構成に関する情報です。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

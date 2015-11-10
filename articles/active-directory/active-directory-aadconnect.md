@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/13/2015"
+	ms.date="11/04/2015"
 	ms.author="andkjell;billmath"/>
 
 # オンプレミス ID と Azure Active Directory の統合
@@ -104,7 +104,7 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 ## Azure AD Connect Sync のカスタマイズ
 Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応した既定の構成が設定されています。とはいえ、既定の構成ではうまくいかず、調整が必要な場面も必ず存在します。このセクションとリンク先のトピックにまとめられているように、構成は変更できます。
 
-これまでに同期トポロジを扱った経験がない場合は、[技術的概念](active-directory-aadconnect-technical-concepts.md)で説明されている基本情報と用語を確認してください。Azure AD Connect は、MIIS2003、ILM2007、FIM2010 が進化したものです。同じ要素もあるものの、多数の変更が加えられています。
+これまでに同期トポロジを扱った経験がない場合は、[技術的概念](active-directory-aadconnectsync-technical-concepts.md)で説明されている基本情報と用語を確認してください。Azure AD Connect は、MIIS2003、ILM2007、FIM2010 が進化したものです。同じ要素もあるものの、多数の変更が加えられています。
 
 この構成は、複数のフォレストが存在する可能性があることを前提としています。これらのトポロジでは、ユーザー オブジェクトが別のフォレスト内の連絡先として表されることがあります。ユーザーは、別のリソース フォレストにリンクされたメールボックスを持っている場合もあります。既定の構成の動作については、[ユーザーと連絡先](active-directory-aadconnectsync-understanding-users-and-contacts.md)に関するページを参照してください。
 
@@ -114,7 +114,7 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 
 | トピック | |
 | --------- | --------- |
-| 技術的概念 | [Azure AD Connect Sync: 技術的概念](active-directory-aadconnect-technical-concepts.md) |
+| 技術的概念 | [Azure AD Connect Sync: 技術的概念](active-directory-aadconnectsync-technical-concepts.md) |
 | ユーザーと連絡先について | [Azure AD Connect Sync: ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md) |
 | 宣言型のプロビジョニング | [Azure AD Connect Sync: 宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
 | 宣言型のプロビジョニングの関数リファレンス | [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md) |
@@ -138,4 +138,4 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 
 [AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

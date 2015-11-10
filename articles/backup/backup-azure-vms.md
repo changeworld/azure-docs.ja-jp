@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure 仮想マシンのバックアップ |Microsoft Azure"
-	description="この記事では、Azure の仮想マシンをバックアップする手順について説明します。"
+	description="Azure 仮想マシンをバックアップする手順"
 	services="backup"
 	documentationCenter=""
 	authors="Jim-Parker"
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="10/23/2015"
+	ms.date="10/29/2015"
 	ms.author="trinadhk; aashishr; jimpark; markgal"/>
 
 
-# Azure Virtual Machines のバックアップ
+# Azure 仮想マシンのバックアップ
 この記事では、既存の Azure 仮想マシンを会社のバックアップと保持に関するポリシーに従って保護するためにバックアップする手順について説明します。
 
 まず、Azure 仮想マシンをバックアップする前にいくつかのことに注意する必要があります。まだ実行していない場合は、[前提条件](backup-azure-vms-prepare.md)を完了して、VM をバックアップできるように環境を準備してから、操作を続行します。
@@ -28,10 +28,10 @@ Azure 仮想マシンのバックアップには、次の 3 つの主要な手�
 
 ![Three steps to back up an Azure virtual machine](./media/backup-azure-vms/3-steps-for-backup.png)
 
->[AZURE.NOTE] 仮想マシンは、ローカルにバックアップされます。あるリージョンの仮想マシンを別のリージョンのバックアップ コンテナーにバックアップすることはできません。そのため、バックアップが必要な VM がある Azure リージョンごとに、そのリージョン内に少なくとも 1 つ以上のバックアップ コンテナーを作成する必要があります。
+>[AZURE.NOTE]仮想マシンは、ローカルにバックアップされます。あるリージョンの仮想マシンを別のリージョンのバックアップ コンテナーにバックアップすることはできません。そのため、バックアップが必要な VM がある Azure リージョンごとに、そのリージョン内に少なくとも 1 つ以上のバックアップ コンテナーを作成する必要があります。
 
 ## 手順 1. Azure 仮想マシンを検出する
-サブスクリプションに追加された新しい仮想マシンが確実に識別されるように、検出プロセスは常に最初の手順として実行する必要があります。このプロセスでは、サブスクリプションに含まれる仮想マシンの一覧を、クラウド サービス名、リージョンなどの追加情報と共に Azure に照会します。
+サブスクリプションに追加された新しい仮想マシンが確実に識別されるように、検出プロセスは常に最初の手順として実行する必要があります。このプロセスでは、サブスクリプションに含まれる仮想マシンの一覧を、クラウド サービス名、リージョンなどの追加情報と共に Azure にクエリします。
 
 1. Azure ポータルの **[Recovery Services]** にあるバックアップ コンテナーに移動し、**[登録済みの項目]** をクリックします。
 
@@ -39,8 +39,7 @@ Azure 仮想マシンのバックアップには、次の 3 つの主要な手�
 
     ![ワークロードの選択](./media/backup-azure-vms/discovery-select-workload.png)
 
-3. ページの下部にある **[検出]** をクリックします。
-    ![[検出] ボタン](./media/backup-azure-vms/discover-button-only.png)
+3. ページの下部にある **[検出]** をクリックします。![[検出] ボタン](./media/backup-azure-vms/discover-button-only.png)
 
     仮想マシンが集計されるまで、この検出プロセスに数分かかる場合があります。プロセスが実行中であることを知らせる通知が画面の下部に表示されます。
 
@@ -59,8 +58,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 
     ![ワークロードの選択](./media/backup-azure-vms/discovery-select-workload.png)
 
-3. ページの下部にある **[登録]** をクリックします。
-    ![[登録] ボタン](./media/backup-azure-vms/register-button-only.png)
+3. ページの下部にある **[登録]** をクリックします。![[登録] ボタン](./media/backup-azure-vms/register-button-only.png)
 
 4. **[項目の登録]** ショートカット メニューで、登録する仮想マシンを選択します。同じ名前の仮想マシンが 2 つ以上ある場合は、クラウド サービスを使用して仮想マシンを区別します。
 
@@ -72,7 +70,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 
     ![登録ジョブ](./media/backup-azure-vms/register-create-job.png)
 
-    仮想マシンが登録済みの項目の一覧にも、登録操作の状態と共に表示されます。
+   仮想マシンが登録済みの項目の一覧にも、登録操作の状態と共に表示されます。
 
     ![Registering status 1](./media/backup-azure-vms/register-status01.png)
 
@@ -86,7 +84,6 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 2015 年 5 月以降に作成された Azure のバックアップ コンテナーには、既定のポリシーが組み込まれています。この既定のポリシーには、30 日間の既定の保持期間と 1 日 1 回のバックアップ スケジュールが含まれています。
 
 1. Azure ポータルの **[Recovery Services]** にあるバックアップ コンテナーに移動し、**[登録済みの項目]** をクリックします。
-
 2. ドロップダウン メニューから **[Azure 仮想マシン]** を選択します。
 
     ![ポータルでのワークロードの選択](./media/backup-azure-vms/select-workload.png)
@@ -97,7 +94,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 
     同じ名前の仮想マシンが 2 つ以上ある場合は、クラウド サービスを使用して仮想マシンを区別します。
 
-    >[AZURE.TIP] 一度に複数の仮想マシンを保護できます。
+    >[AZURE.TIP]一度に複数の仮想マシンを保護できます。
 
     ![保護をスケールで構成](./media/backup-azure-vms/protect-at-scale.png)
 
@@ -107,7 +104,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 
     ![新しいポリシーで保護](./media/backup-azure-vms/policy-schedule.png)
 
-    >[AZURE.NOTE] バックアップ ポリシーには、スケジュールされたバックアップの保持スキーマが含まれています。既存のバックアップ ポリシーを選択した場合は、次の手順で保持オプションを変更できません。
+    >[AZURE.NOTE]バックアップ ポリシーには、スケジュールされたバックアップの保持スキーマが含まれています。既存のバックアップ ポリシーを選択した場合は、次の手順で保持オプションを変更できません。
 
 5. バックアップに関連付ける**保持期間**を選択します。
 
@@ -143,7 +140,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 
     ![バックアップが進行中](./media/backup-azure-vms/protect-inprogress.png)
 
->[AZURE.NOTE] Azure Backup サービスは、バックアップ操作の一部として、各仮想マシンのバックアップ拡張機能に対して、すべての書き込みをフラッシュし、整合性のあるスナップショットを作成するためのコマンドを発行します。
+>[AZURE.NOTE]Azure Backup サービスは、バックアップ操作の一部として、各仮想マシンのバックアップ拡張機能に対して、すべての書き込みをフラッシュし、整合性のあるスナップショットを作成するためのコマンドを発行します。
 
 初回バックアップが完了すると、**[保護された項目]** タブの仮想マシンの状態が *[保護済み]* になります。
 
@@ -164,4 +161,4 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 - [仮想マシンの管理と監視](backup-azure-manage-vms.md)
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 
-<!-----HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->
