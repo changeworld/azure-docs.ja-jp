@@ -18,6 +18,11 @@
 
 # Azure Data Factory を使用してデータを読み込む
 
+> [AZURE.SELECTOR]
+- [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)
+- [PolyBase](sql-data-warehouse-load-with-polybase-short.md)
+- [BCP](sql-data-warehouse-load-with-bcp.md)
+
  このチュートリアルでは、Azure Storage BLOB から SQL Data Warehouse にデータを移動するパイプラインを Azure Data Factory に作成する方法について説明します。以降の手順では、次の操作を実行します。
 
 + Azure Storage Blob にサンプルのデータを設定する。
@@ -201,4 +206,4 @@
 	}
 	
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

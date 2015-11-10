@@ -12,8 +12,8 @@
 	ms.workload="data-services" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="10/15/2015" 
+	ms.topic="get-started-article" 
+	ms.date="11/02/2015" 
 	ms.author="spelluru"/>
 
 # チュートリアル: コピー アクティビティがあるパイプラインを Data Factory Editor で作成する
@@ -83,7 +83,7 @@
 	 
 5. **エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure Storage]** を選択します。Azure Storage のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。
 
-	![エディターの [新しいデータ ストア] ボタン][image-editor-newdatastore-button]
+	![エディター [新しいデータ ストア] ボタン][image-editor-newdatastore-button]
     
 6. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーの値に置き換えます。
 
@@ -100,7 +100,7 @@
 
 	![エディターの Azure SQL 設定][image-editor-azure-sql-settings]
 
-2. **servername**、**databasename**、****username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
+2. **servername**、**databasename**、**username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
 3. ツール バーの **[デプロイ]** をクリックして、AzureSqlLinkedService を作成してデプロイします。 
    
 
@@ -222,7 +222,7 @@
 ## <a name="CreateAndRunAPipeline"></a>手順 4. パイプラインを作成して実行する
 この手順では、**EmpTableFromBlob** を入力、**EmpSQLTable** を出力として使用し、**コピー アクティビティ**を持つパイプラインを作成します。
 
-1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
+1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **... (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
 
 	![エディターの [新しいパイプライン] ボタン][image-editor-newpipeline-button]
  
@@ -347,7 +347,7 @@
 
 	![[テーブル] ブレード][image-data-factory-get-started-table-blade]
  
-7. 現在の時刻までのデータ スライスが既に生成されており、**[準備完了]** になっています。下部の **[問題のあるスライス]** セクションにはスライスが表示されていません。
+7. 現在の時刻までのデータ スライスが既に生成されており、**準備完了**になっています。下部の **[問題のあるスライス]** セクションにはスライスが表示されていません。
 8. **... (省略記号)** をクリックし、すべてのスライスを表示します。
 
 	![[データ スライス] ブレード][image-data-factory-get-started-dataslices-blade]
@@ -503,4 +503,4 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

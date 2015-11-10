@@ -106,7 +106,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 
 SDK を手動で追加する:
 
-1. [Application Insights SDK for Java](http://dl.windowsazure.com/lib/applicationinsights/javabin/sdk.zip) をダウンロードします。
+1. [Application Insights SDK for Java](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.html) をダウンロードします。
 2. zip ファイルからバイナリを抽出し、プロジェクトに追加します。
 
 ### 疑問がある場合...
@@ -396,4 +396,4 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

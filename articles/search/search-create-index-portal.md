@@ -1,6 +1,6 @@
 <properties
 	pageTitle="ポータルでの Azure Search インデックスの作成 | Microsoft Azure"
-	description="Azure ポータルでフィールド定義を入力して、Azure Search サービスにインデックスを追加する"
+	description="Azure ポータルでフィールド定義を入力して、クラウド ホステッド検索サービスである Azure Search にインデックスを追加します。"
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
@@ -14,12 +14,12 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="09/08/2015"
+	ms.date="11/04/2015"
 	ms.author="heidist"/>
 
 # Azure ポータルでの Azure Search インデックスの作成
 
-Azure ポータルで作成することで、Azure Search のインデックスのプロトタイプをすばやく作成できます。ポータルは概念実証テストでの使用に最適です。また、サービスに展開されているすべてのインデックスに対するスキーマの定義およびリソースの使用状況を表示するために使用することもできます。
+Azure ポータルで作成することで、Azure Search のインデックスのプロトタイプをすばやく作成できます。ポータルは概念実証テストでの使用に最適です。また、サービスにデプロイされているすべてのインデックスに対するスキーマの定義およびリソースの使用状況を表示するために使用することもできます。
 
 このタスクを完了するには、すぐに使用できる Azure Search サービスを備えていることを確認してください。セットアップのサポートが必要な場合は、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
@@ -31,7 +31,7 @@ Azure ポータルで作成することで、Azure Search のインデックス�
 
 3. サービス ダッシュボードの最上部には、[**インデックスの追加**] を含むコマンド バーが表示されます。
 
-	価格レベルを確認します。無料バージョンの場合は、最大 3 つのインデックスを作成できます。空き領域を得るために、インデックスを削除しなければならない場合があります。
+	価格レベルを確認します。Free バージョンの場合は、最大 3 つのインデックスを作成できます。空き領域を得るために、インデックスを削除しなければならない場合があります。
 
      ![][1]
 
@@ -100,4 +100,4 @@ Azure Search では、既定で searchable、 facetable、filterable などの�
 [4]: ./media/search-create-index-portal/AzureSearch-PortalIndex-4.PNG
 [5]: ./media/search-create-index-portal/AzureSearch-PortalIndex-5.PNG
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

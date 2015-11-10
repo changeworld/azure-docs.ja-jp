@@ -12,8 +12,8 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="10/15/2015"
+	ms.topic="hero-article"
+	ms.date="11/02/2015"
 	ms.author="spelluru"/>
 
 # Azure PowerShell を使用した初めての Azure Data Factory パイプラインの作成
@@ -33,6 +33,10 @@
 この記事では、Azure Data Factory サービスの概念については説明しません。サービスの詳細については、記事「[Azure Data Factory サービスの概要](data-factory-introduction.md)」を参照してください。
 
 > [AZURE.IMPORTANT]「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」という記事を参照し、前提条件の手順を完了してから、このチュートリアルを実行してください。
+>   
+> この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス][cmdlet-reference]」を参照してください。
+>    
+> Azure PowerShell 1.0 プレビューを使用する場合は、[ここ](https://msdn.microsoft.com/library/dn820234.aspx)に記載されているコマンドレットを使用する必要があります。たとえば、New-AzureDataFactory を使用する代わりに、New-AzureRMDataFactory を使用します。
 
 ## 手順 1: データ ファクトリを作成する
 
@@ -77,7 +81,7 @@
 		    }
 		}
 
-	**accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピーおよび再生成](http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+	**accountname** を Azure ストレージ アカウントの名前に、**accountkey** を Azure ストレージ アカウントのアクセス キーに置き換えます。ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピーおよび再生成](http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#view-copy-and-regenerate-storage-access-keys)」を参照してください。
 
 2.	Azure PowerShell で ADFGetStartedPSH フォルダーに切り替えます。
 3.	**New-AzureDataFactoryLinkedService** コマンドレットを使用して、リンクされたサービスを作成できます。このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、*ResourceGroupName* および *DataFactoryName* パラメーターの値を渡す必要があります。または、**Get-AzureDataFactory** を使用して **DataFactory** オブジェクトを取得すると、コマンドレットを実行するたびに *ResourceGroupName* と *DataFactoryName* を入力しなくてもオブジェクトを渡すことができます。**Get-AzureDataFactory** コマンドレットの出力を **$df** 変数に割り当てるには、次のコマンドを実行します。
@@ -128,7 +132,7 @@
 		New-AzureDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
 
 
-### 出力データセットを作成します。
+### 出力データセットを作成する
 次に、Azure BLOB ストレージに格納されるデータを表す出力データセットを作成します。
 
 1.	以下の内容を記述した「OutputTable.json」という名前の JSON ファイルを C:\\ADFGetStartedPSH フォルダー内に作成します。
@@ -163,7 +167,7 @@
 
 1.	以下の内容を記述した「MyFirstPipelinePSH.json」という名前の JSON ファイルを C:\\ADFGetStartedPSH フォルダー内に作成します。
 
-	> [AZURE.IMPORTANT]**storageaccountname** は、JSON でのストレージ アカウントの名前に置き換えます。
+	> [AZURE.IMPORTANT]**storageaccountname** を、JSON でのストレージ アカウントの名前に置き換えます。
 
 		{
 		  "name": "MyFirstPipeline",
@@ -203,7 +207,7 @@
 
 	**extendedProperties** セクションは、Hive 構成値 (例: ${hiveconf:PartitionedData}) として Hive スクリプトに渡される実行時設定を指定するために使用されます。
 
-	パイプラインの **start** および **end** プロパティでは、パイプラインのアクティブな期間を指定します。
+	パイプラインの **start** プロパティと **end** プロパティは、パイプラインのアクティブな期間を指定します。
 
 	アクティビティ JSON では、Hive スクリプトがリンクされたサービス **HDInsightOnDemandLinkedService** によって指定されたコンピューティングで実行することを指定します。
 2. 次のコマンドを実行して、Data Factory テーブルを作成します。
@@ -268,6 +272,8 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](./data-factory-get-started.md)」を参照してください。
 
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-powershell.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-powershell.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO4-->
+[cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
+
+<!---HONumber=Nov15_HO2-->

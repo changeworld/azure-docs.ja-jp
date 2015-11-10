@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="10/19/2015"
+	ms.date="11/04/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用 (iOS アプリ)
@@ -302,8 +302,8 @@
 				signature = [self CF_URLEncodedString:[rawHmac base64EncodedStringWithOptions:0]];
 
 				// Construct authorization token string
-				token = [NSString stringWithFormat:@"SharedAccessSignature sr=%@&sig=%@&se=%qu&skn=%@",
-					targetUri, signature, expires, HubSasKeyName];
+				token = [NSString stringWithFormat:@"SharedAccessSignature sig=%@&se=%qu&skn=%@&sr=%@",
+					signature, expires, HubSasKeyName, targetUri];
 			}
 			@catch (NSException *exception)
 			{
@@ -365,7 +365,7 @@
 				completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
 			{
 		        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
-		        if (error || httpResponse.statusCode != 200)
+		        if (error || (httpResponse.statusCode != 200 && httpResponse.statusCode != 201))
 		        {
 		            NSLog(@"\nError status: %d\nError: %@", httpResponse.statusCode, error);
 		        }
@@ -433,9 +433,9 @@
 11. プロジェクトをビルドし、エラーがないことを確認します。
 
 
+> [AZURE.NOTE]Xcode7 でビットコード サポートに関するビルド エラーが発生した場合は、[ビルド設定] の [ビットコードの有効化] (ENABLE\_BITCODE) を [いいえ] に変更する必要があります。Notification Hubs SDK は、現在ビットコードをサポートしていません。
 
 Apple の「[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]」に、使用できるすべての通知ペイロードが記載されています。
-
 
 
 ##アプリケーションをテストする
@@ -503,4 +503,4 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

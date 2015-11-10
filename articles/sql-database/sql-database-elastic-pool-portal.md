@@ -10,10 +10,10 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="10/08/2015"
+	ms.date="10/29/2015"
 	ms.author="sstein"
 	ms.workload="data-management"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.tgt_pltfrm="NA"/>
 
 
@@ -44,7 +44,7 @@
 サーバーの推奨プールがあることを示すメッセージが表示された場合、それをクリックして、簡単に確認し、サーバーのデータベースに最適化されたプールを作成します。詳細については、「[推奨されるエラスティック データベース プール](sql-database-elastic-pool-portal.md#recommended-elastic-database-pools)」をご覧ください。
    
   
-![エラスティック プールの作成][1]
+   ![エラスティック プールの作成][1]
 
 
 **エラスティック データベース プール** ブレードには、価格レベルの選択、データベースの追加、プールのパフォーマンス特性の構成を行うためのオプションが用意されています。
@@ -199,4 +199,4 @@ SQL Database V12 サーバーを参照すると、そのサーバーに推奨さ
 [11]: ./media/sql-database-elastic-pool-portal/recommended-pool.png
 [12]: ./media/sql-database-elastic-pool-portal/pools-message.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/21/2015"
+	ms.date="11/04/2015"
 	ms.author="awills"/>
 
 # Web サイトの可用性と応答性の監視
@@ -221,14 +221,17 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 
 ## 疑問がある場合 問題が発生した場合
 
-
-* *"Web テスト" と "可用性" に違いはありますか。*
-
-    この 2 つの用語は同じ意味で使用されています。
-
 * *Web テストからコードを呼び出すことはできますか。*
 
     いいえ。テストの手順は、.webtest ファイルに含まれている必要があります。他の Web テストの呼び出しまたはループの使用は許可されていません。ただし、役に立つさまざまなプラグインがあります。
+
+* *HTTPS はサポートされていますか。*
+
+    現時点では、SSL 3.0 と TLS 1.0 がサポートされています。
+
+* *"Web テスト" と "可用性テスト" に違いはありますか。*
+
+    この 2 つの用語は同じ意味で使用されています。
 
 ## <a name="video"></a>ビデオ
 
@@ -250,4 +253,4 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

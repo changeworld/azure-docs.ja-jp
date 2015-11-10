@@ -13,12 +13,12 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="07/08/2015"
+	ms.date="11/04/2015"
 	ms.author="heidist"/>
 
 # Fiddler を使用して Azure Search REST API を評価およびテストする
 
-この記事では、コードを記述することなく、[Telerik から無料でダウンロードできる](http://www.telerik.com/fiddler) Fiddler を利用し、Azure Search REST API を使用して HTTP 要求を発行し、応答を表示する方法について説明します。Azure Search サービス REST API については、[MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) を参照してください。
+この記事では、コードを記述することなく、[Telerik から無料でダウンロードできる](http://www.telerik.com/fiddler) Fiddler を利用し、Azure Search REST API を使用して HTTP 要求を発行し、応答を表示する方法について説明します。Azure Search は、Microsoft Azure の完全に管理されたホステッド クラウド検索サービスで、.NET API および REST API を使用して簡単にプログラミングできます。Azure Search サービス REST API については、[MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) を参照してください。
 
 以下の手順では、インデックスを作成し、ドキュメントをアップロードし、インデックスのクエリを実行してから、システムでサービス情報のクエリを実行します。
 
@@ -235,4 +235,4 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 [4]: ./media/search-fiddler/AzureSearch_Fiddler4_QueryResults.png
 [5]: ./media/search-fiddler/AzureSearch_Fiddler5_QueryStats.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

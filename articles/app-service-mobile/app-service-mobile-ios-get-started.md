@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="10/14/2015"
+	ms.date="10/28/2015"
 	ms.author="krisragh"/>
 
 #iOS アプリの作成
@@ -68,4 +68,4 @@
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

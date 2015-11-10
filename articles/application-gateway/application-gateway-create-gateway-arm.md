@@ -33,24 +33,24 @@ Application Gateway はロード バランサーの第 7 層です。クラウ�
 この記事では、アプリケーション ゲートウェイを作成、構成、起動、および削除する手順について説明します。
 
 
->[AZURE.IMPORTANT]Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイ モデルと従来のデプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイ モデルとツール](azure-classic-rm.md)について知識をつけておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure リソース マネージャーを使用した Application Gateway の作成について説明します。クラシック バージョンを使用する場合は、「[PApplication Gateway の作成、起動、または削除](application-gateway-create-gateway.md)」を参照してください。
+>[AZURE.IMPORTANT]Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイ モデルと従来のデプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイ モデルとツール](azure-classic-rm.md)について理解しておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure リソース マネージャーを使用した Application Gateway の作成について説明します。クラシック バージョンを使用する場合は、「[Application Gateway の作成、起動、または削除](application-gateway-create-gateway.md)」を参照してください。
 
 
 
 ## 開始する前に
 
 1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。[ダウンロード ページ](http://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
-2. Application Gateway の仮想ネットワークとサブネットを作成します。仮想マシンまたはクラウド デプロイでサブネットをしていないことを確認します。アプリケーション ゲートウェイそのものが、仮想ネットワーク サブネットに含まれている必要があります。
-3. アプリケーション ゲートウェイを使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内、または割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
+2. Application Gateway の仮想ネットワークとサブネットを作成します。仮想マシンまたはクラウド デプロイでサブネットをしていないことを確認します。Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
+3. Application Gateway を使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内、または割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
 
 ## Application Gateway の作成に必要な構成
  
 
 - **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。 
-- **バックエンド サーバー プールの設定**: すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-- **フロントエンド ポート**: このポートは、アプリケーション ゲートウェイで開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+- **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
+- **フロントエンド ポート:** このポートは、アプリケーション ゲートウェイで開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 - **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。 
-- **ルール**: ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。現在、*basic* ルールのみサポートされます。*basic* ルールは、ラウンド ロビンの負荷分散です。
+- **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。現在、*basic* ルールのみサポートされます。*basic* ルールは、ラウンド ロビンの負荷分散です。
 
 
  
@@ -119,13 +119,17 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 ### 手順 2.	
 	$vnet = New-AzurevirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-サブネット 10.0.0.0/24 とプレフィックス 10.0.0.0/16 を使用して、West US 地域のリソース グループ "appw-rg" に、"appgwvnet" という名前の仮想ネットワークを作成します。
+サブネット 10.0.0.0/24 とプレフィックス 10.0.0.0/16 を使用して、米国西部リージョンのリソース グループ "appw-rg" に、"appgwvnet" という名前の仮想ネットワークを作成します。
+
+### 手順 3.
 	
+	$subnet=$vnet.Subnets[0]
+
 ## フロントエンド構成のパブリック IP アドレスの作成
 
 	$publicip = New-AzurePublicIpAddress -ResourceGroupName appgw-rg -name publicIP01 -location "West US" -AllocationMethod Dynamic
 
-West US 地域のリソース グループ "appw-rg" に、パブリック IP リソース "publicIP01" を作成します。
+米国西部リージョンのリソース グループ "appw-rg" に、パブリック IP リソース "publicIP01" を作成します。
 
 
 ## Application Gateway 構成オブジェクトの作成
@@ -154,13 +158,13 @@ West US 地域のリソース グループ "appw-rg" に、パブリック IP �
 
 この例では、パブリック IP エンドポイントに対して、"frontendport01" という名前のフロントエンド IP ポートを構成します。
 
-### 手順 5
+### 手順 5.
 
 	$fipconfig = New-AzureApplicationGatewayFrontendIPConfig -Name fipconfig01 -PublicIPAddress $publicip
 
 "fipconfig01" という名前のフロントエンド IP 構成を作成し、このフロントエンド IP 構成にパブリック IP アドレスを関連付けます。
 
-### 手順 6
+### 手順 6.
 
 	$listener = New-AzureApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 
@@ -414,4 +418,4 @@ ILB とともに使用するようにアプリケーション ゲートウェイ
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

@@ -3,9 +3,9 @@
 	description="このトピックでは、企業が、管理するすべての Web サイトとサービスに一貫したルック アンド フィールを適用し、エンド ユーザーがその企業のサイトを利用するたびに、混乱しないようにする方法ついて説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="MarkusVi"
+	authors="markusvi"
 	manager="stevenpo"
-	editor="LisaToft"/>
+	editor=""/>
 
 <tags
 	ms.service="active-directory"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/11/2015" 
+	ms.date="10/30/2015" 
 	ms.author="MarkVi"/>
 
 # サインイン ページとアクセス パネル ページに対する会社のブランドの追加
@@ -185,4 +185,4 @@ Azure AD でカスタマイズ可能な要素には、複数のユース ケー�
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

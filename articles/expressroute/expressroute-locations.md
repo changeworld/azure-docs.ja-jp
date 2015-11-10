@@ -90,9 +90,9 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 | **サービス プロバイダー** |**Microsoft Azure** | **Office 365** | **場所** |
 |-----------------------|--------------------|----------------|---------------|
-| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | 近日対応予定 | サポートされていません | シカゴ+、ワシントン DC+ |
+| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | サポートされていません | シカゴ+、ワシントン DC |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | 近日対応予定 | サポートされていません | シカゴ+、ワシントン DC+ |
-| **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | 近日対応予定 | サポートされていません | シカゴ+、ワシントン DC |
+| **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされていません | シカゴ+、ワシントン DC |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | サポートされていません | シカゴ+、ワシントン DC |
 
 ## 一覧にないサービス プロバイダー経由の接続
@@ -129,4 +129,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->
