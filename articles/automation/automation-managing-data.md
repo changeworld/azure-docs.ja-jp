@@ -21,25 +21,25 @@
 
 ## データの保持
 
-Azure Automation でリソースを削除する場合、完全に削除される前に、監査目的で 90 日間保持されます。You can’t see or use the resource during this time.This policy also applies to resources that belong to an automation account that is deleted.
+Azure Automation でリソースを削除する場合、完全に削除される前に、監査目的で 90 日間保持されます。この期間にリソースを表示または使用することはできません。このポリシーは、削除済みのオートメーション アカウントに属するリソースにも適用されます。
 
-Azure Automation automatically deletes and permanently removes jobs older than 90 days.
+Azure Automation は、90 日を超えるジョブを自動的に削除した後、完全に消去します。
 
-The following table summarizes the retention policy for different resources.
+次の表は、さまざまなリソースの保持ポリシーをまとめたものです。
 
-|Data|Policy|
+|データ|ポリシー|
 |:---|:---|
-|Accounts|Permanently removed 90 days after the account is deleted by a user.|
-|Assets|Permanently removed 90 days after the asset is deleted by a user, or 90 days after the account that holds the asset is deleted by a user.|
-|Modules|Permanently removed 90 days after the module is deleted by a user, or 90 days after the account that holds the module is deleted by a user.|
-|Runbooks|Permanently removed 90 days after the resource is deleted by a user, or 90 days after the account that holds the resource is deleted by a user.|
-|Jobs|Deleted and permanently removed 90 days after last being modified.This could be after the job completes, is stopped, or is suspended.|
+|アカウント|ユーザーによってアカウントが削除された日から 90 日後に完全に消去されます。|
+|資産|ユーザーによって資産が削除された日から 90 日後に、または資産を保持するアカウントがユーザーによって削除された日から 90 日後に完全に消去されます。|
+|モジュール|ユーザーによってモジュールが削除された日から 90 日後に、またはモジュールを保持するアカウントがユーザーによって削除された日から 90 日後に完全に消去されます。|
+|Runbooks|ユーザーによってリソースが削除された日から 90 日後に、またはリソースを保持するアカウントがユーザーによって削除された日から 90 日後に完全に消去されます。|
+|ジョブ|最終更新日から 90 日後に削除された後、完全に消去されます。これは、ジョブが完了、停止、または中断された後に実行されます。|
 
 保持ポリシーはすべてのユーザーに適用され、現在カスタマイズすることはできません。
 
 ## Azure Automation のバックアップ
 
-Microsoft Azure でオートメーション アカウントを削除すると、Runbook、モジュール、設定、ジョブ、資産など、アカウント内のすべてのオブジェクトが削除されます。The objects cannot be recovered after the account is deleted.削除する前に、以下の情報を使用してオートメーション アカウントの内容をバックアップできます。
+Microsoft Azure でオートメーション アカウントを削除すると、Runbook、モジュール、設定、ジョブ、資産など、アカウント内のすべてのオブジェクトが削除されます。アカウントを削除した後にオブジェクトを修復することはできません。.削除する前に、以下の情報を使用してオートメーション アカウントの内容をバックアップできます。
 
 ### Runbook
 
@@ -76,4 +76,4 @@ Azure Automation アカウントでの標準である geo レプリケーショ�
 
 万一、プライマリ リージョンのデータが失われた場合、Microsoft はその復旧を試みます。プライマリ リージョンを復元できない場合は、geo フェールオーバーが実行されます。影響を受けた顧客には、サブスクリプションを通じてこのことが通知されます。
 
-<!---HONumber=Oct15_HO4-->
+<!----HONumber=Oct15_HO4-->
