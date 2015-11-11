@@ -74,8 +74,7 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 1 ～ 2 分後に、可用性/Web テスト ブレードで **[更新]** をクリックします(自動的には更新されません)。
 
-![ホーム ブレード上の概要結果  
-](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
+![ホーム ブレード上の概要結果](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
 その期間のより詳しいビューを表示するには、上部の概要グラフの棒をクリックします。
 
@@ -212,8 +211,7 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 
 個々のテストを開くと、テストを編集したり無効にしたりできます。
 
-![Web テストの編集または無効化  
-](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+![Web テストの編集または無効化](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
 
 たとえば、サービスのメンテナンスを行うときは Web テストを無効にします。
 
@@ -251,4 +249,4 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!-----HONumber=Nov15_HO2-->
+<!------HONumber=Nov15_HO2-->
