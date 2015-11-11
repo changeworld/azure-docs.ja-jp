@@ -113,8 +113,7 @@ Web ページのイメージ、スタイル シート、スクリプトとその
 
 その結果をクリックしてポータルで評価し、失敗した理由をご確認ください。
 
-![Web テスト実行結果  
-](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
+![Web テスト実行結果](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
 
 
 代わりに、結果ファイルをダウンロードして Visual Studio で詳しく調べることもできます。
@@ -253,4 +252,4 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=Nov15_HO2-->
+<!----HONumber=Nov15_HO2-->
