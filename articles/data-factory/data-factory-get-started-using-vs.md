@@ -35,7 +35,9 @@
 ## Visual Studio を使用して、Data Factory のエンティティを作成し、デプロイする 
 
 ### 前提条件
-コンピューターに Visual Studio 2013 がインストールされており、Azure SDK for Visual Studio 2013 がダウンロードされている必要があります。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads/) に移動して、**.NET** セクションの**[VS 2013 install]** をクリックします。
+コンピューターに以下がインストールされている必要があります: 
+- Visual Studio 2013
+- Azure SDK for Visual Studio 2013 をダウンロードします。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads/) に移動して、**.NET** セクションの**[VS 2013 install]** をクリックします。
 
 ### チュートリアル
 
@@ -242,4 +244,4 @@ Azure プレビュー ポータルを使用して、このチュートリアル�
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-get-started-using-vs.md)でフィードバックをお寄せください。
 
-<!----HONumber=Nov15_HO2-->
+<!-----HONumber=Nov15_HO2-->
