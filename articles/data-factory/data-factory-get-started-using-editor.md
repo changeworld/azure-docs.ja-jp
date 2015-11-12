@@ -503,4 +503,4 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!----HONumber=Nov15_HO2-->
+<!-----HONumber=Nov15_HO2-->
