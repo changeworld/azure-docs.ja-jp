@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="データ依存ルーティング" 
-	description="データ依存ルーティング (Azure SQL DB のエラスティック データベースの機能) に ShardMapManager を使用する方法" 
+	pageTitle="データ依存ルーティング | Microsoft Azure" 
+	description="データ依存ルーティング (Azure SQL Database のエラスティック データベースの機能) に ShardMapManager を使用する方法" 
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jeffreyg" 
-	authors="sidneyh" 
+	authors="torsteng" 
 	editor=""/>
 
 <tags 
@@ -13,14 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/24/2015" 
-	ms.author="sidneyh"/>
+	ms.date="11/04/2015" 
+	ms.author="torsteng;sidneyh"/>
 
 #データ依存ルーティング
 
 ADO.NET アプリケーションで **ShardMapManager** クラスを利用することで、シャード化された環境内の適切な物理データベースにデータベース クエリおよびコマンドを直接送ることができます。これは、シャード化されたデータベースを操作するときの基本的なパターンである、**データ依存ルーティング**と呼ばれています。データ依存ルーティングを使用したアプリケーションで、特定のクエリまたはトランザクションがそれぞれアクセスするデータベースは、要求ごとに 1 つに制限されています。
 
 データ依存ルーティングを使用する場合、アプリケーションは、シャード化された環境の各種データ スライスに関連付けられた、さまざまな接続文字列または DB の場所を追跡する必要はありません。代わりに [Shard Map Manager](sql-database-elastic-scale-shard-map-management.md) が正しいデータベースへの接続処理を必要に応じて管理します。これは、シャード マップのデータとアプリケーションの要求の対象であるシャーディング キーの値に基づいて行われます。(通常、このキーは、データベース要求の基本的なパラメーターである、*customer\_id*、*tenant\_id*、*date\_key*、または他の特定の識別子です)。
+
+## クライアント ライブラリのダウンロード
+
+ライブラリをインストールする場合は、[エラスティック データベース クライアント ライブラリ](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)のページをご利用ください。
 
 ## データ依存ルーティング アプリケーションでの ShardMapManager の使用 
 
@@ -117,4 +121,4 @@ int newPersonId = 4321;
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

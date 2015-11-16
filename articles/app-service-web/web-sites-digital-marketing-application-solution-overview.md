@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure App Service Web アプリでデジタル マーケティング キャンペーンを作成する" 
-	description="このガイドでは、Azure App Service Web アプリ を使用してデジタル マーケティング キャンペーンを作成する方法 (技術概要) について説明します。デプロイメント、ソーシャル メディアの統合、スケールの戦略、監視も取り上げます。" 
+	pageTitle="Azure App Service Web Apps でデジタル マーケティング キャンペーンを作成する" 
+	description="このガイドでは、Azure App Service Web Apps を使用してデジタル マーケティング キャンペーンを作成する方法 (技術概要) について説明します。デプロイメント、ソーシャル メディアの統合、スケールの戦略、監視も取り上げます。" 
 	editor="jimbe" 
 	manager="wpickett" 
 	authors="cephalin" 
@@ -16,37 +16,37 @@
 	ms.date="09/29/2015" 
 	ms.author="cephalin"/>
 
-# Azure App Service Web アプリでデジタル マーケティング キャンペーンを作成する
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリは、デジタル マーケティング キャンペーンに最適な選択です。デジタル マーケティング キャンペーンは通常、有効期間が短く、短期間のマーケティング目標を促進するためのものです。この場合、主に 2 つのシナリオが考えられます。1 つは、サードパーティのマーケティング会社が顧客のためにキャンペーンを作成し、販促期間中はそのマーケティング会社がキャンペーンを管理するシナリオです。もう 1 つは、デジタル マーケティング キャンペーンをマーケティング会社が作成した後、そのリソースの所有権を顧客へ譲渡するシナリオです。顧客はその後、独自にデジタル マーケティング キャンペーンを実行・管理します。両方のシナリオにとって最適です。
+# Azure App Service Web Apps でデジタル マーケティング キャンペーンを作成する
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps は、デジタル マーケティング キャンペーンに最適な選択です。デジタル マーケティング キャンペーンは通常、有効期間が短く、短期間のマーケティング目標を促進するためのものです。この場合、主に 2 つのシナリオが考えられます。1 つは、サードパーティのマーケティング会社が顧客のためにキャンペーンを作成し、販促期間中はそのマーケティング会社がキャンペーンを管理するシナリオです。もう 1 つは、デジタル マーケティング キャンペーンをマーケティング会社が作成した後、そのリソースの所有権を顧客へ譲渡するシナリオです。顧客はその後、独自にデジタル マーケティング キャンペーンを実行・管理します。両方のシナリオにとって最適です。
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-以下は、App Service Web アプリを使用したマルチ チャンネルのグローバル デジタル マーケティング キャンペーンの例です。技術的な投資を最小限に抑えて、App Service Web アプリとその他のサービスを構成することにより実現可能なことを図解しています。**トポグラフィ内の要素をクリックして、詳細をご覧ください。**
+以下は、App Service Web Apps を使用したマルチ チャンネルのグローバル デジタル マーケティング キャンペーンの例です。技術的な投資を最小限に抑えて、App Service Web Apps とその他のサービスを構成することにより実現可能なことを図解しています。**トポグラフィ内の要素をクリックして、詳細をご覧ください。**
 
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/digital-marketing-notitle.svg" width="100%" height="100%"></object>
 
-> [AZURE.NOTE]このガイドでは、Azure App Service Web アプリでデジタル マーケティング キャンペーンを実行するために調整されている最も一般的な領域とタスクの一部を紹介します。ただし、App Service Web アプリで実装できる一般的な解決方法はほかにもあります。これらのソリューションについては、[グローバル Web プレゼンス](web-sites-global-web-presence-solution-overview.md)と[基幹業務アプリケーション](web-sites-business-application-solution-overview.md)のガイドをご覧ください。
+> [AZURE.NOTE]このガイドでは、Azure App Service Web Apps でデジタル マーケティング キャンペーンを実行するために調整されている最も一般的な領域とタスクの一部を紹介します。ただし、App Service Web Apps で実装できる一般的な解決方法はほかにもあります。これらのソリューションについては、[グローバル Web プレゼンス](web-sites-global-web-presence-solution-overview.md)と[基幹業務アプリケーション](web-sites-business-application-solution-overview.md)のガイドをご覧ください。
 
 ## 最初から作成するか、既存のアセットを使用する
 
-ギャラリーで人気の CMS から新しい Web アプリをすばやく作成するか、さまざまな言語やフレームワークから既存の Web アセットを App Service Web アプリに取り込みます。
+ギャラリーで人気の CMS から新しい Web アプリをすばやく作成するか、さまざまな言語やフレームワークから既存の Web アセットを App Service Web Apps に取り込みます。
 
-Azure Marketplace では、[Orchard]、[Umbraco]、Drupal、[WordPress] など、一般的な Web サイト コンテンツ管理システム (CMS) からのテンプレートを提供しています。お気に入りの CMS フレーバーを使用して Web アプリを作成できます。[Azure SQL Database] と [MySQL] を含むさまざまデータベースのバックエンドから目的に合ったものを選択できます。
+Azure Marketplace では、Orchard、Umbraco、Drupal、[WordPress] など、一般的な Web サイト コンテンツ管理システム (CMS) からのテンプレートを提供しています。お気に入りの CMS フレーバーを使用して Web アプリを作成できます。[Azure SQL Database] と [MySQL] を含むさまざまデータベースのバックエンドから目的に合ったものを選択できます。
 
-既存の Web アセットは .NET、PHP、Java、Node.js,、Python に関係なく Web アプリで実行できます。使い慣れた [FTP] ツールを使用して、それらを Web アプリに移動させることができます。デジタル マーケティング キャンペーンを頻繁に作成している場合、ソース管理システムに既存の Web アセットが存在している可能性があります。[Visual Studio]、[Visual Studio Online]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションから Web Apps を直接デプロイできます。
+既存の Web アセットは .NET、PHP、Java、Node.js,、Python に関係なく Web Apps で実行できます。使い慣れた [FTP] ツールを使用して、それらを Web Apps に移動させることができます。デジタル マーケティング キャンペーンを頻繁に作成している場合、ソース管理システムに既存の Web アセットが存在している可能性があります。[Visual Studio]、[Visual Studio Online]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションから Web Apps を直接デプロイできます。
 
 ## 俊敏性を保つ
 
-既存のソース管理から公開し続け、App Service Web アプリで A/B テストを実行して俊敏性を保ちます。
+既存のソース管理から公開し続け、App Service Web Apps で A/B テストを実行して俊敏性を保ちます。
 
-Web アプリの計画段階、プロトタイピング、開発の初期段階で、Web アプリの[ステージング スロットにデプロイ]して運用する前に、実際と同じ状態でキャンペーン アプリを確認できます。App Service Web アプリとソース管理を統合することで、ステージング スロットへ[継続的に公開]し、準備ができたらダウンタイムなしで実稼働環境にスワップできます。
+Web アプリの計画段階、プロトタイピング、開発の初期段階で、Web アプリの[ステージング スロットにデプロイ]して運用する前に、実際と同じ状態でキャンペーン アプリを確認できます。App Service Web Apps とソース管理を統合することで、ステージング スロットへ[継続的に公開]し、準備ができたらダウンタイムなしで実稼働環境にスワップできます。
 
 また、実際の Web アプリへの変更を計画する場合、実稼働環境でテスト機能を使用して提案される更新で簡単に [A/B テストを実行]できます。また、実際のユーザーの行動を分析し、アプリ デザインにおいて情報を得た上で決断できるようになります。
 
 
 ## ソーシャルに
 
-App Service Web アプリのデジタル マーケティング キャンペーンは Facebook や Twitter などの人気プロバイダーで認証することでソーシャル メディアと統合できます。ASP.NET アプリケーションにおけるこの手法の使用例については、「[認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ]」をご覧ください。
+App Service Web Apps のデジタル マーケティング キャンペーンは Facebook や Twitter などの人気プロバイダーで認証することでソーシャル メディアと統合できます。ASP.NET アプリケーションにおけるこの手法の使用例については、「[認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ]」をご覧ください。
 
 さらに、各ソーシャル メディア サイトでは通常、.NET やその他のフレームワークから統合できる別の方法に関する情報が提供されます。
 
@@ -95,8 +95,6 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
 
 [Azure App Service]: /services/app-service/web/
 
-[Orchard]: web-sites-dotnet-orchard-cms-gallery.md
-[Umbraco]: web-sites-gallery-umbraco.md
 [WordPress]: web-sites-php-web-site-gallery.md
   
 [MySQL]: web-sites-php-mysql-deploy-use-git.md
@@ -140,4 +138,4 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
   [gitstaging]: http://www.bradygaster.com/post/multiple-environments-with-windows-azure-web-sites
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

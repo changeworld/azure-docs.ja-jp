@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/15/2015"
+   ms.date="11/01/2015"
    ms.author="liviodlc"/>
 
 #チュートリアル: Azure Active Directory と Google Apps を統合する方法
@@ -22,71 +22,117 @@
 
 ##前提条件
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com)から Azure Active Directory にアクセスするには、まず有効な Azure サブスクリプションが必要です。
+1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)から Azure Active Directory にアクセスするには、まず有効な Azure サブスクリプションが必要です。
 
 2. [Google Apps for Work](https://www.google.com/work/apps/) または [Google Apps for Education](https://www.google.com/edu/products/productivity-tools/) に対して有効なテナントが必要です。どちらのサービスにも無料試用版のアカウントを使用できます。
 
+##ビデオ チュートリアル
+
+2 分間で Google Apps へのシングル サインオンを有効にする方法:
+
+> [AZURE.VIDEO enable-single-sign-on-to-google-apps-in-2-minutes-with-azure-ad]
+
 ##手順 1. Google Apps をディレクトリに追加する
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-	![Select Active Directory from the left navigation pane.][0]
+	![左側のナビゲーション ウィンドウから [Active Directory] を選択します。][0]
 
 2. **[ディレクトリ]** ボックスの一覧から、Google Apps を追加するディレクトリを選択します。
 
 3. 上部のメニューで **[アプリケーション]** をクリックします。
 
-	![Click on Applications.][1]
+	![[アプリケーション] をクリックします。][1]
 
 4. ページの下部にある **[追加]** をクリックします。
 
-	![Click Add to add a new application.][2]
+	![[追加] をクリックして新しいアプリケーションを追加します。][2]
 
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-	![Click Add an application from the gallery.][3]
+	![[ギャラリーからアプリケーションを追加します] をクリックします。][3]
 
 6. **検索ボックス**に、「**Google Apps**」と入力します。次に、結果の一覧から **[Google Apps]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-	![Add Google Apps.][4]
+	![Google Apps を追加します。][4]
 
 7. これで、Google Apps の [クイック スタート] ページが表示されます。
 
-	![Google Apps' Quick Start page in Azure AD][5]
+	![Azure AD の Google Apps の [クイック スタート] ページ][5]
 
 ##手順 2. シングル サインオンを有効にする
 
 1. Azure AD の Google Apps の [クイック スタート] ページで、**[シングル サインオンの構成]** ボタンをクリックします。
 
-	![The configure single sign-on button][6]
+	![[シングル サインオンの構成] ボタン][6]
 
 2. ダイアログが開き、ユーザーが Google Apps にサインオンする方法についてたずねる画面が表示されます。 **[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-	![Select Azure AD Single Sign-On][7]
+	![[Azure AD のシングル サインオン] を選択します][7]
 
 	> [AZURE.NOTE]さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)してください。
 
 3. **[アプリケーション設定の構成]** ページで、**[サインオン URL]** フィールドに、Google Apps テナントの URL を `https://mail.google.com/a/<yourdomain>` という形式を使用して入力します。
 
-	![Type in your tenant URL][8]
+	![テナント URL を入力します][8]
+
+4. **[シングル サインオンの自動構成]** ページに、Google Apps テナントのドメインを入力します。**[構成]** をクリックします。
+
+	![ドメイン名を入力し、[構成] をクリックします。](./media/active-directory-saas-google-apps-tutorial/ga-auto-config.png)
+
+	> [AZURE.NOTE]手動でシングル サインオンを構成する場合は、「[オプションの手順: シングル サインオンを手動で構成する](#optional-step-manually-configure-single-sign-on)」を参照してください。
+
+5. Google Apps 管理者アカウントにサインインします。Azure Active Directory で Google Apps サブスクリプションの変更を構成できるように、**[許可]** をクリックします。
+
+	![ドメイン名を入力し、[構成] をクリックします。](./media/active-directory-saas-google-apps-tutorial/ga-consent.PNG)
+
+6. Azure Active Directory が Google Apps テナントを構成する間、数秒待ちます。完了したら、**[次へ]** をクリックします。
+
+10. ダイアログの最後のページでは、このシングル サインオン構成のメンテナンスに関連するエラーと警告の電子メール通知を受信する場合、電子メール アドレスを入力します。
+
+	![電子メール アドレスを入力します。][14]
+
+11. **[完了]** をクリックしてダイアログを閉じます。構成をテストするには、この後にある「[Google Apps にユーザーを割り当てる](#step-4-assign-users-to-google-apps)」というタイトルのセクションを参照してください。
+
+##オプションの手順: シングル サインオンを手動で構成する
+
+シングル サインオンを手動で設定する場合は、次の手順を実行します。
+
+1. Azure AD の Google Apps の [クイック スタート] ページで、**[シングル サインオンの構成]** ボタンをクリックします。
+
+	![[シングル サインオンの構成] ボタン][6]
+
+2. ダイアログが開き、ユーザーが Google Apps にサインオンする方法についてたずねる画面が表示されます。 **[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+
+	![[Azure AD シングル サインオン] を選択します][7]
+
+	> [AZURE.NOTE]さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)してください。
+
+3. **[アプリケーション設定の構成]** ページで、**[サインオン URL]** フィールドに、Google Apps テナントの URL を `https://mail.google.com/a/<yourdomain>` という形式を使用して入力します。
+
+	![テナント URL を入力します][8]
+
+4. **[シングル サインオンの自動構成]** ページで、**[シングル サインオン用にこのアプリケーションを手動で構成する]** というチェックボックスをオンにします。その後、**[次へ]** をクリックします。
+
+	![手動構成を選択します。](./media/active-directory-saas-google-apps-tutorial/ga-auto-skip.PNG)
 
 4. **[Google Apps でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
-	![Download the certificate.][9]
+	![証明書をダウンロードします。][9]
 
 5. ブラウザーで新しいタブを開き、管理者アカウントを使用して、[Google Apps の管理コンソール](http://admin.google.com/)にサインインします。
 
 6. **[セキュリティ]** をクリックします。このリンクが表示されていない場合、画面下部の **[その他の設定]** に隠れていることがあります。
 
-	![Click Security.][10]
+	![[セキュリティ] をクリックします。][10]
 
 7. **[セキュリティ]** ページで、**[シングル サインオン (SSO) の設定]** をクリックします。
 
-	![Click SSO.][11]
+	![[SSO] をクリックします。][11]
 
 8. 次の構成の変更を実行します。
 
-	![Configure SSO][12]
+	![SSO を構成します][12]
 
 	- **[サード パーティの ID プロバイダで SSO を設定する]** を選択します。
 
@@ -102,11 +148,11 @@
 
 9. Azure AD でシングル サインオンの構成確認のチェック ボックスをオンにして、Google Apps にアップロードした証明書を有効にします。その後、**[次へ]** をクリックします。
 
-	![Check the confirmation checkbox][13]
+	![確認チェックボックスをオンにします][13]
 
 10. ダイアログの最後のページでは、このシングル サインオン構成のメンテナンスに関連するエラーと警告の電子メール通知を受信する場合、電子メール アドレスを入力します。
 
-	![Type in your email address.][14]
+	![電子メール アドレスを入力します。][14]
 
 11. **[完了]** をクリックしてダイアログを閉じます。構成をテストするには、この後にある「[Google Apps にユーザーを割り当てる](#step-4-assign-users-to-google-apps)」というタイトルのセクションを参照してください。
 
@@ -116,15 +162,15 @@
 
 1. 管理者アカウントを使用して、[Google Apps の管理コンソール](http://admin.google.com/)にサインインし、**[セキュリティ]** をクリックします。このリンクが表示されていない場合、画面下部の **[その他の設定]** に隠れていることがあります。
 
-	![Click Security.][10]
+	![[セキュリティ] をクリックします。][10]
 
 2. **[セキュリティ]** ページで、**[API リファレンス]** をクリックします。
 
-	![Click API Reference.][15]
+	![[API リファレンス] をクリックします。][15]
 
 3. **[API アクセスを有効にする]** を選択します。
 
-	![Click API Reference.][16]
+	![[API リファレンス] をクリックします。][16]
 
 	> [AZURE.IMPORTANT]Google Apps にプロビジョニングするすべてのユーザーは、Azure Active Directory でのユーザー名がカスタム ドメインに関連付けられている*必要があります*。たとえば Google Apps では、bob@contoso.onmicrosoft.com のようなユーザー名は使用できませんが、bob@contoso.com のようなユーザー名は使用できます。Azure AD でプロパティを編集することによって、既存のユーザーのドメインを変更できます。Azure Active Directory と Google Apps の両方でカスタム ドメインを設定する方法を次に示します。
 
@@ -138,11 +184,11 @@
 
 	- **[ドメイン名]** フィールドにドメイン名を入力します。Google Apps で使用するのと同じドメイン名にする必要があります。入力したら、**[追加]** をクリックします。
 
-		![Type in your domain name.][18]
+		![ドメイン名を入力します。][18]
 
 	- **[次へ]** をクリックし、確認ページに移動します。このドメインを所有していることを確認するために、このページに表示されている値に従ってドメインの DNS レコードを編集する必要があります。**[レコードの種類]** オプションで選択する種類に応じて、**MX レコード**と **TXT レコード**のどちらを使用して確認するかを選択できます。Azure AD でドメイン名を確認する、より包括的な手順の詳細については、「[Azure AD への独自のドメイン名の追加](https://go.microsoft.com/fwLink/?LinkID=278919&clcid=0x409)」を参照してください。
 
-		![Verify your domain name.][19]
+		![ドメイン名を確認します。][19]
 
 	- ディレクトリに追加するすべてのドメインに対して、上記の手順を繰り返します。
 
@@ -150,15 +196,15 @@
 
 	- [Google Apps の管理コンソール](http://admin.google.com/)で、**[ドメイン]** をクリックします。
 
-		![Click on Domains][20]
+		![[ドメイン] をクリックします][20]
 
 	- **[ドメインやドメイン エイリアスを追加]** をクリックします。
 
-		![Add a new domain][21]
+		![新しいドメインを追加します][21]
 
 	- **[別のドメインを追加]** を選択し、追加するドメインの名前を入力します。
 
-		![Type in your domain name][22]
+		![ドメイン名を入力します][22]
 
 	- **[続行してドメインの所有権を確認]** をクリックします。次に、手順に従って、ドメイン名を所有していることを確認します。Google Apps でドメインを確認する包括的な手順については、[Google Apps でサイトの所有者であることを確認する](https://support.google.com/webmasters/answer/35179)方法に関するページを参照してください。
 
@@ -168,29 +214,29 @@
 
 6. [Google Apps の管理コンソール](http://admin.google.com/)で、**[管理者の役割]** をクリックします。
 
-	![Click on Google Apps][26]
+	![[Google Apps] をクリックします][26]
 
 7. ユーザー プロビジョニングの管理にどの管理者アカウントを使用するかを決定します。使用するアカウントの **[管理者の役割]** で、役割の **[権限]** を編集します。このアカウントをプロビジョニングに使用できるように、**[管理 API の権限]** がすべて有効になっていることを確認します。
 
-	![Click on Google Apps][27]
+	![[Google Apps] をクリックします][27]
 
 	> [AZURE.NOTE]運用環境を構成している場合は、特にこの手順で Google Apps の新しい管理者アカウントを作成することをお勧めします。管理者アカウントには、必要な API 特権を持つ管理者の役割が関連付けられている必要があります。
 
 8. Azure Active Directory の最上部のメニューで、**[アプリケーション]** をクリックし、**[Google Apps]** をクリックします。
 
-	![Click on Google Apps][23]
+	![[Google Apps] をクリックします][23]
 
 9. Google Apps の [クイック スタート] ページで、**[ユーザー プロビジョニングの構成]** をクリックします。
 
-	![ユーザー プロビジョニングの構成][24]
+	![ユーザー プロビジョニングを構成します][24]
 
 10. 表示されるダイアログ ボックスで、**[ユーザー プロビジョニングを有効にする]** をクリックして、プロビジョニングの管理に使用する Google Apps の管理者アカウントを認証します。
 
-	![Enable provisioning][25]
+	![プロビジョニングを有効にします][25]
 
 11. Google Apps のテナントに対して変更を行うためのアクセス許可を Azure Active Directory に付与することを確認します。
 
-	![Confirm permissions.][28]
+	![アクセス許可を確認します。][28]
 
 12. **[完了]** をクリックしてダイアログを閉じます。
 
@@ -200,7 +246,7 @@
 
 2. Google Apps の [クイック スタート] ページで **[ユーザーの割り当て]** ボタンをクリックします。
 
-	![Click on Assign Users][29]
+	![[ユーザーの割り当て] をクリックします][29]
 
 3. テスト ユーザーを選択し、画面の下部にある **[割り当て]** ボタンをクリックします。
 
@@ -246,4 +292,4 @@
 [29]: ./media/active-directory-saas-google-apps-tutorial/assign-users.png
 [30]: ./media/active-directory-saas-google-apps-tutorial/assign-confirm.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

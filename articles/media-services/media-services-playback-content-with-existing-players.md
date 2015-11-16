@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015"
+	ms.date="11/03/2015"
 	ms.author="juliako"/>
 
 
@@ -23,22 +23,22 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 
 >[AZURE.NOTE]動的にパッケージ化または暗号化されたコンテンツを再生するには、コンテンツを配信する予定のストリーミング エンドポイントのストリーミング ユニットを必ず 1 つ以上取得するようにしてください。ストリーミング ユニットのスケーリングについては、「[スケーリング ユニットの規模変更方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
 
-###Azure 管理ポータル Media Services コンテンツ プレーヤー
+###Microsoft Azure 管理ポータル Media Services コンテンツ プレーヤー
 
-ビデオは、**Azure 管理ポータル**にあるコンテンツ プレーヤーを使用してテストできます。
+ビデオは、**Microsoft Azure 管理ポータル**にあるコンテンツ プレーヤーを使用してテストできます。
 
 目的のビデオをクリックし ([発行済](media-services-manage-content.md#publish)であることを確認します)、ポータルの下部の **[再生]** ボタンをクリックします。
  
 いくつかの考慮事項が適用されます。
 
-- **Media Services コンテンツ プレーヤー**を既定のストリーミング エンドポイントから再生します。既定以外のストリーミング エンドポイントから再生する場合は、別のプレーヤーを使用します([Azure Media Services プレーヤーなど](http://amsplayer.azurewebsites.net/azuremediaplayer.html))。
+- **Media Services コンテンツ プレーヤー**を既定のストリーミング エンドポイントから再生します。既定以外のストリーミング エンドポイントから再生する場合は、別のプレーヤーを使用します([Azure Media Player など](http://amsplayer.azurewebsites.net/azuremediaplayer.html))。
  
 
 ![AMSPlayer][AMSPlayer]
 
-###Azure Media Services プレーヤー
+###Azure Media Player
 
-[Azure Media Services プレイヤー](http://amsplayer.azurewebsites.net/azuremediaplayer.html)を使用して、次のいずれかの形式でコンテンツ (平文のコンテンツまたは保護されたコンテンツ) を再生します。
+[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、次のいずれかの形式でコンテンツ (平文のコンテンツまたは保護されたコンテンツ) を再生します。
 
 - スムーズ ストリーミング
 - MPEG DASH
@@ -89,4 +89,4 @@ AMS のラーニング パスについては、以下を参照してください
  
 [AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

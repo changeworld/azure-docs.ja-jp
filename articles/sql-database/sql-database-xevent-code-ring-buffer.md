@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SQL Database での拡張イベントのファイル コード | Microsoft Azure" 
+	pageTitle="SQL Database の XEvent リング バッファー コード | Microsoft Azure" 
 	description="Azure SQL Database で、リング バッファー ターゲットの使用によって簡素化された TRANSACT-SQL のコード サンプルを提供します。" 
 	services="sql-database" 
 	documentationCenter="" 
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/30/2015" 
+	ms.date="10/22/2015" 
 	ms.author="genemi"/>
 
 
@@ -377,4 +377,4 @@ Azure SQL Database での拡張イベントに関する主なトピックは次�
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

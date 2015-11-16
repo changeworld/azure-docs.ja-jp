@@ -37,22 +37,15 @@
 * [クイック スタート チュートリアル](../app-service-mobile-windows-store-dotnet-get-started.md)を完了していること。  
 
 
+##<a name="create-hub"></a>通知ハブを作成する
 
-##<a name="create-gateway"></a>通知ハブを作成する
-
-次の手順に従って新しい通知ハブを作成し、プッシュ通知を処理します。同じリソース グループ内にすでにハブがある場合、このセクションを完了する必要はありません。
-
-1. [Azure ポータル]にアクセスします。**[すべて参照]**、**[Mobile Apps]**、作成したバックエンドの順にクリックします。**[設定]**、**[モバイル]**、**[プッシュ]** の順にクリックします。 
-
-2. ワーク フローに従って、通知ハブを作成します。現在のリソース グループに名前空間がない場合、新しい名前空間を作成する必要があります。すべての設定を構成したら、**[作成]** をクリックします。
-
-次に、この通知ハブを使用して、アプリに対してプッシュを有効にします。
+[AZURE.INCLUDE [app-service-mobile-create-notification-hub](../../includes/app-service-mobile-create-notification-hub.md)]
 
 ##アプリケーションをプッシュ通知に登録する
 
-Azure から Windows アプリにプッシュ通知を送信するには、Windows Store にアプリを送信する必要があります。その後、サーバー プロジェクトを構成して WNS と統合できます。
+Azure から Windows アプリにプッシュ通知を送信するには、Windows ストア にアプリを送信する必要があります。その後、サーバー プロジェクトを構成して WNS と統合できます。
 
-1. Visual Studio ソリューション エクスプローラーで、Windows Store アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。 
+1. Visual Studio ソリューション エクスプローラーで、Windows ストア アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。 
 
     ![アプリを Windows ストアと関連付ける](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-win8-app.png)
     
@@ -60,7 +53,7 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 3. アプリの登録が正常に作成されたら、新しいアプリ名を選択し、**[次へ]** をクリックし、**[関連付け]** をクリックします。この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
 
-7. Windows Store アプリ用に以前に作成したものと同じ登録を使用して、Windows Phone Store アプリ プロジェクトに対してステップ 1 と 3 を繰り返します。
+7. Windows ストア アプリ用に以前に作成したものと同じ登録を使用して、Windows Phone ストア アプリ プロジェクトに対してステップ 1 と 3 を繰り返します。
 
 7. [[Windows デベロッパー センター]](https://dev.windows.com/ja-JP/overview) に移動し、Microsoft アカウントでサインインし、**[マイ アプリ]** で新しいアプリ登録をクリックしてから、**[サービス]**、**[プッシュ通知]** の順に展開します。
 
@@ -192,4 +185,4 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 <!-- Images. -->
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

@@ -312,7 +312,7 @@ WebMatrix または任意のツール (FTP、Git、PhpMyAdmin など) を使用�
 アプリケーションにおいて `install` フォルダーを削除することを忘れないでください。また、このフォルダーを、ステージ Web アプリまたは運用 Web アプリに決してアップロードしないでください。このチュートリアルでは、WebMatrix を使用します。
 
 #### ステージング環境のセットアップ
-Umbraco CMS の Web アプリが既にアップされ実行されている場合は、Umbraco CMS Web アプリ用に前述のデプロイメント スロットを作成します。そうでない場合は、Marketplace から Web アプリを作成することができます。詳細については、[ここ](web-sites-gallery-umbraco)をクリックしてください。
+Umbraco CMS の Web アプリが既にアップされ実行されている場合は、Umbraco CMS Web アプリ用に前述のデプロイメント スロットを作成します。そうでない場合は、Marketplace から Web アプリを作成することができます。
 
 ステージ デプロイメント スロットの接続文字列を、新規に作成したデータベース **umbraco-stage-db** を指すように更新します。運用 Web アプリ (umbraositecms 1) と ステージング Web アプリ (umbracositecms-1-stage) は、それぞれ別のデータベースを指す**必要があります**。
 
@@ -378,11 +378,11 @@ Umbraco CMS の Web アプリが既にアップされ実行されている場合
   </repositories>
 ```
 
-Umbraco CMS Web アプリのダッシュ ボードで [Courier2] タブをクリックし、場所を選択します。`courier.config` 説明したようにリポジトリ名が表示されます。運用 Web アプリとステージング Web アプリの両方で同じ操作を行います。
+Umbraco CMS Web アプリのダッシュ ボードで [Courier2] タブをクリックし、場所を選択します。`courier.config` で説明したようにリポジトリ名が表示されます。運用 Web アプリとステージング Web アプリの両方で同じ操作を行います。
 
 ![宛先 Web アプリ リポジトリを表示する](./media/app-service-web-staged-publishing-realworld-scenarios/16courierloc.png)
 
-次に、ステージング サイトから運用サイトに何らかのコンテンツをデプロイします。[コンテンツ] に移動し、既存のページを選択するか、または新しいページを作成します。Web アプリから既存のページを選択します。ページのタイトルが**[作業の開始 – 新規]** に変更されたら、**[保存して発行]** をクリックします。
+次に、ステージング サイトから運用サイトに何らかのコンテンツをデプロイします。[コンテンツ] に移動し、既存のページを選択するか、または新しいページを作成します。Web アプリから既存のページを選択します。ページのタイトルが **[作業の開始 – 新規]** に変更されたら、**[保存して発行]** をクリックします。
 
 ![ページのタイトルを変更して公開する](./media/app-service-web-staged-publishing-realworld-scenarios/17changepg.png)
 
@@ -429,4 +429,4 @@ Web アプリとデータベースの両方をスワップすることのメリ�
 
 [運用環境以外のデプロイメント スロットへの Web アクセスを禁止する方法](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
 
-<!-----HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

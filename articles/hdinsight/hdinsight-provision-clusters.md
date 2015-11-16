@@ -221,7 +221,7 @@ Hive 構成をカスタマイズする Azure PowerShell スクリプトの例を
 
 	サイト間構成では、ハードウェア VPN を使用するか、ルーティングとリモート アクセス サービスを使用して、データセンターから複数のリソースを Azure 仮想ネットワークに接続できます。
 
-	![サイト間構成の図](./media/hdinsight-provision-clusters/hdinsight-vnet-site-to-site.png)
+	![diagram of site-to-site configuration](./media/hdinsight-provision-clusters/hdinsight-vnet-site-to-site.png)
 
 	ポイント対サイト構成では、ソフトウェア VPN を使用して、特定のリソースを Azure 仮想ネットワークに接続できます。
 
@@ -240,7 +240,7 @@ Virtual Network の機能、利点の詳細については、「[Azure Virtual N
 
 ## プレビュー ポータルを使用した作成
 
-各フィールドについては、「基本的な構成オプション」および「高度な構成オプション」をご覧ください。
+各フィールドについては、「[基本的な構成オプション](#basic-configuration-options)」および「[高度な構成オプション](#advanced-configuration-options)」を参照してください。
 
 **HDInsight クラスターを作成するには**
 
@@ -752,9 +752,9 @@ Azure Feature Pack for SSIS の詳細については、[ここ][ssispack]を参�
 
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-preview-portal]: https://manage.windowsazure.com
-[connectionmanager]: http://msdn.microsoft.com/ja-jp/library/mt146773(v=sql.120).aspx
-[ssispack]: http://msdn.microsoft.com/ja-jp/library/mt146770(v=sql.120).aspx
-[ssisclustercreate]: http://msdn.microsoft.com/ja-jp/library/mt146774(v=sql.120).aspx
-[ssisclusterdelete]: http://msdn.microsoft.com/ja-jp/library/mt146778(v=sql.120).aspx
+[connectionmanager]: http://msdn.microsoft.com/ja-JP/library/mt146773(v=sql.120).aspx
+[ssispack]: http://msdn.microsoft.com/ja-JP/library/mt146770(v=sql.120).aspx
+[ssisclustercreate]: http://msdn.microsoft.com/ja-JP/library/mt146774(v=sql.120).aspx
+[ssisclusterdelete]: http://msdn.microsoft.com/ja-JP/library/mt146778(v=sql.120).aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

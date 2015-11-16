@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/20/2015"
+   ms.date="11/04/2015"
    ms.author="sahajs;barbkess"/>
 
 
@@ -24,7 +24,7 @@
 - [PolyBase](sql-data-warehouse-load-with-polybase-short.md)
 - [BCP](sql-data-warehouse-load-with-bcp.md)
 
-このチュートリアルでは、PolyBase を使用して SQL Data Warehouse にデータを読み込む方法を説明します。
+このチュートリアルでは、PolyBase を使用して SQL Data Warehouse にデータを読み込む方法を説明します。PolyBase の詳細については、「[SQL Data Warehouse の PolyBase チュートリアル][]」を参照してください。
 
 
 ## 前提条件
@@ -75,7 +75,6 @@ AzCopy の詳細については、「[AzCopy コマンド ライン ユーティ
 - [CREATE EXTERNAL DATA SOURCE ]\: Azure BLOB ストレージの場所を指定します。
 - [CREATE EXTERNAL FILE FORMAT ]\: データのレイアウトを指定します。
 - [CREATE EXTERNAL TABLE]\: Azure Storage のデータを参照します。
-
 
 
 ```
@@ -132,7 +131,7 @@ SELECT count(*) FROM dbo.DimDate2External;
 
 ## 手順 4: SQL Data Warehouse にデータを読み込む
 
-- 新しいテーブルにデータを読み込むには、CREATE TABLE AS SELECT ステートメントを実行します。新しいテーブルは、クエリで指定された列を継承します。これは、外部テーブル定義からそれらの列のデータ型を継承します。 
+- 新しいテーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)][] ステートメントを実行します。新しいテーブルは、クエリで指定された列を継承します。これは、外部テーブル定義からそれらの列のデータ型を継承します。 
 - 既存のテーブルにデータに読み込むには、INSERT...SELECT ステートメントを使用します。  
 
 
@@ -144,18 +143,25 @@ CREATE TABLE dbo.DimDate2
 WITH 
 (   
     CLUSTERED COLUMNSTORE INDEX,
-		DISTRIBUTION = ROUND_ROBIN
+    DISTRIBUTION = ROUND_ROBIN
 )
 AS 
 SELECT * 
 FROM   [dbo].[DimDate2External];
 
 ```
-「[CREATE TABLE AS SELECT (Transact-SQL)][]」を参照してください。
 
 
-PolyBase の詳細については、「[SQL Data Warehouse の PolyBase チュートリアル][]」を参照してください。
+## 手順 5: 新しくロードしたデータの統計を作成する 
 
+Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。統計の詳細については、開発トピック グループの「[統計][]」トピックを参照してください。この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します
+
+
+```
+create statistics [DateId] on [DimDate2] ([DateId]);
+create statistics [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
+create statistics [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
+```
 
 <!--Article references-->
 [SQL Data Warehouse の PolyBase チュートリアル]: sql-data-warehouse-load-with-polybase.md
@@ -172,4 +178,9 @@ PolyBase の詳細については、「[SQL Data Warehouse の PolyBase チュ�
 [CREATE DATABASE SCOPED CREDENTIAL ]: https://msdn.microsoft.com/ja-JP/library/mt270260.aspx
 [CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
 
-<!---HONumber=Nov15_HO1-->
+
+<!--Article references-->
+
+[統計]: ./sql-data-warehouse-develop-statistics.md
+
+<!---HONumber=Nov15_HO2-->

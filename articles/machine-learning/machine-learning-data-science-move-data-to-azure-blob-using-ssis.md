@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/28/2015" 
+	ms.date="10/28/2015" 
 	ms.author="bradsev" />
 
 # SSIS コネクタを使用して Azure BLOB ストレージとの間でデータを移動する
@@ -45,7 +45,7 @@
 **SSIS コネクタ**を使用するには、次のものをダウンロードする必要があります。
 
 - **SQL Server 2014 または 2016 Standard 以降**: インストールには SQL Server Integration Services が含まれます。
-- **Microsoft SQL Server 2016 Integration Services Feature Pack for Azure**: これは [SQL Server Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) のページからダウンロードできます。
+- **Microsoft SQL Server 2014 または 2016 Integration Services Feature Pack for Azure**: これらは [SQL Server 2014 Integration Services](http://www.microsoft.com/download/details.aspx?id=47366) および [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) のページからそれぞれダウンロードできます。
 
 > [AZURE.NOTE]SSIS は SQL Server と共にインストールされますが、Express バージョンには含まれていません。SQL Server の各種エディションに含まれるアプリケーションについては、[SQL Server のエディション](http://www.microsoft.com/ja-JP/server-cloud/products/sql-server-editions/)に関するページを参照してください。
 
@@ -54,7 +54,7 @@ SSIS のトレーニング資料については、[SSIS の実践的トレーニ
 SISS を使用して稼働状態にし、簡単な ETL (抽出、変換、読み込み) パッケージを作成する方法については、「[SSIS チュートリアル: 簡単な ETL パッケージの作成](https://msdn.microsoft.com/library/ms169917.aspx)」を参照してください。
 
 ## NYC タクシー データセットをダウンロードする  
-ここで説明する例では、一般公開されているデータセットである、[NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセットを使用します。このデータセットは、2013 年のニューヨーク市における約 1 億 7300 万件のタクシー乗車情報で構成されています。データには、乗車の詳細データと料金データの 2 種類があります。月ごとにファイルが用意されているため、全部で 24 ファイルになり、各ファイルは圧縮されていない状態で約 2 GB になります。このデータセットは、[Github](https://github.com/andresmh/nyctaxitrips) から簡単にダウンロードできます。
+ここで説明する例では、一般公開されているデータセットである、[NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセットを使用します。このデータセットは、2013 年のニューヨーク市における約 1 億 7300 万件のタクシー乗車情報で構成されています。データには、乗車の詳細データと料金データの 2 種類があります。月ごとにファイルが用意されているため、全部で 24 ファイルになり、各ファイルは圧縮されていない状態で約 2 GB になります。
 
 
 ## Azure BLOB ストレージにデータをアップロードする
@@ -88,4 +88,4 @@ SSIS 機能パックでは、複数のタスクを 1 つにパッケージ化す
 - SSIS を使用して Azure HDInsight クラスター上で Hive スクリプトを実行するには、[Azure HDInsight Hive タスク](https://msdn.microsoft.com/library/mt146771.aspx)を使用します。
 - SSIS を使用して Azure HDInsight クラスター上で Pig スクリプトを実行するには、[Azure HDInsight Pig タスク](https://msdn.microsoft.com/library/mt146781.aspx)を使用します。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

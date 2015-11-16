@@ -1,5 +1,5 @@
 <properties
-   pageTitle="技術概要"
+   pageTitle="Service Fabric の技術概要 | Microsoft Azure"
    description="Service Fabric の技術概要。主要な概念とアーキテクチャの概要について説明します。"
    services="service-fabric"
    documentationCenter=".net"
@@ -54,4 +54,4 @@ Service Fabric の詳細については、以下の情報を参照してくだ�
 - [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

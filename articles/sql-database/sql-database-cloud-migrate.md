@@ -106,17 +106,18 @@ SQL Server データベースを Azure SQL Database に移行するワークフ�
 
 ### 互換性のあるデータベースをダウンタイムなしで移行する
 
-移行中、SQL Server データベースを外す余裕がない場合、移行ソリューションとして SQL Server トランザクション レプリケーションを使用できます。[SQL Server 2016](http://www.microsoft.com/server-cloud/products/sql-server-2016/) では、この方法は現在のところプレビュー モードです。トランザクション レプリケーションでは、移行を開始した瞬間から移行を完了した瞬間までに発生したデータやスキーマの変更が Azure SQL Database に表示されます。移行が完了したら、アプリケーションの接続文字列を変更し、オンプレミス データベースの代わりに Azure SQL Database にポイントします。トランザクション レプリケーションがオンプレミス データベースに残っているすべての変更を抜き取り、すべてのアプリケーションが Azure DB をポイントしたら、Azure SQL Database を本稼働システムとして残し、レプリケーションを安全にアンインストールできます。
+移行中、SQL Server データベースを外す余裕がない場合、移行ソリューションとして SQL Server トランザクション レプリケーションを使用できます。トランザクション レプリケーションでは、移行を開始した瞬間から移行を完了した瞬間までに発生したデータやスキーマの変更が Azure SQL Database に表示されます。移行が完了したら、アプリケーションの接続文字列を変更し、オンプレミス データベースの代わりに Azure SQL Database にポイントします。トランザクション レプリケーションがオンプレミス データベースに残っているすべての変更を抜き取り、すべてのアプリケーションが Azure DB をポイントしたら、Azure SQL Database を本稼働システムとして残し、レプリケーションを安全にアンインストールできます。
 
  ![SeedCloudTR ダイアグラム](./media/sql-database-cloud-migrate/SeedCloudTR.png)
 
 
 トランザクション レプリケーションは、SQL Server 6.5 以降、SQL Server に内蔵された技術です。非常に成熟した、証明済みの技術であり、ほとんどの DBA に運用経験があります。[SQL Server 2016 プレビュー](http://www.microsoft.com/server-cloud/products/sql-server-2016/)では、Azure SQL Database をオンプレミス パブリケーションの[トランザクション レプリケーション サブスクライバー](https://msdn.microsoft.com/library/mt589530.aspx)として構成できるようになりました。Management Studio の設定は、オンプレミス サーバーでトランザクション レプリケーション サブスクライバーを設定する場合とまったく同じです。このシナリオは次の SQL Server バージョンでサポートされます。
 
- - SQL14 SP1 CU3 以降
- - SQL14 RTM CU10 以降
- - SQL11 SP2 CU8 以降
- - SQL11 SP3 のリリース時
+ - SQL Server 2016 CTP3 (プレビュー) 以降 
+ - SQL Server 2014 SP1 CU3 以降
+ - SQL Server 2014 RTM CU10 以降
+ - SQL Server 2012 SP2 CU8 以降
+ - SQL Server 2013 SP3 のリリース時
 
 また、トランザクション レプリケーションを使用し、オンプレミス データベースの一部を移行できます。Azure SQL Database に複製するパブリケーションは、複製されるデータベースのテーブルの一部に制限できます。また、複製されるテーブルごとに、行の一部または列の一部にデータを制限できます。
 
@@ -276,4 +277,4 @@ SQL Server Management Studio の Microsoft Azure SQL Database へのデータベ
 
 - SQL Server Management Studio。Management Studio では、**ALTER DATABASE** などのさまざまな Transact-SQL コマンドを使用して問題を修正できます。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

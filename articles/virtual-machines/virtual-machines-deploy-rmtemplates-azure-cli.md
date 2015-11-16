@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/09/2015"
+	ms.date="11/01/2015"
 	ms.author="rasquill"/>
 
 # Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理
@@ -22,7 +22,6 @@
 この記事では、Azure リソース マネージャー テンプレートと Azure CLI を使用し、Azure 仮想マシンのデプロイと管理に関する以下の一般的なタスクを実行する方法について説明します。使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)に関するページを参照してください。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。クラシック デプロイ モデルのテンプレートは使用できません。
-
 
 - [Azure での仮想マシンの簡易作成](#quick-create-a-vm-in-azure)
 - [テンプレートから Azure への仮想マシンのデプロイ](#deploy-a-vm-in-azure-from-a-template)
@@ -38,7 +37,7 @@
 
 ## 準備
 
-Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと、職場または学校アカウントを用意する必要があります。
+Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと Azure アカウントを用意する必要があります。Azure CLI がない場合は、[インストールします](xplat-cli-install.md)。
 
 ### Azure CLI のバージョンを 0.9.0 以降に更新する
 
@@ -47,7 +46,7 @@ Azure リソース グループで Azure CLI を使用するには、適切な A
 	azure --version
     0.9.0 (node: 0.10.25)
 
-バージョンが 0.9.0 以降ではない場合、[Azure CLI をインストール](../xplat-cli-install.md)するか、いずれかのネイティブ インストーラーまたは **npm** コマンド (「`npm update -g azure-cli`」と入力) を使って更新する必要があります。
+バージョンが 0.9.0 以降ではない場合、いずれかのネイティブ インストーラーまたは **npm** コマンド (「`npm update -g azure-cli`」と入力) を使って更新する必要があります。
 
 また、次の [Docker イメージ](https://registry.hub.docker.com/u/microsoft/azure-cli/)を使用して、Azure CLI を Docker コンテナーとして実行することもできます。Docker ホストから次のコマンドを実行します。
 
@@ -57,9 +56,9 @@ Azure リソース グループで Azure CLI を使用するには、適切な A
 
 Azure サブスクリプションをまだ持っていない場合でも、MSDN サブスクリプションがあれば、[MSDN サブスクライバー向けの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をアクティブ化できます。または、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
-Azure リソース管理テンプレートを使用するには、職場または学校アカウントを所有している必要があります。所有している場合は、「`azure login`」と入力し、ユーザー名とパスワードを入力すると、正常にログインできます。
+「`azure login`」と入力し、Azure アカウントへの対話型ログイン エクスペリエンスのプロンプトに従って、[Azure アカウントに対話形式でログイン](../xplat-cli-connect.md#use-the-log-in-method)します。
 
-> [AZURE.NOTE]持っていない場合、別の種類のアカウントが必要であることを示すエラー メッセージが表示されます。現在の Azure アカウントから作成する方法については、「[Azure Active Directory で職場または学校の ID を作成する](resource-group-create-work-id-from-personal.md)」を参照してください。
+> [AZURE.NOTE]職場または学校の ID を所有していて、2 要素認証が有効になっていないことがわかっている場合は、職場または学校の ID と共に `azure login -u` を使うと、対話型セッションを*使わずに*ログインできます。職場または学校の ID がない場合は、[個人の Microsoft アカウントから職場または学校の ID を作成](resource-group-create-work-id-from-personal.md)して同じ方法でログインできます。
 
 アカウントには、複数のサブスクリプションが含まれる場合があります。`azure account list` と入力することで、次のようにサブスクリプションの一覧を表示できます。
 
@@ -84,15 +83,11 @@ Azure リソース管理テンプレートを使用するには、職場また�
 
 	azure config mode arm
 
-
-
-> [AZURE.NOTE]`azure config mode asm` と入力することで、既定のコマンド セットに戻すことができます。
-
 ## Azure リソース テンプレートおよびリソース グループについて
 
 大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL データベース、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。既定の Azure サービス管理 API と Azure ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。この方法では、個々のサービスを 1 つの論理的なデプロイ単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
 
-*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを 1 つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイ全体、つまりすべてのリソースと、関連する構成およびデプロイ パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
+ただし、*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを 1 つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイ全体、つまりすべてのリソースと、関連する構成およびデプロイ パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
 
 その後は、Azure CLI リソース管理コマンドを使用して以下を実行することで、そのグループのリソースのライフ サイクル全体を管理できます。
 
@@ -123,7 +118,7 @@ Azure リソース グループとその機能の詳細については、「[Azu
     info:    group create command OK
 
 
-次に、イメージが必要になります。Azure CLI でイメージを検索するには、[PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](resource-groups-vm-searching.md)に関するページを参照してください。ただし、この記事については、一般的なイメージの簡単な一覧を用意しています。この簡易作成には、CoreOS の安定版イメージを使用します。
+次に、イメージが必要になります。Azure CLI でイメージを検索するには、「[PowerShell と Azure CLI による Azure Virtual Machine イメージのナビゲーションと選択](resource-groups-vm-searching.md)」を参照してください。ただし、この記事については、一般的なイメージの簡単な一覧を用意しています。この簡易作成には、CoreOS の安定版イメージを使用します。
 
 > [AZURE.NOTE]ComputeImageVersion では、テンプレートの言語と Azure CLI の両方のパラメーターとして "latest" を指定することもできます。こうすることで、スクリプトやテンプレートを変更しなくても、常にパッチが適用された最新バージョンのイメージを使用できます。一般的なイメージを以下に示します。
 
@@ -434,7 +429,7 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
 
 パラメーター値を用意したら、テンプレートのデプロイ用のリソース グループを作成し、テンプレートをデプロイする必要があります。
 
-リソース グループを作成するには、使用するグループ名とデプロイ先のデータセンターの場所を指定して、「`azure group create <group name> <location>`」を入力します。この作成はすばやく実行されます。
+リソース グループを作成するには、使用するグループ名とデプロイ先のデータセンターの場所を指定して、「`azure group create <group name> <location>`」と入力します。この作成はすばやく実行されます。
 
     azure group create myResourceGroup westus
     info:    Executing command group create
@@ -1306,4 +1301,4 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
 
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)に関するページを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

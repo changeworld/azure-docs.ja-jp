@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Notification Hubs によるユーザーへの通知"
+	pageTitle="Azure Notification Hubs と .NET バックエンドによるユーザーへの通知"
 	description="Azure のユーザーにプッシュ通知を送信する方法について説明します。コード サンプルは Objective-C で記述されています。また、バックエンドには .NET API を使用しています。"
 	documentationCenter="ios"
 	authors="wesmc7777"
@@ -16,7 +16,7 @@
 	ms.date="09/24/2015"
 	ms.author="wesmc"/>
 
-#Azure Notification Hubs によるユーザーへの通知
+#Azure Notification Hubs と .NET バックエンドによるユーザーへの通知
 
 [AZURE.INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -465,4 +465,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [3]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-registered.png
 [4]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-msg.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

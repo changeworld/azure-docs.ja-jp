@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/22/2015"
+   ms.date="11/04/2015"
    ms.author="kunalds"/>
 
 
@@ -79,4 +79,4 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 * [Azure Service Fabric アクターの診断とパフォーマンス監視](service-fabric-reliable-actors-diagnostics.md)
 * [ステートフル Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

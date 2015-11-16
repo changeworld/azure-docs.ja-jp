@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="11/02/2015" 
 	ms.author="juliako"/>
 
 
@@ -36,7 +36,7 @@ Microsoft Azure Media Services では、DASH、スムーズ ストリーミン�
 - [Azure Media Player のドキュメント](http://aka.ms/ampdocs) 
 - [Azure Media Player の概要に関するブログ](http://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player)
 - [Azure Media Player を最新の状態に維持するためのサインアップのページ](http://aka.ms/ampsignup)
-- [新しい機能に関する要望、アイデア、フィードバックを追加するページ](http://feedback.azure.com/forums/293565-azure-media-player/filters/my_feedback) 
+- [新しい機能に関する要望、アイデア、フィードバックを追加するページ](http://aka.ms/ampuservoice) 
 
 
 ##プレーヤー アプリケーションを作成するためのその他のツール
@@ -48,7 +48,7 @@ Microsoft Azure Media Services では、DASH、スムーズ ストリーミン�
 - [Microsoft Media Platform: プレーヤー フレームワーク](http://playerframework.codeplex.com/) 
 - [HTML5 プレーヤー フレームワークに関するドキュメント](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
 - [OSMF 用 Microsoft Smooth Streaming Plugin](https://www.microsoft.com/download/details.aspx?id=36057) 
-- [Licensing Microsoft® Smooth Streaming Client Porting Kit](https://www.microsoft.com/mediaplatform/sspk.aspx) 
+- [Licensing Microsoft® Smooth Streaming Client Porting Kit](http://aka.ms/sspk) 
 - [Xbox ビデオ アプリケーションの開発](http://xbox.create.msdn.com/) 
  
 
@@ -82,4 +82,4 @@ AMS のラーニング パスについては、以下を参照してください
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

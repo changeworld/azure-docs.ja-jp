@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric アプリケーションのアップグレードのトラブルシューティング"
+   pageTitle="アプリケーションのアップグレードのトラブルシューティング | Microsoft Azure"
    description="この記事では、Service Fabric アプリケーションのアップグレードに関する一般的な問題とその解決方法のいくつかについて説明します。"
    services="service-fabric"
    documentationCenter=".net"
@@ -225,4 +225,4 @@ Service Fabric は、正常性評価のためのエンティティ (レプリカ
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

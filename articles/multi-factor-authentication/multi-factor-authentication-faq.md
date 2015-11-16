@@ -33,7 +33,7 @@ Azure Multi-factor Authentication に関する質問に回答しています。�
 
 - このコミュニティで技術的な質問と回答を検索して参照したり、[こちら](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)をクリックして独自の質問を行ったりできます。
 
-[パスワード リセット](mailto:phonefactorsupport@microsoft.com)
+[パスワード 発行](mailto:phonefactorsupport@microsoft.com)
 
 - 従来の Phonefactor ユーザーで、パスワードのリセットについて不明な点がある場合や、パスワードのリセットのヘルプが必要な場合は、以下のリンクをクリックしてサポート ケースを開いてください。
 
@@ -115,7 +115,7 @@ Microsoft Azure 管理ポータルで多要素認証プロバイダーを作成�
 アプリ パスワードを作成する方法について、「[アプリ パスワードに関するヘルプ](multi-factor-authentication-end-user-app-passwords.md)」を参照してください。
 
 
->[AZURE.NOTE] Office 2013 クライアントのための最新の認証
+>[AZURE.NOTE]Office 2013 クライアントのための最新の認証
 >
 > Office 2013 クライアント (Outlook を含む) は新しい認証プロトコルをサポートするようになり、Multi-Factor Authentication をサポートするように有効化できます。つまり、Multi-Factor Authentication を有効にすると、Office 2013 クライアントでアプリ パスワードは不要になります。詳しくは、「[発表された Office 2013 の最新の認証のパブリック プレビュー](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」を参照してください。
 
@@ -124,6 +124,12 @@ Microsoft Azure 管理ポータルで多要素認証プロバイダーを作成�
 Azure Multi-factor Authentication サービスは、SMS アグリゲーターを使用してテキスト メッセージを送信します。使用されるアグリゲーター、宛先の国、携帯電話の事業者、信号強度など、多くの要因がテキスト メッセージの配信と受信の信頼性に影響を及ぼす可能性があります。そのため、双方向の SMS を実行するときにテキスト メッセージの配信および SMS 応答の受信が保証されるわけではありません。可能な場合には双方向の SMS ではなく一方向の SMS の使用をお勧めします。信頼性が高いこと、および別の国から送信されたテキスト メッセージに応答して高額な国際 SMS 料金をユーザーが課金されるのを防ぐことができるためです。
 
 またテキスト メッセージによる確認は、米国やカナダなどの一部の国ではより信頼性が高くなります。Azure Multi-factor Authentication を使用して信頼性の高いテキスト メッセージを受信することが難しいユーザーは、代わりにモバイル アプリまたは電話による方法を選択することをお勧めします。モバイル アプリによる通知は携帯電話でも Wi-Fi 接続でも受信可能で、デバイスがまったく応答信号を出さない場合でもモバイル アプリ パスコードが表示されるため、便利です。Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、[IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で利用できます。
+
+**Q: Azure MFA Server でハードウェア トークンを使用できますか。**
+
+Azure MFA Server を使用している場合は、サードパーティの OATH TOTP トークンをインポートして MFA で使用できます。現在、Gemalto で独自のトークン用に生成し、CSV 形式でのトークンのインポートをサポートできる、古い PSKC 形式のサードパーティの OATH TOTP トークンのインポートがサポートされています。CSV 形式でトークンをインポートする場合は、CSV ファイルにシリアル番号、Base32 形式のシークレット キーおよび時間間隔 (通常は 30 秒) を含める必要があります。
+
+したがって、ActiveIdentity トークンが TOTP OATH トークンで、Azure MFA Server にインポート可能な CSV ファイルにシークレット キー ファイルを取得できる場合は、それらを使用できます。OATH トークンは、AD FS、RADIUS (クライアント システムでアクセス チャレンジ応答を処理できる場合) および IIS フォーム ベース認証で使用できます。
 
 
 ## エラー
@@ -143,6 +149,6 @@ Azure Multi-factor Authentication サービスは、SMS アグリゲーターを
 
 現時点では、追加のセキュリティ確認は、ブラウザーからアクセスできるアプリケーションまたはサービスでのみ使用できます。Windows Powershell など、ローカル コンピューターにインストールされている非ブラウザー アプリケーション (リッチ クライアント アプリケーションとも呼ばれます) は、追加のセキュリティ確認に必要なアカウントでは機能しません。この場合、アプリケーション生成エラー 0x800434D4L が表示されることがあります。
 
-これを回避するには、管理関連の操作と管理以外の操作に関して異なるユーザー アカウントを使用します。後ほど、管理アカウントと非管理アカウント間のメールボックスでリンクを作成することによって、非管理アカウントを使用して outlook にサインインできます。詳細については、「[管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1))」 を参照してください。
+これを回避するには、管理関連の操作と管理以外の操作に関して異なるユーザー アカウントを使用します。後ほど、管理アカウントと非管理アカウント間のメールボックスでリンクを作成することによって、非管理アカウントを使用して outlook にサインインできます。詳細については、「管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする」(http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1)) をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

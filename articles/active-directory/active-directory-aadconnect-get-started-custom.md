@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="11/02/2015"
 	ms.author="billmath;andkjell"/>
 
 # Azure AD Connect のカスタム インストール
@@ -90,7 +90,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 ------------- | ------------- |
 [ユーザーがフォレスト全体で表されるのは 1 度のみです](active-directory-aadconnect-topologies.md#multiple-forests-separate-topologies) | すべてのユーザーは、Azure AD で個別のオブジェクトとして作成されます。<br> オブジェクトは、メタバースに結合されません。
 [メール属性](active-directory-aadconnect-topologies.md#multiple-forests-full-mesh-with-optional-galsync) | このオプションは、異なるフォレスト間でメール属性が同じ値である場合に、ユーザーと連絡先を結合します。連絡先が GALSync を使用して作成されているときに、このオプションを使用することをお勧めします。
-[ObjectSID および msExchangeMasterAccountSID](active-directory-aadconnect-topologies.md#multiple-forests-account-resource-forest)|このオプションは、アカウント フォレストで有効なユーザーと、Exchange リソース フォレストで無効なユーザーを結合します。これは、Exchange のリンクされたメールボックスとして知られています。
+[ObjectSID および msExchangeMasterAccountSID](active-directory-aadconnect-topologies.md#multiple-forests-account-resource-forest)|このオプションは、アカウント フォレストで有効なユーザーと、Exchange リソース フォレストで無効なユーザーを結合します。これは、Exchange のリンクされたメールボックスとして知られています。このオプションは、Lync のみを使用し、Exchange がリソース フォレスト内にない場合にも使用できます。
 sAMAccountName および MailNickName|このオプションは、ユーザーを見つけられるように、ログイン ID が必要な属性同士を結合します。
 独自の属性|このオプションでは、独自の属性を選択することができます。**制限:** かならず、メタバース内に既に存在する属性を選択してください。カスタム属性を選択すると、ウィザードは完了できません。
 
@@ -246,4 +246,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)についての詳細情報
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

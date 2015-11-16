@@ -17,7 +17,7 @@
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication を使用したサインイン エクスペリエンス
-サインイン エクスペリエンス全体において役立つ情報を次に示します。
+このページで提供するドキュメントでは、一般的なサインイン エクスペリエンスを示します。サインインのヘルプについては、「[Azure Multi-Factor Authentication での問題](multi-factor-authentication-end-user-manage-settings.md)」を参照してください。
 
 
 ## サインインのときにどんなことが生じますか。
@@ -102,4 +102,4 @@
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

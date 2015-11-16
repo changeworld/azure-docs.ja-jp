@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="07/27/2015"
+	ms.date="10/29/2015"
 	ms.author="mahender"/>
 
 # Twitter ログインを使用するようにアプリケーションを構成する方法
@@ -27,9 +27,9 @@
 ## <a name="register"> </a>Twitter にアプリケーションを登録する
 
 
-1. [Azure の管理ポータル]にログオンし、モバイル アプリに移動します。**[URL]** をコピーします。この URL は、Twitter アプリの構成で使用します。
+1. [Microsoft Azure の管理ポータル]にログオンし、モバイル アプリに移動します。**[URL]** をコピーします。この URL は、Twitter アプリの構成で使用します。
 
-2. **[設定]**、**[ユーザー認証]**、**[Twitter]** の順にクリックします。**[コールバック URL]** をコピーします。この URL は、Twitter アプリの構成で使用します。
+2. **[設定]**、**[モバイル認証]**、**[Twitter]** の順にクリックします。**[コールバック URL]** をコピーします。この URL は、Twitter アプリの構成で使用します。
 
 3. [Twitter Developers] の Web サイトに移動し、Twitter アカウント資格情報でサインインして、**[Create New App]** をクリックします。
 
@@ -48,7 +48,7 @@
 
 ## <a name="secrets"> </a>モバイル アプリに Twitter 情報を追加する
 
-1. [Azure の管理ポータル]に戻り、モバイル アプリの [twitter 設定] ブレードに、以前に入手した API キーと API サーバーの値を貼り付けます。その後、**[保存]** をクリックします。
+1. [Microsoft Azure の管理ポータル]に戻り、モバイル アプリの [twitter 設定] ブレードに、以前に入手した API キーと API サーバーの値を貼り付けます。その後、**[保存]** をクリックします。
 
     ![][1]
 
@@ -68,8 +68,7 @@
 <!-- URLs. -->
 
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
-[Azure の管理ポータル]: https://portal.azure.com/
+[Microsoft Azure の管理ポータル]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md
- 
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

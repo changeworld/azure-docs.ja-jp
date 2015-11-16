@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/26/2015"
+	ms.date="10/30/2015"
 	ms.author="markvi"/>
 
 
@@ -87,7 +87,7 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 
 **CloudPassage との Azure AD シングル サインオンを構成するには、次の手順を実行します。**
 
-1. Azure AD ポータルの **CloudPassage** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして **[シングル サインオンの構成]** ダイアログを開きます。<br><br>![Configure Single Sign-On][7]
+1. Azure AD ポータルの **CloudPassage** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして **[シングル サインオンの構成]** ダイアログを開きます。<br><br>![シングル サインオンの構成][7]
 
 2. **[ユーザーの CloudPassage へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Configure Single Sign-On][8]
 
@@ -101,16 +101,16 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 
 
 
-4. **[CloudPassage でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。<br><br>![Configure Single Sign-On][11]
+4. **[CloudPassage でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。<br><br>![シングル サインオンの構成][11]
 
 5. 別の Web ブラウザーのウィンドウで、管理者として CloudPassage 企業サイトにサインオンします。
 
-6. 上部のメニューの **[Settings]** をクリックし、次に **[Site Administration]** をクリックします。 <br><br> ![Configure Single Sign-On][12]
+6. 上部のメニューの **[Settings]** をクリックし、次に **[Site Administration]** をクリックします。 <br><br> ![シングル サインオンの構成][12]
 
-7. **[Authentication Settings]** タブをクリックします。<br><br> ![Configure Single Sign-On][13]
+7. **[Authentication Settings]** タブをクリックします。<br><br> ![シングル サインオンの構成][13]
 
 
-8. **[Single Sign-On Settings]** セクションで、次の手順に従います。<br><br>![Configure Single Sign-On][14]
+8. **[Single Sign-On Settings]** セクションで、次の手順に従います。<br><br>![シングル サインオンの構成][14]
 
 
      8\.1.Azure ポータルの **[CloudPassage でのシングル サインオンの構成]** ダイアログ ページで **[発行者の URL]** の値をコピーし、それを **[SAML issuer URL]** テキスト ボックスに貼り付けます。
@@ -128,14 +128,14 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
      8\.6**[保存]** をクリックします。
 
 
-9. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Configure Single Sign-On][15]
+9. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![シングル サインオンの構成][15]
 
 
-10. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Configure Single Sign-On][16]
+10. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![シングル サインオンの構成][16]
 
 
 
-11. 上部のメニューの **[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。<br><br>![Configure Single Sign-On][17]
+11. 上部のメニューの **[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。<br><br>![シングル サインオンの構成][17]
 
 12. 必要なユーザー属性を追加するために、次の表の各行に対して、次の手順を実行します。<br>
 
@@ -281,4 +281,4 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 [29]: ./media/active-directory-saas-cloudpassage-tutorial/tutorial_general_16.png
 [30]: ./media/active-directory-saas-cloudpassage-tutorial/tutorial_general_17.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure リソース マネージャーのテンプレートの関数"
-   description="値の取得、文字列の書式設定、およびデプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。"
+   pageTitle="リソース マネージャーのテンプレートの関数 | Microsoft Azure"
+   description="値の取得、文字列の処理、デプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。"
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -13,12 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/13/2015"
+   ms.date="11/02/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの関数
 
 このトピックでは、Azure リソース マネージャーのテンプレートで使用できるすべての関数について説明します。
+
+テンプレート関数とそのパラメーターでは大文字と小文字が区別されません。たとえば、Resource Manager では、**variables('var1')** と **VARIABLES('VAR1')** が同じものとして解決されます。
 
 ## 追加
 
@@ -70,9 +72,9 @@
 
 反復処理のループの現在のインデックスを返します。この関数を使用する例については、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 
-## デプロイ
+## デプロイメント
 
-**デプロイ()**
+**デプロイメント()**
 
 現在のデプロイ操作に関する情報を返します。
 
@@ -543,6 +545,6 @@
 - Azure リソース マネージャー テンプレートのセクションの説明については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。
 - 複数のテンプレートをマージするには、[Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページをご覧ください。
 - 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
-- 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)」をご覧ください。
+- 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

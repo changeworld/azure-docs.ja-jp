@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/16/2015"
+	ms.date="10/27/2015"
 	ms.author="dkshir"/>
 
 # Windows を実行する Azure Virtual Machines への Remote Desktop 接続に関するトラブルシューティング
@@ -30,9 +30,9 @@ Windows を実行する Azure 仮想マシンに対する Remote Desktop (RDP) �
 
 最初の「基本的な手順」セクションでは、一般的な接続の問題に対処する手順を示します。2 番目のセクションでは、具体的なエラー メッセージごとに解決手順を説明します。最後のセクションでは、各ネットワーク コンポーネントの詳細なトラブルシューティングの実行について説明します。
 
-## 基本的な手順
+## 基本的な手順 - クラシック デプロイ モデル
 
-次の基本的な手順に従うと、一般的な Remote Desktop 接続エラーの大半を解決できます。各手順を実行した後、VM に再接続してみてください。
+これらの基本手順を使用すると、クラシック デプロイメント モデルを使用して作成された仮想マシンのリモート デスクトップ接続に関する一般的なエラーをほとんど解決できます。各手順を実行した後、仮想マシンに再接続してみてください。
 
 - RDP サーバーでの起動の問題を解決するには、[Azure ポータル](https://portal.azure.com)からリモート デスクトップ サービスをリセットします。<br> [すべて参照]、[仮想マシン (クラシック)]、ご使用の Windows 仮想マシン、**[リモート アクセスのリセット]** の順にクリックします。
 
@@ -43,6 +43,33 @@ Windows を実行する Azure 仮想マシンに対する Remote Desktop (RDP) �
 - ホストの問題を解決するには、VM のサイズを変更します。<br> [すべて参照]、[仮想マシン (クラシック)]、Windows 仮想マシン、[設定]、**[サイズ]** の順にクリックします。詳細な手順については、「[Resize the virtual machine (仮想マシンのサイズの変更)](https://msdn.microsoft.com/library/dn168976.aspx)」を参照してください。
 
 - 起動の問題を修正するには、VM のコンソール ログまたはスクリーンショットを確認してください。[すべて参照]、[仮想マシン (クラシック)]、Windows 仮想マシン、**[起動の診断]** の順にクリックします。
+
+- VM のリソースの状態でプラットフォームの問題を確認します。[すべて参照]、[仮想マシン (クラシック)]、Windows 仮想マシン、**[正常性の確認]** の順にクリックします。
+-  
+
+## 基本的な手順 - リソース マネージャーのデプロイ モデル
+
+これらの基本手順を使用すると、リソース マネージャー デプロイメント モデルを使用して作成された仮想マシンのリモート デスクトップ接続に関する一般的なエラーをほとんど解決できます。各手順を実行した後、仮想マシンに再接続してみてください。
+
+- Powershell を使用してリモート アクセスをリセットします。<br> a.まだインストールしていない場合は、[Azure PowerShell をインストールし、Azure AD メソッドを使用して Azure サブスクリプションに接続します](../powershell-install-configure.md)。
+
+	b.リソース マネージャー モードに切り替えます。
+
+	```
+	Switch-AzureMode -Name AzureResourceManager
+	```
+	c.次の例で示すように、Set-AzureVMAccessExtension コマンドを実行して RDP 接続をリセットします。
+
+	```
+	Set-AzureVMExtension -ResourceGroupName "myRG" -VMName "myVM" -Name "myVMAccessExtension" -ExtensionType "VMAccessAgent" -Publisher "Microsoft.Compute" -typeHandlerVersion "2.0" -Location Westus
+	```
+
+- その他の起動の問題に対処するには仮想マシンを再起動します。<br> [すべて参照]、[仮想マシン]、Windows 仮想マシン、**[再起動]** の順にクリックします。
+
+- ホストの問題を解決するには、VM のサイズを変更します。<br> [すべて参照]、[仮想マシン]、Windows 仮想マシン、[設定]、**[サイズ]** の順にクリックします。
+
+- 起動の問題を修正するには、VM のコンソール ログまたはスクリーンショットを確認してください。[すべて参照]、[仮想マシン]、Windows 仮想マシン、**[起動の診断]** の順にクリックします。
+
 
 ## 一般的な RDP エラーのトラブルシューティング
 
@@ -143,4 +170,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

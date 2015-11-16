@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/26/2015" 
+	ms.date="11/02/2015" 
 	ms.author="genemi"/>
 
 
@@ -100,20 +100,10 @@ SQL Database へのユーザー追加には、以下の選択肢があります�
 - 接続を閉じます。
 
 
-#### プール使用時の例外スロー
-
-
-接続プールを有効にしているときに、タイムアウト エラーあるいはその他のログイン エラーが起きると、例外がスローされます。それ以降の接続試行は、次の 5 秒間は失敗します。これを*ブロック期間*と呼びます。
-
-アプリケーションがブロック期間に接続を試みた場合、最初の例外が再びスローされます。ブロック期間が終わると、それ以降の失敗によって新しいブロック期間が開始され、そのブロック期間は前回のブロック期間の 2 倍の長さの時間続きます。
-
-ブロック期間の最大期間は 60 秒です。
-
-
 ### V12 の 1433 以外のポート
 
 
-Azure SQL Database V12 へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。1433 以外のポートが重要になります。詳細については、<br/>「[Ports beyond 1433 for ADO.NET 4.5, and SQL Database V12 (ADO.NET 4.5、SQL Database V12 における 1433 以外のポート)](sql-database-develop-direct-route-ports-adonet-v12.md)」をご覧ください。
+Azure SQL Database V12 へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。1433 以外のポートが重要になります。詳細については、「<br/> [ADO.NET 4.5 および SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
 
 
 次のセクションでは、再試行のロジックと一時的なエラーの処理についてさらに説明します。
@@ -129,9 +119,14 @@ Azure SQL Database V12 へのクライアント接続はプロキシを使用せ
 
 Azure システムには、SQL Database サービス内で負荷の大きいワークロードが生じた場合に、サーバーを動的に再構成する機能があります。
 
-ただし、再構成をすることでクライアントのプログラム側では SQL Database への接続が失われます。このエラーを*一時的なエラー*と呼びます。
+ただし、再構成をすることでクライアントのプログラム側では SQL Database への接続が失われます。このエラーを*一時障害*と呼びます。
 
-クライアント プログラムは再試行までの間、6 ～ 60 秒待機した後に、接続の再確立を試みることができます。クライアント側に再試行ロジックを提供する必要があります。
+クライアント プログラムに再試行ロジックが含まれる場合、一時障害に自動的に修復する時間を与えた後、接続の再確立を試行できます。
+
+最初に再試行する前に、5 秒間待つことをお勧めします。5 秒未満で再試行すると、クラウド サービスに過度の負荷がかかるおそれがあります。再試行するたびに、待ち時間を比例して、最大 60 秒まで長くする必要があります。
+
+ADO.NET を使用するクライアントの*ブロック期間*については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
+
 
 再試行ロジックを示すコード サンプルについては、「[SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)」をご覧ください。
 
@@ -147,7 +142,7 @@ SQL Database でエラーが発生した場合、[SqlException](http://msdn.micr
  - たとえば、「<br/>*サーバー 'theserver' 上のデータベース 'mydatabase' は現在使用できません。*」などのような番号 40613 のエラーが発生した場合、再試行されます。
 
 
-詳細については、「[Azure SQL データベース開発: 操作方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)」および「[Azure SQL データベースへの接続の問題のトラブルシューティング](http://support.microsoft.com/kb/2980233/)」をご覧ください。
+詳細については、「[Azure SQL Database 開発: 操作方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)」および「[Azure SQL Database への接続の問題のトラブルシューティング](http://support.microsoft.com/kb/2980233/)」をご覧ください。
 
 
 <a id="e-technologies" name="e-technologies"></a>
@@ -166,7 +161,7 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 
 **Elastic Scale:** Elastic Scale データベースへの接続に関する詳細については、次を参照してください。
 
-- [Azure SQL データベース Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
+- [Azure SQL Database Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
 - [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)
 
 
@@ -174,4 +169,4 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 
 - [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

@@ -13,29 +13,95 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="11/03/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS)
-CREATE TABLE AS SELECT (CTAS) は、使用可能な T-SQL 機能の中でも最も重要なものの 1 つです。これは、SELECT ステートメントの出力に基づいて新しいテーブルを作成するという、完全に並列化された操作です。SELECT..INTO の高性能バージョンだと考えてください。
+CREATE TABLE AS SELECT (CTAS) は、使用可能な T-SQL 機能の中でも最も重要なものの 1 つです。これは、SELECT ステートメントの出力に基づいて新しいテーブルを作成するという、完全に並列化された操作です。CTAS は、テーブルのコピーを作成する最も簡単で高速な方法です。SELECT..INTO の高性能バージョンだと考えてください。このドキュメントでは、CTAS の例とベスト プラクティスについて説明します。
 
-CTAS を使用すると、サポートされていない機能の多くに対応することもできます。この機能は、ユーザーのコードに対応できるというだけでなく、SQL Data Warehouse 上でより高速に実行されるという効果があります。これは、完全に並列化された設計により可能になりました。
+## CTAS を使用したテーブルのコピー
 
-> [AZURE.NOTE]「まず最初に CTAS」を検討しましょう。CTAS によって問題を解決できると思われる場合は、たとえ結果的に多くのコードを作成することになったとしても、通常は CTAS を使用するのが最善の方法です。
+おそらく、CTAS の最も一般的な用途の 1 つは、DDL を変更できるようにテーブルのコピーを作成す場合です。たとえば、もともと ROUND\_ROBIN として作成したテーブルを列の分散テーブルに変更する場合、CTAS を使用して分散列を変更します。また、CTAS を使用してパーティション分割、インデックス、または列の型を変更することもできます。
 
-CTAS で対処できるシナリオは次のとおりです。
+たとえば、CREATE TABLE で分散列が指定されていないため、ROUND\_ROBIN 分散の既定の分布タイプを使用してこのテーブルを作成したものとします。
+
+```
+CREATE TABLE FactInternetSales
+(
+	ProductKey int NOT NULL,
+	OrderDateKey int NOT NULL,
+	DueDateKey int NOT NULL,
+	ShipDateKey int NOT NULL,
+	CustomerKey int NOT NULL,
+	PromotionKey int NOT NULL,
+	CurrencyKey int NOT NULL,
+	SalesTerritoryKey int NOT NULL,
+	SalesOrderNumber nvarchar(20) NOT NULL,
+	SalesOrderLineNumber tinyint NOT NULL,
+	RevisionNumber tinyint NOT NULL,
+	OrderQuantity smallint NOT NULL,
+	UnitPrice money NOT NULL,
+	ExtendedAmount money NOT NULL,
+	UnitPriceDiscountPct float NOT NULL,
+	DiscountAmount float NOT NULL,
+	ProductStandardCost money NOT NULL,
+	TotalProductCost money NOT NULL,
+	SalesAmount money NOT NULL,
+	TaxAmt money NOT NULL,
+	Freight money NOT NULL,
+	CarrierTrackingNumber nvarchar(25),
+	CustomerPONumber nvarchar(25)
+);
+```
+
+クラスター化列ストア テーブルのパフォーマンスの利点を得られるように、クラスター化列ストア インデックスでこのテーブルの新しいコピーを作成します。また、この列で結合が予想され、ProductKey での結合の間のデータを移動したくないので、このテーブルを ProductKey に分散させます。最後に OrderDateKey にパーティションを追加して、古いパーティションをドロップして古いデータをすぐに削除できるようにします。次に示すのが、古いテーブルを新しいテーブルにコピーする CTAS ステートメントです。
+
+```
+CREATE TABLE FactInternetSales_new
+WITH 
+(
+    CLUSTERED COLUMNSTORE INDEX,
+    DISTRIBUTION = HASH(ProductKey),
+    PARTITION
+    (
+        OrderDateKey RANGE RIGHT FOR VALUES 
+        (
+        20000101,20010101,20020101,20030101,20040101,20050101,20060101,20070101,20080101,20090101,
+        20100101,20110101,20120101,20130101,20140101,20150101,20160101,20170101,20180101,20190101,
+        20200101,20210101,20220101,20230101,20240101,20250101,20260101,20270101,20280101,20290101
+        )
+    )
+)
+AS SELECT * FROM FactInternetSales;
+```
+
+最後に、テーブルの名前を変更して新しいテーブルにスワップし、古いテーブルをドロップできます。
+
+```
+RENAME OBJECT FactInternetSales TO FactInternetSales_old;
+RENAME OBJECT FactInternetSales_new TO FactInternetSales;
+
+DROP TABLE FactInternetSales_old;
+```
+
+> [AZURE.NOTE]Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。統計の詳細については、開発トピック グループの「[統計][]」トピックを参照してください。
+
+## CTAS を使用したサポートされていない機能の回避
+
+CTAS を使用すると、以下に示すサポートされていない機能の多くに対応することもできます。この機能は、ユーザーのコードに対応できるというだけでなく、SQL Data Warehouse 上でより高速に実行されるという効果があります。これは、完全に並列化された設計により可能になりました。CTAS で対処できるシナリオは次のとおりです。
 
 - SELECT..INTO
 - ANSI JOINS を使用した UPDATE 
 - ANSI JOIN を使用した DELETE
 - MERGE ステートメント
 
-このドキュメントには、CTAS を使用してコーディングする際のベスト プラクティスも含まれます。
+> [AZURE.NOTE]「まず最初に CTAS」を検討しましょう。CTAS によって問題を解決できると思われる場合は、たとえ結果的に多くのコードを作成することになったとしても、通常は CTAS を使用するのが最善の方法です。
+> 
 
 ## SELECT..INTO
 SELECT..INTO は、ソリューション内で頻繁に使用される場合があります。
 
-SELECT..INTO の例を次に示します。
+SELECT..INTO ステートメントの例を次に示します。
 
 ```
 SELECT *
@@ -43,14 +109,13 @@ INTO    #tmp_fct
 FROM    [dbo].[FactInternetSales]
 ```
 
-これを CTAS に変換するのはとても簡単です。
+上を CTAS に変換するのはとても簡単です。
 
 ```
 CREATE TABLE #tmp_fct
 WITH
 (
     DISTRIBUTION = ROUND_ROBIN
-,   LOCATION = USER_DB
 )
 AS
 SELECT  *
@@ -58,7 +123,7 @@ FROM    [dbo].[FactInternetSales]
 ;
 ```
 
-CTAS を使用すると、データ配布の設定を指定したり、テーブルのインデックス作成 (省略可能) もできます。
+> [AZURE.NOTE]CTAS では、現在、分散列を指定する必要があります。分散列を変更しないようにすると、基のテーブルと同じ分散列を選択した場合、データ移動がないので、CTAS は最高速で実行されます。パフォーマンスが問題ではない小さいテーブルを作成する場合は、ROUND\_ROBIN を指定して分散列の決定を回避できます。
 
 ## UPDATE ステートメントの代わりに使用する ANSI JOIN
 
@@ -357,10 +422,11 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 <!--Article references-->
 [開発の概要]: sql-data-warehouse-overview-develop.md
+[統計]: ./sql-data-warehouse-develop-statistics.md
 
 <!--MSDN references-->
-[CTAS]: https://msdn.microsoft.com/ja-jp/library/mt204041.aspx
+[CTAS]: https://msdn.microsoft.com/ja-JP/library/mt204041.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
+	ms.date="10/29/2015"  
 	ms.author="juliako"/>
 
 #Azure オンデマンド メディア エンコーダーの概要と比較
@@ -29,7 +29,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 [動的パッケージ化](media-services-dynamic-packaging-overview.md)機能を利用するには、次の作業が必要となります。
 
 - メザニン (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードします (エンコードの手順は、このチュートリアルの後半で説明しています)。
-- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[How to Scale On-Demand Streaming Reserved Unit (オンデマンド ストリーミング占有ユニットの規模変更方法)](media-services-manage-origins.md#scale_streaming_endpoints/)」をご覧ください。
+- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[How to Scale On-Demand Streaming Reserved Unit (オンデマンド ストリーミング予約ユニットの規模変更方法)](media-services-manage-origins.md#scale_streaming_endpoints/)」をご覧ください。
 
 Media Services は次のオンデマンド エンコーダーをサポートしてます。これらについてはこの記事で説明します。
 
@@ -166,6 +166,7 @@ AVI (非圧縮 8-bit/10-bit)|あり|あり |あり
 スムーズ ストリーミング ファイル形式 (PIFF 1.3)|あり|はい|いいえ
 [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|あり|なし|いいえ
 Matroska/WebM |あり|なし|いいえ
+QuickTime (.mov) |あり|なし|いいえ
 
 ###入力ビデオ コーデック
 
@@ -181,6 +182,12 @@ Windows Media ビデオ/VC-1 |あり|あり|あり
 Canopus HQ/HQX |いいえ|あり|いいえ
 MPEG-4 Part 2 |あり|なし|いいえ
 [Theora](https://en.wikipedia.org/wiki/Theora) |あり|なし|いいえ
+Apple ProRes 422 |あり|なし|いいえ
+Apple ProRes 422 LT |あり|なし|いいえ
+Apple ProRes 422 HQ |あり|なし|いいえ
+Apple ProRes プロキシ|あり|なし|いいえ
+Apple ProRes 4444 |あり|なし|いいえ
+Apple ProRes 4444 XQ |あり|なし|いいえ
 
 ###入力オーディオ コーデック
 
@@ -254,4 +261,4 @@ AMS のラーニング パスについては、以下を参照してください
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

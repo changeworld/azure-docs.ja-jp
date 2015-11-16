@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="java" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="07/17/2015" 
+	ms.date="11/01/2015" 
 	ms.author="yuaxu"/>
 
 # Java から Notification Hubs を使用する方法
@@ -303,4 +303,4 @@ Java コードを実行すると、ターゲット デバイスに表示され�
 [Maven]: http://maven.apache.org/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

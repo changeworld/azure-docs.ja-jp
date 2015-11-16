@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/06/2015"
+	ms.date="11/03/2015"
 	ms.author="sdanie"/>
 
 # Azure Active Directory と API Management で Web API バックエンドを保護する方法
@@ -547,4 +547,4 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 [API Management インスタンスの作成]: api-management-get-started.md#create-service-instance
 [Azure API Management での最初の API の管理]: api-management-get-started.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

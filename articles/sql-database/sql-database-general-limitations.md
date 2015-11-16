@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="10/28/2015"
+   ms.date="11/05/2015"
    ms.author="jroth" />
 
 # Azure SQL Database の一般的な制限事項とガイドライン
@@ -41,9 +41,7 @@ Azure SQL Database では、分散トランザクション (複数のリソー�
 
 ## SQL Server 照合順序のサポート
 
-Microsoft Azure SQL Database で使用される既定のデータベース照合順序は **SQL\_LATIN1\_GENERAL\_CP1\_CI\_AS** です。**LATIN1\_GENERAL** は英語 (米国)、**CP1** はコード ページ 1252、**CI** は大文字と小文字の区別なし、**AS** はアクセントの区別ありを表しています。
-
-オンプレミスの SQL Server を使用する場合は、サーバー、データベース、列、および式の各レベルで照合順序を設定できます。Microsoft Azure SQL Database では、サーバー レベルで照合順序を設定することはできません。Microsoft Azure SQL Database で既定以外の照合順序を使用するには、Create Database の Collate オプションを使用するか、列レベルまたは式レベルで照合順序を設定します。SQL Database では、Alter Database コマンドの Collate オプションをサポートしていません。SQL Database の場合、既定では、一時データはデータベースと同じ照合順序になります。照合順序を設定する方法の詳細については、「[COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)」を参照してください。
+Microsoft Azure SQL Database で使用される既定のデータベース照合順序は **SQL\_LATIN1\_GENERAL\_CP1\_CI\_AS** です。**LATIN1\_GENERAL** は英語 (米国)、**CP1** はコード ページ 1252、**CI** は大文字と小文字の区別なし、**AS** はアクセントの区別ありを表しています。Transact-SQL を使用して、V12 データベースの照合順序を変更できます。照合順序を設定する方法の詳細については、「[COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)」を参照してください。
 
 ## 名前付けに関する要件
 
@@ -55,7 +53,7 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
  - **root** 
  - **sa** 
 
-すべての新しいオブジェクトの名前は、SQL Server の識別子に関する規則に従う必要があります。詳細については、[識別子](https://msdn.microsoft.com/library/ms175874.aspx)に関するページを参照してください。
+すべての新しいオブジェクトの名前は、SQL Server の識別子に関する規則に従う必要があります。詳細については、「[データベース識別子](https://msdn.microsoft.com/library/ms175874.aspx)」を参照してください。
 
 また、ログインおよびユーザー名に \\ 文字を含めることはできません (Windows 認証をサポートしていません)。
 
@@ -71,4 +69,4 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 
 - SQL Database の利用可能なドライバーとサポートの詳細については、「[SQL Database および SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

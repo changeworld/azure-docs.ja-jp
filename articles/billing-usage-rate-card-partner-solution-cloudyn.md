@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Cloudyn は Microsoft Azure Usage API と RateCard API を使用してユーザー向けに ITFM を提供"
+   pageTitle="Cloudyn は Microsoft Azure Usage API と RateCard API を使用してユーザー向けに ITFM を提供 | Microsoft Azure"
    description="Microsoft Azure 課金パートナーの Cloudyn が Azure Billing API を製品に統合した独自の事例について説明します。この事例は、Cloudyn for Azure サービスの使用または試用に関心を持っている Azure と Cloudyn のユーザーに特に役立ちます。"
    services="billing"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="billing"
-   ms.date="06/14/2015"
+   ms.date="11/02/2015"
    ms.author="mobandyo;bryanla"/>
 
 # Cloudyn は Microsoft Azure Usage API と RateCard API を使用してユーザー向けに ITFM を提供 
@@ -74,7 +74,7 @@ Azure ユーザーが Cloudyn for Azure と Azure Billing API を使用して Az
 + 無料の [Cloudyn for Azure](https://www.cloudyn.com/microsoft-azure/) 試用版を利用し、Microsoft Azure クラウド デプロイ用にカスタマイズしたレポートと分析を使用してコストを透明化する方法について説明します。
 + Azure Resource Usage API と RateCard API の概要については、「[Microsoft Azure のリソース消費を把握する](billing-usage-rate-card-overview.md)」を参照してください。 
 + 両方の API の詳細については、「[Azure Billing REST API リファレンス](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)」を参照してください (Azure リソース マネージャーに用意されている API セットに含まれています)。
-+ サンプル コードをすぐに確認するには、[Github の Microsoft Azure Billing API コード サンプル](https://github.com/Azure/BillingCodeSamples)を参照してください。
++ サンプル コードをすぐに確認するには、「[Azure コード サンプル](https://azure.microsoft.com/documentation/samples/?term=billing)」の「Microsoft Azure Billing API コード サンプル」を参照してください。
 
 ## 詳細情報
 + Microsoft Azure エンタープライズ契約 (EA) プランの詳細については、「[エンタープライズ向け Azure のライセンス](http://azure.microsoft.com/pricing/enterprise-agreement/)」を参照してください。
@@ -90,4 +90,4 @@ Azure ユーザーが Cloudyn for Azure と Azure Billing API を使用して Az
 [6]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Performance-Reports.png
 [7]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Category-Manager.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

@@ -54,6 +54,7 @@ Azure Active Directory B2C プレビューの特定の機能を使用する方�
 
 以下のリンクは、サービスの詳細を調べるのに役立ちます。
 
+- 「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c)」を参照してください。
 - [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) または [adal](http://stackoverflow.com/questions/tagged/adal) タグを使用したスタック オーバーフローの対処法についてのヒントが得られます。
 - [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) を使用して、プレビューに関する感想をお寄せください。皆様からのご意見をお待ちしております。 識別しやすいように、投稿のタイトルに "AzureADB2C:" という言葉を入れてください。
 - Azure Active Directory B2C は、"App Model v2.0" と呼ばれるアプリケーション登録モデルを使用して、業界標準のプロトコル (OpenID Connect、OAuth 2.0) をサポートします。
@@ -62,4 +63,4 @@ Azure Active Directory B2C プレビューの特定の機能を使用する方�
 - [Azure Active Directory B2C の FAQ](active-directory-b2c-faqs.md)
 - [Azure Active Directory B2C に対するサポート要求の提出](active-directory-b2c-support.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

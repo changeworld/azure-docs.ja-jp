@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric アプリケーションのアップグレード チュートリアル"
-   description="この記事のチュートリアルでは、Service Fabric アプリケーションをアップグレードする場合のエクスペリエンスについて説明します。"
+   pageTitle="アプリケーション アップグレードのチュートリアル | Microsoft Azure"
+   description="この記事では、Service Fabric アプリケーションのデプロイ、コードの変更、アップグレードのロールアウトを段階的に説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="mani-ramaswamy"
@@ -126,4 +126,4 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 [アプリケーション アップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/23/2015" 
+	ms.date="10/29/2015" 
 	ms.author="spelluru"/>
 
 # Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
@@ -149,10 +149,15 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 	4. **[登録]** が **[登録済み]** に設定されます。
 	5. 下部のステータス バーには、**緑色のチェック マーク**と共に "**Data Management Gateway クラウド サービスに接続済み**" と表示されます。
 
-8. **[証明書]** に切り替えます。このタブで指定された証明書は、ポータルで指定したオンプレミス データ ストアの資格情報の暗号化/暗号解除に使用されます。代わりに独自の証明書を使用する場合は、**[変更]** をクリックします。既定では、ゲートウェイは Data Factory サービスによって自動生成される証明書を使用します。
+8. **[証明書]** タブに切り替えます。このタブで指定された証明書は、ポータルで指定したオンプレミス データ ストアの資格情報の暗号化/暗号解除に使用されます。代わりに独自の証明書を使用する場合は、**[変更]** をクリックします。既定では、ゲートウェイは Data Factory サービスによって自動生成される証明書を使用します。
 
 	![ゲートウェイ証明書の構成](./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png)
-9. Azure ポータルの **[構成]** ブレードと **[新しいデータ ゲートウェイ]** ブレードで **[OK]** をクリックします。
+9. (省略可能) **[診断]** タブに切り替えて、ゲートウェイで発生した問題をトラブルシューティングするのに使用できる詳細ログを有効にする場合は、**[トラブルシューティングのための詳細ログを有効にする]** オプションをオンにします。ログ情報については、**[アプリケーションとサービス ログ]**、**[Data Management Gateway]** ノードの順に進み、**[イベント ビューアー]** を参照してください。 
+
+	![[診断] タブ](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
+
+	このページを使用すると、ゲートウェイを使用してオンプレミスのデータ ソースへの**接続をテストする**こともできます。
+10. Azure ポータルの **[構成]** ブレードと **[新しいデータ ゲートウェイ]** ブレードで **[OK]** をクリックします。
 6. 左側のツリー ビューの **[データ ゲートウェイ]** に **[adftutorialgateway]** と表示されます。クリックすると、関連する JSON が表示されます。 
 	
 
@@ -377,7 +382,7 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 
 	以下の点に注意してください。
  
-	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
+	- activities セクションに、**type** が **Copy** に設定されたアクティビティがあるだけです。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
 	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink** を指定します。
 - **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
@@ -450,7 +455,7 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 11. **[X]** をクリックしてすべてのブレードを閉じ、
 12. **ADFTutorialOnPremDF** のホーム ブレードに戻ります。
 14. (省略可能) **[パイプライン]** をクリックし、**[ADFTutorialOnPremDF]** をクリックして、入力テーブル (**Consumed**) または出力テーブル (**Produced**) をドリル スルーします。
-15. **Azure ストレージ エクスプローラー**などのツールを使用して、出力を確認します。
+15. **Azure Storage Explorer** などのツールを使用して、出力を確認します。
 
 	![Azure ストレージ エクスプローラー](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
@@ -472,7 +477,7 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 6. **Microsoft Data Management Gateway Configuration Manager** を開いたままにします。 
  
 	![Configuration Manager](./media/data-factory-move-data-between-onprem-and-cloud/ConfigurationManager.png)	
-7. ポータルの **[構成]** ブレードでコマンド バーの **[キーの再作成]** をクリックし、警告メッセージで **[はい]** をクリックします。キー文字列の横にある **[コピー]** をクリックして、キーをクリップボードにコピーします。古いコンピューターのゲートウェイは、キーが再作成されるとすぐに機能を停止することに注意してください。  
+7. ポータルの **[構成]** ブレードでコマンド バーの **[キーの再作成]** をクリックし、警告メッセージで **[はい]** をクリックします。キー文字列の横にある **[コピー]** ボタンをクリックして、キーをクリップボードにコピーします。古いコンピューターのゲートウェイは、キーが再作成されるとすぐに機能を停止することに注意してください。  
 	
 	![Recreate key](./media/data-factory-move-data-between-onprem-and-cloud/RecreateKey.png)
 	 
@@ -608,6 +613,6 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 5.	オンプレミスの SQL Server から任意のコピー先にデータをコピーするときに、ゲートウェイ コンピューターと SQL Server コンピューターが異なる場合は、SQL Server インスタンスがリッスンしているポートを介してゲートウェイがデータベースにアクセスできるように、SQL Server コンピューターで [Windows ファイアウォールを構成](https://msdn.microsoft.com/library/ms175043.aspx)します。既定のインスタンスの場合、ポート 1433 です。
 
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-move-data-between-onprem-and-cloud.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-move-data-between-onprem-and-cloud.md)でフィードバックをお寄せください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

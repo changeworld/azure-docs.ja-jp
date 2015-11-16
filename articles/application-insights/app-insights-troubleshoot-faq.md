@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/09/2015" 
+	ms.date="11/04/2015" 
 	ms.author="awills"/>
  
 # トラブルシューティングと Q & A - Application Insights for ASP.NET
@@ -28,7 +28,8 @@
 * アプリが Free レベルの月間クォータより多くのデータを送信すると、ログの記録を停止します。このような場合は、料金の支払いを開始するか、月末にクォータがリセットされるまでお待ちください。
 * 基本的な使用とセッション データは、クォータの対象になりません。
 * 30 日間の無料トライアルが用意されています。この期間中、Premium の機能を無料でご利用いただけます。
-* 各アプリケーション リソースには、個別のクォータがあり、それぞれに個別に価格レベルを設定します。
+* 各アプリケーション リソースには、個別のクォータがあり、それぞれに個別の価格レベルを設定します。  
+
 
 #### 料金を払うと何ができますか。
 
@@ -136,12 +137,15 @@ NuGet パッケージを 0.17 以降に更新した後に上記のエラーが�
 + [更新] ボタンをクリックします。ブレードは周期的に自動で更新されますが、手動でも更新できます。時間範囲が広いと、更新間隔は長くなります。
 + Microsoft Azure のスタート画面で、サービス状態マップを確認してください。アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
 + [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)も参照してください。
++ ApplicationInsights.config を編集した場合は、TelemetryInitializers と TelemetryProcessors の構成を慎重に確認します。不適切な名前が付けられた型またはパラメーターがあると、SDK によってデータが送信されない場合があります。
 
 #### サーバーにアプリケーションを発行したのでデータがない
 
++ すべての Microsoft.ApplicationInsights DLL が Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll と一緒にサーバーにコピーされたことを確認します。
 + ファイアウォールでは、dc.services.visualstudio.com と f5.services.visualstudio.com への発信トラフィック用に TCP ポート 80 と 443 を開く必要がある場合があります。
 + プロキシを使用して社内ネットワークの外に送信しなければならない場合は、Web.config に [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) を設定します。
 + Windows Server 2008: 更新プログラム [KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217) をインストールしていることを確認します。
+
 
 #### <a name="q04"></a>Web サイトの [利用状況分析] にデータが表示されません
 
@@ -170,7 +174,7 @@ dc.services.visualstudio.com への https POST 呼び出しを中継できるプ
 
 ## ポータル
 
-#### <a name="q05"></a>Microsoft Azure プレビューのスタート画面を表示しています。Application Insights でデータを見つけるにはどうすればいいですか?
+#### <a name="q05"></a>Microsoft Azure プレビューのスタート ボードを表示しています。Application Insights でデータを見つけるにはどうすればいいですか?
 
 次のどちらかの操作を行います。
 
@@ -224,13 +228,13 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 
 Azure VM で Web サービスが実行されている場合は、そこでも[診断を取得][azurediagnostic]できます。
 
-## 自動化
+## Automation
 
 Application Insights リソースを作成するために [PowerShell スクリプトを書き込みます](app-insights-powershell-script-create-resource.md)。
 
 ## その他の回答
 
-* [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/JA-JP/home?forum=ApplicationInsights)
+* [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-JP/home?forum=ApplicationInsights)
 
 
 <!--Link references-->
@@ -243,4 +247,4 @@ Application Insights リソースを作成するために [PowerShell スクリ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

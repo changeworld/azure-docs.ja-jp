@@ -1,5 +1,5 @@
 <properties
-	pageTitle="SSH で Azure VM に接続できない | Microsoft Azure"
+	pageTitle="SSH による Azure VM への接続のトラブルシューティング | Microsoft Azure"
 	description="Linux を実行している Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/05/2015"
+	ms.date="10/27/2015"
 	ms.author="dkshir"/>
 
 # Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング
@@ -25,7 +25,7 @@
 
 Linux ベースの Azure 仮想マシンに対する SSH エラーには、さまざまな原因が考えられます。この記事は、原因を特定してエラーを修正するために役立ちます。
 
-> [AZURE.NOTE]この記事は、Linux を実行する Azure 仮想マシンにのみ適用されます。Windows を実行する Azure 仮想マシンに対する接続のトラブルシューティングを行う場合は、[この記事](virtual-machines-troubleshoot-remote-desktop-connections.md)を参照してください。
+この記事は、Linux を実行する Azure 仮想マシンにのみ適用されます。Windows を実行する Azure Virtual Machines に対する接続のトラブルシューティングを行う場合は、[この記事](virtual-machines-troubleshoot-remote-desktop-connections.md)を参照してください。
 
 ## Azure カスタマー サポートへの問い合わせ
 
@@ -38,11 +38,11 @@ Linux ベースの Azure 仮想マシンに対する SSH エラーには、さ�
 
 クラシック デプロイ モデルを使用して作成された仮想マシンの一般的な SSH 接続エラーを解決するには、次の手順を試してください。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)から**リモート アクセスをリセット**します。**[すべて参照]**、**[仮想マシン (クラシック)]**、ご使用の Windows 仮想マシン、**[リモート アクセスのリセット]** の順にクリックします。
+1. [Azure プレビュー ポータル](https://portal.azure.com)から**リモート アクセスをリセット**します。**[すべて参照]**、**[仮想マシン (クラシック)]**、Windows 仮想マシン、**[リモート アクセスのリセット]** の順にクリックします。
 
 	![リモート アクセスのリセット](./media/virtual-machines-troubleshoot-ssh-connections/Portal-SSH-Reset-Windows.png)
 
-2. 仮想マシンを**再起動**します。[Azure プレビュー ポータル](https://portal.azure.com)から、**[すべて参照]**、**[仮想マシン (クラシック)]**、ご使用の Windows 仮想マシン、**[再起動]** の順にクリックします。[Azure 管理ポータル](https://manage.windowsazure.com)から、**[仮想マシン]**、**[インスタンス]** の順に開いて、**[再起動]** をクリックします。
+2. 仮想マシンを**再起動**します。[Azure プレビュー ポータル](https://portal.azure.com)から、**[すべて参照]**、**[仮想マシン (クラシック)]**、ご使用の Windows 仮想マシン、**[再起動]** の順にクリックします。[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)から、**[仮想マシン]**、**[インスタンス]** の順に開いて、**[再起動]** をクリックします。
 
 3. [仮想マシンの**サイズを変更**します](https://msdn.microsoft.com/library/dn168976.aspx)。
 
@@ -51,6 +51,8 @@ Linux ベースの Azure 仮想マシンに対する SSH エラーには、さ�
 	- パスワードまたは SSH キーをリセットする
 	- 新しい sudo ユーザー アカウントを作成する
 	- SSH 構成をリセットする
+
+5. VM のリソースの状態でプラットフォームの問題を確認します。[すべて参照]、[仮想マシン (クラシック)]、Linux 仮想マシン、**[正常性の確認]** の順にクリックします。
 
 
 ## 基本的な手順 - リソース マネージャーのデプロイ モデル
@@ -61,7 +63,7 @@ Linux ベースの Azure 仮想マシンに対する SSH エラーには、さ�
 
 	**Azure CLI の使用**
 
-	a.まだインストールしていない場合は、[Azure CLI をインストールし](../xplat-cli-install.md)、`azure login` コマンドを使用して Azure サブスクリプションに接続します。
+	a.まだインストールしていない場合は、[Azure CLI をインストールし、`azure login` コマンドを使用して Azure サブスクリプションに接続](../xplat-cli-install.md)します。
 
 	b.リソース マネージャー モードに切り替えます。
 
@@ -253,7 +255,7 @@ Linux ベースの Azure 仮想マシンに対する SSH エラーには、さ�
 同じ仮想ネットワーク内にある VM に対して SSH 接続を作成できる場合は、次の点を確認します。
 
 - ターゲットの VM での SSH トラフィック向けエンドポイントの構成。エンドポイントのプライベート TCP ポートは、VM 上の SSH サービスがリッスンする TCP ポートと一致する必要があります (既定値は 22 です)。リソース マネージャーのデプロイ モデルでテンプレートを使用して作成された VM の場合は、Azure プレビュー ポータルで、**[参照]**、**[仮想マシン (v2)]**、*VM 名*、**[設定]**、**[エンドポイント]** の順に選択して、SSH TCP ポート番号を確認します。
-- ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの ACL。ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。ACL が正しく構成されていないと、そのエンドポイントへの SSH 受信トラフィックを受け取れない場合があります。ご利用になっているプロキシのパブリック IP アドレスからの受信トラフィック、または他のエッジ サーバーからの受信トラフィックが許可されているかを ACL で確認してください。詳細については、[ネットワーク アクセス制御リスト (ACL) の概要](../virtual-network/virtual-networks-acl.md)に関するページを参照してください。
+- ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの ACL。ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。ACL が正しく構成されていないと、そのエンドポイントへの SSH 受信トラフィックを受け取れない場合があります。ご利用になっているプロキシのパブリック IP アドレスからの受信トラフィック、または他のエッジ サーバーからの受信トラフィックが許可されているかを ACL で確認してください。詳細については、「[About network access control lists (ACLs) (ネットワーク アクセス制御リスト (ACL) の概要)](../virtual-network/virtual-networks-acl.md)」を参照してください。
 
 問題の原因であるエンドポイントを排除するには、現在のエンドポイントを削除し、新しいエンドポイントを作成して、**SSH** 名を指定します (パブリックとプライベートのポート番号には TCP ポート 22)。詳細については、「[Azure での仮想マシンに対するエンドポイントの設定](virtual-machines-set-up-endpoints.md)」をご覧ください
 
@@ -286,4 +288,4 @@ Linux ベースの Azure 仮想マシンに対する SSH エラーには、さ�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

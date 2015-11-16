@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="07/28/2015"
+	ms.date="10/29/2015"
 	ms.author="jgao"/>
 
 
@@ -68,11 +68,19 @@ HDInsight を使用すると、さまざまなクラスターの種類を、異�
 
 XL サイズの VM は、Azure PowerShell コマンドレットまたは HDInsight SDK を使用して構成できます。
 
-Azure PowerShell を使用したクラスターの作成とプロビジョニングについては、「[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)」で説明しています。XL サイズのヘッド ノードの構成には、このコードで使用される `New-AzureHDInsightcluster` コマンドレットに `-HeadNodeVMSize ExtraLarge` パラメーターを追加する必要があります。
+Azure PowerShell を使用したクラスターの作成とプロビジョニングについては、「[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)」で説明しています。XL サイズのヘッド ノードの構成には、このコードで使用される `New-AzureRmHDInsightcluster` コマンドレットに `-HeadNodeVMSize ExtraLarge` パラメーターを追加する必要があります。
 
     # Create a new HDInsight cluster in Azure PowerShell
 	# Configured with an ExtraLarge head-node VM
-    New-AzureHDInsightCluster -Name $clusterName -Location $location -HeadNodeVMSize ExtraLarge -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainerName $containerName  -ClusterSizeInNodes $clusterNodes
+    New-AzureRmHDInsightCluster `
+				-ResourceGroupName $resourceGroupName `
+				-ClusterName $clusterName ` 
+				-Location $location `
+				-HeadNodeVMSize ExtraLarge `
+				-DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
+				-DefaultStorageAccountKey $storageAccountKey `
+				-DefaultStorageContainerName $containerName  `
+				-ClusterSizeInNodes $clusterNodes
 
 SDK でも、同じような方法を使用します。SDK を使用したクラスターの作成とプロビジョニングについては、「[HDInsight .NET SDK の使用](hdinsight-provision-clusters.md#sdk)」で説明しています。XL サイズのヘッド ノードの構成には、このコードで使用される `ClusterCreateParameters()` メソッドに `HeadNodeSize = NodeVMSize.ExtraLarge` パラメーターを追加する必要があります。
 
@@ -80,15 +88,15 @@ SDK でも、同じような方法を使用します。SDK を使用したクラ
 	# Configured with an ExtraLarge head-node VM
     ClusterCreateParameters clusterInfo = new ClusterCreateParameters()
     {
-    Name = clustername,
-    Location = location,
-    HeadNodeSize = NodeVMSize.ExtraLarge,
-    DefaultStorageAccountName = storageaccountname,
-    DefaultStorageAccountKey = storageaccountkey,
-    DefaultStorageContainer = containername,
-    UserName = username,
-    Password = password,
-    ClusterSizeInNodes = clustersize
+		Name = clustername,
+		Location = location,
+		HeadNodeSize = NodeVMSize.ExtraLarge,
+		DefaultStorageAccountName = storageaccountname,
+		DefaultStorageAccountKey = storageaccountkey,
+		DefaultStorageContainer = containername,
+		UserName = username,
+		Password = password,
+		ClusterSizeInNodes = clustersize
     };
 
 
@@ -98,4 +106,4 @@ SDK でも、同じような方法を使用します。SDK を使用したクラ
 - [RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)
 - [HDInsight .NET SDK の使用](hdinsight-provision-clusters.md#sdk)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

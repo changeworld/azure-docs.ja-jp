@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
+	ms.date="11/03/2015"  
 	ms.author="juliako"/>
 
 #オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
@@ -203,9 +203,9 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
  
 チャネルの状態|ポータル UI インジケーター|課金対象
 ---|---|---|---
-開始中|開始中|なし (遷移状態)
-実行中|準備完了 (実行中プログラムなし)<p>または<p>ストリーミング (実行中プログラムが最低 1 つ存在)|あり
-停止中|停止中|なし (遷移状態)
+開始中|開始中|いいえ (遷移状態)
+実行中|準備完了 (実行中プログラムなし)<p>または<p>ストリーミング (実行中プログラムが最低 1 つ存在)|はい
+停止中|停止中|いいえ (遷移状態)
 停止済み|停止済み|いいえ
 
 ###クローズド キャプションと広告の挿入 
@@ -240,7 +240,7 @@ SCTE-35|広告の挿入のキューには、デジタル信号システムが使
 
 ##オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを作成する方法
 
-オンプレミスのライブ エンコーダーの詳細については、「[Azure Media Services でのサード パーティ ライブ エンコーダーの使用](https://msdn.microsoft.com/library/azure/dn783464.aspx)」をご覧ください。
+オンプレミスのライブ エンコーダーの詳細については、「[Azure Media Services でのサード パーティ ライブ エンコーダーの使用](https://azure.microsoft.com/blog/azure-media-services-rtmp-support-and-live-encoders/)」をご覧ください。
 
 チャネルとプログラムの作成および管理方法を表示する**ポータル**、**.NET**、**REST API** を選択します。
 
@@ -266,4 +266,4 @@ AMS のラーニング パスについては、以下を参照してください
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

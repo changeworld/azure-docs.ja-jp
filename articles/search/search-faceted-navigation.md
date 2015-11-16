@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Search でファセット ナビゲーションを実装する方法" 
-	description="Azure Search のファセット ナビゲーション" 
+	pageTitle="Azure Search でファセット ナビゲーションを実装する方法 | Microsoft Azure" 
+	description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search と統合するアプリケーションにファセット ナビゲーションを追加します。" 
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="07/07/2015" 
+	ms.date="11/04/2015" 
 	ms.author="heidist"/>
 
 #Azure Search でファセット ナビゲーションを実装する方法
@@ -372,4 +372,4 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

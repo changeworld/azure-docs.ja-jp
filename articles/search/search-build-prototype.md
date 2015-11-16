@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure Search 用のプロトタイプ アプリケーションを構築する" 
-	description="Azure Search を使い始めるために、最初のアプリケーション プロトタイプを作成します。" 
+	description="ホスト型のクラウド検索サービスである Azure Search を使い始めるために、最初のアプリケーション プロトタイプを作成します。" 
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
@@ -13,12 +13,12 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="09/08/2015" 
+	ms.date="11/04/2015" 
 	ms.author="heidist"/>
 
 # Azure Search 用のプロトタイプ アプリケーションを構築する
 
-Azure Search を評価する開発者は、ほとんどの場合、まずは暫定版のテスト アプリケーションを作成して、カスタム アプリケーションに Azure Search を追加する価値を検証します。この記事では、プロトタイプの作成プロセスを迅速化するためのいくつかの構成要素を紹介します。
+ホスト型のクラウド検索サービスとして Azure Search を評価する開発者は、ほとんどの場合、まずは暫定版のテスト アプリケーションを作成して、カスタム アプリケーションに Azure Search を追加する価値を検証します。この記事では、プロトタイプの作成プロセスを迅速化するためのいくつかの構成要素を紹介します。
  
 - data.json および schema.json ファイルを含む、Visual Studio C# プロジェクト。サンプル データがあることで、すぐにソリューションを構築し、実行できます。コードを 1 行も記述しなくても、自分のシステムでソリューションが動作することを確認できます。 
 
@@ -133,4 +133,4 @@ Azure テーブル ストレージなど、JSON をネイティブに使用す�
 [1]: ./media/search-build-prototype/azsearch-datafiles.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

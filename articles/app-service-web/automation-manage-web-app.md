@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/13/2015"
+	ms.date="10/28/2015"
 	ms.author="csand"/>
 
 
@@ -43,4 +43,4 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 * [Azure Automation の使用](../automation-intro.md) (Azure Automation の作業開始のチュートリアル)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

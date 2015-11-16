@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Search を使用した地理空間検索アプリの作成" 
-	description="Bing と Azure Search を使用した地理空間検索アプリの作成" 
+	pageTitle="Azure Search を使用した地理空間検索アプリの作成 | Microsoft Azure" 
+	description="Bing と Microsoft Azure のホスト型のクラウド検索サービスである Azure Search を利用し、地理空間検索アプリを作成します。" 
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="07/08/2015" 
+	ms.date="11/04/2015" 
 	ms.author="heidist"/>
 
 # Azure Search を使用した地理空間検索アプリの作成
@@ -67,7 +67,7 @@
 
 このステップでは、世界各地にあるさまざまな自転車店舗の住所を Bing Maps DataFlow API を使用してジオコーディングします。
 
-このデータは、先ほどダウンロードしたソースの store_locations.csv という CSV ファイルにあります。このファイルをテキスト エディターまたは Excel で開くと、各店舗の ID 列、店名、および住所があることを確認できます。
+このデータは、先ほどダウンロードしたソースの store\_locations.csv という CSV ファイルにあります。このファイルをテキスト エディターまたは Excel で開くと、各店舗の ID 列、店名、および住所があることを確認できます。
 
 コードを見ながら、どのように動作するのか説明していきます。
 
@@ -75,13 +75,13 @@
 
 2. **Main** 関数で **ApplyStoreData** を呼び出していることに注目してください。この関数に移動してコードを見てみましょう。
 
-3. **ApplyStoreData** は、"store_locations.csv" という CSV ファイルのデータを System.Data.DataTable にロードします。
+3. **ApplyStoreData** は、"store\_locations.csv" という CSV ファイルのデータを System.Data.DataTable にロードします。
 
     このファイルには、Azure Search にロードする住所を含め、全店舗の情報が入っています。このファイルの各行に反復処理を実行して、後で (既に **CreateStoresIndex()** 関数で作成された) Azure Search インデックスに挿入する **indexOperations** のセットを作成できます。
 
     後でインデックスを詳しく確認すると、各店舗の経度および緯度が入る **GeoPt** フィールドが空であることが分かります。では、**Main** 関数の次のステップに進みましょう。
 
-5. 関数 **ExtractAddressInfoToXML()** に移動します。この関数は、store_locations.csv ファイルから住所情報を抽出し、Bing Maps がジオコーディングできる形式で XML ファイルにロードします。ファイルが作成されると、関数 **GeoCoding.CreateJob** の呼び出しによって Bing Maps DataFlow に送信されて処理されます。
+5. 関数 **ExtractAddressInfoToXML()** に移動します。この関数は、store\_locations.csv ファイルから住所情報を抽出し、Bing Maps がジオコーディングできる形式で XML ファイルにロードします。ファイルが作成されると、関数 **GeoCoding.CreateJob** の呼び出しによって Bing Maps DataFlow に送信されて処理されます。
 
 6. ジオコーディングの処理は時間がかかることがあるため、ジョブが完了したかどうかを調べる **GeoCoding.CheckStatus** を 10 秒おきに呼び出すループがあります。完了すると、**GeoCoding.DownloadResults** の呼び出しによって結果がアドレス クラスにダウンロードされます。
 
@@ -127,7 +127,7 @@
 
 +	**Search** 関数が受け取った店舗の場所を取り出し、店舗の場所をプッシュピンとして Bing Map に追加します。
 
-4.	**Controllers** 下の HomeController.cs を開き、**Search** 関数を見てみましょう。_storeSearch.Search(lat, lon, 10000) への呼び出しがどのように行われるのかに注目してください。これにより、クエリが実行されて、指定の緯度 (lat) および経度 (lon) から 10,000 KM 内にあるすべての店舗が検索されます。このクエリの結果が処理され、Index ビューに戻されると、Bing Map 上に表示されるプッシュピンとして処理されます。
+4.	**Controllers** 下の HomeController.cs を開き、**Search** 関数を見てみましょう。\_storeSearch.Search(lat, lon, 10000) への呼び出しがどのように行われるのかに注目してください。これにより、クエリが実行されて、指定の緯度 (lat) および経度 (lon) から 10,000 KM 内にあるすべての店舗が検索されます。このクエリの結果が処理され、Index ビューに戻されると、Bing Map 上に表示されるプッシュピンとして処理されます。
 
 これでデモは終了です。Azure Search を使用してマップ ベースの ASP.NET MVC4 アプリケーションを構築する前に理解しておく必要がある主な操作をすべて説明しました。
 
@@ -167,4 +167,4 @@ AdventureWorksWeb をビルドするときに、「ファイルまたはアセ�
 [7]: ./media/search-create-geospatial/AzureSearch-geo1-App.PNG
 [12]: ./media/search-create-geospatial/AzureSearch_Create2_CodeplexDownload.PNG
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

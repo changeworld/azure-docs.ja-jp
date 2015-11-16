@@ -750,7 +750,7 @@ _.chain()
 </table>
 
 ## ランタイム サポート
-[DocumentDB JavaScript サーバー側 SDK](http://dl.windowsazure.com/documentDB/jsserverdocs/) では、[ECMA-262](documentdb-interactions-with-resources.md) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています。
+[DocumentDB JavaScript サーバー側 SDK](http://dl.windowsazure.com/documentDB/jsserverdocs/) では、[ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています。
 
 ### セキュリティ
 JavaScript のストアド プロシージャとトリガーはサンドボックス化されているため、データベース レベルのスナップショット トランザクション分離性が適用されなくても 1 つのスクリプトの効果が他のスクリプトに作用しません。ランタイム環境はプーリングされますが、実行ごとにコンテキストがクリーンアップされます。このため、互いの意図していない副作用に対する安全性が保証されています。
@@ -919,4 +919,4 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 -	[サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 -	[Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

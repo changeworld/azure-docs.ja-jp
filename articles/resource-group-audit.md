@@ -158,8 +158,8 @@ Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを�
 
 ## 次のステップ
 
-- セキュリティ ポリシーの設定方法の詳細については、「[リソースへのアクセスの管理](./azure-portal/resource-group-rbac.md)」を参照してください。
+- セキュリティ ポリシーの設定方法の詳細については、「[リソースへのアクセスの管理](resource-group-rbac.md)」を参照してください。
 - サービス プリンシパルにアクセスを付与する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
 - すべてのユーザーのリソースに対するアクションについては、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

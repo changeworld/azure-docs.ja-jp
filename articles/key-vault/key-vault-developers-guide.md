@@ -51,8 +51,9 @@ Node.js API は、node.js プログラミング モデルによる実装を、RE
 
 ## Key Vault の管理
 
-Azure Key Vault コンテナー (資格情報コンテナー) は、次の記事の説明に従って、PowerShell または CLI を使用して管理できます。
+Azure Key Vault コンテナー (資格情報コンテナー) は、次の記事の説明に従って、REST、PowerShell または CLI を使用して管理できます。
 
+- [REST を使用した Key Vault の作成と管理](https://msdn.microsoft.com/library/azure/mt620024.aspx)
 - [PowerShell を使用した Key Vault の作成と管理](key-vault-get-started.md)
 - [CLI を使用した Key Vault の管理](key-vault-manage-with-cli.md)
 
@@ -67,4 +68,4 @@ Azure Key Vault コンテナー (資格情報コンテナー) は、次の記事
 
 - 次のダウンロードには、サンプル アプリケーション (HelloKeyVault) と、Azure Web サービスの例の両方が含まれています。[Azure Key Vault のコード サンプル](http://www.microsoft.com/download/details.aspx?id=45343)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

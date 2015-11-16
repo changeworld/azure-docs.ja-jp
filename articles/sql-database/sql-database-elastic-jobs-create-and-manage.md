@@ -1,10 +1,10 @@
 <properties
-	pageTitle="弾力性データベースのジョブの作成と管理"
+	pageTitle="弾力性データベースのジョブの作成と管理 | Micosoft Azure"
 	description="弾力性データベースのジョブの作成と管理について説明します。"
 	services="sql-database"
 	documentationCenter=""
 	manager="jhubbard"
-	authors="sidneyh"
+	authors="ddove"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/21/2015"
+	ms.date="11/04/2015"
 	ms.author="ddove; sidneyh"/>
 
 # ポータル (プレビュー) を使用した SQL Database エラスティック ジョブの作成と管理
@@ -27,7 +27,7 @@
 
 ## 前提条件
 
-* Azure サブスクリプション。無料評価版については、「[1 か月間の無料評価版](http://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
+* Azure サブスクリプション。無料試用版については、「[1 か月間の無料試用版](http://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
 * 弾力性データベース プール。「[弾力性データベース プール](sql-database-elastic-pool.md)」をご覧ください。
 * 弾力性データベース ジョブ サービス コンポーネントのインストール。「[弾力性データベース ジョブ サービスのインストール](sql-database-elastic-jobs-service-installation.md)」をご覧ください。
 
@@ -115,4 +115,4 @@
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/15/2015"
+   ms.date="11/02/2015"
    ms.author="larryfr"/>
 
 #PowerShell を使用して Hive クエリを実行
@@ -39,7 +39,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 
 リモート HDInsight クラスターで Hive クエリを実行するときに次のコマンドレットを使用します。
 
-* **Login-AzureRmAccount**: Azure サブスクリプションに対して Azure PowerShell を認証します。
+* **Add-AzureRmAccount**: Azure サブスクリプションに対して Azure PowerShell を認証します。
 
 * **New-AzureRmHDInsightHiveJobDefinition**: 指定された HiveQL ステートメントを使用して、新しい*ジョブ定義*を作成します。
 
@@ -51,7 +51,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 
 * **Invoke-AzureRmHDInsightHiveJob**: HiveQL ステートメントを実行する場合に使用します。これはクエリの完了にブロックし、その結果を返します。
 
-* **Use-AzureRmHDInsightCluster**: **Invoke-Hive** コマンドに対して現在のクラスターを使用するように設定します。
+* **Use-AzureRmHDInsightCluster**: **Invoke-AzureRmHDInsightHiveJob** コマンドに対して現在のクラスターを使用するように設定します。
 
 これらのコマンドレットを使用して、HDInsight クラスターでジョブを実行するための手順を以下に示します。
 
@@ -66,7 +66,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 		$sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
 		if(-not($sub))
 		{
-		    Login-AzureRmAccount
+		    Add-AzureRmAccount
 		}
 
 		#HiveQL
@@ -104,7 +104,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
             -DefaultContainer $container `
             -DefaultStorageAccountName $storageAccountName `
             -DefaultStorageAccountKey $storageAccountKey `
-            -HttpCredential $creds `
+            -HttpCredential $creds
             
 2. **Azure PowerShell** コマンド プロンプトを開きます。ディレクトリを **hivejob.ps1** ファイルの場所に変更し、次のコマンドを使用してスクリプトを実行します。
 
@@ -119,7 +119,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 
 4. 前述のように、**Invoke-Hive** を使用してクエリを実行し、応答を待機できます。次のコマンドを使用して、**CLUSTERNAME** をクラスターの名前で置き換えます。
 
-		Use-AzureHDInsightCluster CLUSTERNAME
+        Use-AzureRmHDInsightCluster -ClusterName $clusterName
         #Get the cluster info so we can get the resource group, storage, etc.
         $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
         $resourceGroup = $clusterInfo.ResourceGroup
@@ -129,16 +129,16 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
             -Name $storageAccountName `
             -ResourceGroupName $resourceGroup `
             | %{ $_.Key1 }
-		Invoke-AzureRmHDInsightHiveJob `
+        Invoke-AzureRmHDInsightHiveJob `
             -StatusFolder "wasb:///example/statusout" `
             -DefaultContainer $container `
             -DefaultStorageAccountName $storageAccountName `
             -DefaultStorageAccountKey $storageAccountKey `
             -Query @"
-		CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
-		INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
-		SELECT * FROM errorLogs;
-		"@
+        CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
+        INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
+        SELECT * FROM errorLogs;
+        "@
 
 	出力は次のようになります。
 
@@ -148,7 +148,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 
 	> [AZURE.NOTE]より長い HiveQL クエリの場合は、Azure PowerShell の **Here-Strings** コマンドレットや HiveQL スクリプト ファイルを使用できます。次のスニペットでは、**Invoke-Hive** コマンドレットを使用して HiveQL スクリプト ファイルを実行する方法を示します。HiveQL スクリプト ファイルは、WASB にアップロードする必要があります。
 	>
-	> `Invoke-Hive -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
+	> `Invoke-AzureRmHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
 	>
 	> **Here-Strings** の詳細については、「<a href="http://technet.microsoft.com/library/ee692792.aspx" target="_blank">Windows PowerShell Here-Strings の使用</a>」をご覧ください。
 
@@ -184,4 +184,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

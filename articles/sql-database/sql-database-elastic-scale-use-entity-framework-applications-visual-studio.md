@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Entity Framework での Elastic Database クライアント ライブラリの使用" 
-	description="Elastic Database クライアントはスケールの変更を容易にし、Entity Framework はデータベースのコーディングに使いやすいデータベースです。" 
+	pageTitle="Entity Framework での Elastic Database クライアント ライブラリの使用 | Microsoft Azure" 
+	description="Elastic Database クライアント ライブラリと Entity Framework をデータベースのコーディングに使用する" 
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jeffreyg" 
-	authors="sidneyh" 
+	authors="torsteng" 
 	editor=""/>
 
 <tags 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/24/2015" 
-	ms.author="sidneyh"/>
+	ms.date="11/04/2015" 
+	ms.author="torsteng;sidneyh"/>
 
 # Entity Framework による Elastic Database クライアント ライブラリ 
  
-Elastic Database クライアント ライブラリを Microsoft の Entity Framework (EF) で使用することで、データベース シャーディングを活用し、アプリケーションのデータ層のスケールアウトを促進するアプリケーションを構築できます。このドキュメントでは、Elastic Database ツールの機能と統合するために Entity Framework アプリケーションに加える必要がある変更について説明します。ここでは、Entity Framework の **Code First** アプローチを使用して[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)と[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)を構成する方法を重点的に説明します。このドキュメント全体の実際の例として、EF 向けの[新しいデータベースを対象とした Code First](http://msdn.microsoft.com/data/jj193542.aspx) チュートリアルをご覧ください。このドキュメントに付属するサンプル コードは、Visual Studio のコード サンプルに含まれる Elastic Database ツールのサンプルの一部です。
+このドキュメントでは、[Elastic Database ツール](sql-database-elastic-scale-introduction.md)と統合するために Entity Framework アプリケーションに加える必要がある変更について説明します。ここでは、Entity Framework の **Code First** アプローチを使用して[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)と[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)を構成する方法を重点的に説明します。このドキュメント全体の実際の例として、EF 向けの[新しいデータベースを対象とした Code First](http://msdn.microsoft.com/data/jj193542.aspx) チュートリアルをご覧ください。このドキュメントに付属するサンプル コードは、Visual Studio のコード サンプルに含まれる Elastic Database ツールのサンプルの一部です。
   
 ## サンプル コードのダウンロードと実行
 この記事のコードをダウンロードするには:
@@ -264,7 +264,7 @@ EF の移行を通じたスキーマのデプロイは、**開かれていない
 
 このドキュメントで説明した方法には、いくつかの制限事項があります。
 
-* **LocalDb** を使用する EF アプリケーションは、鰓スティック データベース クライアント ライブラリを使用する前に通常の SQL Server データベースに移行する必要があります。Elastic Scale によるシャーディングを使用したアプリケーションのスケーリングは、**LocalDb** では実行できません。開発では引き続き **LocalDb** を使用できます。 
+* **LocalDb** を使用する EF アプリケーションは、Elastic Database クライアント ライブラリを使用する前に通常の SQL Server データベースに移行する必要があります。Elastic Scale によるシャーディングを使用したアプリケーションのスケーリングは、**LocalDb** では実行できません。開発では引き続き **LocalDb** を使用できます。 
 
 * データベース スキーマの変更を暗示するすべてのアプリケーションに対する変更は、すべてのシャードで EF の移行を介する必要があります。このドキュメントのサンプル コードには、この方法を示していません。Update-Database を ConnectionString パラメーターと共に使用してすべてのシャードに対して反復処理を行うことを検討してください。または、Update-Database を -Script オプションと共に使用して保留中の移行の T-SQL スクリプトを抽出し、その T-SQL スクリプトをシャードに適用します。
 
@@ -281,4 +281,4 @@ Entity Framework アプリケーションは、Azure SQL Database の Elastic Da
 [1]: ./media/sql-database-elastic-scale-use-entity-framework-applications-visual-studio/sample.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

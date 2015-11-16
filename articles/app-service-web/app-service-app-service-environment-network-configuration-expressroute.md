@@ -32,15 +32,15 @@ ExpressRoute に接続された仮想ネットワークでは最初は満たさ�
 -  世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続これには、App Service Environment と同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。  
 -  App Service Environment と同じリージョンにある Sql DB エンドポイントに対する発信ネットワーク接続。SQL DB エンドポイントは、次のドメインで解決されます: *database.windows.net*。
 -  Azure 管理プレーン エンドポイント (ASM エンドポイントと ARM エンドポイントの両方) に対する発信ネットワーク接続これには、*management.core.windows.net* と *management.azure.com* の両方に対する発信接続が含まれます。 
--  *mscrl.microsoft.com* と *crl.microsoft.com* に対する発信ネットワーク接続。これは、SSL 機能をサポートするために必要です。
+-  *ocsp.msocsp.com* への送信ネットワーク接続これは、SSL 機能をサポートするために必要です。
 -  仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。これらのエンドポイントを解決できない場合、App Service Environment の作成処理に失敗し、既存の App Service Environment は異常とマークされます。
 -  カスタム DNS サーバーが VPN ゲートウェイの相手側にある場合、DNS サーバーは App Service Environment を含むサブネットから到達できる必要があります。 
 -  発信ネットワーク パスは、社内プロキシを経由したり、オンプレミスに強制的にトンネリングしたりすることができません。実行した場合、App Service Environment からの発信ネットワーク トラフィックの実質的な NAT アドレスが変わります。App Service Environment の発信ネットワーク トラフィックの NAT アドレスを変更すると、上記の多数のエンドポイントに対して接続エラーが発生します。その結果、App Service Environment の作成処理は失敗し、以前は正常動作していた App Service Environment も異常とマークされます。  
--  この[記事][requiredports]の説明に従って、App Service Environment の必要なポートへの着信ネットワーク アクセスを許可する必要があります。
+-  この[記事][requiredports]の説明に従って、App Service 環境の必要なポートへの着信ネットワーク アクセスを許可する必要があります。
 
 DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。何らかの理由で、App Service Environment の作成後に DNS 構成が変わった場合、開発者は強制的に App Service Environment から新しい DNS 構成を選択することができます。[新しい管理ポータル][NewPortal]の App Service Environment 管理ブレードの上部にある [再起動] アイコンを使用して、ローリングする環境の再起動をトリガーすると、新しい DNS 構成が自動的に選択されます。
 
-着信ネットワーク アクセスの要件は、この[記事][requiredports]の説明に従って、必要なアクセスを許可する[ネットワーク セキュリティ グループ][NetworkSecurityGroups]を App Service Environment のサブネットに対して構成することによって満たすことができます。
+着信ネットワーク アクセスの要件は、この[記事][requiredports]の説明に従って、必要なアクセスを許可する[ネットワーク セキュリティ グループ][NetworkSecurityGroups]を App Service 環境のサブネットに対して構成することによって満たすことができます。
 
 ## App Service Environment の発信ネットワーク接続を有効にする##
 既定では、新しく作成された ExpressRoute 回線は、発信インターネット接続を許可する既定のルートをアドバタイズします。この構成によって、App Service Environment は、他の Azure エンドポイントに接続できます。
@@ -62,7 +62,7 @@ DNS 要件を満たすには、仮想ネットワークの有効な DNS イン�
 
 ユーザー定義ルートの背景情報については、この[概要][UDROverview]を参照してください。
 
-ユーザー定義ルートの作成と構成の詳細については、この[ハウツー ガイド][UDRHowTo]を参照してください。
+ユーザー定義ルートの作成と成の詳細については、この[ハウツー ガイド][UDRHowTo]を参照してください。
 
 ## App Service Environment のサンプル UDR 構成 ##
 
@@ -71,7 +71,7 @@ DNS 要件を満たすには、仮想ネットワークの有効な DNS イン�
 1. [Azure ダウンロード ページ][AzureDownloads](2015 年 6 月以降) から最新の Azure Powershell をインストールします。[コマンド ライン ツール] の [Windows Powershell] の中に、最新の Powershell コマンドレットをインストールする [インストール] リンクがあります。
 
 2. App Service Environment が独占的に使用する一意のサブネットを作成することをお勧めします。これにより、サブネットに適用される UDR で、App Service Environment 用の発信トラフィックのみが開くことが保証されます。
-3. **重要**: App Service Environment は、以下の構成手順が**終了するまで**デプロイしないでください。これにより、App Service Environment をデプロイする前に、発信ネットワーク接続を使用できることを確認できます。
+3. **重要**: App Service 環境は、以下の構成手順が**終了するまで**デプロイしないでください。これにより、App Service Environment をデプロイする前に、発信ネットワーク接続を使用できることを確認できます。
 
 **手順 1: 名前付きのルート テーブルを作成する**
 
@@ -115,7 +115,7 @@ DNS 要件を満たすには、仮想ネットワークの有効な DNS イン�
 
 ## 使用の開始
 
-App Service Environment の使用を開始するには、「[App Service Environment の概要][IntroToAppServiceEnvironment]」を参照してください。
+App Service 環境の使用を開始するには、「[App Service 環境の概要][IntroToAppServiceEnvironment]」を参照してください。
 
 Azure App Service プラットフォームの詳細については、[Azure App Service][AzureAppService] に関するページを参照してください。
 
@@ -137,4 +137,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
 <!-- IMAGES -->
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

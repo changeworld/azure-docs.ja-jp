@@ -6,7 +6,7 @@
  authors="Blackmist"
  manager="paulettm"
  editor="cgronlun"
-	tags="azure-portal"/>
+ tags="azure-portal"/>
 
 <tags
  ms.service="hdinsight"
@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="09/02/2015"
+ ms.date="10/30/2015"
  ms.author="larryfr"/>
 
 # HDInsight での一定期間に発生したイベントの Storm および HBase との関連付け
@@ -200,4 +200,4 @@ START イベントと同じ方法で END イベントを検索できます。た
 Storm の例の詳細については、「[HDInsight での Storm のサンプル トポロジ](hdinsight-storm-example-topology.md)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

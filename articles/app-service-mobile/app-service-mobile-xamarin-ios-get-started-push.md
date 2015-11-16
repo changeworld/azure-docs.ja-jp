@@ -32,13 +32,17 @@
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手してください。このアプリは、評価終了後も使用できます。[Azure 無料評価版のサイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手してください。このアプリは、評価終了後も使用できます。[Azure 無料試用版のサイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 * [Xamarin Studio] と [Xcode] v4.4 以降がインストールされた Mac。Xamarin Studio を使用して、Mac で Xamarin.iOS アプリを実行するほうが簡単であることに注意してください。必要であれば Visual Studio を使用して Windows コンピューター上で Xamarin.iOS を実行できますが、ネットワーク化された Mac に接続する必要があるため、少し複雑になります。この設定に関心がある場合は、「[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]」をご覧ください。
 
 * 物理的な iOS デバイス
 
 * [クイック スタート チュートリアル](../app-service-mobile-xamarin-ios-get-started.md)を完了していること。
+
+##<a name="create-hub"></a>通知ハブを作成する
+
+[AZURE.INCLUDE [app-service-mobile-create-notification-hub](../../includes/app-service-mobile-create-notification-hub.md)]
 
 ## <a id="register"></a>アプリをプッシュ通知用に登録する
 
@@ -154,4 +158,4 @@
 
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

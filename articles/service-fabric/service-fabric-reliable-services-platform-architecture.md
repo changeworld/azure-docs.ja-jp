@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric の Reliable Service アーキテクチャ"
-   description="Reliable Service アーキテクチャの詳細概要"
+   pageTitle="Reliable Service のアーキテクチャ | Microsoft Azure"
+   description="ステートフル サービスとステートレス サービスの Reliable Service アーキテクチャの概要"
    services="service-fabric"
    documentationCenter=".net"
    authors="AlanWarwick"
@@ -16,30 +16,30 @@
    ms.date="09/03/2015"
    ms.author="alanwar"/>
 
-# Reliable Service のアーキテクチャ
+# ステートフルとステートレスの Reliable Service のアーキテクチャ
 
-Service Fabric の Reliable Service は、ステートフルまたはステートレスのいずれかに設定できます。いずれの種類であっても、サービスはこの記事で説明されている特定のアーキテクチャで実行されます。ステートフル サービスとステートレス サービスの違いについての詳細は「[Reliable Service の概要](../Service-Fabric/service-fabric-reliable-services-introduction.md)」を参照してください。
+Service Fabric の Reliable Service は、ステートフルまたはステートレスのいずれかに設定できます。いずれの種類であっても、サービスはこの記事で説明されている特定のアーキテクチャで実行されます。ステートフル サービスとステートレス サービスの違いについての詳細は「[Reliable Service の概要](service-fabric-reliable-services-introduction.md)」を参照してください。
 
 ## ステートフル Reliable Service
 
-### ステートフル Reliable Service のアーキテクチャの図
+### ステートフル サービスのアーキテクチャ
 ![アーキテクチャの図](./media/service-fabric-reliable-services-platform-architecture/reliable-stateful-service-architecture.png)
 
 ### ステートフル Reliable Service
 
-ステートフル Reliable Service は、StatefulService または StatefulServiceBase のいずれかのクラスから派生します。これら両方の基本クラスは Service Fabric で提供されており、ステートルフ サービスが Service Fabric とインターフェースをとるための、そして Service Fabric クラスター内でサービスとして参加するためのさまざまなレベルのサポートや抽象化を提供します。StatefulService は StatefulServiceBase から派生します。つまり、StatefulServiceBase によってサービスの柔軟性が高まりますが、Service Fabric の内部を深く理解する必要があります。StatefulService クラスと StatefulServiceBase クラスを使用したサービス作成の詳細については、「[Reliable Service の概要](../Service-Fabric/service-fabric-reliable-services-introduction.md)」と「[Reliable Service の詳細な使用方法](../Service-Fabric/service-fabric-reliable-services-advanced-usage.md)」を参照してください 。
+ステートフル Reliable Service は、StatefulService または StatefulServiceBase のいずれかのクラスから派生します。これら両方の基本クラスは Service Fabric で提供されており、ステートフル サービスが Service Fabric とインターフェイスをとるための、そして Service Fabric クラスター内でサービスとして参加するためのさまざまなレベルのサポートや抽象化を提供します。StatefulService は StatefulServiceBase から派生します。つまり、StatefulServiceBase によってサービスの柔軟性が高まりますが、Service Fabric の内部を深く理解する必要があります。StatefulService クラスと StatefulServiceBase クラスを使用したサービス作成の詳細については、「[Reliable Service の概要](service-fabric-reliable-services-introduction.md)」と「[Reliable Service の詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)」を参照してください 。
 
 いずれの基本クラスでも、サービス実装の有効期間と役割が管理されます。サービス実装によって、いずれかの基本クラスの仮想メソッドがオーバーライドされることがあります。それは、サービス実装のライフサイクルにおけるこれらのポイントで、サービスで実行しなければならない処理がある場合や、通信リスナー オブジェクトを作成する場合です。上記の図で示すように、サービスが独自の通信リスナー オブジェクトを実装して ICommunicationListener を公開する場合がありますが、このサービス実装では Service Fabric が実装した通信リスナーが使用されるため、通信リスナーは Service Fabric が実装します。
 
 ステートフル Reliable Serviceでは、Reliable State Manager を使用して Reliable Collection が利用されます。Reliable Collection は、サービスに対する可用性が高いローカル データ構造であるため、サービスのフェールオーバーに関係なく常に利用可能です。Reliable Collection は、Reliable State Provider によって実装されます。Reliable Collection の詳細については「[ Reliable Collection の概要](service-fabric-reliable-services-reliable-collections.md)」を参照してください。
 
-### Reliable State Manager および Reliable State Provider
+### Reliable State Manager および State Provider
 
 Reliable State Manager は Reliable State Provider を管理するオブジェクトで、Reliable State Provider を作成、削除、列挙したり、確実に永続化させて高可用性を実現します。Reliable State Provider のインスタンスは、ディクショナリやキューなどの永続化された高可用性のデータ構造のインスタンスのことです。Reliable State Provider はそれぞれ、Reliable State Provider と対話するためにステートフル サービスによって使用されるインターフェイスを公開します。たとえば、IReliableDictionary は Reliable Dictionaryとインターフェースをとるために、 IReliableQueue は Reliable Queue とインターフェースをとるためそれぞれ使用されています。すべての Reliable State Provider は IReliableState インターフェイスを実装します。
 
-Reliable State Manager は、ステートフル サービス実装によってアクセスを許可する IReliableStateManager という名前のインターフェイスを持っています。Reliable State Provider とのインターフェイスが IReliableStateManager を介して返されます。
+Reliable State Manager は、ステートフル サービスからアクセスを許可する IReliableStateManager という名前のインターフェイスを持っています。Reliable State Provider とのインターフェイスが IReliableStateManager を介して返されます。
 
-Reliable State Manager は動的プラグイン アーキテクチャで設計されているため、新しい種類の Reliable Collection を動的にプラグインできます。
+Reliable State Manager はプラグイン アーキテクチャを使用し、新しい種類の Reliable Collection を動的にプラグインできます。
 
 高パフォーマンスのバージョン付き差分ストアを実装すると、Reliable Rictionary および Reliable Queue が作成されます。
 
@@ -63,33 +63,33 @@ Reliable State Manager は動的プラグイン アーキテクチャで設計�
 
 このログは、最小限のユーザー モード インターフェイスであるにもかかわらず、カーネル モード ドライバーとして書き込まれます。ログがカーネル モード ドライバーとして実行されると、このログを使用するすべてのサービスのパフォーマンスが最大化されます。
 
-ログ構成の詳細については「[ステートフル Reliable Service の構成](../Service-Fabric/service-fabric-reliable-services-configuration.md)」を参照してください。
+ログ構成の詳細については「[ステートフル Reliable Service の構成](service-fabric-reliable-services-configuration.md)」を参照してください。
 
 ## ステートレス Reliable Service
 
-### ステートレス Reliable Service アーキテクチャの
+### ステートレス サービスのアーキテクチャ
 ![アーキテクチャの図](./media/service-fabric-reliable-services-platform-architecture/reliable-stateless-service-architecture.png)
 
 ### ステートレス Reliable Service
 
 ステートレス サービスの実装は、StatelessService クラスまたは StatelessServiceBase クラスから派生しますが、StatelessService クラスよりも StatelessServiceBase クラスを使用したほうがより柔軟に作業できます。いずれの基本クラスでも、サービスの有効期間と役割が管理されます。サービス実装によって、いずれかの基本クラスの仮想メソッドがオーバーライドされることがあります。それは、サービス実装のライフサイクルにおけるこれらのポイントで、サービスで実行しなければならない処理がある場合や、通信リスナー オブジェクトを作成する場合です。上記の図で示すように、サービスが独自の通信リスナー オブジェクトを実装して ICommunicationListener を公開する場合がありますが、このサービス実装では Service Fabric が実装した通信リスナーが使用されるため、通信リスナーは Service Fabric が実装します。
 
-StatelessService クラスおよび StatelessServiceBase クラスを使用したサービス作成の詳細については、「[Reliable Service の概要](../Service-Fabric/service-fabric-reliable-services-introduction.md)」と「[Reliable Service の詳細な使用方法](../Service-Fabric/service-fabric-reliable-services-advanced-usage.md)」を参照してください 。
+StatelessService クラスおよび StatelessServiceBase クラスを使用したサービス作成の詳細については、「[Reliable Service の概要](service-fabric-reliable-services-introduction.md)」と「[Reliable Service の詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)」を参照してください 。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 
 Service Fabric の詳細については、次の項目を参照してください。
 
-[Reliable Service の概要](../Service-Fabric/service-fabric-reliable-services-introduction.md)
+[Reliable Service の概要](service-fabric-reliable-services-introduction.md)
 
 [クイック スタート](service-fabric-reliable-services-quick-start.md)
 
 [Reliable Collection の概要](service-fabric-reliable-services-reliable-collections.md)
 
-[Reliable Service の詳細な使用方法](../Service-Fabric/service-fabric-reliable-services-advanced-usage.md)
+[Reliable Service の詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
 
-[Reliable Service の構成](../Service-Fabric/service-fabric-reliable-services-configuration.md)
+[Reliable Service の構成](service-fabric-reliable-services-configuration.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

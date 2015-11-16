@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="SSL オフロード用のアプリケーション ゲートウェイの構成 | Microsoft Azure"
+   pageTitle="従来のデプロイメントを使用して SSL オフロード用の Application Gateway を構成する | Microsoft Azure"
    description="この記事は Azure Application Gateway の SSL オフロードを構成する手順について説明します。"
    documentationCenter="na"
    services="application-gateway"
@@ -12,12 +12,15 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="09/25/2015"
+   ms.date="10/28/2015"
    ms.author="joaoma"/>
 
-# SSL オフロード用のアプリケーション ゲートウェイの構成
+# 従来のデプロイメントを使用して SSL オフロード用の Application Gateway を構成する
+ 
+ゲートウェイでの SSL セッションを停止するように Application Gateway を構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
 
-ゲートウェイでの SSL セッションを停止するようにアプリケーション ゲートウェイを構成し、コストがかかる Web ファーム上での SSL 暗号化解除を回避することができます。また、SSL オフロードはフロントエンド サーバーのセットアップとアプリケーションの管理も簡素化します。
+>[AZURE.IMPORTANT]Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイ モデルと従来のデプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイ モデルとツール](azure-classic-rm.md)について理解しておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure クラシックを使用した Application Gateway の作成について説明します。従来のバージョンを使用するには、「[Azure リソース マネージャーを使用して Application Gateway SSL オフロードを構成する](application-gateway-ssl-arm.md)」に進んでください。
+
 
 ## 開始する前に
 
@@ -107,9 +110,9 @@
 
 値は次のとおりです。
  
-- **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧です。一覧の IP アドレスは、VNet サブネットに属しているか、パブリック IP/VIP である必要があります。 
+- **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、VNet サブネットに属しているか、パブリック IP/VIP である必要があります。 
 - **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-- **フロントエンド ポート:** このポートは、アプリケーション ゲートウェイに開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+- **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 - **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。 
 - **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。現在、*basic* ルールのみサポートされます。*basic* ルールは、ラウンド ロビンの負荷分散です。
 
@@ -229,4 +232,4 @@ SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

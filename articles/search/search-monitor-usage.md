@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure Search サービスでの使用状況と統計の監視" 
-   description="Azure Search のリソースの消費量とインデックスのサイズの追跡" 
+   pageTitle="Azure Search サービスでの使用状況と統計の監視 | Microsoft Azure" 
+   description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search のリソース使用量とインデックス サイズを追跡記録します。" 
    services="search" 
    documentationCenter="" 
    authors="HeidiSteen" 
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required" 
-   ms.date="09/08/2015"
+   ms.date="11/04/2015"
    ms.author="heidist"/>
 
 # Azure Search サービスでの使用状況と統計の監視
@@ -57,4 +57,4 @@ Azure Search REST API または .NET SDK を使用することにより、プロ
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

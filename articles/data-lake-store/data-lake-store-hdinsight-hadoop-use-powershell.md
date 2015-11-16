@@ -8,12 +8,12 @@
    editor="cgronlun"/>
  
 <tags
-   ms.service="data-lake"
+   ms.service="data-lake-store"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/28/2015"
+   ms.date="10/29/2015"
    ms.author="nitinme"/>
 
 # Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする
@@ -23,7 +23,12 @@
 - [Using PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 
-Azure PowerShell を使用して、Azure Data Lake Store を使用するように HDInsight クラスター (Hadoop、HBase、Storm) を構成する方法について説明します。このリリースの重要な考慮事項は次のとおりです。* **Hadoop クラスターと Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure Storage BLOB (WASB) のままです。* **HBase クラスター (Windows および Linux) の場合**、Data Lake Store は、既定のストレージまたは追加のストレージとして使用できます。
+Azure PowerShell を使用して、Azure Data Lake Store を使用するように HDInsight クラスター (Hadoop、HBase、Storm) を構成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
+
+* **Hadoop クラスターと Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure ストレージ BLOB (WASB) のままです。
+
+* **HBase クラスター (Windows および Linux) の場合**、Data Lake Store を既定のストレージまたは追加ストレージとして使用できます。
+
 
 この記事では、追加のストレージとして Data Lake Store を使用して Hadoop クラスターをプロビジョニングします。
 
@@ -39,13 +44,9 @@ PowerShell を使用して、Data Lake Store を使用するように HDInsight 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
-- Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
-- **Windows SDK**。[こちら](https://dev.windows.com/ja-JP/downloads)からインストールできます。この機能は、セキュリティ証明書の作成に使用します。
-- **Azure PowerShell 1.0 以降**。手順については、[Azure PowerShell のインストールと構成](../install-configure-powershell.md)に関するページを参照してください。Azure PowerShell 1.0 以降をインストールした後で、次のコマンドレットを実行して Azure Data Lake Store モジュールをインストールする必要があります。
-
-		Install-Module AzureRM.DataLakeStore
-
-	**AzureRM.DataLakeStore** モジュールの詳細については、[PowerShell ギャラリー](http://www.powershellgallery.com/packages/AzureRM.DataLakeStore)を参照してください。
+- Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
+- **Windows SDK**。[ここ](https://dev.windows.com/ja-JP/downloads)からインストールできます。この機能は、セキュリティ証明書の作成に使用します。
+- **Azure PowerShell 1.0**。[ここ](https://github.com/MicrosoftBigData/AzureDataLake/releases/download/AzurePowerShell_2015_10_30/AzurePowerShell.msi)からインストールします。
  
 
 ## Azure Data Lake Store を作成する
@@ -119,7 +120,7 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
 
 4. [Pvk2Pfx][pvk2pfx] ユーティリティを使用して、MakeCert によって作成された .pvk ファイルと .cer ファイルを .pfx ファイルに変換します。次のコマンドを実行します。
 
-		pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po myPassword
+		pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 
 	メッセージが表示されたら、先ほど指定した秘密キーのパスワードを入力します。**-po** パラメーターに指定する値は、.pfx ファイルに関連付けられているパスワードです。コマンドが正常に完了すると、指定した証明書ディレクトリに CertFile.pfx も表示されます。
 
@@ -131,7 +132,7 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
 
 		$certificateFilePath = "$certificateFileDir\CertFile.pfx"
 		
-		$password = Read-Host –Prompt "Enter the password" –AsSecureString  # This is the password you specified for the .pfx file (e.g. "myPassword")
+		$password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
 		
 		$certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
 		
@@ -270,7 +271,7 @@ Data Lake Store を使用するように HDInsight クラスターを構成し�
 
 3. クラスター ブレードで **[リモート デスクトップ]** をクリックし、**[リモート デスクトップ]** ブレードで **[接続]** をクリックします。
 
-	![Remote into HDI cluster](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.HDI.PS.Remote.Desktop.png "Create an Azure Resource Group")
+	![Remote into HDI cluster](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.HDI.PS.Remote.Desktop.png "Azure リソース グループを作成する")
 
 	メッセージが表示されたら、リモート デスクトップ ユーザーに対して指定した資格情報を入力します。
 
@@ -293,4 +294,4 @@ Data Lake Store を使用するように HDInsight クラスターを構成し�
 [makecert]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

@@ -4,7 +4,7 @@
     services="sql-database"
     documentationCenter=""
     manager="jeffreyg"
-    authors="sidneyh"
+    authors="ddove"
     editor=""/>
 
 <tags
@@ -13,12 +13,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/29/2015"
-    ms.author="sidneyh"/>
+    ms.date="11/04/2015"
+    ms.author="ddove;sidneyh"/>
 
 # エラスティック データベース クライアント ライブラリの概要
 
-**エラスティック データベース クライアント ライブラリ**では、Microsoft Azure でホストされている何百、何千もの Azure SQL データベースを使用してシャード化したアプリケーションを構築することができます。このような設計は一般に、シングル テナント アーキテクチャを備えた SaaS (サービスとしてのソフトウェア) アプリケーションで使用されます (シングル テナント アーキテクチャとは、各テナントにデータベースが 1 つプロビジョニングされるアーキテクチャを指します)。そのようなアプリケーションの構築と管理が、このライブラリの目標です。Elastic Database クライアント ライブラリは .NET フレームワーク ライブラリであり、[Visual Studio](sql-database-elastic-scale-add-references-visual-studio.md) と [Nuget](http://go.microsoft.com/?linkid=9862605) を使用してどのアプリケーションにもインストールできます。クライアント ライブラリはエラスティック データベース ツールの一部で、具体的には[エラスティック データベース機能](sql-database-elastic-scale-introduction.md)になります。
+**エラスティック データベース クライアント ライブラリ**では、Microsoft Azure でホストされている何百、何千もの Azure SQL データベースを使用してシャード化したアプリケーションを構築することができます。このような設計は一般に、シングル テナント アーキテクチャを備えた SaaS (サービスとしてのソフトウェア) アプリケーションで使用されます (シングル テナント アーキテクチャとは、各テナントにデータベースが 1 つプロビジョニングされるアーキテクチャを指します)。そのようなアプリケーションの構築と管理が、このライブラリの目標です。
+
+ライブラリをインストールする方法については、「[Microsoft Azure SQL Database: エラスティック スケール](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)」を参照してください。クライアント ライブラリはエラスティック データベース ツールの一部で、具体的には[エラスティック データベース機能](sql-database-elastic-scale-introduction.md)になります。
 
 ## クライアントの機能
 
@@ -53,4 +55,4 @@
 <!--Image references-->
 [1]: ./media/sql-database-elastic-database-client-library/glossary.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

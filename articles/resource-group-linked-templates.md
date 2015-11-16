@@ -108,6 +108,6 @@
 
 ## 次のステップ
 - [テンプレートの作成](./resource-group-authoring-templates.md)
-- [テンプレートのデプロイ](azure-portal/resource-group-template-deploy.md)
+- [テンプレートのデプロイ](resource-group-template-deploy.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

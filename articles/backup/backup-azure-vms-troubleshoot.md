@@ -1,13 +1,13 @@
 <properties
-	pageTitle="Azure 仮想マシンのバックアップ - トラブルシューティング | Microsoft Azure"
-	description="Azure 仮想マシンのバックアップと復元のトラブルシューティングに関する情報が記載されています。"
+	pageTitle="Azure 仮想マシンのバックアップのトラブルシューティング | Microsoft Azure"
+	description="Azure 仮想マシンのバックアップと復元のトラブルシューティング"
 	services="backup"
 	documentationCenter=""
 	authors="trinadhk"
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/07/2015" ms.author="trinadhk";"aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/29/2015" ms.author="trinadhk";"aashishr"/>
 
 
 # Azure 仮想マシンのバックアップのトラブルシューティング
@@ -128,4 +128,4 @@ Backup 拡張機能は、他の拡張機能と同様に、パブリックなイ�
 1. ホワイトリストに登録する [Azure データセンター IP](https://msdn.microsoft.com/library/azure/dn175718.aspx) の一覧を取得します。
 2. [New-NetRoute](https://technet.microsoft.com/library/hh826148.aspx) コマンドレットを使用して、IP アドレスのブロックを解除します。管理者特権の PowerShell ウィンドウ (管理者として実行) で、Azure VM 内でこのコマンドレットを実行します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

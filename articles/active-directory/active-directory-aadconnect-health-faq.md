@@ -95,8 +95,9 @@ Azure AD Health サービス エンドポイントと通信できるようにす
 ## 関連リンク
 
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
-* [AD FS の Azure AD Connect Health エージェントのインストール](active-directory-aadconnect-health-agent-install-adfs.md)
-* [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
+* [Azure AD Connect Health エージェントのインストール](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
+* [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
+* [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->
