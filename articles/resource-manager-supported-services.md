@@ -33,7 +33,9 @@ Azure リソース マネージャーは、アプリケーションを構成す�
 | Batch  
  | あり | [あり (クラシックのみ)](https://portal.azure.com/#create/Microsoft.BatchAccount) | | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | |
 | Dynamics Lifecycle Services | はい | いいえ | | | |
-| Virtual Machines (クラシック) | 限定的 | あり、多くのオプション | 部分的 (後述参照) | - | - | | RemoteApp | いいえ | いいえ | - | - | - | | Service Fabric | いいえ | いいえ | - | - | - |
+| Virtual Machines (クラシック) | 限定的 | はい | 部分的 (後述参照) | - | - |
+| RemoteApp | いいえ | - | - | - | - |
+| Service Fabric | いいえ | - | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイメント モデルではなくクラシック デプロイメント モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイメント モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 
@@ -66,7 +68,9 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | SQL Database | あり | [はい](https://portal.azure.com/#create/Microsoft.SQLDatabase.0.5.7-preview) | あり | [データベースの作成](https://msdn.microsoft.com/library/azure/mt163685.aspx) | [2014-04-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01-preview/Microsoft.Sql.json) |
 | 検索 | あり | [はい](https://portal.azure.com/#create/Microsoft.Search) | あり | [Search REST](https://msdn.microsoft.com/library/azure/dn798935.aspx) | |
 | SQL Data Warehouse | あり | [はい](https://portal.azure.com/#create/Microsoft.SQLDataWarehouse.0.1.12-preview) | | | |
-| StorSimple | いいえ | いいえ | - | - | - | | Managed Cache | いいえ | いいえ| - | - | - |
+| Backup |いいえ | いいえ | - | - | - |
+| Managed cache | いいえ | いいえ | - | - | - |
+| Data Catalog | いいえ | いいえ | - | - | - |
 
 ## 分析
 
@@ -109,7 +113,9 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 | サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | -------------- | -------------- | -------- | ------ |
-| Azure Active Directory | いいえ | いいえ | - | - | - | | Azure Actice Directory B2C | いいえ | いいえ | - | - | - | | Multi-Factor Authentication | いいえ | いいえ | - | - | - |
+| Azure Active Directory | いいえ | いいえ | - | - | - |
+| Azure Actice Directory B2C | いいえ | いいえ | - | - | - |
+| Multi-Factor Authentication | いいえ | いいえ | - | - | - |
 
 ## 開発者サービス 
 
