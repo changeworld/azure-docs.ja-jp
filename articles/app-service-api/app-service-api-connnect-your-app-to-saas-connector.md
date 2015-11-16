@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/06/2015" 
+	ms.date="11/03/2015" 
 	ms.author="tdykstra"/>
 
 # Azure App Service での SaaS コネクタ API アプリのデプロイおよび構成
@@ -24,7 +24,7 @@
 
 たとえば、Dropbox アカウント内のファイルを読み書きするために HTTP 要求をコーディングする必要がある場合、Dropbox を直接操作するための認証プロセスは複雑になります。Dropbox コネクタを使用すれば複雑な認証の処理を避けることができるため、業務固有のコードの作成に集中できます。
 
-> [AZURE.NOTE]ロジック アプリから SaaS コネクタを使用する場合、ここでの指示に従う必要はありません。ロジック アプリで SaaS コネクタを使用する方法の詳細については、「[新しいロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)」および[コネクタでの OAUTH アプリケーションの使用](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=azurelogicapps&announcementId=4af1e4c5-d220-4457-97d8-d08e427ae6c1)に関するページを参照してください。
+> [AZURE.NOTE]ロジック アプリから SaaS コネクタを使用する場合、ここでの指示に従う必要はありません。ロジック アプリで SaaS コネクタを使用する方法の詳細については、「[新しいロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)」および[コネクタでの OAUTH アプリケーションの使用](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurelogicapps&announcementId=4af1e4c5-d220-4457-97d8-d08e427ae6c1)に関するページを参照してください。
  
 このチュートリアルでは例として DropBox コネクタを使用し、次の手順を順番に説明します。
 
@@ -236,4 +236,4 @@ SaaS コネクタをインストール、構成、テストする方法を説明
 [Azure ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

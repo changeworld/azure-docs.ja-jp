@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric のアプリケーション モデル"
-   description="Service Fabric でアプリケーションをモデル化する方法"
+   pageTitle="Service Fabric アプリケーション モデル | Microsoft Azure"
+   description="Service Fabric のアプリケーションとサービスをモデル化し、記述する方法。"
    services="service-fabric"
    documentationCenter=".net"
    authors="alexwun"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/22/2015"
+   ms.date="11/02/2015"
    ms.author="alexwun"/>
 
 # Service Fabric でのアプリケーションのモデル化
@@ -232,4 +232,4 @@ PS D:\temp>
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-deploy-remove-applications.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

@@ -53,7 +53,7 @@ SDK は増え続けるプラットフォームに対応します。最新の一�
  * [Azure Cloud Services](app-insights-cloudservices.md)
  * [J2EE サーバー][java]
  * [Web ページ][client]\: HTML+JavaScript
- * [Windows Phone、Windows Store、Windows 10 ユニバーサル アプリのほか、Windows 10 開発者向けポータルに直接統合できます][windows]
+ * [Windows Phone、Windows ストア、Windows 10 ユニバーサル アプリのほか、Windows 10 開発者向けポータルに直接統合できます][windows]
  * [Windows デスクトップ][desktop]
  * [iOS][ios]
  * [Android][android]
@@ -89,7 +89,7 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
 1. 使用を開始するには、[Microsoft Azure](http://azure.com) のサブスクリプションが必要です。サインアップは無料で、Application Insights の無料の[価格レベル](https://azure.microsoft.com/pricing/details/application-insights/)を選択できます。
 
-2. [Azure プレビュー ポータル](http://portal.azure.com)にサインインする
+2. [Azure ポータル](http://portal.azure.com)にサインインします。
 3. Application Insights リソースを作成します。アプリのデータはここに表示されます。
 
     ![[追加]、[開発者向けサービス]、[Application Insights]](./media/app-insights-overview/11-new.png)
@@ -117,7 +117,7 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
 * 質問および問題点:
  * [トラブルシューティング][qna]
- * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/JA-JP/home?forum=ApplicationInsights)
+ * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-JP/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * バグ:
  * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
@@ -154,4 +154,4 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

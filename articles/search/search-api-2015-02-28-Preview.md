@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search"
-   ms.date="10/01/2015"
+   ms.date="11/04/2015"
    ms.author="heidist"/>
 
 # Azure Search サービス REST API: バージョン 2015-02-28-Preview
 
-この記事は、`api-version=2015-02-28-Preview` のリファレンス ドキュメントです。このプレビューは、以下の試験的機能を提供することによって、現在一般公開されているバージョン [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx) を拡張するものです。
+Azure Search は Microsoft Azure のホスト型クラウド検索サービスです。この記事は、`api-version=2015-02-28-Preview` のリファレンス ドキュメントです。このプレビューは、以下の試験的機能を提供することによって、現在一般公開されているバージョン [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx) を拡張するものです。
 
 - [Lucene クエリ構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)は、[Lucene Query Parser](https://lucene.apache.org/core/4_10_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) の実装です。[Search 操作](#SearchDocs)で queryType パラメーターを使用して指定できます。
 - `moreLikeThis` は [Search 操作](#SearchDocs)で使用されるクエリ キュー パラメーターであり、別の特定のドキュメントに関連する他のドキュメントを探します。
@@ -1742,4 +1742,4 @@ POST の場合:
       "suggesterName": "sg"
     }
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

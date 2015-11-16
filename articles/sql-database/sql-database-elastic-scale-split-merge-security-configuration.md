@@ -1,11 +1,10 @@
 <properties 
-    title="Elastic Scale Security Configurations" 
-    pageTitle="Elastic Scale のセキュリティの構成" 
+    pageTitle="Elastic Scale のセキュリティの構成 | Microsoft Azure" 
     description="暗号化のための x409 証明書の設定" 
     metaKeywords="Elastic Database certificates security" 
     services="sql-database" documentationCenter="" 
     manager="jhubbard" 
-    authors="sidneyh"/>
+    authors="torsteng"/>
 
 <tags 
     ms.service="sql-database" 
@@ -13,8 +12,8 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="07/07/2015" 
-    ms.author="sidneyh" />
+    ms.date="11/04/2015" 
+    ms.author="torsteng;sidneyh" />
 
 # Split-Merge セキュリティの構成  
 
@@ -456,7 +455,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 [Microsoft Azure 管理ポータル](http://portal.azure.com/)で以下を実行します。
 
-1. **[クラウド サービス]** を選択します。
+1. **[Cloud Services]** を選択します。
 2. クラウド サービスを選択します。
 3. 上部メニューで **[証明書]** をクリックします。
 4. 下部のバーで **[アップロード]** をクリックします。
@@ -474,4 +473,4 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

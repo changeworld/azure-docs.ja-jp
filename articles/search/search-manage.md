@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Microsoft Azure で検索サービスを管理する | Microsoft Azure" 
-	description="Microsoft Azure で検索サービスを管理する" 
+	description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search を管理します" 
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
@@ -14,12 +14,12 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="09/08/2015" 
+	ms.date="11/04/2015" 
 	ms.author="heidist"/>
 
 # Microsoft Azure で検索サービスを管理する
 
-Azure Search は、カスタムの検索アプリケーションで使用できるクラウドベースのサービスと HTTP ベースの API です。この検索サービスでは、全文検索テキスト分析のためのエンジン、高度な検索機能、検索データ ストレージ、クエリ コマンド構文が用意されています。
+Azure Search は、カスタムの検索アプリケーションで使用できる HTTP ベースの API を備えたクラウドベースのサービスです。この検索サービスでは、全文検索テキスト分析のためのエンジン、高度な検索機能、検索データ ストレージ、クエリ コマンド構文が用意されています。
 
 この記事では、[Azure ポータル](https://portal.azure.com)で検索サービスを管理する方法について説明します。
 
@@ -193,4 +193,4 @@ Azure Search の観点から、ロールベースのアクセス制御は次の�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

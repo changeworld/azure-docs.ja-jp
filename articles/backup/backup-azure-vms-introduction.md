@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/23/2015"
+	ms.date="10/29/2015"
 	ms.author="trinadhk; aashishr; jimpark; markgal"/>
 
 # Azure における VM バックアップ インフラストラクチャの計画を立てる
@@ -102,4 +102,4 @@ Azure Backup を使用してバックアップされている Azure 仮想マシ
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 - [VM のバックアップに関する問題のトラブルシューティング](backup-azure-vms-troubleshoot.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="php"
 	ms.topic="article"
-	ms.date="07/21/2015"
-	ms.author="mebha"/>
+	ms.date="10/20/2015"
+	ms.author="meetb"/>
 
 
 # 一時的なエラーの処理での Windows 上の PHP を使用した SQL Database への接続
@@ -136,4 +136,4 @@ PHP のインストールと使用に関する詳細については、「[Access
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

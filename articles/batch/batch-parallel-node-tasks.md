@@ -13,7 +13,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="vm-windows"
    	ms.workload="big-compute"
-   	ms.date="09/30/2015"
+   	ms.date="11/02/2015"
    	ms.author="v-marsma"/>
 
 # 同時実行ノード タスクで Azure Batch コンピューティング リソースの使用率を最大にする
@@ -38,7 +38,7 @@
 
 並列タスク実行のための Batch ソリューションでのコンピューティング ノードの構成は、プールのレベルで行います。Batch .NET API を使用するときは、プールを作成するときに [CloudPool.MaxTasksPerComputeNode][maxtasks_net] プロパティを設定します。Batch REST API では、プール作成時の要求本文で [maxTasksPerNode][maxtasks_rest] 要素を設定します。
 
-Azure Batch では、ノード設定あたりのタスクの数を、ノード コアの数の最大 4 倍まで設定できます。たとえば、プールをノード サイズ "Large" (4 コア) で構成した場合、`maxTasksPerNode` は 16 に設定できます。各ノード サイズに対するコア数の詳細については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-size-specs.md)」を参照してください。また、サービスの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。
+Azure Batch では、ノード設定あたりのタスクの数を、ノード コアの数の最大 4 倍まで設定できます。たとえば、プールをノード サイズ "Large" (4 コア) で構成した場合、`maxTasksPerNode` は 16 に設定できます。各ノード サイズに対するコア数の詳細については、「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。また、サービスの制限の詳細については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
 > [AZURE.TIP]プールの[自動スケールの数式][enable_autoscaling]を作成するときは、`maxTasksPerNode` の値を考慮してください。たとえば、`$RunningTasks` を評価する式は、ノードあたりのタスク数の増加によって大きな影響を受ける可能性があります。詳細については、「[Azure Batch プール内のコンピューティング ノードの自動スケール](batch-automatic-scaling.md)」を参照してください。
 
@@ -106,18 +106,18 @@ Duration: 00:08:48.2423500
 
 ## Batch Explorer のヒート マップ
 
-Azure Batch の[サンプル アプリケーション][github_samples]の 1 つである [Batch Explorer][batch_explorer] には、プール内のノード コアの使用状況を表示できる*ヒート マップ*機能が含まれます。[ParallelTasks][parallel_tasks_sample] サンプル アプリケーションを実行し、ヒート マップ機能を使用してノード コアの活動を簡単に表示できます。
+Azure Batch の[サンプル アプリケーション][github_samples]の 1 つである [Batch Explorer][batch_explorer] には、タスクの実行を視覚化する*ヒート マップ*機能が含まれます。[ParallelTasks][parallel_tasks_sample] サンプル アプリケーションを実行する場合は、ヒート マップ機能を使用して各ノードでの並列タスクの実行を簡単に視覚化できます。
 
 ![Batch Explorer のヒート マップ][1]
 
-*Batch Explorer のヒート マップ、ノードあたり 4 コアの 4 ノードで各コアがタスクを実行している状態*
+*Batch Explorer のヒート マップに 4 つのノードから成るプールが表示され、各ノードでは現在それぞれ 4 つのタスクが実行されている*
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
 [batch_explorer]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 [cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [enable_autoscaling]: https://msdn.microsoft.com/library/azure/dn820173.aspx
-[fill_type]: https://msdn.microsoft.com/ja-jp/library/microsoft.azure.batch.common.computenodefilltype.aspx
+[fill_type]: https://msdn.microsoft.com/ja-JP/library/microsoft.azure.batch.common.computenodefilltype.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [maxtasks_net]: http://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.maxtaskspercomputenode.aspx
 [maxtasks_rest]: https://msdn.microsoft.com/library/azure/dn820174.aspx
@@ -127,4 +127,4 @@ Azure Batch の[サンプル アプリケーション][github_samples]の 1 つ�
 
 [1]: ./media/batch-parallel-node-tasks\heat_map.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

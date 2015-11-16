@@ -183,6 +183,10 @@
 
 ![](./media/app-insights-how-do-i/115-metrics.png)
 
+## プロパティ名または値を変更する
+
+フィルター (app-insights-api-filtering-sampling.md#filtering) を作成します。これにより、アプリから Application Insights にテレメトリが送信される前に、テレメトリの変更またはフィルター処理ができるようになります。
+
 ## 特定のユーザーとその使用状況を一覧表示する
 
 [特定のユーザーのみを検索](#search-specific-users)するために、[認証されたユーザー ID](app-insights-api-custom-events-metrics/#authenticated-users) を設定できます。
@@ -229,18 +233,11 @@
 
 * 自身のコンピューターまたは VM の**IIS サーバー**の場合。[Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)します。 
 * **Azure Web サイト**の場合。まだパフォーマンス カウンターに対応していません。Azure Web サイトのコントロール パネルの標準パーツとして取得できるメトリックがいくつか用意されています。
-* **Unix サーバー**の場合。[collectd をインストールします](app-insights-java-collectd.md)。
+* **UNIX サーバー**の場合。[collectd をインストールします](app-insights-java-collectd.md)。
 
 ### 表示するパフォーマンス カウンターの数を増やすには
 
 * 最初に、[新しいグラフを追加](app-insights-metrics-explorer.md)し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
 * 含まれていない場合は、[パフォーマンス カウンター モジュールによって収集されたセットにカウンターを追加](app-insights-web-monitor-performance.md#system-performance-counters)します。
 
-
- 
-
-### Azure Web ロール
-
-現在、以下に関するパフォーマンス カウンターを監視していません。
-
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

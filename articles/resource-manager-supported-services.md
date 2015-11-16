@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/21/2015"
+   ms.date="11/04/2015"
    ms.author="tomfitz"/>
 
 # リソース マネージャーによるサービス、リージョン、API バージョンのサポート
@@ -33,9 +33,9 @@ Azure リソース マネージャーは、アプリケーションを構成す�
 | Batch  
  | あり | [あり (クラシックのみ)](https://portal.azure.com/#create/Microsoft.BatchAccount) | | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | |
 | Dynamics Lifecycle Services | はい | いいえ | | | |
-| Virtual Machines (クラシック) | 限定的 | あり、多くのオプション | 部分的 (後述参照) | - | - |
-| RemoteApp | いいえ | いいえ | - | - | - |
-| Service Fabric | いいえ | いいえ | - | - | - |
+| Virtual Machines (クラシック) | 限定的 | はい | 部分的 (後述参照) | - | - |
+| RemoteApp | いいえ | - | - | - | - |
+| Service Fabric | いいえ | - | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイメント モデルではなくクラシック デプロイメント モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイメント モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 
@@ -68,8 +68,9 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | SQL Database | あり | [はい](https://portal.azure.com/#create/Microsoft.SQLDatabase.0.5.7-preview) | あり | [データベースの作成](https://msdn.microsoft.com/library/azure/mt163685.aspx) | [2014-04-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01-preview/Microsoft.Sql.json) |
 | 検索 | あり | [はい](https://portal.azure.com/#create/Microsoft.Search) | あり | [Search REST](https://msdn.microsoft.com/library/azure/dn798935.aspx) | |
 | SQL Data Warehouse | あり | [はい](https://portal.azure.com/#create/Microsoft.SQLDataWarehouse.0.1.12-preview) | | | |
-| StorSimple | いいえ | いいえ | - | - | - |
-| Managed Cache | いいえ | いいえ| - | - | - |
+| Backup |いいえ | いいえ | - | - | - |
+| Managed cache | いいえ | いいえ | - | - | - |
+| Data Catalog | いいえ | いいえ | - | - | - |
 
 ## 分析
 
@@ -79,8 +80,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | Stream Analytics | あり | [はい](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) | | | |
 | HDInsights | あり | [はい](https://portal.azure.com/#create/Microsoft.HDInsightCluster) | | | |
 | Data Factory | あり | [はい](https://portal.azure.com/#create/Microsoft.DataFactory) | あり | [Data Factory の作成](https://msdn.microsoft.com/library/azure/dn906717.aspx) | |
-| Machine Learning | いいえ | いいえ | - | - | - |
-| Data Catalog | いいえ | いいえ | - | - | - |
+| Machine Learning | いいえ | いいえ | - | - | - | | Data Catalog | いいえ | いいえ | - | - | - |
 
 ## ネットワーク
 
@@ -97,8 +97,9 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 | サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | -------- | -------------- | -------- | ------ |
+| CDN | はい (プレビュー) | いいえ | | | |
 | メディア サービス | いいえ | いいえ | | | |
-| CDN | いいえ | いいえ | | | |
+
 
 ## ハイブリッド統合
 
@@ -106,8 +107,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | ------- | ------- | -------------- | -------------- | -------- | ------ |
 | BizTalk Services | はい | いいえ | | | [2014-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.BizTalkServices.json) |
 | Service Bus | あり | いいえ | | [Service Bus REST](https://msdn.microsoft.com/library/azure/hh780717.aspx) | |
-| Backup | いいえ | いいえ | - | - | - |
-| Site Recovery | いいえ | いいえ| - | - | - |
+| Backup | いいえ | いいえ | - | - | - | | Site Recovery | いいえ | いいえ| - | - | - |
 
 ## ID 管理とアクセス管理 
 
@@ -140,7 +140,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 通常、リソースをデプロイするときはリソースのリージョンを指定する必要があります。リソース マネージャーはすべてのリージョンでサポートされていますが、デプロイするリソースはすべてのリージョンではサポートされていない場合があります。さらに、サブスクリプションでの制限により、リソースをサポートする一部のリージョンを使用できない場合があります。これらの制限事項は、本国での税金に関する問題のため、またはサブスクリプション管理者によって設けられた、使用を特定のリージョンに制限するポリシーの結果である場合があります。
 
-リソースをデプロイする前に、次のコマンドのいずれかを実行して、リソースの種類のサポート対象リージョンを確認してください。
+全 Azure サービスを対象とする全サポート リージョンの完全な一覧が必要な場合、「[リージョン別のサービス](https://azure.microsoft.com/regions/#services)」を参照してください。ただし、その一覧には、ご利用のサブスクリプションでサポートされていないリージョンが含まれている可能性があります。次のコマンドを実行すると、ご利用のサブスクリプションでサポートされているリージョンをリソース タイプ別に確認できます。
 
 ### REST API
 
@@ -232,6 +232,6 @@ Azure PowerShell 0.9.8 では、次を使用します。
 ## 次のステップ
 
 - リソース マネージャーのテンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
-- リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./azure-portal/resource-group-template-deploy.md)」を参照してください。
+- リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!-----HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

@@ -13,49 +13,50 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/21/2015"
+   ms.date="11/02/2015"
    ms.author="lodipalm;barbkess"/>
 
 #SQL Data Warehouse へのサンプル データのロード
 
-SQL Data Warehouse インスタンスをセットアップしたら、あとは容易にサンプル データをインスタンスにロードできます。以下はデータベースに AdventureWorksPDW2012 と呼ばれるデータセットを作成する手順です。このデータセットは、AdventureWorks という架空の会社のためのデータ ウェアハウスの構造をサンプルとして作っています。以下の手順を進めるには、BCP がインストールされている必要があります。BCP を現時点でインストールしていない場合は、[Microsoft Command Line Utilities for SQL Server][] (SQL Server の Microsoft コマンドライン ユーティリティ) からインストールしてください。
+[SQL Data Warehouse データベース インスタンス][create a SQL Data Warehouse database instance]を作成したら、次にテーブルを作成してロードします。SQL Data Warehouse 用に作成されている Adventure Works サンプル スクリプトを使用して、架空の会社 Adventure Works のテーブルを作成してロードできます。これらのスクリプトは、sqlcmd を使用して SQL を実行し、bcp を使用してデータをロードします。まだこれらのツールをインストールしていない場合は、リンクに従って [bcp をインストール][]し、[sqlcmd をインストール][]します。
 
-1. はじめに [サンプル データ スクリプト][] をクリックしてダウンロードしてください。
+次の簡単な手順で Adventure Works サンプル データベースを SQL DW にロードします。
 
-2. ファイルをダウンロードしたら、AdventureWorksPDW2012.zip ファイルを展開し、新しくできた AdventureWorksPDW2012 フォルダーを開きます。
+1. [SQL Data Warehouse の Adventure Works サンプル スクリプト][]をダウンロードします。
 
-3. aw\_create.bat ファイルを編集し、ファイルの先頭の以下の値を設定します。
+2. ダウンロードした zip からローカル コンピューターのディレクトリにファイルを抽出します。
 
-   a.**Server**: SQL Data Warehouse が存在するサーバーの完全修飾名。
+3. 抽出したファイル aw\_create.bat を編集し、ファイルの先頭にある以下の変数を設定します。"=" とパラメーターの間にスペースを入れないようにします。編集内容の例を次に示します。
 
-   b.**User**: 上記のサーバーのユーザー。
-   
-   c.**Password**: サーバー ログイン用のパスワード。
-   
-   d.**Database**: データのロード先の SQL Data Warehouse インスタンスの名前。
-   
-   '=' とこれらのパラメーターの間にスペースがないことを確認します。
-   
+    	server=mylogicalserver.database.windows.net
+    	user=mydwuser
+    	password=Mydwpassw0rd
+    	database=mydwdatabase
 
-4. aw\_create.bat を存在しているディレクトリ上で実行します。この実行により、BCP を使用して、すべてのテーブルにスキーマを作成してデータをロードします。
+4. Windows コマンド プロンプトから編集した aw\_create.bat を実行します。編集バージョンの aw\_create.bat を保存したディレクトリにいることを確認します。このスクリプトでは、次のことが行われます。
+	* データベースに既に存在する Adventure Works のテーブルまたはビューを削除します
+	* Adventure Works のテーブルとビューを作成します
+	* bcp を使用して Adventure Works の各テーブルをロードします
+	* Adventure Works の各テーブルの行数を検証します
+	* Adventure Works の各テーブルのすべての列の統計情報を収集します
 
 
-## サンプルへの接続とクエリ
+##サンプル データのクエリ
 
-[接続][]のドキュメントで述べたように、このデータベースには Visual Studio や SSDT を使用して接続できます。SQL Data Warehouse にサンプル データをロードしたら、いくつかのクエリの実行をすぐに開始できます。
+SQL Data Warehouse にサンプル データをロードしたら、いくつかのクエリをすぐに実行できます。クエリを実行するには、Azure SQL DW に新しく作成した Adventure Works データベースに Visual Studio と SSDT を使用して接続します ([接続][]ドキュメント参照)。
 
-簡単な SELECT ステートメントを実行して、従業員のすべての情報を取得できます。
+従業員のすべての情報を取得する簡単な SELECT ステートメントの例:
 
 	SELECT * FROM DimEmployee;
 
-また、GROUP BY などのコンストラクトを使用する、より複雑なクエリを実行して、日ごとの総売上金額の合計を参照することもできます。
+GROUP BY などのコンストラクトを使用する、より複雑なクエリを実行して、日ごとの総売上金額の合計を参照する例:
 
 	SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
 	FROM FactInternetSales
 	GROUP BY OrderDateKey
 	ORDER BY OrderDateKey;
 
-WHERE 句を使用して、ある日付以前の注文をフィルター処理できます。
+SELECT と WHERE 句を使用して、ある日付以前の注文をフィルター処理する例:
 
 	SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
 	FROM FactInternetSales
@@ -63,10 +64,10 @@ WHERE 句を使用して、ある日付以前の注文をフィルター処理�
 	GROUP BY OrderDateKey
 	ORDER BY OrderDateKey;
 
-実際、SQL Data Warehouse では、SQL Server がサポートしているほとんどすべての T-SQL コンストラクトをサポートしており、「[コードの移行][]」ドキュメントで相違点を確認できます。
+SQL Data Warehouse は、SQL Server がサポートするほぼすべての T-SQL 構造をサポートします。相違点については、[コードの移行][]ドキュメントを参照してください。
 
 ## 次のステップ
-いくつかサンプル データを挙げて、どのようにして[開発][]、[ロード][]、[移行][]するかを確認しながらウォーミングアップしていきます。
+サンプル データをクエリしたので、SQL Data Warehouse の[開発][]、[ロード][]、[移行][]の方法を確認してください。
 
 <!--Image references-->
 
@@ -76,11 +77,11 @@ WHERE 句を使用して、ある日付以前の注文をフィルター処理�
 [ロード]: ./sql-data-warehouse-overview-load.md
 [接続]: ./sql-data-warehouse-get-started-connect.md
 [コードの移行]: ./sql-data-warehouse-migrate-code.md
-
-<!--MSDN references-->
-[Microsoft Command Line Utilities for SQL Server]: http://www.microsoft.com/download/details.aspx?id=36433/
+[create a SQL Data Warehouse database instance]: ./sql-data-warehouse-get-started-provision.md
+[bcp をインストール]: ./sql-data-warehouse-load-with-bcp.md
+[sqlcmd をインストール]: ./sql-data-warehouse-get-started-connect-query-sqlcmd.md
 
 <!--Other Web references-->
-[サンプル データ スクリプト]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksPDW2012.zip/
+[SQL Data Warehouse の Adventure Works サンプル スクリプト]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

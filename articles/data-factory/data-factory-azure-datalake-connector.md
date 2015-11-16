@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="11/03/2015"
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure Data Lake Store との間でのデータの移動
@@ -54,7 +54,7 @@
 	    "properties": {
 	        "type": "AzureDataLakeStore",
 	        "typeProperties": {
-	            "dataLakeUri": "https://<accountname>.azuredatalake.net/webhdfs/v1",
+	            "dataLakeUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
 				"sessionId": "<session ID>",
 	            "authorization": "<authorization URL>"
 	        }
@@ -227,7 +227,7 @@
 	    "properties": {
 	        "type": "AzureDataLakeStore",
 	        "typeProperties": {
-	            "dataLakeUri": "https://<accountname>.azuredatalake.net/webhdfs/v1",
+	            "dataLakeUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
 				"sessionId": "<session ID>",
 	            "authorization": "<authorization URL>"
 	        }
@@ -395,9 +395,9 @@
 Azure Storage のリンクされたサービスを利用し、Azure ストレージ アカウントを Azure Data Factory にリンクできます。次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
-| -------- | ----------- | -------- |
+| :-------- | :----------- | :-------- |
 | type | type プロパティを **AzureDataLakeStore** に設定する必要があります。 | あり |
-| dataLakeUri | Azure Data Lake Store アカウントの情報を指定します。https://<Azure Data Lake account name>.azuredatalake.net/webhdfs/v1 という形式で指定します。 | あり |
+| dataLakeUri | Azure Data Lake Store アカウントの情報を指定します。https://<Azure Data Lake account name>.azuredatalakestore.net/webhdfs/v1 という形式で指定します。 | あり |
 | authorization | **Data Factory エディター**で **[承認する]** をクリックして資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | あり |
 | sessionId | OAuth 承認セッションの OAuth セッション ID。各セッション ID は一意であり、1 回のみ使用できます。Data Factory エディターを使用すると自動的に生成されます。 | あり |  
 | accountName | Data Lake アカウント名 | いいえ |
@@ -412,13 +412,15 @@ Azure Storage のリンクされたサービスを利用し、Azure ストレー
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所や書式などに関する情報を提供します。**AzureDataLakeStore** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
 | プロパティ | 説明 | 必須 |
-| -------- | ----------- | -------- |
+| :-------- | :----------- | :-------- |
 | folderPath | Azure Data Lake Store のコンテナーとフォルダーのパス。 | あり |
 | fileName | <p>Azure Data Lake Store 内のファイルの名前。fileName は省略可能です。</p><p>fileName を指定した場合、アクティビティ (コピーを含む) は特定のファイルで機能します。</p><p>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。</p><p>出力データセットに fileName が指定されていない場合、Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p>) という形式の名前でファイルが生成されます。 | いいえ |
 | partitionedBy | partitionedBy は任意のプロパティです。これを使用し、時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。詳細と例については、「partitionedBy プロパティの活用」セクションを参照してください。 | いいえ |
+| BlobSink の format | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。 | いいえ |
+| compression | データの圧縮の種類とレベルを指定します。サポートされる種類: GZip、Deflate、および BZip2。サポートされるレベル: Optimal および Fastest。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
 
 ### partitionedBy プロパティの活用
-前に説明したように、時系列データの動的な folderPath と fileName を指定するとき、**partitionedBy** セクション、Data Factory マクロ、特定のデータ スライスの開始時刻と終了時刻を示すシステム変数の SliceStart と SliceEnd を使用できます。
+前述のように、時系列データに対して動的な folderPath と fileName を指定するときに、**partitionedBy** セクション、Data Factory マクロ、特定のデータ スライスの開始時刻と終了時刻を示すシステム変数の SliceStart と SliceEnd を使用できます。
 
 時系列データセット、スケジュール作成、スライスに関する詳細については、記事「[データセットの作成](data-factory-create-datasets.md)」と記事「[スケジュールと実行](data-factory-scheduling-and-execution.md)」を参照してください。
 
@@ -446,8 +448,96 @@ Azure Storage のリンクされたサービスを利用し、Azure ストレー
 
 上記の例では、SliceStart の年、月、日、時刻が folderPath プロパティと fileName プロパティで使用される個別の変数に抽出されます。
 
+### TextFormat の指定
+
+書式が **TextFormat** に設定されている場合、次の**省略可能な**プロパティを **Format** セクションで指定できます。
+
+| プロパティ | 説明 | 必須 |
+| -------- | ----------- | -------- |
+| columnDelimiter | ファイルの列の区切り記号として使用される文字です。このタグは任意です。既定値はコンマです (,)。 | いいえ |
+| rowDelimiter | ファイルの行の区切り記号として使用される文字です。このタグは任意です。既定値は [“\\r\\n”, “\\r”,” \\n”] のいずれかになります。 | いいえ |
+| escapeChar | <p>コンテンツに表示される列区切り記号のエスケープに使用される特殊文字です。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。</p><p>たとえば、列の区切り文字としてコンマ (,) を使用しているときにテキストにもコンマ文字が必要な場合 (例: “Hello, world”)、エスケープ文字として「$」を定義し、ソースで文字列「Hello$, world」を使用できます。</p><p>1 つのテーブルに escapeChar と quoteChar の両方は指定できないことに注意してください。</p> | いいえ | 
+| quoteChar | <p>この特殊文字は文字列値を引用符で囲むために使用されます。引用符文字内の列区切り文字と行区切り文字は文字列値の一部として処理されます。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。</p><p>たとえば、列の区切り文字としてコンマ (,) を使用しているときにテキストにもコンマ文字が必要な場合 (例: <Hello  world>)、引用符文字として「"」を定義し、ソースで文字列「"Hello, world"」を使用できます。このプロパティは入力テーブルと出力テーブルの両方に適用されます。</p><p>1 つのテーブルに escapeChar と quoteChar の両方は指定できないことに注意してください。</p> | いいえ |
+| nullValue | <p>BLOB ファイル コンテンツで null 値を表すために使用する文字です。このタグは任意です。既定値は「\\N」です。</p><p>たとえば、上記のサンプルに基づくと、BLOB の「NaN」は SQL Server などにコピーされるときに null 値として変換されます。</p> | いいえ |
+| encodingName | エンコード名の指定。有効なエンコード名の一覧については、[Encoding.EncodingName プロパティに関する記事](https://msdn.microsoft.com/library/system.text.encoding.aspx)を参照してください。例: windows-1250 または shift\_jis。既定値は UTF-8 です。 | いいえ | 
+
+#### サンプル
+次の例は、TextFormat の format プロパティの一部を示します。
+
+	"typeProperties":
+	{
+	    "folderPath": "mycontainer/myfolder",
+	    "fileName": "myfilename"
+	    "format":
+	    {
+	        "type": "TextFormat",
+	        "columnDelimiter": ",",
+	        "rowDelimiter": ";",
+	        "quoteChar": """,
+	        "NullValue": "NaN"
+	    }
+	},
+
+quoteChar ではなく escapeChar を使用するには、quoteChar の行を次で置き換えます。
+
+	"escapeChar": "$",
+
+### AvroFormat の指定
+形式が AvroFormat に設定されている場合、typeProperties セクション内の Format セクションにプロパティを指定する必要はありません。例:
+
+	"format":
+	{
+	    "type": "AvroFormat",
+	}
+
+Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュートリアルに関するページ](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)を参照してください。
+
+
+### 圧縮のサポート  
+大量のデータセットを処理すると、I/O およびネットワークにボトルネックが生じる可能性があります。そのため、データを圧縮して保存すると、ネットワークでのデータ転送速度が上昇してディスク領域を節約できるだけでなく、ビッグ データの処理性能を大幅に高めることができます。現時点では、圧縮は Azure BLOB やオンプレミスのファイル システムなど、ファイルベースのデータ ストアでサポートされています。
+
+データセットの圧縮を指定するには、次の例のように、データセットの JSON で **compression** プロパティを使用します。
+
+	{  
+		"name": "AzureDatalakeStoreDataSet",  
+	  	"properties": {  
+	    	"availability": {  
+	    		"frequency": "Day",  
+	    	  	"interval": 1  
+	    	},  
+	    	"type": "AzureDatalakeStore",  
+	    	"linkedServiceName": "DataLakeStoreLinkedService",  
+	    	"typeProperties": {  
+	    		"fileName": "pagecounts.csv.gz",  
+	    	  	"folderPath": "compression/file/",  
+	    	  	"compression": {  
+	    	    	"type": "GZip",  
+	    	    	"level": "Optimal"  
+	    	  	}  
+    		}  
+	  	}  
+	}  
+ 
+**compression** セクションには次の 2 つのプロパティがあります。
+  
+- **type:** 圧縮コーデックです。**GZIP**、**Deflate**、または **BZIP2** を指定できます。  
+- **level:** 圧縮率です。**Optimal** または **Fastest** を指定できます。 
+	- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、生成ファイルが最適に圧縮されない場合があります。 
+	- **Optimal**: 圧縮操作では最適に圧縮されますが、操作完了までの時間が増加する場合があります。 
+	
+	詳細については、トピック[圧縮レベルに関するトピック](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)を参照してください。
+
+前述のサンプル データセットをコピー アクティビティの出力として使用し、コピー アクティビティで出力データを GZIP コーデックによって最適な圧縮率で圧縮してから、Azure Data Lake Store の pagecounts.csv.gz という名前のファイルに圧縮データを書き込む場合を考えます。
+
+入力データセットの JSON で compression プロパティを指定すると、パイプラインでソースから圧縮データを読み取ることができ、出力データセットの JSON で compression プロパティを指定すると、コピー アクティビティにより出力先に圧縮データを書き込むことができます。いくつかのサンプル シナリオを次に示します。
+
+- Azure Data Lake Store から GZIP 圧縮データを読み取り、展開して、生成されたデータを Azure SQL Database に書き込みます。この場合、Azure Data Lake Store 入力データセットを、compression JSON プロパティを使用して定義します。 
+- オンプレミスのファイル システムのプレーンテキスト ファイルからデータを読み取り、GZip 形式で圧縮して、圧縮データを Azure Data Lake Store に書き込みます。この場合、Azure Data Lake Store 出力データセットを、compression JSON プロパティを使用して定義します。  
+- Azure Data Lake Store から GZIP 圧縮データを読み取って展開し、BZIP2 で圧縮して、生成されたデータを Azure Data Lake Store に書き込みます。この場合、Azure Data Lake Store 入力データセットは圧縮タイプを GZIP に設定して定義し、Azure Data Lake Store 出力データセットは圧縮タイプを BZIP2 に設定して定義します。   
+
+
 ## Azure Data Lake のコピー アクティビティの type プロパティ  
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
 
 一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、sources と sinks の種類によって異なります。
 
@@ -463,7 +553,7 @@ Azure Storage のリンクされたサービスを利用し、Azure ストレー
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| copyBehavior | コピー動作を指定します。 | <p>**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。つまり、ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。</p><p>**FlattenHierarchy:** ソース フォルダーのすべてのファイルはターゲット フォルダーの最上位レベルに配置されます。ターゲット ファイルの名前は自動的に生成されます。</p><p>**MergeFiles:** ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル/BLOB の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。</p> | いいえ |
+| copyBehavior | コピー動作を指定します。 | <p>**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。つまり、ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。</p><p>**FlattenHierarchy:** ソース フォルダーのすべてのファイルはターゲット フォルダーの最上位レベルに配置されます。ターゲット ファイルの名前は自動的に生成されます。</p><p>**MergeFiles:** ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル名/BLOB 名を指定した場合、マージ後のファイルの名前は指定した名前になります。それ以外は自動生成されたファイル名になります。</p> | いいえ |
 
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
@@ -472,4 +562,4 @@ Azure Storage のリンクされたサービスを利用し、Azure ストレー
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

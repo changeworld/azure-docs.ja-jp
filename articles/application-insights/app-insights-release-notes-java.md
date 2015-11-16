@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Application Insights for Java のリリース ノート" 
-	description="Java SDK 用の最新の更新プログラム。" 
-	services="application-insights" 
+<properties
+	pageTitle="Application Insights for Java のリリース ノート"
+	description="Java SDK 用の最新の更新プログラム。"
+	services="application-insights"
     documentationCenter=""
-	authors="alancameronwills" 
+	authors="alancameronwills"
 	manager="douge"/>
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/21/2015" 
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/21/2015"
 	ms.author="awills"/>
- 
+
 # Java 向けの Application Insights SDK のリリース ノート
 
 [Application Insights SDK for Java](app-insights-java-get-started.md) では、実行中のアプリに関するテレメトリを [Application Insights](http://azure.microsoft.com/services/application-insights/) に送信し、その使用状況とパフォーマンスを分析できます。
@@ -22,7 +22,7 @@
 
 「[SDK for Java を使ってみる](app-insights-java-get-started.md)」をご覧ください。
 
-#### 最新の SDK にアップグレードするには 
+#### 最新の SDK にアップグレードするには
 
 アップグレード後に、ApplicationInsights.xml に対して行ったカスタマイズをもう一度マージする必要があります。このファイルをコピーし、新しいファイルと比較します。
 
@@ -33,14 +33,15 @@
 
 *それ以外の場合*
 
-* 最新バージョンの [Azure Libraries for Java](http://dl.msopentech.com/lib/PackageForWindowsAzureLibrariesForJava.html) をダウンロードして、旧バージョンと置き換えます。 
- 
+* 最新バージョンの [Azure Libraries for Java](http://dl.msopentech.com/lib/PackageForWindowsAzureLibrariesForJava.html) をダウンロードして、旧バージョンと置き換えます。
+
 新旧の ApplicationInsights.xml を比較します。確認できる変更の多くは、モジュールの追加と削除によって発生しています。以前のカスタマイズをもう一度設定します。
 
 ## バージョン 1.0.2
+- コード内にインストルメンテーション キーを明示的に指定する場合に、そのインストルメンテーション キーが構成ファイルに指定されたインストルメンテーション キーを使用してオーバーライドされるのを防止します。
+- すべての正常な HTTP 状態コードを処理し、関連する HTTP 要求を「成功した」としてレポートします。
+- ConfigurationFileLocator によってスローされたすべての例外を処理します。
 
-- Docker との互換性
-- バグ修正 - すべての例外をキャッチし、すべての成功を示すステータス コードを処理します
 
 ## バージョン 1.0.1
 - [Java エージェント](app-insights-java-agent.md)は、次の項目に関する依存関係情報を収集します。
@@ -71,6 +72,5 @@
 - 32 ビット Windows コンピューターからパフォーマンス カウンターを収集できます。
 - 新しい ```trackDependency``` API メソッドを利用し、依存関係を手動で追跡できます。
 - 報告された項目に ```SyntheticSource``` プロパティを追加し、利用統計情報項目に合成のタグを付けることができます。
- 
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

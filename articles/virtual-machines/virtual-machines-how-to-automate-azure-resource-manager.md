@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="index-page"
-	ms.date="07/09/2015"
+	ms.date="10/29/2015"
 	ms.author="davidmu"/>
 
 
@@ -32,13 +32,11 @@ Azure リソース マネージャーを使用すると、Azure インフラス�
 
 [テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)
 
-[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](http://go.microsoft.com/fwlink/p/?linkid=534868&clcid=0x409)
+[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理](http://go.microsoft.com/fwlink/p/?linkid=534868&clcid=0x409)
+
+[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)
 
 [Azure リソース マネージャー テンプレートと PowerShell を使用した仮想マシンのデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
-
-## 一般的なリソース
-
-[Azure のクイック スタート テンプレート](http://azure.microsoft.com/documentation/templates/)
 
 [Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
 
@@ -47,31 +45,17 @@ Azure リソース マネージャーを使用すると、Azure インフラス�
 
 [ネットワーク リソース プロバイダー](http://go.microsoft.com/fwlink/p/?linkid=534943&clcid=0x409)
 
-
-## Azure CLI での自動化
-
-[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)
-
-[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](http://go.microsoft.com/fwlink/p/?linkid=534868&clcid=0x409)
-
-## Azure PowerShell での自動化
-
-[Azure リソース マネージャー テンプレートと PowerShell を使用した仮想マシンのデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
-
-
-## .NET での自動化
+## .NET
 
 [.NET ライブラリを使用した Azure リソースのデプロイ](virtual-machines-arm-deployment.md)
 
 
-## Azure Automation での自動化
+## Azure Automation
 
 [Azure Automation を使用した Azure 仮想マシンの管理](automation-manage-virtual-machines.md)
-
-
 
 ## その他のリソース
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

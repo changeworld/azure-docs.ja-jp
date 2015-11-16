@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Search 管理 REST API の使用" 
-	description="Azure Search 管理 REST API の使用" 
+	pageTitle="Azure Search 管理 REST API の使用 | Microsoft Azure" 
+	description="管理 REST API を利用し、ホスト型のクラウド検索サービスの Azure Search を管理する" 
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="09/08/2015" 
+	ms.date="11/04/2015" 
 	ms.author="heidist"/>
 
 # Azure Search 管理 REST API の使用
@@ -58,7 +58,7 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
 ###Active Directory サービスの作成
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
+1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
 
 2. 左側のナビゲーション ウィンドウを下へスクロールし、**[Active Directory]** をクリックします。
 
@@ -204,4 +204,4 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

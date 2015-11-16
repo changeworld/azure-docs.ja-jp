@@ -1,5 +1,5 @@
 <properties
-   pageTitle="リソース バランサーのアーキテクチャ"
+   pageTitle="リソース バランサーのアーキテクチャ | Microsoft Azure"
    description="Service Fabric のリソース バランサーのアーキテクチャの概要"
    services="service-fabric"
    documentationCenter=".net"
@@ -38,4 +38,4 @@ Service Fabric リソース バランサーは、1 つの一元的なリソー�
 [Image1]: media/service-fabric-resource-balancer-architecture/Service-Fabric-Resource-Balancer-Architecture.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

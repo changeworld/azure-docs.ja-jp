@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Notification Hubs によるユーザーへの通知"
+	pageTitle="Azure Notification Hubs と .NET バックエンドによるユーザーへの通知"
 	description="Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。"
 	documentationCenter="windows"
 	authors="wesmc7777"
@@ -16,7 +16,7 @@
 	ms.date="10/15/2015"
 	ms.author="wesmc"/>
 
-#Azure Notification Hubs によるユーザーへの通知
+#Azure Notification Hubs と .NET バックエンドによるユーザーへの通知
 
 [AZURE.INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -384,4 +384,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

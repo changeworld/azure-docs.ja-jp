@@ -1,6 +1,6 @@
 <properties
-   pageTitle="混乱のテストの実行"
-   description="この記事では、Microsoft 提供の事前定義された Service Fabric のシナリオについて説明します。"
+   pageTitle="混乱とフェールオーバーのテスト | Microsoft Azure"
+   description="Service Fabric の混乱テストとフェールオーバー テストのシナリオを利用し、障害を誘導し、サービスの信頼性を検証します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="anmolah"
@@ -251,4 +251,4 @@ Invoke-ServiceFabricFailoverTestScenario -TimeToRunMinute $timeToRun -MaxService
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

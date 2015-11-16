@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="10/13/2015"
+   ms.date="11/02/2015"
    ms.author="andkjell;billmath"/>
 
 # Azure Active Directory Connect (Azure AD Connect) の前提条件
@@ -31,8 +31,9 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 **オンプレミスのサーバーと環境**
 
 - AD スキーマのバージョンとフォレストの機能レベルは、Windows Server 2003 以降である必要があります。ドメイン コント ローラーは、スキーマとフォレスト レベルの要件を満たしていれば、任意のバージョンを実行できます。
+- **パスワード ライトバック**機能を使用する予定がある場合、ドメイン コントローラーは (最新の SP が適用された) Windows Server 2008 以降にインストールされている必要があります。
 - Azure AD Connect は、Windows Server 2008 以降にインストールする必要があります。このサーバーをドメイン コントローラーにすることができます。Express 設定を使用する場合はメンバー サーバーにすることもできます。カスタム設定を使用する場合、サーバーはスタンドアロンにすることもでき、ドメインに参加する必要はありません。
-- パスワード同期機能を使用する場合、サーバーは Windows Server 2008 R2 SP1 以降にする必要があります。
+- **パスワード同期**機能を使用する場合、サーバーは Windows Server 2008 R2 SP1 以降にする必要があります。
 - Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。これらのサーバーで、リモート インストール用の Windows リモート管理を有効にする必要があります。
 - Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされ、サービスのサービス アカウントがローカル コンピューターに作成されます。SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール プロセスで別のバージョンの SQL Server を指定する必要があります。Azure AD Connect では、SQL Server 2008 (SP4) から SQL Server 2014 まで、すべてのエディションの Microsoft SQL Server がサポートされています。
 
@@ -112,6 +113,6 @@ AD FS または Web アプリケーション サーバーを実行するコン�
 
 
 ## 次のステップ
-「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

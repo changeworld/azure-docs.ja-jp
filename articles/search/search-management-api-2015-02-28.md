@@ -1,10 +1,10 @@
-<properties pageTitle="Azure Search 管理 REST API バージョン 2015-02-28" description="Azure Search 管理 REST API: バージョン 2015-02-28" services="search" documentationCenter="" authors="HeidiSteen" manager="mblythe" editor=""/>
+<properties pageTitle="Azure Search 管理 REST API バージョン 2015-02-28 | Microsoft Azure" description="Azure Search 管理 REST API: バージョン 2015-02-28" services="search" documentationCenter="" authors="HeidiSteen" manager="mblythe" editor=""/>
 
-<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="09/16/2015" ms.author="heidist" />
+<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="11/04/2015" ms.author="heidist" />
 
 # 管理 API: バージョン 2015-02-28
 
-このドキュメントでは、Azure Search 管理 REST API の 2015-02-28 バージョンについて説明します。その後、これより新しいバージョンで置き換えられています。最新版については、MSDN で「[Azure Search 管理 REST API 2015-08-19](https://msdn.microsoft.com/library/dn832684.aspx)」を参照してください。
+Azure Search は Microsoft Azure のホスト型クラウド検索サービスです。このドキュメントでは、Azure Search 管理 REST API の 2015-02-28 バージョンについて説明します。その後、これより新しいバージョンで置き換えられています。最新版については、MSDN で「[Azure Search 管理 REST API 2015-08-19](https://msdn.microsoft.com/library/dn832684.aspx)」を参照してください。
 
 ##サービス管理操作
 
@@ -133,7 +133,7 @@ Azure サブスクリプションに対して HTTP 要求を発行すること�
 
 #### 要求本文のパラメーター#
 
-`location`: 必須。サポートおよび登録されている Azure の地理的位置 (米国西部、米国東部、東南アジアなど) の 1 つ。リソースの場所は、作成後には変更できないことに注意してください。
+`location`: 必須。サポートおよび登録されている Azure の geo リージョン (米国西部、米国東部、東南アジアなど) の 1 つ。リソースの場所は、作成後には変更できないことに注意してください。
 
 `tags`: 省略可能。リソースを説明するキーと値のペアの一覧。これらのタグはリソース グループをまたがってリソースを表示およびグループ化する際に使用できます。1 つのリソースに対して、最大 10 個のタグを指定できます。各タグには 128 文字以内のキーと、256 文字以内の値が必要です。
 
@@ -189,7 +189,7 @@ HTTP 200 および 201 の応答本文には、サービス定義が含まれま
 
 `name`: Search サービスの名前。
 
-`location`: サポートおよび登録されている Azure の地理的位置 (米国西部、米国東部、東南アジアなど) の 1 つ。
+`location`: サポートおよび登録されている Azure の geo リージョン (米国西部、米国東部、東南アジアなど) の 1 つ。
 
 `tags`: リソース グループをまたがるリソースの表示およびグループ化に使用される、リソースを説明するキーと値のペアの一覧。
 
@@ -292,7 +292,7 @@ HTTP 200 および 201 の応答本文には、サービス定義が含まれま
 
 `name`: Search サービスの名前。
 
-`location`: リソースの場所。サポートおよび登録されている Azure の地理的位置 (米国西部、米国東部、東南アジアなど) の 1 つです。
+`location`: リソースの場所。サポートおよび登録されている Azure の geo リージョン (米国西部、米国東部、東南アジアなど) の 1 つです。
 
 `tags`: リソースを説明するキーと値のペアの一覧。これらのタグはリソース グループをまたがってリソースを表示およびグループ化する際に使用できます。
 
@@ -810,6 +810,6 @@ api-key、特に管理者キーは、必ず機密データとして扱ってく�
 
 ###応答本文###
 
-なし。
+ありません。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

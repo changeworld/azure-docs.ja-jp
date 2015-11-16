@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Azure SQL Database - Elastic Database ツール"
+    pageTitle="Elastic Database ツール機能の概要 | Microsoft Azure"
     description="これらのツールを使用すると、Software as a Service (SaaS) の開発者は柔軟で拡張性の高いデータベースを簡単に作成できます。"
     services="sql-database"
     documentationCenter=""
@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="08/27/2015"
-    ms.author="sidneyh"/>
+    ms.date="11/04/2015"
+    ms.author="ddove;sidneyh"/>
 
 # Elastic Database 機能の概要
 
@@ -108,4 +108,4 @@ Elastic Database プールの詳細を確認するには、「[エラスティ�
 [3]: ./media/sql-database-elastic-scale-introduction/overview.png
 [4]: ./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

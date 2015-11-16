@@ -90,4 +90,4 @@ Azure で仮想マシン (VM) を仮想ネットワーク (VNet) に追加する
 - [リソース マネージャーのデプロイ モデルでルートを作成](../virtual-network-create-udr-arm-template)し、サブネットに関連付ける方法について説明します。 
 - [クラシック デプロイ モデルでルートを作成](../virtual-network-create-udr-classic-ps)し、サブネットに関連付ける方法について説明します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

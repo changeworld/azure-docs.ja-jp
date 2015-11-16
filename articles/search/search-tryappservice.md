@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure Search が使用された Try Azure App Service の試用" 
-   description="Azure Search を TryAzureAppService テンプレートを使用し、最大 1 時間無料で試してください。" 
+   pageTitle="Azure Search が使用された Try Azure App Service の試用 | Microsoft Azure" 
+   description="ホスト型クラウド検索サービスの Azure Search を TryAzureAppService テンプレートを使用し、最大 1 時間無料で試してください。" 
    services="search" 
    documentationCenter="" 
    authors="HeidiSteen" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search" 
-   ms.date="07/13/2015"
+   ms.date="11/04/2015"
    ms.author="heidist"/>
 
 # Azure Search が使用された Try Azure App Service の試用
@@ -316,7 +316,7 @@ Azure Search には、検索演算子の動作を制御できる構成可能な 
 - ユーザー入力に対し、クエリのオート コンプリートまたは先行入力候補の追加を行う、[Suggesters を定義](https://msdn.microsoft.com/library/mt131377.aspx)します。
 - データ ソースが Azure SQL Database または Azure DocumentDB である場合、インデックスを自動更新する[インデクサーを定義](https://msdn.microsoft.com/library/dn946891.aspx)します。
 
-これらのすべてのタスクを実行するのには、サービスにインデックスを作成および入力する Azure サブスクリプションが必要です。無料評価版にサインアップする方法の詳細については、[https://azure.microsoft.com/pricing/free-trial](https://azure.microsoft.com/pricing/free-trial/) を参照してください。
+これらのすべてのタスクを実行するのには、サービスにインデックスを作成および入力する Azure サブスクリプションが必要です。無料試用版にサインアップする方法の詳細については、[https://azure.microsoft.com/pricing/free-trial](https://azure.microsoft.com/pricing/free-trial/) を参照してください。
 
 Azure Search に関する詳細については、[http://azure.microsoft.com](http://azure.microsoft.com) の[ドキュメント ページ](http://azure.microsoft.com/documentation/services/search/)を参照するか、Azure Search の機能を検証する[サンプルおよびビデオ](search-video-demo-tutorial-list.md)をご希望の数参照してください。
 
@@ -529,4 +529,4 @@ Azure Search に関する詳細については、[http://azure.microsoft.com](ht
 [13]: ./media/search-tryappservice/AzSearch-TryAppService-Schema.png
 [14]: ./media/search-tryappservice/AzSearch-TryAppService-HitHighlight.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

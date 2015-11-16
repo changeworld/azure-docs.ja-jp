@@ -11,7 +11,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/17/2015" 
+	ms.date="11/03/2015" 
 	ms.author="ddove; sidneyh" />
 
 # PowerShell を使用した SQL Database のエラスティック データベース ジョブの作成と管理 (プレビュー)
@@ -20,20 +20,15 @@
 - [Azure portal](sql-database-elastic-jobs-create-and-manage.md)
 - [PowerShell](sql-database-elastic-jobs-powershell.md)
 
-## 概要
 
-**エラスティック データベース ジョブ**機能 (プレビュー) を使用すると、カスタム定義のデータベース コレクション、[エラスティック データベース プール (プレビュー)](sql-database-elastic-pool.md)、または ([エラスティック データベース クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用して作成された) シャード セットなど、データベース グループ全体に対して、確実に Transact-SQL (T-SQL) スクリプトを実行し、DACPAC を適用することができます。現在、プレビューでは、**エラスティック データベース ジョブ**は顧客がホストする Azure クラウド サービスです。ジョブと呼ばれるアドホック タスクとスケジュールされた管理タスクを実行できます。この機能を使用すると、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) テレメトリの収集など、管理操作を実行する Transact-SQL スクリプトを実行して、多数の Azure SQL Database を簡単かつ確実に管理できます。エラスティック データベース ジョブの詳細については、「[エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」を参照してください。
 
-**エラスティック データベース ジョブ**に PowerShell API を使用すると、スクリプトを実行する対象のデータベース グループを定義できます。現在、Azure ポータルの**エラスティック データベース ジョブ**機能は機能セットが制限され、エラスティック データベース プールに対する実行に限定されています。
-
-**エラスティック データベース ジョブ (プレビュー)** は、複数の Azure コンポーネントを使用して、実行対象のジョブを定義し、ジョブを実行するタイミングを定義し、ジョブを実行し、ジョブの成功または失敗を追跡できます。また、必要に応じて、結果を返すクエリの結果の送信先を指定できます。最初のプレビュー以降、ポータル経由で、このプレビューの PowerShell API には機能が追加されているので、最新の**エラスティック データベース ジョブ** コンポーネントをインストールすることをお勧めします。既にインストールされている場合は、**エラスティック データベース ジョブ** コンポーネントをアップグレードするだけで更新されます。[Nuget](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.Jobs) からのインストールの詳細については、「[エラスティック データベース ジョブ コンポーネントのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。
-
-この記事では、Azure サブスクリプションを除き、**エラスティック データベース ジョブ**の作成と管理に必要なすべてを作成する方法について説明します。Azure サブスクリプションをお持ちでない場合、このページの上部の無料試用版をクリックしてからこの記事に戻り、最後まで完了してください。このトピックは、「[エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)」に示したサンプルを拡張したものです。このトピックを読むと、**シャード セット**に定義されているシャード データベースのグループまたはデータベースのカスタム コレクションに対して管理操作を実行するジョブの作成方法と管理方法を理解できます。
+**エラスティック データベース ジョブ**用 PowerShell API (プレビュー) を使うと、スクリプトの実行対象となるデータベースのグループを定義できます。この記事では、PowerShell のコマンドレットを使用して**エラスティック データベース ジョブ**を作成して管理する方法について説明します。[エラスティック ジョブの概要](sql-database-elastic-jobs-overview.md)に関するページを参照してください。
 
 ## 前提条件
-* Azure サブスクリプション。無料評価版については、「[1 か月間の無料評価版](http://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
-* まず**エラスティック データベース ジョブ** PowerShell パッケージをダウンロードし、インポートして、エラスティック データベース ジョブ コンポーネントをインストールする必要があります。「[エラスティック データベース ジョブのインストール](sql-database-elastic-jobs-service-installation.md)」の手順に従って実行してください。
-* Azure PowerShell Version 0.8.16 以降。[Web Platform インストーラー](http://go.microsoft.com/fwlink/p/?linkid=320376)を使用して最新バージョン (0.9.5) をインストールします。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」をご覧ください。
+* Azure サブスクリプション。無料試用版については、「[1 か月間の無料試用版](http://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
+* エラスティック データベース ツールで作成された一連のデータベース。「[エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)」を参照してください。
+* Azure PowerShell。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」をご覧ください。
+* **エラスティック データベース ジョブ**の PowerShell パッケージ。「[エラスティック データベース ジョブのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。
 
 ### Azure サブスクリプションを選択します。
 
@@ -195,52 +190,57 @@
 </table>
 
 ## サポートされているエラスティック データベース ジョブ グループの種類
-**エラスティック データベース ジョブ**を使用すると、データベース グループ全体に対して Transact-SQL (T-SQL) スクリプトまたは DACPAC のアプリケーションを実行できます。データベース グループ全体に対して実行するジョブを送信すると、エラスティック データベース ジョブによって対象のジョブが子ジョブにまで ”拡張” されます。各子ジョブでは、グループ内の Single Database に対して要求されたジョブ実行が実行されます。
+このジョブは、Transact-SQL (T-SQL) スクリプトまたは DACPAC のアプリケーションをデータベースのグループに対して実行します。データベース グループ全体に対して実行するジョブを送信すると、対象のジョブが子ジョブにまで "拡張" されます。各子ジョブでは、グループ内の Single Database に対して要求されたジョブ実行が実行されます。
  
-現在サポートされているグループの種類の一覧を次に示します。
+次の 2 種類のグループを作成できます。
 
-* [シャード マップ](sql-database-elastic-scale-shard-map-management.md): シャード マップが対象のジョブを送信すると、まず現在のシャード セットを判断するためにジョブからシャード マップに対してクエリが実行されます。次に、シャード マップ内の各シャードに対応する子ジョブにまでジョブが拡張されます。
-* カスタム コレクション: カスタムの定義済みデータベース セットを示すために指定されます。カスタム コレクションを対象とするジョブを送信すると、カスタム コレクション内に現在定義されている各データベースに対応する子ジョブにまでジョブが拡張されます。
+* [シャード マップ](sql-database-elastic-scale-shard-map-management.md) グループ: シャード マップを対象に送信されたジョブは、まずシャード マップを照会して現在のシャード セットを特定し、その後、シャード マップ内の各シャードに対応する子ジョブを作成します。
+* カスタム コレクション グループ: カスタムの定義済みデータベース セット。カスタム コレクションを対象とするジョブは、現在カスタム コレクション内に存在する各データベースについて子ジョブを作成します。
 
-## エラスティック データベース ジョブの接続の設定
-PowerShell モジュールの読み込み後、ジョブの API を使用する前に、エラスティック データベース ジョブの*管理データベース*に対する接続を設定する必要があります。このコマンドレットを呼び出すと、資格情報ウィンドウがトリガーされ、エラスティック データベース ジョブをインストールしたときに指定したユーザー名とパスワードの入力を求めるポップアップが表示されます。このトピックで挙げるすべての例は、この最初の手順が実行済みであると想定しています。
+## エラスティック データベース ジョブの接続を設定するには
+
+ジョブの API を使うには、ジョブの*管理データベース*に対する接続を先に設定しておく必要があります。このコマンドレットを実行すると、資格情報ウィンドウがトリガーされ、エラスティック データベース ジョブをインストールするときに作成したユーザー名とパスワードの入力を求めるポップアップが表示されます。このトピックで挙げるすべての例は、この最初の手順が実行済みであると想定しています。
 
 エラスティック データベース ジョブに対する接続を開きます。
 
 	Use-AzureSqlJobConnection -CurrentAzureSubscription 
 
 ## エラスティック データベース ジョブ内の暗号化された資格情報
-データベースの資格情報は、パスワードを暗号化してエラスティック データベース ジョブの*管理データベース*に挿入できます。ジョブのスケジュールを使用するなど、ジョブを後で実行できるようにするには、資格情報を保存する必要があります。
- 
-暗号化は、インストール スクリプトの一部として作成される証明書を介して利用できます。インストール スクリプトによって、証明書が作成され、Azure クラウド サービスにアップロードされます。Azure クラウド サービスでは、保存されている暗号化済みパスワードが復号されます。後で Azure のクラウド サービスによってエラスティック データベース ジョブの*管理データベース*内にパブリック キーが保存されます。PowerShell API と Azure ポータル インターフェイスは、このキーを使用して、入力されたパスワードを暗号化できます。証明書をローカルにインストールする必要はありません。
- 
-資格情報のパスワードは暗号化され、エラスティック データベース ジョブ オブジェクトに対して読み取り専用アクセス権を持つユーザーから保護されますが、悪意のあるユーザーがエラスティック データベース ジョブ オブジェクトに対して読み取りおよび書き込みアクセス権を持っている場合、パスワードが抽出される可能性があります。資格情報は、ジョブ実行全体で再利用されるように設計されています。接続を確立すると、資格情報はターゲット データベースに渡されます。現在、各資格情報に使用されるターゲット データベースに制限はないため、悪意のあるユーザーが、制御可能なデータベースのデータベース ターゲットを追加し、そのデータベースを対象とするジョブを開始して、資格情報のパスワードを取得する可能性があります。
 
-エラスティック データベース ジョブには、セキュリティのベスト プラクティスがあります。
+データベースの資格情報は、パスワードを暗号化してジョブの*管理データベース*に挿入できます。ジョブを後で (スケジュールを使用して) 実行できるようにするには、資格情報を保存する必要があります。
+ 
+暗号化は、インストール スクリプトの一部として作成される証明書を介して利用できます。インストール スクリプトによって、証明書が作成され、Azure クラウド サービスにアップロードされます。Azure クラウド サービスでは、保存されている暗号化済みパスワードが復号されます。後で Azure のクラウド サービスによってジョブの*管理データベース*内にパブリック キーが保存されます。PowerShell API と Azure ポータル インターフェイスは、このキーを使用して、入力されたパスワードを暗号化できます。証明書をローカルにインストールする必要はありません。
+ 
+資格情報のパスワードは暗号化され、エラスティック データベース ジョブ オブジェクトへの読み取り専用アクセス権を持つユーザーから保護されます。ただし、エラスティック データベース ジョブ オブジェクトに対する読み取り/書き込みアクセス権を持ったユーザーが悪意を持ってパスワードを抽出することは可能です。資格情報は、ジョブ実行全体で再利用されるように設計されています。接続を確立すると、資格情報はターゲット データベースに渡されます。個々の資格情報に使用されるターゲット データベースについては、現在制限がありません。悪意を持ったユーザーの管理の下で、データベース ターゲットが追加される可能性は否定できません。このデータベースを対象とするジョブがそのユーザーによって実行され、資格情報のパスワードが奪われる可能性はあります。
+
+エラスティック データベース ジョブに関しては、セキュリティ上、以下のことが推奨されます。
 
 * API の使用を信頼できるユーザーに制限します。
 * 資格情報には、ジョブ タスクの実行に必要最小限の特権を持たせます。詳細については、MSDN の記事「[SQL Server の承認とアクセス許可](https://msdn.microsoft.com/library/bb669084.aspx)」を参照してください。
 
-### データベース全体に対するジョブ実行用に暗号化された資格情報を作成する
-新しい暗号化された資格情報を作成するには、Get-Credential コマンドレットを実行します。ユーザー名とパスワードの入力が求められます。この資格情報は **New-AzureSqlJobCredential** コマンドレットに渡すことができます。
+### データベース全体に対するジョブ実行用に暗号化された資格情報を作成するには
+
+新しい暗号化された資格情報を作成するには、[**Get-Credential コマンドレット**](https://technet.microsoft.com/library/hh849815.aspx)を実行します。ユーザー名とパスワードの入力が求められます。この資格情報は [**New-AzureSqlJobCredential コマンドレット**](https://msdn.microsoft.com/library/mt346063.aspx)に渡すことができます。
 
 	$credentialName = "{Credential Name}"
 	$databaseCredential = Get-Credential
 	$credential = New-AzureSqlJobCredential -Credential $databaseCredential -CredentialName $credentialName
 	Write-Output $credential
 
-### 資格情報の更新
-パスワードが変化する場合をサポートするように既存の資格情報を更新するには、**Set-AzureSqlJobCredential** コマンドレットを使用して、**CredentialName** パラメーターを設定します。
+### 資格情報を更新するには
+
+パスワードが変わったときは、[**Set-AzureSqlJobCredential コマンドレット**](https://msdn.microsoft.com/library/mt346062.aspx)を使用して、**CredentialName** パラメーターを設定します。
 
 	$credentialName = "{Credential Name}"
 	Set-AzureSqlJobCredential -CredentialName $credentialName -Credential $credential 
 
-## エラスティック データベース シャード マップ ターゲットの定義
-データベース ターゲットとしてシャード マップを使用して、([エラスティック データベース クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用して作成された) シャード セット内のすべてのデータベースに対してジョブを実行します。この例は、エラスティック データベース クライアント ライブラリを使用してシャード アプリケーションを作成する場合に依存しています。[「エラスティック データベース ツールの概要」に示されているサンプル](sql-database-elastic-scale-get-started.md)をダウンロードして実行します。
+## エラスティック データベースのシャード マップ ターゲットを定義するには
+
+([エラスティック データベース クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用して作成された) シャード セット内のすべてのデータベースに対してジョブを実行するには、データベース ターゲットとしてシャード マップを使用します。この例は、エラスティック データベース クライアント ライブラリを使用して作成されたシャード アプリケーションがあることを前提としています。「[エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)」を参照してください。
 
 ###サンプル アプリケーションを使用してシャード マップ マネージャーを作成する
 
-ここでは、シャード マップ マネージャーといくつかのシャードを作成し、シャードにデータを挿入します。シャードが既にセットアップされている場合は、以下の手順を省略して、次のセクションに進むことができます。
+この例では、シャード マップ マネージャーといくつかのシャードを作成し、シャードにデータを挿入します。
 
 1. 「**「エラスティック データベース ツールの概要**」に示されているサンプル アプリケーションをビルドして実行します。セクション「[サンプル アプリケーションのダウンロードと実行](sql-database-elastic-scale-get-started.md#Getting-started-with-elastic-database-tools)」の手順 7 まで実行します。手順 7 を終了すると、次のコマンド プロンプトが表示されます。
 
@@ -252,7 +252,7 @@ PowerShell モジュールの読み込み後、ジョブの API を使用する�
 
 	![Visual Studio の確認][2]
 
-この場合、**New-AzureSqlJobTarget** コマンドレットを使用してシャード マップ ターゲットを作成します。シャード マップ マネージャー データベースをデータベース ターゲットとして設定する必要があります。指定したシャード マップがターゲットとして設定されます。
+[**New-AzureSqlJobCredential コマンドレット**](https://msdn.microsoft.com/library/mt346063.aspx)を使用してシャード マップ ターゲットを作成します。シャード マップ マネージャー データベースをデータベース ターゲットとして設定する必要があります。そのうえで、指定したシャード マップをターゲットとして設定してください。
 
 	$shardMapCredentialName = "{Credential Name}"
 	$shardMapDatabaseName = "{ShardMapDatabaseName}" #example: ElasticScaleStarterKit_ShardMapManagerDb
@@ -264,9 +264,9 @@ PowerShell モジュールの読み込み後、ジョブの API を使用する�
 
 ## データベース全体に対して実行する T-SQL スクリプトを作成する
 
-実行する T-SQL スクリプトを作成する場合、べき等として構築し、エラーに対して回復力を持たせることをお勧めします。エラスティック データベース ジョブでは、実行時にエラーが発生すると、エラーの分類に関係なく、スクリプトの実行が再試行されます。
+実行する T-SQL スクリプトを作成する場合、[べき等](https://en.wikipedia.org/wiki/Idempotence)として構築し、エラーに対して回復力を持たせることをお勧めします。エラスティック データベース ジョブでは、実行時にエラーが発生すると、エラーの分類に関係なく、スクリプトの実行が再試行されます。
 
-**New-AzureSqlJobContent** コマンドレットを使用して、実行のスクリプトを作成して保存し、**-ContentName** および **-CommandText** パラメーターを設定します。
+[**New-AzureSqlJobContent コマンドレット**](https://msdn.microsoft.com/library/mt346085.aspx)を使用して、実行のスクリプトを作成して保存し、**-ContentName** および **-CommandText** パラメーターを設定します。
 
 	$scriptName = "Create a TestTable"
 
@@ -286,7 +286,7 @@ PowerShell モジュールの読み込み後、ジョブの API を使用する�
 	Write-Output $script
 
 ### ファイルから新しいスクリプトを作成する
-ファイル内に T-SQL スクリプトを定義する場合、スクリプトのインポートに次のスクリプトを使用できます。
+T-SQL スクリプトがファイル内に定義されている場合は、次のようにしてスクリプトをインポートしてください。
 
 	$scriptName = "My Script Imported from a File"
 	$scriptPath = "{Path to SQL File}"
@@ -294,9 +294,9 @@ PowerShell モジュールの読み込み後、ジョブの API を使用する�
 	$script = New-AzureSqlJobContent -ContentName $scriptName -CommandText $scriptCommandText
 	Write-Output $script
 
-### データベース全体に対して実行する T-SQL スクリプトを更新する  
+### 複数のデータベースに対して横断的に実行するよう T-SQL スクリプトを更新するには  
 
-次の PowerShell スクリプトを使用すると、既存のスクリプトの T-SQL コマンドを更新できます。
+以下に示したのは、既存のスクリプトの T-SQL コマンド テキストを更新する PowerShell スクリプトです。
 
 目的のスクリプト定義の設定を反映するように次の変数を設定します。
 
@@ -322,13 +322,13 @@ PowerShell モジュールの読み込み後、ジョブの API を使用する�
 	INSERT INTO TestTable(InsertionTime, AdditionalInformation) VALUES (sysutcdatetime(), 'test');
 	GO"
 
-### 既存のスクリプトに対する定義を更新する
+### 既存のスクリプトに対する定義を更新するには
 
 	Set-AzureSqlJobContentDefinition -ContentName $scriptName -CommandText $scriptCommandText -Comment $scriptUpdateComment 
 
-##シャード マップ全体に対してスクリプトを実行するジョブを作成します。
+## シャード マップ全体に対してスクリプトを実行するジョブを作成するには
 
-次の PowerShell スクリプトを使用すると、Elastic Scale シャード マップ内の各シャードに対してスクリプトを実行するジョブを開始できます。
+この PowerShell スクリプトは、Elastic Scale シャード マップ内の各シャードに対して横断的にスクリプトを実行するためのジョブを開始します。
 
 目的のスクリプトとターゲットを反映するように次の変数を設定します。
 
@@ -342,9 +342,9 @@ PowerShell モジュールの読み込み後、ジョブの API を使用する�
 	$job = New-AzureSqlJob -ContentName $scriptName -CredentialName $credentialName -JobName $jobName -TargetId $shardMapTarget.TargetId
 	Write-Output $job
 
-##ジョブを実行する 
+## ジョブを実行するには 
 
-既存のジョブを実行するには、次の PowerShell スクリプトを使用できます。
+以下に示したのは、既存のジョブを実行する PowerShell スクリプトです。
 
 次の変数を使用して、実行する目的のジョブ名を反映します。
 
@@ -352,9 +352,9 @@ PowerShell モジュールの読み込み後、ジョブの API を使用する�
 	$jobExecution = Start-AzureSqlJobExecution -JobName $jobName 
 	Write-Output $jobExecution
  
-## 1 つのジョブ実行の状態を取得する
+## 1 つのジョブ実行の状態を取得するには
 
-ジョブ実行の状態を確認するには、**Get-AzureSqlJobExecution** コマンドレットを使用して、**JobExecutionId** パラメーターを設定します。
+ジョブ実行の状態を確認するには、[**Get-AzureSqlJobExecution**](https://msdn.microsoft.com/library/mt346058.aspx) コマンドレットを使用して、**JobExecutionId** パラメーターを設定します。
 
 	$jobExecutionId = "{Job Execution Id}"
 	$jobExecution = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId
@@ -366,9 +366,9 @@ PowerShell モジュールの読み込み後、ジョブの API を使用する�
 	$jobExecutions = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId -IncludeChildren
 	Write-Output $jobExecutions 
 
-## 複数のジョブ実行全体の状態を確認する
+## 複数のジョブ実行全体の状態を確認するには
 
-**Get AzureSqlJobExecution** コマンドレットには、省略可能なパラメーターが複数あり、指定したパラメーターでフィルターされた複数のジョブ実行を表示できます。次に、Get-AzureSqlJobExecution の使用例を示します。
+[**Get AzureSqlJobExecution**](https://msdn.microsoft.com/library/mt346058.aspx) コマンドレットには、省略可能なパラメーターが複数あり、指定したパラメーターでフィルターされた複数のジョブ実行を表示できます。次に、Get-AzureSqlJobExecution の使用例を示します。
 
 すべてのアクティブな最上位レベル ジョブ実行を取得します。
 
@@ -417,9 +417,9 @@ PowerShell モジュールの読み込み後、ジョブの API を使用する�
 	$jobTaskExecution = Get-AzureSqlJobTaskExecution -JobTaskExecutionId $jobTaskExecutionId
 	Write-Output $jobTaskExecution
 
-## ジョブ タスク実行内のエラーを取得します。
+## ジョブ タスク実行内のエラーを取得するには
 
-JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパティと Message プロパティが含まれています。ジョブ タスク実行に失敗すると、Lifecycle プロパティは *Failed* に設定され、Message プロパティは結果の例外メッセージとそのスタックに設定されます。ジョブが成功しなかった場合、特定のジョブが成功しなかったジョブ タスクの詳細を確認することをお勧めします。
+**JobTaskExecution オブジェクト**には、タスクの Lifecycle プロパティと Message プロパティが含まれています。ジョブ タスク実行に失敗すると、Lifecycle プロパティは *Failed* に設定され、Message プロパティは結果の例外メッセージとそのスタックに設定されます。ジョブが成功しなかった場合、特定のジョブが成功しなかったジョブ タスクの詳細を確認することをお勧めします。
 
 	$jobExecutionId = "{Job Execution Id}"
 	$jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
@@ -431,7 +431,7 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
     		}
 		}
 
-## ジョブ実行が完了するまで待機する
+## ジョブ実行の完了を待機するには
 
 次の PowerShell スクリプトを使用すると、ジョブ タスクが完了するまで待機することができます。
 
@@ -458,7 +458,7 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
 * 初期再試行間隔: 100 ミリ秒
 * 最大再試行間隔: 30 分
 * 再試行間隔係数: 2
-* 最大試行回数: 2,147, 483,647
+* 最大試行回数: 2,147,483,647
 
 必要な実行ポリシーを作成します。
 
@@ -468,7 +468,8 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
 	$maximumAttempts = 999999
 	$maximumRetryInterval = New-TimeSpan -Minutes 1
 	$retryIntervalBackoffCoefficient = 1.5
-	$executionPolicy = New-AzureSqlJobExecutionPolicy -ExecutionPolicyName $executionPolicyName -InitialRetryInterval $initialRetryInterval -JobTimeout $jobTimeout -MaximumAttempts $maximumAttempts -MaximumRetryInterval $maximumRetryInterval -RetryIntervalBackoffCoefficient $retryIntervalBackoffCoefficient
+	$executionPolicy = New-AzureSqlJobExecutionPolicy -ExecutionPolicyName $executionPolicyName -InitialRetryInterval $initialRetryInterval -JobTimeout $jobTimeout -MaximumAttempts $maximumAttempts -MaximumRetryInterval $maximumRetryInterval 
+	-RetryIntervalBackoffCoefficient $retryIntervalBackoffCoefficient
 	Write-Output $executionPolicy
 
 ### カスタム実行ポリシーを更新する
@@ -495,24 +496,25 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
 
 親ジョブについてジョブの取り消しが要求されると、親ジョブとそのすべての子ジョブについて、取り消し要求が受け入れられます。
  
-取り消し要求を送信するには、**Stop-AzureSqlJobExecution** コマンドレットを使用し、**JobExecutionId** パラメーターを設定します。
+取り消し要求を送信するには、[**Stop-AzureSqlJobExecution**](https://msdn.microsoft.com/library/mt346053.aspx) コマンドレットを使用し、**JobExecutionId** パラメーターを設定します。
 
 	$jobExecutionId = "{Job Execution Id}"
 	Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
 
-## ジョブの名前と履歴を使用してジョブを削除する
+## ジョブとジョブ履歴を非同期的に削除するには
 
 エラスティック データベース ジョブは、ジョブの非同期削除をサポートしています。ジョブを削除対象としてマークすることができます。マークされたジョブのすべてのジョブ実行が完了すると、ジョブとそのジョブ履歴は削除されます。アクティブなジョブ実行は自動的に取り消されません。
 
-アクティブなジョブ実行を取り消すには、Stop-AzureSqlJobExecution を呼び出す必要があります。
+アクティブなジョブ実行を取り消すには、[**Stop-AzureSqlJobExecution**](https://msdn.microsoft.com/library/mt346053.aspx) を呼び出す必要があります。
 
-ジョブの削除をトリガーするには、**Remove-AzureSqlJob** コマンドレットを使用して、**JobName** パラメーターを設定します。
+ジョブの削除をトリガーするには、[**Remove-AzureSqlJob コマンドレット**](https://msdn.microsoft.com/library/mt346083.aspx)を使用して、**JobName** パラメーターを設定します。
 
 	$jobName = "{Job Name}"
 	Remove-AzureSqlJob -JobName $jobName
  
-## カスタム データベース ターゲットを作成する
-エラスティック データベース ジョブでは、カスタム データベース ターゲットを定義できます。このターゲットは、直接の実行、またはカスタム データベース グループ内に含まれる実行に使用できます。**エラスティック データベース プール**は、まだ PowerShell API で直接サポートされていません。そのため、プール内のすべてのデータベースを網羅するカスタム データベース ターゲットとカスタム データベース コレクション ターゲットを作成します。
+## カスタム データベース ターゲットを作成するには
+
+カスタム データベース ターゲットは、直接実行するように定義できるほか、カスタム データベース グループに含めて定義することができます。たとえば、**エラスティック データベース プール**を PowerShell API で直接扱うことが現時点ではできません。そこで、カスタム データベース ターゲットとカスタム データベース コレクション ターゲットを作成し、そこにプール内のデータベースをすべて含めるようにします。
 
 目的のデータベース情報を反映するように、次の変数を設定します。
 
@@ -520,19 +522,18 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
 	$databaseServerName = "{Server Name}"
 	New-AzureSqlJobDatabaseTarget -DatabaseName $databaseName -ServerName $databaseServerName 
 
-## カスタム データベース コレクション ターゲットを作成する
-定義済みの複数のデータベース ターゲットに対する実行を有効にするようにカスタム データベース コレクション ターゲットを定義できます。データベース グループを作成すると、データベースをカスタム コレクション ターゲットに関連付けることができます。
+## カスタム データベース コレクション ターゲットを作成するには
+
+[**New-AzureSqlJobTarget**](https://msdn.microsoft.com/library/mt346077.aspx) コマンドレットを使用してカスタム データベース コレクション ターゲットを定義します。これで、定義済みの複数のデータベース ターゲットに対する横断的な実行が可能になります。データベース グループを作成したら、カスタム コレクション ターゲットにデータベースを関連付けてください。
 
 目的のカスタム コレクション ターゲットの構成を反映するように次の変数を設定します。
 
 	$customCollectionName = "{Custom Database Collection Name}"
 	New-AzureSqlJobTarget -CustomCollectionName $customCollectionName 
 
-### カスタム データベース コレクション ターゲットにデータベースを追加する
+### カスタム データベース コレクション ターゲットにデータベースを追加するには
 
-データベース ターゲットをカスタム データベース コレクション ターゲットに関連付けて、データベース グループを作成できます。カスタム データベース コレクション ターゲットを対象とするジョブが作成されると、ジョブの実行時に、対象がそのグループに関連付けられているデータベースにまで拡張されます。
-
-目的のデータベースを特定のカスタム コレクションに追加します。
+特定のカスタム コレクションにデータベースを追加するには、[**Add-AzureSqlJobChildTarget**](https://msdn.microsoft.comlibrary/mt346064.aspx) コマンドレットを使用します。
 
 	$serverName = "{Database Server Name}"
 	$databaseName = "{Database Name}"
@@ -541,7 +542,7 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
 
 #### カスタム データベース コレクション ターゲット内のデータベースを確認する
 
-**Get-AzureSqlJobTarget** コマンドレットを使用して、カスタム データベース コレクション ターゲット内の子データベースを取得します。
+[**Get-AzureSqlJobTarget**](https://msdn.microsoft.com/library/mt346077.aspx) コマンドレットを使用して、カスタム データベース コレクション ターゲット内の子データベースを取得します。
  
 	$customCollectionName = "{Custom Database Collection Name}"
 	$target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
@@ -550,7 +551,7 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
 
 ### カスタム データベース コレクション ターゲット全体に対してスクリプトを実行するジョブを作成する
 
-**New-AzureSqlJob** コマンドレットを使用して、カスタム データベース コレクション ターゲットに定義されているデータベース グループに対するジョブを作成します。エラスティック データベース ジョブによって、カスタム データベース コレクション ターゲットに関連付けられているデータベースに対応する複数の子ジョブにまでジョブの対象が拡張されるので、各データベースに対して確実にスクリプトが実行されます。ここでも、スクリプトをべき等にして、再試行に対して回復力を持たせるようにすることが重要です。
+[**New-AzureSqlJob**](https://msdn.microsoft.com/library/mt346078.aspx) コマンドレットを使用して、カスタム データベース コレクション ターゲットに定義されているデータベース グループに対するジョブを作成します。エラスティック データベース ジョブによって、カスタム データベース コレクション ターゲットに関連付けられているデータベースに対応する複数の子ジョブにまでジョブの対象が拡張されるので、各データベースに対して確実にスクリプトが実行されます。ここでも、スクリプトをべき等にして、再試行に対して回復力を持たせるようにすることが重要です。
 
 	$jobName = "{Job Name}"
 	$scriptName = "{Script Name}"
@@ -562,13 +563,13 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
 
 ## データベース全体のデータ収集
 
-**エラスティック データベース ジョブ**は、データセット グループ全体に対するクエリの実行をサポートしています。結果は指定したデータベースのテーブルに送信されます。その結果の後にテーブルに対してクエリを実行して、各データベースのクエリ結果を確認することができます。この方法で、多数のデータベース全体に対してクエリを実行する非同期メカニズムを実現できます。データベースのいずれかが一時的に使用できないなど、失敗が発生した場合、再試行で自動的に処理されます。
+ジョブを使用してデータベースのグループ全体に対してクエリを実行し、その結果を特定のテーブルに送信することができます。その結果の後にテーブルに対してクエリを実行して、各データベースのクエリ結果を確認することができます。この方法で、多数のデータベース全体に対してクエリを実行する非同期メカニズムを実現できます。試行の失敗は、再試行によって自動的に処理されます。
 
-指定した対象テーブルは、返される結果セットのスキーマに対応する既存のテーブルがない場合、自動的に作成されます。スクリプト実行から複数の結果セットが返された場合、エラスティック データベース ジョブからは、1 つの結果セットのみが指定した対象テーブルに送信されます。
+指定した対象テーブルは、既存のテーブルがない場合、自動的に作成されます。新たに作成されるテーブルには、返された結果セットと同じスキーマが適用されます。複数の結果セットが返された場合、指定した対象テーブルにエラスティック データベース ジョブから送信されるのは、最初の結果セットのみです。
 
-次の PowerShell スクリプトを使用すると、指定したテーブルに結果を収集するスクリプトを実行できます。このスクリプトは、単一の結果セットを出力する T-SQL スクリプトが作成済みで、カスタム データベース コレクション ターゲットが作成済みであると想定しています。
+以下の PowerShell スクリプトは、その実行結果を特定のテーブルに収集しています。このスクリプトは、単一の結果セットを出力する T-SQL スクリプトが作成済みであること、また、カスタム データベース コレクション ターゲットが作成済みであることを前提としています。
 
-目的のスクリプト、資格情報、および実行対象を反映するように、以下を設定します。
+このスクリプトは、[**Get-AzureSqlJobTarget**](https://msdn.microsoft.com/library/mt346077.aspx) コマンドレットを使用しています。スクリプト、資格情報、実行ターゲットのパラメーターを設定してください。
 
 	$jobName = "{Job Name}"
 	$scriptName = "{Script Name}"
@@ -581,42 +582,60 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
 	$destinationTableName = "{Destination Table Name}"
 	$target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
 
-### データ収集シナリオのジョブを作成して開始する
-	$job = New-AzureSqlJob -JobName $jobName -CredentialName $executionCredentialName -ContentName $scriptName -ResultSetDestinationServerName $destinationServerName -ResultSetDestinationDatabaseName $destinationDatabaseName -ResultSetDestinationSchemaName $destinationSchemaName -ResultSetDestinationTableName $destinationTableName -ResultSetDestinationCredentialName $destinationCredentialName -TargetId $target.TargetId
+### データ収集シナリオのジョブを作成して開始するには
+
+このスクリプトは、[**Start-AzureSqlJobExecution**](https://msdn.microsoft.com/library/mt346055.aspx) コマンドレットを使用しています。
+ 
+	$job = New-AzureSqlJob -JobName $jobName 
+	-CredentialName $executionCredentialName 
+	-ContentName $scriptName 
+	-ResultSetDestinationServerName $destinationServerName 
+	-ResultSetDestinationDatabaseName $destinationDatabaseName 
+	-ResultSetDestinationSchemaName $destinationSchemaName 
+	-ResultSetDestinationTableName $destinationTableName 
+	-ResultSetDestinationCredentialName $destinationCredentialName 
+	-TargetId $target.TargetId
 	Write-Output $job
 	$jobExecution = Start-AzureSqlJobExecution -JobName $jobName
 	Write-Output $jobExecution
 
-## ジョブ トリガーを使用してジョブ実行のスケジュールを作成する
+## ジョブ実行トリガーのスケジュールを設定するには
 
-次の PowerShell スクリプトを使用すると、繰り返し実行されるスケジュールを作成できます。このスクリプトでは分間隔を使用していますが、AzureSqlJobSchedule は -DayInterval、-HourInterval、-MonthInterval、および -WeekInterval パラメーターもサポートしています。1 回だけ実行するスケジュールを作成するには、-OneTime を渡します。
+次の PowerShell スクリプトを使用すると、定期的なスケジュールを作成できます。このスクリプトでは分間隔を使用していますが、[**New-AzureSqlJobSchedule**](https://msdn.microsoft.com/library/mt346068.aspx) は -DayInterval、-HourInterval、-MonthInterval、-WeekInterval の各パラメーターもサポートしています。1 回だけ実行するスケジュールを作成するには、-OneTime を渡します。
 
 新しいスケジュールを作成します。
 
 	$scheduleName = "Every one minute"
 	$minuteInterval = 1
 	$startTime = (Get-Date).ToUniversalTime()
-	$schedule = New-AzureSqlJobSchedule -MinuteInterval $minuteInterval -ScheduleName $scheduleName -StartTime $startTime 
+	$schedule = New-AzureSqlJobSchedule 
+    -MinuteInterval $minuteInterval 
+	-ScheduleName $scheduleName 
+	-StartTime $startTime 
 	Write-Output $schedule
 
-### 時間スケジュールに従ってジョブを実行するようにジョブ トリガーを作成する
+### トリガーによって時間スケジュールに従ってジョブを実行するには
 
 時間スケジュールに従ってジョブを実行するようにジョブ トリガーを定義できます。次の PowerShell スクリプトを使用すると、ジョブ トリガーを作成できます。
 
-目的のジョブとスケジュールに対応するように次の変数を設定します。
+[New-AzureSqlJobTrigger](https://msdn.microsoft.com/library/mt346069.aspx) を使用し、目的のジョブとスケジュールに対応するように次の変数を設定します。
 
 	$jobName = "{Job Name}"
 	$scheduleName = "{Schedule Name}"
-	$jobTrigger = New-AzureSqlJobTrigger -ScheduleName $scheduleName –JobName $jobName
+	$jobTrigger = New-AzureSqlJobTrigger
+	-ScheduleName $scheduleName
+	–JobName $jobName
 	Write-Output $jobTrigger
 
-### スケジュールされた関連付けを解除してジョブのスケジュール実行を停止する
+### スケジュールされた関連付けを解除してジョブのスケジュール実行を停止するには
 
-ジョブ トリガーによるジョブ実行の繰り返しを停止するには、ジョブ トリガーを削除します。**Remove-AzureSqlJobTrigger** コマンドレットを使用してジョブ トリガーを削除すると、スケジュールに従ってジョブが実行されなくなります。
+ジョブ トリガーによるジョブ実行の繰り返しを停止するには、ジョブ トリガーを削除します。[**Remove-AzureSqlJobTrigger**](https://msdn.microsoft.com/library/mt346070.aspx) コマンドレットを使用してジョブ トリガーを削除すると、スケジュールに従ってジョブが実行されなくなります。
 
 	$jobName = "{Job Name}"
 	$scheduleName = "{Schedule Name}"
-	Remove-AzureSqlJobTrigger -ScheduleName $scheduleName -JobName $jobName
+	Remove-AzureSqlJobTrigger 
+	-ScheduleName $scheduleName 
+	-JobName $jobName
 
 ### 時間スケジュールにバインドされているジョブ トリガーを取得する
 
@@ -626,35 +645,33 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
 	$jobTriggers = Get-AzureSqlJobTrigger -ScheduleName $scheduleName
 	Write-Output $jobTriggers
 
-### ジョブに関連付けられているジョブ トリガーを取得する 
+### ジョブに関連付けられているジョブ トリガーを取得するには 
 
-次の PowerShell スクリプトを使用すると、登録済みジョブを含むスケジュールを取得して表示できます。
+登録されているジョブを含んだスケジュールを取得して表示するには、[Get-AzureSqlJobTrigger](https://msdn.microsoft.com/library/mt346067.aspx) を使用します。
 
 	$jobName = "{Job Name}"
 	$jobTriggers = Get-AzureSqlJobTrigger -JobName $jobName
 	Write-Output $jobTriggers
 
-## データベース全体に対して実行するデータ層アプリケーション デプロイメント (DACPAC) を作成する
+## 複数のデータベースに対する横断的実行に対応したデータ層アプリケーション (DACPAC) を作成するには
 
-エラスティック データベース ジョブを使用すると、データ層アプリケーション (DACPAC) をデータベース グループにデプロイできます。DACPAC を作成するには、このドキュメントを参照してください。エラスティック データベース ジョブで DACPAC をデータベース グループにデプロイするには、DACPAC からサービスにアクセスできる必要があります。作成した DACPAC は Azure Storage にアップロードし、DACPAC 用の署名済み URI を作成することをお勧めします。
-
-次の PowerShell スクリプトを使用すると、DACPAC をエラスティック データベース ジョブに挿入できます。
+DACPAC の作成については、[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx)に関するページを参照してください。DACPAC をデプロイするには、[New-AzureSqlJobContent コマンドレット](https://msdn.microsoft.com/library/mt346085.aspx)を使用します。サービスから DACPAC にアクセスできることが必要です。作成した DACPAC は Azure Storage にアップロードし、DACPAC 用の [Shared Access Signature](storage-dotnet-shared-access-signature-part-1.md) を作成することをお勧めします。
 
 	$dacpacUri = "{Uri}"
 	$dacpacName = "{Dacpac Name}"
 	$dacpac = New-AzureSqlJobContent -DacpacUri $dacpacUri -ContentName $dacpacName 
 	Write-Output $dacpac
 
-### データベース全体に対して実行するデータ層アプリケーション デプロイメント (DACPAC) を更新する
+### 複数のデータベースに対する横断的実行に対応したデータ層アプリケーション (DACPAC) を更新するには
 
-エラスティック データベース ジョブ内に登録されている既存の DACPAC を、新しい URI を示すように更新することができます。次の PowerShell スクリプトを使用すると、既存の登録済み DACPAC で DACPAC URI を更新できます。
+エラスティック データベース ジョブ内に登録されている既存の DACPAC を、新しい URI を示すように更新することができます。登録されている既存の DACPAC に対し、[**Set-AzureSqlJobContentDefinition コマンドレット**](https://msdn.microsoft.com/library/mt346074.aspx)を使用して DACPAC の URI を更新します。
 
 	$dacpacName = "{Dacpac Name}"
 	$newDacpacUri = "{Uri}"
 	$updatedDacpac = Set-AzureSqlJobDacpacDefinition -ContentName $dacpacName -DacpacUri $newDacpacUri
 	Write-Output $updatedDacpac
 
-## データベース全体に対してデータ層アプリケーション デプロイメント (DACPAC) を適用するジョブを作成する
+## ジョブを作成して複数のデータベースに対して横断的にデータ層アプリケーション (DACPAC) を適用するには
 
 エラスティック データベース ジョブ内に DACPAC を作成すると、データベース グループ全体に対して DACPAC を適用するジョブを作成できます。次の PowerShell スクリプトを使用すると、カスタムのデータベース コレクション全体に対する DACPAC ジョブを作成できます。
 
@@ -662,8 +679,12 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
 	$dacpacName = "{Dacpac Name}"
 	$customCollectionName = "{Custom Collection Name}"
 	$credentialName = "{Credential Name}"
-	$target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
-	$job = New-AzureSqlJob -JobName $jobName -CredentialName $credentialName -ContentName $dacpacName -TargetId $target.TargetId
+	$target = Get-AzureSqlJobTarget 
+	-CustomCollectionName $customCollectionName
+	$job = New-AzureSqlJob 
+	-JobName $jobName 
+	-CredentialName $credentialName 
+	-ContentName $dacpacName -TargetId $target.TargetId
 	Write-Output $job 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
@@ -673,4 +694,4 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

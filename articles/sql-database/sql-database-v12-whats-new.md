@@ -13,7 +13,7 @@
 	ms.workload="data-management" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="get-started-article" 
+	ms.topic="article" 
 	ms.date="09/15/2015" 
 	ms.author="genemi"/>
 
@@ -96,7 +96,8 @@ V12 でのみ、新しい Standard パフォーマンス レベルの S3 と、[
 - GRANT、DENY、REVOKE を使用して管理される[アプリケーション ロール](http://msdn.microsoft.com/library/ms190998.aspx)
 - [透過的なデータ暗号化](http://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx) (TDE)
 - [Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)
- - SQL Database は、Azure Active Directory の認証をサポートするようになりました。この認証は、Azure Active Directory (Azure AD) の ID を使用して SQL Database に接続するメカニズムです。Azure Active Directory の認証では、データベース ユーザーと他の Microsoft サービスの ID を一元管理できます。
+ - SQL Database は、Azure Active Directory の認証をサポートするようになりました。この認証は、Azure Active Directory (Azure AD) の ID を使用して SQL Database に接続するメカニズムです。Azure Active Directory 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。
+- [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) (プレビュー) は、暗号化をアプリケーションに対して透過的にし、クライアントが SQL Database と暗号化キーを共有することなくクライアント アプリケーション内で機密データを暗号化できるようにします。
 
 
 ## 復旧が必要なときのビジネス継続性の向上
@@ -161,4 +162,4 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 
 [Microsoft Azure プレビューの使用条件に関する補足](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

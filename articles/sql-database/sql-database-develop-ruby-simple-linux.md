@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ruby" 
 	ms.topic="article" 
-	ms.date="07/20/2015" 
+	ms.date="09/21/2015" 
 	ms.author="andrela"/>
 
 
@@ -38,7 +38,7 @@
 
 署名に関する問題がある場合は、次のコマンドを実行してください。
 
-    command curl -sSL https://rvm.io/mpapis.asc | gph --import - 
+    command curl -sSL https://rvm.io/mpapis.asc | gpg --import - 
 
 署名に関する問題がない場合は、次のコマンドを実行してください。
 
@@ -117,4 +117,4 @@ Microsoft SQL Server の [datetime](http://msdn.microsoft.com/library/ms187819.a
     puts row
     end 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

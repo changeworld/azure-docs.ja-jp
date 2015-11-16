@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="11/03/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure SQL との間でのデータの移動
@@ -562,4 +562,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 	 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

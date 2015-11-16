@@ -43,6 +43,17 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
 
 	![](./media/mobile-engagement-ios-send-push/campaign-activate.png)
 
+7. 次のような通知センターの iOS デバイスで通知を受信することができます。
+
+	![](./media/mobile-engagement-ios-send-push/iphone-notification.png)
+
+8. この iOS デバイスと組み合わせて使用する Apple Watch がある場合は、Apple Watch に通知が表示されます。
+
+	![](./media/mobile-engagement-ios-send-push/apple-watch.png)
+
+
  
 
-<!---HONumber=Oct15_HO3-->
+ 
+
+<!---HONumber=Nov15_HO2-->

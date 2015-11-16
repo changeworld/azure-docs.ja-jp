@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Elastic Database ツールを使用してシャードを追加する" 
+	pageTitle="Elastic Database ツールを使用してシャードを追加する | Microsoft Azure" 
 	description="Elastic Scale API を使用して新しいシャードをシャード セットに追加する方法。" 
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jeffreyg" 
-	authors="sidneyh" 
+	authors="ddove" 
 	editor=""/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/24/2015" 
-	ms.author="sidneyh"/>
+	ms.date="11/04/2015" 
+	ms.author="ddove;sidneyh"/>
 
 # Elastic Database ツールを使用してシャードを追加する
 
@@ -79,4 +79,4 @@
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

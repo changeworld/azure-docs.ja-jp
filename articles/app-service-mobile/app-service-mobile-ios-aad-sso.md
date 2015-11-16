@@ -7,12 +7,12 @@
         manager="dwrede" />
 
 <tags ms.service="app-service-mobile"
-ms.workload="mobile"
-ms.tgt_pltfrm="mobile-ios"
-ms.devlang="objective-c"
-ms.topic="article"
-ms.date="09/14/2015"
-ms.author="mahender" />
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-ios"
+	ms.devlang="objective-c"
+	ms.topic="article"
+	ms.date="09/14/2015"
+	ms.author="mahender" />
 
 # iOS アプリに Azure Active Directory サインオンを追加する
 
@@ -120,7 +120,7 @@ ADAL を使用してユーザーを認証できるようにするには、Azure 
 [Azure Active Directory でモバイル アプリを構成する方法]: app-service-mobile-how-to-configure-active-directory-authentication.md
 [Microsoft Azure の管理ポータル]: https://manage.windowsazure.com/
 [iOS 向け Active Directory 認証ライブラリ]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
- [Mobile Apps の使用]: app-service-mobile-ios-get-started.md
- [Mobile Services アプリへの認証の追加]: app-service-mobile-ios-get-started-users.md
+[Mobile Apps の使用]: app-service-mobile-ios-get-started.md
+[Mobile Services アプリへの認証の追加]: app-service-mobile-ios-get-started-users.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

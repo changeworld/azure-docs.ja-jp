@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Service Fabric Testability シナリオ: サービス通信" 
+   pageTitle="Testability: サービス通信 | Microsoft Azure" 
    description="サービス間通信は、Service Fabric アプリケーションの重要な統合ポイントです。この記事ではデザインの考慮事項とテスト手法について説明します。" 
    services="service-fabric" 
    documentationCenter=".net" 
@@ -101,4 +101,4 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 [Testability シナリオの詳細](service-fabric-testability-scenarios.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

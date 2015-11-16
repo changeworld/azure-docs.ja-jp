@@ -98,4 +98,4 @@ Service Fabric を使用すると、次の操作を実行できます。
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

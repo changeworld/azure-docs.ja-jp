@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric アプリケーションのアップグレード: 高度なトピック"
+   pageTitle="アプリケーションのアップグレード: 高度なトピック | Microsoft Azure"
    description="この記事では、Service Fabric アプリケーションのアップグレードに関連する高度なトピックについて説明します。"
    services="service-fabric"
    documentationCenter=".net"
@@ -51,4 +51,4 @@ Service Fabric アプリケーションは、完全な自己完結型のアプ�
 [アプリケーション アップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Notification Hubs によるユーザーへの通知"
+	pageTitle="Azure Notification Hubs と .NET バックエンドによるユーザーへの通知"
 	description="Azure のユーザーにプッシュ通知を送信する方法について説明します。コード サンプルは Android 向けJava で記述されています。"
 	documentationCenter="android"
 	services="notification-hubs"
@@ -16,7 +16,7 @@
 	ms.date="09/24/2015"
 	ms.author="wesmc"/>
 
-#Azure Notification Hubs によるユーザーへの通知
+#Azure Notification Hubs と .NET バックエンドによるユーザーへの通知
 
 
 [AZURE.INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
@@ -432,4 +432,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [A1]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users.png
 [A2]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users-enter-password.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

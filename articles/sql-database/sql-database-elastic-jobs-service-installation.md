@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="弾力性データベース ジョブのインストール" 
+	pageTitle="エラスティック データベース ジョブのインストールの概要 | Microsoft Azure" 
 	description="弾力性ジョブの機能のインストールについて説明します。" 
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jhubbard" 
-	authors="sidneyh" 
+	authors="ddove" 
 	editor=""/>
 
 <tags 
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/03/2015" 
-	ms.author="ddove; sidneyh"/>
+	ms.date="11/04/2015" 
+	ms.author="ddove;sidneyh"/>
 
 # エラスティック データベース ジョブのインストールの概要
-**エラスティック データベース ジョブ**のインストールには PowerShell または Azure ポータルを使用できますが、PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。**エラスティック データベース ジョブ**の詳細については、「[エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」を参照してください。
+[**エラスティック データベース ジョブ**](sql-database-elastic-jobs-overview.md)のインストールには PowerShell または Azure ポータルを使用できます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。
 
 既存の**エラスティック データベース プール**から、ポータルを使用して**エラスティック データベース ジョブ**を既にインストールしている場合、最新の PowerShell プレビューには、既存のインストールをアップグレードするスクリプトが含まれています。PowerShell API 経由で公開されている新しい機能を活用するために、最新の**エラスティック データベース ジョブ** コンポーネントにアップグレードすることを強くお勧めします。
 
 ## 前提条件
-* Azure サブスクリプション。無料評価版については、「[無料評価版](http://azure.microsoft.com/pricing/free-trial/)」を参照してください。
+* Azure サブスクリプション。無料試用版については、「[無料試用版](http://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 * Azure PowerShell Version 0.8.16 以降。[Web Platform インストーラー](http://go.microsoft.com/fwlink/p/?linkid=320376)を使用して最新バージョン (0.9.5) をインストールします。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」をご覧ください。
 * [NuGet Command-line Utility](https://nuget.org/nuget.exe) を使用して、エラスティック データベース ジョブ パッケージをインストールします。詳細については、http://docs.nuget.org/docs/start-here/installing-nuget を参照してください。
 
@@ -166,11 +166,11 @@
 
 	![ユーザー名とパスワードの作成][2]
 
-6. [OK] ボタンをクリックします。新しい[リソース グループ](../resource-group-portal.md)にコンポーネントが数分で作成されます。下記に示すように、新しいリソース グループがスタート ボードに固定表示されています。作成されると、弾力性データベース ジョブ (クラウド サービス、SQL Database、Service Bus、ストレージ記憶域) は、すべてグループ内に作成されます。
+6. [OK] ボタンをクリックします。新しい[リソース グループ](../resource-group-portal.md)にコンポーネントが数分で作成されます。下記に示すように、新しいリソース グループがスタート ボードに固定表示されています。作成されると、エラスティック データベース ジョブ (Cloud Service、SQL Database、Service Bus、Storage) は、すべてグループ内に作成されます。
 
 	![スタート ボードのリソース グループ][3]
 
-7. 弾力性データベース ジョブをインストール中にジョブを作成または管理しようとすると、**資格情報**の入力中に 、次のメッセージが表示されます。
+7. エラスティック ジョブをインストール中にジョブを作成または管理しようとすると、**資格情報**の入力中に 、次のメッセージが表示されます。
 
 	![実行中のデプロイメント][4]
 
@@ -187,4 +187,4 @@
 [4]: ./media/sql-database-elastic-jobs-service-installation/incomplete.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

@@ -14,18 +14,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="08/07/2015"
+   ms.date="11/02/2015"
    ms.author="rick.byham@microsoft.com"/>
 
 # Azure SQL Database Transact-SQL 情報
 
-Most SQL Server 2016 Transact-SQL ステートメントは Microsoft Azure SQL Database で完全サポートされています。これには SQL Server のデータ型、演算子、文字列関数、算術関数、論理関数、カーソル関数、ほとんどのアプリケーションが依存するその他の Transact-SQL 要素が含まれます。部分的にサポートされる関数やサポートされない関数は SQL Databse によるデータベースの管理方法の違い (ファイル、高い可用性、セキュリティ機能など) に関連するか、Service Broker など、特別目的の機能のためのものです。SQL Database はマスター データベースに対する依存から多くの機能を分離するため、サーバーレベルの多くのアクティビティが不適切となり、サポートされません。通常、SQL Server で廃止になった機能は SQL Database でサポートされません。
+Most SQL Server 2016 Transact-SQL ステートメントは Microsoft Azure SQL Database で完全サポートされています。これには SQL Server のデータ型、演算子、文字列関数、算術関数、論理関数、カーソル関数、ほとんどのアプリケーションが依存するその他の Transact-SQL 要素が含まれます。部分的にサポートされる関数やサポートされない関数は SQL Database によるデータベースの管理方法の違い (ファイル、高い可用性、セキュリティ機能など) に関連するか、Service Broker など、特別目的の機能のためのものです。SQL Database はマスター データベースに対する依存から多くの機能を分離するため、サーバーレベルの多くのアクティビティが不適切となり、サポートされません。通常、SQL Server で廃止になった機能は SQL Database でサポートされません。
 
 ## SQL Database V12 にアップグレードする
 
 このトピックでは、無料の SQL Database V12 にアップグレードする際、SQL Database で利用できる機能について説明します。V12 に関する詳細については、「[SQL Database V12 の新機能](sql-database-v12-whats-new.md)」を参照してください。SQL Database V12 ではパフォーマンスが改善され、管理しやすくなり、機能が追加されました。追加された機能の一覧を以下に示します。完全にサポートされている機能と部分的にサポートされている機能に分割されています。
 
-## SQL データベース V12 で部分的にサポートされている機能
+## SQL Database V12 で部分的にサポートされている機能
 
 SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメントに存在する引数の全部ではなく一部がサポートされています。たとえば、CREATE PROCEDURE ステートメントは利用できますが、CREATE PROCEDURE の WITH ENCRYPTION オプションは利用できません。各ステートメントのサポートされる領域については、リンクされている構文トピックを参照してください。
 
@@ -41,7 +41,7 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 - ユーザー: [CREATE](https://msdn.microsoft.com/library/ms173463.aspx)/[ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)
 - ビュー: [CREATE](https://msdn.microsoft.com/library/ms187956.aspx)/[ALTER VIEW](https://msdn.microsoft.com/library/ms173846.aspx)
 
-## SQL データベースでサポートされていない機能
+## SQL Database でサポートされていない機能
 
 - システム オブジェクトの照合順序
 - 関連接続: エンドポイント ステートメント、ORIGINAL\_DB\_NAMEWindows 認証はログインまたは包含データベース ユーザーには利用できません。
@@ -76,6 +76,8 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 - SHUTDOWN
 - sp\_addmessage
 - sp\_configure オプションと RECONFIGURE
+- sp\_helpuser
+- sp\_migrate\_user\_to\_contained
 - SQL Server 監査 (代わりに SQL Database 監査を使用)
 - SQL Server プロファイラー
 - SQL Server トレース
@@ -86,7 +88,7 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 
 ## 完全 Transact-SQL リファレンス
 
-Transact-SQL の文法、使用方法、例の詳細については、SQL Server オンライン ブックの「[Transact-SQL Reference (Database Engine)](https://msdn.microsoft.com/library/bb510741.aspx)」を参照してください。
+Transact-SQL の文法、使用方法、例の詳細については、SQL Server オンライン ブックの「[Transact-SQL リファレンス (データベース エンジン)](https://msdn.microsoft.com/library/bb510741.aspx)」を参照してください。
 
 ### 「適用先」タグについて
 
@@ -94,4 +96,4 @@ Transact-SQL リファレンスには SQL Server 2008、SQL Server 2008 R2、SQL
 
 トピックの全体的主題がある製品で使用されるが、一部の引数がサポートされないことがあります。たとえば、含有データベース ユーザーは SQL Server 2012 で導入されました。**CREATE USER** ステートメントは SQL Server 製品で利用できますが、**WITH PASSWORD** は以前のバージョンでは利用できません。この場合、追加の「**適用先**」セクションがトピックの本文の引数説明に挿入されます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

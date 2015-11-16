@@ -32,6 +32,18 @@
 * ApplicationInsights.config を前のコピーと比較します。表示される変更の大部分は、モジュールを削除したり、パラメーター化できるようにしたことが原因です。前のファイルに対して行ったカスタマイズをもう一度設定します。
 * ソリューションをリビルドします。
 
+## バージョン 2.0.0-beta2
+- ITelemetryProcessor のサポート、コードまたは構成ファイルを使用して構成する機能が追加されました。[SDK でのカスタム フィルターの有効化](https://azure.microsoft.com/documentation/articles/app-insights-api-telemetry-processors/#telemetry-processors)
+- コンテキストの初期化子が削除されました。代わりに、[テレメトリの初期化子](https://azure.microsoft.com/documentation/articles/app-insights-api-telemetry-processors/#telemetry-initializers)を使用します。
+- Application Insights for .Net framework 4.6 が更新されました。 
+- カスタム イベント名に最大 512 文字まで使用できるようになりました。
+- プロパティ ```OperationContext.Name``` の名前が ```RootName``` に変更されました。
+- プロパティ ```RequestTelemetry.Id``` が削除されました。
+- 新しい RequestTelemetry を作成する場合、RequestTelemetry のプロパティ ```Id``` と ```Context.Operation.Id``` は初期化されません。
+- ```RequestTelemetry.Name``` は初期化されなくなりました。代わりに、```RequestTelemetry.Context.Operation.Name``` が使用されます。
+- 要求のモニタリングで、応答コード 401 は通常の認証ハンドシェイクの一部であり、これにより要求は成功します。
+- UI スレッドから InMemoryChannel (既定のチャネル) を初期化する際に UI スレッドがロック状態になる問題を解消します。これにより、WPF アプリケーションでの UI フリーズの問題が解消します。
+ 
 ## Version 2.0.0-beta1
 - 必須フィールドの一部が指定されていない場合は、TrackDependency によって有効な JSON が生成されます。
 - 冗長なプロパティの ```RequestTelemetry.ID``` は、```RequestTelemetry.Operation.Id``` のプロキシのみになりました。
@@ -83,13 +95,13 @@
 2015-04-28 プレビュー
 
 - SDK は DNX ターゲット プラットフォームをサポートし、[.NET Core フレームワーク](http://www.dotnetfoundation.org/NETCore5) アプリケーションを監視できるようになりました。
-- ```TelemetryClient``` のインスタンスはインストルメンテーション キーをキャッシュしなくなりました。インストルメンテーション キーが ```TelemetryClient``` に明示的に設定されていなかった場合、```InstrumentationKey``` は null を返します。いくらかのテレメトリが既に収集された後、```TelemetryConfiguration.Active.InstrumentationKey``` を設定すると、問題が解決されます。依存関係コレクター、Web 要求データ コレクション、パフォーマンス カウンター コレクションのようなテレメトリ モジュールは新しいインストルメンテーション キーを使用します。
+- ```TelemetryClient``` のインスタンスはインストルメンテーション キーをキャッシュしなくなりました。インストルメンテーション キーが ```TelemetryClient``` に明示的に設定されていなかった場合、```InstrumentationKey``` は null を返します。いくらかの利用統計情報が既に収集された後、```TelemetryConfiguration.Active.InstrumentationKey``` を設定すると、問題が解決されます。依存関係コレクター、Web 要求データ コレクション、パフォーマンス カウンター コレクションのような利用統計情報モジュールは新しいインストルメンテーション キーを使用します。
 
 ## バージョン 0.15
 
 - 新しいプロパティ ```Operation.SyntheticSource``` が ```TelemetryContext``` で利用できるようになりました。テレメトリ項目を「本物のユーザー トラフィックではない」として設定し、そのトラフィックが生成された背景を指定できるようになりました。このプロパティを設定する例としては、テスト自動化のトラフィックを負荷テストのトラフィックと区別できます。
 - チャネル ロジックは「Microsoft.ApplicationInsights.PersistenceChannel」と呼ばれる別個の NuGet に移動されました。既定のチャネルは「InMemoryChannel」という名前になりました。
-- 新しいメソッド ```TelemetryClient.Flush``` では、バッファーからのテレメトリ項目を同期的にフラッシュできます。
+- 新しいメソッド ```TelemetryClient.Flush``` では、バッファーからの利用統計情報項目を同期的にフラッシュできます。
 
 ## バージョン 0.13
 
@@ -97,4 +109,4 @@
 
  
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

@@ -18,13 +18,15 @@
 
 # Microsoft アカウント ログインを使用するようにアプリケーションを構成する方法
 
+[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]&nbsp;
+
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 このトピックでは、認証プロバイダーとして Microsoft アカウントを使用するように Azure Mobile Apps を構成する方法を示します。
 
 ## <a name="register"> </a>Microsoft アカウントにアプリケーションを登録する
 
-1. [Azure の管理ポータル]にログオンし、モバイル アプリに移動します。
+1. [Microsoft Azure の管理ポータル]にログオンし、モバイル アプリに移動します。
 
 2. **[設定]**、**[ユーザー認証]**、**[Microsoft アカウント]** の順にクリックします。**[リダイレクト URL]** をコピーします。この URL は、Microsoft アカウントの新しいアプリを構成するのに使用します。
 
@@ -45,7 +47,7 @@
 
 ## <a name="secrets"> </a>Microsoft アカウントの情報をモバイル アプリに追加する
 
-1. [Azure の管理ポータル]に戻り、モバイル アプリの [Microsoft アカウント設定] ブレードに、以前に入手したクライアント ID とクライアント シークレットの値を貼り付けます。その後、**[保存]** をクリックします。
+1. [Microsoft Azure の管理ポータル]に戻り、モバイル アプリの [Microsoft アカウント設定] ブレードに、以前に入手したクライアント ID とクライアント シークレットの値を貼り付けます。その後、**[保存]** をクリックします。
 
     ![][1]
 
@@ -67,7 +69,6 @@
 <!-- URLs. -->
 
 [[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure の管理ポータル]: https://portal.azure.com/
- 
+[Microsoft Azure の管理ポータル]: https://portal.azure.com/
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

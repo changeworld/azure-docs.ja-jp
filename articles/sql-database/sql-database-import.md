@@ -47,7 +47,7 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 
 次のように、インポートするデータベースの [SQL Server] ブレードを開きます。
 
-1.	[Azure プレビュー ポータル](https//:portal.azure.com)に移動します。
+1.	[Azure プレビュー ポータル](https://portal.azure.com)に移動します。
 2.	**[すべて参照]** をクリックします。
 3.	**[SQL Server]** をクリックします。
 2.	データベースを復元するサーバーをクリックします。
@@ -87,7 +87,7 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 ## サーバーにデータベースが存在することの確認
 
 2.	**[すべて参照]** をクリックします。
-3.	**[SQL データベース]** をクリックしし、新しいデータベースが**オンライン**であることを確認します。
+3.	**[SQL Database]** をクリックしし、新しいデータベースが**オンライン**であることを確認します。
 
 
 
@@ -110,4 +110,4 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

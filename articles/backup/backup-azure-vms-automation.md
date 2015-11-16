@@ -14,7 +14,9 @@
 この記事では、Azure の IaaS の VM をバックアップおよび回復するために Azure PowerShell を使用する方法を示します。
 
 ## 概念
-Azure Backup のドキュメント「[Azure の IaaS の VM のバックアップの概要](backup-azure-vms-introduction.md)」を参照してください。ここでは、VM をバックアップする理由、前提条件および制限事項の概要を説明しています。
+Azure Backup のドキュメント「[Azure の IaaS の VM のバックアップの概要](backup-azure-vms-introduction.md)」を参照してください。
+
+> [AZURE.WARNING]開始する前に、Azure Backup を使用するのに必要な[前提条件](backup-azure-vms-prepare.md)について重要な点、および現在の VM バックアップ ソリューションの [制限事項](backup-azure-vms-prepare.md#limitations)を網羅していることを確認します。
 
 PowerShell を効果的に使用するには、オブジェクトの階層および開始地点を理解しておく必要があります。
 
@@ -28,7 +30,7 @@ PowerShell を効果的に使用するには、オブジェクトの階層およ
 
 1. [最新の PowerShell](https://github.com/Azure/azure-powershell/releases) (1.0.0 以降のバージョンが必要) をダウンロードします。
 
-2. **Switch-azuremode** コマンドレットを使用して、*AzureResourceManager* モードに切り替えて Azure Backup コマンドレットを使用可能にします。
+2. **Switch-AzureMode** コマンドレットを使用して、*AzureResourceManager* モードに切り替えて Azure Backup コマンドレットを使用可能にします。
 
 ```
 PS C:\> Switch-AzureMode AzureResourceManager
@@ -298,6 +300,6 @@ for( $i = 1; $i -le $numberofdays; $i++ )
 $DAILYBACKUPSTATS | Out-GridView
 ```
 
-このレポート出力にグラフ作成機能を追加する場合は、TechNet ブログの「[Charting with PowerShell (PowerShell でのグラフ作成)](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx)」をご覧ください。
+このレポート出力にグラフ作成機能を追加する場合は、TechNet ブログの「[PowerShell でのグラフ作成](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

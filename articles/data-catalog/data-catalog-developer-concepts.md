@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="07/13/2015"
+   ms.date="10/27/2015"
    ms.author="derrickv"/>
 
 # Azure Data Catalog 開発者の概念
@@ -40,7 +40,7 @@ Microsoft **Azure Data Catalog** は、データ ソース検出およびデー�
 
 ユーザーが担うことができるロールには、さまざまなものがあります。ロールの詳細については、ロールと承認に関するセクションを参照してください。
 
-追加できるのは個々のユーザー (セキュリティ グループではなく) だけです。
+個々のユーザーとセキュリティ グループを追加できます。
 
 Azure Data Catalog では、ID およびアクセス管理のために Azure Active Directory が使用されます。各カタログのユーザーは、アカウントの Active Directory のメンバーである必要があります。
 
@@ -92,19 +92,19 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 
 > [AZURE.NOTE]名前がダブル アンダースコアで始まるプロパティは、システムの型です。
 
-<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>modifiedTime</td><td>DateTime</td><td>ルートが最後に変更された日時。これは、クライアントによって設定されます (この値はサーバーでは管理されません)。</td></tr><tr><td>__id</td><td>Guid</td><td>項目の ID (読み取り専用)。この ID は、資産に対して一意であることが保証されています。したがって、項目のキーは __Id、ルートの __id ですこの組は、ディレクトリ内でのみ一意であることが保証されています。</td></tr><tr><td>__typeId</td><td>Guid</td><td>資産の型 (読み取り専用)。</td></tr><tr><td>__creatorId</td><td>String</td><td>資産を一意に識別するために資産の作成者によって使用される文字列。</td></tr></table>
+<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>modifiedTime</td><td>DateTime</td><td>ルートが最後に変更された日時。これは、クライアントによって設定されます (この値はサーバーでは管理されません)。</td></tr><tr><td>__id</td><td>String</td><td>項目の ID (読み取り専用)。この ID は、カタログ内の資産に対して一意であることが保証されています。</td></tr><tr><td>__type</td><td>String</td><td>資産の型 (読み取り専用)。</td></tr><tr><td>__creatorId</td><td>String</td><td>資産を一意に識別するために資産の作成者によって使用される文字列。</td></tr></table>
 
 ### 共通のルート プロパティ
 
 これらのプロパティは、すべてのルート資産の型に適用されます。
 
-<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>name</td><td>String</td><td>データ ソースの場所の情報から派生した名前。</td></tr><tr><td>dsl</td><td>Data Source Location</td><td>データ ソースを一意に説明するもので、資産の識別子の 1 つです (デュアル ID のセクションを参照してください)。dsl の構造は、ソースの種類によって異なります。</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>資産の型の詳細な説明。</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>この資産を最後に登録したユーザーを説明します。ユーザーの一意の ID (upn) と、表示名 (lastName および firstName) の両方が含まれています。</td></tr><tr><td>lastRegisteredTime</td><td>dateTime</td><td>この資産が最後にカタログに登録された日時。</td></tr></table>
+<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>name</td><td>String</td><td>データ ソースの場所の情報から派生した名前。</td></tr><tr><td>dsl</td><td>Data Source Location</td><td>データ ソースを一意に説明するもので、資産の識別子の 1 つです (デュアル ID のセクションを参照してください)。dsl の構造は、ソースの種類によって異なります。</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>資産の型の詳細な説明。</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>この資産を最後に登録したユーザーを説明します。ユーザーの一意の ID (upn) と、表示名 (lastName および firstName) の両方が含まれています。</td></tr><tr><td>lastRegisteredTime</td><td>dateTime</td><td>この資産が最後にカタログに登録された日時。</td></tr><tr><td>containerId</td><td>String</td><td>データ ソースのコンテナーの資産の ID です。このプロパティは、コンテナー型ではサポートされていません。</td></tr></table>
 
 ### ルート資産の型
 
 ルート資産の型は、カタログに登録できるデータ資産のさまざまな種類を表す型です。
 
-<table><tr><td><b>資産の型</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>テーブル</td><td></td><td></td><td>テーブルは、表形式のデータを表します。これには、SQL テーブル、SQL ビュー、Analysis Services 表形式テーブル、Analysis Services 多次元ディメンション、Oracle テーブルなどがあります。   </td></tr><tr><td>Measure</td><td></td><td></td><td>この型は、Analysis Services のメジャーを表します。</td></tr><tr><td></td><td>Measure</td><td>分割</td><td>メジャーを説明するメタデータ。</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td>メジャーが計算されるかどうかを指定します。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td>メジャーの物理的なコンテナー。</td></tr><tr><td>KPI</td><td></td><td></td><td>この型は、Analysis Services の主要業績評価指標を表します。</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td>KPI の対象の値を返す MDX 数値式または計算。</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td>KPI の実際の値を返す MDX 数値式。</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td>指定された時点での KPI の状態を表す MDX 式。</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td>時間ごとに KPI の値を評価する MDX 式。トレンドには、特定のビジネス コンテキストで役立つ、時間ベースの任意の条件を指定できます。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td>メジャーの物理的なコンテナー。</td></tr><tr><td>レポート</td><td></td><td></td><td>この型は、SQL Server Reporting Services のレポートを表します。 </td></tr><tr><td></td><td>CreatedBy</td><td>String</td><td></td></tr><tr><td></td><td>CreatedDate</td><td>String</td><td></td></tr></table>
+<table><tr><td><b>資産の型</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>テーブル</td><td></td><td></td><td>テーブルは、表形式のデータを表します。これには、SQL テーブル、SQL ビュー、Analysis Services 表形式テーブル、Analysis Services 多次元ディメンション、Oracle テーブルなどがあります。   </td></tr><tr><td>Measure</td><td></td><td></td><td>この型は、Analysis Services のメジャーを表します。</td></tr><tr><td></td><td>Measure</td><td>分割</td><td>メジャーを説明するメタデータ。</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td>メジャーが計算されるかどうかを指定します。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td>メジャーの物理的なコンテナー。</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td>KPI の対象の値を返す MDX 数値式または計算。</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td>KPI の実際の値を返す MDX 数値式。</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td>指定された時点での KPI の状態を表す MDX 式。</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td>時間ごとに KPI の値を評価する MDX 式。トレンドには、特定のビジネス コンテキストで役立つ、時間ベースの任意の条件を指定できます。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td>メジャーの物理的なコンテナー。</td></tr><tr><td>レポート</td><td></td><td></td><td>この型は、SQL Server Reporting Services のレポートを表します。 </td></tr><tr><td></td><td>CreatedBy</td><td>String</td><td></td></tr><tr><td></td><td>CreatedDate</td><td>String</td><td></td></tr><tr><td>コンテナー</td><td></td><td></td><td>この型は、SQL データベース、Azure BLOB コンテナー、Analysis Services モデルなど、その他のアセットのコンテナーを表します。</td></tr></table>
 
 ### 注釈の型
 
@@ -123,6 +123,10 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 
 <tr><td>ColumnsDataProfile</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>columns</td></td><td>ColumnDataProfile[]</td><td>データ セット内の行の数</td></tr>
+
+<tr><td>ドキュメント</td><td></td><td></td><td>特定の資産には 1 つのドキュメントしか関連付けることができません。</td></tr>
+<tr><td></td><td>mimeType</td><td>string</td><td>コンテンツの MIME の種類。</td></tr>
+<tr><td></td><td>コンテンツ</td><td>string</td><td>ドキュメントのコンテンツ。</td></tr>
 
 
 </table>
@@ -258,4 +262,4 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept2.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

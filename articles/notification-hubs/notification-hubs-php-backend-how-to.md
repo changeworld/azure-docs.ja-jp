@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="php" 
 	ms.devlang="php" 
 	ms.topic="article" 
-	ms.date="07/17/2015" 
+	ms.date="11/01/2015" 
 	ms.author="yuaxu"/>
 
 # PHP から Notification Hubs を使用する方法
@@ -133,11 +133,7 @@ REST ラッパーすべての実装の詳細については、[MSDN の記事](h
 
 このクラスを利用して、**NotificationHub** クラス内に送信通知メソッドを作成できます。
 
-	public function sendNotification($notification) {
-		$this->sendNotification($notification, "");
-	}
-
-	public function sendNotification($notification, $tagsOrTagExpression) {
+	public function sendNotification($notification, $tagsOrTagExpression="") {
 		if (is_array($tagsOrTagExpression)) {
 			$tagExpression = implode(" || ", $tagsOrTagExpression);
 		} else {
@@ -199,7 +195,9 @@ REST ラッパーすべての実装の詳細については、[MSDN の記事](h
 ##<a name="complete-tutorial"></a>チュートリアルの完了
 ここで、PHP バックエンドから通知を送信して、使用についてのチュートリアルを完了できます。
 
-Notification Hubs クライアントを初期化します (「[Notification Hubs の使用]」の説明に従って接続文字列とハブ名を置き換えます) $hub = new NotificationHub("connection string", "hubname")。
+Notification Hubs クライアントを初期化します (「[Notification Hubs の使用]」の説明に従って接続文字列とハブ名を置き換えます)。
+
+	$hub = new NotificationHub("connection string", "hubname");	
 
 次に、ターゲット モバイル プラットフォームに応じて送信コードを追加します。
 
@@ -229,7 +227,7 @@ Notification Hubs クライアントを初期化します (「[Notification Hubs
 		                '<wp:Text1>Hello from PHP!</wp:Text1>' .
 		           '</wp:Toast> ' .
 		        '</wp:Notification>';
-	$notification = new Notification("mpns", $toast);
+	$notification = new Notification("windowsphone", $toast);
 	$notification->headers[] = 'X-WindowsPhone-Target : toast';
 	$notification->headers[] = 'X-NotificationClass : 2';
 	$hub->sendNotification($notification);
@@ -257,4 +255,4 @@ PHP コードを実行すると、ターゲット デバイスに表示される
 [Notification Hubs の使用]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

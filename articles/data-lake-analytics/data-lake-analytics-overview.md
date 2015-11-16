@@ -47,7 +47,7 @@ Azure Data Lake Analytics は、ビッグ データ分析を容易にするた�
 
 - **すべての Azure データに対応**
 
-    Data Lake Analytics は、Azure Storage BLOB や Azure SQL DB などの数多くの Azure データ ソースに対応できます。もちろん、Data Lake Analytics は Azure Data Lake Store と連動するように特に最適化されており、ビッグ データ ワークロードに対して最高レベルのパフォーマンス、スループット、並列化を提供します。
+    Data Lake Analytics は、Azure BLOB ストレージや Azure SQL Database などの数多くの Azure データ ソースに対応できます。もちろん、Data Lake Analytics は Azure Data Lake Store と連動するように特に最適化されており、ビッグ データ ワークロードに対して最高レベルのパフォーマンス、スループット、並列化を提供します。
 
 ## 関連項目
 
@@ -77,4 +77,4 @@ Azure Data Lake Analytics は、ビッグ データ分析を容易にするた�
     - [機能要求の送信](http://aka.ms/adlafeedback)
     - [フォーラムでサポートを受ける](http://aka.ms/adlaforums)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

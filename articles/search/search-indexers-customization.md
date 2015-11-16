@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Search Indexer のカスタマイズ" 
-	description="Azure Search インデクサーの設定とポリシーをカスタマイズする方法について説明します。" 
+	pageTitle="Azure Search インデクサーのカスタマイズ | Microsoft Azure" 
+	description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search のインデクサーの設定とポリシーをカスタマイズする方法について説明します。" 
 	services="search" 
 	documentationCenter="" 
 	authors="chaosrealm" 
@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="09/29/2015" 
+	ms.date="11/04/2015" 
 	ms.author="eugenesh"/>
 
 #Azure Search Indexer のカスタマイズ
@@ -117,4 +117,4 @@ Azure Search ではユーザーがキーを使用してドキュメントを参�
 以上です。今後のコンテンツについてアイデアやご意見をお持ちの場合、内容をハッシュタグ #AzureSearch を付けてツイートするか、[UserVoice ページ](http://feedback.azure.com/forums/263029-azure-search)で送信できます。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

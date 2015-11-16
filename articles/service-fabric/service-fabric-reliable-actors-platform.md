@@ -1,6 +1,6 @@
 <properties
-   pageTitle="高信頼アクターの Service Fabric プラットフォームの使用方法"
-   description="この記事では、高信頼アクターが Service Fabric プラットフォームの機能を使用する方法について説明します。アクターの開発者の観点から Service Fabric プラットフォームの概念について説明します。"
+   pageTitle="Service Fabric の高信頼アクター | Microsoft Azure"
+   description="Service Fabric プラットフォームの機能を高信頼アクターが使用するしくみについて説明します。アクター開発者の視点から見た概念も取り上げます。"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -18,8 +18,9 @@
 
 # 高信頼アクターの Service Fabric プラットフォームの使用方法
 
-## アクターの Service Fabric アプリケーション モデルの概念
 アクターは、Service Fabric アプリケーション モデルを使用して、アプリケーションのライフサイクルを管理します。すべてのアクターの型は、Service Fabric の[サービスの種類](service-fabric-application-model.md#describe-a-service)にマップされます。アクター コードは Service Fabric アプリケーションとして[パッケージ化され](service-fabric-application-model.md#package-an-application)、クラスターに[展開](service-fabric-deploy-remove-applications.md#deploy-an-application)されます。
+
+## アクターのアプリケーション モデルの概念の例
 
 上記の概念の一部を説明するため、[Visual Studio を使用して作成された](service-fabric-reliable-actors-get-started.md)、アクター プロジェクトの例を見てみましょう。
 
@@ -70,7 +71,7 @@ Visual Studio を使用してアプリケーション パッケージが作成�
     │   │   │   VoiceMailBox.exe.config
     │   │   │   VoiceMailBox.Interfaces.dll
     │   │   │
-    │   │   └───ja-jp
+    │   │   └───ja-JP
     │   │           System.Fabric.Common.Internal.Strings.resources.dll
     │   │
     │   └───Config
@@ -91,12 +92,12 @@ Visual Studio を使用してアプリケーション パッケージが作成�
             │   VoicemailBoxWebService.exe
             │   VoicemailBoxWebService.exe.config
             │
-            └───ja-jp
+            └───ja-JP
                     System.Fabric.Common.Internal.Strings.resources.dll
 
 上記の一覧は、アプリケーション パッケージのサービス パッケージ内のコード パッケージに含まれている、VoicemailBox アクターを実装するアセンブリを示します。
 
-Visual Studio のソリューションには、クラスターとの間のアプリケーションの展開および削除に使用される PowerShell スクリプトが含まれます。次のスクリーン ショットでは、スクリプトが丸で囲まれています。
+Visual Studio のソリューションには、クラスターとの間のアプリケーションのデプロイおよび削除に使用される PowerShell スクリプトが含まれます。次のスクリーン ショットでは、スクリプトが丸で囲まれています。
 
 ![][2]
 
@@ -242,4 +243,4 @@ public class VoicemailBoxActor : Actor<VoicemailBox>, IVoicemailBoxActor
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

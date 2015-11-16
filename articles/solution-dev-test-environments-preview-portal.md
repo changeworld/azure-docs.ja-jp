@@ -144,7 +144,7 @@ Azure リソース マネージャー テンプレートでは、アプリケー
 | **requestedServiceObjectiveName** | S0 | S1 |
 
 ## 環境を作成する
-Azure リソースはすべて、[Azure リソース グループ](azure-portal/resource-group-portal.md)内に作成する必要があります。リソース グループを使用すると、Azure リソースをグループ化し、まとめて管理できます。組織内の特定のユーザーがリソース グループの作成、変更、削除、またはリソース グループ内のリソースの表示を実行できるように、[アクセス許可](azure-portal/resource-group-rbac.md)をリソース グループに割り当てることができます。リソース グループ内のリソースのアラートと請求情報は、[Azure プレビュー ポータル](https://portal.azure.com)で表示できます。また、リソース グループは Azure [リージョン](http://azure.microsoft.com/regions/)に作成されます。この記事では、すべてのリソースが米国中部リージョンに作成されます。実環境の作成を開始する際には、自社の要件に最も合ったリージョンを選択してください。
+Azure リソースはすべて、[Azure リソース グループ](azure-portal/resource-group-portal.md)内に作成する必要があります。リソース グループを使用すると、Azure リソースをグループ化し、まとめて管理できます。組織内の特定のユーザーがリソース グループの作成、変更、削除、またはリソース グループ内のリソースの表示を実行できるように、[アクセス許可](resource-group-rbac.md)をリソース グループに割り当てることができます。リソース グループ内のリソースのアラートと請求情報は、[Azure プレビュー ポータル](https://portal.azure.com)で表示できます。また、リソース グループは Azure [リージョン](http://azure.microsoft.com/regions/)に作成されます。この記事では、すべてのリソースが米国中部リージョンに作成されます。実環境の作成を開始する際には、自社の要件に最も合ったリージョンを選択してください。
 
   **手順 5:** 以下の方法のいずれかを使用して、開発環境およびテスト環境のリソース グループを作成します。どちらの方法でも、まったく同じ結果を達成できます。
 
@@ -384,4 +384,4 @@ Azure リソースはすべて、[Azure リソース グループ](azure-portal/
 - [Visual Studio Release Management](http://msdn.microsoft.com/Library/vs/alm/Release/overview) を使用した、迅速かつ容易で頻度の高いリリースを可能にする、継続的なデプロイメントのマネージ パイプラインの作成
 - [Azure Dev/Test Lab](http://azure.microsoft.com/campaigns/devtest-lab/) のプレビューへの招待のリクエスト。このプレビューでは、テンプレートを使用して開発/テスト ラボ環境を管理し、組織内での使用に対するクォータとポリシーを構成できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

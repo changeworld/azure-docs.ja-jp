@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/12/2015"
+	ms.date="10/30/2015"
 	ms.author="femila"/>
 
 # Azure Conditional Access Preview for SaaS Apps
@@ -55,7 +55,7 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 
 [除外] をオンにして、1 つまたは複数のグループを指定することで、セキュリティ グループをポリシーから明示的に除外することもできます。除外リストのグループ メンバーであるユーザーは、アクセス規則が適用されるグループのメンバーである場合でも、Multi-Factor Authentication の要件が適用されません。以下に示すアクセス規則では、マネージャー グループのすべてのユーザーが、アプリケーションにアクセスするときに Multi-Factor Authentication を使用する必要があります。
 
-![MFA による条件付きアクセス規則の設定](./media/active-directory-conditional-access/conditionalaccess-saas-apps.jpg)
+![MFA による条件付きアクセス規則の設定](./media/active-directory-conditional-access/conditionalaccess-saas-apps.png)
 
 ##MFA による条件付きアクセス規則
 ユーザーごとの Multi-Factor Authentication 機能を使用してユーザーが構成されている場合は、そのユーザーのこの設定がアプリの Multi-Factor Authentication 規則に優先します。これは、たとえ、それらのユーザーがアプリケーションの Multi-Factor Authentication 規則から除外されていたとしても、Multi-Factor Authentication を実行するには、ユーザーごとの Multi-Factor Authentication で構成されたユーザーが必要になることを意味します。Multi-Factor Authentication とユーザーごとの設定に関する詳細を参照してください。
@@ -86,4 +86,4 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 
 このフラグの設定に加えて、Multi-Factor Authentication が実行されるように、フェデレーション テナントの AD FS インスタンスを構成する必要があります。オンプレミスの Azure Multi-Factor Authentication のデプロイの手順に従ってください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

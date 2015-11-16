@@ -13,12 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="10/23/2015"
+   ms.date="10/30/2015"
    ms.author="maroche"/>
 
 # Azure Data Catalog の新機能
 
 定期的に **Azure Data Catalog** の更新がリリースされます。すべてのリリースにユーザー向けの新機能が含まれているわけではなく、一部のリリースはバックエンド サービス機能向けです。ここでは、**Azure Data Catalog** サービスに追加されたユーザー向けの新機能について説明します。
+
+## 2015 年 10 月 30 日の週のリリースの新機能
+
+2015 年 10 月 30 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
+
+- 登録済みのデータ ソースデータに関するデータ プレビューおよびデータ プロファイルの保存時に暗号化をサポートします。Azure Data Catalog では、サービスに登録されたデータ ソースの任意のプレビュー レコードおよびデータ プロファイルを透過的に暗号化し、Catalog 管理者がキーを管理する必要はありません。
 
 ## 2015 年 10 月 23 日の週のリリースの新機能
 
@@ -73,7 +79,7 @@
 
 2015 年 9 月 11 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
 
-- HTTP/HTTPS を介した SQL Server Analysis Services オブジェクトの登録および検出をサポートします。ユーザーは、サーバー名ではなく URL (https://servername/olap/msmdpump.dll など) を使用して SSAS サーバーに接続できるようになりました。さらに、Windows 認証に加えて、基本認証と匿名接続も使用することができます。SSAS への HTTP/HTTPS 接続の詳細については、「[インターネット インフォメーション サービス (IIS) 8.0 上の Analysis Services への HTTP アクセスの構成](https://msdn.microsoft.com/library/gg492140.aspx)」を参照してください。
+- HTTP/HTTPS を介した SQL Server Analysis Services オブジェクトの登録および検出をサポートします。ユーザーは、サーバー名ではなく URL (https://servername/olap/msmdpump.dll など) を使用して SSAS サーバーに接続できるようになりました。さらに、Windows 認証に加えて、基本認証と匿名接続も使用することができます。SSAS への HTTP/HTTPS 接続の詳細については、「[Analysis Services への HTTP アクセスの構成](https://msdn.microsoft.com/library/gg492140.aspx)」を参照してください。
 - HDInsight で Hive データ ソースをサポートします。ユーザーは、HDInsight データ ソースにおいて、Hadoop の Apache Hive に対する Hive テーブルを登録および検出できるようになりました。HDInsight での Hive の詳細については、[HDInsight ドキュメント センター](../hdinsight-use-hive/)を参照してください。
 - Oracle データベースと HDFS クラスターをコンテナーとして登録し、検出できるようになりました。Oracle のテーブルとビューまたは HDFS の登録時に、**Azure Data Catalog** はテーブルとビューだけでなく、データベースのエントリも作成します。データベースは、**Azure Data Catalog** ポータルを使用して検出し、注釈を付けることができます。カタログのコンテンツを検索し、フィルター処理するだけでなく、データベースまたはクラスターのコンテンツを検索し、フィルター処理することもできます。
 
@@ -106,4 +112,4 @@
 - Standard Edition のみ: データ資産に所有者を追加するときに、**Azure Data Catalog** は所有者としてユーザー アカウントとセキュリティ グループの両方をサポートするようになりました。選択したデータ資産の所有者としてセキュリティ グループを追加する場合、グループの表示名またはグループの UPN 電子メール アドレス (ある場合) のいずれかを入力できます。
 - Azure BLOB ストレージ データ ソースのサポート。ユーザーは、Azure Storage の BLOB およびディレクトリを登録および検出できるようになりました。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

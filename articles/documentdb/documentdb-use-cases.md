@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="07/10/2015" 
+    ms.date="10/30/2015" 
     ms.author="hawong"/>
 
 # DocumentDB の一般的なユース ケース
@@ -64,7 +64,7 @@ Microsoft Azure では、IoT のユース ケースで利用できる充実し�
 
 DocumentDB、Event Hubs、および Storm を使用した IoT ソリューションの例については、[GitHub の hdinsight-storm-examples リポジトリ](https://github.com/hdinsight/hdinsight-storm-examples/)を参照してください。
 
-IoT に対する Azure サービスの詳細については、[モノのインターネットの作成](http://www.microsoft.com/JA-JP/server-cloud/internet-of-things.aspx)に関するページを参照してください。
+IoT に対する Azure サービスの詳細については、[モノのインターネットの作成](http://www.microsoft.com/ja-JP/server-cloud/internet-of-things.aspx)に関するページを参照してください。
 
 ## 次のステップ
  
@@ -79,4 +79,4 @@ DocumentDB の利用を開始するには、[アカウント](http://azure.micro
 - [XOMNI](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18667)。未来の店舗は、スピーディな検索と容易なデータ フローを基盤として運営されます。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

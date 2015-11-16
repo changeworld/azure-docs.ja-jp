@@ -1,7 +1,7 @@
 
 <properties
-   pageTitle="Service Fabric アプリケーションのアップグレード: アップグレード パラメーター"
-   description="この記事では、Service Fabric アプリケーションのアップグレードに関連するさまざまなパラメーターについて説明します。"
+   pageTitle="アプリケーションのアップグレード: アップグレードのパラメーター | Microsoft Azure"
+   description="Service Fabric アプリケーションのアップグレードに関連するパラメーターについて説明します。正常性確認やアップグレードを自動的に取り消すポリシーなどが含まれます。"
    services="service-fabric"
    documentationCenter=".net"
    authors="mani-ramaswamy"
@@ -77,4 +77,4 @@
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="10/29/2015" 
 	ms.author="genemi"/>
 
 
@@ -77,7 +77,7 @@
 | :-- | :-- | :-- | :-- |
 | C# | [ADO.NET](sql-database-develop-dotnet-simple.md) | [ADO.NET (カスタム)](sql-database-develop-csharp-retry-windows.md)<br/><br/>[Enterprise Library](sql-database-develop-entlib-csharp-retry-windows.md) | (Entity Framework) |
 | C++ | [ODBC ドライバー](http://msdn.microsoft.com/library/azure/hh974312.aspx) | . | . |
-| Java | [Java。JDK、JDBC。Insert、Transaction、Select。](sql-database-develop-java-simple-windows.md)<br/><br/>[Java。Eclipse](sql-data-java-how-to-use-sql-database.md)<br/><br/>[Java。JDBC](http://msdn.microsoft.com/library/azure/gg715284.aspx) | . | . |
+| Java | [Java。JDK、JDBC。Insert、Transaction、Select。](sql-database-develop-java-simple-windows.md) | ()。 | . |
 | Node.js | [msnodesql](sql-database-develop-nodejs-simple-windows.md) | . | . |
 | PHP | [ODBC](sql-database-develop-php-simple-windows.md) | [ODBC (カスタム)](sql-database-develop-php-retry-windows.md) | . |
 | Python | [pymssql](sql-database-develop-python-simple-windows.md) | . | . |
@@ -94,4 +94,4 @@
 - [Create your first Azure SQL Database (最初の Azure SQL Database を作成する)](sql-database-get-started.md)
 - [Entity Framework 6 here, EF 7 on GitHub (Entity Framework 6、GitHub における EF7)](http://entityframework.codeplex.com/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

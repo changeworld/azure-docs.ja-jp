@@ -1,11 +1,10 @@
 <properties 
-	title="How to add a users to an elastic database pool" 
 	pageTitle="弾力性データベース プールにユーザーを追加する方法" 
 	description="プール内の各 db に特権を持つユーザーを追加する必要があります。" 
 	metaKeywords="azure sql database elastic databases credentials" 
 	services="sql-database" documentationCenter=""  
 	manager="jeffreyg" 
-	authors="sidneyh"/>
+	authors="ddove"/>
 
 <tags 
 	ms.service="sql-database" 
@@ -13,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/27/2015" 
+	ms.date="11/03/2015" 
 	ms.author="ddove; sidneyh" />
 
 # エラスティック データベース プールにユーザーを追加する方法
@@ -33,7 +32,7 @@
 
 		CREATE USER admin1 FROM LOGIN login1;
 		
-3. ユーザーには、ジョブに指定されたスクリプトを実行するための十分な権限が必要です。**sp\_addrolemember** プロシージャを使用して、ユーザーにスクリプトを正常に実行するために必要な最低限の権限を提供します。
+3. ユーザーには、ジョブに指定されたスクリプトを実行するための十分な権限が必要です。[ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx) を使用して、ユーザーにスクリプトを正常に実行するために必要な最低限の権限を提供します。
 
 ## 次のステップ
 
@@ -45,4 +44,4 @@
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

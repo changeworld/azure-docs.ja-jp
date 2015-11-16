@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/29/2015" 
-	ms.author="tarcher"/>
+	ms.date="11/03/2015" 
+	ms.author="tdykstra"/>
 
 # ハイブリッド接続を使用して Azure App Service の API アプリからオンプレミスの SQL Server に接続する
 
@@ -32,9 +32,9 @@
 
 - **Visual Studio** - Visual Studio 2013 または Visual Studio 2015 の無料評価版のダウンロードについては、「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs)」をご覧ください。続行する前に、次のいずれかをインストールします。(このチュートリアルのスクリーン ショットは、Visual Studio 2013 を使用して取得しました)
 
-- **SQL Server 2014 Express with Tools** - [Microsoft Web プラットフォーム データベースのページ](https://www.microsoft.com/ja-jp/download/details.aspx?id=42299)で Microsoft SQL Server Express の無料版をダウンロードします。このチュートリアルの後半で、[SQL Server をインストールして](#InstallSQLDB)これが適切に構成されていることを確認する方法を説明します。
+- **SQL Server 2014 Express with Tools** - [Microsoft Web プラットフォーム データベースのページ](https://www.microsoft.com/ja-JP/download/details.aspx?id=42299)で Microsoft SQL Server Express の無料版をダウンロードします。このチュートリアルの後半で、[SQL Server をインストールして](#InstallSQLDB)これが適切に構成されていることを確認する方法を説明します。
 
-- **SQL Server Management Studio Express** - これは、上記の SQL Server 2014 Express with Tools のダウンロードに含まれていますが、個別にインストールする必要がある場合は、[SQL Server Express のダウンロードのページ](https://www.microsoft.com/ja-jp/download/details.aspx?id=42299)からダウンロードしてインストールすることができます。
+- **SQL Server Management Studio Express** - これは、上記の SQL Server 2014 Express with Tools のダウンロードに含まれていますが、個別にインストールする必要がある場合は、[SQL Server Express のダウンロードのページ](https://www.microsoft.com/ja-JP/download/details.aspx?id=42299)からダウンロードしてインストールすることができます。
 
 このチュートリアルでは、Azure サブスクリプションを持っている、Visual Studio 2013 をインストールしている、および .NET Framework 3.5 をインストールしているか有効にしていると想定しています。このチュートリアルでは、Azure のハイブリッド接続機能 (静的 TCP ポートの既定のインスタンス) を使用する構成に SQL Server 2014 Express をインストールする方法を説明します。SQL Server をインストールしていない場合は、チュートリアルを開始する前に、上記の場所から SQL Server 2014 Express with Tools をダウンロードしてください (ただし、インストールはしないでください)。
 
@@ -430,4 +430,4 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

@@ -62,14 +62,17 @@
         SendDeviceToCloudMessagesAsync();
         Console.ReadLine();
 
+  既定では、**Create** メソッドは、IoT Hub と通信するために AMQP プロトコルを使用する **DeviceClient** を作成します。HTTPS プロトコルを使用するには、**Create** メソッドのオーバーライドを使用してプロトコルを指定します。HTTPS プロトコルを使用するように選択する場合は、**Microsoft.AspNet.WebApi.Client** NuGet パッケージをプロジェクトに追加して、**System.Net.Http.Formatting** 名前空間を含める必要もあります。
+
+
 > [AZURE.NOTE]わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。実稼働のコードでは、MSDN 記事 ([一時的な障害処理]) で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
 <!-- Links -->
 
 [Azure IoT - デバイス SDK NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
-[一時的な障害処理]: https://msdn.microsoft.com/ja-jp/library/hh680901(v=pandp.50).aspx
+[一時的な障害処理]: https://msdn.microsoft.com/ja-JP/library/hh680901(v=pandp.50).aspx
 
 <!-- Images -->
 [30]: ./media/iot-hub-getstarted-device-csharp/create-identity-csharp1.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

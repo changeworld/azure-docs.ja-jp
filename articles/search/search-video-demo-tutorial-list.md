@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Search のビデオ、サンプル、およびチュートリアル"
-	description="一元化されたリストで Azure Search 用に作成されたビデオ、サンプル、デモ、およびチュートリアルを見つけることができます。"
+	pageTitle="Azure Search のビデオ、サンプル、およびチュートリアル | Microsoft Azure"
+	description="Microsoft Azure でホストされるクラウド サービスである Azure Search のために作成されたすべての動画、サンプル、デモ、チュートリアルを集めた一覧。"
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article" 
 	ms.tgt_pltfrm="na"
-	ms.date="09/29/2015"
+	ms.date="11/04/2015"
 	ms.author="heidist"/>
 
 #Azure Search: チュートリアル、ビデオ デモ、サンプル
@@ -25,13 +25,16 @@
 
 [**Azure Search のニューヨーク市 (NYC) ジョブ ポータルのデモ**](http://aka.ms/azjobsdemo)は、NYC Open Data 構想のデータを使用して Azure Search の機能を示すライブ ASP.NET Web サイトです。
 
-[**App Service + Azure Search を試す**](search-tryappservice.md)は、オンラインで変更してさまざまな検索機能を試すことのできるデータ、機能 Web アプリケーション、ソース コードを掲載した、Azure Search の無料のセッションです (1 時間)。
+[**ASP.NET MVC コンボ アプリで App Service + Azure Search を試す**](search-tryappservice.md)は、オンラインで変更して ASP.NET アプリケーションのさまざまな検索機能を試すことのできるデータ、機能 Web アプリケーション、ソース コードを掲載した、Azure Search の無料のセッションです (1 時間)。
+
+[**Azure Search デモ サイト**](https://searchsamples.azurewebsites.net/#/)は、Azure Search のためのデモ アプリを集めたサイトです。Azure Search を利用し、メディア検索、チリ検索、製品在庫のアプリを試します。
 
 ##ビデオ
 
 リンク|説明
 ----|-----------
-[AzureCon 2015 での Azure Search のベスト プラクティス](https://azure.microsoft.com/ja-jp/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/)|Web またはモバイル シナリオ用のアプリを構築する際に、スケーリング、最適なパフォーマンス、および効率的なコーディングを実現する方法に関する実用的なアドバイスです。 
+[Azure Search とは](https://azure.microsoft.com/documentation/videos/what-is-azure-search/)|1 分半で説明する Azure Search の概要。
+[AzureCon 2015 での Azure Search のベスト プラクティス](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/)|Web またはモバイル シナリオ用のアプリを構築する際に、スケーリング、最適なパフォーマンス、および効率的なコーディングを実現する方法に関する実用的なアドバイスです。 
 [Microsoft Virtual Academy: Azure Search を Websites や Apps に追加する](http://channel9.msdn.com/Series/Adding-Microsoft-Azure-Search-to-Your-Websites-and-Apps)|Azure Search をアプリケーションに追加する方法に関する 7 部構成のシリーズです (提供者: Liam Cavanagh、Janusz Lembicz、および Bernardita Torres Garayar)。
 [Build 2015: 最新データ](http://channel9.msdn.com/Events/Build/2015/2-663)|この 29 分のセッションでは、Azure Search が最新のデータ革命にどのように組み込まれるかを説明します (提供者: Shawn Bice、Pablo Castro)。
 [Build 2015: Azure Search を使用した Mobile および WebApps における優れた検索エクスペリエンスの実現](http://channel9.msdn.com/Events/Build/2015/2-745)|Pablo Castro が Microsoft Build 2015 を使って説明します。
@@ -50,6 +53,7 @@
 
 チュートリアル|説明
 -----------|-----------
+[Azure Search を使用して StackExchange のデータを検索する方法](search-howto-stackexchange-data.md)|Azure Search と統合されたアプリケーションで StackExchange データを全文検索します。
 [How to use Azure Search with D3.js to Build Interactive Data Visualizations (Azure Search と D3.js を使用して対話型データの視覚化をビルドする方法)](https://azure.microsoft.com/blog/2015/07/14/how-to-use-azure-search-with-d3-js-to-build-interactive-data-visualizations/)|画像検索機能をカスタム アプリに追加する方法を示すブログ投稿とサンプル コードを掲載しています。
 [.NET での Azure Search の使用](search-get-started-dotnet.md)|マネージ コードで Azure Search を操作する方法について説明します。
 [NodeJS での Azure Search の使用](search-get-started-nodejs.md)|NodeJS で Azure Search を操作する方法について説明します。
@@ -91,4 +95,4 @@ CodePlex で、最新バージョンと関連のあるパブリック プレビ�
 - [**SQL Server と Azure Search の同期サンプル**](http://sqlserver2azuresearch.codeplex.com/) は、埋め込み型のローカルのデータベースから SQL Server の行セットを読み込む Windows コンソール アプリケーションです。
 - [**スコアリング プロファイルのデモ**](https://azuresearchscoringprofiles.codeplex.com/) は、検索結果をチューニングするために必要なスコアリング プロファイルを定義し、実行し、更新する Windows コンソール アプリケーションです。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

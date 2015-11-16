@@ -1,35 +1,37 @@
-The following table lists the limits associated with the the different service tiers (S1, S2, F1). For information about the cost of each *unit* in each tier, see [IoT Hub Pricing](http://azure.microsoft.com/pricing/details/iot-hub/).
+次の表には、各サービス レベル (S1、S2、F1) に関連付けられている制限がリストされています。各レベルのそれぞれの*ユニット*のコストについては、「[IoT Hub の価格](http://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
-| Resource | S1 Standard | S2 Standard | F1 Free |
+| リソース | S1 Standard | S2 Standard | F1 Free |
 | -------- | ----------- | ----------- | ------- |
-| Devices/unit | 500 | 500 | 10 |
-| Messages/day | 50,000 | 1,500,000 | 3,000 |
-| Maximum units | 200 | 200 | 1 |
-| Device updates (create, update, <br/> delete) per unit per day | 1100 | 1100 | 1100 |
+| デバイス/ユニット | 500 | 500 | 10 |
+| メッセージ/日 | 50,000 | 1,500,000 | 3,000 |
+| 最大ユニット数 | 200 | 200 | 1 |
+| デバイスの更新 (作成、更新、<br/>削除)/ユニット/日 | 1100 | 1100 | 1100 |
 
-> [AZURE.NOTE] If you anticipate using more than 200 units with an S1 or S2 tier hub, please contact Microsoft support.
+> [AZURE.NOTE]S1 または S2 レベルのハブで 200 を超えるユニットの使用が予想される場合は、Microsoft サポートにお問い合わせください。
 
-The following table lists the limits that apply to IoT Hub resources:
+次の表には、IoT Hub のリソースに適用される制限がリストされています。
 
-| Resource | Limit |
+| リソース | 制限 |
 | -------- | ----- |
-| Maximum IoT hubs per Azure subscription | 10 |
-| Maximum number of device identities<br/>  returned in a single call | 1000 |
-| IoT Hub message maximum retention | 7 days |
-| Maximum size of device-to-cloud message | 256 KB |
-| Maximum size of device-to-cloud batch | 256 KB |
-| Maximum messages in device-to-cloud batch | 500 |
-| Maximum size of cloud-to-device message | 64 KB |
-| Maximum TTL for cloud-to-device messages | 2 days |
-| Maximum delivery count for cloud-to-device <br/> messages | 100 |
-| Maximum delivery count for feedback messages <br/> in response to a cloud-to-device message | 100 |
-| Maximum TTL for feedback messages in <br/> response to a cloud-to-device message | 2 days |
+| Azure サブスクリプションごとの最大 IoT Hub | 10 |
+| 1 回の呼び出しで返される<br/>デバイス ID の最大数 | 1,000 |
+| IoT Hub メッセージの最大保有期間 | 7 日 |
+| デバイスからクラウドへのメッセージの最大サイズ | 256 KB |
+| デバイスからクラウドへのバッチの最大サイズ | 256 KB |
+| デバイスからクラウドへのバッチの最大メッセージ数 | 500 |
+| クラウドからデバイスへのメッセージの最大サイズ | 64 KB |
+| クラウドからデバイスへのメッセージの最大 TTL | 2 日 |
+| クラウドからデバイスへのメッセージの<br/>最大配信数 | 100 |
+| クラウドからデバイスへのメッセージに対する<br/>フィードバック メッセージの最大配信数 | 100 |
+| クラウドからデバイスへのメッセージに対する<br/>フィードバック メッセージの最大 TTL | 2 日 |
 
-The IoT Hub service throttles requests when the following quotas are exceeded:
+IoT Hub サービスは、次のクォータを超えた場合に、要求を調整します。
 
-| Throttle | Per-hub value |
+| スロットル | ハブごとの値 |
 | -------- | ------------- |
-| Identity registry operations <br/> (create, retrieve, list, update, delete), <br/> individual or bulk import/export | 100/min/unit, up to 5000/min |
-| Device connections | 100/sec/unit |
-| Device-to-cloud sends | 2000/min/unit (for S2), 60/min/unit (for S1) <br/> Minimum of 100/sec |
-| Cloud-to-device operations <br/> (sends, receives, feedback) | 100/min/unit |
+| ID レジストリの操作 <br/>(作成、取得、一覧表示、更新、削除)、<br/>個別または一括のインポートとエクスポート | 100/分/ユニット、最大 5000/分 |
+| デバイスの接続 | 100/秒/ユニット |
+| デバイスからクラウドへの送信 | 2000/分/ユニット (S2 の場合)、60/分/ユニット (S1 の場合)<br/>最小 100/秒 |
+| クラウドからデバイスへの操作 <br/>(送信、受信、フィードバック) | 100/分/ユニット |
+
+<!---HONumber=Nov15_HO2-->

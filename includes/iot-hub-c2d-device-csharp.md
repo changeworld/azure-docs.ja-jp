@@ -1,9 +1,9 @@
-## シミュレーション済みデバイスからのメッセージの受信
+## シミュレーション済みデバイスでのメッセージの受信
 
 このセクションでは、「IoT Hub の概要」で作成したシミュレーション済みデバイス アプリケーションを変更して、クラウドからデバイスへのメッセージを IoT Hub から受信します。
 
 1. Visual Studio の **SimulatedDevice** プロジェクトで、次のメソッドを **Program** クラスに追加します。
-   
+
         private static async void ReceiveC2dAsync()
         {
             Console.WriteLine("\nReceiving cloud to device messages from service");
@@ -30,12 +30,11 @@
 
         ReceiveC2dAsync();
 
-> [AZURE.NOTE] わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。実稼働のコードでは、MSDN 記事 ([一時的な障害処理]) で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
+> [AZURE.NOTE]わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。実稼働のコードでは、MSDN 記事 (一時的な障害処理) で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
 <!-- Links -->
 [IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
-[一時的な障害処理]: https://msdn.microsoft.com/ja-jp/library/hh680901(v=pandp.50).aspx
 
 <!-- Images -->
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

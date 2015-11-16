@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Testability の概要"
-   description="この記事は、Microsoft Azure Service Fabric の Testability 機能について説明します。"
+   pageTitle="Testability 概要 | Microsoft Azure"
+   description="この記事では、Microsoft Azure Service Fabric の Testability 機能について説明します。これはサービスに対して障害を誘導し、テスト シナリオを実行するものです。"
    services="service-fabric"
    documentationCenter=".net"
    authors="rishirsinha"
@@ -94,4 +94,4 @@ Testability PowerShell を使用するには、ランタイム MSI がインス�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

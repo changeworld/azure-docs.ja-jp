@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="07/27/2015"
+	ms.date="10/29/2015"
 	ms.author="mahender"/>
 
 # Facebook ログインを使用するアプリケーションを構成する方法
@@ -26,9 +26,9 @@
 
 ## <a name="register"> </a>Facebook にアプリケーションを登録する
 
-1. [Azure の管理ポータル]にログオンし、モバイル アプリに移動します。**[URL]** をコピーします。この URL は、Facebook アプリの構成で使用します。
+1. [Microsoft Azure の管理ポータル]にログオンし、モバイル アプリに移動します。**[URL]** をコピーします。この URL は、Facebook アプリの構成で使用します。
  
-2. **[設定]**、**[ユーザー認証]**、**[Facebook]** の順にクリックします。次に、Facebook ブレードから **リダイレクト URI** をコピーします。リダイレクト URI を Facebook アプリで使用します。
+2. **[設定]**、**[モバイル認証]**、**[Facebook]** の順にクリックします。次に、Facebook ブレードから **リダイレクト URI** をコピーします。リダイレクト URI を Facebook アプリで使用します。
  
 3. 他のブラウザー ウィンドウで、[Facebook Developers] の Web サイトに移動し、Facebook アカウントの資格情報でサインインします。
 
@@ -78,8 +78,7 @@
 [Facebook Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: http://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /ja-JP/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Azure の管理ポータル]: https://portal.azure.com/
 [Azure 管理ポータル]: https://portal.azure.com/
- 
+[Microsoft Azure の管理ポータル]: https://portal.azure.com/
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

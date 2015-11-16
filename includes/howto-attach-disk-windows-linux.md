@@ -2,9 +2,10 @@
 ディスクの詳細については、[About Disks and VHDs for Virtual Machines (Virtual Machines 用のディスクと VHD について)](../articles/virtual-machines-disks-vhds.md) を参照してください。
 
 ##<a id="attachempty"></a>方法: 空のディスクの接続
+
 空のディスクを接続すると、Azure が .vhd ファイルを作成してそれをストレージ アカウントに保存するため、データ ディスクを比較的簡単に追加できます。
 
-1. **[仮想マシン]** をクリックし、適切な仮想マシンを選択します。
+1. **[Virtual Machines]** をクリックし、適切な仮想マシンを選択します。
 
 2. コマンド バーで、**[ディスクの接続]**、**[空のディスクの接続]** の順にクリックします。
 
@@ -28,12 +29,14 @@
 4.	データ ディスクが作成されて接続されると、仮想マシンのダッシュボードに表示されます。
 
 	![Empty data disk successfully attached](./media/howto-attach-disk-window-linux/AttachEmptySuccess.png)
+	
+> [AZURE.NOTE]新しいデータ ディスクを追加した後で、仮想マシンがストレージとしてそのディスクを使用できるように、仮想マシンにログオンしてディスクを初期化する必要があります。
 
 ##<a id="attachexisting"></a>方法: 既存のディスクの接続
 
 既存のディスクを接続する場合は、ストレージ アカウントで利用できる .vhd を持っている必要があります。.vhd ファイルをストレージ アカウントにアップロードするには、[Add-AzureVhd](http://go.microsoft.com/FWLink/p/?LinkID=391684) コマンドレットを使用します。.vhd ファイルを作成してアップロードした後は、それを仮想マシンに接続できます。
 
-1. **[仮想マシン]** をクリックし、適切な仮想マシンを選択します。
+1. **[Virtual Machines]** をクリックし、適切な仮想マシンを選択します。
 
 2. コマンド バーで **[接続]** をクリックし、**[ディスクの接続]** を選択します。
 
@@ -55,6 +58,4 @@
 
 	![Data disk successfully attached](./media/howto-attach-disk-window-linux/AttachExistingSuccess.png)
 
-> [AZURE.NOTE]データ ディスクを追加した後、仮想マシンがストレージとしてそのディスクを使用できるように、仮想マシンにログオンしてディスクを初期化する必要があります。
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

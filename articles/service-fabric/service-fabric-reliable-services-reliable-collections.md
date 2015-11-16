@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Reliable Collection"
-   description="Reliable Collection では、高可用性でスケーラブルなほか、待機時間が短いクラウド アプリケーションを作成できます。"
+   pageTitle="Reliable Collection | Microsoft Azure"
+   description="Service Fabric ステートフル サービスは、可用性と拡張性が高く、待機時間が短いクラウド アプリケーションの記述を可能にする Reliable Collection を提供します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="mcoskun"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="08/05/2015"
+   ms.date="10/15/2015"
    ms.author="mcoskun"/>
 
-# Reliable Collection
+# Service Fabric ステートフル サービスの Reliable Collection の概要
 
 Reliable Collection では、高可用性でスケーラブルなほか、待機時間が短いクラウド アプリケーションを、単一マシン アプリケーションを作成しているかのように作成できます。`Microsoft.ServiceFabric.Data.Collections` 名前空間のクラスは、状態の可用性を自動的に高める、すぐに使用可能な一連のコレクションを提供します。開発者は Collection API をプログラムする必要があるだけで、レプリケートされたローカルの状態は Reliable Collection によって管理されます。
 
@@ -38,7 +38,7 @@ Reliable Collection では追加設定なしで強力な整合性が保証され
 
 Reliable Collection API は同時実行コレクション API (`System.Collections.Concurrent` 名前空間内にあります) が進化したものです。
 
-1. 非同期: Reliable Collection とは異なり、操作がレプリケートおよび永続化されるため、タスクを返します。
+1. 非同期: 同時実行コレクションとは異なり、操作がレプリケートおよび永続化されるため、タスクを返します。
 2. out パラメーターを使用しない: `ConditionalResult<T>` を使用して out パラメーターではなく、ブール値および値を返します。`ConditionalResult<T>` は `Nullable<T>` に似ていますが、構造体にするには「T」は必要ありません。
 3. トランザクション: トランザクション オブジェクトを使用することで、トランザクション内で複数の Reliable Collection に対してユーザーがグループ操作を実行できます。
 
@@ -54,8 +54,8 @@ Reliable Collection では、レプリカの操作とロールに合わせて、
 
 Reliable Collection では、次の 2 つの分離レベルがサポートされています。
 
-- **反復可能読み取り**: "変更されたが、まだ他のトランザクションによってコミットされていないデータをステートメントから読み取ることができないように指定するほか、現在のトランザクションが完了するまで、現在のトランザクションで読み取られたデータをその他のトランザクションが変更できないように指定します。(https://msdn.microsoft.com/ja-jp/library/ms173763.aspx)"
-- **スナップショット**: "トランザクションの任意のステートメントによって読み取られたデータが、トランザクションの開始時に存在していた、トランザクション全体を通じて整合性のあるバージョンのデータになることを指定します。トランザクションで認識されるのは、トランザクション開始前にコミットされたデータ変更のみです。現在のトランザクションの開始後に他のトランザクションによって行われたデータ変更は、現在のトランザクションで実行されているステートメントには認識されません。それはつまり、トランザクションの開始時に存在していたコミット済みデータのスナップショットを、トランザクション内のステートメントが取得しているかのように機能するということです (https://msdn.microsoft.com/ja-jp/library/ms173763.aspx))"
+- **反復可能読み取り**: "変更されたが、まだ他のトランザクションによってコミットされていないデータをステートメントから読み取ることができないように指定するほか、現在のトランザクションが完了するまで、現在のトランザクションで読み取られたデータをその他のトランザクションが変更できないように指定します。(https://msdn.microsoft.com/ja-JP/library/ms173763.aspx)"
+- **スナップショット**: "トランザクションの任意のステートメントによって読み取られたデータが、トランザクションの開始時に存在していた、トランザクション全体を通じて整合性のあるバージョンのデータになることを指定します。トランザクションで認識されるのは、トランザクション開始前にコミットされたデータ変更のみです。現在のトランザクションの開始後に他のトランザクションによって行われたデータ変更は、現在のトランザクションで実行されているステートメントには認識されません。それはつまり、トランザクションの開始時に存在していたコミット済みデータのスナップショットを、トランザクション内のステートメントが取得しているかのように機能するということです (https://msdn.microsoft.com/ja-JP/library/ms173763.aspx))"
 
 Reliable Dictionary と Reliable Queue では、Read Your Writes がサポートされます。つまり、トランザクション内でのすべての書き込みは、同じトランザクションで行われる次の読み取りによって認識されるということです。
 
@@ -78,7 +78,7 @@ Reliable State Manager および Reliable Collection は、ログとチェック
 
 ログとチェックポイント モデルをよく理解するために、まず無限のディスクのシナリオを見てみましょう。Reliable State Manager が、すべての操作をレプリケートされる前にログ記録します。これにより、Reliable Collection はメモリにおいてのみ操作を適用できます。ログは永続化されるため、レプリカに障害が発生して再起動する必要があった場合でも、Reliable State Manager のログに十分な情報があるため、レプリカで失われたすべての操作を再生することができます。ディスクは無限であるためログ レコードを削除する必要はなく、Reliable Collection が実行する必要があるのは、メモリ内にある状態を管理することだけです。
 
-次に、有限のディスクのシナリオを見ていきましょう。ある時点で、Reliable State Manager が使用するディスク領域が不足します。そのような不足が発生する前に、Reliable State Manager は、ログを切り捨てて新しいレコードを格納する領域を確保する必要があります。このとき Reliable State Manager は、メモリ内の状態をチェックポイントとするように Reliable Collection に要求します。その時点までの状態を永続化するのは Reliable Collection の役目です。Reliable Collection がチェックポイントを完了すると、Reliable State Manager はログを切り捨ててディスク領域を解放できます。このようにして、レプリカの再起動が必要な場合、Reliable Collection はチェックポイントされた状態を回復し、Reliable State Manager はチェックポイント以降に実行された状態の変更すべてを回復して再生します。
+次に、有限のディスクのシナリオを見ていきましょう。ある時点で、Reliable State Manager が使用するディスク領域が不足します。そのような不足が発生する前に、Reliable State Manager は、ログを切り捨てて新しいレコードを格納する領域を確保する必要があります。このとき Reliable State Manager は、メモリ内の状態をチェックポイントとしてディスクに記録するように Reliable Collection に要求します。その時点までの状態を永続化するのは Reliable Collection の役目です。Reliable Collection がチェックポイントを完了すると、Reliable State Manager はログを切り捨ててディスク領域を解放できます。このようにして、レプリカの再起動が必要な場合、Reliable Collection はチェックポイントされた状態を回復し、Reliable State Manager はチェックポイント以降に実行された状態の変更すべてを回復して再生します。
 
 ## ロック
 Reliable Collection では、すべてのトランザクションは 2 段階で実行されます。つまり、トランザクションが中止またはコミットのいずれかで終了するまで、取得したロックを解放しないということです。
@@ -115,7 +115,7 @@ Reliable Collection は、常に排他ロックを取得します。読み取り
 
 - [Reliable Service のクイック スタート](service-fabric-reliable-services-quick-start.md)
 - [Service Fabric Web API サービスの概要](service-fabric-reliable-services-communication-webapi.md)
-- [Reliable Service プログラミング モデルの詳細な使用方法](../Service-Fabric/service-fabric-reliable-services-advanced-usage.md)
+- [Reliable Service プログラミング モデルの詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
 - [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->
