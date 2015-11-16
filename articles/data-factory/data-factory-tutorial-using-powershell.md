@@ -13,11 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/25/2015" 
+	ms.date="10/29/2015" 
 	ms.author="spelluru"/>
 
 # チュートリアル: Data Factory を使用したログ ファイルの移動と処理 [PowerShell]
 この記事では、Azure Data Factory を使用してデータをログ ファイルから洞察へと変化させながら、ログ処理の標準的なシナリオを包括的なチュートリアルとして提供します。
+
+> [AZURE.IMPORTANT]この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス][cmdlet-reference]」を参照してください。
+>    
+> Azure PowerShell 1.0 プレビューを使用する場合は、[ここ](https://msdn.microsoft.com/library/dn820234.aspx)に記載されているコマンドレットを使用する必要があります。たとえば、New-AzureDataFactory を使用する代わりに、New-AzureRMDataFactory を使用します。
 
 ## シナリオ
 Contoso は、ゲーム機、携帯デバイス、パーソナル コンピューター (PC) など、複数のプラットフォーム向けにゲームを製作するゲーム会社です。これらのゲームはそれぞれが大量のログを産み出します。Contoso 社の目標は、これらのゲームが産み出すログを収集解析することで有益な情報を手に入れ、アップセルやクロスセルの機会を見極め、新しい魅力的な機能などを開発する、つまりビジネスを向上させて顧客により良い体験を提供することです。
@@ -53,7 +57,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	
 
 ## 概要
-全体のワークフローは次のとおりです。![Tutorial End to End Flow][image-data-factory-tutorial-end-to-end-flow]
+全体のワークフローは次のとおりです。![チュートリアルの全体のフロー][image-data-factory-tutorial-end-to-end-flow]
 
 1. **PartitionGameLogsPipeline** が未処理のゲーム イベントを BLOB ストレージ (RawGameEventsTable) から読み取り、年、月、日に基づくパーティションを作成します (PartitionedGameEventsTable)。
 2. **EnrichGameLogsPipeline** がパーティション分割されたゲーム イベント (PartitionGameLogsPipeline の出力結果である PartitionedGameEventsTable) と geo コード (RefGetoCodeDictionaryTable) を結合し、IP アドレスを対応する地理的位置 (EnrichedGameEventsTable) にマッピングすることでデータを強化します。
@@ -61,7 +65,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
     
 ## チュートリアル: ワークフローの作成、デプロイ、監視
 1. [手順 1. サンプル データとスクリプトをアップロードする](#MainStep1)。この手順では、すべてのサンプル データ (すべてのログと参照データを含む) とワークフローによって実行される Hive/Pig スクリプトをアップロードします。実行するスクリプトは、Azure SQL Database (MarketingCampaigns)、テーブル、ユーザー定義型、およびストアド プロシージャの作成も行います。
-2. [手順 2. Azure Data Factory を作成する](#MainStep2)。この手順では、"LogProcessingFactory" という名前の Azure データ ファクトリを作成します。
+2. [手順 2. Azure Data Factory を作成する](#MainStep2)。この手順では、"LogProcessingFactory" という名前の Azure Data Factory を作成します。
 3. [手順 3. リンクされたサービスを作成する](#MainStep3)。この手順では、以下のリンクされたサービスを作成します: 
 	
 	- 	**StorageLinkedService**。未処理のゲーム イベント、パーティションに分割されたゲーム イベント、強化されたゲーム イベント、マーケティング キャンペーンの有効な情報、geo コードの参照データを含む Azure ストレージの場所をリンクし、LogProcessingFactory へのマーケティング データの参照を行います。   
@@ -118,7 +122,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	
 	または、C:\\ADFWalkthrough\\Scripts フォルダーにあるファイルを使用して pig/hive スクリプトおよびサンプル ファイルを BLOB ストレージ内の adfwalkthrough コンテナーにアップロードし、Azure SQL データベースである MarketingCamapaigns 内に MarketingCampaignEffectiveness テーブルを作成することも可能です。
    
-2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、**Azure 管理ポータル**またはマスター データベース上の **sp\_set\_firewall\_rule** を使用して、コンピューターの IP アドレスに対するファイアウォール規則を作成します。この変更が有効になるまで最大で 5 分かかる場合があります。[Azure SQL のファイアウォール規則の設定][azure-sql-firewall]に関するページを参照してください。
+2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、**Microsoft Azure 管理ポータル**またはマスター データベース上の **sp\_set\_firewall\_rule** を使用して、コンピューターの IP アドレスに対するファイアウォール規則を作成します。この変更が有効になるまで最大で 5 分かかる場合があります。[Azure SQL のファイアウォール規則の設定][azure-sql-firewall]に関するページを参照してください。
 4. Azure PowerShell で、サンプルを展開した場所に移動します (例: **C:\\ADFWalkthrough**)。
 5. **uploadSampleDataAndScripts.ps1** を実行します。 
 6. スクリプトが正常に実行されると、以下が表示されます。
@@ -164,7 +168,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	
 5. **[新しいデータ ファクトリ]** ブレードで、**[名前]** フィールドに「**LogProcessingFactory**」と入力します。
 
-	![[データ ファクトリ] ブレード][image-data-factory-tutorial-new-datafactory-blade]
+	![[Data Factory] ブレード][image-data-factory-tutorial-new-datafactory-blade]
 
 6. "**ADF**" という名前の Azure リソース グループをまだ作成していない場合は、次の手順を実行します。
 	1. **[リソース グループ名]** をクリックし、**[新しいリソース グループを作成]** をクリックします。
@@ -176,12 +180,12 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 7. **[リソース グループ名]** の **[ADF]** を選択します。  
 8.	**[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加]** が既定で選択されていることに注意してください。これにより、スタート画面 (Azure プレビュー ポータルへのログイン時に表示される画面) のデータ ファクトリにリンクが追加されます。
 
-	![Create Data Factory Blade][image-data-factory-tutorial-create-datafactory]
+	![Data Factory 作成ブレード][image-data-factory-tutorial-create-datafactory]
 
 9.	**[新しいデータ ファクトリ]** ブレードで、**[作成]** をクリックしてデータ ファクトリを作成します。
 10.	データ ファクトリが作成されると、**LogProcessingFactory** というタイトルの **[Data Factory]** ブレードが表示されます。
 
-	![Data Factory Homepage][image-data-factory-tutorial-datafactory-homepage]
+	![Data Factory のホーム ページ][image-data-factory-tutorial-datafactory-homepage]
 
 	
 	表示されない場合は、次のいずれかを行います。
@@ -189,9 +193,9 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	- **スタート画面** (ホーム ページ) で **[LogProcessingFactory]** をクリックします。
 	- 左側の **[参照]** をクリックし、**[すべて]**、**[Data Factory]** の順にクリックし、最後に目的のデータ ファクトリをクリックします。
  
-	Azure Data Factory の名前はグローバルに一意にする必要があります。**""LogProcessingFactory" という名前の Data Factory は使用できません"** というエラー メッセージが表示された場合は、名前を変更します (例: yournameLogProcessingFactory)。このチュートリアルの手順の実行中に、この名前を LogProcessingFactory の代わりに使用します。
+	Azure Data Factor の名前はグローバルに一意にする必要があります。**""LogProcessingFactory" という名前の Data Factory は使用できません"** というエラー メッセージが表示された場合は、名前を変更します (例: yournameLogProcessingFactory)。このチュートリアルの手順の実行中に、この名前を LogProcessingFactory の代わりに使用します。
  
-## <a name="MainStep3"></a>手順 3. リンクされたサービスを作成する
+## <a name="MainStep3"></a>手順 3. リンク サービスを作成する
 
 > [AZURE.NOTE]この記事では、Azure PowerShell を使用して、リンク サービス、テーブル、パイプラインを作成します。Azure ポータル、具体的には Data Factory エディターを使用してこのチュートリアルを実行する場合は、[Data Factory エディターの使用方法に関するチュートリアル][adftutorial-using-editor]をご覧ください。
 
@@ -204,13 +208,13 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 
 2. **[リンクされたサービス]** ブレードで、コマンド バーの **[+ データ ストア]** をクリックします。
 
-	![Linked Services - Add Store][image-data-factory-tutorial-linkedservices-add-datstore]
+	![Linked Services - ストアの追加][image-data-factory-tutorial-linkedservices-add-datstore]
 
 3. **[新しいデータ ストア]** ブレードで、**[名前]** フィールドに「**StorageLinkedService**」と入力し、**[種類 (設定が必要)]** をクリックして、**[Azure ストレージ アカウント]** を選択します。
 
-	![Data Store Type - Azure Storage][image-data-factory-tutorial-datastoretype-azurestorage]
+	![データ ストア タイプ - Azure Storage][image-data-factory-tutorial-datastoretype-azurestorage]
 
-4. **[新しいデータ ストア]** ブレードに、**[アカウント名]** と **[アカウント キー]** の 2 つの新しいフィールドが表示されます。**Azure ストレージ アカウント**のアカウント名とアカウント キーを入力します。
+4. **[新しいデータ ストア]** ブレードに、**[アカウント名]** と **[アカウント キー]** の 2 つの新しいフィールドが表示されます。**Azure Storage アカウント**のアカウント名とアカウント キーを入力します。
 
 	![Azure Storage Settings][image-data-factory-tutorial-azurestorage-settings]
 
@@ -232,9 +236,9 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 		
  		![Azure SQL Settings][image-data-factory-tutorial-azuresql-settings]
 
-		Azure 管理ポータルからこれらの値を取得するには、[MarketingCampaigns データベースの SQL Database 接続文字列を表示する] をクリックします。
+		Microsoft Azure 管理ポータルからこれらの値を取得するには、[MarketingCampaigns データベースの SQL Database 接続文字列を表示する] をクリックします。
 
-		![Azure SQL Database Connection String][image-data-factory-tutorial-azuresql-database-connection-string]
+		![Azure SQL Database 接続文字列][image-data-factory-tutorial-azuresql-database-connection-string]
 
 12. 作成した 3 つのデータ ストア (**StorageLinkedService**、**HDInsightStorageLinkedService**、**AzureSqlLinkedService**) がすべて表示されていることを確認します。
 13. リンクされたサービスをもう 1 つ作成する必要がありますが、これはコンピューティング サービス (具体的には **Azure HDInsight クラスター**) にリンクされたサービスです。ポータルでは、まだリンクされたコンピューティング サービスの作成をサポートしていません。そのため、Azure PowerShell を使用して、このリンクされたサービスを作成する必要があります。 
@@ -242,7 +246,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	- **Add-AzureAccount** を実行し、Azure プレビュー ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
 	- **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
 	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure プレビュー ポータルで使用したものと同じである必要があります。 
-15. Azure Data Factory コマンドレットは **AzureResourceManager** モードでのみ使用できるので、このモードに切り替えます。
+15. Azure Data Factory コマンドレットは **AzureResourceManager** モードで使用できるので、このモードに切り替えます。
 
 		Switch-AzureMode AzureResourceManager
 
@@ -288,7 +292,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 - MarketingCampaignEffectivenessSQLTable
 - MarketingCampaignEffectivenessBlobTable
 
-	![Tutorial End-to-End Flow][image-data-factory-tutorial-end-to-end-flow]
+	![チュートリアルの全体のフロー][image-data-factory-tutorial-end-to-end-flow]
  
 上の図は、中央の列がパイプラインを、上と下の列がテーブルを表しています。
 
@@ -396,9 +400,9 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 13. 表示されているダイアグラムは並べ替えることが可能で、以下のダイアグラムは上部が直接の入力を示し、下部が出力を示しています。**PartitionGameLogsPipeline** の出力が EnrichGameLogsPipeline に入力として渡され、**EnrichGameLogsPipeline** の出力が **AnalyzeMarketingCampaignPipeline** に渡されていることがわかります。タイトルをダブルクリックして、ブレードが示すアーティファクトについての詳細を表示します。
 
-	![Diagram View][image-data-factory-tutorial-diagram-view]
+	![ダイアグラム ビュー][image-data-factory-tutorial-diagram-view]
 
-	**ご利用ありがとうございます。** Azure データ ファクトリ、リンクされたサービス、パイプライン、テーブルを作成し、ワークフローを開始することに成功しました。
+	**ご利用ありがとうございます。** Azure Data Factory、リンクされたサービス、パイプライン、テーブルを作成し、ワークフローを開始することに成功しました。
 
 
 ## <a name="MainStep6"></a>手順 6. パイプラインとデータ スライスを監視する 
@@ -558,4 +562,4 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial-using-powershell/DataFactoryCreateButton.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

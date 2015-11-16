@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/09/2015" 
+	ms.date="11/03/2015" 
 	ms.author="awills"/>
  
 # Java Web アプリでの依存関係、例外、および実行時間の監視
@@ -33,7 +33,7 @@ Java エージェントを使用するには、これをサーバーにインス
 
 ## Jave 用の Application Insights エージェントのインストール
 
-1. Java サーバーを実行しているコンピューターで[エージェントをダウンロード](http://go.microsoft.com/fwlink/?LinkId=618633)します。
+1. Java サーバーを実行しているコンピューターで[エージェントをダウンロード](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.html)します。
 2. アプリケーション サーバーのスタートアップ スクリプトを編集し、次の JVM を追加します。
 
     `javaagent:`*エージェント JAR ファイルへの完全パス*
@@ -122,4 +122,4 @@ Application Insights リソースで、集計されたリモートの依存関�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

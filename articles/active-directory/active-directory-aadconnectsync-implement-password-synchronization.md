@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="11/03/2015"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -27,13 +27,13 @@
 
 パスワード同期は Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) の機能であり、オンプレミス Active Directory と Azure Active Directory (Azure AD) のユーザー パスワードを同期します。この機能を使用すると、ユーザーは、オンプレミス ネットワークにログインするときと同じパスワードを使用して、Azure Active Directory のサービス (Office 365、Microsoft Intune、CRM Online など) にログインできます。
 
-> [AZURE.NOTE]FIPS とパスワード同期に対して構成されている Active Directory ドメイン サービスの詳細については、「Password Sync failing in FIPS-compliant systems (FIPS 準拠システムでパスワード同期が失敗する)」をご覧ください。
+> [AZURE.NOTE]FIPS とパスワード同期に対して構成されている Active Directory ドメイン サービスの詳細については、「[Azure AD Connect Sync: パスワード同期の実装](#password-synchronization-and-fips)」を参照してください。
 
-## パスワード同期の可用性
+### パスワード同期の可用性
 
 Azure Active Directory のユーザーはすべてパスワード同期を実行できます。パスワード同期とフェデレーション認証などの他の機能との互換性については、以下をご覧ください。
 
-## パスワード同期のしくみ
+### パスワード同期のしくみ
 
 パスワード同期は、Azure AD Connect Sync によって実装されるディレクトリ同期の拡張機能です。そのため、この機能が動作するためには、オンプレミスと Azure Active Directory の間にディレクトリ同期が構成されている必要があります。
 
@@ -45,34 +45,36 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 
 パスワードの同期によって、現在ログイン中のユーザーが影響を受けることはありません。クラウド サービスにログインしているユーザーがオンプレミスのパスワードを変更した場合でも、クラウド サービスのセッションは中断せずに続けられます。ただし、クラウド サービスでユーザーの再認証が必要になったときは、すぐに新しいパスワードを提供する必要があります。この時点で、ユーザーは新しいパスワード、つまりその前にオンプレミス Active Directory からクラウドに同期されたパスワードを提供する必要があります。
 
-## セキュリティに関する考慮事項
+### Azure AD Domain Services のパスワード同期のしくみ
+
+Azure AD でこのサービスを有効にする場合、シングル サインオンを利用するには、パスワード同期オプションが必要です。このサービスを有効にすると、パスワード同期の動作が変わり、パスワード ハッシュも、そのままオンプレミスの Active Directory から Azure AD Domain Services に対して同期されます。この機能は、ADMT (Active Directory 移行ツール) と似ており、Azure AD Domain Services はオンプレミス AD で使用できるすべての方法を使用してユーザーを認証できるようになります。
+
+### セキュリティに関する考慮事項
 
 パスワードを同期するとき、ユーザーのプレーン テキスト形式のパスワードは、パスワード同期機能にも、Azure AD や関連するどのサービスにも公開されません。
 
 また、オンプレミス Active Directory でパスワードを可逆的に暗号化された形式で保存する必要はありません。Active Directory パスワード ハッシュのダイジェストが、オンプレミスの AD と Azure Active Directory の間の伝送に使用されます。パスワード ハッシュのダイジェストを使用して、ユーザーのオンプレミス環境のリソースにアクセスすることはできません。
 
-## パスワード ポリシーの考慮事項
+### パスワード ポリシーの考慮事項
 
 パスワード同期を有効にすることによって影響を受ける 2 種類のパスワード ポリシーがあります。
 
 1. パスワードの複雑性のポリシー
 2. パスワードの有効期限のポリシー
 
-### パスワードの複雑性のポリシー
+**パスワードの複雑性のポリシー**
 
 パスワード同期を有効にすると、オンプレミス Active Directory で構成されているパスワードの複雑性のポリシーにより、同期されるユーザーに対してクラウドで定義されている複雑性のポリシーが上書きされます。つまり、ユーザーのオンプレミス Active Directory 環境において有効なパスワードは、Azure AD サービスのアクセスに使用できます。
 
-
 > [AZURE.NOTE]クラウド内で直接作成されたユーザーのパスワードには、引き続きクラウドで定義されているパスワード ポリシーが適用されます。
 
-### パスワードの有効期限のポリシー
+**パスワードの有効期限のポリシー**
 
 ユーザーがパスワード同期のスコープ内にいる場合、クラウド アカウントのパスワードは "*期限なし*" に設定されます。つまり、オンプレミス環境でユーザーのパスワードの期限が切れても、クラウド サービスにはその期限切れパスワードを使用して引き続きログインできる可能性があります。
 
 クラウドのパスワードは、次にユーザーがオンプレミス環境でパスワードを変更したときに更新されます。
 
-
-## 同期されたパスワードの上書き
+### 同期されたパスワードの上書き
 
 管理者は、Azure Active Directory PowerShell を使用して手動でユーザーのパスワードをリセットできます。
 
@@ -80,60 +82,59 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 
 ユーザーがオンプレミスのパスワードを再び変更した場合、新しいパスワードはクラウドに同期され、手動で更新したパスワードを上書きします。
 
-
 ## パスワード同期の準備
 
-Azure Active Directory テナントのパスワード同期を有効にするには、先にディレクトリ同期を有効にする必要があります。
 
+### パスワード同期の有効化
 
-## パスワード同期の有効化
+Azure AD Connect のインストール時に簡単設定を使用すると、既定でパスワード同期が有効になります。
 
-Azure AD Connect 構成ウィザードを実行するときに、パスワード同期を有効にします。
+Azure AD Connect のインストール時にカスタム設定を使用すると、ユーザー サインイン ページでパスワード同期が有効になります。![usersignin](./media/active-directory-aadsync-implement-password-synchronization/usersignin.png)
 
-**[オプション機能]** ダイアログ ページで、[**パスワード同期**] を選択します。
+**AD FS とのフェデレーション**の使用を選択する場合、AD FS インフラストラクチャで障害が発生した際のバックアップとして、パスワード同期を有効にすることができます。Azure AD Domain Services を使用する予定がある場合にも、有効にすることができます。
 
-![オプション機能][1]
+### パスワード同期と FIPS
 
+FIPS (Federal Information Processing Standard) に従ってサーバーがロックされた場合、MD5 は無効になります。パスワード同期のために MD5 を有効にするには、C:\\Program Files\\Azure AD Sync\\Bin の miiserver.exe.config に enforceFIPSPolicy キーを追加します。
 
-> [AZURE.NOTE]このプロセスにより完全同期がトリガーされます。通常、完全同期サイクルの完了には他の同期サイクルより時間がかかります。
+```
+<configuration>
+    <runtime>
+        <enforceFIPSPolicy enabled="false"/>
+    </runtime>
+</configuration>
+```
 
+config ファイルの末尾に configuration/runtime ノードがあります。
+
+セキュリティと FIPS の詳細については、[AAD パスワード同期、暗号化、FIPS コンプライアンス](http://blogs.technet.com/b/ad/archive/2014/06/28/aad-password-sync-encryption-and-and-fips-compliance.aspx)に関するページを参照してください。
 
 ## パスワード同期の管理
 
-Azure AD Connect を実行しているコンピューターのイベント ログを使用して、パスワード同期の進行状況を監視できます。
+### パスワード同期のトラブルシューティング
 
+**Synchronization Service Manager** を起動し、**[コネクタ]** を開き、ユーザーが属する Active Directory Connector を選択し、**[コネクタ スペースの検索]** を選択し、対象のユーザーを検索します。
 
-### パスワード同期のステータスの特定
+![csuser](./media/active-directory-aadsync-implement-password-synchronization/cspasswordsync.png)
 
-以下の条件に一致するイベントを調べることによって、パスワードの同期に成功したユーザーを特定できます。
+ユーザーについて、**[系列]** タブを選択し、少なくとも 1 つの同期規則の **[パスワード同期]** に **[True]** と表示されていることを確認します。既定の構成では、**[In from AD - User AccountEnabled]** という同期規則です。
 
-| から| イベント ID |
-| --- | --- |
-| ディレクトリ同期| 656|
-| ディレクトリ同期| 657|
+オブジェクトのパスワード同期の詳細を確認するには、このページの下部にある **[ログ...]** をクリックします。過去 1 週間分、ユーザーのパスワード同期状態の履歴が表示されます。
 
-イベント ID 656 のイベントは、処理されたパスワードの変更要求のレポートを提供します。
+![オブジェクト ログ](./media/active-directory-aadsync-implement-password-synchronization/csobjectlog.png)
 
-![イベント ID 656][2]
+状態列には次のような値が表示されます。ここには、問題と、パスワードが同期されない理由も表示されます。
 
-ID 657 に対応するイベントは、これらの要求の結果を提供します。
+| 状態 | 説明 |
+| ---- | ----- |
+| 成功 | パスワードが正常に同期されました。 |
+| SourceConnectorNotPresent | オンプレミス Active Directory コネクタ スペースにオブジェクトがありません |
+| NoTargetConnection | メタバースまたは Azure AD コネクタ スペースなオブジェクトがありません |
+| TargetNotExportedToDirectory | Azure AD コネクタ スペースのオブジェクトはまだエクスポートされていません |
 
-![イベント ID 657][3]
-
-イベントでは、影響を受けるオブジェクトがアンカーと DN の値によって識別されます。アンカーの値は、Get-MsoUser コマンドレットによってユーザーに返される **ImmutableId** の値に対応します。
-
-オブジェクト ID に加えて、**イベント ID 656** は、ユーザーのパスワードがオンプレミスの Active Directory で変更された日付を提供します。
-
-![パスワード変更要求][4]
-
-イベント ID 657 には、ソース オブジェクト ID に加えて、そのユーザー オブジェクトの同期ステータスを示す Result フィールドがあります。
-
-パスワードの同期が正常に行われたことは、イベント ID 657 のイベントで Result 属性の値が Success に設定されていることによってわかります。パスワード同期の試行が失敗した場合、Result 属性の値は Failure になります。
-
-![パスワード変更結果][5]
 
 ### すべてのパスワードの完全同期の開始
-フィルターの構成を変更した場合は、現在スコープ内に含まれるユーザーのパスワードが同期されるように、すべてのパスワードの完全同期を開始する必要があります。
+すべてのパスワードを強制的に完全同期する必要はありませんが、何らかの理由で必要な場合は、PowerShell を利用できます。
 
     $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"
     $aadConnector = "<CASE SENSITIVE AAD CONNECTOR NAME>"
@@ -148,15 +149,6 @@ ID 657 に対応するイベントは、これらの要求の結果を提供し�
     Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $aadConnector -Enable $true
 
 
-## パスワード同期の無効化
-
-パスワード同期を無効にするには、Azure AD Connect 構成ウィザードを再び実行します。ウィザードで指定を求められたら、[パスワード同期] チェックボックスをオフにします。
-
-
-> [AZURE.NOTE]このプロセスにより完全同期がトリガーされます。通常、完全同期サイクルの完了には他の同期サイクルより時間がかかります。
-
-構成ウィザードを実行した後、テナントはパスワードを同期しなくなります。パスワードを新しく変更しても、クラウドには同期されません。それまでパスワードを同期していたユーザーは、クラウドでパスワードを手動で変更するまで、同期されたパスワードを使用して引き続きログインできます。
-
 
 
 ## その他のリソース
@@ -164,11 +156,4 @@ ID 657 に対応するイベントは、これらの要求の結果を提供し�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!--Image references-->
-[1]: ./media/active-directory-aadsync-implement-password-synchronization/IC759788.png
-[2]: ./media/active-directory-aadsync-implement-password-synchronization/IC662504.png
-[3]: ./media/active-directory-aadsync-implement-password-synchronization/IC662505.png
-[4]: ./media/active-directory-aadsync-implement-password-synchronization/IC662506.png
-[5]: ./media/active-directory-aadsync-implement-password-synchronization/IC662507.png
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

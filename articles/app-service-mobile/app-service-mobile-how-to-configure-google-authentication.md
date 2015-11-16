@@ -18,13 +18,15 @@
 
 # Google ログインを使用するようにアプリケーションを構成する方法
 
+[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]&nbsp;
+
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 このトピックでは、認証プロバイダーとして Google を使用するように Mobile Apps を構成する方法を示します。
 
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。
 
-1. [Azure の管理ポータル]にログオンし、モバイル アプリに移動します。**[URL]** をコピーします。この URL は、後で Google アプリで使用します。
+1. [Microsoft Azure の管理ポータル]にログオンし、モバイル アプリに移動します。**[URL]** をコピーします。この URL は、後で Google アプリで使用します。
  
 2. **[設定]**、**[ユーザー認証]**、**[Google]** の順にクリックします。**[リダイレクト URI]** をコピーします。この URI は、Google アプリの構成に使用します。
 
@@ -32,17 +34,17 @@
 
 4. 左側のナビゲーション バーで、**[API & Auth]** をクリックした後、**[Social APIs]** の下の **[Google+ API]**、**[Enable API]** の順にクリックします。
 
-5. **[API & Auth]**、**[Credentials]**、**[OAuth consent screen]** の順にクリックした後、自分の **電子メール アドレス** を選択し、**製品名** を入力し、**[Save]** をクリックします。
+5. **[API & Auth]**、**[Credentials]**、**[OAuth consent screen]** の順にクリックした後、自分の **電子メール アドレス** を選択し、**製品名**を入力し、**[Save]** をクリックします。
 
 6. **[Credentials]** タブで、**[Add credentials]**、**[OAuth 2.0 client ID]** の順にクリックした後、**[Web application]** を選択します。
 
-7. 前にコピーした Mobile Apps の **URL** を **[Authorized JavaScript Origins]** に貼り付け、前にコピーした **リダイレクト URI** を **[Authorized Redirect URI]** に貼り付けます。リダイレクト URI は、後ろにパス _/signin-google_ が追加された Mobile App ゲートウェイです。たとえば、「`https://contosogateway.azurewebsites.net/signin-google`」のように入力します。HTTPS スキームを使用していることを確認します。**[Create]** をクリックします。
+7. 前にコピーした Mobile Apps の **URL** を **[Authorized JavaScript Origins]** に貼り付け、前にコピーした **リダイレクト URI** を **[Authorized Redirect URI]** に貼り付けます。リダイレクト URI は、後ろにパス _/signin-google_ が追加されたモバイル アプリ ゲートウェイです。たとえば、「`https://contosogateway.azurewebsites.net/signin-google`」のように入力します。HTTPS スキームを使用していることを確認します。**[Create]** をクリックします。
 
 8. 次の画面で、表示されているクライアント ID とクライアント シークレットの値を書き留めます。
 
     > [AZURE.IMPORTANT]クライアント シークレットは、重要なセキュリティ資格情報です。このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
-9. [Microsoft Azure 管理ポータル]に戻り、Mobile App の [Google 設定] ブレードに、取得したクライアント ID とクライアント シークレットの値を貼り付けます。その後、**[保存]** をクリックします。
+9. [Microsoft Azure 管理ポータル]に戻り、モバイル アプリの [Google 設定] ブレードに、取得したクライアント ID とクライアント シークレットの値を貼り付けます。その後、**[保存]** をクリックします。
 
      ![][1]
 
@@ -64,8 +66,8 @@
 
 [Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
 
-[Azure の管理ポータル]: https://portal.azure.com/
+[Microsoft Azure の管理ポータル]: https://portal.azure.com/
 [Microsoft Azure 管理ポータル]: https://portal.azure.com/
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

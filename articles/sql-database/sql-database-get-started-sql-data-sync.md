@@ -20,16 +20,15 @@
 #Azure SQL データ同期の概要 (プレビュー)
 このチュートリアルでは、Azure (プレビュー) ポータルを使用して、Azure SQL データ同期の基礎を学習します。
 
-
 このチュートリアルは、SQL Server および Azure SQL Database を使用した経験がほとんどない読者を対象に作成されています。このチュートリアルでは、ハイブリッド (SQL Server および SQL Database インスタンス) 同期グループを作成し、全面的に構成して、設定したスケジュールに従って同期します。
 
-**注**: これまで MSDN に置かれていた Azure SQL データ同期の完全な技術ドキュメント セットは、現在は 1 つの .pdf になり、[こちら](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)でダウンロードできます。
+> [AZURE.NOTE]これまで MSDN に置かれていた Azure SQL データ同期の完全な技術ドキュメント セットは、現在は 1 つの .pdf になり、[こちら](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)でダウンロードできます。
 
 ## 手順 1: Azure SQL Database への接続
 
 1. [管理ポータル](http://manage.windowsazure.com)にサインインします。
 
-2. 左のウィンドウで、**[SQL データベース]** をクリックします。
+2. 左のウィンドウで、**[SQL SQL Database]** をクリックします。
 
 3. ページの下部にある **[同期]** をクリックします。[同期] をクリックすると、追加できる項目である **[新しい同期グループ]** および **[新しい同期エージェント]** が一覧に表示されます。
 
@@ -64,7 +63,7 @@
 <a id="InstallClient"></a>
 ### ステップ 2b. 新しいクライアント エージェントのインストール
 
-「Install a Client Agent (SQL Data Sync) (クライアント エージェントのインストール (SQL データ同期))(http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)」の指示に従って、エージェントをインストールします。
+「[Install a Client Agent (SQL Data Sync) (クライアント エージェントのインストール (SQL データ同期))](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)」の指示に従って、エージェントをインストールします。
 
 
 
@@ -92,7 +91,7 @@
 ### ステップ 4a. 新しい同期グループ ウィザードの開始
 
 1.	[管理ポータル](http://manage.windowsazure.com)に戻ります。
-2.	**[SQL データベース]** をクリックします。
+2.	**[SQL Database]** をクリックします。
 3.	ページの下部にある **[同期の追加]** をクリックして、ドロワから [新しい同期グループ] を選択します。
 
 	![Image2](./media/sql-database-get-started-sql-data-sync/NewSyncGroup-Figure2.png)
@@ -147,7 +146,7 @@
 
 4.	同期グループの作成を終了するには、ウィザードの右下にあるチェック マークをクリックします。SQL データ同期によって資格情報が確認されるのを待ちます。資格情報が確認されると、緑色のチェック マークが表示されます。
 
-5.	チェック マークをもう一度クリックします。これで [SQL データベース] の **[同期]** ページに戻ります。この同期グループが他の同期グループおよびエージェントと並んで一覧表示されています。
+5.	チェック マークをもう一度クリックします。これで [SQL Database] の **[同期]** ページに戻ります。この同期グループが他の同期グループおよびエージェントと並んで一覧表示されています。
 
 	![Image5](./media/sql-database-get-started-sql-data-sync/NewSyncGroupReference-Figure5.PNG)
 
@@ -157,7 +156,7 @@
 Azure SQL データ同期では、同期するテーブルと列を選択できます。また、列を絞り込んで、特定の値 (年齢 >= 65 など) を持つ行だけを同期する場合は、Azure の SQL データ同期ポータルを使用し、「同期するテーブル、列、および行の選択」の説明を参照して、同期するデータを定義します。
 
 1.	[管理ポータル](http://manage.windowsazure.com)に戻ります。
-2.	**[SQL データベース]** をクリックします。
+2.	**[SQL Database]** をクリックします。
 3.	**[同期]** タブをクリックします。
 4.	この同期グループの名前をクリックします。
 5.	**[同期規則]** タブをクリックします。
@@ -178,7 +177,7 @@ Azure SQL データ同期では、同期するテーブルと列を選択でき�
 同期グループはいつでも、データ同期のランディング ページの下部にある [同期] をクリックして同期できます。同期グループを定期的に同期する場合は、同期グループを構成します。
 
 1.	[管理ポータル](http://manage.windowsazure.com)に戻ります。
-2.	**[SQL データベース]** をクリックします。
+2.	**[SQL Database]** をクリックします。
 3.	**[同期]** タブをクリックします。
 4.	この同期グループの名前をクリックします。
 5.	**[構成]** タブをクリックします。
@@ -203,4 +202,4 @@ SQL Database と SQL データ同期の詳細については、以下を参照�
 
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

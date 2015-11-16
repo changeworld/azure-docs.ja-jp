@@ -13,14 +13,19 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="08/12/2015" 
+    ms.date="11/04/2015" 
     ms.author="vikbucha" />
 
 
 
 # RemoteApp クラウド コレクション作成のトラブルシューティング
 
-Azure 管理ポータルでの一般的なエラー:
+クラウド コレクションを作成できない場合、次の情報を確認してください。
+
+## イメージが無効です ##
+Azure がコレクションにプロビジョニングするのを待っているとき、「GoldImageInvalid」のようなメッセージが表示された場合、テンプレート イメージが[定義されているイメージ要件](remoteapp-imagereqs.md)に一致していません。その場合、[要件](remoteapp-imagereqs.md)を読み、イメージを修正し、コレクションをもう一度作成します。
+
+## Microsoft Azure 管理ポータルでの一般的なエラー
 
 	DNS server could not be reached
 	ProvisioningTimeout
@@ -38,4 +43,4 @@ Azure 管理ポータルでの一般的なエラー:
 このエラーが表示される場合、通常は、次のようなことを意味します。有料アカウントにアップグレード済みであるのに、サービスの試用版モードでのみ有効な Microsoft 提供のイメージを使用している。この場合は、適切なイメージを指定して、クラウド コレクションを再度作成してみてください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

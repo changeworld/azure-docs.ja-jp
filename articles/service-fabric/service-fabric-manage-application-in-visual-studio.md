@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Visual Studio での Service Fabric アプリケーションの管理"
-   description="Microsoft Azure Service Fabric アプリケーションとサービスを Visual Studio で管理することができます。"
+   pageTitle="Visual Studio でアプリケーションを管理する | Microsoft Azure"
+   description="Visual Studio を利用し、Service Fabric のアプリケーションとサービスを作成、開発、パッケージ化、デプロイ、デバッグします。"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,20 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/05/2015"
+   ms.date="10/15/2015"
    ms.author="jesseb"/>
 
-# Visual Studio での Service Fabric アプリケーションの管理
+# Visual Studio を利用すれば、Service Fabric アプリケーションの記述と管理が簡単になりまする
 
-Microsoft Azure Service Fabric アプリケーションとサービスを Visual Studio で管理することができます。[開発環境のセットアップ](../service-fabric-setup-your-development-environment)が済んだら、Visual Studio を使用して、Service Fabric アプリケーションの作成、サービスの追加、ローカル開発クラスターでのアプリケーションのパッケージ化、登録、およびデプロイができます。
+Service Fabric アプリケーションとサービスを Visual Studio で管理することができます。[開発環境のセットアップ](service-fabric-setup-your-development-environment.md)が済んだら、Visual Studio を使用して、Service Fabric アプリケーションの作成、サービスの追加、ローカル開発クラスターでのアプリケーションのパッケージ化、登録、およびデプロイができます。
 
-Service Fabric アプリケーションを管理するには、ソリューション エクスプローラーで、アプリケーション プロジェクトを右クリックします。
+アプリケーションを管理するには、ソリューション エクスプローラーで、アプリケーション プロジェクトを右クリックします。
 
 ![アプリケーション プロジェクトを右クリックし、Service Fabric アプリケーションを管理する][manageservicefabric]
 
 ## Service Fabric アプリケーションのデプロイ
 
-Service Fabric アプリケーションのデプロイでは、次の手順が 1 つの単純な操作にまとめられています。
+アプリケーションのデプロイでは、次の手順が 1 つの単純な操作にまとめられています。
 
 1. アプリケーション パッケージの作成
 2. アプリケーション パッケージのイメージ ストアへのアップロード
@@ -69,7 +69,7 @@ Visual Studio で、[ビルド] メニューから、[ソリューションの�
 ## 次のステップ
 
 - [Service Fabric のアプリケーション モデル](service-fabric-application-model.md)
-- [Service Fabric アプリケーションの展開](service-fabric-deploy-remove-applications.md)
+- [Service Fabric アプリケーションのデプロイメント](service-fabric-deploy-remove-applications.md)
 - [Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 - [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
@@ -79,4 +79,4 @@ Visual Studio で、[ビルド] メニューから、[ソリューションの�
 [newservice]: ./media/service-fabric-manage-application-in-visual-studio/newservice.png
 [newserviceapplicationmanifest]: ./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

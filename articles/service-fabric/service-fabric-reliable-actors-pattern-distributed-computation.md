@@ -1,5 +1,5 @@
 <properties
-   pageTitle="高信頼アクターの分散計算パターン"
+   pageTitle="分散計算パターン | Microsoft Azure"
    description="Service Fabric 高信頼アクターは並列非同期メッセージングに最適であり、分散状態の管理や並列計算が容易になります。"
    services="service-fabric"
    documentationCenter=".net"
@@ -206,4 +206,4 @@ public class Finaliser : Actor<FinalizerState>, IFinaliser
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-pattern-distributed-computation/distributed-computation-1.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="10/26/2015"
+	ms.date="11/03/2015"
 	ms.author="larryfr"/>
 
 #HDInsight における Hadoop クラスターの可用性と信頼性
@@ -146,7 +146,7 @@ Ambari Web UI から、ログを表示するサービス (例: YARN) を選択�
 
 * **Azure CLI**: `azure hdinsight cluster create` コマンドを使用するときに、`--headNodeSize` パラメーターを使用してヘッド ノードのサイズを設定できます。
 
-* **Azure PowerShell**: `New-AzureHDInsightCluster` コマンドレットを使用するときに、`-HeadNodeVMSize` パラメーターを使用してヘッド ノードのサイズを設定できます。
+* **Azure PowerShell**: `New-AzureRmHDInsightCluster` コマンドレットを使用するときに、`-HeadNodeVMSize` パラメーターを使用してヘッド ノードのサイズを設定できます。
 
 ##次のステップ
 
@@ -166,4 +166,4 @@ Ambari Web UI から、ログを表示するサービス (例: YARN) を選択�
 [azure-powershell]: ../powershell-install-configure.md
 [azure-cli]: ../xplat-cli-install.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

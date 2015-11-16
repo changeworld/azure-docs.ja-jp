@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/21/2015" 
+	ms.date="10/29/2015" 
 	ms.author="stepsic"/>
 
 # Azure App Service における価格レベルのスケーリング
@@ -62,7 +62,7 @@ Azure に存在する各種コンピューティング階層については、[�
 	
 	![SQL Database のスケーリング](./media/app-service-scale/ScaleDatabase.png)
 	
-4. アプリで Storage を使用する場合、Storage をサポートしている価格レベルを選択すると、geo レプリケーションが自動的に設定します。これに対して、SQL を使用する場合は、SQL Database の高可用性と障害復旧機能を向上させるために、geo レプリケーションを手動で構成する必要があります。そのためには、**[ジオ (主要地域) レプリケーション]** パートをクリックします。
+4. アプリで Storage を使用する場合、Storage をサポートしている価格レベルを選択すると、geo レプリケーションが自動的に設定します。これに対して、SQL を使用する場合は、SQL Database の高可用性と障害復旧機能を向上させるために、geo レプリケーションを手動で構成する必要があります。そのためには、**[Geo レプリケーション]** パートをクリックします。
 	
 	![SQL Database の geo レプリケーションの設定](./media/app-service-scale/GeoReplication.png)
 	
@@ -90,7 +90,7 @@ Azure に存在する各種コンピューティング階層については、[�
 <a name="Next Steps"></a>
 ## 次のステップ
 
-- Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイト](/pricing/free-trial/)」を参照してください。
+- Azure を利用し始めるには、「[Microsoft Azure の無料試用版サイト](/pricing/free-trial/)」を参照してください。
 - 料金、サポート、および SLA については、次のリンクを参照してください。
 	
 	[データ転送の料金詳細](/pricing/details/data-transfers/)
@@ -131,4 +131,4 @@ Azure に存在する各種コンピューティング階層については、[�
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

@@ -4,8 +4,8 @@
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jeffreyg" 
-	authors="sidneyh" 
-	editor=""/>
+	authors="ddove" 
+	editor="sidneyh"/>
 
 <tags 
 	ms.service="sql-database" 
@@ -13,34 +13,17 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/24/2015" 
-	ms.author="sidneyh@microsoft.com"/>
+	ms.date="11/04/2015" 
+	ms.author="ddove;sidneyh"/>
 
-#Elastic Database ツールの概要
+# Elastic Database ツールの概要
 
-オンデマンドによる容量の拡大や縮小は、クラウド コンピューティングで約束された主要な機能の一つです。データベース アプリケーションの場合、シャーディングとして知られるパターンが、このような拡張性の高いソリューションを構築するための重要な手法となります。この手法では、データは同一の構造を持つ多くのデータベース間で物理的に分割されます。しかし、これまでは、シャーディングを使用するアプリケーションの作成や管理にアプリケーションのビジネス ロジック外での大量のコーディングが必要でした。
-
-Elastic Database ツールにより、Azure SQL DB でのデータベース シャーディングを使用するアプリケーションの作成と管理が簡単になります。このツールには、Elastic Database クライアント ライブラリと分割/マージ ツールが含まれます。これらのツールを使用して、シャーディングという側面でのインフラトラクチャを実装することで、アプリケーションのビジネス ロジックに集中して取り組むことができます。
-
-このドキュメントでは、Elastic Database クライアント ライブラリを使用する開発者エクスペリエンスを紹介します。
-
-Elastic Database ツールの機能の詳細については、「[Elastic Database ツールの概要](sql-database-elastic-scale-introduction.md)」を参照してください。
-
-Elastic Database ツールのすべてのトピックの一覧については、「[ドキュメント マップ](sql-database-elastic-scale-documentation-map.md)」を参照してください。
-
-## Elastic Database のサンプル アプリケーション
-
-サンプルでは単純なシャーディング アプリケーションを作成し、Elastic Database ツールの主な機能について詳しく見て行きます。このアプリケーションをダウンロードして実行するには、下記または [Elastic Scale の概要に関するビデオ](http://channel9.msdn.com/Blogs/Windows-Azure/Elastic-Scale-with-Azure-SQL-Database-Getting-Started)の手順を実行します。
+この文書を読み、サンプル アプリを実行することで、開発を体験できます。サンプルでは単純なシャーディング アプリケーションを作成し、Elastic Database ツールの主な機能について詳しく見て行きます。サンプルでは、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)の機能が実演されます。
 
 ## 前提条件
-サンプル アプリケーションを実行するには、Visual Studio を使用する必要があり、また、Azure 上で実行される Azure SQL データベースへのアクセス権を持っている必要があります。Azure サブスクリプションをまだ取得していない場合でも、[試用サブスクリプション](http://azure.microsoft.com/pricing/free-trial/)でサインアップできます。
-### Visual Studio および Nuget
 
-1. C# と Visual Studio 2012 以上が必要です。「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)」で無償評価版をダウンロードしてください。
+1. C# と Visual Studio 2012 以上が必要です。「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)」で無償試用版をダウンロードしてください。
 2. Nuget 2.7 以上。最新版を入手するには、「[Installing NuGet (NuGet のインストール)](http://docs.nuget.org/docs/start-here/installing-nuget)」を参照してください。
-### Azure SQL データベースの作成
-
-* 詳細については、「[Microsoft Azure SQL Database の概要](sql-database-get-started.md)」を参照してください。
 
 ## サンプル アプリケーションのダウンロードと実行
 
@@ -92,7 +75,7 @@ Elastic Database ツールは無料です。Elastic Database ツールでは、A
 ## 次のステップ
 Elastic Database ツールの詳細については、以下のページを参照してください。
 
-* [Elastic Database ツールのドキュメント マップ](sql-database-elastic-scale-documentation-map.md) 
+* [エラスティック データベース ツールのドキュメント マップ](sql-database-elastic-scale-documentation-map.md) 
 -    コード サンプル: 
     -    [Azure SQL で使用する Elastic DB - 概要](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)
     -    [Azure DB で使用する Elastic DB - Entity Framework との統合](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
@@ -115,4 +98,4 @@ Elastic Database ツールの詳細については、以下のページを参照
 [4]: ./media/sql-database-elastic-scale-get-started/output2.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

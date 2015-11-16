@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="11/04/2015"
    ms.author="lodipalm;barbkess"/>
 
 # SQL Data Warehouse へのデータのロード
@@ -163,6 +163,16 @@ FROM    <External Table Name>
 
 `CREATE TABLE...AS SELECT` ステートメントの他に、"INSERT...INTO" ステートメントで外部テーブルから既存テーブルにデータをロードすることもできます。
 
+##  新しくロードしたデータの統計を作成する 
+
+Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。統計の詳細については、開発トピック グループの「[統計][]」トピックを参照してください。この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します。
+
+
+```
+create statistics [<name>] on [<Table Name>] ([<Column Name>]);
+create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
+```
+
 ## 次のステップ
 開発に関するその他のヒントについては、[開発の概要][]に関するページをご覧ください。
 
@@ -176,6 +186,7 @@ FROM    <External Table Name>
 [開発の概要]: sql-data-warehouse-overview-develop.md
 [スキーマの移行]: sql-data-warehouse-migrate-schema.md
 [コードの移行]: sql-data-warehouse-migrate-code.md
+[統計]: sql-data-warehouse-develop-statistics.md
 
 <!--MSDN references-->
 [supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx
@@ -184,10 +195,10 @@ FROM    <External Table Name>
 [SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
 <!--Other Web references-->
-[AZCopy インストール手順]: https://azure.microsoft.com/ja-jp/documentation/articles/storage-use-azcopy/
-[Microsoft Command Line Utilities for SQL Server]: http://www.microsoft.com/ja-jp/download/details.aspx?id=36433
-[インポート/エクスポート]: https://azure.microsoft.com/ja-jp/documentation/articles/storage-import-export-service/
-[Azure Storage のドキュメント]: https://azure.microsoft.com/ja-jp/documentation/articles/storage-create-storage-account/
+[AZCopy インストール手順]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-use-azcopy/
+[Microsoft Command Line Utilities for SQL Server]: http://www.microsoft.com/ja-JP/download/details.aspx?id=36433
+[インポート/エクスポート]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-import-export-service/
+[Azure Storage のドキュメント]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-create-storage-account/
 [ExpressRoute に関するドキュメント]: http://azure.microsoft.com/documentation/services/expressroute/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

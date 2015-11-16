@@ -1,6 +1,6 @@
 <properties
-   pageTitle="高信頼アクターのスマート キャッシュ設計パターン"
-   description="Web ベースのアプリケーションでキャッシュ インフラストラクチャとして高信頼アクターを使用する方法の設計パターン"
+   pageTitle="スマート キャッシュ設計パターン | Microsoft Azure"
+   description="Service Fabric の高信頼アクター プログラミング モデルを利用し、Web ベース アプリケーションのキャッシュ インフラストラクチャを構築する方法の設計パターン。"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -17,11 +17,13 @@
    ms.author="vturecek"/>
 
 # 高信頼アクターの設計パターン: スマート キャッシュ
+
 Web 層、キャッシュ層、ストレージ層、および場合によっては worker 層の組み合わせは、現在のアプリケーションの標準的な部分とよく一致します。通常、キャッシュ層はパフォーマンスにとって非常に重要であり、実際には、それ自体が複数の階層で構成される場合があります。多くのキャッシュは単純なキーと値のペアですが、キャッシュとして使用される [Redis](http://redis.io) のような他のシステムはさらにリッチなセマンティクスを提供します。それでも、特別なキャッシュ層はセマンティクスの制限があり、さらに重要なことはまだ管理すべきもう 1 つの層であるということです。代わりにオブジェクトがローカル変数に状態を保持し、これらのオブジェクトを自動的に永続的ストアにスナップショットまたは永続化できるとしたらどうでしょうか。 さらに、リスト、並べ替えられたセット、キュー、およびその他のカスタム種類などのリッチなコレクションは、単にメンバー変数およびメソッドとしてモデル化されます。
 
 ![][1]
 
 ## スコアボードのサンプル
+
 例としてスコアボードを考えます。Leaderboard オブジェクトは、クエリできるようにプレーヤーとスコアのソートされたリストを維持する必要があります。たとえば、"上位 100 プレーヤー" や、上下 N プレーヤーを基準にしたスコアボード内でのプレーヤーの位置を検索する場合などです。従来のツールによる標準的なソリューションでは、Leaderboard オブジェクトを ‘GET’ し (Score という名前の新しいタプル<Player  Points>の挿入をサポートするコレクション)、それをソートして、最後にキャッシュに ‘PUT’ して戻します。おそらく、整合性のために Leaderboard オブジェクトをロック (GETLOCK、PUTLOCK) します。状態と動作が一緒になったアクター ベースのソリューションを考えます。2 つのオプションがあります。
 
 * アクターの一部として Leaderboard コレクションを実装します。
@@ -280,6 +282,7 @@ public Task RefreshRates()
 
 
 ## 次のステップ
+
 [パターン: 分散ネットワークとグラフ](service-fabric-reliable-actors-pattern-distributed-networks-and-graphs.md)
 
 [パターン: リソースのガバナンス](service-fabric-reliable-actors-pattern-resource-governance.md)
@@ -298,4 +301,4 @@ public Task RefreshRates()
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-pattern-smart-cache/smartcache-arch.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

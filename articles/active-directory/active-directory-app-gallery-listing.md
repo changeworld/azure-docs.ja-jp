@@ -13,48 +13,88 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/17/2015"
+   ms.date="10/29/2015"
    ms.author="mbaldwin"/>
 
 
 # Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示
 
-[Azure AD ギャラリー](http://azure.microsoft.com/marketplace/active-directory/all/)と Azure Marketplace に、Azure Active Directory のシングル サインオンをサポートするアプリケーションを表示するには、Azure AD チームが統合を確認する必要があります。そのためには、<waadpartners@microsoft.com> に次の情報を送る必要があります。
+Azure Active Directory でのシングル サインオンをサポートするアプリケーション一覧を [Azure AD ギャラリー](http://azure.microsoft.com/marketplace/active-directory/all/)に表示するには、まず次の統合モードのいずれかをアプリケーションに実装する必要があります。
 
-- アプリケーションにサインインできる、Azure Active Directory のテスト インスタンスのテスト ユーザー アカウントのユーザー名とパスワード。
-- URL またはこのテスト ユーザーがアプリケーションにサインインする方法の説明。
-- 顧客がアプリケーションと Azure AD 間の接続を作成する方法の簡単な説明。次のような方法が考えられます。
-  - Azure AD の同意フレームワークを使用して、アプリケーションに組み込む
-  - アプリケーションの管理ポータルを使用して、ID プロバイダー (SAML 2.0、WS-Federation、または OpenID Connect) として Azure AD を構成する
-  - 組織内の他のユーザーに連絡して、接続を手動で作成する
-- アプリケーションが、セルフサービス管理ポータルを使用した ID プロバイダーとしての Azure AD の構成をサポートしている場合は、確認用にテスト管理者アカウントも提供してください。
+* **OpenID Connect** - 認証には OpenID Connect を使用し、構成には Azure AD Consent API を使用して Azure AD と直接統合します。統合を始めたばかりで、アプリケーションが SAML をサポートしていない場合、このモードが推奨されます。
 
-テストが完了したら、Azure Active Directory アプリケーション ギャラリーと Azure Marketplace にアプリケーションを表示できます。次の項目を記載して、<waadpartners@microsoft.com> に送ります。
+* **SAML** - SAML プロトコルを使用してサードパーティの ID プロバイダーを構成する機能が既にアプリケーションにある場合に選択します。
+
+各モードの要件は次のとおりです。
+
+##OpenID Connect 統合
+
+アプリケーションを Azure AD と統合するには、[開発者向けの手順](active-directory-authentication-scenarios.md)に従ってください。また、次の情報を記載し、waadpartners@microsoft.comに送信してください。
+
+* Azure AD チームが統合のテストに使用できるアプリケーションのテスト テナントまたはアカウントの資格情報を記載してください。  
+
+* [Azure AD Consent フレームワーク](https://azure.microsoft.com/ja-JP/documentation/articles/active-directory-integrating-applications/#overview-of-the-consent-framework)を使用して Azure AD チームがサインインし、Azure AD のインスタンスをアプリケーションに接続する手順を説明してください。
+
+* Azure AD チームがアプリケーションでシングル サインオンをテストするために必要な詳細な手順があれば、説明してください。
+
+* 次の情報を入力してください。
 
 > 会社名:
->
+> 
 > 会社の Web サイト:
->
+> 
 > アプリケーション名:
->
+> 
 > アプリケーションの説明 (256 文字以内):
->
+> 
 > アプリケーションの Web サイト (情報):
->
+> 
 > アプリケーションのテクニカル サポートの Web サイト、または連絡先情報:
->
-> アプリケーションを Azure AD と統合し、テストしましたか? ([Azure Active Directory の認証シナリオ](active-directory-authentication-scenarios.md)に関するページをご覧ください)
->
+> 
 > https://manage.windowsazure.com でアプリケーションの詳細に示す、アプリケーションのクライアント ID:
->
+> 
 > 顧客がアプリケーションにサインアップしたり、アプリケーションを購入したりする際にアクセスする、アプリケーションのサインアップ URL:
->
-> アプリケーションを表示するカテゴリを最大 3 つ選択してください (使用できるカテゴリについては、[Azure Active Directory Marketplace](http://go.microsoft.com/fwlink/?LinkId=327881) をご覧ください):
->
+> 
+> アプリケーションを表示するカテゴリを最大 3 つ選択してください (使用できるカテゴリについては、Azure Active Directory Marketplace を参照してください)。
+> 
 > アプリケーションの小さいアイコン (PNG ファイル、45 x 45px、単色の背景色) を添付してください:
->
+> 
 > アプリケーションの大きいアイコン (PNG ファイル、215 x 215px、単色の背景色) を添付してください:
->
+> 
 > アプリケーションのロゴ (PNG ファイル、150 x 122px、透明の背景色) を添付してください:
 
-<!---HONumber=Oct15_HO3-->
+##SAML の統合
+
+SAML 2.0 をサポートするすべてのアプリケーションは、[この手順](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)を使用して Azure AD テナントと直接統合し、カスタム アプリケーションを追加できます。アプリケーションと Azure AD の統合をテストし終わったら、次の情報を <waadpartners@microsoft.com>に送信してください。
+
+* Azure AD チームが統合のテストに使用できるアプリケーションのテスト テナントまたはアカウントの資格情報を記載してください。  
+
+* [ここ](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)の説明に従って、アプリケーションの SAML サインオン URL (エンティティ ID) と Reply URL (Assertion Consumer Service) 値を記載してください。通常、SAML メタデータ ファイルの一部としてこれらの値を入力している場合は、それも送信してください。
+
+* SAML 2.0 を使用してアプリケーションの ID プロバイダーとして Azure AD を構成する方法を簡単に説明してください。セルフサービス管理ポータルで ID プロバイダーとしての Azure AD の構成がアプリケーションでサポートされている場合、前述の資格情報にそれを設定する機能を含めてください。
+
+* 次の情報を入力してください。
+
+> 会社名:
+> 
+> 会社の Web サイト:
+> 
+> アプリケーション名:
+> 
+> アプリケーションの説明 (256 文字以内):
+> 
+> アプリケーションの Web サイト (情報):
+> 
+> アプリケーションのテクニカル サポートの Web サイト、または連絡先情報:
+> 
+> 顧客がアプリケーションにサインアップしたり、アプリケーションを購入したりする際にアクセスする、アプリケーションのサインアップ URL:
+> 
+> アプリケーションを表示するカテゴリを最大 3 つ選択してください (使用できるカテゴリについては、[Azure Active Directory Marketplace](https://azure.microsoft.com/ja-JP/marketplace/active-directory/) を参照してください)。
+> 
+> アプリケーションの小さいアイコン (PNG ファイル、45 x 45px、単色の背景色) を添付してください:
+> 
+> アプリケーションの大きいアイコン (PNG ファイル、215 x 215px、単色の背景色) を添付してください:
+> 
+> アプリケーションのロゴ (PNG ファイル、150 x 122px、透明の背景色) を添付してください:
+
+<!---HONumber=Nov15_HO2-->

@@ -29,7 +29,7 @@
 ## サブスクリプションのクォータ
 リソース|既定の制限|上限
 ---|---|---
-サブスクリプションあたりのリージョンごとの Batch アカウント数|1|20
+サブスクリプションあたりのリージョンごとの Batch アカウント数|1|50
 
 ## Batch アカウントのクォータ
 [AZURE.INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
@@ -95,4 +95,4 @@ Azure サポートから連絡があります。要求を完了するには最�
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

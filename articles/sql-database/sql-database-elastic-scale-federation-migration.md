@@ -1,10 +1,10 @@
 <properties 
-    pageTitle="Federations の移行" 
+    pageTitle="Federations の移行 | Microsoft Azure" 
     description="Federations 機能で作成した既存のアプリを エラスティック データベース モデルに移行する大まかな手順を示します。" 
     services="sql-database" 
     documentationCenter="" 
     manager="jeffreyg" 
-    authors="sidneyh" 
+    authors="ddove" 
     editor=""/>
 
 <tags 
@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="08/14/2015" 
-    ms.author="sidneyh"/>
+    ms.date="11/04/2015" 
+    ms.author="ddove;sidneyh"/>
 
 # Federations の移行 
 
@@ -92,7 +92,7 @@ Federations では、特定のフェデレーション メンバーへの接続�
 
 ![シャードのフェデレーション メンバーに対して切り替え操作を実行する][3]
 
-エラスティック データベース ツール API を含むようにアプリケーションを変更したら、Federations アプリケーションの移行の最終ステップとして、フェデレーション メンバーに対して **SWITCH OUT** を実行します (詳細については、MSDN リファレンスの [ALTER FEDERATION (Azure SQL Database)](http://msdn.microsoft.com/library/dn269988(v=sql.120).aspx)を参照してください)。特定のフェデレーション メンバーに対して **SWITCH OUT** を発行すると、すべてのフェデレーション制約とメタデータが削除され、その結果、フェデレーション メンバーは、他の Azure SQL Database と同じ通常の Azure SQL Database となります。
+エラスティック データベース ツール API を含むようにアプリケーションを変更したら、Federations アプリケーションの移行の最終ステップとして、フェデレーション メンバーに対して **SWITCH OUT** を実行します (詳細については、MSDN リファレンスの [ALTER FEDERATION (Azure SQL Database)]http://msdn.microsoft.com/library/dn269988(v=sql.120).aspx))を参照してください)。特定のフェデレーション メンバーに対して **SWITCH OUT** を発行すると、すべてのフェデレーション制約とメタデータが削除され、その結果、フェデレーション メンバーは、他の Azure SQL Database と同じ通常の Azure SQL Database となります。
 
 フェデレーション メンバーに対して **SWITCH OUT** を発行する操作は一方向の操作であり、元に戻すことはできません。この操作を実行した後のデータベースを再びフェデレーションに追加することはできません。また、このデータベースに対しては USE FEDERATION コマンドも機能しなくなります。
 
@@ -108,7 +108,7 @@ Federations 移行ユーティリティが提供する機能は次のとおり�
 
 ## 機能の比較
 
-エラスティック データベース ツールには多くの追加機能 ([マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)、[シャードの分割とマージ](sql-database-elastic-scale-overview-split-and-merge.md)、[シャードの弾力性](sql-database-elastic-scale-elasticity.md)、[クライアント側のキャッシュ](sql-database-elastic-scale-shard-map-management.md)など) がありますが、エラスティック データベース ツールでサポートされない Federations の機能がいくつかあることに注意してください。
+エラスティック データベース ツールには多くの追加機能 ([マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)、[シャードの分割とマージ](sql-database-elastic-scale-overview-split-and-merge.md)、シャードの弾力性、[クライアント側のキャッシュ](sql-database-elastic-scale-shard-map-management.md)など) がありますが、エラスティック データベース ツールでサポートされない Federations の機能がいくつかあることに注意してください。
   
 - **FILTERING=ON** の使用。行のフィルター処理には行レベルのセキュリティ (RLS) の使用をお勧めします。Federations でのフィルター処理と同様に、RLS でもシャード化したテーブル上のすべてのクエリに述語を自動的に追加します。詳細については、「[エラスティック データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション](sql-database-elastic-tools-multi-tenant-row-level-security.md)」を参照してください。 
  
@@ -150,4 +150,4 @@ Federations 移行ユーティリティが提供する機能は次のとおり�
 [3]: ./media/sql-database-elastic-scale-federation-migration/migrate-3.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

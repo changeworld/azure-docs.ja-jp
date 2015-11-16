@@ -14,12 +14,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="10/29/2015"
+	ms.date="11/03/2015"
 	ms.author="jroth" />
 
 # データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス
 
-## 概要
+## 概要 
 
 Microsoft Azure SQL Database には 3 つの[サービス層](sql-database-service-tiers.md)があります。Basic、Standard、Premium です。すべてのサービス層で、Azure SQL Database に与えられたリソースが厳密に分離され、パフォーマンスが予測可能になります。データベースに保証されるスループットは、Premium、Standard、Basic の順に高くなります。
 
@@ -114,8 +114,8 @@ Standard と Premium のパフォーマンス レベル設定では、必要と�
 
 詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
 
-### 最大 XTP メモリ内ストレージ
-**最大 XTP メモリ内ストレージ**とは、Premium データベースの[メモリ内 OLTP プレビュー](sql-database-in-memory.md)で利用できる最大ストレージ容量です。Azure ポータルまたは **sys.dm\_db\_resource\_stats** ビューを利用し、メモリ内ストレージの使用を監視できます。監視の詳細については、「[XTP メモリ内ストレージの監視](sql-database-in-memory-oltp-monitoring.md)」を参照してください。
+### 最大インメモリ OLTP ストレージ
+**最大インメモリ OLTP ストレージ**とは、Premium データベースの[インメモリ OLTP プレビュー](sql-database-in-memory.md)で利用できる最大ストレージ容量です。これは、*XTP インメモリ ストレージ*と呼ばれることもあります。Azure ポータルまたは **sys.dm\_db\_resource\_stats** ビューを利用し、インメモリ ストレージの使用を監視できます。監視の詳細については、「[OLTP インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)」を参照してください。
 
 >[AZURE.NOTE]メモリ内 OLTP プレビューは現在のところ、単一データベースでのみサポートされており、エラスティック データベース プールのデータベースではサポートされていません。
 
@@ -202,7 +202,7 @@ SQL データベースのリソース使用をそのサービス層との関連�
 
 Azure SQL Database では、各サーバーの**マスター** データベースの **sys.resource\_stats** ビューにアクティブなデータベース別のリソース利用情報が公開されます。テーブルのデータは 5 分おきに集計されます。Basic、Standard、Premium サービス層では、データをテーブルに表示するのに 5 分以上かかります。つまり、このデータはほぼリアルタイムの分析より過去の分析に適しています。**sys.resource\_stats** ビューに問い合わせると、データベースの最近の履歴が表示され、選択した予約で必要なときに望ましいパフォーマンスが届けられたか検証されます。
 
->[AZURE.NOTE]次の例で **sys.resource\_stats** にクエリを実行するために、論理 SQL Database サーバーの**マスター**データベースに接続する必要があります。
+>[AZURE.NOTE]次の例で **sys.resource\_stats** にクエリを実行するために、論理 SQL Database サーバーの**マスター** データベースに接続する必要があります。
 
 次の例は、このビューのデータが公開されるしくみを示しています。
 
@@ -491,4 +491,4 @@ Azure SQL Database 内で使用されるスケールアウト アーキテクチ
 
 Azure SQL Database のサービス層を利用すると、クラウドに構築する各種アプリケーションの水準を上げることができます。さらにアプリケーションの調整も頻繁に行うことで、アプリケーションのパフォーマンスが強力かつ予測可能となります。このドキュメントでは、特定のパフォーマンス レベルに問題なく適合するようにデータベースのリソース利用を最適化するための推奨手法について説明します。クラウド モデルにおいては調整は継続的に実施するものであり、それにより、各種のサービス層とそのパフォーマンス レベルにおいて、管理者はパフォーマンスを最大限に引き出し、同時に Microsoft Azure プラットフォームのコストを最小限に抑えることができます。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

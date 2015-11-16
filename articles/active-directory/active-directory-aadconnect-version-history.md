@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="10/20/2015"
+   ms.date="11/03/2015"
    ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
@@ -21,6 +21,44 @@
 Azure Active Directory チームは、Azure AD Connect を新機能で定期的に更新しています。すべての追加機能がすべてのユーザーに適用されるわけではありません。
 
 この記事は、リリースされたバージョンを追跡し、最新バージョンに更新する必要があるかどうかを判断できるようにするためのものです。
+
+関連リンク:
+
+- 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。
+- [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
+
+## 1\.0.9125.0
+リリース: 2015 年 11 月
+
+**新機能:**
+
+- ADFS から Azure AD に対する信頼を再構成できるようになりました。
+- Active Directory スキーマを更新し、同期規則を再生成できるようになりました。
+- 同期規則を無効にできるようになりました。
+- 同期規則の新しいリテラルとして "AuthoritativeNull" を定義できるようになりました。
+
+**新しいプレビュー機能:**
+
+- [Azure AD Connect Health for Sync](active-directory-aadconnect-health-sync.md)。
+- [Azure AD Domain Services](active-directory-ds-getting-started.md) のパスワード同期がサポートされました。
+
+**新しくサポートされたシナリオ:**
+
+- 複数のオンプレミス Exchange 組織がサポートされました。詳細については、「[複数の Active Directory フォレストを伴うハイブリッド展開](https://technet.microsoft.com/ja-JP/library/jj873754.aspx)」を参照してください。
+
+**修正された問題:**
+
+- パスワード同期の問題:
+    - スコープ外からスコープ内に移動されたオブジェクトのパスワードは同期されなくなります。これには、OU と属性フィルターの両方が含まれます。
+    - 同期に含める新しい OU を選択する際に、完全なパスワード同期は必要ありません。
+    - 無効なユーザーが有効になっても、パスワードは同期されません。
+    - パスワード再試行キューは無制限です。5,000 個のオブジェクトを上限として削除されるという以前の制限は削除されました。
+    - [トラブルシューティングが改善されました](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization)。
+- Windows Server 2016 フォレスト機能レベルを使用して Active Directory に接続することはできなくなりました。
+- 最初のインストール後にグループ フィルターに使用したグループを変更できなくなりました。
+- パスワード ライトバックを有効にした状態でパスワードを変更して、各ユーザーの Azure AD Connect の新しいユーザー プロファイルを作成することはできなくなりました。
+- 同期規則スコープに Long Integer 値を使用できなくなりました。
+- 到達不能なドメイン コントローラーがある場合、[デバイスの書き戻し] チェックボックスは無効なままです。
 
 ## 1\.0.8667.0
 リリース日: 2015 年 8 月
@@ -41,6 +79,7 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 - 拡張属性が追加されている場合、"ステージング モード" の有効化や無効化ができません。
 - Active Directory Connector での正しくないパスワードのために、一部の構成ではパスワード ライトバックが失敗します。
 - 属性フィルターで dn が使用されている場合、DirSync をアップグレードできません。
+- パスワード リセットの使用時に CPU 使用量が過剰になります。
 
 **削除されたプレビュー機能:**
 
@@ -158,6 +197,6 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 **Azure AD Sync の最初のリリースです。**
 
 ## 次のステップ
-「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

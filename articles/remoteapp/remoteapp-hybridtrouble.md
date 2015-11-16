@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="08/12/2015" 
+    ms.date="11/04/2015" 
     ms.author="elizapo" />
 
 
@@ -25,6 +25,9 @@
 コレクションをまだ作成していませんか。 手順については、「[ハイブリッド コレクションの作成](remoteapp-create-hybrid-deployment.md)」を参照してください。
 
 コレクションの作成で問題が発生した場合、あるいはコレクションが予想どおりに動作しない場合、次の情報を確認してください。
+
+## イメージが無効です ##
+Azure がコレクションにプロビジョニングするのを待っているとき、「GoldImageInvalid」のようなメッセージが表示された場合、テンプレート イメージが[定義されているイメージ要件](remoteapp-imagereqs.md)に一致していません。その場合、[要件](remoteapp-imagereqs.md)を読み、イメージを修正し、コレクションをもう一度作成します。
 
 ## VNET で強制トンネリングを使用していますか。 ##
 現在のところ、RemoteApp は強制トンネリングを有効にした VNET に対応していません。この機能を使用する必要がある場合は、[RemoteApp チーム](mailto:remoteappforum@microsoft.com)にサポートを要求してください。
@@ -71,7 +74,7 @@
 ![DNS を定義する](./media/remoteapp-hybridtrouble/dnsvpn.png)
 
 ## コレクションで Active Directory ドメイン コント ローラーを使用していますか。 ##
-現在のところ、1 つの Active Directory ドメインだけを Azure RemoteApp に関連付けることができます。ハイブリッド コレクションは、Windows Server Active Directory の展開から DirSync ツールを使用して同期されている Azure Active Directory アカウントのみをサポートします。具体的には、パスワード同期オプションで同期されているか、または Active Directory フェデレーション サービス (AD FS) の構成されたフェデレーションのいずれかで同期されます。内部設置型ドメインの UPN ドメイン サフィックスと一致するカスタム ドメインを作成し、ディレクトリ統合を設定する必要があります。
+現在のところ、1 つの Active Directory ドメインだけを Azure RemoteApp に関連付けることができます。ハイブリッド コレクションは、Windows Server Active Directory のデプロイメントから DirSync ツールを使用して同期されている Azure Active Directory アカウントのみをサポートします。具体的には、パスワード同期オプションで同期されているか、または Active Directory フェデレーション サービス (AD FS) の構成されたフェデレーションのいずれかで同期されます。オンプレミスのドメインの UPN ドメイン サフィックスと一致するカスタム ドメインを作成し、ディレクトリ統合を設定する必要があります。
 
 詳細については、「[Azure RemoteApp の Active Directory を構成する](remoteapp-ad.md)」を参照してください。
 
@@ -81,4 +84,4 @@
 
 作成または追加したドメイン名は (Azure AD ドメイン名ではなく) 内部ドメイン名であり、解決可能な DNS 形式 (contoso.local) になっている必要があります。たとえば、Active Directory 内部名 (contoso.local) と Active Directory UPN (contoso.com) が与えられている場合、コレクションの作成時にその内部名を使用する必要があります。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

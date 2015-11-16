@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="シャード マップの管理" 
+	pageTitle="シャード マップ管理 | Microsoft Azure" 
 	description="Elastic Database クライアント ライブラリの ShardMapManager の使用方法" 
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jeffreyg" 
-	authors="sidneyh" 
+	authors="ddove" 
 	editor=""/>
 
 <tags 
@@ -13,11 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/24/2015" 
-	ms.author="sidneyh"/>
+	ms.date="11/04/2015" 
+	ms.author="ddove;sidneyh"/>
 
 # シャード マップの管理
-シャード化データベース環境では、アプリケーションが**シャーディング キー**の値に基づいて適切なデータベースに接続するための情報が**シャード マップ**に保持されます。Elastic Database クライアント ライブラリでシャードを管理するうえで、このマップがどのように構築されているかを理解することが非常に重要です。
+
+[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用し、シャード化されたアプリケーションを管理します。シャード化データベース環境では、アプリケーションが**シャーディング キー**の値に基づいて適切なデータベースに接続するための情報が[**シャード マップ**](sql-database-elastic-scale-glossary.md)に保持されます。これらのマップの構造を理解することは、シャード マップ管理に不可欠です。
 
 ## シャード マップとシャードのマッピング
  
@@ -74,7 +75,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 3. **アプリケーション キャッシュ**: **ShardMapManager** オブジェクトにアクセスする各アプリケーション インスタンスは、そのマッピングのローカル メモリ内キャッシュを保持します。ここには、最近取得されたルーティング情報が格納されます。
 
 ## ShardMapManager の作成
-アプリケーションの **ShardMapManager** は、ファクトリ パターンを使用してインスタンス化されます。**ShardMapManagerFactory.GetSqlShardMapManager** メソッドは、(サーバー名と、GSM を保持しているデータベースの名前を含む) **ConnectionString** 形式の資格情報を受け取り、**ShardMapManager** のインスタンスを返します。
+アプリケーションの **ShardMapManager** オブジェクトは、ファクトリ パターンを使用してインスタンス化されます。**ShardMapManagerFactory.GetSqlShardMapManager** メソッドは、(サーバー名と、GSM を保持しているデータベースの名前を含む) **ConnectionString** 形式の資格情報を受け取り、**ShardMapManager** のインスタンスを返します。
 
 **ShardMapManager** は、アプリケーションの初期化コード内でアプリケーション ドメインごとに 1 回だけインスタンス化する必要があります。**ShardMapManager** には、任意の数のシャード マップを含めることができます。多くのアプリケーションでは、シャード マップは 1 つあれば十分です。ただし、異なるスキーマ用や一意性を確保する目的のためにデータベースの異なるセットを使用する場合は、複数のシャード マップを使用することをお勧めします。
 
@@ -200,7 +201,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
             } 
         } 
  
-別の方法として、PowerShell スクリプトを使用して同じ結果を得ることができます。 [こちら](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)で、いくつかのPowerShell のサンプルを入手できます。
+別の方法として、PowerShell スクリプトを使用して同じ結果を得ることができます。[こちら](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)で、いくつかのPowerShell のサンプルを入手できます。
 
 シャード マップを設定した後は、データ アクセス アプリケーションを作成するか、またはマップに適合させることができます。**マップのレイアウト**を変更する必要があるまで、マップの設定または操作を再度行う必要はありません。
 
@@ -253,4 +254,4 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/28/2015"
+   ms.date="10/29/2015"
    ms.author="nitinme"/>
 
 # Azure プレビュー ポータルを使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする
@@ -23,9 +23,14 @@
 - [Using PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 
-Azure プレビュー ポータルを使用して、Azure Data Lake Store を使用するように HDInsight クラスター (Hadoop、HBase または Storm) を構成する方法について説明します。このリリースの重要な考慮事項: * **Hadoop クラスターと Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure Storage BLOB (WASB) のままです。* **HBase クラスター (Windows と Linux) の場合**、Data Lake Store は既定のストレージまたは追加のストレージとして使用できます。
+Azure プレビュー ポータルを使用して、Azure Data Lake Store を使用するように HDInsight クラスター (Hadoop、HBase または Storm) を構成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
 
-この記事では、追加のストレージとして Data Lake Store を Hadoop クラスターにプロビジョニングします。Azure プレビュー ポータルを使用して Data Lake Store を使用するように HDInsight を構成するには、次の手順が必要です。
+* **Hadoop クラスターと Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure ストレージ BLOB (WASB) のままです。
+
+* **HBase クラスター (Windows および Linux) の場合**、Data Lake Store を既定のストレージまたは追加ストレージとして使用できます。
+
+
+この記事では、追加のストレージとして Data Lake Store を使用して Hadoop クラスターをプロビジョニングします。Azure プレビュー ポータルを使用して Data Lake Store を使用するように HDInsight を構成するには、次の手順が必要です。
 
 * Azure Active Directory サービス プリンシパルへの認証を使用して HDInsight クラスターを作成する
 * 同じサービス プリンシパルを使用して Data Lake Store アクセスを構成する
@@ -36,7 +41,7 @@ Azure プレビュー ポータルを使用して、Azure Data Lake Store を使
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
-- Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
+- Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
 
 
 ## Azure Active Directory サービス プリンシパルへの認証を使用して HDInsight クラスターを作成する
@@ -80,14 +85,14 @@ Azure プレビュー ポータルを使用して、Azure Data Lake Store を使
 
 1. 新しい [Azure プレビュー ポータル](https://portal.azure.com)にサインオンします。
 
-2. Data Lake Store アカウントを所有していない場合は、新しいアカウントを作成してください。[Azure プレビュー ポータルを使用した Azure Data Lake Store の概要](data-lake-store-get-started-portal.md)に関するページの手順に従います。
+2. Data Lake Store アカウントを所有していない場合は、新しいアカウントを作成してください。「[Azure プレビュー ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。
 
 	Data Lake Store アカウントを既に所有している場合は、左側のウィンドウで **[参照]**、**[Data Lake Store]** の順にクリックし、アクセスを許可するアカウントの名前をクリックします。
 
 	その Data Lake Store アカウントで、次のタスクを実行します。
 
 	* [Data Lake Store にフォルダーを作成する](data-lake-store-get-started-portal.md#createfolder)。
-	* [Data Lake Store にフォルダーをアップロードする](data-lake-store-get-started-portal.md#uploaddata)。アップロードするいくつかのサンプル データを探す場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/ProjectKona/tree/master/SQLIPSamples/SampleData/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
+	* [Data Lake Store にファイルをアップロードする](data-lake-store-get-started-portal.md#uploaddata)。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/ProjectKona/tree/master/SQLIPSamples/SampleData/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
 
 	アップロードされたファイルは、後で HDInsight クラスターで Data Lake Store アカウントをテストする際に使用します。
 
@@ -111,7 +116,7 @@ Azure プレビュー ポータルを使用して、Azure Data Lake Store を使
 
 	![グループにアクセス許可を割り当てる](./media/data-lake-store-hdinsight-hadoop-use-portal/adl.acl.4.png "グループにアクセス許可を割り当てる")
 
-8. **[カスタム アクセスの追加]** ブレードで **[OK]** をクリックします。新しく追加されたグループは、関連付けられたアクセス許可と一緒に **[アクセス]** ブレードに一覧表示されます。
+8. **[カスタム アクセスの追加]** ブレードで **[OK]** をクリックします。新しく追加されたグループは、関連付けられたアクセス許可と一緒に **[アクセス]** ブレードに一覧表示されるようになります。
 
 	![グループにアクセス許可を割り当てる](./media/data-lake-store-hdinsight-hadoop-use-portal/adl.acl.5.png "グループにアクセス許可を割り当てる")
 
@@ -152,7 +157,7 @@ HDInsight クラスターを構成した後は、クラスターでテスト ジ
 		hivesampletable
 		vehicles
 
-	**vehicles** は、前に作成したテーブルです。**hivesampletable**は、規定ですべての HDInsight クラスターで使用できるサンプル テーブルです。
+	**vehicles** は、前に作成したテーブルです。**hivesampletable** は、規定ですべての HDInsight クラスターで使用できるサンプル テーブルです。
 
 5. **vehicles** からデータを取得するクエリを実行することもできます。
 
@@ -166,7 +171,7 @@ Data Lake Store を使用するように HDInsight クラスターを構成し�
 
 2. **[参照]**、**[HDInsight クラスター]** の順にクリックし、作成した HDInsight クラスターをクリックします。
 
-3. クラスター ブレードで **[リモート デスクトップ]** クリックし、**[リモート デスクトップ]** ブレードで **[接続]** をクリックします。
+3. クラスター ブレードで **[リモート デスクトップ]** をクリックし、**[リモート デスクトップ]** ブレードで **[接続]** をクリックします。
 
 	![HDI クラスターにリモート接続する](./media/data-lake-store-hdinsight-hadoop-use-portal/ADL.HDI.PS.Remote.Desktop.png "Azure リソース グループを作成する")
 
@@ -189,7 +194,7 @@ Data Lake Store を使用するように HDInsight クラスターを構成し�
 HBase クラスターでは、Data Lake Store アカウントを既定のストレージとして使用できます。その場合、クラスターを正常にプロビジョニングするには、クラスターに関連付けられているサービス プリンシパルが Data Lake Store アカウントにアクセスできる**必要があります**。このことは次の 2 つの方法で確認できます。
 
 * **既存のサービス プリンシパルを使用する場合**は、クラスターのプロビジョニングを開始する前に、サービス プリンシパルが Data Lake Store ファイル システムのルートレベルで ACL に追加されていることを確認する必要があります。
-* クラスターのプロビジョニングの一環として**新しいサービス プリンシパルを作成する**場合は、クラスターのプロビジョニングを開始したらすぐに、新しく作成したサービス プリンシパルを Data Lake Store ファイル システムのルートレベルに追加する必要があります。追加できなかった場合、クラスターはプロビジョニングされますが、HBase サービスは開始できません。この問題を回避するには、サービス プリンシパルを Data Lake Store アカウントの ACL に追加し、Ambari Web UI を使用して HBase サービスを再起動します。
+* クラスターのプロビジョニングの一環として**新しいサービス プリンシパルを作成する場合**は、クラスターのプロビジョニングを開始したらすぐに、新しく作成したサービス プリンシパルを Data Lake Store ファイル システムのルートレベルに追加する必要があります。追加できなかった場合、クラスターはプロビジョニングされますが、HBase サービスは開始できません。この問題を回避するには、サービス プリンシパルを Data Lake Store アカウントの ACL に追加し、Ambari Web UI を使用して HBase サービスを再起動します。
 
 サービス プリンシパルを Data Lake Store ファイル システムに追加する方法については、「[Data Lake Store ファイル システムにアクセスするようにサービス プリンシパルを構成する](#acl)」を参照してください。
 
@@ -202,4 +207,4 @@ HBase クラスターでは、Data Lake Store アカウントを既定のスト�
 [makecert]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="07/27/2015" 
+	ms.date="10/29/2015" 
 	ms.author="mahender"/>
 
 # Azure Active Directory ログインを使用するようにアプリケーションを構成する方法
@@ -24,13 +24,13 @@
 
 ## <a name="register"> </a>Azure Active Directory にアプリケーションを登録する
 
-1. [プレビュー段階の Azure の管理ポータル]にログオンし、モバイル アプリに移動します。
+1. [プレビュー段階の Microsoft Azure の管理ポータル]にログオンし、モバイル アプリに移動します。
 
-2. **[設定]** の下の **[ユーザー認証]** をクリックし、**[Azure Active Directory]** をクリックします。表示された **[アプリ URL]** と **[応答 URL]** をコピーします。これらは、後で使用します。**[アプリ URL]** と **[応答 URL]** で HTTPS スキームが使用されていることを確認します。
+2. **[設定]** の下の **[モバイル認証]** をクリックし、**[Azure Active Directory]** をクリックします。表示された **[アプリ URL]** と **[応答 URL]** をコピーします。これらは、後で使用します。**[アプリ URL]** と **[応答 URL]** で HTTPS スキームが使用されていることを確認します。
 
     ![][1]
 
-3. [Azure の管理ポータル]にサインインして、**Active Directory** に移動します。
+3. [Microsoft Azure の管理ポータル]にサインインして、**Active Directory** に移動します。
 
     ![][2]
 
@@ -70,9 +70,8 @@ Azure Active Directory シングル サインオンでモバイル アプリの�
 
 <!-- URLs. -->
 
-[プレビュー段階の Azure の管理ポータル]: https://portal.azure.com/
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[プレビュー段階の Microsoft Azure の管理ポータル]: https://portal.azure.com/
+[Microsoft Azure の管理ポータル]: https://manage.windowsazure.com/
 [ios-adal]: ../app-service-mobile-xamarin-ios-aad-sso.md
- 
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

@@ -92,10 +92,10 @@ CRON 式は 6 つのフィールド: `{second} {minute} {hour} {day} {month} {da
 
 その他の CRON スケジュールの例:
 
-- 1 時間ごと (分の値が 0 のとき): `* 0 * * * *` 
-- 午前 9 時から午後 5 時まで 1 時間ごと: `* 0 9-17 * * *` 
-- 毎日午前 9 時 30 分: `* 30 9 * * *`
-- 平日の毎日午前 9 時 30 分: `* 30 9 * * 1-5`
+- 1 時間ごと (分の値が 0 のとき): `0 0 * * * *` 
+- 午前 9 時から午後 5 時まで 1 時間ごと: `0 0 9-17 * * *` 
+- 毎日午前 9 時 30 分: `0 30 9 * * *`
+- 平日の毎日午前 9 時 30 分: `0 30 9 * * 1-5`
 
 **注**: WebJobを Visual Studio からデプロイする場合は、必ず `settings.job` ファイルのプロパティを [新しい場合はコピーする] に設定してください。
 
@@ -239,4 +239,4 @@ Microsoft Azure 管理ポータルには、スケジュールされた Web ジ�
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

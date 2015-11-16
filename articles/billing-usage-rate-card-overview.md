@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Microsoft Azure リソースの消費を把握する"
+   pageTitle="Microsoft Azure リソースの消費を把握する | Microsoft Azure"
    description="Azure Billing Usage API と RateCard API の概念の概要について説明します。これらの API を使用すると、Azure のリソース消費と動向を把握できます。"
    services="billing"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="billing"
-   ms.date="07/07/2015"
+   ms.date="11/02/2015"
    ms.author="mobandyo;bryanla"/>
 
 # Microsoft Azure リソースの消費を把握する 
@@ -72,10 +72,10 @@ Usage API と RateCard API を組み合わせて実現できるシナリオ例�
 
 ## 次のステップ
 + 両方の API の詳細については、「[Azure Billing REST API リファレンス](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)」を参照してください (Azure リソース マネージャーに用意されている API セットに含まれています)。
-+ サンプル コードをすぐに確認するには、[Github の Microsoft Azure Billing API コード サンプル](https://github.com/Azure/BillingCodeSamples)を参照してください。
++ サンプル コードをすぐに確認するには、「[Azure コード サンプル](https://azure.microsoft.com/documentation/samples/?term=billing)」の「Microsoft Azure Billing API コード サンプル」を参照してください。
 
 ## 詳細情報
 + Azure リソース マネージャーの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
 + クラウドの使用量を把握するために必要なその他のツール群については、Gartner の記事「[IT 財務管理 (ITFM) ツールの市場ガイド](http://www.gartner.com/technology/reprints.do?id=1-212F7AL&ct=140909&st=sb)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

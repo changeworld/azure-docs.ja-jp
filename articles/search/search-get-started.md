@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure Search の使用 | Microsoft Azure" 
-	description="Azure Search の使用" 
+	description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search の概要。" 
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
@@ -14,12 +14,12 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="07/08/2015" 
+	ms.date="11/04/2015" 
 	ms.author="heidist"/>
 
 # Azure Search の使用
 
-Microsoft Azure Search は、検索機能をカスタム アプリケーションに埋め込むことができる新しいサービスです。検索エンジンとデータのストレージを提供し、.NET ライブラリまたは REST API を使用してアクセスおよび管理できます。
+Microsoft Azure Search は、検索機能をカスタム アプリケーションに埋め込むことができる新しいホスト型クラウド検索サービスです。検索エンジンとデータのストレージを提供し、.NET ライブラリまたは REST API を使用してアクセスおよび管理できます。
 
 この記事では、Azure Search REST API の概要を示します。
 
@@ -378,4 +378,4 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 [Create your first azure search solution]: search-create-first-solution.md
 [Create a geospatial search app using Azure Search]: search-create-geospatial.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

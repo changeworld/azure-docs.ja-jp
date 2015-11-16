@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="10/23/2015"
+   ms.date="10/30/2015"
    ms.author="maroche"/>
 
 # Azure Data Catalog のよく寄せられる質問
@@ -70,7 +70,7 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 - Azure Storage BLOB
 - Azure Storage ディレクトリ
 - HDFS ファイル
-- HDSF ディレクトリ
+- HDFS ディレクトリ
 - Teradata テーブル
 - Teradata ビュー
 
@@ -79,7 +79,7 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 - SQL Server Database
 - Oracle Database
 - HDFS クラスター
-- Teradata データベース 
+- Teradata データベース
 
 
 ## Q: 別のデータ ソースのサポートを要求するにはどうすればよいですか。
@@ -172,4 +172,4 @@ A: カタログに既に登録されているデータ資産のメタデータ�
 
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。そこで寄せられている質問に、ここでの方法が見つかります。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

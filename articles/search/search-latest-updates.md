@@ -13,12 +13,12 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="10/01/2015" 
+	ms.date="11/04/2015" 
 	ms.author="heidist"/>
 
 #Azure Search 関連の最新の更新履歴情報#
 
-Azure Search の一般提供が開始されています。これは [API バージョン 2015-02-28](https://msdn.microsoft.com/library/azure/dn798935.aspx) でサポートされる構成に対して、99.9% の可用性を保証するサービス レベル アグリーメント (SLA) を提供します。
+Azure Search は、Microsoft Azure のホスト型クラウド検索サービスです。このサービスは一般提供が開始されており、[API バージョン 2015-02-28](https://msdn.microsoft.com/library/azure/dn798935.aspx) でサポートされる構成に対して、99.9% の可用性を保証するサービス レベル アグリーメント (SLA) を提供します。
 
 ##機能のバージョン管理とロール アウト
 
@@ -32,7 +32,7 @@ Azure Search の一般提供が開始されています。これは [API バー�
 
 このバージョンでは、新しい [Lucene クエリ構文のサポート](https://msdn.microsoft.com/library/azure/mt589323.aspx)が追加されました。この構文は、[プレビュー バージョンの Azure Search サービス REST API](search-api-2015-02-28-preview.md) に使用できます。新しい構文を使用するには、Search Documents 操作で `queryType`を指定する必要があります。
 
-また、自然言語プロセッサと、検索、提案、および参照クエリの POST という 2 つの機能はプレビューから外され、MSDN の公式 API に追加されました。
+また、[自然言語プロセッサ](search-language-support.md)と、検索、提案、および参照クエリの POST という 2 つの機能はプレビューから外され、MSDN の公式 API に追加されました。
 
 ##.NET SDK 0.10.0-Preview
 **リリース日: 2015 年 8 月**
@@ -128,4 +128,4 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

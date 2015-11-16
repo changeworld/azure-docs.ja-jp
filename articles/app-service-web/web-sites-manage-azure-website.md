@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/31/2015" 
+	ms.date="10/28/2015" 
 	ms.author="erikre"/>
 
 # Azure App Service での Web アプリの管理
@@ -66,7 +66,7 @@ Web アプリの運用中、それが利用可能であり、ユーザー トラ
 ### バックアップ
 
 - Web アプリの[自動バックアップ](web-sites-backup.md)を設定します。バックアップについては、[このビデオ](http://azure.microsoft.com/documentation/videos/azure-websites-automatic-and-easy-backup/)を参照してください。
-- Azure SQL データベースの[データベース復旧](http://msdn.microsoft.com/library/azure/hh852669.aspx)のさまざまなオプションを確認してください。
+- Azure SQL データベースの[データベース復旧](https://azure.microsoft.com/ja-JP/documentation/articles/sql-database-business-continuity/)のさまざまなオプションを確認してください。
 
 ### トラブルシューティング
 
@@ -103,4 +103,4 @@ Visual Studio Online を使用する場合は、ソース管理から継続的�
 
   
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/08/2015"
+	ms.date="11/04/2015"
 	ms.author="garye"/>
 
 
@@ -80,7 +80,7 @@
 
 現在、実験は以下のようになっています。
 
-![Scoring the trained model][4]
+![トレーニング済みモデルにスコアを付ける][4]
 
 
 UCI のドイツ語のクレジット カード データ データセットはどうして予測実験に残されたか疑問に思われるでしょう。このサービスでは、元のデータセットではなくユーザーのデータを使用します。それにもかかわらずなぜこれらを接続したままにしているのでしょうか?
@@ -89,8 +89,7 @@ UCI のドイツ語のクレジット カード データ データセットは�
 
 最後にもう一度実験を実行します (**[実行]** をクリックします)。モデルがまだ稼動していることを確認するには、[モデルのスコア付け][score-model]モジュールをクリックし、**[結果の表示]** を選択します。元のデータが、信用リスク値 ("スコア付けラベル") とスコア付け確率値 ("スコア付け確率") と共に表示されます。
 
-##
-Web サービスをデプロイする
+## Web サービスをデプロイする
 
 実験から派生する Web サービスをデプロイするには、キャンバスの下にある **[Web サービスのデプロイ]** をクリックします。Machine Learning Studio によって実験が Web サービスとしてデプロイされ、サービス ダッシュボードが表示されます。
 
@@ -98,8 +97,11 @@ Web サービスをデプロイする
 
 サービスを構成するには、**[構成]** タブをクリックします。このタブでは、サービス名 (既定で実験名が付けられます) を変更したり、説明を追加したりできます。また、入力列と出力列にわかりやすいラベルを付けることもできます。
 
+![Web サービスを構成する][5]
+
 ## Web サービスをテストする
-**[ダッシュボード]** ページで、**[既定のエンドポイント]** の下の **[テスト]** リンクをクリックします。サービスの入力データを要求するダイアログが表示されます。これらは、元のドイツの信用リスク データセットに含まれるのと同じ列です。
+**[ダッシュボード]** ページで、**[既定のエンドポイント]** の下の **[テスト]** リンクをクリックします。サービスの入力データを要求するダイアログが表示されます。これらは、元のドイツの信用リスク データセットに含まれるのと同じ列です。![Web サービスをテストする][6]
+
 
 データのセットを入力し、**[OK]** をクリックします。
 
@@ -114,6 +116,8 @@ Web サービスによって生成された結果がダッシュボードの下�
 [2]: ./media/machine-learning-walkthrough-5-publish-web-service/publish2.png
 [3]: ./media/machine-learning-walkthrough-5-publish-web-service/publish3.png
 [4]: ./media/machine-learning-walkthrough-5-publish-web-service/publish4.png
+[5]: ./media/machine-learning-walkthrough-5-publish-web-service/publish5.png
+[6]: ./media/machine-learning-walkthrough-5-publish-web-service/publish6.png
 
 
 <!-- Module References -->
@@ -127,4 +131,4 @@ Web サービスによって生成された結果がダッシュボードの下�
 [two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

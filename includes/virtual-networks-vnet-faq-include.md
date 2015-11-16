@@ -1,6 +1,6 @@
 ## Virtual Network の基礎
 
-### Azure Virtual ネットワーク (VNet) とは何ですか。
+### Azure Virtual Network (VNet) とは何ですか。
 
 VNet を使用してプロビジョニングして Azure で仮想プライベート ネットワーク (VPN) を管理および、必要に応じて、VNet を Azure で他の VNet とリンクさせたり、オンプレミス IT インフラストラクチャで、ハイブリッドまたはクロスプレミス ソリューションを作成します。作成したそれぞれの VNet には独自の CIDR ブロックを持っており、他の VNet や、CIDR ブロックが競合しない限りオンプレミス ネットワークにリンクすることができます。VNet の DNS サーバー設定と、サブネットへの VNet の分割も制御できます。
 
@@ -20,7 +20,7 @@ VNet を使用して次のことが行えます。
 
 ### 仮想ネットワークが必要かどうかを知る方法
 
-[仮想ネットワークの概要](virtual-networks-overview.md)にアクセスし、最適なネットワーク設計オプションの決定に役立つディシジョン テーブルを参照してください。
+[Virtual Network の概要](virtual-networks-overview.md)にアクセスし、最適なネットワーク設計オプションの決定に役立つディシジョン テーブルを参照してください。
 
 ### 開始するには?
 
@@ -219,15 +219,16 @@ VNet 内のコンピューティング サービスのみ使用できます。Co
 
 ### Web Apps を Virtual Network と連動できますか。
 
-いいえ。VNet 内で Azure の Web App をデプロイすることはできません。ただし、ご使用の VNet にポイント対サイトの 構成をした場合、Web Apps を安全に接続して、Azure VNet 内のリソースにアクセスできます。詳細については、次のトピックを参照してください。
+はい。ASE (App Service Environment) を使用して VNet 内に Web Apps をデプロイできます。さらに、VNet にポイント対サイトの 構成をした場合、Web Apps を安全に接続して、Azure VNet 内のリソースにアクセスできます。詳細については、次のトピックを参照してください。
 
-- [Web Apps Virtual Network 統合](http://azure.microsoft.com/blog/
-- 014/09/15/azure-websites-virtual-network-integration/)
+
+- [App Service 環境で Web Apps を作成する](https://azure.microsoft.com/ja-JP/documentation/articles/app-service-web-how-to-create-a-web-app-in-an-ase/)
+
+- [Web Apps Virtual Network 統合](http://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)
 
 - [Web Apps と VNet Integration and Hybrid Connections の併用](http://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)
 
 - [Web アプリを Azure Virtual Network に統合する](web-sites-integrate-with-vnet.md)
-
 
 ### クラウド サービスを VNet 内の Web ロールとワーカー ロール (PaaS) でデプロイできますか。
 
@@ -265,4 +266,4 @@ Vnet は、1 つの別の機能と、Azure インフラストラクチャでホ�
 
 はい。各種プラットフォームで PowerShell とコマンド ライン ツールを使用することができます。詳細については、[こちら](http://go.microsoft.com/fwlink/?LinkId=317721)で確認できます。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

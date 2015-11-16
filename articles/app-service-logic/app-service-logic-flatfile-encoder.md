@@ -8,39 +8,30 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="app-service-logic" 	
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="10/01/2015"
+   ms.date="10/29/2015"
    ms.author="rajram"/>
 
 # BizTalk Flat File Encoder
 
-BizTalk Flat File Encodeｒ コネクタを使用して、フラット ファイル データ (excel、csv など) と XML データの相互運用を行います。フラット ファイル インスタンスを XML に、またはその逆方向に変換できます。
+BizTalk Flat File Encoder コネクタを使用して、フラット ファイル データ (Excel ファイルや CSV ファイルなど) と XML データの相互運用を行います。フラット ファイル インスタンスを XML に、またはその逆方向に変換できます。
 
 ##BizTalk Flat File Encoder の使用
-BizTalk Flat File Encoder を使用するには、まず、BizTalk Flat File Encoder API アプリのインスタンスを作成する必要があります。これは、ロジック アプリを作成するときにインラインで、または Azure Marketplace から BizTalk Flat File Encoder API アプリを選択することによって、行うことができます。
+BizTalk Flat File Encoder を使用するには、まず、BizTalk Flat File Encoder API アプリのインスタンスを作成する必要があります。これは、ロジック アプリを作成するときにインラインで、または Azure Marketplace から BizTalk Flat File Encoder API アプリを選択することによって、行うことができます。Azure Marketplace から BizTalk Flat File Encoder API アプリを作成する手順を次に示します。1. Azure ポータル (http://portal.azure.com) にログインします。2. [新規]、[Marketplace]、[すべて] の順に選択します。3. 検索ボックスで「BizTalk Flat File Encoder」を検索します。4. 結果の一覧から BizTalk Flat File Encoder を選択します。5. [作成] を選択し、名前とその他の必要な情報を指定します。6. [作成] を選択します。スタート ページにリダイレクトされます。そこでは、作成の進行状況を確認できます。作成完了までしばらく時間がかかる場合があります。完了すると、通知が届きます。
 
 ###BizTalk Flat File Encoder の構成
-BizTalk Flat File Encoder は、構成の一部としてスキーマを受け取ります。ユーザーは、Azure ポータルから直接 API アプリを起動して、またはデザイナー画面で API アプリをダブルクリックして、API アプリ構成ブレードを起動できます。
+API アプリの作成が完了すると、そのアプリは、Azure ポータルのスタート ページから直接起動することも、ロジック アプリの作成時にデザイナー画面から起動することもできます。
 
-![BizTalk Flat File Encoder の構成][1]
-
-API アプリ ブレードでは、*[スキーマ]* 部分をクリックしてスキーマを構成できます。
-
-![BizTalk Flat File Encoder のスキーマ部分][2]
-
-ユーザーは、ディスクからスキーマをアップロードするか、フラット ファイル インスタンスまたは JSON インスタンスからスキーマを生成することができます。
-
-![BizTalk Flat File Encoder のスキーマ部分][3]
-
+Azure のスタート ページから API アプリを起動するには、API アプリの作成時に BizTalk Flat File Encoder に指定した名前を入力して、起動するアプリを検索することができます。手順は次のとおりです。1. Auzre ポータルの検索ボックスに BizTalk Flat File Encoder の名前を入力し、それを検索します。2. 次に一覧から BizTalk Flat File Encoder を選択します。API アプリのブレードが開きます。このブレードで BizTalk Flat File Encoder API アプリを構成することができます。構成を開始するには、次の手順に従ってスキーマを追加する必要があります。1. [スキーマ] コンポーネントを選択します。![BizTalk Flat File Encoder のスキーマ部分][2] 2. 表示された [スキーマ] ブレードで [新規追加] を選択します。![BizTalk Flat File Encoder のアクション一覧][7] 3. 3 つのオプションのいずれかを選択し、スキーマを提供します。対象となるオプションは、[新しいスキーマのアップロード]、[JSON から生成]、[フラット ファイルから生成] の 3 つです。![BizTalk Flat File Encoder のアクション一覧][8] 4. 前の手順での選択に基づいて、スキーマを提供する手順を実行します。スキーマのアップロードが完了したことが表示されます。![BizTalk Flat File Encoder のアクション一覧][9]
 
 ###デザイン画面での BizTalk Flat File Encoder の使用
-構成が済むと、ユーザーは *->* をクリックしてアクションの一覧からアクションを選択できます。
+これで Biztalk Flat File Encoder の構成が完了したので、それをロジック アプリで使用します。使用を開始するには、新しいロジック アプリを作成するか、または前に作成したロジック アプリを起動し、次の手順に従います。1. [ロジックの開始] カードで、[このロジックを手動で実行] をクリックします。2.ギャラリーで、以前に作成した BizTalk Flat File Encoder API アプリを選択します (作成した BizTalk Flat File Encoder は画面の右の API Apps リストに表示されます)。3.黒の右矢印を選択します。使用可能な 2 つのアクション ([フラット ファイルを XML に] と [XML をフラット ファイルに]) が表示されます。![BizTalk Flat File Encoder のアクション一覧][1] ![BizTalk Flat File Encoder のアクション一覧][4]
 
-![BizTalk Flat File Encoder のアクション一覧][4]
+選択したアクションに基づいて、次の手順を実行します。
 
 ####フラット ファイルを XML に
 
@@ -72,6 +63,10 @@ API アプリ ブレードでは、*[スキーマ]* 部分をクリックして�
 [4]: ./media/app-service-logic-flatfile-encoder/FlatFileEncoder.ListOfActions.PNG
 [5]: ./media/app-service-logic-flatfile-encoder/FlatFileEncoder.FlatFileToXml.PNG
 [6]: ./media/app-service-logic-flatfile-encoder/FlatFileEncoder.XmlToFlatFile.PNG
+[7]: ./media/app-service-logic-flatfile-encoder/flatfileencoder.addschema.PNG
+[8]: ./media/app-service-logic-flatfile-encoder/flatfileencoder.selectschemauploadoption.PNG
+[9]: ./media/app-service-logic-flatfile-encoder/flatfileencoder.shemauploaded.PNG
+
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

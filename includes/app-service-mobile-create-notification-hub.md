@@ -1,10 +1,12 @@
-Follow these steps to create a new notification hub to use for push notifications. You can skip this section when you have already created a notification hub in the same resource group as your Mobile App backend.
+次の手順に従って新しい通知ハブを作成し、プッシュ通知に使用します。モバイル アプリのバックエンドと同じリソース グループに通知ハブを既に作成している場合、このセクションは省略できます。
 
-1. Visit the [Azure Portal]. Click **Browse All** > **Mobile Apps** and click your Mobile App backend
+1. [Azure ポータル]にアクセスします。**[すべて参照]**、**[Mobile Apps]** の順にクリックし、モバイル アプリのバックエンドをクリックします。
 
-2. Click **Settings** > **Mobile** > **Push**. 
+2. **[設定]**、**[モバイル]**、**[プッシュ]** の順にクリックします。
 
-2. Follow the work flow to create a notification hub. You will need to create a new namespace if there is none in your current resource group. Click **Create** once you've configured all the settings.
+2. ワーク フローに従って、通知ハブを作成します。現在のリソース グループに名前空間がない場合、新しい名前空間を作成する必要があります。すべての設定を構成したら、**[作成]** をクリックします。
 
 
-[Azure Portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
+
+<!---HONumber=Nov15_HO2-->

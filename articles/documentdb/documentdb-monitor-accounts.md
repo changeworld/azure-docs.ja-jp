@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.date="10/30/2015" 
 	ms.author="mimig"/>
 
 # Azure プレビュー ポータルを使用して DocumentDB アカウントを監視する 
@@ -21,7 +21,7 @@
 DocumentDB アカウントは、[Microsoft Azure プレビュー ポータル](https://portal.azure.com/)で監視できます。各 DocumentDB アカウントに対して、パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) が利用可能です。
 
 ## DocumentDB アカウントのパフォーマンス メトリックを表示する方法
-1.	[Azure プレビュー ポータル](https://portal.azure.com/)で、**[すべて参照]**、**[DocumentDB アカウント]** の順にクリックし、パフォーマンス メトリックを表示する DocumentDB アカウントの名前をクリックします。
+1.	[Azure プレビュー ポータル](https://portal.azure.com/)で、**[参照]**、**[DocumentDB アカウント]** の順にクリックし、パフォーマンス メトリックを表示する DocumentDB アカウントの名前をクリックします。
 2.	**[監視]** レンズ内で、既定により以下を表示できます。
 	*	当日の要求数合計
 	*	当日の 1 秒あたりの要求数平均 
@@ -90,4 +90,4 @@ Azure プレビュー ポータルでは、サイド バイ サイドのメト�
 DocumentDB の容量の詳細については、[DocumentDB の容量の管理](documentdb-manage.md)に関するページを参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

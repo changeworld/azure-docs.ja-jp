@@ -1,12 +1,12 @@
 <properties
-	pageTitle="SharePoint サーバー ファーム | Microsoft Azure"
-	description="Azure プレビュー ポータルの SharePoint サーバー ファームを使用して、新規の基本または高可用性 SharePoint Server 2013 ファームをすばやく作成します。"
+	pageTitle="SharePoint サーバー ファームの作成 | Microsoft Azure"
+	description="Azure プレビュー ポータルの Marketplace を使用して、SharePoint Server 2013 の基本ファームまたは高可用性ファームをすばやく新規作成します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="JoeDavies-MSFT"
 	manager="timlt"
 	editor=""
-	tags="azure-service-management"/>
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -14,88 +14,59 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/05/2015"
+	ms.date="10/29/2015"
 	ms.author="josephd"/>
 
-# SharePoint サーバー ファーム
+# SharePoint サーバー ファームの作成
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]従来のモデル。
  
+Microsoft Azure プレビュー ポータル Marketplace では、事前に構成された SharePoint Server 2013 ファームを簡単に作成できます。これにより、開発またはテストの環境で基本または高可用性の SharePoint ファームが必要な場合や、組織のコラボレーション ソリューションとして SharePoint Server 2013 を評価する場合の所要時間を大きく節約できます。
 
-Microsoft Azure プレビュー ポータルは、SharePoint Server Farm を使用して、事前構成された SharePoint Server 2013 ファームを作成します。これにより、開発またはテストの環境で基本または高可用性の SharePoint ファームが必要な場合や、組織のコラボレーション ソリューションとして SharePoint Server 2013 を評価する場合の所要時間を大きく節約できます。
+> [AZURE.NOTE]Azure プレビュー ポータルの Azure Marketplace の **SharePoint サーバー ファーム**項目は削除されました。
 
 この構成では、次の 3 つの仮想マシンの基本的な SharePoint ファームで構成されます。
 
-![sharepointfarm](./media/virtual-machines-sharepoint-farm-azure-preview/SPFarm_Basic.png)
+![sharepointfarm](./media/virtual-machines-sharepoint-farm-azure-preview/Non-HAFarm.png)
 
 このファーム構成は、SharePoint アプリ開発の簡略化セットアップまたは、SharePoint 2013 の初回の評価で使用することができます。
 
+基本的な (3 サーバー) SharePoint ファームを作成するには:
+
+1. [ここ](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-nonha/)をクリックしてください。
+2. **[デプロイ]** をクリックします。
+3. **[SharePoint 2013 非 HA ファーム]** ウィンドウで、**[作成]** をクリックします。
+4. **[SharePoint 2013 非 HA ファームの作成]** ウィンドウの 7 つの手順で設定を指定して、**[作成]** をクリックします。
+
 高可用性 SharePoint ファームは、次に示す構成の 9 台の仮想マシンで構成されます。
 
-![sharepointfarm](./media/virtual-machines-sharepoint-farm-azure-preview/SPFarm_HighAvail.png)
+![sharepointfarm](./media/virtual-machines-sharepoint-farm-azure-preview/HAFarm.png)
 
 このファーム構成は、より大量のクライアント読み込みや外部の SharePoint サイトの高可用性をテストしたり、SharePoint ファームの SQL Server AlwaysOn をテストしたりする場合に使用できます。この構成は、高可用環境での SharePoint アプリケーション開発でも使用できます。
 
-この両ファームの構成の詳細については、「[SharePoint Server ファームの構成の詳細](virtual-machines-sharepoint-farm-config-azure-preview.md)」を参照してください。
+高可用性 (9 サーバー) の SharePoint ファームを作成するには:
 
-> [AZURE.NOTE]Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview とその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[SharePoint Server 2016 IT Preview を Azure でテストする](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」を参照してください。
+1. [ここ](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-ha/)をクリックしてください。
+2. **[デプロイ]** をクリックします。
+3. **[SharePoint 2013 HA ファーム]** ウィンドウで、**[作成]** をクリックします。
+4. **[SharePoint 2013 HA ファームの作成]** ウィンドウの 7 つの手順で設定を指定して、**[作成]** をクリックします。
 
-## 構成の手順
+> [AZURE.NOTE]Microsoft は SharePoint Server 2016 IT Preview をリリースしています。SharePoint Server 2016 IT Preview とその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[SharePoint Server 2016 IT Preview を Azure でテストする](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」を参照してください。
 
-SharePoint Server Farm のテンプレートを使用して SharePoint ファームを作成するには、以下の手順を実行します。
+## SharePoint ファームの管理
 
-1. [Microsoft Azure プレビュー ポータル](https://portal.azure.com/)で、**[新規]**、**[Compute]**、**[SharePoint Server Farm]** の順にクリックします。**SharePoint Server Farm** が表示されない場合、**[新規]**、**[Compute]**、**[Marketplace]** の順にクリックして、**[Computeを検索]** に「**SharePoint**」と入力してから、**[SharePoint Server Farm]** をクリックします。**[SharePoint Server Farm]** ウィンドウで、**[作成]** をクリックします。
-2. **[SharePoint ファームの作成]** ウィンドウにリソース グループの名前を入力します。
-3. ファームの各仮想マシンのローカル管理者アカウントのユーザー名とパスワードを入力します。推測されにくい名前とパスワードを選んで登録し、安全な場所に保管します。
-4. 高可用性ファームを希望する場合は、**[高可用性を有効にする]** をクリックします。
-5. ドメイン コントローラーを構成するには、矢印をクリックします。ホスト名プレフィックス (既定はリソース グループ名)、フォレスト ルート ドメイン名 (既定は contoso.com)、およびドメイン コントローラーのサイズ (既定は A1) を指定できます。
-6. SQL サーバーを構成するには、矢印をクリックします。ホスト名プレフィックス (既定はリソース グループ名)、SQL サーバーのサイズ (既定は A5)、データベース アクセス アカウント名とパスワード (既定では管理者アカウントを使用)、SQL サーバーのサービス アカウント名 (既定は sqlservice)、パスワード (既定では管理者アカウントと同じパスワードを使用) を指定できます。
-7. SharePoint サーバーを構成するには、矢印をクリックします。ホスト名プレフィックス (既定はリソース グループ名)、SharePoint サーバーのサイズ (既定は A2)、SharePoint ユーザー アカウント (既定は sp\_setup) とパスワード、SharePoint ファームのアカウント名 (既定は sp\_farm) とパスワード、SharePoint ファームのパスフレーズを指定できます。既定では、管理者のパスワードを SharePoint のユーザー アカウント、ファーム アカウント、パスフレーズに使用します。
-8. 仮想ネットワーク、ストレージ アカウント、診断のオプションの構成設定を構成するには、対応する矢印をクリックします。
-9. サブスクリプションを指定するには、矢印をクリックします。
-10. Azure の場所を指定するには、矢印をクリックします。
-11. 準備ができたら **[作成]** をクリックします。
+これらのファームのサーバーはリモート デスクトップ接続を通じて管理できます。詳細については、「[仮想マシンへのログオン](virtual-machines-windows-tutorial.md#log-on-to-the-virtual-machine)」を参照してください。
 
-> [AZURE.NOTE]ドメイン コントローラーには、既定で、Active Directory 管理ツールがインストールされていません。管理ツールをインストールするには、ドメイン コントローラーの仮想マシンで、管理者レベルの Windows PowerShell コマンド プロンプトから **Install-WindowsFeature AD-Domain-Services -IncludeManagementTools** コマンドを実行します。
+SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint アプリケーション、その他の機能を構成できます。詳細については、「[SharePoint 2013 を構成する](http://technet.microsoft.com/library/ee836142.aspx)」を参照してください。
 
-## SharePoint ファームにアクセスして管理を開始します。
-
-この SharePoint ファームには事前構成されたエンドポイントがあり、インターネット接続されたクライアント コンピューターの SharePoint Web サーバーに対して、未認証の Web トラフィック (TCP ポート 80) が許可されます。このエンドポイントは、事前構成されたチーム サイトまでのものです。このチームサイトにアクセスするには:
-
-1.	Azure プレビュー ポータルの **[参照]** をクリックし、**[リソース グループ]** をクリックします。
-2.	リソース グループの一覧で、SharePoint ファーム リソース グループの名前をクリックします。
-3.	SharePoint ファーム リソース グループのウィンドウで、**[デプロイ履歴]** をクリックします。
-4.	**[デプロイ履歴]** ウィンドウで、**[Microsoft.SharePointFarm]** をクリックします。
-5.	**[Microsoft.SharePointFarm]** ウィンドウで、**[SHAREPOINTSITEURL]** フィールドの URL を選択してコピーします。
-6.	その URL をインターネット ブラウザーのアドレス フィールドに貼り付けます。
-7.	プロンプトが表示されたら、ファームの作成時に指定したユーザー アカウントの資格情報を入力します。
-
-SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint アプリケーション、その他の機能を構成できます。詳細については、「[SharePoint 2013 を構成する](http://technet.microsoft.com/library/ee836142.aspx)」を参照してください。SharePoint サーバーの全体管理サイトにアクセスするには:
-
-1.	Azure プレビュー ポータルの **[参照]** をクリックし、**[リソース グループ]** をクリックします。
-2.	リソース グループの一覧で、SharePoint ファーム リソース グループの名前をクリックします。
-3.	SharePoint ファーム リソース グループのウィンドウで、**[デプロイ履歴]** をクリックします。
-4.	**[デプロイ履歴]** ウィンドウで、**[Microsoft.SharePointFarm]** をクリックします。
-5.	**[Microsoft.SharePointFarm]** ウィンドウで、**[SHAREPOINTCENTRALADMINURL]** フィールドの URL を選択してコピーします。
-6.	その URL をインターネット ブラウザーのアドレス フィールドに貼り付けます。
-7.	プロンプトが表示されたら、ファームの作成時に指定したユーザー アカウントの資格情報を入力します。
-
-
-注:
-
-- Azure プレビュー ポータルは、インターネットに接続する Web プレゼンスを持つクラウド専用の仮想ネットワークにこれら両ファームを作成します。組織のネットワークに戻るサイト間 VPN 接続や ExpressRoute 接続はありません。
-- これらのサーバーはリモート デスクトップ接続を通じて管理できます。詳細については、「[仮想マシンへのログオン](virtual-machines-windows-tutorial.md#log-on-to-the-virtual-machine)」を参照してください。
-
-## Azure リソース マネージャー
-
-Azure プレビュー ポータルの SharePoint Server Farm 機能により、従来のデプロイ モデルを使用して仮想マシンが作成されます。リソース マネージャーのデプロイ モデルを使用して SharePoint Server 2013 ファームを作成する場合は、「[Azure リソース マネージャーのテンプレートを使用した SharePoint ファームのデプロイ](virtual-machines-workload-template-sharepoint.md)」を参照してください。
+> [AZURE.NOTE]Azure プレビュー ポータルは、インターネットに接続する Web プレゼンスを持つクラウド専用の仮想ネットワークにこれら両ファームを作成します。組織のネットワークに戻るサイト間 VPN 接続や ExpressRoute 接続はありません。
 
 ## その他のリソース
-
-[SharePoint サーバー ファームの構成の詳細](virtual-machines-sharepoint-farm-config-azure-preview.md)
 
 [Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
 
 [テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
 
-<!---HONumber=Oct15_HO3-->
+[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)
+
+<!---HONumber=Nov15_HO2-->

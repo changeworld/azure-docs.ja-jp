@@ -13,7 +13,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="NA" 
     ms.workload="data-services" 
-    ms.date="06/16/2015" 
+    ms.date="10/28/2015" 
     ms.author="anhoh"/>
 
 #インデクサーを使用した DocumentDB と Azure Search の接続
@@ -137,7 +137,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 |ブール値|Edm.Boolean、Edm.String|
 |整数などの数値|Edm.Int32、Edm.Int64、Edm.String|
 |浮動小数点などの数値|Edm.Double、Edm.String|
-|String|Edm.String|
+|文字列|Edm.String|
 |プリミティブ型の配列。例: "a"、"b"、"c" |Collection(Edm.String)|
 |日付などの文字列| Edm.DateTimeOffset、Edm.String|
 |GeoJSON オブジェクト。例: { "type": "Point", "coordinates": [ long, lat ] } | Edm.GeographyPoint |
@@ -164,7 +164,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
        }]
      }
 
-###Response
+###応答
 
 インデックスが正常に作成された場合、HTTP 201 Created 応答を受け取ります。
 
@@ -270,4 +270,4 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
  - Azure Search の詳細については、[ここ](/services/search/)をクリックしてください。
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

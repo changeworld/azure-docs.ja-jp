@@ -4,7 +4,7 @@
                 services="active-directory" 
                 documentationCenter="" 
                 authors="markusvi" 
-                manager="swadhwa" 
+                manager="stevenpo" 
                 editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
                 ms.tgt_pltfrm="na" 
                 ms.devlang="na" 
                 ms.topic="article" 
-                ms.date="08/10/2015" 
+                ms.date="10/30/2015" 
                 ms.author="markusvi"/>
 
 
@@ -64,4 +64,4 @@ Microsoft アカウントを使用してサインインした SA は、Azure 管
 [3]: ./media/active-directory-understanding-resource-access/IC707933.png
 [4]: ./media/active-directory-understanding-resource-access/IC707934.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

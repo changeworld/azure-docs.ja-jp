@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/26/2015" 
+	ms.date="11/04/2015" 
 	ms.author="genemi"/>
 
 
@@ -34,7 +34,8 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 いずれのエラーも、そのメッセージをクライアント プログラムでカスタマイズし、ユーザーに表示することができます。
 
 
-**ヒント:** 特に、*一時的な障害*のセクションに記載したエラーは重要です。このカテゴリのエラーが発生すると通常、クライアント プログラムの*再試行*ロジックが設計に従って実行され、同じ操作がやり直されます。
+> [AZURE.TIP][*一時的な障害*](#bkmk_connection_errors)に関する次のセクションは特に重要です。
+
 
 
 <a id="bkmk_connection_errors" name="bkmk_connection_errors">&nbsp;</a>
@@ -44,19 +45,36 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 
 以下の表は、接続喪失エラーなど、インターネットで Azure SQL Database を操作しているときに発生する可能性のある一時的なエラーの一覧です。
 
-一時的なエラーは、一時的な障害と呼ばれることもあります。プログラムで `SqlException` をキャッチしたときに、`sqlException.Number` の値が、このセクションで列挙した一時的な障害の値に該当するかどうかを調べることができます。`Number` の値から一時的な障害であることが判明した場合は、再度接続の確立を試み、その接続を使ってクエリを再試行してください。再試行ロジックのコード例については、以下のページを参照してください。
+
+### 最も一般的な一時的な障害
+
+
+一時的な障害が現れるとき、一般的に、クライアント プログラムから次のエラー メッセージの 1 つが表示されます。
+
+- サーバー <Azure_instance> 上のデータベース <db_name> は現在使用できません。後で接続を再試行してください。問題が解決しない場合は、<session_id> のセッション トレース ID を控えてカスタマー サポートに問い合わせてください。
+
+- サーバー <Azure_instance> 上のデータベース <db_name> は現在使用できません。後で接続を再試行してください。問題が解決しない場合は、<session_id> のセッション トレース ID を控えてカスタマー サポートに問い合わせてください。(Microsoft SQL Server、エラー: 40613)
+
+- 既存の接続はリモート ホストに強制的に切断されました。
+
+- System.Data.Entity.Core.EntityCommandExecutionException: コマンド定義を実行中にエラーが発生しました。詳細については、内部例外を参照してください。 ---> System.Data.SqlClient.SqlException: サーバーから結果を受信しているときに、トランスポート レベルのエラーが発生しました。 (プロバイダー: セッション プロバイダー、エラー: 19 - 物理的な接続は使用できません)
+
+一時的なエラーが発生すると通常、クライアント プログラムの*再試行ロジック*が設計に従って実行され、同じ操作がやり直されます。再試行ロジックのコード例については、以下のページを参照してください。
 
 
 - [SQL Database のクライアント開発とクイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
 
-- [方法: Azure SQL Database への信頼性の高い接続](http://msdn.microsoft.com/library/azure/dn864744.aspx)
+- [SQL Database における接続エラーと一過性の障害から復旧するための対策](sql-database-connectivity-issues.md)
+
+
+### 一時障害のエラー番号
 
 
 | エラー番号 | 重大度 | 説明 |
 | ---: | ---: | :--- |
 | 4060 | 16 | ログインで要求されたデータベース "%.&#x2a;ls" を開くことができません。ログインに失敗しました。 |
 |40197|17|要求の処理中にサービスでエラーが発生しました。もう一度実行してください。エラー コード %d。<br/><br/>ソフトウェアやハードウェアのアップグレード、ハードウェアの障害、その他フェールオーバーに関する問題によってサービスがダウンしたときに、このエラーが発生します。障害の種類や発生したフェールオーバーに関する詳細な情報は、エラー 40197 のメッセージに埋め込まれたエラー コード (%d) から得られます。エラー 40197 のメッセージに埋め込まれるエラー コードとしては、40020、40143、40166、40540 などがあります。<br/><br/>SQL Database サーバーに再接続すると自動的に、正常なデータベースのコピーに接続されます。アプリケーションでエラー 40197 をキャッチし、メッセージに埋め込まれているエラー コード (%d) をログに記録してトラブルシューティングに備えたうえで、リソースが復旧して接続が再度確立されるまで SQL Database への再接続を試みる必要があります。|
-|40501|20|サービスは現在ビジー状態です。10 秒後に要求を再試行してください。インシデント ID: %ls。コード: %d。<br/><br/>*注:* このエラーの詳細および解決方法については、次のページを参照してください。<br/>• [Azure SQL Database の調整](http://msdn.microsoft.com/library/azure/dn338079.aspx)
+|40501|20|サービスは現在ビジー状態です。10 秒後に要求を再試行してください。インシデント ID: %ls。コード: %d.<br/><br/>*注記:* 一般的な情報は、「<br/>• [Azure SQL Database のリソース制限](sql-database-resource-limits.md)」を参照してください。
 |40613|17|サーバー '%.&#x2a;ls' のデータベース '%.&#x2a;ls' は現在使用できません。後で接続を再試行してください。問題が解決しない場合は、'%.&#x2a;ls' のセッション トレース ID を控えてカスタマー サポートに問い合わせてください。|
 |49918|16|要求を処理できません。要求を処理するためのリソースが不足しています。<br/><br/>サービスは現在ビジー状態です。後で要求を再試行してください。 |
 |49919|16|要求を処理、作成、更新できません。サブスクリプション "%ld" に対して実行中の作成または更新の操作が多すぎます。<br/><br/>サービスは、サブスクリプションまたはサーバーに対する複数の作成要求または更新要求の処理でビジー状態です。現在、要求はリソースの最適化のためにブロックされています。クエリ [sys.dm\_operation\_stats](https://msdn.microsoft.com/library/dn270022.aspx) を実行して保留中の操作を確認します。保留中の作成要求または更新要求が完了するまで待つか、いずれかの保留中の要求を削除して後で要求を再試行します。 |
@@ -70,7 +88,7 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 ## データベース コピー エラー
 
 
-以下の表は、Azure SQL Database でデータベースをコピーするときに発生する可能性のある各種エラーの一覧です。詳細については、「[Azure SQL Database でのデータベースのコピー](http://msdn.microsoft.com/library/azure/ff951624.aspx)」を参照してください。
+以下の表は、Azure SQL Database でデータベースをコピーするときに発生する可能性のある各種エラーの一覧です。詳細については、「[Azure SQL Database のコピー](sql-database-copy.md)」を参照してください。
 
 
 |エラー番号|重大度|説明|
@@ -107,13 +125,13 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 **ヒント:** 次のリンク先には、このセクションで取り上げた大半またはすべてのエラーに共通する情報が記載されています。
 
 
-- [Azure SQL Database のリソース制限](http://msdn.microsoft.com/library/azure/dn338081.aspx)。
+- [Azure SQL Database のリソース制限](sql-database-resource-limits.md)
 
 
 |エラー番号|重大度|説明|
 |---:|---:|:---|
-|10928|20|リソース ID: %d。データベースの %s 制限の %d に達しました。詳細については、[http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) を参照してください。<br/><br/>リソース ID は、制限に達したリソースを示します。ワーカー スレッドの場合、リソース ID = 1 となります。セッションの場合、リソース ID = 2 となります。<br/><br/>*注:* このエラーの詳細および解決方法については、次のページを参照してください。<br/>• [Azure SQL Database リソース ガバナンス](http://msdn.microsoft.com/library/azure/dn338078.aspx) |
-|10929|20|リソース ID: %d。%S の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。詳細については、[http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) を参照してください。それ以外の場合は、後でもう一度お試しください。<br/><br/>リソース ID は、制限に達したリソースを示します。ワーカー スレッドの場合、リソース ID = 1 となります。セッションの場合、リソース ID = 2 となります。<br/><br/>*注:* このエラーの詳細および解決方法については、次のページを参照してください。<br/>• [Azure SQL Database リソース ガバナンス](http://msdn.microsoft.com/library/azure/dn338078.aspx)|
+|10928|20|リソース ID: %d。データベースの %s 制限の %d に達しました。詳細については、[http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) を参照してください。<br/><br/>リソース ID は、制限に達したリソースを示します。ワーカー スレッドの場合、リソース ID = 1 となります。セッションの場合、リソース ID = 2 となります。<br/><br/>*注:* このエラーの詳細および解決方法については、「<br/>• [Azure SQL Database のリソース制限](sql-database-resource-limits.md)」を参照してください。 |
+|10929|20|リソース ID: %d。%S の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。詳細については、[http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) を参照してください。それ以外の場合は、後でもう一度お試しください。<br/><br/>リソース ID は、制限に達したリソースを示します。ワーカー スレッドの場合、リソース ID = 1 となります。セッションの場合、リソース ID = 2 となります。<br/><br/>*注:* このエラーの詳細および解決方法については、「<br/>• [Azure SQL Database のリソース制限](sql-database-resource-limits.md)」を参照してください。|
 |40544|20|データベースのサイズ クォータに達しました。データをパーティション分割するか、データを削除するか、インデックスを削除してください。その他の解決方法についてはドキュメントを参照してください。|
 |40549|16|トランザクションが長時間実行されているため、セッションを終了しました。トランザクションを短くしてください。|
 |40550|16|取得したロックの数が多すぎるため、セッションを終了しました。1 つのトランザクションで読み取る行または変更する行の数を減らしてください。|
@@ -125,7 +143,7 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 リソースのガバナンスおよび関連するエラーの詳細については、以下のページを参照してください。
 
 
-- [Azure SQL Database リソース ガバナンス](http://msdn.microsoft.com/library/azure/dn338078.aspx)
+- [Azure SQL Database のリソース制限](sql-database-resource-limits.md)。
 
 
 <a id="bkmk_d_federation_errors" name="bkmk_d_federation_errors">&nbsp;</a>
@@ -133,14 +151,14 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 ## フェデレーション エラー
 
 
-以下の表は、フェデレーションの処理中に発生する可能性のあるエラーの一覧です。詳細については、「[データベース フェデレーションの管理 (Azure SQL Database)](http://msdn.microsoft.com/library/azure/hh597455.aspx)」をご覧ください。
+以下の表は、フェデレーションの処理中に発生する可能性のあるエラーの一覧です。
 
 
 > [AZURE.IMPORTANT]現在のフェデレーションの実装は、Web 階層および Business サービス階層と共に廃止される予定です。バージョン V12 の Azure SQL Database では、Web 階層と Business サービス階層がサポートされません。
 > 
 > Elastic Scale 機能は、シャーディング アプリケーションを最小限の手間で作成することを目的に設計されています。
 > 
-> Elastic Scale の詳細については、「[Azure SQL Database Elastic Scale のトピック](sql-database-elastic-scale-documentation-map.md)」をご覧ください。スケーラビリティ、柔軟性、パフォーマンスを最大限に高めるために、カスタム シャーディング ソリューションのデプロイを検討してください。カスタム シャーディングの詳細については、「[Azure SQL Database のスケール アウト](http://msdn.microsoft.com/library/azure/dn495641.aspx)」をご覧ください。
+> Elastic Scale の詳細については、「[Azure SQL Database Elastic Scale のトピック](sql-database-elastic-scale-documentation-map.md)」をご覧ください。スケーラビリティ、柔軟性、パフォーマンスを最大限に高めるために、カスタム シャーディング ソリューションのデプロイを検討してください。カスタム シャーディングの詳細については、「[Elastic Database 機能の概要](sql-database-elastic-scale-introduction.md)」をご覧ください。
 
 
 |エラー番号|重大度|説明|対応策|
@@ -247,7 +265,7 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 
 ## 関連リンク
 
-- [Azure SQL Database の一般的なガイドラインと制限事項](http://msdn.microsoft.com/library/azure/ee336245.aspx)
-- [リソース管理](http://msdn.microsoft.com/library/azure/dn338083.aspx)
+- [Azure SQL Database の一般的な制限事項とガイドライン](sql-database-general-limitations.md)
+- [Azure SQL Database のリソース制限](sql-database-resource-limits.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Microsoft Azure Service Fabric の Reliable Service の概要"
-   description="ステートレス サービスとステートフル サービスを使用して Service Fabric アプリケーションを作成する方法。"
+   pageTitle="Reliable Service の概要 | Microsoft Azure"
+   description="ステートレス サービスとステートフル サービスを使用して Microsoft Azure Service Fabric アプリケーションを作成する方法。"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/23/2015"
+   ms.date="10/15/2015"
    ms.author="vturecek"/>
 
 # Microsoft Azure Service Fabric の Reliable Service の概要
 
-Service Fabric アプリケーションには、コードを実行する 1 つ以上のサービスが含まれています。このチュートリアルでは、[*Reliable Service* プログラミング モデル](../Service-Fabric/service-fabric-reliable-services-introduction.md)を使用してステートレスとステートフルの両方の「Hello World」Service Fabric アプリケーションを作成する手順を説明します
+Service Fabric アプリケーションには、コードを実行する 1 つ以上のサービスが含まれています。このチュートリアルでは、[*Reliable Service* プログラミング モデル](service-fabric-reliable-services-introduction.md)を使用してステートレスとステートフルの両方の「Hello World」Service Fabric アプリケーションを作成する手順を説明します
 
 ステートレス サービスは、現在ほとんどのクラウド アプリケーションに含まれるサービスの種類です。確実に格納しなければならいデータや可用性を高めなければならないデータがサービス自体に含まれない場合、サービスはステートレスだと考えられます。つまり、ステートレス サービスのインスタンスがシャットダウンした場合、その内部状態はすべて失われてしまうということです。これらの種類のサービスで、状態の高可用性と高い信頼性を実現するには、Azure テーブルや SQL データベースなどの外部ストアに状態を格納する必要があります。
 
@@ -204,4 +204,4 @@ Reliable Collection には、LINQ など、`System.Collections.Generic` およ�
 
 [Reliable Service の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

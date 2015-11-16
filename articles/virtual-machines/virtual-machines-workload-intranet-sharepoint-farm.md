@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
+	ms.date="10/29/2015"
 	ms.author="josephd"/>
 
 # Azure インフラストラクチャ サービスのワークロード: イントラネット SharePoint ファーム
@@ -48,9 +48,9 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 
 ### クラウド専用仮想ネットワーク
 
-クラウド専用仮想ネットワークは、オンプレミス ネットワークに接続されていません。基本的な、または高可用な SharePoint ファームをすばやく作成する場合は、「[SharePoint サーバー ファーム](virtual-machines-sharepoint-farm-azure-preview.md)」を参照してください。基本的な SharePoint ファームの構成例を次に示します。
+クラウド専用仮想ネットワークは、オンプレミス ネットワークに接続されていません。基本的な、または高可用な SharePoint ファームをすばやく作成する場合は、「[SharePoint サーバー ファームの作成](virtual-machines-sharepoint-farm-azure-preview.md)」を参照してください。基本的な SharePoint ファームの構成例を次に示します。
 
-![](./media/virtual-machines-workload-intranet-sharepoint-farm/SPFarm_Basic.png)
+![](./media/virtual-machines-workload-intranet-sharepoint-farm/Non-HAFarm.png)
 
 ### クロスプレミス仮想ネットワーク
 
@@ -128,4 +128,4 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

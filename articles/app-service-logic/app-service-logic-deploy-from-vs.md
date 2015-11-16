@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/15/2015"
+	ms.date="10/29/2015"
 	ms.author="stepsic"/>
 	
 # Visual Studio からのデプロイ
@@ -65,4 +65,4 @@
 
 Visual Studio は使用しないが、ソース管理からロジック アプリをデプロイするツールを使用する場合は、[API](https://msdn.microsoft.com/library/azure/dn948510.aspx) または [PowerShell](../powershell-azure-resource-manager.md) を直接使用してデプロイを自動化できます。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

@@ -1,10 +1,10 @@
 <properties 
-    pageTitle="Elastic Database 分割/マージ ツールを使用したスケーリング" 
+    pageTitle="Elastic Database 分割/マージ ツールを使用したスケーリング | Microsoft Azure" 
     description="Elastic Database API を使用して、シャードを操作し、自己ホスト サービス経由でデータを移動する方法について説明します。" 
     services="sql-database" 
     documentationCenter="" 
     manager="jeffreyg" 
-    authors="sidneyh"/>
+    authors="ddove"/>
 
 <tags 
     ms.service="sql-database" 
@@ -12,14 +12,16 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="07/29/2015" 
-    ms.author="sidneyh" />
+    ms.date="11/04/2015" 
+    ms.author="ddove;sidneyh" />
 
 # Elastic Database 分割/マージ ツールを使用したスケーリング
 
-シャードレット (テナント) ごとに個々のデータベースを割り当てるという単純なモデルを使用しない場合、アプリケーションでは、容量のニーズが変動したときに複数のデータベースにデータを柔軟に再分散することが必要な場合があります。Elastic Database ツールには、お客様側でホストされる分割/マージ ツールが含まれています。このツールは、データ分散の再調整を行い、シャード化されたアプリケーションのホット スポットを管理します。この機能は、異なるデータベース間で必要に応じてシャードレットを移動するための基になる機能の上に構築され、シャード マップの管理と統合して一貫したマッピングを保持します。
+[Elastic Database ツール](sql-database-elastic-scale-introduction.md)には、データ分散の再調整を行い、シャード化されたアプリケーションのホット スポットを管理するためのツールが含まれています。**split-merge ツール**は、スケールインとスケールアウトを管理します。データベースをシャード セットに追加またはシャードセットから削除し、分割/マージ ツールを使用して、それらの間のシャードレットの分散状態を再調整できます (用語の定義については、「[Elastic Scale 用語集](sql-database-elastic-scale-glossary.md)」をご覧ください)。
 
-Split-Merge ツールは、スケールインとスケールアウトを管理します。データベースをシャード セットに追加またはシャードセットから削除し、Split-Merge ツールを使用して、それらの間のシャードレットの分散状態を再調整できます (用語の定義については、「[Elastic Scale 用語集](sql-database-elastic-scale-glossary.md)」をご覧ください)。
+このツールは異なるデータベース間で必要に応じてシャードレットを移動し、[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)と統合して一貫したマッピングを保持します。
+
+開始するには、「[Elastic Database 分割/マージ ツール](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」を参照してください。
 
 ## Split/Merge の新機能
 
@@ -29,8 +31,6 @@ Split-Merge ツールは、スケールインとスケールアウトを管理�
 
 ## アップグレードする方法
 
-Split/Merge の最新バージョンにアップグレードするには、次の手順に従います。
-
 1. 「[Split-Merge パッケージのダウンロード](sql-database-elastic-scale-configure-deploy-split-and-merge.md#download-the-Split-Merge-packages)」の説明に従って、NuGet から Split-Merge パッケージの最新バージョンをダウンロードします。
 2. Split/Merge のデプロイ用のクラウド サービス構成ファイルを変更して、新しい構成パラメーターを反映します。新しい必須のパラメーターは、暗号化に使用される証明書に関する情報です。これを簡単に行うには、ダウンロードした新しい構成テンプレート ファイルを既存の構成と比較します。Web ロールと worker ロールの「DataEncryptionPrimaryCertificateThumbprint」と「DataEncryptionPrimary」に、必ず設定を追加するようにしてください。
 3. Azure に更新をデプロイする前に、現在実行中のすべての Split/Merge 操作が完了していることを確認します。これは、実行中の要求の Split/Merge メタデータのデータベースで RequestStatus と PendingWorkflows テーブルを照会することで簡単に行えます。
@@ -39,6 +39,7 @@ Split/Merge の最新バージョンにアップグレードするには、次�
 アップグレードするために Split/Merge の新しいメタデータ データベースをプロビジョニングする必要はありません。新しいバージョンは、既存のメタデータ データベースを新しいバージョンに自動的にアップグレードします。
 
 ## Split/Merge のシナリオ 
+
 アプリケーションは、次のシナリオで示すように、単一の Azure SQL DB データベースの制限を超えて柔軟に拡張できる必要があります。
 
 * **容量の拡張 - 範囲の分割**: データ層の合計容量を拡張できる能力は、容量の拡張ニーズに対応します。このシナリオでは、アプリケーションは、容量ニーズを満たすために、データをシャーディングし、データを分散するデータベースの数を段階的に増やすことによって追加の容量を確保します。このシナリオに対しては、Elastic Scale の Split/Merge サービスの "分割" 機能を使用して対処できます。 
@@ -168,7 +169,7 @@ Split/Merge サービスでは、完了した要求と実行中の要求を監�
 
 ### Azure 診断
 
-Split/Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure 診断を使用します。「[Azure Cloud Services および Virtual Machines の診断機能](../cloud-services-dotnet-diagnostics.md)」で説明したように、診断構成を制御します。ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。サービスのこれらの診断構成は、「[Microsoft Azure のクラウド サービスの基礎](https://code.msdn.microsoft.com/windowsazure/Cloud-Service-Fundamentals-4ca72649)」のガイダンスに従っています。これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split/Merge アプリケーション イベント ログを記録するための定義が含まれます。
+Split/Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure 診断を使用します。「[Azure の Cloud Services および Virtual Machines の診断機能](../cloud-services-dotnet-diagnostics.md)」で説明したように、診断構成を制御します。ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。サービスのこれらの診断構成は、「[Microsoft Azure のクラウド サービスの基礎](https://code.msdn.microsoft.com/windowsazure/Cloud-Service-Fundamentals-4ca72649)」のガイダンスに従っています。これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split/Merge アプリケーション イベント ログを記録するための定義が含まれます。
 
 ## 診断のデプロイ 
 
@@ -194,11 +195,11 @@ NuGet パッケージで提供される Web ロール用と worker ロール用�
     
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker" 
 
-診断設定を構成してデプロイする方法の詳細については、「[Azure Cloud Services および Virtual Machines の診断機能](../cloud-services-dotnet-diagnostics.md)」をご覧ください。
+診断設定を構成してデプロイする方法の詳細については、「[Azure の Cloud Services および Virtual Machines の診断機能](../cloud-services-dotnet-diagnostics.md)」をご覧ください。
 
 ## 診断の取得 
 
-診断には、Visual Studio サーバー エクスプローラーのサーバー エクスプローラー ツリーの Azure の部分から簡単にアクセスできます。Visual Studio インスタンスを開き、メニュー バーで [ビュー]、[サーバー エクスプローラー] の順にクリックします。Azure のアイコンをクリックして Azure サブスクリプションに接続します。次に、Azure、[ストレージ]、[<your storage account>]、[テーブル]、[WADLogsTable] の順に移動します。詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)」をご覧ください。
+診断には、Visual Studio サーバー エクスプローラーのサーバー エクスプローラー ツリーの Azure の部分から簡単にアクセスできます。Visual Studio インスタンスを開き、メニュー バーで [ビュー]、[サーバー エクスプローラー] の順にクリックします。Azure のアイコンをクリックして Azure サブスクリプションに接続します。次に、Azure、[Storage]、[<your storage account>]、[テーブル]、[WADLogsTable] の順に移動します。詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)」をご覧ください。
 
 ![WADLogsTable][2]
 
@@ -238,4 +239,4 @@ NuGet パッケージで提供される Web ロール用と worker ロール用�
 [3]: ./media/sql-database-elastic-scale-overview-split-and-merge/diagnostics-config.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

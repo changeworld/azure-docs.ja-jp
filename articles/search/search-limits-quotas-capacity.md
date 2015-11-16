@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Search サービスの制限 | Microsoft Azure"
-	description="容量計画で使用される Azure Search の制限と要求数および応答数の上限。"
+	description="容量計画で使用されるサービス上限とホスト型クラウド検索サービスである Azure Search の要求と応答の上限。"
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="08/18/2015"
+	ms.date="11/04/2015"
 	ms.author="heidist"/>
 
 # Azure Search サービスの制限
@@ -39,6 +39,7 @@ Azure サブスクライバーは、開発またはごく小規模な検索ア�
 インデクサーの最大数|3
 インデクサー データ ソースの最大数|3
 インデクサー呼び出しあたりのインデックスされたドキュメントの最大数|10,000
+インデクサーの最大実行時間|3 分
 
 クエリに関連付けられたクォータや上限がないことに注意してください。1 秒あたりのクエリ数 (QPS) は、利用できる帯域幅とシステム リソースの競合によって異なります。共有サービスをバックアップする Azure Compute およびストレージ リソースは複数のサブスクライバーによって共有されるため、ソリューションの QPS は、その他のいくつのワークロードが同時に実行されるかによって異なります。
 
@@ -132,4 +133,4 @@ Api キーは、サービスの認証に使用されます。次の 2 つの種�
 - 検索結果のページごとに返される最大ドキュメント数: 1,000
 - 検索候補 API 要求ごとに返される最大検索候補数: 100
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->

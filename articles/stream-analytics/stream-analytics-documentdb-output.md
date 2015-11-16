@@ -19,7 +19,7 @@
 
 # Azure Stream Analytics の出力としての DocumentDB
 
-Azure Stream Analytics では、[Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) が出力としてサポートされるようになったため、構造化されていない JSON データに対してデータ アーカイブや待機時間の少ないクエリを実行できます。このドキュメントでは、この統合を最適に実装する方法について説明します。DocumentDB を詳しく理解していない場合は、開始する前に [DocumentDB のラーニング パス](../articles/documentdb-get-started.md/)に関するページを参照してください。
+Azure Stream Analytics では、[Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) が出力としてサポートされるようになったため、構造化されていない JSON データに対してデータ アーカイブや待機時間の少ないクエリを実行できます。このドキュメントでは、この統合を最適に実装する方法について説明します。DocumentDB を詳しく理解していない場合は、開始する前に [DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)を参照してください。
 
 Stream Analytics で Azure DocumentDB 出力を使用すると、ストリーム処理の結果を DocumentDB コレクションに書き込むことができます。Stream Analytics は、データベース内にコレクションを作成せず、代わりにユーザーが前もってコレクションを作成するように要求します。これは、DocumentDB コレクションの課金によるコストをユーザーに対して透明化し、コレクションのパフォーマンス、一貫性、容量などを [DocumentDB API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用して直接調整できるようにするためです。ストリーミング ジョブのコレクションを論理的に分離するには、ストリーミング ジョブごとに 1 つの DocumentDB データベースを使用することをお勧めします。
 
@@ -59,4 +59,4 @@ Stream Analytics で DocumentDB を出力として作成すると、以下に示
 -   **パーティション キー** – コレクション間で出力をパーティション分割するためのキーの指定に使用される、出力イベント内のフィールドの名前。コレクションの出力が 1 つの場合は、PartitionId など、任意の出力列を使用できます。  
 -   **Document ID** – 省略可能です。挿入操作または更新操作の基準となるプライマリ キーを指定するために使用される、出力イベント内のフィールドの名前。  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

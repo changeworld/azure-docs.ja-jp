@@ -41,9 +41,9 @@
 
 仮想マシンを仮想ネットワークで接続する方法:
 
-1.	[Azure ポータル](http://manage.windowsazure.com)で仮想ネットワークを作成します。詳細については、「[Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)」を参照してください。
-2.	デプロイで可用性セットと負荷分散用の設計を反映させるため、クラウド サービスのセットを作成します。ポータルで、各クラウド サービスについて **[新規]、[コンピューティング]、[クラウド サービス]、[カスタム作成]** の順にクリックします。
-3.	新しい仮想マシンを作成するには、それぞれについて **[新規]、[コンピューティング]、[仮想マシン]、[ギャラリーから]** の順にクリックします。VM の適切なクラウド サービスと仮想ネットワークを選択します。仮想ネットワークに既に参加しているクラウド サービスがある場合、その名前が既定で選択されます。
+1.	[Azure プレビュー ポータル](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md)で仮想ネットワークを作成します。
+2.	デプロイで可用性セットと負荷分散用の設計を反映させるため、クラウド サービスのセットを作成します。ポータルで、各クラウド サービスについて **[新規]、[Compute]、[クラウド サービス]、[カスタム作成]** の順にクリックします。
+3.	新しい仮想マシンを作成するには、それぞれについて **[新規]、[Compute]、[仮想マシン]、[ギャラリーから]** の順にクリックします。VM の適切なクラウド サービスと仮想ネットワークを選択します。仮想ネットワークに既に参加しているクラウド サービスがある場合、その名前が既定で選択されます。
 
 ![仮想マシン向けのクラウド サービスの選択](./media/howto-connect-vm-cloud-service/VMConfig1.png)
 
@@ -59,7 +59,7 @@
 
 [仮想マシンの可用性管理](../articles/manage-availability-virtual-machines.md)
 
-[仮想ネットワークの構成タスク](../documentation/services/virtual-machines/)
+[Virtual Network の構成タスク](../documentation/services/virtual-machines/)
 
 仮想マシンを作成したら、サービスやワークロードがデータを格納するための場所として、データ ディスクを追加することをお勧めします。次を参照してください。
 
@@ -67,4 +67,4 @@
 
 [データ ディスクを Windows 仮想マシンに接続する方法](../articles/virtual-machines/storage-windows-attach-disk.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO2-->

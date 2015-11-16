@@ -1,6 +1,6 @@
 <properties
-   pageTitle="F5 キーを使用した Visual Studio での Service Fabric アプリケーションのデバッグ"
-   description="Visual Studio とローカル開発クラスターを使用して、サービスの信頼性とパフォーマンスを改善する。"
+   pageTitle="Visual Studio でアプリケーションをデバッグする | Microsoft Azure"
+   description="Visual Studio とローカル開発クラスターを使用してサービスを開発し、デバッグし、サービスの信頼性とパフォーマンスを改善する。"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/26/2015"
+   ms.date="10/15/2015"
    ms.author="jesseb"/>
 
-# F5 キーを使用した Visual Studio での Service Fabric アプリケーションのデバッグ
+# Visual Studio による Service Fabric アプリケーションのデバッグ
 
 ローカル コンピューターの開発クラスターで Service Fabric アプリケーションをデプロイしデバッグすることにより、時間と費用を節約できます。Visual Studio では、アプリケーションをローカル クラスターにデプロイして、アプリケーションのすべてのインスタンスにデバッガーを自動的に接続できます。
 
@@ -66,4 +66,4 @@
 [breakpoint]: ./media/service-fabric-debugging-your-application/breakpoint.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO2-->

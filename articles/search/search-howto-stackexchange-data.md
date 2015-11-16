@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Search を使用して StackExchange のデータを検索する方法 | Microsoft Azure"
-	description="Azure Search 使用して REST 検索を実行する方法について説明します。"
+	description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search を利用し、REST 検索を実行する方法について説明します。"
 	services="search"
 	documentationCenter=""
 	authors="liamca"
@@ -13,7 +13,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="10/15/2015"
+	ms.date="11/04/2015"
 	ms.author="liamca"/>
 
 # Azure Search を使用して StackExchange のデータを検索する方法
@@ -65,7 +65,7 @@
 
 ## この Azure Search インデックスの作成方法
 
-Brent は、SQL データベースにデータをステージングする方法を示すことで、面倒な作業の多くを既に行いました。ご自身でこのプロセスを実行してデータをステージングする場合は、[こちらのチュートリアル](http://www.brentozar.com/archive/2014/01/how-to-query-the-stackexchange-databases/)をご確認ください。それ以外の場合は、2015 年 10 月 15 日以降に、一部のデータが事前に設定された Azure SQL データベースをご利用いただくか、ここで作成した Azure Search インデックスをお試しいただくことができます。この詳細については、ステージングされた Azure SQL データベースからのデータのインポートに関するセクションで後述します。ここでは、Brent が説明した以外に、Azure SQL データベースにビューを作成しただけです。これは、使用するテーブルのグループからデータをクロールして取り込むために、[Azure Search Indexer](https://msdn.microsoft.com/library/azure/dn946891.aspx) で使用されます。このビューがどのように定義されているかを次に示します。
+Brent は、SQL データベースにデータをステージングする方法を示すことで、面倒な作業の多くを既に行いました。ご自身でこのプロセスを実行してデータをステージングする場合は、[こちらのチュートリアル](http://www.brentozar.com/archive/2014/01/how-to-query-the-stackexchange-databases/)をご確認ください。それ以外の場合は、2015 年 10 月 15 日以降に、一部のデータが事前に設定された Azure SQL データベースをご利用いただくか、ここで作成した Azure Search インデックスをお試しいただくことができます。この詳細については、ステージングされた Azure SQL Database からのデータのインポートに関するセクションで後述します。ここでは、Brent が説明した以外に、Azure SQL データベースにビューを作成しただけです。これは、使用するテーブルのグループからデータをクロールして取り込むために、[Azure Search Indexer](https://msdn.microsoft.com/library/azure/dn946891.aspx) で使用されます。このビューがどのように定義されているかを次に示します。
 
     CREATE VIEW StackExchangeSearchData as
     SELECT
@@ -109,4 +109,4 @@ Brent は、SQL データベースにデータをステージングする方法�
     Server=tcp:azs-playground.database.windows.net,1433;Database=StackExchange;User ID=reader@azs-playground;
     Password=EdrERBt3j6mZDP;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO2-->
