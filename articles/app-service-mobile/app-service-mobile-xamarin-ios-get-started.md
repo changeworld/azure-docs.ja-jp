@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="08/12/2015"
+	ms.date="11/03/2015"
 	ms.author="normesta"/>
 
 
@@ -118,4 +118,4 @@
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
 [Windows への Xamarin.iOS のインストール]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

@@ -38,7 +38,7 @@
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-[Azure PowerShell を使用した Windows ベース仮想マシンの作成と管理](virtual-machines-create-windows-powershell-service-manager.md)
+[Powershell とクラシック デプロイ モデルを使用して Windows 仮想マシンを作成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
 [Azure Command-Line Interface (Azure CLI) を使用して、Linux を実行するカスタム VM を作成する](virtual-machines-linux-create-custom.md)
 
@@ -152,4 +152,4 @@
 
 [サービス管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/ee460799.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

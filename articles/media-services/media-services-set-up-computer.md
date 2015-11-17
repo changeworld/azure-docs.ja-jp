@@ -28,8 +28,6 @@
 
 Azure Media Services アカウントを作成するには、Azure ポータル、.NET SDK、または REST API を使用します。
 
-
-
 <a id="setup_dev_env"></a>
 ## 開発環境を設定する  
 
@@ -45,11 +43,12 @@ Azure Media Services アカウントを作成するには、Azure ポータル�
 [AZURE.INCLUDE [media-services-selector-connect](../../includes/media-services-selector-connect.md)]
 
 
-##次のステップ: AMS ラーニング パス
+##次のステップ: Azure Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
 
-<!---HONumber=Oct15_HO3-->
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
+<!---HONumber=Nov15_HO3-->

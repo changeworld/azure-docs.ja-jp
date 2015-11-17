@@ -43,13 +43,13 @@
 
 #### Visual Studio プロジェクトの作成 
 1. **Visual Studio 2013** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。  
-2. **[新しいプロジェクト]** ダイアログで、**[DataFactory]** テンプレートを選択し、**[空の Data Factory プロジェクト]** をクリックします。DataFactory テンプレートが表示されない場合は、Visual Studio を終了し、Azure SDK for Visual Studio 2013 をインストールし、Visual Studio を再度開きます。  
+2. **[新しいプロジェクト]** ダイアログ ボックスで、**[DataFactory]** テンプレートを選択し、**[Empty Data Factory Project]** をクリックします。DataFactory テンプレートが表示されない場合は、Visual Studio を終了し、Azure SDK for Visual Studio 2013 をインストールし、Visual Studio を再度開きます。  
 
-	![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-get-started-using-vs/new-project-dialog.png)
+	![New Project dialog box](./media/data-factory-get-started-using-vs/new-project-dialog.png)
 
-3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
+3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力して、**[OK]** をクリックします。
 
-	![ソリューション エクスプローラー](./media/data-factory-get-started-using-vs/solution-explorer.png)
+	![Solution Explorer](./media/data-factory-get-started-using-vs/solution-explorer.png)
 
 #### リンクされたサービスの作成
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。
@@ -63,7 +63,7 @@
 
 	![新規のリンクされたサービス](./media/data-factory-get-started-using-vs/new-linked-service-dialog.png)
  
-3. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とそのキーで置き換えます。
+3. **accountname** と **accountkey** を Azure ストレージ アカウントとそのキーで置き換えます。
 
 	![Azure Storage のリンクされたサービス](./media/data-factory-get-started-using-vs/azure-storage-linked-service.png)
 
@@ -211,7 +211,7 @@
 	1. **[Data Factory の新規作成]** オプションを選択します。
 	2. **[名前]** に「**VSTutorialFactory**」と入力します。  
 	
-		> [AZURE.NOTE]Azure Data Factory の名前はグローバルに一意にする必要があります。発行時にデータ ファクトリの名前に関するエラーが発生した場合は、そのデータ ファクトリの名前を変更して (yournameVSTutorialFactory など)、発行し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
+		> [AZURE.NOTE]Azure Data Factor の名前はグローバルに一意にする必要があります。発行時にデータ ファクトリの名前に関するエラーが発生した場合は、そのデータ ファクトリの名前を変更して (yournameVSTutorialFactory など)、発行し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
 		> 
 		> データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 	3. **[サブスクリプション]** フィールドで適切なサブスクリプションを選択します。 
@@ -240,8 +240,4 @@ Visual Studio の Azure Data Factory ツールを更新するには、次のよ�
 
 Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、「[データセットとパイプラインを監視する](data-factory-get-started-using-editor.md#MonitorDataSetsAndPipeline)」を参照してください。
 
-
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-get-started-using-vs.md)でフィードバックをお寄せください。
-
-<!-----HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

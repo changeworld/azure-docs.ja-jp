@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Search で Chrome Postman を使用する | Microsoft Azure"
+	pageTitle="Azure Search での Chrome Postman の使用 | Microsoft Azure | ホステッド クラウド検索サービス"
 	description="ホステッド クラウド検索サービスである Azure Search で Chrome Postman をします。Postman をインストールおよび構成するAzure Search インデックスを作成する。Postman を使用してドキュメントをインデックスにポストし、インデックスに対してクエリを実行します。"
 	services="search"
 	documentationCenter=""
@@ -14,10 +14,16 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/04/2015"
+	ms.date="11/10/2015"
 	ms.author="heidist"/>
 
 # Azure Search で Chrome Postman を使用する方法 #
+> [AZURE.SELECTOR]
+- [Overview](search-query-overview.md)
+- [Fiddler](search-fiddler.md)
+- [Postman](search-chrome-postman.md)
+- [.NET](search-query-dotnet.md)
+- [REST](search-query-rest-api.md)
 
 [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm "Chrome Postman") は、開発者が Azure Search などの REST ベースの API サービスで効率的に作業できるように、Google Chrome の一部として提供されるツールです。Postman を使用すれば、コードを記述しなくても、Postman を介して API 呼び出しを送信することによって検索インデックスの作成および検索インデックスに対するクエリを容易に実行することができます。この方法では、API について効率的に学習し、新しい機能を試すことができます。
 
@@ -118,4 +124,4 @@ REST API のドキュメントは、[MSDN](https://msdn.microsoft.com/library/az
 [5]: ./media/search-chrome-postman/upload_documents.png
 [6]: ./media/search-chrome-postman/query.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

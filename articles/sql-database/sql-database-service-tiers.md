@@ -13,7 +13,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="11/03/2015"
+	ms.date="11/10/2015"
 	ms.author="jroth"/>
 
 # SQL Database のサービス階層
@@ -35,7 +35,7 @@ Basic、Standard、および Premium のサービス階層は、いずれも稼�
 ### 単一のデータベースのサービス階層
 単一のデータベースの場合、各サービス階層内に複数のパフォーマンス レベルがあるため、ワークロードのニーズに最も合ったレベルを柔軟に選択できます。スケールアップまたはスケールダウンする必要がある場合は、Azure ポータルでデータベースの階層を簡単に変更することができます。このときアプリケーションのダウンタイムはありません。詳細については、「[データベースのサービス階層とパフォーマンス レベルの変更](sql-database-scale-up.md)」を参照してください。
 
-ここに示されたパフォーマンス特性は、[SQL Database V12](sql-database-v12-whats-new.md) を使用して作成したデータベースに適用されます。
+ここに示されたパフォーマンス特性は、[SQL Database V12](sql-database-v12-whats-new.md) を使用して作成したデータベースに適用されます。Azure 内の基になるハードウェアに複数の SQL データベースをホストする場合も、データベースは、所定のリソースを取得します。個々のデータベースの期待されるパフォーマンス特性には影響しません。
 
 [AZURE.INCLUDE [SQL DB のサービス階層表](../../includes/sql-database-service-tiers-table.md)]
 
@@ -88,11 +88,11 @@ SQL Database のパフォーマンスの監視は、データベースに選択�
 エラスティック データベース プールでは、このセクションで説明した手法を使用して、プール内の個々のデータベースを監視することができます。ただし、プールを全体として監視することもできます。詳細については、「[エラスティック データベース プールの監視と管理](sql-database-elastic-pool-portal.md#monitor-and-manage-an-elastic-database-pool)」を参照してください。
 
 ## 次のステップ
-これらの階層の価格の詳細については、「[SQL Database の価格](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
+これらの階層の価格の詳細については、「[SQL Database 料金](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 
 複数のデータベースをグループとして管理する必要がある場合は、[エラスティック データベース プール](sql-database-elastic-pool-guidance.md)と、これに関連する[エラスティック データベース プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)を検討してください。
 
 SQL Database の階層については、これで理解できました。では、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)で実際に試してみましょう。また、[初めて SQL Database を作成する方法](sql-database-get-started.md)について詳しく学びましょう。
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

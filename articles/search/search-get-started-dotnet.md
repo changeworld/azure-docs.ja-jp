@@ -1,5 +1,5 @@
 <properties
-	pageTitle=".NET での Azure Search アプリケーションの初めての使用 | Microsoft Azure"
+	pageTitle=".NET での Azure Search アプリケーションの初めての使用 | Microsoft Azure | ホスト型クラウド検索サービス"
 	description="Azure Search .NET SDK の .NET クライアント ライブラリを使用して Visual Studio ソリューションをビルドする方法についてのチュートリアルです。"
 	services="search"
 	documentationCenter=""
@@ -794,4 +794,4 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [11]: ./media/search-get-started-dotnet/AzSearch-DotNet-NuGet-1.PNG
 [12]: ./media/search-get-started-dotnet/AzSearch-DotNet-NuGet-2.PNG
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

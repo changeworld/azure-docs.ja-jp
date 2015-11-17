@@ -32,7 +32,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 このトピックには、保護されたメディアを配信するアプリケーションの開発に取り組む開発者にとって有用な情報が含まれています。このトピックでは、認証ポリシーを使用するキー配信サービスの構成方法を説明します。これにより、許可されたクライアントのみが暗号化キーを受け取ることができるようになります。また、動的暗号化の使用方法についても説明します。
 
->[AZURE.NOTE]動的暗号化を使用するには、まず、スケール ユニット (ストリーミング ユニットとも呼ばれる) を少なくとも 1 つ取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
+>[AZURE.NOTE]動的暗号化を使用するには、まず、スケール ユニット (ストリーミング ユニットとも呼ばれる) を少なくとも 1 つ取得する必要があります。詳細については、[Media Services のスケールの設定方法](media-services-manage-origins.md#scale_streaming_endpoints)に関するトピックをご覧ください。
 
 ##AES-128 動的暗号化とキー配信サービスのワークフロー
 
@@ -66,7 +66,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 ビデオの管理、エンコード、およびストリーミングを行うには、最初にコンテンツを Microsoft Azure Media Services にアップロードする必要があります。コンテンツをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
-詳細については、「[Media Services アカウントへのファイルのアップロード](media-services-dotnet-upload-files.md)」を参照してください。
+詳細については、[Media Services アカウントへのファイルのアップロード](media-services-dotnet-upload-files.md)に関するページを参照してください。
 
 ##<a id="encode_asset"></a>ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードする
 
@@ -95,7 +95,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 - 資産配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはすべて)。
 - 動的暗号化の種類 (AES エンベロープなど) または動的暗号化なし。 
 
-詳細については、「[資産の配信ポリシーを構成する](media-services-rest-configure-asset-delivery-policy.md)」を参照してください。
+詳細については、[資産の配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)に関するページを参照してください。
 
 ##<a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ロケーターを作成する
 
@@ -103,7 +103,7 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 >[AZURE.NOTE]資産の配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
 
-アセットを発行し、ストリーミング URL を構築する手順については、「[Build a streaming URL (ストリーミング URL の構築)](media-services-deliver-streaming-content.md)」をご覧ください。
+資産を発行し、ストリーミング URL を構築する手順については、「[Build a streaming URL (ストリーミング URL の構築)](media-services-deliver-streaming-content.md)」をご覧ください。
 
 ##テスト トークンを取得する
 
@@ -598,9 +598,10 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
 
 ##Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
 
-<!---HONumber=Oct15_HO3-->
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
+<!---HONumber=Nov15_HO3-->

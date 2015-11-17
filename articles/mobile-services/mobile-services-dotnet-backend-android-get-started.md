@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="get-started-article"
-	ms.date="10/07/2015"
+	ms.date="11/05/2015"
 	ms.author="ricksal"/>
 
 
@@ -34,7 +34,7 @@
 
 ダウンロードしたクイック スタート プロジェクトには、Android 向けの Mobile Services SDK が含まれています。
 
-> [AZURE.IMPORTANT]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)を参照してください。
+> [AZURE.IMPORTANT]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)を参照してください。
 
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
@@ -70,7 +70,7 @@
 1. [管理ポータル]で、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
- 
+
 	![][2]
 
 3. まだインストールしていない場合は、[Android Developer Tools][Android SDK] をダウンロードしてローカル コンピューターまたは仮想マシンにインストールします。
@@ -99,7 +99,7 @@
 [Next Steps]: #next-steps
 
 <!-- Images. -->
-[88]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png
+[0]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png
 [1]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-vs-AS.png
 [2]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-android-AS.png
 
@@ -126,4 +126,4 @@
 
 [管理ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

@@ -37,7 +37,7 @@ Media Services にアクセスするには、関連付けられた次の 2 つ�
 
     > [AZURE.NOTE]利用可能な Media Services (AMS) リージョンは、北ヨーロッパ、西ヨーロッパ、米国西部、米国東部、東南アジア、東アジア、西日本、東日本です。Media Services は、アフィニティ グループを使用しません。
     >
-	> AMS は、現在、ブラジル南部、インド西部、ブラジル南部およびインド中部のデータ センターでも利用可能です。Microsoft Azure 管理ポータルを使用して、[Media Service アカウントを作成](media-services-create-account.md#create-a-media-services-account-using-quick-create)し、さまざまなタスクを実行できるようになりました ([ここ](https://azure.microsoft.com/documentation/services/media-services/)を参照)。ただし、これらのデータ センターでは Live Encoding を使用できません。また、これらのデータ センターで、すべての種類のエンコード予約ユニットを使用できるわけではありません。
+	> AMS は、現在、ブラジル南部、インド西部、ブラジル南部およびインド中部のデータ センターでも利用可能です。Microsoft Azure 管理ポータルを使用して、[Media Service アカウントを作成](media-services-create-account.md#create-a-media-services-account-using-quick-create)し、さまざまなタスクを実行できるようになりました ([ここ](https://azure.microsoft.com/documentation/services/media-services/)を参照)。ただし、これらのデータ センターでは Live Encoding は有効ではありません。また、これらのデータ センターで、すべての種類のエンコード予約ユニットを使用できるわけではありません。
 	>
 	>- ブラジル南部: Standard および Basic エンコード予約ユニットのみ使用可能
 	>- インド西部、インド南部およびインド中部: Basic エンコード予約ユニットのみ使用可能
@@ -74,18 +74,22 @@ Media Services にアクセスするには、関連付けられた次の 2 つ�
 
 	さらに、Azure Media Services SDK を使用して、ビデオのアップロード、エンコード、および発行を実行するコードを表示することもできます。**[コードを記述]** にあるリンクをクリックして、コードをコピーし、それをアプリケーションで使用できます。
 
+
+
 ##Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
+
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 
 ## 次のステップ
 
 - [.NET SDK を使用してビデオ オン デマンド (VoD) を配信する](media-services-dotnet-get-started.md)
 
-- [.NET SDK を使用して、シングル ビットレート ストリームからマルチ ビットレート ストリームへのライブ エンコーディングを実行するチャネルを作成する](media-services-dotnet-creating-live-encoder-enabled-channel.md)
+- [.NET SDK を使用して、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
 <!-- Reusable paths. -->
 
@@ -99,4 +103,4 @@ AMS のラーニング パスについては、以下を参照してください
 
   [Azure ポータル]: http://manage.windowsazure.com/
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

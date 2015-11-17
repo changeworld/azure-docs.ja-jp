@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="10/21/2015"
+	ms.date="11/03/2015"
 	ms.author="yuaxu"/>
 
 # Notification Hubs の使用
@@ -81,7 +81,7 @@
 
 3. **AppDelegate.cs** で、次の using ステートメントを追加します。
 
-    using WindowsAzure.Messaging;
+    	using WindowsAzure.Messaging;
 
 4. **SBNotificationHub** のインスタンスを宣言します。
 
@@ -98,9 +98,17 @@
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert |
-                UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
-            UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes);
+            if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
+    			var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
+                       UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
+                       new NSSet ());
+
+			    UIApplication.SharedApplication.RegisterUserNotificationSettings (pushSettings);
+			    UIApplication.SharedApplication.RegisterForRemoteNotifications ();
+			} else {
+			    UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
+			    UIApplication.SharedApplication.RegisterForRemoteNotificationTypes (notificationTypes);
+			}
 
             return true;
         }
@@ -323,4 +331,4 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 [Xamarin.iOS]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->
