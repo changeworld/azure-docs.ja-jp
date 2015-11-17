@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Search と ASP.NET MVC Web アプリの接続 | Microsoft Azure"
+	pageTitle="Azure Search と ASP.NET MVC Web アプリの接続 | Microsoft Azure | ホステッド クラウド検索サービス"
 	description="ASP.NET MVC Web アプリと、ホステッド クラウド検索サービスである Azure Search を接続します。.NET ライブラリまたは REST API を使用して接続、クエリ、結果の表示を行う方法について説明します。"
 	services="search"
 	documentationCenter=""
@@ -462,4 +462,4 @@ Azure Search と ASP.NET の統合についてさらに理解を深めるには�
 - [Azure Search 開発者向けのケース スタディ](search-dev-case-study-whattopedia.md)
 - [Azure Search 開発の一般的ワークフロー](search-workflow.md) 
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

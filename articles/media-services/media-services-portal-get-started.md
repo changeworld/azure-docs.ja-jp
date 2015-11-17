@@ -25,7 +25,7 @@
 
 このチュートリアルでは、Azure ポータルを使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について、手順を追って説明します。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -39,7 +39,7 @@
 
 ## Azure Media Services アカウントの作成
 
-1. [Azure ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[メディア サービス]**、**[簡易作成]** の順にクリックします。
+1. [Azure ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[Media Services]**、**[簡易作成]** の順にクリックします。
 
 	![Media Services の簡易作成](./media/media-services-portal-get-started/wams-QuickCreate.png)
 
@@ -93,7 +93,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 	>[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
 	>
-	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、[Media Services の料金詳細](http://go.microsoft.com/fwlink/?LinkId=275107)に関するページをご覧ください。
 
 ## コンテンツをアップロードする
 
@@ -197,7 +197,7 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) API または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
 
-### Publish
+### 発行
 
 ポータルを使用して資産を発行するには、次の操作を行います。
 
@@ -223,16 +223,15 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 
 
-##次のステップ
+##次のステップ: Media Services のラーニング パス
 
-###Media Services のラーニング パス
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-AMS のラーニング パスについては、以下を参照してください。
+##フィードバックの提供
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-### 他の情報をお探しですか。
+## 他の情報をお探しですか。
 
 このトピックに必要な情報が含まれていないか、不足しているか、あるいはニーズを満たしていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
 
@@ -261,4 +260,4 @@ AMS のラーニング パスについては、以下を参照してください
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-portal-get-started/media-services-portal-player.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

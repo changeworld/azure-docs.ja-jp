@@ -10,7 +10,7 @@
 <tags
 	ms.service="app-service-web"
 	ms.devlang="dotnet"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na" 
 	ms.date="09/15/2015"
@@ -96,4 +96,4 @@
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

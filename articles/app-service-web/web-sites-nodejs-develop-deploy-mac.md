@@ -39,9 +39,9 @@
 
 より複雑な Node.js アプリケーションを使用したチュートリアルとサンプル コード、または Azure での Node.js の使用方法に関するその他のトピックについては、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-JP/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 >
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[Azure App Service を使ってみる](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## Web アプリの作成と Git 発行の有効化
 
@@ -61,35 +61,37 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
 
 	Web アプリの URL は {name}.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
 
-5. **リソース グループ**を選択するか、新しく作成します。
+5. **[サブスクリプション]** を選択します。
+
+6. **リソース グループ**を選択するか、新しく作成します。
 
 	リソース グループの詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](../resource-group-portal.md)」を参照してください。
 
-5. **App Service プラン/場所**を選択するか、新しく作成します。
+7. **App Service プラン/場所**を選択するか、新しく作成します。
 
 	App Service プランの詳細については、[Azure App Service プランの概要](../azure-web-sites-web-hosting-plans-in-depth-overview.md)に関するページを参照してください。
 
-6. **[作成]** をクリックします。
+8. **[作成]** をクリックします。
    
 	![][portal-quick-create2]
 
 	短時間 (通常は 1 分未満) で、新しい Web アプリの作成が完了します。
 
-7. **[Web アプリ]、{作成した新しい Web アプリ}** の順にクリックします。
+9. **[Web アプリ]、{作成した新しい Web アプリ}** の順にクリックします。
 
 	![](./media/web-sites-nodejs-develop-deploy-mac/gotowebapp.png)
 
-8. **[Web アプリ]** ブレードで、**[デプロイ]** 部分をクリックします。
+10. **[Web アプリ]** ブレードで、**[デプロイ]** 部分をクリックします。
 
 	![][deployment-part]
 
-9. **[継続的なデプロイ]** ブレードで、**[ソースの選択]** をクリックします。
+11. **[継続的なデプロイ]** ブレードで、**[ソースの選択]** をクリックします。
 
-14. **[ローカル Git リポジトリ]** をクリックし、**[OK]** をクリックします。
+12. **[ローカル Git リポジトリ]** をクリックし、**[OK]** をクリックします。
 
 	![][setup-git-publishing]
 
-11. デプロイ資格情報をまだ設定していない場合は設定します。
+13. デプロイ資格情報をまだ設定していない場合は設定します。
 
 	a.[Web アプリ] ブレードで、**[設定]、[デプロイ資格情報]** の順にクリックします。
 
@@ -99,7 +101,7 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
 	
 	![](./media/web-sites-nodejs-develop-deploy-mac/setdeploycreds.png)
 
-11. [Web アプリ] ブレードで、**[設定]** をクリックし、**[プロパティ]** をクリックします。
+14. [Web アプリ] ブレードで、**[設定]** をクリックし、**[プロパティ]** をクリックします。
  
 	発行するには、リモート Git リポジトリにプッシュします。リポジトリの URL が **[GIT URL]** の下に表示されます。この URL は、チュートリアルの後半で使用します。
 
@@ -222,4 +224,4 @@ Azure で Node.js アプリケーションを開発する方法の詳細につ�
 [deployment-credentials]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-credentials.png
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

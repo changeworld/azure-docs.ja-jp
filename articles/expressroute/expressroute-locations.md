@@ -44,6 +44,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |**地理的リージョン**|**Azure リージョン**|**ExpressRoute の場所**|
 |---|---|---|---|
 |**米国政府のクラウド**|米国政府|アイオワ州、バージニア州|アッシュバーン、シカゴ|
+|**中国のクラウド**|中国|東部、北部|
 
 
 標準の ExpressRoute SKU では、地理的リージョン間の接続はサポートされていません。グローバル接続に対応するには、ExpressRoute Premium アドオンを有効にする必要があります。国内のクラウド環境には接続できません。国内のクラウド環境に接続する必要がある場合、接続プロバイダーにご相談ください。
@@ -56,7 +57,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **サービス プロバイダー** |**Microsoft Azure** | **Office 365** | **場所** |
 |-----------------------|--------------------|----------------|---------------|
 | **[Aryaka Networks](http://www.aryaka.com/)** | サポートされています | サポートされています | アムステルダム、シリコン バレー、シンガポール、ワシントン DC |
-| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | サポートされています | アムステルダム、ロンドン+、ダラス、シリコン バレー、ワシントン DC |
+| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | サポートされています | アムステルダム、ロンドン、ダラス、シリコン バレー、ワシントン DC |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** | サポートされています | サポートされています | アムステルダム、ロンドン、シリコン バレー、シンガポール、東京、ワシントン DC |
 |**China Telecom Global** | 近日対応予定 | サポートされていません | 香港+ |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | サポートされています | サポートされていません | アムステルダム、ロンドン |
@@ -93,7 +94,14 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | サポートされていません | シカゴ+、ワシントン DC |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | 近日対応予定 | サポートされていません | シカゴ+、ワシントン DC+ |
 | **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされていません | シカゴ+、ワシントン DC |
-| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | サポートされていません | シカゴ+、ワシントン DC |
+| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | サポートされていません | シカゴ、ワシントン DC |
+
+#### 中国のクラウド
+
+| **サービス プロバイダー** |**Microsoft Azure** | **Office 365** | **場所** |
+|-----------------------|--------------------|----------------|---------------|
+| **China Telecom** | サポートされています | サポートされていません | 北京、上海+|
+詳細については、[中国の ExpressRoute](http://www.windowsazure.cn/home/features/expressroute/) に関するページを参照してください。
 
 ## 一覧にないサービス プロバイダー経由の接続
 
@@ -129,4 +137,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

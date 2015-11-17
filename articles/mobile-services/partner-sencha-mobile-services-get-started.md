@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-sencha"
 	ms.devlang="multiple"
 	ms.topic="get-started-article"
-	ms.date="10/09/2015"
+	ms.date="11/06/2015"
 	ms.author="glenga"/>
 
 # <a name="getting-started"></a>Mobile Services と Sencha Touch の使用
@@ -42,6 +42,7 @@
 - [Sencha Cmd Tool](http://www.sencha.com/products/sencha-cmd/download" target="\_blank") のダウンロードとインストール。
 
 - Java Runtime Environment (JRE) または Java Development Kit (Android アプリケーションを作成している場合)。
+- Ruby と SASS gem。
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
@@ -94,7 +95,7 @@ Azure 用の拡張機能は、手動または Sencha パッケージとしてイ
 
 次の手順に従って、アプリケーションに Azure 拡張機能を手動で追加できます。
 
-1. [ここ](https://market.sencha.com/extensions/sencha-touch-extensions-for-windows-azure)から Azure 拡張機能パッケージをダウンロードします(この領域にアクセスするために Sencha Forums ID を使用できます)。
+1. [ここ](https://market.sencha.com/extensions/sencha-extensions-for-microsoft-azure)から Azure 拡張機能パッケージをダウンロードします(この領域にアクセスするために Sencha Forums ID を使用できます)。
 
 2. ダウンロード ディレクトリから最終的に配置および展開する場所に Azure 拡張機能パッケージをコピーします。
 
@@ -111,7 +112,7 @@ Azure 用の拡張機能は、手動または Sencha パッケージとしてイ
 
 Sencha Cmd によって生成されるすべてのアプリケーションで、ルートに "パッケージ" フォルダーがあります。このフォルダーの場所は構成可能ですが、その場所にかかわらず packages フォルダーの役割は、アプリケーション (または Sencha ワークスペースを作成している場合は複数のアプリケーション) によって使用されるすべてのパッケージのストレージとして機能することです。
 
-Azure は Sencha Cmd "パッケージ" であるため、ソース コードは Sencha Cmd を使用して簡単にアプリケーションにインストールし、含めることができます(詳細については、[Sencha Cmd パッケージ](http://docs.sencha.com/cmd/3.1.2/#!/guide/command_packages) を参照してください)。
+Azure は Sencha Cmd "パッケージ" であるため、ソース コードは Sencha Cmd を使用して簡単にアプリケーションにインストールし、含めることができます(詳細については、[Sencha Cmd パッケージ](http://docs.sencha.com/cmd/6.x/cmd_packages/cmd_packages.html) を参照してください)。
 
 Sencha パッケージ リポジトリから Azure 拡張機能パッケージをダウンロードおよびインストールするには、**app.json** ファイルにパッケージ名を追加し、アプリケーションをビルドする必要があります。
 
@@ -663,13 +664,13 @@ Sencha Touch ストアでは、さまざまな方法でレコードを表示す�
 
   2. Sencha Cmd を使用し、次のコマンドを実行します。
 
-    * sencha app refresh : これによって、すべてのアプリケーションの依存関係が Sencha Cmd に指示され、必要なすべてのパッケージ (たとえば [Sencha Touch Extensions for Azure](https://market.sencha.com/extensions/sencha-touch-extensions-for-windows-azure)) がダウンロードされます。
+    * sencha app refresh : これによって、すべてのアプリケーションの依存関係が Sencha Cmd に指示され、必要なすべてのパッケージ (たとえば [Sencha Touch Extensions for Azure](https://market.sencha.com/extensions/sencha-extensions-for-microsoft-azure)) がダウンロードされます。
 
     * *sencha web start* : これによって、アプリケーションをテストするローカル Web サーバーが起動します。
 
     ![Sencha Web スタート](./media/partner-sencha-mobile-services-get-started/sencha-web-start.png)
 
-  3. アプリケーションを開始するために、ターミナルに示された URL を Web ブラウザーで開きます (たとえば http://localhost:1841)http://localhost:1841)。
+  3. アプリケーションを開始するために、ターミナルに示された URL を Web ブラウザーで開きます (たとえば http://localhost:1841)。
 
   4. アプリケーションで、意味のあるテキスト (たとえば、"チュートリアルの完了") を入力し、**[Add]** をクリックします。
 
@@ -701,7 +702,7 @@ Sencha Touch ストアでは、さまざまな方法でレコードを表示す�
 ##その他のリソース
 
   * [Sencha Touch のダウンロード](http://pages.sencha.com/touch-for-azure.html)
-  * [Azure 用 Sencha Touch Extension](https://market.sencha.com/extensions/sencha-touch-extensions-for-windows-azure)
+  * [Azure 用 Sencha Touch Extension](https://market.sencha.com/extensions/sencha-extensions-for-microsoft-azure)
 
 
 ##概要
@@ -716,4 +717,4 @@ Sencha Touch のさらなる概要については、全[ガイド](http://docs.s
 <!-- images -->
 [0]: ./media/partner-sencha-mobile-services-get-started/finished-app.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

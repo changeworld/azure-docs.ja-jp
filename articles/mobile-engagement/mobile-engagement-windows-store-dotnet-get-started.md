@@ -33,7 +33,7 @@
 + Visual Studio 2013
 + [MicrosoftAzure.MobileEngagement] Nuget パッケージ
 
-> [AZURE.IMPORTANT]このチュートリアルを完了することは、Windows ユニバーサル アプリの他のすべての Mobile Engagement チュートリアルの前提条件です。このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
+> [AZURE.IMPORTANT]このチュートリアルを完了することは、Windows ユニバーサル アプリの他のすべての Mobile Engagement チュートリアルの前提条件です。このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
 
 ##<a id="setup-azme"></a>Windows ユニバーサル アプリの Mobile Engagement を設定する
 
@@ -157,15 +157,34 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 
 ###通知を送信するために Mobile Engagement へのアクセスを許可する
 
-1. アプリを Windows ストア アプリに関連付け、**パッケージ セキュリティ ID (SID)** と**シークレット キー** (クライアント シークレット) を取得する必要があります。[Windows ストア デベロッパー センター]からアプリを作成し、Visual Studio から**アプリとストアを関連付ける**ことができます。
+1. Web ブラウザーで [Windows ストア デベロッパー センター]を開き、必要に応じてログインし、アカウントを作成します。
+2. 右上隅の **[ダッシュボード]** をクリックし、左側のパネル メニューで **[新しいアプリの作成]** をクリックします。 
 
-	![][7]
+	![][9]
 
-2. Mobile Engagement ポータルの **[設定]** に移動し、左側の **[ネイティブ プッシュ]** セクションをクリックします。
+2. アプリの名前を予約して、アプリを作成します。
 
-3. **[編集]** ボタンをクリックし、以下に示すように、**パッケージ セキュリティ ID (SID)** と**シークレット キー**を入力します。
+	![][10]
+
+3. アプリが作成されたら、左側のメニューから **[サービス]、[プッシュ通知]** の順に進みます。
+
+	![][11]
+
+4. [プッシュ通知] セクションで、**Live サービス サイト**のリンクをクリックします。
+
+	![][12]
+
+5. プッシュ通知用資格情報セクションに移動します。**[アプリケーション設定]** セクションが表示されていることを確認し、**[パッケージ SID]** と **[クライアント シークレット]** をコピーします。
+
+	![][13]
+
+6. Mobile Engagement ポータルの **[設定]** に移動し、左側の **[ネイティブ プッシュ]** セクションをクリックします。次に、**[編集]** ボタンをクリックし、次に示すように、**[パッケージ セキュリティ ID (SID)]** と **[シークレット キー]** に入力します。
 
 	![][6]
+
+8. 最後に、アプリ ストアに作成されたこのアプリに Visual Studio アプリケーションが関連付けます。これを行うには、Visual Studio で **[アプリケーションをストアと関連付ける]** をクリックする必要があります。
+
+	![][7]
 
 ##<a id="send"></a>アプリへ通知を送信する
 
@@ -178,7 +197,7 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 <!-- URLs. -->
 [Mobile Engagement Windows Universal SDK documentation]: ../mobile-engagement-windows-store-integrate-engagement/
 [MicrosoftAzure.MobileEngagement]: http://go.microsoft.com/?linkid=9864592
-[Windows ストア デベロッパー センター]: http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409
+[Windows ストア デベロッパー センター]: https://dev.windows.com
 [Windows Universal Apps - Overlay integration]: ../mobile-engagement-windows-store-integrate-engagement-reach/#overlay-integration
 
 <!-- Images. -->
@@ -189,5 +208,10 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 [6]: ./media/mobile-engagement-windows-store-dotnet-get-started/enter-credentials.png
 [7]: ./media/mobile-engagement-windows-store-dotnet-get-started/associate-app-store.png
 [8]: ./media/mobile-engagement-windows-store-dotnet-get-started/vs-suspend.png
+[9]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_create_app.png
+[10]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_app_name.png
+[11]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_services_push.png
+[12]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_services_push_1.png
+[13]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_services_push_creds.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

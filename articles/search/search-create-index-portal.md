@@ -1,5 +1,5 @@
 <properties
-	pageTitle="ポータルでの Azure Search インデックスの作成 | Microsoft Azure"
+	pageTitle="ポータルでの Azure Search インデックスの作成 | Microsoft Azure | ホスト型クラウド検索サービス"
 	description="Azure ポータルでフィールド定義を入力して、クラウド ホステッド検索サービスである Azure Search にインデックスを追加します。"
 	services="search"
 	documentationCenter=""
@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="search"
-	ms.devlang="rest-api"
+	ms.devlang="na"
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
@@ -18,6 +18,11 @@
 	ms.author="heidist"/>
 
 # Azure ポータルでの Azure Search インデックスの作成
+> [AZURE.SELECTOR]
+- [Overview](search-what-is-an-index.md)
+- [Portal](search-create-index-portal.md)
+- [.NET](search-create-index-dotnet.md)
+- [REST API](search-create-index-rest-api.md)
 
 Azure ポータルで作成することで、Azure Search のインデックスのプロトタイプをすばやく作成できます。ポータルは概念実証テストでの使用に最適です。また、サービスにデプロイされているすべてのインデックスに対するスキーマの定義およびリソースの使用状況を表示するために使用することもできます。
 
@@ -100,4 +105,4 @@ Azure Search では、既定で searchable、 facetable、filterable などの�
 [4]: ./media/search-create-index-portal/AzureSearch-PortalIndex-4.PNG
 [5]: ./media/search-create-index-portal/AzureSearch-PortalIndex-5.PNG
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

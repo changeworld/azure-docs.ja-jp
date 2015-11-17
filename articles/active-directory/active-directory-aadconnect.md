@@ -106,7 +106,7 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 
 これまでに同期トポロジを扱った経験がない場合は、[技術的概念](active-directory-aadconnectsync-technical-concepts.md)で説明されている基本情報と用語を確認してください。Azure AD Connect は、MIIS2003、ILM2007、FIM2010 が進化したものです。同じ要素もあるものの、多数の変更が加えられています。
 
-この構成は、複数のフォレストが存在する可能性があることを前提としています。これらのトポロジでは、ユーザー オブジェクトが別のフォレスト内の連絡先として表されることがあります。ユーザーは、別のリソース フォレストにリンクされたメールボックスを持っている場合もあります。既定の構成の動作については、[ユーザーと連絡先](active-directory-aadconnectsync-understanding-users-and-contacts.md)に関するページを参照してください。
+この[既定の構成](active-directory-aadconnectsync-understanding-default-configuration.md)は、複数のフォレストが存在する可能性があることを前提としています。これらのトポロジでは、ユーザー オブジェクトが別のフォレスト内の連絡先として表されることがあります。ユーザーは、別のリソース フォレストにリンクされたメールボックスを持っている場合もあります。既定の構成の動作については、[ユーザーと連絡先](active-directory-aadconnectsync-understanding-users-and-contacts.md)に関するページを参照してください。
 
 同期の構成モデルは、[宣言型のプロビジョニング](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)と呼ばれています。高度な属性のフローでは、[関数](active-directory-aadconnectsync-functions-reference.md)を使って属性の変換を表現します。Azure AD Connect に付属するツールを使って、構成全体を確認、検証できます。構成を変更する必要がある場合は、新しいリリースを採用しやすいように、[ベスト プラクティス](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)に従ってください。
 
@@ -115,6 +115,7 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 | トピック | |
 | --------- | --------- |
 | 技術的概念 | [Azure AD Connect Sync: 技術的概念](active-directory-aadconnectsync-technical-concepts.md) |
+| 既定の構成について | [Azure AD Connect Sync: 既定の構成について](active-directory-aadconnectsync-understanding-default-configuration.md) |
 | ユーザーと連絡先について | [Azure AD Connect Sync: ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md) |
 | 宣言型のプロビジョニング | [Azure AD Connect Sync: 宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
 | 宣言型のプロビジョニングの関数リファレンス | [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md) |
@@ -138,4 +139,4 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 
 [AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

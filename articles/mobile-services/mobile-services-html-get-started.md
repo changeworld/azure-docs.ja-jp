@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-html5"
 	ms.devlang="javascript"
 	ms.topic="get-started-article" 
-	ms.date="10/05/2015"
+	ms.date="11/06/2015"
 	ms.author="glenga"/>
 
 
@@ -48,7 +48,7 @@
 	このアプリケーションは任意の Web サーバーを使用してホストすることができますが、これらの Web サーバーは、ダウンロードしたスクリプトでサポートされています。
 
 + HTML5 をサポートする Web ブラウザー。
-+ Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F"%20target="_blank)を参照してください。 
++ Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F"%20target="_blank)を参照してください。 
 
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
@@ -90,7 +90,7 @@
 
 1. 圧縮されたプロジェクト ファイルの保存場所を参照し、ファイルをコンピューター上に展開して、**server** サブフォルダーから次のコマンド ファイルの 1 つを開始します。
 
-	+ **launch-windows** (Windows コンピューター)
+	+ **.\\start-iisexpress.ps1** (Windows コンピューター)
 	+ **launch-mac.command** (Mac OS X コンピューター)
 	+ **launch-linux.sh** (Linux コンピューター)
 
@@ -106,7 +106,7 @@
 
    	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目はモバイル サービスによって返され、データはアプリケーションの 2 番目の列に表示されます。
 
-	> [AZURE.NOTE]モバイル サービスにアクセスして app.js ファイルにあるデータを照会および挿入するコードを確認できます。
+	> [AZURE.NOTE]モバイル サービスにアクセスして page.js ファイルにあるデータを照会および挿入するコードを確認できます。
 
 4. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
@@ -154,4 +154,4 @@
 [Cross-origin resource sharing]: http://msdn.microsoft.com/library/azure/dn155871.aspx
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

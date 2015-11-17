@@ -1,7 +1,7 @@
 <properties
 	pageTitle="NoSQL データベース - DocumentDB .NET SDK の使用 | Microsoft Azure"
 	description="データベースを作成し、Azure DocumentDB アカウントを構成する方法について説明します。データベースおよびコレクションを作成し、NoSQL データベース アカウント内に JSON ドキュメントを格納します。"
-	keywords="Create a database, create database, nosql database, nosql databases, nuget, documentdb, azure, Microsoft azure"
+	keywords="データベースの作成, データベースの作成, NoSQL データベース, NoSQL データベース, NuGet, DocumentDB, Azure, Microsoft Azure"
 	services="documentdb"
 	documentationCenter=".net"
 	authors="AndrewHoh"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article" 
-	ms.date="09/16/2015"
+	ms.date="11/05/2015"
 	ms.author="anhoh"/>
 
 #DocumentDB .NET SDK の使用  
@@ -76,6 +76,8 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
     using Microsoft.Azure.Documents.Linq;
     using Newtonsoft.Json;
 
+> [AZURE.IMPORTANT]このアプリケーションを完成させるには、上記の依存関係を追加します。
+
 次に、DocumentDB アカウント エンドポイントと、プライマリまたはセカンダリ アクセス キーを保存します。これは、[Azure プレビュー ポータル](https://portal.azure.com)にあります。
 
 ![DocumentDB アカウントを示す、アクティブなハブ、[DocumentDB アカウント] ブレードの [キー] ボタン、[キー] ブレードの URI の値、プライマリ キーの値、およびセカンダリ キーの値が強調表示されている Azure プレビュー ポータルのスクリーン ショット][keys]
@@ -134,7 +136,7 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 
 ##<a id="CreateColl"></a>手順 5: コレクションを作成する  
 
-> [AZURE.WARNING]**CreateDocumentCollectionAsync** は新しい S1 コレクションを作成します。これによって価格に影響があります。詳細については、[料金のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
+> [AZURE.WARNING]**CreateDocumentCollectionAsync** は新しい S1 コレクションを作成します。これによって価格に影響があります。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
 
 [コレクション](documentdb-resources.md#collections)は、**DocumentClient** クラスの [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) メソッドを使用して作成できます。コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。新しく作成されたコレクションは、[S1 パフォーマンス レベル](documentdb-performance-levels.md)にマップされます。**GetStartedDemo** メソッドでデータベースを作成してから、**FamilyCollection** という名前の新しいコレクションを作成します。
 
@@ -478,4 +480,4 @@ Visual Studio で DocumentDB .NET SDK への参照を復元するには、ソリ
 [keys]: media/documentdb-get-started/keys.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

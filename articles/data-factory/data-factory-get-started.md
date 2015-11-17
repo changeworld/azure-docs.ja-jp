@@ -100,8 +100,6 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 - Visual Studio 2013 を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-get-started-using-vs.md)」というリンクをクリックします。
  
 
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-get-started.md)でフィードバックをお寄せください。
 
 <!--Link references-->
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -113,4 +111,4 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
 [data-factory-create-sql-database]: ../sql-database-get-started.md
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

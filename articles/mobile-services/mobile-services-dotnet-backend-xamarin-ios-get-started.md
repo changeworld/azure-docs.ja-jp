@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="08/18/2015"
+	ms.date="11/05/2015"
 	ms.author="donnam"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
@@ -138,4 +138,4 @@
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532&clcid=0x409
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

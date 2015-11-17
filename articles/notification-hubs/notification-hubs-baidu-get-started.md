@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="mobile-baidu"
 	ms.workload="mobile"
-	ms.date="10/19/2015"
+	ms.date="11/03/2015"
 	ms.author="wesmc"/>
 
 # Baidu での Notification Hubs の使用
@@ -503,4 +503,4 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 [Azure ポータル]: https://manage.windowsazure.com/
 [Baidu ポータル]: http://www.baidu.com/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

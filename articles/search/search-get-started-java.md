@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Java での Azure Search の使用 | Microsoft Azure"
+	pageTitle="Java での Azure Search の使用 | Microsoft Azure | ホスト型クラウド検索サービス"
 	description="プログラミング言語として Java を使用して Azure でクラウド ホステッド検索アプリケーションを作成する方法を説明します。"
 	services="search"
 	documentationCenter=""
@@ -231,4 +231,4 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [11]: ./media/search-get-started-java/rogerwilliamsschool1.PNG
 [12]: ./media/search-get-started-java/AzSearch-Java-SelectProject.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

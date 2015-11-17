@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="10/14/2015"
+	ms.date="11/10/2015"
 	ms.author="cabailey"/>
 
 # Azure Key Vault の概要 #
@@ -35,8 +35,8 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 このチュートリアルを完了するには、以下が必要です。
 
 - Microsoft Azure サブスクリプション。サブスクリプションがない場合でも、[無料試用版](../../../../pricing/free-trial)にサインアップできます。
-- Azure PowerShell バージョン 0.9.1 ～ 0.9.8。Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。
-- このチュートリアルで作成したキーやパスワードを使用して構成されるアプリケーション。サンプル アプリケーションは、[Microsoft ダウンロード センター](http://www.microsoft.com/ja-jp/download/details.aspx?id=45343)から入手できます。手順については、付属の Readme ファイルをご覧ください。
+- Azure PowerShell **1.0 以降のバージョン**。Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「`(Get-Module azure -ListAvailable).Version`」と入力します。Azure PowerShell バージョン 0.9.1 ～ 0.9.8 がインストールされている場合は、少し変更を加えるだけで、引き続きこのチュートリアルを利用できます。たとえば、`Switch-AzureMode AzureResourceManager` コマンドを使用する必要があったり、Azure Key Vault のコマンドの一部が変更されていたりします。バージョン 0.9.1 ～ 0.9.8 の Key Vault コマンドレットの一覧については、[Azure Key Vault コマンドレット](https://msdn.microsoft.com/library/azure/dn868052(v=azure.98).aspx)に関するページを参照してください。 
+- このチュートリアルで作成したキーやパスワードを使用して構成されるアプリケーション。サンプル アプリケーションは、[Microsoft ダウンロード センター](http://www.microsoft.com/ja-JP/download/details.aspx?id=45343)から入手できます。手順については、付属の Readme ファイルをご覧ください。
 
 
 このチュートリアルは、Azure PowerShell の初心者向けに設計されていますが、モジュール、コマンドレット、セッションなどの基本概念を理解していることを前提としています。詳細については、[Windows PowerShell の概要](https://technet.microsoft.com/library/hh857337.aspx)に関するページを参照してください。
@@ -59,53 +59,46 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 
 Azure PowerShell セッションを開始し、次のコマンドで Azure アカウントにサインインします。
 
-    Add-AzureAccount
+    Login-AzureRmAccount 
 
 ポップアップ ブラウザー ウィンドウで、Azure アカウントのユーザー名とパスワードを入力します。Azure PowerShell は、このアカウントに関連付けられているすべてのサブスクリプションを取得し、既定で最初のサブスクリプションを使用します。
 
 複数のサブスクリプションがあり、特定の 1 つのサブスクリプションを指定して Azure Key Vault を使用する場合は、次のように入力して自分のアカウントのサブスクリプションを表示します。
 
-    Get-AzureSubscription
+    Get-AzureRmSubscription
 
 使用するサブスクリプションを指定するには、次のように入力します。
 
-    Select-AzureSubscription -SubscriptionName <subscription name>
+    Set-AzureRmContext -SubscriptionId <subscription ID>
 
 Azure PowerShell の詳細については、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](../powershell-install-configure.md)」をご覧ください。
 
-## <a id="switch"></a>Azure リソース マネージャーの使用に切り替える ##
-
-このチュートリアルで使用する Azure Key Vault コマンドレットのバージョンには Azure リソース マネージャーが必要なため、次のように入力して Azure リソース マネージャー モードに切り替えます。
-
-	Switch-AzureMode AzureResourceManager
 
 ## <a id="resource"></a>新しいリソース グループを作成する ##
 
 Azure リソース マネージャーを使用すると、すべての関連するリソースが 1 つのリソース グループ内に作成されます。このチュートリアルでは、**ContosoResourceGroup** という名前の新しいリソース グループを作成します。
 
-	New-AzureResourceGroup –Name 'ContosoResourceGroup' –Location 'East Asia'
-
-**-Location** パラメーターでは、[Get-AzureLocation](https://msdn.microsoft.com/library/azure/dn654582.aspx) コマンドを使用して、別の場所をこの例の場所に指定する方法を識別します。詳細情報が必要な場合は、`Get-Help Get-AzureLocation` と入力します。
+	New-AzureRmResourceGroup –Name 'ContosoResourceGroup' –Location 'East Asia'
 
 
 ## <a id="vault"></a>Key Vault を作成する ##
 
-[New-AzureKeyVault](https://msdn.microsoft.com/library/azure/dn903602(v=azure.98).aspx) コマンドレットを使用して、Key Vault を作成します。このコマンドレットには、3 つの必須パラメーター (**リソース グループ名**、**Key Vault 名**、**地理的な場所**) が含まれています。
+[New-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt603736.aspx) コマンドレットを使用して、Key Vault を作成します。このコマンドレットには、3 つの必須パラメーター (**リソース グループ名**、**Key Vault 名**、**地理的な場所**) が含まれています。
 
 たとえば、Key Vault 名に **ContosoKeyVault**、リソース グループ名に **ContosoResourceGroup**、場所に**東アジア**を使用する場合は、次のように入力します。
 
-    New-AzureKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
+    New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
 
 このコマンドレットの出力は、作成されたばかりの Key Vault のプロパティを示します。最も重要な 2 つのプロパティは、次のとおりです。
 
-- **Name**: この例では、これは **ContosoKeyVault** です。この名前を他の ContosoKeyVault コマンドレットに使用できます。
-- **vaultUri**: この例では、これは https://contosokeyvault.vault.azure.net/ です。その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
+- **Vault Name**: この例では、これは **ContosoKeyVault** です。この名前を他の Key Vault コマンドレットに使用できます。
+- **Vault URI**: この例では、これは https://contosokeyvault.vault.azure.net/ です。その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 Azure アカウントは、この Key Vault ですべての操作の実行が許可されるようになりました。まだ、どのユーザーも許可されていません。
 
 ## <a id="add"></a>キーやシークレットを Key Vault に追加する ##
 
-Azure Key Vault でソフトウェアで保護されたキーを作成する場合は、[Add-AzureKeyVaultKey](https://msdn.microsoft.com/library/azure/dn868048(v=azure.98).aspx) コマンドレットを使用して次のように入力します。
+Azure Key Vault でソフトウェアで保護されたキーを作成する場合は、[Add-AzureKeyVaultKey](https://msdn.microsoft.com/library/azure/dn868048.aspx) コマンドレットを使用して次のように入力します。
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -Destination 'Software'
 
@@ -173,17 +166,17 @@ Azure Active Directory にアプリケーションを登録するには:
 
 ## <a id="authorize"></a>キーまたはシークレットを使用してアプリケーションを承認する ##
 
-資格情報コンテナーのキーやシークレットにアクセスするアプリケーションを承認するには、[Set-AzureKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/dn903607(v=azure.98).aspx) コマンドレットを使用します。
+資格情報コンテナーのキーやシークレットにアクセスするアプリケーションを承認するには、[Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625.aspx) コマンドレットを使用します。
 
 たとえば、資格情報コンテナー名が **ContosoKeyVault** で、承認するアプリケーションのクライアント ID が 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed の場合、アプリケーションの暗号化を解除し、資格情報コンテナー内のキーで署名することを承認するには、次のように実行します。
 
 
-	Set-AzureKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
+	Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
 
 その同じアプリケーションを認証し、資格情報コンテナーのシークレットの読み取りを許可する場合、次を実行します。
 
 
-	Set-AzureKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToSecrets Get
+	Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToSecrets Get
 
 ## <a id="HSM"></a>ハードウェア セキュリティ モジュール (HSM) を使用する場合 ##
 
@@ -195,7 +188,7 @@ Azure Active Directory にアプリケーションを登録するには:
 資格情報コンテナーを作成するときに、**-SKU** パラメーターを追加します。
 
 
-	New-AzureKeyVault -VaultName 'ContosoKeyVaultHSM' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -SKU 'Premium'
+	New-AzureRmKeyVault -VaultName 'ContosoKeyVaultHSM' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -SKU 'Premium'
 
 
 
@@ -216,13 +209,13 @@ Azure Active Directory にアプリケーションを登録するには:
 
 ## <a id="delete"></a>Key Vault と関連付けられているキーやシークレットを削除する ##
 
-Key Vault と、これに含まれるキーやシークレットが不要になった場合は、[Remove-AzureKeyVault](https://msdn.microsoft.com/library/azure/dn903603(v=azure.98).aspx) コマンドレットを使用して Key Vault を削除できます。
+Key Vault と、これに含まれるキーやシークレットが不要になった場合は、[Remove-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt619485.aspx) コマンドレットを使用して Key Vault を削除できます。
 
-	Remove-AzureKeyVault -VaultName 'ContosoKeyVault'
+	Remove-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
 または、Key Vault やそのグループに含まれる他のすべてのリソースを含む、Azure リソース グループ全体を削除できます。
 
-	Remove-AzureResourceGroup -ResourceGroupName 'ContosoResourceGroup'
+	Remove-AzureRmResourceGroup -ResourceGroupName 'ContosoResourceGroup'
 
 
 ## <a id="other"></a>その他の Azure PowerShell コマンドレット ##
@@ -240,16 +233,9 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 Web アプリケーションでの Azure Key Vault の使用方法に関するフォローアップ チュートリアルについては、「[Web アプリケーションからの Azure Key Vault の使用](key-vault-use-from-web-application.md)」をご覧ください。
 
-Azure Key Vault の Azure PowerShell コマンドレットの一覧については、[Azure Key Vault コマンドレット](https://msdn.microsoft.com/library/azure/dn868052(v=azure.98).aspx)に関するページを参照してください。
+Azure Key Vault の Azure PowerShell 1.0 のコマンドレットの一覧については、[Azure Key Vault コマンドレット](https://msdn.microsoft.com/library/azure/dn868052.aspx)に関するページを参照してください。
+ 
 
-現在プレビュー段階にある Azure PowerShell の新しいバージョン (バージョン 1.0) を試用する場合、`Switch-AzureMode AzureResourceManager` を実行する必要はなくなりました。Key Vault コマンドレットの一部は名前が変更されています。このプレビュー バージョンの詳細については、Microsoft Azure ブログの [Azure PowerShell 1.0 Preview](https://azure.microsoft.com/ja-jp/blog/azps-1-0-pre/) に関する投稿を参照してください。このバージョンの Azure PowerShell の Key Vault コマンドレットの一覧については、[Azure Key Vault コマンドレット](https://msdn.microsoft.com/library/azure/dn868052.aspx)に関するページを参照してください。この新しいバージョンの Azure PowerShell をインストールする場合は、このチュートリアルの手順を、次の変更を加えて使用できます。
+プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-* **Switch-AzureMode AzureResourceManager** は実行しません。
-* **New-AzureKeyVault** の代わりに、`New-AzureRMKeyVault` を実行します。
-* **Get-AzureKeyVault** の代わりに、`Get-AzureRMKeyVault` を実行します。
-* **Remove-AzureKeyVault** の代わりに、`Remove-AzureRMKeyVault` を実行します。
-* **Set-AzureKeyVaultAccessPolicy** の代わりに、`Set-AzureRMKeyVaultAccessPolicy` を実行します。   
-
-プログラミング リファレンスについては、[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)を参照してください。
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="dotnet" 
 	ms.topic="hero-article" 
-	ms.date="10/27/2015" 
+	ms.date="11/10/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の使用方法
@@ -88,8 +88,7 @@ Azure Redis Cache を使用して構成されたキャッシュは、あらゆ�
 
 Visual Studio で StackExchange.Redis NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-![NuGet パッケージの管理  
-][NuGetMenu]
+![Manage NuGet packages][NuGetMenu]
 
 **[オンライン検索]** ボックスに「**StackExchange.Redis**」または「**StackExchange.Redis.StrongName**」と入力し、結果の中から必要なバージョンを選択して、**[インストール]** をクリックします。
 
@@ -206,7 +205,6 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 オブジェクトをシリアル化する簡単な方法の 1 つは、[Newtonsoft.Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/8.0.1-beta1) の `JsonConvert` シリアル化方法を使用して、JSON へおよび JSON からシリアル化する方法です。次の例では、`Employee` オブジェクト インスタンスを使用した get および set を示しています。
 
 
-	[Serializable]
 	class Employee
 	{
 	    public int Id { get; set; }
@@ -332,4 +330,4 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 
 [Azure の無料試用版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

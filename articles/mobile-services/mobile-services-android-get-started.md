@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="hero-article"
-	ms.date="10/08/2015"
+	ms.date="11/05/2015"
 	ms.author="ricksal"/>
 
 # Android 用 Mobile Services の使用 (JavaScript バックエンド)
@@ -28,7 +28,9 @@
 
 > [AZURE.VIDEO mobile-get-started-android]
 
-完成したアプリケーションのスクリーンショットは次のようになります。![](./media/mobile-services-android-get-started/mobile-quickstart-completed-android.png)
+完成したアプリケーションのスクリーンショットは次のようになります。
+
+![](./media/mobile-services-android-get-started/mobile-quickstart-completed-android.png)
 
 ## 前提条件
 
@@ -36,7 +38,7 @@
 
 ダウンロードしたクイック スタート プロジェクトには、Android 向けの Azure の Mobile Services SDK が含まれています。
 
-> [AZURE.IMPORTANT]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)を参照してください。
+> [AZURE.IMPORTANT]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)を参照してください。
 
 
 ## 新しいモバイル サービスを作成する
@@ -93,4 +95,4 @@
 
 [Management Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->
