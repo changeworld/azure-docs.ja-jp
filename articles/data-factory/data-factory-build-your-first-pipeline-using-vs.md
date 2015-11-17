@@ -51,11 +51,13 @@
 1. **Visual Studio 2013** または **Visual Studio 2015** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。  
 2. **[新しいプロジェクト]** ダイアログで、**[DataFactory]** テンプレートを選択し、**[空の Data Factory プロジェクト]** をクリックします。   
 
-	![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
+	![[新しいプロジェクト] ダイアログ ボックス  
+](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
 
 3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
 
-	![ソリューション エクスプローラー](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
+	![ソリューション エクスプローラー  
+](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
 ### リンクされたサービスの作成
 この手順では、Azure ストレージ アカウントとオンデマンド Azure HDInsight クラスターをデータ ファクトリにリンクした後、Hive 処理からの出力データを表すデータセットを作成します。
@@ -64,8 +66,8 @@
 #### Azure Storage のリンクされたサービスを作成する
 
 
-4. ソリューション エクスプローラーの **[Linked Services]** を右クリックして、**[追加]** をポイントし、**[新しい項目]** をクリックします。      
-5. **[新しい項目の追加]** ダイアログ ボックスで、一覧から **[Azure Storage Linked Service]** を選択し、**[追加]** をクリックします。 
+4. ソリューション エクスプローラーの **[リンクされたサービス]** を右クリックして、**[追加]** をポイントし、**[新しい項目]** をクリックします。      
+5. **[新しい項目の追加]** ダイアログ ボックスで、一覧から **[Azure Storage のリンクされたサービス]** を選択し、**[追加]** をクリックします。 
 
 	![新規のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-vs/new-linked-service-dialog.png)
  
@@ -183,7 +185,7 @@
 
 	**extendedProperties** セクションは、Hive 構成値 (例: ${hiveconf:PartitionedData}) として Hive スクリプトに渡される実行時設定を指定するために使用されます。
 
-	パイプラインの **start** プロパティと **end** プロパティは、パイプラインのアクティブな期間を指定します。
+	パイプラインの **start** および **end** プロパティでは、パイプラインのアクティブな期間を指定します。
 
 	アクティビティ JSON では、リンクされたサービス (**HDInsightOnDemandLinkedService**) によって指定されたコンピューティングで Hive スクリプトが実行されることを指定します。
 3. **HiveActivity1.json** ファイルを保存します。
@@ -193,7 +195,7 @@
 1. **[ソリューション エクスプローラー]** ウィンドウで **[依存関係]** を右クリックし、**[追加]** をポイントして **[既存の項目]** をクリックします。  
 2. **C:\\ADFGettingStarted** に移動し、**partitionweblogs.hql** ファイルを選択して **[追加]** をクリックします。 
 
-次の手順でソリューションを発行すると、BLOB ストレージのスクリプト コンテナーに HQL ファイルがアップロードされます。
+次の手順でソリューションを公開すると、BLOB ストレージのスクリプト コンテナーに HQL ファイルがアップロードされます。
 
 ### Data Factory エンティティの発行/デプロイ
 
@@ -243,7 +245,5 @@ Azure プレビュー ポータルを使用して、このチュートリアル�
 ## 次のステップ
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started.md)」を参照してください。
   
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-vs.md)でフィードバックをお寄せください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

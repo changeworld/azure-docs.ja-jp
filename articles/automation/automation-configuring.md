@@ -12,16 +12,16 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/22/2015"
+   ms.date="11/02/2015"
    ms.author="bwren" />
 
 # Azure Automation の構成
 
 この記事では、Azure Automation を使い始めるときに最初に行う必要があることについて説明します。
 
-## オートメーション アカウント
+## Automation アカウント
 
-Azure Automation を初めて開始するときに、少なくとも 1 つのオートメーション アカウントを作成する必要があります。Automation アカウントでは、お使いの Automation リソース（Runbook、資産）を、別の Automation アカウントに含まれる Automation リソースと分離することができます。Automation アカウントを使って Automation リソースを異なる論理環境に分けられます。たとえば、1 つのアカウントを開発環境用として、もう 1 つのアカウントを本番環境として使うこともできます。
+Azure Automation を初めて開始するときに、少なくとも 1 つのオートメーション アカウントを作成する必要があります。Automation アカウントでは、お使いの Automation リソース (Runbook、資産、構成) を、別の Automation アカウントに含まれる Automation リソースと分離することができます。Automation アカウントを使って Automation リソースを異なる論理環境に分けられます。たとえば、1 つのアカウントを開発環境用として、もう 1 つのアカウントを本番環境として使うこともできます。
 
 各 Automation アカウントの Automation リソースは単一の Azure リージョンと関連付けられていますが、Automation アカウントではあらゆるリージョンの Azure サービスを管理することができます。異なるリージョンで Automation アカウントを作成する主な理由としては、特定のリージョンに分離しなければならないデータやリソースを必要とするポリシーがある場合が挙げられます。
 
@@ -30,7 +30,7 @@ Azure Automation を初めて開始するときに、少なくとも 1 つのオ
 >Azure ポータルで作成した Automation アカウントは、どちらのポータルでも、また、どちらのセットのコマンド レットでも管理できます。アカウントを作成してしまえば、そのアカウントのリソースの作り方や管理方法に違いはありません。引き続き Azure ポータルを使用する場合、Automation アカウントの作成には Azure プレビュー ポータルではなく、Azure ポータルを使用することをお勧めします。
 
 
-お使いに Azure アカウントで支払の遅延などの問題が発生した場合、一時的に Automation アカウントを停止することがあります。その場合、アカウントへのアクセスができなくなり、実行中のジョブはすべて中断されます。また、すべてのスケジュールが無効になります。アカウントの閲覧はできますが、アカウントに含まれるリソースを見ることはできません。問題を解決してオートメーション アカウントが有効になった後は、スケジュールを有効にして、中断された Runbook を再開する必要があります。
+お使いに Azure アカウントで支払の遅延などの問題が発生した場合、一時的に Automation アカウントを停止することがあります。その場合、アカウントへのアクセスができなくなり、実行中のジョブはすべて中断されます。また、すべてのスケジュールが無効になります。アカウントの閲覧はできますが、アカウントに含まれるリソースを見ることはできません。問題を解決して Automation アカウントが有効になった後は、スケジュールを有効にして、中断された Runbook を再開する必要があります。
 
 
 ## Azure リソースへの認証の構成
@@ -44,7 +44,7 @@ Azure Automation を初めて開始するときに、少なくとも 1 つのオ
 1. 管理する Azure サブスクリプションのサービス管理者として Azure ポータルにログインします。
 2. **[Active Directory]** を選択します。
 3. Azure サブスクリプションと関連付けられているディレクトリ名を選択します。必要であれば、**[設定]、[サブスクリプション]、[ディレクトリの編集]** で関連付けを変更できます。
-4. [新しい Active Directory ユーザーを作成します](http://msdn.microsoft.com/library/azure/hh967632.aspx)。**[ユーザーの種類]** では、**[多要素認証の有効化]** ではなく **[組織内の新しいユーザー]** を選択します。
+4. [新しい Active Directory ユーザーを作成します](http://msdn.microsoft.com/library/azure/hh967632.aspx)。**[ユーザーの種類]** では、**[Multi-Factor Authentication の有効化]** ではなく **[組織内の新しいユーザー]** を選択します。
 5. ユーザーの完全な名前と一時的なパスワードを書き留めておきます。
 7. **[設定]、[管理者]、[追加]** の順に選択します。
 8. 作成したユーザーの完全なユーザー名を入力します。
@@ -64,7 +64,7 @@ Azure Automation を初めて開始するときに、少なくとも 1 つのオ
 Runbook のすべての[チェックポイント](http://technet.microsoft.com/library/dn469257.aspx#bk_Checkpoints)の後で、これらの行を繰り返す必要があります。Runbook が中断された後、別のワーカーで再開した場合は、もう一度認証を実行する必要があります。
 
 ## 関連記事:
-- [Azure オートメーション: Azure Active Directory を使用して Azure を認証する](http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/)
+- [Azure Automation: Azure Active Directory を使用して Azure を認証する](http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/)
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="SQL Database エラスティック データベース プールの作成と管理 | Microsoft Azure"
-	description="Azure SQL Database のグループ間で共有するリソースの 1 つのプールを作成します。"
+	pageTitle="Azure プレビュー ポータルを使用した Azure SQL Database のエラスティック データベース プールの作成 | Microsoft Azure"
+	description="複数の Azure SQL Database でリソースを共有するためのエラスティック データベース プールを作成します。"
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
@@ -10,24 +10,26 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="10/29/2015"
+	ms.date="11/06/2015"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="NA"/>
 
 
-# エラスティック データベース プールの作成
+# Azure プレビュー ポータルを使用したエラスティック データベース プールの作成
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-elastic-pool-portal.md)
-- [C#](sql-database-client-library.md)
+- [Azure preview portal](sql-database-elastic-pool-portal.md)
+- [C#](sql-database-elastic-pool-csharp.md)
 - [PowerShell](sql-database-elastic-pool-powershell.md)
 
-この記事では、エラスティック データベース プールを作成する方法を説明します。これを作成すると、複数のデータベースのパフォーマンスとコストを作成、維持、および管理する処理が簡素化されます。開始する前に、SQL Database V12 サーバー上に少なくとも 1 つのデータベースが必要です。これがない場合、5 分程度時間を取って「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照して作成してください。
+この記事では、Azure プレビュー ポータルを使用して[エラスティック データベース プール](sql-database-elastic-pool.md)を作成する方法について説明します。
+
+> [AZURE.NOTE]エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server.md)を 1 回の手順で実行できます。
 
 
-> [AZURE.NOTE]エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。
+開始する前に、SQL Database V12 サーバー上にデータベースが必要です。これがない場合、5 分程度時間を取って「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照して作成してください。または、SQL Database V11 サーバーが既にある場合は、[ポータルで V12 にアップグレード](sql-database-v12-upgrade.md)した後で、次の手順に従ってプールを作成できます。
 
 
 ## 手順 1: サーバーにプールを追加します
@@ -44,7 +46,7 @@
 サーバーの推奨プールがあることを示すメッセージが表示された場合、それをクリックして、簡単に確認し、サーバーのデータベースに最適化されたプールを作成します。詳細については、「[推奨されるエラスティック データベース プール](sql-database-elastic-pool-portal.md#recommended-elastic-database-pools)」をご覧ください。
    
   
-   ![エラスティック プールの作成][1]
+![エラスティック プールの作成][1]
 
 
 **エラスティック データベース プール** ブレードには、価格レベルの選択、データベースの追加、プールのパフォーマンス特性の構成を行うためのオプションが用意されています。
@@ -73,11 +75,11 @@ SQL Database サービスは利用履歴を評価し、シングル データベ
 エラスティック データベース プールの価格レベルを単に提案するだけでなく、各プール推奨事項には次が含まれます。
 
 - プールの価格レベル (Basic、Standard、Premium)。
-- 適切な量の eDTU。
+- 適切な量のプール eDTU。
 - エラスティック データベースの最小/最大 eDTU 設定。  
 - 推奨データベースの一覧。
 
-エラスティック データベース プールを推奨するとき、このサービスでは過去 30 日間の製品利用統計情報が考慮されます。あるデータベースをエラスティック プールの候補と見なすとき、それは 7 日間以上存在している必要があります。エラスティック データベース プールに既に存在するデータベースはエラスティック データベース プール推奨の候補として考慮されません。
+エラスティック データベース プールを推奨するとき、このサービスでは過去 30 日間のテレメトリが考慮されます。あるデータベースをエラスティック データベース プールの候補と見なすとき、それは 7 日間以上存在している必要があります。エラスティック データベース プールに既に存在するデータベースはエラスティック データベース プール推奨の候補として考慮されません。
 
 このサービスでは、各サービス レベルのシングル データベースを同じレベルのエラスティック データベース プールに移動することの必要性と対費用効果が評価されます。たとえば、サーバーのすべての Standard データベースの Standard エラスティック プールに対する適合性が評価されます。つまり、このサービスでは、Standard データベースを Premium プールに移動することなど、レベル間の推奨は行われません。
 
@@ -117,7 +119,7 @@ SQL Database V12 サーバーを参照すると、そのサーバーに推奨さ
 エラスティック データベース プールの価格レベルの提案と同様に、推奨されるプールは既に設定されている次の項目で事前構成されています。
 
 - プールの価格レベル。
-- 適切な量の eDTU。
+- 適切な量のプール eDTU。
 - データベースの最小/最大 eDTU 設定。  
 - 推奨データベースの一覧。
 
@@ -173,7 +175,7 @@ SQL Database V12 サーバーを参照すると、そのサーバーに推奨さ
 
 
 ## 次のステップ
-エラスティック データベース プールを作成した後は、エラスティック ジョブを作成してプール内のデータベース を管理できます。エラスティック ジョブはプールのデータベースの任意の数に対して Transact-SQL スクリプトの実行を容易にします。詳細については、「[エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。
+エラスティック データベース プールを作成した後は、エラスティック ジョブを作成してプール内のデータベース を管理できます。エラスティック ジョブはプールのデータベースの任意の数に対して Transact-SQL スクリプトの実行を容易にします。詳細については、「[Elastic Database ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。
 
 
 
@@ -199,4 +201,4 @@ SQL Database V12 サーバーを参照すると、そのサーバーに推奨さ
 [11]: ./media/sql-database-elastic-pool-portal/recommended-pool.png
 [12]: ./media/sql-database-elastic-pool-portal/pools-message.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

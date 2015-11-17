@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article" 
-	ms.date="10/16/2015"
+	ms.date="11/11/2015"
 	ms.author="tamram"/>
 
 
@@ -23,7 +23,7 @@
 
 ## 概要
 
-このガイドでは、Azure Blob ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C# で記述され、.NET 用 Azure ストレージ クライアント ライブラリを使用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。
+このガイドでは、Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C# で記述され、.NET 用 Azure Storage クライアント ライブラリを使用しています。ストレージ クライアント ライブラリは、BLOB ストレージ REST API の操作を簡略化する SDK です。このガイドで紹介するシナリオでは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、**削除**について説明します。所要時間はおよそ 1 時間です。概要のビデオは、[5 分間で Storage の概要を紹介するビデオ](https://azure.microsoft.com/ja-JP/documentation/videos/azure-storage-5-minute-overview/)に関するページで視聴できます。ガイド「[Azure Storage を 5 分で使い始める](https://azure.microsoft.com/ja-JP/documentation/articles/storage-getting-started-guide/)」も参考にしてください。
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -38,7 +38,7 @@
 [AZURE.INCLUDE [storage-dotnet-obtain-assembly](../../includes/storage-dotnet-obtain-assembly.md)]
 
 ### 名前空間宣言
-プログラムを使用して Azure ストレージにアクセスするすべての C# ファイルの冒頭部分に、次の名前空間宣言を追加します。
+プログラムを使用して Azure Storage にアクセスするすべての C# ファイルの冒頭部分に、次の名前空間宣言を追加します。
 
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.Storage;
@@ -291,7 +291,7 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
 
 ## 追加 BLOB への書き込み
 
-追加 BLOB は .NET 向け Azure ストレージ クライアント ライブラリのバージョン 5 x で発表された新しいタイプの BLOB です。追加 BLOB は、ログ記録などの追加操作のために最適化されています。ブロック BLOB のように、追加 BLOB はブロックで構成されますが、追加 BLOB に新しいブロックを追加する場合は常に BLOB の最後に追加されます。追加 BLOB の既存のブロックは更新したり、削除することはできません。追加 BLOB のブロック ID はブロック BLOB 用のため、公開されることはありません。
+追加 BLOB は .NET 向け Azure Storage クライアント ライブラリのバージョン 5 x で発表された新しいタイプの BLOB です。追加 BLOB は、ログ記録などの追加操作のために最適化されています。ブロック BLOB のように、追加 BLOB はブロックで構成されますが、追加 BLOB に新しいブロックを追加する場合は常に BLOB の最後に追加されます。追加 BLOB の既存のブロックは更新したり、削除することはできません。追加 BLOB のブロック ID はブロック BLOB 用のため、公開されることはありません。
  
 追加 BLOB 内の各ブロックは、最大 4 MB のサイズにすることができます。また追加 BLOB には最大 50,000 のブロックを含めることができます。よって追加 BLOB の最大サイズは 195 GB (4 MB X 50,000 ブロック) よりも少し大きくなります。
 
@@ -338,7 +338,20 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
 
 ## 次のステップ
 
-これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。<ul> <li>使用可能な API の詳細については、以下の BLOB サービスのリファレンス ドキュメントを参照してください。<ul> <li><a href="http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409">.NET 用ストレージ クライアント ライブラリ リファレンス</a> </li> <li><a href="http://msdn.microsoft.com/library/azure/dd179355">REST API リファレンス</a></li> </ul> </li> <li>Azure Storage を使用して実行できるさらに高度なタスクについては、「<a href="http://msdn.microsoft.com/library/azure/gg433040.aspx">Azure のデータの格納とアクセス</a>」を参照してください。</li> <li>Azure Storage で作業するために記述するコードを簡略化する方法については、「<a href="../websites-dotnet-webjobs-sdk/">Azure WebJobs SDK</li>」を参照してください。 <li>Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。<ul><li>構造化データの格納には、<a href="/documentation/articles/storage-dotnet-how-to-use-tables/">テーブル ストレージ</a>を使用します。</li> <li>非構造化データの格納には、<a href="/documentation/articles/storage-dotnet-how-to-use-queues/">キュー ストレージ</a>を使用します。</li> <li>リレーショナル データの格納には、<a href="/documentation/articles/sql-database-dotnet-how-to-use/">SQL Database</a> を使用します。</li></ul></li></ul>
+これで、BLOB ストレージの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
+
+### BLOB ストレージ リファレンス ドキュメント
+
+- [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+- [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
+
+### その他の機能ガイド
+
+- [.NET 用のテーブル ストレージの概要](storage-dotnet-how-to-use-tables.md)
+- [.NET 用のキュー ストレージの概要](storage-dotnet-how-to-use-queues.md)
+- [.NET 用のファイル ストレージの概要](storage-dotnet-how-to-use-files.md)
+- [SQL Database を使用したリレーショナル データの格納](../sql-database/articles/sql-database-dotnet-how-to-use.md)
+- [Web ジョブ SDK で Azure BLOB ストレージを使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
 
   [Blob5]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-blobs/blob6.png
@@ -353,4 +366,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

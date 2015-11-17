@@ -132,7 +132,7 @@
 		New-AzureDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
 
 
-### 出力データセットを作成する
+### 出力データセットを作成します。
 次に、Azure BLOB ストレージに格納されるデータを表す出力データセットを作成します。
 
 1.	以下の内容を記述した「OutputTable.json」という名前の JSON ファイルを C:\\ADFGetStartedPSH フォルダー内に作成します。
@@ -271,9 +271,7 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 ## 次のステップ
 この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](./data-factory-get-started.md)」を参照してください。
 
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-powershell.md)でフィードバックをお寄せください。
 
 [cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

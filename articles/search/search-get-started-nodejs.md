@@ -1,5 +1,5 @@
 <properties
-	pageTitle="NodeJS での Azure Search の使用 | Microsoft Azure"
+	pageTitle="NodeJS での Azure Search の使用 | Microsoft Azure | ホスト型クラウド検索サービス"
 	description="プログラミング言語として NodeJS を使用して Azure でホステッド クラウド検索アプリケーションを作成する手順を示します。"
 	services="search"
 	documentationCenter=""
@@ -147,4 +147,4 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [5]: ./media/search-get-started-nodejs/AzSearch-NodeJS-configjs.png
 [9]: ./media/search-get-started-nodejs/rogerwilliamsschool.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

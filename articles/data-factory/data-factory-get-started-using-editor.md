@@ -83,7 +83,7 @@
 	 
 5. **エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure Storage]** を選択します。Azure Storage のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。
 
-	![エディター [新しいデータ ストア] ボタン][image-editor-newdatastore-button]
+	![エディターの [新しいデータ ストア] ボタン][image-editor-newdatastore-button]
     
 6. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーの値に置き換えます。
 
@@ -100,7 +100,7 @@
 
 	![エディターの Azure SQL 設定][image-editor-azure-sql-settings]
 
-2. **servername**、**databasename**、**username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
+2. **servername**、**databasename**、****username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
 3. ツール バーの **[デプロイ]** をクリックして、AzureSqlLinkedService を作成してデプロイします。 
    
 
@@ -222,7 +222,7 @@
 ## <a name="CreateAndRunAPipeline"></a>手順 4. パイプラインを作成して実行する
 この手順では、**EmpTableFromBlob** を入力、**EmpSQLTable** を出力として使用し、**コピー アクティビティ**を持つパイプラインを作成します。
 
-1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **... (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
+1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
 
 	![エディターの [新しいパイプライン] ボタン][image-editor-newpipeline-button]
  
@@ -330,7 +330,7 @@
 	-  **Set-AzureDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 	-  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
  
-	一覧のタイトルをクリックするか、**... (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
+	一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
 	
 	代わりに、スライスの開始時刻と終了時刻で並べ替えられたデータ スライスを表示するには、**[データ スライス (スライスの時刻別)]** タイルをクリックします。
 
@@ -348,7 +348,7 @@
 	![[テーブル] ブレード][image-data-factory-get-started-table-blade]
  
 7. 現在の時刻までのデータ スライスが既に生成されており、**準備完了**になっています。下部の **[問題のあるスライス]** セクションにはスライスが表示されていません。
-8. **... (省略記号)** をクリックし、すべてのスライスを表示します。
+8. **[...] (省略記号)** をクリックし、すべてのスライスを表示します。
 
 	![[データ スライス] ブレード][image-data-factory-get-started-dataslices-blade]
 
@@ -383,8 +383,6 @@
  
 Azure PowerShell を使用してこのチュートリアルの内容を実行する方法については、「[Azure PowerShell を使用した Azure Data Factory の監視と管理][monitor-manage-using-powershell]」を参照してください。
 
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-get-started-using-editor.md)でフィードバックをお寄せください。
 
 <!--Link references-->
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
@@ -503,4 +501,4 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!-----HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

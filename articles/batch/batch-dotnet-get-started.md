@@ -63,7 +63,7 @@ Azure Batch .NET ライブラリで作業を開始するにはまず、サポー
 
 	- **[account-name]** - 以前に作成したストレージ アカウントの名前。
 
-	- **[account-key]** - ストレージ アカウントのプライマリ キー。Azure ポータルの [Storage] ページで、プライマリ キーを確認できます。
+	- **[account-key]** - ストレージ アカウントのプライマリ キー。Azure プレビュー ポータルの [Storage] ページで、プライマリ キーを確認できます。
 
 2. App.config ファイルを保存します。
 
@@ -157,7 +157,7 @@ BLOB ストレージの詳細については、「[.NET から BLOB ストレー
 
 3. **taskdata3.txt** という名前の新しいテキスト ファイルを作成し、以下のテキストをこのファイルにコピーして保存します。
 
-	Azure の Web サイトでは、Web アプリケーションをホストするための、スケーラブルで信頼性が高く、使いやすい環境を提供します。幅広いフレームワークおよびテンプレートからの選択により、わずか数秒で Web サイトを作成できます。ツールや OS を使用して、.NET、PHP、Node.js、Python でサイトを開発します。TFS、GitHub、BitBucket を含むさまざまなソース管理オプションから選択して、継続的インテグレーションの設定とチームとしての開発を実現できます。ストレージ、CDN、SQL Database など、追加の Azure マネージ サービスを活用して、サイトの機能を段階的に拡張できます。
+	Azure の Web サイトでは、Web アプリケーションをホストするための、スケーラブルで信頼性が高く、使いやすい環境を提供します。幅広いフレームワークおよびテンプレートからの選択により、わずか数秒で Web サイトを作成できます。ツールや OS を使用して、.NET、PHP、Node.js、Python でサイトを開発します。TFS、GitHub、BitBucket を含むさまざまなソース管理オプションから選択して、継続的インテグレーションの設定とチームとしての開発を実現できます。Storage、CDN、SQL Database など、追加の Azure マネージ サービスを活用して、サイトの機能を段階的に拡張できます。
 
 ### Storage コンテナーにファイルをアップロードする
 
@@ -208,7 +208,7 @@ BLOB ストレージの詳細については、「[.NET から BLOB ストレー
 			BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials("[account-url]", "[account-name]", "[account-key]");
 			BatchClient client = BatchClient.Open(cred);
 
-	かっこ付きの値を、Batch アカウントに関連付けられた値に置き換えます。値は [Azure プレビュー ポータル](https://portal.azure.com)で見つけることができます。これらの値を見つけるには、[Azure プレビュー ポータル](https://portal.azure.com)にログインします。
+	かっこで囲まれた値を、Batch アカウントに関連付けられた値に置き換えます。それぞれの値は [Azure プレビュー ポータル](https://portal.azure.com)で見つけることができます。これらの値を見つけるには、[Azure プレビュー ポータル](https://portal.azure.com)にログインします。
 
 	- **[account-name]** - **[Batch アカウント]** をクリックし、作成した Batch アカウントを選択します。
 	- **[account-url]** - [Batch アカウント] ブレードで、**[プロパティ]**、**[URL]** の順にクリックします。
@@ -487,7 +487,7 @@ Azure のリソースに対して課金されるため、不要になったリ�
 			Task status: Completed
 			Task start: 7/17/2015 8:31:57 PM
 
-8. この時点で、Azure ポータルに移動して作成されたリソースを確認できます。リソースを削除するには、プログラムが終了するまで Enter キーを押します。
+8. この時点で、Azure プレビュー ポータルに移動し、作成されたリソースを確認できます。リソースを削除するには、プログラムが終了するまで Enter キーを押します。
 
 ## 次のステップ
 
@@ -495,4 +495,4 @@ Azure のリソースに対して課金されるため、不要になったリ�
 
 2. 一部のアプリケーションは、処理するのに困難な大量のデータを生成します。これを解決する 1 つの方法は、[効率的なリスト クエリ](batch-efficient-list-queries.md)を使用することです。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

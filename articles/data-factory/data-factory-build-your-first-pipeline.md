@@ -170,9 +170,6 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 
 - Azure ポータルの一部である Data Factory エディターを使用してチュートリアルを実行するには、上部にある「[Data Factory エディターの使用](data-factory-build-your-first-pipeline-using-editor.md)」というリンクをクリックします。
 - Azure PowerShell を使用してチュートリアルを実行するには、上部にある「[PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)」というリンクをクリックします。
-- Visual Studio を使用してチュートリアルを実行するには、上部にある "[Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)" というリンクをクリックします。 
+- Visual Studio を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)」というリンクをクリックします。 
 
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline.md)でフィードバックをお寄せください。
-
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

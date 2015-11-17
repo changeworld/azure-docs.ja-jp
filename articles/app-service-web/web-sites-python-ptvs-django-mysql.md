@@ -12,7 +12,7 @@
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="08/30/2015"
 	ms.author="huguesv"/>
 
@@ -218,4 +218,4 @@ Python Tools for Visual Studio、Django および MySQL の詳細については
 [MySQL]: http://www.mysql.com/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->
