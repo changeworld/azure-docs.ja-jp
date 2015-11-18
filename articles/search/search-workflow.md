@@ -94,7 +94,7 @@ Azure Search のクエリは非常に簡単です。URI に `search=*` を含め
 
 50 ドキュメントは既定値です。`$Count` クエリ パラメーターを使用し、返される項目の数を変更できます。このパラメーターの詳細は「[ドキュメントの検索](https://msdn.microsoft.com/library/dn798927.aspx)」にあります。
 
-> [AZURE.TIP]クエリ サンプルの最も包括的な一覧は「[ドキュメントの検索](https://msdn.microsoft.com/library/dn798927.aspx)」にありますが、サポートされている演算子の一覧を[構文参照](https://msdn.microsoft.com/library/dn798920.aspx)で確認することもできます。
+> [AZURE.TIP] クエリ サンプルの最も包括的な一覧は「[ドキュメントの検索](https://msdn.microsoft.com/library/dn798927.aspx)」にありますが、サポートされている演算子の一覧を[構文参照](https://msdn.microsoft.com/library/dn798920.aspx)で確認することもできます。
 
 ### 手順 5: 他の機能を試す
 
@@ -190,4 +190,4 @@ Standard 価格レベルのみをスケールアップまたはスケールダ�
 <!--Image references-->
 [1]: ./media/search-workflow/AzSearch-Workflow.png
 
-<!-------HONumber=Nov15_HO3-->
+<!--------HONumber=Nov15_HO3-->
