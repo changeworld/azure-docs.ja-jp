@@ -77,7 +77,7 @@ Azure Search にインデックスを保存したら、次の手順として、�
 
 4 つ目の選択肢は、おそらく最も簡単な方法ですが、ソリューションの組み込みデータベース (.mdf) からドキュメントを読み込む [Adventure Works C# REST API のサンプル](https://azuresearchadventureworksdemo.codeplex.com/)とソリューションに含まれる JSON データ ファイルからデータを読み込む[スコアリング プロファイル C# REST API のサンプル](https://azuresearchscoringprofiles.codeplex.com/)からコードを借りることです。
 
-> [AZURE.TIP][スコアリング プロファイルのサンプル](https://azuresearchscoringprofiles.codeplex.com/)を変更し、実行できます。データ JSON ファイルと schema.json ファイルをアプリケーションで有効なデータで置換します。
+> [AZURE.TIP] [スコアリング プロファイルのサンプル](https://azuresearchscoringprofiles.codeplex.com/) を変更し、実行できます。データ JSON ファイルと schema.json ファイルをアプリケーションで有効なデータで置換します。
 
 ### 手順 4: ドキュメントにクエリを実行する
 
@@ -94,7 +94,7 @@ Azure Search のクエリは非常に簡単です。URI に `search=*` を含め
 
 50 ドキュメントは既定値です。`$Count` クエリ パラメーターを使用し、返される項目の数を変更できます。このパラメーターの詳細は「[ドキュメントの検索](https://msdn.microsoft.com/library/dn798927.aspx)」にあります。
 
-> [AZURE.TIP]クエリ サンプルの最も包括的な一覧は「[ドキュメントの検索](https://msdn.microsoft.com/library/dn798927.aspx)」にありますが、サポートされている演算子の一覧を[構文参照](https://msdn.microsoft.com/library/dn798920.aspx)で確認することもできます。
+> [AZURE.TIP] クエリ サンプルの最も包括的な一覧は「[ドキュメントの検索](https://msdn.microsoft.com/library/dn798927.aspx)」にありますが、サポートされている演算子の一覧を[構文参照](https://msdn.microsoft.com/library/dn798920.aspx)で確認することもできます。
 
 ### 手順 5: 他の機能を試す
 
@@ -190,4 +190,4 @@ Standard 価格レベルのみをスケールアップまたはスケールダ�
 <!--Image references-->
 [1]: ./media/search-workflow/AzSearch-Workflow.png
 
-<!----HONumber=Nov15_HO3-->
+<!--------HONumber=Nov15_HO3-->
