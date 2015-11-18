@@ -32,28 +32,31 @@
 
 2. **[操作]** レンズ内で、**[アラート ルール]** タイルをクリックします。
 
-3. **[追加アラート]** コマンドをクリックします。![アラートの追加](./media/insights-receive-alert-notifications/Insights_AddAlert.png)
+3. **[追加アラート]** コマンドをクリックします。
+    ![アラートの追加](./media/insights-receive-alert-notifications/Insights_AddAlert.png)
 
 4. アラート ルールに名前を付け、通知メールに表示される説明を選択できます。
 
-5. **[メトリック]** を選択する場合は、メトリックの条件としきい値を選択します。これは、Azure がアラート アクティビティの監視とプロットに使用する期間です。![条件としきい値](./media/insights-receive-alert-notifications/Insights_ConditionAndThreshold.png)
+5. **[メトリック]** を選択する場合は、メトリックの条件としきい値を選択します。これは、Azure がアラート アクティビティの監視とプロットに使用する期間です。
+    ![条件としきい値](./media/insights-receive-alert-notifications/Insights_ConditionAndThreshold.png)
 
-6. **[イベント]** を選択することもできます。この場合は、特定のイベントが発生すると通知を受け取ります。![イベント](./media/insights-receive-alert-notifications/Insights_Events.png)
+6. **[イベント]** を選択することもできます。この場合は、特定のイベントが発生すると通知を受け取ります。 
+    ![イベント](./media/insights-receive-alert-notifications/Insights_Events.png)
     
->[AZURE.NOTE]現時点では、[イベント] は Web Apps でのみサポートされています。
+>[AZURE.NOTE] 現時点では、[イベント] は Web Apps でのみサポートされています。 
 
 7. 最後に、担当の管理者にメール通知を送信できます。
 
-**[保存]** をクリックしてから数分以内で、選択したメトリックがしきい値を超えたかどうかが通知されます。
+**[保存]** をクリックしてから数分以内で、選択したメトリックがしきい値を超えたかどうかが通知されます。 
 
 ## アラート ルールの管理
 
-アラート ルールが作成されると、過去のメトリックと比較したアラートしきい値のプレビューが表示されます。
+アラート ルールが作成されると、過去のメトリックと比較したアラートしきい値のプレビューが表示されます。 
 
 ![イベント](./media/insights-receive-alert-notifications/Insights_EditAlert.png)
 
 
-このアラート ルールはもちろん編集できます。通知の受信を一時的に停止する場合は、**[無効]** または **[有効]** にできます。
+このアラート ルールはもちろん編集できます。通知の受信を一時的に停止する場合は、**[無効]** または **[有効]** にできます。 
 
 ## 次のステップ
 
@@ -66,4 +69,4 @@
 * [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。
  
 
-<!---HONumber=Oct15_HO4-->
+<!----HONumber=Oct15_HO4-->
