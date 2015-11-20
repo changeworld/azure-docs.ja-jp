@@ -96,7 +96,7 @@ Web Apps で有効な PHP バージョンの 非スレッド セーフ (NTS) x86
 
 ## Memcache WordPress プラグインのインストール
 
-> [AZURE.NOTE][Memcached Object Cache プラグイン](https://wordpress.org/plugins/memcached/)を WordPress.org からダウンロードすることもできます。
+> [AZURE.NOTE] [Memcached Object Cache プラグイン](https://wordpress.org/plugins/memcached/)を WordPress.org からダウンロードすることもできます。
 
 WordPress プラグインのページで、**[新規追加]** をクリックします。
 
@@ -198,4 +198,4 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 [12]: /services/cache/
 [13]: http://memcached.org
 
-<!---HONumber=Oct15_HO4-->
+<!----HONumber=Oct15_HO4-->

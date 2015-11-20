@@ -147,7 +147,7 @@ if (!namespaceManager.TopicExists("TestTopic"))
 }
 ```
 
-> [AZURE.NOTE][NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) オブジェクトで [TopicExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx) メソッドを使用することで、指定した名前のトピックが名前空間に既に存在するかどうかを確認できます。
+> [AZURE.NOTE] [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) オブジェクトで [TopicExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx) メソッドを使用することで、指定した名前のトピックが名前空間に既に存在するかどうかを確認できます。
 
 ## サブスクリプションを作成する
 
@@ -327,4 +327,4 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
   [Service Bus ブローカー メッセージングに関する .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!---HONumber=Oct15_HO4-->
+<!----HONumber=Oct15_HO4-->
