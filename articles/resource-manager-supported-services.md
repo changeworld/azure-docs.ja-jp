@@ -30,12 +30,11 @@ Azure リソース マネージャーは、アプリケーションを構成す�
 | サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------------------------ | -------------- | -------------- |-------- | ------ |
 | Virtual Machines | あり | あり、多くのオプション | いいえ | [VM の作成](https://msdn.microsoft.com/library/azure/mt163591.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json) |
-| Batch  
- | あり | [あり (クラシックのみ)](https://portal.azure.com/#create/Microsoft.BatchAccount) | | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | |
+| Batch   | あり | [あり (クラシックのみ)](https://portal.azure.com/#create/Microsoft.BatchAccount) | | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | |
 | Dynamics Lifecycle Services | はい | いいえ | | | |
 | Virtual Machines (クラシック) | 限定的 | はい | 部分的 (後述参照) | - | - |
-| RemoteApp | いいえ | - | - | - | - |
-| Service Fabric | いいえ | - | - | - | - |
+| RemoteApp | いいえ | いいえ | - | - | - |
+| Service Fabric | いいえ | いいえ | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイメント モデルではなくクラシック デプロイメント モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイメント モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 
@@ -80,7 +79,8 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | Stream Analytics | あり | [はい](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) | | | |
 | HDInsights | あり | [はい](https://portal.azure.com/#create/Microsoft.HDInsightCluster) | | | |
 | Data Factory | あり | [はい](https://portal.azure.com/#create/Microsoft.DataFactory) | あり | [Data Factory の作成](https://msdn.microsoft.com/library/azure/dn906717.aspx) | |
-| Machine Learning | いいえ | いいえ | - | - | - | | Data Catalog | いいえ | いいえ | - | - | - |
+| Machine Learning | いいえ | いいえ | - | - | - |
+| Data Catalog | いいえ | いいえ | - | - | - |
 
 ## ネットワーク
 
@@ -89,7 +89,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | Application Gateway | はい | | | | |
 | DNS | はい | | | [DNS ゾーンの作成](https://msdn.microsoft.com/library/azure/mt130622.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Network.json) |
 | Load Balancer | はい | | | [Load Balancer の作成](https://msdn.microsoft.com/library/azure/mt163574.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Network.json) |
-| Virtual Networks | あり | [はい](https://portal.azure.com/#create/Microsoft.VirtualNetwork-ARM) | いいえ | Virtual Network の作成 | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Network.json) |
+| Virtual Networks | あり | [はい](https://portal.azure.com/#create/Microsoft.VirtualNetwork-ARM) | いいえ | [Virtual Network の作成](https://msdn.microsoft.com/library/azure/mt163661.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Network.json) |
 | Traffic Manager | はい | いいえ | | [Traffic Manager プロファイルの作成](https://msdn.microsoft.com/library/azure/mt163581.aspx) | |
 | ExpressRoute | あり | なし | いいえ | [ExpressRoute REST](https://msdn.microsoft.com/library/azure/mt586720.aspx) | |
 
@@ -107,7 +107,8 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | ------- | ------- | -------------- | -------------- | -------- | ------ |
 | BizTalk Services | はい | いいえ | | | [2014-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.BizTalkServices.json) |
 | Service Bus | あり | いいえ | | [Service Bus REST](https://msdn.microsoft.com/library/azure/hh780717.aspx) | |
-| Backup | いいえ | いいえ | - | - | - | | Site Recovery | いいえ | いいえ| - | - | - |
+| Backup | いいえ | いいえ | - | - | - |
+| Site Recovery | いいえ | いいえ| - | - | - |
 
 ## ID 管理とアクセス管理 
 
@@ -234,4 +235,4 @@ Azure PowerShell 0.9.8 では、次を使用します。
 - リソース マネージャーのテンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=Nov15_HO2-->
+<!----HONumber=Nov15_HO2-->

@@ -25,17 +25,18 @@
 
 *Application Insights が正常に追加された後でアプリケーションを実行したところ、ポータルにデータが表示されません。*
 
-* 少し待ってから、[最新の情報に更新] をクリックします。Currently, refresh isn't automatic.
-* Check that you have an instrumentation key defined in the ApplicationInsights.config file, and that it is the same as the key in the Application Insights portal.キーを表示するには、概要ブレードで [Essentials] をクリックします。
+* 少し待ってから、[最新の情報に更新] をクリックします。現時点では、自動での更新は行われません。
+* ApplicationInsights.config ファイル内で、インストルメンテーション キーが定義されていることをご確認ください。また、定義されているインストルメンテーション キーが Application Insights ポータル内のキーと同じであることをご確認ください。  
+キーを表示するには、概要ブレードで [Essentials] をクリックします。
 * アプリが[外向きのネットワーク アクセスを要求すること](https://msdn.microsoft.com/library/windows/apps/hh452752.aspx)を確認します。
-* エミュレーターまたはテスト デバイスと Application Insights ポータルの間にファイアウォールはありますか。 You might have to open TCP ports 80 and 443 for outgoing traffic to dc.services.visualstudio.com and f5.services.visualstudio.com.
+* エミュレーターまたはテスト デバイスと Application Insights ポータルの間にファイアウォールはありますか。 dc.services.visualstudio.com と f5.services.visualstudio.com への送信トラフィック用に TCP ポート 80 および 443 を開く必要がある可能性があります。
 * Microsoft Azure のスタート ボードで、サービス状態マップをご確認ください。アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
 
 
 #### データが表示されていたのに停止しました。
 
 * [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
-* データ ポイントの月間クォータに達していませんか? Open Settings/Quota and Pricing to find out.上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
+* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
 
 ## ユニバーサル アプリに Application Insights を追加する方法は?
@@ -68,10 +69,10 @@
 
 これを行うには 2 つの方法があります。
 
-* Create two Application Insights resources (with different instrumentation keys), for the client and the server.But create them in the same Azure resource group.That makes it easy to switch between one and the other.
-* Use one Application Insights resource and put its instrumentation key into both client and server projects.Then you can correlate metrics and events from the two sources.
+* クライアント用とサーバー用に (互いに異なるインストルメンテーション キーで) 2 つの Application Insights リソースを作成します。ただし、これらのリソースは同じ Azure リソース グループ内に作成してください。これにより、リソースの切り替えが簡単にできます。
+* 1 つの Application Insights リソースを使用し、クライアントとサーバー両方のプロジェクトにそのインストルメンテーション キーを配置します。その後、2 つのソースのメトリックスとイベントを関連付けることができます。
 
-To help correlate events in the client and server, generate an operation id for each request.それをクライアントとサーバーの間で送信し、両方の端で利用統計情報に追加します。
+クライアントとサーバーのイベントを関連付けるために、要求ごとに操作 ID を生成します。それをクライアントとサーバーの間で送信し、両方の端で利用統計情報に追加します。
 
     telemetry.Context.OperationId = opid;
 
@@ -120,4 +121,4 @@ To help correlate events in the client and server, generate an operation id for 
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!----HONumber=Oct15_HO4-->
