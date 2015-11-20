@@ -23,7 +23,7 @@
 
 [Apache Mahout](http://mahout.apache.org) 機械学習ライブラリを使用して Azure HDInsight で映画のリコメンデーションを生成する方法について説明します。
 
-> [AZURE.NOTE]このドキュメントの手順では、Windows クライアントと Windows ベースの HDInsight クラスターが必要です。Linux、OS X、または Unix クライアントから Linux ベースの HDInsight クラスターと Mahout を使用する方法の詳細については、[HDInsight で Apache Mahout と Linux ベースの Hadoop を使用した映画のリコメンデーションの生成](hdinsight-hadoop-mahout-linux-mac.md)に関するページを参照してください。
+> [AZURE.NOTE] このドキュメントの手順では、Windows クライアントと Windows ベースの HDInsight クラスターが必要です。Linux、OS X、または Unix クライアントから Linux ベースの HDInsight クラスターと Mahout を使用する方法の詳細については、[HDInsight で Apache Mahout と Linux ベースの Hadoop を使用した映画のリコメンデーションの生成](hdinsight-hadoop-mahout-linux-mac.md)に関するページを参照してください。
 
 
 ##<a name="learn"></a>学習内容
@@ -36,7 +36,7 @@ Mahout は、Apache Hadoop の[機械学習][ml]ライブラリの 1 つです�
 
 * Mahout を HDInsight 3.0 と HDInsight 2.0 クラスターにインストールする方法
 
-	> [AZURE.NOTE]Mahout は、HDInsight 3.1 バージョンのクラスターで提供されます。以前のバージョンの HDInsight を使用している場合は、次に進む前に「[Mahout のインストール](#install)」をご覧ください。
+	> [AZURE.NOTE] Mahout は、HDInsight 3.1 バージョンのクラスターで提供されます。以前のバージョンの HDInsight を使用している場合は、次に進む前に「[Mahout のインストール](#install)」をご覧ください。
 
 ##前提条件
 
@@ -47,7 +47,7 @@ Mahout は、Apache Hadoop の[機械学習][ml]ライブラリの 1 つです�
 
 ##<a name="recommendations"></a>Windows PowerShell を使用してリコメンデーションを生成する
 
-> [AZURE.NOTE]このセクションで使用されるジョブは Windows PowerShell で動作しますが、Mahout で提供されるクラスの多くは現在 Windows PowerShell で動作しないため、Hadoop コマンド ラインを使用して実行する必要があります。Windows PowerShell で動作しないクラスの一覧については、「[トラブルシューティング](#troubleshooting)」セクションをご覧ください。
+> [AZURE.NOTE] このセクションで使用されるジョブは Windows PowerShell で動作しますが、Mahout で提供されるクラスの多くは現在 Windows PowerShell で動作しないため、Hadoop コマンド ラインを使用して実行する必要があります。Windows PowerShell で動作しないクラスの一覧については、「[トラブルシューティング](#troubleshooting)」セクションをご覧ください。
 >
 > Hadoop コマンド ラインを使用して Mahout ジョブを実行する例については、[Hadoop コマンド ラインを使用してデータを分類する](#classify)をご覧ください。
 
@@ -105,7 +105,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
             -Container $container `
             -Context $context
     
-    これは、使用するクラスターの既定のストレージ内の __example/data/u.data__ に __u.data__ ファイルをアップロードします。これで、HDInsight ジョブから \_\___wasb:///example/data/u.data__ URI を使用してこのデータにアクセスできるようになります。
+    これは、使用するクラスターの既定のストレージ内の __example/data/u.data__ に __u.data__ ファイルをアップロードします。これで、HDInsight ジョブから __wasb:///example/data/u.data__ URI を使用してこのデータにアクセスできるようになります。
 
 ###ジョブを実行する
 
@@ -187,7 +187,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
             -HttpCredential $creds `
             -DisplayOutputType StandardError
 
-> [AZURE.NOTE]Mahout ジョブは、ジョブの処理中に作成された一時データを削除しません。このサンプル ジョブでは `--tempDir` パラメーターを指定し、一時ファイルを特定のディレクトリに分離します。
+> [AZURE.NOTE] Mahout ジョブは、ジョブの処理中に作成された一時データを削除しません。このサンプル ジョブでは `--tempDir` パラメーターを指定し、一時ファイルを特定のディレクトリに分離します。
 
 Mahout ジョブは出力を STDOUT に返しません。代わりに、指定された出力ディレクトリに __part-r-00000__ として格納します。このファイルは、ワークステーションの現在のディレクトリ内の __output.txt__ にダウンロードされます。
 
@@ -413,7 +413,7 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 
   このジョブでも、__wasb:///example/data/predictions/KDDTest+.arff.out__ にファイルが生成されますが、これは、人間が判読できないファイルです。
 
-> [AZURE.NOTE]Mahout ジョブはファイルを上書きしません。これらのジョブをもう一度実行する場合は、前のジョブで作成したファイルを削除する必要があります。
+> [AZURE.NOTE] Mahout ジョブはファイルを上書きしません。これらのジョブをもう一度実行する場合は、前のジョブで作成したファイルを削除する必要があります。
 
 ##<a name="troubleshooting"></a>トラブルシューティング
 
@@ -423,9 +423,9 @@ Mahout は HDInsight 3.1 クラスターにインストールされますが、�
 
 1. 使用する Mahout のバージョンは、使用するクラスターの HDInsight バージョンによって異なります。Azure ポータルでクラスターのプロパティを表示することで、クラスターのバージョンを見つけることができます。
 
-  * __HDInsight 2.1 __ の場合は、[Mahout 0.9](http://repo2.maven.org/maven2/org/apache/mahout/mahout-core/0.9/mahout-core-0.9-job.jar) を含む Java アーカイブ (JAR) ファイルをダウンロードできます。
+  * __HDInsight 2.1__ の場合は、[Mahout 0.9](http://repo2.maven.org/maven2/org/apache/mahout/mahout-core/0.9/mahout-core-0.9-job.jar) を含む Java アーカイブ (JAR) ファイルをダウンロードできます。
 
-  * __HDInsight 3.0 の場合は__、[Mahout をソースからビルド][build]して HDInsight により提供される Hadoop バージョンを指定する必要があります。ビルド ページに示された前提条件をインストールし、ソースをダウンロードして、次のコマンドを使用して Mahout jar ファイルを作成します。
+  * __HDInsight 3.0__ の場合は、[Mahout をソースからビルド][build]して HDInsight により提供される Hadoop バージョンを指定する必要があります。ビルド ページに示された前提条件をインストールし、ソースをダウンロードして、次のコマンドを使用して Mahout jar ファイルを作成します。
 
 			mvn -Dhadoop2.version=2.2.0 -DskipTests clean package
 
@@ -531,4 +531,4 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=Nov15_HO2-->
+<!----HONumber=Nov15_HO2-->

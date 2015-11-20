@@ -92,7 +92,7 @@ Federations では、特定のフェデレーション メンバーへの接続�
 
 ![シャードのフェデレーション メンバーに対して切り替え操作を実行する][3]
 
-エラスティック データベース ツール API を含むようにアプリケーションを変更したら、Federations アプリケーションの移行の最終ステップとして、フェデレーション メンバーに対して **SWITCH OUT** を実行します (詳細については、MSDN リファレンスの [ALTER FEDERATION (Azure SQL Database)]http://msdn.microsoft.com/library/dn269988(v=sql.120).aspx))を参照してください)。特定のフェデレーション メンバーに対して **SWITCH OUT** を発行すると、すべてのフェデレーション制約とメタデータが削除され、その結果、フェデレーション メンバーは、他の Azure SQL Database と同じ通常の Azure SQL Database となります。
+エラスティック データベース ツール API を含むようにアプリケーションを変更したら、Federations アプリケーションの移行の最終ステップとして、フェデレーション メンバーに対して **SWITCH OUT** を実行します (詳細については、MSDN リファレンスの [ALTER FEDERATION (Azure SQL Database)](http://msdn.microsoft.com/library/dn269988(v=sql.120).aspx))を参照してください)。特定のフェデレーション メンバーに対して **SWITCH OUT** を発行すると、すべてのフェデレーション制約とメタデータが削除され、その結果、フェデレーション メンバーは、他の Azure SQL Database と同じ通常の Azure SQL Database となります。
 
 フェデレーション メンバーに対して **SWITCH OUT** を発行する操作は一方向の操作であり、元に戻すことはできません。この操作を実行した後のデータベースを再びフェデレーションに追加することはできません。また、このデータベースに対しては USE FEDERATION コマンドも機能しなくなります。
 
@@ -150,4 +150,4 @@ Federations 移行ユーティリティが提供する機能は次のとおり�
 [3]: ./media/sql-database-elastic-scale-federation-migration/migrate-3.png
  
 
-<!---HONumber=Nov15_HO2-->
+<!----HONumber=Nov15_HO2-->
