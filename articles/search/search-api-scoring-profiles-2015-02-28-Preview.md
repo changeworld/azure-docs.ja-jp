@@ -340,7 +340,7 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 
 `boostingDuration` は freshness 関数の属性です。これを使用して特定のドキュメントに対して有効期限を設定します。この期限が過ぎるとブースティングは停止します。たとえば、10 日のプロモーション期間中に製品ラインまたはブランドをブーストするには、該当するドキュメントに対して 10 日の期間を "P10D" で指定します。また、翌週に予定しているイベントをブーストするには、"-P7D" と指定します。
 
-`boostingDuration` は、XSD "dayTimeDuration" 値 (ISO 8601 期間値の制限されたサブセット) としてフォーマットする必要があります。このパターンは、"[-]P[nD][T[nH][nM][nS]]" です。
+`boostingDuration` は、XSD "dayTimeDuration" 値 (ISO 8601 期間値の制限されたサブセット) としてフォーマットする必要があります。このパターンは、"[-]P\[nD]\[T\[nH]\[nM]\[nS]\]" です。
 
 次の表に、いくつかの例を示します。
 
@@ -370,4 +370,4 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=Nov15_HO3-->

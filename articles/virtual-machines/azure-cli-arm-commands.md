@@ -1251,7 +1251,23 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	info:    network public-ip create command OK
 
 
-パラメーターのオプション: -h、--help 利用状況情報の出力 -v、--verbose 詳細出力を使用 --json JSON 出力の使用 -g、--resource-group <resource-group> リソース グループ名 -n、--name <name> パブリック IP の名前 -l、--location <location> 場所 -d、--domain-name-label <domain-name-label> ドメイン名のラベル。これにより、DNS が <domain-name-label>.<location>.cloudapp.azure.com に設定されます。-a, --allocation-method <allocation-method> 割り当て方法 [静的][動的] -i, --idletimeout <idletimeout> アイドル タイムアウト (分) -f, --reverse-fqdn <reverse-fqdn> FQDN の反転 -t, --tags <tags> タグの一覧。複数指定できます。"名前 = 値" の形式です。名前は必須で、値は省略可能です。たとえば、-t tag1=value1;tag2 -s, --subscription <subscription> サブスクリプション識別子 <br>
+パラメーターのオプション:
+	-h、--help                                   利用状況情報の出力
+	-v、--verbose                                詳細出力を使用 --json JSON 出力の使用
+	-g、--resource-group <resource-group>        リソース グループ名
+	-n、--name <name>                            パブリック IP の名前
+	-l、--location <location>                    場所
+	-d、--domain-name-label <domain-name-label>  ドメイン名のラベル。
+	これにより、DNS が <domain-name-label>.<location>.cloudapp.azure.com に設定されます。
+	-a, --allocation-method <allocation-method> 割り当て方法 [静的][動的]
+	-i, --idletimeout <idletimeout>             アイドル タイムアウト (分)
+	-f, --reverse-fqdn <reverse-fqdn>           FQDN の反転
+	-t, --tags <tags>                           タグの一覧。
+	複数指定できます。"名前 = 値" の形式です。
+	名前は必須で、値は省略可能です。
+	たとえば、-t tag1=value1;tag2
+	-s, --subscription <subscription>           サブスクリプション識別子
+<br>
 
 	network public-ip set [options] <resource-group> <name>
 既存のパブリック IP リソースのプロパティを更新します。次の例では、パブリック IP アドレスを動的から静的に変更しています。
@@ -1742,4 +1758,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=Nov15_HO3-->
