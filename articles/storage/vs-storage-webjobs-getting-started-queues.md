@@ -3,7 +3,7 @@
 	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Web ジョブ プロジェクトで Azure キュー ストレージの使用を開始する方法について説明します。"
 	services="storage"
 	documentationCenter=""
-	authors="patshea123"
+	authors="TomArcher"
 	manager="douge"
 	editor="tglee"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/03/2015"
-	ms.author="patshea"/>
+	ms.author="tarcher"/>
 
 # Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
 
@@ -552,4 +552,4 @@ Azure テーブルでは **Console.Out** および **Console.Error** ログが�
 
 この記事では、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

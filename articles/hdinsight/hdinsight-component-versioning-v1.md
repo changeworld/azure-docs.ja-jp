@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/29/2015"
+	ms.date="11/09/2015"
 	ms.author="jgao"/>
 
 
@@ -43,7 +43,7 @@ Azure HDInsight は、いつでもデプロイできる Hadoop クラスター �
 
 **現在のコンポーネントのバージョンの取得**
 
-HDInsight クラスターのバージョンに関連付けられたコンポーネントのバージョンは、将来 HDInsight が更新されたときに変更される可能性があります。利用可能なコンポーネントを特定し、どのバージョンがクラスターに使用されているかどうかを確認する 1 つの方法は、Ambari REST API を使用することです。**GetComponentInformation** コマンドを使用すると、サービス コンポーネントに関する情報を取得できます。詳細については、「[Ambari のドキュメント][ambari-docs]」を参照してください。この情報を取得するもう 1 つの方法は、リモート デスクトップを使用してクラスターにログインし、"C:\\apps\\dist\" ディレクトリの内容を直接確認することです。
+HDInsight クラスターのバージョンに関連付けられたコンポーネントのバージョンは、将来 HDInsight が更新されたときに変更される可能性があります。利用可能なコンポーネントを特定し、どのバージョンがクラスターに使用されているかどうかを確認する 1 つの方法は、Ambari REST API を使用することです。**GetComponentInformation** コマンドを使用すると、サービス コンポーネントに関する情報を取得できます。詳細については、「[Ambari のドキュメント][ambari-docs]」を参照してください。この情報を取得するもう 1 つの方法は、リモート デスクトップを使用してクラスターにログインし、"C:\\apps\\dist" ディレクトリの内容を直接確認することです。
 
 
 **リリース ノート**
@@ -103,7 +103,7 @@ HDInsight プラットフォームの重要な機能には、次のようなも�
 次の表に、現在使用できる HDInsight のバージョン、該当する Hortonworks Data Platform のバージョン、そのリリース日を示します。非推奨となった場合は、サポート有効期限とその日付も記載されます。以下の点に注意してください。
 
 * ヘッド ノードを 2 つ備えた可用性の高いクラスターは、HDInsight 2.1 以降では既定でデプロイされています。HDInsight 1.6 クラスターでは利用できません。
-* 特定のバージョンのサポート期限が切れると、Azure ポータルから利用できなくなる可能性があります。次の表に、Azure ポータルで利用できるバージョンを示します。クラスター バージョンは、非推奨となるまでは、Windows PowerShell [New-AzureHDInsightCluster](http://msdn.microsoft.com/library/dn593744.aspx) コマンドの `Version` パラメーターと .NET SDK で利用できます。
+* 特定のバージョンのサポート期限が切れると、Azure ポータルから利用できなくなる可能性があります。次の表に、Azure ポータルで利用できるバージョンを示します。クラスター バージョンは、非推奨となるまでは、Windows PowerShell [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) コマンドの `Version` パラメーターと .NET SDK で利用できます。
 
 <table border="1"> <tr><th>HDInsight のバージョン</th><th>HDP のバージョン</a><th>高可用性</th></th><th>リリース日</th><th>Azure ポータルでの利用</th><th>サポート有効期限</th><th>非推奨となる日</th></tr> <tr><td>HDI 3.2</td><td>HDP 2.2</td><td>あり</td><td>2015 年 2 月 18 日</td><td>あり</td><td></td><td></td></tr> <tr><td>HDI 3.1</td><td>HDP 2.1</td><td>あり</td><td>2014 年 6 月 24 日</td><td>あり</td><td></td><td></td></tr> <tr><td>HDI 3.0</td><td>HDP 2.0</td><td>あり</td><td>2014 年 2 月 11 日</td><td>あり</td><td>2014 年 9 月 17 日</td><td>2015 年 6 月 30 日</td></tr> <tr><td>HDI 2.1</td><td>HDP 1.3</td><td>あり</td><td>2013 年 10 月 28 日</td><td>なし</td><td>2014 年 5 月 12 日</td><td>2015 年 5 月 31 日</td></tr> <tr><td>HDI 1.6</td><td>HDP 1.1</td><td>なし</td><td>2013 年 10 月 28 日</td><td>なし</td><td>2014 年 4 月 26 日</td><td>2015 年 5 月 31 日</td></tr> </table><br>
 
@@ -160,4 +160,4 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

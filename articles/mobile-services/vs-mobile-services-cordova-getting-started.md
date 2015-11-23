@@ -3,7 +3,7 @@
 	description="Visual Studio 接続済みサービスを使用して Azure Mobile Services に Cordova プロジェクトを接続した後の最初の手順について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
-	authors="patshea123" 
+	authors="TomArcher" 
 	manager="douge" 
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="multiple" 
 	ms.topic="article" 
 	ms.date="09/17/2015" 
-	ms.author="patshea"/>
+	ms.author="tarcher"/>
 
 # Mobile Services の使用 (Cordova プロジェクト)
 
@@ -94,4 +94,4 @@ where メソッドを使用してクエリを変更できます。次の例で�
 
 [モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/17/2015"
-   ms.author="kenhoff;yossib"/>
+   ms.date="11/09/2015"
+   ms.author="kenhoff"/>
 
 
 # Azure AD Reporting API の概要
@@ -168,4 +168,4 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 - 監査レポートの詳細については、「[Azure Active Directory 監査レポートのイベント](active-directory-reporting-audit-events.md)」を参照してください
 - Graph API REST サービスの詳細については、「[Azure AD Reports and Events (Preview) (Azure AD のレポートとイベント (プレビュー))](https://msdn.microsoft.com/library/azure/mt126081.aspx)」を参照してください
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

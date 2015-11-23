@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="11/09/2015" 
 	ms.author="spelluru"/>
 
 # Data Factory から MapReduce プログラムを起動する
@@ -22,7 +22,7 @@
 ## はじめに 
 Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。この記事では、HDInsight アクティビティの MapReduce 変換を使用する方法について説明しています。
  
-HDInsight アクティビティの Pig/Hive 変換を使用して、Azure Data Factory パイプラインから HDInsight クラスター上の Pig/Hive スクリプトを実行する方法の詳細については、[Pig](data-factory-pig-activity) と [Hive](data-factory-hive-activity.md) に関する記事を参照してください。
+HDInsight アクティビティの Pig/Hive 変換を使用して、Azure Data Factory パイプラインから Windows/Linux ベースの HDInsight クラスター上の Pig/Hive スクリプトを実行する方法の詳細については、[Pig](data-factory-pig-activity) と [Hive](data-factory-hive-activity.md) に関する記事を参照してください。
 
 ## MapReduce の変換を使用する HDInsight アクティビティの JSON 
 
@@ -102,4 +102,4 @@ MapReduce の変換で HDInsight アクティビティを使用するための�
 [Azure Portal]: http://portal.azure.com
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

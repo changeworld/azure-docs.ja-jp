@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/29/2015"
+   ms.date="11/06/2015"
    ms.author="nitinme"/>
 
 # Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする
@@ -46,7 +46,7 @@ PowerShell を使用して、Data Lake Store を使用するように HDInsight 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
 - Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
 - **Windows SDK**。[ここ](https://dev.windows.com/ja-JP/downloads)からインストールできます。この機能は、セキュリティ証明書の作成に使用します。
-- **Azure PowerShell 1.0**。[ここ](https://github.com/MicrosoftBigData/AzureDataLake/releases/download/AzurePowerShell_2015_10_30/AzurePowerShell.msi)からインストールします。
+- **Azure PowerShell 1.0 以降**。手順については、[Azure PowerShell のインストールと構成](../install-configure-powershell.md)に関するページをご覧ください。
  
 
 ## Azure Data Lake Store を作成する
@@ -294,4 +294,4 @@ Data Lake Store を使用するように HDInsight クラスターを構成し�
 [makecert]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

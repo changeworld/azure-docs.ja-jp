@@ -200,13 +200,15 @@ Microsoft Azure Media Services 用 ISO Fragmented MP4 ベースのライブ イ�
 2. 個別のストリームを使用して最も低い 2 つビデオ ビットレートを送信します。これらのストリームにはそれぞれ固有のオーディオ トラックのコピーを含める必要があります。たとえば、複数の言語がサポートされている場合、これらのストリームに各言語のオーディオ トラックを含める必要があります。
 3. 個別のサーバー (エンコーダー) のインスタンスを使用して、(1) と (2) の手順に従い冗長ストリームをエンコードし、送信します。 
 
+
+
 ##Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
 
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
 [image1]: ./media/media-services-fmp4-live-ingest-overview/media-services-image1.png
@@ -219,4 +221,4 @@ AMS のラーニング パスについては、以下を参照してください
 
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

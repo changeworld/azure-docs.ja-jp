@@ -6,7 +6,7 @@
  authors="dlepow"
  manager="timlt"
  editor=""
- tags="azure-service-management"/>
+ tags="azure-service-management,hpc-pack"/>
 <tags
  ms.service="virtual-machines"
  ms.devlang="na"
@@ -265,7 +265,7 @@ PS > clusrun /nodegroup:LinuxNodes mount CentOS7RDMA-HN:/nfs /nfsshared
 
 HPC Pack GUI ツールと HPC Web ポータル経由で Azure のクラスターにジョブを送信する方法は Windows コンピューティング ノードの場合と同じです。「[HPC ジョブ マネージャー](https://technet.microsoft.com/library/ff919691.aspx)」および「[オンプレミスのクライアントがジョブを送信できるように構成するための手順](https://msdn.microsoft.com/library/azure/dn689084.aspx)」を参照してください。
 
-REST API を使用してジョブを送信するには、「[Creating and Submitting Jobs by Using the REST API in Microsoft HPC Pack (Microsoft HPC Pack で REST API を使用したジョブの作成と送信)](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)」を参照してください。Linux クライアントからジョブを送信する場合は、[HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756) の Python サンプルを参照してください。
+REST API でジョブを送信する方法については、「[Creating and Submitting Jobs by Using the REST API in Microsoft HPC Pack](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)」を参照してください。Linux クライアントからジョブを送信する場合は、[HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756) の Python サンプルを参照してください。
 
 ## Linux ノードの clusrun
 
@@ -286,7 +286,7 @@ HPC Pack **clusrun** ツールを使用して、コマンド ウィンドウま�
 * クラスター内の各ノードに 1 ～ 10 の番号を 1 秒間表示するシェル スクリプトを作成して実行すると、ノードからの出力がすぐに表示されます。
 
     ```
-    > clusrun /interleaved echo "for i in {1..10}; do echo \\"\$i\\"; sleep 1; done" ^> script.sh; chmod +x script.sh; ./script.sh
+    > clusrun /interleaved echo "for i in {1..10}; do echo \"\$i\"; sleep 1; done" ^> script.sh; chmod +x script.sh; ./script.sh
     ```
 
 >[AZURE.NOTE]場合によっては、**clusrun** コマンドで特定のエスケープ文字を使用する必要があります。この例に示すように、コマンド ウィンドウで ^ を使用すると、">" 記号がエスケープされます。
@@ -313,4 +313,4 @@ HPC Pack **clusrun** ツールを使用して、コマンド ウィンドウま�
 [nfsperm]: ./media/virtual-machines-linux-cluster-hpcpack/nfsperm.png
 [nfsmanage]: ./media/virtual-machines-linux-cluster-hpcpack/nfsmanage.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

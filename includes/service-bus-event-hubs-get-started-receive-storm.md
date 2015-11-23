@@ -2,9 +2,9 @@
 
 [**Apache Storm**](https://storm.incubator.apache.org) は、境界のないデータ ストリームを信頼性高く簡略化して処理する分散型リアルタイム計算システムです。このセクションでは、Event Hub Storm スパウトを使用して、Event Hub からイベントを受信する方法を示します。Apache Storm を使用して、別々のノードにホストされている複数のプロセスでイベントを分割することができます。Storm と Event Hub の統合は、Storm の Zookeeper のインストールを使用して、進行状況への透過的なチェックポイントの設定、永続的なチェックポイントの管理、並行した Event Hub からの受信によって、イベントの利用を簡略化します。
 
-Event Hubs の受信パターンの詳細については、「[Event Hub の概要]」をご覧ください。
+Event Hubs の受信パターンの詳細については、「[Event Hub の概要][]」をご覧ください。
 
-このチュートリアルでは、[HDInsight Storm] インストールを使用します。これは、Event Hubs スパウトと共に既に利用できます。
+このチュートリアルでは、[HDInsight Storm][] インストールを使用します。これは、Event Hubs スパウトと共に既に利用できます。
 
 1. [HDInsight Storm の使用](../hdinsight/hdinsight-storm-overview.md)の手順に従って、新しい HDInsight クラスターを作成し、リモート デスクトップを介して接続します。
 
@@ -230,4 +230,4 @@ Event Hubs の受信パターンの詳細については、「[Event Hub の概�
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

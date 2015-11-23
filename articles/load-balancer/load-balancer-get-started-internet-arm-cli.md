@@ -17,13 +17,14 @@
    ms.date="10/21/2015"
    ms.author="joaoma" />
 
-#Azure CLI を使用したインターネットに接続するロード バランサーの作成
+# Azure CLI を使用したインターネットに接続するロード バランサーの作成の開始
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、リソース マネージャーのデプロイ モデルについて説明します。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、リソース マネージャーのデプロイ モデルについて説明します。Azure クラシック デプロイ モデルについて確認したい場合は、「[クラシック デプロイを使用したインターネットに接続するロード バランサーの作成の開始](load-balancer-get-started-internet-classic-portal.md)」を参照してください。
+
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -42,11 +43,11 @@
 
 - プローブ - バック エンド アドレス プール内の NIC にリンクされている VM の可用性を確認するための正常性プローブが含まれます。
 
-Azure リソース マネージャーでのロード バランサー コンポーネントの詳細については、「[Azure リソース マネージャーによるロード バランサーのサポート](load-balancer-arm.md)」を参照してください。
+Azure リソース マネージャーでのロード バランサー コンポーネントの詳細については、「[Azure リソース マネージャーによる Load Balancer のサポート](load-balancer-arm.md)」をご覧ください。
 
 ## リソース マネージャーを使用するための CLI のセットアップ
 
-1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストールと構成](xplat-cli.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](xplat-cli.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 
 2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
@@ -103,12 +104,14 @@ Azure リソース マネージャーでのロード バランサー コンポ�
 
 次の例では、以下の項目が作成されます。
 
-- ポート 3441 のすべての受信トラフィックをポート 3389 に転送する NAT 規則。
+- ポート 3441 のすべての受信トラフィックをポート 3389 に転送する NAT 規則<sup>1</sup>。
 - ポート 3442 のすべての受信トラフィックをポート 3389 に転送する NAT 規則。
 - ポート 80 のすべての受信トラフィックをバック エンド プールのアドレスのポート 80 に負荷分散するロード バランサー規則。
 - *HealthProbe.aspx* という名前のページで正常性状態を確認するプローブ規則。
 
-### 手順 1
+<sup>1</sup> NAT 規則はロード バランサー内の特定の仮想マシン インスタンスに関連付けられています。ポート 3341 への着信ネットワーク トラフィックは、以下の例の NAT 規則に関連付けられている特定の仮想マシンのポート 3389 に送信されます。NAT 規則、UDP または TCP のプロトコルを選択する必要があります。両方のプロトコルを、同じポートに割り当てることはできません。
+
+### 手順 1.
 
 NAT 規則を作成します。
 
@@ -259,8 +262,7 @@ NIC を作成し (または既存の NIC を変更し)、それを NAT 規則、
 
 *web1* という名前の仮想マシン (VM) を作成し、それを *lb-nic1-be* という名前の NIC に関連付けます。*web1nrp* と呼ばれるストレージ アカウントが次のコマンドを実行する前に作成されました。
 
-	azure vm create --resource-group nrprg --name web1 --location eastus --vnet-
-	name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic1-be --availset-name nrp-avset --storage-account-name web1nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
+	azure vm create --resource-group nrprg --name web1 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic1-be --availset-name nrp-avset --storage-account-name web1nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
 
 >[AZURE.IMPORTANT]ロード バランサーの VM は、同じ可用性セットに含まれている必要があります。可用性セットを作成するには、`azure availset create` を使用します。
 
@@ -283,7 +285,7 @@ NIC を作成し (または既存の NIC を変更し)、それを NAT 規則、
 	+ Creating VM "web1"
 	info:    vm create command OK
 
->[AZURE.NOTE]"**This is a NIC without publicIP configured**" という情報メッセージは、想定どおりの動作です。これは、ロード バランサー用に作成される NIC は、パブリックなインターネットに直接接続されるのではなく、ロード バランサー経由で接続されるためです。
+>[AZURE.NOTE]"**This is a NIC without publicIP configured**" という情報メッセージは、想定どおりの動作です。これは、ロード バランサー用に作成される NIC は、ロード バランサーのパブリック IP アドレス経由でインターネットに接続されるためです。
 
 *lb-nic1-be* NIC は *rdp1* NAT 規則に関連付けられているため、ロード バランサーのポート 3441 で RDP を使用して *web1* に接続することができます。
 
@@ -293,6 +295,25 @@ NIC を作成し (または既存の NIC を変更し)、それを NAT 規則、
 
 	azure vm create --resource-group nrprg --name web2 --location eastus --vnet-	name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic2-be --availset-name nrp-avset --storage-account-name web2nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
 
+## 既存のロード バランサーの更新
+
+既存のロード バランサーを参照する規則を追加できます。次の例では、既存のロード バランサー **NRPlb** に新しいロード バランサー規則を追加しました。
+
+	azure network lb rule create -g nrprg -l nrplb -n lbrule2 -p tcp -f 8080 -b 8051 -t frontendnrppool -o NRPbackendpool
+
+パラメーター:
+
+**-g** - リソース グループ名<br> **-l** - ロード バランサー名<BR> **-n** - ロード バランサーの規則名<BR> **-p** - プロトコル<BR> **-f** - フロント エンド ポート<BR> **-b** - バック エンド ポート<BR> **-t** - フロント エンド プール名<BR> **-b** - バック エンド プール名<BR>
+
+## ロード バランサーの削除 
+
+
+ロード バランサーを削除するには、次のコマンドを使用します。
+
+	azure network lb delete -g nrprg -n nrplb 
+
+ここで **nrprg** はリソース グループで、**nrplb** はロード バランサーの名前です。
+
 ## 次のステップ
 
 [内部ロード バランサーの構成の開始](load-balancer-internal-getstarted.md)
@@ -301,4 +322,4 @@ NIC を作成し (または既存の NIC を変更し)、それを NAT 規則、
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

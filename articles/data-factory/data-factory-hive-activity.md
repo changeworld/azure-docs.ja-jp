@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="11/09/2015" 
 	ms.author="spelluru"/>
 
 # Hive アクティビティ
 
-Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight Hive アクティビティでは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の HDInsight クラスターで Hive クエリを実行します。この記事は、データ変換とサポートされる変換アクティビティの概要について説明する記事「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を基に作成されています。
+Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight Hive アクティビティでは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の Windows/Linux ベースのHDInsight クラスターで Hive クエリを実行します。この記事は、データ変換とサポートされる変換アクティビティの概要について説明する記事「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を基に作成されています。
 
 ## 構文
 
@@ -214,9 +214,4 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
 			SUM(Duration)
 		FROM HiveSampleIn Group by ProfileID
 
-
-
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-hive-activity.md)でフィードバックをお寄せください。
-
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

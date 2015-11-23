@@ -77,10 +77,12 @@ Day 3 のビデオの内容は次のとおりです。
 
 ##Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
+
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 
 ワークフロー デザイナー ツールでカスタム ワークフローを作成するとき、サポートが必要になりましたら、あるいはご質問がございましたら、mepd@microsoft.com までメールを送信してください。
 
@@ -88,4 +90,4 @@ AMS のラーニング パスについては、以下を参照してください
 
 [Azure プレミアム エンコーダー ワークフロー デザイナーのトレーニング ビデオ](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

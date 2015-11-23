@@ -55,7 +55,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 ## 概要
 全体のワークフローは以下のとおりです。
 
-![Tutorial End to End Flow][image-data-factory-tutorial-end-to-end-flow]
+![チュートリアルの全体のフロー][image-data-factory-tutorial-end-to-end-flow]
 
 1. **PartitionGameLogsPipeline** が未処理のゲーム イベントを BLOB ストレージ (RawGameEventsTable) から読み取り、年、月、日に基づくパーティションを作成します (PartitionedGameEventsTable)。
 2. **EnrichGameLogsPipeline** がパーティション分割されたゲーム イベント (PartitionGameLogsPipeline の出力結果である PartitionedGameEventsTable) と geo コード (RefGetoCodeDictionaryTable) を結合し、IP アドレスを対応する地理的位置 (EnrichedGameEventsTable) にマッピングすることでデータを強化します。
@@ -63,7 +63,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
     
 ## チュートリアル: ワークフローの作成、デプロイ、監視
 1. [手順 1. サンプル データとスクリプトをアップロードする](#MainStep1)。この手順では、すべてのサンプル データ (すべてのログと参照データを含む) とワークフローによって実行される Hive/Pig スクリプトをアップロードします。実行するスクリプトは、Azure SQL Database (MarketingCampaigns)、テーブル、ユーザー定義型、およびストアド プロシージャの作成も行います。
-2. [手順 2. Azure Data Factory を作成する](#MainStep2)。この手順では、"LogProcessingFactory" という名前の Azure データ ファクトリを作成します。
+2. [手順 2. Azure Data Factory を作成する](#MainStep2)。この手順では、"LogProcessingFactory" という名前の Azure Data Factory を作成します。
 3. [手順 3. リンクされたサービスを作成する](#MainStep3)。この手順では、以下のリンクされたサービスを作成します: 
 	
 	- 	**StorageLinkedService**。未処理のゲーム イベント、パーティションに分割されたゲーム イベント、強化されたゲーム イベント、マーケティング キャンペーンの有効な情報、geo コードの参照データを含む Azure ストレージの場所をリンクし、LogProcessingFactory へのマーケティング データの参照を行います。   
@@ -163,7 +163,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 
 5. **[新しいデータ ファクトリ]** ブレードで、**[名前]** フィールドに「**LogProcessingFactory**」と入力します。
 
-	![[データ ファクトリ] ブレード][image-data-factory-tutorial-new-datafactory-blade]
+	![[Data Factory] ブレード][image-data-factory-tutorial-new-datafactory-blade]
 
 6. "**ADF**" という名前の Azure リソース グループをまだ作成していない場合は、次の手順を実行します。
 	1. **[リソース グループ名]** をクリックし、**[新しいリソース グループを作成]** をクリックします。
@@ -171,11 +171,11 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 		![[リソース グループ] ブレード][image-data-factory-tutorial-resourcegroup-blade]
 	2. **[リソース グループを作成]** ブレードで、リソース グループの名前として「**ADF**」と入力し、**[OK]** をクリックします。
 	
-		![リソース グループの作成][image-data-factory-tutorial-create-resourcegroup]
+		![Create Resource Group][image-data-factory-tutorial-create-resourcegroup]
 7. **[リソース グループ名]** の **[ADF]** を選択します。  
 8.	**[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加]** が既定で選択されていることに注意してください。これにより、スタート画面 (Azure プレビュー ポータルへのログイン時に表示される画面) のデータ ファクトリにリンクが追加されます。
 
-	![データ ファクトリ作成ブレード][image-data-factory-tutorial-create-datafactory]
+	![Data Factory 作成ブレード][image-data-factory-tutorial-create-datafactory]
 
 9.	**[新しいデータ ファクトリ]** ブレードで、**[作成]** をクリックしてデータ ファクトリを作成します。
 10.	データ ファクトリが作成されると、**LogProcessingFactory** というタイトルの **[Data Factory]** ブレードが表示されます。
@@ -330,7 +330,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 	2. AnalyzeMarketingCampaignPipeline.json
 4. **[X]** (右上隅) をクリックして Data Factory のブレードを閉じ、Data Factory のホーム ページ (**[DATA FACTORY]** ブレード) を表示します。
 
-### Diagram view
+### [ダイアグラム] ビュー
 
 1. **[LogProcessingFactory]** の **[Data Factory]** ブレードで、**[ダイアグラム]** をクリックします。 
 
@@ -347,7 +347,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 	左上にある階層リンクで **[Data Factory]** をクリックすると、すべてのパイプラインでダイアグラム ビューに戻ります。
 
 
-**お疲れさまでした。** Azure データ ファクトリ、リンクされたサービス、パイプライン、テーブルを作成し、ワークフローを開始することに成功しました。
+**お疲れさまでした。** Azure Data Factory、リンクされたサービス、パイプライン、テーブルを作成し、ワークフローを開始することに成功しました。
 
 
 ## <a name="MainStep6"></a>手順 6. パイプラインとデータ スライスを監視する 
@@ -402,7 +402,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 12.	**[データ スライス]** ブレードで、**[アクティビティの実行]** の一覧から [実行] をクリックします。そのスライスの [アクティビティの実行] ブレードが表示されるはずです。以下の **[アクティビティの実行の詳細]** ブレードが表示されます。
 
-	![[アクティビティの実行状況の詳細] ブレード][image-data-factory-monitoring-activity-run-details]
+	![[アクティビティの実行の詳細] ブレード][image-data-factory-monitoring-activity-run-details]
 
 13.	**[ダウンロード]** をクリックしてファイルをダウンロードします。この画面は、HDInsight の処理で発生するエラーのトラブルシューティングを行うときに、特に役立ちます。
 	 
@@ -418,8 +418,6 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [オンプレミス データ ソースの使用に関するチュートリアル][tutorial-onpremises]を実践して、マーケティング キャンペーンの有効性データをオンプレミスの SQL Server データベースにコピーするためのパイプラインを作成する方法を習得します。
 
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-tutorial.md)でフィードバックをお寄せください。
 
 [monitor-manage-using-powershell]: data-factory-monitor-manage-using-powershell.md
 [use-custom-activities]: data-factory-use-custom-activities.md
@@ -528,4 +526,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial/DataFactoryCreateButton.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

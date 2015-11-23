@@ -3,7 +3,7 @@
 	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio のクラウド サービス プロジェクトで Azure キュー ストレージの使用を開始する方法について説明します。"
 	services="storage" 
 	documentationCenter="" 
-	authors="patshea123" 
+	authors="TomArcher" 
 	manager="douge" 
 	editor="tglee"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="09/03/2015" 
-	ms.author="patshea"/>
+	ms.author="tarcher"/>
 
 # Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Cloud Services プロジェクト)
 
@@ -37,7 +37,7 @@
 
  - プログラムを使用してキューを操作する方法の詳細については、「[.NET から Queue ストレージを使用する方法](storage-dotnet-how-to-use-queues.md)」をご覧ください。
  - Azure Storage の一般情報については、「[ストレージのドキュメント](https://azure.microsoft.com/documentation/services/storage/)」をご覧ください。
- - Azure Cloud Services の一般情報については、「[Cloud Services documentation (Cloud Services のドキュメント)](http://azure.microsoft.com/documentation/services/cloud-services/)」をご覧ください。
+ - Azure Cloud Services の一般情報については、「[Cloud Services のドキュメント](http://azure.microsoft.com/documentation/services/cloud-services/)」をご覧ください。
  - ASP.NET アプリケーションのプログラミングについての詳細は、「[ASP.NET](http://www.asp.net)」をご覧ください。
 
 
@@ -84,7 +84,7 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 
 ## メッセージをキューに追加する
 
-既存のキューにメッセージを挿入するには、新しい **CloudQueueMessage** オブジェクトを作成し、**AddMessage** メソッドを呼び出します。
+既存のキューにメッセージを挿入するには、新しい **CloudQueueMessage** オブジェクトを作成した後、**AddMessage** メソッドを呼び出します。
 
 **CloudQueueMessage** オブジェクトは、文字列 (UTF-8 形式) またはバイト配列から作成できます。
 
@@ -202,4 +202,4 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 			
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

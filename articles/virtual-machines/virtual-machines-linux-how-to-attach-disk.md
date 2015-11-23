@@ -84,12 +84,12 @@
 4. 表示されるプロンプトで「**n**」と入力すると、新しいパーティションが作成されます。
 
 
-	![Create new device](./media/virtual-machines-linux-how-to-attach-disk/DiskPartition.png)
+	![新しいデバイスの作成](./media/virtual-machines-linux-how-to-attach-disk/DiskPartition.png)
 
 5. 表示されるプロンプトで、パーティションをプライマリ パーティションにするには「**p**」を、最初のパーティションにするには「**1**」を、シリンダーの既定値をそのまま使用するには Enter キーを押します。
 
 
-	![Create partition](./media/virtual-machines-linux-how-to-attach-disk/DiskCylinder.png)
+	![パーティションの作成](./media/virtual-machines-linux-how-to-attach-disk/DiskCylinder.png)
 
 
 
@@ -103,13 +103,13 @@
 7. 「**w**」と入力すると、ディスクの設定が書き込まれます。
 
 
-	![Write the disk changes](./media/virtual-machines-linux-how-to-attach-disk/DiskWrite.png)
+	![ディスクの変更の書き込み](./media/virtual-machines-linux-how-to-attach-disk/DiskWrite.png)
 
 8. 新しいパーティションにファイル システムを作成します。たとえば、次のコマンドを入力し、アカウントのパスワードを入力します。
 
 		# sudo mkfs -t ext4 /dev/sdc1
 
-	![Create file system](./media/virtual-machines-linux-how-to-attach-disk/DiskFileSystem.png)
+	![ファイル システムの作成](./media/virtual-machines-linux-how-to-attach-disk/DiskFileSystem.png)
 
 	>[AZURE.NOTE]SUSE Linux Enterprise 11 では、ext4 ファイル システムへのアクセスは読み取り専用のみサポートされていることに注意してください。これらのシステムには ext4 ではなく ext3 として新しいファイル システムの書式設定することをお勧めします。
 
@@ -160,6 +160,7 @@
 
 	`mount` コマンドでエラーが発生した場合、/etc/fstab ファイルの構文が正しいかどうかを確認してください。追加のデータ ドライブやパーティションを作成する場合、それらも /etc/fstab に個別に入力する必要があります。
 
+	次のコマンドを使用して、ドライブを書き込み可能にする必要があります。 # cd /datadrive # sudo chmod go+w /datadrive
 
 >[AZURE.NOTE]この後、fstab を編集せずにデータ ディスクを削除すると VM は起動できません。これが頻繁に発生する場合、大部分のディストリビューションでは `nofail` または `nobootwait` fstab オプションが提供されます。これによって、起動時にディスクのマウントが失敗してもシステムを起動することができます。これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
 
@@ -174,4 +175,4 @@
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-how-to-log-on.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

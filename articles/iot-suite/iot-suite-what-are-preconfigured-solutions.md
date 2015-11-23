@@ -58,7 +58,7 @@ IoT Hub は、1 つのエンドポイントで冷却器からテレメトリ デ
 
 IoT Hub はコンシューマー グループのエンドポイントから受け取るテレメトリ データを公開します。
 
-この構成済みソリューションの IoT Hub インスタンスは、一般的な IoT ソリューション アーキテクチャの **IoT バックエンド アプリケーション**に相当します。
+この構成済みソリューションの IoT Hub インスタンスは、一般的な IoT ソリューション アーキテクチャの**クラウド ゲートウェイ**に相当します。
 
 ### Azure Stream Analytics
 
@@ -91,4 +91,4 @@ IoT の構成済みソリューションの詳細については、次のリソ�
 [img-remote-monitoring-arch]: ./media/iot-suite-what-are-preconfigured-solutions/remote-monitoring-arch1.png
 [Azure Stream Analytics]: https://azure.microsoft.com/services/stream-analytics/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

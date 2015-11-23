@@ -3,7 +3,7 @@
 	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の ASP.NET プロジェクトで Azure Table ストレージの使用を開始する方法について説明します。"
 	services="storage"
 	documentationCenter=""
-	authors="patshea123"
+	authors="TomArcher"
 	manager="douge"
 	editor="tglee"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/03/2015"
-	ms.author="patshea"/>
+	ms.author="tarcher"/>
 
 # テーブル ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET)
 > [AZURE.SELECTOR]
@@ -167,4 +167,4 @@ Azure テーブルは、前のコードに **CreateIfNotExistsAsync()** への�
 
 [AZURE.INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

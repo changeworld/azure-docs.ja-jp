@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/16/2015" 
+	ms.date="11/06/2015" 
 	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでのリソースのリンク
@@ -28,96 +28,7 @@
 
 ## テンプレートでのリンク
 
-次の例では、Web サイト、通知ハブ、および SQL データベースへの一方向のリレーションシップのセットを設定した "Microsoft.AppService/apiapps" という種類のリソースを作成するテンプレートを示しています。
-
-    {
-        "$schema": "http://schemas.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "$system": {
-                "type": "Object"
-            }
-        },
-        "resources": [
-            {
-                "apiVersion": "2014-11-01",
-                "type": "Microsoft.Web/sites",
-                "name": "[parameters('$system').siteName]",
-                "location": "[parameters('$system').location]",
-                "resources": [
-                    {
-                        "apiVersion": "2014-11-01",
-                        "name": "appsettings",
-                        "type": "config",
-                        "dependsOn": [
-                            "[resourceId('Microsoft.NotificationHubs/namespaces/NotificationHubs', variables('notificationHubNamespace'), variables('notificationHubName'))]"
-                        ],
-                        "properties": {
-                            "MS_MobileServiceName": "[parameters('$system').apiAppName]",
-                            "MS_NotificationHubName": "[variables('notificationHubName')]",
-                            "MS_NotificationHubConnectionString": "[listkeys(resourceId('Microsoft.NotificationHubs/namespaces/notificationHubs/authorizationRules', variables('notificationHubNamespace'), variables('notificationHubName'), 'DefaultFullSharedAccessSignature'), '2014-09-01').primaryConnectionString]"
-                        }
-                    }
-                ]
-            },
-            {
-                "apiVersion": "[parameters('$system').apiVersion]",
-                "type": "Microsoft.AppService/apiapps",
-                "name": "[parameters('$system').apiAppName]",
-                "properties": {
-                    "accessLevel": "PublicAnonymous"
-                },
-                "resources": [
-                    {
-                        "apiVersion": "2015-01-01",
-                        "type": "providers/links",
-                        "name": "Microsoft.Resources/mobile-codesite",
-                        "dependsOn": [
-                            "[resourceId('Microsoft.AppService/apiapps', parameters('$system').apiAppName)]",
-                            "[resourceId('Microsoft.Web/Sites', variables('userSiteName'))]"
-                        ],
-                        "properties": {
-                            "targetId": "[resourceId('Microsoft.Web/sites', variables('userSiteName'))]"
-                        }
-                    },
-                    {
-                        "apiVersion": "2015-01-01",
-                        "type": "providers/links",
-                        "name": "Microsoft.Resources/mobile-notificationhub",
-                        "dependsOn": [
-                            "[resourceId('Microsoft.AppService/apiapps', parameters('$system').apiAppName)]",
-                            "[resourceId('Microsoft.NotificationHubs/namespaces/NotificationHubs', variables('notificationHubNamespace'), variables('notificationHubName'))]"
-                        ],
-                        "properties": {
-                            "targetId": "[resourceId('Microsoft.NotificationHubs/namespaces/NotificationHubs', variables('notificationHubNamespace'), variables('notificationHubName'))]"
-                        }
-                    },
-                    {
-                        "apiVersion": "2015-01-01",
-                        "type": "providers/links",
-                        "name": "Microsoft.Resources/mobile-sqlserver",
-                        "dependsOn": [
-                            "[resourceId('Microsoft.AppService/apiapps', parameters('$system').apiAppName)]"
-                        ],
-                        "properties": {
-                            "targetId": "[concat('/subscriptions/', parameters('userDatabase').subscriptionId, '/resourcegroups/', parameters('userDatabase').resourceGroupName, '/providers/Microsoft.Sql/servers/', parameters('userDatabase').serverName)]"
-                        }
-                    },
-                    {
-                        "apiVersion": "2015-01-01",
-                        "type": "providers/links",
-                        "name": "Microsoft.Resources/mobile-sqldb",
-                        "dependsOn": [
-                            "[resourceId('Microsoft.AppService/apiapps', parameters('$system').apiAppName)]"
-                        ],
-                        "properties": {
-                            "targetId": "[concat('/subscriptions/', parameters('userDatabase').subscriptionId, '/resourcegroups/', parameters('userDatabase').resourceGroupName, '/providers/Microsoft.Sql/servers/', parameters('userDatabase').serverName, '/databases/', parameters('userDatabase').databaseName)]"
-                        }
-                    }
-                ]
-            }
-        ]
-    }
+テンプレートでリソース間のリンクを定義するには、「[リソース リンク - テンプレート スキーマ](resource-manager-template-links.md)」を参照してください。
 
 ## REST API を使用したリンク
 
@@ -146,4 +57,4 @@ properties 要素には、2 番目のリソースの識別子を含めます。
 - タグで、リソースを整理することもできます。リソースにタグを付ける方法については、「[タグを使用した Azure リソースの整理](resource-group-using-tags.md)」を参照してください。
 - テンプレートを作成してデプロイするリソースを定義する方法については、「[テンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

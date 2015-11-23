@@ -6,7 +6,7 @@
  authors="dlepow"
  manager="timlt"
  editor=""
- tags="azure-resource-manager,azure-service-management"/>
+ tags="azure-resource-manager,azure-service-management,hpc-pack"/>
 <tags
 ms.service="virtual-machines"
  ms.devlang="na"
@@ -26,7 +26,7 @@ ms.service="virtual-machines"
 
 ## 前提条件
 
-* **Azure VM にデプロイされた HPC Pack ヘッド ノード** - [Azure クイックスタート テンプレート](https://azure.microsoft.com/ja-jp/documentation/templates/)や [Azure PowerShell スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)のような自動ツールを使用し、ヘッド ノードとクラスターをデプロイできます。あるいは、オンプレミス クラスターの場合と同様に、Azure でクラスターを手動でデプロイできます。この記事の手順を完了するには、ヘッド ノードの DNS 名とクラスター管理者の資格情報が必要です。
+* **Azure VM にデプロイされた HPC Pack ヘッド ノード** - [Azure クイックスタート テンプレート](https://azure.microsoft.com/ja-JP/documentation/templates/)や [Azure PowerShell スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)のような自動ツールを使用し、ヘッド ノードとクラスターをデプロイできます。あるいは、オンプレミス クラスターの場合と同様に、Azure でクラスターを手動でデプロイできます。この記事の手順を完了するには、ヘッド ノードの DNS 名とクラスター管理者の資格情報が必要です。
 
     ヘッド ノードを手動でデプロイした場合、HTTPS エンドポイントが VM で構成されていることを確認します。構成されていない場合、HTTPS エンドポイントを設定します。「[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-set-up-endpoints.md)」を参照してください。
 
@@ -41,7 +41,7 @@ REST インターフェイスを有効にして HTTPS でクラスターにジ�
 
 詳細な手順については、「[Microsoft HPC Pack Web コンポーネントのインストール](http://technet.microsoft.com/library/hh314627.aspx)」を参照してください。
 
->[AZURE.TIP][HPC Pack IaaS デプロイメント スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)のような自動化手法を利用してクラスターを作成する場合、デプロイメントの一環として任意で Web コンポーネントをインストールし、構成します。
+>[AZURE.TIP] [HPC Pack IaaS デプロイメント スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)のような自動化手法を利用してクラスターを作成する場合、デプロイメントの一環として任意で Web コンポーネントをインストールし、構成します。
 
 **Web コンポーネントをインストールするには**
 
@@ -156,14 +156,14 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 
     HPC ジョブ マネージャーが開き、ヘッド ノードでジョブの一覧が表示されます。
 
-**ヘッド ノードで Web ベースのジョブ ポータルを使用するには**
+**ヘッド ノードで実行されている Web ポータルを使用するには**
 
 1. クライアント コンピューターで Web ブラウザーを起動し、次のアドレスを入力します。 ```
     https://HeadNodeDnsName.cloudapp.net/HpcPortal
     ```
 2. セキュリティ ダイアログ ボックスが表示されたら、HPC クラスター管理者のドメイン資格情報を入力します。(さまざまなロールで他のクラスター ユーザーを追加することもできます。詳細については、「[クラスター ユーザーの管理](https://technet.microsoft.com/library/ff919335.aspx)」を参照してください。)
 
-    ポータルが開き、ジョブの一覧が表示されます。
+    Web ポータルが開き、ジョブの一覧が表示されます。
 
 3. クラスターから「Hello World」という文字列を返すサンプル ジョブを送信するには、左のナビゲーションで **[新しいジョブ]** をクリックします。
 
@@ -183,4 +183,4 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 <!--Image references-->
 [jobsubmit]: ./media/virtual-machines-hpcpack-cluster-submit-jobs/jobsubmit.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

@@ -31,7 +31,7 @@
 
 ## 仮想マシンの検索
 
-1. [プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. Azure プレビュー ポータルにサインインします。
 
 2. ハブ メニューの **[参照]** をクリックします。
 
@@ -90,4 +90,4 @@
 
 [Azure ストレージ アカウントについて]: ../storage-whatis-account/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/27/2015" 
+	ms.date="11/04/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した変換と分析
@@ -23,12 +23,8 @@ Azure Data Factory の変換アクティビティにより、未加工のデー�
 
 
 変換アクティビティ | Compute 環境 
------------------------ | --------------------
-[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop] 
-[Pig](data-factory-pig-activity.md) | HDInsight [Hadoop] 
-[MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop] 
-[Hadoop Streaming](data-factory-hadoop-streaming-activity.md) | HDInsight [Hadoop] 
-[Machine Learning Batch Execution](data-factory-azure-ml-batch-execution-activity.md) | Azure VM 
+:----------------------- | :--------------------
+[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop] [Pig](data-factory-pig-activity.md) | HDInsight [Hadoop] [MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop] [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) | HDInsight [Hadoop] [Machine Learning アクティビティ: バッチ実行と更新のリソース](data-factory-azure-ml-batch-execution-activity.md) | Azure VM 
 [ストアド プロシージャ](data-factory-stored-proc-activity.md) | Azure SQL |
 [Data Lake Analytics U-SQL](data-factory-usql-activity.md) | Azure Data Lake Analytics 
 [DotNet](data-factory-use-custom-activities.md) | HDInsight [Hadoop] または Azure Batch
@@ -39,9 +35,6 @@ Azure Data Factory の変換アクティビティにより、未加工のデー�
 1. **オンデマンド**: この場合、コンピューティング環境は Data Factory で完全に管理されます。環境はデータを処理するためのジョブが送信される前に Data Factory サービスにより自動的に作成され、ジョブの完了時に削除されます。ユーザーは、ジョブの実行、クラスターの管理、ブートストラップ アクションなどについて、オンデマンドのコンピューティング環境の詳細設定を構成および制御できます。 
 2. **独自の環境を使用する**: この場合、Data Factory のリンクされたサービスとして、独自のコンピューティング環境 (HDInsight クラスターなど) を登録できます。このコンピューティング環境はユーザーが自分で管理することになります。Data Factory サービスは、アクティビティを実行にこの環境を使用します。 
 
-Data Factory でサポートされているコンピューティングにリンクされたサービスの詳細については、記事「[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md)」を参照してください。
+Data Factory でサポートされている Compute がリンクされたサービスについては、[Compute がリンクされたサービス](data-factory-compute-linked-services.md)に関する記事を参照してください。
 
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-data-transformation-activities.md)でフィードバックをお寄せください。
-
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

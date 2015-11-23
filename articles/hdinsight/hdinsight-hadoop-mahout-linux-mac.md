@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="11/06/2015"
 	ms.author="larryfr"/>
 
 #HDInsight で Apache Mahout と Linux ベースの Hadoop を使用した映画のリコメンデーションの生成 (プレビュー)
@@ -37,7 +37,7 @@ HDInsight クラスターに含まれる Mahout のバージョンについて�
 
 > [AZURE.WARNING]Mahout の別のバージョンを HDInsight クラスターにアップロードできますが、全面的にサポートされるのは HDInsight クラスターに用意されているコンポーネントだけであり、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[MSDN の HDInsight フォーラム](https://social.msdn.microsoft.com/Forums/azure/JA-JP/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
 
 ##<a name="recommendations"></a>リコメンデーションについて
 
@@ -76,7 +76,8 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 4. HDInsight のストレージにデータをコピーするには、次のコマンドを使用します。
 
         cd ml-100k
-        hadoop fs -copyFromLocal ml-100k/u.data /example/data/u.data
+        hdfs dfs -put u.data /example/data
+
 
     このファイルに含まれているデータの構造は `userID`、`movieID`、`userRating`、および `timestamp` です。これは、各ユーザーによって映画に対してどれだけ高い評価が付けられているか示しています。次にデータの例を示します。
 
@@ -91,7 +92,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 次のコマンドを実行して、リコメンデーション ジョブを実行します。
 
-	mahout recommenditembased -s SIMILARITY_COOCCURRENCE --input /example/data/u.data --output /example/data/mahoutout  --tempDir /temp/mahouttemp
+	mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /example/data/u.data -o /example/data/mahoutout --tempDir /temp/mahouttemp
 
 > [AZURE.NOTE]ジョブが完了するまでに数分かかる場合があり、複数の MapReduce ジョブを実行することがあります。
 
@@ -99,7 +100,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 1. ジョブが完了したら、次のコマンドを使用して、生成された出力を表示します。
 
-		hadoop fs -text /example/data/mahoutout/part-r-00000
+		hdfs dfs -text /example/data/mahoutout/part-r-00000
 
 	出力は次のように表示されます。
 
@@ -112,7 +113,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 2. **ml-100k** ディレクトリに含まれているデータの中には、データをよりユーザー フレンドリーにするために使用できるものもあります。最初に、次のコマンドを使用してデータをダウンロードします。
 
-		hadoop fs -copyToLocal /example/data/mahoutout/part-r-00000 recommendations.txt
+		hdfs dfs -get /example/data/mahoutout/part-r-00000 recommendations.txt
 
 	これにより、出力データが現在のディレクトリの **recommendations.txt** という名前のファイルにコピーされます。
 
@@ -122,55 +123,55 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 	エディターが開いたら、ファイルの内容として次のコードを使用します。
 
-		#!/usr/bin/env python
-
-		import sys
-
-		if len(sys.argv) != 5:
-		        print "Arguments: userId userDataFilename movieFilename recommendationFilename"
-		        sys.exit(1)
-
-		userId, userDataFilename, movieFilename, recommendationFilename = sys.argv[1:]
-
-		print "Reading Movies Descriptions"
-		movieFile = open(movieFilename)
-		movieById = {}
-		for line in movieFile:
-		        tokens = line.split("|")
-		        movieById[tokens[0]] = tokens[1:]
-		movieFile.close()
-
-		print "Reading Rated Movies"
-		userDataFile = open(userDataFilename)
-		ratedMovieIds = []
-		for line in userDataFile:
-		        tokens = line.split("\t")
-		        if tokens[0] == userId:
-		                ratedMovieIds.append((tokens[1],tokens[2]))
-		userDataFile.close()
-
-		print "Reading Recommendations"
-		recommendationFile = open(recommendationFilename)
-		recommendations = []
-		for line in recommendationFile:
-		        tokens = line.split("\t")
-		        if tokens[0] == userId:
-		                movieIdAndScores = tokens[1].strip("[]\n").split(",")
-		                recommendations = [ movieIdAndScore.split(":") for movieIdAndScore in movieIdAndScores ]
-		                break
-		recommendationFile.close()
-
-		print "Rated Movies"
-		print "------------------------"
-		for movieId, rating in ratedMovieIds:
-		        print "%s, rating=%s" % (movieById[movieId][0], rating)
-		print "------------------------"
-
-		print "Recommended Movies"
-		print "------------------------"
-		for movieId, score in recommendations:
-		        print "%s, score=%s" % (movieById[movieId][0], score)
-		print "------------------------"
+        #!/usr/bin/env python
+        
+        import sys
+        
+        if len(sys.argv) != 5:
+                print "Arguments: userId userDataFilename movieFilename recommendationFilename"
+                sys.exit(1)
+        
+        userId, userDataFilename, movieFilename, recommendationFilename = sys.argv[1:]
+        
+        print "Reading Movies Descriptions"
+        movieFile = open(movieFilename)
+        movieById = {}
+        for line in movieFile:
+                tokens = line.split("|")
+                movieById[tokens[0]] = tokens[1:]
+        movieFile.close()
+        
+        print "Reading Rated Movies"
+        userDataFile = open(userDataFilename)
+        ratedMovieIds = []
+        for line in userDataFile:
+                tokens = line.split("\t")
+                if tokens[0] == userId:
+                        ratedMovieIds.append((tokens[1],tokens[2]))
+        userDataFile.close()
+        
+        print "Reading Recommendations"
+        recommendationFile = open(recommendationFilename)
+        recommendations = []
+        for line in recommendationFile:
+                tokens = line.split("\t")
+                if tokens[0] == userId:
+                        movieIdAndScores = tokens[1].strip("[]\n").split(",")
+                        recommendations = [ movieIdAndScore.split(":") for movieIdAndScore in movieIdAndScores ]
+                        break
+        recommendationFile.close()
+        
+        print "Rated Movies"
+        print "------------------------"
+        for movieId, rating in ratedMovieIds:
+                print "%s, rating=%s" % (movieById[movieId][0], rating)
+        print "------------------------"
+        
+        print "Recommended Movies"
+        print "------------------------"
+        for movieId, score in recommendations:
+                print "%s, score=%s" % (movieById[movieId][0], score)
+        print "------------------------"
 
 	**Ctrl-X**、**Y**、**Enter** の順に押して、データを保存します。
 
@@ -178,9 +179,9 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 		chmod +x show_recommendations.py
 
-4. Python スクリプトを実行します。
+4. Python スクリプトを実行します。以下では、`u.data` と `u.item` ファイルがある ml-100k ディレクトリにいるものと仮定しています。
 
-		./show_recommendations.py 4 ml-100k/u.data ml-100k/u.item recommendations.txt
+		./show_recommendations.py 4 u.data u.item recommendations.txt
 
 	これは、ユーザー ID 4 に対して生成されたリコメンデーションを表示します。
 
@@ -238,9 +239,11 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 Mahout ジョブは、ジョブの処理中に作成された一時データを削除しません。このサンプル ジョブでは `--tempDir` パラメーターを指定し、一時ファイルを特定のパスに分離して簡単に削除できるようにしています。一時ファイルを削除するには、次のコマンドを使用します。
 
-	hadoop fs -rm -f -r wasb:///temp/mahouttemp
+	hdfs dfs -rm -f -r /temp/mahouttemp
 
-> [AZURE.WARNING]一時ファイルまたは出力ファイルを削除しなかった場合、同じ `--tempDir` パスでジョブをもう一度実行すると 'ファイルを上書きできない' というエラー メッセージが返されます。
+> [AZURE.WARNING]コマンドを再実行する場合、出力ディレクトリも削除する必要があります。このディレクトリを削除するには、次を使用します。
+>
+> ```hdfs dfs -rm -f -r /example/data/mahoutout```
 
 ##次のステップ
 
@@ -264,4 +267,4 @@ Mahout ジョブは、ジョブの処理中に作成された一時データを�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

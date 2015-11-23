@@ -40,7 +40,7 @@ Media Services は既存のツールとプロセスに統合できます。た�
 	
 1. 資産配信ポリシーを構成します (動的パッケージで使用)。
 	
-	資産がストレージで暗号化されている場合は、資産配信ポリシーを構成する**必要があります**。
+	アセットがストレージで暗号化されている場合は、アセット配信ポリシーを構成する**必要があります**。
 
 1. OnDemand ロケーターを作成して資産を発行します。
 
@@ -89,15 +89,16 @@ Media Services は既存のツールとプロセスに統合できます。た�
 
 オンデマンドのコンテンツ配信に関連する概念については、「[Media Services の概念](media-services-concepts.md)」をご覧ください。
 
+##Media Services のラーニング パス
 
-##次のステップ: AMS ラーニング パス
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-AMS のラーニング パスについては、以下を参照してください。
+##フィードバックの提供
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 
 [vod-overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

@@ -45,7 +45,7 @@ Stream Analytics ユーザー インターフェイスを使用すれば、こ�
 
 ## 独自のルールの追加
 
-構成済みの Azure Stream Analytics ジョブの変更だけでなく、Azure ポータルを使用して、新しいジョブを追加したり、新しいクエリを既存のジョブに追加したりできます。
+構成済みの Azure Stream Analytics ジョブの変更だけでなく、Azure プレビュー ポータルを使用して、新しいジョブを追加したり、新しいクエリを既存のジョブに追加したりすることができます。
 
 ## デバイスのカスタマイズ
 
@@ -69,4 +69,4 @@ IoT デバイスの詳細については、[Azure IoT 開発者向けサイト](
 
 [IoT デバイス SDK]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

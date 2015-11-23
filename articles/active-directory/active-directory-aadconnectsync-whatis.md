@@ -32,6 +32,7 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 - Azure AD Connect Sync でサポートされているトポロジとシナリオの概要については、「[Azure AD Connect のトポロジ](active-directory-aadconnect-topologies.md)」をご覧ください。
 - フィルターを実装する方法については、「[フィルター処理を構成する](active-directory-aadconnectsync-configure-filtering.md)」をご覧ください。
 - パスワード同期の詳細については、「[パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md)」をご覧ください。
+- Azure AD Connect Sync における既定の構成については、「[Understanding the default configuration (既定の構成を理解する)](active-directory-aadconnectsync-understanding-default-configuration.md)」をご覧ください。
 - Azure AD Connect Sync のユーザーと連絡先の詳細については、「[ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md)」をご覧ください。
 - 既定の構成を変更する場合は、「[既定の構成を変更するためのベスト プラクティス](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)」をご覧ください。
 - 同期サーバーの操作方法の詳細については、「[操作タスクおよび考慮事項](active-directory-aadconnectsync-operations.md)」をご覧ください。
@@ -40,13 +41,8 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 - 宣言型のプロビジョニング関数については、「[関数参照](active-directory-aadconnectsync-functions-reference.md)」をご覧ください。
 
 
-
-
 ## その他のリソース
 
-* [Azure への組織としてのサインアップ](sign-up-organization.md)
+* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-
-<!--Image references-->
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Search 管理 REST API の使用 | Microsoft Azure" 
+	pageTitle="Azure Search 管理 REST API の使用 | Microsoft Azure | ホスト型クラウド検索サービス" 
 	description="管理 REST API を利用し、ホスト型のクラウド検索サービスの Azure Search を管理する" 
 	services="search" 
 	documentationCenter="" 
@@ -204,4 +204,4 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

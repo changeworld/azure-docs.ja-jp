@@ -17,7 +17,9 @@
     ms.author="ddove;sidneyh"/>
 
 # Elastic Database ツールの用語集
-Azure SQL Database の機能である [Elastic Database ツール](sql-database-elastic-scale-introduction.md)に関する用語の定義を次に示します。このツールには、[クライアント ライブラリ](sql-database-elastic-database-client-library.md)、[分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[クエリ](sql-database-elastic-query-overview.md)が含まれます。
+Azure SQL Database の機能である [Elastic Database ツール](sql-database-elastic-scale-introduction.md)に関する用語の定義を次に示します。このツールは、[シャード マップ](sql-database-elastic-scale-shard-map-management.md)の管理に使用するものであり、[クライアント ライブラリ](sql-database-elastic-database-client-library.md)、[分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[クエリ](sql-database-elastic-query-overview.md)が含まれます。
+
+これらの用語は、「[エラスティック データベース ツールを使用してシャードを追加する](sql-database-elastic-scale-add-a-shard.md)」と「[RecoveryManager クラスを使用したシャード マップに関する問題の解決](sql-database-elastic-database-recovery-manager.md)」で使用されています。
 
 ![Elastic Scale の用語][1]
 
@@ -80,4 +82,4 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/04/2015"
+   ms.date="11/05/2015"
    ms.author="bwren" />
 
 # Azure Automation でのグラフィカル作成
@@ -131,7 +131,7 @@ Runbook がまだ発行されていない場合、状態は [**新規**] です�
 |Automation の資格情報資産|Automation の資格情報を入力として選択します。|  
 |Automation の証明書資産|Automation の証明書を入力として選択します。|  
 |Automation の接続資産|Automation の接続を入力として選択します。| 
-|PowerShell 式|簡単な PowerShell 式を指定します。式は、アクティビティとパラメーター値に使用される結果の前に評価されます。変数を使用すれば、アクティビティの出力または Runbook の入力パラメーターを参照することができます。|
+|PowerShell 式|簡単な [PowerShell 式](#powershell-expressions)を指定します。式は、アクティビティとパラメーター値に使用される結果の前に評価されます。変数を使用すれば、アクティビティの出力または Runbook の入力パラメーターを参照することができます。|
 |空の文字列|空の文字列値です。|
 |Null|Null 値です。|
 |選択解除|以前に構成された値をクリアします。|
@@ -241,6 +241,7 @@ Runbook がまだ発行されていない場合、状態は [**新規**] です�
 
 Runbook で[チェックポイント](automation-powershell-workflow/#checkpoints)を設定するための同じガイダンスがグラフィカル Runbook にも適用されます。チェックポイントを設定する必要がある場合は、Checkpoint-Workflow コマンドレットのアクティビティを追加することができます。次に、このアクティビティの後に Add-AzureAccount を続ける必要があります (Runbook が別のワーカーのこのチェックポイントから開始する場合)。
 
+
 ## Azure リソースの認証
 
 Azure Automation のほとんどの Runbook では、Azure リソースの認証が必要になります。この認証に使用する標準的な方法は、Azure アカウントへのアクセス権を持つ Active Directory ユーザーを表す[資格情報資産](http://msdn.microsoft.com/library/dn940015.aspx)を使用して Add-AzureAccount コマンドレットを実行することです。これについては、「[Azure Automation の構成](automation-configuring.md)」で説明します。
@@ -285,10 +286,97 @@ Runbook の入力パラメーターには、Runbook ツールバーの [**入力
 発信リンクがない任意のアクティビティによって作成されたデータは、[Runbook の出力](http://msdn.microsoft.com/library/azure/dn879148.aspx)に追加されます。出力は Runbook ジョブと共に保存され、Runbook を子として使用する場合に親 Runbook で使用できます。
 
 
+## PowerShell の式
+
+グラフィカル作成の利点の 1 つは、PowerShell の最小限の知識があれば Runbook を作成できることです。とはいっても、現時点では、特定の[パラメーター値](#activities)の設定および[リンク条件](#links-and-workflow)の設定に関して PowerShell の若干の知識が必要です。ここでは、PowerShell の式のことをよく知らないユーザーのためにその概要について簡単に説明します。PowerShell の詳細については、「[Windows PowerShell を使用したスクリプト](http://technet.microsoft.com/library/bb978526.aspx)」を参照してください。
+
+
+### PowerShell 式のデータ ソース
+
+PowerShell 式をデータ ソースとして使用し、[アクティビティ パラメーター](#activities)の値に PowerShell コードの結果を設定できます。簡単な関数を実行する 1 行のコードでも、複雑なロジックを実行する複数行のコードでもかまいません。変数に割り当てられていないコマンドからの出力は、パラメーター値に出力されます。
+
+たとえば、次のコマンドは現在の日付を出力します。
+
+	Get-Date
+
+次のコマンドは、現在の日付から文字列を作成し、変数に割り当てます。その後、変数の内容は出力に送られます。
+
+	$string = "The current date is " + (Get-Date)
+	$string
+
+次のコマンドは、現在の日付を評価し、現在の日付が週末か平日かを示す文字列を返します。
+
+	$date = Get-Date
+	if (($date.DayOfWeek = "Saturday") -or ($date.DayOfWeek = "Sunday")) { "Weekend" }
+	else { "Weekday" }
+	
+ 
+
+### アクティビティの出力
+
+前のアクティビティからの出力を Runbook で使用するには、次の構文で $ActivityOutput 変数を使用します。
+
+	$ActivityOutput['Activity Label'].PropertyName
+
+たとえば、仮想マシンの名前を必要とするプロパティを持つアクティビティがある場合、次の式を使用します。
+
+	$ActivityOutput['Get-AzureVm'].Name
+
+プロパティだけでなく仮想マシン オブジェクトを必要とするプロパティの場合は、次の構文を使用してオブジェクト全体を返します。
+
+	$ActivityOutput['Get-AzureVm']
+
+テキストを仮想マシン名に連結する次のようなさらに複雑な式で、アクティビティの出力を使用することもできます。
+
+	"The computer name is " + $ActivityOutput['Get-AzureVm'].Name
+
+
+### 条件
+
+値を比較する場合、または値が指定したパターンに一致するかどうかを判定する場合は、[比較演算子](https://technet.microsoft.com/library/hh847759.aspx)を使います。比較からは、値 $true または $false が返ります。
+
+たとえば、次の条件は、*Get-AzureVM* という名前のアクティビティの仮想マシンが現在*停止済み*かどうかを判定します。
+
+	$ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
+
+次の条件は、同じ仮想マシンが*停止済み*以外の状態かどうかを調べます。
+
+	$ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
+
+**-and** や **-or** などの[論理演算子](https://technet.microsoft.com/library/hh847789.aspx)を使用して、複数の条件を結合できます。たとえば、次の条件は、前の例と同じ仮想マシンの状態が*停止済み*または*停止中*かどうかをチェックします。
+
+	($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping") 
+
+
+### ハッシュテーブル
+
+[ハッシュテーブル](http://technet.microsoft.com/library/hh847780.aspx)は、値のセットを返すのに便利な名前と値のペアです。一部のアクティビティのプロパティでは、単純な値ではなくハッシュテーブルが想定されている場合があります。ハッシュテーブルはディクショナリと考えることもできます。
+
+ハッシュテーブルは次の構文で作成します。ハッシュテーブルは任意の数のエントリを含むことができますが、エントリごとに名前と値によって定義されます。
+
+	@{ <name> = <value>; [<name> = <value> ] ...}
+
+たとえば、次の式は、インターネット検索用の値のハッシュテーブルを期待するアクティビティ パラメーターに対するデータ ソースで使用されるハッシュテーブルを作成します。
+
+	$query = "Azure Automation"
+	$count = 10
+	$h = @{'q'=$query; 'lr'='lang_ja';  'count'=$Count}
+	$h
+
+次の例は、*Get Twitter Connection* という名前のアクティビティからの出力を使用して、ハッシュテーブルを設定します。
+
+	@{'ApiKey'=$ActivityOutput['Get Twitter Connection'].ConsumerAPIKey;
+	  'ApiSecret'=$ActivityOutput['Get Twitter Connection'].ConsumerAPISecret;
+	  'AccessToken'=$ActivityOutput['Get Twitter Connection'].AccessToken;
+	  'AccessTokenSecret'=$ActivityOutput['Get Twitter Connection'].AccessTokenSecret}
+
+
+
 ## 関連記事:
 
 - [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 - [Automation 資産](http://msdn.microsoft.com/library/azure/dn939988.aspx)
+- [演算子](https://technet.microsoft.com/library/hh847732.aspx)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

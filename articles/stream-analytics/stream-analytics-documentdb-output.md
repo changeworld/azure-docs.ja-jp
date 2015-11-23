@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="10/29/2015" 
+	ms.date="11/06/2015" 
 	ms.author="jeffstok"/>
 
 # Azure Stream Analytics の出力としての DocumentDB
@@ -59,4 +59,4 @@ Stream Analytics で DocumentDB を出力として作成すると、以下に示
 -   **パーティション キー** – コレクション間で出力をパーティション分割するためのキーの指定に使用される、出力イベント内のフィールドの名前。コレクションの出力が 1 つの場合は、PartitionId など、任意の出力列を使用できます。  
 -   **Document ID** – 省略可能です。挿入操作または更新操作の基準となるプライマリ キーを指定するために使用される、出力イベント内のフィールドの名前。  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

@@ -86,6 +86,31 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 - 1 つのストレージ アカウント
 - 1 つの Azure サブスクリプション
 
+こちらが仮想マシンとそれぞれのこの構成に対する既定のサイズになります。
+
+項目 | 仮想マシンの説明 | ギャラリー イメージ | 既定サイズ
+--- | --- | --- | ---
+1\. | 最初のドメイン コントローラー | Windows Server 2012 R2 Datacenter | A2 (Medium)
+2\. | 2 番目のドメイン コントローラー | Windows Server 2012 R2 Datacenter | A2 (Medium)
+3\. | 最初のデータベース サーバー | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | A5
+4\. | 2 番目のデータベース サーバー | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | A5
+5\. | クラスターのマジョリティ ノード | Windows Server 2012 R2 Datacenter | A1 (Small)
+6\. | 最初の SharePoint アプリケーション サーバー | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
+7\. | 2 番目の SharePoint アプリケーション サーバー | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
+8\. | 最初の SharePoint Web サーバー | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
+9\. | 2 番目の SharePoint Web サーバー | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
+
+この構成の推定コストを計算するには、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を参照してください。
+
+1. [**モジュール**] で、[**コンピューティング**] をクリックし、[**仮想マシン**] を必要なだけクリックして 9 つの仮想マシンを作成してください。
+2. 各仮想マシンで次を選択してください。
+	- 目的のリージョン
+	- 種類には **Windows**
+	- 価格レベルには**標準**
+	- **インスタンス サイズ**には、上記の表でのデフォルト サイズもしくは目的のサイズ
+
+> [AZURE.NOTE]Azure 料金計算ツールでは、SQL Server 2014 Enterprise を実行している 2 つの仮想マシンの SQL Server ライセンスの追加のコストは含まれません。詳細については、「[Virtual Machines Pricing-SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」を参照してください。
+
 ### デプロイ フェーズ
 
 この構成をデプロイするには、次のプロセスを使用します。
@@ -128,4 +153,4 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

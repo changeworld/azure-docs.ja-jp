@@ -13,13 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="07/27/2015"
+	ms.date="10/30/2015"
 	ms.author="mahender"/>
 
 # Microsoft アカウント ログインを使用するようにアプリケーションを構成する方法
 
-[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
-&nbsp;
+[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]&nbsp;
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
@@ -43,7 +42,7 @@
 
 4. **[アプリ設定]** をクリックして、**[クライアント ID]** と **[クライアント シークレット]** の値を書き留めます。
 
-    > [AZURE.NOTE] クライアント シークレットは、重要なセキュリティ資格情報です。クライアント シークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
+    > [AZURE.NOTE]クライアント シークレットは、重要なセキュリティ資格情報です。クライアント シークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
 
 ## <a name="secrets"> </a>Microsoft アカウントの情報をモバイル アプリに追加する
@@ -69,7 +68,7 @@
 
 <!-- URLs. -->
 
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Microsoft Azure の管理ポータル]: https://portal.azure.com/
 
-<!----HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

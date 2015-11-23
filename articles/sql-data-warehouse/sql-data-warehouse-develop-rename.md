@@ -1,6 +1,6 @@
 <properties
    pageTitle="SQL Data Warehouse | Microsoft Azure での名前変更"
-   description="ソリューションを開発するための Azure SQL Data Warehouse でのオブジェクトとデータベースの名前変更に関するヒント。"
+   description="ソリューション開発のための Azure SQL Data Warehouse でのテーブルの名前変更に関するヒント。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="twounder"
@@ -13,53 +13,37 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/21/2015"
+   ms.date="11/05/2015"
    ms.author="twounder;JRJ@BigBangData.co.uk;barbkess"/>
 
 # SDL Data Warehouse での名前変更
-SQL Server でデータベースの名前を変更するには、ストアド プロシージャ ```sp_renamedb``` を使用します。SQL Data Warehouse は、同じ目標を実現するために、DDL 構文を使用します。DDL コマンドは ```RENAME DATABASE``` です。
+SQL Server では、ストアド プロシージャ ```sp_renamedb``` を使用したデータベースの名前変更をサポートしていますが、SQL Data Warehouse では、DDL 構文を使用して同じ目標を達成します。DDL コマンドは ```RENAME OBJECT``` です。
 
-## データベースの名前変更
+## テーブルの名前変更
 
-データベースの名前を変更するには、次のコマンドを実行します。
-
-```
-RENAME DATABASE AdventureWorks TO Contoso;
-```
-
-オブジェクトやデータベースは、他のユーザーがそれらに接続していたり使用している場合は、名前変更ができないことを覚えておくことは重要です。最初に、開いているセッションを終了する必要があります。セッションを終了するには、 [KILL](https://msdn.microsoft.com/library/ms173730.aspx) コマンドを使用する必要があります。```KILL``` を使用するときは注意してください。いったん実行されると、対象のセッションは終了し、コミットされていない作業はロールバックされます。
-
-> [AZURE.NOTE]SQL Data Warehouse のセッションで KILL コマンドを呼び出す際には、接頭辞の ’SID’ とセッション番号を付加してください。たとえば、```KILL 'SID1234'``` はセッション1234 を強制終了します (それを実行する正当なアクセス許可を持っている場合)。
-
-## セッションの強制終了
-データベースの名前を変更するのには、SQL Data Warehouse に接続されているセッションを強制終了する必要があります。次のクエリでは、接続をクリアにする(現在のセッションは保存) ための、KILL コマンドのリストを生成します。
+現時点で、名前を変更できるのはテーブルのみです。テーブルの名前を変更するための構文は次のとおりです。
 
 ```
-SELECT
-    'KILL ''' + session_id + ''''
-FROM
-    sys.dm_pdw_exec_requests r
-WHERE
-    r.session_id <> SESSION_ID()
-    AND EXISTS
-    (
-        SELECT
-            *
-        FROM
-            sys.dm_pdw_lock_waits w
-        WHERE
-            r.session_id = w.session_id
-    )
-GROUP BY
-    session_id;
+RENAME OBJECT Customer TO NewCustomer;
 ```
 
-## スキーマの切り替え
-オブジェクトが属するスキーマを変更したい場合は、`ALTER SCHEMA` を使用して達成できます。
+テーブルの名前を変更すると、テーブルに関連付けられたすべてのオブジェクトおよびプロパティが、新しいテーブル名を参照するように更新されます。たとえば、テーブルの定義、インデックス、制約、およびアクセス許可が更新されます。ビューは更新されません。
+
+## 外部テーブルの名前変更
+
+外部テーブルの名前を変更すると、SQL Server PDW 内の該当するテーブル名が変更されます。これによって、テーブルの外部データの場所が影響されることはありません。
+
+## テーブル スキーマの変更
+オブジェクトが属するスキーマを変更する場合は、ALTER SCHEMA を次のように使用して目的を達成します。
 
 ```
 ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 ```
+
+## テーブル名の変更には排他的なテーブル ロックが必要
+
+使用中のテーブルの名前は変更できないことに注意してください。テーブルの名前の変更には、テーブル上での排他的なロックが必要です。テーブルを使用中である場合は、テーブルを使用しているセッションを終了することが必要な場合があります。セッションを終了するには、 [KILL](https://msdn.microsoft.com/library/ms173730.aspx) コマンドを使用する必要があります。```KILL``` を使用する場合は注意が必要です。いったん実行すると、セッションは終了し、コミット前の作業はロールバックされます。SQL Data Warehouse 内のセッションにはプレフィックスとして 'SID' が付けられます。KILL コマンドを呼び出す際には、このプレフィックスとセッション番号を指定する必要があります。たとえば、```KILL 'SID1234'``` のようになります。
+
 
 ## 次のステップ
 開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
@@ -69,4 +53,4 @@ ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 <!--Article references-->
 [開発の概要]: sql-data-warehouse-overview-develop.md
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

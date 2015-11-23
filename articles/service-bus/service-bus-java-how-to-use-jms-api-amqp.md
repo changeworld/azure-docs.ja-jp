@@ -10,15 +10,12 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.workload="tbd" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="07/21/2015" 
+	ms.date="11/06/2015" 
 	ms.author="sethm"/>
-
-
-
 
 # Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ
 
@@ -26,13 +23,13 @@ Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラッ�
 
 Service Bus での AMQP 1.0 のサポートにより、仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できます。さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
 
-このハウツー ガイドでは、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションから Service Bus の仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。Service Bus .NET API を使用して同じ作業を実行する方法が説明されているハウツー ガイドがあります。これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
+この記事では、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションから Service Bus のブローカー メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。Service Bus .NET API を使用して同じ作業を実行する方法が説明されているハウツー ガイドがあります。これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
 
 ## Service Bus の概要
 
-このガイドは、"queue1" という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Microsoft Azure 管理ポータル](http://manage.windowsazure.com)を使用して名前空間とキューを作成できます。Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)」を参照してください。
+このガイドは、"queue1" という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Azure ポータル](http://manage.windowsazure.com)を使用して名前空間とキューを作成できます。Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)」を参照してください。
 
-**注**: キューはパーティション キューとしてパーティション分割を無効にして作成する必要があります。トピックでは、まだ AMQP サポートは提供されていません。詳細については、「[メッセージング エンティティのパーティション分割](http://msdn.microsoft.com/library/azure/dn520246.aspx)」を参照してください。
+> [AZURE.NOTE]パーティション分割されたキューおよびトピックも AMQP をサポートします。詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」と「[パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート](service-bus-partitioned-queues-and-topics-amqp-overview.md)」を参照してください。
 
 ## AMQP 1.0 JMS クライアント ライブラリのダウンロード
 
@@ -109,7 +106,7 @@ topic.[jndi_name] = [physical_name]
 - **[jndi\_name]**: 送信先の論理名。Java アプリケーションで JNDI IntialContext.lookup() メソッドを使用して解決される名前です。
 - **[physical\_name]**: アプリケーションでのメッセージの送受信に使用する Service Bus エンティティの名前。
 
-> [AZURE.NOTE]Service Bus トピック サブスクリプションから受信した場合は、JNDI で指定された物理名がトピックの名前になります。サブスクリプション名は、持続性の高いサブスクリプションが JMS アプリケーション コードで作成されるときに指定されます。「[サービス バス AMQP: 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)」では、JMS からの Service Bus トピック サブスクリプションの使用の詳細について説明しています。
+> [AZURE.NOTE]Service Bus トピック サブスクリプションから受信した場合は、JNDI で指定された物理名がトピックの名前になります。サブスクリプション名は、持続性の高いサブスクリプションが JMS アプリケーション コードで作成されるときに指定されます。「[サービス バス AMQP: 開発者ガイド](service-bus-amqp-dotnet.md)」では、JMS からのサービス バス トピック サブスクリプションの使用の詳細について説明しています。
 
 ### JMS アプリケーションの記述
 
@@ -250,7 +247,7 @@ exit
 
 ここで示したサンプル JMS アプリケーションと、「[.NET サービス バス API で AMQP 1.0 を使用する方法](service-bus-dotnet-advanced-message-queuing.md)」に示されている類似の .NET アプリケーションを使用すると、.NET と Java の間でメッセージ交換を行うことができます。
 
-Service Bus と AMQP 1.0 を使ったクロスプラットフォーム メッセージングの詳細については、「[Service Bus AMQP 1.0 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)」を参照してください。
+サービス バスと AMQP 1.0 を使ったクロスプラットフォーム メッセージングの詳細については、「[Service Bus AMQP 1.0 開発者ガイド](service-bus-amqp-dotnet.md)」を参照してください。
 
 ### JMS から .NET
 
@@ -328,13 +325,13 @@ JMS を AMQP 1.0 と Service Bus で使用する場合は、次の制限があ�
 
 このガイドでは、一般的な JMS API と AMQP 1.0 を使って Java から Service Bus の仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明しました。
 
-Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、その他の言語からも使用できます。Service Bus で AMQP 1.0 のサポートを使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。詳細については、「[Service Bus AMQP 1.0 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)」を参照してください。
+Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、その他の言語からも使用できます。Service Bus で AMQP 1.0 のサポートを使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。詳細については、「[Service Bus AMQP 1.0 開発者ガイド](service-bus-amqp-dotnet.md)」を参照してください。
 
 ## 次のステップ
 
 * [Azure Service Bus での AMQP 1.0 サポート](service-bus-amqp-overview.md)
 * [Service Bus .NET API で AMQP 1.0 を使用する方法](service-bus-dotnet-advanced-message-queuing.md)
-* [Service Bus AMQP 1.0: 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)
+* [Service Bus AMQP 1.0: 開発者ガイド](service-bus-amqp-dotnet.md)
 * [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
 * [Java デベロッパー センター](/develop/java/)
 
@@ -342,4 +339,4 @@ Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、そ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

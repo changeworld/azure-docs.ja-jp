@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/28/2015" 
+	ms.date="11/09/2015" 
 	ms.author="spelluru"/>
 
 # コンピューティングのリンクされたサービス
@@ -49,6 +49,7 @@
 	      "jobsContainer": "adfjobs",
 	      "timeToLive": "00:05:00",
 	      "version": "3.1",
+		  "osType": "linux",
 	      "linkedServiceName": "MyBlobStore"
 	      "additionalLinkedServiceNames": [
 	        "otherLinkedServiceName1",
@@ -69,6 +70,7 @@ timetolive | <p>オンデマンド HDInsight クラスターに許可される�
 version | HDInsight クラスターのバージョン | いいえ
 linkedServiceName | データの保存し、処理するためのオンデマンド クラスターで使用される BLOB ストアです。 | あり
 additionalLinkedServiceNames | Data Factory サービスがあなたの代わりに登録できるように、HDInsight の「リンクされたサービス」の追加ストレージ アカウントを指定します。 | いいえ
+osType | オペレーティング システムの種類使用可能な値: windows (既定値) および linux | いいえ 
 
 ### 高度なプロパティ
 
@@ -262,7 +264,7 @@ apiKey | 公開されたワークスペース モデルの API です。 | あ�
 型 | type プロパティを **AzureDataLakeAnalytics** に設定する必要があります。 | あり
 accountName | Azure Data Lake Analytics アカウント名。 | あり
 dataLakeAnalyticsUri | Azure Data Lake Analytics URI。 | いいえ 
-承認 | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | あり 
+authorization | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | あり 
 subscriptionId | Azure サブスクリプション ID | いいえ (指定されていない場合は Data Factory のサブスクリプションが使用されます)。 
 resourceGroupName | Azure リソース グループ名 | いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。
 sessionId | OAuth 承認セッションのセッション ID です。各セッション ID は一意であり、使用されるのが 1 回のみの場合があります。セッション ID は、Data Factory Editor で自動生成されます。 | あり
@@ -281,4 +283,4 @@ Azure SQL のリンクされたサービスを作成し、[ストアド プロ�
  
    
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

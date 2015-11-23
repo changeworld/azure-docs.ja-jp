@@ -3,7 +3,7 @@
 	description="Visual Studio の Azure Mobile Services プロジェクトの変更点について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
-	authors="patshea123" 
+	authors="TomArcher" 
 	manager="douge" 
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="JavaScript" 
 	ms.topic="article" 
 	ms.date="09/23/2015" 
-	ms.author="patshea"/>
+	ms.author="tarcher"/>
 
 # 接続済みの Visual Studio サービスを使用して Azure Mobile Services を追加したときの JavaScript プロジェクトへの影響
 
@@ -46,4 +46,4 @@
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

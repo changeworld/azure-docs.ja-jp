@@ -33,8 +33,8 @@
 --- | --- | --- | ---
 1\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (最初のドメイン コントローラー (例: DC1)) | Windows Server 2012 R2 Datacenter | A2 (Medium)
 2\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (2 番目のドメイン コントローラー (例: DC2)) | Windows Server 2012 R2 Datacenter | A2 (Medium)
-3\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (最初の SQL Server コンピューター (例: SQL1)) | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | 	A7
-4\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (2 番目の SQL Server コンピューター (例: SQL2)) | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | 	A7
+3\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (最初の SQL Server コンピューター (例: SQL1)) | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | A5
+4\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (2 番目の SQL Server コンピューター (例: SQL2)) | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | A5
 5\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (クラスターのマジョリティ ノード (例: MN1)) | Windows Server 2012 R2 Datacenter | A1 (Small)
 6\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (最初の SharePoint アプリケーション サーバー (例: APP1)) | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
 7\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (2 番目の SharePoint アプリケーション サーバー (例: APP2)) | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
@@ -115,7 +115,7 @@ V、S、A、C の各表は、「[フェーズ 1: Azure の構成](virtual-machin
 5.	ブラウザーのダイアログが表示され、"manage.windowsazure.com から ComputerName.rdp を開くか、または保存しますか?" というメッセージが表示されます。 **[開く]** をクリックします。
 6.	**[リモート デスクトップ接続]** ダイアログで、**[接続]** をクリックします。
 7.	**[Windows セキュリティ]** ダイアログで、**[別のアカウントを使用]** をクリックします。
-8.	**[ユーザー名]** に、VM の名前と、VM で作成されたローカル管理者アカウント (ローカル コンピューター アカウント) のユーザー名を入力します。*ComputerName*\*LocalAdministratorAccountName* という形式を使用します。
+8.	**[ユーザー名]** に、VM の名前と、VM で作成されたローカル管理者アカウント (ローカル コンピューター アカウント) のユーザー名を入力します。*ComputerName**LocalAdministratorAccountName* という形式を使用します。
 9.	**[パスワード]** に、ローカル管理者アカウントのパスワードを入力します。
 10.	**[OK]** をクリックします。
 11.	**[リモート デスクトップ接続]** ダイアログで、**[はい]** をクリックします。新しいマシンのデスクトップがリモート デスクトップ セッション ウィンドウに表示されます。
@@ -248,4 +248,4 @@ SharePoint ファームでは、次のユーザー アカウントが必要で�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

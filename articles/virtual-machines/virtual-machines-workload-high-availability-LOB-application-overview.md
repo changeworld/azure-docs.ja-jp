@@ -14,13 +14,12 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.date="11/09/2015" 
 	ms.author="josephd"/>
 
 # Azure での高可用な基幹業務アプリケーションのデプロイ
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 
 この記事には、Azure インフラストラクチャ サービスに、高可用なイントラネット専用のWeb ベース基幹業務アプリケーションと SQL Server AlwaysOn 可用性グループをデプロイするための詳細な手順へのリンクが含まれます。アプリケーションは、次のコンピューターでホストされます。
 
@@ -69,4 +68,4 @@ Azure の IT ワークロードの設計に関する詳細については、「[
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

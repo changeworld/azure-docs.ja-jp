@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD B2C プレビュー | Microsoft Azure"
+	pageTitle="Azure AD B2C プレビュー: Graph API の使用 | Microsoft Azure"
 	description="アプリケーション ID を使用して B2C テナント用の Graph API を呼び出してプロセスを自動化する方法。"
 	services="active-directory-b2c"
 	documentationCenter=".net"
@@ -148,7 +148,7 @@ public B2CGraphClient(string clientId, string clientSecret, string tenant)
 }
 ```
 
-例として、`B2C Get-User` コマンドを使用してみましょう。`Get-User` がその他の入力なしで呼び出されると、CLI は `B2CGraphClient.GetAllUsers(...)` メソッドを呼び出します。このメソッドは、HTTP GET 要求を Graph API に送信する `B2CGraphClient.SendGraphGetRequest(...)` を呼び出します。それは、GET 要求を送信する前に、ADAL を使用してアクセス トークンを取得します。
+例として、`B2C Get-User` コマンドを使用してみましょう。`Get-User` がそれ以外の入力なしで呼び出されると、CLI は `B2CGraphClient.GetAllUsers(...)` メソッドを呼び出します。このメソッドは、HTTP GET 要求を Graph API に送信する `B2CGraphClient.SendGraphGetRequest(...)` を呼び出します。それは、GET 要求を送信する前に、ADAL を使用してアクセス トークンを取得します。
 
 ```C#
 public async Task<string> SendGraphGetRequest(string api, string query)
@@ -222,7 +222,7 @@ Content-Length: 338
 {
 	// These properties are all required for creating consumer users.
 	 
-	"accountEnabled": false,                    // always set to false
+	"accountEnabled": true,
 	"alternativeSignInNamesInfo": [             // controls what identifier the user uses to sign into their account
 		{
 			"type": "emailAddress",             // can be 'emailAddress' or 'userName'
@@ -349,4 +349,4 @@ B2C テナント内に定義されたカスタム属性は、B2CGraphClient を�
 
 Graph API を使用した B2C テナントに対する操作に関して、ご質問やご要望がある場合は、いつでもご遠慮なくお知らせください。 記事に対するコメントや GitHub リポジトリのコード例の問題をお寄せください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

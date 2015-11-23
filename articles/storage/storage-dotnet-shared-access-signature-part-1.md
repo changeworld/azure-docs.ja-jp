@@ -104,8 +104,8 @@ BLOB に読み書きアクセス許可を付与するサービス SAS URI の例
 ---|---|---
 Blob URI|https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt |BLOB のアドレス。HTTPS の使用を強くお勧めします。
 ストレージ サービスのバージョン|sv=2015-04-05|ストレージ サービス バージョン 2012-02-12 以降では、このパラメーターは、使用するバージョンを示します。
-開始時刻|st=2015-04-29T22%3A18%3A26Z|ISO 8061 形式で指定されます。SAS をすぐに有効にする場合は、開始時刻を省略します。
-有効期限|se=2015-04-30T02%3A23%3A26Z|ISO 8061 形式で指定されます。
+開始時刻|st=2015-04-29T22%3A18%3A26Z|ISO 8601 形式で指定されます。SAS をすぐに有効にする場合は、開始時刻を省略します。
+有効期限|se=2015-04-30T02%3A23%3A26Z|ISO 8601 形式で指定されます。
 リソース|sr=b|リソースは BLOB です。
 アクセス許可|sp=rw|SAS で付与されるアクセス許可には、読み取り (r) および書き込み (w) が含まれます。
 IP 範囲|sip=168.1.5.60-168.1.5.70|要求が受け入れられる IP アドレスの範囲です。
@@ -316,12 +316,10 @@ Shared Access Signature は、アカウント キーを知らせずに、スト�
 - [Shared Access Signature、第 2 部: BLOB サービスによる SAS の作成および使用](storage-dotnet-shared-access-signature-part-2.md)
 - [Windows で Azure File ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
 - [Azure Storage リソースへのアクセスの管理](storage-manage-access-to-resources.md)
-- [共有アクセス署名を使用したアクセスの委任](http://msdn.microsoft.com/library/azure/ee395415.aspx)
-- [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
-[sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
-[sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
+- [Shared Access Signature を使用したアクセスの委任](http://msdn.microsoft.com/library/azure/ee395415.aspx)
+- [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx) [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

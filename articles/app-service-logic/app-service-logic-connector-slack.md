@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Logic Apps での Slack コネクタの使用 | Microsoft Azure App Service"
 	description="Slack コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-	authors="anuragdalmia" 
+	authors="rajeshramabathiran" 
 	manager="dwrede" 
 	editor="" 
 	services="app-service\logic" 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/23/2015"
-	ms.author="andalmia"/>
+	ms.date="11/11/2015"
+	ms.author="rajram"/>
 
 # Slack コネクタの使用開始とロジック アプリへの追加
 Slack チャネルに接続し、チームにメッセージを投稿します。コネクタを "ワークフロー" の一部として Logic Apps で使用し、さまざまなタスクを実行できます。ワークフローで Slack コネクタを使用すると、他のコネクタを使用してさまざまなシナリオを実現できます。たとえば、ワークフローで [Facebook コネクタ](app-service-logic-connector-facebook.md)を使用して、Slack チャネルにメッセージを投稿できます。
@@ -35,8 +35,7 @@ Slack コネクタでは、次のトリガーとアクションを使用でき�
 
 1. Azure のスタート画面で、**[Marketplace]** を選択します。
 2. **[API Apps]** を選択し、"Slack コネクタ" を検索します。
-3. 名前、App Service プラン、その他のプロパティを入力します。  
-![][1] 
+3. 名前、App Service プラン、その他のプロパティを入力します。![][1] 
 
 4. **[作成]** をクリックします。
 
@@ -48,38 +47,30 @@ Slack コネクタが作成されると、ロジック アプリにアクショ�
 
 1.	ロジック アプリで、**[トリガーとアクション]** を開きます。[Create a new Logic App (新しいロジック アプリの作成)](app-service-logic-create-a-logic-app.md)
 
-2.	Slack コネクタは、右側のギャラリーに一覧表示されます。  
-![][2]
+2.	Slack コネクタは、右側のギャラリーに一覧表示されます。![][2]
 
 3.	作成済みの Slack コネクタを選択すると、ロジック アプリに自動的に追加されます。
-4.	**[承認]** を選択します。Slack アカウントにサインインします。最後に、Slack アカウントにアクセスする権限をコネクタに付与するように求められます。**[承認]** を選択します。  
-![][3]  
-![][4]  
-![][5]  
-![][6]  
+4.	**[承認]** を選択します。Slack アカウントにサインインします。最後に、Slack アカウントにアクセスする権限をコネクタに付与するように求められます。**[承認]** を選択します。![][3] ![][4] ![][5] ![][6]  
 	
-5.	これで、フローで Slack コネクタを使用できるようになりました。Post Message アクションが使用できます。  
-![][7]
+5.	これで、フローで Slack コネクタを使用できるようになりました。Post Message アクションが使用できます。![][7]
 
 
-[メッセージの投稿] の使い方を簡単に見てみましょう。このアクションを使用すると、任意の Slack チャネルにメッセージを投稿することができます。  
-![][8]
+[メッセージの投稿] の使い方を簡単に見てみましょう。このアクションを使用すると、任意の Slack チャネルにメッセージを投稿することができます。![][8]
 
 "Post Message" アクションの入力プロパティを次のように構成します。
 
 プロパティ | 説明
 --- | ---
 テキスト | 投稿するメッセージのテキストを入力します。
-チャネル名 | このメッセージが投稿される Slack チャネルを入力します。チャネルが入力されていない場合は、メッセージが \#general に投稿されます。
+チャネル名 | このメッセージが投稿される Slack チャネルを入力します。チャネルが入力されていない場合は、メッセージが #general に投稿されます。
 高度なプロパティ | **Bot User name**: このメッセージに使用する Bot の名前。これが入力されていない場合、メッセージは "Bot" として投稿されます。<p><p>**Icon URL**: このメッセージのアイコンとして使用される画像を示す URL です。<p><p>**Icon Emoji**: このメッセージのアイコンとして使用される絵文字です。このプロパティは、アイコンの URL プロパティを上書きします。
 
 
-Slack コネクタでは REST API が使用できるため、ロジック アプリの外部で Slack コネクタを使用できます。Slack コネクタを開き、**[API の定義]** を選択します。  
-![][9]
+Slack コネクタでは REST API が使用できるため、ロジック アプリの外部で Slack コネクタを使用できます。Slack コネクタを開き、**[API の定義]** を選択します。![][9]
 
 
 ## コネクタでできること
-コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -99,4 +90,4 @@ Slack コネクタでは REST API が使用できるため、ロジック アプ
 [8]: ./media/app-service-logic-connector-slack/img8.PNG
 [9]: ./media/app-service-logic-connector-slack/img9.PNG
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

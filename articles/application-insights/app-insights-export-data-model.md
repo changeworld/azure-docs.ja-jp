@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/12/2015" 
+	ms.date="11/06/2015" 
 	ms.author="awills"/>
 
 # Application Insights エクスポート データ モデル
@@ -120,43 +120,6 @@
 
     *例*<br/> www.fabrikam.com<br/>www.contoso.com<br/>bretwpc711.azurewebsites.net<br/>
 
-**urlData.port**
-
-    string <telemetrytype>.urldata.port      Max: 100
-* 
-    完全な URL で表される場合は、URL データ項目のポートです。それ以外の場合は、空になります。 
-
-    *派生:* URL の変換については付録をご覧ください
-
-    *例*<br/> 80<br/>443
-
-**urlData.protocol**
-
-    string <telemetrytype>.urldata.protocol      Max: 100
-* 
-    URL データ項目のプロトコル (HTTP、FTP など) 
-
-    *派生:* URL の変換については付録をご覧ください
-
-    *例*<br/> http<br/>https
-
-**urlData.queryParameters.parameter**
-
-    string <telemetrytype>.urldata.queryparameters.parameter      Max: 100
-* 
-    URL データ項目のクエリ パラメーター名の配列 
-
-    *派生:* URL の変換については付録をご覧ください
-
-    *例*<br/> etc<br/>extraqs<br/>pagemode<br/>pagetype
-
-**urlData.queryParameters.value**
-
-    string <telemetrytype>.urldata.queryparameters.value      Max: 100
-* 
-    URL データ項目から解析されたクエリ パラメーターの値の配列 
-
-    *派生:* URL の変換については付録をご覧ください
 
 
 ## availability
@@ -451,7 +414,7 @@
 * 
     クライアント側のアプリのロケールです。テレメトリ項目で明示的に指定しない場合、ユーザー エージェントのフィールドの処理により指定されます。 
 
-    *例*<br/> ru<br/>ja-jp<br/>de-DE<br/>unknown
+    *例*<br/> ru<br/>ja-JP<br/>de-DE<br/>unknown
 
 **machineName**
 
@@ -531,15 +494,6 @@
 
     *例*<br/> 640<br/>800<br/>1080
 
-**userAgentString**
-
-    string context.device.useragent      Max: 1000
-* 
-    クライアント ブラウザーの useragent 
-
-    *既定:* Null の場合、データ コレクションのエンドポイントでキャプチャされる HTTP ユーザー エージェントに設定されます
-
-    *例*<br/> Opera/9.80 (Windows NT 5.1) Presto/2.12.388 Version/12.17<br/>Mozilla/5.0 (iPad; CPU OS 8\_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12F69 Safari/600.1.4<br/>Chrome/37.0.2062.124 Safari/537.36<br/>Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)<br/>Safari/537.36<br/>+S89
 
 **aiAgentVersion**
 
@@ -581,17 +535,6 @@
 
     *例*<br/> Belarus<br/>Netherlands<br/>Germany
 
-**latitude**
-
-    long context.location.point.lat      
-* 
-    *例*<br/> 53.9<br/>45.7788 
-
-**longitude**
-
-    long context.location.point.lon      
-* 
-    *例*<br/> 27.5667<br/>-119.529 
 
 **state**
 
@@ -1045,7 +988,7 @@
 * 
     完全な URL で表される場合、参照元の URL のポートです。それ以外の場合は、空になります。 
 
-    *派生:* URL の変換については付録をご覧ください。
+    *派生:* URL の変換については付録をご覧ください
 
 **referrerData.protocol**
 
@@ -1063,7 +1006,7 @@
 * 
     参照元の URL のクエリ パラメーター名の配列 
 
-    *派生:* URL の変換については付録をご覧ください。
+    *派生:* URL の変換については付録をご覧ください
 
 **referrerData.queryParameters.value**
 
@@ -1081,4 +1024,4 @@
 * [連続エクスポート](app-insights-export-telemetry.md)
 * [コード サンプル](app-insights-export-telemetry.md#code-samples)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

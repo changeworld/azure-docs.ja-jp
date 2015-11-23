@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/14/2015" 
+	ms.date="11/06/2015" 
 	ms.author="tomfitz"/>
 
 # 新しいリソース グループまたはサブスクリプションへのリソースの移動
@@ -30,6 +30,7 @@
 2. 移動先のリソース グループには、移動するリソースと同じアプリケーション ライフサイクルを共有するリソースのみが含まれている必要があります。
 3. Azure PowerShell を使用している場合は、最新のバージョンを使用していることを確認します。**Move-AzureResource** コマンドは、頻繁に更新されます。使用しているバージョンを更新するには、Microsoft Web プラットフォーム インストーラーを実行し、新しいバージョンがあるかどうかを確認します。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」を参照してください。
 4. 移動操作は完了までに時間がかかることがあり、その間、PowerShell のプロンプトは、操作が完了するまで待機状態となります。
+5. リソースを移動する場合は、その操作の間、ソース グループとターゲット グループの両方がロックされます。これらのグループに対する書き込み操作および削除操作は、移動が完了するまでブロックされます。
 
 ## サポートされているサービス
 
@@ -87,18 +88,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
     POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version} 
 
-ここで、**{source-subscription-id}** と **{source-resource-group-name}** は、移動するリソースが現在含まれているサブスクリプションとリソース グループで置き換えます。{api-version} には、**2015-01-01** を使用します。
-
-要求には、移動先のリソース グループと移動するリソースとを定義する JSON オブジェクトを含めます。
-
-    {
-        "targetResourceGroup": "/subscriptions/{target-subscription-id}/resourceGroups/{target-resource-group-name}", "resources": [
-            "/subscriptions/{source-id}/resourceGroups/{source-group-name}/providers/{provider-namespace}/{type}/{name}",
-            "/subscriptions/{source-id}/resourceGroups/{source-group-name}/providers/{provider-namespace}/{type}/{name}",
-            "/subscriptions/{source-id}/resourceGroups/{source-group-name}/providers/{provider-namespace}/{type}/{name}",
-            "/subscriptions/{source-id}/resourceGroups/{source-group-name}/providers/{provider-namespace}/{type}/{name}"
-        ]
-    }
+要求の本文で、ターゲット リソース グループと、移動するリソースを指定します。REST による移動操作の詳細については、「[リソースの移動](https://msdn.microsoft.com/library/azure/mt218710.aspx)」を参照してください。
 
 ## 次のステップ
 - [リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)
@@ -106,4 +96,4 @@ Web アプリを使用している場合、App Service プランのみを移動�
 - [Using the Azure Preview Portal to manage your Azure resources (Azure プレビュー ポータルを使用した Azure リソースの管理)](azure-portal/resource-group-portal.md)
 - [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

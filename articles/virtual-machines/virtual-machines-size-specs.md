@@ -60,6 +60,8 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 *   Dv2 シリーズと D シリーズは、より高速の CPU やより高いローカル ディスク パフォーマンスが必要なアプリケーション、またはメモリー要求がより高いアプリケーションに最適です。多数のエンタープライズ レベルのアプリケーションに、強力な組み合わせで対処します。
 
+
+
 ## 一般的な制限事項
 
 次の表は、サービス管理デプロイ モデルを使用して作成された仮想マシンについて、仮想マシンのサイズに関係なく適用される制限事項を示したものです。
@@ -76,7 +78,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 >[AZURE.NOTE]Storage の容量は、GB の測定単位として 1024^3 バイトを使用して表されます。これはギガバイト、または 2 進数定義とも呼ばれます。使用する進法が異なるサイズを比較する場合、2 進数のサイズが 10 進数よりも小さく見える場合でも、1024^3 は 1000^3 より大きいため、特定のサイズ (1 GB など) では、2 進法の方が 10 進法よりも提供される容量が大きいことに注意してください。
 
-### Basic レベル
+## Basic レベル
 
 |サイズ - Azure ポータル\\コマンドレットと API|CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 300)|
 |---|---|---|---|---|---|---|
@@ -86,7 +88,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 |A3\\Basic\_A3|4|7 GB|1|<p>OS = 1,023 GB</p><p>一時ディスク = 120 GB</p>|8|8 x 300|
 |A4\\Basic\_A4|8|14 GB|1|<p>OS = 1,023 GB</p><p>一時ディスク = 240 GB</p>|16|16 x 300|
 
-### Standard レベル: A シリーズ
+## Standard レベル: A シリーズ
 
 |サイズ - Azure ポータル\\コマンドレットと API|CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)|
 |---|---|---|---|---|---|---|
@@ -103,7 +105,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 |A10\\同|8|56 GB|2|<p><p>OS = 1,023 GB</p><p>一時ディスク = 382 GB</p><blockquote><p>注: このサイズの使用に関する情報と考慮事項については、「<a href="http://go.microsoft.com/fwlink/p/?linkid=328042">A8、A9、A10、A11 コンピューティング集中型インスタンスについて</a>」を参照してください。</p></blockquote>|16|16 x 500|
 |A11\\同|16|112 GB|4|<p><p>OS = 1,023 GB</p><p>一時ディスク = 382 GB</p><blockquote><p>注: このサイズの使用に関する情報と考慮事項については、「<a href="http://go.microsoft.com/fwlink/p/?linkid=328042">A8、A9、A10、A11 コンピューティング集中型インスタンスについて</a>」を参照してください。</p></blockquote>|16|16 x 500|
 
-### Standard レベル: D シリーズ
+## Standard レベル: D シリーズ
 
 |サイズ - Azure ポータル\\コマンドレットと API|CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)|
 |---|---|---|---|---|---|---|
@@ -116,7 +118,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 |Standard\_D13\\同|8|56 GB|8|<p>OS = 1,023 GB</p><p>一時的 (SSD) = 400 GB</p>|16|16 x 500|
 |Standard\_D14\\同|16|112 GB|16|<p>OS = 1,023 GB</p><p>一時的 (SSD) = 800 GB</p>|32|32 x 500|
 
-### Standard レベル: Dv2 シリーズ
+## Standard レベル: Dv2 シリーズ
 
 |サイズ - Azure ポータル\\コマンドレットと API|CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)|
 |---|---|---|---|---|---|---|
@@ -130,7 +132,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 |Standard\_D13\_v2\\同|8|56 GB|8|<p>OS = 1,023 GB</p><p>一時的 (SSD) = 400 GB</p>|16|16 x 500|
 |Standard\_D14\_v2\\同|16|112 GB|16|<p>OS = 1,023 GB</p><p>一時的 (SSD) = 800 GB</p>|32|32 x 500|
 
-### Standard レベル: DS シリーズ*
+## Standard レベル: DS シリーズ*
 
 |サイズ - Azure ポータル\\コマンドレットと API|CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|キャッシュ サイズ (GB)|最大ディスク IOPS および帯域幅|
 |---|---|---|---|---|---|---|---|
@@ -145,7 +147,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 **DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage-premium-storage-preview-portal.md)」を参照してください。
 
-### Standard レベル: G シリーズ
+## Standard レベル: G シリーズ
 
 |サイズ – Azure ポータル\\コマンドレットと API|CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)|
 |---|---|---|---|---|---|---|
@@ -155,7 +157,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 |Standard\_G4\\同|16|224 GB|8|<p>OS = 1,023 GB</p><p>ローカル SSD ディスク = 3,072 GB</p>|32|32 x 500|
 |Standard\_G5\\同|32|448 GB|16|<p>OS = 1,023 GB</p><p>ローカル SSD ディスク = 6,144 GB</p>|64|<p>64 x 500</p>|
 
-### Standard シリーズ: GS シリーズ
+## Standard シリーズ: GS シリーズ
 
 |サイズ - Azure ポータル\\コマンドレットと API|CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|キャッシュ サイズ (GB)|最大ディスク IOPS および帯域幅|
 |---|---|---|---|---|---|---|---|
@@ -172,4 +174,4 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 [A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-a8-a9-a10-a11-specs.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

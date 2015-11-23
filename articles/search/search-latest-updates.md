@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Search 関連の更新履歴情報 | Microsoft Azure" 
+	pageTitle="Azure Search 関連の最新の更新履歴情報 | Microsoft Azure | ホスト型クラウド検索サービス" 
 	description="サービスの最新の更新履歴情報を記述する Azure Search のリリース ノート" 
 	services="search" 
 	documentationCenter="" 
@@ -128,4 +128,4 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

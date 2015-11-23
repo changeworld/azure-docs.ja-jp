@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="marketplace-publishing"
+   ms.service="marketplace"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -37,4 +37,4 @@
 
 [link-acct]: marketplace-publishing-accounts-creation-registration.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

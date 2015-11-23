@@ -49,7 +49,7 @@ IoT Hub はデバイスからクラウドへのメッセージを受信するた
 
 + Microsoft Visual Studio 2015、
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2FJA-JP%2Fdevelop%2Fiot%2Ftutorials%2Fprocess-d2c%2F target="\_blank") を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fprocess-d2c%2F target="\_blank") を参照してください。
 
 また、[Azure Storage] と [Azure Service Bus] について、ある程度の知識があることを前提とします。
 
@@ -91,21 +91,21 @@ IoT Hub に関するその他の情報:
 
 <!-- Links -->
 
-[Azure BLOB]: https://azure.microsoft.com/JA-JP/documentation/articles/storage-dotnet-how-to-use-blobs/
-[Azure Data Factory]: https://azure.microsoft.com/JA-JP/documentation/services/data-factory/
-[Hadoop]: https://azure.microsoft.com/JA-JP/documentation/services/hdinsight/
-[Service Bus Queue]: https://azure.microsoft.com/JA-JP/documentation/articles/service-bus-dotnet-how-to-use-queues/
-[Service Bus キュー]: https://azure.microsoft.com/JA-JP/documentation/articles/service-bus-dotnet-how-to-use-queues/
+[Azure BLOB]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-dotnet-how-to-use-blobs/
+[Azure Data Factory]: https://azure.microsoft.com/ja-JP/documentation/services/data-factory/
+[Hadoop]: https://azure.microsoft.com/ja-JP/documentation/services/hdinsight/
+[Service Bus Queue]: https://azure.microsoft.com/ja-JP/documentation/articles/service-bus-dotnet-how-to-use-queues/
+[Service Bus キュー]: https://azure.microsoft.com/ja-JP/documentation/articles/service-bus-dotnet-how-to-use-queues/
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 
-[Transient Fault Handling]: https://msdn.microsoft.com/JA-JP/library/hh680901(v=pandp.50).aspx
+[Transient Fault Handling]: https://msdn.microsoft.com/ja-JP/library/hh680901(v=pandp.50).aspx
 
 [IoT Hub のガイダンスの Event Hubs との互換性]: iot-hub-guidance.md#eventhubcompatible
 
-[Azure Storage]: https://azure.microsoft.com/JA-JP/documentation/services/storage/
-[Azure Service Bus]: https://azure.microsoft.com/JA-JP/documentation/services/service-bus/
+[Azure Storage]: https://azure.microsoft.com/ja-JP/documentation/services/storage/
+[Azure Service Bus]: https://azure.microsoft.com/ja-JP/documentation/services/service-bus/
 
-[Azure Preview Portal]: https://portal.azure.com/
+[Azure preview portal]: https://portal.azure.com/
 
 [IoT Hub を使用したクラウドからデバイスへのメッセージの送信]: iot-hub-csharp-csharp-c2d.md
 [Process Device-to-Cloud messages]: iot-hub-csharp-csharp-process-d2c.md
@@ -119,4 +119,4 @@ IoT Hub に関するその他の情報:
 [Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
 [Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

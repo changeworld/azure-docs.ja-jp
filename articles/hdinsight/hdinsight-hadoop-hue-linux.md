@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/26/2015" 
+	ms.date="11/05/2015" 
 	ms.author="nitinme"/>
 
 # HDInsight Hadoop クラスターに Hue をインストールして使用する
@@ -42,7 +42,9 @@ HDInsight クラスターに Hue をインストールするには、[https://hd
 
 	> [AZURE.NOTE]HDInsight クラスターに Hue をインストールするには、A4 (8 コア、14 GB メモリ) 以上のヘッドノード サイズが推奨されます。
 
-2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下の情報を指定します。
+2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下のように情報を指定します。
+
+	![Hue のスクリプト アクション パラメーターを指定します。](./media/hdinsight-hadoop-hue-linux/hue_script_action.png "Hue のスクリプト アクション パラメーターを指定します。")
 
 	* __[名前]__: スクリプト アクションの表示名を入力します。
 	* __スクリプト URI__: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh
@@ -79,7 +81,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 ### Hive クエリを実行する
 
-1. Hue ポータルから、**[クエリ エディター]** をクリックし、**Hive** をクリックして Hive エディターを開きます。
+1. Hue ポータルから、**[クエリ エディター]** をクリックし、**[Hive]** をクリックして Hive エディターを開きます。
 
 	![Hive を使用する](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Hive.png "Hive を使用する")
 
@@ -135,4 +137,4 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

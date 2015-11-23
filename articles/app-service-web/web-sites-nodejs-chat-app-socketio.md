@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="07/02/2015"
+	ms.date="10/30/2015"
 	ms.author="mwasson"/>
 
 
@@ -69,7 +69,7 @@ Azure Web アプリを作成し、Git 発行を有効にして、Web アプリ�
 
 > [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
-1. Azure コマンド ライン インターフェイス (Azure CLI) をインストールし、Azure サブスクリプションに接続します。「[Azure CLI のインストールと構成](xplat-cli)」をご覧ください。
+1. Azure コマンド ライン インターフェイス (Azure CLI) をインストールし、Azure サブスクリプションに接続します。「[Azure CLI のインストールと構成](../xplat-cli)」をご覧ください。
 
 2. Azure で初めてリポジトリを設定する場合は、ログイン資格情報を作成する必要があります。Azure CLI で、次のコマンドを入力します。
 
@@ -119,7 +119,7 @@ __アダプター__を使用してメッセージとイベントを複数のア�
 
 ###Redis Cache の作成
 
-「[Azure Redis Cache でのキャッシュの作成](http://go.microsoft.com/fwlink/p/?linkid=398592&clcid=0x409)」の手順を実行して、新しいキャッシュを作成します。
+「[Azure Redis Cache でのキャッシュの作成](https://azure.microsoft.com/ja-JP/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#create-a-cache)」の手順を実行して、新しいキャッシュを作成します。
 
 > [AZURE.NOTE]キャッシュの__ホスト名__と__プライマリ キー__を保存します。これらは次の手順で必要になります。
 
@@ -145,7 +145,7 @@ __アダプター__を使用してメッセージとイベントを複数のア�
 
 	> [AZURE.NOTE]__socket.io-redis__ アダプターは Redis と直接通信できますが、現在のバージョンは Azure Redis Cache で必要な認証をサポートしていません。したがって、__redis__ モジュールを使用して最初の接続が作成された後、クライアントが __socket.io-redis__ アダプターに渡されます。
 	>
-	> Azure Redis Cache はポート 6380 を使用するセキュリティで保護された接続をサポートしますが、この例で使用されているモジュールは、2014/7/14 の時点では、セキュリティで保護された接続をサポートしていません。前記のコードは、セキュリティで保護されていない既定のポート 6380 を使用しています。
+	> Azure Redis Cache はポート 6380 を使用するセキュリティで保護された接続をサポートしますが、この例で使用されているモジュールは、2014/7/14 の時点では、セキュリティで保護された接続をサポートしていません。前記のコードは、セキュリティで保護されていない既定のポート 6379 を使用しています。
 
 3. 変更した __app.js__ を保存します。
 
@@ -271,7 +271,7 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 [socketio]: http://socket.io/
@@ -285,4 +285,4 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 [pricing]: /pricing/details/web-sites/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

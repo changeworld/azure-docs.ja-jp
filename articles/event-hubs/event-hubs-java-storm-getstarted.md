@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Event Hubs の使用"
+	pageTitle="Java および Apache Storm でのイベント ハブの使用 | Microsoft Azure"
 	description="このチュートリアルでは、Java でイベントを送信し、Apache Storm クラスターでイベントを受信するための Azure Event Hubs の使用方法について説明します。"
 	services="event-hubs"
 	documentationCenter=""
@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="event-hubs"
-	ms.workload="core"
-	ms.tgt_pltfrm="java"
-	ms.devlang="java"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/21/2015"
+	ms.date="11/05/2015"
 	ms.author="sethm"/>
 
 # Event Hubs の使用
@@ -24,7 +24,7 @@
 
 Event Hubs は、拡張性の高いインジェスト システムで、1 秒あたり何百万ものイベントを取り込むことができます。そのためアプリケーションは、接続されているデバイスやアプリケーションによって生成された大量のデータを処理し、分析できます。Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して転送と格納できます。
 
-詳細については、「[Event Hubs の概要]」を参照してください。
+詳細については、「[Event Hubs の概要][]」を参照してください。
 
 このチュートリアルでは、Java のコンソール アプリケーションを使用してイベント ハブにメッセージを収集し、Apache Storm を使用して並列で取得する方法を学習します。
 
@@ -32,17 +32,17 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 + [Maven](http://maven.apache.org/) を実行するように構成された Java 開発環境。このチュートリアルでは、[Eclipse](https://www.eclipse.org/) を想定しています。
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
++ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
 
 ## Event Hub を作成する
 
-1. [Microsoft Azure 管理ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
+1. [Azure ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
 
 2. **[App Services]**、**[Service Bus]**、**[イベント ハブ]**、**[簡易作成]** の順にクリックします。
 
    	![][1]
 
-3. イベント ハブの名前を入力して、目的のリージョンを選択し、**[Create a new Event Hub (新しい Event Hub を作成する)]** をクリックします。
+3. Event Hub の名前を入力して、目的のリージョンを選択し、**[Create a new Event Hub (新しい Event Hub を作成する)]** をクリックします。
 
    	![][2]
 
@@ -50,7 +50,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
    	![][3]
 
-5. ページ上部にある、**[Event Hubs]** タブをクリックし、先ほど作成したイベント ハブをクリックします。
+5. ページ上部にある、**[Event Hubs]]** タブをクリックし、先ほど作成したイベント ハブをクリックします。
 
    	![][4]
 
@@ -79,14 +79,14 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
    	![][22]
 
-> [AZURE.NOTE]このチュートリアルでは、Storm をローカル モードで開発目的にのみ使用します。Storm の開発とパターンの詳細については、「[HDInsight Storm の概要]」と、[Apache Storm] の公式ドキュメントを参照してください。
+> [AZURE.NOTE]このチュートリアルでは、Storm をローカル モードで開発目的にのみ使用します。Storm の開発とパターンの詳細については、「[HDInsight Storm の概要][]」と、[Apache Storm][] の公式ドキュメントを参照してください。
 
 ## 次のステップ
 
 Event Hubs と Storm を統合するアプリケーションの開発には、次のリソースを使用できます。
 
 - 「[HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]」は、Hadoop クラスター内のセンサー データを取り込むための Event Hubs、Storm、および HBase を使用した完全なシナリオ チュートリアルです。
-- 「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]」は、C# を使用して Storm のパイプラインを作成する方法に関するチュートリアルです。
+- 「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発][]」は、C# を使用して Storm のパイプラインを作成する方法に関するチュートリアルです。
 
 <!-- Images. -->
 [1]: ./media/event-hubs-java-storm-getstarted/create-event-hub1.png
@@ -100,14 +100,14 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [22]: ./media/event-hubs-java-storm-getstarted/receive-storm2.png
 
 <!-- Links -->
-[Microsoft Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure ポータル]: https://manage.windowsazure.com/
 [Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
-[Event Hubs の概要]: http://msdn.microsoft.com/library/azure/dn836025.aspx
+[Event Hubs の概要]: event-hubs-overview.md
 
 [Apache Storm]: https://storm.incubator.apache.org
-[HDInsight Storm の概要]: http://azure.microsoft.com/documentation/articles/hdinsight-storm-overview/
-[HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]: http://azure.microsoft.com/documentation/articles/hdinsight-storm-sensor-data-analysis/
-[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/
+[HDInsight Storm の概要]: ../hdinsight/hdinsight-storm-overview.md
+[HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
+[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

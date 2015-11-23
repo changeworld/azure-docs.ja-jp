@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="11/05/2015" 
 	ms.author="awills"/>
 
 # Windows デスクトップ アプリ、サービス、worker ロールに対する Application Insights
@@ -23,9 +23,9 @@
 
 Application Insights を使用すると、デプロイしたアプリケーションの使用状況とパフォーマンスを監視できます。
 
-デスクトップ アプリ、バックグラウンド サービス、worker ロールなどの Windows アプリケーションはすべて、Application Insights のコア SDK を使用して、Application Insights にテレメトリを送信します。クラス ライブラリ プロジェクトに Application Insights SDK を追加することもできます。
+デスクトップ アプリ、バックグラウンド サービス、worker ロールなどの Windows アプリケーションはすべて、Application Insights SDK を使用して、Application Insights にテレメトリを送信します。クラス ライブラリ プロジェクトに Application Insights SDK を追加することもできます。
 
-コア SDK は API を提供するだけです。つまり、Web またはデバイス SDKと違い、データを自動で集めるモジュールを含まないため、コードを記述して、自身のテレメトリを送信する必要があります。パフォーマンス カウンター コレクターなど、他のパッケージの一部は、デスクトップ アプリでも機能します。
+(たとえば、パフォーマンス カウンターまたは依存関係の呼出しを監視するために) どの標準データ コレクターを選択するか、単にコア API を使用して、独自のテレメトリを記述できます。
 
 
 ## <a name="add"></a>Application Insights リソースの作成
@@ -48,13 +48,13 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
 
     ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-windows-desktop/03-nuget.png)
 
-2. Application Insights コア API パッケージ: Microsoft.ApplicationInsights をインストールします。
+2. Application Insights Windows Server パッケージ: Microsoft.ApplicationInsights.WindowsServer をインストールします。
 
-    !["Application Insights" の検索](./media/app-insights-windows-desktop/04-core-nuget.png)
+    !["Application Insights" の検索](./media/app-insights-windows-desktop/04-ai-nuget.png)
 
     *他のパッケージを使用することができますか。*
 
-    はい、モジュールを使用する場合は、パフォーマンス カウンターや依存関係コレクターのパッケージなど他のパッケージをインストールできます。Microsoft.ApplicationInsights.Web には、このようなパッケージがいくつか含まれています。[ログまたはトレースのコレクター パッケージ](app-insights-asp-net-trace-logs.md)を使用する場合は、Web サーバー パッケージで開始します。
+    はい。独自のテレメトリを送信するためだけに API を使用する場合は、コア API (Microsoft.ApplicationInsights) を選択してください。Windows Server パッケージには、コア API に加え、他にも多くのパッケージ (パフォーマンス カウンターや依存関係の監視など) が自動的に含まれます。
 
     (ただし、Microsoft.ApplicationInsights.Windows は使用しないでください。これは、Windows ストア アプリ向けです。)
 
@@ -66,7 +66,7 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
 
     その他のパッケージの 1 つをインストールした場合は、コードを使用してキーを設定するか、ApplicationInsights.config 内でキーを設定します。
  
-    `<InstrumentationKey>`*自分のキー*`</InstrumentationKey>`
+    `<InstrumentationKey>`*your key*`</InstrumentationKey>`
 
     ApplicationInsights.config を使用する場合は、ソリューション エクスプローラーでプロパティが **Build Action = Content、Copy to Output Directory = Copy** に設定されていることを確認します。
 
@@ -113,14 +113,14 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
 
 ```
 
-テレメトリを送信するには、[Application Insights API][api] のいずれかを使用します。Windows デスクトップ アプリケーションでは、テレメトリが自動的に送信されることはありません。通常は次のものを使用します。
+テレメトリを送信するには、[Application Insights API][api] のいずれかを使用します。コア API を使用している場合、テレメトリは自動的に送信されません。通常は次のものを使用します。
 
 * `TrackPageView(pageName)` は、フォーム、ページ、またはタブを切り替えるために使用する。
 * `TrackEvent(eventName)` は、他のユーザー アクションに使用する。
 * `TrackMetric(name, value)` は、特定のイベントにアタッチされていないメトリックスの定期的なレポートを送信する場合にバックグラウンド タスクで使用する。
 * `TrackTrace(logEvent)` は、[診断ログ][diagnostic]に使用する。
 * `TrackException(exception)` は catch 句に使用する。
-* `Flush()` は、アプリを終了する前にすべてのテレメトリを確実に送信するために使用する。これは、コア API (Microsoft.ApplicationInsights) を使用する場合に限られます。Web およびデバイス SDK ではこの動作が自動的に実装されます (インターネットが常に利用できるとは限らないコンテキストでアプリが実行される場合は、[永続化チャネル](#persistence-channel)に関するページも参照してください。)
+* `Flush()` は、アプリを終了する前にすべてのテレメトリを確実に送信するために使用する。これは、コア API (Microsoft.ApplicationInsights) を使用する場合に限られます。Web SDK では、この動作を自動的に実装します。(インターネットが常に利用できるとは限らないコンテキストでアプリが実行される場合は、[永続化チャネル](#persistence-channel)に関するページも参照してください。)
 
 
 #### コンテキストの初期化子
@@ -299,4 +299,4 @@ namespace ConsoleApplication1
 [CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

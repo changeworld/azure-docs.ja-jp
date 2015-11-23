@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Search でドキュメントのインデックス定義を複数の言語で作成する | Microsoft Azure"
+   pageTitle="Azure Search でドキュメントのインデックスを複数の言語で作成する | Microsoft Azure | ホスト型クラウド検索サービス"
    description="Azure Search では 56 の言語がサポートされており、Lucene の言語アナライザーや Microsoft の自然言語処理テクノロジが利用されています。"
    services="search"
    documentationCenter=""
@@ -16,9 +16,9 @@
    ms.date="10/19/2015"
    ms.author="jlembicz"/>
 
-# Azure Search でドキュメントのインデックス定義を複数の言語で作成する
-
+# Azure Search でドキュメントのインデックスを複数の言語で作成する
 > [AZURE.SELECTOR]
+- [Portal](search-language-support.md)
 - [REST](https://msdn.microsoft.com/library/azure/dn879793.aspx)
 - [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.analyzername.aspx)
 
@@ -74,4 +74,4 @@
 [2]: ./media/search-language-support/SelectAnalyzer.png
 [3]: ./media/search-language-support/IndexDefinition.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

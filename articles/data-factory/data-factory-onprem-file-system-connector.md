@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/25/2015" 
+	ms.date="11/09/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する
@@ -52,7 +52,7 @@
 	  "properties": {
 	    "type": "OnPremisesFileServer",
 	    "typeProperties": {
-	      "host": "\\\Contosogame-Asia",
+	      "host": "\\Contosogame-Asia",
 	      "userid": "Admin",
 	      "password": "123456",
 	      "gatewayName": "mygateway"
@@ -273,7 +273,7 @@
 	  "properties": {
 	    "type": "OnPremisesFileServer",
 	    "typeProperties": {
-	      "host": "\\\Contosogame-Asia",
+	      "host": "\\Contosogame-Asia",
 	      "userid": "Admin",
 	      "password": "123456",
 	      "gatewayName": "mygateway"
@@ -427,7 +427,7 @@
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 type | type プロパティは、**OnPremisesFileServer** に設定されます。 | あり 
-host | サーバーのホスト名。次の例のように '\\' をエスケープ文字として使用します: 共有が \\servername である場合、\\\servername を指定します。<p>。ファイル システムが、ゲートウェイ コンピューターに対してローカルである場合は、Local または localhost を使用します。ファイル システムがゲートウェイ コンピューターとは異なるサーバー上にある場合は、\\\servername を使用します。</p> | あり
+host | サーバーのホスト名。次の例のように '\\' をエスケープ文字として使用します: 共有が \\servername である場合、\\servername を指定します。<p>。ファイル システムが、ゲートウェイ コンピューターに対してローカルである場合は、Local または localhost を使用します。ファイル システムがゲートウェイ コンピューターとは異なるサーバー上にある場合は、\\servername を使用します。</p> | あり
 userid | サーバーにアクセスするユーザーの ID を指定します | No (encryptedCredential を選択する場合)
 パスワード | ユーザー (userid) のパスワードを指定します | No (encryptedCredential を選択する場合) 
 encryptedCredential | New-AzureDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します<p>**注: ** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以上の Azure PowerShell を使用する必要があります</p> | No (プレーン テキストでユーザー ID とパスワードを指定する場合)
@@ -442,7 +442,7 @@ gatewayName | Data Factory サービスが、オンプレミスのファイル �
 	  "properties": {
 	    "type": "OnPremisesFileServer",
 	    "typeProperties": {
-	      "host": "\\\Contosogame-Asia",
+	      "host": "\\Contosogame-Asia",
 	      "userid": "Admin",
 	      "password": "123456",
 	      "gatewayName": "mygateway"
@@ -599,4 +599,4 @@ false | mergeFiles | <p>ソース フォルダ Folder1 が次のような構造�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

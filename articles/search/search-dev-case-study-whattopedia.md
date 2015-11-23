@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Search 開発者向けのケース スタディ: Microsoft Azure で WhatToPedia が情報メディア ポータルをどのように構築したか | Microsoft Azure" 
+	pageTitle="Azure Search 開発者向けのケース スタディ: Microsoft Azure で WhatToPedia が情報メディア ポータルをどのように構築したか | Microsoft Azure | ホスト型クラウド検索サービス" 
 	description="開発者向けホスト型クラウド検索サービスである Azure Search を使用して情報ポータルとメタ検索エンジンを構築する方法について説明します。" 
 	services="search, sql-database,  storage, web-sites" 
 	documentationCenter="" 
@@ -421,4 +421,4 @@ Azure SQL Database 内のサブスクライバー データは、最も重要な
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

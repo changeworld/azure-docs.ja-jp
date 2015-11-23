@@ -54,9 +54,7 @@ Azure ポータルの **[パイプラインのサンプル]** ブレードを使
 ## GitHub のサンプル
 [GitHub の Azure-DataFactory リポジトリ](https://github.com/azure/azure-datafactory)には、Azure Data Factory サービスを迅速に導入sしたり、スクリプトを変更して独自のアプリケーションで使用したりするのに役立ついくつかのサンプルがあります。Samples\\JSON フォルダーには、一般的なシナリオ用の JSON スニペットが含まれています。
 
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-samples.md)でフィードバックをお寄せください。
 
 [data-factory-get-started]: data-factory-get-started.md#CreateDataFactory
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

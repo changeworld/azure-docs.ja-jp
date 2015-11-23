@@ -27,7 +27,7 @@
 
 Media Services は、動的パッケージと静的パッケージをサポートしています。静的パッケージを使用する場合は、顧客に必要な各形式でコンテンツのコピーを作成する必要があります。動的パッケージを使用する場合、必要な操作は、一連のアダプティブ ビットレート MP4 または Smooth Streaming ファイルを含むアセットの作成のみです。そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
->[AZURE.NOTE][動的パッケージ](media-services-dynamic-packaging-overview.md)を使用することが推奨されます。
+>[AZURE.NOTE] [動的パッケージ](media-services-dynamic-packaging-overview.md)を使用することが推奨されます。
 
 ただし、静的パッケージが必要なシナリオもあります。
 
@@ -1441,9 +1441,10 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
 ##Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
 
-<!---HONumber=Oct15_HO3-->
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
+<!---HONumber=Nov15_HO3-->

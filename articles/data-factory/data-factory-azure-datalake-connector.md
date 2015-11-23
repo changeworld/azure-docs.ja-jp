@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/03/2015"
+	ms.date="11/09/2015"
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure Data Lake Store との間でのデータの移動
@@ -553,7 +553,7 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| copyBehavior | コピー動作を指定します。 | <p>**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。つまり、ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。</p><p>**FlattenHierarchy:** ソース フォルダーのすべてのファイルはターゲット フォルダーの最上位レベルに配置されます。ターゲット ファイルの名前は自動的に生成されます。</p><p>**MergeFiles:** ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル名/BLOB 名を指定した場合、マージ後のファイルの名前は指定した名前になります。それ以外は自動生成されたファイル名になります。</p> | いいえ |
+| copyBehavior | コピー動作を指定します。 | <p>**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。つまり、ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。</p><p>**FlattenHierarchy:** ソース フォルダーのすべてのファイルはターゲット フォルダーの最上位レベルに配置されます。ターゲット ファイルの名前は自動的に生成されます。</p><p>**MergeFiles:** (近日実装予定) ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル名/BLOB 名を指定した場合、マージ後のファイルの名前は指定した名前になります。それ以外は自動生成されたファイル名になります。</p> | いいえ |
 
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
@@ -562,4 +562,4 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

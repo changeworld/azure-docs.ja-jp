@@ -13,12 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="03/11/2015"
+	ms.date="11/03/2015"
 	ms.author="huvalo"/>
 
 # Python からサービス管理を使用する方法
 
-このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。**Azure SDK for Python** の [ServiceManagementService][download-SDK-Python] クラスは、[管理ポータル][management-portal]で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイメント、データ管理サービスおよび仮想マシンの作成、更新、削除**など) へのプログラムによるアクセスをサポートしています。この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
+このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。**Azure SDK for Python** の [ServiceManagementService](../python-how-to-install.md) クラスは、[管理ポータル][management-portal]で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイメント、データ管理サービスおよび仮想マシンの作成、更新、削除**など) へのプログラムによるアクセスをサポートしています。この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
+
+> [AZURE.NOTE]サービス管理 API は、新しいリソース管理 API (現在のところ、プレビュー リリースで使用できます) によって置き換えられます。Python から新しいリソース管理 API を使用する詳細については、「[Azure リソース管理ドキュメント](http://azure-sdk-for-python.readthedocs.org/)」を参照してください。
+
 
 ## <a name="WhatIs"> </a>サービス管理とは
 サービス管理 API を使用すると、[管理ポータル][management-portal]を通じて使用できるサービス管理機能の多くにプログラムでアクセスできます。Azure SDK for Python を使用すると、クラウド サービスとストレージ アカウントを管理できます。
@@ -42,7 +45,7 @@ Azure SDK for Python は、REST API である [Azure サービス管理 API][svc
 
 	`openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer`
 
-Azure 証明書の詳細については、「[証明書の管理](http://msdn.microsoft.com/library/windowsazure/gg981929.aspx)」を参照してください。OpenSSL のパラメーターの詳細については、[http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html) にあるドキュメントを参照してください。
+Azure 証明書の詳細については、「[Azure Cloud Services の証明書の概要](./cloud-services-certs-create.md)」を参照してください。OpenSSL のパラメーターの詳細については、[http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html) にあるドキュメントを参照してください。
 
 これらのファイルを作成した後、[管理ポータル][management-portal]の [設定] タブで [アップロード] をクリックして、`.cer` ファイルを Azure にアップロードする必要があります。また、`.pem` ファイルを保存した場所を書き留めておいてください。
 
@@ -64,7 +67,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
     makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 
-このコマンドにより、`.cer` ファイルが作成され、**個人用**証明書ストアにインストールされます。詳細については、「[Windows Azure の管理証明書の作成とアップロード](http://msdn.microsoft.com/library/windowsazure/gg551722.aspx)」を参照してください。
+このコマンドにより、`.cer` ファイルが作成され、**個人用**証明書ストアにインストールされます。詳細については、「[Azure Cloud Services の証明書の概要](./cloud-services-certs-create.md)」を参照してください。
 
 証明書を作成した後、[管理ポータル][management-portal]の [設定] タブで [アップロード] をクリックして、`.cer` ファイルを Azure にアップロードする必要があります。
 
@@ -112,7 +115,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 ## <a name="CreateCloudService"> </a>方法: クラウド サービスを作成する
 
-アプリケーションを作成して、それを Azure で実行するときは、そのコードと構成をあわせて Azure [クラウド サービス]と呼びます (以前にリリースした Azure では*ホストされるサービス*と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホストされるサービスを作成できます。そのためには、このメソッドに、ホストされるサービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
+アプリケーションを作成して、それを Azure で実行するときは、そのコードと構成をあわせて Azure [クラウド サービス]と呼びます (以前にリリースした Azure では*ホステッド サービス*と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホストされるサービスを作成できます。そのためには、このメソッドに、ホストされるサービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -167,7 +170,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 ## <a name="CreateStorageService"> </a>方法: ストレージ サービスを作成する
 
-[ストレージ サービス] を使用すると、Azure の [BLOB][azure-blobs]、[テーブル][azure-tables]、[キュー][azure-queues] にアクセスできます。ストレージ サービスを作成するには、サービスの名前 (Azure 内で一意の 3 〜 24 文字の小文字)、説明、ラベル (最大 100 文字、Base64 に自動的にエンコードされます)、場所が必要です。次の例では、場所を指定してストレージ サービスを作成する方法を示しています。
+[ストレージ サービス](../storage/storage-create-storage-account.md) を使用すると、Azure の [BLOB](../storage/storage-python-how-to-use-blob-storage.md)、[テーブル](../storage/storage-python-how-to-use-table-storage.md)、[キュー](../storage/storage-python-how-to-use-queue-storage.md) にアクセスできます。ストレージ サービスを作成するには、サービスの名前 (Azure 内で一意の 3 〜 24 文字の小文字)、説明、ラベル (最大 100 文字、Base64 に自動的にエンコードされます)、場所が必要です。次の例では、場所を指定してストレージ サービスを作成する方法を示しています。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -303,7 +306,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 		location=location)
 
 	# Name of an os image as returned by list_os_images
-	image_name = 'OpenLogic__OpenLogic-CentOS-62-20120531-ja-jp-30GB.vhd'
+	image_name = 'OpenLogic__OpenLogic-CentOS-62-20120531-ja-JP-30GB.vhd'
 
 	# Destination storage account container/blob where the VM disk
 	# will be created
@@ -398,13 +401,13 @@ VM イメージをキャプチャするには、まず、**capture\_vm\_image** 
 		role_size='Small',
 		vm_image_name = image_name)
 
-Linux 仮想マシンをキャプチャする方法についての詳細は、[Linux 仮想マシンをキャプチャする方法](../virtual-machines-linux-capture-image.md)に関するページを参照してください。
+Linux 仮想マシンをキャプチャする方法についての詳細は、[Linux 仮想マシンをキャプチャする方法](../virtual-machines/virtual-machines-linux-capture-image.md)に関するページを参照してください。
 
-Windows 仮想マシンをキャプチャする方法についての詳細は、[Windows 仮想マシンをキャプチャする方法](../virtual-machines-capture-image-windows-server.md)に関するページを参照してください。
+Windows 仮想マシンをキャプチャする方法についての詳細は、[Windows 仮想マシンをキャプチャする方法](../virtual-machines/virtual-machines-capture-image-windows-server.md)に関するページを参照してください。
 
 ## <a name="What's Next"> </a>次のステップ
 
-これで、サービス管理の基本を学習できました。[Azure Python SDK の完全な API のリファレンス ドキュメント](http://azure-sdk-for-python.readthedocs.org/en/documentation/index.html)にアクセスして、複雑なタスクを簡単に実行することにより、Python アプリケーションを管理できます。
+これで、サービス管理の基本を学習できました。[Azure Python SDK の完全な API のリファレンス ドキュメント](http://azure-sdk-for-python.readthedocs.org/)にアクセスして、複雑なタスクを簡単に実行することにより、Python アプリケーションを管理できます。
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
@@ -430,19 +433,6 @@ Windows 仮想マシンをキャプチャする方法についての詳細は、
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
-[download-SDK-Python]: https://www.windowsazure.com/develop/python/common-tasks/install-python/
-[クラウド サービス]: http://windowsazure.com/documentation/articles/cloud-services-what-is
-[service package]: http://msdn.microsoft.com/library/windowsazure/jj155995.aspx
-[Azure PowerShell cmdlets]: https://www.windowsazure.com/develop/php/how-to-guides/powershell-cmdlets/
-[cspack commandline tool]: http://msdn.microsoft.com/library/windowsazure/gg432988.aspx
-[Deploying an Azure Service]: http://msdn.microsoft.com/library/windowsazure/gg433027.aspx
-[ストレージ サービス]: https://www.windowsazure.com/manage/services/storage/what-is-a-storage-account/
-[azure-blobs]: https://www.windowsazure.com/develop/python/how-to-guides/blob-service/
-[azure-tables]: https://www.windowsazure.com/develop/python/how-to-guides/table-service/
-[azure-queues]: https://www.windowsazure.com/develop/python/how-to-guides/queue-service/
-[Azure Service Configuration Schema (.cscfg)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
-[Cloud Services]: http://msdn.microsoft.com/library/windowsazure/jj155995.aspx
-[Virtual Machines]: http://msdn.microsoft.com/library/windowsazure/jj156003.aspx
- 
+[クラウド サービス]: https://azure.microsoft.com/ja-JP/documentation/services/cloud-services/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Logic Apps での File コネクタの使用 | Microsoft Azure App Service"
 	description="File コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-	authors="anuragdalmia"
+	authors="rajeshramabathiran"
 	manager="dwrede"
 	editor=""
 	services="app-service\logic"
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/23/2015"
-	ms.author="andalmia"/>
+	ms.date="11/11/2015"
+	ms.author="rajram"/>
 
 # File コネクタの使用開始とロジック アプリへの追加
 ファイル システムに接続して、アップロードやダウンロードなど、ホスト コンピューター上のファイルの操作を行います。ロジック アプリはさまざまなデータ ソースを基にトリガーでき、データの取得と処理のためのコネクタを提供します。この File コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
@@ -66,7 +66,7 @@ API アプリが作成されたら、Logic App のアクションとして File 
 API の詳細については、「[File コネクタの API の定義]」を参照してください。
 
 ## コネクタでできること
-コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -85,4 +85,4 @@ API の詳細については、「[File コネクタの API の定義]」を参�
 [File コネクタの API の定義]: https://msdn.microsoft.com/library/dn936296.aspx
 [ハイブリッド接続マネージャーの使用]: app-service-logic-hybrid-connection-manager.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

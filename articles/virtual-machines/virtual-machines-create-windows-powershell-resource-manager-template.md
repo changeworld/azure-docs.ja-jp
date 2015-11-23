@@ -282,10 +282,10 @@ Azure のデプロイ名、リソース グループ名、Azure データ セン
 
 [Azure リソース マネージャーと PowerShell で Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-resource-manager.md)
 
-[PowerShell と Azure サービス マネージャーで Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-service-manager.md)
+[Powershell とクラシック デプロイ モデルを使用して Windows 仮想マシンを作成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

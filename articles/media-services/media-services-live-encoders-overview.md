@@ -40,15 +40,17 @@
 単一ビットレート ライブ ストリームが AMS チャネルに送信されるように [Tricaster](http://newtek.com/products/tricaster-40.html) エンコーダーを構成する方法については、[Tricaster の構成](media-services-configure-tricaster-live-encoder.md)に関するページをご覧ください。
 
 
+
 ##Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
+
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## 関連項目
 
 [Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

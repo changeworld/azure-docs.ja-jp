@@ -1,5 +1,5 @@
 <properties
-	pageTitle="スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview) | Microsoft Azure"
+	pageTitle="スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview) | Microsoft Azure | ホスト型クラウド検索サービス"
 	description="Azure Search は、ユーザーが定義したスコアリング プロファイルに基づき、ランク付けされた結果を調整するホスト型のクラウド検索サービスです。"
 	services="search"
 	documentationCenter=""
@@ -370,4 +370,4 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

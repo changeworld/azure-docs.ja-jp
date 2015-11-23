@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="11/06/2015"
    ms.author="larryfr"/>
 
 # SSH による HDInsight での MapReduce と Hadoop の使用
@@ -72,7 +72,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 3. ジョブが完了したら、次のコマンドを使用して ****wasb://example/data/WordCountOutput** に格納されている出力ファイルを一覧表示します。
 
-		hadoop fs -ls wasb:///example/data/WordCountOutput
+		hdfs dfs -ls wasb:///example/data/WordCountOutput
 
 	ここでは、**\_SUCCESS** と **part-r-00000** の 2 つのファイルが表示されます。**part-r-00000** ファイルには、このジョブの出力が含まれています。
 
@@ -80,7 +80,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 4. 出力を表示するには、次のコマンドを使用します。
 
-		hadoop fs -cat wasb:///example/data/WordCountOutput/part-r-00000
+		hdfs dfs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
 	ここでは、****wasb://example/data/gutenberg/davinci.txt** ファイルに含まれる単語の一覧と、各単語が発生した回数が表示されます。ファイルに含まれるデータの例を次に示します。
 
@@ -108,4 +108,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

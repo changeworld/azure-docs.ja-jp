@@ -186,8 +186,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
   [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
   [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
-  [Azure Management Portal]: http://manage.windowsazure.com/
   [Service Bus キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
   [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

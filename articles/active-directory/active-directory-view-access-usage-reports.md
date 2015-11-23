@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/21/2015"
+	ms.date="11/10/2015"
 	ms.author="kenhoff;Justinha;curtand"/>
 
 # アクセスおよび使用状況レポートを表示します。
@@ -56,7 +56,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 |	アカウント プロビジョニングのアクティビティ |	外部アプリケーションにアカウントのプロビジョニングを試行した回数の履歴を示します。 |
 |	パスワード ロールオーバーの状態 |	SaaS アプリケーションの自動パスワード ロールオーバーの状態の詳細な説明を入力します。 |
 |	アカウント プロビジョニング エラー |	外部アプリケーションへのユーザーのアクセスに対する影響を示します。 |
-|	**Rights Managment**
+|	**Rights management**
 |	RMS の利用状況 |	Rights Management の利用状況の概要を示します。 |
 |	最もアクティブな RMS ユーザー |	RMS で保護されたファイルにアクセスした上位 1,000 名のアクティブ ユーザーを示します。 |
 |	RMS デバイスの利用状況 |	RMS で保護されたファイルにアクセスするために使用されたデバイスを示します。 |
@@ -159,7 +159,11 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | ディレクトリ内のすべての SaaS アプリケーションについて使用状況を表示するには、このレポートを使用します。このレポートは、アクセス パネルでユーザーがアプリケーションをクリックした回数の合計に基づきます。 | [ディレクトリ] > [レポート] タブ |
 
-![Application usage summary](./media/active-directory-view-access-usage-reports/applicationUsage.PNG)
+このレポートには、事前に統合された Microsoft アプリケーションを含め、ディレクトリがアクセス権を持つ_すべて_のアプリケーションへのサインインが含まれます。
+
+事前に統合された Microsoft アプリケーションには、Office 365、Sharepoint、Microsoft Azure 管理ポータルなどが含まれます。
+
+![アプリケーションの使用状況の概要](./media/active-directory-view-access-usage-reports/applicationUsage.PNG)
 
 
 ### アプリケーションの使用状況: 詳細
@@ -222,7 +226,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | ディレクトリに追加されているカスタム ビジネス アプリケーションへのサインイン | なし (近日対応予定) |
 | ディレクトリに追加されている Azure AD アプリケーション プロキシ アプリへのサインイン | なし (近日対応予定) |
 
-> 注: このレポートでは、ノイズの量を減らすために、[Microsoft Online Services サインイン アシスタント](http://community.office365.com/ja-jp/w/sso/534.aspx)によるサインインは表示されません。
+> 注: このレポートでは、ノイズの量を減らすために、[Microsoft Online Services サインイン アシスタント](http://community.office365.com/ja-JP/w/sso/534.aspx)によるサインインは表示されません。
 
 
 
@@ -239,7 +243,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 - ユーザーに連絡を取って、アクティビティについて確認する
 - ユーザーのパスワードをリセットする
-- セキュリティ強化のために[多要素認証](http://go.microsoft.com/fwlink/?linkid=335774)を有効にする
+- セキュリティ強化のために[多要素認証](multi-factor-authentication-get-started.md)を有効にする
 
 ## レポートの閲覧またはダウンロード:
 
@@ -271,4 +275,4 @@ Azure AD のレポート通知の詳細については、「[Azure Active Direct
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

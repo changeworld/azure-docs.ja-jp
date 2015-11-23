@@ -144,17 +144,19 @@ SAS ロケーターを更新 (または再作成) するときに、URL は常�
 
 [手順 3.](media-services-roll-storage-access-keys.md#step-3-update-locators) と同じ操作を行います。
 
- 
+
 ##Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
+
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 
 
 ###謝辞 
 
 この文書の作成に協力してくれた Cenk Dingiloglu、Milan Gada、 Seva Titov に感謝します。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

@@ -3,7 +3,7 @@
 	description="Visual Studio .NET プロジェクトで Azure Mobile Services を使用する方法"
 	services="mobile-services"
 	documentationCenter=""
-	authors="patshea123"
+	authors="TomArcher"
 	manager="douge"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="09/17/2015" 
-	ms.author="patshea"/>
+	ms.author="tarcher"/>
 
 # Mobile Services の使用 (.NET プロジェクト)
 
@@ -85,4 +85,4 @@
 
 [モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

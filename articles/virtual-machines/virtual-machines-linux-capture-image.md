@@ -18,14 +18,14 @@
 	ms.author="dkshir"/>
 
 
-# テンプレートとして使用するために Linux 仮想マシンをキャプチャする方法
+# 従来の Linux 仮想マシンをイメージとしてキャプチャする方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-linux-capture-image-resource-manager.md)。
 
 
-ここでは、Linux を実行する Azure 仮想マシンをキャプチャして、他の仮想マシンを作成する際のテンプレートのように使用する方法を示します。このテンプレートには、仮想マシンに接続された OS ディスクやデータ ディスクが含まれます。ネットワーク構成は含まれないため、テンプレートを使用する他の仮想マシンを作成するときは、ネットワーク構成を行う必要があります。
+ここでは、Linux を実行する従来の Azure 仮想マシンをキャプチャして、他の仮想マシンを作成する際にイメージとして使用する方法を示します。このイメージには、仮想マシンに接続された OS ディスクやデータ ディスクが含まれます。ネットワーク構成は含まれないため、イメージから他の仮想マシンを作成するときは、ネットワーク構成を行う必要があります。
 
-Azure ではこのテンプレートをイメージとして扱い、**[イメージ]** に格納します。アップロードしたすべてのイメージがこの場所に格納されます。イメージの詳細については、「[Azure の仮想マシン イメージについて][]」を参照してください。
+Azure では、イメージは **[イメージ]** に格納されます。アップロードしたすべてのイメージがこの場所に格納されます。イメージの詳細については、「[Azure の仮想マシン イメージについて][]」を参照してください。
 
 ## 開始する前に
 
@@ -89,7 +89,7 @@ Azure ではこのテンプレートをイメージとして扱い、**[イメ�
 
 
 ## 次のステップ
-イメージの準備ができましたので、これをテンプレートとして使用して仮想マシンを作成します。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、「[Using Azure CLI with Service Management API (サービス管理 API での Azure CLI の使用)](virtual-machines-command-line-tools.md)」をご覧ください。または、[管理ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、「[カスタム仮想マシンの作成方法][]」を参照してください。
+イメージを使用して仮想マシンを作成する準備ができました。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、「[Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](virtual-machines-command-line-tools.md)」を参照してください。または、[管理ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、「[カスタム仮想マシンの作成方法][]」を参照してください。
 
 **関連項目:** [Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md)
 
@@ -100,4 +100,4 @@ Azure ではこのテンプレートをイメージとして扱い、**[イメ�
 [How to Attach a Data Disk to a Virtual Machine]: storage-windows-attach-disk.md
 [How to Create a Virtual Machine Running Linux (Linux を実行する仮想マシンの作成方法)]: virtual-machines-linux-tutorial.md
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

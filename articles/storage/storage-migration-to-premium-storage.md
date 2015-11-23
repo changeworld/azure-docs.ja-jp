@@ -1,10 +1,10 @@
 <properties
     pageTitle="Azure Premium Storage への移行 | Microsoft Azure"
-    description="Azure Virtual Machines で実行される I/O 集中型ワークロード向けに高パフォーマンスで待機時間の短いディスクをサポートするために Azure Premium Storage へ移行します。"
+    description="既存の仮想マシンを Azure Premium Storage に移行します。Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。"
     services="storage"
     documentationCenter="na"
-    authors="tamram"
-    manager="adinah"
+    authors="ms-prkhad"
+    manager=""
     editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="09/23/2015"
+    ms.date="11/04/2015"
     ms.author="tamram"/>
 
 
@@ -21,17 +21,26 @@
 
 ## 概要
 
-このガイドでは、Microsoft Azure Premium Storage の新しいユーザーが現在のシステムから Premium Storage への円滑な移行に向けて周到に準備できるようにすることを目的としています。このガイドでは、移行プロセスの重要な要素のうち、Premium Storage への移行の計画、既存の仮想ハード ディスク (VHD) の Premium Storage への移行、Premium Storage での Azure 仮想マシン インスタンスの作成という 3 点を扱います。
+Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。Premium Storage を使用する仮想マシン (VM) では、ソリッド ステート ドライブ (SSD) にデータを格納します。アプリケーションの VM ディスクを Azure Premium Storage に移行することで、これらのディスクの速度とパフォーマンスを最大限に利用することができます。
+
+Azure VM では複数の Premium Storage ディスクをアタッチすることができるので、アプリケーションには VM あたり最大で 64 TB のストレージを設定することができます。Premium Storage を使用すると、アプリケーションは、VM あたり 80,000 IOPS (1 秒あたりの入力/出力操作)、VM あたり 2000 MB/秒のディスク スループットを実現でき、読み取り操作の待ち時間も非常に短くなります。
+
+>[AZURE.NOTE]高い IOPS を必要とする仮想マシンのディスクは Azure Premium Storage に移行して、アプリケーションが最高のパフォーマンスを発揮できるようにすることをお勧めします。ディスクが高い IOPS を必要としない場合は、ディスクを Standard Storage 内に保持することでコストを抑えることができます。Standard Storage の場合、仮想マシンのディスク データは SSD ではなくハード ディスク ドライブ (HDD) に格納されます。
+
+このガイドでは、Azure Premium Storage の新しいユーザーが現在のシステムから Premium Storage への円滑な移行に向けて周到に準備できるようにすることを目的としています。このガイドでは、移行プロセスの重要な要素のうち、Premium Storage への移行の計画、既存の仮想ハード ディスク (VHD) の Premium Storage への移行、Premium Storage での Azure 仮想マシン インスタンスの作成という 3 点を扱います。
 
 移行プロセス全体を完了するには、このガイドで説明する手順の前後で追加の操作が必要になる場合があります。たとえば、仮想ネットワークやエンドポイントの構成、アプリケーション内部のコード変更があります。これらの操作は、アプリケーションごとに異なります。Premium Storage への完全な移行をできる限りシームレスに行うには、このガイドで説明する手順と共に、これらの必要な操作を完了してください。
 
 Premium Storage の機能の概要については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)」を参照してください。
 
-このガイドは、次に示す、移行の 2 つのシナリオについて説明する 2 つのセクションに分かれています。- [Azure 外部の VM の Azure Premium Storage への移行](#migrating-vms-from-outside-azure-to-azure-premium-storage) - [既存の Azure VM の Azure Premium Storage への移行](#migrating-existing-azure-vms-to-azure-premium-storage)
+このガイドでは、次の 2 つの移行シナリオを説明するために 2 つのセクションに分かれています。
+
+- [Azure 外部の VM の Azure Premium Storage への移行](#migrating-vms-from-outside-azure-to-azure-premium-storage)
+- [既存の Azure VM の Azure Premium Storage への移行](#migrating-existing-azure-vms-to-azure-premium-storage)
 
 状況に応じて、関連するセクションに示されている手順に従ってください。
 
-## Azure 外部の VM の Azure Premium Storage への移行
+## 他のプラットフォームの VM の Azure Premium Storage への移行
 
 ### 前提条件
 - Azure サブスクリプションが必要です。サブスクリプションがない場合は、1 か月間の[無料試用版](http://azure.microsoft.com/pricing/free-trial/)サブスクリプションを作成するか、「[Azure の価格](http://azure.microsoft.com/pricing/)」でさらに多くのオプションを利用することができます。
@@ -41,7 +50,7 @@ Premium Storage の機能の概要については、「[Premium Storage: Azure �
 ### 考慮事項
 
 #### VM サイズ
-Azure VM のサイズの仕様は、「[仮想マシンのサイズ](https://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-size-specs/)」に記載されています。Premium Storage で動作する仮想マシンのパフォーマンス特性を確認し、ワークロードに最適な VM を選択してください。ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。
+Azure VM のサイズの仕様は、「[仮想マシンのサイズ](https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-size-specs/)」に記載されています。Premium Storage で動作する仮想マシンのパフォーマンス特性を確認し、ワークロードに最適な VM を選択してください。ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。
 
 
 #### ディスク サイズ
@@ -61,7 +70,7 @@ Premium Storage アカウントには、[Azure Storage のスケーラビリテ�
 |:--|:---|
 |ディスク容量: 35 TB<br />スナップショット容量: 10 TB|受信と送信を合わせて最大 50 GB/秒|
 
-Premium Storage の仕様の詳細については、「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-jping-premium-storage)」を参照してください。
+Premium Storage の仕様の詳細については、「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-JPing-premium-storage)」を参照してください。
 
 #### 追加のデータ ディスク
 ワークロードに応じて、VM にデータ ディスクを追加する必要があるかどうかを判断します。複数の永続データ ディスクを VM に接続できます。必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。[記憶域スペース](http://technet.microsoft.com/library/hh831739.aspx)を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。Linux VM の場合は、*mdadm* ユーティリティを使用すると同じ結果を得ることができます。詳細については、[Linux でのソフトウェア RAID の構成](../virtual-machines-linux-configure-raid.md)に関する記事を参照してください。
@@ -148,7 +157,7 @@ VHD を管理するためにストレージ アカウントを作成します。
 
 Azure Standard Storage アカウントから Azure Premium Storage アカウントへ VHD を移行する場合は、VHD コンテナーのソース パス、VHD ファイル名、ソース ストレージ アカウントのストレージ アカウント キーをコピーする必要があります。
 
-1. **[Azure ポータル]、[仮想マシン]、[ディスク]** の順に移動します。
+1. **[Azure ポータル]、[Virtual Machines]、[ディスク]** の順に移動します。
 2. [場所] 列から VHD のコンテナー URL コピーして保存します。コンテナー URL は `https://myaccount.blob.core.windows.net/mycontainer/` のようになります。
 
 #### Azure 以外のクラウドから VHD をコピーする
@@ -241,9 +250,9 @@ OS VHD から VM を作成するか、新しい VM にデータ ディスクを�
 
 この新しい Azure データ ディスクの名前をコピーして保存します。上記の例では *DataDisk* です。
 
-### Azure DS シリーズの VM を作成する
+### Azure DS シリーズまたは GS シリーズの VM を作成する
 
-OS イメージまたは OS ディスクを登録したら、新しい DS シリーズ Azure VM インスタンスを作成します。登録したオペレーティング システム イメージまたはオペレーティング システム ディスクの名前を使用します。Premium Storage レベルから VM のタイプを選択します。次の例では、*Standard\_DS2* という VM サイズを使用します。同様の手順で GS シリーズの VM を作成できます。
+OS イメージまたは OS ディスクが登録されたら、新しい DS シリーズまたは GS シリーズの VM を作成します。登録したオペレーティング システム イメージまたはオペレーティング システム ディスクの名前を使用します。Premium Storage レベルから VM のタイプを選択します。次の例では、*Standard\_DS2* という VM サイズを使用します。
 
 >[AZURE.NOTE]ディスク サイズを更新し、容量、パフォーマンス要件、使用可能な Azure ディスク サイズに適していることを確認します。
 
@@ -653,7 +662,7 @@ OS イメージまたは OS ディスクを登録したら、新しい DS シリ
 
 仮想マシンの移行に関する具体的なシナリオについては、次のリソースを参照してください。
 
-- [ストレージ アカウント間での Azure 仮想マシンの移行](http://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
+- [ストレージ アカウント間での Azure Virtual Machines の移行](http://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
 - [Windows Server VHD の作成と Azure へのアップロード](../virtual-machines-create-upload-vhd-windows-server.md)
 - [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../virtual-machines-linux-create-upload-vhd.md)
 - [Amazon AWS から Microsoft Azure への仮想マシンの移行](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
@@ -668,4 +677,4 @@ OS イメージまたは OS ディスクを登録したら、新しい DS シリ
 [2]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

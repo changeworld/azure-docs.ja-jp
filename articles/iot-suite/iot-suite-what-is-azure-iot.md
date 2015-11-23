@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="09/29/2015"
+ ms.date="11/05/2015"
  ms.author="dobett"/>
 
 [AZURE.INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
@@ -43,7 +43,7 @@ Azure の IoT の詳細については、以下のリソースを参照してく
 [Azure IoT Hub]: https://azure.microsoft.com/services/iot-hub/
 [Azure Event Hubs]: https://azure.microsoft.com/services/event-hubs/
 [Azure Stream Analytics]: https://azure.microsoft.com/services/stream-analytics/
-[Azure Machine Learning]: https://azure.microsoft.com/JA-JP/services/machine-learning/
-[Azure storage]: https://azure.microsoft.com/JA-JP/services/storage/
+[Azure Machine Learning]: https://azure.microsoft.com/ja-JP/services/machine-learning/
+[Azure storage]: https://azure.microsoft.com/ja-JP/services/storage/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

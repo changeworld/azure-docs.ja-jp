@@ -13,26 +13,28 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/26/2015" 
+	ms.date="11/10/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で Azure Event Hubs にイベントを記録する方法
 
 Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むことができる高度にスケーラブルなデータ受信サービスであり、接続されたデバイスとアプリケーションで生成される大量のデータを処理および分析できます。Event Hubs はイベント パイプラインの「玄関」として機能し、Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーまたはバッチ処理/ストレージ アダプターを使用して変換および格納できます。Event Hubs はイベント ストリームの生成とイベントの使用を分離し、イベント コンシューマーが独自のスケジュールでイベントにアクセスできるようにします。
 
+この記事は [Azure API Management と Event Hubs の統合](https://azure.microsoft.com/documentation/videos/integrate-azure-api-management-with-event-hubs/)動画に付随するものであり、Azure Event Hubs を利用して API Management イベントをログに記録する方法を説明しています。
+
 ## Azure Event Hub を作成します
 
 新しいイベント ハブを作成するには、[[Azure ポータル]](https://manage.windowsazure.com) にサインインして **[新規]**、**[App Services]**、**[Service Bus]**、**[イベント ハブ]**、**[簡易作成]** の順にクリックします。イベント ハブの名前とリージョンを入力し、サブスクリプションを選択して、名前空間を選択します。名前空間の作成がまだ済んでいない場合は、**[名前空間]** ボックスに名前を入力して作成してください。すべてのプロパティの構成が完了したら、**[新しいイベント ハブの作成]** をクリックしてイベント ハブを作成します。
 
-![Create event hub][create-event-hub]
+![イベント ハブの作成][create-event-hub]
 
 次に、新しいイベント ハブの **[構成]** タブに移動し、**共有アクセス ポリシー**を 2 つ作成します。1 つは **"Sending"** という名前を付けて、**送信**アクセス許可を与えます。
 
-![Sending policy][sending-policy]
+![ポリシーの送信][sending-policy]
 
 もう 1 つには **"Receiving"** という名前を付けて**リッスン**アクセス許可を追加し、**[保存]** をクリックします。
 
-![Receiving policy][receiving-policy]
+![ポリシーの受信][receiving-policy]
 
 アプリケーションは、この 2 つの共有アクセス ポリシーによって、イベント ハブにイベントを送信したり、イベント ハブからイベントを受信したりすることができます。これらのポリシーの接続文字列にアクセスするには、イベント ハブの **[ダッシュボード]** タブに移動し、**[接続情報]** をクリックします。
 
@@ -112,6 +114,15 @@ API Management でロガーを構成したら、必要なイベントを記録�
 	-	[Azure Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 	-	[EventProcessorHost を使用したメッセージの受信](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost)
 	-	[Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)
+-	API Management と Event Hubs の統合の詳細
+	-	[ロガーのエンティティ リファレンス](https://msdn.microsoft.com/library/azure/mt592020.aspx)
+	-	[log-to-eventhub ポリシー リファレンス](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
+	-	[Azure API Management、Event Hubs、Runscope を使用した API の監視](api-management-log-to-eventhub-sample.md)	
+
+## ビデオ チュートリアルを視聴する
+
+> [AZURE.VIDEO integrate-azure-api-management-with-event-hubs]
+
 
 [publisher-portal]: ./media/api-management-howto-log-event-hubs/publisher-portal.png
 [create-event-hub]: ./media/api-management-howto-log-event-hubs/create-event-hub.png
@@ -122,4 +133,4 @@ API Management でロガーを構成したら、必要なイベントを記録�
 [event-hub-policy]: ./media/api-management-howto-log-event-hubs/event-hub-policy.png
 [add-policy]: ./media/api-management-howto-log-event-hubs/add-policy.png
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

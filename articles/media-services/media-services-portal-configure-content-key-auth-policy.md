@@ -48,7 +48,7 @@ Microsoft Azure Media Services では、Advanced Encryption Standard (AES) (128 
 
 キーの承認ポリシーを構成するには、**[コンテンツ保護]** ページを選択します。
 	
-Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、**オープン**、**トークン**、または **IP** 承認制限を設定できます (**IP** は REST または .NET SDK を使用して構成できます)。
+Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、**オープン**、**トークン**、または**IP** 承認制限を設定することができます (**IP** は REST または .NET SDK を使用して構成できます)。
 
 ###オープン制限
 
@@ -87,10 +87,11 @@ Media Services では、**Secure Token Service** は提供されません。ト�
 
 ##Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
+
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
 ##次のステップ
@@ -102,4 +103,4 @@ AMS のラーニング パスについては、以下を参照してください
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

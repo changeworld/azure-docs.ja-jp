@@ -3,7 +3,7 @@
    description="Visual Studio プロファイラーを使用した、クラウド サービスのパフォーマンスのテスト"
    services="visual-studio-online"
    documentationCenter="n/a"
-   authors="patshea123"
+   authors="TomArcher"
    manager="douge"
    editor="tlee" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
    ms.date="08/14/2015"
-   ms.author="patshea" />
+   ms.author="tarcher" />
 
 
 # クラウド サービスのパフォーマンスのテスト 
@@ -100,7 +100,7 @@ Visual Studio でのパフォーマンスのプロファイルの詳細につい
 
 次の図は、[Azure アプリケーションの公開] ダイアログ ボックスからプロファイル設定を構成する方法を示します。
 
-![Configure Profiling Settings](./media/vs-azure-tools-performance-profiling-cloud-services/IC526984.png)
+![プロファイル設定の構成](./media/vs-azure-tools-performance-profiling-cloud-services/IC526984.png)
 
 >[AZURE.NOTE]**[プロファイルを有効にする]** チェック ボックスを有効にするには、クラウド サービスの発行に使用しているローカル コンピューターにプロファイラーがインストールされている必要があります。既定では、プロファイラーは Visual Studio のインストール時にインストールされます。
 
@@ -126,7 +126,7 @@ Visual Studio でのパフォーマンスのプロファイルの詳細につい
 
 プロファイル セッションは、クラウド サービスのロールの各インスタンスに対して作成されます。Visual Studio から各セッションのプロファイル レポートを表示するには、[サーバー エクスプローラー] ウィンドウを表示し、Azure の計算ノードを選択することで、ロールのインスタンスを選択できます。これで、次の図に示すように、プロファイル レポートを表示できます。
 
-![View Profiling Report from Azure](./media/vs-azure-tools-performance-profiling-cloud-services/IC748914.png)
+![Azure からプロファイル レポートを閲覧](./media/vs-azure-tools-performance-profiling-cloud-services/IC748914.png)
 
 ### プロファイル レポートを表示するには
 
@@ -146,4 +146,4 @@ Visual Studio でのパフォーマンスのプロファイルの詳細につい
 
 [Visual Studio から Azure クラウド サービスへの発行](https://msdn.microsoft.com/library/azure/ee460772.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

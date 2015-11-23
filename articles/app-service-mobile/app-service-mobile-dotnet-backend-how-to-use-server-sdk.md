@@ -20,6 +20,8 @@
 
 このトピックでは、Azure App Service Mobile Apps の主要なシナリオで .NET バックエンド サーバー SDK を使用する方法について説明します。Azure Mobile Apps SDK を使用すると、ASP.NET アプリケーションからモバイル クライアントを操作することができます。
 
+>[AZURE.TIP] [Azure Mobile Apps 向け .NET サーバー SDK](https://github.com/Azure/azure-mobile-apps-net-server) は、オープン ソースとして GitHub で公開されています。リポジトリには、いくつかのサンプル プロジェクトと同様に、サーバー全体の SDK ユニット テスト スイートが含まれています。
+
 ## 方法: SDK をダウンロードして初期化する
 
 SDK は [NuGet.org] で入手できます。このパッケージには、SDK の使用を開始するために必要な基礎機能が含まれています。SDK を初期化するには、**HttpConfiguration** オブジェクトに対して操作を実行する必要があります。
@@ -28,7 +30,7 @@ SDK は [NuGet.org] で入手できます。このパッケージには、SDK �
 
 SDK をインストールするには、Visual Studio でサーバー プロジェクトを右クリックして **[NuGet パッケージの管理]** を選択し、[Microsoft.Azure.Mobile.Server](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) パッケージを検索してから、**[インストール]** をクリックします。
 
-###サーバー プロジェクトの初期化
+###<a name="server-project-setup"></a> サーバー プロジェクトの初期化
 
 .NET バックエンド サーバー プロジェクトは、他の ASP.NET プロジェクトと同じように、OWIN スタートアップ クラスを組み込むことによって初期化します。Visual Studio でこのクラスを追加するには、サーバー プロジェクトを右クリックして、**[追加]**、**[新しい項目]**、**[Web]**、**[全般]**、**[OWIN スタートアップ クラス]** の順に選択します。
 
@@ -101,7 +103,7 @@ OWIN スタートアップ クラスの `Configuration()` メソッドで、サ�
 
 		using Microsoft.Azure.Mobile.Server.Config;
 
-4. 次の例に示すように、API コントローラーのクラス定義に **MobileAppControllerAttribute** を適用します。
+4. 次の例に従って、API コントローラーのクラス定義に **MobileAppControllerAttribute** を適用します。
 
 		[MobileAppController] 
 		public class CustomController : ApiController
@@ -205,4 +207,4 @@ Mobile Apps バックエンドに対してクライアントを認証する方�
 [Microsoft.Azure.Mobile.Server.Authentication]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

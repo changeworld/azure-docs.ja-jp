@@ -1,10 +1,10 @@
 <properties
 	pageTitle="Premium Storage: Azure の仮想マシン ワークロード用の高パフォーマンス ストレージ| Microsoft Azure"
-	description="ディスク向け Azure Premium Storage を説明します。Premium Storage アカウントの作成方法について説明します。"
+	description="Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。Azure DS シリーズおよび GS シリーズの VM は、Premium Storage をサポートしています。"
 	services="storage"
 	documentationCenter=""
-	authors="tamram"
-	manager="carolz"
+	authors="ms-prkhad"
+	manager=""
 	editor="tysonn"/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/06/2015"
+	ms.date="11/04/2015"
 	ms.author="tamram;selcint"/>
 
 
@@ -21,15 +21,13 @@
 
 ## 概要
 
-Azure 仮想マシンの高速化を実現する **Azure Premium Storage ディスク**へようこそ。
+Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。Premium Storage を使用する仮想マシン (VM) のディスクでは、ソリッド ステート ドライブ (SSD) にデータを格納します。アプリケーションの VM ディスクを Azure Premium Storage に移行することで、これらのディスクの速度とパフォーマンスを活用することができます。
 
-Premium Storage の導入により、Microsoft Azure では、**Premium Storage** と **Standard Storage** という耐久性の高い 2 種類のストレージを利用できるようになりました。Premium Storage は最新技術のソリッド ステート ドライブ (SSD) を使用してデータを格納し、Standard Storage はデータをハード ディスク ドライブ (HDD) に格納します。
+Azure VM では複数の Premium Storage ディスクをアタッチすることができるため、アプリケーションには VM あたり最大で 64 TB のストレージを設定することができます。Premium Storage を使用すると、アプリケーションは、VM あたり 80,000 IOPS (1 秒あたりの入力/出力操作) と、VM あたり 2000 MB/秒のディスク スループットを実現でき、読み取り操作の待ち時間も非常に短くなります。
 
-Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。仮想マシン (VM) には、複数の Premium Storage ディスクをアタッチできます。Premium Storage を使用すると、アプリケーションに VM あたり最大 64 TB のストレージを設定できます。さらに VM あたり 80,000 IOPS (1 秒あたりの入力/出力操作)、VM あたり 2000 MB/秒のディスク スループットを実現でき、読み取り操作の待ち時間も非常に短くなります。
+>[AZURE.NOTE]高い IOPS を必要とする仮想マシンのディスクを Azure Premium Storage に移行して、アプリケーションが最高のパフォーマンスを発揮できるようにすることをお勧めします。ディスクが高い IOPS を必要としない場合は、ディスクを Standard Storage 内に保持することでコストを抑えることができます。Standard Storage の場合、仮想マシンのディスク データは SSD ではなくハード ディスク ドライブ (HDD) に格納されます。
 
-Azure Premium Storage を使用するには、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)のページをご覧ください。
-
-この記事では、Azure Premium Storage の概要を詳細に説明します。
+Azure Premium Storage を使用するには、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)のページをご覧ください。既存の仮想マシンを Premium Storage に移行する方法の詳細については、「[Azure Premium Storage への移行](storage-migration-to-premium-storage.md)」を参照してください。
 
 ## Premium Storage について理解しておくべきこと
 
@@ -60,6 +58,8 @@ Azure Premium Storage を使用するには、[無料試用版](http://azure.mic
 - 新しい DS シリーズまたは GS シリーズの VM を作成します。VM の作成時には、以前に作成した Premium Storage アカウントを選択する、新しいアカウントを作成する、Azure ポータルで自動的に既定の Premium アカウントを作成する、のいずれかの方法を選択できます。
 
 ストレージ アカウントは、オペレーティング システム (OS) とデータ ディスクのコンテナーとして使用されます。つまり、Azure DS シリーズまたは GS シリーズの VM を作成して Azure Premium Storage アカウントを選択すると、オペレーティング システムとデータ ディスクはそのストレージ アカウントに格納されます。
+
+既存の仮想マシンを Premium Storage に移行する方法の詳細については、「[Azure Premium Storage への移行](storage-migration-to-premium-storage.md)」を参照してください。
 
 Premium Storage のメリットを活用するには、アカウントの種類として *Premium\_LRS* を使用して、Premium Storage アカウントを作成します。アカウントの作成には、[Microsoft Azure プレビュー ポータル](https://portal.azure.com/)、[Azure PowerShell](../install-configure-powershell.md)、または [Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) を使用できます。詳しい手順については、[ディスク向け Premium Storage アカウントの作成と使用](#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)に関するセクションをご覧ください。
 
@@ -258,7 +258,7 @@ Premium Storage、DS シリーズの VM、GS シリーズの VM の料金につ�
 
 2.	ハブ メニューの **[新規]** をクリックします。
 
-3.	**[新規]** で、**[すべて]** をクリックします。**[Storage、キャッシュ、+ バックアップ]** を選択します。そこから **[Storage]**、**[作成]** の順にクリックします。
+3.	**[新規]** で、**[すべて]** をクリックします。**[ストレージ、キャッシュ、バックアップ]** を選択します。そこから **[Storage]**、**[作成]** の順にクリックします。
 
 4.	[ストレージ アカウント] ブレードで、ストレージ アカウントの名前を入力します。**[価格レベル]** をクリックします。**[推奨される価格レベル]** ブレードで、**[すべての価格レベルの参照]** をクリックします。**[価格レベルの選択]** ブレードで、**[Premium ローカル冗長]** を選択します。**[選択]** をクリックします。**[ストレージ アカウント]** ブレードには、既定で **[価格レベル]** に **[Standard-GRS]** と表示されます。**[選択]** をクリックすると、**[価格レベル]** に **[Premium-LRS]** と表示されます。
 
@@ -330,17 +330,14 @@ azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 
 ## 次のステップ
 
-[Azure Premium Storage での BLOB サービス操作の使用](http://go.microsoft.com/fwlink/?LinkId=521969)
-
-[Windows を実行する仮想マシンの作成](../virtual-machines-windows-tutorial-azure-preview.md)
-
-[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)
-
-[Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
-
-[MSDN リファレンス](http://msdn.microsoft.com/library/azure/gg433040.aspx)
+- [Azure Premium Storage での BLOB サービス操作の使用](http://go.microsoft.com/fwlink/?LinkId=521969)
+- [Azure Premium Storage への移行](storage-migration-to-premium-storage.md)
+- [Windows を実行する仮想マシンの作成](../virtual-machines-windows-tutorial-azure-preview.md)
+- [Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)
+- [Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
+- [MSDN リファレンス](http://msdn.microsoft.com/library/azure/gg433040.aspx)
 
 [Image1]: ./media/storage-premium-storage-preview-portal/Azure_pricing_tier.png
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

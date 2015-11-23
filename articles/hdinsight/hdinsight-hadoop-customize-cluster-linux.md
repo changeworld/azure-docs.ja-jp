@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/02/2015"
+	ms.date="11/05/2015"
 	ms.author="larryfr"/>
 
 # Script Action を使って HDInsight クラスターをカスタマイズする
@@ -492,10 +492,12 @@ Ambari の Web UI を使用すると、クラスターの作成中に、スク�
 
 スクリプトで発生したエラーが原因でクラスターの作成に失敗した場合、クラスターに関連付けられた既定のストレージ アカウントからスクリプト アクション ログに直接アクセスすることもできます。
 
-* ストレージ ログは、`\STORAGE_ACOCUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` にあります。この下で、ヘッド ノード、ワーカー ノード、および zookeeper ノードごとにログが整理されています。次に例をいくつか示します。
-	* ヘッド ノード - `myclusterabd338e6210f476a9d1ae67b64fb855dAmbariDb-headnode0.mycluster-ssh.d4.internal.cloudapp.net`
-	* ワーカー ノード - `myclusterabd338e6210f476a9d1ae67b64fb855dAmbariDb-workernode0.mycluster-63d9e66a-a8e2-4022-85aa-a484e7700b5c.d4.internal.cloudapp.net`
-	* Zookeeper ノード - `myclusterabd338e6210f476a9d1ae67b64fb855dAmbariDb-zookeepernode0.mycluster-4965986e-3636-4a8b-ae1d-f2dfd898c8d7.d4.internal.cloudapp.net`
+* ストレージ ログは、`\STORAGE_ACOCUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` にあります。 
+
+	![操作のスクリーンショット](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
+
+	この下で、ヘッド ノード、ワーカー ノード、および zookeeper ノードごとにログが整理されています。いくつかの例: * **ヘッド ノード** - `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net` * **ワーカー ノード** - `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net` * **zookeeper ノード** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
+
 * 対応するホストのすべての stdout と stderr が、ストレージ アカウントにアップロードされます。各スクリプト アクションに対して、**output-*.txt** と **errors-*.txt** が 1 つずつあります。output-*.txt ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。たとえば、次のように入力します。
 
 		'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
@@ -547,4 +549,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "クラスター作成時の段階"
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

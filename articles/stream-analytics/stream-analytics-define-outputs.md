@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="10/14/2015" 
+	ms.date="11/12/2015" 
 	ms.author="jeffstok"/>
 
 # Stream Analytics 出力について
@@ -143,6 +143,8 @@ Power BI アカウントを認証すると、Power BI 出力のプロパティ�
 | テーブル名 | Power BI 出力のデータセットの下にテーブル名を入力します。現在、Stream Analytics ジョブからの Power BI 出力では、1 つのデータセット内に 1 つのテーブルのみを保持できます。 |
 | グループ名 | 他の Power BI ユーザーとのデータ共有を有効にするには、グループにデータを書き込みます。グループに書き込まないようにするには、Power BI アカウント内のグループを選択するか、[個人用ワークスペース] を選択することができます。既存のグループを更新するには、Power BI の認証を更新する必要があります。 |
 
+Power BI 出力およびダッシュボードの構成のチュートリアルについては、[Azure Stream Analytics & Power BI](stream-analytics-power-bi-dashboard.md) の記事を参照してください。
+
 > [AZURE.NOTE]Power BI ダッシュボードにデータセットとテーブルを明示的に作成しないでください。ジョブが開始され、このジョブによって出力が Power BI に流し込まれるときに、データセットとテーブルが自動的に設定されます。ジョブ クエリで結果が生成されない場合、データセットとテーブルは作成されません。また、この Stream Analytics ジョブで指定したものと同じ名前のデータセットとテーブルが Power BI に既に存在する場合は、既存のデータが上書きされるので注意してください。
 
 ### Power BI の承認を更新する
@@ -265,4 +267,4 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

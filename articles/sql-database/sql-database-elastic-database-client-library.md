@@ -20,7 +20,7 @@
 
 **エラスティック データベース クライアント ライブラリ**では、Microsoft Azure でホストされている何百、何千もの Azure SQL データベースを使用してシャード化したアプリケーションを構築することができます。このような設計は一般に、シングル テナント アーキテクチャを備えた SaaS (サービスとしてのソフトウェア) アプリケーションで使用されます (シングル テナント アーキテクチャとは、各テナントにデータベースが 1 つプロビジョニングされるアーキテクチャを指します)。そのようなアプリケーションの構築と管理が、このライブラリの目標です。
 
-ライブラリをインストールする方法については、「[Microsoft Azure SQL Database: エラスティック スケール](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)」を参照してください。クライアント ライブラリはエラスティック データベース ツールの一部で、具体的には[エラスティック データベース機能](sql-database-elastic-scale-introduction.md)になります。
+エラスティック データベース クライアント ライブラリは、現在、[GitHub](https://github.com/Azure/elastic-db-tools) 上でオープン ソース ソフトウェアとして入手できます。ライブラリをインストールする方法については、「[Microsoft Azure SQL Database: エラスティック スケール](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)」を参照してください。クライアント ライブラリはエラスティック データベース ツールの一部で、具体的には[エラスティック データベース機能](sql-database-elastic-scale-introduction.md)になります。
 
 ## クライアントの機能
 
@@ -55,4 +55,4 @@
 <!--Image references-->
 [1]: ./media/sql-database-elastic-database-client-library/glossary.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

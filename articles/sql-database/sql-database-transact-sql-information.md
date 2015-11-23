@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="11/02/2015"
+   ms.date="11/09/2015"
    ms.author="rick.byham@microsoft.com"/>
 
 # Azure SQL Database Transact-SQL 情報
@@ -29,7 +29,6 @@ Most SQL Server 2016 Transact-SQL ステートメントは Microsoft Azure SQL D
 
 SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメントに存在する引数の全部ではなく一部がサポートされています。たとえば、CREATE PROCEDURE ステートメントは利用できますが、CREATE PROCEDURE の WITH ENCRYPTION オプションは利用できません。各ステートメントのサポートされる領域については、リンクされている構文トピックを参照してください。
 
-- CLR アセンブリ: [CREATE ASSEMBLY](https://msdn.microsoft.com/library/ms189524.aspx)
 - データベース: [CREATE](https://msdn.microsoft.com/library/dn268335.aspx)/[ALTER](https://msdn.microsoft.com/library/ms174269.aspx)
 - DMV は一般的に利用できる機能で利用できます
 - 関数: [CREATE](https://msdn.microsoft.com/library/ms186755.aspx)/[ALTER FUNCTION](https://msdn.microsoft.com/library/ms186967.aspx)
@@ -88,7 +87,7 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 
 ## 完全 Transact-SQL リファレンス
 
-Transact-SQL の文法、使用方法、例の詳細については、SQL Server オンライン ブックの「[Transact-SQL リファレンス (データベース エンジン)](https://msdn.microsoft.com/library/bb510741.aspx)」を参照してください。
+Transact-SQL の文法、使用方法、例の詳細については、SQL Server オンライン ブックの「[Transact-SQL Reference (Database Engine)](https://msdn.microsoft.com/library/bb510741.aspx)」を参照してください。
 
 ### 「適用先」タグについて
 
@@ -96,4 +95,4 @@ Transact-SQL リファレンスには SQL Server 2008、SQL Server 2008 R2、SQL
 
 トピックの全体的主題がある製品で使用されるが、一部の引数がサポートされないことがあります。たとえば、含有データベース ユーザーは SQL Server 2012 で導入されました。**CREATE USER** ステートメントは SQL Server 製品で利用できますが、**WITH PASSWORD** は以前のバージョンでは利用できません。この場合、追加の「**適用先**」セクションがトピックの本文の引数説明に挿入されます。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

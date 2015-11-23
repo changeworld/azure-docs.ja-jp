@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/08/2015" 
+	ms.date="11/05/2015" 
 	ms.author="awills"/>
 
 
@@ -44,7 +44,7 @@
 * Java
  * MySQL、SQL Server、PostgreSQL、SQLite などの [JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/) ドライバーを使用したデータベースの呼び出し
 
-[TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency) を使用して他の依存関係を監視するために、独自の SDK 呼び出しを記述することができます。
+[[TrackDependency API]](app-insights-api-custom-events-metrics.md#track-dependency) を使用して他の依存関係を監視するために、独自の SDK 呼び出しを記述することができます。
 
 
 ## 依存関係の監視をセットアップするには
@@ -59,7 +59,7 @@
 
     ![Microsoft アカウントの資格情報で Azure にサインインする](./media/app-insights-asp-net-dependencies/appinsights-035-signin.png)
 
-    *接続エラーの場合は、 「[トラブルシューティング](#troubleshooting)」を参照してください。*
+    *接続エラーが発生した場合は、 「[トラブルシューティング](#troubleshooting)」を参照してください。*
 
 5. 監視するインストール済みの Web アプリケーションまたは Web サイトを選択し、Application Insights ポータルで結果を表示するときに使用するリソースを構成します。
 
@@ -202,4 +202,4 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

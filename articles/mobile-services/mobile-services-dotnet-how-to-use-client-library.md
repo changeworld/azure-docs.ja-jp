@@ -44,7 +44,9 @@
 		public bool Complete { get; set; }
 	}
 
-動的スキーマを有効にすると、挿入または更新の要求に含まれるオブジェクトに基づいて、Azure のモバイル サービスで自動的に新しい列が生成されます。詳細については、「[動的スキーマ](http://go.microsoft.com/fwlink/?LinkId=296271)」を参照してください。
+[JsonPropertyAttribute](http://www.newtonsoft.com/json/help/html/Properties_T_Newtonsoft_Json_JsonPropertyAttribute.htm) を使用してクライアントの型とテーブルの間の PropertyName のマッピングが定義されていることに注意してください。
+
+JavaScript バックエンド モバイル サービスで動的スキーマを有効にすると、挿入または更新の要求に含まれるオブジェクトに基づいて、Azure Mobile Services で自動的に新しい列が生成されます。詳細については、「[動的スキーマ](http://go.microsoft.com/fwlink/?LinkId=296271)」を参照してください。.NET バックエンド モバイル サービスでは、テーブルは、プロジェクトのデータ モデルで定義されます。
 
 ##<a name="create-client"></a>方法: Mobile Services クライアントを作成する
 
@@ -62,12 +64,12 @@
 
 ##<a name="instantiating"></a>方法: テーブル参照を作成する
 
-Mobile Services のテーブル データにアクセスするコードとそのデータを変更するコードは、必ず `MobileServiceTable` オブジェクトで関数を呼び出します。`MobileServiceClient` のインスタンスで [GetTable](http://msdn.microsoft.com/library/windowsazure/jj554275.aspx) 関数を呼び出して、テーブルへの参照を取得します。
+Mobile Services のテーブル データにアクセスするコードとそのデータを変更するコードは、必ず `MobileServiceTable` オブジェクトで関数を呼び出します。次のように、`MobileServiceClient` のインスタンスで [GetTable](https://msdn.microsoft.com/library/azure/jj554275.aspx) メソッドを呼び出して、テーブルへの参照を取得します。
 
     IMobileServiceTable<TodoItem> todoTable =
 		client.GetTable<TodoItem>();
 
-これは型指定されたシリアル化のモデルです。後で示す<a href="#untyped">型指定のないシリアル化のモデル</a>に関する説明を参照してください。
+これは型指定されたシリアル化のモデルです。後で示す、[型指定のないシリアル化のモデル](#untyped)に関する説明を参照してください。
 
 ##<a name="querying"></a>方法: モバイル サービスのデータを照会する
 
@@ -302,9 +304,9 @@ Mobile Services クライアントでは、Azure Notification Hubs によるプ�
 		    await MobileService.GetPush().RegisterNativeAsync(channel.Uri, tags);
 		}
 
-この例では、登録で 2 つのタグが含められます。Windows アプリの詳細については、「[アプリケーションにプッシュ通知を追加する](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push.md)」を参照してください。
+この例では、登録で 2 つのタグが含められます。Windows アプリの詳細については、「[Mobile Services アプリへのプッシュ通知の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push.md)」を参照してください。
 
-Xamarin アプリではいくつかの追加コードが必要になります。このコードを使用して、iOS または Android アプリで実行されている Xamarin アプリを Apple Push Notification サービス (APNS) と Google Cloud Messaging (GCM) にそれぞれ登録することができます。詳細については、「**アプリケーションにプッシュ通知を追加する**」を参照してください ([Xamarin.iOS](partner-xamarin-mobile-services-ios-get-started-push.md#add-push) | [Xamarin.Android](partner-xamarin-mobile-services-android-get-started-push.md#add-push))。
+Xamarin アプリではいくつかの追加コードが必要になります。このコードを使用して、iOS または Android アプリで実行されている Xamarin アプリを Apple Push Notification サービス (APNS) と Google Cloud Messaging (GCM) にそれぞれ登録することができます。詳細については、「**Mobile Services アプリへのプッシュ通知の追加**」を参照してください ([Xamarin.iOS](partner-xamarin-mobile-services-ios-get-started-push.md#add-push) | [Xamarin.Android](partner-xamarin-mobile-services-android-get-started-push.md#add-push))。
 
 >[AZURE.NOTE]特定の登録されたユーザーに通知を送信する必要がある場合は、登録前に認証を要求し、特定のタグへの登録をユーザーが許可されていることを確認することが重要です。たとえば、ユーザーが他のユーザーの ID であるタグに登録していないことを確認する必要があります。詳細については、「[認証されたユーザーへのプッシュ通知の送信](mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users.md)」を参照してください。
 
@@ -416,7 +418,7 @@ Mobile Services はオプティミスティック同時実行制御をサポー�
 	ListBox lb = new ListBox();
 	lb.ItemsSource = items;
 
-管理対象ランタイムの一部のコントロールでは、[ISupportIncrementalLoading](http://msdn.microsoft.com/library/windows/apps/Hh701916) というインターフェイスがサポートされます。このインターフェイスにより、コントロールはユーザーによるスクロールの際に追加のデータを要求することができます。このインターフェイスには、`MobileServiceIncrementalLoadingCollection` によるユニバーサル Windows 8.1 アプリ用の組み込みのサポートがあり、コントロールからの呼び出しが自動的に処理されます。Windows アプリで `MobileServiceIncrementalLoadingCollection` を使用するには、次を実行します。
+マネージ ランタイムの一部のコントロールでは、[ISupportIncrementalLoading](http://msdn.microsoft.com/library/windows/apps/Hh701916) というインターフェイスがサポートされます。このインターフェイスにより、コントロールはユーザーによるスクロールの際に追加のデータを要求することができます。このインターフェイスには、`MobileServiceIncrementalLoadingCollection` によるユニバーサル Windows 8.1 アプリ用の組み込みのサポートがあり、コントロールからの呼び出しが自動的に処理されます。Windows アプリで `MobileServiceIncrementalLoadingCollection` を使用するには、次を実行します。
 
 			MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
 		items =  todoTable.Where(todoItem => todoItem.Complete == false)
@@ -433,7 +435,7 @@ Windows Phone 8 と "Silverlight" アプリで新しいコレクションを使�
 
 `ToCollectionAsync` または `ToCollection` を呼び出して作成されたコレクションを使用する場合は、UI コントロールにバインドできるコレクションを取得します。このコレクションはページングに対応しています。つまり、コントロールが "項目をさらに読み込む" ようにコレクションに依頼し、コレクションがそれを実行します。その時点で、ユーザー コードは関係せず、コントロールはフローを開始します。ただし、コレクションはネットワークからデータを読み込むため、読み込みが失敗することもあると想定されます。このようなエラーを処理するには、`MobileServiceIncrementalLoadingCollection` で `OnException` メソッドをオーバーライドし、コントロールが実行する `LoadMoreItemsAsync` の呼び出しの結果として生じる例外を処理する必要があります。
 
-最後に、テーブルには多くのフィールドが存在するものの、コントロールにはその一部のみを表示する必要があるとします。UI に表示する特定の列を選ぶ際には、前のセクション「[特定の列を選択する](#selecting)」のガイダンスを使用できます。
+最後に、テーブルには多くのフィールドが存在するものの、コントロールにはその一部のみを表示する必要があるとします。UI に表示する特定の列を選ぶ際には、前のセクション「[特定の列を選択する](#selecting)」のガイダンスを参考にしてください。
 
 ##<a name="authentication"></a>方法: ユーザーを認証する
 
@@ -669,16 +671,19 @@ Mobile Services には、エラーの検出、検証、回避のためのさま�
 		await table.InsertAsync(newItem);
 	}
 
-	public class MyHandler : DelegatingHandler
-	{
-		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-		{
-			request.Headers.Add("x-my-header", "my value");
-			var response = awaitbase.SendAsync(request, cancellationToken);
-			response.StatusCode = HttpStatusCode.ServiceUnavailable;
-			return response;
-		}
-	}
+    public class MyHandler : DelegatingHandler
+    {
+        protected override async Task<HttpResponseMessage> 
+            SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            // Add a custom header to the request.
+            request.Headers.Add("x-my-header", "my value");
+            var response = await base.SendAsync(request, cancellationToken);
+            // Set a differnt response status code.
+            response.StatusCode = HttpStatusCode.ServiceUnavailable;
+            return response;
+        }
+    }
 
 このコードは、要求内に新しい **x-my-header** ヘッダーを追加し、利用不可に対する応答コードを任意に設定します。実際のシナリオでは、アプリケーションで必要とされるカスタム ロジックに基づいて応答ステータス コードを設定します。
 
@@ -740,6 +745,7 @@ Mobile Services クライアント ライブラリは、Json.NET を使用して
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md/#Commands_to_manage_mobile_services
 [オプティミスティック同時実行制御のチュートリアルに関するページ]: mobile-services-windows-store-dotnet-handle-database-conflicts.md
+[MobileServiceClient]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx
 
 [IncludeTotalCount]: http://msdn.microsoft.com/library/windowsazure/dn250560.aspx
 [Skip]: http://msdn.microsoft.com/library/windowsazure/dn250573.aspx
@@ -748,4 +754,4 @@ Mobile Services クライアント ライブラリは、Json.NET を使用して
 [Azure モバイル サービス クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

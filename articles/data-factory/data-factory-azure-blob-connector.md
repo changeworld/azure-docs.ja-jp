@@ -505,9 +505,4 @@ false | mergeFiles | <p>ソース フォルダ Folder1 が次のような構造�
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-
-
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-azure-blob-connector.md)でフィードバックをお寄せください。
-
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

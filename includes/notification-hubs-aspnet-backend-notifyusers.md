@@ -285,7 +285,9 @@
 
 3. **NotificationsController** クラスに次のメソッドを追加します。
 
-	このコードでは、プラットフォーム通知サービス (PNS) の `pns` パラメーターに基づく通知の種類を送信します。`to_tag` の値はメッセージの*ユーザー名*タグを設定するために使用します。このタグは、アクティブな通知ハブ登録のユーザー名のタグと一致する必要があります。通知メッセージは、POST 要求の本文からプルされます。
+	このコードでは、プラットフォーム通知サービス (PNS) の `pns` パラメーターに基づく通知の種類を送信します。`to_tag` の値はメッセージの*ユーザー名*タグを設定するために使用します。このタグは、アクティブな通知ハブ登録のユーザー名のタグと一致する必要があります。通知メッセージは、POST 要求の本文からプルされ、ターゲット PNS に合わせた形式に設定されます。
+
+	サポートされているデバイスで通知の受信に使用されるプラットフォーム通知サービス (PNS) に応じて、各種形式を使用したさまざまな通知がサポートされています。たとえば Windows デバイスの場合、別の PNS で直接はサポートされていない [WNS によるトースト通知](https://msdn.microsoft.com/library/windows/apps/br230849.aspx) を使用することもできます。したがって、バックエンドが、通知を、サポートを計画しているデバイスの PNS でサポートされている形式に設定する必要があります。その後、[NotificationHubClient クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx)の適切な送信 API を使用します。
 
         public async Task<HttpResponseMessage> Post(string pns, [FromBody]string message, string to_tag)
         {
@@ -362,4 +364,4 @@
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

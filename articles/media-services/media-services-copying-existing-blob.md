@@ -24,6 +24,10 @@ blob は、Media Services アカウントに関連付けられた (または関�
 
 >[AZURE.NOTE]Media Services によって生成された BLOB コンテナーの内容を変更する場合は、必ず Media Service API を使用してください。
 
+##サンプルのダウンロード
+
+[ここ](http://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/)からサンプルを取得し、実行します。
+
 ##前提条件
 
 - 新規または既存の Azure サブスクリプションで作成した 2 つの Media Services アカウント。「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。
@@ -305,9 +309,10 @@ blob は、Media Services アカウントに関連付けられた (または関�
 
 ##Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
 
-<!---HONumber=Oct15_HO3-->
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
+<!---HONumber=Nov15_HO3-->

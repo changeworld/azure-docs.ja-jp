@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.date="11/09/2015" 
 	ms.author="josephd"/>
 
 # Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション
@@ -68,6 +68,29 @@ Azure での高可用な基幹業務アプリケーションの基本的で代�
 - 1 つのクロスプレミス仮想ネットワーク
 - 2 つのストレージ アカウント
 
+こちらが仮想マシンとそれぞれのこの構成に対する既定のサイズになります。
+
+項目 | 仮想マシンの説明 | ギャラリー イメージ | 既定サイズ 
+--- | --- | --- | --- 
+1\. | 最初のドメイン コントローラー | Windows Server 2012 R2 Datacenter | D1
+2\. | 2 番目のドメイン コントローラー | Windows Server 2012 R2 Datacenter | D1
+3\. | プライマリ データベース サーバー | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | D4
+4\. | セカンダリ データベース サーバー | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | D4
+5\. | クラスターのマジョリティ ノード | Windows Server 2012 R2 Datacenter | D1
+6\. | 最初の Web サーバー | Windows Server 2012 R2 Datacenter | D3
+7\. | 2 番目の Web サーバー | Windows Server 2012 R2 Datacenter | D3
+
+この構成の推定コストを計算するには、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を参照してください。
+
+1. [**モジュール**] で、[**コンピューティング**] をクリックし、[**仮想マシン**] を必要なだけクリックして 7 つの仮想マシンを作成してください。
+2. 各仮想マシンで次を選択してください。
+	- 目的のリージョン
+	- 種類には **Windows**
+	- 価格レベルには**標準**
+	- **インスタンス サイズ**には、上記の表でのデフォルト サイズもしくは目的のサイズ
+
+> [AZURE.NOTE]Azure 料金計算ツールでは、SQL Server 2014 Enterprise を実行している 2 つの仮想マシンの SQL Server ライセンスの追加のコストは含まれません。詳細については、「[Virtual Machines Pricing-SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」を参照してください。
+
 ### デプロイ フェーズ
 
 この構成をデプロイするには、次のプロセスを使用します。
@@ -106,4 +129,4 @@ Azure での高可用な基幹業務アプリケーションの基本的で代�
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

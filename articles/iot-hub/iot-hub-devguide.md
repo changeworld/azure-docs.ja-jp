@@ -193,7 +193,7 @@ IoT Hub では、次の一連の*アクセス許可*を使用して、各 IoT Hu
 
 アクセス許可は次の方法で付与されます。
 
-* **ハブレベルの共有アクセス ポリシー**。*共有アクセス ポリシー*により、前のセクションの一覧にあるアクセス許可を自由に組み合わせて付与できます。ポリシーは、[Azure 管理ポータル][lnk-management-portal]で定義するか、[Azure IoT Hub のリソース プロバイダー API][lnk-resource-provider-apis] に関する記事にある API を使用してプログラムにより定義できます。新しく作成された IoT Hub には、次の既定のポリシーがあります。
+* **ハブレベルの共有アクセス ポリシー**。*共有アクセス ポリシー*により、前のセクションの一覧にあるアクセス許可を自由に組み合わせて付与できます。ポリシーは、[Azure プレビュー ポータル][lnk-management-portal]で定義するか、[Azure IoT Hub のリソース プロバイダー API][lnk-resource-provider-apis] に関する記事にある API を使用してプログラムにより定義できます。新しく作成された IoT Hub には、次の既定のポリシーがあります。
 
     - *iothubowner*: すべてのアクセス許可を持つポリシー
     - *service*: **ServiceConnect** アクセス許可を持つポリシー
@@ -352,7 +352,7 @@ IoT Hub では、D2C メッセージングを制御する次のプロパティ�
 
 また Event Hubs と同様、IoT Hub でも、D2C の受信エンドポイントでコンシューマー グループを管理できます。
 
-これらのプロパティはすべて、[Azure ポータル][lnk-management-portal]から変更するか、[Azure IoT Hub のリソース プロバイダー API][lnk-resource-provider-apis] からプログラムにより変更できます。
+これらのプロパティはすべて、[Azure プレビュー ポータル][lnk-management-portal]から変更するか、[Azure IoT Hub のリソース プロバイダー API][lnk-resource-provider-apis] からプログラムにより変更できます。
 
 #### なりすまし対策のプロパティ<a id="antispoofing"></a>
 
@@ -418,9 +418,8 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 
 | プロパティ | 説明 |
 | -------- | ----------- |
-| EnqueuedTime | メッセージの結果が発生した日時を示すタイムスタンプ。たとえば、デバイスの完了やメッセージの期限切れなどです。 |
-| CorrelationId | このフィードバック情報が関連付けられている C2D メッセージの **MessageId** です。 |
-| StatusCode | 成功の場合は **0**、メッセージの有効期限が切れた場合は **1**、最大配信数を超えた場合は **2**、メッセージが拒否された場合は **3**。 |
+| EnqueuedTimeUtc | メッセージの結果が発生した日時を示すタイムスタンプ。たとえば、デバイスの完了やメッセージの期限切れなどです。 |
+| OriginalMessageId | このフィードバック情報が関連付けられている C2D メッセージの **MessageId** です。 |
 | 説明 | 前の結果の文字列の値。 |
 | DeviceId | フィードバックのこの部分が関連付けられている C2D メッセージの宛先デバイスの **DeviceId**。 |
 | DeviceGenerationId | フィードバックのこの部分が関連付けられている C2D メッセージの宛先デバイスの **DeviceGenerationId**。 |
@@ -431,9 +430,8 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 
     [
         {
-            "CorrelationId": "0987654321",
-            "EnqueuedTime": "2015-07-28T16:24:48.789Z",
-            "StatusCode": "0",
+            "OriginalMessageId": "0987654321",
+            "EnqueuedTimeUtc": "2015-07-28T16:24:48.789Z",
             "Description": "Success",
             "DeviceId": "123",
             "DeviceGenerationId": "abcdefghijklmnopqrstuvwxyz"
@@ -493,7 +491,7 @@ IoT Hub の開発の概要については以上です。詳細については、
 
 [Event Hubs - イベント プロセッサ ホスト]: http://blogs.msdn.com/b/servicebus/archive/2015/01/16/event-processor-host-best-practices-part-1.aspx
 
-[Azure プレビュー ポータル]: https://ms.portal.azure.com
+[Azure プレビュー ポータル]: https://portal.azure.com
 
 [img-summary]: ./media/iot-hub-devguide/summary.png
 [img-endpoints]: ./media/iot-hub-devguide/endpoints.png
@@ -534,4 +532,4 @@ IoT Hub の開発の概要については以上です。詳細については、
 [lnk-tls]: https://tools.ietf.org/html/rfc5246
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

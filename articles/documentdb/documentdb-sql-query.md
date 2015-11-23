@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/13/2015" 
-	ms.author="mimig"/>
+	ms.author="arramac"/>
 
 # DocumentDB 内の SQL クエリ
 Microsoft Azure DocumentDB は、階層型の JSON ドキュメントに対する、SQL (Structured Query Language) を使ったドキュメント クエリをサポートしています。DocumentDB は完全にスキーマフリーです。データベース エンジン内で JSON データ モデルを直接処理することで、明示的なスキーマやセカンダリ インデックスの作成を必要とせずに、JSON ドキュメントの自動インデックス作成を実現しています。
@@ -375,7 +375,7 @@ IN キーワードを使用すると、指定した値がリスト内の任意�
 
 IN は、複数の OR 句を組み合わせることに相当します。ただし、単一のインデックスを使用して処理することができるため、DocumentDB の IN 句で指定できる引数の[制限](documentdb-limits.md)は、より大きくなります。
 
-### 3 項 (?) 演算子と合体 (??) 演算子:
+### 3 項 (?) 演算子と合体 (??) 演算子
 3 項演算子と合体演算子は、一般的なプログラミング言語である C# や JavaScript と同様に、条件式の構築に使用することができます。
 
 3 項 (?) 演算子は、実行中に新しい JSON プロパティを構築するときに役立つ場合があります。たとえば、次のように、初級、中級、上級など、人間が判読できる形式でクラス レベルを分類するクエリを作成できます。
@@ -2089,4 +2089,4 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 [consistency-levels]: documentdb-consistency-levels.md
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

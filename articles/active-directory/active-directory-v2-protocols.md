@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/12/2015"
+	ms.date="11/10/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 プレビュー: プロトコル - OAuth 2.0 と OpenID Connect
@@ -43,7 +43,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 OAuth と OpenID Connect におけるフローはほぼすべて、情報のやり取りに 4 つの当事者が関係します。
 
-![OAuth 2.0 Roles](../media/active-directory-v2-flows/protocols_roles.png)
+![OAuth 2.0 のロール](../media/active-directory-v2-flows/protocols_roles.png)
 
 - **承認サーバー**は v2.0 エンドポイントです。ユーザーの本人性確認、リソースへのアクセス権の付与と取り消し、トークンの発行という役割を担います。ID プロバイダーと呼ばれることもあります。ユーザーの情報とそのアクセス、そしてフロー内の当事者間の信頼関係に関するすべてのことは、承認サーバーによって安全に処理されます。
 - **リソース所有者**とは通常、エンド ユーザーを指します。データを所有し、そのデータ (またはリソース) へのアクセスをサード パーティに許可する権限を持つ当事者です。
@@ -53,7 +53,7 @@ OAuth と OpenID Connect におけるフローはほぼすべて、情報のや�
 ## OAuth2 承認コード フロー
 OAuth 2.0 承認コード フローは、[OAuth 2.0 仕様のセクション 4.1](http://tools.ietf.org/html/rfc6749) で規定されています。[Web アプリ](active-directory-v2-flows.md#web-apps)や[ネイティブにインストールされるアプリ](active-directory-v2-flows.md#mobile-and-native-apps)を含め、大半のアプリ タイプで認証と承認を行う際にこのフローが使用されます。アプリは、このフローによって安全に access\_tokens を取得し、v2.0 アプリ モデルを使用して保護されているリソースにアクセスすることができます。
 
-以下に示したのは、ネイティブ アプリに使用されるフローの全体図です。それぞれの要求については、以降のセクションで詳しく説明します。 ![OAuth Auth Code Flow](../media/active-directory-v2-flows/convergence_scenarios_native.png)
+以下に示したのは、ネイティブ アプリに使用されるフローの全体図です。それぞれの要求については、以降のセクションで詳しく説明します。 ![OAuth2 承認コード フロー](../media/active-directory-v2-flows/convergence_scenarios_native.png)
 
 #### 承認コードを要求する
 承認コード フローは、クライアントがユーザーを `/authorize` エンドポイントにリダイレクトさせることから始まります。この要求で、クライアントは、ユーザーから取得する必要のあるアクセス許可を指定します。
@@ -255,7 +255,7 @@ Content-Type: application/json
 
 v2.0 アプリ モデルでは、[Web アプリ](active-directory-v2-flows.md#web-apps)のサインインを実装する方法として、OpenID Connect が推奨されます。ごく基本的なサインイン フローは、以下のステップから成ります。
 
-![OpenId Connect Swimlanes](../media/active-directory-v2-flows/convergence_scenarios_webapp.png)
+![OpenId Connect のレーン](../media/active-directory-v2-flows/convergence_scenarios_webapp.png)
 
 #### サインイン要求を送信する
 Web アプリでユーザーを認証する必要があるときは、ユーザーを `/authorize` エンドポイントにリダイレクトさせます。この要求は、[OAuth 2.0 承認コード フロー](#oauth2-authorization-code-flow)の最初の段階と似ていますが、いくつかの重要な違いがあります。- 要求の `scope` パラメーターにはスコープ `openid` を指定する必要があります。- `response_type` パラメーターには `id_token` を指定する必要があります。- この要求には `nonce` パラメーターを指定する必要があります。
@@ -475,4 +475,4 @@ On Behalf Of フロー (JWT ベアラー資格情報付与) は、[OAuth 2.0 Ext
 
 このフローは現在、v2.0 アプリ モデル プレビューではサポートされていません。一般提供版の Azure AD サービスにおける動作については、[こちらの Azure AD コード サンプル](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

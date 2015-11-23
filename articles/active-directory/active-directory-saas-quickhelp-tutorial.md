@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/16/2015"
+	ms.date="11/06/2015"
 	ms.author="markusvi"/>
 
 
@@ -70,13 +70,12 @@ Azure AD への QuickHelp の統合を構成するには、ギャラリーから
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、QuickHelp で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する QuickHelp ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと QuickHelp の関連ユーザーの間で、リンク関係が確立されている必要があります。<br> このリンク関係は、Azure AD の **[ユーザー名]** の値を、QuickHelp の **[Username]** の値として割り当てることで確立されます。
- 
+
 QuickHelp で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[ QuickHelp のテスト ユーザーの作成](#creating-a-halogen-software-test-user)** - QuickHelp で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[ QuickHelp のテスト ユーザーの作成](#creating-a-quickhelp-test-user)** - QuickHelp で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -88,17 +87,16 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure AD ポータルの **[QuickHelp]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br>![シングル サインオンの構成][6]<br>
 
-2. **[ユーザーの QuickHelp へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br>![Azure AD Single Sign-On][7]<br>
+2. **[ユーザーの QuickHelp へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br>![Azure AD のシングル サインオン][7]<br>
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![アプリケーションの設定の構成][8]<br>
  
-     a.**[サインオン URL]** ボックスに、ユーザーが QuickHelp サイトへのサインオンに使用する URL を入力します (例: *https://quickhelp.com/bsiazure/#/home/assignedContent*))。
+     a.**[サインオン URL]** ボックスに、ユーザーが QuickHelp サイトへのサインオンに使用する URL を入力します (例: *https://quickhelp.com/bsiazure/*))。
 
      >[AZURE.NOTE]サインオン URL の値がわからない場合は、QuickHelp サポート チームに問い合わせてください。
 
      b.**[次へ]** をクリックします。
 
-4. **QuickHelp** メタデータ ファイルをダウンロードし、コンピューターに保存します: [https://quickhelp.blob.core.windows.net/metadata/QuickhelpSamlMetadataBS.xml](https://quickhelp.blob.core.windows.net/metadata/QuickhelpSamlMetadataBS.xml)
  
 4. **[QuickHelp でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターでメタデータ ファイルをローカルに保存します。<br><br>![What is Azure AD Connect][9]<br>
 
@@ -120,6 +118,18 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
     b.ダウンロードした Azure メタデータ ファイルをアップロードするには、**[参照]** をクリックし、目的のファイルに移動し、**[メタデータのアップロード]** をクリックします。
 
     d.**[Email]** テキスト ボックスに「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
+
+    e.**[名]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
+
+    f.**[姓]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
+
+    g.**[ 操作バー ]** で、**[保存]** をクリックします。
+
+
+
+
+
+
 
 6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![What is Azure AD Connect][10]<br>
 
@@ -145,23 +155,23 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
     a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
-    b.**[ユーザー名]** テキスト ボックスに「**BrittaSimon**」と入力します。
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_06.png)<br>
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_06.png) <br>
  
-    a.**[名]** テキスト ボックスに「**Britta**」と入力します。
+    a.**[名]** ボックスに「**Britta**」と入力します。
 
-    b.**[姓]** テキスト ボックスに「**Simon**」と入力します。
+    b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    c.**[表示名]** テキスト ボックスに「**Britta Simon**」と入力します。
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
 
     d.**[ロール]** 一覧で **[ユーザー]** を選択します。e.**[次へ]** をクリックします。
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_07.png) <br>
  
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_08.png)<br>
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_08.png) <br>
   
     a.**[新しいパスワード]** の値を書き留めます。
 
@@ -171,39 +181,11 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
  
 ### QuickHelp テスト ユーザーの作成
 
-このセクションの目的は、QuickHelp で Britta Simon というユーザーを作成することです。
+このセクションの目的は、QuickHelp で Britta Simon というユーザーを作成することです。シングル サインオンを機能させるには、Azure AD ユーザーに対応する QuickHelp ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと QuickHelp の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-このチュートリアルでは、次の構造を持つ CSV ファイルから新しいユーザーをインポートします。
+QuickHelp では、ジャストインタイム プロビジョニングがサポートされています。つまり、必要に応じて、ユーザー アカウントは、QuickHelp で自動的に作成され、Azure AD アカウントにリンクされます。
 
-|FirstName|LastName|電子メール|学科|タイトル|
-|---|---|---|---|---|
-|Britta|Simon|BritaSimon@Fabrikam.com|||
-
-<br><br>![QuickHelp テスト ユーザーの作成][26]<br>
-
-Azure Active Directory テスト環境の **Britta Simon** の値が値として含まれるこの構造体を使用して CSV ファイルを作成する必要があります。
-
-
-
-**QuickHelp で Britta Simon というユーザーを作成するには、次の手順に従います。**
-
-1. 上記の手順に従って、CSV ファイルを作成します。 
- 
-2. QuickHelp 企業サイトに管理者としてサインオンします。<br><br>![QuickHelp テスト ユーザーの作成][21]<br>
-
-
-3. **[QuickHelp の管理者]** メニューの **[ユーザー]** をクリックし、**[新規]** をクリックします。<br><br>![QuickHelp テスト ユーザーの作成][24]<br>
-
-
-4. **[コンテンツ]** として、**[ユーザー]** を選択し、**[インポート]** をクリックします。<br><br>![QuickHelp テスト ユーザーの作成][25]<br>
-
-5. CSV ファイルをインポートするには、**[参照]** をクリックし、目的のファイルに移動し、**[次へ]** をクリックします。<br><br>![QuickHelp テスト ユーザーの作成][26]<br>
-
-6. 概要ページで状態を確認し、**[完了]** をクリックします。<br><br>![QuickHelp テスト ユーザーの作成][27]<br>
-
-
-Britta が正常にインポートされた場合は、ユーザーの一覧の中に彼女が表示されます。<br><br>![QuickHelp テスト ユーザーの作成][28]<br>
-
+このセクションでは、ユーザー側で必要な操作はありません。
 
 
 ### Azure AD テスト ユーザーの割り当て
@@ -273,4 +255,4 @@ Britta が正常にインポートされた場合は、ユーザーの一覧の�
 [401]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_401.png
 [402]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_402.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

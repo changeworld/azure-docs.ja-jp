@@ -1,9 +1,9 @@
 <properties
-	pageTitle="既定の構成の変更するためのベスト プラクティス | Microsoft Azure"
+	pageTitle="既定の構成を変更するためのベスト プラクティス | Microsoft Azure"
 	description="Azure AD Connect Sync の既定の構成を変更するためのベスト プラクティスを紹介します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="andkjell"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="11/11/2015"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -36,30 +36,51 @@ Azure AD Connect Sync は、3 時間ごとに ID データを同期するよう�
 
 ## 同期規則に対する変更
 
-Azure AD Connect Sync の構成への変更の適用はサポートされますが、Azure AD Connect Sync はアプライアンスにできるだけ近くなければならないため、適用の際はご注意ください。
+インストール ウィザードには、最も一般的なシナリオに対応できる構成が用意されています。構成を変更する必要がある場合、サポートされる構成を維持するには、次の規則に従う必要があります。
 
-想定される動作の一覧は次のとおりです。
-
-- Azure AD Connect を新しいバージョンにアップグレードすると、ほとんどの設定が既定の状態にリセットされます。
-- アップグレードを適用した後は、“標準” の同期規則の変更は失われます。
-- 削除された "標準" の同期規則は、新しいバージョンへのアップグレード中に再作成されます。
-- 新しいバージョンへのアップグレードが適用されているときは、作成したカスタムの同期規則は変更されません。
-
-
-
-既定の構成を変更する必要がある場合は、以下の手順を実行します。
-
-- "標準" の同期規則の属性のフローを変更する必要がある場合は、変更しません。代わりに、必要な属性のフローを含む、優先順位の高い (小さい数値の) 新しい同期規則を作成します。
+- 標準の同期規則を変更する場合、唯一サポートされる変更は無効にすることのみです。その他の変更は、アップグレード時に失われる可能性があります。
+- 標準の規則に他の変更を加える必要がある場合は、標準の規則をコピーし、元の規則を無効にしてください。同期規則エディターのプロンプトに従って無効にすることができます。
 - 同期規則エディターを使用して、カスタムの同期規則をエクスポートします。これにより、障害復旧シナリオの場合に、簡単に再作成をするために使用できる PowerShell スクリプトが提供されます。
-- "標準" の同期ルールのスコープまたは結合設定を変更する必要がある場合は、これを文書化し、新しいバージョンの Azure AD Sync にアップグレードした後に変更を再適用します。
 
+>[AZURE.WARNING]標準の同期規則には拇印があります。標準の規則を変更すると、拇印が変わるので、今後、新しいリリースの Azure AD Connect を適用するときに問題が発生する可能性があります。変更する場合は、この記事の方法に従ってください。
 
+### 不要な同期規則の削除
+標準の同期規則は削除しないでください。削除しても次のアップグレード時に再作成されます。
+
+場合によっては、トポロジで動作しない構成がインストール ウィザードで生成されることがあります。たとえば、アカウント リソース フォレスト トポロジがあり、アカウント フォレストのスキーマを Exchange スキーマで拡張している場合、Exchange の規則は、アカウント フォレスト用とリソース フォレスト用の両方が作成されます。この場合、Exchange 用の同期規則を無効にする必要があります。
+
+![無効な同期規則](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/exchangedisabledrule.png)
+
+上の図では、インストール ウィザードによって、アカウント フォレスト内にある古い Exchange 2003 スキーマが検出されています。このスキーマが追加されてから、リソース フォレストが Fabrikam の環境に導入されました。古い Exchange 実装の属性が同期されないようにするには、図のように同期規則を無効にする必要があります。
+
+### 標準の規則の変更
+標準の規則を変更する必要がある場合は、標準の規則のコピーを作成し、元の規則を無効にする必要があります。そして、コピーした規則を変更します。この処理には同期規則エディターを使用できます。標準の規則を開くと、次のダイアログ ボックスが表示されます。
+
+![標準の規則の警告](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/warningoutofboxrule.png)
+
+**[はい]** を選択して規則のコピーを作成します。コピーした規則を開きます。
+
+![コピーした規則](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/clonedrule.png)
+
+このコピーした規則のスコープ、結合、変換について必要な変更を加えます。
+
+### 属性をフローしない
+属性をフローしない方法は 2 つあります。1 つ目の方法は、インストール ウィザードで使用できます。[選択した属性を削除](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering)できます。このオプションは、以前に属性を同期したことがない場合に使用できます。ただし、この属性を同期した後に、この機能で属性を削除した場合、同期エンジンによるその属性の管理は停止され、既存の値は Azure AD に残ります。
+
+属性の値を削除し、今後はフローが実行されないようにするには、代わりにカスタム規則を作成する必要があります。
+
+Fabrikam では、クラウドと同期する属性の一部が不要であることに気づきました。不要な属性が Azure AD から削除されるようにする必要があります。
+
+![拡張属性](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/badextensionattribute.png)
+
+- 新しい受信同期規則を作成し、説明を入力します。![説明](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/syncruledescription.png)
+- 種類が **Expression** でソースが **AuthoritativeNull** の属性フローを作成します。リテラル **AuthoritativeNull** は、低い優先度の同期規則が値を設定しようとしても、MV の値は空になることを示します。![拡張属性](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/syncruletransformations.png)
+- 同期規則を保存します。**同期サービス**を開始し、[コネクタ] を探して **[実行]**、**[完全同期]** の順に選択します。これで、すべての属性フローが再計算されます。
+- コネクタ スペースを検索して、目的の変更がエクスポート対象になっていることを確認します。![段階的な削除](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/deletetobeexported.png)
 
 ## 次のステップ
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!--Image references-->
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

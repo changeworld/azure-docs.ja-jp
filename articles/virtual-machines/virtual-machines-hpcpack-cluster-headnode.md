@@ -6,7 +6,7 @@
  authors="dlepow"
  manager="timlt"
  editor=""
- tags="azure-service-management"/>
+ tags="azure-service-management,hpc-pack"/>
 <tags
 ms.service="virtual-machines"
  ms.devlang="na"
@@ -58,7 +58,7 @@ HPC Pack ヘッド ノードの Azure VM を作成するための大まかな手
 
     * 単純な概念実証デプロイの場合、この手順を省略し、後でヘッド ノード VM をドメイン コントローラーとして昇格できます。
 
-3. Microsoft Azure 管理ポータルまたは Azure プレビュー ポータルで、Azure Marketplace から HPC Pack 2012 R2 イメージを選択し、従来の VM を作成します。([ここ](virtual-machines-windows-tutorial-classic-portal.md)で管理ポータルの手順を参照してください。)。
+3. Azure ポータルまたは Azure プレビュー ポータルで、Azure Marketplace から HPC Pack 2012 R2 イメージを選択し、従来の VM を作成します。([ここ](virtual-machines-windows-tutorial-classic-portal.md)で Azure ポータルの手順を参照してください。)
 
     **考慮事項**
 
@@ -102,4 +102,4 @@ HPC Pack ヘッド ノードの Azure VM を作成するための大まかな手
 <!--Image references-->
 [headnode]: ./media/virtual-machines-hpcpack-cluster-headnode/headnode.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

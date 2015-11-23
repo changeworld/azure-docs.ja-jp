@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/14/2015" 
+	ms.date="11/10/2015" 
 	ms.author="tdykstra"/>
 
 # Visual Studio 2015 を使用した Azure App Service での ASP.NET API アプリの作成
@@ -25,7 +25,7 @@
 
 ## 概要
 
-このチュートリアルでは、[Visual Studio 2015 RC1](https://www.visualstudio.com/ja-jp/downloads/visual-studio-2015-downloads-vs.aspx) を使用して ASP.NET Web API 2 プロジェクトを作成し、[Azure App Service](../app-service/app-service-value-prop-what-is.md) で [API app](app-service-api-apps-why-best-platform.md)としてクラウドにデプロイできるように構成する方法について説明します。Azure へのプロジェクトのデプロイも行います。このチュートリアルの最後には、API アプリが Azure クラウドで実行するようになります。
+このチュートリアルでは、[Visual Studio 2015 RC1](https://www.visualstudio.com/ja-JP/downloads/visual-studio-2015-downloads-vs.aspx) を使用して ASP.NET Web API 2 プロジェクトを作成し、[Azure App Service](../app-service/app-service-value-prop-what-is.md) で [API app](app-service-api-apps-why-best-platform.md)としてクラウドにデプロイできるように構成する方法について説明します。Azure へのプロジェクトのデプロイも行います。このチュートリアルの最後には、API アプリが Azure クラウドで実行するようになります。
 
 このチュートリアルは、Visual Studio の**ソリューション エクスプローラー**でファイルおよびフォルダーを使用する方法を理解していることを前提としています。
 
@@ -297,4 +297,4 @@ API アプリとは本質的に、Azure が Web サービス機能用の追加�
 Visual Studio 2015 RC を使用し、API アプリを作成してデプロイしました。API アプリの詳細については、ページの左側 (ワイド ブラウザー ウィンドウの場合) またはページの上部 (幅の狭いブラウザー ウィンドウの場合) に表示される、ナビゲーション ウィンドウのエントリを参照してください。API アプリ ドキュメントのほとんどでは Visual Studio 2013 が示されていますが、UI は似ていて、記述するコードおよびポータルの UI は同じなので、ほとんどは VS 2015 でも使用できます。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

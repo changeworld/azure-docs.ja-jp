@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/26/2015"  
+	ms.date="11/08/2015"  
 	ms.author="juliako"/>
 
 
@@ -86,6 +86,10 @@
 
 - 現在、ライブ イベントの最大推奨時間は 8 時間です。チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
 - コンテンツをストリームするストリーミング エンドポイントに少なくとも 1 つのストリーミング予約ユニットがあることを確認します。
+
+##サンプルのダウンロード
+
+[ここ](http://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/)からサンプルを取得し、実行します。
 
 ##前提条件
 チュートリアルを完了するには次のものが必要です。
@@ -506,17 +510,16 @@ app.config ファイルに appSettings セクションを追加し、Media Servi
 	}	
 
 
-##次のステップ
+##次のステップ: Media Services のラーニング パス
 
-###Media Services のラーニング パス
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-AMS のラーニング パスについては、以下を参照してください。
+##フィードバックの提供
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ### 他の情報をお探しですか。
 
 このトピックに必要な情報が含まれていないか、不足しているか、あるいはニーズを満たしていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

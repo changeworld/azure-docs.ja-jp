@@ -8,7 +8,7 @@
    editor=""/>
 
    <tags
-      ms.service="marketplace-publishing"
+      ms.service="marketplace"
       ms.devlang="na"
       ms.topic="article"
       ms.tgt_pltfrm="na"
@@ -65,4 +65,4 @@ zip ファイルをアップロードしたら、[**証明書の要求**]　を�
 [link-acct-creation]: marketplace-publishing-microsoft-accounts-creation-registration.md
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

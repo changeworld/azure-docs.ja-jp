@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/28/2015"
+   ms.date="11/11/2015"
    ms.author="jgao"/>
 
 
@@ -604,7 +604,7 @@ CUME\_DIST は、値のグループにおける指定された値の相対位置
 
 - 値が 500 以下の行は 6 行あるため、CUME\_DIST は 6/6=1 となります。
 - 値が 400 以下の行は 5 行あるため、CUME\_DIST は 5/6=0.83 となります。
-- 値が 300 以下の行は 4 行あるため、CUME\_DIST は 4/6=0.66 となります。
+- 値が 300 以下の行は 4 行あるため、CUME\_DIST は 5/6=0.66 となります。
 - 値が 200 以下の行は 3 行あるため、CUME\_DIST は 3/6=0.5 となります。待機時間の値が同じ行が 2 行あります。
 - 値が 100 以下の行は 1 行あるため、CUME\_DIST は 1/6=0.16 となります。 
 
@@ -743,4 +743,4 @@ PERCENTILE\_DISC では値が補間されないため、Web の中央値は 200 
 - [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-powershell.md)
 - [Azure プレビュー ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

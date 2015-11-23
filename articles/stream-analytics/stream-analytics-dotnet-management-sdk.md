@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Stream Analytics 管理用 .NET SDK の使用方法について | Microsoft Azure" 
 	description="Stream Analytics 管理用 .NET SDK の使用分析ジョブの設定と実行方法について: プロジェクト、入力、出力、および変換を作成します。" 
-	keywords=".net skd,analytics jobs,event hub"
+	keywords=".net skd,analytics ジョブ、イベント ハブ"
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="10/06/2015" 
+	ms.date="11/06/2015" 
 	ms.author="jeffstok"/>
 
 
@@ -326,7 +326,7 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/JA-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -365,4 +365,4 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

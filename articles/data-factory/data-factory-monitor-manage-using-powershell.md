@@ -414,8 +414,6 @@
 
 Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス][cmdlet-reference]」を参照してください。
 
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-monitor-manage-using-powershell.md)でフィードバックをお寄せください。
 
 
 [adf-tutorial]: data-factory-tutorial.md
@@ -437,4 +435,4 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 [sql-management-studio]: ../sql-database-manage-azure-ssms.md#Step2
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

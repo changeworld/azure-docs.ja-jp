@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/02/2015"
+	ms.date="11/11/2015"
 	ms.author="jgao"/>
 
 #HDInsight の Hadoop での Sqoop の使用 (Windows)
@@ -39,55 +39,52 @@ HDInsight クラスターでサポートされている Sqoop のバージョン
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)
- に関するページを参照してください。Azure PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「[Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)][powershell-script]」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。Azure PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「[Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)][powershell-script]」を参照してください。
 
 - **Azure HDInsight クラスター**: クラスターのプロビジョニングの手順については、「[HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。このチュートリアルを読み進めるには、次のデータが必要です。
 
 	<table border="1">
-	<tr><th>クラスター プロパティ</th><th>Azure PowerShell 変数名</th><th>値</th><th>説明</th></tr>
-	<tr><td>HDInsight クラスター名</td><td>$clusterName</td><td></td><td>HDInsight クラスター名</td></tr>
-	<tr><td>Azure ストレージ アカウント名</td><td>$storageAccountName</td><td></td><td>HDInsight クラスターで使用できる Azure ストレージ アカウント。このチュートリアルでは、クラスターのプロビジョニング プロセス中に指定された既定のストレージ アカウントを使用します。</td></tr>
-	<tr><td>Azure BLOB コンテナー名</td><td>$containerName</td><td></td><td>この例では、既定の HDInsight クラスター ファイル システムで使用する BLOB の名前を使用します。既定では、HDInsight クラスターと同じ名前です。</td></tr>
-	</table>
+<tr><th>クラスター プロパティ</th><th>Azure PowerShell 変数名</th><th>値</th><th>説明</th></tr>
+<tr><td>HDInsight クラスター名</td><td>$clusterName</td><td></td><td>HDInsight クラスター名</td></tr>
+<tr><td>Azure ストレージ アカウント名</td><td>$storageAccountName</td><td></td><td>HDInsight クラスターで使用できる Azure ストレージ アカウント。このチュートリアルでは、クラスターのプロビジョニング プロセス中に指定された既定のストレージ アカウントを使用します。</td></tr>
+<tr><td>Azure BLOB コンテナー名</td><td>$containerName</td><td></td><td>この例では、既定の HDInsight クラスター ファイル システムで使用する BLOB の名前を使用します。既定では、HDInsight クラスターと同じ名前です。</td></tr>
+</table>
 
 - ****Azure SQL Database または Microsoft SQL Server
 
-- **Azure SQL データベース**: ワークステーションから Azure SQL データベース サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure SQL データベースの概要][sqldatabase-get-started]」を参照してください。この記事には、このチュートリアルに必要な Azure SQL データベース テーブルを作成するための Windows PowerShell スクリプトが示されています。
-
-	<table border="1">
-	<tr><th>Azure SQL データベースのプロパティ</th><th>Azure PowerShell 変数名</th><th>値</th><th>説明</th></tr>
-	<tr><td>Azure SQL データベース サーバー名</td><td>$sqlDatabaseServer</td><td></td><td>Sqoop によるデータのエクスポート先、またはインポート元になる Azure SQL データベース サーバー。</td></tr>
-	<tr><td>Azyre SQL データベースのログイン名</td><td>$sqlDatabaseLogin</td><td></td><td>Azure SQL データベースのログイン名。</td></tr>
-	<tr><td>Azure SQL データベースのログイン パスワード</td><td>$sqlDatabasePassword</td><td></td><td>Azure SQL データベースのログイン パスワード。</td></tr>
-	<tr><td>Azure SQL データベース名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop によるデータのエクスポート先、またはインポート元になる Azure SQL データベース。</td></tr>
-	</table>
-
-	> [AZURE.NOTE] 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure プレビュー ポータルから有効にする必要があります。Azure SQL データベースの作成方法とファイアウォール ルールの構成方法については、「[SQL データベースの作成と構成][sqldatabase-create-configue]」を参照してください。
-
-* **SQL Server**: HDInsight クラスターが SQL Server と同じ Azure の仮想ネットワーク上にある場合は、この記事の手順を使用して、SQL Server データベースとの間でデータをインポートおよびエクスポートできます。
-
-	> [AZURE.NOTE] HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在扱っていません。
-
-	* 仮想ネットワークを作成および構成する場合は、「[仮想ネットワークの構成タスク](../services/virtual-machines/)」を参照してください。
-
-		* SQL Server をデータセンター内で使用している場合は、仮想ネットワークを*サイト間*または*ポイント対サイト*として構成する必要があります。
-
-			> [AZURE.NOTE] **ポイント対サイト**仮想ネットワークの場合、SQL Server が VPN クライアント構成アプリケーションを実行している必要があります。このアプリケーションは、Azure 仮想ネットワーク構成の**ダッシュボード**から入手できます。
-
-		* SQL Server を Azure 仮想マシンで使用する際に、SQL Server をホストする仮想マシンが HDInsight と同じ仮想ネットワークに属している場合は、任意の仮想ネットワーク構成を使用できます。
-
-	* 仮想ネットワークに HDInsight クラスターをプロビジョニングする場合は、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
-
-	> [AZURE.NOTE] SQL Server では認証を許可する必要もあります。この記事の手順を実行するには、SQL Server ログインを使用する必要があります。
-
-	<table border="1">
-	<tr><th>SQL Server データベースのプロパティ</th><th>Azure PowerShell 変数名</th><th>値</th><th>説明</th></tr>
-	<tr><td>SQL Server name</td><td>$sqlDatabaseServer</td><td></td><td>Sqoop によるデータのエクスポート先、またはインポート元になる SQL Server。</td></tr>
-	<tr><td>SQL Server login name</td><td>$sqlDatabaseLogin</td><td></td><td>SQL Server のログイン名。</td></tr>
-	<tr><td>SQL Server ログイン パスワード</td><td>$sqlDatabasePassword</td><td></td><td>SQL Server のログイン パスワード。</td></tr>
-	<tr><td>SQL Server database name</td><td>$sqlDatabaseName</td><td></td><td>Sqoop によるデータのエクスポート先、またはインポート元になる SQL Server データベース。</td></tr>
-	</table>
+	- **Azure SQL データベース**: ワークステーションから Azure SQL データベース サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure SQL データベースの概要][sqldatabase-get-started]」を参照してください。この記事には、このチュートリアルに必要な Azure SQL データベース テーブルを作成するための Windows PowerShell スクリプトが示されています。
+	
+		<table border="1">
+<tr><th>Azure SQL データベースのプロパティ</th><th>Azure PowerShell 変数名</th><th>値</th><th>説明</th></tr>
+<tr><td>Azure SQL データベース サーバー名</td><td>$sqlDatabaseServer</td><td></td><td>Sqoop によるデータのエクスポート先、またはインポート元になる Azure SQL データベース サーバー。</td></tr>
+<tr><td>Azyre SQL データベースのログイン名</td><td>$sqlDatabaseLogin</td><td></td><td>Azure SQL データベースのログイン名。</td></tr>
+<tr><td>Azure SQL データベースのログイン パスワード</td><td>$sqlDatabasePassword</td><td></td><td>Azure SQL データベースのログイン パスワード。</td></tr>
+<tr><td>Azure SQL データベース名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop によるデータのエクスポート先、またはインポート元になる Azure SQL データベース。</td></tr>
+</table>> [AZURE.NOTE]既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure プレビュー ポータルから有効にする必要があります。Azure SQL Database の作成方法とファイアウォール ルールの構成方法については、「[SQL Database の作成と構成][sqldatabase-create-configue]」を参照してください。
+	
+	* **SQL Server**: HDInsight クラスターが SQL Server と同じ Azure の仮想ネットワーク上にある場合は、この記事の手順を使用して、SQL Server データベースとの間でデータをインポートおよびエクスポートできます。
+	
+		> [AZURE.NOTE]HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在扱っていません。
+	
+		* 仮想ネットワークを作成および構成する場合は、「[Virtual Network の構成タスク](../services/virtual-machines/)」を参照してください。
+	
+			* SQL Server をデータセンター内で使用している場合は、仮想ネットワークを*サイト間*または*ポイント対サイト*として構成する必要があります。
+	
+				> [AZURE.NOTE]**ポイント対サイト**仮想ネットワークの場合、SQL Server が VPN クライアント構成アプリケーションを実行している必要があります。このアプリケーションは、Azure 仮想ネットワーク構成の**ダッシュボード**から入手できます。
+	
+			* SQL Server を Azure 仮想マシンで使用する際に、SQL Server をホストする仮想マシンが HDInsight と同じ仮想ネットワークに属している場合は、任意の仮想ネットワーク構成を使用できます。
+	
+		* 仮想ネットワークに HDInsight クラスターをプロビジョニングする場合は、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
+	
+		> [AZURE.NOTE]SQL Server では認証を許可する必要もあります。この記事の手順を実行するには、SQL Server ログインを使用する必要があります。
+	
+		<table border="1">
+<tr><th>SQL Server データベースのプロパティ</th><th>Azure PowerShell 変数名</th><th>値</th><th>説明</th></tr>
+<tr><td>SQL Server name</td><td>$sqlDatabaseServer</td><td></td><td>Sqoop によるデータのエクスポート先、またはインポート元になる SQL Server。</td></tr>
+<tr><td>SQL Server login name</td><td>$sqlDatabaseLogin</td><td></td><td>SQL Server のログイン名。</td></tr>
+<tr><td>SQL Server ログイン パスワード</td><td>$sqlDatabasePassword</td><td></td><td>SQL Server のログイン パスワード。</td></tr>
+<tr><td>SQL Server database name</td><td>$sqlDatabaseName</td><td></td><td>Sqoop によるデータのエクスポート先、またはインポート元になる SQL Server データベース。</td></tr>
+</table>
 
 
 > [AZURE.NOTE]上のテーブルに値を入力します。そうしておくと、このチュートリアルを読み進める際に役に立ちます。
@@ -105,19 +102,19 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 - *hivesampletable* という名前の Hive テーブル。*/hive/warehouse/hivesampletable* にあるデータ ファイルを参照しています。テーブルはモバイル デバイスのデータを含んでいます。Hive テーブルのスキーマは次のとおりです。
 
 	<table border="1">
-	<tr><th>フィールド</th><th>データ型</th></tr>
-	<tr><td>clientid</td><td>string</td></tr>
-	<tr><td>querytime</td><td>string</td></tr>
-	<tr><td>market</td><td>string</td></tr>
-	<tr><td>deviceplatform</td><td>string</td></tr>
-	<tr><td>devicemake</td><td>string</td></tr>
-	<tr><td>devicemodel</td><td>string</td></tr>
-	<tr><td>state</td><td>string</td></tr>
-	<tr><td>country</td><td>string</td></tr>
-	<tr><td>querydwelltime</td><td>double</td></tr>
-	<tr><td>sessionid</td><td>bigint</td></tr>
-	<tr><td>sessionpagevieworder</td><td>bigint</td></tr>
-	</table>
+<tr><th>フィールド</th><th>データ型</th></tr>
+<tr><td>clientid</td><td>文字列</td></tr>
+<tr><td>querytime</td><td>文字列</td></tr>
+<tr><td>market</td><td>文字列</td></tr>
+<tr><td>deviceplatform</td><td>文字列</td></tr>
+<tr><td>devicemake</td><td>文字列</td></tr>
+<tr><td>devicemodel</td><td>文字列</td></tr>
+<tr><td>state</td><td>文字列</td></tr>
+<tr><td>country</td><td>文字列</td></tr>
+<tr><td>querydwelltime</td><td>double</td></tr>
+<tr><td>sessionid</td><td>bigint</td></tr>
+<tr><td>sessionpagevieworder</td><td>bigint</td></tr>
+</table>
 
 まず、*sample.log* と *hivesampletable* を Azure SQL データベースまたは SQL Server にエクスポートしてから、次のパスを使用して、モバイル デバイスのデータを含むテーブルを HDInsight にインポートして戻します。
 
@@ -402,14 +399,14 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 4. スクリプト ウィンドウの末尾に、次のスクリプトを追加します。
 
 		# Submit a Sqoop job
-		$sqoopDef = New-AzureHDInsightSqoopJobDefinition -Command "export --connect $connectionString --table $tableName_log4j --export-dir $exportDir_log4j --input-fields-terminated-by \0x20 -m 1"
-		$sqoopJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $sqoopDef #-Debug -Verbose
-		Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600 -Job $sqoopJob
+		$sqoopDef = New-AzureRmHDInsightSqoopJobDefinition -Command "export --connect $connectionString --table $tableName_log4j --export-dir $exportDir_log4j --input-fields-terminated-by \0x20 -m 1"
+		$sqoopJob = Start-AzureRmHDInsightJob -Cluster $clusterName -JobDefinition $sqoopDef #-Debug -Verbose
+		Wait-AzureRmHDInsightJob -WaitTimeoutInSeconds 3600 -Job $sqoopJob
 
 		Write-Host "Standard Error" -BackgroundColor Green
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardError
+		Get-AzureRmHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardError
 		Write-Host "Standard Output" -BackgroundColor Green
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardOutput
+		Get-AzureRmHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardOutput
 
 	フィールドの区切り記号は **\\0x20** (スペース) です。区切り記号は、sample.log ファイルの Azure PowerShell スクリプトで定義されています。**-m 1** については、[Sqoop ユーザー ガイド][sqoop-user-guide-1.4.4]を参照してください。
 
@@ -453,16 +450,16 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 
 4. スクリプト ウィンドウの末尾に、次のスクリプトを追加します。
 
-		$sqoopDef = New-AzureHDInsightSqoopJobDefinition -Command "export --connect $connectionString --table $tableName_mobile --export-dir $exportDir_mobile --fields-terminated-by \t -m 1"
+		$sqoopDef = New-AzureRmHDInsightSqoopJobDefinition -Command "export --connect $connectionString --table $tableName_mobile --export-dir $exportDir_mobile --fields-terminated-by \t -m 1"
 
 
-		$sqoopJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $sqoopDef #-Debug -Verbose
-		Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600 -Job $sqoopJob
+		$sqoopJob = Start-AzureRmHDInsightJob -Cluster $clusterName -JobDefinition $sqoopDef #-Debug -Verbose
+		Wait-AzureRmHDInsightJob -WaitTimeoutInSeconds 3600 -Job $sqoopJob
 
 		Write-Host "Standard Error" -BackgroundColor Green
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardError
+		Get-AzureRmHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardError
 		Write-Host "Standard Output" -BackgroundColor Green
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardOutput
+		Get-AzureRmHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardOutput
 
 5. **[スクリプトの実行]** をクリックするか、**F5** キーを押して、スクリプトを実行します。
 6. [プレビュー ポータル][azure-management-portal]を使用して、エクスポートされたデータを確認します。
@@ -568,15 +565,15 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 
 4. スクリプト ウィンドウの末尾に、次のスクリプトを追加します。
 
-		$sqoopDef = New-AzureHDInsightSqoopJobDefinition -Command "import --connect $connectionString --table $tableName_mobile --target-dir $targetDir_mobile --fields-terminated-by \t --lines-terminated-by \n -m 1"
+		$sqoopDef = New-AzureRmHDInsightSqoopJobDefinition -Command "import --connect $connectionString --table $tableName_mobile --target-dir $targetDir_mobile --fields-terminated-by \t --lines-terminated-by \n -m 1"
 
-		$sqoopJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $sqoopDef #-Debug -Verbose
-		Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600 -Job $sqoopJob
+		$sqoopJob = Start-AzureRmHDInsightJob -Cluster $clusterName -JobDefinition $sqoopDef #-Debug -Verbose
+		Wait-AzureRmHDInsightJob -WaitTimeoutInSeconds 3600 -Job $sqoopJob
 
 		Write-Host "Standard Error" -BackgroundColor Green
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardError
+		Get-AzureRmHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardError
 		Write-Host "Standard Output" -BackgroundColor Green
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardOutput
+		Get-AzureHDRmInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardOutput
 
 5. **[スクリプトの実行]** をクリックするか、**F5** キーを押して、スクリプトを実行します。
 6. 変更されたデータ ファイルを確認する場合は、プレビュー ポータル、Azure Storage エクスプローラー ツール、または Azure PowerShell を使用できます。「[HDInsight の概要][hdinsight-get-started]」に、Azure PowerShell を使用してファイルをダウンロードし、ファイルの内容を表示するコード例が示されています。
@@ -612,4 +609,4 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

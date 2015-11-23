@@ -93,9 +93,9 @@ ReportViewer は、適切な資格情報を使用してレポート サーバー
 
 ## ASP.NET Web アプリケーションを Azure に発行する
 
-ASP.NET Web アプリケーションを Azure に発行する手順については、「[方法:Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行](https://msdn.microsoft.com/library/azure/hh420322.aspx)」および「[Web Apps と ASP.NET の概要](../app-service-web/web-sites-dotnet-get-started.md)」を参照してください。
+ASP.NET Web アプリケーションを Azure に発行する手順については、「[方法:Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行](../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md)」および「[Web Apps と ASP.NET の概要](../app-service-web/web-sites-dotnet-get-started.md)」を参照してください。
 
->[AZURE.IMPORTANT][Azure デプロイ プロジェクトの追加] または [Azure クラウド サービス プロジェクトの追加] コマンドがソリューション エクスプローラーのショートカット メニューに表示されない場合は、必要に応じてプロジェクトの [ターゲット フレームワーク] を .NET Framework 4 に変更してください。
+>[AZURE.IMPORTANT] [Azure デプロイ プロジェクトの追加] または [Azure クラウド サービス プロジェクトの追加] コマンドがソリューション エクスプローラーのショートカット メニューに表示されない場合は、必要に応じてプロジェクトの [ターゲット フレームワーク] を .NET Framework 4 に変更してください。
 >
 >これら 2 つのコマンド機能は、実質的には同じです。インストールされている Microsoft Azure SDK のバージョンに合わせて応じて、いずれか一方のコマンドがショートカット メニューに表示されます。
 
@@ -109,4 +109,4 @@ ASP.NET Web アプリケーションを Azure に発行する手順について�
 
 [Reporting Services のレポート ビューアー制御と Microsoft Azure 仮想マシン ベースのレポート サーバー](http://download.microsoft.com/download/2/2/0/220DE2F1-8AB3-474D-8F8B-C998F7C56B5D/Reporting%20Services%20report%20viewer%20control%20and%20Azure%20VM%20based%20report%20servers.docx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

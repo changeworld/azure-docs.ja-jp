@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Service Fabric アクターの分散ネットワークおよびグラフの設計パターン"
-   description="Service Fabric アクターを使用して、分散ネットワークやグラフとしてアプリケーションをモデル化する方法に関する設計パターン"
+   pageTitle="分散ネットワークとグラフのパターン | Microsoft Azure"
+   description="Service Fabric Reliable Actors を使用して、分散ネットワークやグラフとしてアプリケーションをモデル化する方法に関する設計パターン"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -224,4 +224,4 @@ public Task PublishMessageAsync(long participantId, string message)
 [1]: ./media/service-fabric-reliable-actors-pattern-distributed-networks-and-graphs/distributedNetworks_arch1.png
 [2]: ./media/service-fabric-reliable-actors-pattern-distributed-networks-and-graphs/distributedNetworks_arch2.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

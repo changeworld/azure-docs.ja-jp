@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/28/2015"
+   ms.date="11/05/2015"
    ms.author="nitinme"/>
 
 # .NET SDK で Azure Data Lake Analytics の使用を開始する
@@ -22,6 +22,7 @@
 - [Using Portal](data-lake-store-get-started-portal.md)
 - [Using PowerShell](data-lake-store-get-started-powershell.md)
 - [Using .NET SDK](data-lake-store-get-started-net-sdk.md)
+- [Using Azure CLI](data-lake-store-get-started-cli.md)
 
 Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake の詳細については、[Azure Data Lake Store](data-lake-store-overview.md) に関するページを参照してください。
 
@@ -50,7 +51,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 5. Nuget パッケージをプロジェクトに追加します。
 
 	1. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[NuGet パッケージの管理]** をクリックします。
-	2. **[Nuget パッケージの管理]** ダイアログ ボックスで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含む]** チェック ボックスがオンになっていることを確認します。
+	2. **[Nuget パッケージの管理]** タブで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含む]** チェック ボックスがオンになっていることを確認します。
 	3. 以下のパッケージを検索してインストールします。
 	
 		* Microsoft.Azure.Common.Authentication
@@ -212,7 +213,8 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 ## Data Lake Store アカウントの他の作成方法
 
 - [Azure プレビュー ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
-- [Azure PowerShell で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md) 
+- [PowerShell で Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)
+- [Azure CLI で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-cli.md)
 
 
 ## 次のステップ
@@ -221,4 +223,4 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 - [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

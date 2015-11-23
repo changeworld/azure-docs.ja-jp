@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="インデクサーを使用した Azure Search への Azure SQL Database の接続 | Microsoft Azure" 
+	pageTitle="インデクサーを使用した Azure Search への Azure SQL Database の接続 | Microsoft Azure | ホスト型クラウド検索サービス" 
 	description="インデクサーを使用して Azure SQL Database から Azure Search インデックスにデータを取得する方法について説明します。" 
 	services="search" 
 	documentationCenter="" 
@@ -279,4 +279,4 @@ A: はい。インデクサーは検索サービス内のノードの 1 つで�
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

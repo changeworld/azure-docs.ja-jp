@@ -5,15 +5,15 @@
    documentationCenter=""
    authors="BrucePerlerMS"
    manager="mbaldwin"
-   editor="mbaldwin" />
+   editor="bruceper" />
 <tags
    ms.service="key-vault"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/22/2015"
-   ms.author="mbaldwin" />
+   ms.date="11/06/2015"
+   ms.author="bruceper" />
 
 # Azure Key Vault 開発者ガイド
 
@@ -33,21 +33,11 @@ Key Vault に対する操作は、Azure Active Directory によって認証さ�
 
 ## Key Vault のプログラミング
 
-プログラマー向けの Key Vault 管理システムは、REST を基盤とするさまざまなインターフェイスで構成されます。REST リファレンスの記事「[キーとシークレットについて](https://msdn.microsoft.com/library/azure/dn903623.aspx)」に、中心的な概念の説明があります。
+プログラマー向けの Key Vault 管理システムは、REST を基盤とするさまざまなインターフェイスで構成されます。[Key Vault REST API リファレンス](https://msdn.microsoft.com/library/azure/dn903609.aspx)
 
-### REST ()
-
-REST API は、Key Vault とのすべてのプログラムによる対話のベースです。
-
-Key Vault には、「[Key Vault REST API リファレンス](https://msdn.microsoft.com/library/azure/dn903609.aspx)」で説明する独自の REST エンドポイントがあります。
-
-### .NET
-
-.NET API は、C# プログラミング モデルによる実装を、REST エンドポイントとの直接的な対話なしで実現できるラッパー セットです。「[Azure Key Vault .NET クライアント API リファレンス](https://msdn.microsoft.com/library/azure/dn903301.aspx)」を参照してください。
-
-### Node.js
-
-Node.js API は、node.js プログラミング モデルによる実装を、REST エンドポイントとの直接的な対話なしで実現できるラッパー セットです。「[Microsoft Azure SDK for Node.js - Key Vault Management (Microsoft Azure SDK for Node.js - Key Vault 管理)](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest/)」を参照してください。
+|[![.NET](./media/key-vault-developers-guide/net.png)](https://msdn.microsoft.com/library/azure/dn903301.aspx)|[![Node.js](./media/key-vault-developers-guide/nodejs.png)](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
+|:--:|:--:|
+|[.NET](https://msdn.microsoft.com/library/azure/dn903301.aspx)|[Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
 
 ## Key Vault の管理
 
@@ -67,5 +57,12 @@ Azure Key Vault コンテナー (資格情報コンテナー) は、次の記事
 ## 例
 
 - 次のダウンロードには、サンプル アプリケーション (HelloKeyVault) と、Azure Web サービスの例の両方が含まれています。[Azure Key Vault のコード サンプル](http://www.microsoft.com/download/details.aspx?id=45343)
+- このチュートリアルを使用すると、Azure の Web アプリケーションから Azure Key Vault を使用する方法について学習できます。[Web アプリケーションからの Azure Key Vault の使用](key-vault-use-from-web-application.md)
 
-<!---HONumber=Nov15_HO2-->
+## 対応ライブラリ
+
+- [Microsoft Azure Key Vault Core Library](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/1.0.0): 識別子からキーを検索し、キーを使用して操作を実行する、IKey および IKeyResolver インターフェイスを提供します。
+
+- [Microsoft Azure Key Vault Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/1.0.0): Azure Key Vault の拡張機能を提供します。
+
+<!---HONumber=Nov15_HO3-->

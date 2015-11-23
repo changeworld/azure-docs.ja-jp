@@ -19,11 +19,11 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 サービス名前空間を作成するには:
 
-1.  [Azure 管理ポータル][]へのログオン
+1.  [Azure ポータル][]にログオンします。
 
-2.  管理ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
+2.  ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
-3.  管理ポータルの下のウィンドウの **[作成]** をクリックします。![](./media/service-bus-java-how-to-create-queue/sb-queues-03.png)
+3.  ポータルの下のウィンドウで、**[作成]** をクリックします。![](./media/service-bus-java-how-to-create-queue/sb-queues-03.png)
 
 4.  **[新しい名前空間を追加する]** ダイアログで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。![](./media/service-bus-java-how-to-create-queue/sb-queues-04.png)
 
@@ -35,11 +35,11 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 	![](./media/service-bus-java-how-to-create-queue/getting-started-multi-tier-27.png)
 
-作成した名前空間はアクティブになるまで少し時間がかかります。その後、管理ポータルに表示されます。名前空間のステータスが **[アクティブ]** になるのを待ってから、次に進みます。
+作成した名前空間はアクティブになるまで少し時間がかかります。その後、Azure ポータルに表示されます。名前空間のステータスが **[アクティブ]** になるのを待ってから、次に進みます。
 
 ## 名前空間の既定の管理資格情報の取得
 
-新規作成した名前空間に対してキューの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。これらの資格情報は Azure 管理ポータルから取得できます。
+新規作成した名前空間に対してキューの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。これらの資格情報は Azure ポータルから取得できます。
 
 ###ポータルから管理資格情報を取得するには
 
@@ -51,9 +51,8 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 4.  プライマリ キーを書き留めておくか、クリップボードにコピーしておいてください。
 
-  [Azure Management Portal]: http://manage.windowsazure.com
-  [Azure 管理ポータル]: http://manage.windowsazure.com
+  [Azure ポータル]: http://manage.windowsazure.com
 
   [34]: ./media/service-bus-java-how-to-create-queue/VSProperties.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->
