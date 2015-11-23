@@ -28,7 +28,7 @@
 
         SendDeviceToCloudInteractiveMessagesAsync();
 
-> [AZURE.NOTE]わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。実稼働のコードでは、MSDN 記事 (一時的な障害処理) で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
+> [AZURE.NOTE]わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。実稼働のコードでは、MSDN 記事 [一時的な障害処理](https://msdn.microsoft.com/JA-JP/library/hh680901(v=pandp.50).aspx) で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
 <!-- Links -->
 [IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md

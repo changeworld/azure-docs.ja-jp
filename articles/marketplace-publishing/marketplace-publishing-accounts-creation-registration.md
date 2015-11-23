@@ -19,10 +19,10 @@
 # Microsoft の販売者アカウントの作成
 この記事では、Azure Marketplace 向けの承認済みの Microsoft 販売者になるために必要な登録とアカウントの作成について説明します。
 
-## 1\.Microsoft アカウント (MSA) を作成する
+## 1.Microsoft アカウント (MSA) を作成する
 > [AZURE.WARNING]発行プロセスを完了するには、Microsoft アカウントを作成する必要があります。このアカウントは、発行ポータルと販売者ダッシュボードの両方の登録とログインで使用します。複数の Azure Marketplace サービスに対して 1 つの Microsoft アカウントを使用してください。各サービスおよびプラン に対し、個別のアカウントを作成する必要はありません。
 
-ユーザー名が含まれたアドレスは、貴社のドメインか IT チームで管理する必要があります (publishing@yourcompany.com) など)。支払いや税金に関する情報、またレポートは、このアカウントを通じて配信されます。
+ユーザー名が含まれたアドレスは、貴社のドメインか IT チームで管理する必要があります (publishing@yourcompany.com など)。支払いや税金に関する情報、またレポートは、このアカウントを通じて配信されます。
 
   >[AZURE.WARNING]"Azure" といった単語と同様に、MSA アカウントの登録では、"Microsoft" は使用できません。アカウントの作成および登録プロセスを完了するには、これらの単語を使用しないでください。
 
@@ -47,7 +47,7 @@
 
 > [AZURE.IMPORTANT]DL を使用することで、複数の人々へ、支払い情報の重要なレポートを送信し、MSA の所有権を確実に転送し、1 人のユーザーに関連付けられていないことを保証することができます。
 
-## 2\.販売者ダッシュボード アカウントの作成
+## 2.販売者ダッシュボード アカウントの作成
 Microsoft Seller Dashboard は、会社情報の登録に 1 回使用されます。登録者は、合法的な企業の代表者である必要があります。また、ID を検証する方法として、個人情報を提供する必要があります。登録時に、ユーザーは、会社用に共有されている Microsoft アカウント (MSA) を使用する必要があり、Azure 発行ポータルで、同じアカウントを使用する必要があります。作成する前に、販売者ダッシュボードのアカウントを会社が既に所有していないことを確認してください。このプロセスでは、銀行口座の情報、税情報、および会社の住所情報が収集されます。通常、これらは財務またはビジネス用連絡先から取得できます。
 
 > [AZURE.IMPORTANT]プランの作成およびデプロイメントのさまざまなフェーズを進めるために、次のような販売者プロファイル コンポーネントを入力する必要があります。
@@ -142,7 +142,7 @@ Microsoft Seller Dashboard は、会社情報の登録に 1 回使用されま�
 
 > [AZURE.WARNING]販売者ダッシュ ボード アカウントで税金および銀行口座情報の入力を完了することなく、実稼働環境で商用プランを進めることはできません。
 
-## 3\.発行ポータルでアカウントを登録します。
+## 3.発行ポータルでアカウントを登録します。
 Azure 発行ポータルは、プランの発行及び管理に使用されます。発行ポータルでは、プランの作成プロセスで役に立つ、有用な情報を検索することができます。
 
 > [AZURE.WARNING]ここでは、販売者ダッシュ ボードの登録で使用されている会社の同じ Microsoft アカウントを使用する必要があります。マスター発行者アカウントの作成を支援するため、さらにユーザーを追加できます。
@@ -154,11 +154,16 @@ Azure 発行ポータルは、プランの発行及び管理に使用されま�
 
   >[AZURE.TIP]参加ポリシーについては、[こちら](http://azure.microsoft.com/support/legal/marketplace/participation-policies/)を参照してください。
 
-  > 販売者の登録操作で問題が発生した場合は、次の手順でサポート チケットをログしてください。 1. [サポート](http://go.microsoft.com/fwlink?LinkId=272975)に問い合わせる。 2. **[Seller Dashboard registration and your account]** を選択する。 3. **[Registering for a developer account]** を選択する。 4.**[連絡方法]** を選択する。
+  > 販売者の登録操作で問題が発生した場合は、次の手順でサポート チケットをログしてください。
+  1. [サポート](http://go.microsoft.com/fwlink?LinkId=272975)に問い合わせる。
+  2. **[Seller Dashboard registration and your account]** を選択する。
+  3. **[Registering for a developer account]** を選択する。
+  4. **[連絡方法]** を選択する。
 
 ### 「販売元」の国
 
-> [AZURE.WARNING]Microsoft Azure Marketplace でサービスを販売するには、登録済みエンティティが承認されたいずれかの「販売元」の国からのものである必要があります。この制限は、支払いおよび課税上の理由から生じます。近い将来、このような国がさらに拡大されるように積極的に取り組んでいますので、しばらくお待ちください。完全なリストについては、[http://go.microsoft.com/fwlink/?LinkID=526833](http://go.microsoft.com/fwlink/?LinkID=526833) でリンクされるドキュメントのセクション 1b をご覧ください。
+> [AZURE.WARNING]
+Microsoft Azure Marketplace でサービスを販売するには、登録済みエンティティが承認されたいずれかの「販売元」の国からのものである必要があります。この制限は、支払いおよび課税上の理由から生じます。近い将来、このような国がさらに拡大されるように積極的に取り組んでいますので、しばらくお待ちください。完全なリストについては、[http://go.microsoft.com/fwlink/?LinkID=526833](http://go.microsoft.com/fwlink/?LinkID=526833) でリンクされるドキュメントのセクション 1b をご覧ください。
 
 
 
@@ -166,7 +171,12 @@ Azure 発行ポータルは、プランの発行及び管理に使用されま�
 ## 次のステップ
 これで、アカウントが作成され、登録されました。Azure Marketplace に発行したいアーティファクトのタイプ (仮想マシン、開発者サービス、データ サービス、ソリューション テンプレート) をクリックします。それぞれのプランを発行する方法については、次の記事のいずれかを参照してください。
 
-||仮想マシン イメージ |開発者サービス |データ サービス |ソリューション テンプレート | |----|-----|-----|-----|-----| |**手順 2: プランを作成する** |[技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| [技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| [技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| [技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| || [VM イメージの技術的な前提条件][link-single-vm-prereq] |開発者サービスの技術的な前提条件 | データ サービスの技術的な前提条件 | [ソリューション テンプレートの技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md) | || [VM イメージの発行ガイド][link-single-vm] |開発者向けサービスの発行ガイド | データ サービスの発行ガイド | [ソリューション テンプレートの発行ガイド](marketplace-publishing-solution-template-creation.md) | || [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] |
+||仮想マシン イメージ |開発者サービス |データ サービス |ソリューション テンプレート |
+|----|-----|-----|-----|-----|
+|**手順 2: プランを作成する** |[技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| [技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| [技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| [技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)|
+|| [VM イメージの技術的な前提条件][link-single-vm-prereq] |開発者サービスの技術的な前提条件 | データ サービスの技術的な前提条件 | [ソリューション テンプレートの技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md) |
+|| [VM イメージの発行ガイド][link-single-vm] |開発者向けサービスの発行ガイド | データ サービスの発行ガイド | [ソリューション テンプレートの発行ガイド](marketplace-publishing-solution-template-creation.md) |
+|| [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] |
 
 ## 関連項目
 - [Getting Started: How to publish an offer to the Azure Marketplace (概要: Azure Marketplace へのプランの発行方法)](marketplace-publishing-getting-started.md)

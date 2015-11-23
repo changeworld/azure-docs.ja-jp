@@ -89,7 +89,7 @@ Azure Search には HTTPS でのみアクセスできます。
 
 **ドキュメント**にはフィールドと関連付けられている属性が含まれています。フィールドには検索可能テキスト、フィルターとスコアリング プロファイルで主に (あるいは排他的に) 使用される値、そして多くの場合、画像など、他のデータ ストアのコンテンツの URL またはポインターが含まれます。多くの検索アプリケーションで複数のストレージ形態が利用されています。画像と動画は、Azure BLOB ストレージなど、他のストレージ メディアに保管すればコストが減ります。
 
-**インデクサー**を利用し、Azure SQL Database、Azure VM の SQL Server、Azure DocumentDB で変更されたデータのインデックス更新をスケジュールできます。詳細については、「インデクサー操作 (Azure Search サービス REST API (https://msdn.microsoft.com/library/azure/dn946891.aspx))」を参照してください。
+**インデクサー**を利用し、Azure SQL Database、Azure VM の SQL Server、Azure DocumentDB で変更されたデータのインデックス更新をスケジュールできます。詳細については、「[インデクサー操作 (Azure Search サービス REST API)]((https://msdn.microsoft.com/library/azure/dn946891.aspx)」 を参照してください。
 
 **クエリ**はブール型フィルターの場合は OData 構文で、全文検索の場合は簡単なクエリ構文で作成できます。詳細については、「[Azure Search の OData 式の構文](https://msdn.microsoft.com/library/azure/dn798921.aspx)」と「[Azure Search の簡単なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)」を参照してください。
 
