@@ -15,7 +15,7 @@
     ms.tgt_pltfrm="na" 
     ms.workload="data-services" 
     ms.date="10/05/2015" 
-    ms.author="mimig"/>
+    ms.author="arramac"/>
 
 
 # DocumentDB インデックス作成ポリシー
@@ -769,4 +769,4 @@ JSON 仕様に次の変更が実装されました。
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

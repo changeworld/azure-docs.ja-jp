@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Microsoft Azure で検索サービスを管理する | Microsoft Azure" 
+	pageTitle="Microsoft Azure で検索サービスを管理する | Microsoft Azure | ホスト型クラウド検索サービス" 
 	description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search を管理します" 
 	services="search" 
 	documentationCenter="" 
@@ -193,4 +193,4 @@ Azure Search の観点から、ロールベースのアクセス制御は次の�
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

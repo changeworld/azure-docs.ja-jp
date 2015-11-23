@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="10/29/2015"
+   ms.date="11/11/2015"
    ms.author="v-sharos"/>
 
 # StorSimple のセキュリティとデータの保護
@@ -167,7 +167,6 @@ StorSimple デバイスは、データの保存先をその使用頻度に応じ
 - StorSimple Manager サービスでクラウド ストレージ暗号化キーを入力すると、サービス データ暗号化キーの公開部分を使ってそのキーが暗号化され、デバイスに送信されます。
 - クラウド ストレージ暗号化キーはサービス内のどこにも保存されません。クラウド ストレージ暗号化キーを把握するのはデバイスだけです。
 - クラウド ストレージ暗号化キーの指定は任意です。あらかじめホストで暗号化されたデータをデバイスに送信することができます。
-- クラウド ストレージ暗号化キーは四半期に 1 回ローテーションさせることをお勧めします。ただし、キーのローテーションは強制されません。
 
 ### セキュリティに関するその他のベスト プラクティス
 
@@ -267,7 +266,7 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 ## 次のステップ
 
-[StorSimple デバイスをデプロイします](storsimple-deployment-walkthrough.md)。
+[StorSimple デバイスをデプロイする](storsimple-deployment-walkthrough.md)
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

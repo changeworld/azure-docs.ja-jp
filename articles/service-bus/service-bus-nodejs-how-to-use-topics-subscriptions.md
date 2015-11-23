@@ -69,7 +69,7 @@ Azure モジュールは、Service Bus に接続するために必要な情報�
 
 Azure Cloud Service の構成ファイルで環境変数を設定する例については、[Storage を使用する Node.js Cloud Service に関するトピック][]を参照してください。
 
-Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Storage 使用する Node.js Web アプリケーション][]」を参照してください。
+Azure Web サイトの Azure ポータルで環境変数を設定する例については、[Storage を使用する Node.js Web アプリケーション][]に関するトピックを参照してください。
 
 ## トピックを作成する
 
@@ -292,7 +292,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 ## トピックとサブスクリプションを削除する
 
-トピックとサブスクリプションは永続的であり、Microsoft Azure 管理ポータルまたはプログラムによって明示的に削除する必要があります。次の例では、`MyTopic` という名前のトピックを削除する方法を示します。
+トピックおよびサブスクリプションは永続的であり、Azure ポータルまたはプログラムによって明示的に削除する必要があります。次の例では、`MyTopic` という名前のトピックを削除する方法を示します。
 
     serviceBusService.deleteTopic('MyTopic', function (error) {
         if (error) {
@@ -324,7 +324,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
   [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
   [Storage を使用する Node.js Cloud Service に関するトピック]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-  [Storage 使用する Node.js Web アプリケーション]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
+  [Storage を使用する Node.js Web アプリケーション]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

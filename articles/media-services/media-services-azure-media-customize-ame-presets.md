@@ -294,7 +294,7 @@ Media Services Encoder は、一連のビデオの結合をサポートします
 	     </Sources>
 	</MediaFile>
 
-結合する各ビデオについて、<Source> 要素を <Sources> 要素に追加します。各 <Source> 要素に <Clips> 要素を 1 つ含めます。各 <Clips> 要素には、1 つまたは複数の <Clip> 要素を含めます。この要素で開始時刻と終了時刻を指定して、出力資産に結合するビデオの長さを指定します。<Source> 要素で、機能する資産を参照します。参照の形式は、結合するビデオが別々の資産と 1 つの資産のどちらに含まれているかよって異なります。ビデオ全体を結合する場合は、<Clips> 要素を省略します。
+結合する各ビデオについて、<Source> 要素を <Sources> 要素に追加します。各 <Source> 要素に <Clips> 要素を 1 つ含めます。各 <Clips> 要素には、1 つまたは複数の <Clip> 要素を含めます。この要素で開始時刻と終了時刻を指定して、出力資産に結合するビデオの長さを指定します。<Source> 要素で、機能するアセットを参照します。参照の形式は、結合するビデオが別々の資産と 1 つの資産のどちらに含まれているかよって異なります。ビデオ全体を結合する場合は、<Clips> 要素を省略します。
 
 ###複数の資産からのビデオの結合
 
@@ -505,16 +505,17 @@ Media Services Encoder は、一連のビデオの結合をサポートします
 		// Launch the job. 
 		job.Submit();
 
+
 ##Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
 
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ##関連項目
 
 [Azure メディア エンコーダーの XML スキーマ](https://msdn.microsoft.com/library/azure/dn584702.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

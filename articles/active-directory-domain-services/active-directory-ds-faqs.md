@@ -30,7 +30,7 @@ Azure AD Domain Services を構成または管理する際に生じる一般的�
 いいえ。1 つの Azure AD ディレクトリに対して Azure AD Domain Services によって対応されるドメインは 1 つだけ作成できます。
 
 #### Azure AD Domain Services をサブスクリプション内の複数の仮想ネットワークで利用できまですか。
-このサービスそのものが、そのようなシナリオを直接サポートすることはありません。Azure AD Domain Services は一度に 1 つの仮想ネットワークでのみ利用できます。ただし、Azure AD Domain Services を他の仮想ネットワークに公開するために複数の仮想ネットワーク間の接続を構成できます。記事「[Azure で仮想ネットワークに接続する](../vpn-gateway/virtual-networks-configure-vnet-to-vnetconnection.md)」の説明に従って、これを実行できます。
+このサービスそのものが、そのようなシナリオを直接サポートすることはありません。Azure AD Domain Services は一度に 1 つの仮想ネットワークでのみ利用できます。ただし、Azure AD Domain Services を他の仮想ネットワークに公開するために複数の仮想ネットワーク間の接続を構成できます。記事「[Azure で仮想ネットワークに接続する](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)」の説明に従って、これを実行できます。
 
 #### PowerShell を使用して Azure AD ドメイン サービスを有効にできますか。
 PowerShell/Azure AD Domain Services の自動デプロイは、現時点では利用できません。
@@ -68,4 +68,4 @@ Azure AD Domain Services を利用できる Azure のリージョンの一覧に
 #### Azure AD Domain Services はいつ一般公開される予定ですか。
 現時点では、このサービスの一般公開予定は決まっていません。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

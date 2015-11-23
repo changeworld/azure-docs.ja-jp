@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/09/2015"
+   ms.date="11/06/2015"
    ms.author="larryfr"/>
 
 # HDInsight での Pig と Hadoop の使用
@@ -42,6 +42,8 @@ Pig Latin ではユーザー定義関数 (UDF) もサポートされています
 Pig Latin の詳細については、「[Pig Latin Reference Manual 1](http://pig.apache.org/docs/r0.7.0/piglatin_ref1.html)」および「[Pig Latin Reference Manual 2](http://pig.apache.org/docs/r0.7.0/piglatin_ref2.html)」を参照してください。
 
 Pig での UDF の使用例については、以下のドキュメントを参照してください。
+
+* [HDInsight における DataFu と Pig の使用](hdinsight-hadoop-use-pig-datafu-udf.md) - DataFu は Apacheによって管理される便利な UDF のコレクションです。
 
 * [HDInsight における Python と Pig および Hive の使用](hdinsight-python.md)
 
@@ -104,7 +106,7 @@ SQL Server Integration Services (SSIS) を利用して Pig ジョブを実行す
 - [Azure サブスクリプション接続マネージャー][connectionmanager]
 
 
-Azure Feature Pack for SSIS の詳細は[ここ][ssispack]にあります。
+Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を参照してください。
 
 
 ##<a id="nextsteps"></a>次のステップ
@@ -120,9 +122,9 @@ Azure Feature Pack for SSIS の詳細は[ここ][ssispack]にあります。
 [apachepig-home]: http://pig.apache.org/
 [putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 [curl]: http://curl.haxx.se/
-[pigtask]: http://msdn.microsoft.com/ja-jp/library/mt146781(v=sql.120).aspx
-[connectionmanager]: http://msdn.microsoft.com/ja-jp/library/mt146773(v=sql.120).aspx
-[ssispack]: http://msdn.microsoft.com/ja-jp/library/mt146770(v=sql.120).aspx
+[pigtask]: http://msdn.microsoft.com/ja-JP/library/mt146781(v=sql.120).aspx
+[connectionmanager]: http://msdn.microsoft.com/ja-JP/library/mt146773(v=sql.120).aspx
+[ssispack]: http://msdn.microsoft.com/ja-JP/library/mt146770(v=sql.120).aspx
 
 [hdinsight-storage]: ../hdinsight-use-blob-storage.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
@@ -144,4 +146,4 @@ Azure Feature Pack for SSIS の詳細は[ここ][ssispack]にあります。
 [image-hdi-pig-powershell]: ./media/hdinsight-use-pig/hdi.pig.powershell.png
 [image-hdi-pig-architecture]: ./media/hdinsight-use-pig/HDI.Pig.Architecture.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

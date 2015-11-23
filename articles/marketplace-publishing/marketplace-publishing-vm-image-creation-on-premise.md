@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-  ms.service="marketplace-publishing"
+  ms.service="marketplace"
   ms.devlang="na"
   ms.topic="article"
   ms.tgt_pltfrm="Azure"
@@ -138,4 +138,4 @@ PowerShell の [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495
 - [Marketplace 向けの仮想マシン イメージの作成](marketplace-publishing-vm-image-creation.md)
 - [Azure PowerShell の設定](marketplace-publishing-powershell-setup.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

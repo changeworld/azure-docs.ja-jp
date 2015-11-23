@@ -67,13 +67,64 @@ Data Factory のダイアグラム ビューを表示するには、Data Factory
 
 Data Factory のデータセット スライスは、次のいずれかの状態になります。
 
-状態 | 副状態 | 説明
------- | ---------- | -----------
-待機中 | ScheduledTime<br/>DatasetDependencies<br/>ComputeResources<br/>ConcurrencyLimit<br/>ActivityResume<br/>Retry<br/>Validation<br/>ValidationRetry | 実行前の事前条件が満たされるのを待機しています。スライスが何を待機しているのかは、副状態を見るとわかります。
-In-Progress | Starting<br/>Configuring<br/>Allocating Resources<br/>Running<br/>Validating | 現在、アクティビティは実行中であり、特定のスライスのデータを生成/検証しています。
-Failed | | スライスの処理は失敗しました。失敗の原因は、エラー ログを見るとわかります。
-Ready | | スライスの処理は成功しました。スライスは使用可能な状態です。
-Skip | | このスライスは処理しません。
+<table>
+<tr>
+	<th align="left">状態</th><th align="left">下位状態</th><th align="left">説明</th>
+</tr>
+<tr>
+	<td rowspan="8">待機中</td><td>ScheduleTime</td><td>スライスを実行する時刻になっていません。</td>
+</tr>
+<tr>
+<td>DatasetDependencies</td><td>アップ ストリームの依存関係の準備ができていません。</td>
+</tr>
+<tr>
+<td>ComputeResources</td><td>コンピューティング リソースが使用できません。</td>
+</tr>
+<tr>
+<td>ConcurrencyLimit</td> <td>すべてのアクティビティ インスタンスが、他のスライスを実行しています。</td>
+</tr>
+<tr>
+<td>ActivityResume</td><td>アクティビティは一時停止しており、再開されるまでスライスを実行することはできません。</td>
+</tr>
+<tr>
+<td>Retry</td><td>アクティビティの実行が再試行されます。</td>
+</tr>
+<tr>
+<td>検証</td><td>検証がまだ開始されていません。</td>
+</tr>
+<tr>
+<td>ValidationRetry</td><td>検証の再試行を待機しています。</td>
+</tr>
+<tr>
+&lt; tr
+<td rowspan="2">InProgress</td><td>Validating</td><td>検証を実行中です。</td>
+</tr>
+<td></td>
+<td>スライスの処理中です。</td>
+</tr>
+<tr>
+<td rowspan="4">Failed</td><td>TimedOut</td><td>アクティビティで許可されている実行時間を超過しました。</td>
+</tr>
+<tr>
+<td>Canceled</td><td>ユーザーの操作によって取り消されました。</td>
+</tr>
+<tr>
+<td>検証</td><td>検証が失敗しました。</td>
+</tr>
+<tr>
+<td></td><td>スライスの生成、またはスライスの検証に失敗しました。</td>
+</tr>
+<td>Ready</td><td></td><td>スライスは使用可能な状態です。</td>
+</tr>
+<tr>
+<td>Skipped</td><td></td><td>スライスは実行されていません。</td>
+</tr>
+<tr>
+<td>なし</td><td></td><td>別のステータスで存在していたが、リセットされたスライスです。</td>
+</tr>
+</table>
+
+
 
 **[最近更新されたスライス]** ブレードでスライスのエントリをクリックすると、スライスに関する詳細が表示されます。
 
@@ -471,8 +522,4 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 	Parameters        :
 	Outputs           
 
-
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-monitor-manage-pipelines.md)でフィードバックをお寄せください。
-
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

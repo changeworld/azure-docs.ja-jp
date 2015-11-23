@@ -19,7 +19,7 @@
 
 # リソース マネージャーと PowerShell で Windows VM を作成する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-create-windows-powershell-service-manager.md)。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-ps-create-preconfigure-windows-vms.md)。
 
 このトピックでは、Azure リソース マネージャーと PowerShell を使用して Windows ベースの Azure 仮想マシンを短時間で作成する方法について説明します。
 
@@ -131,10 +131,10 @@ Azure データセンターの場所を指定する必要があります。Azure
 
 [リソース マネージャー テンプレートと PowerShell で Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-resource-manager-template-simple.md)
 
-[PowerShell と Azure サービス管理で Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-service-manager.md)
+[Powershell とクラシック デプロイ モデルを使用して Windows 仮想マシンを作成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

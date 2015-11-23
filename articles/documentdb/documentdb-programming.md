@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/18/2015" 
+	ms.date="11/11/2015" 
 	ms.author="andrl"/>
 
 # DocumentDB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
@@ -901,7 +901,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 
 ## サンプル コード
 
-その他のサーバー側のコード例 ([アップデート](https://github.com/Azure/azure-documentdb-js/blob/master/server-side/samples/stored-procedures/upsert.js)、[一括削除](https://github.com/Azure/azure-documentdb-js/blob/master/server-side/samples/stored-procedures/bulkDelete.js)、[更新](https://github.com/Azure/azure-documentdb-js/blob/master/server-side/samples/stored-procedures/update.js)など) は、[Github リポジトリ](https://github.com/Azure/azure-documentdb-js/tree/master/server-side/samples)で確認できます。
+その他のサーバー側のコード例 ([アップデート](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/upsert.js)、[一括削除](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js)、[更新](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)など) は、[Github リポジトリ](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)で確認できます。
 
 あなたのストアド プロシージャも共有しませんか? プル要求をお送りください。
 
@@ -919,4 +919,4 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 -	[サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 -	[Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

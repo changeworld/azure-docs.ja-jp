@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/15/2015"
-	ms.author="billmath"/>
+	ms.date="11/12/2015"
+	ms.author="billmath;andkjell"/>
 
 # Azure AD Connect でのデバイスの書き戻しの有効化
 
@@ -24,58 +24,48 @@ AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利�
 
 これにより、セキュリティが強化され、アプリケーションへのアクセスが信頼されたデバイスに対してのみ許可されることが保証されます。条件付きアクセスの詳細については、「[条件付きアクセス ポリシーを使用したリスクの管理](active-directory-conditional-access.md)」および「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](https://msdn.microsoft.com/library/azure/dn788908.aspx)」をご覧ください。
 
->[AZURE.Note]Azure Active Directory Device Registration Service の条件付きアクセス ポリシーに登録されているデバイスを使用する場合は、Office 365 または Azure AD Premium のサブスクリプションが必要になります。これには、Active Directory フェデレーション サービス (AD FS) によってオンプレミス リソースに適用されるポリシーが含まれます。
+>[AZURE.NOTE]Azure Active Directory Device Registration Service の条件付きアクセス ポリシーに登録されているデバイスを使用する場合は、Office 365 または Azure AD Premium のサブスクリプションが必要になります。これには、Active Directory フェデレーション サービス (AD FS) によってオンプレミス リソースに適用されるポリシーが含まれます。
 
-## パート 1: Azure AD Connect を準備する
+## パート 1: Azure AD Connect のインストール
+1. カスタム設定または簡単設定を使用して Azure AD Connect をインストールします。すべてのユーザーとグループの同期に成功してから、デバイスの書き戻しを有効にすることをお勧めします。
+
+## パート 2: Active Directory の準備
 デバイスの書き戻しの使用を準備するには、次の手順を使用します。
 
 1.	Azure AD Connect がインストールされているコンピューターから、管理者特権モードで PowerShell を起動します。
 
 2.	Active Directory PowerShell モジュールがインストールされていない場合。次のコマンドを使用してインストールします。
 
-	Install-WindowsFeature –Name AD-DOMAIN-Services –IncludeManagementTools
+	`Install-WindowsFeature –Name AD-DOMAIN-Services –IncludeManagementTools`
 
 3.	エンタープライズ管理者の資格情報で次のコマンドを実行した後、PowerShell を終了します。
 
-	Import-Module ‘C:\\Program Files\\Microsoft Azure Active Directory Connect\\AdPrep\\AdSyncAdPrep.psm1’
+	`Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'`
 
-	Initialize-ADSyncDeviceWriteback –DomainName <name> -AdConnectorAccount <account>
+	`Initialize-ADSyncDeviceWriteback {Optional:–DomainName [name] Optional:-AdConnectorAccount [account]}`
+
+
+![Powershell](./media/active-directory-aadconnect-get-started-custom-device-writeback/powershell.png)
 
 説明:
 
-
-
-- CN=Device Registration Configuration,CN=Services,CN=Configureation,<forest-dn> の下にコンテナーとオブジェクトが存在しない場合は、新しく作成されて構成されます。
-
-
-
-- CN=RegisteredDevices,<domain-dn> の下にコンテナーとオブジェクトが存在しない場合は、新しく作成されて構成されます。このコンテナーにデバイス オブジェクトが作成されます。
-
-
-
+- CN=Device Registration Configuration,CN=Services,CN=Configuration,[forest-dn] の下にコンテナーとオブジェクトが存在しない場合は、新しく作成されて構成されます。
+- CN=RegisteredDevices,[domain-dn] の下にコンテナーとオブジェクトが存在しない場合は、新しく作成されて構成されます。このコンテナーにデバイス オブジェクトが作成されます。
 - Active Directory でデバイスを管理するために必要なアクセス許可を Azure AD コネクタ アカウントに設定します。
-
-
-
 - Azure AD Connect が複数のフォレストにインストールされている場合であっても、1 つのフォレストで実行すれば十分です。
 
 パラメーター:
 
-
 - DomainName: デバイス オブジェクトが作成される Active Directory ドメイン。注: 特定の Active Directory フォレストのデバイスはすべて、1 つのドメインに作成されます。
+- AdConnectorAccount: ディレクトリ内のオブジェクトを管理するために Azure AD Connect によって使用される Active Directory アカウント。Azure AD Connect Sync が AD に接続するために使用するアカウントです。簡単設定を使用してインストールした場合、アカウントには MSOL\_ というプレフィックスが付きます。
 
-
-- AdConnectorAccount: ディレクトリ内のオブジェクトを管理するために Azure AD Connect によって使用される Active Directory アカウント。
-
-## パート 2: デバイスの書き戻しを有効にする
+## パート 3: Azure AD Connect でのデバイスの書き戻しを有効にする
 Azure AD Connect でデバイスの書き戻しを有効にするには、次の手順を使用します。
 
-1.	AAD Connect ウィザードを実行します。ウィザードを初めて使用する場合は、[簡単設定] 画面で [カスタマイズ] を選択してカスタム インストールを実行します。 ![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback1.png)
-2.	初めてではない場合は、[追加のタスク] ページで [同期オプションのカスタマイズ] を選択し、[次へ] をクリックします。 ![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback2.png)
-3.	[オプション機能] ページで、デバイスの書き戻しを変更できるようになります。Azure AD Connect の準備手順が完了していない場合は、[オプション機能] ページでデバイスの書き戻しの設定を変更できないことに注意してください。[デバイスの書き戻し] チェック ボックスをオンにして、[次へ] をクリックします。 ![デバイスの書き戻し](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback3.png)
-4.	[書き戻し] ページでは、指定したドメインが既定の [デバイスの書き戻しフォレスト] として表示されます。 ![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback4.png)
-5.	その他の構成は変更しないで、ウィザードのインストールを完了します。必要に応じて、「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」をご覧ください。
-
+1.	インストール ウィザードをもう一度実行します。[追加のタスク] ページで **[同期オプションのカスタマイズ]** を選択し、**[次へ]** をクリックします。![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback2.png)
+2.	[オプション機能] ページで、デバイスの書き戻しを変更できるようになります。Azure AD Connect の準備手順が完了していない場合は、[オプション機能] ページでデバイスの書き戻しの設定を変更できないことに注意してください。[デバイスの書き戻し] チェック ボックスをオンにして、**[次へ]** をクリックします。チェックボックスがまだオフの場合は、[トラブルシューティングのセクション](#the-writeback-checkbox-is-still-disabled)を参照してください。![デバイスの書き戻し](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback3.png)
+3.	[書き戻し] ページでは、指定したドメインが既定の [デバイスの書き戻しフォレスト] として表示されます。 ![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback4.png)
+4.	その他の構成は変更しないで、ウィザードのインストールを完了します。必要に応じて、「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」をご覧ください。
 
 
 ## 条件付きアクセスを有効にする
@@ -90,6 +80,44 @@ Azure AD Connect でデバイスの書き戻しを有効にするには、次の
 
 ![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback6.png)
 
+## トラブルシューティング
+
+### 書き戻しのチェックボックスがオフのままです。
+前述の手順を実行しても、デバイスの書き戻しのチェックボックスがオンにならない場合は、次の手順を実行し、ボックスがオンになる前にインストール ウィザードで検証が実行されるようにします。
+
+まず次の手順を実行します。
+
+- 少なくとも 1 つのフォレストに Windows Server 2012R2 があることを確認します。このデバイス オブジェクトの種類が必要です。
+- インストール ウィザードが既に実行中の場合、変更があっても検出されません。この場合は、インストール ウィザードを完了してから、再実行してください。
+- 初期化スクリプトで指定したアカウントが、Active Directory Connector に使用されている正しいユーザーであることを確認します。確認する手順は次のとおりです。
+	- [スタート] メニューから **[同期サービス]** を開きます。
+	- **[コネクタ]** タブを開きます。
+	- 種類が Active Directory ドメイン サービスのコネクタを探して選択します。
+	- **[アクション]** の **[プロパティ]** を選択します。
+	- **[Active Directory フォレストに接続]** を選択します。この画面で指定されているドメインとユーザー名と、スクリプトに指定したアカウントが一致することを確認します。![Connector アカウント](./media/active-directory-aadconnect-get-started-custom-device-writeback/connectoraccount.png)
+
+Active Directory の構成を確認します。つまり、configuration 名前付けコンテキストの (CN=DeviceRegistrationService,CN=Device Registration Services,CN=Device Registration Configuration,CN=Services,CN=Configuration) の下に Device Registration Service があることを確認します。
+
+![トラブルシューティング 1](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot1.png)
+
+- configuration 名前空間を検索して、configuration オブジェクトが 1 つのみであることを確認します。複数ある場合は、重複するオブジェクトを削除します。
+
+![トラブルシューティング 2](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot2.png)
+
+- Device Registration Service オブジェクトに、属性 msDS-DeviceLocation が存在し、値が指定されていることを確認します。その場所を参照し、その場所と objectType msDS-DeviceContainer が存在することを確認します。
+
+![トラブルシューティング 3](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot3.png)
+
+![トラブルシューティング 4](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot4.png)
+
+- Active Directory Connector には、前の手順で検索した Registered Devices コンテナーに対するアクセス許可が必要です。このコンテナーには、次のようなアクセス許可があります。
+
+![トラブルシューティング 5](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot5.png)
+
+- Active Directory アカウントに、CN=Device Registration Configuration,CN=Services,CN=Configuration オブジェクトに対するアクセス許可があることを確認します。
+
+![トラブルシューティング 6](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot6.png)
+
 ## 追加情報
 - [条件付きアクセス ポリシーを使用したリスクの管理](active-directory-conditional-access.md)
 - [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](https://msdn.microsoft.com/library/azure/dn788908.aspx)
@@ -97,4 +125,4 @@ Azure AD Connect でデバイスの書き戻しを有効にするには、次の
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

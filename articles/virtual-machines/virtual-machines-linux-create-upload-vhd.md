@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/29/2015"
+	ms.date="11/04/2015"
 	ms.author="dkshir"/>
 
 # Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
@@ -22,33 +22,34 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 
-ここでは、仮想ハードディスク (VHD) を作成およびアップロードし、それをイメージとして活用して Azuere 内で仮想マシンを作成する方法を示します。そのイメージに基づいて複数の仮想マシンを作成できるよう、オペレーティング システムを準備する方法についても説明します。この記事では、クラシック デプロイ モデルを使用して作成された仮想マシンを参照していることに注意してください。
+ここでは、仮想ハードディスク (VHD) を作成およびアップロードし、それをイメージとして活用して Azuere 内で仮想マシンを作成する方法を示します。そのイメージに基づいて複数の仮想マシンを作成できるよう、オペレーティング システムを準備する方法についても説明します。
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
-Azure の仮想マシンでは、仮想マシンの作成時に選択したイメージに基づいてオペレーティング システムが実行されます。イメージはストレージ アカウント内に VHD 形式 (.vid ファイル) で保存されます。詳細については、「[ディスクおよびイメージの管理](https://msdn.microsoft.com/library/azure/jj672979.aspx)」を参照してください。
+Azure の仮想マシンでは、仮想マシンの作成時に選択したイメージに基づいてオペレーティング システムが実行されます。イメージはストレージ アカウント内に VHD 形式 (.vid ファイル) で保存されます。詳細については、「[Azure でのディスク](virtual-machines-disks-vhds.md)」および「[Azure でのイメージ](virtual-machines-images.md)」を参照してください。
 
 仮想マシンを作成するときに、実行するアプリケーションに合わせてオペレーティング システムの一部の設定をカスタマイズすることができます。手順については、「[カスタム仮想マシンの作成方法](virtual-machines-create-custom.md)」を参照してください。
 
 **重要**: Azure プラットフォームの SLA は、動作保証済みディストリビューションのいずれか 1 つを、[Linux on Azure-Endorsed Distributions (Azure で承認されているディストリビューション Linux)](virtual-machines-../linux-endorsed-distributions.md) の「サポートされているバージョン」で指定されている構成で使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
 
 
-##前提条件##
+## 前提条件
 この記事では、次の項目があることを前提としています。
 
-- **管理証明書** - VHD をアップロードするサブスクリプションの管理証明書を作成し、その証明書を .cer ファイルにエクスポートした。証明書の作成方法の詳細については、「[Azure の管理証明書の作成とアップロード](https://msdn.microsoft.com/library/azure/gg551722.aspx)」を参照してください。
+- **管理証明書** - VHD をアップロードするサブスクリプションの管理証明書を作成し、その証明書を .cer ファイルにエクスポートした。証明書の作成方法の詳細については、「[Azure の証明書の概要](../cloud-services/cloud-services-certs-create.md)」を参照してください。
 
 - **.vhd ファイルにインストールされている Linux オペレーティング システム** - サポートされている Linux オペレーティング システムを仮想ハード ディスクにインストールしておきます。.vhd ファイルを作成するツールは複数あります。たとえば、Hyper-V などの仮想化ソリューションにより、.vhd ファイルを作成し、オペレーティング システムをインストールできます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
 	**重要**: 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
-	動作保証済みディストリビューションの一覧については、「[Azure での動作保証済み Linux ディストリビューション](../linux-endorsed-distributions.md)」を参照してください。または、「[動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-vhd-generic.md)」を参照してください。
+	動作保証済みディストリビューションの一覧については、「[Azure での動作保証済み Linux ディストリビューション](../linux-endorsed-distributions.md)」を参照してください。Linux ディストリビューションの総目録については、「[動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-vhd-generic.md)」を参照してください。
 
 - **Azure コマンド ライン インターフェイス** - Linux オペレーティング システムを使用してイメージを作成する場合は、[Azure コマンド ライン インターフェイス](../virtual-machines-command-line-tools.md)を使用して VHD をアップロードします。
 
 - **Azure Powershell ツール** - `Add-AzureVhd` コマンドレットを使用して、VHD をアップロードすることもできます。Azure Powershell コマンドレットをダウンロードするには、「[Azure Downloads (Azure のダウンロード)](http://azure.microsoft.com/downloads/)」を参照してください。詳細については、[Add-AzureVhd に関するページ](https://msdn.microsoft.com/library/azure/dn495173.aspx)を参照してください。
 
-## <a id="prepimage"></a>手順 1. アップロードするイメージを準備する ##
+<a id="prepimage"> </a>
+## 手順 1. アップロードするイメージを準備する
 
 Azure は、さまざまな Linux ディストリビューションをサポートしています (「[Azure での動作保証済み Linux ディストリビューション](../linux-endorsed-distributions.md)」を参照してください)。次の記事では、Azure でサポートされる以下のさまざまな Linux ディストリビューションを準備する方法について説明します。
 
@@ -62,13 +63,19 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 
 上のガイドに説明されている次の手順を行うと、Azure にアップロードする VHD ファイルの準備が整います。
 
-
-## <a id="connect"></a>手順 2. Azure への接続を準備する ##
+<a id="connect"> </a>
+## 手順 2. Azure への接続を準備する
 
 .vhd ファイルをアップロードする前に、コンピューターと Azure のサブスクリプションの間にセキュリティで保護された接続を確立する必要があります。
 
 
 ### Azure CLI を使用する場合
+
+最新の Azure CLI は既定でリソース マネージャーのデプロイ モデルになっているので、必ず次のコマンドを使用してクラシック デプロイ モデルにしてください。
+
+		azure change mode asm  
+
+次に、以下のログイン方法のいずれかを使用して Azure サブスクリプションに接続します。
 
 ログインに Azure AD のメソッドを使用します。
 
@@ -135,7 +142,8 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 
 > [AZURE.NOTE]Azure サブスクリプションへのログインには、Azure CLI や Azure PowerShell のいずれかから、新しい Azure Active Directory メソッドを使用することをお勧めします。
 
-## <a id="upload"></a>手順 3. Azure にイメージをアップロードする ##
+<a id="upload"> </a>
+## 手順 3. Azure にイメージをアップロードする
 
 ### Azure CLI を使用する場合
 
@@ -153,13 +161,13 @@ VHD ファイルをアップロードするストレージ アカウントが必
 
 		Add-AzureVhd -Destination <BlobStorageURL>/<YourImagesFolder>/<VHDName> -LocalFilePath <PathToVHDFile>
 
-詳細については、[Add-AzureVhd](https://msdn.microsoft.com/library/azure/dn495173.aspx) を参照してください。
+詳細については、[Add-AzureVhd に関するページ](https://msdn.microsoft.com/library/azure/dn495173.aspx)を参照してください。
 
-
+> [AZURE.NOTE][Azure Powershell 1.0 Preview バージョン](https://azure.microsoft.com/ja-JP/blog/azps-1-0-pre/)では、クラシック デプロイ モデルとリソース マネージャーのデプロイ モデル用のコマンドレットを処理する方法が大幅に変更されます。この記事ではまだ Preview バージョンを使用していません。
 
 
 [Step 1: Prepare the image to be uploaded]: #prepimage
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

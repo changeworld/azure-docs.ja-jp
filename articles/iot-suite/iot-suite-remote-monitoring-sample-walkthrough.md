@@ -48,7 +48,7 @@ IoT Suite リモート監視の事前構成済みソリューションは、遠�
 | Model Number | デバイスのモデル番号 |
 | Serial Number | デバイスのシリアル番号 |
 | Firmware | デバイスのファームウェアの現在のバージョン |
-| Platform | デバイスのプラットフォーム アーキテクチャ |
+| プラットフォーム | デバイスのプラットフォーム アーキテクチャ |
 | Processor | デバイスを実行しているプロセッサ |
 | Installed RAM | デバイスに搭載されている RAM の量 |
 | Hub Enabled State | デバイスの IoT Hub の状態プロパティ |
@@ -108,7 +108,7 @@ Web アプリのこのページでは、PowerBI JavaScript コントロール ([
 - デバイスのコマンド履歴を表示する
 
 ### クラウド ソリューションの動作を確認する
-[Azure 管理ポータル](https://portal.azure.com)にアクセスし、指定したソリューション名の付いたリソース グループに移動すると、プロビジョニングされたリソースを確認できます。
+[Azure プレビュー ポータル](https://portal.azure.com)にアクセスし、指定したソリューション名の付いたリソース グループに移動すると、プロビジョニングされたリソースを確認できます。
 
 ![](media/iot-suite-remote-monitoring-sample-walkthrough/azureportal_01.png)
 
@@ -144,4 +144,4 @@ Web アプリのこのページでは、PowerBI JavaScript コントロール ([
 
 ![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_08.png)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

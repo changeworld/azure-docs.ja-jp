@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Search を使用した地理空間検索アプリの作成 | Microsoft Azure" 
+	pageTitle="Azure Search を使用した地理空間検索アプリの作成 | Microsoft Azure | ホスト型クラウド検索サービス" 
 	description="Bing と Microsoft Azure のホスト型のクラウド検索サービスである Azure Search を利用し、地理空間検索アプリを作成します。" 
 	services="search" 
 	documentationCenter="" 
@@ -167,4 +167,4 @@ AdventureWorksWeb をビルドするときに、「ファイルまたはアセ�
 [7]: ./media/search-create-geospatial/AzureSearch-geo1-App.PNG
 [12]: ./media/search-create-geospatial/AzureSearch_Create2_CodeplexDownload.PNG
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

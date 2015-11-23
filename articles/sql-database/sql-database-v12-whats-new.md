@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/15/2015" 
+	ms.date="11/11/2015" 
 	ms.author="genemi"/>
 
 
@@ -40,7 +40,6 @@ Azure SQL Database のリソース制限に関する最新情報は「<br/>[Azur
 SQL Database V12 の主要な目的は、Microsoft SQL Server 2014 との互換性を強化することでした。その他の領域では、V12 はプログラミングの重要な領域で SQL Server との対応を実現しました。次に例を示します。
 
 
-- [共通言語ランタイム (CLR) アセンブリ](http://msdn.microsoft.com/library/ms189524.aspx)
 - [ウィンドウ関数](http://msdn.microsoft.com/library/bb934097.aspx)と [OVER](http://msdn.microsoft.com/library/ms189461.aspx) 
 - [XML インデックス](http://msdn.microsoft.com/library/bb934097.aspx)と[選択的 XML インデックス](http://msdn.microsoft.com/library/jj670104.aspx)
 - [変更の追跡](http://msdn.microsoft.com/library/bb933875.aspx)
@@ -48,7 +47,7 @@ SQL Database V12 の主要な目的は、Microsoft SQL Server 2014 との互換�
 - [フルテキスト検索](http://msdn.microsoft.com/library/ms142571.aspx)
 
 
-SQL Database でまだサポートされていない一部の機能については、[ここ](http://msdn.microsoft.com/library/azure/ee336281.aspx)を参照してください。
+SQL Database でまだサポートされていない一部の機能については、[ここ](sql-database-transact-sql-information.md)を参照してください。
 
 
 ## Premium のパフォーマンスの向上、新しいパフォーマンス レベル
@@ -92,7 +91,7 @@ V12 でのみ、新しい Standard パフォーマンス レベルの S3 と、[
 
 - [行レベル セキュリティ](http://msdn.microsoft.com/library/dn765131.aspx) (RLS)
 - [動的データ マスク](sql-database-dynamic-data-masking-get-started.md)
-- [包含データベース](http://msdn.microsoft.com/library/azure/ff394108.aspx)
+- [包含データベース](http://msdn.microsoft.com/library/ff929188.aspx)
 - GRANT、DENY、REVOKE を使用して管理される[アプリケーション ロール](http://msdn.microsoft.com/library/ms190998.aspx)
 - [透過的なデータ暗号化](http://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx) (TDE)
 - [Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)
@@ -113,7 +112,7 @@ V12 では、目標復旧時点 (PRO) と推定復旧時間 (ERT) が大幅に�
 | アクティブ geo レプリケーション | • RPO は 5 分未満。<br/>• ERT は 1 時間未満。 | • RPO は 5 秒未満。<br/>• ERT は 30 秒未満。 |
 
 
-詳細については、[SQL Database のビジネス継続性](http://msdn.microsoft.com/library/azure/hh852669.aspx)に関するページを参照してください。
+詳細については、[SQL Database のビジネス継続性](sql-database-business-continuity.md)に関するページを参照してください。
 
 
 ## 今すぐアップグレードすることをお勧めするその他の理由
@@ -162,4 +161,4 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 
 [Microsoft Azure プレビューの使用条件に関する補足](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

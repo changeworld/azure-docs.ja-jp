@@ -1,6 +1,6 @@
 <properties
-   pageTitle="高信頼アクターの診断とパフォーマンス監視"
-   description="この記事では、出力されるイベントおよびパフォーマンス カウンターを含め、高信頼アクター ランタイムの診断およびパフォーマンス監視機能について説明します。"
+   pageTitle="アクターによる診断および監視 |Microsoft Azure"
+   description="この記事では、出力されるイベントおよびパフォーマンス カウンターを含め、Service Fabric の Reliable Actors ランタイムの診断およびパフォーマンス監視機能について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,18 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/05/2015"
+   ms.date="10/15/2015"
    ms.author="abhisram"/>
 
 # 高信頼アクターの診断とパフォーマンス監視
 高信頼アクター ランタイムは、[EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントおよび[パフォーマンス カウンター](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)を出力します。これらは、ランタイムがどのように動作するかを示し、トラブルシューティングおよびパフォーマンス監視に役立ちます。
 
 ## EventSource イベント
-高信頼アクター ランタイムの EventSource 名は「Microsoft-ServiceFabric-Actors」です。このイベント ソースのイベントは、アクター アプリケーションが [Visual Studio でデバッグ](service-fabric-debugging-your-application.md)されているときに、[[診断イベント](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)] ウィンドウに表示されます。
+Reliable Actors ランタイムの EventSource プロバイダー名は "Microsoft-ServiceFabric-Actors" です。このイベント ソースのイベントは、アクター アプリケーションが [Visual Studio でデバッグ](service-fabric-debugging-your-application.md)されているときに、[[診断イベント](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)] ウィンドウに表示されます。
 
-Service Fabric には、これらのイベントを [Application Insights](http://azure.microsoft.com/services/application-insights/) に送信するオプションも用意されています。詳細については、[Service Fabric 用の Application Insights のセットアップ](service-fabric-diagnostics-application-insights-setup.md)に関する記事を参照してください。
-
-EventSource イベントの収集または表示に役立つツールとテクノロジのその他の例には、[PerfView](http://www.microsoft.com/download/details.aspx?id=28567)、[Azure 診断](../cloud-services-dotnet-diagnostics.md)、[セマンティック ログ記録](https://msdn.microsoft.com/library/dn774980.aspx)、[Microsoft TraceEvent ライブラリ](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
+EventSource イベントの収集または表示に役立つツールとテクノロジの例には、[PerfView](http://www.microsoft.com/download/details.aspx?id=28567)、[Azure 診断](../cloud-services-dotnet-diagnostics.md)、[セマンティック ログ記録](https://msdn.microsoft.com/library/dn774980.aspx)、[Microsoft TraceEvent ライブラリ](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
 
 ### キーワード
 高信頼アクター EventSource に属しているすべてのイベントは、1 つまたは複数のキーワードに関連付けられます。これにより、収集されたイベントをフィルター処理できます。次のキーワードのビットが定義されています。
@@ -155,4 +153,4 @@ EventSource イベントの収集または表示に役立つツールとテク�
 |ActorActivated|5|情報|0x1|アクターがアクティブ化されました。|
 |ActorDeactivated|6|情報|0x1|アクターが非アクティブ化されました。|
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Search の使用 | Microsoft Azure" 
+	pageTitle="Azure Search の使用 | Microsoft Azure | ホスト型クラウド検索サービス" 
 	description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search の概要。" 
 	services="search" 
 	documentationCenter="" 
@@ -378,4 +378,4 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 [Create your first azure search solution]: search-create-first-solution.md
 [Create a geospatial search app using Azure Search]: search-create-geospatial.md
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

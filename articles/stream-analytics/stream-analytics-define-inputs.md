@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="10/23/2015"
+	ms.date="11/06/2015"
 	ms.author="jeffstok"/>
 
 # Stream Analytics 入力について
@@ -47,7 +47,7 @@ Stream Analytics イベント ハブの各入力は、独自のコンシュー�
 | イベント ハブ ポリシー キー | Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 |
 | イベント ハブ コンシューマー グループ (省略可能) | イベント ハブからのデータを取り込むためのコンシューマー グループです。指定しないと、Stream Analytics ジョブは既定のコンシューマー グループを使用してイベント ハブからデータを取り込みます。Stream Analytics ジョブごとに個別のコンシューマー グループを使用することをお勧めします。 |
 | イベントのシリアル化の形式 | クエリを予想どおりに動作させるには、入ってくるデータ ストリームに使用しているシリアル化形式 (JSON、CSV、Avro) が Stream Analytics で認識される必要があります。 |
-| Encoding | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
+| エンコード | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 
 データがイベント ハブのソースから送信されるとき、Stream Analytics クエリでアクセスできるメタデータ フィールドはほとんどありません。次の表に、そのフィールドと説明を一覧表示します。
 
@@ -88,7 +88,7 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 | 共有アクセス ポリシー キー | IoT Hub へのアクセスを認証するために使用する共有アクセス キー。 |
 | コンシューマー グループ (省略可能) | IoT Hub からのデータを取り込むためのコンシューマー グループです。指定しないと、Stream Analytics ジョブは既定のコンシューマー グループを使用して IoT Hub からデータを取り込みます。Stream Analytics ジョブごとに個別のコンシューマー グループを使用することをお勧めします。 |
 | イベントのシリアル化の形式 | クエリを予想どおりに動作させるには、入ってくるデータ ストリームに使用しているシリアル化形式 (JSON、CSV、Avro) が Stream Analytics で認識される必要があります。 |
-| Encoding | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
+| エンコード | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 
 データが IoT Hub のソースから送信されるとき、Stream Analytics クエリでアクセスできるメタデータ フィールドはほとんどありません。次の表に、そのフィールドと説明を一覧表示します。
 
@@ -152,7 +152,7 @@ Stream Analytics の BLOB ストレージ イベントの既定のタイムス�
 <td>クエリを予想どおりに動作させるには、入ってくるデータ ストリームに使用しているシリアル化形式 (JSON、CSV、Avro) が Stream Analytics で認識される必要があります。</td>
 </tr>
 <tr>
-<td>Encoding</td>
+<td>エンコード</td>
 <td>CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。</td>
 </tr>
 <tr>
@@ -201,4 +201,4 @@ FROM Input
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

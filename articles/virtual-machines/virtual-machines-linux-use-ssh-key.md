@@ -46,26 +46,26 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 
 	- Mac の場合、[Apple の製品セキュリティ Web サイト](https://support.apple.com/HT201222)にアクセスし、必要に応じて適切な更新プログラムを選択してください。
 	- Ubuntu、Debian、Mint など、Debian 基盤の Linux 製品の場合:
-		
+
 			sudo apt-get update ssh-keygen
 			sudo apt-get update openssl
-			
+
 	- CentOS や Oracle Linux など、RPM 基盤の Linux 製品の場合:
-		
+
 			sudo yum update ssh-keygen
 			sudo yum update openssl
-			
+
 	- SLES と OpenSUSE の場合:
-		
+
 			sudo zypper update ssh-keygen
 			sudo zypper update openssl
-	
+
 2. **ssh-keygen** を使用して 2048 ビット RSA 公開/秘密鍵ファイルを作成し、そのファイルに特定の場所や名前を使用するのでなければ、`~/.ssh/id_rsa` の既定の場所と名前をそのまま使用します。基本的なコマンド:
 
 		ssh-keygen -t rsa -b 2048 
-	
+
 	通常、**ssh-keygen** の実装でコメントが追加されます。多くの場合、コンピューターのユーザー名とホスト名です。`-C` オプションを利用し、特定のコメントを指定できます。
-	
+
 3. 従来のポータルを利用できるように、`~/.ssh/id_rsa` ファイルから .pem ファイルを作成します。次のように **openssl** を使用します。
 
 		openssl req -x509 -key ~/.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out myCert.pem
@@ -125,7 +125,7 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 	data:    TemplateLink       : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
 	data:    ContentVersion     : 1.0.0.0
 	data:    Name                   Type    Value
-	
+
 	data:    newStorageAccountName  String  testtestsshvmtemplate3
 	data:    adminUserName          String  ops
 	data:    sshKeyData             String  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAkek3P6V3EhmD+xP+iKDZco9 user@macbookpro
@@ -157,7 +157,7 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 	+ Configuring certificate
 	+ Creating VM
 	info:    vm create command OK
-	
+
 
 ## VM に接続する
 
@@ -166,11 +166,11 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 サブドメインとデプロイメント場所を指定しているだけの場合、リソース マネージャー デプロイメントの一般的な使用方法は次のようになります。
 
 	ssh user@subdomain.westus.cloudapp.azure.com -p 22
-	
+
 あるいは、従来のデプロイメント クラウド サービスに接続している場合、使用するアドレスは次のようになります。
 
 	ssh user@subdomain.cloudapp.net -p 22
-	
+
 アドレス形式は変更されることがあるので (いつでも IP アドレスを使用できます。あるいは、カスタムのドメイン名を割り当てることがあります。)、自分の Azure VM のアドレスを見つける必要があります。
 
 ### 従来のデプロイメントで Azure VM SSH を見つける
@@ -266,27 +266,27 @@ VM の作成時に既定の SSH ポート 22 を使用しなかった場合、�
 	Saving password to keychain failed
 	Identity added: /Users/rasquill/.ssh/id_rsa (/Users/rasquill/.ssh/id_rsa)
 	Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.19.0-28-generic x86_64)
-	
+
 	* Documentation:  https://help.ubuntu.com/
-	
+
 	System information as of Sat Oct 10 20:53:08 UTC 2015
-	
+
 	System load: 0.52              Memory usage: 5%   Processes:       80
 	Usage of /:  45.3% of 1.94GB   Swap usage:   0%   Users logged in: 0
-	
+
 	Graph this data and manage this system at:
 		https://landscape.canonical.com/
-	
+
 	Get cloud support with Ubuntu Advantage Cloud Guest:
 		http://www.ubuntu.com/business/services/cloud
-	
+
 	0 packages can be updated.
 	0 updates are security updates.
-	
+
 	The programs included with the Ubuntu system are free software;
 	the exact distribution terms for each program are described in the
 	individual files in /usr/share/doc/*/copyright.
-	
+
 	Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 	applicable law.
 
@@ -295,7 +295,7 @@ VM の作成時に既定の SSH ポート 22 を使用しなかった場合、�
 「[SSH 接続のトラブルシューティング](virtual-machines-troubleshoot-ssh-connections.md)」の提案を参照し、状況を解消できるか確認できます。
 
 ## 次のステップ
-
+ 
 これで VM に接続できたので、選択したディストリビューションを必ず更新してから使用を続けます。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

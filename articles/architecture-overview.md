@@ -79,7 +79,7 @@ Microsoft は、Microsoft 製品を使用する特定の種類のシステム構
 
 - 最初に機能を確認するために、[トレーニング ビデオを視聴](http://aka.ms/3dBlueprintTemplateVideo)する   
 - [Microsoft 3D ブループリント Visio テンプレート](http://aka.ms/3DBlueprintTemplate)をダウンロードする
-- 3D テンプレートと一緒に使用する[クラウドとエンタープライズのシンボル](#symbol-and-icon-sets)をダウンロードする
+- 3D テンプレートと一緒に使用する[クラウドとエンタープライズのシンボル](#drawing-symbol-and-icon-sets)をダウンロードする 
 
 トレーニング資料で解決できない具体的な質問や、フィードバックの提供については、[CnESymbols@microsoft.com](mailto:CnESymbols@microsoft.com) まで電子メールでご連絡ください。使いやすさは、テンプレートの主な目標の 1 つです。よかった点や問題点についてお知らせください。
 
@@ -106,6 +106,6 @@ CnE セットのようにアーキテクチャ ダイアグラム向けに最適
 
 Microsoft は、ポスター/インフォグラフィックに関連するいくつかのアーキテクチャを公開しています。[実際のクラウド アプリケーションの作成](http://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)と[クラウド サービスへの対応](http://azure.microsoft.com/documentation/infographics/cloud-services/)が含まれています。
 
-![Azure Architecture Infographics](./media/architecture-overview/AzureArchInfographicThumb.jpg)
+![Azure アーキテクチャのインフォグラフィック](./media/architecture-overview/AzureArchInfographicThumb.jpg)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

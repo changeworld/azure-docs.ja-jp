@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="10/20/2015"
+  ms.date="11/05/2015"
   ms.author="andrl"/>
 
 # コミュニティ ポータル
@@ -89,8 +89,6 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | イベント名 | 場所 | 日付 | ハッシュタグ |
 | ------------------------------------------------------------------------------- | -------------------- | ------------------- | ------- |
-| [CloudDevelop 2015](http://www.clouddevelop.org/) | オハイオ州コロンバス | 2015 年 10 月 23 日 | [#CloudDevConf](https://twitter.com/hashtag/CloudDevConf) |
-| [PASS Summit 2015](http://www.sqlpass.org/summit/2015/Home.asp) | ワシントン州シアトル | 2015 年 10 月 27 日～ 30 日 | [#Summit15](https://twitter.com/hashtag/Summit15) |
 | [Integration User Group](http://www.integrationusergroup.com/) | ウェビナー | 2015 年 11 月 9 日 | [#IntegrationMonday](https://twitter.com/hashtag/integrationmonday) |
 | [Meetup: msdevmtl](http://www.meetup.com/msdevmtl/events/223839818/) | モントリオール、QC (カナダ) | 2015 年 12 月 1 日 | [#msdevmtl](https://twitter.com/hashtag/msdevmtl) |
 
@@ -100,11 +98,14 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | イベント名 | 場所 | 日付 | 記録 |
 | -------------------------------------------------------------------------------------------------------------------------- | -------------------- | ---------------------- | --------- |
+| [PASS Summit 2015](http://www.sqlpass.org/summit/2015/Home.asp) | ワシントン州シアトル | 2015 年 10 月 27 日～ 30 日 | 該当なし |
+| [CloudDevelop 2015](http://www.clouddevelop.org/) | オハイオ州コロンバス | 2015 年 10 月 23 日 | 該当なし |
 | [SQL Saturday #430 - Sofia 2015](http://www.sqlsaturday.com/430/eventhome.aspx) | ソフィア (ブルガリア) | 2015 年 10 月 10 日 | 該当なし |
 | [SQL Saturday #429 - Oporto 2015](http://www.sqlsaturday.com/429/eventhome.aspx) | オポルト (ポルトガル) | 2015 年 10 月 3 日 | 該当なし |
 | [AzureCon](https://azure.microsoft.com/azurecon/) | 仮想イベント | 2015 年 9 月 29 日 | [Azure data and analytics platform (Azure データ/分析プラットフォーム)](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207)<br/>[Working with NoSQL Data in DocumentDB (DocumentDB での NoSQL データの使用)](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) |
-| [SQL Saturday #434 - Holland 2015](http://www.sqlsaturday.com/434/eventhome.aspx) | ユトレヒト (オランダ) | 2015 年 9 月 26 日 | 該当なし |
+| [SQL Saturday #434 - Holland 2015](http://www.sqlsaturday.com/434/eventhome.aspx) | ユトレヒト (オランダ) | 2015 年 9 月 26 日 | [Azure DocumentDB の概要](https://channel9.msdn.com/Blogs/Windows-Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB) |
 | [Meetup: San Francisco Bay Area Azure Developers](http://www.meetup.com/bayazure/events/223943785/) | カリフォルニア州サンフランシスコ | 2015 年 9 月 15 日 | 該当なし |
+| [Belarus Azure User Group Meet-Up](https://www.facebook.com/events/786540124800276/) | ミンスク、ベラルーシ | 2015 年 9 月 9 日 | [Introduction to DocumentDB concept overview, consistency levels, sharding strategies](https://www.youtube.com/watch?v=Uc_qwWzJKH8) |
 | [NoSQL Now!](http://nosql2015.dataversity.net/) | カリフォルニア州サンホセ | 2015 年 8 月 18 ～ 20 日 | 該当なし |
 | [@Scale Seattle](http://www.atscaleconference.com/) | ワシントン州シアトル | 2015 年 6 月 17 日 | [Azure DocumentDB を使用した、スキーマに依存しないインデックス作成](https://www.youtube.com/watch?v=VJQ_5qFFVP4) |
 | [Tech Refresh 2015](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015) | リスボン (ポルトガル) | 2015 年 6 月 15 日 | [DocumentDB 101](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015/DPDEV01) |
@@ -144,7 +145,7 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 | ラーニング パートナー | 説明 |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://www.microsoftvirtualacademy.com/ja-JP/training-courses/developing-solutions-with-azure-documentdb-10554) | [**Microsoft Virtual Academy**](https://www.microsoftvirtualacademy.com/ja-JP/training-courses/developing-solutions-with-azure-documentdb-10554)<br/><br/>Microsoft Virtual Academy では、Azure DocumentDB の構築を支援する人々によるトレーニングを提供しています。 |
-| [![Pluralsight](./media/documentdb-community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction) | [**Pluralsight**](http://www.pluralsight.com/courses/azure-documentdb-introduction)<br/><br/>Pluralsight は、Azure トレーニングを提供する Microsoft の主要パートナーです。MSDN サブスクライバーの場合、特典を使って Microsoft Azure トレーニングにアクセスしてください。 |
+| [![Pluralsight](./media/documentdb-community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction) | [**Pluralsight**](http://www.pluralsight.com/courses/azure-documentdb-introduction)<br/><br/>Pluralsight は、Azure トレーニングを提供する主な Microsoft パートナーです。MSDN サブスクライバーの場合、特典を使って Microsoft Azure トレーニングにアクセスしてください。 |
 | [![OpsGility](./media/documentdb-community/opsgility.png)](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) | [**OpsGility**](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb)<br/><br/>OpsGility は、Microsoft Azure の詳細なテクニカル トレーニングを提供します。業界で定評のあるトレーナーによるインストラクター主導のトレーニングを、オンサイトまたはリモート クラスルームで受けることができます。 |
 
 <br/><br/>
@@ -214,4 +215,4 @@ Twitter で [@DocumentDB](https://twitter.com/DocumentDB) をフォローし、[
 | Hadoop コネクタ | [azure-documentdb-hadoop](https://github.com/Azure/azure-documentdb-hadoop) | [Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-documentdb-hadoop%22) |
 | データ移行ツール | [azure-documentdb-datamigrationtool](https://github.com/Azure/azure-documentdb-datamigrationtool) | [Microsoft ダウンロード センター](http://www.microsoft.com/ja-JP/download/details.aspx?id=46436) |
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

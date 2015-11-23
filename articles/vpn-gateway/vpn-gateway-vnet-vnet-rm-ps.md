@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure リソース マネージャーおよび PowerShell を使用した VNet 間の接続の構成 | Microsoft Azure"
+   pageTitle="同じサブスクリプションに存在する VNet の VNet 間接続を Azure リソース マネージャーおよび PowerShell を使用して作成する | Microsoft Azure"
    description="この記事では、Azure リソース マネージャーおよび PowerShell を使用して仮想ネットワークどうしを接続する方法を説明します。"
    services="vpn-gateway"
    documentationCenter="na"
@@ -14,18 +14,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/20/2015"
+   ms.date="11/06/2015"
    ms.author="cherylmc"/>
 
-# Azure リソース マネージャーおよび PowerShell を使用した VNet 間の接続の構成
+# Azure リソース マネージャーおよび PowerShell を使用して同じサブスクリプション内の仮想ネットワークの VNet 間接続を構成する
 
 > [AZURE.SELECTOR]
 - [Azure Portal](virtual-networks-configure-vnet-to-vnet-connection.md)
 - [PowerShell - Azure Resource Manager](vpn-gateway-vnet-vnet-rm-ps.md)
 
-この記事では、リソース マネージャー デプロイメント モデルを使用して、手順を説明します。上にあるタブを使用して、デプロイ モデルとデプロイ ツールに関する記事を選択できます。
+この記事では、リソース マネージャー デプロイメント モデルを使用して、手順を説明します。上にあるタブを使用して、デプロイ モデルとデプロイ ツールに関する記事を選択できます。この時点で、リソース マネージャーのデプロイメント方法を使用して作成した仮想ネットワークのうち、異なるサブスクリプション内に存在する仮想ネットワークを対象にした VNet 間接続についてはソリューションがありません。チームは現在、ソリューションの開発に取り組んでいます。年内に進展があることを見込んでいます。進展があった場合は、この記事で内容を説明します。次の手順は、同じサブスクリプション内にある VNet に関するものです。
 
->[AZURE.NOTE]Azure は現在、2 つのデプロイメント モデル (リソース マネージャーおよびクラシック) で使用できることを理解しておくことは重要です。構成を開始する前に、デプロイ モデルとツールについて理解しておくようにしてください。デプロイメント モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
+クラシック デプロイメント モデルを使用して仮想ネットワークを作成した場合は、「[VNet 間接続の作成](virtual-networks-configure-vnet-to-vnet-connection.md)」を参照してください。クラシック デプロイメント モデルでは、異なるサブスクリプションに存在する VNet 間の接続をサポートします。
+
+クラシック デプロイメント モデルで作成した仮想ネットワークを、Azure リソース マネージャー モデルで作成した仮想ネットワークに接続する場合は、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+
+[AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
 仮想ネットワークどうし (VNet 間) の接続は、仮想ネットワークをオンプレミス サイトの場所に接続することとよく似ています。どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。接続する VNet は、リージョンが異なっていてもかまいません。マルチサイト構成と VNet 間通信を組み合わせることもできます。そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます (下図参照)。
 
@@ -78,9 +82,9 @@
 
 - Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-- Azure PowerShell 0.9.8 コマンドレットこのバージョンは、[ダウンロード ページ](http://azure.microsoft.com/downloads/)の Windows PowerShell のセクションからダウンロードしてインストールできます。この記事は PowerShell 0.9.8 を対象にしていますが、次の手順は、コマンドレットをわずかに変更するだけで PowerShell 1.0 Preview で使用できます。
+- Azure PowerShell 0.9.8 コマンドレットこのバージョンは、[ダウンロード ページ](http://azure.microsoft.com/downloads/)の「Windows PowerShell」セクションからダウンロードしてインストールできます。この記事は PowerShell 0.9.8 を対象にしていますが、次の手順は、コマンドレットをわずかに変更するだけで PowerShell 1.0 プレビューで使用できます。
 
-**Azure PowerShell 1.0 Preview で次の手順を使用する方法**
+**Azure PowerShell 1.0 プレビューで次の手順を使用する方法**
 
 	[AZURE.INCLUDE [powershell-preview-inline-include](../../includes/powershell-preview-inline-include.md)] 
 
@@ -97,7 +101,7 @@
 
 VNet1 の値:
 
-- 仮想ネットワーク名 = VNet1
+- Virtual Network 名 = VNet1
 - リソース グループ = testrg1
 - アドレス空間: 10.1.0.0/16 
 - リージョン = 米国西部
@@ -106,7 +110,7 @@ VNet1 の値:
 
 VNet2 の値:
 
-- 仮想ネットワーク名 = VNet2
+- Virtual Network 名 = VNet2
 - リソース グループ = testrg2
 - アドレス空間: 10.2.0.0/16
 - リージョン = 東日本
@@ -119,7 +123,7 @@ PowerShell コンソールを開き、アカウントに接続します。接続
 
 		Add-AzureAccount
 
-複数のサブスクリプションがある場合、*Select-AzureSubscription* を実行して、使用するサブスクリプションに接続します。
+複数のサブスクリプションがある場合は、*Select-AzureSubscription* を実行して、使用するサブスクリプションに接続します。
 
 		Select-AzureSubscription "yoursubscription"
 
@@ -206,7 +210,7 @@ VNet1 の構成後、前述の手順を繰り返して、VNet2 とそのゲー�
 
 		Get-AzureVirtualNetworkGatewayConnection -Name vnet2connection -ResourceGroupName vnet2vnetrg -Debug 
 
- コマンドレットが完了したら、スクロールして値を表示します。以下の例では、接続状態は *Connected* と表示され、受信バイトと送信バイトを確認できます。
+ コマンドレットが完了したら、スクロールして値を表示します。以下の例では、接続状態は "*Connected*" と表示され、受信バイトと送信バイトを確認できます。
 
 	Body:
 	{
@@ -230,12 +234,15 @@ VNet1 の構成後、前述の手順を繰り返して、VNet2 とそのゲー�
 	  }
 	} 
 
+[AZURE.INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
+
 ## 既存 VNet の接続
 
 Azure リソース マネージャー モードで既に作成した複数の仮想ネットワークを接続するには、次を確認します。
 
 - 各 VNet には最低 /29 またはそれ以上の規模のゲートウェイ サブネットがある。
 - 仮想ネットワークのアドレス範囲が重複していない。
+- VNet は同じサブスクリプションにあります。
 
 VNet にゲートウェイ サブネットを追加する必要がある場合は、次のサンプルを使用して、値を置き換えます。ゲートウェイ サブネットには、必ず 'GatewaySubnet' という名前を付けてください。別の名前にすると、VPN の構成は期待どおりに機能しません。
 
@@ -251,6 +258,10 @@ VNet にゲートウェイ サブネットを追加する必要がある場合�
 
 仮想ネットワークに仮想マシンを追加できます。[仮想マシンを作成します](../virtual-machines/virtual-machines-windows-tutorial.md)。
 
-VPN Gateway の詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-faq.md)」をご覧ください。
+VPN Gateway の詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO4-->
+REST API については、「[Azure ネットワーク ゲートウェイ REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163859.aspx)」を参照してください。
+
+Virtual Network の詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
+
+<!---HONumber=Nov15_HO3-->

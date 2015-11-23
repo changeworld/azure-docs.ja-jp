@@ -21,6 +21,7 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
+> [AZURE.NOTE]Azure Marketplace では、MariaDB Enterprise cluster のダウンロードが追加されました。新しいサービスでは、自動的に ARM 上に MariaDB Galera cluster をデプロイします。新しいサービスは https://azure.microsoft.com/ja-JP/marketplace/partners/mariadb/cluster-maxscale/ から使用できます。
 
 ここでは、[MariaDB](https://mariadb.org/en/about/) のマルチマスター [Galera](http://galeracluster.com/products/) クラスターを作成します。これを Azure Virtual Machines 上の高可用性環境で稼働することで、MySQL の堅牢でスケーラブル、かつ信頼性の高い代替製品として実行するためです。
 
@@ -36,7 +37,7 @@
 
 ![アーキテクチャ](./media/virtual-machines-mariadb-cluster/Setup.png)
 
-> [AZURE.NOTE] このトピックでは、[Azure CLI] ツールを使用します。ダウンロードして、指示に従って Azure サブスクリプションに接続してください。Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI command reference (Azure CLI コマンド リファレンス)]」を参照してください。また、[認証用に SSH キーを作成]し、**.pem ファイルの場所**をメモしておく必要があります。
+> [AZURE.NOTE]このトピックでは、[Azure CLI] ツールを使用します。ダウンロードして、指示に従って Azure サブスクリプションに接続してください。Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI command reference (Azure CLI コマンド リファレンス)]」を参照してください。また、[認証用に SSH キーを作成]し、**.pem ファイルの場所**をメモしておく必要があります。
 
 
 ## テンプレートの作成
@@ -237,7 +238,7 @@
 
 1. **mariadb-galera-image** イメージから 1 台目の CentOS 7 VM を作成し、仮想ネットワーク名を **mariadbvnet**、サブネットを **mariadb**、マシンのサイズを **Medium** として、クラウド サービス名を渡して名前を **mariadbha** (または mariadbha.cloudapp.net 経由でアクセスする任意の名前) とし、マシン名を **mariadb1**、ユーザー名を **azureuser** にし、SSH アクセスを有効にして、SSH 証明書 .pem ファイルを渡し、**/path/to/key.pem** を、生成された .pem SSH キーを格納するパスに置き換えます。
 
-	> [AZURE.NOTE] 次のコマンドは、わかりやすいように複数の行に分割しますが、それぞれ 1 つの行として入力する必要があります。
+	> [AZURE.NOTE]次のコマンドは、わかりやすいように複数の行に分割しますが、それぞれ 1 つの行として入力する必要があります。
 
 		azure vm create
         --virtual-network-name mariadbvnet
@@ -338,29 +339,13 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 
 次のようなテーブルが作成されます。
 
-<pre class="prettyprint copy-to-clipboard  prettyprinted" id="clipboard-element-40"><span class="pun">+----+--------+</span><span class="pln">
-</span><span class="pun">|</span><span class="pln" style="
-    padding-left: 6px;
-    padding-right: 6px;
-"> id </span><span class="pun">|</span><span class="pln" style="
-    padding-left: 8px;
-"> value  </span><span class="pun">|</span><span class="pln">
-</span><span class="pun">+----+--------+</span><span class="pln">
-</span><span class="pun">|</span><span class="pln">  </span><span class="lit" style="
-    padding-left: 6px;
-    border-right-width: 5px;
-    padding-right: 6px;
-">1</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="typ" style="
-    padding-left: 4px;
-">Value1</span><span class="pln"> </span><span class="pun">|</span><span class="pln">
-</span><span class="pun">|</span><span class="pln">  </span><span class="lit" style="
-    padding-left: 6px;
-    padding-right: 6px;
-">4</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="typ" style="
-    padding-left: 4px;
-">Value2</span><span class="pln"> </span><span class="pun">|</span><span class="pln">
-</span><span class="pun">+----+--------+</span><span class="pln">
-</span><span class="lit">2</span><span class="pln"> rows </span><span class="kwd">in</span><span class="pln"> </span><span class="kwd">set</span><span class="pln"> </span><span class="pun">(</span><span class="lit">0.00</span><span class="pln"> sec</span><span class="pun">)</span></pre>
+	+----+--------+
+	| id | value  |
+	+----+--------+
+	|  1 | Value1 |
+	|  4 | Value2 |
+	+----+--------+
+	2 rows in set (0.00 sec)
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
@@ -390,4 +375,4 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 [Azure CLI ツールの issue #1268]: https://github.com/Azure/azure-xplat-cli/issues/1268
 [Linux 上で MySQL をクラスター化する別の方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-mysql-cluster/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

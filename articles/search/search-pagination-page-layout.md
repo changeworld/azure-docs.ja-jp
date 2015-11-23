@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Search の検索結果の改ページ方法 | Microsoft Azure" 
+	pageTitle="Azure Search での検索結果のページ表示の方法 | Microsoft Azure | ホスト型クラウド検索サービス" 
 	description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search の改ページ。" 
 	services="search" 
 	documentationCenter="" 
@@ -114,4 +114,4 @@ Azure Search では、`"Sortable": true.` とインデックス付けされた�
 [4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
 [5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

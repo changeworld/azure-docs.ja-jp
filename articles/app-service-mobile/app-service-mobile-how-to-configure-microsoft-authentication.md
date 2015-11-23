@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="07/27/2015"
+	ms.date="10/30/2015"
 	ms.author="mahender"/>
 
 # Microsoft アカウント ログインを使用するようにアプリケーションを構成する方法
@@ -72,4 +72,4 @@
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Microsoft Azure の管理ポータル]: https://portal.azure.com/
 
-<!----HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

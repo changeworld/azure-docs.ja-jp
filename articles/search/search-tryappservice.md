@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure Search が使用された Try Azure App Service の試用 | Microsoft Azure" 
+   pageTitle="Azure Search が使用された Try Azure App Service の試用 | Microsoft Azure | ホスト型クラウド検索サービス" 
    description="ホスト型クラウド検索サービスの Azure Search を TryAzureAppService テンプレートを使用し、最大 1 時間無料で試してください。" 
    services="search" 
    documentationCenter="" 
@@ -529,4 +529,4 @@ Azure Search に関する詳細については、[http://azure.microsoft.com](ht
 [13]: ./media/search-tryappservice/AzSearch-TryAppService-Schema.png
 [14]: ./media/search-tryappservice/AzSearch-TryAppService-HitHighlight.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

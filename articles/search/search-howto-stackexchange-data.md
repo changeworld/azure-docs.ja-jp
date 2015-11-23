@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Search を使用して StackExchange のデータを検索する方法 | Microsoft Azure"
+	pageTitle="Azure Search を使用して StackExchange のデータを検索する方法 | Microsoft Azure | ホスト型クラウド検索サービス"
 	description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search を利用し、REST 検索を実行する方法について説明します。"
 	services="search"
 	documentationCenter=""
@@ -109,4 +109,4 @@ Brent は、SQL データベースにデータをステージングする方法�
     Server=tcp:azs-playground.database.windows.net,1433;Database=StackExchange;User ID=reader@azs-playground;
     Password=EdrERBt3j6mZDP;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

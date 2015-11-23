@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.date="11/11/2015" 
 	ms.author="tomfitz"/>
 
 
@@ -25,7 +25,7 @@
 
 通常、1 つのリソース グループには、特定の 1 つのアプリケーションに関連するリソースが含まれています。たとえば、公開する Web サイトをホストする Web アプリ、そのサイトが使用するリレーショナル データを格納する SQL Database、および非リレーショナル アセットを格納するストレージ アカウントを、1 つのグループに含めることができます。リソース グループ内のすべてのリソースで同じライフ サイクルを共有する必要があります。リソース マネージャーの詳細については、「[リソース マネージャーの概要](../resource-group-overview.md)」をご覧ください。
 
-このトピックでは、Azure プレビュー ポータル内でリソース グループを使用する方法を概説します。
+このトピックでは、Azure プレビュー ポータル内でリソース グループを使用する方法を概説します。現時点では、すべてのサービスでプレビュー ポータルまたはリソース マネージャーがサポートされているわけではありません。それらがサポートされていないサービスの場合、[ポータル](https://manage.windowsazure.com)を使用する必要があります。各サービスの状況については、「[リソース マネージャーによるサービス、リージョン、API バージョンのサポート](resource-manager-supported-services.md)」を参照してください。
 
 ## リソース グループとリソースの作成
 
@@ -147,11 +147,11 @@
 Getting Started (概要)
 
 - リソース マネージャーでの概念の概要については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」をご覧ください。  
-- リソースのデプロイ時に Azure PowerShell を使用する方法の概要については、「[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
+- リソースのデプロイ時に Azure PowerShell を使用する方法の概要については、「[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 - リソースのデプロイ時に Azure CLI を使用する方法の概要については、「[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」をご覧ください。 
   
 
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

@@ -126,10 +126,6 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 
 上記の例において、otherLinkedServiceName1 と otherLinkedServiceName2 は、HDInsight クラスターが代替ストレージ アカウントにアクセスするために必要な資格情報がその定義に含まれているリンクされたサービスを表します。
 
-## ストアド プロシージャ アクティビティ - FAQ
-### ストアド プロシージャ アクティビティではどのようなデータ ソースがサポートされますか。
-現時点で、Azure SQL Database のみがストアド プロシージャ アクティビティでサポートされます。
-
 ## スライス - FAQ
 
 ### スライスを再実行するにはどうすればよいですか。
@@ -181,4 +177,4 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

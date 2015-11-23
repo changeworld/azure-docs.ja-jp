@@ -1,4 +1,4 @@
-<properties pageTitle="Web API プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス) |Microsoft Azure " description="Visual Studio を使用して Azure AD に接続する MVC プロジェクト Web API の変更点について説明します services="active-directory" services="active-directory" documentationCenter="" authors="patshea123" manager="douge" editor="tglee"/>
+<properties pageTitle="Web API プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス) |Microsoft Azure " description="Visual Studio を使用して Azure AD に接続する MVC プロジェクト Web API の変更点について説明します services="active-directory" services="active-directory" documentationCenter="" authors="TomArcher" manager="douge" editor="tglee"/>
 
 <tags
 	ms.service="active-directory"
@@ -7,7 +7,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/03/2015"
-	ms.author="patshea"/>
+	ms.author="tarcher"/>
 
 # Web API プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス)
 
@@ -109,4 +109,4 @@ Azure Active Directory アプリが更新され、*[ディレクトリ データ
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

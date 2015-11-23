@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="web"
-	ms.date="08/03/2015"
+	ms.date="11/06/2015"
 	ms.author="tomfitz"/>
 
 #Azure App Service のエンタープライズ クラスの WordPress
@@ -28,7 +28,7 @@ Azure App Service は、基幹業務系の大規模な [WordPress][wordpress] �
 
     > [AZURE.NOTE]ClearDB では複数の MySQL 構成を利用でき、構成ごとにパフォーマンス特性が異なります。Azure ストアで提供されているオファリングの詳細については [Azure ストア][cdbnstore]を、ClearDB が公表しているオファリングについては [ClearDB の料金情報](http://www.cleardb.com/pricing.view)を参照してください。
 
-* **PHP 5.2.4 以上** - Azure App Service は現在、[PHP バージョン 5.3、5.4、5.5][phpwebsite] を提供しています。
+* **PHP 5.2.4 以上** - Azure App Service は現在、[PHP バージョン 5.4、5.5、5.6][phpwebsite] を提供しています。
 
 	> [AZURE.NOTE]最新のセキュリティ更新プログラムが適用されるよう、常に最新バージョンの PHP で実行することをお勧めします。
 
@@ -53,7 +53,7 @@ Azure [Traffic Manager][trafficmanager] を使用すると、WordPress サイト
 
 ###メディア ストレージとキャッシュを用いる複数リージョンのデプロイ
 
-サイトがアップロードを受け入れている場合、またはメディア ファイルをホストする場合は、Azure BLOB ストレージを使用します。キャッシュが必要な場合は、[Redis Cache][rediscache]、[Memcached Cloud](http://azure.microsoft.com/gallery/store/garantiadata/memcached/)、[MemCachier](http://azure.microsoft.com/gallery/store/memcachier/memcachier/)、または [Azure ストア](http://azure.microsoft.com/gallery/store/)で取り扱われている別のキャッシュ オファリングの使用を検討してください。
+サイトがアップロードを受け入れている場合、またはメディア ファイルをホストする場合は、Azure BLOB ストレージを使用します。キャッシュが必要な場合は、[Redis Cache][rediscache]、[Memcached Cloud](https://azure.microsoft.com/marketplace/partners/garantiadata/memcached/)、[MemCachier](https://azure.microsoft.com/marketplace/partners/memcachier/memcachier/)、または [Azure ストア](http://azure.microsoft.com/gallery/store/)で取り扱われている別のキャッシュ オファリングの使用を検討してください。
 
 ![Azure の Web アプリは、Managed Cache、Blob ストレージ、CDN を使用した CDBR の高可用性のルーターを MySQL に使用し、複数のリージョンでホストされています。][performance-diagram]
 
@@ -87,7 +87,7 @@ BLOB ストレージは、既定では複数のリージョンにまたがって
 目的 | 方法
 ------------------------|-----------
 **App Service インスタンス機能について学ぶ** | [App Service 階層 の機能と料金の詳細][websitepricing]
-**キャッシュ リソース** | [Redis Cache][rediscache]、[Memcached Cloud](/gallery/store/garantiadata/memcached/)、[MemCachier](/gallery/store/memcachier/memcachier/)、または [Azure ストア](/gallery/store/)で取り扱われている別のキャッシュ オファリング
+**キャッシュ リソース** | [Redis Cache][rediscache]、[Memcached Cloud](https://azure.microsoft.com/marketplace/partners/garantiadata/memcached/)、[MemCachier](https://azure.microsoft.com/marketplace/partners/memcachier/memcachier/)、または [Azure ストア](/gallery/store/)で取り扱われている別のキャッシュ オファリング
 **アプリケーションのスケール** | [Azure App Service で Web アプリ][websitescale]と [ClearDB の高可用性ルーティング][cleardbscale]をスケールします。独自の MySQL インストールをホストし、管理する場合は、[MySQL Cluster CGE][cge] によるスケールアウトを検討してください。
 
 ####移行
@@ -249,10 +249,10 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 [sendgridplugin]: http://wordpress.org/plugins/sendgrid-email-delivery-simplified/
 [phpwebsite]: web-sites-php-configure.md
 [customdomain]: web-sites-custom-domain-name.md
-[trafficmanager]: /blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/
+[trafficmanager]: ../traffic-manager/traffic-manager-overview.md
 [backup]: web-sites-backup.md
 [restore]: web-sites-restore.md
-[rediscache]: http://msdn.microsoft.com/library/azure/dn690470.aspx
+[rediscache]: https://azure.microsoft.com/documentation/services/redis-cache/
 [managedcache]: http://msdn.microsoft.com/library/azure/dn386122.aspx
 [websitescale]: web-sites-scale.md
 [managedcachescale]: http://msdn.microsoft.com/library/azure/dn386113.aspx
@@ -279,8 +279,8 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 [deploy]: web-sites-deploy.md
 [posh]: ../install-configure-powershell.md
 [Azure CLI]: ../xplat-cli-install.md
-[storesendgrid]: /gallery/store/sendgrid/sendgrid-azure/
+[storesendgrid]: https://azure.microsoft.com/marketplace/partners/sendgrid/sendgrid-azure/
 [cdn]: ../cdn-how-to-use.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

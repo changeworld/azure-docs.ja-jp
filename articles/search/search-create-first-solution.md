@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Search による最初の検索ソリューションの作成 | Microsoft Azure" 
+	pageTitle="Microsoft Azure のホスト型のクラウド検索サービスである Azure Search を利用し、最初の検索ソリューションを作成します。" 
 	description="Microsoft Azure のホスト型のクラウド検索サービスである Azure Search を利用し、最初の検索ソリューションを作成します。" 
 	services="search" 
 	documentationCenter="" 
@@ -206,4 +206,4 @@ AdventureWorksWeb をビルドするときに、「ファイルまたはアセ�
 [11]: ./media/search-create-first-solution/AzureSearch_Create1_Suggestions.PNG
 [12]: ./media/search-create-first-solution/AzureSearch_Create1_CodeplexDownload.PNG
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

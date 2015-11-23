@@ -208,13 +208,4 @@ type | 列のデータ型です。 | いいえ | 該当なし
 	  }
 	}
 
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-create-datasets.md)でフィードバックをお寄せください。
-
-
-
-
-
-  
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

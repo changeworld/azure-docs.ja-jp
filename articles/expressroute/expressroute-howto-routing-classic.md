@@ -1,5 +1,5 @@
 <properties
-   pageTitle="ExpressRoute 回線のルーティングを構成する方法 |Microsoft Azure"
+   pageTitle="PowerShell を使用して、クラシック デプロイメント モデルの ExpressRoute 回線のルーティングを構成する方法 |Microsoft Azure"
    description="この記事では、ExpressRoute 回線のプライベート、パブリックおよび Microsoft ピアリングを作成し、プロビジョニングする手順について説明します。この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。"
    documentationCenter="na"
    services="expressroute"
@@ -13,19 +13,18 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/04/2015"
+   ms.date="11/05/2015"
    ms.author="cherylmc"/>
 
-# ExpressRoute ルーティング構成の作成と変更
+# PowerShell を使用した ExpressRoute 回線のルーティングの作成と変更
 
 > [AZURE.SELECTOR]
-[PowerShell Classic](expressroute-howto-routing-classic.md)
-[PowerShell Resource Manager](expressroute-howto-routing-arm.md)
+[PowerShell - Classic](expressroute-howto-routing-classic.md)
+[PowerShell - Resource Manager](expressroute-howto-routing-arm.md)
 
 この記事では、PowerShell コマンドレットとクラシック デプロイメント モデルを使用して、ExpressRoute 回線のルーティング構成を作成して管理する手順について説明します。以下の手順では、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除の方法も示します。
 
->[AZURE.IMPORTANT]Azure は現在、2 つのデプロイメント モデル (リソース マネージャーおよび従来のモデル) で使用できることを理解しておくことが重要です。構成を開始する前に、デプロイ モデルとツールについて理解しておくようにしてください。デプロイメント モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
-
+[AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
 ## 構成の前提条件
 
@@ -41,7 +40,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 このセクションでは、ExpressRoute 回線用の Azure プライベート ピアリング構成を作成、取得、更新、および削除する方法について説明します。
 
-### Azure プライベート ピアリングの作成
+### Azure プライベート ピアリングを作成するには
 
 1. **ExpressRoute 用の PowerShell モジュールをインポートします。**
 	
@@ -95,7 +94,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 	>[AZURE.IMPORTANT]顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
 
-### Azure プライベート ピアリングの詳細の取得
+### Azure プライベート ピアリングの詳細を取得するには
 
 次のコマンドレットを使用して、構成の詳細を取得することができます。
 
@@ -115,25 +114,26 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 	VlanId                         : 100
 
 
-### Azure プライベート ピアリングの構成の更新
+### Azure プライベート ピアリングの構成を更新するには
 
 次のコマンドレットを使用して、構成のどの部分でも更新することができます。次の例では、回路の VLAN ID が 100 から 500 に更新されています。
 
 	Set-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 500 -SharedKey "A1B2C3D4"
 
-### Azure プライベート ピアリングの削除
+### Azure プライベート ピアリングを削除するには
 
 以下のコマンドレットを実行して、ピアリング構成を削除することができます。
 
+>[AZURE.WARNING]このコマンドレットを実行する前に、すべての仮想ネットワークが ExpressRoute 回線からリンク解除されていることを確認する必要があります。
+
 	Remove-AzureBGPPeering -AccessType Private -ServiceKey "*********************************"
 
->[AZURE.IMPORTANT]このコマンドレットを実行する前に、すべての仮想ネットワークが ExpressRoute 回線からリンク解除されていることを確認する必要があります。
 
 ## Azure パブリック ピアリング
 
 このセクションでは、ExpressRoute 回線用の Azure パブリック ピアリング構成を作成、取得、更新および削除する方法について説明します。
 
-### Azure パブリック ピアリングの作成
+### Azure パブリック ピアリングを作成するには
 
 1. **ExpressRoute 用の PowerShell モジュールをインポートします。**
 	
@@ -188,7 +188,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 	>[AZURE.IMPORTANT]顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
 
-### Azure パブリック ピアリングの詳細の取得
+### Azure パブリック ピアリングの詳細を取得するには
 
 次のコマンドレットを使用して、構成の詳細を取得することができます。
 
@@ -208,7 +208,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 	VlanId                         : 200
 
 
-### Azure パブリック ピアリング構成の更新
+### Azure パブリック ピアリング構成を更新するには
 
 次のコマンドレットを使用して、構成のどの部分も更新することができます。
 
@@ -216,7 +216,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 上記の例では、回線の VLAN ID は 200 から 600 に更新されています。
 
-### Azure パブリック ピアリングの削除
+### Azure パブリック ピアリングを削除するには
 
 次のコマンドレットを実行して、ピアリング構成を削除することができます。
 
@@ -226,7 +226,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 このセクションでは、ExpressRoute 回線の Microsoft ピアリング構成を作成、取得、更新および削除する方法について説明します。
 
-### Microsoft ピアリングの作成
+### Microsoft ピアリングを作成するには
 
 1. **ExpressRoute 用の PowerShell モジュールをインポートします。**
 	
@@ -278,7 +278,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 		New-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -VlanId 300 -PeerAsn 1234 -CustomerAsn 2245 -AdvertisedPublicPrefixes "123.0.0.0/30" -RoutingRegistryName "ARIN" -SharedKey "A1B2C3D4"
 
 
-### Microsoft ピアリングの詳細の取得
+### Microsoft ピアリングの詳細を取得するには
 
 次のコマンドレットを使用して、構成の詳細を取得できます。
 
@@ -298,13 +298,13 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 	VlanId                         : 300
 
 
-### Microsoft ピアリング構成の更新
+### Microsoft ピアリング構成を更新するには
 
 次のコマンドレットを使用して、構成のどの部分でも更新することができます。
 
 		Set-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -VlanId 300 -PeerAsn 1234 -CustomerAsn 2245 -AdvertisedPublicPrefixes "123.0.0.0/30" -RoutingRegistryName "ARIN" -SharedKey "A1B2C3D4"
 
-### Microsoft ピアリングの削除
+### Microsoft ピアリングを削除するには
 
 以下のコマンドレットを実行して、ピアリング構成を削除することができます。
 
@@ -312,8 +312,10 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 ## 次のステップ
 
--  次に、[ExpressRoute 回線に VNet をリンクします](expressroute-howto-linkvnet-classic.md)。
+次に、[ExpressRoute 回線に VNet をリンクします](expressroute-howto-linkvnet-classic.md)。
+
+
 -  ワークフローの詳細については、「[ExpressRoute ワークフロー](expressroute-workflows.md)」を参照してください。
 -  回路ピアリングの詳細については、「[ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

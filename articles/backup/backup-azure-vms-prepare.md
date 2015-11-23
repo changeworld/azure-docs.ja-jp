@@ -83,7 +83,7 @@ VM をバックアップする際、HTTPS API を使用してスナップショ�
 
 次の例では、パブリック インターネットに送信されるすべての HTTP トラフィックにプロキシ VM を使用するようにアプリ VM を構成する必要があります。プロキシ VM は、VNET 内の VM からの着信トラフィックを許可するように構成する必要があります。最後に、NSG (*NSG-lockdown*) には、プロキシ VM からの発信インターネット トラフィックを許可する新しいセキュリティ規則が必要です。
 
-![NSG with HTTP proxy deployment diagram](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
+![HTTP プロキシを使用した NSG のデプロイメントの図表](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
 
 **A) 発信方向のネットワーク接続を許可する:**
 
@@ -112,14 +112,14 @@ HttpProxy.Port=<proxy port>
 
 1. プロキシ サーバー上で Windows ファイアウォールを開き、*[受信の規則]* を右クリックし、**[新しい規則]** をクリックします。
 
-	![Open the Firewall](./media/backup-azure-vms-prepare/firewall-01.png)
+	![ファイアウォールを開く](./media/backup-azure-vms-prepare/firewall-01.png)
 
-	![Create a new rule](./media/backup-azure-vms-prepare/firewall-02.png)
+	![新しいルールの作成](./media/backup-azure-vms-prepare/firewall-02.png)
 2. *新規の受信の規則ウイザード*の *[規則の種類]* で **[カスタム]** を選択し、[次へ] をクリックします。*プログラム*の選択画面で、**[すべてのプログラム]** を選択し、[次へ] をクリックします。
 
 3. *[プロトコルおよびポート]* 画面で、次の表の入力値を使用して、[次へ] をクリックします。
 
-	![Create a new rule](./media/backup-azure-vms-prepare/firewall-03.png)
+	![新しいルールの作成](./media/backup-azure-vms-prepare/firewall-03.png)
 
 | 入力フィールド | 値 |
 | --- | --- |
@@ -144,7 +144,7 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 
 ## 3\.VM エージェント
 
-![VM agent](./media/backup-azure-vms-prepare/step3.png)
+![VM エージェント](./media/backup-azure-vms-prepare/step3.png)
 
 Azure 仮想マシンのバックアップを開始する前に、Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください。VM エージェントは仮想マシンを作成する際のオプション コンポーネントであるため、仮想マシンをプロビジョニングする前に、VM エージェントのチェック ボックスがオンになっていることを確認します。
 
@@ -194,4 +194,4 @@ VM が実行されている場合、バックアップ拡張機能がインス�
 - [仮想マシンのバックアップ](backup-azure-vms.md)
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

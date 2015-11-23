@@ -96,7 +96,7 @@ GO
 
 Azure SQL Database アプリケーションのセキュリティの脅威に対する脆弱性を低くするには、以下の点を考慮します。
 
-- 常に最新の更新プログラムを使用します。SQL Database に接続するときには、セキュリティの脆弱性を防ぐために、常に最新バージョンのツールとライブラリを使用します。サポートされているツールとライブラリの詳細については、「[Azure SQL Database の一般的なガイドラインと制限事項](https://msdn.microsoft.com/library/azure/ee336245.aspx)」を参照してください。
+- 常に最新の更新プログラムを使用します。SQL Database に接続するときには、セキュリティの脆弱性を防ぐために、常に最新バージョンのツールとライブラリを使用します。
 - TCP ポート 1433 で受信接続をブロックします。アプリケーションが SQL Database と通信するために必要なのは、TCP ポート 1433 での発信接続のみです。そのコンピューターの他のアプリケーションも受信通信を必要としない場合は、ファイアウォールが TCP ポート 1433 の受信接続のブロックを続けることを確認してください。
 - インジェクションの脆弱性を防ぎます。アプリケーションに SQL インジェクションの脆弱性がないようにするには、可能な限りパラメーター化クエリを使用します。また、コードを徹底的に見直し、アプリケーションをデプロイする前に侵入テストを実行します。
 
@@ -107,8 +107,6 @@ Azure SQL Database アプリケーションのセキュリティの脅威に対�
 
 [ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)
 
-[Azure SQL Database の一般的なガイドラインと制限事項](https://msdn.microsoft.com/library/azure/ee336245.aspx)
-
 [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

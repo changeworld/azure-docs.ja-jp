@@ -19,7 +19,7 @@
 ### Azure ストレージ アカウントと Service Bus キューのプロビジョニング
 [EventProcessorHost] を使用するには、Azure ストレージ アカウントが必要です。既存のものを使用することも、「[Azure Storage について]」の手順に従って新しいものを作成することもできます。ストレージ アカウント接続文字列はメモしておいてください。
 
-また、Service Bus キューで対話型メッセージの信頼性の高い処理を有効にする必要もあります。「[Service Bus キューの使用方法][Service Bus Queue]」で説明されているように、1 時間の重複除去期間でキューをプログラムを使用して作成することも、[Microsoft Azure 管理ポータル]を使用し、以下の手順に従って作成することもできます。
+また、Service Bus キューで対話型メッセージの信頼性の高い処理を有効にする必要もあります。「[Service Bus キューの使用方法][Service Bus Queue]」で説明されているように、キューは、1 時間の重複除去期間でプログラムを使用して作成できます。また、[Azure ポータル]を使用し、以下の手順に従って作成することもできます。
 
 1. 左下隅にある **[新規]** をクリックしてから、**[App Services]**、**[Service Bus]**、**[キュー]**、**[カスタム]** の順にクリックし、**d2ctutorial** という名前を選択してから 1 時間の重複除去期間を選択します。
 
@@ -301,11 +301,11 @@
 
 [Event Hubs のプログラミング ガイド]: ../event-hubs/event-hubs-programming-guide.md
 
-[Azure Preview Portal]: https://portal.azure.com/
+[Azure preview portal]: https://portal.azure.com/
 
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
-[Microsoft Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure ポータル]: https://manage.windowsazure.com/
 
 [Service Bus Queue]: ../service-bus/service-bus-dotnet-how-to-use-queues.md
 
@@ -324,4 +324,4 @@
 [31]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue3.png
 [32]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue4.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

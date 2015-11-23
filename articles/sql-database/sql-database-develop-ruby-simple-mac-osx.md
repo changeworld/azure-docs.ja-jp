@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ruby" 
 	ms.topic="article" 
-	ms.date="07/20/2015" 
+	ms.date="11/09/2015" 
 	ms.author="andrela"/>
 
 
@@ -104,4 +104,4 @@ Microsoft SQL Server の [datetime](http://msdn.microsoft.com/library/ms187819.a
     puts row
     end
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

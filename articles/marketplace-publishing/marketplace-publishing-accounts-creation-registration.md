@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="marketplace-publishing"
+   ms.service="marketplace"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -195,7 +195,7 @@ Microsoft Azure Marketplace でサービスを販売するには、登録済み�
 [img-sd-legal]: media/marketplace-publishing-accounts-creation-registration/seller-dashboard-personal-cmp.jpg
 [img-sd-submit]: media/marketplace-publishing-accounts-creation-registration/seller-dashboard-approval.jpg
 
-[link-msdndoc]: https://msdn.microsoft.com/JA-JP/library/jj552460.aspx
+[link-msdndoc]: https://msdn.microsoft.com/ja-JP/library/jj552460.aspx
 [link-sellerdashboard]: http://sellerdashboard.microsoft.com/
 [link-pubportal]: https://publish.windowsazure.com
 [link-single-vm]: marketplace-publishing-vm-image-creation.md
@@ -208,4 +208,4 @@ Microsoft Azure Marketplace でサービスを販売するには、登録済み�
 [link-devsvc-prereq]: marketplace-publishing-dev-service-creation-prerequisites.md
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

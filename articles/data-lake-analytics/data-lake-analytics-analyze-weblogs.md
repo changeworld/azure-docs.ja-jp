@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/28/2015"
+   ms.date="11/09/2015"
    ms.author="jgao"/>
 
 # チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する
@@ -59,13 +59,13 @@ U-SQL スクリプトをビルドしてテストするには、まず、Azure �
 **Data Lake Analytics アカウントを参照するには**
 
 1. Visual Studio で、**Ctrl + Alt + S** キーを押して、**サーバー エクスプローラー**を開きます。
-2. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]** の順に展開します。Data Lake Analytics アカウントが複数ある場合は、そのリストが表示されます。Visual Studio で Data Lake Analytics アカウントを作成することはできません。アカウントを作成する場合は、「[Azure プレビュー ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」または「[Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-get-started-powershell.md)」を参照してください。
+2. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]** の順に展開します。Data Lake Analytics アカウントが複数ある場合は、そのリストが表示されます。Visual Studio で Data Lake Analytics アカウントを作成することはできません。アカウントを作成する場合は、「[Azure プレビュー ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」または「[Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)」を参照してください。
 
 ## U-SQL アプリケーションの作成 
 
 U SQL アプリケーションの大部分は、U-SQL スクリプトです。U-SQL の詳細については、[U-SQL の使用](data-lake-analytics-u-sql-get-started.md)に関するページを参照してください。
 
-アプリケーションにはユーザー定義演算子を追加できます。詳細については、[Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の作成](data-lake-analytics-u-sql-user-defined-operators.md)に関するページを参照してください。
+アプリケーションにはユーザー定義演算子を追加できます。詳細については、[Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の作成](data-lake-analytics-u-sql-develop-user-defined-operators.md)に関するページを参照してください。
  
 **Data Lake Analytics ジョブを作成して送信するには**
 
@@ -130,6 +130,8 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。U-
                 s_timetaken int
             FROM @"/Samples/Data/WebLog.log"
             USING Extractors.Text(delimiter:' ');
+		    RETURN;
+		END;
         
         // Create a table for storing referrers and status 
         DROP TABLE IF EXISTS SampleDBTutorials.dbo.ReferrersPerDay;
@@ -152,6 +154,10 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。U-
                 cs_referer, 
                 sc_status;
         
+    U-SQL を理解するには、[Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)に関するページを参照してください。
+       
+5. 新しい U-SQL スクリプトをプロジェクトに追加し、以下を入力してください。
+
         // Query the referrers that ran into errors
         @content =
             SELECT *
@@ -162,21 +168,23 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。U-
         TO @"/Samples/Outputs/UnsuccessfulResponses.log"
         USING Outputters.Tsv();
 
-    U-SQL を理解するには、[Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)に関するページを参照してください。
-       
-5. **[送信]** ボタンの横に、Analytics アカウントを指定します。
-5. **ソリューション エクスプローラー**で、**Script.usql** を右クリックして **[スクリプトのビルド]** をクリックします。[出力] ウィンドウで結果を確認します。
-6. **ソリューション エクスプローラー**で、**Script.usql** を右クリックして **[スクリプトの送信]** をクリックします。
-7. **[Analytics アカウント]** にジョブを実行するアカウントが設定されていることを確認し、**[送信]** をクリックします。送信が完了すると、Data Lake Tools for Visual Studio の [結果] ウィンドウに送信結果とジョブのリンクが示されます。
-8. ジョブが正常に完了するまで待機します。ジョブが失敗した場合は、ソース ファイルが存在しない可能性があります。このチュートリアルの「前提条件」を参照してください。トラブルシューティングの詳細については、[Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)に関するページを参照してください。
+6. 最初の U-SQL スクリプトに戻り、**[送信]** ボタンの横に、Analytics アカウントを指定します。
+7. **ソリューション エクスプローラー**で、**Script.usql** を右クリックして **[スクリプトのビルド]** をクリックします。[出力] ウィンドウで結果を確認します。
+8. **ソリューション エクスプローラー**で、**Script.usql** を右クリックして **[スクリプトの送信]** をクリックします。
+9. **[Analytics アカウント]** にジョブを実行するアカウントが設定されていることを確認し、**[送信]** をクリックします。送信が完了すると、Data Lake Tools for Visual Studio の [結果] ウィンドウに送信結果とジョブのリンクが示されます。
+10. ジョブが正常に完了するまで待機します。ジョブが失敗した場合は、ソース ファイルが存在しない可能性があります。このチュートリアルの「前提条件」を参照してください。トラブルシューティングの詳細については、[Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)に関するページを参照してください。
 
     ジョブが完了すると、次の画面が表示されます。
     
     ![data lake analytics analyze weblogs website logs](./media/data-lake-analytics-analyze-weblogs/data-lake-analytics-analyze-weblogs-job-completed.png)
 
+11. 次に、**Script1.usql** の手順 7 ～ 10 を繰り返します。
+
+>[AZURE.NOTE]同じスクリプトで作成または変更された U-SQL テーブルに対する読み取りと書き込みは実行できません。 これが、この例で 2 つのスクリプトを使用する利用です。
+
 **ジョブの出力を表示するには**
 
-1. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]**、ご使用の Data Lake Analytics アカウント、**[ストレージ アカウント]** の順に展開し、既定の Data Lake ストレージ アカウントを右クリックして **[エクスプローラー]** をクリックします。 
+1. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]**、ご使用の Data Lake Analytics アカウント、**[ストレージ アカウント]** の順に展開し、既定の Data Lake ストレージ アカウントを右クリックしてから **[エクスプローラー]** をクリックします。 
 2.  **[サンプル]** をダブルクリックしてフォルダーを開き、**[出力]** をダブルクリックします。
 3.  **UnsuccessfulResponsees.log** をダブルクリックします。
 4.  ジョブのグラフ ビューで出力ファイルをダブルクリックして、出力ファイルに直接移動することもできます。
@@ -185,7 +193,7 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。U-
 
 さまざまなツールを使用して Data Lake Analytics の使用を開始する方法については、以下を参照してください。
 
-- [Azure プレビュー ポータルで Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
+- [Azure プレビュー ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 - [Azure PowerShell で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
 - [.NET SDK で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-net-sdk.md)
 
@@ -195,4 +203,4 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。U-
 - [Azure Data Lake Analytics U-SQL 言語の使用を開始する](data-lake-analytics-u-sql-get-started.md)
 - [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子を作成する](data-lake-analytics-u-sql-user-defined-operators.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

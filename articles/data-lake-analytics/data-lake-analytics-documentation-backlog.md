@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/28/2015"
+   ms.date="11/05/2015"
    ms.author="mwinkle"/>
 
 # Azure Data Lake Analytics ドキュメントのバックログ
@@ -24,10 +24,10 @@
 
 領域 |トピック | 優先順位 | 状態 | 割当先 | 要求者 
 ------------- | ------------- | -------------- | -------------- | --------------- | --------------
-U-SQL | 分散クエリ | 1 | 進行中 | [@edmacauley](https://github.com/edmacauley) | 
+U-SQL | 分散クエリ | 1 | 保留中 | [@edmacauley](https://github.com/edmacauley) | 
 U-SQL | JSON の処理 | 2 | 保留中 | [@mumian](https://github.com/mumian) | [@mwinkle](https://github.com/mwinkle)
 サービス | Curl の操作 | 3 |保留中 |[@mumian](https://github.com/mumian)
-U-SQL | パーティション テーブル |1 | 保留中 | [@edmacauley](https://github.com/edmacauley) | 
+U-SQL | パーティション テーブル |1 | 進行中 | [@edmacauley](https://github.com/edmacauley) | 
 U-SQL | パフォーマンスのチューニング | 2 | 保留中 | [@MikeRys](https://github.com/mikerys) | 
 U-SQL | プログラマー ガイド | 2 | 保留中 | [@edmacauley](https://github.com/edmacauley) | 
 U-SQL | T-SQL バックグラウンドからの U-SQL の使用 | 1 | 保留中 | [@edmacauley](https://github.com/edmacauley) | [@MikeRys](https://github.com/mikerys)
@@ -53,4 +53,4 @@ U-SQL | 文法のレールロード ダイアグラム | 1 | 進行中 ([これ]
 * [Azure コンテンツ リポジトリ](https://github.com/Azure/azure-content/blob/master/articles/data-lake-analytics/data-lake-analytics-documentation-backlog.md)でこのドキュメントに関するプル要求を送信する。
 * [adlafeedback at microsoft.com](mailto:adlafeedback@microsoft.com?subject=DocBacklog) に電子メールを送信する。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

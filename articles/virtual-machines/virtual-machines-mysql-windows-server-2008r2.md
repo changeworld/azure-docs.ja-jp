@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/10/2015"
+	ms.date="11/09/2015"
 	ms.author="cynthn"/>
 
 
@@ -59,8 +59,8 @@ MySQL Server の Community バージョンをインストール、構成、と�
 1.	リモート デスクトップを使用して仮想マシンに接続したら、スタート画面で **[Internet Explorer]** をクリックします。
 2.	右上隅の **[ツール]** (歯車のアイコン) を選択して、**[インターネット オプション]** をクリックします。**[セキュリティ]** タブ、**[信頼済みサイト]** アイコン、**[サイト]** の順にクリックします。信頼済みサイトの一覧に http://*.mysql.com を追加します。**[閉じる]**、**[OK]** の順にクリックします。
 3.	Internet Explorer のアドレス バーに「http://dev.mysql.com/downloads/mysql/」と入力します。
-4.	MySQL サイトで MySQL Installer for Windows の最新バージョンを見つけ、インストールします。MySQL Installer を選ぶ際、すべてのファイル セットが揃っているバージョンをダウンロードし (ファイル サイズが 282.4 MB の mysql-installer-community-5.6.23.0.msi など)、このインストーラー ファイルを Windows デスクトップに保存します。
-5.	デスクトップからこのインストーラー ファイルをダブルクリックしてインストールを開始します。
+4.	MySQL サイトで MySQL Installer for Windows の最新バージョンを見つけ、インストールします。MySQL Installer を選ぶ際、すべてのファイル セットが揃っているバージョンをダウンロードし (ファイル サイズが 282.4 MB の mysql-installer-community-5.6.23.0.msi など)、このインストーラーを保存します。
+5.	インストーラーでダウンロードが完了したら、[**実行**]をクリックしてセットアップを起動します。
 6.	**[License Agreement]** ページで、ライセンス契約の内容に同意し、**[Next]** をクリックします。
 7.	**[Choosing a Setup Type]** ページで目的のセットアップの種類をクリックしてから、**[Next]** をクリックします。次の手順は、セットアップの種類として **[Server only]** を選択したことを前提にしています。
 8.	**[Installation]** ページで、**[Execute]** をクリックします。インストールが完了したら、**[Next]** をクリックします。
@@ -91,6 +91,7 @@ MySQL Server の Community バージョンをインストール、構成、と�
 
 19.	また、C:\Program Files (x86)\MySQL\MySQL Server 5.6\my-default.ini ファイルに入力することにより、ベース ディレクトリやデータ ディレクトリ、ドライブなど、サーバー構成に関する既定の設定についても構成できます。詳細については、[5.1.2 サーバー構成の既定値](http://dev.mysql.com/doc/refman/5.6/en/server-configuration-defaults.html)に関するページを参照してください。
 
+## エンドポイントを構成する
 
 インターネット上の MySQL クライアント コンピューターで MySQL Server サービスを利用可能にするには、MySQL Server サービスがリッスンしている TCP ポートにエンドポイントを構成し、別の Windows ファイアウォール ルールを作成する必要があります。前の手順 10. で説明した **[Type and Networking]** ページで別のポートを指定した場合を除き、これは TCP ポート 3306 です。
 
@@ -106,9 +107,16 @@ MySQL Server サービスのエンドポイントを構成するには、次の�
 4.	既定の MySQL TCP ポート 3306 を使用している場合は、**[名前]** の **[MySQL]** をクリックし、チェック マークをクリックします。
 5.	別の TCP ポートを使用している場合は、**[名前]** に一意の名前を入力します。プロトコルに **[TCP]** を選択し、**[パブリック ポート]** と **[プライベート ポート]** の両方にポート番号を入力してからチェック マークをクリックします。
 
-インターネットからの MySQL トラフィックを許可する Windows ファイアウォール ルールを追加するには、MySQL サーバー コンピューターで管理者レベルの Windows PowerShell コマンド プロンプトで次のコマンドを実行します。
+## Windows Firewall ルールを追加して MySQL トラフィックを許可する
+
+インターネットからの MySQL トラフィックを許可する Windows ファイアウォール ルールを追加するには、MySQL サーバー仮想マシンで管理者特権の Windows PowerShell コマンド プロンプトで次のコマンドを実行します。
 
 	New-NetFirewallRule -DisplayName "MySQL56" -Direction Inbound –Protocol TCP –LocalPort 3306 -Action Allow -Profile Public
+
+
+	
+## リモート接続をテストする
+
 
 Azure 仮想マシンで実行する MySQL Server サービスへのリモート接続をテストするには、最初に、MySQL Server を実行する仮想マシンが属しているクラウド サービスに対応する DNS 名を特定する必要があります。
 
@@ -130,4 +138,4 @@ Azure 仮想マシンで実行する MySQL Server サービスへのリモート
 
 MySQL の詳細については、[MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

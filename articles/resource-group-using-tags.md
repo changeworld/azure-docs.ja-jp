@@ -1,5 +1,5 @@
 <properties
-	pageTitle="タグを使用した Azure リソースの整理"
+	pageTitle="タグを使用した Azure リソースの整理 | Microsoft Azure"
 	description="タグを適用して、課金や管理のためにリソースを整理する方法を示します。"
 	services="azure-resource-manager"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="AzurePortal"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/28/2015"
+	ms.date="11/11/2015"
 	ms.author="tomfitz"/>
 
 
@@ -25,8 +25,31 @@
 
 リソースまたはリソース グループに追加する各タグは、サブスクリプション全体の分類に自動的に追加されます。タグの名前でサブスクリプションの分類を事前設定し、リソースとして使用する値を後でタグ付けすることもできます。
 
-> [AZURE.NOTE]タグを適用できるのは、リソース マネージャーの操作をサポートするリソースのみです。 Virtual Machine、Virtual Network、または Storage をクラシック デプロイ モデル (Azure ポータル、[Service Management API](../services/api-management/) など) を通して作成した場合、リソースにタグを適用することはできません。タグ付けが必要な場合は、リソース マネージャーを介してこれらのリソースを再デプロイする必要があります。その他のすべてのリソースでは、タグ付けがサポートされています。
+各リソースまたはリソース グループには、最大で 15 個のタグを含めることができます。タグ名は 512 文字まで、タグ値は 256 文字までに制限されます。
 
+> [AZURE.NOTE]タグを適用できるのは、リソース マネージャーの操作をサポートするリソースのみです。仮想マシン、Virtual Network、またはストレージをクラシック デプロイ モデル (Azure ポータル、[Service Management API](../services/api-management/) など) を通して作成した場合、リソースにタグを適用することはできません。タグ付けが必要な場合は、リソース マネージャーを介してこれらのリソースを再デプロイする必要があります。その他のすべてのリソースでは、タグ付けがサポートされています。
+
+## テンプレート内のタグ
+
+デプロイ時にタグをリソースに追加するのは非常に簡単です。デプロイしているリソースに**タグ**要素を追加し、タグの名前と値を指定するだけです。タグの名前と値は、サブスクリプションに事前に存在する必要はありません。各リソースに対して、最大で 15 個のタグを指定できます。
+
+次の例では、タグを使用したストレージ アカウントを示します。
+
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2015-06-15",
+            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "dept": "Finance"
+            },
+            "properties": 
+            {
+                "accountType": "Standard_LRS"
+            }
+        }
+    ]
 
 ## プレビュー ポータルでのタグ
 
@@ -140,7 +163,7 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 
 ## REST API を使用したタグ付け
 
-ポータルと PowerShell のどちらも、バックグラウンドで[リソース マネージャーの REST AP](http://msdn.microsoft.com/library/azure/dn790568.aspx) を使用します。別の環境にタグ付けを統合する必要がある場合、リソース ID に対する GET 操作でタグを取得し、PATCH 呼び出しでタグのセットを更新できます。
+ポータルと PowerShell のどちらも、バックグラウンドで[リソース マネージャーの REST AP](https://msdn.microsoft.com/library/azure/dn848368.aspx) を使用します。別の環境にタグ付けを統合する必要がある場合、リソース ID に対する GET 操作でタグを取得し、PATCH 呼び出しでタグのセットを更新できます。
 
 
 ## タグ付けと課金
@@ -160,4 +183,4 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 - リソースのデプロイ時に Azure CLI を使用する方法の概要については、「[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](./xplat-cli-azure-resource-manager.md)」をご覧ください。
 - プレビュー ポータルの使用方法の概要については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](./resource-group-portal.md)」をご覧ください。  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

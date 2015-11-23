@@ -75,8 +75,7 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 ## 次のステップ
 
 * [Service Fabric の正常性の概要](service-fabric-health-introduction.md)
-* [Application Insights のセットアップ](service-fabric-diagnostics-application-insights-setup.md)
 * [Azure Service Fabric アクターの診断とパフォーマンス監視](service-fabric-reliable-actors-diagnostics.md)
 * [ステートフル Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

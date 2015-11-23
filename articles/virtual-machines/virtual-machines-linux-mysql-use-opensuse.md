@@ -42,6 +42,5 @@ MySQL の詳細については、[MySQL のドキュメント][MySQLDocs]を参�
 
 [MySQLDocs]: http://dev.mysql.com/doc/index-topic.html
 [MySQL]: http://www.mysql.com
-[AzurePortal]: http://manage.windowsazure.com
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

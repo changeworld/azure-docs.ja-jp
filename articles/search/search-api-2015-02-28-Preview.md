@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Search サービス REST API バージョン 2015-02-28-Preview | Microsoft Azure"
+   pageTitle="Azure Search サービス REST API バージョン 2015-02-28-Preview | Microsoft Azure | ホスト型クラウド検索サービス"
    description="Azure Search サービス REST API バージョン 2015-02-28-Preview には、Lucene クエリ構文や moreLikeThis 検索などの試験的機能が含まれています。"
    services="search"
    documentationCenter="na"
@@ -1742,4 +1742,4 @@ POST の場合:
       "suggesterName": "sg"
     }
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

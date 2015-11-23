@@ -6,7 +6,7 @@
  authors="dlepow"
  manager="timlt"
  editor=""
- tags="azure-resource-manager"/>
+ tags="azure-resource-manager,hpc-pack"/>
 
 <tags
  ms.service="virtual-machines"
@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="vm-windows"
  ms.workload="big-compute"
- ms.date="08/18/2015"
+ ms.date="11/11/2015"
  ms.author="danlep"/>
 
 # Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する
@@ -43,7 +43,7 @@
 
 
 ### クイックスタート テンプレートを使用する
-Azure クイックスタート テンプレートを使用すると、Azure プレビュー ポータルで HPC Pack クラスターをすばやく簡単にデプロイできます。ポータルでテンプレートを開くと表示される簡単な UI で、クラスターの設定を入力します。手順は次のようになります。
+Azure クイックスタート テンプレートを使用すると、Azure プレビュー ポータルで HPC Pack クラスターをすばやく簡単にデプロイできます。プレビュー ポータルでテンプレートを開くと表示される簡単な UI で、クラスターの設定を入力します。手順は次のようになります。
 
 1. [GitHub の HPC クラスター テンプレートの作成に関するページ](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster)を参照します。必要な場合は、テンプレートとソース コードに関する情報を確認します。
 
@@ -51,7 +51,7 @@ Azure クイックスタート テンプレートを使用すると、Azure プ�
 
     ![テンプレートを Azure にデプロイする][github]
 
-3. ポータルで以下の手順に従って、HPC クラスター テンプレートのパラメーターを入力します。
+3. プレビュー ポータルで以下の手順に従って、HPC クラスター テンプレートのパラメーターを入力します。
 
     a.**[テンプレートの編集]** ページで、**[保存]** をクリックします。
 
@@ -235,7 +235,7 @@ You have enabled REST API or web portal on HPC Pack head node. Please import the
 ```
 4.	[HPC Pack 2012 R2 Update 2 インストール](http://www.microsoft.com/download/details.aspx?id=47755)の完全版をダウンロードして HPC Pack クライアントをインストールするか、または [HPC Pack 2012 R2 Update 2 クライアント ユーティリティ](https://www.microsoft.com/download/details.aspx?id=47754)とコンピューターに適した Visual C++ 2010 再頒布可能パッケージをダウンロードしてインストールします ([x64](http://www.microsoft.com/download/details.aspx?id=14632)、[x86](https://www.microsoft.com/download/details.aspx?id=5555))。
 
-5.	この例では、[ここ](https://www.microsoft.com/JA-JP/download/details.aspx?id=2939)からダウンロードできる ConvertiblePricing\_Complete.xlsb という名前のサンプル Excel ブックを使用します。
+5.	この例では、[ここ](https://www.microsoft.com/ja-JP/download/details.aspx?id=2939)からダウンロードできる ConvertiblePricing\_Complete.xlsb という名前のサンプル Excel ブックを使用します。
 
 6.	Excel ブックを D:\\Excel\\Run などの作業フォルダーにコピーします。
 
@@ -272,7 +272,7 @@ You have enabled REST API or web portal on HPC Pack head node. Please import the
 
 Excel の UDF を実行するには、前記の手順 1 ～ 3 に従ってクライアント コンピューターを設定します。Excel UDF の場合、Excel アプリケーションがコンピューティング ノードにインストールされている必要はないので、手順 1 では、Excel を含むコンピューティング ノード イメージではなく、通常のコンピューティング ノード イメージを選択できます。
 
->[AZURE.NOTE]Excel 2010 および 2013 クラスター コネクタのダイアログ ボックスには 34 文字の制限があります。完全なクラスター名が長い場合は (例: hpcexcelhn01.southeastasia.cloudapp.azure.com)、ダイアログ ボックスに収まりません。回避策は、クライアント マシンの SOA Session API に Update 2 QFE KB3085833 ([ここ](http://www.microsoft.com/JA-JP/download/details.aspx?id=48725)よりダウンロード) を適用し、*CCP\_IAASHN* などのマシン全体の変数に、長いクラスター名の値を設定し、*%CCP\_IAASHN%* をダイアログ ボックスにクラスター ヘッドのノード名として入力します。
+>[AZURE.NOTE]Excel 2010 および 2013 クラスター コネクタのダイアログ ボックスには 34 文字の制限があります。完全なクラスター名が長い場合は (例: hpcexcelhn01.southeastasia.cloudapp.azure.com)、ダイアログ ボックスに収まりません。回避策は、クライアント マシンの SOA Session API に Update 2 QFE KB3085833 ([ここ](http://www.microsoft.com/ja-JP/download/details.aspx?id=48725)よりダウンロード) を適用し、*CCP\_IAASHN* などのマシン全体の変数に、長いクラスター名の値を設定し、*%CCP\_IAASHN%* をダイアログ ボックスにクラスター ヘッドのノード名として入力します。
 
 クラスターが正常にデプロイされた後、引き続き以下の手順に従って、サンプルの組み込み Excel UDF を実行します。Excel UDF をカスタマイズした場合は、[リソース](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx)を参考にして、XLL を作成し、IaaS クラスターにそれをデプロイしてください。
 
@@ -355,7 +355,7 @@ binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.U
 
 ### NetTcp バインディングを使用する
 
-NetTcp バインディングを使用するための構成は、オンプレミスのクラスターに接続する場合と似ています。ヘッド ノード VM でいくつかのエンドポイントを開く必要があります。Microsoft Azure 管理ポータルで次のようにします。
+NetTcp バインディングを使用するための構成は、オンプレミスのクラスターに接続する場合と似ています。ヘッド ノード VM でいくつかのエンドポイントを開く必要があります。Azure ポータルで次のようにします。
 
 
 1. VM を停止します。
@@ -389,4 +389,4 @@ SOA クライアント アプリケーションでは、IaaS クラスターの�
 [endpoint]: ./media/virtual-machines-excel-cluster-hpcpack/endpoint.png
 [udf]: ./media/virtual-machines-excel-cluster-hpcpack/udf.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

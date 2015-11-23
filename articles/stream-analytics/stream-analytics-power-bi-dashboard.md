@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="09/29/2015" 
+	ms.date="11/12/2015" 
 	ms.author="jeffstok"/>
 	
 # Azure Stream Analytics & Power BI: ストリーミング データのリアルタイム分析に関するライブ ダッシュボード
@@ -161,15 +161,14 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 
 このチュートリアルでは、データセットに 1 種類のグラフを作成する方法を示しましたが、Power BI は、組織の他の顧客のビジネス インテリジェンス ツールを作成するのに役立ちます。Power BI ダッシュボードの別の例については、[Power BI の概要](https://youtu.be/L-Z_6P56aas?t=1m58s)ビデオをご覧ください。
 
-Power BI を使用したダッシュボードの作成の詳細については、その他の役立つリソースとして、[Power BI プレビューのダッシュボード](http://support.powerbi.com/knowledgebase/articles/424868-dashboards-in-power-bi-preview)に関する記事をご覧ください。
+Power BI 出力の構成と Power BI グループの利用の詳細については、「[Stream Analytics 出力について](stream-analytics-define-outputs.md "Stream Analytics 出力について")」の「[Power BI](stream-analytics-define-outputs.md#power-bi)」セクションを参照してください。Power BI を使用したダッシュボードの作成の詳細については、その他の役立つリソースとして、[Power BI プレビューのダッシュボード](http://support.powerbi.com/knowledgebase/articles/424868-dashboards-in-power-bi-preview)に関する記事をご覧ください。
 
 ## 制限事項とベスト プラクティス ##
 Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing "Power BI の価格") で説明するように、同時実行性とスループットの制約の両方を採用しています。
 
 そのため必然的に、Power BI は、Azure Stream Analytics で大幅なデータ負荷の低減が見られるケースへと落ち着きます。データのプッシュが最大で 1 プッシュ/秒となり、クエリがスループット要件の範囲内に収まるようにするには、TumblingWindow または HoppingWindow の使用をお勧めします。また、次の式を使用して、現在のウィンドウに設定する値 (秒) を計算ができます。![式 1](./media/stream-analytics-power-bi-dashboard/equation1.png)
 
-たとえば – 1,000 台のデバイスで 1 秒ごとにデータを送信し、1,000,000 行/時に対応する Power BI の Pro SKU を使用しており、Power BI でデバイスごとの平均データを取得する場合、1 つのデバイスにつき最大 4 秒ごとに 1 回プッシュできます (下図)。
-![式 2](./media/stream-analytics-power-bi-dashboard/equation2.png)
+たとえば – 1,000 台のデバイスで 1 秒ごとにデータを送信し、1,000,000 行/時に対応する Power BI の Pro SKU を使用しており、Power BI でデバイスごとの平均データを取得する場合、1 つのデバイスにつき最大 4 秒ごとに 1 回プッシュできます (下図)。![式 2](./media/stream-analytics-power-bi-dashboard/equation2.png)
 
 つまり、元のクエリが次のように変更されます。
 
@@ -222,4 +221,4 @@ Power BI 出力のあるすべてのジョブについて、90 日おきに認�
 [graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
 [graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

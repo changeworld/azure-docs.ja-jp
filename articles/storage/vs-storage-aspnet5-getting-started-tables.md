@@ -3,7 +3,7 @@
 	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後で、Visual Studio の ASP.NET 5 プロジェクトで Azure テーブル ストレージの使用を開始する方法について説明します。"
 	services="storage"
 	documentationCenter=""
-	authors="patshea123"
+	authors="TomArcher"
 	manager="douge"
 	editor="tglee"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/03/2015"
-	ms.author="patshea"/>
+	ms.author="tarcher"/>
 
 # Azure テーブル ストレージと Visual Studio 接続済みサービスの概要
 
@@ -211,4 +211,4 @@ Azure テーブルは、**CreateIfNotExistsAsync()** への呼び出しを追加
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

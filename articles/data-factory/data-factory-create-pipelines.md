@@ -232,10 +232,10 @@ outputs | アクティビティによって使用される出力テーブル。<
 linkedServiceName | アクティビティで使用されるリンクされたサービスの名前。<p>アクティビティでは、必要なコンピューティング環境にリンクするリンクされたサービスの指定が必要な場合があります。</p> | ○: HDInsight アクティビティおよび Azure Machine Learning バッチ スコアリング アクティビティの場合<p>×: 他のすべての場合</p>
 typeProperties | typeProperties セクションのプロパティは、アクティビティの種類に依存します。詳細については、各個別アクティビティの記事を参照してください | ×
 policy | アクティビティの実行時の動作に影響を与えるポリシー。指定されていない場合は、既定のポリシーが使用されます。詳細については後で説明します | ×
-start | パイプラインの開始日時。[ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)にする必要があります。(例: 2014-10-14T16:32:41Z)。start プロパティと end プロパティで、パイプラインの有効期間を指定します。出力スライスは、この有効期間内でのみ生成されます。| ×<p>パイプラインの有効期間は、Set-AzureDataFactoryPipelineActivePeriod コマンドレットを使用して設定することも</p>
-End | パイプラインの終了日時。ISO 形式で指定する必要があります。例: 2014-10-14T17:32:41Z <p> 指定しないと、「開始 + 48 時間」として計算されます。パイプラインを無期限に実行するには、end プロパティの値として 9999-09-09 を指定します。</p>| ×
-isPaused | true に設定すると、パイプラインは実行されません。既定値 = false。このプロパティを使用して有効または無効にできます。 | ×
-scheduler | アクティビティのスケジュールを定義します。サブプロパティは、[データセットの availability プロパティ](data-factory-create-datasets.md#Availability)と同じです。 | × | 
+start | パイプラインの開始日時。[ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)にする必要があります。(例: 2014-10-14T16:32:41Z)。<p>start プロパティと end プロパティで、パイプラインの有効期間を指定します。出力スライスは、この有効期間にのみ生成されます。</p> | ×<p>end プロパティの値を指定する場合、start プロパティの値も指定する必要があります。</p><p>パイプラインを作成するには、開始時間と終了時間の両方を空にする必要がありますが、パイプラインを実行できる有効期間を設定するには、両方の時間を指定する必要があります。パイプラインの作成時に開始時間と終了時間を指定しない場合、後で Set-AzureDataFactoryPipelineActivePeriod コマンドレットを使用して設定できます。</p>
+end | パイプラインの終了日時。ISO 形式で指定する必要があります。例: 2014-10-14T17:32:41Z <p>無期限でパイプラインを実行するには、end プロパティの値として 9999-09-09 を指定します。</p>| × <p>start プロパティの値を指定する場合、end プロパティの値も指定する必要があります。</p><p>**start** プロパティの注意事項を参照してください。</p>
+isPaused | true に設定すると、パイプラインは実行されません。既定値 = false。このプロパティを使用して有効または無効にできます。 |
+× scheduler | アクティビティのスケジュールを定義します。サブプロパティは、[データセットの availability プロパティ](data-factory-create-datasets.md#Availability)と同じです。| × | 
 
 ### アクティビティの種類
 Azure Data Factory には、[データ移動](data-factory-data-movement-activities.md)および[データ変換](data-factory-data-transformation-activities.md)のための広範なアクティビティがあります。
@@ -310,8 +310,7 @@ REST API を使用してパイプラインを作成およびデプロイする�
 - [Azure Data Factory での管理と監視](data-factory-monitor-manage-pipelines.md)について理解してください。
 - [初めてのパイプラインをビルドしてデプロイしてください](data-factory-build-your-first-pipeline.md)。 
 
-## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-create-pipelines.md)でフィードバックをお寄せください。
+
  
 
    
@@ -336,4 +335,4 @@ REST API を使用してパイプラインを作成およびデプロイする�
 
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

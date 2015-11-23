@@ -13,10 +13,18 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="10/22/2015" 
+	ms.date="11/12/2015" 
 	ms.author="jeffstok"/>
 
 #Microsoft Stream Analytics リリース ノート
+
+## Stream Analytics の 2015 年 11 月 12 日付けリリースに関するノート ##
+
+このリリースには、次の更新プログラムが含まれています。
+
+タイトル | 説明
+---|---
+SELECT の新しい動作 | Stream Analytics の SELECT が拡張され、入れ子になったレコードのプロパティ アクセサーとして、"*" を使用できるようになりました。詳細については、[http://msdn.microsoft.com/library/mt622759.aspx](http://msdn.microsoft.com/library/mt622759.aspx "複合データ型") を参照してください。
 
 ## Stream Analytics の 2015 年 10 月 22 日のリリースに関するノート ##
 
@@ -24,10 +32,10 @@
 
 タイトル | 説明
 ---|---
-Additional query language features（追加のクエリ言語機能） | Stream Analytics では、機能: [ABS](https://msdn.microsoft.com/library/azure/mt574054.aspx)、[CEILING](https://msdn.microsoft.com/library/azure/mt605286.aspx)、[EXP](https://msdn.microsoft.com/library/azure/mt605289.aspx)、[FLOOR](https://msdn.microsoft.com/library/azure/mt605240.aspx)、[POWER](https://msdn.microsoft.com/library/azure/mt605287.aspx)、[SIGN](https://msdn.microsoft.com/library/azure/mt605290.aspx)、[SQUARE](https://msdn.microsoft.com/library/azure/mt605288.aspx)、および [SQRT](https://msdn.microsoft.com/library/azure/mt605238.aspx) を含めることでクエリ言語が拡張されました。
+Additional query language features（追加のクエリ言語機能） | Stream Analytics では、機能 [ABS](https://msdn.microsoft.com/library/azure/mt574054.aspx)、[CEILING](https://msdn.microsoft.com/library/azure/mt605286.aspx)、[EXP](https://msdn.microsoft.com/library/azure/mt605289.aspx)、[FLOOR](https://msdn.microsoft.com/library/azure/mt605240.aspx)、[POWER](https://msdn.microsoft.com/library/azure/mt605287.aspx)、[SIGN](https://msdn.microsoft.com/library/azure/mt605290.aspx)、[SQUARE](https://msdn.microsoft.com/library/azure/mt605288.aspx)、および [SQRT](https://msdn.microsoft.com/library/azure/mt605238.aspx) を含めることでクエリ言語が拡張されました。
 Removed aggregate limitations（集計の制限を削除） | このリリースでは、クエリにおける 15 の集計の制限が削除されます。クエリごとの集計の数に制限がなくなりました。
-Added GROUP BY System.Timestamp feature (GROUP BY System.Timestamp 機能を追加) | [GROUP BY](https://msdn.microsoft.com/library/azure/dn835023.aspx) 関数で、window\_type と [System.Timestamp](https://msdn.microsoft.com/library/azure/mt598501.aspx) のいずれかが可能になりました。
-Added OFFSET for Tumbling and Hopping windows (タンブリング ウィンドウとホッピング ウィンドウのオフセットを追加) | 既定では、 [タンブリング](https://msdn.microsoft.com/library/azure/dn835055.aspx) ウィンドウと[ホッピング](https://msdn.microsoft.com/library/azure/dn835041.aspx) ウィンドウは 0 時間にアラインされます (1/1/0001 12:00:00 AM UTC)。新しい (省略可能) パラメーター 'offsetsize' では、カスタム オフセット (またはアライメント) を指定できます。
+Added GROUP BY System.Timestamp feature (GROUP BY System.Timestamp 機能を追加) | [GROUP BY](https://msdn.microsoft.com/library/azure/dn835023.aspx) 関数で、window\_type または [System.Timestamp](https://msdn.microsoft.com/library/azure/mt598501.aspx) のいずれかの使用が可能になりました。
+Added OFFSET for Tumbling and Hopping windows (タンブリング ウィンドウとホッピング ウィンドウのオフセットを追加) | 既定では、[タンブリング](https://msdn.microsoft.com/library/azure/dn835055.aspx) ウィンドウと[ホッピング](https://msdn.microsoft.com/library/azure/dn835041.aspx) ウィンドウは 0 時間にアラインされます (1/1/0001 12:00:00 AM UTC)。新しい (省略可能) パラメーター 'offsetsize' では、カスタム オフセット (またはアライメント) を指定できます。
 
 
 ## Stream Analytics の 2015 年 9 月 29 日付けリリースに関するノート ##
@@ -116,4 +124,4 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 - [Stream Analytics 管理 REST API 参照](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

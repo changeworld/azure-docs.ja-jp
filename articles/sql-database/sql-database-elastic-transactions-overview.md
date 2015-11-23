@@ -98,6 +98,27 @@ SQL DB のエラスティック データベース トランザクションで�
 
 エラスティック データベース トランザクションに必要なバージョンの .NET とライブラリを Azure (ご利用のクラウド サービスのゲスト OS) にインストールしてデプロイする作業は自動化することができます。Azure worker ロールの場合、スタートアップ タスクを使用します。その概念と手順については、「[クラウド サービスのロールに .NET をインストールする](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/)」を参照してください。
 
+.NET 4.6.1 のインストーラーは、Azure クラウド サービスでのブートストラップ プロセス中に、.NET 4.6 のインストーラーよりも一時的なストレージを多く必要とすることに注意してください。正常かつ確実にインストールするには、次の例に示すように、ServiceDefinition.csdef ファイルの LocalResources セクションと、スタートアップ タスクの環境設定で、Azure クラウド サービスの一時的なストレージを増やす必要があります。
+
+	<LocalResources>
+	...
+		<LocalStorage name="TEMP" sizeInMB="5000" cleanOnRoleRecycle="false" />
+		<LocalStorage name="TMP" sizeInMB="5000" cleanOnRoleRecycle="false" />
+	</LocalResources>
+	<Startup>
+		<Task commandLine="install.cmd" executionContext="elevated" taskType="simple">
+			<Environment>
+		...
+				<Variable name="TEMP">
+					<RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='TEMP']/@path" />
+				</Variable>
+				<Variable name="TMP">
+					<RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='TMP']/@path" />
+				</Variable>
+			</Environment>
+		</Task>
+	</Startup>
+
 ## トランザクションの状態の監視
 
 現在実行されているエラスティック データベース トランザクションの状態と進行状況は、SQL DB の動的管理ビュー (DMV) を使用して監視します。トランザクションに関連したすべての DMV は、SQL DB の分散トランザクションにとって重要となります。対応する DMV については、[トランザクション関連の動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx) に関するページの表を参照してください。
@@ -124,4 +145,4 @@ Azure アプリケーションでエラスティック データベースの機�
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

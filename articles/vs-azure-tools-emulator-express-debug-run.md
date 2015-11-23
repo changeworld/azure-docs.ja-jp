@@ -3,7 +3,7 @@
    description="Emulator Express を使用したローカル コンピューターでのクラウド サービス実行とデバッグ"
    services="visual-studio-online"
    documentationCenter="n/a"
-   authors="patshea123"
+   authors="TomArcher"
    manager="douge"
    editor="tlee" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
    ms.date="08/14/2015"
-   ms.author="patshea" />
+   ms.author="tarcher" />
 
 
 # Emulator Express を使用したローカル コンピューターでのクラウド サービス実行とデバッグ
@@ -54,4 +54,4 @@ Emulator Express を使用する前に、いくつかの制限事項に注意す
 
 [Cloud Services のデバッグ](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

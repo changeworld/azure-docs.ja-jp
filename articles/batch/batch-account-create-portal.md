@@ -80,4 +80,4 @@ Batch アカウント URL は、**[Essentials]** に表示されます。`https:
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
 [account_keys]: ./media/batch-account-create-portal/account_keys.PNG
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

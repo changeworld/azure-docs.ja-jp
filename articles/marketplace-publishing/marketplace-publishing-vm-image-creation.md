@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="marketplace-publishing"
+   ms.service="marketplace"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
@@ -656,4 +656,4 @@ SAS URI を作成するには、「[共有アクセス署名、パート 1:SAS �
 [link-intsvc]: http://www.microsoft.com/download/details.aspx?id=41554
 [link-python]: https://www.python.org/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

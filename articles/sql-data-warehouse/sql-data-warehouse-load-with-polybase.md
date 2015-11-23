@@ -45,36 +45,26 @@ PolyBase テクノロジを使用して、複数のソースからデータを�
 >
 > PolyBase では、Standard ゾーン冗長ストレージ (Standard-ZRS) および Premium ローカル冗長ストレージ (Premium-LRS) のアカウント種類はサポートされていません。新しい Azure ストレージ アカウントを作成する場合は、価格レベルから PolyBase でサポートされているアカウントの種類を選択していることを確認してください。
 
+## 手順 1: データベースに資格情報を格納する
+Azure BLOB ストレージにアクセスするには、Azure ストレージ アカウントの認証情報を格納するデータベース スコープの資格情報を作成する必要があります。次の手順を使用して、データベースで資格情報を格納します。　
 
-## データベース マスター キーの作成
-サーバー上のユーザー データベースに接続し、データベース マスター キーを作成します。このキーは、次の手順で資格情報シークレットの暗号化に使用されます。
+1. SQL Data Warehouse データベースに接続します。
+2. [CREATE MASTER KEY (Transact-SQL)][] を使用して、データベースのマスター キーを作成します。データベースに既にマスター キーがある場合は、マスター キーを余分に作成する必要はありません。このキーは、次の手順で資格情報 "シークレット" の暗号化に使用されます。
 
-```
--- Creating master key
-CREATE MASTER KEY;
-```
+    ```
+    -- Create a E master key
+    CREATE MASTER KEY;
+    ```
 
-リファレンス トピック: [CREATE MASTER KEY (Transact-SQL)][]。
+1. データベースの資格情報が既に存在するかどうかを確認します。これを行うには、サーバーの資格情報を表示するだけの sys.credentials ではなく、sys.database\_credentials システム ビューを使用します。
 
-## データベース スコープの資格情報の作成
-Azure BLOB ストレージにアクセスするには、Azure ストレージ アカウントの認証情報を格納するデータベース スコープの資格情報を作成する必要があります。Data Warehouse データベースに接続し、アクセスする各 Azure ストレージ アカウントのデータベース スコープ資格情報を作成します。ユーザー名と Azure ストレージ アカウント キーをシークレットとして指定します。ユーザー名は、Azure Storage への認証には影響を及ぼしません。
+    ``` -- Check for existing database-scoped credentials.SELECT * FROM sys.database\_credentials;
 
-データベース スコープの資格情報が既に存在するかどうかを確認するには、サーバーの資格情報のみを表示する sys.credentials ではなく sys.database\_credentials を使用します。
+3. [CREATE CREDENTIAL (Transact-SQL)][] を使用して、アクセスする Azure ストレージ アカウントごとにデータベース スコープの資格情報を作成します。次の例では、IDENTITY は資格情報を表すわかりやすい名前になっています。この名前は Azure ストレージへの認証には影響を及ぼしません。SECRET は Azure ストレージ アカウント キーです。
 
-```
--- Check for existing database-scoped credentials.
-SELECT * FROM sys.database_credentials;
+    -- データベース スコープの資格情報の作成 CREATE DATABASE SCOPED CREDENTIAL ASBSecret WITH IDENTITY = 'joe' , Secret = '<azure_storage_account_key>' ; ```
 
--- Create a database scoped credential
-CREATE DATABASE SCOPED CREDENTIAL ASBSecret 
-WITH IDENTITY = 'joe'
-,    Secret = '<azure_storage_account_key>'
-;
-```
-
-リファレンス トピック: [CREATE CREDENTIAL (Transact-SQL)][]。
-
-データベース スコープの資格情報を削除するには、単純に次の構文を使用します。
+1. データベース スコープの資格情報を削除する必要がある場合は、[DROP CREDENTIAL (Transact-SQL)][] を使用します。
 
 ```
 -- Dropping credential
@@ -82,93 +72,90 @@ DROP DATABASE SCOPED CREDENTIAL ASBSecret
 ;
 ```
 
-リファレンス トピック: [DROP CREDENTIAL (Transact-SQL)][]。
+## 手順 2: 外部データ ソースを作成する
+外部データ ソースは、Azure BLOB ストレージのデータとアクセス情報の場所を格納するデータベース オブジェクトです。[CREATE EXTERNAL DATA SOURCE (Transact-SQL)][] を使用して、アクセスする Azure ストレージ BLOB ごとに外部データ ソースを定義します。
 
-## 外部データ ソースの作成
-外部データ ソースは、Azure BLOB ストレージのデータとアクセス情報の場所を格納するデータベース オブジェクトです。アクセスする Azure Storage コンテナーごとに外部データ ソースを定義する必要があります。
+    ```
+    -- Create an external data source for an Azure storage blob
+    CREATE EXTERNAL DATA SOURCE azure_storage 
+    WITH
+    (
+        TYPE = HADOOP,
+        LOCATION ='wasbs://mycontainer@test.blob.core.windows.net',
+        CREDENTIAL = ASBSecret
+    )
+    ;
+    ```
 
-```
--- Creating external data source (Azure Blob Storage) 
-CREATE EXTERNAL DATA SOURCE azure_storage 
-WITH
-(
-    TYPE = HADOOP
-,   LOCATION ='wasbs://mycontainer@test.blob.core.windows.net'
-,   CREDENTIAL = ASBSecret
-)
-;
-```
+外部テーブルを削除する必要がある場合は、[DROP EXTERNAL DATA SOURCE][] を使用します。
 
-リファレンス トピック: [CREATE EXTERNAL DATA SOURCE (Transact-SQL)][]。
+    ```
+    -- Drop an external data source
+    DROP EXTERNAL DATA SOURCE azure_storage
+    ;
+    ```
 
-外部データ ソースを削除するための構文は次のとおりです。
+## 手順 3: 外部ファイル形式を作成する
+外部ファイル形式は、外部データの形式を指定するデータベース オブジェクトです。PolyBase は、区切り文字、Hive RCFILE、および HIVE ORC 形式の圧縮データおよび非圧縮データを処理できます。
 
-```
--- Dropping external data source
-DROP EXTERNAL DATA SOURCE azure_storage
-;
-```
-
-リファレンス トピック: [DROP EXTERNAL DATA SOURCE (Transact-SQL)][]。
-
-## 外部ファイル形式の作成
-外部ファイル形式は、外部データの形式を指定するデータベース オブジェクトです。この例では、テキスト ファイル内のデータは圧縮せず、フィールドは、パイプ文字 ('|') で区切っています。
+[CREATE EXTERNAL FILE FORMAT (Transact-SQL)][] を使用して、外部ファイル形式を作成します。次の例では、ファイル内のデータは圧縮されていないテキストとし、フィールドはパイプ文字 ('|') で区切ることが規定されています。
 
 ```
--- Creating external file format (delimited text file)
+-- Create an external file format for a text-delimited file.
+-- Data is uncompressed and fields are separated with the
+-- pipe character.
 CREATE EXTERNAL FILE FORMAT text_file_format 
 WITH 
 (   
-    FORMAT_TYPE = DELIMITEDTEXT 
-,	FORMAT_OPTIONS  (
-                        FIELD_TERMINATOR ='|'
-                    ,   USE_TYPE_DEFAULT = TRUE
-                    )
+    FORMAT_TYPE = DELIMITEDTEXT, 
+    FORMAT_OPTIONS  
+    (
+        FIELD_TERMINATOR ='|',
+        USE_TYPE_DEFAULT = TRUE
+    )
 )
 ;
 ```
 
-PolyBase は、区切り文字、Hive RCFILE、および HIVE ORC 形式の圧縮データおよび非圧縮データを処理できます。
-
-リファレンス トピック: [CREATE EXTERNAL FILE FORMAT (Transact-SQL)][]。
-
-外部ファイル形式を削除する構文は次のとおりです。
+外部ファイル形式を削除する必要がある場合は、[DROP EXTERNAL FILE FORMAT] を使用します。
 
 ```
 -- Dropping external file format
 DROP EXTERNAL FILE FORMAT text_file_format
 ;
 ```
-リファレンス トピック: [DROP EXTERNAL FILE FORMAT (Transact-SQL)][]。
 
 ## 外部テーブルの作成
 
-外部テーブルの定義は、リレーショナル テーブルの定義と似ています。主な相違点は、データの場所と形式です。外部テーブルの定義は、SQL Data Warehouse データベースに格納されます。データは、データ ソースで指定された場所に格納されます。
+外部テーブルの定義は、リレーショナル テーブルの定義と似ています。主な相違点は、データの場所と形式です。
 
-LOCATION オプションで、データ ソースのルートからデータまでのパスが指定されます。この例では、データは 'wasbs://mycontainer@ test.blob.core.windows.net/path/Demo/' にあります。同じテーブルのすべてのファイルは、Azure BLOB の同じ論理フォルダーの下にある必要があります。
+- 外部テーブルの定義は、メタデータとして SQL Data Warehouse データベースに格納されます。 
+- データは、データ ソースで指定された外部の場所に格納されます。
+
+[CREATE EXTERNAL TABLE (Transact-SQL)][] を使用して、外部テーブルを定義します。
+
+LOCATION オプションで、データ ソースのルートからデータまでのパスが指定されます。この例では、データは 'wasbs://mycontainer@test.blob.core.windows.net/path/Demo/' にあります。同じテーブルのすべてのファイルは、Azure BLOB ストレージの同じ論理フォルダーの下にある必要があります。
 
 必要に応じて、PolyBase が外部データ ソースから受信したダーティ レコードをどのように処理するかを決定する拒否オプション (REJECT\_TYPE、REJECT\_VALUE、REJECT\_SAMPLE\_VALUE) も指定できます。
 
 ```
--- Creating external table pointing to file stored in Azure Storage
+-- Creating an external table for data in Azure blob storage.
 CREATE EXTERNAL TABLE [ext].[CarSensor_Data] 
 (
-     [SensorKey]     int    NOT NULL 
-,    [CustomerKey]   int    NOT NULL 
-,    [GeographyKey]  int        NULL 
-,    [Speed]         float  NOT NULL 
-,    [YearMeasured]  int    NOT NULL
+     [SensorKey]     int    NOT NULL,
+     [CustomerKey]   int    NOT NULL,
+     [GeographyKey]  int        NULL,
+     [Speed]         float  NOT NULL,
+     [YearMeasured]  int    NOT NULL,
 )
 WITH 
 (
-    LOCATION    = '/Demo/'
-,   DATA_SOURCE = azure_storage
-,   FILE_FORMAT = text_file_format      
+    LOCATION    = '/Demo/',
+    DATA_SOURCE = azure_storage,
+    FILE_FORMAT = text_file_format      
 )
 ;
 ```
-
-リファレンス トピック: [CREATE EXTERNAL TABLE (Transact-SQL)][]。
 
 作成したオブジェクトは、SQL Data Warehouse のデータベースに格納されます。SQL Server Data Tools (SSDT) のオブジェクト エクスプローラーでそれらを表示できます。
 
@@ -370,4 +357,4 @@ $write.Dispose()
 [CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189522.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189450.aspx
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

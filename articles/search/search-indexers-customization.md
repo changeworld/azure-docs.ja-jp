@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Search インデクサーのカスタマイズ | Microsoft Azure" 
+	pageTitle="Azure Search Indexer のカスタマイズ | Microsoft Azure | ホスト型クラウド検索サービス" 
 	description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search のインデクサーの設定とポリシーをカスタマイズする方法について説明します。" 
 	services="search" 
 	documentationCenter="" 
@@ -117,4 +117,4 @@ Azure Search ではユーザーがキーを使用してドキュメントを参�
 以上です。今後のコンテンツについてアイデアやご意見をお持ちの場合、内容をハッシュタグ #AzureSearch を付けてツイートするか、[UserVoice ページ](http://feedback.azure.com/forums/263029-azure-search)で送信できます。
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

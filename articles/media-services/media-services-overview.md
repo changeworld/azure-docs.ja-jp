@@ -210,6 +210,10 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [パターンとプラクティスのガイダンス](https://wamsg.codeplex.com/) [オンライン ドキュメント](https://msdn.microsoft.com/library/dn735912.aspx) [ダウンロード可能な電子ブック](https://www.microsoft.com/download/details.aspx?id=42629)
 
 
+##フィードバックの提供
+
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 ##サービス レベル アグリーメント (SLA)
 
 - Media Services Encoding では、REST API トランザクションの可用性が 99.9% 保証されます。
@@ -227,4 +231,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

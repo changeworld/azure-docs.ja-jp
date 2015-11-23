@@ -169,7 +169,7 @@ AND	[acs].[CalendarYear]				= [fis].[CalendarYear]
 ;
 ```
 
-SQL Data Warehouse では ANSI JOIN はサポートされていないため、変更を加えないとこのコードをコピーできません。
+SQL Data Warehouse では、UPDATE ステートメントの FROM 句で ANSI JOIN がサポートされていないため、このコードは若干の変更を加えないとコピーできません。
 
 CTAS と暗黙的結合を組み合わせて使用することで、このコードを置き換えます。
 
@@ -206,7 +206,7 @@ DROP TABLE CTAS_acs
 ```
 
 ## DELETE ステートメントの代わりに使用する ANSI JOIN
-CTAS がデータ削除の際に最良のアプローチとなることもあります。単にデータを削除するのではなく、保持したいデータを選択するということです。これを実行できるのが、ANSI JOIN 構文を使用した DELETE ステートメントです。この機能は SQL Data Warehouse ではサポートされていません。
+CTAS がデータ削除の際に最良のアプローチとなることもあります。単にデータを削除するのではなく、保持したいデータを選択するということです。ANSI JOIN 構文を使用する DELETE ステートメントの場合に特に当てはまります。SQL Data Warehouse では、DELETE ステートメントの FROM 句で ANSI JOIN がサポートされていないためです。
 
 変換された DELETE ステートメントの例を次に示します。
 
@@ -429,4 +429,4 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 <!--Other Web references-->
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

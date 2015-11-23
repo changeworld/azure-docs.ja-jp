@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-multiple"
    ms.workload="infrastructure-services"
-   ms.date="07/23/2015"
+   ms.date="11/10/2015"
    ms.author="dkshir;memccror"/>
 
 # Azure で仮想マシンにタグを付ける方法
@@ -88,7 +88,7 @@ PowerShell でタグの作成、追加、および削除を行うには、まず
 
 PowerShell でタグを追加する場合、`Set-AzureResource` コマンドを使用できます。PowerShell でタグを更新すると、タグ全体が更新されます。そのため、既にタグが設定されているリソースに 1 つのタグを追加する場合、リソースに設定するすべてのタグを含める必要があります。次に、PowerShell コマンドレットでリソースにタグを追加する例を示します。
 
-この最初のコマンドレットでは、`Get-AzureResource` および `Tags` 関数を使用して、*MyWindowsVM* に追加されているすべてのタグを *tags* 変数に設定します。
+この最初のコマンドレットでは、`Get-AzureResource` および `Tags` 関数を使用して、*MyWindowsVM* に追加されているすべてのタグを *tags* 変数に設定します。パラメーター `ApiVersion` は省略可能ですが、指定されていない場合、リソース プロバイダーの最新の API バージョンが使用されることに注意してください。
 
         PS C:\> $tags = (Get-AzureResource -Name MyWindowsVM -ResourceGroupName MyResourceGroup -ResourceType "Microsoft.Compute/virtualmachines" -ApiVersion 2015-05-01-preview).Tags
 
@@ -155,7 +155,7 @@ PowerShell とは異なり、既にタグが含まれているリソースにタ
 
 ## 使用量の詳細でタグを確認する
 
-Azure リソース マネージャーで Compute、Network、および Storage リソースに設定したタグは、課金ポータルの使用量の詳細に追加されます。
+Azure リソース マネージャーで Compute、Network、および Storage リソースに設定したタグは、[課金ポータル](https://account.windowsazure.com/)の使用量の詳細に追加されます。
 
 **[使用量の詳細のダウンロード]** をクリックして、サブスクリプションの使用量の詳細を表示します。
 
@@ -183,11 +183,11 @@ Azure リソース マネージャーで Compute、Network、および Storage �
 
 
 [Azure リソース マネージャーで PowerShell 環境]: ../powershell-azure-resource-manager.md
-[Azure リソース コマンドレット]: https://msdn.microsoft.com/JA-JP/library/azure/dn757692.aspx
+[Azure リソース コマンドレット]: https://msdn.microsoft.com/ja-JP/library/azure/dn757692.aspx
 [Azure CLI 環境]: ./xplat-cli-azure-resource-manager.md
 [Azure リソース マネージャーの概要]: ../resource-group-overview.md
 [タグを使用した Azure リソースの整理]: ../resource-group-using-tags.md
 [Microsoft Azure の課金内容の確認]: ../billing-understand-your-bill.md
 [Microsoft Azure リソースの消費を把握する]: ../billing-usage-rate-card-overview.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

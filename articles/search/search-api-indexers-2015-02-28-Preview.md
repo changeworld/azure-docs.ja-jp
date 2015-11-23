@@ -1,5 +1,5 @@
 <properties 
-pageTitle="インデクサー操作 (Azure Search サービス REST API: 2015-02-28-Preview) | Microsoft Azure" 
+pageTitle="インデクサー操作 (Azure Search サービス REST API: 2015-02-28-Preview) | Microsoft Azure | ホスト型クラウド検索サービス" 
 description="インデクサー操作 (Azure Search サービス REST API: 2015-02-28-Preview)" 
 services="search" 
 documentationCenter="" 
@@ -776,4 +776,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

@@ -48,7 +48,7 @@ Media Services を使用して PlayReady ライセンスを設定するには、
 
 XML は、PlayReady ライセンス テンプレートの XML スキーマのセクションで定義されたPlayReady ライセンス テンプレート XML スキーマに準拠しています。
 
-Media Services は、XML へのシリアル化および XML からの逆シリアル化に使用できる一連の .NET クラスも定義します。主要なクラスについては、ライセンス テンプレートの構成に使用する [Media Services の .NET クラス](media-services-playready-license-template-overview.md#classes) を参照してください。
+Media Services は、XML へのシリアル化および XML からの逆シリアル化に使用できる一連の .NET クラスも定義します。主要なクラスについては、「ライセンス テンプレートの構成に使用する Media Services の .NET クラス」(media-services-playready-license-template-overview.md#classes) を参照してください。
 
 エンドツーエンドでの .NET クラスを使用した PlayReady ライセンス テンプレートの構成例については、「[PlayReady 動的暗号化とライセンス提供サービスの使用](https://msdn.microsoft.com/library/azure/dn783467.aspx)」を参照してください。
 
@@ -74,7 +74,7 @@ Media Services PlayReady ライセンス テンプレートの設定に使用す
 
 [PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx) - このクラスは、PlayReady ライセンスの PlayRight を表します。このクラスにより、ユーザーは、ライセンスおよび PlayRight 自体で設定された 0 個以上の (再生固有ポリシーに関する) 制限の対象となるコンテンツを再生できるようになります。ほとんどの PlayRight のポリシーでは、コンテンツを再生可能な出力の種類を制御する出力制限、および指定した出力の使用時に適用される必要があるすべての制限を処理する必要があります。たとえば、DigitalVideoOnlyContentRestriction が有効にされると、DRM ランタイムはビデオがデジタル出力だけで表示されることを許可します (アナログ ビデオ出力ではこのコンテンツを配信できなくなります)。
 
->[AZURE.IMPORTANT]こうした種類の制限は非常に強力ですが、コンシューマー エクスペリエンスに影響を及ぼす可能性があります。出力保護を極端に限定的に設定すると、一部のクライアントでコンテンツを再生できなくなる可能性があります。詳細については、PlayReady のコンプライアンス ルールに関するドキュメントを参照してください。
+>[AZURE.IMPORTANT]こうした種類の制限は非常に強力ですが、コンシューマー エクスペリエンスに影響を及ぼす可能性があります。出力保護を極端に限定的に設定すると、一部のクライアントでコンテンツを再生できなくなる可能性があります。詳細については、[PlayReady のコンプライアンス ルール](https://www.microsoft.com/playready/licensing/compliance/)に関するドキュメントを参照してください。
 
 Silverlight でサポートされる保護レベルの例については、「[Silverlight での出力保護のサポート](http://go.microsoft.com/fwlink/?LinkId=617318)」を参照してください。
 
@@ -302,11 +302,13 @@ Silverlight でサポートされる保護レベルの例については、「[S
 	</xs:schema>
 
 
+
 ##Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
 
-<!---HONumber=Oct15_HO3-->
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
+<!---HONumber=Nov15_HO3-->

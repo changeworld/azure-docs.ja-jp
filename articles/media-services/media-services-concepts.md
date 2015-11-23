@@ -83,7 +83,7 @@ Azure のストレージにアクセスする場合には必ず、ストレー�
 
 [ジョブ](https://msdn.microsoft.com/library/azure/hh974289.aspx)は、通常、1 つのオーディオ/ビデオ プレゼンテーションを処理 (インデックス作成やエンコードなど) するために使用されます。複数のビデオを処理する場合は、エンコードするビデオごとにジョブを作成します。
 
-ジョブには、実行する処理に関するメタデータが含まれます。ジョブ内の複数の[タスク](https://msdn.microsoft.com/library/azure/hh974286.aspx)は、1 つのタスクの出力資産を次のタスクの入力資産として指定した場合、連結できます。ジョブ内の複数のタスクは、1 つのタスクの出力資産を次のタスクの入力資産として指定した場合、連結できます。この方法では、1 つのジョブにメディア表現に必要なすべての処理を含めることができます。
+ジョブには、実行する処理に関するメタデータが含まれます。ジョブ内の複数の[タスク](https://msdn.microsoft.com/library/azure/hh974286.aspx)は、1 つのタスクの出力アセットを次のタスクの入力アセットとして指定した場合、連結できます。ジョブ内の複数のタスクは、1 つのタスクの出力資産を次のタスクの入力資産として指定した場合、連結できます。この方法では、1 つのジョブにメディア表現に必要なすべての処理を含めることができます。
 
 ##<a id="encoding"></a>エンコードとパッケージ化
 
@@ -243,9 +243,10 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
  
 ##Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
 
-<!---HONumber=Oct15_HO3-->
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
+<!---HONumber=Nov15_HO3-->

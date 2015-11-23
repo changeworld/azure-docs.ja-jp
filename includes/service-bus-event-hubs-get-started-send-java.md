@@ -1,5 +1,6 @@
 ## Event Hub へのメッセージ送信
-このセクションでは、イベントをイベント ハブに送信する Java コンソール アプリを作成します。[Apache Qpid プロジェクト](http://qpid.apache.org/)の JMS AMQP プロバイダーを使用します。これは、[ここ](../articles/service-bus/service-bus-java-how-to-use-jms-api-amqp.md)に示すように、Java による AMQP を利用した Service Bus キューとトピックの使用に似ています。詳細については、[Qpid JMS のドキュメント](http://qpid.apache.org/releases/qpid-0.30/programming/book/QpidJMS.html)と [Java メッセージング サービス](http://www.oracle.com/technetwork/java/jms/index.html)に関するページをご覧ください。
+
+このセクションでは、イベントをイベント ハブに送信する Java コンソール アプリを作成します。[Apache Qpid プロジェクト](http://qpid.apache.org/)の JMS AMQP プロバイダーを使用します。これは、[ここ](../service-bus/service-bus-java-how-to-use-jms-api-amqp.md)に示すように、Java による AMQP を利用した Service Bus キューとトピックの使用に似ています。詳細については、[Qpid JMS のドキュメント](http://qpid.apache.org/releases/qpid-0.30/programming/book/QpidJMS.html)と [Java メッセージング サービス](http://www.oracle.com/technetwork/java/jms/index.html)に関するページをご覧ください。
 
 1. Eclipse で [Azure Toolkit for Eclipse](https://msdn.microsoft.com/library/azure/hh690946.aspx) をインストールします。これには、Qpid JMS AMQP クライアント ライブラリが含まれます。
 
@@ -88,11 +89,7 @@
 
 
 
-<!-- Links -->
-[Azure Management Portal]: https://manage.windowsazure.com/
-
-
 <!-- Images -->
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-java1.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

@@ -377,7 +377,7 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 	- **[ポート]** には、`1433` (SQL Server の既定のポート) を入力します。
 	- **[BizTalk サービス]** をクリックし、BizTalk サービスの名前を入力します。
 	
-	![Create a hybrid connection](./media/app-service-api-hybrid-on-premises-sql-server/create-biztalk-service.png)
+	![ハイブリッド接続の追加](./media/app-service-api-hybrid-on-premises-sql-server/create-biztalk-service.png)
 		
 9. **[OK]** を 2 回クリックします。
 
@@ -430,4 +430,4 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

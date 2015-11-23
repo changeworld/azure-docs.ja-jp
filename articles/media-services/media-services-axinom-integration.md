@@ -196,15 +196,17 @@ Axinom Widevine ライセンス サーバーを利用する解決策では、次
 Widevine ライセンス取得 URL|DASH ストリーミングの資産配信ポリシーの構成で使用する必要があります ([この](media-services-axinom-integration.md#content-protection)セクションを参照してください)。
 コンテンツ キー ID|JWT トークンの権利メッセージ 要求の値の一部として含める必要があります ([この](media-services-axinom-integration.md#jwt-token-generation)セクションを参照してください)。 
 
+
 ##Media Services のラーニング パス
 
-AMS のラーニング パスについては、以下を参照してください。
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##フィードバックの提供
+
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ###謝辞 
 
 この文書の作成に協力してくださった Axinom 社の Kristjan Jõgi、Mingfei Yan、Amit Rajput に感謝します。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

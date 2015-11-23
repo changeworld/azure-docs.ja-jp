@@ -45,11 +45,11 @@ HDInsight クラスターを使用するには、Azure ストレージ アカウ
 
 **Azure に接続するには**
 
-		Login-AzureRmAccount
-		Get-AzureRmSubscription  # list your subscriptions and get your subscription ID
-		Select-AzureRmSubscription -SubscriptionId "<Your Azure Subscription ID>"
+	Login-AzureRmAccount
+	Get-AzureRmSubscription  # list your subscriptions and get your subscription ID
+	Select-AzureRmSubscription -SubscriptionId "<Your Azure Subscription ID>"
 
-	**Select-AzureRMSubscription** is called in case you have multiple Azure subscriptions.
+複数の Azure サブスクリプションがある場合は、**Select-AzureRMSubscription** が呼び出されます。
 	
 **新しいリソース グループを作成するには**
 
@@ -134,7 +134,7 @@ Azure PowerShell では、HDInsight の作成プロセス中に BLOB コンテ�
 ##クラスターのスケール
 クラスターのスケール設定機能を使用すると、Azure HDInsight で実行しているクラスターによって使用される worker ノードの数を、クラスターを再作成することなく、変更できます。
 
->[AZURE.NOTE]HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスター ポータル インターフェイスについて理解する](hdinsight-adminster-use-management-portal/#Get-familiar-with-the-cluster-portal-interface)」を参照してください。
+>[AZURE.NOTE]HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスター ポータル インターフェイスについての理解する](hdinsight-adminster-use-management-portal/#Get-familiar-with-the-cluster-portal-interface)」を参照してください。
 
 HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
 
@@ -180,28 +180,6 @@ Azure PowerShell を使用して Hadoop クラスターのサイズを変更す�
 
 	Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
 	
-##リソース グループの検索
-
-	$clusterName = "<HDInsight Cluster Name>"
-	
-	$cluster = Get-AzureRmHDInsightCluster  -ClusterName $clusterName
-	$resourceGroupName = $cluster.ResourceGroup
-
-
-##既定のストレージ アカウントの検索
-
-次の Powershell スクリプトでは、クラスターの既定のストレージ アカウント名と既定のストレージ アカウント キーを取得する方法を示します。
-
-
-	$clusterName = "<HDInsight Cluster Name>"
-	
-	$cluster = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-	$resourceGroupName = $cluster.ResourceGroup
-	$defaultStorageAccountName = ($cluster.DefaultStorageAccount).Replace(".blob.core.windows.net", "")
-	$defaultBlobContainerName = $cluster.DefaultStorageContainer
-	$defaultStorageAccountKey = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName |  %{ $_.Key1 }
-	$defaultStorageAccountContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey 
-
 
 ##アクセス権の付与/取り消し
 
@@ -214,151 +192,82 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 - Templeton
 
 
-既定では、これらのサービスへのアクセス許可が付与されます。アクセス許可を取り消す/付与することができます。例を示します。
+既定では、これらのサービスへのアクセス許可が付与されます。アクセス許可を取り消す/付与することができます。取り消するには、次を実行します。
 
-	Revoke-AzureHDInsightHttpServicesAccess -ClusterName <Cluster Name>
+	Revoke-AzureRmHDInsightHttpServicesAccess -ClusterName <Cluster Name>
+
+許可するには、次を実行します。
+
+	$clusterName = "<HDInsight Cluster Name>"
+
+	# Credential option 1
+	$hadoopUserName = "admin"
+	$hadoopUserPassword = "Pass@word123"
+	$hadoopUserPW = ConvertTo-SecureString -String $hadoopUserPassword -AsPlainText -Force
+	$credential = New-Object System.Management.Automation.PSCredential($hadoopUserName,$hadoopUserPW)
+
+	# Credential option 2
+	#$credential = Get-Credential -Message "Enter the HTTP username and password:" -UserName "admin"
+	
+	Grant-AzureRmHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $credential
 
 >[AZURE.NOTE]アクセス許可を付与するか、取り消すことで、クラスターのユーザー名とパスワードがリセットされます。
 
-これは、プレビュー ポータルを使用して行うこともできます。「[Azure プレビュー ポータルを使用した HDInsight の管理][hdinsight-admin-portal]」を参照してください。
+これは、プレビュー ポータルを使用して行うこともできます。[Azure プレビュー ポータルを使用した HDInsight の管理][hdinsight-admin-portal]に関するページを参照してください。
+
+##HTTP ユーザーの資格情報の更新
+
+[HTTP アクセス許可の付与/取り消し](#grant/revoke-access)と同じ手順です。HTTP アクセスがクラスターで許可されている場合、最初に取り消す必要があります。次に、新しい HTTP ユーザーの資格情報を使用してアクセス許可を付与してください。
 
 
+##既定のストレージ アカウントの検索
+
+次の Powershell スクリプトでは、クラスターの既定のストレージ アカウント名と既定のストレージ アカウント キーを取得する方法を示します。
+
+	$clusterName = "<HDInsight Cluster Name>"
+	
+	$cluster = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+	$resourceGroupName = $cluster.ResourceGroup
+	$defaultStorageAccountName = ($cluster.DefaultStorageAccount).Replace(".blob.core.windows.net", "")
+	$defaultBlobContainerName = $cluster.DefaultStorageContainer
+	$defaultStorageAccountKey = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName |  %{ $_.Key1 }
+	$defaultStorageAccountContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey 
+
+##リソース グループの検索
+
+ARM モードでは、各 HDInsight クラスターは Azure リソース グループに属しています。リソース グループを検索するには
+
+	$clusterName = "<HDInsight Cluster Name>"
+	
+	$cluster = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+	$resourceGroupName = $cluster.ResourceGroup
 
 
-
-##MapReduce ジョブの送信
-HDInsight クラスターのディストリビューションには MapReduce のサンプルが付属します。サンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。
+##ジョブの送信
 
 **MapReduce ジョブを送信するには**
 
-以下に、ワード カウント サンプル ジョブを送信する Azure PowerShell スクリプトを示します。
-
-	$clusterName = "<HDInsightClusterName>"
-
-	# Define the MapReduce job
-	$wordCountJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
-								-JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
-								-ClassName "wordcount" `
-								-Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput1"
-	
-	# Submit the job and wait for job completion
-	$cred = Get-Credential -Message "Enter the HDInsight cluster HTTP user credential:" 
-	$wordCountJob = Start-AzureRmHDInsightJob `
-						-ResourceGroupName $resourceGroupName `
-						-ClusterName $clusterName `
-						-HttpCredential $cred `
-						-JobDefinition $wordCountJobDefinition 
-	
-	Wait-AzureRmHDInsightJob `
-		-ResourceGroupName $resourceGroupName `
-		-ClusterName $clusterName `
-		-HttpCredential $cred `
-		-JobId $wordCountJob.JobId 
-
-	# Get the job output
-	$cluster = Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
-	$defaultStorageAccount = $cluster.DefaultStorageAccount -replace '.blob.core.windows.net'
-	$defaultStorageAccountKey = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccount |  %{ $_.Key1 }
-	$defaultStorageContainer = $cluster.DefaultStorageContainer
-	
-	Get-AzureRmHDInsightJobOutput `
-		-ResourceGroupName $resourceGroupName `
-		-ClusterName $clusterName `
-		-HttpCredential $cred `
-		-DefaultStorageAccountName $defaultStorageAccount `
-		-DefaultStorageAccountKey $defaultStorageAccountKey `
-		-DefaultContainer $defaultStorageContainer  `
-		-JobId $wordCountJob.JobId `
-		-DisplayOutputType StandardError
-		
-**wasb** プレフィックスについては、[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]に関するページを参照してください。
-
-**MapReduce ジョブの出力をダウンロードするには**
-
-次の Azure PowerShell スクリプトは、先の手順で実行した MapReduce ジョブの出力を取得します。
-
-	$storageAccountName = "<StorageAccountName>"
-	$containerName = "<ContainerName>"
-
-	# Create the Storage account context object
-	$storageAccountKey = Get-AzureStorageKey $storageAccountName | %{ $_.Primary }
-	$storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
-
-	# Download the output to local computer
-	Get-AzureStorageBlobContent -Container $ContainerName -Blob example/data/WordCountOutput/part-r-00000 -Context $storageContext -Force
-
-	# Display the output
-	cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
-
-MapReduce ジョブの開発と実行の詳細については、「[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]」を参照してください。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##Hive ジョブの送信
-HDInsight クラスターのディストリビューションには、*hivesampletable* という Hive テーブルのサンプルが付属します。HiveQL の **SHOW TABLES** コマンドを使うと、クラスターの Hive テーブルの一覧を表示できます。
+「[Windows ベースの HDInsight での Hadoop MapReduce サンプルの実行](hdinsight-run-samples.md)」を参照してください。
 
 **Hive ジョブを送信するには**
 
-以下に、Hive テーブルの一覧を表示する Hive ジョブを送信するスクリプトを示します。
+「[PowerShell を使用して Hive クエリを実行](hdinsight-hadoop-use-hive-powershell.md)」を参照してください。
 
-	$clusterName = "<HDInsightClusterName>"
+**Pig ジョブを送信するには**
 
-	# HiveQL query
-	$querystring = @"
-		SHOW TABLES;
-		SELECT * FROM hivesampletable
-			WHERE Country='United Kingdom'
-			LIMIT 10;
-	"@
+「[PowerShell を使用した Pig ジョブの実行](hdinsight-hadoop-use-pig-powershell.md)」を参照してください。
 
-	Use-AzureHDInsightCluster -Name $clusterName
-	Invoke-Hive $querystring
+**Sqoop ジョブを送信するには**
 
-この Hive ジョブはまず、クラスターに作成された Hive テーブルを表示し、続いて hivesampletable テーブルから返されたデータを表示します。
+「[Hadoop .NET SDK と HDInsight の使用](hdinsight-use-sqoop.md)」を参照してください。
 
-Hive の使用法の詳細については、「[HDInsight での Hive の使用][hdinsight-use-hive]」を参照してください。
+**Oozie ジョブを送信するには**
 
+「[HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行](hdinsight-use-oozie.md)」を参照してください。
 
 ##Azure BLOB ストレージにデータをアップロードする
 「[データを HDInsight にアップロードする方法][hdinsight-upload-data]」を参照してください。
 
-##Azure BLOB ストレージからのジョブの出力のダウンロード
-この記事の「[MapReduce ジョブの送信](#mapreduce)」セクションを参照してください。
 
 ## 関連項目
 * [HDInsight コマンドレット リファレンス ドキュメント][hdinsight-powershell-reference]
@@ -393,4 +302,4 @@ Hive の使用法の詳細については、「[HDInsight での Hive の使用]
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

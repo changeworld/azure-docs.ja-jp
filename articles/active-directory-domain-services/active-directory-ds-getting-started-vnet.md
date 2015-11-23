@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="mahesh-unnikrishnan"
 	manager="udayh"
-	editor="inhenk"/>
+	editor="curtand"/>
 
 <tags
 	ms.service="active-directory-ds"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/12/2015"
+	ms.date="11/09/2015"
 	ms.author="maheshu"/>
 
 # Azure AD Domain Services *(プレビュー)* - 作業の開始
@@ -21,9 +21,10 @@
 ## Azure Virtual Network を選択するためのガイドライン
 Azure AD ドメイン サービスで使用する仮想ネットワークは、次のガイドラインに従って選んでください。
 
-- Azure AD ドメイン サービスでサポートされているリージョンの仮想ネットワークを選択します。現在サポートされている Azure リージョンについては、[リージョン](active-directory-ds-regions.md)に関するページを参照してください。
+- Azure AD ドメイン サービスでサポートされているリージョンの仮想ネットワークを選択します。現在サポートされている Azure リージョンについては、[リージョン](https://azure.microsoft.com/regions/#services)に関するページを参照してください。
 - 既存の仮想ネットワークを使用する場合は、リージョン仮想ネットワークであることを確認してください。従来のアフィニティ グループ機構を使った仮想ネットワークは、Azure AD ドメイン サービスでは使用できません。[従来の仮想ネットワークはリージョン仮想ネットワークに移行](../virtual-networks-migrate-to-regional-vnet.md)する必要があります。
 - Azure AD ドメイン サービスにアクセスする必要のある仮想マシンを現在ホストしている (または今後ホストする予定の) 仮想ネットワークを選択します。ドメイン サービスを後から他の仮想ネットワークに移動することはできません。
+- Azure AD ドメイン サービスは、Azure リソース マネージャーを使用して作成した仮想ネットワークではサポートされていません。
 
 
 ## ステップ 2: Azure の仮想ネットワークを作成する
@@ -39,7 +40,7 @@ Azure AD ドメイン サービスが利用できる Azure Virtual Network を�
 2. 左側のウィンドウで、**[ネットワーク]** ノードを選択します。
 3. ページ下部の作業ウィンドウの **[新規]** をクリックします。
 
-    ![Virtual networks node](./media/active-directory-domain-services-getting-started/virtual-networks.png)
+    ![[Virtual Networks] ノード](./media/active-directory-domain-services-getting-started/virtual-networks.png)
 
 4. **[Network Services]** ノードの **[Virtual Network]** を選択します。
 5. 仮想ネットワークを作成するには、**[簡易作成]** をクリックします。
@@ -55,4 +56,4 @@ Azure AD ドメイン サービスが利用できる Azure Virtual Network を�
 ---
 [**次のステップ - Azure AD ドメイン サービスを有効にする**](active-directory-ds-getting-started-enableaadds.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

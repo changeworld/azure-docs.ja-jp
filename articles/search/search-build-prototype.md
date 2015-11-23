@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Search 用のプロトタイプ アプリケーションを構築する" 
+	pageTitle="Azure Search 用のプロトタイプ アプリケーションを構築する | Microsoft Azure | ホスト型クラウド検索サービス" 
 	description="ホスト型のクラウド検索サービスである Azure Search を使い始めるために、最初のアプリケーション プロトタイプを作成します。" 
 	services="search" 
 	documentationCenter="" 
@@ -133,4 +133,4 @@ Azure テーブル ストレージなど、JSON をネイティブに使用す�
 [1]: ./media/search-build-prototype/azsearch-datafiles.png
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

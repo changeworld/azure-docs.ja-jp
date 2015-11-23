@@ -185,4 +185,12 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - WOOX Innovations Limited
 - ZTE Corporation
 
-<!---HONumber=Nov15_HO2-->
+##Media Services のラーニング パス
+
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
+
+##フィードバックの提供
+
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
+<!---HONumber=Nov15_HO3-->

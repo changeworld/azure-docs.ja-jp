@@ -27,7 +27,7 @@ AMQP 1.0 は、Service Bus SDK Version 2.1 以降でサポートされていま�
 
 既定では、Service Bus .NET クライアント ライブラリは SOAP ベースの専用プロトコルを使ってサービス バス サービスと通信します。既定のプロトコルの代わりに AMQP 1.0 を使用するには、次のセクションの説明に従って、Service Bus 接続文字列を明示的に構成する必要があります。AMQP 1.0 を使用する際、アプリケーション コードはこの変更以外には基本的に変更されません。
 
-現在のリリースでは、AMQP を使用する際にサポートされていない API 機能がいくつかあります。サポートされていない機能については、後ほど「サポートされていない機能、制限、および動作の違い」セクションで示します。 そのほか、AMQP を使用すると意味が変わる詳細な構成設定もいくつかあります。
+現在のリリースでは、AMQP を使用する際にサポートされていない API 機能がいくつかあります。サポートされていない機能については、後ほど「[サポートされていない機能、制限、および動作の違い](#unsupported-features-restrictions-and-behavioral-differences)」セクションで示します。そのほか、AMQP を使用すると意味が変わる詳細な構成設定もいくつかあります。
 
 ### App.config を使用した構成
 
@@ -168,6 +168,7 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 さらに詳しい情報については、 次のリンク先を参照してください。
 
 - [Service Bus AMQP の概要]
+- [パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート]
 - [Windows Server 用 Service Bus の AMQP]
 
   [Service Bus キューの使用方法]: service-bus-dotnet-how-to-use-queues.md
@@ -199,6 +200,7 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 [NuGet]: http://nuget.org/packages/WindowsAzure.ServiceBus/
 
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
+[パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

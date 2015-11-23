@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Search を使用しているユーザー: ケース スタディとお客様事例"
+	pageTitle="Azure Search を使用しているユーザー: ケース スタディとお客様事例 | Microsoft Azure | ホスト型クラウド検索サービス"
 	description="Microsoft Azure のホスト型のクラウド検索サービスである Azure Search に関するケース スタディとお客様事例"
 	services="search"
 	documentationCenter=""
@@ -61,4 +61,4 @@ Medihoo は、医療検索 Web サイトの大規模な計画を持つ新興企�
 [5]: ./media/search-case-studies/weichert_m.png
 [6]: ./media/search-case-studies/xomni_m.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO3-->

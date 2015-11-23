@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="08/17/2015"
+   ms.date="11/10/2015"
    ms.author="maroche"/>
 
 
@@ -60,4 +60,4 @@
 ## 概要
 **Azure Data Catalog** でデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされることによって、データ ソースの検出と理解が容易になります。データ ソースが登録されると、ユーザーは **Azure Data Catalog** ポータルでフィルター処理と検索を使用してデータ ソースの探索を行うことができます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

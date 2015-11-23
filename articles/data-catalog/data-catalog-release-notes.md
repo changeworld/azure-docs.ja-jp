@@ -13,18 +13,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="09/04/2015"
+   ms.date="11/06/2015"
    ms.author="maroche"/>
 
 # Azure Data Catalog リリース ノート
 
-## Azure Data Catalog の 2015 年 9 月 4 日リリースのノート
 
-### 登録されたデータ アセットの一部でデータ プロファイルが不足する場合がある
+## Azure Data Catalog の 2015 年 11 月 6 日リリースのノート
 
-データ ソース登録ツールでデータ プロファイル オプションを使用してデータ ソースを登録するときに、登録する Oracle のテーブルとビューの列名にマルチバイト文字が含まれる場合は、データ プロファイル情報が登録されないことがあります。
+### データ ソース登録ツールを起動するときに、エラーが発生する場合があります
 
-これらの制限は 9 月 4 日付けのリリースでの既知の問題であり、Azure Data Catalog の今後の更新で対応される予定です。
+**Azure Data Catalog** ポータルから **Azure Data Catalog** のデータ ソース登録ツールを起動するときに、 以前のバージョンのツールをインストールしたユーザーは、「Application cannot be started. Contact the application vendor. (アプリケーションを起動することはできません。アプリケーション ベンダーに問い合わせます。)」というメッセージを受信する可能性があります。
+
+このメッセージを受信したユーザーは、Windows のコントロール パネルを使用して、既存の「Azure Data Catalog」アプリケーションを削除した後で、**Azure Data Catalog** ポータルからツールを再起動する必要があります。
 
 ## Azure Data Catalog の 2015 年 7 月 13 日リリースのノート
 
@@ -43,9 +44,9 @@ Azure Data Catalog の初期プレビュー リリースでの SQL Server Report
 
 ### Excel でのデータ資産のオープン
 
-Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開くと、[**Microsoft Excel のセキュリティに関する通知**] ダイアログ ボックスにメッセージが表示されることがあります。これは標準の予想される動作であり、ユーザーは、[**有効にする**] を選択して続行できます。
+**Azure Data Catalog** ポータルから Microsoft Excel でデータ資産を開くと、**[Microsoft Excel のセキュリティに関する通知]** ダイアログ ボックスにメッセージが表示されることがあります。これは標準の予想される動作であり、ユーザーは、[**有効にする**] を選択して続行できます。
 
-詳細については、「[不審な Web サイトへのリンクやそうしたサイトからのファイルについてのセキュリティの警告を有効または無効にする](https://support.office.com/ja-jp/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE)」を参照してください。
+詳細については、「[不審な Web サイトへのリンクやそうしたサイトからのファイルについてのセキュリティの警告を有効または無効にする](https://support.office.com/ja-JP/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE)」を参照してください。
 
 ### BLOB および UDT 列がプレビューに含まれない
 
@@ -61,7 +62,7 @@ Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開�
 
 特定の状況で、ユーザーが企業ネットワーク上にいる場合のみ、またはユーザーが企業ネットワークの外部から接続している場合のみ、このエラー動作が発生することがあります。グローバル認証ポリシーでは、イントラネット接続とエクストラネット接続で個別に認証方法を有効にすることができます。ログオン エラーは、ユーザーの接続元のネットワークで、フォーム認証が有効にされていない場合に発生する可能性があります。
 
-詳細については、「[認証ポリシーの構成](https://technet.microsoft.com/ja-jp/library/dn486781.aspx)」を参照してください。
+詳細については、「[認証ポリシーの構成](https://technet.microsoft.com/ja-JP/library/dn486781.aspx)」を参照してください。
 
 **原因 2: ネットワーク プロキシの構成**。企業ネットワークでプロキシ サーバーを使用している場合、登録ツールが、プロキシ経由で Azure Active Directory に接続できないことがあります。ユーザーは、ツールの構成ファイルを編集し、このセクションをファイルに追加して、登録ツールが確実に接続できるようにします。
 
@@ -77,4 +78,4 @@ Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開�
 
 RegistrationTool.exe.config ファイルを見つけるには、登録ツールを起動し、Windows タスク マネージャー ユーティリティを開きます。タスク マネージャーの [詳細] タブで、[RegistrationTool.exe] を右クリックし、ポップアップ メニューから [ファイルの場所を開く] を選択します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

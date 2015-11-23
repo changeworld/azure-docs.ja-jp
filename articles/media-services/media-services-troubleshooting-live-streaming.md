@@ -67,4 +67,12 @@
 	
 >[AZURE.NOTE]このトラブルシューティングの手順に従っても正常にストリーミングできない場合は、Azure の管理ポータルを使用して、サポート チケットを送信してください。
 
-<!---HONumber=Oct15_HO3-->
+##Media Services のラーニング パス
+
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
+
+##フィードバックの提供
+
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
+<!---HONumber=Nov15_HO3-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Service Bus AMQP の概要 (Java) | Microsoft Azure" 
+	pageTitle="Java とともに使用する Service Bus AMQP の概要 | Microsoft Azure" 
 	description="Azure での Java と Advanced Message Queuing Protocol (AMQP) 1.0 の使用について説明します。" 
 	services="service-bus" 
 	documentationCenter="java" 
@@ -9,11 +9,11 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.workload="tbd" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="07/21/2015" 
+	ms.date="11/06/2015" 
 	ms.author="sethm"/>
 
 
@@ -80,23 +80,25 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 
 **図 2: AMQP 1.0 クライアント ライブラリの表**
 
-Service Bus からライブラリを取得して使用する方法の詳細については、「[Service Bus AMQP: 開発者ガイド][]」をご覧ください。詳細については、以下の「参照」セクションをご覧ください。
+Service Bus からライブラリを取得して使用する方法の詳細については、「[Service Bus AMQP: 開発者ガイド][]」をご覧ください。詳細情報へのリンクについては、[次のステップ](service-bus-java-amqp-overview.md#next-steps)セクションを参照してください。
 
 ## 概要
 
 *    AMQP 1.0 は、プラットフォーム間共通のハイブリッド アプリケーションを構築するために使用できる、信頼性の高いオープンなメッセージング プロトコルです。AMQP 1.0 は OASIS の標準です。
 *    AMQP 1.0 サポートは、Azure Service Bus と Windows Server の Service Bus (Service Bus 1.1) で利用できるようになりました。料金は、既存のプロトコルと同じです。
 
-## 参照
+## 次のステップ
 
-*    [Service Bus .NET API で AMQP 1.0 を使用する方法](http://aka.ms/lym3vk)
-*    [Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法](http://aka.ms/ll1fm3)
-*    [Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)
+Service Bus での AMQP のサポートの詳細については、次のリンクを参照してください。
+
+*    [Service Bus .NET API で AMQP 1.0 を使用する方法](service-bus-dotnet-advanced-message-queuing.md)
+*    [Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法](service-bus-java-how-to-use-jms-api-amqp.md)
+*    [Service Bus AMQP: 開発者ガイド][]
 *    [OASIS Advanced Message Queuing Protocol (AMQP) バージョン 1.0 の仕様](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
 
 [0]: ./media/service-bus-java-amqp-overview/Example1.png
-[Service Bus AMQP: 開発者ガイド]: http://msdn.microsoft.com/library/jj841071.aspx
+[Service Bus AMQP: 開発者ガイド]: service-bus-amqp-dotnet.md
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

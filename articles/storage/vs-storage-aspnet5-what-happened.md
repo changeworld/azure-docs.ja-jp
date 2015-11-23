@@ -3,7 +3,7 @@
 	description="Visual Studio 接続済みサービスを使用して Visual Studio ASP.NET 5 プロジェクトの Azure ストレージ アカウントに接続した後の変更点について説明します。"
 	services="storage"
 	documentationCenter=""
-	authors="patshea123"
+	authors="TomArcher"
 	manager="douge"
 	editor="tglee"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/03/2015"
-	ms.author="patshea"/>
+	ms.author="tarcher"/>
 
 # ASP.NET 5 プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス)
 
@@ -47,4 +47,4 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 
 詳細については、「[ASP.NET 5](http://www.asp.net/vnext)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

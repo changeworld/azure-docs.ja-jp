@@ -3,7 +3,7 @@
    description="Visual Studio でのクラウド サービスまたは仮想マシンのデバッグ"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="patshea123"
+   authors="TomArcher"
    manager="douge"
    editor="tlee" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
    ms.date="10/28/2015"
-   ms.author="patshea" />
+   ms.author="tarcher" />
 
 # Visual Studio での Azure クラウド サービスまたは仮想マシンのデバッグ
 
@@ -190,4 +190,4 @@ Visual Studio ASP.NET プロジェクトでは、アプリケーションのテ�
 - **Intellitrace** を使用して、リリース サーバーから呼び出しおよびイベントのログを収集します。[IntelliTrace および Visual Studio を使用した発行済みのクラウド サービスのデバッグ](http://go.microsoft.com/fwlink/?LinkID=623016)に関するページを参照してください。
 - **Azure 診断**を使用して、ロールが開発環境と Azure のどちらで実行されているかにかかわらず、ロール内で実行されているコードの詳細な情報をログに記録します。「[Azure 診断を使用したログ データの収集](http://go.microsoft.com/fwlink/p/?LinkId=400450)」を参照してください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO3-->

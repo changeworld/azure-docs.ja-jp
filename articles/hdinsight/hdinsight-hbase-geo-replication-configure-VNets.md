@@ -38,7 +38,7 @@ Azure 仮想ネットワークのサイト間接続では、VPN ゲートウェ�
 このチュートリアルは、HBase geo レプリケーションの作成に関する[シリーズ][hdinsight-hbase-replication]の第 1 部です。
 
 - 2 つの仮想ネットワーク間に VPN 接続を構成します (このチュートリアル)
-- [仮想ネットワーク用に DNS を構成します][hdinsight-hbase-geo-replication-DNS]
+- [仮想ネットワーク用に DNS を構成します][hdinsight-hbase-geo-replication-dns]
 - [HBase geo レプリケーションの構成][hdinsight-hbase-geo-replication]
 
 次の図は、このチュートリアルで作成する 2 つの仮想ネットワークを示したものです。
@@ -249,7 +249,7 @@ Vnet に VM をデプロイすることなく、Azure ポータルの VNet ダ�
 
 
 
-[hdinsight-hbase-geo-replication-dns]: hdinsight-hbase-geo-replication-configure-DNS.md
+[hdinsight-hbase-geo-replication-dns]: hdinsight-hbase-geo-replication-configure-dns.md
 [hdinsight-hbase-geo-replication]: hdinsight-hbase-geo-replication.md
 
 
@@ -270,4 +270,4 @@ Vnet に VM をデプロイすることなく、Azure ポータルの VNet ダ�
 [img-vnet-lnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.LNet.diagram.png
 [img-vpn-status]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.status.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/25/2015"
+	ms.date="11/11/2015"
 	ms.author="jgao"/>
 
 # Ambari API を使用した HDInsight の Hadoop クラスターの監視
@@ -130,17 +130,17 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 API 呼び出しの監視|URI|説明
 ---|---|---
 クラスターの取得|`/api/v1/clusters`|
-クラスター情報の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net`|クラスター、サービス、ホスト
-サービスの取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/services`|含まれるサービス: hdfs、mapreduce
-サービス情報の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/services/&lt;ServiceName&gt;`|
-サービス コンポーネントの取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/services/&lt;ServiceName&gt;/components`|HDFS: namenode、datanode<br/>MapReduce: jobtracker、tasktracker
-コンポーネント情報の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/services/&lt;ServiceName&gt;/components/&lt;ComponentName&gt;`|ServiceComponentInfo、host-components、metrics
-ホストの取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/hosts`|headnode0、workernode0
-ホスト情報の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/hosts/&lt;HostName&gt;`|
-ホスト コンポーネントの取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/hosts/&lt;HostName&gt;/host_components`|namenode、resourcemanager
-ホスト コンポーネント情報の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/hosts/&lt;HostName&gt;/host_components/&lt;ComponentName&gt;`|HostRoles、component、host、metrics
-構成の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/configurations`|構成の種類: core-site、hdfs-site、mapred-site、hive-site
-構成情報の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/configurations?type=&lt;ConfigType&gt;&tag=&lt;VersionName&gt;`|構成の種類: core-site、hdfs-site、mapred-site、hive-site
+クラスター情報の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net`|クラスター、サービス、ホスト
+サービスの取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services`|含まれるサービス: hdfs、mapreduce
+サービス情報の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>`|
+サービス コンポーネントの取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>/components`|HDFS: namenode、datanode<br/>MapReduce: jobtracker、tasktracker
+コンポーネント情報の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>/components/<ComponentName>`|ServiceComponentInfo、host-components、metrics
+ホストの取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts`|headnode0、workernode0
+ホスト情報の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts/<HostName>`|
+ホスト コンポーネントの取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts/<HostName>/host_components`|namenode、resourcemanager
+ホスト コンポーネント情報の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts/<HostName>/host_components/<ComponentName>`|HostRoles、component、host、metrics
+構成の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations`|構成の種類: core-site、hdfs-site、mapred-site、hive-site
+構成情報の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations?type=<ConfigType>&tag=<VersionName>`|構成の種類: core-site、hdfs-site、mapred-site、hive-site
 
 
 ##次のステップ
@@ -175,4 +175,4 @@ API 呼び出しの監視|URI|説明
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

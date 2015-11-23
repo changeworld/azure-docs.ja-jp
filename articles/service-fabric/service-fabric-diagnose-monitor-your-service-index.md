@@ -20,7 +20,7 @@
 監視、検出、診断およびトラブルシューティングでは、ユーザー エクスペリエンスの中断を最小限に抑えてサービスを続行できます。詳細については、次を参照してください。
 
 - [ローカルでのサービスの監視方法と診断方法](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
-- [Service Fabric アプリケーションに対する Application Insights の設定](service-fabric-diagnostics-application-insights-setup.md)
+- [Service Fabric アプリケーションに対する Application Insights の設定](../app-insights-windows-desktop.md)
 - [アプリケーション アップグレードの障害のトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
 - [高信頼アクターの診断とパフォーマンス監視](service-fabric-reliable-actors-diagnostics.md)
 - [Reliable Services の診断とパフォーマンス監視](service-fabric-reliable-services-diagnostics.md)
@@ -38,4 +38,4 @@ Service Fabric には、Service Fabric のエンティティのための機能�
 - [トラブルシューティングのためのシステム正常性レポートの使用](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 - [Service Fabric のカスタム正常性レポートの追加](service-fabric-report-health.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

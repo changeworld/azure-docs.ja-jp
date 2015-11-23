@@ -4,7 +4,7 @@
     services="sql-database"
     documentationCenter=""  
     manager="jeffreyg"
-    authors="sidneyh"/>
+    authors="torsteng"/>
 
 <tags
     ms.service="sql-database"
@@ -12,8 +12,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="10/19/2015"
-    ms.author="torsteng" />
+    ms.date="11/09/2015"
+    ms.author="torsteng;sidneyh" />
 
 # データベース間クエリのためのエラスティック データベース クエリ (列方向のパーティション分割)
 
@@ -44,7 +44,7 @@
     SECRET = ‘<password>’
     [;]
     
-マスター キーと資格情報を削除するには、次の構文を使用します。
+資格情報を削除するには、次の構文を使用します。
     
     DROP DATABASE SCOPED CREDENTIAL <credential_name>;  
     DROP MASTER KEY;   
@@ -184,4 +184,4 @@ SCHEMA\_NAME 句と OBJECT\_NAME 句は、外部テーブル定義をリモー�
 <!--Image references-->
 <!--anchors-->
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO3-->

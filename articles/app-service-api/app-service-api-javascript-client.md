@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="JavaScript" 
 	ms.topic="article" 
-	ms.date="07/31/2015" 
+	ms.date="10/30/2015" 
 	ms.author="bradygaster"/>
 
 # HTML および JavaScript を使用した Azure API アプリの実行
@@ -141,7 +141,7 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 ## API アプリを使用する Web アプリの作成
 
-このセクションでは、新しい空の Web アプリケーションを作成し、それに AngularJS をインストールして使用し、単純な HTML フロントエンドを API アプリにバインドします。使用中の Web アプリを Azure App Service にデプロイします。HTML Web アプリは、API アプリから取得したデータにバインドされ、そのデータを表示し、Contacts API 用の単純な UI をユーザーに提供します。
+このセクションでは、新しい空の Web アプリケーションを作成して、AngularJS をインストールして使用し、単純な HTML フロントエンドを API アプリにバインドします。使用中の Web アプリを Azure App Service にデプロイします。HTML Web アプリは、API アプリから取得したデータにバインドされ、そのデータを表示し、Contacts API 用の単純な UI をユーザーに提供します。
 
 1. 前の [API アプリの作成](app-service-dotnet-create-api-app.md)手順で作成したソリューションを右クリックし、**[追加]、[新しいプロジェクト]** の順に選択します。
 
@@ -312,7 +312,7 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 1. Index.html に追加したコードのベース URL (`http://localhost:1578`) のポート番号を、API プロジェクトの実際のポート番号に置き換えます。
 
-	> **注意**: HTML クライアント プロジェクトのポート番号を使用しないでください。API プロジェクトを右クリックし、[デバッグ]、[新しいインスタンスを開始] の順にクリックして、ポート番号を示すブラウザー ウィンドウを表示できます。
+>[AZURE.NOTE]**注意** HTML クライアント プロジェクトのポート番号を使用しないでください。API プロジェクトを右クリックし、**[デバッグ]、[新しいインスタンスを開始]** の順にクリックして、ポート番号を示すブラウザー ウィンドウを表示できます。
 
 1. HTML クライアントを実行したときに API アプリ プロジェクトも実行されていることを確認します。実行されていない場合は、JavaScript HTML が正しく機能しません。ソリューションを右クリックして、**[プロパティ]** を選択します。その後、両方の Web プロジェクトを **[デバッグなしで開始]** に設定します。最初に API プロジェクトが実行されます。 
 
@@ -371,4 +371,4 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 この例は、API アプリへの認証されていないアクセスを示します。App Service での認証については、[API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)に関するページを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Windows VM のイメージをキャプチャする | Microsoft Azure"
-	description="クラシック デプロイ モデルを使用して作成された Windows 仮想マシンのイメージをキャプチャする"
+	pageTitle="Azure Windows VM のイメージをキャプチャする | Microsoft Azure"
+	description="クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -14,15 +14,15 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/16/2015"
+	ms.date="11/05/2015"
 	ms.author="cynthn"/>
 
-#クラシック デプロイ モデルを使用して作成された Windows 仮想マシンのイメージをキャプチャする
+#クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 
-ここでは、Windows を実行する Azure 仮想マシンをキャプチャして、他の仮想マシンを作成する際にイメージとして使用する方法を示します。このイメージには、オペレーティング システム ディスクと、仮想マシンに接続されているすべてのデータ ディスクが含まれます。ネットワーク構成は含まれないため、テンプレートを使用する他の仮想マシンを作成するときは、ネットワーク構成を行う必要があります。
+ここでは、Windows を実行する Azure 仮想マシンをキャプチャして、他の仮想マシンを作成する際にイメージとして使用する方法を示します。このイメージには、オペレーティング システム ディスクと、仮想マシンに接続されているすべてのデータ ディスクが含まれます。ネットワーク構成は含まれないため、イメージを使用する他の仮想マシンを作成するときは、ネットワーク構成を行う必要があります。
 
 Azure では、イメージは **[マイ イメージ]** に格納されます。この場所は、アップロードしたイメージが格納される場所と同じです。イメージの詳細については、「[仮想マシン イメージについて](virtual-machines-images.md)」を参照してください。
 
@@ -30,12 +30,15 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 
 これらの手順は、すでに Azure 仮想マシンを作成し、データ ディスクの接続を含め、オペレーティング システムの構成が完了していることを前提としています。まだ完了していない場合は、下記の手順を確認してください。
 
-- [Windows を実行するカスタム仮想マシンの作成][]
-- [データ ディスクを仮想マシンに接続する方法][]
+- [イメージから仮想マシンを作成](virtual-machines-create-custom.md)
+- [データ ディスクを仮想マシンに接続する方法](storage-windows-attach-disk.md)
 
-> [AZURE.WARNING]このプロセスではキャプチャ後に元の仮想マシンを削除するため、仮想マシンのバックアップは目的としていません。バックアップ方法の 1 つに Azure Backup があります。これは、特定の地域でプレビューとして提供されています。詳細については、「[Back up Azure virtual machines (Azure 仮想マシンのバックアップ)](../backup/backup-azure-vms.md)」を参照してください。その他のソリューションは認定パートナーから利用できます。利用可能なソリューションについては、Azure Marketplace を検索して確認してください。
+> [AZURE.WARNING]キャプチャされた後に、このプロセスは元の仮想マシンを削除します。
 
-##仮想マシンをキャプチャする##
+これは仮想マシンのバックアップする方法としてではありません。バックアップ方法の 1 つに Azure Backup があります。これは、特定の地域でプレビューとして提供されています。詳細については、「[Back up Azure virtual machines (Azure 仮想マシンのバックアップ)](../backup/backup-azure-vms.md)」を参照してください。その他のソリューションは認定パートナーから利用できます。利用可能なソリューションについては、Azure Marketplace を検索して確認してください。
+
+
+##仮想マシンをキャプチャする
 
 1. [Azure ポータル](http://manage.windowsazure.com)で仮想マシンに**接続**します。詳細については、「[Windows Server が実行されている仮想マシンにサインインする方法][]」を参照してください。
 
@@ -71,11 +74,12 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 
  	![イメージのキャプチャの成功](./media/virtual-machines-capture-image-windows-server/VMCapturedImageAvailable.png)
 
-##次のステップ##
-イメージを使用して仮想マシンを作成する準備ができました。これを行うには、**[ギャラリーから]** メニュー項目を使用して先ほど作成したイメージを選択し、仮想マシンを作成します。手順については、「[Windows を実行するカスタム仮想マシンの作成][]」を参照してください。
+##次のステップ
 
-[Windows を実行するカスタム仮想マシンの作成]: virtual-machines-windows-create-custom.md
-[データ ディスクを仮想マシンに接続する方法]: storage-windows-attach-disk.md
+イメージを使用して仮想マシンを作成する準備ができました。これを行うには、**[ギャラリーから]** メニュー項目を使用して先ほど作成したイメージを選択し、仮想マシンを作成します。手順については、「[イメージから仮想マシンを作成](virtual-machines-create-custom.md)」を参照してください。
+
+
+
 [Windows Server が実行されている仮想マシンにサインインする方法]: virtual-machines-log-on-windows-server.md
 [Sysprep の使用方法: 紹介]: http://technet.microsoft.com/library/bb457073.aspx
 [Run Sysprep.exe]: ./media/virtual-machines-capture-image-windows-server/SysprepCommand.png
@@ -86,4 +90,4 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 [Image capture successful]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
 [Use the captured image]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

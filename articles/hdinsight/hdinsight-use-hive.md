@@ -40,6 +40,20 @@ Hive は**ユーザー定義関数 (UDF)** で拡張することもできます�
 
 * [HDInsight にカスタムの Hive UDF を追加する方法](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
+
+## Hive の内部テーブルと外部テーブル
+
+Hive の内部テーブルと外部テーブルについて知っておく必要のある事項がいくつかあります。
+
+- **CREATE TABLE** コマンドは内部テーブルを作成します。データ ファイルは既定のコンテナーに配置する必要があります。
+- **CREATE TABLE** コマンドはデータ ファイルを /hive/warehouse/<TableName> フォルダーに移動します。
+- **CREATE EXTERNAL TABLE** コマンドは外部テーブルを作成します。データ ファイルは既定のコンテナーの外部に配置することもできます。
+- **CREATE EXTERNAL TABLE** コマンドはデータ ファイルを移動しません。
+- **CREATE EXTERNAL TABLE** コマンドでは、LOCATION 内のフォルダーは許容されません。チュートリアルで sample.log ファイルのコピーを作成しているのは、これが理由です。
+
+詳細については、「[HDInsight: Hive Internal and External Tables Intro (HDInsight: Hive の内部テーブルと外部テーブルの概要)][cindygross-hive-tables]」を参照してください。
+
+
 ##<a id="data"></a>サンプル データ Apache log4j ファイルについて
 
 この例では、*log4j* サンプル ファイル (BLOB ストレージ コンテナーの **/example/data/sample.log** に格納されている) を使用します。ファイル内の各ログは、タイプと重要度を表す `[LOG LEVEL]` フィールドを含むフィールド行で構成されています。以下に例を示します。
@@ -183,4 +197,7 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=Oct15_HO4-->
+
+[cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+
+<!---HONumber=Nov15_HO3-->

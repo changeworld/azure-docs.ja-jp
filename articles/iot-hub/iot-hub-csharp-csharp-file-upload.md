@@ -82,8 +82,8 @@ IoT Hub に関するその他の情報:
 
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
-[Azure Data Factory]: https://azure.microsoft.com/JA-JP/documentation/services/data-factory/
-[Hadoop]: https://azure.microsoft.com/JA-JP/documentation/services/hdinsight/
+[Azure Data Factory]: https://azure.microsoft.com/ja-JP/documentation/services/data-factory/
+[Hadoop]: https://azure.microsoft.com/ja-JP/documentation/services/hdinsight/
 
 [Get started with IoT Hub]: iot-hub-csharp-csharp-getstarted.md
 [IoT Hub を使用したクラウドからデバイスへのメッセージの送信]: iot-hub-csharp-csharp-c2d.md
@@ -98,4 +98,4 @@ IoT Hub に関するその他の情報:
 [Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
 [Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->

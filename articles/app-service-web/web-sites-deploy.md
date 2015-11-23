@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure App Service での Web アプリのデプロイ"
-	description="コンテンツを Web アプリにデプロイするときにどのような方法を利用できるかを紹介します。"
+	pageTitle="Azure App Service のデプロイに関するドキュメント"
+	description="Azure App Service へのアプリのデプロイについて説明しているドキュメントを紹介します。"
 	services="app-service"
 	documentationCenter=""
 	authors="tdykstra"
@@ -13,46 +13,46 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/14/2015"
+	ms.date="11/06/2015"
 	ms.author="tdykstra"/>
 
-#Azure App Service での Web アプリのデプロイ
+# Azure App Service のデプロイに関するドキュメント
 
 ## 概要
 
-このトピックでは、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) に独自のコンテンツをデプロイする際のオプションの概要を説明します。
+この記事では、独自のコンテンツを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイするために使用可能なメソッドを一覧表示します。操作方法に関する情報が含まれている記事やブログへのリンクも含まれます。追加の記事が発行されたら、このリストに加えられます。
 
 Web アプリをデプロイする最善の方法は、[継続的な配置ワークフロー](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)を設定し、[ソース管理システム](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)に統合することです。自動化により、開発プロセスの効率が向上することに加え、バックアップと復元のプロセスの管理性と信頼性も向上します。
 
-クラウド ホスト型ソース管理システムからのデプロイについては、この記事の次のセクションをご覧ください。
+##### クラウドでホストされているソース管理システムからのデプロイ
 
-* [Visual Studio Online](#vso)
+* [Visual Studio Online を使用した継続的な配信](#vso)
 * [Git を使用したリポジトリ Web サイト](#git)
 * [Mercurial を使用したリポジトリ Web サイト](#mercurial)
-* [Dropbox](#dropbox)
+* [Dropbox からのデプロイの自動化](#dropbox)
 
-オンプレミスのソース管理システムからのデプロイについては、この記事の次のセクションをご覧ください。
+##### オンプレミスのソース管理システムからのデプロイ
 
-* [Team Foundation Server (TFS)](#tfs)
+* [Team Foundation Server (TFS) による継続的な配信](#tfs)
 * [内部設置型の Git または Mercurial リポジトリ](#onpremises)
 
-コマンド ライン ツールを使用して、デプロイを自動化することもできます。コマンド ライン ツールを使用したデプロイについては、この記事の次のセクションをご覧ください。
+##### コマンド ライン ツールを使用したデプロイの自動化
 
-* [MSBuild](#msbuild)
-* [FTP ツールとスクリプト](#ftp)
-* [Windows PowerShell](#powershell)
-* [.NET 管理 API](#api)
-* [Azure コマンド ライン インターフェイス (Azure CLI)](#cli)
-* [Web デプロイ コマンド ライン](#webdeploy)
+* [MSBuild を使用したデプロイの自動化](#msbuild)
+* [FTP ツールとスクリプトを使用してファイルをコピー](#ftp)
+* Windows PowerShell(#powershell) を使用したデプロイの自動化
+* [.NET 管理 API を使用したデプロイの自動化](#api)
+* [Azure コマンド ライン インターフェイス (Azure CLI) からデプロイ](#cli)
+* [Web デプロイ コマンド ラインからデプロイ](#webdeploy)
  
-統合開発環境 (IDE) からデプロイする方が便利な場合もあります。IDE からのデプロイについては、この記事の次のセクションをご覧ください。
+##### 統合開発環境 (IDE) からデプロイ
 
-* [Visual Studio](#vs)
-* [WebMatrix](#webmatrix)
+* [Visual Studio から直接デプロイ](#vs)
+* [WebMatrix から直接デプロイ](#webmatrix)
 
 もう 1 つのデプロイ オプションとして、[Octopus Deploy](http://en.wikipedia.org/wiki/Octopus_Deploy) などのクラウド ベースのサービスを使用することもできます。詳細については、「[Deploy ASP.NET applications to Azure Web Sites (ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする)](https://octopusdeploy.com/blog/deploy-aspnet-applications-to-azure-websites)」をご覧ください。
 
-##<a name="vso"></a>Visual Studio Online
+##<a name="vso"></a>Visual Studio Online を使用した継続的な配信
 
 [Visual Studio Online](http://www.visualstudio.com/) (旧 Team Foundation Service) は、ソース管理とチーム コラボレーションを対象にする、マイクロソフトのクラウドベースのソリューションです。開発者が 5 人以下のチームは、このサービスを無料で使用できます。App Services で Web アプリへの継続的な配信を実行することができ、リポジトリでは [Git または TFVC](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#gittfs) を使用できます。
 
@@ -81,7 +81,7 @@ Mercurial を使用してデプロイを行う方法の詳細については、�
 * [Git を使用したソース管理から Web アプリへの発行](web-sites-publish-source-control.md)。このチュートリアルでは、Git リポジトリを発行する方法を示していますが、CodePlex または BitBucket でホストされている Mercurial リポジトリに関するプロセスは類似しています。
 * [Git、Mercurial、Dropbox に関する Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azuregit)。
 
-##<a name="dropbox"></a>Dropbox
+##<a name="dropbox"></a>Dropbox からのデプロイの自動化
 
 [Dropbox](https://www.dropbox.com/) はソース管理システムではありませんが、ソース コードを DropBox に格納する場合は、DropBox アカウントからのデプロイを自動化することもできます。
 
@@ -89,7 +89,7 @@ Mercurial を使用してデプロイを行う方法の詳細については、�
 * [Web アプリに対する Dropbox デプロイ](http://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Dropbox-Deployment-to-Windows-Azure-Web-Sites)。このビデオでは、Dropbox フォルダーを Web アプリに接続する方法について説明し、Web アプリを迅速に設定して動作させる方法や、簡単なドラッグ アンド ドロップのデプロイを使用して Web サイトを保持する方法を示します。
 * [Git、Mercurial、Dropbox に関する Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azuregit)。
 
-##<a name="vs"></a>Visual Studio
+##<a name="vs"></a>Visual Studio から直接デプロイ
 
 Visual Studio から Web アプリをデプロイする方法については、次のリソースを参照してください。
 
@@ -100,7 +100,7 @@ Visual Studio から Web アプリをデプロイする方法については、�
 * [Visual Studio を使用した ASP.NET Web デプロイ](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/introduction)。12 部構成のチュートリアル シリーズであり、このリスト内に掲載されている他のリソースより詳細にデプロイ タスクの範囲を網羅しています。チュートリアルを作成した後で、不足している事項を説明するためにメモが追加されたため、一部の Azure デプロイ機能が追加されました。
 * [Git リポジトリから ASP.NET Web サイトを Visual Studio 2012 内にある Azure へ直接のデプロイ](http://www.dotnetcurry.com/ShowArticle.aspx?ID=881)。Visual Studio 内で ASP.NET Web プロジェクトをデプロイし、Git プラグインを使用してコードを Git にコミットして、Azure を Git リポジトリに接続する方法について説明します。Visual Studio 2013 以降、Git のサポートは組み込まれており、プラグインのインストールは必要ありません。
 
-##<a name="webmatrix"></a>WebMatrix
+##<a name="webmatrix"></a>WebMatrix から直接デプロイ
 
 WebMatrix から Web アプリをデプロイする方法については、次のリソースを参照してください。
 
@@ -112,7 +112,7 @@ WebMatrix から Web アプリをデプロイする方法については、次�
 
 * [PHP-MySQL Web アプリの作成と FTP でのデプロイ](web-sites-php-mysql-deploy-use-ftp.md)。
 
-##<a name="tfs"></a>Team Foundation Server (TFS)
+##<a name="tfs"></a>Team Foundation Server (TFS) による継続的なデプロイ
 
 Team Foundation Server は、ソース管理とチーム コラボレーションを対象にする、マイクロソフトの内部設置型ソリューションです。Web アプリへの継続的な配信を実行するように TFS を設定することができます。
 
@@ -131,7 +131,7 @@ Git または Mercurial を使用する任意のリポジトリからデプロ�
 * [Git、Mercurial、Dropbox に関する Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azuregit)。
 * [1 つの Git リポジトリから Azure への 2 つの Web サイトのデプロイ](http://www.hanselman.com/blog/DeployingTWOWebsitesToWindowsAzureFromOneGitRepository.aspx)。Scott Hanselman 氏によるブログの投稿です。
 
-##<a name="msbuild"></a>MSBuild
+##<a name="msbuild"></a>MSBuild を使用したデプロイの自動化
 
 [Visual Studio IDE](#vs) を使用して開発を行う場合は、[MSBuild](http://msbuildbook.com/) を使用して IDE 内のすべての作業を自動化することができます。[Web Deploy](#webdeploy) または [FTP と FTPS](#ftp) を使用してファイルをコピーするように MSBuild を構成することができます。Web Deploy では、データベースのデプロイなど、デプロイに関連する多くのタスクを自動化することもできます。
 
@@ -140,7 +140,7 @@ MSBuild を使用したコマンドライン デプロイの詳細について�
 * [Visual Studio を使用した ASP.NET Web のデプロイ: コマンド ラインのデプロイ](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/command-line-deployment)。Visual Studio を使用して Azure のデプロイを行うチュートリアル シリーズの第 10 部。Visual Studio でプロファイルの発行を設定した後に、コマンド ラインを使用してデプロイを行う方法を示します。
 * [『Inside the Microsoft Build Engine: Using MSBuild and Team Foundation Build』](http://msbuildbook.com/)。MSBuild を使用してデプロイを実行する方法に関する章が掲載されている書籍。
 
-##<a name="ftp"></a>FTP ツールとスクリプト
+##<a name="ftp"></a>FTP ツールおよびスクリプトを使用したファイルのコピー
 
 [FTP](http://en.wikipedia.org/wiki/File_Transfer_Protocol) を使用してファイルをコピーすることで、コンテンツをアプリにデプロイすることができます。Web アプリ用の FTP 資格情報は簡単に作成できます。これらの資格情報は、スクリプトや FTP と連携するアプリケーション (Internet Explorer などのブラウザーや、[FileZilla](https://filezilla-project.org/) などのフル機能を備えた無料のユーティリティなど) で使用できます。Web アプリでは、より安全な FTPS プロトコルもサポートしています。
 
@@ -150,7 +150,7 @@ FTP ユーティリティを使用して Web アプリのファイルを Azure �
 
 * [FTP バッチ スクリプトの使用](http://support.microsoft.com/kb/96269)。
 
-##<a name="powershell"></a>Windows PowerShell
+##<a name="powershell"></a>Windows PowerShell を使用したデプロイの自動化
 
 [Windows PowerShell](http://msdn.microsoft.com/library/dd835506.aspx) から MSBuild または FTP デプロイの機能を実行することができます。この機能を実行する場合は、Azure の REST 管理 API を簡単に呼び出せる一連の Windows PowerShell コマンドレットを使用することもできます。
 
@@ -162,7 +162,7 @@ FTP ユーティリティを使用して Web アプリのファイルを Azure �
 * [Azure での実際のクラウド アプリケーションのビルド - すべてを自動化](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)。電子書籍の中に掲載されているサンプル アプリケーションが、Windows PowerShell スクリプトをどのように使用して Azure テスト環境を作成し、その環境をデプロイするかを説明する、電子書籍の章。Azure PowerShell の他のドキュメントへのリンクを掲載している「[リソース](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything#resources)」セクションを参照してください。
 * [Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](http://msdn.microsoft.com/library/dn642480.aspx)。Visual Studio で生成される Windows PowerShell デプロイ スクリプトの使用方法
 
-##<a name="api"></a>.NET 管理 API
+##<a name="api"></a>.NET 管理 API を使用したデプロイの自動化
 
 C# のコードを作成し、デプロイの目的で MSBuild や FTP の機能を実行することができます。この作業を実行する場合は、Azure の管理 REST API にアクセスして、サイト管理機能を実行することができます。
 
@@ -170,7 +170,7 @@ C# のコードを作成し、デプロイの目的で MSBuild や FTP の機能
 
 * [Azure 管理ライブラリと .NET を使用してすべてを自動化](http://www.hanselman.com/blog/PennyPinchingInTheCloudAutomatingEverythingWithTheWindowsAzureManagementLibrariesAndNET.aspx)。.NET 管理 API の紹介とその他のドキュメントへのリンク。
 
-##<a name="cli"></a>Azure コマンド ライン インターフェイス (Azure CLI)
+##<a name="cli"></a>Azure コマンド ライン インターフェイス (Azure CLI) からのデプロイ
 
 Windows、Mac、Linux マシンでコマンド ラインを使用し、FTP を使用してデプロイを実行することもできます。この作業を実行する場合は、Azure CLI を使用して Azure REST 管理 API にアクセスすることもできます。
 
@@ -178,7 +178,7 @@ Windows、Mac、Linux マシンでコマンド ラインを使用し、FTP を�
 
 * [Azure コマンド ライン ツール](/downloads/#cmd-line-tools)。コマンド ライン ツールに関する情報を掲載している Azure.com のポータル ページです。
 
-##<a name="webdeploy"></a>Web デプロイ コマンド ライン
+##<a name="webdeploy"></a>Web デプロイ コマンド ラインからのデプロイ
 
 [Web Deploy](http://www.iis.net/downloads/microsoft/web-deploy) は IIS へのデプロイを行うマイクロソフトのソフトウェアであり、インテリジェントなファイルの同期機能に加えて、FTP を使用する場合は自動化できない他の多くのデプロイ関連タスクも実行または調整することができます。たとえば、Web Deploy を使用して Web アプリと共に新しいデータベースをデプロイ、またはデータベースの更新をデプロイすることができます。また、Web Deploy は、変更されたファイルのみをインテリジェントにコピーするため、既存のサイトを更新するのに要する時間を最小化することもできます。Microsoft WebMatrix、Visual Studio、Visual Studio Online、および Team Foundation Server は Web Deploy のビルトイン機能をサポートしていますが、コマンド ラインから Web Deploy を直接使用してデプロイを自動化することもできます。Web Deploy の各コマンドは非常に強力ですが、学習曲線を急上昇させることもできます。
 
@@ -201,8 +201,8 @@ Azure のロール ベースのアクセス制御を使用して、Web アプリ
 その他のデプロイのトピックについては、[Web アプリに関するドキュメント](/documentation/services/web-sites/)の「デプロイ」セクションをご覧ください。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO3-->
