@@ -1,7 +1,8 @@
 <properties 
-    pageTitle="PowerShell を使用した Azure SQL Database のエラスティック データベース プールの作成 | Microsoft Azure" 
-    description="複数の Azure SQL Database でリソースを共有するためのエラスティック データベース プールを作成します。" 
-    services="sql-database" 
+    pageTitle="エラスティック データベース プールを使用したリソースのスケールアウト | Microsoft Azure" 
+    description="PowerShell を使用し、複数のデータベースを管理するエラスティック データベース プールを作成して、Azure SQL Database リソースをスケールアウトする方法について説明します。" 
+	keywords="複数のデータベース、スケールアウト"    
+	services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
     manager="jeffreyg" 
@@ -16,17 +17,18 @@
     ms.date="11/06/2015"
     ms.author="adamkr; sstein"/>
 
-# PowerShell を使用してエラスティック データベース プールを作成する
+# PowerShell を使用してエラスティック データベース プールを作成し、複数の SQL Database のリソースをスケールアウトする 
 
 > [AZURE.SELECTOR]
 - [Azure portal](sql-database-elastic-pool-portal.md)
 - [C#](sql-database-elastic-pool-csharp.md)
 - [PowerShell](sql-database-elastic-pool-powershell.md)
 
-
-この記事では、PowerShell コマンドレットを使用して[エラスティック データベース プール](sql-database-elastic-pool.md)を作成する方法について説明します。
+PowerShell コマンドレットを使用して[エラスティック データベース プール](sql-database-elastic-pool.md)を作成し、複数のデータベースを管理する方法について説明します。
 
 > [AZURE.NOTE]エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server.md)を 1 回の手順で実行できます。
+
+エラスティック データベース プールを使用すると、複数の SQL Database のデータベース リソースと管理をスケールアウトすることができます。
 
 この記事では、Azure サブスクリプションを除き、エラスティック データベース プールを作成して構成するために必要なものすべて (V12 サーバーを含む) を作成する方法を説明します。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
 
@@ -60,7 +62,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 ## リソース グループ、サーバー、ファイアウォール規則の作成
 
-これでご利用の Azure サブスクリプションに対してコマンドレットを実行する準備ができましたので、次にエラスティック データベース プールを作成するサーバーを含むリソース グループを確立します。次のコマンドを編集して選択した任意の有効な場所で使用できます。**(Get-AzureRMLocation | where-object {$\_.Name -eq "Microsoft.Sql/servers" }).Locations** を実行して有効な場所の一覧を取得してください。
+これでご利用の Azure サブスクリプションに対してコマンドレットを実行する準備ができましたので、次にエラスティック データベース プールを作成するサーバーを含むリソース グループを作成し、そこに複数のデータベースを含めます。次のコマンドを編集して選択した任意の有効な場所で使用できます。**(Get-AzureRMLocation | where-object {$\_.Name -eq "Microsoft.Sql/servers" }).Locations** を実行して有効な場所の一覧を取得してください。
 
 すでにリソース グループがある場合は次の手順に進みます。次のコマンドを実行して新しいリソース グループを作ることもできます。
 
@@ -129,6 +131,8 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 
 ## エラスティック データベースとエラスティック データベース プールの監視
+エラスティック データベース プールにはメトリック レポートが用意されており、複数のデータベースを管理する作業をスケールアウトできます。
+
 
 ### エラスティック データベース プールの操作の状態の取得
 
@@ -225,11 +229,11 @@ CSV ファイルにエクスポートします。
 
 ## 次のステップ
 
-エラスティック データベース プールを作成した後は、エラスティック ジョブを作成してプール内のエラスティック データベース を管理できます。エラスティック ジョブはプールのデータベースの任意の数に対して T-SQL スクリプトの実行を容易にします。詳細については、「[Elastic Database ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。
+エラスティック データベース プールを作成した後は、エラスティック ジョブを作成してプール内のエラスティック データベース を管理できます。エラスティック ジョブはプールのデータベースの任意の数に対して T-SQL スクリプトの実行を容易にします。詳細については、「[エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。
 
 
 ## エラスティック データベースのリファレンス
 
-API とエラーの詳細を含む弾力性データベースと弾力性データベース プールの詳細については、「[弾力性データベースのリファレンス](sql-database-elastic-pool-reference.md)」をご覧ください。
+API とエラーの詳細を含むエラスティック データベースとエラスティック データベース プールの詳細については、「[エラスティック データベースのリファレンス](sql-database-elastic-pool-reference.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

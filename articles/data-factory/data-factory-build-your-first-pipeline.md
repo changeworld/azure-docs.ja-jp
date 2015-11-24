@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Data Factory を使用した初めてのパイプラインの作成"
+	pageTitle="Azure Data Factory を使ってみる"
 	description="このチュートリアルでは、Azure HDInsight を使用してデータを変換するサンプル データ パイプラインを作成する方法を示します。"
 	services="data-factory"
 	documentationCenter=""
@@ -16,19 +16,19 @@
 	ms.date="11/02/2015"
 	ms.author="spelluru"/>
 
-# Azure Data Factory を使用した初めてのパイプラインの作成
+# Azure Data Factory を使ってみる
 > [AZURE.SELECTOR]
 - [Tutorial Overview](data-factory-build-your-first-pipeline.md)
 - [Using Data Factory Editor](data-factory-build-your-first-pipeline-using-editor.md)
 - [Using PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Using Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 
-この記事では、初めてのイプラインの作成と、Azure Data Factory へのデプロイについて説明します。
+この記事では、Azure Data Factory を初めて構築する方法について説明します。
 
 > [AZURE.NOTE]この記事では、Azure Data Factory サービスの概念については説明しません。サービスの詳細については、記事「[Azure Data Factory サービスの概要](data-factory-introduction.md)」を参照してください。
 
 ## チュートリアルの概要
-このチュートリアルでは、初めてパイプラインを稼動させるために必要な手順を示します。パイプラインを作成し、必要なすべてのリソースを最初から指定します。
+このチュートリアルでは、初めて Data Factory とパイプラインを使用するために必要な手順を示します。パイプラインを作成し、必要なすべてのリソースを最初から指定します。
 
 最初から作成せずにすばやく Data Factory のさまざまな機能を調べたい場合は、Azure プレビュー ポータルで提供されているサンプルを使用できます。Azure プレビュー ポータルを使用する使用例に基づくサンプルのデプロイ方法については、「[Azure Data Factory の更新: サンプルの簡略化されたデプロイメント](http://azure.microsoft.com/blog/2015/04/24/azure-data-factory-update-simplified-sample-deployment/)」を参照してください。
 
@@ -172,4 +172,4 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 - Azure PowerShell を使用してチュートリアルを実行するには、上部にある「[PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)」というリンクをクリックします。
 - Visual Studio を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)」というリンクをクリックします。 
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -1,11 +1,12 @@
 <properties 
-    pageTitle="PowerShell を使用した Azure SQL Database の作成" 
-    description="PowerShell を使用した Azure SQL Database の作成" 
-    services="sql-database" 
+    pageTitle="PowerShell を使用した新しい SQL Database の設定 | Microsoft Azure" 
+    description="PowerShell で新しい SQL Database を作成する方法について説明します。PowerShell コマンドレットを使用して、一般的なデータベース設定タスクを管理できます。" 
+    keywords="新しい SQL Database の作成、データベースの設定"
+	services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
     manager="jeffreyg" 
-    editor=""/>
+    editor="cgronlun"/>
 
 <tags
     ms.service="sql-database"
@@ -16,7 +17,7 @@
     ms.date="10/20/2015"
     ms.author="sstein"/>
 
-# PowerShell を使用した SQL データベースの作成
+# 新しい SQL Database を作成し、PowerShell コマンドレットで一般的なデータベース設定タスクを実行します。 
 
 **1 つのデータベース**
 
@@ -26,14 +27,12 @@
 - [PowerShell](sql-database-get-started-powershell.md)
 
 
-## 概要
-
-この記事では PowerShell を使用して、SQL Database を作成する方法を説明します。
+新しい SQL Database を作成し、PowerShell コマンドレットを使用して一般的なデータベース設定タスクを実行します。
 
 > [AZURE.IMPORTANT]Azure PowerShell 1.0 Preview のリリースから、Switch-AzureMode コマンドレットは利用できなくなりました。また、Azure ResourceManger モジュールで使用されていたコマンドレットは名前が変更されました。この記事の例では、新しい PowerShell 1.0 Preview の名付け規則が使用されています。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページを参照してください。
 
 
-PowerShell コマンドレットを実行するには、Azure PowerShell をインストールして実行する必要があります。Switch-AzureMode が削除されたため、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行し、最新の Azure PowerShell をダウンロードしてインストールする必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。Switch-AzureMode の削除のため、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行して最新の Azure PowerShell をダウンロードしてインストールします。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
 - Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
 
@@ -57,7 +56,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 **Select-AzureRMSubscription** を正常に実行すると、PowerShell プロンプトに戻ります。サブスクリプションが複数ある場合は、**Get-AzureRMSubscription** を実行して、使用するサブスクリプションが **IsCurrent: True** と表示されていることを確認できます。
 
-## リソース グループ、サーバー、ファイアウォール規則の作成
+## データベースの設定: リソース グループ、サーバー、ファイアウォール規則を作成する
 
 これで選択した Azure サブスクリプションに対してコマンドレットを実行する準備ができましたので、次にデータベースを作成するサーバーを含むリソース グループを確立します。次のコマンドを編集して選択した任意の有効な場所で使用できます。**(Get-AzureRMLocation | where-object {$\_.Name -eq "Microsoft.Sql/servers" }).Locations** を実行して有効な場所の一覧を取得してください。
 
@@ -91,7 +90,7 @@ SQL Database は Azure SQL Database サーバーの内部で作成されます�
 詳細については、「[Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)」をご覧ください。
 
 
-## SQL Database の作成
+## 新しい SQL データベースの作成
 
 これでリソース グループ、サーバー、ファイアウォール規則が構成され、サーバーにアクセスできるようになりました。
 
@@ -103,7 +102,7 @@ SQL Database は Azure SQL Database サーバーの内部で作成されます�
 
 データベースが正常に作成されると、データベースの詳細が表示されます。
 
-## SQL データベースの PowerShell スクリプト作成
+## 新しい SQL Database PowerShell スクリプトを作成する
 
     $SubscriptionId = "4cac86b0-1e56-bbbb-aaaa-000000000000"
     $ResourceGroupName = "resourcegroupname"
@@ -136,6 +135,7 @@ SQL Database は Azure SQL Database サーバーの内部で作成されます�
 
 
 ## 次のステップ
+新しい SQL Database を作成し、基本的なデータベース設定タスクを実行したら、次の手順を実行します。
 
 - [SQL Server Management Studio (SSMS) での接続](sql-database-connect-to-database.md)
 
@@ -144,4 +144,4 @@ SQL Database は Azure SQL Database サーバーの内部で作成されます�
 
 - [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

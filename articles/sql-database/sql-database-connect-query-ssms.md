@@ -1,11 +1,12 @@
 <properties
-	pageTitle="SSMS を使用して Azure SQL Database に接続する方法 | Microsoft Azure"
-	description="SSMS を使用して Azure SQL Database に接続する方法について説明します。"
+	pageTitle="SSMS を使用した SQL データベースへの接続 | Microsoft Azure"
+	description="SQL Server Management Studio (SSMS) を使用した Azure SQL データベースへの接続方法について説明します。次に、TRANSACT-SQL (T-SQL) を使用して、サンプル クエリを実行します。"
 	metaCanonical=""
+	keywords="SQL データベースへの接続、SQL Server Management Studio"
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
-	manager="jeffreyg" 
+	manager="jeffreyg"
 	editor="" />
 
 <tags
@@ -17,14 +18,14 @@
 	ms.date="10/09/2015"
 	ms.author="sstein" />
 
-# SQL Server Management Studio での接続
+# SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する
 
 > [AZURE.SELECTOR]
 - [C#](sql-database-connect-query.md)
 - [SSMS](sql-database-connect-query-ssms.md)
 - [Excel](sql-database-connect-excel.md)
 
-この記事では、SQL Server Management Studio (SSMS) をインストールし、Azure のデータベース サーバーに接続し、TRANSACT-SQL ステートメントを使用して簡単なクエリを実行する方法を示します。
+この記事では、SQL Server Management Studio (SSMS) を使用して Azure SQL データベースに接続し、TRANSACT-SQL (T-SQL) ステートメントを使用して簡単なクエリを実行する方法を示します。
 
 まず、Azure に SQL データベースが必要です。[Microsoft Azure SQL Database の概要](sql-database-get-started.md)の手順に従えば迅速にデータベースを作成できます。ここでの例は、その記事で作った AdventureWorks のサンプル データベースに基づいていますが、クエリの実行までの同じ手順を他の SQL データベースに対して適用できます。
 
@@ -37,19 +38,19 @@ SQL Database で作業を行う場合、最新のバージョンの SSMS を使�
 1. Windows 検索ボックスで、「Microsoft SQL Server Management Studio」と入力し、デスクトップ アプリをクリックして SSMS を起動します。
 2. **[サーバーに接続]** ダイアログ ボックスの **[サーバー名]** ボックスで、SQL データベースをホストするサーバーの名前を *&lt;servername>*.**database.windows.net** の形式で 入力します。
 3. **[認証]** リストで、**[SQL Server 認証]** を選択します。
-4. サーバーを作成した際に設定した**ログイン**と**パスワード**を入力し、**[接続]** をクリックします。
+4. サーバーを作成した際に設定した**ログイン**と**パスワード**を入力し、**[接続]** をクリックして SQL Database に接続します。
 
-	![Azure SQL Database サーバーへの SSMS 接続](./media/sql-database-connect-query-ssms/1-connect.png)
+	![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-connect-query-ssms/1-connect.png)
 
-### 接続が失敗した場合
+### SQL Database への接続が失敗した場合
 
 接続の失敗の最も一般的な原因は、サーバー名、ユーザー名、パスワードの間違いや、サーバーがセキュリティ上の理由で接続を許可しないといったものです。サーバーのファイアウォールの設定が、ローカルのコンピューターの IP アドレスからの接続や SSMS クライアントが使用する IP アドレスからの接続を許可するようになっているか確認してください。この 2 つの IP アドレスが異なることがあります。
 
-ファイアウォール設定が原因で接続が失敗した場合、最新バージョンの SSMS では、ユーザーへの確認の後、ファイアウォール規則が作成されます。最新バージョンの SSMS を入手するには、[SSMS のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)に関するページを参照してください。以前のバージョンを使用している場合は、エラー メッセージで IP アドレスが報告されます。この IP アドレスをサーバーのファイアウォール規則に追加する必要があります。詳細については、「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+ファイアウォール設定が原因で接続が失敗した場合、最新バージョンの SSMS では、ユーザーへの確認の後、ファイアウォール規則が作成されます。最新バージョンの SSMS を入手するには、[SSMS のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)に関するページを参照してください。以前のバージョンを使用している場合は、エラー メッセージで IP アドレスが報告されます。この IP アドレスをサーバーのファイアウォール規則に追加する必要があります。詳細については、「[方法: ファイアウォール設定を構成する (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 ## サンプル クエリの実行
 
-接続後は、サンプル クエリを実行できます。「[Microsoft Azure SQL Database の概要](sql-database-get-started.md)」で AdventureWorks サンプルを使用してデータベースを作成していないと、このクエリは機能しません。学習を進めるには、飛ばして次のステップに進んでください。
+SQL Database に接続すると、サンプル クエリを実行できるようになります。[Microsoft Azure SQL Database の概要](sql-database-get-started.md)で AdventureWorks サンプルを使用してデータベースを作成していないと、このクエリは機能しません。学習を進めるには、飛ばして次のステップに進んでください。
 
 1. **オブジェクト エクスプローラー**で、**[AdventureWorks]** データベースに移動します。
 2. データベースを右クリックし、**[新しいクエリ]** を選択します。
@@ -72,8 +73,8 @@ SQL Database で作業を行う場合、最新のバージョンの SSMS を使�
 
 ## 次のステップ
 
-SQL Server で可能な方法とほぼ同じように、Transact-SQL ステートメントを使用して Azure にデータベースを作成して管理することもできます。SQL Server で Transact-SQL を使用するのに慣れている場合は、[Azure SQL Database Transact-SQL の情報](sql-database-transact-sql-information.md)に関するページで相違点の概要を参照してください。
+SQL Server で可能な方法とほぼ同じように、T-SQL ステートメントを使用して Azure にデータベースを作成して管理することもできます。SQL Server で T-SQL を使用するのに慣れている場合は、「[Azure SQL Database TRANSACT-SQL 情報](sql-database-transact-sql-information.md)」で相違点の概要を参照してください。
 
-Transact-SQL が初めての場合は、「[チュートリアル: TRANSACT-SQL ステートメントの作成](https://msdn.microsoft.com/library/ms365303.aspx)」と「[TRANSACT-SQL リファレンス (データベース エンジン)](https://msdn.microsoft.com/library/bb510741.aspx)」を参照してください。
+T-SQL を初めて使用する場合は、「[チュートリアル: TRANSACT-SQL ステートメントの作成](https://msdn.microsoft.com/library/ms365303.aspx)」と「[TRANSACT-SQL リファレンス (データベース エンジン)](https://msdn.microsoft.com/library/bb510741.aspx)」を参照してください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

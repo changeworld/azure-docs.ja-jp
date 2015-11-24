@@ -14,10 +14,10 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/10/2015"
+	ms.date="11/17/2015"
 	ms.author="heidist"/>
 
-#REST 呼び出しを使用して Azure Search のクエリを作成する 
+# REST 呼び出しを使用して Azure Search のクエリを作成する
 > [AZURE.SELECTOR]
 - [Overview](search-query-overview.md)
 - [Fiddler](search-fiddler.md)
@@ -29,32 +29,42 @@
 
 インポートの前提条件として、既存のインデックスの準備が完了しており、検索可能なデータを提供するドキュメントと共に読み込まれていることが挙げられます。
 
-REST API を使用する場合、クエリは GET HTTP 要求に基づきます。次のコード スニペットは、[スコアリング プロファイルのサンプル](search-get-started-scoring-profiles.md)から取得したものです。
+REST API を使用してインデックスを検索するには、GET HTTP 要求を発行します。クエリ パラメーターは、HTTP 要求の URL 内で定義します。
 
-        static JObject ExecuteRequest(string action, string query = "")
-        {
-            // original:  string url = serviceUrl + indexName + "/" + action + "?" + ApiVersion; 
-            string url = serviceUrl + indexName + "/docs?" + action ;
-            if (!String.IsNullOrEmpty(query))
-            {
-                url += query + "&" + ApiVersion;
-            }
+**要求と要求ヘッダー**:
 
-            string response = ExecuteGetRequest(url);
-            return JObject.Parse(response);
+URL では、サービス名、インデックス名、適切な API バージョンを提供する必要があります。URL の最後のクエリ文字列では、クエリ パラメーターを指定します。クエリ文字列内のパラメーターの 1 つで、適切な API バージョン (このドキュメントが書かれた時点で最新の API バージョンは "2015-02-28") を指定する必要があります。
 
-        }
+要求ヘッダーとして、Content-Type を定義し、サービスのプライマリまたはセカンダリ管理キーを提供する必要があります。
 
-        static string ExecuteGetRequest(string requestUri)
-        {
-            //This will execute a get request and return the response
-            using (HttpClient client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("api-key", primaryKey);
-                HttpResponseMessage response = client.GetAsync(requestUri).Result;        // Searches are done over port 80 using Get
-                return response.Content.ReadAsStringAsync().Result;
-            }
+	GET https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2015-02-28
+	Content-Type: application/JSON
+	api-key:[primary admin key or secondary admin key]
 
-        }
+Azure Search では、非常に強力なクエリを作成できる多くのオプションが用意されています。クエリ文字列のパラメーターの詳細については、「[こちらのページ](https://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+**例**:
+
+さまざまなクエリ文字列を含むいくつかの例を次に示します。これらの例では、"hotels" という名前のダミーのインデックスを使用しています。
+
+用語 "quality" のインデックス全体を検索します。
+
+	GET https://[service name].search.windows.net/indexes/hotels/docs?search=quality&$orderby=lastRenovationDate desc&api-version=2015-02-28
+	Content-Type: application/JSON
+	api-key:[primary admin key or secondary admin key]
+
+インデックス全体を検索します。
+
+	GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&api-version=2015-02-28
+	Content-Type: application/JSON
+	api-key:[primary admin key or secondary admin key]
+
+インデックス全体を検索し、特定のフィールド (lastRenovationDate) で並べ替えます。
+
+	GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2015-02-28
+	Content-Type: application/JSON
+	api-key:[primary admin key or secondary admin key]
+
+クエリが成功すると状態コード "200 OK" が返され、検索結果は応答本文に JSON 形式で格納されています。詳細については、[こちらのページ](https://msdn.microsoft.com/library/azure/dn798927.aspx)の「Response (応答)」セクションを参照してください。
+
+<!---HONumber=Nov15_HO4-->

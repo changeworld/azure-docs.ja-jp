@@ -1,11 +1,12 @@
 <properties
-   pageTitle=" SQL Database の概要 | Microsoft Azure"
-   description="Azure SQL Database、Microsoft のリレーショナル データベース管理システム (RDBMS)、クラウドの PaaS ソリューションの技術的な詳細情報と機能をご確認ください。"
-   services="sql-database"
-   documentationCenter=""
-   authors="shontnew"
-   manager="jeffreyg"
-   editor="monicar"/>
+	pageTitle="SQL Database とは SQL Database の概要 | Microsoft Azure"
+	description="SQL Database の概要: クラウド内の Microsoft のリレーショナル データベース管理システム (RDBMS) の技術の詳細と機能について説明します。"
+	keywords="sql の概要、sql の紹介、sql database とは、DTU"
+	services="sql-database"
+	documentationCenter=""
+	authors="shontnew"
+	manager="jeffreyg"
+	editor="cgronlun"/>
 
 <tags
    ms.service="sql-database"
@@ -16,7 +17,7 @@
    ms.date="09/30/2015"
    ms.author="shkurhek"/>
 
-# SQL Database の概要
+# SQL Database とは SQL Database の概要、技術の詳細、DTU の説明
 
 SQL Database は、ミッション クリティカルな機能を備えた、市場をリードする Microsoft SQL Server エンジンに基づくクラウド内のリレーショナル データベース サービスです。SQL Database は、予測可能なパフォーマンス、ダウンタイムなしの拡張性、ビジネス継続性、データ保護を提供し、いずれの場合も管理をほとんど必要としません。仮想マシンとインフラストラクチャの管理に煩わされることなく、迅速なアプリケーション開発および製品化に要する時間の短縮化に専念することができます。SQL Database は、[SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) エンジンを基礎としているため、既存の SQL Server ツール、ライブラリ、および API をサポートしています。したがって、クラウドへの移行およびクラウドへの拡張が簡単です。
 
@@ -31,7 +32,7 @@ SQL Database は、Basic、Standard、Premium の*サービス階層*で使用�
 
 特に使用パターンが比較的予測可能である場合、多くのビジネスとアプリについては、データベースを作成し、要求に応じて単一のデータベースのパフォーマンスを調整する能力は十分です。しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。
 
-SQL Database の [Elastic Database プール](sql-database-elastic-pool.md)がこの問題を解決します。概念は単純です。プールにパフォーマンスを割り当てたら、単一のデータベースのパフォーマンスに対してではなく、プールの全体的なパフォーマンスに対して支払いを行います。データベースのパフォーマンスを高くしたり低くしたりして調整する必要はありません。*エラスティック データベース*と呼ばれるプール内のデータベースでは、需要に合わせて自動的にスケールアップおよびスケールダウンが行われます。エラスティック データベースでの使用はプールの上限を超えることはありません。したがってデータベースの使用状況が予測できなくても、コストが予測可能なことに変わりはありません。さらに、[プールに対してデータベースの追加および削除を行う](sql-database-elastic-pool-portal.md)ことで、すべて制御可能な予算内で、アプリケーションを数個のデータベースから何千ものデータベースに及ぶ範囲でスケーリングすることができます。
+SQL Database の[エラスティック データベース プール](sql-database-elastic-pool.md)がこの問題を解決します。概念は単純です。プールにパフォーマンスを割り当てたら、単一のデータベースのパフォーマンスに対してではなく、プールの全体的なパフォーマンスに対して支払いを行います。データベースのパフォーマンスを高くしたり低くしたりして調整する必要はありません。*エラスティック データベース*と呼ばれるプール内のデータベースでは、需要に合わせて自動的にスケール アップおよびスケール ダウンが行われます。エラスティック データベースでの使用はプールの上限を超えることはありません。したがってデータベースの使用状況が予測できなくても、コストが予測可能なことに変わりはありません。さらに、[プールに対してデータベースの追加および削除を行う](sql-database-elastic-pool-portal.md)ことで、すべて制御可能な予算内で、アプリケーションを数個のデータベースから何千ものデータベースに及ぶ範囲でスケーリングすることができます。
 
 単一のデータベースまたはエラスティック データベースのどちらを使用したとしても、それに固定されることはありません。単一のデータベースをエラスティック データベース プールと組み合わせ、単一のデータベースとプールのサービス階層を変更することで、革新的なデザインを作成することができます。さらに、Azure の強力さと幅広さを利用して、さまざまな Azure サービスを SQL Database とうまく組み合わせることにより、独自の最新アプリ設計のニーズを満たし、コストとリソースの効率性を向上させ、新たなビジネス チャンスを開くことができます。
 
@@ -54,9 +55,10 @@ Microsoft が管理するデータ センターのグローバル ネットワ�
 SQL サーバーには、アクセスの制限、データの保護、および監視アクティビティの支援を行う機能を備えた SQL Database によって維持される従来の信頼性の高いデータ セキュリティがあります。SQL Database で提供されているセキュリティ オプションの迅速なランダウンについては、「[SQL Database のセキュリティ保護](sql-database-security.md)」をご覧ください。セキュリティ機能をより包括的に把握したい場合は、「[SQL Server データベース エンジンと SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)」をご覧ください。Azure のプラットフォーム セキュリティについては、「[Azure セキュリティ センター](http://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
 
 ## 次のステップ
+ここでは、SQL Database を紹介し、「SQL Database とは」という問いに対する答えを示しました、次のステップは以下のとおりです。
 
 - 単一のデータベースとエラスティック データベースの価格と算出方法については、「[価格に関するページ](http://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
 - [最初のデータベースを作成する](sql-database-get-started.md)ことによって作業を開始します。[C#](sql-database-connect-query.md)、[Java](sql-database-develop-java-simple-windows.md)、[Node.js](sql-database-develop-nodejs-simple-windows.md)、[PHP](sql-database-develop-php-retry-windows.md)、[Python](sql-database-develop-python-simple-windows.md)、または [Ruby](sql-database-develop-ruby-simple-linux) で最初のアプリケーションをビルドします。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

@@ -1,10 +1,10 @@
 <properties
-    pageTitle="Android アプリ向けの Application Insights | Microsoft Azure"
-    description="Application Insights を使用して Android アプリの使用状況とパフォーマンスを分析します。"
+    pageTitle="Android アプリの分析 | Microsoft Azure"
+    description="Android アプリの使用状況とパフォーマンスを分析します。"
     services="application-insights"
     documentationCenter="android"
     authors="alancameronwills"
-    manager="ronmart"/>
+    manager="douge"/>
 
 <tags
     ms.service="application-insights"
@@ -12,12 +12,14 @@
     ms.tgt_pltfrm="mobile-android"
     ms.devlang="na"
     ms.topic="get-started-article"
-	ms.date="04/28/2015"
+	ms.date="11/14/2015"
     ms.author="awills"/>
 
-# Android アプリ向けの Application Insights
+# Android アプリの分析
 
-Visual Studio の Application Insights を使用すると、使用状況、イベント、およびクラッシュに関してモバイル アプリケーションを監視できます。
+Visual Studio Application Insights を使用すると、使用状況、イベント、およびクラッシュに関してモバイル アプリケーションを監視できます。
+
+> [AZURE.NOTE]クラッシュ レポートの取得、分析、配布、およびフィードバックの管理には、[HockeyApp](http://support.hockeyapp.net/kb/client-integration-android/hockeyapp-for-android-sdk) をお勧めします。
 
 ## 必要条件
 
@@ -31,73 +33,13 @@ Visual Studio の Application Insights を使用すると、使用状況、イ�
 
 [Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。Android のオプションを選択します。
 
-![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する](./media/app-insights-android/11-new.png)
+![[新規]、[開発者向けサービス]、[Application Insights] の順にクリックする](./media/app-insights-android/11-new.png)
 
-表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。To get back to it next time you login to Azure, you should find a tile for it on the start screen.または、[参照] ボタンをクリックして、探します。
+表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。次に Azure にログインするときにこのブレードに戻るには、スタート画面でそのタイルを見つけてください。あるいは、[参照] ボタンをクリックして探します。
 
-## Android Studio に Application Insights プラグインをインストールします
+## セットアップ
 
-(まだインストールしていない場合)。
-
-1.  Android Studio を起動し、プラグインを構成します。
-
-    ![構成の選択](./media/app-insights-android/01-configure.png)
-
-2.  Application Insights の Android Studio プラグインを選択し、インストールします。
-
-    ![プラグインの選択](./media/app-insights-android/03-select-plugin.png)
-
-## <a name="sdk"></a>アプリケーションでの SDK のインストール
-
-
-1.  **[ツール]**、**[Application Insights SDK を統合]** の順に選択します。
-
-    ![Application Insights の統合](./media/app-insights-android/04-tools-integrate.png)
-
-3.  サブスクリプション内でコンポーネントを作成します。
-
-    ![コンポーネントの作成](./media/app-insights-android/07-create-component.png)
-
-    Application Insights リソースから取得したインストルメンテーション キーを使用します。
-
-4.  SDK をダウンロードし、プロジェクトと統合するには、Gradle を同期します。
-
-    ![SDK をダウンロードするための Gradle ファイルの同期](./media/app-insights-android/08-successful-integration.png)
-
-    (詳細については、[[使い方] ページ](http://go.microsoft.com/fwlink/?LinkID=533220)を参照してください。)
-
-この時点で、モジュール build.gradle に次の参照が追加され、`INTERNET` と `ACCESS_NETWORK_STATE` に対するアクセス許可とコンポーネントのインストルメンテーション キーを含むメタデータ タグがこのモジュールに追加されました。`AndroidManifest.xml`
-
-```java
-
-    dependencies {
-    compile 'com.microsoft.azure:applicationinsights-android:+'
-    }
-```
-
-```xml
-
-    <manifest>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <application>
-        <meta-data
-            android:name="com.microsoft.applicationinsights.instrumentationKey"
-            android:value="${AI_INSTRUMENTATION_KEY}" />
-    </application>
-    </manifest>
-```
-
-#### 省略可能: コードでインストルメンテーション キーを設定
-
-コードで、インストルメンテーション キーを設定することもできます。これにより、`AndroidManifest.xml` の設定が上書きされます。
-
-```java
-
-    ApplicationInsights.setup(this, "<YOUR-IKEY-GOES-HERE>");
-    ApplicationInsights.start();
-```
+[セットアップ ガイド](https://github.com/Microsoft/ApplicationInsights-Android#-3-setup)に従ってください。
 
 
 ## SDK の使用
@@ -197,4 +139,4 @@ http://portal.azure.com に戻り、Application Insights リソースを参照�
 [qna]: app-insights-troubleshoot-faq.md
 [track]: app-insights-api-custom-events-metrics.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

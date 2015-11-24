@@ -1,7 +1,7 @@
 <properties
-	pageTitle="NoSQL データベース - DocumentDB Node.js SDK の使用 | Microsoft Azure"
-	description="DocumentDB アカウントへの接続、NoSQL データベースの作成、および Windows、Linux、または OS/X での Node.js を使用した DocumentDB へのクエリを実行する方法について説明します。"
-	keywords="Create a database, nosql database, linux, OS/X, node.js, documentdb, azure, Microsoft azure"
+	pageTitle="DocumentDB の NoSQL Node.js チュートリアル | Microsoft Azure"
+	description="DocumentDB Node.js SDK を使用してノード データベースとコンソール アプリケーションを作成する NoSQL Node.js チュートリアル。DocumentDB は、JSON 用の NoSQL データベースです。"
+    keywords="Node.js チュートリアル, ノード データベース"
 	services="documentdb"
 	documentationCenter="node.js"
 	authors="AndrewHoh"
@@ -14,30 +14,30 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="node"
 	ms.topic="hero-article" 
-	ms.date="10/12/2015"
+	ms.date="11/18/2015"
 	ms.author="anhoh"/>
 
-#DocumentDB Node.js SDK の使用  
+# NoSQL Node.js チュートリアル: DocumentDB Node.js コンソール アプリケーション  
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-get-started.md)
 - [Node.js](documentdb-nodejs-get-started.md)
 
-DocumentDB Node.js SDK の使用へようこそ。 このチュートリアルに従うことで、DocumentDB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
+DocumentDB Node.js SDK の Node.js チュートリアルへようこそ。 このチュートリアルでは、Node データベースなどの DocumentDB リソースを作成してクエリするコンソール アプリケーションを作成します。
 
 ここで説明する操作は以下のとおりです。
 
 - DocumentDB アカウントを作成して接続する
 - アプリケーションをセットアップする
-- データベースを作成する
+- ノード データベースの作成
 - コレクションを作成する
 - JSON ドキュメントを作成する
 - コレクションをクエリする
-- データベースを削除する
+- ノード データベースの削除
 
 時間がなくても 心配はありません。 [GitHub](https://github.com/Azure-Samples/documentdb-node-getting-started) で完全なソリューションを入手できます。手順については「[完全なソリューションの取得](#GetSolution)」を参照してください。
 
-その後で、このページの上部または下部にある投票ボタンを使用して、フィードバックをお寄せください。マイクロソフトから直接ご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
+Node.js チュートリアルを完了した後で、このページの上部または下部にある投票ボタンを使用して、フィードバックをお寄せください。マイクロソフトから直接ご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
 
 それでは始めましょう。
 
@@ -182,7 +182,7 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 
 これで、DocumentDB アカウントに接続できました。続いては、DocumentDB リソースの使用方法について説明します。
 
-## 手順 5: データベースを作成する
+## 手順 5: ノード データベースを作成する
 [データベース](documentdb-resources.md#databases)は、**DocumentClient** クラスの [createDatabase](https://azure.github.io/azure-documentdb-node/DocumentClient.html) 関数を使用して作成できます。データベースは、コレクションに分割されたドキュメント ストレージの論理上のコンテナーです。app.js ファイルに新しいデータベースを作成するための関数を追加し、*config* オブジェクトで *ID* を指定します。最初に、同じ *FamilyRegistry* ID を持つデータベースが存在しないことが確認されます。存在する場合は、新しいデータベースを作成する代わりに、そのデータベースが返されます。
 
     var getOrCreateDatabase = function(callback) {
@@ -276,7 +276,7 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 
 ご利用ありがとうございます。 DocumentDB でデータベース、コレクション、およびドキュメントを作成するための関数ができました。
 
-![アカウント、データベース、コレクション、およびドキュメントの間の階層関係を示す図](./media/documentdb-get-started/account-database.png)
+![アカウント、データベース、コレクション、およびドキュメントの間の階層関係を示す図](./media/documentdb-nodejs-get-started/node-js-tutorial-account-database.png)
 
 ##<a id="Query"></a>手順 8: DocumentDB リソースをクエリする
 
@@ -302,11 +302,11 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
 
 次の図は、作成したコレクションに対して DocumentDB SQL クエリ構文がどのように呼び出されるかを示しています。
 
-![クエリのスコープおよび意味を示す図](./media/documentdb-get-started/collection-documents.png)
+![クエリのスコープおよび意味を示す図](./media/documentdb-nodejs-get-started/node-js-tutorial-collection-documents.png)
 
 DocumentDB クエリのスコープは既に 1 つのコレクションに設定されているので、クエリでは [FROM](documentdb-sql-query.md/#from-clause) キーワードを省略できます。したがって、"FROM Families f" は "FROM root r" または他の任意の変数名に置き換えることができます。DocumentDB は、Families、root、または任意の変数名が、既定で現在のコレクションを参照しているものと推測します。
 
-##<a id="DeleteDatabase"></a>手順 9: データベースを削除する
+##<a id="DeleteDatabase"></a>手順 9: ノード データベースを削除する
 
 作成したデータベースを削除すると、データベースとすべての子リソース (コレクション、ドキュメントなど) が削除されます。データベースを削除するには、次のコード スニペットを追加します。
 
@@ -357,9 +357,9 @@ DocumentDB クエリのスコープは既に 1 つのコレクションに設定
         });
     });
 
-##<a id="Run"></a>手順 11: アプリケーションを実行する
+##<a id="Run"></a>手順 11: Node.js アプリケーションを実行する
 
-これで、アプリケーションを実行する準備が整いました。
+これで、Node.js アプリケーションを実行する準備が整いました。
 
 ターミナルで、*app.js* ファイルを見つけ、コマンド **node app.js** を実行します。
 
@@ -417,7 +417,7 @@ DocumentDB クエリのスコープは既に 1 つのコレクションに設定
 
     Done.
 
-ご利用ありがとうございます。 最初の DocumentDB アプリの作成が終わりました。
+ご利用ありがとうございます。 以上で Node.js チュートリアルが完了し、初めての DocumentDB コンソール アプリケーションが完成しました。
 
 ##<a id="GetSolution"></a>完全なソリューションを取得する
 この記事のすべてのサンプルを含む GetStarted ソリューションをビルドするには、以下が必要です。
@@ -440,6 +440,6 @@ npm で **documentdb** モジュールをインストールします。コマン
 [documentdb-create-account]: documentdb-create-account.md
 [documentdb-manage]: documentdb-manage.md
 
-[keys]: media/documentdb-get-started/keys.png
+[keys]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

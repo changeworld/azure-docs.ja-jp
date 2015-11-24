@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Windows Phone アプリとストア アプリ用の Application Insights | Microsoft Azure"
-	description="Application Insights を使用して Windows デバイス アプリの使用状況とパフォーマンスを分析します。"
+	pageTitle="Windows Phone アプリとストア アプリの分析 | Microsoft Azure"
+	description="Windows デバイス アプリの使用状況とパフォーマンスを分析します。"
 	services="application-insights"
     documentationCenter="windows"
 	authors="alancameronwills"
@@ -12,92 +12,45 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/16/2015"
+	ms.date="11/11/2015"
 	ms.author="awills"/>
 
-# Windows Phone アプリとストア アプリ用の Application Insights
+# Windows Phone アプリとストア アプリの分析
 
-*Application Insights はプレビュー段階です。*
 
-[AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
-Visual Studio Application Insights を使用すると、発行されたアプリケーションの次の内容を監視できます。
+Visual Studio Application Insights を使用すると、発行されたアプリケーションの使用状況とパフォーマンスを監視できます。
 
-* [**使用状況**][windowsUsage] &#151; ユーザーの数やユーザーがアプリで操作している内容を確認できます。
-* [**クラッシュ**][windowsCrash] &#151; クラッシュの診断レポートを取得し、ユーザーに与える影響を把握します。
+
+> [AZURE.NOTE]クラッシュ レポートの取得、分析、配布、およびフィードバックの管理には、[HockeyApp](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone/hockeyapp-for-windows-store-apps-and-windows-phone-store-apps) をお勧めします。
 
 ![](./media/app-insights-windows-get-started/appinsights-d018-oview.png)
 
-多くのアプリケーションの種類では、ほとんどの場合に通知されることなく、[Visual Studio によってアプリに Application Insights が追加されます](#ide)。ただし、この記事を読んで状況を把握できるように、ここでは手動による手順について説明します。
+
+## Windowsデバイス プロジェクト用の Application Insights の設定
 
 必要なものは次のとおりです。
 
 * [Microsoft Azure][azure] のサブスクリプション
 * Visual Studio 2013 以降
 
-## 1\.Application Insights リソースの作成
+**C++ UAP アプリ** - [Application Insights C++ セットアップ ガイド](https://github.com/Microsoft/ApplicationInsights-CPP)を参照してください
 
-[Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。
+### <a name="new"></a>新しい Windows アプリ プロジェクトを作成する場合...
 
-![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する](./media/app-insights-windows-get-started/01-new.png)
+**[新しいプロジェクト]** ダイアログ ボックスで **[Application Insights]** を選択します。
 
-Azure の[リソース][roles]は、サービスのインスタンスです。このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
+サインインが要求されたら、Azure アカウントの資格情報を使用します。
 
-#### インストルメンテーション キーのコピー
-
-このキーでリソースが識別されます。このキーは、リソースにデータを送信するように SDK を構成するために必要です。
-
-![[要点] ボックスのドロワを開き、インストルメンテーション キーを選択する](./media/app-insights-windows-get-started/02-props.png)
+![](./media/app-insights-windows-get-started/appinsights-d21-new.png)
 
 
-## 2\.アプリへの Application Insights SDK の追加
+### <a name="existing"></a>既存のプロジェクトの場合...
 
-Visual Studio で、適切な SDK をプロジェクトに追加します。
+ソリューション エクスプローラーから Application Insights を追加します。
 
-Windows ユニバーサル アプリの場合は、Windows Phone プロジェクトと Windows プロジェクトの両方に対してこの手順を繰り返します。
 
-1. ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-
-    ![](./media/app-insights-windows-get-started/03-nuget.png)
-
-2. 「Application Insights」を検索します。
-
-    ![](./media/app-insights-windows-get-started/04-ai-nuget.png)
-
-3. **Windows アプリケーション用の Application Insights** を選択する
-
-4. プロジェクトのルートに ApplicationInsights.config ファイルを追加し、ポータルでコピーしたインストルメンテーション キーを挿入します。この構成ファイルのサンプル xml を次に示します。
-
-	```xml
-
-		<?xml version="1.0" encoding="utf-8" ?>
-		<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings>
-			<InstrumentationKey>YOUR COPIED INSTRUMENTATION KEY</InstrumentationKey>
-		</ApplicationInsights>
-	```
-
-    ApplicationInsights.config ファイルのプロパティを次のように設定します。[**ビルド アクション**] == [**コンテンツ**]、[**出力ディレクトリにコピー**] == [**常にコピーする**]。
-
-	![](./media/app-insights-windows-get-started/AIConfigFileSettings.png)
-
-5. 次の初期化コードを追加します。このコードを `App()` コンストラクターに追加することをお勧めします。他の場所にコピーすると、最初の PageViews のコレクションが失われることがあります。
-
-```C#
-
-    using Microsoft.ApplicationInsights;
-    ...
-
-	public App()
-	{
-	   // Add this initilization line.
-	   WindowsAppInitializer.InitializeAsync();
-
-	   this.InitializeComponent();
-	   this.Suspending += OnSuspending;
-	}  
-```
-
-**Windows ユニバーサル アプリ**: Phone プロジェクトとストア プロジェクトの両方に対して手順を繰り返します。[Windows 8.1 ユニバーサル アプリの例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/Windows%208.1%20Universal)。
+![](./media/app-insights-windows-get-started/appinsights-d22-add.png) **Windows ユニバーサル アプリ**: Phone プロジェクトとストア プロジェクトの両方に対して繰り返します。[Windows 8.1 ユニバーサル アプリの例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/Windows%208.1%20Universal)。
 
 ## <a name="network"></a>3.アプリのネットワーク アクセスの有効化
 
@@ -176,25 +129,7 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 * [診断検索の詳細][diagnostic]
 
 
-## <a name="ide"></a>自動セットアップ
 
-セットアップ手順を Visual Studio で自動実行する場合は、Windows Phone、Windows ストアなどのさまざまな種類のアプリで自動実行できます。
-
-### <a name="new"></a>新しい Windows アプリ プロジェクトを作成する場合...
-
-**[新しいプロジェクト]** ダイアログ ボックスで **[Application Insights]** を選択します。
-
-サインインが要求されたら、Azure アカウントの資格情報を使用します。
-
-![](./media/app-insights-windows-get-started/appinsights-d21-new.png)
-
-
-### <a name="existing"></a>既存のプロジェクトの場合...
-
-ソリューション エクスプローラーから Application Insights を追加します。
-
-
-![](./media/app-insights-windows-get-started/appinsights-d22-add.png)
 
 ## SDK の新しいリリースにアップグレードする
 
@@ -232,4 +167,4 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 [windowsCrash]: app-insights-windows-crashes.md
 [windowsUsage]: app-insights-windows-usage.md
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

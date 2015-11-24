@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="08/24/2015" 
+	ms.date="11/17/2015" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication Server の概要
@@ -39,7 +39,7 @@ Azure Multi-Factor Authentication Server は 2 つの方法でダウンロード
 
 1. Azure ポータルに管理者としてサインインします。
 2. 左側で、[Active Directory] を選択します。
-3. [Active Directory] ページの上部で **[Multi-Factor Authentication プロバイダー]** をクリックします。
+3. [Active Directory] ページの上部で **[多要素認証プロバイダー]** をクリックします。
 4. 下部で **[管理]** をクリックします。
 5. これにより、新しいページが開きます。**[ダウンロード]** をクリックします。![ダウンロード](./media/multi-factor-authentication-sdk/download.png)
 6. **[アクティブ化資格情報の生成]** の上にある **[ダウンロード]** をクリックします。![ダウンロード](./media/multi-factor-authentication-get-started-server/download4.png)
@@ -185,4 +185,4 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で Multi
 [Windows Server Active Directory との同期](multi-factor-authentication-get-started-server-dirint.md)|Active Directory と Azure MFA Server 間の同期のセットアップと構成に関する情報です。
 [Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](multi-factor-authentication-get-started-server-webservice.md)|Azure MFA Server Web サービスのセットアップと構成に関する情報です。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

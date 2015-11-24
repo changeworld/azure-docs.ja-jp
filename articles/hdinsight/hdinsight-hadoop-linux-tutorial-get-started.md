@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="10/23/2015"
+   	ms.date="11/16/2015"
    	ms.author="nitinme"/>
 
 # Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する
@@ -62,7 +62,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 4. 複数のサブスクリプションがある場合は、**[サブスクリプション]** エントリをクリックし、クラスターで使用する Azure サブスクリプションを選択します。
 
-5. **[リソース グループ]** をクリックして既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択します。または、**[新規作成]** をクリックし、新しいリソース グループの名前を入力します。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
+5. **[リソース グループ]** をクリックして既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択します。または、**[新規作成]** をクリックし、新しいリソース グループの名前を入力できます。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
 
 	> [AZURE.NOTE]このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
 
@@ -70,11 +70,9 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 	![クラスターの資格情報の指定](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.3.png "クラスターの資格情報の指定")
 
-    > [AZURE.NOTE]SSH はコマンドラインで HDInsight クラスターにリモート アクセスするために使用されます。ここで使用するユーザー名とパスワードは、SSH でクラスターに接続するときに使用されます。また、SSH ユーザー名は一意にする必要があります。この名前により、すべての HDInsight クラスター ノードでユーザー アカウントが作成されます。次はクラスターのサービスのために予約されている名前の一部であり、SSH ユーザー名として使用できません。
-    >
-    > root、hdiuser、storm、hbase、ubuntu、zookeeper、hdfs、yarn、mapred、hbase、hive、oozie、falcon、sqoop、admin、tez、hcat、hdinsight-zookeeper
+    > [AZURE.NOTE]SSH はコマンドラインで HDInsight クラスターにリモート アクセスするために使用されます。ここで使用するユーザー名とパスワードは、SSH でクラスターに接続するときに使用されます。
 
-	HDInsight での SSH の使用方法の詳細については、次のドキュメントをご覧ください。
+	HDInsight での SSH の使用方法の詳細については、次のいずれかのドキュメントをご覧ください。
 
 	* [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
@@ -90,7 +88,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。新しいストレージ アカウントを作成する場合は **[新規作成]** をクリックします。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
 
-	- **既定のコンテナーの選択**: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
+	- **[既定のコンテナーの選択]**: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
 
 	- **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。
 
@@ -102,9 +100,9 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 	![[ノード価格レベル] ブレード](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.5.png "クラスター ノード数の指定")
     
-    > [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードを選択する必要があります。
+    > [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
     >
-    > ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+    > ノードのサイズと関連コストに関する詳細については、「[HDInsight 料金](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 	**[選択]** をクリックして、ノードの価格構成を保存します。
 
@@ -114,7 +112,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 ------------------|---------------------
 	![スタート画面のプロビジョニング中インジケーター](./media/hdinsight-hadoop-linux-tutorial-get-started/provisioning.png)|![プロビジョニングされたクラスターのタイル](./media/hdinsight-hadoop-linux-tutorial-get-started/provisioned.png)
 
-> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスを確認するには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
+> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
 
 プロビジョニングが完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。
 
@@ -128,14 +126,13 @@ Linux 上の HDInsight クラスターには、Linux コンピューターまた
 
 		ssh <username>@<clustername>-ssh.azurehdinsight.net
 
-	簡易作成オプションを使用してクラスターをプロビジョニングしたため、既定の SSH ユーザー名は **hdiuser** です。したがって、コマンドは次のようになります。
-
-		ssh hdiuser@myhdinsightcluster-ssh.azurehdinsight.net
+	&lt;username> は、クラスター作成時に使用した SSH ユーザー名に置き換えます。&lt;clustername> は、クラスターの名前に置き換えます。
 
 2. プロンプトが表示されたら、クラスターのプロビジョニング時に入力したパスワードを入力します。正常に接続されると、プロンプトが次のように変わります。
 
-		hdiuser@headnode-0:~$
+		hdiuser@hn0-clustername:~$
 
+    > [AZURE.NOTE]プロンプトの `@hn0-clustername` の部分は、クラスターによって異なる場合があります。
 
 ###Windows ベースのコンピューターから接続するには
 
@@ -147,9 +144,9 @@ Linux 上の HDInsight クラスターには、Linux コンピューターまた
 
 3. 後で使用するために接続情報を保存するには、**[保存されたセッション]** にこの接続の名前を入力し、**[保存]** をクリックします。接続が、保存済みセッションの一覧に追加されます。
 
-4. **[開く]** をクリックして、クラスターに接続します。ユーザー名の入力を求められたら、「**hdiuser**」と入力します。パスワードには、クラスターのプロビジョニング時に指定したパスワードを入力します。正常に接続されると、プロンプトが次のように変わります。
+4. **[開く]** をクリックして、クラスターに接続します。ユーザー名の入力を求められたら、クラスターを作成するときに使用した SSH のユーザー名を入力します。パスワードには、クラスターを作成するときに指定したパスワードを入力します。正常に接続されると、プロンプトが次のように変わります。
 
-		hdiuser@headnode-0:~$
+		hdiuser@hn0-clustername:~$
 
 ##<a name="hivequery"></a>Hive クエリを実行する
 
@@ -179,7 +176,7 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 
 	返される出力は次のとおりです。
 
-		Query ID = hdiuser_20150116000202_cceb9c6b-4356-4931-b9a7-2c373ebba493
+		Query ID = username_20150116000202_cceb9c6b-4356-4931-b9a7-2c373ebba493
 		Total jobs = 1
 		Launching Job 1 out of 1
 		Number of reduce tasks not specified. Estimated from input data size: 1
@@ -243,21 +240,21 @@ HDInsight でデータを分析する方法の詳細については、次を参�
 
 - Hadoop 上のデータを処理するプログラムを作成する方法の 1 つである MapReduce の詳細については、「[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]」を参照してください。
 
-- HDInsight Tools for Visual Studio を使用して HDInsight 上のデータを分析する方法については、[HDInsight Hadoop Tools for Visual Studio の使用](hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
+- HDInsight Tools for Visual Studio を使用して HDInsight 上のデータを分析する方法については、[HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
 
 実際のデータを使用する準備が整っていて、HDInsight のデータの格納方法や HDInsight にデータを取り込む方法を確認する場合は、以下を参照してください。
 
 - HDInsight で Azure BLOB ストレージを使用する方法の詳細については、[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)に関するページを参照してください。
 
-- データを HDInsight にアップロードする方法については、[HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページを参照してください。
+- データを HDInsight にアップロードする方法については、「[データを HDInsight にアップロードする方法][hdinsight-upload-data]」を参照してください。
 
 HDInsight クラスターの作成または管理の詳細については、以下を参照してください。
 
-- Linux ベースの HDInsight クラスターを管理する方法については、[Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページを参照してください。
+- Linux ベースの HDInsight クラスターを管理する方法については、「[Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
-- HDInsight クラスターの作成時に選択できるオプションの詳細については、[カスタム オプションを使用した Linux での HDInsight のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
+- HDInsight クラスターの作成時に選択できるオプションの詳細については、「[カスタム オプションを使用した Linux での HDInsight のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
-- Linux と Hadoop を使い慣れていて、HDInsight 上の Hadoop に関する詳細情報を確認するには、[Linux での HDInsight の使用](hdinsight-hadoop-linux-information.md)に関するページを参照してください。次のような情報が掲載されています。
+- Linux と Hadoop を使い慣れていて、HDInsight 上の Hadoop に関する詳細情報を確認するには、「[Linux での HDInsight の使用](hdinsight-hadoop-linux-information.md)」を参照してください。次のような情報が掲載されています。
 
 	* クラスターでホストされる URL (Ambari や WebHCat など)
 	* Hadoop ファイルの場所とローカル ファイル システムの例
@@ -286,4 +283,4 @@ HDInsight クラスターの作成または管理の詳細については、以�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

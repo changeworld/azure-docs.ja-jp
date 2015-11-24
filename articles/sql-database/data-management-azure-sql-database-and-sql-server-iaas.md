@@ -1,66 +1,72 @@
-<properties 
-	pageTitle="Azure SQL Database と Azure VM 内の SQL Server について | Microsoft Azure" 
-	description="Azure Virtual Machines における Azure SQL Database と SQL Server について説明します。アプリケーションにとって最適な SQL テクノロジを決定する一般的なビジネスの要因について確認します。" 
-	services="sql-database, virtual-machines" 
-	documentationCenter="" 
-	authors="jeffgoll" 
-	manager="jeffreyg" 
-	editor="tysonn"/>
+<properties
+	pageTitle="SQL (SaaS) Database とクラウドの SQL Server | Microsoft Azure"
+	description="Azure SQL (SaaS) Database とクラウド内の Azure 仮想マシンの SQL Server のどちらのクラウド SQL Server オプションがアプリケーションにフィットするかを説明します。"
+	services="sql-database, virtual-machines"
+	keywords="SQL Server クラウド, クラウド内の SQL Server, SaaS データベース, クラウド SQL Server"
+	documentationCenter=""
+	authors="jeffgoll"
+	manager="jeffreyg"
+	editor="cjgronlund"/>
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="vm-windows-sql-server" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="10/19/2015" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="11/16/2015"
 	ms.author="jeffreyg"/>
 
-# Azure SQL Database と Azure VM 内の SQL Server について
+# クラウド SQL Server オプションの選択: Azure SQL (SaaS) Database またはクラウドの VM の Azure SQL Server
 
-Microsoft Azure は、SQL Server をホストする方法として、[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) と [Azure VM 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) の 2 つのオプションを提供しています。この記事では、最初にマイクロソフトのデータ プラットフォームの全体像における各オプションの位置付けを確認し、次に、意思決定の決め手となるビジネス要件を基により深く検討します。この記事を参照することで、コスト削減と管理の最小化のいずれを優先するかに関係なく、最大の関心事項であるビジネス要件に対してそれぞれのオプションがどのように役立つかに基づいて、適切なアプローチを判断できます。
+Microsoft Azure では、クラウドの SQL Server に関して 2 つのオプションがあります。
+
+* [Azure SQL Database](https://azure.microsoft.com/services/sql-database/): クラウドのネイティブな SQL Database または Software-as-a-Service (SaaS) データベース。
+* [Azure Virtual Machines 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/): クラウドにインストールされてホストされる SQL Server、Infrastructure-as-a-Service (IaaS)。
+
+各オプションが Microsoft データ プラットフォームにどのように当てはまるのかについて説明します。次に、ビジネス要件にクラウド SQL Server オプションを適合させます。この記事を参照することで、コスト削減と管理の最小化のいずれを優先するかに関係なく、最大の関心事項であるビジネス要件に適したアプローチを判断できます。
 
 - [Microsoft のデータ プラットフォーム](#platform)
-- [Azure SQL Database と Azure VM 内の SQL Server の詳細](#close)	
-- [Azure SQL Database と Azure VM 内の SQL Server を選択するときのビジネスの要因](#business)	
+- [Azure SQL Database と Azure VM 内の SQL Server の詳細](#close)
+- [Azure SQL Database と Azure VM 内の SQL Server を選択するときのビジネスの要因](#business)
 	- [コスト](#cost)
-		- [課金とライセンスの基礎](#billing)	
-		- [アプリケーションの総コストの計算](#appcost)	
-	- [管理](#admin)	
-	- [サービス レベル アグリーメント (SLA)](#sla)	
-	- [製品化に要する時間](#market)	
-- [まとめ](#summary)	
-- [謝辞](#ack)	
-- [その他のリソース](#resources)	
+		- [課金とライセンスの基礎](#billing)
+		- [アプリケーションの総コストの計算](#appcost)
+	- [管理](#admin)
+	- [サービス レベル アグリーメント (SLA)](#sla)
+	- [製品化に要する時間](#market)
+- [まとめ](#summary)
+- [謝辞](#ack)
+- [その他のリソース](#resources)
 
 
 ##<a name="platform"></a>Microsoft のデータ プラットフォーム
 
 Azure とオンプレミス SQL Server データベースの話を始める前にまず、それらがすべてが利用可能であるということを理解しておいてください。Microsoft のデータ プラットフォームは、SQL Server テクノロジを活用し、物理的なオンプレミスマシン、プライベート クラウド環境、サード パーティにホストされているプライベート クラウド環境、パブリック クラウドのすべてでそのテクノロジを使用できるようにします。これにより、環境全体でサーバー製品、開発ツール、専門知識を同じ組み合わせで使用しながら、オンプレミスとクラウド ホスト型のデプロイを組み合わせることで、多様な独自のビジネス ニーズを満たすことができます。
 
-   ![][1]
+   ![クラウド SQL Server オプション: IaaS 上の SQL Server またはクラウド内の SaaS SQL Database][1]
 
 図に示すように、各製品は、インフラストラクチャに及ぼす管理のレベル (X 軸) と、データベース レベルの統合と自動化で実現するコスト効率の度合い (Y 軸) によって特徴付けることができます。
 
 アプリケーションの設計時には、アプリケーションの SQL Server の部分をホストするために 4 つの基本的なオプションを使用できます。
 
-- 仮想化されていない物理マシン上の SQL Server 
+- 仮想化されていない物理マシン上の SQL Server
 - オンプレミス仮想マシン内の SQL Server (プライベート クラウド)
 - Azure Virtual Machines 内の SQL Server (パブリック クラウド)
 - Azure SQL Database (パブリック クラウド)
 
-次のセクションでは、最後の 2 つの、Azure SQL Database と Azure VM 内の SQL Server について学習します。さらに、アプリケーションにとって最適なオプションを決定する一般的なビジネスの要因について確認します。
+次のセクションでは、パブリック クラウドでの SQL Server (Azure SQL Database と Azure VM 内の SQL Server) について説明します。さらに、アプリケーションにとって最適なオプションを決定する一般的なビジネスの要因について確認します。
 
 ##<a name="close"></a>Azure SQL Database と Azure VM 内の SQL Server の詳細
 
-**Microsoft Azure SQL Database (Azure SQL Database)** は、サービスとしてのリレーショナル データベースです。これは業界内のカテゴリとして、*サービスとしてのプラットフォーム (PaaS)* に分類されます。Azure SQL Database は、マイクロソフトが所有、ホスト、保守する標準的なハードウェアおよびソフトウェア上に構築されています。SQL Database では、組み込みの機能を使用して、サービス上で直接開発を行えます。SQL Database は従量課金制で利用しますが、より強力にスケール アップまたはスケール アウトするためのオプションもあります。
+**Microsoft Azure SQL Database (Azure SQL Database)** は、Azure クラウドにおいてホストされるサービスとしてのリレーショナル データベースであり、*Software-as-a-Service (SaaS)* または *Platform-as-a-Service (PaaS)* に分類されます。Azure SQL Database は、マイクロソフトが所有、ホスト、保守する標準的なハードウェアおよびソフトウェア上に構築されています。SQL Database では、組み込みの機能を使用して、サービス上で直接開発を行えます。SQL Database は従量課金制で利用しますが、より強力にスケール アップまたはスケール アウトするためのオプションもあります。
 
-**Azure Virtual Machines (VM) 内の SQL Server** は、*サービスとしてのインフラストラクチャ (IaaS)* という業界内カテゴリに分類され、クラウドの仮想マシン内で SQL Server を実行できます。Azure SQL Database と同様に、マイクロソフトが所有、ホスト、保守する標準的なハードウェア上に構築されています。VM 内で SQL Server を使用する場合、所有している SQL Server のライセンスを Azure に移行するか、Azure ポータルの事前構成済みの SQL Server イメージの 1 つを使用できます。
+**Azure Virtual Machines (VM) 内の SQL Server** は、*Infrastructure-as-a-Service (IaaS)* という業界内カテゴリに分類され、クラウドの仮想マシン内で SQL Server を実行できます。Azure SQL Database と同様に、マイクロソフトが所有、ホスト、保守する標準的なハードウェア上に構築されています。VM 内で SQL Server を使用する場合、所有している SQL Server のライセンスを Azure に移行するか、Azure ポータルの事前構成済みの SQL Server イメージの 1 つを使用できます。
 
 概して、目的別に最適化された次の 2 つの SQL オプションがあります。
 
 - **Azure SQL Database** は、多くのデータベースをプロビジョニングして管理するためのコスト全体を最小限に抑えられるように最適化されています。アップグレード、高可用性、バックアップなどを含め、仮想マシン、オペレーティング システム、データベース ソフトウェアを管理する必要がないため、継続して発生する管理コストが最小限になります。通常、SQL Database を使用すると、単一の IT または開発リソースで管理されるデータベースの数を飛躍的に増加させることができます。
-- **Azure VM 内で実行される SQL Server** は、ハイブリッド シナリオで既存のオンプレミス SQL Server アプリケーションを Azure に拡張したり、移行シナリオや開発およびテスト シナリオで既存のアプリケーションを Azure にデプロイしたりするために最適化されています。[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) 経由で Azure のセカンダリ データベース レプリカを保持するのは、ハイブリッド シナリオの一例です。Azure VM 内の SQL Server では、専用の SQL Server インスタンスおよびクラウド ベースの VM に対する完全な管理者権限があります。仮想マシンの維持に使用できる IT リソースが組織に既にある場合は、Azure VM 内の SQL Server を選択することをお勧めします。VM 内で SQL Server を使用すると、高度にカスタマイズされたシステムを構築して、アプリケーションの固有のパフォーマンスや可用性の要件に対処できます。
+- **Azure VM 内で実行される SQL Server** は、ハイブリッド シナリオで既存のオンプレミス SQL Server アプリケーションを Azure のクラウドに拡張したり、移行シナリオや開発およびテスト シナリオで既存のアプリケーションを Azure にデプロイしたりするために最適化されています。[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) 経由で Azure のセカンダリ データベース レプリカを保持するのは、ハイブリッド シナリオの一例です。Azure VM 内の SQL Server では、専用の SQL Server インスタンスおよびクラウド ベースの VM に対する完全な管理者権限があります。仮想マシンの維持に使用できる IT リソースが組織に既にある場合は、Azure VM 内の SQL Server を選択することをお勧めします。VM 内で SQL Server を使用すると、高度にカスタマイズされたシステムを構築して、アプリケーションの固有のパフォーマンスや可用性の要件に対処できます。
 
 次の表に Azure SQL Database と Azure VM 内の SQL Server の主な特徴をまとめます。
 
@@ -69,7 +75,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
    <th align="left" valign="middle"></th>
    <th align="left" valign="middle">Azure SQL Database</th>
    <th align="left" valign="middle">Azure VM 内の SQL Server</th>
-   
+
 </tr>
 <tr>
    <td valign="middle"><p><b>最適</b></p></td>
@@ -79,9 +85,9 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
           <li type=round>組み込みの自動高可用性、災害復旧ソリューション、アップグレード メカニズムを必要とするアプリケーション。
           <li type=round>基になるオペレーティング システム、ハードウェア、および構成設定の管理を回避して、数百または数千ものデータベースを使用する場合。
          <li type=round>スケール アウト パターンを使用したアプリケーション。
-         <li type=round>サイズが最大 500 GB のデータベース。
-         <li type=round>サービスとしてのソフトウェア アプリケーションの構築。
-         
+         <li type=round>サイズが最大 1 TB のデータベース。
+         <li type=round>Software-as-a-Service アプリケーションの構築。
+
   </ul>
 </td>
    <td valign="middle">
@@ -93,7 +99,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
       <li type=round><a href="http://msdn.microsoft.com/library/jj919148.aspx">Azure Storage でのバックアップ</a>や <a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions">Azure VM 内の AlwaysOn レプリカ</a>を使用したオンプレミス SQL Server アプリケーションの災害復旧。
       <li type=round>サイズが 1 TB を超える大きなデータベース。
       </ul></td>
-   
+
 </tr>
 <tr>
    <td valign="middle"><p><b>リソース</b></p></td>
@@ -103,19 +109,19 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
        <li type=round>アプリケーション層に的を絞る。
        </ul></td>
    <td valign="middle"><ul><li type=round>サポートおよび保守ための IT リソースがある。</ul></td>
-   
+
 </tr>
 <tr>
    <td valign="middle"><p><b>総保有コスト</b></p></td>
    <td valign="middle"><ul><li type=round>ハードウェアのコストを削減します。管理コストを削減します。</ul></td>
    <td valign="middle"><ul><li type=round>ハードウェアのコストを削減します。</ul></td>
-   
+
 </tr>
 <tr>
    <td valign="middle"><p><b>ビジネス継続性</b></p></td>
    <td valign="middle"><ul><li type=round>Azure SQL Database は、組み込みのフォールト トレランスのインフラストラクチャ機能以外にも、ビジネス継続性を向上させるために、特定の時点への復元、geo リストア、geo レプリケーションなどの機能を提供します。詳細については、「<a href="http://msdn.microsoft.com/library/azure/hh852669.aspx">Azure SQL Database のビジネス継続性</a>」を参照してください。</ul></td>
    <td valign="middle"><ul><li type=round>Azure VM 内の SQL Server では、データベース固有のニーズのために、高可用性と災害復旧のソリューションを設定できます。そのため、アプリケーション向けにシステムを大幅に最適化できます。必要なときに自分でフェールオーバーをテストして実行できます。詳細については、「<a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions">Azure Virtual Machines における SQL Server の高可用性と災害復旧</a>」を参照してください。</ul></td>
-   
+
 </tr>
 <tr>
    <td valign="middle"><p><b>ハイブリッド クラウド</b></p></td>
@@ -124,7 +130,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
       <li type=round>Azure VM 内の SQL Server を使用して、アプリケーションの一部をクラウドに、一部をオンプレミスにすることができます。たとえば、<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-overview/">Azure Network Services</a> 経由でオンプレミス ネットワークと Active Domain Directory をクラウドに拡張できます。さらに、<a href="http://msdn.microsoft.com/library/dn385720.aspx">Azure の機能の SQL Server データ ファイル</a>を使用して、Azure Storage にオンプレミスのデータ ファイルを格納することができます。詳細については、「<a href="http://msdn.microsoft.com/library/dn606154.aspx">SQL Server 2014 ハイブリッド クラウドの概要</a>」を参照してください。
       <li type=round>オンプレミス SQL Server アプリケーションの災害復旧をサポートします (<a href="http://msdn.microsoft.com/library/jj919148.aspx">Azure Storage 上のバックアップ</a>または <a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions">Azure VM 内の AlwaysOn レプリカ</a>を使用)。
       </ul></td>
-   
+
 </tr>
 </table>
 
@@ -142,7 +148,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 
 **Azure SQL Database** を使用すると、世界中のデータ センターの Microsoft Azure によって、データベース ソフトウェアの自動的な構成、修正プログラムの適用、およびアップグレードが行われます。そのため、管理コストが削減されます。また、[組み込みバックアップ](http://msdn.microsoft.com/library/azure/jj650016.aspx)機能は、特に、大量のデータベースがある場合の大幅なコスト削減に役立ちます。Azure SQL Database を使用する場合、Azure SQL Database に対して実行される個々のクエリやインターネット トラフィックの受信には課金されません。[インターネット トラフィックの送信](http://azure.microsoft.com/pricing/details/data-transfers/)に課金されます。データベースのトランザクション量が膨大で、多数の同時ユーザーをサポートする必要がある場合は、Basic や Standard ではなく、Premium サービス階層を使用することをお勧めします。
 
-**Azure VM 内の SQL Server** を試用する場合、従来の SQL Server ライセンスを活用します。プラットフォームによって提供される SQL Server イメージを使用するか、SQL Server ライセンスを Azure に移行することができます。SQL Server のプラットフォームによって提供されるイメージを使用する場合、コストは、VM のサイズだけでなく選択する SQL Server のバージョンによって決まります。基本的に、ユーザーは、SQL Server の 1 分あたりのライセンス費用、Windows Server の 1 分あたりのライセンス費用、Azure のストレージ コストを支払います。1 分あたりの課金のオプションでは、SQL Server のフル ライセンスを購入することなく、必要なだけ SQL Server を使用することができます。Azure に SQL Server のライセンスを移行する場合は、Azure のコンピューティング コストとストレージ コストのみに対して課金されます。詳細については、「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」を参照してください。
+**Azure VM 内の SQL Server** を試用する場合、従来の SQL Server ライセンスを活用します。プラットフォームによって提供される SQL Server イメージを使用するか、SQL Server ライセンスを Azure に移行することができます。SQL Server のプラットフォームによって提供されるイメージを使用する場合、コストは、VM のサイズだけでなく選択する SQL Server のバージョンによって決まります。基本的に、ユーザーは、SQL Server の 1 分あたりのライセンス費用、Windows Server の 1 分あたりのライセンス費用、Azure Storage のコストを支払います。1 分あたりの課金のオプションでは、SQL Server のフル ライセンスを購入することなく、必要なだけ SQL Server を使用することができます。Azure に SQL Server のライセンスを移行する場合は、Azure のコンピューティング コストとストレージ コストのみに対して課金されます。詳細については、「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」を参照してください。
 
 ####<a name="appcost"></a>アプリケーションの総コストの計算
 
@@ -158,16 +164,16 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 
 *アプリケーションの総コスト = 最小化されたソフトウェア開発および変更コスト + 管理コスト + SQL Server と Windows Server のライセンス コスト + Azure Storage のコスト*
 
-> [AZURE.IMPORTANT]現時点では、Azure SQL Database は SQL Server の一部の機能をサポートしていません。詳細な比較情報については、「[Azure SQL Database のガイドラインと制限事項](http://msdn.microsoft.com/library/azure/ff394102.aspx)」を参照してください。データベースの設計変更で追加予算が必要になり、既存のデータベースを Azure SQL Database に移動する場合は、次の内容に注意してください。Azure SQL Database は、マイクロソフトのサービスとしてのプラットフォーム製品です。既存のオンプレミス SQL Server アプリケーションを Azure SQL Database に移行する場合は、サービスとしてのプラットフォーム製品の利点をくまなく活用できるように、アプリケーションを更新することをお勧めします。たとえば、[Azure Websites](http://azure.microsoft.com/documentation/services/websites/) や [Azure Cloud Services](http://azure.microsoft.com/services/cloud-services/) をアプリケーション層で使用すると、コスト面での利点が大きくなります。また、さまざまな Azure SQL Database のサービス階層に対してアプリケーションを検証し、どのサービス階層がアプリケーションのニーズに最も適合するかどうかを確認します。このプロセスにより、パフォーマンスの成果を高めてコストを最小限に抑制することができます。詳細については、「[Azure SQL Database のサービス階層とパフォーマンス レベル](sql-database-service-tiers.md)」を参照してください。
+> [AZURE.IMPORTANT]現時点では、Azure SQL Database は SQL Server の一部の機能をサポートしていません。詳細な比較情報については、「[Azure SQL Database のガイドラインと制限事項](http://msdn.microsoft.com/library/azure/ff394102.aspx)」を参照してください。データベースの設計変更で追加予算が必要になり、既存のデータベースを Azure SQL Database に移動する場合は、次の内容に注意してください。Azure SQL Database は、マイクロソフトの Platform as-a-Service 製品です。既存のオンプレミス SQL Server アプリケーションを Azure SQL Database に移行する場合は、Platform-as-a-Service 製品の利点をくまなく活用できるように、アプリケーションを更新することをお勧めします。たとえば、[Azure Websites](http://azure.microsoft.com/documentation/services/websites/) や [Azure Cloud Services](http://azure.microsoft.com/services/cloud-services/) をアプリケーション層で使用すると、コスト面での利点が大きくなります。また、さまざまな Azure SQL Database のサービス階層に対してアプリケーションを検証し、どのサービス階層がアプリケーションのニーズに最も適合するかどうかを確認します。このプロセスにより、パフォーマンスの成果を高めてコストを最小限に抑制することができます。詳細については、「[Azure SQL Database のサービス階層とパフォーマンス レベル](sql-database-service-tiers.md)」を参照してください。
 
 コストを詳しく見積もるには、[Azure の料金計算ツール](http://azure.microsoft.com/pricing/calculator/)を使用します。
 
 料金の詳細については、次のリソースを参照してください。
 
-- [Azure SQL Database の料金詳細](http://azure.microsoft.com/pricing/details/sql-database/) 
+- [Azure SQL Database の料金詳細](http://azure.microsoft.com/pricing/details/sql-database/)
 - [Virtual Machines の料金詳細](http://azure.microsoft.com/pricing/details/virtual-machines/)
 - [Azure VM 内の SQL Server - 料金詳細](http://azure.microsoft.com/pricing/details/virtual-machines/#sql-server)
-- [Azure VM 内の Windows Server - 料金詳細](http://azure.microsoft.com/pricing/details/virtual-machines/#windows) 
+- [Azure VM 内の Windows Server - 料金詳細](http://azure.microsoft.com/pricing/details/virtual-machines/#windows)
 
 ###<a name="admin"></a>管理
 
@@ -230,7 +236,7 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 
 この記事の作成に携わった協力者全員に感謝します。
 
-##<a name="resources"></a>その他のリソース 
+##<a name="resources"></a>その他のリソース
 
 <table cellspacing="0" border="1">
 <tr>
@@ -257,4 +263,4 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 <!--Image references-->
 [1]: ./media/data-management-azure-sql-database-and-sql-server-iaas/SQLIAAS_SQL_Server_Cloud_Continuum.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

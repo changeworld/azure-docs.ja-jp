@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/09/2015"
+	ms.date="11/17/2015"
 	ms.author="heidist"/>
 
 # REST API を使用した Azure Search へのデータのインポート
@@ -25,37 +25,63 @@
 - [REST](search-import-data-rest-api.md)
 - [Indexers](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 
-この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用してインデックスにデータを読み込む方法について説明します。内容の一部は、[ドキュメントの追加、更新、または削除] (Azure Search REST API) (https://msdn.microsoft.com/library/azure/dn798930.aspx)から抜粋しています。詳しいコンテキストについては、元の記事を参照してください。
+この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用してインデックスにデータを読み込む方法について説明します。内容の一部は、「[ドキュメントの追加、更新、または削除 (Azure Search サービス REST API)](https://msdn.microsoft.com/library/azure/dn798930.aspx)」のものです。詳しいコンテキストについては、元の記事を参照してください。
 
-インポートの前提条件として、データを受け取るインデックスが事前に用意されている必要があります。
+REST API を使用してインデックスにドキュメントをプッシュするには、POST HTTP 要求をサービスの URL エンドポイントに発行します。
 
-REST API を使用する場合、データの取り込みは HTTP の PUT 要求または POST 要求に基づいて行われます。次のコード スニペットは、[スコアリング プロファイルのサンプル](search-get-started-scoring-profiles.md)から取得したものです。
+**要求と要求ヘッダー**:
 
-        static bool PostDocuments(string fileName)
-        {
-            // Add some documents to the newly created index
-            Uri requestUri = new Uri(serviceUrl + indexName + "/docs/index?" + ApiVersion);
+URL では、サービスの名前と適切な API バージョン (このドキュメントが書かれた時点で最新の API バージョンは "2015-02-28") を指定する必要があります。
 
-            // Load the json containing the data from an external file
-            string json = File.ReadAllText(fileName);
+要求ヘッダーでは、Content-Type を定義し、サービスのプライマリ管理キーを提供する必要があります。
 
-            using (HttpClient client = new HttpClient())
-            {
-                // Create the index
-                client.DefaultRequestHeaders.Add("api-key", primaryKey);
-                HttpResponseMessage response = client.PostAsync(requestUri,       // To add data use POST
-                    new StringContent(json, Encoding.UTF8, "application/json")).Result;
+	POST https://[servicename].search.windows.net/indexes/[indexname]/docs/index?api-version=2015-02-28
+	Content-Type: application/JSON
+	api-key:[primary admin key]
 
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    Console.WriteLine("Documents posted from file {0}. \r\n", fileName);
-                    return true;
-                }
 
-                Console.WriteLine("Documents failed to upload: {0} {1} \r\n", (int)response.StatusCode, response.Content.ReadAsStringAsync().Result.ToString());
-                return false;
+**要求本文**:
 
-            }
-        }
 
-<!---HONumber=Nov15_HO3-->
+	{
+		"value": [
+			{
+				"@search.action": "upload",
+				"hotelId": "1",
+				"baseRate": 199.0,
+				"description": "Best hotel in town",
+				"description_fr": "Meilleur hôtel en ville",
+				"hotelName": "Fancy Stay",
+				"category": "Luxury",
+				"tags": ["pool", "view", "wifi", "concierge"],
+				"parkingIncluded": false,
+				"smokingAllowed": false,
+				"lastRenovationDate": "2010-06-27T00:00:00Z",
+				"rating": 5,
+				"location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
+			},
+			{
+				"@search.action": "upload",
+				"hotelId": "2",
+				"baseRate": 79.99,
+				"description": "Cheapest hotel in town",
+				"description_fr": "Hôtel le moins cher en ville",
+				"hotelName": "Roach Motel",
+				"category": "Budget",
+				"tags": ["motel", "budget"],
+				"parkingIncluded": true,
+				"smokingAllowed": true,
+				"lastRenovationDate": "1982-04-28T00:00:00Z",
+				"rating": 1,
+				"location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
+			}
+		]
+	}
+
+この例では、検索アクションとして "upload" を使用しています。既存のドキュメントを更新および削除するときは、"merge"、"mergeOrUpload"、"delete" を使用できます。
+
+インデックスの更新が成功すると、状態コード "200 OK" を受け取ります。要求内の少なくとも 1 つの項目のインデックスが正常に作成されなかった場合は、"207" 状態コードを受け取ります。
+
+ドキュメント アクションおよび成功/エラー応答の詳細については、「[こちらのページ](https://msdn.microsoft.com/library/azure/dn798930.aspx)」を参照してください。
+
+<!---HONumber=Nov15_HO4-->

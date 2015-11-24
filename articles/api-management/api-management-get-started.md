@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="10/27/2015"
+	ms.date="11/16/2015"
 	ms.author="sdanie"/>
 
 # Azure API Management での最初の API の管理
@@ -59,7 +59,7 @@ Azure API Management を任意のバックエンドで実行し、それに基�
 
 ## <a name="create-service-instance"> </a>API Management インスタンスの作成
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト][]を参照してください。
+>[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][]を参照してください。
 
 API Management を使用するにあたって最初に行うことは、サービス インスタンスの作成です。[Azure ポータル][]にサインインし、**[新規]**、**[App Services]**、**[API Management]**、**[作成]** の順にクリックします。
 
@@ -114,9 +114,9 @@ API は、パブリッシャー ポータルから構成されます。このポ
 
 API がインポートされると、API の概要ページがパブリッシャー ポータルに表示されます。
 
-![API の概要][api-management-imported-api-summary]
+![API summary][api-management-imported-api-summary]
 
-API セクションにはいくつかのタブがあります。**[概要]** タブには、API に関する基本的なメトリックと情報が表示されます。[[設定]](api-management-howto-create-apis.md#configure-api-settings) タブは、API の構成を表示および編集するために使用します。[[操作]](api-management-howto-add-operations.md) タブは、API の操作を管理するために使用します。**[セキュリティ]** タブは、基本認証または[相互証明書認証](api-management-howto-mutual-certificates.md)を使用してバックエンド サーバーのプロキシ認証を構成するため、および [OAuth 2.0 を使用したユーザーの承認](api-management-howto-oauth2.md)を構成するために使用できます。**[問題]** タブは、API を使用している開発者によって報告された問題を表示するために使用します。**[成果物]** タブは、この API が含まれている成果物を構成するために使用します。
+API セクションにはいくつかのタブがあります。**[概要]** タブには、API に関する基本的なメトリックと情報が表示されます。[[設定]](api-management-howto-create-apis.md#configure-api-settings) タブは、API の構成を表示および編集するために使用します。[[操作]](api-management-howto-add-operations.md) タブは、API の操作を管理するために使用します。**[セキュリティ]** タブは、基本認証または[相互証明書認証](api-management-howto-mutual-certificates.md)を使用してバックエンド サーバーのゲートウェイ認証を構成するため、および [OAuth 2.0 を使用したユーザーの承認](api-management-howto-oauth2.md)を構成するために使用できます。**[問題]** タブは、API を使用している開発者によって報告された問題を表示するために使用します。**[成果物]** タブは、この API が含まれている成果物を構成するために使用します。
 
 すべての API Management インスタンスは、2 つのサンプル成果物を既定で備えています。
 
@@ -149,7 +149,7 @@ API および操作とともにサンプルの説明とパラメーターがイ�
 
 操作を呼び出すと、**応答のステータス**、**応答ヘッダー**、**応答内容**が開発者ポータルに表示されます。
 
-![応答][api-management-invoke-get-response]
+![Response][api-management-invoke-get-response]
 
 ## <a name="view-analytics"> </a>分析結果の表示
 
@@ -186,7 +186,7 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 
 -	「[Azure API Management の詳細な構成について][]」チュートリアルにあるその他のトピックもチェックしてください。
 
-[Azure の無料評価版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
+[Azure の無料試用版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
 
 [Create an API Management instance]: #create-service-instance
 [Create an API]: #create-api
@@ -243,4 +243,4 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 [api-management-]: ./media/api-management-get-started/api-management-.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

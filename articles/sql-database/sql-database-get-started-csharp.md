@@ -1,11 +1,12 @@
 <properties 
-   pageTitle="C# を使用した Azure SQL データベースの作成" 
-   description="この記事では、C# で Azure SQL Database Library for .NET を使用して、Azure SQL Database を作成する方法を説明します。" 
-   services="sql-database" 
-   documentationCenter="" 
-   authors="stevestein" 
-   manager="jeffreyg" 
-   editor=""/>
+	pageTitle="SQL Database を試す: C# を使用して SQL Database を作成する | Microsoft Azure" 
+	description="SQL Database で SQL および C# アプリケーションを開発し、C# と SQL Database Library for .NET を使用して、Azure SQL Database を作成します。" 
+	keywords="sql を試す、sql c#"   
+	services="sql-database" 
+	documentationCenter="" 
+	authors="stevestein" 
+	manager="jeffreyg" 
+	editor="cgronlun"/>
 
 <tags
    ms.service="sql-database"
@@ -16,9 +17,9 @@
    ms.date="09/01/2015"
    ms.author="sstein"/>
 
-# C# を使用した SQL Database の作成
+# SQL Database を試す: C&#x23; を使用して SQL Database Library for .NET で SQL Database を作成する 
 
-**シングル データベース**
+**1 つのデータベース**
 
 > [AZURE.SELECTOR]
 - [Azure Preview Portal](sql-database-get-started.md)
@@ -27,9 +28,9 @@
 
 
 
-この記事では、C# で[Azure SQL Database Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) を使用して、Azure SQL Database を作成するコマンドについて説明します。
+C# コマンドを使用して、[Azure SQL Database Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) で Azure SQL Database を作成する方法について説明します。
 
-この記事ではシングル データベースの作成方法について示しています。エラスティック データベースの作成については、「[エラスティック データベース プールの作成](sql-database-elastic-pool-portal.md)」を参照してください。
+SQL と C# で 1 つのデータベースを作成して、SQL Database を試してみます。エラスティック データベースを作成するには、「[エラスティック データベース プールの作成](sql-database-elastic-pool-portal.md)」を参照してください。
 
 各コード スニペットはわかりやすさを重視し、細かく分けて説明しています。また、サンプルのコンソール アプリケーションのすべてのコマンドは、この記事の下部にまとめられています。
 
@@ -43,13 +44,13 @@ Azure SQL Database Library for .NET は、[リソース マネージャー ベ�
 
 この記事の手順を完了するには、次のものが必要です。
 
-- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料評価版**をクリックしてからこの記事に戻り、最後まで完了してください。
+- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
 - 見ることができます。Visual Studio の無償版については、「[Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs)」 ページを参照してください。
 
 
 ## 必要なライブラリのインストール
 
-[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console)で次のパッケージをインストールし、必要な管理ライブラリを入手します。
+C# を使用して SQL Database を設定するには、[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console)で次のパッケージをインストールし、必要な管理ライブラリを入手します。
 
     PM> Install-Package Microsoft.Azure.Management.Sql –Pre
     PM> Install-Package Microsoft.Azure.Management.Resources –Pre
@@ -68,33 +69,33 @@ Azure SQL Database Library for .NET は、[リソース マネージャー ベ�
 
 1. 左側にあるメニューをスクロールして **Active Directory** サービスを探し、開きます。
 
-    ![AAD][1]
+    ![SQL Database を試す: Azure Active Directory (AAD) を設定する][1]
 
 2. アプリケーションを認証するディレクトリを選択し、その**名前**をクリックします。
 
-    ![ディレクトリ][4]
+    ![SQL C# アプリケーションを認証するディレクトリを選択します。][4]
 
 3. [ディレクトリ] ページで、**[アプリケーション]** をクリックします。
 
-    ![アプリケーション][5]
+    ![アプリケーションがあるディレクトリ ページ。][5]
 
-4. **[追加]** をクリックして、新しいアプリケーションを作成します。
+4. **[追加]** をクリックし、SQL Database の新しい C# アプリケーションを作成します。
 
-    ![Add application][6]
+    ![SQL C# アプリケーションを追加します。][6]
 
 5. **[組織で開発中のアプリケーションを追加]** を選択します。
 
 5. アプリの**名前**を指定し、**[ネイティブ クライアント アプリケーション]** を選択します。
 
-    ![Add application][7]
+    ![SQL C# アプリケーションに関する情報を指定します。][7]
 
 6. **リダイレクト URI** を指定します。実際のエンドポイントである必要はありませんが、有効な URI である必要があります。
 
-    ![Add application][8]
+    ![SQL C# アプリケーションのリダイレクト URL を追加します。][8]
 
 7. アプリの作成を完了し、**[構成]** をクリックして、**[クライアント ID]** をコピーします (クライアント ID は、コードで必要になります)。
 
-    ![クライアント ID の取得][9]
+    ![SQL C# アプリケーションのクライアント ID を取得します。][9]
 
 
 1. ページの下部で **[アプリケーションの追加]** をクリックします。
@@ -102,7 +103,7 @@ Azure SQL Database Library for .NET は、[リソース マネージャー ベ�
 1. **[Azure サービス管理 API]** を選択し、ウィザードを完了します。
 2. API を選択した状態で、**[Access Azure Service Management (プレビュー)]** を選択し、この API へのアクセスに必要な特定のアクセス許可を付与する必要があります。
 
-    ![アクセス許可][2]
+    ![アクセス許可を設定します。][2]
 
 2. **[保存]** をクリックします。
 
@@ -115,7 +116,7 @@ Azure SQL Database Library for .NET は、[リソース マネージャー ベ�
 1. [Azure プレビュー ポータル](https://portal.azure.com)にアクセスします。
 2. 右上隅の自分の名前にマウスを合わせ、ポップアップ ウィンドウに表示されるドメインをメモしてください。
 
-    ![ドメイン名の指定][3]
+    ![ドメイン名を指定します。][3]
 
 
 
@@ -223,9 +224,9 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 他の Azure サービスによるサーバーへのアクセスを許可するには、ファイアウォール規則を追加し、StartIpAddress と EndIpAddress を 0.0.0.0 に設定します。これにより、*任意*の Azure サブスクリプションからの Azure トラフィックがサーバーへアクセスできるようになる点に注意してください。
 
 
-## データベースの作成
+## C&#x23; を使用して Basic SQL Database を作成する
 
-次のコマンドは、サーバー上に同じ名前のデータベースが存在しない場合、新しい Basic データベースを作成します。同じ名前のデータベースが存在する場合は、データベースを更新します。
+次の C# コマンドは、サーバー上に同じ名前のデータベースが存在しない場合、新しい Basic SQL Database を作成します。同じ名前のデータベースが存在する場合は、データベースを更新します。
 
         // Create a database
 
@@ -250,7 +251,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 
 
 
-## コンソール アプリケーションのサンプル
+## サンプル C&#x23; コンソール アプリケーション
 
 
     using Microsoft.Azure;
@@ -411,8 +412,9 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 
 
 ## 次のステップ
+ここでは、SQL Database を試し、C# でデータベースを設定しました。次は以下の記事を参照してください。
 
-- [C# を使用して SQL データベースに接続し、照会する](sql-database-connect-query.md)
+- [C# を使用して SQL Database に接続し、照会する](sql-database-connect-query.md)
 - [SQL Server Management Studio (SSMS) での接続](sql-database-connect-to-database.md)
 
 ## その他のリソース
@@ -434,4 +436,4 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->
