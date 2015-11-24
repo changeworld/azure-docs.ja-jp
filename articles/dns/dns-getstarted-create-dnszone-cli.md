@@ -4,7 +4,7 @@
    services="dns"
    documentationCenter="na"
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/22/2015"
+   ms.date="11/10/2015"
    ms.author="joaoma"/>
 
 # CLI で Azure DNS の使用を開始する
@@ -22,7 +22,7 @@
 
 > [AZURE.SELECTOR]
 - [Azure CLI](dns-getstarted-create-dnszone-cli.md)
-- [Azure Powershell steps](dns-getstarted-create-dnszone.md)
+- [PowerShell](dns-getstarted-create-dnszone.md)
 
 
 ドメイン "contoso.com" には、"mail.contoso.com" (メール サーバー用) や "www.contoso.com" (Web サイト用) など、多数の DNS レコードが含まれている場合があります。DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。
@@ -173,4 +173,4 @@ DNS ゾーンは、`azure network dns zone create` コマンドを使用して�
 
 [レコード セットおよびレコード作成の概要](dns-getstarted-create-recordset-cli.md)<BR> [DNS ゾーンの管理方法](dns-operations-dnszones-cli.md)<BR> [DNS レコードの管理方法](dns-operations-recordsets-cli.md)<BR> [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)<BR> [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

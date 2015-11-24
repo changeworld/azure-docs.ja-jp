@@ -23,7 +23,7 @@
 
 ## 概要
 
-このガイドでは、Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C# で記述され、.NET 用 Azure Storage クライアント ライブラリを使用しています。ストレージ クライアント ライブラリは、BLOB ストレージ REST API の操作を簡略化する SDK です。このガイドで紹介するシナリオでは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、**削除**について説明します。所要時間はおよそ 1 時間です。概要のビデオは、[5 分間で Storage の概要を紹介するビデオ](https://azure.microsoft.com/ja-JP/documentation/videos/azure-storage-5-minute-overview/)に関するページで視聴できます。ガイド「[Azure Storage を 5 分で使い始める](https://azure.microsoft.com/ja-JP/documentation/articles/storage-getting-started-guide/)」も参考にしてください。
+このガイドでは、Azure Blob ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C# で記述され、.NET 用 Azure ストレージ クライアント ライブラリを使用しています。ストレージ クライアント ライブラリは、BLOB ストレージ REST API の操作を簡略化する SDK です。このガイドで紹介するシナリオでは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、**削除**について説明します。所要時間はおよそ 1 時間です。概要のビデオは、[5 分間で Storage の概要を紹介するビデオ](https://azure.microsoft.com/ja-JP/documentation/videos/azure-storage-5-minute-overview/)に関するページで視聴できます。ガイド「[Azure Storage を 5 分で使い始める](https://azure.microsoft.com/ja-JP/documentation/articles/storage-getting-started-guide/)」も参考にしてください。
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -291,7 +291,7 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
 
 ## 追加 BLOB への書き込み
 
-追加 BLOB は .NET 向け Azure Storage クライアント ライブラリのバージョン 5 x で発表された新しいタイプの BLOB です。追加 BLOB は、ログ記録などの追加操作のために最適化されています。ブロック BLOB のように、追加 BLOB はブロックで構成されますが、追加 BLOB に新しいブロックを追加する場合は常に BLOB の最後に追加されます。追加 BLOB の既存のブロックは更新したり、削除することはできません。追加 BLOB のブロック ID はブロック BLOB 用のため、公開されることはありません。
+追加 BLOB は .NET 向け Azure ストレージ クライアント ライブラリのバージョン 5 x で発表された新しいタイプの BLOB です。追加 BLOB は、ログ記録などの追加操作のために最適化されています。ブロック BLOB のように、追加 BLOB はブロックで構成されますが、追加 BLOB に新しいブロックを追加する場合は常に BLOB の最後に追加されます。追加 BLOB の既存のブロックは更新したり、削除することはできません。追加 BLOB のブロック ID はブロック BLOB 用のため、公開されることはありません。
  
 追加 BLOB 内の各ブロックは、最大 4 MB のサイズにすることができます。また追加 BLOB には最大 50,000 のブロックを含めることができます。よって追加 BLOB の最大サイズは 195 GB (4 MB X 50,000 ブロック) よりも少し大きくなります。
 
@@ -366,4 +366,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

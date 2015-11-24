@@ -1,6 +1,6 @@
 <properties
 	pageTitle="一過性の接続障害から復旧するための対策 | Microsoft Azure"
-	description="接続エラーなど、Azure SQL Database とやり取りする際に発生する一過性の障害を防止、診断、復旧するための対策。"
+	description="接続エラーなど、Azure SQL Database とやり取りする際に発生する一過性の障害をトラブルシューティング、診断、防止するための対策。"
 	services="sql-database"
 	documentationCenter=""
 	authors="MightyPen"
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="11/02/2015"
+	ms.date="11/17/2015"
 	ms.author="genemi"/>
 
 
-# SQL Database における接続エラーと一過性の障害から復旧するための対策
+# SQL Database とのやり取りで生じた一過性の障害と接続エラーのトラブルシューティング
 
 
-このトピックでは、クライアント プログラムが Azure SQL Database とやり取りする際に発生する接続エラーと一過性の障害を防止、診断、軽減する方法について説明します。
+このトピックでは、クライアント プログラムが Azure SQL Database とやり取りする際に発生する接続エラーと一過性の障害を防止、トラブルシューティング、診断、軽減する方法について説明します。
 
 
 <a id="i-transient-faults" name="i-transient-faults"></a>
@@ -114,7 +114,7 @@ ADO.NET を使用するクライアントの*ブロック期間*については�
 最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
 
 
-具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。 1.エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。2.通常と同様に初回接続を試みます。3.エラーが捕捉された後、11001 をリストから削除します。4.コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。5.再度接続を試みます。
+具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。 1.エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。2.通常と同様に初回接続を試みます。3.エラーが捕捉された後、11001 をリストから削除します。4.コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。- それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。5.再度接続を試みます。
 
 
 ### 接続時に間違った綴りのデータベース名を使用することによるテスト
@@ -144,7 +144,7 @@ Azure SQL Database に接続するために必要な接続文字列は、Microso
 #### 接続タイムアウトの 30 秒
 
 
-インターネットを介した接続は、プライベート ネットワークに比べ堅牢性が低くなります。そのため、接続文字列は次のように設定することをお勧めします。**[接続タイムアウト]** パラメーターを (15 秒ではなく) **30** 秒に設定します。
+インターネットを介した接続は、プライベート ネットワークに比べ堅牢性が低くなります。そのため、接続文字列は次のように設定することをお勧めします。- **[接続タイムアウト]** パラメーターを (15 秒ではなく) **30** 秒に設定します。
 
 
 <a id="b-connection-ip-address" name="b-connection-ip-address"></a>
@@ -161,7 +161,7 @@ IP アドレスの構成を怠った場合、必要な IP アドレスを示し�
 [AZURE.INCLUDE [sql-database-include-ip-address-22-v12portal](../../includes/sql-database-include-ip-address-22-v12portal.md)]
 
 
-詳細については、「[方法: ファイアウォール設定を構成する (SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+詳細については、「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 
 <a id="c-connection-ports" name="c-connection-ports"></a>
@@ -187,7 +187,7 @@ IP アドレスの構成を怠った場合、必要な IP アドレスを示し�
 Azure 仮想マシン (VM) でクライアント プログラムがホストされている場合、次のように表示されます。<br/>[ADO.NET 4.5、SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
 
 
-ポートと IP アドレスの構成に関する背景情報については、[Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)に関するページを参照してください。
+ポートと IP アドレスの構成に関する背景情報については、[Azure SQL Database のファイアウォール](sql-database-firewall-configure.md)に関するページを参照してください。
 
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
@@ -232,7 +232,7 @@ Windows コンピューターでは、次のユーティリティが利用でき
 Linux では、次のユーティリティが利用できます。 - `netstat -nap` - `nmap -sS -O 127.0.0.1` - (IP アドレスの部分は適宜置き換えてください)
 
 
-Windows では [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。以下の例では、Azure SQL Database サーバー上のポートの状況と、ノート PC 上で動作しているポートとをクエリしています。
+Windows では [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。以下の例では、Azure SQL Database サーバー上のポートの状況と、ノート PC 上で動作しているポートとを照会しています。
 
 
 ```
@@ -272,7 +272,7 @@ Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ
 ## 診断: エラーの発生をシステム ログで調べる
 
 
-以下に示したのは、エラーや各種情報のログをクエリする Transact-SQL SELECT ステートメントの例です。
+以下に示したのは、エラーや各種情報のログを照会する Transact-SQL SELECT ステートメントの例です。
 
 
 | ログのクエリ | 説明 |
@@ -334,7 +334,7 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (Azure SQL Database サービスもその一つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。EntLib60 の利便性が発揮される個々の領域の説明については、まず以下のトピックにアクセスしてください。 - [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
 
 
-EntLib60 を活かせる領域の 1 つとして、一過性の障害を処理するための再試行ロジックがあります。 - [Transient Fault Handling アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
+EntLib60 を活かせる領域のひとつとして、一過性の障害を処理するための再試行ロジックがあります。 - [Transient Fault Handling アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
 
 
 再試行ロジックに EntLib60 を使用した簡単な C# コード サンプルは、以下のページからダウンロードできます。 - [Enterprise Library 6 の再試行ロジックを使って SQL Database に接続するコード サンプル (C#)](sql-database-develop-entlib-csharp-retry-windows.md)
@@ -478,4 +478,4 @@ public bool IsTransient(Exception ex)
 
 - [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

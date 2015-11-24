@@ -19,7 +19,7 @@
 
 # ハイブリッド接続を使用して Mobile Apps からオンプレミスの SQL Server に接続する
 
-企業がクラウドに移行するときに、すべてのアセットを Azure にすぐに移行できない場合があります。ハイブリッド接続は、Azure App Service の Mobile Apps 機能がオンプレミスのアセットに安全に接続できるようにします。この方法で、モバイル クライアントが Azure を使用することによってオンプレミスのデータにアクセスできるようにします。サポートされているアセットには、Microsoft SQL Server、MySQL、HTTP Web APIs、およびほとんどのカスタム Web サービスなど、静的 TCP ポートで実行されるすべてのリソースが含まれます。ハイブリッド接続では、Shared Access Signature (SAS) 認証を使用して、モバイル サービスとオンプレミスの Hybrid Connection Manager からハイブリッド接続への接続を保護します。詳細については、[ハイブリッド接続の概要](../integration-hybrid-connection-overview.md)を参照してください。
+企業がクラウドに移行するときに、すべてのアセットを Azure にすぐに移行できない場合があります。ハイブリッド接続は、Azure App Service の Mobile Apps 機能がオンプレミスのアセットに安全に接続できるようにします。この方法で、モバイル クライアントが Azure を使用することによってオンプレミスのデータにアクセスできるようにします。サポートされているアセットには、Microsoft SQL Server、MySQL、HTTP Web APIs、およびほとんどのカスタム Web サービスなど、静的 TCP ポートで実行されるすべてのリソースが含まれます。ハイブリッド接続では、共有アクセス署名 (SAS) 認証を使用して、モバイル サービスとオンプレミスの Hybrid Connection Manager からハイブリッド接続への接続を保護します。詳細については、[ハイブリッド接続の概要](../integration-hybrid-connection-overview.md)を参照してください。
 
 このチュートリアルでは、サービスでプロビジョニングされた既定の Azure SQL Database の代わりに、ローカルのオンプレミスの SQL Server データベースを使用するように Mobile App の .NET バックエンドを変更する方法について説明します。
 
@@ -41,7 +41,7 @@
 
 モバイル アプリ バックエンドのコード部分 (Web アプリ) 用の新しいハイブリッド接続と BizTalk サービスを作成する必要があります。
 
-1. [Azure ポータル] で、モバイル アプリを参照し、[設定] で **[ネットワーク]** をクリックします。
+1. [Azure ポータル] で、モバイル アプリを参照し、[設定] の **[ネットワーク]** をクリックします。
 
 	![Web アプリに移動する](./media/app-service-mobile-dotnet-backend-hybrid-connections-get-started/mobile-app-link-to-web-app-backend.png)
 
@@ -55,7 +55,7 @@
 
 3. **[ハイブリッド接続の作成]** ブレードで、作成するハイブリッド接続の **[名前]** と **[ホスト名]** を指定し、**[ポート]** を [`1433`] に設定します。
 
-	![Create a hybrid connection](./media/app-service-mobile-dotnet-backend-hybrid-connections-get-started/create-hybrid-connection.png)
+	![ハイブリッド接続の追加](./media/app-service-mobile-dotnet-backend-hybrid-connections-get-started/create-hybrid-connection.png)
 
 4. **[Biz Talk Service]** をクリックし、BizTalk サービスの名前を入力し、**[OK]** をクリックします。
 
@@ -89,7 +89,7 @@
          MultipleActiveResultSets=True"
          providerName="System.Data.SqlClient" />
 
-	文字列内の `<**secure_password**>` は、*HybridConnectionLogin* 用に作成したパスワードに置き換えてください。
+	文字列内の `<**secure_password**>` は、*HybridConnectionLogin* 用に作成したパスワードに置き換えます。
 
 3. Visual Studio で **[保存]** をクリックして、Web.config ファイルを保存します。
 
@@ -139,13 +139,11 @@
 
 	発行が完了すると、サービスが再起動し、バックエンド スタート ページが表示されます。
 
-4. <!--- either the **Try it now** button on the start page as before or using -->モバイル アプリに接続されたクライアント アプリケーションを使用して、データベースの変更を生成する操作を呼び出します。
-<!--- This try it now is not longer on the page after it is published. 
-	>[AZURE.NOTE]When you use the **Try it now** button to launch the Help API pages, remember to supply your application key as the password (with a blank username).
--->
-4. SQL Server Management Studio で、SQL Server インスタンスに接続し、オブジェクト エクスプローラーを開き、**OnPremisesDB** データベースを展開し、**[テーブル]** を展開します。
+4. モバイル アプリに接続されたクライアント アプリケーションを使用して、データベースの変更を生成する操作を呼び出します。
 
-5. **hybridService1.TodoItems** テーブルを右クリックし、**[先頭の 1000 行を選択]** をクリックすると、結果が表示されます。
+5. SQL Server Management Studio で、SQL Server インスタンスに接続し、オブジェクト エクスプローラーを開き、**OnPremisesDB** データベースを展開し、**[テーブル]** を展開します。
+
+6. **hybridService1.TodoItems** テーブルを右クリックし、**[先頭の 1000 行を選択]** をクリックすると、結果が表示されます。
 
 	クライアント アプリで発生した変更が、Mobile App バックエンドによって、ハイブリッド接続を使用して、オンプレミスのデータベースに保存されていることに注意してください。
 
@@ -164,4 +162,4 @@
 [Azure Management Portal]: http://go.microsoft.com/fwlink/p/?linkid=213885
 [Get started with Mobile Services]: ../mobile-services-windows-store-dotnet-get-started.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

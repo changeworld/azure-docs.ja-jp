@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/14/2015"
+	ms.date="11/16/2015"
 	ms.author="curtand"/>
 
 # Azure AD への独自のドメイン名の追加
@@ -212,4 +212,4 @@ TXT レコードまたは MX レコードを作成し、Web サイトからサ�
 - [Azure への組織としてのサインアップ](sign-up-organization.md)
 - [Azure AD でのドメインの管理](https://msdn.microsoft.com/library/azure/dn919677.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -4,7 +4,7 @@
    services="traffic-manager"
    documentationCenter=""
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags
    ms.service="traffic-manager"
@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
+   ms.date="11/12/2015"
    ms.author="joaoma" />
 
 # エンドポイントの追加と削除、有効化と無効化
@@ -62,20 +62,17 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 >[AZURE.NOTE]Azure ポータルを使用して、外部の場所や Traffic Manager プロファイルをエンドポイントとして削除することはできません。Windows PowerShell を使用する必要があります。詳細については、[Remove-AzureTrafficManagerEndpoint](https://msdn.microsoft.com/library/dn690251.aspx) に関するページを参照してください。
 
-## その他のリソース
+## 次のステップ
 
-[Traffic Manager の概要](traffic-manager-overview.md)
 
-[Traffic Manager の監視について](traffic-manager-monitoring.md)
+[フェールオーバーのルーティング方法の構成](traffic-manager-configure-failover-routing-method.md)
 
-[Traffic Manager - プロファイルの無効化、有効化、または削除](disable-enable-or-delete-a-profile.md)
+[ラウンド ロビンによるトラフィック ルーティング方法の構成](traffic-manager-configure-round-robin-routing-method.md)
 
-[Traffic Manager - エンドポイントの無効化または有効化](disable-or-enable-an-endpoint.md)
+[パフォーマンスによるトラフィック ルーティング方法の構成](traffic-manager-configure-performance-routing-method.md)
+
+[Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 
 [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkID=313584)
 
-[Cloud Services](http://go.microsoft.com/fwlink/?LinkId=314074)
-
-[Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

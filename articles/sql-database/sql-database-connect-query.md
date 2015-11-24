@@ -1,7 +1,8 @@
 <properties
-	pageTitle="C# で SQL Database にクエリを実行する | Microsoft Azure"
-	description="ADO.NET を使用し、C# プログラムによってクラウド上の Azure SQL Database データベースに接続するための、IP アドレス、接続文字列、セキュリティで保護されたログイン用の構成ファイル、無料版の Visual Studio などについての詳細。"
+	pageTitle="C# クエリによる SQL Database への接続 | Microsoft Azure"
+	description="SQL データベースへのクエリおよび接続を実行するプログラムを C# で作成します。IP アドレス、接続文字列、セキュリティで保護されたログイン、および無料版の Visual Studio に関する情報。"
 	services="sql-database"
+	keywords="C# データベース クエリ、C# クエリ、データベースへの接続"
 	documentationCenter=""
 	authors="MightyPen"
 	manager="jeffreyg"
@@ -17,22 +18,22 @@
 	ms.author="genemi"/>
 
 
-# C&#x23; を使用して SQL Database に接続し、クエリを実行する
+# SQL Database へのクエリおよび接続を実行するプログラムを C&#x23; で作成する
 
 > [AZURE.SELECTOR]
 - [C#](sql-database-connect-query.md)
 - [SSMS](sql-database-connect-query-ssms.md)
 - [Excel](sql-database-connect-excel.md)
 
-クラウド上にある Azure SQL Database のデータベースに接続するには、ADO.NET を使用する C# プログラムを記述する必要があります。
+クラウド内の Azure SQL データベースへのクエリおよび接続を実行するプログラムを C# で作成する方法を説明します。
 
-このトピックでは、Azure SQL Database と C# を初めて使用するユーザー向けに、すべての手順を説明します。Microsoft SQL Server と C# の使用経験が豊富なユーザーなら、一部の手順をスキップして SQL Database に固有の手順のみに集中することができます。
+この記事では、Azure SQL Database、C#、および ADO.NET を初めて使用するユーザー向けに、すべての手順を説明します。Microsoft SQL Server と C# の使用経験が豊富なユーザーなら、一部の手順をスキップして SQL Database に固有の手順のみに集中することができます。
 
 
 ## 前提条件
 
 
-C# コード サンプルを実行するには、以下のものが必要です。
+C# クエリ コード サンプルを実行するには、以下のものが必要です。
 
 
 - Azure アカウントとサブスクリプション。[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
@@ -75,7 +76,7 @@ Visual Studio のインストールが必要な場合、以下の方法でイン
 5. 操作がしやすいように、1 つ前までの各ブレードで最小化のコントロールをクリックします。
 
 6. データベース ブレードの上部付近にある **[Visual Studio で開く]** をクリックします。Visual Studio のインストール場所へのリンクを備えた、Visual Studio に関する新しいブレードが開きます。
- 
+
 	![[Visual Studio で開く] ボタン][20-OpenInVisualStudioButton]
 
 7. **[Community (無料)]** リンク、またはそれに類似したリンクをクリックします。新しい Web ページが追加されます。
@@ -126,7 +127,7 @@ C# のサンプルでは .NET Framework アセンブリの **System.Configuratio
 ## 手順 4. 接続文字列を取得する
 
 
-[Azure プレビュー ポータル](http://portal.azure.com/)で、データベース用の接続文字列をコピーします。
+[Azure プレビュー ポータル](http://portal.azure.com/)を使用して、SQL データベースへの接続で必要な接続文字列をコピーします。
 
 最初は、Visual Studio を Azure SQL Database の **AdventureWorksLT** データベースに接続するために使用します。
 
@@ -145,10 +146,10 @@ C# のサンプルでは .NET Framework アセンブリの **System.Configuratio
 ```
 	<?xml version="1.0" encoding="utf-8" ?>
 	<configuration>
-	    <startup> 
+	    <startup>
 	        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
 	    </startup>
-	
+
 		<connectionStrings>
 			<clear />
 			<add name="ConnectionString4NoUserIDNoPassword"
@@ -172,9 +173,9 @@ C# のサンプルでは .NET Framework アセンブリの **System.Configuratio
 ## 手順 6. C# サンプル コード内に貼り付ける
 
 
-1. Visual Studio で、**[ソリューション エクスプローラー]** ペインから **Program.cs** ファイルを開きます。 
+1. Visual Studio で、**[ソリューション エクスプローラー]** ペインから **Program.cs** ファイルを開きます。
 
-	![サンプルの C# プログラム コードに貼り付ける][40-VSProgramCsOverlay]
+	![C# サンプル コード内に貼り付けます。][40-VSProgramCsOverlay]
 
 2. 次の C# サンプル コードを貼り付けて、Program.cs 内のすべてのスタート コードを上書きします。
  - コード サンプルを短くする場合は、接続文字列全体をリテラルとして変数 **SQLConnectionString** に割り当てることができます。その後は、**GetConnectionStringFromExeConfig** と **GatherPasswordFromConsole** の 2 つのメソッドを削除できます。
@@ -186,7 +187,7 @@ using G = System.Configuration;   // System.Configuration.dll
 using D = System.Data;            // System.Data.dll
 using C = System.Data.SqlClient;  // System.Data.dll
 using T = System.Text;
-	
+
 namespace ConnectAndQuery_Example
 {
 	class Program
@@ -195,7 +196,7 @@ namespace ConnectAndQuery_Example
 		{
 			string connectionString4NoUserIDNoPassword,
 				password, userName, SQLConnectionString;
-	
+
 			// Get most of the connection string from ConnectAndQuery_Example.exe.config
 			// file, in the same directory where ConnectAndQuery_Example.exe resides.
 			connectionString4NoUserIDNoPassword = Program.GetConnectionStringFromExeConfig
@@ -205,17 +206,17 @@ namespace ConnectAndQuery_Example
 			userName = Console.ReadLine();
 			// Get the password from keyboard input.
 			password = Program.GatherPasswordFromConsole();
-	
+
 			SQLConnectionString = "Password=" + password + ';' +
 				"User ID=" + userName + ";" + connectionString4NoUserIDNoPassword;
-	
+
 			// Create an SqlConnection from the provided connection string.
 			using (C.SqlConnection connection = new C.SqlConnection(SQLConnectionString))
 			{
 				// Formulate the command.
 				C.SqlCommand command = new C.SqlCommand();
 				command.Connection = connection;
-	
+
 				// Specify the query to be executed.
 				command.CommandType = D.CommandType.Text;
 				command.CommandText = @"
@@ -224,7 +225,7 @@ namespace ConnectAndQuery_Example
 					";
 				// Open a connection to database.
 				connection.Open();
-	
+
 				// Read data returned for the query.
 				C.SqlDataReader reader = command.ExecuteReader();
 				while (reader.Read())
@@ -237,12 +238,12 @@ namespace ConnectAndQuery_Example
 			Console.ReadKey(true);
 		}
 		//----------------------------------------------------------------------------------
-	
+
 		static string GetConnectionStringFromExeConfig(string connectionStringNameInConfig)
 		{
 			G.ConnectionStringSettings connectionStringSettings =
 				G.ConfigurationManager.ConnectionStrings[connectionStringNameInConfig];
-	
+
 			if (connectionStringSettings == null)
 			{
 				throw new ApplicationException(String.Format
@@ -251,7 +252,7 @@ namespace ConnectAndQuery_Example
 			}
 				return connectionStringSettings.ConnectionString;
 		}
-	
+
 		static string GatherPasswordFromConsole()
 		{
 			T.StringBuilder passwordBuilder = new T.StringBuilder(32);
@@ -294,7 +295,7 @@ namespace ConnectAndQuery_Example
 
 2. キーボードから入力されるユーザー名とパスワードを収集し、それを追加して接続文字列を完成させます。
 
-3. 接続文字列と ADO.NET クラスを使用し、Azure SQL Database の **AdventureWorksLT** デモンストレーション データベースに接続します。
+3. 接続文字列と ADO.NET クラスを使用し、SQL Database の **AdventureWorksLT** デモンストレーション データベースに接続します。
 
 4. SQL の **SELECT** を実行して **SalesLT** テーブルから読み取ります。
 
@@ -312,7 +313,7 @@ C# サンプルのコードは常に短く記述するようにしています�
 ## 手順 7. 使用できる IP アドレスの範囲をサーバーのファイアウォールに追加する
 
 
-クライアント コンピューターの IP アドレスを Azure SQL Database のファイアウォールに追加しない限り、クライアントの C# プログラムが SQL Database に接続することはできません。プログラムを実行しても失敗します。実行に失敗すると、必要な IP アドレスが記載された簡単なエラー メッセージが表示されます。
+クライアント コンピューターの IP アドレスを SQL Database のファイアウォールに追加しない限り、クライアントの C# プログラムが SQL Database に接続することはできません。プログラムを実行しても失敗します。実行に失敗すると、必要な IP アドレスが記載された簡単なエラー メッセージが表示されます。
 
 
 IP アドレスは、[Azure プレビュー ポータル](http://portal.azure.com/)から追加できます。
@@ -330,7 +331,7 @@ IP アドレスは、[Azure プレビュー ポータル](http://portal.azure.co
 ## 手順 8. プログラムを実行する
 
 
-1. Visual Studio で、メニューから **[デバッグ]**、**[デバッグ開始]** の順にクリックしてプログラムを実行します。コンソール ウィンドウが表示されます。
+1. Visual Studio で、メニューから **[デバッグ]**、**[デバッグ開始]** の順にクリックして C# のクエリ プログラムを実行します。コンソール ウィンドウが表示されます。
 
 2. 指示に従って、ユーザー名とパスワードを入力します。
  - 一部の接続ツールでは、ユーザー名に "@{サーバー名}" を追加する必要がありますが、ADO.NET の場合、このサフィックスは省略可能です。このサフィックスを入力する必要はありません。
@@ -357,4 +358,4 @@ IP アドレスは、[Azure プレビュー ポータル](http://portal.azure.co
 
 [50-VSCopyToOutputDirectoryProperty]: ./media/sql-database-connect-query/connqry-vs-appconfig-copytoputputdir-h.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

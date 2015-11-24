@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/18/2015"
+	ms.date="11/16/2015"
 	ms.author="jgao"/>
 
 
@@ -31,7 +31,7 @@ HDInsight で HBase クラスターをプロビジョニングする方法、HBa
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - PuTTY と PuTTYGen (Windows クライアント)。これらのユーティリティは [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から入手できます。
-- [cURL](http://curl.haxx.se/download.html)。
+- [curl](http://curl.haxx.se/download.html)。
 
 ## HBase クラスターのプロビジョニング
 
@@ -44,12 +44,13 @@ HDInsight で HBase クラスターをプロビジョニングする方法、HBa
 2. 左上の **[新規]** をクリックし、**[データ + 分析]**、**[HDInsight]** の順にクリックします。
 3. 次の値を入力します。
 
-	- **クラスター名**: このクラスターを識別するための名前を入力します。
-	- **[クラスターの種類]**: **[HBase]** を選択します。
+	- **クラスター名**: このクラスターを識別するための名前を入力します
+	- **クラスターの種類**: **[HBase]** を選択します
 	- **のオペレーティング システム**: **[Ubuntu]** を選択します。
-	- **サブスクリプション**: このクラスターをプロビジョニングするために使用する Azure サブスクリプションを選択します。
+	- **バージョン**: 使用するクラスターのバージョンを選択します。HDInsight の各バージョンの内容について詳しくは、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」を参照してください。
+    - **サブスクリプション**: 複数の Azure サブスクリプションがある場合、このクラスターに使用するサブスクリプションを選択します。
 	- **リソース グループ**: Azure リソース グループを追加するか選択します。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
-	- **資格情報**:HTTP Web サービス ユーザーのパスワードを入力します。既定のユーザー名は **admin** です。さらに、SSH ユーザーを認証するために使用される **[SSH ユーザー名]** と、**[パスワード]** または **[公開キー]** のどちらかを入力する必要があります。公開キーを使用することをお勧めします。HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
+	- **資格情報**。HTTP Web サービス ユーザーのパスワードを入力します。既定のユーザー名は **admin** です。さらに、SSH ユーザーを認証するために使用される **[SSH ユーザー名]** と、**[パスワード]** または **[公開キー]** のどちらかを入力する必要があります。公開キーを使用することをお勧めします。HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
 
 		- [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 		- [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md) **[選択]** をクリックして変更を保存します。
@@ -58,7 +59,7 @@ HDInsight で HBase クラスターをプロビジョニングする方法、HBa
 
 		> [AZURE.WARNING]HBase サービスの高可用性には、最低 **3 つ** のノードを含むクラスターをプロビジョニングする必要があります。これで 1 つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
 
-	- **オプションの構成** - クラスターのバージョンの選択、Azure 仮想ネットワークの構成、Hive/oozie メタストアの構成、スクリプト アクションの構成、および追加ストレージ アカウントの追加を行います。
+	- **オプションの構成**: クラスターのバージョンの選択、Azure virtual network の構成、スクリプト アクションの構成、および追加ストレージ アカウントの追加を行います。
 
 4. **[作成]** をクリックします。
 
@@ -86,7 +87,7 @@ BigTable の実装である HBase では、同じデータが次のように表�
 3. **[Category]** で、**[Session]** をクリックします。
 4. PuTTY セッション画面の基本オプションで、次の値を入力します。
 
-	- ホスト名: [ホスト名 (または IP アドレス)] フィールドの HDInsight サーバーの SSH アドレス。SSH アドレスは、クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します(*mycluster-ssh.azurehdinsight.net* など)
+	- ホスト名: [ホスト名 (または IP アドレス)] フィールドの HDInsight サーバーの SSH アドレス。SSH アドレスは、クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します (*mycluster-ssh.azurehdinsight.net* など)
 	- ポート: 22。ヘッド ノード 0 の SSH ポートは 22 です。「[Linux での HDInsight の使用方法 (プレビュー)](hdinsight-hadoop-linux-information.md#remote-access-to-services)」を参照してください。
 4. **[開く]** をクリックして、クラスターに接続します。
 5. プロンプトが表示されたら、クラスターの作成時に入力したユーザーを入力します。ユーザーにパスワードを指定している場合は、その入力も求められます。
@@ -114,7 +115,7 @@ BigTable の実装である HBase では、同じデータが次のように表�
 
 	行は 1 行のみのため、スキャン コマンドを使用した場合と同じ結果が得られます。
 
-	HBase テーブル スキーマの詳細については、[HBase スキーマの設計の概要][hbase-schema]に関するページを参照してください。HBase コマンドについての詳細は、「[Apache HBase reference guide (Apache HBase リファレンス ガイド)][hbase-quick-start]」をご覧ください。
+	Hbase テーブル スキーマの詳細については、「[Introduction to HBase Schema Design (HBase スキーマの設計の概要)][hbase-schema]」を参照してください。HBase コマンドについての詳細は、「[Apache HBase reference guide (Apache HBase リファレンス ガイド)][hbase-quick-start]」をご覧ください。
 
 
 6. シェルを終了します。
@@ -231,7 +232,7 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 3. **[Category]** で、**[Session]** をクリックします。
 4. PuTTY セッション画面の基本オプションで、次の値を入力します。
 
-	- **ホスト名**: [ホスト名 (または IP アドレス)] フィールドの HDInsight サーバーの SSH アドレス。SSH アドレスは、クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します(*mycluster-ssh.azurehdinsight.net* など)。
+	- **ホスト名**: [ホスト名 (または IP アドレス)] フィールドの HDInsight サーバーの SSH アドレス。SSH アドレスは、クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します (*mycluster-ssh.azurehdinsight.net* など)。
 	- **ポート**: 22。ヘッド ノード 0 の SSH ポートは 22 です。  
 5. ダイアログの左にある **[カテゴリ]** セクションで、**[接続]**、**[SSH]** の順に展開し、**[トンネル]** をクリックします。
 6. [SSH ポートの転送を管理するオプション] フォームに次の情報を入力します。
@@ -248,7 +249,7 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 2. クラスター ユーザー アカウントの資格情報を 2 回入力します。
 3. 左側のメニューにある **[Zookeeper]** をクリックします。
 4. [概要] リストにある 3 つの **[Zookeeper サーバー]** リンクのいずれかをクリックします。
-5. **[ホスト名]** をコピーします (例: zk0-CLUSTERNAME.xxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net)。
+5. **[ホスト名]** をコピーします。(例: zk0-CLUSTERNAME.xxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net)。
 
 ** プログラム (Fireｆox) を構成してクラスターの状態を確認するには**
 
@@ -260,7 +261,7 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 6. 次の値を入力します。
 
 	- **SOCKS ホスト**: localhost
-	- **ポート**: PuTTY SSH トンネリングで構成したものと同じポートを使用します(9876 など)。
+	- **ポート**: Putty SSH トンネリングで構成したものと同じポートを使用します(9876 など)。
 	- **SOCKS v5**: (オンにします)
 	- **リモート DNS**: (オンにします)
 7. **[OK]** をクリックして変更を保存します。
@@ -305,4 +306,4 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

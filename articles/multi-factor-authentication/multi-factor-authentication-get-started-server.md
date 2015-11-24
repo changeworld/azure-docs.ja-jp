@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="08/24/2015" 
+	ms.date="11/17/2015" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication Server の概要
@@ -39,7 +39,7 @@ Azure Multi-Factor Authentication Server は 2 つの方法でダウンロード
 
 1. Azure ポータルに管理者としてサインインします。
 2. 左側で、[Active Directory] を選択します。
-3. [Active Directory] ページの上部で **[Multi-Factor Authentication プロバイダー]** をクリックします。
+3. [Active Directory] ページの上部で **[多要素認証プロバイダー]** をクリックします。
 4. 下部で **[管理]** をクリックします。
 5. これにより、新しいページが開きます。**[ダウンロード]** をクリックします。![ダウンロード](./media/multi-factor-authentication-sdk/download.png)
 6. **[アクティブ化資格情報の生成]** の上にある **[ダウンロード]** をクリックします。![ダウンロード](./media/multi-factor-authentication-get-started-server/download4.png)
@@ -106,9 +106,7 @@ IP サブネット|ネットマスク|IP 範囲
 1. 実行可能ファイルをダブルクリックします。これによりインストールが開始されます。
 2. [インストール フォルダーの選択] 画面で、フォルダーが正しいかどうかを確認し、[次へ] をクリックします。
 3. インストールが完了したら、[終了] をクリックします。これによって、構成ウィザードが起動します。
-4. 構成ウィザードのようこそ画面で、**[認証構成ウィザードの使用をスキップする]** をオンにし、**[次へ]** をクリックします。これによりウィザードが終了し、サーバーが起動します。
-
-![クラウド](./media/multi-factor-authentication-get-started-server/skip2.png)
+4. 構成ウィザードのようこそ画面で、**[認証構成ウィザードの使用をスキップする]** をオンにし、**[次へ]** をクリックします。これによりウィザードが終了し、サーバーが起動します。![クラウド](./media/multi-factor-authentication-get-started-server/skip2.png)
 
 5. サーバーをダウンロードしたページに戻るには、**[アクティブ化資格情報の生成]** ボタンをクリックします。この情報を提供されたボックスの Azure MFA Server にコピーし、**[アクティブ化]** をクリックします。
 
@@ -187,4 +185,4 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で Multi
 [Windows Server Active Directory との同期](multi-factor-authentication-get-started-server-dirint.md)|Active Directory と Azure MFA Server 間の同期のセットアップと構成に関する情報です。
 [Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](multi-factor-authentication-get-started-server-webservice.md)|Azure MFA Server Web サービスのセットアップと構成に関する情報です。
 
-<!----HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

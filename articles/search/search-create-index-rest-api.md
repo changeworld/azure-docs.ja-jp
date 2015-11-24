@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/09/2015"
+	ms.date="11/17/2015"
 	ms.author="heidist"/>
 
 # REST API を使用した Azure Search インデックスの作成
@@ -28,125 +28,41 @@
 
 インデックスを作成するうえでの前提条件として、(通常は httpClient を介して) 検索サービスへの接続が既に確立されていることが挙げられます。
 
-REST API を介してインデックスを作成する 3 つのパートから成るアプローチでは、接続をセットアップし、インデックス スキーマを指定してから、インデックスを構築するコマンドを実行します。次のコード スニペットは、[スコアリング プロファイルのサンプル](search-get-started-scoring-profiles.md)から取得したものです。
+## インデックス スキーマの定義
 
-##インデックス スキーマの定義
+REST API を使用してインデックスを作成するには、Azure Search の URL エンドポイントに POST 要求を発行します。インデックスの構造は、要求の本文で JSON を使用して定義します。
 
-REST API は、JSON で要求を受け入れます。スキーマの作成方法の 1 つに、スタンドアロン スキーマ ファイルを JSON ドキュメントとして含める方法があります。次の例でこれを具体的に示します。
+**要求と要求ヘッダー**:
 
-このスニペットの派生元のサンプルでは、以下の JSON は schema.json という名前のファイルに保存されています。
+次の例では、サービスの URL エンドポイントを使用する必要があります。具体的には、サービス名と適切な API バージョン (このドキュメントが書かれた時点で最新の API バージョンは "2015-02-28") に注意してください。要求ヘッダーでは、[サービスを作成する](https://msdn.microsoft.com/library/azure/dn798941.aspx/)ときに受け取ったサービスのプライマリ管理キーも提供する必要があります。
+
+	POST https://[servicename].search.windows.net/indexes?api-version=2015-02-28
+	Content-Type: application/JSON
+	api-key:[primary admin key]
+
+
+**要求本文**:
+
+ここでは、インデックス名 (この例では "hotels") および[フィールドの名前、型、属性](https://msdn.microsoft.com/library/azure/dn798941.aspx)を示します。
 
 	{
-	    "name": "musicstoreindex",
-	    "fields": [
-	        { "name": "key", "type": "Edm.String", "key": true },
-	        { "name": "albumTitle", "type": "Edm.String"},
-	        { "name": "albumUrl", "type": "Edm.String", "filterable": false },
-	        { "name": "genre", "type": "Edm.String" },
-	        { "name": "genreDescription", "type": "Edm.String", "filterable": false },
-	        { "name": "artistName", "type": "Edm.String"},
-	        { "name": "orderableOnline", "type": "Edm.Boolean" },
-	        { "name": "rating", "type": "Edm.Int32" },
-	        { "name": "tags", "type": "Collection(Edm.String)" },
-	        { "name": "price", "type": "Edm.Double", "filterable": false },
-	        { "name": "margin", "type": "Edm.Int32", "retrievable": false },
-	        { "name": "inventory", "type": "Edm.Int32" },
-	        { "name": "lastUpdated", "type": "Edm.DateTimeOffset" }
-	    ],
-	    "scoringProfiles": [
-	        {
-	            "name": "boostGenre",
-	            "text": {
-	                "weights": {
-	                    "albumTitle": 5,
-	                    "genre": 50,
-	                    "artistName": 5
-	                }
-	            }
-	        },
-	        {
-	            "name": "newAndHighlyRated",
-	            "functions": [
-	                {
-	                    "type": "freshness",
-	                    "fieldName": "lastUpdated",
-	                    "boost": 10,
-	                    "interpolation": "quadratic",
-	                    "freshness": {
-	                        "boostingDuration": "P365D"
-	                    }
-	                },
-	                {
-	                    "type": "magnitude",
-	                    "fieldName": "rating",
-	                    "boost": 10,
-	                    "interpolation": "linear",
-	                    "magnitude": {
-	                        "boostingRangeStart": 1,
-	                        "boostingRangeEnd": 5,
-	                        "constantBoostBeyondRange": false
-	                    }
-	                }
-	            ]
-	        },
-	        {
-	            "name": "boostMargin",
-	            "functions": [
-	
-	                {
-	                    "type": "magnitude",
-	                    "fieldName": "margin",
-	                    "boost": 50,
-	                    "interpolation": "linear",
-	                    "magnitude": {
-	                        "boostingRangeStart": 50,
-	                        "boostingRangeEnd": 100,
-	                        "constantBoostBeyondRange": false
-	                    }
-	                }
-	            ]
-	        }
-	    ]
+		"name": "hotels",  
+		"fields": [
+			{"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false},
+			{"name": "baseRate", "type": "Edm.Double"},
+			{"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
+			{"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, analyzer:"fr.lucene"},
+			{"name": "hotelName", "type": "Edm.String"},
+			{"name": "category", "type": "Edm.String"},
+			{"name": "tags", "type": "Collection(Edm.String)"},
+			{"name": "parkingIncluded", "type": "Edm.Boolean"},
+			{"name": "smokingAllowed", "type": "Edm.Boolean"},
+			{"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
+			{"name": "rating", "type": "Edm.Int32"},
+			{"name": "location", "type": "Edm.GeographyPoint"}
+		]
 	}
 
-##HTTP 要求をセットアップしてインデックスを接続、作成する
+要求が成功した場合、状態コード "201 Created" が返ります。REST API を使用してインデックスを作成する方法の詳細については、[こちらのページ](https://msdn.microsoft.com/library/azure/dn798941.aspx)を参照してください。
 
-REST API は、すべての要求で HTTP 接続を作成します。各要求は、サービスの URL、使用している API のバージョン、サービスでの読み取り/書き込み操作を許可する管理者キー (以下では、プライマリ キーと呼んでいます。ポータルでそのように命名されているためです) を常に規定します。
-
-このコード スニペッドでは、app.config ファイルで指定されているとおりに (ここでは示されていません)、インデックスの名前などの静的な値を入力として使用します。サンプルは、コードの簡潔さを保つためにこのような方法で作成されています。
-
-        private const string ApiVersion = "api-version=2015-02-28";
-        private static string serviceUrl = ConfigurationManager.AppSettings["serviceUrl"];
-        private static string indexName = ConfigurationManager.AppSettings["indexName"];
-        private static string primaryKey = ConfigurationManager.AppSettings["primaryKey"];
-
-次の例では、サービスの URL への HTTP PUT 要求のほか、`api-version` と作成するインデックスの名前が示されています。
-
-        static bool CreateIndex()
-        {
-            // Create an index using an index name
-            Uri requestUri = new Uri(serviceUrl + indexName + "?" + ApiVersion);
-
-            // Load the json containing the schema from an external file
-            string json = File.ReadAllText("schema.json");
-
-            using (HttpClient client = new HttpClient())
-            {
-                // Create the index
-                client.DefaultRequestHeaders.Add("api-key", primaryKey);
-                HttpResponseMessage response = client.PutAsync(requestUri,        // To create index use PUT
-                    new StringContent(json, Encoding.UTF8, "application/json")).Result;
-
-                if (response.StatusCode == HttpStatusCode.Created)   // For Posts we want to know response had no content
-                {
-                    Console.WriteLine("Index created. \r\n");
-                    return true;
-                }
-
-                Console.WriteLine("Index creation failed: {0} {1} \r\n", (int)response.StatusCode, response.Content.ReadAsStringAsync().Result.ToString());
-                return false;
-
-            }
-        }
-
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

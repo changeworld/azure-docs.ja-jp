@@ -1,5 +1,5 @@
 <properties
-	pageTitle="C# でのイベント ハブの使用 | Microsoft Azure"
+	pageTitle="C# での Event Hubs の使用 | Microsoft Azure"
 	description="このチュートリアルでは、C# による Azure Event Hubs と EventProcessorHost の使用方法について説明します。"
 	services="event-hubs"
 	documentationCenter=""
@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="hero-article"
 	ms.date="11/05/2015"
 	ms.author="sethm"/>
 
@@ -30,13 +30,13 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 + Microsoft Visual Studio 2013、Microsoft Visual Studio Express 2013 for Windows。
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F target=”\_blank”) を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F target=”\_blank”) を参照してください。
 
 ## Event Hub を作成する
 
 1. [Azure ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
 
-2. **[アプリケーション サービス]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。
+2. **[App Services]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。
 
    	![][1]
 
@@ -108,4 +108,4 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [キューに格納されたメッセージング ソリューション]: ../service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

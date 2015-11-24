@@ -70,6 +70,11 @@
 +   [セマンティック ログ](https://github.com/fidmor89/SLAB_AppInsights)&#151; [セマンティック ログ アプリケーション ブロック](https://msdn.microsoft.com/library/dn440729.aspx)と連携
 +   [クラウド ベースのロード テスト](http://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 
+## エクスポート
+
++ [Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
++ [Stream Analytics](app-insights-export-power-bi.md)
+
 ## <a name="projects"></a> 独自の SDK をビルドする
 
 使用する言語やプラットフォーム用の SDK がない場合は、自分で作成するという方法があります。 [GitHub の Application Insights SDK プロジェクト](https://github.com/Microsoft/AppInsights-Home)に示されている既存の SDK のコードをご覧ください。
@@ -83,4 +88,4 @@
 
 <!--Link references-->
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

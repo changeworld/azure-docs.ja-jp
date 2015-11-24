@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/02/2015"
+   ms.date="11/10/2015"
    ms.author="bwren" />
 
 # Azure Automation の構成
@@ -21,7 +21,7 @@
 
 ## Automation アカウント
 
-Azure Automation を初めて開始するときに、少なくとも 1 つのオートメーション アカウントを作成する必要があります。Automation アカウントでは、お使いの Automation リソース (Runbook、資産、構成) を、別の Automation アカウントに含まれる Automation リソースと分離することができます。Automation アカウントを使って Automation リソースを異なる論理環境に分けられます。たとえば、1 つのアカウントを開発環境用として、もう 1 つのアカウントを本番環境として使うこともできます。
+Azure Automation を初めて開始するときに、少なくとも 1 つの Automation アカウントを作成する必要があります。Automation アカウントでは、お使いの Automation リソース (Runbook、資産、構成) を、別の Automation アカウントに含まれる Automation リソースと分離することができます。Automation アカウントを使って Automation リソースを異なる論理環境に分けられます。たとえば、1 つのアカウントを開発環境用として、もう 1 つのアカウントを本番環境として使うこともできます。
 
 各 Automation アカウントの Automation リソースは単一の Azure リージョンと関連付けられていますが、Automation アカウントではあらゆるリージョンの Azure サービスを管理することができます。異なるリージョンで Automation アカウントを作成する主な理由としては、特定のリージョンに分離しなければならないデータやリソースを必要とするポリシーがある場合が挙げられます。
 
@@ -44,13 +44,40 @@ Azure Automation を初めて開始するときに、少なくとも 1 つのオ
 1. 管理する Azure サブスクリプションのサービス管理者として Azure ポータルにログインします。
 2. **[Active Directory]** を選択します。
 3. Azure サブスクリプションと関連付けられているディレクトリ名を選択します。必要であれば、**[設定]、[サブスクリプション]、[ディレクトリの編集]** で関連付けを変更できます。
-4. [新しい Active Directory ユーザーを作成します](http://msdn.microsoft.com/library/azure/hh967632.aspx)。**[ユーザーの種類]** では、**[Multi-Factor Authentication の有効化]** ではなく **[組織内の新しいユーザー]** を選択します。
+4. [新しい Active Directory ユーザーを作成します](http://msdn.microsoft.com/library/azure/hh967632.aspx)。**[ユーザーの種類]** では、**[多要素認証の有効化]** ではなく **[組織内の新しいユーザー]** を選択します。
 5. ユーザーの完全な名前と一時的なパスワードを書き留めておきます。
 7. **[設定]、[管理者]、[追加]** の順に選択します。
 8. 作成したユーザーの完全なユーザー名を入力します。
 9. このユーザーで管理するサブスクリプションを選択してください。
 10. ログアウトして、先ほど作成したアカウントで再度 Azure にログインする。ユーザーのパスワードを変更するように促されます。
 11. 作成したユーザー アカウント用に新しい [Azure Automation 資格情報資産](http://msdn.microsoft.com/library/dn940015.aspx)を作成します。**[資格情報の種類]** は、**[Windows PowerShell 資格情報]** にする必要があります。
+
+## Automation アカウントの作成
+
+Automation アカウントは、Azure Automation リソースのコンテナーで、環境の分離や、ワークフローの詳細な整理のための方法を提供します。Automation アカウントを既に作成している場合は、次の手順を省略できます。
+
+1. [Azure プレビュー ポータル](https://portal.azure.com/)にログインします。
+
+2. Azure プレビュー ポータルで、**[新規]**、**[管理]**、**[Automation アカウント]** の順にクリックします。
+
+3. **[Automation アカウントの追加]** ブレードで、Automation アカウントの詳細を構成します。
+
+>[AZURE.NOTE]Azure プレビュー ポータルを使用して Automation アカウントを作成すると、アカウントおよびそれに関連付けられているすべてのリソースは従来の管理ポータルには戻りません。
+
+構成するパラメーターを次に示します。
+
+|パラメーター |説明 |
+|:---|:---|
+| 名前 | Automation アカウントの名前。一意の値でなければなりません。 |
+| リソース グループ | リソース グループを使用すると、関連する Azure リソースを簡単に表示および管理できます。Azure プレビュー ポータルでは、既存のリソース グループを選択することも、Automation アカウント用に新しいリソース グループを作成することもできます。一方、Microsoft Azure 管理ポータルでは、すべての Automation アカウントが既定のリソース グループに入れられます。 |
+| [サブスクリプション] | 使用可能なサブスクリプションの一覧から選択します。 |
+| リージョン | リージョンでは、アカウントの Automation リソースが格納される場所を指定します。一覧から任意のリージョンを選択できます。これは、アカウントの機能には影響しませんが、アカウントのリージョンがご使用のその他の Azure リソースが格納された場所に近い場合、Runbook をより素早く実行できます。 |
+| アカウント オプション | このオプションを使用すると、新しい Automation アカウントで作成されるリソースを選択できます。**[はい]** を選択すると、チュートリアル Runbook が作成されます。 |
+
+![アカウントの作成](media/automation-configuration/automation-01-create-automation-account.png)
+
+>[AZURE.NOTE]従来の管理ポータルを使用して作成された Automation アカウントを、Azure プレビュー ポータルを使用して[異なるリソース グループに移動](../resource-group-move-resources.md)すると、その Automation アカウントは従来の Azure ポータルで使用できなくなります。これは、従来の管理ポータルでは Azure リソース マネージャー アカウントがサポートされていないためです。
+
 
 
 ## Runbook での資格情報の使用
@@ -67,4 +94,4 @@ Runbook のすべての[チェックポイント](http://technet.microsoft.com/l
 - [Azure Automation: Azure Active Directory を使用して Azure を認証する](http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/)
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -13,7 +13,7 @@
    ms.topic="hero-article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="09/21/2015"
+   ms.date="11/10/2015"
    ms.author="joaoma"/>
 
 
@@ -22,10 +22,9 @@
 Application Gateway はロード バランサーの第 7 層です。クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。Application Gateway は、HTTP 負荷分散、クッキー ベースのセッション アフィニティ、SSL オフロードなどのアプリケーション配信機能を備えています。
 
 > [AZURE.SELECTOR]
-- [Azure Classic Powershell steps](application-gateway-create-gateway.md)
-- [Azure Resource Manager Powershell steps](application-gateway-create-gateway-arm.md)
-- [Azure Resource Manager template steps](application-gateway-create-gateway-arm-template.md)
-
+- [Azure Classic PowerShell](application-gateway-create-gateway.md)
+- [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
+- [Azure Resource Manager template](application-gateway-create-gateway-arm-template.md)
 
 <BR>
 
@@ -60,7 +59,7 @@ GitHub から直接 ARM テンプレートをデプロイするだけで、変�
 
 Github から既存の ARM テンプレートをダウンロードして VNet と 2 つのサブネットを作成し、そのテンプレートに変更を加えて再利用することができます。再利用するには、次の手順に従ってください。
 
-1. https://github.com/Azure/azure-quickstart-templates/blob/master/101-create-applicationgateway-publicip に移動します。
+1. https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-create-application-gateway/ に移動します。
 2. **[azuredeploy.json]**、**[RAW]** の順にクリックします。
 3. お使いのコンピューター上のローカル フォルダーにファイルを保存します。
 4. ARM テンプレートを使用したことがある場合は、手順 7. に進みます。
@@ -76,8 +75,8 @@ Github から既存の ARM テンプレートをダウンロードして VNet �
 	| **skuname** | SKU インスタンスのサイズ |
 	| **容量** | インスタンスの数 |
 	| **backendaddress1** | 1 番目の Web サーバーの IP アドレス |
-	| **backendaddress2** | 2 番目の Web サーバーの IP アドレス|
-
+	| **backendaddress2** | 2 番目の Web サーバーの IP アドレス |
+	
 
 >[AZURE.IMPORTANT]Github で管理される ARM テンプレートは、今後変更される可能性があります。使用する前に、必ずテンプレートを確認してください。
 	
@@ -87,37 +86,35 @@ Github から既存の ARM テンプレートをダウンロードして VNet �
 	- **name**。リソースの名前です。**[parameters('applicationGatewayName')]** が使用されているため、名前はデプロイ中にユーザーまたはパラメーター ファイルによって入力されます。
 	- **properties**。リソースのプロパティの一覧です。このテンプレートは、Application Gateway の作成の過程で、仮想ネットワークとパブリック IP アドレスを使用します。
 
-7. https://github.com/Azure/azure-quickstart-templates/blob/master/101-create-applicationgateway-publicip に戻ります。
+7. https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-create-application-gateway/azuredeploy.json に戻ります。
 8. **[azuredeploy-paremeters.json]**、**[RAW]** の順にクリックします。
 9. お使いのコンピューター上のローカル フォルダーにファイルを保存します。
 10. 保存したファイルを開き、パラメーターの値を編集します。次の値を使用して、このシナリオで説明した Application Gateway をデプロイします。
 
 		{
-		   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-		   "contentVersion": "1.0.0.0",
-		   "parameters": {
-		     "location": {
-		       "value": "East US"
-		     },
-		     "addressPrefix": {
-		      "value": "10.0.0.0/16"
-    		 },
-		     "subnetPrefix": {
-		      "value": "10.0.0.0/24"
-		     },
-		     "skuName": {
-		       "value": "Standard_Small"
-		     },
-		     "capacity": {
-		       "value": 2
-		    },
-		    "backendIpAddress1": {
-		      "value": "10.0.1.10"
-		    },
-		     "backendIpAddress2": {
-		       "value": "10.0.1.11"
-		     }
-		  }
+		  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+		{
+    	"location" : {
+        "value" : "West US"
+    	},
+    	"addressPrefix": {
+        "value": "10.0.0.0/16"
+    	},
+    	"subnetPrefix": {
+        "value": "10.0.0.0/24"
+    	},
+    	"skuName": {
+        "value": "Standard_Small"
+    	},
+    	"capacity": {
+        "value": 2
+    	},
+    	"backendIpAddress1": {
+        "value": "10.0.1.10"
+    	},
+    	"backendIpAddress2": {
+        "value": "10.0.1.11"
+    	}
 		}
 
 11. ファイルを保存します。[JSlint.com](http://www.jslint.com/) などのオンライン JSON 検証ツールを使用して、JSON テンプレートおよびパラメーター テンプレートをテストできます。
@@ -150,7 +147,7 @@ Github から既存の ARM テンプレートをダウンロードして VNet �
 	                 =======  ==========
 	                  *
 
-		ResourceId        : /subscriptions/################################/resourceGroups/AppgatewayRG
+		ResourceId        : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/AppgatewayRG
 
 4. New-AzureResourceGroupDeployment コマンドレットを実行し、上記でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい VNet をデプロイします。
 
@@ -175,7 +172,7 @@ Github から既存の ARM テンプレートをダウンロードして VNet �
                    capacity         Int                        2
                    backendIpAddress1  String                     10.0.1.10
                    backendIpAddress2  String                     10.0.1.11
-
+					
 		Outputs           :
 
 
@@ -240,7 +237,7 @@ Azure CLI を使用してダウンロードした ARM テンプレートをデ�
 
 
 ### 手順 1. 
-[こちら](http://azure.microsoft.com/documentation/templates/101-create-applicationgateway-publicip/)のリンクをクリックして、Application Gateway のポータル テンプレート ページに移動します。
+[Application Gateway をデプロイするこちら](https://azure.microsoft.com/ja-JP/documentation/templates/101-application-gateway-public-ip/)のリンクをクリックして、Application Gateway のポータル テンプレート ページに移動します。
 
 
 ### 手順 2. 
@@ -276,4 +273,4 @@ ILB とともに使用するように Application Gateway を構成する場合�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

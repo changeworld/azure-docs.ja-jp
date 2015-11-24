@@ -4,7 +4,7 @@
    services="traffic-manager"
    documentationCenter=""
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags
    ms.service="traffic-manager"
@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
+   ms.date="11/12/2015"
    ms.author="joaoma" />
 
 # Azure Traffic Manager プロファイルの管理
@@ -59,36 +59,30 @@ Azure ポータルで簡易作成を使用して、Traffic Manager プロファ�
 2. 削除するプロファイルを選択します。プロファイルを選択するには、[Traffic Manager] ページで、プロファイルの横の列をクリックして、プロファイルを選択します。プロファイルの名前または名前の横の矢印をクリックしないでください。クリックすると、プロファイルの設定ページへ移動します。
 4. プロファイルを選択した後に、ページ下部にある **[削除]** をクリックします。
 
-## トラフィック マネージャー プロファイルの変更履歴を表示する
+## Traffic Manager プロファイルの変更履歴を表示する
 
 管理サービスの Azure ポータルでは、Traffic Manager プロファイルの変更履歴を表示できます。
 
-### トラフィック マネージャー プロファイルの変更履歴を表示するには
+### Traffic Manager プロファイルの変更履歴を表示するには
 
 1. Azure ポータルの左側のウィンドウで、**[管理サービス]** をクリックします。
 2. [管理サービス] ページで、**[操作ログ]** をクリックします。
-3. [操作ログ] ページでは、トラフィック マネージャー プロファイルの変更履歴の中から表示するものを絞り込むことができます。フィルター処理のオプションを選択したら、チェックマークをクリックすると結果が表示されます。
+3. [操作ログ] ページでは、Traffic Manager プロファイルの変更履歴の中から表示するものを絞り込むことができます。フィルター処理のオプションを選択したら、チェックマークをクリックすると結果が表示されます。
    - すべてのプロファイルの変更履歴を表示するには、サブスクリプションと時間の範囲を選んで、**[タイプ]** ショートカット メニューから **[Traffic Manager]** を選びます。
    - プロファイル名でフィルター処理するには、**[サービス名]** フィールドにプロファイルの名前を入力するか、ショートカット メニューから選びます。
    - 個々の変更の詳細を表示するには、変更を表示する行を選択して、ページの下部にある **[詳細]** をクリックします。**[操作の詳細]** ウィンドウでは、操作の一環として作成または更新された API オブジェクトを XML 形式で表示し、XML コードをクリップボードにコピーできます。
 
 
-## その他のリソース
+## 次のステップ
 
-[Traffic Manager について](traffic-manager-overview.md)
+[エンドポイントの追加](traffic-manager-endpoints.md)
 
-[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)
+[フェールオーバーのルーティング方法の構成](traffic-manager-configure-failover-routing-method.md)
 
-[Traffic Manager の監視について](traffic-manager-monitoring.md)
+[ラウンド ロビンによるトラフィック ルーティング方法の構成](traffic-manager-configure-round-robin-routing-method.md)
 
-[Traffic Manager - プロファイルの無効化、有効化、または削除](disable-enable-or-delete-a-profile.md)
+[パフォーマンスによるトラフィック ルーティング方法の構成](traffic-manager-configure-performance-routing-method.md)
 
-[Traffic Manager - エンドポイントの無効化または有効化](disable-or-enable-an-endpoint.md)
+[Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 
-[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkID=313584)
-
-[サブスクリプションあたりの](http://go.microsoft.com/fwlink/?LinkId=314074)
-
-[Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

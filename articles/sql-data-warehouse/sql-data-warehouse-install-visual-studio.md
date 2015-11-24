@@ -29,7 +29,7 @@ Visual Studio をインストールする場合、Visual Studio 2013 または V
 
 Visual Studio 2015 をインストールするには:
 
-1. Visual Studio Online から [Visual Studio 2015 をダウンロード](https://www.visualstudio.com/downloads)します。 
+1. Visual Studio Team Services から [Visual Studio 2015 をダウンロード](https://www.visualstudio.com/downloads)します。 
 2. MSDN の [Visual Studio のインストール](https://msdn.microsoft.com/library/e2h7fzkw.aspx)に関するガイドに従ってインストールし、既定の構成を選択します。
 
 ## 手順 2. SQL Server Data Tools (SSDT) をダウンロードしてインストールする 
@@ -49,4 +49,4 @@ Visual Studio がインストールされているかどうかに関係なく、
 
 <!--Image references-->
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

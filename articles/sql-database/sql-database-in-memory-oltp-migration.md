@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="11/10/2015"
+	ms.date="11/16/2015"
 	ms.author="jodebrui"/>
 
 
@@ -108,8 +108,8 @@ ALTER DATABASE CURRENT
 
 3. ウィザードで、**[移行の検証]** (または **[次へ]** ボタン) をクリックし、メモリ最適化テーブルでサポートされていない機能がテーブルに含まれているかどうかを確認します。詳細については、次を参照してください。
  - 「[メモリ最適化アドバイザー](http://msdn.microsoft.com/library/dn284308.aspx)」の*メモリ最適化のチェック リスト*
- - 「[インメモリ OLTP でサポートされていない Transact-SQL の構造](http://msdn.microsoft.com/library/dn246937.aspx)」
- - 「[インメモリ OLTP への移行](http://msdn.microsoft.com/library/dn247639.aspx)」
+ - [インメモリ OLTP でサポートされていない Transact-SQL の構造](http://msdn.microsoft.com/library/dn246937.aspx)
+ - [インメモリ OLTP への移行](http://msdn.microsoft.com/library/dn247639.aspx)
 
 4. サポートされていない機能がテーブルになければ、アドバイザーで実際のスキーマとデータの移行を実行できます。
 
@@ -154,7 +154,7 @@ INSERT INTO <new_memory_optimized_table>
 - SCHEMABINDING: これを指定されたテーブルでは、ストアド プロシージャにより、そのストアド プロシージャを削除しない限り、ストアド プロシージャに影響を与えるような変更を列の定義に加えることができません。
 
 
-ネイティブ モジュールでは、トランザクション管理用に大きな [ATOMIC ブロック](http://msdn.microsoft.com/library/dn452281.aspx)を 1 つ使用する必要があります。明示的な BEGIN TRANSACTION に対するロールはありません。
+ネイティブ モジュールでは、トランザクション管理用に大きな [ATOMIC ブロック](http://msdn.microsoft.com/library/dn452281.aspx)を 1 つ使用する必要があります。明示的 BEGIN TRANSACTION、または ROLLBACK TRANSACTION の役割はありません。コードでビジネス規則違反が検出されると、[THROW](http://msdn.microsoft.com/library/ee677615.aspx) ステートメントを含むアトミック ブロックが停止する可能性があります。
 
 
 ### ネイティブ コンパイル向けの一般的な CREATE PROCEDURE
@@ -233,4 +233,4 @@ CREATE PROCEDURE schemaname.procedurename
 
 - [メモリ最適化アドバイザー](http://msdn.microsoft.com/library/dn284308.aspx)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -47,6 +47,14 @@ Service Fabric のコンポーネントは、Web Platform Installer によって
 
 自動的にインストールが続行します。
 
+## Azure PowerShell をインストールするには
+
+Service Fabric クラスターを構成するには、Azure PowerShell スクリプトをインストールする必要があります。
+
+Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?LinkId=320376) を実行してダウンロードおよびインストールすることができます。メッセージが表示されたら、**[実行]** をクリックします。Azure PowerShell モジュールおよびすべての依存関係がインストールされます。表示される指示に従って、インストールを完了します。
+
+> [AZURE.NOTE]PowerShell Installer のダウンロードだけを行う場合は、https://github.com/Azure/azure-powershell/releases にアクセスしてください。PowerShell コマンドレットのソース コードは、このリポジトリにもあります。
+
 ## PowerShell スクリプトの実行の有効化
 
 Service Fabric は、ローカル開発クラスターの作成、および Visual Studio からのアプリケーションのデプロイに、Windows PowerShell スクリプトを使用します。既定では、Windows はこれらのスクリプトの実行をブロックします。これらを有効にするには、PowerShell 実行ポリシーを変更する必要があります。管理者として PowerShell を開き、次のコマンドを入力します。
@@ -98,7 +106,7 @@ SDK に付属している Service Fabric エクスプローラー ツールを�
 
 - [プログラミング モデルについての詳細: Reliable Actors および Reliable Services](service-fabric-choose-framework.md)
 - [Reliable Services API の使用](service-fabric-reliable-services-quick-start.md)
-- [Reliable Actors API の使用](service-fabric-reliable-actors-get-started.md)
+- [高信頼アクター API の使用](service-fabric-reliable-actors-get-started.md)
 - [GitHub での Service Fabric サンプルの確認](https://github.com/azure/servicefabric-samples)
 - [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
@@ -106,4 +114,4 @@ SDK に付属している Service Fabric エクスプローラー ツールを�
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
 [3]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->
