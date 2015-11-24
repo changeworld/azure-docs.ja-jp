@@ -81,7 +81,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 1. 登録する VMM サーバーから[管理ポータル](https://portal.azure.com)にサインインします。
 
 
-2. [
+2. 
 3. *[Data Services]* をクリックし、*[Recovery Services]* を展開し、*[Site Recovery コンテナー]*クリックします。*
 3. *[新規作成]*、*[簡易作成]* の順にクリックします。
 
@@ -104,7 +104,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 	![[クイック スタート] アイコン](./media/site-recovery-vmm-to-azure/ASRE2AVMM_QuickStartIcon.png)
 
-2. ドロップダウン リストで、**[オンプレミスの VMM サイトと Microsoft Azure 間]** を選択します。
+2. [ドロップダウン リストで、**[オンプレミスの VMM サイトと Microsoft Azure 間]** を選択します。
 3. **[VMM サーバーの準備]** で、**[登録キーの生成]** ファイルをクリックします。キー ファイルは自動的に生成され、生成後 5 日間有効です。VMM サーバーから Azure ポータルにアクセスしていない場合は、このファイルをサーバーにコピーする必要があります。
 
 	![登録キー](./media/site-recovery-vmm-to-azure/ASRE2AVMM_RegisterKey.png)
@@ -131,7 +131,16 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 5. **[インターネット接続]** で、VMM サーバーで実行中のプロバイダーがインターネットに接続する方法を指定します。*[既定のシステム プロキシ設定を使用]* を選択して、サーバー上に構成されている既定のインターネット接続設定を使用します。
 
-	![インターネット設定](./media/site-recovery-vmm-to-azure/VMMASRRegisterProxyDetailsScreen.png) - カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシの設定を構成すると、プロキシの接続を確認するためのテストが実行されます。- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合は、プロキシのアドレスやポートなど、プロキシの詳細を入力する必要があります。- 次の URL は、VMM サーバーと、Hyper-V ホストからアクセスできる必要があります。 - *.hypervrecoverymanager.windowsazure.com - *.accesscontrol.windows.net - *.backup.windowsazure.com - *.blob.core.windows.net - *.store.core.windows.net - 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」および HTTPS (443) プロトコルで説明されている IP アドレスを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+	![インターネット設定](./media/site-recovery-vmm-to-azure/VMMASRRegisterProxyDetailsScreen.png)
+	- カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシの設定を構成すると、プロキシの接続を確認するためのテストが実行されます。
+	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合は、プロキシのアドレスやポートなど、プロキシの詳細を入力する必要があります。
+	- 次の URL は、VMM サーバーと、Hyper-V ホストからアクセスできる必要があります。
+		- *.hypervrecoverymanager.windowsazure.com
+		- *.accesscontrol.windows.net
+		- *.backup.windowsazure.com
+		- *.blob.core.windows.net
+		- *.store.core.windows.net
+	- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」および HTTPS (443) プロトコルで説明されている IP アドレスを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、[設定] ワークスペースを開いて [セキュリティ] を展開し、[実行アカウント] をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
 

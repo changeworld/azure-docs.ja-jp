@@ -96,7 +96,7 @@ Web Apps で有効な PHP バージョンの 非スレッド セーフ (NTS) x86
 
 ## Memcache WordPress プラグインのインストール
 
-> [AZURE.NOTE][Memcached Object Cache プラグイン](https://wordpress.org/plugins/memcached/)を WordPress.org からダウンロードすることもできます。
+> [AZURE.NOTE] [Memcached Object Cache プラグイン](https://wordpress.org/plugins/memcached/)を WordPress.org からダウンロードすることもできます。
 
 WordPress プラグインのページで、**[新規追加]** をクリックします。
 
