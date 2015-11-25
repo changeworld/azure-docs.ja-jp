@@ -61,9 +61,9 @@ Hadoop では、ジョブで使用される map および reduce のロジック
 
 Python では、STDIN からの読み取りに **sys** モジュールを、STDOUT への印刷に **print** を使用して、これらの要件を簡単に処理できます。その他、キーと値の間にタブ (`\t`) 文字を使用してデータを簡単に書式設定できます。
 
-##マッパーとレジューサの作成
+##マッパーとリデューサーの作成
 
-マッパーとレジューサは単なるテキスト ファイルで、この場合 **mapper.py** と **reducer.py** であるため、各ファイルで何が実行されるかは明白です。これらは、好みのエディターを使用して作成できます。
+マッパーとリデューサーは単なるテキスト ファイルで、この場合 **mapper.py** と **reducer.py** であるため、各ファイルで何が実行されるかは明白です。これらは、好みのエディターを使用して作成できます。
 
 ###Mapper.py
 
@@ -205,4 +205,4 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->
