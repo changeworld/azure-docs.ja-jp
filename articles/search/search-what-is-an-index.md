@@ -102,4 +102,4 @@ Azure Search は、完全に管理されたサービスであるため、デー�
 
 クエリ ボリュームとデータ ストレージの要件が随時変更される環境でも、レプリカとパーティションを追加または移動することで容量を増減できます。詳細については、「[Microsoft Azure で Search サービスを管理する](search-manage.md)」または「[サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!----HONumber=Nov15_HO4-->

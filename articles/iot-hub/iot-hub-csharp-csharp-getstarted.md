@@ -36,7 +36,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 + Microsoft Visual Studio 2015、
 
-+ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fgetstarted%2F target="\_blank") を参照してください。
++ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[「Azure の無料試用版サイト」](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fgetstarted%2F target="\_blank") を参照してください。
 
 ## IoT Hub の作成
 
@@ -118,6 +118,7 @@ IoT Hub に関するその他の情報:
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
 [IoT Hub を使用したクラウドからデバイスへのメッセージの送信]: iot-hub-csharp-csharp-c2d.md
+[Process Device-to-Cloud messages (デバイスからクラウドへのメッセージの処理)]: iot-hub-csharp-csharp-process-d2c.md
 [デバイスからクラウドへのメッセージの処理]: iot-hub-csharp-csharp-process-d2c.md
 [デバイスからのファイルのアップロード]: iot-hub-csharp-csharp-file-upload.md
 
@@ -129,4 +130,4 @@ IoT Hub に関するその他の情報:
 [Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
 [Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=Nov15_HO3-->
