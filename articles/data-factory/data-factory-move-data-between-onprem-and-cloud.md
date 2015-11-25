@@ -117,7 +117,7 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 5. **[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
 
 	![タイルの作成とデプロイ](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png) 
-6.	Data Factory エディターのツールバーの **[...] (省略記号)** をクリックし、**[新しいデータ ゲートウェイ]** をクリックします。 
+6.	Data Factory エディターのツールバーの **\[...] (省略記号)** をクリックし、**[新しいデータ ゲートウェイ]** をクリックします。 
 
 	![ツールバーでのデータ ゲートウェイの新規作成](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
 2. **[作成]** ブレードで、**名前**に「**adftutorialgateway**」と入力し、**[OK]** をクリックします。 	
@@ -618,4 +618,4 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 	- 	[Azure SQL ファイアウォール設定](https://msdn.microsoft.com/library/azure/jj553530.aspx)を構成して、**許可する IP アドレス**に**ゲートウェイ コンピューターの IP アドレス**を追加している
 5.	オンプレミスの SQL Server から任意のコピー先にデータをコピーするときに、ゲートウェイ コンピューターと SQL Server コンピューターが異なる場合は、SQL Server インスタンスがリッスンしているポートを介してゲートウェイがデータベースにアクセスできるように、SQL Server コンピューターで [Windows ファイアウォールを構成](https://msdn.microsoft.com/library/ms175043.aspx)します。既定のインスタンスの場合、ポート 1433 です。
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=Nov15_HO3-->
