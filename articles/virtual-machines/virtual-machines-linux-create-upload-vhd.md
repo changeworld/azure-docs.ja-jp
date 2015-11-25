@@ -26,7 +26,7 @@
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
-Azure の仮想マシンでは、仮想マシンの作成時に選択したイメージに基づいてオペレーティング システムが実行されます。イメージはストレージ アカウント内に VHD 形式 (.vid ファイル) で保存されます。詳細については、「[Azure でのディスク](virtual-machines-disks-vhds.md)」および「[Azure でのイメージ](virtual-machines-images.md)」を参照してください。
+Azure の仮想マシンでは、仮想マシンの作成時に選択したイメージに基づいてオペレーティング システムが実行されます。イメージはストレージ アカウント内に VHD 形式 (.vhd ファイル) で保存されます。詳細については、「[Azure でのディスク](virtual-machines-disks-vhds.md)」および「[Azure でのイメージ](virtual-machines-images.md)」を参照してください。
 
 仮想マシンを作成するときに、実行するアプリケーションに合わせてオペレーティング システムの一部の設定をカスタマイズすることができます。手順については、「[カスタム仮想マシンの作成方法](virtual-machines-create-custom.md)」を参照してください。
 
@@ -170,4 +170,4 @@ VHD ファイルをアップロードするストレージ アカウントが必
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=Nov15_HO3-->

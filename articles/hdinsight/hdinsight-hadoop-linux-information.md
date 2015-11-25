@@ -67,7 +67,7 @@ Linux ベースの Azure HDInsight クラスターは、Azure クラウドで実
 
 ## ファイルの場所
 
-Hadoop 関連ファイルは、`/usr/hdp` のクラスター ノードにあります。このディレクトリには、次のサブディレクトリが含まれます。
+Hadoop 関連ファイルは、 クラスター ノードの /usr/hdp/current にあります。
 
 * __2.2.4.9-1__: このディレクトリは HDInsight が使用する Hortonworks Data Platform のバージョンから名前が付けられるため、クラスター上の番号がここに記載されたものと異なる場合があります。
 * __current__: このディレクトリには、__2.2.4.9-1__ ディレクトリ下のディレクトリへのリンクが含まれており、(変わる可能性がある) バージョン番号を、ファイルにアクセスするたびに入力する手間を省くために存在します。
@@ -252,4 +252,4 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Nov15_HO1-->
+<!----HONumber=Nov15_HO1-->
