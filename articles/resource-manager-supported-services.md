@@ -30,10 +30,11 @@ Azure リソース マネージャーは、アプリケーションを構成す�
 | サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------------------------ | -------------- | -------------- |-------- | ------ |
 | Virtual Machines | あり | あり、多くのオプション | いいえ | [VM の作成](https://msdn.microsoft.com/library/azure/mt163591.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json) |
-| Batch  
- | あり | [あり (クラシックのみ)](https://portal.azure.com/#create/Microsoft.BatchAccount) | | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | |
+| Batch   | あり | [あり (クラシックのみ)](https://portal.azure.com/#create/Microsoft.BatchAccount) | | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | |
 | Dynamics Lifecycle Services | はい | いいえ | | | |
-| Virtual Machines (クラシック) | 限定的 | あり、多くのオプション | 部分的 (後述参照) | - | - | | RemoteApp | いいえ | いいえ | - | - | - | | Service Fabric | いいえ | いいえ | - | - | - |
+| Virtual Machines (クラシック) | 限定的 | あり、多くのオプション | 部分的 (後述参照) | - | - |
+| RemoteApp | いいえ | いいえ | - | - | - |
+| Service Fabric | いいえ | いいえ | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイメント モデルではなくクラシック デプロイメント モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイメント モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 

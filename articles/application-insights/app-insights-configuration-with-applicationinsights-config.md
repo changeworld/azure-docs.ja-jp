@@ -97,6 +97,7 @@ HTTP 要求の[応答時間と結果コード](app-insights-start-monitoring-app
 テレメトリ チャネルにより、テレメトリのバッファリングと Application Insights サービスへの送信が管理されます。
 
 * `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` がサービスの既定のチャネルです。メモリにデータをバッファーします。
+* `OperationNameTelemetryInitializer` は、自動生成された `RequestTelemetry.Id` を備えた要求を処理しつつ、追跡対象となっているすべてのテレメトリ項目の `Operation.Id` コンテキスト プロパティを更新します。
 * `Microsoft.ApplicationInsights.PersistenceChannel` はコンソール アプリケーションの代替です。アプリが停止したときにフラッシュされていないデータを永続ストレージに保存できます。また、アプリが再開したときにそのデータを送信します。
 
 

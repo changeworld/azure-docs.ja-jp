@@ -144,7 +144,9 @@
 ## 次のステップ
 Marketplace コンテンツが読み込まれたので、プランのステージングでのテストに進みましょう。ただし、手順はプランの種類によって異なるため、以下の一覧から適切なプランの種類を選択する必要があります。
 
-||仮想マシン イメージ |開発者サービス | データ サービス | ソリューション テンプレート | |----|----|----|----|----| | **手順 3.プランをステージングにプッシュする** | [VM のプランをステージングでテストする](marketplace-publishing-vm-image-test-in-staging.md) | 開発者サービスのプランをステージングでテストする | データ サービスのプランをステージングでテストする | [ソリューション テンプレートをステージングでテストする](marketplace-publishing-solution-template-test-in-staging.md) |
+||仮想マシン イメージ |開発者サービス | データ サービス | ソリューション テンプレート |
+|----|----|----|----|----|
+| **手順 3.プランをステージングにプッシュする** | [VM のプランをステージングでテストする](marketplace-publishing-vm-image-test-in-staging.md) | 開発者サービスのプランをステージングでテストする | データ サービスのプランをステージングでテストする | [ソリューション テンプレートをステージングでテストする](marketplace-publishing-solution-template-test-in-staging.md) |
 
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)

@@ -88,7 +88,7 @@
 
 <!-- URLs. -->
 
-[[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Microsoft Azure 管理ポータル]: https://portal.azure.com/
 
 <!---HONumber=Nov15_HO4-->

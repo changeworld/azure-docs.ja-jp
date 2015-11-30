@@ -342,7 +342,7 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 
 `boostingDuration` は、XSD "dayTimeDuration" 値 (ISO 8601 期間値の制限されたサブセット) としてフォーマットする必要があります。使用されるパターンは次のとおりです。
 
-     [-]P[nD][T[nH][nM][nS]]
+     [-]P\[nD]\[T\[nH]\[nM]\[nS]\]
 
 次の表に、いくつかの例を示します。
 

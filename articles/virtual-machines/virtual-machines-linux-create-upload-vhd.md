@@ -26,7 +26,7 @@
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
-Azure の仮想マシンでは、仮想マシンの作成時に選択したイメージに基づいてオペレーティング システムが実行されます。イメージはストレージ アカウント内に VHD 形式 (.vid ファイル) で保存されます。詳細については、「[Azure でのディスク](virtual-machines-disks-vhds.md)」および「[Azure でのイメージ](virtual-machines-images.md)」を参照してください。
+Azure の仮想マシンでは、仮想マシンの作成時に選択したイメージに基づいてオペレーティング システムが実行されます。イメージはストレージ アカウント内に VHD 形式 (.vhd ファイル) で保存されます。詳細については、「[Azure でのディスク](virtual-machines-disks-vhds.md)」および「[Azure でのイメージ](virtual-machines-images.md)」を参照してください。
 
 仮想マシンを作成するときに、実行するアプリケーションに合わせてオペレーティング システムの一部の設定をカスタマイズすることができます。手順については、「[カスタム仮想マシンの作成方法](virtual-machines-create-custom.md)」を参照してください。
 
@@ -164,7 +164,7 @@ VHD ファイルをアップロードするストレージ アカウントが必
 
 詳細については、[Add-AzureVhd に関するページ](https://msdn.microsoft.com/library/azure/dn495173.aspx)を参照してください。
 
-> [AZURE.NOTE][Azure Powershell 1.0 Preview バージョン](https://azure.microsoft.com/zh-CN/blog/azps-1-0-pre/)では、クラシック デプロイメント モデルとリソース マネージャーのデプロイメント モデル用のコマンドレットを処理する方法が大幅に変更されます。この記事ではまだ Preview バージョンを使用していません。
+> [AZURE.NOTE] [Azure Powershell 1.0 Preview バージョン](https://azure.microsoft.com/zh-CN/blog/azps-1-0-pre/)では、クラシック デプロイメント モデルとリソース マネージャーのデプロイメント モデル用のコマンドレットを処理する方法が大幅に変更されます。この記事ではまだ Preview バージョンを使用していません。
 
 
 [Step 1: Prepare the image to be uploaded]: #prepimage

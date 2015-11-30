@@ -28,7 +28,7 @@
 - Teradata のテーブルとビューの登録時にデータ プロファイルを含めることのサポート。
 - Azure SQL DB と Azure SQL Data Warehouse を含む SQL Server と Server Analysis Services データ ソースに対する [Power BI Desktop で開く] のサポート。
 
-> [AZURE.NOTE][Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。この機能を使用して問題やエラーが発生した場合は、[PowerBI.com](https://powerbi.com) から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
+> [AZURE.NOTE] [Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。この機能を使用して問題やエラーが発生した場合は、[PowerBI.com](https://powerbi.com) から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
 
 ## 2015 年 11 月 13 日の週のリリースの新機能
 
