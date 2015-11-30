@@ -16,41 +16,60 @@
 	ms.date="10/30/2015"
 	ms.author="mahender"/>
 
-# Microsoft アカウント ログインを使用するようにアプリケーションを構成する方法
+# Microsoft アカウント ログインを使用するように App Service アプリケーションを構成する方法
 
-[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
-&nbsp;
+[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]&nbsp;
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
-このトピックでは、認証プロバイダーとして Microsoft アカウントを使用するように Azure Mobile Apps を構成する方法を示します。
+このトピックでは、認証プロバイダーとして Microsoft アカウントを使用するように Azure App Services を構成する方法を示します。
+
+
+	> [AZURE.NOTE]
+	This topic demonstrates use of the App Service Authentication / Authorization feature. This replaces the App Service gateway for most applications. Differences that apply to using the gateway are called out in notes throughout the topic.
+
 
 ## <a name="register"> </a>Microsoft アカウントにアプリケーションを登録する
 
-1. [Microsoft Azure の管理ポータル]にログオンし、モバイル アプリに移動します。
+1. [Microsoft Azure 管理ポータル]にログオンし、目的のアプリケーションに移動します。**[URL]** をコピーします。この URL は、Microsoft アカウント アプリを構成するのに使用します。
 
-2. **[設定]**、**[ユーザー認証]**、**[Microsoft アカウント]** の順にクリックします。**[リダイレクト URL]** をコピーします。この URL は、Microsoft アカウントの新しいアプリを構成するのに使用します。
-
-3. Microsoft アカウント デベロッパー センターの [[マイ アプリケーション]] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
+2. Microsoft アカウント デベロッパー センターの [[マイ アプリケーション]] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
 
 4. **[アプリケーションの作成]** をクリックし、**[アプリケーション名]** に名前を入力して、**[同意する]** をクリックします。
 
-5. **[API 設定]** をクリックします。**[モバイル クライアント アプリ/デスクトップ クライアント アプリ]** に対して **[はい]** を選択します。**[リダイレクト URL]** フィールドに、先ほどコピーした **[リダイレクト URL]** を入力します。この URL はモバイル アプリ ゲートウェイの後に _/signin-microsoft_ を追加したフォーマットです。たとえば、「`https://contosogateway.azurewebsites.net/signin-microsoft`」のように入力します。HTTPS スキームを使用していることを確認します。リダイレクト URL を入力したら、**[保存]** をクリックします。
+5. **[API 設定]** をクリックします。**[モバイル クライアント アプリ/デスクトップ クライアント アプリ]** に対して **[はい]** を選択します。**[リダイレクト URL]** フィールドに、アプリケーションの**リダイレクト URL** を入力し、**[保存]** をクリックします。リダイレクト URI は、アプリケーションの URL にパス _/.auth/login/microsoftaccount/callback_ を追加したものです。たとえば、「`https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`」のように入力します。HTTPS スキームを使用していることを確認します。
 
 	![][0]
 
-	>[AZURE.NOTE]既存の Microsoft アカウント アプリケーションの登録には、まず **[強化されたリダイレクト セキュリティ]** を有効にする必要があります。
 
-4. **[アプリ設定]** をクリックして、**[クライアント ID]** と **[クライアント シークレット]** の値を書き留めます。
-
-    > [AZURE.NOTE] クライアント シークレットは、重要なセキュリティ資格情報です。クライアント シークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
+	> [AZURE.NOTE]App Service の認証/承認機能ではなく、App Service ゲートウェイを使用している場合、リダイレクト URL では、ゲートウェイ URL とパス _/signin-microsoft_ を使用します。
 
 
-## <a name="secrets"> </a>Microsoft アカウントの情報をモバイル アプリに追加する
+6. **[アプリ設定]** をクリックして、**[クライアント ID]** と **[クライアント シークレット]** の値を書き留めます。
 
-1. [Microsoft Azure の管理ポータル]に戻り、モバイル アプリの [Microsoft アカウント設定] ブレードに、以前に入手したクライアント ID とクライアント シークレットの値を貼り付けます。その後、**[保存]** をクリックします。
+
+    > [AZURE.NOTE]クライアント シークレットは、重要なセキュリティ資格情報です。クライアント シークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
+	
+
+## <a name="secrets"> </a>Microsoft アカウントの情報をアプリケーションに追加する
+
+
+	> [AZURE.NOTE]
+	If using the App Service Gateway, ignore this section and instead navigate to your gateway in the portal. Select **Settings**, **Identity**, and then **Microsoft Account**. Paste in the values you obtained earlier and click **Save**.
+
+
+7. [Microsoft Azure 管理ポータル]に戻り、目的のアプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックします。
+
+8. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。
+
+9. **[Microsoft アカウント]** をクリックします。前の手順で取得した App ID と App Secret の値を貼り付けます。アプリケーションで必要なスコープを有効にします (省略可能)。次に、 **[OK]** をクリックします
 
     ![][1]
+	
+11. 既定では、App Service はログインを提供しますが、サイトのコンテンツと API へのアクセスは制限されません。これはアプリケーション コードで行います。Microsoft アカウント ログインからサイトを完全に保護する場合は、**[要求が認証されていないときに実行するアクション]** ドロップダウンを **[Microsoft アカウント]** オプションを使用するように変更します。これにより、すべての要求で認証が必要になり、認証されていない要求は、Microsoft アカウントを使用してログインするようにリダイレクトされます。
+
+11. **[保存]** をクリックします。
+
 
 これで、アプリケーションで認証に Microsoft アカウントを使用する準備ができました。
 
@@ -70,6 +89,6 @@
 <!-- URLs. -->
 
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Microsoft Azure の管理ポータル]: https://portal.azure.com/
+[Microsoft Azure 管理ポータル]: https://portal.azure.com/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

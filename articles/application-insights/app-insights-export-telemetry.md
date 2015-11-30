@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="11/15/2015" 
 	ms.author="awills"/>
  
 # Application Insights からのテレメトリのエクスポート
@@ -21,7 +21,7 @@
 
 連続エクスポートは、無料の評価期間、および [Standard 料金プランと Premium 料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)で使用できます。
 
-(メトリックや検索ブレードでの表示内容を、[1 回だけエクスポートする](app-insights-metrics-explorer.md#export-to-excel)場合には、ブレードの上部で [エクスポート] をクリックします)。
+(メトリックや検索ブレードでの表示内容を、[1 回だけエクスポートする](app-insights-metrics-explorer.md#export-to-excel)場合には、ブレードの上部で [エクスポート] をクリックします。また、Power BI でデータを参照する場合、[アダプター](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)を利用してください。このアダプターでは、連続エクスポートは使用*されません*。)
 
 ## ストレージ アカウントの作成
 
@@ -141,22 +141,13 @@ BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナ�
 
 連続エクスポートが再開されます。
 
-## Power BI へのエクスポート
+## エクスポート サンプル
 
-[Microsoft Power BI](https://powerbi.microsoft.com/) では、機能豊富で多様なビジュアルでデータが表示されます。複数のソースから情報をまとめる機能も備わっています。アプリのパフォーマンスと使用状況に関するテレメトリ データを、Application Insights から Power BI にストリーミングすることができます。
-
-[Power BI への Application Insights のストリーム](app-insights-export-power-bi.md)
-
-![Application Insights の使用状況データの Power BI ビュー サンプル](./media/app-insights-export-telemetry/210.png)
-
-## SQL へのエクスポート
-
-もう 1 つの方法は、SQL データベースにデータを移動して、より強力な分析を実行することです。
-
-Blob ストレージからデータベースにデータを移動する 2 つの方法をサンプルで示します。
 
 * [worker ロールを使用して SQL にエクスポートする][exportcode]
 * [Stream Analytics を使用して SQL にエクスポートする][exportasa]
+* [Stream Analytics を使用して Power BI にエクスポートする](app-insights-export-power-bi.md)
+ * これは Power BI の標準的な利用方法ではないことに注意してください。連続エクスポートを必要としない[アダプター](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)があります。
 
 
 大規模な処理の場合は、[HDInsight](http://azure.microsoft.com/services/hdinsight/) (クラウドの Hadoop クラスター) を検討してください。HDInsight は、ビッグ データを管理および分析するためのさまざまなテクノロジを提供します。
@@ -217,4 +208,4 @@ Blob ストレージからデータベースにデータを移動する 2 つの
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

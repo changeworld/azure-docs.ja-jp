@@ -59,7 +59,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 	**次のサービスはサポートされません。**
 
 	- CDN
-	- Visual Studio Online のロード テスト
+	- Visual Studio Team Services のロード テスト
 	- Multi-factor Authentication
 
 ## データおよび接続
@@ -258,4 +258,4 @@ ExpressRoute がサポートされているパートナーと地域の一覧に�
 はい。自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

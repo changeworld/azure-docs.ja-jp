@@ -1,10 +1,10 @@
 <properties 
-   pageTitle="インスタンス レベル パブリック IP (ILPIP)"
+   pageTitle="インスタンスレベル パブリック IP (ILPIP) | Microsoft Azure"
    description="ILPIP (PIP) とその管理方法について説明します"
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -12,11 +12,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/10/2015"
+   ms.date="11/11/2015"
    ms.author="telmos" />
 
 # インスタンス レベル パブリック IP の概要
-インスタンス レベル パブリック IP (ILPIP) は、VM またはロール インスタンスが存在するクラウド サービスではなく、VM またはロール インスタンスに直接割り当てることのできる IP アドレスです。これは、クラウド サービスに割り当てられる VIP (仮想 IP) の代わりにはなりません。むしろ、VM またはロール インスタンスに直接接続するときに使用できる追加の IP アドレスです。
+インスタンス レベル パブリック IP (ILPIP) は、VM またはロール インスタンスが存在するクラウド サービスではなく、VM またはロール インスタンスに直接割り当てることのできるパブリック IP アドレスです。これは、クラウド サービスに割り当てられる VIP (仮想 IP) の代わりにはなりません。むしろ、VM またはロール インスタンスに直接接続するときに使用できる追加の IP アドレスです。
 
 >[AZURE.NOTE]これまで、ILPIP は、パブリック IP を意味する PIP という名前で呼ばれていました。
 
@@ -33,8 +33,6 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 
 ## ILPIP を要求する理由
 直接割り当てられている IP アドレスで VM またはロール インスタンスに接続できるようにするには、クラウド サービスの "VIP:&lt;ポート番号&gt;" を使用するのではなく、VM またはロール インスタンスの ILPIP を要求します。- **パッシブ FTP** - VM に ILPIP を持つことで、任意のポートに関するトラフィックのみを受信できるため、トラフィックを受信するためにエンドポイントを開く必要がなくなります。これにより、ポートが動的に選択されるパッシブ FTP に似たシナリオを実現できます。- **送信 IP** - VM からの発信トラフィックは、送信元である ILPIP と共に送信されます。これは、外部エンティティに対して VM を一意に識別します。
-
->[AZURE.NOTE]予約済み ILPIP を使用すると、Azure サブスクリプションに追加のコストが生じる可能性があります。ILPIP の料金の詳細については、「[IP アドレスの料金](http://azure.microsoft.com/pricing/details/ip-addresses/)」を参照してください。
 
 ## VM の作成中に ILPIP を要求する方法
 次の PowerShell スクリプトでは、*FTPService* という名前の新しいクラウド サービスを作成した後、Azure のイメージを取得し、取得したイメージを使用して *FTPInstance* という名前の VM を作成します。さらに、ILPIP を使用するように VM を設定し、新しいサービスにその VM を追加します。
@@ -125,4 +123,4 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

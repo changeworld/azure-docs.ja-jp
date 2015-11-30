@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/11/2015"
+   ms.date="11/13/2015"
    ms.author="vturecek"/>
 
 # 高信頼アクターの設計パターン: リソースのガバナンス
@@ -80,7 +80,7 @@ public class UserState
 }
 
 
-public class User : Actor<UserState>, IUser
+public class User : StatefulActor<UserState>, IUser
 {
     public override async Task ActivateAsync()
     {
@@ -113,7 +113,7 @@ public class ResolverState
     ...
 }
 
-public class Resolver : Actor<ResolverState>, IResolver
+public class Resolver : StatefulActor<ResolverState>, IResolver
 {
     ...
 
@@ -157,7 +157,7 @@ public interface IEventProcessor : IActor
     Task ProcessEventAsync(long eventId, long eventType, DateTime eventTime, string payload);
 }
 
-public class EventProcessor : Actor, IEventProcessor
+public class EventProcessor : StatelessActor, IEventProcessor
 {
     public Task ProcessEventAsync(long eventId, long eventType, DateTime eventTime, string payload)
     {
@@ -193,11 +193,11 @@ public class EventWriterState
     public string _filename;
 }
 
-public class EventWriter : Actor<EventWriterState>, IEventWriter
+public class EventWriter : StatefulActor<EventWriterState>, IEventWriter
 {
     private StreamWriter _writer;
 
-    public override Task OnActivateAsync()
+    protected override Task OnActivateAsync()
     {
         State._filename = string.Format(@"C:\{0}.csv", this.Id);
         _writer = new StreamWriter(_filename);
@@ -205,7 +205,7 @@ public class EventWriter : Actor<EventWriterState>, IEventWriter
         return base.OnActivateAsync();
     }
 
-    public override Task OnDeactivateAsync()
+    protected override Task OnDeactivateAsync()
     {
         _writer.Close();
         return base.OnDeactivateAsync();
@@ -233,12 +233,12 @@ public class EventWriterState
     public Queue<CustomEvent> _buffer;
 }
 
-public class EventWriter : Actor<EventWriterState>, IEventWriter
+public class EventWriter : StatefulActor<EventWriterState>, IEventWriter
 {
     private StreamWriter _writer;
     private IActorTimer _timer;
 
-    public override Task OnActivateAsync()
+    protected override Task OnActivateAsync()
     {
         State._filename = string.Format(@"C:\{0}.csv", this.Id);
         _writer = new StreamWriter(_filename);
@@ -328,9 +328,9 @@ public class AsyncBatchExecutor
 ## リソース ガバナンスのコード サンプル – 非同期バッチ処理のあるバッファリング
 
 ```csharp
-public class EventWriter : Actor<EventWriterState>, IEventWriter
+public class EventWriter : StatefulActor<EventWriterState>, IEventWriter
 {
-    public override Task OnActivateAsync()
+    protected override Task OnActivateAsync()
     {
         State._filename = string.Format(@"C:\{0}.csv", this.GetPrimaryKeyLong());
         _writer = new StreamWriter(_filename);
@@ -421,4 +421,4 @@ public class EventWriter : Actor<EventWriterState>, IEventWriter
 [2]: ./media/service-fabric-reliable-actors-pattern-resource-governance/resourcegovernance_arch2.png
 [3]: ./media/service-fabric-reliable-actors-pattern-resource-governance/resourcegovernance_arch3.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

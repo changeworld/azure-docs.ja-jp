@@ -17,11 +17,11 @@
 	ms.date="09/09/2015"
 	ms.author="paulettm"/>
 
-#Azure Machine Learning に関してよく寄せられる質問 (FAQ): 課金、機能、制限、サポート
+# Azure Machine Learning に関してよく寄せられる質問 (FAQ): 課金、機能、制限、サポート
 
 この FAQ では、Web サービスを使用して予測モデリングとソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についての疑問に答えます。サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。
 
-##一般的な質問
+## 一般的な質問
 
 **Azure Machine Learning とは**
 
@@ -43,7 +43,7 @@ Machine Learning API サービスでは、Machine Learning Studio に組み込�
 詳細については、「[Machine Learning Web サービスへの接続](machine-learning-connect-to-azure-machine-learning-web-service.md)」をご覧ください。
 
 
-##課金に関する質問
+## 課金に関する質問
 
 **Machine Learning ではどのように請求が行われますか。**
 
@@ -55,18 +55,18 @@ Machine Learning API サービスでは、Machine Learning Studio に組み込�
 
 ## Machine Learning Studio に関する質問
 
-###実験の作成
+### 実験の作成
 **実験グラフ用のバージョン管理や Git 統合はありますか。**
 
 いいえ、実験を行うたびにグラフのバージョンが保存されるため、他のユーザーが変更することはできません。
 
-###Machine Learning 用データのインポートとエクスポート
+### Machine Learning 用データのインポートとエクスポート
 **Machine Learning はどのようなデータ ソースをサポートしていますか。**
 
 データは、ローカル ファイルをデータセットとしてアップロードする方法、またはデータをインポートするリーダー モジュールを使用する方法のいずれかの方法で Machine Learning Studio に読み込むことができます。ローカル ファイルは、Machine Learning Studio に新しいデータセットを追加することでアップロードできます。サポートされているファイル形式の詳細については、「[Import training data into Machine Learning Studio (Machine Learning Studio へのトレーニング データのインポート)](machine-learning-import-data.md)」をご覧ください。
 
 
-####<a id="ModuleLimit"></a>モジュールのデータ セットの大きさはどの程度まで許容されますか。
+#### <a id="ModuleLimit"></a>モジュールのデータ セットの大きさはどの程度まで許容されますか。
 
 Machine Learning Studio のモジュールは、一般的に、最大 10 GB の高密度数値データのデータセットをサポートしています。モジュールが 1 つ以上の入力を受け取る場合は、10 GB はすべての入力サイズの合計です。インジェストの前に、Hive または Azure SQL Database のクエリ経由で、またはカウントによる学習の前処理によって、より大きなデータセットをサンプリングすることもできます。
 
@@ -102,7 +102,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 イメージの入力機能については、「[イメージ リーダー][image-reader]」をご覧ください。
 
-###モジュール
+### モジュール
 
 **探しているアルゴリズム、データ ソース、データ形式、データ変換操作が Azure ML Studio で見つかりません。どうすればいいでしょうか。**
 
@@ -118,7 +118,8 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 いいえ。サポートされていません。ただし、カスタムの R と Python コードを使用してモジュールを定義できます。
 
 
-###データ処理
+### データ処理
+
 **実験内で対話的にデータを視覚化する (R の視覚化以上) 機能はありますか。**
 
 モジュールの出力をクリックすると、データを視覚化し、統計情報を取得できます。
@@ -127,7 +128,8 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 データがブラウザーに送信されると大きくなる可能性があるため、ML Studio のパフォーマンスが低下しないように、データ サイズが制限されています。データ全体を表示するには、データや結果をダウンロードし、Excel などのツールを使用することをお勧めします。
 
-###アルゴリズム
+### アルゴリズム
+
 **Machine Learning Studio では既存のどの ML アルゴリズムがサポートされていますか。**
 
 Machine Learning Studio は、拡張性の高い強化された意思決定ツリー、ベイズの推薦システム、ディープ ニューラル ネットワーク、Microsoft Research で開発された意思決定のジャングルなど、最先端のアルゴリズムを提供します。Vowpal Wabbit のような拡張性が高いオープン ソース機械学習パッケージも含まれます。Machine Learning Studio は、複数クラスと二項分類、回帰、クラスタリングで、機械学習アルゴリズムをサポートします。「[Machine Learning のモジュール][machine-learning-modules]」の完全な一覧をご覧ください。
@@ -158,7 +160,8 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 
 現在、新しいカスタム モジュールは R でのみ作成できます。
 
-###R モジュール
+### R モジュール
+
 **Machine Learning Studio で使用できるのはどの R パッケージですか。**
 
 Machine Learning Studio は、現在、400 を超える R パッケージをサポートしています。サポートされるパッケージは常に増加しています。サポートされる R パッケージの一覧を取得する方法については、「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」を参照してください。必要なパッケージがこの一覧にない場合は、[ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)でパッケージの名前を指定してください。
@@ -171,7 +174,7 @@ Machine Learning Studio は、現在、400 を超える R パッケージをサ�
 
 いいえ。Studio には R 用の REPL 環境はありません。
 
-###Python モジュール
+### Python モジュール
 
 **カスタム Python モジュールを構築することはできますか。**
 
@@ -182,11 +185,12 @@ Machine Learning Studio は、現在、400 を超える R パッケージをサ�
 Machine Learning Studio では Jupyter Notebooks を使用できます。詳細については、「[Introducing Jupyter Notebooks in Azure ML Studio (Azure ML Studio に Jupyter Notebooks を導入する)](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx)」を参照してください。
 
 ## Web サービス
+
 ###モデルをプログラムによって再トレーニングする
 
 **AzureML モデルをプログラムによって再トレーニングする方法はありますか。** 再トレーニング API を使用します。サンプル コードは[こちら](https://azuremlretrain.codeplex.com/)で入手できます。
 
-###作成
+### 作成
 
 **ローカルまたはインターネットに接続していないアプリケーションでモデルをデプロイすることはできますか。** 番号
 
@@ -195,7 +199,8 @@ Machine Learning Studio では Jupyter Notebooks を使用できます。詳細�
 
 「[Azure サブスクリプションの制限](../azure-subscription-service-limits.md)」をご覧ください。
 
-###最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、
+### 最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、
+
 **バッチ実行サービスと要求応答サービスとして予測モデルを実行するのはいつがいいですか。**
 
 要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスで、実験環境で作成、デプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。バッチ実行サービス (BES) は、データ レコードのバッチに対して非同期でスコアを付けるためのサービスです。BES への入力は、RRS で使用されるデータ入力と似ています。主な違いは、BES が、BLOB サービス、Azure の Table サービス、Azure SQL Database、HDInsight (Hive Query)、HTTP ソースなどのさまざまなソースからレコードのブロックを読み取ることです。詳細については、「[How to consume Machine Learning web services (Machine Learning Web サービスを使用する方法)](machine-learning-consume-web-services.md)」をご覧ください。
@@ -205,7 +210,6 @@ Machine Learning Studio では Jupyter Notebooks を使用できます。詳細�
 既にデプロイされたサービスの予測モデルの更新は、トレーニング済みのモデルの作成および保存に使用される実験の変更および再実行と同じくらい簡単です。新しいバージョンのトレーニング済みのモデルが使用できるようになると、ML Studio はステージング環境の Web サービスを更新するかどうかをたずねます。ステージング環境の Web サービスに更新が適用された後に、同じ更新を運用環境の Web サービスにも適用できるようになります。デプロイされた Web サービスを更新する方法の詳細については、「[Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
 
 Retraining API を使用することもできます。サンプル コードは[こちら](https://azuremlretrain.codeplex.com/)で入手できます。
-
 
 **運用環境にデプロイされた Web サービスはどのように監視できますか。**
 
@@ -218,12 +222,11 @@ RRS の場合は通常、Web サービスの応答に結果が表示されます
  **Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 
 いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
 
-
-##拡張性
+## 拡張性
 
 **Web サービスのスケーラビリティはどれくらいですか。**
 
-現在、エンドポイントごとの同時要求数は最大で 20 ですが、10,000 エンドポイントに拡張できます。すべてのリソース (300 ワーカー) を使用する場合、4,800 の同時要求に変換されます。
+現時点では、既定のエンドポイントは 1 つのエンドポイントにつき 20 件の同時 RRS 要求でプロビジョニングされます。エンドポイントごとの同時要求数を 200 件まで拡張でき、「[API エンドポイントのスケーリング](machine-learning-scaling-endpoints.md)」で説明されているように Web サービスごとのエンドポイント数を 10,000 まで拡張できます。BES の場合、各エンドポイントは一度に 40 件の要求を処理でき、40 件を超えた要求はキューに登録されます。これらのキューに登録された要求は、キューから放出されると自動的に実行されます。
 
 
 **R のジョブはノード間に分散されますか。**
@@ -261,7 +264,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 番号
 
-##セキュリティと可用性
+## セキュリティと可用性
 
 **既定で運用環境にデプロイされている Web サービスの http エンドポイントにはだれがアクセスできますか。 エンドポイントへのアクセスはどのようにして制限できますか。**
 
@@ -280,11 +283,11 @@ Machine Learning Studio は、ワークフローを実行する際に中間デ�
 ストレージ アカウントのアクセス キーを変更した場合は、Azure ポータルのワークスペースの設定でアクセス キーを再同期をご確認ください。
 
 
-##Azure Marketplace
+## Azure Marketplace
 
 「[Machine Learning Marketplace でのアプリの公開と使用に関する FAQ](machine-learning-marketplace-faq.md)」をご覧ください
 
-##サポートとトレーニング
+## サポートとトレーニング
 
 **どこで Azure ML のトレーニングを受講できますか。**
 
@@ -309,4 +312,4 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

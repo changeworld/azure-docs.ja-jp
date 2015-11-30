@@ -25,6 +25,7 @@
 
 - [現在の既知の問題](#issues)
 - [REST API バージョン履歴](#rest_version_history)
+- [2015年 11 月のリリース](#nov_changes_15)
 - [2015 年 10 月のリリース](#oct_changes_15)
 - [2015 年 9 月のリリース](#september_changes_15)
 - [2015 年 8 月のリリース](#august_changes_15)
@@ -73,7 +74,13 @@ SDK 内の Media Services オブジェクトをシリアル化できず、その
 
 ##<a id="rest_version_history"></a>REST API バージョン履歴
 
-Media Services REST API バージョン履歴の詳細については、「[Azure Media Services REST API リファレンス]」を参照してください。
+Media Services REST API バージョン履歴の詳細については、「[Azure モバイル サービス REST API リファレンス]」を参照してください。
+
+##<a id="nov_changes_15"></a>2015 年 11 月のリリース
+
+Azure Media Services は、クラウドで Google Widevine ライセンス配信サービスを提供するようになりました。詳しくは、[こちらの案内ブログ](http://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)をお読みください。また、[こちらのチュートリアル](media-services-protect-with-drm.md)および [GitHub リポジトリ](http://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)もご覧ください。
+
+Azure Media Services によって提供される Widevine ライセンス配信サービスはプレビュー期間中であることに注意してください。詳細については、[この投稿](http://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)を参照してください。
 
 ##<a id="oct_changes_15"></a>2015 年 10 月のリリース
 
@@ -85,7 +92,7 @@ Azure Media Services (AMS) は、現在、ブラジル南部、インド西部�
 
 ##<a id="september_changes_15"></a>2015 年 9 月のリリース 
 
-- AMS で、Widevine Modular DRM テクノロジを使用してビデオ オン デマンド (VOD) とライブ ストリーミングの両方を保護できるようになりました。[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) という配信サービス パートナーを通して、Widevine ライセンスを提供できます。詳細については、[このブログ](http://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)を参照してください。
+- AMS で、Widevine Modular DRM テクノロジを使用してビデオ オン デマンド (VOD) とライブ ストリーミングの両方を保護できるようになりました。次の配信サービス パートナーを通してWidevine ライセンスを提供できます。[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。詳細については、[このブログ](http://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)を参照してください。
 
 	[AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (バージョン 3.5.1 以降) または REST API を使用して、Widevine を使用するように AssetDeliveryConfiguration を構成できます。
 
@@ -98,11 +105,11 @@ Azure Media Services (AMS) は、現在、ブラジル南部、インド西部�
 	- オーディオ専用フィルター付きの Apple HTTP Live Streaming (HLS) 形式を使用できるようになりました。この更新では、(audio-only=false) を、URL に指定することで、オーディオ専用トラックを削除できます。
 	- アセット用のフィルターを定義するときに、複数のフィルター (最大 3 つ) を 1 つの URL に組み合わせることができるようになりました。
 
-	詳細については、[この](http://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support)ブログを参照してください。
+	詳細については、[この投稿](http://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support)を参照してください。
 
 - AMS で HLS v4 の I フレームをサポートするようになりました。I フレームのサポートは、早送りと巻き戻しの操作を最適化します。既定では、すべての HLS v4 出力には、I フレームの再生リスト (EXT-X-I-FRAME-STREAM-INF) が含まれます。
  
-	詳細については、[この](http://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support)ブログを参照してください。
+	詳細については、[この投稿](http://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support)を参照してください。
 
 ##<a id="august_changes_15"></a>2015 年 8 月のリリース
 
@@ -117,7 +124,7 @@ Azure Media Services (AMS) は、現在、ブラジル南部、インド西部�
 
 - Media Encoder Standard の一般公開の発表。詳細については、[このブログの投稿](http://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)を参照してください。
 
-	Media Encoder Standard では、[このセクション](http://go.microsoft.com/fwlink/?LinkId=618336)で説明されているプリセットを使用しています。4k エンコードのプリセットを使用する場合は、**Premium** 予約ユニットの種類を取得する必要があることに注意してください。詳細については、[エンコードの規模の設定方法](media-services-portal-encoding-units)に関するページを参照してください。
+	Media Encoder Standard では、[このセクション](http://go.microsoft.com/fwlink/?LinkId=618336)で説明されているプリセットを使用しています。4k エンコードのプリセットを使用する場合は、**Premium** 予約ユニットの種類を取得する必要があります。詳細については、「[Encoding の規模の設定方法](media-services-portal-encoding-units)」を参照してください。
 - Azure Media Services と Azure Media Player のライブ リアルタイム キャプション。詳細については、[このブログの投稿](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)を参照してください。
 
 ###Media Services .NET SDK の更新
@@ -128,7 +135,7 @@ Azure Media Services .NET SDK が 3.4.0.0 にバージョン アップしまし�
 - 動的フィルターのサポートが実装されました。
 - ユーザーがストレージ コンテナーを維持しながら資産を削除できる機能が実装されました。
 - チャネルの再試行ポリシーに関連するバグが修正されました。
-- **メディア エンコーダー プレミアム ワークフロー**が有効になりました。
+- **Media Encoder Premium Workflow**が有効になりました。
 
 ##<a id="june_changes_15"></a>2015 年 6 月のリリース
 
@@ -181,7 +188,7 @@ Azure Media Services .NET SDK が 3.2.0.0 にバージョン アップしまし�
 ### Media Services の全般的な更新
 
 - Media Services で、シームレスな Azure CDN 統合が提供されるようになりました。統合をサポートするために、**CdnEnabled** プロパティが **StreamingEndpoint** に追加されました。**CdnEnabled** はバージョン 2.9 以降の REST API で使用できます (詳細については「[StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx)」をご覧ください)。**CdnEnabled** はバージョン 3.1.0.2 以降の .NET SDK で使用できます (詳細については「[StreamingEndpoint.aspx]」https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint(v=azure.10).aspx))をご覧ください)。
-- **Media Encoder Premium Workflow** の発表。詳細については、[Azure Media Services への Premium Encoding の導入に関するページ](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)をご覧ください。
+- **Media Encoder Premium Workflow** の発表。詳細については、[Azure Media Services へのプレミアム Encoding の導入に関するページ](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)をご覧ください。
  
 
 
@@ -211,7 +218,7 @@ Azure Media Services .NET SDK が 3.1.0.1 にバージョン アップしまし�
 ###Media Services の全般的な更新
 
 - Azure Indexer メディア プロセッサに、いくつかの更新と新機能が追加されています。詳細については、「[Azure Media Indexer Version 1.1.6.7 のリリース ノート](http://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/)」をご覧ください。
-- エンコード予約ユニットを更新できる新しい REST API が追加されました ([EncodingReservedUnitType](http://msdn.microsoft.com/library/azure/dn859236.aspx))。
+- エンコード占有ユニットを更新できる新しい REST API が追加されました ([EncodingReservedUnitType](http://msdn.microsoft.com/library/azure/dn859236.aspx))。
 - キー配信サービスの CORS サポートが追加されました。
 - 承認ポリシー オプションのクエリ パフォーマンスが向上しています。
 - 中国のデータ センターで、[キー配信 URL](http://msdn.microsoft.com/library/azure/ef4dfeeb-48ae-4596-ab28-44d6b36d8769#get_delivery_service_url) が顧客単位となりました (他のデータ センターと同じです)。
@@ -221,7 +228,7 @@ Azure Media Services .NET SDK が 3.1.0.1 にバージョン アップしまし�
 
 - [Azure Media Services .NET SDK](http://www.nuget.org/packages/windowsazure.mediaservices/) が 3.1.0.0 にバージョン アップしました。
 - .Net SDK の依存関係が .NET 4.5 Framework にアップグレードされました。
-- エンコード予約ユニットを更新できる新しい API が追加されました。詳細については、[.NET を使用した予約ユニットの種類の更新とエンコード予約ユニットの拡張に関するページ](http://msdn.microsoft.com/library/azure/jj129582.aspx)をご覧ください。
+- エンコード予約ユニットを更新できる新しい API が追加されました。詳細については、[.NET を使用した占有ユニットの種類の更新とエンコーディング占有ユニットの拡張に関するページ](http://msdn.microsoft.com/library/azure/jj129582.aspx)をご覧ください。
 - トークン認証に JWT (JSON Web Token) が新たにサポートされています。詳細については、[Azure Media Services と動的暗号化における JWT トークン認証に関するページ](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)をご覧ください。.
 - PlayReady ライセンス テンプレートに BeginDate と ExpirationDate の相対オフセットが追加されました。
 
@@ -261,7 +268,7 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.8 です。
 
 ##<a id="september_changes_14"></a>2014 年 9 月のリリース
 
-Media Services REST メタデータは、現在、バージョン 2.7 です。最新の REST 更新プログラムの詳細については、「[Azure モバイル サービス REST API リファレンス]」を参照してください。
+Media Services REST メタデータは、現在、バージョン 2.7 です。最新の REST 更新プログラムの詳細については、「[Azure Media Services REST API リファレンス]」を参照してください。
 
 Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
  
@@ -618,4 +625,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

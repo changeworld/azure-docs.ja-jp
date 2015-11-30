@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="08/14/2015"
+	ms.date="11/17/2015"
 	ms.author="yuaxu"/>
 
 # 特定のユーザーにクロスプラット フォーム通知を送信する
@@ -28,7 +28,7 @@
  
 ##前提条件 
 
-このチュートリアルを開始する前に、作業する各クライアント プラットフォームで次の App Service チュートリアルが既に完了している必要があります。
+このチュートリアルを開始する前に、作業する各クライアント プラットフォームで次のアプリ サービス チュートリアルが既に完了している必要があります。
 
 + [認証の使用]<br/>TodoList サンプル アプリケーションにログイン要件を追加します。
 
@@ -106,7 +106,7 @@
 <!-- URLs. -->
 [認証の使用]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [プッシュ通知の使用]: app-service-mobile-windows-store-dotnet-get-started-push.md
-[テンプレート]: https://msdn.microsoft.com/ja-JP/library/dn530748.aspx
+[テンプレート]: https://msdn.microsoft.com/zh-CN/library/dn530748.aspx
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

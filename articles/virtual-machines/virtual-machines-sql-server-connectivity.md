@@ -1,33 +1,32 @@
 <properties 
-   pageTitle="SQL Server 仮想マシンに接続する | Microsoft Azure"
-   description="このトピックでは、クラシック デプロイ モデルで作成されたリソースを使用し、Azure の仮想マシンで実行している SQL Server に接続する方法について説明します。シナリオは、ネットワーク構成とクライアントの場所によって異なります。"
-   services="virtual-machines"
-   documentationCenter="na"
-   authors="rothja"
-   manager="jeffreyg"
-   editor="monicar"    
-   tags="azure-service-management"/>
+	pageTitle="SQL Server 仮想マシンに接続する | Microsoft Azure"
+	description="このトピックでは、クラシック デプロイ モデルで作成されたリソースを使用し、Azure の仮想マシンで実行している SQL Server に接続する方法について説明します。シナリオは、ネットワーク構成とクライアントの場所によって異なります。"
+	services="virtual-machines"
+	documentationCenter="na"
+	authors="rothja"
+	manager="jeffreyg"
+	editor="monicar"    
+	tags="azure-service-management"/>
 <tags 
-   ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows-sql-server"
-   ms.workload="infrastructure-services"
-   ms.date="08/18/2015"
-   ms.author="jroth" />
+	ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.workload="infrastructure-services"
+	ms.date="11/12/2015"
+	ms.author="jroth" />
 
 # Azure での SQL Server 仮想マシンへの接続
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
- 
- 
 ## 概要
 
 Azure の仮想マシンで実行されている SQL Server への接続の構成は、オンプレミスの SQL Server インスタンスに必要な手順と大きく異なってはいません。ファイアウォール、認証、データベースのログインに関連する構成は引き続き行う必要があります。
 
 ただし、SQL Server への接続には、Azure VM に固有の側面がいくつかあります。この記事では、[一般的な接続のシナリオ](#connection-scenarios)をいくつか紹介し、[Azure VM での SQL Server への接続を構成する手順の詳細](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)について説明します。
 
->[AZURE.NOTE]この記事では、接続に重点を置いて説明します。プロビジョニングと接続の両方に関する完全なチュートリアルについては、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」を参照してください。
+この記事では、接続に重点を置いて説明します。プロビジョニングと接続の両方に関する完全なチュートリアルについては、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」を参照してください。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 ## 接続のシナリオ
 
@@ -87,4 +86,4 @@ Azure の仮想マシンで実行されている SQL Server のセキュリテ�
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

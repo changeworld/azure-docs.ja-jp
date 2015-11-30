@@ -4,7 +4,7 @@
    services="dns" 
    documentationCenter="na" 
    authors="joaoma" 
-   manager="Adinah" 
+   manager="carmonm" 
    editor=""/>
 
 <tags
@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="09/22/2015"
+   ms.date="11/10/2015"
    ms.author="joaoma"/>
 
 # CLI を使用して DNS レコードを管理する方法
 
 > [AZURE.SELECTOR]
 - [Azure CLI](dns-operations-recordsets-cli.md)
-- [Azure Powershell](dns-operations-recordsets.md)
+- [PowerShell](dns-operations-recordsets.md)
 
 このガイドでは、DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
 
@@ -236,7 +236,7 @@ A レコード セットを作成した後、`azure network dns record-set add-r
 
 ##関連項目
 
-[レコード セットとレコードの作成の概要](dns-getstarted-create-recordset-cli.md)<BR> [DNS ゾーンに対する操作の実行](dns-operations-dnszones-cli.md)<BR> [.NET SDK を使用した操作の自動化](dns-sdk.md)
+[Azure DNS へのドメインの委任](dns-domain-delegation.md)<BR> [DNS ゾーンの管理](dns-operations-dnszones-cli.md)<BR> [.NET SDK を使用した操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

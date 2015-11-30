@@ -79,7 +79,7 @@ Reliable Services との通信と、クライアントがサービス エンド�
 
 - [サービスとの通信](service-fabric-connect-and-communicate-with-services.md)
 - [サービス通信モデル](service-fabric-reliable-services-communication.md)
-- [Reliable Services フレームワークによって提供される既定の通信スタック](service-fabric-reliable-services-communication-default.md)
+- [Reliable Services フレームワークによって提供される既定の通信スタック](service-fabric-reliable-services-communication-remoting.md)
 - [Reliable Services の WCF ベースの通信スタック](service-fabric-reliable-services-communication-wcf.md)
 - [OWIN 自己ホストによる Microsoft Azure Service Fabric Web API サービスの概要 (VS 2015 RC)](service-fabric-reliable-services-communication-webapi.md)
 
@@ -87,4 +87,4 @@ Reliable Services はイベントとパフォーマンス カウンターを出�
 
 - [ステートフル Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

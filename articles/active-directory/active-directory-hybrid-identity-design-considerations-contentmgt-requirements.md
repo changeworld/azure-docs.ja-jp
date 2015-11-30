@@ -57,6 +57,6 @@
 [アクセス制御要件の決定](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
 
 ## 関連項目
-[設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-directory-overview.md)
+[設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

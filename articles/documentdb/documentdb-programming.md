@@ -759,7 +759,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 ストアド プロシージャ、トリガー、および UDF は、それぞれのスクリプトの呼び出し時のコンパイル コストを回避するために、暗黙的にバイト コード形式にプリコンパイルされます。これにより、高速なストアド プロシージャの呼び出しと小さなフットプリントが保証されます。
 
 ## クライアント SDK のサポート
-[Node.js](http://dl.windowsazure.com/documentDB/nodedocs/) クライアントに加え、DocumentDB では、[.NET](https://msdn.microsoft.com/library/azure/dn783362.aspx)、[Java](http://dl.windowsazure.com/documentdb/javadoc/)、[JavaScript](http://dl.windowsazure.com/documentDB/jsclientdocs/)、および [Python の SDK](http://dl.windowsazure.com/documentDB/pythondocs/) をサポートしています。ストアド プロシージャ、トリガー、および UDF は、これらの SDK を使用して作成および実行することもできます。次の例に、.NET クライアントを使用してストアド プロシージャを作成および実行する方法を示します。.NET の型がどのように JSON としてストアド プロシージャに渡され、読み取られるかに注目してください。
+[Node.js](http://dl.windowsazure.com/documentDB/nodedocs/) クライアントに加え、DocumentDB では、[.NET](https://msdn.microsoft.com/library/azure/dn948556.aspx)、[Java](http://dl.windowsazure.com/documentdb/javadoc/)、[JavaScript](http://dl.windowsazure.com/documentDB/jsclientdocs/)、および [Python の SDK](http://dl.windowsazure.com/documentDB/pythondocs/) をサポートしています。ストアド プロシージャ、トリガー、および UDF は、これらの SDK を使用して作成および実行することもできます。次の例に、.NET クライアントを使用してストアド プロシージャを作成および実行する方法を示します。.NET の型がどのように JSON としてストアド プロシージャに渡され、読み取られるかに注目してください。
 
 	var markAntiquesSproc = new StoredProcedure
 	{
@@ -792,7 +792,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 	Document createdDocument = await client.ExecuteStoredProcedureAsync<Document>(createdStoredProcedure.SelfLink, document, 1920);
 
 
-このサンプルは、[.NET SDK](https://msdn.microsoft.com/library/azure/dn783362.aspx) を使用してプリトリガーを作成し、このトリガーが有効なドキュメントを作成する方法を示しています。
+このサンプルは、[.NET SDK](https://msdn.microsoft.com/library/azure/dn948556.aspx) を使用してプリトリガーを作成し、このトリガーが有効なドキュメントを作成する方法を示しています。
 
 	Trigger preTrigger = new Trigger()
 	{
@@ -919,4 +919,4 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 -	[サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 -	[Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

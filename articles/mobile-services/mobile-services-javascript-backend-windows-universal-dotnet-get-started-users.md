@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="10/06/2015" 
+	ms.date="11/11/2015" 
 	ms.author="glenga"/>
 
 # ユニバーサル Windows 8.1 アプリへの認証の追加
@@ -80,4 +80,4 @@
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

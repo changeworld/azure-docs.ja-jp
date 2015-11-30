@@ -107,7 +107,7 @@ Microsoft は、お客様にサービスを提供する目的でのみデータ�
 
 #### データのセキュリティは保たれますか。 
 
-データは、Microsoft Azure サーバーに保管されます。Azure ポータルのアカウントの場合、アカウントの制限は [Azure のセキュリティ、プライバシー、コンプライアンスの文書](http://go.microsoft.com/fwlink/?linkid=392408)に記載されています。Visual Studio Online ポータルのアカウントの場合は、[Visual Studio Online のデータ保護のドキュメント](http://download.microsoft.com/download/8/E/E/8EE6A61C-44C2-4F81-B870-A267F1DF978C/MicrosoftVisualStudioOnlineDataProtection.pdf)が適用されます。
+データは、Microsoft Azure サーバーに保管されます。Azure ポータルのアカウントの場合、アカウントの制限は [Azure のセキュリティ、プライバシー、コンプライアンスの文書](http://go.microsoft.com/fwlink/?linkid=392408)に記載されています。Visual Studio Team Services ポータルのアカウントの場合は、[Visual Studio Team Services のデータ保護のドキュメント](http://download.microsoft.com/download/8/E/E/8EE6A61C-44C2-4F81-B870-A267F1DF978C/MicrosoftVisualStudioOnlineDataProtection.pdf)が適用されます。
 
 Microsoft のスタッフによるデータへのアクセスは制限されます。Microsoft は、Application Insights の使用をサポートするために必要であれば、ユーザーからアクセス許可を得た上でデータにアクセスします。
 
@@ -199,7 +199,7 @@ DeviceContext |Id、IP、ロケール、デバイス モデル、ネットワー
 ClientContext |OS、ロケール、言語、ネットワーク、ウィンドウの解像度
 Session | セッション ID
 ServerContext |コンピューター名、ロケール、OS、デバイス、ユーザー セッション、ユーザー コンテキスト、操作 
-Inferred |IP アドレス、タイムスタンプ、OS、ブラウザーからの地理的な場所
+Inferred |IP アドレス、タイムスタンプ、OS、ブラウザーからの地理的場所
 メトリック | メトリックの名前と値
 イベント | イベントの名前と値
 PageViews | URL とページ名または画面名
@@ -250,4 +250,4 @@ SDK diagnostics | トレース メッセージまたは例外
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

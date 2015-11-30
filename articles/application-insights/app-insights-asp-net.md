@@ -12,26 +12,20 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/13/2015" 
+	ms.date="11/17/2015" 
 	ms.author="awills"/>
 
 
 # ASP.NET 向けの Application Insights の設定
 
-*Application Insights はプレビュー段階です。*
-
-<a name="selector1"></a>
-
-[Visual Studio Application Insights](http://azure.microsoft.com/services/application-insights) は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。Application Insights は、アプリに SDK をインストールすることによって機能します。アプリに関するテレメトリが SDK から Application Insights サービスに送信されます。このサービスで、ユーザーはアプリの動作を分析および視覚化します。
-
 
 [AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
-Visual Studio でアプリに SDK を追加すると、サーバー要求、応答時間、およびエラーのグラフが表示されます。
+Application Insights SDK は実行中の Web アプリケーションから Azure ポータルにテレメトリを送信します。Azure ポータルにサインインすれば、アプリのパフォーマンスや使用状況をグラフで確認できます。
 
-![Example performance monitoring charts](./media/app-insights-asp-net/10-perf.png)
+![パフォーマンス監視グラフのサンプル](./media/app-insights-asp-net/10-perf.png)
 
-API を使用して、使用状況の詳細も監視できるようになります。
+特定の要求、例外、ログ イベントを調査し、相互に関連付けることもできます。API を利用してテレメトリを追加し、パフォーマンスと使用状況を詳しく監視できます。
 
 #### 開始する前に
 
@@ -108,7 +102,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 [検索の詳細についてはこちらを参照してください。](app-insights-diagnostic-search.md)
 
-* *関連するイベントがない場合* - [サーバー例外](../article/application-insights/app-insights-asp-net-exception-mvc.md)と[依存関係](../article/application-insights/app-insights-asp-net-dependencies.md)を設定します。
+* *関連するイベントがない場合 - * [サーバー例外](../article/application-insights/app-insights-asp-net-exception-mvc.md)と[依存関係](../article/application-insights/app-insights-asp-net-dependencies.md)を設定します。
 
 ### データが表示されない場合
 
@@ -174,4 +168,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

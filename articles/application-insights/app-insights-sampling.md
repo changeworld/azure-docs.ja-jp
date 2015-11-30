@@ -31,7 +31,7 @@
 
 ### ASP.NET サーバー
 
-1. プロジェクトの NuGet パッケージを Application Insights の最新の*プレリリース* バージョンに更新します。ソリューション エクスプ ローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択し、**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。 
+1. プロジェクトの NuGet パッケージを Application Insights の最新の*プレリリース* バージョンに更新します。ソリューション エクスプローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択して、**[プレリリースを含める]** をオンにし、Microsoft.ApplicationInsights.Web を検索します。 
 
 2. 次のスニペットを [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) に追加します。
 
@@ -55,7 +55,7 @@
 
 任意のサーバーからのサンプリング用に Web ページを構成できます。ASP.NET サーバーの場合は、クライアント側とサーバー側の両方を構成します。
 
-[Application Insights 用に Web ページを構成する](app-insights-javascript.md)場合は、Application Insights ポータルからスニペットを入手して、それを変更します。(ASP.NET では、\_Layout.cshtml 内にあります)。 `samplingPercentage: 10,` のような行をインストルメンテーション キーの前に挿入します。
+[Application Insights 用に Web ページを構成する](app-insights-javascript.md)場合は、Application Insights ポータルからスニペットを入手して、それを変更します(ASP.NET では、\_Layout.cshtml 内にあります)。 `samplingPercentage: 10,` のような行をインストルメンテーション キーの前に挿入します。
 
     <script>
 	var appInsights= ... 
@@ -164,4 +164,4 @@ Application Insights では、精度が問題のあるレベルまで低下す�
 
 >>>>>>> 36f8b905a3f60271ee6dc3a17c3ca431937287dc
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

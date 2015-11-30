@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/25/2015" 
+	ms.date="11/12/2015" 
 	ms.author="spelluru"/>
 
 # Data Factory のトラブルシューティング
@@ -202,7 +202,7 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 
 6. **EmpSQLTable** の **[データ スライス]** ブレードには、ブレード下部のリスト内のスライスに対して、すべての **[アクティビティの実行]** が表示されています。リスト内の [失敗] になっている **[アクティビティの実行]** をクリックします。
 
-	![Data Slice blade with active runs][image-data-factory-troubleshoot-dataslice-blade-with-active-runs]
+	![データ スライス ブレード、アクティビティの実行][image-data-factory-troubleshoot-dataslice-blade-with-active-runs]
 
 
 7. 選択したアクティビティの実行に対する **[アクティビティの実行の詳細]** ブレードに、エラーの詳細が表示されます。このシナリオでは、"**Invalid object name ‘emp‘**" と表示されます。
@@ -382,4 +382,4 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

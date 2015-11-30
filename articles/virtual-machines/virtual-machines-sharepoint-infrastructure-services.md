@@ -29,7 +29,7 @@ Microsoft Azure インフラストラクチャ サービスで、最初または
 
 自動作成されるこの環境は、クラウド専用の Azure Virtual Network 内のドメイン コントローラー、SQL Server、および SharePoint サーバーの 3 つのサーバーで構成されています。
 
-Azure プレビュー ポータルの Azure Marketplace の「[SharePoint 2013 non-HA Farm (SharePoint 2013 非高可用性ファーム)](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-nonha/)」項目を参照してください。これは、インターネットに接続された SharePoint Web サイトの基本的な開発/テスト ファームを作成します。詳細については、「[SharePoint サーバー ファームの作成](virtual-machines-sharepoint-farm-azure-preview.md)」を参照してください。
+Azure プレビュー ポータルの Azure Marketplace の「[SharePoint 2013 非 HA ファーム](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-nonha/)」項目を参照してください。これは、インターネットに接続された SharePoint Web サイトの基本的な開発/テスト ファームを作成します。詳細については、「[SharePoint サーバー ファームの作成](virtual-machines-sharepoint-farm-azure-preview.md)」を参照してください。
 
 Azure リソース マネージャーのテンプレートを使用することもできます。「[Deploy a three-server SharePoint farm (3 つのサーバーで構成された SharePoint ファームのデプロイ)](virtual-machines-workload-template-sharepoint.md#deploy-a-three-server-sharepoint-farm)」参照してください。
 
@@ -39,7 +39,7 @@ Azure リソース マネージャーのテンプレートを使用すること�
 
 この自動作成されるこの環境は、クラウド専用の Azure Virtual Network 内の 9 つのサーバーで構成されています。内訳は、ドメイン コントローラー 2 つ、SQL サーバー クラスター 3 つ、アプリケーション層の SharePoint サーバー 2 つ、Web 層の SharePoint サーバー 2 つです。
 
-Azure プレビュー ポータルの Azure Marketplace の「[SharePoint 2013 HA Farm (SharePoint 2013 高可用性ファーム)](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-ha/)」項目を参照してください。これは、インターネットに接続された SharePoint Web サイトの高可用性の開発/テスト ファームを作成します。詳細については、「[SharePoint サーバー ファームの作成](virtual-machines-sharepoint-farm-azure-preview.md)」を参照してください。
+Azure プレビュー ポータルの Azure Marketplace の「[SharePoint 2013 HA ファーム](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-ha/)」項目を参照してください。これは、インターネットに接続された SharePoint Web サイトの高可用性の開発/テスト ファームを作成します。詳細については、「[SharePoint サーバー ファームの作成](virtual-machines-sharepoint-farm-azure-preview.md)」を参照してください。
 
 Azure リソース マネージャーのテンプレートを使用することもできます。「[Deploy a nine-server SharePoint farm (9 つのサーバーで構成された SharePoint ファームのデプロイ)](virtual-machines-workload-template-sharepoint.md#deploy-a-nine-server-sharepoint-farm)」を参照してください。
 
@@ -69,4 +69,4 @@ Azure リソース マネージャーのテンプレートを使用すること�
 
 [Microsoft Azure での Office 365 ディレクトリ同期 (DirSync) のデプロイ](https://technet.microsoft.com/library/dn635310.aspx)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

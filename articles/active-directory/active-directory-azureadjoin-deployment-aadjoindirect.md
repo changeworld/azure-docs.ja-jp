@@ -1,11 +1,12 @@
 <properties 
 	pageTitle="Azure AD 参加の使用シナリオとデプロイに関する考慮事項 | Microsoft Azure" 
-	description="Azure AD に参加するために利用できるさまざまなデプロイ シナリオを示して説明します。" 
+	description="管理者がエンド ユーザー (従業員、学生、他のユーザー) のために Azure AD 参加を設定する方法を説明するトピック。また、Azure AD 参加を使用するさまざまな実際のシナリオについても説明します。" 
 	services="active-directory" 
 	documentationCenter="" 
 	authors="femila" 
 	manager="stevenpo" 
-	editor=""/>
+	editor=""
+	tags="azure-classic-portal"/>
 
 <tags 
 	ms.service="active-directory" 
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/21/2015" 
+	ms.date="11/17/2015" 
 	ms.author="femila"/>
 
 # Azure AD 参加の使用シナリオとデプロイに関する考慮事項 
@@ -53,7 +54,7 @@
 *	Windows 10 (Professional および Enterprise SKU)
 
 ### 管理者の作業
-* [デバイスの登録と MFA を設定する](active-directory-azureadjoin-setup.md)
+* [デバイスの登録の設定](active-directory-azureadjoin-setup.md)
 
 ### ユーザーの作業
 * [設定中に新しい Windows 10 デバイスを Azure AD 用に設定する](active-directory-azureadjoin-user-frx.md)
@@ -77,14 +78,18 @@
 
 ### 管理者の作業
 
-* [デバイスの登録と MFA を設定する](active-directory-azureadjoin-setup.md)
+* [デバイスの登録の設定](active-directory-azureadjoin-setup.md)
 
 ### ユーザーの作業
 * [個人の Windows 10 デバイスを組織に参加させる](active-directory-azureadjoin-personal-device.md)
 
 
 ## 追加情報
-* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md)
+* [エンタープライズ向け Windows 10: デバイスを仕事に使用する方法](active-directory-azureadjoin-windows10-devices-overview.md)
+* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-user-upgrade.md)
+* [Microsoft Passport 経由でのパスワードを使用しない ID の認証](active-directory-azureadjoin-passport.md)
+* [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
+* [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

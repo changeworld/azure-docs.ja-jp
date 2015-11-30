@@ -34,12 +34,12 @@
 
 最初に、Linux イメージを使用して Azure VM を作成します。
 
-VM を作成するには、Microsoft Azure 管理ポータルまたは Azure コマンド ライン インターフェイス (CLI) を使用できます。
+VM を作成するには、Azure ポータルまたは Azure コマンド ライン インターフェイス (CLI) を使用できます。
 
 ### Microsoft Azure 管理ポータル
 
-1. [Microsoft Azure 管理ポータル](http://manage.windowsazure.com)にサインインします。
-2. **[新規]**、**[コンピューティング]**、**[仮想マシン]**、**[簡易作成]** の順にクリックします。Linux イメージを選択します。
+1. [Azure ポータル](http://manage.windowsazure.com)にサインインします。
+2. **[新規]**、**[Compute]**、**[仮想マシン]**、**[簡易作成]** の順にクリックします。Linux イメージを選択します。
 3. パスワードを入力します。
 
 VM がプロビジョニングされたら、VM 名をクリックし、**[ダッシュボード]** をクリックします。**[SSH の詳細]** で、SSH エンドポイントを見つけます。
@@ -97,7 +97,7 @@ SSH を使用してログインしている状態で、次のコマンドを実�
 
 ## エンドポイントの追加
 
-1. [Microsoft Azure 管理ポータル][management-portal]に移動し、目的の VM を選択します。
+1. [Azure ポータル][management-portal]に移動し、目的の VM を選択します。
 
 	![仮想マシンの一覧][vmlist]
 
@@ -175,4 +175,4 @@ Ruby アプリケーションから Azure のサービスを使用する方法�
 
 [new-endpoint1]: ./media/virtual-machines-ruby-rails-web-app-linux/newendpoint1.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/03/2015"
+	ms.date="11/16/2015"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -44,6 +44,8 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 パスワード同期機能を初めて有効にすると、パスワードの初期同期を実行し、スコープ内のすべてのユーザーのパスワードをオンプレミス Active Directory から Azure Active Directory に同期します。パスワードをクラウドに同期するユーザーのセットを明示的に定義することはできません。その後は、オンプレミス ユーザーがパスワードを変更すると、パスワード同期機能は、ほとんどの場合は数分以内に、それを検出して変更されたパスワードを同期します。パスワードの同期が失敗すると、パスワード同期機能は自動的に再試行します。パスワード同期の試行中にエラーが発生した場合、イベント ビューアーにエラーが表示されます。
 
 パスワードの同期によって、現在ログイン中のユーザーが影響を受けることはありません。クラウド サービスにログインしているユーザーがオンプレミスのパスワードを変更した場合でも、クラウド サービスのセッションは中断せずに続けられます。ただし、クラウド サービスでユーザーの再認証が必要になったときは、すぐに新しいパスワードを提供する必要があります。この時点で、ユーザーは新しいパスワード、つまりその前にオンプレミス Active Directory からクラウドに同期されたパスワードを提供する必要があります。
+
+> [AZURE.NOTE]パスワード同期は、Active Directory でオブジェクトの種類がユーザーであるオブジェクトのみがサポートされます。オブジェクトの種類が INetOrgPerson であるオブジェクトはサポートされません。
 
 ### Azure AD Domain Services のパスワード同期のしくみ
 
@@ -117,7 +119,7 @@ config ファイルの末尾に configuration/runtime ノードがあります�
 
 ![csuser](./media/active-directory-aadsync-implement-password-synchronization/cspasswordsync.png)
 
-ユーザーについて、**[系列]** タブを選択し、少なくとも 1 つの同期規則の **[パスワード同期]** に **[True]** と表示されていることを確認します。既定の構成では、**[In from AD - User AccountEnabled]** という同期規則です。
+ユーザーについて、**[系列]** タブを選択し、少なくとも 1 つの同期規則の **[パスワード同期]** に **[True]** と表示されていることを確認します。既定の構成では、これは **[In from AD - User AccountEnabled]** という同期規則になります。
 
 オブジェクトのパスワード同期の詳細を確認するには、このページの下部にある **[ログ...]** をクリックします。過去 1 週間分、ユーザーのパスワード同期状態の履歴が表示されます。
 
@@ -156,4 +158,4 @@ config ファイルの末尾に configuration/runtime ノードがあります�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

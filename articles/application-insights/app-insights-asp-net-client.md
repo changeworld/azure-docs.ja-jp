@@ -18,13 +18,6 @@
 
 # Application Insights の設定: Web ページ
 
-*Application Insights はプレビュー段階です。*
-
-
-[Visual Studio Application Insights](http://azure.microsoft.com/services/application-insights) は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。
-
-
-<a name="selector1"></a>
 
 [AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
@@ -33,7 +26,7 @@ Web ページのパフォーマンスと使用状況について調べます。V
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](./media/app-insights-asp-net-client/16-page-views.png)
 
-[ASP.NET](app-insights-asp-net.md) または [Java](app-insights-java-get-started.md) Web アプリにサーバー テレメトリを既に設定している場合、クライアントとサーバーの両方の角度からの画像が与えられます。この 2 つのストリームは Application Insights ポータルで統合されます。
+[ASP.NET](app-insights-asp-net.md) または [Java](app-insights-java-get-started.md) Web アプリにサーバー利用統計情報を既に設定している場合、クライアントとサーバーの両方の角度からの画像が与えられます。この 2 つのストリームは Application Insights ポータルで統合されます。
 
 ## Application Insights リソースを開く
 
@@ -66,9 +59,9 @@ Web ページのパフォーマンスと使用状況について調べます。V
 
 ## <a name="run"></a>アプリを実行する
 
-Web アプリを実行し、しばらくの間、テレメトリを生成し、少し待ちます。**F5** キーを使って開発用コンピューターで実行するか、公開されたものをユーザーが利用することができます。
+Web アプリを実行し、しばらくの間、利用統計情報を生成し、少し待ちます。**F5** キーを使って開発用コンピューターで実行するか、公開し、ユーザーに利用させることができます。
 
-Web アプリが Application Insights に送信しているテレメトリを確認する場合、ブラウザーのデバッグ ツールを使用します (多くのブラウザーで **F12** です)。データは dc.services.visualstudio.com に送信されます。
+Web アプリが Application Insights に送信している利用統計情報を確認する場合、ブラウザーのデバッグ ツールを使用します (多くのブラウザーで **F12** です)。データは dc.services.visualstudio.com に送信されます。
 
 ## データを調査する
 
@@ -141,7 +134,7 @@ Web アプリが Application Insights に送信しているテレメトリを確
 
 ## 個別のページ ビュー イベントを調査する
 
-通常、Application Insights がページ ビューのテレメトリを分析し、お客様に対して表示されるのは、すべてのユーザーに関して平均した累積レポートのみです。ただし、デバッグのために個別のページ ビュー イベントを調べることもできます。
+通常、Application Insights がページ ビューの利用統計情報を分析し、お客様に対して表示されるのは、すべてのユーザーに関して平均した累積レポートのみです。ただし、デバッグのために個別のページ ビュー イベントを調べることもできます。
 
 [診断検索] ブレードで、[フィルター] を [ページ ビュー] に設定します。
 
@@ -159,7 +152,7 @@ Web アプリが Application Insights に送信しているテレメトリを確
 
 ## 使用状況の追跡 (カスタム)
 
-アプリケーションで、ユーザーが何をするのかを知る必要がありますか。 クライアントとサーバーのコードに呼び出しを挿入すると、Application Insights に独自のテレメトリを送信できます。たとえば、注文を作成したが完了していないユーザーの数、最も頻繁に発生する検証エラー、またはゲームの平均スコアを確認できます。
+アプリケーションで、ユーザーが何をするのかを知る必要がありますか。 クライアントとサーバーのコードに呼び出しを挿入すると、Application Insights に独自の利用統計情報を送信できます。たとえば、注文を作成したが完了していないユーザーの数、最も頻繁に発生する検証エラー、またはゲームの平均スコアを確認できます。
 
 * [カスタム イベントとメトリックの API の詳細情報][api]。
 * [API リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
@@ -200,4 +193,4 @@ Web アプリが Application Insights に送信しているテレメトリを確
 
  
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/03/2015"
+	ms.date="11/19/2015"
 	ms.author="jgao"/>
 
 # Azure CLI を使用した HDInsight での Hadoop クラスターの管理
@@ -51,7 +51,7 @@ Azure CLI はオープン ソースです。ソース コードは GitHub (<a hr
 
 HDInsight クラスターを作成するには、Azure リソース マネージャー (ARM)、および Azure BLOB ストレージ アカウントが必要です。HDInsight クラスターを作成するには、以下を指定する必要があります。
 
-- **Azure リソース グループ**: Data Lake Analytics アカウントは、Azure リソース グループ内で作成する必要があります。Azure リソース マネージャーを使用すると、アプリケーション内の複数リソースを 1 つのグループと見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 
+- **Azure リソース グループ**: Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。Azure リソース マネージャーを使用すると、アプリケーション内の複数リソースを 1 つのグループと見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 
 
 	サブスクリプションのリソース グループをリストするには:
 	
@@ -73,7 +73,7 @@ HDInsight クラスターを作成するには、Azure リソース マネージ
 
 	> [AZURE.NOTE]ストレージ アカウントは、HDInsight と共にデータ センターに配置する必要があります。ZRS ではテーブルがサポートされないため、ストレージ アカウントの種類を ZRS にすることはできません。
 
-	Azure プレビュー ポータルを使用した Azure ストレージ アカウントの作成については、[ストレージ アカウントの作成、管理、削除][azure-create-storageaccount]に関するページを参照してください。
+	Azure プレビュー ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成、管理、削除][azure-create-storageaccount]」をご覧ください
 	
 	既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
 	
@@ -84,7 +84,7 @@ HDInsight クラスターを作成するには、Azure リソース マネージ
 		-- Lists the keys for a Storage account
 		azure storage account keys list "<Storage Account Name>" -g "<Resource Group Name>"
 
-	Azure プレビュー ポータルを使用して情報を取得する方法の詳細については、[ストレージ アカウントの作成、管理、削除][azure-create-storageaccount]に関するページの「ストレージ アクセス キーの表示、コピーおよび再生成」セクションを参照してください。
+	Azure プレビュー ポータルを使用して情報を取得する方法の詳細については、[ストレージ アカウントの作成、管理、削除][azure-create-storageaccount]に関するページの「ストレージ アクセス キーを表示、コピー、再生成する」セクションを参照してください。
 
 - **(省略可能) 既定の BLOB コンテナー**: **azure hdinsight cluster create** コマンドは、コンテナーが存在しない場合、コンテナーを作成します。コンテナーを事前に作成する場合は、次のコマンドを使用できます。
 
@@ -114,6 +114,8 @@ HDInsight クラスターを作成するには、Azure リソース マネージ
 
 ##構成ファイルを使用するクラスターの作成
 通常は、HDInsight クラスターを作成し、そのクラスター上でジョブを実行してから、クラスターを削除してコストを削減します。コマンド ライン インターフェイスでは構成をファイルに保存することもできるため、クラスターを作成するたびにその構成を再利用できます。
+
+> [AZURE.NOTE]HBase のクラスターの種類では、メタストア構成は使用できません。
 
 	azure hdinsight cluster config create <file>
 
@@ -180,4 +182,4 @@ Azure PowerShell を使用して Hadoop クラスターのサイズを変更す�
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

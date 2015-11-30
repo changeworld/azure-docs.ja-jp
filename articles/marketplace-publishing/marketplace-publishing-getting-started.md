@@ -1,6 +1,6 @@
 <properties
    pageTitle="プランを作成して Marketplace にデプロイする方法の概要 |Microsoft Azure"
-   description="承認済みの Microsoft 販売者になり、仮想マシン イメージ、テンプレート、データ サービス、または開発者サービスを作成および Azure Marketplace にデプロイするために必要な手順を理解します。"
+   description="承認済みの Microsoft 販売者になり、仮想マシン イメージ、テンプレート、データ サービス、または開発者サービスを作成して Azure Marketplace にデプロイするために必要な手順を理解します。"
    services="marketplace-publishing"
    documentationCenter=""
    authors="HannibalSII"
@@ -16,21 +16,21 @@
    ms.date="10/09/2015"
    ms.author="hascipio" />
 
-# Microsoft Azure Marketplace へのプランの発行方法
-この記事は、販売者が、他の Azure のお客様およびパートナー様が購入および使用できるソリューション (1 つの仮想マシン イメージ、ソリューション テンプレート、またはデータ サービス) を作成および Azure Marketplace にデプロイする際に役立ちます。
+# Azure Marketplace へのプランの発行方法
+この記事は、販売者がソリューションを作成して Azure Marketplace にデプロイし、Azure の他の顧客やパートナーが購入および使用できるようにするのに役立ちます。
 
-まず、発行元は、会社がどのような種類のソリューションを提供するかを定義します。Azure Marketplace は、複数のさまざまな種類のソリューションに対応しており、正常に Marketplace に発行するには、種類ごとに若干異なる操作が必要になります。
+まず、発行元は、会社がどのような種類のソリューションを提供するかを定義します。Azure Marketplace では複数のソリューションがサポートされており、Azure Marketplace に正常に発行するには、各ソリューションでわずかに異なる作業を行う必要があります。
 
-**ソリューションの種類:**
+ソリューションの種類:
 
-- データ サービス
+- 仮想マシン イメージ
 - 開発者サービス
-- Virtual Machines
+- データ サービス
 - ソリューション テンプレート
 
-いくつかの手順は、異なる種類のソリューションで共通して使用されます。以下は、ソリューションの種類ごとに必要な手順の概要です。
+いくつかの手順は、異なる種類のソリューションで共通して使用されます。この記事では、ソリューションの種類ごとに必要な手順の概要を示します。
 
-**Azure Marketplace では、作業を開始する前に、事前承認が必要です。データ サービスの発行元に対しては適用されません。**
+> [AZURE.NOTE]Azure Marketplace では、作業を開始する前に、事前承認が必要です。これは、データ サービスの発行元に対しては適用されません。
 
 ||仮想マシン イメージ |開発者サービス |データ サービス |ソリューション テンプレート |
 |---|---|---|---|---|
@@ -44,17 +44,17 @@
 | **手順 4. プランを Marketplace にデプロイする** | [プランを Marketplace にデプロイする][link-pushprod] | [プランを Marketplace にデプロイする][link-pushprod] | [プランを Marketplace にデプロイする][link-pushprod] | [プランを Marketplace にデプロイする][link-pushprod] |
 
 ## サポート
-- [Get Support as a Publisher (発行元としてサポートを受ける)][suppt-general]
-- [Understanding Seller Insights reporting (Seller Insights レポートを理解する)][suppt-rpt-insights]
+- [Get support as a publisher (発行元としてサポートを受ける)][suppt-general]
+- [Understanding seller insights reporting (Seller Insights レポートを理解する)][suppt-rpt-insights]
 - [Understanding Payout reporting (支払いレポートを理解する)][suppt-rpt-payouts]
 - [Troubleshooting Common Publishing Problems in the Marketplace (Marketplace での発行に関してよくある問題のトラブルシューティング)][suppt-common]
 
 ## その他のリソース
-- 使用されるポータルの詳細については、[Portals You Will Need (必要なポータル)](marketplace-publishing-portals.md) を参照してください。
+- 使用されるポータルの詳細については、「[Portals You Will Need (必要なポータル)](marketplace-publishing-portals.md)」を参照してください。
 
-**Virtual Machines (仮想マシン)**
+**仮想マシン**
 
-- [Setting up Azure PowerShell (Azure PowerShell の設定)](marketplace-publishing-powershell-setup.md)
+- [Azure PowerShell の設定](marketplace-publishing-powershell-setup.md)
 - [Creating a VM Image on-premise (オンプレミスでの VM イメージの作成)](marketplace-publishing-vm-image-creation-on-premise.md)
 - [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines-windows-tutorial/)
 
@@ -75,4 +75,4 @@
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 [link-pushprod]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article" 
-	ms.date="08/01/2015"
+	ms.date="11/09/2015"
 	ms.author="glenga"/>
 
 
@@ -24,9 +24,9 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 <a name="ExistingModel"></a>
 ## 既存のデータベース モデルを調査する
 
-このチュートリアルでは、モバイル サービスによって作成されたデータベースを使用しますが、作成される既定のモデルは使用しません。代わりに、手元にある既存のアプリケーションを表す任意のモデルを手動で作成します。内部設置型データベースへの接続方法の詳細については、「[ハイブリッド接続を使用して Azure のモバイル サービスから内部設置型の SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)」を参照してください。
+このチュートリアルでは、モバイル サービスによって作成されたデータベースを使用しますが、作成される既定のモデルは使用しません。代わりに、手元にある既存のアプリケーションを表す任意のモデルを手動で作成します。オンプレミス データベースへの接続方法の詳細については、「[ハイブリッド接続を使用して Azure のモバイル サービスからオンプレミスの SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)」を参照してください。
 
-1. 開始するには、**Visual Studio 2013 Update 2** で Mobile Services サーバー プロジェクトを作成するか、または [Azure 管理ポータル](http://manage.windowsazure.com)で、サービスの [モバイル サービス] タブでダウンロード可能なクイック スタート プロジェクトを使用します。このチュートリアルでは、サーバー プロジェクト名が **ShoppingService** という名前であると仮定します。
+1. 開始するには、**Visual Studio 2013 Update 2** で Mobile Services サーバー プロジェクトを作成するか、または [Microsoft Azure 管理ポータル](http://manage.windowsazure.com)で、サービスの [モバイル サービス] タブでダウンロード可能なクイック スタート プロジェクトを使用します。このチュートリアルでは、サーバー プロジェクト名が **ShoppingService** という名前であると仮定します。
 
 2. **Customer.cs** ファイルを **Models** フォルダーに作成して、次の実装を使用します。**System.ComponentModel.DataAnnotations** へのアセンブリ参照をプロジェクトに追加する必要があります。
 
@@ -147,7 +147,6 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 
         using System.ComponentModel.DataAnnotations.Schema;
         using Microsoft.WindowsAzure.Mobile.Service.Tables;
-        using System.ComponentModel.DataAnnotations;
         using System;
 
 4. その後、次のようにこれらの追加のプロパティを、それぞれのクラスに追加します。
@@ -615,4 +614,4 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 
 次の手順では、サービスにアクセスするクライアント アプリケーションを作成できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

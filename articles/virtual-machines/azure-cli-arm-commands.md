@@ -1252,21 +1252,23 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 
 パラメーターのオプション:
-	-h、--help                                   利用状況情報の出力
-	-v、--verbose                                詳細出力を使用 --json JSON 出力の使用
-	-g、--resource-group <resource-group>        リソース グループ名
-	-n、--name <name>                            パブリック IP の名前
-	-l、--location <location>                    場所
-	-d、--domain-name-label <domain-name-label>  ドメイン名のラベル。
-	これにより、DNS が <domain-name-label>.<location>.cloudapp.azure.com に設定されます。
-	-a, --allocation-method <allocation-method> 割り当て方法 [静的][動的]
-	-i, --idletimeout <idletimeout>             アイドル タイムアウト (分)
-	-f, --reverse-fqdn <reverse-fqdn>           FQDN の反転
-	-t, --tags <tags>                           タグの一覧。
-	複数指定できます。"名前 = 値" の形式です。
-	名前は必須で、値は省略可能です。
-	たとえば、-t tag1=value1;tag2
-	-s, --subscription <subscription>           サブスクリプション識別子
+
+	-h, --help                                   output usage information
+	-v, --verbose                                use verbose output
+	--json                                       use json output
+	-g, --resource-group <resource-group>        the name of the resource group
+	-n, --name <name>                            the name of the public ip
+	-l, --location <location>                    the location
+	-d, --domain-name-label <domain-name-label>  the domain name label.
+	This set DNS to <domain-name-label>.<location>.cloudapp.azure.com
+	-a, --allocation-method <allocation-method>  the allocation method [Static][Dynamic]
+	-i, --idletimeout <idletimeout>              the idle timeout in minutes
+	-f, --reverse-fqdn <reverse-fqdn>            the reverse fqdn
+	-t, --tags <tags>                            the list of tags.
+	Can be multiple. In the format of "name=value".
+	Name is required and value is optional.
+	For example, -t tag1=value1;tag2
+	-s, --subscription <subscription>            the subscription identifier
 <br>
 
 	network public-ip set [options] <resource-group> <name>
@@ -1758,4 +1760,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
 
-<!----HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Active Directory Connect (Azure AD Connect) の前提条件 | Microsoft Azure"
+   pageTitle="Azure Active Directory Connect の前提条件 | Microsoft Azure"
    description="ランディング ページやほとんどの検索結果に表示されるアーティクルの説明"
    services="active-directory"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="11/02/2015"
+   ms.date="11/16/2015"
    ms.author="andkjell;billmath"/>
 
 # Azure Active Directory Connect (Azure AD Connect) の前提条件
@@ -33,6 +33,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 - AD スキーマのバージョンとフォレストの機能レベルは、Windows Server 2003 以降である必要があります。ドメイン コント ローラーは、スキーマとフォレスト レベルの要件を満たしていれば、任意のバージョンを実行できます。
 - **パスワード ライトバック**機能を使用する予定がある場合、ドメイン コントローラーは (最新の SP が適用された) Windows Server 2008 以降にインストールされている必要があります。
 - Azure AD Connect は、Windows Server 2008 以降にインストールする必要があります。このサーバーをドメイン コントローラーにすることができます。Express 設定を使用する場合はメンバー サーバーにすることもできます。カスタム設定を使用する場合、サーバーはスタンドアロンにすることもでき、ドメインに参加する必要はありません。
+- Small Business Server または Windows Server Essentials には、Azure AD Connect をインストールできません。サーバーは Windows Server Standard 以上を使用する必要があります。
 - **パスワード同期**機能を使用する場合、サーバーは Windows Server 2008 R2 SP1 以降にする必要があります。
 - Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。これらのサーバーで、リモート インストール用の Windows リモート管理を有効にする必要があります。
 - Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされ、サービスのサービス アカウントがローカル コンピューターに作成されます。SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール プロセスで別のバージョンの SQL Server を指定する必要があります。Azure AD Connect では、SQL Server 2008 (SP4) から SQL Server 2014 まで、すべてのエディションの Microsoft SQL Server がサポートされています。
@@ -59,7 +60,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
     </system.net>
 ```
 
-このテキストは、ファイルの末尾に入力する必要があります。このコードの &lt;PROXYADRESS&gt; は、実際のプロキシ IP アドレスまたはホスト名を表します。 - プロキシがアクセスできる URL を制限している場合は、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/ja-JP/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL をプロキシで開く必要があります。
+このテキストは、ファイルの末尾に入力する必要があります。このコードの &lt;PROXYADRESS&gt; は、実際のプロキシ IP アドレスまたはホスト名を表します。 - プロキシがアクセスできる URL を制限している場合は、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/zh-CN/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL をプロキシで開く必要があります。
 
 **その他**
 
@@ -82,7 +83,7 @@ Azure AD Connect は、PowerShell と .Net 4.5.1 に依存しています。Wind
 
 ## Azure AD Connect でサポートされるコンポーネント
 
-Azure AD Connect によって Azure AD Connect のインストール先にインストールされるコンポーネントの一覧を次に示します。この一覧は、基本的な高速インストール用です。[同期サービスのインストール］ ページで異なる SQL Server を使用することを選択した場合、SQL Express LocalDB はローカルにインストールされません。
+Azure AD Connect によって Azure AD Connect のインストール先にインストールされるコンポーネントの一覧を次に示します。この一覧は、基本的な高速インストール用です。[同期サービスのインストール] ページで異なる SQL Server を使用することを選択した場合、SQL Express LocalDB はローカルにインストールされません。
 
 - Microsoft SQL Server 2012 のコマンド ライン ユーティリティ
 - Microsoft SQL Server 2012 Native Client
@@ -113,6 +114,6 @@ AD FS または Web アプリケーション サーバーを実行するコン�
 
 
 ## 次のステップ
-「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

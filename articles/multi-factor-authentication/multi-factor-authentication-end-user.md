@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/24/2015" 
+	ms.date="11/17/2015" 
 	ms.author="billmath"/>
 
 
@@ -45,8 +45,8 @@
 [サインイン エクスペリエンス](multi-factor-authentication-end-user-signin.md)|電話またはアプリなどのさまざまな方法を使用したサインインで想定されることを示します。
 [設定を変更する](multi-factor-authentication-end-user-manage-settings.md)|電話番号や優先登録方法など、設定の変更方法を示します。
 [アプリ パスワードに関するヘルプ](multi-factor-authentication-end-user-app-passwords.md)| アプリ パスワードの作成と使用に関する情報があります。
-[モバイル アプリの使用](multi-factor-authentication-azure-authenticator.md)|Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/ja-jp/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、[IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で利用できます。
+[モバイル アプリの使用](multi-factor-authentication-azure-authenticator.md)|Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/ja-JP/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、[IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で利用できます。
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

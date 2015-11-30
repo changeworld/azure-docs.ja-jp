@@ -83,4 +83,4 @@ Fabrikam では、クラウドと同期する属性の一部が不要である�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

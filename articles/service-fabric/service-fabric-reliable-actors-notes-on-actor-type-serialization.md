@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/11/2015"
+   ms.date="11/13/2015"
    ms.author="vturecek"/>
 
 # Service Fabric 高信頼アクター型のシリアル化に関する留意事項
@@ -55,7 +55,7 @@ public class Voicemail
 
 ```csharp
 
-public class VoiceMailActor : Actor<VoicemailBox>, IVoiceMail
+public class VoiceMailActor : StatefulActor<VoicemailBox>, IVoiceMail
 {
 ...
 
@@ -82,4 +82,4 @@ public class VoicemailBox
 
 ```
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

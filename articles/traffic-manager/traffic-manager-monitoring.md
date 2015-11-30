@@ -4,7 +4,7 @@
    services="traffic-manager"
    documentationCenter=""
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="traffic-manager"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
+   ms.date="11/12/2015"
    ms.author="joaoma" />
 
 # Traffic Manager の監視について
@@ -108,15 +108,11 @@ Azure Traffic Manager は、管理ポータルで、プロファイルとエン�
 
 ## 関連項目
 
-[Traffic Manager について](traffic-manager-overview.md)
+[プロファイルの作成](traffic-manager-manage-profiles.md)
 
-[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)
-
-[Cloud Services](http://go.microsoft.com/fwlink/p/?LinkId=314074)
-
-[Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
+[エンドポイントの追加](traffic-manager-endpoints.md)
 
 [Azure Traffic Manager での機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -55,6 +55,8 @@ App Service プランは 1 つのリソース グループに複数割り当て�
 その後、新しいアプリのための App Service プランを選択または作成できます。
   
  ![][createASP]
+
+新しい App Service プランを作成するには、**[+ 新規作成]** をクリックし、**App Service プラン**名を入力し、適切な**場所**を選択します。**[価格レベル]** をクリックし、サービスに適切な価格レベルを選択します。**[すべて表示]** を選択して、**Free** や **Shared** などの価格オプションをさらに表示します。価格レベルを選択したら、**[選択]** をクリックします。
  
 ## アプリを別の App Service プランに移動する
 
@@ -98,4 +100,4 @@ App Service プランは、アプリ間で共有できる一連の機能と容�
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

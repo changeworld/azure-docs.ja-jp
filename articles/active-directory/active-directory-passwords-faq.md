@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/08/2015" 
+	ms.date="11/16/2015" 
 	ms.author="asteen"/>
 
 # パスワード管理に関するよく寄せられる質問 (FAQ)
 次に示すのは、パスワード管理に関連するあらゆる事に対してよく寄せられる質問です。
 
-回答がわからない疑問がある場合や、発生している特定の問題の解決方法を探している場合は、そのようなトピックが以下で取り上げられているかを確認してください。 トピックがここで取り上げられていなくても心配はいりません。 [Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)で取り上げられていない質問については、マイクロソフトにご連絡ください。できる限り早く回答いたします。
+回答がわからない疑問がある場合や、発生している特定の問題の解決方法を探している場合は、そのようなトピックが以下で取り上げられているかを確認してください。 トピックがここで取り上げられていなくても心配はいりません。 [Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)で取り上げられていない質問については、マイクソフトにご連絡ください。できる限り早く回答いたします。
 
 この FAQ は、次のセクションに分かれています。
 
@@ -59,7 +59,7 @@
 
  - **Q: ユーザーが登録されたと見なされるのはどのタイミングですか。**
  
- > **A:** ユーザーは、N 個以上の認証方法が定義された時点で登録されたと見なされます。ここで N は、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で設定した認証方法の必要数を示します。詳細については、「ユーザー パスワードのリセット ポリシーのカスタマイズ」を参照してください。
+ > **A:** ユーザーは、N 個以上の認証方法が定義された時点で登録されたと見なされます。ここで N は、[Azure 管理ポータル](https://manage.windowsazure.com)で設定した認証方法の必要数を示します。詳細については、「ユーザー パスワードのリセット ポリシーのカスタマイズ」を参照してください。
 
 
 ## パスワード リセット
@@ -187,21 +187,20 @@
 
 <br/> <br/> <br/>
 
-**その他のリソース**
+## パスワードのリセットに関するドキュメントへのリンク
+Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-
-* [パスワード管理とは](active-directory-passwords.md)
-* [パスワード管理のしくみ](active-directory-passwords-how-it-works.md)
-* [パスワード管理の概要](active-directory-passwords-getting-started.md)
-* [パスワード管理のカスタマイズ](active-directory-passwords-customize.md)
-* [パスワード管理のベスト プラクティス](active-directory-passwords-best-practices.md)
-* [パスワード管理レポートで運用情報を把握する方法](active-directory-passwords-get-insights.md)
-* [パスワード管理のトラブルシューティング](active-directory-passwords-troubleshoot.md)
-* [詳細情報](active-directory-passwords-learn-more.md)
-* [Azure AD でのパスワード管理](https://msdn.microsoft.com/library/azure/dn510386.aspx)
+* [**自分のパスワードのリセット**](active-directory-passwords-update-your-own-password) - システムのユーザーとして自分のパスワードをリセットまたは変更する方法について説明します。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
+* [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
+* [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
+* [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
+* [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。
+* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
+* [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
 
 
 [001]: ./media/active-directory-passwords-faq/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-faq/002.jpg "Image_002.jpg"
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

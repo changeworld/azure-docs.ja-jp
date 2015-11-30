@@ -13,12 +13,28 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="10/18/2015"
+   ms.date="11/13/2015"
    ms.author="yuemlu"/>
 
 # Azure ゲスト OS 
 
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## 11 月のゲスト OS
+
+| セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
+| MS15-112 | [3104517] | Internet Explorer 用の累積的なセキュリティ更新プログラム | 4\.26、3.33、2.45 | 2015 年 11 月 10 日 |
+| MS15-114 | [3100213] | リモートでのコード実行に対処する Windows Journal 用のセキュリティ更新プログラム | 4\.26、3.33、2.45 | 2015 年 11 月 10 日 |
+| MS15-115 | [3105864] | リモートでのコード実行に対処する Microsoft Windows 用のセキュリティ更新プログラム | 4\.26、3.33、2.45 | 2015 年 11 月 10 日 |
+| MS15-117 | [3101722] | 特権の昇格に対処する NDIS 用のセキュリティ更新プログラム | 4\.26、3.33、2.45 | 2015 年 11 月 10 日 |
+| MS15-118 | [3104507] | 特権の昇格に対処する .NET Framework 用のセキュリティ更新プログラム | 4\.26、3.33、2.45 | 2015 年 11 月 10 日 |
+| MS15-119 | [3104521] | 特権の昇格に対処する Winsock 用のセキュリティ更新プログラム | 4\.26、3.33、2.45 | 2015 年 11 月 10 日 |
+| MS15-120 | [3102939] | サービス拒否攻撃に対処する IPSec 用のセキュリティ更新プログラム | 4\.26、3.33、2.45 | 2015 年 11 月 10 日 |
+| MS15-121 | [3081320] | スプーフィングに対処する Schannel 用のセキュリティ更新プログラム | 4\.26、3.33、2.45 | 2015 年 11 月 10 日 |
+| MS15-122 | [3105256] | セキュリティ機能の迂回に対処する Kerberos 用のセキュリティ更新プログラム | 4\.26、3.33、2.45 | 2015 年 11 月 10 日 |
+| マイクロソフト セキュリティ アドバイザリ | [3097966] | デジタル証明書が誤って公開された場合、スプーフィングを許す可能性がある | 4\.26、3.33、2.45 | 2015 年 11 月 10 日 |
+
 
 ## 10 月のゲスト OS
 
@@ -182,6 +198,16 @@
 | 該当なし | [2999802][2999802] | 点線ではなく実線が Windows で印刷される | 4\.15、3.22、2.34 | 2015 年 1 月 13 日 |
 | 該当なし | [2896881][2896881] | Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い | 4\.15、3.22、2.34 | 2015 年 1 月 13 日 |
 
+[3104517]: http://support.microsoft.com/kb/3104517
+[3100213]: http://support.microsoft.com/kb/3100213
+[3105864]: http://support.microsoft.com/kb/3105864
+[3101722]: http://support.microsoft.com/kb/3101722
+[3104507]: http://support.microsoft.com/kb/3104507
+[3104521]: http://support.microsoft.com/kb/3104521
+[3102939]: http://support.microsoft.com/kb/3102939
+[3081320]: http://support.microsoft.com/kb/3081320
+[3105256]: http://support.microsoft.com/kb/3105256
+[3097966]: http://support.microsoft.com/kb/3097966
 
 [3096441]: http://support.microsoft.com/kb/3096441
 [3089659]: http://support.microsoft.com/kb/3089659
@@ -225,7 +251,7 @@
 
 [MS15-034]: https://technet.microsoft.com/library/security/MS15-034
 
-[3042553]: https://support.microsoft.com/ja-JP/kb/3042553/
+[3042553]: https://support.microsoft.com/zh-CN/kb/3042553/
 
 [3034682]: http://support.microsoft.com/kb/3034682
 [3036220]: http://support.microsoft.com/kb/3036220
@@ -305,4 +331,4 @@
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

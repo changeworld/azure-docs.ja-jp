@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="10/23/2015"
+   	ms.date="11/17/2015"
    	ms.author="larryfr"/>
 
 #Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成
@@ -23,13 +23,13 @@
 
 Azure CLI は、Azure サービスを管理できる、プラットフォームに依存しないコマンドライン ユーティリティです。Azure リソース管理テンプレートと共に使用して、HDInsight クラスター、関連するストレージ アカウント、その他のサービスを作成できます。
 
-Azure リソース管理テンプレートは、__リソース グループ__とグループ内のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。 このテンプレート ベースの手法では、1 つのテンプレートで HDInsight に必要なすべてのリソースを定義でき、グループに変更を適用する__デプロイメント__によって、グループに対する変更をまとめて管理できます。
+Azure リソース管理テンプレートは、__リソース グループ__とグループ内のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。 このテンプレート基準の手法では、1 つのテンプレートで HDInsight に必要なすべてのリソースを定義でき、グループに変更を適用する__デプロイメント__を介して、グループに対する変更をまとめて管理できます。
 
 このドキュメントの手順では、Azure CLI とテンプレートを使用して新しい HDInsight クラスターを作成するプロセスを示します。
 
 > [AZURE.IMPORTANT]この文書の手順では、HDInsight クラスターにワーカー ノードの既定数 (4) を使用します。クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
 >
-> ノードのサイズと関連コストに関する詳細については、「[HDInsight 料金](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+> ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 ##前提条件
 
@@ -68,9 +68,9 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
 
     * __location__: リソースが作成されるデータ センター。許可される場所の一覧については、__azuredeploy.json__ ファイルの `location` セクションを参照してください。
     * __clusterName__: HDInsight クラスターの名前。この名前は一意にする必要があります。一意にしなければデプロイメントは失敗します。
-    * __clusterStorageAccountName__: HDInsight クラスターに対して作成される Azure ストレージ アカウントの名前。この名前は一意にする必要があります。一意にしなければデプロイメントは失敗します。
+    * __clusterStorageAccountName__: HDInsight に対して作成される Azure Storage のアカウント名。この名前は一意にする必要があります。一意にしなければデプロイメントは失敗します。
     * __clusterLoginPassword__: クラスターの管理者ユーザーのパスワード。これは Web サイトやクラスターの REST サービスのアクセスに使用されるので、安全なパスワードにする必要があります。
-    * __sshUserName__: このクラスターに作成する最初の SSH ユーザーの名前。SSH はこのアカウントでクラスターにリモート アクセスするために使用されます。この名前は一意にする必要があります。クラスターで既に使用されているアカウントの名前にすることはできません。無効な名前には root、storm、hbase などがあります。
+    * __sshUserName__: このクラスターに作成する最初の SSH ユーザーの名前。SSH はこのアカウントでクラスターにリモート アクセスするために使用されます。
     * __sshPublicKey__: SSH 公開キーを必要とするテンプレートを使用している場合、この行に公開キーを追加する必要があります。パブリック キーを生成し、それを使用する方法については、次の記事を参照してください。
 
         * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
@@ -121,4 +121,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

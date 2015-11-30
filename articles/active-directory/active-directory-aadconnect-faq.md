@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/10/2015"
+	ms.date="11/16/2015"
 	ms.author="billmath"/>
 
 # Azure Active Directory Connect の FAQ
@@ -27,9 +27,9 @@
 
 インストール ウィザードを使用して Azure AD Connect をインストールする場合にのみサポートされます。サイレント モードでの無人インストールはサポートされていません。
 
-## 高速インストール
+**Q: ドメインに接続できないフォレストがあります。Azure AD Connect をインストールにはどうすればよいですか。**
 
-## カスタム インストール
+このフィードバックは既に認識されています。今後のリリースでサポートされる予定です。
 
 ## ネットワーク
 **Q: ファイアウォールやネットワーク デバイスなど、ネットワーク上で接続を開ける最大時間を制限するものがあります。Azure AD Connect を使用する場合、クライアント側のタイムアウトしきい値はどのくらいにすればいいでしょうか。**
@@ -40,13 +40,46 @@
 
 [こちら](active-directory-aadconnect-o365-certs.md)の記事に記載されているガイダンスに従って、証明書を更新して解決してください。
 
+**Q: SLD (シングル ラベル ドメイン) はサポートされていますか。**
+
+いいえ、Azure AD Connect は、SLD を使用するオンプレミスのフォレスト/ドメインはサポートしていません。
+
+**Q: 「ドット形式」の NetBios 名はサポートされていますか。**
+
+いいえ、Azure AD Connect では、NetBios 名にピリオド (.) が含まれているオンプレミスのフォレスト/ドメインはサポートしていません。
+
+## 環境
+
+**Q: Azure AD Connect のインストール後のサーバー名の変更はサポートされていますか。**
+
+いいえ。サーバー名を変更すると、同期エンジンが SQL データベースに接続できなくなり、サービスを開始できなくなります。
+
+## ID データ
+
+**Q: Azure AD の UPN (userPrincipalName) 属性がオンプレミスの UPN と一致しません。なぜでしょうか。**
+
+次の記事を参照してください。
+
+- [Office 365、Azure、Intune などの組織アカウントのユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない ](https://support.microsoft.com/ja-JP/kb/2523192)
+- [オンプレミス ユーザー アカウントの UPN を SSO が有効な異なるドメイン サフィックスに更新した後、Azure Active Directory に変更が同期されない](https://support.microsoft.com/ja-JP/kb/2669550)
+
+## カスタム構成
+
+**Q: Azure AD Connect 用の PowerShell コマンドレットのドキュメントはどこにありますか。**
+
+このサイトに記載されているコマンドレットを除き、Azure AD Connect で使用されている PowerShell コマンドレットは、ユーザーによる使用をサポートしていません。
+
+**Q: サービス マネージャーの [サーバーのエクスポート/インポート] を使用して、サーバー間で構成を移動できますか。**
+
+いいえ。このオプションはすべての構成設定を取得しないため、使用すべきではありません。代わりに、2 台目のサーバーでウィザードを使用して基本構成を作成し、同期ルール エディターを使用して PowerShell スクリプトを生成し、サーバー間でカスタム ルールを移動してください。
+
 ## トラブルシューティング
 
 **Q: Azure AD Connect に関するヘルプを参照する方法を教えてください。**
 
 [Microsoft サポート技術情報 (KB) の検索](https://www.microsoft.com/ja-JP/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
 
-- Azure AD Connect のサポートに関する一般的な障害対応の技術的な解決策について、Microsoft サポート技術情報 (KB) を検索してください。
+- Azure AD Connect のサポートに関する一般的な破損時補償の技術的な解決策について、Microsoft サポート技術情報 (KB) を検索してください。
 
 [Microsoft Azure Active Directory フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=WindowsAzureAD)
 
@@ -57,4 +90,4 @@
 
 - このリンクを使用して、Azure ポータルからサポートを受けることができます。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

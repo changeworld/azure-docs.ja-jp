@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric Explorer を使用したクラスターの視覚化"
+   pageTitle="Service Fabric Explorer を使用したクラスターの視覚化 | Microsoft Azure"
    description="Service Fabric Explorer は、Microsoft Azure Service Fabric クラスター内のクラウド アプリケーションとノードを検査および管理するための便利な GUI ツールです。"
    services="service-fabric"
    documentationCenter=".net"
@@ -13,55 +13,73 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/05/2015"
+   ms.date="10/30/2015"
    ms.author="jesseb"/>
 
 # Service Fabric Explorer を使用したクラスターの視覚化
 
-Service Fabric Explorer は、Microsoft Azure Service Fabric クラスター内のクラウド アプリケーションとノードを検査および管理するための視覚的なツールです。Service Fabric Explorer は、ローカル デプロイメント クラスターと Azure クラスターの両方に接続できます。Service Fabric PowerShell コマンドレットについては、「**次のステップ**」を参照してください。
+Service Fabric Explorer は、Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。Service Fabric Explorer は、Service Fabric クラスター内で直接ホストされるので、ローカル クラスターが実行されているかどうかに関係なく、いつでも使用できます。
 
-> [AZURE.NOTE]Azure での Service Fabric クラスターの作成機能は、まだ用意されていません。
+## Service Fabric Explorer への接続
 
-## Service Fabric Explorer の概要
+[開発環境を準備する](service-fabric-get-started.md)手順に従った場合は、http://localhost:19080/Explorer に移動することで、ローカル クラスター上で Service Fabric Explorer を起動できます。
 
-ローカル デプロイメント環境は、「[set up your Service Fabric development environment (Service Fabric デプロイメント環境の設定)](service-fabric-get-started.md)」の手順に従って設定されている必要があります。
+>[AZURE.NOTE]Internet Explorer (IE) と Service Fabric Explorer を併用してリモート クラスターを管理する場合は、IE の一部の設定を構成する必要があります。**[ツール] -> [互換表示設定]** に移動し、**[イントラネット サイトを互換表示で表示する]** チェック ボックスをオフにして、すべての情報が正しく読み込まれるようにします。
 
-ローカルのインストール パス (%Program Files%\\Microsoft SDKs\\Service Fabric\\Tools\\ServiceFabricExplorer\\ServiceFabricExplorer.exe) から Service Fabric Explorer を実行します。ツールはローカル デプロイメント クラスター (存在する場合) に自動的に接続します。クラスターに関する次のような情報が表示されます。
+## Service Fabric Explorer のレイアウトについて
 
-- クラスターで実行されているアプリケーション
-- クラスターのノードに関する情報
-- アプリケーションとノードで発生した正常性イベント
-- クラスター内のアプリケーションの負荷
-- アプリケーションのアップグレード状態の監視
+左側のツリーを使用して、Service Fabric Explorer 内を移動できます。ツリーのルートでは、クラスター ダッシュボードにクラスターの概要 (アプリケーションとノードの正常性の概要など) が表示されます。
 
-![Service Fabric クラスターとデプロイ済みアプリケーションの視覚的な表現][servicefabricexplorer]
+![Service Fabric Explorer のクラスター ダッシュボード][sfx-cluster-dashboard]
 
-重要な視覚化の 1 つに、クラスター マップがあります。クラスター マップは、(たとえば **[Onebox/ローカル クラスター]** をクリックすると) クラスターのダッシュボードに表示されます。クラスター マップには、一連のアップグレード ドメインと障害ドメインが表示され、どのノードがどのドメインにマッピングされているかが示されます。Service Fabric の主要な概念については、「[Service Fabric の技術概要](service-fabric-technical-overview.md)」を参照してください。
+クラスターには、2 つのサブツリーが含まれています。1 つはアプリケーション、もう 1 つはノードのサブツリーです。
 
-![クラスター マップには、各ノードが所属しているアップグレード ドメインと障害ドメインが表示されます。][clustermap]
+### アプリケーションとサービスの表示
 
+アプリケーション ビューでは、Service Fabric の論理階層 (アプリケーション、サービス、パーティション、レプリカ) 内を移動できます。
 
-## アプリケーションとサービスの表示
+次の例では、**MyApp** アプリケーションは、**MyStatefulService** と **WebSvcService** の 2 つのサービスで構成されています。**MyStatefulService** はステートフルであるため、1 つのプライマリ レプリカと 2 つのセカンダリ レプリカがあるパーティションが 1 つ含まれています。これに対して、WebSvcService はステートレスであり、インスタンスが 1 つだけ含まれています。
 
-Service Fabric Explorer を使用して、クラスターで実行されているアプリケーションについて確認することができます。**[アプリケーション ビュー]** を展開して、アプリケーション、サービス、パーティション、レプリカに関する詳細情報を表示します。
+![Service Fabric Explorer のアプリケーション ビュー][sfx-application-tree]
 
-以下の図は、**"fabric:/Stateful1Application"** という名前のアプリケーションに、**"fabric:/Stateful1Application/MyFrontEnd"** という 1 つのステートレス サービスと、**"fabric:/Stateful1Application/Stateful1"** という 1 つのステートフル サービスがあることを示しています。ステートレス サービスにはパーティションが 1 つあり、1 つのレプリカが **Node.4** で実行されています。ステートフル サービスにはパーティションが 2 つあり、それぞれに 3 つずつレプリカがあって、複数の異なるノードで実行されています。
+ツリーの各レベルでは、メイン ウィンドウにその項目の関連情報が表示されます。たとえば、特定のサービスの正常性状態とバージョンを確認できます。
 
-![Service Fabric クラスターで実行jされているアプリケーションの表示][applicationview]
+![Service Fabric Explorer のメイン ウィンドウ][sfx-service-essentials]
 
-アプリケーション、サービス、パーティション、またはレプリカをクリックすると、そのエンティティの詳細情報が表示されます。以下の図は、ステートフル サービスのいずれかのプライマリ レプリカを表すサービス レプリカの正常性ダッシュボードを示しています。表示される情報は、レプリカのロール、レプリカが実行されているノード、リッスンしているアドレス、ディスク上のファイルの場所、正常性イベントなどです。
+### クラスターのノードの表示
 
-![Service Fabric レプリカに関する詳細情報][replicadetails]
+ノード ビューには、クラスターの物理的なレイアウトが表示されます。特定のノードについて、そのノードでコードがデプロイされているアプリケーション、正確に言うと、そこで現在実行されているレプリカを調べることができます。
+
+## Service Fabric Explorer を使用した操作の実行
+
+Service Fabric Explorer では、クラスター内のノード、アプリケーション、サービスに対する操作を簡単に呼び出すことができます。
+
+たとえば、アプリケーション インスタンスを削除するには、左側のツリーでアプリケーションを選択し、[操作]、[アプリケーションの削除] の順に選択します。
+
+![Service Fabric Explorer でのアプリケーションの削除][sfx-delete-application]
+
+多くの操作は破壊的であるため、操作を実行する前に確認を求められます。
+
+>[AZURE.NOTE]Service Fabric Explorer を使用して実行できるすべての操作は、PowerShell または REST API を使用して実行し、自動化することもできます。
+
 
 
 ## リモート Service Fabric クラスターへの接続
 
-リモートの Service Fabric クラスターを表示するには、**[接続]** をクリックして **[Service Fabric Cluster への接続]** ダイアログを表示します。クラスターの **ServiceFabric エンドポイント**を入力し、**[接続]** をクリックします。Service Fabric エンドポイントは一般的に、ポート 19000 でリッスンしているクラスター サービスの公開名です。
+Service Fabric Explorer は Web ベースであり、クラスター内で実行されるので、クラスターのエンドポイントがわかっており、エンドポイントにアクセスするための十分なアクセス許可があれば、どのブラウザーからでもアクセスできます。
 
-![リモート Service Fabric クラスターへの接続の設定][connecttocluster]
+### リモート クラスターの Service Fabric Explorer エンドポイントの検出
 
+クラスター エンドポイントは、Service Fabric ポータルから検出できます。特定のクラスターの Service Fabric Explorer に到達するには、次のようにポート 19007 でそのエンドポイントに接続します。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+http://&lt;your-cluster-endpoint&gt;:19007
+
+### セキュリティで保護されたクラスターへの接続
+
+Service Fabric クラスターに接続するために、クライアントに証明書の提示を要求することによって、Service Fabric クラスターへのアクセスを制御できます。
+
+セキュリティで保護されたクラスターで Service Fabric Explorer に接続しようとすると、アクセスを取得するために、ブラウザーから証明書の提示を求められます。
+
 ## 次のステップ
 
 - [テスト可能性の概要](service-fabric-testability-overview.md)。
@@ -74,5 +92,9 @@ Service Fabric Explorer を使用して、クラスターで実行されてい�
 [connecttocluster]: ./media/service-fabric-visualizing-your-cluster/connecttocluster.png
 [replicadetails]: ./media/service-fabric-visualizing-your-cluster/replicadetails.png
 [servicefabricexplorer]: ./media/service-fabric-visualizing-your-cluster/servicefabricexplorer.png
+[sfx-cluster-dashboard]: ./media/service-fabric-visualizing-your-cluster/SfxClusterDashboard.png
+[sfx-application-tree]: ./media/service-fabric-visualizing-your-cluster/SfxApplicationTree.png
+[sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
+[sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

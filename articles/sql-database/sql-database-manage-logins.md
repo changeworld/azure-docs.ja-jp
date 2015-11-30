@@ -79,7 +79,7 @@ CREATE LOGIN login1 WITH password='<ProvidePassword>';
 
 #### 新しいログインの使用
 
-作成したログインを使用して Microsoft Azure SQL Database に接続するには、まず ``CREATE USER`` コマンドを使用して、各ログインにデータベースレベルの権限を付与する必要があります。詳細については、[ログインに対するデータベースレベルの権限の付与](https://msdn.microsoft.com/library/ee336235.aspx#DatabasePerms)に関するトピックを参照してください。
+作成したログインを使用して Microsoft Azure SQL Database に接続するには、まず ``CREATE USER`` コマンドを使用して、各ログインにデータベースレベルの権限を付与する必要があります。詳細については、後述する「**ログインのデータベース アクセスの許可**」セクションを参照してください。
 
 一部のツールでは表形式データ ストリーム (TDS) の実装方法が異なるため、接続文字列でログインに Azure SQL Database サーバー名を付加することが必要になる場合があります。その際には、``<login>@<server>`` という表記を使用します。この場合は、``@`` 記号を使用してログインと Azure SQL Database サーバー名を区切ります。たとえば、ログイン名が **login1** であり、Azure SQL Database サーバーの完全修飾名が **servername.database.windows.net** である場合、接続文字列の username パラメーターは ****login1@servername** にする必要があります。この制限により、ログイン名として選択できるテキストが限定されます。詳細については、「[CREATE LOGIN (Transact-SQL)](https://msdn.microsoft.com/library/ms189751.aspx)」を参照してください。
 
@@ -169,4 +169,4 @@ SELECT * FROM sys.databases;
 
 [Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md) [Azure Active Directory Authentication の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

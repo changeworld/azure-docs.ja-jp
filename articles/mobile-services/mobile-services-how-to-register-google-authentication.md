@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="08/27/2015" 
+	ms.date="11/15/2015" 
 	ms.author="glenga"/>
 
 # Mobile Services での Google ログイン用のアプリケーションの登録
@@ -34,10 +34,13 @@
 
 6. **[Credentials]** タブで、**[Add credentials]**、**[OAuth 2.0 client ID]** の順にクリックした後、**[Web application]** を選択します。
 
-7. **[承認済みの JAVASCRIPT 生成元]** にモバイル サービスの URL を入力し、**[承認済みのリダイレクト URI]** で生成された URL をモバイル サービスの URL の末尾に `/login/google` を付けたものと置き換えて、**[クライアント ID を生成]** をクリックします。
+7. **[Authorized JavaScript Origins]** にモバイル サービスの URL を入力し、**[Authorized Redirect URI]** で生成された URL を次のいずれかの URL 形式に置き換えて、**[Create client ID]** をクリックします。
+ 
+	+ **.NET バックエンド**: `https://<mobile_service>.azure-mobile.net/signin-google`
+	+ **JavaScript バックエンド**: `https://<mobile_service>.azure-mobile.net/login/google` 
 
-	>[AZURE.NOTE]Visual Studio を使用して Azure に発行された .NET バックエンド モバイル サービスについては、リダイレクト URL は、ユーザーのモバイル サービスの URL の末尾に .NET サービスとしてパス _signin-google_ を付加したものです。例: `https://todolist.azure-mobile.net/signin-google`
-	
+	 >[AZURE.NOTE]Mobile Services バックエンドの種類として、正しいリダイレクト URL パスの形式を使用してください。これが正しくない場合、認証は失敗します。
+
 8. 次の画面で、表示されているクライアント ID とクライアント シークレットの値を書き留めます。
 
     > [AZURE.IMPORTANT]クライアント シークレットは、重要なセキュリティ資格情報です。このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
@@ -56,4 +59,4 @@
 [Azure Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

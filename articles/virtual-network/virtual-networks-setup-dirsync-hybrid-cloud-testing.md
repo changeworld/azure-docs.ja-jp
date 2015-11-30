@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/10/2015" 
+	ms.date="11/13/2015" 
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定
@@ -32,11 +32,11 @@
 - Azure でホストされているクロスプレミス仮想ネットワーク (TestVNET)。
 - サイト間 VPN 接続
 - Office 365 FastTrack 試用版のサブスクリプション。
-- TestVNET 仮想ネットワーク内の DirSync サーバーとセカンダリ ドメイン コントローラー。
+- TestVNET 仮想ネットワーク内の Azure AD Connect ツールとセカンダリ ドメイン コントローラーを実行する DirSync サーバー。
 
 この構成を基盤や共通の出発点にして以下を実行できます。
 
-- パスワード同期を使用して、オンプレミスの Active Directory ドメインとの同期に依拠する Office 365 のアプリケーションを開発とテストする。
+- パスワード同期を使用して、オンプレミスの Active Directory ドメインとの同期に依拠する Office 365 のアプリケーションを開発、テストする。
 - このクラウド ベースの IT ワークロードのテストを実行する。
 
 このハイブリッド クラウド テスト環境を設定する手順は、大きく次の 3 つのフェーズに分かれています。
@@ -63,18 +63,17 @@ Office 365 FastTrack 試用版を使用し始めるには、仮の会社名と M
 
 次に、新しい Microsoft アカウントにサインアップします。****http://outlook.com** に移動し、user123@outlook.com のような電子メール アドレスを使用してアカウントを作成します。このアカウントで Office 365 FastTrack 試用版にサインアップすることになります。
 
-次に、新しい Office 365 FastTrack 試用版にサインアップします。
+次に、新しい Office 365 Enterprise E3 試用版にサインアップします。
 
 1.	CORP\\User1 アカウント資格情報で CLIENT1 にログオンします。
-2.	Internet Explorer を開き、****http://fasttrack.office.com** にアクセスします。
-3.	**[Getting started with FastTrack]** をクリックします。
-4.	[Getting Started with FastTrack] ページで、**[First, sign up for an Office 365 trial]** の下の **[For enterprises, sign up here]** をクリックします。
-5.	手順 1. のページで、**[Business email address]** に新しい Microsoft アカウントを指定してページに入力してから、**[Next]** をクリックします。
-6.	手順 2. のページの最初のフィールドに初期の Office 365 アカウントの名前を入力し、その後に仮の会社名とパスワードを入力します。作成された電子メール アドレス (user123@contoso123.onmicrosoft.com など) とパスワードを安全な場所に記録します。フェーズ 3 の Active Directory Sync ツール構成ウィザードを完了するときにこの情報が必要になります。**[次へ]** をクリックします。
-7.	手順 3. のページで、テキスト メッセージを利用可能な携帯電話やスマート フォンの電話番号を入力し、**[Text me]** をクリックします。
-8.	電話でテキスト メッセージを受信した後に、認証コードを入力してから、**[Create my account]** をクリックします。 
-9.	Office 365 でアカウントが作成されたら、**[You're ready to go]** をクリックします。
-10.	これで、Office 365 ポータルのメインのページが表示されます。上部のリボンで、**[管理者]**、**[Office 365]** の順にクリックします。Office 365 管理センター ページが表示されます。CLIENT1 でこのページを開いたままにします。
+2.	Internet Explorer を開き、****https://go.microsoft.com/fwlink/p/?LinkID=403802** にアクセスします。
+3.	Office 365 Enterprise E3 試用版にサインアップする手順を実行します。
+
+**ビジネス用電子メール アドレス**の入力を求められたら、新しい Microsoft アカウントを指定します。
+
+ID の作成を求めるメッセージが表示されたら、初期の Office 365 アカウントの名前を入力し、その後に仮の会社名とパスワードを入力します。作成された電子メール アドレス (user123@contoso123.onmicrosoft.com など) とパスワードを安全な場所に記録します。この情報は、フェーズ 3 で Azure AD Connect の構成を完了するために必要になります。
+
+完了したら、Office 365 ポータルのメインのページが表示されます。上部のリボンで、**[管理者]**、**[Office 365]** の順にクリックします。Office 365 管理センター ページが表示されます。CLIENT1 でこのページを開いたままにします。
 
 現在の構成は次のようになります。
 
@@ -85,13 +84,13 @@ Office 365 FastTrack 試用版を使用し始めるには、仮の会社名と M
 まず、ローカル コンピューターで Azure PowerShell コマンド プロンプトから次のコマンドを実行して、DS1 用に Azure 仮想マシンを作成します。これらのコマンドを実行する前に、変数の値を入力し、< and > の文字を削除します。
 
 	$ServiceName="<The cloud service name for your TestVNET virtual network>"
-	$cred1=Get-Credential â€“Message "Type the name and password of the local administrator account for DS1."
-	$cred2=Get-Credential â€“UserName "CORP\User1" â€“Message "Now type the password for the CORP\User1 account."
+	$cred1=Get-Credential -Message "Type the name and password of the local administrator account for DS1."
+	$cred2=Get-Credential -UserName "CORP\User1" -Message "Now type the password for the CORP\User1 account."
 	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name DS1 -InstanceSize Medium -ImageName $image
 	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain "CORP" -DomainUserName "User1" -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain "corp.contoso.com"
 	$vm1 | Set-AzureSubnet -SubnetNames TestSubnet
-	New-AzureVM â€“ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
+	New-AzureVM -ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
 
 次に、DS1 仮想マシンに接続します。
 
@@ -115,16 +114,6 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 
 	Add-WindowsFeature NET-Framework-Core
 
-次に、DS1 にディレクトリ同期をインストールします。
-
-1.	Internet Explorer を実行し、アドレス バーに「****http://go.microsoft.com/fwlink/?LinkID=278924**」と入力してから、Enter キーを押します。dirsync.exe を実行するように求められたら、**[保存]** の横にある矢印をクリックしてから、**[名前を付けて保存]**、**[保存]** の順にクリックして、ファイルをダウンロード フォルダーに保存します。ツールのインストールの詳細については、「[ディレクトリ同期ツールをインストールまたはアップグレードする](http://technet.microsoft.com/library/jj151800)」をご覧ください。
-2.	**ダウンロード** フォルダーを開き、**dirsync** ファイルを右クリックして、**[管理者として実行]** をクリックします。
-3.	Active Directory 同期のセットアップ ウィザードの [ようこそ] ページで、**[次へ]** をクリックします。 
-4.	[ライセンス条項] ページで、**[同意する]** をクリックしてから、**[次へ]** をクリックします。
-5.	[インストール先フォルダーの選択] ページで **[次へ]** をクリックします。インストールが完了するまで数分かかる場合があります。
-6.	[完了] ページで、**[構成ウィザードを今すぐ開始する]** をオフにしてから、**[完了]** をクリックします。
-7.	スタート画面で、**user1** をクリックして、**[サインアウト]** をクリックします。
-
 次に、Office 365 FastTrack 試用版でディレクトリ同期を有効にします。
 
 1.	CLIENT1 の **[Office 365 管理センター]** ページの左側ウィンドウで、**[ユーザー]**、**[アクティブなユーザー]** の順にクリックします。
@@ -141,20 +130,19 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 
 各 Windows PowerShell コマンドを実行すると、新しいユーザーのパスワードの入力を求められます。これらのパスワードを記録し、安全な場所に記録します。この情報は後で必要になります。
 
-次に、DS1 のディレクトリ同期を構成します。
+次に、DS1 に Azure AD Connect ツールをインストールして構成します。
 
-1.	CORP\\User1 アカウントで DS1 にログインします。
-2.	**[スタート]** 画面で、「**ディレクトリ同期**」と入力します。
-3.	**[ディレクトリ同期の構成]** を右クリックし、**[管理者として実行]** をクリックします。これによって、構成ウィザードが開始されます。
-4.	[ようこそ] ページで **[次へ]** をクリックします。
-5.	[Microsoft Azure Active Directory の資格情報] ページで、フェーズ 2 で Office 365 FastTrack 試用版をセットアップするときに作成した初期アカウントの電子メール アドレスとパスワードを入力します。[次へ] をクリックします。 
-6.	[Active Directory の資格情報] ページで、**[ユーザー名]** に「**CORP\\User1**」と入力し、**[パスワード]** に User1 アカウントのパスワードを入力します。**[次へ]** をクリックします。
-7.	[混合環境] ページで、**[混合環境を有効にする]** を選択してから、**[次へ]** をクリックします。
-8.	[パスワード同期] ページで、**[パスワード同期を有効にする]** を選択してから、**[次へ]** をクリックします。
-9.	[構成] ページが表示されます。構成が完了したら、**[次へ]** をクリックします。
-10.	[完了] ページで、**[完了]** をクリックします。メッセージが表示されたら、**[OK]** をクリックします。
+1.	Internet Explorer を実行し、**アドレス** バーに「****https://www.microsoft.com/download/details.aspx?id=47594**」と入力してから、Enter キーを押します。
+2.	Microsoft Azure AD Connect のセットアップ プログラムを実行します。
+3.	デスクトップで、**[Azure AD Connect]** をダブルクリックします。
+4.	**[ようこそ]** ページで、**[ライセンス条項とプライバシーに関する声明に同意します]** を選択し、**[続行]** をクリックします。
+5.	**[簡単設定]** ページで、**[簡単設定を使う]** をクリックします。
+6.	**[Azure AD に接続]** ページで、フェーズ 2 で Office 365 FastTrack 試用版をセットアップするときに作成した初期アカウントの電子メール アドレスとパスワードを入力します。**[次へ]** をクリックします。
+7.	**[Azure AD に接続]** ページで、**[ユーザー名]** に「**CORP\\User1**」と入力し、**[パスワード]** に User1 アカウントのパスワードを入力します。[次へ] をクリックします。
+8.	**[構成の準備完了]** ページで、設定を確認し、**[インストール]** をクリックします。
+9.	**[構成が完了しました]** ページで、**[終了]** をクリックします。
 
-次に、CORP ドメインのユーザー アカウントが Office 365 に同期されていることを確認します。同期が始まるまで数時間かかることがあります。
+次に、CORP ドメインのユーザー アカウントが Office 365 に同期されていることを確認します。同期が始まるまで数分かかることがあります。
 
 CLIENT1 の **[Active Directory 同期のセットアップと管理]** ページで、このページの手順 6. の **[ユーザー]** リンクをクリックします。ディレクトリ同期が正常に実行された場合、次のような内容が表示されます。
 
@@ -197,7 +185,4 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 
 [Azure インフラストラクチャ サービス実装ガイドライン](../virtual-machines/virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

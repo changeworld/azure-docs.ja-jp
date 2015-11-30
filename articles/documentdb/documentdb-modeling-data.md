@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/24/2015" 
+	ms.date="11/19/2015" 
 	ms.author="ryancraw"/>
 
 #DocumentDB のデータのモデル化#
@@ -392,4 +392,4 @@ Azure DocumentDB でのインデックスのチューニングの詳細につい
 最後に、マルチテナント アプリケーションのデータのモデル化とシャーディングのガイダンスについては、「[Scaling a Multi-Tenant Application with Azure DocumentDB](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx)」(Azure DocumentDB でのマルチテナント アプリケーションの拡張) を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Service Fabric の概要 | Microsoft Azure" 
-   description="アプリケーションがマイクロサービスで構成されている Service Fabric を紹介します。Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。" 
+   description="拡張性と復元性を提供する多くのマイクロサービスでアプリケーションが構成されている Service Fabric を紹介します。Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。" 
    services="service-fabric" 
    documentationCenter=".net" 
    authors="msfussell" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA" 
-   ms.date="08/25/2015"
+   ms.date="11/18/2015"
    ms.author="mfussell"/>
 
 # Service Fabric の概要
@@ -89,13 +89,15 @@ Service Fabric を使用すると、次の操作を実行できます。
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 
-* 詳細については、[技術的概要](service-fabric-technical-overview.md)に関するページを参照してください。
+* 詳細: 
+	* [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
+	* [技術概要](service-fabric-technical-overview.md)
 * Service Fabric [開発環境](service-fabric-get-started.md)の設定  
-* サービスの[フレームワーク](service-fabric-choose-framework.md)の選択
+* サービスに[プログラミング モデル フレームワーク](service-fabric-choose-framework.md)を選択する。
 
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

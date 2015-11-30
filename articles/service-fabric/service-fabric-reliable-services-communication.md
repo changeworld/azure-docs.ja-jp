@@ -3,9 +3,9 @@
    description="Reliable Service 通信モデルの概要。サービスのリッスン開始、エンドポイントの解決、サービス間の通信などが含まれます。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="BharatNarasimman"
+   authors="vturecek"
    manager="timlt"
-   editor=""/>
+   editor="BharatNarasimman"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,34 +13,21 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="08/27/2015"
-   ms.author="bharatn@microsoft.com"/>
+   ms.date="11/17/2015"
+   ms.author="vturecek@microsoft.com"/>
 
-# Reliable Service 通信モデルの概要
+# Reliable Service 通信モデル
 
-Reliable Services プログラミング モデルにより、サービス作成者はサービス エンドポイントを公開するために使用する通信メカニズムを指定でき、クライアントがサービス エンドポイントを検出して、通信するために使用できる抽象も提供されます。
+プラットフォームとしての Service Fabric は、サービス間の通信にまったく依存しません。UDP から HTTP まで、あらゆるプロトコルとスタックに対応します。サービスの通信方法の選択は、サービス開発者に委ねられています。Reliable Services アプリケーション フレームワークは、構築済みの通信スタックと、カスタム通信スタックを展開するためのツール (クライアントがサービス エンドポイントを検出して通信するために使用できる抽象化など) を提供します。
 
-## サービス通信スタックの設定
+## サービス通信のセットアップ
 
-Reliable Services API より、サービス作成者は、サービスで次のメソッドを実装して、選択した通信スタックをサービスにプラグインできます。
-
-```csharp
-
-protected override ICommunicationListener CreateCommunicationListener()
-{
-    ...
-}
-
-```
-
-`ICommunicationListener` インターフェイスは、サービスの通信リスナーによって実装される必要があるインターフェイスを定義します。
+Reliable Services API では、サービス通信に単純なインターフェイスを使用します。サービスのエンドポイントを開くには、このインターフェイスを実装します。
 
 ```csharp
 
 public interface ICommunicationListener
 {
-    void Initialize(ServiceInitializationParameters serviceInitializationParameters);
-
     Task<string> OpenAsync(CancellationToken cancellationToken);
 
     Task CloseAsync(CancellationToken cancellationToken);
@@ -49,7 +36,46 @@ public interface ICommunicationListener
 }
 
 ```
-サービスに必要なエンドポイントは、[サービス マニフェスト](service-fabric-application-model.md)を介して、Endpoints セクションに記述します。
+
+次に、サービス基本クラスのメソッド オーバーライドで通信リスナー実装を返すことで、これを追加します。
+
+ステートレスの場合、次のようになります。
+
+```csharp
+protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+```
+
+ステートフルの場合、次のようになります。
+
+```csharp
+protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
+```
+
+どちらの場合も、サービスが複数のリスナーを簡単に使用できるように、リスナーのコレクションを返します。たとえば、HTTP リスナーと別の WebSocket リスナーがあるとします。各リスナーが名前を取得すると、名前のコレクションになります。クライアントがサービス インスタンスまたはサービス パーティションのリッスン アドレスを要求したときに、アドレスの組み合わせが JSON オブジェクトとして表されます。
+
+ステートレス サービスでは、オーバーライドによって ServiceInstanceListeners のコレクションが返されます。ServiceInstanceListener には、ICommunicationListener を作成する関数が含まれ、これに名前を付けます。ステートフル サービスでは、オーバーライドによって ServiceReplicaListeners のコレクションが返されます。ServiceReplicaListener は、セカンダリ レプリカで ICommunicationListener を開くこともできるため、ステートレスの対応する要素とは若干異なります。これにより、サービスで複数の通信リスナーを使用できるだけでなく、セカンダリ レプリカで要求を受け入れるリスナーと、プライマリ レプリカでリッスンするだけのリスナーを指定することもできます。
+
+たとえば、プライマリで RPC 呼び出しのみを受け取る ServiceRemotingListener と、セカンダリ レプリカで読み取り要求を受け取る 2 つ目のカスタム リスナーを使用できます。
+
+```csharp
+protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
+{
+    return new[]
+    {
+        new ServiceReplicaListener(initParams =>
+            new MyCustomListener(initParams),
+            "customReadonlyEndpoint",
+            true),
+
+        new ServiceReplicaListener(initParams =>
+            new ServiceRemotingListener<IMyStatefulInterface2>(initParams, this),
+            "rpcPrimaryEndpoint",
+            false)
+    };
+}
+```
+
+最後に、Endpoints セクションの下の[サービス マニフェスト](service-fabric-application-model.md)に、サービスに必要なエンドポイントを記述します。
 
 ```xml
 
@@ -100,13 +126,13 @@ var listenAddress = new Uri(
 
 ```
 
+`ICommunicationListener` の記述方法の詳しいチュートリアルについては、「[OWIN 自己ホストによる Microsoft Azure Service Fabric Web API の概要](service-fabric-reliable-services-communication-webapi.md)」をご覧ください。
+
 ## クライアントとサービス間の通信
 Reliable Services API は、サービスと通信するクライアントの作成を簡単にする次の抽象化を提供します。
 
-## ServicePartitionResolver
-ServicePartitionResolver クラスは、クライアントが実行時に Service Fabric サービスのエンドポイントを特定するために役立ちます。
-
-> [AZURE.TIP]サービスのエンドポイントを特定するプロセスは、Service Fabric の用語で、サービス エンドポイント解決と呼ばれます。
+### ServicePartitionResolver
+このユーティリティ クラスは、クライアントが実行時に Service Fabric サービスのエンドポイントを特定するのに役立ちます。サービスのエンドポイントを特定するプロセスは、Service Fabric の用語で、サービス エンドポイント解決と呼ばれます。
 
 ```csharp
 
@@ -129,7 +155,7 @@ Task<ResolvedServicePartition> ResolveAsync(ResolvedServicePartition previousRsp
 
 一般に、クライアント コードでは `ServicePartitionResolver` を直接操作する必要はありません。それが作成されると、Reliable Service の API の、内部でリゾルバーを使用し、サービスとのクライアント通信に役立つ他のヘルパークラスに渡されます。
 
-## CommunicationClientFactory
+### CommunicationClientFactory
 `ICommunicationClientFactory` は、ServiceFabric サービスと通信できるクライアントを生成する通信クライアント ファクトリによって実装される基本インターフェイスを定義します。CommunicationClientFactory の実装は、クライアントが通信しようとする Service Fabric で使用される通信スタックによって異なります。Reliable Service の API は、この `ICommunicationClientFactory` インターフェイスの基本実装を提供し、すべての通信スタックに共通するタスク (`ServicePartitionResolver` を使用して、サービス エンドポイントを特定するなど) を実行する CommunicationClientFactoryBase<TCommunicationClient> を提供します。クライアントは、通常 CommunicationClientFactoryBase 抽象クラスを実装して、通信スタック固有ロジックを処理します。
 
 ```csharp
@@ -152,30 +178,30 @@ public class MyCommunicationClient : ICommunicationClient
 
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>
 {
-   protected override void AbortClient(MyCommunicationClient1 client)
-   {
-      throw new NotImplementedException();
-   }
+    protected override void AbortClient(MyCommunicationClient client)
+    {
+        throw new NotImplementedException();
+    }
 
-   protected override Task<MyCommunicationClient> CreateClientAsync(ResolvedServiceEndpoint endpoint, CancellationToken cancellationToken)
-   {
-      throw new NotImplementedException();
-   }
+    protected override Task<MyCommunicationClient> CreateClientAsync(string endpoint, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
 
-   protected override bool ValidateClient(MyCommunicationClient clientChannel)
-   {
-      throw new NotImplementedException();
-   }
+    protected override bool ValidateClient(MyCommunicationClient clientChannel)
+    {
+        throw new NotImplementedException();
+    }
 
-   protected override bool ValidateClient(ResolvedServiceEndpoint endpoint, MyCommunicationClient client)
-   {
-      throw new NotImplementedException();
-   }
+    protected override bool ValidateClient(string endpoint, MyCommunicationClient client)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 ```
 
-## ServicePartitionClient
+### ServicePartitionClient
 `ServicePartitionClient` は CommunicationClientFactory (および内部で、ServicePartitionResolver) を使用し、一般的な通信および Service Fabric の一時的な例外の再試行を処理することによって、サービスとの通信に役立ちます。
 
 ```csharp
@@ -192,7 +218,7 @@ public async Task<TResult> InvokeWithRetryAsync<TResult>(
 
 ```
 
-一般的な使用パターンは、次のようになります
+一般的な使用パターンは、次のようになります。
 
 ```csharp
 
@@ -222,11 +248,12 @@ var result = await myServicePartitionClient.InvokeWithRetryAsync(
 ```
 
 ## 次のステップ
-* [Reliable Services フレームワークによって提供される既定の通信スタック](service-fabric-reliable-services-communication-default.md)
+* [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
 
-* [Reliable Services フレームワークによって提供される WCF ベースの通信スタック](service-fabric-reliable-services-communication-wcf.md)
+* [Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)
 
-* [WebAPI 通信スタックを使用する Reliable Services API を使用したサービスの作成](service-fabric-reliable-services-communication-webapi.md)
+* [Reliable Services との WCF 通信](service-fabric-reliable-services-communication-wcf.md)
+
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

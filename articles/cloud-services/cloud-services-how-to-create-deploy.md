@@ -29,7 +29,7 @@ Azure ポータルには、クラウド サービスを作成してデプロイ�
 
 このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、**[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。この方法を使うと、Azure ポータルに、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。クラウド サービスの作成時にデプロイする準備が整っている場合は、**[カスタム作成]** を使用して作成とデプロイを同時に実行できます。
 
-> [AZURE.NOTE]Visual Studio Online (VSO) からクラウド サービスを発行する予定の場合は、[簡易作成] を使用した後、**[クイック スタート]** またはダッシュボードから VSO 発行を設定する必要があります。詳細については、[Continuous Delivery to Azure by Using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信に関するページ)][TFSTutorialForCloudService]を参照するか、**[クイック スタート]** ページのヘルプを参照してください。
+> [AZURE.NOTE]Visual Studio Team Services (VSTS) からクラウド サービスを発行する予定の場合は、[簡易作成] を使用した後、**[クイック スタート]** またはダッシュボードから VSTS 発行を設定する必要があります。詳細については、「[Visual Studio Team Services を使用した Azure への継続的な配信に関するページ][TFSTutorialForCloudService]」を参照するか、**[クイック スタート]** ページのヘルプを参照してください。
 
 ## 概念
 Azure のクラウド サービスとしてアプリケーションをデプロイするには、3 つのコンポーネントが必要です。
@@ -153,4 +153,4 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 * [クラウド サービスを管理する](cloud-services-how-to-manage.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="08/26/2015"
+   ms.date="11/18/2015"
    ms.author="juliako"/>
 
 
@@ -59,7 +59,7 @@ Azure SDK 2.7 に含まれているサインインの機能強化は、Visual St
 ####重大な変更
 
 - このバージョンのツールを使用する場合は、以前の **Storm** プロジェクトをアップグレードする必要があります。詳細については、[このブログ](http://go.microsoft.com/fwlink/?LinkId=619108)をご覧ください。
-- Visual Studio Web Express はサポートされなくなりました。詳細については、[このブログ](http://go.microsoft.com/fwlink/?LinkId=619108)をご覧ください。
+- Visual Studio Web Express はサポートされなくなりました。詳細については、[この投稿](http://go.microsoft.com/fwlink/?LinkId=619108)をご覧ください。
 
 ###Azure App Service ツール
 
@@ -112,7 +112,7 @@ Visual Studio 用の **Azure Data Factory ツール**が導入されています
 - **デプロイ済みのエンティティの参照と相互作用のためのサーバー エクスプローラーとの統合**: サーバー エクスプローラーを利用して、デプロイ済みの Data Factory と対応するエンティティを参照します。デプロイ済みの Data Factory や任意のエンティティ (パイプライン、リンクされたサービス、データセット) をプロジェクトにインポートします。 
 - **スキーマ検証と豊富な Intellisense による JSON 編集**: 豊富な Intellisense とスキーマ検証を使用して Data Factory エンティティの JSON ドキュメントを効率的に構成し、編集します。 
 - **マルチ環境の公開**: 開発環境、テスト環境、運用環境に対して、環境ごとに個別の構成ファイルを作成し、作成したパイプラインを公開します。
-- **Pig、Hive、.Net ベースのデータ処理のサポート**: Data Factory プロジェクトでの Pig スクリプトと Hive スクリプトをサポートします。.Net アクティビティを管理するための C# プロジェクトの参照をサポートします。
+- **Pig、Hive、.Net ベースのデータ処理のサポート**: Data Factory プロジェクトにおける Pig スクリプトと Hive スクリプトをサポートします。.Net アクティビティを管理するための C# プロジェクトの参照をサポートします。
 
 ##Azure SDK for .NET 2.7.1
 
@@ -159,4 +159,4 @@ LightSwitch プロジェクトはこのリリースと互換性がありませ�
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

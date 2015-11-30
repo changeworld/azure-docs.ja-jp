@@ -1,26 +1,17 @@
 <properties
-	pageTitle="Azure Backup の概要 | Microsoft Azure"
-	description="この記事では、Azure にデータをバックアップできる Azure Backup サービスの概要について説明します。"
+	pageTitle="Azure Backup とは | Microsoft Azure"
+	description="Azure Backup と復元サービスを利用すれば、Windows Server、Windows クライアント コンピューター、SCDPM サーバー、Azure Virtual Machines のデータとアプリケーションをバックアップし、復元できます。"
 	services="backup"
 	documentationCenter=""
 	authors="trinadhk"
 	manager="shreeshd"
-	editor="tysonn"/>
+	editor="tysonn"
+	keywords="バックアップと復元、復元サービス"/>
 
-<tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="10/01/2015"
-	ms.author="aashishr"; "trinadhk"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/17/2015" ms.author="aashishr"; "trinadhk"; "jimpark"/>
 
-# Azure Backup の概要
-この記事では、オンプレミスまたは Azure に存在するデータをバックアップできる Microsoft のクラウド統合バックアップ ソリューションの概要について説明します。
-
-## Azure Backup とは
-Azure Backup は、オンプレミスまたは Azure に存在するデータをバックアップできるマルチテナントの Azure サービスです。既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのサービスに置き換えます。クラウドで実行されている資産を保護するための柔軟性も提供します。Azure Backup は、拡張性、持続性、高可用性に優れた世界クラスのインフラストラクチャの上に構築されます。このソリューションを使用すると、System Center Data Protection Manager (SCDPM) サーバー、Windows サーバー、Windows クライアント コンピューター、Azure IaaS 仮想マシンからデータやアプリケーションをバックアップできます。Azure Backup と SCDPM は、Microsoft のクラウド統合バックアップ ソリューションを構成する基本的なテクノロジです。
+# Azure Backup とは
+Azure Backup は、オンプレミスまたは Azure にデータをバックアップし、復元できるマルチテナントの Azure サービスです。既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド バックアップ ソリューションに置き換えます。クラウドで実行されている資産を保護するための柔軟性も提供します。Azure Backup は、拡張性、持続性、高可用性に優れた世界クラスのインフラストラクチャの上に構築されます。このソリューションを使用すると、System Center Data Protection Manager (SCDPM) サーバー、Windows サーバー、Windows クライアント コンピューター、Azure IaaS 仮想マシンからデータやアプリケーションをバックアップできます。Azure Backup と SCDPM は、Microsoft のクラウド統合バックアップ ソリューションを構成する基本的なテクノロジです。
 
 > [AZURE.VIDEO what-is-azure-backup]
 
@@ -54,7 +45,7 @@ Azure Backup は、オンプレミスまたは Azure に存在するデータを
 | コンポーネント | Azure にデプロイできる? | オンプレミスにデプロイできる? | サポートされているターゲット ストレージ|
 | --- | --- | --- | --- |
 | Azure Backup エージェント | **はい** <br><br>Azure Backup エージェントは、Azure で実行されている任意の Windows Server VM にデプロイできます。 | **はい** <br><br>Azure Backup エージェントは、任意の Windows Server VM または物理マシンにデプロイできます。 | Azure Backup コンテナー |
-| System Center Data Protection Manager (SCDPM) | **はい** <br><br>[SCDPM による Azure のワークロードの保護](http://blogs.technet.com/b/dpm/archive/2014/09/02/azure-iaas-workload-protection-using-data-protection-manager.aspx)の詳細を参照してください。 | **はい** <br><br>[データ センターのワークロードと VM の保護](https://technet.microsoft.com/JA-JP/library/hh758173.aspx)の詳細を参照してください。 | ローカルに接続されているディスク、<br>Azure Backup コンテナー、<br>テープ (オンプレミスのみ) |
+| System Center Data Protection Manager (SCDPM) | **はい** <br><br>[SCDPM による Azure のワークロードの保護](http://blogs.technet.com/b/dpm/archive/2014/09/02/azure-iaas-workload-protection-using-data-protection-manager.aspx)の詳細を参照してください。 | **はい** <br><br>[データ センターのワークロードと VM の保護](https://technet.microsoft.com/zh-CN/library/hh758173.aspx)の詳細を参照してください。 | ローカルに接続されているディスク、<br>Azure Backup コンテナー、<br>テープ (オンプレミスのみ) |
 | Azure Backup (VM 拡張機能) | **はい** <br><br>[Azure IaaS 仮想マシンのバックアップ](backup-azure-vms-introduction.md)に特化しています。 | **いいえ** <br><br>データ センターの仮想マシンをバックアップするには SCDPM を使用します。 | Azure Backup コンテナー |
 
 
@@ -76,6 +67,6 @@ Azure Backup は、オンプレミスまたは Azure に存在するデータを
 ## 次のステップ
 - [Azure Backup を試す](backup-try-azure-backup-in-10-mins.md)
 - Azure Backup サービスに関してよく寄せられる質問は、[こちら](backup-azure-backup-faq.md)をご覧ください。
-- [Azure のバックアップ フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
+- [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Visual Studio Online を使用した Azure への継続的な配信"
-	description="Visual Studio Online チーム プロジェクトを自動的にビルドして Azure App Service の Web アプリ機能またはクラウド サービスにデプロイするための構成方法について説明します。"
+	pageTitle="Visual Studio Team Services を使用した Azure での継続的な配信"
+	description="Visual Studio Team Services チーム プロジェクトを自動的にビルドして Azure App Service の Web アプリ機能またはクラウド サービスにデプロイするための構成方法について説明します。"
 	services="cloud-services"
 	documentationCenter=".net"
 	authors="kempb"
@@ -16,16 +16,16 @@
 	ms.date="09/02/2015"
 	ms.author="kempb"/>
 
-# Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)
+# Visual Studio Team Services を使用した Azure への継続的な配信
 
-Visual Studio Online チーム プロジェクトを、自動的にビルドして Azure の Web アプリまたはクラウド サービスにデプロイするように構成できます*オンプレミスの* Team Foundation Server を使用した継続的なビルドおよびデプロイ システムのセットアップ方法については、「[Continuous Delivery for Cloud Applications in Azure (Azure でのクラウド サービスの継続的な配信)](cloud-services-dotnet-continuous-delivery.md)」を参照してください。
+Visual Studio Team Services チーム プロジェクトを自動的にビルドして Azure Web アプリまたはクラウド サービスにデプロイするように構成できます。*オンプレミスの* Team Foundation Server を使用した継続的なビルドおよびデプロイ システムのセットアップ方法については、「[Continuous Delivery for Cloud Applications in Azure (Azure での Cloud Services の継続的な配信)](cloud-services-dotnet-continuous-delivery.md)」を参照してください。
 
 このチュートリアルは、Visual Studio 2013 と Azure SDK がインストール済みであることを前提としています。Visual Studio 2013 がない場合は、**www.visualstudio.com** で[無料利用の開始](http://www.visualstudio.com)リンクをクリックしてダウンロードします。Azure SDK を[ここ](http://go.microsoft.com/fwlink/?LinkId=239540)からインストールしてください。
 
 > [AZURE.NOTE]このチュートリアルを完了するには、Visual Studio Online のアカウントが必要です。
 > [Visual Studio Online アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
 
-Visual Studio Online を使用してクラウド サービスを自動的にビルドして Azure にデプロイするようにセットアップするには、次の手順に従います。
+Visual Studio Team Services を使用してクラウド サービスを自動的にビルドして Azure にデプロイするようにセットアップするには、次の手順に従います。
 
 ## 手順 1: チーム プロジェクトを作成する
 
@@ -39,7 +39,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 プロジェクトが .NET Framework 4 または 4.5 をターゲットにしていることを確認し、クラウド サービス プロジェクトを作成している場合は、ASP.NET MVC の Web ロールおよび worker ロールのプロジェクトを追加して、Web ロールに対応するインターネット アプリケーションを選択します。確認メッセージが表示されたら、**[インターネット アプリケーション]** を選択します。
 Web アプリを作成する場合は、ASP.NET Web アプリケーション プロジェクトのテンプレートを選択し、次に MVC を選択します。[Azure App Service での ASP.NET Web アプリの作成](../web-sites-dotnet-get-started.md)に関するページを参照してください。
 
-	> [AZURE.NOTE]Visual Studio Online では、現在、Visual Studio Web アプリケーションの CI デプロイメントのみをサポートしています。Web サイト プロジェクトはサポート対象外です。
+	> [AZURE.NOTE]Visual Studio Team Services では、現在、Visual Studio Web アプリケーションの CI デプロイメントのみをサポートしています。Web サイト プロジェクトはサポート対象外です。
 
 1. ソリューションのコンテキスト メニューを開き、**[ソリューションをソース管理に追加]** を選択します。
 
@@ -63,23 +63,23 @@ Web アプリを作成する場合は、ASP.NET Web アプリケーション プ
 
 ## 手順 3: プロジェクトを Azure に接続する
 
-1. ソース コードが含まれる VSO チーム プロジェクトが完成したので、チーム プロジェクトを Azure に接続することができます。[Microsoft Azure 管理ポータル](http://manage.windowsazure.com)で、クラウド サービスまたは Web アプリを選択するか、新たに作成します。作成するには、左下にある **[+]** アイコンを選択し、**[クラウド サービス]** または **[Web アプリ]** を選択して、**[簡易作成]** を選択します。**[Visual Studio Online を使用した発行の設定]** を選択します。
+1. ソース コードが含まれる VSTS チーム プロジェクトが完成したので、チーム プロジェクトを Azure に接続することができます。[Microsoft Azure 管理ポータル](http://manage.windowsazure.com)で、クラウド サービスまたは Web アプリを選択するか、新たに作成します。作成するには、左下にある **[+]** アイコンを選択し、**[クラウド サービス]** または **[Web アプリ]** を選択して、**[簡易作成]** を選択します。**[Visual Studio Team Services を使用した発行の設定]** を選択します。
 
 	![][10]
 
-1. ウィザードで、テキスト ボックスに Visual Studio Online アカウントの名前を入力し、**[今すぐ承認]** をクリックします。サインインを求められることがあります。
+1. ウィザードで、テキスト ボックスに Visual Studio Team Services アカウントの名前を入力し、**[今すぐ承認]** をクリックします。サインインを求められることがあります。
 
 	![][11]
 
-1. **[接続要求]** ポップアップ ダイアログで **[承諾]** を選択して、Azure が VSO でチーム プロジェクトを構成することを許可します。
+1. **[接続要求]** ポップアップ ダイアログで **[承諾]** を選択して、Azure が VSTS でチーム プロジェクトを構成することを許可します。
 
 	![][12]
 
-1. 承認が成功すると、Visual Studio Online チーム プロジェクトのリストが含まれるドロップダウンが表示されます。前の手順で作成したチーム プロジェクトの名前を選択し、ウィザードのチェックマーク ボタンを選択します。
+1. 承認が成功すると、VSTS チーム プロジェクトのリストが含まれるドロップダウンが表示されます。前の手順で作成したチーム プロジェクトの名前を選択し、ウィザードのチェックマーク ボタンを選択します。
 
 	![][13]
 
-1. プロジェクトがリンクされると、変更を Visual Studio Online チーム プロジェクトにチェックインするための手順が表示されます。次のチェックイン時に、Visual Studio Online はプロジェクトをビルドして Azure にデプロイします。これを試すには、**[Visual Studio 2012 からチェックインする]** をクリックし、**[Visual Studio 2012 を起動]** をクリックします (またはこれと同等の、ポータル画面下部にある **[Visual Studio]** をクリックします)。
+1. プロジェクトがリンクされると、変更を VSTS チーム プロジェクトにチェックインするための手順が表示されます。次のチェックイン時に、VSTS はプロジェクトをビルドして Azure にデプロイします。これを試すには、**[Visual Studio 2012 からチェックインする]** をクリックし、**[Visual Studio 2012 を起動]** をクリックします (またはこれと同等の、ポータル画面下部にある **[Visual Studio]** をクリックします)。
 
 	![][14]
 
@@ -269,7 +269,7 @@ Web アプリを作成する場合は、ASP.NET Web アプリケーション プ
 	![][50]
 
 ## 次のステップ
-Visual Studio Online での単位テストの詳細については、[「ビルド プロセスでのテストの実行」](http://go.microsoft.com/fwlink/p/?LinkId=510474) を参照してください。Git を使用している場合は、「[Git でコードを共有する](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)」および「[Azure App Service での GIT による継続的なデプロイ](../web-sites-publish-source-control.md)」を参照してください。Visual Studio Code の詳細については、[Visual Studio Online に関するページ](http://go.microsoft.com/fwlink/?LinkId=253861)をご覧ください。
+VSTS での単位テストの詳細については、[「ビルド プロセスでのテストの実行」](http://go.microsoft.com/fwlink/p/?LinkId=510474) を参照してください。Git を使用している場合は、「[Git でコードを共有する](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)」および「[Azure App Service での GIT による継続的なデプロイ](../web-sites-publish-source-control.md)」を参照してください。Visual Studio Team Services の詳細については、[Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861) に関するページをご覧ください。
 
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso/tfs1.png
@@ -322,4 +322,4 @@ Visual Studio Online での単位テストの詳細については、[「ビル�
 [49]: ./media/cloud-services-continuous-delivery-use-vso/TestsFailed.PNG
 [50]: ./media/cloud-services-continuous-delivery-use-vso/TestsResultsFailed.PNG
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

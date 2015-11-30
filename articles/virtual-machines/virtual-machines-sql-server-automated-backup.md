@@ -1,30 +1,26 @@
 <properties
-   pageTitle="SQL Server 仮想マシンの自動バックアップ | Microsoft Azure"
-   description="Azure Virtual Machines で実行されている SQL Server の自動バックアップ機能について説明します。"
-   services="virtual-machines"
-   documentationCenter="na"
-   authors="rothja"
-   manager="jeffreyg"
-   editor="monicar"
-   tags="azure-resource-manager" />
+	pageTitle="SQL Server Virtual Machines の自動バックアップ | Microsoft Azure"
+	description="Azure Virtual Machines で実行されている SQL Server の自動バックアップ機能について説明します。"
+	services="virtual-machines"
+	documentationCenter="na"
+	authors="rothja"
+	manager="jeffreyg"
+	editor="monicar"
+	tags="azure-resource-manager" />
 <tags
-   ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows-sql-server"
-   ms.workload="infrastructure-services"
-   ms.date="08/05/2015"
-   ms.author="jroth" />
+	ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.workload="infrastructure-services"
+	ms.date="11/12/2015"
+	ms.author="jroth" />
 
 # Azure Virtual Machines での SQL Server の自動バックアップ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
-
-
-
 自動バックアップでは、SQL Server 2014 Standard または Enterprise を実行する Azure VM 上の既存のデータベースと新しいデータベースのすべてを対象に、[Microsoft Azure へのマネージ バックアップ](https://msdn.microsoft.com/library/dn449496.aspx)が自動的に構成されます。これにより、永続的な Azure BLOB ストレージを利用した日常的なデータベース バックアップを構成できます。
 
->[AZURE.NOTE]自動バックアップは、SQL Server IaaS エージェントに依存します。このエージェントをインストールして構成するには、ターゲット仮想マシン上で Azure VM エージェントが実行されている必要があります。仮想マシン ギャラリーの最近のイメージでは、このオプションが既定で有効になっていますが、既存の VM では、Azure VM エージェントが存在しない可能性があります。独自の VM イメージを使用している場合は、SQL Server IaaS エージェントもインストールする必要があります。詳細については、「[VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)」をご覧ください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 ## 自動バックアップ設定
 
@@ -40,7 +36,11 @@
 
 ## ポータルでの自動バックアップの構成
 
-新しい SQL Server 2014 仮想マシンを作成するときに、[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkID=525040&clcid=0x409)を使用して、自動バックアップを構成できます。次のスクリーンショットは、**[オプションの構成]** の **[SQL 自動バックアップ]** の各オプションを示しています。
+新しい SQL Server 2014 仮想マシンを作成するときに、[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkID=525040&clcid=0x409)を使用して、自動バックアップを構成できます。
+
+>[AZURE.NOTE]自動バックアップは、SQL Server IaaS エージェントに依存します。このエージェントをインストールして構成するには、ターゲット仮想マシン上で Azure VM エージェントが実行されている必要があります。仮想マシン ギャラリーの最近のイメージでは、このオプションが既定で有効になっていますが、既存の VM では、Azure VM エージェントが存在しない可能性があります。独自の VM イメージを使用している場合は、SQL Server IaaS エージェントもインストールする必要があります。詳細については、「[VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)」をご覧ください。
+
+次のポータルのスクリーンショットは、**[オプションの構成]** の **[SQL 自動バックアップ]** の各オプションを示しています。
 
 ![Azure ポータルの SQL 自動バックアップ構成](./media/virtual-machines-sql-server-automated-backup/IC778483.jpg)
 
@@ -108,10 +108,10 @@ SQL Server IaaS エージェントをアンインストールするには、次�
 
 自動バックアップでは、Azure VM でマネージ バックアップが構成されます。そのため、[マネージ バックアップに関するドキュメント](https://msdn.microsoft.com/library/dn449496.aspx)を見直して、動作と影響を理解することが重要です。
 
-Azure VM の SQL Server のバックアップと復元に関するその他のガイダンスについては、「[Azure の仮想マシンにおける SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」をご覧ください。
+Azure VM の SQL Server のバックアップと復元に関するその他のガイダンスについては、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」をご覧ください。
 
 Azure の SQL Server VM の関連機能については、「[Azure Virtual Machines での SQL Server の自動修正](virtual-machines-sql-server-automated-patching.md)」をご覧ください。
 
 [Azure Virtual Machines で SQL Server を実行するための他のリソース](virtual-machines-sql-server-infrastructure-services.md)を確認します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Application Insights を利用し、ASP.NET アプリの障害と例外を診断する" 
-	description="要求の利用統計情報とともに例外をキャプチャすることで診断機能が高まるようにアプリを構成します。" 
+	description="要求テレメトリと共に ASP.NET アプリから例外を取り込みます。" 
 	services="application-insights" 
     documentationCenter=".net"
 	authors="alancameronwills" 
@@ -12,10 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/07/2015" 
+	ms.date="11/17/2015" 
 	ms.author="awills"/>
- 
-# Application Insights を利用し、ASP.NET アプリの障害と例外を診断する  
+
+
+# Application Insights の設定: 例外の診断
+
+[AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
+
 
 [Visual Studio Application Insights][start] を利用してアプリケーションを監視すれば、要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。
 
@@ -351,7 +355,7 @@ IExceptionLogger の実装を追加します。
             config.Services.Add(typeof(IExceptionLogger), new AiExceptionLogger()); 
         }
       }
-  {
+  }
 
 [サンプル](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
@@ -429,7 +433,7 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
 [Status Monitor][redfield] がサーバー上にインストールされている場合は、.NET によって測定された例外レートに関するグラフを取得できます。これには、処理済みの .NET 例外と未処理の .NET 例外の両方が含まれます。
 
-メトリック エクスプ ローラー ブレードを開き、新しいグラフを追加します。パフォーマンス カウンターの下に一覧表示された中から **[例外レート]** を選択します。
+メトリックス エクスプローラー ブレードを開き、新しいグラフを追加します。パフォーマンス カウンターの下に一覧表示された中から **[例外レート]** を選択します。
 
 .NET フレームワークでは、特定の時間間隔で例外数をカウントし、それを時間間隔の長さで割り算することで、例外レートを算出します。
 
@@ -448,4 +452,4 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

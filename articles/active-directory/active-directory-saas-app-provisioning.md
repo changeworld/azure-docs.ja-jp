@@ -108,4 +108,4 @@ Azure AD とSaaS アプリ間で属性がマップされる方法の詳細につ
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

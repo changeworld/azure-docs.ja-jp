@@ -1,11 +1,12 @@
 <properties 
 	pageTitle="Windows 10 デバイスを [設定] メニューから Azure AD に設定する | Microsoft Azure" 
-	description="ユーザーが [設定] メニューを通して Azure AD に参加できる方法について説明するトピックです。" 
+	description="ユーザーが Windows 10 の [設定] メニューで Azure AD に参加する方法について説明します。" 
 	services="active-directory" 
 	documentationCenter="" 
 	authors="femila" 
 	manager="stevenpo" 
-	editor=""/>
+	editor=""
+	tags="azure-classic-portal"/>
 
 <tags 
 	ms.service="active-directory" 
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/21/2015" 
+	ms.date="11/17/2015" 
 	ms.author="femila"/>
 
 # Windows 10 デバイスを [設定] メニューから Azure AD に設定する
@@ -31,13 +32,16 @@ Windows 7 または 8 を使用しているコンピューターを既に Window
 4. サインイン資格情報を入力します。このサインイン エクスペリエンスには、認証を完了するために必要なすべての手順が含まれます。フェデレーション テナントの一部である場合は、組織でホストされているフェデレーション エクスペリエンスが管理者によって提供されます。
 <center> ![](./media/active-directory-azureadjoin/active-directory-azureadjoin-sign-in.png) </center>
 5. 組織が Azure AD に参加するために多要素認証を使用するように構成されている場合は、続行する前に 2 つ目の要素を提供する必要があります。
-6. [このデバイスを管理対象にする] 画面の **[承諾]** をクリックします。
+6. **[このデバイスを管理対象にする]** 画面の **[承諾]** をクリックします。
 7. 「これで、お客様のデバイスは Azure AD の組織に参加しました。」というメッセージが表示されます。
 
 
 ## 追加情報
-* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md)
-* [Azure AD 参加の使用シナリオとデプロイに関する考慮事項について](active-directory-azureadjoin-deployment-aadjoindirect.md)
+* [エンタープライズ向け Windows 10: デバイスを仕事に使用する方法](active-directory-azureadjoin-windows10-devices-overview.md)
+* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-user-upgrade.md)
+* [Microsoft Passport 経由でのパスワードを使用しない ID の認証](active-directory-azureadjoin-passport.md)
+* [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
+* [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

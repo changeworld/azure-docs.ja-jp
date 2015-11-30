@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/02/2015" 
+	ms.date="11/11/2015" 
 	ms.author="glenga"/>
 
 
@@ -23,7 +23,7 @@
 
 ##概要
 
-このトピックでは、Azure のモバイル サービスを使用して Windows Phone 8 アプリケーションのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。
+このトピックでは、Azure のモバイル サービスを使用して Windows Phone 8 アプリケーションのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Microsoft Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。
 
 次のビデオで、Nick Harris によるこのチュートリアルのデモをご覧いただけます。
 >[AZURE.VIDEO mobile-get-started-with-data-windows-phone]
@@ -32,7 +32,7 @@
 
 + Visual Studio 2012 Express for Windows Phone 8 および Windows 8 で実行する [Windows Phone 8 SDK] が必要になります。このチュートリアルを完了して、Windows Phone 8.1 アプリケーションを作成するには、Visual Studio 2013 Update 2 以降が必要です。 
 
-+ Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Farticles%2Fdocumentation%2Fmobile-services-windows-phone-get-started-data%2F)を参照してください。
++ Azure アカウント。アカウントがない場合は、無料試用アカウントを数分で作成することができます。詳細については、[Azure 無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Farticles%2Fdocumentation%2Fmobile-services-windows-phone-get-started-data%2F)を参照してください。
 
 ##<a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
 
@@ -40,7 +40,7 @@
 
 1. GetStartedWithData サンプル アプリケーション プロジェクトを[デベロッパー サンプル コード集のサイト]からダウンロードします。 
 
-	>[AZURE.NOTE]Windows Phone Silverlght 8.1 アプリケーションを作成するには、ダウンロードした Windows Phone Silverlight 8 アプリケーション プロジェクトの対象 OS を Windows Phone 8.1 に変更します。Windows Phone Store アプリケーションを作成するには、GetStartedWithData サンプル アプリケーション プロジェクトの [Windows Phone Store アプリケーション バージョン](http://go.microsoft.com/fwlink/p/?LinkId=397372)をダウンロードします。
+	>[AZURE.NOTE]Windows Phone Silverlght 8.1 アプリケーションを作成するには、ダウンロードした Windows Phone Silverlight 8 アプリケーション プロジェクトの対象 OS を Windows Phone 8.1 に変更します。Windows Phone ストア アプリケーションを作成するには、GetStartedWithData サンプル アプリケーション プロジェクトの [Windows Phone ストア アプリケーション バージョン](http://go.microsoft.com/fwlink/p/?LinkId=397372)をダウンロードします。
 
 2. Visual Studio で、ダウンロードしたプロジェクトを開き、MainPage.xaml.cs ファイルを確認します。
 
@@ -95,12 +95,12 @@
 
   	これで、モバイル サービスへのアクセスに使用される **MobileServiceClient** の新しいインスタンスが作成されます。
 
-6. MainPage.xaml.cs ファイルで、次の `using` ステートメントを追加またはコメント解除します。
+6. MainPage.cs ファイルで、次の `using` ステートメントを追加またはコメント解除します。
 
        	using Microsoft.WindowsAzure.MobileServices;
 		using Newtonsoft.Json;
 
-7. この同じファイルで、**TodoItem** クラス定義を次のコードに置き換えます。
+7. この DataModel フォルダーで、**TodoItem** クラス定義を次のコードに置き換えます。
 
         public class TodoItem
         {
@@ -119,7 +119,7 @@
         private IMobileServiceTable<TodoItem> todoTable = 
 			App.MobileService.GetTable<TodoItem>();
 
-   	このコードは、モバイル サービス対応のバインディング コレクション (**items**) と SQL データベース テーブルのプロキシ クラス **TodoItem** (**todoTable**) を作成します。
+   	このコードは、モバイル サービス対応のバインディング コレクション (**items**) と SQL Database テーブルのプロキシ クラス **TodoItem** (**todoTable**) を作成します。
 
 7. **InsertTodoItem** メソッド内で、**TodoItem**.**Id** プロパティを設定するコード行を削除し、**async** 修飾子をメソッドに追加して、次のコード行をコメント解除します。
 
@@ -193,4 +193,4 @@
 [デベロッパー サンプル コード集のサイト]: http://go.microsoft.com/fwlink/p/?LinkId=271146
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

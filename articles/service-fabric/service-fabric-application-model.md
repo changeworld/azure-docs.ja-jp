@@ -31,7 +31,7 @@
 
 アプリケーションのクラス (または "種類") とサービスは、アプリケーションをインスタンス化する対象となるテンプレートである XML ファイル (アプリケーション マニフェストとサービス マニフェスト) を使用して記述されます。別のアプリケーション インスタンスのコードは、同じ Service Fabric ノードでホストされている場合でも個別のプロセスとして実行されます。さらに、各アプリケーション インスタンスのライフサイクルを個別に管理できます (つまりアップグレード)。次の図では、コード、構成、パッケージで構成されるサービスの種類で、アプリケーションの種類がどのように構成されるかを示しています。
 
-![Service Fabric の ApplicationTypes と ServiceTypes][Image1]
+![Service Fabric ApplicationTypes and ServiceTypes][Image1]
 
 2 つの異なるマニフェスト ファイル (サービス マニフェストとアプリケーション マニフェスト) はアプリケーションとサービスの記述に使用されます。サービス マニフェストとアプリケーション マニフェストについては次のセクションで詳しく説明します。
 
@@ -39,7 +39,7 @@
 
 次の図は、アプリケーションとサービス インスタンス、パーティション、レプリカ間のリレーションシップを示しています。
 
-![サービス内のパーティションとレプリカ][Image2]
+![Partitions and Replicas within a Service][Image2]
 
 
 ## サービスを記述する
@@ -135,6 +135,8 @@ For more information about other features supported by service manifests, refer 
 
 > [AZURE.NOTE]アプリケーション マニフェストには、複数のサービス マニフェストのインポートと既定のサービスを含めることができます。各サービス マニフェストのインポートは、個別にバージョン管理できます。
 
+個々の環境で異なるアプリケーションやサービスのパラメーターを維持する方法については、「[複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)」を参照してください。
+
 <!--
 For more information about other features supported by application manifests, refer to the following articles:
 
@@ -169,6 +171,12 @@ D:\TEMP\MYAPPLICATIONTYPE
 ~~~
 
 フォルダーには、それぞれの対応する要素の **Name** 属性と一致する名前が付けられます。たとえば、**MyCodeA** と **MyCodeB** という名前の付いた 2 つのコード パッケージがサービス マニフェストに含まれている場合、各コード パッケージに必要なバイナリが含まれているのと同じ名前の 2 つのフォルダーがある必要があります。
+
+### SetupEntryPoint の使用
+SetupEntryPoint を使用する一般的なシナリオは、サービスを開始する前に何かを行う必要がある場合と、より高い特権を持つ操作を実行する必要がある場合です。一例としては、サービス実行可能ファイルが使用する可能性がある環境変数の設定と初期化などです。これには、サービス ファブリックのプログラミング モデルで記述された実行可能ファイルのみでなく、単純に使用される実行可能ファイルも含まれます。たとえば、nodejs アプリケーションをデプロイする場合、npm.exe の環境変数が構成されている必要があります。- 証明書などの ACL リソース
+
+次に、コード (exe)、バッチ ファイル、または PowerShell が Visual Studio プロジェクトに正しくパッケージされるようにする手順を示します。
+
 
 ### Visual Studio を使用してパッケージを構築する
 
@@ -221,15 +229,11 @@ PS D:\temp>
 
 ## 次のステップ
 
-[アプリケーションのデプロイと削除][10]
-
-<!--Image references-->
-[1]: ./media/service-fabric-application-model/application-model.jpg
-[2]: ./media/service-fabric-application-model/vs-package-command.png
-[Image1]: media/service-fabric-application-model/Service1.jpg
-[Image2]: media/service-fabric-application-model/Service2.jpg
+[アプリケーションのデプロイと削除][10] [複数の環境のアプリケーション パラメーターを管理する][11] [RunAs: 異なるセキュリティ アクセス許可での Service Fabric アプリケーションの実行][12] <!--Image references--> [1]: ./media/service-fabric-application-model/application-model.jpg [2]: ./media/service-fabric-application-model/vs-package-command.png [Image1]: media/service-fabric-application-model/Service1.jpg [Image2]: media/service-fabric-application-model/Service2.jpg
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-deploy-remove-applications.md
+[11]: service-fabric-manage-multiple-environment-app-configuration.md
+[12]: service-fabric-application-runas-security.md
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

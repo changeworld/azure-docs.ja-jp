@@ -71,7 +71,7 @@ HDInsight 用 Spark クラスターには、ヘッド ノード (2 ノード) - 
 
 各クラスターの種類には、クラスターに関連付けられている 1 つ以上の Azure ストレージ アカウントもあります。HDInsight は、クラスターのデータ ストアとして、これらのストレージ アカウントの Azure BLOB を使用します。データをクラスターから分離しておくことで、使用されていないクラスターを削除した場合でもデータを引き続き保持できます。したがって、さらに分析が必要な場合に、新しいクラスターでも同じストレージ アカウントを使用できます。詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)に関するページを参照してください。
 
-## <a id="configuration"></a>基本的な構成オプション
+## <a id="configuration">基本的な構成オプション</a>
 
 次のセクションでは、HDInsight クラスターの作成時に使用できる必要な構成オプションについて説明します。
 
@@ -140,7 +140,7 @@ HDInsight では、クラスターの基になるストレージとして Azure 
 
 > [AZURE.IMPORTANT]クラスターは既定のストレージ アカウントと同じデータ センター内にある必要があるため、ストレージ アカウントに対して選択する地理的な場所によって HDInsight クラスターの場所が決まります。
 >
-> サポートされているリージョンの一覧については、「[HDInsight 価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」の **[リージョン]** ボックスの一覧をクリックしてください。
+> サポートされているリージョンのリストについては、「[HDInsight の価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」の **[リージョン]** ドロップダウン リストをクリックしてください。
 
 ####既定のストレージ コンテナー
 
@@ -168,7 +168,7 @@ Azure プレビュー ポータルを使用してクラスターを構成する�
 
 ### HDInsight のバージョン
 
-このクラスターに使用する HDInsight のバージョンを指定するためにこれを使用します。詳細については、[HDInsight での Hadoop クラスターのバージョンとコンポーネント](https://go.microsoft.com/fwLink/?LinkID=320896&clcid=0x409)に関するページをご覧ください。
+このクラスターに使用する HDInsight のバージョンを指定するためにこれを使用します。詳細については、[HDInsight での Hadoop クラスターのバージョンとコンポーネント](https://go.microsoft.com/fwLink/?LinkID=320896&clcid=0x409)に関するページを参照してください。
 
 ### Azure Virtual Network の使用
 
@@ -186,7 +186,7 @@ Azure プレビュー ポータルを使用してクラスターを構成する�
 
 Virtual Network の機能、利点の詳細については、「[Azure Virtual Network の概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
 
-> [AZURE.NOTE]クラスターを作成する前に、Azure Virtual Network を作成する必要があります。詳細については、「[Virtual Network の作成方法](virtual-networks-create-vnet.md)」をご覧ください
+> [AZURE.NOTE]クラスターを作成する前に、Azure Virtual Network を作成する必要があります。詳細については、「[Virtual Network の作成方法](virtual-networks-create-vnet.md)」を参照してください。
 >
 > Azure HDInsight は場所ベースの Virtual Networks のみをサポートし、アフィニティ グループ ベースの Virtual Networks は現在取り扱っていません。既存の Azure Virtual Network が場所ベースかどうかを確認するには、Azure PowerShell コマンドレットの Get-AzureVNetConfig を使用します。Virtual Network が場所ベースでない場合、次のオプションがあります。
 >
@@ -205,7 +205,9 @@ Virtual Network の機能、利点の詳細については、「[Azure Virtual N
 
 メタストアには、Hive テーブル、パーティション、スキーマ、列に関する情報などの Hive と Oozie メタデータが含まれます。メタストアを使用すると Hive と Oozie メタデータを保持できるため、新しいクラスターを作成するときに、Hive テーブルまたは Oozie ジョブを再作成する必要はありません。
 
-メタストアの構成オプションを使用すると、SQL Database を使用して外部のメタストアを指定することができます。これにより、クラスターを削除するときに、データベースに外付けで格納されているメタデータ情報を保持できます。Azure での SQL データベースの作成方法について詳しくは、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」をご覧ください。
+メタストアの構成オプションを使用すると、SQL Database を使用して外部のメタストアを指定することができます。これにより、クラスターを削除するときに、データベースに外付けで格納されているメタデータ情報を保持できます。Azure での SQL データベースの作成方法について詳しくは、「[最初の Azure SQL データベースを作成する](sql-database-get-started.md)」をご覧ください。
+
+> [AZURE.NOTE]HBase のクラスターの種類では、メタストア構成は使用できません。
 
 ###<a id="scriptaction"></a>スクリプト アクション
 
@@ -280,4 +282,4 @@ Virtual Network の機能、利点の詳細については、「[Azure Virtual N
 
   [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

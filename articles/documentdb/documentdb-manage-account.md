@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/22/2015" 
+	ms.date="11/18/2015" 
 	ms.author="anhoh"/>
 
 # Azure プレビュー ポータルで DocumentDB アカウントを管理する方法
@@ -65,7 +65,7 @@ DocumentDB では、確かな見通しに基づいて整合性、可用性、待
 
 - **Strong** 整合性では、最後に書き込まれた値が常に読み取り操作で戻されることを保証します。
 
-- **Bounded Staleness** 整合性では、読み取る値が古くなりすぎていないことを保証します。具体的には、読み取る値が最後に書き込まれたバージョンよりも *K* バージョン以上古くないことを保証します。
+- **Bounded Staleness** 整合性では、読み取る値が古くなりすぎていないことを保証します。具体的には、読み取る値が最後に書き込まれたバージョンよりも K バージョン以上古くないことを保証します。
 
 - **Session** 整合性は、モノトニックな読み取り (古いデータの次に新しいデータ、再度古いデータという読み取りはしない)、モノトニックな書き込み (順序どおりに書き込まれる)、およびどのクライアントの観点からも最新の書き込みを読み取ることを保証します。
 
@@ -91,7 +91,7 @@ DocumentDB では、確かな見通しに基づいて整合性、可用性、待
 
 *DocumentDB アカウントの既定の整合性に加えた変更が有効になるまで、数分かかることがあります。*
 
-## <a id="delete"></a>方法: Azure プレビュー ポータルで DocumentDB アカウントを削除する
+## <a id="delete"></a>Azure プレビュー ポータルで DocumentDB アカウントを削除する方法
 使用しなくなった DocumentDB アカウントを Azure プレビュー ポータルで削除するには、**[DocumentDB アカウント]** ブレードの **[削除]** コマンドを使用します。
 
 ![Azure プレビュー ポータルで DocumentDB アカウントを削除する方法](./media/documentdb-manage-account/image009.png)
@@ -113,4 +113,4 @@ DocumentDB の詳細については、[azure.com](http://go.microsoft.com/fwlink
  
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

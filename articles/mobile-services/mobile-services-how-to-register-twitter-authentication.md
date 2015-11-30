@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="08/08/2015" 
+	ms.date="11/15/2015" 
 	ms.author="glenga"/>
 
 #モバイル サービスでの Twitter ログイン用のアプリケーションの登録
@@ -22,17 +22,18 @@
 
 このトピックでは、Twitter を使用して Azure のモバイル サービスで認証できるようにアプリケーションを登録する方法について説明します。
 
->[AZURE.NOTE] このチュートリアルはあらゆるプラットフォームにおいて拡張性の高いモバイル アプリケーションを作成するソリューションの [Azure Mobile Services](http://azure.microsoft.com/services/mobile-services/) について説明します。Mobile Services によって簡単にデータの同期化を行い、ユーザーを認証して、プッシュ通知を送信できます。このページはアプリケーションへユーザーをログインさせる方法を説明する「<a href="http://azure.microsoft.com/documentation/articles/mobile-services-ios-get-started-users/">認証の使用</a>」チュートリアルをサポートしています。モバイル サービスを初めて使用する場合は、チュートリアル「<a href="http://azure.microsoft.com/documentation/articles/mobile-services-ios-get-started/">モバイル サービスの使用</a>」を完了することをお勧めします。
+>[AZURE.NOTE]このチュートリアルはあらゆるプラットフォームにおいて拡張性の高いモバイル アプリケーションを作成するソリューションの [Azure Mobile Services](http://azure.microsoft.com/services/mobile-services/) について説明します。Mobile Services によって簡単にデータの同期化を行い、ユーザーを認証して、プッシュ通知を送信できます。このページはアプリケーションへユーザーをサインインさせる方法を説明する「[アプリへの認証の追加](mobile-services-ios-get-started-users.md)」チュートリアルをサポートしています。Mobile Services を初めて使用する場合は、チュートリアル「[Mobile Services の使用](mobile-services-ios-get-started)」を完了することをお勧めします。
 
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Twitter アカウントが必要になります。新しい Twitter アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a> にアクセスしてください。
 
-1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268300" target="_blank">Twitter デベロッパー</a>の Web サイトに移動し、Twitter アカウント資格情報でサインインして、**[Create a new application]** をクリックします。
+1. [Twitter Developers](http://go.microsoft.com/fwlink/p/?LinkId=268300) の Web サイトに移動し、Twitter アカウント資格情報でサインインして、**[Create new app]** をクリックします。
 
-   	![][1]
+2. **[Name]**、**[Description]**、**[Website]** にアプリの値を入力し、次のいずれかの URL 形式を **[Callback URL]** に入力します。
+ 
+	+ **.NET バックエンド**: `https://<mobile_service>.azure-mobile.net/signin-twitter`
+	+ **JavaScript バックエンド**: `https://<mobile_service>.azure-mobile.net/login/twitter` 
 
-2. アプリケーションの**名前**、**説明**、**Web サイト**を入力し、_[Callback URL]_ にモバイル サービスの URL の末尾にパス **/login/twitter** を付けて入力します。
-
-	>[AZURE.NOTE] Visual Studio を使用して Azure に発行された .NET バックエンド モバイル サービスについては、リダイレクト URL は、ユーザーのモバイル サービスの URL の末尾にパス _signin-twitter_ を追加したものです。この例では、モバイル サービスにはコールバック URL ```https://todolist.azure-mobile.net/signin-twitter``` が含まれます。
+	 >[AZURE.NOTE]Mobile Services バックエンドの種類として、正しいリダイレクト URL パスの形式を使用してください。これが正しくない場合、認証は失敗します。 &nbsp;
 
    	![][2]
 
@@ -62,4 +63,4 @@
 [Azure Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

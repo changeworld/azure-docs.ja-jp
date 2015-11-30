@@ -41,7 +41,7 @@ Service Fabric の一部として通信 API にいくつかの異なるオプシ
 ### Reliable Services の通信オプション
 Reliable Services API を使用してサービスが作成された場合、異なるオプションがいくつかがあります。通信プロトコルの選択により、使用する Service Fabric の通信 API が決まります。
 
-* **使用すべき特定の通信プロトコルがなく、すぐに利用できるものにしたい場合**: 特定の通信フレームワークを選択する必要がない場合、理想的なオプションは、アクター通信モデルと似たモデルを利用できる[既定のスタック](service-fabric-reliable-services-communication-default.md)を使用することです。これは、サービスの通信を開始する最も簡単ですばやい方法です。これは、厳密に型指定された RPC 通信を提供し、ほとんどの通信の詳細を抽象化するため、コードでリモート サービスを呼び出すと、ローカル オブジェクトのインスタンスでメソッドを呼び出しているように見えます。これらのクラスは、解決、接続、再試行、およびエラー処理を抽象化しながら、通信チャネルをセットアップして、メソッド呼び出しに基づく通信モデルを可能にします。このため、`ServiceCommunicationListener` クラスはサーバー側で使用され、`ServiceProxy` クラスは通信のクライアント側で使用されます。
+* **使用すべき特定の通信プロトコルがなく、すぐに利用できるものにしたい場合**: 特定の通信フレームワークを選択する必要がない場合、理想的なオプションは、アクター通信モデルと似たモデルを利用できる[既定のスタック](service-fabric-reliable-services-communication-remoting.md)を使用することです。これは、サービスの通信を開始する最も簡単ですばやい方法です。これは、厳密に型指定された RPC 通信を提供し、ほとんどの通信の詳細を抽象化するため、コードでリモート サービスを呼び出すと、ローカル オブジェクトのインスタンスでメソッドを呼び出しているように見えます。これらのクラスは、解決、接続、再試行、およびエラー処理を抽象化しながら、通信チャネルをセットアップして、メソッド呼び出しに基づく通信モデルを可能にします。このため、`ServiceCommunicationListener` クラスはサーバー側で使用され、`ServiceProxy` クラスは通信のクライアント側で使用されます。
 
 * **HTTP**: HTTP ベースの通信が提供する柔軟性を活用するため、解決、接続、および再試行ロジックを抽象化したまま通信メカニズムを定義可能な Service Fabric 通信 API を使用できます。たとえば、Web API を使用して、通信メカニズムを指定し、[`ICommunicationClient` クラスと `ServicePartitionClient` クラス](service-fabric-reliable-services-communication.md) を活用し、通信をセットアップできます。
 * **WCF**: 通信フレームワークとして WCF を使用する既存のコードがある場合、サーバー側で WcfCommunicationListener を使用し、クライアントで WcfCommunicationClient を使用することができます。詳細については、[この記事](service-fabric-reliable-services-communication-wcf.md)を参照してください。
@@ -52,9 +52,9 @@ Reliable Services API を使用してサービスが作成された場合、異�
 ServiceFabric のすべての通信 API は、現在 C# でのみ使用可能であるため、Java、Node.JS など、その他のプログラミング言語で記述されたサービスがある場合は、独自の通信メカニズムを作成する必要があります。
 
 ## 次のステップ
-* [Reliable Services フレームワークによって提供される既定の通信スタック](service-fabric-reliable-services-communication-default.md)
+* [Reliable Services フレームワークによって提供される既定の通信スタック](service-fabric-reliable-services-communication-remoting.md)
 * [Reliable Services 通信モデル](service-fabric-reliable-services-communication.md)
 * [OWIN 自己ホストによる Microsoft Azure Service Fabric Web API サービスの概要](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services の WCF ベースの通信スタック](service-fabric-reliable-services-communication-wcf.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

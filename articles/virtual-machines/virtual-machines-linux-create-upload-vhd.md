@@ -55,6 +55,7 @@ Azure は、さまざまな Linux ディストリビューションをサポー�
 
 - **[CentOS ベースのディストリビューション](virtual-machines-linux-create-upload-vhd-centos.md)**
 - **[Oracle Linux](virtual-machines-linux-create-upload-vhd-oracle.md)**
+- **[Red Hat Enterprise Linux](virtual-machines-linux-create-upload-vhd-redhat.md)**
 - **[SLES と openSUSE](../virtual-machines-linux-create-upload-vhd-suse)**
 - **[Ubuntu](virtual-machines-linux-create-upload-vhd-ubuntu.md)**
 - **[その他 - 動作保証外のディストリビューション](virtual-machines-linux-create-upload-vhd-generic.md)**
@@ -163,11 +164,11 @@ VHD ファイルをアップロードするストレージ アカウントが必
 
 詳細については、[Add-AzureVhd に関するページ](https://msdn.microsoft.com/library/azure/dn495173.aspx)を参照してください。
 
-> [AZURE.NOTE] [Azure Powershell 1.0 Preview バージョン](https://azure.microsoft.com/ja-JP/blog/azps-1-0-pre/)では、クラシック デプロイ モデルとリソース マネージャーのデプロイ モデル用のコマンドレットを処理する方法が大幅に変更されます。この記事ではまだ Preview バージョンを使用していません。
+> [AZURE.NOTE] [Azure Powershell 1.0 Preview バージョン](https://azure.microsoft.com/zh-CN/blog/azps-1-0-pre/)では、クラシック デプロイメント モデルとリソース マネージャーのデプロイメント モデル用のコマンドレットを処理する方法が大幅に変更されます。この記事ではまだ Preview バージョンを使用していません。
 
 
 [Step 1: Prepare the image to be uploaded]: #prepimage
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!-----HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

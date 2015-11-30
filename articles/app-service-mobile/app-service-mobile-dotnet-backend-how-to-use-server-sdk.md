@@ -137,7 +137,7 @@ OWIN スタートアップ クラスの `Configuration()` メソッドで、サ�
         .MapTableControllers()
         .AddEntityFramework()).ApplyTo(config);
  
-Entity Framework を使用して Azure SQL Database のデータにアクセスするテーブル コントローラーの例については、Azure ポータルからダウンロードしたクイックスタート サーバー プロジェクトの **TodoItemController** クラスを参照してください。
+Azure SQL Database のデータへのアクセスに Entity Framework を使用するテーブル コントローラーの例については、Azure ポータル からダウンロードしたクイックスタート サーバー プロジェクトの **TodoItemController** クラスを参照してください。
 
 ## 方法: サーバー プロジェクトに認証を追加する
 
@@ -153,7 +153,7 @@ Entity Framework を使用して Azure SQL Database のデータにアクセス�
 
 3. 認証が必要なすべてのコントローラーまたはメソッドに `[Authorize]` 属性を追加します。これで、ユーザーはエンドポイントや特定の API にアクセスするときに認証を受ける必要があるようになりました。
 
-Mobile Apps バックエンドに対してクライアントを認証する方法については、「[アプリケーションに認証を追加する](app-service-mobile-dotnet-backend-ios-get-started-users.md)」をご覧ください。
+Mobile Apps バックエンドに対してクライアントを認証する方法については、「[アプリケーションに認証を追加する](app-service-mobile-ios-get-started-users.md)」をご覧ください。
 
 ## 方法: サーバー プロジェクトにプロジェクトを追加する
 
@@ -193,7 +193,30 @@ Mobile Apps バックエンドに対してクライアントを認証する方�
         NotificationHubClient hub = NotificationHubClient
         .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
-これで、Notification Hubs クライアントを使用して、登録済みデバイスにプッシュ通知を送信できるようになりました。詳細については、「[アプリケーションにプッシュ通知を追加する](app-service-mobile-ios-get-started-push.md)」をご覧ください。Notification Hubs で実行可能なすべての操作については、「[Azure 通知ハブ](../notification-hubs/notification-hubs-overview.md)」をご覧ください。
+これで、Notification Hubs クライアントを使用して、登録済みデバイスにプッシュ通知を送信できるようになりました。詳細については、「[アプリケーションにプッシュ通知を追加する](app-service-mobile-ios-get-started-push.md)」をご覧ください。Notification Hubs で実行可能なすべての操作については、「[Azure Notification Hubs](../notification-hubs/notification-hubs-overview.md)」をご覧ください。
+
+## 方法: タグにプッシュするために、タグをデバイス インストールに追加する
+
+上記の「**方法: カスタム API コントローラーを定義する**」の後、バックエンドにカスタム API を設定し、Notification Hubs と連動させ、タグを特定のデバイス インストールに追加することがあります。クライアント ローカル ストレージに保存されているインストール ID と追加するタグ (タグはバックエンドで直接指定できるため、これは任意) を指定します。Notification Hubs と連動させ、タグをデバイス インストール ID に追加するために、次のスニペットをコントローラーに追加してください。
+
+[Azure Notification Hubs NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) の使用 ([参照](https://msdn.microsoft.com/library/azure/mt414893.aspx)):
+
+		var hub = NotificationHubClient.CreateClientFromConnectionString("my-connection-string", "my-hub");
+
+		hub.PatchInstallation("my-installation-id", new[]
+		{
+		    new PartialUpdateOperation
+		    {
+		        Operation = UpdateOperationType.Add,
+		        Path = "/tags",
+		        Value = "{my-tag}"
+		    }
+		});
+	
+
+これらのタグにプッシュするために、[Notification Hubs API](https://msdn.microsoft.com/library/azure/dn495101.aspx) を利用します。
+
+カスタム API を立ち上げ、バックエンドで直接、デバイス インストールを Notification Hubs に登録することもできます。
 
 ## 方法: サーバー プロジェクトの発行
 
@@ -207,4 +230,4 @@ Mobile Apps バックエンドに対してクライアントを認証する方�
 [Microsoft.Azure.Mobile.Server.Authentication]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric の信頼性の高いアクター KVSActorStateProvider の構成の概要"
-   description="Service Fabric の 'KVSActorStateProvider' という型のステートフル アクターの構成について説明します。"
+   pageTitle="Azure Service Fabric の信頼性の高いアクター KVSActorStateProvider の構成の概要 | Microsoft Azure"
+   description="Azure Service Fabric の 'KVSActorStateProvider' という型のステートフル アクターの構成について説明します。"
    services="Service-Fabric"
    documentationCenter=".net"
    authors="sumukhs"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/26/2015"
+   ms.date="10/28/2015"
    ms.author="sumukhs"/>
 
 # 信頼性の高いアクター KVSActorStateProvider の構成
@@ -81,4 +81,4 @@ Service Fabric ランタイムは "settings.xml" ファイルで定義済みの�
 
 BatchAcknowledgementInterval は、レプリケーションの待機時間を制御します。値が '0' の場合、待機時間は最短になりますが、スループットに影響します (送信および処理が必要な受信確認メッセージが増え、それぞれに含まれる受信確認が少なくなります)。BatchAcknowledgementInterval の値が大きいほど、全体的なレプリケーションのスループットが高くなり、操作の待機時間が長くなります。これは、トランザクションのコミットの待機時間に直結します。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

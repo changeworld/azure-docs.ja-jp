@@ -35,7 +35,7 @@
 
 3. app ディレクトリで、**server** サブフォルダーから次のいずれかのコマンド ファイルを実行します。
 
-	+ **launch-windows** (Windows コンピューター) 
+	+ **.\\start-iisexpress.ps1** (Windows コンピューター) 
 	+ **launch-mac.command** (Mac OS X コンピューター)
 	+ **launch-linux.sh** (Linux コンピューター)
 
@@ -68,7 +68,7 @@
 
 	これで、ページからモバイル サービスにログインできるようになります。
 
-2. app.js ファイルの末尾で refreshTodoItems 関数を呼び出しているコード行を探し、次のコードに置き換えます。
+2. page.js ファイルの末尾で refreshTodoItems 関数を呼び出しているコード行を探し、次のコードに置き換えます。
 	
 		function refreshAuthDisplay() {
 			var isLoggedIn = client.currentUser !== null;
@@ -137,4 +137,4 @@
 [モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: mobile-services-html-how-to-use-client-library.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

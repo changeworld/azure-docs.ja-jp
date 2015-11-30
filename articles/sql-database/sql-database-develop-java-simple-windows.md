@@ -88,7 +88,7 @@ Java サンプル コードの全体について説明します。後続のセ�
 				"jdbc:sqlserver://your_server.database.windows.net:1433;" 
 				+ "database=your_database;"
 				+ "user=your_user@your_server;"
-				+ "password={your_password};"
+				+ "password=your_password;"
 				+ "encrypt=true;"
 				+ "trustServerCertificate=false;"
 				+ "hostNameInCertificate=*.database.windows.net;"
@@ -230,4 +230,4 @@ Java サンプル コードの全体について説明します。後続のセ�
 
 詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

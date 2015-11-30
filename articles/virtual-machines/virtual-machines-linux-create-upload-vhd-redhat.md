@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure での RedHat Linux VHD の作成とアップロード" 
-	description="RedHat Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" 
+	pageTitle="Azure で使用するための Red Hat Enterprise Linux VHD の作成とアップロード" 
+	description="Red Hat Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" 
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="SuperScottz" 
@@ -17,7 +17,7 @@
 	ms.author="mingzhan"/>
 
 
-# Azure 用の RedHat ベースの仮想マシンの準備
+# Azure 用の Red Hat ベースの仮想マシンの準備
 この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。この記事で取り上げる RHEL のバージョンは 6.6、6.7、7.0、および 7.1 です。準備対象のハイパーバイザーは、Hyper-V、KVM、および VMWare です。
 
 
@@ -25,7 +25,7 @@
 
 ##Hyper-V マネージャーからのイメージの準備 
 ###前提条件
-このセクションでは、RedHat の Web サイトから取得した ISO ファイルの RHEL イメージが仮想ハード ディスク (VHD) に既にインストールされていると仮定します。Hyper-V マネージャーを使用してオペレーティング システム イメージをインストールする方法の詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
+このセクションでは、Red Hat の Web サイトから取得した ISO ファイルの RHEL イメージが仮想ハード ディスク (VHD) に既にインストールされていることを前提としています。Hyper-V マネージャーを使用してオペレーティング システム イメージをインストールする方法の詳細については、[Hyper-V ロールのインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)に関するページを参照してください。
 
 **RHEL のインストールに関する注記**
 
@@ -36,6 +36,9 @@
 - OS ディスクにスワップ パーティションを構成しないでください。Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。このことに関する詳細については、次の手順を参照してください。
 
 - すべての VHD のサイズは 1 MB の倍数であることが必要です。
+
+- qemu-img を使用してディスク イメージを VHD 形式に変換する場合、qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。この問題は、qemu-img の今後のリリースで修正される予定です。現時点では、qemu-img のバージョン 2.2.0 以前を使用することをお勧めします。
+
 
 ###RHEL 6.6/6.7
 
@@ -74,11 +77,11 @@
 
         # sudo chkconfig network on
 
-8.	RHEL リポジトリからパッケージをインストールできるように、Red Hat のサブスクリプションを登録します。
+8.	RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-9.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が Fedora EPEL 6 リポジトリにプッシュされたら、epel リポジトリを有効にします。
+9.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が Fedora EPEL 6 リポジトリにプッシュされました。次のコマンドを実行して epel リポジトリを有効にします。
 
         # wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
         # rpm -ivh epel-release-6-8.noarch.rpm
@@ -111,7 +114,7 @@
 
     **注:** 手順 2. で説明したように NetworkManager パッケージおよび NetworkManager-gnome パッケージがまだ削除されていない場合、WALinuxAgent パッケージをインストールすると、これらのパッケージが削除されます。
 
-13.	OS ディスクにスワップ領域を作成しないでください。Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+13.	OS ディスクにスワップ領域を作成しないでください。Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -130,9 +133,10 @@
         # logout
 
 16.	Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+
 ###RHEL 7.0/7.1
 
-1.	Hyper-V マネージャーで仮想マシンを選択します。
+1. Hyper-V マネージャーで仮想マシンを選択します。
 
 2.	[接続] をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
 
@@ -155,7 +159,7 @@
 
         # sudo chkconfig network on
 
-6.	RHEL リポジトリからパッケージをインストールできるように、Red Hat のサブスクリプションを登録します。
+6.	RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
@@ -178,7 +182,7 @@
 
         ClientAliveInterval 180
 
-10.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が Fedora EPEL 7 リポジトリにプッシュされたら、epel リポジトリを有効にします。
+10.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が Fedora EPEL 6 リポジトリにプッシュされました。次のコマンドを実行して epel リポジトリを有効にします。
 
         # wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
         # rpm -ivh epel-release-7-5.noarch.rpm
@@ -188,7 +192,7 @@
         # sudo yum install WALinuxAgent
         # sudo systemctl enable waagent.service 
 
-12.	OS ディスクにスワップ領域を作成しないでください。Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux Agent のインストール後に (前の手順を参照)、`/etc/waagent.conf` にある次のパラメーターを正確に変更します。
+12.	OS ディスクにスワップ領域を作成しないでください。Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux Agent のインストール後に (前の手順を参照)、`/etc/waagent.conf` にある次のパラメーターを正確に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -229,7 +233,7 @@
         ><fs> exit
     ルート ユーザーの 2 番目のフィールドを、"!!" から、暗号化されたパスワードに変更します。
 
-3.	KVM に qcow2 イメージから仮想マシンを作成し、ディスクのタイプを **qcow2** に設定し、仮想ネットワーク インターフェイスのデバイス モデルを **virtio** に設定します。仮想マシンを起動し、ルートとしてログインします。
+3.	qcow2 イメージから KVM に仮想マシンを作成し、ディスクのタイプを **qcow2** に設定して、仮想ネットワーク インターフェイスのデバイス モデルを **virtio** に設定します。仮想マシンを起動し、ルートとしてログインします。
 
 4.	`/etc/sysconfig/` ディレクトリに **network** という名前でファイルを作成し、次のテキストを追加します。
 
@@ -256,7 +260,7 @@
 
         # chkconfig network on
 
-8.	RHEL リポジトリからパッケージをインストールできるように、Red Hat のサブスクリプションを登録します。
+8.	RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
         # subscription-manager register –auto-attach --username=XXX --password=XXX
 
@@ -289,7 +293,7 @@
 
 		# service sshd restart
 
-12.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が **Fedora EPEL 6** リポジトリにプッシュされたら、epel リポジトリを有効にします。
+12.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が Fedora EPEL 6 リポジトリにプッシュされました。次のコマンドを実行して epel リポジトリを有効にします。
 
         # wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
         # rpm -ivh epel-release-6-8.noarch.rpm
@@ -299,7 +303,7 @@
         # yum install WALinuxAgent
         # chkconfig waagent on
 
-14.	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、**/etc/waagent.conf** にある次のパラメーターを適切に変更します。
+14.	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、**/etc/waagent.conf** にある次のパラメーターを適切に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -324,15 +328,23 @@
          # qemu-img convert -f qcow2 –O raw rhel-6.6.qcow2 rhel-6.6.raw
     未加工のイメージのサイズが 1 MB になっていることを確認します。そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
 
+         # MB=$((1024*1024))
+         # size=$(qemu-img info -f raw --output json "rhel-6.6.raw" | \
+                  gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+         # rounded_size=$((($size/$MB + 1)*$MB))
+
          # qemu-img resize rhel-6.6.raw $rounded_size
 
     未フォーマット ディスクを固定サイズの vhd に変換します。
 
          # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.6.raw rhel-6.6.vhd
+
  
+
+
 ###RHEL 7.0/7.1
 
-1.	Red Hat の Web サイトからは、RHEL 7.0 の KVM イメージをダウンロードします。
+1.	Red Hat の Web サイトから、RHEL 7.0 の KVM イメージをダウンロードします。
 
 2.	ルート パスワードの設定
 
@@ -351,7 +363,7 @@
 
     ルート ユーザーの 2 番目のフィールドを、"!!" から、暗号化されたパスワードに変更します。
 
-3.	KVM に qcow2 イメージから仮想マシンを作成し、ディスクのタイプを **qcow2** に設定し、仮想ネットワーク インターフェイスのデバイス モデルを **virtio** に設定します。仮想マシンを起動し、ルートとしてログインします。
+3.	qcow2 イメージから KVM に仮想マシンを作成し、ディスクのタイプを **qcow2** に設定して、仮想ネットワーク インターフェイスのデバイス モデルを **virtio** に設定します。仮想マシンを起動し、ルートとしてログインします。
 
 4.	`/etc/sysconfig/` ディレクトリに **network** という名前でファイルを作成し、次のテキストを追加します。
 
@@ -372,7 +384,7 @@
 
         # chkconfig network on
 
-7.	RHEL リポジトリからパッケージをインストールできるように、Red Hat のサブスクリプションを登録します。
+7.	RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
         # subscription-manager register –auto-attach --username=XXX --password=XXX
 
@@ -409,7 +421,7 @@
 
         systemctl restart sshd	
 
-12.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が **Fedora EPEL 7** リポジトリにプッシュされたら、epel リポジトリを有効にします。
+12.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が Fedora EPEL 6 リポジトリにプッシュされました。次のコマンドを実行して epel リポジトリを有効にします。
 
         # wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
         # rpm -ivh epel-release-7-5.noarch.rpm
@@ -422,7 +434,7 @@
 
         # systemctl enable waagent.service
 
-14.	OS ディスクにスワップ領域を作成しないでください。Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux Agent のインストール後に (前の手順を参照)、`/etc/waagent.conf` にある次のパラメーターを正確に変更します。
+14.	OS ディスクにスワップ領域を作成しないでください。Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux Agent のインストール後に (前の手順を参照)、`/etc/waagent.conf` にある次のパラメーターを正確に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -450,6 +462,11 @@
 
     未加工のイメージのサイズが 1 MB になっていることを確認します。そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
 
+         # MB=$((1024*1024))
+         # size=$(qemu-img info -f raw --output json "rhel-7.0.raw" | \
+                  gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+         # rounded_size=$((($size/$MB + 1)*$MB))
+
          # qemu-img resize rhel-7.0.raw $rounded_size
 
     未フォーマット ディスクを固定サイズの vhd に変換します。
@@ -459,7 +476,7 @@
 
 ##VMWare からのイメージの準備
 ###前提条件
-このセクションでは、VMWare に RHEL の仮想マシンが既にインストールされていると仮定します。VMWare にオペレーティング システムをインストールする方法の詳細については、「[VMWare ゲスト オペレーティング システムのインストール ガイド](http://partnerweb.vmware.com/GOSIG/home.html)」を参照してください。
+このセクションでは、VMWare に RHEL の仮想マシンが既にインストールされていると仮定します。VMWare にオペレーティング システムをインストールする方法の詳細については、[VMWare のゲスト オペレーティング システムのインストール ガイド](http://partnerweb.vmware.com/GOSIG/home.html)を参照してください。
  
 - Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、LVM または RAID をデータ ディスク上で使用できます。
 
@@ -499,11 +516,11 @@
 
         # sudo chkconfig network on
 
-6.	RHEL リポジトリからパッケージをインストールできるように、Red Hat のサブスクリプションを登録します。
+6.	RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-7.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が Fedora EPEL 6 リポジトリにプッシュされたら、epel リポジトリを有効にします。
+7.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が Fedora EPEL 6 リポジトリにプッシュされました。次のコマンドを実行して epel リポジトリを有効にします。
 
         # wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
         # rpm -ivh epel-release-6-8.noarch.rpm
@@ -532,7 +549,7 @@
 
 11.	OS ディスクにスワップ領域を作成しないでください。
     
-    Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux Agent のインストール後に (前の手順を参照)、`/etc/waagent.conf` にある次のパラメーターを正確に変更します。
+    Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux Agent のインストール後に (前の手順を参照)、`/etc/waagent.conf` にある次のパラメーターを正確に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -558,11 +575,17 @@
 
     未加工のイメージのサイズが 1 MB になっていることを確認します。そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
 
+        # MB=$((1024*1024))
+        # size=$(qemu-img info -f raw --output json "rhel-6.6.raw" | \
+                gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+        # rounded_size=$((($size/$MB + 1)*$MB))
+
         # qemu-img resize rhel-6.6.raw $rounded_size
 
     未フォーマット ディスクを固定サイズの vhd に変換します。
 
         # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.6.raw rhel-6.6.vhd
+
 
 ###RHEL 7.0/7.1
 
@@ -585,7 +608,7 @@
 
         # sudo chkconfig network on
 
-4.	RHEL リポジトリからパッケージをインストールできるように、Red Hat のサブスクリプションを登録します。
+4.	RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
@@ -619,7 +642,7 @@
 
         ClientAliveInterval 180
 
-9.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が Fedora EPEL 7 リポジトリにプッシュされたら、epel リポジトリを有効にします。
+9.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が Fedora EPEL 6 リポジトリにプッシュされました。次のコマンドを実行して epel リポジトリを有効にします。
 
 
         # wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
@@ -630,7 +653,7 @@
         # sudo yum install WALinuxAgent
         # sudo systemctl enable waagent.service
 
-11.	OS ディスクにスワップ領域を作成しないでください。Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux Agent のインストール後に (前の手順を参照)、`/etc/waagent.conf` にある次のパラメーターを正確に変更します。
+11.	OS ディスクにスワップ領域を作成しないでください。Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux Agent のインストール後に (前の手順を参照)、`/etc/waagent.conf` にある次のパラメーターを正確に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -648,13 +671,18 @@
         # export HISTSIZE=0
         # logout
 
-14.	VM をシャット ダウンし、VMDK ファイルを VHD 形式に変換します。
+14.	VM をシャットダウンし、VMDK ファイルを VHD 形式に変換します。
 
     まず、イメージを未加工の形式に変換します。
 
         # qemu-img convert -f vmdk –O raw rhel-7.0.vmdk rhel-7.0.raw
 
     未加工のイメージのサイズが 1 MB になっていることを確認します。そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
+
+        # MB=$((1024*1024))
+        # size=$(qemu-img info -f raw --output json "rhel-7.0.raw" | \
+                 gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+        # rounded_size=$((($size/$MB + 1)*$MB))
 
         # qemu-img resize rhel-7.0.raw $rounded_size
 
@@ -666,7 +694,7 @@
 ##kickstart ファイルを使用して ISO から自動的に準備する
 ###RHEL 7.0/7.1
 
-1.	以下のコンテンツを含む kickstart ファイルを作成し、ファイルを保存します。kickstart のインストールの詳細については、「[kickstart インストール ガイド](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html)」を参照してください。
+1.	以下のコンテンツを含む kickstart ファイルを作成し、ファイルを保存します。kickstart のインストールの詳細については、[kickstart インストール ガイド](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html)を参照してください。
 
 
         # Kickstart for provisioning a RHEL 7 Azure VM
@@ -813,11 +841,11 @@ Hyper-V および Azure の RHEL でブートアップ中に発生する場合�
 
 再現率:
 
-問題の発生は断続的です。Hyper-V および Azure で頻繁に行われるディスク I/O 操作中に非常によく発生します。
+この問題の発生は断続的です。Hyper-V および Azure で頻繁に行われるディスク I/O 操作中に非常によく発生します。
 
     
 [AZURE.NOTE]この 2 つの既知の問題に対して、Red Hat は既に対処しています。関連する修正プログラムをインストールするには、次のコマンドを実行できます。
 
     # sudo yum update
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

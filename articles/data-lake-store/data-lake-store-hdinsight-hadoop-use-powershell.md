@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="11/06/2015"
+   ms.date="11/13/2015"
    ms.author="nitinme"/>
 
 # Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする
@@ -43,17 +43,17 @@ PowerShell を使用して、Data Lake Store を使用するように HDInsight 
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
-- Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
-- **Windows SDK**。[ここ](https://dev.windows.com/ja-JP/downloads)からインストールできます。この機能は、セキュリティ証明書の作成に使用します。
-- **Azure PowerShell 1.0 以降**。手順については、[Azure PowerShell のインストールと構成](../install-configure-powershell.md)に関するページをご覧ください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/zh-CN/pricing/free-trial/)に関するページを参照してください。
+- Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
+- **Windows SDK**。[ここ](https://dev.windows.com/zh-CN/downloads)からインストールできます。この機能は、セキュリティ証明書の作成に使用します。
+- **Azure PowerShell 1.0 以降**。手順については、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」を参照してください。
  
 
 ## Azure Data Lake Store を作成する
 
 Data Lake Store を作成するには、次の手順に従います。
 
-1. デスクトップで、新しい Azure PowerShell ウィンドウを開き、次のスニペットを入力します。ログインを求められたら、必ずサブスクリプションの管理者または所有者としてログインします。
+1. デスクトップで、新しい Azure PowerShell ウィンドウを開き、次のスニペットを入力します。ログインを求められたら、必ず、サブスクリプションの管理者または所有者としてログインしてください。
 
         # Log in to your Azure account
 		Login-AzureRmAccount
@@ -67,19 +67,19 @@ Data Lake Store を作成するには、次の手順に従います。
 		# Register for Data Lake Store
 		Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
-3. Azure Data Lake Store アカウントは Azure リソース グループに関連付けられます。まず、Azure リソース グループを作成します。
+3. Azure Data Lake Store アカウントは、Azure リソース グループに関連付けられます。まず、Azure リソース グループを作成します。
 
 		$resourceGroupName = "<your new resource group name>"
     	New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
 
-	![Create an Azure Resource Group](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateResourceGroup.png "Create an Azure Resource Group")
+	![Azure リソース グループを作成する](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateResourceGroup.png "Azure リソース グループを作成する")
 
 2. Azure Data Lake Store アカウントを作成します。指定するアカウント名には、小文字と数字のみを含める必要があります。
 
 		$dataLakeStoreName = "<your new Data Lake Store name>"
     	New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
 
-	![Create an Azure Data Lake account](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateADLAcc.png "Create an Azure Data Lake account")
+	![Azure Data Lake アカウントの作成](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateADLAcc.png "Azure Data Lake アカウントの作成")
 
 3. アカウントが正常に作成されたことを確認します。
 
@@ -87,7 +87,7 @@ Data Lake Store を作成するには、次の手順に従います。
 
 	この出力は **True** になります。
 
-4. いくつかのサンプル データを Azure Data Lake にアップロードします。このサンプル データは、HDInsight クラスターからデータにアクセスできることを確認するために、この記事の後半で使用します。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/ProjectKona/tree/master/SQLIPSamples/SampleData/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
+4. いくつかのサンプル データを Azure Data Lake にアップロードします。このサンプル データは、HDInsight クラスターからデータにアクセスできることを確認するために、この記事の後半で使用します。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/AzureDataLake/tree/master/SQLIPSamples/SampleData/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
 
 		
 		$myrootdir = "/"
@@ -105,7 +105,7 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
 
 ### 自己署名証明書の作成
 
-このセクションの手順を進める前に、[Windows SDK](https://dev.windows.com/ja-JP/downloads) がインストールされていることを確認してください。証明書の作成先となるディレクトリ (**C:\\mycertdir** など) も作成しておく必要があります。
+このセクションの手順を進める前に、[Windows SDK](https://dev.windows.com/zh-CN/downloads) がインストールされていることを確認してください。証明書の作成先となるディレクトリ (**C:\\mycertdir** など) も作成しておく必要があります。
 
 1. PowerShell ウィンドウで、Windows SDK をインストールした場所 (通常は `C:\Program Files (x86)\Windows Kits\10\bin\x86`) に移動し、[MakeCert][makecert] ユーティリティを使用して、自己署名証明書と秘密キーを作成します。次のコマンドを使用します。
 
@@ -271,7 +271,7 @@ Data Lake Store を使用するように HDInsight クラスターを構成し�
 
 3. クラスター ブレードで **[リモート デスクトップ]** をクリックし、**[リモート デスクトップ]** ブレードで **[接続]** をクリックします。
 
-	![Remote into HDI cluster](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.HDI.PS.Remote.Desktop.png "Azure リソース グループを作成する")
+	![HDInsight へのリモート接続](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.HDI.PS.Remote.Desktop.png "Azure リソース グループを作成する")
 
 	メッセージが表示されたら、リモート デスクトップ ユーザーに対して指定した資格情報を入力します。
 
@@ -291,7 +291,7 @@ Data Lake Store を使用するように HDInsight クラスターを構成し�
 
 * [ポータル: Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-[makecert]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff548309(v=vs.85).aspx
-[pvk2pfx]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff550672(v=vs.85).aspx
+[makecert]: https://msdn.microsoft.com/zh-CN/library/windows/desktop/ff548309(v=vs.85).aspx
+[pvk2pfx]: https://msdn.microsoft.com/zh-CN/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

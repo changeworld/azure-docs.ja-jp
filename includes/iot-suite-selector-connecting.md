@@ -4,53 +4,53 @@
 - [C on mbed](../articles/iot-suite/iot-suite-connecting-devices-mbed.md)
 - [Node.js](../articles/iot-suite/iot-suite-connecting-devices-node.md)
 
-## Scenario overview
+## シナリオの概要
 
-In this scenario, you will create a device that sends the following telemetry to the remote monitoring [preconfigured solution][lnk-what-are-preconfig-solutions]:
+このシナリオでは、次のテレメトリをリモート監視[構成済みソリューション][lnk-what-are-preconfig-solutions]に送信するデバイスを作成します。
 
-- External temperature
-- Internal temperature
-- Humidity
+- 外部温度
+- 内部温度
+- 湿度
 
-For simplicity, the code on the device generates sample values, but we encourage you to extend the sample by connecting real sensors to your device and sending real telemetry.
+わかりやすくするために、デバイス上のコードではサンプル値を生成しますが、デバイスに実際のセンサーを接続し、実際のテレメトリを送信して、サンプルを拡張することをお勧めします。
 
-## Before you start
+## 開始する前に
 
-Before you write any code for your device, you should provision your remote monitoring preconfigured solution and then provision a device in that solution.
+デバイス用のコードを作成する前に、リモート監視構成済みソリューションをプロビジョニングし、そのソリューションにデバイスをプロビジョニングする必要があります。
 
-### Provision your remote monitoring preconfigured solution
+### リモート監視構成済みソリューションをプロビジョニングする
 
-The device you create will send data to an instance of the [remote monitoring][lnk-remote-monitoring] preconfigured solution. Visit [Get started with Azure IoT Suite][lnk-getstarted] to create an Azure account and provision IoT Suite. Select **Remote monitoring** when you create your new solution.
+作成するデバイスは、[リモート監視][lnk-remote-monitoring]構成済みソリューションのインスタンスにデータを送信します。[Azure IoT Suite の概要][lnk-getstarted]に関するページにアクセスして Azure アカウントを作成し、IoT Suite をプロビジョニングします。新しいソリューションを作成するときは、**[リモート監視]** を選択します。
 
-When the remote monitoring solution has been provisioned, click **Launch** to open the solution dashboard.
+リモート監視ソリューションを既にプロビジョニングしている場合は、**[起動]** をクリックしてソリューション ダッシュボードを開きます。
 
 ![][img-dashboard]
 
-### Provision your device in the remote monitoring solution
+### リモート監視ソリューションでデバイスをプロビジョニングする
 
-> [AZURE.NOTE] If you have already provisioned a device in your solution, you can skip this step. You will need to know the device credentials when you create the client application.
+> [AZURE.NOTE]ソリューションにデバイスを既にプロビジョニングしている場合は、この手順を省略して構いません。クライアント アプリケーションを作成するときに、デバイスの資格情報が必要になります。
 
-For a device to connect to the preconfigured solution, it must be able to identify itself using valid credentials. You can get the device credentials from the solution dashboard and then include them in your client application. 
+デバイスが構成済みソリューションに接続するには、デバイスが有効な資格情報を使用してそれ自体を識別できる必要があります。ソリューション ダッシュボードからデバイスの資格情報を取得し、クライアント アプリケーションに含めることができます。
 
-To add a new device to your remote monitoring solution, complete the following steps in the solution dashboard:
+新しいデバイスをリモート監視ソリューションに追加するには、ソリューション ダッシュボードで次の手順を実行します。
 
-1.  In the lower left-hand corner of the dashboard, click **Add a device**.
+1.  ダッシュボードの左下隅にある **[デバイスの追加]** をクリックします。
 
     ![][1]
 
-2.  In the **Custom Device** panel, click on **Add new**.
+2.  **[カスタム デバイス]** パネルで、**[新規追加]** をクリックします。
 
     ![][2]
 
-3.  Choose **Let me define my own Device ID**, enter a Device ID such as **mydevice**, click **Check ID** to verify that name isn't in use, and then click **Create** to provision the device.
+3.  **[自分で自分のデバイス ID を定義する]** を選択し、**mydevice** などのデバイス ID を入力します。**[ID の確認]** をクリックして、その名前が使用中でないことを確認し、**[作成]** をクリックしてデバイスをプロビジョニングします。
 
     ![][3]
 
-5. Make a note the device credentials (Device ID, IoT Hub Hostname, and Device Key), your client application will need them to connect your device to the remote monitoring solution. Then click **Done**.
+5. デバイスの資格情報 (デバイス ID、IoT Hub ホスト名、デバイス キー) をメモしておきます。クライアント アプリケーションがデバイスをリモート監視ソリューションに接続する際に、この資格情報が必要になります。次に、**[Done]** をクリックします。
 
     ![][4]
 
-6. Make sure your device displays correctly in the devices section. The status is **Pending** until the device establishes a connection to the remote monitoring solution.
+6. デバイス セクションにデバイスが正しく表示されていることを確認します。デバイスがリモート監視ソリューションへの接続を確立するまで、状態が **[保留中]** になります。
 
     ![][5]
 
@@ -64,3 +64,5 @@ To add a new device to your remote monitoring solution, complete the following s
 [lnk-getstarted]: http://www.microsoft.com/server-cloud/internet-of-things/getting-started.aspx
 [lnk-what-are-preconfig-solutions]: ../articles/iot-suite/iot-suite-what-are-preconfigured-solutions.md
 [lnk-remote-monitoring]: ../articles/iot-suite/iot-suite-remote-monitoring-sample-walkthrough.md
+
+<!---HONumber=Nov15_HO4-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric 高信頼アクターの概要"
+   pageTitle="Service Fabric 高信頼アクターの概要 | Microsoft Azure"
    description="Service Fabric 高信頼アクターのプログラミング モデルの概要"
    services="service-fabric"
    documentationCenter=".net"
@@ -36,10 +36,10 @@ public interface ICalculatorActor : IActor
 }
 ```
 
-アクター型では、上記のインターフェイスを次のように実装できます。
+アクター型では、このインターフェイスを次のように実装できます。
 
 ```csharp
-public class CalculatorActor : Actor, ICalculatorActor
+public class CalculatorActor : StatelessActor, ICalculatorActor
 {
     public Task<double> AddAsync(double valueOne, double valueTwo)
     {
@@ -81,9 +81,9 @@ Service Fabric アクターは仮想アクターです。つまり、その有�
 Service Fabric アクターは、高可用性と信頼性を実現するために、クラスター全体にアクターを分散し、障害が発生したノードのアクターを、正常に稼働しているノードに必要に応じて自動的に移行します。クライアント側の `ActorProxy` クラスは、必要な解決策を実行して、ID [パーティション](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)によってアクターを検索し、このアクターによって通信チャネルを開きます。`ActorProxy` も、通信エラーやフェールオーバーが発生した場合に再試行します。これにより障害が発生してもメッセージは確実に配信されます。また、アクター実装によって、同じクライアントから重複するメッセージを取得できることも意味します。
 
 ## 同時実行
-### ターンごとの同時実行
+### ターンに基づくアクセス
 
-アクター ランタイムは、アクター メソッドの単純なターンごとの同時実行を提供します。これは、アクター コード内で随時アクティブ化できるスレッドが 1 つだけであることを意味します。
+アクター ランタイムは、アクター メソッドにアクセスするためのターンに基づくモデルを提供します。これは、アクター コード内で随時アクティブ化できるスレッドが 1 つだけであることを意味します。
 
 ターンは、他のアクターまたはクライアントからの要求に応じたアクター メソッドの完全な実行、あるいは[タイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)のコールバックの完全な実行で構成されます。これらのメソッドとコールバックが非同期でも、アクター ランタイムはこれらをインターリーブしません。ターンは、新しいターンが許可される前に完全に完了する必要があります。つまり、現在実行しているアクター メソッドまたはタイマーとアラームのコールバックは、メソッドまたはコールバックの新しい呼び出しが許可される前に完全に完了する必要があります。実行がメソッドまたはコールバックから返され、メソッドまたはコールバックによって返されたタスクが完了した場合は、そのメソッドまたはコールバックは完了したと見なされます。ターンごとの同時実行は、メソッド、タイマーおよびコールバックが異なる場合でも優先されることに注意してください。
 
@@ -121,12 +121,12 @@ Service Fabric アクターは、高可用性と信頼性を実現するため�
 Fabric アクターでは、ステートレスまたはステートフルなアクターを作成することができます。
 
 ### ステートレス アクター
-``Actor`` 基本クラスから派生したステートレス アクターには、アクター ランタイムによって管理される状態はありません。アクターのメンバー変数は、他の .NET 型と同じように、そのメモリ内の有効期間にわたって保持されます。ただし、アクターはアイドル状態がしばらく続くとガベージ コレクトされるため、その状態は失われます。同様に、フェールオーバーによって状態が失われる場合もあります。フェールオーバーは、アップグレード、リソース バランシング操作、またはアクター プロセスやアクター プロセスをホストするノードの障害によって発生します。
+`StatelessActor` 基本クラスから派生したステートレス アクターには、アクター ランタイムによって管理される状態はありません。アクターのメンバー変数は、他の .NET 型と同じように、そのメモリ内の有効期間にわたって保持されます。ただし、アクターはアイドル状態がしばらく続くとガベージ コレクトされるため、その状態は失われます。同様に、フェールオーバーによって状態が失われる場合もあります。フェールオーバーは、アップグレード、リソース バランシング操作、またはアクター プロセスやアクター プロセスをホストするノードの障害によって発生します。
 
 ステートレス アクターの例を次に示します。
 
 ```csharp
-class HelloActor : Actor, IHello
+class HelloActor : StatelessActor, IHello
 {
     public Task<string> SayHello(string greeting)
     {
@@ -136,12 +136,12 @@ class HelloActor : Actor, IHello
 ```
 
 ### ステートフル アクター
-ステートフル アクターには、ガベージ コレクションとフェールオーバー全体で保持しなければならない状態が含まれます。このステートフル アクターは `Actor<TState>` 基本クラスから派生します。`TState` は、保持する必要がある状態の種類です。状態には、基本クラスの `State` プロパティを使用して、アクター メソッドでアクセスできます。
+ステートフル アクターには、ガベージ コレクションとフェールオーバー全体で保持しなければならない状態が含まれます。このステートフル アクターは `StatefulActor<TState>` から派生します。`TState` は、保持する必要がある状態の種類です。状態には、基本クラスの `State` プロパティを使用して、アクター メソッドでアクセスできます。
 
 状態にアクセスするステートフル アクターの例を次に示します。
 
 ```csharp
-class VoicemailBoxActor : Actor<VoicemailBox>, IVoicemailBoxActor
+class VoicemailBoxActor : StatefulActor<VoicemailBox>, IVoicemailBoxActor
 {
     public Task<List<Voicemail>> GetMessagesAsync()
     {
@@ -198,4 +198,4 @@ public interface IVoicemailBoxActor : IActor
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

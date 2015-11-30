@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/24/2015" 
+	ms.date="11/17/2015"
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication のアプリ パスワードを Azure ポータルで作成する
@@ -32,4 +32,4 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 
 <center>![Cloud](./media/multi-factor-authentication-end-user-app-passwords-create-azure/app2.png)</center>
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

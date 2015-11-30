@@ -4,7 +4,7 @@
    services="traffic-manager"
    documentationCenter="na"
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="traffic-manager"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
+   ms.date="11/12/2015"
    ms.author="joaoma" />
 
 # Traffic Manager エンドポイントの無効化または有効化
@@ -40,14 +40,8 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 [Traffic Manager - プロファイルの無効化、有効化、または削除](disable-enable-or-delete-a-profile.md)
 
-[Traffic Manager について](../traffic-manager.md)
+[Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 
-[Cloud Services](http://go.microsoft.com/fwlink/?LinkId=314074)
+[Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
 
-[Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
-
-
-[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

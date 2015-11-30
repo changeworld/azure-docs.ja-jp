@@ -143,9 +143,9 @@
 
     MSBuild がバージョン番号を生成できるようにするには、AssemblyReference.cs で `1.0.*` のようなバージョンを設定します。
 
-## バックエンド サーバーの監視
+## バックエンド サーバーとデスクトップ アプリを監視する
 
-[基本的な API の使用に関するページ](app-insights-windows-desktop.md)
+[Windows Server SDK モジュールを使用する](app-insights-windows-desktop.md)。
 
 
 ## データの視覚化
@@ -185,15 +185,15 @@
 
 ## プロパティ名または値を変更する
 
-フィルター (app-insights-api-filtering-sampling.md#filtering) を作成します。これにより、アプリから Application Insights にテレメトリが送信される前に、テレメトリの変更またはフィルター処理ができるようになります。
+[フィルター](app-insights-api-filtering-sampling.md#filtering)を作成します。これにより、アプリから Application Insights にテレメトリが送信される前に、テレメトリの変更またはフィルター処理ができるようになります。
 
 ## 特定のユーザーとその使用状況を一覧表示する
 
-[特定のユーザーのみを検索](#search-specific-users)するために、[認証されたユーザー ID](app-insights-api-custom-events-metrics/#authenticated-users) を設定できます。
+[特定のユーザーのみを検索](#search-specific-users)するために、[認証されたユーザー ID](app-insights-api-custom-events-metrics.md#authenticated-users) を設定できます。
 
 ユーザーが表示するページやログインの頻度についてユーザーを一覧表示するには、2 つのオプションがあります。
 
-* [認証されたユーザー ID を設定](app-insights-api-custom-events-metrics/#authenticated-users)し、[データベースにエクスポート](app-insights-code-sample-export-sql-stream-analytics.md)し、適切なツールを使用してユーザー データを分析します。
+* [認証されたユーザー ID を設定](app-insights-api-custom-events-metrics.md#authenticated-users)し、[データベースにエクスポート](app-insights-code-sample-export-sql-stream-analytics.md)し、適切なツールを使用してユーザー データを分析します。
 * ユーザー数が少ない場合は、メトリック値またはイベント名として関心のあるデータを使用し、ユーザー ID をプロパティとして設定して、カスタム イベントまたはメトリックを送信します。ページ ビューを分析するには、標準の JavaScript trackPageView 呼び出しを置き換えます。サーバー側のテレメトリを分析するには、テレメトリ初期化子を使用して、ユーザー ID をすべてのサーバー テレメトリに追加します。次に、ユーザー ID を基に、メトリックや検索結果をフィルター処理および細分化します。
 
 
@@ -219,25 +219,25 @@
 
 
 
-パフォーマンス カウンター、HTTP 要求、依存関係などの**選択されている標準のコレクターを無効にする**には、[ApplicationInsights.config](app-insights-api-custom-events-metrics.md) 内の該当する行を削除するか、コメント アウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
+**選択されている標準のコレクターを無効にする**には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config](app-insights-api-custom-events-metrics.md) 内の該当する行を削除するか、またはコメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
 
 
 ## システム パフォーマンス カウンターの表示
 
-メトリックス エクスプローラーに表示できるメトリックには、一連のシステム パフォーマンス カウンターがあります。事前定義された **[サーバー]** というブレードに、それらのいくつかが表示されます。
+メトリックス エクスプローラーに表示できるメトリックには、一連のシステム パフォーマンス カウンターがあります。事前定義された**サーバー**というブレードに、それらのいくつかが表示されます。
 
 ![Application Insights リソースを開いて、[サーバー] をクリック](./media/app-insights-how-do-i/121-servers.png)
 
 ### パフォーマンス カウンターのデータが表示されない場合
 
 * 自身のコンピューターまたは VM の**IIS サーバー**の場合。[Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)します。 
-* **Azure Web サイト**の場合。まだパフォーマンス カウンターに対応していません。Azure Web サイトのコントロール パネルの標準パーツとして取得できるメトリックがいくつか用意されています。
-* **UNIX サーバー**の場合。[collectd をインストールします](app-insights-java-collectd.md)。
+* **Azure の Web サイト**の場合。パフォーマンス カウンターにまだ対応していません。Azure Web サイトのコントロール パネルの標準パーツとして取得できるメトリックがいくつか用意されています。
+* **Unix サーバー**の場合。[collectd をインストールします](app-insights-java-collectd.md)。
 
 ### 表示するパフォーマンス カウンターの数を増やすには
 
 * 最初に、[新しいグラフを追加](app-insights-metrics-explorer.md)し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
 * 含まれていない場合は、[パフォーマンス カウンター モジュールによって収集されたセットにカウンターを追加](app-insights-web-monitor-performance.md#system-performance-counters)します。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

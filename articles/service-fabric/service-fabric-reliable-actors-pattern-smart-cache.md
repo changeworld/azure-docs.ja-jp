@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/05/2015"
+   ms.date="11/13/2015"
    ms.author="vturecek"/>
 
 # 高信頼アクターの設計パターン: スマート キャッシュ
@@ -51,7 +51,7 @@ public interface ILeaderboard : IActor
 ## スマート キャッシュのコード サンプル – Leaderboard アクター
 
 ```
-public class Leaderboard : Actor<LeaderboardCollection>, ILeaderboard
+public class Leaderboard : StatefulActor<LeaderboardCollection>, ILeaderboard
 {
     // Specialised collection, could be part of the actor
 
@@ -173,7 +173,7 @@ public class Job : IComparable<Job>
 ## スマート キャッシュのコード サンプル – Job Queue
 
 ```
-public class JobQueue : Actor<List<Jobs>>, IJobQueue
+public class JobQueue : StatefulActor<List<Jobs>>, IJobQueue
 {
 
     public override Task OnActivateAsync()
@@ -301,4 +301,4 @@ public Task RefreshRates()
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-pattern-smart-cache/smartcache-arch.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

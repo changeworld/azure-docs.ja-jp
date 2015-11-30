@@ -26,7 +26,7 @@
 この記事には、Windows VM に対して Azure VM 拡張機能を構成する際の構成のサンプルが記載されています。
 
 
-これらの拡張機能の詳細については、「[Azure VM 拡張機能とその機能](https://msdn.microsoft.com/library/azure/dn606311.aspx)」を参照してください。
+これらの拡張機能の詳細については、「[Azure VM 拡張機能とその概要](https://msdn.microsoft.com/library/azure/dn606311.aspx)」を参照してください。
 
 拡張機能テンプレートの作成の詳細については、「[拡張機能テンプレートの作成](virtual-machines-extensions-authoring-templates.md)」を参照してください。
 
@@ -285,12 +285,13 @@
 
 ### Azure 診断
 
-Azure 診断拡張機能の概要については、[こちら](https://msdn.microsoft.com/library/azure/dn782207.aspx/)をクリックしてください。
+診断を構成する方法の詳細については、「[Azure 診断の拡張機能](virtual-machines-extensions-diagnostics-windows-template.md)」を参照してください。
 
           {
             "publisher": "Microsoft.Azure.Diagnostics",
             "type": "IaaSDiagnostics",
-            "typeHandlerVersion": "1.4",
+            "typeHandlerVersion": "1.5",
+			"autoUpgradeMinorVersion": true,
             "settings": {
               "xmlCfg": "[base64(variables('wadcfgx'))]",
               "storageAccount": "[parameters('diagnosticsStorageAccount')]"
@@ -308,4 +309,4 @@ Azure 診断拡張機能の概要については、[こちら](https://msdn.micr
 
 [Windows VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

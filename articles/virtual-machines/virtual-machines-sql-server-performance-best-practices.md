@@ -14,13 +14,10 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="09/01/2015"
+	ms.date="11/13/2015"
 	ms.author="jroth" />
 
 # Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
- 
 
 ## 概要
 
@@ -28,7 +25,9 @@
 
 SQL Server イメージを作成するときは、[新しいポータル](https://manage.windowsazure.com)を使用して、Premium Storage を既定使用する機能や、自動修正、自動バックアップ、および AlwaysOn 構成などのその他のオプションを活用することを検討してください。
 
->[AZURE.NOTE]このドキュメントは、Azure VM で SQL Server の最適なパフォーマンスを得ることに重点を置いています。ワークロードの要求が厳しくない場合は、以下に示す最適化がすべて必要になるわけではありません。各推奨事項を評価するときに、パフォーマンスのニーズとワークロードのパターンを考慮してください。
+このドキュメントは、Azure VM で SQL Server の最適なパフォーマンスを得ることに重点を置いています。ワークロードの要求が厳しくない場合は、以下に示す最適化がすべて必要になるわけではありません。各推奨事項を評価するときに、パフォーマンスのニーズとワークロードのパターンを考慮してください。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 ## クイック チェック リスト
 
@@ -38,7 +37,7 @@ Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現
 |---|---|
 |**VM サイズ**|[DS3](virtual-machines-size-specs.md#standard-tier-ds-series) 以上 (SQL Enterprise Edition の場合)。<br/><br/>[DS2](virtual-machines-size-specs.md#standard-tier-ds-series) 以上 (SQL Standard Edition および Web Edition の場合)。|
 |**ストレージ**|[Premium Storage](../storage/storage-premium-storage-preview-portal.md) を使用します。<br/><br/>[ストレージ アカウント](../storage/storage-create-storage-account.md)と SQL Server VM を同じリージョンに保持します。<br/><br/>ストレージ アカウントで Azure [geo 冗長ストレージ](../storage/storage-redundancy.md) (geo レプリケーション) を無効にします。|
-|**ディスク**|少なくとも 2 つの [P30 ディスク](../storage/storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whJA-JPing-premium-storage) (ログ ファイル用に 1 つ、データ ファイルと TempDB 用に 1 つ) を使用します。<br/><br/>データベースの保存またはログ記録にオペレーティング システム ディスクまたは一時ディスクを使用することは避けます。<br/><br/>データ ファイルと TempDB をホストするディスクで読み取りキャッシュを有効にします。<br/><br/>ログ ファイルをホストするディスクでは、キャッシュを有効にしないでください。<br/><br/>複数の Azure データ ディスクをストライプして、IO スループットを増やします。<br/><br/>ドキュメントに記載されている割り当てサイズでフォーマットします。|
+|**ディスク**|少なくとも 2 つの [P30 ディスク](../storage/storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-JPing-premium-storage) (ログ ファイル用に 1 つ、データ ファイルと TempDB 用に 1 つ) を使用します。<br/><br/>データベースの保存またはログ記録にオペレーティング システム ディスクまたは一時ディスクを使用することは避けます。<br/><br/>データ ファイルと TempDB をホストするディスクで読み取りキャッシュを有効にします。<br/><br/>ログ ファイルをホストするディスクでは、キャッシュを有効にしないでください。<br/><br/>複数の Azure データ ディスクをストライプして、IO スループットを増やします。<br/><br/>ドキュメントに記載されている割り当てサイズでフォーマットします。|
 |**I/O**|データベース ページの圧縮を有効にします。<br/><br/>データ ファイルの瞬時初期化を有効にします。<br/><br/>データベースで自動拡張を制限するか、無効にします。<br/><br/>データベースで自動圧縮を無効にします。<br/><br/>システム データベースも含め、すべてのデータベースをデータ ディスクに移動します。<br/><br/>SQL Server エラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。<br/><br/>既定のバックアップ ファイルとデータベース ファイルの場所を設定します。<br/><br/>ロックされたページを有効にします。<br/><br/>SQL Server パフォーマンス修正プログラムを適用します。|
 |**機能固有**|BLOB ストレージに直接バックアップします。|
 
@@ -74,7 +73,7 @@ D シリーズまたは G シリーズの仮想マシン (VM) を使用してい
 
 ### データ ディスク
 
-- **データ ファイルとログ ファイル用のデータ ディスクの数**: 少なくとも、2 つの [P30 ディスク](../storage/storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whJA-JPing-premium-storage)を使用し、一方のディスクにログ ファイル、もう一方にデータ ファイルと TempDB を含めます。スループットを向上させるために、データ ディスクを追加することが必要になる場合もあります。データ ディスクの数を決定するには、データおよびログ ディスクで使用可能な IOPS の数を分析する必要があります。詳細については、[ディスクへの Premium Storage の使用](../storage/storage-premium-storage-preview-portal.md)に関する記事で [VM サイズ](virtual-machines-size-specs.md)およびディスク サイズごとの IOPS を示す表をご覧ください。さらに多くの帯域幅が必要な場合は、追加のディスクを接続し、ディスク ストライピングを使用できます。Premium Storage を使用しない場合は、ご使用の [VM サイズ](virtual-machines-size-specs.md)でサポートされる最大数のデータ ディスクを追加し、ディスク ストライピングを使用することをお勧めします。ディスク ストライピングの詳細については、下記の関連セクションをご覧ください。
+- **データ ファイルとログ ファイル用のデータ ディスクの数**: 少なくとも、2 つの [P30 ディスク](../storage/storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-JPing-premium-storage)を使用し、一方のディスクにログ ファイル、もう一方にデータ ファイルと TempDB を含めます。スループットを向上させるために、データ ディスクを追加することが必要になる場合もあります。データ ディスクの数を決定するには、データおよびログ ディスクで使用可能な IOPS の数を分析する必要があります。詳細については、[ディスクへの Premium Storage の使用](../storage/storage-premium-storage-preview-portal.md)に関する記事で [VM サイズ](virtual-machines-size-specs.md)およびディスク サイズごとの IOPS を示す表をご覧ください。さらに多くの帯域幅が必要な場合は、追加のディスクを接続し、ディスク ストライピングを使用できます。Premium Storage を使用しない場合は、ご使用の [VM サイズ](virtual-machines-size-specs.md)でサポートされる最大数のデータ ディスクを追加し、ディスク ストライピングを使用することをお勧めします。ディスク ストライピングの詳細については、下記の関連セクションをご覧ください。
 
 - **キャッシュ ポリシー**: データ ファイルと TempDB のみをホストするデータ ディスクで読み取りキャッシュを有効にします。Premium Storage を使用していない場合は、どのデータ ディスクでもキャッシュを有効にしないでください。ディスクのキャッシュを構成する手順については、「[Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847)」および「[Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx)」をご覧ください。
 
@@ -86,7 +85,7 @@ D シリーズまたは G シリーズの仮想マシン (VM) を使用してい
 	
 	- Windows 2008 R2 以前では、ダイナミック ディスク (OS ストライプ ボリューム) を使用できます。ストライプ サイズは常に 64 KB です。Windows 8 および Windows Server 2012 の時点で、このオプションは使用されていません。詳細については、[Windows Storage Management API に移行しつつある仮想ディスク サービス](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx)に関するページでサポートに関する声明をご覧ください。
 	
-	- ワークロードで大量のログが発生するわけではなく、専用の IOPS を必要としない場合は、記憶域プールを 1 つだけ構成します。それ以外の場合は、記憶域プールを 2 つ作成して、1 つをログ ファイルに使用し、もう 1 つをデータ ファイルと TempDB に使用します。負荷予測に基づいて、各記憶域プールに関連付けるディスクの数を決定します。接続できるデータ ディスクの数は VM サイズによって異なることに注意してください。詳細については、「[仮想マシンのサイズ](virtual-machines-size-specs.md)」をご覧ください。
+	- ワークロードで大量のログが発生するわけではなく、専用の IOPS を必要としない場合は、記憶域プールを 1 つだけ構成します。それ以外の場合は、記憶域プールを 2 つ作成して、1 つをログ ファイルに使用し、もう 1 つをデータ ファイルと TempDB に使用します。負荷予測に基づいて、各記憶域プールに関連付けるディスクの数を決定します。接続できるデータ ディスクの数は VM サイズによって異なることに注意してください。詳細については、「[Virtual Machines のサイズ](virtual-machines-size-specs.md)」を参照してください。
 
 ## I/O パフォーマンスに関する考慮事項
 
@@ -134,4 +133,4 @@ SQL Server と Premium Storage についてさらに詳しく調べたい場合�
 
 SQL Server 仮想マシンに関する他のトピックについては、[Azure 仮想マシンにおける SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)に関するページをご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

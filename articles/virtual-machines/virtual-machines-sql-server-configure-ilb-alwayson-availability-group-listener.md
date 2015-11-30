@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="09/16/2015"
+	ms.date="11/06/2015"
 	ms.author="jroth" />
 
 # Azure での AlwaysOn 可用性グループの ILB リスナーの構成
@@ -31,13 +31,14 @@
 
 可用性グループには、オンプレミスのみ、Azure のみ、またはオンプレミスと Azure の両方にまたがるハイブリッド構成のレプリカを含めることができます。Azure レプリカは、同じリージョン内に配置することも、複数の仮想ネットワーク (VNet) を使用して複数のリージョンに配置することもできます。後述の手順では、既に[可用性グループは構成している](virtual-machines-sql-server-alwayson-availability-groups-gui.md)ものの、リスナーは構成していないと仮定しています。
 
-Azure での ILB を使用した可用性グループ リスナーに関する次の制限事項に注意してください。
+## 内部リスナーのガイドラインと制限事項
+ILB を使用した Azure の可用性グループ リスナーに関する次のガイドラインを確認してください。
 
 - 可用性グループ リスナーは、Windows Server 2008 R2、Windows Server 2012、および Windows Server 2012 R2 でサポートされます。
 
-- クライアント アプリケーションは、可用性グループ VM が含まれるクラウド サービスとは異なるクラウド サービスに存在する必要があります。Azure では、同じクラウド サービスに存在するクライアントとサーバーによる Direct Server Return はサポートされません。
+- 内部可用性グループ リスナーは、クラウド サービスごとに 1 つのみサポートされます。これは、リスナーが ILB に対して構成されており、クラウド サービスごとに 1 つの ILB しか持たないためです。ただし、複数の外部リスナーを作成することができます。詳細については、「[Azure での AlwaysOn 可用性グループの外部リスナーの構成](virtual-machines-sql-server-configure-public-alwayson-availability-group-listener.md)」を参照してください。
 
-- 可用性グループリスナーは、クラウド サービスごとに 1 つのみサポートされます。これは、リスナーがクラウド サービスの VIP アドレスまたは内部ロード バランサーの VIP アドレスのいずれかを使用するように構成されているためです。Azure は、特定のクラウド サービスで複数の VIP アドレスの作成をサポートするようになりましたが、この制限は引き続き有効であることに注意してください。
+- クラウド サービスのパブリック VIP を使用する外部リスナーも含まれるクラウド サービスに内部リスナーを作成することはできません。
 
 ## リスナーのアクセシビリティを決定する
 
@@ -83,7 +84,7 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 1. 変数の設定後、スクリプトを、テキスト エディターからそれを実行する Azure PowerShell セッションにコピーします。プロンプトにまだ >> が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーを再度押します。
 
->[AZURE.NOTE]現時点において、Microsoft Azure 管理ポータルでは内部ロード バランサーをサポートしていないため、ポータルには ILB とエンドポイントのどちらも表示されません。ただし、エンドポイントでロード バランサーが実行されている場合は、**Get-AzureEndpoint** によって内部 IP アドレスが返されます。それ以外の場合、Null が返されます。
+>[AZURE.NOTE]現時点において、Microsoft Azure 管理ポータルでは内部ロード バランサーをサポートしていないため、ポータルには ILB とエンドポイントのどちらも表示されません。ただし、エンドポイントで Load Balancer が実行されている場合は、**Get-AzureEndpoint** によって内部 IP アドレスが返されます。それ以外の場合、Null が返されます。
 
 ## KB2854082 がインストールされていることを確認する (必要に応じて)
 
@@ -114,8 +115,8 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 		
 		# If you are using Windows Server 2012 or higher, use the Get-Cluster Resource command. If you are using Windows Server 2008 R2, use the cluster res command. Both commands are commented out. Choose the one applicable to your environment and remove the # at the beginning of the line to convert the comment to an executable line of code. 
 		
-		# Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"OverrideAddressMatch"=1;"EnableDhcp"=0}
-		# cluster res $IPResourceName /priv enabledhcp=0 overrideaddressmatch=1 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
+		# Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+		# cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
 1. 変数の設定後、管理者特権で Windows PowerShell ウィンドウを開いて、スクリプトをテキスト エディターからコピーし、それを実行する Azure PowerShell セッションに貼り付けます。プロンプトにまだ >> が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーを再度押します。
 
@@ -137,4 +138,4 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

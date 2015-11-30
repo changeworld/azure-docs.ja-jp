@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/15/2015"
+   ms.date="11/17/2015"
    ms.author="jesseb"/>
 
 # Visual Studio を利用すれば、Service Fabric アプリケーションの記述と管理が簡単になりまする
@@ -34,8 +34,24 @@ Service Fabric アプリケーションとサービスを Visual Studio で管�
 4. 実行している任意のアプリケーション インスタンスの削除
 5. 新しいアプリケーション インスタンスの作成
 
-Visual Studio で、[ビルド] メニューから、[ソリューションの配置] を選択してアプリケーションをデプロイできます。**[F5]** キーを押してもアプリケーションはデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。
+Visual Studio では、**[F5]** キーを押してもアプリケーションはデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。**[Ctrl + F5]** キーを押すとデバッグなしでアプリケーションをデプロイし、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。「[Visual Studio を使用してリモート クラスターにアプリケーションを発行する](service-fabric-publish-app-remote-cluster.md)」を参照してください。
 
+### テスト実行間でのデータの保持
+
+多くの場合、サービスはテスト データ入力の追加、コード ブロックの微調整、ローカルでの再デバッグと、ローカルでテストします。Visual Studio Service Fabric のツールには、前のセッションで入力したデータを保持して再利用できる、**[開始時にデータを保持する]**と呼ばれる便利なプロパティが用意されています。
+
+### [開始時にデータを保持する] プロパティを有効にするには
+
+1. アプリケーション プロジェクトのショートカット メニューで、**[プロパティ]** (または **[F4]** キー) を選択します。
+1. **[プロパティ]** ウィンドウで、**[開始時にデータを保持する]** プロパティを **[はい]** に設定します。
+
+	![[開始時にデータを保持する] プロパティの設定][preservedata]
+
+アプリケーションを再度実行すると、デプロイメント スクリプトは監視なしの自動モードを使用してそのデプロイメントをアップグレードとして扱い、アプリケーションを日付文字列が追加された新しいバージョンにアップグレードします。アップグレード プロセスでは、前のデバッグ セッションで入力したすべてのデータが保持されます。
+
+![日付が追加された新しいアプリケーション バージョンの例][preservedate]
+
+データは、Service Fabric プラットフォームのアップグレード機能を活用して保持されます。アプリケーションのアップグレードの詳細については、「[Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)」を参照してください。
 
 ## Service Fabric アプリケーションへのサービスの追加
 
@@ -53,15 +69,14 @@ Visual Studio で、[ビルド] メニューから、[ソリューションの�
 
 ## Service Fabric アプリケーションのパッケージ化
 
-アプリケーション パッケージは、アプリケーションとそのサービスをクラスターにデプロイするために作成する必要があります。パッケージは、アプリケーション マニフェスト、サービス マニフェスト、および特定のレイアウトで必要なその他のファイルを整理します。Visual Studio は、パッケージを 'pkg' ディレクトリのアプリケーション プロジェクト フォルダーに設定し、管理します。**[パッケージ]** をクリックすると、アプリケーション パッケージが作成もしくは更新されます。カスタム Powershell スクリプトを使用してアプリケーションをデプロイする場合に、これを実行できます。
+アプリケーション パッケージは、アプリケーションとそのサービスをクラスターにデプロイするために作成する必要があります。パッケージは、アプリケーション マニフェスト、サービス マニフェスト、および特定のレイアウトで必要なその他のファイルを整理します。Visual Studio は、パッケージを 'pkg' ディレクトリのアプリケーション プロジェクト フォルダーに設定し、管理します。**[アプリケーション]** コンテキスト メニューから **[パッケージ]** をクリックすると、アプリケーション パッケージが作成または更新されます。カスタム Powershell スクリプトを使用してアプリケーションをデプロイする場合に、これを実行できます。
 
 ## アプリケーションの削除
 
-サーバー エクスプローラーを使用して、ローカルのクラスターからアプリケーションを削除できます。これで、次のように、上で説明したデプロイの手順を元に戻すことができます。
+Service Fabric Explorer を使用して、ローカル クラスターからアプリケーション タイプのプロビジョニングを解除できます。クラスター エクスプローラーは、http://localhost:19080/Explorer などのクラスターの HTTP エンドポイント (通常 19080 または 19007) からアクセスできます。これで、次のように、上で説明したデプロイの手順を元に戻すことができます。
 
 1. 実行している任意のアプリケーション インスタンスの削除
 2. アプリケーションの種類の登録解除
-3. イメージ ストアからのアプリケーション パッケージの削除
 
 ![アプリケーションの削除](./media/service-fabric-manage-application-in-visual-studio/removeapplication.png)
 
@@ -69,7 +84,8 @@ Visual Studio で、[ビルド] メニューから、[ソリューションの�
 ## 次のステップ
 
 - [Service Fabric のアプリケーション モデル](service-fabric-application-model.md)
-- [Service Fabric アプリケーションのデプロイメント](service-fabric-deploy-remove-applications.md)
+- [Service Fabric アプリケーションのデプロイ](service-fabric-deploy-remove-applications.md)
+- [複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)
 - [Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 - [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
@@ -78,5 +94,7 @@ Visual Studio で、[ビルド] メニューから、[ソリューションの�
 [manageservicefabric]: ./media/service-fabric-manage-application-in-visual-studio/manageservicefabric.png
 [newservice]: ./media/service-fabric-manage-application-in-visual-studio/newservice.png
 [newserviceapplicationmanifest]: ./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
+[preservedata]: ./media/service-fabric-manage-application-in-visual-studio/preservedata.png
+[preservedate]: ./media/service-fabric-manage-application-in-visual-studio/preservedate.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

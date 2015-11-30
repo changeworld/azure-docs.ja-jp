@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure Search が使用された Try Azure App Service の試用 | Microsoft Azure | ホスト型クラウド検索サービス" 
-   description="ホスト型クラウド検索サービスの Azure Search を TryAzureAppService テンプレートを使用し、最大 1 時間無料で試してください。" 
+   pageTitle="Azure App Service での Azure Search の無料試用 | Microsoft Azure"
+   description="Azure App Service テンプレートを使用して、Azure Search を最大で 1 時間無料でお試しいただけます。"
    services="search" 
    documentationCenter="" 
    authors="HeidiSteen" 
@@ -13,43 +13,42 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search" 
-   ms.date="11/04/2015"
+   ms.date="07/13/2015"
    ms.author="heidist"/>
 
-# Azure Search が使用された Try Azure App Service の試用
+# Azure App Service での Azure Search の無料試用
 
-[Try Azure App Service](https://tryappservice.azure.com/) は、Azure サブスクリプションにサインアップせずに、Azure Search を含む Azure サービスを、最大 1 時間完全に無料でテスト使用できる新しい手段です。
+[Azure App Service](https://tryappservice.azure.com/) は、Azure サブスクリプションにサインアップせずに、Azure Search を含む Azure サービスを、最大 1 時間完全に無料でテスト使用できる新しい手段です。
 
 このサイトには、選択可能ないくつかのテンプレートが用意されています。Azure Search を含む ASP.NET テンプレートを選択すると、選択したサービスのサポートがある、完全に機能する Web サイトに 1 時間アクセスできます。Azure Search が管理するいかなるデータも更新または削除できませんが、クエリを実行して、コード変更を何回も実行し、ユーザー エクスペリエンスを作り変えることができます。検証中にセッションの有効期限が切れた場合は、別のセッションでいつでも作業を再開できます。または、インデックスを直接作成または読み込むことが目的の場合は、試用版または完全なサブスクリプションに移行できます。
 
-[Try Azure App Service](https://tryappservice.azure.com/) サイトの Azure Search は、Azure プラットフォーム上のこのサービスのみで使用可能な、機能豊富なフルテキスト検索エクスペリエンスと、検索中心の機能を多数提供するこの Web アプリ テンプレートの一部です。
+[Azure App Service](https://tryappservice.azure.com/) サイトの Azure Search は、Azure プラットフォーム上のこのサービスのみで使用可能な、機能豊富なフルテキスト検索エクスペリエンスと、検索中心の機能を多数提供するこの Web アプリ テンプレートの一部です。
 
-SQL Database などの他の Azure サービスにもフルテキスト検索はありますが、Azure Search のようなサービスでは、コントロール、改ページおよびカウント、検索結果の強調表示、クエリ候補のオート コンプリート、自然言語のサポート、ファセット ナビゲーション、フィルター処理などのチューニングができます。いくつかの[例](https://github.com/AzureSearch)で、Azure Search と ASP.NET のみを使用して、すべての機能を備えた検索ベースのアプリケーションが開発可能であることを示しています。
+SQL Database などの他の Azure サービスにもフルテキスト検索はありますが、Azure Search のようなサービスでは、コントロール、改ページおよびカウント、検索結果の強調表示、クエリ候補のオート コンプリート、自然言語のサポート、ファセット ナビゲーション、フィルター処理などのチューニングができます。いくつかの[例](https://github.com/Azure-Samples?utf8=%E2%9C%93&query=search)で、Azure Search と ASP.NET のみを使用して、すべての機能を備えた検索ベースのアプリケーションが開発可能であることを示しています。
 
-[Try Azure App Service](https://tryappservice.azure.com/) サービスの Azure Search サービスは、読み取り専用です。そのため、セッションで提供される検索コーパスを使用する必要があります。独自のインデックスまたはデータをアップロードまたは使用することはできません。ユーザーは、[米国地質調査所 (USG)]() の約 3 百万行の全米のランドマーク、史跡、建造物、およびその他のランドマーク地物のデータを使用し作業します。
+[Azure App Service](https://tryappservice.azure.com/) プランの一部である Azure Search サービスは既に使用するユーザー向けに作成されており、検索クエリを受け付ける準備ができています。独自のインデックスまたはデータをアップロードまたは使用することはできません。ユーザーは、[米国地質調査所 (USG)](http://geonames.usgs.gov/domestic/download_data.htm) の約 3 百万行の全米のランドマーク、史跡、建造物、およびその他のランドマーク地物のデータを使用し作業します。
 
 1 時間のセッションを最大限に活用できるよう、以下の説明では、段階的にクエリとコードを説明します。
 
 進む前に、数分間で、コード、サービス、および検索可能なデータに関するいくつかの重要なポイントを確認しましょう。Azure Search にまだ精通していない場合、背景の理解が少しあると助けになります。
 
-##コードおよび Azure Search に関するファクト
+## コードおよび Azure Search に関するファクト
 
-Azure Search は、完全に管理された検索サービスと、制約のない Azure Search インスタンスを使用しているときに (つまり、Try Azure App Service オプションを使用していないときに) アップロードされた検索可能なデータで構成される、サービスにデータが追加された [PaaS](https://en.wikipedia.org/wiki/Platform_as_a_service) サービスです。
+Azure Search は完全に管理されたサービスとしてのプラットフォーム ([PaaS](https://en.wikipedia.org/wiki/Platform_as_a_service)) であり、開発者が優れた検索エクスペリエンスを Web アプリケーションやモバイル アプリケーションに簡単に組み込むことができます。検索操作で使用するデータは Azure の検索サービスに格納されるため、データと操作の近接度により、遅延の少なさと一貫性のある動作が保証されています。これについてもう少し詳しく学習しましょう。
 
-検索操作で使用するデータは Azure の検索サービスに格納されるため、データと操作の近接度により、遅延の少なさと一貫性のある動作が保証されています。現在、検索対象のデータをオフラインまたはリモートに保存することはできません。これについてもう少し詳しく学習しましょう。
-
-- 検索データは、Azure Search が管理するドキュメントから入力されるインデックスに格納されます。ドキュメントは、検索可能な項目ごとに 1 つあります。 
-- 多くのインデックスは、1 つのデータセットから読み込まれます。これは、検索操作のコンテキストで便利なフィールドのみが含められるようユーザーが事前に準備します。 
+- 検索可能なデータが Azure Search によって管理されるインデックスに格納されている
 - インデックスを定義するスキーマはユーザーが定義し、これではフィルター式で便利な検索可能なフィールド、検索不能なフィールド、および結果をチューニングするためのプロファイルのスコアリングのようなコンストラクトを指定します。
+- 検索インデックスには検索および取得可能な 1 つ以上のドキュメント (テーブルの行に類似) が含まれている
+- 多くのインデックスは、1 つのデータセットから読み込まれます。これは、検索操作のコンテキストで便利なフィールドのみが含められるようユーザーが事前に準備します。 
 - データは、インデクサーで自動的に読み込んだり (Azure SQL Database または Azure DocumentDB でのみサポート)、1 つの Azure Search API で検索インデックスにプッシュしたりできます。API を使用する際には、JSON 形式であれば任意のデータ ソースからデータをプッシュできます。
 
-[Try Azure App Service](https://tryappservice.azure.com/) オプションの ASP.NET + Azure Search Site テンプレートには、Visual Studio Online で変更可能な (1 時間のセッションで使用可能な) Web アプリケーション用のソース コードがあります。コードの表示または変更には、別の開発ツールは必要ありません。
+[Azure App Service](https://tryappservice.azure.com/) オプションの ASP.NET + Azure Search Site テンプレートには、Visual Studio Team Services で変更可能な (1 時間のセッションで使用可能な) Web アプリケーション用のソース コードがあります。コードの表示または変更には、別の開発ツールは必要ありません。
 
 コードは、[Azure Search の .NET クライアント ライブラリ](https://msdn.microsoft.com/library/dn951165.aspx)を使用して C# で記述されており、インデックスに対してクエリを実行したり、ファセット ナビゲーションを提供したり、Web ページにカウントと検索結果を表示できます。
 
 USG 検索インデックスの構築および読み込みには、このテンプレートには含まれていない、その他のコードが使用されています。サービスは読み取り専用であるために、書き込みアクセスが必要なすべての操作は事前に完了している必要があります。この記事の最後に、スキーマの構築に使用した[スキーマのコピー](#schema)があります。
 
-##作業開始
+## 作業開始
 
 1 時間のセッションをまだ開始していない場合、次の手順に従って開始してください。
 
@@ -68,8 +67,8 @@ USG 検索インデックスの構築および読み込みには、このテン�
 
     ![][3]
 
-7. **[Visual Studio Online で編集]** を選択してソリューションを表示し、サイトを参照します。
-9. Visual Studio Online で、ページ上部のセッション オプションの展開し、**[Web サイトの参照]** をクリックします。
+7. **[Visual Studio Team Services で編集]** を選択してソリューションを表示し、サイトを参照します。
+9. Visual Studio Team Services で、ページ上部のセッション オプションの展開し、**[Web サイトの参照]** をクリックします。
 
     ![][4]
 
@@ -82,7 +81,8 @@ USG 検索インデックスの構築および読み込みには、このテン�
     ![][6]
 
 
-##最初の操作
+## 最初の操作
+
 検索インデックスは完全に使用できるため、最初の一歩としていくつかクエリを試してみるのがよいでしょう。Azure Search では、すべての標準的な検索演算子 (+、-、|)、リテラルにマッチさせるための引用符、ワイルドカード (*)、優先順位の演算子をサポートしています。演算子の完全なリストについては、クエリ構文のリファレンスを確認してください。
 
 - まず、アスタリスク (`*`) を追加して、ワイルドカード検索を行います。これによって、インデックス内のドキュメント数、2,262,578 が示されます。
@@ -93,7 +93,7 @@ USG 検索インデックスの構築および読み込みには、このテン�
 
 先に進む準備はできていますか? コード行をいくつか変更して、それのフルテキスト検索操作への影響を確認してみましょう。
 
-##SearchMode.All の変更
+## SearchMode.All の変更
 
 Azure Search には、検索演算子の動作を制御できる構成可能な **searchMode** プロパティがあります。このプロパティの有効な値は、`Any` (既定値) または`All` です。これらのオプションを設定する方法のガイダンスについては、「[単純なクエリ構文](https://msdn.microsoft.com/library/dn798920.aspx)」を参照してください。
 
@@ -104,7 +104,7 @@ Azure Search には、検索演算子の動作を制御できる構成可能な 
 
 このタスクでは、**searchMode** を変更し、モードに基づいて検索結果を比較します。
 
-1. サンプル アプリケーションを含むブラウザー ウィンドウを開き、**[Visual Studio Online に接続]** を選択します。
+1. サンプル アプリケーションを含むブラウザー ウィンドウを開き、**[Visual Studio Team Services に接続]** を選択します。
 
     ![][8]
 
@@ -130,7 +130,7 @@ Azure Search には、検索演算子の動作を制御できる構成可能な 
 
 このチュートリアルを続けるには、**searchMode** を (39 行の設定が `All` の) 元の値に戻し、プログラムを実行し、残りのタスクを行うために再構築アプリを使用します。
  
-##ワシントン州用のグローバル フィルターの追加
+## ワシントン州用のグローバル フィルターの追加
 
 通常、使用可能なデータのサブセットを検索する場合は、データのインポート時に、データ ソースにフィルターを設定します。読み取り専用のデータを使用し、アプリケーションのフィルターに、Washington State を含むドキュメントのみを返すよう設定し、学習してみましょう。
 
@@ -161,7 +161,7 @@ Azure Search には、検索演算子の動作を制御できる構成可能な 
 
    ![][12]
 
-##検索結果の強調表示の追加
+## 検索結果の強調表示の追加
 
 既に 1 行のコード変更は何回も行ったので、複数箇所でコード変更を行うより難解な変更をしてみましょう。現在のセッションの Search.cshtml ファイルに、次のバージョンの **Search.cshtml** を貼り付けます。
 
@@ -308,7 +308,7 @@ Azure Search には、検索演算子の動作を制御できる構成可能な 
     }
 
 
-##次のステップ
+## 次のステップ
 
 [Try Azure App Service](https://tryappservice.azure.com/) サイトの読み取り専用のサービスを使用して、クエリ構文とフルテキスト検索の動作を確認し、searchMode とフィルターを学習し、検索アプリケーションに検索結果の強調表示を追加できました。次のステップとして、インデックスの作成と更新に移ることを検討してください。これでは、次の機能を追加します。
 
@@ -316,18 +316,18 @@ Azure Search には、検索演算子の動作を制御できる構成可能な 
 - ユーザー入力に対し、クエリのオート コンプリートまたは先行入力候補の追加を行う、[Suggesters を定義](https://msdn.microsoft.com/library/mt131377.aspx)します。
 - データ ソースが Azure SQL Database または Azure DocumentDB である場合、インデックスを自動更新する[インデクサーを定義](https://msdn.microsoft.com/library/dn946891.aspx)します。
 
-これらのすべてのタスクを実行するのには、サービスにインデックスを作成および入力する Azure サブスクリプションが必要です。無料試用版にサインアップする方法の詳細については、[https://azure.microsoft.com/pricing/free-trial](https://azure.microsoft.com/pricing/free-trial/) を参照してください。
+これらのすべてのタスクを実行するのには、サービスにインデックスを作成および入力する Azure サブスクリプションが必要です。無料評価版にサインアップする方法の詳細については、[https://azure.microsoft.com/pricing/free-trial](https://azure.microsoft.com/pricing/free-trial/) を参照してください。
 
 Azure Search に関する詳細については、[http://azure.microsoft.com](http://azure.microsoft.com) の[ドキュメント ページ](http://azure.microsoft.com/documentation/services/search/)を参照するか、Azure Search の機能を検証する[サンプルおよびビデオ](search-video-demo-tutorial-list.md)をご希望の数参照してください。
 
 <a name="Schema"></a>
-##スキーマについて
+## スキーマについて
 
 次のスクリーン ショットに、このテンプレートで使用されるインデックスの作成に使用されているスキーマを示します。
  
    ![][13]
 
-###Schema.json ファイル
+### Schema.json ファイル
 
     {
       "@odata.context": "https://tryappservice.search.windows.net/$metadata#indexes/$entity",
@@ -512,7 +512,6 @@ Azure Search に関する詳細については、[http://azure.microsoft.com](ht
       ]
     }
 
-
 <!--Image references-->
 [1]: ./media/search-tryappservice/AzSearch-TryAppService-TemplateTile.png
 [2]: ./media/search-tryappservice/AzSearch-TryAppService-LoginAccount.png
@@ -529,4 +528,4 @@ Azure Search に関する詳細については、[http://azure.microsoft.com](ht
 [13]: ./media/search-tryappservice/AzSearch-TryAppService-Schema.png
 [14]: ./media/search-tryappservice/AzSearch-TryAppService-HitHighlight.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

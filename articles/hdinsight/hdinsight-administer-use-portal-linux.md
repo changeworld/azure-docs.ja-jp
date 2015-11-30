@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/09/2015"
+	ms.date="11/19/2015"
 	ms.author="larryfr"/>
 
 # Azure プレビュー ポータルを使用した HDInsight での Hadoop クラスターの管理
@@ -67,9 +67,7 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 
 	![[クラスターの資格情報] ブレード](./media/hdinsight-administer-use-portal-linux/clustercredentials.png)
     
-    > [AZURE.NOTE]SSH はコマンドラインで HDInsight クラスターにリモート アクセスするために使用されます。ここで使用するユーザー名とパスワードまたは公開キーは、SSH でクラスターに接続するときに使用されます。また、SSH ユーザー名は一意にする必要があります。この名前により、すべての HDInsight クラスター ノードでユーザー アカウントが作成されます。次はクラスターのサービスのために予約されているアカウント名の例であり、SSH ユーザー名として使用__しない__でください。
-    >
-    > root、hdiuser、storm、hbase、ubuntu、zookeeper、hdfs、yarn、mapred、hbase、hive、oozie、falcon、sqoop、admin、tez、hcat、hdinsight-zookeeper
+    > [AZURE.NOTE]SSH はコマンドラインで HDInsight クラスターにリモート アクセスするために使用されます。ここで使用するユーザー名とパスワードまたは公開キーは、SSH でクラスターに接続するときに使用されます。
 
     HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
 
@@ -85,7 +83,7 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 
 	- __[選択方法]__: サブスクリプションのストレージ アカウントを参照可能にする場合は、__[すべてのサブスクリプションから]__ を設定します。既存のストレージ アカウントの __[ストレージ名]__ と __[アクセス キー]__ を入力する場合は、__[アクセス キー]__ を設定します。
 
-	- __[新規作成]__: これを使用して、新しいストレージ アカウントを作成します。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
+	- __新規作成__: これを使用して、新しいストレージ アカウントを作成します。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
 
 	- __[既定のコンテナーの選択]__: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
 
@@ -103,7 +101,7 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 
 	![[ノード価格レベル] ブレード](./media/hdinsight-administer-use-portal-linux/nodepricingtiers.png)
 
-	__[選択]__ ボタンをクリックして、__[ノード価格レベル]__ 情報を保存します。
+	__[選択]__ ボタンを使用して、__[ノード価格レベル]__ 情報がを保存します。
 
 9. __[オプションの構成]__ を選択します。このブレードでは、以下の項目を構成できます。
 
@@ -171,7 +169,7 @@ Azure プレビュー ポータルでクラスターを選択すると、名前�
 
 ポータルを使用してクラスターを拡張するには、HDInsight クラスターを選択し、__[クラスターのスケーリング]__ を選択します。クラスターに設定する __[worker ノード数]__ を入力し、__[保存]__ をクリックします。
 
-![image of scaling ui](./media/hdinsight-administer-use-portal-linux/scaling.png)
+![スケーリング UI の画像](./media/hdinsight-administer-use-portal-linux/scaling.png)
 
 スケーリング操作の詳細については、「[Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md#scaling)」をご覧ください。
 
@@ -195,4 +193,4 @@ HDInsight クラスター ブレードの __[使用状況]__ セクションに�
 
 [preview-portal]: https://portal.azure.com
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

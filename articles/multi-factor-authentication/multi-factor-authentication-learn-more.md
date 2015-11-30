@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/24/2015" 
+	ms.date="11/17/2015" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication の詳細について
@@ -23,19 +23,19 @@
 
 ## ドキュメント
 
-[Configure MFA Server for use with IIS Authentication](https://msdn.microsoft.com/library/azure/dn394291.aspx)
+[IIS 認証を使用した MFA サーバーの設定](https://msdn.microsoft.com/library/azure/dn394291.aspx)
 
-[Configure MFA Server for use with Radius Authentication](https://msdn.microsoft.com/library/azure/dn394299.aspx)
+[RADIUS 認証を使用した MFA サーバーの設定](https://msdn.microsoft.com/library/azure/dn394299.aspx)
 
-[Configure MFA Server for use with LDAP Authentication](https://msdn.microsoft.com/library/azure/dn394286.aspx)
+[LDAP 認証を使用した MFA サーバーの設定](https://msdn.microsoft.com/library/azure/dn394286.aspx)
 
-[Configure MFA Server for use with Windows Authentication](https://msdn.microsoft.com/library/azure/dn394278.aspx)
+[Windows 認証を使用した MFA サーバーの設定](https://msdn.microsoft.com/library/azure/dn394278.aspx)
 
-[Remote Desktop Gateway and Azure Multi-Factor Authentication Server using RADIUS](https://msdn.microsoft.com/library/azure/dn394287.aspx)
+[RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server](https://msdn.microsoft.com/library/azure/dn394287.aspx)
 
-[Building Multi-Factor Authentication into Custom Apps (SDK)](https://msdn.microsoft.com/library/azure/dn249464.aspx)
+[カスタム アプリに Multi-Factor Authentication を構築する (SDK)](https://msdn.microsoft.com/library/azure/dn249464.aspx)
 
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

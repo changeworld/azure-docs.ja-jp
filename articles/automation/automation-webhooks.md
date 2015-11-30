@@ -17,7 +17,7 @@
 
 # Azure Automation Webhook
 
-*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。これにより、Visual Studio Online、GitHub などの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。
+*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。これにより、Visual Studio Team Services、GitHub などの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。
 
 ![Webhook](media/automation-webhooks/webhooks-overview.png)
 
@@ -255,4 +255,4 @@ Azure アラートを通知システムとして使用するだけでなく、�
 - [Runbook ジョブの状態の表示](automation-viewing-the-status-of-a-runbook-job.md)
 - [Using Azure Automation to take actions on Azure Alerts (Azure Automation を使用した Azure アラートに対するアクションの実行)](https://azure.microsoft.com/blog/using-azure-automation-to-take-actions-on-azure-alerts/)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

@@ -4,7 +4,7 @@
    services="dns" 
    documentationCenter="na" 
    authors="joaoma" 
-   manager="Adinah" 
+   manager="carmonm" 
    editor=""/>
 
 <tags
@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="09/22/2015"
+   ms.date="11/10/2015"
    ms.author="joaoma"/>
 
 # PowerShell を使用して DNS ゾーンを管理する方法
 
 > [AZURE.SELECTOR]
 - [Azure CLI](dns-operations-dnszones-cli.md)
-- [Azure Powershell](dns-operations-dnszones.md)
+- [PowerShell](dns-operations-dnszones.md)
 
 
 このガイドでは、DNS ゾーンの管理方法を説明します。このガイドは、DNS ゾーンを管理するために実行する一連の操作を理解するのに役立ちます。
@@ -108,4 +108,4 @@ Get-AzureDnsZone の $zone オブジェクトを使用してゾーンを指定�
 
 [.NET SDK を使用した操作の自動化](dns-sdk.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/15/2015"
+   ms.date="11/16/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager MMC スナップインのデプロイ
@@ -49,7 +49,7 @@ Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナ�
     - Windows Server 2012
     - Windows Server 2012 R2
  
-    >[AZURE.NOTE]StorSimple 仮想デバイスの場合、ホストは Microsoft Azure Virtual Machine である必要があります。
+    > [AZURE.NOTE]StorSimple 仮想デバイスの場合、ホストは Microsoft Azure Virtual Machine である必要があります。
 
 3. すべての Microsoft Azure StorSimple 構成要件を満たしていることを確認します。詳細については、「[デプロイメントの前提条件](storsimple-deployment-walkthrough.md#deployment-prerequisites)」を確認してください。
 
@@ -95,7 +95,7 @@ StorSimple Snapshot Manager をインストールするには、以下の手順�
 
 3. **[圧縮 (ZIP 形式) フォルダーの展開]** ウィンドウの **[展開先の選択とファイルの展開]** ボックスに、ファイルの展開先にするパスを入力するか、参照して指定します。
 
-       >[AZURE.IMPORTANT]StorSimple Snapshot Manager は C: ドライブにインストールする必要があります。
+      >[AZURE.IMPORTANT]StorSimple Snapshot Manager は C: ドライブにインストールする必要があります。
  
 4. **[完了時に展開されたファイルを表示する]** チェック ボックスを選択し、**[抽出]** をクリックします。
 
@@ -129,7 +129,7 @@ StorSimple Snapshot Manager をインストールするには、以下の手順�
 
     ![デバイスの構成](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png)
 
-3. **[デバイス]** ボックスの一覧で、Microsoft Azure StorSimple デバイスまたは仮想デバイスの IP アドレスを選択します。**[パスワード]** ボックスに、Microsoft Azure 管理ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。**[OK]** をクリックします。
+3. **[デバイス]** ボックスの一覧で、Microsoft Azure StorSimple デバイスまたは仮想デバイスの IP アドレスを選択します。**[パスワード]** テキスト ボックスに、Azure 管理ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。**[OK]** をクリックします。
 
 4. StorSimple Snapshot Manager により、指定したデバイスが検索されます。デバイスを使用できる場合は、StorSimple Snapshot Manager によって接続が追加されます。[デバイスへの接続を検証](#to-verify-the-connection)して、接続が正常に追加されたことを確認できます。
 
@@ -257,4 +257,4 @@ StorSimple Snapshot Manager を再インストールするには、「[StorSimpl
 
 - StorSimple Snapshot Manager の使用方法については、「[StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

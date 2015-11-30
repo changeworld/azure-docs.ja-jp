@@ -4,36 +4,36 @@
 	description="サポートされる式のルールの演算子とパラメーターを含むグループの高度な規則を作成する方法。"
 	services="active-directory"
 	documentationCenter=""
-	authors="femila"
+	authors="curtand"
 	manager="stevenpo"
 	editor=""/>
 
 <tags
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="10/09/2015" 
-	ms.author="femila"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="11/17/2015"
+	ms.author="curtand"/>
 
 
 # 属性を使用した高度なルールの作成
-Microsoft Azure 管理ポータルでは高度なルールを臨機応変に設定し、グループのメンバーシップを動的に管理することができます。
+Azure ポータルを使用すると、Azure Active Directory (Azure AD) で高度なルールを柔軟に設定し、Azure AD グループに複雑で動的なメンバーシップを適用できます。
 
-**高度なルールを作成するには** Microsoft Azure 管理ポータルのグループの **[構成]** タブで、**[高度なルール]** オプション ボタンをオンにし、用意されているテキスト ボックスに目的のルールを入力します。高度なルールの作成には、以下の情報を使用できます。
+**高度なルールを作成するには** Azure ポータルのグループの **[構成]** タブで、**[高度なルール]** オプションをオンにし、用意されているテキスト ボックスに目的のルールを入力します。高度なルールの作成には、以下の情報を使用できます。
 
 ## 高度なルール本体の作成
 グループの動的なメンバーシップ管理を目的として作成される高度なルールは基本的に、3 つの構成要素から成る、true または false を結果として返す 2 項演算式です。その 3 つの構成要素を次に示します。
 
 - 左辺のパラメーター
 - 2 項演算子
-- 右辺の定数 
+- 右辺の定数
 
-たとえば全体で見ると、(leftParameter binaryOperator "RightConstant") のようになります。2 項演算式全体を開きかっこと閉じかっこで囲んだうえで、右辺の定数は二重引用符で囲む必要があります。左辺のパラメーターの構文は user.property という形式で入力します。高度なルールは、複数の 2 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。以下に示したのは、正しい構文に沿って作成された高度なルールの例です。
+たとえば全体で見ると、(leftParameter binaryOperator "RightConstant") のようになります。2 項演算式全体を開きかっこと閉じかっこで囲んだ上で、右辺の定数は二重引用符で囲む必要があります。左辺のパラメーターの構文は user.property という形式で入力します。高度なルールは、複数の 2 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。以下に示したのは、正しい構文に沿って作成された高度なルールの例です。
 
-- (user.department -eq "Sales") -or (user.department -eq "Marketing") 
-- (user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE") 
+- (user.department -eq "Sales") -or (user.department -eq "Marketing")
+- (user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
 
 サポートされているパラメーターと式のルール演算子の全一覧については、以降のセクションを参照してください。
 
@@ -124,7 +124,7 @@ Microsoft Azure 管理ポータルでは高度なルールを臨機応変に設�
 | passwordPolicies | なし DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration、DisableStrongPassword | (user.passwordPolicies -eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName | 任意の文字列値または $null。 | (user.physicalDeliveryOfficeName -eq "value") |
 | postalCode | 任意の文字列値または $null。 | (user.postalCode -eq "value") |
-| preferredLanguage | ISO 639-1 コード | (user.preferredLanguage -eq "ja-jp") |
+| preferredLanguage | ISO 639-1 コード | (user.preferredLanguage -eq "zh-CN") |
 | sipProxyAddress | 任意の文字列値または $null。 | (user.sipProxyAddress -eq "value") |
 | state | 任意の文字列値または $null。 | (user.state -eq "value") |
 | streetAddress | 任意の文字列値または $null。 | (user.streetAddress -eq "value") |
@@ -152,13 +152,13 @@ Microsoft Azure 管理ポータルでは高度なルールを臨機応変に設�
 ユーザーのマネージャー属性に基づいてグループにメンバーを設定できるようになりました。
 "Manager" グループとしてグループを構成するには
 --------------------------------------------------------------------------------
-1. 管理者ポータルで、**[構成]** タブをクリックし、**[高度なルール]** を選択します。 
+1. 管理者ポータルで、**[構成]** タブをクリックし、**[高度なルール]** を選択します。
 2. 次の直属の部下の構文を使用してルールを入力します。*Direct Reports for {UserID\_of\_manager}*
-3. このルールを保存すると、ルールに該当するすべてのユーザーがグループのメンバーとして結合されます。最初は、グループを設定するのに数分かかることがあることに注意してください。 
+3. このルールを保存すると、ルールに該当するすべてのユーザーがグループのメンバーとして結合されます。最初は、グループを設定するのに数分かかることがあることに注意してください。
 
 
 ## 追加情報
-ここでは、Azure Active Directory の追加情報を提供するいくつかのトピックを紹介します。
+次の記事は、Azure Active Directory に関する追加情報を示します。
 
 * [グループの動的メンバーシップのトラブルシューティング](active-directory-accessmanagement-troubleshooting.md)
 
@@ -168,4 +168,4 @@ Microsoft Azure 管理ポータルでは高度なルールを臨機応変に設�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

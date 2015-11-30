@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/09/2015"
+   ms.date="11/12/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの関数
@@ -72,9 +72,9 @@
 
 反復処理のループの現在のインデックスを返します。この関数を使用する例については、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 
-## デプロイメント
+## デプロイ
 
-**デプロイメント()**
+**デプロイ()**
 
 現在のデプロイ操作に関する情報を返します。
 
@@ -494,6 +494,25 @@
         "upperCaseAppName": "[toUpper(parameters('appName'))]"
     }
 
+## trim
+
+**trim (stringToTrim)**
+
+指定された文字列から先頭と末尾の空白文字をすべて削除します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| stringToTrim | あり | トリムする文字列。
+
+次の例では、ユーザー指定のパラメーター値から空白文字を削除します。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "trimAppName": "[trim(parameters('appName'))]"
+    }
+
 
 ## uniqueString
 
@@ -529,6 +548,21 @@
         "type": "Microsoft.Storage/storageAccounts", 
         ...
 
+## uri
+
+**uri (baseUri, relativeUri)**
+
+baseUri と relativeUri の文字列を組み合わせることにより、絶対 URI を作成します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| baseUri | あり | ベース URI 文字列。
+| relativeUri | あり | ベース URI 文字列に追加する相対 URI 文字列。
+
+次の例では、テンプレート リンクの絶対 URI を作成する方法を示します。結果は ****http://contoso.com/resources/nested/azuredeploy.json** です。
+
+    "templateLink": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]"
+
 
 ## variables
 
@@ -547,4 +581,4 @@
 - 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 - 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

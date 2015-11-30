@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Reliable Service の概要 | Microsoft Azure"
+   pageTitle="Reliable Services の概要 | Microsoft Azure"
    description="ステートレス サービスとステートフル サービスを使用して Microsoft Azure Service Fabric アプリケーションを作成する方法。"
    services="service-fabric"
    documentationCenter=".net"
@@ -13,24 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/15/2015"
+   ms.date="11/15/2015"
    ms.author="vturecek"/>
 
 # Microsoft Azure Service Fabric の Reliable Service の概要
 
-Service Fabric アプリケーションには、コードを実行する 1 つ以上のサービスが含まれています。このチュートリアルでは、[*Reliable Service* プログラミング モデル](service-fabric-reliable-services-introduction.md)を使用してステートレスとステートフルの両方の「Hello World」Service Fabric アプリケーションを作成する手順を説明します
-
-ステートレス サービスは、現在ほとんどのクラウド アプリケーションに含まれるサービスの種類です。確実に格納しなければならいデータや可用性を高めなければならないデータがサービス自体に含まれない場合、サービスはステートレスだと考えられます。つまり、ステートレス サービスのインスタンスがシャットダウンした場合、その内部状態はすべて失われてしまうということです。これらの種類のサービスで、状態の高可用性と高い信頼性を実現するには、Azure テーブルや SQL データベースなどの外部ストアに状態を格納する必要があります。
-
-Service Fabric では、新しい種類のステートフル サービスが導入されました。それは、サービス内で状態を確実に維持でき、サービスで使用されているコードと併置されているサービスです。Service Fabric によって状態の可用性が高まるため、外部ストアに状態を維持する必要がなくなります。
-
-このチュートリアルでは、ステートレス サービスと、内部カウンターを保持するステートフル サービスの両方を実装します。ステートレス サービスでは、サービスを再起動したり移動したりすると、カウンターの値は失われます。しかしステートフル サービスでは、Service Fabric によってカウンターの状態に信頼性があるため、何らかの理由でカウント中にサービス実行が中断されても、 中断したところからカウントを再開できます。
+Service Fabric アプリケーションには、コードを実行する 1 つ以上のサービスが含まれています。ここでは、[Reliable Services](service-fabric-reliable-services-introduction.md) を使用してステートレスとステートフル両方の Service Fabric アプリケーションを作成する方法を説明します。
 
 ## ステートレス サービスの作成
 
-ステートレス サービスの作成から始めましょう。
+ステートレス サービスは、現在ほとんどのクラウド アプリケーションに含まれるサービスの種類です。確実に格納しなければならいデータや可用性を高めなければならないデータがサービス自体に含まれない場合、サービスはステートレスだと考えられます。つまり、ステートレス サービスのインスタンスがシャットダウンした場合、その内部状態はすべて失われてしまうということです。これらの種類のサービスで、状態の高可用性と高い信頼性を実現するには、Azure テーブルや SQL データベースなどの外部ストアに状態を格納する必要があります。
 
-Visual Studio 2015 RC を**管理者**として起動し、*HelloWorld* という名前の新しい **Service Fabric アプリケーション サービス** プロジェクトを作成します。
+Visual Studio 2015 RC を**管理者**として起動し、*HelloWorld* という名前の新しい **Service Fabric アプリケーション** プロジェクトを作成します。
 
 ![[新しいプロジェクト] ダイアログを使用して、新しい Service Fabric アプリケーションを作成します。](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
@@ -46,7 +40,7 @@ Visual Studio 2015 RC を**管理者**として起動し、*HelloWorld* とい�
 
 ## サービスの実装
 
-サービス プロジェクト内にある **HelloWorld.cs** ファイルを開きます。Service Fabric では、どのようなビジネス ロジックもサービスで実行できます。サービス API には、コードのエントリ ポイントが 2 つあります。
+サービス プロジェクト内にある **HelloWorldStateless.cs** ファイルを開きます。Service Fabric では、どのようなビジネス ロジックもサービスで実行できます。サービス API には、コードのエントリ ポイントが 2 つあります。
 
  - *RunAsync* と呼ばれる変更可能なエントリ ポイント メソッドでは、実行時間の長いコンピューティング ワークロードなどの任意のワークロードを実行開始できます。
 
@@ -60,7 +54,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
  - Web API などの任意の通信スタックをプラグインできる通信エントリ ポイントでは、ユーザーまたはその他のサービスからの要求の受信を開始できます。
 
 ```C#
-protected override ICommunicationListener CreateCommunicationListener()
+protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
 {
     ...
 }
@@ -74,15 +68,20 @@ protected override ICommunicationListener CreateCommunicationListener()
 ### RunAsync
 
 ```C#
-protected override async Task RunAsync(CancellationToken cancellationToken)
+protected override async Task RunAsync(CancellationToken cancelServiceInstance)
 {
-    // TODO: Replace the following with your own logic.
+    // TODO: Replace the following sample code with your own logic.
 
     int iterations = 0;
-    while (!cancellationToken.IsCancellationRequested)
+    // This service instance continues processing until the instance is terminated.
+    while (!cancelServiceInstance.IsCancellationRequested)
     {
+
+        // Log what the service is doing
         ServiceEventSource.Current.ServiceMessage(this, "Working-{0}", iterations++);
-        await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+
+        // Pause for 1 second before continue processing.
+        await Task.Delay(TimeSpan.FromSeconds(1), cancelServiceInstance);
     }
 }
 ```
@@ -102,6 +101,8 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 ## ステートフル サービスの作成
 
+Service Fabric では、新しい種類のステートフル サービスが導入されました。それは、サービス内で状態を確実に維持でき、サービスで使用されているコードと併置されているサービスです。Service Fabric によって状態の可用性が高まるため、外部ストアに状態を維持する必要がなくなります。
+
 サービスを切り替えたり、再起動したりした場合でも、カウンター値をステートレスから高可用と永続性に変換するには、ステートフル サービスが必要です。
 
 先ほどと同じ **HelloWorld** アプリケーションで、アプリケーション プロジェクトを右クリックして **[新しい Fabric Service]** を選択し、新しいサービスを追加します。
@@ -117,27 +118,40 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 *HelloWorldStateful* で、次の `RunAsync` メソッドを含む **HelloWorldStateful.cs** を開きます。
 
 ```C#
-protected override async Task RunAsync(CancellationToken cancellationToken)
+protected override async Task RunAsync(CancellationToken cancelServicePartitionReplica)
 {
-    // TODO: Replace the following with your own logic.
+    // TODO: Replace the following sample code with your own logic.
+
+    // Gets (or creates) a replicated dictionary called "myDictionary" in this partition.
     var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 
-    while (!cancellationToken.IsCancellationRequested)
+    // This partition's replica continues processing until the replica is terminated.
+    while (!cancelServicePartitionReplica.IsCancellationRequested)
     {
+
+        // Create a transaction to perform operations on data within this partition's replica.
         using (var tx = this.StateManager.CreateTransaction())
         {
+
+            // Try to read a value from the dictionary whose key is "Counter-1".
             var result = await myDictionary.TryGetValueAsync(tx, "Counter-1");
-            ServiceEventSource.Current.ServiceMessage(
-                this,
-                "Current Counter Value: {0}",
+
+            // Log whether the value existed or not.
+            ServiceEventSource.Current.ServiceMessage(this, "Current Counter Value: {0}",
                 result.HasValue ? result.Value.ToString() : "Value does not exist.");
 
+            // If the "Counter-1" key doesn't exist, set its value to 0
+            // else add 1 to its current value.
             await myDictionary.AddOrUpdateAsync(tx, "Counter-1", 0, (k, v) => ++v);
 
+            // Committing the transaction serializes the changes and writes them to this partition's secondary replicas.
+            // If an exception is thrown before calling CommitAsync, the transaction aborts, all changes are 
+            // discarded, and nothing is sent to this partition's secondary replicas.
             await tx.CommitAsync();
         }
 
-        await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+        // Pause for 1 second before continue processing.
+        await Task.Delay(TimeSpan.FromSeconds(1), cancelServicePartitionReplica);
     }
 }
 ```
@@ -204,4 +218,4 @@ Reliable Collection には、LINQ など、`System.Collections.Generic` およ�
 
 [Reliable Service の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->
