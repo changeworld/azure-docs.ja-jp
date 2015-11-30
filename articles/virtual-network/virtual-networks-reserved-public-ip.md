@@ -1,10 +1,10 @@
 <properties 
-   pageTitle="予約済み IP"
-   description="予約済み IP、VIP、ILPIP、およびそれらを管理する方法を理解します。"
+   pageTitle="予約済み IP | Microsoft Azure"
+   description="予約済み IP およびそれらを管理する方法について説明します。"
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/17/2015"
+   ms.date="11/11/2015"
    ms.author="telmos" />
 
 # 予約済み IP の概要
@@ -27,7 +27,7 @@ IP アドレスが変更されないようにするには、IP アドレスを�
 
 ## FAQ
 1. 予約済み IP はすべての Azure サービスに使用できますか。  
-  - 予約済み IP は、VM およびクラウド サービスのインスタンス ロールに対してのみ使用できます。
+  - 予約済み IP は、VIP を使用して公開される VM およびクラウド サービスのインスタンス ロールに対してのみ使用できます。
 1. 予約済み IP は、いくつ使用できますか。  
   - 現時点では、すべての Azure サブスクリプションで 20 個の予約済み IP を使用できるようになっています。しかし、予約済み IP の追加を要求することができます。詳細については、[サブスクリプションとサービスの制限](../azure-subscription-service-limits/)のページを参照してください。
 1. 予約済み IP に料金はかかりますか。 
@@ -119,4 +119,4 @@ IP アドレスが予約されると、サブスクリプションとの関連�
 
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

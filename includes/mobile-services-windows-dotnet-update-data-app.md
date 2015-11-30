@@ -1,9 +1,5 @@
 
-1. MainPage.xaml.cs ファイルで、次の using ステートメントを追加またはコメント解除します。 
-
-		using Microsoft.WindowsAzure.MobileServices;
-
-2. TodoItem クラス定義を次のコードで置き換えます。
+2. TodoItem クラス定義を次のコードで置き換えます。 
 
 	    public class TodoItem
 	    {
@@ -20,13 +16,19 @@
 
 	>[AZURE.NOTE]ユニバーサル Windows アプリ プロジェクトでは、TodoItem クラスは共有する DataModel フォルダーにある別のコード ファイルで定義されます。
 
-3. MainPage.xaml.cs では、既存の items コレクションを定義する行をコメントアウトするか削除します。その後、コメントを解除するか、次の行を追加して、_&lt;yourClient&gt;_ を、モバイル サービスにプロジェクトを接続したとき App.xaml.cs ファイルに追加された `MobileServiceClient` フィールドで置き換えます。
+1. MainPage.cs ファイルで、次の using ステートメントを追加またはコメント解除します。
+
+		using Microsoft.WindowsAzure.MobileServices;
+
+
+4. 既存の items コレクションを定義する行をコメントアウトするか削除します。その後、コメントを解除するか、次の行を追加して、_&lt;yourClient&gt;_ を、モバイル サービスにプロジェクトを接続したとき App.xaml.cs ファイルに追加された `MobileServiceClient` フィールドで置き換えます。
 
 		private MobileServiceCollection<TodoItem, TodoItem> items;
 		private IMobileServiceTable<TodoItem> todoTable = 
 		    App.<yourClient>.GetTable<TodoItem>();
 		  
 	このコードは、モバイル サービス対応のバインディング コレクション (items) とデータベース テーブルのプロキシ クラス (todoTable) を作成します。
+
 
 4. **InsertTodoItem** メソッド内で、**TodoItem.Id** プロパティを設定するコード行を削除し、**async** 修飾子をメソッドに追加して、次のコード行をコメント解除します。
 
@@ -70,4 +72,4 @@
 
 バックエンド ストレージのモバイル サービスを使用するようにアプリケーションを更新した後は、モバイル サービスに対してアプリケーションをテストします。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -21,7 +21,7 @@
 
 連続エクスポートにより、JSON 形式でテレメトリ データが Azure Storage に移動されます。Azure Stream Analytics を使って JSON オブジェクトを解析し、データベース テーブルに行を作成します。
 
-(一般的に、連続エクスポートは、アプリが Application Insights に送信するテレメトリの独自の分析を行うための手段です。エクスポートしたテレメトリを使用して他のことを行うよう、このコード サンプルを適合させることもできます。たとえば、データの集約や PowerBI 視覚化スイートへのデータの発行などです)。
+(一般的に、連続エクスポートは、アプリが Application Insights に送信するテレメトリの独自の分析を行うための手段です。データの集合など、エクスポートされたテレメトリで他の処理を行うように、このコード サンプルを適合させることもできます。)
 
 監視対象のアプリが存在していることを想定して説明を始めます。
 
@@ -300,6 +300,7 @@ SQL データベースを指定します。
 ## 関連記事:
 
 * [worker ロールを使用して SQL にエクスポートする](app-insights-code-sample-export-telemetry-sql-database.md)
+* [Stream Analytics を使用して Power BI にエクスポートする](app-insights-export-power-bi.md)
 * [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](app-insights-export-data-model.md)
 * [Application Insights での連続エクスポート](app-insights-export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
@@ -314,4 +315,4 @@ SQL データベースを指定します。
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

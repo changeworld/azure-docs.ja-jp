@@ -1,33 +1,34 @@
 <properties
-   pageTitle="VM での SQL Server の自動修正 |Microsoft Azure"
-   description="Azure で実行されている SQL Server 仮想マシンの自動修正機能について説明します。"
-   services="virtual-machines"
-   documentationCenter="na"
-   authors="rothja"
-   manager="jeffreyg"
-   editor="monicar"
-   tags="azure-resource-manager" />
+	pageTitle="VM での SQL Server の自動修正 |Microsoft Azure"
+	description="Azure で実行されている SQL Server Virtual Machines の自動修正機能について説明します。"
+	services="virtual-machines"
+	documentationCenter="na"
+	authors="rothja"
+	manager="jeffreyg"
+	editor="monicar"
+	tags="azure-resource-manager" />
 <tags
-   ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows-sql-server"
-   ms.workload="infrastructure-services"
-   ms.date="08/05/2015"
-   ms.author="jroth" />
+	ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.workload="infrastructure-services"
+	ms.date="11/12/2015"
+	ms.author="jroth" />
 
 # Azure Virtual Machines での SQL Server の自動修正
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
-
-
 自動修正では、SQL Server 2012 または 2014 を実行している Azure 仮想マシンのメンテナンス期間が設定されます。このメンテナンス期間にのみ、自動更新プログラムをインストールできます。これにより、SQL Server では、システムの更新とこれに関連する再起動が、データベースに最適な時間帯に実行されるようになります。これは SQL Server IaaS エージェントに依存します。
 
->[AZURE.NOTE]自動修正は、SQL Server IaaS エージェントに依存します。このエージェントをインストールして構成するには、ターゲット仮想マシン上で Azure VM エージェントが実行されている必要があります。仮想マシン ギャラリーの最近のイメージでは、このオプションが既定で有効になっていますが、既存の VM では、Azure VM エージェントが存在しない可能性があります。独自の VM イメージを使用している場合は、SQL Server IaaS エージェントもインストールする必要があります。詳細については、「[VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)」をご覧ください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 ## ポータルでの自動修正の構成
 
-新しい SQL Server 2014 仮想マシンを作成するときに、[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkID=525040&clcid=0x409)を使用して、自動修正を構成できます。次のスクリーンショットは、**[オプションの構成]** の **[SQL 自動修正]** の各オプションを示しています。
+新しい SQL Server 2014 仮想マシンを作成するときに、[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkID=525040&clcid=0x409)を使用して、自動修正を構成できます。
+
+>[AZURE.NOTE]自動修正は、SQL Server IaaS エージェントに依存します。このエージェントをインストールして構成するには、ターゲット仮想マシン上で Azure VM エージェントが実行されている必要があります。仮想マシン ギャラリーの最近のイメージでは、このオプションが既定で有効になっていますが、既存の VM では、Azure VM エージェントが存在しない可能性があります。独自の VM イメージを使用している場合は、SQL Server IaaS エージェントもインストールする必要があります。詳細については、「[VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)」をご覧ください。
+
+次のポータルのスクリーンショットは、**[オプションの構成]** の **[SQL 自動修正]** の各オプションを示しています。
 
 ![Azure ポータルの SQL 自動修正](./media/virtual-machines-sql-server-automated-patching/IC778484.jpg)
 
@@ -88,8 +89,8 @@ SQL Server IaaS エージェントをアンインストールするには、次�
 
 ## 次のステップ
 
-Azure の SQL Server VM の関連機能については、「[Azure 仮想マシンでの SQL Server の自動バックアップ](virtual-machines-sql-server-automated-backup.md)」をご覧ください。
+Azure の SQL Server VM の関連機能については、「[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-sql-server-automated-backup.md)」をご覧ください。
 
 [Azure Virtual Machines で SQL Server を実行するための他のリソース](virtual-machines-sql-server-infrastructure-services.md)を確認します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

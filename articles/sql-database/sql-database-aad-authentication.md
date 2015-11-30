@@ -147,14 +147,16 @@ Azure Active Directory 認証は、最新の SQL Database V12 でサポートさ
 
 	管理者を変更する処理には数分かかる場合があります。処理が完了すると、**[Active Directory 管理者]** ボックスに新しい管理者が表示されます。
 
+> [AZURE.NOTE]Azure AD 管理者をセットアップする場合、新しい管理者名 (ユーザーまたはグループ) が SQL Server 認証のログインとして、マスター データベース内に存在していてはなりません。存在する場合、Azure AD 管理者のセットアップは失敗します。その作成をロールバックされ、そのような管理者 (名前) が既に存在していることが示されます。前述 SQL Server 認証ログインは、Azure AD には属していないため、Azure AD 認証を使用してサーバーに接続する操作は失敗します。
+
 後で管理者を削除するには、**[Active Directory 管理者]** ブレードの上部にある **[管理者の削除]** をクリックします。
 
 ### PowerShell を使用して Azure SQL Server の Azure AD 管理者をプロビジョニングする 
 
-> [AZURE.IMPORTANT]Azure PowerShell 1.0 プレビューのリリースから、Switch-AzureMode コマンドレットは不要になりました。また、Azure ResourceManger モジュールに含まれていたコマンドレットの名前が変更されました。この記事の例では、新しい PowerShell 1.0 プレビューの命名規則が使用されています。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページをご覧ください。
+> [AZURE.IMPORTANT]Azure PowerShell 1.0 プレビューのリリースから、Switch-AzureMode コマンドレットは不要になりました。また、Azure ResourceManger モジュールに含まれていたコマンドレットの名前が変更されました。この記事の例では、新しい PowerShell 1.0 プレビューの命名規則が使用されています。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページを参照してください。
 
 
-PowerShell コマンドレットを実行するには、Azure PowerShell をインストールして実行する必要があります。Switch-AzureMode が削除されたため、最新の Azure PowerShell をダウンロードし、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行してインストールする必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+PowerShell コマンドレットを実行するには、Azure PowerShell をインストールして実行する必要があります。Switch-AzureMode が削除されたため、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行し、最新の Azure PowerShell をダウンロードしてインストールする必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
 Azure AD 管理者をプロビジョニングするには、次のような Azure PowerShell コマンドを実行する必要があります。
 
@@ -325,4 +327,4 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 [9]: ./media/sql-database-aad-authentication/9ad-settings.png
 [10]: ./media/sql-database-aad-authentication/10choose-admin.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

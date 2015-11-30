@@ -13,19 +13,37 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="11/06/2015"
+   ms.date="11/20/2015"
    ms.author="maroche"/>
 
 # Azure Data Catalog リリース ノート
 
+## Azure Data Catalog の 2015 年 11 月 20 日リリースのノート
+
+### Power BI Desktop でデータ ソースを開く
+
+**Azure Data Catalog** ポータルから [Power BI Desktop で開く] オプションを使用したときに、Power BI Desktop アプリケーションで次の 2 つの問題のどちらかが発生することがあります。
+
+- [ドキュメントを表示できません] というタイトルのダイアログ ボックスが表示される
+- Power BI Desktop アプリケーションは開くが、ファイルが表示されない
+
+どちらの状況でも、[PowerBI.com](https://powerbi.com) から Power BI Desktop の最新バージョンをインストールすることで問題を解決できます。
+
+## Azure Data Catalog の 2015 年 11 月 13 日リリースのノート
+
+### Teradata への登録と接続
+
+Teradata データ ソースに接続する場合は、使用するソフトウェアのビット (32 ビットまたは 64 ビット) と一致する適切な Teradata ODBC ドライバーをインストールする必要があります。
+
+この ADC のリリース日の時点では、最新の [Windows 用の Teradata ODBC ドライバー (バージョン 15.10)](http://downloads.teradata.com/download/connectivity/odbc-driver/windows) は Office 2013 に対応しますが、Office 2016 には対応していません。
 
 ## Azure Data Catalog の 2015 年 11 月 6 日リリースのノート
 
 ### データ ソース登録ツールを起動するときに、エラーが発生する場合があります
 
-**Azure Data Catalog** ポータルから **Azure Data Catalog** のデータ ソース登録ツールを起動するときに、 以前のバージョンのツールをインストールしたユーザーは、「Application cannot be started. Contact the application vendor. (アプリケーションを起動することはできません。アプリケーション ベンダーに問い合わせます。)」というメッセージを受信する可能性があります。
+**Azure Data Catalog** ポータルから **Azure Data Catalog** のデータ ソース登録ツールを起動するときに、以前のバージョンのツールをインストールしているユーザーは、「Application cannot be started. Contact the application vendor. (アプリケーションを起動することはできません。アプリケーション ベンダーに問い合わせます。)」というメッセージを受信する可能性があります。
 
-このメッセージを受信したユーザーは、Windows のコントロール パネルを使用して、既存の「Azure Data Catalog」アプリケーションを削除した後で、**Azure Data Catalog** ポータルからツールを再起動する必要があります。
+このメッセージを受信したユーザーは、Windows のコントロール パネルを使用して既存の "Azure Data Catalog" アプリケーションを削除した後で、**Azure Data Catalog** ポータルからツールを再起動する必要があります。
 
 ## Azure Data Catalog の 2015 年 7 月 13 日リリースのノート
 
@@ -44,7 +62,7 @@ Azure Data Catalog の初期プレビュー リリースでの SQL Server Report
 
 ### Excel でのデータ資産のオープン
 
-**Azure Data Catalog** ポータルから Microsoft Excel でデータ資産を開くと、**[Microsoft Excel のセキュリティに関する通知]** ダイアログ ボックスにメッセージが表示されることがあります。これは標準の予想される動作であり、ユーザーは、[**有効にする**] を選択して続行できます。
+**Azure Data Catalog ポータル**から Microsoft Excel でデータ資産を開くと、**[Microsoft Excel のセキュリティに関する通知]** ダイアログ ボックスにメッセージが表示されることがあります。これは標準の予想される動作であり、ユーザーは、[**有効にする**] を選択して続行できます。
 
 詳細については、「[不審な Web サイトへのリンクやそうしたサイトからのファイルについてのセキュリティの警告を有効または無効にする](https://support.office.com/ja-JP/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE)」を参照してください。
 
@@ -78,4 +96,4 @@ Azure Data Catalog の初期プレビュー リリースでの SQL Server Report
 
 RegistrationTool.exe.config ファイルを見つけるには、登録ツールを起動し、Windows タスク マネージャー ユーティリティを開きます。タスク マネージャーの [詳細] タブで、[RegistrationTool.exe] を右クリックし、ポップアップ メニューから [ファイルの場所を開く] を選択します。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -4,7 +4,7 @@
    services="traffic-manager"
    documentationCenter=""
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="traffic-manager"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
+   ms.date="11/12/2015"
    ms.author="joaoma" />
 
 # Traffic Manager のルーティング方法
@@ -123,18 +123,11 @@ Traffic Manager に関する独自のプレゼンテーション用の PowerPoin
 
 ## 次のステップ
 
-[Traffic Manager について](traffic-manager-overview.md)
+[Traffic Manager の監視](traffic-manager-monitoring.md)
 
-[Traffic Manager の監視について](traffic-manager-monitoring.md)
+[プロファイルの作成](traffic-manager-manage-profiles.md)
 
-[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkID=313584)
-
-[Cloud Services](http://go.microsoft.com/fwlink/p/?LinkId=314074)
-
-[Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
-
-[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
-
+[エンドポイントの追加](traffic-manager-endpoints.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

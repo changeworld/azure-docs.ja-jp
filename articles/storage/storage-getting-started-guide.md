@@ -13,15 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/28/2015" 
+	ms.date="11/12/2015" 
 	ms.author="tamram;selcint"/>
 
 # Azure Storage を 5 分で使い始める 
 
-Azure Storage の開発は簡単です。このチュートリアルでは、Azure Storage アプリケーションを短時間で稼動させる方法について説明します。Azure Storage で簡単に準備できる 2 つのシナリオを紹介します。
+## 概要
 
-- [Azure ストレージ エミュレーターで最初の Azure Storage アプリケーションをローカルに実行する](#run-your-first-azure-storage-application-locally-against-the-azure-storage-emulator)
-- [クラウドの Azure Storage で最初の Azure Storage アプリケーションを実行する](#run-your-first-azure-storage-application-against-azure-storage-in-the-cloud)
+Azure SDK には、Microsoft Visual Studio から Azure Storage を使用するためのクイック スタートのテンプレートが含まれています。Visual Studio Online アカウントは
+
+Azure Storage の開発は簡単です。このチュートリアルでは、Azure Storage アプリケーションを短時間で稼動させる方法について説明します。Azure Storage で簡単に準備できる 2 つのシナリオを紹介します。
 
 コードの説明に入る前に Azure Storage の詳細について学習するには、[次のステップ](#next-steps)をご覧ください
 
@@ -40,12 +41,12 @@ Azure Storage の開発は簡単です。このチュートリアルでは、Azu
 
 Azure Storage を使用するアプリケーションを開発するときは、[Azure ストレージ エミュレーター](storage-use-emulator.md)で実行できます。ストレージ エミュレーターでは、Azure の BLOB、キュー、テーブル サービスを開発用にエミュレートするローカル環境が利用できます。ストレージ エミュレーターを使用すると、Azure サブスクリプションまたはストレージ アカウントを作成せずにストレージ アプリケーションをローカルでテストでき、コストもかかりません。
 
-それでは、Visual Studio で Azure QuickStarts サンプル プロジェクトの 1 つを使用する簡単な Azure Storage アプリケーションを作成しましょう。このチュートリアルでは、**Azure BLOB ストレージ**、**Azure テーブル ストレージ**、**Azure キュー ストレージ**の各サンプル プロジェクトに着目します。
+それでは、Visual Studio で Azure Quick Starts サンプル プロジェクトの 1 つを使用する簡単な Azure Storage アプリケーションを作成しましょう。このチュートリアルでは、**Azure BLOB Storage**、**Azure Table Storage**、**Azure Queue Storage**の各サンプル プロジェクトに着目します。
 
 1. Visual Studio を起動します。
 2. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 3. [**新しいプロジェクト**] ダイアログ ボックスで、[**インストール済み**]、[**テンプレート**]、[**Visual C#**]、[**Cloud**]、[**Quick Starts**]、[**Data Services**] の順にクリックします。
-	- 3\.a.次のテンプレートのいずれかを選択します。Azure BLOB ストレージ、Azure テーブル ストレージ、または Azure Storage キュー。 
+	- 3\.a.次のテンプレートのいずれかを選択します。Azure BLOB Storage、Azure Table Storage、または Azure Storage Queue。 
 	- 3\.b.ターゲット フレームワークとして **.NET Framework 4.5** が選択されていることを確認します。	
 	- 3\.c.プロジェクトの名前を指定し、次のように新しい Visual Studio ソリューションを作成します。
 	
@@ -63,15 +64,15 @@ Azure Storage を使用するアプリケーションを開発するときは、
 
 クラウドの Azure Storage に対して実行するには、Azure サブスクリプションとストレージ アカウントが必要です (既に持っていない場合)。
 
-- Azure サブスクリプションを入手するには、[無料評価版](http://azure.microsoft.com/pricing/free-trial/)、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/) (MSDN、Microsoft Partner Network、BizSpark、その他の Microsoft プログラムのメンバーの場合) の各ページをご覧ください。
+- Azure サブスクリプションを入手するには、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/) (MSDN、Microsoft Partner Network、BizSpark、その他の Microsoft プログラムのメンバーの場合) の各ページをご覧ください。
 - Azure でストレージ アカウントを作成するには、「[ストレージ アカウントを作成、管理、または削除する方法](storage-create-storage-account.md)」をご覧ください
 
-アカウントができたら、Visual Studio で Azure QuickStarts サンプル プロジェクトの 1 つを使用する簡単な Azure Storage アプリケーションを作成できます。このチュートリアルでは、**Azure BLOB ストレージ**、**Azure テーブル ストレージ**、**Azure キュー ストレージ**の各サンプル プロジェクトに着目します。
+アカウントができたら、Visual Studio で Azure QuickStarts サンプル プロジェクトの 1 つを使用する簡単な Azure Storage アプリケーションを作成できます。このチュートリアルでは、**Azure Blob Storage**、**Azure Table Storage**、**Azure Queue Storage**の各サンプル プロジェクトに着目します。
 
 1. Visual Studio を起動します。
 2. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 3. [**新しいプロジェクト**] ダイアログ ボックスで、[**インストール済み**]、[**テンプレート**]、[**Visual C#**]、[**Cloud**]、[**Quick Starts**]、[**Data Services**] の順にクリックします。
-	- 3\.a.次のテンプレートのいずれかを選択します。Azure BLOB ストレージ、Azure テーブル ストレージ、または Azure Storage キュー。
+	- 3\.a.次のテンプレートのいずれかを選択します。Azure BLOB Storage、Azure Table Storage、または Azure Storage Queue。
 	- 3\.b.ターゲット フレームワークとして **.NET Framework 4.5** が選択されていることを確認します。
 	- 3\.c.プロジェクトの名前を指定し、新しい Visual Studio ソリューションを作成します。 
 
@@ -97,7 +98,7 @@ Azure Storage を使用するアプリケーションを開発するときは、
 Azure Storage の詳細については、次のリソースをご覧ください。
 
 * [Microsoft Azure Storage の概要](storage-introduction.md)
-* [.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)
+* [.NET から BLOB Storageを使用する方法](storage-dotnet-how-to-use-blobs.md)
 * [.NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md)
 * [.NET からキュー ストレージを使用する方法](storage-dotnet-how-to-use-queues.md)
 * [Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
@@ -107,4 +108,4 @@ Azure Storage の詳細については、次のリソースをご覧ください
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/08/2015" 
+	ms.date="11/16/2015" 
 	ms.author="asteen"/>
 
 # パスワード管理のトラブルシューティングの方法
@@ -107,10 +107,10 @@
           </tr>
           <tr>
             <td>
-              <p><strong>[Write Back Passwords to On-Premises]</strong> 構成オプションが表示されません。</p>
+              <p><strong>[オンプレミスへのパスワードの書き戻し]</strong> 構成オプションが表示されません。</p>
             </td>
             <td>
-              <p><strong>[Write Back Passwords to On-Premises]</strong> オプションは、Microsoft Azure 管理ポータルの <strong>[構成]</strong> タブに表示されません。</p>
+              <p><strong>[オンプレミスへのパスワードの書き戻し]</strong> オプションは、Microsoft Azure 管理ポータルの <strong>[構成]</strong> タブに表示されません。</p>
             </td>
             <td>
               <p>このオプションは、Azure AD Connect をダウンロードし、パスワード を構成した場合のみ表示されます。このオプションは終了時に表示されますが、クラウドからライトバックを有効または無効にできます。</p>
@@ -698,6 +698,22 @@
                 <li class="unordered">
 										パスワード フィルターが有効になっている場合に、ユーザーがフィルター条件を満たしていないパスワードを選択すると、リセットまたは変更の操作に失敗します。&lt;br>&lt;br></li>
               </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>HR 8023042</p>
+            </td>
+            <td>
+              <p>同期エンジンから、エラー hr=80230402, message=An attempt to get an object failed because there are duplicated entries with the same anchor が返されます</p>
+            </td>
+            <td>
+              <p>ADSync</p>
+            </td>
+            <td>
+              <p>このイベントは、複数のドメインで同じユーザー ID が有効にされたときに発生します。たとえば、アカウント/リソース フォレストを同期したときに、同じユーザー ID が存在し、どちらも有効な場合、このエラーが発生する可能性があります。 </p>
+              <p>また、一意ではないアンカー属性 (エイリアスや UPN) を使用し、2 人のユーザーがその同じアンカー属性を共有している場合にも、このエラーが発生します。</p>
+              <p>この問題を解決するには、ドメイン内に重複するユーザーがいないようにして、各ユーザーに一意のアンカー属性を使用します。</p>
             </td>
           </tr>
           <tr>
@@ -1462,19 +1478,17 @@ Azure AD Connect パッケージを再インストールすると、クラウド
 
 <br/> <br/> <br/>
 
-**その他のリソース**
+## パスワードのリセットに関するドキュメントへのリンク
+Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-
-* [パスワード管理とは](active-directory-passwords.md)
-* [パスワード管理のしくみ](active-directory-passwords-how-it-works.md)
-* [パスワード管理の概要](active-directory-passwords-getting-started.md)
-* [パスワード管理のカスタマイズ](active-directory-passwords-customize.md)
-* [パスワード管理のベスト プラクティス](active-directory-passwords-best-practices.md)
-* [パスワード管理レポートで運用情報を把握する方法](active-directory-passwords-get-insights.md)
-* [パスワード管理に関する FAQ](active-directory-passwords-faq.md)
-* [詳細情報](active-directory-passwords-learn-more.md)
-* [MSDN のパスワード管理](https://msdn.microsoft.com/library/azure/dn510386.aspx)
-
+* [**自分のパスワードのリセット**](active-directory-passwords-update-your-own-password) - システムのユーザーとして自分のパスワードをリセットまたは変更する方法について説明します。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
+* [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
+* [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
+* [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
+* [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。
+* [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
+* [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
 
 
 
@@ -1483,4 +1497,4 @@ Azure AD Connect パッケージを再インストールすると、クラウド
 [003]: ./media/active-directory-passwords-troubleshoot/003.jpg "Image_003.jpg"
 [004]: ./media/active-directory-passwords-troubleshoot/004.jpg "Image_004.jpg"
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

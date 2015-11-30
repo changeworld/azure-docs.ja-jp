@@ -20,7 +20,7 @@
 # SharePoint サーバー ファームの作成
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]従来のモデル。
- 
+
 Microsoft Azure プレビュー ポータル Marketplace では、事前に構成された SharePoint Server 2013 ファームを簡単に作成できます。これにより、開発またはテストの環境で基本または高可用性の SharePoint ファームが必要な場合や、組織のコラボレーション ソリューションとして SharePoint Server 2013 を評価する場合の所要時間を大きく節約できます。
 
 > [AZURE.NOTE]Azure プレビュー ポータルの Azure Marketplace の **SharePoint サーバー ファーム**項目は削除されました。
@@ -69,4 +69,4 @@ SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint �
 
 [SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

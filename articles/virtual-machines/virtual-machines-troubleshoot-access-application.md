@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/05/2015"
+	ms.date="11/17/2015"
 	ms.author="dkshir"/>
 
 # Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング
@@ -100,9 +100,21 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 - クライアント コンピューターから Azure 仮想マシンへのアプリケーション リクエスト送信トラフィック。
 - Azure 仮想マシンからのアプリケーション応答受信トラフィック。
 
+## エンドポイントの接続の問題のトラブルシューティング
+
+リモート デスクトップ エンドポイントなどのエンドポイントに接続するときに問題がある場合は、次の一般的なトラブルシューティング手順を試してください。
+
+- 仮想マシンを再起動する
+- エンドポイントを再作成する
+- 別の場所から接続する
+- 仮想マシンのサイズを変更する
+- 仮想マシンを再作成する
+
+詳細については、「[Troubleshooting Endpoint Connectivity (RDP/SSH/HTTP, etc. failures) (エンドポイントの接続のトラブルシューティング (RDP/SSH/HTTP などの障害))](https://social.msdn.microsoft.com/Forums/azure/zh-CN/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows)」を参照してください。
+
 ## 次のステップ
 
-この記事の手順 1 ～ 3 を実行したうえで、問題解決のためにさらなる支援が必要な場合は、次のことが可能です。
+上の手順を実行したうえで、問題解決のためにさらなる支援が必要な場合は、次のことが可能です。
 
 - 全世界の Azure エキスパートに支援を要請する。MSDN の Azure フォーラムまたはスタック オーバーフロー フォーラムに問題を投稿してください。詳細については、「[Microsoft Azure フォーラム](http://azure.microsoft.com/support/forums/)」参照してください。
 - Azure サポート インシデントを送信する。[Azure サポート サイト](http://azure.microsoft.com/support/options/) にアクセスし、**[テクニカル/課金サポート]** の **[サポートの要求]** をクリックしてください。
@@ -113,4 +125,4 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-troubleshoot-ssh-connections.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

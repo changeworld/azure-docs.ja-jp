@@ -348,7 +348,7 @@ New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -T
 
 デプロイ中およびデプロイ後には、プロビジョニング中に行われたすべての要求 (発生したすべてのエラーを含む) を確認できます。
 
-確認するには、[Azure ポータル](https://portal.azure.com)に移動し、次の操作を行います。
+確認するには、[Azure プレビュー ポータル](https://portal.azure.com)に移動し、次の操作を行います。
 
 - 左側のナビゲーション バーで **[参照]** をクリックし、下へスクロールして **[リソース グループ]** をクリックします。
 - 作成したリソース グループを選択して、[リソース グループ] ブレードを表示します。
@@ -670,4 +670,4 @@ node-resources.json は、メインの azuredeploy.json ファイルから呼び
 
 詳細については、「[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

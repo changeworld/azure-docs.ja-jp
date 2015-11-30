@@ -114,7 +114,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 受信ネットワーク トラフィックのエンドポイントとなる、サブネット 10.0.2.0/24 のプライベート IP アドレス 10.0.2.5 を使用して、フロントエンド IP プールを作成します。
 
-	$frontendIP = New-AzureLoadBalancerFrontendIpConfig -Name LB-Frontend -PrivateIpAddress 10.0.2.5 -SubnetId $backendSubnet.Id
+	$frontendIP = New-AzureLoadBalancerFrontendIpConfig -Name LB-Frontend -PrivateIpAddress 10.0.2.5 -SubnetId $vnet.Subnets.Id
 
 ### 手順 2. 
 
@@ -244,7 +244,7 @@ PS C:\> $backendnic1
 
 ### 手順 1
 
-上の例のロード バランサーを使用し、ロード バランサー オブジェクトを変数 $slb using Get-AzureLoadBalancer に割り当てます。
+上の例のロード バランサーを使用し、ロード バランサーのオブジェクトを変数 $slb using Get-AzureLoadBalancer に割り当てます。
 
 	$slb=get-azureLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 
@@ -278,4 +278,4 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

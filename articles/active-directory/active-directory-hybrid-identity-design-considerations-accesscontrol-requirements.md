@@ -47,7 +47,8 @@
 - 組織は、オンプレミスまたはクラウドにあるアプリケーションにシングル サインオンを使用していますか。
  - 「はい」の場合、ハイブリッド ID モデルを採用すると、このプロセスに影響がありますか。
 
-## アクセス制御
+## Access Control  
+
 認証と承認は、ユーザーの検証によって企業データへのアクセスを可能にするための重要な要素ですが、ユーザーが持つアクセス権のレベルと、管理者が管理対象のリソースに対して持つアクセス権のレベルを制御するためにも重要です。ハイブリッド ID ソリューションの場合、リソース、委任、ロール ベースのアクセス制御に対するアクセス権をより詳細に指定できるようにします。アクセス制御について、次のチェック項目に回答してください。
 
 - 社内には、ID システムを管理するための昇格された特権を持つ複数のユーザーがいますか。
@@ -67,6 +68,6 @@
 [インシデント対応要件の決定](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
 
 ## 関連項目
-[設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-directory-overview.md)
+[設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="11/18/2015"
    ms.author="larryfr"/>
 
 #Windows ベースの HDInsight での Apache Storm トポロジのデプロイと管理
@@ -149,7 +149,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
 
 Storm UI は、REST API を基に構築されているため、REST API を使用して同様の管理や監視機能を実行できます。REST API を使用して、Storm トポロジの管理や監視用のカスタム ツールを作成できます。
 
-詳細については、「<a href="https://github.com/apache/storm/blob/master/STORM-UI-REST-API.md" target="_base">Storm UI REST API</a>」をご覧ください。以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
+詳細については、「[Storm UI REST API](https://github.com/apache/storm/blob/master/docs/documentation/ui-rest-api.md)」を参照してください。以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
 
 ###ベース URI
 
@@ -179,4 +179,4 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 [storm-dashboard-submit]: ./media/hdinsight-storm-deploy-monitor-topology/submit.png
 [storm-dashboard-ui]: ./media/hdinsight-storm-deploy-monitor-topology/storm-ui-summary.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="ibiza"
    ms.topic="article"
    ms.workload="tbd"
-   ms.date="09/30/2015"
+   ms.date="11/15/2015"
    ms.author="sdash"/>
 
 # Azure Cloud Services 向けの Application Insights
@@ -30,7 +30,7 @@
 
 #### Application Insights を使用してインストルメント化されたサンプル アプリケーション
 
-Application Insights がクラウド サービスに追加され、2 つの woker ロールが Azure でホストされている[サンプル アプリケーション](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)をご覧ください。
+Application Insights がクラウド サービスに追加され、2 つの worker ロールが Azure でホストされている[サンプル アプリケーション](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)をご覧ください。
 
 以降では、同じようにして独自のクラウド サービス プロジェクトを調整する方法について説明します。
 
@@ -58,7 +58,7 @@ Application Insights リソースでは、利用統計情報データが分析�
 
     ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-cloudservices/03-nuget.png)
 
-2. [Web 向けの Application Insights](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet パッケージを追加します。SDK のこのバージョンには、ロールの情報など、サーバー コンテキストを追加するモジュールが含まれています。
+2. [Web 向けの Application Insights](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet パッケージを追加します。SDK のこのバージョンには、ロールの情報など、サーバー コンテキストを追加するモジュールが含まれています。worker ロールの場合、Windows Services の Application Insights を使用します。
 
     !["Application Insights" の検索](./media/app-insights-cloudservices/04-ai-nuget.png)
 
@@ -69,9 +69,9 @@ Application Insights リソースでは、利用統計情報データが分析�
  
     ```XML
      
-    <Role name="WorkerRoleA"> 
+     <Role name="WorkerRoleA"> 
       <Setting name="Telemetry.AI.InstrumentationKey" value="YOUR IKEY" /> 
-    </Role>
+     </Role>
     ```
  
     適切なスタートアップ関数の中に、構成設定のインストるメンテーション キーを設定します。
@@ -90,6 +90,20 @@ Application Insights リソースでは、利用統計情報データが分析�
 4. ApplicationInsights.config ファイルが常に出力ディレクトリにコピーされるように設定します。 
 
     (.config ファイルの中に、インストルメンテーション キーの配置を求めるメッセージがあります。ただし、クラウド アプリケーションでは、それは .cscfg ファイルから設定することをお勧めします。これにより、ポータルでロールが正確に識別されます)。
+
+## Azure 診断を有効にする
+
+Azure 診断はパフォーマンス カウンター、Windows イベント ログ、トレース ログをアプリケーションから Application Insights に送信します。
+
+ソリューション エクスプローラーで、各ロールの [プロパティ] を開きます。**[Application Insights に診断を送信する]** を有効にします。
+
+![[プロパティ] で、[診断を有効にする] > [Application Insights に送信する] の順に選択します。](./media/app-insights-cloudservices/05-wad.png)
+
+他のロールに対して繰り返します。
+
+### 実行中のアプリまたは Azure VM でAzure 診断を有効にする
+
+アプリを Azure で既に実行している場合にも、Visual Studio のサーバー エクスプローラーで [プロパティ] を開き、診断を有効にできます。
 
 
 ## SDK を使用したテレメトリのレポート
@@ -208,4 +222,4 @@ Application Insights ポータルに表示される内容の例を次に示し�
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

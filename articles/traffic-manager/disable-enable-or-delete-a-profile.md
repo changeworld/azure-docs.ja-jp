@@ -4,7 +4,7 @@
    services="traffic-manager"
    documentationCenter="na"
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="traffic-manager"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
+   ms.date="11/12/2015"
    ms.author="joaoma" />
 
 # プロファイルの無効化、有効化、または削除
@@ -46,8 +46,12 @@
 
 [Traffic Manager - エンドポイントの無効化または有効化](disable-or-enable-an-endpoint.md)
 
-[Traffic Manager について](traffic-manager-overview.md)
+[フェールオーバーのルーティング方法の構成](traffic-manager-configure-failover-routing-method.md)
 
- 
+[ラウンド ロビンによるトラフィック ルーティング方法の構成](traffic-manager-configure-round-robin-routing-method.md)
 
-<!---HONumber=Oct15_HO3-->
+[パフォーマンスによるトラフィック ルーティング方法の構成](traffic-manager-configure-performance-routing-method.md)
+
+[Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
+
+<!---HONumber=Nov15_HO4-->

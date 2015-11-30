@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/26/2015"
+   ms.date="11/17/2015"
    ms.author="masnider;jesseb"/>
 
 # Reliable Service の概要
@@ -23,7 +23,7 @@ Service Fabric を使用すると、信頼性の高いステートレス サー�
 2. Reliable Service を作成するうえでの異なる選択肢。
 3. Reliable Service を使用する場合のさまざまなシナリオと例、および Reliable Service の作成方法
 
-Reliable Service は、Service Fabric で使用できるプログラミング モデルの 1 つです。Reliable Actor プログラミング モデルの詳細については、[その概要](service-fabric-reliable-actors-introduction.md)を参照してください。
+Reliable Service は、Service Fabric で使用できるプログラミング モデルの 1 つです。Reliable Actors プログラミング モデルの詳細については、[その概要](service-fabric-reliable-actors-introduction.md)を参照してください。
 
 Service Fabric では、サービスは構成およびアプリケーション コードで構成されますが、オプションで状態を追加することもできます。
 
@@ -32,7 +32,7 @@ Service Fabric では、プロビジョニングからデプロイまでのサ�
 ## Reliable Service について
 Reliable Service は、重要機能をアプリケーションに組み込むためのシンプルかつ強力な最上位レベルのプログラミング モデルを提供します。Reliable Service プログラミング モデルを使用すると、以下のことを実現できます。
 
-1. ステートフル サービスの場合、Reliable Service プログラミング モデルを使用すると、Reliable Collection によって状態がサービス内に一貫して確実に格納されます。Reliable Collection は、C# コレクションを使用したことがあるユーザーには馴染みのある可用性が高い一連のコレクション クラスです。これまでは、サービスにおいて確かな方法で状態を管理をするには、外部システムが必要でした。Reliable Collection を使用するとユーザーのコンピューターの隣に状態を格納できるようになると同時に、高可用性の外部ストアと同じレベルの高い可用性と確実性を実現できます。また、コンピューターと状態を併置することで遅延時間も短縮します。
+1. ステートフル サービスの場合、Reliable Service プログラミング モデルを使用すると、Reliable Collection によって状態がサービス内に一貫して確実に格納されます。Reliable Collection は、C# コレクションを使用したことがあるユーザーには馴染みのある可用性が高い一連のコレクション クラスです。これまでは、サービスにおいて確かな方法で状態を管理をするには、外部システムが必要でした。Reliable Collection を使用するとユーザーのコンピューティングの隣に状態を格納できるようになると同時に、高可用性の外部ストアと同じレベルの高い可用性と確実性を実現できます。また、コンピューティングと状態を併置することで遅延時間も短縮します。
 
 2. 見慣れたプログラミング モデルに似た、コードを実行するためのシンプルなモデル。コードには、適切に定義されたエントリ ポイントと管理が簡単なライフ サイクルが含まれます。
 
@@ -52,7 +52,7 @@ Service Fabric の Reliable Service は、以前に作成されたことがあ�
 ## サービスのライフサイクル
 サービスがステートフルまたはステートレスかどうかにかかわらず、Reliable Service は、コードをすばやく追加して使用開始できるというシンプルなライフサイクルを提供します。サービスを稼動開始するために実装しなければならないメソッドは 1 つまたは 2 つしかありません。
 
-+ CreateCommunicationListener - サービスで使用される通信スタックがここで定義されます。[Web API](service-fabric-reliable-services-communication-webapi.md) などの通信スタックによって、サービスをリッスンするエンドポイント (クライアントによるアクセス方法) が定義されるほか、表示されるメッセージがサービス コードの残りの部分と最終的にやり取りする方法が定義されます。
++ CreateServiceReplicaListeners/CreateServiceInstanceListeners - サービスで使用される通信スタックがここで定義されます。[Web API](service-fabric-reliable-services-communication-webapi.md) などの通信スタックによって、サービスをリッスンするエンドポイント (クライアントによるアクセス方法) が定義されるほか、表示されるメッセージがサービス コードの残りの部分と最終的にやり取りする方法が定義されます。
 
 + RunAsync - ここでサービスによってビジネス ロジックが実行されます。ここで提供されているキャンセル トークンは、そのサービス実行を停止する信号となります。たとえば、常に ReliableQueue からメッセージを取得して処理する必要があるサービスの場合、ここでサービスが実行されます。
 
@@ -60,16 +60,16 @@ Reliable Service のライフサイクル内での主要イベントを次に示
 
 1. サービス オブジェクト (StatelessService または StatefulService から派生したもの) が構築されます。
 
-2. CreateCommunicationListener メソッドが呼び出されると、任意の通信リスナーを返すことができます。
+2. CreateServiceReplicaListeners/CreateServiceInstanceListeners メソッドが呼び出されると、1 つ以上の通信リスナーを返すことができます。
   + これはオプションですが、サービスのほとんどで一部のエンドポイントが直接公開されます。
 
-3. CommunicationListener は、作成された時点で開始されます。
-  + CommunicationListeners に含まれる Open() と呼ばれるメソッドはこのときに呼び出され、サービスのリスニング アドレスを返します。組み込まれている ICommunicationListeners の 1 つを Reliable Service で使用した場合は、この処理はサービス側で実行されます。
+3. 通信リスナーは、作成された時点で開始されます。
+  + 通信リスナーに含まれる OpenAsync() と呼ばれるメソッドはこのときに呼び出され、サービスのリスニング アドレスを返します。組み込まれている ICommunicationListeners の 1 つを Reliable Service で使用した場合は、この処理はサービス側で実行されます。
 
-4. 通信リスナーが Open() によって開始されると、主要サービスで RunAsync() が呼び出されます。
+4. 通信リスナーが開始されると、主要サービスで RunAsync() メソッドが呼び出されます。
   + RunAsync はオプションであることに注意してください。サービスがユーザーの呼び出しにのみ応答してすべての処理を直接実行する場合、RunAsync() を実装する必要はありません。
 
-サービスをシャットダウンする場合も (削除したり、単に特定の場所から移動したりする場合)、呼び出しの順序は同じで、最初に CommunicationListener で Close() が呼び出され、次に RunAsync() に渡されたキャンセル トークンが取り消されます。
+サービスをシャットダウンする場合も (削除したり、アップグレードしたり、単に特定の場所から移動したりする場合)、呼び出しの順序は同じで、最初に通信リスナーで CloseAsync() が呼び出され、次に RunAsync() に渡されたキャンセル トークンが取り消されます。
 
 ## サービスの例
 このプログラミング モデルを理解した上で、2 つのサービスを見ながら、これらがどのように機能するかを説明します。
@@ -79,7 +79,7 @@ Reliable Service のライフサイクル内での主要イベントを次に示
 
 たとえば、メモリのない電卓を考えてみてください。電卓は、同時に処理しなければならないすべての項と演算を受け取ります。
 
-この場合は、サービスの RunAsync() を空にしておくことができます。これは、サービスが実行する必要のあるバック グラウンドのタスク処理がないためです。電卓サービスを作成すると、CommunicationListener (たとえば [Web API](service-fabric-reliable-services-communication-webapi.md)) が返され、このメソッドが任意のポートでリッスン エンドポイントを開始します。このリッスン エンドポイントは別のメソッド (例: "Add (n1, n2)") に接続して、電卓のパブリック API を定義します。
+この場合は、サービスの RunAsync() を空にしておくことができます。これは、サービスが実行する必要のあるバック グラウンドのタスク処理がないためです。電卓サービスを作成すると、ICommunicationListener (たとえば [Web API](service-fabric-reliable-services-communication-webapi.md)) が返され、このメソッドが任意のポートでリッスン エンドポイントを開始します。このリッスン エンドポイントは別のメソッド (例: "Add (n1, n2)") に接続して、電卓のパブリック API を定義します。
 
 クライアントから呼び出しが行われた場合は、適切なメソッドが呼び出され、電卓サービスは提供されたデータに対する操作を実行して、結果を返します。この処理では、状態はまったく保存されません。
 
@@ -92,11 +92,11 @@ Service Fabric でのステートレス サービスの使用方法を示す一�
 
 現在のほとんどのサービスでは状態が外部ストアに格納されますが、その理由は、状態の信頼性、可用性、スケーラビリティ、および整合性を提供できるのが外部ストアだからです。Service Fabric では、ステートフル サービスで状態を外部ストアに格納することは義務づけられていません。サービス コードとサービス状態の両方についてこれらの要件が Service Fabric 側で満たされているためです。
 
-たとえば、イメージで実行する必要がある一連の変換要求および変換する必要があるイメージを受信するサービスを作成するとします。このようなサービスの場合、通信ポートを開始する CommunicationListener (たとえば、WebAPI) が返され、`ConvertImage(Image i, IList<Conversion> conversions)` のような API を使用した送信が可能になるようにします。この API では、サービスが情報を取得して要求を ReliableQueue に格納してから、クライアントに何らかのトークンを返すことで、この要求が追跡できるようになります (要求に時間がかかる場合があるため)。
+たとえば、イメージで実行する必要がある一連の変換要求および変換する必要があるイメージを受信するサービスを作成するとします。このようなサービスの場合、通信ポートを開始する通信リスナー (たとえば、WebAPI) が返され、`ConvertImage(Image i, IList<Conversion> conversions)` のような API を使用した送信が可能になるようにします。この API では、サービスが情報を取得して要求を ReliableQueue に格納してから、クライアントに何らかのトークンを返すことで、この要求が追跡できるようになります (要求に時間がかかる場合があるため)。
 
-このサービスでは、RunAsync が複雑になる可能性があります。というのも、ReliableQueue から要求を取得し、リストされた変換を実行し、その結果を ReliableDictionary に格納するというループが RunAsync 内に追加されるからです。これによって、クライアントは戻ってきたときに、変換されたイメージを取得できます。何らかの障害が発生した場合でもイメージが失われないように、この Reliable Service では情報がキューから取得され、変換してからその結果がトランザクションに格納されます。これによって、キューから実際に削除されるのはメッセージのみで、変換が完了すると結果は結果ディクショナリに格納されます。途中で障害が発生した場合 (コードのこのインスタンスが実行されてるマシンなどで)、要求はキューに残ったままで、再度処理されるのを待ちます。
+このサービスでは、RunAsync が複雑になる可能性があります。というのも、IReliableQueue から要求を取得し、リストされた変換を実行し、その結果を IReliableDictionary に格納するというループが RunAsync 内に追加されるからです。これによって、クライアントは戻ってきたときに、変換されたイメージを取得できます。何らかの障害が発生した場合でもイメージが失われないように、この Reliable Service では情報がキューから取得され、変換してからその結果がトランザクションに格納されます。これによって、キューから実際に削除されるのはメッセージのみで、変換が完了すると結果は結果ディクショナリに格納されます。途中で障害が発生した場合 (コードのこのインスタンスが実行されてるマシンなどで)、要求はキューに残ったままで、再度処理されるのを待ちます。
 
-このサービスの注目すべき点は、これらの処理が通常の .NET サービスに似ているということです。唯一異なる点は、使用されているデータ構造 (ReliableQueue および ReliableDictionary) が Service Fabric によって提供されているため、信頼性、可用性、および整合性が高いということです。
+このサービスの注目すべき点は、これらの処理が通常の .NET サービスに似ているということです。唯一異なる点は、使用されているデータ構造 (IReliableQueue および IReliableDictionary) が Service Fabric によって提供されているため、信頼性、可用性、および整合性が高いということです。
 
 ## Reliable Service API を使用する場合
 ご使用のアプリケーション サービスのニーズに次のいずれかが当てはまる場合は、Reliable Service API を検討してください。
@@ -127,7 +127,7 @@ Service Fabric でのステートレス サービスの使用方法を示す一�
 ## 次のステップ
 + [Reliable Service のクイック スタート](service-fabric-reliable-services-quick-start.md)
 + [Reliable Service の詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
-+ [Reliable Actor プログラミング モデルについて](service-fabric-reliable-actors-introduction.md)
++ [Reliable Actors プログラミング モデルについて](service-fabric-reliable-actors-introduction.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

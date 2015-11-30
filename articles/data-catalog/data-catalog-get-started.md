@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="09/11/2015"
+   ms.date="11/20/2015"
    ms.author="derrickv"/>
 
 # Azure Data Catalog の概要
@@ -38,7 +38,7 @@
 
 Adventure Works OLTP データベースは、製造、販売、および購入を含む、架空の自転車メーカー (Adventure Works Cycles) の標準オンライン トランザクション処理シナリオをサポートします。Adventure Works DW データベースは、データ ウェアハウスを構築する方法を示します。
 
-データベースは http://msftdbprodsamples.codeplex.com/ にあり、[Adventure Works 2014 サンプル データベースをインストールする方法]の手順に従ってインストールできます。
+データベースは [CodePlex.com](http://msftdbprodsamples.codeplex.com/) にあり、[Adventure Works 2014 サンプル データベースの README](https://msftdbprodsamples.codeplex.com/downloads/get/880669) の手順に従ってインストールできます。
 
 この演習では、残りの演習で使用される Adventure Works サンプル データベースをインストールしました。この演習をスキップし、独自のエンタープライズ データ ソースを使用するように選択した場合は、名前、タグ、およびその他のメタデータを覚えておくように準備しておいてください。
 
@@ -232,4 +232,4 @@ Adventure Works OLTP データベースは、製造、販売、および購入�
 [12]: ./media/data-catalog-get-started/ownership.png
 [13]: ./media/data-catalog-get-started/crowdsource.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

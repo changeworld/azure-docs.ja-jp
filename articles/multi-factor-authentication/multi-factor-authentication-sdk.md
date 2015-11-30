@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/24/2015" 
+	ms.date="11/17/2015" 
 	ms.author="billmath"/>
 
-# Building Multi-Factor Authentication into Custom Apps (SDK)
+# カスタム アプリに Multi-Factor Authentication を構築する (SDK)
 
 Azure Multi-Factor Authentication ソフトウェア開発キット (SDK) では、Azure AD テナントにあるアプリケーションのサインインおよびトランザクション プロセスに通話とテキスト メッセージの検証を直接作成することができます。
 
@@ -70,8 +70,8 @@ SDK 内には、次の項目があります。
 - Multi-Factor Authentication の**ソース ファイル**
 - Multi-Factor Authentication サービスとの通信に使用する**クライアント証明書**
 - 証明書の**秘密キー**
-- **呼び出し結果**。 呼び出し結果コードの一覧です。このファイルを開くには、ワードパッドなど、テキストの書式設定があるアプリケーションを使用します。呼び出し結果コードは、アプリケーションに対する Multi-Factor Authentication の実装のテストとトラブルシューティングに使用します。これらは認証ステータス コードではありません。
-- **例**。 Multi-Factor Authentication の基本的な実装作業のサンプル コードです。
+- **呼び出し結果。** 呼び出し結果コードの一覧です。このファイルを開くには、ワードパッドなど、テキストの書式設定があるアプリケーションを使用します。呼び出し結果コードは、アプリケーションに対する Multi-Factor Authentication の実装のテストとトラブルシューティングに使用します。これらは認証ステータス コードではありません。
+- **例。** Multi-Factor Authentication の基本的な実装作業のサンプル コードです。
 
 
 >[AZURE.WARNING]クライアント証明書は、特定のユーザー向けに生成された一意のプライベート証明書です。このファイルを共有しないよう、または紛失にはご注意ください。これは、Multi-Factor Authentication サービスとの通信のセキュリティを確保するためのキーです。
@@ -191,4 +191,4 @@ SDK 内には、次の項目があります。
 	    }
 	}
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

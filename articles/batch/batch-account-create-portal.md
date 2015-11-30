@@ -13,12 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/26/2015"
+	ms.date="11/10/2015"
 	ms.author="danlep"/>
 
 
 
 # Azure プレビュー ポータルでの Azure Batch アカウントの作成と管理
+
+> [AZURE.SELECTOR]
+- [Azure preview portal](batch-account-create-portal.md)
+- [Batch Management .NET](batch-management-dotnet.md)
 
 [Azure プレビュー ポータル](https://portal.azure.com)を使用して Azure Batch アカウントと設定 (アカウント キーなど) の作成と管理を行う方法について説明します。すべての Batch API 要求を認証するには、Batch アカウント URL と関連するアクセス キーが必要です。また、Batch ワークロードのすべての Batch リソース (プール、ジョブ、タスクなど) を特定の Batch アカウントと関連付けます。
 
@@ -80,4 +84,4 @@ Batch アカウント URL は、**[Essentials]** に表示されます。`https:
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
 [account_keys]: ./media/batch-account-create-portal/account_keys.PNG
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

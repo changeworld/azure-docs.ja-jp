@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/08/2015" 
+	ms.date="11/16/2015" 
 	ms.author="asteen"/>
 
 # パスワード管理の概要
@@ -172,7 +172,7 @@
 
 
 ### ライトバックの前提条件
-パスワード ライトバックを有効にして使用する前に、次の前提条件を満たす必要があります。
+ライトバックを有効にして使用する前に、次の前提条件を満たす必要があります。
 
 - Azure AD テナントで Azure AD Premium が有効になっている。詳細については、[Azure Active Directory のエディション](active-directory-editions.md)を参照してください。
 - テナントでパスワード リセットが構成され、有効になっている。詳細については、[ユーザーによる Azure AD パスワードのリセットを有効にする](#enable-users-to-reset-their-azure-ad-passwords)を参照してください。
@@ -186,7 +186,7 @@
   
 - Azure AD Connect ツールをインストールし、クラウドに同期するための AD 環境が準備されている。詳細については、[クラウド内のオンプレミスの ID インフラストラクチャの使用](active-directory-aadconnect.md)を参照してください。
 
-  >[AZURE.NOTE]パスワード ライトバックをテストする前に、AD と Azure AD の両方から、フル インポートと完全同期を完了していることを確認してください。
+  >[AZURE.NOTE]パスワード ライトバックをテストする前に、Azure AD Connect で AD と Azure AD の両方から、フル インポートと完全同期を完了していることを確認してください。
 
 - Azure AD Sync または Azure AD Connect を使用している場合は、**TCP 送信ポート 443** (**場合によっては TCP 9350-9354**) を開く必要があります。詳細については、「[手順 3: ファイアウォールを構成する](#step-3-configure-your-firewall)」を参照してください。このシナリオでの DirSync の使用はサポートされなくなりました。DirSync をまだ使用している場合は、パスワード ライトバックをデプロイする前に Azure AD Connect の最新バージョンにアップグレードしてください。
 
@@ -207,7 +207,7 @@
 
 このバージョン番号が **1.0.0419.0911** 以上の場合、または Azure AD Connect をインストールしている場合は、[手順 2: UI または Powershell を使用して Azure AD Connect でパスワード ライトバックを有効にしてから確認する](#step-2-enable-password-writeback-in-azure-ad-connect)にスキップできます。
 
- >[AZURE.NOTE]Azure AD Connect ツールを初めてインストールする場合は、いくつかのベスト プラクティスに従って、ディレクトリ同期の環境を準備することをお勧めします。Azure AD Connect ツールをインストールする前に、[Office 365 管理ポータル](https://portal.microsoftonline.com) または [Azure 管理ポータル](https://manage.windowsazure.com) のいずれかでディレクトリ同期を有効にする必要があります。詳細については、[Managing Azure AD Connect (Azure AD Connect の管理)](active-directory-aadconnect-whats-next.md) を参照してください。
+ >[AZURE.NOTE]Azure AD Connect ツールを初めてインストールする場合は、いくつかのベスト プラクティスに従って、ディレクトリ同期の環境を準備することをお勧めします。Azure AD Connect ツールをインストールする前に、[Office 365 管理ポータル](https://portal.microsoftonline.com) または [Microsoft Azure 管理ポータル](https://manage.windowsazure.com) のいずれかでディレクトリ同期を有効にする必要があります。詳細については、[Managing Azure AD Connect (Azure AD Connect の管理)](active-directory-aadconnect-whats-next.md) を参照してください。
 
 
 ### 手順 2: Azure AD Connect でパスワード ライトバックを有効にする
@@ -222,7 +222,7 @@ Azure AD Connect ツールをダウンロードしたので、パスワード �
 
 4.	ウィザードを完了します。最後のページには、パスワード ライトバックの構成の変更を含む、変更の概要が表示されます。
 
-> [AZURE.NOTE]パスワード ライトバックはいつでも無効にできます。無効にするには、このウィザードを再実行してこの機能を選択解除するか、[Azure 管理ポータル](https://manage.windowsazure.com)で、ディレクトリの [**構成**] タブの [**ユーザー パスワードのリセット ポリシー**] セクションにある [**オンプレミスのディレクトリにパスワードをライトバック**] を [**いいえ**] に設定します。パスワード リセットのエクスペリエンスのカスタマイズに関する詳細については、[Customize: Azure AD Password Management (カスタマイズ: Azure AD でのパスワード管理)](active-directory-passwords-customize.md) を参照してください。
+> [AZURE.NOTE]パスワード ライトバックはいつでも無効にできます。無効にするには、このウィザードを再実行してこの機能を選択解除するか、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で、ディレクトリの [**構成**] タブの [**ユーザー パスワードのリセット ポリシー**] セクションにある [**オンプレミスのディレクトリにパスワードをライトバック**] を [**いいえ**] に設定します。パスワード リセットのエクスペリエンスのカスタマイズに関する詳細については、[Customize: Azure AD Password Management (カスタマイズ: Azure AD でのパスワード管理)](active-directory-passwords-customize.md) を参照してください。
 
 #### Windows PowerShell を使用して、パスワード ライトバックを有効にするには
 1.	**ディレクトリ同期コンピューター**上で、新しい [**管理者特権の Windows PowerShell**] ウィンドウを開きます。
@@ -231,7 +231,7 @@ Azure AD Connect ツールをダウンロードしたので、パスワード �
 4.	次のコマンドレットを実行して、現在のコネクタについてライトバックの現在の状態を取得します。`Get-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName`
 5.	次のコマンドレットを実行して、パスワード ライトバックを有効にします。 `Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName –Enable $true`
 
-> [AZURE.NOTE]資格情報を求められた場合、AzureADCredential に指定した管理者アカウントが、**クラウドの管理者アカウント (Azure AD で作成された)** であり、フェデレーション アカウント (オンプレミスの AD で作成され、Azure AD に同期された) ではないことを確認します。[AZURE.NOTE]パスワード ライトバックを無効にするには、PowerShell を使用して前述の手順を繰り返すか (ただし `$false` を渡す）、[Azure 管理ポータル](https://manage.windowsazure.com)で、ディレクトリの [**構成**] タブの [**ユーザー パスワードのリセット ポリシー**] セクションにある [**オンプレミスのディレクトリにパスワードをライトバック**] を [**いいえ**] に設定します。
+> [AZURE.NOTE]資格情報を求められた場合、AzureADCredential に指定した管理者アカウントが、**クラウドの管理者アカウント (Azure AD で作成された)** であり、フェデレーション アカウント (オンプレミスの AD で作成され、Azure AD に同期された) ではないことを確認します。[AZURE.NOTE]パスワード ライトバックを無効にするには、PowerShell を使用して前述の手順を繰り返すか (ただし `$false` を渡す）、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で、ディレクトリの [**構成**] タブの [**ユーザー パスワードのリセット ポリシー**] セクションにある [**オンプレミスのディレクトリにパスワードをライトバック**] を [**いいえ**] に設定します。
 
 #### 構成が正常に完了したことを確認する
 構成が正常に完了すると、[Windows PowerShell] ウィンドウに「パスワード リセット ライトバックが有効になりました。」というメッセージが表示されます。
@@ -303,18 +303,17 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 
 <br/> <br/> <br/>
 
-**その他のリソース**
+## パスワードのリセットに関するドキュメントへのリンク
+Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-
-* [パスワード管理とは](active-directory-passwords.md)
-* [パスワード管理のしくみ](active-directory-passwords-how-it-works.md)
-* [パスワード管理のカスタマイズ](active-directory-passwords-customize.md)
-* [パスワード管理のベスト プラクティス](active-directory-passwords-best-practices.md)
-* [パスワード管理レポートで運用情報を把握する方法](active-directory-passwords-get-insights.md)
-* [パスワード管理に関する FAQ](active-directory-passwords-faq.md)
-* [パスワード管理のトラブルシューティング](active-directory-passwords-troubleshoot.md)
-* [詳細情報](active-directory-passwords-learn-more.md)
-* [MSDN のパスワード管理](https://msdn.microsoft.com/library/azure/dn510386.aspx)
+* [**自分のパスワードのリセット**](active-directory-passwords-update-your-own-password) - システムのユーザーとして自分のパスワードをリセットまたは変更する方法について説明します。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
+* [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
+* [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
+* [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。
+* [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
+* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
+* [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
 
 
 
@@ -351,4 +350,4 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 [031]: ./media/active-directory-passwords-getting-started/031.jpg "Image_031.jpg"
 [032]: ./media/active-directory-passwords-getting-started/032.jpg "Image_032.jpg"
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

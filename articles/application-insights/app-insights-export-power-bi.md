@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Power BI における Application Insights データに関するページをご覧ください。" 
-	description="Power BI を使用すると、アプリケーションのパフォーマンスと使用状況を監視できます。" 
+	pageTitle="Stream Analytics を利用し、Application Insights のデータを Power BI にエクスポートする" 
+	description="Stream Analytics を利用し、エクスポートしたデータを処理する方法について説明します。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="noamben" 
@@ -12,12 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="11/15/2015" 
 	ms.author="awills"/>
  
-# Application Insights データの Power BI ビュー
+# Stream Analytics を利用し、Application Insights のデータを Power BI に入力する
 
 [Microsoft Power BI](https://powerbi.microsoft.com/) では、機能豊富で多様なビジュアルでデータが表示されます。複数のソースから情報をまとめる機能も備わっています。Web やデバイスのアプリのパフォーマンスと使用状況に関するテレメトリ データを、Application Insights から Power BI にストリーミングすることができます。
+
+> [AZURE.NOTE]Application Insights から Power BI にデータを入力する簡単な方法は[アダプターを利用する](https://powerbi.microsoft.com/zh-CN/documentation/powerbi-content-pack-application-insights/)ことです。このアダプターは Power BI Gallery の [サービス] にあります。この記事で説明する方法は、現在のところ、より多面的なものですが、Application Insights で Stream Analytics を利用する方法を紹介するものでもあります。
 
 ![Application Insights の使用状況データの Power BI ビュー サンプル](./media/app-insights-export-power-bi/010.png)
 
@@ -130,7 +132,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 * `webapplication27` は Application Insights リソースの名前です。**すべて小文字で指定します。**
 * `1234...` は Application Insights リソースのインストルメンテーション キーです。**ダッシュは省略します。** 
-* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べて、その他の使用可能な種類を確認します。[データのエクスポート モデルに関するページ](app-insights-export-data-model.md)を参照してください。
+* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べて、その他の使用可能な種類を確認します。「[Application Insights エクスポート データ モデル](app-insights-export-data-model.md)」を参照してください。
 * `/{date}/{time}` はそのまま書き込まれるパターンです。
 
 > [AZURE.NOTE]ストレージを検査して、正しいパスを取得されることを確認してください。
@@ -205,7 +207,28 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 * このクエリはメトリックス テレメトリをドリルダウンし、イベント時刻とメトリック値を取得します。メトリック値は配列内に置かれます。そのため、OUTER APPLY GetElements パターンを使用し、行を抽出します。「myMetric」がこのケースのメトリックの名前になります。 
 
+#### ディメンション プロパティの値を追加するクエリ
 
+```SQL
+
+    WITH flat AS (
+    SELECT
+      MySource.context.data.eventTime as eventTime,
+      InstanceId = MyDimension.ArrayValue.InstanceId.value,
+      BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
+    FROM MySource
+    OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
+    )
+    SELECT
+     eventTime,
+     InstanceId,
+     BusinessUnitId
+    INTO AIOutput
+    FROM flat
+
+```
+
+* このクエリは、次元配列の固定インデックスにある特定のディメンションに依存せず、ディメンション プロパティの値を追加します。
 
 ## ジョブを実行する
 
@@ -239,4 +262,4 @@ Noam Ben Zeev で、Power BI にエクスポートする方法を確認できま
 * [Application Insights](app-insights-overview.md)
 * [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -22,7 +22,7 @@
 
 ##概要 
 
-このガイドでは、Windows および Xamarin アプリで Azure Mobile Services 用の管理対象クライアント ライブラリを使用する一般的なシナリオの実行方法を示します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。Mobile Services を初めて使用する場合は、まず、「[Mobile Services のクイックスタート](mobile-services-dotnet-backend-xamarin-ios-get-started.md)」チュートリアルを完了することを検討してください。
+このガイドでは、Windows および Xamarin アプリで Azure Mobile Services 用の管理対象クライアント ライブラリを使用する一般的なシナリオの実行方法を示します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。Mobile Services を初めて使用する場合は、まず「[Mobile Services のクイックスタート](mobile-services-dotnet-backend-xamarin-ios-get-started.md)」チュートリアルを完了することを検討してください。
 
 [AZURE.INCLUDE [mobile-services-concepts](../../includes/mobile-services-concepts.md)]
 
@@ -290,19 +290,19 @@ Mobile Services は、テーブルの **ID** 列で一意のカスタム文字�
 
 ##方法: プッシュ通知に登録する
 
-Mobile Services クライアントでは、Azure Notification Hubs によるプッシュ通知に登録することができます。登録する場合、プラットフォーム固有のプッシュ通知サービス (PNS) からハンドルを取得します。この値は、登録を作成するときに、任意のタグと一緒に指定します。次のコードは、Windows Notification Service (WNS) にプッシュ通知用の Windows アプリを登録します。
+Mobile Services クライアントでは、Azure Notification Hubs によるプッシュ通知に登録することができます。登録する場合、プラットフォーム固有のプッシュ通知サービス (PNS) からハンドルを取得します。この値は、登録を作成するときに、任意のタグと一緒に指定します。次のコードは、Windows Notification Service (WNS) によるプッシュ通知用の Windows アプリを登録します。
 
-		private async void InitNotificationsAsync()
-		{
-		    // Request a push notification channel.
-		    var channel =
-		        await PushNotificationChannelManager
-		            .CreatePushNotificationChannelForApplicationAsync();
+	private async void InitNotificationsAsync()
+	{
+	    // Request a push notification channel.
+	    var channel =
+	        await PushNotificationChannelManager
+	            .CreatePushNotificationChannelForApplicationAsync();
 
-		    // Register for notifications using the new channel and a tag collection.
-			var tags = new List<string>{ "mytag1", "mytag2"};
-		    await MobileService.GetPush().RegisterNativeAsync(channel.Uri, tags);
-		}
+	    // Register for notifications using the new channel and a tag collection.
+		var tags = new List<string>{ "mytag1", "mytag2"};
+	    await MobileService.GetPush().RegisterNativeAsync(channel.Uri, tags);
+	}
 
 この例では、登録で 2 つのタグが含められます。Windows アプリの詳細については、「[Mobile Services アプリへのプッシュ通知の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push.md)」を参照してください。
 
@@ -310,6 +310,18 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 
 >[AZURE.NOTE]特定の登録されたユーザーに通知を送信する必要がある場合は、登録前に認証を要求し、特定のタグへの登録をユーザーが許可されていることを確認することが重要です。たとえば、ユーザーが他のユーザーの ID であるタグに登録していないことを確認する必要があります。詳細については、「[認証されたユーザーへのプッシュ通知の送信](mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users.md)」を参照してください。
 
+##<a name="pull-notifications"></a>方法: Windows アプリで定期的な通知を使用する
+
+Windows は、ライブ タイルを更新する定期的な通知 (プル通知) をサポートします。定期的な通知を有効にすると、Windows は [スタート] メニューのアプリケーション タイルを更新するカスタム API エンドポイントに定期的にアクセスします。定期的な通知を使用するには、XML データをタイル固有の形式で返す[カスタム API を定義する](mobile-services-javascript-backend-define-custom-api.md)必要があります。詳細については、「[定期的な通知の概要](https://msdn.microsoft.com/library/windows/apps/hh761461.aspx)」を参照してください。
+
+次の例は定期的な通知を有効にし、*tiles* カスタム エンドポイントからタイル テンプレート データを要求します。
+
+    TileUpdateManager.CreateTileUpdaterForApplication().StartPeriodicUpdate(
+        new System.Uri(MobileService.ApplicationUri, "/api/tiles"),
+        PeriodicUpdateRecurrence.Hour
+    ); 
+
+実際のデータの更新頻度に応じて最適な [PeriodicUpdateRecurrance](https://msdn.microsoft.com/library/windows/apps/windows.ui.notifications.periodicupdaterecurrence.aspx) 値を選択してください。
 
 ##<a name="optimisticconcurrency"></a>方法: オプティミスティック同時実行制御を使用する
 
@@ -399,7 +411,7 @@ Mobile Services はオプティミスティック同時実行制御をサポー�
 	}
 
 
-モバイル サービスのオプティミスティック同時実行制御を使用する、より完全な例については、[オプティミスティック同時実行制御のチュートリアルに関するページ]を参照してください。
+Mobile Services のオプティミスティック同時実行制御を使用する、より完全な例については、[オプティミスティック同時実行制御のチュートリアルに関するページ]を参照してください。
 
 
 ##<a name="binding"></a>方法: モバイル サービス データを Windows ユーザー インターフェイスにバインドする
@@ -418,7 +430,7 @@ Mobile Services はオプティミスティック同時実行制御をサポー�
 	ListBox lb = new ListBox();
 	lb.ItemsSource = items;
 
-マネージ ランタイムの一部のコントロールでは、[ISupportIncrementalLoading](http://msdn.microsoft.com/library/windows/apps/Hh701916) というインターフェイスがサポートされます。このインターフェイスにより、コントロールはユーザーによるスクロールの際に追加のデータを要求することができます。このインターフェイスには、`MobileServiceIncrementalLoadingCollection` によるユニバーサル Windows 8.1 アプリ用の組み込みのサポートがあり、コントロールからの呼び出しが自動的に処理されます。Windows アプリで `MobileServiceIncrementalLoadingCollection` を使用するには、次を実行します。
+マネージ ランタイムの一部のコントロールでは、[ISupportIncrementalLoading](http://msdn.microsoft.com/library/windows/apps/Hh701916) というインターフェイスがサポートされます。このインターフェイスにより、コントロールはユーザーによるスクロールの際に追加のデータを要求することができます。このインターフェイスには、`MobileServiceIncrementalLoadingCollection` によるユニバーサル Windows 8.1 アプリ用の組み込みのサポートが用意されており、コントロールからの呼び出しが自動的に処理されます。Windows アプリで `MobileServiceIncrementalLoadingCollection` を使用するには、次を実行します。
 
 			MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
 		items =  todoTable.Where(todoItem => todoItem.Complete == false)
@@ -428,7 +440,7 @@ Mobile Services はオプティミスティック同時実行制御をサポー�
 		lb.ItemsSource = items;
 
 
-Windows Phone 8 と "Silverlight" アプリで新しいコレクションを使用するには、`IMobileServiceTableQuery<T>` や `IMobileServiceTable<T>` で `ToCollection` 拡張メソッドを使用します。実際にデータを読み込むには、`LoadMoreItemsAsync()` を呼び出します。
+Windows Phone 8 と「Silverlight」アプリで新しいコレクションを使用するには、`IMobileServiceTableQuery<T>` や `IMobileServiceTable<T>` で `ToCollection` 拡張メソッドを使用します。実際にデータを読み込むには、`LoadMoreItemsAsync()` を呼び出します。
 
 	MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection();
 	await items.LoadMoreItemsAsync();
@@ -439,12 +451,12 @@ Windows Phone 8 と "Silverlight" アプリで新しいコレクションを使�
 
 ##<a name="authentication"></a>方法: ユーザーを認証する
 
-モバイル サービスは、Facebook、Google、Microsoft アカウント、Twitter、Azure Active Directory などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル「[アプリへの認証の追加]」を参照してください。
+Mobile Services は、Facebook、Google、Microsoft アカウント、Twitter、Azure Active Directory などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル「[アプリへの認証の追加]」を参照してください。
 
 _サーバー フロー_と_クライアント フロー_という 2 つの認証フローがサポートされます。サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。クライアント フローでは、プロバイダー固有とデバイス固有の SDK を利用することから、デバイス固有の機能との統合がさらに進みます。
 
 ###サーバー フロー
-Mobile Services によって Windows アプリの認証プロセスが管理されるようにするには、アプリを ID プロバイダーに登録する必要があります。その後、モバイル サービス内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。詳細については、チュートリアル「[アプリへの認証の追加]」を参照してください。
+Mobile Services によって Windows アプリの認証プロセスを管理するには、アプリを ID プロバイダーに登録する必要があります。その後、モバイル サービス内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。詳細については、チュートリアル「[アプリへの認証の追加]」を参照してください。
 
 ID プロバイダーを登録したら、[MobileServiceAuthenticationProvider] にプロバイダーの値を指定して [LoginAsync メソッド]を呼び出します。たとえば、次のコードは、Facebook を使用してサーバー フローのサインインを開始します。
 
@@ -474,7 +486,7 @@ ID プロバイダーを登録したら、[MobileServiceAuthenticationProvider] 
 
 Facebook 以外の ID プロバイダーを使用している場合は、上の [MobileServiceAuthenticationProvider] の値をプロバイダーに対応する値に変更してください。
 
-この場合、モバイル サービスは、選択されたプロバイダーのサインイン ページを表示し、ID プロバイダーでのサインインが成功した後でモバイル サービス認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[LoginAsync メソッド]は [MobileServiceUser] を返します。これによって、認証されたユーザーの [userId] と、JSON Web トークン (JWT) としての [MobileServiceAuthenticationToken] が提供されます。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「[認証トークンをキャッシュする]」を参照してください。
+この場合、Mobile Services は、選択されたプロバイダーのサインイン ページを表示し、ID プロバイダーでのサインインが成功した後で Mobile Services 認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[LoginAsync メソッド]は [MobileServiceUser] を返します。これによって、認証されたユーザーの [userId] と、JSON Web トークン (JWT) としての [MobileServiceAuthenticationToken] が提供されます。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「[認証トークンをキャッシュする]」を参照してください。
 
 ###クライアント フロー
 
@@ -518,7 +530,7 @@ Facebook 以外の ID プロバイダーを使用している場合は、上の 
 
 ####Microsoft アカウントと Live SDK を利用したシングル サインイン
 
-ユーザーを認証できるようにするには、Microsoft アカウント デベロッパー センターでアプリケーションを登録する必要があります。この登録をモバイル サービスと接続する必要があります。「[Microsoft アカウント ログインを使用するためのアプリケーションの登録](mobile-services-how-to-register-microsoft-authentication.md)」の手順を完了し、Microsoft アカウント登録を作成し、それをモバイル サービスに接続します。アプリのバージョンが Windows ストア と Windows Phone 8/Silverlight の両方の場合、Windows ストア バージョンを最初に登録します。
+ユーザーを認証できるようにするには、Microsoft アカウント デベロッパー センターでアプリケーションを登録する必要があります。この登録をモバイル サービスと接続する必要があります。「[Microsoft アカウント ログインを使用するためのアプリケーションの登録](mobile-services-how-to-register-microsoft-authentication.md)」の手順を完了し、Microsoft アカウント登録を作成し、それをモバイル サービスに接続します。Windows ストア と Windows Phone 8/Silverlight の両方のバージョンのアプリがある場合は、Windows ストア バージョンを最初に登録します。
 
 次のコードでは Live SDK を使用して認証し、返されたトークンを利用してモバイル サービスにサインインします。
 
@@ -685,7 +697,7 @@ Mobile Services には、エラーの検出、検証、回避のためのさま�
         }
     }
 
-このコードは、要求内に新しい **x-my-header** ヘッダーを追加し、利用不可に対する応答コードを任意に設定します。実際のシナリオでは、アプリケーションで必要とされるカスタム ロジックに基づいて応答ステータス コードを設定します。
+このコードは、要求内に新しい **x-my-header** ヘッダーを追加し、利用不可に対する応答コードを任意に設定します。実際のシナリオでは、アプリケーションで必要とされるカスタム ロジックに基づいて応答状態コードを設定します。
 
 ### <a name="serialization"></a>方法: シリアル化をカスタマイズする
 
@@ -754,4 +766,4 @@ Mobile Services クライアント ライブラリは、Json.NET を使用して
 [Azure モバイル サービス クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

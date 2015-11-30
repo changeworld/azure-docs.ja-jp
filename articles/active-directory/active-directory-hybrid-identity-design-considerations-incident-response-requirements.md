@@ -60,6 +60,6 @@ ID 管理システムには、IT 管理者がこのような疑わしい行動�
 [データ保護戦略の定義](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
 
 ## 関連項目
-[設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-directory-overview.md)
+[設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

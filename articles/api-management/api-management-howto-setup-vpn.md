@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/16/2015"
+	ms.date="11/16/2015"
 	ms.author="antonba"/>
 
 # Azure API Management で VPN 接続を設定する方法
 
-API Management の VPN のサポートにより、API Management プロキシを Azure Virtual Network に接続することができます。これにより、API Management のお客様は、オンプレミスのバックエンド Web サービスまたはパブリック インターネットからアクセスできないバックエンド Web サービスに安全に接続できます。
+API Management の VPN のサポートにより、API Management ゲートウェイを Azure Virtual Network に接続することができます。これにより、API Management のお客様は、オンプレミスのバックエンド Web サービスまたはパブリック インターネットからアクセスできないバックエンド Web サービスに安全に接続できます。
 
 ## <a name="enable-vpn"> </a>VPN 接続を有効にする
 
@@ -36,9 +36,9 @@ API Management サービスがプロビジョニングされているすべて�
 
 ![VPN の選択][api-management-setup-vpn-select]
 
-ページの下部にある **[保存]** をクリックします。更新中は、Azure の管理ポータルで API Management サービスに対して他の操作を実行できません。サービス プロキシは使用可能な状態に保持されるため、実行時の呼び出しは影響を受けません。
+ページの下部にある **[保存]** をクリックします。更新中は、Microsoft Azure 管理ポータルで API Management サービスに対して他の操作を実行できません。サービス ゲートウェイは使用可能な状態に保持されるため、実行時の呼び出しは影響を受けません。
 
-プロキシの VIP アドレスは VPN を有効または無効にするたびに変化することに注意してください。
+ゲートウェイの VIP アドレスは VPN を有効または無効にするたびに変化することに注意してください。
 
 ## <a name="connect-vpn"> </a>VPN の背後にある Web サービスへの接続
 
@@ -67,4 +67,4 @@ API Management サービスが VPN に接続された後で仮想ネットワー
 [Azure API Management で API Inspector を使用して呼び出しをトレースする方法]: api-management-howto-api-inspector.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

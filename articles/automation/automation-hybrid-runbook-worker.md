@@ -60,20 +60,19 @@ Hybrid Worker では次の推奨事項を考慮してください。
 Hybrid Runbook Worker をインストールして構成する手順は次のとおりです。最初の 2 つのステップは Automation 環境に対して 1 回だけ実行し、残りのステップは worker コンピューターごとに繰り返します。
 
 ### 1\.Operations Management Suite のワークスペースを作成する
-Operations Management Suite のワークスペースがまだない場合は、「[Operational Insights のワークスペースのセットアップ](../operational-insights/operational-insights-onboard-in-minutes.md)」の手順を使用して作成します。すでにワークスペースがある場合は、そちらを使用できます。  
-
+Operations Management Suite のワークスペースがまだない場合は、「[Operational Insights のワークスペースのセットアップ](../operational-insights/operational-insights-onboard-in-minutes.md)」の手順を使用して作成します。既存のワークスペースがある場合は、それを使用できます。
 
 ### 2\.Operations Management Suite ワークスペースに Automation ソリューションを追加します。
 ソリューションにより、Operations Management Suite に機能が追加されます。Automation ソリューションは、Hybrid Runbook Worker のサポートなど、Azure Automation 用の機能を追加します。ソリューションをワークスペースに追加すると、次の手順でインストールする worker コンポーネントがエージェント コンピューターに自動的にプッシュダウンされます。
 
-「[ソリューション ギャラリーを使用してソリューションを追加するには](../operational-insights/operational-insights-setup-workspace.md#1-add-solutions)」の説明に従って、Operations Management Suite のワークスペースに **Automation** ソリューションを追加します。
+「[To add a solution using the Solutions Gallery (ソリューション ギャラリーを使用してソリューションを追加するには)](../operational-insights/operational-insights-setup-workspace.md#1-add-solutions)」の説明に従って、Operations Management Suite のワークスペースに **Automation** ソリューションを追加します。
 
 ### 3\.Microsoft 管理エージェントをインストールする
 Microsoft 管理エージェントは Operations Management Suite にコンピューターを接続します。エージェントをオンプレミスのコンピューターにインストールし、ワークスペースに接続すると、Hybrid Runbook Worker に必要なコンポーネントが自動的にダウンロードされます。
 
 「[Operational Insights にコンピューターを直接接続する](../operational-insights/operational-insights-direct-agent.md)」の手順に従って、オンプレミスのコンピューターにエージェントをインストールします。コンピューターごとにこのプロセスを繰り返して、複数の worker を環境に追加できます。
 
-エージェントが Operations Management Suite に正常に接続すると、Operations Management Suite の **[設定]** ウィンドウの **[接続されているソース]** タブにエージェントが表示されます。C:\\Program Files\\Microsoft Monitoring Agent\\Agent に **AzureAutomationFiles** という名前のフォルダーが作成されていることで、エージェントが Automation ソリューションを正常にダウンロードしたことを確認できます。
+エージェントが Operations Management Suite に正常に接続すると、Operations Management Suite の **[設定]** ウィンドウの **[接続されているソース]** タブにエージェントが表示されます。C:\\Program Files\\Microsoft Monitoring Agent\\Agent に **AzureAutomationFiles** という名前のフォルダーが作成されていることを調べて、エージェントが Automation ソリューションを正常にダウンロードしたことを確認できます。
 
 ### 4\.Runbook 環境をインストールして、Azure Automation に接続する
 エージェントを Operations Management Suite に追加すると、Automation ソリューションは、**Add-HybridRunbookWorker** コマンドレットを含む **HybridRegistration** PowerShell モジュールをプッシュダウンします。コンピューターに Runbook 環境をインストールして、Azure Automation に登録する場合は、このコマンドレットを使用します。
@@ -92,9 +91,9 @@ Microsoft 管理エージェントは Operations Management Suite にコンピ�
 
 ![Hybrid Runbook Worker の概要](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-- **Name** は、Hybrid Runbook Worker グループの名前です。オートメーション アカウントにこのグループが既に存在する場合は、現在のコンピューターがそれに追加されます。まだ存在しない場合は、追加されます。
+- **Name** は、Hybrid Runbook Worker グループの名前です。オートメーション アカウントにこのグループが既に存在する場合は、現在のコンピューターがそれに追加されます。If it does not already exist, then it is added.
 - **EndPoint** は、**[キーの管理]** ブレードの **[URL]** フィールドです。
-- **Token** は、[**キーの管理**] ブレードの [**プライマリ アクセス キー**] です。  
+- **Token** は、**[キーの管理]** ブレードの **[プライマリ アクセス キー]** です。  
 
 インストールに関する詳細な情報を受け取るには、**Add-HybridRunbookWorker** で **-Verbose** スイッチを使用します。
 
@@ -158,7 +157,7 @@ Hybrid Runbook Worker 機能を持つ Azure Automation と Service Management Au
 
 - SMA には Windows Azure パックのローカル インストールが必要です。ローカル Runbook ワーカーにインストールされているエージェントのみを必要とする Azure Automation よりローカル リソースとメンテナンス コストがかかります。エージェントは Operations Management Suite によって管理され、メンテナンス コストがより削減されます。
 - Azure Automation はその Runbook をクラウド内に格納し、オンプレミスの Hybrid Runbooks Worker に配信します。セキュリティ ポリシーでこの動作が許可されていない場合は、SMA を使用する必要があります。
-- Windows Azure パックは無料でダウンロードできますが、Azure Automation ではサブスクリプション料がかかる可能性があります。Azure.は SMA のために複数のデータベースを維持する必要があります。
+- Windows Azure パックは無料でダウンロードできますが、Azure Automation ではサブスクリプション料がかかる可能性があります。
 - Hybrid Runbook Worker 機能を持つ Azure Automation を使用することで、Azure Automation と SMA の両方を別々に管理するのではなく、1 つの場所でクラウド リソースとローカル リソースの Runbook を管理できるようになります。
 - Azure Automation には、SMA で使用できないグラフィカル作成などの拡張機能があります。
 
@@ -169,4 +168,4 @@ Hybrid Runbook Worker 機能を持つ Azure Automation と Service Management Au
 - [Azure Automation での Runbook の編集](https://msdn.microsoft.com/library/dn879137.aspx)
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

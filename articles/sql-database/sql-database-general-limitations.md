@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="11/05/2015"
+   ms.date="11/16/2015"
    ms.author="jroth" />
 
 # Azure SQL Database の一般的な制限事項とガイドライン
@@ -59,9 +59,9 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 
 ## 追加のガイドライン
 
-- この記事で説明した一般的な制限事項のほかにも、SQL Database には、[サービス レベル](sql-database-service-tiers.md)に応じて特定のリソースのクォータと制限事項があります。サービス レベルの制限の詳細については、「[サービス層の機能と制限](sql-database-performance-guidance.md#service-tier-capabilities-and-limits)」を参照してください。
+- この記事で説明した一般的な制限事項のほかにも、SQL Database には、**サービス レベル**に応じて特定のリソースのクォータと制限事項があります。サービス レベルの概要については、「[SQL Database のサービス階層](sql-database-service-tiers.md)」を参照してください。
 
-- SQL Database のその他の制限については、「[Azure SQL Database のリソース制限](sql-database-limits.md)」を参照してください。
+- SQL Database のその他の制限については、「[Azure SQL Database のリソース制限](sql-database-resource-limits.md)」を参照してください。
 
 - セキュリティ関連のガイドラインについては、「[Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md)」を参照してください。
 
@@ -69,4 +69,4 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 
 - SQL Database の利用可能なドライバーとサポートの詳細については、「[SQL Database および SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

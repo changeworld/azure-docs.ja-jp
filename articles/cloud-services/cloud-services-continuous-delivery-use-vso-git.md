@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Git と Visual Studio Online を使用した Azure への継続的な配信" 
-	description="Git を使用して Visual Studio Online チーム プロジェクトを自動的にビルドして Azure App Service の Web アプリ機能またはクラウド サービスにデプロイするための構成方法について説明します。"
+	pageTitle="Visual Studio Team Services と Git を使用した Azure での継続的な配信" 
+	description="Visual Studio Team Services チーム プロジェクトを Git を使用して自動的にビルドして Azure App Service の Web アプリ機能またはクラウド サービスにデプロイするための構成方法について説明します。"
 	services="cloud-services"
 	documentationCenter=".net"
 	authors="kempb"
@@ -16,21 +16,20 @@
 	ms.date="09/02/2015"
 	ms.author="kempb"/>
 
-# Visual Studio Online と Git を使用した Azure への継続的な配信
+# Visual Studio Team Services と Git を使用した Azure への継続的な配信
 
-Visual Studio Online チーム プロジェクトを使用してソース コードの Git リポジトリをホストし、コミットをリポジトリにプッシュするたびに自動的にビルドして Azure の Web アプリまたはクラウド サービスにデプロイすることができます。
+Visual Studio Team Services チーム プロジェクトを使用してソース コードの Git リポジトリをホストし、コミットをリポジトリにプッシュするたびに自動的にビルドして Azure の Web アプリまたはクラウド サービスにデプロイすることができます。
 
 Visual Studio 2013 および Azure SDK をインストールする必要があります。Visual Studio 2013 がない場合は、**www.visualstudio.com** で[無料利用の開始](http://www.visualstudio.com)リンクをクリックしてダウンロードします。Azure SDK を[ここ](http://go.microsoft.com/fwlink/?LinkId=239540)からインストールしてください。
 
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Visual Studio Online のアカウントが必要です。
-> [Visual Studio Online アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Visual Studio Team Services アカウントが必要です。[Visual Studio Team Services アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
 
-Visual Studio Online を使用してクラウド サービスを自動的にビルドして Azure にデプロイするように設定するには、次の手順に従います。
+Visual Studio Team Services を使用してクラウド サービスを自動的にビルドして Azure にデプロイするようにセットアップするには、次の手順に従います。
 
 ## 手順 1. Git リポジトリを作成する
 
-1. Visual Studio Online アカウントをまだ持っていない場合は、[ここ](http://go.microsoft.com/fwlink/?LinkId=397665)で取得できます。チーム プロジェクトを作成するときに、ソース管理システムとして Git を選択します。指示に従い、Visual Studio をチーム プロジェクトに接続します。
+1. Visual Studio Team Services アカウントをまだ持っていない場合は、[ここ](http://go.microsoft.com/fwlink/?LinkId=397665)で取得できます。チーム プロジェクトを作成するときに、ソース管理システムとして Git を選択します。指示に従い、Visual Studio をチーム プロジェクトに接続します。
 
 2. **チーム エクスプローラー**で、**[このリポジトリを複製]** を選択します。
 
@@ -50,7 +49,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 
 	![][7]
 
-4. Visual Studio Online で初めて Git を使用する場合は、Git で自分自身が識別されるように情報を提供する必要があります。**チーム エクスプローラー**の **[保留中の変更]** 領域で、ユーザー名と電子メール アドレスを入力します。コミットのコメントを入力し、**[コミット]** をクリックします。
+4. Visual Studio Team Services で初めて Git を使用する場合は、Git で自分自身が識別されるように情報を提供する必要があります。**チーム エクスプローラー**の **[保留中の変更]** 領域で、ユーザー名と電子メール アドレスを入力します。コミットのコメントを入力し、**[コミット]** をクリックします。
 
 	![][8]
 
@@ -58,31 +57,31 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 
 6. これで、リポジトリのローカル コピーに変更をコミットできました。次に、**[同期]** リンクを選択してこれらの変更をサーバーと同期させます。
 
-## 手順 3. プロジェクトを Azure に接続する
+## 手順 3: プロジェクトを Azure に接続する
 
-1. ソース コードを含む Git リポジトリが Visual Studio Online に保持され、Git リポジトリを Azure に接続する準備が整いました。[Azure 管理ポータル](http://manage.windowsazure.com)で、クラウド サービスまたは Web アプリを選択するか、新たに作成します。作成するには、左下にある [+] アイコンを選択し、**[クラウド サービス]** または **[Web アプリ]** を選択して、**[簡易作成]** を選択します。
+1. ソース コードを含む Git リポジトリが Visual Studio Team Services に保持され、Git リポジトリを Azure に接続する準備が整いました。[Azure 管理ポータル](http://manage.windowsazure.com)で、クラウド サービスまたは Web アプリを選択するか、新たに作成します。作成するには、左下にある [+] アイコンを選択し、**[クラウド サービス]** または **[Web アプリ]** を選択して、**[簡易作成]** を選択します。
 
 	![][9]
 
-3. クラウド サービスの場合は、**[Visual Studio Online 発行の設定]** リンクを選択します。Web アプリの場合は、**[ソース管理からのデプロイの設定]** リンクを選択します。
+3. クラウド サービスの場合は、**[Visual Studio Team Services 発行の設定]** リンクを選択します。Web アプリの場合は、**[ソース管理からのデプロイの設定]** リンクを選択します。
 
 	![][10]
 
-2. ウィザードで、テキスト ボックスに Visual Studio Online アカウントの名前を入力し、**[今すぐ承認]** リンクを選択します。サインインを求められることがあります。
+2. ウィザードで、テキスト ボックスに Visual Studio Team Services アカウントの名前を入力し、**[今すぐ承認]** を選択します。サインインを求められることがあります。
 
 	![][11]
 
-3. **[接続要求]** ポップアップ ダイアログで、**[承認]** を選択し、Azure が Visual Studio Online のチーム プロジェクトを構成することを許可します。
+3. **[接続要求]** ポップアップ ダイアログで、**[承認]** を選択し、Azure が Visual Studio Team Services のチーム プロジェクトを構成することを許可します。
 
 	![][12]
 
-4. 承認が成功すると、Visual Studio Online チーム プロジェクトが含まれるドロップダウン リストが表示されます。前のステップで作成したチーム プロジェクトの名前を選択し、ウィザードのチェック マーク ボタンを選択します。
+4. 承認が成功すると、Visual Studio Team Services チーム プロジェクトが含まれるドロップダウン リストが表示されます。前のステップで作成したチーム プロジェクトの名前を選択し、ウィザードのチェック マーク ボタンを選択します。
 
 	![][13]
 
-	次にコミットをリポジトリにプッシュするときに、Visual Studio Online はプロジェクトをビルドして Azure にデプロイします。
+	次にコミットをリポジトリにプッシュするときに、Visual Studio Team Services はプロジェクトをビルドして Azure にデプロイします。
 
-## 手順 4. リビルドをトリガーし、プロジェクトを再デプロイする
+## 手順 4: リビルドをトリガーし、プロジェクトを再デプロイする
 
 1. Visual Studio で、ファイルを開き、変更します。たとえば、MVC Web ロールの Views\\Shared フォルダーにある `_Layout.cshtml` ファイルを変更します。
 
@@ -102,7 +101,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 
 	![][38]
 
-6. **[プッシュ]** リンクを選択してコミットを Visual Studio Online のリポジトリにプッシュします。(また、**[同期]** を使用してコミットをリポジトリにコピーすることもできます。その違いは、**[同期]** ではリポジトリから最新の変更が取得される点です)。
+6. **[プッシュ]** リンクを選択してコミットを Visual Studio Team Services のリポジトリにプッシュします。(また、**[同期]** を使用してコミットをリポジトリにコピーすることもできます。その違いは、**[同期]** ではリポジトリから最新の変更が取得される点です)。
 
 	![][39]
 
@@ -114,7 +113,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 
 	![][22]
 
-	**チーム エクスプローラー**に、チェックインのためにビルドが開始されたことが表示されます。
+	**チーム エクスプローラー**に、チェックインのためにビルドが開始されたことが示されます。
 
 	![][23]
 
@@ -124,7 +123,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 
 	![][25]
 
-11. **[トリガー]** タブを見ると、既定ではチェックインごとにビルドを行うようにビルド定義が設定されていることがわかります。クラウド サービスの場合は、Visual Studio Online により master 分岐がビルドされてステージング環境に自動的にデプロイされます。その場合も、ライブ サイトにデプロイするための手動による手順を実行する必要があります。ステージング環境がない Web アプリの場合は、master 分岐が直接ライブ サイトにデプロイされます。
+11. **[トリガー]** タブを見ると、既定ではチェックインごとにビルドを行うようにビルド定義が設定されていることがわかります。クラウド サービスの場合は、Visual Studio Team Services により master 分岐がビルドされてステージング環境に自動的にデプロイされます。その場合も、ライブ サイトにデプロイするための手動による手順を実行する必要があります。ステージング環境がない Web アプリの場合は、master 分岐が直接ライブ サイトにデプロイされます。
 
 	![][26]
 
@@ -153,7 +152,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 
 	![][29]
 
-1. [Azure 管理ポータル](http://manage.windowsazure.com)では、ステージング環境が選択されると、関連付けられたデプロイが **[デプロイ]** タブに表示されます。
+1. [Microsoft Azure 管理ポータル](http://manage.windowsazure.com)では、ステージング環境が選択されると、関連付けられたデプロイが **[デプロイ]** タブに表示されます。
 
 	![][30]
 
@@ -217,7 +216,7 @@ Git を使用する場合は、通常、working 分岐で変更を行い、開�
 
 	![][43]
 
-10. **[同期されていないコミット]** を選択し、**[同期]** を選択するか、**[プッシュ]** を選択して、Visual Studio Online の working 分岐のコピーに変更をコピーします。
+10. **[同期されていないコミット]** を選択し、**[同期]** を選択するか、**[プッシュ]** を選択して、Visual Studio Team Services の working 分岐のコピーに変更をコピーします。
 
 	![][45]
 
@@ -225,7 +224,7 @@ Git を使用する場合は、通常、working 分岐で変更を行い、開�
 
 ## 次のステップ
 
-Visual Studio Online で Git を使用する場合のその他のヒントについては、[Visual Studio を使用した Git でのコードの開発と共有](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)に関するページを参照してください。また、Visual Studio Online で管理されていない Git リポジトリを使用した Azure への発行の詳細については、「[Azure App Service での GIT による継続的なデプロイ](../web-sites-publish-source-control.md)」を参照してください。Visual Studio Online の詳細については、[Visual Studio Online](http://go.microsoft.com/fwlink/?LinkId=253861) に関するページを参照してください。
+Visual Studio Team Services で Git を使用する場合のその他のヒントについては、[Visual Studio を使用した Git でのコードの開発と共有](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)に関するページを参照してください。また、Visual Studio Team Services で管理されていない Git リポジトリを使用した Azure への発行の詳細については、「[Azure App Service での GIT による継続的なデプロイ](../web-sites-publish-source-control.md)」を参照してください。Visual Studio Team Services の詳細については、[Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861) に関するページをご覧ください。
 
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso-git/CreateTeamProjectInGit.PNG
@@ -273,4 +272,4 @@ Visual Studio Online で Git を使用する場合のその他のヒントにつ
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

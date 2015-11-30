@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/24/2015" 
+	ms.date="11/17/2015"
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication での連絡方法としてモバイル アプリを使用する
 
 主要な連絡方法としてモバイル アプリを使用する場合は、この記事を使用できます。モバイル アプリを主要な連絡方法として使用できるよう多要素認証を設定する方法について説明します。
 
-Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/ja-jp/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、[IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で利用できます。
+Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/ja-JP/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、[IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で利用できます。
 
 ## 連絡方法としてモバイル アプリを使用するには
 
@@ -73,4 +73,4 @@ Azure MFA を既に使用しているアカウントの場合、バーコード�
 >[AZURE.NOTE]"職場アカウントの追加" と表示されている場合、これは社内参加用であり、多要素認証用ではありません。これは無視してかまいません。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

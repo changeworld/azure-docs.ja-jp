@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/26/2015"
+   ms.date="11/16/2015"
    ms.author="larryfr"/>
 
 # Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理
@@ -137,7 +137,7 @@ Storm UI のメイン ページには、次の情報が表示されます。**�
 
 Storm UI は、REST API を基に構築されているため、REST API を使用して同様の管理や監視機能を実行できます。REST API を使用して、Storm トポロジの管理や監視用のカスタム ツールを作成できます。
 
-詳細については、「<a href="https://github.com/apache/storm/blob/master/STORM-UI-REST-API.md" target="_base">Storm UI REST API</a>」をご覧ください。以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
+詳細については、「[Storm UI REST API](https://github.com/apache/storm/blob/master/docs/documentation/ui-rest-api.md)」を参照してください。以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
 
 > [AZURE.IMPORTANT]Storm REST API は、インターネットでパブリックに使用できません。SSH トンネルを使用して HDInsight クラスター ヘッド ノードにアクセスする必要があります。SSH トンネルの作成と使用については、[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)方法に関するページを参照してください。
 
@@ -150,7 +150,7 @@ Linux ベースの HDInsight クラスターの REST API のベース URI はヘ
 * __SSH セッションから__: SSH セッションからクラスターに `headnode -f` コマンドを使用します。
 * __Ambari Web から__: ページの一番上から __[サービス]__ を選択し、__[Storm]__ を選択します。__[概要__ ] タブで __[Storm UI Server]__ を選択します。Storm UI と REST API が実行されているノードの FQDN はページの一番上で確認できます。
 * __Ambari REST API から__: `curl -u admin:PASSWORD -G "https://CLUSTERNAME
-.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` コマンドを使用し、Storm UI と REST API が実行されているノードに関する情報を取得します。__PASSWORD__ をクラスターの管理者パスワードに替えます。__CLUSTERNAME__ をクラスター名に替えます。応答の「host\_name」エントリにノードの FQDN が含まれます。
+.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` コマンドを使用し、Storm UI と REST API が実行されているノードに関する情報を取得します。__PASSWORD__ をクラスターの管理者パスワードに替えます。__CLUSTERNAME__ をクラスター名に置き換えます。応答の「host\_name」エントリにノードの FQDN が含まれます。
 
 ### 認証
 
@@ -168,4 +168,4 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 
 その他の Storm トポロジ例は、「[HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

@@ -27,7 +27,7 @@ Azure のロールベースのアクセス制御では、ユーザー、グル�
 
 | ロール名 | 説明 |
 | --------- | ----------- |
-| [API Management サービスの共同作業者](#api-management-service-contributor) | Application Insights コンポーネントを管理できます |
+| [API Management サービスの共同作業者](#api-management-service-contributor) | API Management サービスを管理できます |
 | [Application Insights コンポーネントの共同作業者](#application-insights-component-contributor) | Application Insights コンポーネントを管理できます |
 | [オートメーション オペレーター](#automation-operator) | ジョブを開始、停止、中断、および再開できます |
 | [BizTalk の共同作業者](#biztalk-contributor) | BizTalk Services を管理できます |
@@ -53,7 +53,7 @@ Azure のロールベースのアクセス制御では、ユーザー、グル�
 | [ユーザーアクセスの管理者](#user-access-administrator) | Azure リソースに対するユーザー アクセスを管理できます |
 | [従来の仮想マシンの共同作業者](#classic-virtual-machine-contributor) | 接続している仮想ネットワークやストレージ アカウント以外の従来の仮想マシンを管理できます |
 | [仮想マシンの共同作業者](#virtual-machine-contributor) | 接続している仮想ネットワークやストレージ アカウント以外の仮想マシンを管理できます |
-| [従来のネットワークの共同作業者](#classic-network-contributor) | 接続している仮想ネットワークやストレージ アカウント以外の仮想マシンを管理できます |
+| [従来のネットワークの共同作業者](#classic-network-contributor) | 従来の仮想ネットワークと予約済み IP を管理できます |
 | [Web プランの共同作業者](#web-plan-contributor) | Web プランを管理できます |
 | [Web サイトの共同作業者](#website-contributor) | Web サイトを管理できますが、接続されている Web プランは管理できません |
 
@@ -480,4 +480,4 @@ Web サイトを管理できますが、接続されている Web プランは�
 ## RBAC のトピック
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

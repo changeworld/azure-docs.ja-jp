@@ -27,7 +27,7 @@
 
 [AZURE.INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-以下の Azure CLI のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。このドキュメントに示されているようにコマンドを実行するのであれば、「[PowerShell を使用して VNet (クラシック) を作成する](virtual-networks-create-vnet-classic-ps.md)」に示されている環境を構築します。
+以下の Azure PowerShell のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。このドキュメントに示されているようにコマンドを実行するのであれば、「[PowerShell を使用して VNet (クラシック) を作成する](virtual-networks-create-vnet-classic-ps.md)」に示されている環境を構築します。
 
 [AZURE.INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -119,4 +119,4 @@ FW1 VM で IP 転送を有効にするには、次の手順に従います。
 		Get-AzureVM -Name FW1 -ServiceName TestRGFW `
 			| Set-AzureIPForwarding -Enable
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

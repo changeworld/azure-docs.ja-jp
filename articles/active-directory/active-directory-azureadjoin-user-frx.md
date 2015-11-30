@@ -5,7 +5,8 @@
 	documentationCenter="" 
 	authors="femila" 
 	manager="stevenpo" 
-	editor=""/>
+	editor=""
+	tags="azure-classic-portal"/>
 
 <tags 
 	ms.service="active-directory" 
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/02/2015" 
+	ms.date="11/17/2015" 
 	ms.author="femila"/>
 
 # セットアップ中に新しいデバイスを Azure AD に設定する
@@ -37,14 +38,17 @@ Windows 10 では、エンドユーザーは、最初の実行エクスペリエ
 8.	次に、多要素認証で必要な情報の入力を求められます。これは IT によって構成されています。
 9.	次に、Azure AD によって、このユーザー/デバイスをモバイル デバイス管理 (MDM) に登録する必要があるかどうかがチェックされます。 
 10.	次に、Windows によって、デバイスが Azure AD の組織のディレクトリに登録され、MDM に登録されます。
-11.	これが実行されると、ユーザーが管理対象ユーザーである場合は、Windows によってセットアップ処理がラップされ、ユーザーは自動サインイン経由でデスクトップに移動します。
-12.	フェデレーション ユーザーの場合は、Windows サインイン画面が表示され、サインインするための資格情報を入力する必要があります。
+11.	これが実行されると、ユーザーが管理対象ユーザーである場合は、Windows によってセットアップ処理がラップされ、ユーザーは自動ログイン経由でデスクトップに移動します。
+12.	フェデレーション ユーザーの場合は、Windows ログイン画面が表示され、ログインするための資格情報を入力する必要があります。
 
 > [AZURE.NOTE]Windows の OOBE (Out-of-Box Experience) でオンプレミスの Active Directory ドメインに参加することはサポートされていません。このため、PC をドメインに参加させる予定の場合は、[代わりにローカル アカウントで Windows をセットアップしてください] リンクを選択する必要があります。その後で、前に実行したように、PC の [設定] メニューからドメインに参加できます。
 
 ## 追加情報
-* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md)
+* [エンタープライズ向け Windows 10: デバイスを仕事に使用する方法](active-directory-azureadjoin-windows10-devices-overview.md)
+* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-user-upgrade.md)
+* [Microsoft Passport 経由でのパスワードを使用しない ID の認証](active-directory-azureadjoin-passport.md)
 * [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
+* [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

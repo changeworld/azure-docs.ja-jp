@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/12/2015" 
+	ms.date="11/18/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -49,7 +49,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 
 | [価格レベル] | サイズ | 使用可能な帯域幅 | 1 KB のキーのサイズ |
 |----------------------|--------|----------------------------|--------------------------------|
-| **Standard のキャッシュ サイズ** | &nbsp; | **(Mbps)** | **1 秒あたりの要求数 (RPS)** |
+| **Standard のキャッシュ サイズ** | &nbsp; |**メガビット/秒 (Mbps)** | **1 秒あたりの要求数 (RPS)** |
 | C0 | 250 MB | 5 | 600 |
 | C1 | 1 GB | 100 | 12200 |
 | C2 | 2\.5 GB | 200 | 24000 |
@@ -189,7 +189,7 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 
 Microsoft Azure Redis Cache は、広く普及しているオープン ソースの Redis Cache をベースに、Microsoft によって管理された、セキュリティで保護された専用の Redis Cache へのアクセスを提供します。[Redis クライアント](http://redis.io/clients)についても、多くのプログラミング言語に対応してさまざまなクライアントが提供されています。各クライアントは、[Redis コマンド](http://redis.io/commands)を使用して Redis キャッシュ インスタンスを呼び出す独自の API を持ちます。
 
-クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントに加えて、Azure.com の[ Redis Cache のドキュメント](http://azure.microsoft.com/documentatgion/services/redis-cache/)のページには、さまざまな言語およびキャッシュ クライアントを使用して Azure Redis Cache を使用する方法に関するいくつかのチュートリアルがあります。
+クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントに加えて、Azure.com の[ Redis Cache のドキュメント](http://azure.microsoft.com/documentation/services/redis-cache/)のページには、さまざまな言語およびキャッシュ クライアントを使用して Azure Redis Cache を使用する方法に関するいくつかのチュートリアルがあります。
 
 
 ## どの Azure Cache を利用すればよいですか。
@@ -217,7 +217,7 @@ Azure Redis Cache の使用方法については、「[Azure Redis Cache の使�
 ### Managed Cache Service
 既存の Azure Managed Cache Service のお客様は、既存のサービスを引き続き利用することも、Azure Redis Cache へ移行して豊富な機能セットを利用することもできます。また、Azure Managed Cache Service は一般公開されており、可用性の SLA は 99.9% です。
 
-### In-Role Cache
+### インロール キャッシュ
 In-role Cache を使用してキャッシュを自己ホストしている場合は、自己ホストを継続できます。In-Role Cache は自己ホスト型コンポーネントであり、Microsoft ホスト型サービスではないので、SLA は用意されていません。In-Role Cache ユーザーは、Azure Redis Cache に移行することで、豊富な機能を利用し、SLA を受けることができます。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

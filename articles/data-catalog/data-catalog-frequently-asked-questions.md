@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="10/30/2015"
+   ms.date="11/20/2015"
    ms.author="maroche"/>
 
 # Azure Data Catalog のよく寄せられる質問
@@ -92,7 +92,7 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 
 ## Q: データの登録方法を教えてください。
 
-データを **Azure Data Catalog** に登録するには、**Azure Data Catalog** ポータルの [発行] 領域から **Azure Data Catalog** 登録ツールを起動します。**Azure Data Catalog** 発行アプリケーションで、**Azure Data Catalog** ポータルへのアクセスに使用した同じ資格情報を使用してログインし、登録するデータ ソースと特定の資産を選択します。
+データを **Azure Data Catalog** に登録するには、**Azure Data Catalog** ポータルの [発行] 領域から **Azure Data Catalog** 登録ツールを起動します。**Azure Data Catalog** 発行アプリケーションで、**Azure Data Catalog** ポータルへのアクセスに使用した同じ資格情報を使用して、ログインし、登録するデータ ソースと特定の資産を選択します。
 
 ## Q: 登録されているデータ資産に対し、どのようなプロパティが抽出されますか。
 
@@ -158,7 +158,7 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 
 ## Q: 特定のユーザーだけが検出できるように、登録されているデータ資産の可視性を制限するにはどうすればいいですか。
 
-A: **Azure Data Catalog** で、データ資産を選択し、[所有権の取得] ボタンをクリックします。**Azure Data Catalog** のデータ資産の所有者は、可視性設定を変更して、すべてのカタログ ユーザーが所有している資産を検出できるようにするか、特定のユーザーに可視性を制限することができます。
+A: **Azure Data Catalog** で、データ資産を選択し、[所有権の取得] ボタンをクリックします。**Azure Data Catalog** のデータ資産の所有者は、可視性設定を変更して、すべてのカタログ ユーザーが、所有している資産を検出できるようにするか、または特定のユーザーに可視性を制限することができます。
 
 ## Q: データ ソースの変更がカタログに反映されるように、データ資産の登録を更新するにはどうすればいいですか。
 
@@ -172,4 +172,4 @@ A: カタログに既に登録されているデータ資産のメタデータ�
 
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。そこで寄せられている質問に、ここでの方法が見つかります。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

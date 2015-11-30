@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/28/2015"
+   ms.date="11/13/2015"
    ms.author="bwren;sngun"/>
 
 # Azure Automation での Runbook を開始する
@@ -93,7 +93,7 @@
   </td>
  </tr>
  <tr>
-  <td><a href="http://msdn.microsoft.com/library/azure/dn857355.aspx">別の Runbook から</a></td>
+  <td><a href="http://azure.microsoft.com/documentation/articles/automation-child-runbooks/">別の Runbook から</a></td>
   <td>
    <ul>
     <li>別の Runbook の活動として、Runbook を使用します。</li>
@@ -150,7 +150,7 @@ Runbook でパラメーターが必要な場合には、それらを [Hashtable]
 
 ## Runbook のパラメーター
 
-Azure 管理ポータルまたは Windows PowerShell を使用して Runbook を開始する場合、命令は、Azure Automation Web サービスを通じて送信されます。このサービスは、複雑なデータ型を持つパラメーターをサポートしていません。複合型のパラメーター値を指定する必要がある場合、「[別の Runbook からの Runbook の開始](http://msdn.microsoft.com/library/azure/dn857355.aspx)」で説明されているように別の Runbook からインラインで呼び出す必要があります。
+Azure 管理ポータルまたは Windows PowerShell を使用して Runbook を開始する場合、命令は、Azure Automation Web サービスを通じて送信されます。このサービスは、複雑なデータ型を持つパラメーターをサポートしていません。複合型のパラメーター値を指定する必要がある場合、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」で説明されているように別の Runbook からインラインで呼び出す必要があります。
 
 Azure Automation Web サービスは、次のセクションで説明されているように特定のデータ型を使用してパラメーターに対して特殊な機能を提供します。
 
@@ -216,7 +216,7 @@ user パラメーターに対して、次のテキストを使用できます。
 
 ### 資格情報
 
-パラメーターのデータ型が **PSCredential** の場合、Azure Automation の[資格情報資産](http://msdn.microsoft.com/library/azure/dn940015.aspx)の名前を指定できます。Runbook は、指定した名前を持つ資格情報を取得します。
+パラメーターのデータ型が **PSCredential** の場合、Azure Automation の[資格情報資産](automation-credentials.md)の名前を指定できます。Runbook は、指定した名前を持つ資格情報を取得します。
 
 credential というパラメーターを受け入れる次のテスト Runbook について考慮してください。
 
@@ -238,6 +238,6 @@ credential というパラメーターを受け入れる次のテスト Runbook 
 
 ## 関連記事:
 
-- [別の Runbook からの Runbook の開始](http://msdn.microsoft.com/library/azure/dn857355.aspx) 
+- [Azure Automation での子 Runbook](automation-child-runbooks.md) 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

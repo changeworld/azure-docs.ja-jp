@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="10/30/2015"
+   ms.date="11/18/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでのサービス プリンシパルの認証
@@ -22,10 +22,10 @@
 
 ユーザー名とパスワードで認証する方法と証明書で認証する方法を示します。
 
-Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を利用できます。Azure PowerShell がインストールされていない場合、[Azure PowerShell のインストールと構成の方法](./powershell-install-configure.md)を参照してください。Azure CLI がインストールされていない場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
+Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を利用できます。Azure PowerShell がインストールされていない場合、[Azure PowerShell のインストールと構成の方法](./powershell-install-configure.md)を参照してください。Azure CLI がインストールされていない場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。ポータルを使用してこれらの手順を実行する方法の詳細については、「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](resource-group-create-service-principal-portal.md)」を参照してください。
 
 ## 概念
-1. Azure Active Directory (AAD) - クラウドの ID およびアクセス管理サービス。詳しくは、「[Azure Active Directory とは](active-directory/active-directory-whatis.md)」を参照してください。
+1. Azure Active Directory (AAD) - クラウドの ID およびアクセス管理サービス。詳しくは、[Azure Active Directory とは何ですか。](active-directory/active-directory-whatis.md)を参照してください。
 2. サービス プリンシパル - 他のリソースにアクセスする必要がある、ディレクトリ内のアプリケーションのインスタンス。
 3. AD アプリケーション - AAD に対してアプリケーションを特定するディレクトリ レコード。詳しくは、[Azure AD での認証の基本](https://msdn.microsoft.com/library/azure/874839d9-6de6-43aa-9a5c-613b0c93247e#BKMK_Auth)を参照してください。
 
@@ -88,7 +88,7 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 
      現在選択されているサブスクリプション以外のサブスクリプション内にロールの割り当てを作成した場合、**SubscriptoinId** または **SubscriptionName** パラメーターを指定して、別のサブスクリプションを取得できます。
 
-5. **Get-credential** コマンドを実行して、ユーザーの資格情報を含む新しい**PSCredential** オブジェクトを作成します。
+5. PowerShell を使ってサービス プリンシパルとしてログインするには、**Get-credential** コマンドを実行し、ユーザーの資格情報を含む新しい **PSCredential** オブジェクトを作成します。
 
         PS C:\> $creds = Get-Credential
 
@@ -98,10 +98,9 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 
      ユーザー名には、アプリケーションの作成時に使用した **ApplicationId** または **IdentifierUris** を使用します。パスワードには、アカウントの作成時に指定したものを使用します。
 
-6. 入力した資格情報は、**Add-azureaccount** コマンドレットへの入力として使用します。このコマンドレットは、以下の場所のサービス プリンシパルに署名します。
+     入力した資格情報は、**Login-AzureRmAccount** コマンドレットへの入力として使用します。このコマンドレットは、以下の場所のサービス プリンシパルに署名します。
 
         PS C:\> Login-AzureRmAccount -Credential $creds -ServicePrincipal -Tenant $subscription.TenantId
-        
         Environment           : AzureCloud
         Account               : {guid}
         Tenant                : {guid}
@@ -110,9 +109,9 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 
      これで、作成した AAD アプリケーションのサービス プリンシパルとして認証されるはずです。
 
-7. アプリケーションから認証するには、次の .NET コードを含めます。トークンを取得すると、サブスクリプションのリソースにアクセスできます。
+6. アプリケーションから認証するには、次の .NET コードを含めます。トークンを取得すると、サブスクリプションのリソースにアクセスできます。
 
-        public static string GetAToken()
+        public static string GetAccessToken()
         {
           var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenantId or tenant name}");  
           var credential = new ClientCredential(clientId: "{application id}", clientSecret: "{application password}");
@@ -289,6 +288,20 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 
     これで、作成した AAD アプリケーションのサービス プリンシパルとして認証されるはずです。
 
+## 証明書によるサービス プリンシパルの認証 - Azure CLI
+
+ここでは、認証に証明書を使用する Azure Active Directory アプリケーション用のサービス プリンシパルを作成します。このトピックでは、証明書が発行されていて、[OpenSSL](http://www.openssl.org/) がインストール済みであるものとします。
+
+1. **.pem** ファイルを作成します。
+
+        openssl.exe pkcs12 -in examplecert.pfx -out examplecert.pem -nodes
+
+2. **.pem** ファイルを開き、証明書データをコピーします。
+
+3. **azure ad app create** コマンドを実行して新しい AAD アプリケーションを作成し、前の手順でコピーした証明書データをキーの値として提供します。
+
+        azure ad app create -n "<your application name>" --home-page "<https://YourApplicationHomePage>" -i "<https://YouApplicationUri>" --key-value <certificate data>
+
 ## 次のステップ
   
 - ロールベースのアクセス制御の概要については、「[リソースへのアクセスの管理と監査](resource-group-rbac.md)」を参照してください。  
@@ -299,4 +312,4 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

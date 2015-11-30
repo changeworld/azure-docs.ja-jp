@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.date="11/16/2015" 
 	ms.author="sdanie"/>
 
 
@@ -23,7 +23,7 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 
 ポリシー ステートメントとその設定の一覧については、「[Azure API Management ポリシー リファレンス][]」を参照してください。
 
-ポリシーは、API コンシューマーとマネージ API の間に配置されたプロキシ内で適用されます。プロキシは、すべての要求を受け取り、通常はそれらの要求をそのまま基底の API に転送します。ただし、ポリシーを使用すると、受信要求と送信応答の両方に変更を適用できます。
+ポリシーは、API コンシューマーとマネージ API の間に配置されたゲートウェイ内で適用されます。ゲートウェイは、すべての要求を受け取り、通常はそれらの要求をそのまま基底の API に転送します。ただし、ポリシーを使用すると、受信要求と送信応答の両方に変更を適用できます。
 
 ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。[制御フロー][] ポリシーや[変数の設定][]ポリシーなど、一部のポリシーはポリシーの式に基づいています。詳細については、「[詳細なポリシー][]」と「[ポリシーの式][]」をご覧ください。
 
@@ -32,7 +32,7 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 
 ![Policies menu][policies-menu]
 
-ポリシー エディターは、[ポリシー スコープ] \(上部)、ポリシーを編集するための [ポリシー定義] \(左側)、およびステートメントの一覧 (右側) の 3 つのメイン セクションから構成されます。
+ポリシー エディターは、[ポリシー スコープ] (上部)、ポリシーを編集するための [ポリシー定義] (左側)、およびステートメントの一覧 (右側) の 3 つのメイン セクションから構成されます。
 
 ![Policies editor][policies-editor]
 
@@ -73,7 +73,7 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 
 ![保存][policies-save]
 
-ポリシーのステートメントを構成したら、[保存] をクリックします。変更は、API Management プロキシに即座に反映されます。
+ポリシーのステートメントを構成したら、[保存] をクリックします。変更は、API Management ゲートウェイに即座に反映されます。
 
 ##<a name="sections"> </a>ポリシー構成について
 
@@ -128,4 +128,4 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

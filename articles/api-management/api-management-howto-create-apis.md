@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/10/2015" 
+	ms.date="11/16/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API を作成する方法
@@ -55,7 +55,7 @@ API の構成を確認および編集するには、**[設定]** タブを使用
 
 ![API settings][api-management-api-settings]
 
-API を実装する Web サービスの**プロキシ認証**を構成するには、**[セキュリティ]** タブを選択します。**[資格情報]** ボックスの一覧を使用して、**基本認証**または**相互証明書**認証を構成できます。基本認証を使用するには、単に必要な資格情報を入力します。相互証明書認証の使用方法については、「[Azure API Management で相互証明書認証を使用してバックエンド サービスを保護する方法][]」を参照してください。
+API を実装する Web サービスの**ゲートウェイ認証**を構成するには、**[セキュリティ]** タブを選択します。**[資格情報]** ボックスの一覧を使用して、**基本認証**または**相互証明書**認証を構成できます。基本認証を使用するには、単に必要な資格情報を入力します。相互証明書認証の使用方法については、「[Azure API Management で相互証明書認証を使用してバックエンド サービスを保護する方法][]」を参照してください。
 
 **[セキュリティ]** タブを使用して、OAuth 2.0 を使用するように**ユーザー承認**を構成することもできます。詳細については、「[Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法][]」を参照してください。
 
@@ -98,4 +98,4 @@ API を作成し、設定を構成した後は、操作を API に追加しま�
 [Azure API Management で相互証明書認証を使用してバックエンド サービスを保護する方法]: api-management-howto-mutual-certificates.md
 [Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法]: api-management-howto-oauth2.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

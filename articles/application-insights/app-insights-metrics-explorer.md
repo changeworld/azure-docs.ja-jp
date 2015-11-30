@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/28/2015" 
+	ms.date="11/15/2015" 
 	ms.author="awills"/>
  
 # Application Insights を使用したメトリックの探索
@@ -196,7 +196,7 @@
 
 ### Power BI
 
-機能がより豊富なビューでデータを表示する場合は、[Power BI にエクスポート](app-insights-export-power-bi.md)することができます。
+機能がより豊富なビューでデータを表示する場合は、[Power BI にエクスポート](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)することができます。
 
 ## 次のステップ
 
@@ -212,4 +212,4 @@
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

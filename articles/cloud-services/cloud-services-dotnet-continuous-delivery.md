@@ -20,7 +20,7 @@
 
 この記事のプロセスでは、Azure クラウド アプリケーションの継続的な配信を設定する方法について説明します。このプロセスを使用すると、自動的にパッケージを作成し、コードをチェックインするたびにそのパッケージを Azure にデプロイできます。この記事で説明するパッケージのビルド プロセスは Visual Studio のパッケージ コマンドに相当し、発行手順は Visual Studio の発行コマンドに相当します。この記事では、MSBuild コマンド ライン ステートメントと Windows PowerShell スクリプトを使用してビルド サーバーを作成するためのいくつかの方法を紹介し、オプションで Visual Studio Team Foundation Server を構成する方法 (MSBuild コマンドと PowerShell スクリプトを使用するためのチーム ビルド定義) について説明します。このプロセスは、ビルド環境や Azure ターゲット環境に合わせてカスタマイズできます。
 
-また、Visual Studio Online (Azure でホストされる TFS のバージョン) を使用すると、これらの操作をより簡単に実行できます。詳細については、「[Continuous Delivery to Azure by Using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)][]」を参照してください。
+また、Visual Studio Team Services (Azure でホストされる TFS のバージョン) を使用すると、これらの操作をより簡単に実行できます。詳細については、「[Visual Studio Team Services を使用した Azure への継続的な配信][]」を参照してください。
 
 作業を開始する前に、Visual Studio からアプリケーションを発行する必要があります。これにより、発行プロセスの自動化を行う際にすべてのリソースが利用可能で、初期化されることを確認できます。
 
@@ -557,7 +557,7 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
 
 継続的な配信の使用時にリモート デバッグを有効にするには、「[継続的な配信を使用して Azure に発行する場合にリモート デバッグを有効にする](cloud-services-virtual-machines-dotnet-continuous-delivery-remote-debugging.md)」を参照してください。
 
-  [Continuous Delivery to Azure by Using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]: cloud-services-continuous-delivery-use-vso.md
+  [Visual Studio Team Services を使用した Azure への継続的な配信]: cloud-services-continuous-delivery-use-vso.md
   [Team Foundation ビルド サービス]: http://go.microsoft.com/fwlink/p/?LinkId=239963
   [.NET Framework 4]: http://go.microsoft.com/fwlink/?LinkId=239538
   [.NET Framework 4.5]: http://go.microsoft.com/fwlink/?LinkId=245484
@@ -576,4 +576,4 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
   [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
   [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/10/2015"
+	ms.date="11/16/2015"
 	ms.author="sdanie"/>
 
 # 複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
 
 API Management では複数リージョンのデプロイメントがサポートされており、API パブリッシャーは 1 つの API Management サービスを任意の数の Azure リージョンに分散できます。これにより、地理的に分散した API コンシューマーによって認識される要求待ち時間が短くなり、1 つのリージョンがオフラインになった場合でもサービスの可用性を向上できます。
 
-API Management サービスが最初に作成されたとき、サービスには 1 つの[ユニット][]のみが含まれ、1 つの Azure リージョンに配置されます。このリージョンがプライマリ リージョンに指定されます。リージョンは Azure ポータルで簡単に追加できます。各リージョンには API Management のプロキシ サーバーがデプロイされており、呼び出しのトラフィックは最も近いプロキシにルーティングされます。リージョンがオフラインになった場合、トラフィックは自動的に次に最も近いプロキシにリダイレクトされます。
+API Management サービスが最初に作成されたとき、サービスには 1 つの[ユニット][]のみが含まれ、1 つの Azure リージョンに配置されます。このリージョンがプライマリ リージョンに指定されます。リージョンは Azure ポータルで簡単に追加できます。各リージョンには API Management のゲートウェイ サーバーがデプロイされており、呼び出しのトラフィックは最も近いゲートウェイにルーティングされます。リージョンがオフラインになった場合、トラフィックは自動的に次に最も近いゲートウェイにリダイレクトされます。
 
 > [AZURE.IMPORTANT]複数リージョンのデプロイメントは、**[Premium][]** レベルでのみ提供されます。
 
@@ -40,7 +40,7 @@ API Management サービス インスタンスの Azure ポータルで **[ス�
 
 ![リージョンの追加][api-management-add-region]
 
-リージョンを選択したら、**[ユニット\]** ボックスの一覧から新しいリージョンのユニット数を選択します。
+リージョンを選択したら、[ユニット] ボックスの一覧から新しいリージョンのユニット数を選択します。
 
 ![ユニットの指定][api-management-select-units]
 
@@ -75,4 +75,4 @@ API Management サービス インスタンスの Azure ポータルで **[ス�
 [ユニット]: http://azure.microsoft.com/pricing/details/api-management/
 [Premium]: http://azure.microsoft.com/pricing/details/api-management/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

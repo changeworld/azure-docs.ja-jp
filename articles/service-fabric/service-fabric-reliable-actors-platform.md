@@ -5,7 +5,7 @@
    documentationCenter=".net"
    authors="jessebenson"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/05/2015"
+   ms.date="11/13/2015"
    ms.author="abhisram"/>
 
 # 高信頼アクターの Service Fabric プラットフォームの使用方法
@@ -71,7 +71,7 @@ Visual Studio を使用してアプリケーション パッケージが作成�
     │   │   │   VoiceMailBox.exe.config
     │   │   │   VoiceMailBox.Interfaces.dll
     │   │   │
-    │   │   └───ja-JP
+    │   │   └───zh-CN
     │   │           System.Fabric.Common.Internal.Strings.resources.dll
     │   │
     │   └───Config
@@ -92,14 +92,10 @@ Visual Studio を使用してアプリケーション パッケージが作成�
             │   VoicemailBoxWebService.exe
             │   VoicemailBoxWebService.exe.config
             │
-            └───ja-JP
+            └───zh-CN
                     System.Fabric.Common.Internal.Strings.resources.dll
 
 上記の一覧は、アプリケーション パッケージのサービス パッケージ内のコード パッケージに含まれている、VoicemailBox アクターを実装するアセンブリを示します。
-
-Visual Studio のソリューションには、クラスターとの間のアプリケーションのデプロイおよび削除に使用される PowerShell スクリプトが含まれます。次のスクリーン ショットでは、スクリプトが丸で囲まれています。
-
-![][2]
 
 アプリケーションの後続の管理 (アップグレードや最終的な削除など) は、Service Fabric のアプリケーション管理メカニズムからも実行できます。詳細については、[アプリケーション モデル](service-fabric-application-model.md)、[アプリケーションのデプロイと削除](service-fabric-deploy-remove-applications.md)、および[アプリケーションのアップグレード](service-fabric-application-upgrade.md)に関する各トピックを参照してください。
 
@@ -109,7 +105,7 @@ Visual Studio のソリューションには、クラスターとの間のアプ
 > [AZURE.NOTE]ステートレス アクター サービスは、[インスタンス](service-fabric-availability-services.md#availability-of-service-fabric-stateless-services)数が 1 である必要があります。1 つのパーティション内に、複数インスタンスのステートレス アクター サービスを持つことはできません。そのため、ステートレス アクター サービスのスケーラビリティのためにインスタンス数を増やすことはできません。スケーラビリティ オプションを使用する必要があります ([スケーラビリティに関する記事](service-fabric-concepts-scalability.md)を参照してください)。
 
 ## アクターの Service Fabric のパーティションの概念
-アクターのアクター ID は、アクターのサービスのパーティションにマップされます。そのアクター ID がマップされるパーティション内で、アクターが作成されます。アクターが作成されると、アクターのランタイムが、アクターが作成されるパーティションを示す [EventSource イベント](service-fabric-reliable-actors-diagnostics.md#eventsource-events)を記述します。下記はこのイベントの例で、ID `-5349766044453424161` のアクターが、サービス `fabric:/VoicemailBoxAdvancedApplication/VoicemailBoxActorService`、アプリケーション `fabric:/VoicemailBoxAdvancedApplication` のパーティション `0583c745-1bed-43b2-9545-29d7e3448156` 内で作成されたことを示します。
+アクターのアクター ID は、アクターのサービスのパーティションにマップされます。そのアクター ID がマップされるパーティション内で、アクターが作成されます。アクターが作成されると、アクターのランタイムが、アクターが作成されるパーティションを示す [EventSource イベント](service-fabric-reliable-actors-diagnostics.md#eventsource-events)を記述します。下記はこのイベントの例で、ID `-5349766044453424161` のアクターが、サービス `fabric:/VoicemailBoxAdvancedApplication/VoicemailBoxActorService`、アプリケーション `fabric:/VoicemailBoxAdvancedApplication` のパーティション `b6afef61-be9a-4492-8358-8f473e5d2487` 内で作成されたことを示します。
 
     {
       "Timestamp": "2015-04-26T10:12:20.2485941-07:00",
@@ -121,14 +117,14 @@ Visual Studio のソリューションには、クラスターとの間のアプ
         "actorType": "Microsoft.Azure.Service.Fabric.Samples.VoicemailBox.VoiceMailBoxActor",
         "actorId": "-5349766044453424161",
         "isStateful": "True",
-        "replicaOrInstanceId": "130745418574851853",
-        "partitionId": "0583c745-1bed-43b2-9545-29d7e3448156",
+        "replicaOrInstanceId": "130906628008120392",
+        "partitionId": "b6afef61-be9a-4492-8358-8f473e5d2487",
         "serviceName": "fabric:/VoicemailBoxAdvancedApplication/VoicemailBoxActorService",
         "applicationName": "fabric:/VoicemailBoxAdvancedApplication",
       }
     }
 
-下記のイベントで示されているように、ID `-4952641569324299627` の別のアクターが同じサービスの別のパーティション `c146fe53-16d7-4d96-bac6-ef54613808ff` 内で作成されました。
+下記のイベントで示されているように、ID `-4952641569324299627` の別のアクターが同じサービスの別のパーティション `5405d449-2da6-4d9a-ad75-0ec7d65d1a2a` 内で作成されました。
 
     {
       "Timestamp": "2015-04-26T15:06:56.93882-07:00",
@@ -141,7 +137,7 @@ Visual Studio のソリューションには、クラスターとの間のアプ
         "actorId": "-4952641569324299627",
         "isStateful": "True",
         "replicaOrInstanceId": "130745418574851853",
-        "partitionId": "c146fe53-16d7-4d96-bac6-ef54613808ff",
+        "partitionId": "5405d449-2da6-4d9a-ad75-0ec7d65d1a2a",
         "serviceName": "fabric:/VoicemailBoxAdvancedApplication/VoicemailBoxActorService",
         "applicationName": "fabric:/VoicemailBoxAdvancedApplication",
       }
@@ -149,27 +145,30 @@ Visual Studio のソリューションには、クラスターとの間のアプ
 
 *注:* 簡略化のため、上記のイベントの一部のフィールドを省略しています。
 
-パーティション ID はパーティションに関するその他の情報を取得するために使用できます。たとえば、[Service Fabric エクスプローラー](service-fabric-visualizing-your-cluster.md) ツールを使用して、パーティションおよびパーティションが属するサービスとアプリケーションに関する情報を表示することができます。次のスクリーン ショットはパーティション `c146fe53-16d7-4d96-bac6-ef54613808ff` に関する情報を表示しています。ここには上記の例の ID `-4952641569324299627` のアクターが含まれています。
+パーティション ID はパーティションに関するその他の情報を取得するために使用できます。たとえば、[Service Fabric エクスプローラー](service-fabric-visualizing-your-cluster.md) ツールを使用して、パーティションおよびパーティションが属するサービスとアプリケーションに関する情報を表示することができます。次のスクリーン ショットはパーティション `5405d449-2da6-4d9a-ad75-0ec7d65d1a2a` に関する情報を表示しています。ここには上記の例の ID `-4952641569324299627` のアクターが含まれています。
 
 ![][3]
 
 アクターは、アクターの型から派生する基本クラスの `Host.ActivationContext` および `Host.StatelessServiceInitialization` または `Host.StatefulServiceInitializationParameters` メンバーから、パーティション ID、サービス名、アプリケーション名、その他の Service Fabric プラットフォーム固有の情報をプログラムによって取得できます。次のコード スニペットで例を示します。
 
 ```csharp
-public void ActorMessage<TState>(Actor<TState> actor, string message, params object[] args)
+public void ActorMessage(StatefulActorBase actor, string message, params object[] args)
 {
-    string finalMessage = string.Format(message, args);
-    this.ActorMessage(
-        actor.GetType().ToString(),
-        actor.Id.ToString(),
-        actor.Host.ActivationContext.ApplicationTypeName,
-        actor.Host.ActivationContext.ApplicationName,
-        actor.Host.StatefulServiceInitializationParameters.ServiceTypeName,
-        actor.Host.StatefulServiceInitializationParameters.ServiceName.ToString(),
-        actor.Host.StatefulServiceInitializationParameters.PartitionId,
-        actor.Host.StatefulServiceInitializationParameters.ReplicaId,
-        FabricRuntime.GetNodeContext().NodeName,
-        finalMessage);
+    if (this.IsEnabled())
+    {
+        string finalMessage = string.Format(message, args);
+        ActorMessage(
+            actor.GetType().ToString(),
+            actor.Id.ToString(),
+            actor.ActorService.ServiceInitializationParameters.CodePackageActivationContext.ApplicationTypeName,
+            actor.ActorService.ServiceInitializationParameters.CodePackageActivationContext.ApplicationName,
+            actor.ActorService.ServiceInitializationParameters.ServiceTypeName,
+            actor.ActorService.ServiceInitializationParameters.ServiceName.ToString(),
+            actor.ActorService.ServiceInitializationParameters.PartitionId,
+            actor.ActorService.ServiceInitializationParameters.ReplicaId,
+            FabricRuntime.GetNodeContext().NodeName,
+            finalMessage);
+    }
 }
 ```
 
@@ -204,7 +203,7 @@ public void ActorMessage<TState>(Actor<TState> actor, string message, params obj
 
 > [AZURE.TIP]Fabric アクターのランタイムは、[ステートフル アクターのレプリカに関連するイベント](service-fabric-reliable-actors-diagnostics.md#events-related-to-stateful-actor-replicas)をいくつか出力します。これらは、診断やパフォーマンスの監視に役立ちます。
 
-[先に説明したVoiceMailBoxActor の例](#service-fabric-partition-concepts-for-actors)で、ID `-4952641569324299627` のアクターがパーティション `c146fe53-16d7-4d96-bac6-ef54613808ff` に作成されたことを思い出してください。その例の EventSource イベントも、アクターがそのパーティションのレプリカ `130745418574851853` に作成されたことを示していました。これは、アクターが作成された時点で、そのパーティションのプライマリ レプリカでした。次の Service Fabric エクスプ ローラーのスクリーン ショットはこれを表しています。
+[先に説明したVoiceMailBoxActor の例](#service-fabric-partition-concepts-for-actors)で、ID `-4952641569324299627` のアクターがパーティション `5405d449-2da6-4d9a-ad75-0ec7d65d1a2a` に作成されたことを思い出してください。その例の EventSource イベントも、アクターがそのパーティションのレプリカ `130745418574851853` に作成されたことを示していました。これは、アクターが作成された時点で、そのパーティションのプライマリ レプリカでした。次の Service Fabric エクスプ ローラーのスクリーン ショットはこれを表しています。
 
 ![][4]
 
@@ -225,7 +224,7 @@ public void ActorMessage<TState>(Actor<TState> actor, string message, params obj
 
 ```csharp
 [VolatileActorStateProvider]
-public class VoicemailBoxActor : Actor<VoicemailBox>, IVoicemailBoxActor
+public class VoicemailBoxActor : StatefulActor<VoicemailBox>, IVoicemailBoxActor
 {
     public Task<List<Voicemail>> GetMessagesAsync()
     {
@@ -243,4 +242,4 @@ public class VoicemailBoxActor : Actor<VoicemailBox>, IVoicemailBoxActor
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

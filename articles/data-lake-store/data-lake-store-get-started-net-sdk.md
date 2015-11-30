@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="11/05/2015"
+   ms.date="11/13/2015"
    ms.author="nitinme"/>
 
-# .NET SDK で Azure Data Lake Analytics の使用を開始する
+# .NET SDK で Data Lake Store の使用を開始する
 
 > [AZURE.SELECTOR]
 - [Using Portal](data-lake-store-get-started-portal.md)
@@ -29,7 +29,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 ## 前提条件
 
 * Visual Studio 2013 または 2015以下の手順では、Visual Studio 2015 を使用します。
-* **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
+* **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/zh-CN/pricing/free-trial/)に関するページを参照してください。
 * Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
 
 ## .NET アプリケーションの作成
@@ -65,7 +65,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 
 7. **Program.cs** を開き、既存のコード ブロックを次のコードに置き換えます。また、コード スニペットでパラメーターの値を指定します。
 
-	このコードでは、Data Lake Store の作成、ストアでのフォルダーの作成、ファイルのアップロード、ファイルのダウンロード、最後にアカウントの削除のプロセスを行います。アップロードするいくつかのサンプル データを探す場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/ProjectKona/tree/master/SQLIPSamples/SampleData/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
+	このコードでは、Data Lake Store の作成、ストアでのフォルダーの作成、ファイルのアップロード、ファイルのダウンロード、最後にアカウントの削除のプロセスを行います。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/AzureDataLake/tree/master/SQLIPSamples/SampleData/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
 	
 		using System;
 		using System.Collections.Generic;
@@ -223,4 +223,4 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 - [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

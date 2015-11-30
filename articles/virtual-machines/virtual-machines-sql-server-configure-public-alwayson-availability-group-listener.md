@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="09/16/2015"
+	ms.date="11/13/2015"
 	ms.author="jroth" />
 
 # Azure での AlwaysOn 可用性グループの外部リスナーの構成
@@ -29,15 +29,19 @@
 
 可用性グループには、オンプレミスのみ、Azure のみ、またはオンプレミスと Azure の両方にまたがるハイブリッド構成のレプリカを含めることができます。Azure レプリカは、同じリージョン内に配置することも、複数の仮想ネットワーク (VNet) を使用して複数のリージョンに配置することもできます。後述の手順では、既に[可用性グループは構成している](virtual-machines-sql-server-alwayson-availability-groups-gui.md)ものの、リスナーは構成していないと仮定しています。
 
-クラウド サービスのパブリック VIP アドレスを使用してデプロイしている場合は、Azure での可用性グループ リスナーに関する次の制限事項に注意してください。
+## 外部リスナーのガイドラインと制限事項
+
+クラウド サービスのパブリック VIP アドレスを使用してデプロイしている場合は、Azure での可用性グループ リスナーに関する次のガイドラインを確認してください。
 
 - 可用性グループ リスナーは、Windows Server 2008 R2、Windows Server 2012、および Windows Server 2012 R2 でサポートされます。
 
 - クライアント アプリケーションは、可用性グループ VM が含まれるクラウド サービスとは異なるクラウド サービスに存在する必要があります。Azure では、同じクラウド サービスに存在するクライアントとサーバーによる Direct Server Return はサポートされません。
 
-- 可用性グループリスナーは、クラウド サービスごとに 1 つのみサポートされます。これは、リスナーがクラウド サービスの VIP アドレスを使用するように構成されているためです。Azure は、特定のクラウド サービスで複数の VIP アドレスの作成をサポートするようになりましたが、この制限は引き続き有効であることに注意してください。
+- 既定では、この記事の手順により、クラウド サービスの仮想 IP (VIP) アドレスを使用するリスナーが 1 つ構成されます。ただし、クラウド サービスに対して複数の VIP アドレスを予約して作成することができます。これにより、この記事の手順を使用して、別の VIP にそれぞれ関連付けられている複数のリスナーを作成することができます。複数の VIP アドレスを作成する方法の詳細については、「[クラウド サービスごとの複数の VIP](load-balancer-multivip.md)」を参照してください。
 
 - ハイブリッド環境でのリスナーを作成する場合、オンプレミスのネットワークは、Azure 仮想ネットワークを使用したサイト間 VPN への接続に加えて、パブリック インターネットへの接続が必要です。Azure のサブネットでは、可用性グループ リスナーは個々 のクラウド サービスのパブリック IP アドレスによってのみ到達可能です。
+
+- 内部ロード バランサー (ILB) を使用する内部リスナーも含まれるクラウド サービスに外部リスナーを作成することはできません。
 
 ## リスナーのアクセシビリティを決定する
 
@@ -118,7 +122,7 @@
 
 	sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-呼び出し元はインターネット経由で windows 認証を使用できないため、前の例とは異なり SQL 認証を使用する必要があります。詳細については、「[AlwaysOn Availability Group in Azure VM: Client Connectivity Scenarios (Azure VM での AlwaysOn 可用性グループ: クライアント接続のシナリオ)](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)」を参照してください。SQL 認証を使用する場合は、両方のレプリカで必ず同じログインを作成します。可用性グループのログインに関するトラブルシューティングの詳細については、「[How to map logins or use contained SQL database user to connect to other replicas and map to availability databases (ログインをマップするか、または包含 SQL データベース ユーザーを使用して他のレプリカに接続し、可用性データベースにマップする方法)](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)」を参照してください。
+呼び出し元はインターネット経由で windows 認証を使用できないため、前の例とは異なり SQL 認証を使用する必要があります。詳細については、「[AlwaysOn Availability Group in Azure VM: Client Connectivity Scenarios (Azure VM での AlwaysOn 可用性グループ: クライアント接続のシナリオ)](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)」を参照してください。SQL 認証を使用する場合は、両方のレプリカで必ず同じログインを作成します。可用性グループのログインに関するトラブルシューティングの詳細については、「[How to map logins or use contained SQL database user to connect to other replicas and map to availability databases (ログインをマップするか、または 包含 SQL データベース ユーザーを使用して他のレプリカに接続し、可用性データベースにマップする方法)](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)」を参照してください。
 
 AlwaysOn レプリカが異なるサブネットにある場合、クライアントは接続文字列で **MultisubnetFailover=True** を指定する必要があります。これにより、別のサブネット内のレプリカへのパラレル接続が試行されます。このシナリオには、AlwaysOn 可用性グループのリージョンを越えたデプロイが含まれていることに注意してください。
 
@@ -126,4 +130,4 @@ AlwaysOn レプリカが異なるサブネットにある場合、クライア�
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

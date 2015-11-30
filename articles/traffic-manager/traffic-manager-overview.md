@@ -4,7 +4,7 @@
    services="traffic-manager"
    documentationCenter=""
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="traffic-manager"
@@ -12,18 +12,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
+   ms.date="11/12/2015"
    ms.author="joaoma" />
 
 # Traffic Manager について
 
-Microsoft Azure Traffic Manager では、指定したエンドポイントへのユーザー トラフィックの分散を制御できます。このエンドポイントには、Azure Cloud Services、Azure Websites、その他のエンドポイントを指定できます。トラフィック マネージャーは、インターネット リソースのドメイン名に関するドメイン ネーム システム (DNS) クエリに、インテリジェントなポリシー エンジンを適用することで機能します。Azure Cloud Services や Azure Websites は、世界中のさまざまなデータセンターで実行できます。
+Microsoft Azure Traffic Manager では、指定したエンドポイントへのユーザー トラフィックの分散を制御できます。このエンドポイントには、Azure Cloud Services、Azure Websites、その他のエンドポイントを指定できます。Traffic Manager は、インターネット リソースのドメイン名に関するドメイン ネーム システム (DNS) クエリに、インテリジェントなポリシー エンジンを適用することで機能します。Azure Cloud Services や Azure Websites は、世界中のさまざまなデータセンターで実行できます。
 
 Traffic Manager を使用すると、次のようなメリットが得られます。
 
 - **重要なアプリケーションの可用性の向上** – Traffic Manager は、Azure のエンドポイントを監視し、Azure クラウド サービス、Azure の Web サイト、またはその他の場所がダウンした場合に自動フェールオーバー機能を提供することにより、重要なアプリケーションの可用性を高めることができます。
 - **高パフォーマンスのアプリケーションのために応答性を向上** – Azure によって、世界各地に配置されたデータセンターでクラウド サービスまたは Web サイトを実行できます。Traffic Manager は、クライアントのネットワーク待ち時間が最も小さいエンドポイントにエンド ユーザーを転送することで、アプリケーションの応答性を向上させ、コンテンツ配信にかかる時間を短縮します。
-- **ダウンタイムなしのアップグレードおよびサービス メンテナンスの実施** – Traffic Manager は、クラウドと内部設置型のハイブリッド デプロイの拡張シナリオをサポートします。これには、「クラウドへのバースト」、「クラウドへの移行」、および「クラウドへのフェールオーバー」のシナリオが含まれます。計画されたメンテナンスの場合は、Traffic Manager で対象のエンドポイントを無効にし、エンドポイントで現在の接続のサービス提供が完了するのを待ちます。エンドポイントへのトラフィックがなくなったら、エンドポイントのサービスを更新してテストし、Traffic Manager で再び有効にします。こうすることで、クライアントに対するダウンタイムを発生させずに、サービスの保守とアップグレードを実行できます。
+- **ダウンタイムなしのアップグレードおよびサービス メンテナンスの実施** – Traffic Manager は、クラウドとオンプレミスのハイブリッド デプロイの拡張シナリオをサポートします。これには、「クラウドへのバースト」、「クラウドへの移行」、および「クラウドへのフェールオーバー」のシナリオが含まれます。計画されたメンテナンスの場合は、Traffic Manager で対象のエンドポイントを無効にし、エンドポイントで現在の接続のサービス提供が完了するのを待ちます。エンドポイントへのトラフィックがなくなったら、エンドポイントのサービスを更新してテストし、Traffic Manager で再び有効にします。こうすることで、クライアントに対するダウンタイムを発生させずに、サービスの保守とアップグレードを実行できます。
 - **大規模で複雑なデプロイに対するトラフィックの分散** – Traffic Manager プロファイルが別の Traffic Manager プロファイルをエンドポイントにすることができる入れ子になった Traffic Manager プロファイルで、大規模で複雑なデプロイに対してパフォーマンスと分散を最適化するために、構成を作成できます。詳細については、[入れ子になったプロファイル](#nested-profiles)を参照してください。
 
 ## Traffic Manager のしくみ
@@ -96,7 +96,7 @@ Traffic Manager 用の Windows PowerShell コマンドレットの詳細につ�
 
 ### REST API を使用した設定の構成
 
-REST API を使用して Traffic Manager プロファイルの作成と構成を実行できます。詳細については、「[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)」を参照してください。
+REST API を使用して Traffic Manager プロファイルの作成と構成を実行できます。詳細については、[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)を参照してください。
 
 - **プロファイル** – プロファイルには、作成するドメイン名プレフィックスが含まれています。各プロファイルはサブスクリプションに対応しています。1 つのサブスクリプションに複数のプロファイルを作成できます。プロファイル名は管理ポータルに表示されます。作成した名前 (プロファイルで構成) は、"Traffic Manager ドメイン" と呼ばれます。
 - **定義** – 定義には、ポリシー設定と監視設定が含まれています。定義はプロファイルに対応しています。1 つのプロファイルには定義を 1 つだけ指定できます。定義に含まれている設定の多くは管理ポータルに表示され、管理ポータルで構成できますが、定義そのものは管理ポータルに表示されません。
@@ -164,12 +164,12 @@ Traffic Manager に関する独自のプレゼンテーション用の PowerPoin
 
 ## 次のステップ
 
-[Cloud Services](http://go.microsoft.com/fwlink/p/?LinkId=314074)
+[Traffic Manager のルーティング方法](traffic-manager-routing-methods.md)
 
-[Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
+[Traffic Manager の監視](traffic-manager-monitoring.md)
 
-[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=313584)
+[プロファイルの作成](traffic-manager-manage-profiles.md)
 
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

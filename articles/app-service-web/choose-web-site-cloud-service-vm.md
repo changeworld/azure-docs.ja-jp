@@ -161,8 +161,8 @@ SSL のサポート|○|○|○|App Service Web Apps の場合、カスタム �
 Visual Studio 統合|○|○|○|
 リモート デバッグ|○|○|○|
 TFS によるコードのデプロイ|○|○|○|
-[Azure Virtual Network](../services/virtual-network/) によるネットワークの分離|○|○|○|「[Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](../blog/2014/09/15/azure-websites-virtual-network-integration/)」も参照してください。
-[Azure Traffic Manager](../services/traffic-manager/) のサポート|○|○|○|
+[Azure Virtual Network](/services/virtual-network/) によるネットワークの分離|○|○|○|「[Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](/blog/2014/09/15/azure-websites-virtual-network-integration/)」も参照してください。
+[Azure Traffic Manager](/services/traffic-manager/) のサポート|○|○|○|
 統合エンドポイント監視|○|○|○|
 サーバーへのリモート デスクトップ アクセス||○|○|
 カスタム MSI のインストール||○|○|
@@ -204,4 +204,4 @@ ETW イベントのリッスン||○|○|
   [Storage]: http://www.windowsazure.com/documentation/services/storage/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

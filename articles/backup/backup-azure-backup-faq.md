@@ -1,16 +1,17 @@
 <properties
    pageTitle="Azure Backup の FAQ | Microsoft Azure"
-   description="Azure Backup サービスに関してよく寄せられる質問"
+   description="Azure Backup ソリューションに関する一般的な質問 – バックアップ エージェント、バックアップと保持、復元、セキュリティと Azure Backup サービスに関する一般的な質問。"
    services="backup"
    documentationCenter=""
    authors="Jim-Parker"
    manager="shreeshd"
-   editor=""/>
+   editor=""
+   keywords="バックアップ ソリューション、バックアップ サービス"/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/07/2015" ms.author="trinadhk";"giridham"; "arunak"; "jimpark"; "aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/17/2015" ms.author="trinadhk";"giridham"; "arunak"; "jimpark"; "aashishr"/>
 
-# Azure Backup - FAQ
-Azure Backup に関する一般的な質問を次に示します。Azure Backup に関して他に不明な点がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)にアクセスして、質問を投稿してください。コミュニティのメンバーから回答を得ることができます。よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
+# Azure Backup サービス - FAQ
+Azure Backup に関する一般的な質問を次に示します。Azure Backup ソリューションに関して他に不明な点がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)にアクセスして、質問を投稿してください。コミュニティのメンバーから回答を得ることができます。よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
 ## インストールと構成
 **Q1.Azure Backup を使用して Azure にバックアップできる、サポートされるオペレーティング システムの一覧とは** <br/> A1.Azure Backup では、次の一覧のオペレーティング システムがサポートされています
@@ -175,4 +176,4 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 バックアップが新しいキャッシュ場所で正常に動作したら、元のキャッシュ フォルダーを削除できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

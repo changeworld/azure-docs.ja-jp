@@ -57,7 +57,7 @@ Public class SocialPersonState
     public SocialStatus _lastStatus; // this is my last update
 }
 
-public class SocialPerson : Actor<SocialPersonState>, ISocialPerson
+public class SocialPerson : StatefulActor<SocialPersonState>, ISocialPerson
 {
     public override Task ActivateAsync()
     {
@@ -144,7 +144,7 @@ public class GroupChatParticipantState
     public List<GroupChatMessage> _messages;
 }
 
-public class GroupChatParticipant : Actor<GroupChatParticipantState>, IGroupParticipant
+public class GroupChatParticipant : StatefulActor<GroupChatParticipantState>, IGroupParticipant
 {
     public Task SendMessageAsync(string message)
     {
@@ -170,7 +170,7 @@ public class GroupChatState
 }
 
 
-public class GroupChat : Actor<GroupChatState>, IGroupChat
+public class GroupChat : StatefulActor<GroupChatState>, IGroupChat
 {
 
 public Task PublishMessageAsync(long participantId, string message)
@@ -224,4 +224,4 @@ public Task PublishMessageAsync(long participantId, string message)
 [1]: ./media/service-fabric-reliable-actors-pattern-distributed-networks-and-graphs/distributedNetworks_arch1.png
 [2]: ./media/service-fabric-reliable-actors-pattern-distributed-networks-and-graphs/distributedNetworks_arch2.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/28/2015"
+   ms.date="11/18/2015"
    ms.author="liviodlc"/>
 
 #グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法
 
 このチュートリアルでは、グループ ポリシーを使用して Internet Explorer 用のアクセス パネル拡張機能をユーザーのコンピューターにリモートでインストールする方法を示します。この拡張機能は、[パスワード ベースのシングル サインオン](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)を使用するように構成されているアプリにサインインする必要がある Internet Explorer ユーザーに必要なものです。
 
-管理者にはこの拡張機能のデプロイメントを自動化することをお勧めします。自動化しないと、ユーザーは自分で拡張機能をダウンロードしてインストールする必要があるので、ユーザー エラーが発生しやすく、管理者のアクセス許可が必要になります。このチュートリアルでは、グループ ポリシーを使用してソフトウェアのデプロイメントを自動化する方法について説明します。[グループ ポリシーの詳細についてはこちらを参照してください](https://technet.microsoft.com/windowsserver/bb310732.aspx)。
+管理者にはこの拡張機能のデプロイメントを自動化することをお勧めします。自動化しないと、ユーザーは自分で拡張機能をダウンロードしてインストールする必要があるので、ユーザー エラーが発生しやすく、管理者のアクセス許可が必要になります。このチュートリアルでは、グループ ポリシーを使用してソフトウェアのデプロイメントを自動化する方法について説明します。[グループ ポリシーの詳細についてはこちらを参照してください。](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
 アクセス パネルの拡張機能は [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) および [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998) でも使用でき、どちらの場合もインストールに管理者のアクセス許可は必要ありません。
 
@@ -42,7 +42,7 @@
 
 	![[ファイル サービスおよびストレージ サービス] を開く](./media/active-directory-saas-ie-group-policy/shares.png)
 
-4. **[新しい共有ウィザード]** を完了して、ユーザーのコンピューターからアクセスできるようにアクセス許可を設定します。[共有の詳細についてはこちらを参照してください](https://technet.microsoft.com/library/cc753175.aspx)。
+4. **[新しい共有ウィザード]** を完了して、ユーザーのコンピューターからアクセスできるようにアクセス許可を設定します。[共有の詳細についてはこちらを参照してください。](https://technet.microsoft.com/library/cc753175.aspx)
 
 5. 次の Microsoft Windows インストーラー パッケージ (.msi ファイル) をダウンロードします。[Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access Panel Extension.msi)
 
@@ -98,7 +98,7 @@
 
 	![[割り当て] を選択し、[OK] をクリックする](./media/active-directory-saas-ie-group-policy/deployment-method.png)
 
-選択した OU に拡張機能がデプロイされます。[グループ ポリシー ソフトウェアのインストールの詳細についてはこちらを参照してください](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)。
+選択した OU に拡張機能がデプロイされます。[グループ ポリシー ソフトウェアのインストールの詳細についてはこちらを参照してください。](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
 ##手順 4: Internet Explorer の拡張機能を自動的に有効にする 
 
@@ -126,9 +126,38 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 
 5. **[OK]** をクリックして変更を適用し、**[アドオンの一覧]** ウィンドウを閉じます。
 
-選択した OU のコンピューターで拡張機能が有効になります。[グループ ポリシーを使用して Internet Explorer のアドオンを有効または無効にする方法の詳細については、こちらを参照してください](https://technet.microsoft.com/library/dn454941.aspx)。
+選択した OU のコンピューターで拡張機能が有効になります。[グループ ポリシーを使用して Internet Explorer のアドオンを有効または無効にする方法の詳細については、こちらを参照してください。](https://technet.microsoft.com/library/dn454941.aspx)
 
-##手順 5: デプロイメントをテストする
+##手順 5 (省略可能): パスワードを保存するかどうかを確認するプロンプトを無効にする
+
+ユーザーがアクセス パネル拡張機能を使用してサインインするときに、Internet Explorer でパスワードを保存するかどうかを確認する次のプロンプトが表示されることがあります。
+
+![](./media/active-directory-saas-ie-group-policy/remember-password-prompt.png)
+
+ユーザーに対してこのメッセージが表示されないようにする場合は、次の手順に従って、パスワードの保存によるオートコンプリートを禁止します。
+
+1. **グループ ポリシー管理エディター** ウィンドウで、次のパスに移動します。この構成設定は **[ユーザー構成]** でのみ利用できます。
+	- `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/`
+
+2. **[フォームのユーザー名とパスワードのオートコンプリート機能を有効にする]** という名前の設定を見つけます。
+
+	> [AZURE.NOTE]以前のバージョンの Active Directory では、この設定は、**[パスワードを保存するオートコンプリートを許可しない]** という名前で表示される場合があります。その設定の構成は、このチュートリアルで説明する設定とは異なります。
+
+	![これは [ユーザー設定] から探すことに注意](./media/active-directory-saas-ie-group-policy/disable-auto-complete.png)
+
+3. 上記の設定を右クリックし、**[編集]** を選択します。
+
+4. **[フォームのユーザー名とパスワードのオートコンプリート機能を有効にする]** というタイトルのウィンドウで、**[無効]** を選択します。
+
+	![[無効] を選択](./media/active-directory-saas-ie-group-policy/disable-passwords.png)
+
+5. **[OK]** をクリックしてこれらの変更を適用し、ウィンドウを閉じます。
+
+これで、ユーザーは資格情報を保存することも、オートコンプリートを使用して前に保存された資格情報にアクセスすることもできなくなります。ただし、このポリシーでは、他の種類のフォーム フィールド (検索フィールドなど) でのオートコンプリートは引き続き許可されます。
+
+> [AZURE.WARNING]ユーザーがいくつかの資格情報を保存した後でこのポリシーが有効になった場合、既に保存されている資格情報がこのポリシーによって消去されることはありません。
+
+##手順 6: デプロイのテスト
 
 拡張機能のデプロイメントが成功したかどうかを確認するには、次の手順に従います。
 
@@ -148,4 +177,4 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

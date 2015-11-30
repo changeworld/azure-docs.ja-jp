@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="09/25/2015" 
+	ms.date="11/15/2015" 
 	ms.author="glenga"/>
 
 # Mobile Services での Facebook 認証用のアプリケーションの登録
@@ -48,11 +48,14 @@
 	
     >[AZURE.IMPORTANT]アプリケーション シークレットは、重要なセキュリティ資格情報です。このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。&nbsp;
 
-8. **[詳細設定]** タブをクリックし、**[Valid OAuth redirect URIs]** にモバイル サービス URL の末尾にパス _/login/facebook_ を付加したものを入力して、**[変更を保存]** をクリックします。&nbsp;
+8. **[Advanced]** タブをクリックし、次のいずれかの URL 形式を **[Valid OAuth redirect URIs]** に入力して、**[Save Changes]** をクリックします。
+ 
+	+ **.NET バックエンド**: `https://<mobile_service>.azure-mobile.net/signin-facebook`
+	+ **JavaScript バックエンド**: `https://<mobile_service>.azure-mobile.net/login/facebook` 
 
-     >[AZURE.NOTE]Visual Studio を使用して Azure に発行された .NET バックエンド モバイル サービスについては、リダイレクト URL は、ユーザーのモバイル サービスの URL の末尾に .NET サービスとしてパス _signin-facebook_ を付加したものです。例: `https://todolist.azure-mobile.net/signin-facebook`
+	 >[AZURE.NOTE]Mobile Services バックエンドの種類として、正しいリダイレクト URL パスの形式を使用してください。これが正しくない場合、認証は失敗します。
+
        
-
 9. [**Status & Review**]、[**Yes**] の順にクリックし、アプリへの汎用パブリック アクセスを有効にします。
 
 	新しいアプリを登録するために使用した Facebook アカウントは、アプリの管理者であり、アプリへの管理者としてのアクセス権があります。この手順で汎用パブリック アクセスが与えられるため、アプリはその他の Facebook アカウントを使用して認証できるようになります。
@@ -73,4 +76,4 @@
 [Azure Mobile Services]: http://azure.microsoft.com/services/mobile-services/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

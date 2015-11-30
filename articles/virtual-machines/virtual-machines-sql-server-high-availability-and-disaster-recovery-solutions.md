@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="SQL Server の高可用性と障害復旧 | Microsoft Azure"
-   description="このチュートリアルでは、クラシック デプロイ モデルで作成されたリソースを使用して、Azure Virtual Machines で実行されている SQL Server の HADR 戦略のさまざまな種類について説明します。"
-   services="virtual-machines"
-   documentationCenter="na"
-   authors="rothja"
-   manager="jeffreyg"
-   editor="monicar" 
-   tags="azure-service-management"/>
+	pageTitle="SQL Server の高可用性と障害復旧 | Microsoft Azure"
+	description="このチュートリアルでは、クラシック デプロイ モデルで作成されたリソースを使用して、Azure Virtual Machines で実行されている SQL Server の HADR 戦略のさまざまな種類について説明します。"
+	services="virtual-machines"
+	documentationCenter="na"
+	authors="rothja"
+	manager="jeffreyg"
+	editor="monicar" 
+	tags="azure-service-management"/>
 <tags 
-   ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows-sql-server"
-   ms.workload="infrastructure-services"
-   ms.date="08/17/2015"
-   ms.author="jroth" />
+	ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.workload="infrastructure-services"
+	ms.date="11/13/2015"
+	ms.author="jroth" />
 
 # Azure Virtual Machines における SQL Server の高可用性と障害復旧
 
@@ -70,7 +70,7 @@ Azure 内の SQL Server データベースの障害復旧ソリューション�
 |**AlwaysOn 可用性グループ**|クロスサイト障害復旧のために、いくつかの可用性レプリカが Azure VM で実行され、その他のレプリカがオンプレミスで実行されます。実稼働サイトは、オンプレミスに置くことも、Azure データセンターに置くこともできます。<br/>![AlwaysOn 可用性グループ](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_alwayson.gif)<br/>すべての可用性レプリカは同じ WSFC クラスターにある必要があるため、WSFC クラスターは両方のネットワークにまたがっている必要があります (マルチサブネット WSFC クラスター)。この構成には、Azure とオンプレミス ネットワーク間の VPN 接続が必要です。<br/><br/>データベースの障害復旧を成功させるには、障害復旧サイトにレプリカ ドメイン コントローラーもインストールする必要があります。<br/><br/>既存の AlwaysOn 可用性グループに Azure レプリカを追加するには、SSMS のレプリカの追加ウィザードを使用することができます。詳細については、チュートリアルの「Azure への AlwaysOn 可用性グループの拡張」を参照してください。|
 |**データベース ミラーリング**|サーバー証明書を使用するクロスサイト障害復旧のために、1 つのパートナーが Azure VM で実行され、もう 1 つがオンプレミスで実行されます。パートナーは、同じ Active Directory ドメイン内にある必要がなく、VPN 接続も必要ありません。<br/>![データベース ミラーリング](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_dbmirroring.gif)<br/>もう 1 つのデータベース ミラーリング シナリオとして、クロスサイト障害復旧のために、1 つのパートナーを Azure VM で実行し、もう 1 つを同じ Active Directory ドメイン内のオンプレミスで実行するという形式があります。[Azure Virtual Network とオンプレミス ネットワーク間の VPN 接続](../vpn-gateway/vpn-gateway-site-to-site-create.md)が必要です。<br/><br/>データベースの障害復旧を成功させるには、障害復旧サイトにレプリカ ドメイン コントローラーもインストールする必要があります。|
 |**ログ配布**|クロスサイト障害復旧のために、1 つのサーバーが Azure VM で実行され、もう 1 つがオンプレミスで実行されます。ログ配布は Windows ファイル共有に依存しているため、Azure Virtual Network とオンプレミス ネットワーク間の VPN 接続が必要です。<br/>![ログ配布](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_log_shipping.gif)<br/>データベースの障害復旧を成功させるには、障害復旧サイトにレプリカ ドメイン コントローラーもインストールする必要があります。|
-|**Azure BLOB ストレージ サービスを使用したバックアップと復元**|オンプレミスの実稼働データベースが、障害復旧のために、Azure BLOB ストレージに直接バックアップされます。<br/>![バックアップと復元](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_backup_restore.gif)<br/>詳細については、「[Azure Virtual Machines 内の SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」を参照してください。|
+|**Azure BLOB ストレージ サービスを使用したバックアップと復元**|オンプレミスの実稼働データベースが、障害復旧のために、Azure BLOB ストレージに直接バックアップされます。<br/>![バックアップと復元](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_backup_restore.gif)<br/>。詳細については、「[Azure Virtual Machines 内の SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」を参照してください。|
 
 ## Azure での SQL Server HADR の重要な考慮事項
 
@@ -104,9 +104,14 @@ Azure での非 RFC 準拠 DHCP サービスのために、特定の WSFC クラ
 
 ### 可用性グループ リスナーのサポート
 
-可用性グループ リスナーは、Windows Server 2008 R2、Windows Server 2012、および Windows Server 2012 R2 を実行している Azure VM でサポートされます。このサポートは、可用性グループ ノードである Azure VM 上の、Direct Server Return (DSR) が有効になっている負荷分散エンドポイントを使用して実現されます。Azure で実行されているクライアント アプリケーションと、オンプレミスで実行されているクライアント アプリケーションの両方に対してリスナーを動作させるには、特別な構成手順に従う必要があります。
+可用性グループ リスナーは、Windows Server 2008 R2、Windows Server 2012、および Windows Server 2012 R2 を実行している Azure VM でサポートされます。このサポートは、可用性グループ ノードである Azure VM 上で有効になっている負荷分散エンドポイントを使用して実現されます。Azure で実行されているクライアント アプリケーションと、オンプレミスで実行されているクライアント アプリケーションの両方に対してリスナーを動作させるには、特別な構成手順に従う必要があります。
 
-クライアントは、AlwaysOn 可用性グループ ノードと同じクラウド サービスに含まれていないマシンからリスナーに接続する必要があります。可用性グループが複数の Azure サブネットにまたがっている場合 (たとえば、複数の Azure リージョンにわたるデプロイ)、クライアント接続文字列には "MultisubnetFailover=True" を含める必要があります。これにより、別のサブネット内のレプリカへのパラレル接続が試行されます。リスナーの設定手順については、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)」を参照してください。
+リスナーを設定するための主なオプションには、外部 (パブリック) と内部の 2 つがあります。外部 (パブリック) リスナーは、インターネット経由でアクセスできるパブリック仮想 IP (VIP) と関連付けられます。外部リスナーでは、Direct Server Return を有効にする必要があります。つまり、AlwaysOn 可用性グループ ノードと同じクラウド サービスに含まれていないコンピューターからリスナーに接続する必要があります。もう 1 つのオプションは内部ロード バランサー (ILB) を使用する内部リスナーです。内部リスナーは、同じ Virtual Network 内のクライアントのみをサポートします。
+
+可用性グループが複数の Azure サブネットにまたがっている場合 (たとえば、複数の Azure リージョンにわたるデプロイメント)、クライアント接続文字列には "**MultisubnetFailover=True**" を含める必要があります。これにより、別のサブネット内のレプリカへのパラレル接続が試行されます。リスナーの設定方法については、次を参照してください。
+
+- [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)
+- [Azure での AlwaysOn 可用性グループの外部リスナーの構成](virtual-machines-sql-server-configure-public-alwayson-availability-group-listener.md)
 
 この場合でも、サービス インスタンスに直接接続することで、各可用性レプリカに個別に接続できます。また、AlwaysOn 可用性グループはデータベース ミラーリング クライアントとの下位互換性があるため、レプリカがデータベース ミラーリングと同様に、次のように構成されていれば、データベース ミラーリング パートナーのように可用性レプリカに接続できます。
 
@@ -147,4 +152,4 @@ Azure VM での SQL Server の実行に関するその他のトピックにつ�
 - [Azure での新しい Active Directory フォレストのインストール](../active-directory/active-directory-new-forest-virtual-machine.md)
 - [Azure VM での AlwaysOn 可用性グループの WSFC クラスターの作成](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

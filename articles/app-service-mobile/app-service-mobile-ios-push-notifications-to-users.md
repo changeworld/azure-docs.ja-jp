@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="mobile-dotnet" 
 	ms.devlang="objective-c" 
 	ms.topic="article" 
-	ms.date="09/25/2015"
+	ms.date="11/17/2015"
 	ms.author="yuaxu"/>
 
 # 特定のユーザーにクロスプラット フォーム通知を送信する
 
-[AZURE.INCLUDE [app-service-mobile-selector-push-users](../../includes/app-service-mobile-selector-push-users.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-push-users](../../includes/app-service-mobile-selector-push-users.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 このトピックでは、特定のユーザーのすべての登録済みデバイスにモバイル バックエンドから通知を送信する方法について説明します。[テンプレート]の概念が導入されました。これにより、クライアント アプリケーションで、登録時にペイロードの形式と変数プレースホルダーを自由に指定することができます。送信すると、これらのプレースホルダーにより、すべてのプラットフォームにヒットし、クロスプラットフォーム通知が有効になります。
 
@@ -28,7 +26,7 @@
  
 ##前提条件 
 
-このチュートリアルを開始する前に、作業する各クライアント プラットフォームで次の App Service チュートリアルが既に完了している必要があります。
+このチュートリアルを開始する前に、作業する各クライアント プラットフォームで次のアプリ サービス チュートリアルが既に完了している必要があります。
 
 + [認証の使用]<br/>TodoList サンプル アプリケーションにログイン要件を追加します。
 
@@ -105,7 +103,7 @@
 <!-- URLs. -->
 [認証の使用]: app-service-mobile-ios-get-started-users.md
 [プッシュ通知の使用]: app-service-mobile-ios-get-started-push.md
-[テンプレート]: https://msdn.microsoft.com/ja-JP/library/dn530748.aspx
+[テンプレート]: https://msdn.microsoft.com/zh-CN/library/dn530748.aspx
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

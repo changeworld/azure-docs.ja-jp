@@ -14,21 +14,20 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="08/05/2015"
+	ms.date="11/13/2015"
 	ms.author="jroth" />
 
-# Azure Virtual Machines における SQL Server のバックアップと復元
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
-
+# Azure Virtual Machines おける SQL Server のバックアップと復元
 
 ## 概要
 
-SQL Server データベースのデータのバックアップは、アプリケーション エラーやユーザー エラーによるデータ損失から保護する戦略の重要な要素です。これは、Azure 仮想マシン (VM) で実行されている SQL Server にも同様に当てはまります。
+SQL Server データベースのデータのバックアップは、アプリケーション エラーやユーザー エラーによるデータ損失から保護する戦略の重要な要素です。これは、Azure Virtual Machines (VM) で実行されている SQL Server にも同様に当てはまります。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 Azure VM で実行されている SQL Server では、バックアップ ファイルの保存先として接続されたディスクを使用するネイティブなバックアップおよび復元手法を使用できます。ただし、[仮想マシンのサイズ](virtual-machines-size-specs.md)に基づいて、Azure 仮想マシンに接続できるディスク数には制限があります。また、ディスク管理のオーバーヘッドも考慮する必要があります。
 
-SQL Server 2014 以降では、Microsoft Azure BLOB ストレージへのバックアップと復元が可能です。SQL Server 2016 には、このオプションの拡張機能も用意されています。また、データベース ファイルが Microsoft Azure BLOB ストレージに保存されている場合、SQL Server 2016 では、Azure のスナップショットを使用して、ほぼ瞬時にバックアップを作成し、迅速に復元できます。この記事では、これらのオプションの概要を説明します。追加情報については、「SQL Server Backup and Restore with Microsoft Azure Blob Storage Service [Microsoft Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148(v=sql.130).aspx) をご覧ください。
+SQL Server 2014 以降では、Microsoft Azure BLOB ストレージへのバックアップと復元が可能です。SQL Server 2016 には、このオプションの拡張機能も用意されています。また、データベース ファイルが Microsoft Azure BLOB ストレージに保存されている場合、SQL Server 2016 では、Azure のスナップショットを使用して、ほぼ瞬時にバックアップを作成し、迅速に復元できます。この記事では、これらのオプションの概要を説明します。追加情報については、「SQL Server Backup and Restore with Microsoft Azure Blob Storage Service (Microsoft Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元)」(https://msdn.microsoft.com/library/jj919148(v=sql.130).aspx)) をご覧ください。
 
 >[AZURE.NOTE]大規模なデータベースのバックアップのオプションについては、「[Multi-Terabyte SQL Server Database Backup Strategies for Azure Virtual Machines (Azure Virtual Machines の数 TB の SQL Server データベースのバックアップ戦略)](http://blogs.msdn.com/b/igorpag/archive/2015/07/28/multi-terabyte-sql-server-database-backup-strategies-for-azure-virtual-machines.aspx)」をご覧ください。
 
@@ -42,11 +41,11 @@ SQL Server 2014 以降では、Microsoft Azure BLOB ストレージへのバッ�
 
 - ユーザー エラーからの保護、保存目的、規制上の理由、または管理目的で、データベースのバックアップを引き続き実行する必要があります。
 
-- Microsoft SQL Server 2016 Community Technology Preview 2 (CTP2) の SQL Server ファイル スナップショット バックアップ機能を使用して、ほぼ瞬時のバックアップと迅速な復元を実行できます。詳細については、「[Azure でのデータベース ファイルのスナップショット バックアップ](https://msdn.microsoft.com/library/mt169363.aspx)」をご覧ください。
+- Microsoft SQL Server 2016 Community Technology Preview 3 (CTP3) の SQL Server ファイル スナップショット バックアップ機能を使用して、ほぼ瞬時のバックアップと迅速な復元を実行できます。詳細については、「[Azure でのデータベース ファイルのスナップショット バックアップ](https://msdn.microsoft.com/library/mt169363.aspx)」をご覧ください。
 
-## Microsoft SQL Server 2016 Community Technology Preview 2 (CTP2) でのバックアップと復元
+## Microsoft SQL Server 2016 Community Technology Preview 3 (CTP3) でのバックアップと復元
 
-Microsoft SQL Server 2016 Community Technology Preview 2 (CTP2) では、SQL Server 2014 の [Azure BLOB を使用したバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)機能をサポートしています。ただし、次の拡張機能も用意されています。
+Microsoft SQL Server 2016 Community Technology Preview 3 (CTP3) では、SQL Server 2014 の [Azure BLOB を使用したバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)機能をサポートしています。ただし、次の拡張機能も用意されています。
 
 - **ストライピング**: Microsoft Azure BLOB ストレージにバックアップする場合、SQL Server 2016 では、複数の BLOB へのバックアップをサポートしているので、最大 12.8 TB の大規模なデータベースをバックアップできます。
 
@@ -93,4 +92,4 @@ Azure VM に SQL Server をデプロイすることを計画している場合�
 
 [Azure Virtual Machines で SQL Server を実行するための他のリソース](virtual-machines-sql-server-infrastructure-services.md)を確認します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

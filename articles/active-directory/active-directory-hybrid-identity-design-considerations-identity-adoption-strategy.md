@@ -39,7 +39,7 @@
 - **同期済み**: オンプレミスとクラウドに存在する ID です。Azure AD Connect を使用すると、これらのユーザーは作成されるか、既存の Azure AD アカウントと結合されます。ユーザーのパスワードは、パスワード ハッシュと呼ばれるものを使用して、オンプレミスの環境からクラウドに同期されます。同期済み ID を使用する場合の注意点として、オンプレミス環境でユーザーが無効にされた場合に、そのアカウントの状態が Azure AD に反映されるまでに最大 3 時間かかることがあります。同期時間の間隔がその原因です。
 - **フェデレーション**: これらの ID は、オンプレミスとクラウドの両方に存在します。Azure AD Connect を使用すると、これらのユーザーは作成されるか、既存の Azure AD アカウントと結合されます。  
  
->[AZURE.NOTE]同期オプションの詳細については、「[オンプレミス ID と Azure Active Directory の統合](https://azure.microsoft.com/ja-JP/documentation/articles/active-directory-aadconnect/)」をお読みください。
+>[AZURE.NOTE]同期オプションの詳細については、「[オンプレミス ID と Azure Active Directory の統合](https://azure.microsoft.com/zh-CN/documentation/articles/active-directory-aadconnect/)」をお読みください。
 
 次の表は、各戦略の長所と短所を把握するのに役立ちます。
 
@@ -114,7 +114,7 @@
 - ユーザーにメールボックスがない場合、任意のフォレストを使用してこれらの値を提供できる。
 - リンクされたメールボックスがある場合、サインインに使用される別のアカウントが異なるフォレストにある。
 
->[AZURE.NOTE]クラウドとオンプレミスの両方に存在するオブジェクトは、一意の識別子を使用して "接続" されます。ディレクトリ同期の場合は、この一意の識別子を SourceAnchor といいます。シングル サインオンの場合は、これを ImmutableId といいます。SourceAnchor の使用に関する詳細な考慮事項については、「[Azure AD Connect の設計概念](https://azure.microsoft.com/ja-JP/documentation/articles/active-directory-aadconnect-design-concepts/#sourceanchor)」を参照してください。
+>[AZURE.NOTE]クラウドとオンプレミスの両方に存在するオブジェクトは、一意の識別子を使用して "接続" されます。ディレクトリ同期の場合は、この一意の識別子を SourceAnchor といいます。シングル サインオンの場合は、これを ImmutableId といいます。SourceAnchor の使用に関する詳細な考慮事項については、「[Azure AD Connect の設計概念](https://azure.microsoft.com/zh-CN/documentation/articles/active-directory-aadconnect-design-concepts/#sourceanchor)」を参照してください。
 
 上記に該当しない場合で、かつアクティブなアカウントまたはメールボックスが複数ある場合は、Azure AD Connect により 1 つだけ選択され、それ以外は無視されます。リンクされたメールボックスはあるが、その他のアカウントがない場合、それらのアカウントは Azure AD にはエクスポートされず、そのユーザーはどのグループのメンバーにもなりません。これは、以前に DirSync で実施されていた処理とは異なります。このような複数フォレストのシナリオのサポートを向上するための措置です。次の図に、複数フォレストのシナリオを示します。
  
@@ -151,7 +151,7 @@
 - Azure AD のディレクトリは、分離するように設計されています。ディレクトリ間に共通の統合された GAL を構築しようとする際に他の Azure AD ディレクトリからデータを読み取るような、Azure AD Connect Sync の構成の変更はサポートされていません。Azure AD Connect Sync を使用している別のオンプレミス AD の連絡先としてユーザーをエクスポートすることもサポートされていません。
 
 
->[AZURE.NOTE]組織でネットワーク上のコンピューターからインターネットへの接続が制限されている場合、次の記事の一覧にあるエンドポイント (FQDN、IPv4 と IPv6 のアドレス範囲) を、クライアント コンピューターの送信許可リストと Internet Explorer の信頼済みサイト ゾーンに追加して、コンピューターで Office 365 を正常に使用できるようにしてください。詳細については、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=ja-JP&rs=ja-JP&ad=US)」をお読みください。
+>[AZURE.NOTE]組織でネットワーク上のコンピューターからインターネットへの接続が制限されている場合、次の記事の一覧にあるエンドポイント (FQDN、IPv4 と IPv6 のアドレス範囲) を、クライアント コンピューターの送信許可リストと Internet Explorer の信頼済みサイト ゾーンに追加して、コンピューターで Office 365 を正常に使用できるようにしてください。詳細については、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=zh-CN&rs=zh-CN&ad=US)」をお読みください。
 
 ## 多要素認証戦略の定義
 このタスクでは、使用する多要素認証戦略を定義します。Azure Multi-Factor Authentication では、次の 2 種類のバージョンが用意されています。1 つはクラウドベースで、もう 1 つは Azure MFA Server を使用するオンプレミス ベースです。上記で行った評価に基づいて、戦略に適したソリューションを決定できます。次の表を使用して、どの設計オプションが企業のセキュリティ要件を最適に満たすかを決定します。
@@ -178,7 +178,7 @@
 
 >[AZURE.NOTE]また、選択した多要素認証の設計オプションで、設計に必要な機能がサポートされていることを確認する必要があります。詳細については、「[ユーザーに適した多要素のセキュリティ ソリューションの選択](https://azure.microsoft.com/documentation/articles/multi-factor-authentication-get-started/#what-am-i-trying-to-secure)」をお読みください。
 
-## Multi-Factor Auth Provider
+## 多要素認証プロバイダー
 Azure Active Directory テナントを持つグローバル管理者は、既定で多要素認証を使用できます。ただし、すべてのユーザーに多要素認証を拡張する場合や、グローバル管理者が管理ポータル、カスタムの案内応答、レポートなどの機能を利用できるようにする場合は、Multi-Factor Authentication Provider を購入して構成する必要があります。
 
 >[AZURE.NOTE]また、選択した多要素認証の設計オプションで、設計に必要な機能がサポートされていることを確認する必要があります。
@@ -187,6 +187,6 @@ Azure Active Directory テナントを持つグローバル管理者は、既定
 [データ保護要件の決定](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
 ## 関連項目
-[設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-directory-overview.md)
+[設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

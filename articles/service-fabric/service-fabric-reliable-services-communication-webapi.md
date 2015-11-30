@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="07/23/2015"
+   ms.date="11/13/2015"
    ms.author="vturecek"/>
 
 # OWIN 自己ホストによる Microsoft Azure Service Fabric Web API の概要
@@ -33,9 +33,9 @@ Service Fabric の Web API は、馴染みのある同じ ASP.NET Web API です
 Web API アプリケーション自体はここでは変わりありません。これまでに作成したことがある Web API アプリケーションと違いはなく、アプリケーション コードのほとんどを単純にそっくり移動できるはずです。アプリケーションのホストは、IIS でホストしていた場合はこれまでと多少異なる場合があります。ただし、ホスト部分に入る前に、馴染みのある部分である Web API アプリケーションから始めましょう。
 
 
-## Web API アプリケーションの設定
+## アプリケーションを作成する
 
-Visual Studio 2015 で、1 つのステートレス サービスと新しいアプリケーションを作成することから始めます。
+Visual Studio 2015 で、1 つのステートレス サービスと新しい Service Fabric アプリケーションを作成することから始めます。
 
 ![Create a new Service Fabric application](media/service-fabric-reliable-services-communication-webapi/webapi-newproject.png)
 
@@ -53,13 +53,13 @@ Visual Studio 2015 で、1 つのステートレス サービスと新しいア�
  + コントローラー
  + モデル
 
-App\_Start ディレクトリに基本的な Web API 構成クラスを追加します。
+App\_Start ディレクトリに基本的な Web API 構成クラスを追加します。ここでは、単に空のメディア タイプ フォーマッタ構成を追加します。
 
  + FormatterConfig.cs
 
 ```csharp
 
-namespace WebApi
+namespace WebApiService
 {
     using System.Net.Http.Formatting;
 
@@ -73,65 +73,48 @@ namespace WebApi
 
 ```
 
- + RouteConfig.cs
-
-```csharp
-
-namespace WebApi
-{
-    using System.Web.Http;
-
-    public static class RouteConfig
-    {
-        public static void RegisterRoutes(HttpRouteCollection routes)
-        {
-            routes.MapHttpRoute(
-                    name: "DefaultApi",
-                    routeTemplate: "api/{controller}/{id}",
-                    defaults: new { controller = "Default", id = RouteParameter.Optional }
-                );
-        }
-    }
-}
-
-```
-
 Controllers ディレクトリに既定のコントローラーを追加します。
 
  + DefaultController.cs
 
 ```csharp
 
-namespace WebApi.Controllers
+namespace WebApiService.Controllers
 {
     using System.Collections.Generic;
     using System.Web.Http;
 
+    [RoutePrefix("api")]
     public class DefaultController : ApiController
     {
         // GET api/values
+        [Route("values")]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
+        [Route("values/{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
         // POST api/values
+        [Route("values")]
         public void Post([FromBody]string value)
         {
         }
 
         // PUT api/values/5
+        [Route("values/{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/values/5
+        [Route("values/{id}")]
         public void Delete(int id)
         {
         }
@@ -146,7 +129,7 @@ namespace WebApi.Controllers
 
 ```csharp
 
-namespace WebApi
+namespace WebApiService
 {
     using Owin;
     using System.Web.Http;
@@ -157,8 +140,8 @@ namespace WebApi
         {
             HttpConfiguration config = new HttpConfiguration();
 
+            config.MapHttpAttributeRoutes();
             FormatterConfig.ConfigureFormatters(config.Formatters);
-            RouteConfig.RegisterRoutes(config.Routes);
 
             appBuilder.UseWebApi(config);
         }
@@ -171,7 +154,7 @@ namespace WebApi
 
 ```csharp
 
-namespace WebApi
+namespace WebApiService
 {
     using Owin;
 
@@ -202,7 +185,7 @@ public class Program
         {
             using (FabricRuntime fabricRuntime = FabricRuntime.Create())
             {
-                fabricRuntime.RegisterServiceType(Service.ServiceTypeName, typeof(Service));
+                fabricRuntime.RegisterServiceType("WebApiServiceType", typeof(Service));
 
                 Thread.Sleep(Timeout.Infinite);
             }
@@ -219,8 +202,6 @@ public class Program
 
 コンソール アプリケーションへのエントリ ポイントのように見える場合は、それが次のようになっているためです。
 
-![](media/service-fabric-reliable-services-communication-webapi/webapi-projectproperties.png)
-
 サービス ホスト プロセスとサービス登録の詳細についてはここで取り上げませんが、今のところ、**サービス コードが、独自のプロセスで実行している**ことを知っておくことが重要です。
 
 ## OWIN ホストによる自己ホスト型 Web API
@@ -234,24 +215,11 @@ Web API アプリケーション コードが、その独自のプロセスで�
 
 ## Web サーバーのセットアップ
 
-Reliable Services API は、ビジネス ロジックに 2 つのエントリ ポイントを提供します。
-
- + 主に実行時間の長いコンピューティング ワークロード用に意図された、任意のワークロードの実行を開始できる無期限のエントリ ポイント メソッド。
+Reliable Services API が提供する通信エントリ ポイントに通信スタックを接続し、ユーザーおよびクライアントがサービスに接続できるようにすることができます。
 
 ```csharp
 
-protected override async Task RunAsync(CancellationToken cancellationToken)
-{
-    ...
-}
-
-```
-
- + 選択した通信スタックをプラグインできる通信エントリ ポイント。
-
-```csharp
-
-protected override ICommunicationListener CreateCommunicationListener()
+protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
 {
     ...
 }
@@ -275,7 +243,7 @@ namespace WebApi
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Owin.Hosting;
-    using Microsoft.ServiceFabric.Services;
+    using Microsoft.ServiceFabric.Services.Communication.Runtime;
 
     public class OwinCommunicationListener : ICommunicationListener
     {
@@ -287,10 +255,6 @@ namespace WebApi
         {
         }
 
-        public void Initialize(ServiceInitializationParameters serviceInitializationParameters)
-        {
-        }
-
         public Task<string> OpenAsync(CancellationToken cancellationToken)
         {
         }
@@ -299,9 +263,8 @@ namespace WebApi
 
 ```
 
-ICommunicationListener インターフェイスは、サービスの通信リスナーを管理する 4 つのメソッドを提供します。
+ICommunicationListener インターフェイスは、サービスの通信リスナーを管理する 3 つのメソッドを提供します。
 
- + **Initialize**: ここでは通常、サービスがリッスンするアドレスを設定します。Web サーバーの場合、ここで URL を設定します。
  + **OpenAsync**: 要求のリッスンを開始します。
  + **CloseAsync**: 要求のリッスンを停止し、実行中の要求を完了して、正常にシャット ダウンします。
  + **Abort**: すべてのものをキャンセルし、ただちに停止します。
@@ -316,20 +279,22 @@ public class OwinCommunicationListener : ICommunicationListener
     private readonly string appRoot;
     private IDisposable serverHandle;
     private string listeningAddress;
+    private readonly ServiceInitializationParameters serviceInitializationParameters;
 
-    public OwinCommunicationListener(string appRoot, IOwinAppBuilder startup)
+    public OwinCommunicationListener(string appRoot, IOwinAppBuilder startup, ServiceInitializationParameters serviceInitializationParameters)
     {
         this.startup = startup;
         this.appRoot = appRoot;
-    }
+        this.serviceInitializationParameters = serviceInitializationParameters;
+    }        
 
     ...
 
 ```
 
-### Initialize
+### 実装
 
-ここで、Web サーバーの URL を設定します。これを実行するには、いくつかの情報が必要です。
+Web サーバーをセットアップするには、2 つの情報が必要です。
 
  + **URL パス プレフィックス**。オプションですが、アプリケーションで複数の Web サービスを安全にホストできるように、ここでこれを設定することをお勧めします。
  + **ポート**。
@@ -350,11 +315,12 @@ PackageRoot\\ServiceManifest.xml で HTTP エンドポイントを構成しま�
 
 サービス ホスト プロセスは制限付き資格情報 (Windows 上のネットワーク サービス) で実行されますが、これはサービスが独自の HTTP エンドポイントを設定するためにアクセスできないことを意味するため、この手順が重要になります。エンドポイント構成を使用することによって、Service Fabric は、エンドポイントを構成する標準の場所を提供しながら、サービスがリッスンする URL の正しい ACL を設定することを認識します。
 
-OwinCommunicationListener.cs に戻り、Initialize メソッドでエンドポイント情報を取得し、ポートを取得します。サービスがリッスンする URL を作成し、以前に作成したクラス メンバー変数にそれを保存します。これは、OpenAsync で Web サーバーを起動するために使われます。
+
+OwinCommunicationListener.cs に戻り、OpenAsync の実装を始めることができます。ここで Web サーバーを開始します。最初に、エンドポイントの情報を取得し、サービスがリッスンする URL を作成します。
 
 ```csharp
 
-public void Initialize(ServiceInitializationParameters serviceInitializationParameters)
+public Task<string> OpenAsync(CancellationToken cancellationToken)
 {
     EndpointResourceDescription serviceEndpoint = serviceInitializationParameters.CodePackageActivationContext.GetEndpoint("ServiceEndpoint");
     int port = serviceEndpoint.Port;
@@ -366,15 +332,11 @@ public void Initialize(ServiceInitializationParameters serviceInitializationPara
         String.IsNullOrWhiteSpace(this.appRoot)
             ? String.Empty
             : this.appRoot.TrimEnd('/') + '/');
-}
+    ...
 
 ```
 
 ここで "http://+" が使われていることに注意してください。これは、Web サーバーが、localhost、FQDN、マシン IP など、使用可能なすべてのアドレスで確実にリッスンするようにするためです。
-
-### OpenAsync
-
-OpenAsync は Initialize の後に、プラットフォームによって呼び出されます。ここでは、Initialize で作成されたアドレスを使用して、Web サーバーを開きます。
 
 OpenAsync を実装することは、Web サーバー (または任意の通信スタック) が、サービスで RunAsync() から直接開かれるのではなく、ICommunicationListener として実装されている最も重要な理由の 1 つです。OpenAsync からの戻り値は、Web サーバーがリッスンしているアドレスです。このアドレスがシステムに返されると、システムはアドレスをサービスに登録します。Service Fabric は、クライアントやその他のサービスがサービス名でこのアドレスを要求できるようにする API を提供します。これが重要であるのは、リソースの分散と可用性のために、サービスがクラスター内を移動し、サービスのアドレスが静的でないためです。これは、クライアントがサービスのリッスンしているアドレスを解決できるようにするメカニズムです。
 
@@ -382,15 +344,14 @@ OpenAsync を実装することは、Web サーバー (または任意の通信�
 
 ```csharp
 
-public Task<string> OpenAsync(CancellationToken cancellationToken)
-{
+    ...
+
     this.serverHandle = WebApp.Start(this.listeningAddress, appBuilder => this.startup.Configuration(appBuilder));
+    string publishAddress = this.listeningAddress.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
 
-    string resultAddress = this.listeningAddress.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
+    ServiceEventSource.Current.Message("Listening on {0}", publishAddress);
 
-    ServiceEventSource.Current.Message("Listening on {0}", resultAddress);
-
-    return Task.FromResult(resultAddress);
+    return Task.FromResult(publishAddress);
 }
 
 ```
@@ -438,13 +399,16 @@ private void StopWebServer()
 
 ## Web サーバーの起動
 
-これで、OwinCommunicationListener のインスタンスを作成して、返し、Web サーバーを起動する準備が整いました。サービス クラス (Service.cs) に戻り、**CreateCommunicationListener()** メソッドをオーバーライドします。
+これで、OwinCommunicationListener のインスタンスを作成して、返し、Web サーバーを起動する準備が整いました。サービス クラス (Service.cs) に戻り、**CreateServiceInstanceListeners()** メソッドをオーバーライドします。
 
 ```csharp
 
-protected override ICommunicationListener CreateCommunicationListener()
+protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
 {
-	return new OwinCommunicationListener("api", new Startup());
+    return new[]
+    {
+        new ServiceInstanceListener(initParams => new OwinCommunicationListener("webapp", new Startup(), initParams))
+    };
 }
 
 ```
@@ -459,28 +423,31 @@ protected override ICommunicationListener CreateCommunicationListener()
 
 ```csharp
 
-namespace WebApi
+namespace WebApiService
 {
-    using Microsoft.ServiceFabric.Services;
+    using System.Collections.Generic;
+    using Microsoft.ServiceFabric.Services.Communication.Runtime;
+    using Microsoft.ServiceFabric.Services.Runtime;
 
-    public class Service : StatelessService
+    public class WebApiService : StatelessService
     {
-        public const string ServiceTypeName = "WebApiType";
-
-        protected override ICommunicationListener CreateCommunicationListener()
+        protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
         {
-            return new OwinCommunicationListener("api", new Startup());
+            return new[]
+            {
+                new ServiceInstanceListener(initParams => new OwinCommunicationListener("webapp", new Startup(), initParams))
+            };
         }
     }
 }
 
 ```
 
-さらに、OwinCommunicationListener クラスを完成させます。
+さらに、`OwinCommunicationListener` クラスを完成させます。
 
 ```csharp
 
-namespace WebApi
+namespace WebApiService
 {
     using System;
     using System.Fabric;
@@ -489,22 +456,24 @@ namespace WebApi
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Owin.Hosting;
-    using Microsoft.ServiceFabric.Services;
+    using Microsoft.ServiceFabric.Services.Communication.Runtime;
 
     public class OwinCommunicationListener : ICommunicationListener
     {
         private readonly IOwinAppBuilder startup;
         private readonly string appRoot;
+        private readonly ServiceInitializationParameters serviceInitializationParameters;
         private IDisposable serverHandle;
         private string listeningAddress;
-
-        public OwinCommunicationListener(string appRoot, IOwinAppBuilder startup)
+        
+        public OwinCommunicationListener(string appRoot, IOwinAppBuilder startup, ServiceInitializationParameters serviceInitializationParameters)
         {
             this.startup = startup;
             this.appRoot = appRoot;
+            this.serviceInitializationParameters = serviceInitializationParameters;
         }
 
-        public void Initialize(ServiceInitializationParameters serviceInitializationParameters)
+        public Task<string> OpenAsync(CancellationToken cancellationToken)
         {
             EndpointResourceDescription serviceEndpoint = serviceInitializationParameters.CodePackageActivationContext.GetEndpoint("ServiceEndpoint");
             int port = serviceEndpoint.Port;
@@ -516,21 +485,19 @@ namespace WebApi
                 String.IsNullOrWhiteSpace(this.appRoot)
                     ? String.Empty
                     : this.appRoot.TrimEnd('/') + '/');
-        }
 
-        public Task<string> OpenAsync(CancellationToken cancellationToken)
-        {
             this.serverHandle = WebApp.Start(this.listeningAddress, appBuilder => this.startup.Configuration(appBuilder));
+            string publishAddress = this.listeningAddress.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
 
-            string resultAddress = this.listeningAddress.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
+            ServiceEventSource.Current.Message("Listening on {0}", publishAddress);
 
-            ServiceEventSource.Current.Message("Listening on {0}", resultAddress);
-
-            return Task.FromResult(resultAddress);
+            return Task.FromResult(publishAddress);
         }
 
         public Task CloseAsync(CancellationToken cancellationToken)
         {
+            ServiceEventSource.Current.Message("Close");
+
             this.StopWebServer();
 
             return Task.FromResult(true);
@@ -538,6 +505,8 @@ namespace WebApi
 
         public void Abort()
         {
+            ServiceEventSource.Current.Message("Abort");
+
             this.StopWebServer();
         }
 
@@ -570,7 +539,7 @@ namespace WebApi
 [開発環境を設定](service-fabric-get-started.md)していない場合は、設定します。
 
 
-これでサービスを構築し、デプロイできます。Visual Studio で **F5** キーを押して、アプリケーションを構築し、展開します。[診断イベント] ウィンドウに、Web サーバーが ****http://localhost:80/api** で開かれたことを示すメッセージが表示されるはずです。
+これでサービスを構築し、デプロイできます。Visual Studio で **F5** キーを押して、アプリケーションを構築し、デプロイします。[診断イベント] ウィンドウに、Web サーバーが ****http://localhost:80/webapp/api** で開かれたことを示すメッセージが表示されるはずです。
 
 
 ![](media/service-fabric-reliable-services-communication-webapi/webapi-diagnostics.png)
@@ -578,7 +547,7 @@ namespace WebApi
 > [AZURE.NOTE]ポートが既に、コンピューターの別のプロセスによって開かれている場合、リスナーを開けなかったことを示すエラーが表示されることがあります。その場合は、ServiceManifest.xml のエンドポイント構成で、別のポートを使用してみてください。
 
 
-サービスが実行したら、ブラウザーを開いて、[http://localhost/api](http://localhost/api) に移動して、それをテストします。
+サービスが実行したら、ブラウザーを開いて、[http://localhost/webapp/api/values](http://localhost/webapp/api/values) に移動して、それをテストします。
 
 ## スケール アウト
 
@@ -614,4 +583,4 @@ ASP.NET 5 でも、Web アプリケーションで*ホスト*から*アプリケ
 
 [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=Nov15_HO4-->

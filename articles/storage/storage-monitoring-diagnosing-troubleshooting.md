@@ -65,7 +65,7 @@ Azure のストレージ アプリケーションにおけるエンド ツー �
 	+ [付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ]
 	+ [付録 3: Microsoft Message Analyzer を使用したネットワーク トラフィックのキャプチャ]
 	+ [付録 4: Excel を使用したメトリックおよびログ データの表示]
-	+ [付録 5: Application Insights for Visual Studio Online を使用した監視]
+	+ [付録 5: Application Insights for Visual Studio Team Services を使用した監視]
 
 ## <a name="introduction"></a>はじめに
 
@@ -125,7 +125,7 @@ Microsoft Azure ポータル (<a href="https://portal.azure.com" target="_blank"
 
 Azure ポータルには、さまざまな Azure サービスに影響を与えるアクシデントについての通知も表示されます。注: この情報は、以前は Azure サービス ダッシュボード (<a href="http://status.azure.com" target="_blank">http://status.azure.com</a>) に履歴データと共に提供されていました。
 
-ポータルによって Azure データセンター内部から正常性情報が収集 (内部からの監視) されますが、Azure でホストする Web アプリケーションに定期的に複数の場所からアクセスする疑似トランザクションを生成して外部から監視する方法を取ることを検討しても良いでしょう。このような外部から監視する方法の例としては、<a href="http://www.keynote.com/solutions/monitoring/web-monitoring" target="_blank">Keynote</a>、<a href="https://www.gomeznetworks.com/?g=1" target="_blank">Gomez</a>、Application Insights for Visual Studio Online が提供しているサービスがあります。Application Insights for Visual Studio Online の詳細については、付録「[付録 5: Application Insights for Visual Studio Online を使用した監視]」を参照してください。
+ポータルによって Azure データセンター内部から正常性情報が収集 (内部からの監視) されますが、Azure でホストする Web アプリケーションに定期的に複数の場所からアクセスする疑似トランザクションを生成して外部から監視する方法を取ることを検討しても良いでしょう。このような外部から監視する方法の例としては、<a href="http://www.keynote.com/solutions/monitoring/web-monitoring" target="_blank">Keynote</a>、<a href="https://www.gomeznetworks.com/?g=1" target="_blank">Gomez</a>、Application Insights for Visual Studio Team Services が提供しているサービスがあります。Application Insights for Visual Studio Team Services の詳細については、付録「[付録 5: Application Insights for Visual Studio Team Services を使用した監視]」を参照してください。
 
 ### <a name="monitoring-capacity"></a>容量監視
 
@@ -180,7 +180,7 @@ Azure ポータルでは、ストレージ アカウントの **[監視]** ペ�
 
 ### <a name="service-health-issues"></a>サービス正常性の問題
 
-一般に、サービス正常性の問題は制御不能です。Azure ポータルに、Storage サービスを含む Azure サービスに現在発生している問題に関する情報が提供されます。ストレージ アカウントの作成時に読み取りアクセス地理冗長ストレージを選択していた場合は、プライマリ ロケーションのデータが使用できなくなったときに、アプリケーションはセカンダリ ロケーションの読み取り専用コピーに一時的に切り替えることができます。そのためには、アプリケーションが、プライマリとセカンダリのストレージ ロケーションの間で切り替えを実行し、制限された機能モードで読み取り専用データを使用して動作できる必要があります。Azure ストレージ クライアント ライブラリを使用して、プライマリ ストレージから読み取れなくなった場合にセカンダリ ストレージから読み取れるようにする再試行ポリシーを定義できます。また、アプリケーションは、セカンダリ ロケーションのデータが実際に一貫性のあるデータかどうかを認識できる必要もあります。詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/04/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx" target="_blank">Azure Storage の冗長オプションおよび読み取りアクセス geo 冗長ストレージ</a>に関するブログ記事を参照してください。
+一般に、サービス正常性の問題は制御不能です。Azure ポータルに、Storage サービスを含む Azure サービスに現在発生している問題に関する情報が提供されます。ストレージ アカウントの作成時に読み取りアクセス geo 冗長ストレージを選択していた場合は、プライマリ ロケーションのデータが使用できなくなったときに、アプリケーションはセカンダリ ロケーションの読み取り専用コピーに一時的に切り替えることができます。そのためには、アプリケーションが、プライマリとセカンダリのストレージ ロケーションの間で切り替えを実行し、制限された機能モードで読み取り専用データを使用して動作できる必要があります。Azure ストレージ クライアント ライブラリを使用して、プライマリ ストレージから読み取れなくなった場合にセカンダリ ストレージから読み取れるようにする再試行ポリシーを定義できます。また、アプリケーションは、セカンダリ ロケーションのデータが実際に一貫性のあるデータかどうかを認識できる必要もあります。詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/04/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx" target="_blank">Azure Storage の冗長オプションおよび読み取りアクセス geo 冗長ストレージ</a>に関するブログ記事を参照してください。
 
 ### <a name="performance-issues"></a>パフォーマンスの問題
 
@@ -215,7 +215,7 @@ Azure SDK には、開発用ワークステーションで実行できるスト�
 
 Storage Client Library for .NET では、アプリケーションで実行されたストレージ操作に関するクライアント側のログ データを収集できます。クライアント側のログを有効にしてログ データにアクセスする方法の詳細については、MSDN の<a href="http://go.microsoft.com/fwlink/?LinkId=510868" target="_blank">ストレージ クライアント ライブラリを使用したクライアント側のログ</a>に関するページを参照してください。
 
-> [AZURE.NOTE]\(SAS の許可エラーなどの) 状況によっては、サーバー側のストレージ ログには要求データが見つからないエラーを、ユーザーから報告される可能性があります。ストレージ クライアント ライブラリのログ機能を使用して問題の原因がクライアント側にあるか調べたり、ネットワーク監視ツールを使用してネットワークを調べたりできます。
+> [AZURE.NOTE](SAS の許可エラーなどの) 状況によっては、サーバー側の ストレージ ログには要求データが見つからないエラーを、ユーザーから報告される可能性があります。ストレージ クライアント ライブラリのログ機能を使用して問題の原因がクライアント側にあるか調べたり、ネットワーク監視ツールを使用してネットワークを調べたりできます。
 
 ### <a name="using-network-logging-tools"></a>ネットワーク ログ ツールの使用
 
@@ -240,9 +240,9 @@ Storage Client Library for .NET では、アプリケーションで実行され
 
 ストレージ クライアント ライブラリは、要求ごとに固有のクライアント要求 ID を自動生成します。
 
-- ストレージ クライアント ライブラリが作成するクライアント側のログの場合、クライアント要求 ID は、その要求に関連したすべてのログ エントリの **[クライアント要求 ID\]** フィールドに表示されます。
+- ストレージ クライアント ライブラリが作成するクライアント側のログの場合、クライアント要求 ID は、その要求に関連したすべてのログ エントリの **[クライアント要求 ID]** フィールドに表示されます。
 - Fiddler などによってキャプチャされたネットワーク トレースの場合、クライアント要求 ID は、要求メッセージの **x-ms-client-request-id** HTTP ヘッダー値として表示されます。
-- サーバー側の Storage Logging ログの場合、クライアント要求 ID は [クライアント要求 ID\] 列に表示されます。
+- サーバー側の Storage Logging ログの場合、クライアント要求 ID は [クライアント要求 ID] 列に表示されます。
 
 > [AZURE.NOTE]複数の要求が同じクライアント要求 ID を共有する可能性があります。クライアントがこの値を割り当てることができるからです (一方、ストレージ クライアント ライブラリは新しい値を自動的に割り当てます)。クライアントから再試行する場合には、必ず同じクライアント要求 ID を共有します。クライアントからの送信されるバッチの場合、バッチのクライアント要求 ID は 1 つだけです。
 
@@ -827,14 +827,14 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 
 [**テキスト ファイル ウィザード**] の手順 2 で、[**セミコロン**] のみを区切り文字として選択し、[**文字列の引用符**] として二重引用符を選択します。[**完了**] をクリックし、ワークブックでデータを配置する場所を選択します。
 
-### <a name="appendix-5"></a>付録 5: Application Insights for Visual Studio Online を使用した監視
+### <a name="appendix-5"></a>付録 5: Application Insights for Visual Studio Team Services を使用した監視
 
-パフォーマンスおよび可用性の監視の一環として、Visual Studio Online の Application Insights 機能を使用することもできます。このツールは、以下を実行できます。
+パフォーマンスおよび可用性の監視の一環として、Visual Studio Team Services の Application Insights 機能を使用することもできます。このツールは、以下を実行できます。
 
 - Web サービスが使用可能および応答可能であることを確認できます。アプリケーションが Web サイトであるか、Web サービスを使用するデバイス アプリである場合、世界中の複数の場所から数分ごとに URL をテストし、問題がある場合には通知することができます。
 - Web サービスのパフォーマンス上の問題または例外をすばやく診断できます。CPU やその他のリソースが限界まで使用されていることを検出したり、例外からスタック トレースを取得したり、ログ トレース全体を簡単に検索したりできます。アプリのパフォーマンスの低下が許容できる限界を超えている場合には、電子メールを送信できます。.NET と Java の両方の Web サービスを監視できます。
 
-この資料の作成時点では、Application Insights はプレビュー段階です。詳細については、MSDN の「<a href="http://msdn.microsoft.com/library/azure/dn481095.aspx" target="_blank">Application Insights for Visual Studio Online</a>」を参照してください。
+この資料の作成時点では、Application Insights はプレビュー段階です。詳細については、MSDN の「<a href="http://msdn.microsoft.com/library/azure/dn481095.aspx" target="_blank">Application Insights for Visual Studio Team Services</a>」を参照してください。
 
 
 <!--Anchors-->
@@ -898,7 +898,7 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 [付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ]: #appendix-2
 [付録 3: Microsoft Message Analyzer を使用したネットワーク トラフィックのキャプチャ]: #appendix-3
 [付録 4: Excel を使用したメトリックおよびログ データの表示]: #appendix-4
-[付録 5: Application Insights for Visual Studio Online を使用した監視]: #appendix-5
+[付録 5: Application Insights for Visual Studio Team Services を使用した監視]: #appendix-5
 
 <!--Image references-->
 [1]: ./media/storage-monitoring-diagnosing-troubleshooting/overview.png
@@ -912,4 +912,4 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

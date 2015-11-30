@@ -1,10 +1,11 @@
-<properties 
-    pageTitle="C# を使用した Azure SQL Database のエラスティック データベース プールの作成 | Microsoft Azure" 
-    description="この記事では、(Azure SQL Database Library for .NET を使用して) C# で、Azure SQL Database のエラスティック データベース プールを作成する方法を説明します。" 
-    services="sql-database" 
-    documentationCenter="" 
-    authors="stevestein" 
-    manager="jeffreyg" 
+<properties
+    pageTitle="C# データベース開発: エラスティック データベース プール | Microsoft Azure"
+    description="多数のデータベース全体でリソースを共有できるように、C# データベース開発手法を使用して Azure SQL Database エラスティック データベース プールを作成します。"
+    services="sql-database"
+    keywords="c# データベース, sql の開発"
+    documentationCenter=""
+    authors="stevestein"
+    manager="jeffreyg"
     editor=""/>
 
 <tags
@@ -12,11 +13,11 @@
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
-    ms.workload="data-management" 
+    ms.workload="data-management"
     ms.date="11/06/2015"
     ms.author="sstein"/>
 
-# C&#x23; を使用したエラスティック データベース プールの作成
+# C&#x23; データベース開発: SQL データベースのエラスティック データベース プールの作成と構成
 
 > [AZURE.SELECTOR]
 - [Azure Preview Portal](sql-database-elastic-pool-portal.md)
@@ -24,7 +25,7 @@
 - [PowerShell](sql-database-elastic-pool-powershell.md)
 
 
-この記事では、C# を使用するアプリケーションで [エラスティック データベース プール](sql-database-elastic-pool.md)を作成する方法について説明します。
+この記事では、C# データベース開発手法を使用するアプリケーションで SQL データベース向け[エラスティック データベース プール](sql-database-elastic-pool.md)を作成する方法について説明します。
 
 > [AZURE.NOTE]エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server.md)を 1 回の手順で実行できます。
 
@@ -42,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 
 ## 必要なライブラリのインストール
 
-[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console)で次のパッケージをインストールし、必要な管理ライブラリを入手します。
+SQL 上の開発向けの[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console)で次のパッケージをインストールし、必要な管理ライブラリを入手します。
 
     Install-Package Microsoft.Azure.Management.Sql –Pre
     Install-Package Microsoft.Azure.Management.Resources –Pre
@@ -51,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 
 ## Azure Active Directory による認証の構成
 
-まず、必要な認証を設定して、REST API にアクセスするアプリケーションを有効にする必要があります。
+C# で SQL の開発を開始する前に、Azure ポータルでいくつかのタスクを実行する必要があります。まず、必要な認証を設定して、アプリケーションで REST API にアクセスできるようにする必要があります。
 
 [Azure リソース マネージャー REST API](https://msdn.microsoft.com/library/azure/dn948464.aspx) は、認証に、以前の Azure サービス管理 REST API で使用された証明書ではなく、Azure Active Directory を使用します。
 
@@ -61,19 +62,19 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 
 1. 左側にあるメニューをスクロールして **Active Directory** サービスを探し、開きます。
 
-    ![AAD][1]
+    ![C# SQL データベース開発: Active Directory の設定][1]
 
 2. アプリケーションを認証するディレクトリを選択し、その**名前**をクリックします。
 
-    ![ディレクトリ][4]
+    ![ディレクトリを選択します。][4]
 
 3. [ディレクトリ] ページで、**[アプリケーション]** をクリックします。
 
-    ![アプリケーション][5]
+    ![[アプリケーション] をクリックします。][5]
 
 4. **[追加]** をクリックして、新しいアプリケーションを作成します。
 
-    ![アプリケーションの追加][6]
+    ![[追加] ボタンをクリックします。C# アプリケーションを作成します。][6]
 
 5. **[組織で開発中のアプリケーションを追加]** を選択します。
 
@@ -95,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 1. **[Azure サービス管理 API]** を選択し、ウィザードを完了します。
 2. API を選択した状態で、**[Access Azure Service Management (プレビュー)]** を選択し、この API へのアクセスに必要な特定のアクセス許可を付与する必要があります。
 
-    ![アクセス許可][2]
+    ![アクセス許可の設定][2]
 
 2. **[保存]** をクリックします。
 
@@ -117,7 +118,7 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 認証向けの Azure Active Directory の使用に関する追加情報は、[この便利なブログの投稿](http://www.cloudidentity.com/blog/2013/09/12/active-directory-authentication-library-adal-v1-for-net-general-availability/)で検索できます。
 
 
-### 現在のユーザーのアクセス トークンの取得 
+### 現在のユーザーのアクセス トークンの取得
 
 クライアント アプリケーションでは、現在のユーザーのアプリケーション アクセス トークンを取得する必要があります。ユーザーが最初にコードを実行すると、ユーザーの資格情報を入力するよう求められ、作成されたトークンがローカルにキャッシュされます。以降の実行では、キャッシュからトークンが取得されます。トークンの有効期限が切れている場合のみログインが必要になります。
 
@@ -129,13 +130,13 @@ Azure サブスクリプションをお持ちでない場合、このページ�
     private static AuthenticationResult GetAccessToken()
     {
         AuthenticationContext authContext = new AuthenticationContext
-            ("https://login.windows.net/" /* AAD URI */ 
+            ("https://login.windows.net/" /* AAD URI */
                 + "domain.onmicrosoft.com" /* Tenant ID or AAD domain */);
 
         AuthenticationResult token = authContext.AcquireToken
-            ("https://management.azure.com/"/* the Azure Resource Management endpoint */, 
-                "aa00a0a0-a0a0-0000-0a00-a0a00000a0aa" /* application client ID from AAD*/, 
-        new Uri("urn:ietf:wg:oauth:2.0:oob") /* redirect URI */, 
+            ("https://management.azure.com/"/* the Azure Resource Management endpoint */,
+                "aa00a0a0-a0a0-0000-0a00-a0a00000a0aa" /* application client ID from AAD*/,
+        new Uri("urn:ietf:wg:oauth:2.0:oob") /* redirect URI */,
         PromptBehavior.Auto /* with Auto user will not be prompted if an unexpired token is cached */);
 
         return token;
@@ -149,26 +150,26 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 
 ## リソース グループの作成
 
-リソース マネージャーでは、すべてのリソースをリソース グループに作成する必要があります。リソース グループは、1 つのアプリケーションの関連リソースを保持するコンテナーです。エラスティック データベース プールを作成するには、既存のリソース グループに、Azure SQL Database サーバーが必要です。次のコードを実行して、リソース グループを作成します。
+リソース マネージャーでは、すべてのリソースをリソース グループに作成する必要があります。リソース グループは、1 つのアプリケーションの関連リソースを保持するコンテナーです。エラスティック データベース プールを作成するには、既存のリソース グループに、Azure SQL Database サーバーが必要です。次の C# コードを実行して、リソース グループを作成します。
 
 
-    // Create a resource management client 
+    // Create a resource management client
     ResourceManagementClient resourceClient = new ResourceManagementClient(new TokenCloudCredentials("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" /*subscription id*/, token.AccessToken ));
-    
+
     // Resource group parameters
     ResourceGroup resourceGroupParameters = new ResourceGroup()
     {
         Location = "South Central US"
     };
-    
+
     //Create a resource group
     var resourceGroupResult = resourceClient.ResourceGroups.CreateOrUpdate("resourcegroup-name", resourceGroupParameters);
 
 
 
-## サーバーの作成 
+## サーバーの作成
 
-エラスティック データベース プールは、Azure SQL Database サーバーに格納されるため、次の手順ではサーバーを作成します。サーバー名がすでに使われている場合はエラーが発生する可能性があるため、すべての Azure SQL Server でグローバルに一意のサーバー名を使用する必要があります。このコマンドは完了するまでに数分かかる場合があることに注意してください。アプリケーションをサーバーに接続するには、サーバーにファイアウォール規則を作成し、クライアントの IP アドレスからのアクセスを開く必要があります。
+エラスティック データベース プールは、Azure SQL Database サーバーに格納されるため、次の手順ではサーバーを作成します。サーバー名がすでに使われている場合はエラーが発生する可能性があるため、すべての Azure SQL Server でグローバルに一意のサーバー名を使用する必要があります。このコマンドは完了するまでに数分かかる場合があることに注意してください。アプリケーションがサーバーに接続できるようにするには、サーバーにファイアウォール規則を作成し、クライアントの IP アドレスからのアクセスを開く必要があります。
 
 
     // Create a SQL Database management client
@@ -198,7 +199,7 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 次の例では、任意の IP アドレスからサーバーへのアクセスを開くサーバー ファイアウォール規則を作成します。データベースをセキュリティで保護し、侵入に対する基本的な対策としてファイアウォール規則に依存しないよう、適切な SQL ログインおよびパスワードを作成することをお勧めします。詳細については、「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」を参照してください。
 
 
-    // Create a firewall rule on the server to allow TDS connection 
+    // Create a firewall rule on the server to allow TDS connection
     FirewallRuleCreateOrUpdateParameters firewallParameters = new FirewallRuleCreateOrUpdateParameters()
     {
         Properties = new FirewallRuleCreateOrUpdateProperties()
@@ -224,7 +225,7 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 
         // Retrieve the server on which the database will be created
         Server currentServer = sqlClient.Servers.Get("resourcegroup-name", "server-name").Server;
- 
+
         // Create a database: configure create or update parameters and properties explicitly
         DatabaseCreateOrUpdateParameters newDatabaseParameters = new DatabaseCreateOrUpdateParameters()
         {
@@ -296,12 +297,12 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 
 次の例では、既存の Azure SQL Database がプールに移動されます。
 
-    
+
     // Update database service objective to add the database to a pool
-    
-    // Retrieve current database properties 
+
+    // Retrieve current database properties
     currentDatabase = sqlClient.Databases.Get("resourcegroup-name", "server-name", "Database1").Database;
-    
+
     // Configure create or update parameters with existing property values, override those to be changed.
     DatabaseCreateOrUpdateParameters updatePooledDbParameters = new DatabaseCreateOrUpdateParameters()
     {
@@ -315,11 +316,11 @@ Azure サブスクリプションをお持ちでない場合、このページ�
             Collation = currentDatabase.Properties.Collation,
         }
     };
-    
+
     // Update the database
     var dbUpdateResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database1", updatePooledDbParameters);
-    
-    
+
+
 
 
 ## エラスティック データベース プールでの新しいデータベースの作成
@@ -328,9 +329,9 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 
 次の例では、プールに直接、新しいデータベースが作成されます。
 
-    
+
     // Create a new database in the pool
-    
+
     // Create a database: configure create or update parameters and properties explicitly
     DatabaseCreateOrUpdateParameters newPooledDatabaseParameters = new DatabaseCreateOrUpdateParameters()
     {
@@ -344,7 +345,7 @@ Azure サブスクリプションをお持ちでない場合、このページ�
             Collation = "SQL_Latin1_General_CP1_CI_AS"
         }
     };
-    
+
     var poolDbResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database2", newPooledDatabaseParameters);
 
 
@@ -387,13 +388,13 @@ Azure サブスクリプションをお持ちでない場合、このページ�
         private static AuthenticationResult GetAccessToken()
         {
             AuthenticationContext authContext = new AuthenticationContext
-                ("https://login.windows.net/" /* AAD URI */ 
+                ("https://login.windows.net/" /* AAD URI */
                 + "domain.onmicrosoft.com" /* Tenant ID or AAD domain */);
 
             AuthenticationResult token = authContext.AcquireToken
-                ("https://management.azure.com/"/* the Azure Resource Management endpoint */, 
-                "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" /* application client ID from AAD*/, 
-                new Uri("urn:ietf:wg:oauth:2.0:oob") /* redirect URI */, 
+                ("https://management.azure.com/"/* the Azure Resource Management endpoint */,
+                "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" /* application client ID from AAD*/,
+                new Uri("urn:ietf:wg:oauth:2.0:oob") /* redirect URI */,
                 PromptBehavior.Auto /* with Auto user will not be prompted if an unexpired token is cached */);
 
             return token;
@@ -425,13 +426,13 @@ Azure サブスクリプションをお持ちでない場合、このページ�
         static void Main(string[] args)
         {
             var token = GetAccessToken();
-            
+
             // Who am I?
             Console.WriteLine("Identity is {0} {1}", token.UserInfo.GivenName, token.UserInfo.FamilyName);
             Console.WriteLine("Token expires on {0}", token.ExpiresOn);
             Console.WriteLine("");
 
-            // Create a resource management client 
+            // Create a resource management client
             ResourceManagementClient resourceClient = new ResourceManagementClient(new TokenCloudCredentials("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" /*subscription id*/, token.AccessToken));
 
             // Resource group parameters
@@ -469,7 +470,7 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 
             Console.WriteLine("Server {0} create or update completed with status code {1}", serverResult.Server.Name, serverResult.StatusCode);
 
-            // Create a firewall rule on the server to allow TDS connection 
+            // Create a firewall rule on the server to allow TDS connection
 
             FirewallRuleCreateOrUpdateParameters firewallParameters = new FirewallRuleCreateOrUpdateParameters()
             {
@@ -517,7 +518,7 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 
             // Update a databases service objective to add the database to a pool
 
-            // Update database: retrieve current database properties 
+            // Update database: retrieve current database properties
             currentDatabase = sqlClient.Databases.Get("resourcegroup-name", "server-name", "Database1").Database;
 
             // Update database: configure create or update parameters with existing property values, override those to be changed.
@@ -565,6 +566,7 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 
 ## その他のリソース
 
+
 [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 
 [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
@@ -583,4 +585,4 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 [8]: ./media/sql-database-elastic-pool-csharp/add-application2.png
 [9]: ./media/sql-database-elastic-pool-csharp/clientid.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=Nov15_HO4-->

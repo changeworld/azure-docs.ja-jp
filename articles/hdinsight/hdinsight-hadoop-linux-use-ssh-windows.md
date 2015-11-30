@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/26/2015"
+   ms.date="11/16/2015"
    ms.author="larryfr"/>
 
 #HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する
@@ -44,10 +44,6 @@ SSH は、リモート サーバーにログインしたり、リモート サ�
 ###SSH ユーザー名
 
 SSH ユーザー名は HDInsight クラスターの認証に使用する名前です。クラスター作成中に SSH ユーザー名を指定するとき、このユーザーがクラスターのすべてのノードで作成されます。クラスターを作成したら、このユーザー名を使用し、HDInsight クラスター ヘッド ノードに接続できます。ヘッド ノードから、個々のワーカー ノードに接続できます。
-
-> [AZURE.NOTE]SSH ユーザー名は一意にする必要があります。SSH ユーザー名により HDInsight クラスターでユーザー アカウントが作成されるため、HDInsight によって作成された既存のユーザーとは競合できません。次は HDInsight クラスターで実行されるサービスのために予約されている名前であり、SSH ユーザー名として使用できません。
->
-> root、hdiuser、storm、hbase、ubuntu、zookeeper、hdfs、yarn、mapred、hbase、hive、oozie、falcon、sqoop、admin、tez、hcat、hdinsight-zookeeper
 
 ###SSH パスワードまたは公開キー
 
@@ -181,9 +177,9 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
     > [AZURE.NOTE]SSH セッションの認証にパスワードを使用する場合は、もう一度パスワードを入力するように求めるメッセージ表示されます。SSH キーを使用する場合は、何も表示されずに接続が完了します。
 
-9. セッションが確立されると、PuTTY セッションのプロンプトが `username@headnode` から `username@workernode` に変わり、ワーカー ノードに接続したことを示します。この時点で実行するすべてのコマンドは、ワーカー ノードで実行されます。
+9. セッションが確立されると、PuTTY セッションのプロンプトが `username@hn0-clustername` から `username@wn0-clustername` に変わり、ワーカー ノードに接続したことを示します。この時点で実行するすべてのコマンドは、ワーカー ノードで実行されます。
 
-10. ワーカー ノードでの操作が終了したら、`exit` コマンドを使用してワーカー ノードのセッションを閉じます。これにより、`username@headnode` プロンプトが表示されます。
+10. ワーカー ノードでの操作が終了したら、`exit` コマンドを使用してワーカー ノードのセッションを閉じます。これにより、`username@hn0-clustername` プロンプトが表示されます。
 
 ##複数のアカウントの追加
 
@@ -233,4 +229,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

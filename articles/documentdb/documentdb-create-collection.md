@@ -16,7 +16,7 @@
 	ms.date="09/28/2015" 
 	ms.author="mimig"/>
 
-# Azure プレビュー ポータルを使用して DocumentDB コレクションを作成する
+# DocumentDB コレクションの作成
 
 Microsoft Azure DocumentDB を使用するには、[DocumentDB アカウント](documentdb-create-account.md)、[データベース](documentdb-create-database.md)、コレクション、およびドキュメントを用意する必要があります。このトピックでは、Azure プレビュー ポータルで DocumentDB コレクションを作成する方法について説明します。
 
@@ -65,4 +65,4 @@ Microsoft Azure DocumentDB を使用するには、[DocumentDB アカウント](
 
 コレクションにドキュメントを用意した後で、プレビュー ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-queries)することができます。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=Nov15_HO4-->

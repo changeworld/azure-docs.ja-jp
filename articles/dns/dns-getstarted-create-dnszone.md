@@ -4,7 +4,7 @@
    services="dns"
    documentationCenter="na"
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/22/2015"
+   ms.date="11/10/2015"
    ms.author="joaoma"/>
 
 # Powershell で Azure DNS の使用を開始する
@@ -21,7 +21,7 @@
 
 > [AZURE.SELECTOR]
 - [Azure CLI](dns-getstarted-create-dnszone-cli.md)
-- [Azure Powershell steps](dns-getstarted-create-dnszone.md)
+- [PowerShell](dns-getstarted-create-dnszone.md)
 
 ドメイン "contoso.com" には、"mail.contoso.com" (メール サーバー用) や "www.contoso.com" (Web サイト用) など、多数の DNS レコードが含まれている場合があります。DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。<BR><BR> ドメインのホストを開始するには、まず DNS ゾーンを作成する必要があります。特定のドメイン用に作成された DNS レコードは、そのドメインの DNS ゾーン内に含まれます。<BR><BR> 以下の手順では、Microsoft Azure PowerShell を使用します。Azure DNS コマンドレットを使用するために、必ず最新の Azure PowerShell に更新してください。Microsoft Azure コマンド ライン インターフェイス、REST API、または SDK を使用して、同じ手順を実行することもできます。<BR><BR>
 
@@ -127,7 +127,7 @@ DNS ゾーンは、New-AzureDnsZone コマンドレットを使用して作成�
 >[AZURE.NOTE]DNS ゾーンのルート (または '頂点') にあるレコード セットは、レコード セット名として "@" を使用します。
 
 
-最初の DNS ゾーンを作成したところで、nslookup、dig、[Resolve-DnsName PowerShell コマンドレット](https://technet.microsoft.com/ja-jp/library/jj590781.aspx)などの DNS ツールを使用してそのゾーンをテストできます。<BR>
+最初の DNS ゾーンを作成したところで、nslookup、dig、[Resolve-DnsName PowerShell コマンドレット](https://technet.microsoft.com/ja-JP/library/jj590781.aspx)などの DNS ツールを使用してそのゾーンをテストできます。<BR>
 
 Azure DNS の新しいゾーンを使用するためのドメインの委任をまだ行っていない場合は、ゾーンのネーム サーバーの 1 つに DNS クエリを直接送信する必要があります。ゾーンのネーム サーバーは、上記の Get-AzureDnsRecordSet によって一覧表示されたように、NS レコードに示されます。以下のコマンドの値を、ゾーンの正しい値に置き換えてください。<BR>
 
@@ -155,4 +155,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 [レコード セットおよびレコード作成の概要](dns-getstarted-create-recordset.md)<BR> [DNS ゾーンの管理方法](dns-operations-dnszones.md)<BR> [DNS レコードの管理方法](dns-operations-recordsets.md)<BR> [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)<BR> [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

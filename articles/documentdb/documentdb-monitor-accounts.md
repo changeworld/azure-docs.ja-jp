@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/30/2015" 
+	ms.date="11/18/2015" 
 	ms.author="mimig"/>
 
-# Azure プレビュー ポータルを使用して DocumentDB アカウントを監視する 
+# DocumentDB アカウントを監視する 
 
 DocumentDB アカウントは、[Microsoft Azure プレビュー ポータル](https://portal.azure.com/)で監視できます。各 DocumentDB アカウントに対して、パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) が利用可能です。
 
@@ -90,4 +90,4 @@ Azure プレビュー ポータルでは、サイド バイ サイドのメト�
 DocumentDB の容量の詳細については、[DocumentDB の容量の管理](documentdb-manage.md)に関するページを参照してください。
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

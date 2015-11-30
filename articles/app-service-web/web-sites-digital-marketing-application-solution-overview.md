@@ -33,7 +33,7 @@
 
 Azure Marketplace では、Orchard、Umbraco、Drupal、[WordPress] など、一般的な Web サイト コンテンツ管理システム (CMS) からのテンプレートを提供しています。お気に入りの CMS フレーバーを使用して Web アプリを作成できます。[Azure SQL Database] と [MySQL] を含むさまざまデータベースのバックエンドから目的に合ったものを選択できます。
 
-既存の Web アセットは .NET、PHP、Java、Node.js,、Python に関係なく Web Apps で実行できます。使い慣れた [FTP] ツールを使用して、それらを Web Apps に移動させることができます。デジタル マーケティング キャンペーンを頻繁に作成している場合、ソース管理システムに既存の Web アセットが存在している可能性があります。[Visual Studio]、[Visual Studio Online]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションから Web Apps を直接デプロイできます。
+既存の Web アセットは .NET、PHP、Java、Node.js,、Python に関係なく Web Apps で実行できます。使い慣れた [FTP] ツールを使用して、それらを Web Apps に移動させることができます。デジタル マーケティング キャンペーンを頻繁に作成している場合、ソース管理システムに既存の Web アセットが存在している可能性があります。[Visual Studio]、[Visual Studio Team Services]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションから Web Apps を直接デプロイできます。
 
 ## 俊敏性を保つ
 
@@ -101,7 +101,7 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
 [Azure SQL Database]: web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md
 [FTP]: web-sites-deploy.md#ftp
 [Visual Studio]: web-sites-dotnet-get-started.md
-[Visual Studio Online]: ../cloud-services-continuous-delivery-use-vso.md
+[Visual Studio Team Services]: ../cloud-services-continuous-delivery-use-vso.md
 [Git]: web-sites-publish-source-control.md
 
 [ステージング スロットにデプロイ]: web-sites-staged-publishing.md
@@ -138,4 +138,4 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
   [gitstaging]: http://www.bradygaster.com/post/multiple-environments-with-windows-azure-web-sites
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=Nov15_HO4-->

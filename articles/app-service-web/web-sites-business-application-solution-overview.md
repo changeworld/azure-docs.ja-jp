@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure App Service での基幹業務 Web アプリの作成" 
-	description="このガイドでは、Azure App Service Web アプリ を使用してイントラネットの基幹業務アプリケーションを作成する方法 (技術概要) について説明します。これには、認証方式、Service Bus リレー、監視も含まれます。" 
+	description="このガイドでは、Azure App Service Web Apps を使用してイントラネットの基幹業務アプリケーションを作成する方法 (技術概要) について説明します。これには、認証方式、Service Bus リレー、監視も含まれます。" 
 	editor="jimbe" 
 	manager="wpickett" 
 	authors="cephalin" 
@@ -20,25 +20,25 @@
 
 # Azure App Service での基幹業務 Web アプリの作成
 
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps は、基幹業務アプリケーションに最適な選択肢です。こうしたアプリケーションは、イントラネット アプリケーションで、社内業務用にセキュリティで保護する必要があります。通常は社内ディレクトリや内部設置型データとサービスの一部へのアクセス、またはその統合に対する認証が必要になります。
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps は、基幹業務アプリケーションに最適な選択肢です。こうしたアプリケーションは、イントラネット アプリケーションで、社内業務用にセキュリティで保護する必要があります。通常は社内ディレクトリやオンプレミス データとサービスの一部へのアクセス、またはその統合に対する認証が必要になります。
 
-基幹業務アプリケーションを App Service Web アプリに移行すると、次のような大きなメリットがあります。
+基幹業務アプリケーションを App Service Web Apps に移行すると、次のような大きなメリットがあります。
 
 -  年間業績評価を処理するアプリケーションなど、動的なワークロードをスケールアップ/スケールダウンできます。考査期間になると (特に大規模な会社では) トラフィックが急増します。Azure では負荷が増大する考査期間中にインスタンスを増やし、それ以外の期間は元に戻すことができるので、コスト節約につながります。 
 -  インフラストラクチャの購入と管理よりもアプリケーションの開発に集中できます。
 -  従業員やパートナーが任意の場所からアプリケーションを使用する際のサポートが強化されます。アプリケーションを使用する際、ユーザーは社内ネットワークに接続する必要がありません。IT スタッフは複雑なリバース プロキシの設定から解放されます。社内アプリケーションへのアクセスを保護する手段として、いくつかの認証方式があります。
 
-以下は、App Service Web アプリで実行されている、基幹業務アプリケーションの例です。技術的な投資を最小限に抑えて、Web アプリをその他のサービスを構成することにより実現可能なことを図解しています。**トポグラフィ内の要素をクリックして、詳細をご覧ください。**
+以下は、App Service Web Apps で実行されている、基幹業務アプリケーションの例です。技術的な投資を最小限に抑えて、Web Apps をその他のサービスを構成することにより実現可能なことを図解しています。**トポグラフィ内の要素をクリックして、詳細をご覧ください。**
 
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/web-app-notitle.svg" width="100%" height="100%"></object>
 
-> [AZURE.NOTE]このガイドで取り上げるのは基幹業務アプリケーションで必要となる最も一般的な分野やタスクですが、Azure App Service Web アプリには特殊なニーズに対応できるその他の機能も備わっています。これらの機能については、[グローバル Web プレゼンス](web-sites-global-web-presence-solution-overview.md)および[デジタル マーケティング キャンペーン](web-sites-digital-marketing-application-solution-overview.md)のガイドを参照してください。
+> [AZURE.NOTE]このガイドで取り上げるのは基幹業務アプリケーションで必要となる最も一般的な分野やタスクですが、Azure App Service Web Apps には特殊なニーズに対応できるその他の機能も備わっています。これらの機能については、[グローバル Web プレゼンス](web-sites-global-web-presence-solution-overview.md)および[デジタル マーケティング キャンペーン](web-sites-digital-marketing-application-solution-overview.md)のガイドを参照してください。
 
 ## 既存のアセットの表示
 
-さまざまな言語やフレームワークから既存の web アセットを App Service Web アプリに表示させます。
+さまざまな言語やフレームワークから既存の web アセットを App Service Web Apps に表示させます。
 
-既存のアセットは .NET、PHP、Java、Node.js、Pythonに関係なく App Service Web アプリで実行できます。使い慣れた [FTP] ツールやソース管理システムを使って、それらを Web Apps に移動することができます。Web Apps は、[Visual Studio]、[Visual Studio Online]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションからの直接発行をサポートしています。
+既存のアセットは .NET、PHP、Java、Node.js、Pythonに関係なく App Service Web Apps で実行できます。使い慣れた [FTP] ツールやソース管理システムを使って、それらを Web Apps に移動することができます。Web Apps は、[Visual Studio]、[Visual Studio Team Services]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションからの直接発行をサポートしています。
 
 ## アセットのセキュリティ保護
 
@@ -46,17 +46,17 @@
 
 [HTTPS] を使用して、内部アセットを盗聴者から保護します。***.azurewebsites.net** ドメイン名には SSL 証明書が既に付属しており、カスタム ドメインを使用する場合は、SSL 証明書を App Service Web Apps に取り込むことができます。各 SSL 証明書には月単位の料金 (時間割り計算) が関連付けられています。詳細については、[App Service の料金の詳細]をご覧ください。
 
-企業ディレクトリに対して[ユーザーを認証]します。App Service Web アプリでは、Active Directory フェデレーション サービス (AD FS) などの内部設置型の ID プロバイダーや、企業の Active Directory 展開で同期済みの Azure Active Directory テナントでユーザーを認証できます。ユーザーは、オンサイトでも外出先でもシングル サインオンで Web アプリの Web プロパティにアクセスできます。Office 365、Microsoft Intune などの既存のサービスでは、既に Azure Active Directory が使われています。[Easy Auth (簡単認証)] により、Web アプリで同じ Azure Active Directory テナントを使用した認証を簡単に有効にすることができます。
+企業ディレクトリに対して[ユーザーを認証]します。App Service Web Apps では、Active Directory フェデレーション サービス (AD FS) などのオンプレミスの ID プロバイダーや、企業の Active Directory のデプロイで同期済みの Azure Active Directory テナントでユーザーを認証できます。ユーザーは、オンサイトでも外出先でもシングル サインオンで Web Apps の Web プロパティにアクセスできます。Office 365、Microsoft Intune などの既存のサービスでは、既に Azure Active Directory が使われています。[Easy Auth (簡単認証)] により、Web アプリで同じ Azure Active Directory テナントを使用した認証を簡単に有効にすることができます。
 
-ユーザーが Web プロパティを使用する際に、[ユーザーを承認]します。最小限の追加コードで、たとえば `[Authorize]` 装飾を使用して、同じオンプレミスの ASP.NET コーディング パターンを App Service Web Apps で使用できます。内部設置型で管理するアプリケーションのように、細かくアクセス制御できる柔軟性はそのままになります。
+ユーザーが Web プロパティを使用する際に、[ユーザーを承認]します。最小限の追加コードで、たとえば `[Authorize]` 装飾を使用して、同じオンプレミスの ASP.NET コーディング パターンを App Service Web Apps で使用できます。オンプレミスで管理するアプリケーションのように、細かくアクセス制御できる柔軟性はそのままになります。
 
 ## オンプレミスのリソースへの接続 ##
 
-パフォーマンス用のクラウドやコンプライアンス用の内部設置型に関わらず、Web アプリのデータやリソースに接続します。Azure でのデータの保存方法の詳細については、[Azure のトラスト センター]をご覧ください。
+パフォーマンス用のクラウドやコンプライアンス用のオンプレミスに関わらず、Web アプリのデータやリソースに接続します。Azure でのデータの保存方法の詳細については、[Azure のトラスト センター]をご覧ください。
 
 [Azure SQL Database] や [MySQL] など、Azure のさまざまなデータベース バックエンドの中から選択して Web アプリのニーズに対応できます。Azure でデータを安全に保存することで、地理的にデータを Web アプリの近くに置き、パフォーマンスを最適化させます。
 
-ただし、ビジネスによってはデータを内部設置型で保管する必要がある場合があります。App Service Web Apps では、データベース バックエンドなどのオンプレミスのリソースへの[ハイブリッド接続]を簡単に設定できます。オンプレミスの接続の管理を統合する場合は、サイト間 VPN を使用する 1 つの [Azure Virtual Network] に多数の Web アプリを統合できます。その後、Web アプリが内部設置型であるかのように内部設置型リソースにアクセスできるようになります。
+ただし、ビジネスによってはデータをオンプレミスで保管する必要がある場合があります。App Service Web Apps では、データベース バックエンドなどのオンプレミスのリソースへの[ハイブリッド接続]を簡単に設定できます。オンプレミスの接続の管理を統合する場合は、サイト間 VPN を使用する 1 つの [Azure Virtual Network] に多数の Web アプリを統合できます。その後、Web アプリがオンプレミスであるかのようにオンプレミス リソースにアクセスできるようになります。
 
 ## 最適化
 
@@ -92,7 +92,7 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
 
 [FTP]: web-sites-deploy.md#ftp
 [Visual Studio]: web-sites-dotnet-get-started.md
-[Visual Studio Online]: ../cloud-services-continuous-delivery-use-vso.md
+[Visual Studio Team Services]: ../cloud-services-continuous-delivery-use-vso.md
 [Git]: web-sites-publish-source-control.md
 
 [HTTPS]: web-sites-configure-ssl-certificate.md
@@ -124,4 +124,4 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

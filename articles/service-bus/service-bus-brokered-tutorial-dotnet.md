@@ -643,10 +643,10 @@ Visual Studio で、**[ビルド]** メニューの **[ソリューションの�
 
 このチュートリアルでは、Service Bus の仲介型メッセージング機能を使用して、Service Bus クライアント アプリケーションとサービスを構築する方法を紹介しました。Service Bus の[リレー型メッセージング](service-bus-messaging-overview.md/#Relayed-messaging)を使用する類似のチュートリアルについては、「[Service Bus リレー型メッセージングのチュートリアル](service-bus-relay-tutorial.md)」を参照してください。
 
-Service Bus の詳細については、次のトピックを参照してください。
+[Service Bus](https://azure.microsoft.com/services/service-bus/) の詳細については、次のトピックを参照してください。
 
 - [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus のアーキテクチャ](service-bus-architecture.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

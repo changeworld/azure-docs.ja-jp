@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/15/2015" 
+	ms.date="11/16/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で相互証明書認証を使用してバックエンド サービスを保護する方法
@@ -54,7 +54,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ![アップロードされた証明書][api-management-certificate-uploaded]
 
-証明書は、アップロードされた後に、**[クライアント証明書]** タブに表示されます。複数の証明書がある場合は、以下の「[プロキシ認証に相互証明書を使用するように API を構成する][]」セクションで説明されているように、証明書を使用するように API を構成するとき証明書の選択に使用される、件名または拇印の最後の 4 文字を参照します。
+証明書は、アップロードされた後に、**[クライアント証明書]** タブに表示されます。複数の証明書がある場合は、以下の「[ゲートウェイ認証に相互証明書を使用するように API を構成する][]」セクションで説明されているように、証明書を使用するように API を構成するとき証明書の選択に使用される、件名または拇印の最後の 4 文字を参照します。
 
 ## <a name="step1a"> </a>クライアント証明書の削除
 
@@ -70,7 +70,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ![削除の確定][api-management-confirm-delete-policy]
 
-## <a name="step2"> </a>プロキシ認証に相互証明書を使用するように API を構成する
+## <a name="step2"> </a>ゲートウェイ認証に相互証明書を使用するように API を構成する
 
 左側の **[API Management]** メニューで **[API]** をクリックして、対象となる API の名前をクリックしてから、**[セキュリティ]** タブをクリックします。
 
@@ -90,7 +90,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ![API 変更の保存][api-management-save-api]
 
->API のバックエンド サービスのプロキシ認証に証明書が指定されると、それはその API のプロキシの一部となり、ポリシー エディターで表示可能となります。
+>API のバックエンド サービスのゲートウェイ認証に証明書を指定すると、その API のポリシーに追加され、ポリシー エディターで表示できるようになります。
 
 ![証明書ポリシー][api-management-certificate-policy]
 
@@ -133,7 +133,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 [Prerequisites]: #prerequisites
 [Upload a client certificate]: #step1
 [Delete a client certificate]: #step1a
-[プロキシ認証に相互証明書を使用するように API を構成する]: #step2
+[ゲートウェイ認証に相互証明書を使用するように API を構成する]: #step2
 [Test the configuration by calling an operation in the Developer Portal]: #step3
 [Next steps]: #next-steps
 
@@ -141,4 +141,4 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

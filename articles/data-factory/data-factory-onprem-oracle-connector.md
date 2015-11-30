@@ -13,12 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/26/2015" 
+	ms.date="11/12/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してオンプレミスの Oracle からデータを移動する 
 
 この記事では、データ ファクトリのコピー アクティビティを使用して Oracle から他のデータ ソースにデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+
+## インストール 
+Azure Data Factory サービスをオンプレミスの Oracle データベースに接続できるようにするには、次をインストールする必要があります。
+
+- データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上にインストールされた Data Management Gateway。Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータをクラウド サービスに接続するソフトウェアです。Data Management Gateway の詳細については、[オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。 
+- [Oracle Data Access Components (ODAC) for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/index.html)。これは、ゲートウェイがインストールされているホスト コンピューターにインストールする必要があります。
+
 
 ## サンプル: Oracle から Azure BLOB にデータをコピーする
 
@@ -271,7 +278,26 @@ TIMESTAMP WITH TIME ZONE | DateTime
 VARCHAR2 | String
 XML | String
 
+## トラブルシューティングのヒント
+
+****問題: ** 次の**エラー メッセージ**が表示される: コピー アクティビティに次の無効なパラメーターがあります: 'UnknownParameterName'、詳細メッセージ: 要求された.Net Framework Data Provider が見つかりません。インストールされていない可能性があります。
+
+**考えられる原因**
+
+1. Oracle 用の .NET Framework Data Provider がインストールされていません。
+2. Oracle 用の .NET Framework Data Provider が .NET Framework 2.0 にインストールされ、.NET Framework 4.0 フォルダーで検出されません。 
+
+**解決/回避策**
+
+1. Oracle 用の .NET Provider をインストールしていない場合は[インストール](http://www.oracle.com/technetwork/topics/dotnet/utilsoft-086879.html)した後、シナリオをやり直します。 
+2. プロバイダーをインストールしてもエラー メッセージが表示される場合は、次の操作を行います。 
+	1. 次のフォルダーから .NET 2.0 のコンピューター構成を開きます。<system disk>:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\CONFIG\\machine.config
+	2. **Oracle Data Provider for .NET** を探します。**system.data** の **DbProviderFactories** の下に次のようなエントリを見つけることができます。“<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />”
+2.	このエントリを、v4.0 フォルダーの machine.config ファイル (<system disk>: \\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config) にコピーし、バージョンを 4.xxx.x.x に変更します。
+3.	“gacutil /i [プロバイダーのパス]” を実行して、“<ODP.NET Installed Path>\\11.2.0\\client\_1\\odp.net\\bin\\4\\Oracle.DataAccess.dll” をグローバル アセンブリ キャッシュ (GAC) にインストールします。
+
+
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

@@ -1,11 +1,12 @@
 <properties 
 	pageTitle="Azure AD 参加の使用シナリオとデプロイに関する考慮事項 | Microsoft Azure" 
-	description="Azure AD に参加するために利用できるさまざまなデプロイ シナリオを示して説明します。" 
+	description="管理者がエンド ユーザー (従業員、学生、他のユーザー) のために Azure AD 参加を設定する方法を説明するトピック。また、Azure AD 参加を使用するさまざまな実際のシナリオについても説明します。" 
 	services="active-directory" 
 	documentationCenter="" 
 	authors="femila" 
 	manager="stevenpo" 
-	editor=""/>
+	editor=""
+	tags="azure-classic-portal"/>
 
 <tags 
 	ms.service="active-directory" 
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/21/2015" 
+	ms.date="11/17/2015" 
 	ms.author="femila"/>
 
 # Azure AD 参加の使用シナリオとデプロイに関する考慮事項 
@@ -23,9 +24,7 @@
 --------------------------------------------------------
 現在、業務や ID 管理の多くでクラウドを利用している企業や、近いうちにクラウドに移行しようとしている企業は、Azure AD 参加の恩恵を受けることができます。Azure AD に作成したアカウントを使用して Windows 10 にサインインすることができます。[最初の実行エクスペリエンス (FRX) プロセス](active-directory-azureadjoin-user-frx.md)または[設定エクスペリエンス](active-directory-azureadjoin-user-upgrade.md)を通じて Azure AD に参加することにより、ユーザーは、Azure AD にコンピューターを参加させることができます。ユーザーは、ブラウザーまたは Office アプリケーション内で、Office 365 のようなクラウド リソースへの SSO アクセスを行うことができます。
 
-シナリオ 2: 教育機関
-----------------------------------------------------------------------------------
-通常、教育機関のユーザーは、教員と学生の 2 種類です。教員メンバーは、組織に長期に所属するメンバーと見なされるため、このようなメンバーにはオンプレミスのアカウントを作成することが必要になります。一方、学生の場合は組織に所属する期間が短いため、Azure AD で管理することにより、ディレクトリ スケールをオンプレミスではなくクラウドにプッシュできます。このような学生は、Azure AD のアカウントを使用して Windows にサインインし、Office アプリケーションで Office 365 リソースにアクセスできるようになります。
+シナリオ 2: 教育機関 ---------------------------------------------------------------------------------- 通常、教育機関のユーザーは、教員と学生の 2 種類です。教員メンバーは、組織に長期に所属するメンバーと見なされるため、このようなメンバーにはオンプレミスのアカウントを作成することが必要になります。一方、学生の場合は組織に所属する期間が短いため、Azure AD で管理することにより、ディレクトリ スケールをオンプレミスではなくクラウドにプッシュできます。このような学生は、Azure AD のアカウントを使用して Windows にサインインし、Office アプリケーションで Office 365 リソースにアクセスできるようになります。
 
 シナリオ 3: 小売業
 ---------------------------------------------------------------------------------------
@@ -53,7 +52,7 @@
 *	Windows 10 (Professional および Enterprise SKU)
 
 ### 管理者の作業
-* [デバイスの登録と MFA を設定する](active-directory-azureadjoin-setup.md)
+* [デバイスの登録の設定](active-directory-azureadjoin-setup.md)
 
 ### ユーザーの作業
 * [設定中に新しい Windows 10 デバイスを Azure AD 用に設定する](active-directory-azureadjoin-user-frx.md)
@@ -77,14 +76,18 @@
 
 ### 管理者の作業
 
-* [デバイスの登録と MFA を設定する](active-directory-azureadjoin-setup.md)
+* [デバイスの登録の設定](active-directory-azureadjoin-setup.md)
 
 ### ユーザーの作業
 * [個人の Windows 10 デバイスを組織に参加させる](active-directory-azureadjoin-personal-device.md)
 
 
 ## 追加情報
-* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md)
+* [エンタープライズ向け Windows 10: デバイスを仕事に使用する方法](active-directory-azureadjoin-windows10-devices-overview.md)
+* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-user-upgrade.md)
+* [Microsoft Passport 経由でのパスワードを使用しない ID の認証](active-directory-azureadjoin-passport.md)
+* [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
+* [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->
