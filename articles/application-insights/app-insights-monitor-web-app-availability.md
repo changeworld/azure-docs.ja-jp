@@ -41,8 +41,7 @@ Web テストには次の 2 種類があります。
 
 [Microsoft Azure](http://azure.com) にサインアップして、[Azure ポータル](https://portal.azure.com)に移動し、新しい Application Insights のリソースを作成します。
 
-![[新規] > [Application Insights]  
-](./media/app-insights-monitor-web-app-availability/11-new-app.png)
+![New > Application Insights](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
 新しいリソースの概要ブレードが開きます。[Azure ポータル](https://portal.azure.com)で **[参照]** をクリックすると、いつでもここを見ることができます。
 

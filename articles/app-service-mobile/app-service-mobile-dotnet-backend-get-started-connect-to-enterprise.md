@@ -183,7 +183,8 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 
 <!-- URLs. -->
 
-[[Active Directory]]: https://manage.windowsazure.com/
+[Preview Azure Management Portal]: https://portal.azure.com/
+[Active Directory]: https://manage.windowsazure.com/
 [SharePoint Online]: http://office.microsoft.com/ja-JP/sharepoint/
 [Azure Active Directory 認証ライブラリのシングル サインオン]: app-service-mobile-ios-aad-sso.md
 [Mobile Apps .NET Backend App Service Extension]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.AppService/

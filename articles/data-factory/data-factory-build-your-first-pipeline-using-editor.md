@@ -45,7 +45,7 @@
 
 2.	**[新しいデータ ファクトリ]** ブレードで、[名前] に「**DataFactoryMyFirstPipeline**」と入力します。
 
-	![[新しいデータ ファクトリ] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
+	![新しいデータ ファクトリ ブレード](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
 	> [AZURE.IMPORTANT]Azure Data Factor の名前はグローバルに一意にする必要があります。"**"DataFactoryMyFirstPipeline" という名前のデータ ファクトリは使用できません**" というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameDataFactoryMyFirstPipeline など) 作成し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
 	>  
@@ -65,7 +65,7 @@
 	![Data factory を作成中の状態](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 7. ご利用ありがとうございます。 これで、最初のデータ ファクトリが正常に作成されました。データ ファクトリが正常に作成されると、データ ファクトリの内容を表示するデータ ファクトリ ページが表示されます。 	
 
-	![[Data Factory] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
+	![Data Factory] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
 
 以降の手順では、このチュートリアルで使用するリンクされたサービス、データセット、およびパイプラインを作成する方法を説明します。
 
@@ -217,7 +217,7 @@
 	![[ダイアグラム] タイル](./media/data-factory-build-your-first-pipeline-using-editor/diagram-tile.png)
 7. ダイアグラム ビューに、パイプラインの概要と、このチュートリアルで使用されるデータセットが表示されます。
 	
-	![[ダイアグラム] ビュー](./media/data-factory-build-your-first-pipeline-using-editor/diagram-view-2.png) 
+	![ダイアグラム ビュー](./media/data-factory-build-your-first-pipeline-using-editor/diagram-view-2.png) 
 8. ダイアグラム ビューで、**AzureBlobOutput** データセットをダブルクリックします。現在処理中のスライスが表示されます。
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
