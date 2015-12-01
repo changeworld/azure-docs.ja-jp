@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="11/17/2015" 
+	ms.date="11/19/2015" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication Server の概要
@@ -148,7 +148,7 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で Multi
 
 [電子メールの内容] タブにある各種電子メール テンプレートからテンプレートを選択できます。Multi-Factor Authentication を使用するユーザーの構成方法によって、最適なテンプレートを選択できます。
 
-![Email templates](./media/multi-factor-authentication-get-started-server/email2.png)
+![E メールのテンプレート](./media/multi-factor-authentication-get-started-server/email2.png)
 
 ## Azure Multi-Factor Authentication サーバーでのユーザー データの処理方法
 
@@ -185,4 +185,4 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で Multi
 [Windows Server Active Directory との同期](multi-factor-authentication-get-started-server-dirint.md)|Active Directory と Azure MFA Server 間の同期のセットアップと構成に関する情報です。
 [Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](multi-factor-authentication-get-started-server-webservice.md)|Azure MFA Server Web サービスのセットアップと構成に関する情報です。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

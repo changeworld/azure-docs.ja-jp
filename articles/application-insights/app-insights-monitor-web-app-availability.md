@@ -17,6 +17,9 @@
 
 # Web サイトの可用性と応答性の監視
 
+
+[AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
+
 Web アプリケーションをデプロイした後、Web テストを設定して Web アプリケーションの可用性と応答性を監視できます。Application Insights は、世界各地の複数のポイントから定期的に Web 要求を送信します。アプリケーションの応答が遅くなったりアプリケーションがまったく応答しなくなったりした場合は、Application Insights からその旨が通知されます。
 
 ![Web テストの例](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
@@ -46,7 +49,7 @@ Web テストには次の 2 種類があります。
 
 Application Insights のリソースで、可用性のタイルを見つけます。これをクリックして、アプリケーションの Web テスト ブレードを開き、Web テストを追加します。
 
-![少なくとも自分の Web サイトの URL を入力](./media/app-insights-monitor-web-app-availability/13-availability.png)
+![Web サイトの URL は必ず入力](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
 - **URL** はパブリック インターネットから認識できる必要があります。これにはクエリ文字列を含めることができます。したがって、たとえば限られた範囲でデータベースを実行できます。URL が解決されてリダイレクトする場合、それに続いて最大で 10 個リダイレクトを使用できます。
 - **[依存する要求の解析]**: 画像、スクリプト、スタイル ファイルなど、ページのリソースがテストの一環として要求されます。テスト全体のタイムアウト時間内にこれらすべてのリソースを正常にダウンロードできない場合、テストは失敗します。
@@ -74,7 +77,7 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 1 ～ 2 分後に、可用性/Web テスト ブレードで **[更新]** をクリックします(自動的には更新されません)。
 
-![ホーム ブレード上の概要結果](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
+![ホーム ブレードの結果の概要](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
 その期間のより詳しいビューを表示するには、上部の概要グラフの棒をクリックします。
 
@@ -96,22 +99,22 @@ Web ページのイメージ、スタイル シート、スクリプトとその
 
 または、下にスクロールし、成功が 100% に満たないテストをクリックします。
 
-![Click a specific webtest](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
+![特定の Web テストをクリック](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
 
 ここに、そのテストの結果が表示されています。
 
-![Click a specific webtest](./media/app-insights-monitor-web-app-availability/16-1test.png)
+![特定の Web テストをクリック](./media/app-insights-monitor-web-app-availability/16-1test.png)
 
 複数の場所からテストが実行されています&#151;結果が 100% 未満のいずれかの場所を選択します。
 
-![Click a specific webtest](./media/app-insights-monitor-web-app-availability/17-availViewDetails.png)
+![特定の Web テストをクリック](./media/app-insights-monitor-web-app-availability/17-availViewDetails.png)
 
 
 **失敗したテスト**まで下へスクロールし、結果を選択します。
 
 その結果をクリックしてポータルで評価し、失敗した理由をご確認ください。
 
-![Web テスト実行結果](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
+![Web テストの実行結果](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
 
 
 代わりに、結果ファイルをダウンロードして Visual Studio で詳しく調べることもできます。
@@ -249,4 +252,4 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!------HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1125_2015-->

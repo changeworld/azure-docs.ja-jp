@@ -14,45 +14,75 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="11/16/2015"
+	ms.date="11/20/2015"
 	ms.author="jodebrui"/>
 
 
 # SQL Database でのインメモリ (プレビュー) の使用
 
-通常の SQL テーブルはハード ドライブにのみ格納されます。インメモリ機能を使用してテーブルを強化し、サーバーの実行中にアクティブなメモリ内にテーブルを格納できるようにします。
+
+インメモリ機能は、適切な状況でトランザクション ワークロードと分析ワークロードのパフォーマンスを大幅に向上させます。
+
+このトピックでは、2 つのデモンストレーションに重点を置きます。1 つはインメモリ OLTP のデモ、もう 1 つはインメモリ分析のデモです。各デモでは、デモを実行するのに必要となる手順とコードを詳しく説明します。次のいずれかを実行できます。
+
+- バリエーションをテストするコードを使用して、パフォーマンスの結果の違いを確認します。
+- コードを読んで、シナリオを把握し、インメモリ オブジェクトの作成および利用の方法を確認します。
 
 
-インメモリは、トランザクション ワークロードと分析ワークロードのパフォーマンスを大幅に向上するテクノロジです。
+#### インメモリ OLTP
 
-- インメモリ OLTP (オンライン トランザクション プロセス) を使用すると、ワークロードの指定に応じて、トランザクションのスループットで最大 30 回を達成できます。
- - メモリが最適化されたテーブル。
- - ネイティブでコンパイルされたストアド プロシージャ。
+インメモリ [OLTP](#install_oltp_manuallink) (オンライン トランザクション処理) の機能は次のとおりです。
 
-- インメモリ分析では、クエリ パフォーマンスで最大 100 回の改善を達成できます。
- - 列ストア インデックス。
+- メモリが最適化されたテーブル。
+- ネイティブでコンパイルされたストアド プロシージャ。
 
 
-[Real-Time Analytics](http://msdn.microsoft.com/library/dn817827.aspx) の場合、次のテクノロジを組み合わせて取得します。
+メモリ最適化テーブルは、ハード ドライブ上の標準的な表現に加えて、アクティブ メモリ内にそれ自体の表現を持っています。ビジネス トランザクションはアクティブ メモリ内の表現のみと直接やり取りするので、テーブルに対するビジネス トランザクションの実行はより速くなります。
+
+インメモリ OLTP を使用すると、ワークロードの詳細にもよりますが、トランザクションのスループットを最大で 30 倍向上させることができます。
+
+
+ネイティブ コンパイル ストアド プロシージャでは、従来の解釈ストアド プロシージャのように作成した場合と比べて、実行時に必要とするマシン語命令の数が少なくて済みます。解釈期間の 1/100 である期間内にネイティブ コンパイルの結果を確認できました。
+
+
+#### インメモリ分析 
+
+インメモリ[分析](#install_analytics_manuallink)の機能は次のとおりです。
+
+- 列ストア インデックス
+
+
+列ストア インデックスは、特殊なデータ圧縮法によってクエリ ワークロードのパフォーマンスを向上させます。
+
+その他のサービスでは、列ストア インデックスは必然的にメモリが最適化されたものとなります。ただし、Azure SQL Database では、列ストア インデックスは、インデックス付けされた従来のテーブルと共にハード ドライブ上に存在することができます。
+
+
+#### リアルタイム分析
+
+[リアルタイム分析](http://msdn.microsoft.com/library/dn817827.aspx)の場合は、インメモリ OLTP とインメモリ分析を組み合わせることで、次のことを可能にします。
 
 - 運用データに基づくリアルタイムのビジネスの把握。
-- 高速な OLTP。
 
 
 #### 可用性
 
 
-- *GA:* インメモリ分析は、一般公開 (GA) されています。
-- *プレビュー:* インメモリ OLTP とリアルタイム運用分析はどちらもプレビュー段階です。
- - これら 2 つの機能は、[Premium](sql-database-service-tiers.md) Azure SQL Database でのみ使用できます。
+完全一般公開 (GA)
+
+- *ディスク上*の[列ストア インデックス](http://msdn.microsoft.com/library/dn817827.aspx)。
 
 
-#### OLTP と分析
+更新:
 
-このトピックには、主に 2 つのセクションがあります。
+- インメモリ OLTP
+- メモリ最適化列ストア インデックスを使用するインメモリ分析
+- リアルタイム運用分析
 
-- A.インメモリ [OLTP](#install_oltp_manuallink) (読み取りと書き込みがあります)
-- B.インメモリ[分析](#install_analytics_manuallink) (読み取りがあります)
+
+プレビュー段階のインメモリ機能に関する考慮事項を、[このトピックの後の方で](#preview_considerations_for_in_memory)説明します。
+
+
+> [AZURE.NOTE]このようなプレビュー段階の機能は [*Premium*](sql-database-service-tiers.md) Azure SQL データベースでのみ使用可能であり、Standard または Basic サービス レベルのデータベースでは使用できません。
 
 
 
@@ -101,7 +131,10 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
 
-結果が **0** の場合、インメモリがサポートされていないことを示します。1 の場合はサポートされています。
+結果が **0** の場合、インメモリがサポートされていないことを示します。1 の場合はサポートされています。問題を診断するには
+
+- インメモリ OLTP 機能がプレビューとしてアクティブになった後にデータベースが作成されていることを確認します。
+- データベースが Premium サービス レベルにあることを確認します。
 
 
 #### 作成されるメモリ最適化項目の概要
@@ -144,7 +177,7 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 ## サンプルの OLTP ワークロードを実行する
 
-次の 2 つの*ストアド プロシージャ*の違いは、1 つ目の手順はメモリ最適化バージョンのテーブルを使用し、2 つ目の手順は通常のディスク上のテーブルを使用している点です。
+次の 2 つの*ストアド プロシージャ*の違いは、1 つ目のプロシージャはメモリ最適化バージョンのテーブルを使用し、2 つ目のプロシージャは通常のディスク上のテーブルを使用している点です。
 
 - SalesLT**.**usp\_InsertSalesOrder**\_inmem**
 - SalesLT**.**usp\_InsertSalesOrder**\_ondisk**
@@ -189,8 +222,11 @@ INSERT INTO @od
 	FROM Demo.DemoSalesOrderDetailSeed
 	WHERE OrderID= cast((rand()*60) as int);
 	
-EXECUTE SalesLT.usp_InsertSalesOrder_inmem @SalesOrderID OUTPUT,
-	@DueDate, @CustomerID, @BillToAddressID, @ShipToAddressID, @od;
+WHILE (@i < 20)
+begin;
+	EXECUTE SalesLT.usp_InsertSalesOrder_inmem @SalesOrderID OUTPUT,
+		@DueDate, @CustomerID, @BillToAddressID, @ShipToAddressID, @od;
+end
 ```
 
 
@@ -205,14 +241,20 @@ Azure VM で ostress.exe を実行する計画を立てるのが理想的です�
 
 VM または選択した任意のホストに、ostress.exe を含む Replay Markup Language (RML) ユーティリティをインストールします。
 
-- ostress.exe については、[インメモリ OLTP を実行する AdventureWorks の拡張](http://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)に関するページを参照してください。
+- [インメモリ OLTP のサンプル データベース](http://msdn.microsoft.com/library/mt465764.aspx)に関するページにある ostress.exe の説明を参照してください。
  - または、[インメモリ OLTP のサンプル データベース](http://msdn.microsoft.com/library/mt465764.aspx)に関するページを参照してください。
  - または、[ostress.exe のインストールに関するブログ](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx)を参照してください。
 
 
 
 <!--
-dn511655.aspx is for SQL 2014, whereas mt465764.aspx is for SQL 2016.
+dn511655.aspx is for SQL 2014,
+[Extensions to AdventureWorks to Demonstrate In-Memory OLTP]
+(http://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)
+
+whereas for SQL 2016+
+[Sample Database for In-Memory OLTP]
+(http://msdn.microsoft.com/library/mt465764.aspx)
 -->
 
 
@@ -220,42 +262,29 @@ dn511655.aspx is for SQL 2014, whereas mt465764.aspx is for SQL 2016.
 ### 最初に \_inmem stress ワークロードを実行する
 
 
-*RML コマンド プロンプト* ウィンドウを使用して、ostress.exe コマンド ラインを実行できます。
+*RML コマンド プロンプト* ウィンドウを使用して、ostress.exe コマンド ラインを実行できます。コマンド ライン パラメーターは ostress に次のことを行うように求めます。
 
-RML コマンド プロンプトから次の ostress.exe コマンドを実行します。
-
-- それぞれ 5 行のアイテムがある 100 万件の販売注文をメモリ最適化テーブルに挿入します。
-- 100 個の同時接続 (-n100) を使用します。
+- 100 個の接続を同時に実行する (-n100)。
+- 各接続に T-SQL スクリプトを 50 回実行させる (-r50)。
 
 
 ```
-ostress.exe -n100 -r500 -S<servername>.database.windows.net
-	 -U<login> -P<password> -d<database>
-	 -q -Q"DECLARE @i int = 0, @od SalesLT.SalesOrderDetailType_inmem,
-	 @SalesOrderID int, @DueDate datetime2 = sysdatetime(), @CustomerID int = rand() *
-	 8000, @BillToAddressID int = rand() * 10000, @ShipToAddressID int = rand()*
-	 10000;
-	 INSERT INTO @od SELECT OrderQty, ProductID FROM
-	 Demo.DemoSalesOrderDetailSeed WHERE OrderID= cast((rand()*60) as int);
-	 WHILE (@i < 20) begin;
-	 EXECUTE SalesLT.usp_InsertSalesOrder_inmem
-	 @SalesOrderID OUTPUT, @DueDate, @CustomerID, @BillToAddressID,
-	 @ShipToAddressID, @od; set @i += 1; end"
+ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password> -d<database> -q -Q"DECLARE @i int = 0, @od SalesLT.SalesOrderDetailType_inmem, @SalesOrderID int, @DueDate datetime2 = sysdatetime(), @CustomerID int = rand() * 8000, @BillToAddressID int = rand() * 10000, @ShipToAddressID int = rand()* 10000; INSERT INTO @od SELECT OrderQty, ProductID FROM Demo.DemoSalesOrderDetailSeed WHERE OrderID= cast((rand()*60) as int); WHILE (@i < 20) begin; EXECUTE SalesLT.usp_InsertSalesOrder_inmem @SalesOrderID OUTPUT, @DueDate, @CustomerID, @BillToAddressID, @ShipToAddressID, @od; set @i += 1; end"
 ```
 
 
 前述の ostress.exe コマンド ラインを実行するには:
 
 
-1. SSMS で次のコマンドを実行してデータベースをリセットし、前回の実行で挿入されたすべてのデータを削除します。```
+1. SSMS で次のコマンドを実行してデータベースのデータ コンテンツをリセットし、前回の実行で挿入されたすべてのデータを削除します。```
 EXECUTE Demo.usp_DemoReset;
 ```
 
-2. テキストをクリップボードにコピーします。
+2. 上記の ostress.exe コマンドラインのテキストをクリップボードにコピーします。
 
-3. すべての行末文字 (\\r\\n) とすべてのタブをスペースに置き換えます。
+3. パラメーター -S -U -P -d の <placeholders> を実際の正しい値に置き換えます。
 
-4. パラメーター -S -U -P -d の <placeholders> を実際の正しい値に置き換えます。
+4. 編集したコマンドラインを RML コマンド ウィンドウで実行します。
 
 
 #### 結果は期間
@@ -269,7 +298,7 @@ ostress.exe が完了すると、RML コマンド ウィンドウに表示され
 #### リセット、\_ondisk の編集、再実行
 
 
-\_inmem 実行の結果を取得したら、\_indisk 実行に次の手順を実行します。
+\_inmem 実行の結果を取得したら、\_ondisk 実行に次の手順を実行します。
 
 
 1. SSMS で次のコマンドを実行してデータベースをリセットし、前回の実行で挿入されたすべてのデータを削除します。```
@@ -278,15 +307,15 @@ EXECUTE Demo.usp_DemoReset;
 
 2. ostress.exe コマンド ラインを編集して、すべての *\_inmem* を *\_ondisk* に置き換えます。
 
-3. ostress.exe を再実行し、期間の結果を取得します。
+3. ostress.exe を再び実行し、期間の結果を取得します。
 
-4. 確実なクリーンアップのために、データベースをもう一度リセットします。
- - 100 万件の販売注文を挿入する 1 回のテスト実行で、テーブルには 500 MB 以上のデータが挿入されます。
+4. 大量のテスト データとなる可能性があるデータを確実に削除するために、もう一度データベースをリセットします。
 
 
 #### 予想される比較結果
 
-テストの結果、ostress をデータベースと同じ Azure リージョンにある VM で実行した場合、このワークロードではメモリ最適化テーブルのパフォーマンスがディスク ベース テーブルに比べて約 **9 倍**向上することがわかりました。
+アウトインメモリ テストの結果、ostress をデータベースと同じ Azure リージョンにある Azure VM で実行した場合、この単純なワークロードではパフォーマンスが **9 倍**向上することがわかりました。
+
 
 ネイティブでコンパイルされたストアド プロシージャへの変換を追加すると、パフォーマンスの改善レベルは高くなります。
 
@@ -320,6 +349,7 @@ OLTP ワークロードのリアルタイム分析では、多くの場合、ク
  - 次のように、**CREATE INDEX** ステートメントの **COLUMNSTORE** キーワードが重要です。<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
 4. AdventureWorksLT を互換性レベル 130 に設定します。<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
+ - レベル 130 はインメモリ機能に直接、関係ありません。しかし、レベル 130 は一般に、120 の場合よりも高いクエリ パフォーマンスを提供します。
 
 
 #### 重要なテーブルと列ストア インデックス
@@ -412,22 +442,25 @@ GO
 ```
 
 
-## インメモリのプレビューの考慮事項
+
+<a id="preview_considerations_for_in_memory" name="preview_considerations_for_in_memory"></a>
 
 
-Azure SQL Database のインメモリ機能は、[2015 年 10 月 28 日にプレビュー段階になりました](http://azure.microsoft.com/updates/public-preview-in-memory-oltp-and-real-time-operational-analytics-for-azure-sql-database/)。
+## インメモリ OLTP のプレビューの考慮事項
+
+
+Azure SQL Database のインメモリ OLTP 機能は、[2015 年 10 月 28 日にプレビュー段階になりました](http://azure.microsoft.com/updates/public-preview-in-memory-oltp-and-real-time-operational-analytics-for-azure-sql-database/)。
 
 
 一般公開 (GA) 前のプレビュー段階では、インメモリ OLTP は次の条件でのみサポートされます。
 
 - *Premium* サービス階層のデータベース。
 
-- インメモリ機能が有効になった後に作成されたデータベース。
- - インメモリ機能が有効になった日の前に作成されたバックアップから復元された新しいデータベースは、インメモリをサポートできません。
- - たとえば、インメモリをサポートするデータベースをバックアップするとします。そのバックアップを古い Premium データベースに復元します。すると、古いデータベースはインメモリをサポートするようになります。
+- インメモリ OLTP 機能が有効になった後に作成されたデータベース。
+ - インメモリ OLTP 機能がアクティブになる前に作成されたデータベースから復元された新しいデータベースは、インメモリ OLTP をサポートできません。
 
 
-不明な場合は、次の T-SQL SELECT を実行して、データベースがインメモリ OLTP をサポートしているかどうかを確認することができます。結果が **1** の場合、データがインメモリをサポートしていることを示します。
+不明な場合は、次の T-SQL SELECT を実行して、データベースがインメモリ OLTP をサポートしているかどうかを確認することができます。結果が **1** の場合、データベースがインメモリ OLTP をサポートしていることを示します。
 
 ```
 SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
@@ -492,4 +525,4 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 - インメモリ OLTP のために[インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

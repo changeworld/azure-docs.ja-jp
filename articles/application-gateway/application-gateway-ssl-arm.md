@@ -12,19 +12,19 @@
    ms.topic="hero-article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="10/28/2015"
+   ms.date="11/24/2015"
    ms.author="joaoma"/>
 
-# Azure リソース マネージャーを使用して SSL オフロード用のアプリケーション ゲートウェイを構成する
+# Azure リソース マネージャーを使用して SSL オフロード用の Application Gateway を構成する
 
 > [AZURE.SELECTOR]
 -[Azure Classic Powershell](application-gateway-ssl.md)
 -[Azure Resource Manager Powershell](application-gateway-ssl-arm.md)
 
- ゲートウェイでの SSL セッションを停止するように Application Gateway を構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
+ ゲートウェイで SSL セッションを停止するように Application Gateway を構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
 
 
->[AZURE.IMPORTANT]Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイ モデルとクラシック デプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイ モデルとツール](azure-classic-rm.md)について理解しておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure リソース マネージャーを使用したアプリケーション ゲートウェイの作成について説明します。クラシック デプロイ モデル バージョンを使用するには、[Azure のクラシック デプロイを使用したアプリケーション ゲートウェイの SSL オフロードの構成](application-gateway-ssl.md)に関するページを参照してください。
+>[AZURE.IMPORTANT]Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイ モデルとクラシック デプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイ モデルとツール](azure-classic-rm.md)について理解しておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure リソース マネージャーを使用したアプリケーション ゲートウェイの作成について説明します。クラシック デプロイ モデル バージョンを使用するには、「[クラシック デプロイメント モデルを使用して SSL オフロード用の Application Gateway を構成する](application-gateway-ssl.md)」を参照してください。
 
 
 
@@ -71,32 +71,31 @@ ARM コマンドレットを使用するように PowerShell モードを切り�
 
 ### 手順 1.
 
-    Switch-AzureMode -Name AzureResourceManager
-
-### 手順 2.
-
-Azure アカウントにログインします。
+		PS C:\> Login-AzureRmAccount
 
 
-    Add-AzureAccount
 
-資格情報を使用して認証を行うよう求められます。
+### 手順 2
+
+アカウントのサブスクリプションを確認する
+
+		PS C:\> get-AzureRmSubscription 
+
+資格情報を使用して認証を行うように求めるメッセージが表示されます。<BR>
+
+### 手順 3. 
+
+使用する Azure サブスクリプションを選択します。<BR>
 
 
-### 手順 3.
-
-使用する Azure サブスクリプションを選択します。
-
-    Select-AzureSubscription -SubscriptionName "MySubscription"
-
-使用できるサブスクリプションのリストを表示するには、Get-AzureSubscription コマンドレットを使用します。
+		PS C:\> Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
 
 ### 手順 4.
 
 新しいリソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
 
-    New-AzureResourceGroup -Name appgw-rg -location "West US"
+    New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 
 Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。アプリケーション ゲートウェイを作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
 
@@ -106,14 +105,14 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 次の例では、リソース マネージャーを使用して仮想ネットワークを作成する方法を示します。
 
-### 手順 1.	
+### 手順 1	
 	
-	$subnet = New-AzureVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
+	$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
 アドレス範囲 10.0.0.0/24 を仮想ネットワークの作成に使用するサブネットの変数に割り当てます。
 
-### 手順 2.	
-	$vnet = New-AzurevirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+### 手順 2	
+	$vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
 サブネット 10.0.0.0/24 とプレフィックス 10.0.0.0/16 を使用して、米国西部リージョンのリソース グループ "appw-rg" に、"appgwvnet" という名前の仮想ネットワークを作成します。
 
@@ -125,65 +124,65 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 	
 ## フロントエンド構成のパブリック IP アドレスの作成
 
-	$publicip = New-AzurePublicIpAddress -ResourceGroupName appgw-rg -name publicIP01 -location "West US" -AllocationMethod Dynamic
+	$publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name publicIP01 -location "West US" -AllocationMethod Dynamic
 
 米国西部リージョンのリソース グループ "appw-rg" に、パブリック IP リソース "publicIP01" を作成します。
 
 
 ## アプリケーション ゲートウェイの構成オブジェクトの作成
 
-### 手順 1.
+### 手順 1
 
-	$gipconfig = New-AzureApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
+	$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
 "gatewayIP01" という名前のアプリケーション ゲートウェイの IP 構成を作成します。アプリケーション ゲートウェイが起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。各インスタンスは、1 つの IP アドレスを取得することに注意してください。
  
-### 手順 2.
+### 手順 2
 
-	$pool = New-AzureApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
+	$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
 
 この手順は、IP アドレス "134.170.185.46、134.170.188.221、134.170.185.50" を使用して、"pool01" という名前のバックエンド IP アドレス プールを構成します。 これらは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスとなります。上記の例の IP アドレスを Web アプリケーション エンドポイントの IP アドレスに置き換えます。
 
 ### 手順 3.
 
-	$poolSetting = New-AzureApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Enabled
+	$poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Enabled
 
 バックエンド プール内の負荷を分散したネットワーク トラフィックに対して、アプリケーション ゲートウェイの設定 "poolsetting01" を構成します。
 
 ### 手順 4.
 
-	$fp = New-AzureApplicationGatewayFrontendPort -Name frontendport01  -Port 443
+	$fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 443
 
 この例では、パブリック IP エンドポイントに対して、"frontendport01" という名前のフロントエンド IP ポートを構成します。
 
 ### 手順 5. 
 
-	$cert = New-AzureApplicationGatewaySslCertificate -Name cert01 -CertificateFile <full path for certificate file> -Password ‘<password>’
+	$cert = New-AzureRmApplicationGatewaySslCertificate -Name cert01 -CertificateFile <full path for certificate file> -Password ‘<password>’
 
 SSL 接続に使用する証明書を構成します。証明書は、.pfx 形式で、4 ～ 12 文字のパスワードを使用する必要があります。
 
-### 手順 6.
+### 手順 6
 
-	$fipconfig = New-AzureApplicationGatewayFrontendIPConfig -Name fipconfig01 -PublicIPAddress $publicip
+	$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -PublicIPAddress $publicip
 
 "fipconfig01" という名前のフロントエンド IP 構成を作成し、このフロントエンド IP 構成にパブリック IP アドレスを関連付けます。
 
 ### 手順 7.
 
-	$listener = New-AzureApplicationGatewayHttpListener -Name listener01  -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SslCertificate $cert
+	$listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SslCertificate $cert
 
 
 "listener01" という名前のリスナーを作成し、フロントエンド IP 構成と証明書にフロントエンド ポートを関連付けます。
 
 ### 手順 8. 
 
-	$rule = New-AzureApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
+	$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 
 "rule01" という名前のロード バランサーのルーティング規則を作成し、ロード バランサーの動作を構成します。
 
 ### 手順 9.
 
-	$sku = New-AzureApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
+	$sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
 アプリケーション ゲートウェイのインスタンスのサイズを構成します。
 
@@ -191,42 +190,40 @@ SSL 接続に使用する証明書を構成します。証明書は、.pfx 形�
 
 ## New-AzureApplicationGateway を使用したアプリケーション ゲートウェイの作成
 
-	$appgw = New-AzureApplicationGateway -Name appgwtest -ResourceGroupName appw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert
+	$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert
 
 前の手順の構成項目をすべて使用して、アプリケーション ゲートウェイを作成します。この例では、アプリケーション ゲートウェイは "appgwtest" という名前です。
 
 
 ## アプリケーション ゲートウェイの起動
 
-ゲートウェイを構成したら、`Start-AzureApplicationGateway` コマンドレットを使用してゲートウェイを起動します。アプリケーション ゲートウェイの課金は、ゲートウェイが正常に起動された後に開始します。
+ゲートウェイを構成したら、`Start-AzureRmApplicationGateway` コマンドレットを使用してゲートウェイを起動します。アプリケーション ゲートウェイの課金は、ゲートウェイが正常に起動された後に開始します。
 
 
-**注:** `Start-AzureApplicationGateway` コマンドレットの実行には最大で 15 ～ 20 分かかる場合があります。
+**注:** `Start-AzureRmApplicationGateway` コマンドレットの実行には最大で 15 ～ 20 分かかる場合があります。
 
 次の例では、アプリケーション ゲートウェイの名前は "appgwtest" で、リソース グループの名前は "app-rg" です。
 
 
-### 手順 1.
+### 手順 1
 
 アプリケーション ゲートウェイ オブジェクトを取得し、変数 "$getgw" に関連付けます。
  
-	$getgw =  Get-AzureApplicationGateway -Name appgwtest -ResourceGroupName app-rg
+	$getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName app-rg
 
-### 手順 2.
+### 手順 2
 	 
-`Start-AzureApplicationGateway` を使用して、アプリケーション ゲートウェイを起動します。
+`Start-AzureRmApplicationGateway` を使用して、Application Gateway を起動します。
 
-	 Start-AzureApplicationGateway -ApplicationGateway $getgw  
+	 Start-AzureRmApplicationGateway -ApplicationGateway $getgw  
 
 	
 
 ## アプリケーション ゲートウェイの状態の確認
 
-`Get-AzureApplicationGateway` コマンドレットを使用してゲートウェイの状態を確認します。前の手順で *Start-AzureApplicationGateway* が成功した場合、State は *Running* になり、Vip と DnsName に有効な値が入力されます。
+`Get-AzureRmApplicationGateway` コマンドレットを使用してゲートウェイの状態を確認します。前の手順で *Start-AzureApplicationGateway* が成功した場合、State は *Succeeded* になります。
 
-このサンプルは、起動に成功し、実行中で、`http://<generated-dns-name>.cloudapp.net` 宛のトラフィックを受け入れる準備が完了しているアプリケーション ゲートウェイを示します。
-
-	Get-AzureApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
+	Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
 	Sku                               : Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySku
 	GatewayIPConfigurations           : {gatewayip01}
@@ -374,12 +371,11 @@ SSL 接続に使用する証明書を構成します。証明書は、.pfx 形�
 
 ## 次のステップ
 
-
-ILB と共に使用するようにアプリケーション ゲートウェイを構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
+ILB とともに使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用した Application Gateway の作成](application-gateway-ilb.md)」を参照してください。
 
 負荷分散のオプション全般の詳細については、次を参照してください。
 
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

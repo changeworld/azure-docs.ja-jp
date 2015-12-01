@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/12/2015"
+   ms.date="11/18/2015"
    ms.author="joaoma" />
 
 # Azure Traffic Manager プロファイルの管理
@@ -85,4 +85,4 @@ Azure ポータルで簡易作成を使用して、Traffic Manager プロファ�
 
 [Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

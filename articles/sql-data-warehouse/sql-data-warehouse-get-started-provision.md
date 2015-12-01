@@ -13,10 +13,10 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/21/2015"
+   ms.date="11/19/2015"
    ms.author="lodipalm;barbkess"/>
 
-# Azure プレビュー ポータルでの SQL Data Warehouse の作成#
+# SQL Data Warehouse の作成
 
 > [AZURE.SELECTOR]
 - [Azure preview portal](sql-data-warehouse-get-started-provision.md)
@@ -46,6 +46,7 @@
 
 
 ## 手順 2: サーバーを構成して作成する
+
 SQL Database および SQL Data Warehouse では、各データベースがサーバーに割り当てられ、それぞれのサーバーが地理的な場所に割り当てられます。このサーバーを論理 SQL サーバーといいます。
 
 > [AZURE.NOTE]<a name="note"></a>論理 SQL サーバーの特徴:
@@ -75,6 +76,7 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
     ![新しいサーバーの構成](./media/sql-data-warehouse-get-started-provision/configure-server.png)
 
 ## 手順 3: データベースを構成して作成する
+
 論理 SQL サーバーを選択したら、データベースの作成に着手します。
  
 2. **[SQL Data Warehouse]** ブレードで、残りのフィールドに必要事項を入力します。 
@@ -103,6 +105,7 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 
 
 ## 手順 4: クライアントの IP からアクセスできるようにサーバーのファイアウォールを構成する
+
 現在ご使用の IP アドレスからサーバーに接続するには、そのクライアントの IP アドレスをファイアウォールの規則に追加します。この手順では、その方法を紹介します。
 
 1. **[参照]**、**[SQL Server]** の順にクリックし、目的のサーバーを選択して、**[設定]**、**[ファイアウォール]** の順に選択します。
@@ -123,9 +126,8 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 
 ファイアウォールの構成が完了したので、デスクトップから、作成した SQL Data Warehouse データベースへの接続を作成できます。
 
-
 ## 次のステップ
 
 SQL Data Warehouse のサンプル データベースの作成は以上で完了です。いつでもデータベースに[接続](./sql-data-warehouse-get-started-connect.md)することができます。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1125_2015-->

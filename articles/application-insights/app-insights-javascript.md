@@ -12,32 +12,39 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="11/03/2015"
+	ms.date="11/17/2015"
 	ms.author="awills"/>
 
 # JavaScript Web アプリのための Application Insights
 
-[AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
+[AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
-Web ページのパフォーマンスと使用状況について調べます。Visual Studio Application Insights をページに追加すれば、利用者の数、再訪問の頻度、最も利用されているページがわかります。読み込み時間と例外のレポートも与えられます。いくつかの[カスタム イベントとメトリック][track]を追加すると、最も人気のある機能や最も一般的なミスを詳細に分析し、ユーザーが満足するようにページを調整できます。
+Web ページのパフォーマンスと使用状況について調べます。Visual Studio Application Insights をページに追加すれば、利用者の数、再訪問の頻度、最も利用されているページがわかります。読み込み時間と例外のレポートも与えられます。いくつかの[カスタム イベントとメトリック](app-insights-api-custom-events-metrics.md)を追加すると、最も人気のある機能や最も一般的なミスを詳細に分析し、ユーザーが満足するようにページを調整できます。
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](./media/app-insights-javascript/16-page-views.png)
 
-[ASP.NET][greenbrown] または [Java][java] Web アプリにサーバー テレメトリを既に設定している場合、クライアントとサーバーの両方の角度からの画像が与えられます。この 2 つのストリームは Application Insights ポータルで統合されます。
+[ASP.NET](app-insights-asp-net.md) または [Java](app-insights-java-get-started.md) Web アプリにサーバー利用統計情報を既に設定している場合、クライアントとサーバーの両方の角度からの画像が与えられます。この 2 つのストリームは Application Insights ポータルで統合されます。
 
 #### 簡単なデモ
 
 Azure サブスクリプションがなく、Web ページ上で Application Insights をお試しになりたい場合は、[Application Insights の試用についてのページ](http://aka.ms/ainow)を参照してください。
 
-## Application Insights リソースの作成
+## Application Insights リソースを開く
 
 Application Insights リソースは、ページのパフォーマンスと使用状況に関するデータが表示される場所です。(Web サーバーからデータを集めるなどの目的で、既にリソースを作成している場合、この手順を省略します。)
 
-[Azure ポータル](http://portal.azure.com)で、新しい Application Insights リソースを作成します。
+[Azure ポータル](http://portal.azure.com)にサインインします。
+
+アプリのサーバー側の監視を既に設定している場合は、既にリソースがあります。
+
+![[参照]、[開発者向けサービス]、[Application Insights] の順に選択する](./media/app-insights-javascript/01-find.png)
+
+リソースがない場合は、次の手順で作成します。
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](./media/app-insights-javascript/01-create.png)
 
-*質問がございますか?* [リソースの作成に関する詳細はここにあります][new]。
+
+*質問がございますか?* [リソースの作成に関する詳細はここにあります](app-insights-create-new-resource.md)。
 
 
 ## アプリや Web ページに SDK スクリプトを追加する
@@ -60,9 +67,9 @@ Application Insights リソースは、ページのパフォーマンスと使�
 
 ## <a name="run"></a>アプリを実行する
 
-Web アプリを実行し、しばらくの間、テレメトリを生成し、少し待ちます。**F5** キーを使って開発用コンピューターで実行するか、発行してユーザーに利用させることができます。
+Web アプリを実行し、しばらくの間、利用統計情報を生成し、少し待ちます。**F5** キーを使って開発用コンピューターで実行するか、公開し、ユーザーに利用させることができます。
 
-Web アプリが Application Insights に送信しているテレメトリを確認する場合、ブラウザーのデバッグ ツールを使用します (多くのブラウザーで **F12** です)。データは dc.services.visualstudio.com に送信されます。
+Web アプリが Application Insights に送信している利用統計情報を確認する場合、ブラウザーのデバッグ ツールを使用します (多くのブラウザーで **F12** です)。データは dc.services.visualstudio.com に送信されます。
 
 ## データを調査する
 
@@ -72,7 +79,7 @@ Web アプリが Application Insights に送信しているテレメトリを確
 ![](./media/app-insights-javascript/05-browser-page-load.png)
 
 
-*まだデータが表示されませんか? ページの上部にある **[更新]** をクリックします。まだは何も表示されませんか? 「[トラブルシューティング][qna]」を参照してください。*
+*まだデータが表示されませんか? ページの上部にある **[更新]** をクリックします。まだは何も表示されませんか? 「[トラブルシューティング](app-insights-troubleshoot-faq.md)」を参照してください。*
 
 そのグラフをクリックすると、さらに詳しいグラフになって表示されます。
 
@@ -135,7 +142,7 @@ Web アプリが Application Insights に送信しているテレメトリを確
 
 ## 個別のページ ビュー イベントを調査する
 
-通常、Application Insights がページ ビューのテレメトリを分析し、お客様に対して表示されるのは、すべてのユーザーに関して平均した累積レポートのみです。ただし、デバッグのために個別のページ ビュー イベントを調べることもできます。
+通常、Application Insights がページ ビューの利用統計情報を分析し、お客様に対して表示されるのは、すべてのユーザーに関して平均した累積レポートのみです。ただし、デバッグのために個別のページ ビュー イベントを調べることもできます。
 
 [診断検索] ブレードで、[フィルター] を [ページ ビュー] に設定します。
 
@@ -143,9 +150,9 @@ Web アプリが Application Insights に送信しているテレメトリを確
 
 いずれかのイベントをクリックして、詳細を表示します。詳細ページで、[...] をクリックしてさらに詳しい情報を表示します。
 
-> [AZURE.NOTE][検索][diagnostic]を利用する場合、単語全体が一致しなければならないことに注意してください。「Abou」と「bout」は「About」に一致しませんが、「Abou*」は一致します。検索語をワイルドカードで始めることもできません。たとえば、「*bou」を検索しても「About」とは一致しません。
+> [AZURE.NOTE] [検索](app-insights-diagnostic-search.md)を利用する場合、単語全体が一致しなければならないことに注意してください。「Abou」と「bout」は「About」に一致しませんが、「Abou*」は一致します。検索語をワイルドカードで始めることもできません。たとえば、「*bou」を検索しても「About」とは一致しません。
 
-> [診断検索の詳細][diagnostic]
+> [診断検索の詳細](app-insights-diagnostic-search.md)
 
 ### ページ ビュー プロパティ
 
@@ -153,18 +160,22 @@ Web アプリが Application Insights に送信しているテレメトリを確
 
 ## 使用状況の追跡 (カスタム)
 
-アプリケーションで、ユーザーが何をするのかを知る必要がありますか。 クライアントとサーバーのコードに呼び出しを挿入すると、Application Insights に独自のテレメトリを送信できます。たとえば、注文を作成したが完了していないユーザーの数、最も頻繁に発生する検証エラー、またはゲームの平均スコアを確認できます。
+アプリケーションで、ユーザーが何をするのかを知る必要がありますか。 クライアントとサーバーのコードに呼び出しを挿入すると、Application Insights に独自の利用統計情報を送信できます。たとえば、注文を作成したが完了していないユーザーの数、最も頻繁に発生する検証エラー、またはゲームの平均スコアを確認できます。
 
-* [カスタム イベントとメトリックの API の詳細情報][track]。
+* [カスタム イベントとメトリックの API の詳細情報](app-insights-api-custom-events-metrics.md)。
 * [API リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
-## サーバーのテレメトリ
+## サーバーの利用統計情報
 
-これをまだ実行していない場合、サーバーから情報を入手し、そのデータをクライアント側のデータと共に表示できます。サーバーのパフォーマンスを評価し、問題を診断できます。
+これをまだ実行していない場合、サーバーから情報を入手し、そのデータをクライアント側のデータと共に表示できます。サーバーのパフォーマンスを評価し、問題を診断できます。アプリに Application Insights SDK を追加するだけです。
 
-* [Application Insights を ASP.NET アプリに追加する][greenbrown]
-* [Application Insights を Java Web アプリに追加する][java]
+* [SDK を ASP.NET アプリに追加する](app-insights-asp-net.md)
+* [SDK を Java Web アプリに追加する](app-insights-java-get-started.md)
 
+または、Web アプリが既に稼働している場合でも、再ビルドまたは再デプロイすることなくサーバー テレメトリを追加できます。
+
+* [ライブ ASP.NET アプリを監視する](app-insights-monitor-performance-live-website-now.md)
+* [ライブ Java アプリを監視する](app-insights-java-live.md)
 
 ## <a name="video"></a> 動画: 使用状況の追跡
 
@@ -172,18 +183,8 @@ Web アプリが Application Insights に送信しているテレメトリを確
 
 ## <a name="next"></a>次のステップ
 
-[カスタム イベントとメトリックを使用した利用状況の追跡][track]
+* [利用状況を追跡する](app-insights-web-track-usage.md)
+* [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
+* [ビルド - 測定 - 学習](app-insights-overview-usage.md)
 
-
-
-
-<!--Link references-->
-
-[diagnostic]: app-insights-diagnostic-search.md
-[greenbrown]: app-insights-start-monitoring-app-health-usage.md
-[java]: app-insights-java-get-started.md
-[new]: app-insights-create-new-resource.md
-[qna]: app-insights-troubleshoot-faq.md
-[track]: app-insights-api-custom-events-metrics.md
-
-<!---HONumber=Nov15_HO2-->
+<!----HONumber=AcomDC_1125_2015-->

@@ -3,7 +3,7 @@
 	description="簡単な Node.js Web アプリケーションを作成して、Azure のクラウド サービスにデプロイする方法について説明します。"
 	services="cloud-services"
 	documentationCenter="nodejs"
-	authors="MikeWasson"
+	authors="rmcmurray"
 	manager="wpickett"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs"
 	ms.topic="hero-article"
-	ms.date="08/31/2015"
-	ms.author="mwasson"/>
+	ms.date="11/20/2015"
+	ms.author="robmcm"/>
 
 
 # Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
@@ -27,7 +27,7 @@
 
 Cloud Services の詳細と Azure の Web サイトおよび仮想マシンとの違いについては、[Azure Websites、Cloud Services、および Virtual Machines の比較](../choose-web-site-cloud-service-vm.md)に関するページを参照してください。
 
->[AZURE.TIP]単純な Web サイトを構築する場合 シナリオが、単純な Web サイトのフロントエンドにのみ関係している場合は、<a href="/documentation/articles/web-sites-nodejs-develop-deploy-mac/">軽量の Web アプリを使用することを検討してください。</a> Web アプリの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。
+>[AZURE.TIP]単純な Web サイトを構築する場合 シナリオが、単純な Web サイトのフロントエンドにのみ関係している場合は、<a href="../app-service-web/web-sites-nodejs-develop-deploy-mac.md">軽量の Web アプリを使用することを検討してください。</a> Web アプリの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。
 
 
 このチュートリアルでは、Web ロールでホストされる単純な Web アプリケーションを作成します。コンピューティング エミュレーターを使用してアプリケーションをローケルでテストし、PowerShell コマンド ライン ツールを使用してアプリケーションをデプロイします。
@@ -41,7 +41,7 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 > [AZURE.NOTE]このチュートリアルは、Windows 上の Azure PowerShell を使用します。
 
 - [Azure Powershell](../install-configure-powershell.md) のインストールおよび構成。
-- [Azure SDK for .NET 2.7](http://www.microsoft.com/ja-jp/download/details.aspx?id=48178) のダウンロードとインストール。インストールのセットアップ時に、次のいずれかを選択します。
+- [Azure SDK for .NET 2.7](http://www.microsoft.com/ja-JP/download/details.aspx?id=48178) のダウンロードとインストール。インストールのセットアップ時に、次のいずれかを選択します。
     - MicrosoftAzureAuthoringTools
     - MicrosoftAzureComputeEmulator
 
@@ -197,4 +197,4 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 [powershell-menu]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -14,7 +14,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="11/06/2015"
+	ms.date="11/23/2015"
 	ms.author="jeffstok" />
 
 
@@ -23,14 +23,14 @@
 
 Azure Stream Analytics を使用してリアルタイムに不正行為を検出するための、エンド ツー エンド ソリューションを作成する方法について説明します。Azure イベント ハブにイベントを取り込み、集計用または警告用の Stream Analytics クエリを作成し、結果を出力シンクに送信することで、リアルタイム処理でデータに対する洞察を得ることができます。
 
-Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対するスケーラブルで複雑なイベント処理を実現する、十分に管理されたサービスです。詳細については、「[Azure Stream Analytics の概要](stream-analytics-introduction.md)」を参照してください。
+Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、十分に管理されたサービスです。詳細については、「[Azure Stream Analytics の概要](stream-analytics-introduction.md)」を参照してください。
 
 
 ## シナリオ: 通信および SIM におけるリアルタイムでの不正行為の検出
 
 ある通信会社は、膨大な量の着信データを扱っています。この会社では、そのデータについて以下のことを行う必要があります。* このデータを管理可能な量にまで削減し、経時的および地理領域的に変化する顧客の利用状況に関する洞察を得る。* リアルタイムで SIM 不正行為 (ほぼ同じ時刻に同じ ID から複数の着信があるが、発信元の地理的場所は異なっている) を検出し、顧客への通知やサービスのシャット ダウンによって不正に容易に対応できるようにする。
 
-これはモノのインターネット (IoT) に関する一般的なシナリオです。つまり、テレメトリやセンサー データが大量に生成され、顧客はその集計や、異常についてのアラート通知をリアルタイムに必要とするという状況です。
+これはモノのインターネット (IoT) に関する一般的なシナリオです。つまり、遠隔測定やセンサーによりデータが大量に生成され、顧客はその集計や、異常についてのアラート通知をリアルタイムに必要とするという状況です。
 
 ## 前提条件
 
@@ -42,7 +42,7 @@ Stream Analytics は、待機時間の短縮、高可用性、クラウド内の
 
 イベント ハブを作成するには:
 
-1.	[Azure ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[App Services]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。名前、リージョン、および新規または既存の名前空間を入力し、新しい Event Hub を作成します。  
+1.	[Azure ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[App Services]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。名前、地域、および新規または既存の名前空間を入力し、新しい Event Hub を作成します。  
 2.	各 Stream Analytics ジョブが単一の Event Hub コンシューマー グループから読み取るようにするのがベスト プラクティスです。以下にコンシューマー グループを作成するプロセスを段階的に説明します。コンシューマー グループの詳細については、[ここ](https://msdn.microsoft.com/library/azure/dn836025.aspx)を参照してください。コンシューマー グループを作成するには、新たに作成された Event Hub に移動し、**[コンシューマー グループ]** タブをクリックし、ページ下部の **[作成]** をクリックして、コンシューマー グループの名前を指定します。
 3.	Event Hub へのアクセスを許可するには、共有アクセス ポリシーを作成する必要があります。Event Hub の **[構成]** タブをクリックします。
 4.	**[共有アクセス ポリシー]** で、**[管理]** アクセス許可を持つ新しいポリシーを作成します。
@@ -257,4 +257,4 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

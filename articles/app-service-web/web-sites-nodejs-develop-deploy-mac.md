@@ -3,7 +3,7 @@
 	description="Node.js アプリケーションを Azure App Service の Web アプリにデプロイする方法を説明します。"
 	services="app-service\web"
 	documentationCenter="nodejs"
-	authors="MikeWasson"
+	authors="rmcmurray"
 	manager="wpickett"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="hero-article"
-	ms.date="10/13/2015"
-	ms.author="mwasson"/>
+	ms.date="11/20/2015"
+	ms.author="robmcm"/>
 
 # Azure App Service での Node.js Web アプリの作成
 
@@ -176,9 +176,9 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
 
 5. アプリを表示するには、Azure ポータルで **[Web アプリ]** パーツの **[参照]** ボタンをクリックします。
 
-	![Browse button](./media/web-sites-nodejs-develop-deploy-mac/browsebutton.png)
+	![[参照] ボタン](./media/web-sites-nodejs-develop-deploy-mac/browsebutton.png)
 
-	![Hello world in Azure](./media/web-sites-nodejs-develop-deploy-mac/helloworldazure.png)
+	![Azure、Hello World](./media/web-sites-nodejs-develop-deploy-mac/helloworldazure.png)
 
 ## アプリケーションへの変更の発行
 
@@ -224,4 +224,4 @@ Azure で Node.js アプリケーションを開発する方法の詳細につ�
 [deployment-credentials]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-credentials.png
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

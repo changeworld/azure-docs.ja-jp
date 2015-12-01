@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="hero-article" 
-	ms.date="08/30/2015"
-	ms.author="huguesv"/>
+	ms.date="11/16/2015"
+	ms.author="huvalo"/>
 
 
 # Azure での Django を使用した Web アプリの作成
@@ -57,7 +57,7 @@ Python と Git は既にインストールされていると思いますが、Py
 アプリを作成する最初の手順では、[Azure ポータル](https://portal.azure.com)で Web アプリを作成します。
 
 1. Azure ポータルの画面左下にある **[新規]** ボタンをクリックします。
-2. **[Web + モバイル]**、**[Azure Marketplace]**、**[Web Apps]** の順にクリックします。
+2. **[Web + モバイル]** をクリックします。
 3. 検索ボックスに、「python」と入力します。
 4. 検索結果で **[Django]** を選択し、**[作成]** をクリックします。
 5. 新しい App Service プランやそのリソース グループ名の作成など、新しい Django アプリを構成します。**[作成]** をクリックします。
@@ -333,6 +333,10 @@ Python 3.4 の場合:
 
     python -m venv env
 
+または
+
+	pyvenv env
+
 アプリケーションに必要な外部パッケージをインストールします。リポジトリのルートにある requirements.txt ファイルを使用すると、仮想環境にパッケージをインストールできます。
 
     env/bin/pip install -r requirements.txt
@@ -492,7 +496,7 @@ SQL Database と MySQL の詳細については、次のリンクをご覧くだ
 
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
@@ -514,4 +518,4 @@ SQL Database と MySQL の詳細については、次のリンクをご覧くだ
 [Python Tools for Visual Studio のドキュメント]: http://aka.ms/ptvsdocs
 [Django のドキュメント]: https://www.djangoproject.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->
