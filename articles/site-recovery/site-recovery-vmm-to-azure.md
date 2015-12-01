@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="10/12/2015"
+	ms.date="11/18/2015"
 	ms.author="raynew"/>
 
 #  オンプレミスの VMM サイトと Azure 間の保護の設定
@@ -81,7 +81,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 1. 登録する VMM サーバーから[管理ポータル](https://portal.azure.com)にサインインします。
 
 
-2. 
+2. [
 3. *[Data Services]* をクリックし、*[Recovery Services]* を展開し、*[Site Recovery コンテナー]*クリックします。*
 3. *[新規作成]*、*[簡易作成]* の順にクリックします。
 
@@ -104,7 +104,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 	![[クイック スタート] アイコン](./media/site-recovery-vmm-to-azure/ASRE2AVMM_QuickStartIcon.png)
 
-2. [ドロップダウン リストで、**[オンプレミスの VMM サイトと Microsoft Azure 間]** を選択します。
+2. ドロップダウン リストで、**[オンプレミスの VMM サイトと Microsoft Azure 間]** を選択します。
 3. **[VMM サーバーの準備]** で、**[登録キーの生成]** ファイルをクリックします。キー ファイルは自動的に生成され、生成後 5 日間有効です。VMM サーバーから Azure ポータルにアクセスしていない場合は、このファイルをサーバーにコピーする必要があります。
 
 	![登録キー](./media/site-recovery-vmm-to-azure/ASRE2AVMM_RegisterKey.png)
@@ -131,16 +131,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 5. **[インターネット接続]** で、VMM サーバーで実行中のプロバイダーがインターネットに接続する方法を指定します。*[既定のシステム プロキシ設定を使用]* を選択して、サーバー上に構成されている既定のインターネット接続設定を使用します。
 
-	![インターネット設定](./media/site-recovery-vmm-to-azure/VMMASRRegisterProxyDetailsScreen.png)
-	- カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシの設定を構成すると、プロキシの接続を確認するためのテストが実行されます。
-	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合は、プロキシのアドレスやポートなど、プロキシの詳細を入力する必要があります。
-	- 次の URL は、VMM サーバーと、Hyper-V ホストからアクセスできる必要があります。
-		- *.hypervrecoverymanager.windowsazure.com
-		- *.accesscontrol.windows.net
-		- *.backup.windowsazure.com
-		- *.blob.core.windows.net
-		- *.store.core.windows.net
-	- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」および HTTPS (443) プロトコルで説明されている IP アドレスを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+	![インターネット設定](./media/site-recovery-vmm-to-azure/VMMASRRegisterProxyDetailsScreen.png) - カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシの設定を構成すると、プロキシの接続を確認するためのテストが実行されます。- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合は、プロキシのアドレスやポートなど、プロキシの詳細を入力する必要があります。- 次の URL は、VMM サーバーと、Hyper-V ホストからアクセスできる必要があります。 - *.hypervrecoverymanager.windowsazure.com - *.accesscontrol.windows.net - *.backup.windowsazure.com - *.blob.core.windows.net - *.store.core.windows.net - 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」および HTTPS (443) プロトコルで説明されている IP アドレスを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、[設定] ワークスペースを開いて [セキュリティ] を展開し、[実行アカウント] をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
 
@@ -162,29 +153,31 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 8. *[次へ]* をクリックしてプロセスを完了します。登録後に、VMM サーバーからのメタデータが、Azure Site Recovery によって取得されます。サーバーは、コンテナーの **[サーバー]** ページの *[VMM サーバー]* タブに表示されます。
 
 >[AZURE.NOTE]Azure Site Recovery プロバイダーは、次のコマンド ラインを使用してインストールすることもできます。このメソッドを使用すると、Windows Server 2012 R2 の Server CORE にプロバイダーをインストールできます。
->
->1. プロバイダーのインストール ファイルと登録キーを C:\\ASR などのフォルダーにダウンロードします。
->2. System Center Virtual Machine Manager サービスを停止します。
->3. **管理者**特権でコマンド プロンプトから次のコマンドを実行して、プロバイダーのインストーラーを抽出します。
->
+
+1. プロバイダーのインストール ファイルと登録キーを C:\\ASR などのフォルダーにダウンロードします。
+1. System Center Virtual Machine Manager サービスを停止します。
+1. **管理者**特権でコマンド プロンプトから次のコマンドを実行して、プロバイダーのインストーラーを抽出します。
+
     	C:\Windows\System32> CD C:\ASR
     	C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q
->4. 次のコマンドを実行して、プロバイダーをインストールします。
->
+1. 次のコマンドを実行して、プロバイダーをインストールします。
+
 		C:\ASR> setupdr.exe /i
->5. 次のコマンドを実行して、プロバイダーを登録します。
->
+1. 次のコマンドを実行して、プロバイダーを登録します。
+
     	CD C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin
-    	C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file> /EncryptionEnabled <full file name to save the encryption certificate>         
- ####コマンド ラインのインストール パラメーター一覧####
->
+    	C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file> /EncryptionEnabled <full file name to save the encryption certificate>       
+
+  
+#### コマンド ラインのインストール パラメーター一覧
+
  - **/Credentials**: 登録キー ファイルが配置されている場所を指定する必須パラメーターです。  
  - **/Friendlyname**: Azure Site Recovery ポータルに表示される、Hyper-V ホスト サーバーの名前を表す必須パラメーターです。
  - **/EncryptionEnabled**: 省略可能。VMM から Azure へのシナリオで、Azure にある仮想マシンの暗号化が必要な場合にのみ使用する必要があります。拡張子が **.pfx** のファイル名を指定してください。
  - **/proxyAddress**: 省略可能。プロキシ サーバーのアドレスを指定します。
  - **/proxyport**: 省略可能。プロキシ サーバーのポートを指定します。
  - **/proxyUsername**: 省略可能。プロキシのユーザー名を指定します (認証が必要なプロキシの場合)。
- - **/proxyPassword**: 省略可能。プロキシ サーバーの認証に使用するパスワードを指定します (認証が必要なプロキシの場合)。
+ - **/proxyPassword**: 省略可能。プロキシ サーバーの認証に使用するパスワードを指定します (認証が必要なプロキシの場合)。  
 
 
 ## ステップ 4: Azure のストレージ アカウントを作成する
@@ -276,7 +269,16 @@ VMM サーバーが登録されると、クラウドの保護設定を構成す�
 
 4. 仮想マシンのプロパティの [構成] タブでは、次のネットワークのプロパティを変更することができます。
 
-    1. ターゲット仮想マシンのネットワーク アダプターの数 - ターゲット仮想マシン上のネットワーク アダプターの数は、選択した仮想マシンのサイズに依存します。ターゲット仮想マシンのネットワーク アダプターの数は、ソース仮想マシン上のネットワーク アダプターの最小数と、選択した仮想マシンのサイズでサポートされているネットワーク アダプターの最大数です。  
+
+	1.  ターゲット仮想マシンのネットワーク アダプターの数: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。仮想マシンのサイズでサポートされている NIC の数については、「[仮想マシン サイズの仕様](../virtual-machines/virtual-machines-size-specs.md#size-tables)」を参照してください。 
+
+		仮想マシンのサイズを変更して、その設定を保存すると、次回 **[構成]** ページを開いたときにネットワーク アダプターの数が変わります。ターゲット仮想マシンのネットワーク アダプターの数は、最小でソース仮想マシン上のネットワーク アダプター数、最大で選択した仮想マシンのサイズでサポートされているネットワーク アダプター数となります。次に説明します。
+
+
+		- ソース マシン上のネットワーク アダプターの数が、ターゲット マシンのサイズに許可されているアダプターの数以下の場合、ターゲットのアダプターの数は、ソースと同じになります。
+		- ソース仮想マシン用のアダプターの数が、ターゲットのサイズに許可されている数を超える場合は、ターゲットの最大サイズが使用されます。
+		- たとえば、ソース マシンに 2 つのネットワーク アダプターがあり、ターゲット マシンのサイズが 4 つをサポートしている場合は、ターゲット マシンのアダプターの数は、2 つになります。ソース マシンに 2 つのアダプターがあるが、サポートされているターゲット サイズで 1 つしかサポートしていない場合、ターゲット マシンのアダプターの数は 1 つだけになります。 	
+
 
 	1. ターゲット仮想マシンの数 - 仮想マシンが接続するネットワークは、ソース仮想マシンのネットワークのネットワーク マッピングによって決まります。仮想マシンに 1 つ以上のネットワーク アダプターが含まれており、ソース ネットワークがターゲットの別のネットワークにマップされている場合、ユーザーはターゲット ネットワークのいずれかを選択する必要があります。
 
@@ -285,6 +287,8 @@ VMM サーバーが登録されると、クラウドの保護設定を構成す�
 	1. ターゲット IP - ソース仮想マシンのネットワーク アダプターが静的 IP を使用するように構成されている場合、ユーザーはターゲット仮想マシンの IP を指定することができます。ユーザーはこの機能を使用して、フェールオーバー後に、ソース仮想マシンの IP を保持することができます。IP が指定されていない場合は、フェールオーバー時に使用可能な IP がネットワーク アダプターに指定されます。ユーザーが指定したターゲット IP が、Azure で実行されている他の仮想マシンですでに使用されている場合は、フェールオーバーが失敗します。
 
 		![ネットワークのプロパティの変更](./media/site-recovery-vmm-to-azure/MultiNic.png)
+
+>[AZURE.NOTE]静的 IP アドレスを使用する Linux 仮想マシンはサポートされていません。
 
 ## デプロイのテスト
 デプロイをテストするために、1 台の仮想マシンに対するテスト フェールオーバーを実行することや、複数の仮想マシンで構成される復旧計画を作成して、その計画のテスト フェールオーバーを実行することができます。テスト フェールオーバーは、孤立したネットワークでフェールオーバーと復旧のシミュレーションを実行します。以下の点に注意してください。
@@ -356,4 +360,4 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 
 <LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI> </UL>
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -55,13 +55,11 @@
 
     ![][1]
 
-> [AZURE.IMPORTANT]Azure Mobile Engagement では、まだ Windows 10 ユニバーサル Windows アプリがサポートされていません。
-
 これで、Azure Mobile Engagement SDK を統合する新しい Windows ユニバーサル アプリ プロジェクトが作成されました。
 
 ###アプリを Mobile Engagement のバックエンドに接続する
 
-1. プロジェクトに [MicrosoftAzure.MobileEngagement] Nuget パッケージをインストールします。Windows と Windows Phone の両方のプラットフォームを対象としている場合、両方のプロジェクトにこれを行う必要があります。同じ Nuget パッケージが各プロジェクトに適切なプラットフォーム固有のバイナリを配置します。
+1. プロジェクトに [MicrosoftAzure.MobileEngagement] Nuget パッケージをインストールします。Windows と Windows Phone の両方のプラットフォームを対象としている場合、両方のプロジェクトにこれを行う必要があります。Windows 8.x および Windows Phone 8.1 の場合は、同じ Nuget パッケージが各プロジェクトに適切なプラットフォーム固有のバイナリを配置します。
 
 2. **Package.appxmanifest** を開き、そこに次の機能を追加します。
 
@@ -81,11 +79,20 @@
 
 			using Microsoft.Azure.Engagement;
 
-	b.**OnLaunched** メソッドで SDK を初期化します。
+	b.エンゲージメントの初期化および設定に専用のメソッドを追加します。
+
+           private void InitEngagement(IActivatedEventArgs e)
+           {
+             EngagementAgent.Instance.Init(e);
+
+			 //... rest of the code
+           }
+
+    c.**OnLaunched** メソッドで SDK を初期化します。
 
 			protected override void OnLaunched(LaunchActivatedEventArgs e)
 			{
-			  EngagementAgent.Instance.Init(e);
+			  InitEngagement(e);
 
 			  //... rest of the code
 			}
@@ -94,7 +101,7 @@
 
 			protected override void OnActivated(IActivatedEventArgs e)
 			{
-			  EngagementAgent.Instance.Init(e);
+			  InitEngagement(e);
 
 			  //... rest of the code
 			}
@@ -137,17 +144,9 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 
 ###REACH SDK を初期化する
 
-1. `App.xaml.cs` で、エージェント初期化の直後に **OnLaunched** 関数で **EngagementReach.Instance.Init();** を呼び出します。
+`App.xaml.cs` で、エージェント初期化の直後に **InitEngagement** 関数で **EngagementReach.Instance.Init(e);** を呼び出します。
 
-		protected override void OnLaunched(LaunchActivatedEventArgs e)
-		{
-		   EngagementAgent.Instance.Init(e);
-		   EngagementReach.Instance.Init(e);
-		}
-
-2. `App.xaml.cs` で、エージェント初期化の直後に **OnActivated** 関数で **EngagementReach.Instance.Init(e);** を呼び出します。
-
-		protected override void OnActivated(IActivatedEventArgs e)
+        private void InitEngagement(IActivatedEventArgs e)
 		{
 		   EngagementAgent.Instance.Init(e);
 		   EngagementReach.Instance.Init(e);
@@ -214,4 +213,4 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 [12]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_services_push_1.png
 [13]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_services_push_creds.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

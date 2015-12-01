@@ -12,70 +12,20 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="11/15/2015"
+    ms.date="11/17/2015"
     ms.author="awills"/>
 
 # iOS アプリの分析
 
-Visual Studio Application Insights を使用すると、使用状況、イベント、およびクラッシュに関してモバイル アプリケーションを監視できます。
+デバイスの開発運用のために 2 つのソリューションが提供されています。開発運用ワークフローおよびクラッシュ分析用の [HockeyApp](http://hockeyapp.net/) と、使用状況およびクラッシュ分析用の [Application Insights](app-insights-overview.md) です。
+
+[HockeyApp](http://hockeyapp.net/) は、iOS、OS X、Android、Windows デバイスのアプリ、および Xamarin、Cordova、Unity に基づくクロス プラットフォーム アプリを構築するためのモバイル開発運用ソリューションです。これを使用すると、ベータ テスト担当者にビルドを配布し、クラッシュ データを収集して、ユーザーからのフィードバックを得ることができます。このソリューションは Visual Studio Team Services と統合されており、ビルドのデプロイメントや作業項目の統合を簡単に行うことができます。詳細については [HockeyApp のナレッジ ベース](http://support.hockeyapp.net/kb)を参照し、[HockeyApp のブログ](http://hockeyapp.net/blog/)に常に注目してください。
 
 
-> [AZURE.NOTE]クラッシュ レポートの取得、分析、配布、およびフィードバックの管理には、[HockeyApp](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/hockeyapp-for-ios) をお勧めします。
-
-## 必要条件
-
-必要なものは次のとおりです。
-
-* [Microsoft Azure](http://azure.com) のサブスクリプションWindows、XBox Live、またはその他の Microsoft クラウド サービスで所有している Microsoft アカウントを使用してサインインします。
-* Xcode 6 以降。
-* SDK は iOS 6.0 以降がインストールされているデバイスで実行されます。
-
-## Application Insights リソースの作成
-
-[Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。iOS オプションを選択します。
-
-![[新規]、[開発者向けサービス]、[Application Insights] の順にクリックする](./media/app-insights-ios/11-new.png)
-
-表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。次に Azure にログインするときにこのブレードに戻るには、スタート画面でそのタイルを見つけてください。あるいは、[参照] ボタンをクリックして探します。
-
-## セットアップ
-
-[セットアップ ガイド](https://github.com/Microsoft/ApplicationInsights-iOS#setup)に従って、アプリに SDK をインストールしてください。
-
-## Application Insights でデータを表示する
-
-アプリを実行して、テレメトリを生成します。
-
-http://portal.azure.com に戻り、Application Insights リソースを参照します。
-
-**[検索]** をクリックして [[診断検索]][diagnostic] を開きます。ここには、最初のイベントが表示されます。何も表示されない場合は 1 ～ 2 分待機し、**[更新]** をクリックします。
-
-![[診断検索] をクリックする](./media/app-insights-ios/21-search.png)
-
-アプリケーションを使用すると、データが [概要] ブレードに表示されます。
-
-![[概要] ブレード](./media/app-insights-ios/22-oview.png)
-
-詳細情報を表示するグラフをクリックします。たとえば、クラッシュの場合は、次のようになります。
-
-![クラッシュのグラフをクリックする](./media/app-insights-ios/23-crashes.png)
-## <a name="usage"></a>次のステップ
-
-[アプリの使用状況の追跡][track]
-
-[診断検索][diagnostic]
-
-[メトリックス エクスプローラー][metrics]
-
-[トラブルシューティング][qna]
+使用状況の分析には [Application Insights SDK for iOS](https://github.com/Microsoft/ApplicationInsights-iOS) を使用します。アプリにサーバー側がある場合は、同じ Application Insights リソースにクライアントとサーバーのデータを送信できます。
 
 
-<!--Link references-->
+* [Application Insights for iOS を使ってみる](https://github.com/Microsoft/ApplicationInsights-iOS)。
+* [HockeyApp for Android を使ってみる](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/hockeyapp-for-ios)。
 
-[diagnostic]: app-insights-diagnostic-search.md
-[metrics]: app-insights-metrics-explorer.md
-[portal]: http://portal.azure.com/
-[qna]: app-insights-troubleshoot-faq.md
-[track]: app-insights-api-custom-events-metrics.md
-
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

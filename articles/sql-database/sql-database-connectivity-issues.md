@@ -31,7 +31,7 @@
 一過性の障害とは、根本的な原因が短時間で自然に解決するエラーです。一過性の障害を起こす偶発的原因として、Azure システムが、各種ワークロードの負荷分散を行うために行うハードウェア リソースの瞬間的切り替えがあります。この再構成の進行中、Azure SQL Database への接続が失われる可能性があります。
 
 
-クライアント プログラムで ADO.NET を使用している場合、**SqlException** のスローによって一過性の障害が報告されます。[SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages)のトピックの冒頭付近に一過性の障害の一覧があります。この表に記載されているエラー番号と **Number** プロパティを比較してください。
+クライアント プログラムで ADO.NET を使用している場合、**SqlException** のスローによって一過性の障害が報告されます。[SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)のトピックの冒頭付近に一過性の障害の一覧があります。この表に記載されているエラー番号と **Number** プロパティを比較してください。
 
 
 ### 接続とコマンド
@@ -94,7 +94,7 @@ ADO.NET を使用するクライアントの*ブロック期間*については�
 
 さまざまなプログラミング言語での再試行ロジックが使われているコード サンプルは次のリンクからアクセスできます。
 
-- [クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md) 
+- [クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
 
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
@@ -478,4 +478,4 @@ public bool IsTransient(Exception ex)
 
 - [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

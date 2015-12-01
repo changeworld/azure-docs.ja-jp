@@ -13,13 +13,11 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/15/2015"
+   ms.date="11/17/2015"
    ms.author="seanmck"/>
 
 # 開発環境を準備する
  開発コンピューターで [Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、ツールをインストールし、ローカル クラスターをセットアップする必要があります。
-
- >[AZURE.NOTE]次の手順は、新しいコンピューターを設定するためのものです。以前のバージョンの Service Fabric がインストールされている場合は、[開発環境の更新手順](service-fabric-update-your-development-environment.md)に従ってください。
 
 ## 前提条件
 ### サポートされるオペレーティング システムのバージョン
@@ -47,14 +45,6 @@ Service Fabric のコンポーネントは、Web Platform Installer によって
 
 自動的にインストールが続行します。
 
-## Azure PowerShell をインストールするには
-
-Service Fabric クラスターを構成するには、Azure PowerShell スクリプトをインストールする必要があります。
-
-Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?LinkId=320376) を実行してダウンロードおよびインストールすることができます。メッセージが表示されたら、**[実行]** をクリックします。Azure PowerShell モジュールおよびすべての依存関係がインストールされます。表示される指示に従って、インストールを完了します。
-
-> [AZURE.NOTE]PowerShell Installer のダウンロードだけを行う場合は、https://github.com/Azure/azure-powershell/releases にアクセスしてください。PowerShell コマンドレットのソース コードは、このリポジトリにもあります。
-
 ## PowerShell スクリプトの実行の有効化
 
 Service Fabric は、ローカル開発クラスターの作成、および Visual Studio からのアプリケーションのデプロイに、Windows PowerShell スクリプトを使用します。既定では、Windows はこれらのスクリプトの実行をブロックします。これらを有効にするには、PowerShell 実行ポリシーを変更する必要があります。管理者として PowerShell を開き、次のコマンドを入力します。
@@ -63,55 +53,17 @@ Service Fabric は、ローカル開発クラスターの作成、および Visu
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
 
-## ローカル クラスターをインストールして開始します。
-ローカル クラスターは、最終的に 1 台の開発用コンピューター上で稼働中に使用する複数のコンピューターのトポロジを表わしています。ローカル クラスターをセットアップするには次の手順に従います。
-
-
-1. その他のすべての PowerShell ウィンドウを閉じて、管理者として新しいウィンドウを起動します。
-
-2. クラスター セットアップ ディレクトリに移動します。
-
-    ```powershell
-    cd "$env:ProgramW6432\Microsoft SDKs\Service Fabric\ClusterSetup"
-    ```
-
-3. 実行
-
-    ```powershell
-    .\DevClusterSetup.ps1
-    ```
-
-すぐにノード情報と、クラスターが正常に作成されたことを示す出力が表示されます。Service Fabric ホスト サービスとネーム サービスの起動中に警告が表示されることがあります。これは正常なことであり、すぐにクラスターに関する基本的な情報が表示されます。
-
-> [AZURE.NOTE]ローカル クラスターは、Azure で実行されるものとまったく同じランタイムを使用します。シミュレートやエミュレートは実行されません。唯一の違いは、Azure の場合のようにノードが複数のコンピューターに分配されるのではなく、すべてのノードが 1 台のコンピューターで実行されることです。
-
-## クラスター セットアップの検証
-
-SDK に付属している Service Fabric エクスプローラー ツールを使用して、クラスターが正常に作成されたことを確認できます。
-
-1. 次のコマンドを実行して、Service Fabric Explorer を起動します。
-
-    ```powershell
-    . "$env:ProgramW6432\Microsoft SDKs\Service Fabric\Tools\ServiceFabricExplorer\ServiceFabricExplorer.exe"
-    ```
-
-2. 左上隅の [Onebox/ローカル クラスター] ノードを展開します。
-
-3. アプリケーションとノードのビューが緑になっていることを確認します。
-
-緑ではない要素があるか、エラーが表示されている場合は、しばらく待ってから [更新] ボタンをクリックします。引き続き問題がある場合は、「[セットアップのトラブルシューティング手順](service-fabric-troubleshoot-local-cluster-setup.md)」を確認してください。
-
 ## 次のステップ
 開発環境の設定が完了しました。これで、アプリのビルドと実行を開始できます。
 
+- [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
+- [ローカル クラスター上でアプリケーションをデプロイし管理する方法](service-fabric-get-started-with-a-local-cluster.md)
 - [プログラミング モデルについての詳細: Reliable Actors および Reliable Services](service-fabric-choose-framework.md)
-- [Reliable Services API の使用](service-fabric-reliable-services-quick-start.md)
-- [高信頼アクター API の使用](service-fabric-reliable-actors-get-started.md)
-- [GitHub での Service Fabric サンプルの確認](https://github.com/azure/servicefabric-samples)
+- [GitHub での Service Fabric サンプルの確認](https://aka.ms/servicefabricsamples)
 - [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
 [1]: http://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric キャンペーン ページ"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
 [3]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -18,7 +18,7 @@
 
 # Visual Studio で最初の Service Fabric アプリケーションを作成する
 
-Service Fabric SDK には、Service Fabric アプリケーションの作成、デバッグ、およびデプロイのためのテンプレートとツールを提供する Visual Studio 用アドインが含まれます。このトピックでは、Visual Studio で初めてのアプリケーションを作成するプロセスについて説明します。
+Service Fabric SDK には、Service Fabric アプリケーションの作成、デプロイ、およびデバッグのためのテンプレートとツールを提供する Visual Studio 用アドインが含まれます。このトピックでは、Visual Studio で初めてのアプリケーションを作成するプロセスについて説明します。
 
 ## 前提条件
 
@@ -54,11 +54,11 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 	- **アプリケーション定義**: アプリケーションは、アプリケーション マニフェストおよび関連するアプリケーション パラメーターのファイルによって定義されます。また、これらのファイルで、特定の環境専用にアプリケーションを構成することができます。
 
-  サービス プロジェクトのコンテンツの概要については、「[Reliable Services サービスの概要](service-fabric-reliable-services-quick-start.md)」を参照してください。
+    サービス プロジェクトのコンテンツの概要については、「[Reliable Services サービスの概要](service-fabric-reliable-services-quick-start.md)」を参照してください。
 
 ## アプリケーションをデプロイしデバッグする
 
-これでアプリケーションが用意できました。実行してみましょう。
+これでアプリケーションの用意ができたので、実行してみることができます。
 
 1. Visual Studio で F5 キーを押して、デバッグ用にアプリケーションをデプロイします。
 
@@ -88,9 +88,9 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 5. ローカル クラスター マネージャーのシステム トレイ アプリを右クリックし、[ローカル クラスターの管理] を選択してService Fabric Explorer を起動します。
 
-  ![ローカル クラスター マネージャーからサービス ファブリック エクスプ ローラーを起動する][systray-launch-sfx]
+    ![ローカル クラスター マネージャーから Service Fabric Explorer を起動する][systray-launch-sfx]
 
-  Service Fabric Explorer ではクラスターを視覚的に表現します。これには、クラスターにデプロイされた一連のアプリケーションや、クラスターを構成する一連の物理的なノードなども含まれます。
+    Service Fabric Explorer ではクラスターを視覚的に表現します。これには、クラスターにデプロイされた一連のアプリケーションや、クラスターを構成する一連の物理的なノードなども含まれます。Service Fabric Explorer の詳細については、「[クラスターの視覚化](service-fabric-visualizing-your-cluster)」を参照してください。
 
 6. 左側のウィンドウで、**[クラスター]、[ノード]** の順に展開し、コードが実行されているノードを見つけます。
 
@@ -102,14 +102,25 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 8. 診断イベント ビューアーに戻り、メッセージを確認します。イベントが実際には別のノードから取得されている場合でも、カウンターが継続的にインクリメントされていることに注意してください。
 
-  ![フェールオーバー後の診断イベント ビューアー][diagnostic-events-viewer-detail-post-failover]
+    ![フェールオーバー後の診断イベント ビューアー][diagnostic-events-viewer-detail-post-failover]
+
+### クリーンアップしています
+
+  まとめに入る前に、ローカル クラスターが非常に現実的であることを覚えておくことが重要です。デバッガーを停止し、Visual Studio を閉じた後でも、アプリケーションはバック グラウンドで実行し続けます。アプリケーションの性質によっては、このバックグラウンド アクティビティはコンピューター上の大量のリソースを占有する場合があります。この問題は、いくつかのオプションで管理することができます。
+
+  1. 個々のアプリケーションとそのデータのすべてを削除するには、Service Fabric Explorer で **[アプリケーションの削除]** を使用します。
+
+  2. クラスターをシャット ダウンするが、アプリケーションのデータとトレースは保持するという場合は、システム トレイ アプリで **[クラスターの停止]** をクリックします。
+
+  3. クラスターを完全に削除するには、システム トレイ アプリで **[クラスターの削除]** をクリックします。なお、このオプションを使用すると、次回 Visual Studio で F5 キーを押したときに、デプロイメントがさらに遅くなります。したがって、しばらくの間、ローカル クラスターを使用しない場合か、またはどうしてもリソースを解放する必要がある場合にのみ使用してください。
+
 
 
 ## 次のステップ
 
+- [WebAPI を使用してインターネットにサービスを公開する方法を参照](service-fabric-add-a-web-frontend.md)
 - [Azure でクラスターを作成する方法の説明](service-fabric-cluster-creation-via-portal.md)
 - [Reliable Services を作成する方法の説明](service-fabric-reliable-services-quick-start.md)
-- [WebAPI を使用してインターネットにサービスを公開する方法を参照](service-fabric-add-a-web-frontend.md)
 - [Reliable Actor プログラミング モデルを使用してサービスを作成してみる](service-fabric-reliable-actors-get-started.md)
 
 <!-- Image References -->
@@ -125,4 +136,4 @@ Service Fabric のアプリケーションには、アプリケーションの�
 [systray-launch-sfx]: ./media/service-fabric-create-your-first-application-in-visual-studio/launch-sfx.png
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

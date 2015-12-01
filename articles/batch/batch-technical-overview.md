@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Batch の技術概要 | Microsoft Azure"
+	pageTitle="Azure Batch サービスの基本 |Microsoft Azure"
 	description="大規模な並列ワークロードと HPC ワークロードに関する Azure Batch サービスの概念、ワークフロー、シナリオについて説明します。"
 	services="batch"
 	documentationCenter=""
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/26/2015"
+	ms.date="11/19/2015"
 	ms.author="danlep"/>
 
+# Azure Batch の基礎
 
-# 大規模な並列ワークロードと HPC ワークロードに関する Azure Batch の技術概要
 Azure Batch を使用すると、大規模な並列コンピューティングやハイ パフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行できます。Azure Batch は、多くのコンピューティング処理を要する作業を仮想マシン (コンピューティング ノード) の管理されたコレクション上で実行するようにスケジュール設定するためのプラットフォーム サービスです。ジョブのニーズに合わせてコンピューティング リソースをスケールすることができます。Batch サービスでは、Azure のコンピューティング リソースと大規模なバッチ ジョブをオンデマンドで、またはスケジュールに従って実行するようにプログラムで定義します。HPC クラスター、個々の仮想マシン、仮想ネットワーク、またはジョブ スケジューラの構成と管理を手動で行う必要がありません。
 
 ## ユース ケース
@@ -40,7 +40,7 @@ Batch は、本質的に並列である ("驚異的並列性" とも呼ばれま
 
 また、Batch で並列計算を実行すると、最終的により少ないステップで、より複雑な他の並列ワークロードを処理できます。
 
->[AZURE.NOTE]現時点では、Batch は、Windows Server ベースの仮想マシンで実行されるワークロードのみをサポートしています。また、現時点では、Message Passing Interface (MPI) アプリケーションはサポートしていません。
+>[AZURE.NOTE]現時点では、Batch は、Windows Server ベースの仮想マシンで実行されるワークロードのみをサポートしています。また、現時点では、Batch は Message Passing Interface (MPI) アプリケーションをサポートしていません。
 
 Batch と Azure 内の他の HPC ソリューション オプションとの比較については、「[Batch と HPC ソリューション](batch-hpc-solutions.md)」を参照してください。
 
@@ -48,7 +48,7 @@ Batch と Azure 内の他の HPC ソリューション オプションとの比�
 
 Batch API を使用した開発では、コンピューティング ノードのプールの作成と管理、およびプールで実行されるジョブとタスクのスケジュール設定を行います。オンデマンドで、スケジュールに従って、または [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) などのツールによって管理される大きなワークフローの一部として、ジョブやタスクを実行するクライアント アプリまたはフロントエンドを作成します。
 
-Basic の概念について詳しくは、「[Azure Batch の API の基本](batch-api-basics.md)」をご覧ください。
+Baｔｃｈ の概念について詳しくは、「[Azure Batch の API の基本](batch-api-basics.md)」をご覧ください。
 
 ### 必要となるアカウント
 
@@ -103,4 +103,4 @@ Batch API を使用する一般的なシナリオでは、数千個ものコン�
 [parallel]: ./media/batch-technical-overview/parallel.png
 [work_item_workflow]: ./media/batch-technical-overview/work_item_workflow.png
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -19,9 +19,7 @@
 
 #HTML アプリの作成
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)] 
-&nbsp;  
-<!--- [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]-->
+[AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]&nbsp; <!--- [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]-->
 
 >[AZURE.IMPORTANT]HTML/JavaScript アプリのクイック スタートは Azure ポータルから一時的に削除されているため、現在このトピックはモバイル アプリには適用されません。まもなく、再びサポートされるようになる予定です。モバイル アプリのプレビューが完了するまでお待ちください。
 
@@ -47,7 +45,11 @@ HTML アプリの他のすべての Mobile Apps チュートリアルを行う�
 
 ##新しい Mobile App バックエンドの作成
 
+新しいモバイル アプリ バックエンドを作成するには、次の手順に従います。
+
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
+
+これで、モバイル クライアント アプリケーションで使用できる Azure モバイル アプリ バックエンドのプロビジョニングが完了しました。次は、簡単な "todo list" バックエンドのサーバー プロジェクトをダウンロードして、それを Azure に発行します。
 
 ## サーバー プロジェクトのダウンロード
 
@@ -123,4 +125,4 @@ HTML アプリの他のすべての Mobile Apps チュートリアルを行う�
 [Visual Studio Community 2013]: https://www.visualstudio.com/downloads
  
 
-<!----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

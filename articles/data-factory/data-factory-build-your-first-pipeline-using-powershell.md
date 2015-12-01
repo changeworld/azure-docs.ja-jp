@@ -81,7 +81,7 @@
 		    }
 		}
 
-	**accountname** を Azure ストレージ アカウントの名前に、**accountkey** を Azure ストレージ アカウントのアクセス キーに置き換えます。ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピーおよび再生成](http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+	**accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピーおよび再生成](http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#view-copy-and-regenerate-storage-access-keys)」を参照してください。
 
 2.	Azure PowerShell で ADFGetStartedPSH フォルダーに切り替えます。
 3.	**New-AzureDataFactoryLinkedService** コマンドレットを使用して、リンクされたサービスを作成できます。このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、*ResourceGroupName* および *DataFactoryName* パラメーターの値を渡す必要があります。または、**Get-AzureDataFactory** を使用して **DataFactory** オブジェクトを取得すると、コマンドレットを実行するたびに *ResourceGroupName* と *DataFactoryName* を入力しなくてもオブジェクトを渡すことができます。**Get-AzureDataFactory** コマンドレットの出力を **$df** 変数に割り当てるには、次のコマンドを実行します。
@@ -112,7 +112,6 @@
 		      "version": "3.1",
 		      "clusterSize": 1,
 		      "timeToLive": "00:30:00",
-		      "jobsContainer": "adfjobs",
 		      "linkedServiceName": "StorageLinkedService"
 		    }
 		  }
@@ -125,14 +124,13 @@
 	バージョン | バージョン 3.1 の HDInsight を作成することを指定します。
 	ClusterSize | 1 ノードの HDInsight クラスターを作成します。
 	TimeToLive | 削除されるまでの HDInsight クラスターのアイドル時間を指定します。
-	JobsContainer | HDInsight によって生成されるログを保存するために作成されるジョブ コンテナーの名前を指定します。
 	linkedServiceName | HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。
 2. **New-AzureDataFactoryLinkedService** コマンドレットを実行して、HDInsightOnDemandLinkedService という名前のリンクされたサービスを作成します。
 
 		New-AzureDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
 
 
-### 出力データセットを作成します。
+### 出力データセットを作成する
 次に、Azure BLOB ストレージに格納されるデータを表す出力データセットを作成します。
 
 1.	以下の内容を記述した「OutputTable.json」という名前の JSON ファイルを C:\\ADFGetStartedPSH フォルダー内に作成します。
@@ -167,7 +165,7 @@
 
 1.	以下の内容を記述した「MyFirstPipelinePSH.json」という名前の JSON ファイルを C:\\ADFGetStartedPSH フォルダー内に作成します。
 
-	> [AZURE.IMPORTANT]**storageaccountname** を、JSON でのストレージ アカウントの名前に置き換えます。
+	> [AZURE.IMPORTANT]**storageaccountname** は、JSON でのストレージ アカウントの名前に置き換えます。
 
 		{
 		  "name": "MyFirstPipeline",
@@ -205,9 +203,9 @@
 
 	Hive スクリプト ファイル partitionweblogs.hql は、Azure ストレージ アカウント (scriptLinkedService によって指定され、StorageLinkedService という名前) および **script** という名前のコンテナーに格納されます。
 
-	**extendedProperties** セクションは、Hive 構成値 (例: ${hiveconf:PartitionedData}) として Hive スクリプトに渡される実行時設定を指定するために使用されます。
+	**defines** セクションは、Hive 構成値 (例: ${hiveconf:PartitionedData}) として Hive スクリプトに渡される実行時設定を指定するために使用されます。
 
-	パイプラインの **start** プロパティと **end** プロパティは、パイプラインのアクティブな期間を指定します。
+	パイプラインの **start** および **end** プロパティでは、パイプラインのアクティブな期間を指定します。
 
 	アクティビティ JSON では、Hive スクリプトがリンクされたサービス **HDInsightOnDemandLinkedService** によって指定されたコンピューティングで実行することを指定します。
 2. 次のコマンドを実行して、Data Factory テーブルを作成します。
@@ -274,4 +272,4 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 
 [cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->
