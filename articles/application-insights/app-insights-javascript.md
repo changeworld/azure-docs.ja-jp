@@ -150,7 +150,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 いずれかのイベントをクリックして、詳細を表示します。詳細ページで、[...] をクリックしてさらに詳しい情報を表示します。
 
-> [AZURE.NOTE][検索](app-insights-diagnostic-search.md)を利用する場合、単語全体が一致しなければならないことに注意してください。「Abou」と「bout」は「About」に一致しませんが、「Abou*」は一致します。検索語をワイルドカードで始めることもできません。たとえば、「*bou」を検索しても「About」とは一致しません。
+> [AZURE.NOTE] [検索](app-insights-diagnostic-search.md)を利用する場合、単語全体が一致しなければならないことに注意してください。「Abou」と「bout」は「About」に一致しませんが、「Abou*」は一致します。検索語をワイルドカードで始めることもできません。たとえば、「*bou」を検索しても「About」とは一致しません。
 
 > [診断検索の詳細](app-insights-diagnostic-search.md)
 
@@ -187,4 +187,4 @@ Web アプリが Application Insights に送信している利用統計情報を
 * [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
 * [ビルド - 測定 - 学習](app-insights-overview-usage.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!----HONumber=AcomDC_1125_2015-->
