@@ -761,4 +761,4 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [ssisclustercreate]: http://msdn.microsoft.com/library/mt146774(v=sql.120).aspx
 [ssisclusterdelete]: http://msdn.microsoft.com/library/mt146778(v=sql.120).aspx
 
-<!---HONumber=Nov15_HO4-->
+<!----HONumber=Nov15_HO4-->
