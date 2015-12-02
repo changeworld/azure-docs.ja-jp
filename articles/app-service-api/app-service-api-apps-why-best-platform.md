@@ -40,7 +40,7 @@ API Apps は、現在、パブリック プレビューで次の機能を提供�
 
 これらの機能は、ほんの一例にすぎません。API Apps で活用できるその他の機能については、「[Web Apps の概要](../app-service-web/app-service-web-overview.md)」を参照してください。
 
->[AZURE.NOTE][Azure API Management](../api-management/api-management-key-concepts.md) を使用することで、App Service API Apps でホストされる API へのクライアント アクセスを制御できます。API Apps では認証サービスを提供します。その他に、API Apps ではなく API Management が提供するアクセス管理機能もあります。たとえば、エンドポイント統合やスロットルなどです。
+>[AZURE.NOTE] [Azure API Management](../api-management/api-management-key-concepts.md) を使用することで、App Service API Apps でホストされる API へのクライアント アクセスを制御できます。API Apps では認証サービスを提供します。その他に、API Apps ではなく API Management が提供するアクセス管理機能もあります。たとえば、エンドポイント統合やスロットルなどです。
 >
 >API Apps は現在、パブリック プレビューの段階です。[App Service Web Apps](../app-service-web/app-service-web-overview.md) は、セキュリティで保護されたミッションクリティカルなアプリケーションを世界規模で構築およびホストするための一般公開 (GA) サービスです。現在、API を構築するために GA サービスをお探しなら、Web Apps をお勧めします。API Apps が一般公開されたら、既存の Web Apps を使用しつつ API Apps の追加機能を活用する手順をご案内します。
 
@@ -62,4 +62,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!----HONumber=Nov15_HO2-->

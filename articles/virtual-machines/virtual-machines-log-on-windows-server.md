@@ -46,7 +46,7 @@ Linux VM に接続する場合は、 「[Linux を実行する仮想マシンに
 
 	![仮想マシンへのログオン](./media/virtual-machines-log-on-windows-server/connectwindows.png)
 	
-> [AZURE.TIP][接続] ボタンを使用できない場合は、この記事の最後にあるトラブルシューティングのヒントを参照してください。
+> [AZURE.TIP] [接続] ボタンを使用できない場合は、この記事の最後にあるトラブルシューティングのヒントを参照してください。
 
 ## 仮想マシンへのログオン
 
@@ -61,4 +61,4 @@ Linux VM に接続する場合は、 「[Linux を実行する仮想マシンに
 
 これらのトピックで解決できない場合、または必要な情報が掲載されていない場合は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)」を参照してください。この記事では、一般的な問題の診断と解決の手順について説明します。
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=Nov15_HO3-->
