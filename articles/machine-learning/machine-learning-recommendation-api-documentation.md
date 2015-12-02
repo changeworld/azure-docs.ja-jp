@@ -47,11 +47,14 @@ Azure Machine Learning の Recommendations API は、10 個の倫理グループ
 
 ### 2\.2.順位付けのビルド
 
-特徴で推奨モデルを強化できますが、そのためには意味のある特徴を使用する必要があります。この目的のため、順位付けのビルドという、新しいビルドが導入されました。このビルドは、特徴の有用性を順位付けします。意味のある特徴は、順位付けのスコアが 2 以上のものです。どの特徴が意味があるのか理解したら、意味のある特徴のリスト (またはサブリスト) を使用して推奨事項のビルドをトリガーします。これらの特徴を使用して、ウォーム項目とコールド項目の両方を強化できます。ウォーム項目のために特徴を使用するには、`UseFeatureInModel` ビルド パラメーターを設定する必要があります。コールド項目のために特徴を使用するには、`AllowColdItemPlacement` ビルド パラメーターを有効にする必要があります。注: `UseFeatureInModel` を有効にせずに `AllowColdItemPlacement` を有効にすることはできません。
+特徴で推奨モデルを強化できますが、そのためには意味のある特徴を使用する必要があります。この目的のため、順位付けのビルドという、新しいビルドが導入されました。このビルドは、特徴の有用性を順位付けします。意味のある特徴は、順位付けのスコアが 2 以上のものです。
+どの特徴が意味があるのか理解したら、意味のある特徴のリスト (またはサブリスト) を使用して推奨事項のビルドをトリガーします。これらの特徴を使用して、ウォーム項目とコールド項目の両方を強化できます。ウォーム項目のために特徴を使用するには、`UseFeatureInModel` ビルド パラメーターを設定する必要があります。コールド項目のために特徴を使用するには、`AllowColdItemPlacement` ビルド パラメーターを有効にする必要があります。
+注: `UseFeatureInModel` を有効にせずに `AllowColdItemPlacement` を有効にすることはできません。
 
 ### 2\.3.推奨の理由
 
-推奨の理由は、特徴の使用のもう 1 つの側面です。実際、Azure Machine Learning Recommendations エンジンは推奨事項の説明 (理由) を提供するために特徴を使用でき、これによって推奨項目は推奨事項のコンシューマーにとってより信頼できるものになります。理由を有効にするには、推奨事項のビルドを要求する前に `AllowFeatureCorrelation` パラメーターと `ReasoningFeatureList` パラメーターをセットアップする必要があります。
+推奨の理由は、特徴の使用のもう 1 つの側面です。実際、Azure Machine Learning Recommendations エンジンは推奨事項の説明 (理由) を提供するために特徴を使用でき、これによって推奨項目は推奨事項のコンシューマーにとってより信頼できるものになります。
+理由を有効にするには、推奨事項のビルドを要求する前に `AllowFeatureCorrelation` パラメーターと `ReasoningFeatureList` パラメーターをセットアップする必要があります。
 
 ## 3\.制限事項
 
@@ -262,7 +265,9 @@ OData XML
 
 ### 5\.4.モデルの更新
 
-モデルの説明またはアクティブなビルド ID を更新することができます。<br> <ins>アクティブなビルド ID</ins> - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。<br> このメカニズムにより、推奨モデルが運用環境にあるときに、新しいモデルを構築して、それを運用環境に移行する前にテストすることができます。
+モデルの説明またはアクティブなビルド ID を更新することができます。<br>
+<ins>アクティブなビルド ID</ins> - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。<br>
+このメカニズムにより、推奨モデルが運用環境にあるときに、新しいモデルを構築して、それを運用環境に移行する前にテストすることができます。
 
 
 | HTTP メソッド | URI |
@@ -793,7 +798,11 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 </pre>
 
 ## 7\.ビジネス ルールのモデル
-ルールには 4 つのタイプがあります。<strong>BlockList</strong> - BlockList では、推奨事項の結果を返すときに除外する項目の一覧を指定できます。<strong>Upsale</strong> - Upsale では項目を強制的に推奨事項の結果の一部として返すことができます。<strong>WhiteList</strong> - WhiteList では、これ以外は推奨事項の結果として返せないという項目の一覧を指定できます (BlockList の反対)。<strong>PerSeedBlockList</strong> -PerSeedBlockList では、推奨事項の結果として返すことができない項目の一覧を項目ごとに指定できます。
+ルールには 4 つのタイプがあります。
+<strong>BlockList</strong> - BlockList では、推奨事項の結果を返すときに除外する項目の一覧を指定できます。
+<strong>Upsale</strong> - Upsale では項目を強制的に推奨事項の結果の一部として返すことができます。
+<strong>WhiteList</strong> - WhiteList では、これ以外は推奨事項の結果として返せないという項目の一覧を指定できます (BlockList の反対)。
+<strong>PerSeedBlockList</strong> -PerSeedBlockList では、推奨事項の結果として返すことができない項目の一覧を項目ごとに指定できます。
 
 
 ### 7\.1.モデルのルールの取得
@@ -861,11 +870,13 @@ OData XML
 |POST |`<rootURI>/AddRule?apiVersion=%271.0%27`|
 |ヘッダー |`"Content-Type", "text/xml"`|
 
-|	パラメーター名 |	有効な値 |
+|	パラメーター名	|	有効な値						|
 |:--------			|:--------								|
-|	apiVersion | 1\.0 |
+|	apiVersion		| 1.0 |
 |||
-| Request Body | <ins>BlockList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>Upsale ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"]}</Value></ApiFilter>`<br><br><ins>WhiteList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>PerSeedBlockList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
+| Request Body | 
+<ins>ビジネス ルールにアイテム ID を提供する際は、そのアイテムの 外部 ID が使用されていることを確認する(カタログ ファイルで使用した ID と同じ)</ins><br>
+<ins>BlockList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>Upsale ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"]}</Value></ApiFilter>`<br><br><ins>WhiteList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>PerSeedBlockList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 **応答**:
 
@@ -950,7 +961,7 @@ HTTP 状態コード: 200
 
 注: ファイルの最大サイズは、200 MB です。
 
-* * 形式の詳細 * *
+** 形式の詳細 **
 
 | 名前 | 必須 | 型 | 説明 |
 |:---|:---|:---|:---|
@@ -979,7 +990,9 @@ HTTP 状態コード: 200
 
 HTTP 状態コード: 200
 
-API は、インポートのレポートを返します。- `feed\entry\content\properties\LineCount` – 受け入れられた行数。 - `feed\entry\content\properties\ErrorCount` – エラーのために挿入されなかった行数。
+API は、インポートのレポートを返します。
+- `feed\entry\content\properties\LineCount` – 受け入れられた行数。
+- `feed\entry\content\properties\ErrorCount` – エラーのために挿入されなかった行数。
 
 OData XML
 
@@ -1324,7 +1337,8 @@ OData XML
   		</EventData>
 		</Event>
 
-**応答**: HTTP 状態コード: 200
+**応答**:
+HTTP 状態コード: 200
 
 ### 9\.2.モデルの使用状況ファイルの一覧
 すべてのモデルに関する使用状況ファイルのメタデータを取得します。
@@ -1494,7 +1508,24 @@ OData XML
 
 HTTP 状態コード: 200
 
-応答は未加工のテキスト形式で返されます。<pre> 85526,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 210926,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 116866,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 177458,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 274004,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 123883,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 37712,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 152249,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 250948,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 235588,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 158254,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 271195,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 141157,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 171118,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 225087,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 </pre>
+応答は未加工のテキスト形式で返されます。
+<pre>
+85526,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+210926,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+116866,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+177458,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+274004,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+123883,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+37712,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+152249,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+250948,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+235588,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+158254,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+271195,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+141157,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+171118,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+225087,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+</pre>
 
 
 ### 9\.5.モデルの使用状況ファイルの取得
@@ -1517,7 +1548,42 @@ HTTP 状態コード: 200
 
 HTTP 状態コード: 200
 
-応答は未加工のテキスト形式で返されます。<pre> 85526,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 210926,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 116866,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 177458,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 274004,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 123883,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 37712,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 152249,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 250948,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 235588,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 158254,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 271195,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 141157,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 171118,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 225087,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 244881,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 50547,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 213090,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 260655,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 72214,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 189334,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 36326,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 189336,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 189334,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 260655,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 162100,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 54946,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 260965,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 102758,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 112602,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 163925,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 262998,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 144717,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 </pre>
+応答は未加工のテキスト形式で返されます。
+<pre>
+85526,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+210926,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+116866,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+177458,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+274004,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+123883,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+37712,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+152249,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+250948,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+235588,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+158254,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+271195,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+141157,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+171118,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+225087,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+244881,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+50547,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+213090,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+260655,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+72214,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+189334,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+36326,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+189336,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+189334,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+260655,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+162100,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+54946,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+260965,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+102758,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+112602,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+163925,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+262998,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+144717,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+</pre>
 
 ### 9\.6.使用状況ファイルの削除
 指定されたモデルの使用状況ファイルを削除します。
@@ -1558,7 +1624,9 @@ HTTP 状態コード: 200
 HTTP 状態コード: 200
 
 ## 10\.特徴
-このセクションでは特徴の情報 (インポートされた特徴とその値、順位付け、この順位付けが割り当てられた時期など) を取得する方法を説明します。特徴は、カタログ データの一部としてインポートされ、順位付けのビルドが実行されたときに順位付けが関連付けられます。使用状況データと項目の種類のパターンに従って特徴の順位を変更できます。しかし、使用状況と項目の一貫性を保つため、順位付けの変動は小さくなければなりません。特徴の順位は負以外の数値です。数値 0 は、特徴が順位付けされていないことを意味します (最初の順位付けのビルドが完了する前にこの API を呼び出すと、これが発生します)。順位付けの日付をスコアの鮮度と言います。
+このセクションでは特徴の情報 (インポートされた特徴とその値、順位付け、この順位付けが割り当てられた時期など) を取得する方法を説明します。特徴は、カタログ データの一部としてインポートされ、順位付けのビルドが実行されたときに順位付けが関連付けられます。
+使用状況データと項目の種類のパターンに従って特徴の順位を変更できます。しかし、使用状況と項目の一貫性を保つため、順位付けの変動は小さくなければなりません。
+特徴の順位は負以外の数値です。数値 0 は、特徴が順位付けされていないことを意味します (最初の順位付けのビルドが完了する前にこの API を呼び出すと、これが発生します)。順位付けの日付をスコアの鮮度と言います。
 
 ### 10\.1.特徴の情報の取得 (最後の順位付けのビルド)
 前回成功した順位付けのビルドの特徴の情報 (順位付けを含む) を取得します。
@@ -1728,9 +1796,19 @@ OData
 
   このセクションでは、ビルドに関連する様々な API について説明します。ビルドには、推奨事項のビルド、順位付けのビルド、FBT (Frequently Bought Together) ビルドの 3 種類があります。
 
-推奨事項のビルドは、予測のために使用される推奨モデルの生成に使用されます。予測 (この種類のビルド用) には、次の 2 種類があります。* I2I - 別名項目から項目の推奨事項 - 項目や項目の一覧を前提に、このオプションでは関心が高いと思われる項目の一覧を予測します。* U2I - 別名ユーザーから項目の推奨事項 - ユーザー ID (と任意で項目の一覧) を前提に、このオプションでは、そのユーザー (とその項目におけるその他の選択肢) にとって関心が高いと思われる項目を予測します。U2I の推奨事項は、モデルが構築された時間までユーザーが関心があった項目の履歴に基づいています。
+推奨事項のビルドは、予測のために使用される推奨モデルの生成に使用されます。予測 (この種類のビルド用) には、次の 2 種類があります。
+* I2I - 別名項目から項目の推奨事項 - 項目や項目の一覧を前提に、このオプションでは関心が高いと思われる項目の一覧を予測します。
+* U2I - 別名ユーザーから項目の推奨事項 - ユーザー ID (と任意で項目の一覧) を前提に、このオプションでは、そのユーザー (とその項目におけるその他の選択肢) にとって関心が高いと思われる項目を予測します。U2I の推奨事項は、モデルが構築された時間までユーザーが関心があった項目の履歴に基づいています。
 
-順位付けのビルドは、特徴の有用性について知るための技術的なビルドです。通常、特徴に関連する推奨モデルについて最適な結果を得るには、次の手順を実行する必要があります。 - 順位付けのビルドをトリガーして (特徴のスコアが安定している場合を除く)、特徴のスコアが取得されるまで待ちます。 - [特徴の情報の取得](#101-get-features-info-for-last-rank-build) API を呼び出して、特徴の順位付けを取得します。 - 次のパラメーターを指定して推奨事項のビルドを構成します。 - `useFeatureInModel` - True に設定します。 - `ModelingFeatureList` - スコアが 2.0 以上 (前の手順で取得した順位に応じて変更します) の特徴のコンマ区切りのリストに設定します。 - `AllowColdItemPlacement` - True に設定します。 - オプションで`EnableFeatureCorrelation` を True に設定し、`ReasoningFeatureList` を説明に使用する特徴のリストに設定できます (通常はモデル化またはサブリストで使用される特徴のリストと同じです)。- 構成したパラメーターを使用して推奨事項のビルドをトリガーします。
+順位付けのビルドは、特徴の有用性について知るための技術的なビルドです。通常、特徴に関連する推奨モデルについて最適な結果を得るには、次の手順を実行する必要があります。
+- 順位付けのビルドをトリガーして (特徴のスコアが安定している場合を除く)、特徴のスコアが取得されるまで待ちます。
+- [特徴の情報の取得](#101-get-features-info-for-last-rank-build) API を呼び出して、特徴の順位付けを取得します。
+- 次のパラメーターを指定して推奨事項のビルドを構成します。
+	- `useFeatureInModel` - True に設定します。
+	- `ModelingFeatureList` - スコアが 2.0 以上 (前の手順で取得した順位に応じて変更します) の特徴のコンマ区切りのリストに設定します。
+	- `AllowColdItemPlacement` - True に設定します。
+	- オプションで`EnableFeatureCorrelation` を True に設定し、`ReasoningFeatureList` を説明に使用する特徴のリストに設定できます (通常はモデル化またはサブリストで使用される特徴のリストと同じです)。
+- 構成したパラメーターを使用して推奨事項のビルドをトリガーします。
 
 注: パラメーターを構成しない場合 (パラメーターなしで推奨事項のビルドを呼び出す場合など) や、特徴の使用状況を明示的に無効にしない場合 (`UseFeatureInModel` を False に設定する場合など)、順位付けのビルドが存在しているなら、システムは特徴に関連するパラメーターを前述の値に設定します。
 
@@ -1981,9 +2059,18 @@ HTTP 状態コード: 200
 - `feed/entry/content/properties/ExecutionTime` – ビルドの期間。
 - `feed/entry/content/properties/ProgressStep` - 進行中のビルドの現在のステージの詳細。
 
-有効なビルドの状態: - Created - ビルド要求のエントリが作成されました。 - Queued – ビルド要求がトリガーされ、キューに登録されました。 - Building – ビルドが処理中です。 - Success - ビルドが正常に終了しました。 - Error - ビルドがエラーで終了しました。 - Cancelled - ビルドは取り消されました。 - Cancelling - ビルドは取り消されます。
+有効なビルドの状態:
+- Created - ビルド要求のエントリが作成されました。
+- Queued – ビルド要求がトリガーされ、キューに登録されました。
+- Building – ビルドが処理中です。
+- Success - ビルドが正常に終了しました。
+- Error - ビルドがエラーで終了しました。
+- Cancelled - ビルドは取り消されました。
+- Cancelling - ビルドは取り消されます。
 
-ビルドの種類の有効な値: - Rank - 順位付けのビルド。 - Recommendation - 推奨事項のビルド。
+ビルドの種類の有効な値:
+- Rank - 順位付けのビルド。
+- Recommendation - 推奨事項のビルド。
 
 
 OData XML
@@ -2056,10 +2143,19 @@ HTTP 状態コード: 200
 - `feed/entry/content/properties/ExecutionTime` – ビルドの期間。
 - `feed/entry/content/properties/ProgressStep` - 進行中のビルドの現在のステージの詳細。
 
-有効なビルドの状態: - Created - ビルド要求のエントリが作成されました。 - Queued – ビルド要求がトリガーされ、キューに登録されました。 - Building – ビルドが処理中です。 - Success - ビルドが正常に終了しました。 - Error - ビルドがエラーで終了しました。 - Cancelled - ビルドは取り消されました。 - Cancelling - ビルドは取り消されます。
+有効なビルドの状態:
+- Created - ビルド要求のエントリが作成されました。
+- Queued – ビルド要求がトリガーされ、キューに登録されました。
+- Building – ビルドが処理中です。
+- Success - ビルドが正常に終了しました。
+- Error - ビルドがエラーで終了しました。
+- Cancelled - ビルドは取り消されました。
+- Cancelling - ビルドは取り消されます。
 
 
-ビルドの種類の有効な値: - Rank - 順位付けのビルド。 - Recommendation - 推奨事項のビルド。
+ビルドの種類の有効な値:
+- Rank - 順位付けのビルド。
+- Recommendation - 推奨事項のビルド。
 
 
 OData XML
@@ -2148,7 +2244,9 @@ HTTP 状態コード: 200
 
 HTTP 状態コード: 200
 
-この API は、キーと値の要素のコレクションを返します。各要素は、パラメーターとその値を表します。- `feed/entry/content/properties/Key` – ビルドのパラメーター名。 - `feed/entry/content/properties/Value` – ビルドのパラメーターの値。
+この API は、キーと値の要素のコレクションを返します。各要素は、パラメーターとその値を表します。
+- `feed/entry/content/properties/Key` – ビルドのパラメーター名。
+- `feed/entry/content/properties/Value` – ビルドのパラメーターの値。
 
 次の表は、各キーを表す値を示しています。
 
@@ -2358,7 +2456,11 @@ OData XML
 HTTP 状態コード: 200
 
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:- `Feed\entry\content\properties\Id` – 推奨項目の ID。 - `Feed\entry\content\properties\Name` – 項目の名前。–`Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。 - `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:
+- `Feed\entry\content\properties\Id` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name` – 項目の名前。
+- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
 
 次の応答例には、10 個の推奨項目が含まれています。
 
@@ -2535,7 +2637,11 @@ OData XML
 HTTP 状態コード: 200
 
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:- `Feed\entry\content\properties\Id` – 推奨項目の ID。 - `Feed\entry\content\properties\Name` – 項目の名前。–`Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。 - `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:
+- `Feed\entry\content\properties\Id` – 推奨項目の ID。 
+- `Feed\entry\content\properties\Name` – 項目の名前。
+- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2561,7 +2667,13 @@ HTTP 状態コード: 200
 HTTP ステータス コード: 200
 
 
-応答には、推奨項目セット (通常はシード/入力項目と共に購入した項目のセット) ごとに 1 つのエントリが含まれます。各エントリには次のデータが含まれます。- `Feed\entry\content\properties\Id1` – 推奨項目の ID。- `Feed\entry\content\properties\Name1` – 項目の名前。– `Feed\entry\content\properties\Id2` – 2 番目の推奨項目の ID (任意)。- `Feed\entry\content\properties\Name2` –2 番目の項目の名前 (任意)。- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目セット (通常はシード/入力項目と共に購入した項目のセット) ごとに 1 つのエントリが含まれます。各エントリには次のデータが含まれます。
+- `Feed\entry\content\properties\Id1` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name1` – 項目の名前。
+- `Feed\entry\content\properties\Id2` – 2 番目の推奨項目の ID (任意)。
+- `Feed\entry\content\properties\Name2` –2 番目の項目の名前 (任意)。
+- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
 
 次の応答例には、3 個の推奨項目セットが含まれています。
 
@@ -2647,7 +2759,13 @@ OData XML
 HTTP ステータス コード: 200
 
 
-応答には、推奨項目セット (通常はシード/入力項目と共に購入した項目のセット) ごとに 1 つのエントリが含まれます。各エントリには次のデータが含まれます。- `Feed\entry\content\properties\Id1` – 推奨項目の ID。- `Feed\entry\content\properties\Name1` – 項目の名前。– `Feed\entry\content\properties\Id2` – 2 番目の推奨項目の ID (任意)。- `Feed\entry\content\properties\Name2` –2 番目の項目の名前 (任意)。- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目セット (通常はシード/入力項目と共に購入した項目のセット) ごとに 1 つのエントリが含まれます。各エントリには次のデータが含まれます。
+- `Feed\entry\content\properties\Id1` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name1` – 項目の名前。
+- `Feed\entry\content\properties\Id2` – 2 番目の推奨項目の ID (任意)。
+- `Feed\entry\content\properties\Name2` –2 番目の項目の名前 (任意)。
+- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
 
 12\.3 の応答の例をご覧ください。
 
@@ -2657,7 +2775,9 @@ HTTP ステータス コード: 200
 
 API では、ユーザーの使用率の履歴に基づいて予測される項目の一覧を返します。
 
-注: 1．FBT ビルドに対するユーザーの推奨事項はありません。2.アクティブなビルドが FBT の場合、このメソッドはエラーを返します。
+注: 
+ 1. FBT ビルドに対するユーザーの推奨事項はありません。
+ 2. アクティブなビルドが FBT の場合、このメソッドはエラーを返します。
 
 | HTTP メソッド | URI |
 |:--------|:--------|
@@ -2676,7 +2796,11 @@ API では、ユーザーの使用率の履歴に基づいて予測される項�
 HTTP 状態コード: 200
 
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:- `Feed\entry\content\properties\Id` – 推奨項目の ID。 - `Feed\entry\content\properties\Name` – 項目の名前。–`Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。 - `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:
+- `Feed\entry\content\properties\Id` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name` – 項目の名前。
+- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2686,7 +2810,9 @@ HTTP 状態コード: 200
 
 API では、ユーザーとその他に提供された項目の使用率の履歴に基づいて予測される項目の一覧を返します。
 
-注: 1．FBT ビルドに対するユーザーの推奨事項はありません。2.アクティブなビルドが FBT の場合、このメソッドはエラーを返します。
+注: 
+ 1. FBT ビルドに対するユーザーの推奨事項はありません。
+ 2. アクティブなビルドが FBT の場合、このメソッドはエラーを返します。
 
 
 | HTTP メソッド | URI |
@@ -2707,7 +2833,11 @@ API では、ユーザーとその他に提供された項目の使用率の履�
 HTTP 状態コード: 200
 
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:- `Feed\entry\content\properties\Id` – 推奨項目の ID。 - `Feed\entry\content\properties\Name` – 項目の名前。–`Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。 - `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:
+- `Feed\entry\content\properties\Id` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name` – 項目の名前。
+- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2738,7 +2868,11 @@ API では、ユーザーの使用率の履歴 (特定のビルドで使用) に
 HTTP 状態コード: 200
 
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:- `Feed\entry\content\properties\Id` – 推奨項目の ID。 - `Feed\entry\content\properties\Name` – 項目の名前。–`Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。 - `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:
+- `Feed\entry\content\properties\Id` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name` – 項目の名前。
+- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2772,12 +2906,17 @@ API では、ユーザーとその他の項目リストにおける使用率の�
 HTTP 状態コード: 200
 
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:- `Feed\entry\content\properties\Id` – 推奨項目の ID。 - `Feed\entry\content\properties\Name` – 項目の名前。–`Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。 - `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:
+- `Feed\entry\content\properties\Id` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name` – 項目の名前。
+- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
 
 12\.1 の応答の例を参照してください。
 
 ## 13\.ユーザーの使用状況の履歴
-推奨モデルが構築されたら、システムでは構築に使用したユーザーの履歴 (特定のユーザーに関連する項目) を取得できるようになります。この API により、ユーザーの履歴が取得できます。
+推奨モデルが構築されたら、システムでは構築に使用したユーザーの履歴 (特定のユーザーに関連する項目) を取得できるようになります。
+この API により、ユーザーの履歴が取得できます。
 
 注: ユーザーの履歴は現在推奨設定のビルドに対してのみ利用できます。
 
@@ -2801,7 +2940,11 @@ HTTP 状態コード: 200
 
 HTTP 状態コード: 200
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには次のデータが含まれています。- `Feed\entry\content\properties\Id` – 推奨項目 ID。- `Feed\entry\content\properties\Name` –項目の名前。- `Feed\entry\content\properties\Rating` – 該当なし。 - `Feed\entry\content\properties\Reasoning` – 該当なし。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには次のデータが含まれています。
+- `Feed\entry\content\properties\Id` – 推奨項目 ID。
+- `Feed\entry\content\properties\Name` –項目の名前。
+- `Feed\entry\content\properties\Rating` – 該当なし。
+- `Feed\entry\content\properties\Reasoning` – 該当なし。
 
 OData XML
 
@@ -2831,7 +2974,10 @@ OData XML
 </feed>
 
 ## 14\.通知
-Azure Machine Learning Recommendations は、システムで永続的なエラーが発生した際に、通知を作成します。通知には 3 つの種類があります。1.ビルドの失敗 - この通知は、すべてのビルドの失敗により生成されます。2.データ取得プロセスの失敗 - この通知は、1 つのモデルの使用状況イベント処理で、最後の 5 分間に 100 を超えるエラーが発生した場合に生成されます。3.推奨の使用の失敗 - この通知は、1 つのモデルの推奨要求処理で、最後の 5 分間に 100 を超えるエラーが発生した場合に生成されます。
+Azure Machine Learning Recommendations は、システムで永続的なエラーが発生した際に、通知を作成します。通知には 3 つの種類があります。
+1.	ビルドの失敗 - この通知は、すべてのビルドの失敗により生成されます。
+2.	データ取得プロセスの失敗 - この通知は、1 つのモデルの使用状況イベント処理で、最後の 5 分間に 100 を超えるエラーが発生した場合に生成されます。
+3.	推奨の使用の失敗 - この通知は、1 つのモデルの推奨要求処理で、最後の 5 分間に 100 を超えるエラーが発生した場合に生成されます。
 
 
 ### 14\.1.通知の取得
@@ -2927,7 +3073,10 @@ HTTP ステータス コード: 200
 
 
 ## 15\.法的情報
-このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。<br><br> 使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。<br><br> このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br> © 2015 Microsoft.All rights reserved.
+このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。<br><br>
+使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。<br><br>
+このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br>
+© 2015 Microsoft.All rights reserved.
  
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=Nov15_HO3-->
