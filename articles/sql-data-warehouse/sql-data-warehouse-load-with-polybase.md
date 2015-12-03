@@ -58,7 +58,10 @@ Azure BLOB ストレージにアクセスするには、Azure ストレージ �
 
 1. データベースの資格情報が既に存在するかどうかを確認します。これを行うには、サーバーの資格情報を表示するだけの sys.credentials ではなく、sys.database\_credentials システム ビューを使用します。
 
-    ``` -- Check for existing database-scoped credentials.SELECT * FROM sys.database\_credentials;
+    ```
+    -- Check for existing database-scoped credentials.
+    SELECT * FROM sys.database_credentials;
+    ```
 
 3. [CREATE CREDENTIAL (Transact-SQL)][] を使用して、アクセスする Azure ストレージ アカウントごとにデータベース スコープの資格情報を作成します。次の例では、IDENTITY は資格情報を表すわかりやすい名前になっています。この名前は Azure ストレージへの認証には影響を及ぼしません。SECRET は Azure ストレージ アカウント キーです。
 
@@ -290,39 +293,39 @@ Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name>
 
 以下のコード サンプルはやや複雑ですが、ソースからターゲットにデータ行をストリームするため、はるかに効率的です。この方法は、大規模なファイル向けです。
 
-```
-#Static variables
-$ascii = [System.Text.Encoding]::ASCII
-$utf16le = [System.Text.Encoding]::Unicode
-$utf8 = [System.Text.Encoding]::UTF8
-$ansi = [System.Text.Encoding]::Default
-$append = $False
 
-#Set source file path and file name
-$src = [System.IO.Path]::Combine("C:\input_file_path","input_file_name.txt")
+	#Static variables
+	$ascii = [System.Text.Encoding]::ASCII
+	$utf16le = [System.Text.Encoding]::Unicode
+	$utf8 = [System.Text.Encoding]::UTF8
+	$ansi = [System.Text.Encoding]::Default
+	$append = $False
+	
+	#Set source file path and file name
+	$src = [System.IO.Path]::Combine("C:\input_file_path","input_file_name.txt")
+	
+	#Set source file encoding (using list above)
+	$src_enc = $ansi
+	
+	#Set target file path and file name
+	$tgt = [System.IO.Path]::Combine("C:\output_file_path","output_file_name.txt")
+	
+	#Set target file encoding (using list above)
+	$tgt_enc = $utf8
+	
+	$read = New-Object System.IO.StreamReader($src,$src_enc)
+	$write = New-Object System.IO.StreamWriter($tgt,$append,$tgt_enc)
+	
+	while ($read.Peek() -ne -1)
+	{
+	    $line = $read.ReadLine();
+	    $write.WriteLine($line);
+	}
+	$read.Close()
+	$read.Dispose()
+	$write.Close()
+	$write.Dispose()
 
-#Set source file encoding (using list above)
-$src_enc = $ansi
-
-#Set target file path and file name
-$tgt = [System.IO.Path]::Combine("C:\output_file_path","output_file_name.txt")
-
-#Set target file encoding (using list above)
-$tgt_enc = $utf8
-
-$read = New-Object System.IO.StreamReader($src,$src_enc)
-$write = New-Object System.IO.StreamWriter($tgt,$append,$tgt_enc)
-
-while ($read.Peek() -ne -1)
-{
-    $line = $read.ReadLine();
-    $write.WriteLine($line);
-}
-$read.Close()
-$read.Dispose()
-$write.Close()
-$write.Dispose()
-```
 
 ## 次のステップ
 開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
@@ -357,4 +360,4 @@ $write.Dispose()
 [CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189522.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189450.aspx
 
-<!---HONumber=Nov15_HO3-->
+<!-----HONumber=Nov15_HO3-->

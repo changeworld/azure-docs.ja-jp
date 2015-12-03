@@ -82,7 +82,7 @@ Application Gateway を作成するには、次の手順を順番に実行する
 	Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
 
 
- *Description*、*InstanceCount*、および *GatewaySize* は省略可能なパラメーターです。
+ *Description*、 *InstanceCount*、 および *GatewaySize* は省略可能なパラメーターです。
 
 
 ゲートウェイが作成されたことを**確認する**には、`Get-AzureApplicationGateway` コマンドレットを使用します。
@@ -101,10 +101,10 @@ Application Gateway を作成するには、次の手順を順番に実行する
 	VirtualIPs    : {}
 	DnsName       :
 
->[AZURE.NOTE]*InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Small、Medium、Large から選択します。
+>[AZURE.NOTE]  *InstanceCount* の既定値は 2、最大値は 10 です。 *GatewaySize* の既定値は Medium です。Small、Medium、Large から選択します。
 
 
- ゲートウェイがまだ起動していないため、*Vip* と *DnsName* は空白のまま表示されます。これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
+ ゲートウェイがまだ起動していないため、 *Vip* と *DnsName* は空白のまま表示されます。これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
 
 ## Application Gateway の構成
 
@@ -420,4 +420,4 @@ ILB とともに使用するように Application Gateway を構成する場合�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=Nov15_HO4-->
+<!----HONumber=Nov15_HO4-->

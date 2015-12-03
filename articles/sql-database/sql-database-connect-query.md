@@ -43,7 +43,7 @@ C# クエリ コード サンプルを実行するには、以下のものが必
  - [デモ データベースの作成](sql-database-get-started.md)は数分で完了します。
 
 
-- Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を*無料*で提供しています。
+- Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を *無料* で提供しています。
  - [Visual Studio Community のダウンロード](http://www.visualstudio.com/products/visual-studio-community-vs)
  - [その他の無料版 Visual Studio の選択肢](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
  - または、このトピックで後述する[手順](#InstallVSForFree)に従い、[Azure プレビュー ポータル](http://portal.azure.com/)のガイドを利用して Visual Studio をインストールすることができます。
@@ -324,7 +324,8 @@ IP アドレスは、[Azure プレビュー ポータル](http://portal.azure.co
 
 
 
-詳細については、<br/>「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+詳細については、<br/>
+「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 
 
@@ -358,4 +359,4 @@ IP アドレスは、[Azure プレビュー ポータル](http://portal.azure.co
 
 [50-VSCopyToOutputDirectoryProperty]: ./media/sql-database-connect-query/connqry-vs-appconfig-copytoputputdir-h.png
 
-<!---HONumber=Nov15_HO4-->
+<!----HONumber=Nov15_HO4-->

@@ -114,7 +114,7 @@
 [認証の使用]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md
 [プッシュ通知の使用]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md
 
-[オフライン データの同期の使用]: mobile-services-windows-store-dotnet-get-started-offline-data.md
+[「オフライン データの同期の使用」]: mobile-services-windows-store-dotnet-get-started-offline-data.md
 
 [Azure Management Portal]: https://manage.windowsazure.com/
 [Management Portal]: https://manage.windowsazure.com/
@@ -124,4 +124,4 @@
 [MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
   
 
-<!---HONumber=Nov15_HO4-->
+<!----HONumber=Nov15_HO4-->
