@@ -234,8 +234,8 @@ typeProperties | typeProperties セクションのプロパティは、アクテ
 policy | アクティビティの実行時の動作に影響を与えるポリシー。指定されていない場合は、既定のポリシーが使用されます。詳細については後で説明します | ×
 start | パイプラインの開始日時。[ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)にする必要があります。(例: 2014-10-14T16:32:41Z)。<p>start プロパティと end プロパティで、パイプラインの有効期間を指定します。出力スライスは、この有効期間にのみ生成されます。</p> | ×<p>end プロパティの値を指定する場合、start プロパティの値も指定する必要があります。</p><p>パイプラインを作成するには、開始時間と終了時間の両方を空にする必要がありますが、パイプラインを実行できる有効期間を設定するには、両方の時間を指定する必要があります。パイプラインの作成時に開始時間と終了時間を指定しない場合、後で Set-AzureDataFactoryPipelineActivePeriod コマンドレットを使用して設定できます。</p>
 end | パイプラインの終了日時。ISO 形式で指定する必要があります。例: 2014-10-14T17:32:41Z <p>無期限でパイプラインを実行するには、end プロパティの値として 9999-09-09 を指定します。</p>| × <p>start プロパティの値を指定する場合、end プロパティの値も指定する必要があります。</p><p>**start** プロパティの注意事項を参照してください。</p>
-isPaused | true に設定すると、パイプラインは実行されません。既定値 = false。このプロパティを使用して有効または無効にできます。 |
-× scheduler | アクティビティのスケジュールを定義します。サブプロパティは、[データセットの availability プロパティ](data-factory-create-datasets.md#Availability)と同じです。| × | 
+isPaused | true に設定すると、パイプラインは実行されません。既定値 = false。このプロパティを使用して有効または無効にできます。 | × 
+scheduler | アクティビティのスケジュールを定義します。サブプロパティは、[データセットの availability プロパティ](data-factory-create-datasets.md#Availability)と同じです。| × | 
 
 ### アクティビティの種類
 Azure Data Factory には、[データ移動](data-factory-data-movement-activities.md)および[データ変換](data-factory-data-transformation-activities.md)のための広範なアクティビティがあります。
@@ -335,4 +335,4 @@ REST API を使用してパイプラインを作成およびデプロイする�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=Nov15_HO3-->

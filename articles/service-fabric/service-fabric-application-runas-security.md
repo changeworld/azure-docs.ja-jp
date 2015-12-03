@@ -88,11 +88,25 @@ Service Fabric では、"RunAs" と呼ばれる別のユーザー アカウン�
 
 ![SetupEntryPoint バッチ ファイルの Visual Studio CopyToOutput][Image1]
 
-次に、MySetup.bat ファイルを開き、次のコマンドを追加します。~~~ REM Set a system environment variable.This requires administrator privilege setx -m TestVariable "MyValue" echo System TestVariable set to > test.txt echo %TestVariable% >> test.txt
+次に、MySetup.bat ファイルを開き、次のコマンドを追加します。
+~~~
+REM Set a system environment variable.This requires administrator privilege
+setx -m TestVariable "MyValue"
+echo System TestVariable set to > test.txt
+echo %TestVariable% >> test.txt
 
-REM To delete this system variable us REM REG delete "HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment" /v TestVariable /f ~~~
+REM To delete this system variable us
+REM REG delete "HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment" /v TestVariable /f
+~~~
 
-次に、ソリューションをビルドして、開発用のローカル クラスターにデプロイします。サービスが開始した後、Service Fabric Explorer で示されるように、MySetup.bat が成功したことを 2 つの方法で確認できます。PowerShell コマンド プロンプトを開き、次のように入力します。~~~ [Environment]::GetEnvironmentVariable("TestVariable","Machine") ~~~ Like this ~~~ PS C:\\ [Environment]::GetEnvironmentVariable("TestVariable","Machine") MyValue ~~~
+次に、ソリューションをビルドして、開発用のローカル クラスターにデプロイします。サービスが開始した後、Service Fabric Explorer で示されるように、MySetup.bat が成功したことを 2 つの方法で確認できます。PowerShell コマンド プロンプトを開き、次のように入力します。
+~~~
+ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
+~~~
+Like this
+~~~
+PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine") MyValue
+~~~
 
 もう 1 つの方法は、サービスがデプロイされて開始されたノードの名前を Service Fabric Explorer で確認し (例: Node 1)、アプリケーション インスタンスの作業フォルダーに移動して、out.txt ファイルで **TestVariable** の値を調べます。たとえば、これが Node 2 にデプロイされた場合、MyApplicationType の次のパスに移動します。
 
@@ -103,9 +117,16 @@ C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ##  SetupEntryPoint からの PowerShell コマンドの起動
 **SetupEntryPoint** ポイントから PowerShell を実行するには、PowerShell ファイルを指し示すバッチ ファイルで PowerShell.exe を実行します。最初に、PowerShell ファイル (例: MySetup.ps1) をサービス プロジェクトに追加します。このファイルがサービス パッケージにも含まれるように、*[新しい場合はコピーする]* プロパティを忘れずに設定します。システム環境変数 *TestVariable* を設定する PowerShell ファイル MySetup.ps1 を起動するバッチ ファイルの例を次に示します。
 
-PowerShell ファイルを起動する MySetup.bat。 ~~~ powershell.exe -ExecutionPolicy Bypass -Command ".\\MySetup.ps1" ~~~
+PowerShell ファイルを起動する MySetup.bat。
+~~~
+powershell.exe -ExecutionPolicy Bypass -Command ".\\MySetup.ps1"
+~~~
 
-PowerShell ファイルには、システム環境変数を設定する次のコマンドを追加します。 ~~~ [Environment]::SetEnvironmentVariable("TestVariable", "MyValue", "Machine") [Environment]::GetEnvironmentVariable("TestVariable","Machine") > out.txt ~~~
+PowerShell ファイルには、システム環境変数を設定する次のコマンドを追加します。
+~~~
+[Environment]::SetEnvironmentVariable("TestVariable", "MyValue", "Machine")
+[Environment]::GetEnvironmentVariable("TestVariable","Machine") > out.txt
+~~~
 
 ## サービスへの RunAsPolicy の適用 
 上の手順では、SetupEntryPoint に RunAs ポリシーを適用する方法を説明しました。ここでは、サービス ポリシーとして適用できる別のプリンシパルを作成する方法をもう少し詳しく説明します。
@@ -266,4 +287,4 @@ https エンドポイントの場合は、**EndpointBindingPolicy** のクライ
 
 [Image1]: media/service-fabric-application-runas-security/copy-to-output.png
 
-<!---HONumber=Nov15_HO4-->
+<!----HONumber=Nov15_HO4-->

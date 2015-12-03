@@ -58,7 +58,10 @@ Azure BLOB ストレージにアクセスするには、Azure ストレージ �
 
 1. データベースの資格情報が既に存在するかどうかを確認します。これを行うには、サーバーの資格情報を表示するだけの sys.credentials ではなく、sys.database\_credentials システム ビューを使用します。
 
-    ``` -- Check for existing database-scoped credentials.SELECT * FROM sys.database\_credentials;
+    ```
+    -- Check for existing database-scoped credentials.
+    SELECT * FROM sys.database_credentials;
+    ```
 
 3. [CREATE CREDENTIAL (Transact-SQL)][] を使用して、アクセスする Azure ストレージ アカウントごとにデータベース スコープの資格情報を作成します。次の例では、IDENTITY は資格情報を表すわかりやすい名前になっています。この名前は Azure ストレージへの認証には影響を及ぼしません。SECRET は Azure ストレージ アカウント キーです。
 
@@ -357,4 +360,4 @@ $write.Dispose()
 [CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189522.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189450.aspx
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=Nov15_HO3-->

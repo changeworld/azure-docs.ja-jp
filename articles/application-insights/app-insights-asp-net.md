@@ -65,7 +65,7 @@ Visual Studio に新しいプロジェクトを作成するとき、Application 
 
 このコマンドによって次の手順が実行されます (必要に応じて、代わりに[手動で実行](app-insights-start-monitoring-app-health-usage.md)できます)。
 
-* [Azure ポータル][portal]に Application Insights のリソースが作成されます。ここにデータが表示されます。リソースを識別する*インストルメンテーション キー*を取得します。
+* [Azure ポータル][portal]に Application Insights のリソースが作成されます。ここにデータが表示されます。リソースを識別する *インストルメンテーション キー* を取得します。
 * プロジェクトに Application Insights Web SDK NuGet パッケージが追加されます。Visual Studio で表示するには、プロジェクトを右クリックし、[NuGet パッケージの管理] を選択します。
 * インストルメンテーション キーが `ApplicationInsights.config` に配置されます。
 
@@ -168,4 +168,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=Nov15_HO4-->
+<!----HONumber=Nov15_HO4-->
