@@ -294,6 +294,38 @@ Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name>
 以下のコード サンプルはやや複雑ですが、ソースからターゲットにデータ行をストリームするため、はるかに効率的です。この方法は、大規模なファイル向けです。
 
 
+	#Static variables
+	$ascii = [System.Text.Encoding]::ASCII
+	$utf16le = [System.Text.Encoding]::Unicode
+	$utf8 = [System.Text.Encoding]::UTF8
+	$ansi = [System.Text.Encoding]::Default
+	$append = $False
+	
+	#Set source file path and file name
+	$src = [System.IO.Path]::Combine("C:\input_file_path","input_file_name.txt")
+	
+	#Set source file encoding (using list above)
+	$src_enc = $ansi
+	
+	#Set target file path and file name
+	$tgt = [System.IO.Path]::Combine("C:\output_file_path","output_file_name.txt")
+	
+	#Set target file encoding (using list above)
+	$tgt_enc = $utf8
+	
+	$read = New-Object System.IO.StreamReader($src,$src_enc)
+	$write = New-Object System.IO.StreamWriter($tgt,$append,$tgt_enc)
+	
+	while ($read.Peek() -ne -1)
+	{
+	    $line = $read.ReadLine();
+	    $write.WriteLine($line);
+	}
+	$read.Close()
+	$read.Dispose()
+	$write.Close()
+	$write.Dispose()
+
 
 ## 次のステップ
 開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
