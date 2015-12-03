@@ -360,4 +360,4 @@ Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name>
 [CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189522.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189450.aspx
 
-<!-----HONumber=Nov15_HO3-->
+<!------HONumber=Nov15_HO3-->
