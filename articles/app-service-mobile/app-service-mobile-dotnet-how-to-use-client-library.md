@@ -18,7 +18,8 @@
 
 # Azure Mobile Apps 用の管理されたクライアントの使用方法
 
-[AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]&nbsp;
+[AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
+&nbsp;
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
@@ -51,7 +52,8 @@
 次のコードは、モバイル アプリ バックエンドにアクセスするために使用される `MobileServiceClient` オブジェクトを作成します。
 
 
-	MobileServiceClient client = new MobileServiceClient("MOBILE_APP_URL");
+	MobileServiceClient client = new MobileServiceClient(
+		"MOBILE_APP_URL", "", "");
 
 上記のコードで、`MOBILE_APP_URL` を、Azure プレビュー ポータルの [モバイル アプリ] ブレードで確認できるモバイル アプリ バックエンドの URL に置き換えます。
 
@@ -254,7 +256,12 @@ Mobile Apps は、テーブルの **id** 列で一意のカスタム文字列値
 
 	await todoTable.UpdateAsync(todoItem);
 
-型指定されていないデータを挿入するには、次のような Json.NET を利用できます。 JObject jo = new JObject(); jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D"); jo.Add("Text", "Hello World"); jo.Add("Complete", false); var inserted = await table.UpdateAsync(jo);
+型指定されていないデータを挿入するには、次のような Json.NET を利用できます。
+	JObject jo = new JObject();
+	jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
+	jo.Add("Text", "Hello World");
+	jo.Add("Complete", false);
+	var inserted = await table.UpdateAsync(jo);
 
 更新を行うときは ID を指定する必要があることに注意してください。バックエンドはそれによって更新するインスタンスを識別します。ID は、`InsertAsync` の呼び出しの結果から取得できます。"ID" の値を指定しないで項目を更新しようとすると、`ArgumentException` が発生します。
 
@@ -306,7 +313,7 @@ Mobile Apps クライアントでは、Azure Notification Hubs によるプッ�
 <!--- Remove until Xamarin.Android push is supported.
 Xamarin apps require some additional code to be able to register a Xamarin app running on iOS or Android app with the Apple Push Notification Service (APNS) and Google Cloud Messaging (GCM) services, respectively. For more information see **Add push notifications to your app** ([Xamarin.iOS](partner-xamarin-mobile-services-ios-get-started-push.md#add-push) | [Xamarin.Android](partner-xamarin-mobile-services-android-get-started-push.md#add-push)).
 
->[AZURE.NOTE]When you need to send notifications to specific registered users, it is important to require authentication before registration, and then verify that the user is authorized to register with a specific tag. For example, you must check to make sure a user doesn't register with a tag that is someone else's user ID. For more information, see [Send push notifications to authenticated users](mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users.md).
+>[AZURE.NOTE]特定の登録されたユーザーに通知を送信する必要がある場合は、登録前に認証を要求し、特定のタグへの登録をユーザーが許可されていることを確認することが重要です。 たとえば、ユーザーが他のユーザーの ID であるタグに登録していないことを確認する必要があります。 For more information, see [Send push notifications to authenticated users](mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users.md).
 >-->
 
 ## 方法: プッシュ テンプレートを登録してクロス プラットフォーム通知を送信する

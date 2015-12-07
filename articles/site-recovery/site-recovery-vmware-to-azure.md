@@ -185,11 +185,11 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 **パブリック インターネット:** オンプレミスのサーバー (プロセス サーバー、保護対象サーバー) と Azure インフラストラクチャ コンポーネントのサーバー (構成サーバー、マスター ターゲット サーバー) 間におけるデータの通信とレプリケーションは、オンプレミスから、構成サーバーとマスター ターゲット サーバー上のパブリック エンドポイントへの安全な SSL/TLS 接続上で行われます。(唯一の例外は、プロセス サーバーとマスター ターゲット サーバー間の TCP ポート 9080 上の接続です。この接続は暗号化されません。レプリケーション プロトコルに関連して、レプリケーションのセットアップに使用される制御情報だけがこの接続でやり取りされます)。
 
-![インターネットのデプロイメント図](./media/site-recovery-vmware-to-azure/ASRVmware_deploymentInternet.png)
+![Deployment diagram internet](./media/site-recovery-vmware-to-azure/ASRVmware_deploymentInternet.png)
 
 **VPN:** オンプレミスのサーバー (プロセス サーバー、保護対象サーバー) と Azure インフラストラクチャ コンポーネントのサーバー (構成サーバー、マスター ターゲット サーバー) 間におけるデータの通信とレプリケーションは、オンプレミス ネットワークと、構成サーバーおよびマスター ターゲット サーバーのデプロイ先となる Azure Virtual Network とを結ぶ VPN 接続上で行われます。オンプレミス ネットワークが、ExpressRoute 接続またはサイト間 VPN 接続で Azure Virtual Network に接続されていることを確認してください。
 
-![VPN のデプロイメント図](./media/site-recovery-vmware-to-azure/ASRVmware_deploymentVPN.png)
+![Deployment diagram VPN](./media/site-recovery-vmware-to-azure/ASRVmware_deploymentVPN.png)
 
 
 ## ステップ 1: コンテナーの作成
@@ -273,12 +273,12 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 	- **[次へ]** をクリックすると、プロキシの接続を確認するテストが実行されます。
 	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合、アドレス、ポート、資格情報などの詳細を入力する必要があります。
 	- 次の URL にプロキシ経由でアクセスできる必要があります。
-		- **.hypervrecoverymanager.windowsazure.com
-- **.accesscontrol.windows.net
-- **.backup.windowsazure.com
-- **.blob.core.windows.net
-- **.store.core.windows.net
-- IP アドレス ベースのファイアウォール ルールがある場合は、構成サーバーから「[Azure Datacenter の IP 範囲](https://msdn.microsoft.com/ja-JP/library/azure/dn175718.aspx)」で説明されている IP アドレスへの通信および HTTPS (443) プロトコルを許可するようにルールが設定されていることを確認します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+		- *.hypervrecoverymanager.windowsazure.com
+		- *.accesscontrol.windows.net
+		- *.backup.windowsazure.com
+		- *.blob.core.windows.net
+		- *.store.core.windows.net
+	- IP アドレス ベースのファイアウォール ルールがある場合は、構成サーバーから「[Azure Datacenter の IP 範囲](https://msdn.microsoft.com/ja-jp/library/azure/dn175718.aspx)」で説明されている IP アドレスへの通信および HTTPS (443) プロトコルを許可するようにルールが設定されていることを確認します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
 	![プロキシの登録](./media/site-recovery-vmware-to-azure/ASRVMWare_RegistrationProxy.png)
 
@@ -564,10 +564,10 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 4. ソース Linux サーバーの /etc/hosts ファイルに、ローカル ホスト名を、すべての NIC に関連付けられた IP アドレスにマップするエントリが含まれることを確認します。
 5. 保護するマシンに最新の openssh、openssh-server、openssl の各パッケージをインストールします。
 6. SSH がポート 22 で有効であり実行中であることを確認します。 
-7. 以下の手順で、sshd\_config ファイルで SFTP サブシステムとパスワード認証を有効にします。 
+7. 以下の手順で、sshd_config ファイルで SFTP サブシステムとパスワード認証を有効にします。 
 
 	- a) root としてログインします。
-	- b) /etc/ssh/sshd\_config ファイルで、**PasswordAuthentication** で始まる行を見つけます。
+	- b) /etc/ssh/sshd_config ファイルで、**PasswordAuthentication** で始まる行を見つけます。
 	- c) この行のコメントを解除し、値 "no" を "yes" に変更します。
 
 		![Linux のモビリティ](./media/site-recovery-vmware-to-azure/ASRVMWare_LinuxPushMobility1.png)
@@ -592,7 +592,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 **Windows サーバーにモビリティ サービスを手動でインストールするには**、次のようにします。
 
-1. **Microsoft-ASR\_UA\_8.4.0.0\_Windows\_GA\_28Jul2015\_release.exe** パッケージを、前記の表のプロセス サーバーのディレクトリ パスからソース マシンにコピーします。
+1. **Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe** パッケージを、前記の表のプロセス サーバーのディレクトリ パスからソース マシンにコピーします。
 2. ソース マシンで実行可能ファイルを実行して、モビリティ サービスをインストールします。
 3. 次の手順のようにします。
 4. ロールとして **[モビリティ サービス]** を選択し、**[次へ]** をクリックします。
@@ -762,7 +762,7 @@ Azure で実行しているフェールオーバーされたマシンをオン�
 5. チェック マークをクリックして、新しいプロセス サーバーへのレプリケーションを開始します。重要な状態になったプロセス サーバーからすべての仮想マシンを削除すると、重大な警告はダッシュボードに表示されなくなります。
 
 
-## Third-party software notices and information
+## サード パーティ製ソフトウェアに関する通知および情報
 
 Do Not Translate or Localize
 

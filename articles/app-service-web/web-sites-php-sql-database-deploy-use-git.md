@@ -20,7 +20,7 @@
 
 このチュートリアルでは、Azure SQL Database に接続する [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の PHT Web アプリを作成する方法と、Git を使用してそれをデプロイする方法について説明します。このチュートリアルは、コンピューターに [PHP][install-php]、[SQL Server Express][install-SQLExpress]、[Microsoft Drivers for SQL Server for PHP](http://www.microsoft.com/download/en/details.aspx?id=20098)、および [Git][install-git] がインストールされていることを前提としています。このチュートリアルを完了すると、Azure で動作する PHP-SQL Web アプリが完成します。
 
-> [AZURE.NOTE][Microsoft Web プラットフォーム インストーラー](http://www.microsoft.com/web/downloads/platform.aspx)を使用すると、PHP、SQL Server Express、Microsoft Drivers for SQL Server for PHP をインストールおよび構成できます。
+> [AZURE.NOTE] [Microsoft Web プラットフォーム インストーラー](http://www.microsoft.com/web/downloads/platform.aspx)を使用すると、PHP、SQL Server Express、Microsoft Drivers for SQL Server for PHP をインストールおよび構成できます。
 
 学習内容:
 
@@ -296,4 +296,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [pdo-sqlsrv]: http://php.net/pdo_sqlsrv
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1125_2015--->

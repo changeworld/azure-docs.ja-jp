@@ -333,11 +333,11 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 1. **[LogProcessingFactory]** の **[Data Factory]** ブレードで、**[ダイアグラム]** をクリックします。 
 
-	![[ダイアグラム] リンク][image-data-factory-tutorial-diagram-link]
+	![ダイアグラム] リンク][image-data-factory-tutorial-diagram-link]
 
 2. 表示されているダイアグラムは並べ替えることが可能で、以下のダイアグラムは上部が直接の入力を示し、下部が出力を示しています。**PartitionGameLogsPipeline** の出力が EnrichGameLogsPipeline に入力として渡され、**EnrichGameLogsPipeline** の出力が **AnalyzeMarketingCampaignPipeline** に渡されていることがわかります。タイトルをダブルクリックして、ブレードが示すアーティファクトについての詳細を表示します。
 
-	![[ダイアグラム] ビュー][image-data-factory-tutorial-diagram-view]
+	![ダイアグラム] ビュー][image-data-factory-tutorial-diagram-view]
 
 3. **[AnalyzeMarketingCampaignPipeline]** を右クリックし、**[パイプラインを開く]** をクリックします。アクティビティの入力呼び出し力のデータセットと、パイプライン内のすべてのアクティビティが表示されます。
  
@@ -372,7 +372,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 6. **[RawGameEventsTable]** の [テーブル] ブレードに、すべてのスライスが表示されています。以下のスクリーン ショットでは、すべてのスライスが **[準備完了]** の状態で、問題のあるスライスはありません。これは、そのデータがすぐに処理できることを意味します。
 
-	![[RawGameEventsTable] の [テーブル] ブレード][image-data-factory-monitoring-raw-game-events-table]
+	![RawGameEventsTable] の [テーブル] ブレード][image-data-factory-monitoring-raw-game-events-table]
 
 	**[最近更新したスライス]** と **[最近失敗したスライス]** の一覧は、どちらも **[最終更新時刻]** で並べ替えられます。次の状況では、スライスの更新時刻が変更されます。
 
@@ -391,7 +391,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 10.	すべてのスライスの **[状態]** が **[準備完了]** になっていることを確認します。 
 11.	**[準備完了]** になっているスライスの 1 つをクリックし、そのスライスの **[データ スライス]** ブレードを表示します。
 
-	![[RawGameEventsTable] の [データ スライス] ブレード][image-data-factory-monitoring-raw-game-events-table-dataslice-blade]
+	![RawGameEventsTable の [データ スライス] ブレード][image-data-factory-monitoring-raw-game-events-table-dataslice-blade]
 
 	エラーが発生していた場合、ここに **[失敗]** という状態が表示されます。また、スライスがどの程度の速さで処理されるかによって、両方のスライスが **[準備完了]** 状態で表示される場合もあれば、**[検証を保留中]** 状態で表示される場合もあります。
 
@@ -401,7 +401,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 12.	**[データ スライス]** ブレードで、**[アクティビティの実行]** の一覧から [実行] をクリックします。そのスライスの [アクティビティの実行] ブレードが表示されるはずです。以下の **[アクティビティの実行の詳細]** ブレードが表示されます。
 
-	![[アクティビティの実行の詳細] ブレード][image-data-factory-monitoring-activity-run-details]
+	![アクティビティの実行の詳細 ブレード][image-data-factory-monitoring-activity-run-details]
 
 13.	**[ダウンロード]** をクリックしてファイルをダウンロードします。この画面は、HDInsight の処理で発生するエラーのトラブルシューティングを行うときに、特に役立ちます。
 	 

@@ -38,7 +38,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## プロジェクトを作成する
 
@@ -94,7 +94,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 1.  [Azure ポータル]にログインします。
 
-1.  ナビゲーション ウィンドウの下部にある **[新規]** をクリックし、**[データ + ストレージ]**、**[SQL database]** の順にクリックします。
+1.  ナビゲーション ウィンドウの下部にある **[新規]** をクリックし、**[データ + ストレージ]**、**SQL database** の順にクリックします。
 
   	<!-- ![New Button](./media/web-sites-python-ptvs-django-sql/PollsCommonAzurePlusNew.png) -->
 

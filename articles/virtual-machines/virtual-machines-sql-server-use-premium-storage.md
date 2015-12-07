@@ -1118,7 +1118,7 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 
 ## その他のリソース
 - [Azure Premium Storage](../storage-premium-storage-preview-portal.md)
-- [Virtual Machines](http://azure.microsoft.com/services/virtual-machines/)
+- [仮想マシン](http://azure.microsoft.com/services/virtual-machines/)
 - [Azure の仮想マシンにおける SQL Server](virtual-machines-sql-server-infrastructure-services.md)
 
 <!-- IMAGES -->

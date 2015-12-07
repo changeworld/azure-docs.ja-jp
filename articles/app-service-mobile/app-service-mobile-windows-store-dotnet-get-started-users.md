@@ -18,7 +18,9 @@
 
 # Windows アプリに認証を追加する
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+&nbsp;  
+[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 このトピックでは、モバイル アプリにクラウド ベースの認証を追加する方法を説明します。このチュートリアルでは、Azure App Service でサポートされている ID プロバイダーを使用して、Mobile Apps のクイック スタート プロジェクトに認証を追加します。Mobile Apps のバックエンドによって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
@@ -62,4 +64,4 @@
 [Get started with your mobile app]: app-service-mobile-windows-store-dotnet-get-started.md
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1125_2015--->

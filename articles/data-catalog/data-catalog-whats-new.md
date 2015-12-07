@@ -28,7 +28,7 @@
 - Teradata のテーブルとビューの登録時にデータ プロファイルを含めることのサポート。
 - SQL Server (Azure SQL DB と Azure SQL Data Warehouse を含む)、Server Analysis Services、Azure Storage、および HDFS ソースに対する [Power BI Desktop で開く] のサポート。  
 
-> [AZURE.NOTE][Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。この機能を使用して問題やエラーが発生した場合は、[PowerBI.com](https://powerbi.com) から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
+> [AZURE.NOTE] [Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。この機能を使用して問題やエラーが発生した場合は、[PowerBI.com](https://powerbi.com) から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
 
 ## 2015 年 11 月 13 日の週のリリースの新機能
 
@@ -147,4 +147,4 @@
 - Standard Edition のみ: データ資産に所有者を追加するとき、**Azure Data Catalog** は所有者としてユーザー アカウントとセキュリティ グループの両方をサポートするようになりました。選択したデータ資産の所有者としてセキュリティ グループを追加する場合、グループの表示名またはグループの UPN 電子メール アドレス (ある場合) のいずれかを入力できます。
 - Azure BLOB Storage データ ソースのサポート。ユーザーは、Azure Storage の BLOB およびディレクトリを登録および検出できるようになりました。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1125_2015--->

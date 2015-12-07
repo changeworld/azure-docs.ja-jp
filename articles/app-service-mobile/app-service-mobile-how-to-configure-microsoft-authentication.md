@@ -18,7 +18,8 @@
 
 # Microsoft アカウント ログインを使用するように App Service アプリケーションを構成する方法
 
-[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]&nbsp;
+[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
+&nbsp;
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
@@ -87,7 +88,7 @@
 
 <!-- URLs. -->
 
-[[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Microsoft Azure 管理ポータル]: https://portal.azure.com/
 
 <!---HONumber=AcomDC_1125_2015-->

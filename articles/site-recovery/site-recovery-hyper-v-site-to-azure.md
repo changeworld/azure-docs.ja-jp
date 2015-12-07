@@ -62,11 +62,11 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 - 最新バージョンのプロバイダーとエージェントを実行する必要があります。
 - コンテナー内のすべての Hyper-V サーバーは、同じバージョンである必要があります。
 - プロバイダーは、インターネット経由で Azure Site Recovery に接続する必要があります。このことは、プロキシを使用せずに、現在 VMM サーバーで構成されているプロキシ設定を使用して、またはプロバイダーのインストール中に構成するカスタム プロキシ設定を使用して行えます。既存のプロキシ サーバーを使用するには、 Azure に接続する次の URL がファイアウォールを通過するのを許可します。
-	- **.hypervrecoverymanager.windowsazure.com
-- **.accesscontrol.windows.net
-- **.backup.windowsazure.com
-- **.blob.core.windows.net
-- **.store.core.windows.net
+	- *.hypervrecoverymanager.windowsazure.com
+	- *.accesscontrol.windows.net
+	- *.backup.windowsazure.com		
+	- *.blob.core.windows.net
+	- *.store.core.windows.net
  
 - カスタム プロキシを使用するには、プロバイダーをインストールする前に、プロキシ サーバーを設定します。プロバイダーのセットアップ中には、プロキシ サーバーのアドレスとポート、およびアクセスのために使用できる資格情報を指定する必要があります。HTTPS ベースのプロキシはサポートされていないことに注意してください。
 
@@ -145,11 +145,11 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 	- Hyper-V サーバー上の既定のプロキシに認証が必要な場合は、カスタム プロキシ サーバーの使用を選択する必要があります。既定のプロキシの詳細を入力し、資格情報を指定します。
 	- カスタム プロキシ サーバーを使用する場合は、プロバイダーをインストールする前に、カスタム プロキシ サーバーを設定します。
 	- 次の URL に Hyper-V ホストからアクセスできるようにする必要があります。
-		- **.hypervrecoverymanager.windowsazure.com
-- **.accesscontrol.windows.net
-- **.backup.windowsazure.com
-- **.blob.core.windows.net
-- **.store.core.windows.net
+		- *.hypervrecoverymanager.windowsazure.com
+		- *.accesscontrol.windows.net
+		- *.backup.windowsazure.com
+		- *.blob.core.windows.net
+		- *.store.core.windows.net
 
 	- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
@@ -240,8 +240,13 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 		![仮想マシンのプロパティの構成](./media/site-recovery-hyper-v-site-to-azure/VMProperties.png)
 	- *[保護された項目]* > **[保護グループ]** > *保護グループ名* > **[Virtual Machines]** *仮想マシン名* > **[構成]** の順に移動し、次に示す追加の仮想マシンの設定を構成します。
 
-		- **ネットワーク アダプター**: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。仮想マシンのサイズでサポートされている NIC の数については、「[仮想マシン サイズの仕様](../virtual-machines/virtual-machines-size-specs.md#size-tables)」を参照してください。 
-		
+		- **ネットワーク アダプター**: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。
+			- 大 (A3) および A6: 2
+			- 特大 (A4) および A7:
+			- A9: 2
+			- D3: 2
+			- D4: 4
+			- D13: 4
 
 			仮想マシンのサイズを変更し、設定を保存すると、次回 **[構成]** ページを開くときに、ネットワーク アダプターの数が変更されます。ターゲット仮想マシンのネットワーク アダプターの数は、ソース仮想マシン上のネットワーク アダプターの最小数と、選択した仮想マシンのサイズでサポートされているネットワーク アダプターの最大数です。次に説明します。
 

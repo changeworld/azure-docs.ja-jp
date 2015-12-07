@@ -358,7 +358,7 @@
 - [Azure Storage REST API][]
 - [Azure のストレージ チーム ブログ][]
 
-  [Download the Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
+  [Azure SDK for Java のダウンロード]: http://go.microsoft.com/fwlink/?LinkID=525671
   [方法: ストレージ アカウントを作成する]: storage-create-storage-account.md#create-a-storage-account
   [ストレージ アカウントを管理する方法]: storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys
   [Java から BLOB ストレージを使用する方法]: storage-java-how-to-use-blob-storage.md

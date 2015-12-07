@@ -86,7 +86,16 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 1.	作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭に追加します。
 
-    Microsoft.Azure の使用; Microsoft.IdentityModel.Clients.ActiveDirectory の使用; Microsoft.Azure.Management.Resources の使用; Microsoft.Azure.Management.Resources.Models の使用; Microsoft.Azure.Management.Storage の使用; Microsoft.Azure.Management.Storage.Models の使用; Microsoft.Azure.Management.Network の使用; Microsoft.Azure.Management.Network.Models の使用; Microsoft.Azure.Management.Compute の使用; Microsoft.Azure.Management.Compute.Models の使用;
+        using Microsoft.Azure;
+        using Microsoft.IdentityModel.Clients.ActiveDirectory;
+		using Microsoft.Azure.Management.Resources;
+		using Microsoft.Azure.Management.Resources.Models;
+		using Microsoft.Azure.Management.Storage;
+		using Microsoft.Azure.Management.Storage.Models;
+		using Microsoft.Azure.Management.Network;
+		using Microsoft.Azure.Management.Network.Models;
+		using Microsoft.Azure.Management.Compute;
+		using Microsoft.Azure.Management.Compute.Models;
 
 
 2. 資格情報の作成に必要なトークンを取得するために、次のメソッドを Program クラスに追加します。

@@ -18,7 +18,9 @@
 
 # Xamarin Android モバイル アプリのオフライン同期を有効にする
 
-[AZURE.INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
+&nbsp;  
+[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## 概要
 
@@ -175,4 +177,4 @@
 
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1125_2015--->

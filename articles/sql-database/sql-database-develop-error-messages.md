@@ -34,7 +34,7 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 いずれのエラーも、そのメッセージをクライアント プログラムでカスタマイズし、ユーザーに表示することができます。
 
 
-> [AZURE.TIP][*一時的な障害*](#bkmk_connection_errors)に関する次のセクションは特に重要です。
+> [AZURE.TIP] [*一時的な障害*](#bkmk_connection_errors)に関する次のセクションは特に重要です。
 
 
 
@@ -227,4 +227,4 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 - [Azure SQL Database の一般的な制限事項とガイドライン](sql-database-general-limitations.md)
 - [Azure SQL Database のリソース制限](sql-database-resource-limits.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1125_2015--->
