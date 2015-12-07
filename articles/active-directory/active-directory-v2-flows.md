@@ -68,7 +68,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 Web サーバー アプリにおけるサインイン認証フローは、主に次のステップで構成されます。
 
-![Web App Swimlanes Image](../media/active-directory-v2-flows/convergence_scenarios_webapp.png)
+![Web アプリのスイムレーン イメージ](../media/active-directory-v2-flows/convergence_scenarios_webapp.png)
 
 v2.0 エンドポイントから受け取った公開署名キーを使用した id\_token の検証は、ユーザーの ID を確認し、後続のページ要求でユーザーを識別するために使用できるセッション Cookie を設定するうえで十分です。
 
@@ -95,25 +95,27 @@ Web API は、すべての種類のアプリ (Web サーバー アプリ、デ�
 
 ![Web API のスイムレーン イメージ](../media/active-directory-v2-flows/convergence_scenarios_webapp_webapi.png)
 
-authorization\_code と refresh\_token についてのほか、access\_tokens の詳しい取得手順については、[OAuth 2.0 プロトコルの説明](active-directory-v2-protocols.md#oauth2-authorization-code-flow)を参照してください。
+authorization\_code と refresh\_token についてのほか、access\_tokens の詳しい取得手順については、[OAuth 2.0 プロトコルの説明](active-directory-v2-protocols-oauth-code.md)を参照してください。
 
 v2.0 アプリ モデルと OAuth 2.0 access\_token で Web API をセキュリティ保護する方法については、[使用の開始セクション](active-directory-appmodel-v2-overview.md#getting-started)で Web API コード サンプルを確認してください。
 
 
 ## モバイル アプリとネイティブ アプリ
-多くの場合、モバイル アプリやデスクトップ アプリなど、デバイスにインストールされているアプリは、データを格納し、ユーザーの代わりにさまざまな処理を実行するバックエンド サービスや Web API にアクセスする必要があります。これらのアプリは、v2.0 モデルと [OAuth 2.0 承認コード フロー](active-directory-v2-protocols.md#oauth2-authorization-code-flow)を使ってバックエンド サービスにサインインと承認を追加します。
+多くの場合、モバイル アプリやデスクトップ アプリなど、デバイスにインストールされているアプリは、データを格納し、ユーザーの代わりにさまざまな処理を実行するバックエンド サービスや Web API にアクセスする必要があります。これらのアプリは、v2.0 モデルと [OAuth 2.0 承認コード フロー](active-directory-v2-protocols-oauth-code.md)を使ってバックエンド サービスにサインインと承認を追加します。
 
 このフローでは、アプリはユーザーのサインインの際に v2.0 エンドポイントから authorization\_code を受け取ります。これは、現在サインインしているユーザーの代わりにバックエンド サービスを呼び出すアプリのアクセス許可を表します。次に、アプリはバックグラウンドで authoriztion\_code を OAuth 2.0 access\_token および refresh\_token と交換します。アプリはその access\_token を使って HTTP 要求で Web API に対して認証を実行します。また、access\_token の有効期限が切れた場合は、refresh\_token を使って新しい access\_token を取得します。
 
 ![ネイティブ アプリのスイムレーン イメージ](../media/active-directory-v2-flows/convergence_scenarios_native.png)
 
+## シングル ページ アプリ (JavaScript)
+最近多く見かけるようになったシングル ページ アプリのフロントエンドは、主に JavaScript で作成されています。AngularJS、Ember.js、Durandal などの SPA フレームワークが使われることも少なくありません。Azure AD アプリ モデル v2.0 は、[OAuth 2.0 暗黙的フロー](active-directory-v2-protocols-implicit.md)を使用してこれらのアプリをサポートします。
+
+このフローでは、アプリは v2.0 認証エンドポイントから直接トークンを受け取るので、バックエンドのサーバー間の交換は実行されません。これにより、すべての認証ロジックとセッション処理は、余分なページのリダイレクトを実行することなく、JavaScript クライアント内ですべて行うことができます。
+
+このシナリオを実際に確認するには、「[使用の開始](active-directory-appmodel-v2-overview.md#getting-started)」セクションのいずれかの単一ページ アプリ コード サンプルを試してください。
+
 ## 現在のプレビューの制限事項
 これらの種類のアプリは、現時点では v2.0 アプリ モデルのプレビューでサポートされていませんが、一般公開に間に合うように準備中です。v2.0 アプリ モデル パブリック プレビューのその他の制限事項については、[v2.0 プレビューの制限事項に関する記事](active-directory-v2-limitations.md)を参照してください。
-
-### シングル ページ アプリ (JavaScript)
-最近多く見かけるようになったシングル ページ アプリのフロントエンドは、主に JavaScript で作成されています。AngularJS、Ember.js、Durandal などの SPA フレームワークが使われることも少なくありません。一般公開される Azure AD サービスでは、これらのアプリが [OAuth 2.0 Implicit Flow](active-directory-v2-protocols.md#oauth2-implicit-flow) を使ってサポートされます。しかし v2.0 アプリ モデルでは、このフローがまだ利用できません。サポートされるまでには、あと少し時間がかかります。
-
-今すぐ v2.0 アプリ モデルで SPA を動作させる必要がある場合は、上記の[Web サーバー アプリ フロー](#web-apps)を使用して認証を実装してください。ただしこの方法は推奨されません。そのような使い方に関するドキュメントも限られています。SPA の使い方について感触をつかむことが目的であれば、[一般提供版 Azure AD の SPA コード サンプル](active-directory-devquickstarts-angular.md)を参照してください。
 
 ### デーモン/サーバー サイド アプリ
 長時間実行されるプロセスを含んだアプリや、ユーザーの介入なしで動作するアプリも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。これらのアプリは、[OAuth 2.0 クライアント資格情報フロー](active-directory-v2-protocols.md#oauth2-client-credentials-grant-flow)を使用することで、(ユーザーの委任 ID ではなく) アプリの ID を使って認証を行い、トークンを取得することができます。
@@ -125,4 +127,4 @@ v2.0 アプリ モデルによって保護された Web API から、同じよ�
 
 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 Jwt Bearer Credential Grant ([On-Behalf-Of フロー](active-directory-v2-protocols.md#oauth2-on-behalf-of-flow)) を使用してサポートできます。しかし現時点では v2.0 アプリ モデル プレビューに On-Behalf-Of フローが実装されていません。一般提供版 Azure AD サービスにおけるこのフローの動作については、[GitHub の On-Behalf-Of コード サンプル](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

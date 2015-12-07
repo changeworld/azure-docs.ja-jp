@@ -3,8 +3,8 @@
 	description="ネイティブ クライアント アプリケーションが Azure AD Application Proxy Connector と通信して、オンプレミス アプリケーションに対して安全なリモート アクセスを提供する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="rkarlin"
-	manager="steven.powell"
+	authors="kgremban"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="11/02/2015"
-	ms.author="rkarlin"/>
+	ms.author="kgremban"/>
 
 # ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法
 Azure Active Directory アプリケーション プロキシは、SharePoint、Outlook Web Access、カスタムの基幹業務アプリケーションなどのブラウザー アプリケーションを公開するために幅広く使用されています。ネイティブ クライアントから使用される HTTP バックエンド アプリケーションを公開するときにも使用できます。この場合、標準の Authorize HTTP ヘッダーで送信された Azure AD 発行トークンをサポートしている必要があります。
@@ -23,7 +23,7 @@ Azure Active Directory アプリケーション プロキシは、SharePoint、O
 ![](./media/active-directory-application-proxy-native-client/richclientflow.png)
 
 
-このようなアプリケーションを発行するために推奨される方法は、すべての認証ハッスルに対応し、多様なクライアント環境をサポートする Azure AD 認証ライブラリを使用することです。アプリケーション プロキシは、[ネイティブ アプリケーションから Web API のシナリオ](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/#native-application-to-web-api)に適しています。その手順は次のとおりです。
+このようなアプリケーションを発行するために推奨される方法は、すべての認証ハッスルに対応し、多様なクライアント環境をサポートする Azure AD 認証ライブラリを使用することです。アプリケーション プロキシは、[ネイティブ アプリケーションから Web API のシナリオ](active-directory-authentication-scenarios.md#native-application-to-web-api)に適しています。その手順は次のとおりです。
 
 1. 他のアプリケーションと同様にプロキシ アプリケーションを発行し、ユーザーを割り当てて Premium または Basic ライセンスを付与します。詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)」を参照してください。
 2. ネイティブ アプリケーションを次のように構成します。
@@ -32,7 +32,7 @@ Azure Active Directory アプリケーション プロキシは、SharePoint、O
   5. 上部のメニューで、[アプリケーション] をクリックします。ディレクトリに追加されているアプリケーションがない場合、このページには [アプリケーションの追加] リンクだけが表示されます。このリンクをクリックします。または、コマンド バーの [追加] をクリックすることもできます。
   4. **[実行する作業を選択してください]** ページで、**[組織で開発中のアプリケーションを追加]** リンクをクリックします。
   5. **[アプリケーション情報の指定]** ページで、アプリケーション名を指定し、電話やコンピューターなど、デバイスにインストールされているアプリケーションを表す **[ネイティブ クライアント アプリケーション]** を選択します。完了したら、ページの右下にある矢印アイコンをクリックします。
-  6. **[アプリケーションのプロパティ]** ページに、ネイティブ クライアント アプリケーションの **[リダイレクト URI]** を入力し、ページの右下にあるチェックボックスをオンにします。</br>アプリケーションが追加されると、アプリケーションのクイック スタート ページが表示されます。 
+  6. **[アプリケーションのプロパティ]** ページに、ネイティブ クライアント アプリケーションの **[リダイレクト URI]** を入力し、ページの右下にあるチェックボックスをオンにします。</br>アプリケーションが追加されると、アプリケーションのクイック スタート ページが表示されます。
 8. ディレクトリ内の他のアプリケーションに公開するネイティブ アプリケーションを有効にします。
   9. 上部のメニューから **[アプリケーション]** をクリックし、新しいネイティブ アプリケーションを選択して、**[構成]** をクリックします。
   10. **[他のアプリケーションに対するアクセス許可]** セクションまで下にスクロールします。**[アプリケーションの追加]** をクリックし、ネイティブ アプリケーション アクセス権を付与するプロキシ アプリケーションを選択し、右下のチェックボックスをオンにします。**[委任されたアクセス許可]** ドロップダウン メニューから、新しいアクセス許可を選択します。</br>
@@ -41,11 +41,11 @@ Azure Active Directory アプリケーション プロキシは、SharePoint、O
 
 		// Acquire Access Token from AAD for Proxy Application
 		AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/<TenantId>");
-		AuthenticationResult result = authContext.AcquireToken("< Frontend Url of Proxy App >", 
-                                                        "< Client Id of the Native app>", 
-                                                        new Uri("< Redirect Uri of the Native App>"), 
+		AuthenticationResult result = authContext.AcquireToken("< Frontend Url of Proxy App >",
+                                                        "< Client Id of the Native app>",
+                                                        new Uri("< Redirect Uri of the Native App>"),
                                                         PromptBehavior.Never);
-		
+
 		//Use the Access Token to access the Proxy Application
 		HttpClient httpClient = new HttpClient();
 		httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
@@ -59,7 +59,7 @@ Azure Active Directory アプリケーション プロキシは、SharePoint、O
 - ネイティブ アプリケーションの **Client Id** は、ネイティブ アプリケーションの **[構成]** ページに表示されます。
 - **ネイティブ アプリケーションの Redirect URI** は、ネイティブ アプリケーションの **[構成]** ページに表示されます。
 
-![](./media/active-directory-application-proxy-native-client/new_native_app.png) </br> </br>ネイティブ アプリケーション フローの詳細については、「[ネイティブ アプリケーション対 Web API](https://azure.microsoft.com/ja-JP/documentation/articles/active-directory-authentication-scenarios/#native-application-to-web-api)」を参照してください。
+![](./media/active-directory-application-proxy-native-client/new_native_app.png) </br> </br>ネイティブ アプリケーション フローの詳細については、「[ネイティブ アプリケーション対 Web API](active-directory-authentication-scenarios.md#native-application-to-web-api)」を参照してください。
 
 
 
@@ -85,4 +85,4 @@ Azure Active Directory アプリケーション プロキシは、SharePoint、O
 * [Azure への組織としてのサインアップ](sign-up-organization.md)
 * [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1125_2015-->

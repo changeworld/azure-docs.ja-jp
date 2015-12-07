@@ -1,4 +1,3 @@
-
 <properties
 	pageTitle="Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定 | Microsoft Azure"
 	description="Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順。"
@@ -14,8 +13,9 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/19/2015"
+	ms.date="11/24/2015"
 	ms.author="femila"/>
+
 
 # Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定
 
@@ -43,7 +43,7 @@
 * Windows Server 2012 R2 の更新されたスキーマ
 * Azure Active Directory Premium のサブスクリプション
 * Azure AD に対する SSO 用に構成された Windows Server 2012 R2 フェデレーション サービス
-* Windows Server 2012 R2 Web アプリケーション プロキシ Microsoft Azure Active Directory Connect (Azure AD Connect)。[Azure AD Connect はここからダウンロード](http://www.microsoft.com/ja-jp/download/details.aspx?id=47594)
+* Windows Server 2012 R2 Web アプリケーション プロキシ Microsoft Azure Active Directory Connect (Azure AD Connect)。[Azure AD Connect はここからダウンロード](http://www.microsoft.com/ja-JP/download/details.aspx?id=47594)
 * 確認済みドメイン 
 
 このリリースの既知の問題
@@ -75,8 +75,7 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 | Azure Active Directory テナント内の [デバイスの登録] を有効にして、デバイスがワークプレースに参加できるようにします。既定では、サービスに対して Multi-Factor Authentication は有効になっていません。ただし、デバイスを登録するときは Multi-Factor Authentication をお勧めします。ADRS で Multi-Factor Authentication を有効にする前に、Multi-Factor Authentication プロバイダー用に AD FS が構成されていることを確認します。 | [Azure Active Directory Device Registration を有効にする](active-directory-conditional-access-device-registration-overview.md) |
 | デバイスは既知の DNS レコードを探すことにより、Azure Active Directory Device Registration サービスを検出します。デバイスが Azure Active Directory Device Registration サービスを検出できるように、会社の DNS を構成する必要があります。 | [Azure Active Directory Device Registration の検出を構成する](active-directory-conditional-access-device-registration-overview.md) |
 
-##パート 2: Windows Server 2012 R2 Active Directory フェデレーション サービスをデプロイおよび構成し、Azure Active Directory とのフェデレーション関係をセットアップする
-
+##パート 2: Windows Server 2012 R2 Active Directory フェデレーション サービスをデプロイおよび構成し、Azure AD とのフェデレーション関係をセットアップする
 
 | タスク | リファレンス |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
@@ -91,7 +90,7 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 | 「Azure AD Connect でのデバイスの書き戻しの有効化」のパート 2 を完了します。完了したら、このガイドに戻ります。 | [Azure AD Connect でのデバイスの書き戻しの有効化](#Active Directory ドメイン サービス スキーマをアップグレードする) |
 	 
 
-##[省略可能] パート 4: 多要素認証の有効化
+##[省略可能] パート 4: 多要素認証を有効にする
 
 多要素認証に関するいくつかのオプションのいずれかを構成することを強くお勧めします。MFA が必要な場合は、「[ユーザーに適した多要素のセキュリティ ソリューションの選択](multi-factor-authentication-get-started.md)」をご覧ください。これには、各ソリューションの説明と、選択したソリューションの構成に役立つリンクが含まれています。
 
@@ -113,7 +112,7 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 これにより、Azure AD Connect を使用して Azure AD テナントをローカルの Active Directory と統合できます。これらの手順は Azure ポータルで使用できますが、このセクションに記載されている特別な指示に留意してください。
 
 1.	Azure ポータルに管理者としてサインインします。
-2.	左側のウィンドウで **[Active Directory]** を選択します。
+2.	左ウィンドウで、**[Active Directory]** を選択します。
 3.	**[ディレクトリ]** タブでディレクトリを選択します。
 4.	**[ディレクトリの統合]** タブを選択します。
 5.	**デプロイと管理**に関するセクションで、手順 1. ～ 3. に従って、Azure Active Directory をローカル ディレクトリと統合します。
@@ -150,7 +149,7 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 ### AD FS でデバイス認証を有効にする
 
 1. フェデレーション サーバーで、AD FS 管理コンソールを開き、**[AD FS]**、**[認証ポリシー]** の順に移動します。
-2. **[操作]** ウィンドウで、[グローバル プライマリ認証の編集...] を選択します。
+2. **[操作]** ウィンドウで、**[グローバル プライマリ認証の編集...]** を選択します。
 3. **[デバイス認証を有効にする]** をオンにし、[OK] をクリックします。
 4. 既定では、AD FS は未使用のデバイスを Active Directory から定期的に削除します。Azure でデバイスを管理できるように Azure Active Directory Device Registration を使用する場合は、この動作を無効にする必要があります。
 
@@ -179,7 +178,7 @@ Azure Active Directory Device Registration では、iOS デバイスに対して
 
 ###Azure Active Directory Device Registration を使用して Windows 8.1 デバイスを参加させる
 
-1. Windows 8.1 デバイスで、**[PC 設定]**、**[ネットワーク]**、**[ワークプレース]** の順に移動します。
+1. Windows 8.1 デバイスで、**[PC の設定]** > **[ネットワーク]** > **[ワークプレース]** の順に移動します。
 2. ユーザー名を UPN 形式で入力します。たとえば、「dan@contoso.com.」のように入力します。
 3. **[参加]** を選択します。
 4. メッセージが表示されたら、資格情報でサインインします。これでデバイスが参加します。
@@ -212,7 +211,7 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 9. **[完了]** を選択し、**[適用]** を選択します。
 10. 作成した規則よりも寛容なルールはすべて削除します。たとえば、既定の **[すべてのユーザーにアクセスを許可する]** 規則を削除します。
 
-これで、ユーザーが自身で登録しワークプレースに参加させたデバイスからアクセスする場合に限り、アクセスを許可するようにアプリケーションが構成されます。より高度なアクセス ポリシーについては、「[多要素アクセス制御を使用したリスク管理](https://technet.microsoft.com/ja-jp/library/dn280949.aspx)」をご覧ください。
+これで、ユーザーが自身で登録しワークプレースに参加させたデバイスからアクセスする場合に限り、アクセスを許可するようにアプリケーションが構成されます。より高度なアクセス ポリシーについては、「[多要素アクセス制御を使用したリスク管理](https://technet.microsoft.com/library/dn280949.aspx)」をご覧ください。
 
 次に、アプリケーションのカスタム エラー メッセージを構成します。エラー メッセージは、アプリケーションにアクセスするには事前にユーザーのデバイスをワークプレースに参加させなければならないことをユーザーに通知するものです。カスタム HTML および Windows PowerShell を使用してカスタム アプリケーション アクセス拒否メッセージを作成できます。
 
@@ -238,4 +237,4 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 
 ![ユーザーがデバイスを Azure AD に登録していなかった場合に表示されるエラーのスクリーン ショット](./media/active-directory-conditional-access/error-azureDRS-device-not-registered.gif)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-## node.js を使用してリモート監視ソリューションにデバイス データを送信する
+## node.js サンプル ソリューションのビルドと実行
 
 1. *Microsoft Azure IoT SDK* GitHub リポジトリのクローンを作成し、*Microsoft Azure IoT device SDK for Node.js* をデスクトップ環境にインストールするには、「[開発環境を準備する][lnk-github-prepare]」の指示に従います。
 
@@ -61,4 +61,4 @@
 [lnk-node-installers]: https://nodejs.org/download/
 [lnk-github-prepare]: https://github.com/Azure/azure-iot-sdks/blob/master/node/device/doc/devbox_setup.md
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

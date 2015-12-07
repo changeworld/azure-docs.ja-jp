@@ -24,7 +24,7 @@ Linux ベースの Azure 仮想マシンに接続しようとしたときに発�
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-この記事は、Linux を実行する Azure 仮想マシンにのみ適用されます。Windows を実行する Azure 仮想マシンの場合は、「[Azure VM へのリモート デスクトップ接続のトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)」を参照してください。
+この記事は、Linux を実行する Azure Virtual Machines にのみ適用されます。Windows を実行する Azure Virtual Machines の場合は、「[Azure VM へのリモート デスクトップ接続のトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)」を参照してください。
 
 ## Azure カスタマー サポートへの問い合わせ
 
@@ -41,7 +41,7 @@ Linux ベースの Azure 仮想マシンに接続しようとしたときに発�
 
 	![SSH 構成のリセットを示すスクリーンショット](./media/virtual-machines-troubleshoot-ssh-connections/Portal-SSH-Reset-Windows.png)
 
-2. 仮想マシンを**再起動**します。[Azure プレビュー ポータル](https://portal.azure.com)から、**[すべて参照]**、**[仮想マシン (クラシック)]**、ご使用の Windows 仮想マシン、**[再起動]** の順にクリックします。[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)から、**[仮想マシン]**、**[インスタンス]** の順に開いて、**[再起動]** をクリックします。
+2. 仮想マシンを**再起動**します。[Azure プレビュー ポータル](https://portal.azure.com)から、**[すべて参照]**、**[仮想マシン (クラシック)]**、ご使用の Windows 仮想マシン、**[再起動]** の順にクリックします。[Azure ポータル](https://manage.windowsazure.com)から、**[仮想マシン]**、**[インスタンス]** の順に開いて、**[再起動]** をクリックします。
 
 3. [仮想マシンの**サイズを変更**します](https://msdn.microsoft.com/library/dn168976.aspx)。
 
@@ -51,7 +51,7 @@ Linux ベースの Azure 仮想マシンに接続しようとしたときに発�
 	- 新しい sudo ユーザー アカウントを作成する
 	- SSH 構成をリセットする
 
-5. VM のリソースの状態でプラットフォームの問題を確認します。[すべて参照]、[仮想マシン (クラシック)]、Linux 仮想マシン、**[正常性の確認]** の順にクリックします。
+5. VM のリソースの状態でプラットフォームの問題を確認します。[すべて参照]、[Virtual Machines (クラシック)]、Linux 仮想マシン、**[正常性の確認]** の順にクリックします。
 
 
 ## リソース マネージャー デプロイメント モデルでの一般的な SSH エラーの修正手順
@@ -174,9 +174,9 @@ Linux ベースの Azure 仮想マシンに接続しようとしたときに発�
 
 ### トラブルシューティングする前の手順
 
-まず、Azure ポータルで仮想マシンの状態を確認します。
+まず、ポータルで仮想マシンの状態を確認します。
 
-[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で、クラシック デプロイ モデルの仮想マシンについて、次の手順を実行します。
+[Azure ポータル](https://manage.windowsazure.com)で、クラシック デプロイメント モデルの仮想マシンについて、次の手順を実行します。
 
 1. **[仮想マシン]** > *VM 名*をクリックします。
 2. VM の**ダッシュボード**をクリックし、その状態を確認します。
@@ -287,4 +287,4 @@ Linux ベースの Azure 仮想マシンに接続しようとしたときに発�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure ポータルで Oracle データベース VM を作成する |Microsoft Azure" 
-	description="従来のデプロイ モデルと Azure プレビュー ポータルで、Oracle Database を使用して仮想マシンを作成する方法について説明します。" 
-	services="virtual-machines" 
-	authors="bbenz" 
+<properties
+	pageTitle="Azure ポータルで Oracle データベース VM を作成する |Microsoft Azure"
+	description="従来のデプロイ モデルと Azure プレビュー ポータルで、Oracle Database を使用して仮想マシンを作成する方法について説明します。"
+	services="virtual-machines"
+	authors="bbenz"
 	documentationCenter=""
 	tags="azure-service-management"/>
-	
-<tags 
-	ms.service="virtual-machines" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="Windows" 
-	ms.workload="infrastructure-services" 
-	ms.date="06/22/2015" 
+
+<tags
+	ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="Windows"
+	ms.workload="infrastructure-services"
+	ms.date="06/22/2015"
 	ms.author="bbenz" />
-	
+
 #Azure で Oracle Database 仮想マシンを作成する
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
@@ -24,7 +24,7 @@
 
 ##Azure で Oracle Database VM を作成するには
 
-1.	[Azure ポータル](https://ms.portal.azure.com/)にログインします。
+1.	[Azure プレビュー ポータル](https://ms.portal.azure.com/)にログインします。
 
 2.	**[Marketplace]**、**[Compute]** をクリックし、続いて検索ボックスに**「Oracle」**と入力します。
 
@@ -52,12 +52,12 @@
 
 11. **[場所]** を選択します。
 
-12. **[作成]** をクリックすると、VM を作成するプロセスが開始されます。VM の状態が **[実行中]** になったら、次の手順に進みます。
+12. **[作成]** をクリックすると、VM を作成するプロセスが開始します。VM の状態が **[実行中]** になったら、次の手順に進みます。
 
 
 ##Azure で Oracle Database VM を使ってデータベースを作成するには
 
-1.	[Azure ポータル](https://ms.portal.azure.com/)にログインします。
+1.	[Azure プレビュー ポータル](https://ms.portal.azure.com/)にログインします。
 
 2.	**[Virtual Machines]** をクリックします。
 
@@ -149,7 +149,7 @@
 
 ### ポート 1521 のパブリック エンドポイントを作成する
 
-1.	[Azure ポータル](https://ms.portal.azure.com/)にログインします。
+1.	[Azure プレビュー ポータル](https://ms.portal.azure.com/)にログインします。
 
 2.	**[参照]** をクリックします。
 
@@ -200,4 +200,4 @@ Oracle Database Enterprise Manager のリモート アクセスを有効にす�
 
 -	[Oracle Database 2 日間 DBA 12c リリース 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

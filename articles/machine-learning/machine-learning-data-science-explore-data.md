@@ -27,7 +27,6 @@
 - **Azure BLOB コンテナー** データは、[Pandas](http://pandas.pydata.org/) Python パッケージを使用して探索します。
 - **SQL Server** データは、SQL と、Python などのプログラミング言語を使用して探索します。
 - **Hive テーブル** データは、Hive クエリを使用して探索します。
-- Azure Machine Learning Studio 
 - **Azure Machine Learning (AML) Studio** データは、AML モジュールを使用して探索します。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

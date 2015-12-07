@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="08/04/2015"
+   ms.date="11/24/2015"
    ms.author="rickbyh"/>
 
 # Azure SQL データベース ファイアウォールを構成する方法
@@ -133,7 +133,9 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
 
 [データベース ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)
 
+[SQL Server データベース エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
+
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

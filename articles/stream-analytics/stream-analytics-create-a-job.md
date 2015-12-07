@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="ジョブを作成する | Microsoft Azure" 
-	description="ジョブの作成のラーニング パス セグメント。"
+	description="Stream Analytics のジョブの作成 | ラーニング パス セグメント。"
 	documentationCenter=""
 	services="stream-analytics"
 	authors="jeffstokes72" 
@@ -13,10 +13,10 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/06/2015" 
+	ms.date="11/23/2015" 
 	ms.author="jeffstok"/>
 
-# ジョブを作成する
+# Stream Analytics のジョブの作成
 
 Azure Stream Analytics の最上位のリソースは Stream Analytics ジョブです。ジョブは、1 つ以上の入力データ ソース、データ変換を表すクエリ、結果が書き込まれる 1 つ以上の出力ターゲットで構成されます。
 
@@ -60,4 +60,4 @@ Stream Analytics の使用を開始するには、新しい Stream Analytics ジ
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure Stream Analystics の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

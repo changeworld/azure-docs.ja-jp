@@ -51,8 +51,7 @@
 次のコードは、モバイル アプリ バックエンドにアクセスするために使用される `MobileServiceClient` オブジェクトを作成します。
 
 
-	MobileServiceClient client = new MobileServiceClient(
-		"MOBILE_APP_URL", "", "");
+	MobileServiceClient client = new MobileServiceClient("MOBILE_APP_URL");
 
 上記のコードで、`MOBILE_APP_URL` を、Azure プレビュー ポータルの [モバイル アプリ] ブレードで確認できるモバイル アプリ バックエンドの URL に置き換えます。
 
@@ -288,7 +287,7 @@ Mobile Apps は、テーブルの **id** 列で一意のカスタム文字列値
 
 ##方法: プッシュ通知に登録する
 
-Mobile Apps クライアントでは、Azure Notification Hubs によるプッシュ通知に登録できます。登録する場合、プラットフォーム固有のプッシュ通知サービス (PNS) からハンドルを取得します。この値は、登録を作成するときに、任意のタグと一緒に指定します。次のコードは、Windows Notification Service (WNS) にプッシュ通知用の Windows アプリを登録します。
+Mobile Apps クライアントでは、Azure Notification Hubs によるプッシュ通知に登録できます。登録する場合、プラットフォーム固有のプッシュ通知サービス (PNS) からハンドルを取得します。この値は、登録を作成するときに、任意のタグと一緒に指定します。次のコードは、Windows Notification Service (WNS) によるプッシュ通知用の Windows アプリを登録します。
 
 		private async void InitNotificationsAsync()
 		{
@@ -342,6 +341,8 @@ Xamarin apps require some additional code to be able to register a Xamarin app r
 **RegisterAsync()** メソッドは次のセカンダリ タイルも受け入れます。
 
         MobileService.GetPush().RegisterAsync(string channelUri, JObject templates, JObject secondaryTiles);
+
+セキュリティのためにタグはすべて取り除かれるので注意してください。インストールまたはインストール内のテンプレートにタグを追加する方法については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作]」を参照してください。
 
 これらの登録済みテンプレートを使用して通知を送信するには、[Notification Hubs APIs](https://msdn.microsoft.com/library/azure/dn495101.aspx) を使用します。
 
@@ -451,7 +452,7 @@ Mobile Apps はオプティミスティック同時実行制御をサポート�
 	ListBox lb = new ListBox();
 	lb.ItemsSource = items;
 
-マネージ ランタイムの一部のコントロールでは、[ISupportIncrementalLoading](http://msdn.microsoft.com/library/windows/apps/Hh701916) というインターフェイスがサポートされます。このインターフェイスにより、コントロールはユーザーによるスクロールの際に追加のデータを要求することができます。このインターフェイスには、`MobileServiceIncrementalLoadingCollection` によるユニバーサル Windows 8.1 アプリ用の組み込みのサポートがあり、コントロールからの呼び出しが自動的に処理されます。Windows アプリで `MobileServiceIncrementalLoadingCollection` を使用するには、次を実行します。
+マネージ ランタイムの一部のコントロールでは、[ISupportIncrementalLoading](http://msdn.microsoft.com/library/windows/apps/Hh701916) というインターフェイスがサポートされます。このインターフェイスにより、コントロールはユーザーによるスクロールの際に追加のデータを要求することができます。このインターフェイスには、`MobileServiceIncrementalLoadingCollection` によるユニバーサル Windows 8.1 アプリ用の組み込みのサポートが用意されており、コントロールからの呼び出しが自動的に処理されます。Windows アプリで `MobileServiceIncrementalLoadingCollection` を使用するには、次を実行します。
 
 			MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
 		items =  todoTable.Where(todoItem => todoItem.Complete == false)
@@ -461,7 +462,7 @@ Mobile Apps はオプティミスティック同時実行制御をサポート�
 		lb.ItemsSource = items;
 
 
-Windows Phone 8 と "Silverlight" アプリで新しいコレクションを使用するには、`IMobileServiceTableQuery<T>` や `IMobileServiceTable<T>` で `ToCollection` 拡張メソッドを使用します。実際にデータを読み込むには、`LoadMoreItemsAsync()` を呼び出します。
+Windows Phone 8 と「Silverlight」アプリで新しいコレクションを使用するには、`IMobileServiceTableQuery<T>` や `IMobileServiceTable<T>` で `ToCollection` 拡張メソッドを使用します。実際にデータを読み込むには、`LoadMoreItemsAsync()` を呼び出します。
 
 	MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection();
 	await items.LoadMoreItemsAsync();
@@ -668,7 +669,7 @@ For Windows Phone apps, you may encrypt and cache data using the [ProtectedData]
 
 ### <a name="headers"></a>方法: 要求ヘッダーをカスタマイズする
 
-特定のアプリケーション シナリオをサポートするには、モバイル アプリ バックエンドとの通信をカスタマイズすることが必要な場合があります。たとえば、すべての送信要求にカスタム ヘッダーを追加したり、応答のステータス コードを変更したりすることが必要な場合がります。これを行うには、次の例のように、カスタムの [DelegatingHandler], を指定します。
+特定のアプリケーション シナリオをサポートするには、モバイル アプリ バックエンドとの通信をカスタマイズすることが必要な場合があります。たとえば、すべての送信要求にカスタム ヘッダーを追加したり、応答のステータス コードを変更したりすることが必要な場合がります。これを行うには、次の例のように、カスタムの [DelegatingHandler] を指定します。
 
     public async Task CallClientWithHandler()
     {
@@ -722,6 +723,7 @@ Mobile Apps クライアント ライブラリは、Json.NET を使用して、�
 
 <!-- URLs. -->
 [Add authentication to your app]: mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users.md
+[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [PasswordVault]: http://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [ProtectedData]: http://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
 [LoginAsync method]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclientextensions.loginasync.aspx
@@ -741,4 +743,4 @@ Mobile Apps クライアント ライブラリは、Json.NET を使用して、�
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

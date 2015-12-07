@@ -125,7 +125,7 @@ $scope.logout = function () {
 };
 ...
 ```
-- アプリの UI にユーザー情報を表示することもできます。adal サービスが既に `userDataCtrl` コントローラーに追加されているので、関連付けられたビュー `App/Scripts/UserData.html` の `userInfo` オブジェクトにアクセスできます。
+- アプリの UI にユーザー情報を表示することもできます。adal サービスが既に `userDataCtrl` コントローラーに追加されているので、関連付けられたビュー `App/Views/UserData.html` の `userInfo` オブジェクトにアクセスできます。
 
 ```js
 <p>{{userInfo.userName}}</p>
@@ -151,4 +151,4 @@ adal.js を使用することにより、これらの共通 ID 機能のすべ�
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

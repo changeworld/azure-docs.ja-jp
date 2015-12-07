@@ -12,23 +12,27 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/15/2015" 
+	ms.date="11/17/2015" 
 	ms.author="awills"/>
  
 # Stream Analytics を利用し、Application Insights のデータを Power BI に入力する
 
-[Microsoft Power BI](https://powerbi.microsoft.com/) では、機能豊富で多様なビジュアルでデータが表示されます。複数のソースから情報をまとめる機能も備わっています。Web やデバイスのアプリのパフォーマンスと使用状況に関するテレメトリ データを、Application Insights から Power BI にストリーミングすることができます。
+この記事では、[Visual Studio Application Insights](app-insights-overview.md) から[エクスポート](app-insights-export-telemetry.md)されたデータを、[Stream Analytics](http://azure.microsoft.com/services/stream-analytics/) を使用して処理する方法を説明します。ターゲットの例として、[Microsoft Power BI](https://powerbi.microsoft.com/) にデータを送信します。
 
-> [AZURE.NOTE]Application Insights から Power BI にデータを入力する簡単な方法は[アダプターを利用する](https://powerbi.microsoft.com/zh-CN/documentation/powerbi-content-pack-application-insights/)ことです。このアダプターは Power BI Gallery の [サービス] にあります。この記事で説明する方法は、現在のところ、より多面的なものですが、Application Insights で Stream Analytics を利用する方法を紹介するものでもあります。
+
+> [AZURE.NOTE]Application Insights から Power BI にデータを入力する簡単な方法は[アダプターを利用する](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-content-pack-application-insights/)ことです。このアダプターは Power BI Gallery の [サービス] にあります。この記事で説明する方法は、現在のところ、より多面的なものですが、Application Insights で Stream Analytics を利用する方法を紹介するものでもあります。
+
+[Microsoft Power BI](https://powerbi.microsoft.com/) では、機能豊富で多様なビジュアルでデータが表示されます。複数のソースから情報をまとめる機能も備わっています。
+
 
 ![Application Insights の使用状況データの Power BI ビュー サンプル](./media/app-insights-export-power-bi/010.png)
 
-この記事では、Application Insights からデータをエクスポートして、Stream Analytics を使用して Power BI にデータを移動する方法について説明します。[Stream Analytics](http://azure.microsoft.com/services/stream-analytics/) はアダプターとして使用する Azure サービスです。
+[Stream Analytics](http://azure.microsoft.com/services/stream-analytics/) はアダプターとして機能する Azure サービスであり、Application Insights からエクスポートされたデータを継続的に処理します。
 
 ![Application Insights の使用状況データの Power BI ビュー サンプル](./media/app-insights-export-power-bi/020.png)
 
 
-> [AZURE.NOTE]Stream Analytics から Power BI にデータを送信するには、職場または学校のアカウント (MSDN 組織アカウント) が必要です。
+
 
 ## ビデオ
 
@@ -58,9 +62,9 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
     ![ストレージで、[設定]、[キー] の順に開き、プライマリ アクセス キーのコピーを取ります](./media/app-insights-export-power-bi/045.png)
 
-## Azure ストレージへの連続エクスポートの開始
+## Azure Storage への連続エクスポートの開始
 
-[連続エクスポート](app-insights-export-telemetry.md)は、Application Insights から Azure のストレージにデータを移動します。
+[連続エクスポート](app-insights-export-telemetry.md)は、Application Insights から Azure Storage にデータを移動します。
 
 1. Azure ポータルで、アプリケーション用に作成した Application Insights リソースを参照します。
 
@@ -262,4 +266,4 @@ Noam Ben Zeev で、Power BI にエクスポートする方法を確認できま
 * [Application Insights](app-insights-overview.md)
 * [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

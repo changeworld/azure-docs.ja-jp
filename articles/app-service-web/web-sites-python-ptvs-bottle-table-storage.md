@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="08/30/2015"
-	ms.author="huguesv"/>
+	ms.date="11/18/2015"
+	ms.author="huvalo"/>
 
 
 # Python Tools 2.2 for Visual Studio を使用した Azure 上の Bottle と Azure テーブル ストレージ 
@@ -67,13 +67,11 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 ストレージ操作を行うには、Azure のストレージ アカウントが必要です。ストレージ アカウントを作成するには、次のステップを実行します
 
-1.  [Azure ポータル]にログインします。
+1.  [Azure ポータル](https://portal.azure.com/)にログインします。
 
-2. ポータルの左下にある **[新規]** アイコンをクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソースグループ](../resource-group-overview.md)を作成します
+2. ポータルの左下にある **[新規]** アイコンをクリックし、**[データ + ストレージ]**、**[ストレージ アカウント]** の順にクリックします。**[作成]** ボタンをクリックし、ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソースグループ](../resource-group-overview.md)を作成します。
 
-  	<!-- ![New Button](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzurePlusNew.png) -->
-
-	ストレージ アカウントが作成されると、**[通知]** ボタンに緑色の "**成功**" という文字が点滅し、ストレージ アカウントのブレードが開いて、作成した新しいリソース グループに属していることが示されます。
+  	<!-- ![New Button](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzurePlusNew.png) -->ストレージ アカウントが作成されると、**[通知]** ボタンに緑色の "**成功**" という文字が点滅し、ストレージ アカウントのブレードが開いて、作成した新しいリソース グループに属していることが示されます。
 
   	<!-- ![Quick Create](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzureStorageCreate.png) -->
 
@@ -102,6 +100,8 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 1.  Azure テーブル ストレージ リポジトリを実装するコードは、**models/azuretablestorage.py** にあります。Python から Table サービスを使用する方法の詳細については、[ドキュメント]をご覧ください。
 
 1.  `F5` キーでアプリケーションを実行します。**[サンプル投票の作成]** で作成された投票と、投票によって送信されたデータは、Azure テーブル ストレージでシリアル化されます。
+
+	> [AZURE.NOTE]Python 2.7 仮想環境では、Visual Studio で例外による中断が発生する場合があります。`F5` を押して Web プロジェクトの読み込みを続行します。
 
 1.  アプリケーションが、**Azure テーブル ストレージ** リポジトリを使用していることを確認するには、**[情報]** ページを確認します。
 
@@ -181,7 +181,7 @@ Python Tools for Visual Studio、Bottle および Azure テーブル ストレ�
   - [クラウド サービス プロジェクト]
   - [Microsoft Azure でのリモート デバッグ]
 - [Bottle のドキュメント]
-- [Azure ストレージ]
+- [Azure Storage]
 - [Azure SDK for Python]
 - [Python からテーブル ストレージ サービスを使用する方法]
 
@@ -211,8 +211,8 @@ Python Tools for Visual Studio、Bottle および Azure テーブル ストレ�
 [Microsoft Azure でのリモート デバッグ]: http://go.microsoft.com/fwlink/?LinkId=624026
 [Web プロジェクト]: http://go.microsoft.com/fwlink/?LinkId=624027
 [クラウド サービス プロジェクト]: http://go.microsoft.com/fwlink/?LinkId=624028
-[Azure ストレージ]: http://azure.microsoft.com/documentation/services/storage/
+[Azure Storage]: http://azure.microsoft.com/documentation/services/storage/
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

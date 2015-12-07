@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="08/30/2015"
+	ms.date="11/13/2015"
 	ms.author="huguesv"/>
 
 
@@ -94,7 +94,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 1.  [Azure ポータル]にログインします。
 
-1.  ナビゲーション ウィンドウの下部にある **[新規]** をクリックし、**[データ + ストレージ]**、**SQL database** の順にクリックします。
+1.  ナビゲーション ウィンドウの下部にある **[新規]** をクリックし、**[データ + ストレージ]**、**[SQL database]** の順にクリックします。
 
   	<!-- ![New Button](./media/web-sites-python-ptvs-django-sql/PollsCommonAzurePlusNew.png) -->
 
@@ -139,7 +139,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 1.  ソリューション エクスプローラーで、**[Python 環境]** の下にある仮想環境を右クリックし、**[Python パッケージのインストール]** を選択します。
 
-1.  **easy\_install** を使用してパッケージ `pyodbc` をインストールします。
+1.  **pip** を使用して `pyodbc` パッケージをインストールします。
 
   	![Install Python Package ダイアログ](./media/web-sites-python-ptvs-django-sql/PollsDjangoSqlInstallPackagePyodbc.png)
 
@@ -197,7 +197,7 @@ Python Tools for Visual Studio、Django および SQL Database の詳細につ�
 - [SQL Database]
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
@@ -220,4 +220,4 @@ Python Tools for Visual Studio、Django および SQL Database の詳細につ�
 [Django のドキュメント]: https://www.djangoproject.com/
 [SQL Database]: /documentation/services/sql-database/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -3,9 +3,9 @@
 	description="Azure でホストされる node.js Web アプリで socket.io を使用する方法を示すチュートリアル。"
 	services="app-service\web"
 	documentationCenter="nodejs"
-	authors="MikeWasson"
+	authors="rmcmurray"
 	manager="wpickett"
-	editor="mollybos"/>
+	editor=""/>
 
 <tags
 	ms.service="app-service-web"
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="10/30/2015"
-	ms.author="mwasson"/>
+	ms.date="11/20/2015"
+	ms.author="robmcm"/>
 
 
 
 
 # Azure App Service での Socket.IO を使用する Node.js チャット アプリケーションの構築
 
-Socket.IO は、WebSocket を使用して node.js サーバーとクライアントの間のリアルタイム通信を提供します。また、古いブラウザーで動作する他のトランスポート (ロング ポーリングなど) へのフォールバックもサポートします。このチュートリアルでは、Azure Web アプリとして Socket.IO ベースのチャット アプリケーションをホストする手順と、[Azure Redis Cache](http://azure.microsoft.com/documentation/services/cache) を使用してアプリケーションを[スケーリング](#scale-out)する方法を説明します。Socket.IO の詳細については、[http://socket.io/][socketio] を参照してください。
+Socket.IO は、WebSocket を使用して node.js サーバーとクライアントの間のリアルタイム通信を提供します。また、古いブラウザーで動作する他のトランスポート (ロング ポーリングなど) へのフォールバックもサポートします。このチュートリアルでは、Azure Web アプリとして Socket.IO ベースのチャット アプリケーションをホストする手順と、[Azure Redis Cache](/documentation/services/cache) を使用してアプリケーションを[スケーリング](#scale-out)する方法を説明します。Socket.IO の詳細については、[http://socket.io/][socketio] を参照してください。
 
 > [AZURE.NOTE]このタスクの手順は、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) に適用されます。Cloud Services については、「<a href="http://www.windowsazure.com/develop/nodejs/tutorials/app-using-socketio/">Azure クラウド サービスでの Socket.IO を使用した Node.js チャット アプリケーションの構築</a>」を参照してください。
 
@@ -119,7 +119,7 @@ __アダプター__を使用してメッセージとイベントを複数のア�
 
 ###Redis Cache の作成
 
-「[Azure Redis Cache でのキャッシュの作成](https://azure.microsoft.com/ja-JP/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#create-a-cache)」の手順を実行して、新しいキャッシュを作成します。
+「[Azure Redis Cache でのキャッシュの作成](/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#create-a-cache)」の手順を実行して、新しいキャッシュを作成します。
 
 > [AZURE.NOTE]キャッシュの__ホスト名__と__プライマリ キー__を保存します。これらは次の手順で必要になります。
 
@@ -205,7 +205,7 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 
 	これにより IIS WebSocket モジュールが無効になりますが、それには WebSocket の独自の実装が含まれ、それは Socket.IO などの Node.js 固有の WebSocket モジュールと競合します。この行が存在しない場合、または `true` に設定されている場合は、WebSocket トランスポートがアプリケーションで動作しない原因になる可能性があります。
 
-	通常、Node.js アプリケーションには **web.config** ファイルが含まれないので、Azure Websites はデプロイされるときに Node.js アプリケーション用にこのファイルを自動的に生成します。このファイルはサーバー上に自動的に生成されるので、Web サイトでこのファイルを参照するには FTP または FTPS URL を使用する必要があります。Azure 管理ポータルでサイトの FTP および FTPS URL を検索するには、Web サイトを選択して、**[ダッシュボード]** リンクをクリックします。URL は **[概要]** セクションに表示されます。
+	通常、Node.js アプリケーションには **web.config** ファイルが含まれないので、Azure Websites はデプロイされるときに Node.js アプリケーション用にこのファイルを自動的に生成します。このファイルはサーバー上に自動的に生成されるので、Web サイトでこのファイルを参照するには FTP または FTPS URL を使用する必要があります。Microsoft Azure 管理ポータルでサイトの FTP および FTPS URL を検索するには、Web サイトを選択して、**[ダッシュボード]** リンクをクリックします。URL は **[概要]** セクションに表示されます。
 
 	> [AZURE.NOTE]**web.config** ファイルが Azure Websites によって生成されるのは、アプリケーションで提供されていない場合だけです。アプリケーション プロジェクトのルートで **web.config** ファイルを提供した場合は、それが Azure Web Apps によって使用されます。
 
@@ -271,7 +271,7 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 [socketio]: http://socket.io/
@@ -285,4 +285,4 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 [pricing]: /pricing/details/web-sites/
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

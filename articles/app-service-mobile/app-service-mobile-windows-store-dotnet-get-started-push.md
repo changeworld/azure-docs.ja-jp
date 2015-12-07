@@ -18,9 +18,7 @@
 
 # Windows Runtime 8.1 ユニバーサル アプリへのプッシュ通知の追加
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ##概要
 
@@ -43,35 +41,15 @@
 
 ##アプリケーションをプッシュ通知に登録する
 
-Azure から Windows アプリにプッシュ通知を送信するには、Windows Store にアプリを送信する必要があります。その後、サーバー プロジェクトを構成して WNS と統合できます。
+Azure から Windows アプリにプッシュ通知を送信するには、Windows ストア にアプリを送信する必要があります。その後、サーバー プロジェクトを構成して WNS と統合できます。
 
-1. Visual Studio ソリューション エクスプローラーで、Windows Store アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。 
+[AZURE.INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
-    ![アプリを Windows ストアと関連付ける](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-win8-app.png)
-    
-2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインし、**[新しいアプリケーション名の予約]** にアプリの名前を入力し、**[予約]** をクリックします。
-
-3. アプリの登録が正常に作成されたら、新しいアプリ名を選択し、**[次へ]** をクリックし、**[関連付け]** をクリックします。この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
-
-7. Windows Store アプリ用に以前に作成したものと同じ登録を使用して、Windows Phone Store アプリ プロジェクトに対してステップ 1 と 3 を繰り返します。
-
-7. [[Windows デベロッパー センター]](https://dev.windows.com/zh-CN/overview) に移動し、Microsoft アカウントでサインインし、**[マイ アプリ]** で新しいアプリ登録をクリックしてから、**[サービス]**、**[プッシュ通知]** の順に展開します。
-
-8. **[プッシュ通知]** ページで、**[Microsoft Azure Mobile Services]** の下にある **[Live サービス サイト]** をクリックします。
-
-9. **[アプリ設定]** タブで、**[クライアント シークレット]** と **[パッケージ SID]** の値をメモしておきます。
-
-    ![デベロッパー センターでのアプリの設定](./media/app-service-mobile-windows-store-dotnet-get-started-push/mobile-services-win8-app-push-auth.png)
-
-    > [AZURE.IMPORTANT]クライアント シークレットとパッケージ SID は、重要なセキュリティ資格情報です。これらの値は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。
 
 ##プッシュ要求を送信するようにモバイル アプリを構成する
 
-1. [Azure ポータル]にログオンし、**[参照]**、**[モバイル アプリ]**、使用しているアプリ、**[プッシュ通知サービス]** の順に選択します。
+[AZURE.INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-2. **[Windows Notification Service]** で、Live サービス サイトから取得した **[セキュリティ キー]** (クライアント シークレット) と **[パッケージ SID]** を入力し、**[保存]** をクリックします。
-
-これで、Mobile App バックエンドが WNS と連携するように構成されます。
 
 ##<a id="update-service"></a>プッシュ通知を送信するようにサーバーを更新する
 
@@ -171,14 +149,14 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 ##<a id="more"></a>詳細
 
-* テンプレートを利用すれば、プラットフォーム間のプッシュやローカライズされたプッシュを柔軟に送信できます。テンプレートの登録方法は「[Azure Mobile Apps 用の管理されたクライアントの使用方法s](app-service-mobile-dotnet-how-to-use-client-library.md)」にあります。
+* テンプレートを利用すれば、プラットフォーム間のプッシュやローカライズされたプッシュを柔軟に送信できます。テンプレートの登録方法は「[Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md)」にあります。
 * タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」にあります。
 
 <!-- Anchors. -->
 
 <!-- URLs. -->
-[Azure ポータル]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 
 <!-- Images. -->
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -1,20 +1,21 @@
 <properties
-   pageTitle="Microsoft Azure Active Directory ライセンスとは | Microsoft Azure"
-   description="Office 365、Microsoft Intune、Azure Active Directory Premium と Basic エディションを含む、Microsoft Azure AD のライセンス、しくみ、使用方法、ベスト プラクティスの説明"
-   services="active-directory"
-   documentationCenter=""
-   authors="curtand"
-   manager="stevenpo"
-   editor=""/>
+    pageTitle="Microsoft Azure Active Directory ライセンスとは | Microsoft Azure"
+    description="Office 365、Microsoft Intune、Azure Active Directory Premium と Basic エディションを含む、Microsoft Azure AD のライセンス、しくみ、使用方法、ベスト プラクティスの説明"
+    services="active-directory"
+	keywords="Azure AD のライセンス"
+    documentationCenter=""
+    authors="curtand"
+    manager="stevenpo"
+    editor=""/>
 
 <tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="09/21/2015"
-   ms.author="curtand"/>
+    ms.service="active-directory"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="identity"
+    ms.date="11/20/2015"
+    ms.author="curtand"/>
 
 # Microsoft Azure Active Directory ライセンスとは
 
@@ -23,7 +24,7 @@ Azure Active Directory (AD) は、マイクロソフトのサービスとして�
 
 [今すぐ Azure AD premium をお試しください。](https://portal.office.com/Signup/Signup.aspx?OfferId=01824d11-5ad8-447f-8523-666b0848b381&ali=1#0)
 
-> [AZURE.NOTE]Azure AD 管理ポータルは、Azure 管理ポータルの一部です。Azure AD を使用するうえで Azure の購入は不要ですが、このポータルにアクセスするにはアクティブな Azure サブスクリプションまたは [Azure の試用版サブスクリプション](http://azure.microsoft.com/pricing/free-trial/)が必要です。
+> [AZURE.NOTE]Azure AD 管理ポータルは、Microsoft Azure 管理ポータルの一部です。Azure AD を使用するうえで Azure の購入は不要ですが、このポータルにアクセスするにはアクティブな Azure サブスクリプションまたは [Azure の試用版サブスクリプション](http://azure.microsoft.com/pricing/free-trial/)が必要です。
 
 Azure AD サービスの機能の概要については、「[Azure AD とは](active-directory-whatis.md)」を参照してください。[Azure AD サービス レベルの詳細](http://azure.microsoft.com/support/legal/sla/)
 
@@ -38,7 +39,7 @@ Enterprise Mobility Suite、Azure AD Premium、Azure AD Basic を購入または
 
 各サブスクリプションは 1 つ以上のサービス プランで構成され、各サービス プランはそのサービスの種類に含まれる機能レベル (Azure AD、Azure MFA、Microsoft Intune、Exchange Online、SharePoint Online など) に対応します。Azure AD のライセンス管理では、サービス プラン レベルの管理は不要です。これは、含まれるサービスのアクセス管理に詳細な構成モードを利用する Office 365 とは異なります。Azure AD では、機能の有効化と個々のアクセス許可の管理には、使用中の構成を利用します。
 
-一般に、Azure AD のサブスクリプション情報は Azure 管理ポータルの該当するディレクトリの [ライセンス] タブで管理されます。Azure AD Premium 以外の Azure AD サブスクリプションは Office ポータルに表示されません。
+一般に、Azure AD のサブスクリプション情報は Microsoft Azure 管理ポータルの該当するディレクトリの [ライセンス] タブで管理されます。Azure AD Premium 以外の Azure AD サブスクリプションは Office ポータルに表示されません。
 
 > [AZURE.IMPORTANT]Azure AD Premium と Azure AD Basic は、Enterprise Mobility Suite サブスクリプションと同様に、プロビジョニングされたディレクトリまたはテナントに限定されます。サブスクリプションをディレクトリ間で分割することや、他のディレクトリ内のユーザーに資格を与えるために使用することはできません。ディレクトリ間でサブスクリプションを移動できますが、直接購入の場合は、サポート チケットの送信、または取り消しと再購入が必要になります。
 
@@ -57,7 +58,7 @@ Azure AD の有料の機能は、そのディレクトリ全体で利用でき�
 
 Azure AD を使用するのは簡単です。Azure の無料評価版にサインアップすると、いつでもディレクトリを作成できます。[組織としてのサインアップの詳細については、こちらを参照してください](sign-up-organization.md)。次の情報は、お使いのディレクトリが、使用する可能性がある、または使用する予定の他の Microsoft サービスと、サービスの取得目的に最適かどうかを確認するのに役立ちます。
 
-ここでベスト プラクティスをいくつか紹介します。マイクロソフトが提供するいずれかの組織向けサービスを既に使用している場合は、Azure AD ディレクトリを既に使用しています。この場合、他のサービスでも同じディレクトリを使用し続けて、プロビジョニングやハイブリッド SSO など、中心的な ID 管理をそれらのサービスでも利用できるようにする必要があります。ユーザーは、単一のログオン エクスペリエンスで、さまざまなサービスの豊富な機能を利用できるようになります。そのため、従業員用に Azure AD の有料サービスの購入を決定した場合は、これを実現するために同じディレクトリを使用することをお勧めします。別のユーザー (パートナーや顧客など) が Azure AD を使用する予定がある場合、運用環境のサービスから分離して Azure AD サービスを評価する場合、または自社のサービス用にサンドボックス環境を設定する予定の場合は、まず、Azure 管理ポータルを使用して、新しいディレクトリを作成することをお勧めします。[Microsoft Azure 管理ポータルでの新しい Azure AD ディレクトリの作成については、こちらを参照してください](active-directory-licensing-directory-independence.md)。新しいディレクトリは、グローバル管理者のアクセス許可を持つ外部ユーザーとしてのアカウントと共に作成されます。このアカウントで Azure 管理ポータルにサインインすると、このディレクトリが表示され、ディレクトリのすべての管理タスクにアクセスすることができます。(Azure 管理ポータル経由でアクセスできない) 他の Microsoft サービスを管理する場合は、適切な権限を持つローカル アカウントを作成することをお勧めします。[Azure AD にユーザー アカウントを作成する方法については、こちらを参照してください](active-directory-create-users.md)。
+ここでベスト プラクティスをいくつか紹介します。マイクロソフトが提供するいずれかの組織向けサービスを既に使用している場合は、Azure AD ディレクトリを既に使用しています。この場合、他のサービスでも同じディレクトリを使用し続けて、プロビジョニングやハイブリッド SSO など、中心的な ID 管理をそれらのサービスでも利用できるようにする必要があります。ユーザーは、単一のログオン エクスペリエンスで、さまざまなサービスの豊富な機能を利用できるようになります。そのため、従業員用に Azure AD の有料サービスの購入を決定した場合は、これを実現するために同じディレクトリを使用することをお勧めします。別のユーザー (パートナーや顧客など) が Azure AD を使用する予定がある場合、運用環境のサービスから分離して Azure AD サービスを評価する場合、または自社のサービス用にサンドボックス環境を設定する予定の場合は、まず、Microsoft Azure 管理ポータルを使用して、新しいディレクトリを作成することをお勧めします。[Microsoft Azure 管理ポータルでの新しい Azure AD ディレクトリの作成については、こちらを参照してください](active-directory-licensing-directory-independence.md)。新しいディレクトリは、グローバル管理者のアクセス許可を持つ外部ユーザーとしてのアカウントと共に作成されます。このアカウントで Microsoft Azure 管理ポータルにサインインすると、このディレクトリが表示され、ディレクトリのすべての管理タスクにアクセスすることができます。(Microsoft Azure 管理ポータル経由でアクセスできない) 他の Microsoft サービスを管理する場合は、適切な権限を持つローカル アカウントを作成することをお勧めします。[Azure AD にユーザー アカウントを作成する方法については、こちらを参照してください](active-directory-create-users.md)。
 
 > [AZURE.NOTE]Azure AD では "外部ユーザー" をサポートしています。外部ユーザーとは、Microsoft アカウント (MSA) または別のディレクトリの Azure AD の ID を使用して作成された Azure AD のインスタンス内のユーザー アカウントです。この機能を Microsoft の組織向けのすべてのサービスに拡張することに取り組んでいますが、現在、これらのアカウントは一部のサービスでサポートされていません。たとえば、Office 365 の管理ポータルでは、現在これらのユーザーをサポートしていません。その結果、Microsoft アカウントを持つ外部ユーザーは Office 365 の管理ポータルに一切アクセスできず、他の Azure AD ディレクトリの外部ユーザーは無視されます。後者の場合、ユーザーが最初に作成された Azure AD または Office 365 ディレクトリのユーザーのローカル アカウントのみが、これらの環境にアクセスできます。
 
@@ -73,26 +74,26 @@ Azure AD を使用するのは簡単です。Azure の無料評価版にサイ�
 ###1 つ以上のライセンスの評価版を選択する
  どの場合でも、ディレクトリの [ライセンス] タブで特定の評価版を選択して、Azure AD Premium または Enterprise Mobility Suite の評価版のサブスクリプションをアクティブにできます。どちらの評価版にも、30 日間のサブスクリプションと 100 ライセンスが含まれています。
 
-![Azure Active Directory trial license plans](./media/active-directory-licensing-what-is/trial_plans.png)
+![Azure Active Directory 評価版のライセンス プラン](./media/active-directory-licensing-what-is/trial_plans.png)
 
-![Enterprise Mobility Suite trial license plans](./media/active-directory-licensing-what-is/EMS_trial_plan.png)
+![Enterprise Mobility Suite 評価版のライセンス プラン](./media/active-directory-licensing-what-is/EMS_trial_plan.png)
 
-![Active trial license plans](./media/active-directory-licensing-what-is/active_license_trials.png)
+![有効な評価版のライセンス プラン](./media/active-directory-licensing-what-is/active_license_trials.png)
 
 ###ライセンスを割り当てる
 サブスクリプションがアクティブになったら、自分自身にライセンスを割り当てて、ブラウザーを更新してすべての機能が表示されることを確認する必要があります。次の手順では、Azure AD の有料機能へのアクセスが必要なユーザーや有料機能に含める必要があるユーザーにライセンスを割り当てます。上の「ライセンスの割り当て」で説明したように、一番良い方法は、目的の対象ユーザーを表すグループを特定し、そのグループにライセンスを割り当てることです。この方法では、そのライフサイクルにおいて、グループに追加されたユーザーにはライセンスが割り当てられ、グループから削除されたユーザーはライセンスが削除されます。
 
 グループまたは個々のユーザーにライセンスを割り当てるには、割り当てるライセンス プランを選択し、コマンド バーの **[割り当て]** をクリックします。
 
-![Active trial license plans](./media/active-directory-licensing-what-is/assign_licenses.png)
+![有効な評価版のライセンス プラン](./media/active-directory-licensing-what-is/assign_licenses.png)
 
 選択したプランの [割り当て] ダイアログ ボックスで、ユーザーを選択し、右側の **[割り当て]** 列に追加することができます。ユーザーの一覧のページを移動したり、ユーザー グリッドの右上にある虫眼鏡を使用して特定のユーザーを検索したりできます。グループを割り当てるには、**[表示]** メニューの [グループ] を選択し、右側のチェック マークをクリックして表示されている割り当てを最新の情報に更新します。
 
-![Assigning licenses to groups](./media/active-directory-licensing-what-is/assign_licenses_to_groups.png)
+![ライセンスをグループに割り当てる](./media/active-directory-licensing-what-is/assign_licenses_to_groups.png)
 
 これで、グループを検索するかページを移動し、同じ方法でグループを **[割り当て]** 列に追加できるようになりました。これらの方法を使用して、1 回の操作でユーザーとグループの組み合わせを割り当てることができます。割り当て処理を完了するには、ページの右下隅にあるチェック マークをクリックします。
 
-![License assignment progress message](./media/active-directory-licensing-what-is/license_assignment_progress_message.png)
+![ライセンス割り当ての進行状況メッセージ](./media/active-directory-licensing-what-is/license_assignment_progress_message.png)
 
 グループが割り当てられると、そのメンバーは 30 分以内にライセンスを継承します。ただし、通常は 1 ～ 2 分以内です。
 
@@ -102,11 +103,11 @@ Azure AD ポータルのライセンスの割り当て中に割り当てエラ�
 
 使用可能、割り当て済み、次のサブスクリプション ライフサイクル イベントなど、割り当て済みのライセンスの概要ビューが **[ライセンス]** タブに表示されます。
 
-![View the number of assigned licenses](./media/active-directory-licensing-what-is/view_assigned_licenses.png)
+![割り当てられたライセンスの確認](./media/active-directory-licensing-what-is/view_assigned_licenses.png)
 
 (直接または 1 つ以上のグループから継承された) 割り当ての状態とパスを含む、割り当て済みのユーザーとグループの詳細な一覧は、ライセンス プランに移動すると確認できます。
 
-![Detail display of licenses assigned for a license plan](./media/active-directory-licensing-what-is/assigned_licenses_detail.png)
+![ライセンスプランに割り当てられたライセンスの詳細](./media/active-directory-licensing-what-is/assigned_licenses_detail.png)
 
 ライセンスの削除は、割り当てと同じくらい簡単です。ユーザーに直接割り当てられているかグループに割り当てられている場合は、ライセンスの種類を選択し、**[削除]** を選択して、削除する一覧にユーザーまたはグループを追加し、アクションを確認することで、ライセンスを削除できます。または、ライセンスの種類を開き、該当するユーザーまたはグループを選択し、コマンド バーの **[削除]** をタップします。グループからユーザーへのライセンスの継承を終了するには、グループからそのユーザーを削除するだけです。
 
@@ -114,11 +115,11 @@ Azure AD ポータルのライセンスの割り当て中に割り当てエラ�
 
 顧客向けの評価版の拡張機能は、Office 365 ポータルからセルフ サービスで使用できます。顧客の管理者は、[Office ポータル](https://portal.office.com/#Billing) (Office ポータルに対するアクセス許可によってアクセス権は異なります) に移動し、Azure AD Premium 評価版を選択できます。**[評価版の拡張]** リンクをクリックし、指示に従います。クレジット カード情報を入力する必要がありますが、課金されません。
 
-![Extending a license trial in the Office portal](./media/active-directory-licensing-what-is/extend_license_trial.png)
+![Office ポータルにて評価版を拡張](./media/active-directory-licensing-what-is/extend_license_trial.png)
 
 顧客は、サポート要求を送信して、評価版の拡張機能を要求することもできます。顧客の管理者は、Office ポータル [サポート ページ](http://aka.ms/extendAADtrial) (Office サポート ページに対するアクセス許可によってアクセス権は異なります) に移動できます。このページで [機能] の [サブスクリプションと評価版] と [現象] の [評価版の質問] を選択します。最後に、環境に関する情報を入力します。
 
-![Extending a license trial using a support request](./media/active-directory-licensing-what-is/alternate_office_aad_trial_extension.png)
+![サポート リクエストによる評価版の拡張](./media/active-directory-licensing-what-is/alternate_office_aad_trial_extension.png)
 
 ## 次のステップ
 
@@ -131,4 +132,4 @@ Azure AD Premium の一部の機能を構成し、使用する準備ができま
 - [Azure Multi-Factor Authentication](multi-factor-authentication.md)
 - [Azure AD Premium ライセンスの直接購入](http://aka.ms/buyaadp)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/28/2015" 
+	ms.date="11/23/2015" 
 	ms.author="mingzhan"/>
 
 
 # Azure 用の Red Hat ベースの仮想マシンの準備
-この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。この記事で取り上げる RHEL のバージョンは 6.6、6.7、7.0、および 7.1 です。準備対象のハイパーバイザーは、Hyper-V、KVM、および VMWare です。
+この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。この記事で取り上げる RHEL のバージョンは 6.7 および 7.1 です。準備対象のハイパーバイザーは、Hyper-V、KVM、および VMWare です。
 
 
 
@@ -40,7 +40,7 @@
 - qemu-img を使用してディスク イメージを VHD 形式に変換する場合、qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。この問題は、qemu-img の今後のリリースで修正される予定です。現時点では、qemu-img のバージョン 2.2.0 以前を使用することをお勧めします。
 
 
-###RHEL 6.6/6.7
+###RHEL 6.7
 
 1.	Hyper-V マネージャーで仮想マシンを選択します。
 
@@ -134,7 +134,7 @@
 
 16.	Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-###RHEL 7.0/7.1
+###RHEL 7.1
 
 1. Hyper-V マネージャーで仮想マシンを選択します。
 
@@ -214,9 +214,9 @@
 
 
 ##KVM からのイメージの準備 
-###RHEL 6.6/6.7
+###RHEL 6.7
 
-1.	Red Hat の Web サイトからは、RHEL 6.6/6.7 の KVM イメージをダウンロードします。
+1.	Red Hat の Web サイトからは、RHEL 6.7 の KVM イメージをダウンロードします。
 
 2.	ルート パスワードの設定
 
@@ -233,7 +233,7 @@
         ><fs> exit
     ルート ユーザーの 2 番目のフィールドを、"!!" から、暗号化されたパスワードに変更します。
 
-3.	qcow2 イメージから KVM に仮想マシンを作成し、ディスクのタイプを **qcow2** に設定して、仮想ネットワーク インターフェイスのデバイス モデルを **virtio** に設定します。仮想マシンを起動し、ルートとしてログインします。
+3.	qcow2 イメージから KVM に仮想マシンを作成し、ディスクのタイプを **qcow2** に設定して、Virtual Network インターフェイスのデバイス モデルを **virtio** に設定します。仮想マシンを起動し、ルートとしてログインします。
 
 4.	`/etc/sysconfig/` ディレクトリに **network** という名前でファイルを作成し、次のテキストを追加します。
 
@@ -325,26 +325,19 @@
 
 18.	qcow2 イメージを vhd 形式に変換します。まず、イメージを未加工形式に変換します。
          
-         # qemu-img convert -f qcow2 –O raw rhel-6.6.qcow2 rhel-6.6.raw
-    未加工のイメージのサイズが 1 MB になっていることを確認します。そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
+         # qemu-img convert -f qcow2 –O raw rhel-6.7.qcow2 rhel-6.7.raw
+    未加工のイメージのサイズが 1 MB になっていることを確認します。そうでない場合は、1 MB になるようにサイズの端数を切り上げます: # MB=$((1024*1024)) # size=$(qemu-img info -f raw --output json "rhel-6.7.raw" | \\ gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}') # rounded\_size=$((($size/$MB + 1)*$MB))
 
-         # MB=$((1024*1024))
-         # size=$(qemu-img info -f raw --output json "rhel-6.6.raw" | \
-                  gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
-         # rounded_size=$((($size/$MB + 1)*$MB))
-
-         # qemu-img resize rhel-6.6.raw $rounded_size
+         # qemu-img resize rhel-6.7.raw $rounded_size
 
     未フォーマット ディスクを固定サイズの vhd に変換します。
 
-         # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.6.raw rhel-6.6.vhd
-
- 
+         # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.7.raw rhel-6.7.vhd
 
 
-###RHEL 7.0/7.1
+###RHEL 7.1
 
-1.	Red Hat の Web サイトから、RHEL 7.0 の KVM イメージをダウンロードします。
+1.	Red Hat の Web サイトから、RHEL 7.1 の KVM イメージをダウンロードします。
 
 2.	ルート パスワードの設定
 
@@ -363,7 +356,7 @@
 
     ルート ユーザーの 2 番目のフィールドを、"!!" から、暗号化されたパスワードに変更します。
 
-3.	qcow2 イメージから KVM に仮想マシンを作成し、ディスクのタイプを **qcow2** に設定して、仮想ネットワーク インターフェイスのデバイス モデルを **virtio** に設定します。仮想マシンを起動し、ルートとしてログインします。
+3.	qcow2 イメージから KVM に仮想マシンを作成し、ディスクのタイプを **qcow2** に設定して、Virtual Network インターフェイスのデバイス モデルを **virtio** に設定します。仮想マシンを起動し、ルートとしてログインします。
 
 4.	`/etc/sysconfig/` ディレクトリに **network** という名前でファイルを作成し、次のテキストを追加します。
 
@@ -458,25 +451,25 @@
 
     まず、イメージを未加工の形式に変換します。
 
-         # qemu-img convert -f qcow2 –O raw rhel-7.0.qcow2 rhel-7.0.raw
+         # qemu-img convert -f qcow2 –O raw rhel-7.1.qcow2 rhel-7.1.raw
 
     未加工のイメージのサイズが 1 MB になっていることを確認します。そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
 
          # MB=$((1024*1024))
-         # size=$(qemu-img info -f raw --output json "rhel-7.0.raw" | \
+         # size=$(qemu-img info -f raw --output json "rhel-7.1.raw" | \
                   gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
          # rounded_size=$((($size/$MB + 1)*$MB))
 
-         # qemu-img resize rhel-7.0.raw $rounded_size
+         # qemu-img resize rhel-7.1.raw $rounded_size
 
     未フォーマット ディスクを固定サイズの vhd に変換します。
 
-         # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.0.raw rhel-7.0.vhd
+         # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.1.raw rhel-7.1.vhd
 
 
 ##VMWare からのイメージの準備
 ###前提条件
-このセクションでは、VMWare に RHEL の仮想マシンが既にインストールされていると仮定します。VMWare にオペレーティング システムをインストールする方法の詳細については、[VMWare のゲスト オペレーティング システムのインストール ガイド](http://partnerweb.vmware.com/GOSIG/home.html)を参照してください。
+このセクションでは、VMWare に RHEL の仮想マシンが既にインストールされていると仮定します。VMWare にオペレーティング システムをインストールする方法の詳細については、「[VMWare ゲスト オペレーティング システムのインストール ガイド](http://partnerweb.vmware.com/GOSIG/home.html)」を参照してください。
  
 - Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、LVM または RAID をデータ ディスク上で使用できます。
 
@@ -484,7 +477,7 @@
 
 - 仮想ハード ディスクを作成する場合は、**[仮想ディスクを 1 つのファイルとして格納する]** を選択します。
 
-###RHEL 6.6/6.7
+###RHEL 6.7
 1.	次のコマンドを実行して NetworkManager をアンインストールします。
 
          # sudo rpm -e --nodeps NetworkManager
@@ -571,23 +564,21 @@
 
     まず、イメージを未加工の形式に変換します。
 
-        # qemu-img convert -f vmdk –O raw rhel-6.6.vmdk rhel-6.6.raw
+        # qemu-img convert -f vmdk –O raw rhel-6.7.vmdk rhel-6.7.raw
 
     未加工のイメージのサイズが 1 MB になっていることを確認します。そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
 
         # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-6.6.raw" | \
+        # size=$(qemu-img info -f raw --output json "rhel-6.7.raw" | \
                 gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
         # rounded_size=$((($size/$MB + 1)*$MB))
-
-        # qemu-img resize rhel-6.6.raw $rounded_size
+        # qemu-img resize rhel-6.7.raw $rounded_size
 
     未フォーマット ディスクを固定サイズの vhd に変換します。
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.6.raw rhel-6.6.vhd
+        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.7.raw rhel-6.7.vhd
 
-
-###RHEL 7.0/7.1
+###RHEL 7.1
 
 1.	/etc/sysconfig/ ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
 
@@ -675,26 +666,25 @@
 
     まず、イメージを未加工の形式に変換します。
 
-        # qemu-img convert -f vmdk –O raw rhel-7.0.vmdk rhel-7.0.raw
+        # qemu-img convert -f vmdk –O raw rhel-7.1.vmdk rhel-7.1.raw
 
     未加工のイメージのサイズが 1 MB になっていることを確認します。そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
 
         # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-7.0.raw" | \
+        # size=$(qemu-img info -f raw --output json "rhel-7.1.raw" | \
                  gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
         # rounded_size=$((($size/$MB + 1)*$MB))
-
-        # qemu-img resize rhel-7.0.raw $rounded_size
+        # qemu-img resize rhel-7.1.raw $rounded_size
 
     未フォーマット ディスクを固定サイズの vhd に変換します。
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.0.raw rhel-7.0.vhd
+        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.1.raw rhel-7.1.vhd
 
 
 ##kickstart ファイルを使用して ISO から自動的に準備する
-###RHEL 7.0/7.1
+###RHEL 7.1
 
-1.	以下のコンテンツを含む kickstart ファイルを作成し、ファイルを保存します。kickstart のインストールの詳細については、[kickstart インストール ガイド](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html)を参照してください。
+1.	以下のコンテンツを含む kickstart ファイルを作成し、ファイルを保存します。kickstart のインストールの詳細については、「[kickstart インストール ガイド](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html)」を参照してください。
 
 
         # Kickstart for provisioning a RHEL 7 Azure VM
@@ -818,34 +808,26 @@
 
     c.CD から起動するように BIOS を設定します。
 
-5.	VM を起動します。インストール ガイドが表示されたら、**タブ** キーを押してブート オプションを構成します。
+5.	VM を起動します。インストール ガイドが表示されたら、**Tab** キーを押してブート オプションを構成します。
 
 6.	ブート オプションの最後に `inst.ks=<the location of the Kickstart file>` を入力し、**Enter** キーを押します。
 
 7.	インストールが完了するのを待ちます。完了すると、VM は自動的にシャット ダウンします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 ##既知の問題
-Hyper-V と Azure で RHEL 6.6、7.0、7.1 を使用する場合、既知の問題が 2 つあります。
+HYPER-V と Azure で RHEL 7.1 を使用する場合に既知の問題があります。
 
-###問題 1: プロビジョニングのタイムアウト
-Hyper-V および Azure の RHEL でブートアップ中に発生する場合がある問題です。RHEL 6.6 では非常によく発生します。
+###問題: ディスク I/O のフリーズ 
 
-再現率:
-
-問題の発生は断続的です。vCPU を 1 つしか搭載していない小規模な VM で最も頻繁に再現し、混雑しているサーバーでも非常に頻繁に再現します。
-
-
-###問題 2: ディスク I/O のフリーズ 
-
-この問題は、Hyper-V および Azure のRHEL 6.6、7.0、および 7.1 で、ストレージ ディスク I/O のアクティビティが頻繁な場合に発生する可能性があります。
+この問題は、Hyper-V および Azure のRHEL 7.1 で、ストレージ ディスク I/O のアクティビティが頻繁な場合に発生する可能性があります。
 
 再現率:
 
 この問題の発生は断続的です。Hyper-V および Azure で頻繁に行われるディスク I/O 操作中に非常によく発生します。
 
     
-[AZURE.NOTE]この 2 つの既知の問題に対して、Red Hat は既に対処しています。関連する修正プログラムをインストールするには、次のコマンドを実行できます。
+[AZURE.NOTE]この既知の問題は既に Red Hat で解決されています。関連付けられている修正プログラムをインストールするには、次のコマンドを実行します。
 
     # sudo yum update
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Windows Phone Silverlight SDK リリース ノート" 
-	description="Azure モバイル エンゲージメント - Windows Phone Silverlight SDK リリース ノート" 					
+	description="Azure Mobile Engagement - Windows Phone Silverlight SDK リリース ノート" 					
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
 	authors="piyushjo" 
@@ -18,6 +18,12 @@
 
 #Windows Phone Silverlight SDK リリース ノート
 
+##3\.1.0 (11/20/2015)
+*MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.2.0** の一部
+
+-   初期化直後にデバイス ID を要求すると発生するクラッシュを修正しました。
+-   コンソールのログを改善しました。
+
 ##3\.0.0 (04/03/2015)
 
 -   既定の通知アイコンが更新されました。
@@ -26,9 +32,9 @@
 
 ##2\.0.0 (02/17/2015)
 
--   Azure モバイル エンゲージメントの最初のリリース。
+-   Azure Mobile Engagement の最初のリリース。
 -   appId/sdkKey 構成は、接続文字列の構成で置き換えられます。
 -   セキュリティの強化。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

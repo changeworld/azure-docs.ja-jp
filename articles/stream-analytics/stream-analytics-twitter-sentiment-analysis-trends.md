@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="11/06/2015"
+	ms.date="11/23/2015"
 	ms.author="jeffstok"/>
 
 
@@ -55,7 +55,7 @@ Event Hub を作成するには、次の手順に従います。
 
 アプリケーションを設定するには、次の手順に従います。
 
-1.	[TwitterClient ソリューションをダウンロードします](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClient)。
+1.	[TwitterClient ソリューションをダウンロードします。](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClient)
 2.	App.config を開き、oauth\_consumer\_key、oauth\_consumer\_secret、oauth\_token、oauth\_token\_secret を、自身の値を設定した Twitter トークンに置き換えます。  
 
 	[OAuth アクセス トークンを生成する手順](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)
@@ -236,4 +236,4 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

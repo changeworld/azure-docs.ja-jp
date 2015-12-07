@@ -59,7 +59,7 @@
 
  - **Q: ユーザーが登録されたと見なされるのはどのタイミングですか。**
  
- > **A:** ユーザーは、N 個以上の認証方法が定義された時点で登録されたと見なされます。ここで N は、[Azure 管理ポータル](https://manage.windowsazure.com)で設定した認証方法の必要数を示します。詳細については、「ユーザー パスワードのリセット ポリシーのカスタマイズ」を参照してください。
+ > **A:** ユーザーは、N 個以上の認証方法が定義された時点で登録されたと見なされます。ここで N は、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で設定した認証方法の必要数を示します。詳細については、「ユーザー パスワードのリセット ポリシーのカスタマイズ」を参照してください。
 
 
 ## パスワード リセット
@@ -190,7 +190,7 @@
 ## パスワードのリセットに関するドキュメントへのリンク
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* [**自分のパスワードのリセット**](active-directory-passwords-update-your-own-password) - システムのユーザーとして自分のパスワードをリセットまたは変更する方法について説明します。
+* [**自分のパスワードのリセット**](active-directory-passwords-update-your-own-password.md) - システムのユーザーとして自分のパスワードをリセットまたは変更する方法について説明します。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
@@ -203,4 +203,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [001]: ./media/active-directory-passwords-faq/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-faq/002.jpg "Image_002.jpg"
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

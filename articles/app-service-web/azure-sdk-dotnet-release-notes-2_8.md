@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="11/18/2015"
+   ms.date="11/19/2015"
    ms.author="juliako"/>
 
 # Azure SDK for .NET 2.8
@@ -35,8 +35,7 @@
 
 ###既知の問題
 
-Azure .NET SDK 2.8 では、.NET 4.5.2 Cloud Service パッケージを作成できます。ただし、.NET 4.5.2 フレームワークは、2016 年 1 月のゲスト OS のリリースまで既定のゲスト OS イメージにはインストールされません。それまでは、.NET 4.5.2 フレームワークは別のゲスト OS リリース バージョン (November 2015-02) で利用できます。イメージのリリース日を追跡した「[Azure ゲスト OS リリースと SDK の互換性対応表](http://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/)」ページをご覧ください。November 2015-02 イメージがリリースされたら、Cloud Service 構成ファイル (.cscfg) を更新することでこのイメージを使用できます。このサービス構成ファイルで、ServiceConfiguration 要素の osVersion 属性を "WA-GUEST-OS-4.26\_201511-02" という文字列に設定します。
-
+Azure .NET SDK 2.8 では、.NET 4.5.2 Cloud Service パッケージを作成できます。ただし、.NET 4.5.2 フレームワークは、2016 年 1 月のゲスト OS のリリースまで既定のゲスト OS イメージにはインストールされません。それまでは、.NET 4.5.2 フレームワークは別のゲスト OS リリース バージョン (November 2015-02) で利用できます。イメージのリリース日を追跡した「[Azure ゲスト OS リリースと SDK の互換性対応表](http://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/)」ページをご覧ください。November 2015-02 イメージがリリースされたら、Cloud Service 構成ファイル (.cscfg) を更新することでこのイメージを使用できます。このサービス構成ファイルで、ServiceConfiguration 要素の osVersion 属性を "WA-GUEST-OS-4.26\_201511-02" という文字列に設定します。このイメージを使用するようにした場合、ゲスト OS に対する自動更新プログラムを取得できなくなります。自動更新プログラムを取得するには、osVersion を "*" に設定する必要があります。.NET 4.5.2 は 2016 年 1 月の自動更新プログラムによってのみ利用できるようになります。
 
 ##Azure Data Factory
 
@@ -57,15 +56,6 @@ Azure .NET SDK 2.8 では、.NET 4.5.2 Cloud Service パッケージを作成で
 
 2\.8 SDK には、Azure PowerShell コマンドレットのバージョン 1.0 が必要です。他のすべてのバージョンの SDK には、Azure PowerShell コマンドレットのバージョン 0.9.8 が必要です。詳細については、[この投稿](http://go.microsoft.com/fwlink/?LinkID=623011)を参照してください。
 
-##Azure HDInsight ツール
-
-新たな更新は次のとおりです。
-
-- ほぼオーバーヘッドなしで、HiveServer2 を使用してクラスターで Hive クエリを実行し、ジョブのログをリアルタイムで確認できます。
-- 新しい Hive タスク実行ビューを使用して、ジョブをさらに詳しく調べ、詳細を確認し、潜在的な問題を特定できます。
-
-詳細については、[Visual Studio 2013 および Visual Studio 2015 用 Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/) に関するブログ記事をご覧ください。
-
 ##Web ツールの拡張機能
 
 ###既知の問題
@@ -75,11 +65,22 @@ Azure .NET SDK 2.8 では、.NET 4.5.2 Cloud Service パッケージを作成で
 - App Service に関連するクラウドおよびサーバー エクスプローラーの非運用環境向け (Azure China や Azure Stack の顧客など) のジェスチャは機能しません。これらの影響を受ける地域の顧客の場合、Azure ポータルから発行プロファイルをダウンロードすると、発行機能が有効になります。Azure China と Azure Stack の顧客のために、今後のリリースで、"デバッガーのアタッチ" や "ストリーミング ログの表示" などのジェスチャが修正される予定です。 
 - デプロイ先の App Insights インスタンスが米国東部以外のリージョンにある場合、App Service の作成時にエラーが発生することがあります。このようなシナリオでは、ポータルで App Service を作成し、発行プロファイルをダウンロードすると、発行シナリオが有効になります。 
 
+##Azure HDInsight ツール
 
+###新しい更新プログラム
+
+- ほぼオーバーヘッドなしで、HiveServer2 を使用してクラスターで Hive クエリを実行し、ジョブのログをリアルタイムで確認できます。
+- 新しい Hive タスク実行ビューを使用して、ジョブをさらに詳しく調べ、詳細を確認し、潜在的な問題を特定できます。
+
+詳細については、[Visual Studio 2013 および Visual Studio 2015 用 Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/) に関するブログ記事をご覧ください。
+
+##他の更新プログラム
+
+他の更新プログラムについては、「[Azure SDK 2.8 アナウンスの投稿](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)」を参照してください。
 ##関連トピック
 
 [Azure SDK 2.8 の発表に関するブログ記事](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

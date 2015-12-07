@@ -1,11 +1,12 @@
 <properties
 	pageTitle="承認されていないクラウド アプリケーションを Cloud App Discovery で検出する | Microsoft Azure"
-	description="このトピックでは、Cloud App Discvery とは何かと、これを使用する理由について説明します。"
+	description="Cloud App Discovery でアプリケーションを検索および管理する利点と機能について説明します。"
 	services="active-directory"
+	keywords="Cloud App Discovery, アプリケーションの管理"
 	documentationCenter=""
 	authors="markusvi"
-	manager="swadhwa"
-	editor="lisatoft"/>
+	manager="stevenpo"
+	editor=""/>
 
 <tags
 	ms.service="active-directory"
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/16/2015"
+	ms.date="11/20/2015"
 	ms.author="markusvi"/>
 
 # 承認されていないクラウド アプリケーションを Cloud App Discovery で検出する
@@ -47,4 +48,4 @@ Cloud App Discovery の使用を開始するには、[Cloud App Discovery の概
 - [Cloud App Discovery エージェントの変更ログ](http://social.technet.microsoft.com/wiki/contents/articles/24616.cloud-app-discovery-agent-changelog.aspx)
 - [Cloud App Discovery に関してよく寄せられる質問](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

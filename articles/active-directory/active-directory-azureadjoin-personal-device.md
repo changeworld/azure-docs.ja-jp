@@ -1,3 +1,5 @@
+
+
 <properties 
 	pageTitle="個人のデバイスを組織に参加させる | Microsoft Azure" 
 	description="ユーザーが個人用の Windows 10 コンピューターを企業ネットワークに登録する方法と、BYOD シナリオのデプロイメント手順について説明します。" 
@@ -7,14 +9,13 @@
 	manager="stevenpo" 
 	editor=""
 	tags="azure-classic-portal"/>
-
 <tags 
 	ms.service="active-directory" 
 	ms.workload="identity" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/17/2015" 
+	ms.date="11/19/2015" 
 	ms.author="femila"/>
 
 # 個人のデバイスを組織に参加させる
@@ -39,4 +40,4 @@ Windows 10 デバイスを組織に参加させるには
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

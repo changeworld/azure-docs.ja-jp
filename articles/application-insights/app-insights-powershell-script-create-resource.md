@@ -91,8 +91,12 @@ iKey を SDK で使用できるようにする方法は 2 つあります。
 
 
 
+## 関連項目
 
+* [テンプレートから Application Insights と Web テスト リソースを作成する](app-insights-powershell.md)
+* [PowerShell で Azure 診断の監視を設定する](app-insights-powershell-azure-diagnostics.md) 
+* [PowerShell を使用したアラートの設定](app-insights-alerts.md#set-alerts-by-using-powershell)
 
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1125_2015-->

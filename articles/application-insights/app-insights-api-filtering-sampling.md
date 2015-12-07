@@ -24,6 +24,8 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 現在これらの機能は、ASP.NET SDK で利用できます。
 
 * [サンプリング](#sampling)は、統計に影響を与えることなくテレメトリの量を削減します。関連するデータ ポイントが一緒に保持されるので、問題の診断時にそれらのデータ ポイント間を移動することができます。ポータルでは、サンプリングを補正するために合計数が乗算されます。
+ * 固定レートのサンプリングを使用すると、送信されるイベントの割合を特定できます。
+ * アダプティブ サンプリング (ASP.NET SDK 2.0.0-beta3 以降では既定) は、テレメトリの量に従ってサンプリング レートを自動的に調整します。ターゲット ボリュームを設定できます。
 * [フィルター処理](#filtering)では、テレメトリがサーバーに送信される前に、SDK でテレメトリを選択または変更することができます。たとえば、ロボットからの要求を除外することでテレメトリの量を削減することができます。フィルター処理は、トラフィックを削減する上では、サンプリングよりも基本的な方法です。フィルター処理を使用すると、送信する内容をより細かく制御することができます。ただし、統計に影響を及ぼすことになるので注意が必要です (たとえば、すべての成功した要求を除外する場合など)。
 * アプリから送信される任意のテレメトリ (標準のモジュールからのテレメトリなど) に[プロパティを追加](#add-properties)します。たとえば、算出値や、ポータルでデータをフィルター処理するのに使用できるバージョン番号を追加することが可能です。
 * [SDK API](app-insights-api-custom-events-metrics.md) は、カスタム イベントとメトリックの送信に使用します。
@@ -38,27 +40,22 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 *この機能はベータ版です。*
 
-正確な統計情報を保持したままでトラフィックを削減するお勧めの方法です。フィルターを使用すると、関連のある項目が選択されるため、診断内の項目間を移動しやすくなります。フィルター処理された項目を補正するために、メトリックス エクスプローラーでイベントの数が調整されます。
+[サンプリング](app-insights-sampling.md)は、正確な統計情報を保持したままでトラフィックを削減するお勧めの方法です。フィルターを使用すると、関連のある項目が選択されるため、診断内の項目間を移動しやすくなります。フィルター処理された項目を補正するために、メトリックス エクスプローラーでイベントの数が調整されます。
 
-1. プロジェクトの NuGet パッケージを Application Insights の最新の*プレリリース* バージョンに更新します。ソリューション エクスプ ローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択し、**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。 
+* アダプティブ サンプリングをお勧めします。アダプティブ サンプリングはサンプリングの割合を自動的に調整し、要求が一定の量になるようにします。現在は、ASP.NET サーバー側テレメトリでのみ使用できます。  
+* 固定レート サンプリングも利用できます。サンプリングの割合を指定します。ASP.NET Web アプリ コードおよび JavaScript Web ページで使用できます。クライアントとサーバーはサンプリングを同期するので、検索では関連のあるページ ビューと要求の間を移動できます。
 
-2. 次のスニペットを [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) に追加します。
+### サンプリングを有効にするには
 
-```XML
+**プロジェクトの NuGet** パッケージを Application Insights の最新の*プレリリース* バージョンに更新します。ソリューション エクスプ ローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択し、**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。
 
-    <TelemetryProcessors>
-     <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) では、アダプティブ アルゴリズムが目標とするテレメトリの最大レートを調整できます。
 
-     <!-- Set a percentage close to 100/N where N is an integer. -->
-     <!-- E.g. 50 (=100/2), 33.33 (=100/3), 25 (=100/4), 10, 1 (=100/100), 0.1 (=100/1000) ... -->
-     <SamplingPercentage>10</SamplingPercentage>
-     </Add>
-   </TelemetryProcessors>
+    <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
 
-```
+### クライアント側のサンプリング
 
-
-Web ページからのデータに対してサンプリングを行うには、(通常は、\_Layout.cshtml などのマスター ページに) 挿入した [Application Insights のスニペット](app-insights-javascript.md)に追加の行を配置します。
+Web ページからのデータに対して固定レートのサンプリングを行うには、(通常は、\_Layout.cshtml などのマスター ページに) 挿入した [Application Insights のスニペット](app-insights-javascript.md)に追加の行を配置します。
 
 *JavaScript*
 
@@ -73,9 +70,7 @@ Web ページからのデータに対してサンプリングを行うには、(
 ```
 
 * 100/N (N は整数) と等しいパーセント値 (この例では 10) を設定します。たとえば、50 (=100/2)、33.33 (=100/3)、25 (=100/4)、10 (=100/10) です。 
-* 大量のデータがある場合は、0.1 などの非常に低いサンプリング レートを使用することができます。
-* Web ページとサーバーの両方でサンプリングを設定する場合は、両方で同じサンプリング比率を設定していることを確認してください。
-* クライアント側とサーバー側で、連携して関連する項目を選択します。
+* サーバー側でも[固定レート サンプリング](app-insights-sampling.md)を有効にしている場合は、クライアントとサーバーはサンプリングを同期するので、検索で関連のあるページ ビューと要求の間を移動できます。
 
 [サンプリングの詳細についてはこちらを参照してください](app-insights-sampling.md)。
 
@@ -164,7 +159,7 @@ Web ページからのデータに対してサンプリングを行うには、(
  
 **あるいは**、コード内でフィルターを初期化することもできます。適切な初期化クラス (たとえば Global.asax.cs の AppStart) で、プロセッサをチェーンに挿入します。
 
-    ```C#
+```C#
 
     var builder = TelemetryConfiguration.Active.GetTelemetryProcessorChainBuilder();
     builder.Use((next) => new SuccessfulDependencyFilter(next));
@@ -174,7 +169,7 @@ Web ページからのデータに対してサンプリングを行うには、(
 
     builder.Build();
 
-    ```
+```
 
 この時点より後に作成された TelemetryClients はプロセッサを使用します。
 
@@ -409,4 +404,4 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

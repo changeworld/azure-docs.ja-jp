@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/26/2015"
+	ms.date="11/24/2015"
 	ms.author="femila"/>
 
 # Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成
@@ -52,4 +52,12 @@ Windows 7 コンピューターでコマンド プロンプトを開き、次の
 
 Windows 7 コンピューターの Windows イベント ログには、社内参加に関連するメッセージが表示されます。社内参加の成功したイベントと失敗したイベントの両方のメッセージが表示されます。イベント ログは、イベント ビューアーの [アプリケーションとサービス ログ] の [Microsoft - 社内参加] にあります。
 
-<!---HONumber=Nov15_HO1-->
+## 関連トピック
+
+- [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)
+- [Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md)
+- [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+
+ 
+
+<!---HONumber=AcomDC_1125_2015-->

@@ -49,7 +49,7 @@ Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を�
 
 次の図では、フェデレーション、信頼、ホスティングの関係を示します。これらの関係により、クライアントは、Azure AD によって認証された、データベースが信頼するトークンを送信することで、データベースに接続できます。重要なのは、Azure AD 認証を使用してデータベースにアクセスするには、ホストしているサブスクリプションを Azure Active Directory に関連付ける必要があることを理解することです。
 
-![subscription relationship][2]
+![サブスクリプションの関係性][2]
 
 ## 管理者の構造
  
@@ -327,4 +327,4 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 [9]: ./media/sql-database-aad-authentication/9ad-settings.png
 [10]: ./media/sql-database-aad-authentication/10choose-admin.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -1,6 +1,7 @@
 <properties 
 	pageTitle="Azure App Service とは" 
 	description="Azure App Service が Web アプリおよびモバイル アプリを開発するために最適なプラットフォームである理由を説明します。" 
+	keywords="App Service, Azure App Service, App Service のコスト, スケール, スケーラブル, アプリのデプロイメント, Azure App のデプロイメント"
 	services="app-service" 
 	documentationCenter="" 
 	authors="omarkmsft" 
@@ -59,4 +60,4 @@ Azure App Service なら、言語の選択と同じくらい簡単に使用で�
 無料ですぐに[新しいアプリを作成できます](http://go.microsoft.com/fwlink/?LinkId=523751)。クレジット カードもコミットメントも不要です。面倒なことはありません。
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="参照データの使用 | Microsoft Azure" 
-	description="入力ストリームとして参照データを使用する" 
+	description="Stream Analytics の入力ストリームでの参照データの使用" 
 	keywords="ビッグ データ分析,クラウド サービス,モノのインターネット,管理サービス,ストリーム処理,ストリーミング分析,ストリーミング データ"
 	services="stream-analytics" 
 	documentationCenter="" 
@@ -14,10 +14,10 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/09/2015" 
+	ms.date="11/23/2015" 
 	ms.author="jeffstok"/>
 
-# 入力としての参照データの使用
+# Stream Analytics の入力ストリームでの参照データの使用
 
 参照データは、静的または本来はあまり変更されない有限のデータ セットです。参照の実行やデータ ストリームとの相互の関連付けに使用されます。Azure Stream Analytics のジョブで参照データを使用するには、一般的にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。Stream Analytics は参照データのストレージ層として Azure BLOB ストレージを使用し、Azure Data Factory を使用して参照データを Azure BLOB ストレージに変換、コピー、またはその両方を実行して、[任意の数のクラウド ベースとオンプレミスのデータ ストア](./articles/data-factory-data-movement-activities.md)から、参照データとして使用することができます。参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。シーケンス内の最後の BLOB で指定された日付/時刻より**新しい**日付/時刻を使用してシーケンスの末尾に追加することがサポートされている**だけ**です。
 
@@ -103,4 +103,4 @@
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

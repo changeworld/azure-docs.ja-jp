@@ -13,11 +13,11 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/06/2015" 
+	ms.date="11/23/2015" 
 	ms.author="jeffstok"/>
 
 
-# 入力を追加する
+# Stream Analytics ジョブに**入力を追加**する方法
 
 Azure Stream Analytics ジョブを 1 つ以上の入力に接続できます。入力では、既存のデータ ソースへの接続が定義されています。データがそのデータ ソースに送信されると、Stream Analytics ジョブによって使用され、リアルタイムで処理されます。Stream Analytics は、ジョブ サブスクリプションの内部および外部で [Azure Event Hubs](http://azure.microsoft.com/services/event-hubs/) および [Azure BLOB](./storage/storage-dotnet-how-to-use-blobs.md) ストレージとの最上位の統合が行われます。Stream Analytics には、データ ストリームと参照データという 2 種類の入力があります。
 
@@ -77,4 +77,4 @@ Stream Analytics ジョブに入力を追加するには:
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure Stream Analytics の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

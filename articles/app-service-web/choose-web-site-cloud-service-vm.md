@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="08/10/2015"
+	ms.date="11/19/2015"
 	ms.author="tdykstra"/>
 
 # Azure App Service、Cloud Services、および Virtual Machines の比較
@@ -153,11 +153,11 @@ Web デプロイによるコードのデプロイ|○||○|Cloud Services では
 WebMatrix サポート|○||○|
 Service Bus、Storage、SQL Database のようなサービスへのアクセス|○|○|○|
 多層アーキテクチャの Web 層または Web サービス層のホスト|○|○|○|
-多層アーキテクチャの中間層のホスト|○|○|○|REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、[Web ジョブ](http://go.microsoft.com/fwlink/?linkid=390226)機能でホストできます。Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保できます。プレビュー [API Apps](../app-service-api/app-service-api-apps-why-best-platform/) 機能には、REST サービスをホストする機能が多数搭載されています。
+多層アーキテクチャの中間層のホスト|○|○|○|REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、[Web ジョブ](http://go.microsoft.com/fwlink/?linkid=390226)機能でホストできます。Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保できます。プレビュー [API Apps](../app-service-api/app-service-api-apps-why-best-platform.md) 機能には、REST サービスをホストする機能が多数搭載されています。
 統合されたサービスとしての MySQL のサポート|○|○|○|Cloud Services は、ClearDB のサービスを介してサービスとしての MySQL を統合できますが、管理ポータル ワークフローの一部として統合することはできません。
 ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート|○|○|○|
 再デプロイなしでの複数インスタンスへのスケールアウト|○|○|○|Virtual Machines は複数のインスタンスにスケールアウトできますが、そこで実行されるサービスが、このようなスケールアウトに対応できるように記述されていなければなりません。要求を複数のコンピューターにルーティングするためのロード バランサーを構成すると共に、アフィニティ グループを作成して、メンテナンスやハードウェアの障害で全インスタンスが同時に再起動するのを防ぐ必要があります。
-SSL のサポート|○|○|○|App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](../app-service-web/web-sites-configure-ssl-certificate/)に関するページを参照してください。
+SSL のサポート|○|○|○|App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](../app-service-web/web-sites-configure-ssl-certificate.md)に関するページを参照してください。
 Visual Studio 統合|○|○|○|
 リモート デバッグ|○|○|○|
 TFS によるコードのデプロイ|○|○|○|
@@ -204,4 +204,4 @@ ETW イベントのリッスン||○|○|
   [Storage]: http://www.windowsazure.com/documentation/services/storage/
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

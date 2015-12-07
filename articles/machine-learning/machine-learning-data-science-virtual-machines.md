@@ -3,7 +3,7 @@
 	description="データ サイエンス用仮想マシンのセットアップ"
 	services="machine-learning"
 	documentationCenter=""
-	authors="msolhab"
+	authors="bradsev"
 	manager="paulettm" 
 	editor="cgronlun"  />
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.date="11/23/2015"
 	ms.author="mohabib;xibingao;bradsev" />
 
 # Azure のデータ サイエンス用仮想マシン
@@ -34,10 +34,10 @@
 
 * 「[高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する](machine-learning-data-science-setup-sql-server-virtual-machine.md)」では、SQL Database の形式でデータを格納できるようにする場合の、IPython Notebook を使用する Azure SQL Server 仮想マシンと、データ サイエンスに使用するその他のツールのプロビジョニングの実行方法を示しています。
 
-プロビジョニングと構成が完了すると、これらの仮想マシンは IPython Notebook サーバーとして使用する準備が整い、Azure Machine Learning やクラウド データ サイエンス プロセスと連携して、必要なデータの探索と処理、その他のタスクを実行できるようになります。データ サイエンス プロセスにおける次のステップは、「[学習ガイド: Azure での高度なデータ処理](machine-learning-data-science-advanced-data-processing.md)」に示されています。これには、SQL Server か HDInsight にデータを移動し、Azure Machine Learning でデータから知見を得るための準備としてデータを処理してサンプリングする手順が含まれています。
+プロビジョニングと構成が完了すると、これらの仮想マシンは IPython Notebook サーバーとして使用する準備が整い、Azure Machine Learning や Cortana Analytics Process (CAP) と連携して、必要なデータの探索と処理、その他のタスクを実行できるようになります。データ サイエンス プロセスの次のステップは、[CAP ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)に示されています。SQL Server または HDInsight にデータを移動し、Azure Machine Learning でデータの情報を取得する準備としてデータを処理してサンプリングする手順などがあります。
 
 
 > [AZURE.NOTE]Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用していないときに課金されないようにするには、[Microsoft Azure 管理ポータル](http://manage.windowsazure.com/)から、その仮想マシンを **[停止 (割り当て解除)]** 状態にする必要があります。仮想マシンの割り当てを解除する方法については、「[未使用時に仮想マシンをシャットダウンして割り当てを解除する](machine-learning-data-science-setup-virtual-machine.md#shutdown)」をご覧ください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

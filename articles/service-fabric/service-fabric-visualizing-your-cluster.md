@@ -32,13 +32,19 @@ Service Fabric Explorer は、Service Fabric クラスター内のアプリケ�
 
 ![Service Fabric Explorer のクラスター ダッシュボード][sfx-cluster-dashboard]
 
-クラスターには、2 つのサブツリーが含まれています。1 つはアプリケーション、もう 1 つはノードのサブツリーです。
+### クラスター マップ
+
+Service Fabric クラスターのノードは障害ドメインの 2 次元グリッドにわたり配置され、ハードウェアに障害が発生したり、アプリケーションをアップグレードしたりするとき、アプリケーションの可用性を維持できるようにドメインをアップグレードします。クラスター マップを利用し、現在のクラスターの配置を表示できます。
+
+![Service Fabric Explorer のクラスター マップ][sfx-cluster-map]
 
 ### アプリケーションとサービスの表示
 
+クラスターには、2 つのサブツリーが含まれています。1 つはアプリケーション、もう 1 つはノードのサブツリーです。
+
 アプリケーション ビューでは、Service Fabric の論理階層 (アプリケーション、サービス、パーティション、レプリカ) 内を移動できます。
 
-次の例では、**MyApp** アプリケーションは、**MyStatefulService** と **WebSvcService** の 2 つのサービスで構成されています。**MyStatefulService** はステートフルであるため、1 つのプライマリ レプリカと 2 つのセカンダリ レプリカがあるパーティションが 1 つ含まれています。これに対して、WebSvcService はステートレスであり、インスタンスが 1 つだけ含まれています。
+次の例では、**MyApp** アプリケーションは、**MyStatefulService** と **WebService** の 2 つのサービスで構成されています。**MyStatefulService** はステートフルであるため、1 つのプライマリ レプリカと 2 つのセカンダリ レプリカがあるパーティションが 1 つ含まれています。これに対して、WebSvcService はステートレスであり、インスタンスが 1 つだけ含まれています。
 
 ![Service Fabric Explorer のアプリケーション ビュー][sfx-application-tree]
 
@@ -70,9 +76,11 @@ Service Fabric Explorer は Web ベースであり、クラスター内で実行
 
 ### リモート クラスターの Service Fabric Explorer エンドポイントの検出
 
-クラスター エンドポイントは、Service Fabric ポータルから検出できます。特定のクラスターの Service Fabric Explorer に到達するには、次のようにポート 19007 でそのエンドポイントに接続します。
+特定のクラスターの Service Fabric Explorer に到達するために、ブラウザーを次の場所にポイントします。
 
-http://&lt;your-cluster-endpoint&gt;:19007
+http://&lt;your-cluster-endpoint&gt;:19080/Explorer
+
+完全な URL は Azure ポータルの [Cluster Essentials] ウィンドウにもあります。
 
 ### セキュリティで保護されたクラスターへの接続
 
@@ -87,14 +95,10 @@ Service Fabric クラスターに接続するために、クライアントに�
 - [PowerShell を使用した Service Fabric アプリケーションのデプロイメント](service-fabric-deploy-remove-applications.md)
 
 <!--Image references-->
-[applicationview]: ./media/service-fabric-visualizing-your-cluster/applicationview.png
-[clustermap]: ./media/service-fabric-visualizing-your-cluster/clustermap.png
-[connecttocluster]: ./media/service-fabric-visualizing-your-cluster/connecttocluster.png
-[replicadetails]: ./media/service-fabric-visualizing-your-cluster/replicadetails.png
-[servicefabricexplorer]: ./media/service-fabric-visualizing-your-cluster/servicefabricexplorer.png
 [sfx-cluster-dashboard]: ./media/service-fabric-visualizing-your-cluster/SfxClusterDashboard.png
+[sfx-cluster-map]: ./media/service-fabric-visualizing-your-cluster/SfxClusterMap.png
 [sfx-application-tree]: ./media/service-fabric-visualizing-your-cluster/SfxApplicationTree.png
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

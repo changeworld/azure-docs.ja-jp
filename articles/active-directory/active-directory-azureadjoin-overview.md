@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張 | Microsoft Azure" 
-	description="Azure AD 参加について説明するトピック。" 
+	description="Widows 10 デバイスが Azure AD 参加を使用して Azure Active Directory に登録する方法についての概要を説明します。" 
 	services="active-directory" 
 	documentationCenter="" 
 	authors="femila" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/30/2015" 
+	ms.date="11/19/2015" 
 	ms.author="femila"/>
 
 # Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張
@@ -68,6 +68,7 @@ Azure AD 参加には、次の機能があります。
 | デスクトップから SSO を行って、オンプレミスとクラウドの両方にあるアプリ、Web サイト、リソースを操作します。認証に Azure AD を使用するアプリ。 | エンタープライズ ディレクトリ (Azure AD) への自動登録および MDM への自動登録。(Azure AD Premium の機能) | この仕事用アカウントを使ったアプリ、Web サイト、リソースへの SSO を提供します。 |
 | ユーザーは、個人の MSA を追加して、会社のデータに影響を与えることなく個人の画像やファイルにアクセスできます (ローミング設定は仕事用アカウントに対しても機能します)。MSA アカウントにより SSO が可能になり、設定のローミングが行われなくなります。 | winlogon (忘れたパスワードをリセットする機能) でのセルフサービスによるパスワードのリセット (SSPR) (この機能を使用するには Azure AD Premium が必要です) | エンタープライズ ストアのフロントとセクションへのアクセスを提供して、ユーザーが個人のデバイスで LoB アプリを取得および使用できるようにします。 | |
 
+
 ## 追加情報
 * [エンタープライズ向け Windows 10: デバイスを仕事に使用する方法](active-directory-azureadjoin-windows10-devices-overview.md)
 * [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-user-upgrade.md)
@@ -76,4 +77,4 @@ Azure AD 参加には、次の機能があります。
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

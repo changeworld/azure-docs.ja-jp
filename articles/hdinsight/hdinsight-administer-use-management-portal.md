@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/16/2015"
+	ms.date="11/24/2015"
 	ms.author="jgao"/>
 
 # Azure プレビュー ポータルを使用した HDInsight での Hadoop クラスターの管理
@@ -157,7 +157,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。�
 ##クラスターのスケール
 クラスターのスケール設定機能を使用すると、Azure HDInsight で実行しているクラスターによって使用される worker ノードの数を、クラスターを再作成することなく、変更できます。
 
->[AZURE.NOTE]HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスター ポータル インターフェイスについての理解する](hdinsight-adminster-use-management-portal/#Get-familiar-with-the-cluster-portal-interface)」を参照してください。
+>[AZURE.NOTE]HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスターの一覧と表示](hdinsight-adminster-use-management-portal/#list-and-show-clusters)」をご覧ください。
 
 HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
 
@@ -266,7 +266,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 ##既定のストレージ アカウントの検索
 
-各 HDInsight クラスターには、既定のストレージ アカウントが設定されています。クラスターの既定のストレージ アカウントとそのキーは、**[設定]** の **[プロパティ]** にある **[Azure ストレージ キー]** に表示されます。「[クラスターの一覧と表示](list-and-show-clusters)」をご覧ください。
+各 HDInsight クラスターには、既定のストレージ アカウントが設定されています。クラスターの既定のストレージ アカウントとそのキーは、**[設定]** の **[プロパティ]** にある **[Azure ストレージ キー]** に表示されます。「[クラスターの一覧と表示](#list-and-show-clusters)」をご覧ください。
 
 	
 ##リソース グループの検索 
@@ -276,7 +276,7 @@ ARM モードでは、各 HDInsight クラスターは Azure リソース グル
 - クラスター一覧の**リソース グループ**列。
 - クラスターの **[基本情報]** タイル。  
 
-「[クラスターの一覧と表示](list-and-show-clusters)」をご覧ください。
+「[クラスターの一覧と表示](#list-and-show-clusters)」をご覧ください。
    
 ##HDInsight クエリ コンソールを開く
 
@@ -399,4 +399,4 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -104,9 +104,9 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 ## 手順 2. Azure にストレージ アカウントを作成する ##
 
-仮想マシンを作成するために Azure で使用できる .vhd ファイルをアップロードするには、Azure のストレージ アカウントが必要です。Microsoft Azure 管理ポータルを使用して、ストレージ アカウントを作成できます。
+仮想マシンを作成するために Azure で使用できる .vhd ファイルをアップロードするには、Azure のストレージ アカウントが必要です。ストレージ アカウントは、Azure ポータルを使用して作成できます。
 
-1. Microsoft Azure 管理ポータルにサインインします。
+1. Azure ポータルにサインインします。
 
 2. コマンド バーで、**[新規]** をクリックします。
 
@@ -181,7 +181,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 ## ステップ 4: .vhd ファイルをアップロードする ##
 
-.vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。以下のコマンドの例では、**BlobStorageURL** は手順 2 で作成したストレージ アカウントの URL であり、**YourImagesFolder** は BLOB ストレージ内でイメージを格納するコンテナーです。**VHDName** は、仮想ハード ディスクを識別するために管理ポータルに表示されるラベルです。**PathToVHDFile** は、.vhd ファイルの完全なパスとファイル名です。
+.vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。以下のコマンドの例では、**BlobStorageURL** は手順 2 で作成したストレージ アカウントの URL であり、**YourImagesFolder** は BLOB ストレージ内でイメージを格納するコンテナーです。**VHDName** は、仮想ハード ディスクを識別するために Azure ポータルに表示されるラベルです。**PathToVHDFile** は、.vhd ファイルの完全なパスとファイル名です。
 
 
 1. 前の手順で使用した Azure PowerShell ウィンドウで、次のように入力します。
@@ -197,7 +197,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
     **重要**: 現時点では OS の種類として Linux を使用してください。これは、現在の Azure PowerShell のバージョンでは、パラメーターとして “Linux” または “Windows” しか使用できないためです。
 
-2. ここまでの手順を完了すると、Azure 管理ポータルで **[イメージ]** タブをクリックしたときに、新しいイメージが一覧に表示されます。
+2. ここまでの手順を完了すると、Azure ポータルで **[イメージ]** タブをクリックしたときに、新しいイメージが一覧に表示されます。
 
     ![add image](./media/virtual-machines-freebsd-create-upload-vhd/addfreebsdimage.png)
 
@@ -209,4 +209,4 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 	![freebsd image in azure](./media/virtual-machines-freebsd-create-upload-vhd/freebsdimageinazure.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

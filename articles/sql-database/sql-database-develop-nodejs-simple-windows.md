@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="11/03/2015"
+	ms.date="11/19/2015"
 	ms.author="meetb"/>
 
 
@@ -33,195 +33,143 @@
 次のソフトウェア アイテムが、クライアント開発コンピューターに存在する必要があります。
 
 
--  Node.js – [バージョン 0.8.9 (32 ビット バージョン)](http://blog.nodejs.org/2012/09/11/node-v0-8-9-stable/)。スクロールして、Windows x64 Installer 64 bit ではなく、Windows Installer for 32 bit x86 のダウンロードをクリックします。
-- [Python 2.7.6](https://www.python.org/download/releases/2.7.6/) は、x86 か x64 のいずれかのインストーラーです。 
-- [Visual C 2010](https://app.vssps.visualstudio.com/profile/review?download=true&family=VisualStudioCExpress&release=VisualStudio2010&type=web&slcid=0x409&context=eyJwZSI6MSwicGMiOjEsImljIjoxLCJhbyI6MCwiYW0iOjEsIm9wIjpudWxsLCJhZCI6bnVsbCwiZmEiOjAsImF1IjpudWxsLCJjdiI6OTY4OTg2MzU1LCJmcyI6MCwic3UiOjAsImVyIjoxfQ2) - 無償版が Microsoft から無料で公開されています。
-- SQL Server Native Client 11.0 - [SQL Server 2012 Feature Pack](http://www.microsoft.com/download/details.aspx?id=29065) にある Microsoft SQL Server 2012 Native Client として利用できます。
+-  [Node.js](https://nodejs.org/en/download/) - Windows インストーラーをクリックし、適切な msi インストーラーをダウンロードします。ダウンロードしたら、msi を実行し、Node.js をインストールします。 
 
 
 ### 必要なモジュールのインストール
 
-要件を満たしたら、Node.js バージョン 0.8.9 が表示されていることを確認します。これは、コマンド ライン ターミナルから次のコマンド node -v で確認できます。<br>**cmd.exe** コマンド ライン ウィンドウで、プロジェクト ディレクトリ (C:\\NodeJSSQLProject など) に移動しします。表示された順序で、次のコマンドを入力します。
+**ノード** でコンピューターを構成したら、cmd.exe を開き、Node.js プロジェクトの作成を予定しているディレクトリに移動して、次のコマンドを入力します。
+
 
 	npm init
-	npm install msnodesql
+	npm install tedious
 
-次に node\_modules\\msnodesql フォルダーに移動して、**msnodesql-0.2.1-v0.8-ia32** 実行可能ファイルを実行します。インストール ウィザードの手順に従い、完了したら [完了] をクリックします。この時点で Node.js SQL Server ドライバーがインストールされている必要があります。次の手順に従って接続文字列を取得すると、Node.js アプリケーションから Azure SQL DB に接続できるはずです。
 
-### データベースを作成し、接続文字列を取得します。
- 
-「[トピックの開始](sql-database-get-started.md)」ページで、サンプル データベースの作成方法と接続文字列を取得する方法についてご確認ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
+**npm init** はノード プロジェクトを作成します。プロジェクトの作成中に既定値を保持するには、プロジェクトが作成されるまで Enter キーを押します。プロジェクト ディレクトリに **package.json** が表示されます。
+
+
+### AdventureWorks データベースの作成
+
+
+このトピックのコード サンプルには、**AdventureWorks** テスト データベースが必要です。まだお持ちでない場合は、「[SQL Database の使用](sql-database-get-started.md)」をご覧ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
 
 
 ## SQL Database に接続する
 
+[新しい Connection ](http://pekim.github.io/tedious/api-connection.html)関数は、SQL Database に接続するために使用します。
 
-- プロジェクト ディレクトリ内にある .js ファイルの次のコードをコピーします。
-
-
-		var http = require('http');
-		var sql = require('msnodesql');
-		var http = require('http');
-		var fs = require('fs');
-		var useTrustedConnection = false;
-		var conn_str = "Driver={SQL Server Native Client 11.0};Server=tcp:yourserver.database.windows.net;" + 
-		(useTrustedConnection == true ? "Trusted_Connection={Yes};" : "UID=yourusername;PWD=yourpassword;") + 
-		"Database={AdventureWorks};"
-		sql.open(conn_str, function (err, conn) {
-		    if (err) {
-		        console.log("Error opening the connection!");
-		        return;
-		    }
-		    else
-		        console.log("Successfuly connected");
-		});	
-
-
-- 次のコマンドを発行して .js ファイルを実行します。
-
-
-		node index.js
-
-
-## SQL SELECT ステートメントの実行
-
-
-	var http = require('http');
-	var sql = require('msnodesql');
-	var http = require('http');
-	var fs = require('fs');
-	var useTrustedConnection = false;
-	var conn_str = "Driver={SQL Server Native Client 11.0};Server=tcp:yourserver.database.windows.net;" + 
-	(useTrustedConnection == true ? "Trusted_Connection={Yes};" : "UID=yourusername;PWD=yourpassword;") + 
-	"Database={AdventureWorks};"
-	sql.open(conn_str, function (err, conn) {
-	    if (err) {
-	        console.log("Error opening the connection!");
-	        return;
-	    }
-	    else
-	        console.log("Successfuly connected");
-	
-	
-	    conn.queryRaw("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function (err, results) {
-	        if (err) {
-	            console.log("Error running query1!");
-	            return;
-	        }
-	        for (var i = 0; i < results.rows.length; i++) {
-	            console.log(results.rows[i]);
-	        }
-	    });
+	var Connection = require('tedious').Connection;
+	var config = {
+		userName: 'yourusername',
+		password: 'yourpassword',
+		server: 'yourserver.database.windows.net',
+		// If you are on Microsoft Azure, you need this:
+		options: {encrypt: true, database: 'AdventureWorks'}
+	};
+	var connection = new Connection(config);
+	connection.on('connect', function(err) {
+	// If no error, then good to proceed.
+		console.log("Connected");
 	});
 
 
-## 行を挿入し、パラメーターを渡し、生成されたプライマリ キーを取得する
+## SQL SELECT の実行
 
 
-	var http = require('http');
-	var sql = require('msnodesql');
-	var http = require('http');
-	var fs = require('fs');
-	var useTrustedConnection = false;
-	var conn_str = "Driver={SQL Server Native Client 11.0};Server=tcp:yourserver.database.windows.net;" + 
-	(useTrustedConnection == true ? "Trusted_Connection={Yes};" : "UID=yourusername;PWD=yourpassword;") + 
-	"Database={AdventureWorks};"
-	sql.open(conn_str, function (err, conn) {
-	    if (err) {
-	        console.log("Error opening the connection!");
-	        return;
-	    }
-	    else
-	        console.log("Successfuly connected");
-	
-	
-	    conn.queryRaw("INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES ('SQL Server Express', 'SQLEXPRESS', 0, 0, CURRENT_TIMESTAMP)", function (err, results) {
-	        if (err) {
-	            console.log("Error running query!");
-	            return;
-	        }
-	        for (var i = 0; i < results.rows.length; i++) {
-	            console.log("Product ID Inserted : "+results.rows[i]);
-	        }
-	    });
+[新しい Request()](http://pekim.github.io/tedious/api-request.html) 関数 を使用して、すべての SQL ステートメントが実行されます。ステートメントが SELECT ステートメントなどの行を返す場合は、[request.on()](http://pekim.github.io/tedious/api-request.html) 関数を使用してそれらを取得することができます。行が存在しない場合は、[request.on()](http://pekim.github.io/tedious/api-request.html) 関数は空のリストを返します。
+
+
+	var Connection = require('tedious').Connection;
+	var config = {
+		userName: 'yourusername',
+		password: 'yourpassword',
+		server: 'yourserver.database.windows.net',
+		// When you connect to Azure SQL Database, you need these next options.
+		options: {encrypt: true, database: 'AdventureWorks'}
+	};
+	var connection = new Connection(config);
+	connection.on('connect', function(err) {
+		// If no error, then good to proceed.
+		console.log("Connected");
+		executeStatement();
 	});
-
-
-## トランザクション
-
-
-メソッド **conn.beginTransactions** は、Azure SQL Database では機能しません。代わりに、次のコード サンプルに従って、SQL Databaseでトランザクションを実行します。
-
-
-	var http = require('http');
-	var sql = require('msnodesql');
-	var http = require('http');
-	var fs = require('fs');
-	var useTrustedConnection = false;
-	var conn_str = "Driver={SQL Server Native Client 11.0};Server=tcp:yourserver.database.windows.net;" + 
-	(useTrustedConnection == true ? "Trusted_Connection={Yes};" : "UID=yourusername;PWD=yourpassword;") + 
-	"Database={AdventureWorks};"
-	sql.open(conn_str, function (err, conn) {
-	    if (err) {
-	        console.log("Error opening the connection!");
-	        return;
-	    }
-	    else
-	        console.log("Successfuly connected");
 	
+	var Request = require('tedious').Request;
+	var TYPES = require('tedious').TYPES;
 	
-	    conn.queryRaw("INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES ('SQL Server Express New ', 'SQLEXPRESS New', 1, 1, CURRENT_TIMESTAMP)", function (err, results) {
-	        if (err) {
-	            console.log("Error running query!");
-	            return;
-	        }
-	        for (var i = 0; i < results.rows.length; i++) {
-	            console.log("Product ID Inserted : "+results.rows[i]);
-	        }
-	    });
-	    
-	    conn.queryRaw("ROLLBACK TRANSACTION; ", function (err, results) {
-            	if (err) {
-        		console.log("Rollback failed");
-        		return;
-        	}
-    	    });
+	function executeStatement() {
+		request = new Request("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function(err) {
+	  	if (err) {
+	   		console.log(err);} 
+		});
+		var result = "";
+		request.on('row', function(columns) {
+		    columns.forEach(function(column) {
+		      if (column.value === null) {
+		        console.log('NULL');
+		      } else {
+		        result+= column.value + " ";
+		      }
+		    });
+		    console.log(result);
+		    result ="";
+		});
+	
+		request.on('done', function(rowCount, more) {
+		console.log(rowCount + ' rows returned');
+		});
+		connection.execSql(request);
+	}
+
+
+## 行を挿入し、パラメーターを適用し、生成されたプライマリ キーを取得する
+
+
+SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) プロパティと [SEQUENCE](https://msdn.microsoft.com/library/ff878058.aspx) オブジェクトを使用して、[プライマリ キーの値](https://msdn.microsoft.com/library/ms179610.aspx)を自動生成できます。この例では、INSERT ステートメントを実行し、SQL インジェクションから保護されているパラメーターを安全に渡し、自動生成されたプライマリ キー値を取得する方法について説明しています。
+
+
+このセクションのコード サンプルは、SQL の INSERT ステートメントにパラメーターを適用します。生成されるプライマリ キーの値は、プログラムによって取得されます。
+
+
+	var Connection = require('tedious').Connection;
+	var config = {
+		userName: 'yourusername',
+		password: 'yourpassword',
+		server: 'yourserver.database.windows.net',
+		// If you are on Azure SQL Database, you need these next options.
+		options: {encrypt: true, database: 'AdventureWorks'}
+	};
+	var connection = new Connection(config);
+	connection.on('connect', function(err) {
+		// If no error, then good to proceed.
+		console.log("Connected");
+		executeStatement1();
 	});
-
-
-## ストアド プロシージャ
-
-
-このコード サンプルを機能させるには、パラメーターを入力しないストアド プロシージャを持っているか、作成する必要があります。ストアド プロシージャを作成するには、SQL Server Management Studio (SSMS.exe) などのツールを使用します。
-
-
-	var http = require('http');
-	var sql = require('msnodesql');
-	var http = require('http');
-	var fs = require('fs');
-	var useTrustedConnection = false;
-	var conn_str = "Driver={SQL Server Native Client 11.0};Server=tcp:yourserver.database.windows.net;" + 
-	(useTrustedConnection == true ? "Trusted_Connection={Yes};" : "UID=yourusername;PWD=yourpassword;") + 
-	"Database={AdventureWorks};"
-	sql.open(conn_str, function (err, conn) {
-	    if (err) {
-	        console.log("Error opening the connection!");
-	        return;
-	    }
-	    else
-	        console.log("Successfuly connected");
-		
-	    conn.query("exec NameOfStoredProcedure", function (err, results) {
-	    	if (err) {
-			console.log("Error running query8!");
-			return;
-		}
-	    });
-	});
+	
+	var Request = require('tedious').Request
+	var TYPES = require('tedious').TYPES;
+	
+	function executeStatement1() {
+		request = new Request("INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES (@Name, @Number, @Cost, @Price, CURRENT_TIMESTAMP);", function(err) {
+		 if (err) {
+		 	console.log(err);} 
+		});
+		request.addParameter('Name', TYPES.NVarChar,'SQL Server Express 2014');
+		request.addParameter('Number', TYPES.NVarChar , 'SQLEXPRESS2014');
+		request.addParameter('Cost', TYPES.Int, 11);
+		request.addParameter('Price', TYPES.Int,11);
+		request.on('row', function(columns) {
+		    columns.forEach(function(column) {
+		      if (column.value === null) {
+		        console.log('NULL');
+		      } else {
+		        console.log("Product id of inserted item is " + column.value);
+		      }
+		    });
+		});		
+		connection.execSql(request);
+	}
 
  
-## 次のステップ
 
-詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
-
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Windows ユニバーサル アプリ SDK コンテンツ" 
-	description="Azure モバイル エンゲージメント向け Windows ユニバーサル アプリ SDK の内容詳細" 					
+	description="Azure Mobile Engagement 向け Windows ユニバーサル アプリ SDK の内容詳細" 					
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
 	authors="piyushjo" 
@@ -22,9 +22,9 @@
 
 ##`/Resources` フォルダー
 
-このフォルダーには、モバイル エンゲージメントが必要とするすべてのリソースが含まれています。アプリに適合するように、これらをカスタマイズすることもできます。
+このフォルダーには、Mobile Engagement が必要とするすべてのリソースが含まれています。アプリに適合するように、これらをカスタマイズすることもできます。
 
-- `EngagementConfiguration.xml`: モバイル エンゲージメントの構成ファイルであり、エンゲージメントの設定をカスタマイズできます (モバイル エンゲージメント接続文字列、クラッシュ レポートなど)。
+- `EngagementConfiguration.xml`: Mobile Engagement の構成ファイルであり、エンゲージメントの設定をカスタマイズできます (Mobile Engagement 接続文字列、クラッシュ レポートなど)。
 
 ### /html フォルダー
 
@@ -44,6 +44,8 @@
 
 ### /overlay フォルダー
 
+- `EngagementBaseOverlay.cs`: `Announcement` および `Notification` オーバーレイに使用される基本コード。
+
 - `EngagementOverlayAnnouncement.xaml` : `Announcement` xaml デザイン。
 
 - `EngagementOverlayAnnouncement.xaml.cs` : `EngagementOverlayAnnouncement.xaml` リンク コード。
@@ -55,4 +57,4 @@
 - `EngagementPageOverlay.cs` : `Overlay` アナウンスと通知の表示コード。
   
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -48,7 +48,7 @@ Azure AD を使用して Azure リソース マネージャーへの要求を認
 
 	    New-AzureRmADApplication -DisplayName "My AD Application 1" -HomePage "https://myapp1.com" -IdentifierUris "https://myapp1.com"  -Password "{password}"
 
-	>[AZURE.NOTE]アプリケーションが作成された後で、返されたアプリケーション ID をメモしてください。これは次の手順で必要になります。アプリケーション ID は、ポータルの Active Directory セクションにあるアプリケーションのクライアント ID フィールドでも確認できます。
+	>[AZURE.NOTE]アプリケーションが作成された後で、返されたアプリケーション ID をメモしてください。これは次の手順で必要になります。アプリケーション ID は、Azure プレビュー ポータルの Active Directory セクションにあるアプリケーションのクライアント ID フィールドでも確認できます。
 
 3. {application-id} を記録しておいた ID に置き換えてから、次のようにアプリケーションのサービス プリンシパルを作成します。
 
@@ -447,4 +447,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/arm-template-deployment/crpportal.png)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -60,7 +60,7 @@ Azure Active Directory は、[System for Cross-domain Identity Management 2 (SCI
 
 **SCIM をサポートするアプリケーションを接続するには:**
 
-1.	Web ブラウザーで https://manage.windowsazure.com にアクセスして、Azure 管理ポータルを起動します。
+1.	Web ブラウザーで https://manage.windowsazure.com にアクセスして、Microsoft Azure 管理ポータルを起動します。
 2.	**[Active Directory]、[ディレクトリ]、自分のディレクトリ、[アプリケーション]** の順に参照し、**[追加]、[ギャラリーからアプリケーションを追加します]** を選択します。
 3.	左側の **[カスタム]** タブを選択し、アプリケーションの名前を入力して、チェックマーク アイコンをクリックすると、アプリケーション オブジェクトが作成されます。
 
@@ -92,8 +92,13 @@ Azure Active Directory を接続して動作させる SCIM Web サービスを�
 
 このプロセスをわかりやすくするために、SCIM Web サービス エンドポイントを作成し、自動プロビジョニングの実例を示す[コード サンプル](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)を用意しました。サンプルの 1 つは、ユーザーとグループを表すコンマ区切り値の行が含まれたファイルを保持するプロバイダーです。もう 1 つは、アマゾン ウェブ サービス Identity and Access Management サービスで動作するプロバイダーです。
 
+**前提条件**
 
-**前提条件** * Visual Studio 2013 以降 * [Azure SDK for .NET](https://azure.microsoft.com/ja-JP/downloads/) * SCIM エンドポイントとして使用される ASP.NET framework 4.5 をサポートしている Windows コンピューター。このコンピューターには、クラウドからアクセスできる必要があります。* [試用版またはライセンス版の Azure AD Premium が付随した Azure サブスクリプション](https://azure.microsoft.com/ja-JP/services/active-directory/) * Amazon AWS サンプルには、[AWS Toolkit for Visual Studio](http://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/tkv_setup.html) のライブラリが必要です。詳細については、サンプルに含まれている README ファイルを参照してください。
+* Visual Studio 2013 以降
+* [Azure SDK for .NET](https://azure.microsoft.com/ja-JP/downloads/)
+* SCIM エンドポイントとして使用される ASP.NET framework 4.5 をサポートしている Windows コンピューター。このマシンにクラウドからアクセスできる必要があります。
+* [無料試用版またはライセンス版の Azure AD Premium が付随した Azure サブスクリプション](https://azure.microsoft.com/ja-JP/services/active-directory/)
+* Amazon AWS サンプルには、[AWS Toolkit for Visual Studio](http://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/tkv_setup.html) のライブラリが必要です。詳細については、サンプルに含まれている README ファイルを参照してください。
 
 ###Getting Started (概要)
 
@@ -120,7 +125,7 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 
 **Azure AD にサンプルの SCIM エンドポイントを登録するには:**
 
-1.	Web ブラウザーで https://manage.windowsazure.com にアクセスして、Azure 管理ポータルを起動します。
+1.	Web ブラウザーで https://manage.windowsazure.com にアクセスして、Microsoft Azure 管理ポータルを起動します。
 2.	**[Active Directory]、[ディレクトリ]、自分のディレクトリ、[アプリケーション]** の順に参照し、**[追加]、[ギャラリーからアプリケーションを追加します]** を選択します。
 3.	左側の **[カスタム]** タブを選択し、"SCIM Test App" などの名前を入力して、チェックマーク アイコンをクリックすると、アプリケーション オブジェクトが作成されます。作成されるアプリケーション オブジェクトは、単なる SCIM エンドポイントではなく、シングル サインオンのプロビジョニングと実装の対象であるアプリケーションを表していることに注意してください。
 
@@ -370,7 +375,7 @@ Azure Active Directory は、2 種類のリソースに SCIM Web サービスを
 
 下の図は、別の ID ストア内にあるユーザーのライフサイクルを管理するために Azure Active Directory から SCIM サービスに送信されるメッセージを示しています。また、この図は、そのようなサービスの作成用に Microsoft が提供する共通言語基盤ライブラリを使用して実装された SCIM サービスが、要求をプロバイダーのメソッドの呼び出しに変換する方法も示しています。
 
-![][4] 図: ユーザーのプロビジョニングとプロビジョニング解除のシーケンス
+![][4] *図: ユーザーのプロビジョニングとプロビジョニング解除のシーケンス*
 
 **1:** Azure Active Directory は、Azure Active Directory 内のユーザーの mailNickname 属性値に一致する externalId 属性値を持つユーザーをサービスに照会します。クエリは下のようなハイパー テキスト転送プロトコル要求として表現されます。jyoung は Azure Active Directory 内のユーザーの mailNickname 例です。
 
@@ -677,7 +682,7 @@ externalId 属性に特定の値を持つユーザーを照会する上記のサ
 * グループを取得する要求では、要求に対する応答で提供されるリソースから members 属性を除外するよう指定されます。  
 * 参照属性に特定の値があるかどうかを判別する要求は、members 属性に関する要求になります。  
 
-![][5] 図: ユーザーのプロビジョニングとプロビジョニング解除のシーケンス
+![][5] *図: グループのプロビジョニングとプロビジョニング解除のシーケンス*
 
 	
 <!--Image references-->
@@ -687,4 +692,4 @@ externalId 属性に特定の値を持つユーザーを照会する上記のサ
 [4]: ./media/active-directory-scim-provisioning/scim-figure-4.PNG
 [5]: ./media/active-directory-scim-provisioning/scim-figure-5.PNG
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

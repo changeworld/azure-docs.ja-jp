@@ -109,7 +109,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 	$publicIP = New-AzurePublicIpAddress -Name PublicIp -ResourceGroupName NRP-RG -Location "West US" –AllocationMethod Dynamic -DomainNameLabel lbip 
 
->[AZURE.NOTE]パブリック IP アドレスのドメイン名のラベル プロパティは、ロード バランサーの FQDN になります。
+>[AZURE.NOTE]パブリック IP アドレスのドメイン名のラベル プロパティは、ロード バランサーの FQDN のプレフィックスになります。
 
 ## フロント エンド IP プールとバックエンド アドレス プールの作成
 
@@ -242,7 +242,7 @@ PS C:\> $backendnic1
 
 コマンド Add-AzureVMNetworkInterface を使用して、NIC を仮想マシンに割り当てます。
 
-ドキュメント「[リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md#Example)」のオプション 4 または 5 に従って手順を確認しながら仮想マシンを作成し、NIC に割り当てることができます。
+手順に従って仮想マシンを作成し、ドキュメント、NIC に割り当てるを検索する [の作成とリソース マネージャーと Azure PowerShell で Windows 仮想マシンを事前構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md#Example) オプション 4 または 5 です。
 
 ## 既存のロード バランサーの更新
 
@@ -282,4 +282,4 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1125_2015-->

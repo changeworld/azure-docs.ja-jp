@@ -74,11 +74,10 @@ Microsoft HPC Pack と、Azure のコンピューティングおよびインフ�
 * [Submit jobs to an HPC Pack cluster in Azure (Azure の HPC Pack クラスターにジョブを送信する)](virtual-machines-hpcpack-cluster-submit-jobs.md)
 
 
-
 ## HPC Pack クラスターへの worker ロールの追加
 
 
-* [HPC Pack を使用した Azure へのバースト](https://technet.microsoft.com/library/gg481749.aspx)
+* [HPC Pack を使用した Azure ワーカー インスタンスへのバースト](https://technet.microsoft.com/library/gg481749.aspx)
 
 * [Azure で HPC Pack を使用してハイブリッド クラスターをセットアップする](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)
 
@@ -86,11 +85,16 @@ Microsoft HPC Pack と、Azure のコンピューティングおよびインフ�
 
 * [Grow and shrink Azure compute resources in an HPC Pack cluster (HPC Pack クラスターでの Azure コンピューティング リソースの増減)](virtual-machines-hpcpack-cluster-node-autogrowshrink.md)
 
+## Azure Batch との統合 
+
+* [HPC Pack を使用した Azure Batch へのバースト](https://technet.microsoft.com/library/mt612877.aspx)
 
 ## MPI ワークロードのための RDMA のクラスターの作成
 
 * [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](virtual-machines-windows-hpcpack-cluster-rdma.md)
 
+* [チュートリアル: Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFOAM を実行する](virtual-machines-linux-cluster-hpcpack-openfoam.md)
+
 <!-- * [Set up a Linux RDMA cluster to run MPI applications](virtual-machines-linux-hpcpack-cluster-rdma.md) -->
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

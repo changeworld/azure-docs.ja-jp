@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn"
    tags="azure-resource-manager"
 />
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/08/2015"
+   ms.date="11/20/2015"
    ms.author="telmos" />
 
 # テンプレートを使用して NSG を作成する方法
@@ -96,11 +96,13 @@
 
 PowerShell を使用してダウンロードした ARM テンプレートをデプロイするには、次の手順に従います。
 
+[AZURE.INCLUDE [powershell-preview-include.md](../../includes/powershell-preview-include.md)]
+
 1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
-3. テンプレートを使用してリソース グループを作成するには、**New-AzureRMResourceGroup** コマンドレットを実行します。
+3. テンプレートを使用してリソース グループを作成するには、**New-AzureRmResourceGroup** コマンドレットを実行します。
 
-		New-AzureRMResourceGroup -Name TestRG -Location uswest `
+		New-AzureRmResourceGroup -Name TestRG -Location uswest `
 		    -TemplateFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.json' `
 		    -TemplateParameterFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.parameters.json'	
 
@@ -177,6 +179,6 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 	- **-n (または --name)**。作成されるリソース グループの名前です。
 	- **-l (または --location)**。リソース グループが作成される Azure リージョンです。
 	- **-f (または --template-file)**。ARM テンプレート ファイルへのパスです。
-	- **-e (または --parameters-file)**。ARM パラメーター ファイルへのパスです。
+	- **-e (または--parameters-file)**。ARM パラメーター ファイルへのパスです。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

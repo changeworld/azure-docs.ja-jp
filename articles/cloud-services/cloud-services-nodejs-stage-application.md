@@ -3,7 +3,7 @@
 	description="Azure アプリケーションをステージング環境にデプロイしてから、仮想 IP (VIP) スワップを使用して運用環境にデプロイする方法について説明します。" 
 	services="cloud-services" 
 	documentationCenter="nodejs" 
-	authors="MikeWasson" 
+	authors="rmcmurray" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="09/08/2015" 
-	ms.author="mwasson"/>
+	ms.date="11/20/2015" 
+	ms.author="robmcm"/>
 
 
 
@@ -54,7 +54,7 @@
 
 > [AZURE.NOTE]この手順では、アプリケーションを運用環境にデプロイ済みで、そのアプリケーションのアップグレードされたバージョンをステージング済みであると想定しています。
 
-1.  [Azure の管理ポータル]にログインし、**[クラウド サービス]** をクリックして、サービス名を選択します。
+1.  [Azure 管理ポータル]にログインし、**[Cloud Services]** をクリックして、サービス名を選択します。
 
 2.  **[ダッシュボード]** で、**[ステージング]** を選択して、ページの下部にある **[スワップ]** をクリックします。これにより、[VIP のスワップ] ダイアログが開きます。
 
@@ -68,7 +68,6 @@
 
 - [Azure の VIP スワップによりサービス アップグレードを運用環境にデプロイする方法]
 
-[Azure の管理ポータル]: http://manage.windowsazure.com
 [Azure 管理ポータル]: http://manage.windowsazure.com
 [cloud-service]: ./media/cloud-services-nodejs-stage-application/staging-cloud-service-running.png
 [cloud-service-dashboard]: ./media/cloud-services-nodejs-stage-application/cloud-service-dashboard-staging.png
@@ -76,4 +75,4 @@
 [vip-swap-dialog]: ./media/cloud-services-nodejs-stage-application/vip-swap-dialog.png
 [Azure の VIP スワップによりサービス アップグレードを運用環境にデプロイする方法]: cloud-services-how-to-manage.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

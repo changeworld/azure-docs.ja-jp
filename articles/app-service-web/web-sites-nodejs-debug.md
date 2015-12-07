@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="08/11/2015"
+	ms.date="11/18/2015"
 	ms.author="tarcher"/>
 
 # Azure App Service で Node.js Web アプリをデバッグする方法
@@ -63,7 +63,7 @@ Web アプリを再起動するには、[Azure プレビュー ポータル](htt
 
 	npm install azure-cli -g
 
-インストール後、ツールには "azure" コマンドを使用してアクセスできます。コマンド ライン ツールは、まず、Azure サブスクリプションを使用するように構成する必要があります。このタスクを実行する方法については、「**Azure コマンド ライン ツールの使用方法**」という記事の発行の設定をダウンロードおよびインポートする方法のセクションをご覧ください。
+インストール後、ツールには "azure" コマンドを使用してアクセスできます。コマンド ライン ツールは、まず、Azure サブスクリプションを使用するように構成する必要があります。このタスクを実行する方法については、「**Azure コマンド ライン ツールの使用方法**」という記事の「[発行の設定をダウンロードおよびインポートする方法](../xplat-cli-connect)」のセクションを参照してください。
 
 ###FTP
 
@@ -73,7 +73,7 @@ FTP を通じて診断情報にアクセスするには、[Azure プレビュー
 
 ダッシュボードで返される FTP URL は、**LogFiles** ディレクトリのものです。このディレクトリには、次のサブディレクトリが含まれます。
 
-* (デプロイ方法) - Git のようなデプロイ方法を使用する場合は、同じ名前のディレクトリが作成され、デプロイに関連する情報が含められます。
+* [デプロイ方法](web-sites-deploy) - Git のようなデプロイ方法を使用する場合は、同じ名前のディレクトリが作成され、デプロイに関連する情報が含められます。
 
 * nodejs - アプリケーションのすべてのインスタンスからキャプチャされた stdout および stderr 情報 (loggingEnabled が true の場合)。
 
@@ -89,7 +89,7 @@ FTP を通じて診断情報にアクセスするには、[Azure プレビュー
 
 * LogFiles
 
-	* (デプロイ方法) - Git のようなデプロイ方法を使用する場合は、同じ名前のディレクトリが作成され、デプロイに関連する情報が含められます。
+	* [デプロイ方法](web-sites-deploy) - Git のようなデプロイ方法を使用する場合は、同じ名前のディレクトリが作成され、デプロイに関連する情報が含められます。
 
 	* nodejs - アプリケーションのすべてのインスタンスからキャプチャされた stdout および stderr 情報 (loggingEnabled が true の場合)。
 
@@ -106,7 +106,7 @@ FTP を通じて診断情報にアクセスするには、[Azure プレビュー
 
 この記事では、Azure の診断情報を有効にし、それにアクセスする方法について学習しました。この情報は、アプリケーションで発生する問題を理解するために役立ちますが、使用しているモジュールの問題や、App Service Web Apps で使用されている Node.js のバージョンがデプロイ環境で使用されているものと異なることが指摘される場合もあります。
 
-Azure でのモジュールの操作については、「[Azure アプリケーションでの Node.js モジュールの使用]」を参照してください。
+Azure でのモジュールの操作については、「[Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps)」を参照してください。
 
 アプリケーションの Node.js バージョンの指定については、「[Azure アプリケーションでの Node.js のバージョンの指定]」を参照してください。
 
@@ -121,10 +121,10 @@ Azure でのモジュールの操作については、「[Azure アプリケー�
 [IISNode]: https://github.com/tjanczuk/iisnode
 [IISNode Readme]: https://github.com/tjanczuk/iisnode#readme
 [How to Use The Azure Command-Line Interface]: ../xplat-cli-install.md
-[Azure アプリケーションでの Node.js モジュールの使用]: ../nodejs-use-node-modules-azure-apps.md
+[Using Node.js Modules with Azure Applications]: ../nodejs-use-node-modules-azure-apps.md
 [Azure アプリケーションでの Node.js のバージョンの指定]: ../nodejs-specify-node-version-azure-apps.md
 
 [restart-button]: ./media/web-sites-nodejs-debug/restartbutton.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

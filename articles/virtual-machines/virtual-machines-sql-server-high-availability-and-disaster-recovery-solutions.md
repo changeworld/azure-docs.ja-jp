@@ -20,7 +20,7 @@
 
 ## 概要
 
-Microsoft Azure 仮想マシン (VM) と SQL Server を使用すると、高可用性と障害復旧 (HADR) データベース ソリューションのコストを削減できます。ほとんどの SQL Server HADR ソリューションでは、Azure のみのソリューションとしても、ハイブリッドのソリューションとしても、Azure 仮想マシンがサポートされています。Azure のみのソリューションでは、HADR システム全体が Azure で実行されます。ハイブリッド構成では、ソリューションの一部が Azure で実行され、その他の部分が組織内のオンプレミスで実行されます。Azure 環境は柔軟性が高いので、SQL Server データベース システムの予算や HADR 要件に応じて、部分的に、または完全に Azure に移動できます。
+Microsoft Azure Virtual Machines (VM) と SQL Server を使用すると、高可用性と障害復旧 (HADR) データベース ソリューションのコストを削減できます。ほとんどの SQL Server HADR ソリューションでは、Azure のみのソリューションとしても、ハイブリッドのソリューションとしても、Azure Virtual Machines がサポートされています。Azure のみのソリューションでは、HADR システム全体が Azure で実行されます。ハイブリッド構成では、ソリューションの一部が Azure で実行され、その他の部分が組織内のオンプレミスで実行されます。Azure 環境は柔軟性が高いので、SQL Server データベース システムの予算や HADR 要件に応じて、部分的に、または完全に Azure に移動できます。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
@@ -57,7 +57,7 @@ Azure 内の SQL Server データベースの障害復旧ソリューション�
 
 |テクノロジ|サンプル アーキテクチャ|
 |---|---|
-|**AlwaysOn 可用性グループ**|可用性レプリカが、障害復旧のために、Azure VM の複数のデータセンターで実行されます。この複数のリージョンにわたるソリューションでは、完全なサイトの機能停止の場合にも保護できます。<br/> ![AlwaysOn 可用性グループ](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_dr_alwayson.png)<br/>リージョン内で、すべてのレプリカが同じクラウド サービスおよび同じ VNet 内にある必要があります。各リージョンは個別の VNet を持つため、これらのソリューションには VNet と VNet 間の接続が必要です。詳細については、「[管理ポータルでのサイト間 VPN の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)」を参照してください。|
+|**AlwaysOn 可用性グループ**|可用性レプリカが、障害復旧のために、Azure VM の複数のデータセンターで実行されます。この複数のリージョンにわたるソリューションでは、完全なサイトの機能停止の場合にも保護できます。<br/> ![AlwaysOn 可用性グループ](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_dr_alwayson.png)<br/>リージョン内で、すべてのレプリカが同じクラウド サービスおよび同じ VNet 内にある必要があります。各リージョンは個別の VNet を持つため、これらのソリューションには VNet と VNet 間の接続が必要です。詳細については、「[Azure ポータルでのサイト間 VPN の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)」を参照してください。|
 |**データベース ミラーリング**|プリンシパルとミラーとサーバーが、障害復旧のために、異なるデータセンターで実行されます。Active Directory ドメインは、複数のデータセンターにまたがって機能できないため、サーバー証明書を使用してデプロイする必要があります。<br/>![データベース ミラーリング](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_dr_dbmirroring.gif)|
 |**Azure BLOB ストレージ サービスを使用したバックアップと復元**|実稼働データベースが、障害復旧のために、別のデータセンターの BLOB ストレージに直接バックアップされます。<br/>![バックアップと復元](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_dr_backup_restore.gif)<br/>詳細については、「[Azure Virtual Machines 内の SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」を参照してください。|
 
@@ -152,4 +152,4 @@ Azure VM での SQL Server の実行に関するその他のトピックにつ�
 - [Azure での新しい Active Directory フォレストのインストール](../active-directory/active-directory-new-forest-virtual-machine.md)
 - [Azure VM での AlwaysOn 可用性グループの WSFC クラスターの作成](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

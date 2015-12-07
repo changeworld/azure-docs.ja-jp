@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="11/10/2015"
+	ms.date="11/24/2015"
 	ms.author="yuridio"/>
 
 # Azure Active Directory ハイブリッド ID の設計上の考慮事項
@@ -49,6 +49,10 @@
 | 強力な ID ソリューションによりデータ セキュリティを強化するための計画を立てる | [Determine data protection requirements](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [コンテンツ管理要件決定](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [アクセス制御要件の決定](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [インシデント対応要件の決定](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [データ保護戦略の定義](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) |
 | ハイブリッド ID ライフサイクルの計画を立てる | [ハイブリッド ID 管理タスクの決定](active-directory-hybrid-identity-design-considerations-hybridId-management-tasks.md) <br> [同期管理](active-directory-hybrid-identity-design-considerations-hybridId-management-tasks.md)<br> [ハイブリッド ID 管理の導入戦略の決定](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |     
 
+
+##このガイドをダウンロードする
+ハイブリッド ID の設計上の考慮事項のガイドの pdf 版を [Technet ギャラリー](https://gallery.technet.microsoft.com/Azure-Hybrid-Identity-b06c8288)からダウンロードできます。
+
                                                              
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

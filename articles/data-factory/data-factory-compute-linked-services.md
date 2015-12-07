@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="コンピューティングのリンクされたサービス | Microsoft Azure" 
-	description="Azure Data Factory パイプラインでデータの変換/処理に使用できるコンピューティング環境について学習します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+<properties
+	pageTitle="コンピューティングのリンクされたサービス | Microsoft Azure"
+	description="Azure Data Factory パイプラインでデータの変換/処理に使用できるコンピューティング環境について学習します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
-<tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="11/09/2015" 
+<tags
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="11/09/2015"
 	ms.author="spelluru"/>
 
 # コンピューティングのリンクされたサービス
@@ -33,7 +33,7 @@
 オンデマンド HDInsight のリンクされたサービスに関する次の**重要な**点に注意してください。
 
 - 作成したオンデマンド HDInsight クラスターは Azure サブスクリプションに表示されません。Azure Data Factory サービスがあなたの代わりにオンデマンド HDInsight クラスターを管理します。
-- オンデマンド HDInsight クラスターで実行されるジョブのログは HDInsight クラスターに関連付けられているストレージ アカウントにコピーされます。これらのログには Azure ポータルの **[アクティビティ実行の詳細]** ブレードからアクセスできます。詳細については、「[パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)」という記事を参照してください。 
+- オンデマンド HDInsight クラスターで実行されるジョブのログは HDInsight クラスターに関連付けられているストレージ アカウントにコピーされます。これらのログには Azure ポータルの **[アクティビティ実行の詳細]** ブレードからアクセスできます。詳細については、「[パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)」という記事を参照してください。
 - HDInsight クラスターが稼動し、ジョブを実行している時間に対してのみ課金されます。
 
 > [AZURE.IMPORTANT]オンデマンドで Azure HDInsight クラスターをプロビジョニングするには一般的に **15 分**以上かかります。
@@ -46,7 +46,6 @@
 	    "type": "HDInsightOnDemand",
 	    "typeProperties": {
 	      "clusterSize": 4,
-	      "jobsContainer": "adfjobs",
 	      "timeToLive": "00:05:00",
 	      "version": "3.1",
 		  "osType": "linux",
@@ -64,13 +63,12 @@
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 type | type プロパティは **HDInsightOnDemand** に設定されます。 | あり
-clusterSize | オンデマンド クラスターのサイズです。このオンデマンド クラスターに配置するノードの数を指定します。 | あり 
-jobscontainer | pig/hive/package ジョブにより使用されるデータを保存し、クラスター ログが保管される BLOB コンテナーです。 | あり
+clusterSize | オンデマンド クラスターのサイズです。このオンデマンド クラスターに配置するノードの数を指定します。 | あり
 timetolive | <p>オンデマンド HDInsight クラスターに許可されるアイドル時間です。他のアクティブなジョブがクラスターにない場合、アクティビティ実行の完了後にオンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。</p><p>たとえば、アクティビティ実行に 6 分かかるときに timetolive が 5 分に設定されている場合、アクティビティ実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。別のアクティビティ実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。</p><p>オンデマンド HDInsight クラスターの作成は高額な作業であり (時間もかかることがあります)、オンデマンド HDInsight クラスターを再利用し、Data Factory のパフォーマンスを改善する必要がある場合にこの設定を利用します。</p><p>timetolive 値を 0 に設定した場合、アクティビティ実行の処理直後にクラスターが削除されます。その一方で、高い値を設定した場合、クラスターは不必要にアイドル状態を維持し、コストの上昇を招きます。そのため、ニーズに合わせて適切な値を設定することが重要です。</p><p>timetolive プロパティ値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターの同じインスタンスを共有できます。</p> | はい
 version | HDInsight クラスターのバージョン | いいえ
 linkedServiceName | データの保存し、処理するためのオンデマンド クラスターで使用される BLOB ストアです。 | あり
 additionalLinkedServiceNames | Data Factory サービスがあなたの代わりに登録できるように、HDInsight の「リンクされたサービス」の追加ストレージ アカウントを指定します。 | いいえ
-osType | オペレーティング システムの種類使用可能な値: windows (既定値) および linux | いいえ 
+osType | オペレーティング システムの種類。使用可能な値: windows (既定値) および linux | いいえ
 
 ### 高度なプロパティ
 
@@ -95,7 +93,6 @@ yarnConfiguration | HDInsight クラスターに Yarn 構成パラメーター (
 	    "type": "HDInsightOnDemand",
 	    "typeProperties": {
 	      "clusterSize": 16,
-	      "jobsContainer": "adfjobs",
 	      "timeToLive": "01:30:00",
 	      "version": "3.1",
 	      "linkedServiceName": "adfods1",
@@ -123,14 +120,14 @@ yarnConfiguration | HDInsight クラスターに Yarn 構成パラメーター (
 	  }
 	}
 
-## Bring Your Own のコンピューティング環境 
+## Bring Your Own のコンピューティング環境
 
 この種類の構成では、既存のコンピューティング環境を Data Factory の「リンクされたサービス」として登録できます。このコンピューティング環境はユーザーにより管理され、Data Factory サービスをこの環境を利用し、アクティビティを実行します。
- 
+
 この種類の構成は次のコンピューティング環境でサポートされています。
 
 - Azure HDInsight
-- Azure Batch 
+- Azure Batch
 - Azure Machine Learning
 
 ## Azure HDInsight のリンクされたサービス
@@ -169,10 +166,10 @@ linkedServiceName | HDInsight クラスターで使用される BLOB ストレ�
 Azure Batch の「リンクされたサービス」を作成し、仮想マシン (VM) の Batch プールを Data Factory に登録できます。Azure Batch と Azure HDInsight のいずれかを利用し、.NET カスタム アクティビティを実行できます。
 
 Azure Batch サービスの利用が初めての場合、次のトピックを参照してください。
- 
 
-- Azure Batch サービスの概要については「[Azure Batch の技術概要](../batch/batch-technical-overview.md)」
-- Azure Batch アカウントを作成するための [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) コマンドレット (または) Azure 管理ポータルを利用して Azure Batch アカウントを作成するための [Azure 管理ポータル](../batch/batch-technical-overview.md)コマンドレットの使用方法の詳細については、「[PowerShell を使用した Azure Batch アカウントの管理](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)」トピックをご覧ください。
+
+- 「[Azure Batch の基本](../batch/batch-technical-overview.md)」。Azure Backup サービスの概要が説明されています。
+- Azure Batch アカウントを作成するための [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) コマンドレット (または) Azure 管理ポータルを利用して Azure Batch アカウントを作成するための [Microsoft Azure 管理ポータル](../batch/batch-account-create-portal.md)コマンドレットの使用方法の詳細については、「[PowerShell を使用した Azure Batch アカウントの管理](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)」トピックをご覧ください。
 - Azure Batch プールを作成するための [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) コマンドレット。
 
 ### 例
@@ -191,8 +188,8 @@ Azure Batch サービスの利用が初めての場合、次のトピックを�
 	}
 
 **accountName** プロパティのバッチ アカウントの名前に「**.<リージョン名**」を追加します。例:
-	
-			"accountName": "mybatchaccount.eastus" 
+
+			"accountName": "mybatchaccount.eastus"
 
 もう 1 つの選択肢は下のように batchUri エンドポイントを指定することです。
 
@@ -207,12 +204,12 @@ type | type プロパティは **AzureBatch** に設定されます。 | あり
 accountName | Azure Batch アカウントの名前です。 | あり
 accessKey | Azure Batch アカウントのアクセス キーです。 | あり
 poolName | 仮想マシンのプールの名前です。 | あり
-linkedServiceName | この Azure Batch の「リンクされたサービス」に関連付けられている Azure ストレージの「リンクされたサービス」の名前です。この「リンクされたサービス」はアクティビティの実行に必要なファイルのステージングとアクティビティ実行ログの保存に利用されます。 | あり
+linkedServiceName | この Azure Batch の「リンクされたサービス」に関連付けられている Azure Storage の「リンクされたサービス」の名前です。この「リンクされたサービス」はアクティビティの実行に必要なファイルのステージングとアクティビティ実行ログの保存に利用されます。 | あり
 
 
 ## Azure Machine Learning のリンクされたサービス
 
-Azure 機械学習の「リンクされたサービス」を作成し、機械学習のバッチ スコアリング エンドポイントを Data Factory に登録します。
+Azure Machine Learning の「リンクされたサービス」を作成し、Machine Learning のバッチ スコアリング エンドポイントを Data Factory に登録します。
 
 ### 例
 
@@ -249,7 +246,7 @@ apiKey | 公開されたワークスペース モデルの API です。 | あ�
 	            "accountName": "adftestaccount",
 	            "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
 	            "authorization": "<authcode>",
-				"sessionId": "<session ID>", 
+				"sessionId": "<session ID>",
 	            "subscriptionId": "<subscription id>",
 	            "resourceGroupName": "<resource group name>"
 	        }
@@ -263,24 +260,15 @@ apiKey | 公開されたワークスペース モデルの API です。 | あ�
 -------- | ----------- | --------
 型 | type プロパティを **AzureDataLakeAnalytics** に設定する必要があります。 | あり
 accountName | Azure Data Lake Analytics アカウント名。 | あり
-dataLakeAnalyticsUri | Azure Data Lake Analytics URI。 | いいえ 
-authorization | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | あり 
-subscriptionId | Azure サブスクリプション ID | いいえ (指定されていない場合は Data Factory のサブスクリプションが使用されます)。 
+dataLakeAnalyticsUri | Azure Data Lake Analytics URI。 | いいえ
+authorization | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | あり
+subscriptionId | Azure サブスクリプション ID | いいえ (指定されていない場合は Data Factory のサブスクリプションが使用されます)。
 resourceGroupName | Azure リソース グループ名 | いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。
-sessionId | OAuth 承認セッションのセッション ID です。各セッション ID は一意であり、使用されるのが 1 回のみの場合があります。セッション ID は、Data Factory Editor で自動生成されます。 | あり
+sessionId | OAuth 承認セッションのセッション ID です。各セッション ID は一意であり、1 回のみ使用できます。セッション ID は、Data Factory Editor で自動生成されます。 | あり
 
 
 ## Azure SQL のリンクされたサービス
 
 Azure SQL のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。このリンクされたサービスの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)に関する記事を参照してください。
 
-
-  
-
-
-
-     
- 
-   
-
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -50,14 +50,16 @@ Azure の大規模なコンピューティング オプションについて説�
 
 HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて構築された、Microsoft の無料 HPC ソリューションであり、Windows と Linux HPC の両方のワークロードを実行できます。
 
-* [HPC Pack 2012 R2 Update 2 をダウンロードする](https://www.microsoft.com/ja-jp/download/details.aspx?id=47755)
+* [HPC Pack 2012 R2 Update 3 をダウンロードする](https://www.microsoft.com/ja-JP/download/details.aspx?id=49922)
 
 * [ドキュメント](https://technet.microsoft.com/library/jj899572.aspx)
 
 
 * [Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/virtual-machines-hpcpack-cluster-options.md)
 
-* [HPC Pack を使用した Azure へのバースト](https://technet.microsoft.com/library/gg481749.aspx)
+* [HPC Pack を使用した Azure ワーカー インスタンスへのバースト](https://technet.microsoft.com/library/gg481749.aspx)
+
+* [HPC Pack を使用した Azure Batch へのバースト](https://technet.microsoft.com/library/mt612877.aspx)
 
 
 * [Windows HPC フォーラム](https://social.microsoft.com/Forums/home?category=windowshpc)
@@ -121,4 +123,4 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](http://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](http://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](http://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

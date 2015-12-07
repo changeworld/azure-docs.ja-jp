@@ -73,11 +73,11 @@ Azure ポータルでは、SysPrep ツールが既に実行されている場所
 
 **図 2: イメージのアップロード手順の概要**
 
-## Azure への SharePoint 2010 のデプロイ 
+## Azure への SharePoint 2010 のデプロイ
 
 次の手順に従うことで、従来のデプロイ モデルを使用して SharePoint 2010 を Azure にデプロイできます。
 
-1. Azure サブスクリプション アカウントを使用して [Microsoft Azure 管理ポータル](http://manage.windowsazure.com/)にサインインします。Azure アカウントを持っていない場合は、[Azure の無料試用版にサインアップしてください](http://azure.microsoft.com/pricing/free-trial/)。
+1. Azure サブスクリプション アカウントを使用して [Azure ポータル](http://manage.windowsazure.com/)にサインインします。Azure アカウントを持っていない場合は、[Azure の無料試用版にサインアップしてください](http://azure.microsoft.com/pricing/free-trial/)。
 2. 基本オペレーティング システムの仮想マシンを作成するには、Azure ポータルで、**[新規]、[Compute]、[仮想マシン]、[ギャラリーから]** の順にクリックします。
 3. **[イメージの選択]** ダイアログ ボックスが表示されます。**[Windows Server 2008 R2 SP1]** プラットフォーム イメージをクリックし、右矢印をクリックします。
 4. **[仮想マシンの構成]** ダイアログ ボックスが表示されます。次の情報を指定します。
@@ -225,7 +225,7 @@ Azure で BI 環境をスケールアウトするには、次の手順に従い�
 1. プロビジョニング:
 	- Azure Virtual Network を使用してオンプレミスのシステムおよび Azure との VPN 接続をプロビジョニングします詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 	- Azure ポータルで、イメージ ギャラリーにあるストック イメージを使用して、新しい仮想マシンをプロビジョニングします。SharePoint Server または SQL Server の BI ワークロード イメージをイメージ ライブラリにアップロードすると、権限のあるユーザーがその BI コンポーネント仮想マシンを選択してスケール アウトした環境を構築できます。
-2. インストール: 
+2. インストール:
 	- SharePoint Server または SQL Server の BI コンポーネントの構築済みイメージがない場合は、リモート デスクトップ接続を使用して、SharePoint Server および SQL Server を仮想マシンにインストールします。
 	- SharePoint のインストールの詳細については、「[Windows PowerShell を使用して SharePoint Server 2010 をインストールする](http://technet.microsoft.com/library/cc262839.aspx)」または [CodePlex の AutoSPInstaller](http://autospinstaller.codeplex.com/) のページを参照してください。
 	- SQL Server のインストールの詳細については、「[SysPrep を使用した SQL Server 2012 のインストール](http://msdn.microsoft.com/library/ee210664.aspx)」を参照してください。
@@ -288,4 +288,4 @@ SharePoint Server を Azure の仮想マシンに正常にデプロイするに�
 
 [SharePoint Server 2016 IT Preview を Azure でテストする](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

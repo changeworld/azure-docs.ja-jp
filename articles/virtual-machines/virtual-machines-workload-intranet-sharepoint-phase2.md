@@ -23,7 +23,7 @@
 
 イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこの第 1 フェーズでは、サービス管理で Azure 仮想ネットワーク内の 2 つのドメイン コント ローラーを構成します。これで、SharePoint ファーム リソースに対するクライアント Web 要求は、VPN または Azure ExpressRoute 接続経由でオンプレミス ネットワークに認証のトラフィックを送信する代わりに、Azure の仮想ネットワーク内で認証できるようになります。
 
-[フェーズ 3](virtual-machines-workload-intranet-sharepoint-phase3.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ](virtual-machines-workload-intranet-sharepoint-overview.md)」をご覧ください。
+[フェーズ 3](virtual-machines-workload-intranet-sharepoint-phase3.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Deploying SharePoint with SQL Server AlwaysOn Availability Groups in Azure (Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ)](virtual-machines-workload-intranet-sharepoint-overview.md)」をご覧ください。
 
 ## Azure でのドメイン コントローラー仮想マシンの作成
 
@@ -115,7 +115,7 @@ V、S、A、C の各表は、「[フェーズ 1: Azure の構成](virtual-machin
 5.	ブラウザーのダイアログが表示され、"manage.windowsazure.com から ComputerName.rdp を開くか、または保存しますか?" というメッセージが表示されます。 **[開く]** をクリックします。
 6.	**[リモート デスクトップ接続]** ダイアログで、**[接続]** をクリックします。
 7.	**[Windows セキュリティ]** ダイアログで、**[別のアカウントを使用]** をクリックします。
-8.	**[ユーザー名]** に、VM の名前と、VM で作成されたローカル管理者アカウント (ローカル コンピューター アカウント) のユーザー名を入力します。*ComputerName**LocalAdministratorAccountName* という形式を使用します。
+8.	**[ユーザー名]** に、VM の名前と、VM で作成されたローカル管理者アカウント (ローカル コンピューター アカウント) のユーザー名を入力します。*ComputerName*\*LocalAdministratorAccountName* という形式を使用します。
 9.	**[パスワード]** に、ローカル管理者アカウントのパスワードを入力します。
 10.	**[OK]** をクリックします。
 11.	**[リモート デスクトップ接続]** ダイアログで、**[はい]** をクリックします。新しいマシンのデスクトップがリモート デスクトップ セッション ウィンドウに表示されます。
@@ -248,4 +248,4 @@ SharePoint ファームでは、次のユーザー アカウントが必要で�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -89,10 +89,10 @@ Azure サポートから連絡があります。要求を完了するには最�
 
 * [Azure Batch アカウントの作成と管理](batch-account-create-portal.md)
 
-* [Azure Batch の API の基本](batch-api-basics.md)
+* [Azure Batch 機能の概要](batch-api-basics.md)
 
 * [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1125_2015-->

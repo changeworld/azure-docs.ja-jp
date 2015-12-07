@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Stream Analytics 入力の作成 | Microsoft Azure" 
+	pageTitle="Stream Analytics 入力の接続 | Microsoft Azure" 
 	description="Stream Analytics ソリューションの入力ソースに接続して構成する方法について説明します。"
 	documentationCenter=""
 	services="stream-analytics"
@@ -13,10 +13,10 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/06/2015" 
+	ms.date="11/23/2015" 
 	ms.author="jeffstok"/>
 
-# Stream Analytics 入力の作成
+# Stream Analytics の入力ソースの接続
 
 ## Stream Analytics 入力について
 ---
@@ -24,7 +24,7 @@ Stream Analytics 入力はデータ ソースへの接続として定義され�
 
 ## データ ストリーム入力
 ---
-Stream Analytics のジョブには、ジョブで使用および変換される少なくとも 1 つのデータ ストリームの入力を含める必要があります。Azure BLOB ストレージと Azure Event Hubs は、データ ストリーム入力ソースとしてサポートされます。Azure イベント ハブは複数のデバイスとソースから、ソーシャル メディア アクティビティ フィード、株式取引情報、センサーからのデータなど、イベント ストリームを回収するために使用されます。または、バルク データを取り込むための入力ソースとして Azure BLOB ストレージを使用することもできます。
+Stream Analytics のジョブには、ジョブで使用および変換される少なくとも 1 つのデータ ストリームの入力を含める必要があります。Azure BLOB ストレージと Azure Event Hubs は、データ ストリーム入力ソースとしてサポートされます。Azure Event Hubs は複数のデバイスとソースから、ソーシャル メディア アクティビティ フィード、株式取引情報、センサーからのデータなど、イベント ストリームを回収するために使用されます。または、バルク データを取り込むための入力ソースとして Azure BLOB ストレージを使用することもできます。
 
 ## 参照データ入力
 ---
@@ -33,10 +33,10 @@ Stream Analytics は、参照データと呼ばれる 2 番目のタイプの入
 ## Event Hub データ入力ストリームの作成
 ---
 ### Event Hubs の概要
-イベント ハブは拡張性の高いイベント インジェスターであり、Stream Analytics ジョブにデータを取り込むための最も一般的な方法です。Event Hubs と Stream Analytics が組み合わされることで、リアルタイム分析を行うためのエンドツーエンド ソリューションが顧客に提供されます。Event Hubs により、顧客はイベントを Azure にリアルタイムでフィードできるため、Stream Analytics ジョブはそれらをリアルタイムで処理できるようになります。たとえば、顧客は、Web クリック、センサーの読み取り、オンライン ログ イベントを Event Hubs に送信し、リアルタイムのフィルター処理、集計、結合に入力データ ストリームとして Event Hubs を使用するために Stream Analytics ジョブを作成できます。また、イベント ハブはデータ送信にも使用できます。Event Hubs の詳細については、[Event Hubs](https://azure.microsoft.com/services/event-hubs/ "Event Hubs") のドキュメントをご覧ください。
+Event Hubs は拡張性の高いイベント インジェスターであり、Stream Analytics ジョブにデータを取り込むための最も一般的な方法です。Event Hubs と Stream Analytics が組み合わされることで、リアルタイム分析を行うためのエンドツーエンド ソリューションが顧客に提供されます。Event Hubs により、顧客はイベントを Azure にリアルタイムでフィードできるため、Stream Analytics ジョブはそれらをリアルタイムで処理できるようになります。たとえば、顧客は、Web クリック、センサーの読み取り、オンライン ログ イベントを Event Hubs に送信し、リアルタイムのフィルター処理、集計、結合に入力データ ストリームとして Event Hubs を使用するために Stream Analytics ジョブを作成できます。また、Event Hubs はデータ送信にも使用できます。Event Hubs の詳細については、[Event Hubs](https://azure.microsoft.com/services/event-hubs/ "Event Hubs") のドキュメントをご覧ください。
 
 ### コンシューマー グループ
-Stream Analytics イベント ハブの各入力は、独自のコンシューマー グループを持つように構成する必要があります。ジョブに自己結合または複数の入力が含まれる場合、一部の入力は複数の閲覧者ダウンストリームによって読み取られる可能性があります。これは 1 つのコンシューマー グループの閲覧者数に影響を与えます。閲覧者の数を各パーティションのコンシューマー グループ別に 5 人とするイベント ハブの上限を回避するには、Stream Analytics ジョブごとにコンシューマー グループを指定するのが最良事例となります。Event Hub ごとに 20 個のコンシューマー グループという制限もある点に注意してください。詳細については、「[イベント ハブのプログラミング ガイド](https://msdn.microsoft.com/library/azure/dn789972.aspx "Event Hubs のプログラミング ガイド")」をご覧ください。
+Stream Analytics イベント ハブの各入力は、独自のコンシューマー グループを持つように構成する必要があります。ジョブに自己結合または複数の入力が含まれる場合、一部の入力は複数の閲覧者ダウンストリームによって読み取られる可能性があります。これは 1 つのコンシューマー グループの閲覧者数に影響を与えます。閲覧者の数を各パーティションのコンシューマー グループ別に 5 人とするイベント ハブの上限を回避するには、Stream Analytics ジョブごとにコンシューマー グループを指定するのが最良事例となります。Event Hub ごとに 20 個のコンシューマー グループという制限もある点に注意してください。詳細については、「[Event Hubs のプログラミング ガイド](https://msdn.microsoft.com/library/azure/dn789972.aspx "Event Hubs のプログラミング ガイド")」をご覧ください。
 
 ## イベント ハブ 入力データ ストリームの作成
 ---
@@ -151,4 +151,4 @@ BLOB ストレージを使用し、Stream Analytics ジョブの参照データ�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

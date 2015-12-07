@@ -59,7 +59,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 4. 「**Exit**」と入力して、SSH クライアントを閉じます。
 
 
-	>[AZURE.NOTE]次の手順は、クライアント コンピューターに既に [Azure CLI がインストールされている](../xplat-cli-install.md)ことを前提としています。次の手順はすべて、[管理ポータル][]でも実行できます。
+	>[AZURE.NOTE]次の手順は、クライアント コンピューターに既に [Azure CLI がインストールされている](../xplat-cli-install.md)ことを前提としています。次の手順はすべて、[Azure ポータル][]でも実行できます。
 
 5. クライアント コンピューターから Azure CLI を開き、Azure サブスクリプションにログインします。詳細については、「[Connect to an Azure subscription from the Azure CLI (Azure CLI から Azure サブスクリプションへの接続)](../xplat-cli-connect.md)」を参照してください。
 
@@ -83,21 +83,21 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 
 	`azure vm image list`
 
-	[管理ポータル][]の **[イメージ]** 一覧に表示されます。
+	[Azure ポータル][]の **[イメージ]** 一覧に表示されます。
 
 	![イメージのキャプチャの成功](./media/virtual-machines-linux-capture-image/VMCapturedImageAvailable.png)
 
 
 ## 次のステップ
-イメージを使用して仮想マシンを作成する準備ができました。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、「[Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](virtual-machines-command-line-tools.md)」を参照してください。または、[管理ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、「[カスタム仮想マシンの作成方法][]」を参照してください。
+イメージを使用して仮想マシンを作成する準備ができました。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、「[Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](virtual-machines-command-line-tools.md)」を参照してください。または、[Azure ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、「[カスタム仮想マシンの作成方法][]」を参照してください。
 
 **関連項目:** [Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md)
 
-[管理ポータル]: http://manage.windowsazure.com
+[Azure ポータル]: http://manage.windowsazure.com
 [Linux を実行する仮想マシンにログオンする方法]: virtual-machines-linux-how-to-log-on.md
 [Azure の仮想マシン イメージについて]: virtual-machines-images.md
 [カスタム仮想マシンの作成方法]: virtual-machines-linux-create-custom.md
 [How to Attach a Data Disk to a Virtual Machine]: storage-windows-attach-disk.md
 [How to Create a Virtual Machine Running Linux (Linux を実行する仮想マシンの作成方法)]: virtual-machines-linux-tutorial.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

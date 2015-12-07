@@ -1,7 +1,7 @@
 <properties
 	pageTitle="リソース マネージャーで Azure CLI を使用する | Microsoft Azure"
 	description="Azure リソース マネージャー モードで Mac、Linux、および Windows 用の Azure CLI を使用して Azure のリソースを管理する方法について説明します。"
-	services="virtual-machines,mobile-services,cloud-services"
+	services="virtual-machines,virtual-network,mobile-services,cloud-services"
 	documentationCenter=""
 	authors="dlepow"
 	manager="timlt"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/07/2015"
+	ms.date="11/18/2015"
 	ms.author="danlep"/>
 
 # Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用
@@ -45,16 +45,16 @@ Azure CLI でリソース マネージャー モードを使用するための�
 
 - Azure アカウント ([無料試用版はここから](http://azure.microsoft.com/pricing/free-trial/))
 - [Azure CLI のインストール](../xplat-cli-install.md)
-- Azure Active Directory ID またはサービス プリンシパルを使用するための [Azure CLI の構成](../xplat-cli-connect.md)
+
 
 アカウントを用意して Azure CLI をインストールしたら、
 
+- 職場または学校のアカウント、あるいは Microsoft アカウント ID を使用するように [Azure CLI を構成します](../xplat-cli-connect.md)。 
 - `azure config mode arm` を入力して、リソース マネージャー モードに切り替えます。
-- プロンプトで「`azure login`」と入力し、職場または学校の ID を使用して Azure アカウントにログインします。
 
 
-## Azure アカウント: アカウント情報および発行設定の管理
-Azure のサブスクリプション情報は、ツールがアカウントにアクセスする際に使用されます。この情報は、以下に説明するとおり、Azure ポータルから発行設定ファイルとして入手できます。発行設定ファイルは永続的なローカル構成設定としてインポートすることができます。インポートすると、ツールの以降の操作にはこの発行設定ファイルが使用されます。発行設定のインポートは 1 回だけ行う必要があります。
+## Azure アカウント: アカウント情報の管理
+Azure のサブスクリプション情報は、ツールがアカウントにアクセスする際に使用されます。
 
 **インポートされたサブスクリプションを一覧表示します**
 
@@ -1760,4 +1760,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

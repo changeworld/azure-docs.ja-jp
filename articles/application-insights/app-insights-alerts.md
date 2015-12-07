@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="11/23/2015" 
 	ms.author="awills"/>
  
 # Application Insights のアラートの設定
@@ -215,6 +215,11 @@ remoteDependencyFailed| [依存関係](app-insights-configuration-with-applicati
 request、<br/>requestFailed|[サーバー要求](app-insights-configuration-with-applicationinsights-config.md#nuget-package-2)
 
 
+## 関連項目
+
+
+* [テンプレートから Application Insights と Web テスト リソースを作成する](app-insights-powershell.md)
+
 <!--Link references-->
 
 [availability]: app-insights-monitor-web-app-availability.md
@@ -225,4 +230,4 @@ request、<br/>requestFailed|[サーバー要求](app-insights-configuration-wit
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

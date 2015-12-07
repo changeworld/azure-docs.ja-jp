@@ -58,6 +58,7 @@ Application Insights リソースでは、利用統計情報データが分析�
 
     ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-cloudservices/03-nuget.png)
 
+
 2. [Web 向けの Application Insights](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet パッケージを追加します。SDK のこのバージョンには、ロールの情報など、サーバー コンテキストを追加するモジュールが含まれています。worker ロールの場合、Windows Services の Application Insights を使用します。
 
     !["Application Insights" の検索](./media/app-insights-cloudservices/04-ai-nuget.png)
@@ -68,18 +69,19 @@ Application Insights リソースでは、利用統計情報データが分析�
     インストるメンテーション キーを構成設定として `ServiceConfiguration.Cloud.cscfg` ファイル内に設定します ([サンプル コード](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg))。
  
     ```XML
-     
      <Role name="WorkerRoleA"> 
-      <Setting name="Telemetry.AI.InstrumentationKey" value="YOUR IKEY" /> 
+      <Setting name="APPINSIGHTS_INSTRUMENTATIONKEY" value="YOUR IKEY" /> 
      </Role>
     ```
  
     適切なスタートアップ関数の中に、構成設定のインストるメンテーション キーを設定します。
 
     ```C#
-
-     TelemetryConfiguration.Active.InstrumentationKey = RoleEnvironment.GetConfigurationSettingValue("Telemetry.AI.InstrumentationKey");
+     TelemetryConfiguration.Active.InstrumentationKey = RoleEnvironment.GetConfigurationSettingValue("APPINSIGHTS_INSTRUMENTATIONKEY");
     ```
+
+    構成設定の同じ名前 `APPINSIGHTS_INSTRUMENTATIONKEY` が Azure 診断レポートによって使用されることに注意してください。
+
 
     この手順をアプリケーションの各ロールで実行します。次の例を参照してください。
  
@@ -91,34 +93,91 @@ Application Insights リソースでは、利用統計情報データが分析�
 
     (.config ファイルの中に、インストルメンテーション キーの配置を求めるメッセージがあります。ただし、クラウド アプリケーションでは、それは .cscfg ファイルから設定することをお勧めします。これにより、ポータルでロールが正確に識別されます)。
 
-## Azure 診断を有効にする
 
-Azure 診断はパフォーマンス カウンター、Windows イベント ログ、トレース ログをアプリケーションから Application Insights に送信します。
+#### アプリを実行して発行する
 
-ソリューション エクスプローラーで、各ロールの [プロパティ] を開きます。**[Application Insights に診断を送信する]** を有効にします。
+アプリを実行し、Azure にサインインします。作成した Application Insights リソースを開くと、個別のデータ ポイントが[検索](app-insights-diagnostic-search.md)に表示され、集計データが[メトリックス エクスプローラー](app-insights-metrics-explorer.md)に表示されます。
 
-![[プロパティ] で、[診断を有効にする] > [Application Insights に送信する] の順に選択します。](./media/app-insights-cloudservices/05-wad.png)
-
-他のロールに対して繰り返します。
-
-### 実行中のアプリまたは Azure VM でAzure 診断を有効にする
-
-アプリを Azure で既に実行している場合にも、Visual Studio のサーバー エクスプローラーで [プロパティ] を開き、診断を有効にできます。
+さらにテレメトリを追加し (後のセクションを参照)、アプリを発行して、ライブの診断と使用状況のフィードバックを取得します。
 
 
-## SDK を使用したテレメトリのレポート
-### 要求のレポート
- * Web ロールでは、HTTP 要求に関するデータが要求モジュールによって自動的に収集されます。既定の収集動作をオーバーライドする方法の例については、[サンプルの MVCWebRole](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole) をご覧ください。 
- * HTTP 要求の場合と同じ方法で追跡することで、worker ロールの呼び出しのパフォーマンスを記録できます。Application Insights では、「要求」型の利用統計情報は、サーバー側で名前を付け、時間を指定し、個別に成功と失敗を判定できる作業単位を測定できます。SDK は HTTP 要求を自動的に記録します。一方で、独自のコードを挿入し、worker ロールへの要求を追跡できます。
- * 要求をレポートするためにインストルメント化された 2 つのサンプル worker ロール [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) および [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB) をご覧ください。
+#### データが表示されない場合
 
-### 依存関係のレポート
-  * Application Insights SDK では、REST API や SQL サーバーなどの外部依存関係に対してアプリが実行した呼び出しをレポートできます。このレポートを使用して、特定の依存関係が応答速度の低下や障害の原因となっているかどうかを確認できます。
-  * 依存関係を追跡するには、[Application Insights エージェント](app-insights-monitor-performance-live-website-now.md) ("Status Monitor" とも呼ばれます) を使用して、Web/worker ロールを設定する必要があります。
-  * Web/worker ロールで Application Insights エージェントを使用するには:
-    * Web/worker ロール プロジェクトに [AppInsightsAgent](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent) フォルダーを追加し、その中に 2 つのファイルを追加します。常に出力ディレクトリにコピーされるように、ビルド プロパティを設定してください。これらのファイルによってエージェントがインストールされます。
-    * [こちら](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/AzureEmailService/ServiceDefinition.csdef#L18)に示すように、CSDEF ファイルに開始タスクを追加します。
-    * 注: [こちら](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/AzureEmailService/ServiceDefinition.csdef#L44)に示すように、*worker ロール*には 3 つの環境変数が必要です。これは web ロールでは必要ありません。
+* [[検索]][diagnostic] タイルを開き、個々のイベントを表示します。
+* アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
+* 数秒待機してから [最新の情報に更新] をクリックします。
+* [トラブルシューティング][qna]に関するページを参照します。
+
+
+
+## テレメトリの追加
+
+以下のセクションでは、アプリケーションの異なる部分から他のテレメトリを取得する方法を示します。
+
+
+## ワーカー ロールからの要求を追跡する
+
+Web ロールでは、HTTP 要求に関するデータが要求モジュールによって自動的に収集されます。既定の収集動作をオーバーライドする方法の例については、[サンプルの MVCWebRole](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole) をご覧ください。
+
+HTTP 要求の場合と同じ方法で追跡することで、worker ロールの呼び出しのパフォーマンスを記録できます。Application Insights では、「要求」型の利用統計情報は、サーバー側で名前を付け、時間を指定し、個別に成功と失敗を判定できる作業単位を測定できます。SDK は HTTP 要求を自動的に記録します。一方で、独自のコードを挿入し、worker ロールへの要求を追跡できます。
+
+要求をレポートするためにインストルメント化された 2 つのサンプル worker ロール [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) および [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB) をご覧ください。
+
+## Azure 診断
+
+[Azure 診断](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)のデータには、ロール管理イベント、パフォーマンス カウンター、およびアプリケーション ログが含まれます。これらのデータを Application Insights に送信し、他のテレメトリと共に表示して、問題の診断を容易にできます。
+
+ロールが予期せずに失敗した場合、または起動に失敗した場合は、Azure 診断が特に役立ちます。
+
+1. ロール (プロジェクトではない!) を右クリックしてプロパティを開き、**[診断を有効にする]**、**[診断を Application Insights に送信する]** を選択します。
+
+    !["Application Insights" の検索](./media/app-insights-cloudservices/21-wad.png)
+
+    **または、アプリが既に発行されて動いている場合は**、サーバー エクスプローラーまたは Cloud エクスプローラーを開き、アプリを右クリックして同じオプションを選択します。
+
+3.  他のテレメトリと同じ Application Insights リソースを選択します。
+
+    必要な場合は、異なるサービス構成 (クラウド、ローカル) で異なるリソースを設定し、開発データとライブ データを分離しておくことができます。
+
+3. 必要に応じて、Application Insights に転送する[一部の Azure 診断を除外](app-insights-azure-diagnostics.md)します。既定ではすべてです。
+
+### Azure 診断イベントを表示する
+
+診断データは次の場所で見つかります。
+
+* パフォーマンス カウンターは、カスタム メトリックとして表示されます。 
+* Windows イベント ログは、トレースとカスタム イベントとして表示されます。
+* アプリケーション ログ、ETW ログ、診断インフラストラクチャ ログは、トレースとして表示されます。
+
+パフォーマンス カウンターおよびイベント数を表示するには、[メトリックス エクスプローラー](app-insights-metrics-explorer.md)を開き、新しいグラフを追加します。
+
+
+![](./media/app-insights-cloudservices/23-wad.png)
+
+[検索](app-insights-diagnostic-search.md)を使用して、Azure 診断によって送信されるさまざまなトレース ログを検索します。たとえば、ロールでハンドルされない例外が発生して、ロールがクラッシュし、リサイクルされた場合、Windows イベント ログのアプリケーション チャネルにその情報が表示されます。検索機能を使用して、Windows イベント ログのエラーを確認し、例外のスタック トレース全体を取得することで、問題の根本原因を発見できます。
+
+
+![](./media/app-insights-cloudservices/25-wad.png)
+
+## アプリの診断
+
+Azure 診断には、アプリが System.Diagnostics.Trace を使用して生成するログ エントリが自動的に含まれます。
+
+ただし、Log4N または NLog フレームワークを既に使用している場合は、[これらのログ トレースをキャプチャする][netlogs]こともできます。
+
+アプリケーションのパフォーマンスと使用状況の詳細を把握するには、クライアントとサーバーのどちらか一方または両方で[カスタム イベントとメトリックを追跡][api]します。
+
+## 依存関係
+
+Application Insights SDK では、REST API や SQL サーバーなどの外部依存関係に対してアプリが実行した呼び出しをレポートできます。このレポートを使用して、特定の依存関係が応答速度の低下や障害の原因となっているかどうかを確認できます。
+
+依存関係を追跡するには、[Application Insights エージェント](app-insights-monitor-performance-live-website-now.md) ("Status Monitor" とも呼ばれます) を使用して、Web/worker ロールを設定する必要があります。
+
+Web/worker ロールで Application Insights エージェントを使用するには:
+
+* Web/worker ロール プロジェクトに [AppInsightsAgent](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent) フォルダーを追加し、その中に 2 つのファイルを追加します。常に出力ディレクトリにコピーされるように、ビルド プロパティを設定してください。これらのファイルによってエージェントがインストールされます。
+* [こちら](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/AzureEmailService/ServiceDefinition.csdef#L18)に示すように、CSDEF ファイルに開始タスクを追加します。
+* 注: [こちら](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/AzureEmailService/ServiceDefinition.csdef#L44)に示すように、*worker ロール*には 3 つの環境変数が必要です。これは web ロールでは必要ありません。
 
 Application Insights ポータルに表示される内容の例を次に示します。
 
@@ -134,17 +193,21 @@ Application Insights ポータルに表示される内容の例を次に示し�
 
     ![](./media/app-insights-cloudservices/a5R0PBk.png)
 
-### 例外のレポート
+## 例外
 
-* 各種 Web アプリケーションから未処理の例外を収集する方法の詳細については、[Application Insights での例外の監視](app-insights-asp-net-exceptions.md)に関するページをご覧ください。
-* サンプルの web ロールには MVC5 コントローラーおよび Web API 2 コントローラーが含まれています。この 2 つからの未処理の例外は、以下を使用してキャプチャされます。
-    * MVC5 コントローラー向けの [AiHandleErrorAttribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) セットアップ ([こちらを参照](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12))
-    * Web API 2 コントローラー向けの [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) セットアップ ([こちらを参照](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25))
-* woker ロールの場合: 例外を追跡する方法は 2 つあります。
-    * TrackException(ex)
-    * Application Insights トレース リスナー NuGet パッケージを追加した場合は、System.Diagnostics.Trace を使用して例外を記録できます。[コード例はこちらです。](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107)
+各種 Web アプリケーションから未処理の例外を収集する方法の詳細については、[Application Insights での例外の監視](app-insights-asp-net-exceptions.md)に関するページをご覧ください。
 
-### パフォーマンス カウンター
+サンプルの web ロールには MVC5 コントローラーおよび Web API 2 コントローラーが含まれています。この 2 つからの未処理の例外は、以下を使用してキャプチャされます。
+
+* MVC5 コントローラー向けの [AiHandleErrorAttribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) セットアップ ([こちらを参照](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12))
+* Web API 2 コントローラー向けの [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) セットアップ ([こちらを参照](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25))
+
+woker ロールの場合、例外を追跡する方法は 2 つあります。
+
+* TrackException(ex)
+* Application Insights トレース リスナー NuGet パッケージを追加した場合は、System.Diagnostics.Trace を使用して例外を記録できます。[コード例はこちらです。](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107)
+
+## パフォーマンス カウンター
 
 既定では、次のカウンターが収集されます。
 
@@ -165,7 +228,7 @@ Application Insights ポータルに表示される内容の例を次に示し�
 
   ![](./media/app-insights-cloudservices/OLfMo2f.png)
 
-### worker ロールのテレメトリの関連付け
+## worker ロールのテレメトリの関連付け
 
 豊富な診断のエクスペリエンスでは、要求が失敗した場合や待機時間が長い場合の原因を確認できます。Web ロールを使用すると、SDK によって関係するテレメトリの間に関連付けが自動的に設定されます。worker ロールの場合は、カスタムのテレメトリ初期化子を使用して、すべてのテレメトリに共通の Operation.Id context 属性を設定することで、これを実現できます。これにより、待機時間/失敗の問題の原因が依存関係とコードのどちらにあるかを一目で把握することができます。
 
@@ -179,32 +242,26 @@ Application Insights ポータルに表示される内容の例を次に示し�
 
 ![](./media/app-insights-cloudservices/bHxuUhd.png)
 
-#### データが表示されない場合
-
-* [[検索]][diagnostic] タイルを開き、個々のイベントを表示します。
-* アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
-* 数秒待機してから [最新の情報に更新] をクリックします。
-* [トラブルシューティング][qna]に関するページを参照します。
 
 
-## インストールを完了する
+## クライアント テレメトリ
 
-アプリケーションを 360 度から表示するには、いくつかの作業が必要になります。
+[Web ページに JavaScript SDK を追加][client]して、ページ ビュー数、ページの読み込み時間、スクリプトの例外などのブラウザー ベースのテレメトリを取得し、ページ スクリプトにカスタムのテレメトリを記述することができます。
 
+## 可用性テスト
 
-* [Web ページに JavaScript SDK を追加][client]して、ページ ビュー数、ページの読み込み時間、スクリプトの例外などのブラウザー ベースのテレメトリを取得し、ページ スクリプトにカスタムのテレメトリを記述することができます。
-* 依存関係の追跡を追加して、アプリで使用されるデータベースなどのコンポーネントが原因で発生した問題を診断します。
- * [Azure Web アプリまたは VM で][azure]
- * [オンプレミスの IIS サーバーで][redfield]
-* お気に入りのログ記録フレームワークから[ログ トレースをキャプチャ][netlogs]します。
-* クライアント側とサーバー側 (またはそのいずれか) で[カスタム イベントとメトリックを追跡][api]して、アプリケーションの使用状況の詳細を確認します。
-* [Web テストを設定][availability]して、アプリケーションが動作していて応答できることを確認します。
+[Web テストを設定][availability]して、アプリケーションが動作していて応答できることを確認します。
 
 
 
 ## 例
 
 [この例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)では、1 つの Web ロールと 2 つの worker ロールが含まれたサービスを監視します。
+
+## 関連トピック
+
+* [Application Insights に Azure 診断を送信するための構成](app-insights-azure-diagnostics.md)
+* [PowerShell を使用した Application Insights への Azure 診断の送信])(app-insights-powershell-azure-diagnostics.md)
 
 
 
@@ -222,4 +279,4 @@ Application Insights ポータルに表示される内容の例を次に示し�
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

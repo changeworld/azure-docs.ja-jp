@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="11/23/2015" 
 	ms.author="awills"/>
 
 #  Application Insights におけるサンプリング
@@ -20,47 +20,67 @@
 *Application Insights はプレビュー段階です。*
 
 
-サンプリングは Application Insights に含まれるオプションであり、これを使用することで、アプリケーション データを統計的に正しく分析し続けながら、削減された一連のテレメトリを収集して保存することができます。通常は、トラフィックを削減して[スロットル](app-insights-pricing.md#data-rate)を防止するために使用します。関連する項目がフィルターを通過できるような方法でデータがフィルター処理されるため、削減されたデータ セットを使用して診断調査を実行できます。クライアント側とサーバー側では、関連する項目をフィルター処理するように自動的に調整が行われます。ポータルでメトリック数が表示されるときは、統計値への影響を最小限に抑えるために、メトリック数を再正規化してサンプリングに配慮します。
+サンプリングは Application Insights の機能です。サンプリングを使用すると、テレメトリを収集し、サイズを減らして保存できるだけでなく、アプリケーション データを統計的に正しく分析することができます。また、トラフィックも減るので、[スロットル](app-insights-pricing.md#data-rate)も回避できます。データは、関連する項目単位でフィルター処理されるので、診断調査を実行するときも項目単位で操作できます。ポータルでメトリック数が表示されるときは、統計値への影響を最小限に抑えるために、メトリック数を再正規化してサンプリングに配慮します。
 
+Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降の既定では、アダプティブ サンプリングは有効です。サンプリングは現在ベータ版の段階にあり、今後変更される可能性があります。
 
-サンプリングは現在ベータ版の段階にあり、今後変更される可能性があります。
+現在は 2 つのサンプリング モジュールがあります。
 
-## アプリケーション用のサンプリング構成
+* アダプティブ サンプリングはサンプリングの割合を自動的に調整し、要求が一定の量になるようにします。現在は、ASP.NET サーバー側テレメトリでのみ使用できます。  
+* 固定レート サンプリングも利用できます。サンプリングの割合を指定します。ASP.NET Web アプリ コードおよび JavaScript Web ページで使用できます。クライアントとサーバーはサンプリングを同期するので、検索では関連のあるページ ビューと要求の間を移動できます。
 
-サンプリングは、現在 ASP.NET SDK または[任意の Web ページ](#other-web-pages)で利用できます。
+## アダプティブ サンプリングを有効にする
 
-### ASP.NET サーバー
+**プロジェクトの NuGet** パッケージを Application Insights の最新の*プレリリース* バージョンに更新します。ソリューション エクスプ ローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択し、**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。
 
-1. プロジェクトの NuGet パッケージを Application Insights の最新の*プレリリース* バージョンに更新します。ソリューション エクスプローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択して、**[プレリリースを含める]** をオンにし、Microsoft.ApplicationInsights.Web を検索します。 
+[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) で、`AdaptiveSamplingTelemetryProcessor` ノードのさまざまなパラメーターを調整できます。次の図は既定値です。
 
-2. 次のスニペットを [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) に追加します。
+* `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
 
-```XML
+    アダプティブ アルゴリズムが**単一のサーバー ホスト**で目標とするレート。Web アプリが多数のホストで実行される場合は、Application Insights ポータルのトラフィックの目標レート内に収まるようにこの値を減らします。
 
-    <TelemetryProcessors>
-     <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+* `<EvaluationInterval>00:00:15</EvaluationInterval>`
 
-     <!-- Set a percentage close to 100/N where N is an integer. -->
-     <!-- E.g. 50 (=100/2), 33.33 (=100/3), 25 (=100/4), 20, 1 (=100/100), 0.1 (=100/1000) -->
-     <SamplingPercentage>10</SamplingPercentage>
-     </Add>
-   </TelemetryProcessors>
+    テレメトリの現在のレートを再評価する間隔。評価は移動平均として実行されます。急変しやすいテレメトリの場合は、この間隔を短くすることもできます。
 
-```
+* `<SamplingPercentageDecreaseTimeout>00:02:00</SamplingPercentageDecreaseTimeout>`
 
-> [AZURE.NOTE]サンプリング率には、N を整数として 100/N に近い割合を選択します。サンプリングでは現在、その他の値はサポートされていません。
+    サンプリング率が変化してから、どのくらいの時間が経過すると、サンプリング率を下げてキャプチャ データ量を減らすことができるようになるかを指定します。
+
+* `<SamplingPercentageIncreaseTimeout>00:15:00</SamplingPercentageDecreaseTimeout>`
+
+    サンプリング率が変化してから、どのくらいの時間が経過すると、サンプリング率を上げてキャプチャ データ量を増やすことができるようになるかを指定します。
+
+* `<MinSamplingPercentage>0.1<\MinSamplingPercentage>`
+
+    サンプリング率の変化に合わせて、設定できる最小値。
+
+* `<MaxSamplingPercentage>100.0<\MaxSamplingPercentage>`
+
+    サンプリング率の変化に合わせて、設定できる最大値。
+
+* `<MovingAverageRatio>0.25</MovingAverageRatio>`
+
+    移動平均の計算で最新値に割り当てられる重み。1 以下の値を使用します。小さい値にすると、急変に対する反応が低いアルゴリズムになります。
+
+* `<InitialSamplingPercentage>100<\InitialSamplingPercentage>`
+
+    アプリの起動直後に割り当てられる値。デバッグ中はこの値を減らさないでください。
 
 <a name="other-web-pages"></a>
-### JavaScript を使用した Web ページ
+## JavaScript を使用した Web ページのサンプリング
 
-任意のサーバーからのサンプリング用に Web ページを構成できます。ASP.NET サーバーの場合は、クライアント側とサーバー側の両方を構成します。
+任意のサーバーから固定レートのサンプリング用に Web ページを構成できます。
 
-[Application Insights 用に Web ページを構成する](app-insights-javascript.md)場合は、Application Insights ポータルからスニペットを入手して、それを変更します(ASP.NET では、\_Layout.cshtml 内にあります)。 `samplingPercentage: 10,` のような行をインストルメンテーション キーの前に挿入します。
+[Application Insights 用に Web ページを構成する](app-insights-javascript.md)場合は、Application Insights ポータルからスニペットを入手して、それを変更します(通常、ASP.NET アプリでは \_Layout.cshtml を利用できます)。 `samplingPercentage: 10,` のような行をインストルメンテーション キーの前に挿入します。
 
     <script>
 	var appInsights= ... 
 	}({ 
 
+
+    // Value must be 100/N where N is an integer.
+    // Valid examples: 50, 25, 20, 10, 5, 1, 0.1, ...
 	samplingPercentage: 10, 
 
 	instrumentationKey:...
@@ -70,15 +90,52 @@
 	appInsights.trackPageView(); 
 	</script> 
 
-JavaScript 内で指定しているサンプリング率が、サーバー側で指定した値と同じであることを確認します。
+サンプリング率には、N を整数として 100/N に近い割合を選択します。サンプリングでは現在、その他の値はサポートされていません。
 
-[API の詳細はこちら](app-insights-api-custom-events-metrics.md)
+サーバーでも固定レート サンプリングを有効にしている場合は、クライアントとサーバーはサンプリングを同期するので、検索で関連のあるページ ビューと要求の間を移動できます。
+
+
+## サーバーで固定レートのサンプリングを有効にする
+
+1. **プロジェクトの NuGet パッケージ**を Application Insights の最新の*プレリリース* バージョンに更新します。ソリューション エクスプ ローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択し、**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。 
+
+2. **アダプティブ サンプリングを無効にする**: [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) の `AdaptiveSamplingTelemetryProcessor` ノードを削除するか、コメント アウトします。
+
+    ```xml
+
+    <TelemetryProcessors>
+    <!-- Disabled adaptive sampling:
+      <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+        <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
+      </Add>
+    -->
+    
+
+    ```
+
+2. **固定レート サンプリング モジュールを有効にします。** 次のスニペットを [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) に追加します。
+
+    ```XML
+
+    <TelemetryProcessors>
+     <Add  Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+
+      <!-- Set a percentage close to 100/N where N is an integer. -->
+     <!-- E.g. 50 (=100/2), 33.33 (=100/3), 25 (=100/4), 20, 1 (=100/100), 0.1 (=100/1000) -->
+      <SamplingPercentage>10</SamplingPercentage>
+      </Add>
+    </TelemetryProcessors>
+
+    ```
+
+> [AZURE.NOTE]サンプリング率には、N を整数として 100/N に近い割合を選択します。サンプリングでは現在、その他の値はサポートされていません。
+
 
 
 ### 代替手順: サーバー コードでサンプリングを設定します。
 
 
-.config ファイルにサンプリング パラメーターを設定する代わりに、コードを使用できます。これにより、サンプリングをオンまたはオフにできます。
+.config ファイルにサンプリング パラメーターを設定する代わりに、コードを使用できます。
 
 *C#*
 
@@ -86,26 +143,42 @@ JavaScript 内で指定しているサンプリング率が、サーバー側で
 
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
+    ...
 
-    // It's recommended to set SamplingPercentage in the .config file instead.
+    var builder = TelemetryConfiguration.Active.GetTelemetryProcessorChainBuilder();
+    builder.UseSampling(10.0); // percentage
 
-    // This configures sampling percentage at 10%:
-    TelemetryConfiguration.Active.TelemetryChannel = new TelemetryChannelBuilder().UseSampling(10.0).Build();
+    // If you have other telemetry processors:
+    builder.Use((next) => new AnotherProcessor(next));
+
+    builder.Build();
 
 ```
 
+([テレメトリ プロセッサについてはこちらを参照してください](app-insights-api-filtering-sampling/#filtering))。
 
 ## サンプリングを使用する場合
+
+ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している場合、アダプティブ サンプリングは自動的に有効になります。
 
 ほとんどの中小規模アプリケーションには、サンプリングは不要です。最も役立つ診断情報や最も正確な統計値は、すべてのユーザー アクティビティからデータを収集することで入手します。
 
  
-サンプリングを使用する主な理由は次のとおりです。
-
+サンプリングの主な利点:
 
 * アプリが短期間に非常に高いレートのテレメトリを送信すると、Application Insights サービスがデータ ポイントを削減 ("スロットル") する。 
-* データ ポイントを、価格レベルの[クォータ](app-insights-pricing.md)以内に抑える必要がある。 
+* データ ポイントを、価格レベルの[クォータ](app-insights-pricing.md)以内に抑える。 
 * テレメトリの収集によるネットワーク トラフィックを削減する。 
+
+### 固定サンプリングとアダプティブ サンプリング
+
+次の場合は固定レート サンプリングを使用します。
+
+* クライアントとサーバーのサンプリングを同期する場合。[検索](app-insights-diagnostic-search.md)でイベントを調査するときに、クライアントとサーバーの関連するイベント単位 (ページ ビュー、HTTP 要求など) で操作できます。
+* アプリに適したサンプリング率を確保する場合。正確なメトリックを取得できる程度に高く、価格クォータとスロットル制限を超えないレートにする必要があります。 
+* アプリのデバッグ中ではなく、F5 キーを押してアプリの数ページを試すと、すべてのテレメトリを確認できる場合。
+
+それ以外の場合は、アダプティブ サンプリングをお勧めします。
 
 ## サンプリングのしくみ
 
@@ -120,6 +193,10 @@ SDK では、削除するテレメトリ項目と、維持するテレメトリ�
 近似精度は、構成したサンプリング率に大きく左右されます。また、多数のユーザーからの同じような要求を大量に処理するアプリケーションの場合は、近似精度が高くなります。一方で、処理量が膨大ではないアプリケーションの場合、通常はクォータの範囲内ですべてのテレメトリを送信でき、スロットルによるデータの損失もないため、サンプリングは必要ありません。
 
 Application Insights では、精度が問題のあるレベルまで低下する可能性があるため、メトリックおよびセッションのテレメトリ タイプに対するサンプリングは行いません。
+
+### アダプティブ サンプリング
+
+アダプティブ サンプリングの場合、SDK からの現在の転送速度を監視し、目標最大レート以下になるようにサンプリング率を調整するコンポーネントが追加されます。調整は、定期的に、送信レートの移動平均に基づいて再計算されます。
 
 ## サンプリングと JavaScript SDK
 
@@ -138,13 +215,17 @@ Application Insights では、精度が問題のあるレベルまで低下す�
 
  *  このサンプリング方法の場合、メトリックの近似精度は非常に高くなりますが、一方でユーザーごと、セッションごと、要求ごとに診断データを関連付けるという、診断には欠かせない機能が利用できなくなります。そのため、サンプリングには "アプリ ユーザーの X% に関するすべてのテレメトリ項目を収集"、または "アプリ要求の X% に関するすべてのテレメトリを収集" というロジックが適しています。要求に関連付けられていないテレメトリ項目 (バックグラウンドの非同期処理など) の場合は、代わりに "各テレメトリ タイプに関するすべての項目の X% を収集" とします。 
 
-*サンプリング率は、時間経過に伴い変更できますか。*
+*サンプリング率は、時間経過に伴い変化する可能性がありますか。*
 
- * 現在の実装では、通常、アプリケーションの開始時にサンプリング率を設定した後、それを変更することはありません。実行時にサンプリング率を制御できても、どのサンプリング率が最適で、"ちょうどいい量のデータ ボリューム" を収集できるかということを、スロットル ロジックが開始する前や、データ ボリュームが月間クォータに達する前に判断する方法はありません。今後の Application Insights SDK のバージョンにはアダプティブ サンプリングが含まれる予定ですが、この機能では、現在観測されているテレメトリのボリュームやその他の要素に基づき、即時にサンプリング率を上下に調整します。 
+ * はい。アダプティブ サンプリングの場合、現在監視されているテレメトリのデータ量に基づいて、サンプリング率が徐々に変化します。
 
-*自分のアプリに最適なサンプリング率は、どのようにして確認できますか。*
+*アダプティブ サンプリングが使用しているサンプリング レートは確認できますか。*
 
-* 現状では、推測するしかありません。AI での現在のテレメトリ使用状況を分析し、スロットルに関連したデータの削除を観察して、収集されるテレメトリのボリュームを見積もります。これら 3 つの情報に、選択した価格レベルを合わせて考えると、収集されるテレメトリのボリュームをどれくらい削減する必要があるかがわかります。ただし、テレメトリ ボリュームのパターンが変化することで、最適に構成されたサンプリング率が無効になる場合もあります (たとえばユーザー数の増加など)。アダプティブ サンプリングが実装されると、観測されたテレメトリ ボリュームに基づき、サンプリング率を最適なレベルに自動制御できるようになります。
+ * 現在のバージョンでは確認できません。
+
+*固定レート サンプリング率を使用している場合、自分のアプリに最適なサンプリング率は、どのようにして確認できますか。*
+
+* 現状では、推測するしかありません。AI での現在のテレメトリ使用状況を分析し、スロットルに関連したデータの削除を観察して、収集されるテレメトリのボリュームを見積もります。これら 3 つの情報に、選択した価格レベルを合わせて考えると、収集されるテレメトリのボリュームをどれくらい削減する必要があるかがわかります。ただし、テレメトリ ボリュームのパターンが変化することで、最適に構成されたサンプリング率が無効になる場合もあります (たとえばユーザー数の増加など)。
 
 *サンプリング率を低く構成しすぎると、どうなりますか。*
 
@@ -156,12 +237,10 @@ Application Insights では、精度が問題のあるレベルまで低下す�
 
 *サンプリングはどのようなプラットフォームで使用できますか。*
 
-* 現在、サンプリングは、任意の Web ページと、クライアント側およびサーバー側の両方の .NET Web アプリケーションで使用できます。
+* 現在、アダプティブ サンプリングは、(Azure またはオンプレミス サーバーにホストされている) ASP.NET Web ページのサーバー側で使用できます。固定レート サンプリングは、任意の Web ページと、クライアント側およびサーバー側の両方の .NET Web アプリケーションで使用できます。
 
-*デバイス アプリ (Windows Phone、iOS、Android、またはデスクトップ アプリ) でサンプリングを使用できますか。*
+*常に確認したい頻度が低いイベントがあります。サンプリング モジュールを使わずに確認するにはどうすればよいですか。*
 
-* 残念ですが、デバイス アプリケーション向けのサンプリングは、現時点ではサポートされていません。 
+ * 別の TelemetryConfiguration で TelemetryClient の別インスタンスを作成します。そのインスタンスを使用して、頻度の低いイベントを送信してください。
 
->>>>>>> 36f8b905a3f60271ee6dc3a17c3ca431937287dc
-
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

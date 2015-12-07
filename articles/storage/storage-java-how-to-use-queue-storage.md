@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="08/31/2015" 
+	ms.date="11/19/2015" 
 	ms.author="robmcm"/>
 
 # Java から Queue ストレージを使用する方法
@@ -391,4 +391,4 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 [Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

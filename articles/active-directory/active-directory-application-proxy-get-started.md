@@ -3,8 +3,8 @@
 	description="Azure AD アプリケーション プロキシを使用して、オンプレミス アプリへの安全なリモート アクセスを実現する方法について取り上げます。"
 	services="active-directory"
 	documentationCenter=""
-	authors="rkarlin"
-	manager="msStevenPo"
+	authors="kgremban"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/09/2015"
-	ms.author="rkarlin"/>
+	ms.author="kgremban"/>
 
 # オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法
 
@@ -61,4 +61,4 @@ Azure AD Basic または Azure AD Premium サブスクリプションに加え�
 * [Azure への組織としてのサインアップ](../sign-up-organization.md)
 * [Azure ID](../fundamentals-identity.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

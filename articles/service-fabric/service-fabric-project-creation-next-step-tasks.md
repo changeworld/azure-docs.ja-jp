@@ -23,7 +23,17 @@ Service Fabric アプリケーションが作成されました。この記事�
 すべての新しいアプリケーションには、アプリケーション プロジェクトが含まれています。選択したサービスのタイプに応じて、さらに 1 つか 2 つのプロジェクトがある場合があります。
 
 ### アプリケーション プロジェクト
-アプリケーション プロジェクトは、次によって構成されます。 - アプリケーションを構成するサービスに対する参照セット。 - クラスター エンドポイントや既定でデプロイメントのアップグレードを実行するかどうかなど、異なる環境で作業するための設定を管理する 2 つの発行プロファイル (ローカルとクラウド)。 - サービスのために作成するパーティションの数など、環境固有のアプリケーション構成を管理するために使用する 2 つのアプリケーション パラメーター ファイル (ローカルとクラウド)。 - コマンドラインから、または自動化された継続的な統合パイプラインの一部として、アプリケーションをデプロイするために使用できるデプロイメント スクリプト。 - アプリケーションについて説明するアプリケーション マニフェスト。
+アプリケーション プロジェクトは次で構成されます。
+
+- アプリケーションを構成するサービスへの一連の参照。
+
+- クラスター エンドポイントおよび既定でのアップグレード デプロイメントの実行の可否などの基本設定を維持するために使用する異なる環境の操作用の (ローカルとクラウドの) 2 つの発行プロファイル。
+
+- サービス用に作成するパーティション数などの環境に固有のアプリケーション構成を維持するために使用する (ローカルとクラウドの) 2 つのアプリケーション パラメーター ファイル。
+
+- コマンドラインまたは自動化された継続的インテグレーション パイプラインの一環としての、アプリケーションを展開するために使用するデプロイメント スクリプト。
+
+- アプリケーションを説明するアプリケーション マニフェスト。
 
 ### Reliable Service
 新しい Reliable Service を追加すると、Visual Studio は、ソリューションにサービス プロジェクトを追加します。サービス プロジェクトには、選択したタイプに応じて `StatelessService` または `StatefulService` から拡張するクラスが含まれています。
@@ -36,26 +46,30 @@ Service Fabric アプリケーションが作成されました。この記事�
 アクターは他のサービスによってアクティブ化される必要があるため、アクター プロジェクトには既定のスタートアップ動作が含まれていないことに注意してください。アクターを作成し、対話するためには、Reliable Service または ASP.NET プロジェクトの追加を検討してください。
 
 ### ASP.NET 5
-Service Fabric アプリケーションで使用するために提供される ASP.NET 5 テンプレートは、個別に作成される ASP.NET 5 プロジェクトで使用するものとほぼ同じです。唯一の相違点は次の通りです。 - プロジェクトに、データや構成パッケージとともに ServiceManifest を格納するための **PackageRoot** フォルダーが含まれる。 - DNX と Service Fabric 間の仲介役として機能する追加の NuGet パッケージ (Microsoft.ServiceFabric.AspNet.Hosting) をプロジェクトが参照する。
+Service Fabric アプリケーションで使用するために提供される ASP.NET 5 テンプレートは、個別に作成される ASP.NET 5 プロジェクトで使用するものとほぼ同じです。違いは次の点のみです。
+
+- プロジェクトに、Data および Config パッケージと共に ServiceManifest を格納する **PackageRoot** フォルダーが含まれます。
+
+- プロジェクトは、DNX と Service Fabric 間のブリッジとして機能する追加の NuGet パッケージ (Microsoft.ServiceFabric.AspNet.Hosting) を参照しています。
 
 ## 次のステップ
 ### アプリケーションへの Web フロント エンドの追加
-Service Fabric は、アプリケーションへの Web ベースのエントリ ポイントを作成するための ASP.NET 5 との統合を提供します。ASP.NET WebAPI に基づく REST インターフェイスの作成方法については、「[Adding a web front-end to your application (アプリケーションへの Web フロント エンドの追加)][add-web-frontend]」を参照してください。
+Service Fabric は、アプリケーションへの Web ベースのエントリ ポイントを作成するための ASP.NET 5 との統合を提供します。ASP.NET WebAPI に基づく REST インターフェイスの作成方法については、「[アプリケーションへの Web フロント エンドの追加][add-web-frontend]」を参照してください。
 
 ### Azure クラスターの作成
 Service Fabric SDK には、開発およびテスト用のローカル クラスターが用意されています。Azure でのクラスターの作成については、「[Azure ポータルからの Service Fabric クラスターのセットアップ][create-cluster-in-portal]」を参照してください。
 
 ### Azure へのアプリケーションの発行
-Visual Studio から Azure クラスターに直接アプリケーションを発行することができます。方法については、「[Publishing your application to Azure (Azure へのアプリケーションの発行)][publish-app-to-azure]」を参照してください。
+Visual Studio から Azure クラスターに直接アプリケーションを発行することができます。方法については、「[Azure へのアプリケーションの発行][publish-app-to-azure]」を参照してください。
 
 ### Service Fabric Explorer を使用したクラスターの視覚化
 Service Fabric Explorer には、デプロイ済みのアプリケーションや物理的なレイアウトなど、クラスターを視覚化するための簡単な方法が用意されています。詳細については、「[Service Fabric Explorer を使用したクラスターの視覚化][visualize-with-sfx]」を参照してください。
 
 ### サービスのアップグレードとバージョン管理
-Service Fabric では、アプリケーションにおいて、独立したサービスの個別のバージョン管理とアップグレードを実行できます。詳細については、「[Versioning and upgrading your services (サービスのバージョン管理とアップグレード)][app-upgrade-tutorial]」を参照してください。
+Service Fabric では、アプリケーションにおいて、独立したサービスの個別のバージョン管理とアップグレードを実行できます。詳細については、「[サービスのバージョン管理とアップグレード][app-upgrade-tutorial]」を参照してください。
 
 ### Visual Studio Online を使用した継続的な統合の構成
-Service Fabric アプリケーション向けに継続的な統合プロセスを設定する方法については、「[Configure continuous integration with Visual Studio Online (Visual Studio Online を使用した継続的な統合の構成)][ci-with-vso]」を参照してください。
+Service Fabric アプリケーション向けに継続的な統合プロセスを設定する方法については、「[Visual Studio Online を使用した継続的な統合の構成][ci-with-vso]」を参照してください。
 
 
 <!-- Links -->
@@ -67,4 +81,4 @@ Service Fabric アプリケーション向けに継続的な統合プロセス�
 [reliable-services-webapi]: ./service-fabric-reliable-services-communication-webapi.md
 [app-upgrade-tutorial]: ./service-fabric-application-upgrade-tutorial.md
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

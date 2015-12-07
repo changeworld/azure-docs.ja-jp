@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Linux VM での CustomScript 拡張機能の使用 | Microsoft Azure"
-	description="CustomScript 拡張機能を使って、クラシック デプロイ モデルを使用して作成された Azure 上の Linux 仮想マシンにアプリケーションをデプロイする方法について説明します。"
+	description="CustomScript 拡張機能を使って、クラシック デプロイ モデルを使用して作成された Azure 上の Linux Virtual Machines にアプリケーションをデプロイする方法について説明します。"
 	editor="tysonn"
 	manager="timlt"
 	documentationCenter=""
@@ -110,4 +110,4 @@ CustomScript 拡張機能を実行すると、参照用に作成した PHP ペ�
 
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

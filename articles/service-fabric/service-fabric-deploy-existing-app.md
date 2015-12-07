@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Service Fabric への既存のアプリケーションのデプロイ | Microsoft Azure"
+   pageTitle="Azure Service Fabric へのカスタム アプリケーションのデプロイ | Microsoft Azure"
    description="既存のアプリケーションを Azure Service Fabric クラスターにデプロイできるようにパッケージ化する方法のチュートリアル"
    services="service-fabric"
    documentationCenter=".net"
@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/09/2015"
+   ms.date="11/17/2015"
    ms.author="bscholl"/>
 
-# Service Fabric に既存のアプリケーションをデプロイする
+# Service Fabric にカスタム アプリケーションをデプロイする
 
 Node.js アプリケーション、Java アプリケーション、Service Fabric のネイティブなアプリケーションなど、あらゆる種類の既存のアプリケーションを実行できます。Service Fabric では、これらのアプリケーションをステートレスなサービスのように処理し、可用性などのメトリックに基づいてクラスター内のノードに配置します。この記事では、既存のアプリケーションを Service Fabric クラスターにデプロイしてパッケージ化する方法について説明します。
 
-## Service Fabric で既存のアプリケーションを実行するメリット
+## Service Fabric でカスタム アプリケーションを実行するメリット
 
 Service Fabric クラスターでアプリケーションを実行するメリットはいくつかあります。
 
@@ -46,7 +46,6 @@ Service Fabric クラスターでアプリケーションを実行するメリ�
 
   サービス マニフェストには、サービスのコンポーネントを記述します。このデータには、サービスの名前および種類 (Service Fabric がサービスを管理する際に使用する情報)、そのコード、構成およびデータ コンポーネントのほか、デプロイされたサービスの構成に使用できる追加パラメーターがいくつか含まれます。ここでは、サービス マニフェストで使用できるすべてのパラメーターについて詳しく説明するのではなく、既存のアプリケーションを Service Fabric で実行するのに必要なサブセットを取り上げます。
 
-Service Fabric のパッケージ形式の詳細については、[こちら](service-fabric-develop-your-service-index.md)を参照してください。
 
 ## アプリケーション パッケージ ファイルの構造
 Service Fabric にアプリケーションをデプロイするには、そのアプリケーションが次の定義済みディレクトリ構造に従っている必要があります。この構造の例を次に示します。
@@ -79,7 +78,7 @@ root には、アプリケーションを定義する ApplicationManifest.xm フ
 - サービス マニフェスト ファイルを更新する
 - アプリケーション マニフェストを更新する
 
->[AZURE.NOTE]\: ApplicationPackage を自動的に作成できるパッケージ化ツールを用意しています。このツールは現在プレビューの段階です。詳細については、[こちらで](http://aka.ms/servicefabricpacktool)確認できます。
+>[AZURE.NOTE]\: ApplicationPackage を自動的に作成できるパッケージ化ツールを用意しています。このツールは現在プレビューの段階です。[ここ](http://aka.ms/servicefabricpacktool)からダウンロードできます。
 
 ### パッケージ ディレクトリ構造を作成する
 まず、次の説明に従ってディレクトリ構造を作成します。
@@ -275,8 +274,8 @@ Service Fabric エクスプローラーで、サービスが実行されてい�
 ## 次のステップ
 この記事では、既存のアプリケーションをパッケージ化し、Service Fabric にデプロイする方法について説明しました。次のステップとして、このトピックに関する他のコンテンツを確認できます。
 
-- 既存のアプリケーションをパッケージ化し、デプロイするためのサンプルが [Github](https://github.com/bmscholl/servicefabric-samples/tree/comingsoon/samples/RealWorld/Hosting/SimpleApplication) で入手できます。これには、パッケージ化ツールのプレリリース版が含まれています。
-- 複数のアプリケーションをパッケージ化するためのサンプルが [Github](https://github.com/bmscholl/servicefabric-samples/tree/comingsoon/samples/RealWorld/Hosting/SimpleApplication) で入手できます。
+- カスタム アプリケーションをパッケージ化し、デプロイするためのサンプルが [Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Custom/SimpleApplication) で入手できます。これには、パッケージ化ツールのプレリリース版のリンクが含まれています。
+- [複数のカスタム アプリケーションをデプロイする](service-fabric-deploy-multiple-apps.md)方法について学習します。
 - [Visual Studio を使用して最初の Service Fabric アプリケーションを作成する方法](service-fabric-create-your-first-application-in-visual-studio.md)に関するページから作業を開始できます。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -58,7 +58,7 @@ Service Fabric アプリケーションのアップグレード プロセスの�
 
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)
 
-[高度なトピック](service-fabric-application-upgrade-advanced.md)
+[手動アップグレードと差分のパッケージを使用したアップグレード](service-fabric-application-upgrade-advanced.md)
 
 [アプリケーション アップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
 
@@ -67,4 +67,4 @@ Service Fabric アプリケーションのアップグレード プロセスの�
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1125_2015-->
