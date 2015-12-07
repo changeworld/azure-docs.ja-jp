@@ -4,7 +4,7 @@
    services="dns"
    documentationCenter="na"
    authors="joaoma"
-   manager="Adinah"
+   manager="carmonm"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/22/2015"
+   ms.date="11/24/2015"
    ms.author="joaoma"/>
 
 
@@ -60,7 +60,7 @@ Time-to-Live (TTL) は、各レコードが再度照会されるまでクライ�
 
 レコード セットを作成し、変数 $rs に割り当てます。
 
-	PS C:\>$rs = New-AzureDnsRecordSet -Name "www" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 60
+	PS C:\>$rs = New-AzureRmDnsRecordSet -Name "www" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 60
 
 レコード セットには、DNS ゾーン "contoso.com" の相対名 "www" が含まれているため、レコードの完全修飾名は "www.contoso.com" になります。レコードの種類は "A" で、TTL は 60 秒です。
 
@@ -72,21 +72,21 @@ Time-to-Live (TTL) は、各レコードが再度照会されるまでクライ�
 
 手順 1. でレコード セットの作成時に割り当てた $rs 変数を使用して、"www" レコード セットに IPv4 A レコードを追加します。
 
-	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.185.46
-	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.188.221
+	PS C:\> Add-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.185.46
+	PS C:\> Add-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.188.221
 
-Add-AzureDnsRecordConfig を使用してレコード セットにレコードを追加する操作は、オフライン操作です。ローカル変数 $rs のみが更新されます。
+Add-AzureRmDnsRecordConfig を使用してレコード セットにレコードを追加する操作は、オフライン操作です。ローカル変数 $rs のみが更新されます。
 
 ### 手順 3.
-レコード セットへの変更をコミットします。レコード セットへの変更を Azure DNS にアップロードするには、次のように Set-AzureDnsRecordSet を使用します。
+レコード セットへの変更をコミットします。レコード セットへの変更を Azure DNS にアップロードするには、次のように Set-AzureRmDnsRecordSet を使用します。
 
 
-	Set-AzureDnsRecordSet -RecordSet $rs
+	Set-AzureRmDnsRecordSet -RecordSet $rs
 
-変更が完了しました。Get-AzureDnsRecordSet を使用して、Azure DNS からレコード セットを取得できます。
+変更が完了しました。Get-AzureRmDnsRecordSet を使用して、Azure DNS からレコード セットを取得できます。
 
 
-	PS C:\> Get-AzureDnsRecordSet –Name www –RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
+	PS C:\> Get-AzureRmDnsRecordSet –Name www –RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 
 
 	Name              : www
@@ -117,6 +117,7 @@ nslookup や他の DNS ツールを使用して、新しいレコード セッ�
 
 
 ## 次のステップ
+
 [DNS ゾーンの管理方法](dns-operations-dnszones.md)
 
 [DNS レコードの管理方法](dns-operations-recordsets.md)<BR>
@@ -124,4 +125,4 @@ nslookup や他の DNS ツールを使用して、新しいレコード セッ�
 [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

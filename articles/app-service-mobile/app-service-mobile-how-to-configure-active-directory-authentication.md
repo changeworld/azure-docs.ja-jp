@@ -13,17 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="10/29/2015" 
+	ms.date="11/20/2015" 
 	ms.author="mahender"/>
 
 # Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法
+
+[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]&nbsp;
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 このトピックでは、認証プロバイダーとして Azure Active Directory を使用するように Azure App Services を構成する方法を示します。
 
-
-	> [AZURE.NOTE] This topic demonstrates use of the App Service Authentication / Authorization feature. This replaces the App Service gateway for most applications. If using the gateway, please see the [alternative method]. Differences that apply to using the gateway are called out in notes throughout that section.
+> [AZURE.NOTE]このトピックでは、App Service 認証/承認の使用例を示します。ほとんどのアプリケーションで、これが App Service ゲートウェイに取って代わっています。ゲートウェイを使用している場合は、[別の方法]を参照してください。ゲートウェイを使用する場合との相違点については、そのセクションの注に記載されています。
 
 
 ## <a name="express"></a>高速設定を使用して Azure Active Directory を構成する
@@ -38,7 +39,9 @@
 
     ![][0]
 	
-16. 既定では、App Service はログインを提供しますが、サイトのコンテンツと API へのアクセスは制限されません。これはアプリケーション コードで行います。Azure Active Directory ログインによってサイトを完全に保護する場合は、**[要求が認証されていないときに実行するアクション]** ドロップダウンを変更して **[Azure Active Directory]** を使用します。これにより、すべての要求を認証することが必要になります。認証されていない要求は、Azure Active Directory を使用したログインにリダイレクトされます。
+	App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。アプリケーション コードでユーザーを承認する必要があります。
+
+17. (省略可能) サイトに対するアクセスを、Azure Active Directory で認証されたユーザーに限定するには、**[要求が認証されていないときに実行するアクション]** を **[Azure Active Directory]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Azure Active Directory にリダイレクトされます。
 
 17. **[保存]** をクリックします。
 
@@ -51,7 +54,7 @@
 
 1. [プレビュー段階の Microsoft Azure 管理ポータル]にログオンし、アプリケーションに移動します。**[URL]** をコピーします。これを使用して、Azure Active Directory アプリケーションを構成します。
 
-3. [Azure の管理ポータル]にサインインして、**Active Directory** に移動します。
+3. [Microsoft Azure 管理ポータル]にサインインして、**Active Directory** に移動します。
 
     ![][2]
 
@@ -79,9 +82,7 @@
 
 ### <a name="secrets"> </a>Azure Active Directory の情報をアプリケーションに追加する
 
-
-	> [AZURE.NOTE]
-	If using the App Service Gateway, ignore this section and instead navigate to your gateway in the portal. Select **Settings**, **Identity**, and then **Azure Active Directory**. Paste in the ClientID and add the tenant ID to the **Allowed Tenants** list. Click **Save**.
+> [AZURE.NOTE]App Service ゲートウェイを使用する場合は、このセクションの内容は無視し、ポータル内で目的のゲートウェイに移動します。**[設定]**、**[ID]**、**[Azure Active Directory]** の順に選択します。ClientID に貼り付け、テナント ID を **[許可されているテナント]** リストに追加します。**[保存]** をクリックします。
 
 
 13. [プレビュー段階の Microsoft Azure 管理ポータル]に戻り、アプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックします。
@@ -92,7 +93,9 @@
 
     ![][1]
 	
-16. 既定では、App Service はログインを提供しますが、サイトのコンテンツと API へのアクセスは制限されません。これはアプリケーション コードで行います。Azure Active Directory ログインによってサイトを完全に保護する場合は、**[要求が認証されていないときに実行するアクション]** ドロップダウンを変更して **[Azure Active Directory]** を使用します。これにより、すべての要求を認証することが必要になります。認証されていない要求は、Azure Active Directory を使用したログインにリダイレクトされます。
+	App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。アプリケーション コードでユーザーを承認する必要があります。
+
+17. (省略可能) サイトに対するアクセスを、Azure Active Directory で認証されたユーザーに限定するには、**[要求が認証されていないときに実行するアクション]** を **[Azure Active Directory]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Azure Active Directory にリダイレクトされます。
 
 17. **[保存]** をクリックします。
 
@@ -112,9 +115,8 @@
 <!-- URLs. -->
 
 [プレビュー段階の Microsoft Azure 管理ポータル]: https://portal.azure.com/
-[Azure の管理ポータル]: https://manage.windowsazure.com/
 [Microsoft Azure 管理ポータル]: https://manage.windowsazure.com/
 [ios-adal]: ../app-service-mobile-xamarin-ios-aad-sso.md
-[alternative method]: #advanced
+[別の方法]: #advanced
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

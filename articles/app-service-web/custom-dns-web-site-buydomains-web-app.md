@@ -4,7 +4,7 @@
 	description="Azure App Service の Web アプリでカスタム ドメイン名を購入する方法について説明します。"
 	services="app-service\web"
 	documentationCenter=""
-	authors="MikeWasson"
+	authors="rmcmurray"
 	manager="wpickett"
 	editor=""/>
 
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/31/2015"
-	ms.author="mwasson"/>
+	ms.date="11/20/2015"
+	ms.author="robmcm"/>
 
 # Azure App Service でのカスタム ドメイン名の購入と構成
 
@@ -46,7 +46,7 @@ Web アプリのドメイン名を持っていない場合は、[Microsoft Azure
 
 次の手順を使用してドメイン名を購入し、Web アプリに割り当てます。
 
-1. ブラウザーで、[Azure の管理ポータル](https://portal.azure.com)を開きます。
+1. ブラウザーで、[Microsoft Azure の管理ポータル](https://portal.azure.com)を開きます。
 
 2. **[Web Apps]** タブで、Web アプリの名前をクリックし、**[設定]**、**[カスタム ドメインと SSL]** の順に選択します。
 
@@ -87,15 +87,15 @@ Web アプリのドメイン名を持っていない場合は、[Microsoft Azure
 
   ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-5.png)
 
-8. ドメインを正常に購入した場合は、ドメインを管理し、Web アプリに割り当てることができます。ドメインの右側にある **[...]** をクリックします。**[購入をキャンセル]** または **[ドメインの管理]** を選択できます。**[ドメインの管理]** をクリックし、**[ドメインの管理]** ブレードで **[サブドメイン]** を Web アプリにバインドします。**[サブドメイン]** を別の Web アプリにバインドする場合は、それぞれの Web アプリのコンテキスト内からこの手順を実行します。ここでは、ドロップ ダウン メニューから Traffic Manager の名前を選択するだけで、ドメインを Traffic Manager エンドポイントに割り当てることができます (Web アプリが TM の背後にある場合)。これにより、ドメインとサブドメインは、Traffic Manager エンドポイントの背後にあるすべての Web アプリに自動的に割り当てられます。 
+8. ドメインを正常に購入した場合は、ドメインを管理し、Web アプリに割り当てることができます。ドメインの右側にある **[...]** をクリックします。**[購入をキャンセル]** または **[ドメインの管理]** を選択できます。**[ドメインの管理]** をクリックし、**[ドメインの管理]** ブレードで **[サブドメイン]** を Web アプリにバインドします。**[サブドメイン]** を別の Web アプリにバインドする場合は、それぞれの Web App のコンテキスト内からこの手順を実行します。ここでは、ドロップ ダウン メニューから Traffic Manager の名前を選択するだけで、ドメインを Traffic Manager エンドポイントに割り当てることができます (Web App が TM の背後にある場合)。これにより、ドメインとサブドメインは、Traffic Manager エンドポイントの背後にあるすべての Web Apps に自動的に割り当てられます。 
 
 	![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-6.png)
 
 > [AZURE.NOTE]5 日以内であれば全額返金を受けて "購入をキャンセル" できます。5 日を経過すると "購入をキャンセル" できなくなり、ドメインを "削除" するオプションが表示されます。ドメインを削除すると、返金されずにサブスクリプションが解除され、このドメインは使用可能なドメインになります。
 
-	Once configuration has completed, the custom domain name will be listed in the **Hostname bindings** section of your web app.
+構成が完了すると、カスタム ドメイン名が Web アプリの **[ホスト名のバインド]** セクションに表示されます。
 
 この時点でブラウザーにカスタム ドメイン名を入力して、対象の Web アプリに正常にアクセスできることを確認できます。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

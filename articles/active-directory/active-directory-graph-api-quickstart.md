@@ -15,21 +15,23 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="08/24/2015"
+      ms.date="11/17/2015"
       ms.author="v-jibran@microsoft.com"/>
 
 # Azure AD Graph API のクイック スタート
 
-Azure Active Directory (AD) Graph API を使用すると、OData REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。アプリケーションでは、Graph API を使用して、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。たとえば、Graph API を使用して、新しいユーザーの作成、ユーザーのプロパティの表示または更新、ユーザーのパスワードの変更、ロールベースでアクセスするためのグループ メンバーシップの確認、ユーザーの無効化または削除を行うことができます。Graph API の機能とアプリケーション シナリオの詳細については、「[Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」と「[Azure AD Graph API の前提条件](https://msdn.microsoft.com/library/azure/hh974464.aspx)」を参照してください。
+Azure Active Directory (AD) Graph API を使用すると、OData REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。アプリケーションでは、Graph API を使用して、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。たとえば、Graph API を使用して、新しいユーザーの作成、ユーザーのプロパティの表示または更新、ユーザーのパスワードの変更、ロールベースでアクセスするためのグループ メンバーシップの確認、ユーザーの無効化または削除を行うことができます。Graph API の機能とアプリケーション シナリオの詳細については、「[Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」と[「Azure AD Graph API の前提条件」](https://msdn.microsoft.com/ja-JP/library/hh974476(Azure.100).aspx)) を参照してください。
+
+> [AZURE.IMPORTANT]Azure AD Graph API の機能は、[Microsoft Graph](https://graph.microsoft.io/) からも利用できます。Microsoft Graph は、Outlook、OneDrive、OneNote、Planner、Office Graph などの他の Microsoft サービスからの API を含む統合 API であり、単一のエンドポイントから単一のアクセス トークンを使用してアクセスできます。
 
 ## Graph API URL の作成方法
 
 Graph API では、CRUD 操作を実行するディレクトリのデータとオブジェクト (つまり、リソースまたはエンティティ) にアクセスするために、Open Data (OData) プロトコルに基づく URL を使用できます。Graph API で使用される URL は、4 つの主要部分で構成されます。主要部分は、サービス ルート、テナント ID、リソース パス、およびクエリ文字列オプション (https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]) です。`https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`次の URL の例を使用して説明します。`https://graph.windows.net/contoso.com/groups?api-version=1.5`
 
 - **サービス ルート**: Azure AD Graph API では、サービス ルートは常に https://graph.windows.net です。
-- **テナント ID**: 確認済み (登録済み) のドメイン名を指定できます。上記の例では contoso.com です。テナント オブジェクト ID またはエイリアス ("myorganiztion" または "me") を指定することもできます。詳細については、「[Graph API のエンティティと操作のアドレス指定](https://msdn.microsoft.com/library/azure/dn424880.aspx)」を参照してください。
+- **テナント ID**: 確認済み (登録済み) のドメイン名を指定できます。上記の例では contoso.com です。テナント オブジェクト ID またはエイリアス ("myorganiztion" または "me") を指定することもできます。詳細については、「[Graph API のエンティティと操作のアドレス指定](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)」を参照してください。
 - **リソース パス**: URL のこのセクションは、対話するリソース (ユーザー、グループ、特定のユーザー、特定のグループなど) を識別します。 上記の例では、リソース セットのアドレスを指定する最上位の "groups" です。特定のエンティティ ("users/{objectId}" や "users/userPrincipalName" など) のアドレスを指定することもできます。
-- **クエリ パラメーター**: リソース パス セクションとクエリ パラメーター セクションは ? で区切られます。Graph API ではすべての要求に "api-version" クエリ パラメーターが必要です。Graph API では、次の OData クエリ オプションもサポートします。**$filter**、**$orderby**、**$expand**、**$top**、および **$format**。次のクエリ オプションは現在サポートされていません。**$count**、**$inlinecount**、および **$skip**。詳細については、「[Azure AD Graph API でサポートされているクエリ、フィルター、およびページング オプション](https://msdn.microsoft.com/library/azure/dn727074.aspx)」を参照してください。
+- **クエリ パラメーター**: リソース パス セクションとクエリ パラメーター セクションは ? で区切られます。Graph API ではすべての要求に "api-version" クエリ パラメーターが必要です。Graph API では、次の OData クエリ オプションもサポートします。**$filter**、**$orderby**、**$expand**、**$top**、および **$format**。次のクエリ オプションは現在サポートされていません。**$count**、**$inlinecount**、および **$skip**。詳細については、「[Azure AD Graph API でサポートされているクエリ、フィルター、およびページング オプション](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options)」を参照してください。
 
 ## Graph API のバージョン
 
@@ -40,7 +42,7 @@ Graph API では、CRUD 操作を実行するディレクトリのデータと�
 * バージョン 2013-11-08
 * バージョン 2013-04-05
 
-“api-version” クエリ パラメーターに、Graph API 要求用のバージョンを指定します。バージョン 1.5 の場合は、バージョン値を使用します (api-version=1.5) 。以前のバージョンでは、YYYY-MM-DD の形式に準拠した日付文字列を使用します (例: api-version=2013-11-08)。機能をプレビューする場合は文字列 “beta” を使用します (例: api-version=beta)。Graph API のバージョン間の相違点の詳細については、「[Azure AD Graph API のバージョン](https://msdn.microsoft.com/library/azure/dn835125.aspx)」を参照してください。
+“api-version” クエリ パラメーターに、Graph API 要求用のバージョンを指定します。バージョン 1.5 の場合は、バージョン値を使用します (api-version=1.5) 。以前のバージョンでは、YYYY-MM-DD の形式に準拠した日付文字列を使用します (例: api-version=2013-11-08)。機能をプレビューする場合は文字列 “beta” を使用します (例: api-version=beta)。Graph API のバージョン間の相違点の詳細については、「[Azure AD Graph API のバージョン](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning)」を参照してください。
 
 ## Graph API のメタデータ
 
@@ -48,7 +50,7 @@ Graph API メタデータ ファイルが返るようにするには、URL の t
 
 ## 一般的なクエリ
 
-「[Azure AD Graph API の一般的なクエリ](https://msdn.microsoft.com/library/azure/jj126255.aspx)」に、Azure AD Graph で使用できる一般的なクエリの一覧が示されています。一般的なクエリには、ディレクトリ内の最上位リソースにアクセスするために使用できるクエリと、ディレクトリで操作を実行するためのクエリがあります。
+「[Azure AD Graph API の一般的なクエリ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options#CommonQueries)」に、Azure AD Graph で使用できる一般的なクエリの一覧が示されています。一般的なクエリには、ディレクトリ内の最上位リソースにアクセスするために使用できるクエリと、ディレクトリで操作を実行するためのクエリがあります。
 
 たとえば、`https://graph.windows.net/contoso.com/tenantDetails?api-version=1.5` は、contoso.com ディレクトリの会社情報が返ります。
 
@@ -89,7 +91,7 @@ Graph Explorer の次の機能と制限事項に注意してください。 - �
 **クエリを構成して実行する**: 次の手順を完了します。
 
 1. Fiddler Web Debugger を開き、**[Composer]** タブに切り替えます。
-2. 新しいセキュリティ グループを作成するため、プルダウン メニューから HTTP メソッドとして **[Post]** を選択します。グループ オブジェクトに対する操作と権限の詳細については、「[Azure AD Graph REST API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」の「[グループ](https://msdn.microsoft.com/library/azure/hh974486.aspx)」を参照してください。
+2. 新しいセキュリティ グループを作成するため、プルダウン メニューから HTTP メソッドとして **[Post]** を選択します。グループ オブジェクトに対する操作と権限の詳細については、「[Azure AD Graph REST API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」の「[グループ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#GroupEntity)」を参照してください。
 3. **[Post]** の横にあるフィールドに、要求 URL として次のように入力します。`https://graph.windows.net/mytenantdomain/groups?api-version=1.5`
 
     > [AZURE.NOTE]mytenantdomain は、各自の Azure AD ディレクトリのドメイン名に置き換える必要があります。
@@ -115,7 +117,7 @@ Content-Type: application/json
         }
 ```
 
-    グループ作成の詳細については、「[グループの作成](https://msdn.microsoft.com/library/azure/dn151614.aspx)」を参照してください。
+    グループ作成の詳細については、「[グループの作成](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#CreateGroup)」を参照してください。
 
 Graph によって公開される Azure AD エンティティと型の詳細と、それらに対して Graph を使用して実行できる操作に関する情報については、「[Azure AD Graph REST API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」を参照してください。
 
@@ -123,4 +125,4 @@ Graph によって公開される Azure AD エンティティと型の詳細と�
 
 [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) の詳細
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

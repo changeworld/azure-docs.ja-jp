@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/17/2015" 
+	ms.date="11/19/2015" 
 	ms.author="billmath"/>
 
 # RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server
@@ -59,4 +59,4 @@ Azure Multi-Factor Authentication Server は、RD ゲートウェイと NPS 間�
 
 ![RADIUS 認証](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

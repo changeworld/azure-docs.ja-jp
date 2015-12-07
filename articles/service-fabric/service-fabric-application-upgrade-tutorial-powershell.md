@@ -60,7 +60,7 @@ VisualObjects ソリューション内の VisualObjects.ActorService プロジ�
 ```
 
 
-次に、Visual Studio で **ActorService** プロジェクトのみを選択し、右クリックしてビルドを選択することによりプロジェクトをビルドします ([すべてリビルド] を選択した場合、コードが変更されることになる可能性があり、その場合は *ServiceManifest.xml* ファイルと *ApplicationManifest.xml* ファイルの **VisualObjects.WebService** プロジェクトと **VisualObjects.Common" プロジェクトのバージョンも更新する必要があります)。*VisualObjectsApplication* を右クリックし、[Service Fabric のメニュー]、[パッケージ] の順に選択して、更新されたアプリケーションをパッケージ化しましょう。デプロイ可能なアプリケーション パッケージが作成されます。これで、更新されたアプリケーションをデプロイする準備は完了です。
+次に、Visual Studio で **ActorService** プロジェクトを選択し、右クリックしてビルドを選択することによりプロジェクトをビルドします ([すべてリビルド] を選択した場合、コードが変更されることになる可能性があり、その場合は *ServiceManifest.xml* ファイルと *ApplicationManifest.xml* ファイルのその他のプロジェクトのバージョンも更新する必要があります)。*VisualObjectsApplication* を右クリックし、[Service Fabric のメニュー]、[パッケージ] の順に選択して、更新されたアプリケーションをパッケージ化しましょう。デプロイ可能なアプリケーション パッケージが作成されます。これで、更新されたアプリケーションをデプロイする準備は完了です。
 
 
 ## 手順 3: 正常性ポリシーとアップグレード パラメーターの決定
@@ -125,4 +125,4 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

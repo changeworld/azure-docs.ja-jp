@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="powershell"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="11/24/2015"
 	ms.author="coreyp"/>
 
 # Azure PowerShell のインストールおよび構成方法#
 
 <div class="dev-center-tutorial-selector sublanding"><a href="/manage/install-and-configure-windows-powershell/" title="PowerShell" class="current">PowerShell</a><a href="/manage/install-and-configure-cli/" title="Azure CLI">Azure CLI</a></div>
-
-> [AZURE.NOTE]**Azure PowerShell 1.0 Preview** は、現在、[PowerShell ギャラリー](http://www.powershellgallery.com/)で入手できます。このプレビューでは多くの変更が行われているので、フィードバックをお寄せいただきたいと思っています。ご意見は Azure PowerShell 1.0 に取り入れます。**このプレビューは、ミッション クリティカルなアプリケーションでの使用は想定していません**。そのようなアプリケーションを実行している場合は、引き続き、Azure PowerShell 0.9.8 を使用してください。1.0 Preview を使用する場合は、任意の時点でアンインストールして、0.9.8 に戻すことができます。完全なインストール手順については、この[ブログの投稿](https://azure.microsoft.com/JA-JP/blog/azps-1-0-pre/)を参照してください。
 
 Windows PowerShell を使用して、Azure でさまざまなタスクを実行できます。Windows PowerShell は、コマンド プロンプトで対話形式によって操作する方法でも、スクリプトで自動的に処理する方法でも使用できます。Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、デプロイ、管理できます。ほとんどの場合、このコマンドレットを使用して、Azure 管理ポータルで実行できるタスクと同じタスクを実行できます。たとえば、クラウド サービス、仮想マシン、仮想ネットワーク、Web アプリを作成および構成できます。
 
@@ -262,4 +260,4 @@ Azure や Windows PowerShell の使用方法を学習するためのリソース
 
   [Microsoft Online Services Customer Portal]: https://mocp.microsoftonline.com/site/default.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

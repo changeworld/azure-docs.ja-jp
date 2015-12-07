@@ -12,10 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="storage"
-   ms.date="09/27/2015"
+   ms.date="11/17/2015"
    ms.author="tamram" />
 
 # Azure Storage のスケーラビリティおよびパフォーマンスのターゲット
+
+## 概要
 
 このトピックでは、Microsoft Azure Storage のスケーラビリティとパフォーマンスについて説明します。その他の Azure の制約に関する概要は、「[Azure サブスクリプションとサービスの制限、クォータ、および制約](../azure-subscription-service-limits.md)」を参照してください。
 
@@ -29,15 +31,26 @@
 
 アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合、複数のストレージ アカウントを使用し、それらのストレージ アカウント間でデータが分割されるようにアプリケーションを構築できます。ボリューム ディスカウント料金の詳細については、「[Azure Storage 料金](http://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
-## 標準的なストレージ アカウントのスケーラビリティ ターゲット
+
+## Blob、キュー、テーブル、およびファイルのスケーラビリティ ターゲット
 
 [AZURE.INCLUDE [azure-storage-limits](../../includes/azure-storage-limits.md)]
 
-## Premium Storage アカウントのスケーラビリティ ターゲット
+## 仮想マシンのディスクのスケーラビリティ ターゲット 
 
-[AZURE.INCLUDE [azure-storage-limits-premium-storage](../../includes/azure-storage-limits-premium-storage.md)]
+[AZURE.INCLUDE [azure-storage-limits-vm-disks](../../includes/azure-storage-limits-vm-disks.md)]
 
-## Storage の制限 - Azure リソース マネージャー
+その他の詳細については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-size-specs.md)」を参照してください。
+
+### Standard Storage アカウント
+
+[AZURE.INCLUDE [azure-storage-limits-vm-disks-standard](../../includes/azure-storage-limits-vm-disks-standard.md)]
+
+### Premium Storage アカウント
+
+[AZURE.INCLUDE [azure-storage-limits-vm-disks-premium](../../includes/azure-storage-limits-vm-disks-premium.md)]
+
+## Azure リソース マネージャーのスケーラビリティ ターゲット
 
 [AZURE.INCLUDE [azure-storage-limits-azure-resource-manager](../../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -68,12 +81,8 @@ Azure Storage に格納されているデータを含むすべてのオブジェ
 - [Storage の料金詳細](http://azure.microsoft.com/pricing/details/storage/)
 - [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)
 - [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal/)
-- [Azure ストレージのレプリケーション](storage-redundancy.md)
+- [Azure Storage のレプリケーション](storage-redundancy.md)
 - [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](storage-performance-checklist.md)
 - [Microsoft Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-
-
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -24,7 +24,7 @@ Windows ベースの Azure 仮想マシンに接続しようとしたときに�
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-この記事は、Windows を実行する Azure 仮想マシンにのみ適用されます。Linux を実行する Azure 仮想マシンの場合は、「[Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-troubleshoot-ssh-connections.md)」を参照してください。
+この記事は、Windows を実行する Azure Virtual Machines にのみ適用されます。Linux を実行する Azure Virtual Machines の場合は、「[Linux ベースの Azure Virtual Machines に対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-troubleshoot-ssh-connections.md)」を参照してください。
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
 
@@ -34,7 +34,7 @@ Windows ベースの Azure 仮想マシンに接続しようとしたときに�
 
 これらの基本手順を使用すると、クラシック デプロイメント モデルを使用して作成された仮想マシンのリモート デスクトップ接続に関する一般的なエラーをほとんど解決できます。各手順を実行した後、仮想マシンに再接続してみてください。
 
-- RDP サーバーでの起動の問題を解決するには、[Azure ポータル](https://portal.azure.com)からリモート デスクトップ サービスをリセットします。<br> [すべて参照]、[仮想マシン (クラシック)]、ご使用の Windows 仮想マシン、**[リモート アクセスのリセット]** の順にクリックします。
+- RDP サーバーでの起動の問題を解決するには、[Azure プレビュー ポータル](https://portal.azure.com)からリモート デスクトップ サービスをリセットします。<br> [すべて参照]、[仮想マシン (クラシック)]、ご使用の Windows 仮想マシン、**[リモート アクセスのリセット]** の順にクリックします。
 
     ![RDP 構成のリセットを示すスクリーンショット](./media/virtual-machines-troubleshoot-remote-desktop-connections/Portal-RDP-Reset-Windows.png)
 
@@ -89,7 +89,7 @@ Azure 仮想マシンに Remote Desktop 接続しようとしたときに発生�
 
 原因: リモート デスクトップ サーバー ロールの 120 日間のライセンス有効期限が切れているため、ライセンスをインストールする必要がある。
 
-回避策として、Azure ポータルから RDP ファイルのローカル コピーを保存し、Windows PowerShell コマンド プロンプトで次のコマンドを実行して接続します。
+回避策として、ポータルから RDP ファイルのローカル コピーを保存し、Windows PowerShell コマンド プロンプトで次のコマンドを実行して接続します。
 
 		mstsc <File name>.RDP /admin
 
@@ -107,7 +107,7 @@ Azure 仮想マシンに Remote Desktop 接続しようとしたときに発生�
 考えられる解決策:
 
 - 組織のイントラネットを使用している場合は、コンピューターからプロキシ サーバーにアクセスでき、そのサーバーに HTTPS トラフィックを送信できることを確認してください。
-- ローカルに保存した RDP ファイルを使用している場合は、Azure ポータルで生成されたファイルを試してください。仮想マシンまたはクラウド サービスの適切な DNS 名と、仮想マシンのエンドポイント ポートが使用されます。Azure ポータルで生成される RDP ファイルの例を次に示します。
+- ローカルに保存した RDP ファイルを使用している場合は、ポータルで生成されたファイルを試してください。仮想マシンまたはクラウド サービスの適切な DNS 名と、仮想マシンのエンドポイント ポートが使用されます。ポータルで生成される RDP ファイルの例を次に示します。
 
 		full address:s:tailspin-azdatatier.cloudapp.net:55919
 		prompt for credentials:i:1
@@ -169,4 +169,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

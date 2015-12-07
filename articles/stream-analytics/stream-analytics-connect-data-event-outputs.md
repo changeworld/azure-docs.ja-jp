@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Stream Analytics 出力の作成 | Microsoft Azure" 
+	pageTitle="Stream Analytics 出力の接続 | Microsoft Azure" 
 	description="Stream Analytics ソリューションの出力ターゲットに接続して構成する方法について説明します。" 
 	documentationCenter="" 
 	services="stream-analytics"
@@ -16,7 +16,7 @@
 	ms.date="11/06/2015" 
 	ms.author="jeffstok"/>
 
-# Stream Analytics 出力の作成
+# Stream Analytics の出力ターゲットの接続
 
 ## Stream Analytics 出力について ##
 ---
@@ -90,7 +90,7 @@ BLOB ストレージへの出力を選択します。
 ---
 ### 概要 ###
  
-イベント ハブは、拡張性の高いイベント インジェスターで、通常、Stream Analytics データ受信の最も一般的な方法です。また、多数のイベントを確実に処理できるため、完璧なジョブ出力でもあります。Event Hub を出力として使用する一例として、Stream Analytics ジョブの出力が別のストリーミング ジョブの入力となる場合があります。Event Hubs の詳細については、[Event Hubs](https://azure.microsoft.com/services/event-hubs/ "Event Hubs") のポータルにアクセスしてください。
+Event Hubs は、拡張性の高いイベント インジェスターで、通常、Stream Analytics データ受信の最も一般的な方法です。また、多数のイベントを確実に処理できるため、完璧なジョブ出力でもあります。Event Hub を出力として使用する一例として、Stream Analytics ジョブの出力が別のストリーミング ジョブの入力となる場合があります。Event Hubs の詳細については、[Event Hubs](https://azure.microsoft.com/services/event-hubs/ "Event Hubs") のポータルにアクセスしてください。
  
 ### パラメーター ###
 
@@ -199,7 +199,7 @@ Azure Storage アカウントが、ジョブの作成に使用されているも
 ### Service Bus キューの概念の概要 ###
 Service Bus キューでは、コンシューマーが競合している場合のメッセージ配信に先入先出法 (FIFO) を使用します。通常、メッセージはキューに追加された順番に受信され、処理されます。このとき、メッセージを受信して処理できるメッセージ コンシューマーは、メッセージ 1 件につき 1 つだけです。
 
-Service Bus キューの詳細については、[サービス バス キュー、トピック、およびサブスクリプション](https://msdn.microsoft.com/library/azure/hh367516.aspx "サービス バス キュー、トピック、およびサブスクリプション")および[Service Bus キューの概要](http://blogs.msdn.com/b/appfabric/archive/2011/05/17/an-introduction-to-service-bus-queues.aspx "Service Bus キューの概要")をご覧ください。
+Service Bus キューの詳細については、[サービス バス キュー、トピック、およびサブスクリプション](https://msdn.microsoft.com/library/azure/hh367516.aspx "Service Bus キュー、トピック、およびサブスクリプション")および[Service Bus キューの概要](http://blogs.msdn.com/b/appfabric/archive/2011/05/17/an-introduction-to-service-bus-queues.aspx "Service Bus キューの概要")をご覧ください。
 
 ### パラメーター ###
 
@@ -227,7 +227,7 @@ Service Bus キューを使用するには、次の情報が必要です。
 ### Service Bus トピックの概念の概要 ###
 Service Bus キューには、送信者から受信者への 1 対 1 の通信メソッドが備わっていますが、Service Bus トピックでは 1 対多の形式の通信を行うことができます。
 
-Service Bus トピックの詳細については、「[Service Bus のキュー、トピック、サブスクリプション](https://msdn.microsoft.com/library/azure/hh367516.aspx "サービス バス キュー、トピック、およびサブスクリプション")」および「[An Introduction to Service Bus Topics (Service Bus トピックの概要)](http://blogs.msdn.com/b/appfabric/archive/2011/05/25/an-introduction-to-service-bus-topics.aspx "Service Bus トピックの概要")」をご覧ください。
+Service Bus トピックの詳細については、「[Service Bus のキュー、トピック、サブスクリプション](https://msdn.microsoft.com/library/azure/hh367516.aspx "Service Bus キュー、トピック、およびサブスクリプション")」および「[An Introduction to Service Bus Topics (Service Bus トピックの概要)](http://blogs.msdn.com/b/appfabric/archive/2011/05/25/an-introduction-to-service-bus-topics.aspx "Service Bus トピックの概要")」をご覧ください。
 
 ### パラメーター ###
 
@@ -306,4 +306,4 @@ Service Bus トピックへの出力を選択します。
 [graphic37]: ./media/stream-analytics-connect-data-event-outputs/37-stream-analytics-connect-data-event-input-output.png
 [graphic38]: ./media/stream-analytics-connect-data-event-outputs/38-stream-analytics-connect-data-event-input-output.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

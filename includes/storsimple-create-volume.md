@@ -12,12 +12,12 @@
 
         ![Add volume](./media/storsimple-create-volume/AddVolume1-include.png)
 
-3. **[追加設定]** ダイアログ ボックスで、新しい Access Control レコード (ACR) を追加します。
+3. **[追加設定]** ページで、新しい Access Control レコード (ACR) を追加します。
    1. ACR の **[名前]** を入力します。
    2. **[ISCSI イニシエーターの名前]** に Windows ホストの iSCSI 修飾名 (IQN) を指定します。IQN がない場合は、「[Windows Server ホストの IQN の取得](#get-the-iqn-of-a-windows-server-host)」を参照してください。
    3. **[このボリュームの既定のバックアップの有効化]** チェックボックスをオンにして、既定のバックアップを有効にすることをお勧めします。既定のバックアップでは、毎日 22:30 (デバイスの時刻) に実行し、このボリュームのクラウド スナップショットを作成するというポリシーが作成されます。
 
-        > [AZURE.NOTE] After the backup is enabled here, it cannot be reverted. You will need to edit the volume to modify this setting.
+        > [AZURE.NOTE] ここでバックアップを有効にすると、元に戻すことはできません。この設定を変更するには、このボリュームを編集する必要があります。
 
         ![Add volume](./media/storsimple-create-volume/AddVolume2-include.png)
 
@@ -27,4 +27,4 @@
 
 StorSimple ボリュームの作成方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/create-a-storsimple-volume/)を参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

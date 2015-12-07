@@ -53,7 +53,7 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 
 まだ Azure アカウントがない場合は、「[1 か月間の無料試用版](http://azure.microsoft.com/pricing/free-trial/)」から無料試用版にサインアップしてください。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
-> [AZURE.NOTE]Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure 仮想マシンを実行するコストの詳細については、[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 価格計算ツール](http://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
+> [AZURE.NOTE]Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure Virtual Machines を実行するコストの詳細については、[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 価格計算ツール](http://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
 
 ## フェーズ 1: 仮想ネットワークを作成する
 
@@ -68,9 +68,9 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 7.	Corpnet サブネットの **[CIDR (アドレス数)]** 列で、**[/24 (256)]** をクリックします。
 8.	[完了] アイコンをクリックします。仮想ネットワークが作成されるまで待ってから、次に進みます。
 
-次に、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします。Azure PowerShell コマンド プロンプトを開きます。
+次に、[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)に関するページに記載されている手順に従って、ローカル コンピューターに Azure PowerShell をインストールしますAzure PowerShell コマンド プロンプトを開きます。
 
-まず以下のコマンドで、適切な Azure サブスクリプションを選択します。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
+まず以下のコマンドで、適切な Azure サブスクリプションを選択します。引用符内のすべての文字 (< and > を含む) を正しい名前に置き換えます。
 
 	$subscr="<Subscription name>"
 	Select-AzureSubscription -SubscriptionName $subscr –Current
@@ -126,7 +126,7 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 
 続けて、DC1 仮想マシンに接続します。
 
-1.	Microsoft Azure 管理ポータルの左側のウィンドウで **[Virtual Machines]** をクリックし、DC1 仮想マシンの **[状態]** 列で **[開始済み]** をクリックします。  
+1.	Azure ポータルの左側のウィンドウで **[Virtual Machines]** をクリックし、DC1 仮想マシンの **[状態]** 列で **[開始済み]** をクリックします。  
 2.	タスク バーで、**[接続]** をクリックします。
 3.	DC1.rdp を開くように求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
@@ -146,7 +146,7 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 7.	[ドライブ文字またはフォルダーへの割り当て] ページで、**[次へ]** をクリックします。
 8.	[ファイル システム形式の選択] ページで、**[次へ]** をクリックします。
 9.	[選択内容の確認] ページで、**[作成]** をクリックします。
-10.	完了したら、**[閉じる]** をクリックします。
+10.	作成されたら、**[閉じる]** をクリックします。
 
 次に、corp.contoso.com ドメインのドメイン コントローラー兼 DNS サーバーとして DC1 を構成します。管理者レベルの Windows PowerShell コマンド プロンプトで以下のコマンドを実行します。
 
@@ -155,7 +155,7 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 
 DC1 を再起動した後、DC1 の仮想マシンに再接続します。
 
-1.	Microsoft Azure 管理ポータルの [Virtual Machines] ページで、DC1 仮想マシンの **[状態]** 列の **[実行中]** をクリックします。
+1.	Azure ポータルの [Virtual Machines] ページで、DC1 仮想マシンの **[状態]** 列の **[実行中]** をクリックします。
 2.	タスク バーで、**[接続]** をクリックします。
 3.	DC1.rdp を開くように求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
@@ -288,4 +288,4 @@ Azure PowerShell で順に仮想マシンを起動するには、クラウド �
 	Start-AzureVM -ServiceName $serviceName -Name "APP1"
 	Start-AzureVM -ServiceName $serviceName -Name "CLIENT1"
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

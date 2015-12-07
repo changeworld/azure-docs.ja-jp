@@ -14,12 +14,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="multiple"
-	ms.date="08/26/2015"
-	ms.author="davidmu"/>
+	ms.date="11/18/2015"
+	ms.author="davidmu;marsma"/>
 
 # Azure Batch プール内のコンピューティング ノードの自動スケール
 
-Azure Batch プール内のコンピューティング ノードの自動スケールは、アプリケーションによって使用される処理能力を動的に調整します。この調整のしやすさによって、時間と費用を節約できます。コンピューティング ノードとプールの詳細については、[Azure Batch の技術概要](batch-technical-overview.md)をご覧ください。
+Azure Batch プール内のコンピューティング ノードの自動スケールは、アプリケーションによって使用される処理能力を動的に調整します。この調整のしやすさによって、時間と費用を節約できます。コンピューティング ノードとプールの詳細については、「[Azure Batch の技術概要](batch-technical-overview.md)」を参照してください。
 
 自動スケールがプールで有効になっていて、プールに数式が関連付けられている場合に自動スケールが行われます。数式は、アプリケーションの処理に必要なコンピューティング ノードの数を決定するために使用されます。定期的に収集されるサンプル上で動作する場合、プール内の利用可能なコンピューティング ノードの数は、関連付けられている数式に基づいて 15 分ごとに調整されます。
 
@@ -336,15 +336,15 @@ Azure Batch プール内のコンピューティング ノードの自動スケ�
 
 上記の表に示した一部の関数は、リストを引数として受け入れることができます。コンマ区切りのリストは、*double* と *doubleVec* の任意の組み合わせです。次に例を示します。
 
-	doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?
+`doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
-*doubleVecList* 値は、評価の前に 1 つの *doubleVec* に変換されます。たとえば、v = [1,2,3] の場合、avg(v) の呼び出しは avg(1,2,3) の呼び出しに相当し、avg (v, 7) の呼び出しは avg(1,2,3,7) の呼び出しに相当します。
+*doubleVecList* 値は、評価の前に 1 つの *doubleVec* に変換されます。たとえば、`v = [1,2,3]` の場合、`avg(v)` の呼び出しは `avg(1,2,3)` の呼び出しに相当し、`avg(v, 7)` の呼び出しは `avg(1,2,3,7)` の呼び出しに相当します。
 
 ### サンプル データの取得
 
 上記のシステム定義の変数は、関連付けられたデータにアクセスするメソッドを提供するオブジェクトです。たとえば、次の式は、最後の 5 分間の CPU 使用率を取得する要求を示しています。
 
-	$CPUPercent.GetSample(TimeInterval_Minute*5)
+`$CPUPercent.GetSample(TimeInterval_Minute * 5)`
 
 次のメソッドを使用して、サンプル データを取得できます。
 
@@ -359,15 +359,17 @@ Azure Batch プール内のコンピューティング ノードの自動スケ�
   </tr>
   <tr>
     <td>GetSample()</td>
-    <td><p>データ サンプルのベクターを返します。次に例を示します。</p>
+    <td><p>データ サンプルのベクターを返します。
+	<p>サンプルは、30 秒相当のメトリック データです。つまり、サンプルは 30 秒ごとに取得されますが、後述のように、サンプルが収集される時間と数式に使用できるようになる時間には遅延があります。そのため、特定の期間に取得されたすべてのサンプルを数式の評価に使用できない可能性があります。
         <ul>
-          <li><p><b>doubleVec GetSample(double count)</b> - 最新のサンプルから必要なサンプル数を指定します。</p>
-				  <p>サンプルは、5 秒間のメトリック データです。GetSample(1) は、使用可能な最後のサンプルを返しますが、このサンプルはいつ収集されたかわからないので、$CPUPercent などのメトリックでは、これを使用しないでください。最新の場合もありますが、システム上の問題が原因でかなり古い可能性があります。次に示すように、期間を使用することをお勧めします。</p></li>
-          <li><p><b>doubleVec GetSample((timestamp | timeinterval) startTime [, double samplePercent])</b> – サンプル データを収集する期間を指定し、必要に応じて、必要な範囲内のサンプルの割合を指定します。</p>
-          <p>$CPUPercent.GetSample(TimeInterval\_Minute*10) は、最後の 10 分間のサンプルがすべて CPUPercent 履歴に存在する場合、200 のサンプルを返す必要があります。最後の 1 分間の履歴がまだ存在していない場合は、180 のサンプルが返されます。</p>
-					<p>$CPUPercent.GetSample(TimeInterval\_Minute*10, 80) は成功し、$CPUPercent.GetSample(TimeInterval_Minute*10,95) は失敗します。</p></li>
+          <li><p><b>doubleVec GetSample(double count)</b> - 最新の収集済みサンプルから取得するサンプル数を指定します。</p>
+				  <p>GetSample(1) は、使用できる最新のサンプルを返します。ただし、$CPUPercent などのメトリックの場合、サンプルが収集された<em>時間</em>がわからないので (最近のサンプルか、システムの問題で古いサンプルかがわかりません)、GetSample を使用できません。このような場合は、次のように期間を使用することをお勧めします。</p></li>
+          <li><p><b>doubleVec GetSample((timestamp | timeinterval) startTime [, double samplePercent])</b> – サンプル データを収集する期間を指定し、必要に応じて、必要な期間内に使用できるサンプルの割合を指定します。</p>
+          <p><em>$CPUPercent.GetSample(TimeInterval_Minute * 10)</em> は、過去 10 分間のサンプルがすべて CPUPercent 履歴に存在する場合、20 個のサンプルを返します。ただし、過去 1 分間の履歴を使用できない場合は、18 個のサンプルのみが返されます。この場合、<br/>
+		  &#160;&#160;&#160;&#160;<em>$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)</em> は失敗します。これは、サンプルの 90% のみが使用可能なためです。<br/>
+		  &#160;&#160;&#160;&#160;<em>$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)</em> の場合は成功します。</p></li>
           <li><p><b>doubleVec GetSample((timestamp | timeinterval) startTime, (timestamp | timeinterval) endTime [, double samplePercent])</b> – 開始時刻と終了時刻の両方を使用してデータを収集する期間を指定します。</p></li></ul>
-		  <p>サンプルを収集してから数式に使用できるようになるまでには、遅延があることに注意してください。これは、GetSample メソッドを使用する場合に考慮する必要があります。以下の GetSamplePercent を参照してください。</td>
+		  <p>前述のように、サンプルが収集される時間と、数式に使用できるようになる時間には遅延があります。<em>GetSample</em> メソッドを使用する場合は、この点を考慮する必要があります。以下の <em>GetSamplePercent</em> を参照してください。</td>
   </tr>
   <tr>
     <td>GetSamplePeriod()</td>
@@ -599,6 +601,32 @@ CPU 使用率が高いときにノードを*増やす*場合、過去 10 分間�
 		// Keep the nodes active until the tasks finish
 		$NodeDeallocationOption = taskcompletion;
 
+### 例 4
+
+次に自動スケールの数式例を示します。この例では、最初の期間はプール サイズを特定のノード数に設定し、最初の期間が経過した後は、実行中のアクティブなタスク数に基づいてプール サイズを調整します。
+
+```
+string now = DateTime.UtcNow.ToString("r");
+string formula = string.Format(@"
+
+	$TargetDedicated = {1};
+	lifespan         = time() - time(""{0}"");
+	span             = TimeInterval_Minute * 60;
+	startup          = TimeInterval_Minute * 10;
+	ratio            = 50;
+
+	$TargetDedicated = (lifespan > startup ? (max($RunningTasks.GetSample(span, ratio), $ActiveTasks.GetSample(span, ratio)) == 0 ? 0 : $TargetDedicated) : {1});
+	", now, 4);
+```
+
+上記のコード スニペットの数式には、次の特徴があります。
+
+- 最初のプール サイズを 4 ノードに設定しています
+- プールのライフサイクルの最初の 10 分間は、プール サイズを調整しません
+- 10 分間が経過した後は、過去 60 分間の実行中でアクティブなタスク数の最大値を取得します。
+  - 両方の値が 0 の場合 (過去 60 分間に実行中またはアクティブなタスクがないことを示します)、プール サイズは 0 に設定されます
+  - いずれかの値が 0 よりも大きい場合は、変更されません
+
 ## 次のステップ
 
 1. アプリケーションの効率を完全に評価するには、コンピューティング ノードにアクセスする必要がある場合があります。リモート アクセスを利用するには、アクセスするノードにユーザー アカウントを追加し、そのノードの RDP ファイルを取得する必要があります。
@@ -612,4 +640,4 @@ CPU 使用率が高いときにノードを*増やす*場合、過去 10 分間�
         * [Get-AzureBatchRDPFile](https://msdn.microsoft.com/library/mt149851.aspx) – この PowerShell コマンドレットは、指定したコンピューティング ノードから RDP ファイルを取得し、指定したファイルの場所やストリームに保存します。
 2.	一部のアプリケーションは、処理するのに困難な大量のデータを生成します。これを解決する 1 つの方法は、[効率的なリスト クエリ](batch-efficient-list-queries.md)を使用することです。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

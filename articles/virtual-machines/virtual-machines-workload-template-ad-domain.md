@@ -1,6 +1,6 @@
 <properties
 	pageTitle="高可用性の Active Directory ドメイン サービス ARM テンプレート | Microsoft Azure"
-	description="リソース マネージャー テンプレートと、Azure プレビュー ポータル、Azure PowerShell、または Azure CLI を使用して Active Directory ドメイン サービスのドメイン コントローラーとして機能する 2 つのサーバーをすばやくデプロイする"
+	description="リソース マネージャー テンプレートと、Azure プレビュー ポータル、Azure PowerShell、または Azure CLI を使用して Active Directory ドメイン サービスのドメイン コントローラーとして機能する 2 つのサーバーを簡単にデプロイします。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="davidmu1"
@@ -108,4 +108,4 @@
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

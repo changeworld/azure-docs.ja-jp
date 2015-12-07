@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/17/2015" 
+	ms.date="11/19/2015" 
 	ms.author="femila"/>
 
 # 組織での Azure AD 参加の設定
@@ -27,7 +27,7 @@ Azure AD 参加を設定する前に、ユーザーのオンプレミスのデ�
 Azure AD にユーザーを手動で作成して管理する方法については、「[Azure AD でのユーザー管理](https://msdn.microsoft.com/library/azure/hh967609.aspx)」を参照してください。
 
 ## デバイスの登録の設定 
-1. Azure ポータルに管理者としてサインインします。
+1. Azure ポータルに管理者としてログオンします。
 2. 左ウィンドウで、[Active Directory] を選択します。
 3. **[ディレクトリ]** タブで、ディレクトリを選択します。
 4. **[構成]** タブをクリックします。
@@ -48,11 +48,10 @@ Azure AD 参加をユーザーが設定できるようにする 3 つのシナ�
 - ユーザーが個人のデバイス上の Windows に仕事用アカウントを追加する。 
 
 ## 追加情報
-
 * [エンタープライズ向け Windows 10: デバイスを仕事に使用する方法](active-directory-azureadjoin-windows10-devices-overview.md)
 * [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-user-upgrade.md)
 * [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -62,7 +62,6 @@ Data Factory エディターを起動するには、Azure データ ファクト
 2. 右側の [エディター キャンバス] 内に、コンピューティングのリンクされたサービスを作成するための JSON テンプレートが表示されます。以下の手順を実行します。
 	1. **オンデマンド HDInsight クラスター**については、次の各プロパティの値を指定します。 
 		1. **clusterSize** プロパティには、Data Factory サービスによって実行時に作成する HDInsight クラスターのサイズを指定します。 
-		2. **jobsContainer** プロパティには、クラスター ログを格納する既定の BLOB コンテナーの名前を指定します。
 		3. **timeToLive** プロパティには、HDInsight クラスターが削除されるまでの許容アイドル時間を指定します。たとえば 00:05:00 と指定すると、アイドル時間の 5 分が経過した後にクラスターが削除されることになります。
 		4. **version** プロパティには、クラスターの HDInsight のバージョンを指定します (既定では Version 3.1)。
 		5. **linkedServiceName** プロパティには、HDInsight クラスターに関連付けられる Azure ストレージのリンクされたサービスを指定します。 
@@ -221,4 +220,4 @@ Data Factory エディターを使用して Azure データ ファクトリを�
 [clone-datafactory-entity]: ./media/data-factory-editor/clone-datafactory-entity.png
 [add-activity-options]: ./media/data-factory-editor/add-activity-options.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

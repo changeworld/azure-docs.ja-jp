@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.date="11/18/2015" 
 	ms.author="awills"/>
 
 # Application Insights でのデータの収集、保持、保存 
@@ -63,6 +63,11 @@ Application Insights SDK およびエージェントは、アプリケーショ�
 
 * [設定]、[クォータと価格] の順に開き、[データ ボリューム] グラフを表示します。
 * または、メトリックス エクスプローラーで、新しいグラフを追加し、**[データ ポイントの量]** メトリックを選択します。[グループ化] を有効にし、**[データの種類]** を選択してグループ化します。
+
+*アプリが送信するデータの量を減らすことができますか。*
+
+* [サンプリング](app-insights-sampling.md)を使用します。このテクノロジは、メトリックや、検索で関連するアイテム間を移動する機能を損なうことなく、データ レートを削減します。
+* 必要のない[テレメトリ コレクターをオフにします](app-insights-configuration-with-applicationinsights-config.md)。
 
 
 #### データはどれだけの期間保持されますか。 
@@ -250,4 +255,4 @@ SDK diagnostics | トレース メッセージまたは例外
 
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -14,10 +14,10 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/06/2015"
+	ms.date="11/23/2015"
 	ms.author="jeffstok"/>
 
-# Stream Analytics 入力について
+# Stream Analytics の入力接続について
 
 Azure Stream Analytics 入力はデータ ソースへの接続として定義されます。Stream Analytics では、ジョブが実行されている Azure サブスクリプションの内外からの Azure ソース Event Hub、IoT Hub および BLOB ストレージとの最上位の統合が行われます。データがそのデータ ソースにプッシュされると、Stream Analytics ジョブによって使用され、リアルタイムで処理されます。入力は 2 つの個別のタイプであるデータ ストリーム入力と参照データ入力に分けられます。
 
@@ -28,7 +28,7 @@ Azure Stream Analytics 入力はデータ ソースへの接続として定義�
 
 [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) はスケーラブルな発行/サブスクライブ イベント インジェスターです。1 秒間に数百万件のイベントを取り込むことができるため、接続されたデバイスとアプリケーションで生成される大量のデータを処理および分析できます。Stream Analytics で最もよく使用される入力の 1 つがこれです。Event Hubs と Stream Analytics を一緒に使用することで、リアルタイム分析用のエンド ツー エンドのソリューションをお客様に提供できます。お客様は、Event Hubs を使用して Azure にイベントをリアルタイムでフィードし、Stream Analytics ジョブでこれらのイベントをリアルタイムで処理することができます。たとえば、お客様は、Web クリック、センサーの読み取り、オンライン ログ イベントを Event Hubs に送信し、リアルタイムのフィルター処理、集計、相関関係に入力データ ストリームとして Event Hubs を使用する Stream Analytics ジョブを作成できます。
 
-Stream Analytics で Event Hubs から返されるイベントの既定のタイムスタンプは、このイベントがイベント ハブに到達したときのタイムスタンプであることに注意することが重要です。このタイムスタンプが EventEnqueuedUtcTime です。イベント ペイロードのタイムスタンプを利用してデータを処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
+Stream Analytics で Event Hubs から返されるイベントの既定のタイムスタンプは、このイベントが Event Hubs に到達したときのタイムスタンプであることに注意することが重要です。このタイムスタンプが EventEnqueuedUtcTime です。イベント ペイロードのタイムスタンプを利用してデータを処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
 
 ## コンシューマー グループ
 
@@ -201,4 +201,4 @@ FROM Input
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

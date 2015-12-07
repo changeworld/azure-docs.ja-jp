@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure ポータルでの VM の FQDN の作成 | Microsoft Azure"
+   pageTitle="Azure プレビュー ポータルでの VM の FQDN の作成 | Microsoft Azure"
    description="Azure プレビュー ポータルで仮想マシンに基づいて、リソース マネージャーの完全修飾ドメイン名 (FQDN) を作成する方法を説明します。"
    services="virtual-machines"
    documentationCenter=""
@@ -54,4 +54,4 @@
 
     この DNS 名を使用して、仮想マシンにリモートで接続できるようになります。たとえば、`SSH adminuser@testdnslabel.eastus.cloudapp.azure.com` を使用して、完全修飾ドメイン名が `testdnslabel.eastus.cloudapp.azure.com` でユーザー名が `adminuser` の Linux 仮想マシンに接続できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

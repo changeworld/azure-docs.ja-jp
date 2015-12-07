@@ -1,6 +1,7 @@
 <properties 
 	pageTitle="認証されたクライアントからの API アプリの呼び出し" 
 	description="Azure Active Directory で認証された Web アプリ クライアントから Azure API アプリを呼び出す方法について説明します。" 
+	keywords="App Service,Azure App Service,認証,Azure Authentication,API,認証 API"
 	services="app-service\api" 
 	documentationCenter=".net" 
 	authors="tdykstra" 
@@ -227,4 +228,4 @@ App Service API Apps のクライアント フローの認証方法は確認し�
 [Azure ポータル]: https://manage.windowsazure.com/
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

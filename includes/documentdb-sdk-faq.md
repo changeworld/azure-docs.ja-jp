@@ -1,23 +1,25 @@
-**1. How will customers be notified of the retiring SDK?**
+**1.SDK の提供終了は顧客にどのような方法で通知されますか。**
 
-Microsoft will provide 12 month advance notification to the end of support of the retiring SDK in order to facilitate a smooth transition to a supported SDK. Further, customers will be notified through various communication channels – Azure Management Portal, Developer Center, blog post, and direct communication to assigned service administrators.
+サポートされる SDK に速やかに移行できるように、提供終了となる SDK のサポート終了は 12 か月前に通知されます。さらに、Microsoft Azure 管理ポータル、デベロッパー センター、ブログ投稿、担当サービス管理者への直接連絡など、さまざまな連絡手段で顧客に通知されます。
 
-**2. Can customers author applications using a "to-be" retired DocumentDB SDK during the 12 month period?** 
+**2.顧客は、その 12 か月間、提供終了「予定」の DocumentDB SDK でアプリケーションを作成できますか。**
 
-Yes, customers will have full access to author, deploy and modify applications using the "to-be" retired DocumentDB SDK during the 12 month grace period. During the 12 month grace period, customers are advised to migrate to a newer supported version of DocumentDB SDK as appropriate.
+はい。顧客には、12 か月の猶予期間中、提供終了「予定」の DocumentDB SDK でアプリケーションを作成し、デプロイし、変更するためのすべてのアクセス権が与えられます。顧客には、この 12 か月の猶予期間中、適宜、新しくサポートされるバージョンの DocumentDB SDK に移行することが推奨されます。
 
-**3. Can customers author and modify applications using a retired DocumentDB SDK after the 12 month notification period?**
+**3.顧客は、12 か月の通知金が過ぎたら、提供終了となった DocumentDB SDK でアプリケーションを作成したり、変更したりすることができますか。**
 
-After the 12 month notification period, the SDK will be retired. Any access to DocumentDB by an applications using a retired SDK will not be permitted by the DocumentDB platform. Further, Microsoft will not provide customer support on the retired SDK.
+12 か月の通知期間後、SDK は提供終了となります。提供終了となった SDK で DocumentDB にアクセスすることは DocumentDB プラットフォームにより禁止されます。さらに、提供終了となった SDK にはカスタマー サポートが提供されません。
 
-**4. What happens to Customer’s running applications that are using unsupported DocumentDB SDK version?**
+**4.顧客が実行しているアプリケーションで、サポートされていないバージョンの DocumentDB SDK が使用されている場合はどうなりますか。**
 
-Any attempts made to connect to the DocumentDB service with a retired SDK version will be rejected. 
+提供終了となったバージョンの SDK で DocumentDB サービスに接続を試みても拒否されます。
 
-**5. Will new features and functionality be applied to all non-retired SDKs**
+**5.新しい機能は、提供終了ではないあらゆる SDK に適用されますか。**
 
-New features and functionality will only be added to new versions. If you are using an old, non-retired, version of the SDK your requests to DocumentDB will still function as previous but you will not have access to any new capabilities.  
+新しい機能は新しいバージョンにのみ追加されます。提供終了ではない古いバージョンの SDK を利用している場合、DocumentDB への要求は以前のように機能しますが、新しい機能にはアクセスできません。
 
-**6. What should I do if I cannot update my application before a cut-off date**
+**6.期限前にアプリケーションを更新できない場合、どうすればよいですか。**
 
-We recommend that you upgrade to the latest SDK as early as possible. Once an SDK has been tagged for retirement you will have 12 months to update your application. If, for whatever reason, you cannot complete your application update within this timeframe then please contact the [DocumentDB Team](mailto:askdocdb@microsoft.com) and request their assistance before the cutoff date.
+可能な限り早く最新の SDK にアップグレードすることが推奨されます。ある SDK が提供終了予定の場合、アプリケーションを更新するために 12 か月が与えられます。何らかの理由から、その時間枠内にアプリケーションを更新できない場合、期限前に[DocumentDB チーム](mailto:askdocdb@microsoft.com)にお問い合わせいただき、サポートをご要請ください。
+
+<!---HONumber=AcomDC_1125_2015-->

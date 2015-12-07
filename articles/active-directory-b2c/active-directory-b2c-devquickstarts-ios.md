@@ -29,10 +29,10 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 
 次に、B2C ディレクトリ内にアプリを作成する必要があります。これによって、 アプリと安全に通信するために必要ないくつかの情報が Azure AD に提供されます。ここでは、アプリと Web API の両方が単一の**アプリケーション ID**で表されます。これは、アプリと Web API が 1 つの論理アプリを構成するためです。アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従います。このとき、
 
-- アプリケーションに **Web アプリ/Web API** を含めます。
-- `http://localhost:3000/auth/openid/return` を**応答 URL** として入力します。これはこのコード例で使用する既定の URL です。
+- アプリケーションに **Web アプリまたは Web API** を含めます。
+- `http://localhost:3000/auth/openid/return` を**応答 URL** として入力します。これはこのサンプル コードで使用する既定の URL です。
 - アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
-- アプリに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
+- アプリケーションに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
@@ -40,9 +40,9 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 
 Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポリシー**](active-directory-b2c-reference-policies.md)によって定義されます。このアプリには、3 つの ID エクスペリエンス (サインアップ、サインイン、および Facebook でのサインイン) が含まれます。[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。3 つのポリシーを作成するときは、以下の点に注意してください。
 
-- サインアップ ポリシーで、**[表示名]** と他のいくつかのサインアップ属性を選択します。
-- すべてのポリシーで、**表示名**と**オブジェクト ID** のアプリケーション クレームを選択します。その他のクレームも選択できます。
-- ポリシーの作成後、各ポリシーの **[名前]** をメモしておきます。名前には、プレフィックス `b2c_1_` が付加されます。これらのポリシー名はすぐに必要になります。 
+- サインアップ ポリシーで、**表示名**と他のいくつかのサインアップ属性を選択します。
+- すべてのポリシーで、アプリケーション クレームとして**表示名**と**オブジェクト ID** を選択します。その他のクレームも選択できます。
+- ポリシーの作成後、各ポリシーの**名前**をメモしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名はすぐに必要になります。 
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
@@ -80,14 +80,13 @@ iOS タスク アプリが Azure AD B2C と通信するために、指定する�
 	<key>authority</key>
 	<string>https://login.microsoftonline.com/<your tenant name>.onmicrosoft.com/</string>
 	<key>clientId</key>
-	<string><Enter the Application Id assinged to your app by the Azure portal, e.g.580e250c-8f26-49d0-bee8-1c078add1609></string>
+	<string><Enter the Application Id assigned to your app by the Azure portal, e.g.580e250c-8f26-49d0-bee8-1c078add1609></string>
 	<key>scopes</key>
 	<array>
-		<string><Enter the Application Id assinged to your app by the Azure portal, e.g.580e250c-8f26-49d0-bee8-1c078add1609></string>
+		<string><Enter the Application Id assigned to your app by the Azure portal, e.g.580e250c-8f26-49d0-bee8-1c078add1609></string>
 	</array>
 	<key>additionalScopes</key>
 	<array>
-		<string></string>
 	</array>
 	<key>redirectUri</key>
 	<string>urn:ietf:wg:oauth:2.0:oob</string>
@@ -233,9 +232,7 @@ completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionB
         [self readApplicationSettings];
     }
     
-    NSDictionary* params = [self convertPolicyToDictionary:policy];
-    
-    [self getClaimsWithPolicyClearingCache:NO policy:policy params:params parent:parent completionHandler:^(ADProfileInfo* userInfo, NSError* error) {
+    [self getClaimsWithPolicyClearingCache:NO policy:policy params:nil parent:parent completionHandler:^(ADProfileInfo* userInfo, NSError* error) {
         
         if (userInfo == nil)
         {
@@ -256,42 +253,8 @@ completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionB
 このメソッドは非常に単純です。このメソッドでは、入力として、少し前に作成した `samplesPolicyData` オブジェクト、親 ViewController、およびコールバックを使用します。このコール バックは興味深いものであり、その内容は次のとおりです。
 
 1. `completionBlock` は型として ADProfileInfo を持っています。これは `userInfo` オブジェクトで返されます。ADProfileInfo は、サーバーからのすべての応答、特にクレームを保持する型です。 
-
 2. `readApplicationSettings` があります。これは、`settings.plist` に指定したデータを読み取ります。
-3. ポリシーを取得し、それを URL としてサーバーに送信するメソッド `convertPolicyToDictionary:policy` があります。このヘルパー メソッドは次の手順で記述します。
-4. 最後に、やや大きな `getClaimsWithPolicyClearingCache` メソッドがあります。これが iOS 用の ADAL への実際の呼び出しであり、記述する必要がある呼び出しです。これは後で実行します。
-
-
-次に、今記述したコードの下に、`convertPolicyToDictionary` メソッドを記述します。
-
-```
-// Here we have some converstion helpers that allow us to parse passed items in to dictionaries for URLEncoding later.
-
-+(NSDictionary*) convertTaskToDictionary:(samplesTaskItem*)task
-{
-    NSMutableDictionary* dictionary = [[NSMutableDictionary alloc]init];
-    
-    if (task.itemName){
-        [dictionary setValue:task.itemName forKey:@"task"];
-    }
-    
-    return dictionary;
-}
-
-+(NSDictionary*) convertPolicyToDictionary:(samplesPolicyData*)policy
-{
-    NSMutableDictionary* dictionary = [[NSMutableDictionary alloc]init];
-
-    
-    if (policy.policyID){
-        [dictionary setValue:policy.policyID forKey:@"p"];
-    }
-    
-    return dictionary;
-}
-
-```
-このどちらかといえば単純なコードは、ポリシーに p を追加して、クエリが ?p=<policy> となるようにします。
+3. 最後に、やや大きな `getClaimsWithPolicyClearingCache` メソッドがあります。これが iOS 用の ADAL への実際の呼び出しであり、記述する必要がある呼び出しです。これは後で実行します。
 
 次に、前述の大きなメソッド `getClaimsWithPolicyClearingCache` を記述しましょう。それは 1 つのセクションを立てて説明するに値する大きさがあります。
 
@@ -488,7 +451,7 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock;
 }
 ```
 
-このタスクは、Web URI を受け取り、HTTP の `Bearer` ヘッダーにトークンを追加して、それを返します。呼び出す `getTokenClearingCache` API は、一見おかしなものに見えるかもしれませんが、この呼び出しは、トークンをキャッシュから取得し、そのトークンがまだ有効であることを確認するために使用するだけです (getToken* 呼び出しが ADAL に依頼してこの作業を代わって実行してくれます)。このコードは呼び出しごとに使用します。その他のタスク メソッドの作成に戻りましょう。
+このタスクは、Web URI を受け取り、HTTP の `Bearer` ヘッダーにトークンを追加して、それを返します。呼び出す `getTokenClearingCache` API は、一見おかしなものに見えるかもしれませんが、この呼び出しは、トークンをキャッシュから取得して、まだ有効であることを確認するために使用するだけです (getToken* 呼び出しが ADAL に依頼してこの作業を代わって実行してくれます)。このコードは呼び出しごとに使用します。その他のタスク メソッドの作成に戻りましょう。
 
 `addTask` を記述しましょう。
 
@@ -652,4 +615,4 @@ API でタスクがユーザーごとに保存されたことを確認します�
 
 [B2C アプリの UX のカスタマイズ]()
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

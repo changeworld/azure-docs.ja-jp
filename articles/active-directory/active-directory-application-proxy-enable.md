@@ -3,7 +3,7 @@
 	description="Azure AD アプリケーション プロキシをセットアップする方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="rkarlin"
+	authors="kgremban"
 	manager="StevenPo"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="10/19/2015"
-	ms.author="rkarlin"/>
+	ms.author="kgremban"/>
 
 # Azure AD アプリケーション プロキシの有効化
 > [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
@@ -27,7 +27,7 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 アプリケーション プロキシ サービスを有効にして使用するためには、次の条件を満たしておく必要があります。
 
 - Microsoft Azure 管理者アカウント。お持ちでない場合はこちらから取得できます。
-- アプリケーション プロキシ コネクタをインストールできる Windows Server 2012 R2 または Windows 8.1 以降が実行されているサーバー。このサーバーは、クラウド内のアプリケーション プロキシ サービスに HTTPS 要求を送信できることと、発行予定のアプリケーションに HTTPS で接続できることが必要です。 
+- アプリケーション プロキシ コネクタをインストールできる Windows Server 2012 R2 または Windows 8.1 以降が実行されているサーバー。このサーバーは、クラウド内のアプリケーション プロキシ サービスに HTTPS 要求を送信できることと、発行予定のアプリケーションに HTTPS で接続できることが必要です。
 - 経路上にファイアウォールが存在する場合、コネクタからアプリケーション プロキシに送信される HTTPS (TCP) 要求を許可するようにファイアウォールを開放する必要があります。コネクタは、上位ドメイン msappproxy.net に属しているサブドメインと併せて、これらのポートを使用します。**送信**トラフィックに対しては、以下のポートを**すべて**開放してください。
 
 ポート番号 | 説明
@@ -40,7 +40,7 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 8080 | コネクタのブートストラップ シーケンスのほか、コネクタの自動更新に使用されます。
 9090 | コネクタの登録に使用されます (コネクタ登録プロセスでのみ必要)。
 9091 | コネクタの信頼証明書の自動更新に使用されます。
- 
+
 ご利用のファイアウォールが送信元ユーザーに応じてトラフィックを監視している場合は、Network Service として実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。また、NT Authority\\System に対しては必ずポート 8080 を有効にしてください。
 
 
@@ -50,7 +50,7 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 3. [構成] をクリックし、下へスクロールして [アプリケーション プロキシ] を表示し、[このディレクトリに対してアプリケーション プロキシ サービスを有効にする] を [有効] に切り替えます。
 
 	![アプリケーション プロキシを有効にする](./media/active-directory-application-proxy-enable/app_proxy_enable.png) <p>
-4. 画面の下部の [今すぐダウンロード] をクリックします。この操作により、ダウンロード ページが表示されます。ライセンス条項を読んで同意し、[ダウンロード] をクリックして、アプリケーション プロキシ コネクタの Windows インストーラー ファイル (.exe) を保存します。 
+4. 画面の下部の [今すぐダウンロード] をクリックします。この操作により、ダウンロード ページが表示されます。ライセンス条項を読んで同意し、[ダウンロード] をクリックして、アプリケーション プロキシ コネクタの Windows インストーラー ファイル (.exe) を保存します。
 
 ##手順 2: コネクタのインストールと登録
 1. 用意したサーバーで AADApplicationProxyConnectorInstaller.exe を実行します (「アプリケーション プロキシの前提条件」を参照してください)。
@@ -89,4 +89,4 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 * [Azure ID](fundamentals-identity.md)
 * [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

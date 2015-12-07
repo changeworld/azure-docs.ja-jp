@@ -216,13 +216,15 @@ Service Fabric は、正常性評価のためのエンティティ (レプリカ
 
 ## 次のステップ
 
-[アップグレード チュートリアル](service-fabric-application-upgrade-tutorial.md)
+[Visual Studio による Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
+
+[PowerShell を使用した Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade-powershell.md)
 
 [アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)
 
-[高度なトピック](service-fabric-application-upgrade-advanced.md)
+[手動アップグレードと差分のパッケージを使用したアップグレード](service-fabric-application-upgrade-advanced.md)
 
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1125_2015-->

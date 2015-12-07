@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="11/05/2015"
+  ms.date="11/23/2015"
   ms.author="andrl"/>
 
 # コミュニティ ポータル
@@ -45,6 +45,14 @@ Microsoft Azure DocumentDB サービス用のクライアント管理ビュー�
 [Github](https://github.com/mingaliu/DocumentDBStudio) でご覧ください。
 
 
+### DoQmentDB
+
+*作者: Ariel Mashraki*
+
+DoQmentDB は Node.js promise ベースのクライアントであり、DocumentDB の上に MongoDB タイプの層を与えます。
+
+[Github](https://github.com/a8m/doqmentdb) および [npm](https://www.npmjs.com/package/doqmentdb) でご覧ください。
+
 <br/><br/>
 
 *上記以外にも、多数のオープン ソース DocumentDB プロジェクトを [GitHub](https://github.com/search?p=4&q=documentdb&type=Repositories) でご覧いただけます。*
@@ -62,6 +70,16 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 <br/>
 
 **コミュニティへの投稿:**
+
+* [**データ ポイント - Aurelia と DocumentDB の出会い: 仲人の旅**](https://msdn.microsoft.com/magazine/mt620011.aspx) - *作者: Julie Lerman*
+
+* [**コードとしてのインフラストラクチャと Node.js + Azure DocumentDB ソリューションの連続的デプロイメント**](http://www.talmeida.net/blog/2015/10/26/infrastructure-as-code-and-continuous-deployment-of-a-nodejs-azure-documentdb-solution) - *作者: Thiago Almedia*
+
+* [**ビジネス上、DocumentDb が一部のプロジェクトで合理的な理由**](http://www.iquestllc.com/blogs/read/405/why-documentdb-makes-good-business-sense-for-some-projects) - *作者: Samuel Uresin*
+
+* [**Azure DocumentDB の開発ことはじめ - Client クラスの開発（1/2）**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *作者: Atsushi Yokohama*
+
+* [**Azure DocumentDB を使うときに知っておきたいいくつかのこと**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *作者: Atsushi Yokohama*
 
 * [**Azure DocumentDB における RequestRateTooLarge エラーの処理とパフォーマンスのテスト**](http://blogs.msdn.com/b/bigdatasupport/archive/2015/09/02/dealing-with-requestratetoolarge-errors-in-azure-documentdb-and-testing-documentdb-performance.aspx) - *投稿者: Azim Uddin*
 
@@ -89,7 +107,6 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | イベント名 | 場所 | 日付 | ハッシュタグ |
 | ------------------------------------------------------------------------------- | -------------------- | ------------------- | ------- |
-| [Integration User Group](http://www.integrationusergroup.com/) | ウェビナー | 2015 年 11 月 9 日 | [#IntegrationMonday](https://twitter.com/hashtag/integrationmonday) |
 | [Meetup: msdevmtl](http://www.meetup.com/msdevmtl/events/223839818/) | モントリオール、QC (カナダ) | 2015 年 12 月 1 日 | [#msdevmtl](https://twitter.com/hashtag/msdevmtl) |
 
 *イベントを主催する予定ですか? お手伝いできることがあれば[お知らせください](mailto:askdocdb@microsoft.com)。*
@@ -98,6 +115,7 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | イベント名 | 場所 | 日付 | 記録 |
 | -------------------------------------------------------------------------------------------------------------------------- | -------------------- | ---------------------- | --------- |
+| [会合: SeattleJS](http://www.meetup.com/seattlejs/events/220102664/) | ワシントン州シアトル | 2015 年 11 月 12 日 | 該当なし |
 | [PASS Summit 2015](http://www.sqlpass.org/summit/2015/Home.asp) | ワシントン州シアトル | 2015 年 10 月 27 日～ 30 日 | 該当なし |
 | [CloudDevelop 2015](http://www.clouddevelop.org/) | オハイオ州コロンバス | 2015 年 10 月 23 日 | 該当なし |
 | [SQL Saturday #430 - Sofia 2015](http://www.sqlsaturday.com/430/eventhome.aspx) | ソフィア (ブルガリア) | 2015 年 10 月 10 日 | 該当なし |
@@ -125,6 +143,7 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | 表示 | 日付 | エピソード |
 | ------------------------------------------- | ------------------ | ------- |
+| Integration User Group | 2015 年 11 月 9 日 | [医療の統合のための Azure DocumentDB - パート 2](http://www.integrationusergroup.com/azure-documentdb-for-healthcare-integration-part-2/) |
 | Integration User Group | 2015 年 10 月 5 日 | [医療の統合のための Azure DocumentDB](http://www.integrationusergroup.com/?event=azure-documentdb-and-biztalk) |
 | DX Italy - #TecHeroes | 2015 年 10 月 2 日 | [#TecHeroes - DocumentDB](https://channel9.msdn.com/Shows/TecHeroes/TecHeroes-DocumentDB) |
 | Microsoft Cloud Show - Podcast | 2015 年 9 月 30 日 | [エピソード 099 - Azure DocumentDB with Andrew Liu (Azure DocumentDB に関する Andrew Liu とのトーク)](http://www.microsoftcloudshow.com/podcast/Episodes/099-azure-documentdb-with-andrew-liu) |
@@ -215,4 +234,18 @@ Twitter で [@DocumentDB](https://twitter.com/DocumentDB) をフォローし、[
 | Hadoop コネクタ | [azure-documentdb-hadoop](https://github.com/Azure/azure-documentdb-hadoop) | [Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-documentdb-hadoop%22) |
 | データ移行ツール | [azure-documentdb-datamigrationtool](https://github.com/Azure/azure-documentdb-datamigrationtool) | [Microsoft ダウンロード センター](http://www.microsoft.com/ja-JP/download/details.aspx?id=46436) |
 
-<!---HONumber=Nov15_HO3-->
+<hr/>
+
+## DocumentDB ウィザード
+
+<hr/>
+
+DocumentDB ウィザードは、Azure DocumentDB を最大限に活用できるように他者を献身的に支援した模範的コミュニティ リーダーです。並外れた情熱、実世界の知識、技術的専門知識をコミュニティや DocumentDB チームと共有します。
+
+| | | | |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [![Allan Mitchell](./media/documentdb-community/wizard-allan-mitchell.jpg)](https://twitter.com/allansqlis) <br/> [Allan Mitchell](https://twitter.com/allansqlis) | [![Jen Stirrup](./media/documentdb-community/wizard-jen-stirrup.jpg)](https://twitter.com/jenstirrup) <br/> [Jen Stirrup](https://twitter.com/jenstirrup) | [![Lenni Lobel](./media/documentdb-community/wizard-lenni-lobel.jpg)](https://twitter.com/lennilobel) <br/> [Lenni Lobel](https://twitter.com/lennilobel) | [![Mihail Mateev](./media/documentdb-community/wizard-mihail-mateev.jpg)](https://twitter.com/mihailmateev) <br/> [Mihail Mateev](https://twitter.com/mihailmateev)|
+
+DocumentDB ウィザードになりたいですか。 DocumentDB ウィザードになるための基準はありませんが、StackOverflow や MSDN などのオンライン フォーラム、wiki、オンライン コンテンツ、ユーザー グループ、ポッドキャスト、Web サイト、ブログ、ソーシャル メディア、記事、書籍での貢献度が評価されます。[電子メールを送信し](mailto:askdocdb@microsoft.com)、立候補できます。
+
+<!---HONumber=AcomDC_1125_2015-->

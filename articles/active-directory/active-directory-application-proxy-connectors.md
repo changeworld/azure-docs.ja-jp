@@ -3,7 +3,7 @@
 	description="Azure AD アプリケーション プロキシにおけるコネクタのグループの作成と管理の方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="rkarlin"
+	authors="kgremban"
 	manager="StevenPo"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="10/19/2015"
-	ms.author="rkarlin"/>
+	ms.author="kgremban"/>
 
 
 # コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する
@@ -59,4 +59,4 @@
 
 * [Kerberos の制約付き委任について](http://technet.microsoft.com/library/cc995228.aspx)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

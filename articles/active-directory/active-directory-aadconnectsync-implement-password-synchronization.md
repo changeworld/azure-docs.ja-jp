@@ -130,9 +130,11 @@ config ファイルの末尾に configuration/runtime ノードがあります�
 | 状態 | 説明 |
 | ---- | ----- |
 | 成功 | パスワードが正常に同期されました。 |
-| SourceConnectorNotPresent | オンプレミス Active Directory コネクタ スペースにオブジェクトがありません |
-| NoTargetConnection | メタバースまたは Azure AD コネクタ スペースなオブジェクトがありません |
-| TargetNotExportedToDirectory | Azure AD コネクタ スペースのオブジェクトはまだエクスポートされていません |
+| FilteredByTarget | パスワードは **[ユーザーは次回ログオン時にパスワードの変更が必要]** に設定されています。パスワードは同期されていません。 |
+| NoTargetConnection | メタバースまたは Azure AD コネクタ スペースなオブジェクトがありません。 |
+| SourceConnectorNotPresent | オンプレミスの Active Directory コネクタ スペースにオブジェクトがありません。 |
+| TargetNotExportedToDirectory | Azure AD コネクタ スペースのオブジェクトはまだエクスポートされていません。 |
+| MigratedCheckDetailsForMoreInfo | ログ エントリはビルド 1.0.9125.0 より前に作成されており、従来の状態で表示されます。 |
 
 
 ### すべてのパスワードの完全同期の開始
@@ -158,4 +160,4 @@ config ファイルの末尾に configuration/runtime ノードがあります�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -136,7 +136,7 @@
       },
       "properties": {
         "statusCode": "Conflict",
-        "statusMessage": "{"Code":"Conflict","Message":"Website with given name mysite already exists.","Target":null,"Details":[{"Message":"Website with given name 
+        "statusMessage": "{"Code":"Conflict","Message":"Website with given name mysite already exists.","Target":null,"Details":[{"Message":"Website with given name
           mysite already exists."},{"Code":"Conflict"},{"ErrorEntity":{"Code":"Conflict","Message":"Website with given name mysite already exists.","ExtendedCode":
           "54001","MessageTemplate":"Website with given name {0} already exists.","Parameters":["mysite"],"InnerErrors":null}}],"Innererror":null}"
       },
@@ -259,7 +259,7 @@ Azure CLI の場合は、**azure location list** を使用します。場所の�
     }
 
 ### REST API
-        
+
 REST API の場合、「[リソース プロバイダーの情報の取得](https://msdn.microsoft.com/library/azure/dn790534.aspx)」をご覧ください。
 
 ## 一意のリソース名の作成
@@ -314,7 +314,7 @@ REST API の場合、「[リソース プロバイダーの情報の取得](http
 
 ## リソース プロバイダーの登録の確認
 
-リソースは、リソース プロバイダーによって管理され、特定のプロバイダーを使用できるようアカウントやサブスクリプションが有効になっている場合があります。プロバイダーを使用できるようになったら、使用登録もする必要があります。ほとんどのプロバイダーは、Azure ポータルまたはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。
+リソースは、リソース プロバイダーによって管理され、特定のプロバイダーを使用できるようアカウントやサブスクリプションが有効になっている場合があります。プロバイダーを使用できるようになったら、使用登録もする必要があります。ほとんどのプロバイダーは、Azure プレビュー ポータルまたはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。
 
 ### PowerShell
 
@@ -433,4 +433,4 @@ PowerShell には、同じ手順を実行するいくつかの基本的なコマ
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

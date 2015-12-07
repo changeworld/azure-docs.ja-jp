@@ -252,7 +252,7 @@ Azure のデプロイ名、リソース グループ名、Azure の場所、JSON
 
 デプロイ中およびデプロイ後には、プロビジョニング中に行われたすべての要求 (発生したすべてのエラーを含む) を確認できます。
 
-確認するには、[Azure ポータル](https://portal.azure.com)に移動し、次の操作を行います。
+確認するには、[Azure プレビュー ポータル](https://portal.azure.com)に移動し、次の操作を行います。
 
 - 左側のナビゲーション バーで [参照] をクリックし、下へスクロールして [リソース グループ] をクリックします。
 - 作成したリソース グループをクリックすると、[リソース グループ] ブレードが表示されます。
@@ -279,7 +279,9 @@ Azure CLI を使用して DataStax Enterprise クラスターをデプロイす�
 
 ## Datastax Enterprise のテンプレート構造とファイル編成について
 
-堅牢で再利用可能なリソース マネージャー テンプレートを設計するには、さらに検討を加え、DataStax Enterprise のような複雑なソリューションのデプロイ時に必要な、複雑で相互に関連する一連のタスクを整理する必要があります。関連する拡張機能によるスクリプト実行に加え、ARM の**テンプレート リンク**機能や**リソース ループ**機能を活用することで、実質的にはどのような複雑なテンプレート ベースのデプロイにも再利用可能なモジュール式の手法を実行できます。<!-- In previous paragraph, we can't use bold typeface to show emphasis. You can use italic to denote emphasis. --> 次の図は、このデプロイの GitHub からダウンロードされるすべてのファイル間の関係を表しています。
+堅牢で再利用可能なリソース マネージャー テンプレートを設計するには、さらに検討を加え、DataStax Enterprise のような複雑なソリューションのデプロイメント時に必要な、複雑で相互に関連する一連のタスクを整理する必要があります。関連する拡張機能によるスクリプト実行に加え、ARM の**テンプレート リンク**機能や**リソース ループ**機能を活用することで、実質的にはどのような複雑なテンプレート ベースのデプロイメントにも再利用可能なモジュール式の手法を実行できます。
+<!-- In previous paragraph, we can't use bold typeface to show emphasis. You can use italic to denote emphasis. -->
+次の図は、このデプロイの GitHub からダウンロードされるすべてのファイル間の関係を表しています。
 
 ![datastax-enterprise-files](media/virtual-machines-datastax-enterprise-template/datastax-enterprise-files.png)
 
@@ -502,4 +504,4 @@ vm-disk-utils-0.1.sh は、azure-quickstart-tempates github リポジトリ内�
 
 詳細については、「[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

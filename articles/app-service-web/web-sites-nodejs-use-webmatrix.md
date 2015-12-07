@@ -3,9 +3,9 @@
 	description="WebMatrix を使用して Node.js アプリケーションを作成し、Azure App Service Web Apps にデプロイする方法を示すチュートリアル。" 
 	services="app-service\web" 
 	documentationCenter="nodejs" 
-	authors="MikeWasson" 
+	authors="rmcmurray" 
 	manager="wpickett" 
-	editor="mollybos"/>
+	editor=""/>
 
 <tags 
 	ms.service="app-service-web" 
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="08/03/2015"
-	ms.author="mwasson"/>
+	ms.date="11/20/2015"
+	ms.author="robmcm"/>
 
 
 # WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ
 
-このチュートリアルでは、WebMatrix を使用して Node.js アプリケーションを作成し、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps にデプロイする方法を示します。WebMatrix は、Microsoft から提供されている無料の Web 開発ツールで、Web サイトまたは Web アプリの開発に必要なものがすべて用意されています。WebMatrix には、コードの入力補完機能、作成済みのテンプレート、Jade、LESS、CoffeeScript のエディターのサポートなど、Node.js を簡単に使用できるようにする機能が用意されています。詳細については、「[Azure 用 WebMatrix の概要](http://go.microsoft.com/fwlink/?LinkID=253622&clcid=0x409)」を参照してください。
+このチュートリアルでは、WebMatrix を使用して Node.js アプリケーションを作成し、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps にデプロイする方法を示します。WebMatrix は、Microsoft から提供されている無料の Web 開発ツールで、Web サイトまたは Web アプリの開発に必要なものがすべて用意されています。WebMatrix には、コードの入力補完機能、作成済みのテンプレート、Jade、LESS、CoffeeScript のエディターのサポートなど、Node.js を簡単に使用できるようにする機能が用意されています。[WebMatrix](https://www.microsoft.com/web/webmatrix/) の詳細を確認してください。
 
 このチュートリアルを完了すると、Azure App Service で動作する Node.js Web アプリが完成します。
  
@@ -85,7 +85,7 @@ Azure App Service で Web アプリを作成するには、次のステップに
 
 	![WebMatrix での index.jade の表示][webmatrix-modify-index]
 
-2. 2 番目の行を次のように変更します。
+2. 段落の行を次のように変更します。
 
 		p Welcome to #{title} with WebMatrix on Azure!
 
@@ -126,4 +126,4 @@ Azure への展開後にアプリケーションで問題が発生した場合�
 [nodesitefromtemplateazure]: ./media/web-sites-nodejs-use-webmatrix/webmatrix-node-site-azure.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

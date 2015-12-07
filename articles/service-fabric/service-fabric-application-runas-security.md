@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/21/2015"
+   ms.date="11/24/2015"
    ms.author="mfussell"/>
 
 # RunAs: 異なるセキュリティ アクセス許可での Service Fabric アプリケーションの実行
@@ -86,26 +86,25 @@ Service Fabric では、"RunAs" と呼ばれる別のユーザー アカウン�
 
 それでは、MySetup.bat ファイルを Visual Studio プロジェクトに追加して、Administrator 特権をテストしてみます。Visual Studio でサービス プロジェクトを右クリックし、MySetup.bat の新しいファイル呼び出しを追加します。次に、このファイルをサービス パッケージに含める必要があります。既定では含まれません。MySetup.bat ファイルをパッケージに含めるには、ファイルを右クリックしてコンテキスト メニューを表示し、[プロパティ] を選択して、[プロパティ] ダイアログで **[出力ディレクトリにコピー]** を **[新しい場合はコピーする]** に設定します。これを示したものが下記のスクリーンショットです。
 
-![SetupEntryPoint バッチ ファイルの Visual Studio CopyToOutput][Image1]
+![SetupEntryPoint バッチ ファイルの Visual Studio CopyToOutput][image1]
 
 次に、MySetup.bat ファイルを開き、次のコマンドを追加します。
+
 ~~~
-REM Set a system environment variable.This requires administrator privilege
+REM Set a system environment variable. This requires administrator privilege
 setx -m TestVariable "MyValue"
 echo System TestVariable set to > test.txt
 echo %TestVariable% >> test.txt
 
 REM To delete this system variable us
-REM REG delete "HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment" /v TestVariable /f
+REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v TestVariable /f
 ~~~
 
-次に、ソリューションをビルドして、開発用のローカル クラスターにデプロイします。サービスが開始した後、Service Fabric Explorer で示されるように、MySetup.bat が成功したことを 2 つの方法で確認できます。PowerShell コマンド プロンプトを開き、次のように入力します。
+次に、ソリューションをビルドして、開発用のローカル クラスターにデプロイします。サービスが開始した後、Service Fabric Explorer で示されるように、MySetup.bat が成功したことを 2 つの方法で確認できます。PowerShell コマンド プロンプトを起動し、次を入力します。
+
 ~~~
- [Environment]::GetEnvironmentVariable("TestVariable","Machine")
-~~~
-Like this
-~~~
-PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine") MyValue
+PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
+MyValue
 ~~~
 
 もう 1 つの方法は、サービスがデプロイされて開始されたノードの名前を Service Fabric Explorer で確認し (例: Node 1)、アプリケーション インスタンスの作業フォルダーに移動して、out.txt ファイルで **TestVariable** の値を調べます。たとえば、これが Node 2 にデプロイされた場合、MyApplicationType の次のパスに移動します。
@@ -117,18 +116,20 @@ C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ##  SetupEntryPoint からの PowerShell コマンドの起動
 **SetupEntryPoint** ポイントから PowerShell を実行するには、PowerShell ファイルを指し示すバッチ ファイルで PowerShell.exe を実行します。最初に、PowerShell ファイル (例: MySetup.ps1) をサービス プロジェクトに追加します。このファイルがサービス パッケージにも含まれるように、*[新しい場合はコピーする]* プロパティを忘れずに設定します。システム環境変数 *TestVariable* を設定する PowerShell ファイル MySetup.ps1 を起動するバッチ ファイルの例を次に示します。
 
-PowerShell ファイルを起動する MySetup.bat。
+PowerShell ファイルを起動するための MySetup.bat。
+
 ~~~
-powershell.exe -ExecutionPolicy Bypass -Command ".\\MySetup.ps1"
+powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
 ~~~
 
-PowerShell ファイルには、システム環境変数を設定する次のコマンドを追加します。
-~~~
+PowerShell ファイルで、システム環境変数を設定するために次を追加します。
+
+```
 [Environment]::SetEnvironmentVariable("TestVariable", "MyValue", "Machine")
 [Environment]::GetEnvironmentVariable("TestVariable","Machine") > out.txt
-~~~
+```
 
-## サービスへの RunAsPolicy の適用 
+## サービスへの RunAsPolicy の適用
 上の手順では、SetupEntryPoint に RunAs ポリシーを適用する方法を説明しました。ここでは、サービス ポリシーとして適用できる別のプリンシパルを作成する方法をもう少し詳しく説明します。
 
 ### ローカル ユーザー グループの作成
@@ -168,7 +169,7 @@ PowerShell ファイルには、システム環境変数を設定する次のコ
   </Users>
 </Principals>
 ~~~
- 
+
 <!-- If an application requires that the user account and password be same on all machines (e.g. to enable NTLM authentication), the cluster manifest must set NTLMAuthenticationEnabled to true and also specify an NTLMAuthenticationPasswordSecret that will be used to generate the same password across all machines.
 
 <Section Name="Hosting">
@@ -183,8 +184,8 @@ PowerShell ファイルには、システム環境変数を設定する次のコ
 
 ~~~
 <Policies>
-<RunAsPolicy CodePackageRef="Code" UserRef="LocalAdmin" EntryPointType="Setup"/>
-<RunAsPolicy CodePackageRef="Code" UserRef="Customer3" EntryPointType="Main"/>
+  <RunAsPolicy CodePackageRef="Code" UserRef="LocalAdmin" EntryPointType="Setup"/>
+  <RunAsPolicy CodePackageRef="Code" UserRef="Customer3" EntryPointType="Main"/>
 </Policies>
 ~~~
 
@@ -265,7 +266,9 @@ https エンドポイントの場合は、**EndpointBindingPolicy** のクライ
                <Group NameRef="LocalAdminGroup" />
             </MemberOf>
          </User>
+         <!--Customer1 below create a local account that this service runs under -->
          <User Name="Customer1" />
+         <User Name="MyDefaultAccount" AccountType="NetworkService" />
       </Users>
    </Principals>
    <Policies>
@@ -285,6 +288,6 @@ https エンドポイントの場合は、**EndpointBindingPolicy** のクライ
 * [サービス マニフェストでのリソースの指定](service-fabric-service-manifest-resources.md)
 * [アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)
 
-[Image1]: media/service-fabric-application-runas-security/copy-to-output.png
+[image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
 
-<!----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

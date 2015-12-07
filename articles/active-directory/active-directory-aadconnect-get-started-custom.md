@@ -98,7 +98,7 @@ sAMAccountName および MailNickName|このオプションは、ユーザーを
 
 - **UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にログインするときに使用する属性です。使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。既定の userPrincipalName 属性のままにしておくことを強くお勧めします。この属性がルーティング不可能で検証できない場合は、ログイン ID を保持する属性として、電子メールなどの別の属性を選択することができます。これを**代替 ID** といいます。代替 ID の属性値は、RFC822 標準に従う必要があります。代替 ID は、サインイン ソリューションとして、パスワード シングル サインオン (SSO) とフェデレーション SSO の両方で使用できます。
 
->[AZURE.WARNING]代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。詳細については、[代替ログイン ID の構成](https://technet.microsoft.com/library/dn659436.aspx.)に関するページを参照してください。
+>[AZURE.WARNING]代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。詳細については、[代替ログイン ID の構成](https://technet.microsoft.com/library/dn659436.aspx)に関するページを参照してください。
 
 
 
@@ -246,4 +246,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)についての詳細情報
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

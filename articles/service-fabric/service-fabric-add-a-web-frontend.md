@@ -4,7 +4,7 @@
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
-   manager="coreysa"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -13,32 +13,35 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/17/2015"
+   ms.date="11/21/2015"
    ms.author="seanmck"/>
+
 
 # アプリケーション用の Web サービス フロントエンドの構築
 
 既定では、Service Fabric サービスは Web にパブリック インターフェイスを提供しません。HTTP クライアントにアプリケーションの機能を公開するには、エントリ ポイントとして機能する Web プロジェクトを作成し、そこから個々のサービスと通信する必要があります。
 
-このチュートリアルでは、ステートフル サービスが既に含まれるアプリケーションに ASP.NET 5 Web API フロントエンドを追加する方法を説明します。「[Creating your first application in Visual Studio (Visual Studio での初めてのアプリケーションの作成)](service-fabric-create-your-first-application-in-visual-studio.md)」をまだ行っていない場合は、このチュートリアルを始める前に行うことをお勧めします。
+このチュートリアルでは、ステートフル サービス プロジェクト テンプレートに基づく Reliable Service が既に含まれるアプリケーションに ASP.NET 5 Web API フロントエンドを追加する方法を説明します。「[Creating your first application in Visual Studio (Visual Studio での初めてのアプリケーションの作成)](service-fabric-create-your-first-application-in-visual-studio.md)」をまだ行っていない場合は、このチュートリアルを始める前に行うことをお勧めします。
+
 
 ## アプリケーションへの ASP.NET 5 サービスの追加
 
 ASP.NET 5 は軽量のクロスプラットフォーム Web 開発フレームワークであり、最新の Web UI と Web API を作成できます。ASP.NET Web API プロジェクトを既存のアプリケーションに追加してみましょう。
 
-1. ソリューション エクスプローラーで、アプリケーション プロジェクトを右クリックして、**[新しい Fabric サービス]** を選択します。
+1. ソリューション エクスプローラーで、アプリケーション プロジェクトの **[サービス]** を右クリックして、**[Fabric サービスの追加]** を選択します。
 
 	![既存アプリケーションへの新しいサービスの追加][vs-add-new-service]
 
-2. [新しいサービス] ダイアログ ボックスで、ASP.NET 5 Web サービスを選択し、名前を付けます。
+2. [新しいサービス] ダイアログ ボックスで、**ASP.NET 5** を選択し、名前を付けます。
 
 	![新しいサービス ダイアログでの ASP.NET Web サービスの選択][vs-new-service-dialog]
 
-3. 次のダイアログ ボックスでは、一連の ASP.NET 5 プロジェクト テンプレートが提供されます。Service Fabric アプリケーションの外部で ASP.NET 5 プロジェクトを作成した場合、これらは同じテンプレートであることに注意してください。このチュートリアルでは Web API を選択しますが、完全な Web アプリケーションの構築にも同じ概念を適用できます。
+3. 次のダイアログ ボックスでは、一連の ASP.NET 5 プロジェクト テンプレートが提供されます。Service Fabric アプリケーションの外部で ASP.NET 5 プロジェクトを作成した場合、これらは同じテンプレートであることに注意してください。このチュートリアルでは **Web API** を選択しますが、完全な Web アプリケーションの構築にも同じ概念を適用できます。
 
 	![ASP.NET プロジェクトの種類の選択][vs-new-aspnet-project-dialog]
 
-  作成した Web API プロジェクトでは、2 つのサービスがアプリケーションに含まれます。アプリケーションの作成を続けながら、まったく同じ方法でさらにサービスを追加し、個別にバージョン管理およびアップグレードできます。
+    作成した Web API プロジェクトでは、2 つのサービスがアプリケーションに含まれます。アプリケーションの作成を続けながら、まったく同じ方法でさらにサービスを追加し、個別にバージョン管理およびアップグレードできます。
+
 
 ## アプリケーションの実行
 
@@ -50,15 +53,17 @@ ASP.NET 5 は軽量のクロスプラットフォーム Web 開発フレーム�
 
 3. ブラウザーの場所に `/api/values` を追加します。これにより、Web API テンプレートの ValuesController で `Get` メソッドが呼び出され、テンプレートによって提供される既定の応答である 2 つの文字列を含む JSON 配列が返されます。
 
-  ![ASP.NET 5 Web API テンプレートから返される既定値][browser-aspnet-template-values]
+    ![ASP.NET 5 Web API テンプレートから返される既定値][browser-aspnet-template-values]
 
-  チュートリアルの最後では、これらの既定値をステートフル サービスからの最新のカウンター値で置き換えます。
+    チュートリアルの最後では、これらの既定値をステートフル サービスからの最新のカウンター値で置き換えます。
+
 
 ## サービスへの接続
 
 Service Fabric は、Reliable Services との通信方法において完全な柔軟性を提供します。1 つのアプリケーションに、TCP でアクセス可能なサービス、HTTP REST API でアクセス可能なサービス、Web ソケットでアクセス可能なサービスが含まれることがあります。使用可能なオプションおよびトレードオフについては、「[サービスとの通信](service-fabric-connect-and-communicate-with-services.md)」を参照してください。このチュートリアルでは簡単な手法の 1 つに従い、SDK で提供される `ServiceProxy`/`ServiceCommunicationListener` クラスを使用します。
 
 `ServiceProxy` の方法 (リモート プロシージャ呼び出しまたは RPC でモデル化) では、サービスに対するパブリック コントラクトとして機能するようにインターフェイスを定義し、そのインターフェイスを使用してサービスと対話するためのプロキシ クラスを生成します。
+
 
 ### インターフェイスの作成
 
@@ -68,23 +73,28 @@ Service Fabric は、Reliable Services との通信方法において完全な�
 
 2. 左側のナビゲーション ウィンドウで Visual C# のエントリを選択し、**[クラス ライブラリ]** テンプレートを選択します。.NET Framework のバージョンが 4.5.1 に設定されていることを確認します。
 
-  ![ステートフル サービス用のインターフェイス プロジェクトの作成][vs-add-class-library-project]
+    ![ステートフル サービス用のインターフェイス プロジェクトの作成][vs-add-class-library-project]
 
 3. インターフェイスを `ServiceProxy` で使用できるようにするには、Service Fabric NuGet パッケージの 1 つに含まれる IService インターフェイスから派生する必要があります。パッケージを追加するには、新しいクラス ライブラリ プロジェクトを右クリックして、**[NuGet パッケージの管理]** を選択します。
 
 4. **[プレリリースを含める]** チェック ボックスがオンになっていることを確認した後、**Microsoft.ServiceFabric.Services** パッケージを検索してインストールします。
 
-  ![Services NuGet パッケージの追加][vs-services-nuget-package]
+    ![Services NuGet パッケージの追加][vs-services-nuget-package]
 
 5. クラス ライブラリで、1 つのメソッド `GetCountAsync` を含むインターフェイスを作成し、IService からインターフェイスを拡張します。
 
-  ```c# namespace MyStatefulService.Interfaces { using Microsoft.ServiceFabric.Services;
+    ```c#
+    namespace MyStatefulService.Interfaces
+    {
+        using Microsoft.ServiceFabric.Services.Remoting;
 
-      public interface ICounter: IService
-      {
-          Task<long> GetCountAsync();
-      }
-  } ```
+        public interface ICounter: IService
+        {
+            Task<long> GetCountAsync();
+        }
+    }
+    ```
+
 
 ### ステートフル サービスでのインターフェイスの実装
 
@@ -92,25 +102,33 @@ Service Fabric は、Reliable Services との通信方法において完全な�
 
 1. ステートフル サービスで、インターフェイスを含むクラス ライブラリ プロジェクトへの参照を追加します。
 
-  ![ステートフル サービスのクラス ライブラリ プロジェクトへの参照の追加][vs-add-class-library-reference]
+    ![ステートフル サービスのクラス ライブラリ プロジェクトへの参照の追加][vs-add-class-library-reference]
 
 2. `StatefulService` を継承するクラスを探し (`MyStatefulService` など)、それを拡張して `ICounter` インターフェイスを実装します。
 
-  ```c#
-  public class MyStatefulService : StatefulService, ICounter
-  {        
-        // ...
-  }
-  ``` 3.次に、`ICounter` インターフェイスで定義されている単一のメソッド `GetCountAsync` を実装します。
+    ```c#
+    public class MyStatefulService : StatefulService, ICounter
+    {        
+          // ...
+    }
+    ```
 
-  ```c# public async Task<long> GetCountAsync() { var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string  long>>("myDictionary");
+3. 次に、`ICounter` インターフェイスで定義されている単一のメソッド `GetCountAsync` を実装します。
 
-      using (var tx = this.StateManager.CreateTransaction())
-      {          
-          var result = await myDictionary.TryGetValueAsync(tx, "Counter-1");
-          return result.HasValue ? result.Value : 0;
-      }
-  } ```
+    ```c#
+    public async Task<long> GetCountAsync()
+    {
+      var myDictionary =
+        await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
+
+        using (var tx = this.StateManager.CreateTransaction())
+        {          
+            var result = await myDictionary.TryGetValueAsync(tx, "Counter-1");
+            return result.HasValue ? result.Value : 0;
+        }
+    }
+    ```
+
 
 ### ServiceCommunicationListener を使用したステートフル サービスの公開
 
@@ -143,28 +161,33 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 3. Controllers フォルダーで `ValuesController` クラスを開きます。現状では、`Get` メソッドはハード コーディングされた文字配列 "value1" と "value2" を返すだけであることに注意してください。これらは、先にブラウザーで見たものと一致します。この実装を次のコードに置き換えます。
 
-  ```c# public async Task<IEnumerable<string>> Get() { ICounter counter = ServiceProxy.Create<ICounter>(0, new Uri("fabric:/MyApp/MyStatefulService"));
+    ```c#
+    public async Task<IEnumerable<string>> Get()
+    {
+        ICounter counter =
+            ServiceProxy.Create<ICounter>(0, new Uri("fabric:/MyApp/MyStatefulService"));
 
-      long count = await counter.GetCountAsync();
+        long count = await counter.GetCountAsync();
 
-      return new string[] { count.ToString() };
-  } ```
+        return new string[] { count.ToString() };
+    }
+    ```
 
-  コードの最初の行が重要です。ステートフル サービスへの ICounter プロキシを作成するには、パーティション ID とサービス名の 2 つの情報を提供する必要があります。
+    コードの最初の行が重要です。ステートフル サービスへの ICounter プロキシを作成するには、パーティション ID とサービス名の 2 つの情報を提供する必要があります。
 
-  パーティション分割を使用すると、顧客 ID や郵便番号などの定義したキーに基づいて異なるバケットにステートを分割することにより、ステートフル サービスを拡張できます。この単純なアプリケーションではステートフル サービスはパーティションを 1 つしか持たないので、キーは重要ではありません。どのようなキーを提供しても同じパーティションになります。
+    パーティション分割を使用すると、顧客 ID や郵便番号などの定義したキーに基づいて異なるバケットにステートを分割することにより、ステートフル サービスを拡張できます。この単純なアプリケーションではステートフル サービスはパーティションを 1 つしか持たないので、キーは重要ではありません。どのようなキーを提供しても同じパーティションになります。サービスのパーティション分割の詳細については、「[Service Fabric Reliable Services をパーティション分割する方法](service-fabric-concepts-partitioning)」を参照してください。
 
-  サービス名は、fabric:/&lt;アプリケーション名&gt;/&lt;サービス名&gt; の形式の URI です。
+    サービス名は、fabric:/&lt;アプリケーション名&gt;/&lt;サービス名&gt; の形式の URI です。
 
-  これら 2 つの情報により、Service Fabric は要求送信先のコンピューターを一意に識別できます。また、`ServiceProxy` は、ステートフル サービス パーティションをホストしているコンピューターで障害が発生し、別のコンピューターを昇格させて引き継ぐ必要がある状況を、シームレスに処理します。この抽象化により、他のサービスを処理するクライアント コードの作成が大幅に簡略化されます。
+    これら 2 つの情報により、Service Fabric は要求送信先のコンピューターを一意に識別できます。また、`ServiceProxy` は、ステートフル サービス パーティションをホストしているコンピューターで障害が発生し、別のコンピューターを昇格させて引き継ぐ必要がある状況を、シームレスに処理します。この抽象化により、他のサービスを処理するクライアント コードの作成が大幅に簡略化されます。
 
-  プロキシを作成した後は、`GetCountAsync` メソッドを呼び出して結果を返すだけです。
+    プロキシを作成した後は、`GetCountAsync` メソッドを呼び出して結果を返すだけです。
 
 4. 再び F5 キーを押して、変更したアプリケーションを実行します。前と同じように、Visual Studio はブラウザーを自動的に起動して Web プロジェクトのルートを表示します。"api/values" パスを追加すると、返される現在のカウンター値がわかります。
 
-  ![ブラウザーに表示されたステートフル カウンター値][browser-aspnet-counter-value]
+    ![ブラウザーに表示されたステートフル カウンター値][browser-aspnet-counter-value]
 
-  定期的にブラウザーを更新して、カウンターの値が更新されるのを確認します。
+    定期的にブラウザーを更新して、カウンターの値が更新されるのを確認します。
 
 
 ## アクターについて
@@ -177,7 +200,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 一般に、ローカル クラスターは 5 ノードの構成を 1 つのコンピューターにまとめただけなので、ローカル クラスターにデプロイした複数コンピューター クラスターにまったく同じ Service Fabric アプリケーションをデプロイでき、意図したとおりに動作することを信頼できます。
 
-ただし、Web サービスに関しては 1 つの重要な違いがあります。クラスターが Azure でのようにロード バランサーの背後に配置されている場合、ロード バランサーはコンピューター間にトラフィックをラウンドロビンするだけなので、Web サービスをすべてのコンピューターにデプロイする必要があります。これは、サービスの `InstanceCount` に特別な値 -1 を設定することによって実現できます。一方、ローカルで実行するときは、実行するサービスのインスタンスを 1 つだけにする必要があります。そうしないと、同じパスとポートでリッスンしている複数のプロセスが競合します。そのため、ローカルな deployments.git の場合は Web サービスのインスタンス数を 1 に設定する必要があります。
+ただし、Web サービスに関しては 1 つの重要な違いがあります。クラスターが Azure でのようにロード バランサーの背後に配置されている場合、ロード バランサーはコンピューター間にトラフィックをラウンドロビンするだけなので、Web サービスをすべてのコンピューターにデプロイする必要があります。これは、サービスの `InstanceCount` に特別な値 -1 を設定することによって実現できます。一方、ローカルで実行するときは、実行するサービスのインスタンスを 1 つだけにする必要があります。そうしないと、同じパスとポートでリッスンしている複数のプロセスが競合します。そのため、ローカル デプロイメントの場合は Web サービスのインスタンス数を 1 に設定する必要があります。
 
 異なる環境で異なる値を構成する方法については、「[複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)」を参照してください。
 
@@ -198,4 +221,4 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

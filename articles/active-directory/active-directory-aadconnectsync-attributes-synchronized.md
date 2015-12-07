@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="11/24/2015"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -390,6 +390,27 @@
 | usageLocation| ○| | | 機械的なプロパティ。ユーザーの国。ライセンスの割り当てに使用されます。|
 | userPrincipalName| ○| | | UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
 
+## Windows 10
+Windows 10 のドメイン参加コンピューター (デバイス) は、一部の属性を Azure AD に同期します。シナリオの詳細については、「[Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](active-directory-azureadjoin-devices-group-policy.md)」を参照してください。これらの属性は常に同期し、Windows 10 は選択を解除できるアプリとして表示されません。Windows 10 のドメイン参加コンピューターは、属性 userCertificate が設定されていることで識別されます。
+
+| 属性名| デバイス| コメント |
+| --- | :-: | --- |
+| accountEnabled| ○| |
+| deviceTrustType| ○| ドメイン参加コンピューターのハードコーディングされた値です。 |
+| displayName | ○| |
+| ms-DS-CreatorSID | ○| registeredOwnerReference とも呼ばれます。|
+| objectGUID | ○| deviceID とも呼ばれます。|
+| objectSID | ○| omPremisesSecurityIdentifier とも呼ばれます。|
+| operatingSystem | ○| deviceOSType とも呼ばれます。|
+| operatingSystemVersion | ○| deviceOSVersion とも呼ばれます。|
+| userCertificate | ○| |
+
+選択したアプリに加えてユーザーには以下の属性があります。
+
+| 属性名| ユーザー| コメント |
+| --- | :-: | --- |
+| domainFQDN| ○| dnsDomainName とも呼ばれます。例: contoso.com|
+| domainNetBios| ○| netBiosName とも呼ばれます。例: CONTOSO|
 
 ## Exchange ハイブリッドの書き戻し
 次の属性は、Exchange ハイブリッドを有効にした場合に Azure AD からオンプレミスの Active Directory に書き戻されます。Exchange のバージョンに応じて、同期される属性が少なくなる場合があります。
@@ -414,4 +435,4 @@
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

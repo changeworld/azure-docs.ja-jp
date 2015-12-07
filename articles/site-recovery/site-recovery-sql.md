@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SQL Server および Azure Site Recovery を使用した障害復旧" 
+	pageTitle="SQL Server および Azure Site Recovery を使用した障害復旧 | Microsoft Azure" 
 	description="Azure Site Recovery は、セカンダリ オンプレミス サイトまたは Azure への SQL Server のレプリケーション、フェールオーバー、および復旧を調整します。" 
 	services="site-recovery" 
 	documentationCenter="" 
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/09/2015" 
+	ms.date="11/18/2015" 
 	ms.author="raynew"/>
 
 
 # SQL Server および Azure Site Recovery を使用した障害復旧 
 
-Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、および復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略を支援する Azure サービスです。Site Recovery では、いくつかのレプリケーション メカニズムをサポートし、常にマシンを Azure またはセカンダリ データセンターで保護し、Azure またはセカンダリ データセンターにレプリケートおよびフェールオーバーします。すべてのデプロイ シナリオの概要については、「[Azure Site Recovery の概要](site-recovery-overview.md)」を参照してください。
+Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、および復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略を支援する Azure サービスです。Site Recovery では、いくつかのレプリケーション メカニズムをサポートし、常にマシンを Azure またはセカンダリ データセンターで保護し、Azure またはセカンダリ データセンターにレプリケートおよびフェールオーバーします。すべてのデプロイメント シナリオの概要については、「[Azure Site Recovery の概要](site-recovery-overview.md)」を参照してください。
 
  この記事では、SQL Server の BCDR テクノロジおよび Site Recovery の組み合わせを使用してアプリケーションの SQL Server バックエンドを保護する方法について説明します。この記事で説明するシナリオをデプロイするには、SQL Server の BCDR 機能 (フェールオーバー クラスタリング、AlwaysOn 可用性グループ、データベース ミラーリング、ログ配布) および Site Recovery を十分に理解する必要があります。
 
@@ -73,9 +73,9 @@ Site Recovery は、次の表に要約したネイティブの SQL Server の BC
 
 
 
-次の表は、Site Recovery デプロイに SQL Server の BCDR テクノロジを統合するための推奨事項を示しています。
+次の表は、Site Recovery デプロイメントに SQL Server の BCDR テクノロジを統合するための推奨事項を示しています。
 
-**バージョン** |**エディション** | **デプロイ** | **オンプレミスからオンプレミス** | **オンプレミスから Azure** 
+**バージョン** |**エディション** | **デプロイメント** | **オンプレミスからオンプレミス** | **オンプレミスから Azure** 
 ---|---|---|---|---
 SQL Server 2014 または 2012 | Enterprise | フェールオーバー クラスター インスタンス | AlwaysOn 可用性グループ | AlwaysOn 可用性グループ
  | Enterprise | 高可用性のための AlwaysOn 可用性グループ | AlwaysOn 可用性グループ | AlwaysOn 可用性グループ
@@ -85,13 +85,13 @@ SQL Server 2008 R2 | Enterprise または Standard | フェールオーバー �
  | Enterprise または Standard | スタンドアロン | Site Recovery レプリケーション | Site Recovery レプリケーション
 SQL Server (全バージョン) | Enterprise または Standard | フェールオーバー クラスター インスタンス - DTC アプリケーション | Site Recovery レプリケーション | サポートされていません
 
-## デプロイの前提条件
+## デプロイメントの前提条件
 
 ここでは、開始する前に必要な項目を示します。
 
 
-- サポートされている SQL Server のバージョンを実行しているオンプレミスの SQL Server デプロイ通常、SQL Server には Active Directory も必要です。
-- デプロイするシナリオの前提条件。前提条件は、各デプロイの記事に記載されています。これらは、「[Site Recovery の概要](site-recovery-overview.md)」で一覧となっていて、リンクされています。
+- サポートされている SQL Server のバージョンを実行しているオンプレミスの SQL Server デプロイメント通常、SQL Server には Active Directory も必要です。
+- デプロイするシナリオの前提条件。前提条件は、各デプロイメントの記事に記載されています。これらは、「[Site Recovery の概要](site-recovery-overview.md)」で一覧となっていて、リンクされています。
 - Azure で復旧を設定する場合は、[Azure 仮想マシン準備状態評価](http://www.microsoft.com/download/details.aspx?id=40898)ツールを SQL Server 仮想マシン上で実行し、SQL Server 仮想マシンに Azure および Site Recovery との互換性があることを確認する必要があります。
 
 
@@ -105,7 +105,7 @@ SQL Server を正常に実行するには、セカンダリ復旧サイトに Ac
 
 このドキュメントに記載された手順は、2 番目の拠点でドメイン コントローラーが使用できることを前提としています。[この](http://aka.ms/asr-ad) AD DR のソリューションのガイダンスを参照してください。
 
-##SQL AlwaysOn 可用性グループの保護の設定
+## Azure への SQL AlwaysOn の統合
 
 ### オンプレミスと Azure 間
 
@@ -113,7 +113,7 @@ Azure Site Recovery (ASR) は SQL AlwaysOn をネイティブでサポートし�
 
 この機能は現時点でプレビュー段階であり、プライマリ データセンターが System Center Virtual Machine Manager (VMM) で管理される際に使用可能です。
 
-#### VMM Serverで管理される環境
+#### VMM Server で管理される環境
 ASR コンテナー内に入ると、[保護された項目] タブの下に SQL Servers のタブが表示されます。
 
 ![保護された項目](./media/site-recovery-sql/protected-items.png)
@@ -122,22 +122,22 @@ ASR への SQL AlwaysON の統合の手順を以下に示します。
 
 ##### 前提条件
 - スタンドアロン サーバーまたはフェールオーバー クラスターでのオンプレミスの SQL Server 
-- SQL Server がインストールされている 1 つまたは複数の Azure 仮想マシン
+- SQL Server がインストールされている 1 つまたは複数の Azure Virtual Machines
 - オンプレミスの SQL Server と Azure で実行されている SQL Server 間の SQL 可用性グループ セットアップ
 - PowerShell リモート処理をオンプレミスの SQL Server で有効にする必要があります。VMM Server から SQL Server へのリモート PowerShell 呼び出しが可能になっている必要があります。
-- オンプレミスの SQL Server では、SQL ユーザー グループにユーザー アカウントを追加する際に、少なくとも次のアクセス許可を付与する必要があります。
+- オンプレミスの SQL Server では、SQL ユーザー グループにユーザー アカウントを追加する際に、少なくとも次のアクセス権を付与する必要があります。
 	- ALTER AVAILABILITY GROUP - [参照 1](https://msdn.microsoft.com/ja-JP/library/hh231018.aspx)、[参照 2](https://msdn.microsoft.com/ja-JP/library/ff878601.aspx#Anchor_3)
 	- ALTER DATABASE - [参照 1](https://msdn.microsoft.com/ja-JP/library/ff877956.aspx#Security)
 - そのアカウントの実行アカウントは事前に VMM Server 上で作成しておく必要があります。
-- SQL PS モジュールをオンプレミスで実行している SQL Servers と Azure 仮想マシン上にインストールする必要があります。
+- SQL PS モジュールをオンプレミスで実行している SQL Servers と Azure Virtual Machines 上にインストールする必要があります。
 - Azure で実行している仮想マシン上に VM Agent をインストールする必要があります。
-- Azure の仮想マシン上で実行している SQL Server でNTAUTHORITY\\System に次のアクセス許可が付与されている必要があります。
+- Azure の仮想マシン上で実行している SQL Server でNTAUTHORITY\\System に次のアクセス権が付与されている必要があります。
 	- ALTER AVAILABILITY GROUP - [参照 1](https://msdn.microsoft.com/ja-JP/library/hh231018.aspx)、[参照 2](https://msdn.microsoft.com/ja-JP/library/ff878601.aspx#Anchor_3)
 	- ALTER DATABASE - [参照 1](https://msdn.microsoft.com/ja-JP/library/ff877956.aspx#Security)
 
-##### SQL Server の追加
+##### 1\.SQL Server の追加
 
-[Add SQL] をクリックして、新規の SQL Server を追加します。
+[SQL の追加] をクリックして、新規の SQL Server を追加します。
 
 ![Add SQL](./media/site-recovery-sql/add-sql.png)
 
@@ -146,17 +146,17 @@ SQL Server の管理に使用する SQL Server、VMM、資格情報を詳しく�
 ![Add SQL Dialog](./media/site-recovery-sql/add-sql-dialog.png)
 
 ###### パラメーター
-1. 名前: この SQL Server を表すフレンドリ名
-2. SQL Server (FQDN): 追加するソースの SQL Server の完全修飾ドメイン名 (FQDN)。SQL Server をフェールオーバー クラスターにインストールする場合、クラスターの FQDN を指定し、クラスター ノードの FQDN には指定しないでください。 
-3. SQL Server インスタンス: デフォルトの SQL インスタンスを選択するか、カスタム SQL インスタンス名を指定します。
-4. VMM Server: Azure Site Recovery (ASR) ですでに登録済みの VMM Server のいずれかを選択します。ASR は SQL Server との通信にこの VMM Server を使用します。
-5. 実行アカウント: 上で選択した VMM Server 上で作成した実行アカウント名のいずれかを指定します。この実行アカウントは SQL Server へのアクセスに使用され、SQL Server の可用性グループで読み取りおよびフェールオーバーのアクセス許可を持っている必要があります。 
+ - 名前: この SQL Server を表すフレンドリ名
+ - SQL Server (FQDN): 追加するソースの SQL Server の完全修飾ドメイン名 (FQDN)。SQL Server をフェールオーバー クラスターにインストールする場合、クラスターの FQDN を指定し、クラスター ノードの FQDN には指定しないでください。 
+ - SQL Server インスタンス: デフォルトの SQL インスタンスを選択するか、カスタム SQL インスタンス名を指定します。
+ - VMM Server: Azure Site Recovery (ASR) ですでに登録済みの VMM Server のいずれかを選択します。ASR は SQL Server との通信にこの VMM Server を使用します。
+ - 実行アカウント: 上で選択した VMM Server 上で作成した実行アカウント名のいずれかを指定します。この実行アカウントは SQL Server へのアクセスに使用され、SQL Server の可用性グループで読み取りおよびフェールオーバーのアクセス権を持っている必要があります。 
 
 SQL Server を追加すると、SQL Server タブの下に表示されるようになります。
 
 ![SQL Server List](./media/site-recovery-sql/sql-server-list.png)
 
-##### SQL 可用性グループの追加
+##### 2\.SQL 可用性グループの追加
 
 SQL Server を追加したら、次の手順は ASR への可用性グループの追加になります。それを行うには、前の手順で追加した SQL Server の中をドリルダウンし、[SQL 可用性グループの追加] をクリックします。
 
@@ -170,7 +170,7 @@ SQL 可用性グループは Azure の 1 つまたは複数の仮想マシンへ
 
 >[AZURE.NOTE]上の手順で追加した SQL Server 上でプライマリとなる可用性グループのみが ASR に追加可能です。SQL Server に可用性グループ プライマリを作成した場合、もしくは SQL Server を追加したあとに SQL Server にさらに可用性グループを追加した場合は、SQL Server 上で使用可能な [更新] オプションで更新をかけてください。
 
-#### 復旧計画の作成
+#### 3\.復旧計画の作成
 
 次の手順は仮想マシンと可用性グループの両方を使用した復旧計画の作成です。手順 1 で使用した VMM Server と同じものをソースとして、Microsoft Azure をターゲットとして選択してください。
 
@@ -184,7 +184,7 @@ SQL 可用性グループは Azure の 1 つまたは複数の仮想マシンへ
 
 ![復旧計画のカスタマイズ](./media/site-recovery-sql/customize-rp.png)
 
-#### フェールオーバー
+#### 4\.フェールオーバー
 
 可用性グループを復旧計画に追加した後は、他のフェールオーバー オプションも使用可能になります。
 
@@ -201,7 +201,7 @@ SQL 可用性グループのテスト フェールオーバーはサポートさ
 
 別の方法として、以下のオプションについて検討します。
 
-######方法 1
+###### 方法 1
 
 
 
@@ -209,12 +209,12 @@ SQL 可用性グループのテスト フェールオーバーはサポートさ
 
 2. 読み取り専用モードでレプリカのコピーにアクセスするようアプリケーション層を更新し、アプリケーションの読み取り専用テストを実行します。
 
-######方法 2
+###### 方法 2
 
 1.	(サイト間の VMM の複製または Azure Backup を使用して) レプリカの SQL Server 仮想マシン インスタンスのコピーを作成し、テスト ネットワークで起動します。
 2.	復旧計画を使用して、テスト フェールオーバーを実行します。
 
-##### フェールバック
+#### フェールバック
 
 可用性グループをオンプレミスの SQL Server で再度 "プライマリ" にする場合、復旧計画で計画性フェールオーバーをトリガーし、方向を Microsoft Azure からオンプレミスの VMM Server に選択することで行うことができます。
 
@@ -223,7 +223,7 @@ SQL 可用性グループのテスト フェールオーバーはサポートさ
 計画されていないフェールオーバーの後、可用性グループで反転レプリケーションをトリガーしてレプリケーションを再開させる必要があります。これが行われるまでは、レプリケーションが中断されたままです。
 
 
-### VMM Serverで管理されない環境
+### VMM Server で管理されない環境
 
 VMM Server で管理されない環境については、Azure Automation Runbooks を使用して、SQL 可用性グループのスクリプト化されたフェールオーバーを構成できます。以下が構成手順です。
 
@@ -314,7 +314,7 @@ SQL Server が可用性グループまたはフェールオーバー クラス�
 
 分散トランザクションを使用するアプリケーションの場合は、[SAN レプリケーション](site-recovery-vmm-san.md)または[ VMware サイト間レプリケーション](site-recovery-vmware-to-vmware.md)と共に Site Recovery を使用することをお勧めします。
 
-####復旧計画に関する考慮事項
+#### 復旧計画に関する考慮事項
 
 1. このサンプル スクリプトは、プライマリ サイトおよびセカンダリ サイト上の VMM ライブラリに追加します。
 
@@ -331,7 +331,7 @@ SQL Server が可用性グループまたはフェールオーバー クラス�
 ## スタンドアロンの SQL Server に対する保護の設定
 
 
-この構成では、Site Recovery レプリケーションを使用して、SQL Server マシンを保護することをお勧めします。正確な手順は、SQL Server が仮想マシンまたは物理サーバーのどちらとして設定されているか、および Azure またはセカンダリ オンプレミス サイトのどちらにレプリケートするかによって異なります。可能なデプロイ シナリオに関する手順については、「[Site Recovery の概要](site-recovery-overview.md)」を参照してください。
+この構成では、Site Recovery レプリケーションを使用して、SQL Server マシンを保護することをお勧めします。正確な手順は、SQL Server が仮想マシンまたは物理サーバーのどちらとして設定されているか、および Azure またはセカンダリ オンプレミス サイトのどちらにレプリケートするかによって異なります。可能なデプロイメント シナリオに関する手順については、「[Site Recovery の概要](site-recovery-overview.md)」を参照してください。
 
 
 ## SQL Server クラスター (Standard または 2008 R2) の保護の設定
@@ -374,4 +374,4 @@ SQL Standard のクラスターの場合、計画外のフェールオーバー�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.date="11/19/2015" 
 	ms.author="robmcm"/>
 
 #方法: Java で Media Services を使用する
@@ -22,7 +22,7 @@
 
 ##Media Services 用の Azure アカウントの設定
 
-Media Services アカウントを設定するには、Microsoft Azure 管理ポータルを使用します。「[メディア サービス アカウントの作成方法](media-services-create-account.md)」を参照してください。管理ポータルでアカウントを作成すると、Media Services 開発用にコンピューターをセットアップできるようになります。
+Media Services アカウントを設定するには、Microsoft Azure 管理ポータルを使用します。「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。管理ポータルでアカウントを作成すると、Media Services 開発用にコンピューターをセットアップできるようになります。
 
 ##Media Services 開発のための設定
 
@@ -30,14 +30,14 @@ Media Services アカウントを設定するには、Microsoft Azure 管理ポ�
 
 ###前提条件
 
--   新規または既存の Azure サブスクリプションで作成した Media Services アカウント。「[メディア サービス アカウントの作成方法](media-services-create-account.md)」を参照してください。
+-   新規または既存の Azure サブスクリプションで作成した Media Services アカウント。「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。
 -   Azure Libraries for Java。これは [Azure Java デベロッパー センター][]からインストールできます。
 
 ##方法: Java で Media Services を使用する
 
 次のコードは、アセットを作成してメディア ファイルをアセットにアップロードし、アセットの変換タスクを伴うジョブを実行して、ビデオをストリーミングするためのロケーターを作成する方法を示しています。
 
-このコードを使用する前に、メディア サービス アカウントを設定する必要があります。アカウントの設定方法については、「[メディア サービス アカウントの作成方法](media-services-create-account.md)」を参照してください。
+このコードを使用する前に、メディア サービス アカウントを設定する必要があります。アカウントの設定方法については、「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。
 
 変数 `clientId` と `clientSecret` は、実際の値に置き換えてください。また、このコードは、ローカル保存されているファイルに依存しています。実際に使用するファイルを用意する必要があります。
 	
@@ -272,4 +272,4 @@ Media Services に関する Javadoc ドキュメントについては、[Azure L
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

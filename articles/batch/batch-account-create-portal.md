@@ -76,7 +76,7 @@ Batch アカウント URL は、**[Essentials]** に表示されます。`https:
 
 ## 次のステップ
 
-* Basic の概念について詳しくは、「[Azure Batch の API の基本](batch-api-basics.md)」を参照してください。
+* Batch の概念の詳細については、「[Azure Batch 機能の概要](batch-api-basics.md)」をご覧ください。
 
 * [Batch .NET クライアント ライブラリ](batch-dotnet-get-started.md)を使用して最初のアプリケーション開発を始める
 
@@ -84,4 +84,4 @@ Batch アカウント URL は、**[Essentials]** に表示されます。`https:
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
 [account_keys]: ./media/batch-account-create-portal/account_keys.PNG
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

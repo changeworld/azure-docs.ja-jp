@@ -26,25 +26,9 @@ Visual Studio Application Insights は、2 つのレベルの使用状況の追�
 
 ## 設定
 
-Web アプリケーションからの使用状況データは、クライアント ブラウザーから取得します。
+Application Insights のリソースを [Azure ポータル](https://portal.azure.com)で開き、空のブラウザー ページ負荷グラフをクリックして、セットアップの指示に従います。
 
-#### Application Insights リソースの設定 
-
-Application Insights リソースは、アプリのテレメトリ データが分析され、表示される Microsoft Azure 内の場所です。[ASP.NET][greenbrown] か [J2EE][java] のサーバー側からのデータを表示するためにApplication Insights リソース を既にセットアップしています。そうでない場合は、その作業を実行できます。
-
-通常は、サーバーからのデータと同じリソースに Web クライアントからの使用状況データを表示することをお勧めします。そうすれば、両サイドの診断データとメトリックス データを簡単に関連付けることができます。そのため、リソースが既にある場合は、次の手順に進みます。
-
-#### Web ページにコードを挿入する
-
-[Azure ポータル][portal]のリソースで、クイック スタートを開き、コード スニペットを取得して、Web ページを監視します。
-
-![](./media/app-insights-web-track-usage/02-monitor-web-page.png)
-
-すべてのページに含まれるように、コードを (.NET の) \_Layout.cshtml などのマスター ページまたはインクルード ファイルに配置します。
-
-コード スニペットには、リソースを識別するインストルメンテーション キー (iKey) が含まれています。テスト中などに別のリソースにデータを送信する場合は、iKey を置換するだけで済みます。
-
-Web ページを発行するか、デバッグ モードで使用するには、テレメトリ データを作成します。
+[詳細情報](app-insights-javascript.md)
 
 
 ## Web アプリケーションの人気度を調べる
@@ -393,4 +377,4 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
  
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

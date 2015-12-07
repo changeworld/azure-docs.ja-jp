@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="SQL Data Warehouse Transparent Data Encryption (TDE) ポータルの概要| Microsoft Azure" 
-	description="SQL Data Warehouse Transparent Data Encryption (TDE) ポータルの概要" 
+	pageTitle="SQL Data Warehouse での Transparent Data Encryption (TDE) の概要| Microsoft Azure" 
+	description="SQL Data Warehouse での Transparent Data Encryption (TDE) の概要" 
 	services="sql-data-warehouse" 
 	documentationCenter="" 
 	authors="twounder" 
-	manager="" 
+	manager="barbkess" 
 	editor=""/>
 
 <tags 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/21/2015" 
+	ms.date="11/20/2015" 
 	ms.author="twounder"/>
  
-# Transparent Data Encryption (TDE) の概要
+# SQL Data Warehouse での Transparent Data Encryption (TDE) の概要
 > [AZURE.SELECTOR]
 - [Azure Portal](sql-data-warehouse-encryption-tde.md)
 - [TSQL](sql-data-warehouse-encryption-tde-tsql.md)
@@ -49,7 +49,7 @@ SQL Data Warehouse の TDE を無効にするには、次の手順を実行し�
 
 
 <!--Anchors-->
-[透過的なデータ暗号化 (TDE)]: https://msdn.microsoft.com/ja-JP/library/bb934049.aspx
+[透過的なデータ暗号化 (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 
 
 <!--Image references-->
@@ -61,4 +61,4 @@ SQL Data Warehouse の TDE を無効にするには、次の手順を実行し�
 
 <!--Link references-->
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -47,7 +47,7 @@
 
 次に、**[パラメーターの編集]** セクションで、タグの値を入力します。
 
-![Azure ポータルでタグを編集する](./media/virtual-machines-tagging-arm/edit-tags-in-azure-portal.png)
+![Azure プレビュー ポータルにおけるタグの編集](./media/virtual-machines-tagging-arm/edit-tags-in-azure-portal.png)
 
 **[作成]** をクリックして、タグの値が指定されたこのテンプレートをデプロイします。
 
@@ -58,15 +58,15 @@
 
 タグを表示するには、タグ アイコンを選択します。
 
-![Azure ポータルのタグ アイコン](./media/virtual-machines-tagging-arm/azure-portal-tags-icon.png)
+![Azure プレビュー ポータルにおけるタグのアイコン](./media/virtual-machines-tagging-arm/azure-portal-tags-icon.png)
 
 ポータルで新しいタグを追加するには、キーと値のペアを定義して保存します。
 
-![Azure ポータルで新しいタグを追加する](./media/virtual-machines-tagging-arm/azure-portal-add-new-tag.png)
+![Azure プレビュー ポータルにおける新しいタグの追加](./media/virtual-machines-tagging-arm/azure-portal-add-new-tag.png)
 
 リソースのタグ一覧に新しいタグが表示されます。
 
-![Azure ポータルで保存された新しいタグ](./media/virtual-machines-tagging-arm/azure-portal-saved-new-tag.png)
+![Azure プレビュー ポータルに保存されている新しいタグ](./media/virtual-machines-tagging-arm/azure-portal-saved-new-tag.png)
 
 
 ## PowerShell を使用したタグ付け
@@ -159,15 +159,15 @@ Azure リソース マネージャーで Compute、Network、および Storage �
 
 **[使用量の詳細のダウンロード]** をクリックして、サブスクリプションの使用量の詳細を表示します。
 
-![Azure ポータルの使用量の詳細](./media/virtual-machines-tagging-arm/azure-portal-tags-usage-details.png)
+![Azure プレビュー ポータルにおける使用量の詳細](./media/virtual-machines-tagging-arm/azure-portal-tags-usage-details.png)
 
 課金明細と **[Version 2]** の使用量の詳細を選択します。
 
-![Azure ポータルに表示される Version 2 プレビューの使用量の詳細](./media/virtual-machines-tagging-arm/azure-portal-version2-usage-details.png)
+![Azure プレビュー ポータルに表示される Version 2 プレビューの使用量の詳細](./media/virtual-machines-tagging-arm/azure-portal-version2-usage-details.png)
 
 使用量の詳細の **[タグ]** 列には、すべてのタグが表示されます。
 
-![Azure ポータルのタグ列](./media/virtual-machines-tagging-arm/azure-portal-tags-column.png)
+![Azure プレビュー ポータルにおけるタグ列](./media/virtual-machines-tagging-arm/azure-portal-tags-column.png)
 
 これらのタグと使用量を分析すると、新たな視点で組織の使用データを調査できるようになります。
 
@@ -190,4 +190,4 @@ Azure リソース マネージャーで Compute、Network、および Storage �
 [Microsoft Azure の課金内容の確認]: ../billing-understand-your-bill.md
 [Microsoft Azure リソースの消費を把握する]: ../billing-usage-rate-card-overview.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

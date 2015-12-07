@@ -1,20 +1,20 @@
-**Virtual machine disks: per account limits**
+**仮想マシンのディスク: アカウントあたりの上限**
 
-Resource|Default Limit
+リソース|既定の制限
 ---|---
-Total disk capacity per account|35 TB
-Total snapshot capacity per account|10 TB
-Max bandwidth per account (ingress + egress<sup>1</sup>)|<=50 Gbps
+アカウントごとのディスク容量合計|35 TB
+アカウントごとのスナップショット容量合計|10 TB
+アカウントごとの最大帯域幅 (受信 + 送信<sup>1</sup>)|50 Gbps 以下
 
-<sup>1</sup>*Ingress* refers to all data (requests) being sent to a storage account. *Egress* refers to all data (responses) being received from a storage account.
+<sup>1</sup>受信とはストレージ アカウントに送信されるすべてのデータ (要求) のことです。*送信*とはストレージ アカウントから送信されるすべてのデータ (応答) のことです。
 
-**Virtual machine disks: per disk limits**
+**仮想マシンのディスク: ディスクあたりの上限**
 
-Premium Storage Disk Type | P10 | P20 | P30
+Premium Storage ディスク タイプ | P10 | P20 | P30
 ---|---|---|---
-Disk size | 128 GiB | 512 GiB | 1024 GiB (1 TB)
-Max IOPS per disk | 500 | 2300 | 5000
-Max throughput per disk | 100 MB per second | 150 MB per second | 200 MB per second
-Max number of highly utilized disks | 62 | 41 | 31
+ディスク サイズ | 128 GiB | 512 GiB | 1024 GiB (1 TB)
+ディスクあたりの最大 IOPS | 500 | 2300 | 5000
+ディスクあたりの最大スループット | 100 MB/秒 | 150 MB/秒 | 200 MB/秒
+使用率の高いディスクの最大数 | 62 | 41 | 31
 
-
+<!---HONumber=AcomDC_1125_2015-->

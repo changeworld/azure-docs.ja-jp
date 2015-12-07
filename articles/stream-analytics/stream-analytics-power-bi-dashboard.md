@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/12/2015" 
+	ms.date="11/23/2015" 
 	ms.author="jeffstok"/>
 	
 # Azure Stream Analytics & Power BI: ストリーミング データのリアルタイム分析に関するライブ ダッシュボード
@@ -35,7 +35,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 ## Azure Stream Analytics ジョブの作成 ##
 
-[Azure ポータル](https://manage.windowsazure.com)で、**[新規]、[データ サービス]、[Stream Analytics]、[簡易作成]** の順にクリックします。
+[Azure ポータル](https://manage.windowsazure.com)で、**[新規]、[Data Services]、[Stream Analytics]、[簡易作成]** の順にクリックします。
 
 次の値を指定してから、**[Stream Analytics ジョブの作成]** をクリックします。
 
@@ -221,4 +221,4 @@ Power BI 出力のあるすべてのジョブについて、90 日おきに認�
 [graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
 [graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

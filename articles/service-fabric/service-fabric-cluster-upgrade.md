@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/03/2015"
+   ms.date="11/23/2015"
    ms.author="chackdan"/>
 
 # Service Fabric クラスターのアップグレード
@@ -74,15 +74,17 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
 1. **適切なロード バランサーに新しいプローブを追加する**
 
- ポータルを使用して、クラスターをデプロイした場合、ノード タイプごとのロード バランサーの名前は "loadBalancer-0"、"loadBalancer-1" のようになります。ロード バランサー名はリソース グループ (RG) 内でのみ一意であるため、検索は特定の RG の下で行うことをお勧めします。
+    ポータルを使用して、クラスターをデプロイした場合、ノード タイプごとのロード バランサーの名前は "loadBalancer-0"、"loadBalancer-1" のようになります。ロード バランサー名はリソース グループ (RG) 内でのみ一意であるため、検索は特定の RG の下で行うことをお勧めします。
 
- ![AddingProbes][addingProbes]
+    ![AddingProbes][AddingProbes]
+
 
 2. **ロード バランサーに新しい規則を追加する**
 
-  同じロード バランサーに、前の手順で作成したプローブを使用して、新しい規則を追加します。
+    同じロード バランサーに、前の手順で作成したプローブを使用して、新しい規則を追加します。
 
-  ![AddingLBRules][AddingLBRules]
+    ![AddingLBRules][AddingLBRules]
+
 
 ### 配置プロパティ
 
@@ -94,10 +96,10 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
 ノードの種類ごとに、アプリケーションで負荷をレポートするために使用するカスタム容量メトリックを追加できます。容量メトリックを使用して負荷をレポートする方法の詳細については、[動的な負荷レポートの概要](service-fabric-resource-balancer-dynamic-load-reporting.md)を参照してください。
 
-### クラスターを構成する仮想マシンへの OS 修正プログラムの適用
+### クラスターを構成する Virtual Machines への OS 修正プログラムの適用
 これは、準備中の機能です。現時点では、お客様が VM に修正プログラムを適用する必要があります。同時に複数の VM をダウンさせないために、この操作は一度に 1 つずつの VM に行う必要があります。
 
-### クラスターを構成する仮想マシンでの新しい OS へのアップグレード
+### クラスターを構成する Virtual Machines での新しい OS へのアップグレード
 使用している OS イメージをアップグレードする必要がある場合は、一度に 1 つずつの VM で、お客様自身がアップグレードを行う必要があります。現時点では、自動化はできません。
 
 
@@ -111,4 +113,4 @@ Microsoft は、クラスターで実行されるファブリック コードと
 [AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes.png
 [AddingLBRules]: ./media/service-fabric-cluster-upgrade/addingLBRules.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

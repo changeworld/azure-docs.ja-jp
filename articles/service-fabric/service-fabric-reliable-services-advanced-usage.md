@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/26/2015"
+   ms.date="11/17/2015"
    ms.author="jesseb"/>
 
 # Reliable Services プログラミング モデルの詳細な使用方法
 Service Fabric を使用すると、信頼性の高いステートレス サービスとステートフル サービスを簡単に作成および管理できます。このガイドでは、サービスの制御と柔軟性を高めるための Reliable Services プログラミング モデルの詳細な使用方法について説明します。このガイドをお読みになる前に、[Reliable Services プログラミング モデル](service-fabric-reliable-services-introduction.md)について理解しておいてください。
 
 ## ステートレス サービスの基本クラス
-StatelessService 基本クラスでは CreateCommunicationListener() と RunAsync() を提供しており、大半のステートレス サービスにはこれで十分です。StatelessServiceBase クラスは、StatelessService の基盤となり、追加のサービス ライフ サイクル イベントを公開します。制御の強化または柔軟性の向上を必要とする場合は、StatelessServiceBase から派生することができます。詳細については、[StatelessService](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.services.statelessservice.aspx) および [StatelessServiceBase](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.services.statelessservicebase.aspx) に関するページの開発者向けリファレンス ドキュメントを参照してください。
+StatelessService 基本クラスでは RunAsync() と CreateServiceInstanceListeners() を提供しており、大半のステートレス サービスにはこれで十分です。StatelessServiceBase クラスは、StatelessService の基盤となり、追加のサービス ライフ サイクル イベントを公開します。制御の強化または柔軟性の向上を必要とする場合は、StatelessServiceBase から派生することができます。詳細については、[StatelessService](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.services.statelessservice.aspx) および [StatelessServiceBase](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.services.statelessservicebase.aspx) に関するページの開発者向けリファレンス ドキュメントを参照してください。
 
 - `void OnInitialize(StatelessServiceInitializiationParameters)` OnInitialize は、Service Fabric によって最初に呼び出されるメソッドです。サービス名、パーティション ID、インスタンス ID、およびコード パッケージ情報などのサービス初期化情報が得られます。ここでは、複雑な処理を行うべきではありません。時間のかかる初期化は、OnOpenAsync で行う必要があります。
 
@@ -35,11 +35,7 @@ StatefulService 基本クラスは、ほとんどのステートフル サービ
 
 - `Task OnChangeRoleAsync(ReplicaRole, CancellationToken)` OnChangeRoleAsync は、ステートフル サービスのロールが、プライマリやセカンダリなどに変更されるときに呼び出されます。プライマリ レプリカには書き込み状態 (信頼性の高いコレクションの作成と書き込みが許可される) が指定され、セカンダリ レプリカには読み取り状態 (既存の信頼性の高いコレクションからのみ読み取ることができる) が指定されます。ロールの変更に対応して、セカンダリでの読み取り専用検証、レポート生成、またはデータ マイニングの実行などのバック グラウンド タスクを開始または更新できます。
 
-- `IStateProviderReplica CreateStateProviderReplica()` ステートフル サービスは、信頼性の高い状態プロバイダーを備えることが期待されます。StatefulService は、信頼性の高いコレクション (辞書やキューなど) を提供する ReliableStateManager クラスを使用します。状態を自分で管理する場合に独自のプロバイダーを提供したり、組み込みのいずれかの状態プロバイダーの機能を拡張したりすることができます。
-
-- `bool EnableCommunicationListenerOnSecondary { get; }` 既定で、通信リスナーはプライマリにのみ作成されます。StatefulService と StatefulServiceBase の両方を使用して、セカンダリに通信リスナーを作成するように、このプロパティをオーバーライドできます。読み取りが多いワークロードでのスループットを向上するため、セカンダリで読み取り専用要求を処理させたいと考える場合があります。
-
-    > [AZURE.NOTE]ただし、セカンダリでは信頼性の高いコレクションの作成や書き込みが試行されないようにする必要があります。セカンダリでの書き込みの試行により、例外が発生しますが、これを処理しないと、レプリカが閉じられ、再度開かれます。
+- `IStateProviderReplica CreateStateProviderReplica()` ステートフル サービスは、信頼性の高い状態プロバイダーを備えることが期待されます。StatefulService は、信頼性の高いコレクション (辞書やキューなど) を提供する ReliableStateManager クラスを使用します。このメソッドを上書きし、ReliableStateManager クラスを構成できます。その場合、ReliableStateManagerConfiguration をそのコンストラクターに渡します。これにより、カスタムのステート シリアライザーを提供したり、データが失われたときの動作を指定したり、レプリケーター/ステート プロバイダーを構成したりできます。
 
 さらに、StatefulServiceBase は、StatelessServiceBase と同じ 4 つのライフ サイクル イベントを同じセマンティクスとユース ケースで提供します。
 
@@ -59,4 +55,4 @@ Service Fabric に関する詳細なトピックについては、次の記事�
 
 - [配置の制約の概要](service-fabric-placement-constraint.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

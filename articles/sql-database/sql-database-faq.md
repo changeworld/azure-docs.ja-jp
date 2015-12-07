@@ -72,6 +72,6 @@ V12 データベースでは、サービス階層 (Basic、Standard、および 
 バックアップ ストレージは、ポイントインタイム リストアと Geo 復元に使用される自動化されたデータベース バックアップに関連付けられたストレージです。Microsoft Azure SQL Database は、バックアップ ストレージとして、プロビジョニングされている最大のデータベース ストレージの 200% までを追加のコストなしで提供します。たとえば、プロビジョニングされたデータベース サイズが 250 GB の Standard データベース インスタンスの場合、500 GB のバックアップ ストレージが追加のコストなしで提供されます。提供されるバックアップ ストレージをデータベースが超過している場合は、Azure サポートに連絡して保有期間を短縮するか、または読み取りアクセスのジオ (主要地域) 冗長ストレージ (RA-GRS) の標準料金をお支払いいただいてバックアップ ストレージを追加することができます。RA-GRS の請求の詳細については、「Storage の料金詳細」を参照してください。
 
 ## Web または Business を新しいサービス階層に移行する際に何を理解しておけばよいでしょうか。
-Azure SQL Web データベースおよび Business データベースは提供終了になりました。Basic、Standard、Premium、および Elastic 階層は、提供終了になった Web データベースおよび Business データベースの代わりです。別途、この移行期間に役立つ FAQ を用意しています。[Web および Business Edition の終了に関する FAQ](sql-database-web-business-faq.md)
+Azure SQL Web データベースおよび Business データベースは提供終了になりました。Basic、Standard、Premium、および Elastic 階層は、提供終了になった Web データベースおよび Business データベースの代わりです。別途、この移行期間に役立つ FAQ を用意しています。[Web および Business Edition の終了に関する FAQ](sql-database-web-business-sunset-faq.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

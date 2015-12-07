@@ -38,11 +38,11 @@ Azure では、仮想ハードウェアの選択、およびソフトウェア�
 この記事では、Linux 仮想マシンを既に作成していること、および MYSQL をインストールして構成していることを前提としています。作業の開始の詳細については、「Azure で MySQL をインストールする方法」を参照してください。
 
 ###Azure における RAID の構成
-次の手順は、Microsoft Azure 管理ポータルを使用して Azure に RAID を作成する方法を説明しています。Windows PowerShell スクリプトを使用して RAID を設定することもできます。この例では 4 つのディスクで RAID 0 を構成します。
+次の手順は、Azure ポータルを使用して Azure に RAID を作成する方法を説明しています。Windows PowerShell スクリプトを使用して RAID を設定することもできます。この例では 4 つのディスクで RAID 0 を構成します。
 
 ####手順 1. 仮想マシンにデータ ディスクを追加する  
 
-Microsoft Azure 管理ポータルの [仮想マシン] ページで、データ ディスクを追加する仮想マシンをクリックします。この例では、仮想マシンは mysqlnode1 です。
+Azure ポータルの [Virtual Machines] ページで、データ ディスクを追加する仮想マシンをクリックします。この例では、仮想マシンは mysqlnode1 です。
 
 ![][1]
 
@@ -348,4 +348,4 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 [13]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-13.png
 [14]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-14.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

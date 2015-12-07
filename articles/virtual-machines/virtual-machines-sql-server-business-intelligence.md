@@ -41,7 +41,7 @@ Microsoft Azure 仮想マシン ギャラリーには、Microsoft SQL Server を
 
 ![PowerShell](./media/virtual-machines-sql-server-business-intelligence/IC660119.gif) 次の PowerShell スクリプトは、ImageName に "SQL Server" が含まれた Azure イメージのリストを返します。
 
-	# assumes you have already uploaded a management certificate to your Microsoft Azure Subscription. View the thumbprint value from the "settings" menu in Microsoft Azure Management Portal
+	# assumes you have already uploaded a management certificate to your Microsoft Azure Subscription. View the thumbprint value from the "settings" menu in Azure portal.
 	
 	$subscriptionID = ""    # REQUIRED: Provide your subscription ID.
 	$subscriptionName = "" # REQUIRED: Provide your subscription name.
@@ -160,7 +160,7 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 
 - で接続するには、仮想マシンの名前をクリックし、**[接続]** をクリックします。リモート デスクトップ接続が開き、コンピューター名が自動的に設定されます。
 
-	![connect to azure virtual machine](./media/virtual-machines-sql-server-business-intelligence/IC650112.gif)
+	![Azure 仮想マシンに接続](./media/virtual-machines-sql-server-business-intelligence/IC650112.gif)
 
 - Windows リモート デスクトップ接続を使用して、仮想マシンに接続します。リモート デスクトップのユーザー インターフェイスで、次の手順を実行します。
 
@@ -431,4 +431,4 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

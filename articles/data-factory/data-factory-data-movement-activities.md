@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/09/2015" 
+	ms.date="11/19/2015" 
 	ms.author="spelluru"/>
 
 # データ移動アクティビティ
@@ -40,25 +40,12 @@
 Data Management Gateway を使用すると、Azure IaaS VM (サービスとしてのインフラストラクチャ仮想マシン) でホストされている、サポートされるデータ ストア間でデータを移動することもできます。この場合、Data Management Gateway は、データ ストア自体と同じ Azure VM、またはデータ ストアに到達するためのアクセス権を持つ別の VM にインストールできます。
 
 ## サポートされるデータ ストア
-コピー アクティビティは、**ソース** データ ストアから**シンク** データ ストアにデータをコピーします。Data Factory は、以下のデータ ストアおよびソースとシンクの組み合わせをサポートします。データ ストアをクリックすると、そのストアとの間でデータをコピーする方法がわかります。
+コピー アクティビティは、**ソース** データ ストアから**シンク** データ ストアにデータをコピーします。Data Factory は次のデータ ストアをサポートしています。また、**任意のソースのデータを任意のシンクに書き込むことができます**。データ ストアをクリックすると、そのストアとの間でデータをコピーする方法がわかります。
 
-| **ソース** | **シンク** |
-| ------ | ---- |
-| [Azure BLOB](data-factory-azure-blob-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、Azure DocumentDB、オンプレミス/Azure IaaS のファイル システム、Azure Data Lake Store |
-| [Azure テーブル](data-factory-azure-table-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、Azure DocumentDB、Azure Data Lake Store |
-| [Azure SQL Database](data-factory-azure-sql-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、Azure DocumentDB、Azure Data Lake Store |
-| [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、Azure DocumentDB、Azure Data Lake Store |
-| [Azure DocumentDB](data-factory-azure-documentdb-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、Azure Data Lake Store |
-| [Azure Data Lake Store](data-factory-azure-datalake-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、Azure DocumentDB、オンプレミス/Azure IaaS のファイル システム、Azure Data Lake Store | 
-| [IaaS 上の SQL Server](data-factory-sqlserver-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、Azure Data Lake Store |
-| [オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、オンプレミス/Azure IaaS のファイル システム、Azure Data Lake Store |
-| [オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、Azure Data Lake Store |
-| [オンプレミス/Azure IaaS の Oracle データベース](data-factory-onprem-oracle-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、Azure Data Lake Store |
-| [オンプレミス/Azure IaaS の MySQL データベース](data-factory-onprem-mysql-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、Azure Data Lake Store |
-| [オンプレミス/Azure IaaS の DB2 データベース](data-factory-onprem-db2-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、Azure Data Lake Store |
-| [オンプレミス/Azure IaaS の Teradata データベース](data-factory-onprem-teradata-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、Azure Data Lake Store |
-| [オンプレミス/Azure IaaS の Sybase データベース](data-factory-onprem-sybase-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、Azure Data Lake Store |
-| [オンプレミス/Azure IaaS の PostgreSQL データベース](data-factory-onprem-postgresql-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミス/Azure IaaS の SQL Server、Azure Data Lake Store |
+| ソース| シンク |
+|:------- | :---- |
+| <ul><li>[Azure Blob](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li><li>[オンプレミス/Azure IaaS の Oracle Database](data-factory-onprem-oracle-connector.md)</li><li>[オンプレミス/Azure IaaS の MySQL Database](data-factory-onprem-mysql-connector.md)</li><li>[オンプレミス/Azure IaaS の DB2 Database](data-factory-onprem-db2-connector.md)</li><li>[オンプレミス/Azure IaaS の Teradata Database](data-factory-onprem-teradata-connector.md)</li><li>[オンプレミス/Azure IaaS の Sybase Database](data-factory-onprem-sybase-connector.md)</li><li>[オンプレミス/Azure IaaS の PostgreSQL Database](data-factory-onprem-postgresql-connector.md)</li></ul> | <ul><li>[Azure Blob](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li></ul> |
+
 
 ## チュートリアル
 コピー アクティビティの使用のクイック チュートリアルについては、「[チュートリアル: Azure Data Factory パイプラインでコピー アクティビティを使用する](data-factory-get-started.md)」を参照してください。このチュートリアルでは、コピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。次のセクションは、コピー アクティビティでサポートされているすべてのソースとシンクの一覧です。
@@ -122,4 +109,4 @@ Azure Data Factory 自体は、米国西部と北ヨーロッパのリージョ�
 
 コピー アクティビティの場合、**typeProperties** セクションはソースとシンクの種類によって異なります。上に示した各データ ストア固有のページで、データ ストアの種類に固有のこれらのプロパティが説明されています。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/17/2015" 
+	ms.date="11/19/2015" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication の構成
@@ -365,4 +365,4 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 <li>[サービスの設定] ページで、[ユーザーのデバイス設定の管理] の下の [デバイスを記憶させることで多要素認証を一時停止することをユーザーに許可する] をオン/オフします。</li>
 ![デバイスの一時停止](./media/multi-factor-authentication-manage-users-and-devices/suspend.png) <li>一時停止を許可する日数を設定します。既定値は 14 日です。</li> <li>[保存] をクリックします。</li> 。<li>[閉じる] をクリックします。</li>
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

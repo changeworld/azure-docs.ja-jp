@@ -17,7 +17,7 @@
 
 # Web および Business Edition の終了に関する FAQ
 
-Azure SQL Web データベースおよび Business データベースは提供終了になりました。Basic、Standard、Premium、および Elastic 階層は、提供終了になった Web データベースおよび Business データベースの代わりです。
+Azure SQL Web データベースおよび Business データベースは提供終了になりました。Basic、Standard、Premium、およびエラスティック階層は、提供終了になった Web データベースおよび Business データベースの代わりです。
 
 Web データベースおよび Business データベースをアップグレードする際、SQL Database サービスでは、そのワークロード履歴に基づいた適切なサービス階層とパフォーマンス レベル (価格レベル) をお勧めしています。
 
@@ -60,10 +60,12 @@ Basic、Standard、Premium の Azure SQL Database は時間単位で課金され
 
 ## 関連項目
 
-[Azure SQL Dtabase](https://azure.microsoft.com/documentation/services/sql-database/)
+[Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
+
+[Web および Business の価格](https://azure.microsoft.com/pricing/details/sql-database/web-business/)
 
 [サービス階層](sql-database-service-tiers.md)
 
 [SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする](sql-database-upgrade-new-service-tiers.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

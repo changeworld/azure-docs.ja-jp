@@ -3,7 +3,7 @@
    description="Service Fabric サービスのパーティションの分割方法について説明します"
    services="service-fabric"
    documentationCenter=".net"
-   authors="bscholl"
+   authors="bmscholl"
    manager="timlt"
    editor=""/>
 
@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/26/2015"
+   ms.date="11/17/2015"
    ms.author="bscholl"/>
 
 # Service Fabric Reliable Services をパーティション分割する方法
-この記事では、Service Fabric Reliable Services のパーティション分割に関する基本的な概念について説明します。この記事で使用するソース コードは、[Github (最終的なリンクを追加)](http://Github.com) にも掲載されています。
+この記事では、Service Fabric Reliable Services のパーティション分割に関する基本的な概念について説明します。この記事で使用するソース コードは、[Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions) にも掲載されています。
 
 ## パーティション分割とは
-パーティション分割は Service Fabric に固有のものではなく、スケーラブルなサービス構築の中心的なパターンです。パーティション分割とは、広義では状態 (データ) の分割に関する概念と考えることができます。計算してアクセスしやすい小さな単位に分割することで、スケーラビリティとパフォーマンスを改善できます。よく知られているパーティション分割の形式として、[データのパーティション分割] (https://en.wikipedia.org/wiki/Partition_(database)) があります (シャーディングとも呼ばれます)。
+パーティション分割は Service Fabric に固有のものではなく、スケーラブルなサービス構築の中心的なパターンです。パーティション分割とは、広義では状態 (データ) の分割に関する概念と考えることができます。計算してアクセスしやすい小さな単位に分割することで、スケーラビリティとパフォーマンスを改善できます。よく知られているパーティション分割の形式として、シャーディングとも呼ばれる[データのパーティション分割][wikipartition]があります。
 
 
 ### Service Fabric ステートレス サービスのパーティション分割
@@ -59,7 +59,7 @@ Service Fabric には状態 (データ) をパーティション分割する高�
 この問題を回避するために、パーティション分割の点で次の 2 つの手順を実行する必要があります。
 
 - すべてのパーティションに均等に分散されるように状態をパーティション分割します。
-- [サービスの各レプリカからメトリックをレポートします](service-fabric-reliable-services-advanced-usage.md)。Service Fabric には、サービスに関するメモリ量やレコード数などのメトリックをレポートする機能があります。Service Fabric では、レポートされたメトリックに基づいて一部のパーティションが他のパーティションよりも負荷が高いことが検出され、レプリカをより適切なノードに移動してクラスターのバランスが再調整されます。
+- [サービスの各レプリカからメトリックをレポートします](service-fabric-resource-balancer-dynamic-load-reporting.md)。Service Fabric には、サービスに関するメモリ量やレコード数などのメトリックをレポートする機能があります。Service Fabric では、レポートされたメトリックに基づいて一部のパーティションが他のパーティションよりも負荷が高いことが検出され、レプリカをより適切なノードに移動してクラスターのバランスが再調整されます。
 
 場合によっては、特定のパーティションのデータ量がどのくらいになるかがわからないことがあります。そのため、一般的な推奨として、まずパーティション全体に均等に分散するパーティション分割戦略を採用してから、負荷をレポートするという、両方の方法を実行してみてください。1 つ目の方法で投票の例で説明されている状況を防ぎ、2 つ目の方法で長期間にわたるアクセスまたは負荷の一時的な差異を均等にすることができます。
 
@@ -75,7 +75,7 @@ Service Fabric には状態 (データ) をパーティション分割する高�
 
 実行中のクラスターでリソースの上限に達した場合はどうなるでしょうか。 クラスターをスケールアウトするだけで、この新しい要件に対応できます。
 
-[容量計画ガイド](manisdoc.md)では、クラスターに必要なノード数を決定する方法に関するガイダンスが説明されています。
+[容量計画ガイド](service-fabric-capacity-planning.md)では、クラスターに必要なノード数を決定する方法に関するガイダンスが説明されています。
 
 ## パーティション分割する方法
 ここでは、サービスをパーティション分割する基本的な方法について説明します。
@@ -138,7 +138,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 
     以上の手順で、26 個のパーティションがある内部エンドポイントをリッスンするようにサービスが構成されました。
 
-7. 次に、Processing クラスの `CreateServiceReplicaListeners()`メソッドをオーバーライドする必要があります。
+7. 次に、Processing クラスの `CreateServiceReplicaListeners()` メソッドをオーバーライドする必要があります。
 
     >[AZURE.NOTE]この例では、単純な HttpCommunicationListener を使用しているという想定です。信頼性の高いサービス通信の詳細については、[こちら](service-fabric-reliable-services-communication.md)を参照してください。
 
@@ -292,7 +292,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     private static readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
 
-    `ResolveAsync`メソッドには、サービス URI、パーティション キー、キャンセル トークンのパラメーターがあります。処理サービスのサービス URI は `fabric:/AlphabetPartitions/Processing` です。次に、パーティションのエンドポイントを取得します。
+    `ResolveAsync` メソッドには、サービス URI、パーティション キー、キャンセル トークンのパラメーターがあります。処理サービスのサービス URI は `fabric:/AlphabetPartitions/Processing` です。次に、パーティションのエンドポイントを取得します。
 
     ```CSharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
@@ -312,7 +312,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 
     処理が完了したら、出力を書き戻します。
 
-15. 最後の手順は、サービスのテストです。Visual Studio では、ローカル デプロイメントとクラウド デプロイメントにアプリケーション パラメーターを使用します。ローカルに 26 個のパーティションがあるサービスをテストする場合、次のように、AlphabetPartitions プロジェクトの ApplicationParameters フォルダーにある `Local.xml`ファイルを更新する必要があります。
+15. 最後の手順は、サービスのテストです。Visual Studio では、ローカル デプロイメントとクラウド デプロイメントにアプリケーション パラメーターを使用します。ローカルに 26 個のパーティションがあるサービスをテストする場合、次のように、AlphabetPartitions プロジェクトの ApplicationParameters フォルダーにある `Local.xml` ファイルを更新する必要があります。
 
     ```xml
     <Parameters>
@@ -324,7 +324,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 16. デプロイが完了したら、Service Fabric Explorer でサービスとそのすべてのパーティションを確認できます。![サービス](./media/service-fabric-concepts-partitioning/alphabetservicerunning.png)
 17. ブラウザーで `http://localhost:8090/?lastname=somename` を入力してパーティション分割ロジックをテストできます。同じ文字で始まる各姓が同じパーティションに格納されていることがわかります。![[ブラウザー] ボタンを](./media/service-fabric-concepts-partitioning/alphabetinbrowser.png)
 
-サンプルの完全なソース コードについては、[Github](www.github.com) を参照してください。
+サンプルの完全なソース コードについては、[Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions) を参照してください。
 
 ## 次のステップ
 
@@ -334,4 +334,6 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 
 - [Service Fabric サービスの拡張性](service-fabric-concepts-scalability.md)
 
-<!---HONumber=Nov15_HO4-->
+[wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
+
+<!---HONumber=AcomDC_1125_2015-->

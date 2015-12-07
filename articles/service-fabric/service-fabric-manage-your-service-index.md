@@ -33,11 +33,12 @@
 ## アプリケーションのアップグレード
 アプリケーションのアップグレード方法については、次を参照してください。
 
-- [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
-- [アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)
-- [高度なトピック](service-fabric-application-upgrade-advanced.md)
-- [アプリケーション アップグレードの障害のトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
+- [Visual Studio による Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
+- [PowerShell を使用した Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade-powershell.md)
 - [アプリケーション アップグレードのチュートリアル](service-fabric-application-upgrade-tutorial.md)
+- [アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)
+- [手動アップグレードと差分のパッケージを使用したアップグレード](service-fabric-application-upgrade-advanced.md)
+- [アプリケーション アップグレードの障害のトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
 - [Service Fabric アプリケーションのアップグレード: データのシリアル化](service-fabric-application-upgrade-data-serialization.md)
 
 ## アプリケーション サービスのスケーリングおよびパーティション分割
@@ -49,4 +50,4 @@
 ## クラスターの管理
 - [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

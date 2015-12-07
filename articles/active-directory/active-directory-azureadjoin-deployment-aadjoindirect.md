@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure AD 参加の使用シナリオとデプロイに関する考慮事項 | Microsoft Azure" 
-	description="管理者がエンド ユーザー (従業員、学生、他のユーザー) のために Azure AD 参加を設定する方法を説明するトピック。また、Azure AD 参加を使用するさまざまな実際のシナリオについても説明します。" 
+	description="管理者がエンド ユーザー (従業員、学生、他のユーザー) のために Azure AD 参加を設定する方法を説明します。また、Azure AD 参加を使用するさまざまな実際のシナリオについても説明します。" 
 	services="active-directory" 
 	documentationCenter="" 
 	authors="femila" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/17/2015" 
+	ms.date="11/19/2015" 
 	ms.author="femila"/>
 
 # Azure AD 参加の使用シナリオとデプロイに関する考慮事項 
@@ -92,4 +92,4 @@
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

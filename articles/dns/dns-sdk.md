@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="08/20/2015"
+   ms.date="11/19/2015"
    ms.author="joaoma"/>
 # .NET SDK を使用した DNS ゾーンとレコード セットの作成
 DNS ゾーン、レコードセット、レコードを作成、削除、更新する操作は、DNS SDK と .NET DNS 管理ライブラリを使用して自動化できます。Visual Studio プロジェクト全体は、[こちら](http://download.microsoft.com/download/2/A/C/2AC64449-1747-49E9-B875-C71827890126/AzureDnsSDKExample_2015_05_05.zip)から入手できます。
@@ -102,10 +102,6 @@ Azure DNS では、[Etag](dns-getstarted-create-dnszone.md#Etags-and-tags) と�
 	}
 ## 次のステップ
 
-[Traffic Manager について](traffic-manager-overview.md)
-
-[Azure DNS とは](dns-overview.md)
-
 [Visual Studio SDK のサンプル プロジェクト](http://download.microsoft.com/download/2/A/C/2AC64449-1747-49E9-B875-C71827890126/AzureDnsSDKExample_2015_05_05.zip)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

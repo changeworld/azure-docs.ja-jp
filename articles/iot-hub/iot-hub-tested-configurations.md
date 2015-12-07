@@ -92,7 +92,7 @@ Java 用 Microsoft Azure IoT サービス SDK は、次の構成でテストさ�
 
 ## CSharp
 
-[.NET 用 Microsoft Azure IoT デバイス SDK](https://github.com/Azure/azure-iot-sdks/blob/master/csharp/readme.md) は、次の構成でテストされています。
+[.NET 用 Microsoft Azure IoT デバイス SDK](https://github.com/Azure/azure-iot-sdks/blob/master/csharp/device/readme.md) は、次の構成でテストされています。
 
 |OS プラットフォーム| バージョン|プロトコル|
 |:---------|:----------:|:----------:|
@@ -130,4 +130,4 @@ Java 用 Microsoft Azure IoT サービス SDK は、次の構成でテストさ�
 
 **Certified for IoT** デバイスを使用したソリューションの開発に関する詳細については、[こちら](http://azure.com/iotdev)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

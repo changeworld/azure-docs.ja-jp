@@ -90,11 +90,15 @@ SSH を使用して VM にログインします。
 
   ほとんどの Linux では、次のコマンドを使用します。
 
-      #sudo cp waagent /usr/sbin
+    #sudo cp waagent /usr/sbin
 
   CoreOs の場合は、次のコマンドを使用します。
 
     #sudo cp waagent /usr/share/oem/bin/
+
+  Azure Linux エージェントを新規にインストールの場合は、次を実行します。
+ 
+    #sudo /usr/sbin/waagent -install -verbose
 
 ###バージョン 2.1.x の場合は次を使用します:
 
@@ -126,4 +130,4 @@ CoreOS では、上記のコマンドが機能しない場合があります。
 
 Azure Linux エージェントの詳細については、[Azure Linux エージェントの README](https://github.com/Azure/WALinuxAgent) を参照してください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)" 
-	description="Azure Multi-Factor Authentication は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。ユーザーのサインインとトランザクションに多層構造のセキュリティを確保することができます。" 
+	description="Azure Multi-factor authentication (MFA) に関してよく寄せられる質問の一覧を提供します。MFA は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。ユーザーのサインインとトランザクションに多層構造のセキュリティを確保することができます。" 
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/17/2015" 
+	ms.date="11/20/2015" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)
@@ -125,6 +125,12 @@ Azure Multi-factor Authentication サービスは、SMS アグリゲーターを
 
 またテキスト メッセージによる確認は、米国やカナダなどの一部の国ではより信頼性が高くなります。Azure Multi-factor Authentication を使用して信頼性の高いテキスト メッセージを受信することが難しいユーザーは、代わりにモバイル アプリまたは電話による方法を選択することをお勧めします。モバイル アプリによる通知は携帯電話でも Wi-Fi 接続でも受信可能で、デバイスがまったく応答信号を出さない場合でもモバイル アプリ パスコードが表示されるため、便利です。Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、[IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で利用できます。
 
+**Q: Azure MFA Server でハードウェア トークンを使用できますか。**
+
+Azure MFA Server を使用している場合は、サードパーティの OATH TOTP トークンをインポートして MFA で使用できます。現在、Gemalto で独自のトークン用に生成し、CSV 形式でのトークンのインポートをサポートできる、古い PSKC 形式のサードパーティの OATH TOTP トークンのインポートがサポートされています。CSV 形式でトークンをインポートする場合は、CSV ファイルにシリアル番号、Base32 形式のシークレット キーおよび時間間隔 (通常は 30 秒) を含める必要があります。
+
+したがって、ActiveIdentity トークンが TOTP OATH トークンで、Azure MFA Server にインポート可能な CSV ファイルにシークレット キー ファイルを取得できる場合は、それらを使用できます。OATH トークンは、AD FS、RADIUS (クライアント システムでアクセス チャレンジ応答を処理できる場合) および IIS フォーム ベース認証で使用できます。
+
 
 ## エラー
 
@@ -145,4 +151,4 @@ Azure Multi-factor Authentication サービスは、SMS アグリゲーターを
 
 これを回避するには、管理関連の操作と管理以外の操作に関して異なるユーザー アカウントを使用します。後ほど、管理アカウントと非管理アカウント間のメールボックスでリンクを作成することによって、非管理アカウントを使用して outlook にサインインできます。詳細については、「[管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1)」 を参照してください。
 
-<!----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

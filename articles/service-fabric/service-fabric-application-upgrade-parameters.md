@@ -68,13 +68,15 @@
 ## 次のステップ
 
 
-[アップグレード チュートリアル](service-fabric-application-upgrade-tutorial.md)
+[Visual Studio による Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-[高度なトピック](service-fabric-application-upgrade-advanced.md)
+[PowerShell を使用した Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade-powershell.md)
+
+[手動アップグレードと差分のパッケージを使用したアップグレード](service-fabric-application-upgrade-advanced.md)
 
 [アプリケーション アップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
 
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -85,7 +85,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 1. 登録する VMM サーバーから[管理ポータル](https://portal.azure.com)にサインインします。
 
-2. **[Data Services]**、**[復旧サービス]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
+2. **[Data Services]**、**[Recovery Services]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
 
 
 3. **[新規作成]**、**[簡易作成]** の順にクリックします。
@@ -169,22 +169,24 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 8. *[次へ]* をクリックしてプロセスを完了します。登録後に、VMM サーバーからのメタデータが、Azure Site Recovery によって取得されます。サーバーは、コンテナーの **[サーバー]** ページの *[VMM サーバー]* タブに表示されます。
 
 >[AZURE.NOTE]Azure Site Recovery プロバイダーは、次のコマンド ラインを使用してインストールすることもできます。このメソッドを使用すると、Windows Server 2012 R2 の Server CORE にプロバイダーをインストールできます。
->
->1. プロバイダーのインストール ファイルと登録キーを C:\\ASR などのフォルダーにダウンロードします。
->2. System Center Virtual Machine Manager サービスを停止します。
->3. **管理者**特権でコマンド プロンプトから次のコマンドを実行して、プロバイダーのインストーラーを抽出します。
->
+
+1. プロバイダーのインストール ファイルと登録キーを C:\\ASR などのフォルダーにダウンロードします。
+1. System Center Virtual Machine Manager サービスを停止します。
+1. **管理者**特権でコマンド プロンプトから次のコマンドを実行して、プロバイダーのインストーラーを抽出します。
+
     	C:\Windows\System32> CD C:\ASR
     	C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q
->4. 次のコマンドを実行して、プロバイダーをインストールします。
->
+1. 次のコマンドを実行して、プロバイダーをインストールします。
+
 		C:\ASR> setupdr.exe /i
->5. 次のコマンドを実行して、プロバイダーを登録します。
->
+1. 次のコマンドを実行して、プロバイダーを登録します。
+
     	CD C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin
-    	C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file> /EncryptionEnabled <full file name to save the encryption certificate>         
- ####コマンド ラインのインストール パラメーター一覧####
->
+    	C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file> /EncryptionEnabled <full file name to save the encryption certificate>     
+
+    
+#### コマンド ラインのインストール パラメーター一覧
+
  - **/Credentials**: 登録キー ファイルが配置されている場所を指定する必須パラメーターです。  
  - **/Friendlyname**: Azure Site Recovery ポータルに表示される、Hyper-V ホスト サーバーの名前を表す必須パラメーターです。
  - **/EncryptionEnabled**: 省略可能。VMM から Azure へのシナリオで、Azure にある仮想マシンの暗号化が必要な場合にのみ使用する必要があります。拡張子が **.pfx** のファイル名を指定してください。
@@ -261,7 +263,7 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 - ソースとターゲットの両方の VMM サーバーでストレージ分類を定義します。手順については、[VMM のストレージ分類の作成方法に関するページ](http://go.microsoft.com/fwlink/?LinkId=400937)を参照してください。分類は、ソースおよびターゲットのクラウド内の Hyper-V ホスト サーバーで使用できる必要があります。分類のストレージの種類は同じでなくてもかまいません。たとえば、SMB 共有が含まれているソース分類を CSV が含まれているターゲット分類に割り当てることができます。
 - 分類を定義したら、マッピングを作成できます。
 1. **[クイック スタート]** ページで、**[ストレージのマップ]** をクリックします。
-1. **[ストレージ]** タブで、**[ストレージ分類のマップ]** をクリックします。
+1. **[Storage]** タブで、**[ストレージ分類のマップ]** をクリックします。
 1. **[ストレージ分類のマップ]** タブで、ソースとターゲットの VMM サーバーの分類を選択します。設定を保存します。
 
 	![ターゲット ネットワークの選択](./media/site-recovery-vmm-to-vmm/ASRE2EHVR_StorageMapping1.png)
@@ -284,7 +286,9 @@ VMM コンソールでも仮想マシンの保護を有効にできます。仮�
 ![仮想マシン保護ジョブ](./media/site-recovery-vmm-to-vmm/ASRE2EHVR_VMJobs.png)
 
 ### 既存の仮想マシンの追加
-Hyper-V レプリカを使用してレプリケートされる VMM 内に既存の仮想マシンがある場合、次の手順で Azure Site Recovery の保護にそれらの仮想マシンを追加する必要があります。プライマリ クラウドとセカンダリ クラウドがあることを確認します。既存の仮想マシンをホストしている Hyper-V サーバーがプライマリ クラウドに存在し、レプリカ仮想マシンをホストしている Hyper-V サーバーがセカンダリ クラウドに存在することを確認します。クラウドの保護設定が構成されていることを確認します。この設定が、Hyper-V レプリカに現在構成されている設定と一致する必要があります。一致しない場合、仮想マシンのレプリケーションが正しく動作しない可能性があります。2.次に、プライマリ仮想マシンの保護を有効にします。Azure Site Recovery と VMM によって同じレプリカ ホストと仮想マシンが検出され、Azure Site Recovery によってクラウドを構成する際に構成された設定を使用して、レプリケーションの再使用と再確立が行われます。
+Hyper-V レプリカを使用してレプリケートされる VMM 内に既存の仮想マシンがある場合、次の手順で Azure Site Recovery の保護にそれらの仮想マシンを追加する必要があります。
+1. プライマリ クラウドとセカンダリ クラウドがあることを確認します。既存の仮想マシンをホストしている Hyper-V サーバーがプライマリ クラウドに存在し、レプリカ仮想マシンをホストしている Hyper-V サーバーがセカンダリ クラウドに存在することを確認します。クラウドの保護設定が構成されていることを確認します。この設定が、Hyper-V レプリカに現在構成されている設定と一致する必要があります。一致しない場合、仮想マシンのレプリケーションが正しく動作しない可能性があります。
+2. 次に、プライマリ仮想マシンの保護を有効にします。Azure Site Recovery と VMM によって同じレプリカ ホストと仮想マシンが検出され、Azure Site Recovery によってクラウドを構成する際に構成された設定を使用して、レプリケーションの再使用と再確立が行われます。
 
 
 ## デプロイのテスト
@@ -397,4 +401,4 @@ VMM サーバー上のプロバイダーは、本サービスからイベント�
 
 - **選択肢**: これは、本サービスに必要不可欠であり、無効にすることはできません。この情報を本サービスに送信することを希望しない場合は、本サービスを使用しないでください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

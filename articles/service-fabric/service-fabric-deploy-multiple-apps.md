@@ -3,7 +3,7 @@
    description="複数のアプリケーションをパッケージ化して Azure Service Fabric クラスターにデプロイする方法に関するチュートリアル"
    services="service-fabric"
    documentationCenter=".net"
-   authors="bscholl"
+   authors="bmscholl"
    manager=""
    editor=""/>
 
@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/09/2015"
+   ms.date="11/17/2015"
    ms.author="bscholl"/>
 
 
-# 複数の既存のアプリケーションをデプロイする
+# 複数のカスタム アプリケーションをデプロイする
 
 この記事では、Service Fabric パッケージ化ツールのプレビュー バージョンを使用して、複数のアプリケーションをパッケージ化し、Service Fabric にデプロイする方法について説明します。このツールは http://aka.ms/servicefabricpacktool で取得できます。
 
@@ -194,8 +194,8 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 
 このチュートリアルでは、2 つの既存のアプリケーションを 1 つの Service Fabric アプリケーションとして簡単にパッケージ化し、Service Fabric にデプロイする方法を説明しました。これによって、高可用性や正常性システムとの統合など、Service Fabric 機能の一部を活用できることを紹介しました。
 
-詳細については、次のトピックを参照してください。
+## 次のステップ
 
-[Service Fabric のパッケージ形式](service-fabric-deploy-existing-app.md)
+[1 つのアプリケーションを手動でパッケージ化する](service-fabric-deploy-existing-app.md)方法について学習します。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

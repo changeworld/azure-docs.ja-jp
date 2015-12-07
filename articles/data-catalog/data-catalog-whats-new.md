@@ -24,9 +24,9 @@
 
 2015 年 11 月 20 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
 
-- Azure SQL Database を含む SQL Server データ ソース用の **Azure Data Catalog** ポータルの中から接続文字列の表示とコピーを行う機能SQL Server のテーブル、ビュー、またはデータベースの接続情報に含まれる [接続文字列の表示] リンクをクリックすることで、データ ソースに接続するために使用される ADO.NET、ODBC、OLEDB、および JDBC 接続文字列を確認できます。
+- SQL Server (Azure SQL Database を含む) と Oracle データ ソースの **Azure Data Catalog** ポータルの中から接続文字列の表示とコピーを行う機能。SQL Server または Oracle のテーブル、ビュー、またはデータベースの接続情報に含まれる [接続文字列の表示] リンクをクリックすることで、データ ソースに接続するために使用される接続文字列を確認できます。SQL Server データ ソースには、ADO.NET、ODBC、OLEDB、および JDBC 接続文字列があります。Oracle データ ソースには、ODBC および OLEDB 接続文字列があります。
 - Teradata のテーブルとビューの登録時にデータ プロファイルを含めることのサポート。
-- Azure SQL DB と Azure SQL Data Warehouse を含む SQL Server と Server Analysis Services データ ソースに対する [Power BI Desktop で開く] のサポート。
+- SQL Server (Azure SQL DB と Azure SQL Data Warehouse を含む)、Server Analysis Services、Azure Storage、および HDFS ソースに対する [Power BI Desktop で開く] のサポート。  
 
 > [AZURE.NOTE] [Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。この機能を使用して問題やエラーが発生した場合は、[PowerBI.com](https://powerbi.com) から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
 
@@ -147,4 +147,4 @@
 - Standard Edition のみ: データ資産に所有者を追加するとき、**Azure Data Catalog** は所有者としてユーザー アカウントとセキュリティ グループの両方をサポートするようになりました。選択したデータ資産の所有者としてセキュリティ グループを追加する場合、グループの表示名またはグループの UPN 電子メール アドレス (ある場合) のいずれかを入力できます。
 - Azure BLOB Storage データ ソースのサポート。ユーザーは、Azure Storage の BLOB およびディレクトリを登録および検出できるようになりました。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015--->

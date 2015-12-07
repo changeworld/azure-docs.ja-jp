@@ -13,20 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="10/30/2015"
+	ms.date="11/20/2015"
 	ms.author="mahender"/>
 
 # Microsoft アカウント ログインを使用するように App Service アプリケーションを構成する方法
 
-[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]&nbsp;
+[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
+&nbsp;
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 このトピックでは、認証プロバイダーとして Microsoft アカウントを使用するように Azure App Services を構成する方法を示します。
 
 
-	> [AZURE.NOTE]
-	This topic demonstrates use of the App Service Authentication / Authorization feature. This replaces the App Service gateway for most applications. Differences that apply to using the gateway are called out in notes throughout the topic.
+> [AZURE.NOTE]このトピックでは、App Service 認証/承認の使用例を示します。ほとんどのアプリケーションで、これが App Service ゲートウェイに取って代わっています。ゲートウェイを使用する場合との相違点は、トピック全体を通してメモに記載しています。
 
 
 ## <a name="register"> </a>Microsoft アカウントにアプリケーションを登録する
@@ -53,9 +53,7 @@
 
 ## <a name="secrets"> </a>Microsoft アカウントの情報をアプリケーションに追加する
 
-
-	> [AZURE.NOTE]
-	If using the App Service Gateway, ignore this section and instead navigate to your gateway in the portal. Select **Settings**, **Identity**, and then **Microsoft Account**. Paste in the values you obtained earlier and click **Save**.
+> [AZURE.NOTE]App Service ゲートウェイを使用する場合は、このセクションの内容は無視し、ポータル内で目的のゲートウェイに移動します。**[設定]**、**[ID]**、**[Microsoft アカウント]** の順に選択します。先に取得した値を貼り付けて、**[保存]** をクリックします。
 
 
 7. [Microsoft Azure 管理ポータル]に戻り、目的のアプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックします。
@@ -66,7 +64,9 @@
 
     ![][1]
 	
-11. 既定では、App Service はログインを提供しますが、サイトのコンテンツと API へのアクセスは制限されません。これはアプリケーション コードで行います。Microsoft アカウント ログインからサイトを完全に保護する場合は、**[要求が認証されていないときに実行するアクション]** ドロップダウンを **[Microsoft アカウント]** オプションを使用するように変更します。これにより、すべての要求で認証が必要になり、認証されていない要求は、Microsoft アカウントを使用してログインするようにリダイレクトされます。
+	App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。アプリケーション コードでユーザーを承認する必要があります。
+
+17. (省略可能) Microsoft によって認証されたユーザーしかサイトにアクセスできないように制限するには、**[要求が認証されていないときに実行するアクション]** を **[Microsoft アカウント]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Microsoft アカウントにリダイレクトされます。
 
 11. **[保存]** をクリックします。
 
@@ -91,4 +91,4 @@
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Microsoft Azure 管理ポータル]: https://portal.azure.com/
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

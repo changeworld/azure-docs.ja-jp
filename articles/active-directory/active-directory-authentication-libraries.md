@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="08/11/2015"
+   ms.date="11/17/2015"
    ms.author="mbaldwin" />
 
 # Azure Active Directory 認証ライブラリ
@@ -63,4 +63,4 @@ Azure AD に対する認証を使用してこのシナリオを実証するコ�
 
 [Azure Active Directory のコード例](active-directory-code-samples.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

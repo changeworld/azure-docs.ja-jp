@@ -26,6 +26,7 @@
 ------------- | ------------- | -------------- | -------------- | --------------- | --------------
 U-SQL | 分散クエリ | 1 | 保留中 | [@edmacauley](https://github.com/edmacauley) |
 U-SQL | WASB と ADLS 間のデータの移動 | 1 | Pending | 未定 | Ye Xing (ml)
+U-SQL | UDO モデルの単体テストのガイダンス | 1 | Pending | 未定 | [@ddobric](https://github.com/ddobric) 
 U-SQL | JSON の処理 | 2 | Pending | [@mumian](https://github.com/mumian) | [@mwinkle](https://github.com/mwinkle)
 サービス | Curl の操作 | 3 |Pending |[@mumian](https://github.com/mumian)
 U-SQL | パーティション テーブル |1 | 進行中 | [@edmacauley](https://github.com/edmacauley) | 
@@ -45,7 +46,7 @@ U-SQL | 文法のレールロード ダイアグラム | 1 | 進行中 ([これ]
 
 領域 |トピック | location
 ------------- | ------------- | -------------- 
-サービス | ARM テンプレートを使用する他の Azure サービスとの Data Lake Analytics のデプロイメント調整 | [location](https://azure.microsoft.com/zh-CN/documentation/articles/data-lake-analytics-manage-use-powershell/)
+サービス | ARM テンプレートを使用する他の Azure サービスとの Data Lake Analytics のデプロイメント調整 | [location](https://azure.microsoft.com/documentation/articles/data-lake-analytics-manage-use-powershell/)
 
 ## バックログに関するフィードバックの送信方法
 バックログに関するフィードバックを送信する場合に使用できる以下のようないくつかのオプションがあります。
@@ -54,4 +55,4 @@ U-SQL | 文法のレールロード ダイアグラム | 1 | 進行中 ([これ]
 * [Azure コンテンツ リポジトリ](https://github.com/Azure/azure-content/blob/master/articles/data-lake-analytics/data-lake-analytics-documentation-backlog.md)でこのドキュメントに関するプル要求を送信する。
 * [microsoft.com adlafeedback](mailto:adlafeedback@microsoft.com?subject=DocBacklog) に電子メールを送信する。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

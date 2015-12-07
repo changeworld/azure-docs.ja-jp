@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="職場での Windows 10 デバイスの使用 | Microsoft Azure" 
-	description="Windows 10 で企業がデバイスをプロビジョニングして使用する際の異なる方法の比較を、ユーザーおよび IT 部門が利用できる機能のスナップショットで示しています。" 
+	description="Windows 10 で企業がデバイスをプロビジョニングして使用する際の異なる方法の比較を、ユーザーおよび IT 部門が利用できる機能のスナップショットで示します。" 
 	services="active-directory" 
 	documentationCenter="" 
 	authors="femila" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/16/2015" 
+	ms.date="11/19/2015" 
 	ms.author="femila"/>
 
 # 職場での Windows 10 デバイスの使用
@@ -173,4 +173,4 @@ MSA が接続されている Windows 8.1 ドメインに参加しているデバ
 * [Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

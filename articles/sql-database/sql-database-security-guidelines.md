@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="08/20/2015"
+   ms.date="11/24/2015"
    ms.author="rickbyh"/>
 
 # Azure SQL Database のセキュリティのガイドラインと制限事項
@@ -109,4 +109,6 @@ Azure SQL Database アプリケーションのセキュリティの脅威に対�
 
 [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)
 
-<!---HONumber=Nov15_HO3-->
+[SQL Server データベース エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
+
+<!---HONumber=AcomDC_1125_2015-->

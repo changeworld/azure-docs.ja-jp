@@ -22,7 +22,7 @@
 
 ## シナリオの説明
 
-この例では、1 つのアカウント フォレスト (A)、1 つのリソース フォレスト (R)、1 つの Azure AD ディレクトリが含まれるデプロイを使用します。
+この例では、1 つのアカウント フォレスト (A)、1 つのリソース フォレスト (R)、1 つの Azure AD ディレクトリが含まれるデプロイメントを使用します。
 
 ![scenario](./media/active-directory-aadconnectsync-understanding-default-configuration/scenario.png)
 
@@ -38,13 +38,13 @@
 
 この構成は、同期規則エディター (SRE) ツールを使用して表示および変更できます。また、[スタート] メニューには、このツールのショートカットもあります。
 
-![Synchronization Rules Editor](./media/active-directory-aadconnectsync-understanding-default-configuration/sre.png)
+![同期規則エディター](./media/active-directory-aadconnectsync-understanding-default-configuration/sre.png)
 
 SRE は、リソース キット ツールで、Azure AD Connect 同期と共にインストールされます。このツールを起動できるようにするには、ADSyncAdmins グループのメンバーである必要があります。ツールを起動すると、次のような画面が表示されます。
 
-![Synchronization Rules Inbound](./media/active-directory-aadconnectsync-understanding-default-configuration/syncrulesinbound.png)
+![同期規則、受信](./media/active-directory-aadconnectsync-understanding-default-configuration/syncrulesinbound.png)
 
-このウィンドウには、構成に対して作成されたすべての同期規則が表示されます。表内の各行は 1 つの同期規則です。左側の [ルールの種類] の下に、[着信] と [送信] という 2 つの異なる種類が表示されます。[着信] および [送信] は、メタバースのビューに基づきます。この概要では、主に受信規則に重点を置いて説明します。同期規則の実際の一覧は、AD で検出されたスキーマによって異なります。上の図のアカウント フォレスト (fabrikamonline.com) には、Exchange や Lync などのサービスがないため、これらのサービスの同期規則は作成されていません。その一方で、リソース フォレスト (res.fabrikamonline.com) には、このようなサービスの同期規則があります。規則の内容は、検出されたバージョンによって異なります。たとえば、Exchange 2013 によるデプロイの場合、Exchange 2007 や Exchange 2010 よりも多くの属性フローが構成されます。
+このウィンドウには、構成に対して作成されたすべての同期規則が表示されます。表内の各行は 1 つの同期規則です。左側の [ルールの種類] の下に、[着信] と [送信] という 2 つの異なる種類が表示されます。[着信] および [送信] は、メタバースのビューに基づきます。この概要では、主に受信規則に重点を置いて説明します。同期規則の実際の一覧は、AD で検出されたスキーマによって異なります。上の図のアカウント フォレスト (fabrikamonline.com) には、Exchange や Lync などのサービスがないため、これらのサービスの同期規則は作成されていません。その一方で、リソース フォレスト (res.fabrikamonline.com) には、このようなサービスの同期規則があります。規則の内容は、検出されたバージョンによって異なります。たとえば、Exchange 2013 によるデプロイメントの場合、Exchange 2007 や Exchange 2010 よりも多くの属性フローが構成されます。
 
 ## 同期規則
 
@@ -54,7 +54,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 これは既定の規則のため、規則を開くと警告が表示されます。[既定の規則に変更を加える](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)ことは避ける必要があるため、その意図をたずねるメッセージが表示されます。この場合、必要なのは規則の表示のみなので、**[いいえ]** を選択してください。
 
-![Synchronization Rules Inbound](./media/active-directory-aadconnectsync-understanding-default-configuration/warningeditrule.png)
+![同期規則、受信](./media/active-directory-aadconnectsync-understanding-default-configuration/warningeditrule.png)
 
 同期規則には、[説明]、[スコープ フィルター]、[結合規則]、[変換] という 4 つの構成セクションがあります。
 
@@ -62,7 +62,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 最初のセクションでは、名前や説明などの基本的な情報を提供します。
 
-![Edit inbound synchronization rule](./media/active-directory-aadconnectsync-understanding-default-configuration/syncruledescription.png)
+![受信同期規則の編集](./media/active-directory-aadconnectsync-understanding-default-configuration/syncruledescription.png)
 
 この規則が関連する接続先システム、この規則の適用される接続先システム、およびメタバース オブジェクトの種類の情報も示されています。メタバース オブジェクトの種類は、ソース オブジェクトの種類がユーザーでも、iNetOrgPerson でも連絡先でも、必ず個人です。メタバース オブジェクトの種類は、ジェネリック型として作成されるため、変更しないでください。リンクの種類は、[結合]、[スティッキー結合]、または [プロビジョニング] に設定できます。この設定は [結合規則] セクションと共に機能します。これについては、後でします。
 
@@ -72,11 +72,11 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 [スコープ フィルター] セクションは、同期規則の適用が必要なタイミングを構成するために使用されます。ここで説明している同期規則の名前は、有効なユーザーのみに同期規則が適用されることを意味しているため、AD 属性 **userAccountControl** にビット 2 を設定しないようスコープが構成されます。AD にユーザーが見つかると、**userAccountControl** が 10 進数 512 (有効な標準ユーザー) に設定されている場合はこの規則が適用されますが、見つかったユーザーの **userAccountControl** が 514 (無効な標準ユーザー) に設定されている場合には適用されません。
 
-![Edit inbound synchronization rule](./media/active-directory-aadconnectsync-understanding-default-configuration/syncrulescopingfilter.png)
+![受信同期規則の編集](./media/active-directory-aadconnectsync-understanding-default-configuration/syncrulescopingfilter.png)
 
 スコープ フィルターには、入れ子にできるグループおよび句があります。同期規則を適用するには、グループ内のすべての句が満たされている必要があります。複数のグループが定義されている場合、規則を適用するには少なくとも 1 つのグループが満たされている必要があります。つまり、グループ間では論理 OR が評価され、グループ内では論理 AND が評価されます。この例は、以下に示す送信の同期規則 "**AAD への送信 - グループ結合**" で確認することができます。たとえば、同期フィルター グループはいくつかあります。たとえば、1 つはセキュリティ グループ向け (securityEnabled EQUAL True)、1 つは配布グループ向け (securityEnabled EQUAL False) です。
 
-![Edit outbound synchronization rule](./media/active-directory-aadconnectsync-understanding-default-configuration/syncrulescopingfilterout.png)
+![送信同期規則の編集](./media/active-directory-aadconnectsync-understanding-default-configuration/syncrulescopingfilterout.png)
 
 この規則は、AAD にプロビジョニングするグループを定義するために使用されます。配布グループを AAD と同期するにはメールを有効にする必要がありますが、セキュリティ グループの場合、これは不要です。おわかりになるように、追加の属性の多くも評価されます。
 
@@ -84,7 +84,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 3 番目のセクションは、コネクタ スペース内のオブジェクトと、メタバース内のオブジェクトの関連付けの構成に使用されます。ここまでに説明した規則には結合規則の構成がないため、ここでは "**AD からの受信 - ユーザー結合**" について説明します。
 
-![Edit inbound synchronization rule](./media/active-directory-aadconnectsync-understanding-default-configuration/syncrulejoinrules.png)
+![受信同期規則の編集](./media/active-directory-aadconnectsync-understanding-default-configuration/syncrulejoinrules.png)
 
 結合規則の内容は、インストール ウィザードで選択されている一致オプションによって異なります。受信規則の場合、評価はソースのコネクタ スペースのオブジェクトで開始され、結合規則の各グループが順番に評価されます。結合規則の 1 つを使用してソース オブジェクトを評価した結果、メタバースの 1 つのオブジェクトのみと一致した場合、これらのオブジェクトは結合されます。すべての規則が評価されて一致が存在しない場合は、説明ページのリンクの種類が使用されます。この設定が [プロビジョニング] に設定されている場合は、新しいオブジェクトがターゲットであるメタバースに作成されます。メタバースへの新しいオブジェクトのプロビジョニングは、メタバースへのオブジェクトの投影とも呼ばれています。
 
@@ -98,9 +98,9 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 変換セクションでは、オブジェクトが結合され、スコープ フィルターも満たしている場合にターゲット オブジェクトに適用されるすべての属性のフローを定義します。もう一度 "**AD からの受信 - ユーザー アカウント有効**" 同期規則を見ると、次の変換があることがわかります。
 
-![Edit inbound synchronization rule](./media/active-directory-aadconnectsync-understanding-default-configuration/syncruletransformations.png)
+![受信同期規則の編集](./media/active-directory-aadconnectsync-understanding-default-configuration/syncruletransformations.png)
 
-これを踏まえると、アカウント/リソース フォレストのデプロイでは、アカウント フォレストには有効なアカウントが、Exchange および Lync 設定のあるリソース フォレストには無効なアカウントが見つかると予想されます。ここで説明している同期規則には、ログインに必要な属性が含まれており、有効なアカウントが見つかったフォレストから、これらの属性がフローする必要があります。これらすべての属性フローが 1 つの同期規則にまとめられます。
+これを踏まえると、アカウント/リソース フォレストのデプロイメントでは、アカウント フォレストには有効なアカウントが、Exchange および Lync 設定のあるリソース フォレストには無効なアカウントが見つかると予想されます。ここで説明している同期規則には、ログインに必要な属性が含まれており、有効なアカウントが見つかったフォレストから、これらの属性がフローする必要があります。これらすべての属性フローが 1 つの同期規則にまとめられます。
 
 変換の種類には、定数、直接、式があります。
 
@@ -128,7 +128,7 @@ NULL
 
 個々の同期規則をいくつか見てきましたが、この構成では、これらの規則が一体となって動作します。場合によっては、複数の同期規則の属性値が同じターゲット属性に影響します。この場合、どの属性が優先されるかは属性の優先順位によって決まります。例として、sourceAnchor 属性を見てみましょう。この属性は、Azure AD にログインできるようにするために重要な属性です。この属性の属性フローは "**AD からの受信 - ユーザー アカウント有効**" と "**AD からの受信 - ユーザー共通**" の 2 つの同期規則にあります。メタバース オブジェクトに複数のオブジェクトが結合されている場合は、同期規則の優先順位により、sourceAnchor 属性は、最初に、有効なアカウントを持つフォレストから提供されます。有効なアカウントがない場合は、包括的な同期規則 "**AD からの受信 - ユーザー共通**" が使用されます。これにより、無効なアカウントであっても sourceAnchor が提供されるようになります。
 
-![Synchronization Rules Inbound](./media/active-directory-aadconnectsync-understanding-default-configuration/syncrulesinbound.png)
+![同期規則、受信](./media/active-directory-aadconnectsync-understanding-default-configuration/syncrulesinbound.png)
 
 同期規則の優先順位は、インストール ウィザードによってグループ単位で設定されます。グループの規則は、すべて同じ名前になりますが、接続されているディレクトリは異なります。インストール ウィザードでは "**AD からの受信 – ユーザー結合**" 規則が最優先となり、接続されたすべての AD ディレクトリが繰り返し処理されます。その後、定義された順番で、次のグループの規則に進みます。グループ内の規則は、コネクタがウィザードで追加された順序で追加されます。別のコネクタがウィザードで追加されると、同期規則の順序が変わり、新しいコネクタの規則が各グループの末尾に挿入されます。
 
@@ -150,4 +150,4 @@ NULL
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/17/2015"
+	ms.date="11/19/2015" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication のアプリ パスワードを Office 365 ポータルで作成または削除する
@@ -68,4 +68,4 @@ Office 365 で多要素認証を使用している場合は、Office 365 ポー�
 <li>削除の確定を求めるポップアップが表示されます。</li>
 <li>**[はい]** をクリックします。</li>
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

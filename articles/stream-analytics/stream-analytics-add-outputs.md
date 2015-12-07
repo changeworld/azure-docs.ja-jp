@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="出力を追加する | Microsoft Azure" 
-	description="出力の追加のラーニング パス セグメント。"
+	description="Stream Analytics ジョブへの出力の追加 | ラーニング パス セグメント。"
 	documentationCenter=""
 	services="stream-analytics"
 	authors="jeffstokes72" 
@@ -13,10 +13,10 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/10/2015" 
+	ms.date="11/23/2015" 
 	ms.author="jeffstok"/>
 
-# 出力を追加する
+# Stream Analytics ジョブに**出力を追加**する方法
 
 Azure Stream Analytics ジョブは 1 つ以上の出力に接続できます。これにより、既存のデータ シンクへの接続が定義されます。Stream Analytics ジョブが受信データを処理して変換するとき、出力イベントのストリームがジョブの出力に書き込まれます。
 
@@ -63,4 +63,4 @@ Stream Analytics ジョブに出力を追加するには:
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

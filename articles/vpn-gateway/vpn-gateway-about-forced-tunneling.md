@@ -1,4 +1,4 @@
-<properties pageTitle="Microsoft Azure VPN Gateways の強制トンネリングの構成 | Microsoft Azure" description="クロスプレミスの VPN ゲートウェイを含む仮想ネットワークの場合、インターネットへのすべてのトラフィックをオンプレミスの場所にリダイレクトまたは ”強制的” に戻すことができます。" services="vpn-gateway" documentationCenter="na" authors="cherylmc" manager="carolz" editor="" tags="azure-service-management"/>
+<properties pageTitle="PowerShell を使用して VPN Gateway の強制トンネリングを構成する | Microsoft Azure" description="仮想ネットワークにクロスプレミス VPN Gateway を使用していればリダイレクトしたり、インターネット宛てのすべてのトラフィックをオンプレミスの場所に「強制」できます。この記事はクラシック デプロイメント モデルを使用して作成された VPN Gateway に適用されます" services="vpn-gateway" documentationCenter="na" authors="cherylmc" manager="carolz" editor="" tags="azure-service-management"/>
 <tags  
    ms.service="vpn-gateway"
    ms.devlang="na"
@@ -10,9 +10,9 @@
 
 # 強制トンネリングについて
 
-この記事は、従来のデプロイ モデルを使用して作成された VNet および VPN ゲートウェイを対象としています。リソース マネージャー モデルを使用して作成された VNet および VPN ゲートウェイの強制トンネリングの構成に関する指示がある場合、このページの先頭へのリンクを追加します。
+この記事は、従来のデプロイ モデルを使用して作成された VNet および VPN ゲートウェイを対象としています。リソース マネージャーのデプロイメント モデルを使用して作成された Vnet および VPN Gateway に強制トンネリングを構成する場合は、「[PowerShell および Azure リソース マネージャーを使用して強制トンネリングを構成する](vpn-gateway-forced-tunneling-rm.md)」を参照してください。
 
->[AZURE.NOTE]Azure は現在、2 つのデプロイメント モデル (リソース マネージャーおよびクラシック) で使用できることを理解しておくことは重要です。構成を開始する前に、デプロイ モデルとツールについて理解しておくようにしてください。デプロイメント モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
+[AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
 ## 強制トンネリングについて
 
@@ -153,11 +153,4 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 	Remove-AzureVnetGatewayDefaultSites -VNetName <virtualNetworkName>
 
-## 次のステップ
-
-
-ユーザー定義のルートについては、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」を参照してください。
-
-ネットワーク トラフィックをセキュリティで保護する方法については、「[ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)」を参照してください。Azure VNet ゲートウェイ サブネットにはネットワーク セキュリティ グループを適用してはならないことに注意してください。
-
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

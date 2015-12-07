@@ -14,10 +14,10 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/06/2015" 
+	ms.date="11/23/2015" 
 	ms.author="jeffstok"/>
 
-# Azure Stream Analytics の出力としての DocumentDB
+# Azure Stream Analytics の出力としての DocumentDB について
 
 Azure Stream Analytics では、[Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) が出力としてサポートされるようになったため、構造化されていない JSON データに対してデータ アーカイブや待機時間の少ないクエリを実行できます。このドキュメントでは、この統合を最適に実装する方法について説明します。DocumentDB を詳しく理解していない場合は、開始する前に [DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)を参照してください。
 
@@ -49,7 +49,7 @@ DocumentDB のコレクションを使用すると、クエリ パターンと�
 
 Stream Analytics で DocumentDB を出力として作成すると、以下に示すように、情報を求めるプロンプトが表示されます。このセクションでは、各プロパティの定義について説明します。
   
-![documentdb stream analytics output screen](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output.png)
+![documentdb stream analytics 出力画面](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output.png)
 
 -   **出力のエイリアス** – ASA クエリ内でこの出力を意味するエイリアス。  
 -   **アカウント名** – DocumentDB アカウントの名前またはエンドポイント URI。  
@@ -59,4 +59,4 @@ Stream Analytics で DocumentDB を出力として作成すると、以下に示
 -   **パーティション キー** – コレクション間で出力をパーティション分割するためのキーの指定に使用される、出力イベント内のフィールドの名前。コレクションの出力が 1 つの場合は、PartitionId など、任意の出力列を使用できます。  
 -   **Document ID** – 省略可能です。挿入操作または更新操作の基準となるプライマリ キーを指定するために使用される、出力イベント内のフィールドの名前。  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="10/29/2015"
+	ms.date="11/20/2015"
 	ms.author="mahender"/>
 
 # App Service アプリケーションを Facebook ログインを使用するように構成する方法
@@ -26,9 +26,7 @@
 
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Facebook アカウントおよび携帯電話番号が必要になります。新しい Facebook アカウントを作成するには、[facebook.com] にアクセスしてください。
 
-
-	> [AZURE.NOTE]
-	This topic demonstrates use of the App Service Authentication / Authorization feature. This replaces the App Service gateway for most applications. Differences that apply to using the gateway are called out in notes throughout the topic.
+> [AZURE.NOTE]このトピックでは、App Service 認証/承認の使用例を示します。ほとんどのアプリケーションで、これが App Service ゲートウェイに取って代わっています。ゲートウェイを使用する場合との相違点は、トピック全体を通してメモに記載しています。
 
 
 ## <a name="register"> </a>Facebook にアプリケーションを登録する
@@ -68,9 +66,7 @@
 
 ## <a name="secrets"> </a>Facebook の情報をアプリケーションに追加する
 
-
-	> [AZURE.NOTE]
-	If using the App Service Gateway, ignore this section and instead navigate to your gateway in the portal. Select **Settings**, **Identity**, and then **Facebook**. Paste in the values you obtained earlier and click **Save**.
+> [AZURE.NOTE]App Service ゲートウェイを使用する場合は、このセクションの内容は無視し、ポータル内で目的のゲートウェイに移動します。**[設定]**、**[ID]**、**[Facebook]** の順に選択します。先に取得した値を貼り付けて、**[保存]** をクリックします。
 
 
 13. [Microsoft Azure 管理ポータル]に戻り、目的のアプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックします。
@@ -81,10 +77,11 @@
 
     ![][1]
 	
-16. 既定では、App Service はログインを提供しますが、サイトのコンテンツと API へのアクセスは制限しません。アクセスの制限はアプリケーション コードで行います。Facebook ログインからサイトを完全に保護する場合は、**[要求が認証されていないときに実行するアクション]** ドロップダウンを **[Facebook]** オプションを使用するように変更します。これにより、すべての要求で認証が必要になり、認証されていない要求は、Facebook を使用してログインするようにリダイレクトされます。
+	App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。アプリケーション コードでユーザーを承認する必要があります。
+
+17. (省略可能) Facebook によって認証されたユーザーしかサイトにアクセスできないように制限するには、**[要求が認証されていないときに実行するアクション]** を **[Facebook]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Facebook にリダイレクトされます。
 
 17. **[保存]** をクリックします。
-
 
 これで、アプリケーションで認証に Facebook を使用する準備ができました。
 
@@ -102,4 +99,4 @@
 [Get started with authentication]: /ja-JP/develop/mobile/tutorials/get-started-with-users-dotnet/
 [Microsoft Azure 管理ポータル]: https://portal.azure.com/
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

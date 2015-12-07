@@ -78,6 +78,9 @@ ASP.NET アプリを監視するには、アプリケーションに [Applicatio
 
 ![ドリル スルー](./media/app-insights-asp-net-exceptions/viewCustomEvents.png)
 
+
+> [AZURE.NOTE]アプリが大量のテレメトリを生成する場合は、アダプティブ サンプリング モジュールが、代表的な一部のイベントのみを送信することによって、ポータルに送信される量を自動的に削減します。同じ操作の一部であるイベントは、グループとして選択または選択解除されるので、関連するイベント間を移動できます。[サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
+
 ### 要求の POST データを表示する方法
 
 要求詳細では、POST 呼び出しでアプリに送信されたデータは含まれません。このデータを報告するには:
@@ -452,4 +455,4 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

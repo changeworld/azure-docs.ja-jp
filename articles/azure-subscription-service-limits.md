@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/10/2015"
+	ms.date="11/17/2015"
 	ms.author="jroth"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -32,7 +32,7 @@
 
 > [AZURE.NOTE] Azure リソース グループ内のリソースのクォータは、サブスクリプションごとではなく、サブスクリプションのリージョンごとにアクセスできることに注意してください。また、サービス管理クォータも同様です。コア クォータを例に説明します。コア対応のクォータの増量をリクエストする場合、どのリージョンでいくつのコアを使用するかを決めてから、Azure リソース グループのコア クォータの数量と目的のリージョンをリクエストする必要があります。したがって、西ヨーロッパで 30 のコアを使用してアプリケーションを実行する必要がある場合、具体的に、西ヨーロッパで 30 のコアをリクエストしてください。この場合、他のリージョンのコア クォータは増量されません -- 西ヨーロッパでのみ 30 コア クォータが増量されます。
 <!-- --> 
-結果として、1 つのリージョンのワークロードに対してどのくらいの Azure リソース グループのクォータが必要かを決め、デプロイメントを検討している各リージョンにその分量をリクエストするだけなので便利です。特定のリージョンの現在のクォータを判断する方法について詳しくは、[デプロイの問題のトラブルシューティング](resource-group-deploy-debug.md##authentication-subscription-role-and-quota-issues)に関するページを参照してください。
+結果として、1 つのリージョンのワークロードに対してどのくらいの Azure リソース グループのクォータが必要かを決め、デプロイを検討している各リージョンにその分量をリクエストするだけなので便利です。特定のリージョンの現在のクォータを判断する方法について詳しくは、[デプロイの問題のトラブルシューティング](resource-group-deploy-debug.md##authentication-subscription-role-and-quota-issues)に関するページを参照してください。
 
 
 ## サービス固有の制限
@@ -96,7 +96,7 @@
 [AZURE.INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 
-#### Virtual Machines の制限 - Azure リソース マネージャー
+#### 仮想マシンの制限 - Azure リソース マネージャー
 
 次の制限は、Azure リソース マネージャーと Azure リソース グループの使用時に適用されます。Azure リソース マネージャーで変更されていない制限はこの一覧に含まれません。これらの制限については、前の表を参照してください。
 
@@ -118,21 +118,29 @@
 
 [AZURE.INCLUDE [dns-limits](../includes/dns-limits.md)]
 
-### Storage の制限
-
-#### Standard Storage の制限
-
-[AZURE.INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
+### ストレージの制限
 
 ストレージ アカウントの上限の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/storage-scalability-targets.md)」を参照してください。
 
+#### Storage サービスの制限
 
-#### Premium Storage の制限
+[AZURE.INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
-[AZURE.INCLUDE [azure-storage-limits-premium-storage](../includes/azure-storage-limits-premium-storage.md)]
+#### 仮想マシンのディスクの上限 
 
+[AZURE.INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-#### ストレージの制限 - Azure リソース マネージャー
+その他の詳細については、「[仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-size-specs.md)」を参照してください。
+
+**Standard Storage アカウント**
+
+[AZURE.INCLUDE [azure-storage-limits-vm-disks-standard](../includes/azure-storage-limits-vm-disks-standard.md)]
+
+**Premium Storage アカウント**
+
+[AZURE.INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
+
+#### ストレージ リソース プロバイダーの制限
 
 [AZURE.INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -175,7 +183,7 @@
 
 [AZURE.INCLUDE [azure-search-limits](../includes/azure-search-limits.md)]
 
-Azure Search の制限に関する詳細については、「[制限および制約](https://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
+共有サービスの上限、またはキー、要求、および応答に対する制限の分類の詳細については、「[Azure Search でのサービスの制限](search/search-limits-quotas-capacity.md)」を参照してください。
 
 ### Media Services の制限
 
@@ -266,4 +274,4 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 [Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

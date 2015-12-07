@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/17/2015" 
+	ms.date="11/19/2015" 
 	ms.author="billmath"/>
 
 # Windows 認証と Azure Multi-Factor Authentication Server
@@ -49,4 +49,4 @@ Windows 認証セクションでは、管理者が 1 つ以上のアプリケー
 10. サブネット表記を使用して IP の範囲を指定する場合は、[サブネット] を選択します。サブネットの開始 IP を入力し、ドロップダウン リストから適切なネットマスクを選択します。 
 11. [OK] ボタンをクリックします。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

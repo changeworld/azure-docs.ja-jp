@@ -3,8 +3,8 @@
 	description="Azure AD アプリケーション プロキシを使用してオンプレミスのアプリケーションを発行する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="rkarlin"
-	manager="StevenPo"
+	authors="kgremban"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="10/19/2015"
-	ms.author="rkarlin"/>
+	ms.author="kgremban"/>
 
 
 # Azure AD アプリケーション プロキシを使用してアプリケーションを発行する
@@ -33,9 +33,9 @@ Microsoft Azure AD アプリケーション プロキシを有効にすると、
 2. Microsoft Azure 管理ポータルの左側のペインで、[Active Directory] タブをクリックします。
 3. アプリケーション プロキシを有効にした、アプリケーションの発行先のディレクトリ (Wingtip Toys など) をクリックします。
 4. **[アプリケーション]** タブをクリックし、画面下部にある **[追加]** をクリックします![アプリケーションの追加](./media/active-directory-application-proxy-publish/aad_appproxy_selectdirectory.png)
-5. [作業内容] ダイアログ ボックスで、**[ネットワークの外部からアクセス可能なアプリケーションを発行]** をクリックします。![New application that will be accessible from outside your network](./media/active-directory-application-proxy-publish/aad_appproxy_addapp.png)
+5. [作業内容] ダイアログ ボックスで、**[ネットワークの外部からアクセス可能なアプリケーションを発行]** をクリックします。![使用しているネットワーク以外からアクセス可能な新しいアプリケーション](./media/active-directory-application-proxy-publish/aad_appproxy_addapp.png)
 
-6. 画面上の指示に従い、アプリケーションに関する以下の情報を入力します。![Application properties](./media/active-directory-application-proxy-publish/aad_appproxy_appproperties.png)
+6. 画面上の指示に従い、アプリケーションに関する以下の情報を入力します。![アプリケーションのプロパティ](./media/active-directory-application-proxy-publish/aad_appproxy_appproperties.png)
 
 **設定** | **詳細**
 ---|---
@@ -97,4 +97,4 @@ Azure Active Directory アプリケーション プロキシを使用してア�
 
 * [Kerberos の制約付き委任について](http://technet.microsoft.com/library/cc995228.aspx)
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

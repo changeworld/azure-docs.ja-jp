@@ -23,7 +23,8 @@
 - [PowerShell](dns-operations-dnszones.md)
 
 このガイドでは、DNS ゾーンの管理方法を説明します。このガイドは、DNS ゾーンを管理するために実行する一連の操作を理解するのに役立ちます。
-
+ 
+ 
 ## 新しい DNS ゾーンの作成
 
 ドメインをホストする新しい DNS ゾーンを作成するには、`azure network dns zone create` を使用します。
@@ -76,4 +77,4 @@ Azure DNS の DNS ゾーンを削除する前に、ゾーンの作成時に自�
 
 [.NET SDK を使用した操作の自動化](dns-sdk.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

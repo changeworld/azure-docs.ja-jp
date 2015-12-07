@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/17/2015" 
+	ms.date="11/19/2015" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication のアプリ パスワードを myapps 365 ポータルで作成する
@@ -39,4 +39,4 @@ Office 365 で多要素認証を使用しておらず、Azure サブスクリプ
 <li>アプリ パスワードの名前を入力し、**[次へ]** をクリックします。</li>
 <li>アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。</li>
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

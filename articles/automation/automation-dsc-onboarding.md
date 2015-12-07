@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="TBD" 
-   ms.date="10/28/2015"
+   ms.date="11/23/2015"
    ms.author="coreyp"/>
 
 # Azure Automation DSC による管理のためのマシンのオンボード
@@ -36,7 +36,7 @@
 Azure Automation DSC では、Azure ポータルまたは PowerShell を使用して、構成管理用に Azure Virtual Machines (クラシック) を簡単にオンボードすることができます。Azure VM Desired State Configuration 拡張機能を使用することで、管理者が VM にリモート接続しなくても、内部で VM を Azure Automation DSC に登録できます。Azure VM Desired State Configuration 拡張機能は非同期に実行されるため、その進行状況の追跡またはトラブルシューティングの手順については、後述の「[**Azure Virtual Machine のオンボードに関するトラブルシューティング**](#troubleshooting-azure-virtual-machine-onboarding)」を参照してください。
 
 
-### Azure Virtual Machines
+### Azure ポータル
 
 [Azure プレビュー ポータル](http://portal.azure.com/)で、**[参照]**、**[仮想マシン (クラシック)]** の順にクリックします。オンボードする Windows VM を選択します。仮想マシンのダッシュボード ブレードで、**[すべての設定]**、**[拡張機能]**、**[追加]**、**[Azure Automation DSC]**、**[作成]** の順にクリックします。ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396)、Automation アカウントの登録キーと登録 URL、および必要に応じて VM に割り当てるノード構成を入力します。
 
@@ -102,7 +102,7 @@ Azure Automation DSC では、Azure ポータルまたは PowerShell を使用�
      -ExtensionName DSC `
      -Version 2.6 `
      -PublicConfiguration $PublicConfiguration `
-     -PrivateConfiguration $PrivateConfiguration
+     -PrivateConfiguration $PrivateConfiguration `
      -ForceUpdate
 
     $VM | Update-AzureVM
@@ -132,9 +132,9 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
 
 ### PowerShell
 
-[Register-AzureRmAutomationDscNode](https://msdn.microsoft.com/library/mt244097.aspx?f=255&MSPPError=-2147217396) コマンドレットを使用して、Azure プレビュー ポータルで PowerShell を介して仮想マシンをオンボードすることができます。
+[Register-AzureRmAutomationDscNode](https://msdn.microsoft.com/library/mt603833.aspx) コマンドレットを使用して、Azure プレビュー ポータルで PowerShell を介して仮想マシンをオンボードすることができます。
 
-### オンプレミス、または Azure 以外のクラウド内の物理/仮想 Windows マシン
+## オンプレミス、または Azure 以外のクラウド内の物理/仮想 Windows マシン
 
 オンプレミスの Windows マシンと (Amazon Web Services などの) Azure 以外のクラウド内の Windows マシンも、インターネットへの発信アクセスが可能な限り、いくつかの簡単な手順で Azure Automation DSC にオンボードすることができます。
 
@@ -158,7 +158,7 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
 
 8. Azure ポータルまたはコマンドレットを使用して、オンボードするマシンがこの時点で Azure Automation アカウントに登録されている DSC ノードとして示されていることを確認します。
 
-### オンプレミス、Azure、または Azure 以外のクラウド内の物理/仮想 Linux マシン
+## オンプレミス、Azure、または Azure 以外のクラウド内の物理/仮想 Linux マシン
 
 オンプレミスの Linux マシン、Azure の Linux マシン、Azure 以外のクラウド内の Linux マシンも、インターネットへの発信アクセスが可能な限り、いくつかの簡単な手順で Azure Automation DSC にオンボードすることができます。
 
@@ -172,7 +172,7 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
 
 	*    Automation アカウントの登録キーと登録 URL を見つける場合は、後述の「[**セキュリティで保護された登録**](#secure-registration)」を参照してください。
 
-	PowerShell DSC Local Configuration Manager の既定値がユース ケースに適して**い****ない**場合は、手順 3 から 9 を実行します。それ以外の場合は、手順 9. に直接進みます。
+	PowerShell DSC Local Configuration Manager の既定値がユース ケースに適して**い****ない**場合は、手順 3. から 手順 9. に従います。それ以外の場合は、手順 9. に直接進みます。
 
 3. ローカル環境の Windows マシンで、管理者として PowerShell コンソールまたは PowerShell ISE を開きます。このマシンにも最新バージョンの [WMF 5](http://www.microsoft.com/ja-JP/download/details.aspx?id=48729) がインストールされている必要があります。
 
@@ -236,4 +236,4 @@ Azure Automation DSC を使用すると、構成管理のための Azure Windows
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](http://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1125_2015-->

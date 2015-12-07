@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/07/2015"
+	ms.date="11/23/2015"
 	ms.author="raynew"/>
 
 # オンプレミスの VMware 仮想マシンまたは物理サーバーと Azure 間の保護の設定
@@ -98,7 +98,7 @@ Site Recovery のコンポーネント、プロバイダー、エージェント
 
 通常、プロセス サーバーのサイズは、保護されているすべてのワークロードに対する 1 日の変更率に依存します。主な考慮事項は次のとおりです。
 
--	インライン圧縮や暗号化などのタスクを実行するのに十分な処理能力が必要です。
+-	インライン圧縮や暗号化などのタスクを実行するのに十分なコンピューティング能力が必要です。
 -	プロセス サーバーは、ディスク ベースのキャッシュを使用します。ネットワークでボトルネックや障害が発生したときに格納されるデータ変更を促進するため、推奨されるキャッシュ容量およびディスク スループットを利用できることを確認します。 
 -	プロセス サーバーがマスター ターゲット サーバーにデータをアップロードして継続的にデータを保護できるよう、帯域幅が十分であることを確認します。 
 
@@ -139,7 +139,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 マスター ターゲット サーバーの容量計画は以下のことに依存します。
 
-- Azure ストレージのパフォーマンスと制限
+- Azure Storage のパフォーマンスと制限
 	- 使用率の高いディスクの最大数は、Standard レベルの VM では、1 つのストレージ アカウントで約 40 (ディスクあたり IOPS 20,000/500) です。詳細については、「[標準的なストレージ アカウントのスケーラビリティ ターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-standard-storage-accounts)」を参照してください。Premium Storage アカウントの詳細については、「[Premium Storage アカウントのスケーラビリティ ターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts)」を参照してください。
 -	1 日の変更率 
 -	保持ボリュームのストレージ
@@ -161,7 +161,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 **コンポーネント** | **要件** | **詳細**
 --- | --- | --- 
 **Azure アカウント** | [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
-**Azure Storage** | <p>レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。</p><p>アカウントは [Standard 地理冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium Storage アカウント](../storage/storage-premium-storage-preview-portal.md)のいずれかとする必要があります。</p><p>アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。</p><p>詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)</p>」を参照してください。
+**Azure Storage** | <p>レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。</p><p>アカウントは [Standard 地理冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium ストレージ アカウント](../storage/storage-premium-storage-preview-portal.md)のいずれかとする必要があります。</p><p>アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。</p><p>詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)</p>」を参照してください。
 **Azure Virtual Network** | 構成サーバーとターゲット マスター サーバーのデプロイ先となる Azure 仮想ネットワークが必要になります。Azure 仮想ネットワークは、Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。ExpressRoute 接続または VPN 接続でデータをレプリケートする場合、Azure Virtual Network が、ExpressRoute 接続またはサイト間 VPN を介してオンプレミス ネットワークに接続されている必要があります。
 **Azure リソース** | すべてのコンポーネントをデプロイできるだけの十分な Azure リソースがあることを確認してください。詳細については、「[Azure サブスクリプションの制限](../azure-subscription-service-limits.md)」をご覧ください。
 **Azure Virtual Machines** | <p>保護する仮想マシンは、[Azure の前提条件](site-recovery-best-practices.md)に従う必要があります。</p><p>**ディスクの数** — 1 台の保護されたサーバーでサポートできるディスク数は最大 31 です。</p><p>**ディスク サイズ** — 個々のディスク容量は 1023 GB 未満である必要があります。</p><p>**クラスタリング** — クラスター化されたサーバーはサポートされません。</p><p>**ブート** — Unified Extensible Firmware Interface (UEFI) ブートまたは拡張ファームウェア インターフェイス (EFI) ブートはサポートされません。</p><p>**ボリューム** — Bitlocker 暗号化ボリュームはサポートされません。</p><p> **サーバー名** — 名前は 1 ～ 63 文字 (文字、数字、ハイフン) である必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンが保護された後で、Azure の名前を変更することができます。</p>
@@ -185,11 +185,11 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 **パブリック インターネット:** オンプレミスのサーバー (プロセス サーバー、保護対象サーバー) と Azure インフラストラクチャ コンポーネントのサーバー (構成サーバー、マスター ターゲット サーバー) 間におけるデータの通信とレプリケーションは、オンプレミスから、構成サーバーとマスター ターゲット サーバー上のパブリック エンドポイントへの安全な SSL/TLS 接続上で行われます。(唯一の例外は、プロセス サーバーとマスター ターゲット サーバー間の TCP ポート 9080 上の接続です。この接続は暗号化されません。レプリケーション プロトコルに関連して、レプリケーションのセットアップに使用される制御情報だけがこの接続でやり取りされます)。
 
-![インターネットのデプロイメント図](./media/site-recovery-vmware-to-azure/ASRVmware_deploymentInternet.png)
+![Deployment diagram internet](./media/site-recovery-vmware-to-azure/ASRVmware_deploymentInternet.png)
 
 **VPN:** オンプレミスのサーバー (プロセス サーバー、保護対象サーバー) と Azure インフラストラクチャ コンポーネントのサーバー (構成サーバー、マスター ターゲット サーバー) 間におけるデータの通信とレプリケーションは、オンプレミス ネットワークと、構成サーバーおよびマスター ターゲット サーバーのデプロイ先となる Azure Virtual Network とを結ぶ VPN 接続上で行われます。オンプレミス ネットワークが、ExpressRoute 接続またはサイト間 VPN 接続で Azure Virtual Network に接続されていることを確認してください。
 
-![VPN のデプロイメント図](./media/site-recovery-vmware-to-azure/ASRVmware_deploymentVPN.png)
+![Deployment diagram VPN](./media/site-recovery-vmware-to-azure/ASRVmware_deploymentVPN.png)
 
 
 ## ステップ 1: コンテナーの作成
@@ -197,14 +197,14 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 1. [管理ポータル](https://portal.azure.com)にサインインします。
 
 
-2. **[Data Services]**、**[復旧サービス]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
+2. **[Data Services]**、**[Recovery Services]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
 
 
 3. **[新規作成]**、**[簡易作成]** の順にクリックします。
 
 4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
 
-5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の料金の詳細)](pricing/details/site-recovery/)」で利用可能地域を参照してください。
+5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の価格の詳細)](pricing/details/site-recovery/)」で利用可能地域を参照してください。
 
 6. **[コンテナーの作成]** をクリックします。
 
@@ -346,7 +346,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 サブネットの最初の 4 つの IP アドレスは Azure 内部用に確保されていることに注意してください。その他の利用可能な IP アドレスを指定します。
 
->[AZURE.NOTE][Premium Storage アカウント](../storage/storage-premium-storage-preview-portal.md)を使用して IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、Standard DS4 を選択します。
+>[AZURE.NOTE] [Premium Storage アカウント](../storage/storage-premium-storage-preview-portal.md)を使用して IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、Standard DS4 を選択します。
 
 
 3. Windows マスター ターゲット サーバーの仮想マシンは、以下のエンドポイントで作成されます (パブリック エンドポイントは、デプロイメントの種類がパブリック インターネットである場合にのみ作成されます)。
@@ -466,8 +466,11 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 1. 構成サーバー
 2. プロセス サーバー
 3. マスター ターゲット サーバー
+4. フェールバック ツール (vContinuum)
 
 更新プログラムは、Site Recovery ** の Dashboard ** で入手できます。Linux のインストールの場合は、gzip 圧縮されたインストーラーからファイルを抽出し、コマンド “sudo ./install” を実行して更新プログラムをインストールします。
+
+**フェールバック ツール (vContinuum)** の最新の更新を[ここ](http://go.microsoft.com/fwlink/?LinkID=533813)からダウンロードします。
 
 モビリティ サービスが既にインストールされている仮想マシンまたは物理サーバーを実行している場合は、次のようにしてサービスの更新プログラムを入手できます。
 
@@ -561,10 +564,10 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 4. ソース Linux サーバーの /etc/hosts ファイルに、ローカル ホスト名を、すべての NIC に関連付けられた IP アドレスにマップするエントリが含まれることを確認します。
 5. 保護するマシンに最新の openssh、openssh-server、openssl の各パッケージをインストールします。
 6. SSH がポート 22 で有効であり実行中であることを確認します。 
-7. 以下の手順で、sshd\_config ファイルで SFTP サブシステムとパスワード認証を有効にします。 
+7. 以下の手順で、sshd_config ファイルで SFTP サブシステムとパスワード認証を有効にします。 
 
 	- a) root としてログインします。
-	- b) /etc/ssh/sshd\_config ファイルで、**PasswordAuthentication** で始まる行を見つけます。
+	- b) /etc/ssh/sshd_config ファイルで、**PasswordAuthentication** で始まる行を見つけます。
 	- c) この行のコメントを解除し、値 "no" を "yes" に変更します。
 
 		![Linux のモビリティ](./media/site-recovery-vmware-to-azure/ASRVMWare_LinuxPushMobility1.png)
@@ -589,7 +592,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 **Windows サーバーにモビリティ サービスを手動でインストールするには**、次のようにします。
 
-1. **Microsoft-ASR\_UA\_8.4.0.0\_Windows\_GA\_28Jul2015\_release.exe** パッケージを、前記の表のプロセス サーバーのディレクトリ パスからソース マシンにコピーします。
+1. **Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe** パッケージを、前記の表のプロセス サーバーのディレクトリ パスからソース マシンにコピーします。
 2. ソース マシンで実行可能ファイルを実行して、モビリティ サービスをインストールします。
 3. 次の手順のようにします。
 4. ロールとして **[モビリティ サービス]** を選択し、**[次へ]** をクリックします。
@@ -754,21 +757,21 @@ Azure で実行しているフェールオーバーされたマシンをオン�
 
 1. **[サーバー]** の **[構成サーバー]** ページに移動します。
 2. 構成サーバーの名前をクリックし、**[サーバーの詳細]** に移動します。
-3. **[プロセス サーバー]** ボックスの一覧で、変更するサーバーの **[プロセス サーバーの変更]** をクリックします。![Change Process Server 1](./media/site-recovery-vmware-to-azure/ASRVMware_ChangePS1.png)
+3. **[プロセス サーバー]** ボックスの一覧で、変更するサーバーの **[プロセスのサーバーの変更]** をクリックします。![Change Process Server 1](./media/site-recovery-vmware-to-azure/ASRVMware_ChangePS1.png)
 4. **[プロセス サーバーの変更]** ダイアログの **[ターゲット プロセス サーバー]** で新しいサーバーを選択し、新しいサーバーにレプリケートする仮想マシンを選択します。サーバー名の隣の情報アイコンをクリックすると、空き容量や使用済みメモリなど、サーバーについての情報が表示されます。負荷の決定に役立つように、選択されている各仮想マシンを新しいプロセス サーバーにレプリケートするために必要な平均容量が表示されます。![Change Process Server 2](./media/site-recovery-vmware-to-azure/ASRVMware_ChangePS2.png)
 5. チェック マークをクリックして、新しいプロセス サーバーへのレプリケーションを開始します。重要な状態になったプロセス サーバーからすべての仮想マシンを削除すると、重大な警告はダッシュボードに表示されなくなります。
 
 
-## Third-party software notices and information
+## サード パーティ製ソフトウェアに関する通知および情報
 
 Do Not Translate or Localize
 
-マイクロソフトの製品またはサービスで実行されるソフトウェアおよびファームウェアは、以下に記載されたプロジェクトの情報 (総称して " サード パーティのコード" と呼びます) に基づくか、その情報を組み込んでいます。Microsoft is the not original author of the Third Party Code.マイクロソフトは、サード パーティのコードの元の作成者ではありません。元の著作権情報と、マイクロソフトがサード パーティのコードなどを受け取った際に適用された使用許諾契約は、以下に記載されています。
+The software and firmware running in the Microsoft product or service is based on or incorporates material from the projects listed below (collectively, “Third Party Code”).  Microsoft is the not original author of the Third Party Code.  The original copyright notice and license, under which Microsoft received such Third Party Code, are set forth below.
 
-セクション A の情報は、以下に記載されたプロジェクトに含まれるサード パーティのコードのコンポーネントに関するものです。Such licenses and information are provided for informational purposes only.このサード パーティのコードは、マイクロソフトの製品またはサービスに対するマイクロソフトのソフトウェア使用許諾契約条件の下で、マイクロソフトからお客様に使用が再許諾されています。
+The information in Section A is regarding Third Party Code components from the projects listed below. Such licenses and information are provided for informational purposes only.  This Third Party Code is being relicensed to you by Microsoft under Microsoft's software licensing terms for the Microsoft product or service.  
 
-セクション B の情報は、マイクロソフトから当初の使用許諾契約条件の下でお客様に使用が許諾された、サード パーティのコードのコンポーネントに関するものです。
+The information in Section B is regarding Third Party Code components that are being made available to you by Microsoft under the original licensing terms.
 
-完全なファイルは、[[Microsoft ダウンロード センター]](http://go.microsoft.com/fwlink/?LinkId=529428) から入手できる場合があります。マイクロソフトは、この契約の下で明示的には付与されないその他すべての権利を、黙示、禁反言、その他のいずれによるかを問わず留保します。
+The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -1,6 +1,7 @@
 <properties 
 	pageTitle="Azure App Service プランの詳細な概要" 
 	description="Azure App Service の App Service プランのしくみと、それが管理機能にもたらすメリットについて説明します。" 
+	keywords="App Service, Azure App Service, スケール, スケーラブル, App Service プラン, App Service コスト"
 	services="app-service" 
 	documentationCenter="" 
 	authors="btardif" 
@@ -100,4 +101,4 @@ App Service プランは、アプリ間で共有できる一連の機能と容�
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

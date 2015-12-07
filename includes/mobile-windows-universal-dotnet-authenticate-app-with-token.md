@@ -1,10 +1,10 @@
 
-1. In the MainPage.xaml.cs project file, add the following **using** statements:
+1. MainPage.xaml.cs プロジェクト ファイルを開き、次の **using** ステートメントを追加します。
 
 		using System.Linq;		
 		using Windows.Security.Credentials;
 
-2. Replace the **AuthenticateAsync** method with the following code:
+2. **AuthenticateAsync** メソッドを次のコードに置き換えます。
 
         private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
         {
@@ -71,10 +71,12 @@
             return success;
         }
 
-	In this version of **AuthenticateAsync**, the app tries to use credentials stored in the **PasswordVault** to access the service. A regular sign-in is also performed when there is no stored credential.
+	この **AuthenticateAsync** バージョンで、アプリはサービスにアクセスするために、**PasswordVault** に格納された資格情報の使用を試みます。保存された資格情報がないときも通常のサインインが実行されます。
 
-	>[AZURE.NOTE]A cached token may be expired, and token expiration can also occur after authentication when the app is in use. To learn how to determine if a token is expired, see [Check for expired authentication tokens](http://aka.ms/jww5vp). For a solution to handling authorization errors related to expiring tokens, see the post [Caching and handling expired tokens in Azure Mobile Services managed SDK]( hive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
+	>[AZURE.NOTE]キャッシュされたトークンは有効期限が切れている場合があります。また、認証後にアプリケーションを使用している際にトークンの期限切れが発生する場合があります。トークンの期限切れを確認する方法については、「[有効期限が切れた認証トークンのチェック](http://aka.ms/jww5vp)」を参照してください。トークンの期限切れに関連する認証エラーを処理するためのソリューションについては、投稿「[Azure Mobile Services マネージ SDK での有効期限切れトークンのキャッシュと処理](hive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx)」を参照してください。
 
-3. Restart the app twice.
+3. アプリケーションを 2 回再起動します。
 
-	Notice that on the first start-up, sign-in with the provider is again required. However, on the second restart the cached credentials are used and sign-in is bypassed. 
+	最初の再起動では、プロバイダーによるサインインが再度必要になります。ただし、2 回目の再起動ではキャッシュされた資格情報が使用され、サインインは回避されます。
+
+<!---HONumber=AcomDC_1125_2015-->

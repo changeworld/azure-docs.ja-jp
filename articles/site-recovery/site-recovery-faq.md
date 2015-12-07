@@ -78,11 +78,11 @@ ASR は ISO 27001:2005 の認証を受けており、HIPAA、DPA、および Fed
 ## バージョンのサポート
 
 ### Windows Server ホストおよびクラスターのサポートされるバージョンはどれですか。
-Hyper-V サイト間のレプリケーションと保護を有効にするために Hyper-V レプリカを選択している場合は、Windows Server 2012 および Windows Server 2012 R2 を使用できます。
+2 つのオンプレミス Hyper-V サイト間のレプリケーションと保護を有効にするために Hyper-V レプリカを選択している場合は、Windows Server 2012 および Windows Server 2012 R2 を使用できます。Hyper-v Server から Azure への複製を設定するとき、Windows Server 2012 R2 が必要です。
 
 
-### Hyper-V ゲスト オペレーティング システムとしては、どのバージョンがサポートされますか。
-サポートされるゲスト オペレーティング システムの最新のリストが、「[Virtual Machines とゲスト オペレーティング システムについて](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)」というタイトルのトピックで提供されています。
+### ゲスト オペレーティング システムとしては、どのバージョンがサポートされますか。
+オンプレミス間の場合、サポートされるゲスト オペレーティング システムの最新のリストが、「[Virtual Machines とゲスト オペレーティング システムについて](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)」というタイトルのトピックで提供されています。Hyper-v から Azure に複製するシナリオの場合、Azure Site Recovery では、Azure でサポートされるすべてのゲスト オペレーティング システムがサポートされます。VMware から Azure に複製するシナリオの場合、[この記事](site-recovery-vmware-to-azure.md#before-you-start)を参照してください。
 
 ### Hyper-V がクライアント オペレーティング システムで実行されている場合、仮想マシンの保護を構成できますか。
 
@@ -148,12 +148,6 @@ ASR を使用して、すべてのブランチ オフィスの障害復旧ニー
 ### Hyper-V サーバーをドメイン メンバーにする必要はありますか。
 
 いいえ、サーバーがドメインに属している必要はありません。
-
-### Windows Server ホストおよびクラスターのサポートされるバージョンはどれですか。
-Hyper-V サイトと Azure の間で ASR および Hyper-V レプリケーションを使用している場合は、Windows Server 2012 および Windows Server 2012 R2 を使用できます。
-
-### ゲスト オペレーティング システムとしては、どのバージョンがサポートされますか。
-サポートされるゲスト オペレーティング システムの最新のリストが、「[Virtual Machines とゲスト オペレーティング システムについて](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)」というタイトルの記事で提供されています。
 
 ## 2 つの VMM データセンター間でのデプロイ
 
@@ -256,4 +250,4 @@ ASR のデプロイを開始する際は、次の記事を参照してくださ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

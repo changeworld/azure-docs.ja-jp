@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="backup-recovery"
-	ms.date="10/07/2015"
+	ms.date="11/18/2015"
 	ms.author="raynew"/>
 
 #  単一の VMM サーバーを使用した保護の設定
@@ -43,7 +43,7 @@ VMM を高可用性にするために、Windows フェールオーバー クラ�
 ## 開始する前に
 
 - この手順では、1 つのスタンドアロン VMM サーバーと共に Site Recovery をデプロイする方法について説明します。
-- デプロイを開始する前に、[前提条件](site-recovery-vmm-to-vmm.md/#before-you-start)を満たしていることを確認します。
+- デプロイを開始する前に、[前提条件](site-recovery-vmm-to-vmm.md#before-you-start)を満たしていることを確認します。
 - 単一の VMM サーバーには少なくとも 2 つのクラウドを構成する必要があります。1 つのクラウドは保護されたクラウドとして機能し、もう一方は保護を実行します。
 - 保護するクラウドには、以下が含まれている必要があります。
 	- 1 つ以上の VMM ホスト グループ
@@ -63,19 +63,19 @@ VMM を高可用性にするために、Windows フェールオーバー クラ�
 	- [VMM クラウド ファブリックの構成](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)
 	- [VMM でのプライベート クラウドの作成](https://technet.microsoft.com/library/jj860425.aspx)および[Walkthrough: Creating private clouds with System Center 2012 SP1 VMM (チュートリアル: System Center 2012 SP1 VMM を使用したプライベート クラウドの作成)](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)
 3. 保護する仮想マシンが配置されているソース Hyper-V ホスト サーバーを、保護するクラウド (ソース クラウド) に追加します。保護を提供する VMM サーバー上のクラウドに、ターゲットの Hyper-V ホスト サーバーを追加します。
-4. Azure Site Recovery コンテナーを[作成](site-recovery-vmm-to-vmm.md/#step-1-create-a-site-recovery-vault)し、コンテナー登録キーを生成します。
-4. Azure Site Recovery Provider を VMM サーバーに[インストール](site-recovery-vmm-to-vmm.md/#step-3-install-the-azure-site-recovery-provider)し、サーバーをコンテナーに登録します。 
-5. Site Recovery ポータルにクラウドが表示されることを確認し、[クラウドの保護設定を構成す](site-recovery-vmm-to-vmm.md/#step-4-configure-cloud-protection-settings)します。
+4. Azure Site Recovery コンテナーを[作成](site-recovery-vmm-to-vmm.md#step-1-create-a-site-recovery-vault)し、コンテナー登録キーを生成します。
+4. Azure Site Recovery Provider を VMM サーバーに[インストール](site-recovery-vmm-to-vmm.md#step-3-install-the-azure-site-recovery-provider)し、サーバーをコンテナーに登録します。 
+5. Site Recovery ポータルにクラウドが表示されることを確認し、[クラウドの保護設定を構成す](site-recovery-vmm-to-vmm.md#step-4-configure-cloud-protection-settings)します。
 	- **[ソースの場所]** と **[ターゲットの場所]** で、単一の VMM サーバーの名前を指定します。
 	- **[レプリケーション方法]** で、初期レプリケーションに対して **[ネットワーク経由]** を選択します。これは、クラウドが同じサーバー上にあるためです。
 
-6. 必要に応じて、[ネットワーク マッピングを構成](site-recovery-vmm-to-vmm.md/#step-5-configure-network-mapping)します。
+6. 必要に応じて、[ネットワーク マッピングを構成](site-recovery-vmm-to-vmm.md#step-5-configure-network-mapping)します。
 
 	- **[ソース]** と **[ターゲット]** で、単一の VMM サーバーの名前を指定します。
 	- **[ソース上のネットワーク]**で、保護対象のクラウドに対して構成されている VM ネットワークを選択します。
 	- **[ターゲット上のネットワーク]**で、保護に使用するクラウドに対して構成されている VM ネットワークを選択します。
 	- 同じ VMM サーバー上の 2 つの仮想マシン (VM) ネットワーク間に、ネットワーク マッピングを構成することができます。2 つの異なるサイトに同じ VMM ネットワークが存在する場合は、同じネットワーク間でマップできます。
-7. 保護する VMM クラウドの仮想マシンに対して[保護を有効](site-recovery-vmm-to-vmm.md/#step-7-enable-virtual-machine-protection)にします。 
+7. 保護する VMM クラウドの仮想マシンに対して[保護を有効](site-recovery-vmm-to-vmm.md#step-7-enable-virtual-machine-protection)にします。 
 7. Hyper-V Manager コンソールで、Hyper-V レプリカを使用した VMM 仮想マシンのレプリケーションを設定します。VMM 仮想マシンは、どの VMM クラウドにも追加しないでください。
 
 
@@ -86,7 +86,7 @@ VMM を高可用性にするために、Windows フェールオーバー クラ�
 復旧計画は、一緒にフェールオーバーおよび復旧する必要がある仮想マシンをグループ化します。
 
 1. 復旧計画を作成する場合、**[ソース]** と **[ターゲット]** で単一の VMM サーバーの名前を指定します。**[仮想マシンの選択]** に、プライマリ クラウドに関連付けられている仮想マシンが表示されます。
-2. 次に、[復旧計画を作成し、カスタマイズ](https://msdn.microsoft.com/library/azure/dn337331.aspx)します。
+2. 次に、[復旧計画を作成し、カスタマイズ](site-recovery-create-recovery-plans.md)します。
 
 
 ### 復旧
@@ -100,4 +100,4 @@ VMM を高可用性にするために、Windows フェールオーバー クラ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

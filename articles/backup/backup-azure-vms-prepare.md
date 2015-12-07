@@ -83,7 +83,7 @@ VM をバックアップする際、HTTPS API を使用してスナップショ�
 
 次の例では、パブリック インターネットに送信されるすべての HTTP トラフィックにプロキシ VM を使用するようにアプリ VM を構成する必要があります。プロキシ VM は、VNET 内の VM からの着信トラフィックを許可するように構成する必要があります。最後に、NSG (*NSG-lockdown*) には、プロキシ VM からの発信インターネット トラフィックを許可する新しいセキュリティ規則が必要です。
 
-![NSG with HTTP proxy deployment diagram](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
+![HTTP プロキシ デプロイメントを使用した NSG の図](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
 
 **A) 発信方向のネットワーク接続を許可する:**
 
@@ -181,6 +181,10 @@ VM が実行されている場合、バックアップ拡張機能がインス�
   - **Linux**: Azure で動作保証済みのディストリビューションの一覧は、[こちら](../virtual-machines-linux-endorsed-distributions.md)でご確認ください。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作する限り使用できます。
   - **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
 - マルチ DC 構成の一部であるドメイン コントローラー VM の復元は、PowerShell を通じてのみサポートされます。詳細については、「[ドメイン コントローラーの VM の復元](backup-azure-restore-vms.md#restoring-domain-controller-vms)」を参照してください。
+- 次のような特殊なネットワーク構成を持つ仮想マシンの復元は、PowerShell でのみサポートされています。UI の復元ワークフローを使用して作成する VM には、復元操作の完了後、これらのネットワーク構成は含まれません。詳細については、「[特別なネットワーク構成を持つ VM の復元](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations)」を参照してください。 
+	- ロード バランサー構成 (内部および外部の) での仮想マシン
+	- 複数の予約済み IP を持つ仮想マシン
+	- 複数の NIC を持つ仮想マシン
 
 ## 疑問がある場合
 ご不明な点がある場合や確認したい機能が含まれている場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
@@ -191,4 +195,4 @@ VM が実行されている場合、バックアップ拡張機能がインス�
 - [仮想マシンのバックアップ](backup-azure-vms.md)
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

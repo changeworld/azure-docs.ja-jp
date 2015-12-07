@@ -3,7 +3,7 @@
 	description="Azure Automation が提供する価値について説明し、よく寄せられる質問への回答を示して、Runbook と Azure Automation DSC の作成と使用を始められるようにします。"
 	services="automation"
 	documentationCenter=""
-	authors="bwren"
+	authors="SnehaGunda"
 	manager="stevenka"
 	editor=""/>
 
@@ -42,6 +42,10 @@ Azure Automation での Runbook は、Windows PowerShell または Windows Power
 ## Azure Automation での Runbook の作成 
 
 最初から[独自の Runbook を作成する](http://msdn.microsoft.com/library/azure/dn643637.aspx)ことも、[Runbook Gallery](http://msdn.microsoft.com/library/azure/dn781422.aspx) の Runbook を独自の要件に合わせて修正することもできます。要件と PowerShell の経験に基づいて選択できる 3 つの [Runbook の種類](automation-runbook-types.md)があります。PowerShell コードを直接操作する場合は、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) または [PowerShell Workflow Runbook](automation-runbook-types.md#powershell-workflow-runbooks) をオフラインでまたは Azure ポータルで[テキスト エディター](http://msdn.microsoft.com/library/azure/dn879137.aspx)を使用して編集できます。コードを見ないで Runbook を編集する場合は、Azure プレビュー ポータルで[グラフィカル エディター](automation-graphical-authoring-intro.md)を使用して、[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) を作成できます。
+
+読むより見る方がよければ、 2015 年 5 月に行われた Microsoft Ignite セッションのビデオをご覧ください。注: このビデオで説明されている概念と機能は正しいのですが、このビデオが録画されたころよりも Azure Automation は大幅に改善され、現在では Azure ポータルの UI が増え、サポートされる機能も増えました。
+
+> [AZURE.VIDEO microsoft-ignite-2015-automating-operational-and-management-tasks-using-azure-automation]
 
 
 ## Desired State Configuration での構成管理の自動化 
@@ -97,4 +101,4 @@ Azure Automation や独自の Runbook の作成方法の詳細を確認できる
 
 **フィードバックをお待ちしています。** Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

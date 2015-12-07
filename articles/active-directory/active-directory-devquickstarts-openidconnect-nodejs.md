@@ -13,7 +13,7 @@
   ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="11/19/2015"
 	ms.author="brandwe"/>
 
 # Azure AD を使用した Web アプリのサインインおよびサインアウト
@@ -307,7 +307,7 @@ app.listen(3000);
 ```
 
 
-## 5.Web サイトにユーザーを表示する express のビューとルートを作成する
+## 5\.Web サイトにユーザーを表示する express のビューとルートを作成する
 
 `app.js` が完成しました。次に実行する必要があるのは、取得した情報をユーザーに表示するルートとビューを追加し、作成した `/logout` ルートと `/login` ルートを処理することだけです。
 
@@ -348,7 +348,6 @@ exports.list = function(req, res){
 	<a href="/account">Account Info</a></br>
 	<a href="/logout">Log Out</a>
 <% } %>
-
 ```
 
 - ルート ディレクトリの下に `/views/account.ejs` ビューを作成し、`passport-azuread` がユーザー要求の中に配置された追加情報を表示できるようにします。
@@ -368,7 +367,6 @@ exports.list = function(req, res){
 <p></p>
 <a href="/logout">Log Out</a>
 <% } %>
-
 ```
 
 - 最後に、レイアウトを追加して、見やすくします。ルート ディレクトリの下に '/views/layout.ejs' ビューを作成します。
@@ -416,4 +414,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

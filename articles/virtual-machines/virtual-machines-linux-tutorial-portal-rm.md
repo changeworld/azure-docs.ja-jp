@@ -21,7 +21,7 @@
 
 > [AZURE.SELECTOR]
 - [Azure CLI](virtual-machines-linux-tutorial.md)
-- [Azure Preview Portal](virtual-machines-linux-tutorial-portal-rm.md)
+- [Azure preview portal](virtual-machines-linux-tutorial-portal-rm.md)
 
 <br>[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
@@ -43,7 +43,7 @@ Linux を実行する Azure 仮想マシン (VM) は簡単に作成できます�
 
 	> [AZURE.TIP]その他のイメージを見つけるには、**[Marketplace]** をクリックし、使用可能な項目を検索するか、フィルターで抽出します。
 
-3. **[Ubuntu Server 14.04 LTS]** ページの下部にある **[リソース マネージャー スタックを使用]** を選択して、Azure リソース マネージャーで VM を作成します。新しいワークロードのほとんどについて、リソース マネージャー スタックを使用することをお勧めします。考慮事項については、「[Azure リソース マネージャーにおける Azure Compute、Network、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)」をご覧ください。
+3. **[Ubuntu Server 14.04 LTS]** ページの下部にある **[リソース マネージャー スタックを使用]** を選択して、Azure リソース マネージャーで VM を作成します。新しいワークロードのほとんどについて、リソース マネージャー スタックを使用することをお勧めします。考慮事項については、「[Azure リソース マネージャーにおける Azure コンピューティング、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)」をご覧ください。
 
 4. 次に、![[作成] ボタン](media/virtual-machines-linux-tutorial-portal-rm/createbutton.png) をクリックします。
 
@@ -130,4 +130,4 @@ Azure 上の Linux の詳細については、次の内容を参照してくだ�
 
 - [Azure の Linux 用 Docker 仮想マシン拡張機能](virtual-machines-docker-vm-extension.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

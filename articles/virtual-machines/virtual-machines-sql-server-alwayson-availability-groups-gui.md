@@ -19,7 +19,7 @@
 # Azure VM での AlwaysOn 可用性グループの構成 (GUI)
 
 > [AZURE.SELECTOR]
-- [Portal](virtual-machines-sql-server-alwayson-availability-groups-gui.md)
+- [Azure portal](virtual-machines-sql-server-alwayson-availability-groups-gui.md)
 - [PowerShell](virtual-machines-sql-server-alwayson-availability-groups-powershell.md)
 
 <br/>
@@ -493,19 +493,19 @@
 
 1. **[説明]** ページで **[次へ]** をクリックします。**[可用性グループ名の指定]** ページで、**[可用性グループ名]** に「**AG1**」と入力し、もう一度 **[次へ]** をクリックします。
 
-	![New AG Wizard, Specify AG Name](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665524.gif)
+	![新しい AG ウィザード、AG 名の指定](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665524.gif)
 
 1. **[データベースの選択]** ページで、**[MyDB1]** を選択し、**[次へ]** をクリックします。対象とするプライマリ レプリカで完全バックアップを少なくとも 1 つは作成しているため、このデータベースは可用性グループの前提条件を満たしています。
 
-	![New AG Wizard, Select Databases](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665525.gif)
+	![新しい AG ウィザード、データベースの選択](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665525.gif)
 
 1. **[レプリカの指定]** ページで **[レプリカの追加]** をクリックします。
 
-	![New AG Wizard, Specify Replicas](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665526.gif)
+	![新しい AG ウィザード、レプリカの指定](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665526.gif)
 
 1. **[サーバーに接続]** ダイアログが表示されます。**[サーバー名]** に「**ContosoSQL2**」と入力し、**[接続]** をクリックします。
 
-	![New AG Wizard, Connect to Server](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665527.gif)
+	![新しい AG ウィザード、サーバーに接続](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665527.gif)
 
 1. **[レプリカの指定]** ページに戻ると、**[可用性レプリカ]** の一覧に **ContosoSQL2** が表示されていることがわかります。次に示すようにレプリカを構成します。構成し終わったら、**[次へ]** をクリックします。
 
@@ -517,25 +517,25 @@
 
 1. **[検証]** ページで **[次へ]** をクリックします。このページは、次のようになっています。可用性グループ リスナーを構成していないため、リスナー構成に関する警告が表示されます。このチュートリアルではリスナーを構成しないため、この警告を無視できます。チュートリアルの完了後にリスナーを構成するには、[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)に関するページを参照してください。
 
-	![New AG Wizard, Validation](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665530.gif)
+	![新しい AG ウィザード、検証](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665530.gif)
 
 1. **[概要]** ページで、**[完了]** をクリックし、新しい可用性グループが構成されるまで待ちます。**[進行状況]** ページで **[詳細]** をクリックすると、進行状況が詳しく表示されます。ウィザードが完了したら、**[結果]** ページを調べて、次のように、可用性グループが正常に作成されたことを確認します。その後、**[閉じる]** をクリックしてウィザードを終了します。
 
-	![New AG Wizard, Results](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665531.gif)
+	![新しい AG ウィザード、結果](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665531.gif)
 
 1. **オブジェクト エクスプローラー**で、**[AlwaysOn 高可用性]**、**[可用性グループ]** の順に展開します。このコンテナー内に新しい可用性グループが表示されます。**[AG1 (プライマリ)]** を右クリックして **[ダッシュボードの表示]** をクリックします。
 
-	![Show AG Dashboard](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665532.gif)
+	![AG ダッシュボードの表示](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665532.gif)
 
 1. **AlwaysOn ダッシュボード**は次のように表示されます。レプリカ、各レプリカのフェールオーバー モード、および同期の状態を確認できます。
 
-	![AG Dashboard](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665533.gif)
+	![AG ダッシュボード](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665533.gif)
 
 1. **[サーバー マネージャー]** に戻り、**[ツール]** を選択し、**[フェールオーバー クラスター マネージャー]** を起動します。
 
 1. **[Cluster1.corp.contoso.com]**、**[サービスとアプリケーション]** の順に展開します。**[役割]** を選択し、**AG1** 可用性グループの役割が作成されていることに注目します。リスナーを構成していないため、AG1 には、データベース クライアントが可用性グループに接続する際に使用する IP アドレスがありません。読み取り/書き込み操作の場合はプライマリ ノードに、読み取り専用クエリの場合はセカンダリ ノードに直接接続できます。
 
-	![AG in Failover Cluster Manager](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665534.gif)
+	![フェールオーバー クラスター マネージャー内のAG](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665534.gif)
 
 >[AZURE.WARNING]フェールオーバー クラスター マネージャーから、可用性グループのフェールオーバーを実行しないでください。すべてのフェールオーバー操作は、SSMS の **AlwaysOn ダッシュボード**から実行する必要があります。詳細については、[WSFC フェールオーバー クラスター マネージャーと可用性グループの使用に関する制限事項](https://msdn.microsoft.com/library/ff929171.aspx)のページを参照してください。
 
@@ -544,4 +544,4 @@
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->

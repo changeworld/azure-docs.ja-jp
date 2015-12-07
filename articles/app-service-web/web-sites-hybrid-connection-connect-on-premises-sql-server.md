@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.date="11/13/2015"
 	ms.author="cephalin"/>
 
 # ハイブリッド接続を使用して Azure App Service の Web アプリからオンプレミスの SQL Server に接続する
@@ -54,9 +54,9 @@ Port|理由
 80|証明書の検証用の HTTP ポート (**必須**)。必要に応じて、データ接続に使用することもできます。
 使用します|データ接続用 (**任意**)。443 への送信接続ができない場合は、TCP ポート 80 を使用します。
 5671 と 9352|データ接続用の**推奨**ポート。ただし、必須ではありません。このモードでは通常、スループットが高くなります。これらのポートへの送信接続ができない場合は、TCP ポート 443 を使用します。
-- 内部設置型のリソースの *hostname*:*portnumber* に到達できること
+- オンプレミス リソースの *hostname*:*portnumber* に到達できること
 
-この記事の手順では、内部設置型のハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
+この記事の手順では、オンプレミスのハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
 
 上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、この手順をスキップし、「[オンプレミスの SQL Server データベースを作成する](#CreateSQLDB)」から開始できます。
 
@@ -75,7 +75,7 @@ Port|理由
 
 3. **[インスタンスの構成]** ページで、**[既定のインスタンス]** を選択します。
 
-	![Choose Default Instance][ChooseDefaultInstance]
+	![[既定のインスタンス] を選択][ChooseDefaultInstance]
 
 	既定では、SQL Server の既定のインスタンスが静的ポート 1433 の SQL Server クライアントから要求をリッスンします。ハイブリッド接続機能には静的ポート 1433 が必要です。名前付きインスタンスは動的ポートと UDP を使用します。これはハイブリッド接続ではサポートされません。
 
@@ -103,11 +103,11 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 2. SQL Server Management Studio を使用して新しいデータベースを作成するには、オブジェクト エクスプローラーで **[データベース]** を右クリックしてから、**[新しいデータベース]** をクリックします。
 
-	![Create new database][SSMScreateNewDB]
+	![新しいデータベースの作成][SSMScreateNewDB]
 
 3. **[新しいデータベース]** ダイアログで、データベース名に「MembershipDB」と入力し、**[OK]** をクリックします。
 
-	![Provide database name][SSMSprovideDBname]
+	![データベース名の入力][SSMSprovideDBname]
 
 	この時点では、データベースに変更を加えることはできないことに注意してください。メンバーシップ情報は、後で Web アプリケーションを実行すると、自動的に追加されます。
 
@@ -139,7 +139,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 <a name="CreateHC"></a>
 ## C.ハイブリッド接続および BizTalk サービスを作成する ##
 
-1. ポータルに戻って、Web アプリのブレードを下にスクロールし、**[ネットワーク機能ステータス]**、**[ハイブリッド接続エンドポイントの構成]** の順にクリックします。
+1. ポータルの設定に戻り、**[ネットワーク]** > **[ハイブリッド接続エンドポイントを構成する]** をクリックします。
 
 	![Hybrid connections][CreateHCHCIcon]
 
@@ -151,7 +151,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 	- **[ポート]** には、1433 (SQL Server の既定のポート) を入力します。
 	- **[Biz Talk Service]**、**[新しい BizTalk サービス]** の順にクリックし、BizTalk サービスの名前を入力します。
 
-	![Create a hybrid connection][TwinCreateHCBlades]
+	![ハイブリッド接続の追加][TwinCreateHCBlades]
 
 5. **[OK]** を 2 回クリックします。
 
@@ -200,7 +200,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 2. **[connectionStrings]** セクションを編集して、ローカル コンピューターの SQL Server データベースを指すようにします。次の例の構文を使用します。
 
-	![Connection string][HCVSConnectionString]
+	![接続文字列][HCVSConnectionString]
 
 	接続文字列を作成する際には、次の事項に留意してください。
 
@@ -216,15 +216,15 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 1. ここで、[デバッグ] の [参照] ボタンをクリックして、新しい Web プロジェクトをローカルで実行します。この例では、Internet Explorer を使用します。
 
-	![Run project][HCVSRunProject]
+	![オブジェクトの実行][HCVSRunProject]
 
 2. 既定の Web ページの右上で、**[登録]** をクリックして新しいアカウントを登録します。
 
-	![Register a new account][HCVSRegisterLocally]
+	![新しいアカウントの登録][HCVSRegisterLocally]
 
 3. ユーザー名とパスワードを入力します。
 
-	![Enter user name and password][HCVSCreateNewAccount]
+	![ユーザー名とパスワードの入力][HCVSCreateNewAccount]
 
 	これで、アプリケーションのメンバーシップ情報を保持するローカル SQL Server にデータベースが自動的に作成されます。テーブルの 1 つ (**dbo.AspNetUsers**) に、入力した Web アプリ ユーザー資格情報が保持されます。このテーブルは後でチュートリアルで使用されます。
 
@@ -241,7 +241,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 1. Azure プレビュー ポータルの App Service Web アプリに対する発行プロファイルをダウンロードできます。Web アプリのブレードで、**[発行プロファイルを取得]** をクリックし、コンピューターにファイルを保存します。
 
-	![Download publish profile][PortalDownloadPublishProfile]
+	![発行プロファイルのダウンロード][PortalDownloadPublishProfile]
 
 	次に、このファイルを Visual Studio Web アプリケーションにインポートします。
 
@@ -255,7 +255,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 4. ダウンロードした発行プロファイルを参照して、選択してから、**[OK]** をクリックします。
 
-	![Browse to profile][HCVSBrowseToImportPubProfile]
+	![プロファイルを参照][HCVSBrowseToImportPubProfile]
 
 5. 発行情報がインポートされ、ダイアログの **[接続]** タブに表示されます。
 
@@ -279,15 +279,15 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 3. 新しいハイブリッド接続を詳細にテストするには、Azure Web アプリケーションからログオフし、別のユーザーとして登録します。新しいユーザー名とパスワードを入力して、**[登録]** をクリックします。
 
-	![Test register another user][HCTestRegisterRelecloud]
+	![別ユーザーの登録テスト][HCTestRegisterRelecloud]
 
 4. ハイブリッド接続を通じて新しいユーザーの資格情報がローカル データベースに保存されたことを確認するには、ローカル コンピューターで SQL Management Studio を開きます。オブジェクト エクスプローラーで、**[MembershipDB]** データベースを展開してから、**[テーブル]** を展開します。**[dbo.AspNetUsers]** メンバーシップ テーブルを右クリックし、**[先頭の 1000 行を選択]** を選択して、結果を確認します。
 
-	![View the results][HCTestSSMSTree]
+	![結果の確認][HCTestSSMSTree]
 
 5. ローカル メンバーシップ テーブルには、ローカルで作成したメンバーシップと、Azure クラウドで作成したメンバーシップの両方が表示されています。クラウドで作成したメンバーシップは、Azure のハイブリッド接続機能でオンプレミスのデータベースに保存されています。
 
-	![Registered users in on-premises database][HCTestShowMemberDb]
+	![オンプレミスのデータベースに保存された登録済みのユーザー][HCTestShowMemberDb]
 
 これで、Azure クラウドの Web アプリとオンプレミスの SQL Server データベース間のハイブリッド接続を使用する ASP.NET Web アプリケーションを作成し、デプロイすることができました。ご利用ありがとうございます。
 
@@ -363,4 +363,4 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 [HCTestSSMSTree]: ./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F10HCTestSSMSTree.png
 [HCTestShowMemberDb]: ./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F11HCTestShowMemberDb.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

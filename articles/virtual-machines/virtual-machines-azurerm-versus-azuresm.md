@@ -58,7 +58,7 @@ Azure リソース マネージャーでは、既製のアプリケーション 
 | Virtual Machines 用クラウド サービス |	クラウド サービスは、プラットフォームに基づく可用性と負荷分散を必要とする仮想マシンを保持するためのコンテナーです。 | 新しいモデルを使用して Virtual Machine を作成するためのオブジェクトとしてのクラウド サービスは不要となりました。 |
 | 可用性セット | プラットフォームに対する可用性は、Virtual Machines に同じ "AvailabilitySetName" を構成することによって示されます。障害ドメインの最大数は 2 です。 | 可用性セットは、Microsoft.Compute プロバイダーによって公開されるリソースです。可用性セットには、高可用性を必要とする Virtual Machines を含める必要があります。障害ドメインの最大数は 3 です。 |
 | [アフィニティ グループ] をクリックし、 |	Virtual Network を作成するにはアフィニティ グループが必要です。ただし、Regional Virtual Network の導入により、それは不要となりました。 |単純化するために、Azure リソース マネージャーによって公開される API には、アフィニティ グループの概念が存在しません。 |
-| 負荷分散 | デプロイされている Virtual Machines には、クラウド サービスの作成によって暗黙的な Load Balancer が提供されます。 | Load Balancer は、Microsoft.Network プロバイダーによって公開されるリソースです。負荷分散を必要とする Virtual Machines のプライマリ ネットワーク インターフェイスは、Load Balancer を参照している必要があります。Load Balancer には、内部 Load Balancer と外部 Load Balancer とがあります。詳細については、[こちら](resource-groups-networking.md)を参照してください。 |
+| 負荷分散 | デプロイされている Virtual Machines には、クラウド サービスの作成によって暗黙的な Load Balancer が提供されます。 | Load Balancer は、Microsoft.Network プロバイダーによって公開されるリソースです。負荷分散を必要とする Virtual Machines のプライマリ ネットワーク インターフェイスは、Load Balancer を参照している必要があります。Load Balancer には、内部 Load Balancer と外部 Load Balancer とがあります。[詳細については、こちらを参照してください。](resource-groups-networking.md) |
 |仮想 IP アドレス | Cloud Services に VM を追加すると、既定の VIP (仮想 IP アドレス) がクラウド サービスに与えられます。仮想 IP アドレスは、暗黙的なロード バランサーに関連付けられるアドレスです。 | パブリック IP アドレスは、Microsoft.Network プロバイダーによって公開されるリソースです。パブリック IP アドレスには、静的 (予約済み) アドレスと動的アドレスとがあります。Load Balancer には、動的パブリック IP を割り当てることができます。パブリック IP のセキュリティは、セキュリティ グループを使用して保護できます。 |
 |予約済み IP アドレス|	IP アドレスを Azure で予約し、クラウド サービスに関連付けることで、その IP アドレスを固定アドレスとすることができます。 | パブリック IP アドレスは "静的" モードで作成でき、"予約済み IP アドレス" と同じ機能を持ちます。現在、Load Balancer に割り当てることができるのは静的パブリック IP だけです。 |
 |VM ごとのパブリック IP アドレス (PIP) | Public IP Addresses は、直接 VM に関連付けることもできます。 | パブリック IP アドレスは、Microsoft.Network プロバイダーによって公開されるリソースです。パブリック IP アドレスには、静的 (予約済み) アドレスと動的アドレスとがあります。ただし、VM ごとのパブリック IP を取得するためにネットワーク インターフェイスに割り当てることができるのは現在、動的パブリック IP だけです。 |
@@ -70,9 +70,9 @@ Azure リソース マネージャーでは、既製のアプリケーション 
 
 Azure テンプレートを初めて使用する際は、開発とプラットフォームへのデプロイを目的とした各種のツールが用意されているのでご利用ください。
 
-### Azure ポータル
+### Azure プレビュー ポータル
 
-Azure ポータルでは、Virtual Machines と Virtual Machines (プレビュー) を同時にデプロイするオプションが引き続き提供されます。Azure ポータルでカスタム テンプレートのデプロイメントを行うこともできます。
+Azure プレビュー ポータルには、Virtual Machines のクラシック デプロイ モデルと、Virtual Machines のリソース マネージャー デプロイ モデルのデプロイ オプションが引き続き同時にあります。Azure プレビュー ポータルでカスタム テンプレートのデプロイメントを行うこともできます。
 
 ### Azure PowerShell
 
@@ -116,4 +116,4 @@ Azure コマンドライン インターフェイス (Azure CLI) には、**Azur
 
 広範囲にわたるスターター テンプレートを「[Azure リソース マネージャー クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」で見つけることができます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

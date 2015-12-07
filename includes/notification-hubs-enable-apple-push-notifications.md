@@ -6,7 +6,7 @@ Apple Push Notification サービス (APNS) では、証明書を使用してプ
 
 Apple が署名済みのプッシュ証明書を生成するために使用する、証明書署名要求 (CSR: Certificate Signing Request) ファイルを生成します。
 
-1. Mac で、キーチェーン アクセス ツールを実行します。これは、Launchpad の **[ユーティリティ]** フォルダーまたは **[その他]** フォルダーから開くことができます。
+1. Mac で、キーチェーン アクセス ツールを実行します。これは、Launch pad の **[ユーティリティ]** フォルダーまたは **[その他]** フォルダーから開くことができます。
 
 2. **[Keychain Access]** をクリックし、**[Certificate Assistant]** を展開して、**[Request a Certificate from a Certificate Authority]** をクリックします。
 
@@ -37,7 +37,7 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
 	* **[Name]**: **[App ID Description]** セクションの **[Name]** フィールドに、アプリのわかりやすい名前を入力します。
 	
-	* **[Bundle Identifier]**: **[Explicit App ID]** セクションに、[アプリ ディストリビューション ガイド](http://go.microsoft.com/fwlink/?LinkId=613485)で説明したように `<Organization Identifier>.<Product Name>` の形式で**バンドル ID** を入力します。使用する *Organization Identifier* と *Product Name* は XCode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。次のスクリーンショットでは、組織 ID として*NotificationHubs*、製品名として *GetStarted* を使用しています。XCode プロジェクトで使用する値と一致していることを確認することで、XCode で正しい発行プロファイルが使用できるようになります。
+	* **[Bundle Identifier]**: **[Explicit App ID]** セクションに、[アプリ ディストリビューション ガイド](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)で説明したように `<Organization Identifier>.<Product Name>` の形式で**バンドル ID** を入力します。使用する *Organization Identifier* と *Product Name* は XCode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。次のスクリーンショットでは、組織 ID として*NotificationHubs*、製品名として *GetStarted* を使用しています。XCode プロジェクトで使用する値と一致していることを確認することで、XCode で正しい発行プロファイルが使用できるようになります。
 	
 	* **[Push Notifications]**: **[App Services]** セクションの **[Push Notifications]** オプションをオンにします。
 
@@ -79,7 +79,7 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
-   	これによって、署名証明書がダウンロードされ、コンピューターの Downloads フォルダーに保存されます。
+   	これによって、証明書がダウンロードされ、コンピューターの Downloads フォルダーに保存されます。
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
 
@@ -135,4 +135,4 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1125_2015-->

@@ -84,7 +84,7 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 1. 変数の設定後、スクリプトを、テキスト エディターからそれを実行する Azure PowerShell セッションにコピーします。プロンプトにまだ >> が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーを再度押します。
 
->[AZURE.NOTE]現時点において、Microsoft Azure 管理ポータルでは内部ロード バランサーをサポートしていないため、ポータルには ILB とエンドポイントのどちらも表示されません。ただし、エンドポイントで Load Balancer が実行されている場合は、**Get-AzureEndpoint** によって内部 IP アドレスが返されます。それ以外の場合、Null が返されます。
+>[AZURE.NOTE]現時点において、Azure ポータルでは内部ロード バランサーをサポートしていないため、Azure ポータルには ILB とエンドポイントのどちらも表示されません。ただし、エンドポイントで Load Balancer が実行されている場合は、**Get-AzureEndpoint** によって内部 IP アドレスが返されます。それ以外の場合、Null が返されます。
 
 ## KB2854082 がインストールされていることを確認する (必要に応じて)
 
@@ -138,4 +138,4 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1125_2015-->
