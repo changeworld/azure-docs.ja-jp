@@ -1,10 +1,10 @@
 ## EventProcessorHost を使用したメッセージの受信
 
-[EventProcessorHost][] は、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列してそれらの Event Hubs から受信する .NET クラスです。[EventProcessorHost] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に [EventProcessorHost] を使用する方法を示します。[イベント処理のスケールアウトのサンプル]は、受信側が複数の場合に [EventProcessorHost] を使用する方法を示します。
+[EventProcessorHost][] は、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列してそれらの Event Hubs から受信する .NET クラスです。[EventProcessorHost] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に [EventProcessorHost] を使用する方法を示します。[[イベント処理のスケールアウトのサンプル]]は、受信側が複数の場合に [EventProcessorHost] を使用する方法を示します。
 
 [EventProcessorHost] を使用するには [Azure ストレージ アカウント]が必要です。
 
-1. [Azure ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
+1. [Azure クラシック ポータル][]にログオンし、画面の下部にある **[新規]** をクリックします。
 
 2. **[Data Services]**、**[Storage]**、**[簡易作成]** の順にクリックし、ストレージ アカウントの名前を入力します。目的のリージョンを選択し、**[ストレージ アカウントの作成]** をクリックします。
 
@@ -42,9 +42,8 @@
 
 	次に、クラスの本文に次のコードを置き換えます。
 
-	```
-    class SimpleEventProcessor : IEventProcessor
-	{
+		class SimpleEventProcessor : IEventProcessor
+	    {
 	        Stopwatch checkpointStopWatch;
 
 	    async Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
@@ -81,8 +80,7 @@
                 this.checkpointStopWatch.Restart();
             }
 	    }
-	}
-    ````
+	} ````
 
 	このクラスは、**EventProcessorHost** から呼び出されて、Event Hub から受信したイベントを処理します。`SimpleEventProcessor` クラスは、ストップウォッチを使用して **EventProcessorHost** コンテキストで定期的にチェックポイント メソッドを呼び出します。これにより、受信側を再起動すると、処理の作業の 5 分以内に機能が失われます。
 
@@ -121,11 +119,11 @@
 <!-- Links -->
 [Event Hubs の概要]: event-hubs-overview.md
 [Event Hubs のプログラミング ガイド]: event-hubs-programming-guide.md
-[イベント処理のスケールアウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[[イベント処理のスケールアウトのサンプル]]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [イベント処理のスケール アウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [Azure ストレージ アカウント]: ../storage/storage-create-storage-account.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
-[Azure ポータル]: http://manage.windowsazure.com
+[Azure クラシック ポータル]: http://manage.windowsazure.com
 
 <!-- Images -->
 
@@ -134,4 +132,4 @@
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 
-<!----HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

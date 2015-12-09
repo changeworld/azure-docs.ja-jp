@@ -43,9 +43,9 @@
 この手順では、Azure PowerShell を使用して、ADFTutorialDataFactoryPSH という名前の Azure Data Factory を作成します。
 
 1. Azure PowerShell を起動し、次のコマンドを実行します。Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
-	- **Add-AzureAccount** を実行し、Azure プレビュー ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
+	- **Add-AzureAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
 	- **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
-	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、プレビュー ポータルで使用したものと同じである必要があります。
+	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。
 2. Azure Data Factory コマンドレットは AzureResourceManager モードでのみ使用できるので、このモードに切り替えます。
 
 		Switch-AzureMode AzureResourceManager
@@ -109,7 +109,7 @@
 		  "properties": {
 		    "type": "HDInsightOnDemand",
 		    "typeProperties": {
-		      "version": "3.1",
+		      "version": "3.2",
 		      "clusterSize": 1,
 		      "timeToLive": "00:30:00",
 		      "linkedServiceName": "StorageLinkedService"
@@ -121,7 +121,7 @@
 
 	プロパティ | 説明
 	-------- | -----------
-	バージョン | バージョン 3.1 の HDInsight を作成することを指定します。
+	バージョン | 作成された HDInsight のバージョンが 3.2 になるように指定します。
 	ClusterSize | 1 ノードの HDInsight クラスターを作成します。
 	TimeToLive | 削除されるまでの HDInsight クラスターのアイドル時間を指定します。
 	linkedServiceName | HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。
@@ -131,7 +131,7 @@
 
 
 ### 出力データセットを作成する
-次に、Azure BLOB ストレージに格納されるデータを表す出力データセットを作成します。
+次に、Azure Blob Storage に格納されるデータを表す出力データセットを作成します。
 
 1.	以下の内容を記述した「OutputTable.json」という名前の JSON ファイルを C:\\ADFGetStartedPSH フォルダー内に作成します。
 
@@ -207,7 +207,7 @@
 
 	パイプラインの **start** および **end** プロパティでは、パイプラインのアクティブな期間を指定します。
 
-	アクティビティ JSON では、Hive スクリプトがリンクされたサービス **HDInsightOnDemandLinkedService** によって指定されたコンピューティングで実行することを指定します。
+	アクティビティ JSON では、リンクされたサービス (**HDInsightOnDemandLinkedService**) によって指定されたコンピューティングで Hive スクリプトが実行されることを指定します。
 2. 次のコマンドを実行して、Data Factory テーブルを作成します。
 
 		New-AzureDataFactoryPipeline $df -File .\MyFirstPipelinePSH.json
@@ -260,7 +260,7 @@
 		PipelineName        : MyFirstPipeline
 		Type                : Script
 
-	スライスが Ready 状態または Failed 状態になるまでこのコマンドレットを実行させたままにできます。スライスが Ready 状態になったら、BLOB ストレージの data コンテナーの partitioneddata フォルダーで出力データを調べます。オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかることに注意してください。
+	スライスが Ready 状態または Failed 状態になるまでこのコマンドレットを実行させたままにできます。スライスが Ready 状態になったら、Blob Storage の data コンテナーの partitioneddata フォルダーで出力データを調べます。オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかることに注意してください。
 
 Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn820234.aspx)」を参照してください。
 
@@ -272,4 +272,4 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 
 [cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

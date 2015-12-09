@@ -59,9 +59,9 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 
 ##<a name="close"></a>Azure SQL Database と Azure VM 内の SQL Server の詳細
 
-**Microsoft Azure SQL Database (Azure SQL Database)** は、Azure クラウドにおいてホストされるサービスとしてのリレーショナル データベースであり、*Software-as-a-Service (SaaS)* または *Platform-as-a-Service (PaaS)* に分類されます。Azure SQL Database は、マイクロソフトが所有、ホスト、保守する標準的なハードウェアおよびソフトウェア上に構築されています。SQL Database では、組み込みの機能を使用して、サービス上で直接開発を行えます。SQL Database は従量課金制で利用しますが、より強力にスケール アップまたはスケール アウトするためのオプションもあります。
+**Microsoft Azure SQL Database (Azure SQL Database)** は、Azure クラウドにおいてホストされるサービスとしてのリレーショナル データベースであり、*Software-as-a-Service (SaaS)* または *Platform-as-a-Service (PaaS)* に分類されます。Azure SQL Database は、マイクロソフトが所有、ホスト、保守する標準的なハードウェアおよびソフトウェア上に構築されています。SQL Database では、組み込みの機能を使用して、サービス上で直接開発を行えます。SQL Database は従量課金制で利用しますが、より強力にスケールアップまたはスケールアウトするためのオプションもあります。
 
-**Azure Virtual Machines (VM) 内の SQL Server** は、*Infrastructure-as-a-Service (IaaS)* という業界内カテゴリに分類され、クラウドの仮想マシン内で SQL Server を実行できます。Azure SQL Database と同様に、マイクロソフトが所有、ホスト、保守する標準的なハードウェア上に構築されています。VM 内で SQL Server を使用する場合、所有している SQL Server のライセンスを Azure に移行するか、Azure ポータルの事前構成済みの SQL Server イメージの 1 つを使用できます。
+**Azure Virtual Machines (VM) 内の SQL Server** は、*Infrastructure-as-a-Service (IaaS)* という業界内カテゴリに分類され、クラウドの仮想マシン内で SQL Server を実行できます。Azure SQL Database と同様に、マイクロソフトが所有、ホスト、保守する標準的なハードウェア上に構築されています。VM 内で SQL Server を使用する場合、所有している SQL Server のライセンスを Azure に移行するか、Azure クラシック ポータルにある事前構成済みの SQL Server イメージの 1 つを使用できます。
 
 概して、目的別に最適化された次の 2 つの SQL オプションがあります。
 
@@ -82,7 +82,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
    <td valign="middle">
           <ul>
           <li type=round>開発とマーケティングに時間的制約があるクラウド設計の新しいアプリケーション。
-          <li type=round>組み込みの自動高可用性、災害復旧ソリューション、アップグレード メカニズムを必要とするアプリケーション。
+          <li type=round>組み込みの自動高可用性、障害復旧ソリューション、アップグレード メカニズムを必要とするアプリケーション。
           <li type=round>基になるオペレーティング システム、ハードウェア、および構成設定の管理を回避して、数百または数千ものデータベースを使用する場合。
          <li type=round>スケール アウト パターンを使用したアプリケーション。
          <li type=round>サイズが最大 1 TB のデータベース。
@@ -96,7 +96,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
       <li type=round>セキュリティで保護されたトンネル経由で Azure からオンプレミス リソース (Active Directory など) にアクセスする必要がある SQL Server アプリケーション。
       <li type=round>完全な管理者アクセス権があるカスタマイズされた IT 環境を必要とする場合。
       <li type=round>運用環境以外のオンプレミス SQL Server のハードウェアを購入しない場合の迅速な開発およびテスト シナリオ。
-      <li type=round><a href="http://msdn.microsoft.com/library/jj919148.aspx">Azure Storage でのバックアップ</a>や <a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions">Azure VM 内の AlwaysOn レプリカ</a>を使用したオンプレミス SQL Server アプリケーションの災害復旧。
+      <li type=round><a href="http://msdn.microsoft.com/library/jj919148.aspx">Azure Storage でのバックアップ</a>や <a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions">Azure VM 内の AlwaysOn レプリカ</a>を使用したオンプレミス SQL Server アプリケーションの障害復旧。
       <li type=round>サイズが 1 TB を超える大きなデータベース。
       </ul></td>
 
@@ -119,8 +119,8 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 </tr>
 <tr>
    <td valign="middle"><p><b>ビジネス継続性</b></p></td>
-   <td valign="middle"><ul><li type=round>Azure SQL Database は、組み込みのフォールト トレランスのインフラストラクチャ機能以外にも、ビジネス継続性を向上させるために、特定の時点への復元、geo リストア、geo レプリケーションなどの機能を提供します。詳細については、「<a href="http://msdn.microsoft.com/library/azure/hh852669.aspx">Azure SQL Database のビジネス継続性</a>」を参照してください。</ul></td>
-   <td valign="middle"><ul><li type=round>Azure VM 内の SQL Server では、データベース固有のニーズのために、高可用性と災害復旧のソリューションを設定できます。そのため、アプリケーション向けにシステムを大幅に最適化できます。必要なときに自分でフェールオーバーをテストして実行できます。詳細については、「<a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions">Azure Virtual Machines における SQL Server の高可用性と災害復旧</a>」を参照してください。</ul></td>
+   <td valign="middle"><ul><li type=round>Azure SQL Database は、組み込みのフォールト トレランスのインフラストラクチャ機能以外にも、ビジネス継続性を向上させるために、ポイントインタイム リストア、geo リストア、geo レプリケーションなどの機能を提供します。詳細については、「<a href="http://msdn.microsoft.com/library/azure/hh852669.aspx">Azure SQL Database のビジネス継続性</a>」を参照してください。</ul></td>
+   <td valign="middle"><ul><li type=round>Azure VM 内の SQL Server では、データベース固有のニーズのために、高可用性と障害復旧のソリューションを設定できます。そのため、アプリケーション向けにシステムを大幅に最適化できます。必要なときに自分でフェールオーバーをテストして実行できます。詳細については、「<a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions">Azure Virtual Machines における SQL Server の高可用性と障害復旧</a>」を参照してください。</ul></td>
 
 </tr>
 <tr>
@@ -128,7 +128,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
    <td valign="middle"><ul><li type=round>オンプレミス アプリケーションから Azure SQL Database 内のデータにアクセスできます。</ul></td>
    <td valign="middle"><ul>
       <li type=round>Azure VM 内の SQL Server を使用して、アプリケーションの一部をクラウドに、一部をオンプレミスにすることができます。たとえば、<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-overview/">Azure Network Services</a> 経由でオンプレミス ネットワークと Active Domain Directory をクラウドに拡張できます。さらに、<a href="http://msdn.microsoft.com/library/dn385720.aspx">Azure の機能の SQL Server データ ファイル</a>を使用して、Azure Storage にオンプレミスのデータ ファイルを格納することができます。詳細については、「<a href="http://msdn.microsoft.com/library/dn606154.aspx">SQL Server 2014 ハイブリッド クラウドの概要</a>」を参照してください。
-      <li type=round>オンプレミス SQL Server アプリケーションの災害復旧をサポートします (<a href="http://msdn.microsoft.com/library/jj919148.aspx">Azure Storage 上のバックアップ</a>または <a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions">Azure VM 内の AlwaysOn レプリカ</a>を使用)。
+      <li type=round>オンプレミス SQL Server アプリケーションの障害復旧をサポートします (<a href="http://msdn.microsoft.com/library/jj919148.aspx">Azure Storage 上のバックアップ</a>または <a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions">Azure VM 内の AlwaysOn レプリカ</a>を使用)。
       </ul></td>
 
 </tr>
@@ -166,14 +166,14 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 
 > [AZURE.IMPORTANT]現時点では、Azure SQL Database は SQL Server の一部の機能をサポートしていません。詳細な比較情報については、「[Azure SQL Database のガイドラインと制限事項](http://msdn.microsoft.com/library/azure/ff394102.aspx)」を参照してください。データベースの設計変更で追加予算が必要になり、既存のデータベースを Azure SQL Database に移動する場合は、次の内容に注意してください。Azure SQL Database は、マイクロソフトの Platform as-a-Service 製品です。既存のオンプレミス SQL Server アプリケーションを Azure SQL Database に移行する場合は、Platform-as-a-Service 製品の利点をくまなく活用できるように、アプリケーションを更新することをお勧めします。たとえば、[Azure Websites](http://azure.microsoft.com/documentation/services/websites/) や [Azure Cloud Services](http://azure.microsoft.com/services/cloud-services/) をアプリケーション層で使用すると、コスト面での利点が大きくなります。また、さまざまな Azure SQL Database のサービス階層に対してアプリケーションを検証し、どのサービス階層がアプリケーションのニーズに最も適合するかどうかを確認します。このプロセスにより、パフォーマンスの成果を高めてコストを最小限に抑制することができます。詳細については、「[Azure SQL Database のサービス階層とパフォーマンス レベル](sql-database-service-tiers.md)」を参照してください。
 
-コストを詳しく見積もるには、[Azure の料金計算ツール](http://azure.microsoft.com/pricing/calculator/)を使用します。
+コストを詳しく見積もるには、[Azure の価格計算ツール](http://azure.microsoft.com/pricing/calculator/)を使用します。
 
-料金の詳細については、次のリソースを参照してください。
+価格の詳細については、次のリソースを参照してください。
 
-- [Azure SQL Database の料金詳細](http://azure.microsoft.com/pricing/details/sql-database/)
-- [Virtual Machines の料金詳細](http://azure.microsoft.com/pricing/details/virtual-machines/)
-- [Azure VM 内の SQL Server - 料金詳細](http://azure.microsoft.com/pricing/details/virtual-machines/#sql-server)
-- [Azure VM 内の Windows Server - 料金詳細](http://azure.microsoft.com/pricing/details/virtual-machines/#windows)
+- [Azure SQL Database の価格詳細](http://azure.microsoft.com/pricing/details/sql-database/)
+- [Virtual Machines の価格詳細](http://azure.microsoft.com/pricing/details/virtual-machines/)
+- [Azure VM 内の SQL Server - 価格詳細](http://azure.microsoft.com/pricing/details/virtual-machines/#sql-server)
+- [Azure VM 内の Windows Server - 価格詳細](http://azure.microsoft.com/pricing/details/virtual-machines/#windows)
 
 ###<a name="admin"></a>管理
 
@@ -263,4 +263,4 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 <!--Image references-->
 [1]: ./media/data-management-azure-sql-database-and-sql-server-iaas/SQLIAAS_SQL_Server_Cloud_Continuum.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

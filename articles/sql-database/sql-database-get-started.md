@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="10/09/2015"
+	ms.date="12/01/2015"
 	ms.author="jeffreyg"/>
 
 # SQL Database チュートリアル: サンプル データと Azure ポータルを使用して分単位で SQL Database を作成する
@@ -27,7 +27,7 @@
 - [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
-この SQL Database チュートリアルでは、Azure プレビュー ポータルでサンプル データを使用して、わずか数分で最初の SQL Database を作成する方法について説明します。学習内容は次のとおりです。
+この SQL Database チュートリアルでは、Azure ポータルでサンプル データを使用して、わずか数分で最初の SQL Database を作成する方法について説明します。学習内容は次のとおりです。
 
 - 作成したデータベースをホストするサーバーを作成し、そのファイアウォール規則を設定します。
 - 操作可能なデータが格納された AdventureWorks サンプルから SQL Database を作成します。
@@ -37,7 +37,7 @@
 > [AZURE.NOTE]この SQL Database チュートリアルでは、マイクロソフトのリレーショナル データベース管理サービスである Azure SQL Database を使用して、クラウドでデータベースを設定する方法について説明します。別のオプションとして、Azure Virtual Machine で SQL Server を実行することもできます。これらの簡単な比較については、「[Azure SQL Database と Azure VM 内の SQL Server について](data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。また、仮想マシンについては、「[SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」を参照してください。
 
 ## 手順 1. サインインして SQL データベースの設定を開始する
-1. [Azure プレビュー ポータル](http://portal.azure.com/)にサインインします。
+1. [Azure ポータル](http://portal.azure.com/)にサインインします。
 2. **[新規]**、**[データ + ストレージ]**、**[SQL Database]** の順にクリックします。
 
 	![SQL Database チュートリアル: 新しい SQL Database を作成する](./media/sql-database-get-started/create-db.png)
@@ -117,4 +117,4 @@ Azure のスタート画面に戻ると、データベースが作成されて�
 
 - オンプレミスの SQL Server データベースを Azure に移動する場合の詳細については、[Azure SQL Database へのデータベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

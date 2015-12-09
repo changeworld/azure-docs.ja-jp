@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/08/2015"
+	ms.date="12/01/2015"
 	ms.author="mandia"/>
 
 
@@ -54,7 +54,7 @@ Azure BizTalk Services には複数のエディションがあります。この
         <th>無料 (プレビュー)</th>
         <th>開発者</th>
         <th>基本</th>
-        <th>標準</th>
+        <th>Standard</th>
         <th>プレミアム</th>
 </tr>
 
@@ -253,7 +253,7 @@ Azure BizTalk Services を Azure ポータルで作成するには、[BizTalk Se
 - [BizTalk Services : [ダッシュボード]、[監視]、および [スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 - [BizTalk Services: バックアップと復元](biztalk-backup-restore.md)<br/>
 - [BizTalk Services: 調整](biztalk-throttling-thresholds.md)<br/>
-- [BizTalk Services: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
+- [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
 - [BizTalk Services SDK 使用開始](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,10 +1,10 @@
 ## Azure Backup エージェントのダウンロード、インストール、および登録
 
-Azure Backup 資格情報コンテナーを作成したら、データやアプリケーションを Azure にバックアップするための各オンプレミスのサーバー (Windows Server、Windows クライアントまたは Data Protection Manager サーバー) にエージェントをインストールする必要があります。
+Azure Backup コンテナーを作成したら、エージェントを各 Windows コンピューター (Windows Server、Windows クライアント、System Center Data Protection Manager サーバー、Azure Backup サーバー コンピューター) にインストールする必要があります。このエージェントにより、データやアプリケーションを Azure にバックアップできるようになります。
 
 1. [管理ポータル](https://manage.windowsazure.com/)にサインインします。
 
-2. **[復旧サービス]** をクリックし、サーバーに登録するバックアップ資格情報コンテナーを選択します。バックアップ資格情報コンテナーの [クイック スタート] ページが表示されます。
+2. **[Recovery Services]** をクリックし、サーバーに登録するバックアップ資格情報コンテナーを選択します。バックアップ資格情報コンテナーの [クイック スタート] ページが表示されます。
 
     ![クイック スタート](./media/backup-install-agent/quickstart.png)
 
@@ -20,7 +20,7 @@ Azure Backup 資格情報コンテナーを作成したら、データやアプ�
 
 7.	エージェントがインストールされたら、**[登録に進む]** ボタンをクリックして、ワークフローを続行します。
 
-    ![登録](./media/backup-install-agent/register.png)
+    ![Register](./media/backup-install-agent/register.png)
 
 8. [資格情報コンテナーの資格情報] 画面で、以前にダウンロードされた資格情報コンテナーの資格情報ファイルを参照して選択します。
 
@@ -48,4 +48,4 @@ Azure Backup 資格情報コンテナーを作成したら、データやアプ�
 
     ![Azure Backup を構成する](./media/backup-install-agent/configure.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/22/2015"
+	ms.date="11/24/2015"
 	ms.author="awills"/>
 
 # Java Web プロジェクトで Application Insights を使う
@@ -267,7 +267,7 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 
 未処理の例外は、自動的に収集されます。
 
-![](./media/app-insights-java-get-started/21-exceptions.png)
+![Scroll down and click the Failures tile](./media/app-insights-java-get-started/21-exceptions.png)
 
 その他の例外に関するデータを収集するには 2 つのオプションがあります。
 
@@ -364,11 +364,13 @@ SDK をインストールすると、API を使用して独自のテレメトリ
 
 ## 可用性 Web テスト
 
-Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。セットアップするには、概要ブレードの空の Web テスト グラフをクリックし、パブリック URL を入力します。
+Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。[設定するには][availability]、下へスクロールして [可用性] をクリックします。
+
+![Scroll down, click Availability, then Add Web test](./media/app-insights-java-get-started/31-config-web-test.png)
 
 応答時間のグラフが表示されます。また、サイトがダウンしている場合はメールによる通知を受け取ります。
 
-![Web テストの例](./media/app-insights-java-eclipse/appinsights-10webtestresult.png)
+![Web テストの例](./media/app-insights-java-get-started/appinsights-10webtestresult.png)
 
 [可用性 Web テストの詳細についてはこちら。][availability]
 
@@ -396,4 +398,4 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

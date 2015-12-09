@@ -137,4 +137,4 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 		                      }
 		                    ]
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

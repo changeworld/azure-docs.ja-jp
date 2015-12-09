@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="11/04/2015"
+	ms.date="11/30/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用 (iOS アプリ)
@@ -37,7 +37,7 @@
 
 このチュートリアルには、次のものが必要です。
 
-+ [Mobile Services iOS SDK]
++ [Mobile Services iOS SDK バージョン 1.2.4]
 + [Xcode 7][Install Xcode]
 + iOS 8 (またはこれ以降のバージョン) に対応したデバイス
 + iOS Developer Program メンバーシップ
@@ -86,7 +86,7 @@
 
    	![][9]
 
-4. [Mobile Services iOS SDK] のバージョン 1.2.4 をダウンロードしてファイルを解凍します。Xcode でプロジェクトを右クリックして **[Add Files to]** オプションをクリックし、Xcode プロジェクトに **WindowsAzureMessaging.framework** フォルダーを追加します。**[Copy items if needed]** を選択し、**[Add]** をクリックします。
+4. [Mobile Services iOS SDK バージョン 1.2.4] をダウンロードしてファイルを解凍します。Xcode でプロジェクトを右クリックして **[Add Files to]** オプションをクリックし、Xcode プロジェクトに **WindowsAzureMessaging.framework** フォルダーを追加します。**[Copy items if needed]** を選択し、**[Add]** をクリックします。
 
    	![][10]
 
@@ -486,6 +486,7 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 
 
 <!-- URLs. -->
+[Mobile Services iOS SDK バージョン 1.2.4]: http://aka.ms/kymw2g
 [Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
@@ -503,4 +504,4 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 
-<!----HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

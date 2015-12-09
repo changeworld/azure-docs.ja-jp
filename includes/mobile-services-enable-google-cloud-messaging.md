@@ -1,37 +1,24 @@
->[AZURE.NOTE]この手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。
 
+1. [Google Cloud Console](https://console.developers.google.com/project) に移動し、Google アカウントの資格情報でサインインします。 
+ 
+2. **[Create Project]** をクリックし、プロジェクト名を入力してから **[Create]** をクリックします。要求された SMS の確認を実行し、**[Create]** をもう一度クリックします。
 
-1. [Google Cloud Console](https://console.developers.google.com/project) に移動し、Google アカウント資格情報でサインインして、**[CREATE PROJECT]** をクリックします。
+   	![](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)
 
-   	![](./media/notification-hubs-android-get-started/mobile-services-google-new-project.png)
+	 新しい**プロジェクト名**を入力し、**[Create project]** をクリックします。
 
-	>[AZURE.NOTE]既にプロジェクトがある場合は、ログイン後に <strong>[Projects]</strong> ページが表示されます。ダッシュボードで新しいプロジェクトを作成するには、<strong>[API Project]</strong> を展開し、<strong>[Other projects]</strong> の下の <strong>[Create]</strong> をクリックして、プロジェクト名を入力してから <strong>[Create project]</strong> をクリックします。
+3. **[Projects]** セクションに表示されたプロジェクト番号をメモしておきます。クライアントの *PROJECT\_ID* 変数として、この値を設定する必要があります。
 
-2. プロジェクトの名前を入力し、サービスの条件に同意して、**[Create]** をクリックします。要求された SMS の確認を実行し、**[Create]** をもう一度クリックします。
+4. プロジェクトのダッシュボードで、**[Use Google APIs]**、**[Cloud Messaging for Android]** の順にクリックし、次のページで **[Enable API]** をクリックします。
 
-3. **[Projects]** セクションに表示されたプロジェクト番号をメモしておきます。
+5. API Manager で **[Credentials]**、**[Add Credential]**、**[API Key]** の順にクリックします。
 
-	チュートリアルの後の方で、クライアントの PROJECT\_ID 変数に、この値を設定します。
+   	![](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-create-server-key.png)
 
-4. 左側の列の **[APIs & auth]** を展開して **[APIs]** をクリックしてから下へスクロールし、**[Cloud Messaging for Android]** をクリックします。次のページで、**[Enable API]** をクリックし、サービス条件に同意します。
-
-	![](./media/notification-hubs-android-get-started/mobile-services-google-enable-GCM.png)
-
-5. **[資格情報]** をクリックし、**[資格情報の追加]** -> **[API キー]** をクリックします。
-
-
-   	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key.png)
-
-6. **[Create a new key]** で、**[Server key]** をクリックします。次のウィンドウで **[Create]** をクリックします。
-
-   	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key5.png)
-
-
-   	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key6.png)
+6. **[Create a new key]** で **[Server key]** をクリックし、キーの名前を入力してから **[Create]** をクリックします。
 
 7. **[API KEY]** の値をメモしておきます。
 
-
 	この API キー値を使用して、Azure が GCM で認証し、アプリの代わりにプッシュ通知を送信できるようにします。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

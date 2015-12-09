@@ -26,4 +26,4 @@
 * [Application Insights for Android を使ってみる](https://github.com/Microsoft/ApplicationInsights-Android)。
 * [HockeyApp for Android を使ってみる](http://support.hockeyapp.net/kb/client-integration-android/hockeyapp-for-android-sdk)。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

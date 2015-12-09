@@ -1,9 +1,9 @@
 <properties
-	pageTitle="Azure Site Recovery: パフォーマンスとスケーリングのテスト: オンプレミス間"
-	description="この記事では、オンプレミス間のデプロイで、Azure Site Recovery を使用したレプリケーションのパフォーマンスへの影響に関するテストについて説明します。"
-	services="site-recovery"
+	pageTitle="Azure Site Recovery: オンプレミス間の Hyper-V レプリケーションに関するパフォーマンス テストとスケールの結果"
+	description="この記事では、Azure Site Recovery を使用したオンプレミス間のレプリケーションのパフォーマンス テストについての情報を提供します。"
+	services="site-recovery" 
 	documentationCenter=""
-	authors="csilauraa"
+	authors="rayne-wiselman"
 	manager="jwhit"
 	editor="tysonn"/>
 
@@ -13,24 +13,25 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="10/07/2015"
-	ms.author="lauraa"/>
+	ms.date="12/01/2015"
+	ms.author="raynew"/>
 
-# パフォーマンスとスケーリングのテスト: オンプレミス間
+# Azure Site Recovery: オンプレミス間の Hyper-V レプリケーションに関するパフォーマンス テストとスケールの結果
 
-Microsoft Azure Site Recovery は、計画済みおよび計画外の停止の場合に、データをバックアップして復旧できるように、プライマリ データ センターから 2 次拠点へのレプリケーションを調整し、管理します。System Center Virtual Machine Manager (VMM) に配置したオンプレミスのプライベート クラウドをオンプレミスの別の場所に、または Microsoft Azure ストレージにバックアップすることができます。レプリケーションを実行するため、VMM は Windows Server 2012 および Windows Server 2012 R2 の Hyper-V に組み込まれているレプリケーション メカニズムである、Hyper-V レプリカを使用します。2 つのホスト サーバー間での Hyper-V 仮想マシンの非同期レプリケーションを実現します。Hyper-V で仮想化可能なサーバー ワークロードは、すべてレプリケートすることができます。レプリケーションは、通常のあらゆる IP ベースのネットワークで機能します。また、Hyper-V レプリカは、スタンドアロン サーバー、フェールオーバー クラスター、または両方の組み合わせと共に動作します。
+Microsoft Azure Site Recovery を使用すると、Azure またはセカンダリ データセンターへの仮想マシンと物理サーバーのレプリケーションを調整および管理することができます。この記事では、2 つのオンプレミス データセンター間で Hyper-V 仮想マシンを複製する際に実行したパフォーマンス テストの結果を示します。
 
-このトピックでは、オンプレミス間のデプロイで、Azure Site Recovery を使用したレプリケーションのパフォーマンスへの影響に関するテストについて説明します。テストで使用するパラメーターと構成設定に関する詳細な情報を提供し、テスト デプロイの手順と詳細なテスト結果を示します。
 
-## テストの目的
 
-目的は、安定状態のレプリケーション中の Azure Site Recovery のパフォーマンスを確認することです。安定状態のレプリケーションは、仮想マシンが初期レプリケーションを完了し、差分変更を同期しているときに発生します。予期しない停止が発生しない限り、ほとんどの仮想マシンは安定状態になるため、安定状態を利用してパフォーマンスを測定することが重要です。
+## 概要
 
-## テスト デプロイの実行
+テストの目的は、安定的にレプリケーションが実行されている間の Azure Site Recovery のパフォーマンスを確認することです。安定状態のレプリケーションは、仮想マシンが初期レプリケーションを完了し、差分変更を同期しているときに発生します。予期しない停止が発生しない限り、ほとんどの仮想マシンは安定状態になるため、安定状態を利用してパフォーマンスを測定することが重要です。
 
-テスト デプロイは、それぞれに VMM サーバーをデプロイした 2 つのオンプレミスのサイトで構成しました。両方の VMM サーバーとも、Azure Site Recovery コンテナーに登録されています。このテスト デプロイは、プライマリ サイトとして機能する本店と、セカンダリまたは復旧サイトとして機能するブランチ オフィスで構成される、本店/ブランチ オフィス デプロイの一般的な例です。
 
-### テスト デプロイの手順
+テスト デプロイは、各サイトに VMM サーバーをデプロイした 2 つのオンプレミスのサイトで構成しました。このテスト デプロイは、プライマリ サイトとして機能する本店と、セカンダリまたは復旧サイトとして機能するブランチ オフィスで構成される、本店/ブランチ オフィス デプロイの一般的な例です。
+
+### 実行した内容
+
+テスト パスで実行した内容を次に示します。
 
 1. VMM テンプレートを使用して仮想マシンを作成しました。
 
@@ -104,9 +105,9 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 
 ### まとめ
 
-結果では、Hyper-V レプリカと組み合わせた Azure Site Recovery には、大規模なクラスター構成でオーバーヘッドを最小限にする優れた拡張性があることが明確に示されました。Azure Site Recovery は、シンプルなデプロイ、レプリケーション、管理および監視を実現します。Hyper-V レプリカは、レプリケーションを正常にスケーリングするために必要なインフラストラクチャを提供します。最適なデプロイを計画するために、[Hyper-V Replica Capacity Planner](https://www.microsoft.com/ja-jp/download/details.aspx?id=39057) をダウンロードすることをお勧めします。
+結果では、Hyper-V レプリカと組み合わせた Azure Site Recovery には、大規模なクラスター構成でオーバーヘッドを最小限にする優れた拡張性があることが明確に示されました。Azure Site Recovery は、シンプルなデプロイ、レプリケーション、管理および監視を実現します。Hyper-V レプリカは、レプリケーションを正常にスケーリングするために必要なインフラストラクチャを提供します。最適なデプロイを計画するために、[Hyper-V Replica Capacity Planner](https://www.microsoft.com/download/details.aspx?id=39057) をダウンロードすることをお勧めします。
 
-## テスト デプロイ環境
+## テスト環境の詳細
 
 ### プライマリ サイト
 
@@ -173,7 +174,7 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 |ファイル サーバー|50|1|2|552|22|
 |VDI|149|0\.5|1|80|6|
 |Web サーバー|149|0\.5|1|80|6|
-|合計|470|||96\.83 TB|4108|
+|合計|470|||96\.83 TB (テラバイト)|4108|
 
 ### Azure Site Recovery 設定
 
@@ -205,13 +206,8 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 
 ## 次のステップ
 
-ASR のデプロイを開始する際は、次の記事を参照してください。
-
-- [オンプレミスの VMM サイトと Azure 間の保護の設定](site-recovery-vmm-to-azure.md)
-- [Set up protection between an on-premises Hyper-V site and Azure (オンプレミスの Hyper-V サイトと Azure 間の保護の設定)](site-recovery-hyper-v-site-to-azure.md)
 - [Set up protection between two on-premises VMM sites (2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-to-vmm.md)
-- [Set up protection between two on-premises VMM sites with SAN (SAN を使用した 2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-san.md)
-- [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm.md)
+
  
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

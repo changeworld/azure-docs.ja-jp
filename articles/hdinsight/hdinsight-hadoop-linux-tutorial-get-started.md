@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="11/16/2015"
+   	ms.date="11/29/2015"
    	ms.author="nitinme"/>
 
 # Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する
@@ -51,7 +51,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 新しいクラスターを作成するには、次の手順に従います。
 
-1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)にサインインします。
+1. [Azure ポータル](https://ms.portal.azure.com/)にサインインします。
 2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
 
     ![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.1.png "Azure プレビュー ポータルでの新しいクラスターの作成")
@@ -78,7 +78,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 
-7. **[データ ソース]** をクリックし、クラスターの既存のデータ ソースを選択するか、新しいデータ ソースを作成します。HDInsight で Hadoop クラスターをプロビジョニングするときに、Azure ストレージ アカウントを指定します。Hadoop 分散ファイルシステム (HDFS) と同様、このアカウントの特定の BLOB ストレージ コンテナーが、既定のファイル システムとして設定されます。既定では、HDInsight クラスターは、指定されたストレージ アカウントと同じデータ センターにプロビジョニングされます。詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)」をご覧ください。
+7. **[データ ソース]** をクリックし、クラスターの既存のデータ ソースを選択するか、新しいデータ ソースを作成します。HDInsight で Hadoop クラスターをプロビジョニングするときに、Azure ストレージ アカウントを指定します。Hadoop 分散ファイルシステム (HDFS) と同様、このアカウントの特定の Blob Storage コンテナーが、既定のファイル システムとして設定されます。既定では、HDInsight クラスターは、指定されたストレージ アカウントと同じデータ センターにプロビジョニングされます。詳細については、「[HDInsight での Azure Blob Storage の使用](hdinsight-use-blob-storage.md)」をご覧ください。
 
 	![[データ ソース] ブレード](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.4.png "データ ソース構成の指定")
 
@@ -88,7 +88,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。新しいストレージ アカウントを作成する場合は **[新規作成]** をクリックします。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
 
-	- **[既定のコンテナーの選択]**: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
+	- **[既定のコンテナーの選択]**: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
 
 	- **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。
 
@@ -102,7 +102,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
     
     > [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
     >
-    > ノードのサイズと関連コストに関する詳細については、「[HDInsight 料金](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+    > ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 	**[選択]** をクリックして、ノードの価格構成を保存します。
 
@@ -167,7 +167,7 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 	これらのステートメントは次のアクションを実行します。
 
 	- **DROP TABLE** - テーブルが既存の場合にテーブルとデータ ファイルを削除します。
-	- **CREATE EXTERNAL TABLE** - Hive に新しく ”外部” テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
+	- **CREATE EXTERNAL TABLE** - Hive に新しく "外部" テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
 	- **ROW FORMAT** - Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
 	- **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
 	- **SELECT** - t4 列の値が [ERROR] であるすべての行の数を指定します。
@@ -230,7 +230,7 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 
 ## <a name="nextsteps"></a>次のステップ
 
-このドキュメントでは、Azure プレビュー ポータルを使用して Linux ベースの HDInsight クラスターを作成する方法、SSH を使用してクラスターに接続する方法、基本的な Hive クエリを実行する方法について説明しました。
+このドキュメントでは、Azure ポータルを使用して Linux ベースの HDInsight クラスターを作成する方法、SSH を使用してクラスターに接続する方法、基本的な Hive クエリを実行する方法について説明しました。
 
 HDInsight でデータを分析する方法の詳細については、次を参照してください。
 
@@ -244,7 +244,7 @@ HDInsight でデータを分析する方法の詳細については、次を参�
 
 実際のデータを使用する準備が整っていて、HDInsight のデータの格納方法や HDInsight にデータを取り込む方法を確認する場合は、以下を参照してください。
 
-- HDInsight で Azure BLOB ストレージを使用する方法の詳細については、[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)に関するページを参照してください。
+- HDInsight で Azure Blob Storage を使用する方法の詳細については、[HDInsight での Azure Blob Storage の使用](hdinsight-use-blob-storage.md)に関するページを参照してください。
 
 - データを HDInsight にアップロードする方法については、「[データを HDInsight にアップロードする方法][hdinsight-upload-data]」を参照してください。
 
@@ -283,4 +283,4 @@ HDInsight クラスターの作成または管理の詳細については、以�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

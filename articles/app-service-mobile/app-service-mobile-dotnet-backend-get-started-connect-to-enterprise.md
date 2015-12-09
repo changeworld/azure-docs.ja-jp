@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="get-started-article"
-	ms.date="06/19/2015"
+	ms.date="12/03/2015"
 	ms.author="mahender"/>
 
 # SaaS API へのモバイル アプリの接続
@@ -32,7 +32,7 @@
 ## <a name="configure-permissions"></a>SharePoint への委任アクセスのためにアプリケーションを構成する
 既定では、AAD から受け取るトークンは、アクセス許可が制限されています。サードパーティのリソースまたは SharePoint Online などの SaaS アプリケーションにアクセスするには、明示的にアクセスを許可する必要があります。
 
-1. **Microsoft Azure 管理ポータル**の [[Active Directory]] セクションに移動し、テナントを選択します。App Service 用に作成した Web アプリケーションに移動します。
+1. [Azure クラシック ポータル]の **[Active Directory]** セクションで、テナントを選択します。App Service 用に作成した Web アプリケーションに移動します。
 
 2. **[構成]** タブで、[他のアプリケーションに対するアクセス許可] セクションまでページを下へスクロールします。**[Office 365 SharePoint Online]** を選択し、**[ユーザーのファイルを編集または削除]** 委任アクセス許可を付与します。その後、**[保存]** をクリックします。
 
@@ -42,13 +42,13 @@
 
 ## <a name="store-credentials"></a>モバイル アプリに SharePoint 情報を追加する
 
-SharePoint への呼び出しを作成するには、モバイル アプリが通信する必要があるエンドポイントを指定する必要があります。また、App Service の ID も証明できるようにする必要があります。これは、クライアント ID とクライアント シークレットのペアを使用して実行します。AAD ログインのセットアップの間に、既に App Service のクライアント ID を取得し、保存しています。これらは、機密性の高い資格情報であるため、コードではプレーン テキストで保存しないでください。代わりに、これらの値をモバイル アプリ コードのサイトのアプリケーション設定として設定します。
+SharePoint への呼び出しを作成するには、モバイル アプリが通信する必要があるエンドポイントを指定する必要があります。また、App Service の ID も証明できるようにする必要があります。これは、クライアント ID とクライアント シークレットのペアを使用して実行します。AAD ログインのセットアップの間に、既に App Service のクライアント ID を取得し、保存しています。これらは、機密性の高い資格情報であるため、コードではプレーン テキストで保存しないでください。代わりに、これらの値をモバイル アプリ バックエンドのアプリケーション設定として設定します。
 
 1. テナントの [AAD アプリケーション] タブに戻り、App Service の Web アプリケーションを選択します。
 
 2. [構成] で、[キー] まで下へスクロールします。新しいキーを生成すると、クライアント シークレットが取得されます。一度キーを作成してページを離れると、もう一度ポータルからキーを取得できなくなることに注意してください。作成したら、この値をコピーして安全な場所に保存する必要があります。キーの期間を選択してから [保存] をクリックして、作成したキーを完全にコピーします。
 
-3. 管理ポータルの [モバイル アプリ コード] セクションで、[構成] タブに移動し、[アプリケーション設定] まで下へスクロールします。ここで、キーと値のペアを入力すると、必要な資格情報の参照に役立ちます。
+3. [Azure ポータル](https://portal.azure.com/)のモバイル アプリ バックエンドで、**[すべての設定]**、**[アプリケーション設定]** の順にクリックし、**[アプリケーション設定]** までスクロールします。ここで、キーと値のペアを入力すると、必要な資格情報の参照に役立ちます。
 
 * SP\_Authority を、AAD テナントの機関のエンドポイントになるよう設定します。これは、クライアント アプリケーションに使用する機関の値と同じにする必要があります。形式は、`https://login.windows.net/contoso.onmicrosoft.com` のようになります。
 
@@ -183,10 +183,9 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 
 <!-- URLs. -->
 
-[Preview Azure Management Portal]: https://portal.azure.com/
-[Active Directory]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [SharePoint Online]: http://office.microsoft.com/ja-JP/sharepoint/
 [Azure Active Directory 認証ライブラリのシングル サインオン]: app-service-mobile-ios-aad-sso.md
 [Mobile Apps .NET Backend App Service Extension]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.AppService/
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

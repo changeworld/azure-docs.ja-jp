@@ -30,7 +30,7 @@
 ## チュートリアルの概要
 このチュートリアルでは、初めて Data Factory とパイプラインを使用するために必要な手順を示します。パイプラインを作成し、必要なすべてのリソースを最初から指定します。
 
-最初から作成せずにすばやく Data Factory のさまざまな機能を調べたい場合は、Azure プレビュー ポータルで提供されているサンプルを使用できます。Azure プレビュー ポータルを使用する使用例に基づくサンプルのデプロイ方法については、「[Azure Data Factory の更新: サンプルの簡略化されたデプロイメント](http://azure.microsoft.com/blog/2015/04/24/azure-data-factory-update-simplified-sample-deployment/)」を参照してください。
+最初から作成せずにすばやく Data Factory のさまざまな機能を調べたい場合は、Azure ポータルで提供されているサンプルを使用できます。Azure ポータルを使用する使用例に基づくサンプルのデプロイ方法については、「[Azure Data Factory の更新: サンプルの簡略化されたデプロイ](http://azure.microsoft.com/blog/2015/04/24/azure-data-factory-update-simplified-sample-deployment/)」を参照してください。
 
 ## 前提条件
 このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
@@ -44,18 +44,18 @@ Azure Data Factory では、データ駆動型ワークフローとしてデー�
 
 このチュートリアルでは、以下の手順を実施します。
 
-1.	データ ファクトリ を作成する
+1.	データ ファクトリを作成する
 2.	次のリンクされたサービスを作成します。
 	1.	**Azure ストレージ アカウント** – Azure ストレージ アカウントは、オンデマンド HDInsight クラスターによって使用されるファイルを格納するために使用されます。
 	2.	**オンデマンド HDInsight クラスター** – HDInsight クラスターは、オンデマンドで開始されてデータを変換および分析します。
 3.	出力データセットを作成します。 
-4.	Hive スクリプトを実行して出力データセットに結果を格納するパイプラインを作成します。Hive スクリプトは、まず、外部テーブルを作成し、Azure BLOB ストレージに格納されている未加工の Web ログ データを参照します。次に、年と月で未加工データを分割します。
+4.	Hive スクリプトを実行して出力データセットに結果を格納するパイプラインを作成します。Hive スクリプトは、まず、外部テーブルを作成し、Azure Blob Storage に格納されている未加工の Web ログ データを参照します。次に、年と月で未加工データを分割します。
 
 **MyFirstPipeline** という名前の最初のパイプラインは、Hive アクティビティを使用して、HDInsight クラスターの一部としてデプロイされる Web ログを変換および分析し、**/HdiSamples/WebsiteLogSampleData/SampleLog/** に格納します。
 
 ![Diagram View](./media/data-factory-build-your-first-pipeline/diagram-view.png)
 
-Hive スクリプトが実行した後、結果は Azure BLOB ストレージ コンテナー **data/partitioneddata** に格納されます。
+Hive スクリプトが実行した後、結果は Azure Blob Storage コンテナー **data/partitioneddata** に格納されます。
 
 **AzureBlobOutput** データセットで定義されている可用性により、Hive アクティビティの実行頻度が決まります。このチュートリアルでは、これは毎月に設定されています。
 
@@ -153,7 +153,7 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 
 			AzCopy /Source:. /Dest:https://<StorageAccountName>.blob.core.windows.net/script /DestKey:<Storage Key>
 
-		> [AZURE.NOTE]上記のコマンドは **script** という名前のコンテナーを Azure BLOB ストレージ内に作成し、**partitionweblogs.hql** ファイルをローカル ドライブから BLOB コンテナーにコピーします。
+		> [AZURE.NOTE]上記のコマンドは **script** という名前のコンテナーを Azure Blob Storage 内に作成し、**partitionweblogs.hql** ファイルをローカル ドライブから BLOB コンテナーにコピーします。
 	>
 	5. ファイルが正常にアップロードされると、AzCopy から次の出力が表示されます。
 	
@@ -168,8 +168,8 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 
 以下の手順を実行します。
 
-- Azure ポータルの一部である Data Factory エディターを使用してチュートリアルを実行するには、上部にある「[Data Factory エディターの使用](data-factory-build-your-first-pipeline-using-editor.md)」というリンクをクリックします。
+- Azure クラシック ポータルの一部である Data Factory エディターを使用してチュートリアルを実行するには、上部にある "[Data Factory エディターの使用](data-factory-build-your-first-pipeline-using-editor.md)" というリンクをクリックします。
 - Azure PowerShell を使用してチュートリアルを実行するには、上部にある「[PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)」というリンクをクリックします。
 - Visual Studio を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)」というリンクをクリックします。 
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

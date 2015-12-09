@@ -26,16 +26,16 @@
 
 ## 前提条件
 
-+ SQL Data Warehouse に含まれる AdventureWorksDW サンプル データベースこのデータベースの作成方法については、[SQL Data Warehouse データベースの作成](sql-data-warehouse-get-started-create.md)に関するページを参照してください。 
-+ Visual Studio の SQL Server Data Tools手順とオプションの詳細については、[Visual Studio と SSDT のインストール](sql-data-warehouse-install-visual-studio.md)に関するページを参照してください。
++ SQL Data Warehouse に含まれる AdventureWorksDW サンプル データベース。このデータベースの作成方法については、[SQL Data Warehouse データベースの作成](sql-data-warehouse-get-started-create.md)に関するページを参照してください。 
++ Visual Studio の SQL Server Data Tools。インストールの手順とオプションの詳細については、[Visual Studio または SSDT のインストール](sql-data-warehouse-install-visual-studio.md)に関するページを参照してください。
 
-## 手順 1. Azure SQL サーバーの完全修飾名を検索します。
+## 手順 1. Azure SQL サーバーの完全修飾名を検索する
 
-データベースは、Azure SQL サーバーに関連付けられます。データベースに接続する際に、完全修飾サーバー名 (**servername**.database.windows.net*) が必要になります。
+データベースは、Azure SQL サーバーに関連付けられます。データベースに接続する際に、サーバーの完全修飾名 (**servername**.database.windows.net*) が必要になります。
 
-完全修飾サーバー名を検索するには:
+完全修飾サーバー名を検索するには
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. **[SQL データベース]** をクリックし、接続するデータベースをクリックします。この例では、AdventureWorksDW サンプル データベースを使用します。
 3. サーバーの完全名を見つけます。
 
@@ -44,7 +44,7 @@
 ## 手順 2. SQL Database に接続する
 
 1. Visual Studio を開きます。
-2. SQL Server オブジェクト エクスプローラーを開きます。これを行うには、**[表示]**、**[SQL Server オブジェクト エクスプローラー]** の順にクリックします。
+2. SQL Server オブジェクト エクスプローラーを開きます。これを行うには、**[表示]**、**[SQL Server オブジェクト エクスプローラー]** の順に選択します。
  
     ![SQL Server Object Explorer][2]
 
@@ -56,9 +56,9 @@
 
     ![サーバーへの接続][4]
 
-    - **サーバー名**: 前の手順で特定した*サーバー名*を入力します。
-    - **認証**: [SQL Server 認証] を選択します。
-    - **ログイン**と**パスワード**: Azure SQL Server のログインとパスワードを入力します。
+    - **[サーバー名]**: 前の手順で特定した*サーバー名*を入力します。
+    - **[認証]**: [SQL Server 認証] を選択します。
+    - **[ログイン]** と **[パスワード]**: Azure SQL Server のログインとパスワードを入力します。
     - **[接続]** をクリックします。
 
 1. 確認のために、Azure SQL Server を展開します。サーバーに関連付けられているデータベースが表示されます。AdventureWorksDW を展開すると、サンプル データベース内のテーブルが表示されます。
@@ -82,7 +82,7 @@
 	SELECT COUNT(*) FROM dbo.FactInternetSales;
 	```
 
-4. クエリを実行します。これを行うには、緑色の矢印をクリックするか、`CTRL`+`SHIFT`+`E` のショートカット キーを使用します。
+4. クエリを実行します。そのためには、緑色の矢印をクリックするか、`CTRL`+`SHIFT`+`E` のショートカット キーを使用します。
 
     ![Run query][7]
 
@@ -108,4 +108,4 @@
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

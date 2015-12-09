@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="mobile-baidu"
 	ms.workload="mobile"
-	ms.date="11/03/2015"
+	ms.date="11/25/2015"
 	ms.author="wesmc"/>
 
 # Baidu での Notification Hubs の使用
@@ -187,7 +187,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
     ![][26]
 
-5. [Mobile Services Android SDK] をダウンロードし、解凍します。**notificationhubs** フォルダーを開き、**notification-hubs-x.y.jar** ファイルを Eclipse プロジェクトの **libs** フォルダーにコピーした後、*libs* フォルダーを最新の情報に更新します。
+5. [Bintray の Notification-Hubs-Android-SDK](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4) にある **[Files]** タブから notification-hubs-0.4.jar ファイルをダウンロードします。このファイルを Eclipse プロジェクトの **libs** フォルダーに追加し、*libs* フォルダーを最新の情報に更新します。
 
 6. [Baidu Push Android SDK] をダウンロードし、解凍します。**libs** フォルダーを開き、**pushservice-x.y.z** jar ファイル と **armeabi** および **mips** フォルダーを Android アプリケーションの **libs** フォルダーに コピーします。
 
@@ -413,7 +413,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
 * **Node.js** : [Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-how-to-use-notification-hubs.md)。
 
-* **Azure Mobile Services**: Notification Hubs と統合した Azure Mobile Services バックエンドからの通知の送信例については、「Mobile Services でのプッシュ通知の使用」([.NET バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md)) を参照してください。
+* **Azure Mobile Services**: Notification Hubs と統合した Azure Mobile Services Backend からの通知の送信例については、「Mobile Services でのプッシュ通知の使用」([.NET バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md)) を参照してください。
 
 * **Java / PHP**: REST API を使用した通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md)) を参照してください。
 
@@ -503,4 +503,4 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 [Azure ポータル]: https://manage.windowsazure.com/
 [Baidu ポータル]: http://www.baidu.com/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

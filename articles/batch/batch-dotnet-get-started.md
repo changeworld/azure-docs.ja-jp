@@ -63,7 +63,7 @@ Azure Batch .NET ライブラリで作業を開始するにはまず、サポー
 
 	- **[account-name]** - 以前に作成したストレージ アカウントの名前。
 
-	- **[account-key]** - ストレージ アカウントのプライマリ キー。Azure プレビュー ポータルの [Storage] ページで、プライマリ キーを確認できます。
+	- **[account-key]** - ストレージ アカウントのプライマリ キー。Azure ポータルの [Storage] ページで、プライマリ キーを確認できます。
 
 2. App.config ファイルを保存します。
 
@@ -107,9 +107,9 @@ Azure Storage の接続文字列の詳細については、[Azure Storage の接
 
 5. Program.cs ファイルを保存します。
 
-	> [AZURE.NOTE]運用環境では、[共有アクセス署名](https://msdn.microsoft.com/library/azure/ee395415.aspx)を使用することをお勧めします。
+	> [AZURE.NOTE]運用環境では、[Shared Access Signature](https://msdn.microsoft.com/library/azure/ee395415.aspx) を使用することをお勧めします。
 
-BLOB ストレージの詳細については、[.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)を参照してください 。
+Blob Storage の詳細については、[.NET から Blob Storage を使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)を参照してください 。
 
 ### 処理プログラムを作成する
 
@@ -208,7 +208,7 @@ BLOB ストレージの詳細については、[.NET から BLOB ストレージ
 			BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials("[account-url]", "[account-name]", "[account-key]");
 			BatchClient client = BatchClient.Open(cred);
 
-	かっこで囲まれた値を、Batch アカウントに関連付けられた値に置き換えます。それぞれの値は [Azure プレビュー ポータル](https://portal.azure.com)で見つけることができます。これらの値を見つけるには、[Azure プレビュー ポータル](https://portal.azure.com)にログインします。
+	かっこで囲まれた値を、Batch アカウントに関連付けられた値に置き換えます。それぞれの値は [Azure ポータル](https://portal.azure.com)で見つけることができます。これらの値を見つけるには、[Azure ポータル](https://portal.azure.com)にログインします。
 
 	- **[account-name]** - **[Batch アカウント]** をクリックし、作成した Batch アカウントを選択します。
 	- **[account-url]** - [Batch アカウント] ブレードで、**[プロパティ]**、**[URL]** の順にクリックします。
@@ -487,7 +487,7 @@ Azure のリソースに対して課金されるため、不要になったリ�
 			Task status: Completed
 			Task start: 7/17/2015 8:31:57 PM
 
-8. この時点で、Azure プレビュー ポータルに移動し、作成されたリソースを確認できます。リソースを削除するには、プログラムが終了するまで Enter キーを押します。
+8. この時点で、Azure ポータルに移動して作成されたリソースを確認できます。リソースを削除するには、プログラムが終了するまで Enter キーを押します。
 
 ## 次のステップ
 
@@ -495,4 +495,4 @@ Azure のリソースに対して課金されるため、不要になったリ�
 
 2. 一部のアプリケーションは、処理するのに困難な大量のデータを生成します。これを解決する 1 つの方法は、[効率的なリスト クエリ](batch-efficient-list-queries.md)を使用することです。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

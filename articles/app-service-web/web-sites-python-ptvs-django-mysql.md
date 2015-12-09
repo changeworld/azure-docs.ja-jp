@@ -194,7 +194,6 @@ Python Tools for Visual Studio、Django および MySQL の詳細については
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
 <!--Link references-->
@@ -217,4 +216,4 @@ Python Tools for Visual Studio、Django および MySQL の詳細については
 [MySQL]: http://www.mysql.com/
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

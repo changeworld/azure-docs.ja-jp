@@ -414,24 +414,13 @@
 
 これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
 
-<ul>
-<li>利用可能な API の詳細については、テーブル サービスのリファレンス ドキュメントを参照してください。
-  <ul>
-    <li><a href="http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409">.NET 用ストレージ クライアント ライブラリ リファレンス</a>
-    </li>
-    <li><a href="http://msdn.microsoft.com/library/azure/dd179355">REST API リファレンス</a></li>
-  </ul>
-</li>
-<li>Azure Storage を使用して実行できるさらに高度なタスクについては、<a href="http://msdn.microsoft.com/library/azure/gg433040.aspx">Azure Storage のドキュメント</a>をご覧ください。</li>
-<li><a href="../websites-dotnet-webjobs-sdk/">Azure WebJobs SDK</a> を使用して Azure Storage で作業するためのコードの記述を簡略化する方法を学習してください。</li>
-<li>Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
-  <ul>
-    <li>非構造化データの格納には、<a href="/documentation/articles/storage-dotnet-how-to-use-blobs/">BLOB ストレージ</a>を使用します。</li>
-    <li>構造化データの格納には、<a href="/documentation/articles/storage-dotnet-how-to-use-queues/">キュー ストレージ</a>を使用します。</li>
-    <li>リレーショナル データの格納には、<a href="/documentation/articles/sql-database-dotnet-how-to-use/">SQL Database</a> を使用します。</li>
-  </ul>
-</li>
-</ul>
+- 利用可能な API の詳細については、テーブル サービスのリファレンス ドキュメントを参照してください。
+    - [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    - [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
+- Azure Storage で作業するために記述したコードを簡略化する方法については、[Azure WebJobs SDK とは](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md)を参照してください。
+- Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
+    - 非構造化データの格納には、[BLOB ストレージ](storage-dotnet-how-to-use-blobs.md)を使用します。
+    - リレーショナル データの格納には、[SQL Database](sql-database-dotnet-how-to-use.md) を使用します。
 
   [Download and install the Azure SDK for .NET]: /develop/net/
   [Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
@@ -444,7 +433,6 @@
 
   [Introducing Upsert and Query Projection blog post (アップサートおよびクエリ プロジェクションの概要ブログ投稿)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
   [.NET Client Library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-  [Storing and accessing data in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
   [Azure Storage Team blog]: http://blogs.msdn.com/b/windowsazurestorage/
   [Configure Azure Storage connection strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
@@ -452,4 +440,4 @@
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

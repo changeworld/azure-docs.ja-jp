@@ -19,7 +19,7 @@
 
 ## Azure ポータルを使用して Scheduler を構成し、ジョブを簡単に作成および構成する
 
-このチュートリアルを完了するには、Azure Scheduler の機能を有効にした Azure アカウントが必要です。アカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、[Azure の無料試用版](https://azure.microsoft.com/ja-jp/pricing/free-trial/)に関するページを参照してください。
+このチュートリアルを完了するには、Azure Scheduler の機能を有効にした Azure アカウントが必要です。アカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、[Azure の無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 ## 作業開始
 
@@ -261,4 +261,4 @@ Azure Scheduler は、いくつかの条件に基づいてクォータを実装�
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

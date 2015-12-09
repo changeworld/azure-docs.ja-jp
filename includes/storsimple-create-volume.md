@@ -27,4 +27,4 @@
 
 StorSimple ボリュームの作成方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/create-a-storsimple-volume/)を参照してください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/23/2015"
+	ms.date="11/25/2015"
 	ms.author="awills"/>
 
 
@@ -24,7 +24,7 @@ Visual Studio Application Insights の Status Monitor により、ASP.NET アプ
 
 ![サンプルのグラフ](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
-> [AZURE.TIP][ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化に関する個別の記事があります。
+> [AZURE.TIP] [ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化に関する個別の記事があります。
 
 
 Application Insights を IIS Web アプリケーションに適用するには、次の 3 つの方法があります。
@@ -94,7 +94,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ### Azure Cloud Services プロジェクトの場合
 
-[スクリプトを Web ロールとworker ロールに追加](app-insights-cloudservices.md)します。
+[スクリプトを Web ロールと worker ロールに追加](app-insights-cloudservices.md)します。
 
 
 ## パフォーマンス テレメトリの表示
@@ -114,13 +114,13 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ## 依存関係
 
-依存関係の期間のグラフには、アプリからの外部コンポーネント (データベース、REST API、Azure BLOB ストレージなど) の呼び出しに要した時間が示されます。
+依存関係の期間のグラフには、アプリからの外部コンポーネント (データベース、REST API、Azure Blob Storage など) の呼び出しに要した時間が示されます。
 
 さまざまな依存関係の呼び出しでグラフをセグメント化するには、グラフを選択し、[グループ化] を有効にして、[依存関係]、[依存関係の種類]、または [依存関係のパフォーマンス] を選択します。
 
 グラフをフィルターして、特定の依存関係、種類、またはパフォーマンスのバケットを確認することもできます。[フィルター] をクリックします。
 
-#### パフォーマンス カウンター
+## パフォーマンス カウンター
 
 (Azure Web Apps 用ではありません。) 概要ブレードで [サーバー] をクリックすると、CPU 占有率やメモリ使用量などのサーバー パフォーマンス カウンターのグラフが表示されます。
 
@@ -128,11 +128,15 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 [SDK によって報告されるパフォーマンス カウンターのセットを変更](app-insights-configuration-with-applicationinsights-config.md#nuget-package-3)することもできます。
 
-#### 例外
+## 例外
 
 ![サーバーの例外グラフをクリックする](./media/app-insights-monitor-performance-live-website-now/appinsights-039-1exceptions.png)
 
 特定の例外 (過去 7 日間) をドリルダウンし、スタック トレースとコンテキスト データを取得できます。
+
+## サンプリング
+
+アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、一定の割合のテレメトリのみが送信される可能性があります。[サンプリングの詳細についてはこちらを参照してください](app-insights-sampling.md)。
 
 
 ## トラブルシューティング
@@ -211,9 +215,9 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 [availability]: app-insights-monitor-web-app-availability.md
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
-[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[greenbrown]: app-insights-asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015--->

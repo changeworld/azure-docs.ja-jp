@@ -35,7 +35,7 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
 使用目的 | 操作 | 取得内容
 ---|---|---
- <a href="app-insights-start-monitoring-app-health-usage.md">![ASP.NET](./media/app-insights-get-started/appinsights-gs-i-01-perf.png)</a> | <a href="app-insights-start-monitoring-app-health-usage.md">Web プロジェクトに Application Insights SDK を追加する</a> <br/> ![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-start-monitoring-app-health-usage.md">![パフォーマンスと利用状況の監視](./media/app-insights-get-started/appinsights-gs-r-01-perf.png)</a>
+ <a href="app-insights-asp-net.md">![ASP.NET](./media/app-insights-get-started/appinsights-gs-i-01-perf.png)</a> | <a href="app-insights-asp-net.md">Web プロジェクトに Application Insights SDK を追加する</a> <br/> ![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-asp-net.md">![パフォーマンスと利用状況の監視](./media/app-insights-get-started/appinsights-gs-r-01-perf.png)</a>
 <a href="app-insights-monitor-performance-live-website-now.md">![既にライブの ASP.NET サイト](./media/app-insights-get-started/appinsights-gs-i-04-red2.png)</a><br/><a href="app-insights-monitor-performance-live-website-now.md">![依存関係とパフォーマンスの監視](./media/app-insights-get-started/appinsights-gs-i-03-red.png)</a>|<a href="app-insights-monitor-performance-live-website-now.md">IIS サーバーに状態モニターをインストールする</a> <br/> ![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-monitor-performance-live-website-now.md">![ASP.NET の依存関係の監視](./media/app-insights-get-started/appinsights-gs-r-03-red.png)</a>
 <a href="insights-perf-analytics.md">![Azure Web アプリまたは VM](./media/app-insights-get-started/appinsights-gs-i-10-azure.png)</a>|<a href="insights-perf-analytics.md">Azure Web アプリまたは VM で Insights を有効にする</a> <br/> ![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="insights-perf-analytics.md">![依存関係とパフォーマンスの監視](./media/app-insights-get-started/appinsights-gs-r-03-red.png)</a>
 <a href="app-insights-java-get-started.md">![Java](./media/app-insights-get-started/appinsights-gs-i-11-java.png)</a>|<a href="app-insights-java-get-started.md">Java プロジェクトに SDK を追加する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-java-get-started.md">![パフォーマンスと利用状況の監視](./media/app-insights-get-started/appinsights-gs-r-10-java.png)</a>
@@ -74,4 +74,4 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
 [qna]: app-insights-troubleshoot-faq.md
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

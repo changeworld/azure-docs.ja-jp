@@ -18,11 +18,16 @@
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
 
 [AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
 
-このチュートリアルでは、Azure のモバイル サービスを使用して Xamarin.iOS アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な *To do list* アプリケーションの両方を作成します。
+このチュートリアルでは、Azure Mobile Services を使用して Xamarin.iOS アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な *To do list* アプリケーションの両方を作成します。
 
 このチュートリアルのビデオを見る場合は、下のクリップでこのチュートリアルと同じ手順が表示されます。
 
@@ -44,11 +49,11 @@
 
 ## 新しい Xamarin.iOS アプリケーションを作成する
 
-モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリケーションを変更してモバイル サービスに接続することができます。
+モバイル サービスを作成したら、Azure クラシック ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリを変更して、モバイル サービスに接続することができます。
 
 ここでは、モバイル サービスに接続された新しい Xamarin.iOS アプリを作成します。
 
-1.  管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1.  [Azure クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Xamarin.iOS]** を選択し、**[新しい Xamarin.iOS アプリを作成する]** を展開します。
 
@@ -64,7 +69,7 @@
 
 5. **[アプリをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。
 
-	これにより、Mobile Services に接続され、Xamarin.iOS 用の Azure Mobile Services コンポーネントを参照する "To do list” サンプル アプリケーション用のプロジェクトがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
+	これにより、Mobile Services に接続され、Xamarin.iOS 用の Azure Mobile Services コンポーネントを参照する "To do list" サンプル アプリケーション用のプロジェクトがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
 ## 新しい Xamarin.iOS アプリケーションを実行する
 
@@ -86,7 +91,7 @@
 
 	> [AZURE.NOTE]モバイル サービスにアクセスして TodoService.cs C# ファイルにあるデータを照会および挿入するコードを確認できます。
 
-4. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
+4. [Azure クラシック ポータル]に戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
 	![][11]
 
@@ -105,7 +110,7 @@
 * [プッシュ通知の使用] アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 * [Azure Mobile Services 向け Xamarin コンポーネント クライアントを使用する方法](partner-xamarin-mobile-services-how-to-use-client-library.md) モバイル サービスに対してクエリを実行する方法、データを操作する方法、カスタム API にアクセスする方法について説明します。
-  
+
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
@@ -134,6 +139,6 @@
 [Xamarin Studio]: http://xamarin.com/download
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
-[Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

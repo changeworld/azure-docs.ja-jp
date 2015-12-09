@@ -1,23 +1,28 @@
-<properties 
-	pageTitle="Xamarin.Android 向け Mobile Services の使用 | Microsoft Azure" 
-	writer="craigd" 
-	description="Azure Mobile Services を Xamarin.Android アプリで使用する方法について説明します。" 
-	documentationCenter="xamarin" 
-	authors="lindydonna" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="Xamarin.Android 向け Mobile Services の使用 | Microsoft Azure"
+	writer="craigd"
+	description="Azure Mobile Services を Xamarin.Android アプリで使用する方法について説明します。"
+	documentationCenter="xamarin"
+	authors="lindydonna"
+	manager="dwrede"
+	editor=""
 	services="mobile-services"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-android" 
-	ms.devlang="dotnet" 
-	ms.topic="hero-article" 
-	ms.date="11/05/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-android"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
+	ms.date="11/05/2015"
 	ms.author="donnam"/>
 
 # <a name="getting-started"></a>Mobile Services の使用
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
 
@@ -47,11 +52,11 @@
 
 ## 新しい Xamarin.Android アプリを作成する
 
-モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリケーションを変更してモバイル サービスに接続することができます。
+モバイル サービスを作成したら、Azure クラシック ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリを変更して、モバイル サービスに接続することができます。
 
 ここでは、モバイル サービスに接続された新しい Xamarin.Android アプリを作成します。
 
-1.  管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1.  [Azure クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **\[Xamarin.Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
 
@@ -85,9 +90,9 @@
 
 	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
 
-	> [AZURE.NOTE]モバイル サービスにアクセスして ToDoActivity.cs C# ファイルにあるデータを照会および挿入するコードを確認できます。
+	> [AZURE.NOTE]モバイル サービスにアクセスして ToDoActivity.cs C# ファイルにあるデータをクエリおよび挿入するコードを確認できます。
 
-6. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
+6. [Azure クラシック ポータル]に戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
 	![][11]
 
@@ -138,7 +143,6 @@
 [Xamarin.Android]: http://xamarin.com/download
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Azure]: http://azure.microsoft.com/
-[Management Portal]: https://manage.windowsazure.com/
- 
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

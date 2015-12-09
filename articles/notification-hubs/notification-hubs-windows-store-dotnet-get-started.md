@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="10/21/2015"
+	ms.date="11/23/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用 (Windows ストア アプリ)
@@ -37,7 +37,7 @@
 
 このチュートリアルには、次のものが必要です。
 
-+ Microsoft Visual Studio Express 2013 for Windows Update 2<br/>Visual Studio のこのバージョンでは、ユニバーサル アプリ プロジェクトを作成する必要があります。Windows ストア アプリのみを作成する場合は、Visual Studio 2012 Express for Windows 8 が必要です。
++ Microsoft Visual Studio Express 2013 for Windows Update 2 以降<br/>ユニバーサル アプリ プロジェクトを作成するには、Visual Studio のこのバージョンが必要です。Windows ストア アプリのみを作成する場合は、Visual Studio 2012 Express for Windows 8 が必要です。
 
 + アクティブな Windows ストア アカウント
 
@@ -185,7 +185,7 @@ Windows ストア アプリにプッシュ通知を送信するには、アプ�
 
 * **Node.js** : [Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-how-to-use-notification-hubs.md)。
 
-* **Azure Mobile Services**: Notification Hubs と統合した Azure Mobile Services バックエンドからの通知の送信例については、「Mobile Services でのプッシュ通知の使用」([.NET バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md)) を参照してください。
+* **Azure Mobile Services**: Notification Hubs と統合した Azure Mobile Services Backend からの通知の送信例については、「Mobile Services でのプッシュ通知の使用」([.NET バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md)) を参照してください。
 
 * **Java / PHP**: REST API を使用した通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md)) を参照してください。
 
@@ -283,4 +283,4 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [タイル カタログ]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
 [バッジの概要]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

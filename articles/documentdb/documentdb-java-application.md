@@ -41,8 +41,8 @@
 
 - アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](../../pricing/free-trial/)を参照してください。
 - [Java Development Kit (JDK) 7 以降](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
-- [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)。
-- [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト](../web-sites-java-get-started.md)。
+- [Eclipse IDE for Java EE Developers。](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
+- [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト。](../web-sites-java-get-started.md)
 
 これらのツールを初めてインストールする場合は、coreservlets.com の [TomCat7 のインストールと Eclipse での使用のチュートリアル](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html)のクイック スタート セクションで、インストール プロセスの手順を参照してください。
 
@@ -52,7 +52,7 @@ DocumentDB データベース アカウントを Azure でプロビジョニン�
 1. データベース アカウントをまだ持っていない場合は、「[データベース アカウントの作成](documentdb-create-account.md)」の説明に従ってデータベース アカウントを作成します。既にアカウントがある場合は、手順 2. に進みます。
 2. 次の図に示す **[キー]** ブレードからエンドポイントの **[URI]** 値と **[プライマリ キー]** 値をクリップボードにコピーして、次に作成する Web アプリケーションでこれらの値を使用できるようにしておきます。
 
-![DocumentDB アカウントの作成 - データベース チュートリアルDocumentDB アカウントを示す、アクティブなハブ、[DocumentDB アカウント] ブレードの [キー] ボタン、[キー] ブレードの URI の値、プライマリ キーの値、およびセカンダリ キーの値が強調表示されている Azure プレビュー ポータルのスクリーン ショット][1]
+![DocumentDB アカウントの作成 - データベース チュートリアルScreen shot of the Azure Portal, showing a DocumentDB account, with the ACTIVE hub highlighted, the Keys button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade][1]
 
 
 ##<a id="CreateJSP"></a>手順 2: Java JSP アプリケーションを作成する
@@ -786,4 +786,4 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 [1]: media/documentdb-java-application/keys.png
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

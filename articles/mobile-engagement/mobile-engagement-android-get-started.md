@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="hero-article"
-	ms.date="09/22/2015"
+	ms.date="12/02/2015"
 	ms.author="piyushjo" />
 
 # Android アプリ用 Azure Mobile Engagement の使用
@@ -33,9 +33,9 @@
 + Android SDK (Android Studio を使うことを前提とします)。[ここ](http://go.microsoft.com/fwlink/?LinkId=389797)からダウンロードできます。
 + [Mobile Engagement Android SDK]
 
-> [AZURE.IMPORTANT]このチュートリアルを完了することは Android アプリ用の他のすべての Mobile Engagement のチュートリアルを実行するための前提条件であり、これを完了するにはアクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」をご覧ください。
+> [AZURE.IMPORTANT]このチュートリアルを完了することは Android アプリ用の他のすべての Mobile Engagement のチュートリアルを実行するための前提条件であり、これを完了するにはアクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
-##<a id="setup-azme"></a>Android アプリ用のモバイル エンゲージメントの設定
+##<a id="setup-azme"></a>Android アプリ用の Mobile Engagement の設定
 
 [AZURE.INCLUDE [ポータルで Mobile Engagement アプリを作成する](../../includes/mobile-engagement-create-app-in-portal.md)]
 
@@ -56,7 +56,7 @@
     ![][2]
 
 3. ターゲット フォーム ファクターと API レベルを選び、**[Next]** をクリックします。
-	
+
 	>[AZURE.NOTE]Mobile Engagement では、最小で API レベル 10 (Android 2.3.3) が必要です。
 
     ![][3]
@@ -102,7 +102,7 @@ SDK ライブラリをダウンロードして統合する
 		import com.microsoft.azure.engagement.EngagementAgent;
 		import com.microsoft.azure.engagement.EngagementConfiguration;
 
-3. アプリの [**接続情報**] ページで Azure ポータルに戻り、[**接続文字列**] をコピーします。
+3. アプリの **[接続情報]** ページで Azure クラシック ポータルに戻り、**[接続文字列]** をコピーします。
 
 	  ![][9]
 
@@ -135,7 +135,7 @@ SDK ライブラリをダウンロードして統合する
 
 データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面 (アクティビティ) を Mobile Engagement のバックエンドに送信する必要があります。
 
-**MainActivity.java** に移動して、**MainActivity** の基本クラスを **EngagementActivity** に置き換えます。
+**MainActivity.java** に移動して、**MainActivity** の基底クラスを **EngagementActivity** に置き換えます。
 
 	public class MainActivity extends EngagementActivity {
 
@@ -155,7 +155,7 @@ Mobile Engagement を導入すると、プッシュ通知とアプリ内メッ�
 
 ### アプリ内メッセージングの有効化
 
-1. Manifest.xml の `<application>` タグと `</application>` タグの間に、次のアプリ内メッセージング リソースをコピーします。
+1. Manifest.xml の `<application>` タグと `</application>` タグの間に、次のアプリ内メッセージングのリソースをコピーします。
 
 		<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light">
   			<intent-filter>
@@ -224,7 +224,7 @@ Mobile Engagement を導入すると、プッシュ通知とアプリ内メッ�
 
 >[AZURE.TIP]適切な解像度のアイコンを使用するには、[これらの例](https://www.google.com/design/icons)を参考にしてください。**[Notification]** セクションまでスクロールして 1 つのアイコンをクリックし、`PNGS` をクリックして描画可能なアイコンのセットをダウンロードします。アイコンのバージョンごとに、使用する描画可能なフォルダーと解像度を確認できます。
 
-##API キーを使用して Google Cloud Messaging プロジェクトを作成する 
+##API キーを使用して Google Cloud Messaging プロジェクトを作成する
 
 [AZURE.INCLUDE [mobile-engagement-enable-Google-cloud-messaging](../../includes/mobile-engagement-enable-google-cloud-messaging.md)]
 
@@ -263,16 +263,16 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
 
 1. Mobile Engagement ポータルに移動します
 
-	Azure ポータルで、このプロジェクトで使用しているアプリにいることを確認し、下部の **[関与]** ボタンをクリックします。
+	Azure クラシック ポータルで、このプロジェクトに使用しているアプリを対象としていることを確認し、下部にある **[エンゲージ]** ボタンをクリックします。
 
 	![][15]
 
 2. ここで **[設定]**、**[ネイティブ プッシュ通知]** セクションをクリックし、GCM キーを入力します。
-	  
+
 	![][16]
 
 3. 次に示す **[GCM 設定]** セクションの **[API キー]** の**編集**アイコンをクリックします。
-	  
+
 	![][17]
 
 4. ポップアップ画面で、前に取得した GCM サーバー キーを貼り付け、**[OK]** をクリックします。
@@ -284,13 +284,13 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
 アプリにプッシュ通知を送信する単純なプッシュ通知キャンペーンを作成します。
 
 1. Mobile Engagement ポータルで [**リーチ**] タブに移動します。
-	 
-2. **[新しいお知らせ]** をクリックし、プッシュ通知キャンペーンを作成します。
-	 
+
+2. **[新しいアナウンス]** をクリックし、プッシュ通知キャンペーンを作成します。
+
 	![][20]
 
 3. 次の手順に従って、キャンペーンの最初のフィールドを設定します。
-	 
+
 	![][21]
 
 	a.キャンペーンの名前を付けます。
@@ -303,19 +303,19 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
 
 	e.次に、**メッセージ**を入力します。
 
-4. 下へスクロールし、**[コンテンツ]** セクションで **[通知のみ]** を選択します。
+4. 下にスクロールし、**[コンテンツ]** セクションで **[通知のみ]** を選択します。
 
 	![][22]
 
-5. 最も基本的なキャンペーンの設定が完了しました。もう一度下へスクロールし、**[作成]** ボタンをクリックして、キャンペーンを保存します。
+5. 最も基本的なキャンペーンの設定が完了しました。もう一度下にスクロールし、**[作成]** ボタンをクリックしてキャンペーンを保存します。
 
 6. 最後の手順として、**[アクティブ化]** をクリックしてキャンペーンをアクティブにし、プッシュ通知を送信します。
-    
+
 	![][24]
 
 <!-- URLs. -->
-[Mobile Engagement Android SDK]: http://go.microsoft.com/?linkid=9863935
-[Mobile Engagement Android SDK documentation]: http://go.microsoft.com/?linkid=9874682
+[Mobile Engagement Android SDK]: https://aka.ms/vq9mfn
+[Mobile Engagement Android SDK documentation]: https://aka.ms/tujlkm
 [Android の高度な統合]: https://azure.microsoft.com/ja-JP/documentation/articles/mobile-engagement-android-integrate-engagement/#basic-reporting
 
 <!-- Images. -->
@@ -339,4 +339,4 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
 [22]: ./media/mobile-engagement-android-get-started/campaign-content.png
 [24]: ./media/mobile-engagement-android-get-started/campaign-activate.png
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

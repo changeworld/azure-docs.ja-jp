@@ -36,7 +36,7 @@ AAD のロールは、構成済みソリューションをプロビジョニン�
 
 AAD での管理者ロールの詳細については、「[Azure AD での管理者ロールの割り当て][lnk-aad-admin]」を参照してください。この記事では主として、構成済みソリューションによって使用される**グローバル管理者**ロールと**ドメイン ユーザー/メンバー** ロールに焦点を当てます。
 
-**グローバル管理者:** AAD テナントごとに多数のグローバル管理者がいてもかまいません。AAD テナントを作成したユーザーは、既定でそのテナントのグローバル管理者になります。グローバル管理者は、構成済みソリューションをプロビジョニングでき、AAD テナントの内部にあるアプリケーションに対する **ADMINISTRATOR** ロールを割り当てられます。ただし、同じ AAD テナントの別のユーザーがアプリケーションを作成した場合は、グローバル管理者に付与される既定のロールは **IMPLICIT READ ONLY** です。グローバル管理者は、[Microsoft Azure 管理ポータル][lnk-classic-portal]を使用してアプリケーションに対するロールを割り当てることができます。
+**グローバル管理者:** AAD テナントごとに多数のグローバル管理者がいてもかまいません。AAD テナントを作成したユーザーは、既定でそのテナントのグローバル管理者になります。グローバル管理者は、構成済みソリューションをプロビジョニングでき、AAD テナントの内部にあるアプリケーションに対する **ADMINISTRATOR** ロールを割り当てられます。ただし、同じ AAD テナントの別のユーザーがアプリケーションを作成した場合は、グローバル管理者に付与される既定のロールは **IMPLICIT READ ONLY** です。グローバル管理者は、[Azure クラシック ポータル][lnk-classic-portal]を使用してアプリケーションに対するロールを割り当てることができます。
 
 **ドメイン ユーザー/メンバー:** AAD テナントごとに多数のドメイン ユーザー/メンバーがいてもかまいません。ドメイン ユーザーは [azureiotsuite.com][lnk-azureiotsuite] サイトを使用して構成済みソリューションをプロビジョニングできます。プロビジョニングするアプリケーションに対して付与される既定のロールは **ADMINISTRATOR** です。[azure-iot-solution][lnk-github-repo] リポジトリの build.cmd スクリプトを使用してアプリケーションを作成できますが、ロールを割り当てるアクセス許可はないので、既定で付与されるロールは **IMPLICIT READONLY** です。AAD テナントの別のユーザーが作成したアプリケーションに対して既定で割り当てられるロールは **IMPLICIT READONLY** です。アプリケーションのロールを割り当てることはできません。そのため、自分でプロビジョニングしたアプリケーションであっても、ユーザーまたはユーザーのロールを追加することはできません。
 
@@ -69,7 +69,7 @@ Azure 共同管理者、サービス管理者、アカウント管理者のロ�
 
 ユーザーのロールを変更できるのは、AAD グローバル管理者だけです。
 
-1. [Microsoft Azure 管理ポータル][lnk-classic-portal]に移動します。
+1. [Azure クラシック ポータル][lnk-classic-portal]に移動します。
 
 2. **[Active Directory]** を選択します。
 
@@ -91,7 +91,7 @@ Azure 共同管理者、サービス管理者、アカウント管理者のロ�
 
 ### サービス管理者が自分のサブスクリプションと特定の AAD テナントの間のディレクトリ マッピングを変更する必要がある場合は、どうすればよいですか
 
-1. [Microsoft Azure 管理ポータル][lnk-classic-portal]に移動し、左側のサービスの一覧で **[設定]** をクリックします。
+1. [Azure クラシック ポータル][lnk-classic-portal]に移動し、左側のサービスの一覧で **[設定]** をクリックします。
 
 2. ディレクトリ マッピングを変更するサブスクリプションを選択します。
 
@@ -107,11 +107,11 @@ Azure 共同管理者、サービス管理者、アカウント管理者のロ�
 
 ### リモート監視構成済みソリューションおよびアプリケーションが割り当てられている AAD テナントを切り替えるにはどうすればよいですか
 
-<https://github.com/Azure/azure-iot-remote-monitoring> からクラウドのデプロイメントを実行し、新しく作成された AAD テナントで再デプロイできます。新しい AAD テナントを作成したユーザーは既定でグローバル管理者になるので、ユーザーを追加し、ユーザーにロールを割り当てることができます。
+<https://github.com/Azure/azure-iot-remote-monitoring> からクラウドのデプロイを実行し、新しく作成された AAD テナントで再デプロイできます。新しい AAD テナントを作成したユーザーは既定でグローバル管理者になるので、ユーザーを追加し、ユーザーにロールを割り当てることができます。
 
 1. [Microsoft Azure 管理ポータル][lnk-classic-portal]で新しい AAD ディレクトリを作成します。
 
-2. <https://github.com/Azure/azure-iot-remote-monitoring> にアクセスします。クラウドのデプロイメントの詳細は、[クラウドのデプロイメント][lnk-wiki-clouddeployment]に関するページを参照してください。
+2. <https://github.com/Azure/azure-iot-remote-monitoring> にアクセスします。クラウドのデプロイの詳細は、[クラウドのデプロイ][lnk-wiki-clouddeployment]に関するページを参照してください。
 
 3. `build.cmd cloud [debug | release] {name of previously deployed remote monitoring solution}` を実行します (例: `build.cmd cloud debug myRMSolution`)
 
@@ -145,4 +145,4 @@ Azure サブスクリプションが確かにある場合は、サブスクリ�
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs
 [lnk-wiki-clouddeployment]: https://github.com/Azure/azure-iot-remote-monitoring/wiki/Cloud-deployment
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

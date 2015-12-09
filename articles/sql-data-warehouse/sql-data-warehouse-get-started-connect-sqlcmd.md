@@ -36,7 +36,7 @@
 
 データベースに接続するには、接続先のデータベースを含むサーバーの完全名が必要です (****servername**.database.windows.net*)。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. 接続先のデータベースを探します。
 3. サーバーの完全名を見つけます (これを次の手順で使用します)。
 
@@ -83,4 +83,4 @@ sqlcmd の詳細については、[sqlcmd のドキュメント](https://msdn.mi
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

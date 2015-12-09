@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/26/2015"
+   ms.date="11/25/2015"
    ms.author="seanmck"/>
 
 # 複数の環境のアプリケーション パラメーターを管理する
@@ -55,11 +55,12 @@ DefaultValue 属性では、特定の環境に対して具体的なパラメー�
 
 >[AZURE.NOTE]すべてのサービス インスタンス パラメーターが環境ごとの構成に適しているわけではありません。上記の例で、サービスのパーティション分割構成の LowKey 値と HighKey 値は、サービスのすべてのインスタンスに対して明示的に定義されています。これは、パーティションの範囲が、環境ではなくデータ ドメインに応じて決まるからです。　　
 
+
 ### 環境ごとのサービス構成の設定
 
 [Service Fabric アプリケーション モデル](service-fabric-application-model.md)では、実行時に読み取り可能なカスタム キー値ペアを含む構成パッケージをサービスに含めることができます。このような設定の値は環境ごとに区別することもできます。そのためには、アプリケーション マニフェストに `ConfigOverride` を指定します。
 
-`Stateful1` サービスのサービス マニフェスト内に次の設定があると仮定します。
+`Stateful1` サービスの Config\\Settings.xml 内に次の設定があると仮定します。
 
 
     <Section Name="MyConfigSection">
@@ -81,6 +82,7 @@ DefaultValue 属性では、特定の環境に対して具体的なパラメー�
 このパラメーターは上記のように環境ごとに構成することができます。そのためには、アプリケーション マニフェストのパラメーター セクションでこのパラメーターを宣言し、アプリケーション パラメーター ファイルに環境固有の値を指定します。
 
 >[AZURE.NOTE]サービス構成設定の場合は、キーの値を設定できる場所が 3 箇所あります。サービス構成パッケージ、アプリケーション マニフェスト、およびアプリケーション パラメーター ファイルの 3 つです。Service Fabric は常に、まずアプリケーション パラメーター ファイル (指定されている場合) から選択し、次にアプリケーション マニフェストから選択し、最後に構成パッケージから選択します。
+
 
 ### アプリケーション パラメーター ファイル
 
@@ -127,4 +129,4 @@ Visual Studio でアプリケーションを発行する場合は、使用可能
 [publishdialog]: ./media/service-fabric-manage-multiple-environment-app-configuration/publish-dialog-choose-app-config.png
 [app-parameters-solution-explorer]: ./media/service-fabric-manage-multiple-environment-app-configuration/app-parameters-in-solution-explorer.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

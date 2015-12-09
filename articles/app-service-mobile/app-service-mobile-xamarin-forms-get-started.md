@@ -38,7 +38,7 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 * [Xcode] v7.0 以降と [Xamarin Studio] がインストールされた Mac。Visual Studio を使用して Windows コンピューターにアプリをビルドする予定の場合でも、ネットワーク接続された Mac にアクセスしてそれを行う必要があります。
  
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751&appServiceName=mobile)に関するページにアクセスしてください。App Service で、有効期限付きのスターター Mobile App をすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](https://tryappservice.azure.com/?appServiceName=mobile)に関するページにアクセスしてください。App Service で、有効期限付きのスターター Mobile App をすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 新しい Azure Mobile App バックエンドの作成
 
@@ -84,7 +84,7 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 	![][8]
 
-###(省略可能) iOS プロジェクトの実行
+##(省略可能) iOS プロジェクトの実行
 
 このセクションでは、iOS デバイス用の Xamarin iOS プロジェクトを実行します。iOS デバイスを使用していない場合は、このセクションを省略できます。
 
@@ -107,7 +107,7 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 > [AZURE.NOTE]ソリューションのポータブル クラス ライブラリ プロジェクトの TodoItemManager.cs C# ファイルに、モバイル アプリ バックエンドにアクセスするコードが表示されます。
 
-###(省略可能) Android プロジェクトの実行
+##(省略可能) Android プロジェクトの実行
 
 このセクションでは、Android 用の Xamarin Android プロジェクトを実行します。Android デバイスを使用していない場合は、このセクションを省略できます。
 
@@ -131,7 +131,7 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 > [AZURE.NOTE]ソリューションのポータブル クラス ライブラリ プロジェクトの TodoItemManager.cs C# ファイルに、モバイル アプリ バックエンドにアクセスするコードが表示されます。
 
 
-###(省略可能) Windows プロジェクトの実行
+##(省略可能) Windows プロジェクトの実行
 
 
 このセクションでは、Windows デバイス用の Xamarin WinApp プロジェクトを実行します。Windows デバイスを使用していない場合は、このセクションを省略できます。
@@ -179,4 +179,4 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 [Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015--->

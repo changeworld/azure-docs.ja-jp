@@ -1,6 +1,6 @@
 <properties
 	pageTitle="DocumentDB Document Explorer を使用した JSON ドキュメントの表示、編集、作成、およびアップロード | Microsoft Azure"
-	description="DocumentDB Document Explorer を使用して JSON ドキュメントを表示、編集、作成、およびアップロードするための Azure プレビュー ポータル ツールである DocumentDB Document Explorer について説明します。"
+	description="DocumentDB で JSON ドキュメントを表示、編集、作成、アップロードするための Azure ポータル ツールである DocumentDB Document Explorer について説明します。"
 	services="documentdb"
 	authors="AndrewHoh"
 	manager="jhubbard"
@@ -18,7 +18,7 @@
 
 # DocumentDB Document Explorer を使用した JSON ドキュメントの表示、編集、作成、およびアップロード #
 
-この記事では、[Microsoft Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) Document Explorer の概要を説明します。これは、DocumentDB を使用して JSON ドキュメントを表示、編集、作成、およびアップロードする Azure プレビュー ポータル ツールです。
+この記事では、[Microsoft Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) Document Explorer の概要を説明します。これは、DocumentDB を使用して JSON ドキュメントを表示、編集、作成、およびアップロードする Azure ポータル ツールです。
 
 このチュートリアルを完了すると、次の質問に回答できるようになります。
 
@@ -58,7 +58,7 @@ Document Explorer では、ドキュメントを簡単に作成、編集、お�
 
 	> [AZURE.NOTE]"ID" プロパティを指定していない場合は、Document Explorer によって自動的に ID プロパティが追加され、ID 値として GUID が生成されます。
 
-- JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure テーブル ストレージ、Amazon DynamoDB、HBase、またはその他の DocumentDB コレクションのデータが既にある場合は、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用して、データをすばやくインポートできます。
+- JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure Table Storage、Amazon DynamoDB、HBase、またはその他の DocumentDB コレクションのデータが既にある場合は、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用して、データをすばやくインポートできます。
 
 - 既存のドキュメントを編集するには、Document Explorer でそのドキュメントを選択し、自由に編集して **[保存]** をクリックするだけです。
 
@@ -145,4 +145,4 @@ Document Explorer では、1 つまたは複数の既存の JSON ドキュメン
 
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure ポータルを使用したオンデマンド コンテンツ配信の概要 | Microsoft Azure"
-	description="このチュートリアルでは、Azure Media Services と Azure ポータルを使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順を紹介します。"
+	pageTitle="Azure クラシック ポータルを使用したオンデマンド コンテンツ配信の概要 | Microsoft Azure"
+	description="このチュートリアルでは、Azure Media Services と Azure クラシック ポータルを使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順を紹介します。"
 	services="media-services"
 	documentationCenter=""
 	authors="Juliako"
@@ -17,15 +17,15 @@
 	ms.author="juliako"/>
 
 
-# Azure ポータルを使用したオンデマンド コンテンツ配信の概要
+# Azure クラシック ポータルを使用したオンデマンド コンテンツ配信の概要
 
 
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 
-このチュートリアルでは、Azure ポータルを使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について、手順を追って説明します。
+このチュートリアルでは、Azure クラシック ポータルを使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について、手順を追って説明します。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -39,7 +39,7 @@
 
 ## Azure Media Services アカウントの作成
 
-1. [Azure ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[Media Services]**、**[簡易作成]** の順にクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[メディア サービス]**、**[簡易作成]** の順にクリックします。
 
 	![Media Services の簡易作成](./media/media-services-portal-get-started/wams-QuickCreate.png)
 
@@ -47,7 +47,7 @@
 
 3. **[リージョン]** ボックスで、Media Services アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストのボックスには、利用可能な Media Services リージョンのみが表示されます。
 
-4. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
+4. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの Blob Storage となるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
 
 5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
 
@@ -79,7 +79,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 ストリーミング予約ユニットの数を変更するには、以下の手順を実行します。
 
-1. [Azure ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
 
 2. [ストリーミング エンドポイント] ページを選択します。次に、変更するストリーミング エンドポイントをクリックします。
 
@@ -93,12 +93,12 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 	>[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
 	>
-	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、[Media Services の料金詳細](http://go.microsoft.com/fwlink/?LinkId=275107)に関するページをご覧ください。
+	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、「[Azure の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 
 ## コンテンツをアップロードする
 
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[Media Services]** をクリックし、目的の Media Services アカウント名をクリックします。
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[Media Services]** をクリックし、目的の Media Services アカウント名をクリックします。
 2. [コンテンツ] ページを選択します。
 3. ページまたはポータルの下部にある **[アップロード]** をクリックします。
 4. **[コンテンツのアップロード]** ダイアログ ボックスで、目的の資産ファイルを見つけます。ファイルをクリックして、**[開く]** をクリックするか、Enter キーを押します。
@@ -137,7 +137,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 ### エンコード
 
-ここでは、Azure ポータルから Azure Media Encoder でコンテンツをエンコードするための手順について説明します。
+ここでは、Azure クラシック ポータルを使用して、Azure Media Encoder でコンテンツをエンコードする手順について説明します。
 
 1.  エンコードの対象となるファイルを選択します。そのファイル タイプのエンコードがサポートされている場合、[コンテンツ] ページの一番下にある **[プロセス]** ボタンが有効になります。
 4. **[プロセス]** ダイアログ ボックスで **[Azure Media Encoder]** プロセッサを選択します。
@@ -172,7 +172,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 ストリーミングかダウンロードに使用できる URL を提供するには、まず、ロケーターを作成して資産を "発行" する必要があります。資産に含まれているファイルには、ロケーターを通じてアクセスできます。Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) に、Access Signature (SAS) ロケーターはメディア ファイルのダウンロードに使用します。
 
-資産の発行に Azure ポータルを使用するとロケーターが作成され、OnDemand ベースの URL (資産に .ism ファイルが含まれている場合) または SAS URL が提供されます。
+資産の発行に Azure クラシック ポータルを使用すると、ロケーターが作成され、OnDemand ベースの URL (資産に .ism ファイルが含まれている場合) または SAS URL が提供されます。
 
 SAS URL には次の形式があります。
 
@@ -197,7 +197,7 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) API または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
 
-### 発行
+### Publish
 
 ポータルを使用して資産を発行するには、次の操作を行います。
 
@@ -209,7 +209,7 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 ## ポータルでコンテンツを再生する
 
-ビデオは、Azure ポータルにあるコンテンツ プレーヤーを使用してテストできます。
+Azure クラシック ポータルには、ビデオのテストに使用できるコンテンツ プレーヤーが用意されています。
 
 目的のビデオをクリックし、ポータルの下部にある **[再生]** をクリックします。
 
@@ -244,7 +244,7 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 
 <!-- URLs. -->
-[Azure portal]: http://manage.windowsazure.com/
+[Azure Classic Portal]: http://manage.windowsazure.com/
 
 
 <!-- Images -->
@@ -260,4 +260,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-portal-get-started/media-services-portal-player.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

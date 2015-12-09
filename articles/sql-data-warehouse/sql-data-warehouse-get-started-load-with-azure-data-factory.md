@@ -49,7 +49,7 @@
 
 1. 最初に、[サンプル データをダウンロード](https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv)します。このデータは、ご利用のサンプル データに既に含まれているサンプル データと共に使用することで、さらに 3 年分の売上データを提供します。
 
-2. ダウンロードしたデータは、AZCopy で次のスクリプトを実行して BLOB ストレージに移動できます。
+2. ダウンロードしたデータは、AZCopy で次のスクリプトを実行して Blob Storage に移動できます。
 
         AzCopy /Source:<Sample Data Location>  /Dest:https://<storage account>.blob.core.windows.net/<container name> /DestKey:<storage key> /Pattern:FactInternetSales.csv
 
@@ -59,7 +59,7 @@
 
 ## Azure Data Factory の使用
 
-すべての設定が完了したら、Azure プレビュー ポータルの Azure Data Factory インスタンスに移動して、パイプラインの設定を開始できます。そのためには、[Azure ポータル](portal.azure.com)に移動し、左側のメニューから対象のデータ ファクトリを選択します。
+すべての設定が完了したら、Azure ポータルの Azure Data Factory インスタンスに移動して、パイプラインの設定を開始できます。そのためには、[Azure クラシック ポータル](portal.azure.com)に移動し、左側のメニューから対象のデータ ファクトリを選択します。
 
 データ ウェアハウスにデータを転送する Azure Data Factory パイプラインを設定するには、サービスのリンク、データセットの定義、パイプラインの作成の 3 つの手順を実行します。
 
@@ -88,7 +88,7 @@
 
 1. データ ファクトリの [作成とデプロイ] セクションに移動し、このプロセスを開始します。
 
-2. [新しいデータセット]、[Azure BLOB ストレージ] の順にクリックし、ストレージをデータ ファクトリにリンクします。次のスクリプトを使用して、Azure BLOB ストレージのデータを定義することができます。
+2. [新しいデータセット]、[Azure BLOB ストレージ] の順にクリックし、ストレージをデータ ファクトリにリンクします。次のスクリプトを使用して、Azure Blob Storage のデータを定義することができます。
 
 		{
 			"name": "<Dataset Name>",
@@ -206,4 +206,4 @@
 	}
 	
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -24,7 +24,7 @@
 
 ## 作業開始
 
-[Windows を実行する仮想マシンを Azure ポータルで作成する](virtual-machines-windows-tutorial-classic-portal.md)
+[Windows を実行する仮想マシンを Azure クラシック ポータルで作成する](virtual-machines-windows-tutorial-classic-portal.md)
 
 [Azure で Windows を実行するカスタム仮想マシンの作成](virtual-machines-windows-create-custom.md)
 
@@ -152,4 +152,4 @@
 
 [サービス管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/ee460799.aspx)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

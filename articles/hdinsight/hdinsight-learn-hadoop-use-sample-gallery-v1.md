@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="get-started-article"
-   ms.date="08/11/2015"
+   ms.date="12/02/2015"
    ms.author="jgao"/>
 
 # HDInsight の概要ギャラリーを使用して、Hadoop について説明します。
@@ -68,4 +68,4 @@ HDInsight に関するその他の資料。
 [hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960
 [azure.portal]: https://manage.windowsazure.com
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

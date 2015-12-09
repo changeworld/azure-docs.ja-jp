@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="11/17/2015"
+	ms.date="11/30/2015"
 	ms.author="genemi"/>
 
 
@@ -134,17 +134,53 @@ ADO.NET を使用するクライアントの*ブロック期間*については�
 ## 接続: 接続文字列
 
 
-Azure SQL Database に接続するために必要な接続文字列は、Microsoft SQL Server に接続するための文字列とは少し異なります。データベースの接続文字列は [Azure プレビュー ポータル](http://portal.azure.com/)からコピーすることができます。
+Azure SQL Database に接続するために必要な接続文字列は、Microsoft SQL Server に接続するための文字列とは少し異なります。データベースの接続文字列は [Azure ポータル](http://portal.azure.com/)からコピーすることができます。
 
 
 [AZURE.INCLUDE [sql-database-include-connection-string-20-portalshots](../../includes/sql-database-include-connection-string-20-portalshots.md)]
 
 
 
-#### 接続タイムアウトの 30 秒
+### 接続再試行用の .NET SqlConnection パラメーター
 
 
-インターネットを介した接続は、プライベート ネットワークに比べ堅牢性が低くなります。そのため、接続文字列は次のように設定することをお勧めします。- **[接続タイムアウト]** パラメーターを (15 秒ではなく) **30** 秒に設定します。
+.NET Framework クラス **System.Data.SqlClient.SqlConnection** を使用してクライアント プログラムから Azure SQL Database に接続する場合、接続再試行機能を活用できるように .NET 4.5.1 以降を使用してください。この機能の詳細については[こちら](http://go.microsoft.com/fwlink/?linkid=393996)を参照してください。
+
+
+<!--
+2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
+-->
+
+
+[接続文字列](http://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx)を **SqlConnection** オブジェクト用に作成するときは、次のパラメーター間で値を調整する必要があります。
+
+- ConnectRetryCount &nbsp;&nbsp;*(既定値は 0 です。範囲は 0 ～ 255 です)*
+- ConnectRetryInterval &nbsp;&nbsp;*(既定値は 1 秒です。範囲は 1 ～ 60 です)*
+- Connection Timeout &nbsp;&nbsp;*(既定値は 15 秒です。範囲は 0 ～ 2147483647 です)*
+
+
+具体的には、選択した値で次の等式が成り立つ必要があります。
+
+- Connection Timeout = ConnectRetryCount * ConnectionRetryInterval
+
+たとえば、回数が 3、間隔が 10 秒、タイムアウトが 29 秒のみの場合、29 < 3 * 10 となり、接続時に 3 回目と最後の試行には十分な時間が与えらません。
+
+
+#### 接続とコマンド
+
+
+**ConnectRetryCount** パラメーターと **ConnectRetryInterval** パラメーターを使用すると、プログラムに制御を返すなど、プログラムへの通知や介入なしに、**SqlConnection** オブジェクトで接続操作を再試行できます。再試行は次の状況で発生することがあります。
+
+- mySqlConnection.Open メソッドの呼び出し
+- mySqlConnection.Execute メソッドの呼び出し
+
+これには注意が必要です。*クエリ*の実行中に一過性の障害が発生した場合、**SqlConnection** オブジェクトで接続操作が再試行されないため、クエリが再試行されません。ただし、実行するクエリを送信する前に、**SqlConnection** ですばやく接続が確認されます。簡単なチェックで接続の問題が検出された場合、**SqlConnection** で接続操作が再試行されます。再試行に成功すると、実行するクエリが送信されます。
+
+
+#### ConnectRetryCount をアプリケーションの再試行ロジックと組み合わせて使用する必要があるかどうか
+
+アプリケーションにカスタムの堅牢な再試行ロジックが組み込まれていると仮定します。このロジックでは、接続操作が 4 回再試行されます。**ConnectRetryInterval** と **ConnectRetryCount** = 3 を接続文字列に追加すると、再試行回数が 4 * 3 = 12 に増加します。このように何回も再試行するのは、適切ではない可能性があります。
+
 
 
 <a id="b-connection-ip-address" name="b-connection-ip-address"></a>
@@ -152,7 +188,7 @@ Azure SQL Database に接続するために必要な接続文字列は、Microso
 ## 接続: IP アドレス
 
 
-SQL Database サーバーは、クライアント プログラムのホストとなるコンピューターの IP アドレスからの通信を許可するように構成する必要があります。この構成は、[Azure プレビュー ポータル](http://portal.azure.com/)を介してファイアウォールの設定を編集することによって行います。
+SQL Database サーバーは、クライアント プログラムのホストとなるコンピューターの IP アドレスからの通信を許可するように構成する必要があります。この構成は、[Azure ポータル](http://portal.azure.com/)を介してファイアウォールの設定を編集することによって行います。
 
 
 IP アドレスの構成を怠った場合、必要な IP アドレスを示した親切なエラー メッセージがプログラムで表示されます。
@@ -277,7 +313,7 @@ Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ
 
 | ログのクエリ | 説明 |
 | :-- | :-- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、一時障害や接続エラーの原因となるおそれのあるイベントなど、個々のイベントに関する情報が表示されます。<br/><br/>クライアント プログラムでいつ問題が発生したかの情報に対し、**start\_time** や **end\_time** の値を相互に関連付けることをお勧めします。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、一過性の障害や接続エラーの原因となるおそれのあるイベントなど、個々のイベントに関する情報が表示されます。<br/><br/>クライアント プログラムでいつ問題が発生したかの情報に対し、**start\_time** や **end\_time** の値を相互に関連付けることをお勧めします。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` | [sys.database\_connection\_stats](http://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
 
 
@@ -478,4 +514,4 @@ public bool IsTransient(Exception ex)
 
 - [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

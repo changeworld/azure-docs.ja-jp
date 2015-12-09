@@ -18,11 +18,7 @@
 
 # Azure App Service での ASP.NET API アプリの作成
 
-> [AZURE.SELECTOR]
-- [.NET - Visual Studio 2015](app-service-dotnet-create-api-app.md)
-- [.NET - Visual Studio Code](app-service-create-aspnet-api-app-using-vscode.md)
-- [Node.js](app-service-api-nodejs-api-app.md)
-- [Java](app-service-api-java-api-app.md)
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
 
 ## 概要
 
@@ -60,4 +56,4 @@ API アプリのユーザーの認証については、「[Azure App Service で
 
 API アプリの機能については、「[API Apps とは](app-service-api-apps-why-best-platform.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

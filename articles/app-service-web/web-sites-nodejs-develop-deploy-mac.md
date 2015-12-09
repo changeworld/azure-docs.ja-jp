@@ -30,7 +30,7 @@
 
 学習内容:
 
-* Azure プレビュー ポータルを使用して Azure App Service で Web アプリを作成する方法
+* Azure ポータルを使用して Azure App Service で Web アプリを作成する方法
 * Node.js アプリケーションを Web アプリの Git リポジトリにプッシュすることでその Web アプリにデプロイする方法
 
 完成したアプリケーションにより、ブラウザーに "hello world" という短い文字列が出力されます。
@@ -39,7 +39,7 @@
 
 より複雑な Node.js アプリケーションを使用したチュートリアルとサンプル コード、または Azure での Node.js の使用方法に関するその他のトピックについては、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-JP/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする](/ja-JP/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 >
 > Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -49,9 +49,9 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
 
 [Git](http://git-scm.com/%20target="_blank) は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。Web アプリ用に記述したコードはローカルの Git リポジトリに格納されます。このコードをリモート リポジトリにプッシュして Azure にデプロイします。このデプロイ方法は、App Service Web アプリの特徴です。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2. ポータルの左上にある **[+ 新規]** アイコンをクリックします。
+2. Azure ポータルの左上にある **[+ 新規]** アイコンをクリックします。
 
 3. **[Web + モバイル]** をクリックし、**[Web アプリ]** をクリックします。
 
@@ -65,7 +65,7 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
 
 6. **リソース グループ**を選択するか、新しく作成します。
 
-	リソース グループの詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](../resource-group-portal.md)」を参照してください。
+	リソース グループの詳細については、「[Azure ポータルを使用した Azure リソースの管理](../resource-group-portal.md)」を参照してください。
 
 7. **App Service プラン/場所**を選択するか、新しく作成します。
 
@@ -224,4 +224,4 @@ Azure で Node.js アプリケーションを開発する方法の詳細につ�
 [deployment-credentials]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-credentials.png
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

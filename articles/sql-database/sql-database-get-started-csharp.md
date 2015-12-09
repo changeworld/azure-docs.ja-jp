@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="powershell"
    ms.workload="data-management" 
-   ms.date="09/01/2015"
+   ms.date="12/01/2015"
    ms.author="sstein"/>
 
 # SQL Database を試す: C&#x23; を使用して SQL Database Library for .NET で SQL Database を作成する 
@@ -22,7 +22,7 @@
 **1 つのデータベース**
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](sql-database-get-started.md)
+- [Azure portal](sql-database-get-started.md)
 - [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
@@ -45,7 +45,7 @@ Azure SQL Database Library for .NET は、[リソース マネージャー ベ�
 この記事の手順を完了するには、次のものが必要です。
 
 - Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
-- 見ることができます。Visual Studio の無償版については、「[Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs)」 ページを参照してください。
+- 見ることができます。Visual Studio の無償版については、[Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs)に関するページを参照してください。
 
 
 ## 必要なライブラリのインストール
@@ -61,9 +61,9 @@ C# を使用して SQL Database を設定するには、[パッケージ マネ�
 
 まず、必要な認証を設定して、REST API にアクセスするクライアント アプリケーションを有効にする必要があります。
 
-[Azure Resource Manager REST APIs](https://msdn.microsoft.com/library/azure/dn948464.aspx) は Azure Active Directory を認証に使用します。
+[Azure リソース マネージャー REST API](https://msdn.microsoft.com/library/azure/dn948464.aspx) は Azure Active Directory を認証に使用します。
 
-現在のユーザーに基づいてクライアント アプリケーションを認証するには、まず、Azure のリソースが作成されたサブスクリプションに関連付けられている AAD ドメインにアプリケーションを登録する必要があります。職場アカウントまたは学校アカウントではなく、Microsoft アカウントで Azure サブスクリプションが作成されている場合は、既定の AAD ドメインが既に存在します。アプリケーションの登録は、[Azure ポータル](https://manage.windowsazure.com/)で実行できます。
+現在のユーザーに基づいてクライアント アプリケーションを認証するには、まず、Azure のリソースが作成されたサブスクリプションに関連付けられている AAD ドメインにアプリケーションを登録する必要があります。職場アカウントまたは学校アカウントではなく、Microsoft アカウントで Azure サブスクリプションが作成されている場合は、既定の AAD ドメインが既に存在します。アプリケーションの登録は、[Azure クラシック ポータル](https://manage.windowsazure.com/)で実行できます。
 
 新しいアプリケーションを作成し、適切な Active Directory に登録するには、以下を実行します。
 
@@ -113,7 +113,7 @@ C# を使用して SQL Database を設定するには、[パッケージ マネ�
 
 コードにはドメイン名が必要です。適切なドメイン名を指定する簡単な方法を以下に示します。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. 右上隅の自分の名前にマウスを合わせ、ポップアップ ウィンドウに表示されるドメインをメモしてください。
 
     ![ドメイン名を指定します。][3]
@@ -436,4 +436,4 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

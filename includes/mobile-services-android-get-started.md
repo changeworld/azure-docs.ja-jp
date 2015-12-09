@@ -31,7 +31,7 @@
 
 	> [AZURE.NOTE]モバイル サービスにアクセスして ToDoActivity.java ファイルにあるデータをクエリ会および挿入するコードを確認できます。
 
-8. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
+8. Azure クラシック ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
    	![](./media/mobile-services-android-get-started/mobile-data-tab1.png)
 
@@ -39,4 +39,4 @@
 
    	![](./media/mobile-services-android-get-started/mobile-data-browse.png)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

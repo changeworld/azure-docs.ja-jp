@@ -73,15 +73,15 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 
 Azure で Service Bus 機能を使用するには、最初にサービス名前空間を作成する必要があります。名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
-[Azure ポータル][]または Visual Studio のサーバー エクスプローラー を使用して名前空間と Service Bus のメッセージ エンティティを管理できますが、新しい名前空間を作成できるのは、ポータル内のみです。
+[Azure クラシック ポータル][]または Visual Studio のサーバー エクスプローラーを使用して名前空間と Service Bus のメッセージ エンティティを管理できますが、新しい名前空間を作成できるのは、ポータル内のみです。
 
-### ポータルを使用してサービス名前空間を作成するには:
+### Azure クラシック ポータルを使用して名前空間を作成する
 
-1.  [Azure ポータル][]にサインインします。
+1.  [Azure クラシック ポータル][]にサインインします。
 
-2.  Azure ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
+2.  ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
-3.  Azure ポータルの下のウィンドウで、**[作成]** をクリックします。
+3.  ポータルの下のウィンドウで、**[作成]** をクリックします。
 
     ![][5]
 
@@ -89,13 +89,13 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
 5.  入力した名前空間の名前が利用できることを確認できたら、名前空間をホストする国またはリージョンを選択します (コンピューティング リソースを展開する国またはリージョンと同じ国またはリージョンを必ず使用してください)。
 
-    > [AZURE.IMPORTANT] アプリケーションをデプロイする予定の国またはリージョンと*同じ国/リージョン*を選択してください。そうすることで、パフォーマンスが最高になります。
+    > [AZURE.IMPORTANT]アプリケーションをデプロイする予定の国またはリージョンと*同じ国/リージョン*を選択してください。そうすることで、パフォーマンスが最高になります。
 
 6.	ダイアログ ボックスの他のフィールドは、既定値 (**[メッセージング]** と **[Standard]** レベル) のままにして、チェック マークをクリックします。これで、システムによってサービス名前空間が作成され、有効になります。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
 
 	![][38]
 
-作成した名前空間は Azure ポータルに表示されます。アクティブ化するまで少し時間がかかります。ステータスが **[アクティブ]** になるのを待ってから、次に進みます。
+作成した名前空間は Azure クラシック ポータルに表示されます。アクティブ化するまで少し時間がかかります。ステータスが **[アクティブ]** になるのを待ってから、次に進みます。
 
 ## 名前空間の既定の管理資格情報の取得
 
@@ -119,7 +119,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
 まず、仮のオンプレミスの商品カタログ システムを構築します。かなり単純なものですが、これがこれから統合しようとしている完全なサービス機能を備えた実際のオンプレミスの商品カタログ システムであると考えてください。
 
-このプロジェクトは、Visual Studio コンソール アプリケーションとして開始します。Service Bus NuGet パッケージを使用して、Service Bus ライブラリと構成設定を組み込みます。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet や Service Bus パッケージの使用方法の詳細については、「[NuGet Service Bus パッケージの使用][]」を参照してください。
+このプロジェクトは、Visual Studio コンソール アプリケーションとして開始します。Service Bus NuGet パッケージを使用して、Service Bus ライブラリと構成設定を組み込みます。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet や Service Bus パッケージの使用方法の詳細については、「[0NuGet Service Bus パッケージの使用][]」を参照してください。
 
 ### プロジェクトを作成する
 
@@ -141,13 +141,13 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
     ![][12]
 
-7.  既に Visual Studio 用の NuGet パッケージ マネージャーをインストールしている場合は、次のステップに進みます。まだインストールしていない場合は、[NuGet][] にアクセスし、[Install NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) をクリックします。メッセージに従って NuGet パッケージ マネージャーをインストールし、Visual Studio を再起動します。
+7.  既に Visual Studio 用の NuGet パッケージ マネージャーをインストールしている場合は、次のステップに進みます。まだインストールしていない場合は、[NuGet][] にアクセスし、[[Install NuGet]](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) をクリックします。メッセージに従って NuGet パッケージ マネージャーをインストールし、Visual Studio を再起動します。
 
 7.  ソリューション エクスプローラーで **[参照]** を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 
-8.  **\[NuGet\]** ダイアログ ボックスの左側の列で、**[オンライン]** をクリックします。
+8.  **[NuGet]** ダイアログ ボックスの左側の列で、**[オンライン]** をクリックします。
 
-9. 	右側の列で、**[検索]** ボックスをクリックして「**Service Bus**」と入力し、**[Microsoft Azure Service Bus]** 項目を選択します。**[インストール]**をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
+9. 	右側の列で、**[検索]** ボックスをクリックして「**Service Bus**」と入力し、**[Microsoft Azure Service Bus]** 項目を選択します。**[インストール] **をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
 
     ![][13]
 
@@ -247,7 +247,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
             }
         }
 
-13. ソリューション エクスプローラーで、**App.config** ファイルをダブルクリックして、Visual Studio エディターでそのファイルを開きます。**&lt;system.ServiceModel&gt;** の内容を次の XML コードに置き換えます。*yourServiceNamespace* は実際のサービス名前空間の名前に置き換え、*yourKey* は前の手順で Azure ポータルから取得した SAS キーに置き換えてください。
+13. ソリューション エクスプローラーで、**App.config** ファイルをダブルクリックして、Visual Studio エディターでそのファイルを開きます。**&lt;system.ServiceModel&gt;** の内容を次の XML コードに置き換えます。*yourServiceNamespace* は実際のサービス名前空間の名前に置き換え、*yourKey* は前の手順で Azure クラシック ポータルから取得した SAS キーに置き換えてください。
 
         <system.serviceModel>
           <extensions>
@@ -541,7 +541,7 @@ Azure では、消費されたサーバー時間の 1 時間単位の料金が W
 
 次の手順では、アプリケーションの停止と削除の方法を示します。
 
-1.  [Azure ポータル]にサインインし、**[Cloud Services]** をクリックしてからクラウド サービス名をクリックします。
+1.  [Azure クラシック ポータル][]にサインインし、**[Cloud Services]** をクリックしてからサービスの名前をクリックします。
 
 2.  **[ダッシュボード]** タブをクリックし、**[停止]** をクリックすると、アプリケーションが一時的に停止されます。**[開始]** をクリックすることにより、再度開始できます。**[削除]** をクリックすると、アプリケーションが Azure から完全に削除されます。復元することはできません。
 
@@ -563,13 +563,13 @@ Service Bus の詳細については、次のリソースを参照してくだ�
   [3]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-42-webpi.png
 
 
-  [Azure ポータル]: http://manage.windowsazure.com
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
   [5]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/sb-queues-03.png
   [6]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/sb-queues-04.png
 
 
 
-  [NuGet Service Bus パッケージの使用]: https://msdn.microsoft.com/library/azure/dn741354.aspx
+  [0NuGet Service Bus パッケージの使用]: https://msdn.microsoft.com/library/azure/dn741354.aspx
   [10]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-1.png
   [11]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-1.png
   [12]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-3.png
@@ -610,4 +610,4 @@ Service Bus の詳細については、次のリソースを参照してくだ�
   [sbwacomqhowto]: service-bus-dotnet-how-to-use-queues.md
   [executionmodels]: ../cloud-services/fundamentals-application-models.md
 
-<!-----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

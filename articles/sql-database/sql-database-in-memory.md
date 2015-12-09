@@ -92,7 +92,7 @@
 
 ## A.インメモリ OLTP のサンプルをインストールする
 
-[Azure プレビュー ポータル](http://portal.azure.com/)で数回クリックするだけで、AdventureWorksLT [V12] のサンプル データベースを作成できます。このセクションの手順では、以下を使用して AdventureWorksLT データベースを強化する方法について説明します。
+[Azure ポータル](http://portal.azure.com/)で数回クリックするだけで、AdventureWorksLT [V12] のサンプル データベースを作成できます。このセクションの手順では、以下を使用して AdventureWorksLT データベースを強化する方法について説明します。
 
 - インメモリ テーブル。
 - ネイティブでコンパイルされたストアド プロシージャ。
@@ -100,7 +100,7 @@
 
 #### インストール手順
 
-1. [Azure プレビュー ポータル](http://portal.azure.com/)で、V12 サーバー上に Premium データベースを作成します。**ソース**を AdventureWorksLT [V12] サンプル データベースに設定します。
+1. [Azure ポータル](http://portal.azure.com/)で、V12 サーバー上に Premium データベースを作成します。**ソース**を AdventureWorksLT [V12] サンプル データベースに設定します。
  - 詳細な手順については、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照してください。
 
 2. SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx) を使用して、データベースに接続します。
@@ -276,7 +276,8 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 前述の ostress.exe コマンド ラインを実行するには:
 
 
-1. SSMS で次のコマンドを実行してデータベースのデータ コンテンツをリセットし、前回の実行で挿入されたすべてのデータを削除します。```
+1. SSMS で次のコマンドを実行してデータベースのデータ コンテンツをリセットし、前回の実行で挿入されたすべてのデータを削除します。
+```
 EXECUTE Demo.usp_DemoReset;
 ```
 
@@ -301,7 +302,8 @@ ostress.exe が完了すると、RML コマンド ウィンドウに表示され
 \_inmem 実行の結果を取得したら、\_ondisk 実行に次の手順を実行します。
 
 
-1. SSMS で次のコマンドを実行してデータベースをリセットし、前回の実行で挿入されたすべてのデータを削除します。```
+1. SSMS で次のコマンドを実行してデータベースをリセットし、前回の実行で挿入されたすべてのデータを削除します。
+```
 EXECUTE Demo.usp_DemoReset;
 ```
 
@@ -525,4 +527,4 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 - インメモリ OLTP のために[インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

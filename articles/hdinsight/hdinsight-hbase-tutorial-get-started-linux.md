@@ -14,18 +14,21 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="11/16/2015"
+	ms.date="12/02/2015"
 	ms.author="jgao"/>
 
 
 
-# HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する
+# HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する (Linux)
 
-HDInsight で HBase クラスターをプロビジョニングする方法、HBase テーブルを作成する方法、Hive を使用してテーブルを照会する方法について説明します。HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関するページを参照してください。
+[AZURE.INCLUDE [hbase-selector](../../includes/hdinsight-hbase-selector.md)]
 
-> [AZURE.NOTE]このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターについては、HDInsight で Apache HBase と Hadoop を使用する方法の概要 (Windows) に関するページを参照してください。
 
-##前提条件
+HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Hive を使用してテーブルを照会する方法について説明します。HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関するページを参照してください。
+
+> [AZURE.NOTE]このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターについては、「[HDInsight の Hadoop で Apache HBase を使用する (Windows)](hdinsight-hbase-tutorial-get-started.md)」を参照してください。
+
+###前提条件
 
 この HBase のチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
@@ -33,33 +36,36 @@ HDInsight で HBase クラスターをプロビジョニングする方法、HBa
 - PuTTY と PuTTYGen (Windows クライアント)。これらのユーティリティは [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から入手できます。
 - [curl](http://curl.haxx.se/download.html)。
 
-## HBase クラスターのプロビジョニング
+## HBase クラスターの作成
 
 [AZURE.INCLUDE [provisioningnote](../../includes/hdinsight-provisioning.md)]
 
-**Azure プレビュー ポータルを使用して HBase クラスターをプロビジョニングするには**
+**Azure プレビュー ポータルを使用して HBase クラスターを作成するには**
 
 
 1. [Azure プレビュー ポータル][azure-portal]にサインインします。
 2. 左上の **[新規]** をクリックし、**[データ + 分析]**、**[HDInsight]** の順にクリックします。
 3. 次の値を入力します。
 
-	- **クラスター名**: このクラスターを識別するための名前を入力します
-	- **クラスターの種類**: **[HBase]** を選択します
-	- **のオペレーティング システム**: **[Ubuntu]** を選択します。
-	- **バージョン**: 使用するクラスターのバージョンを選択します。HDInsight の各バージョンの内容について詳しくは、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」を参照してください。
-    - **サブスクリプション**: 複数の Azure サブスクリプションがある場合、このクラスターに使用するサブスクリプションを選択します。
-	- **リソース グループ**: Azure リソース グループを追加するか選択します。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+
+	- **クラスター名** - このクラスターを識別するための名前を入力します。
+	- **クラスターの種類** - **[HBase]** を選択します。
+	- **クラスターのオペレーティング システム** - **[Linux]** を選択します。Windows ベースのクラスターを作成する場合は、「[HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する (Windows)](hdinsight-hbase-tutorial-get-started.md)」を参照してください。
+	- **バージョン** - HBase のバージョンを選択します。
+	- **サブスクリプション** - このクラスターを作成するために使用する Azure サブスクリプションを選択します。
+	- **リソース グループ** - 新しいリソース グループを作成するか、既存のリソース グループを選択します。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」をご覧ください。
 	- **資格情報**。HTTP Web サービス ユーザーのパスワードを入力します。既定のユーザー名は **admin** です。さらに、SSH ユーザーを認証するために使用される **[SSH ユーザー名]** と、**[パスワード]** または **[公開キー]** のどちらかを入力する必要があります。公開キーを使用することをお勧めします。HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
 
 		- [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 		- [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md) **[選択]** をクリックして変更を保存します。
-	- **データ ソース**: クラスターの既定のファイル システムとして使用する既存の Azure ストレージ アカウントを指定するか、新しく作成します。ストレージ アカウントの場所によってクラスターの場所が決まります。HDInsight クラスターと依存する Azure ストレージ アカウントは、同じデータ センター内にある必要があります。**既定のコンテナー**の既定の名前は、クラスター名です。  
-	- **ノード価格レベル**: HBase クラスター用のリージョン サーバーの数を選択します。
+	- **データ ソース** - クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを新しく作成するか、既存の Azure ストレージ アカウントを選択します。既定のストレージ アカウントの場所によってクラスターの場所が決まります。既定のストレージ アカウントとクラスターは、同じデータ センター内に配置されている必要があります。
+	- **ノード料金レベル** - HBase クラスター用のリージョン サーバーの数を選択します。
 
-		> [AZURE.WARNING]HBase サービスの高可用性には、最低 **3 つ** のノードを含むクラスターをプロビジョニングする必要があります。これで 1 つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
+		> [AZURE.WARNING]HBase サービスの高可用性を実現するには、最低 **3 つ**のノードを含むクラスターを作成する必要があります。これで 1 つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
 
-	- **オプションの構成**: クラスターのバージョンの選択、Azure virtual network の構成、スクリプト アクションの構成、および追加ストレージ アカウントの追加を行います。
+		> 学習目的で HBase を使用する場合は、コスト削減のため、クラスター サイズには必ず 1 を選択し、クラスターの使用後にクラスターを削除してください。
+
+	- **省略可能な構成** - Azure 仮想ネットワークの構成、スクリプト アクションの構成、および追加ストレージ アカウントの追加を行います。
 
 4. **[作成]** をクリックします。
 
@@ -80,7 +86,7 @@ BigTable の実装である HBase では、同じデータが次のように表�
 
 **HBase シェルを使用するには**
 
->[AZURE.NOTE]ここで説明する手順は、Windows コンピューターの手順です。Linux、Unix、または OS X から Linux ベースの HDInsight クラスターに接続する手順については、「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。1. **PuTTY** を開きます。記事の冒頭に掲載されている前提条件を参照してください。2.プロビジョニング プロセスのユーザー アカウントの作成時に SSH キーを指定した場合は、次の手順に従って、クラスターへの認証に使用するプライベート キーを選択する必要があります。
+>[AZURE.NOTE]ここで説明する手順は、Windows コンピューターの手順です。Linux、Unix、または OS X から Linux ベースの HDInsight クラスターに接続する手順については、「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。1. **PuTTY** を開きます。記事の冒頭に掲載されている前提条件を参照してください。2.作成プロセスでユーザー アカウントの作成時に SSH キーを指定した場合は、次の手順に従って、クラスターへの認証時に使用する秘密キーを選択する必要があります。
 
 	In **Category**, expand **Connection**, expand **SSH**, and select **Auth**. Finally, click **Browse** and select the .ppk file that contains your private key.
 
@@ -225,7 +231,7 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 **SSH トンネリング セッションを確立するには**
 
 1. **PuTTY** を開きます。  
-2. プロビジョニング プロセスのユーザー アカウントの作成時に SSH キーを指定した場合は、次の手順に従って、クラスターへの認証に使用するプライベート キーを選択する必要があります。
+2. 作成プロセスでユーザー アカウントの作成時に SSH キーを指定した場合は、次の手順に従って、クラスターへの認証時に使用する秘密キーを選択する必要があります。
 
 	**[カテゴリ]** で **[接続]**、**[SSH]** の順に展開し、**[認証]** を選択します。最後に、**[参照]** をクリックし、プライベート キーが含まれた .ppk ファイルを選択します。
 
@@ -272,7 +278,7 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 
 
 ## 次の手順
-この HDInsight の HBase のチュートリアルでは、HBase クラスターのプロビジョニング方法、テーブルの作成方法、作成したテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
+この HDInsight の HBase のチュートリアルでは、HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
 
 詳細については、次を参照してください。
 
@@ -306,4 +312,4 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

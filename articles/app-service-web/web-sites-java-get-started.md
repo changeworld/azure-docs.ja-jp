@@ -25,11 +25,11 @@
 - [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
 - [Python](web-sites-python-ptvs-django-mysql.md)
 
-このチュートリアルでは、[Azure プレビュー ポータル](https://portal.azure.com/)を使用して [Azure App Service で Java Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)を作成する方法について説明します。Azure プレビュー ポータルは、Azure リソースの管理に使用できる Web インターフェイスです。
+このチュートリアルでは、[Azure ポータル](https://portal.azure.com/)を使用して [Azure App Service で Java Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)を作成する方法について説明します。Azure ポータルは、Azure リソースの管理に使用できる Web インターフェイスです。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする][]か、[無料試用版にサインアップ][]してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする][]か、[無料試用版にサインアップ][]してください。
 >
-> Azure アカウントにサインアップせずに Azure App Service の使用を開始する場合は、[App Service の試用][]に関するページに移動してください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成][]」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## Java アプリケーション オプション
 
@@ -41,7 +41,7 @@
  
 1. アプリを作成して**アプリケーション設定**を構成する。
 
-	App Service では、複数のバージョンの Tomcat と Jetty が既定の構成で提供されています。ホストするアプリケーションが組み込みバージョンの Web コンテナーで動作するようであれば、この方法で Web コンテナーをセットアップするのが最も簡単です。ただし、他の方法で利用できる各種構成機能を利用できません。この方法では、ポータルでアプリを作成した後、アプリの **[アプリケーション設定]** ブレードに移動して、お使いの Java のバージョンと目的の Java Web コンテナーを選びます。この方法を使用する場合、アプリをホストするために worker によって使用されるローカル ハード ドライブからアプリが実行されるため、テナントのディスク スペースは使用されません。このモデルを使用する場合、ファイル システムのこの部分のファイルを編集するためのアクセス権はありません。つまり、*server.xml* ファイルを構成したり、*/lib* フォルダーにライブラリ ファイルを追加したりすることはできません。詳細については、このチュートリアルの後半の「[Java Web アプリの作成と構成](#appsettings)」セクションを参照してください。
+	App Service では、複数のバージョンの Tomcat と Jetty が既定の構成で提供されています。ホストするアプリケーションが組み込みバージョンの Web コンテナーで動作するようであれば、この方法で Web コンテナーをセットアップするのが最も簡単です。ただし、他の方法で利用できる各種構成機能を利用できません。この方法では、Azure ポータルでアプリを作成した後、アプリの **[アプリケーション設定]** ブレードに移動して、お使いの Java のバージョンと目的の Java Web コンテナーを選びます。この方法を使用する場合、アプリをホストするために worker によって使用されるローカル ハード ドライブからアプリが実行されるため、テナントのディスク スペースは使用されません。このモデルを使用する場合、ファイル システムのこの部分のファイルを編集するためのアクセス権はありません。つまり、*server.xml* ファイルを構成したり、*/lib* フォルダーにライブラリ ファイルを追加したりすることはできません。詳細については、このチュートリアルの後半の「[Java Web アプリの作成と構成](#appsettings)」セクションを参照してください。
   
 3. アプリを作成してから構成ファイルを手動でコピーして編集する。
 
@@ -52,13 +52,13 @@
 	* 最初から自分で Web コンテナーを構成したい。 
 	* App Service でサポートされていないバージョンの Java を使用して自分でアップロードしたい。
 
-	これらの場合は、ポータルを使ってアプリを作成して、適切なランタイム ファイルを手動で指定できます。このとき、ファイルは App Service プランのストレージ領域クォータに対してカウントされます。詳細については、[Azure へのカスタム Java Web アプリのアップロード](https://acom-sandbox.azurewebsites.net/ja-JP/documentation/articles/web-sites-java-custom-upload/)に関するページを参照してください。
+	これらの場合は、Azure ポータルを使ってアプリを作成して、適切なランタイム ファイルを手動で指定できます。このとき、ファイルは App Service プランのストレージ領域クォータに対してカウントされます。詳細については、[Azure へのカスタム Java Web アプリのアップロード](https://acom-sandbox.azurewebsites.net/ja-JP/documentation/articles/web-sites-java-custom-upload/)に関するページを参照してください。
 
 ## <a name="marketplace"></a> Azure Marketplace にある Java テンプレートの使用
 
 このセクションでは、Azure Marketplace を使用して Java Web アプリを作成する方法について説明します。Java ベースのモバイル アプリや API アプリを作成する場合にも、同様の一般的なフローを利用できます。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 
 2. **[新規]、[Marketplace]** の順にクリックします。
 
@@ -68,7 +68,7 @@
 
 	左へスクロールして **[Marketplace]** ブレードを表示すると、**[Web + モバイル]** を選択できます。
 
-4. 検索テキスト ボックスに、**Apache Tomcat** や **Jetty** など、Java アプリケーション サーバーの名前を入力して、Enter キーを押します。
+4. 検索テキスト ボックスに、**Apache Tomcat** や **Jetty** などの Java アプリケーション サーバーの名前を入力して、Enter キーを押します。
 
 5. 検索結果で、Java アプリケーション サーバーをクリックします。
 
@@ -84,7 +84,7 @@
 
 8. **リソース グループ**を選択するか、新しく作成します。
 
-	リソース グループの詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](../resource-group-portal.md)」を参照してください。
+	リソース グループの詳細については、「[Azure ポータルを使用した Azure リソースの管理](../resource-group-portal.md)」を参照してください。
 
 9. **App Service プラン/場所**を選択するか、新しく作成します。
 
@@ -110,25 +110,25 @@
 
 	![Web app using Jetty](./media/web-sites-java-get-started/jetty.png)
 
-これで、Web アプリとアプリ コンテナーが作成されました。アプリケーションを Web アプリにアップロードする方法については、「[次のステップ](#next-steps)」セクションを参照してください。
+これで、Web アプリとアプリ コンテナーが作成されました。アプリケーションを Web アプリにアップロードする方法については、「[次のステップ](#next-steps)」を参照してください。
 
 ## <a name="portal"></a> Java Web アプリの作成と構成
 
 このセクションでは、Web アプリを作成し、ポータルの **[アプリケーション設定]** ブレードを使用して Java 向けに構成する方法について説明します。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 
 2. **[新規]、[Web + モバイル]、[Web アプリ]** の順にクリックします。
 
 	![](./media/web-sites-java-get-started/newwebapp.png)
 
-4. Web アプリの名前を **[Web アプリ]** ボックスに入力します。
+4. **[Web アプリ]** ボックスに Web アプリの名前を入力します。
 
 	Web アプリの URL は {name}.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
 
 5. **リソース グループ**を選択するか、新しく作成します。
 
-	リソース グループの詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](../resource-group-portal.md)」を参照してください。
+	リソース グループの詳細については、「[Azure ポータルを使用した Azure リソースの管理](../resource-group-portal.md)」を参照してください。
 
 6. **App Service プラン/場所**を選択するか、新しく作成します。
 
@@ -171,9 +171,9 @@
 Azure での Java アプリケーションの開発の詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
 <!-- External Links -->
-[MSDN サブスクライバーの特典を有効にする]: http://go.microsoft.com/fwlink/?LinkId=623901
+[Visual Studio サブスクライバーの特典を有効にする]: http://go.microsoft.com/fwlink/?LinkId=623901
 [無料試用版にサインアップ]: http://go.microsoft.com/fwlink/?LinkId=623901
 
-[App Service の試用]: http://go.microsoft.com/fwlink/?LinkId=523751
+[Azure App Service アプリケーションの作成]: http://go.microsoft.com/fwlink/?LinkId=523751
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

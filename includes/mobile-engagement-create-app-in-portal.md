@@ -1,6 +1,6 @@
 1. Microsoft Azure 管理ポータルにログオンし、画面の下部にある **[+新規]** をクリックします。
 
-2. **[アプリ サービス]**、**[モバイル エンゲージメント]**、**[作成]** の順にクリックします。
+2. **[App Services]**、**[Mobile Engagement]**、**[作成]** の順にクリックします。
 
    	![](./media/mobile-engagement-create-app-in-portal/create-mobile-engagement-app.png)
 
@@ -19,10 +19,8 @@
 
 5. **[接続情報]** をクリックして、モバイル アプリに統合する SDK に組み込む接続設定を表示します。
 
-   	![](./media/mobile-engagement-create-app-in-portal/app-main-page-select-connection-info.png)
-
 6. **[接続文字列]** をコピーします。これはアプリケーション コード内でこのアプリを識別し、アプリから Mobile Engagement に接続するために必要な情報です。
 
    	![](./media/mobile-engagement-create-app-in-portal/app-connection-info-page.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->
