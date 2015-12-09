@@ -24,7 +24,7 @@ Visual Studio Application Insights の Status Monitor により、ASP.NET アプ
 
 ![サンプルのグラフ](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
-> [AZURE.TIP][ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化に関する個別の記事があります。
+> [AZURE.TIP] [ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化に関する個別の記事があります。
 
 
 Application Insights を IIS Web アプリケーションに適用するには、次の 3 つの方法があります。
@@ -220,4 +220,4 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1203_2015--->

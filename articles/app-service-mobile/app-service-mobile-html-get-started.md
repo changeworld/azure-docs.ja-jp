@@ -19,7 +19,9 @@
 
 #HTML アプリの作成
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]&nbsp; <!--- [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]-->
+[AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)] 
+&nbsp;  
+<!--- [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]-->
 
 >[AZURE.IMPORTANT]HTML/JavaScript アプリのクイック スタートは Azure ポータルから一時的に削除されているため、現在このトピックは Mobile Apps には適用されません。まもなく、再びサポートされるようになる予定です。もうしばらくお待ちください。
 
@@ -125,4 +127,4 @@ HTML アプリの他のすべての Mobile Apps チュートリアルを行う�
 [Visual Studio Community 2013]: https://www.visualstudio.com/downloads
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1203_2015--->

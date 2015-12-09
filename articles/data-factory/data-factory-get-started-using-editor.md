@@ -40,7 +40,7 @@
 ## <a name="CreateDataFactory"></a>手順 1. Azure Data Factory を作成する
 この手順では、Azure ポータルを使用して、**ADFTutorialDataFactory** という名前の Azure Data Factory を作成します。
 
-1.	[Azure ポータル][azure-portal]にログインしたら、左下隅にある **[新規]** をクリックします。**[作成]** ブレードで **[データ分析]** を選択し、**[データ分析]** ブレードで **[Data Factory]** をクリックします。 
+1.	[Azure プレビュー ポータル][azure-preview-portal]にログインしたら、左下隅にある **[新規]** をクリックします。**[作成]** ブレードで **[データ分析]** を選択し、**[データ分析]** ブレードで **[Data Factory]** をクリックします。 
 
 	![New->DataFactory][image-data-factory-new-datafactory-menu]
 
@@ -93,7 +93,7 @@
 
 6. ツール バーの **[デプロイ]** をクリックして、StorageLinkedService をデプロイします。タイトル バーに **"リンクされたサービスが正常に作成されました"** というメッセージが表示されていることを確認します。
 
-	![Editor Blob Storage Deploy][image-editor-blob-storage-deploy]
+	![エディターの BLOB ストレージのデプロイ][image-editor-blob-storage-deploy]
 
 ### Azure SQL Database 用にリンクされたサービスを作成する
 1. **Data Factory エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure SQL Database]** を選択します。Azure SQL のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。

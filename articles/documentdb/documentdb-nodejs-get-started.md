@@ -76,14 +76,14 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 
 次に、空のオブジェクトを作成して *config* という名前を付け、プロパティの *config.endpoint* と *config.authKey* に実際の DocumentDB エンドポイントと承認キーを設定します。これらの構成はどちらも [Azure ポータル](https://portal.azure.com)にあります。
 
-![Screen shot of the Azure Portal, showing a DocumentDB account, with the ACTIVE hub highlighted, the KEYS button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade][keys]
+![DocumentDB アカウントを示す、アクティブなハブ、[DocumentDB アカウント] ブレードの [キー] ボタン、[キー] ブレードの URI の値、プライマリ キーの値、およびセカンダリ キーの値が強調表示されている Azure プレビュー ポータルのスクリーン ショット][keys]
 
     var config = {}
 
     config.endpoint = "https://YOUR_ENDPOINT_URI.documents.azure.com:443/";
     config.authKey = "oqTveZeWlbtnJQ2yMj23HOAViIr0ya****YOUR_AUTHORIZATION_KEY****ysadfbUV+wUdxwDAZlCfcVzWp0PQg==";
 
-*データベース ID*、*コレクション ID*、および *JSON ドキュメント*を *config* オブジェクトに追加しましょう。*config.endpoint* と *config.authKey* のプロパティを設定した場所の下に、次のコードを追加します。データベースに保存するデータが既にある場合は、ドキュメント定義を追加するのではなく、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用できます。
+ *データベース ID* 、 *コレクション ID* 、および *JSON ドキュメント* を *config* オブジェクトに追加しましょう。*config.endpoint* と *config.authKey* のプロパティを設定した場所の下に、次のコードを追加します。データベースに保存するデータが既にある場合は、ドキュメント定義を追加するのではなく、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用できます。
 
     config.dbDefinition = {"id": "FamilyRegistry"};
     config.collDefinition = {"id": "FamilyCollection"};
@@ -163,7 +163,7 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 
     config.docsDefinitions = documents;
 
-データベース、コレクション、ドキュメント定義がそれぞれ、DocumentDB の *データベース ID*、*コレクション ID*、ドキュメントのデータになります。
+データベース、コレクション、ドキュメント定義がそれぞれ、DocumentDB の  *データベース ID* 、 *コレクション ID* 、ドキュメントのデータになります。
 
 最後に、*app.js* ファイル内で参照できるように、*config* オブジェクトをエクスポートします。
 

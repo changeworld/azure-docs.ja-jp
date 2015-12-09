@@ -70,18 +70,20 @@
 	![HomeController.cs コードの更新](./media/app-service-web-connect-web-app-to-saas-api/5-Write-Code-Which-Leverages-Swagger-Generated-Code.png)
 
 1. 連絡先の動的リストを反映するよう、以下のコードで `Contact` ビューを更新します。
-	<pre>// ビュー ファイルの最上部に追加
-@model IList&lt;MyContactsList.Web.Models.Contact>
+	<pre>// Add to the very top of the view file
+	@model IList&lt;MyContactsList.Web.Models.Contact&gt;
+	
+	// Replace the default email addresses with the following
+    &lt;h3&gt;Public Contacts&lt;/h3&gt;
+    &lt;ul&gt;
+        @foreach (var contact in Model)
+        {
+            &lt;li&gt;&lt;a href=&quot;mailto:@contact.EmailAddress&quot;&gt;@contact.Name &amp;lt;@contact.EmailAddress&amp;gt;&lt;/a&gt;&lt;/li&gt;
+        }
+    &lt;/ul&gt; 
+	</pre>
 
-// 既定の電子メール アドレスを以下で置換
-&lt;h3>Public Contacts&lt;/h3>
-&lt;ul>
-    @foreach (var contact in Model)
-    {
-        &lt;li>&lt;a href="mailto:@contact.EmailAddress">@contact.Name &amp;lt;@contact.EmailAddress&amp;gt;&lt;/a>&lt;/li>
-    }
-&lt;/ul> 
-</pre>![Contact.cshtml コードの更新](./media/app-service-web-connect-web-app-to-saas-api/6-Update-View-To-Reflect-Changes.png)
+	![Contact.cshtml コードの更新](./media/app-service-web-connect-web-app-to-saas-api/6-Update-View-To-Reflect-Changes.png)
 
 ## App Service の Web Apps に Web アプリケーションをデプロイする
 

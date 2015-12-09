@@ -17,7 +17,7 @@
    2. **[ISCSI イニシエーターの名前]** に Windows ホストの iSCSI 修飾名 (IQN) を指定します。IQN がない場合は、「[Windows Server ホストの IQN の取得](#get-the-iqn-of-a-windows-server-host)」を参照してください。
    3. **[このボリュームの既定のバックアップの有効化]** チェックボックスをオンにして、既定のバックアップを有効にすることをお勧めします。既定のバックアップでは、毎日 22:30 (デバイスの時刻) に実行し、このボリュームのクラウド スナップショットを作成するというポリシーが作成されます。
 
-        > [AZURE.NOTE] After the backup is enabled here, it cannot be reverted. You will need to edit the volume to modify this setting.
+        > [AZURE.NOTE] ここでバックアップを有効にすると、元に戻すことはできません。この設定を変更するには、このボリュームを編集する必要があります。
 
         ![Add volume](./media/storsimple-create-volume/AddVolume2-include.png)
 

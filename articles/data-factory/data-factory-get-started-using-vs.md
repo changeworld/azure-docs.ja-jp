@@ -35,7 +35,9 @@
 ## Visual Studio を使用して、Data Factory のエンティティを作成し、デプロイする 
 
 ### 前提条件
-コンピューターに Visual Studio 2013 がインストールされており、Azure SDK for Visual Studio 2013 がダウンロードされている必要があります。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads/) に移動して、**.NET** セクションの**[VS 2013 install]** をクリックします。
+コンピューターに以下がインストールされている必要があります: 
+- Visual Studio 2013
+- Azure SDK for Visual Studio 2013 をダウンロードします。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads/) に移動して、**.NET** セクションの**[VS 2013 install]** をクリックします。
 
 ### チュートリアル
 
@@ -209,7 +211,8 @@
 	1. **[Data Factory の新規作成]** オプションを選択します。
 	2. **[名前]** に「**VSTutorialFactory**」と入力します。  
 	
-		> [AZURE.NOTE]Azure Data Factory の名前はグローバルに一意にする必要があります。発行時にデータ ファクトリの名前に関するエラーが発生した場合は、そのデータ ファクトリの名前を変更して (yournameVSTutorialFactory など)、発行し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
+		> [AZURE.NOTE]  
+		> Azure Data Factor の名前はグローバルに一意にする必要があります。発行時にデータ ファクトリの名前に関するエラーが発生した場合は、そのデータ ファクトリの名前を変更して (yournameVSTutorialFactory など)、発行し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
 		> 
 		> データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 	3. **[サブスクリプション]** フィールドで適切なサブスクリプションを選択します。 
@@ -224,8 +227,10 @@
 ## サーバー エクスプローラーを使用して Data Factory のエンティティを確認する
 
 1. **Visual Studio** のメニューで **[ビュー]** をクリックし、**[サーバー エクスプローラー]** をクリックします。
-2. [サーバー エクスプローラー] ウィンドウで、**[Azure]** を展開し、**[Data Factory]** を展開します。**[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力して **[続行]** をクリックします。**パスワード**を入力し、**[サインイン]** をクリックします。Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。**[Data Factory タスク リスト]** ウィンドウで、この操作のステータスを確認します。![Server Explorer](./media/data-factory-get-started-using-vs/server-explorer.png)
-3. データ ファクトリを右クリックし、[Data Factory を新しいプロジェクトにエクスポートする] を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。![Data Factory の Visual Studio プロジェクトへのエクスポート](./media/data-factory-get-started-using-vs/export-data-factory-menu.png)  
+2. [サーバー エクスプローラー] ウィンドウで、**[Azure]** を展開し、**[Data Factory]** を展開します。**[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力して **[続行]** をクリックします。**パスワード**を入力し、**[サインイン]** をクリックします。Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。**[Data Factory タスク リスト]** ウィンドウで、この操作のステータスを確認します。  
+	![Server Explorer](./media/data-factory-get-started-using-vs/server-explorer.png)
+3. データ ファクトリを右クリックし、[Data Factory を新しいプロジェクトにエクスポートする] を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。  
+	![Data Factory の Visual Studio プロジェクトへのエクスポート](./media/data-factory-get-started-using-vs/export-data-factory-menu.png)  
 
 ## Visual Studio の Data Factory ツールを更新する
 Visual Studio の Azure Data Factory ツールを更新するには、次のように行います。

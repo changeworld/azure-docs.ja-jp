@@ -54,7 +54,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 1. [Azure ポータル](https://ms.portal.azure.com/)にサインインします。
 2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
 
-    ![Creating a new cluster in the Azure Portal](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.1.png "Creating a new cluster in the Azure Portal")
+    ![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.1.png "Azure プレビュー ポータルでの新しいクラスターの作成")
 
 3. **[クラスター名]** を入力し、**[クラスターの種類]** で **[Hadoop]** を選択し、**[クラスターのオペレーティング システム]** ボックスの一覧から **[Ubuntu]** を選択します。クラスターを使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
 
@@ -172,7 +172,7 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 	- **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
 	- **SELECT** - t4 列の値が [ERROR] であるすべての行の数を指定します。
 
-	>[AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。外部テーブルを削除しても、データは削除*されません*。テーブル定義のみが削除されます。
+	>[AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。外部テーブルを削除しても、データは削除 *されません* 。テーブル定義のみが削除されます。
 
 	返される出力は次のとおりです。
 
