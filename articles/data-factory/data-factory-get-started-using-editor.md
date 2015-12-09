@@ -40,7 +40,7 @@
 ## <a name="CreateDataFactory"></a>手順 1. Azure Data Factory を作成する
 この手順では、Azure ポータルを使用して、**ADFTutorialDataFactory** という名前の Azure Data Factory を作成します。
 
-1.	[Azure プレビュー ポータル][azure-preview-portal]にログインしたら、左下隅にある **[新規]** をクリックします。**[作成]** ブレードで **[データ分析]** を選択し、**[データ分析]** ブレードで **[Data Factory]** をクリックします。 
+1.	[Azure プレビュー ポータル](azure-preview-portal)にログインしたら、左下隅にある **[新規]** をクリックします。**[作成]** ブレードで **[データ分析]** を選択し、**[データ分析]** ブレードで **[Data Factory]** をクリックします。 
 
 	![New->DataFactory][image-data-factory-new-datafactory-menu]
 
@@ -393,7 +393,7 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [msdn-linkedservices]: https://msdn.microsoft.com/library/dn834986.aspx
 [data-factory-naming-rules]: https://msdn.microsoft.com/library/azure/dn835027.aspx
 
-[azure-portal]: https://portal.azure.com/
+[Azure プレビュー ポータル]: https://portal.azure.com/
 [download-azure-powershell]: http://azure.microsoft.com/documentation/articles/install-configure-powershell
 [sql-management-studio]: http://azure.microsoft.com/documentation/articles/sql-database-manage-azure-ssms/#Step2
 [sql-cmd-exe]: https://msdn.microsoft.com/library/azure/ee336280.aspx
@@ -499,4 +499,4 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
