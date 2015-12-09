@@ -22,7 +22,7 @@
 
 ## サポート チケットを作成する方法
 
-1. [Azure ポータル][] を開きます。 
+1. [Azure クラシック ポータル][]を開きます。 
 2. ホーム画面で **[ヘルプとサポート]** タイルをクリックします。
 
     ![ヘルプとサポート](./media/sql-data-warehouse-get-started-create-support-ticket/help-support.png)
@@ -78,10 +78,10 @@
 
 <!-- External links -->
 
-[Azure ポータル]: https://portal.azure.com/
+[Azure クラシック ポータル]: https://portal.azure.com/
 [Azure のサポート プラン]: http://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
 [Microsoft Premier オンライン ポータル]: https://premier.microsoft.com/
 [Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL Data Warehouse MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

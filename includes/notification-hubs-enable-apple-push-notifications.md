@@ -6,7 +6,7 @@ Apple Push Notification サービス (APNS) では、証明書を使用してプ
 
 Apple が署名済みのプッシュ証明書を生成するために使用する、証明書署名要求 (CSR: Certificate Signing Request) ファイルを生成します。
 
-1. Mac で、キーチェーン アクセス ツールを実行します。これは、Launch pad の **[ユーティリティ]** フォルダーまたは **[その他]** フォルダーから開くことができます。
+1. Mac で、キーチェーン アクセス ツールを実行します。これは、Launchpad の **[Utilities]** フォルダーまたは **[Other]** フォルダーから開くことができます。
 
 2. **[Keychain Access]** をクリックし、**[Certificate Assistant]** を展開して、**[Request a Certificate from a Certificate Authority]** をクリックします。
 
@@ -135,4 +135,4 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

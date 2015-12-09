@@ -28,4 +28,4 @@
 * [Application Insights for iOS を使ってみる](https://github.com/Microsoft/ApplicationInsights-iOS)。
 * [HockeyApp for Android を使ってみる](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/hockeyapp-for-ios)。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="ポータルでの Azure Search インデックスの作成 | Microsoft Azure | ホスト型クラウド検索サービス"
-	description="Azure ポータルでフィールド定義を入力して、クラウド ホステッド検索サービスである Azure Search にインデックスを追加します。"
+	description="Azure クラシック ポータルでフィールド定義を入力して、クラウドのホスト型検索サービスである Azure Search にインデックスを追加します。"
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
@@ -17,18 +17,18 @@
 	ms.date="11/04/2015"
 	ms.author="heidist"/>
 
-# Azure ポータルでの Azure Search インデックスの作成
+# Azure クラシック ポータルでの Azure Search インデックスの作成
 > [AZURE.SELECTOR]
 - [Overview](search-what-is-an-index.md)
 - [Portal](search-create-index-portal.md)
 - [.NET](search-create-index-dotnet.md)
 - [REST API](search-create-index-rest-api.md)
 
-Azure ポータルで作成することで、Azure Search のインデックスのプロトタイプをすばやく作成できます。ポータルは概念実証テストでの使用に最適です。また、サービスにデプロイされているすべてのインデックスに対するスキーマの定義およびリソースの使用状況を表示するために使用することもできます。
+Azure クラシック ポータルで作成することで、Azure Search のインデックスのプロトタイプをすばやく作成できます。ポータルは概念実証テストでの使用に最適です。また、サービスにデプロイされているすべてのインデックスに対するスキーマの定義およびリソースの使用状況を表示するために使用することもできます。
 
 このタスクを完了するには、すぐに使用できる Azure Search サービスを備えていることを確認してください。セットアップのサポートが必要な場合は、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure クラシック ポータル](https://portal.azure.com)にサインインします。
 
 2. Azure Search サービスのサービス ダッシュボードを開きます。ダッシュボードを見つけるには、次のいくつかの方法があります。
 	- ジャンプバーで、[**ホーム**] をクリックします。ホーム ページには、サブスクリプションのすべてのサービスのタイルが表示されます。タイルをクリックして、サービス ダッシュボードを開きます。
@@ -36,7 +36,7 @@ Azure ポータルで作成することで、Azure Search のインデックス�
 
 3. サービス ダッシュボードの最上部には、[**インデックスの追加**] を含むコマンド バーが表示されます。
 
-	価格レベルを確認します。Free バージョンの場合は、最大 3 つのインデックスを作成できます。空き領域を得るために、インデックスを削除しなければならない場合があります。
+	価格レベルを確認します。無料バージョンの場合は、最大 3 つのインデックスを作成できます。空き領域を得るために、インデックスを削除しなければならない場合があります。
 
      ![][1]
 
@@ -105,4 +105,4 @@ Azure Search では、既定で searchable、 facetable、filterable などの�
 [4]: ./media/search-create-index-portal/AzureSearch-PortalIndex-4.PNG
 [5]: ./media/search-create-index-portal/AzureSearch-PortalIndex-5.PNG
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,12 +1,10 @@
-このセクションでは、Mobile Engagement のリアルタイム監視機能を使用して、アプリが Mobile Engagement のバックエンドに接続していることを確認する方法について説明します。
+このセクションでは、Mobile Engagement のリアルタイム監視機能を使用して、アプリを Mobile Engagement バックエンドに接続する方法について説明します。
 
-1. Mobile Engagement ポータルに移動します。このプロジェクト用に使用しているアプリを対象にしていることを確認し、下部にある **[エンゲージ]** ボタンをクリックします。
+1. **Azure Mobile Engagement** アカウントで、**Mobile Engagement** ポータルで監視および管理するアプリを選択していることを確認します。下部にある **[エンゲージ]** ボタンをクリックして、Mobile Engagement ポータルに移動します。 
 
 	 ![](./media/mobile-engagement-connect-app-with-monitor/engage-button.png)
 
-2. Mobile Engagement ポータルに移動します。ここで **[監視]** タブをクリックします。
-	 
-	![](./media/mobile-engagement-connect-app-with-monitor/click-monitor-tab.png)
+2. Mobile Engagement ポータルに移動します。[監視] タブが選択されていない場合は、**[監視]** をクリックします。
 
 3. モニターがアプリを起動するデバイスをリアルタイムで表示する準備が整いました。
 	 
@@ -14,4 +12,4 @@
 	
 	 ![](./media/mobile-engagement-connect-app-with-monitor/monitor.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

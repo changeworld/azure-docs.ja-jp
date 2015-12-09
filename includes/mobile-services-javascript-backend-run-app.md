@@ -13,10 +13,10 @@
 
 	アプリケーションが開始すると、前の手順で保存したデータが、モバイル サービスから読み込まれる点に注目してください。
  
-4. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
+4. [Azure クラシック ポータル](https://manage.windowsazure.com/)に戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
    	これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
 
    	![](./media/mobile-services-javascript-backend-run-app/mobile-data-browse.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

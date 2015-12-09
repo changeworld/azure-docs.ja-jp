@@ -54,7 +54,7 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
 
 ### Cloud Services を使用する場合の接続文字列の構成
 
-サービス構成メカニズムは、Azure Cloud Services プロジェクトに特有のものであり、これを使用すると、アプリケーションを再デプロイしなくても Azure ポータルから構成設定を動的に変更できます。たとえば、次の例に示すように、サービス定義 (****.csdef**) ファイルに `Setting` ラベルを追加します。
+サービス構成メカニズムは、Azure Cloud Services プロジェクトに特有のものであり、これを使用すると、アプリケーションを再デプロイしなくても [Azure クラシック ポータル][]から構成設定を動的に変更できます。たとえば、次の例に示すように、サービス定義 (****.csdef**) ファイルに `Setting` ラベルを追加します。
 
 ```
 <ServiceDefinition name="Azure1">
@@ -83,7 +83,7 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
 </ServiceConfiguration>
 ```
 
-前のセクションで説明したように、Azure ポータルから取得した Shared Access Signature (SAS) のキー名とキー値を使用します。
+前のセクションで説明したように、Azure クラシック ポータルから取得した Shared Access Signature (SAS) のキー名とキー値を使用します。
 
 ### Azure Websites サイトまたは Azure Virtual Machines を使用する場合の接続文字列の構成
 
@@ -98,7 +98,7 @@ Websites または Virtual Machines を使用する場合には、.NET 構成シ
 </configuration>
 ```
 
-前のセクションで説明したように、Azure ポータルから取得した SAS 名とキー値を使用します。
+前のセクションで説明したように、Azure クラシック ポータルから取得した SAS 名とキー値を使用します。
 
 ## トピックを作成する
 
@@ -147,7 +147,7 @@ if (!namespaceManager.TopicExists("TestTopic"))
 }
 ```
 
-> [AZURE.NOTE] [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) オブジェクトで [TopicExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx) メソッドを使用することで、指定した名前のトピックが名前空間に既に存在するかどうかを確認できます。
+> [AZURE.NOTE][NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) オブジェクトで [TopicExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx) メソッドを使用することで、指定した名前のトピックが名前空間に既に存在するかどうかを確認できます。
 
 ## サブスクリプションを作成する
 
@@ -314,17 +314,17 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 
 -   [キュー、トピック、およびサブスクリプション][]に関するページをご覧ください。
 -   [SqlFilter][] の API のリファレンス
--   Service Bus キューとの間でメッセージを送受信する実用アプリケーションの作成: [Service Bus ブローカー メッセージングに関する .NET チュートリアル][]。
+-   Service Bus キューとの間でメッセージを送受信する実用アプリケーションの作成: [Service Bus のブローカー メッセージングに関する .NET チュートリアル][]。
 -   Service Bus のサンプル: [Azure のサンプル][]からダウンロードするか、「[概要](service-bus-samples.md)」を参照してください。
 
-  [Azure portal]: http://manage.windowsazure.com
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
 
   [7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
 
   [キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
   [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
   [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-  [Service Bus ブローカー メッセージングに関する .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
+  [Service Bus のブローカー メッセージングに関する .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

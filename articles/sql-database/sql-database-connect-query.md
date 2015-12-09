@@ -43,10 +43,10 @@ C# クエリ コード サンプルを実行するには、以下のものが必
  - [デモ データベースの作成](sql-database-get-started.md)は数分で完了します。
 
 
-- Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を *無料* で提供しています。
+- Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を*無料*で提供しています。
  - [Visual Studio Community のダウンロード](http://www.visualstudio.com/products/visual-studio-community-vs)
  - [その他の無料版 Visual Studio の選択肢](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
- - または、このトピックで後述する[手順](#InstallVSForFree)に従い、[Azure プレビュー ポータル](http://portal.azure.com/)のガイドを利用して Visual Studio をインストールすることができます。
+ - または、このトピックで後述する[手順](#InstallVSForFree)に従い、[Azure ポータル](http://portal.azure.com/)のガイドを利用して Visual Studio をインストールすることができます。
 
 
 <a name="InstallVSForFree" id="InstallVSForFree"></a>
@@ -59,13 +59,13 @@ C# クエリ コード サンプルを実行するには、以下のものが必
 Visual Studio のインストールが必要な場合、以下の方法でインストールできます。
 
 - 無料ダウンロードやその他の選択肢が提供されている Visual Studio 製品ページにブラウザーでアクセスして、無料版の Visual Studio Community をインストールする。または
-- 次の説明に従い、[Azure プレビュー ポータル](http://portal.azure.com/)のガイドを利用してダウンロード ページにアクセスする。
+- 次の説明に従い、[Azure ポータル](http://portal.azure.com/)のガイドを利用してダウンロード ページにアクセスする。
 
 
-### Azure プレビュー ポータルから Visual Studio へ
+### Azure ポータルから Visual Studio へ
 
 
-1. [Azure プレビュー ポータル](http://portal.azure.com/) (http://portal.azure.com/) からログインします。
+1. [Azure ポータル](http://portal.azure.com/) (http://portal.azure.com/) からログインします。
 
 2. **[すべて参照]**、**[SQL データベース]** の順にクリックします。データベースを検索するためのブレードが開きます。
 
@@ -127,7 +127,7 @@ C# のサンプルでは .NET Framework アセンブリの **System.Configuratio
 ## 手順 4. 接続文字列を取得する
 
 
-[Azure プレビュー ポータル](http://portal.azure.com/)を使用して、SQL データベースへの接続で必要な接続文字列をコピーします。
+[Azure ポータル](http://portal.azure.com/)を使用して、SQL データベースへの接続で必要な接続文字列をコピーします。
 
 最初は、Visual Studio を Azure SQL Database の **AdventureWorksLT** データベースに接続するために使用します。
 
@@ -316,7 +316,7 @@ C# サンプルのコードは常に短く記述するようにしています�
 クライアント コンピューターの IP アドレスを SQL Database のファイアウォールに追加しない限り、クライアントの C# プログラムが SQL Database に接続することはできません。プログラムを実行しても失敗します。実行に失敗すると、必要な IP アドレスが記載された簡単なエラー メッセージが表示されます。
 
 
-IP アドレスは、[Azure プレビュー ポータル](http://portal.azure.com/)から追加できます。
+IP アドレスは、[Azure ポータル](http://portal.azure.com/)から追加できます。
 
 
 
@@ -324,8 +324,7 @@ IP アドレスは、[Azure プレビュー ポータル](http://portal.azure.co
 
 
 
-詳細については、<br/>
-「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+詳細については、<br/>「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 
 
@@ -359,4 +358,4 @@ IP アドレスは、[Azure プレビュー ポータル](http://portal.azure.co
 
 [50-VSCopyToOutputDirectoryProperty]: ./media/sql-database-connect-query/connqry-vs-appconfig-copytoputputdir-h.png
 
-<!----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

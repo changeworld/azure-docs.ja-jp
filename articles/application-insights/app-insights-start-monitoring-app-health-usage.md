@@ -135,13 +135,14 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 [このトラブルシューティング項目](app-insights-troubleshoot-faq.md#NuGetBuild)を参照してください。
 
+> [AZURE.NOTE](ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。[サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
 
 
 ## 5\.依存関係の追跡 (および IIS パフォーマンス カウンター) の追加
 
 SDK によるデータへのアクセスでは、若干のサポートが必要です。具体的には、アプリからデータベース、REST API、またその他の外部コンポーネントへの呼び出しを自動的に測定するには、次の追加のステップが必要です。依存関係のメトリックは、パフォーマンスに関する問題の診断に非常に役立つ場合があります。
 
-独自の IIS サーバーで実行している場合は、この手順に従うことで、[メトリックス エクスプローラー](app-insights-metrics-explorer.md)にシステム パフォーマンス カウンターを表示できるようになります。
+独自の IIS サーバーで実行している場合、この手順は、[メトリックス エクスプローラー](app-insights-metrics-explorer.md)にシステム パォーマンス カウンターが表示されるようにできます。
 
 #### アプリが IIS サーバーで実行される場合
 
@@ -160,7 +161,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 #### Azure Cloud Services プロジェクトの場合
 
-[スクリプトを Web ロールと worker ロールに追加します。](app-insights-cloudservices.md)
+[スクリプトを Web ロールと worker ロールに追加](app-insights-cloudservices.md)します。
 
 
 
@@ -175,7 +176,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 コードにはアプリケーション リソースを識別するインストルメンテーション キーが含まれています。
 
-[Web ページの追跡についてはこちら](app-insights-web-track-usage.md)をご覧ください。
+[Web ページの追跡についてはこちらをご覧ください。](app-insights-web-track-usage.md)
 
 
 ## アプリケーションのバージョンを追跡する
@@ -268,4 +269,4 @@ Visual Studio によって、Application Insights にリソースが作成され
 [roles]: app-insights-resources-roles-access-control.md
 [start]: app-insights-overview.md
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

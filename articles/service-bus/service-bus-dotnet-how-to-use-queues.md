@@ -54,7 +54,7 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
 
 ### Cloud Services を使用する場合の接続文字列の構成
 
-サービス構成メカニズムは、Azure Cloud Services プロジェクトに特有のものであり、これを使用すると、アプリケーションを再デプロイしなくても Azure ポータルから構成設定を動的に変更できます。たとえば、次の例に示すように、サービス定義 (.csdef) ファイルに `Setting` ラベルを追加します。
+サービス構成メカニズムは、Azure Cloud Services プロジェクトに特有のものであり、これを使用すると、アプリケーションを再デプロイしなくても [Azure クラシック ポータル][]から構成設定を動的に変更できます。たとえば、次の例に示すように、サービス定義 (.csdef) ファイルに `Setting` ラベルを追加します。
 
 ```
 <ServiceDefinition name="Azure1">
@@ -82,7 +82,7 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
 </ServiceConfiguration>
 ```
 
-前のセクションで説明したように、Azure ポータルから取得した Shared Access Signature (SAS) のキー名とキー値を使用します。
+前のセクションで説明したように、Azure クラシック ポータルから取得した Shared Access Signature (SAS) のキー名とキー値を使用します。
 
 ### Websites または Azure Virtual Machines を使用する場合の接続文字列の構成
 
@@ -97,7 +97,7 @@ Websites または Virtual Machines を使用する場合には、.NET 構成シ
 </configuration>
 ```
 
-前のセクションで説明したように、Azure ポータルから取得した SAS 名とキー値を使用します。
+前のセクションで説明したように、Azure クラシック ポータルから取得した SAS 名とキー値を使用します。
 
 ## キューを作成する
 
@@ -246,7 +246,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 -   [Service Bus ブローカー メッセージングに関する .NET チュートリアル][]で、Service Bus キューとの間でメッセージを送受信する実用アプリケーションを作成してください。
 -   Service Bus のサンプルを [Azure のサンプル][]からダウンロードするか、[Service Bus サンプルの概要][]を参照してください。
 
-  [Azure portal]: http://manage.windowsazure.com
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
   [7]: ./media/service-bus-dotnet-how-to-use-queues/getting-started-multi-tier-13.png
   [キュー、トピック、サブスクリプション]: service-bus-queues-topics-subscriptions.md
   [Service Bus ブローカー メッセージングに関する .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
@@ -259,4 +259,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
   [Complete]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

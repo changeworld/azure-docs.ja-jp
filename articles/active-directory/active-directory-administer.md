@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Azure AD ディレクトリの管理"
+	pageTitle="Azure AD ディレクトリの管理 | Microsoft Azure"
 	description="Azure AD テナントの概要と、Azure AD ディレクトリを管理する方法を説明するトピック。"
 	services="active-directory"
 	documentationCenter=""
-	authors="Markusvi"
+	authors="markusvi"
 	writer="markvi"
 	manager="stevenpo"
-	editor="LisaToft"/>
+	editor=""/>
 
 <tags
 	ms.service="active-directory"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/09/2015"
+	ms.date="12/01/2015"
 	ms.author="markvi"/>
 
 # Azure AD ディレクトリの管理
@@ -129,13 +129,13 @@ Azure AD でディレクトリを削除するには、特定の条件を満た�
 
     > [AZURE.NOTE]ユーザーが職場または学校アカウントを使用してサインインしている場合、そのユーザーは自分のホーム ディレクトリを削除することはできません。たとえば、ユーザーが joe@contoso.onmicrosoft.com としてサインインしている場合、そのユーザーは既定のドメインが contoso.onmicrosoft.com であるディレクトリを削除することはできません。
 
-- 多要素認証プロバイダーをディレクトリにリンクすることはできません。
+- Multi-Factor Authentication プロバイダーをディレクトリにリンクすることはできません。
 
 
 ## その他のリソース
 
 - [Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)
-- [Azure 多要素認証フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=windowsazureactiveauthentication)
+- [Azure Multi-Factor Authentication フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=windowsazureactiveauthentication)
 - [StackOverflow](http://stackoverflow.com/questions/tagged/azure)
 - [Azure への組織としてのサインアップ](sign-up-organization.md)
 - [Windows PowerShell による Azure AD の管理](https://msdn.microsoft.com/library/azure/jj151815.aspx)
@@ -145,4 +145,4 @@ Azure AD でディレクトリを削除するには、特定の条件を満た�
 [1]: ./media/active-directory-administer/aad_portals.png
 [2]: ./media/active-directory-administer/azure_tenants.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

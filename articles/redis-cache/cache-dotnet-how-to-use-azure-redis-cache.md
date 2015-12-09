@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="dotnet" 
 	ms.topic="hero-article" 
-	ms.date="11/10/2015" 
+	ms.date="11/30/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の使用方法
@@ -30,9 +30,9 @@ Microsoft Azure Redis Cache には、次のレベルがあります。
 
 -	**Basic** – 単一ノード、複数のサイズ、最大 53 GB
 -	**Standard** – 2 ノード (プライマリ/レプリカ)。複数のサイズ、最大 53 GB99.9% の SLA。
--	**Premium** – (現時点ではプレビュー)。最大 10 個のシャードがある2 ノード (プライマリ/レプリカ)。6 GB から 530 GB までの複数のサイズ (詳細はお問い合わせください)。Standard レベルのすべての機能と、[Redis クラスター](cache-how-to-premium-clustering.md)、[Redis の永続化](cache-how-to-premium-persistence.md)、[Azure Virtual Network](cache-how-to-premium-vnet.md) のサポートを含むその他の機能。プレビュー期間中は SLA はありません。
+-	**Premium** – 最大 10 個のシャードがある 2 ノード (プライマリ/レプリカ)。6 GB から 530 GB までの複数のサイズ (詳細はお問い合わせください)。Standard レベルのすべての機能と、[Redis クラスター](cache-how-to-premium-clustering.md)、[Redis の永続化](cache-how-to-premium-persistence.md)、[Azure Virtual Network](cache-how-to-premium-vnet.md) のサポートを含むその他の機能。99.9% の SLA。
 
-各レベルは、機能と価格ごとに異なります。価格の詳細については、[キャッシュの料金詳細][]に関するページを参照してください。
+各レベルは、機能と価格ごとに異なります。価格の詳細については、[Cache の価格詳細][]に関するページを参照してください。
 
 このガイドでは、C# を使用する [StackExchange.Redis][] クライアントの使用方法について説明します。紹介するシナリオは、**キャッシュの作成と構成**、**キャッシュ クライアントの構成**、**キャッシュでのオブジェクトの追加と削除**などです。Azure Redis Cache の使用方法の詳細については、「[次のステップ][]」を参照してください。
 
@@ -47,7 +47,7 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 <a name="create-cache"></a>
 ## キャッシュの作成
 
-キャッシュを作成するには、まず [Azure プレビュー ポータル][]にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
+キャッシュを作成するには、まず [Azure プレビュー ポータル][]にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** をクリックします。
 
 ![新しいキャッシュ][NewCacheMenu]
 
@@ -59,13 +59,13 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 
 -	キャッシュ エンドポイントに使用するサブドメイン名を **[DNS 名]** に入力します。エンドポイントは、数字と小文字のみを含む、先頭が文字の 6 ～ 12 文字の文字列にしてください。
 -	**[サブスクリプション]** で、キャッシュに使用する Azure サブスクリプションを選択します。アカウントにサブスクリプションが 1 つしかない場合は自動的に選択されるため、**[サブスクリプション]** ドロップダウン リストは表示されません。
--	**[リソース グループ]** で、キャッシュのリソース グループを選択または作成します。詳細については、「[リソース グループを使用した Azure リソースの管理][]」を参照してください。 
+-	**[リソース グループ]** で、キャッシュのリソース グループを選択または作成します。詳細については、[リソース グループを使用した Azure リソースの管理][]に関するページを参照してください。 
 -	**[場所]** を使用して、キャッシュのホストの地理的位置を指定します。パフォーマンスを最大限に引き出すために、キャッシュは、キャッシュ クライアント アプリケーションと同じリージョンに作成することを強くお勧めします。
--	**[料金レベル]** を使用して、必要なキャッシュ サイズと機能を選択します。
--	**Redis クラスター**では、53 GB を超えるキャッシュを作成でき、複数の Redis ノード間でデータを共有することもできます。詳細については、[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)に関するページを参照してください。
--	**Redis の永続化**を使用して、Azure ストレージ アカウントにキャッシュを保持できます。永続化の構成手順については、[Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)に関するページを参照してください。
+-	**[価格レベル]** を使用して、必要なキャッシュ サイズと機能を選択します。
+-	**Redis クラスター**では、53 GB を超えるキャッシュを作成でき、複数の Redis ノード間でデータを共有することもできます。詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
+-	**Redis の永続化**を使用して、Azure ストレージ アカウントにキャッシュを保持できます。永続化の構成手順については、「[Premium Azure Redis Cache の永続性の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
 -	**Virtual Network** では、指定された Azure Virtual Network 内にあるクライアントのみにキャッシュへのアクセス権を制限することで、セキュリティと分離が強化されます。サブネット、アクセス制御ポリシー、およびその他の Redis へのアクセスをさらに制限する機能を始め、VNet のすべての機能を使用できます。詳細については、「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
--	**診断**を使用して、キャッシュ メトリックにストレージ アカウントを指定できます。キャッシュ メトリックの構成と表示に関する詳細については、「[Azure Redis Cache の監視方法](cache-how-to-monitor.md)」を参照してください。
+-	**診断**を使用して、キャッシュ メトリックにストレージ アカウントを指定できます。キャッシュ メトリックの構成と表示の詳細については、「[Azure Redis Cache の監視方法](cache-how-to-monitor.md)」を参照してください。
 
 新しいキャッシュ オプションを構成したら、**[作成]** をクリックします。キャッシュが作成されるまで数分かかる場合があります。状態を確認するには、スタート画面で進行状況を監視してください。キャッシュが作成されると、新しいキャッシュの状態が "**実行中**" になって、既定の設定で使用できるようになります。
 
@@ -92,7 +92,7 @@ Visual Studio で StackExchange.Redis NuGet パッケージを使用してクラ
 
 **[オンライン検索]** ボックスに「**StackExchange.Redis**」または「**StackExchange.Redis.StrongName**」と入力し、結果の中から必要なバージョンを選択して、**[インストール]** をクリックします。
 
->[AZURE.NOTE]厳密な名前を持つバージョンの **StackExchange.Redis** クライアント ライブラリを希望する場合は、**[StackExchange.Redis.StrongName]** を選択してください。それ以外の場合は、**\[StackExchange.Redis\]** を選択します。
+>[AZURE.NOTE]厳密な名前を持つバージョンの **StackExchange.Redis** クライアント ライブラリを希望する場合は、**[StackExchange.Redis.StrongName]** を選択してください。それ以外の場合は、**[StackExchange.Redis]** を選択します。
 
 ![StackExchange.Redis NuGet package][StackExchangeNuget]
 
@@ -231,7 +231,7 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 -	Azure Redis Cache の ASP.NET プロバイダーを参照してください。
 	-	[Azure Redis セッション状態プロバイダー](cache-asp.net-session-state-provider.md)
 	-	[Azure Redis Cache ASP.NET 出力キャッシュ プロバイダー](cache-asp.net-output-cache-provider.md)
--	[キャッシュ診断の有効化](cache-how-to-monitor.md#enable-cache-diagnostics)によってキャッシュの正常性を[監視](cache-how-to-monitor.md)できるようにします。プレビュー ポータルでメトリックを表示できますが、お好みのツールを使用して、メトリックを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
+-	[キャッシュ診断の有効化](cache-how-to-monitor.md#enable-cache-diagnostics)によってキャッシュの正常性を[監視](cache-how-to-monitor.md)できるようにします。プレビュー ポータルではメトリックを表示できますが、お好みのツールを使用し、それを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
 -	[StackExchange.Redis キャッシュ クライアントのドキュメント][]を参照してください。
 	-	Azure Redis Cache は、さまざまな Redis クライアントや開発言語からアクセスできます。詳細については、[http://redis.io/clients][] および「[他の言語での Azure Redis Cache の開発][]」を参照してください。
 	-	Azure Redis Cache は、Redsmin などのサービスと共に使用することもできます。詳細については、「[Azure Redis 接続文字列を取得し、Redsmin と共に使用する方法][]」を参照してください。
@@ -308,7 +308,7 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 
 
 [NuGet Package Manager Installation]: http://go.microsoft.com/fwlink/?LinkId=240311
-[キャッシュの料金詳細]: http://www.windowsazure.com/pricing/details/cache/
+[Cache の価格詳細]: http://www.windowsazure.com/pricing/details/cache/
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
 [Overview of Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=320830
@@ -330,4 +330,4 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 
 [Azure の無料試用版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

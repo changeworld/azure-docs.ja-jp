@@ -18,15 +18,20 @@
 
 # <a name="getting-started"></a>Mobile Services と Sencha Touch の使用
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
 
 [AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
 
 ##概要
 
-このチュートリアルでは、Sencha Touch アプリケーションで Azure Mobile Services を活用する方法について説明します。管理ポータルで定義したモバイル サービスを活用し、Sencha Touch を使用する簡単な *To Do List* アプリケーションを作成します。このチュートリアルでは、JavaScript について適切な知識を持ち、Sencha Touch フレームワークに精通する熟達した Web アプリケーション開発者を対象として中間的な説明を行うことを意図しています。
+このチュートリアルでは、Sencha Touch アプリケーションで Azure Mobile Services を活用する方法について説明します。Azure クラシック ポータルで定義したモバイル サービスを活用する、Sencha Touch を使用した簡単な *To Do List* アプリケーションを作成します。このチュートリアルでは、JavaScript について適切な知識を持ち、Sencha Touch フレームワークに精通する熟達した Web アプリケーション開発者を対象として中間的な説明を行うことを意図しています。
 
-このチュートリアルのビデオを見る場合は、このクリップで、このチュートリアルと同じ手順が表示されます。このビデオでは、Arthur Kay が Azure Mobile Services バックエンドを使用して Sencha Touch アプリケーションをビルドする方法について説明します。
+このチュートリアルのビデオを見る場合は、このクリップで、このチュートリアルと同じ手順が表示されます。このビデオでは、Arthur Kay が Azure Mobile Services Backend を使用して Sencha Touch アプリケーションをビルドする方法について説明します。
 
 > [AZURE.VIDEO getting-started-with-sencha-touch]
 
@@ -50,9 +55,9 @@
 
 ##TodoItems テーブルの作成
 
-モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、モバイル サービス用に新しいデータベース テーブルを作成できます。
+モバイル サービスを作成したら、Azure クラシック ポータルの簡単なクイック スタートに従って、モバイル サービス用に新しいデータベース テーブルを作成できます。
 
-1. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1. [Azure クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **[HTML]** をクリックし、**[新しい HTML アプリを作成する]** を展開します。
 
@@ -64,10 +69,10 @@
 
 3. **[TodoItems テーブルを作成する]** をクリックして、アプリケーション データを格納するテーブルを作成します。
 
-	> [AZURE.NOTE]管理ポータルから HTML アプリをダウンロードしないでください。その代わりに、次のセクションで Sencha Touch アプリケーションを手動で作成します。
+	> [AZURE.NOTE]Azure クラシック ポータルから HTML アプリをダウンロードしないでください。その代わりに、次のセクションで Sencha Touch アプリケーションを手動で作成します。
 
 
-1. 管理ポータルの **appKey** と **appUrl** をメモします。これらは、このチュートリアルの他のセクションで使用します。
+1. Azure クラシック ポータルの **appKey** と **appUrl** をメモします。これらは、このチュートリアルの他のセクションで使用します。
 
     ![アプリ キー](./media/partner-sencha-mobile-services-get-started/mobile-app-key-portal.png)
 
@@ -101,7 +106,7 @@ Azure 用の拡張機能は、手動または Sencha パッケージとしてイ
 
         $ cd /path/to/application
 	    $ mv /download-location/azure.zip .
-    	$ unzip azure.zip  
+    	$ unzip azure.zip
 
     これによって、パッケージ ソース、例、およびドキュメント全体を含む **azure** ディレクトリが作成されます。このソースは、**azure/src** ディレクトリに存在します。
 
@@ -670,7 +675,7 @@ Sencha Touch ストアでは、さまざまな方法でレコードを表示す�
 
     ![Sencha Web スタート](./media/partner-sencha-mobile-services-get-started/sencha-web-start.png)
 
-  3. アプリケーションを開始するために、ターミナルに示された URL を Web ブラウザーで開きます (たとえば http://localhost:1841)。
+  3. アプリケーションを開始するために、ターミナルに示された URL を Web ブラウザーで開きます (たとえば http://localhost:1841)http://localhost:1841)。
 
   4. アプリケーションで、意味のあるテキスト (たとえば、"チュートリアルの完了") を入力し、**[Add]** をクリックします。
 
@@ -678,7 +683,7 @@ Sencha Touch ストアでは、さまざまな方法でレコードを表示す�
 
     これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。
 
-  5. 管理ポータルに戻り、**[データ]** タブ、TodoItems テーブルの順にクリックします。
+  5. [Azure クラシック ポータル]に戻り、**[データ]** タブ、TodoItems テーブルの順にクリックします。
 
     ![ToDo 項目 テーブル](./media/partner-sencha-mobile-services-get-started/mobile-data-tab.png)
 
@@ -717,4 +722,6 @@ Sencha Touch のさらなる概要については、全[ガイド](http://docs.s
 <!-- images -->
 [0]: ./media/partner-sencha-mobile-services-get-started/finished-app.png
 
-<!---HONumber=Nov15_HO3-->
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
+
+<!---HONumber=AcomDC_1203_2015-->

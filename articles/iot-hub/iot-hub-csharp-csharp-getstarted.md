@@ -22,7 +22,7 @@
 
 Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バック エンドの間に信頼性のある保護された双方向通信を確立できる、完全に管理されたサービスです。IoT プロジェクトが直面する最も大きな課題の 1 つは、アプリケーション バック エンドにデバイスを確実かつ安全に接続する方法です。このシナリオを簡素化するために、Azure IoT Hub は、信頼性に優れた非常にスケール性の高いデバイスとクラウド間のメッセージングを提供し、デバイスごとのセキュリティ資格情報とアクセス制御を使用してセキュリティで保護された通信を可能にし、最も一般的な言語とプラットフォームのデバイス ライブラリを含みます。
 
-このチュートリアルでは、Azure プレビュー ポータルを使用して IoT ハブを作成する方法を示します。また、IoT ハブでデバイス ID を作成し、デバイスからクラウドへのメッセージを送信して、クラウド バックエンドからこれらのメッセージを受信するシミュレーション対象デバイスを作成する方法も示します。
+このチュートリアルでは、Azure ポータルを使用して IoT ハブを作成する方法を示します。また、IoT ハブでデバイス ID を作成し、デバイスからクラウドへのメッセージを送信して、クラウド バックエンドからこれらのメッセージを受信するシミュレーション対象デバイスを作成する方法も示します。
 
 このチュートリアルの最後には、次の 3 つの Windows コンソール アプリケーションが作成されています。
 
@@ -36,11 +36,11 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 + Microsoft Visual Studio 2015、
 
-+ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[「Azure の無料試用版サイト」](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fgetstarted%2F target="\_blank") を参照してください。
++ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fgetstarted%2F target="\_blank") を参照してください。
 
 ## IoT Hub の作成
 
-1. [Azure プレビュー ポータル]にログオンします。
+1. [Azure ポータル]にログオンします。
 
 2. ジャンプバーで、**[新規]**、**[モノのインターネット]**、**[IoT Hub]** の順にクリックします。
 
@@ -115,10 +115,9 @@ IoT Hub に関するその他の情報:
 [42]: ./media/iot-hub-csharp-csharp-getstarted/run-apps2.png
 
 <!-- Links -->
-[Azure プレビュー ポータル]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 
 [IoT Hub を使用したクラウドからデバイスへのメッセージの送信]: iot-hub-csharp-csharp-c2d.md
-[Process Device-to-Cloud messages (デバイスからクラウドへのメッセージの処理)]: iot-hub-csharp-csharp-process-d2c.md
 [デバイスからクラウドへのメッセージの処理]: iot-hub-csharp-csharp-process-d2c.md
 [デバイスからのファイルのアップロード]: iot-hub-csharp-csharp-file-upload.md
 
@@ -130,4 +129,4 @@ IoT Hub に関するその他の情報:
 [Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
 [Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
 
-<!----HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

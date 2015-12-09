@@ -7,19 +7,19 @@
 	manager="jwhit"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="hero-article" ms.date="11/03/2015" ms.author="jimpark"; "aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="hero-article" ms.date="11/26/2015" ms.author="jimpark"; "aashishr"/>
 
 # Windows コンピューターをバックアップする環境の準備
 
-この記事では、Azure Backup 機能を有効にする手順について説明します。Windows Server または Windows クライアントを Azure にバックアップするには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+この記事では、Windows サーバーで Azure Backup を使用するための準備手順について説明します。Windows サーバーまたは Windows クライアントを Azure にバックアップするには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 >[AZURE.NOTE]以前は、バックアップ サーバーを登録するために、X.509 v3 証明書の作成や取得が必要でした。証明書は現在でもサポートされていますが、サーバーへの Azure 資格情報コンテナーの登録を容易にするために、[クイック スタート] ページから資格情報コンテナーの資格情報を作成できます。
 
 ## 開始する前に
 ファイルやデータを Windows Server から Azure にバックアップするには、まず次のことを行う必要があります。
 
-- **バックアップ コンテナーの作成** — Azure Backup コンソールでコンテナーを作成します。
-- **コンテナー資格情報のダウンロード** — Azure Backup で、コンテナーに対して作成した管理証明書をダウンロードします。
-- **Azure Backup エージェントのインストールおよびサーバーの登録** — Azure Backup からエージェントをインストールし、バックアップ コンテナーにサーバーを登録します。
+- **バックアップ コンテナーの作成** — [Azure Backup 管理ポータル](http://manage.windowsazure.com)でコンテナーを作成します。
+- **コンテナー資格情報のダウンロード** — Azure Backup コンテナーの [ダッシュボード] ページから、バックアップ コンテナーに Windows コンピューターを登録する際に使用するコンテナー資格情報をダウンロードします。
+- **Azure Backup エージェントのインストールとサーバーの登録** — [ダッシュボード] ページで、[Azure Backup エージェント](http://aka.ms/azurebackup_agent)をダウンロードするためのリンクをクリックします。エージェントをインストールし、コンテナー資格情報を使用してサーバーをバックアップ コンテナーに登録します。
 
 [AZURE.INCLUDE [backup-create-vault-wgif](../../includes/backup-create-vault-wgif.md)]
 
@@ -34,4 +34,4 @@
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 - [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

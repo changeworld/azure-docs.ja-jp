@@ -11,21 +11,21 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="11/06/2015"
+	ms.date="12/01/2015"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="NA"/>
 
 
-# Azure プレビュー ポータルで SQL Database のスケーラブルなエラスティック データベース プールを作成する
+# Azure ポータルで SQL Database のスケーラブルなエラスティック データベース プールを作成する
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](sql-database-elastic-pool-portal.md)
+- [Azure portal](sql-database-elastic-pool-portal.md)
 - [C#](sql-database-elastic-pool-csharp.md)
 - [PowerShell](sql-database-elastic-pool-powershell.md)
 
-この記事では、Azure プレビュー ポータルを使用してスケーラブルな[エラスティック データベース プール](sql-database-elastic-pool.md)を作成する方法について説明します。エラスティック データベース プールがある SQL Database 構成にすると、複数のデータベースの管理とリソース共有が簡単になります。
+この記事では、Azure ポータルを使用してスケーラブルな[エラスティック データベース プール](sql-database-elastic-pool.md)を作成する方法について説明します。エラスティック データベース プールがある SQL Database 構成にすると、複数のデータベースの管理とリソース共有が簡単になります。
 
 > [AZURE.NOTE]エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server.md)を 1 回の手順で実行できます。
 
@@ -38,7 +38,7 @@
 サーバーに新しいプールを追加することで、エラスティック データベース プールを作成します。サーバーに複数のプールを追加できますが、各プールに関連付けられるサーバーは 1 つのみです。さらに、サーバー上のデータベースのすべてまたは一部をプールに追加できます。
 
 
-[[Azure プレビュー ポータル]](https://ms.portal.azure.com/) で、**[SQL Server]** をクリックし、プールに追加するデータベースをホストするサーバーをクリックしてから、**[プールの追加] ** をクリックします。
+[[Azure ポータル]](https://portal.azure.com/) で、**[SQL Server]** をクリックし、プールに追加するデータベースをホストするサーバーをクリックしてから、**[プールの追加]** をクリックします。
 
 ![サーバーへのプールの追加](./media/sql-database-elastic-pool-portal/elastic-pool-add-pool.png)
 
@@ -80,7 +80,7 @@ SQL Database サービスは利用履歴を評価し、シングル データベ
 - エラスティック データベースの最小/最大 eDTU 設定。  
 - 推奨データベースの一覧。
 
-エラスティック データベース プールを推奨するとき、このサービスでは過去 30 日間の製品利用統計情報が考慮されます。あるデータベースをエラスティック データベース プールの候補と見なすとき、それは 7 日間以上存在している必要があります。エラスティック データベース プールに既に存在するデータベースはエラスティック データベース プール推奨の候補として考慮されません。
+エラスティック データベース プールを推奨するとき、このサービスでは過去 30 日間のテレメトリが考慮されます。あるデータベースをエラスティック データベース プールの候補と見なすとき、それは 7 日間以上存在している必要があります。エラスティック データベース プールに既に存在するデータベースはエラスティック データベース プール推奨の候補として考慮されません。
 
 このサービスでは、各サービス レベルのシングル データベースを同じレベルのエラスティック データベース プールに移動することの必要性と対費用効果が評価されます。たとえば、サーバーのすべての Standard データベースの Standard エラスティック プールに対する適合性が評価されます。つまり、このサービスでは、Standard データベースを Premium プールに移動することなど、レベル間の推奨は行われません。
 
@@ -202,4 +202,4 @@ SQL Database V12 サーバーを参照すると、そのサーバーに推奨さ
 [11]: ./media/sql-database-elastic-pool-portal/recommended-pool.png
 [12]: ./media/sql-database-elastic-pool-portal/pools-message.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

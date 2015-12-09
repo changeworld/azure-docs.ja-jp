@@ -34,7 +34,7 @@ Batch は、本質的に並列である ("驚異的並列性" とも呼ばれま
 
 * 財務リスクのモデリング
 * 画像のレンダリングと画像処理
-* メディアのエンコードとトランスコード
+* メディアのエンコードとコード変換
 * 遺伝子配列の分析
 * ソフトウェアのテスト
 
@@ -54,7 +54,7 @@ Baｔｃｈ の概念について詳しくは、「[Azure Batch の API の基�
 
 + **Azure アカウントとサブスクリプション** - アカウントを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-+ **Batch アカウント** - Batch の API 呼び出しを行う際に、Batch アカウントの名前と URL、およびアクセス キーを資格情報として使用します。コンピューティング ノード、プール、ジョブ、タスクなどの Batch リソースはすべて Batch アカウントに関連付けられています。Batch アカウントの作成とアカウントのアクセス キーの管理は、[Azure プレビュー ポータル](batch-account-create-portal.md)を使用して実行できます。
++ **Batch アカウント** - Batch の API 呼び出しを行う際に、Batch アカウントの名前と URL、およびアクセス キーを資格情報として使用します。コンピューティング ノード、プール、ジョブ、タスクなどの Batch リソースはすべて Batch アカウントに関連付けられています。Batch アカウントを作成してそのアカウントのアクセス キーを管理する 1 つの方法として、[Azure ポータル](batch-account-create-portal.md)を使用します。
 
 + **ストレージ アカウント** - ほとんどの Batch シナリオでは、データの入力と出力、およびコンピューティング ノード上で実行されるスクリプトや実行可能ファイルを格納するために、Azure ストレージ アカウントが必要になります。ストレージ アカウントの作成方法については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
 
@@ -103,4 +103,4 @@ Batch API を使用する一般的なシナリオでは、数千個ものコン�
 [parallel]: ./media/batch-technical-overview/parallel.png
 [work_item_workflow]: ./media/batch-technical-overview/work_item_workflow.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

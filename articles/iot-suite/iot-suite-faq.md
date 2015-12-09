@@ -26,11 +26,11 @@
 
 2 個です。サブスクリプションで作成できる無料の Bing マップ API は 2 個だけです。リモート監視ソリューションは、既定では無料の Bing マップ API でプロビジョニングされます。その結果、変更なしでサブスクリプションにプロビジョニングできるリモート監視ソリューションは最大 2 個です。
 
-### Azure プレビュー ポータルでのリソース グループの削除と、azureiotsuite.com の構成済みソリューションで削除をクリックすることの違いは何ですか?
+### Azure ポータルでのリソース グループの削除と、azureiotsuite.com の構成済みソリューションで削除をクリックすることの違いは何ですか?
 
 - [azureiotsuite.com][lnk-azureiotsuite] で構成済みのソリューションを削除すると、構成済みソリューションの作成時にプロビジョニングしたすべてのリソースが削除されます。リソース グループにリソースを追加してある場合、それらも削除されます。 
 
-- [Azure プレビュー ポータル][lnk-azure-portal]でリソース グループを削除すると、そのリソース グループのリソースだけが削除されます。[Microsoft Azure 管理ポータル][lnk-classic-portal]で構成済みソリューションと関連付けられている Azure Active Directory アプリケーションも削除する必要があります。
+- [Azure ポータル][lnk-azure-portal]でリソース グループを削除すると、そのリソース グループのリソースだけが削除されます。構成済みソリューションと関連付けられている Azure Active Directory アプリケーションも [Azure クラシック ポータル][lnk-classic-portal]で削除する必要があります。
 
 ### AAD テナントはどうすれば削除できますか?
 
@@ -42,4 +42,4 @@
 [lnk-classic-portal]: https://manage.windowsazure.com
 [lnk-delete-aad-tennant]: http://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -41,11 +41,11 @@ Microsoft Azure 向けアプリケーションは、Visual Studio および無�
 
 ## シナリオの概要: ロール間通信
 
-処理を要求するため、Web ロールで実行されているフロントエンド UI コンポーネントは、worker ロールで実行されている中間層ロジックと対話する必要があります。この例では、各層間での通信に Service Bus の仲介型メッセージングが使用されています。
+処理を要求するため、Web ロールで実行されているフロントエンド UI コンポーネントは、worker ロールで実行されている中間層ロジックと対話する必要があります。この例では、各層間での通信に Service Bus のブローカー メッセージングが使用されています。
 
-Web 層と中間層との間で仲介型メッセージングを使用すると、2 つのコンポーネントの結合が解除されます。直接メッセージング (TCP や HTTP) とは異なり、Web 層は中間層に直接接続しません。その代わりに、作業をメッセージとして Service Bus にプッシュします。Service Bus は、このメッセージを中間層が受け取り、処理する用意ができるまで確実に保持します。
+Web 層と中間層との間でブローカー メッセージングを使用すると、2 つのコンポーネントの結合が解除されます。直接メッセージング (TCP や HTTP) とは異なり、Web 層は中間層に直接接続しません。その代わりに、作業をメッセージとして Service Bus にプッシュします。Service Bus は、このメッセージを中間層が受け取り、処理する用意ができるまで確実に保持します。
 
-Service Bus には、仲介型メッセージングをサポートする、キューとトピックという 2 つのエンティティがあります。キューでは、各メッセージは単一のレシーバーが使用するキューに送信されます。トピックは発行/サブスクライブ パターンをサポートし、発行された各メッセージをトピックに登録されているサブスクリプションで使用します。各サブスクリプションは、独自のメッセージ キューを論理的に管理しています。また、サブスクリプションにフィルター ルールを構成し、サブスクリプション キューに渡すメッセージをフィルターに一致するメッセージのみに制限できます。次の例では、Service Bus キューを使用します。
+Service Bus には、ブローカー メッセージングをサポートする、キューとトピックという 2 つのエンティティがあります。キューでは、各メッセージは単一のレシーバーが使用するキューに送信されます。トピックは発行/サブスクライブ パターンをサポートし、発行された各メッセージをトピックに登録されているサブスクリプションで使用します。各サブスクリプションは、独自のメッセージ キューを論理的に管理しています。また、サブスクリプションにフィルター ルールを構成し、サブスクリプション キューに渡すメッセージをフィルターに一致するメッセージのみに制限できます。次の例では、Service Bus キューを使用します。
 
 ![][1]
 
@@ -85,15 +85,15 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
 
 ## Service Bus の名前空間を設定する
 
-次の手順では、サービス名前空間を作成し、共有秘密 (SAS) キーを取得します。名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。サービス名前空間が作成された時点で、システムによって SAS キーが自動的に生成されます。名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
+次の手順では、サービス名前空間を作成し、Shared Access Signature (SAS) キーを取得します。名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。サービス名前空間が作成された時点で、システムによって SAS キーが自動的に生成されます。名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
-### Azure ポータルを使用して名前空間を設定する
+### Azure クラシック ポータルを使用してサービス名前空間を設定する
 
-1.  [Azure ポータル][]にログオンします。
+1.  [Azure クラシック ポータル][]にログオンします。
 
-2.  Azure ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
+2.  ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
-3.  Azure ポータルの下のウィンドウで、**[作成]** をクリックします。
+3.  ポータルの下のウィンドウで、**[作成]** をクリックします。
 
     ![][6]
 
@@ -269,7 +269,7 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
 
 2.  クラスに「QueueConnector.cs」という名前を付けます。**[追加]** をクリックしてクラスを作成します。
 
-3.  接続情報をカプセル化して、Service Bus のキューへの接続を初期化するコードを追加します。Queueconnector.cs では、次のコードを追加し、**名前空間** (サービス名前空間) と**yourKey** を入力します。これは、以前 [Azure ポータル][Azure portal]から取得した SAS キーです。
+3.  接続情報をカプセル化して、Service Bus のキューへの接続を初期化するコードを追加します。QueueConnector.cs では、次のコードを追加し、**名前空間** (サービス名前空間) と **yourKey** の値を入力します。これは、以前 [Azure クラシック ポータル][]から取得した SAS キーです。
 
         using System;
         using System.Collections.Generic;
@@ -286,7 +286,7 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
                 // on every request.
                 public static QueueClient OrdersQueueClient;
 
-                // Obtain these values from the Azure portal.
+                // Obtain these values from the portal.
                 public const string Namespace = "your service bus namespace";
 
                 // The name of your queue.
@@ -383,7 +383,7 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
 
 Service Bus 名前空間の接続文字列を構成ファイルに保存している場合は、[GetSetting][] メソッドを使用して接続文字列を読み取り、それを使用して [NamespaceMananger][] オブジェクトをインスタンス化できます。[NamespaceMananger][] インスタンスを使用して Service Bus 名前空間をプログラムで構成できます。同じ接続文字列を使用してクライアントのオブジェクト ([QueueClient][]、[TopicClient][]、[EventHubClient][] オブジェクトなど) をインスタンス化し、メッセージの送受信などのランタイム操作を実行できます。
 
-### Connection string
+### 接続文字列
 
 クライアント (たとえば、[Service Bus の QueueClient][]) をインスタンス化するための構成情報は、接続文字列として表すことができます。その接続文字列を使用してクライアントの型をインスタンス化する `CreateFromConnectionString()` メソッドがクライアント側には用意されています。たとえば、次の構成セクションがあるとします。
 
@@ -511,8 +511,7 @@ Azure Web サイトにフロンドエンドをデプロイする方法につい�
 
   [EventHubClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx
 
-  [Azure portal]: http://manage.windowsazure.com
-  [Azure ポータル]: http://manage.windowsazure.com
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
   [6]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-03.png
   [7]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-04.png
   [8]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-09.png
@@ -546,4 +545,4 @@ Azure Web サイトにフロンドエンドをデプロイする方法につい�
   [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
   [executionmodels]: ../cloud-services/fundamentals-application-models.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

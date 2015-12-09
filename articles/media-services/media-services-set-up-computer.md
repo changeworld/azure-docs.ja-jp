@@ -26,7 +26,7 @@
 
 ## Media Services アカウントを作成する
 
-Azure Media Services アカウントを作成するには、Azure ポータル、.NET SDK、または REST API を使用します。
+Azure Media Services アカウントを作成するには、Azure クラシック ポータル、.NET SDK、または REST API を使用します。
 
 <a id="setup_dev_env"></a>
 ## 開発環境を設定する  
@@ -51,4 +51,4 @@ Azure Media Services アカウントを作成するには、Azure ポータル�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

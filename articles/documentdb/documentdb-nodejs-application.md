@@ -53,7 +53,7 @@
 - [Express ジェネレーター](http://www.expressjs.com/starter/generator.html) (`npm install express-generator -g` によってこれをインストールできます)
 - [Git][]
 
-## <a name="_Toc395637761"></a>手順 1: DocumentDB データベース アカウントの作成
+## <a name="_Toc395637761"></a>手順 1: DocumentDB データベース アカウントを作成する
 
 最初に、DocumentDB アカウントを作成します。既にアカウントを持っている場合は、この手順を省略して「[手順2: 新しい Node.js アプリケーションの作成](#_Toc395783178)」に進んでください。
 
@@ -61,7 +61,7 @@
 
 [AZURE.INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
-## <a name="_Toc395783178"></a>手順 2: 新しい Node.js アプリケーションの作成
+## <a name="_Toc395783178"></a>手順 2: 新しい Node.js アプリケーションを作成する
 
 それでは、[Express](http://expressjs.com/) フレームワークを使用して、基本的な Hello World Node.js プロジェクトを作成する方法を学習しましょう。
 
@@ -396,7 +396,7 @@
 		
 		module.exports = config;
 
-3. [Microsoft Azure プレビュー ポータル](http://portal.azure.com)の DocumentDB アカウントの [キー] ブレードにある値を使用して、**config.js** ファイルの HOST および AUTH\_KEY の値を更新します。
+3. [Microsoft Azure ポータル](http://portal.azure.com)の DocumentDB アカウントの [キー] ブレードにある値を使用して、**config.js** ファイルの HOST および AUTH\_KEY の値を更新します。
 
 4. **config.js** ファイルを保存して閉じます。
  
@@ -569,4 +569,4 @@
 [Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

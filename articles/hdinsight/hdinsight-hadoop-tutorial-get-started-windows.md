@@ -1,7 +1,7 @@
 <properties
    pageTitle="Hadoop のチュートリアル: Windows での Hadoop の使用 | Microsoft Azure"
-   description="HDInsight での Hadoop の使用Windows での Hadoop クラスターのプロビジョニング、データに対する Hive クエリの実行、Excel での出力の分析を行う方法について説明します。"
-   keywords="hadoop tutorial,hadoop on windows,hadoop cluster,learn hadoop, hive query"
+   description="HDInsight での Hadoop の使用Windows での Hadoop クラスターの作成、データに対する Hive クエリの実行、Excel での出力の分析を行う方法について説明します。"
+   keywords="hadoop チュートリアル,windows 上の hadoop,hadoop クラスター,hadoop について, hive クエリ"
    services="hdinsight"
    documentationCenter=""
    authors="nitinme"
@@ -15,11 +15,11 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/03/2015"
+   ms.date="11/13/2015"
    ms.author="nitinme"/>
 
 
-# Hadoop のチュートリアル: Windows 上の HDInsight で Hadoop と Hive クエリを使用する
+# Hadoop チュートリアル: Windows 上の HDInsight で Hadoop を使用する
 
 > [AZURE.SELECTOR]
 - [Windows](../hdinsight-hadoop-tutorial-get-started-windows.md)
@@ -27,15 +27,9 @@
 
 Hadoop on Windows を理解して HDInsight の使用を開始できるように、このチュートリアルでは、Hadoop クラスターの非構造化データで Hive クエリを実行し、その結果を Microsoft Excel で分析する方法について説明します。
 
-[AZURE.INCLUDE [hdinsight-azure-preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
-
-* [HDInsight での Hadoop の使用 (Windows)](hdinsight-hadoop-tutorial-get-started-windows-v1.md)
-
-## この Hadoop チュートリアルでは何が達成されますか?
-
 大規模な非構造化データ セットがあり、このデータ セットに対して Hive クエリを実行して、意味のある情報を抽出する場合を仮定します。これが、このチュートリアルで目的としていることです。これを実現するには、次の手順を実行します。
 
-   !["Hadoop tutorial: Create an account; provision a Hadoop cluster; submit a Hive query; analyze data in Excel.][image-hdi-getstarted-flow]
+   !["Hadoop tutorial: Create an account; create a Hadoop cluster; submit a Hive query; analyze data in Excel.][image-hdi-getstarted-flow]
 
 HDInsight での Hadoop の説明については、このチュートリアルのデモ ビデオをご覧ください。
 
@@ -43,112 +37,66 @@ HDInsight での Hadoop の説明については、このチュートリアル�
 
 **[YouTube で HDInsight の Hadoop チュートリアルを見る](https://www.youtube.com/watch?v=Y4aNjnoeaHA&list=PLDrz-Fkcb9WWdY-Yp6D4fTC1ll_3lU-QS)**
 
+Azure の HDInsight を一般に利用可能にすると共に、Microsoft は HDInsight Emulator for Azure (旧称 *Microsoft HDInsight 開発者プレビュー*) もリリースしました。このエミュレーターは開発者シナリオを対象としており、単一ノード デプロイのみをサポートします。HDInsight Emulator の使用法については、「[HDInsight Emulator の概要][hdinsight-emulator]」に関するページをご覧ください。
 
-Azure の HDInsight を一般に利用可能にすると共に、Microsoft は HDInsight Emulator for Azure (旧称 *Microsoft HDInsight 開発者プレビュー*) もリリースしました。このエミュレーターは開発者シナリオを対象としており、単一ノード デプロイメントのみをサポートします。HDInsight Emulator の使用法については、「[HDInsight Emulator の概要][hdinsight-emulator]」に関するページをご覧ください。
-
-## 前提条件
+### 前提条件
 
 このチュートリアルを開始する前に、以下の条件を満たしている必要があります。
-
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone、または Office 2010 Professional Plus がインストールされた**ワークステーション**。
 
+##Hadoop クラスターを作成する
 
-##<a name="provision"></a>Hadoop クラスターのプロビジョニング
-
-クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。このセクションでは、HDInsight バージョン 3.2 クラスターをプロビジョニングします。他のバージョンの Hadoop クラスターも作成できます。手順については、「[Provision HDInsight clusters using custom options (カスタム オプションを使用した HDInsight クラスターのプロビジョニング)][hdinsight-provision]」を参照してください。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。
+クラスターを作成すると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースが作成されます。このセクションでは、HDInsight バージョン 3.2 クラスターを作成します。他のバージョンの Hadoop クラスターも作成できます。手順については、[カスタム オプションを使用した HDInsight の作成][hdinsight-provision]に関するページを参照してください。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。
 
 
-**Hadoop クラスターをプロビジョニングするには**
+**Hadoop クラスターを作成するには**
 
-1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)にサインインします。
-2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
+1. [Azure ポータル](https://ms.portal.azure.com/)にサインインします。
+2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。ポータルで **[新しい HDInsight クラスター]** ブレードが開きます。
 
-    ![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.1.png "Azure プレビュー ポータルでの新しいクラスターの作成")
+    ![Create a new cluster in the Azure Portal](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.1.png "Create a new cluster in the Azure Portal")
 
-3. **[クラスター名]** を入力し、**[クラスターの種類]** で **[Hadoop]** を選択し、**[クラスターのオペレーティング システム]** ボックスの一覧から **[Windows Server 2012 R2 Datacenter]** を選択します。クラスターを使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
+3. 次の値を入力または選択します。
 
 	![クラスターの名前と種類の入力](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.2.png "クラスターの名前と種類の入力")
-
-4. 複数のサブスクリプションがある場合は、**[サブスクリプション]** エントリをクリックし、クラスターで使用する Azure サブスクリプションを選択します。
-
-5. **[リソース グループ]** をクリックして既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択します。または、**[新規作成]** をクリックし、新しいリソース グループの名前を入力できます。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
-
-	> [AZURE.NOTE]このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
-
-6. **[資格情報]** をクリックし、**[クラスターのユーザー名]** と **[クラスターのログイン パスワード]** を入力します。クラスター ノードでリモート デスクトップを有効にする場合は、**[リモート デスクトップを有効にする]** で **[はい]** をクリックし、必要な値を指定します。このチュートリアルではリモート デスクトップは必要ないため、この手順はスキップできます下部にある **[選択]** をクリックして、資格情報の構成を保存します。
-
-	![クラスターの資格情報の指定](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.3.png "クラスターの資格情報の指定")
-
-7. **[データ ソース]** をクリックし、クラスターの既存のデータ ソースを選択するか、新しいデータ ソースを作成します。HDInsight で Hadoop クラスターをプロビジョニングするときに、Azure ストレージ アカウントを指定します。Hadoop 分散ファイルシステム (HDFS) と同様、このアカウントの特定の BLOB ストレージ コンテナーが、既定のファイル システムとして設定されます。既定では、HDInsight クラスターは、指定されたストレージ アカウントと同じデータ センターにプロビジョニングされます。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」をご覧ください。
-
-	![[データ ソース] ブレード](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.4.png "データ ソース構成の指定")
 	
-	現在、HDInsight クラスターのデータ ソースとして Azure ストレージ アカウントを選択できます。次の説明を参照して、**[データ ソース]** ブレードのエントリを理解してください。
-	
-	- **選択方法**: すべてのサブスクリプションのストレージ アカウントを参照できるようにする場合は、**[すべてのサブスクリプションから]** を設定します。既存のストレージ アカウントの **[ストレージ名]** と **[アクセス キー]** を入力する場合は、**[アクセス キー]** を設定します。
-	
-	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。または、**[新規作成]** をクリックして、新しいストレージ アカウントを作成します。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
-	
-	- **既定のコンテナーの選択**。 これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
-	
-	- **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。
-	
-		> [AZURE.IMPORTANT]既定のデータ ソースの場所を選択すると、HDInsight クラスターの場所も設定されます。クラスターと既定のデータ ソースは、同じリージョンに存在する必要があります。
-		
-	**[選択]** をクリックしてデータ ソースの構成を保存します。
+	|フィールド名| 値|
+	|----------|------|
+	|クラスター名| クラスターを識別するための一意の名前|
+	|クラスターの種類| このチュートリアルでは **[Hadoop]** を選択します。 |
+	|クラスターのオペレーティング システム| このチュートリアルでは **[Windows Server 2012 R2 Datacenter]** を選択します。|
+	|HDInsight のバージョン| このチュートリアルでは最新バージョンを選択します。|
+	|[サブスクリプション]| このクラスターに使用する Azure サブスクリプションを選択します。|
+	|リソース グループ | 既存の Azure リソース グループを選択するか、新しいリソース グループを作成します。基本的な HDInsight クラスターには、クラスターとその既定のストレージ アカウントが含まれています。管理を容易にするために、これら 2 つを 1 つのリソース グループにグループ化できます。|
+	|資格情報| クラスターのログイン ユーザー名とパスワードを入力します。Windows ベースのクラスターでは、2 つのユーザー アカウントを使用できます。クラスター ユーザー (または HTTP ユーザー) は、クラスターの管理とジョブの送信に使用されます。必要に応じて、リモート デスクトップ (RDP) ユーザー アカウントを作成し、クラスターにリモート接続することもできます。リモート デスクトップを有効にした場合は、RDP ユーザー アカウントが作成されます。|
+	|データ ソース| 新しい既定の Azure ストレージ アカウントを作成する場合は、[新規作成] をクリックします。クラスター名を既定のコンテナー名として使用します。すべての HDinsight クラスターでは、Azure ストレージ アカウントに既定の BLOB コンテナーがあります。既定の Azure ストレージ アカウントの場所によって、HDInsight クラスターの場所が決まります。|
+	|ノード料金レベル| このチュートリアルでは、既定のワーカー ノードとヘッド ノードの価格レベルで 1 つまたは 2 つのワーカー ノードを使用します。|
+	|オプションの構成| この部分はスキップします。|
 
-8. **[ノード価格レベル]** をクリックして、このクラスターのために作成されるノードに関する情報を表示します。クラスターで必要なワーカー ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
+9. **[新しい HDInsight クラスター]** ブレードで、**[スタート画面にピン留めする]** が選択されていることを確認し、**[作成]** をクリックします。これでクラスターが作成され、Azure ポータルのスタート画面にクラスター用のタイルが追加されます。アイコンはクラスターが作成中であることを示し、作成が完了すると、[HDInsight] アイコンを表示するように変化します。
 
-	![[ノード価格レベル] ブレード](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.5.png "クラスター ノード数の指定")
-	
-	**[選択]** をクリックして、ノードの価格構成を保存します。
-
-9. **[新しい HDInsight クラスター]** ブレードで、**[スタート画面にピン留めする]** が選択されていることを確認し、**[作成]** をクリックします。これでクラスターが作成され、Azure ポータルのスタート画面にクラスター用のタイルが追加されます。アイコンはクラスターがプロビジョニング中であることを示し、プロビジョニングが完了すると、[HDInsight] アイコンを表示するように変化します。
-
-	| プロビジョニング中 | プロビジョニング完了 |
+	| 作成中 | 作成の完了時 |
 	| ------------------ | --------------------- |
-	| ![スタート画面のプロビジョニング中インジケーター](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioning.png) | ![プロビジョニングされたクラスターのタイル](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioned.png) |
+	| ![Creating indicator on startboard](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioning.png) | ![Created cluster tile](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioned.png) |
 
-	> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
+	> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。作成プロセスをチェックするには、スタート画面のタイル、またはページの左側にある **[通知]** エントリを使用してください。
 
-10. プロビジョニングが完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。
-
-
-##<a name="sample"></a>ポータルからサンプル データを実行する
-
-正常にプロビジョニングされた HDInsight クラスターは、ポータルからサンプルを直接実行する概要ギャラリーを含むクエリ コンソールを提供します。サンプルを使っていくつかの基本的なシナリオを検証することで、HDInsight の操作方法を学ぶことができます。これらのサンプルには、分析対象のデータ、データに対して実行するクエリなど、必要なものがすべて用意されています。概要ギャラリーのサンプルの詳細については、「[Learn Hadoop in HDInsight using the HDInsight Getting Started Gallery (HDInsight 概要ギャラリーを使用した HDInsight での Hadoop の説明](hdinsight-learn-hadoop-use-sample-gallery.md)」をご覧ください。
-
-**サンプルを実行するには**
-
-1. Azure プレビュー ポータル スタート画面で、作成したクラスターのタイルをクリックします。
- 
-2. [新しいクラスター] ブレードで、**[ダッシュボード]** をクリックします。プロンプトが表示されたら、クラスターの管理者のユーザー名とパスワードを入力します。
-
-	![クラスター ダッシュボードの起動](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.Cluster.Dashboard.png "クラスター ダッシュボードの起動")
- 
-3. 開いた Web ページの **[概要ギャラリー]** タブをクリックし、**[サンプル データでのソリューション]** カテゴリで、実行するサンプルをクリックします。Web ページの指示に従ってサンプルを実行します。次の表では、いくつかのサンプルを一覧し、各サンプルについて詳しく説明します。
-
-サンプル | 内容
------- | ---------------
-[センサー データの分析][hdinsight-sensor-data-sample] | HDInsight を使用して、暖房、換気、空調 (HVAC) システムによって生成された履歴データを処理し、設定した温度を正確に維持できないシステムを識別する方法について説明します。
-[Web サイト ログの分析][hdinsight-weblogs-sample] | HDInsight を使用して、Web サイトのログ ファイルを分析する方法について説明します。このサンプルでは、1 日の間に発生した外部 Web サイトからの Web サイトへのアクセス数を調べ、ユーザーが経験した Web サイト エラーの概要を取得します。
-[Twitter の傾向分析](hdinsight-analyze-twitter-data.md) | HDInsight を使用して、Twitter の傾向を分析する方法について説明します。
+10. 作成が完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。
 
 
-
-##<a name="hivequery"></a>ポータルから Hive クエリを実行する
-HDInsight クラスターがプロビジョニングされたら、サンプルの Hive テーブルを照会する Hive ジョブを実行します。HDInsight クラスターに付属する *hivesampletable* を使用します。このテーブルには、モバイル デバイスの製造元、プラットフォーム、モデルに関するデータが格納されています。このテーブルの Hive クエリは、特定の製造元のモバイル デバイスのデータを取得します。
+## ポータルから Hive クエリを実行する
+HDInsight クラスターが作成されたら、サンプルの Hive テーブルを照会する Hive ジョブを実行します。HDInsight クラスターに付属する *hivesampletable* を使用します。このテーブルには、モバイル デバイスの製造元、プラットフォーム、モデルに関するデータが格納されています。このテーブルの Hive クエリは、特定の製造元のモバイル デバイスのデータを取得します。
 
 > [AZURE.NOTE]HDInsight Tools for Visual Studio は、Azure SDK for .NET バージョン 2.5 以降に付属しています。Visual Studio からこのツールを使用すると、HDInsight クラスターに接続し、Hive テーブルを作成し、Hive クエリを実行できます。詳細については、「[HDInsight Hadoop Tools for Visual Studio の使用開始][1]」をご覧ください。
 
 **クラスター ダッシュボードから Hive ジョブを実行するには**
 
-1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)にサインインします。
+1. [Azure ポータル](https://ms.portal.azure.com/)にサインインします。
 2. **[すべて参照]**、**[HDInsight クラスター]** の順にクリックして、前のセクションで作成したクラスターを含むクラスターの一覧を表示します。
 3. Hive ジョブの実行に使用するクラスターの名前をクリックし、ブレードの上部にある **[ダッシュボード]** をクリックします。
-4. 別のブラウザー タブで Web ページが開きます。Hadoop ユーザー アカウントとパスワードを入力します。既定のユーザー名は **admin** で、パスワードはプロビジョニング処理中に入力したパスワードです。
+4. 別のブラウザー タブで Web ページが開きます。Hadoop ユーザー アカウントとパスワードを入力します。既定のユーザー名は **admin** で、パスワードはクラスターの作成時に入力したパスワードです。
 5. ダッシュボードの **[Hive エディター]** タブをクリックします。次の Web ページが開きます。
 
 	![Hive Editor tab in the HDInsight cluster dashboard.][img-hdi-dashboard]
@@ -167,7 +115,7 @@ HDInsight クラスターがプロビジョニングされたら、サンプル�
 
 5. 状態にジョブの完了が表示されたら、画面のクエリ名をクリックして出力を表示します。**[ジョブの開始時刻 (UTC)]** の値をメモしておきます。この情報は後で必要になります。
 
-    ![Job Start Time listed in the Job History tab of the HDInsight cluster dashboard.][img-hdi-dashboard-query-select-result-output]
+    ![HDInsight クラスターのダッシュボードの [ジョブ履歴] タブに表示されるジョブ開始時間。][img-hdi-dashboard-query-select-result-output]
 
     このページには、**ジョブの出力**と**ジョブのログ**も表示されます。出力ファイル (\_stdout) とログ ファイル (\_stderr) をダウンロードすることもできます。
 
@@ -182,7 +130,7 @@ HDInsight クラスターがプロビジョニングされたら、サンプル�
    	![[ファイル ブラウザー] タブに表示された Hive クエリ出力ファイルの GUID][img-hdi-dashboard-query-browse-output]
 
 
-##<a name="powerquery"></a>Excel 用 Microsoft Business Intelligence ツールに接続する
+##Excel 用 Microsoft Business Intelligence ツールに接続する
 
 Microsoft Excel 用 Power Query アドインを使用すると、HDInsight からのジョブ出力を Excel にインポートして、Microsoft Business Intelligence ツールで結果をさらに分析することができます。
 
@@ -199,8 +147,8 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 
 	![Excel PowerQuery Import menu open for Azure HDInsight.][image-hdi-gettingstarted-powerquery-importdata]
 
-3. クラスターに関連付けられた Azure BLOB ストレージ アカウントの名前を **[アカウント名]** ボックスに入力し、**[OK]** をクリックします。(これは、このチュートリアルで作成済みのストレージ アカウントです。)
-4. Azure BLOB ストレージ アカウントのアカウント キーを **[アカウント キー]** ボックスに入力し、**[保存]** をクリックします。
+3. クラスターに関連付けられた Azure Blob Storage アカウントの名前を **[アカウント名]** ボックスに入力し、**[OK]** をクリックします。(これは、このチュートリアルで作成済みのストレージ アカウントです。)
+4. Azure Blob Storage アカウントのアカウント キーを **[アカウント キー]** ボックスに入力し、**[保存]** をクリックします。
 5. 右側のウィンドウで、BLOB 名をダブルクリックします。既定で、BLOB名はクラスター名と同じです。
 
 6. **[名前]** 列で **stdout** を見つけます。対応する **[フォルダーのパス]** 列の GUID が前にコピーした GUID と一致していることを確認します。一致している場合、出力データは送信したジョブに対応しています。**[stdout]** の左側の列の **[バイナリ]** をクリックします。
@@ -209,13 +157,34 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 
 9. 左上隅にある **[閉じて読み込む]** をクリックして、Hive ジョブ出力を Excel にインポートします。
 
+##サンプルの実行
 
-##<a name="nextsteps"></a>次のステップ
-この Hadoop のチュートリアルでは、HDInsight で Windows ベースの Hadoop クラスターをプロビジョニングした後、そのデータ上で Hive クエリを実行し、結果を Excel にインポートする方法を説明しました。このデータは、ビジネス インテリジェンス ツールを使用してさらに処理し、グラフィカルに表示することができます。詳細については、次のチュートリアルをご覧ください。
+HDInsight クラスターには、ポータルからサンプルを直接実行するための概要ギャラリーを含むクエリ コンソールがあります。サンプルを使っていくつかの基本的なシナリオを検証することで、HDInsight の操作方法を学ぶことができます。これらのサンプルには、分析対象のデータ、データに対して実行するクエリなど、必要なものがすべて用意されています。概要ギャラリーのサンプルの詳細については、「[Learn Hadoop in HDInsight using the HDInsight Getting Started Gallery (HDInsight 概要ギャラリーを使用した HDInsight での Hadoop の説明)](hdinsight-learn-hadoop-use-sample-gallery.md)」をご覧ください。
+
+**サンプルを実行するには**
+
+1. Azure ポータルのスタート画面で、作成したクラスターのタイルをクリックします。
+ 
+2. [新しいクラスター] ブレードで、**[ダッシュボード]** をクリックします。プロンプトが表示されたら、クラスターの管理者のユーザー名とパスワードを入力します。
+
+	![クラスター ダッシュボードの起動](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.Cluster.Dashboard.png "クラスター ダッシュボードの起動")
+ 
+3. 開いた Web ページの **[概要ギャラリー]** タブをクリックし、**[サンプル データでのソリューション]** カテゴリで、実行するサンプルをクリックします。Web ページの指示に従ってサンプルを実行します。次の表では、いくつかのサンプルを一覧し、各サンプルについて詳しく説明します。
+
+サンプル | 内容
+------ | ---------------
+[センサー データの分析][hdinsight-sensor-data-sample] | HDInsight を使用して、暖房、換気、空調 (HVAC) システムによって生成された履歴データを処理し、設定した温度を正確に維持できないシステムを識別する方法について説明します。
+[Web サイト ログの分析][hdinsight-weblogs-sample] | HDInsight を使用して、Web サイトのログ ファイルを分析する方法について説明します。このサンプルでは、1 日の間に発生した外部 Web サイトからの Web サイトへのアクセス数を調べ、ユーザーが経験した Web サイト エラーの概要を取得します。
+[Twitter の傾向分析](hdinsight-analyze-twitter-data.md) | HDInsight を使用して、Twitter の傾向を分析する方法について説明します。
+
+
+
+##次のステップ
+この Hadoop のチュートリアルでは、HDInsight で Windows ベースの Hadoop クラスターを作成した後、そのデータ上で Hive クエリを実行し、結果を Excel にインポートする方法を説明しました。このデータは、ビジネス インテリジェンス ツールを使用してさらに処理し、グラフィカルに表示することができます。詳細については、次のチュートリアルをご覧ください。
 
 - [HDInsight Hadoop Tools for Visual Studio の使用開始][1]
 - [HDInsight Emulator の概要][hdinsight-emulator]
-- [HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]
+- [HDInsight での Azure Blob Storage の使用][hdinsight-storage]
 - [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 - [HDInsight へのデータのアップロード][hdinsight-upload-data]
 - [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
@@ -282,4 +251,4 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

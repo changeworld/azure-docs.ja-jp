@@ -14,29 +14,28 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/29/2015"
+	ms.date="12/02/2015"
 	ms.author="jgao"/>
 
 
 
-# HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する
+# HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する (Windows)
 
-HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Hive を使用してテーブルをクエリする方法について説明します。HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関するページを参照してください。
+[AZURE.INCLUDE [hbase-selector](../../includes/hdinsight-hbase-selector.md)]
 
-[AZURE.INCLUDE [hdinsight-azure-preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
 
-* [HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する](hdinsight-hbase-tutorial-get-started-v1.md)
+HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Apache Hive を使用してテーブルを照会する方法について説明します。HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関するページを参照してください。
 
-> [AZURE.NOTE]このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。Linux ベースのクラスターを使用する方法の詳細については、[hdinsight-hbase-tutorial-get-started-linux.md) を参照してください。
+> [AZURE.NOTE]このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。Linux ベースのクラスターを使用する方法については、「[HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する (Linux)](hdinsight-hbase-tutorial-get-started-linux.md)」を参照してください。
 >
 > Linux ベースの HDInsight クラスター上の HBase (バージョン 0.98.0) は、(Apache Hadoop と YARN 2.4.0 を基盤とする) HDInsight 3.1 クラスターでのみ使用できます。バージョン情報については、「[What's new in the Hadoop cluster versions provided by HDInsight? (HDInsight で提供される Hadoop クラスター バージョンの新機能)][hdinsight-versions]」を参照してください。
 
-##前提条件
+###前提条件
 
 この HBase のチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 - **Microsoft Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- Visual Studio 2013 がインストールされている**ワークステーション**: 手順については、「[Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)」を参照してください。
+- Visual Studio 2013 以降がインストールされている**ワークステーション**: 手順については、「[Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)」を参照してください。
 
 ## HBase クラスターの作成
 
@@ -44,29 +43,29 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 **Azure ポータルを使用して HBase クラスターを作成するには**
 
-
-1. [Azure プレビュー ポータル][azure-management-portal]にサインインします。
-2. 左上の **[新規]** をクリックし、**[データ + 分析]**、**[HDInsight]** の順にクリックします。
+1. [Azure ポータル][azure-management-portal]にサインインします。
+2. 左上隅の **[新規]** または **+** をクリックし、**[データ + 分析]**、**[HDInsight]** の順にクリックします。
 3. 次の値を入力します。
 
-	- **クラスター名**: このクラスターを識別するための名前を入力します。
-	- **クラスターの種類** - HBase
-	- **クラスターのオペレーティング システム** - HDInsight HBase クラスターでは、現在 Windows オペレーティング システムのみ使用できます。
-	- **サブスクリプション**: このクラスターを作成するために使用する Azure サブスクリプションを選択します。
-	- **リソース グループ**: Azure リソース グループを追加するか選択します。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
-	- **資格情報の構成**: Windows ベースのクラスターでは、クラスター ユーザー (別名 HTTP ユーザー、HTTP Web サービス ユーザー) とリモート デスクトップ ユーザーを作成できます。
-	- **データ ソース**: クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを新しく作成するか、既存の Azure ストレージ アカウントを選択します。この Azure ストレージ アカウントは、HDInsight HBase クラスターと同じ場所にある必要があります
-	- **ノード価格レベル**: HBase クラスター用のリージョン サーバーの数を選択します。
+	- **クラスター名** - このクラスターを識別するための名前を入力します。
+	- **クラスターの種類** - **[HBase]** を選択します。
+	- **クラスターのオペレーティング システム** - **[Windows]** を選択します。Linux ベースのクラスターを作成する場合は、「[HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する (Linux)](hdinsight-hbase-tutorial-get-started-linux.md)」を参照してください。
+	- **バージョン** - HBase のバージョンを選択します。
+	- **サブスクリプション** - このクラスターを作成するために使用する Azure サブスクリプションを選択します。
+	- **リソース グループ** - 新しいリソース グループを作成するか、既存のリソース グループを選択します。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」をご覧ください。
+	- **資格情報** - Windows ベースのクラスターでは、クラスター ユーザー (別名 HTTP ユーザー、HTTP Web サービス ユーザー) とリモート デスクトップ ユーザーを作成できます。リモート デスクトップ ユーザーの資格情報を追加するには、**[リモート デスクトップを有効にする]** をクリックします。次のセクションでは、RDP が必要になります。
+	- **データ ソース** - クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを新しく作成するか、既存の Azure ストレージ アカウントを選択します。既定のストレージ アカウントの場所によってクラスターの場所が決まります。既定のストレージ アカウントとクラスターは、同じデータ センター内に配置されている必要があります。
+	- **ノード料金レベル** - HBase クラスター用のリージョン サーバーの数を選択します。
 
-		> [AZURE.WARNING]HBase サービスの高可用性には、最低 **3 つ** のノードを含むクラスターを作成する必要があります。これで 1 つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
+		> [AZURE.WARNING]HBase サービスの高可用性を実現するには、最低 **3 つ**のノードを含むクラスターを作成する必要があります。これで 1 つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
 
 		> 学習目的で HBase を使用する場合は、コスト削減のため、クラスター サイズには必ず 1 を選択し、クラスターの使用後にクラスターを削除してください。
 
-	- **オプションの構成**: クラスターのバージョンの選択、Azure virtual network の構成、Hive/oozie メタストアの構成、スクリプト アクションの構成、および追加ストレージ アカウントの追加を行います。
+	- **省略可能な構成** - Azure 仮想ネットワークの構成、スクリプト アクションの構成、および追加ストレージ アカウントの追加を行います。
 
 4. **[作成]** をクリックします。
 
->[AZURE.NOTE]HBase クラスターを削除したら、同じ既定の BLOB コンテナーを使用して別の HBase クラスターを作成できます。新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。
+>[AZURE.NOTE]HBase クラスターを削除したら、同じ既定のストレージ アカウントと既定の BLOB コンテナーを使用して、別の HBase クラスターを作成できます。新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。
 
 ## HBase シェルの使用
 現在、2 つの方法で HBase にアクセスできます。このセクションでは、HBase シェルを使用する方法について説明します。次のセクションでは、.NET SDK を使用する方法について説明します。
@@ -80,7 +79,6 @@ BigTable の実装である HBase では、同じデータが次のように表�
 ![hdinsight hbase bigtable data][img-hbase-sample-data-bigtable]
 
 次の手順を完了すると、この操作をよく理解できます。
-
 
 **HBase シェルを使用するには**
 
@@ -111,7 +109,7 @@ BigTable の実装である HBase では、同じデータが次のように表�
 
 	行は 1 行のみのため、スキャン コマンドを使用した場合と同じ結果が得られます。
 
-	Hbase テーブル スキーマの詳細については、「[Introduction to HBase Schema Design (HBase スキーマの設計の概要)][hbase-schema]」をご覧ください。HBase コマンドについての詳細は、「[Apache HBase reference guide (Apache HBase リファレンス ガイド)][hbase-quick-start]」をご覧ください。
+	Hbase テーブル スキーマの詳細については、「[Introduction to HBase Schema Design (HBase スキーマの設計の概要)][hbase-schema]」を参照してください。HBase コマンドについての詳細は、「[Apache HBase reference guide (Apache HBase リファレンス ガイド)][hbase-quick-start]」をご覧ください。
 
 
 6. シェルを終了します。
@@ -155,25 +153,15 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
 5. HBase シェルを開き、スキャン コマンドを使用して、テーブルの内容の一覧を表示することができます。
 
-## クラスターの状態の確認
-
-HDInsight の HBase には、クラスターを監視するための Web UI が付属します。この Web UI を使用すると、統計情報やリージョンに関する情報を要求できます。
-
-Web UI を開くには、RDP を使用してクラスターに接続した後、デスクトップ上の HMaster Info Web UI のショートカットをクリックするか、Web ブラウザーで次の URL を使用します。
-
-	http://zookeeper[0-2]:60010/master-status
-
-高可用性クラスターの場合は、Web UI をホストしている現在アクティブな HBase マスター ノードへのリンクがあります。
 
 
+## Hive を使用して HBase テーブルを照会する
 
-## Hive を使用して HBase テーブルをクエリする
-
-Hive を使用して HBase テーブルのデータをクエリできます。このセクションでは、HBase テーブルにマッピングする Hive テーブルを作成し、作成した Hive テーブルを使用して HBase テーブルのデータをクエリします。
+Hive を使用することで、HBase に格納されたデータを照会できます。このセクションでは、HBase テーブルにマッピングする Hive テーブルを作成し、作成した Hive テーブルを使用して HBase テーブルのデータを照会します。
 
 **クラスターのダッシュボードを開くには**
 
-1. **https://<HDInsightClusterName>.azurehdinsight.net/** にアクセスします。
+1. **https://<HDInsight Cluster Name>.azurehdinsight.net/** にアクセスします。
 5. Hadoop ユーザー アカウントとパスワードを入力します。既定のユーザー名は **admin** で、パスワードは作成処理中に入力したパスワードです。新しいブラウザーのタブが開きます。
 6. ページ上部の **[Hive エディター]** をクリックします。次のような Hive エディターが開きます。
 
@@ -190,7 +178,7 @@ Hive を使用して HBase テーブルのデータをクエリできます。�
 
 	**[状態]** が **[完了]** に更新されるまで待機します。
 
-2. 次の HiveQL スクリプトを Hive エディターに入力してから、**[送信]** をクリックします。次のように Hive クエリが HBase テーブル内のデータをクエリします。
+2. 次の HiveQL スクリプトを Hive エディターに入力してから、**[送信]** をクリックします。次のように Hive クエリが HBase テーブル内のデータを照会します。
 
      	SELECT count(*) FROM hbasecontacts;
 
@@ -293,10 +281,21 @@ GitHub から HBase REST API Client Library for .NET をダウンロードして
 7. **Main** 関数の最初の 3 つの変数を設定します。
 8. **F5** キーを押してアプリケーションを実行します。
 
+## クラスターの状態の確認
+
+HDInsight の HBase には、クラスターを監視するための Web UI が付属します。この Web UI を使用すると、統計情報やリージョンに関する情報を要求できます。
+
+Web UI を開くには、RDP を使用してクラスターに接続した後、デスクトップ上の HMaster Info Web UI のショートカットをクリックするか、Web ブラウザーで次の URL を使用します。
+
+	http://zookeeper[0-2]:60010/master-status
+
+高可用性クラスターの場合は、Web UI をホストしている現在アクティブな HBase マスター ノードへのリンクがあります。
+
+
 
 
 ## 次の手順
-この HDInsight の HBase のチュートリアルでは、HBase クラスターのプロビジョニング方法、テーブルの作成方法、作成したテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータをクエリする方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
+この HDInsight の HBase のチュートリアルでは、HBase クラスターのプロビジョニング方法、テーブルの作成方法、作成したテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
 
 詳細については、次を参照してください。
 
@@ -332,4 +331,4 @@ GitHub から HBase REST API Client Library for .NET をダウンロードして
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

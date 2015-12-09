@@ -18,6 +18,11 @@
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
 [AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
@@ -27,7 +32,7 @@
 
 このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な _To do list_ アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために JavaScript を使用します。.NET でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの [.NET バックエンド バージョン]をご覧ください。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、[無料 Mobile Services を入手できます。このサービスは評価終了後も使用できます](http://azure.microsoft.com/pricing/details/mobile-services/)。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F%20 target=”\_blank”) を参照してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、[無料 Mobile Services を入手できます。このサービスは評価終了後も使用できます](http://azure.microsoft.com/pricing/details/mobile-services/)。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F%20)を参照してください。
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
@@ -35,9 +40,9 @@
 
 ## 新しい iOS アプリを作成する
 
-管理ポータルで簡単なクイック スタートに従い、モバイル サービスに接続された新しいアプリを作成できます。
+Azure クラシック ポータルで簡単なクイック スタートに従い、モバイル サービスに接続された新しいアプリを作成できます。
 
-1. 管理ポータルで、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1. [Azure クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 2. [クイック スタート] タブの [**プラットフォームの選択**] で [**iOS**] を選択し、[**新しい iOS アプリを作成する**] を展開します。これにより、モバイル サービスに接続された iOS アプリを作成するための手順が表示されます。
 
@@ -49,7 +54,7 @@
 
 [AZURE.INCLUDE [mobile-services-ios-run-app](../../includes/mobile-services-ios-run-app.md)]
 
-<ol start="4"> <li><p>管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。これで、アプリケーションによってテーブルに挿入されたデータを参照できます。<p></li></ol></p>
+<ol start="4"><li><p>[Azure クラシック ポータル]に戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。これで、アプリケーションによってテーブルに挿入されたデータを参照できます。<p></li></ol></p>
 
 ## <a name="next-steps"> </a>次のステップ
 Mobile Services で重要になるこれ以外の作業については、以下のトピックをご覧ください。
@@ -86,8 +91,8 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 
 
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-[Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [.NET バックエンド バージョン]: mobile-services-dotnet-backend-ios-get-started.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

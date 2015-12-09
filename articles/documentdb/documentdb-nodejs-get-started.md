@@ -74,9 +74,9 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 
 普段使用しているテキスト エディターで *config.js* を開きます。
 
-次に、空のオブジェクトを作成して *config* という名前を付け、プロパティの *config.endpoint* と *config.authKey* に実際の DocumentDB エンドポイントと承認キーを設定します。これらの構成はどちらも、[Azure プレビュー ポータル](https://portal.azure.com)にあります。
+次に、空のオブジェクトを作成して *config* という名前を付け、プロパティの *config.endpoint* と *config.authKey* に実際の DocumentDB エンドポイントと承認キーを設定します。これらの構成はどちらも [Azure ポータル](https://portal.azure.com)にあります。
 
-![DocumentDB アカウントを示す、アクティブなハブ、[DocumentDB アカウント] ブレードの [キー] ボタン、[キー] ブレードの URI の値、プライマリ キーの値、およびセカンダリ キーの値が強調表示されている Azure プレビュー ポータルのスクリーン ショット][keys]
+![Screen shot of the Azure Portal, showing a DocumentDB account, with the ACTIVE hub highlighted, the KEYS button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade][keys]
 
     var config = {}
 
@@ -212,7 +212,7 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 
 ##<a id="CreateColl"></a>手順 6: コレクションを作成する  
 
-> [AZURE.WARNING]**CreateDocumentCollectionAsync** は新しい S1 コレクションを作成します。これによって価格に影響があります。詳細については、[料金のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
+> [AZURE.WARNING]**CreateDocumentCollectionAsync** は新しい S1 コレクションを作成します。これによって価格に影響があります。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
 
 [コレクション](documentdb-resources.md#collections)は、**DocumentClient** クラスの [createCollection](https://azure.github.io/azure-documentdb-node/DocumentClient.html) 関数を使用して作成できます。コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。新しく作成されたコレクションは、[S1 パフォーマンス レベル](documentdb-performance-levels.md)にマップされます。app.js ファイルに新しいコレクションを作成するための関数を追加し、*config* オブジェクトで *ID* を指定します。ここでも、同じ *FamilyCollection* ID を持つコレクションが存在しないことが確認されます。存在する場合は、新しいコレクションを作成する代わりに、そのコレクションが返されます。
 
@@ -442,4 +442,4 @@ npm で **documentdb** モジュールをインストールします。コマン
 
 [keys]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

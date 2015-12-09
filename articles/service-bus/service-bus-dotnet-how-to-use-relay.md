@@ -39,11 +39,11 @@ Azure で Service Bus Relay を使用するには、最初にサービス名前�
 
 サービス名前空間を作成するには:
 
-1.  [Azure ポータル][]にログオンします。
+1.  [Azure クラシック ポータル][]にログオンします。
 
-2.  Azure ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
+2.  ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
-3.  Azure ポータルの下のウィンドウで、**[作成]** をクリックします。
+3.  ポータルの下のウィンドウで、**[作成]** をクリックします。
 
 	![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png)
 
@@ -59,11 +59,11 @@ Azure で Service Bus Relay を使用するには、最初にサービス名前�
 
 	![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-27.png)
 
-	作成した名前空間が Azure ポータルに表示され、アクティブになります。これには少し時間がかかります。ステータスが **[アクティブ]** になるのを待ってから、次に進みます。
+	作成した名前空間がポータルに表示され、アクティブになります。これには少し時間がかかります。ステータスが **[アクティブ]** になるのを待ってから、次に進みます。
 
 ## 名前空間の既定の管理資格情報の取得
 
-新規作成した名前空間に対してリレー接続の作成などの管理操作を実行するには、名前空間の共有アクセス署名 (SAS) の承認規則を構成する必要があります。SAS の詳細については、「[Service Bus での共有アクセス署名認証][]」を参照してください。
+新規作成した名前空間に対してリレー接続の作成などの管理操作を実行するには、名前空間の Shared Access Signature (SAS) の承認規則を構成する必要があります。SAS の詳細については、「[Service Bus での Shared Access Signature 認証][]」を参照してください。
 
 1.  左側のナビゲーション ウィンドウで **[Service Bus]** ノードをクリックして、利用可能な名前空間の一覧を表示します。![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png)
 
@@ -273,9 +273,9 @@ using (var ch = cf.CreateChannel())
   [Obtain the Default Management Credentials for the Namespace]: #obtain_credentials
   [Get the Service Bus NuGet Package]: #get_nuget_package
   [How to: Use Service Bus to Expose and Consume a SOAP Web Service  with TCP]: #how_soap
-  [Azure ポータル]: http://manage.windowsazure.com
-  [Service Bus での共有アクセス署名認証]: service-bus-shared-access-signature-authentication.md
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
+  [Service Bus での Shared Access Signature 認証]: service-bus-shared-access-signature-authentication.md
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
   [Service Bus サンプルの概要]: service-bus-samples.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

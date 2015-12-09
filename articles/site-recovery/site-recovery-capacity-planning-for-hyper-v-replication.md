@@ -1,242 +1,140 @@
 <properties
-	pageTitle="Hyper-V レプリケーションの容量計画"
-	description="この記事には Azure Site Recovery の容量計画ツールを使用する方法と Hyper-V レプリケーションの容量計画のためのリソースが記載されています。"
+	pageTitle="Hyper-V 仮想マシンのレプリケーションの容量計画"
+	description="この記事には、Azure Site Recovery の Hyper-V Capacity Planner ツールの使用方法を示す手順が含まれています。"
 	services="site-recovery"
 	documentationCenter="na"
-	authors="csilauraa"
+	authors="rayne-wiselman"
 	manager="jwhit"
-	editor="tysonn" />
+	editor="" />
 <tags
 	ms.service="site-recovery"
 	ms.devlang="na"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/05/2015"
-	ms.author="lauraa" />
+	ms.workload="storage-backup-recovery"
+	ms.date="12/01/2015"
+	ms.author="raynew" />
 
-# Hyper-V レプリケーションの容量計画
+# Hyper-V 仮想マシンのレプリケーションの容量計画
 
-Azure Site Recovery は Hyper-V レプリカを利用し、オンプレミスの VMM サイト間またはオンプレミス VMM サーバーと Azure ストレージの間で複製を行います。この記事では、Capacity planner for Azure Site Recovery (ASR) - Hyper-V Replica ツールの利用方法について段階的に説明します。Capacity Planner for ASR - Hyper-V Replica ツールを利用すれば、IT 管理者は Hyper-V レプリカを展開し、2 つのサイト間のネットワーク接続を検証するために必要なサーバー、ストレージ、ネットワークのインフラストラクチャを設計できます。
+Azure Site Recovery では、Hyper-V レプリカを使用して、Hyper-V 仮想マシンをオンプレミスのサイトから Azure またはセカンダリ データ センターにレプリケートします。Site Recovery の Capacity Planner ツールを使用すると、Hyper-V 仮想マシンのレプリケーションにおけるレプリケーション要件および帯域幅要件を容易に算出することができます。
 
-## システム要件
+## 開始する前に
+
+プライマリ サイトの Hyper-V サーバーまたはクラスター ノードでツールを実行します。ツールを実行するには、Hyper-V ホスト サーバーが次の要件を満たしている必要があります。
+
 - オペレーティング システム: Windows Server ® 2012 または Windows Server ® 2012 R2
 - メモリ: 20 MB (最小)
 - CPU: 5% オーバーヘッド (最小)
 - ディスク領域: 5 MB (最小)
 
-## チュートリアルの手順
-- 手順 1: プライマリ サイトを準備します。
-- 手順 2: 復旧サイトがオンプレミスの場合、復旧サイトを準備します。
-- 手順 3: 容量計画ツールを実行します。
-- 手順 4: 結果を解釈します。
+このツールを実行する前に、プライマリ サイトの準備を行う必要があります。2 つのオンプレミスのサイト間でレプリケートする場合に帯域幅を確認するには、レプリカ サーバーの準備も必要です。
+
 
 ## 手順 1: プライマリ サイトを準備します。
-1. 複製を可能にするために必要な Hyper-V 仮想マシンとそれに対応するプライマリ Hyper-V ホスト/クラスターの全リストを作成します。
-2. プライマリ Hyper-V のホストとクラスターを次のいずれかのグループに分けます。
+1. プライマリ サイトでは、レプリケートする Hyper-V 仮想マシンと、それらが配置されている Hyper-V ホスト/クラスターとをすべて掲載した一覧を作成します。ツールは毎回、複数のスタンドアロン サーバー ホストに対して、または単一のクラスターに対して実行できますが、両方に対して同時に実行することはできません。また、ツールはオペレーティング システムごとに別々に実行する必要があります。したがって、Hyper-V サーバーを次のようにまとめてメモしておく必要があります。 
 
   - Windows Server ® 2012 スタンドアロン サーバー
   - Windows Server ® 2012 クラスター
   - Windows Server ® 2012 R2 スタンドアロン サーバー
   - Windows Server ® 2012 R2 クラスター
 
-3. スタンドアロン サーバー グループごとに 1 回とクラスターごとに 1 回、容量計画ツールを実行する必要があります。
-4. すべてのプライマリ ホスト/クラスターで WMI へのリモート アクセスを有効にします。一連のファイアウォール ルールとユーザー アクセス許可が正しく設定されていることを確認します。
+3. すべての Hyper-V ホストおよびクラスターで WMI へのリモート アクセスを有効にします。次のコマンドを各サーバー/クラスターで実行して、ファイアウォール規則とユーザー アクセス許可が設定されていることを確認します。
 
         netsh firewall set service RemoteAdmin enable
 
-5. プライマリ ホストでパフォーマンス監視を有効にします。
+5. 次のように、サーバーおよびクラスター上でパフォーマンスの監視を有効にします。
 
-  - **高度なセキュリティ** スナップインで **Windows ファイアウォール**を開き、次の受信ルールを有効にします。
-    - COM+ ネットワーク アクセス (DCOM-IN)
-    - リモート イベント ログ管理グループのすべてのルール
+  - **高度なセキュリティ** スナップインで Windows ファイアウォールを開き、次の受信ルールを有効にします: **COM + ネットワーク アクセス (DCOM-IN)** と **リモート イベント ログの管理グループ**のすべての規則。
 
-## 手順 2: 復旧サイトを準備します。
-Azure を復旧サイトとして利用している場合、あるいはオンプレミスの復旧サイトがまだ用意できていない場合、このセクションは省略できます。ただし、省略した場合、2 つのサイト間で利用できる帯域幅を測定できなくなります。
+## 手順 2: レプリカ サーバーを準備します (オンプレミス間のレプリケーション)
 
-1. 認証方法の特定
+Azure にレプリケートする場合、この手順は必要ありません。
 
-	a.Kerberos: プライマリと復旧の両方の Hyper-V ホストが同じドメインにあるか、互いに信頼できるドメインにあるときに使用します。
+1 つの Hyper-V ホストを復旧サーバーとしてセットアップすることをお勧めします。そうすれば、そのサーバーにダミーの VM をレプリケートすることで帯域幅を調べることができます。この作業は省略しても構いませんが、この作業を行わない限り帯域幅を測定することはできません。
 
-	b.証明書: プライマリと復旧の Hyper-V ホストが異なるドメインにあるときに使用します。証明書は makecert を利用して作成できます。この手法で証明書を展開するための手順については、ブログ投稿の「[Hyper-V Replica Certificate Based Authentication - makecert](http://blogs.technet.com/b/virtualization/archive/2013/04/13/hyper-v-replica-certificate-based-authentication-makecert.aspx)」を参照してください。
+1. クラスター ノードをレプリカとして使用する場合は、Hyper-V レプリカ ブローカーを構成します。
 
-2. 復旧サイトの復旧 Hyper-V ホスト/クラスターを **1 つ**特定します。
+	- **[サーバー マネージャー]** で、**[フェールオーバー クラスター マネージャー]** を開きます。
+	- クラスターに接続し、クラスター名を強調表示し、**[アクション]**、**[ロールの構成]** の順にクリックし、[高可用性ウィザード] を開きます。
+	- **[ロールの選択]** で、**[Hyper-V レプリカ ブローカー]** をクリックします。このウィザードでは、**[NetBIOS 名]** とクラスターの接続ポイントとして使用する **[IP アドレス]** (クライアント アクセス ポイントと呼ばれます) を指定します。**Hyper-V レプリカ ブローカー**が構成され、クライアント アクセス ポイント名が生成されます。この名前はメモする必要があります。 
+	- Hyper-V レプリカ ブローカーのロールがオンラインになることとクラスターの全ノード間でフェールオーバーできることを検証します。これを行うには、ロールを右クリックし、**[移動]** をポイントし、**[ノードの選択]** をクリックします。ノードを選択し、**[OK]** を選択します。 
+	- 証明書ベースの認証を使用する場合は、各クラスター ノードとクライアント アクセス ポイントのすべてに証明書がインストールされていることを確認します。
+2.  レプリカ サーバーを有効にします。
 
-	a.この復旧ホスト/クラスターはダミー仮想マシンを複製し、プライマリ サイトとセカンダリ サイトの間で利用できる帯域幅を見積もるために利用されます。
+	- クラスターの場合は、障害クラスター マネージャーを開き、クラスターに接続し、**[ロール]** をクリックしてロールを選択し、**[レプリケーション設定]**、**[レプリカ サーバーとしてこのクラスターを有効にする]** の順にクリックします。クラスターをレプリカとして使用する場合は、プライマリ サイト内のクラスターにも Hyper-V レプリカ ブローカーのロールが存在する必要があるので注意してください。
+	- スタンドアロン サーバーの場合は、Hyper-V マネージャーを開きます。**[アクション]** ウィンドウで、有効にするサーバーの **[Hyper-V の設定]** をクリックし、**[レプリケーションの構成]** で **[レプリカ サーバーとしてこのコンピューターを有効にする]** をクリックします。
+3. 認証をセットアップします。
 
-	b.**推奨**: 単一復旧 Hyper-V ホストを利用してテストを実行します。
+	- **[認証とポート]** で、プライマリ サーバーを認証する方法と、認証ポートを選択します。証明書を使用する場合は、**[証明書の選択]** をクリックしていずれかを選択します。プライマリと復旧の両方の Hyper-V ホストが同じドメインにあるか、信頼できるドメインにある場合は、Kerberos を使用します。ドメインまたはワークグループのデプロイメントが異なる場合は証明書を使用します。
+	- **[認証とストレージ]** セクションで、**任意**の認証済み (プライマリ) サーバーにこのレプリカ サーバーに複製データを送信することを許可します。**[OK]** または **[適用]** をクリックします。
 
-### 復旧サーバーとして Hyper-V ホストを 1 つ準備します。
-1. Hyper-V Manager の **[アクション]** ウィンドウで **[Hyper-V 設定]** をクリックします。
-2. **[Hyper-V 設定]** ダイアログで、**[レプリケーション構成]** をクリックします。
-3. [詳細] ウィンドウで、**[レプリカ サーバーとしてこのコンピューターを有効にする]** を選択します。
-4. **[認証とポート]** セクションで、前に選択した認証方法を選択します。いずれの認証方法の場合でも、使用するポートを指定します (HTTP の Kerberos の場合、既定のポートは 80 で、HTTPS の証明書基準認証の場合、既定のポートは 443 です)。
-5. 証明書基準認証を利用している場合、**[証明書の選択]** をクリックし、証明書情報を入力します。
-6. **[認証とストレージ]** セクションで、**任意**の認証済み (プライマリ) サーバーにこのレプリカ サーバーに複製データを送信することを許可します。
-7. **[OK]** または **[適用]** をクリックします。
+	![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image1.png)
 
-![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image1.png)
-
-8. コマンド「netsh http show servicestate」を実行し、https リスナーが実行されていることを検証します。
-9. ファイアウォール ポートを開きます。
-
-        Port 443 (certificae-based authentication):
-          Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"
-
-
-        Port 80 (Kerberos):
-          Enable-Netfirewallrule -displayname "Hyper-V Replica HTTP Listener (TCP-In)"
-
-### 復旧ターゲットとして Hyper-V クラスターを 1 つ準備します。
-復元サーバーとしてスタンドアロン Hyper-V ホストを既に用意している場合、このセクションを省略できます。
-
-1. Hyper-V レプリカ ブローカーを構成します。
-
-	a.**[サーバー マネージャー]** で、**[フェールオーバー クラスター マネージャー]** を開きます。
-
-	b.左ウィンドウで、クラスターに接続します。クラスター名が強調表示されている状態で **[アクション]** ウィンドウの **[役割の構成]** をクリックします。**[高可用性ウィザード]** が開きます。
-
-	c.**[役割の選択]** 画面で、**[Hyper-V レプリカ ブローカー]** を選択します。
-
-	d.**[NetBIOS 名]** とクラスターの接続ポイントとして使用する **[IP アドレス]** (クライアント アクセス ポイントと呼ばれます) を指定し、ウィザードを完了します。 **Hyper-V レプリカ ブローカー**が構成されます。クライアント アクセス ポイント名が指定されます。クライアント アクセス ポイント名をメモしておいきます。後でレプリカの構成時に使用します。
-
-	e.Hyper-V レプリカ ブローカーのロールがオンラインになることとクラスターの全ノード間でフェールオーバーできることを検証します。これを行うには、ロールを右クリックし、**[移動]** をポイントし、**[ノードの選択]** をクリックします。ノードを選択し、**[OK]** を選択します。
-
-	f.証明書基準の認証を使用する場合、各クラスター ノードと Hyper-V レプリカ ブローカーのクライアント アクセス ポイントに証明書がインストールされていることを確認します。
-
-2. レプリカ設定を構成します。
-
-	a.**[サーバー マネージャー]** で、**[フェールオーバー クラスター マネージャー]** を開きます。
+	- **netsh http show servicestate** を実行して、指定したプロトコル/ポートに対してリスナーが実行されていることを確認します。  
+4. ファイアウォールをセットアップします。Hyper-V のインストール時には、既定のポートでトラフィックを許可するように (443 では HTTPS、80 では Kerberos)、ファイアウォール規則が作成されます。次のように、これらのルールを有効にします。
 	
-	b.左ウィンドウで、クラスターに接続します。クラスター名が強調表示されている状態で **[詳細]** ウィンドウの **[移動]** カテゴリの **[役割]** をクリックします。
-	
-	c.ロールを右クリックし、**[レプリケーション設定]** を選択します。
-	
-	d.**[詳細]** ウィンドウで、**[レプリカ サーバーとしてこのクラスターを有効にする]** を選択します。
-
-	e.**[認証とポート]** セクションで、前に選択した認証方法を選択します。いずれの認証方法の場合でも、使用するポートを指定します (HTTP の Kerberos の場合、既定のポートは 80 で、HTTPS の証明書基準認証の場合、既定のポートは 443 です)。
-
-	f.証明書基準認証を利用している場合、**[証明書の選択]** をクリックし、要求された証明書情報を入力します。
-
-	g.**[認証とストレージ]** セクションで、**任意**の認証済み (プライマリ) サーバーにこのレプリカ サーバーに複製データを送信することを許可するかどうか、あるいは特定のプライマリ サーバーからのデータに受け入れを制限するかどうかを指定します。ワイルドカード文字を利用し、特定のドメインからのサーバーに受け入れを制限できます。個々に指定する必要がありません (たとえば、*.contoso.com)。
-
-	h.すべての復旧 Hyper-V ホストでファイアウォール ポートを開きます。Port 443 (Certificate auth): Get-ClusterNode | ForEach-Object {Invoke-command -computername \\$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"}}
-
-
-          Port 80 (Kerberos auth):
-              Get-ClusterNode | ForEach-Object {Invoke-command -computername \$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTP Listener (TCP-In)"}}
-
+		- Certificate authentication on cluster (443): **Get-ClusterNode | ForEach-Object {Invoke-command -computername \$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"}}**
+		- Kerberos authentication on cluster (80): **Get-ClusterNode | ForEach-Object {Invoke-command -computername \$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTP Listener (TCP-In)"}}**
+		- Certificate authentication on standalone server: **Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"**
+		- Kerberos authentication on standalone server: **Enable-Netfirewallrule -displayname "Hyper-V Replica HTTP Listener (TCP-In)"**
 
 ## 手順 3: 容量計画ツールを実行します。
-1. 容量計画ツールをダウンロードします。
+
+プライマリ サイトを準備し、回復サーバーをセットアップすると、ツールを実行できます。
+
+1. Microsoft Download Center からツールを[ダウンロード](https://www.microsoft.com/download/details.aspx?id=39057)します。
 2. いずれかのプライマリ サーバー (またはプライマリ クラスターのノード) からツールを実行します。.exe ファイルを右クリックし、**[管理者として実行]** を選択します。
-3. **[利用規約]** を受諾し、**[次へ]** をクリックします。
-4. **[メトリック収集の実行時間]** を選択します。最も代表的なデータが収集されるように本稼動時間にツールを実行することが推奨されます。メトリック収集の推奨時間は 30 分です。ネットワーク接続を検証するだけの場合、時間として 1 分を選択できます。
+3. **[開始する前に]** で、データを収集する期間を指定します。代表的なデータが対象となるように、業務時間中にツールを実行することをお勧めします。ネットワーク接続を検証するだけである場合は、数分の収集にとどめることもできます。
 
-![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image2.png)
+	![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image2.png)
 
-5. 画像のように **[プライマリ サイトの詳細]** を指定し、**[次へ]** をクリックします。
+4. **[プライマリ サイトの詳細]** で、スタンドアロン ホストの場合はサーバー名または FQDN を指定し、クラスターの場合はクライアント アクセス ポイントの FQDN、クラスター名、またはクラスター内の任意のノードを指定してから、**[次へ]** をクリックします。ツールは、それが実行されているサーバーの名前を自動的に検出します。このツールは、指定されたサーバーについて監視できる仮想マシンを取得します。
 
-	スタンドアロン ホストの場合、サーバー名または FQDN を入力します。
+	![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image3.png)
 
-	プライマリ ホストがクラスターに属する場合、次のいずれかの FQDN を入力できます。
+5. Azure にレプリケートする場合またはセカンダリ データ センターにレプリケートする場合で、レプリカ サーバーをセットアップしていないときは、**[レプリカ サイトの詳細]** の **[レプリカ サイトに関連するテストをスキップする]** を選択します。セカンダリ データ センターにレプリケートする場合で、レプリカ サーバーをセットアップ済みであるときは、**[サーバー名 (または) Hyper-V レプリカ ブローカー CAP]** にスタンドアロン サーバーの FQDN またはクラスターのクライアント アクセス ポイントの FQDN を入力します。
 
-	a.Hyper-V レプリカ ブローカーのクライアント アクセス ポイント (CAP)
+	![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image4.png)
 
-	b.クラスター名
+6. **[拡張レプリカの詳細]** の **[拡張レプリカ サイトに関連するテストをスキップする]** を有効にします。これらは、Site Recovery によってサポートされていません。
+7. **[レプリケートする VM を選択]** では、ツールは **[プライマリ サイトの詳細]** ページで指定された設定に従って、サーバーまたはクラスターに接続し、プライマリ サーバー上で動作している VM およびディスクを表示します。レプリケーションが既に有効になっている VM または動作していない VM は表示されないので注意してください。メトリックを収集する VM を選択します。VHD を選択すると、VM のデータも自動的に収集されます。
+9. レプリカ サーバーまたはクラスターが構成済みである場合、**[ネットワーク情報]** では、プライマリ サイトとレプリカ サイト間で使用されると考えられるおおよその WAN 帯域幅を指定し、さらに証明書認証が構成済みである場合には証明書を選択します。
 
-	c.クラスターの任意のノード
+	![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image5.png)
 
-  ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image3.png)
+10. **[サマリー]** では、設定内容を確認し、**[次へ]** をクリックしてメトリックスの収集を開始します。**[容量の計算]** ページにはツールの進行状況と状態が表示されます。ツールの実行が完了したら、**[レポートの表示]** をクリックし、出力を確認します。既定では、レポートとログは **%systemdrive%\\Users\\Public\\Documents\\Capacity Planner** に格納されます。
 
+	![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image6.png)
 
-6. **[レプリカ サイトの詳細]** を入力します (オンプレミス サイト間のレプリケーションのみ)
-
-  Azure へのレプリケーションを有効にするか、Hyper-V ホストまたはクラスターを復旧サイトとして準備しなかった場合 (手順 2 に説明あり)、レプリカ サイトが関連するテストを省略してください。
-
-  **[レプリカ サイト]** 詳細を指定し、**[次へ]** をクリックします。
-
-i.スタンドアロン ホストの場合、サーバー名または FQDN を入力します。
-
-ii.プライマリ ホストがクラスターに属する場合、次のいずれかの FQDN を入力できます。
-
-a.Hyper-V レプリカ ブローカーのクライアント アクセス ポイント (CAP)
-
-b.クラスター名
-
-c.クラスターの任意のノード
-
-   ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image4.png)
-
-7. **拡張レプリカ サイト**が関連するテストを省略します。そのようなテストには ASR は対応していません。
-8. プロファイルする仮想マシンを選択します。このツールは **[プライマリ サイトの詳細]** に指定されたクラスターまたはスタンドアロン サーバーに接続し、実行されている仮想マシンを列挙します。メトリックを収集する仮想マシンと仮想ディスクを選択します。
-
-次の仮想マシンは列挙されず、表示されません。
-
-- レプリケーションが既に有効になっている仮想マシン
-- 実行されていない仮想マシン
-
-9. **[ネットワーク情報]** を入力します (これはオンプレミス間のレプリケーションのときとレプリカ サイト詳細が指定されているときにのみ該当します)。
-
-要求されたネットワーク情報を指定し、**[次へ]** をクリックします。
-
-- WAN 帯域幅の見積もり
-- 認証に使用される証明書 (任意): 証明書基準の認証を利用する場合、このページに必要な証明書を指定する必要があります。
-
-   ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image5.png)
-
-10. 次の一連の画面で、**[次へ]** をクリックしてツールを起動します。
-
-![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image6.png)
-
-11. ツールの実行が完了したら、**[レポートの表示]** をクリックし、出力を確認します。
-
-    既定のレポートの場所:
-
-    %systemdrive%\\Users\\Public\\Documents\\Capacity Planner
-
-    ログの場所:
-
-    %systemdrive%\\Users\\Public\\Documents\\CapacityPlanner
 
 ## 手順 4: 結果を解釈します。
-次の 2 つのシナリオのいずれかでリストアップされないメトリックはこのシナリオが関連しないため、無視できます。
+重要なメトリックスは次のとおりです。ここに一覧されていないメトリックスは無視して構いません。Site Recovery とは関連がないからです。
 
-### オンプレミス サイト間のレプリケーション
+### オンプレミス間のレプリケーション
   - プライマリ ホストのコンピューティングとメモリに対するレプリケーションの影響
   - プライマリ、復旧ホストのストレージ ディスク領域、IOPS に対するレプリケーションの影響
   - デルタ レプリケーション (Mbps) に必要な帯域幅の合計
   - プライマリ ホストと復旧ホストの間で観察されたネットワーク帯域幅 (Mbps)
   - 2 つのホスト/クラスター間の有効な並列転送の理想的な数に関する提案
 
-### オンプレミス サイトと Azure の間のレプリケーション
+### オンプレミスから Azure へのレプリケーション
   - プライマリ ホストのコンピューティングとメモリに対するレプリケーションの影響
   - プライマリ ホストのストレージ ディスク領域と IOPS に対するレプリケーションの影響
   - デルタ レプリケーション (Mbps) に必要な帯域幅の合計
 
-詳細なガイダンスは [Capacity Planner for Hyper-V Replica ダウンロード ページ](http://go.microsoft.com/?linkid=9876170)にあります。
-
 ## その他のリソース
-次のリソースは Hyper-V レプリケーションの容量計画に役立ちます。
 
-- [更新: Capacity Planner for Hyper-V Replica](http://go.microsoft.com/fwlink/?LinkId=510891) - この新しいツールの概要についてはこのブログをお読みください。
+- ツールの詳細については、ダウンロード時にツールに付いてきたドキュメントを参照してください。
+- ツールのチュートリアルについては、Keith Mayer の [TechNet ブログ](http://blogs.technet.com/b/keithmayer/archive/2014/02/27/guided-hands-on-lab-capacity-planner-for-windows-server-2012-hyper-v-replica.aspx)を参照してください。
+- オンプレミス間の Hyper-V レプリケーションに関する弊社のパフォーマンス テストの結果については、[こちら](http://blogs.technet.com/b/keithmayer/archive/2014/02/27/guided-hands-on-lab-capacity-planner-for-windows-server-2012-hyper-v-replica.aspx)を参照してください。
 
-- [Capacity Planner for Hyper-V Replica](http://go.microsoft.com/fwlink/?LinkId=510892) - このツールの最新版をダウンロードします。
-
-- [Guided Hands-On Lab](http://go.microsoft.com/fwlink/?LinkId=510893) - Keith Mayer の TechNet ブログでは、このツールで容量を計画する方法が段階的に説明されています。
-
-- [Performance and Scaling Testing - On-Premises to On-Premises](https://msdn.microsoft.com/library/azure/dn760892.aspx) - オンプレミス間のデプロイのレプリケーション テストの結果についてお読みください。
 
 
 ## 次のステップ
 
-ASR のデプロイを開始する際は、次の記事を参照してください。
-
 - [オンプレミスの VMM サイトと Azure 間の保護の設定](site-recovery-vmm-to-azure.md)
-- [Set up protection between an on-premises Hyper-V site and Azure (オンプレミスの Hyper-V サイトと Azure 間の保護の設定)](site-recovery-hyper-v-site-to-azure)
-- [Set up protection between two on-premises VMM sites (2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-to-vmm)
-- [Set up protection between two on-premises VMM sites with SAN (SAN を使用した 2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-san)
-- [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm)
- 
+- [Set up protection between an on-premises Hyper-V site and Azure (オンプレミスの Hyper-V サイトと Azure 間の保護の設定)](site-recovery-hyper-v-site-to-azure.md)
+- [Set up protection between two on-premises VMM sites (2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-to-vmm.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -15,7 +15,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="09/21/2015"
+	ms.date="11/30/2015"
 	ms.author="jgao"/>
 
 # HDInsight Tools for Visual Studio を使用して Hive クエリを実行する
@@ -68,7 +68,7 @@ HDInsight Tools for Visual Studio を使用して、HDInsight クラスターへ
 
 	>[AZURE.NOTE]**[HDInsight タスク一覧]** ウィンドウが開きます。ウィンドウが表示されない場合は、**[ビュー]** メニューで **[その他のウィンドウ]** をクリックし、次に **[HDInsight タスク一覧ウィンドウ]** をクリックします。  
 4.	Azure サブスクリプションの資格情報を入力し、**[サインイン]** をクリックします。この操作は、このワークステーションで、まだ一度も Visual Studio から Azure サブスクリプションに接続していない場合にのみ必要です。
-5.	サーバー エクスプローラーに、既存の HDInsight クラスターの一覧が表示されます。クラスターが 1 つもない場合は、Azure プレビュー ポータル、Azure PowerShell、HDInsight SDK を使用してプロビジョニングできます。詳細については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」をご覧ください。
+5.	サーバー エクスプローラーに、既存の HDInsight クラスターの一覧が表示されます。クラスターが 1 つもない場合は、Azure ポータル、Azure PowerShell、または HDInsight SDK を使用してプロビジョニングできます。詳細については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」をご覧ください。
 
 	![Hadoop ツール: HDInsight Tools for Visual Studio サーバー エクスプローラー クラスターの一覧][5]
 6.	HDInsight クラスターを展開します。**Hive データベース**、既定のストレージ アカウント、リンクされたストレージ アカウント、**Hadoop サービス ログ**が表示されます。さらに、エンティティを展開できます。
@@ -194,6 +194,17 @@ HDInsight クラスター バージョン 3.2 以降では、**[HiveServer2 か�
  
 ![hdinsight visual studio tools fast path hive execution](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.fast.path.hive.execution.png)
 
+**HiveServer2 を使用したクエリの実行と WebHCat を使用したクエリの送信の違い**
+
+HiveServer2 を使用してクエリを実行した場合、パフォーマンス上の利点は多数ありますが、いくつかの制限もあります。制限の一部は、運用環境での使用に適していません。その違いを次の表に示します。
+
+| |HiveServer2 を使用して実行した場合 |WebHCat を使用して送信した場合|
+|---|---|---|
+|クエリの実行|WebHCat のオーバーヘッドが解消されます (これにより、"TempletonControllerob" という名前の MapReduce ジョブが開始されます)。|クエリが WebHCat を使用して実行される間、WebHCat によって MapReduce ジョブが開始されるため、待機時間がさらに長くなります。|
+|ログの再ストリーミング|ほぼリアルタイムで行われます。|ジョブの実行ログを利用できるのは、ジョブが完了したときのみです。|
+|ジョブ履歴の表示|HiveServer2 を使用してクエリを実行する場合、そのジョブ履歴 (ジョブのログ、ジョブの出力) は保持されません。アプリケーションは YARN UI で表示できますが、情報は限定的です。|WebHCat を使用してクエリを実行する場合、そのジョブ履歴 (ジョブのログ、ジョブの出力) は保持され、Visual Studio、HDInsight SDK、PowerShell を使用して表示できます。 |
+|ウィンドウを閉じる| 	HiveServer2 を使用した実行は "同期的な" 方法であるため、ウィンドウを開いたままにしておく必要があります。ウィンドウを閉じると、クエリの実行は取り消されます。|WebHCat を使用した送信は "非同期的な" 方法であるため、WebHCat を使用してクエリを送信し、Visual Studio を終了することができます。結果は、いつでも戻って確認できます。|
+
 
 ### Tez Hive ジョブのパフォーマンス グラフ
 
@@ -258,4 +269,4 @@ HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -32,7 +32,7 @@
 
 次の図に、完成したアプリケーションを示します。
 
-![Web アプリのホーム ページ](./media/web-sites-dotnet-get-started/deployedandazure.png)
+![Web app home page](./media/web-sites-dotnet-get-started/deployedandazure.png)
 
 学習内容:
 
@@ -40,7 +40,7 @@
 * ASP.NET MVC 5 Web プロジェクトの作成時に新しい App Service Web アプリを作成するように Visual Studio を設定する方法。
 * Visual Studio を使用して、App Service Web アプリに WEB プロジェクトをデプロイする方法。
 * Visual Studio **サーバー エクスプローラー** を使用して、リモート ファイルを開き、リモート デバッグ セッションを開始する方法。 
-* [Azure ポータル](/overview/preview-portal/)を使用して Web アプリを監視および管理する方法。
+* [Azure ポータル](/overview/preview-portal/)を使用して Web アプリを監視および管理する方法
 
 > [AZURE.NOTE]このチュートリアルでは、Azure App Service と共に ASP.NET を使用する方法を説明しており、ASP.NET Web アプリケーションの開発方法については扱っていません。ASP.NET MVC 5 の概要については、[ASP.NET](http://asp.net/) サイトの [ASP.NET MVC 5 の使用](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)に関するページを参照してください。Azure App Service の使用方法についてより詳しく説明している他の記事へのリンクについては、「[次のステップ](#next-steps)」セクションを参照してください。
 > 
@@ -51,9 +51,9 @@
 このチュートリアルを完了するには、Azure アカウントが必要です。そのための方法は次のとおりです。
 
 * [無料で Azure アカウントを開きます](/pricing/free-trial/?WT.mc_id=A261C142F)。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Azure App Service の Web Apps 機能など、無料の Azure サービスと機能を利用できます。
-* [MSDN サブスクライバーの特典を有効にします](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+* [Visual Studio サブスクライバーの特典を有効にします](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。Visual Studio サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 
-Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 次のビデオでは、Scott Hanselman が Microsoft Azure の無料試用版に簡単にサインアップできることを説明します。(時間: 1:58)
 
@@ -67,7 +67,7 @@ Azure アカウントにサインアップする前に Azure App Service の使�
 
 次の図では、作成とデプロイの手順の内容を示しています。
 
-![作成およびデプロイ](./media/web-sites-dotnet-get-started/Create_App.png)
+![Create and deploy](./media/web-sites-dotnet-get-started/Create_App.png)
 
 1. Visual Studio 2015 または Visual Studio 2013 を開きます。
 
@@ -85,8 +85,7 @@ Azure アカウントにサインアップする前に Azure App Service の使�
 
 5. **[OK]** をクリックします。
 
-	![[新しいプロジェクト] ダイアログ ボックス  
-](./media/web-sites-dotnet-get-started/GS13newprojdb.png)
+	![New Project dialog box](./media/web-sites-dotnet-get-started/GS13newprojdb.png)
 
 5. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択します。
 
@@ -94,29 +93,27 @@ Azure アカウントにサインアップする前に Azure App Service の使�
 
 7. **[認証の変更]** をクリックします。
 
-	![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/web-sites-dotnet-get-started/GS13changeauth.png)
+	![New ASP.NET Project dialog box](./media/web-sites-dotnet-get-started/GS13changeauth.png)
 
 6. **[認証の変更]** ダイアログ ボックスで、**[認証なし]** をクリックし、**[OK]** をクリックします。
 
-	![[認証なし]](./media/web-sites-dotnet-get-started/GS13noauth.png)
+	![No Authentication](./media/web-sites-dotnet-get-started/GS13noauth.png)
 
 	作成しているサンプル アプリケーションでは、ユーザーはログインできません。「[次のステップ](#next-steps)」セクションは、認証と承認を実装するチュートリアルにリンクしています。
 
 5. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[Microsoft Azure]** の設定はそのままにして、**[OK]** をクリックします。
 
-	![[新しい ASP.NET プロジェクト] ダイアログ ボックス  
-](./media/web-sites-dotnet-get-started/GS13newaspnetprojdb.png)
+	![New ASP.NET Project dialog box](./media/web-sites-dotnet-get-started/GS13newaspnetprojdb.png)
 
 	既定の設定は、Visual Studio が Web プロジェクトのための Azure Web アプリを作成することを指定しますチュートリアルの次のセクションでは、Web プロジェクトを新しく作成した Web アプリにデプロイします。
 
 5. Azure にまだサインインしていない場合は、サインインを求めるメッセージが表示されます。Azure サブスクリプションを管理するために使用するアカウントの ID とパスワードを使用してサインインします。
 
-	サインインすると、**[Microsoft Azure Web アプリの設定を構成する]** ダイアログ ボックスが表示され、作成するリソースが求められます。
+	サインインすると、**[Microsoft Azure Web アプリの設定を構成する]** ダイアログ ボックスが表示され、作成するリソースの情報が求められます。
 
-	![Azure にサインイン済み  
-](./media/web-sites-dotnet-get-started/configuresitesettings.png)
+	![Signed in to Azure](./media/web-sites-dotnet-get-started/configuresitesettings.png)
 
-3. **[Microsoft Azure Web アプリの設定を構成する]** ダイアログ ボックスで、*azurewebsites.net* ドメイン内で一意である **Web アプリ名**を入力します。たとえば、MyExample という名前の右側に番号を付加して一意にすることができます (例: MyExample810)。既定の Web 名が作成される場合は、それが一意になるため、そのまま使用することができます。
+3. **[Microsoft Azure Web アプリの設定を構成する**] ダイアログ ボックスで、*azurewebsites.net* ドメイン内で一意である **Web アプリ名**を入力します。たとえば、MyExample という名前の右側に番号を付加して一意にすることができます (例: MyExample810)。既定の Web 名が作成される場合は、それが一意になるため、そのまま使用することができます。
 
 	入力した名前が既に使用されている場合は、右側に緑色のチェック マークではなく赤色の感嘆符が表示されます。この場合、別の名前を入力する必要があります。
 
@@ -150,27 +147,25 @@ Azure アカウントにサインアップする前に Azure App Service の使�
 
 	**[ソリューション エクスプローラー]** ウィンドウには、新しいプロジェクトのファイルとフォルダーが表示されます
 
-	![ソリューション エクスプローラー  
-](./media/web-sites-dotnet-get-started/solutionexplorer.png)
+	![Solution Explorer](./media/web-sites-dotnet-get-started/solutionexplorer.png)
 
 	**[Azure App Service アクティビティ]** ウィンドウには、Web アプリが作成されたことが表示されます。
 
-	![Web アプリが作成されました](./media/web-sites-dotnet-get-started/GS13sitecreated1.png)
+	![Web app created](./media/web-sites-dotnet-get-started/GS13sitecreated1.png)
 
-	さらに、作成された Web アプリが**サーバー エクスプローラー**に表示されます。
+	作成された Web アプリが**サーバー エクスプローラー**に表示されます。
 
-	![Web アプリが作成されました](./media/web-sites-dotnet-get-started/siteinse.png)
+	![Web app created](./media/web-sites-dotnet-get-started/siteinse.png)
 
 ## Web アプリにプロジェクトをデプロイする
 
 このセクションでは、図の手順 2 に示すように、Web プロジェクトを Web アプリにデプロイします。
 
-![作成およびデプロイ](./media/web-sites-dotnet-get-started/Create_App.png)
+![Create and deploy](./media/web-sites-dotnet-get-started/Create_App.png)
 
 1. **[ソリューション エクスプローラー]** でプロジェクトを右クリックし、**[発行]** を選択します。
 
-	![[発行] を選択  
-](./media/web-sites-dotnet-get-started/choosepublish.png)
+	![Choose Publish](./media/web-sites-dotnet-get-started/choosepublish.png)
 
 	数秒で、**Web の発行**ウィザードが表示されます。このウィザードは、新しい Web アプリに Web プロジェクトをデプロイするための設定が含まれる*発行プロファイル*に対して開かれます。他の Web アプリにデプロイする場合は、**[プロファイル]** タブをクリックして別のプロファイルを作成します。このチュートリアルでは、以前に作成した Web アプリにデプロイする設定を使用します。
 
@@ -184,12 +179,11 @@ Azure アカウントにサインアップする前に Azure App Service の使�
 
 	**[構成]** ボックスの一覧を使用して、リモート デバッグ用のデバッグ ビルドをデプロイできます。「[次のステップ](#next-steps)」セクションは、リモートのデバッグ モードで Visual Studio を実行する方法を示したチュートリアルにリンクしています。
 
-	![[設定] タブ  
-](./media/web-sites-dotnet-get-started/GS13SettingsTab.png)
+	![Settings tab](./media/web-sites-dotnet-get-started/GS13SettingsTab.png)
 
 11. **[プレビュー]** タブで、**[発行]** をクリックします。
 
-	Azure にコピーされるファイルを確認するには、**[発行]** をクリックする前に **[プレビュー開始]** をクリックします。
+	Azure にコピーされるファイルを確認するには、**[発行]** をクリックする前に **[プレビューの開始]** をクリックします。
 
 	![](./media/web-sites-dotnet-get-started/GS13previewoutput.png)
 
@@ -197,19 +191,17 @@ Azure アカウントにサインアップする前に Azure App Service の使�
 
 	**[出力]** ウィンドウと **[Azure App Service アクティビティ]** ウィンドウでは、実行されたデプロイ操作が表示され、デプロイが問題なく完了したことが報告されます。
 
-	![デプロイが問題なく完了したことを出力ウィンドウが報告  
-](./media/web-sites-dotnet-get-started/PublishOutput.png)
+	![Output window reporting successful deployment](./media/web-sites-dotnet-get-started/PublishOutput.png)
 
 	デプロイが成功すると、自動的に既定のブラウザーが開き、デプロイ先の Web アプリの URL にアクセスします。これで、作成したアプリケーションはクラウドで実行されています。ブラウザー アドレス バーの URL は、インターネットから読み込まれた Web アプリを示します。
 
-	![Azure で実行されている Web アプリ](./media/web-sites-dotnet-get-started/GS13deployedsite.png)
+	![Web app running in Azure](./media/web-sites-dotnet-get-started/GS13deployedsite.png)
 
 13. 次のセクションで使用するため、このブラウザー ウィンドウは開いたままにします。
 
-**ヒント:** 簡易デプロイメントの場合も、**[Web の 1 クリック発行]** ツール バーを有効にできます。**[表示]、[ツール バー]** の順にクリックし、**[Web の 1 クリック発行]** を選択します。このツール バーでは、プロファイルを選択し、ボタンをクリックして発行するか、ボタンをクリックして **Web の発行**ウィザードを開くことができます。
+**ヒント:** 簡易デプロイの場合も、**[Web の 1 クリック発行]** ツール バーを有効にできます。**[表示]、[ツール バー]** の順にクリックし、**[Web の 1 クリック発行]** を選択します。このツール バーを使用すると、プロファイルの選択、ボタンをクリックして発行、またはボタンをクリックして **Web の発行**ウィザードを開くことができます。
 
-![[Web の 1 クリック発行] ツール バー  
-](./media/web-sites-dotnet-get-started/weboneclickpublish.png)
+![Web One Click Publish Toolbar](./media/web-sites-dotnet-get-started/weboneclickpublish.png)
 
 ## サーバー エクスプローラーでリモート ファイルを開く
 
@@ -241,7 +233,7 @@ Web アプリをテストしてデバッグしているときにリモート サ
 
 ## Azure ポータルで Web アプリを監視および管理する
 
-[Azure ポータル](/services/management-portal/)は、作成した Web アプリなどの Azure のサービスを管理および監視するために使用できる Web インターフェイスです。チュートリアルのこのセクションでは、ポータルで何ができるかを確認します。
+[Azure ポータル](/services/management-portal/)は、作成した Web アプリなどの Azure のサービスを管理および監視するために使用できる Web インターフェイスです。チュートリアルのこのセクションでは、ポータルで何ができるかを確認できます。
 
 1. ブラウザーで、[https://portal.azure.com](https://portal.azure.com) に移動し、Azure 資格情報でサインインします。
 
@@ -249,13 +241,13 @@ Web アプリをテストしてデバッグしているときにリモート サ
 
 	**[Web アプリ]** ブレードには、Web アプリの設定と利用統計の概要が表示されます。
 
-	![Web アプリのブレード](./media/web-sites-dotnet-get-started/portaldashboard.png)
+	![Web app blade](./media/web-sites-dotnet-get-started/portaldashboard.png)
 
 	この時点では、Web アプリにはトラフィックがそれほど存在しないため、グラフには何も表示されない可能性があります。アプリケーションにアクセスし、何回かページを更新してから、ポータル ページを更新すると、統計が表示されます。
 
 3. **[設定]** をクリックすると、Web アプリの構成についてさらに多くのオプションが表示されます。
 
-	![[設定] のクリック](./media/web-sites-dotnet-get-started/portaldashboard2.png)
+	![Click Settings](./media/web-sites-dotnet-get-started/portaldashboard2.png)
 
 	設定のタイプの一覧が表示されます。
 
@@ -265,7 +257,7 @@ Web アプリをテストしてデバッグしているときにリモート サ
 
 	たとえば、Web アプリで使用される .NET のバージョンを制御したり、[WebSocket](/blog/2013/11/14/introduction-to-websockets-on-windows-azure-web-sites/) などの機能を有効にしたり、[接続文字列値](/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)を設定することなどが可能です。
 
-	![ポータルの Web アプリの構成タブ](./media/web-sites-dotnet-get-started/portalconfigure2.png)
+	![Portal web app configure tab](./media/web-sites-dotnet-get-started/portalconfigure2.png)
 
 これらは、ポータル機能の一部にすぎません。新しい Web アプリを作成したり、既存の Web アプリを削除したり、Web アプリを停止して再起動したり、データベースや仮想マシンなど、その他の種類の Azure サービスを管理したりできます。
 
@@ -275,11 +267,11 @@ Web アプリをテストしてデバッグしているときにリモート サ
 
 * データベースと承認の機能を追加する方法
 
-	データベースにアクセスして、一部のアプリケーション機能を許可されたユーザーのみに制限する方法を示すチュートリアルについては、[メンバーシップ、OAuth、および SQL Database によりセキュリティ保護された ASP.NET MVC アプリの Azure Web アプリへのデプロイ](/develop/net/tutorials/web-site-with-sql-database/)に関するページを参照してください。そのチュートリアルでは、MVC 5 をある程度知っていることを前提としています。MVC 5 の使用経験がない場合は、[ASP.NET MVC 5 の使用](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)に関するページを参照してください。
+	データベースにアクセスして、一部のアプリケーション機能を許可されたユーザーのみに制限する方法を示すチュートリアルについては、[メンバーシップ、OAuth、および SQL Database によりセキュリティ保護された ASP.NET MVC アプリの Azure Web アプリへのデプロイ](/develop/net/tutorials/web-site-with-sql-database/)に関するページを参照してください。そのチュートリアルでは、MVC 5 をある程度知っていることを前提としています。MVC 5 の使用経験がない場合は、[ASP.NET MVC 5 の基本](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)に関するページを参照してください。
 
 * Web プロジェクトをデプロイする他の方法
 
-	Visual Studio の使用、または[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)からの[デプロイメントの自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)による、Web プロジェクトの Web アプリへのデプロイの他の方法については、[Azure Web アプリをデプロイする方法](web-sites-deploy.md)に関するページを参照してください。
+	Visual Studio の使用、または[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)からの[デプロイの自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)による Web プロジェクトの Web アプリへのデプロイの他の方法については、[Azure Web アプリをデプロイする方法](web-sites-deploy.md)に関するページを参照してください。
 
 	Visual Studio により、デプロイを自動化するために使用可能な Windows PowerShell スクリプトも生成できます。詳細については、「[Automate Everything (Building Real-World Cloud Apps with Azure) (すべてを自動化 - Azure での実際のクラウド アプリケーションのビルド)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)」を参照してください。
 
@@ -296,11 +288,11 @@ Web アプリをテストしてデバッグしているときにリモート サ
 
 * リアルタイム機能 (チャットなど) の追加方法
 
-	Web アプリでリアルタイム機能 (チャット サービス、ゲーム、株価情報など) を使用する場合は、[WebSocket](/blog/2013/11/14/introduction-to-websockets-on-windows-azure-web-sites/) の転送方法で [ASP.NET SignalR](http://www.asp.net/signalr) を使用すると、パフォーマンスを最大限に高めることができます。詳細については、[Azure Web Apps での SignalR の使用](http://www.asp.net/signalr/overview/signalr-20/getting-started-with-signalr-20/using-signalr-with-windows-azure-web-sites)に関するページを参照してください。
+	Web アプリでリアルタイム機能 (チャット サービス、ゲーム、株価情報など) を使用する場合は、[WebSocket](/blog/2013/11/14/introduction-to-websockets-on-windows-azure-web-sites/) の転送方法で [ASP.NET SignalR](http://www.asp.net/signalr) を使用すると、パフォーマンスを最大限に高めることができます。詳細については、[Azure Web アプリでの SignalR の使用](http://www.asp.net/signalr/overview/signalr-20/getting-started-with-signalr-20/using-signalr-with-windows-azure-web-sites)に関するページを参照してください。
 
 * Web アプリケーションに対する App Service、Azure Cloud Services、および Azure Virtual Machines の選択方法
 
-	Azure では、このチュートリアルで示したように App Service Web Apps で、または Cloud Services や Virtual Machines で、Web アプリケーションを実行することができます。詳細については、[Azure の Web アプリ、クラウド サービス、VM: いつ、どれを使用するか](/manage/services/web-sites/choose-web-app-service/)に関するページを参照してください。
+	Azure では、このチュートリアルで示したように App Service Web Apps で、または Cloud Services や Virtual Machines で、Web アプリケーションを実行することができます。詳細については、[Azure の Web アプリ、クラウド サービス、VM のうち、いつどれを使用するか](/manage/services/web-sites/choose-web-app-service/)を説明したページを参照してください。
 
 * [App Service プランを選択または作成する方法](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)
 
@@ -308,6 +300,5 @@ Web アプリをテストしてデバッグしているときにリモート サ
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* Azure ポータルからプレビュー ポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

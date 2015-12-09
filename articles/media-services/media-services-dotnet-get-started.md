@@ -22,8 +22,7 @@
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 
->[AZURE.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+>[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
 このチュートリアルでは、Azure Media Services (AMS) SDK for .NET を使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順について説明します。
 
@@ -46,41 +45,41 @@ Media Services SDK for .NET で開発を行うには、次の前提条件を満�
 
 このクイック スタートでは、次のタスクが表示されます。
 
-1.  Media Services アカウントの作成 (Azure ポータルを使用)
+1.  Media Services アカウントの作成 (Azure クラシック ポータルを使用)
 2.  ストリーミング エンドポイントの構成 (ポータルを使用)
 3.  Visual Studio プロジェクトの作成と構成
 5.  Media Services アカウントに接続します。
 6.  新しい資産を作成し、ビデオ ファイルをアップロードします。
 7.  一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします。
-8.  資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得します。  
+8.  資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得します。
 9.  コンテンツの再生
 
 
 ##ポータルを使用した Media Services アカウントの作成
 
-1. Azure ポータルで、**[新規]**、**[Media Services]**、**[簡易作成]** の順にクリックします。
+1. Azure クラシック ポータルで、**[新規]**、**[メディア サービス]**、**[簡易作成]** の順にクリックします。
 
-	![Media Services の簡易作成](./media/media-services-dotnet-get-started/wams-QuickCreate.png)
+![Media Services の簡易作成](./media/media-services-dotnet-get-started/wams-QuickCreate.png)
 
 2. **[名前]** ボックスに新しいアカウントの名前を入力します。Media Services アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。
 
 3. **[リージョン]** ボックスで、Media Services アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能な Media Services リージョンのみが表示されます。
 
-4. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
+4. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの Blob Storage となるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
 
 5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
 
 6. フォームの下部にある **[簡易作成]** をクリックします。
 
-	処理の状態はウィンドウの下部にあるメッセージ領域で監視できます。
+処理の状態はウィンドウの下部にあるメッセージ領域で監視できます。
 
-	アカウントが正常に作成されると、ステータスが **[アクティブ]** に変わります。
+アカウントが正常に作成されると、ステータスが **[アクティブ]** に変わります。
 
-	ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services アカウント名、プライマリ キー、セカンダリ キーがダイアログに表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。
+ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services アカウント名、プライマリ キー、セカンダリ キーがダイアログに表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。
 
-	![[Media Services] ページ](./media/media-services-dotnet-get-started/wams-mediaservices-page.png)
+![[Media Services] ページ](./media/media-services-dotnet-get-started/wams-mediaservices-page.png)
 
-	アカウント名をダブルクリックすると、既定で **[クイック スタート]** ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
+アカウント名をダブルクリックすると、既定で **[クイック スタート]** ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
 
 ##ポータルを使用したストリーミング エンドポイントの構成
 
@@ -90,7 +89,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
-- mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードします (エンコーディングの手順は後述)。  
+- mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードします (エンコーディングの手順は後述)。
 - コンテンツ配信元となる**ストリーミング エンドポイント**のストリーミング ユニットを少なくとも 1 つ取得します。
 
 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
@@ -103,15 +102,15 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 3. ストリーミング ユニットの数を指定するには、[スケール] タブをクリックし、**[占有容量]** スライダーを動かします。
 
-	![[スケール] ページ](./media/media-services-dotnet-get-started/media-services-origin-scale.png)
+![[スケール] ページ](./media/media-services-dotnet-get-started/media-services-origin-scale.png)
 
 4. **[OK]** を押して変更を保存します。
 
-	新しいユニットの割り当ては完了するまでに約 20 分かかります。
+新しいユニットの割り当ては完了するまでに約 20 分かかります。
 
-	>[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
-	>
-	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、[Media Services の料金詳細](http://go.microsoft.com/fwlink/?LinkId=275107)に関するページをご覧ください。
+>[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
+>
+> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、「[Azure の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 
 
 
@@ -123,14 +122,9 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 3. System.Configuration アセンブリへの参照を追加します。このアセンブリには、構成ファイル (App.config など) にアクセスするための **System.Configuration.ConfigurationManager** クラスが含まれています。
 
-4. App.config ファイルを開き (既定で追加されていない場合はファイルをプロジェクトに追加してください)、ファイルに *appSettings* セクションを追加します。Azure Media Services のアカウント名とアカウント キーの値を設定します。次の例をご覧ください。アカウント名とキー情報を取得するには、Azure ポータルを開いて Media Services のアカウントを選択し、**[キーの管理]** をクリックします。
+4. App.config ファイルを開き (既定で追加されていない場合はファイルをプロジェクトに追加してください)、ファイルに *appSettings* セクションを追加します。Azure Media Services のアカウント名とアカウント キーの値を設定します。次の例をご覧ください。アカウント名とキー情報を取得するには、Azure クラシック ポータルを開いて Media Services のアカウントを選択し、**[キーの管理]** をクリックします。
 
-		<configuration>
-		...
-		  <appSettings>
-		    <add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
-		    <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
-		  </appSettings>
+<configuration> ... <appSettings> <add key="MediaServicesAccountName" value="Media-Services-Account-Name" /> <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" /> </appSettings>
 		  
 		</configuration>
 
@@ -447,4 +441,4 @@ MPEG DASH
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
   [Portal]: http://manage.windowsazure.com/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

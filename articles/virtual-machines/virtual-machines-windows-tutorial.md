@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Windows を実行する仮想マシンを Azure プレビュー ポータル | Microsoft Azure で作成します。"
-	description="Azure プレビュー ポータルで Azure Marketplace を使用してWindows を実行する Azure VM (仮想コンピューター) を作成する方法について説明します。"
+	pageTitle="Windows を実行する仮想マシンを Azure ポータルで作成する | Microsoft Azure"
+	description="Azure ポータルで Azure Marketplace を使用して Windows を実行する Azure VM (仮想コンピューター) を作成する方法について説明します。"
 	keywords="azure vm、仮想マシンの作成、仮想コンピューター、仮想マシンの設定"
 	services="virtual-machines"
 	documentationCenter=""
@@ -17,17 +17,17 @@
 	ms.date="08/14/2015"
 	ms.author="cynthn"/>
 
-# Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する#
+# Windows を実行する仮想マシンを Azure ポータルで作成する#
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](virtual-machines-windows-tutorial.md)
-- [Azure portal](virtual-machines-windows-tutorial-classic-portal.md)
+- [Azure portal](virtual-machines-windows-tutorial.md)
+- [Azure classic portal](virtual-machines-windows-tutorial-classic-portal.md)
 - [PowerShell: Resource Manager deployment](virtual-machines-deploy-rmtemplates-powershell.md)
 - [PowerShell: Classic deployment](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
 <br>
 
-このチュートリアルでは、Azure プレビュー ポータルで Azure 仮想マシンをわずか数分で簡単に作成する方法を示します。仮想マシンを作成するための例として、Windows Server 2012 R2 Datacenter イメージを使用しますが、これは Azure によって提供される多くのイメージの 1 つにすぎません。イメージの選択肢は、サブスクリプションによって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
+このチュートリアルでは、Azure ポータルで Azure 仮想マシンをわずか数分で簡単に作成する方法を示します。仮想マシンを作成するための例として、Windows Server 2012 R2 Datacenter イメージを使用しますが、これは Azure によって提供される多くのイメージの 1 つにすぎません。イメージの選択肢は、サブスクリプションによって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。リソース マネージャーの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
 
@@ -43,7 +43,7 @@
 
 ## 仮想マシンイメージを選択する
 
-1. Azure プレビュー ポータルにサインインします。
+1. Azure ポータルにサインインします。
 
 2. [ハブ] メニューで、**[新規]**、**[Compute]**、**[Windows Server 2012 R2 Datacenter]** の順にクリックします。
 
@@ -87,7 +87,7 @@
 
 >[AZURE.NOTE]要件やトラブルシューティングのヒントについては、「[RDP または SSH で Azure 仮想マシンに接続する](https://msdn.microsoft.com/library/azure/dn535788.aspx)」を参照してください。
 
-1. Azure プレビュー ポータルにまだサインインしていない場合は、サインインします。
+1. まだサインインしていない場合は、Azure ポータルにサインインします。
 
 2. スタート画面の仮想マシンをクリックします。仮想マシンを探す場合は、**[すべて参照]**、**[最近使用した項目]** の順にクリックするか、**[すべて参照]**、**[仮想マシン]** の順にクリックします。その後、一覧から仮想マシンを選択します。
 
@@ -110,4 +110,4 @@
 * Azure PowerShell と Azure CLI を使用して、[仮想マシンのイメージの検索と選択](resource-groups-vm-searching.md)を行います。
 * [Azure リソース マネージャー](virtual-machines-how-to-automate-azure-resource-manager.md)と [Azure リソース マネージャー テンプレート](http://azure.microsoft.com/documentation/templates/)を使用して、仮想マシンとワークロードのデプロイと管理を自動化します。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

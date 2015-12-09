@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure App Service での WordPress Web アプリの作成 | Microsoft Azure"
-	description="Azure プレビュー ポータルを使用して WordPress ブログ用の新しい Azure Web アプリを作成する方法について説明します。"
+	description="Azure ポータルを使用して WordPress ブログ用の新しい Azure Web アプリを作成する方法について説明します。"
 	services="app-service\web"
 	documentationCenter="php"
 	authors="tfitzmac"
@@ -30,15 +30,15 @@
 * Azure App Service でテンプレートに基づく Web アプリを作成する方法。
 * 新しい Web アプリと MySQL データベースの Azure App Service 設定を構成する方法。
 
-Azure Marketplace には、Microsoft、サード パーティ企業、およびオープン ソース ソフトウェア活動によって開発された多種多様な人気の Web アプリが用意されています。これらの Web アプリは、この WordPress の例で使用される [PHP](/develop/nodejs/) をはじめ、[.NET](/develop/net/)、[Node.js](/develop/nodejs/)、[Java](/develop/java/)、[Python](/develop/python/) など、さまざまなよく知られたフレームワーク上に構築されています。Azure Marketplace から Web アプリを作成するために必要なソフトウェアは、[Azure プレビュー ポータル](https://portal.azure.com/)に使用するブラウザーだけです。
+Azure Marketplace には、Microsoft、サード パーティ企業、およびオープン ソース ソフトウェア活動によって開発された多種多様な人気の Web アプリが用意されています。これらの Web アプリは、この WordPress の例で使用される [PHP](/develop/nodejs/) をはじめ、[.NET](/develop/net/)、[Node.js](/develop/nodejs/)、[Java](/develop/java/)、[Python](/develop/python/) など、さまざまなよく知られたフレームワーク上に構築されています。Azure Marketplace から Web アプリを作成するために必要なソフトウェアは、[Azure ポータル](https://portal.azure.com/)に使用するブラウザーだけです。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-JP/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 >
 > Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## WordPress を選択して Azure App Service 用に構成する
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)にログインします。
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
 
 2. **[新規]** をクリックします。
 	
@@ -60,7 +60,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 
 5. **リソース グループ**を選択するか、新しく作成します。
 
-	リソース グループの詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](../resource-group-portal.md)」を参照してください。
+	リソース グループの詳細については、「[Azure ポータルを使用した Azure リソースの管理](../resource-group-portal.md)」を参照してください。
 
 5. **App Service プラン/場所**を選択するか、新しく作成します。
 
@@ -88,7 +88,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 
 ## WordPress Web アプリの起動と管理
 	
-7. Web アプリの作成が完了したら、ポータルで、アプリケーションを作成したリソース グループに移動し、Web アプリとデータベースを確認できます。
+7. Web アプリの作成が完了したら、Azure ポータルで、アプリケーションを作成したリソース グループに移動し、Web アプリとデータベースを確認できます。
 
 	電球のアイコンが表示された追加のリソースは [Application Insights](/services/application-insights/) であり、Web アプリの監視サービスを提供します。
 
@@ -118,10 +118,9 @@ App Service Web Apps の使用方法の詳細については、ページの左�
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [5]: ./media/web-sites-php-web-site-gallery/startmarketplace.png
 [7]: ./media/web-sites-php-web-site-gallery/search-web-app.png
 [browse]: ./media/web-sites-php-web-site-gallery/browse-web.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

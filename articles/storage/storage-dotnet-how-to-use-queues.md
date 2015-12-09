@@ -244,7 +244,6 @@
 - 利用可能な API の詳細については、Queue サービスのリファレンス ドキュメントを参照してください。
     - [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
     - [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
-- Azure Storage を使用して実行できるさらに高度なタスクについては、「[Azure のデータの格納とアクセス](http://msdn.microsoft.com/library/azure/gg433040.aspx)」をご覧ください。
 - Azure Storage で作業するために記述したコードを簡略化する方法については、「[Azure WebJobs SDK とは](../websites-dotnet-webjobs-sdk/)」をご覧ください。
 - Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
     - 構造化データの格納には、[テーブル ストレージ](storage-dotnet-how-to-use-tables.md)を使用します。 
@@ -255,7 +254,6 @@
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [Creating a Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
   [CloudStorageAccount]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudstorageaccount_methods.aspx
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
   [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
   [Configuring Connection Strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
@@ -263,4 +261,4 @@
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

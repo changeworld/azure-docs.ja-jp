@@ -237,7 +237,7 @@ Azure CLI を使用してダウンロードした ARM テンプレートをデ�
 
 
 ### 手順 1. 
-[Application Gateway をデプロイするこちら](https://azure.microsoft.com/ja-JP/documentation/templates/101-application-gateway-public-ip/)のリンクをクリックして、Application Gateway のポータル テンプレート ページに移動します。
+[こちら](https://azure.microsoft.com/documentation/templates/101-application-gateway-public-ip/)のリンクをクリックして、Application Gateway のポータル テンプレート ページに移動します。
 
 
 ### 手順 2. 
@@ -273,4 +273,4 @@ ILB とともに使用するように Application Gateway を構成する場合�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

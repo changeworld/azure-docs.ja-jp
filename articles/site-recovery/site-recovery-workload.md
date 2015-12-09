@@ -1,123 +1,111 @@
 <properties
-	pageTitle="Site Recovery のワークロードのガイダンス |Microsoft Azure" 
-	description="Azure Site Recovery は、オンプレミスに配置されている仮想マシンと物理サーバーの Azure またはセカンダリ オンプレミス サイトへのレプリケーション、フェールオーバー、および復旧を調整します。" 
+	pageTitle="Azure Site Recovery で保護できるワークロード" 
+	description="Azure Site Recovery は、オンプレミスの仮想マシンと物理サーバーの Azure またはセカンダリ オンプレミス サイトへのレプリケーション、フェールオーバー、および復旧を調整することで、ワークロードやアプリケーションを保護します。" 
 	services="site-recovery" 
 	documentationCenter="" 
-	authors="prateek9us" 
-	manager="abhiag" 
+	authors="rayne-wiselman" 
+	manager="jwhit" 
 	editor=""/>
 
 <tags 
 	ms.service="site-recovery" 
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="09/21/2015" 
-	ms.author="pratshar"/>
+	ms.date="12/01/2015" 
+	ms.author="raynew"/>
 
-# Site Recovery ワークロードのガイダンス
+# Azure Site Recovery で保護できるワークロード
 
-Azure Site Recovery を使用すると、アプリケーション対応の可用性ソリューションをデプロイできます。Windows Server または Linux ベースのアプリケーション、Microsoft 製のファースト パーティ エンタープライズ アプリケーション、他のベンダー製のサービスのいずれであっても、Azure Site Recovery を使用して障害復旧、オンデマンド開発/テスト環境、またはクラウド移行を実現できます。
+Azure Site Recovery を使用すると、組織のビジネス継続性と障害復旧 (BCDR) 戦略に貢献する、アプリケーション対応の可用性ソリューションをデプロイできます。Windows Server または Linux ベースのアプリ、Microsoft のエンタープライズ アプリケーション、他のベンダー製のサービスのいずれであっても、Azure Site Recovery を使用して、障害復旧、オンデマンドの開発環境とテスト環境、クラウド移行を実現できます。
 
-Microsoft には、SharePoint、Exchange、Dynamics、SQL Server、Active Directory など、良質なエンタープライズ アプリケーションの開発に関する知識と経験が豊富にあります。また、Oracle、SAP、IBM、Red Hat などの主要ベンダーと密接に連携して、Azure や Hyper-V などの Microsoft プラットフォームで各ベンダーのアプリケーションやサービスが正常に動作するように取り組んでいます。Microsoft はこの独自の強みを利用して、各アプリケーションの可用性に関する要件を深く理解しているので、ユーザーは、各アプリケーションに合わせてカスタマイズできるクラス最高の障害復旧と可用性ソリューションをデプロイできます。
-
-
-##主な機能
-Azure Site Recovery の機能は、アプリケーション レベルの保護と復旧を念頭に置いて設計されました。
-
-- RPO を使用した近同期レプリケーションにかかる時間はわずか 30 秒間なので、重要度の高いアプリケーションのニーズを満たします。
-- アプリケーションとの整合性が取られたスナップショットなので、単一層または N 層のアプリケーションに適しています
-- アプリケーション レベル レプリケーションと統合されています。AD レプリケーション、SQL Always On、Exchange Database Availability Groups、Oracle Data Guard など、クラス最高のアプリケーション レベルの機能を利用できます
-- 柔軟な復旧計画なので、外部スクリプトや手動のアクションを含め、1 回のクリックでアプリケーション スタック全体を復旧できます。 
-- ASR と Azure の高度なネットワーク管理で、IP アドレスを予約する、ロードバランサーを構成する、低 RTO ネットワークスイッチの場合に Microsoft の Traffic Manager を使用するといった、アプリケーション独自のネットワーク構成をすべて自動化できます。
-- Automation ライブラリには、実稼働に利用できるアプリケーション固有のスクリプトが豊富に用意されています。スクリプトをダウンロードして、ASR ベースのソリューションに統合してください。
+Site Recovery は、SharePoint、Exchange、Dynamics、SQL Server、Active Directory などの Microsoft アプリケーションと統合されています。また、Microsoft は Oracle、SAP、IBM、Red Hat などの主要ベンダーと密接に連携して、Azure や Hyper-V などの Microsoft プラットフォームで各ベンダーのアプリケーションやサービスが正常に動作するように取り組んでいます。障害復旧ソリューションは、特定のアプリケーションごとにカスタマイズできます。
 
 
-##ワークロード ガイダンスの概要
+##主な特徴
+アプリケーション レベルの保護および復旧の戦略に役立つ Azure Site Recovery の特徴は次のとおりです。
 
-ASR レプリケーションのテクノロジは、仮想マシンで実行されているすべてのアプリケーションと互換性があります。各アプリケーションのサポートを強化するために、アプリケーション製品のチームと協力して、追加のテストを実施しました。
-
-**ワークロード** | <p>**Hyper-V 仮想マシンのレプリケート**</p> <p>**(セカンダリ サイトへ)**</p> | <p>**Hyper-V 仮想マシンのレプリケート**</p> <p>**(Azure へ)**</p> | <p>**VMware 仮想マシンのレプリケート**</p> <p>**(セカンダリ サイトへ)**</p> | <p>**VMware 仮想マシンのレプリケート**</p><p>**(Azure へ)****</p>
----|---|---|---|---
-Active Directory、DNS | Y | Y | Y | Y
-Web アプリ (IIS、SQL) | Y | Y | Y | Y
-SCOM | Y | Y | Y | Y
-Sharepoint | Y | Y | Y | Y
-<p>SAP</p><p>クラスター以外の Azure に SAP サイトをレプリケート</p> | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み)
-Exchange (非 DAG) | Y | 近日対応予定 | Y | Y
-Remote Desktop/VDI | Y | Y | Y | N/A
-<p>Linux</p> <p>(オペレーティング システムとアプリ)</p> | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み)
-Dynamics AX | Y | Y | Y | Y
-Dynamics CRM | Y | 近日対応予定 | Y | 近日対応予定
-Oracle | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み)
-Windows File Server | Y | Y | Y | Y
-
-##Active Directory と DNS
-
-SharePoint、Dynamics AX、SAP など、いずれのエンタープライズ アプリケーションも、正常に動作するには AD と DNS のインフラストラクチャに依存しています。どのエンタープライズ アプリケーション用に障害復旧 (DR) ソリューションを作成する場合でも、アプリケーションの他のコンポーネントで中断のイベントが発生する前に、AD を保護し、復旧することが重要です。
-
-Azure Site Recovery を使用すると、実際の AD に合わせて完全な自動障害復旧計画を作成できます。プライマリ サイトで SharePoint、SAP などの複数のアプリケーション用に AD を使用していて、完全なサイトをフェールオーバーする場合、まず AD 復旧計画を使用して AD をフェールオーバーしてから、アプリケーション固有の復旧計画を使用して他のアプリケーションをフェールオーバーします。
-
-AD 用に Azure Site Recovery をデプロイする方法の詳細なガイダンスについては、[リンク先のドキュメント](http://aka.ms/asr-ad)を参照してください。
-
-##SQL Server
-Microsoft SQL Server は、多数のエンタープライズ級ファースト パーティ、サードパーティ、およびカスタム基幹業務のアプリケーション (ユーザーのオンプレミス データセンター内で実行されるアプリケーション) に使用される基礎です。ます。SharePoint、Dynamics、SAP などのアプリケーションは、データ サービスの提供に SQL Server を使用します。Azure Site Recovery と SQL Server の HA/DR テクノロジは補完的で、多層エンタープライズ アプリケーションにエンド ツー エンド保護を提供するために使用できます。SQL Server 環境の場合 Azure Site Recovery には次の利点があります。
-
-- スタンドアロンまたはクラスター化された SQL サーバーを Azure またはセカンダリ サイトで簡単に保護できます。任意のバージョンとエディションの SQL Server に合わせて、シンプルでコスト効率が高い DR ソリューションを拡張できます。
-- クラス最高の障害復旧ソリューションである SQL Always On Availability Groups と統合し、ASR Recovery Plans でフェールオーバー/フェールバック操作を管理します。
-- SQL データベースを含め、アプリケーション全体に対応するエンドツーエンドの復旧計画を作成します。
-- Azure Site Recovery を使用して、Azure の IaaS VM サイズを拡張することで、負荷のピーク時に SQL Server をスケールアップします。
-- Azure Site Recovery を使用して、Azure またはセカンダリ サイトの SQL Server のテスト コピーを作成します。このコピーは、実稼働環境に影響を与えずに、分析とデータ コンプライアンス チェックのために使用できます。
-
-SQL 用に Azure Site Recovery をデプロイする方法の詳細なガイダンスについては、[リンク先のドキュメント](http://aka.ms/asr-sql)を参照してください。
-
-##SharePoint
-SharePoint には、イントラネット ポータル、ドキュメント、およびファイルの管理、ソーシャル ネットワーク、Web サイト、エンタープライズ検索の機能が利用して組織がコラボレーションできる人気のあるアプリケーションです。また、カスタム アプリケーションとワークフローを簡単にデプロイできるアプリケーション プラットフォームでもあります。SharePoint に Azure Site Recovery を使用すると、次の利点があります。
-
-- 障害復旧用のスタンバイ ファームを用意する必要がなくなり、関連するインフラストラクチャ コストもなくなります。ASR を使用すると、ファーム全体 (Web 層、アプリケーション層、データベース層) を Azure またはセカンダリ サイトで簡単に保護できます。
-- アプリケーションのデプロイメントと管理が簡易になります。プライマリ サイトにデプロイされた更新プログラムは自動的にレプリケートされるので、ファームがセカンダリ サイトで復旧されたときに利用できます。その結果、スタンバイ ファームを最新の状態に保つための複雑な管理が不要になり、TCO が減ります。
-- テストやデバッグ用に必要に応じて実稼働と同様のコピーを作成できるので、SharePoint アプリケーションの開発とテストが簡単になります。
-- ASR を使用して SharePoint のデプロイメントを Azure に移行することで、クラウドのパスが簡略化されます。
-
-SharePoint 用に Azure Site Recovery をデプロイする方法の詳細なガイダンスについては、[リンク先のドキュメント](http://aka.ms/asr-sharepoint)を参照してください。
+- RPO を使用した近同期レプリケーションにかかる時間はわずか 30 秒間であるため、重要度の高いアプリケーションのニーズを満たします。
+- アプリケーションとの整合性が取られたスナップショットであるため、単一層または N 層のアプリケーションに適しています。
+- SQL Server AlwaysOn と統合できるほか、その他のアプリケーション レベルのレプリケーション テクノロジ (AD のレプリケーション、SQL AlwaysOn、Exchange データベース可用性グループ (DAG)、Oracle Data Guard など) と組み合わせて使用できます。
+- 柔軟な復旧計画を策定し、1 回のクリックでアプリケーション スタック全体を復旧できます。この計画には、外部スクリプトまたは手動のアクションを含めることもできます。 
+- Site Recovery と Azure での高度なネットワーク管理により、IP アドレスの予約、ロード バランサーの構成、低 RTO ネットワーク切り替え用の Azure Traffic Manager の統合など、アプリのケットワーク要件が簡略化されます。
+-  豊富な自動化ライブラリでは、運用環境ですぐに使えるアプリケーション固有のスクリプトを提供しています。これらのスクリプトは、ダウンロードして Site Recovery と統合できます。
 
 
-##Dynamics AX
-Microsoft Dynamics AX は、トップクラスのエンタープライズ ソリューション プランニング (ERP) ソリューションです。習得と操作が簡単なので、迅速に目的を達成し、ビジネスの機会を活用して、ユーザーの関与と組織全体の改革を推進できます。
 
-- ASR を使用すると、Dynamics Ax 全体 (Web 層、AOS 層、データベース層、SharePoint) Azure またはセカンダリ サイトで簡単に保護できます。
-- ASR を使用して Dynamics Ax のデプロイメントを Azure に移行することで、クラウドのパスが簡略化されます。
-- テストやデバッグ用に必要に応じて実稼働と同様のコピーを作成できるので、Dynamics アプリケーションの開発とテストが簡単になります。
+##ワークロードの概要
 
-Dynamics Ax 用に Azure Site Recovery をデプロイする方法の詳細なガイダンスについては、[リンク先のドキュメント](http://aka.ms/asr-dynamics)を参照してください。
+Site Recovery レプリケーションのテクノロジは、仮想マシンで実行されているすべてのアプリケーションと互換性があります。さらに、各アプリケーションのサポートを強化するために、アプリケーション製品チームと協力して、追加のテストを実施しました。
 
-## RDS 
-Windows Server リモート デスクトップ サービス (RDS) を使用すると、デスクトップおよびアプリケーションをデプロイする処理が高速になり、どのデバイスにもデプロイできるようになるので、リモート ワーカーの効率が改善されます。さらに、重要な知的財産をセキュリティで保護し、法規制の遵守を簡易化することができます。リモート デスクトップ サービスでは、仮想デスクトップ インフラストラクチャ (VDI)、セッションベースのデスクトップ、アプリケーションを利用できるので、ユーザーはどこでも作業できるようになります。
+**ワークロード** | <p>**Hyper-V VM のレプリケート**</p> <p>**(セカンダリ サイトへ)**</p> | <p>**Hyper-V VM のレプリケート**</p> <p>**(Azure へ)**</p> | <p>**VMware VM のレプリケート**</p> <p>**(セカンダリ サイトへ)**</p> | <p>**VMware VM のレプリケート**</p><p>**(Azure へ)****</p> ---|---|---|---|--- Active Directory、DNS | Y | Y | Y | Y Web アプリ (IIS、SQL) | Y | Y | Y | Y SCOM | Y | Y | Y | Y Sharepoint | Y | Y | Y | Y <p>SAP</p><p>クラスター以外の Azure に SAP サイトをレプリケート</p> | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) Exchange (非 DAG) | Y | 近日対応予定 | Y | Y リモート デスクトップ/VDI | Y | Y | Y | N/A <p>Linux</p> <p>(オペレーティング システムとアプリ)</p> | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) Dynamics AX | Y | Y | Y | Y Dynamics CRM | Y | 近日対応予定 | Y | 近日対応予定 Oracle | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) Windows File Server | Y | Y | Y | Y
 
-ASR を使用すると、管理対象または管理対象外のプールされた仮想デスクトップをセカンダリ サイトで保護し、リモート アプリケーションとセッションをセカンダリ サイトまたは Azure で保護することができます。
+##Active Directory と DNS の保護
 
-RDS/VDI 用に Azure Site Recovery をデプロイする方法の詳細なガイダンスについては、[リンク先のドキュメント](http://aka.ms/asr-rds)を参照してください。
+SharePoint、Dynamics AX、SAP など、すべてのエンタープライズ アプリケーションは、Active Directory と DNS のインフラストラクチャに依存しています。BCDR ソリューションの一部として、これらのインフラストラクチャ コンポーネントを保護および復旧した後に、ワークロードとアプリケーションを復旧することが必要になります。
+
+Site Recovery を使用すると、Active Directory と DNS に合わせて完全な自動障害復旧計画を作成できます。たとえば、プライマリ サイトで複数のアプリケーション (SharePoint や SAP など) に Active Directory を使用していて、サイト全体をフェールオーバーする場合は、まず復旧計画を使用して Active Directory をフェールオーバーしてから、アプリケーション固有の復旧計画を使用して、Active Directory に依存するアプリケーションをフェールオーバーします。
+
+[詳細情報](http://aka.ms/asr-ad)
+
+##SQL Server の保護
+
+SQL Server は、オンプレミスのデータセンターの多くのビジネス アプリケーションにデータ サービスの基盤を提供します。Site Recovery と SQL Server の HA/DR テクノロジは補完的で、多層エンタープライズ アプリケーションにエンド ツー エンド保護を提供するためにまとめて使用できます。SQL Server 環境では、Azure Site Recovery による次の利点があります。
+
+- Azure またはセカンダリ サイトでのスタンドアロンまたはクラスター化された SQL サーバーの簡単な保護とレプリケーション。多くの SQL Server のバージョンやエディションに適切なシンプルでコスト効率の良い障害復旧ソリューションが提供されます。
+- SQL AlwaysOn 可用性グループとの統合。これにより、Azure Site Recovery の復旧計画を使用してフェールオーバー プロセスとフェールバック プロセスを管理できます。
+- SQL Server データベースなど、アプリケーション スタック全体に対応するエンド ツー エンドの復旧計画。
+- Azure Site Recovery による、ピーク時の負荷に対応した SQL Server のスケールアップ。このためには、Azure でより多くの IaaS 仮想マシン サイズに負荷を "バースト" します。
+- Azure Site Recovery を使用した Azure またはセカンダリ サイトでの SQL Server のテスト。テスト フェールオーバーは、運用環境に影響を与えることなく、分析データ コンプライアンス チェックのために使用できます。
+
+[詳細情報](http://aka.ms/asr-sql)
+
+##SharePoint の保護
+
+Azure Site Recovery を使用すると、SharePoint のデプロイを保護することができます。Site Recovery を使用した場合、次のことを実現できます。
+
+- 障害復旧用のスタンバイ ファームを用意する必要がなくなり、関連するインフラストラクチャ コストもなくなります。Site Recovery を使用すると、ファーム全体 (Web 層、アプリケーション層、データベース層) を Azure またはセカンダリ サイトで簡単に保護できます。
+- アプリケーションのデプロイと管理が簡易になります。プライマリ サイトにデプロイされた更新は自動的にレプリケートされるため、ファームがセカンダリ サイトで復旧されると使用できるようになります。その結果、スタンバイ ファームを最新の状態に保つための複雑な管理が不要になり、コストが削減されます。
+- テストやデバッグ用に必要に応じて、運用環境に似たレプリカ環境のコピーを作成することで、SharePoint アプリケーションの開発とテストが簡単になります。
+- Site Recovery を使用して SharePoint のデプロイを Azure に移行することで、クラウドへの移行が簡単になります。
+
+[詳細情報](http://aka.ms/asr-sharepoint)
 
 
-## Exchange
-Microsoft Exchange は、企業がメッセージングと電子メール サービスをホストするために使われている人気のあるソフトウェアです。Exchange によって、PC、電話、またはブラウザーで通信できるアクセスが確保されるだけでなく、Exchange には他に類を見ない信頼性、管理容易性、データ保護機能があります。
+## Dynamics AX の保護
 
-Microsoft Exchange は、エンタープライズ クラスの高可用性と障害復旧ソリューションをネイティブでサポートしています。Exchange データベース可用性グループ (DAG) と Azure Site Recovery のテクノロジは補完的です。
+Azure Site Recovery は、Dynamics AX ERP ソリューションを保護する際に役立ちます。
 
-- Exchange DAG は、Exchange デプロイメント用のクラス最高の障害復旧を実現できる推奨されるデプロイメント オプションです。ASR 復旧計画に DAG を含めることで、サイト全体の DAG のフェールオーバーを調整できます。
-- 単一サーバー、クラスター化されていないサーバーなど、小規模なデプロイメントの場合、Azure Site Recovery では個々のサーバーを Azure またはセカンダリ サイトで保護し、フェールオーバーすることができます。
+- Site Recovery を使用すると、Dynamics AX 環境全体 (Web 層、AOS 層、データベース層、SharePoint) を Azure またはセカンダリ サイトで保護できるようになります。
+- Site Recovery を使用して Dynamics AX のデプロイを Azure に移行することで、クラウドへの移行が簡単になります。
+- テストやデバッグ用に必要に応じて運用環境に似たコピーを作成することで、Dynamics AX アプリケーションの開発とテストが簡単になります。
 
-Exchange 用に Azure Site Recovery をデプロイする方法の詳細なガイダンスについては、[リンク先のドキュメント](http://aka.ms/asr-exchange)を参照してください。
+[詳細については、こちらを参照してください。](http://aka.ms/asr-dynamics)
 
-## SAP
+## RDS の保護 
+リモート デスクトップ サービスでは、仮想デスクトップ インフラストラクチャ (VDI)、セッションベースのデスクトップ、アプリケーションを利用できるので、ユーザーはどこでも作業できるようになります。Site Recovery を使用すると、管理対象または管理対象外のプールされた仮想デスクトップをセカンダリ サイトで保護し、リモート アプリケーションとセッションをセカンダリ サイトまたは Azure で保護することができます。
 
-SAP は、世界中の多くの組織に使用されているトップクラスのエンタープライズ リソース プランニング (ERP) ソフトウェアです。多くの場合、SAP は、企業内で最もミッション クリティカル度が高いアプリケーションとして考えられています。このようなアプリケーションのアーキテクチャと運用はとても複雑なので、BCDR の要件を確実に満たすことが重要です。
+[詳細情報](http://aka.ms/asr-rds)
 
-- ASR を使用すると、さまざまな層がある SAP デプロイメント全体を Azure またはセカンダリ サイトで保護できます。
-- ASR を使用して SAP のデプロイメントを Azure に移行することで、クラウドのパスが簡略化されます。
-- テストやデバッグ用に必要に応じて実稼働と同様のコピーを作成できるので、SAP アプリケーションの開発とテストが簡単になります。
 
-SAP NetWeaver 用に Azure Site Recovery をデプロイする方法の詳細なガイダンスについては、[リンク先のドキュメント](http://aka.ms/asr-sap)を参照してください。
+## Exchange の保護
 
-<!---HONumber=Oct15_HO3-->
+Microsoft Exchange には、高可用性と障害復旧のサポートが組み込まれています。Exchange DAG と Azure Site Recovery は連携させることができます。
+
+- Exchange DAG は、企業における Exchange の障害復旧に推奨されるソリューションです。Site Recovery の復旧計画に DAG を含めることで、サイト全体の DAG のフェールオーバーを調整できます。
+- 単一サーバーやクラスター化されていないサーバーなど、小規模なデプロイの場合、Site Recovery では Azure またはセカンダリ サイトでの保護とフェールオーバーを実行できます。
+
+[詳細情報](http://aka.ms/asr-exchange)
+
+## SAP の保護
+
+SAP デプロイを保護するには、Site Recovery を使用します。
+
+- さまざまな層がある SAP デプロイ全体を Azure またはセカンダリ サイトで保護できます。
+- Site Recovery を使用して SAP デプロイを Azure に移行することで、クラウド移行を簡略化します。
+- アプリケーションのテストとデバッグ用に必要に応じて運用環境に似たコピーを作成できるので、SAP の開発とテストが簡単になります。
+
+[詳細情報](http://aka.ms/asr-sap)
+
+<!---HONumber=AcomDC_1203_2015-->

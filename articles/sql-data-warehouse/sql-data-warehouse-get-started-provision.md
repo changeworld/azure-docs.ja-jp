@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure プレビュー ポータルでの SQL Data Warehouse の作成 | Microsoft Azure"
-	description="Azure プレビュー ポータルで Azure SQL Data Warehouse を作成する方法を説明します。"
+	pageTitle="Azure ポータルでの SQL Data Warehouse データベースの作成 | Microsoft Azure"
+	description="Azure ポータルで Azure SQL Data Warehouse を作成する方法を説明します。"
 	services="sql-data-warehouse"
 	documentationCenter="NA"
 	authors="barbkess"
@@ -19,11 +19,11 @@
 # SQL Data Warehouse の作成
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](sql-data-warehouse-get-started-provision.md)
+- [Azure Portal](sql-data-warehouse-get-started-provision.md)
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
-このチュートリアルでは、Azure プレビュー ポータルを使用して、Azure SQL Data Warehouse データベースを数分で作成する方法について説明します。
+このチュートリアルでは、Azure ポータルを使用して、Azure SQL Data Warehouse データベースを数分で作成する方法について説明します。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -34,7 +34,7 @@
 
 ## 手順 1: サインインして作業を開始する
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
 2. **[新規]**、**[データ + ストレージ]**、**[SQL Data Warehouse]** の順にクリックします。
 
@@ -49,12 +49,7 @@
 
 SQL Database および SQL Data Warehouse では、各データベースがサーバーに割り当てられ、それぞれのサーバーが地理的な場所に割り当てられます。このサーバーを論理 SQL サーバーといいます。
 
-> [AZURE.NOTE]<a name="note"></a>論理 SQL サーバーの特徴:
-  >
-  > + 地理的に同じ場所にある複数のデータベースの構成に一貫性を与える効果があります。
-  > + オンプレミス サーバーに使用されるような物理的なハードウェアではありません。サービスのソフトウェアの構成要素です。*論理サーバー*と呼ばれるのはそのためです。
-  > + パフォーマンスを損ねずに複数のデータベースをホストすることができます。
-  > + 名前は SQL Server ではなく *SQL サーバー*です。SQL **サーバー**が Azure の論理サーバーであるのに対し、SQL **Server** は Microsoft のオンプレミス データベース製品です。
+> [AZURE.NOTE]<a name="note"></a>論理 SQL サーバーの特徴: > > + 地理的に同じ場所にある複数のデータベースの構成に一貫性を与える効果があります。 > + オンプレミス サーバーに使用されるような物理的なハードウェアではありません。サービスのソフトウェアの構成要素です。*論理サーバー*と呼ばれるのはそのためです。 > + パフォーマンスを損ねずに複数のデータベースをホストすることができます。 > + 名前は SQL Server ではなく *SQL サーバー*です。SQL **サーバー**が Azure の論理サーバーであるのに対し、SQL **Server** は Microsoft のオンプレミス データベース製品です。
 
 1. **[サーバー]**、**[新しいサーバーの作成]** をクリックします。サーバーの料金は発生しません。使用する V12 論理 SQL サーバーが既にある場合は、既存のサーバーを選択し、次の手順に進みます。 
 
@@ -99,7 +94,7 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 
 1. **[作成]** をクリックして SQL Data Warehouse データベースを作成します。
 
-1. 数分するとデータベースの準備が整います。完了すると、[Azure プレビュー ポータル](https://portal.azure.com)に戻ります。SQL Data Warehouse データベースがダッシュボードに追加されていることに注意してください。
+1. 数分するとデータベースの準備が整います。完了すると、[Azure ポータル](https://portal.azure.com)に戻ります。SQL Data Warehouse データベースがダッシュボードに追加されていることに注意してください。
 
     ![ポータルの表示](./media/sql-data-warehouse-get-started-provision/database-portal-view.png)
 
@@ -130,4 +125,4 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 
 SQL Data Warehouse のサンプル データベースの作成は以上で完了です。いつでもデータベースに[接続](./sql-data-warehouse-get-started-connect.md)することができます。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->
