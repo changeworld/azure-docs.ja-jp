@@ -312,7 +312,7 @@
 ## <a name="MonitorDataSetsAndPipeline"></a>手順 5. データセットとパイプラインを監視する
 このステップでは、Azure クラシック ポータルを使用して、Azure Data Factory の状況を監視します。PowerShell コマンドレットを使用して、データセットとパイプラインを監視することもできます。監視用のコマンドレットの使用方法については、「[PowerShell コマンドレットを使用した Data Factory の監視と管理][monitor-manage-using-powershell]」を参照してください。
 
-1. まだ開いていない場合は、[Azure クラシック ポータル (プレビュー)][azure-portal] に移動します。 
+1. まだ開いていない場合は、[Azure クラシック ポータル (プレビュー)](azure-portal) に移動します。 
 2. **ADFTutorialDataFactory** のブレードが開いていない場合は、**スタート画面**で **[ADFTutorialDataFactory]** をクリックして開きます。 
 3. 作成したテーブルの数と名前、およびパイプラインの名前がブレードに表示されます。
 
@@ -499,4 +499,4 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!----HONumber=AcomDC_1203_2015-->
+<!-----HONumber=AcomDC_1203_2015-->
