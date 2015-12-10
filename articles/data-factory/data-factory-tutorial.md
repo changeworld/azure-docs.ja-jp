@@ -332,11 +332,11 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 1. **[LogProcessingFactory]** の **[Data Factory]** ブレードで、**[ダイアグラム]** をクリックします。 
 
-	![ダイアグラム] リンク][image-data-factory-tutorial-diagram-link]
+	![ダイアグラム リンク][image-data-factory-tutorial-diagram-link]
 
 2. 表示されているダイアグラムは並べ替えることが可能で、以下のダイアグラムは上部が直接の入力を示し、下部が出力を示しています。**PartitionGameLogsPipeline** の出力が EnrichGameLogsPipeline に入力として渡され、**EnrichGameLogsPipeline** の出力が **AnalyzeMarketingCampaignPipeline** に渡されていることがわかります。タイトルをダブルクリックして、ブレードが示すアーティファクトについての詳細を表示します。
 
-	![ダイアグラム] ビュー][image-data-factory-tutorial-diagram-view]
+	![ダイアグラム ビュー][image-data-factory-tutorial-diagram-view]
 
 3. **[AnalyzeMarketingCampaignPipeline]** を右クリックし、**[パイプラインを開く]** をクリックします。アクティビティの入力呼び出し力のデータセットと、パイプライン内のすべてのアクティビティが表示されます。
  
@@ -371,7 +371,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 6. **[RawGameEventsTable]** の [テーブル] ブレードに、すべてのスライスが表示されています。以下のスクリーン ショットでは、すべてのスライスが **[準備完了]** の状態で、問題のあるスライスはありません。これは、そのデータがすぐに処理できることを意味します。
 
-	![RawGameEventsTable] の [テーブル] ブレード][image-data-factory-monitoring-raw-game-events-table]
+	![RawGameEventsTable の テーブル ブレード][image-data-factory-monitoring-raw-game-events-table]
 
 	**[最近更新したスライス]** と **[最近失敗したスライス]** の一覧は、どちらも **[最終更新時刻]** で並べ替えられます。次の状況では、スライスの更新時刻が変更されます。
 
@@ -524,4 +524,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial/DataFactoryCreateButton.png
 
-<!----HONumber=AcomDC_1125_2015-->
+<!-----HONumber=AcomDC_1125_2015--->
