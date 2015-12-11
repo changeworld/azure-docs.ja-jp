@@ -19,7 +19,7 @@
 
 *Application Insights はプレビュー段階です。*
 
-問題を検出し、問題を解決し、アプリケーションの継続的に改善します。実際のアプリケーションの問題を今すぐ診断する。Understand what your users do with it.
+問題を検出し、問題を解決し、アプリケーションの継続的に改善します。実際のアプリケーションの問題を今すぐ診断する。ユーザーが自分のアプリで何をしているかを知ることができます。
 
 構成は非常に簡単であり、数分以内で結果を確認できます。
 
@@ -74,4 +74,4 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
 [qna]: app-insights-troubleshoot-faq.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
