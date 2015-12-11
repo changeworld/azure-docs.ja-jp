@@ -69,7 +69,7 @@
 
 完全一般公開 (GA)
 
-- *ディスク上*の[列ストア インデックス](http://msdn.microsoft.com/library/dn817827.aspx)。
+- *ディスク上* の[列ストア インデックス](http://msdn.microsoft.com/library/dn817827.aspx)。
 
 
 更新:
@@ -177,7 +177,7 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 ## サンプルの OLTP ワークロードを実行する
 
-次の 2 つの*ストアド プロシージャ*の違いは、1 つ目のプロシージャはメモリ最適化バージョンのテーブルを使用し、2 つ目のプロシージャは通常のディスク上のテーブルを使用している点です。
+次の 2 つの *ストアド プロシージャ* の違いは、1 つ目のプロシージャはメモリ最適化バージョンのテーブルを使用し、2 つ目のプロシージャは通常のディスク上のテーブルを使用している点です。
 
 - SalesLT**.**usp\_InsertSalesOrder**\_inmem**
 - SalesLT**.**usp\_InsertSalesOrder**\_ondisk**
@@ -201,7 +201,7 @@ ostress.exe を実行する場合、指定したパラメーター値を両方�
 このセクションでは、ostress.exe コマンド ラインに埋め込まれた T-SQL スクリプトを示します。このスクリプトでは、インストールした T-SQL スクリプトで作成されたアイテムを使用します。
 
 
-次のスクリプトでは、5 行のアイテムがあるサンプルの販売注文を、次のメモリ最適化*テーブル*に挿入します。
+次のスクリプトでは、5 行のアイテムがあるサンプルの販売注文を、次のメモリ最適化 *テーブル* に挿入します。
 
 - SalesLT.SalesOrderHeader\_inmem
 - SalesLT.SalesOrderDetail\_inmem
@@ -527,4 +527,4 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 - インメモリ OLTP のために[インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
