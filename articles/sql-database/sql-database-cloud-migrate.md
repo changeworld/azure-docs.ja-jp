@@ -213,7 +213,7 @@ SQL Server Management Studio の Microsoft Azure SQL Database へのデータベ
 
 1. SQL Server Management Studio がバージョン 13.0.600.65 以降であることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure クラシック ポータルの更新との同期が維持されます。
 
-	> [AZURE.IMPORTANT][最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。最新バージョンの Management Studio を使用することを常にお勧めします。
+	> [AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。最新バージョンの Management Studio を使用することを常にお勧めします。
 
 2. Management Studio を開き、オブジェクト エクスプローラーで移行元データベースに接続します。
 
@@ -277,4 +277,4 @@ SQL Server Management Studio の Microsoft Azure SQL Database へのデータベ
 
 - SQL Server Management Studio。Management Studio では、**ALTER DATABASE** などのさまざまな Transact-SQL コマンドを使用して問題を修正できます。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1203_2015--->

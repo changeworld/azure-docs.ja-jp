@@ -74,7 +74,7 @@ SQL Data Warehouse で実現されるクエリのパフォーマンスを得る�
 - 静的な分布列の更新頻度を減らすことを検討します。
 - 各統計オブジェクトは系列で更新されることに注意してください。特に、多数の統計オブジェクトが含まれた幅の広いテーブルでは、`UPDATE STATISTICS <TABLE_NAME>` を実装するだけでは十分とはいえない場合があります。
 
-> [AZURE.NOTE][昇順キー] の詳細については、SQL Server 2014 の基数推定モデルに関するホワイト ペーパーをご覧ください。
+> [AZURE.NOTE] [昇順キー] の詳細については、SQL Server 2014 の基数推定モデルに関するホワイト ペーパーをご覧ください。
 
 詳細については、MSDN の[基数推定][]に関するページをご覧ください。
 
@@ -459,4 +459,4 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW\_STATISTICS() が�
 [sys.table\_types]: https://msdn.microsoft.com/library/bb510623.aspx
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1203_2015--->

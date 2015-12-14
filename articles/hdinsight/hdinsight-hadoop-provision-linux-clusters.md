@@ -71,7 +71,7 @@ HDInsight 用 Spark クラスターには、ヘッド ノード (2 ノード) - 
 
 各クラスターの種類には、クラスターに関連付けられている 1 つ以上の Azure ストレージ アカウントもあります。HDInsight は、クラスターのデータ ストアとして、これらのストレージ アカウントの Azure BLOB を使用します。データをクラスターから分離しておくことで、使用されていないクラスターを削除した場合でもデータを引き続き保持できます。したがって、さらに分析が必要な場合に、新しいクラスターでも同じストレージ アカウントを使用できます。詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)に関するページを参照してください。
 
-## <a id="configuration">基本的な構成オプション</a>
+## <a id="configuration"></a>基本的な構成オプション
 
 次のセクションでは、HDInsight クラスターの作成時に使用できる必要な構成オプションについて説明します。
 
@@ -146,7 +146,7 @@ HDInsight では、クラスターの基になるストレージとして Azure 
 
 HDInsight は、ストレージ アカウントで_既定のストレージ コンテナー_も作成します。これが、HDInsight クラスターの既定のストレージです。
 
-既定では、このコンテナーの名前はクラスター名と同じです。HDInsight で Azure BLOB Storage を使用する方法の詳細については、「[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。
+既定では、このコンテナーの名前はクラスター名と同じです。HDInsight で Azure BLOB ストレージを使用する方法の詳細については、「[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。
 
 >[AZURE.WARNING]1 つのコンテナーを複数のクラスターで共有しないでください。これはサポートされていません。
 

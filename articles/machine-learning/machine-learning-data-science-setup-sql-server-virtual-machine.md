@@ -174,7 +174,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 
 別のコンピューターからデータベース エンジンに接続するには、1 つ以上の SQL Server 認証ログインを作成する必要があります。
 
-> [AZURE.TIP]新しい SQL Server ログインをプログラムによって作成することも、SQL Server Management Studio を使って作成することもできます。SQL 認証の sysadmin ユーザーをプログラムで新規作成するには、**[新規クエリ]** を開始し、次のスクリプトを実行します。<new user name> と <new password> をお好みのユーザー名とパスワードに置き換えてください。必要に応じてパスワード ポリシーを調整します (サンプル コードではポリシー検査とパスワード期限設定がオフになっています)。SQL Server のログインの詳細については、「[ログインの作成](http://msdn.microsoft.com/library/aa337562.aspx)」を参照してください。
+> [AZURE.TIP] 新しい SQL Server ログインをプログラムによって作成することも、SQL Server Management Studio を使って作成することもできます。SQL 認証の sysadmin ユーザーをプログラムで新規作成するには、**[新規クエリ]** を開始し、次のスクリプトを実行します。<new user name> と <new password> をお好みのユーザー名とパスワードに置き換えてください。必要に応じてパスワード ポリシーを調整します (サンプル コードではポリシー検査とパスワード期限設定がオフになっています)。SQL Server のログインの詳細については、「[ログインの作成](http://msdn.microsoft.com/library/aa337562.aspx)」を参照してください。  
 
     USE master
     go
@@ -259,7 +259,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用しないときに課金されないようにするには、**[停止 (割り当て解除)]** 状態にする必要があります。
 
-> [AZURE.NOTE](Windows 電源オプションを使用して) 内部から仮想マシンをシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。請求されないようにするには、必ず [Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その際、ShutdownRoleOperation 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
+> [AZURE.NOTE] \(Windows 電源オプションを使用して) 内部から仮想マシンをシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。請求されないようにするには、必ず [Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その際、ShutdownRoleOperation 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 

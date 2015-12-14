@@ -1,4 +1,12 @@
-<properties pageTitle="Azure 上の Linux での Cassandra の実行 | Microsoft Azure" description="Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法" services="virtual-machines" documentationCenter="nodejs" authors="rmcmurray" manager="wpickett" editor="" azure-service-management"/>
+<properties 
+	pageTitle="Azure 上の Linux での Cassandra の実行 | Microsoft Azure"
+	description="Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法"
+	services="virtual-machines"
+	documentationCenter="nodejs"
+	authors="rmcmurray"
+	manager="wpickett"
+	editor=""
+	azure-service-management"/>
 
 <tags 
 	ms.service="virtual-machines" 

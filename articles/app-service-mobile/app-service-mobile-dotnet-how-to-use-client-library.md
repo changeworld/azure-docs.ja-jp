@@ -18,7 +18,8 @@
 
 # Azure Mobile Apps 用の管理されたクライアントの使用方法
 
-[AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]&nbsp;
+[AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
+&nbsp;
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
@@ -82,7 +83,7 @@
 - [特定の列を選択する]
 - [ID でデータを検索する]
 
->[AZURE.NOTE]すべての行が返されるのを防ぐために、サーバー側で設定されたページ サイズが適用されます。これにより、大きなデータ セットの既定の要求がサービスに悪影響を与えないようにします。50 以上の行を返すには、「[ページにデータを返す]」で説明されている `Take` メソッドを使用します。
+>[AZURE.NOTE] すべての行が返されるのを防ぐために、サーバー側で設定されたページ サイズが適用されます。これにより、大きなデータ セットの既定の要求がサービスに悪影響を与えないようにします。50 以上の行を返すには、「[ページにデータを返す]」で説明されている `Take` メソッドを使用します。
 
 ### <a name="filtering"></a>方法: 返されるデータをフィルター処理する
 
@@ -169,7 +170,7 @@
 
 これは、ハードコーディングされたページング値を `Take` メソッドおよび `Skip` メソッドに渡す、簡略化したシナリオです。実際のアプリケーションでは、ユーザーが前後のページに移動できるように、ページャー コントロールまたは同等の UI と共に上記と同様のクエリを使用することができます。
 
->[AZURE.NOTE]モバイル アプリ バックエンドの 50 行の制限をオーバーライドするには、[EnableQueryAttribute](https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx) をパブリック GET メソッドに適用してページング動作を指定することも必要です。次のコードをメソッドに適用すると、返される最大行数が 1000 行に設定されます。
+>[AZURE.NOTE] モバイル アプリ バックエンドの 50 行の制限をオーバーライドするには、[EnableQueryAttribute](https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx) をパブリック GET メソッドに適用してページング動作を指定することも必要です。次のコードをメソッドに適用すると、返される最大行数が 1000 行に設定されます。
 
     [EnableQuery(MaxTop=1000)]
 
@@ -257,7 +258,12 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
 
 	await todoTable.UpdateAsync(todoItem);
 
-型指定されていないデータを挿入するには、次のような Json.NET を利用できます。 JObject jo = new JObject(); jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D"); jo.Add("Text", "Hello World"); jo.Add("Complete", false); var inserted = await table.UpdateAsync(jo);
+型指定されていないデータを挿入するには、次のような Json.NET を利用できます。
+	JObject jo = new JObject();
+	jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
+	jo.Add("Text", "Hello World");
+	jo.Add("Complete", false);
+	var inserted = await table.UpdateAsync(jo);
 
 更新を行うときは ID を指定する必要があることに注意してください。バックエンドはそれによって更新するインスタンスを識別します。ID は、`InsertAsync` の呼び出しの結果から取得できます。"Id" の値を指定しないで項目を更新しようとすると、`ArgumentException` が発生します。
 

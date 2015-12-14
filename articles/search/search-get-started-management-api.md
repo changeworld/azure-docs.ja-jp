@@ -54,7 +54,7 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 1. ダウンロードしたサンプル クライアント アプリケーションの詳細を登録することによる、AD アプリケーションの構成
 1. 要求の認証を取得するための値を使用したサンプル クライアント アプリケーションのロード
 
-> [AZURE.NOTE][Azure リソース マネージャー](http://msdn.microsoft.com/library/azure/dn790568.aspx)に関するページ、「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」、および [Azure Active Directory](http://msdn.microsoft.com/library/azure/jj673460.aspx) に関するページでは、Azure Active Directory を使用して、リソース マネージャーへのクライアント要求を認証するための背景知識を提供します。
+> [AZURE.NOTE] [Azure リソース マネージャー](http://msdn.microsoft.com/library/azure/dn790568.aspx)に関するページ、「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」、および [Azure Active Directory](http://msdn.microsoft.com/library/azure/jj673460.aspx) に関するページでは、Azure Active Directory を使用して、リソース マネージャーへのクライアント要求を認証するための背景知識を提供します。
 
 ###Active Directory サービスの作成
 
@@ -204,4 +204,4 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1203_2015--->

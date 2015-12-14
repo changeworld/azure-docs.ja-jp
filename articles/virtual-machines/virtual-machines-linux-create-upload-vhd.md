@@ -164,11 +164,11 @@ VHD ファイルをアップロードするストレージ アカウントが必
 
 詳細については、[Add-AzureVhd に関するページ](https://msdn.microsoft.com/library/azure/dn495173.aspx)を参照してください。
 
-> [AZURE.NOTE][Azure Powershell 1.0 Preview バージョン](https://azure.microsoft.com/blog/azps-1-0-pre/)では、クラシック デプロイメント モデルとリソース マネージャーのデプロイメント モデル用のコマンドレットを処理する方法が大幅に変更されます。この記事ではまだ Preview バージョンを使用していません。
+> [AZURE.NOTE] [Azure Powershell 1.0 Preview バージョン](https://azure.microsoft.com/blog/azps-1-0-pre/)では、クラシック デプロイメント モデルとリソース マネージャーのデプロイメント モデル用のコマンドレットを処理する方法が大幅に変更されます。この記事ではまだ Preview バージョンを使用していません。
 
 
 [Step 1: Prepare the image to be uploaded]: #prepimage
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1203_2015--->

@@ -31,7 +31,7 @@ Azure Search は [PaaS サービス](https://wikipedia.org/wiki/Platform_as_a_se
 
 Azure Search ではデータがインデックスに保存されます。それを全文クエリで検索できます。このようなインデックスのスキーマは Azure クラシック ポータルで作成するか、クライアント ライブラリまたは REST API でプログラミングして作成できます。スキーマが定義されたら、データを Azure Search サービスにアップロードできます。データには順番にインデックスが付けられます。
 
-プル モデルまたはプッシュ モデルを使用し、インデックスにデータをアップロードできます。プル モデルは構成可能なインデクサー (「[インデクサー操作 (Azure Search Service REST API)](https://msdn.microsoft.com/library/azure/dn946891.aspx)」を参照してください) によって提供され、オンデマンドまたは定期的な更新に利用されます。Azure DocumentDB、Azure SQL Database、または Azure VM にホストされている SQL Server から簡単にデータとデータ変更を取り込むことができます。プッシュ モデルは SDK または REST API によって提供され、更新したドキュメントをインデックスに送信するために使用されます。JSON 形式であれば、実質上、あらゆるデータセットからデータをプッシュできます。データの読み込み方法については、「[ドキュメントの追加、更新、削除](https://msdn.microsoft.com/library/azure/dn798930.aspx)」または「[.NET SDK の使用方法](search-howto-dotnet-sdk.md)」を参照してください。
+プル モデルまたはプッシュ モデルを使用し、インデックスにデータをアップロードできます。プル モデルは構成可能なインデクサー (「インデクサー操作 [Azure Search Service REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx)」を参照してください) によって提供され、オンデマンドまたは定期的な更新に利用されます。Azure DocumentDB、Azure SQL Database、または Azure VM にホストされている SQL Server から簡単にデータとデータ変更を取り込むことができます。プッシュ モデルは SDK または REST API によって提供され、更新したドキュメントをインデックスに送信するために使用されます。JSON 形式であれば、実質上、あらゆるデータセットからデータをプッシュできます。データの読み込み方法については、「[ドキュメントの追加、更新、削除](https://msdn.microsoft.com/library/azure/dn798930.aspx)」または「[.NET SDK の使用方法](search-howto-dotnet-sdk.md)」を参照してください。
 
 開発者によっては便利なインデクサーを選択します。他の開発者にとっては、プッシュ モデルは作業が増えるだけの価値があります。プッシュ モデルを選択する理由は 2 つあります。まず、クローラースタイルのメカニズムがデータ サーバーに与える余計な負荷を回避できます。次に、インデックスの定期作成に内在する遅延を回避できます。サイバー マンデーまたはブラック フライデーに在庫について最新状況を検索することがあります。プッシュ モデルはその度合いの精度を提供できます。
 
@@ -89,7 +89,7 @@ Azure Search には HTTPS でのみアクセスできます。
 
 **ドキュメント**にはフィールドと関連付けられている属性が含まれています。フィールドには検索可能テキスト、フィルターとスコアリング プロファイルで主に (あるいは排他的に) 使用される値、そして多くの場合、画像など、他のデータ ストアのコンテンツの URL またはポインターが含まれます。多くの検索アプリケーションで複数のストレージ形態が利用されています。画像と動画は、Azure BLOB ストレージなど、他のストレージ メディアに保管すればコストが減ります。
 
-**インデクサー**を利用し、Azure SQL Database、Azure VM の SQL Server、Azure DocumentDB で変更されたデータのインデックス更新をスケジュールできます。詳細については、「インデクサー操作 (Azure Search サービス REST API (https://msdn.microsoft.com/library/azure/dn946891.aspx))」を参照してください。
+**インデクサー**を利用し、Azure SQL Database、Azure VM の SQL Server、Azure DocumentDB で変更されたデータのインデックス更新をスケジュールできます。詳細については、「[インデクサー操作 (Azure Search サービス REST API)]((https://msdn.microsoft.com/library/azure/dn946891.aspx)」 を参照してください。
 
 **クエリ**はブール型フィルターの場合は OData 構文で、全文検索の場合は簡単なクエリ構文で作成できます。詳細については、「[Azure Search の OData 式の構文](https://msdn.microsoft.com/library/azure/dn798921.aspx)」と「[Azure Search の簡単なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)」を参照してください。
 
@@ -129,6 +129,8 @@ ID に基づいて特定のドキュメントを探し、特定のアイテム�
 
 以下のチュートリアルもお試しいただけます。
 
-[.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md) [Azure Search .NET の使用](search-get-started-dotnet.md) [Azure Search: チュートリアル、ビデオ デモ、サンプル](search-video-demo-tutorial-list.md)
+[.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md)
+[Azure Search .NET の使用](search-get-started-dotnet.md)
+[Azure Search: チュートリアル、ビデオ デモ、サンプル](search-video-demo-tutorial-list.md)
 
 <!---HONumber=AcomDC_1203_2015-->

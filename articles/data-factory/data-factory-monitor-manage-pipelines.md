@@ -96,7 +96,6 @@ Data Factory のデータセット スライスは、次のいずれかの状態
 <td>ValidationRetry</td><td>検証の再試行を待機しています。</td>
 </tr>
 <tr>
-&lt; tr
 <td rowspan="2">InProgress</td><td>Validating</td><td>検証を実行中です。</td>
 </tr>
 <td></td>

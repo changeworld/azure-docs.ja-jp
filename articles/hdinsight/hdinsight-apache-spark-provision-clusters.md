@@ -207,7 +207,7 @@ Spark クラスターの種類を指定します。
 ## 次のステップ
 
 * HDInsight での Apache Spark と Power BI や Tableau などの BI ツールを使用する方法については、「[HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)」をご覧ください。
-* HDInsight の Apache Spark を使用して Machine Learning アプリケーションを作成する方法については、「[Machine Learning アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-ipython-notebook-machine-learning.md)」をご覧ください。
+* HDInsight の Apache Spark を使用して機械学習アプリケーションを作成する方法については、「[機械学習アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-ipython-notebook-machine-learning.md)」をご覧ください。
 * HDInsight の Apache Spark を使用してストリーミング アプリケーションを作成する方法については、「[リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)」をご覧ください。
 * リソース マネージャーを使用して Spark クラスターに割り当てられたリソースを管理する方法については、「[Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)」をご覧ください。
 

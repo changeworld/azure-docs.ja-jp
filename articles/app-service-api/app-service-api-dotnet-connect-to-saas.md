@@ -378,7 +378,12 @@ API アプリから Dropbox API を呼び出すことができるようにする
 
 		browser.Navigate(string.Format(@"{0}/login/aad", GATEWAY_URL));
 
-	他のプロバイダーで使用する値を次に示します: * "microsoftaccount" * "facebook" * "twitter" * "google"<br/><br/>
+	他のプロバイダーで使用する値を次に示します:
+	* "microsoftaccount"
+	* "facebook"
+	* "twitter"
+	* "google"
+<br/><br/>
 
 * `GetConsentLinkAsync()` メソッドの 2 番目のパラメーターは、ユーザーが Dropbox にログインしてユーザー アカウントへのアクセスに同意した後に、同意サーバーによりリダイレクトされるコールバック URL です。
 
