@@ -22,7 +22,7 @@ Azure Search は、Microsoft Azure のホスト型クラウド検索サービス
 
 ##機能のバージョン管理とロール アウト
 
-機能は、単独または他の機能と組み合わされて、[REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)、[.NET SDK](http://go.microsoft.com/fwlink/?LinkId=528216)、または [Azure ポータル](https://portal.azure.com)のサービス ダッシュ ボードを通してリリースされます。
+機能は、単独または他の機能と組み合わされて、[REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)、[.NET SDK](http://go.microsoft.com/fwlink/?LinkId=528216)、または [Azure クラシック ポータル](https://portal.azure.com)のサービス ダッシュ ボードを通してリリースされます。
 
 .NET ライブラリおよび REST API の両方に、複数のバージョンがあります。新機能がロール アウトされた後も、従来の API は引き続き動作します。バージョン管理ポリシーの詳細については、「[Azure Search サービスのバージョン](https://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
@@ -90,7 +90,7 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
 - [Lucene 言語アナライザー](search-api-2014-10-20-preview.md)が、Lucene と共に配布されるカスタム言語アナライザーで多言語サポートするために追加されました。 
 
-- [Microsoft Azure 管理ポータル](https://portal.azure.com)には、スコアリング プロファイルを含め、インデックス作成のためのツール サポートが導入されました。
+- [Microsoft Azure クラシック ポータル](https://portal.azure.com)には、スコアリング プロファイルを含め、インデックス作成のためのツール サポートが導入されました。
 
 ##API バージョン 2014-07-31-Preview
 **リリース日: 2014 年 8 月 21 日**
@@ -103,7 +103,7 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
 - 地理空間サポートは当初より利用可能です。これは最初から Azure Search の一部であった `Edm.GeographyPoint` データ型により提供されます。
 
-- [Microsoft Azure 管理ポータル](https://portal.azure.com)のプレビュー バージョンでのプロビジョニング。Azure Search は、新しいポータルでのみ使用できるいくつかのサービスの 1 つでした。
+- [Microsoft Azure クラシック ポータル](https://portal.azure.com)のプレビュー バージョンでのプロビジョニング。Azure Search は、新しいポータルでのみ使用できるいくつかのサービスの 1 つでした。
 
 ##管理 API バージョン 2015-08-19
 **リリース日: 2015 年 9 月 11 日**
@@ -128,4 +128,4 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

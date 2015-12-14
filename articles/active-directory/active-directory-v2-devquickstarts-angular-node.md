@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure AD AngularJS の概要 | Microsoft Azure"
-	description="サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する Angular JS シングル ページ アプリを構築する方法を説明します。"
+	description="ユーザーのサインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する Angular JS シングル ページ アプリを構築する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="dstrockis"
@@ -48,7 +48,7 @@ git clone https://github.com/AzureADSamples/SinglePageApp-AngularJS-NodeJS.git
 アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
 
 ## adal.js をインストールする
-最初に、ダウンロードしたプロジェクトに移動し、adal.js をインストールします。[bower](http://bower.io/) をインストールしてある場合は、次のコマンドを実行するだけで済みます。依存関係のバージョンの不一致がある場合は、高い方のバージョンを選択します。 ```
+まず、ダウンロードしたプロジェクトに移動し、adal.js をインストールします。[bower](http://bower.io/) をインストールしてある場合は、次のコマンドを実行するだけで済みます。依存関係のバージョンの不一致がある場合は、高い方のバージョンを選択します。 ```
 bower install adal-angular#experimental
 ```
 
@@ -91,8 +91,8 @@ REST API は、この値を使用して、AJAX 要求で Angular アプリから
 
 REST API のしくみについて説明するときにはよくあることです。自由にコードをいろいろ調べてください。ただし、Azure AD による Web API の保護をもっと詳しく知りたい場合は、[こちらの記事](active-directory-v2-devquickstarts-node-api.md)を参照してください。
 
-## ユーザーをサインインさせる
-次に ID のコードを作成します。既にお気付きかもしれませんが、adal.js に含まれる AngularJS プロバイダーは Angular のルーティング メカニズムを適切に処理します。最初に、adal モジュールをアプリケーションに追加します。
+## ユーザーをサインインする
+次に、ID コードを作成します。既にお気付きかもしれませんが、adal.js に含まれる AngularJS プロバイダーが Angular のルーティング メカニズムを適切に処理します。最初に、adal モジュールをアプリケーションに追加します。
 
 ```js
 // app/scripts/app.js
@@ -128,7 +128,7 @@ adalProvider.init({
     }, $httpProvider);
 ```
 
-アプリを保護し、ユーザーをサインインさせるために必要な情報はすべて adal.js が持っています。アプリの特定のルートにサインインを強制するには、1 行のコードで済みます。
+アプリを保護し、ユーザーをサインインするために必要な情報はすべて adal.js に含まれています。アプリの特定のルートにサインインを強制するためのコードは 1 行だけで済みます。
 
 ```js
 // app/scripts/app.js
@@ -168,7 +168,7 @@ angular.module('todoApp')
 ```
 
 ## ユーザー情報を表示する
-ユーザーがサインインしたので、サインインしたユーザーの認証データにアプリケーションでアクセスする必要があります。adal.js は、`userInfo` オブジェクトでこの情報を公開します。ビューでこのオブジェクトにアクセスするには、まず adal.js を対応するコントローラーのルート スコープに追加します。
+ユーザーがサインインしたら、サインインしたユーザーの認証データにアプリケーションからアクセスする必要があります。adal.js は、`userInfo` オブジェクトでこの情報を公開します。ビューでこのオブジェクトにアクセスするには、まず adal.js を対応するコントローラーのルート スコープに追加します。
 
 ```js
 // app/scripts/userDataCtrl.js
@@ -209,11 +209,11 @@ angular.module('todoApp')
 ```
 
 ## REST API を呼び出す
-最後に、いくつかのトークンを取得し、REST API を呼び出してタスクを作成、読み取り、更新、削除します。ただし、 開発者は*何も*行う必要がありません。トークンの取得、キャッシュ、更新は adal.js が自動的に行います。また、REST API に送信される AJAX 要求へのトークンの添付も行われます。
+最後に、いくつかのトークンを取得し、タスクを作成、読み取り、更新、削除する REST API を呼び出します。ただし、 開発者は*何も*行う必要がありません。トークンの取得、キャッシュ、更新は adal.js が自動的に行います。また、REST API に送信される AJAX 要求へのトークンの添付も行われます。
 
-どうなっているのでしょうか。 すべては [AngularJS インターセプター](https://docs.angularjs.org/api/ng/service/$http)のおかげです。AngularJS インターセプターにより、adal.js は送信および受信する http メッセージを変換できます。さらに、adal.js は、ウィンドウと同じドメインに送信される要求が、AngularJS アプリと同じアプリケーション ID に対するトークンを使用するものと想定します。そのために、Angular アプリと NodeJS REST API の両方で同じアプリケーション ID を使用しました。もちろん、この動作をオーバーライドして、必要に応じて他の REST API 用にトークンを取得するように adal.js に指示できますが、この簡単なシナリオでは既定のままにします。
+そのしくみは すべては [AngularJS インターセプター](https://docs.angularjs.org/api/ng/service/$http)のおかげです。AngularJS インターセプターにより、adal.js は送信および受信する http メッセージを変換できます。さらに、adal.js は、ウィンドウと同じドメインに送信される要求が AngularJS アプリと同じアプリケーション ID 用のトークンを使用するものと想定します。そのために、Angular アプリと NodeJS REST API の両方で同じアプリケーション ID を使用しました。もちろん、必要に応じてこの動作をオーバーライドし、他の REST API 用のトークンを取得するよう adal.js に指示できますが、このシナリオではシンプルに既定のままにします。
 
-Azure AD からベアラー トークンを含む要求を簡単に送信できることがわかるコードを次に示します。
+次のスニペットは、Azure AD からベアラー トークンを含む要求を簡単に送信できることを示しています。
 
 ```js
 // app/scripts/todoListSvc.js
@@ -223,13 +223,13 @@ return $http.get('/api/tasks');
 ...
 ```
 
-ご利用ありがとうございます。 Azure AD に統合されたシングル ページ アプリが完成しました。このアプリは、ユーザーの認証を行い、OpenID Connect を使用してバックエンドの REST API を安全に呼び出し、ユーザーについての基本情報を取得することができます。個人 Microsoft アカウントまたは Azure AD の職場/学校アカウントを持つユーザーを既定でサポートします。次のようにしてぜひ試してください。
+ご利用ありがとうございます。 Azure AD に統合されたシングル ページ アプリが完成しました。アプリは、ユーザーの認証を行い、OpenID Connect を使用してバックエンドの REST API を安全に呼び出し、ユーザーについての基本情報を取得できます。個人 Microsoft アカウントまたは Azure AD の職場/学校アカウントを持つユーザーを既定でサポートします。次のようにしてぜひ試してください。
 
 ```
 node server.js
 ```
 
-ブラウザーで `http://localhost:8080` にアクセスします。個人の Microsoft アカウントまたは職場/学校アカウントを使用してサインインします。ユーザーの To-Do List にタスクを追加し、サインアウトします。他の種類のアカウントを使用してサインインしてみてください。職場/学校ユーザーを作成するために Azure AD テナントが必要な場合は、[こちらで取得方法がわかります](active-directory-howto-tenant.md) (無料です)。
+ブラウザーで `http://localhost:8080` にアクセスします。個人の Microsoft アカウントまたは職場/学校アカウントを使用してサインインします。ユーザーの To-Do List にタスクを追加し、サインアウトした後で、他の種類のアカウントを使用してサインインしてみてください。職場/学校ユーザーを作成するために Azure AD テナントが必要な場合は、[こちらで取得方法がわかります](active-directory-howto-tenant.md) (無料です)。
 
 アプリ モデル v2.0 プレビューについての学習を続けるには、[v2.0 開発者ガイド](active-directory-appmodel-v2-overview.md)に戻ってください。その他のリソースについては、以下を参照してください。
 
@@ -237,4 +237,4 @@ node server.js
 - [Stack Overflow の Azure AD >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 - [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

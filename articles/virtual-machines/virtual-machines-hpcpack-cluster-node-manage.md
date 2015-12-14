@@ -59,7 +59,7 @@ Add-HPCIaaSNode.ps1 [-ServiceName] <String> [-ImageName] <String>
 
 * **ServiceName** - 新しいコンピューティング ノード VM が追加されるクラウド サービスの名前。
 
-* **ImageName** - Azure VM イメージ名。これは Azure ポータルまたは Azure PowerShell コマンド **Get-AzureVMImage** から取得できます。このイメージは次の要件を満たしている必要があります。
+* **ImageName** - Azure VM イメージ名。これは Azure クラシック ポータルまたは Azure PowerShell コマンド **Get-AzureVMImage** から取得できます。このイメージは次の要件を満たしている必要があります。
 
     1. Windows オペレーティング システムをインストールする必要があります。
 
@@ -178,4 +178,4 @@ Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 
 * クラスターのジョブやタスクの現在のワークロードに合わせ、Azure コンピューティング リソースを自動的に拡大縮小する方法については、「[HPC Pack クラスターの Azure コンピューティング リソースを拡大縮小する](virtual-machines-hpcpack-cluster-node-autogrowshrink.md)」を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

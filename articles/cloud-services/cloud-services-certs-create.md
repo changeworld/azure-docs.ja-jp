@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="クラウド サービスと管理証明書 | Microsoft Azure" 
+	pageTitle="Cloud Services と管理証明書 | Microsoft Azure" 
 	description="Microsoft Azure で証明書を作成し、使用する方法を学習します。" 
 	services="cloud-services" 
 	documentationCenter=".net" 
@@ -26,7 +26,7 @@ Azure が使用する証明書には、プライベート キーか公開キー�
 ## サービス証明書とは何でしょうか。
 サービス証明書はクラウド サービスに付属して、サービスとの間のセキュリティで保護された通信を有効にします。次の例では、Web ロールをデプロイして、公開されている HTTPS エンドポイントを認証できる証明書を指定します。サービス定義で定義されているサービス証明書は、ロールのインスタンスを実行している仮想マシンに自動的にデプロイされます。
 
-管理ポータルか、サービス管理 API を使用してサービス証明書を管理ポータルにアップロードすることができますサービス証明書は、特定のクラウド サービスに関連付けられ、サービス定義ファイルのデプロイに割り当てられます。
+Azure クラシック ポータルまたはサービス管理 API を使用して、サービス証明書を Azure クラシック ポータルにアップロードすることができますサービス証明書は、特定のクラウド サービスに関連付けられ、サービス定義ファイルのデプロイに割り当てられます。
 
 サービス証明書は、サービスとは別に管理することができ、別の人が管理する場合があります。たとえば、開発者が IT 管理者が 以前 Azure にアップロードした証明書を参照するサービス パッケージをアップロードする場合があります。IT 管理者は、新しいサービス パッケージをアップロードすることなくサービスの構成を変更する証明書を管理、更新できます。これは、証明書の論理名とそのストアの名前と場所がサービス定義ファイルで指定され、証明書の拇印はサービス構成ファイルで指定されているために可能です。証明書を更新するには、サービス構成ファイルに新しい証明書をアップロードし、拇印値を変更するだけです。
 
@@ -74,10 +74,10 @@ Java を使用して[証明書を作成](../app-service-web/java-create-azure-we
 
 ## 次のステップ
 
-[Azure ポータル (または[プレビュー ポータル](cloud-services-configure-ssl-certificate-portal.md)) [にサービス証明書をアップロード](cloud-services-configure-ssl-certificate.md)し、クラウド サービス用に[構成](cloud-services-xml-certs.md)します。
+[Azure クラシック ポータル (または[Azure ポータル](cloud-services-configure-ssl-certificate-portal.md)) にサービス証明書をアップロード](cloud-services-configure-ssl-certificate.md)し、クラウド サービス用に[構成](cloud-services-xml-certs.md)します。
 
-[管理 API 証明書](../azure-api-management-certs.md)を Azure ポータルにアップロードします。
+[管理 API 証明書](../azure-api-management-certs.md)を Azure クラシック ポータルにアップロードします。
 
->[AZURE.NOTE]Azure プレビュー ポータルは、API へのアクセスに管理証明書を使用しないで、代わりにユーザー アカウントを使用します。
+>[AZURE.NOTE]Azure ポータルは、API へのアクセスに管理証明書を使用しないで、代わりにユーザー アカウントを使用します。
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

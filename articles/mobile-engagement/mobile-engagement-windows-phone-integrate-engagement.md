@@ -60,7 +60,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 -   `<connectionString>` タグと `<\connectionString>` タグの間のアプリケーション接続文字列。
 
-代わりに指定を実行時に行う場合は、Engagement エージェントを初期化する前に、次のメソッドを呼び出すことができます。
+代わりに指定を実行時に行う場合は、 Engagement エージェントを初期化する前に、次のメソッドを呼び出すことができます。
 
 	/* Engagement configuration. */
 	EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -69,7 +69,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 	/* Initialize Engagement agent with above configuration. */
 	EngagementAgent.Instance.Init(engagementConfiguration);
 
-アプリケーションの接続文字列が Azure 管理ポータルに表示されます。
+アプリケーションの接続文字列が Azure クラシック ポータルに表示されます。
 
 ### Engagement の初期化
 
@@ -247,4 +247,4 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 > [AZURE.WARNING]バーストのしきい値は、1 秒よりも短くすることはできません。1 秒未満にしようとすると、SDK でエラーのトレースが表示され、自動的に既定値の 0 秒にリセットされます。これにより、SDK はログをリアルタイムで報告するようになります。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

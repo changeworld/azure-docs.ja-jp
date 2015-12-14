@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/18/2015" 
+	ms.date="12/02/2015" 
 	ms.author="mandia"/>
 
 
 # BizTalk サービス: バックアップと復元に関するページ
 
-Azure BizTalk サービスには、バックアップ機能と復元機能が備わっています。このトピックでは、Azure 管理ポータルを使用して BizTalk サービスをバックアップおよび復元する方法について説明しています。
+Azure BizTalk サービスには、バックアップ機能と復元機能が備わっています。このトピックでは、Azure クラシック ポータルを使用して BizTalk サービスをバックアップおよび復元する方法について説明しています。
 
 BizTalk サービスのバックアップは、[BizTalk サービスの REST API](http://go.microsoft.com/fwlink/p/?LinkID=325584) を使用して行うこともできます。
 
@@ -29,7 +29,7 @@ BizTalk サービスのバックアップは、[BizTalk サービスの REST API
 
 	**注** ハイブリッド接続は、エディションにかかわらずバックアップされません。
 
-- Azure 管理ポータルを使用して、オンデマンド バックアップを作成することも、スケジュールされたバックアップを作成することもできます。
+- Azure クラシック ポータルを使用して、オンデマンド バックアップを作成することも、スケジュールされたバックアップを作成することもできます。
 
 - バックアップ コンテンツを同じ BizTalk サービスに復元することも、新しい BizTalk サービスに復元することもできます。同じ名前を使用して BizTalk サービスを復元するには、既存の BizTalk サービスを削除する必要があります。さらにその名前が使用可能である必要があります。BizTalk サービスを削除した後、同じ名前が使用可能になるまで長い時間がかかる場合があります。同じ名前が使用可能になるまで待つことができない場合は、新しい BizTalk サービスに復元します。
 
@@ -48,14 +48,14 @@ BizTalk サービスのバックアップは、[BizTalk サービスの REST API
 
 ## バックアップの作成
 
-バックアップはいつでも取得でき、完全にユーザーによって制御されます。このセクションでは、Azure 管理ポータルを使用してバックアップを作成する手順を次の各項に分けて説明します。
+バックアップはいつでも取得でき、完全にユーザーによって制御されます。このセクションでは、Azure クラシック ポータルを使用してバックアップを作成する手順を次の各項に分けて説明します。
 
 [オンデマンド バックアップ](#backupnow)
 
 [バックアップのスケジュール](#backupschedule)
 
 #### <a name="backupnow"></a>オンデマンド バックアップ
-1. Azure 管理ポータルで、[**BizTalk サービス**] を選択してから、バックアップする BizTalk サービスを選択します。
+1. Azure クラシック ポータルで、[**BizTalk サービス**] を選択してから、バックアップする BizTalk サービスを選択します。
 2. [**ダッシュボード**] タブで、ページの一番下にある [**バックアップ**] を選択します。
 3. バックアップ名を入力します。たとえば、「*myBizTalkService*BU*日付*」と入力します。
 4. BLOB ストレージ アカウントを選択し、チェックマークを選択してバックアップを開始します。
@@ -64,7 +64,7 @@ BizTalk サービスのバックアップは、[BizTalk サービスの REST API
 
 #### <a name="backupschedule"></a>バックアップのスケジュール
 
-1. Azure 管理ポータルで、[**BizTalk サービス**] を選択し、どの BizTalk サービスのバックアップのスケジュールを設定するかを選択してから、[**構成**] タブを選択します。
+1. Azure クラシック ポータルで、[**BizTalk サービス**] を選択し、どの BizTalk サービスのバックアップのスケジュールを設定するかを選択してから、[**構成**] タブを選択します。
 2. [**バックアップ ステータス**] を [**自動**] に設定します。 
 3. [**ストレージ アカウント**] で、どのアカウントにバックアップを保存するかを選択し、[**頻度**] にバックアップ作成の間隔を入力し、バックアップを保持する期間の長さを [**保持日数**] に入力します。
 
@@ -86,7 +86,7 @@ BizTalk サービスのダッシュボードにステータスが [**失敗**] �
 
 ## 復元
 
-バックアップの復元は、Azure 管理ポータルからでも、[BizTalk サービスの REST API](http://go.microsoft.com/fwlink/p/?LinkID=325582) からでも実行できます。このセクションでは、管理ポータルを使用して復元する手順を説明します。
+バックアップの復元は、Azure クラシック ポータルからでも、[BizTalk サービスの REST API](http://go.microsoft.com/fwlink/p/?LinkID=325582) からでも実行できます。このセクションでは、クラシック ポータルを使用して復元する手順を説明します。
 
 #### バックアップを復元する前に
 
@@ -96,7 +96,7 @@ BizTalk サービスのダッシュボードにステータスが [**失敗**] �
 
 #### バックアップの復元
 
-1. Azure 管理ポータルで、[**新規**] > [**アプリケーション サービス**] > [**BizTalk サービス**] > [**復元**] を選択します。
+1. Azure クラシック ポータルで、[**新規**] > [**アプリケーション サービス**] > [**BizTalk サービス**] > [**復元**] を選択します。
 
 	![バックアップの復元][Restore]
 
@@ -119,7 +119,7 @@ BizTalk サービスのダッシュボードにステータスが [**失敗**] �
 
 7. チェックマークを選択して復元を開始します。
 
-復元が正常に完了すると、新しい BizTalk サービスが Azure 管理ポータルの [BizTalk サービス] ページに "中断" という状態で表示されます。
+復元が正常に完了すると、新しい BizTalk サービスが Azure クラシック ポータルの [BizTalk サービス] ページに "中断" という状態で表示されます。
 
 
 
@@ -135,7 +135,7 @@ BizTalk サービスは常に、[**中断**] 状態で復元されます。こ�
 
 - 新しく復元した BizTalk サービス環境で自動バックアップを構成することをお勧めします。
 
-Azure 管理ポータルで BizTalk サービスを開始するには、復元された BizTalk サービスを選択してタスク バーの [**再開**] をクリックします。
+Azure クラシック ポータルで BizTalk サービスを開始するには、復元された BizTalk サービスを選択してタスク バーの [**再開**] をクリックします。
 
 
 
@@ -214,13 +214,13 @@ Azure 管理ポータルで BizTalk サービスを開始するには、復元�
 
 ## 次へ
 
-Azure BizTalk サービスを Azure 管理ポータルで作成するには、「[BizTalk サービス: Azure 管理ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)」に進んでください。アプリケーションの作成を開始するには、[Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
+Azure BizTalk Services を Azure クラシック ポータルで作成するには、[BizTalk Services の Azure クラシック ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)に関するページに進んでください。アプリケーションの作成を開始するには、[Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
 
 ## 関連項目
 - [BizTalk サービスのバックアップ](http://go.microsoft.com/fwlink/p/?LinkID=325584)
 - [バックアップからの BizTalk サービスの復元](http://go.microsoft.com/fwlink/p/?LinkID=325582)
 - [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)
-- [BizTalk サービス: Azure 管理ポータルを使用した BizTalk サービスのプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)
+- [BizTalk サービス: Azure クラシック ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)
 - [BizTalk サービス: サービスの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)
 - [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)
 - [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)
@@ -233,4 +233,4 @@ Azure BizTalk サービスを Azure 管理ポータルで作成するには、�
 [RestoreBizTalkService]: ./media/biztalk-backup-restore/RestoreBizTalkServiceWindow.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

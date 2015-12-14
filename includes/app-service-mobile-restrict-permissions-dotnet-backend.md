@@ -22,4 +22,4 @@
 
 	詳細については、「[Azure Mobile Apps Node.js SDK を使用する方法](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md)」の「[テーブルへのアクセスに対して認証を要求](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth)」を参照してください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

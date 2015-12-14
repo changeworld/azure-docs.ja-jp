@@ -23,9 +23,9 @@
 
 ## ファイアウォール
 
-Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用できます。コンピューターから SQL Database にアクセスするには、ファイアウォールで TCP ポート 1433 での TCP 通信の発信を許可する必要があります。接続処理の一部として、Azure 仮想マシンからの接続はワーカー ロールごとに異なる別の IP アドレスとポートにリダイレクトされます。ポート番号の範囲は、11000 ～ 11999 です。
+Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用できます。コンピューターから SQL Database にアクセスするには、ファイアウォールで TCP ポート 1433 での TCP 通信の発信を許可する必要があります。接続処理の一部として、Azure 仮想マシンからの接続は worker ロールごとに異なる別の IP アドレスとポートにリダイレクトされます。ポート番号の範囲は、11000 ～ 11999 です。
 
-最初に Azure SQL Database サーバーに接続する前に、[Azure ポータル](https://portal.azure.com)または [Azure Platform Management Portal](https://manage.windowsazure.com/microsoft.onmicrosoft.com#Workspaces/All/dashboard) を使用して、Azure SQL Database ファイアウォールを構成する必要があります。コンピューターまたは Azure から Azure SQL Database サーバーへの接続試行を有効にする、サーバーレベルのファイアウォール設定を作成する必要があります。また、Azure SQL Database サーバー内の特定のデータベースへのアクセスを制御する場合は、それぞれのデータベースに対するデータベースレベルのファイアウォール ルールを作成します。詳細については、「[Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)」を参照してください。
+最初に Azure SQL Database サーバーに接続する前に、[Azure クラシック ポータル](https://portal.azure.com)または [Azure プラットフォーム クラシック ポータル](https://manage.windowsazure.com/microsoft.onmicrosoft.com#Workspaces/All/dashboard)を使用して、Azure SQL Database ファイアウォールを構成する必要があります。コンピューターまたは Azure から Azure SQL Database サーバーへの接続試行を有効にする、サーバーレベルのファイアウォール設定を作成する必要があります。また、Azure SQL Database サーバー内の特定のデータベースへのアクセスを制御する場合は、それぞれのデータベースに対するデータベースレベルのファイアウォール ルールを作成します。詳細については、「[Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)」を参照してください。
 
 ## 接続の暗号化と証明書の検証
 
@@ -109,6 +109,6 @@ Azure SQL Database アプリケーションのセキュリティの脅威に対�
 
 [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)
 
-[SQL Server データベース エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
+[SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

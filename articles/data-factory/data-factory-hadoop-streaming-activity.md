@@ -40,7 +40,8 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 	                        "<nameofthecluster>/example/apps/wc.exe",
 	                        "<nameofthecluster>/example/apps/cat.exe"
 	                    ],
-	                    "fileLinkedService": "StorageLinkedService"
+	                    "fileLinkedService": "StorageLinkedService",
+	                    "getDebugInfo": "Failure"
 	                },
 	                "outputs": [
 	                    {
@@ -78,6 +79,7 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 7. **filePaths** セクションには、mapper と reducer の実行可能ファイルのパスを指定します。例の "adfsample/example/apps/wc.exe"： adfsample は BLOB コンテナー、example/apps はフォルダー、wc.exe は実行可能ファイルです。
 8. **fileLinkedService** プロパティには、filePaths セクションに指定されたファイルを含む Azure ストレージを表す Azure Storage のリンクされたサービスを指定します。
 9. **arguments** プロパティには、ストリーミング ジョブの引数を指定します。
+10. **getDebugInfo** プロパティは、省略可能な要素です。Failure に設定されていると、エラー時にのみログがダウンロードされます。All に設定されていると、ログは実行状態に関係なく常にダウンロードされます。
 
 > [AZURE.NOTE]例に示すように、**outputs** プロパティには、Hadoop ストリーミング アクティビティ用の出力データセットを指定する必要があります。これは、パイプラインのスケジュールを実行するために必要となる単なるダミーのデータセットです。**inputs**プロパティにアクティビティ用の入力データセットを指定する必要はありません。
 
@@ -190,4 +192,4 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 	    }
 	}
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

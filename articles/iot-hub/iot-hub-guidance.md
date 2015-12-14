@@ -78,7 +78,7 @@ IoT Hub の[デバイス ID レジストリ][lnk-devguide-identityregistry]を�
 
 トークン サービス パターンの主な手順を次に示します。
 
-1. [IoT Hub 共有アクセス ポリシー][lnk-devguide-security]を作成し、IoT Hub に対する **DeviceConnect** アクセス許可を指定します。このポリシーは、[プレビュー ポータル][lnk-preview-portal]またはプログラムで作成できます。トークン サービスは、このポリシーを使用して、作成されるトークンに署名します。
+1. [IoT Hub 共有アクセス ポリシー][lnk-devguide-security]を作成し、IoT Hub に対する **DeviceConnect** アクセス許可を指定します。このポリシーは、[Azure ポータル][lnk-portal]またはプログラムで作成できます。トークン サービスは、このポリシーを使用して、作成されるトークンに署名します。
 2. IoT Hub にアクセスする必要があるデバイスは、トークン サービスに署名付きトークンを要求します。デバイスは、カスタム デバイス ID レジストリ/認証スキームで認証し、トークン サービスがトークンの作成に使用するデバイス ID を特定できます。
 3. トークン サービスは、[IoT Hub 開発者ガイド: セキュリティ][lnk-devguide-security]に関するページに従って作成されたトークンを、`/devices/{deviceId}` を `resourceURI` として使用して返します。`deviceId` は、認証されたデバイスです。トークン サービスは、共有アクセス ポリシーを使用してトークンを作成します。
 4. デバイスは、IoT Hub で直接トークンを使用します。
@@ -112,11 +112,11 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
 
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [lnk-what-is-hub]: iot-hub-what-is-iot-hub.md
-[lnk-preview-portal]: https://portal.azure.com
+[lnk-portal]: https://portal.azure.com
 [lnk-throttles-quotas]: ../azure-subscription-service-limits.md/#iot-hub-limits
 [lnk-devguide-antispoofing]: iot-hub-devguide.md#antispoofing
 [lnk-devguide-protocol]: iot-hub-devguide.md#amqpvshttp
 [lnk-dotnet-sas]: https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx
 [lnk-java-sas]: http://azure.github.io/azure-iot-sdks/java/service/api_reference/com/microsoft/azure/iot/service/auth/IotHubServiceSasToken.html
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

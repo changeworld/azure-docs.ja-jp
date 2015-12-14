@@ -21,11 +21,11 @@
 # Azure サブスクリプションを購入またはサインアップする方法
 
 ## Azure 無料試用版サブスクリプションにサインアップする
-Azure 無料試用版のサブスクリプションにサインアップするには、電話番号、クレジット カード、[Microsoft アカウント](https://www.microsoft.com/zh-CN/account/faq.aspx) (旧 Windows Live ID) または学校か職場のアカウント (組織 ID とも呼ばれます) を指定する必要があります。電話番号とクレジット カードは ID を確認する目的のみで使用されます。クレジット カードには課金されません。
+Azure 無料試用版のサブスクリプションにサインアップするには、電話番号、クレジット カード、[Microsoft アカウント](https://www.microsoft.com/ja-JP/account/faq.aspx) (旧 Windows Live ID) または学校か職場のアカウント (組織 ID とも呼ばれます) を指定する必要があります。電話番号とクレジット カードは ID を確認する目的のみで使用されます。クレジット カードには課金されません。
 
 >[AZURE.NOTE]電話番号とクレジット カードの詳細は、ID を確認する目的のみで使用されます。クレジット カードには課金されませんが、カードが有効であることを確認するために最小限の金額が信用照会として請求されます。これは、金融機関のポリシーに基づいて 3 ～ 5 日内に取り消されます。
 
-1. [Azure 無料試用版のページ](https://azure.microsoft.com/zh-CN/pricing/free-trial/)を開き、**[今すぐ試す]** を選択します。
+1. [Azure 無料試用版のページ](https://azure.microsoft.com/pricing/free-trial/)を開き、**[今すぐ試す]** を選択します。
 2. Microsoft アカウントまたは学校か職場のアカウントでサインインします。
 3. **[自分の情報]** セクションに個人情報を入力します。![個人情報のスクリーンショット](./media/billing-buy-sign-up-azure-subscription/AboutYou.png)
 
@@ -61,4 +61,4 @@ Azure イン オープン プランのクレジットを販売店から購入し
 2. プロダクト キーを入力し、契約オプションを確認します。</br>![OSA KEY](./media/billing-buy-sign-up-azure-subscription/OSAkey.png)
 3. **[アクティブ化]** を選択します。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="共有アクセス署名の概要 | Microsoft Azure"
-   description="共有アクセス署名とは何か、その動作方法、およびノード、PHP、および C# での使用方法。"
+   pageTitle="Shared Access Signature の概要 | Microsoft Azure"
+   description="Shared Access Signature とは何か、その動作方法、およびノード、PHP、および C# での使用方法。"
    services="service-bus,event-hubs"
    documentationCenter="na"
    authors="djrosanova"
@@ -18,11 +18,11 @@
 
 # Shared Access Signature
 
-*共有アクセス署名* (SAS) は、イベント ハブ、仲介型メッセージング (キューとトピック) およびリレー型メッセージングを含む、Service Bus の主要なセキュリティ メカニズムです。この記事では、共有アクセス署名、そのしくみ、およびプラットフォームに依存しない方法で共有アクセス署名を使用する方法について説明します。
+*Shared Access Signature* (SAS) は、Event Hubs、ブローカー メッセージング (キューとトピック) およびリレー型メッセージングを含む、Service Bus の主要なセキュリティ メカニズムです。この記事では、Shared Access Signature、そのしくみ、およびプラットフォームに依存しない方法で共有アクセス署名を使用する方法について説明します。
 
 ## SAS の概要
 
-共有アクセス署名は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。SAS は、すべての Service Bus サービスによって使用される非常に強力なメカニズムです。実際の使用では、SAS には*共有アクセス ポリシー*と*共有アクセス署名* (多くの場合*トークン*と呼ばれます) という 2 つのコンポーネントがあります。
+Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。SAS は、すべての Service Bus サービスによって使用される非常に強力なメカニズムです。実際の使用では、SAS には*共有アクセス ポリシー*と*Shared Access Signature* (多くの場合*トークン*と呼ばれます) という 2 つのコンポーネントがあります。
 
 Service Bus での共有アクセス署名に関する詳細については、「[Service Bus での共有アクセス署名認証](service-bus-shared-access-signature-authentication.md)」を参照してください。
 
@@ -36,11 +36,11 @@ SAS を理解するうえで重要な点の 1 つは、SAS の基盤はポリシ
   + リッスン
   + 管理
 
-ポリシーを作成した後、そのポリシーには*プライマリ キー*と*セカンダリ キー*が割り当てられます。これらは、暗号化された強力なキーです。これらをなくしたり、外部に漏らしたりしないでください。これらは、常にポータルから入手可能です。生成されたキーのいずれかを使用できます。また、いつでも再生成できます。ただし、再生成するか、またはポリシーのプライマリ キーを変更する場合は、ポリシーから作成された共有アクセス署名がすべて無効になります。
+ポリシーを作成した後、そのポリシーには*プライマリ キー*と*セカンダリ キー*が割り当てられます。これらは、暗号化された強力なキーです。これらをなくしたり、外部に漏らしたりしないでください。これらは、常に [Azure クラシック ポータル][]から入手可能です。生成されたキーのいずれかを使用できます。また、いつでも再生成できます。ただし、再生成するか、またはポリシーのプライマリ キーを変更する場合は、ポリシーから作成された Shared Access Signature がすべて無効になります。
 
-Service Bus の名前空間を作成するときに、**RootManageSharedAccessKey** という名前空間全体に対してポリシーが自動的に作成され、そのポリシーにはすべての権限が与えられます。**root** としてログオンしないため、本当に正当な理由がない限り、このポリシーを使用しないでください。[Azure ポータル](http://manage.windowsazure.com)の名前空間の **[構成]** タブで、追加のポリシーを作成できます。重要なのは、Service Bus の 1 つのツリーのレベル (名前空間、キュー、イベント ハブなど) には、最大 12 個のポリシーだけを保持できることです。
+Service Bus の名前空間を作成するときに、**RootManageSharedAccessKey** という名前空間全体に対してポリシーが自動的に作成され、そのポリシーにはすべての権限が与えられます。**root** としてログオンしないため、本当に正当な理由がない限り、このポリシーを使用しないでください。ポータルの名前空間の **[構成]** タブで、追加のポリシーを作成できます。重要なのは、Service Bus の 1 つのツリーのレベル (名前空間、キュー、イベント ハブなど) には、最大 12 個のポリシーだけを保持できることです。
 
-## 共有アクセス署名 (トークン)
+## Shared Access Signature (トークン)
 
 ポリシー自体は、Service Bus のアクセス トークンではありません。これは、アクセス トークンの生成元のオブジェクトで、プライマリ キーまたはセカンダリ キーを使用します。次の形式の文字列を注意深く作成することで、トークンが生成されます。
 
@@ -165,9 +165,9 @@ private static string createToken(string resourceUri, string keyName, string key
 }
 ```
 
-## 共有アクセス署名の使用 (HTTP レベル)
+## Shared Access Signature の使用 (HTTP レベル)
  
-Service Bus ですべてのエンティティの共有アクセス署名を作成する方法を理解したので、HTTP POST を実行する準備ができました。
+Service Bus ですべてのエンティティの Shared Access Signature を作成する方法を理解したので、HTTP POST を実行する準備ができました。
 
 ```
 POST https://<yournamespace>.servicebus.windows.net/<yourentity>/messages
@@ -176,11 +176,11 @@ Authorization: SharedAccessSignature sr=https%3A%2F%2F<yournamespace>.servicebus
 ContentType: application/atom+xml;type=entry;charset=utf-8
 ``` 
 	
-この方法は、すべての機能に対して利用できます。キュー、トピック、サブスクリプション、イベント ハブまたはリレーに対して SAS を作成できます。イベント ハブの発行元ごとの ID を使用する場合は、`/publishers/< publisherid>` を追加するだけです。
+この方法は、すべての機能に対して利用できます。キュー、トピック、サブスクリプション、イベント ハブまたはリレーに対して SAS を作成できます。Event Hubs の発行元ごとの ID を使用する場合は、`/publishers/< publisherid>` を追加するだけです。
 
-送信者またはクライアントに SAS トークンを付与する場合は、送信者またはクライアントはキーを直接保持しないため、キーを取得するハッシュを反転できません。そのため、管理者は、送信者またはクライアントがアクセスできる対象とアクセスする期間を制御できます。重要なのは、ポリシーのプライマリ キーを変更する場合は、ポリシーから作成された共有アクセス署名がすべて無効になるということです。
+送信者またはクライアントに SAS トークンを付与する場合は、送信者またはクライアントはキーを直接保持しないため、キーを取得するハッシュを反転できません。そのため、管理者は、送信者またはクライアントがアクセスできる対象とアクセスする期間を制御できます。重要なのは、ポリシーのプライマリ キーを変更する場合は、ポリシーから作成された Shared Access Signature がすべて無効になるということです。
 
-## 共有アクセス署名の使用 (AMQP レベル)
+## Shared Access Signature の使用 (AMQP レベル)
 
 前のセクションでは、データを Service Bus に送信するために、HTTP POST 要求を使用して SAS トークンを使用する方法について説明しました。ご存じのように、Service Bus へのアクセスには、AMQP (Advanced Message Queue Protocol) プロトコルを使用できます。AMQP は、多くのシナリオでパフォーマンスの理由から主に使用され、好まれているプロトコルです。SAS トークンと AMQP の併用については、[AMQP Claim-Based Security Version 1.0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) のドキュメントを参照してください。このドキュメントは、2013 年から執筆されているドラフトですが、現在 Azure でもサポートされています。
 
@@ -255,4 +255,6 @@ Service Bus 認証の詳細については、「[Service Bus の認証と承認]
 
 [こちらのブログ記事](http://developers.de/blogs/damir_dobric/archive/2013/10/17/how-to-create-shared-access-signature-for-service-bus.aspx)では、C# および JavaScript での SAS に関するさまざまな例を紹介しています。
 
-<!---HONumber=Nov15_HO3-->
+[Azure クラシック ポータル]: http://manage.windowsazure.com
+
+<!---HONumber=AcomDC_1203_2015-->

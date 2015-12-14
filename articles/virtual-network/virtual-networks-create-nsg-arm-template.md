@@ -181,4 +181,4 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 	- **-f (または --template-file)**。ARM テンプレート ファイルへのパスです。
 	- **-e (または--parameters-file)**。ARM パラメーター ファイルへのパスです。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

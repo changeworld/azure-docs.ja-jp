@@ -67,15 +67,15 @@
 	-	[Git](http://git-scm.com/documentation)
 	-	[PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。+ [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。+ [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。- Visual Studio サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 >
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 運用環境をセットアップする ##
 
 >[AZURE.NOTE]このチュートリアルで使用するスクリプトは、GitHub リポジトリからの継続的パブリッシングを自動的に構成します。これを行うには、GitHub 資格情報が既に Azure に保存されている必要があります。保存されていない場合、スクリプト化されたデプロイは、Web アプリに対するソース管理設定を構成しようとした時点で失敗します。
 >
->GitHub 資格情報を Azure に保存するには、Web アプリを [Azure プレビュー ポータル](https://portal.azure.com)で作成し、[GitHub のデプロイを構成](web-sites-publish-source-control.md#Step7)します。この操作を行うのは 1 回だけです。
+>GitHub 資格情報を Azure に保存するには、Web アプリを [Azure ポータル](https://portal.azure.com)で作成し、[GitHub のデプロイを構成](web-sites-publish-source-control.md#Step7)します。この操作を行うのは 1 回だけです。
 
 一般的な DevOps シナリオでは、Azure でライブ実行されているアプリケーションがあり、継続的パブリッシングを通してそれを変更します。このシナリオには、開発、テスト、および運用環境にデプロイするために使用するテンプレートがあります。このセクションで、それを設定します。
 
@@ -109,7 +109,7 @@
 
 7.	スクリプトが終了したら、フロントエンドのアドレス (http://ToDoApp*&lt;unique_string>*master.azurewebsites.net/) を参照して、アプリケーションが運用環境で実行されていることを確認します。
  
-5.	[Azure プレビュー ポータル](https://portal.azure.com)にログインして、何が作成されたかを調べます。
+5.	[Azure ポータル](https://portal.azure.com)にログインして、何が作成されたかを調べます。
 
 	同じリソース グループ内に 2 つの Web アプリがあり、1 つは名前に `Api`サフィックスが付いていることを確認できます。リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。さまざまなリソースを参照し、それらを *&lt;repository\_root>*\\ARMTemplates\\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
 
@@ -281,4 +281,4 @@ Git Shell で、次のコマンドを実行します。
 -	[Azure AD でのユーザーの作成または編集](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 -	[Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

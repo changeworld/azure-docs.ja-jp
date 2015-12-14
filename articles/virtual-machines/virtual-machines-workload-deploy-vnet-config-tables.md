@@ -36,7 +36,7 @@
 
 ## 構成テーブルの設定を使用して新しいクロスプレミス Azure Virtual Network を作成する
 
-1. Azure ポータルにサインインします。
+1. [Azure クラシック ポータル] にサインインします。
 2. タスク バーから、**[新規]、[Network Services]、[Virtual Network ]、[カスタム作成]** の順にクリックします。
 3. **[Virtual Network の詳細]** ページが表示されます。
 	- **[名前]** に、テーブル V の項目 1 の名前を入力します。
@@ -69,4 +69,4 @@
 
 [Azure Virtual Network へのクロスプレミスのサイト間接続の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

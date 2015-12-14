@@ -13,17 +13,15 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/09/2015" 
+	ms.date="12/02/2015" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Redis クラスタリングの構成方法
-Azure Redis Cache には、新しい Premium レベル (現在はプレビュー版) など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。
+Azure Redis Cache には、新しい Premium レベルなど、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。
 
 Azure Redis Cache の Premium レベルには、クラスタリング、永続性、および Virtual Network のサポートが含まれています。この記事では、Premium Azure Redis Cache インスタンスでクラスタリングを構成する方法について説明します。
 
 その他の Premium キャッシュ機能については、「[Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)」および「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
-
->[AZURE.NOTE]Azure Redis Cache Premium レベルは、現在プレビュー中です。
 
 ## Redis クラスターとは
 Azure Redis Cache では、[Redis での実装](http://redis.io/topics/cluster-tutorial)と同じように Redis クラスターが提供されます。Redis クラスターには次の利点があります。
@@ -57,6 +55,28 @@ Azure では、Redis クラスターは、各シャードがプライマリ/レ�
 ![クラスタリング][redis-cache-clustering-selected]
 
 キャッシュを作成した後は、クラスター化されていないキャッシュと同じようにアクセスして使用でき、Redis はキャッシュのシャード全体にデータを分配します。診断が[有効](cache-how-to-monitor.md#enable-cache-diagnostics)になっている場合は、シャードごとにメトリックが個別にキャプチャされ、Redis Cache ブレードに[表示](cache-how-to-monitor.md)できます。
+
+>[AZURE.IMPORTANT]StackExchange.Redis を使用して、クラスタリングが有効になっている Azure Redis Cache に接続すると、問題が発生し、`MOVE` 例外がスローされる場合があります。これは、StackExchange.Redis キャッシュ クライアントがキャッシュ クラスターのノードに関する情報を収集するのに若干時間がかかるためです。これらの例外は、キャッシュに初めて接続し、クライアントがこの情報の収集を終了する前に、すぐにキャッシュを呼び出した場合に発生する可能性があります。アプリケーションでこの問題を解決する最も簡単な方法として、キャッシュに接続した後、1 秒間待機してからキャッシュを呼び出します。これを行うには、次のサンプル コードに示すように、`Thread.Sleep(1000)` を追加します。`Thread.Sleep(1000)` が発生するのは、キャッシュへの最初の接続時だけであることに注意してください。詳細については、「[StackExchange.Redis.RedisServerException - MOVED #248](https://github.com/StackExchange/StackExchange.Redis/issues/248)」をご覧ください。この問題の修正プログラムの開発が進められており、更新プログラムをここに投稿する予定です。
+
+	private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+	{
+        // Connect to the Redis cache for the first time
+	    var connection =  ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
+
+		// Wait for 1 second
+		Thread.Sleep(1000);
+
+		// Return the connected ConnectionMultiplexer
+		return connection;
+	});
+	
+	public static ConnectionMultiplexer Connection
+	{
+	    get
+	    {
+	        return lazyConnection.Value;
+	    }
+	}
 
 ## クラスタリングの FAQ
 
@@ -111,7 +131,7 @@ SSL の場合は、`1300N` を `1500N` に置き換えます。
 
 ## 以前に作成したキャッシュのクラスタリングを構成できますか。
 
-プレビュー期間中は、キャッシュを作成するときにのみ、クラスタリングを有効にして構成できます。
+現時点では、クラスタリングを有効にして構成できるのは、キャッシュを作成するときだけです。
 
 ## Basic または Standard キャッシュのクラスタリングを構成できますか。
 
@@ -146,4 +166,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-clustering-selected]: ./media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

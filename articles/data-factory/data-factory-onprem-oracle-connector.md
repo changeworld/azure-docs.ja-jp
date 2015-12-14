@@ -224,7 +224,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-tableName | リンクされたサービスが参照する Oracle データベース インスタンスのテーブルの名前です。 | あり
+tableName | リンクされたサービスが参照する Oracle データベース インスタンスのテーブルの名前です。 | いいえ (**SqlSource** の **oracleReaderQuery** が指定されている場合)
 
 ## Oracle のコピー アクティビティの type プロパティ
 
@@ -234,12 +234,12 @@ tableName | リンクされたサービスが参照する Oracle データベー
 
 一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
 
-コピー アクティビティで、source の種類が SqlSource である場合は、typeProperties セクションで次のプロパティを使用できます。
+コピー アクティビティで、source の種類が **OracleSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
 プロパティ | 説明 |使用できる値 | 必須
 -------- | ----------- | ------------- | --------
 oracleReaderQuery | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。 
-例: select * from MyTable <p>指定されていない場合に実行される SQL ステートメント: select * from MyTable</p> | いいえ
+例: select * from MyTable <p>指定されていない場合に実行される SQL ステートメント: select * from MyTable</p> | いいえ (**dataset**の **tableName** が指定されている場合)
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -280,7 +280,7 @@ XML | String
 
 ## トラブルシューティングのヒント
 
-****問題: ** 次の**エラー メッセージ**が表示される: コピー アクティビティに次の無効なパラメーターがあります: 'UnknownParameterName'、詳細メッセージ: 要求された.Net Framework Data Provider が見つかりません。インストールされていない可能性があります。
+****問題: ** 次の**エラー メッセージ**が表示される: コピー アクティビティに次の無効なパラメーターがあります: 'UnknownParameterName'、詳細メッセージ: 要求された .Net Framework Data Provider が見つかりません。インストールされていない可能性があります。
 
 **考えられる原因**
 
@@ -300,4 +300,4 @@ XML | String
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -18,7 +18,7 @@
 
 # Azure Search を使用して StackExchange のデータを検索する方法
 
-この記事は、[Azure Search](https://azure.microsoft.com/ja-JP/services/search/) で実行できる主なフルテキスト検索機能のいくつかに重点を置いたチュートリアルです。ここでは、Creative Commons 用に Stack Exchange が[利用可能](https://archive.org/details/stackexchange)にしたデータを、次の[属性](http://blog.stackoverflow.com/2009/06/attribution-required/)で利用します。
+この記事は、[Azure Search](https://azure.microsoft.com/services/search/) で実行できる主なフルテキスト検索機能のいくつかに重点を置いたチュートリアルです。ここでは、Creative Commons 用に Stack Exchange が[利用可能](https://archive.org/details/stackexchange)にしたデータを、次の[属性](http://blog.stackoverflow.com/2009/06/attribution-required/)で利用します。
 
 ## 使用の開始
 
@@ -104,9 +104,9 @@ Brent は、SQL データベースにデータをステージングする方法�
       on PA.[OwnerUserId] = PUA.Id
       WHERE PQ.PostTypeId = 1
 
-これが完了すると、[Azure ポータル](https://portal.azure.com)を使用して、上記の Azure SQL のビューから "データをインポート" できます。これにより、このビューのフィールドのスキーマに基づいて Azure Search インデックスが作成されます。ステージングした Azure SQL データベースを使用する場合に利用できる読み取り専用の接続文字列を次に示します。
+これが完了すると、[Azure クラシック ポータル](https://portal.azure.com)を使用して、上記の Azure SQL のビューから "データをインポート" できます。これにより、このビューのフィールドのスキーマに基づいて Azure Search インデックスが作成されます。ステージングした Azure SQL データベースを使用する場合に利用できる読み取り専用の接続文字列を次に示します。
 
     Server=tcp:azs-playground.database.windows.net,1433;Database=StackExchange;User ID=reader@azs-playground;
     Password=EdrERBt3j6mZDP;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -130,4 +130,4 @@ CoreOS では、上記のコマンドが機能しない場合があります。
 
 Azure Linux エージェントの詳細については、[Azure Linux エージェントの README](https://github.com/Azure/WALinuxAgent) を参照してください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

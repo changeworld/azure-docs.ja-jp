@@ -16,7 +16,7 @@
    ms.date="10/20/2015"
    ms.author="andkjell"/>
 
-# 誤って削除されないように保護する
+# Azure AD Connect Sync: 誤って削除されないように保護する
 このトピックでは、Azure AD Connect の「誤って削除されないように保護する」機能について説明します。
 
 Azure AD Connect のインストール中は、誤った削除操作を防止する機能が既定で有効になり、500 個を超える削除を行うエクスポートを許可しないように構成されます。この機能は、構成を誤って変更することと、たくさんのユーザーに影響を与える可能性があるオンプレミス ディレクトリの変更を防ぐように設計されています。
@@ -48,4 +48,4 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -50,7 +50,7 @@ Chrome などのブラウザーでこのファイルを開き、検索ボック�
 ## Mahout を使用したレコメンデーションの作成を実行するためのコマンド
 
 - data\\movie\_usage.txt ファイルを Azure Blob Storage にアップロードします。 
-- (リモート デスクトップを有効にして) HDInsight インスタンスを作成し、(Azure ポータルから利用できる) リモート デスクトップからコンピューターに接続します。
+- (リモート デスクトップを有効にして) HDInsight インスタンスを作成し、(Azure クラシック ポータルから利用できる) リモート デスクトップからコンピューターに接続します。
 - HDInsight コンピューターから、"Hadoop コマンド ライン" を開きます。
 - C:\\apps\\dist の Mahout bin ディレクトリに移動します。ここではこのようになりますが、C:\\apps\\dist\\mahout-1.0.0.2.3.3.0-2992\\bin でより新しいバージョンの Mahout を利用できます。
 - [CONTAINER] と [STORAGEACT] を Azure Storage の詳細 (movie\_usage.txt ファイルを配置した場所) に置き換えて、次のコマンド ラインを実行します。
@@ -81,4 +81,4 @@ Azure Search インデックスを作成したプログラムによって、`Rec
 
 このデータのライセンスの詳細については、こちらのページ (http://files.grouplens.org/datasets/hetrec2011/hetrec2011-movielens-readme.txt) を参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

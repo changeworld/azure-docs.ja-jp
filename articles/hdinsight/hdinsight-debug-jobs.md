@@ -21,15 +21,15 @@
 
 このトピックで取り上げるエラー メッセージは、Azure HDInsight で Hadoop のユーザーが Azure PowerShell を使用してサービスを管理する際に発生する可能性のあるエラー状況を理解するのに役立ちます。また、エラーから回復する手順も示されています。
 
-一部のエラー メッセージは、Azure プレビュー ポータルで HDinsight クラスターを管理している場合にも表示されます。しかし、その場合に遭遇する可能性のあるエラー メッセージは、その状況で可能な対応策に制約があるため、さほどきめ細かいものではありません。その他のエラー メッセージは、対応策が明白な文脈で提供されています。たとえば、パラメーターの制約違反である場合、値が入力されたボックスの右側にポップアップ形式でメッセージが表示されます。下図は、要求されたデータ ノードの数が多すぎた場合です。対応策は、許容値である 33 以下まで数を減らすことです。
+一部のエラー メッセージは、Azure ポータルで HDinsight クラスターを管理している場合にも表示されます。しかし、その場合に遭遇する可能性のあるエラー メッセージは、その状況で可能な対応策に制約があるため、さほどきめ細かいものではありません。その他のエラー メッセージは、対応策が明白な文脈で提供されています。たとえば、パラメーターの制約違反である場合、値が入力されたボックスの右側にポップアップ形式でメッセージが表示されます。下図は、要求されたデータ ノードの数が多すぎた場合です。対応策は、許容値である 33 以下まで数を減らすことです。
 
-![HDInsight プレビュー ポータルのエラー メッセージ][image-hdi-debugging-error-messages-portal]
+![HDInsight ポータルのエラー メッセージ][image-hdi-debugging-error-messages-portal]
 
-エラーが Azure HDInsight に固有となる状況では、そのエラーが何であるかを理解すると役に立つことがあります。さまざまなエラー コードとその修正方法を理解するには、「[HDInsight のエラー コード](#hdi-error-codes)」を参照してください。状況によっては、Hadoop ログ自体にアクセスします。それは Azure プレビュー ポータルから直接実行できます。
+エラーが Azure HDInsight に固有となる状況では、そのエラーが何であるかを理解すると役に立つことがあります。さまざまなエラー コードとその修正方法を理解するには、「[HDInsight のエラー コード](#hdi-error-codes)」を参照してください。状況によっては、Hadoop ログ自体にアクセスします。それは Azure ポータルから直接実行できます。
 
 ## クラスターの状態とジョブ ログの表示
 
-* **Hadoop UI にアクセスします**。Azure プレビュー ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。
+* **Hadoop UI にアクセスします**。Azure ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。
 
 	![クラスター ダッシュボードの起動](./media/hdinsight-debug-jobs/hdi-debug-launch-dashboard.png)
   
@@ -37,7 +37,7 @@
 
 	![Hadoop UI の起動](./media/hdinsight-debug-jobs/hdi-debug-launch-dashboard-hadoop-ui.png)
 
-* **Yarn UI にアクセスします**。Azure プレビュー ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[YARN UI]** をクリックします。
+* **Yarn UI にアクセスします**。Azure ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[YARN UI]** をクリックします。
 
 	YARN UI では、次の操作を実行できます。
 
@@ -49,11 +49,11 @@
 
 	* **ジョブの状態を監視します**。左側のウィンドウから、**[Cluster]** を展開し、**[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、**[Applications]** の下にある該当リンクをクリックします。さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
 
-* **HBase UI にアクセスします**。Azure プレビュー ポータルから、HDInsight HBase クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[HBase UI]** をクリックします。
+* **HBase UI にアクセスします**。Azure ポータルから、HDInsight HBase クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[HBase UI]** をクリックします。
 
 ## <a id="hdi-error-codes"></a>HDInsight のエラー コード
 
-Azure PowerShell またはプレビュー ポータルでユーザーが遭遇する可能性のあるエラーを以下に名前のアルファベット順で示します。エラーは「[エラーの説明と対応策](#discription-mitigation-errors)」セクションのエントリにリンクしており、このセクションでエラーに関する次の情報が与えられます。
+Azure PowerShell またはポータルでユーザーが遭遇する可能性のあるエラーを以下に名前のアルファベット順で示します。エラーは「[エラーの説明と対応策](#discription-mitigation-errors)」セクションのエントリにリンクしており、このセクションでエラーに関する次の情報が与えられます。
 
 - **説明**: ユーザーに表示されるエラー メッセージ
 - **対応策**: エラーから回復するために使用できる手順
@@ -129,7 +129,7 @@ Azure PowerShell またはプレビュー ポータルでユーザーが遭遇�
 
 ### <a id="ClusterNameUnavailable"></a>ClusterNameUnavailable
 - **説明**: クラスター名 *yourClusterName* は使用できません。別の名前を選択してください。  
-- **対応策**: 既存のクラスターと重複しないクラスター名を指定して、やり直す必要があります。プレビュー ポータルを使用している場合は、作成処理中にクラスター名が既に使用されていると、その時点で通知されます。
+- **対応策**: 既存のクラスターと重複しないクラスター名を指定して、やり直す必要があります。ポータルを使用している場合は、作成処理中にクラスター名が既に使用されていると、その時点で通知されます。
 
 
 ### <a id="ClusterPasswordInvalid"></a>ClusterPasswordInvalid
@@ -165,8 +165,8 @@ Azure PowerShell またはプレビュー ポータルでユーザーが遭遇�
 - **対応策**: 一意の名前をコンテナーに付けて、作成操作をやり直します。
 
 ### <a id="DuplicateClusterInHostedService"></a>DuplicateClusterInHostedService
-- **説明**: ホステッド サービス *nameOfYourHostedService* には既にクラスターが含まれています。ホステッド サービスに複数のクラスターを含めることはできません。  
-- **対応策**: 別のホステッド サービスでクラスターをホストします。
+- **説明**: ホストされるサービス *nameOfYourHostedService* には既にクラスターが含まれています。ホストされるサービスに複数のクラスターを含めることはできません。  
+- **対応策**: 別のホストされるサービスでクラスターをホストします。
 
 ### <a id="FailureToUpdateDeploymentStatus"></a>FailureToUpdateDeploymentStatus
 - **説明**: サーバーは、クラスターのデプロイの状態を更新できませんでした。  
@@ -181,19 +181,19 @@ Azure PowerShell またはプレビュー ポータルでユーザーが遭遇�
 - **対応策**: 操作をやり直します。
 
 ### <a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure
-- **説明**: ホステッド サービス *nameOfYourHostedService* を作成できません。要求を再試行してください。  
+- **説明**: ホストされるサービス *nameOfYourHostedService* を作成できません。要求を再試行してください。  
 - **対応策**: 要求をやり直してください。
 
 ### <a id="HostedServiceHasProductionDeployment"></a>HostedServiceHasProductionDeployment
-- **説明**: ホステッド サービス *nameOfYourHostedService* には、既に運用環境がデプロイメントされています。ホステッド サービスに運用環境のデプロイを含めることはできません。別のクラスター名を使用して要求を再試行してください。
+- **説明**: ホストされるサービス *nameOfYourHostedService* には、既に運用環境がデプロイされています。ホストされるサービスに運用環境のデプロイを含めることはできません。別のクラスター名を使用して要求を再試行してください。
 - **対応策**: 別のクラスター名を使用して要求をやり直します。
 
 ### <a id="HostedServiceNotFound"></a>HostedServiceNotFound
-- **説明**: クラスターのホステッド サービス *nameOfYourHostedService* が見つかりませんでした。  
+- **説明**: クラスターのホストされるサービス *nameOfYourHostedService* が見つかりませんでした。  
 - **対応策**: クラスターがエラー状態である場合は、クラスターを削除し、やり直します。
 
 ### <a id="HostedServiceWithNoDeployment"></a>HostedServiceWithNoDeployment
-- **説明**: ホステッド サービス *nameOfYourHostedService* には、関連付けられたデプロイメントがありません。  
+- **説明**: ホストされるサービス *nameOfYourHostedService* には、関連付けられたデプロイメントがありません。  
 - **対応策**: クラスターがエラー状態である場合は、クラスターを削除し、やり直します。
 
 ### <a id="InsufficientResourcesCores"></a>InsufficientResourcesCores
@@ -201,7 +201,7 @@ Azure PowerShell またはプレビュー ポータルでユーザーが遭遇�
 - **対応策**: サブスクリプションのリソースに空きを作るか、サブスクリプションで利用可能なリソースを増やし、クラスターの作成をやり直します。
 
 ### <a id="InsufficientResourcesHostedServices"></a>InsufficientResourcesHostedServices
-- **説明**: サブスクリプション ID *yourSubscriptionId* に、新しいホステッド サービスがクラスター *yourClusterName* を作成するクォータがありません。  
+- **説明**: サブスクリプション ID *yourSubscriptionId* に、新しいホストされるサービスがクラスター *yourClusterName* を作成するクォータがありません。  
 - **対応策**: サブスクリプションのリソースに空きを作るか、サブスクリプションで利用可能なリソースを増やし、クラスターの作成をやり直します。
 
 ### <a id="InternalErrorRetryRequest"></a>InternalErrorRetryRequest
@@ -258,7 +258,7 @@ Azure PowerShell またはプレビュー ポータルでユーザーが遭遇�
 
 ### <a id="StorageAccountNotColocated"></a>StorageAccountNotColocated
 - **説明**: ストレージ アカウント *yourStorageAccountName* がリージョン *currentRegionName* にあります。これはクラスターのリージョン *yourClusterRegionName* と同じにする必要があります。  
-- **対応策**: クラスターと同じリージョンにストレージ アカウントを指定します。または、データが既にストレージ アカウントにある場合は、既存のストレージ アカウントと同じリージョンに新しいクラスターを作成します。プレビュー ポータルを使っている場合は、この問題があると、事前に通知されます。
+- **対応策**: クラスターと同じリージョンにストレージ アカウントを指定します。または、データが既にストレージ アカウントにある場合は、既存のストレージ アカウントと同じリージョンに新しいクラスターを作成します。ポータルを使っている場合は、この問題があると、事前に通知されます。
 
 ### <a id="SubscriptionIdNotActive"></a>SubscriptionIdNotActive
 - **説明**: 指定されたサブスクリプション ID *yourSubscriptionId* がアクティブではありません。  
@@ -300,4 +300,4 @@ Azure PowerShell またはプレビュー ポータルでユーザーが遭遇�
 
 [image-hdi-debugging-error-messages-portal]: ./media/hdinsight-debug-jobs/hdi-debug-errormessages-portal.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

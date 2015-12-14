@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Microsoft Azure AD Connect - Windows Azure AD 同期ツール (DirSync) からのアップグレード | Microsoft Azure"
+   pageTitle="Azure AD Connect: Windows Azure AD 同期ツール (DirSync) からのアップグレード | Microsoft Azure"
    description="DirSync から Azure AD Connect にアップグレードする方法について説明します。この記事では、Windows Azure AD 同期 ツール (DirSync) を Azure AD Connect へアップグレードするための手順について説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,15 +13,15 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="10/26/2015"
+   ms.date="12/02/2015"
    ms.author="shoatman;billmath"/>
 
-# Azure Active Directory Connect (Azure AD Connect) に Windows Azure Active Directory 同期 (DirSync) をアップグレードする
+# Windows Azure Active Directory sync (DirSync) の Azure AD Connect へのアップグレード
 
 次のドキュメントは、既存の DirSync インストールの Azure AD Connect へのアップグレードに役立ちます。
 
 ## 関連ドキュメント
-[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関するドキュメントをまだお読みでない方のために、次の表に関連トピックへのリンクを示します。DirSync からのアップグレードを開始する前に、太字で表示した最初の 2 つのトピックをお読みいただく必要があります。
+[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関するドキュメントをまだお読みでない方のために、次の表に関連トピックへのリンクを示します。DirSync からのアップグレードを開始する前に、太字で表示した最初の 2 つのトピックをお読みいただく必要があります。
 
 | トピック | |
 | --------- | --------- |
@@ -61,7 +61,7 @@ DirSync では次の構成の変更が サポートされており、アップ�
 
 ![アップグレードのブロック](./media/active-directory-aadconnect-dirsync-upgrade-get-started/analysisblocked.png)
 
-そのような場合、[モードのステージング](active-directory-aadconnectsync-operations.md#staging-mode)で新しい Azure AD Connect サーバーをインストールし、古い DirSync と新しい Azure AD Connect の構成を確認することが推奨されます。カスタム構成を使用して変更を再適用する場合は、「[Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)」を参照してください。
+そのような場合、[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)で新しい Azure AD Connect サーバーをインストールし、古い DirSync と新しい Azure AD Connect の構成を確認することが推奨されます。カスタム構成を使用して変更を再適用する場合は、「[Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)」を参照してください。
 
 
 - サポートされていない DirSync の変更 (削除された属性やカスタム拡張 DLL の使用など)
@@ -184,7 +184,7 @@ DirSync がアンインストールされていると、アクティブなサー
 ![追加のタスク](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AdditionalTasks.png)
 
 - **[ステージング モードの構成]** を選択します。
-- **[有効なステージング モード]** チェックボックスをオフにして、ステージングを停止します。
+- **[ステージング モードを有効にする]** チェックボックスをオフにして、ステージングを停止します。
 
 ![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/configurestaging.png)
 
@@ -196,6 +196,6 @@ DirSync がアンインストールされていると、アクティブなサー
 ## 次のステップ
 Azure AD Connect がインストールされたので、[インストールを確認し、ライセンスを割り当てる](active-directory-aadconnect-whats-next.md)ことができます。
 
-「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

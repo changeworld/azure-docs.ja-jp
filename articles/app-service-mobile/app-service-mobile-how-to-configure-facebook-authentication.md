@@ -31,31 +31,27 @@
 
 ## <a name="register"> </a>Facebook にアプリケーションを登録する
 
-1. [Microsoft Azure 管理ポータル]にログオンし、目的のアプリケーションに移動します。**[URL]** をコピーします。この URL は、Facebook アプリの構成で使用します。
+1. [Azure ポータル]にログオンし、目的のアプリケーションに移動します。**[URL]** をコピーします。この URL は、Facebook アプリの構成で使用します。
  
 2. 他のブラウザー ウィンドウで、[Facebook Developers] の Web サイトに移動し、Facebook アカウントの資格情報でサインインします。
 
 3. (省略可能) まだ登録していない場合は、**[Apps]**、**[Register as a Developer]** の順にクリックし、ポリシーに同意して、登録手順に従います。
 
-4. **[My Apps]** をクリックし、**[Add a New App]** をクリックします。
+4. **[My Apps]**、**[Add a New App]**、**[Website]** の順にクリックし、アプリの一意の名前を入力して、**[Create New Facebook App ID]** をクリックします。
 
-5. プラットフォームとして **[Website]** を選択します。アプリケーションの一意の名前を選択して、**[Create New Facebook App ID]** をクリックします。
-
-6. ドロップダウン リストから、アプリケーションのカテゴリを選択します。**[Create App ID]** をクリックします。
-
-7. 次のページで、右上の **[Skip Quick Start]** を選択します。これで、アプリケーションの開発者向けダッシュボードに移動します。
+6. ドロップダウンからアプリケーションのカテゴリを選択し、**[Create App ID]** をクリックします。次のページで **[Skip Quick Start]** をクリックします。これで、アプリケーションの開発者向けダッシュボードに移動します。
 
 8. **[App Secret]** フィールドで **[Show]** をクリックし、要求された場合はパスワードを入力して、**[App ID]** と **[App Secret]** の値をメモしておきます。後で、これらを使用するようにアプリケーションを構成します。
 
 	> [AZURE.NOTE]**セキュリティ上の注意** アプリケーション シークレットは、重要なセキュリティ資格情報です。このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
-9. 左側のナビゲーション バーで、**[Settings]** をクリックします。**[App Domains]** にモバイル アプリの **URL** を入力し、**[Contact Email]** に連絡先のメール アドレスを入力します。
+9. 左側のナビゲーション バーの **[Settings]** をクリックします。**[App Domains]** にモバイル アプリの **URL** を入力し、**[Contact Email]** に連絡先のメール アドレスを入力します。
 
     ![][0]
 
-10. 下に Web サイト セクションが表示されない場合は、**[Add Platform]** をクリックして、**[Website]** を選択します。**[Site URL]** フィールドにモバイル アプリの **URL** を入力し、**[Save Changes]** をクリックします。
+10. 下に Web サイト セクションが表示されていない場合は、**[Add Platform]**、**[Website]** の順にクリックし、**[Site URL]** フィールドにモバイル アプリの **URL** を入力して、**[Save Changes]** をクリックします。
 
-11. **[Advanced]** タブをクリックし、**[Valid OAuth redirect URIs]** にアプリケーションの**リダイレクト URI** を追加します。次に、**[Save Changes]** をクリックします。リダイレクト URI は、アプリケーションの URL にパス _/.auth/login/facebook/callback_ を追加したものです。たとえば、「`https://contoso.azurewebsites.net/.auth/login/facebook/callback`」のように入力します。HTTPS スキームを使用していることを確認します。
+11. **[Advanced]** タブをクリックし、**[Valid OAuth redirect URIs]** にアプリケーションの**リダイレクト URI** を追加して、**[Save Changes]** をクリックします。リダイレクト URI は、アプリケーションの URL にパス _/.auth/login/facebook/callback_ を追加したものです。たとえば、「`https://contoso.azurewebsites.net/.auth/login/facebook/callback`」のように入力します。HTTPS スキームを使用していることを確認します。
 
 
 	> [AZURE.NOTE]App Service の認証/承認機能ではなく、App Service ゲートウェイを使用している場合、リダイレクト URL では、ゲートウェイ URL とパス _/signin-facebook_ を使用します。
@@ -66,14 +62,12 @@
 
 ## <a name="secrets"> </a>Facebook の情報をアプリケーションに追加する
 
-> [AZURE.NOTE]App Service ゲートウェイを使用する場合は、このセクションの内容は無視し、ポータル内で目的のゲートウェイに移動します。**[設定]**、**[ID]**、**[Facebook]** の順に選択します。先に取得した値を貼り付けて、**[保存]** をクリックします。
+> [AZURE.NOTE]App Service ゲートウェイを使用する場合は、このセクションの内容は無視し、ポータル内で目的のゲートウェイに移動します。**[設定]**、**[ID]**、**[Facebook]** の順に選択します。前に取得した値を貼り付け、**[保存]** をクリックします。
 
 
-13. [Microsoft Azure 管理ポータル]に戻り、目的のアプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックします。
+13. [Azure ポータル]に戻り、目的のアプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックし、**[App Service 認証]** が **[オン]** になっていることを確認します。
 
-14. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。
-
-15. **[Facebook]** をクリックします。前の手順で取得した App ID と App Secret の値を貼り付けます。アプリケーションで必要なスコープを有効にします (省略可能)。次に、 **[OK]** をクリックします
+15. **[Facebook]** をクリックし、前の手順で取得した App ID と App Secret の値を貼り付けます。必要に応じて、アプリケーションで必要なスコープを有効にし、**[OK]** をクリックします。
 
     ![][1]
 	
@@ -97,6 +91,6 @@
 [Facebook Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: http://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /ja-JP/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Microsoft Azure 管理ポータル]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

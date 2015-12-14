@@ -19,7 +19,7 @@
 
 #Windows ベースの HDInsight での Hadoop MapReduce サンプルの実行
 
-[AZURE.INCLUDE [samples セレクター](../../includes/hdinsight-run-samples-selector.md)]
+[AZURE.INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
 Azure HDInsight を使用して、Hadoop クラスターで MapReduce ジョブの実行を始めるときに役立つサンプルが用意されています。これらのサンプルは、HDInsight によって管理されるクラスターを作成して、それぞれのクラスターで利用できます。これらのサンプルを実行すると、Hadoop クラスターで Azure PowerShell コマンドレットを使用してジョブを実行するのに慣れることができます。
 
@@ -46,11 +46,11 @@ Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラ
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - **HDInsight クラスター**。クラスターを作成できるさまざまな方法については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md)」を参照してください。
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+- **Azure PowerShell を実行できるワークステーション**。「[Install Azure PowerShell 1.0 and greater (Azure PowerShell 1.0 以上のインストール)](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」をご覧ください。
 
 ## ワード カウント - Java 
 
-MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
+MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (****wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
 
 ソース コードは「[付録 A](#apendix-a---the-word-count-MapReduce-program-in-java)」にあります。
 
@@ -118,9 +118,9 @@ Java MapReduce プログラムの開発手順については、「[HDInsight で
 
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語 map 関数と reduce 関数を記述できます。
 
-> [AZURE.NOTE] このチュートリアルの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。Linux ベースの HDInsight クラスターのストリーミング例は、「[HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)」をご覧ください。
+> [AZURE.NOTE]このチュートリアルの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。Linux ベースの HDInsight クラスターのストリーミング例は、「[HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)」をご覧ください。
 
-この例では、mapper と reducer は、[stdin][stdin-stdout-stderr] (1 行ずつ) から入力を  読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
+この例では、mapper と reducer は、[stdin][stdin-stdout-stderr] から入力を (1 行ずつ) 読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
 
 **mapper** 用の実行可能ファイルが指定されると、各 mapper タスクは mapper 開始時に別のプロセスとしてその実行可能ファイルを起動します。mapper タスクは実行されると、入力を行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。
 
@@ -183,7 +183,7 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
 
 **ジョブを送信するには**
 
-- 「[ワード カウント - Java](#word-count-java)」の手順に従い、以下のジョブ定義を使用します。
+- 「[ワード カウント - Java](#word-count-java)」の手順に従って、以下のジョブ定義を使用します。
 
 	$teragen = New-AzureRmHDInsightMapReduceJobDefinition `
 								-JarFile "/example/jars/hadoop-mapreduce-examples.jar" ` -ClassName "teragen" ` -Arguments "-Dmapred.map.tasks=50", "100000000", "/example/data/10GB-sort-input"
@@ -998,4 +998,4 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 
-<!----HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

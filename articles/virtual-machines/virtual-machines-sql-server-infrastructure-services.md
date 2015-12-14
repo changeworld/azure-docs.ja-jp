@@ -28,9 +28,9 @@ Azure で SQL Server 仮想マシンを作成するには、最初に Azure プ�
 
 ### 1 つの VM での SQL Server インスタンスのデプロイ
 
-サブスクリプションにサインアップした後、Azure で SQL Server 仮想マシンをデプロイする最も簡単な方法は、[Azure ポータルで SQL Server マシンのギャラリー イメージをプロビジョニングする](virtual-machines-provision-sql-server.md)方法です。それらのイメージには、VM の価格での SQL Server のライセンスが含まれます。
+サブスクリプションにサインアップした後、Azure で SQL Server 仮想マシンをデプロイする最も簡単な方法は、[Azure クラシック ポータルで SQL Server マシンのギャラリー イメージをプロビジョニングする](virtual-machines-provision-sql-server.md)方法です。それらのイメージには、VM の価格での SQL Server のライセンスが含まれます。
 
->[AZURE.NOTE]Azure プレビュー ポータルを使用して、SQL Server 仮想マシンをプロビジョニングおよび管理します。これにより、既定で Premium Storage が使用されるように設定され、自動修正、自動バックアップ、および AlwaysOn 構成が提供されます。
+>[AZURE.NOTE]Azure ポータルを使用して、SQL Server Virtual Machines をプロビジョニングおよび管理します。これにより、既定で Premium Storage が使用されるように設定され、自動修正、自動バックアップ、および AlwaysOn 構成が提供されます。
 
 次の表には、仮想マシン ギャラリーで使用可能な SQL Server イメージのマトリックスが示されています。
 
@@ -61,7 +61,7 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 
 ## 高可用性
 
-高可用性が必要な場合は、SQL Server AlwaysOn 高可用性グループの構成を検討してください。そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。Azure プレビュー ポータルには、この構成が事前に設定されたテンプレートがあります。詳細については、[Azure ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。
+高可用性が必要な場合は、SQL Server AlwaysOn 高可用性グループの構成を検討してください。そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。Azure ポータルには、この構成が事前に設定されたテンプレートがあります。詳細については、[Azure ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。
 
 可用性グループおよび関連付けられているリスナーを手動で構成する場合は、次の記事を参照してください。
 
@@ -148,4 +148,4 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-sql-server-application-patterns-and-development-strategies.md)
 - [Azure Virtual Machines](virtual-machines-about.md) 
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

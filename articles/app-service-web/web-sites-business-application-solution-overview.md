@@ -62,7 +62,7 @@
 
 自動スケールで自動的にスケールし、Azure Redis Cache でキャッシュして、Web ジョブでタスクをバックグラウンドで実行し、Azure Traffic Manager で高可用性を維持することで、基幹業務アプリケーションを最適にできます。
 
-App Service Web Apps の[スケールアップ/スケールアウト]機能は、ワークロードのサイズに関係なく、基幹業務アプリケーションのニーズを満たします。Web アプリは、[Microsoft Azure 管理ポータル]を使用して手動でスケールアウトすることも、[サービス管理 API] や [PowerShell スクリプト]を使用してプログラムによってスケールアウトすることもできます。また、自動スケール機能して自動的にスケールアウトすることもできます。**標準**階層では、自動スケールにより、CPU 使用率に基づいて Web アプリを自動的にスケールアウトできます。ベスト プラクティスについては、[Troy Hunt] の「[10 things I learned about rapidly scaling web apps with Azure (Azure での Web アプリの迅速なスケーリングに関する 10 項目)]」をご覧ください。
+App Service Web Apps の[スケールアップ/スケールアウト]機能は、ワークロードのサイズに関係なく、基幹業務アプリケーションのニーズを満たします。Web アプリは [Azure ポータル]から手動で、[サービス管理 API] や [PowerShell スクリプト]を通じてプログラムで、そして自動スケール機能によって自動でスケールアウトできます。**標準**階層では、自動スケールにより、CPU 使用率に基づいて Web アプリを自動的にスケールアウトできます。ベスト プラクティスについては、[Troy Hunt] の「[10 things I learned about rapidly scaling web apps with Azure (Azure での Web アプリの迅速なスケーリングに関する 10 項目)]」をご覧ください。
 
 [Azure Redis Cache] で Web アプリの応答性を高めます。バックエンド データベースのデータのキャッシュと [ASP.NET のセッション状態]や[出力キャッシュ]などのその他のことに使用します。
 
@@ -72,7 +72,7 @@ App Service Web Apps の[スケールアップ/スケールアウト]機能は�
 
 Azure やサードパーティー製のツールで Web アプリのパフォーマンスを最新の状態に維持します。重要な Web アプリのイベントでアラートを受信します。Application Insight や HDInsight からの Web ログ分析でユーザー情報を簡単に取得します。
 
-[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)の Web アプリのブレードで、Web アプリの現在のパフォーマンス メトリックとリソースのクォータの[概要]を取得します。可用性、パフォーマンス、使用状況など、アプリケーションの全体像を把握するために、迅速かつ強力なトラブルシューティング、診断、使用状況の分析を提供する [Azure Application Insights] を使用します。または、Web アプリのデータの詳細な監視を行う、[New Relic] などのサードパーティー製ツールを使用します。
+[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)の Web アプリのブレードで、Web アプリの現在のパフォーマンス メトリックとリソースのクォータの[概要]を取得します。可用性、パフォーマンス、使用状況など、アプリケーションの全体像を把握するために、迅速かつ強力なトラブルシューティング、診断、使用状況の分析を提供する [Azure Application Insights] を使用します。または、Web アプリのデータの詳細な監視を行う、[New Relic] などのサードパーティー製ツールを使用します。
 
 **標準**階層では、アプリの応答性を監視し、アプリが応答しなくなったときに電子メール通知を受信します。詳細については、「[方法: Azure でアラート通知を受け取り、アラート ルールを管理する]」を参照してください。
 
@@ -108,7 +108,7 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
 [Azure Virtual Network]: web-sites-integrate-with-vnet.md
 
 [スケールアップ/スケールアウト]: web-sites-scale.md
-[Microsoft Azure 管理ポータル]: http://manage.windowsazure.com/
+[Azure ポータル]: http://portal.azure.com/
 [サービス管理 API]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 [PowerShell スクリプト]: http://msdn.microsoft.com/library/windowsazure/jj152841.aspx
 [Troy Hunt]: https://twitter.com/troyhunt
@@ -124,4 +124,4 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
 
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

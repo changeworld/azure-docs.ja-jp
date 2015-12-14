@@ -21,8 +21,8 @@
 | クイック リファレンス |
 | --------------- |
 | [Logic Apps の定義言語](https://msdn.microsoft.com/library/azure/dn948512.aspx?f=255&MSPPError=-2147217396) |
-| [Logic Apps コネクターのドキュメント](https://azure.microsoft.com/ja-jp/documentation/articles/app-service-logic-connectors-list/) |
-| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=azurelogicapps) |
+| [Logic Apps コネクターのドキュメント](https://azure.microsoft.com/documentation/articles/app-service-logic-connectors-list/) |
+| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurelogicapps) |
 
 Azure App Service は、Web アプリ、モバイル アプリ、統合アプリの作成を容易にする、開発者向けの完全に管理された PaaS (サービスとしてのプラットフォーム) です。Logic Apps はこのスイートの一部であり、どのような専門的なユーザーや開発者でも、使いやすいビジュアル デザイナーを使用してビジネス プロセスの実行とワークフローを自動化できます。
 
@@ -75,4 +75,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [templates]: app-service-logic-use-logic-app-templates.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

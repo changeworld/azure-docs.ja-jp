@@ -165,7 +165,7 @@ $table_prefix  = getenv('DB_PREFIX');
 ```
 
 #### 相対パスの使用
-最後に、WordPress アプリが相対パスを使用できるようにします。WordPress では、データベースに URL 情報を格納します。この方法だと、1 つの環境から別の環境にコンテンツを移動するのがより難しくなります。ローカルからステージまたはステージから運用環境に移動するたびにデータベースを更新する必要があるためです。1 つの環境から別の環境にデプロイするたびにデータベースのデプロイで問題が発生するリスクを軽減するには、[Relative Root リンク プラグイン](https://wordpress.org/plugins/root-relative-urls/)を使用します。このプラグインは、WordPress 管理者のダッシュ ボードを使用してインストールするか、または[ここ](https://downloads.wordpress.org/plugin/root-relative-urls.zip)から手動でダウンロードします。
+最後に、WordPress アプリが相対パスを使用できるようにします。WordPress では、データベースに URL 情報を格納します。この方法だと、1 つの環境から別の環境にコンテンツを移動するのがより難しくなります。ローカルからステージまたはステージから運用環境に移動するたびにデータベースを更新する必要があるためです。1 つの環境から別の環境にデプロイするたびにデータベースのデプロイで問題が発生するリスクを軽減するには、[Relative Root リンク プラグイン](https://wordpress.org/plugins/root-relative-urls/)を使用します。このプラグインは、WordPress 管理者のダッシュボードを使用してインストールするか、または[ここ](https://downloads.wordpress.org/plugin/root-relative-urls.zip)から手動でダウンロードします。
 
 `wp-config.php` ファイルに、`That's all, stop editing!` コメントの前に次のエントリを追加します。
 
@@ -175,7 +175,7 @@ $table_prefix  = getenv('DB_PREFIX');
     define('WP_CONTENT_URL', '/wp-content');
     define('DOMAIN_CURRENT_SITE', $_SERVER['HTTP_HOST']);
 ```
-WordPress の管理者用ダッシュ ボードの [`Plugins`] メニューでプラグインをアクティブにします。WordPress アプリの固定リンク設定を保存します。
+WordPress の管理者用ダッシュボードの [`Plugins`] メニューでプラグインをアクティブにします。WordPress アプリの固定リンク設定を保存します。
 
 #### 最終の `wp-config.php` ファイル
 WordPress のコア更新プログラムはいずれも、`wp-config.php`、`wp-config.azure.php`、および `wp-config.local.php` ファイルに影響を与えません。最終的に、この `wp-config.php` ファイルは次のようになります。
@@ -236,7 +236,7 @@ require_once(ABSPATH . 'wp-settings.php');
 ```
 
 #### ステージング環境のセットアップ
-Azure Web 上で WordPress Web アプリが既に実行されている場合は、[Azure 管理プレビュー ポータル](http://portal.azure.com)にログインして WordPress Web アプリに移動します。そうでない場合は、Marketplace から Web アプリを作成できます。詳細については、[ここ](web-sites-php-web-site-gallery)をクリックしてください。[設定]、[デプロイメント スロット]、[追加] の順にクリックし、名前ステージでデプロイメント スロットを作成します。デプロイメント スロットは、上記で作成したプライマリ Web アプリケーションと同じリソースを共有する別の Web アプリケーションです。
+Azure Web 上で WordPress Web アプリが既に実行されている場合は、[Azure ポータル](http://portal.azure.com)にログインして WordPress Web アプリに移動します。そうでない場合は、Marketplace から Web アプリを作成できます。詳細については、[ここ](web-sites-php-web-site-gallery)をクリックしてください。[設定]、[デプロイメント スロット]、[追加] の順にクリックし、名前ステージでデプロイメント スロットを作成します。デプロイメント スロットは、上記で作成したプライマリ Web アプリケーションと同じリソースを共有する別の Web アプリケーションです。
 
 ![ステージ デプロイメント スロットを作成する](./media/app-service-web-staged-publishing-realworld-scenarios/1setupstage.png)
 
@@ -278,7 +278,7 @@ WebMatrix または任意のツール (FTP、Git、PhpMyAdmin など) を使用�
 
 ![Wordpress のプレビュー変更をスワップする](./media/app-service-web-staged-publishing-realworld-scenarios/6swaps1.png)
 
- >[AZURE.NOTE]ファイルのみをプッシュすればよいシナリオでは (データベースは更新されない)、スワップを実行する前に、Azure プレビュー ポータルの Web アプリ設定ブレードで、データベースに関連するすべての*アプリ設定*と*接続文字列の設定*について、**[スロット設定]** を**オン**にします。この場合、DB\_NAME、DB\_HOST、DB\_PASSWORD、DB\_USER、既定の接続文字列設定は、**スワップ**の実行時に、プレビュー変更に表示されません。この時点で、**スワップ**操作を完了すると、WordPress Web アプリには更新プログラム ファイル**しか**ないことになります。
+ >[AZURE.NOTE]ファイルのみをプッシュすればよいシナリオでは (データベースは更新されない)、スワップを実行する前に、Azure ポータルの Web アプリ設定ブレードで、データベースに関連するすべての*アプリ設定*と*接続文字列の設定*について、**[スロット設定]** を**オン**にします。この場合、DB\_NAME、DB\_HOST、DB\_PASSWORD、DB\_USER、既定の接続文字列設定は、**スワップ**の実行時に、プレビュー変更に表示されません。この時点で、**スワップ**操作を完了すると、WordPress Web アプリには更新プログラム ファイル**しか**ないことになります。
 
 スワップを実行する前の運用 WordPress Web アプリを次に示します ![スロットをスワップする前の運用 Web アプリ](./media/app-service-web-staged-publishing-realworld-scenarios/7bfswap.png)
 
@@ -362,27 +362,20 @@ Umbraco CMS の Web アプリが既にアップされ実行されている場合
   </repositories>
  ```
 
-`<repositories>` には、運用サイトの URL とユーザー情報を入力します。 既定の Umbraco メンバーシップ プロバイダーを使用している場合には、<user> セクションに管理ユーザーの ID を追加します。 カスタムの Umbraco メンバーシップ プロバイダーを使用している場合には、`<login>` と `<password>` を使って、Courier2 モジュールが運用サイトに接続する方法を指定します。 詳しくは、Courier モジュールの[ドキュメント](http://umbraco.com/help-and-support/customer-area/courier-2-support-and-download/developer-documentation)をご覧ください。
+Under `<repositories>`, enter the production site URL and user information. If you are using default Umbraco Membership provider, then add the ID for the Administration user in <user> section . If you are using a custom Umbraco membership provider, use `<login>`,`<password>` to Courier2 module know how to connect to the production site. For more details, review the [documentation](http://umbraco.com/help-and-support/customer-area/courier-2-support-and-download/developer-documentation) for Courier module.
 
-同じく、運用サイトに Courier モジュールをインストールし、ここに示すようにそれぞれの courier.config ファイルで、ステージ Web アプリを参照するように構成します。
+Similarly, install Courier module on your production site and configure it point to stage web app in its respective courier.config file as shown here
 
 ```xml
   <!-- Repository connection settings -->
   <!-- For each site, a custom repository must be configured, so Courier knows how to connect and authenticate-->
-  <repositories>
-        <!-- If a custom Umbraco Membership provider is used, specify login & password + set the passwordEncoding to clear:  -->
-        <repository name="Stage web app" alias="stage" type="CourierWebserviceRepositoryProvider" visible="true">
-            <url>http://umbracositecms-1-stage.azurewebsites.net</url>
-            <user>0</user>
-           </repository>
-  </repositories>
-```
+  <repositories> <!-- If a custom Umbraco Membership provider is used, specify login & password + set the passwordEncoding to clear:  --> <repository name="Stage web app" alias="stage" type="CourierWebserviceRepositoryProvider" visible="true"> <url>http://umbracositecms-1-stage.azurewebsites.net</url> <user>0</user> </repository> </repositories> ```
 
-Umbraco CMS Web アプリのダッシュ ボードで [Courier2] タブをクリックし、場所を選択します。`courier.config` で説明したようにリポジトリ名が表示されます。運用 Web アプリとステージング Web アプリの両方で同じ操作を行います。
+Umbraco CMS Web アプリのダッシュボードで [Courier2] タブをクリックし、場所を選択します。`courier.config` 説明したようにリポジトリ名が表示されます。運用 Web アプリとステージング Web アプリの両方で同じ操作を行います。
 
 ![宛先 Web アプリ リポジトリを表示する](./media/app-service-web-staged-publishing-realworld-scenarios/16courierloc.png)
 
-次に、ステージング サイトから運用サイトに何らかのコンテンツをデプロイします。[コンテンツ] に移動し、既存のページを選択するか、または新しいページを作成します。Web アプリから既存のページを選択します。ページのタイトルが **[作業の開始 – 新規]** に変更されたら、**[保存して発行]** をクリックします。
+次に、ステージング サイトから運用サイトに何らかのコンテンツをデプロイします。[コンテンツ] に移動し、既存のページを選択するか、または新しいページを作成します。Web アプリから既存のページを選択します。ページのタイトルが**[作業の開始 – 新規]** に変更されたら、**[保存して発行]** をクリックします。
 
 ![ページのタイトルを変更して公開する](./media/app-service-web-staged-publishing-realworld-scenarios/17changepg.png)
 
@@ -429,4 +422,4 @@ Web アプリとデータベースの両方をスワップすることのメリ�
 
 [運用環境以外のデプロイメント スロットへの Web アクセスを禁止する方法](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

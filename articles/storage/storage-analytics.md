@@ -126,7 +126,7 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 
 Storage Analytics では、ストレージ サービスに対する要求に関する集計されたトランザクション統計情報と容量データを含むメトリックを格納できます。トランザクションに関しては、API 操作レベルとストレージ サービス レベルの両方でレポートされます。容量に関しては、ストレージ サービス レベルでレポートされます。メトリック データは、ストレージ サービスの使用状況の分析、ストレージ サービスに対する要求に関する問題の診断、サービスを使用するアプリケーションのパフォーマンスの向上に利用できます。
 
-Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。これは、[Azure ポータル](https://manage.windowsazure.com/)から有効にできます。詳細については、「[ストレージ アカウントの監視方法](../how-to-monitor-a-storage-account.md)」を参照してください。また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。各サービスで Storage Analytics を有効にするには、[Get Blob Service Properties、Get Queue Service Properties](https://msdn.microsoft.com/library/hh452239.aspx)、[Get Table Service Properties](https://msdn.microsoft.com/library/hh452238.aspx) の各操作を使用します。
+Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。これは、[Azure ポータル](portal.azure.com)から有効にできます。詳細については、「[ストレージ アカウントの監視方法](../how-to-monitor-a-storage-account.md)」を参照してください。また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。各サービスで Storage Analytics を有効にするには、[Get Blob Service Properties、Get Queue Service Properties](https://msdn.microsoft.com/library/hh452239.aspx)、[Get Table Service Properties](https://msdn.microsoft.com/library/hh452238.aspx) の各操作を使用します。
 
 ### トランザクション メトリック
 
@@ -206,4 +206,4 @@ Storage Analytics のデータで課金対象の要求を調べるときには�
 - [Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/hh343264.aspx)
 - [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

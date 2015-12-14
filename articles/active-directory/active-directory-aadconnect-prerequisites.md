@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Active Directory Connect の前提条件 | Microsoft Azure"
+   pageTitle="Azure AD Connect: 前提条件とハードウェア |Microsoft Azure"
    description="ランディング ページやほとんどの検索結果に表示されるアーティクルの説明"
    services="active-directory"
    documentationCenter=""
@@ -16,7 +16,7 @@
    ms.date="11/16/2015"
    ms.author="andkjell;billmath"/>
 
-# Azure Active Directory Connect (Azure AD Connect) の前提条件
+# Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
 
 ## Azure AD Connect をインストールする前に
@@ -24,18 +24,20 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 
 **Azure AD**
 
-- Azure サブスクリプションまたは [Azure 試用版サブスクリプション](http://azure.microsoft.com/pricing/free-trial/): Azure ポータルにアクセスする場合にのみ必要です。Azure AD Connect の使用には必要ありません。PowerShell または Office 365 を使用している場合は、Azure サブスクリプションがなくても Azure AD Connect を使用できます。Office 365 ライセンスを持っている場合は、Office 365 ポータルも使用できます。有料の Office 365 ライセンスを使用して、Office 365 ポータルから Azure ポータルにアクセスすることもできます。
-- Azure AD で使用する予定のドメインを検証します。たとえばユーザー向けに contoso.com を使用する予定の場合は、そのドメインが検証されていること、および使用しているのドメインが既定のドメインである contoso.onmicrosoft.com だけではないことを確認します。
+- Azure サブスクリプションまたは [Azure 試用版サブスクリプション](http://azure.microsoft.com/pricing/free-trial/)。Azure ポータルへのアクセスにのみ必要です。Azure AD Connect の使用には不要です。PowerShell または Office 365 を使用している場合は、Azure サブスクリプションがなくても Azure AD Connect を使用できます。Office 365 ライセンスを持っている場合は、Office 365 ポータルも使用できます。有料の Office 365 ライセンスを使用して、Office 365 ポータルから Azure ポータルにアクセスすることもできます。
+- Azure AD で使用する予定の[ドメインを追加して検証](active-directory-add-domain.md)します。たとえばユーザー向けに contoso.com を使用する予定の場合は、そのドメインが検証されていること、および使用しているのドメインが既定のドメインである contoso.onmicrosoft.com だけではないことを確認します。
 - Azure AD ディレクトリでは、既定で 50,000個のオブジェクトが許可されます。ドメインを検証すると、制限が 300,000 個のオブジェクトに増加します。Azure AD でさらに多くのオブジェクトが必要な場合は、制限をさらに増加させるサポート ケースを開く必要があります。500,000 個を超えるオブジェクトが必要な場合は、Office 365、Azure AD Basic、Azure AD Premium、または Enterprise Mobility Suite などのライセンスが必要です。
 
 **オンプレミスのサーバーと環境**
 
 - AD スキーマのバージョンとフォレストの機能レベルは、Windows Server 2003 以降である必要があります。ドメイン コント ローラーは、スキーマとフォレスト レベルの要件を満たしていれば、任意のバージョンを実行できます。
-- **パスワード ライトバック**機能を使用する予定がある場合、ドメイン コントローラーは (最新の SP が適用された) Windows Server 2008 以降にインストールされている必要があります。
-- Azure AD Connect は、Windows Server 2008 以降にインストールする必要があります。このサーバーをドメイン コントローラーにすることができます。Express 設定を使用する場合はメンバー サーバーにすることもできます。カスタム設定を使用する場合、サーバーはスタンドアロンにすることもでき、ドメインに参加する必要はありません。
+- **パスワード ライトバック**機能を使用する場合、ドメイン コントローラーが (最新の SP が適用された) Windows Server 2008 以降にインストールされている必要があります。
 - Small Business Server または Windows Server Essentials には、Azure AD Connect をインストールできません。サーバーは Windows Server Standard 以上を使用する必要があります。
-- **パスワード同期**機能を使用する場合、サーバーは Windows Server 2008 R2 SP1 以降にする必要があります。
-- Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。これらのサーバーで、リモート インストール用の Windows リモート管理を有効にする必要があります。
+- Azure AD Connect は、Windows Server 2008 以降にインストールする必要があります。このサーバーをドメイン コントローラーにすることができます。Express 設定を使用する場合はメンバー サーバーにすることもできます。カスタム設定を使用する場合、サーバーはスタンドアロンにすることもでき、ドメインに参加する必要はありません。
+- **パスワード同期**機能を使用する場合、Azure AD Connect サーバーが Windows Server 2008 R2 SP1 以降にインストールされている必要があります。
+- Azure AD Connect サーバーに、[.Net 4.5.1](#component-prerequisites) 以降と [PowerShell 3.0](#component-prerequisites) 以降がインストールされている必要があります。
+- Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。リモート インストールのために、これらのサーバーで [Windows リモート管理](#windows-remote-management)を有効にする必要があります。
+- Active Directory フェデレーション サービスがデプロイされている場合は、[SSL 証明書](#ssl-certificate-requirements)が必要です。
 - Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされ、サービスのサービス アカウントがローカル コンピューターに作成されます。SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール プロセスで別のバージョンの SQL Server を指定する必要があります。Azure AD Connect では、SQL Server 2008 (SP4) から SQL Server 2014 まで、すべてのエディションの Microsoft SQL Server がサポートされています。
 
 **Accounts**
@@ -60,7 +62,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
     </system.net>
 ```
 
-このテキストは、ファイルの末尾に入力する必要があります。このコードの &lt;PROXYADRESS&gt; は、実際のプロキシ IP アドレスまたはホスト名を表します。 - プロキシがアクセスできる URL を制限している場合は、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/zh-CN/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL をプロキシで開く必要があります。
+このテキストは、ファイルの末尾に入力する必要があります。このコードの &lt;PROXYADRESS&gt; は、実際のプロキシ IP アドレスまたはホスト名を表します。 - プロキシがアクセスできる URL を制限している場合は、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/ja-JP/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL をプロキシで開く必要があります。
 
 **その他**
 
@@ -69,7 +71,6 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 ## コンポーネントの前提条件
 
 Azure AD Connect は、PowerShell と .Net 4.5.1 に依存しています。Windows Server のバージョンに応じて、次の操作を行います。
-
 
 - Windows Server 2012R2
   - PowerShell は既定でインストールされているため、操作は必要ありません。
@@ -80,6 +81,37 @@ Azure AD Connect は、PowerShell と .Net 4.5.1 に依存しています。Wind
 - Windows Server 2008
   - PowerShell の最新のサポート バージョンは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)の **Windows Management Framework 3.0** で入手できます。
  - .Net 4.5.1 以降のリリースは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)で入手できます。
+
+## Windows リモート管理
+
+ Azure AD Connect を使用して Active Directory フェデレーション サービスまたは Web アプリケーション プロキシをデプロイする場合、接続と構成が正常に完了するように、以下の要件を確認します。
+
+ - ターゲット サーバーがドメインに参加している場合は、Windows リモート管理が有効であることを確認します。
+    - 管理者特権の PSH コマンド ウィンドウで、`Enable-PSRemoting –force` コマンドを使用します。
+ - ターゲット サーバーが、ドメインに参加していない WAP コンピューターである場合は、いくつかの追加の要件があります。
+ 	- ターゲット コンピューター (WAP コンピューター) での要件
+         - サービス スナップインから winrm (Windows Remote Management / WS-Management) サービスが実行されていることを確認します。
+         - 管理者特権の PSH コマンド ウィンドウで、`Enable-PSRemoting –force` コマンドを使用します。
+    - ウィザードを実行しているコンピューターでの要件 (ターゲット コンピューターがドメインに参加していないか、信頼されていないドメインにある場合)
+        - 管理者特権の PSH コマンド ウィンドウで、`Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate` コマンドを使用します。
+ 	    - サーバー マネージャーでの要件
+ 		     - DMZ WAP ホストをコンピューターのプールに追加します ([サーバー マネージャー]、[管理]、[サーバーの追加] の順にクリックし、[DNS] タブを使用)。
+ 		     - サーバー マネージャーの [すべてのサーバー] タブで、 WAP サーバーを右クリックし、[管理に使用する資格情報] を選択し、WAP コンピューターのローカルの資格情報 (ドメインの資格情報ではない) を入力します。
+ 		     - リモートの PSH 接続を検証するには、サーバー マネージャーの [すべてのサーバー] タブで WAP サーバーを右クリックし、[Windows PowerShell] を選択します。リモート PSH セッションが開き、リモート PowerShell セッションを確立できます。
+
+## SSL 証明書の要件
+
+**重要:** AD FS ファームのすべてのノードだけでなくすべての Web アプリケーション プロキシ サーバーで同じ SSL 証明書を使用することを強くお勧めします。
+
+- この証明書は x509 証明書である必要があります。
+- テスト ラボ環境では、フェデレーション サーバーで自己署名証明書を使用できます。ただし、運用環境では、パブリック CA から証明書を取得することを勧めします。
+    - 公的に信頼されていない証明書を使用する場合は、各 Web アプリケーション プロキシ サーバーにインストールされている証明書がローカル サーバーとすべてのフェデレーション サーバーで信頼されていることを確認します。
+- 証明書の ID は、フェデレーション サービス名 (fs.contoso.com など) と一致する必要があります。
+    - ID は、dNSName タイプのサブジェクト代替名 (SAN) 拡張、または SAN エントリがない場合は共通名として指定されたサブジェクト名のどちらかになります。  
+    - 複数の SAN エントリを証明書に表示できますが、そのうちの 1 つはフェデレーション サービス名に一致させます。
+    - 社内参加を使用する場合は、値 **enterpriseregistration.** の後に組織のユーザー プリンシパル名 (UPN) サフィックス (**enterpriseregistration.contoso.com** など) が続く追加の SAN が必要です。
+- CryptoAPI Next Generation (CNG) キーとキー記憶域プロバイダーに基づく証明書はサポートされません。つまり、KSP (キー記憶域プロバイダー) ではなく CSP (暗号化サービス プロバイダー) に基づく証明書を使用する必要があります。
+- ワイルドカード証明書がサポートされます。
 
 ## Azure AD Connect でサポートされるコンポーネント
 
@@ -116,4 +148,4 @@ AD FS または Web アプリケーション サーバーを実行するコン�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

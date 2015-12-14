@@ -12,13 +12,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/12/2015"
+   ms.date="12/01/2015"
    ms.author="joaoma" />
 
 # プロファイルの無効化、有効化、または削除
 
 
-構成されたエンドポイントに対するユーザーの要求を参照しないように、既存の Traffic Manager プロファイルを無効にすることができます。Traffic Manager プロファイルを無効にすると、プロファイル自体とプロファイルに含まれる情報は元のまま残ります。このため、Traffic Manager インターフェイスで編集することもできます。プロファイルを再度有効にする場合は、管理ポータルから設定するだけで、参照が再開されます。管理ポータルで Traffic Manager プロファイルを作成すると、自動的に有効になります。
+構成されたエンドポイントに対するユーザーの要求を参照しないように、既存の Traffic Manager プロファイルを無効にすることができます。Traffic Manager プロファイルを無効にすると、プロファイル自体とプロファイルに含まれる情報は元のまま残ります。このため、Traffic Manager インターフェイスで編集することもできます。プロファイルを再度有効にする場合は、Azure ポータルから設定するだけで、参照が再開されます。Traffic Manager プロファイルは、Azure ポータルで作成すると自動的に有効になります。
 
 ## プロファイルを無効にするには
 
@@ -54,4 +54,4 @@
 
 [Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

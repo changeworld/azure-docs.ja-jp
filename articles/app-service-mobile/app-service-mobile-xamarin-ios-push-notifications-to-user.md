@@ -13,16 +13,14 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/25/2015"
+	ms.date="12/01/2015"
 	ms.author="yuaxu"/>
 
 # 特定のユーザーにクロスプラット フォーム通知を送信する
 
-[AZURE.INCLUDE [app-service-mobile-selector-push-users](../../includes/app-service-mobile-selector-push-users.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-push-users](../../includes/app-service-mobile-selector-push-users.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
-このトピックでは、特定のユーザーのすべての登録済みデバイスにモバイル バックエンドから通知を送信する方法について説明します。[テンプレート]の概念が導入されました。これにより、クライアント アプリケーションで、登録時にペイロードの形式と変数プレースホルダーを自由に指定することができます。送信すると、これらのプレースホルダーにより、すべてのプラットフォームにヒットし、クロスプラットフォーム通知が有効になります。
+このトピックでは、特定のユーザーのすべての登録済みデバイスにモバイル バックエンドから通知を送信する方法について説明します。[テンプレート]の概念が導入されました。これにより、クライアント アプリケーションで、登録時にペイロードの形式と変数プレースホルダーを自由に指定することができます。テンプレート通知がサーバーから送信されると、通知ハブは、これらのプレースホルダーと共に通知をすべてのプラットフォームに送信して、クロスプラット フォーム通知を有効にします。
 
 > [AZURE.NOTE]クロスプラットフォーム クライアントでプッシュ操作を有効にするには、有効にする各プラットフォームに対してこのチュートリアルを完了する必要があります。同じモバイル バックエンドを共有しているクライアントに対して、[モバイル バックエンドの更新](#backend)を 1 回だけ実行する必要があります。
  
@@ -58,20 +56,7 @@
         }
         ...
 
-2. **AppDelegate.cs** で、**RegisteredForRemoteNotifications** の **RegisterAsync** 呼び出しを次のコードに置き換えてテンプレートを使用します。
 
-        // delete await push.RegisterAsync (deviceToken);
-        
-        var notificationTemplate = "{"aps": {"alert":"$(message)"}}";
-
-        JObject templateBody = new JObject();
-        templateBody["body"] = notificationTemplate;
-
-        JObject templates = new JObject();
-        templates["testApnsTemplate"] = templateBody;
-
-        // register with templates
-        await push.RegisterAsync (deviceToken, templates);
 
 ##<a name="backend"></a>特定のユーザーに通知を送信するようにサービス バックエンドを更新する
 
@@ -92,11 +77,14 @@
             ServiceUser authenticatedUser = this.User as ServiceUser;
             string userTag = "_UserId:" + authenticatedUser.Id;
 
-            var notification = new Dictionary<string, string>{{"message", item.Text}};
+            // Sending the message so that all template registrations that contain "messageParam"
+            // will receive the notifications. This includes APNS, GCM, WNS, and MPNS template registrations.
+            Dictionary<string,string> templateParams = new Dictionary<string,string>();
+            templateParams["messageParam"] = item.Text + " was added to the list.";
 
             try
             {
-                await Hub.Push.SendTemplateNotificationAsync(notification, userTag);
+                await Hub.SendTemplateNotificationAsync(templateParams, userTag);
             }
             catch (System.Exception ex)
             {
@@ -112,6 +100,6 @@
 <!-- URLs. -->
 [認証の使用]: app-service-mobile-xamarin-ios-get-started-users.md
 [プッシュ通知の使用]: app-service-mobile-xamarin-ios-get-started-push.md
-[テンプレート]: https://msdn.microsoft.com/ja-JP/library/dn530748.aspx
+[テンプレート]: ../notification-hubs/notification-hubs-templates.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

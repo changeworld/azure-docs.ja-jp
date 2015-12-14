@@ -22,7 +22,7 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](sql-database-configure-firewall-settings.md)
+- [Azure Portal](sql-database-configure-firewall-settings.md)
 - [TSQL](sql-database-configure-firewall-settings-tsql.md)
 - [PowerShell](sql-database-configure-firewall-settings-powershell.md)
 - [REST API](sql-database-configure-firewall-settings-rest.md)
@@ -66,4 +66,4 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 [2]: ./media/sql-database-configure-firewall-settings/AzurePortalFirewallSettings.png
 <!--anchors-->
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

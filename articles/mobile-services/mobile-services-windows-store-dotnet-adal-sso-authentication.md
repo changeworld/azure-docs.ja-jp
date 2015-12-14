@@ -13,10 +13,15 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/18/2015" 
+	ms.date="08/18/2015"
 	ms.author="wesmc"/>
 
 # Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-adal-sso](../../includes/mobile-services-selector-adal-sso.md)]
 
@@ -85,7 +90,7 @@
 
 ###ネイティブ アプリケーション登録の作成
 
-1. **Microsoft Azure の管理ポータル**の [[Active Directory]] に移動し、目的のディレクトリをクリックします。
+1. [Azure クラシック ポータル]の** [Active Directory]** に移動し、ディレクトリをクリックします。
 
     ![][7]
 
@@ -162,7 +167,7 @@
             }
         }
 
-6. 前の `AuthenticateAsync` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com である必要があります。この値は、[Microsoft Azure 管理ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
+6. 前の `AuthenticateAsync` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com である必要があります。この値は、[Azure クラシック ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
 
 7. 前の `AuthenticateAsync` メソッドのコードで、**INSERT-RESOURCE-URI-HERE** をモバイル サービスの **App ID URI** に置き換えます。トピック「[Azure Active Directory 認証用の登録]」に従った場合は、アプリケーション ID URI が https://todolist.azure-mobile.net/login/aad と同様になる必要があります。
 
@@ -184,7 +189,7 @@
 ##認証を使用してクライアントをテストする
 
 1. Visual Studio で、クライアント アプリケーションを実行します。
-2. Azure Active Directory にログインするための画面が表示されます。  
+2. Azure Active Directory にログインするための画面が表示されます。
 3. アプリケーションが認証を実行し、Todo 項目を返します。
 
     ![][15]
@@ -211,10 +216,9 @@
 
 <!-- URLs. -->
 [Azure Active Directory 認証用の登録]: mobile-services-how-to-register-active-directory-authentication.md
-[Microsoft Azure 管理ポータル]: https://manage.windowsazure.com/
-[[Active Directory]]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Mobile Services の使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [モバイル サービスの使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [Windows デベロッパー センター ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkID=266734
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

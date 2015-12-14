@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/09/2015"
+   ms.date="11/17/2015"
    ms.author="hascipio"/>
 
 # Microsoft 販売者アカウントの作成
@@ -167,12 +167,7 @@ Azure 発行ポータルは、プランの発行と管理に使用されます�
 ## 次のステップ
 これで、アカウントが作成され、登録されたので、Azure Marketplace に発行したいアーティファクトのタイプ (仮想マシン、開発者サービス、データ サービス、ソリューション テンプレート) をクリックします。それぞれのプランを発行する方法については、次の記事のいずれかを参照してください。
 
-||仮想マシン イメージ |開発者サービス |データ サービス |ソリューション テンプレート |
-|----|-----|-----|-----|-----|
-|**手順 2: プランを作成する** |[技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| [技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| [技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| [技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)|
-|| [VM イメージの技術的な前提条件][link-single-vm-prereq] |開発者サービスの技術的な前提条件 | データ サービスの技術的な前提条件 | [ソリューション テンプレートの技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md) |
-|| [VM イメージの発行ガイド][link-single-vm] |開発者向けサービスの発行ガイド | データ サービスの発行ガイド | [ソリューション テンプレートの発行ガイド](marketplace-publishing-solution-template-creation.md) |
-|| [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] |
+||仮想マシン イメージ |開発者サービス |データ サービス |ソリューション テンプレート | |----|-----|-----|-----|-----| |**手順 2. プランを作成する** |[技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| [技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| [技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| [技術以外の一般的な前提条件](marketplace-publishing-pre-requisites.md)| || [VM イメージの技術的な前提条件][link-single-vm-prereq] |開発者サービスの技術的な前提条件 | [データ サービスの技術的な前提条件](marketplace-publishing-data-service-creation-prerequisites.md) | [ソリューション テンプレートの技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md) | || [VM イメージの発行ガイド][link-single-vm] |開発者向けサービスの発行ガイド | [データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md) | [ソリューション テンプレートの発行ガイド](marketplace-publishing-solution-template-creation.md) | || [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] |
 
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
@@ -204,4 +199,4 @@ Azure 発行ポータルは、プランの発行と管理に使用されます�
 [link-devsvc-prereq]: marketplace-publishing-dev-service-creation-prerequisites.md
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

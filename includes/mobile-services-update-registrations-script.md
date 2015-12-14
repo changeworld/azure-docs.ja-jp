@@ -1,6 +1,6 @@
 
 
-1. 管理ポータルで、**[データ]** タブをクリックし、**Registrations** テーブルをクリックします。 
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、**[データ]** タブをクリックし、**Registrations** テーブルをクリックします。 
 
 	![](./media/mobile-services-update-registrations-script/mobile-portal-data-tables-registrations.png)
 
@@ -28,4 +28,4 @@
 
    これにより、新しいテーブルに登録情報を格納する新しい挿入スクリプトが登録されます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

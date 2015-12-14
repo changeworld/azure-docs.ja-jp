@@ -17,14 +17,14 @@
 	ms.date="11/19/2015"
 	ms.author="larryfr"/>
 
-# Azure プレビュー ポータルを使用した HDInsight での Hadoop クラスターの管理
+# Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
 
 [AZURE.INCLUDE [セレクター](../../includes/hdinsight-portal-management-selector.md)]
 
 
-[Azure プレビュー ポータル][preview-portal]を使用すると、Azure HDInsight に Linux ベースの Hadoop クラスターをプロビジョニングして管理できます。
+[Azure ポータル][preview-portal]を使用すると、Azure HDInsight に Linux ベースの Hadoop クラスターをプロビジョニングして管理できます。
 
-> [AZURE.NOTE]このドキュメントの手順は Linux ベースの Hadoop クラスターの使用に固有のものです。Windows ベースのクラスターの使用については、「[Azure プレビュー ポータルを使用した HDInsight の Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md)」を参照してください。
+> [AZURE.NOTE]このドキュメントの手順は Linux ベースの Hadoop クラスターの使用に固有のものです。Windows ベースのクラスターの使用については、「[Azure ポータルを使用した HDInsight の Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md)」を参照してください。
 
 
 [AZURE.INCLUDE [preview-portal](../../includes/hdinsight-azure-preview-portal-nolink.md)]
@@ -47,11 +47,11 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 
 以下の手順を使用して、Azure ポータルから HDInsight クラスターをプロビジョニングできます。
 
-1. [Azure プレビュー ポータル][preview-portal]にサインインします。
+1. [Azure ポータル][preview-portal]にサインインします。
 
 2. **[新規]**、__[データ分析]__、__[HDInsight]__ の順にクリックします。
 
-	![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-administer-use-portal-linux/new-cluster.png)
+	![Azure ポータルでの新しいクラスターの作成](./media/hdinsight-administer-use-portal-linux/new-cluster.png)
 
 3. __[クラスター名]__ を入力し、作成する __[クラスターの種類]__ を選択します。クラスターを使用できる場合は、__[クラスター名]__ の横に緑色のチェック マークが表示されます。
 
@@ -111,11 +111,11 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 
 	* __[仮想ネットワーク]__: SQL Database や Azure 仮想マシンなど、その他のリソースと同じ仮想ネットワークに HDInsight クラスターを配置できます。仮想ネットワークにリソースを配置することにより、インターネットからの受信トラフィックを処理するパブリック ゲートウェイをバイパスして、リソースが相互に直接通信できるようになります。Azure の仮想ネットワークが HDInsight にもたらす利点の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」を参照してください。
 
-		> [AZURE.IMPORTANT]HDInsight 構成から新しいネットワークを作成することはできないため、HDInsight クラスターを作成する前に Azure の仮想ネットワークを作成する必要があります。
+		> [AZURE.IMPORTANT]HDInsight 構成から新しいネットワークを作成することはできないため、HDInsight クラスターを作成する前に Azure Virtual Network を作成する必要があります。
 		>
-		> 現時点 (2015 年 8 月 25 日) では、Azure の仮想ネットワーク上に存在できる Linux ベースの HDInsight クラスターは 1 つだけという制限があります。
+		> 現時点 (2015 年 8 月 25 日) では、Azure Virtual Network 上に存在できる Linux ベースの HDInsight クラスターは 1 つだけという制限があります。
         >
-        > Linux ベースの HDInsight で v1 (クラシック) Azure Virtual Network を使用することはできません。Azure プレビュー ポータルでの HDInsight クラスターの作成プロセスで Virtual Network をオプションとして表示したり、Azure CLI または Azure PowerShell からクラスターを作成するときに Virtual Network を使用できるようにしたりするには、Virtual Network が v2 (Azure リソース マネージャー) である必要があります。
+        > Linux ベースの HDInsight で v1 (クラシック) Azure Virtual Network を使用することはできません。Azure ポータルでの HDInsight クラスターの作成プロセスで Virtual Network をオプションとして表示したり、Azure CLI または Azure PowerShell からクラスターを作成するときに Virtual Network を使用できるようにしたりするには、Virtual Network が v2 (Azure リソース マネージャー) である必要があります。
         >
         > v1 ネットワーク上にリソースがあり、HDInsight から仮想ネットワークを介してそれらのリソースに直接アクセスできるようにする場合、v2 Virtual Network を v1 Virtual Network に接続する方法については、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」をご覧ください。この接続が確立されたら、v2 Virtual Network で HDInsight クラスターを作成できます。
 
@@ -137,7 +137,7 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 
 ## クラスターの管理
 
-Azure プレビュー ポータルでクラスターを選択すると、名前、リソース グループ、オペレーティング システム、クラスターのダッシュボードの URL (Linux クラスターの Ambari Web へのアクセスに使用) など、クラスターに関する重要な情報が表示されます。
+Azure ポータルでクラスターを選択すると、名前、リソース グループ、オペレーティング システム、クラスターのダッシュボードの URL (Linux クラスターの Ambari Web へのアクセスに使用) など、クラスターに関する重要な情報が表示されます。
 
 ![クラスターの詳細](./media/hdinsight-administer-use-portal-linux/clusterdetails.png)
 
@@ -157,7 +157,7 @@ Azure プレビュー ポータルでクラスターを選択すると、名前�
 
 * __[ユーザー]__ (![ユーザー アイコン](./media/hdinsight-administer-use-portal-linux/users.png)): このクラスターの_ポータル管理_に対する、Azure サブスクリプションの他のユーザーの権限を設定できます。
 
-	> [AZURE.IMPORTANT]これは、Azure プレビュー ポータルでのこのクラスターへのアクセスと権限だけに影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
+	> [AZURE.IMPORTANT]これは、Azure ポータルでのこのクラスターへのアクセスと権限だけに影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
 
 * __[タグ]__ (![タグ アイコン](./media/hdinsight-administer-use-portal-linux/tags.png)): タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。たとえば、__プロジェクト__という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。
 
@@ -193,4 +193,4 @@ HDInsight クラスター ブレードの __[使用状況]__ セクションに�
 
 [preview-portal]: https://portal.azure.com
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

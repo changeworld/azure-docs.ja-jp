@@ -58,13 +58,13 @@ azure モジュールは、Azure Storage アカウントに接続するために
 
 これらの値を取得するには、次の手順を実行します。
 
-1. [Azure ポータル](https://manage.windowsazure.com/)にログインします。
+1. [Azure ポータル](portal.azure.com)にログインします。
 
-2. 使用するストレージ アカウントを表示します。
+2. ストレージ アカウントに移動します。
 
-3. ナビゲーション ウィンドウの下部にある **[キーの管理]** をクリックします。
+3. **[設定]**ブレードで、[**[キー]** を選択します。
 
-4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーは、プライマリとセカンダリのどちらでも選択できます。
+4. 所望するアクセス キー値をコピーします。
 
 ## テーブルの作成
 
@@ -154,8 +154,7 @@ azure モジュールは、Azure Storage アカウントに接続するために
 
 さらに複雑なストレージ タスクの詳細については、次のリンク先をご覧ください。
 
-- MSDN リファレンス: [Azure Storage](http://msdn.microsoft.com/library/azure/gg433040.aspx)
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

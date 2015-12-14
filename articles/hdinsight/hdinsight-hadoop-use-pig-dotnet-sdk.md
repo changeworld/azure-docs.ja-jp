@@ -49,7 +49,7 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 
 各 Azure サブスクリプションは、サブスクリプション ID と呼ばれる GUID で識別されます。次の手順に従って、この値を検索します。
 
-1. [Azure プレビュー ポータル][preview-portal] にアクセスします。
+1. [Azure ポータル][preview-portal] にアクセスします。
 
 2. ポータルの左側のバーから __[すべて参照]__ を選択し、__[参照]__ ブレードから __[サブスクリプション]__ を選択します。
 
@@ -155,7 +155,6 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
-* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
-[preview-portal]: https://portal.azure.com/
+* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md) [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

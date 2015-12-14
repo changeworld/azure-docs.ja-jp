@@ -71,7 +71,7 @@ Azure Traffic Manager で諸地域のサイトにサービス提供し、Azure C
 
 自動スケールで自動的にスケールし、Azure Redis Cache でキャッシュして、Web ジョブでタスクをバックグラウンドで実行し、Azure Traffic Manager で高可用性を維持することで、Web アプリを最適化します。
 
-App Service Web Apps の[スケールアップやスケールアウト]機能は、予測できないデジタル マーケティング キャンペーンのワークロードに最適です。Web アプリは [Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)から手動で、[サービス管理 API] や [PowerShell スクリプト]を通じてプログラムで、そして自動スケール機能によって自動でスケールアウトできます。**標準**階層では、自動スケールにより、CPU 使用率に基づいて Web アプリを自動的にスケールアウトできます。この機能により、ユーザーのアクティビティを基に必要に応じて Web アプリをスケールアウトできるため、俊敏性を最大限にすると同時にコストを最小限に抑えることができます。ベスト プラクティスについては、[Troy Hunt] の「[10 things I learned about rapidly scaling web apps with Azure (Azure での Web アプリの迅速なスケーリングに関する 10 項目)]」をご覧ください。
+App Service Web Apps の[スケールアップやスケールアウト]機能は、予測できないデジタル マーケティング キャンペーンのワークロードに最適です。Web アプリは [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)から手動で、[サービス管理 API] や [PowerShell スクリプト]を通じてプログラムで、そして自動スケール機能によって自動でスケールアウトできます。**標準**階層では、自動スケールにより、CPU 使用率に基づいて Web アプリを自動的にスケールアウトできます。この機能により、ユーザーのアクティビティを基に必要に応じて Web アプリをスケールアウトできるため、俊敏性を最大限にすると同時にコストを最小限に抑えることができます。ベスト プラクティスについては、[Troy Hunt] の「[10 things I learned about rapidly scaling web apps with Azure (Azure での Web アプリの迅速なスケーリングに関する 10 項目)]」をご覧ください。
 
 [Azure Redis Cache] で Web アプリの応答性を高めます。バックエンド データベースのデータのキャッシュと [ASP.NET のセッション状態]や[出力キャッシュ]などのその他のことに使用します。
 
@@ -81,7 +81,7 @@ App Service Web Apps の[スケールアップやスケールアウト]機能は
 
 Azure やサードパーティー製のツールで Web アプリのパフォーマンスを最新の状態に維持します。重要な Web アプリのイベントでアラートを受信します。Application Insight や HDInsight からの Web ログ分析でユーザー情報を簡単に取得します。
 
-[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)の Web アプリのブレードで、Web アプリの現在のパフォーマンス メトリックとリソースのクォータの[概要]を取得します。可用性、パフォーマンス、使用状況など、アプリケーションの全体像を把握するために、迅速かつ強力なトラブルシューティング、診断、使用状況の分析を提供する [Azure Application Insights] を使用します。または、Web アプリのデータの詳細な監視を行う、[New Relic] などのサードパーティー製ツールを使用します。
+[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)の Web アプリのブレードで、Web アプリの現在のパフォーマンス メトリックとリソースのクォータの[概要]を取得します。可用性、パフォーマンス、使用状況など、アプリケーションの全体像を把握するために、迅速かつ強力なトラブルシューティング、診断、使用状況の分析を提供する [Azure Application Insights] を使用します。または、Web アプリのデータの詳細な監視を行う、[New Relic] などのサードパーティー製ツールを使用します。
 
 **Standard** レベルでは、アプリの応答性を監視して、Web アプリの応答が停止する際にメール通知を受信します。詳細については、「[方法: Azure でアラート通知を受け取り、アラート ルールを管理する]」を参照してください。
 
@@ -138,4 +138,4 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
   [gitstaging]: http://www.bradygaster.com/post/multiple-environments-with-windows-azure-web-sites
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

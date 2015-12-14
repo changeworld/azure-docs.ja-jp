@@ -24,7 +24,7 @@
 このトピックでは、Azure SQL Database をバージョン V11 から V12 にアップグレードするために必要な、計画と準備について説明します。
 
 
-新しい [Azure プレビュー ポータル](http://portal.azure.com/)を使用して、V12 へのアップグレードをサポートできます。
+V12 へのアップグレードをサポートする新しい [Azure ポータル](http://portal.azure.com/)が使用できます。
 
 
 次の表は、V12 に関する他のヘルプ トピックの一覧です。
@@ -91,7 +91,7 @@ V12 では、Web と Business サービスの価格レベルはサポートさ�
 V11 Azure SQL Database が Web または Business データベースのいずれかである場合は、アップグレード処理の際にサポートされる階層へのデータベースの切り替えが通知されます。お使いのデータベースのワークロードの履歴に合った階層にアップグレードすることをお勧めします。ただし、必要に応じて、サポートされる任意の階層を選択できます。
 
 
-アップグレード前に V11 データベースを Web や Business 階層から切り替えておけば、アップグレード中に必要となる手順を減らすことができます。この操作は新しい [Azure プレビュー ポータル](http://portal.azure.com/)から実行できます。
+アップグレード前に V11 データベースを Web や Business 階層から切り替えておけば、アップグレード中に必要となる手順を減らすことができます。この操作は新しい [Azure ポータル](http://portal.azure.com/)から実行できます。
 
 
 切り替え先のサービス階層がわからない場合は、最初に Standard 階層の S2 レベルを選択しておくと便利です。下位の階層のリソースは、Web 階層や Business 階層よりも少なくなっています。
@@ -127,17 +127,17 @@ SQL Database V12 のポートの詳細については、[こちら](sql-database
 Azure には 3 つのポータルがありますが、それぞれ SQL Database V12 に関する機能が異なります
 
 
-- [http://portal.azure.com/](http://portal.azure.com/)<br/>この Azure プレビュー ポータルは新しいもので、現段階ではプレビュー状態のままです。このポータルは、現段階では完全に一般公開 (GA) されていません。このポータルでは、次のことを実行できます。
+- [http://portal.azure.com/](http://portal.azure.com/)<br/>この Azure ポータルは新しいもので、現段階ではプレビュー状態のままです。このポータルは、現段階では完全に一般公開 (GA) されていません。このポータルでは、次のことを実行できます。
  - V12 サーバーとデータベースを管理できます。
  - V11 データベースを V12 にアップグレードできます。
 
 
-- [http://manage.windowsazure.com/](http://manage.windowsazure.com/)<br/>この Azure ポータルは最終的に廃止される予定です。このポータルでは、次のことを実行できます。
+- [http://manage.windowsazure.com/](http://manage.windowsazure.com/)<br/>この Azure クラシック ポータルは最終的に廃止される予定です。このポータルでは、次のことを実行できます。
  - V12 サーバーとデータベースを管理できます。
  - V11 データベースを V12 にアップグレード*できません*。
 
 
-- (http://*yourservername*.database.windows.net)<br/>Azure SQL Database の管理ポータル:
+- (http://*yourservername*.database.windows.net)<br/> Azure SQL Database クラシック ポータル:
  - V12 サーバーを管理*できません*。
 
 
@@ -149,10 +149,10 @@ Visual Studio 2013 (VS2013) で Azure SQL Database に接続することをお�
 - オンラインまたはオフラインでのデータベースの開発。
 
 
-代わりに、VS2013 の無償ですべての機能を備えたバージョンである [Visual Studio Community 2013](https://www.visualstudio.com/JA-JP/news/vs2013-community-vs.aspx/) で接続することもできます。
+代わりに、VS2013 の無償ですべての機能を備えたバージョンである [Visual Studio Community 2013](https://www.visualstudio.com/ja-JP/news/vs2013-community-vs.aspx/) で接続することもできます。
 
 
-以前の Azure ポータルでは、データベース ページで **[Visual Studio で開く]** をクリックしてコンピューター上で VS2013 を起動し、Azure SQL Database に接続できます。
+以前の Azure クラシック ポータルでは、データベース ページで **[Visual Studio で開く]** をクリックしてコンピューター上で VS2013 を起動し、Azure SQL Database に接続できます。
 
 
 代わりに、[CU6](http://support.microsoft.com/kb/3031047/) を含む SQL Server Management Studio (SSMS) 2014 を使用して Azure SQL Database に接続することもできます。詳細については、<br/>[Azure SQL Database のクライアント ツール更新プログラム](http://azure.microsoft.com/blog/2014/12/22/client-tooling-updates-for-azure-sql-database/)に関するブログを参照してください。
@@ -184,7 +184,7 @@ V11 データベースは、V12 へのアップグレード中も、引き続き
 ### V12 へのアップグレード*後*のエクスポートとインポート
 
 
-[Azure プレビュー ポータル](http://portal.azure.com/)を使用して V12 データベースをエクスポートまたはインポートできます。または、次のいずれかのツールを使用してエクスポートまたはインポートすることもできます。
+[Azure ポータル](http://portal.azure.com/)を使用して V12 データベースをエクスポート、インポートできます。または、次のいずれかのツールを使用してエクスポートまたはインポートすることもできます。
 
 
 - SQL Server Management Studio (SSMS)
@@ -196,7 +196,7 @@ V11 データベースは、V12 へのアップグレード中も、引き続き
 
 
 - [SQL Server Management Studio 2014 用の累積的な更新プログラム 6](http://support2.microsoft.com/kb/3031047)
-- [Visual Studio 2013 の SQL Server データベース ツール用の 2015年 2 月の更新プログラム](https://msdn.microsoft.com/data/hh297027)
+- [Visual Studio 2013 の SQL Server Database ツール用の 2015年 2 月の更新プログラム](https://msdn.microsoft.com/data/hh297027)
 - [Azure SQL Database V12 用の 2015 年 2月の Data-Tier Application Framework (DacFx)](http://www.microsoft.com/download/details.aspx?id=45886)
 
 
@@ -254,4 +254,4 @@ Stop- コマンドレットは、一時停止ではなく取り消しを意味�
 [Subheading 1]: #subheading-1
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

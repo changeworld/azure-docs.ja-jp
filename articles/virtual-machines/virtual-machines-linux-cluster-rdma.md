@@ -36,7 +36,7 @@ ms.service="virtual-machines"
 
 * **Azure CLI スクリプト** - この記事の以降の手順に示されるように、Mac、Linux、および Windows 用の [Azure コマンド ライン インターフェイス](../xplat-cli-install.md) (CLI) を使用して、仮想ネットワークやその他の必要なコンポーネントのデプロイのスクリプトを作成し、Linux クラスターを作成することができます。クラシック (サービス管理) デプロイ モード の CLI では、クラスター ノードを順番に作成します。そのため、多くのコンピューティング ノードをデプロイしている場合は、デプロイの完了に数分かかる場合があります。
 
-* **Azure リソース マネージャー テンプレート** - Azure リソース マネージャーで簡単な JSON テンプレート ファイルを作成し、リソース マネージャーに対して Azure CLI でコマンドを実行するか、または Azure プレビュー ポータルを使用すると、複数の A8 および A9 Linux VM をデプロイするとともに、仮想ネットワーク、静的 IP アドレス、DNS の設定、その他のリソースを定義して、RDMA の利用および MPI ワークロードの実行が可能なコンピューティング クラスターを作成することができます。[独自のテンプレートを作成](../resource-group-authoring-templates.md)するか、または [「Azure クイック スタート テンプレート」ページ](https://azure.microsoft.com/documentation/templates/)で Microsoft またはコミュニティから提供されたテンプレートを確認して、目的のソリューションをデプロイすることができます。リソース マネージャーのテンプレートは、一般に、Linux クラスターをデプロイするための最も信頼性の高い、最速の方法を提供します。
+* **Azure リソース マネージャー テンプレート** - Azure リソース マネージャーで簡単な JSON テンプレート ファイルを作成し、リソース マネージャーに対して Azure CLI でコマンドを実行するか、または Azure ポータルを使用すると、複数の A8 および A9 Linux VM をデプロイするとともに、仮想ネットワーク、静的 IP アドレス、DNS の設定、その他のリソースを定義して、RDMA の利用および MPI ワークロードの実行が可能なコンピューティング クラスターを作成することができます。[独自のテンプレートを作成](../resource-group-authoring-templates.md)するか、または [「Azure クイック スタート テンプレート」ページ](https://azure.microsoft.com/documentation/templates/)で Microsoft またはコミュニティから提供されたテンプレートを確認して、目的のソリューションをデプロイすることができます。リソース マネージャーのテンプレートは、一般に、Linux クラスターをデプロイするための最も信頼性の高い、最速の方法を提供します。
 
 ## Azure CLI スクリプトによる Azure サービス管理でのデプロイ
 
@@ -370,4 +370,4 @@ cluster12
 
 * Intel MPI のガイダンスについては、[Intel MPI Library のドキュメント](https://software.intel.com/ja-JP/articles/intel-mpi-library-documentation/)を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

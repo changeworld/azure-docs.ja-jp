@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/23/2015" 
+	ms.date="11/30/2015" 
 	ms.author="mandia"/>
 
 # Hybrid Connection Manager を使用して Azure App Service 内のオンプレミス コネクターに接続する
@@ -133,4 +133,4 @@ Azure App Service コネクタにも、Hybrid Connection Manager があります
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

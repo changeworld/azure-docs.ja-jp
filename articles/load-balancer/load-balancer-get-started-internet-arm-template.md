@@ -71,4 +71,12 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 
 		azure group create -n TestRG -l westus -f 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-natrules/azuredeploy.json' -e 'c:\lb\azuredeploy.parameters.json'
 
-<!---HONumber=AcomDC_1125_2015-->
+## 次のステップ
+
+[内部ロード バランサーの構成の開始](load-balancer-internal-getstarted.md)
+
+[ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
+
+[ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
+
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,36 +1,41 @@
-<properties 
-	pageTitle="ユニバーサル Windows アプリでのオフライン データの使用 | Microsoft Azure" 
-	description="Azure Mobile Services を使用して、ユニバーサル Windows アプリでオフライン データをキャッシュおよび同期する方法について説明します。" 
-	documentationCenter="mobile-services" 
-	authors="lindydonna" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="ユニバーサル Windows アプリでのオフライン データの使用 | Microsoft Azure"
+	description="Azure Mobile Services を使用して、ユニバーサル Windows アプリでオフライン データをキャッシュおよび同期する方法について説明します。"
+	documentationCenter="mobile-services"
+	authors="lindydonna"
+	manager="dwrede"
+	editor=""
 	services="mobile-services"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="11/06/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="11/06/2015"
 	ms.author="donnam"/>
 
 # Mobile Services でのオフライン データの同期の使用
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 [AZURE.INCLUDE [mobile-services-selector-offline](../../includes/mobile-services-selector-offline.md)]
 
-このチュートリアルでは、Azure モバイル サービスを使用して、Windows ユニバーサル ストアのアプリケーションにオフライン サポートを追加する方法について説明します。オフライン サポートを使用すると、アプリがオフラインの状況でもローカル データベースと対話できます。アプリがバックエンドのデータベースとオンラインになったときに、オフライン機能を使用したローカルの変更を同期します。
+このチュートリアルでは、Azure Mobile Services を使用して、Windows ユニバーサル ストアのアプリケーションにオフライン サポートを追加する方法について説明します。オフライン サポートを使用すると、アプリがオフラインの状況でもローカル データベースと対話できます。アプリがバックエンドのデータベースとオンラインになったときに、オフライン機能を使用したローカルの変更を同期します。
 
 右側のクリップを見ると、このチュートリアルと同じ手順をビデオで確認できます。
 
 > [AZURE.VIDEO build-offline-apps-with-mobile-services]
 
-このチュートリアルでは、「[Mobile Services の使用]」チュートリアルで使用した Universal アプリケーション プロジェクトを更新して、Azure Mobile Services のオフライン機能をサポートできるようにします。その後、切断されたオフラインの状況でデータを追加し、それらの項目をオンライン データベースに同期してから、Azure の管理ポータルにログインして、アプリケーションを実行したときにデータに加えた変更を表示します。
+このチュートリアルでは、「[Mobile Services の使用]」チュートリアルで使用した Universal アプリケーション プロジェクトを更新して、Azure Mobile Services のオフライン機能をサポートできるようにします。その後、切断されたオフラインの状況でデータを追加し、それらの項目をオンライン データベースに同期してから、[Azure クラシック ポータル]にログインして、アプリケーションを実行したときにデータに加えた変更を表示します。
 
 >[AZURE.NOTE]このチュートリアルの目的は、Azure を使用して Windows ストア アプリケーションのデータを格納および取得できるようにするためのモバイル サービスのしくみを説明することにあります。Mobile Services を初めて使用する場合は、チュートリアル「[Mobile Services の使用]」を完了する必要があります。
 
-##前提条件 
+##前提条件
 
 このチュートリアルには、次のものが必要です。
 
@@ -39,15 +44,15 @@
 * [Azure Mobile Services SDK バージョン 1.3.0 (またはこれ以降)][Mobile Services SDK Nuget]
 * [Azure Mobile Services SQLite Store バージョン 1.0.0 (またはこれ以降)][SQLite store nuget]
 * [SQLite for Windows 8.1](http://www.sqlite.org/download.html)
-* Azure アカウント。アカウントがない場合は、Azure 試用版にサインアップして最大 10 の無料モバイル サービスを取得し、試用期間が終わった後でも使用し続けることができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)を参照してください。 
+* Azure アカウント。アカウントがない場合は、Azure 試用版にサインアップして最大 10 の無料モバイル サービスを取得し、試用期間が終わった後でも使用し続けることができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)を参照してください。
 
 ## <a name="enable-offline-app"></a>オフライン機能をサポートするようにアプリケーションを更新する
 
-Azure モバイル サービスのオフライン機能を使用すると、モバイル サービスに対してオフラインになっている状況でも、ローカル データベースとやり取りすることができます。アプリケーションでこれらの機能を使用するには、`MobileServiceClient.SyncContext` をローカル ストアに初期化します。その後、`IMobileServiceSyncTable` インターフェイスを使用してテーブルを参照します。このチュートリアルでは、ローカル ストアに SQLite を使用します。
+Azure Mobile Services のオフライン機能を使用すると、モバイル サービスに対してオフラインになっている状況でも、ローカル データベースとやり取りすることができます。アプリケーションでこれらの機能を使用するには、`MobileServiceClient.SyncContext` をローカル ストアに初期化します。その後、`IMobileServiceSyncTable` インターフェイスを使用してテーブルを参照します。このチュートリアルでは、ローカル ストアに SQLite を使用します。
 
 >[AZURE.NOTE]このセクションをスキップして、既にオフラインをサポートしているプロジェクト例を、GitHub の Mobile Services のサンプル リポジトリから取得することもできます。オフライン サポートが有効になっているサンプル プロジェクトは [TodoList オフライン サンプル]にあります。
 
-1. Windows 8.1 および Windows Phone 8.1 の SQLite ランタイムをインストールします。 
+1. Windows 8.1 および Windows Phone 8.1 の SQLite ランタイムをインストールします。
 
     * **Windows 8.1 Runtime:** [SQLite for Windows 8.1] をインストール。
     * **Windows Phone 8.1**: [SQLite for Windows Phone 8.1] をインストール。
@@ -211,7 +216,7 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 
 2. **F5** キーを押して、アプリケーションをリビルドして実行します。アプリケーションは現在モバイル サービスに接続されていますが、オフラインの状況と同じ表示になっていることに注意してください。この原因は、このアプリケーションが常に、ローカル ストアを指している `IMobileServiceSyncTable` との組み合わせで動作していることにあります。
 
-3. Microsoft Azure の管理ポータルにログインし、モバイル サービスに対応するデータベースを参照します。開発中のサービスが、モバイル サービスとして JavaScript バックエンドを使用している場合は、モバイル サービスの **[データ]** タブからデータを参照できます。
+3. [Azure クラシック ポータル]にログインし、モバイル サービスに対応するデータベースを参照します。開発中のサービスが、モバイル サービスとして JavaScript バックエンドを使用している場合は、モバイル サービスの **[データ]** タブからデータを参照できます。
 
     モバイル サービスの .NET バックエンドを使用している場合は、Visual Studio で、[**サーバー エクスプローラー**]、[**Azure**]、[**SQL データベース**] の順に移動します。データベースを右クリックし、[**SQL Server オブジェクト エクスプローラーで開く**] を選択します。
 
@@ -232,7 +237,7 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 6. [**更新**] をもう一度クリックすると、`SyncAsync` が呼び出されます。`SyncAsync` はプッシュとプルの両方を呼び出しますが、この場合は `PushAsync` の呼び出しを削除することもできました。これは、**プルは必ず、最初にプッシュを実行する**ことが原因です。これは、ローカル ストアのすべてのテーブルとリレーションシップの一貫性を確実に保つためです。
 
     ![][10]
-  
+
 
 ##概要
 
@@ -276,6 +281,6 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 
 [Mobile Services SDK Nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.0
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
- 
+[Azure クラシック ポータル]: https://manage.windowsazure.com
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

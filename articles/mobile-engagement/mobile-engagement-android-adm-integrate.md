@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure Mobile Engagement Android SDK の統合" 
+<properties
+	pageTitle="Azure Mobile Engagement Android SDK の統合"
 	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="08/10/2015" 
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="08/10/2015"
 	ms.author="piyushjo" />
 
 
@@ -25,11 +25,11 @@
 
 ##はじめに
 
-ADM を統合すると、アプリケーションが実行されていないときもアプリケーションをプッシュすることができます。
+ADM を統合すると、Amazon Android デバイスを対象とした場合に、アプリケーションをプッシュできます。
 
-キャンペーン データが ADM によって実際に送信されることはありません。それはアプリケーションに Engagement プッシュをフェッチするように通知する単なるバックグラウンド シグナルです。ADM プッシュの受信中にアプリケーションが実行されていない場合は、プッシュをフェッチするために Engagement サーバーへの接続がトリガーされ、Engagement との接続は、ユーザーがプッシュに応答してアプリケーションを起動した場合に備えて約 1 分間アクティブのままになります。
+SDK にプッシュされた ADM ペイロードのデータ オブジェクトには常に `azme` キーが含まれています。そのため、アプリケーションで別の目的で ADM を使用する場合、そのキーに基づいてプッシュをフィルター処理できます。
 
-> [AZURE.IMPORTANT]Amazon Device Messaging によってサポートされるのは Android 4.0.3 以降を実行している Amazon Kindle デバイスのみですが、このコードはその他のデバイスでも安全に統合することができます。アプリケーションが ADM によって起動できない場合、Engagement 通知はアプリケーションの次回の起動時に受信されます。
+> [AZURE.IMPORTANT]Amazon Device Messaging によってサポートされるのは Android 4.0.3 以降を実行している Amazon Kindle デバイスのみですが、このコードはその他のデバイスでも安全に統合することができます。
 
 ##ADM にサインアップする
 
@@ -65,11 +65,11 @@ ADM をまだ統合してしない場合は、Engagement では簡単な方法�
 		<amazon:enable-feature
 		   android:name="com.amazon.device.messaging"
 		   android:required="false"/>
-		
+
 		<meta-data android:name="engagement:adm:register" android:value="true" />
 
 -   amazon タグを追加した後、プロジェクトのビルド ターゲットが Android 2.1 より前の場合はビルド エラーが発生することがあります。**Android 2.1+** ビルド ターゲットを使用する必要があります (`minSdkVersion` は問題なく 4 に設定することができます)。
--   [この手順]に従い、ADM API キーをアセットとして統合します。
+-   [この手順]に従い、ADM API キーを資産として統合します。
 
 その後、次のセクションの指示に従います。
 
@@ -83,7 +83,7 @@ ADM をまだ統合してしない場合は、Engagement では簡単な方法�
 		    <action android:name="com.microsoft.azure.engagement.intent.action.APPID_GOT"/>
 		  </intent-filter>
 		</receiver>
-		
+
 		 <receiver android:name="com.microsoft.azure.engagement.adm.EngagementADMReceiver"
 		   android:permission="com.amazon.device.messaging.permission.SEND">
 		  <intent-filter>
@@ -111,6 +111,5 @@ OAuth Credentials (クライアント ID とクライアントシークレット
 [ADM クライアント ライブラリ]: https://developer.amazon.com/sdk/adm/setup.html
 [統合 ADM]: https://developer.amazon.com/sdk/adm/integrating-app.html
 [この手順]: https://developer.amazon.com/sdk/adm/integrating-app.html#Asset
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

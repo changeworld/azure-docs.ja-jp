@@ -92,7 +92,7 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload helloworld.service
 
 CoreOS、Docker、および** fleet **を使用する利点の 1 つは、可用性の高い方法だとサービス実行が簡単になるということです。この例では、3 つの同じコンテナーで構成される、nginx Web サーバーを実行するサービスをデプロイします。これらのコンテナーは、クラスター内にある 3 つの VM 上で実行されます。この例は、 「[fleet を使用してコンテナーを起動する]」で説明した例に似ており、[nginx Docker Hub イメージ]が使用されています。
 
->[AZURE.IMPORTANT]高可用性の Web サーバーを実行するには、仮想マシン上で負荷分散された HTTP エンドポイントを構成する必要があります (パブリック ポート 80、プライベート ポート 80) 。これは、CoreOS クラスターの作成後に、Azure ポータルか **azure vm endpoint** コマンドを使用すると実行できます。詳細については、「[負荷分散セットの構成]」を参照してください。
+>[AZURE.IMPORTANT]高可用性の Web サーバーを実行するには、仮想マシン上で負荷分散された HTTP エンドポイントを構成する必要があります (パブリック ポート 80、プライベート ポート 80) 。これは、CoreOS クラスターの作成後に、Azure クラシック ポータルか **azure vm endpoint** コマンドを使用すると実行できます。詳細については、「[負荷分散セットの構成]」を参照してください。
 
 クライアント コンピューターで、任意のテキスト エディターを使用して **systemd** テンプレート ユニット ファイルを作成し、nginx@.service という名前を付けます。この単純なテンプレートを使用して、nginx@1.service、nginx@2.service、および nginx@3.service という名前の 3 つの独立したインスタンスを起動します。
 
@@ -192,4 +192,4 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload nginx@{1,2,3}.service
 [nginx Docker Hub イメージ]: https://hub.docker.com/_/nginx/
 [Azure 上での Linux およびオープン ソース コンピューティング]: virtual-machines-linux-opensource.md
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

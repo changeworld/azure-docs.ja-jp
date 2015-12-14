@@ -13,14 +13,19 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="11/02/2015" 
+	ms.date="11/02/2015"
 	ms.author="glenga"/>
 
 # Azure Mobile Services 用の管理対象クライアント ライブラリの使用方法
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 [AZURE.INCLUDE [mobile-services-selector-client-library](../../includes/mobile-services-selector-client-library.md)]
 
-##概要 
+##概要
 
 このガイドでは、Windows および Xamarin アプリで Azure Mobile Services 用の管理対象クライアント ライブラリを使用する一般的なシナリオの実行方法を示します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。Mobile Services を初めて使用する場合は、まず「[Mobile Services のクイックスタート](mobile-services-dotnet-backend-xamarin-ios-get-started.md)」チュートリアルを完了することを検討してください。
 
@@ -58,7 +63,7 @@ JavaScript バックエンド モバイル サービスで動的スキーマを�
 		"AppKey"
 	);
 
-前のコードの `AppUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーで順に置き換えます。どちらも Microsoft Azure 管理ポータルで確認できます。モバイル サービスを選択し、[ダッシュボード] をクリックしてください。
+前のコードの `AppUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーで順に置き換えます。どちらも Microsoft Azure クラシック ポータルで確認できます。モバイル サービスを選択し、[ダッシュボード] をクリックしてください。
 
 >[AZURE.IMPORTANT]アプリケーション キーは、モバイル サービスに対するランダムな要求をフィルターで除外するためのものであり、アプリケーションと共に配布されます。このキーは暗号化されないため、セキュリティで保護されていると見なすことはできません。モバイル サービスのデータへのアクセスを完全に保護するには、アクセスを許可する前にユーザーを認証する必要があります。詳細については、「[方法: ユーザーを認証する](#authentication)」を参照してください。
 
@@ -304,9 +309,9 @@ Mobile Services クライアントでは、Azure Notification Hubs によるプ�
 	    await MobileService.GetPush().RegisterNativeAsync(channel.Uri, tags);
 	}
 
-この例では、登録で 2 つのタグが含められます。Windows アプリの詳細については、「[Mobile Services アプリへのプッシュ通知の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push.md)」を参照してください。
+この例では、登録で 2 つのタグが含められます。Windows アプリの詳細については、「[アプリケーションにプッシュ通知を追加する](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push.md)」を参照してください。
 
-Xamarin アプリではいくつかの追加コードが必要になります。このコードを使用して、iOS または Android アプリで実行されている Xamarin アプリを Apple Push Notification サービス (APNS) と Google Cloud Messaging (GCM) にそれぞれ登録することができます。詳細については、「**Mobile Services アプリへのプッシュ通知の追加**」を参照してください ([Xamarin.iOS](partner-xamarin-mobile-services-ios-get-started-push.md#add-push) | [Xamarin.Android](partner-xamarin-mobile-services-android-get-started-push.md#add-push))。
+Xamarin アプリではいくつかの追加コードが必要になります。このコードを使用して、iOS または Android アプリで実行されている Xamarin アプリを Apple Push Notification サービス (APNS) と Google Cloud Messaging (GCM) にそれぞれ登録することができます。詳細については、「**アプリにプッシュ通知を追加する**」を参照してください ([Xamarin.iOS](partner-xamarin-mobile-services-ios-get-started-push.md#add-push) | [Xamarin.Android](partner-xamarin-mobile-services-android-get-started-push.md#add-push))。
 
 >[AZURE.NOTE]特定の登録されたユーザーに通知を送信する必要がある場合は、登録前に認証を要求し、特定のタグへの登録をユーザーが許可されていることを確認することが重要です。たとえば、ユーザーが他のユーザーの ID であるタグに登録していないことを確認する必要があります。詳細については、「[認証されたユーザーへのプッシュ通知の送信](mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users.md)」を参照してください。
 
@@ -319,7 +324,7 @@ Windows は、ライブ タイルを更新する定期的な通知 (プル通知
     TileUpdateManager.CreateTileUpdaterForApplication().StartPeriodicUpdate(
         new System.Uri(MobileService.ApplicationUri, "/api/tiles"),
         PeriodicUpdateRecurrence.Hour
-    ); 
+    );
 
 実際のデータの更新頻度に応じて最適な [PeriodicUpdateRecurrance](https://msdn.microsoft.com/library/windows/apps/windows.ui.notifications.periodicupdaterecurrence.aspx) 値を選択してください。
 
@@ -411,7 +416,7 @@ Mobile Services はオプティミスティック同時実行制御をサポー�
 	}
 
 
-Mobile Services のオプティミスティック同時実行制御を使用する、より完全な例については、[オプティミスティック同時実行制御のチュートリアルに関するページ]を参照してください。
+モバイル サービスのオプティミスティック同時実行制御を使用する、より完全な例については、[オプティミスティック同時実行制御のチュートリアルに関するページ]を参照してください。
 
 
 ##<a name="binding"></a>方法: モバイル サービス データを Windows ユーザー インターフェイスにバインドする
@@ -440,7 +445,7 @@ Mobile Services のオプティミスティック同時実行制御を使用す�
 		lb.ItemsSource = items;
 
 
-Windows Phone 8 と「Silverlight」アプリで新しいコレクションを使用するには、`IMobileServiceTableQuery<T>` や `IMobileServiceTable<T>` で `ToCollection` 拡張メソッドを使用します。実際にデータを読み込むには、`LoadMoreItemsAsync()` を呼び出します。
+Windows Phone 8 と "Silverlight" アプリで新しいコレクションを使用するには、`IMobileServiceTableQuery<T>` や `IMobileServiceTable<T>` で `ToCollection` 拡張メソッドを使用します。実際にデータを読み込むには、`LoadMoreItemsAsync()` を呼び出します。
 
 	MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection();
 	await items.LoadMoreItemsAsync();
@@ -685,7 +690,7 @@ Mobile Services には、エラーの検出、検証、回避のためのさま�
 
     public class MyHandler : DelegatingHandler
     {
-        protected override async Task<HttpResponseMessage> 
+        protected override async Task<HttpResponseMessage>
             SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             // Add a custom header to the request.
@@ -697,7 +702,7 @@ Mobile Services には、エラーの検出、検証、回避のためのさま�
         }
     }
 
-このコードは、要求内に新しい **x-my-header** ヘッダーを追加し、利用不可に対する応答コードを任意に設定します。実際のシナリオでは、アプリケーションで必要とされるカスタム ロジックに基づいて応答状態コードを設定します。
+このコードは、要求内に新しい **x-my-header** ヘッダーを追加し、利用不可に対する応答コードを任意に設定します。実際のシナリオでは、アプリケーションで必要とされるカスタム ロジックに基づいて応答ステータス コードを設定します。
 
 ### <a name="serialization"></a>方法: シリアル化をカスタマイズする
 
@@ -766,4 +771,4 @@ Mobile Services クライアント ライブラリは、Json.NET を使用して
 [Azure モバイル サービス クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="メディア サービス アカウントの監視" 
+	pageTitle="Media Services アカウントの監視" 
 	description="Azure における Media Services アカウントの監視の構成方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -20,15 +20,15 @@
 
 #<a id="monitormediaservicesaccount"></a>Media Services アカウントの監視方法
 
-Azure メディア サービスのダッシュボードには、使用状況のメトリックおよびアカウント情報が表示され、それをメディア サービス アカウントの管理に利用できます。
+Azure Media Services のダッシュボードには、使用状況のメトリックおよびアカウント情報が表示され、それを Media Services アカウントの管理に利用できます。
 
-監視できるのは、キューに格納されたエンコード ジョブの数、失敗したエンコード タスク、エンコーダーからの入出力データによって表されるアクティブなエンコード ジョブ、およびメディア サービス アカウントに関連付けられた BLOB ストレージの使用状況です。さらに、顧客に対してコンテンツをストリーミング配信している場合は、さまざまなストリーミング メトリックも取得できます。データの監視期間は、過去 6 時間、24 時間、または 7 日間から選択できます。
+監視できるのは、キューに格納されたエンコード ジョブの数、失敗したエンコード タスク、エンコーダーからの入出力データによって表されるアクティブなエンコード ジョブ、および Media Services アカウントに関連付けられた BLOB ストレージの使用状況です。さらに、顧客に対してコンテンツをストリーミング配信している場合は、さまざまなストリーミング メトリックも取得できます。データの監視期間は、過去 6 時間、24 時間、または 7 日間から選択できます。
  
->[AZURE.NOTE]Azure 管理ポータルでストレージ データを監視すると、それに応じて追加のコストがかかります。詳細については、[ストレージの分析と課金に関するページ](http://go.microsoft.com/fwlink/?LinkId=256667)を参照してください。
+>[AZURE.NOTE]Azure クラシック ポータルでストレージ データを監視すると、それに応じて追加のコストがかかります。詳細については、[ストレージの分析と課金に関するページ](http://go.microsoft.com/fwlink/?LinkId=256667)を参照してください。
 
 ##<a id="configuremonitoring"></a>方法: Media Services アカウントの監視
 
-1. [管理ポータル](http://go.microsoft.com/fwlink/?LinkID=256666)で、**[メディア サービス]** をクリックし、目的の Media Services アカウント名をクリックしてダッシュボードを開きます。 
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=256666)で、**[Media Services]** をクリックし、目的の Media Services アカウント名をクリックしてダッシュボードを開きます。 
 
 	![MediaServices\_Dashboard][dashboard]
 
@@ -73,4 +73,4 @@ Azure メディア サービスのダッシュボードには、使用状況の�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -46,7 +46,7 @@
 Web アプリと MySQL データベースを作成するには、次のステップに従います。
 
 1. [Azure ポータル][management-portal]にログインします。
-2. ポータルの左下にある **[+ 新規]** アイコンをクリックします。
+2. Azure ポータルの左下にある** [+ 新規]**アイコンをクリックします。
 
 	![新しい Azure の Web サイトの作成][new-website]
 
@@ -300,4 +300,4 @@ Web Apps で実行されている MySQL データベースに接続するには�
 [download-publish-profile]: ./media/web-sites-php-mysql-deploy-use-ftp/download_publish_profile_3.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

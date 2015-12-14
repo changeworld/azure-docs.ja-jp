@@ -30,7 +30,7 @@
 
 ## データベースに対する脅威の検出の設定
 
-1. [https://portal.azure.com](https://portal.azure.com) で Azure プレビュー ポータルを起動します。
+1. [https://portal.azure.com](https://portal.azure.com) で Azure ポータルを起動します。
 
 2. 監視する SQL Data Warehouse の構成ブレードに移動します。[設定] ブレードで、**[監査と脅威の検出]** を選択します。
 
@@ -55,7 +55,7 @@
 
 	![ナビゲーション ウィンドウ][4]
 
-2. 電子メールの **[Azure SQL 監査ログ]** リンクをクリックすると、Azure ポータルが起動し、疑わしいイベントの時刻前後の関連する監査レコードが表示されます。
+2. 電子メールの **[Azure SQL 監査ログ]** リンクをクリックすると、Azure クラシック ポータルが起動し、疑わしいイベントの時刻前後の関連する監査レコードが表示されます。
 
 	![ナビゲーション ウィンドウ][5]
 
@@ -89,4 +89,4 @@
 [8]: ./media/sql-data-warehouse-security-threat-detection/8_td_excel_fast_combine.png
 [9]: ./media/sql-data-warehouse-security-threat-detection/9_td_excel_parameters.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

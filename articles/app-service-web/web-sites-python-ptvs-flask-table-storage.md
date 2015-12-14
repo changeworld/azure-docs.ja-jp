@@ -72,7 +72,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 1.  [Azure ポータル](https://portal.azure.com/)にログインします。
 
-2. ポータルの左下にある **[新規]** アイコンをクリックし、**[データ + ストレージ]**、**[ストレージ アカウント]** の順にクリックします。**[作成]** をクリックし、ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソースグループ](../resource-group-overview.md)を作成します。
+2. ポータルの左上にある **[新規]** アイコンをクリックし、**[データ + ストレージ]** > **[ストレージ アカウント]** をクリックします。**[作成]** をクリックし、ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソースグループ](../resource-group-overview.md)を作成します。
 
   	<!-- ![New Button](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonAzurePlusNew.png) -->ストレージ アカウントが作成されると、**[通知]** ボタンに緑色の "**成功**" という文字が点滅し、ストレージ アカウントのブレードが開いて、作成した新しいリソース グループに属していることが示されます。
 
@@ -184,7 +184,6 @@ Python Tools for Visual Studio、Flask および Azure テーブル ストレー
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」をご覧ください。
 
 
 <!--Link references-->
@@ -194,7 +193,7 @@ Python Tools for Visual Studio、Flask および Azure テーブル ストレー
 [Python からテーブル ストレージ サービスを使用する方法]: ../storage-python-how-to-use-table-storage.md
 
 <!--External Link references-->
-[Azure Management Portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [Azure SDK for .NET]: http://azure.microsoft.com/downloads/
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
@@ -212,4 +211,4 @@ Python Tools for Visual Studio、Flask および Azure テーブル ストレー
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

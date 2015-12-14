@@ -41,7 +41,7 @@ A8 または A9 のコンピューティング集中型インスタンス サイ
 
 ## 手順 1: クラウド サービスとストレージ アカウントを作成し、Azure ノードを追加します。
 
-Azure ポータルまたは同様のツールを利用し、次を構成します。これらは Azure ノードをデプロイするために必要です。
+Azure クラシック ポータルまたは同様のツールを利用し、次を構成します。これらは Azure ノードをデプロイするために必要です。
 
 * 新しい Azure クラウド サービス
 * 新しい Azure ストレージ アカウント
@@ -88,4 +88,4 @@ Azure ノードのデプロイで問題が発生した場合、[Microsoft HPC Pa
 <!--Image references-->
 [burst]: ./media/virtual-machines-hpcpack-cluster-node-burst/burst.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -104,9 +104,9 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 ## 手順 2. Azure にストレージ アカウントを作成する ##
 
-仮想マシンを作成するために Azure で使用できる .vhd ファイルをアップロードするには、Azure のストレージ アカウントが必要です。ストレージ アカウントは、Azure ポータルを使用して作成できます。
+仮想マシンを作成するために Azure で使用できる .vhd ファイルをアップロードするには、Azure のストレージ アカウントが必要です。ストレージ アカウントは、Azure 旧ポータルを使用して作成できます。
 
-1. Azure ポータルにサインインします。
+1. Azure 旧ポータルにサインインします。
 
 2. コマンド バーで、**[新規]** をクリックします。
 
@@ -181,7 +181,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 ## ステップ 4: .vhd ファイルをアップロードする ##
 
-.vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。以下のコマンドの例では、**BlobStorageURL** は手順 2 で作成したストレージ アカウントの URL であり、**YourImagesFolder** は BLOB ストレージ内でイメージを格納するコンテナーです。**VHDName** は、仮想ハード ディスクを識別するために Azure ポータルに表示されるラベルです。**PathToVHDFile** は、.vhd ファイルの完全なパスとファイル名です。
+.vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。以下のコマンドの例では、**BlobStorageURL** は手順 2 で作成したストレージ アカウントの URL であり、**YourImagesFolder** は BLOB ストレージ内でイメージを格納するコンテナーです。**VHDName** は、仮想ハード ディスクを識別するために Azure クラシック ポータルに表示されるラベルです。**PathToVHDFile** は、.vhd ファイルの完全なパスとファイル名です。
 
 
 1. 前の手順で使用した Azure PowerShell ウィンドウで、次のように入力します。
@@ -197,9 +197,9 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
     **重要**: 現時点では OS の種類として Linux を使用してください。これは、現在の Azure PowerShell のバージョンでは、パラメーターとして “Linux” または “Windows” しか使用できないためです。
 
-2. ここまでの手順を完了すると、Azure ポータルで **[イメージ]** タブをクリックしたときに、新しいイメージが一覧に表示されます。
+2. ここまでの手順を完了すると、Azure クラシック ポータルで **[イメージ]** タブをクリックしたときに、新しいイメージが一覧に表示されます。
 
-    ![add image](./media/virtual-machines-freebsd-create-upload-vhd/addfreebsdimage.png)
+    ![イメージの追加](./media/virtual-machines-freebsd-create-upload-vhd/addfreebsdimage.png)
 
 3. ギャラリーから仮想マシンを作成します。これで **[マイ イメージ]** で新しいイメージが使用可能になりました。新しいイメージを選択し、表示される画面でホスト名、パスワード、SSH キーなどを設定します。
 
@@ -207,6 +207,6 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 4. プロビジョニングが完了したら、Azure での FreeBSD VM の稼働を確認できます。
 
-	![freebsd image in azure](./media/virtual-machines-freebsd-create-upload-vhd/freebsdimageinazure.png)
+	![Azure での FreeBSD イメージ](./media/virtual-machines-freebsd-create-upload-vhd/freebsdimageinazure.png)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

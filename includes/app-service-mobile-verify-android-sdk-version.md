@@ -1,21 +1,23 @@
-Because of ongoing development, the Android SDK version installed in Android Studio might not match the version in the code. The Android SDK referenced in this tutorial is version 23, the latest at the time of writing. The version number may increase as new releases of the SDK appear, and we recomend using the latest version available.
+Android SDK の開発が継続中であるため、Android Studio にインストールされている Android SDK のバージョンが、コードのバージョンと一致しない可能性があります。このチュートリアルで参照している Android SDK は、記事の執筆時点で最新のバージョンであるバージョン 23 です。SDK の新しいリリースが登場するにつれてバージョン番号が大きくなる可能性があるので、入手可能な最新バージョンを使用することをお勧めします。
 
-Two symptoms of version mismatch are:
+バージョンの不一致の場合に見られる現象は、次の 2 つです。
 
-1. When you Build or Rebuild the project, you may get Gradle error messages like "**failed to find target Google Inc.:Google APIs:n**".
+1. プロジェクトをビルドまたは再ビルドすると、"**failed to find target Google Inc.:Google APIs:n (ターゲット Google Inc.:Google APIs:n が見つかりませんでした)**" などの Gradle エラー メッセージが表示される場合があります。
 
-2. Standard Android objects in code that should resolve based on `import` statements may be generating error messages.
+2. `import` ステートメントに基づく解決が必要なコード内の標準の Android オブジェクトによって、エラー メッセージが生成される場合があります。
 
-If either of these appear, the version of the Android SDK installed in Android Studio might not match the SDK target of the downloaded project.  To verify the version, make the following changes:
+このいずれかが発生した場合、Android Studio にインストールされている Android SDK のバージョンが、ダウンロードしたプロジェクトの SDK ターゲットと一致していない可能性があります。バージョンを確認するには、次の変更を加えます。
 
 
-1. In Android Studio, click **Tools** => **Android** => **SDK Manager**. If you have not installed the latest version of the SDK Platform, then click to install it. Make a note of the version number.
+1. Android Studio で、[**ツール**]、[**Android**]、[**SDK Manager**] の順にクリックします。SDK プラットフォームの最新バージョンをまだインストールしていない場合は、これをクリックしてインストールします。バージョン番号をメモしておきます。
 
-2. In the Project Explorer tab, under **Gradle Scripts**, open the file **build.gradle (modeule: app)**. Ensure that the **compileSdkVersion** and **buildToolsVersion** are set to the latest  SDK version installed. The tags might look like this:
+2. [プロジェクト エクスプローラー] タブの [**Gradle スクリプト**] で、**build.gradle (modeule: app)** ファイルを開きます。**compileSdkVersion** と **buildToolsVersion** が、インストールされた最新の SDK バージョンに設定されていることを確認します。タグは、次のようになります。
  
 	 	    compileSdkVersion 'Google Inc.:Google APIs:23'
     		buildToolsVersion "23.0.0"
 	
-3. In the Android Studio Project Explorer right-click the project node, choose **Properties**, and in the left column choose **Android**. Ensure that the **Project Build Target** is set to the same SDK version as the **targetSdkVersion**.
+3. Android Studio Project Explorer でプロジェクト ノードを右クリックし、[**Properties**] を右クリックして、左の列から [**Android**] を選択します。**[Project Build Target]** が、**[targetSdkVersion]** と同じ SDK バージョンに設定されていることを確認します。
 
-4. In Android Studio, the manifest file is no longer used to specify the target SDK and minimum SDK version, unlike the case with Eclipse.
+4. Android Studio では Eclipse と異なり、ターゲットの SDK バージョンと最小の SDK バージョンを指定するためにマニフェスト ファイルを使用しません。
+
+<!---HONumber=AcomDC_1203_2015-->

@@ -123,7 +123,7 @@ Migration Assistant により対応状況レポートが作成されます。こ
  
 20.	Azure Web アプリへのリンクをクリックし、移行が完了したことを確認します。
 
-21. これで、移行した Web アプリを Azure App Service で管理できるようになりました。管理を行うには、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)にログインします。
+21. これで、移行した Web アプリを Azure App Service で管理できるようになりました。管理を行うには、[Azure ポータル](https://portal.azure.com)にログインします。
 
 22. Azure ポータルで、[Web Apps] ブレードを開き、移行した Web サイト (Web アプリとして表示される) を確認します。いずれかをクリックして Web アプリの管理を開始します。継続的発行の構成、バックアップの作成、自動スケーリング、使用状況やパフォーマンスの監視などを行うことができます。
 
@@ -132,8 +132,7 @@ Migration Assistant により対応状況レポートが作成されます。こ
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

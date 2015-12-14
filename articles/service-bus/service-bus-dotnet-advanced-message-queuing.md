@@ -26,7 +26,7 @@ Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラッ�
 
 ## Service Bus の概要
 
-この記事は、"queue1" という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Azure ポータル](http://manage.windowsazure.com)を使用して名前空間とキューを作成できます。Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)」を参照してください。
+この記事は、"queue1" という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Azure クラシック ポータル](http://manage.windowsazure.com)を使用して名前空間とキューを作成できます。Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)」を参照してください。
 
 ## Service Bus SDK のダウンロード
 
@@ -63,7 +63,7 @@ App.config ファイルの例を以下に示します。
 Endpoint=sb://[namespace].servicebus.windows.net;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp
 ```
 
-この場合の `[namespace]` と `[SAS key]` は Azure ポータルから取得されます。詳細については、「Service Bus キューの使用方法」を参照してください。
+この場合の `[namespace]` と `[SAS key]` は [Azure クラシック ポータル][]から取得されます。詳細については、「Service Bus キューの使用方法」を参照してください。
 
 AMQP を使用するときには、接続文字列の末尾に `;TransportType=Amqp` を追加します。これで、AMQP 1.0 を使って Service Bus に接続するようにクライアント ライブラリに通知されます。
 
@@ -322,5 +322,6 @@ Service Bus AMQP 1.0 は、Java、C、Python、PHP など、その他の言語�
 * [Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法](service-bus-java-how-to-use-jms-api-amqp.md)
 * [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
  
+[Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

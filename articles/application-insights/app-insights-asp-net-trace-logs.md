@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/19/2015" 
+	ms.date="11/25/2015" 
 	ms.author="awills"/>
  
 # Application Insights の .NET トレース ログを調べる  
@@ -35,7 +35,7 @@ ASP.NET アプリケーションで NLog、log4Net、System.Diagnostics.Trace �
     ![適切なパッケージのプレリリース バージョンを入手する](./media/app-insights-asp-net-trace-logs/appinsights-36nuget.png)
 
 4. 次のいずれかの適切なパッケージを選択します。
-  + Microsoft.ApplicationInsights.TraceListener (to capture System.Diagnostics.Trace calls)
+  + Microsoft.ApplicationInsights.TraceListener (System.Diagnostics.Trace コールをキャプチャするため)
   + Microsoft.ApplicationInsights.NLogTarget
   + Microsoft.ApplicationInsights.Log4NetAppender
 
@@ -79,6 +79,7 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 * 同じユーザー要求に関連する (つまり、OperationId が同じ) 他の利用統計情報を探す 
 * このページの構成をお気に入りとして保存する
 
+> [AZURE.NOTE]**サンプリング。** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
 
 ## 次のステップ
 
@@ -104,6 +105,10 @@ Application Insights をインストールしないでログ アダプターの 
 
 各アプリケーションで、1 秒あたり 500 イベントまでです。イベントは 7 日間保持されます。
 
+### 予期されるログ エントリの一部が表示されません
+
+アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
+
 ## <a name="add"></a>次のステップ
 
 * [可用性と応答性のテストを設定する][availability]
@@ -124,4 +129,4 @@ Application Insights をインストールしないでログ アダプターの 
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

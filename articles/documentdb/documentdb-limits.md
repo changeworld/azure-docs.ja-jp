@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="11/26/2015" 
 	ms.author="mimig"/>
 
 
@@ -24,4 +24,4 @@
 
 [AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

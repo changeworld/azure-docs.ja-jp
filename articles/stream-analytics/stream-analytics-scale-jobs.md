@@ -29,7 +29,7 @@ Azure Stream Analytics のジョブ定義は、入力、クエリ、および出
 ## ストリーミング ユニットの構成 ##
 ストリーミング ユニット (SU) は、Azure Stream Analytics ジョブを実行するリソースとパワーを表します。SU は、CPU、メモリ、および読み取りと書き込みのレートを組み合わせた測定に基づいて、相対的なイベントの処理能力を記述する方法を提供します。各ストリーミング ユニットは、約 1 MB/秒のスループットに対応します。
 
-特定のジョブに必要な SU の数の選択は、入力のパーティション構成と、ジョブに定義されたクエリによって異なります。Azure ポータルを使用して、1 つのジョブにクォータまでのストリーミング ユニットを設定できます。また、1 つの Azure サブスクリプションの既定のクォータでは、ストリーミング ユニットの最大数は特定のリージョン内のすべての分析ジョブを合わせて 50 個です。サブスクリプションのストリーミング ユニット数を増やすには、[Microsoft サポート](http://support.microsoft.com)までご連絡ください。
+特定のジョブに必要な SU の数の選択は、入力のパーティション構成と、ジョブに定義されたクエリによって異なります。Azure クラシック ポータルを使用して、1 つのジョブにクォータまでのストリーミング ユニットを設定できます。また、1 つの Azure サブスクリプションの既定のクォータでは、ストリーミング ユニットの最大数は特定のリージョン内のすべての分析ジョブを合わせて 50 個です。サブスクリプションのストリーミング ユニット数を増やすには、[Microsoft サポート](http://support.microsoft.com)までご連絡ください。
 
 ジョブで使用できるストリーミング ユニットの数は、入力のパーティション構成とジョブに定義されているクエリによって異なります。ストリームのユニットの有効な値を使用する必要がある点にも注意してください。次に示すように、有効な値は 1、3、6 から開始し、増分単位 6 で増加します。
 
@@ -147,20 +147,20 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 
 **ジョブのストリーミング ユニットを調整するには**
 
-1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
+1. [クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. 左側のウィンドウで **[Stream Analytics]** をクリックします。
 3. スケールする Stream Analytics ジョブをクリックします。
 4. ページの上部にある **[スケール]** をクリックします。
 
 ![Azure Stream Analytics のストリーミング ユニットのスケーリング][img.stream.analytics.streaming.units.scale]
 
-Azure プレビュー ポータルの [設定] からスケールの設定にアクセスできます。
+Azure ポータルの [設定] からスケールの設定にアクセスできます。
 
-![Azure プレビュー ポータルでの Stream Analytics ジョブの構成][img.stream.analytics.preview.portal.settings.scale]
+![Azure ポータルでの Stream Analytics ジョブの構成][img.stream.analytics.preview.portal.settings.scale]
 
 ## ジョブのパフォーマンスを監視する ##
 
-管理ポータルを使用して、ジョブのスループット (イベント数/秒) を追跡できます。
+クラシック ポータルを使用して、ジョブのスループット (イベント数/秒) を追跡できます。
 
 ![Azure Stream Analytics のジョブの監視][img.stream.analytics.monitor.job]
 
@@ -265,4 +265,4 @@ Azure プレビュー ポータルの [設定] からスケールの設定にア
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

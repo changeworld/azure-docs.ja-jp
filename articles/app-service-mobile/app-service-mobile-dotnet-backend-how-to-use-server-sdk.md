@@ -23,15 +23,19 @@
 
 >[AZURE.TIP] [Azure Mobile Apps 向け .NET サーバー SDK](https://github.com/Azure/azure-mobile-apps-net-server) は、オープン ソースとして GitHub で公開されています。リポジトリには、いくつかのサンプル プロジェクトと同様に、サーバー全体の SDK ユニット テスト スイートが含まれています。
 
-## 方法: モバイル アプリケーション用の .NET バックエンドを作成する
+## リファレンス ドキュメント
 
-新たにプロジェクトを開始する場合は、[Azure プレビュー管理ポータル]か Visual Studio を使用して、App Service アプリケーションを作成します。このセクションでは、このいずれかを使用して、シンプルな To Do List API をホストするモバイル アプリケーション バックエンドを新規作成する方法を紹介します。これをローカルで実行することも、プロジェクトをクラウド ベースの App Service モバイル アプリに発行することもできます。
+サーバー SDK のリファレンス ドキュメントは次の場所にあります。[Azure Mobile Apps .NET リファレンス](https://msdn.microsoft.com/library/azure/dn961176.aspx)。
 
-既存のプロジェクトにモバイル機能を追加する場合は、以下のセクション「[SDK をダウンロードして初期化する](#install-sdk)」を参照してください
+## <a name="create-app"></a>方法: モバイル アプリケーション用の .NET バックエンドを作成する
+
+新しいプロジェクトを開始する場合は、[Azure ポータル]または Visual Studio を使用して、App Service アプリケーションを作成できます。このセクションでは、このいずれかを使用して、シンプルな To Do List API をホストするモバイル アプリケーション バックエンドを新規作成する方法を紹介します。これをローカルで実行することも、プロジェクトをクラウド ベースの App Service モバイル アプリに発行することもできます。
+
+既存のプロジェクトにモバイル機能を追加する場合は、「[SDK をダウンロードして初期化する](#install-sdk)」セクションを参照してください
 
 ### Azure ポータルで .NET バックエンドを作成する
 
-[Azure プレビュー管理ポータル]でモバイル アプリケーションを新規作成できます。以下の手順に従う以外に、チュートリアル「[モバイル アプリを作成する](app-service-mobile-ios-get-started.md)」の手順に従ってクライアントとサーバーをまとめて新規作成することもできます。
+[Azure ポータル]でモバイル アプリケーションを新規作成できます。以下の手順に従う以外に、チュートリアル「[モバイル アプリを作成する](app-service-mobile-ios-get-started.md)」の手順に従ってクライアントとサーバーをまとめて新規作成することもできます。
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
@@ -65,7 +69,7 @@ SDK をインストールするには、Visual Studio でサーバー プロジ�
 
 ###<a name="server-project-setup"></a> サーバー プロジェクトの初期化
 
-.NET バックエンド サーバー プロジェクトは、他の ASP.NET プロジェクトと同じように、OWIN スタートアップ クラスを組み込むことによって初期化します。Visual Studio でこのクラスを追加するには、サーバー プロジェクトを右クリックして、**[追加]**、**[新しい項目]**、**[Web]**、**[全般]**、**[OWIN スタートアップ クラス]** の順に選択します。
+.NET バックエンド サーバー プロジェクトは、他の ASP.NET プロジェクトと同じように、OWIN スタートアップ クラスを組み込むことによって初期化します。NuGet パッケージ `Microsoft.Owin.Host.SystemWeb` が参照されていることを確認します。Visual Studio でこのクラスを追加するには、サーバー プロジェクトを右クリックして、**[追加]**、**[新しい項目]**、**[Web]**、**[全般]**、**[OWIN スタートアップ クラス]** の順に選択します。
 
 これにより、次の属性を持つクラスが生成されます。
 
@@ -85,13 +89,17 @@ OWIN スタートアップ クラスの `Configuration()` メソッドで、サ�
 	    app.UseWebApi(config);
 	}
 
-個別の機能を有効化するには、**ApplyTo** を呼び出す前に、**MobileAppConfiguration** オブジェクトに対して拡張機能メソッドを呼び出す必要があります。たとえば、次のコードでは、初期化中にすべての API コントローラーに既定のルートを追加します。
+個別の機能を有効化するには、**ApplyTo** を呼び出す前に、**MobileAppConfiguration** オブジェクトに対して拡張機能メソッドを呼び出す必要があります。たとえば、次のコードでは、初期化中に`[MobileAppController]` 属性が設定されているすべての API コントローラーに既定のルートを追加します。
 
 	new MobileAppConfiguration()
 	    .MapApiControllers()
 	    .ApplyTo(config);
 
-機能拡張メソッドの多くは、含めることが可能な追加の NuGet パッケージから入手できます。これらについては以下のセクションで説明します。Azure ポータルからのサーバーのクイックスタートは **UseDefaultConfiguration()** を呼び出します。これは次のセットアップと同等です。
+`MapApiControllers` は、`[MobileAppController]` 属性が設定されているコントローラーのみマップすることに注意してください。
+
+機能拡張メソッドの多くは、含めることが可能な追加の NuGet パッケージから入手できます。これらについては以下のセクションで説明します。
+
+Azure ポータルからのサーバーのクイックスタートは **UseDefaultConfiguration()** を呼び出します。これは次のセットアップと同等です。
     
 		new MobileAppConfiguration()
 			.AddMobileAppHomeController()             // from the Home package
@@ -141,7 +149,9 @@ OWIN スタートアップ クラスの `Configuration()` メソッドで、サ�
 		//...
 	}
 
-テーブル コントローラーは、**AddTables** 拡張メソッドを使用して初期化します。次の例では、データ アクセスに Entity Framework を使用するテーブル コントローラーを初期化します。
+テーブル コントローラーは、**AddTables** 拡張メソッドを使用して初期化します。これにより、`TableController` のすべてのサブクラスが `/tables/` の下に追加されます。
+
+次の例では、データ アクセスに Entity Framework を使用するテーブル コントローラーを初期化します。
 
     new MobileAppConfiguration().AddTables(
         new MobileAppTableConfiguration()
@@ -150,10 +160,9 @@ OWIN スタートアップ クラスの `Configuration()` メソッドで、サ�
  
 Azure SQL Database のデータへのアクセスに Entity Framework を使用するテーブル コントローラーの例については、Azure ポータル からダウンロードしたクイックスタート サーバー プロジェクトの **TodoItemController** クラスを参照してください。
 
-
 ## 方法: カスタム API コントローラーを定義する
 
-カスタム API コントローラーは、エンドポイントを公開して、モバイル アプリのバックエンドに最も基本的な機能を提供します。カスタム API コントローラー
+カスタム API コントローラーは、エンドポイントを公開して、モバイル アプリのバックエンドに最も基本的な機能を提供します。`MobileAppControllerAttribute` 属性を使用して、モバイル固有の API コント ローラーを登録できます。この属性は、ルートを登録し、Mobile Apps JSON シリアライザーも設定します。
 
 1. Visual Studio で、Controllers フォルダーを右クリックして、**[追加]**、**[コントローラー]** の順にクリックし、**[Web API 2 コントローラー - 空]** を選択して **[追加]** をクリックします。
 
@@ -179,7 +188,7 @@ Azure SQL Database のデータへのアクセスに Entity Framework を使用�
     
 	代わりに、すべての機能を初期化する **UseDefaultConfiguration** を呼び出す場合は、**MapApiControllers** を呼び出す必要はありません。
 
-クライアントは **MobileAppControllerAttribute** が適用されていないコントローラーにもアクセスできますが、こうしたコントローラーはモバイル アプリ クライアント SDK を使用するクライアントでは適切に使用されません。
+クライアントは **MobileAppControllerAttribute** が適用されていないコントローラーにもアクセスできますが、こうしたコントローラーはモバイル アプリ クライアント SDK を使用するクライアントでは適切に使用されない場合があります。
 
 
 ## 方法: サーバー プロジェクトに認証を追加する
@@ -202,9 +211,9 @@ Mobile Apps バックエンドに対してクライアントを認証する方�
 
 App Service Authentication/Authorization プロバイダーの中に使用したいものがない場合は、自身でログイン システムを用意することもできます。これを行うには、[Microsoft.Azure.Mobile.Server.Login] パッケージをインストールします。
 
-ユーザーをサインインするかどうかを判断するための独自のロジックを提供する必要があります。たとえば、データベース内のソルトを使用してハッシュ化されたパスワードと照合することができます。次の例では、`isValidAssertion()` メソッドがこれらの照合を実行します。メソッドは他の場所で定義されています。
+ユーザーをサインインするかどうかを判断するための独自のロジックを提供する必要があります。たとえば、データベース内のソルトを使用してハッシュ化されたパスワードと照合することができます。次の例では、`isValidAssertion()` メソッドがこれらの照合を実行します。このメソッドは他の場所で定義されています。
 
-カスタム認証を公開するには、ApiController を新規作成し、以下のような登録とログインのアクションを公開します。クライアントは、ユーザーから関連情報を収集し、本文にユーザー情報を含めた HTTPS POST を API に送信することでログインを試行できます。情報が検証されたら、`MobileAppLoginHandler.CreateToken()` メソッド使用してトークンを発行できます。
+カスタム認証を公開するには、ApiController を新規作成し、以下のような登録とログインのアクションを公開します。クライアントは、ユーザーから関連情報を収集し、本文にユーザー情報を含めた HTTPS POST を API に送信することでログインを試行できます。情報が検証されたら、`MobileAppLoginHandler.CreateToken()` メソッドを使用してトークンを発行できます。
 
 ログイン アクションの例は次のようになります。
 
@@ -282,11 +291,11 @@ App Service Authentication/Authorization プロバイダーの中に使用した
 
 これで、Notification Hubs クライアントを使用して、登録済みデバイスにプッシュ通知を送信できるようになりました。詳細については、「[アプリケーションにプッシュ通知を追加する](app-service-mobile-ios-get-started-push.md)」をご覧ください。Notification Hubs で実行可能なすべての操作については、「[Azure 通知ハブ](../notification-hubs/notification-hubs-overview.md)」をご覧ください。
 
-## 方法: タグへのプッシュを有効にするために、タグをデバイス インストールに追加する
+##<a name="tags"></a>方法: タグへのプッシュを有効にするために、タグをデバイス インストールに追加する
 
 上記の「**方法: カスタム API コントローラーを定義する**」の手順を実行したら、バックエンドにカスタム API を設定し、Notification Hubs と連動させて、タグを特定のデバイス インストールに追加します。クライアント ローカル ストレージに保存されているインストール ID と追加するタグ (タグはバックエンドで直接指定できるため、これは任意) を指定します。Notification Hubs と連動させ、タグをデバイス インストール ID に追加するために、次のスニペットをコントローラーに追加してください。
 
-[Azure Notification Hubs NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) を使用 ([リファレンス](https://msdn.microsoft.com/library/azure/mt414893.aspx)):
+[Azure Notification Hubs NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) の使用 ([リファレンス](https://msdn.microsoft.com/library/azure/mt414893.aspx)):
 
 		var hub = NotificationHubClient.CreateClientFromConnectionString("my-connection-string", "my-hub");
 
@@ -321,9 +330,9 @@ Azure App Service には、ASP.NET アプリケーションのデバッグとト
 
 ### <a name="local-debug"></a>認証に関するローカル デバッグ
 
-クラウドに発行する前に変更をテストするために、ローカルでアプリケーションを実行できます。多くのアプリケーションは、Visual Studio で *F5* キーを押すだけで実行できます。ただし、認証を使用している場合は追加の考慮事項がいくつかあります。
+クラウドに発行する前に変更をテストするために、ローカルでアプリケーションを実行できます。多くのアプリは、Visual Studio で *F5* キーを押すだけで実行できます。ただし、認証を使用している場合は追加の考慮事項がいくつかあります。
 
-App Service Authentication/Authorization を使用してクラウド ベースのモバイル アプリを構成する必要があります。また、クライアントに代替ログイン ホストとしてクラウド エンドポイントを指定する必要があります。必要な手順の詳細については、選択したクライアント プラットフォームのドキュメント ([iOS](app-service-mobile-ios-how-to-use-client-library.md)、[Windows/Xamarin](app-service-mobile-dotnet-how-to-use-client-library.md)) を参照してください。
+App Service Authentication/Authorization を使用してクラウド ベースのモバイル アプリを構成する必要があります。また、クライアントに代替ログイン ホストとしてクラウド エンドポイントを指定する必要があります。必要な手順の詳細については、選択したクライアント プラットフォーム ([iOS](app-service-mobile-ios-how-to-use-client-library.md)、[Windows/Xamarin](app-service-mobile-dotnet-how-to-use-client-library.md)) のドキュメントを参照してください。
 
 アプリケーションに [Microsoft.Azure.Mobile.Server.Authentication] がインストールされていることを確認します。次に、`MobileAppConfiguration` が `HttpConfiguration` に適用された後で、アプリケーションの OWIN Startup クラスに次のコードを追加します。
 		
@@ -335,16 +344,16 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 			TokenHandler = config.GetMobileAppTokenHandler()
 		});
 
-上記の例では、Web.config ファイル内のアプリケーション設定 _authAudience_ と _authIssuer_ を、HTTPS スキームを使用して、それぞれアプリケーション ルートの URL に構成する必要があります。同様に、_authSigningKey_ をアプリケーションの署名キーの値に設定する必要があります。これは機密性の高い値なので、共有したりクライアントに保存したりしないでください。この値を取得するには、[Azure プレビュー管理ポータル]でアプリに移動し、**[ツール]** をクリックします。**[Kudu]** を選択し、**[移動]** をクリックします。この操作により、サイトの Kudu 管理エンドポイントに移動します。**[環境]** をクリックし、_WEBSITE\_AUTH\_SIGNING\_KEY_ で値を確認します。これは、ローカル アプリ構成の _authSigningKey_ に使用する値です。
+上記の例では、Web.config ファイル内のアプリケーション設定 _authAudience_ と _authIssuer_ を、HTTPS スキームを使用して、それぞれアプリケーション ルートの URL に構成する必要があります。同様に、_authSigningKey_ をアプリケーションの署名キーの値に設定する必要があります。これは機密性の高い値なので、共有したりクライアントに保存したりしないでください。この値を取得するには、[Azure ポータル]でアプリに移動し、**[ツール]** をクリックします。**[Kudu]** を選択し、**[移動]** をクリックします。この操作により、サイトの Kudu 管理エンドポイントに移動します。**[環境]** をクリックし、_WEBSITE\_AUTH\_SIGNING\_KEY_ の値を確認します。これがローカル アプリ構成の _authSigningKey_ で使用する必要がある値です。
 
 ローカルで実行されているサーバーで、クライアントがクラウド ベースのエンドポイントから取得するトークンを検証できるようになりました。
 
 
-[Azure プレビュー管理ポータル]: https://portal.azure.com
+[Azure ポータル]: https://portal.azure.com
 [NuGet.org]: http://www.nuget.org/
 [Microsoft.Azure.Mobile.Server.Quickstart]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
 [Microsoft.Azure.Mobile.Server.Authentication]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

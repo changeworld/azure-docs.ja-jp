@@ -1,6 +1,6 @@
 ## Virtual Network の基礎
 
-### Azure Virtual Network (VNet) とは何ですか。
+### Azure Virtual ネットワーク (VNet) とは何ですか。
 
 VNet を使用してプロビジョニングして Azure で仮想プライベート ネットワーク (VPN) を管理および、必要に応じて、VNet を Azure で他の VNet とリンクさせたり、オンプレミス IT インフラストラクチャで、ハイブリッドまたはクロスプレミス ソリューションを作成します。作成したそれぞれの VNet には独自の CIDR ブロックを持っており、他の VNet や、CIDR ブロックが競合しない限りオンプレミス ネットワークにリンクすることができます。VNet の DNS サーバー設定と、サブネットへの VNet の分割も制御できます。
 
@@ -205,7 +205,7 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 
 ### MAC アドレスは、一度作成されると、VM で同じものとして残りますか。
 
-いいえ。 VM の MAC アドレスは、さまざまな理由で変更できます。VM が、ステータスが停止 (割り当て解除) の場合、VM サイズを変更する場合、またはホストサーバーで回復中のサービスや、計画されたメンテナンスがある場合は、MAC アドレスは保持されません。
+いいえ、ただし変化するのは停止済み (割り当て解除済み) 状態になった場合だけです。ユーザーが VM のサイズを変更したり再起動した場合、またはサービス復旧やホスト サーバーの計画的なメンテナンスの場合は、MAC アドレスは維持されます。
 
 ### VNet 内の VM からインターネットに接続できますか。
 
@@ -215,14 +215,14 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 
 ### VNet でどのようなサービスを使用できますか。
 
-VNet 内のコンピューティング サービスのみ使用できます。Compute Services は、Cloud Services (web ロールとワーカー ロール) および VM に制限されます。
+VNet 内のコンピューティング サービスのみ使用できます。Compute Services は、Cloud Services (web ロールと worker ロール) および VM に制限されます。
 
 ### Web Apps を Virtual Network と連動できますか。
 
 はい。ASE (App Service Environment) を使用して VNet 内に Web Apps をデプロイできます。さらに、VNet にポイント対サイトの 構成をした場合、Web Apps を安全に接続して、Azure VNet 内のリソースにアクセスできます。詳細については、次のトピックを参照してください。
 
 
-- [App Service 環境で Web Apps を作成する](https://azure.microsoft.com/ja-JP/documentation/articles/app-service-web-how-to-create-a-web-app-in-an-ase/)
+- [App Service 環境で Web Apps を作成する](app-service-web-how-to-create-a-web-app-in-an-ase.md)
 
 - [Web Apps Virtual Network 統合](http://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)
 
@@ -230,13 +230,13 @@ VNet 内のコンピューティング サービスのみ使用できます。Co
 
 - [Web アプリを Azure Virtual Network に統合する](web-sites-integrate-with-vnet.md)
 
-### クラウド サービスを VNet 内の Web ロールとワーカー ロール (PaaS) でデプロイできますか。
+### クラウド サービスを VNet 内の Web ロールと worker ロール (PaaS) でデプロイできますか。
 
 はい。VNet 内で PaaS サービスをデプロイすることができます。
 
 ### VNet に PaaS ロールをデプロイする方法
 
-これは、サービス構成のネットワーク構成セクションで、VNet の名前と、役割とサブネットのマッピングを指定することで実現できます。どのバイナリも更新する必要はありません。
+これは、サービス構成のネットワーク構成セクションで、VNet の名前と、ロールとサブネットのマッピングを指定することで実現できます。どのバイナリも更新する必要はありません。
 
 ### サービスを VNet 内外で移動できますか。
 
@@ -266,4 +266,4 @@ Vnet は、1 つの別の機能と、Azure インフラストラクチャでホ�
 
 はい。各種プラットフォームで PowerShell とコマンド ライン ツールを使用することができます。詳細については、[こちら](http://go.microsoft.com/fwlink/?LinkId=317721)で確認できます。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,6 +1,6 @@
 <properties
-	 pageTitle="Azure プレビュー ポータルを使用した IoT Hub の管理 | Microsoft Azure"
-	 description="Azure プレビュー ポータルで Azure IoT Hub を作成して管理する方法の概要"
+	 pageTitle="Azure ポータルを使用した IoT Hub の管理 | Microsoft Azure"
+	 description="Azure ポータルで Azure IoT Hub を作成して管理する方法の概要"
 	 services="iot-hub"
 	 documentationCenter=""
 	 authors="nasing"
@@ -16,11 +16,11 @@
 	 ms.date="10/19/2015"
 	 ms.author="nasing"/>
 
-# Azure プレビュー ポータルを使用した IoT Hub の管理
+# Azure ポータルを使用した IoT Hub の管理
 
 ## はじめに
 
-この記事では、Azure プレビュー ポータルを介して Azure IoT Hub を使用する方法、IoT Hub を検索する方法、および IoT Hub を作成して管理する方法について説明します。
+この記事では、Azure ポータルを介して Azure IoT Hub を使用する方法、IoT Hub を検索する方法、および IoT Hub を作成して管理する方法について説明します。
 
 ## IoT Hub の検索場所
 
@@ -86,7 +86,7 @@ IoT Hub を作成したら、既存の設定を変更できます。IoT Hub の�
 
 ![][8]
 
-**共有アクセス ポリシー**: これらは、IoT Hub に接続するデバイスとサービスのアクセス許可を定義するポリシーです。**[設定]** にある **[共有アクセス ポリシー]** をクリックすると、これらのポリシーにアクセスできます。このブレードでは、既存のポリシーを変更したり、新しいポリシーを追加したりすることができます。
+**共有アクセス ポリシー**: これらは、IoT Hub に接続するデバイスとサービスのアクセス許可を定義するポリシーです。これらのポリシーには、**[設定]** にある **[共有アクセス ポリシー]** をクリックすることでアクセスできます。このブレードでは、既存のポリシーを変更したり、新しいポリシーを追加したりすることができます。
 
 ### 新しいポリシーの作成
 
@@ -153,4 +153,4 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [What is Azure IoT Hub? (Azure IoT Hub とは)]: iot-hub-what-is-iot-hub.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

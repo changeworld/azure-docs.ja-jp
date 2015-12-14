@@ -238,7 +238,7 @@ Data Management Gateway で MySQL Databases に接続するには、[MySQL コ�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| tableName | リンクされたサービスが参照する MySQL Databases インスタンスのテーブルの名前です。 | はい | 
+| tableName | リンクされたサービスが参照する MySQL Databases インスタンスのテーブルの名前です。 | いいえ ( **RelationalSource** の **クエリ** が指定されている場合) | 
 
 ## MySQL のコピー アクティビティの type プロパティ
 
@@ -250,7 +250,7 @@ Data Management Gateway で MySQL Databases に接続するには、[MySQL コ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | あり | 
+| query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | いいえ (**データセット**の **tableName** が指定されている場合) | 
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -310,4 +310,4 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

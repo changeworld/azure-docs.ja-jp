@@ -58,7 +58,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 これらの値を取得するには、次の手順を実行します。
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com/)にログインします。
+1. [Azure ポータル](portal.azure.com)にログインします。
 2. 使用するストレージ アカウントを表示します。
 3. ナビゲーション ウィンドウの下部にある **[キーの管理]** をクリックします。
 4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーには、プライマリとセカンダリのどちらでも選択できます。
@@ -146,11 +146,10 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
-- MSDN リファレンス: [Azure Storage](http://msdn.microsoft.com/library/azure/gg433040.aspx)
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
 この記事で説明されている Azure Queue サービスと、「[Service Bus キューの使用方法](/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Windows Azure キューと Windows Azure サービス バス キューの比較](http://msdn.microsoft.com/library/azure/hh767287.aspx)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

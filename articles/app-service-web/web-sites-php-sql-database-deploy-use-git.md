@@ -20,11 +20,11 @@
 
 このチュートリアルでは、Azure SQL Database に接続する [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の PHT Web アプリを作成する方法と、Git を使用してそれをデプロイする方法について説明します。このチュートリアルは、コンピューターに [PHP][install-php]、[SQL Server Express][install-SQLExpress]、[Microsoft Drivers for SQL Server for PHP](http://www.microsoft.com/download/en/details.aspx?id=20098)、および [Git][install-git] がインストールされていることを前提としています。このチュートリアルを完了すると、Azure で動作する PHP-SQL Web アプリが完成します。
 
-> [AZURE.NOTE] [Microsoft Web プラットフォーム インストーラー](http://www.microsoft.com/web/downloads/platform.aspx)を使用すると、PHP、SQL Server Express、Microsoft Drivers for SQL Server for PHP をインストールおよび構成できます。
+> [AZURE.NOTE][Microsoft Web プラットフォーム インストーラー](http://www.microsoft.com/web/downloads/platform.aspx)を使用すると、PHP、SQL Server Express、Microsoft Drivers for SQL Server for PHP をインストールおよび構成できます。
 
 学習内容:
 
-* [Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用して Azure Web アプリと SQL Database を作成する方法。App Service Web Apps では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
+* [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用して Azure Web アプリと SQL データベースを作成する方法。App Service Web Apps では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
 * Git を使用して Azure にアプリケーションを発行および再発行する方法。
  
 このチュートリアルでは、登録用の単純な Web アプリケーションを PHP で作成します。このアプリケーションは Azure の Web サイトでホストします。完成したアプリケーションのスクリーンショットは次のようになります。
@@ -39,7 +39,7 @@
 
 Azure の Web アプリと SQL Database を作成するには、次の手順に従います。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)にログインします。
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
 
 2. ダッシュ ボードの左上の **[新規]** アイコンをクリックして Azure Marketplace を開き、Marketplace の横の **[すべて選択]** をクリックし、**[Web + モバイル]** を選択します。
 	
@@ -284,7 +284,6 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* ポータルからプレビュー ポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 
 
@@ -296,4 +295,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [pdo-sqlsrv]: http://php.net/pdo_sqlsrv
  
 
-<!---HONumber=AcomDC_1125_2015--->
+<!---HONumber=AcomDC_1203_2015-->

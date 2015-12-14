@@ -38,11 +38,11 @@ Azure では、仮想ハードウェアの選択、およびソフトウェア�
 この記事では、Linux 仮想マシンを既に作成していること、および MYSQL をインストールして構成していることを前提としています。作業の開始の詳細については、「Azure で MySQL をインストールする方法」を参照してください。
 
 ###Azure における RAID の構成
-次の手順は、Azure ポータルを使用して Azure に RAID を作成する方法を説明しています。Windows PowerShell スクリプトを使用して RAID を設定することもできます。この例では 4 つのディスクで RAID 0 を構成します。
+次の手順は、Azure クラシック ポータルを使用して Azure に RAID を作成する方法を説明しています。Windows PowerShell スクリプトを使用して RAID を設定することもできます。この例では 4 つのディスクで RAID 0 を構成します。
 
 ####手順 1. 仮想マシンにデータ ディスクを追加する  
 
-Azure ポータルの [Virtual Machines] ページで、データ ディスクを追加する仮想マシンをクリックします。この例では、仮想マシンは mysqlnode1 です。
+Azure クラシック ポータルの [Virtual Machines] ページで、データ ディスクを追加する Virtual Machines をクリックします。この例では、仮想マシンは mysqlnode1 です。
 
 ![][1]
 
@@ -264,7 +264,7 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 
 	fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=5G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite
 
->AZURE.NOTE: このテストの作業負荷は、RAID の上限に到達するために、64 のスレッドを使用します。
+>AZURE.NOTE: このテストのワークロードは、RAID の上限に到達するために、64 のスレッドを使用します。
 
 <a name="AppendixB"></a>付録 B: **さまざまな RAID レベルでの MySQL のパフォーマンス (スループット) の比較** (XFS ファイル システム)
 
@@ -348,4 +348,4 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 [13]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-13.png
 [14]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-14.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

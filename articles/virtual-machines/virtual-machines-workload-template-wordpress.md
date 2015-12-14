@@ -1,6 +1,6 @@
 <properties
 	pageTitle="ARM テンプレートを使用した Ubuntu での WordPress |Microsoft Azure"
-	description="リソース マネージャーのテンプレートと Azure プレビュー ポータル、Azure PowerShell、または Azure CLI を使用して、Ubuntu 上で実行する 1 台の WordPress サーバーを簡単にデプロイします。"
+	description="リソース マネージャーのテンプレートと Azure ポータル、Azure PowerShell、または Azure CLI を使用して、Ubuntu 上で実行する 1 台の WordPress サーバーを簡単にデプロイします。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="davidmu1"
@@ -25,11 +25,11 @@
 
 ![](./media/virtual-machines-workload-template-wordpress/one-server-wordpress.png)
 
-テンプレートは、Azure プレビュー ポータル、Azure PowerShell、または Azure CLI を使用して実行できます。
+テンプレートは、Azure ポータル、Azure PowerShell、または Azure CLI を使用して実行できます。
 
-## Azure プレビュー ポータル
+## Azure ポータル
 
-リソース マネージャー テンプレートや Azure プレビュー ポータルを使用してこのワークロードをデプロイするには、[ここ](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwordpress-single-vm-ubuntu%2Fazuredeploy.json)をクリックします。
+リソース マネージャー テンプレートと Azure ポータルを使ってこのワークロードをデプロイするには、[ここ](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwordpress-single-vm-ubuntu%2Fazuredeploy.json)をクリックします。
 
 ![](./media/virtual-machines-workload-template-wordpress/azure-portal-template.png)
 
@@ -106,4 +106,4 @@
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

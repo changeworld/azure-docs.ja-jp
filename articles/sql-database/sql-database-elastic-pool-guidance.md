@@ -10,7 +10,7 @@
 <tags 
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="10/08/2015" 
+	ms.date="12/01/2015" 
 	ms.author="sstein" 
 	ms.workload="data-management" 
 	ms.topic="article" 
@@ -26,7 +26,7 @@
 - エラスティック データベース プールの詳細については、「[SQL Database のエラスティック データベース プールのリファレンス](sql-database-elastic-pool-reference.md)」を参照してください。
 
 
-> [AZURE.NOTE]エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。
+> [AZURE.NOTE]Elastic Database プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。
 
 ## エラスティック データベース プール
 
@@ -140,7 +140,7 @@ Single Database を個々に使用するのと、エラスティック データ
 
 STA および DMV には、エラスティック データベース プールのサイズを決定するためのさまざまなツール オプションと機能があります。使用しているツール オプションにかかわらず、サイズの評価は、初期評価とエラスティック データベース プールの作成のみに使用される必要があります。プールを作成したら、リソースの使用量を正確に監視し、必要に応じてプールのパフォーマンスの設定を上下に調整します。
 
-**STA**<br>STA は、既存の SQL Database サーバー内のデータベースのリソースの使用量履歴を自動的に評価する[プレビュー ポータル](https://portal.azure.com)の組み込みのツールで、エラスティック データベース プールを適正に構成するための推奨を行います。詳細については、「[エラスティック データベース プールの価格レベルの提案](sql-database-elastic-pool-portal.md#elastic-database-pool-pricing-tier-recommendations)」を参照してください。
+**STA**<br>STA は、既存の SQL Database サーバー内のデータベースのリソースの使用量履歴を自動的に評価する [Azure ポータル](https://portal.azure.com)の組み込みのツールで、エラスティック データベース プールを適正に構成するための推奨を行います。詳細については、「[エラスティック データベース プールの価格レベルの提案](sql-database-elastic-pool-portal.md#elastic-database-pool-pricing-tier-recommendations)」を参照してください。
 
 **DMV サイズ変更ツール**<br>DMV サイズ変更ツールは、PowerShell スクリプトとして提供されており、サーバー内の既存のデータベースのエラスティック データベース プール内でのサイズ見積もりをカスタマイズできます。
 
@@ -160,7 +160,7 @@ STA および DMV には、エラスティック データベース プールの
 
 STA は、データベースの使用量の履歴を評価して、Single Database のパフォーマンス レベルを使用するよりもコスト効果が高い場合は、エラスティック データベース プールを推奨します。プールが推奨される場合、ツールは推奨されるデータベース一覧、プール eDTU の推奨量、各エラスティック データベースの最小/最大 eDTU 設定を提供します。データベースがプールの候補と見なされるには 7 日間以上の存在している必要があります。
 
-既存のサーバーにエラスティック データベース プールを追加する場合、STA はプレビュー ポータルで使用可能です。そのサーバーがエラスティック データベース プールに推奨されている場合は、[エラスティック データベース プール] 作成ページに表示されます。お客様はいつでも推奨の構成を変更して、独自のエラスティック データベース プール グループを作成できます。
+既存のサーバーにエラスティック データベース プールを追加する場合、STA はポータルで使用可能です。そのサーバーがエラスティック データベース プールに推奨されている場合は、[エラスティック データベース プール] 作成ページに表示されます。お客様はいつでも推奨の構成を変更して、独自のエラスティック データベース プール グループを作成できます。
 
 詳細については、「[エラスティック データベース プールの価格レベルの提案](sql-database-elastic-pool-portal.md#elastic-database-pool-pricing-tier-recommendations)」を参照してください。
 
@@ -435,4 +435,4 @@ STA は、データベースの使用量の履歴を評価して、Single Databa
 [2]: ./media/sql-database-elastic-pool-guidance/four-databases.png
 [3]: ./media/sql-database-elastic-pool-guidance/twenty-databases.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

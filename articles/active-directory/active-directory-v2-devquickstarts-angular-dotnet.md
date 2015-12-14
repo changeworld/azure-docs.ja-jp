@@ -225,4 +225,4 @@ return $http.get('/api/tasks');
 - [Stack Overflow の Azure AD 情報 >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 - [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

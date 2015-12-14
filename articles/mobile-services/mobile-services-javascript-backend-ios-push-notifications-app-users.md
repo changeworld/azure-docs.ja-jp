@@ -69,8 +69,6 @@ function insert(item, user, request) {
 <!-- URLs. -->
 [認証の使用]: mobile-services-ios-get-started-users.md
 [プッシュ通知の使用]: mobile-services-javascript-backend-ios-get-started-push.md
-
-[Azure 管理ポータル]: https://manage.windowsazure.com/
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-ios-how-to-use-client-library.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="multiple"
 	ms.topic="article" 
-	ms.date="08/06/2015"
+	ms.date="11/24/2015"
 	ms.author="awills"/>
 
 # Application Insights による利用状況分析
@@ -37,7 +37,7 @@ Application Insights は、スタンドアロン アプリ (iOS、Android Window
 
 ![クイック スタートを開き、[Web ページを監視するコードを取得する] をクリックします。マスター Web ページの先頭にスクリプトをコピーします。](./media/app-insights-overview-usage/02-monitor-web-page.png)
 
-また、[ASP.NET](app-insights-start-monitoring-app-health-usage.md) または [J2EE](app-insights-java-get-started.md) サーバー コードに Application Insights を追加して、クライアントとサーバーの両方からテレメトリを組み合わせることもできます。
+また、[ASP.NET](app-insights-asp-net.md) または [J2EE](app-insights-java-get-started.md) サーバー コードに Application Insights を追加して、クライアントとサーバーの両方からテレメトリを組み合わせることもできます。
 
 
 ### プロジェクトを実行し、最初の結果を確認します。
@@ -286,10 +286,6 @@ You can set up a universal initializer so that all new TelemetryClients automati
 
 > [AZURE.VIDEO usage-monitoring-application-insights]
 
-
-<!--Link references-->
-
-[start]: app-insights-overview.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

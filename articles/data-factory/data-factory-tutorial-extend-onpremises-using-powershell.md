@@ -26,36 +26,36 @@
 
 > [AZURE.IMPORTANT]この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス][cmdlet-reference]」を参照してください。
 >    
-> Azure PowerShell 1.0 プレビューを使用する場合は、[ここ](https://msdn.microsoft.com/library/dn820234.aspx)に記載されているコマンドレットを使用する必要があります。たとえば、New-AzureDataFactory を使用する代わりに、New-AzureRMDataFactory を使用します。
+> Azure PowerShell 1.0 を使用する場合は、[ここ](https://msdn.microsoft.com/library/dn820234.aspx)に記載されているコマンドレットを使用する必要があります。たとえば、New-AzureDataFactory を使用する代わりに、New-AzureRMDataFactory を使用します。
 
 ## 前提条件
 
 この記事のチュートリアルを実行する前に、[Data Factory を使用したログ ファイルの移動と処理のチュートリアル][datafactorytutorial]を実行する**必要があります**。
 
-**(推奨)** パイプラインを作成してオンプレミスの SQL Server から Azure BLOB ストアにデータを移動するチュートリアルに関する、[パイプラインがオンプレミスのデータを扱えるようにする][useonpremisesdatasources]記事内のチュートリアルの確認と練習をしてください。
+**(推奨)** パイプラインを作成してオンプレミスの SQL Server から Azure BLOB ストアにデータを移動するチュートリアルに関する、[パイプラインが内部設置型のデータを扱えるようにする][useonpremisesdatasources]記事内のチュートリアルの確認と練習をしてください。
 
 
 このチュートリアルでは、次の手順に従います。
 
 1. [手順 1: Data Management Gateway を作成する](#OnPremStep1)。Data Management Gateway は、所属する組織内のオンプレミスのデータ ソースに、クラウドからのアクセスを提供するクライアント エージェントです。このゲートウェイによって、オンプレミスの SQL Server と Azure データ ストアの間でデータ転送が可能になります。	
 
-	オンプレミスの SQL Server データベースをリンクされたサービスとして Azure Data Factory に追加する前に、企業環境内に少なくとも 1 つのゲートウェイがインストールされており、それが Azure Data Factory に登録されている必要があります。
+	オンプレミスの SQL Server データベースをリンクされたサービスとして Azure データ ファクトリに追加する前に、企業環境内に少なくとも 1 つのゲートウェイがインストールされており、それが Azure Data Factory に登録されている必要があります。
 
 2. [手順 2: オンプレミスの SQL Server 用にリンクされたサービスを作成する](#OnPremStep2)。この手順では、まずオンプレミスの SQL Server コンピューター上にデータベースとテーブルを作成し、その後リンクされたサービスの **OnPremSqlLinkedService** を作成します。
 3. [手順 3: テーブルとパイプラインを作成する](#OnPremStep3)。この手順では、**MarketingCampaignEffectivenessOnPremSQLTable** テーブルと **EgressDataToOnPremPipeline** パイプラインを作成します。 
 
-4. [手順 4: パイプラインを監視して結果を確認する](#OnPremStep4)。この手順では、Azure ポータルを使用して、パイプライン、テーブル、およびデータ スライスを監視します。
+4. [手順 4: パイプラインを監視して結果を確認する](#OnPremStep4)。この手順では、Azure クラシック ポータルを使用して、パイプライン、テーブル、データ スライスを監視します。
 
 
 ## <a name="OnPremStep1"></a>手順 1: Data Management Gateway を作成する
 
 Data Management Gateway は、所属する組織内のオンプレミスのデータ ソースに、クラウドからのアクセスを提供するクライアント エージェントです。このゲートウェイによって、オンプレミスの SQL Server と Azure データ ストアの間でデータ転送が可能になります。
   
-オンプレミスの SQL Server データベースをリンクされたサービスとして Azure Data Factory に追加する前に、企業環境内に少なくとも 1 つのゲートウェイがインストールされており、それが Azure Data Factory に登録されている必要があります。
+オンプレミスの SQL Server データベースをリンクされたサービスとして Azure データ ファクトリに追加する前に、企業環境内に少なくとも 1 つのゲートウェイがインストールされており、それが Azure Data Factory に登録されている必要があります。
 
 すでに使用できるデータ ゲートウェイがある場合は、この手順をスキップします。
 
-1.	論理データ ゲートウェイを作成します。**Azure プレビュー ポータル**で、**[Data Factory]** ブレードの **[リンクされたサービス]** をクリックします。
+1.	論理データ ゲートウェイを作成します。**Azure ポータル**で、**[Data Factory]** ブレードの **[リンクされたサービス]** をクリックします。
 2.	コマンド バーの **[+ データ ゲートウェイ]** をクリックします。  
 3.	**[新しいデータ ゲートウェイ]** ブレードで、**[作成]** をクリックします。
 4.	**[作成]** ブレードで、データ ゲートウェイの **[名前]** に「**MyGateway**」と入力します。
@@ -101,7 +101,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
 ### リンクされたサービスの作成
 
-1.	**Azure プレビュー ポータル**で、**[LogProcessingFactory]** の **[Data Factory]** ブレードにある **[リンクされたサービス]** タイルをクリックします。
+1.	**Azure ポータル**で、**[LogProcessingFactory]** の **[Data Factory]** ブレードにある **[リンクされたサービス]** タイルをクリックします。
 2.	**[リンクされたサービス]** ブレードで、**[+ データ ストア]** をクリックします。
 3.	**[新しいデータ ストア]** ブレードで、**[名前]** に「**OnPremSqlLinkedService**」と入力します。 
 4.	**[種類 (設定が必要)]** をクリックし、**[SQL Server]** を選択します。これで、**[新しいデータ ストア]** ブレードに、**[データ ゲートウェイ]**、**[サーバー]**、**[データベース]**、**[資格情報]** の設定が表示されます。 
@@ -120,7 +120,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 ### オンプレミスの論理テーブルを作成する
 
 1.	**Azure PowerShell** で、**C:\\ADFWalkthrough\\OnPremises** フォルダーに移動します。 
-2.	**New-AzureDataFactoryDataset** コマンドレットを使用して、次のように **MarketingCampaignEffectivenessOnPremSQLTable.json** のテーブルを作成します。
+2.	**New-AzureDataFactoryDataset** コマンドレットを使用して、次のように **MarketingCampaignEffectivenessOnPremSQLTable.json** のデータセットを作成します。
 
 			
 		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\MarketingCampaignEffectivenessOnPremSQLTable.json
@@ -158,7 +158,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 [adfintroduction]: data-factory-introduction.md
 [useonpremisesdatasources]: data-factory-move-data-between-onprem-and-cloud.md
 
-[azure-preview-portal]: http://portal.azure.com
+[azure-portal]: http://portal.azure.com
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -174,4 +174,4 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

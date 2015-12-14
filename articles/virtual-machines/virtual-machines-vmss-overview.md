@@ -83,7 +83,7 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 	PaaS v1 worker ロールは、プラットフォーム/ランタイムのサポートの面では制限がありますが (Windows プラットフォーム イメージのみ)、VIP スワップ、構成可能なアップグレード設定、ランタイム/アプリ デプロイ固有の設定などのサービスも提供しています。これらのサービスは、VM スケール セットでは_まだ_利用できないか、Service Fabric などの他の高レベル PaaS サービスによって提供されます。このような点を踏まえておけば、VM スケール セットは PaaS をサポートするインフラストラクチャであると見なすことができます。つまり、Service Fabric のような PaaS ソリューションや Mesos のようなクラスター マネージャーを、スケーラブルなコンピューティング層として VM スケール セット上に構築できます。
 
-	以下に、スタンドアロン VM と同じ VNET 内に VM スケール セットをデプロイする Mesos クラスターの例を示します。スタンドアロン VM は、Mesos マスターであり、VM スケール セットはスレーブ ノードのセットを表します: [https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json)。将来のバージョンの [Azure Container Service](https://azure.microsoft.com/ja-JP/blog/azure-container-service-now-and-the-future/) では、VM スケール セットに基づいて、このシナリオの、より複雑で強化されたバージョンがデプロイされます。
+	以下に、スタンドアロン VM と同じ VNET 内に VM スケール セットをデプロイする Mesos クラスターの例を示します。スタンドアロン VM は、Mesos マスターであり、VM スケール セットはスレーブ ノードのセットを表します: [https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json)。将来のバージョンの [Azure Container Service](https://azure.microsoft.com/blog/azure-container-service-now-and-the-future/) では、VM スケール セットに基づいて、このシナリオの、より複雑で強化されたバージョンがデプロイされます。
 
 ## VM スケール セットのパフォーマンスとスケールのガイダンス
 
@@ -153,4 +153,4 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 **A.** はい。VM スケール セットは、3 つの FD と 5 つの UD を持つ、暗黙的な可用性セットです。virtualMachineProfile の下のものは、何も構成する必要はありません。今後のリリースでは、VM スケール セットが複数のテナントにまたがる可能性がありますが、現時点では 1 つの可用性セットです。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/28/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 # CentOS を実行している StorSimple ホスト上の MPIO の構成
@@ -163,15 +163,15 @@ Linux ホストに接続されている StorSimple デバイスを構成して�
 
 StorSimple デバイスに必要なものは次のとおりです。
 
-- iSCSI 用に有効になっている 2 つ以上のインターフェイス。StorSimple デバイス上の 2 つのインターフェイスが iSCSI に対応していることを確認するには、StorSimple デバイスの管理ポータルで次の手順を実行します。
+- iSCSI 用に有効になっている 2 つ以上のインターフェイス。StorSimple デバイス上の 2 つのインターフェイスが iSCSI に対応していることを確認するには、StorSimple デバイスの Azure クラシック ポータルで次の手順を実行します。
 
-	1. StorSimple デバイスの管理ポータルにログインします。
+	1. StorSimple デバイスのクラシック ポータルにログインします。
 
 	1. StorSimple Manager サービスを選択し、**[デバイス]** をクリックして特定の StorSimple デバイスを選択します。**[構成]** をクリックし、ネットワーク インターフェイスの設定を確認します。2 つの iSCSI 対応ネットワーク インターフェイスを示したスクリーン ショットは次のとおりです。DATA 2 と DATA 3 の両方で、iSCSI の 10 GbE インターフェイスが有効になっています。
 	
-		![MPIO StorsSimple DATA 2 config](./media/storsimple-configure-mpio-on-linux/IC761347.png)
+		![MPIO StorSimple DATA 2 の構成](./media/storsimple-configure-mpio-on-linux/IC761347.png)
 	
-		![MPIO StorSimple DATA 3 Config](./media/storsimple-configure-mpio-on-linux/IC761348.png)
+		![MPIO StorSimple DATA 3 の構成](./media/storsimple-configure-mpio-on-linux/IC761348.png)
 
 		**[構成]** ページで次の手順に従います。
 
@@ -193,7 +193,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 
 冗長性実現のために別のパスで 2 つの iSCSI ネットワーク インターフェイスを接続することをお勧めします。次の図は、CentOS サーバーと StorSimple デバイスにおける高可用性と負荷分散のマルチパスのための推奨ハードウェア構成を示しています。
 
-![MPIO hardware config for StorSimple to Linux host](./media/storsimple-configure-mpio-on-linux/MPIOHardwareConfigurationStorSimpleToLinuxHost2M.png)
+![Linux ホストに対する StorSimple 用の MPIO ハードウェア構成](./media/storsimple-configure-mpio-on-linux/MPIOHardwareConfigurationStorSimpleToLinuxHost2M.png)
 
 前の図から次のことがわかります。
 
@@ -339,10 +339,10 @@ StorSimple デバイスに必要なものは次のとおりです。
 	    		Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
 
 
-		ここに表示されているのが 1 つのホスト インターフェイスと 2 つのパスのみの場合は、iSCSI 用にホストの両方のインターフェイスを有効にする必要があります。[Linux ドキュメントの詳細な手順](https://access.redhat.com/documentation/ja-jp/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)を参照してください。
+		ここに表示されているのが 1 つのホスト インターフェイスと 2 つのパスのみの場合は、iSCSI 用にホストの両方のインターフェイスを有効にする必要があります。[Linux ドキュメントの詳細な手順](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)を参照してください。
 
 	
-	1. ボリュームは、StorSimple デバイスから CentOS サーバーに公開されます。詳細については、[手順 6. ボリュームを作成する](https://sandboxmsdnstage.redmond.corp.microsoft.com/ja-jp/library/azure/dn772357.aspx)方法 (StorSimple デバイス上で管理ポータルを経由する) を参照してください。
+	1. ボリュームは、StorSimple デバイスから CentOS サーバーに公開されます。詳細については、「[手順 6. ボリュームを作成する](storsimple-deployment-walkthrough.md#step-6-create-a-volume)」 (StorSimple デバイス上で Azure クラシック ポータルを使用して) を参照してください。
 
 	1. 使用可能なパスを確認します。次のコマンドを入力します。
 
@@ -475,4 +475,4 @@ Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキ
 - [CentOS での MPIO の設定](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
 - [Linux トレーニング ガイド](http://linux-training.be/files/books/LinuxAdm.pdf)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

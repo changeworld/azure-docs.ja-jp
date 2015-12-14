@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Redis Cache のプロビジョニング" 
-	description="Azure リソース マネージャー テンプレートを使用し、Azure Redis Cache をデプロイします。" 
+	description="Azure リソース マネージャー テンプレートを使用し、Redis Cache をデプロイします。" 
 	services="app-service" 
 	documentationCenter="" 
 	authors="tfitzmac" 
@@ -28,11 +28,11 @@
 
 >[AZURE.NOTE]新しい [Premium レベル](cache-premium-tier-intro.md)の APM テンプレートを利用できます。
 >
->-    [クラスタリングを使用する Premium Redis Cache の作成](https://azure.microsoft.com/ja-JP/documentation/templates/201-redis-premium-cluster-diagnostics/)
->-    [データの永続化を使用する Premium Redis Cache の作成](https://azure.microsoft.com/ja-JP/documentation/templates/201-redis-premium-persistence/)
->-    [VNet とオプションのクラスタリングを使用する Premium Redis Cache の作成](https://azure.microsoft.com/ja-JP/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
+>-    [クラスタリングを使用する Premium Redis Cache の作成](https://azure.microsoft.com/documentation/templates/201-redis-premium-cluster-diagnostics/)
+>-    [データ の永続化を使用する Premium Redis Cache の作成](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
+>-    [VNet とオプションのクラスタリングを使用する Premium Redis Cache の作成](https://azure.microsoft.com/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
 >
->最新のテンプレートを確認するには、[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)で「`Redis Cache`」を検索してください。
+>最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で `Redis Cache` を検索してください。
 
 ## デプロイ対象
 
@@ -137,4 +137,4 @@ Azure Redis Cache を作成します。
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -18,6 +18,11 @@
 
 # Mobile Services でのオフライン データの同期の使用
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 [AZURE.INCLUDE [mobile-services-selector-offline](../../includes/mobile-services-selector-offline.md)]
 
 オフラインの同期を使用すれば、ネットワーク接続が得られない状況でも、モバイル アプリケーションでデータを表示、追加、または変更することができます。このチュートリアルでは、アプリケーションで変更内容を自動的にオフライン データベースに格納し、オンラインに戻るたびにそれらの変更内容を同期させる方法について説明します。
@@ -30,7 +35,7 @@
 * 複数のデバイス間でデータを同期させる。
 * 同じレコードが 2 つのデバイスによって変更されたときに競合を検出する。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、[無料 Mobile Services を入手できます。このサービスは評価終了後も使用できます](http://azure.microsoft.com/pricing/details/mobile-services/)。詳細については、「[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28 target=”\_blank”)」 を参照してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、[無料 Mobile Services を入手できます。このサービスは評価終了後も使用できます](http://azure.microsoft.com/pricing/details/mobile-services/)。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28 target=”\_blank”) を参照してください。
 
 最初に、このチュートリアルの基になっている [Mobile Services のクイック スタート チュートリアル]を完了しておく必要があります。まず、クイック スタートで説明したオフラインの同期に関連するコードを確認してみましょう。
 
@@ -198,7 +203,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
 3. リモートの TodoItem テーブルの内容を表示します。新しい項目が、サーバーと同期_されなかった_ことを確認します。
 
-   - JavaScript バックエンドの場合は、管理ポータルで [データ] タブをクリックして、`TodoItem` テーブルの内容を表示します。
+   - JavaScript バックエンドの場合は、[Azure クラシック ポータル](http://manage.windowsazure.com)で [データ] タブをクリックして、 `TodoItem`テーブルの内容を表示します。
    - .NET バックエンドの場合は、SQL Server Management Studio のような SQL ツールまたは Fiddler や Postman のような REST クライアントを使用して、テーブルの内容を表示します。
 
 4. iOS シミュレーターの Wi-Fi をオンにします。次に、項目の一覧をプルダウンして更新操作を実行します。進行状況を示すスピナーとテキスト "同期中..." が表示されます。
@@ -227,7 +232,7 @@ Core Data ローカル ストアを使用する場合は、[正しいシステ�
 
 * [Cloud Cover: Azure Mobile Services でのオフライン同期]
 
-* [Azure Friday: Azure Mobile Services のオフライン対応アプリケーション] \(注: デモは Windows 向けですが、機能の説明はすべてのプラットフォームに適用されます\)
+* [Azure Friday: Azure Mobile Services のオフライン対応アプリケーション] (注: デモは Windows 向けですが、機能の説明はすべてのプラットフォームに適用されます)
 
 <!-- URLs. -->
 
@@ -273,4 +278,4 @@ Core Data ローカル ストアを使用する場合は、[正しいシステ�
 
 [Mobile Services のクイック スタート チュートリアル]: mobile-services-ios-get-started.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

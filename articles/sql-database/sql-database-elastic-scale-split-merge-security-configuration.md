@@ -453,9 +453,9 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 ## 証明書のアップロード
 
-[Microsoft Azure 管理ポータル](http://portal.azure.com/)で以下を実行します。
+[Azure クラシック ポータル](http://portal.azure.com/)で
 
-1. **[Cloud Services]** を選択します。
+1. **[クラウド サービス]** を選択します。
 2. クラウド サービスを選択します。
 3. 上部メニューで **[証明書]** をクリックします。
 4. 下部のバーで **[アップロード]** をクリックします。
@@ -473,4 +473,4 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

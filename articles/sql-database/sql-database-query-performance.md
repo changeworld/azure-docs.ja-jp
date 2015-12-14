@@ -25,7 +25,7 @@
 - DTU 消費の多いクエリ。パフォーマンス向上のためのチューニングの対象となる可能性があります。 
 - クエリの詳細にドリルダウンする機能。
 
-> [AZURE.NOTE]Query Performance Insight は現在プレビュー段階にあるため、[Azure プレビュー ポータル](https://portal.azure.com/)でのみ使用できます。
+> [AZURE.NOTE]Query Performance Insight は現在プレビュー段階にあるため、[Azure ポータル](https://portal.azure.com/)でのみ使用できます。
 
 
 
@@ -62,7 +62,7 @@ Query Performance Insight は簡単に使用できます。
 
 ## DTU 消費量上位クエリを確認する
 
-[プレビュー ポータル](https://portal.azure.com)で次のようにします。
+[ポータル](https://portal.azure.com)で次のようにします。
 
 1. SQL Database を参照して、**[Query Performance Insight]** をクリックします。 
 
@@ -109,4 +109,4 @@ SQL Database のパフォーマンス向上のために、[Index Advisor](sql-da
 [2]: ./media/sql-database-query-performance/top-queries.png
 [3]: ./media/sql-database-query-performance/query-details.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

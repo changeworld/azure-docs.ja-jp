@@ -21,7 +21,7 @@
 
 このセクションでは、Azure Virtual Machines を使用して CentOS Linux VM を作成する方法と、Python および PHP 言語バインドと共に Apache Qpid PROTON-C ライブラリをダウンロード、ビルド、インストールする方法を示します。次の手順を完了すると、このガイドに含まれる Python および PHP のサンプルを実行できます。
 
-最初の手順は、[Azure ポータル][]を使用して実行します。次のスクリーンショットでは、"scott centos" という名前の CentOS VM を作成する方法を示します。
+最初の手順は、[Azure クラシック ポータル][]を使用して実行します。次のスクリーンショットでは、"scott centos" という名前の CentOS VM を作成する方法を示します。
 
 ![Azure Linux VM 上の Proton][0]
 
@@ -29,7 +29,7 @@
 
 ![Azure Linux VM 上の Proton][1]
 
-コンピューターにログオンするには、SSH のエンドポイント ポートを知る必要があります。この値は、新しく作成した VM を選択して **[エンドポイント]** タブをクリックすることにより、ポータルから取得できます。次のスクリーンショットでは、このコンピューターのパブリック SSH ポートが 57146 であることが示されています。
+コンピューターにログオンするには、SSH のエンドポイント ポートを知る必要があります。この値は、新しく作成した VM を選択して **[エンドポイント]** タブをクリックすることにより、[Azure クラシック ポータル][]から取得できます。次のスクリーンショットでは、このコンピューターのパブリック SSH ポートが 57146 であることが示されています。
 
 ![Azure Linux VM 上の Proton][2]
 
@@ -112,6 +112,6 @@ Python および PHP アプリの場合、この例では Apache の Proton ク�
 [2]: ./media/service-bus-amqp-apache/amqp-apache-3.png
 [3]: ./media/service-bus-amqp-apache/amqp-apache-4.png
 
-[Azure ポータル]: http://manage.windowsazure.com
+[Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

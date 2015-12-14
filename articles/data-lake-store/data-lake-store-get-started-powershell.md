@@ -30,7 +30,7 @@ Azure PowerShell を使用して、Azure Data Lake Store アカウントを作�
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/zh-CN/pricing/free-trial/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 - Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
 - **Azure PowerShell 1.0 以降**。手順については、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」を参照してください。
 
@@ -141,4 +141,4 @@ Data Lake Store アカウントを削除するには、以下のコマンドを�
 - [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

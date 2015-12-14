@@ -31,7 +31,7 @@ PHP 5.5 および PHP 5.6 も使用できますが、既定では有効になっ
 
 ### Azure ポータル
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で Web アプリに移動し、**[設定]** ボタンをクリックします。
+1. [Azure ポータル](https://portal.azure.com)で Web アプリに移動し、**[設定]** ボタンをクリックします。
 
 	![Web アプリ設定][settings-button]
 
@@ -160,8 +160,7 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 [無料試用版]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: http://php.net/manual/en/function.phpinfo.php
@@ -182,4 +181,4 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

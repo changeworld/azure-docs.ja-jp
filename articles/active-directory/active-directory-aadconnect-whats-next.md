@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect の管理 | Microsoft Azure"
+	pageTitle="Azure AD Connect: 次のステップと Azure AD Connect の管理方法 | Microsoft Azure"
 	description="Azure AD Connect の既定の構成と運用タスクを拡張する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -16,7 +16,7 @@
 	ms.date="10/01/2015"
 	ms.author="billmath"/>
 
-# Azure AD Connect の管理
+# 次のステップと Azure AD Connect の管理方法
 組織のニーズや要件を満たすように Azure Active Directory Connect をカスタマイズするための高度な運用に関するトピックを次に示します。
 
 ## Azure AD Premium および Enterprise Mobility のユーザーにライセンスを割り当てる
@@ -69,4 +69,4 @@ Azure AD Connect の初回インストール後は、Azure AD Connect のスタ�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -23,8 +23,7 @@ Visual Studio Team Services チーム プロジェクトを使用してソース
 Visual Studio 2013 および Azure SDK をインストールする必要があります。Visual Studio 2013 がない場合は、**www.visualstudio.com** で[無料利用の開始](http://www.visualstudio.com)リンクをクリックしてダウンロードします。Azure SDK を[ここ](http://go.microsoft.com/fwlink/?LinkId=239540)からインストールしてください。
 
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Visual Studio Online のアカウントが必要です。
-> [Visual Studio Online アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Visual Studio Team Services アカウントが必要です。[Visual Studio Team Services アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
 
 Visual Studio Team Services を使用してクラウド サービスを自動的にビルドして Azure にデプロイするようにセットアップするには、次の手順に従います。
 
@@ -60,7 +59,7 @@ Visual Studio Team Services を使用してクラウド サービスを自動的
 
 ## 手順 3: プロジェクトを Azure に接続する
 
-1. ソース コードを含む Git リポジトリが Visual Studio Team Services に保持され、Git リポジトリを Azure に接続する準備が整いました。[Azure 管理ポータル](http://manage.windowsazure.com)で、クラウド サービスまたは Web アプリを選択するか、新たに作成します。作成するには、左下にある [+] アイコンを選択し、**[クラウド サービス]** または **[Web アプリ]** を選択して、**[簡易作成]** を選択します。
+1. ソース コードを含む Git リポジトリが Visual Studio Team Services に保持され、Git リポジトリを Azure に接続する準備が整いました。[Azure クラシック ポータル](http://manage.windowsazure.com)で、クラウド サービスまたは Web アプリを選択するか、新たに作成します。作成するには、左下にある [+] アイコンを選択し、**[クラウド サービス]** または **[Web アプリ]** を選択して、**[簡易作成]** を選択します。
 
 	![][9]
 
@@ -153,7 +152,7 @@ Visual Studio Team Services を使用してクラウド サービスを自動的
 
 	![][29]
 
-1. [Microsoft Azure 管理ポータル](http://manage.windowsazure.com)では、ステージング環境が選択されると、関連付けられたデプロイが **[デプロイ]** タブに表示されます。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com)では、ステージング環境が選択されると、関連付けられたデプロイが **[デプロイ]** タブに表示されます。
 
 	![][30]
 
@@ -173,13 +172,13 @@ Visual Studio Team Services を使用してクラウド サービスを自動的
 
 ## 手順 5. 以前のビルドを再デプロイする
 
-この手順は省略可能です。Azure 管理ポータルで以前のデプロイを選択し、**[再デプロイ]** をクリックしてサイトを以前のチェックインに戻します。これによって、TFS で新しいビルドが開始され、デプロイ履歴に新しいエントリが作成されます。
+この手順は省略可能です。Azure クラシック ポータルで以前のデプロイを選択し、**[再デプロイ]** をクリックしてサイトを以前のチェックインに戻します。これによって、TFS で新しいビルドが開始され、デプロイ履歴に新しいエントリが作成されます。
 
 ![][34]
 
 ## 手順 6. 運用デプロイを変更する
 
-準備が整ったら、Azure 管理ポータルで **[スワップ]** を選択してステージング環境を運用環境へ昇格できます。新たにデプロイされたステージング環境は運用に昇格され、以前の運用環境がある場合、運用環境はステージング環境になります。運用環境とステージング環境でアクティブなデプロイは異なることはありますが、最近のビルドのデプロイ履歴は環境にかかわらず同じです。
+準備が整ったら、Azure クラシック ポータルで **[スワップ]** を選択してステージング環境を運用環境へ昇格できます。新たにデプロイされたステージング環境は運用に昇格され、以前の運用環境がある場合、運用環境はステージング環境になります。運用環境とステージング環境でアクティブなデプロイは異なることはありますが、最近のビルドのデプロイ履歴は環境にかかわらず同じです。
 
 ![][35]
 
@@ -273,4 +272,4 @@ Visual Studio Team Services で Git を使用する場合のその他のヒン�
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

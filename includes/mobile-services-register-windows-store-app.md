@@ -41,7 +41,7 @@
 
     >[AZURE.NOTE]クライアント シークレットとパッケージ SID は、重要なセキュリティ資格情報です。これらの機密情報は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。
 
-10. [Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+10. [Azure クラシック ポータル](https://manage.windowsazure.com/)にログオンし、**[Mobile Services]**、アプリケーションの順にクリックします。
 
 11. [**ID**] タブをクリックし、手順 4 で WNS から取得した [**クライアント シークレット**] および [**パッケージ SID**] の値を入力し、[**保存**] をクリックします。
 
@@ -60,6 +60,5 @@
 <!-- URLs. -->
 [Mobile Services の使用]: /develop/mobile/tutorials/get-started/#create-new-service
 [アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[Azure の管理ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

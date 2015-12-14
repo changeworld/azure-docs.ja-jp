@@ -163,7 +163,7 @@ Application Insights の [概要] ブレードのタイルをポータル ダッ
 
 診断検索を開きます。
 
-![Open diagnostic search](./media/app-insights-diagnostic-search/01-open-Diagnostic.png)
+![Open diagnostic search](./media/app-insights-portal/01-open-Diagnostic.png)
 
 [フィルター] ブレードを開き、表示するイベントの種類を選択します (後でブレードを開いたときに表示されるフィルターを復元するには、[リセット] をクリックします)。
 
@@ -205,4 +205,4 @@ Application Insights の [概要] ブレードのタイルをポータル ダッ
 
 相対的な時間範囲を選択して保存した場合は、ブレードを開くたびに最新のデータが表示されます。絶対的な時間範囲を選択して保存した場合は、毎回同じデータが表示されます。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

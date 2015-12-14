@@ -1,5 +1,5 @@
 
-1. [Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にログインし、**[Mobile Services]**、アプリケーションの順にクリックします。
 
 	![](./media/mobile-services-create-new-push-table/mobile-services-selection.png)
 
@@ -17,7 +17,4 @@
 
 次に、プッシュ通知を有効にするようにアプリケーションを変更します。
 
-<!-- URLs -->
-[Azure の管理ポータル]: https://manage.windowsazure.com/
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

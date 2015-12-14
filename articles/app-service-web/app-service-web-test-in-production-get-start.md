@@ -41,7 +41,7 @@
 
 >[AZURE.NOTE]ここに記載した手順は、[非運用環境のデプロイ スロット](web-sites-staged-publishing.md)が既に存在し、適切な Web アプリのコンテンツが既に[デプロイ](web-sites-publish-source-control.md)されていることを前提としています。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にログインします。
+1. [Azure ポータル](https://portal.azure.com)にログインします。
 2. Web アプリのブレードで、**[設定]**、**[トラフィック ルーティング]** の順にクリックします。![](./media/app-service-web-test-in-production/01-traffic-routing.png)
 3. トラフィックのルーティング先となるスロットと、必要なトラフィックの全体に対するパーセンテージとを選択し、**[保存]** をクリックします。
 
@@ -86,4 +86,4 @@ App Service は自動トラフィック ルーティングだけでなく、特�
 -   [Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)
 -	[Web アプリに対して DevOps 環境を効果的に使用する](app-service-web-staged-publishing-realworld-scenarios.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

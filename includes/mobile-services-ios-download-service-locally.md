@@ -1,4 +1,4 @@
-1. [Azure の管理ポータル]で、新しいモバイル サービスまたはそのクラウド アイコン タブをクリックして、[概要] ページに移動します。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、新しいモバイル サービスまたはそのクラウド アイコン タブをクリックして、[概要] ページに移動します。
 
     ![](./media/mobile-services-ios-download-service-locally/mobile-portal-quickstart-ios.png)
 
@@ -19,11 +19,4 @@
 
     ![](./media/mobile-services-ios-download-service-locally/download-publish-profile.png)
 
-
-
-
-
-<!-- URLs. -->
-[Azure の管理ポータル]: https://manage.windowsazure.com/
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

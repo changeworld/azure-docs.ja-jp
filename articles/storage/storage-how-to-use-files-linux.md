@@ -20,9 +20,9 @@
 
 ## 概要
 
-Azure File ストレージは、標準的な SMB プロトコルを使用してクラウドでのファイル共有を提供します。File ストレージは現在一般に提供されており、SMB 3.0 と SMB 2.1 の両方をサポートしています。
+Azure File Storageは、標準的な SMB プロトコルを使用してクラウドでのファイル共有を提供します。File ストレージは現在一般に提供されており、SMB 3.0 と SMB 2.1 の両方をサポートしています。
 
-Azure のファイル共有は、Azure プレビュー ポータル、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。また、ファイル共有は SMB 共有であるため、それらには標準の使い慣れたファイル システム API を使用してアクセスできます。
+Azure のファイル共有は、 [Azure ポータル](portal.azure.com)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。また、ファイル共有は SMB 共有であるため、それらには標準の使い慣れたファイル システム API を使用してアクセスできます。
 
 Azure で実行されているアプリケーションでは、Azure の仮想マシンのファイル共有を簡単にマウントできます。また、File ストレージの最新のリリースでは、SMB 3.0 をサポートしているオンプレミス アプリケーションからファイル共有をマウントできます。
 
@@ -91,14 +91,14 @@ Open SUSE 13.2 を使用する場合は、次に示すようにファイルを�
 
 ## ファイル共有の管理 ##
 
-[Azure プレビュー ポータル](https://portal.azure.com/)では、Azure File ストレージを管理するためのユーザー インターフェイスを使用できるようになりました。Web ブラウザーから、次の操作を実行できます。
+[Azure ポータル](portal.azure.com)では、Azure File ストレージを管理するためのユーザー インターフェイスを使用できます。Web ブラウザーから、次の操作を実行できます。
 
 - ファイル共有からのファイルのアップロードおよびダウンロード
 - 各ファイル共有の実際の使用状況の監視
 - ファイル共有のサイズ クォータの調整
 - Windows クライアントからファイル共有をマウントするために使用する `net use` コマンドのコピー 
 
-また、Linux から Azure のクロスプラットフォームのコマンドライン インターフェイス (Azure CLI) を使用してファイル共有を管理することもできます。Azure CLI には、File ストレージなど、Azure Storage を処理できるオープン ソースのクロスプラットフォーム コマンド セットが用意されています。豊富なデータ アクセス機能だけでなく、Azure ポータルにあるものと同じ機能の多くを使用できます。例については、「[Azure Storage での Azure CLI の使用](storage-azure-cli.md)」をご覧ください。
+また、Linux から Azure のクロスプラットフォームのコマンドライン インターフェイス (Azure CLI) を使用してファイル共有を管理することもできます。Azure CLI には、File ストレージなど、Azure Storage を処理できるオープン ソースのクロスプラットフォーム コマンド セットが用意されています。豊富なデータ アクセス機能だけでなく、Azure ポータルにあるものと同じ機能の多くを使用できます。たとえば、「[Azure Storage での Azure CLI の使用](storage-azure-cli.md)」をご覧ください。
 
 ## File ストレージを使用した開発 ##
 
@@ -118,7 +118,7 @@ Azure File ストレージの詳細については、次のリンクを参照し
 
 ### 概念に関する記事とビデオ
 
-- [Azure File ストレージ: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
+- [Azure File Storage: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
 - [Windows で Azure File ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
 
 ### File ストレージ用のツールのサポート
@@ -137,4 +137,4 @@ Azure File ストレージの詳細については、次のリンクを参照し
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

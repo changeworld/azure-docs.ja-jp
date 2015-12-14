@@ -22,7 +22,7 @@
 
 [AZURE.INCLUDE [intro](../../includes/custom-dns-web-site-intro.md)]
 
-Azure App Service Web Apps からドメインを購入した場合は、「<a href="/documentation/articles/custom-dns-web-site-buydomains-web-app" title="Web Apps" class="current">Web アプリ用のドメインの購入</a>」の記事の最後の手順をご覧ください。
+Azure App Service Web Apps からドメインを購入した場合は、「[Web アプリ用のドメインの購入](custom-dns-web-site-buydomains-web-app.md)」の最後の手順をご覧ください。
 
 この記事では、[Go Daddy](https://godaddy.com) から直接購入したカスタム ドメイン名を [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) で使用する手順を示します。
 
@@ -67,7 +67,7 @@ Azure App Service Web Apps からドメインを購入した場合は、「<a hr
 5. **[Add Another]** をクリックします。
 6. レコードの種類として **[CNAME]** を選択し、**[Host]** 値として **[awverify]**、**[Points to]** 値として **[awverify.&lt;yourwebappname&gt;.azurewebsites.net]** を指定します。
 
-	> [AZURE.NOTE]この CNAME レコードが Azure で使用され、A レコードまたは最初の CNAME レコードで記述されたドメインの所有者であることが検証されます。ドメインが Azure プレビュー ポータルで Web アプリにマップされた後、 **awverify** エントリを削除できます。
+	> [AZURE.NOTE]この CNAME レコードが Azure で使用され、A レコードまたは最初の CNAME レコードで記述されたドメインの所有者であることが検証されます。ドメインが Azure ポータルで Web アプリにマップされた後、 **awverify** エントリを削除できます。
 
 5. レコードの追加または変更が完了したら、**[Finish]** をクリックして変更を保存します。
 
@@ -80,6 +80,5 @@ Azure App Service Web Apps からドメインを購入した場合は、「<a hr
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

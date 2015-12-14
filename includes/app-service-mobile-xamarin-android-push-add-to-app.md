@@ -5,6 +5,7 @@
 
 		using Gcm.Client;
 		using Microsoft.WindowsAzure.MobileServices;
+		using Newtonsoft.Json.Linq;
 
 6. **using** ステートメントと **namespace** 宣言の間に次のアクセス許可要求を追加します。
 
@@ -26,7 +27,7 @@
 	        Categories = new string[] { "@PACKAGE_NAME@" })]
 	    [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_LIBRARY_RETRY }, 
         Categories = new string[] { "@PACKAGE_NAME@" })]
-        public class ToDoBroadcastReceiver : GcmBroadcastReceiverBase<GcmService>
+        public class ToDoBroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
         {
 	        // Set the Google app ID.
 	        public static string[] senderIDs = new string[] { "<PROJECT_NUMBER>" };
@@ -49,36 +50,46 @@
 
 	>[AZURE.NOTE]**GcmServiceBase** クラスでは、**OnRegistered()** メソッド、O**nUnRegistered()** メソッド、**OnMessage()** メソッド、および **OnError()** メソッドを実装しています。**PushHandlerService** クラスでは、これらのメソッドをオーバーライドする必要があります。
 
-5. **OnRegistered** イベント ハンドラーをオーバーライドする次のコードを **ToDoBroadcastReceiver** クラスに追加します。
+5. **OnRegistered** イベント ハンドラーをオーバーライドする次のコードを **PushHandlerService** クラスに追加します。
 
         protected override void OnRegistered(Context context, string registrationId)
         {
             System.Diagnostics.Debug.WriteLine("The device has been registered with GCM.", "Success!");
-            
+
             // Get the MobileServiceClient from the current activity instance.
-            MobileServiceClient client = ToDoActivity.CurrentActivity.CurrentClient;           
+            MobileServiceClient client = ToDoActivity.CurrentActivity.CurrentClient;
             var push = client.GetPush();
 
-            List<string> tags = null;
+            // Define a message body for GCM.
+            const string templateBodyGCM = "{"data":{"message":"$(messageParam)"}}";
 
-            //// (Optional) Uncomment to add tags to the registration.
-            //var tags = new List<string>() { "myTag" }; // create tags if you want
+            // Define the template registration as JSON.
+            JObject templates = new JObject();
+            templates["genericMessage"] = new JObject
+            {
+              {"body", templateBodyGCM }
+            };
 
             try
             {
                 // Make sure we run the registration on the same thread as the activity, 
                 // to avoid threading errors.
                 ToDoActivity.CurrentActivity.RunOnUiThread(
-                    async () => await push.RegisterNativeAsync(registrationId, tags));
+
+                    // Register the template with Notification Hubs.
+                    async () => await push.RegisterAsync(registrationId, templates));
+                
+                System.Diagnostics.Debug.WriteLine(
+                    string.Format("Push Installation Id", push.InstallationId.ToString()));
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(
-                    string.Format("Error with Azure push registration: {0}", ex.Message));                
+                    string.Format("Error with Azure push registration: {0}", ex.Message));
             }
         }
 
-	このメソッドでは、返された GCM 登録 ID を使用して、プッシュ通知のために Azure に登録します。
+	このメソッドでは、返された GCM 登録 ID を使用して、プッシュ通知のために Azure に登録します。タグは、作成後にのみ登録に追加できます。詳細については、「[方法: タグへのプッシュを有効にするために、タグをデバイス インストールに追加する](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)」を参照してください。
 
 10. **PushHandlerService** の **OnMessage** メソッドを次のコードでオーバーライドします。
 
@@ -116,7 +127,7 @@
             }
         }
 
-12. **OnUnRegistered()** および **OnError()** (これらはプロジェクトをコンパイルするために必要) 用の次のメソッド オーバーライド コードを追加します。
+12. 次のコードで **OnUnRegistered()** メソッドと **OnError()** メソッドをオーバーライドします。
 
         protected override void OnUnRegistered(Context context, string registrationId)
         {
@@ -129,4 +140,4 @@
                 string.Format("Error occurred in the notification: {0}.", errorId));
         }
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

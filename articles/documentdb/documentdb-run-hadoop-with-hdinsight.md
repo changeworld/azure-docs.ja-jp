@@ -78,11 +78,11 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 
 **Azure ストレージ アカウントを作成するには**
 
-1. [Azure 管理ポータル][azure-classic-portal]にサインインします。
+1. [Azure クラシック ポータル][azure-classic-portal]にサインインします。
 	
-	> [AZURE.NOTE]現在、Azure HDInsight は Azure の管理ポータルでサポートされていますが、Azure DocumentDB は Microsoft Azure ポータルにしかありません。
+	> [AZURE.NOTE]現在、Azure HDInsight は Azure クラシック ポータルでサポートされていますが、Azure DocumentDB は Microsoft Azure ポータルにしかありません。
 
-2. 左下隅にある **[+ 新規]** をクリックし、**[DATA SERVICES]**、**[STORAGE]**、**[簡易作成]** の順にクリックします。![簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル。][image-storageaccount-quickcreate]
+2. 左下隅にある **[+ 新規]** をクリックし、**[DATA SERVICES]**、**[STORAGE]**、**[簡易作成]** の順にクリックします。![簡易作成を使用して新しいストレージ アカウントを設定できる Azure クラシック ポータル。][image-storageaccount-quickcreate]
 
 3. **URL** を入力し、**[場所]** および** [レプリケーション]** に値を入力して、**[ストレージ アカウントの作成]** をクリックします。アフィニティ グループはサポートされていません。
 	
@@ -93,9 +93,9 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 4. 新しいストレージ アカウントの **[状態]** 列が **[オンライン]** になるまで待ちます。
 
 ## <a name="ProvisionHDInsight"></a>手順 2: カスタマイズした HDInsight クラスターを作成する
-このチュートリアルでは、Azure 管理ポータルからスクリプト アクションを使用して、HDInsight クラスターをカスタマイズする方法を説明します。このチュートリアルでは、カスタマイズされたクラスターの作成に、Azure 管理ポータルを使用します。PowerShell コマンドレットまたは HDInsight .NET SDK を使用する方法については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズに関するページ][hdinsight-custom-provision]を参照してください。
+このチュートリアルでは、Azure クラシック ポータルからスクリプト アクションを使用して、HDInsight クラスターをカスタマイズします。このチュートリアルでは、カスタマイズされたクラスターの作成に、Azure クラシック ポータルを使用します。PowerShell コマンドレットまたは HDInsight .NET SDK を使用する方法については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズに関するページ][hdinsight-custom-provision]を参照してください。
 
-1. [Azure 管理ポータル][azure-classic-portal]にサインインします。前の手順で既にサインインしている場合もあります。
+1. [Azure クラシック ポータル][azure-classic-portal]にサインインします。前の手順で既にサインインしている場合もあります。
 
 2. ページ下部の **[+ 新規]** をクリックし、**[DATA SERVICES]**、**[HDINSIGHT]**、**[カスタム作成]** の順にクリックします。
 
@@ -155,7 +155,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 		<td>ストレージ アカウントの既定のコンテナーを指定します。既定のコンテナーは、HDInsight クラスターの既定のファイル システムとして使用されます。<strong>[ストレージ アカウント]</strong> で <strong>[既存のストレージを使用する]</strong> を選択したにもかかわらずそのアカウントに既存のコンテナーがない場合は、既定でクラスターと同じ名前のコンテナーが作成されます。クラスター名と同じ名前のコンテナーが既に存在する場合は、コンテナー名に連番が付加されます。
     </td></tr>
 	<tr><td>追加のストレージ アカウント</td>
-		<td>HDInsight は複数のストレージ アカウントをサポートします。クラスターで使用できる追加ストレージ アカウントの数に制限はありません。ただし、Azure ポータルを使用してクラスターを作成する場合は、UI の制約により 7 が上限になります。ここで指定した追加のストレージ アカウントのそれぞれに対する [ストレージ アカウント] ページがウィザードに追加され、そこでアカウント情報を指定できます。</td></tr>
+		<td>HDInsight は複数のストレージ アカウントをサポートします。クラスターで使用できる追加ストレージ アカウントの数に制限はありません。ただし、Azure クラシック ポータルを使用してクラスターを作成する場合は、UI の制約により 7 が上限になります。ここで指定した追加のストレージ アカウントのそれぞれに対する [ストレージ アカウント] ページがウィザードに追加され、そこでアカウント情報を指定できます。</td></tr>
 </table>右矢印をクリックします。
 
 7. **[スクリプト アクション]** ページで **[スクリプト アクションの追加]** をクリックし、クラスターが作成される際に、クラスターのカスタマイズを実行する PowerShell スクリプトに関する詳細を指定します。PowerShell スクリプトによって、クラスターの作成中に DocumentDB Hadoop コネクタが HDInsight クラスターにインストールされます。
@@ -181,7 +181,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 
 1. Azure PowerShell をインストールします。手順については、[このページ][powershell-install-configure]を参照してください。
 
-	> [AZURE.NOTE]または、Hive クエリに対して HDInsight のオンライン Hive エディターを使用できます。この場合は、[Azure の管理ポータル][azure-classic-portal]にサインインし、左側ウィンドウの **[HDInsight]** をクリックすると、HDInsight クラスターの一覧が表示されます。Hive クエリを実行するクラスターをクリックし、**[クエリ コンソール]** をクリックします
+	> [AZURE.NOTE]または、Hive クエリに対して HDInsight のオンライン Hive エディターを使用できます。この場合は、[Azure クラシック ポータル][azure-classic-portal]にサインインし、左側のウィンドウで **[HDInsight]** をクリックすると、HDInsight クラスターの一覧が表示されます。Hive クエリを実行するクラスターをクリックし、**[クエリ コンソール]** をクリックします
 
 2. Azure PowerShell Integrated Scripting Environment を開きます。
 	- Windows 8 または Windows Server 2012 以降を実行しているコンピューターでは、組み込みの検索機能を使用できます。スタート画面で、「**powershell ise**」と入力し、**Enter** キーを押します。 
@@ -280,7 +280,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 
 9. 作成できたスクリプトを**実行しましょう**。 緑色の実行ボタンを**クリックします**。
 
-10. 結果を確認します。[Azure プレビュー ポータル][azure-portal]にサインインします。
+10. 結果を確認します。[Azure ポータル][azure-portal]にサインインします。
 	1. 左側ウィンドウの <strong>[参照]</strong> をクリックします。</br>
 	2. 参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。</br>
 	3. <strong>[DocumentDB アカウント]</strong> を見つけてクリックします。</br>
@@ -362,7 +362,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 		
 9. 作成できたスクリプトを**実行しましょう**。 緑色の実行ボタンを**クリックします**。
 
-10. 結果を確認します。[Azure プレビュー ポータル][azure-portal]にサインインします。
+10. 結果を確認します。[Azure ポータル][azure-portal]にサインインします。
 	1. 左側ウィンドウの <strong>[参照]</strong> をクリックします。</br>
 	2. 参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。</br>
 	3. <strong>[DocumentDB アカウント]</strong> を見つけてクリックします。</br>
@@ -405,7 +405,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 
 5. 作成できたスクリプトを**実行しましょう**。 緑色の実行ボタンを**クリックします**。
 
-6. 結果を確認します。[Azure プレビュー ポータル][azure-portal]にサインインします。
+6. 結果を確認します。[Azure ポータル][azure-portal]にサインインします。
 	1. 左側ウィンドウの <strong>[参照]</strong> をクリックします。
 	2. 参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。
 	3. <strong>[DocumentDB アカウント]</strong> を見つけてクリックします。
@@ -470,4 +470,4 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [powershell-install-configure]: ../install-configure-powershell.md
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

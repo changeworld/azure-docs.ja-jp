@@ -18,6 +18,8 @@
 
 # ハイブリッド接続を使用して Azure App Service の API アプリからオンプレミスの SQL Server に接続する
 
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
+
 ハイブリッド接続により、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) API アプリを、静的 TCP ポートを使用するオンプレミスのリソースに接続できます。サポートされているリソースには、Microsoft SQL Server、MySQL、HTTP Web APIs、Mobile Services、およびほとんどのカスタム Web サービスが含まれます。
 
 このチュートリアルでは、新しいハイブリッド接続機能を使用してローカルのオンプレミスの SQL Server データベースに接続する App Service API アプリを[Azure プレビュー](http://go.microsoft.com/fwlink/?LinkId=529715)で作成する方法について説明します。このチュートリアルは、Azure または SQL Server を使用した経験がない読者を対象に作成されています。
@@ -66,7 +68,7 @@
 
 - 内部設置型のリソースの *hostname*:*portnumber* に到達できること 
 
-この記事の手順では、内部設置型のハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
+この記事の手順では、オンプレミスのハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
 
 上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、この手順をスキップし、「[オンプレミスの SQL Server データベースを作成する](#CreateSQLDB)」から開始できます。
 
@@ -296,7 +298,7 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 
 	![](./media/app-service-api-hybrid-on-premises-sql-server/error-forbidden.png)
 
-2. ブラウザーのアドレス バーで、URL の末尾に `/swagger` を追加し、**Enter** キーを押します。これにより、前のセクションで有効にした Swagger UI が表示されます。
+2. ブラウザーのアドレス バーで、URL の末尾に `/swagger` を追加し、**[Enter]** キーを押します。これにより、前のセクションで有効にした Swagger UI が表示されます。
 
 	![](./media/app-service-api-hybrid-on-premises-sql-server/swagger-ui.png)
 
@@ -377,7 +379,7 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 	- **[ポート]** には、`1433` (SQL Server の既定のポート) を入力します。
 	- **[BizTalk サービス]** をクリックし、BizTalk サービスの名前を入力します。
 	
-	![ハイブリッド接続の追加](./media/app-service-api-hybrid-on-premises-sql-server/create-biztalk-service.png)
+	![Create a hybrid connection](./media/app-service-api-hybrid-on-premises-sql-server/create-biztalk-service.png)
 		
 9. **[OK]** を 2 回クリックします。
 
@@ -430,4 +432,4 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

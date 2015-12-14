@@ -21,7 +21,7 @@
 
 このガイドでは、[Storage 用 Azure サービス管理コマンドレット](https://msdn.microsoft.com/library/azure/dn806401.aspx)を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。
 
-Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。タスクベースのコマンドライン シェルとスクリプト言語であり、システム管理に特化して設計されています。PowerShell を使用すると、Azure サービスやアプリケーションの管理を容易に制御して自動化できます。たとえば、このコマンドレットを使用して、Microsoft Azure 管理ポータルで実行できるタスクと同じタスクを実行できます。
+Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。タスクベースのコマンドライン シェルとスクリプト言語であり、システム管理に特化して設計されています。PowerShell を使用すると、Azure サービスやアプリケーションの管理を容易に制御して自動化できます。たとえば、このコマンドレットを使用して、[Azure ポータル](portal.azure.com)で実行できるタスクと同じタスクを実行できます。
 
 このガイドは、[Azure Storage](http://azure.microsoft.com/documentation/services/storage/) と [Windows PowerShell](http://technet.microsoft.com/library/bb978526.aspx) を使用した経験がある読者を対象としています。また、PowerShell と Azure Storage の使用方法を示すための多くのスクリプトを用意しています。各スクリプトの実行前に、使用する構成に基づいてスクリプト変数を更新する必要があります。
 
@@ -102,19 +102,17 @@ Azure サブスクリプションの詳細については、「[アカウント�
 	- **$SubscriptionName:** この変数は、自分のサブスクリプション名で更新する必要があります。次の 3 つの方法のいずれかに従って、サブスクリプションの名前を確認します。
 
 		a.**Windows PowerShell ISE** で、**[ファイル]**、**[新規作成]** の順にクリックし、新しいスクリプト ファイルを作成します。次のスクリプトを新しいスクリプト ファイルにコピーし、**[デバッグ]**、**[実行/続行]** の順にクリックします。次のスクリプトでは、Azure アカウントをローカルの PowerShell 環境に追加するための Azure アカウント資格情報が最初に求められ、次に、ローカルの PowerShell セッション接続されているすべてのサブスクリプションが表示されます。このチュートリアルに従って作業する際に使用するサブスクリプションの名前を書き留めます。
-
-    		Add-AzureAccount
-       		Get-AzureSubscription | Format-Table SubscriptionName, IsDefault, IsCurrent, CurrentStorageAccountName
-
-
-		b.Azure で現在サポートされているポータルは、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)と [Azure プレビュー ポータル](https://portal.azure.com/)の 2 つです。現在の [Microsoft Azure 管理ポータル](https://portal.azure.com/)にサインインした場合は、下へスクロールして、ポータルの左側にある **[設定]** をクリックします。**[サブスクリプション]** をクリックします。このガイドで取り上げられているスクリプトを実行する際に使用するサブスクリプションの名前をコピーします。例として次のスクリーンショットをご覧ください。
-
-		![Microsoft Azure 管理ポータル][Image1]
-
-		c.[Azure プレビュー ポータル](https://portal.azure.com/)にサインインした場合は、左側の [ハブ] メニューの **[参照]** をクリックします。**[すべて]** をクリックし、**[サブスクリプション]** をクリックします。このガイドのスクリプトを実行する際に使用するサブスクリプションの名前をコピーします。例として次のスクリーンショットをご覧ください。
-
-		![Azure プレビュー ポータル][Image2]
-
+		
+			Add-AzureAccount
+				Get-AzureSubscription | Format-Table SubscriptionName, IsDefault, IsCurrent, CurrentStorageAccountName
+		
+		b.[Azure ポータル](portal.azure.com)でサブスクリプション名を検索してコピーするには、左側の [ハブ] メニューで **[サブスクリプション]** をクリックします。このガイドのスクリプトを実行する際に使用するサブスクリプションの名前をコピーします。
+		
+		![Azure ポータル][Image2]
+		  
+		c.[Azure クラシック ポータル](https://manage.windowsazure.com/)でサブスクリプション名を検索してコピーするには、スクロール ダウンしてポータルの左側にある **[設定]** をクリックします。**[サブスクリプション]** をクリックすると、お客様のサブスクリプションの一覧が表示されます。このガイドで取り上げられているスクリプトを実行する際に使用するサブスクリプションの名前をコピーします。
+		
+		![Azure クラシック ポータル][Image1]
 
 	- **$StorageAccountName:** スクリプトの所定の名前を使用するか、ストレージ アカウントの新しい名前を入力します。**重要:** ストレージ アカウントの名前は、Azure 上で一意である必要があります。また、小文字にする必要もあります。
 
@@ -375,7 +373,7 @@ BLOB のスナップショットをコピーして復元できます。詳細と
 これで、Azure PowerShell で Azure BLOB と BLOB スナップショットを管理する方法を確認できました。次のセクションでは、テーブル、キュー、ファイルを管理する方法について確認します。
 
 ## Azure テーブルとテーブル エンティティを管理する方法
-Azure Table ストレージ サービスは NoSQL データストアであり、これを使用することで、構造化された非リレーショナル データの巨大なセットを格納して照会できます。このサービスのメイン コンポーネントは、テーブル、エンティティ、プロパティです。テーブルは、エンティティのコレクションです。エンティティは、プロパティのセットです。各エンティティには、最大 252 個のプロパティを含むことができます。これらはすべて名前と値のペアです。このセクションでは、Azure Table ストレージ サービスの概念について理解しているユーザーを対象としています。詳細については、「[Table サービス データ モデルについて](http://msdn.microsoft.com/library/azure/dd179338.aspx)」と [.NET から Table Storage を使用する方法](storage-dotnet-how-to-use-tables.md)に関するページを参照してください。
+Azure Table ストレージ サービスは NoSQL データストアであり、これを使用することで、構造化された非リレーショナル データの巨大なセットを格納して照会できます。このサービスのメイン コンポーネントは、テーブル、エンティティ、プロパティです。テーブルは、エンティティのコレクションです。エンティティは、プロパティのセットです。各エンティティには、最大 252 個のプロパティを含むことができます。これらはすべて名前と値のペアです。このセクションでは、Azure Table ストレージ サービスの概念について理解しているユーザーを対象としています。詳細については、「[Table サービス データ モデルについて](http://msdn.microsoft.com/library/azure/dd179338.aspx)」と [.NET から Table ストレージを使用する方法](storage-dotnet-how-to-use-tables.md)に関するページを参照してください。
 
 以下のサブセクションでは、Azure PowerShell を使用して Azure Table ストレージ サービスを管理する方法について説明します。**テーブル**の**作成**、**削除**、**取得**、**テーブル エンティティの追加**、**照会**、**削除**の各シナリオについて説明します。
 
@@ -516,7 +514,7 @@ Azure Table ストレージ サービスは NoSQL データストアであり、
     }
 
 ## Azure キューとキュー メッセージを管理する方法
-Azure Queue ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。このセクションでは、Azure Queue ストレージ サービスの概念について理解しているユーザーを対象としています。詳細については、[.NET から Queue Storage を使用する方法](storage-dotnet-how-to-use-queues.md)に関するページを参照してください。
+Azure Queue ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。このセクションでは、Azure Queue ストレージ サービスの概念について理解しているユーザーを対象としています。詳細については、[.NET から Queue ストレージを使用する方法](storage-dotnet-how-to-use-queues.md)に関するページを参照してください。
 
 このセクションでは、Azure PowerShell を使用して Azure Queue ストレージ サービスを管理する方法を取り上げます。キュー メッセージの**挿入**と**削除**、および**キューの作成**、**削除**、および**取得**の各シナリオについて説明します。
 
@@ -597,7 +595,7 @@ Azure File ストレージは、標準的な SMB プロトコルを使用して�
 Azure File ストレージの詳細については、「[How to use Azure File storage with Windows (Windows で Azure File ストレージを使用する方法)](storage-dotnet-how-to-use-files.md)」と「[File サービス REST API](http://msdn.microsoft.com/library/azure/dn167006.aspx)」を参照してください。
 
 ## ストレージ分析を設定して照会する方法
-[Azure Storage Analytics](storage-analytics.md) を使用して、Azure ストレージ アカウントからメトリックを収集し、ストレージ アカウントに送信される要求に関するログ データを収集することができます。ストレージ メトリックを使用すると、ストレージ アカウントの正常性を監視でき、ストレージ ログを使用すると、ストレージ アカウントに関する問題の診断とトラブルシューティングができます。既定では、Storage サービスに対してストレージ メトリックは有効になっていません。Microsoft Azure 管理ポータルか Windows PowerShell を利用するか、ストレージ API にプログラムを作成することで監視を有効にできます。ストレージ ログはサーバー側で発生し、ストレージ アカウント内の成功した要求と失敗した要求の両方について詳細を記録することが可能になります。これらのログを使用すると、読み取り、書き込み、削除の各操作の詳細、失敗した要求の原因を確認できます。
+[Azure Storage Analytics](storage-analytics.md) を使用して、Azure ストレージ アカウントからメトリックを収集し、ストレージ アカウントに送信される要求に関するログ データを収集することができます。ストレージ メトリックを使用すると、ストレージ アカウントの正常性を監視でき、ストレージ ログを使用すると、ストレージ アカウントに関する問題の診断とトラブルシューティングができます。既定では、Storage サービスに対してストレージ メトリックは有効になっていません。Azure ポータルまたは Windows PowerShell を使用して監視を有効にできます。また、ストレージ クライアント ライブラリを使用したプログラムで監視を有効にすることもできます。ストレージ ログはサーバー側で発生し、ストレージ アカウント内の成功した要求と失敗した要求の両方について詳細を記録することが可能になります。これらのログを使用すると、読み取り、書き込み、削除の各操作の詳細、失敗した要求の原因を確認できます。
 
 PowerShell を使用し、ストレージ メトリックのデータを有効にして表示する方法については、「[PowerShell を利用してストレージ メトリックを有効にする方法](http://msdn.microsoft.com/library/azure/dn782843.aspx#HowtoenableStorageMetricsusingPowerShell)」を参照してください。
 
@@ -615,7 +613,7 @@ PowerShell を使用してストレージ ログを有効にする方法とロ�
 - **アドホック SAS**: アドホック SAS を作成すると、開始時刻、有効期限、SAS へのアクセス許可がすべて、SAS URI で指定されます。この種類の SAS は、コンテナー、BLOB、テーブル、キューで作成できます。これは取り消しできません。
 - **保存されているアクセス ポリシーのある SAS:** 保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナー、テーブル、またはキュー) で定義されており、これを使用して、1 つ以上の共有アクセス署名のコンテナーを管理できます。保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。この種類の SAS は、取り消しできません。
 
-詳細については、[Shared Access Signature のチュートリアル](storage-dotnet-shared-access-signature-part-1.md)および [Azure Storage リソースへのアクセスの管理](storage-manage-access-to-resources.md)に関するページを参照してください。
+詳細については、[Shared Access Signature のチュートリアル](storage-dotnet-shared-access-signature-part-1.md)および [Azure ストレージ リソースへのアクセスの管理](storage-manage-access-to-resources.md)に関するページを参照してください。
 
 次のセクションでは、Azure テーブルに対する共有アクセス署名トークンと保存されたアクセス ポリシーを作成する方法を学習します。Azure PowerShell では、コンテナー、BLOB、キューに対して類似するコマンドレットが提供されます。このセクションのスクリプトを実行するには、[Azure PowerShell Version 0.8.14](http://go.microsoft.com/?linkid=9811175&clcid=0x409) 以降のバージョンをダウンロードしてください。
 
@@ -649,7 +647,7 @@ New-AzureStorageTableStoredAccessPolicy コマンドレットを使用して新�
 
 
 ## 米国政府対応の Azure Storage や Azure China を使用する方法
-[米国政府対応の Azure Government](http://azure.microsoft.com/features/gov/)、[グローバル Azure 対応の AzureCloud](https://manage.windowsazure.com)、[中国の 21Vianet が運営する Azure 対応の AzureChinaCloud](http://www.windowsazure.cn/) など、Microsoft Azure ではそれぞれ独立したデプロイメントをサポートしています。米国政府対応の新しい Azure 環境や Azure China をデプロイできます。
+[米国政府対応の Azure Government](http://azure.microsoft.com/features/gov/)、[グローバル Azure 対応の AzureCloud](https://manage.windowsazure.com)、[中国の 21Vianet が運営する Azure 対応の AzureChinaCloud](http://www.windowsazure.cn/) など、Microsoft Azure ではそれぞれ独立した環境をサポートしています。米国政府対応の新しい Azure 環境や Azure China をデプロイできます。
 
 AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関連付けられたストレージ コンテキストを作成する必要があります。次の手順に従って開始します。
 
@@ -684,7 +682,6 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 このガイドでは、Azure PowerShell を使用して Azure Storage を管理する方法を確認しました。詳細についての関連記事とリソースがあります。
 
 - [Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
-- [Azure Storage の MSDN リファレンス](http://msdn.microsoft.com/library/azure/gg433040.aspx)
 - [Azure Storage の PowerShell コマンドレット](http://msdn.microsoft.com/library/azure/dn806401.aspx)
 - [Windows PowerShell リファレンス](https://msdn.microsoft.com/library/ms714469.aspx)
 
@@ -733,4 +730,4 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 [Next Steps]: #next
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

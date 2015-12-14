@@ -59,6 +59,10 @@ Application Insights SDK およびエージェントは、アプリケーショ�
 
 ユーザーとセッションの数は、価格設定の目的のクォータには含まれません。
 
+*アプリが 1 秒あたりのレートを超えるとどうなりますか。*
+
+* アプリから送信されるデータ量は分単位で評価されます。1 分間で平均して 1 秒あたりのレートを超える場合、一部の要求がサーバーから拒否されます。このような場合、一部のバージョンの SDK は再送信を試みるので、データ量の増加する時間が数分間長くなりますが、JavaScript SDK など他の SDK は、拒否されたデータを単に破棄します。
+
 *アプリがどれだけのデータ ポイントを送信しているかを知る方法はありますか。*
 
 * [設定]、[クォータと価格] の順に開き、[データ ボリューム] グラフを表示します。
@@ -66,7 +70,7 @@ Application Insights SDK およびエージェントは、アプリケーショ�
 
 *アプリが送信するデータの量を減らすことができますか。*
 
-* [サンプリング](app-insights-sampling.md)を使用します。このテクノロジは、メトリックや、検索で関連するアイテム間を移動する機能を損なうことなく、データ レートを削減します。
+* [サンプリング](app-insights-sampling.md)を使用します。このテクノロジは、メトリックや、検索で関連するアイテム間を移動する機能を損なうことなく、データ レートを削減します。ASP.NET SDK 2.0.0-beta3 以降、既定でアダプティブ サンプリングが有効です。
 * 必要のない[テレメトリ コレクターをオフにします](app-insights-configuration-with-applicationinsights-config.md)。
 
 
@@ -245,7 +249,7 @@ SDK diagnostics | トレース メッセージまたは例外
 [azure]: ../insights-perf-analytics.md
 [client]: app-insights-javascript.md
 [config]: app-insights-configuration-with-applicationinsights-config.md
-[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[greenbrown]: app-insights-asp-net.md
 [java]: app-insights-java-get-started.md
 [platforms]: app-insights-platforms.md
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
@@ -255,4 +259,4 @@ SDK diagnostics | トレース メッセージまたは例外
 
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

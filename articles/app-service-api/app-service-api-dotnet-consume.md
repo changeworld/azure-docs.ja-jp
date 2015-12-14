@@ -18,6 +18,8 @@
 
 # Azure App Service で .NET クライアントから API アプリ使用する 
 
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
+
 ## 概要
 
 このチュートリアルでは、アクセス レベルを**パブリック (匿名)** または**パブリック (認証済み)** に構成した [API アプリ](app-service-api-apps-why-best-platform.md)を呼び出すコードを記述するための App Service SDK の使用方法について説明します。この記事では、次のシナリオを取り上げます。
@@ -205,4 +207,4 @@ API アプリを呼び出すには、次の例のように、クライアント 
 API アプリで認証を使用する方法については、「[Azure App Service での API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)」を参照してください。
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

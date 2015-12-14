@@ -18,6 +18,6 @@
 
 # Azure AD ドメイン サービス *(プレビュー)*
 
-Azure サービスを利用できる場所については、「[リージョン別のサービス](https://azure.microsoft.com/ja-JP/regions/#services)」を参照してください。
+Azure サービスを利用できる場所については、「[リージョン別のサービス](https://azure.microsoft.com/regions/#services)」を参照してください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

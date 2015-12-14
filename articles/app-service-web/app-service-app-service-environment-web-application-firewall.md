@@ -35,7 +35,7 @@ App Service 環境の構成については、このテーマに関する[ドキ�
 Barracuda には、その WAF を Azure の仮想マシンにデプロイすることに関する[詳細な記事](https://techlib.barracuda.com/WAF/AzureDeploy)があります。ただし、これらの手順に従うときは、冗長性を持たせ、単一障害点の発生を防ぐために、少なくとも 2 つの WAF インスタンスの VM を同じクラウド サービスにデプロイします。
 
 ### クラウド サービスへのエンドポイントの追加 ###
-2 つ以上の WAF VM インスタンスをクラウド サービスに用意した後、[Microsoft Azure 管理ポータル](https://portal.azure.com)を使用して、次の図に示すように、アプリケーションで使用される HTTP エンドポイントと HTTPS エンドポイントを追加できます。
+2 つ以上の WAF VM インスタンスをクラウド サービスに用意した後、[Azure ポータル](https://portal.azure.com)を使用して、次の図に示すように、アプリケーションで使用される HTTP エンドポイントと HTTPS エンドポイントを追加できます。
 
 ![エンドポイントを構成する][ConfigureEndpoint]
 
@@ -66,11 +66,11 @@ Barracuda WAF は、管理ポータルによる構成で TCP ポート 8000 を�
 > 注: App Service 環境内でアプリケーションがどのように構成され、どのような機能が使用されているかに応じて、トラフィックを 80 と 443 以外の TCP ポートに転送する必要があります (例: Web アプリの IP SSL を設定している場合)。App Service 環境で使用されるネットワーク ポートの一覧については、[着信トラフィックの制御に関するドキュメント](app-service-app-service-environment-control-inbound-traffic.md)のネットワーク ポートのセクションを参照してください。
 
 ## Microsoft Azure Traffic Manager の構成 (省略可能) ##
-アプリケーションが複数のリージョンで使用できる場合は、[Azure Traffic Manager](traffic-manager.md) の背後でそれらの負荷を分散できます。これを行うには、次の図に示すように、[Microsoft Azure 管理ポータル](https://manage.azure.com)で、WAF のクラウド サービス名を使用して、Traffic Manager プロファイルにエンドポイントを追加できます。
+アプリケーションが複数のリージョンで使用できる場合は、[Azure Traffic Manager](traffic-manager.md) の背後でそれらの負荷を分散できます。これを行うには、次の図に示すように、[Microsoft Azure クラシック ポータル](https://manage.azure.com)で、WAF のクラウド サービス名を使用して、Traffic Manager プロファイルにエンドポイントを追加できます。
 
 ![Traffic Manager のエンドポイント][TrafficManagerEndpoint]
 
-アプリケーションが認証を必要とする場合は、Traffic Manager がアプリケーションの使用可能性をチェックする ping を実行するための、認証を必要としないリソースがあることを確認します。次に示すように、[Microsoft Azure 管理ポータル](https://manage.azure.com)の [構成] セクションで URL を構成できます。
+アプリケーションが認証を必要とする場合は、Traffic Manager がアプリケーションの使用可能性をチェックする ping を実行するための、認証を必要としないリソースがあることを確認します。次に示すように、[Azure クラシック ポータル](https://manage.azure.com)の [構成] セクションで URL を構成できます。
 
 ![Traffic Manager を構成する][ConfigureTrafficManager]
 
@@ -99,4 +99,4 @@ SourceAddressPrefix を、WAF のクラウド サービスの仮想 IP アドレ
 [ConfigureTrafficManager]: ./media/app-service-app-service-environment-web-application-firewall/ConfigureTrafficManager.png
 [WebsiteTranslations]: ./media/app-service-app-service-environment-web-application-firewall/WebsiteTranslations.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

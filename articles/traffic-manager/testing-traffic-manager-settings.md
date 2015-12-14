@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/12/2015"
+   ms.date="12/01/2015"
    ms.author="joaoma" />
 
 # Traffic Manager の設定のテスト
@@ -52,9 +52,9 @@ Traffic Manager の設定をテストするには、複数のクライアント�
 
 無料の Web ベースの DNS 検索と検出サービスを利用できます。これらのサービスの中には、さまざまな場所から DNS 名前解決を確認できるものもあります。たとえば、"DNS 検索" の検索などを実行できます。さらに、Gomez や Keynote のようなサード パーティ製ソリューションもあります。このようなソリューションを使用して、トラフィックがプロファイルに基づいて予期したとおりに振り分けられることを確認できます。
 
-## 関連項目
+## 次のステップ
 
 [Traffic Manager のトラフィック ルーティング方法について](../about-traffic-manager-balancing-methods.md) [Traffic Manager](../traffic-manager.md)
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

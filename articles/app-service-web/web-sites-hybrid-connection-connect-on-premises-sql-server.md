@@ -24,7 +24,7 @@
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 >
->ハイブリッド接続機能の Web Apps 部分は、[Azure プレビュー ポータル](https://portal.azure.com)でのみ使用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。
+>ハイブリッド接続機能の Web Apps 部分は、[Azure ポータル](https://portal.azure.com)でのみ使用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。
 
 ## 前提条件 ##
 
@@ -69,7 +69,7 @@ Port|理由
 
 1. SQL Server Express をインストールするには、ダウンロードした **SQLEXPRWT\_x64\_ENU.exe** または **SQLEXPR\_x86\_ENU.exe** ファイルを実行します。SQL Server インストール センター ウィザードが表示されます。
 
-	![SQL Server Install][SQLServerInstall]
+	![SQL Server のインストール][SQLServerInstall]
 
 2. **[SQL Server の新規スタンドアロン インストールを実行するか、既存のインストールに機能を追加します]** をクリックします。指示に従って、**[インスタンスの構成]** ページが表示されるまで、既定の選択と設定を使用します。
 
@@ -83,7 +83,7 @@ Port|理由
 
 5. **[データベース エンジンの構成]** ページの **[認証モード]** で、**[混合モード (SQL Server 認証と Windows 認証)]** を選択して、パスワードを入力します。
 
-	![Choose Mixed Mode][ChooseMixedMode]
+	![混合モードの選択][ChooseMixedMode]
 
 	このチュートリアルでは、SQL Server 認証を使用します。後で必要になるため、入力したパスワードを忘れないでください。
 
@@ -113,24 +113,24 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 4. オブジェクト エクスプローラーで、**[データベース]** を展開すると、メンバーシップ データベースが作成されたことが示されます。
 
-	![MembershipDB created][SSMSMembershipDBCreated]
+	![作成された MembershipDB][SSMSMembershipDBCreated]
 
 <a name="CreateSite"></a>
-## B.Azure プレビュー ポータルで Web アプリを作成する ##
+## B.Azure ポータルで Web アプリを作成する ##
 
-> [AZURE.NOTE]このチュートリアルで使用する Web アプリを Azure プレビュー ポータルで既に作成している場合は、この手順をスキップし、「[ハイブリッド接続および BizTalk サービスを作成する](#CreateHC)」から続けてください。
+> [AZURE.NOTE]このチュートリアルで使用する Web アプリを Azure ポータルで既に作成している場合は、この手順をスキップし、「[ハイブリッド接続および BizTalk サービスを作成する](#CreateHC)」から続けてください。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)で、**[新規]** > **[Web + モバイル]** > **[Web アプリ]** をクリックします。
+1. [Azure ポータル](https://portal.azure.com)で、**[新規]**、**[Web + モバイル]**、**[Web アプリ]** の順にクリックします。
 
-	![New button][New]
+	![[新規] ボタン][New]
 
 2. Web アプリを構成し、**[作成]** をクリックします。
 
-	![Website name][WebsiteCreationBlade]
+	![Web サイト名][WebsiteCreationBlade]
 
 3. しばらくすると、Web アプリケーションが作成され、Web アプリケーションのブレードが表示されます。ブレードは縦方向にスクロールできるダッシュボードで、Web アプリを管理できます。
 
-	![Website running][WebSiteRunningBlade]
+	![Web サイト実行][WebSiteRunningBlade]
 
 	Web アプリがライブかどうかを確認するには、**[参照]** アイコンをクリックして、既定のページを表示します。
 
@@ -141,7 +141,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 1. ポータルの設定に戻り、**[ネットワーク]** > **[ハイブリッド接続エンドポイントを構成する]** をクリックします。
 
-	![Hybrid connections][CreateHCHCIcon]
+	![ハイブリッド接続][CreateHCHCIcon]
 
 2. [ハイブリッド接続] ブレードで、**[追加]** > **[新しいハイブリッド接続]** をクリックします。
 
@@ -157,7 +157,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 	処理が完了すると、**[通知]** 領域に緑色の "**SUCCESS**" という文字が点滅します。**[ハイブリッド接続]** ブレードには、状態が **[未接続]** の新しいハイブリッド接続が表示されます。
 
-	![One hybrid connection created][CreateHCOneConnectionCreated]
+	![作成された 1 つのハイブリッド接続][CreateHCOneConnectionCreated]
 
 これで、クラウド ハイブリッド接続のインフラストラクチャの重要な部分が完了しました。次に、対応するオンプレミスの部分を作成します。
 
@@ -174,19 +174,19 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 ### 基本的な ASP.NET プロジェクトを作成する ###
 1. Visual Studio の **[ファイル]** メニューで、新しいプロジェクトを作成します。
 
-	![New Visual Studio project][HCVSNewProject]
+	![新しい Visual Studio プロジェクト][HCVSNewProject]
 
 2. **[新しいプロジェクト]** ダイアログの **[テンプレート]** セクションで、**[Web]**、**[ASP.NET Web アプリケーション]** の順に選択して、**[OK]** をクリックします。
 
-	![Choose ASP.NET Web Application][HCVSChooseASPNET]
+	![ASP.NET Web アプリケーションの選択][HCVSChooseASPNET]
 
 3. **[新しい ASP.NET プロジェクト]** ダイアログで、**[MVC]** を選択し、**[OK]** をクリックします。
 
-	![Choose MVC][HCVSChooseMVC]
+	![MVC の選択][HCVSChooseMVC]
 
 4. プロジェクトが作成されると、アプリケーションの readme ページが表示されます。まだ Web プロジェクトを実行しないでください。
 
-	![Readme page][HCVSReadmePage]
+	![Readme ページ][HCVSReadmePage]
 
 ### アプリケーションのデータベース接続文字列を編集する ###
 
@@ -239,7 +239,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 ### Web アプリケーションを発行する ###
 
-1. Azure プレビュー ポータルの App Service Web アプリに対する発行プロファイルをダウンロードできます。Web アプリのブレードで、**[発行プロファイルを取得]** をクリックし、コンピューターにファイルを保存します。
+1. Azure ポータルの App Service Web アプリに対する発行プロファイルをダウンロードできます。Web アプリのブレードで、**[発行プロファイルを取得]** をクリックし、コンピューターにファイルを保存します。
 
 	![発行プロファイルのダウンロード][PortalDownloadPublishProfile]
 
@@ -247,11 +247,11 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 2. Visual Studio で、ソリューション エクスプローラーのプロジェクト名を右クリックし、**[発行]** を選択します。
 
-	![Select publish][HCVSRightClickProjectSelectPublish]
+	![発行の選択][HCVSRightClickProjectSelectPublish]
 
 3. **[Web の発行]** ダイアログの **[プロファイル]** タブで、**[インポート]** を選択します。
 
-	![Import][HCVSPublishWebDialogImport]
+	![インポート][HCVSPublishWebDialogImport]
 
 4. ダウンロードした発行プロファイルを参照して、選択してから、**[OK]** をクリックします。
 
@@ -259,7 +259,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 5. 発行情報がインポートされ、ダイアログの **[接続]** タブに表示されます。
 
-	![Click Publish][HCVSClickPublish]
+	![[発行] をクリック][HCVSClickPublish]
 
 	**[発行]** をクリックします。
 
@@ -271,11 +271,11 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 1. Azure の Web ページの右上で、**[ログイン]** を選択します。
 
-	![Test log in][HCTestLogIn]
+	![テスト ログイン][HCTestLogIn]
 
 2. App Service Web アプリが、ローカル コンピューターの Web アプリケーションのメンバーシップ データベースに接続されています。これを確認するには、前にローカル データベースに入力した資格情報でログインします。
 
-	![Hello greeting][HCTestHelloContoso]
+	![Hello 挨拶][HCTestHelloContoso]
 
 3. 新しいハイブリッド接続を詳細にテストするには、Azure Web アプリケーションからログオフし、別のユーザーとして登録します。新しいユーザー名とパスワードを入力して、**[登録]** をクリックします。
 
@@ -363,4 +363,4 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 [HCTestSSMSTree]: ./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F10HCTestSSMSTree.png
 [HCTestShowMemberDb]: ./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F11HCTestShowMemberDb.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

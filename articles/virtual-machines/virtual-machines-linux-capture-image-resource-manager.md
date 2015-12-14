@@ -176,7 +176,7 @@ VM をプロビジョニングし実行したら、データ ディスクを接�
 * 同じ仮想ネットワークまたは別の仮想ネットワークに新しい NIC を作成します。
 * 変更したテンプレート JSON ファイルを使用して、仮想ネットワークをセットアップするリソース グループ内にデプロイメントを作成します。
 
-イメージから VM を作成するときにネットワークが自動的にセットアップされるようにする場合は、GitHub の [101-vm-from-user-image テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)を使用してください。このテンプレートでは、カスタム イメージおよび必要な仮想ネットワークと、パブリック IP アドレスと、NIC リソースから仮想マシンを作成します。Azure プレビュー ポータルでのテンプレートの使用に関する詳細なチュートリアルについては、「[ARM テンプレートを使用してカスタム イメージから仮想マシンを作成する方法](http://codeisahighway.com/how-to-create-a-virtual-machine-from-a-custom-image-using-an-arm-template/)」を参照してください。
+イメージから VM を作成するときにネットワークが自動的にセットアップされるようにする場合は、GitHub の [101-vm-from-user-image テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)を使用してください。このテンプレートでは、カスタム イメージおよび必要な仮想ネットワークと、パブリック IP アドレスと、NIC リソースから仮想マシンを作成します。Azure ポータルでのテンプレートの使用に関する詳細なチュートリアルについては、「[ARM テンプレートを使用してカスタム イメージから仮想マシンを作成する方法](http://codeisahighway.com/how-to-create-a-virtual-machine-from-a-custom-image-using-an-arm-template/)」を参照してください。
 
 ## azure vm create コマンドを使用する
 
@@ -200,4 +200,4 @@ VM をプロビジョニングし実行したら、データ ディスクを接�
 
 CLI を使用して VM を管理するには、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-deploy-rmtemplates-azure-cli.md)」に記載のタスクを参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

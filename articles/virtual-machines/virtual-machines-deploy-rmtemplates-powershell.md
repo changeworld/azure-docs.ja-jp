@@ -20,7 +20,7 @@
 # Azure リソース マネージャーと PowerShell を使用した仮想マシンの管理
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](virtual-machines-windows-tutorial.md)
+- [Azure portal](virtual-machines-windows-tutorial.md)
 - [PowerShell - Windows](virtual-machines-deploy-rmtemplates-powershell.md)
 - [Azure CLI](virtual-machines-deploy-rmtemplates-azure-cli.md)
 
@@ -376,4 +376,4 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="11/19/2015" 
+	ms.date="12/01/2015" 
 	ms.author="robmcm"/>
 
 # BLOB ストレージを使用するオンプレミスのアプリケーション
@@ -364,7 +364,6 @@
   [Java から BLOB ストレージを使用する方法]: storage-java-how-to-use-blob-storage.md
   [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
   [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
-  [Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
-  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+  [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

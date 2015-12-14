@@ -13,10 +13,14 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/30/2015" 
+	ms.date="12/02/2015" 
 	ms.author="sdanie"/>
 
 # Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法
+
+> [AZURE.SELECTOR]
+- [PowerShell](cache-howto-manage-redis-cache-powershell.md)
+- [Azure CLI](cache-manage-cli.md)
 
 Azure CLI は、任意のプラットフォームから Azure インフラストラクチャを管理する優れた方法です。この記事では、Azure CLI を使用して Azure Redis Cache インスタンスを作成および管理する方法について説明します。
 
@@ -254,4 +258,4 @@ Redis Cache を削除するには、次のコマンドを使用します。
 	help:
 	help:    Current Mode: arm (Azure Resource Management)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

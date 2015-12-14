@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Microsoft Azure 管理ポータルを使用した Azure SQL Database の管理" 
-	description="Microsoft Azure 管理ポータルを使用して、クラウド内のリレーショナル データベースを管理する方法について説明します。" 
+	pageTitle="Azure クラシック ポータルを使用した Azure SQL Database の管理" 
+	description="Azure クラシック ポータルを使用して、クラウド内のリレーショナル データベースを管理する方法について説明します。" 
 	services="sql-database" 
 	documentationCenter="" 
 	authors="stevestein" 
@@ -17,24 +17,24 @@
 	ms.author="sstein"/>
 
 
-# Microsoft Azure 管理ポータルを使用した Azure SQL Database の管理
+# Azure クラシック ポータルを使用した Azure SQL Database の管理
 
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](sql-database-manage-portal.md)
+- [Azure Portal](sql-database-manage-portal.md)
 - [SSMS](sql-database-manage-azure-ssms.md)
 - [PowerShell](sql-database-command-line-tools.md)
 
-[Azure 管理ポータル][Management Portal]を使用すると、Azure SQL Database とサーバーの作成、監視、管理を実行できます。この記事では、管理ポータルを使用して実行できるデータベース操作について重点的に説明します。
+[Azure クラシック ポータル][Classic Portal]を使用すると、Azure SQL Database とサーバーの作成、監視、管理を実行できます。この記事では、クラシック ポータルを使用して実行できるデータベース操作について重点的に説明します。
 
->[AZURE.NOTE]Azure 管理ポータルに慣れていない場合は、その全般的な機能と概念について、この[ビデオ ツアーで簡単な概要をご覧ください][Azure Portal Tour]。
+>[AZURE.NOTE]Azure クラシック ポータルに慣れていない場合は、その全般的な機能と概念について、この[ビデオ ツアーで簡単な概要をご覧ください][Azure Classic Portal Tour]。
 
 ![Database Overview](./media/sql-database-manage-portal/sqldatabase_annotated.png)
 
 ## 1\.データベースの管理操作
 ![Db management actions](./media/sql-database-manage-portal/sqldatabase_actions.png)
 
-Azure 管理ポータルには、データベースのブレードの上部からアクセスできる、一般的なデータベース操作が用意されています。データベースは、以前の状態に復元したり、Visual Studio で開いたり、新しいサーバーにコピーしたり、Azure ストレージ アカウントにエクスポートしたりできます。
+Azure クラシック ポータルには、データベースのブレードの上部からアクセスできる、一般的なデータベース操作が用意されています。データベースは、以前の状態に復元したり、Visual Studio で開いたり、新しいサーバーにコピーしたり、Azure ストレージ アカウントにエクスポートしたりできます。
 
 - [SQL Database を復元する](sql-database-point-in-time-restore-tutorial-management-portal.md)
 - [Visual Studio で SQL Database を開く](sql-database-connect-query.md)
@@ -45,7 +45,7 @@ Azure 管理ポータルには、データベースのブレードの上部か�
 
 Azure SQL Database には、既定で、データベース スループット単位 (DTU)、データベース サイズ、接続の正常性の監視グラフが備わっています。これらの監視グラフは、CPU の割合、データ IO の割合、デッドロック、ログ IO の割合、またはファイアウォールによってブロックされた要求の割合のグラフも作成するようにカスタマイズおよび拡張できます。監視グラフをカスタマイズする方法の詳細については、[こちら][Azure part monitoring]を参照してください。
 
-さらに、アラート ルールは、指定したメトリックを監視して、事前に設定されたしきい値に達したときに指定の管理者と共同管理者に警告するように設定できます。Azure 管理ポータルでアラート ルールを設定する方法の詳細については、[こちら][Azure part monitoring]を参照してください。
+さらに、アラート ルールは、指定したメトリックを監視して、事前に設定されたしきい値に達したときに指定の管理者と共同管理者に警告するように設定できます。Azure クラシック ポータルでアラート ルールを設定する方法の詳細については、[こちら][Azure part monitoring]を参照してください。
 
 ## 3\.データベースのセキュリティと監査
 ![Database security](./media/sql-database-manage-portal/sqldatabase_security.png)
@@ -62,7 +62,7 @@ Azure SQL Database は、すべてのデータベース イベントを追跡し
 ## 4\.geo レプリケーション
 ![geo レプリケーション](./media/sql-database-manage-portal/sqldatabase_georeplication.png)
 
-Azure SQL Database は、コミットされたトランザクションをセカンダリ データベースに非同期にレプリケートするように構成できます。管理ポータルの geo レプリケーション パートでは、セカンダリ データベースを配置する Azure リージョンを選択できます。
+Azure SQL Database は、コミットされたトランザクションをセカンダリ データベースに非同期にレプリケートするように構成できます。クラシック ポータルの geo レプリケーション パートでは、セカンダリ データベースを配置する Azure リージョンを選択できます。
 
 - [geo レプリケーション](https://msdn.microsoft.com/library/azure/dn783447.aspx)
 
@@ -75,8 +75,8 @@ Azure SQL Database は、コミットされたトランザクションをセカ�
 * [動的管理ビューを使用した SQL Database の監視][]   
 * [Transact-SQL リファレンス (SQL Database)][]
   
-  [Azure Portal Tour]: https://go.microsoft.com/fwlink/?LinkID=522341
-  [Management Portal]: https://portal.azure.com
+  [Azure Classic Portal Tour]: https://go.microsoft.com/fwlink/?LinkID=522341
+  [Classic Portal]: https://portal.azure.com
   [Azure part monitoring]: ../documentdb-monitor-accounts.md
   [AzureDb management overview]: http://azure.microsoft.com/blog/2014/12/22/client-tooling-updates-for-azure-sql-database/
   [Introducing SQL Database]: http://azure.microsoft.com/services/sql-database
@@ -90,4 +90,4 @@ Azure SQL Database は、コミットされたトランザクションをセカ�
  
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

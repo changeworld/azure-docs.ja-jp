@@ -18,4 +18,4 @@
 Mobile Services のソース管理が有効な場合は、Git を使用して、リポジトリをローカル コンピューターに複製できます。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -16,24 +16,24 @@
 	ms.date="11/04/2015" 
 	ms.author="ddove;sidneyh"/>
 
-# エラスティック データベース ジョブのインストールの概要
-[**エラスティック データベース ジョブ**](sql-database-elastic-jobs-overview.md)のインストールには PowerShell または Azure ポータルを使用できます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。
+# Elastic Database ジョブのインストールの概要
+[**Elastic Database ジョブ**](sql-database-elastic-jobs-overview.md)のインストールには PowerShell または Azure クラシック ポータルを使用できます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。
 
-既存の**エラスティック データベース プール**から、ポータルを使用して**エラスティック データベース ジョブ**を既にインストールしている場合、最新の PowerShell プレビューには、既存のインストールをアップグレードするスクリプトが含まれています。PowerShell API 経由で公開されている新しい機能を活用するために、最新の**エラスティック データベース ジョブ** コンポーネントにアップグレードすることを強くお勧めします。
+既存の**Elastic Database プール**から、ポータルを使用して**Elastic Database ジョブ**を既にインストールしている場合、最新の PowerShell プレビューには、既存のインストールをアップグレードするスクリプトが含まれています。PowerShell API 経由で公開されている新しい機能を活用するために、最新の**Elastic Database ジョブ** コンポーネントにアップグレードすることを強くお勧めします。
 
 ## 前提条件
-* Azure サブスクリプション。無料試用版については、「[無料試用版](http://azure.microsoft.com/pricing/free-trial/)」を参照してください。
+* Azure サブスクリプション。無料評価版については、「[無料評価版](http://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 * Azure PowerShell Version 0.8.16 以降。[Web Platform インストーラー](http://go.microsoft.com/fwlink/p/?linkid=320376)を使用して最新バージョン (0.9.5) をインストールします。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」をご覧ください。
-* [NuGet Command-line Utility](https://nuget.org/nuget.exe) を使用して、エラスティック データベース ジョブ パッケージをインストールします。詳細については、http://docs.nuget.org/docs/start-here/installing-nuget を参照してください。
+* [NuGet Command-line Utility](https://nuget.org/nuget.exe) を使用して、Elastic Database ジョブ パッケージをインストールします。詳細については、http://docs.nuget.org/docs/start-here/installing-nuget を参照してください。
 
-## エラスティック データベース ジョブ PowerShell パッケージをダウンロードしてインストールする
+## Elastic Database ジョブ PowerShell パッケージをダウンロードしてインストールする
 1. Microsoft Azure PowerShell コマンド ウィンドウを開き、NuGet Command-line Utility (nuget.exe) をダウンロードしたディレクトリに移動します。
 
-2. 次のコマンドを使用して、**エラスティック データベース ジョブ** パッケージを現在のディレクトリにダウンロードしてインポートします。
+2. 次のコマンドを使用して、**Elastic Database ジョブ** パッケージを現在のディレクトリにダウンロードしてインポートします。
 
 		PS C:\>.\nuget install Microsoft.Azure.SqlDatabase.Jobs -prerelease
 
-    **エラスティック データベース ジョブ** ファイルは、ローカル ディレクトリの **Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x** というフォルダー内に保存されます。この *x.x.xxxx.x* には、バージョン番号が反映されます。(必要なクライアント .dll を含む) PowerShell コマンドレットは、**tools\\ElasticDatabaseJobs** サブディレクトリに保存されます。インストール、アップグレード、およびアンインストールを行う PowerShell スクリプトも **tools** サブディレクトリに保存されます。
+    **Elastic Database ジョブ** ファイルは、ローカル ディレクトリの **Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x** というフォルダー内に保存されます。この *x.x.xxxx.x* には、バージョン番号が反映されます。(必要なクライアント .dll を含む) PowerShell コマンドレットは、**tools\\ElasticDatabaseJobs** サブディレクトリに保存されます。インストール、アップグレード、およびアンインストールを行う PowerShell スクリプトも **tools** サブディレクトリに保存されます。
 
 3. 次のように cd tools と入力して、Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x 以下の tools サブディレクトリに移動します。
 
@@ -44,12 +44,12 @@
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobsCmdlets.ps1 
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobsCmdlets.ps1
 
-## PowerShell を使用してエラスティック データベース ジョブ コンポーネントをインストールする
+## PowerShell を使用して Elastic Database ジョブ コンポーネントをインストールする
 1.	Microsoft Azure PowerShell コマンド ウィンドウを開き、cd \\tools と入力して、Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x フォルダー以下の \\tools サブディレクトリに移動します。
 
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-2.	.\\InstallElasticDatabaseJobs.ps1 PowerShell スクリプトを実行し、要求された変数に値を設定します。このスクリプトで、[エラスティック データベース ジョブ コンポーネントと価格設定](sql-database-elastic-jobs-overview/#components-and-pricing)のページで説明されているコンポーネントが作成され、依存するコンポーネントを適切に使用するように Azure クラウド サービスが構成されます。
+2.	.\\InstallElasticDatabaseJobs.ps1 PowerShell スクリプトを実行し、要求された変数に値を設定します。このスクリプトで、[Elastic Database ジョブ コンポーネントと価格設定](sql-database-elastic-jobs-overview/#components-and-pricing)のページで説明されているコンポーネントが作成され、依存するコンポーネントを適切に使用するように Azure クラウド サービスが構成されます。
 
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1 
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
@@ -111,9 +111,9 @@
     PS C:*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
     PS C:*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>.\InstallElasticDatabaseJobs.ps1 -ServiceWorkerCount 2 -ServiceVmSize A2 -SqlServerDatabaseSlo S2
 
-## PowerShell を使用して既存のエラスティック データベース ジョブ コンポーネントのインストールを更新する
+## PowerShell を使用して既存の Elastic Database ベース ジョブ コンポーネントのインストールを更新する
 
-**エラスティック データベース ジョブ**は、スケールと高可用性のために既存のインストール内で更新できます。このプロセスは、将来的に、管理データベースを削除して再作成することなく、サービス コードをアップグレードすること見込んでいます。また、同じバージョン内でこのプロセスを使用して、サービス VM サイズまたはサーバーのワーカー数を変更できます。
+**Elastic Database ジョブ**は、スケールと高可用性のために既存のインストール内で更新できます。このプロセスは、将来的に、管理データベースを削除して再作成することなく、サービス コードをアップグレードすること見込んでいます。また、同じバージョン内でこのプロセスを使用して、サービス VM サイズまたはサーバーのワーカー数を変更できます。
 
 インストールの VM サイズを更新するには、パラメーターを選択した値に更新して、次のスクリプトを実行します。
 
@@ -128,7 +128,7 @@
 
   <tr>
 	<td>ResourceGroupName</td>
-	<td>エラスティック データベース ジョブ コンポーネントを最初にインストールしたときに使用した Azure リソース グループ名を指定します。このパラメーターの既定値は “__ElasticDatabaseJob” です。この値を変更することは推奨されないので、このパラメーターを指定する必要はありません。</td>
+	<td>Elastic Database ジョブ コンポーネントを最初にインストールしたときに使用した Azure リソース グループ名を指定します。このパラメーターの既定値は “__ElasticDatabaseJob” です。この値を変更することは推奨されないので、このパラメーターを指定する必要はありません。</td>
 	</tr>
 </tr>
 
@@ -148,29 +148,29 @@
 
 </table>
 
-## ポータルを使用してエラスティック データベース ジョブ コンポーネントをインストールする
+## ポータルを使用して Elastic Database ジョブ コンポーネントをインストールする
 
-[エラスティック データベース プールを作成](sql-database-elastic-pool-portal.md)すると、**エラスティック データベース ジョブ** コンポーネントをインストールして、エラスティック データベース プール内の各データベースに対して管理タスクを実行できるようになります。**エラスティック データベース ジョブ** PowerShell API を使用するときとは異なり、現在、ポータル インターフェイスは既存のプールに対する実行のみに制限されています。
+[Elastic Database プールを作成](sql-database-elastic-pool-portal.md)すると、**Elastic Database ジョブ** コンポーネントをインストールして、Elastic Database プール内の各データベースに対して管理タスクを実行できるようになります。**Elastic Database ジョブ** PowerShell API を使用するときとは異なり、現在、ポータル インターフェイスは既存のプールに対する実行のみに制限されています。
 
 
 **推定所要時間:** 10 分。
 
-1. [Azure プレビュー ポータル](https://ms.portal.azure.com/#)のエラスティック データベース プールのダッシュボード ビューで、**[ジョブの作成]** をクリックします。
-2. 初めてジョブを作成する場合は、**[プレビュー版の使用条件]** をクリックして、**エラスティック データベース ジョブ**をインストールする必要があります。 
+1. [Azure ポータル](https://ms.portal.azure.com/#)のエラスティック データベース プールのダッシュボード ビューで、**[ジョブの作成]** をクリックします。
+2. 初めてジョブを作成する場合は、**[プレビュー版の使用条件]** をクリックして、**Elastic Database ジョブ**をインストールする必要があります。 
 3. チェック ボックスをクリックして条項に同意します。
 4. [サービスのインストール] ビューで、**[ジョブの資格情報]** をクリックします。
 
 	![サービスのインストール][1]
 
-5. データベース管理者のユーザー名とパスワードを入力します。インストールの一環として、新しい Azure SQL Database サーバーが作成されます。この新しいサーバー内に、管理データベースと呼ばれる新しいデータベースが作成され、エラスティック データベース ジョブのメタデータの格納に使用されます。ここで作成されるユーザー名とパスワードは、管理データベースにログインするために使用されます。プール内のデータベースに対するスクリプト実行には、別の資格情報が使用されます。
+5. データベース管理者のユーザー名とパスワードを入力します。インストールの一環として、新しい Azure SQL Database サーバーが作成されます。この新しいサーバー内に、管理データベースと呼ばれる新しいデータベースが作成され、Elastic Database ジョブのメタデータの格納に使用されます。ここで作成されるユーザー名とパスワードは、管理データベースにログインするために使用されます。プール内のデータベースに対するスクリプト実行には、別の資格情報が使用されます。
 
 	![ユーザー名とパスワードの作成][2]
 
-6. [OK] ボタンをクリックします。新しい[リソース グループ](../resource-group-portal.md)にコンポーネントが数分で作成されます。下記に示すように、新しいリソース グループがスタート ボードに固定表示されています。作成されると、エラスティック データベース ジョブ (Cloud Service、SQL Database、Service Bus、Storage) は、すべてグループ内に作成されます。
+6. [OK] ボタンをクリックします。新しい[リソース グループ](../resource-group-portal.md)にコンポーネントが数分で作成されます。下記に示すように、新しいリソース グループがスタート ボードに固定表示されています。作成されると、弾力性データベース ジョブ (クラウド サービス、SQL Database、Service Bus、ストレージ記憶域) は、すべてグループ内に作成されます。
 
 	![スタート ボードのリソース グループ][3]
 
-7. エラスティック ジョブをインストール中にジョブを作成または管理しようとすると、**資格情報**の入力中に 、次のメッセージが表示されます。
+7. 弾力性データベース ジョブをインストール中にジョブを作成または管理しようとすると、**資格情報**の入力中に 、次のメッセージが表示されます。
 
 	![実行中のデプロイメント][4]
 
@@ -187,4 +187,4 @@
 [4]: ./media/sql-database-elastic-jobs-service-installation/incomplete.png
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

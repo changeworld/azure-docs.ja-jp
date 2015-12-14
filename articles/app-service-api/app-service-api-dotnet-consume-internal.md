@@ -18,6 +18,8 @@
 
 # .NET クライアントからの Azure App Service での内部 API アプリの使用 
 
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
+
 ## 概要
 
 このチュートリアルでは、**内部**アクセス レベル用に構成されている別の API アプリを呼び出す ASP.NET [API アプリ](app-service-api-apps-why-best-platform.md)のコードを作成する方法について説明します。どちらの API アプリも同じリソース グループに属している必要があります。同じコードを使用して、[モバイル アプリ](../app-service-mobile/app-service-mobile-value-prop-preview.md)から内部 API アプリを呼び出すこともできます。
@@ -265,4 +267,4 @@ App Service SDK は、Swagger API の定義を利用してクライアント ク
 App Service での認証については、[API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)に関するページを参照してください。
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

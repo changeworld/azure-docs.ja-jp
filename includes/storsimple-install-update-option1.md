@@ -7,23 +7,23 @@
     1. Internet Explorer を起動し、[http://catalog.update.microsoft.com/v7/site/Home.aspx](http://catalog.update.microsoft.com/v7/site/Home.aspx) に移動します。
     2. 初めて利用する場合は、Microsoft Update カタログをインストールするよう求められます。**[インストール]** をクリックします。
     
-        ![Install catalog](./media/storsimple-install-update-option-1/HCS_InstallCatalog-include.png)
+        ![カタログのインストール](./media/storsimple-install-update-option-1/HCS_InstallCatalog-include.png)
 
     3. カタログ検索画面が表示されます。検索ボックスに「**3063418**」と入力し、**[検索]** をクリックします。
 
-        ![Search catalog](./media/storsimple-install-update-option-1/HCS_SearchCatalog-include.png)
+        ![カタログの検索](./media/storsimple-install-update-option-1/HCS_SearchCatalog-include.png)
 
     4. **StorSimple Update 1.2 Appliance Update** bundle が表示されます。**[追加]** をクリックします。更新プログラムがバスケットに追加されます。
 
-        ![Update bundle](./media/storsimple-install-update-option-1/HCS_UpdateBundle-include.png)
+        ![バンドルの更新](./media/storsimple-install-update-option-1/HCS_UpdateBundle-include.png)
 
     5. **[バスケットの表示]** をクリックします。
  
-        ![View basket](./media/storsimple-install-update-option-1/HCS_InstallBasket-include.png)
+        ![バスケットの表示](./media/storsimple-install-update-option-1/HCS_InstallBasket-include.png)
 
     6. **[Download]** をクリックします。ダウンロード先となるローカルの場所を指定または**参照**します。更新プログラムが、選択した場所の **StorSimple Update 1.2 Appliance Update bundle** (KB3063418) フォルダーにダウンロードされます。デバイスからアクセスできるネットワーク共有に、このフォルダーをコピーすることもできます。
     
-	この手順では、ソフトウェア デバイスの更新プログラムを修正プログラムとして、Microsoft Update サーバーからはディスク ファームウェアの更新プログラムを、Azure ポータルからは LSI ドライバーと Windows の更新プログラムをインストールする方法について説明します。ただし、ソフトウェア、ドライバー、およびディスク ファームウェアの更新プログラムをすべて修正プログラムとしてインストールするように選択できます。次に、StorSimple 1.2 SAS Controller Update (KB3043005) および StorSimple 1.2 Disk Firmware Update (KB3063416) をダウンロードし、同じ共有フォルダーに同じにコピーする必要があります。ディスク ファームウェアの更新プログラムを修正プログラムとしてインストールする場合は、[StorSimple 用 Windows PowerShell を使用してメンテナンス モードの修正プログラムをインストールする](storsimple-update-device.md#install-hotfixes-via-windows-powershell-for-storsimple)手順に従ってください。
+	この手順では、ソフトウェア デバイスの更新プログラムを修正プログラムとして、Microsoft Update サーバーからはディスク ファームウェアの更新プログラムを、Azure クラシック ポータルからは LSI ドライバーと Windows の更新プログラムをインストールする方法について説明します。ただし、ソフトウェア、ドライバー、およびディスク ファームウェアの更新プログラムをすべて修正プログラムとしてインストールするように選択できます。次に、StorSimple 1.2 SAS Controller Update (KB3043005) および StorSimple 1.2 Disk Firmware Update (KB3063416) をダウンロードし、同じ共有フォルダーに同じにコピーする必要があります。ディスク ファームウェアの更新プログラムを修正プログラムとしてインストールする場合は、[StorSimple 用 Windows PowerShell を使用してメンテナンス モードの修正プログラムをインストールする](storsimple-update-device.md#install-hotfixes-via-windows-powershell-for-storsimple)手順に従ってください。
     
 	> [AZURE.NOTE]修正プログラムには、ピア コントローラーから潜在的なエラー メッセージをすべて検出するために両方のコントローラーからアクセス可能である必要があります。
             
@@ -101,7 +101,7 @@
     
 9. 中断を伴うディスク ファームウェアの更新プログラムをインストールします。完了には約 30 ～ 45 分かかります。デバイスのシリアル コンソールに接続することで、計画されたメンテナンス期間にこれらをインストールするよう選択できます。ディスク ファームウェアの更新プログラムをインストールする場合は、[StorSimple 用 Windows PowerShell を使用してメンテナンス モードの更新プログラムをインストールする](storsimple-update-device.md#install-maintenance-mode-updates-via-windows-powershell-for-storsimple)手順に従ってください。
 
-10. ディスク ファームウェアの更新プログラムが正常に適用され、デバイスがメンテナンス モードを終了したら、Azure ポータルに戻ります。メンテナンス モードの更新プログラムは、24 時間が経過するまで、ポータルでは更新されません。Azure ポータルから残りの中断を伴わない更新プログラムを適用するまで待機する必要がある場合があります。
+10. ディスク ファームウェアの更新プログラムが正常に適用され、デバイスがメンテナンス モードを終了したら、Azure クラシック ポータルに戻ります。メンテナンス モードの更新プログラムは、24 時間が経過するまで、ポータルでは更新されません。Azure クラシック ポータルから残りの中断を伴わない更新プログラムを適用するまで待機する必要がある場合があります。
 
 11. 更新プログラムを適用する準備ができたら、**[メンテナンス]** ページに移動し、ページの下部にある **[更新プログラムのスキャン]** をクリックします。更新プログラム (ドライバーおよび Windows の更新プログラムを含む) が利用可能なことが通知されます。**[更新プログラムのインストール]** をクリックして、インストールを開始します。すべての更新プログラムが正常にインストールされたら、作業は終了です。
 
@@ -112,4 +112,4 @@
  
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

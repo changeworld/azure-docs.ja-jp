@@ -18,13 +18,13 @@
 
 # Python からサービス管理を使用する方法
 
-このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。**Azure SDK for Python** の [ServiceManagementService](../python-how-to-install.md) クラスは、[管理ポータル][management-portal]で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイメント、データ管理サービスおよび仮想マシンの作成、更新、削除**など) へのプログラムによるアクセスをサポートしています。この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
+このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。**Azure SDK for Python** の [ServiceManagementService](../python-how-to-install.md) クラスは、[Azure クラシック ポータル][management-portal]で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイメント、データ管理サービスおよび仮想マシンの作成、更新、削除**など) の多くへのプログラムによるアクセスをサポートしています。この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
 
 > [AZURE.NOTE]サービス管理 API は、新しいリソース管理 API (現在のところ、プレビュー リリースで使用できます) によって置き換えられます。Python から新しいリソース管理 API を使用する詳細については、「[Azure リソース管理ドキュメント](http://azure-sdk-for-python.readthedocs.org/)」を参照してください。
 
 
 ## <a name="WhatIs"> </a>サービス管理とは
-サービス管理 API を使用すると、[管理ポータル][management-portal]を通じて使用できるサービス管理機能の多くにプログラムでアクセスできます。Azure SDK for Python を使用すると、クラウド サービスとストレージ アカウントを管理できます。
+サービス管理 API を使用すると、[Azure クラシック ポータル][management-portal]を通じて使用できるサービス管理機能の多くにプログラムでアクセスできます。Azure SDK for Python を使用すると、クラウド サービスとストレージ アカウントを管理できます。
 
 サービス管理 API を使用するには、[Azure アカウントを作成する](http://azure.microsoft.com/pricing/free-trial/)必要があります。
 
@@ -32,7 +32,7 @@
 Azure SDK for Python は、REST API である [Azure サービス管理 API][svc-mgmt-rest-api] をラップします。すべての API 操作は SSL 上で実行され、X.509 v3 証明書を使用して相互認証されます。管理サービスへのアクセスは、Azure で実行されているサービス内から行うことも、HTTPS 要求の送信と HTTPS 応答の受信の機能を持つ任意のアプリケーションからインターネット上で直接行うこともできます。
 
 ## <a name="Connect"> </a>方法: サービス管理に接続する
-サービス管理エンドポイントに接続するには、Azure サブスクリプション ID、および有効な管理証明書が必要です。サブスクリプション ID は[管理ポータル][management-portal]から入手できます。
+サービス管理エンドポイントに接続するには、Azure サブスクリプション ID、および有効な管理証明書が必要です。サブスクリプション ID は [Azure クラシック ポータル][management-portal]から入手できます。
 
 > [AZURE.NOTE]Azure SDK for Python v0.8.0 以降、Windows で実行中の OpenSSL で作成した証明書を使用できるようになりました。これには、Python 2.7.4 以降が必要です。.pfx 証明書のサポートは今後削除される可能性があるため、.pfx の代わりに OpenSSL を使用することをお勧めします。
 
@@ -47,7 +47,7 @@ Azure SDK for Python は、REST API である [Azure サービス管理 API][svc
 
 Azure 証明書の詳細については、「[Azure Cloud Services の証明書の概要](./cloud-services-certs-create.md)」を参照してください。OpenSSL のパラメーターの詳細については、[http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html) にあるドキュメントを参照してください。
 
-これらのファイルを作成した後、[管理ポータル][management-portal]の [設定] タブで [アップロード] をクリックして、`.cer` ファイルを Azure にアップロードする必要があります。また、`.pem` ファイルを保存した場所を書き留めておいてください。
+これらのファイルを作成した後、[Azure クラシック ポータル][management-portal]の [設定] タブで [アップロード] をクリックして、`.cer` ファイルを Azure にアップロードする必要があります。また、`.pem` ファイルを保存した場所を書き留めておいてください。
 
 サブスクリプション ID を取得し、証明書を作成して、`.cer` ファイルを Azure にアップロードした後、サブスクリプション ID と `.pem` ファイルへのパスを **ServiceManagementService** に渡すことで、Azure の管理エンドポイントに接続できます。
 
@@ -69,7 +69,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 
 このコマンドにより、`.cer` ファイルが作成され、**個人用**証明書ストアにインストールされます。詳細については、「[Azure Cloud Services の証明書の概要](./cloud-services-certs-create.md)」を参照してください。
 
-証明書を作成した後、[管理ポータル][management-portal]の [設定] タブで [アップロード] をクリックして、`.cer` ファイルを Azure にアップロードする必要があります。
+証明書を作成した後、[Azure クラシック ポータル][management-portal]の [設定] タブで [アップロード] をクリックして、`.cer` ファイルを Azure にアップロードする必要があります。
 
 サブスクリプション ID を取得し、証明書を作成して、`.cer` ファイルを Azure にアップロードした後、サブスクリプション ID と**個人用**証明書ストア内の証明書の場所を **ServiceManagementService** に渡すことで、Azure の管理エンドポイントに接続できます (再度、*AzureCertificate* を証明書の名前に置き換えます)。
 
@@ -435,4 +435,4 @@ Windows 仮想マシンをキャプチャする方法についての詳細は、
 
 [クラウド サービス]: https://azure.microsoft.com/ja-JP/documentation/services/cloud-services/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="復旧された Azure SQL データベースの最終処理を行う"
-   description="ポイント イン タイム リストア、Microsoft Azure SQL Database、データベースの復元、データベースの復旧、Azure の管理ポータル、Azure ポータル"
+   description="ポイント イン タイム リストア、Microsoft Azure SQL Database、データベースの復元、データベースの復旧、Azure クラシック ポータル、Azure クラシック ポータル"
    services="sql-database"
    documentationCenter=""
    authors="elfisher"
@@ -56,4 +56,4 @@
 データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。クライアント アプリケーションで *.database.secure.windows.net パターンのセキュリティで保護された接続文字列を使用している場合は、監査が必要であることを表しています。詳細については、「[SQL Database 監査の使用](sql-database-auditing-get-started.md)」をご覧ください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

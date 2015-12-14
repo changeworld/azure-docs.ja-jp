@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/04/2015"
+	ms.date="12/01/2015"
 	ms.author="tamram;selcint"/>
 
 
@@ -35,17 +35,17 @@ Azure Premium Storage を使用するには、[無料試用版](http://azure.mic
 
 - Premium Storage を使用するには、Premium Storage アカウントが必要です。Premium Storage アカウントの作成方法については、[ディスク向け Premium Storage アカウントの作成と使用](#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)に関するセクションをご覧ください。
 
-- 現在、Premium Storage は [Microsoft Azure プレビュー ポータル](https://portal.azure.com/)で利用できます。Premium Storage には、[Storage REST API](http://msdn.microsoft.com//library/azure/dd179355.aspx) バージョン 2014-02-14 以降、[Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) バージョン 2014-10-01 以降、[Azure PowerShell](../install-configure-powershell.md) バージョン 0.8.10 以降の SDK ライブラリからアクセスできます。
+- Premium Storage は [Azure ポータル](portal.azure.com)で利用できます。Premium Storage には、[Storage REST API](http://msdn.microsoft.com//library/azure/dd179355.aspx) バージョン 2014-02-14 以降、[Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) バージョン 2014-10-01 以降、[Azure PowerShell](../install-configure-powershell.md) バージョン 0.8.10 以降の SDK ライブラリからアクセスできます。
 
 - 現在 Premium Storage をサポートするリージョンの一覧については、「[リージョン別の Azure サービス](http://azure.microsoft.com/regions/#services)」を参照してください。
 
 - Premium Storage は Azure ページ BLOB のみをサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使用されます。Azure ページ BLOB については、[ブロック BLOB とページ BLOB](http://msdn.microsoft.com/library/azure/ee691964.aspx)に関するページをご覧ください。Premium Storage は Azure ブロック BLOB、Azure ファイル、Azure テーブル、Azure キューをサポートしていません。
 
-- Premium Storage アカウントローカル冗長 (LRS) であり、1 つのリージョン内にデータのコピーを 3 つ保持します。Premium Storage を使用するときの geo レプリケーションに関する考慮事項については、この記事の「[Premium Storage を使用するときのスナップショットと Copy BLOB](#snapshots-and-copy-blob-whzh-CNing-premium-storage)」をご覧ください。
+- Premium Storage アカウントローカル冗長 (LRS) であり、1 つのリージョン内にデータのコピーを 3 つ保持します。Premium Storage を使用するときの geo レプリケーションに関する考慮事項については、この記事の「[Premium Storage を使用するときのスナップショットと Copy BLOB](#snapshots-and-copy-blob-whja-JPing-premium-storage)」をご覧ください。
 
 - VM ディスクで Premium Storage アカウントを使用する場合は、DS シリーズまたは GS シリーズの VM を使用する必要があります。DS シリーズまたは GS シリーズの VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使用できます。DS シリーズや GS シリーズ以外の VM では Premium Storage ディスクを使用できません。使用可能な Azure VM ディスクの種類とサイズについては、「[Azure の仮想マシンおよびクラウド サービスのサイズ](../virtual-machines/virtual-machines-size-specs.md)」をご覧ください。
 
-- VM 用の Premium Storage ディスクの設定方法は、Standard Storage ディスクの場合と同じです。使用する Azure ディスクと VM に最適な Premium Storage オプションを選択する必要があります。VM のサイズは、Premium 製品のパフォーマンス特性に基づき、ワークロードに最適なものにします。詳細については、「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whzh-CNing-premium-storage)」をご覧ください。
+- VM 用の Premium Storage ディスクの設定方法は、Standard Storage ディスクの場合と同じです。使用する Azure ディスクと VM に最適な Premium Storage オプションを選択する必要があります。VM のサイズは、Premium 製品のパフォーマンス特性に基づき、ワークロードに最適なものにします。詳細については、「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whja-JPing-premium-storage)」をご覧ください。
 
 - Premium Storage のアカウントをカスタム ドメイン名にマッピングすることはできません。
 
@@ -61,17 +61,17 @@ Azure Premium Storage を使用するには、[無料試用版](http://azure.mic
 
 既存の仮想マシンを Premium Storage に移行する方法の詳細については、「[Azure Premium Storage への移行](storage-migration-to-premium-storage.md)」を参照してください。
 
-Premium Storage のメリットを活用するには、アカウントの種類として *Premium\_LRS* を使用して、Premium Storage アカウントを作成します。アカウントの作成には、[Microsoft Azure プレビュー ポータル](https://portal.azure.com/)、[Azure PowerShell](../install-configure-powershell.md)、または [Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) を使用できます。詳しい手順については、[ディスク向け Premium Storage アカウントの作成と使用](#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)に関するセクションをご覧ください。
+Premium Storage のメリットを活用するには、アカウントの種類として *Premium\_LRS* を使用して、Premium Storage アカウントを作成します。アカウントの作成には、[Azure ポータル](portal.azure.com)、[Azure PowerShell](../install-configure-powershell.md)、または [Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) を使用できます。詳しい手順については、[ディスク向け Premium Storage アカウントの作成と使用](#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)に関するセクションをご覧ください。
 
 ### 重要:
 
-- Premium Storage アカウントの容量と帯域幅の制限の詳細については、「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whzh-CNing-premium-storage)」をご覧ください。アプリケーションのニーズが単一のストレージ アカウントの拡張性ターゲットを上回った場合は、複数のストレージ アカウントを使用するようにアプリケーションを構築し、それらのストレージ アカウント間でデータを分割します。たとえば、多数の VM があり、アタッチするディスクの合計が 51 テラバイト (TB) の場合は、ディスクを 2 つのストレージ アカウントに分散させます。Premium Storage アカウント 1 つあたりの上限は 35 TB であるからです。1 つの Premium Storage アカウントでプロビジョニングするディスクの容量が 35 TB を超えることがないようにしてください。
+- Premium Storage アカウントの容量と帯域幅の制限の詳細については、「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whja-JPing-premium-storage)」をご覧ください。アプリケーションのニーズが単一のストレージ アカウントの拡張性ターゲットを上回った場合は、複数のストレージ アカウントを使用するようにアプリケーションを構築し、それらのストレージ アカウント間でデータを分割します。たとえば、多数の VM があり、アタッチするディスクの合計が 51 テラバイト (TB) の場合は、ディスクを 2 つのストレージ アカウントに分散させます。Premium Storage アカウント 1 つあたりの上限は 35 TB であるからです。1 つの Premium Storage アカウントでプロビジョニングするディスクの容量が 35 TB を超えることがないようにしてください。
 - 既定では、ディスクのキャッシュ ポリシーは、すべてのPremium データ ディスクに対して「読み取り専用」、VM にアタッチされた Premium オペレーティング システム ディスクに対して「読み取り/書き込み」です。アプリケーションの I/O のパフォーマンスを最適化するには、この構成をお勧めします。書き込み量の多いディスクや書き込み専用のディスク (SQL Server ログ ファイルなど) の場合は、ディスク キャッシュを無効にすることで、アプリケーションのパフォーマンスを向上できる場合があります。
 - ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。たとえば、STANDARD\_DS1 VM では、Premium Storage ディスク トラフィック専用の帯域幅は 32 MB/秒です。つまり、この VM にアタッチされている Premium Storage ディスクが P10 の場合も、32 MB/秒が上限となり、P10 ディスクのスループットの上限である 100 MB に達することはありません。同様に、STANDARD\_DS13 VM 1 つあたりの全ディスクの帯域幅は最大 256 MB/秒です。現時点では、DS シリーズ最大の VM は STANDARD\_DS14 であり、この VM の全ディスクの帯域幅は最大 512 MB/秒です。現時点では、DS シリーズ最大の VM は STANDARD\_GS5 であり、この VM の全ディスクの帯域幅は最大 2000 MB/秒です。
 
 	これらの制限は、ディスク トラフィックのみを対象としており、キャッシュ ヒットとネットワーク トラフィックは対象外となります。VM のネットワーク トラフィックの帯域幅は別に用意されており、Premium Storage ディスク専用の帯域幅とは区別されています。
 	
-	DS シリーズと GS シリーズの VM の最大 IOPS、およびスループット (帯域幅) の最新の情報は次を参照してください。[仮想マシンと Azure のクラウド サービス サイズ](../virtual-machines/virtual-machines-size-specs.md)Premium Storage のディスクそれぞれの IOPS とスループット上限については、この記事の「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whzh-CNing-premium-storage)」のセクションにある表を参照してください。
+	DS シリーズと GS シリーズの VM の最大 IOPS、およびスループット (帯域幅) の最新の情報は次を参照してください。[仮想マシンと Azure のクラウド サービス サイズ](../virtual-machines/virtual-machines-size-specs.md)Premium Storage のディスクそれぞれの IOPS とスループット上限については、この記事の「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whja-JPing-premium-storage)」のセクションにある表を参照してください。
 
 > [AZURE.NOTE]キャッシュ ヒットには、ディスクの割り当て済みの IOPS とスループットによる制限はありません。つまり、DS シリーズ VM または GS シリーズ VM でキャッシュを読み取り専用に設定したデータ ディスクを使用する場合、そのキャッシュからの読み取りは、Premium Storage のディスク制限の対象にはなりません。そのため、ワークロードの大部分が読み取りの場合、ディスクから非常に高いスループットが得られます。キャッシュには、VM サイズに基づいて、VM レベルで IOPS とスループットの個別の制限が適用されます。DS シリーズ VM は、IOPS が約 4000 で、キャッシュとローカル SSD の IO がコアあたり 33 MB/秒です。
 
@@ -201,9 +201,9 @@ Premium Storage 上で Linux VM を設定するときは、次の重要な手順
 	- **XFS**: バリアを無効にするには、マウント オプション "nobarrier" を使用します (バリアを有効にするには "barrier" を使用します)。
 
 - Premium Storage ディスクのキャッシュ設定が ReadWrite の場合は、書き込みの耐久性を保証するためにバリアを有効にしてください。
-- VM を再起動してもボリューム ラベルが変更されないようにするには、ディスクに対する UUID 参照で /etc/fstab を更新する必要があります。「[データ ディスクを Linux 仮想マシンに接続する方法](http://azure.microsoft.com/documentation/articles/virtual-machines-linux-how-to-attach-disk)」も参照してください。
+- VM を再起動してもボリューム ラベルが変更されないようにするには、ディスクに対する UUID 参照で /etc/fstab を更新する必要があります。「[データ ディスクを Linux 仮想マシンに接続する方法](../virtual-machines/virtual-machines-linux-how-to-attach-disk)」も参照してください。
 
-次に示す Linux ディストリビューションは、Premium Storage での検証が完了しています。Premium Storage を使用するときのパフォーマンスと安定性を高めるために、VM をこれらのバージョン (以降) の少なくとも 1 つにアップグレードすることをお勧めします。また、バージョンによっては最新の LIS (Linux Integration Services v4.0 for Microsoft Azure) が必要になります。下記のリンクからダウンロードとインストールを行ってください。マイクロソフトは今後もイメージの検証を行い、この一覧に追加していきます。これらのイメージのパフォーマンスは変動することが検証時に判明しています。また、ワークロードの特性とイメージの設定にも依存することにご注意ください。ワークロードの種類に応じて、異なるイメージをチューニングします。<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;"> <tbody> <tr> <td><strong>ディストリビューション</strong></td> <td><strong>バージョン</strong></td> <td><strong>サポートされているカーネル</strong></td> <td><strong>サポートされているイメージ</strong></td> </tr> <tr> <td rowspan="4"><strong>Ubuntu</strong></td> <td>12.04</td> <td>3.2.0-75.110</td> <td>Ubuntu-12\_04\_5-LTS-amd64-server-20150119-zh-CN-30GB</td> </tr> <tr> <td>14.04</td> <td>3.13.0-44.73</td> <td>Ubuntu-14\_04\_1-LTS-amd64-server-20150123-zh-CN-30GB</td> </tr> <tr> <td>14.10</td> <td>3.16.0-29.39</td> <td>Ubuntu-14\_10-amd64-server-20150202-zh-CN-30GB</td> </tr> <tr> <td>15.04</td> <td>3.19.0-15</td> <td>Ubuntu-15\_04-amd64-server-20150422-zh-CN-30GB</td> </tr> <tr> <td><strong>SUSE</strong></td> <td>SLES 12</td> <td>3.12.36-38.1</td> <td>suse-sles-12-priority-v20150213<br>suse-sles-12-v20150213</td> </tr> <tr> <td><strong>CoreOS</strong></td> <td>584.0.0</td> <td>3.18.4</td> <td>CoreOS 584.0.0</td> </tr> <tr> <td rowspan="2"><strong>CentOS</strong></td> <td>6.5、6.6、6.7、7.0</td> <td></td> <td><a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (必須)</a></br> *以下の注記参照 </td> </tr> <tr> <td>7.1 </td> <td>3.10.0-229.1.2.el7 </td><td> <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (推奨)</a> <br/>*以下の注記参照</td> </tr>
+次に示す Linux ディストリビューションは、Premium Storage での検証が完了しています。Premium Storage を使用するときのパフォーマンスと安定性を高めるために、VM をこれらのバージョン (以降) の少なくとも 1 つにアップグレードすることをお勧めします。また、バージョンによっては最新の LIS (Linux Integration Services v4.0 for Microsoft Azure) が必要になります。下記のリンクからダウンロードとインストールを行ってください。マイクロソフトは今後もイメージの検証を行い、この一覧に追加していきます。これらのイメージのパフォーマンスは変動することが検証時に判明しています。また、ワークロードの特性とイメージの設定にも依存することにご注意ください。ワークロードの種類に応じて、異なるイメージをチューニングします。<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;"> <tbody> <tr> <td><strong>ディストリビューション</strong></td> <td><strong>バージョン</strong></td> <td><strong>サポートされているカーネル</strong></td> <td><strong>サポートされているイメージ</strong></td> </tr> <tr> <td rowspan="4"><strong>Ubuntu</strong></td> <td>12.04</td> <td>3.2.0-75.110</td> <td>Ubuntu-12\_04\_5-LTS-amd64-server-20150119-ja-JP-30GB</td> </tr> <tr> <td>14.04</td> <td>3.13.0-44.73</td> <td>Ubuntu-14\_04\_1-LTS-amd64-server-20150123-ja-JP-30GB</td> </tr> <tr> <td>14.10</td> <td>3.16.0-29.39</td> <td>Ubuntu-14\_10-amd64-server-20150202-ja-JP-30GB</td> </tr> <tr> <td>15.04</td> <td>3.19.0-15</td> <td>Ubuntu-15\_04-amd64-server-20150422-ja-JP-30GB</td> </tr> <tr> <td><strong>SUSE</strong></td> <td>SLES 12</td> <td>3.12.36-38.1</td> <td>suse-sles-12-priority-v20150213<br>suse-sles-12-v20150213</td> </tr> <tr> <td><strong>CoreOS</strong></td> <td>584.0.0</td> <td>3.18.4</td> <td>CoreOS 584.0.0</td> </tr> <tr> <td rowspan="2"><strong>CentOS</strong></td> <td>6.5、6.6、6.7、7.0</td> <td></td> <td><a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (必須)</a></br> *以下の注記参照 </td> </tr> <tr> <td>7.1 </td> <td>3.10.0-229.1.2.el7 </td><td> <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (推奨)</a> <br/>*以下の注記参照</td> </tr>
 
 <tr>
 	<td rowspan="2"><strong>Oracle</strong></td>
@@ -233,7 +233,7 @@ OpenLogic CentOS VM を実行しているお客様は、次のコマンドを実
 ## Premium Storage を使用するときの料金と課金
 Premium Storage を使用するときには、課金に関する次の考慮事項が適用されます。
 
-- Premium Storage ディスクへの課金はプロビジョニングしたディスクのサイズによって異なります。Azure は、ディスク サイズ (切り上げたもの) を「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whzh-CNing-premium-storage)」にある表で指定されている、最も近い Premium Storage ディスク オプションにマッピングしますプロビジョニングされたディスクには、Premium Storage プランの月額料金を使用して、時間割りで計算して課金されます。たとえば、P10 ディスクをプロビジョニングし、20 時間後にそのディスクを削除した場合は、P10 製品の 20 時間分に対して課金されます。これは、実際にディスクに書き込まれたデータの量や、使用した IOPS/スループットには関係ありません。
+- Premium Storage ディスクへの課金はプロビジョニングしたディスクのサイズによって異なります。Azure は、ディスク サイズ (切り上げたもの) を「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whja-JPing-premium-storage)」にある表で指定されている、最も近い Premium Storage ディスク オプションにマッピングしますプロビジョニングされたディスクには、Premium Storage プランの月額料金を使用して、時間割りで計算して課金されます。たとえば、P10 ディスクをプロビジョニングし、20 時間後にそのディスクを削除した場合は、P10 製品の 20 時間分に対して課金されます。これは、実際にディスクに書き込まれたデータの量や、使用した IOPS/スループットには関係ありません。
 - Premium Storage でのスナップショットについては、スナップショットで使用した追加の容量に対して課金されます。スナップショットの詳細については、「[BLOB のスナップショットの作成](http://msdn.microsoft.com/library/azure/hh488361.aspx)」をご覧ください。
 - [送信データ転送](http://azure.microsoft.com/pricing/details/data-transfers/) (Azure データ センターから送信されるデータ) では、帯域幅の使用量に対して課金されます。
 
@@ -250,11 +250,7 @@ Premium Storage、DS シリーズの VM、GS シリーズの VM の料金につ�
 
 ここでは、Azure プレビュー ポータルを使用して Premium Storage アカウントを作成する方法を説明します。
 
-1.	[Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。まだサブスクリプションをお持ちでない場合は、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)をお試しください。
-
-
-    > [AZURE.NOTE]Microsoft Azure 管理ポータルにログインする場合は、ポータルの右上にあるユーザー アカウント名をクリックします。次に、**[新しいポータルに切り替え]** をクリックします。
-
+1.	[Azure ポータル](portal.azure.com)にサインインします。まだサブスクリプションをお持ちでない場合は、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)をお試しください。
 
 2.	ハブ メニューの **[新規]** をクリックします。
 
@@ -314,7 +310,7 @@ azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 #### DS シリーズの仮想マシンを作成する
 
 	azure vm create -z "Standard_DS2" -l "west us" -e 22 "premium-test-vm"
-		"b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-zh-CN-30GB" -u "myusername" -p "passwd@123"
+		"b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-ja-JP-30GB" -u "myusername" -p "passwd@123"
 
 #### 仮想マシンに関する情報を表示する
 
@@ -335,9 +331,8 @@ azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 - [Windows を実行する仮想マシンの作成](../virtual-machines-windows-tutorial-azure-preview.md)
 - [Azure の仮想マシンおよびクラウド サービスのサイズ](../virtual-machines/virtual-machines-size-specs.md)
 - [Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
-- [MSDN リファレンス](http://msdn.microsoft.com/library/azure/gg433040.aspx)
 
 [Image1]: ./media/storage-premium-storage-preview-portal/Azure_pricing_tier.png
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

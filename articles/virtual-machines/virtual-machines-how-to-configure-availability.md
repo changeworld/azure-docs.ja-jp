@@ -1,6 +1,6 @@
 <properties
 	pageTitle="VM の可用性セットを構成する | Microsoft Azure"
-	description="Azure ポータルと Azure PowerShell を使用して新規または既存の仮想マシンに対する可用性セットをクラシック デプロイ モデルで構成します。"
+	description="Azure クラシック ポータルと Azure PowerShell を使用して新規または既存の仮想マシンに対する可用性セットをクラシック デプロイ モデルで構成します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -35,11 +35,11 @@
 
 ## <a id="createset"> </a>オプション 1: 仮想マシンと可用性セットを同時に作成する##
 
-Azure ポータルを使用する方法と、Azure PowerShell コマンドを使用する方法があります。
+Azure クラシック ポータルを使用する方法と、Azure PowerShell コマンドを使用する方法があります。
 
-Azure ポータルを使用するには。
+Azure クラシック ポータルを使用するには:
 
-1. まだサインインしていない場合は、Azure ポータルにサインインします。
+1. まだサインインしていない場合は、Azure クラシック ポータルにサインインします。
 
 2. コマンド バーで、**[新規]** をクリックします。
 
@@ -72,9 +72,9 @@ Azure PowerShell コマンド使用して Azure 仮想マシンを作成し、�
 
 ## <a id="addmachine"> </a>オプション 2: 既存の仮想マシンを可用性セットに追加する##
 
-Azure ポータルでは、既存の仮想マシンを既存の可用性セットに追加することも、既存の仮想マシン用に新しい可用性セットを作成することもできます(同じ可用性セット内の仮想マシンは同じクラウド サービスに属する必要がある点に留意してください)。 いずれの場合も、手順はほとんど同じです。Azure PowerShell では、既存の仮想マシンを既存の可用性セットに追加できます。
+Azure クラシック ポータルでは、既存の仮想マシンを既存の可用性セットに追加することも、既存の仮想マシン用に新しい可用性セットを作成することもできます(同じ可用性セット内の仮想マシンは同じクラウド サービスに属する必要がある点に留意してください)。 いずれの場合も、手順はほとんど同じです。Azure PowerShell では、既存の仮想マシンを既存の可用性セットに追加できます。
 
-1. まだサインインしていない場合は、Azure ポータルにサインインします。
+1. まだサインインしていない場合は、Azure クラシック ポータルにサインインします。
 
 2. コマンド バーで **[Virtual Machines]** をクリックします。
 
@@ -112,4 +112,4 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 [Virtual Network の概要]: virtual-networks-overview.md
 [サービス管理での仮想マシンの操作に関する記事]: virtual-machines-service-management-articles.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

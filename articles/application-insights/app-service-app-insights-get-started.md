@@ -12,14 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/17/2015" 
+	ms.date="11/25/2015" 
 	ms.author="awills"/>
  
 # Visual Studio Application Insights
 
 Application Insights は、実行中のアプリケーションを監視する拡張可能な分析サービスです。パフォーマンスの問題の検出と診断や、ユーザーがアプリを使用して実際に実行する操作の理解に役立ちます。開発者向けに設計された Application Insights を使用すると、アプリのパフォーマンスやユーザビリティを継続的に向上させることができます。
 
-![ユーザー アクティビティの統計をグラフ化したり、特定のイベントをドリルダウンしたりすることができます。](./media/app-insights-overview/00-sample.png)
+![ユーザー アクティビティの統計をグラフ化したり、特定のイベントをドリルダウンしたりすることができます。](./media/app-service-app-insights-get-started/00-sample.png)
 
 さまざまなプラットフォーム上の Web アプリやスタンドアロン アプリ (オンプレミスまたはクラウドでホストされた .NET または J2EE など) と連携します。
 
@@ -43,7 +43,7 @@ Application Insights は、開発チームを支援することを目的とし�
 
 詳細な分析が必要? データを [SQL](app-insights-code-sample-export-telemetry-sql-database.md)、[Power BI](app-insights-export-power-bi.md)、または独自のツールに[エクスポート](app-insights-export-telemetry.md)します。
 
-![Power BI でのデータ表示](./media/app-insights-overview/210.png)
+![Power BI でのデータ表示](./media/app-service-app-insights-get-started/210.png)
 
 ## プラットフォームと言語
 
@@ -65,7 +65,7 @@ Application Insights では、再構築せずに、IIS 上の既存の ASP.NET W
 
 小規模の SDK をアプリケーションにインストールし、Application Insights ポータルにアカウントを設定します。SDK はアプリを監視し、テレメトリ データをポータルに送信します。ポータルは統計グラフを表示し、問題の診断に役立つ高性能な検索ツールを提供します。
 
-![アプリの Application Insights SDK はテレメトリを Azure ポータルの Application Insights リソースに送信します。](./media/app-insights-overview/01-scheme.png)
+![アプリの Application Insights SDK はテレメトリを Azure ポータルの Application Insights リソースに送信します。](./media/app-service-app-insights-get-started/01-scheme.png)
 
 SDK には、ユーザー、セッション、パフォーマンスをカウントする目的などでテレメトリを集めるモジュールがいくつかあります。テレメトリ データをポータルに送信する独自のコードを記述することもできます。カスタムのテレメトリはユーザー ストーリーを追跡する際に特に便利です。ボタンのクリック、特定の目標の達成、ユーザーのミスなどのイベントをカウントできます。
 
@@ -132,7 +132,7 @@ Visual Studio を使用しない場合、またはプロジェクトでこれら
 [client]: app-insights-javascript.md
 [desktop]: app-insights-windows-desktop.md
 [detect]: app-insights-detect-triage-diagnose.md
-[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[greenbrown]: app-insights-asp-net.md
 [ios]: https://github.com/Microsoft/ApplicationInsights-iOS
 [java]: app-insights-java-get-started.md
 [knowUsers]: app-insights-overview-usage.md
@@ -144,4 +144,4 @@ Visual Studio を使用しない場合、またはプロジェクトでこれら
 
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

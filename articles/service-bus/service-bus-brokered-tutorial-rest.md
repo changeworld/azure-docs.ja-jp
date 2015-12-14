@@ -27,9 +27,9 @@
 
 1. サービス名前空間を作成する方法について詳しくは、「[Service Bus Service 名前空間の管理](https://msdn.microsoft.com/library/azure/hh690928.aspx)」セクションの「[方法: Service Bus Service 名前空間を作成または変更する](https://msdn.microsoft.com/library/azure/hh690931.aspx)」トピックをご覧ください。
 
-1. Azure ポータルのメイン ウィンドウで、前の手順で作成した名前空間の名前をクリックします。
+1. [Azure クラシック ポータル][]のメイン ウィンドウで、前の手順で作成した名前空間の名前をクリックします。
 
-1. **[構成]** タブをクリックします。
+1. [**構成**] タブをクリックします。
 
 1. **[共有アクセス キー生成コンポーネント]** セクションで、**RootManageSharedAccessKey** ポリシーに関連付けられている **[プライマリ キー]** をメモしておくか、クリップボードにコピーします。この値は、このチュートリアルの後半で使用します。
 
@@ -629,4 +629,6 @@ namespace Microsoft.ServiceBus.Samples
 - [Service Bus の基礎](fundamentals-service-bus-hybrid-solutions.md)
 - [Service Bus リレー型メッセージングの REST チュートリアル](service-bus-relay-rest-tutorial.md)
 
-<!---HONumber=Oct15_HO3-->
+[Azure クラシック ポータル]: http://manage.windowsazure.com
+
+<!---HONumber=AcomDC_1203_2015-->

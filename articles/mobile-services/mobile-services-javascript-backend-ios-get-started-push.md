@@ -33,7 +33,7 @@
 
 ## <a id="update-scripts"></a>プッシュ通知を送信するようにバックエンド スクリプトを更新する
 
-* 管理ポータルで、[**データ**] タブをクリックしてから **TodoItem**をクリックします。**[TodoItem]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。**TodoItem** テーブルで挿入が発生したときに呼び出される関数が表示されます。
+* [Azure クラシック ポータル]で、**[データ]** タブ、**[TodoItem]** の順にクリックします。**[TodoItem]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。**TodoItem** テーブルで挿入が発生したときに呼び出される関数が表示されます。
 
 * insert 関数を次のコードに置き換え、[**保存**] をクリックします。これで、新しい挿入スクリプトが登録されます。このスクリプトは [apns オブジェクト]を使用して、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。このスクリプトでは、プッシュ通知を受け取るためにアプリケーションを閉じる時間を与えるために通知の送信を遅らせています。
 
@@ -106,7 +106,7 @@
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 [Mobile Services の使用]: mobile-services-ios-get-started.md
 [Get started with authentication]: mobile-services-ios-get-started-users.md
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [apns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
 [Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
@@ -117,4 +117,4 @@
 [Send template-based notifications to subscribers]: ../notification-hubs-ios-send-localized-breaking-news.md
 [Mobile Services Objective-C how-to conceptual reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

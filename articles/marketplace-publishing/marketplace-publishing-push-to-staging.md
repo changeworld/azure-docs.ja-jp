@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="10/09/2015"
+   ms.date="11/30/2015"
    ms.author="hascipio"/>
 
 # マーケティング コンテンツを使用したプラン作成の実行
@@ -160,4 +160,4 @@ Marketplace コンテンツが読み込まれたので、プランのステー�
 [link-pubportal]: https://publish.windowsazure.com
 [link-push-to-production]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

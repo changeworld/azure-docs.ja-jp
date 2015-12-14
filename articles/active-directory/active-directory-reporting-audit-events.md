@@ -13,10 +13,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/21/2015"
+   ms.date="11/30/2015"
    ms.author="kenhoff"/>
 
 # Azure Active Directory 監査レポートのイベント
+
+## ドキュメント記事のレポート
+
+ - [Reporting API](active-directory-reporting-api-getting-started.md)
+ - [イベントの監査](active-directory-reporting-audit-events.md)
+ - [保持](active-directory-reporting-retention.md)
+ - [プレビュー](active-directory-reporting-previews.md)
+ - [Search](active-directory-reporting-search.md)
+ - [バックフィル](active-directory-reporting-backfill.md)
+ - [待機時間](active-directory-reporting-latencies.md)
+ - ["Unknown Actor"　イベント](active-directory-reporting-unknown-actor.md)
+
 Azure Active Directory 監査レポートを利用すると、Azure Active Directory で発生した特権アクションを識別できます。特権アクションとしては、昇格の変更 (例: ロールの作成、パスワードのリセット)、ポリシー構成の変更 (例: パスワード ポリシー)、ディレクトリ構成の変更 (例: ドメインのフェデレーション設定の変更) などがあります。レポートでは、イベント名、アクションを実行したアクター、変更によって影響を受けた対象リソース、日時 (UTC) に関する監査レコードが提供されます。「[アクセス レポートと状況レポートの表示](active-directory-view-access-usage-reports.md)」で説明したように、ユーザーは、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)を使用して Azure Active Directory に対する監査イベントのリストを取得できます。アクセスおよび使用状況レポートを表示します。
 
 
@@ -119,4 +131,4 @@ TelephoneNumber | ユーザーの電話番号です。
 
 監査レコードは、多くの法令遵守に必要な管理です。Azure Active Directory 監査レポートを使用してコンプライアンス規制に対応するお客様の場合、お客様がエクスポートした監査レポートのコピーにこのヘルプ トピックのコピーを添えて提出し、レポートの詳細な説明に役立てることをお勧めします。Azure が現在を満たしているコンプライアンス規制についての情報を監査担当者が必要としている場合は、監査担当者に Microsoft Azure セキュリティ センターの[コンプライアンス ページ](http://azure.microsoft.com/support/trust-center/compliance/)を紹介してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

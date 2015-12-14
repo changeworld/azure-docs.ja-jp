@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="11/25/2015"
-	ms.author="rgarodia, azuresbcic"/>
+	ms.author="rgarodia"/>
 
 # Azure にサインアップしようとしたところ、クレジット カードが承認されません
 この記事では、クレジット カードやデビット カードを使用してサインアップ際に発生する問題の一般的な原因について説明します。
@@ -64,4 +64,4 @@ Azure 無料試用版プランでは、無償試用版を 1 回しかアクテ�
 ## Azure サポートへのお問い合わせ
 前述のトラブルシューティング手順を実行してもサインアップに関する問題が解決しない場合は、[Azure サポート](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)にお問い合わせください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -400,7 +400,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 | displayName | ○| |
 | ms-DS-CreatorSID | ○| registeredOwnerReference とも呼ばれます。|
 | objectGUID | ○| deviceID とも呼ばれます。|
-| objectSID | ○| omPremisesSecurityIdentifier とも呼ばれます。|
+| objectSID | ○| onPremisesSecurityIdentifier とも呼ばれます。|
 | operatingSystem | ○| deviceOSType とも呼ばれます。|
 | operatingSystemVersion | ○| deviceOSVersion とも呼ばれます。|
 | userCertificate | ○| |
@@ -435,4 +435,4 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

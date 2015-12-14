@@ -1,6 +1,6 @@
 <properties
 	pageTitle="高可用性の Active Directory ドメイン サービス ARM テンプレート | Microsoft Azure"
-	description="リソース マネージャー テンプレートと、Azure プレビュー ポータル、Azure PowerShell、または Azure CLI を使用して Active Directory ドメイン サービスのドメイン コントローラーとして機能する 2 つのサーバーを簡単にデプロイします。"
+	description="リソース マネージャー テンプレートと、Azure ポータル、Azure PowerShell、または Azure CLI を使用して Active Directory ドメイン サービスのドメイン コントローラーとして機能する 2 つのサーバーを簡単にデプロイします。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="davidmu1"
@@ -26,11 +26,11 @@
 
 ![](./media/virtual-machines-workload-template-ad-domain/two-server-ad.png)
 
-テンプレートは、Azure プレビュー ポータル、Azure PowerShell、または Azure CLI を使用して実行できます。
+テンプレートは、Azure ポータル、Azure PowerShell、または Azure CLI を使用して実行できます。
 
-## Azure プレビュー ポータル
+## Azure ポータル
 
-リソース マネージャー テンプレートや Azure プレビュー ポータルを使用してこのワークロードをデプロイするには、[ここ](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Factive-directory-new-domain-ha-2-dc%2Fazuredeploy.json)をクリックします。
+リソース マネージャー テンプレートと Azure ポータルを使ってこのワークロードをデプロイするには、[ここ](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Factive-directory-new-domain-ha-2-dc%2Fazuredeploy.json)をクリックします。
 
 ![](./media/virtual-machines-workload-template-ad-domain/azure-portal-template.png)
 
@@ -108,4 +108,4 @@
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

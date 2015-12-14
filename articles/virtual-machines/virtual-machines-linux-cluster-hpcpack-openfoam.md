@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="big-compute"
- ms.date="11/22/2015"
+ ms.date="11/25/2015"
  ms.author="danlep"/>
 
 # Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFoam を実行する
@@ -114,7 +114,7 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 
 2. 標準的な Windows Server 手順を使用して、クラスターの Active Directory ドメインにドメイン ユーザー アカウントを作成します。たとえば、ヘッド ノードで Active Directory ユーザーとコンピューター ツールを使用します。この記事の例では、hpclab\\hpcuser という名前のドメイン ユーザーを作成することを前提とします。
 
-3.	C:\\cred.xml という名前のファイルを作成し、そこに RSA キーのデータをコピーします。このファイルの例については、この記事の最後にある付録を参照してください。
+3.	C:\\cred.xml という名前のファイルを作成し、そこに RSA キーのデータをコピーします。このファイルの例については、この記事の最後にあるサンプル ファイルを参照してください。
 
     ```
     <ExtendedData>
@@ -176,7 +176,7 @@ RDMA ネットワークで OpenFOAM を MPI ジョブとして実行するには
     clusrun /nodegroup:LinuxNodes tar -xzf /opt/intel/l_mpi_p_5.0.3.048.tgz -C /opt/intel/
     ```
 
-2.  Intel MPI Library をサイレント インストールするには、silent.cfg ファイルを使用します。このファイルの例については、この記事の最後にある付録を参照してください。このファイルを共有フォルダー /openfoam に格納します。silent.cfg ファイルの詳細については、[Intel MPI Library for Linux インストール ガイドのサイレント インストール](http://scc.ustc.edu.cn/zlsc/tc4600/intel/impi/INSTALL.html#silentinstall)に関するページを参照してください。
+2.  Intel MPI Library をサイレント インストールするには、silent.cfg ファイルを使用します。例については、この記事の最後にあるサンプル ファイルを参照してください。このファイルを共有フォルダー /openfoam に格納します。silent.cfg ファイルの詳細については、[Intel MPI Library for Linux インストール ガイドのサイレント インストール](http://scc.ustc.edu.cn/zlsc/tc4600/intel/impi/INSTALL.html#silentinstall)に関するページを参照してください。
 
     >[AZURE.TIP]silent.cfg ファイルは必ず、Linux の改行コード (CR LF ではなく LF のみ) でテキスト ファイルとして保存してください。これにより、スクリプトは Linux ノード上で適切に動作します。
 
@@ -188,20 +188,20 @@ RDMA ネットワークで OpenFOAM を MPI ジョブとして実行するには
     
 ### MPI の構成
 
-テストを行うため、Linux ノード上の /etc/security/limits.conf に以下の行を追加してください。
+テストを行うため、各 Linux ノード上の /etc/security/limits.conf に以下の行を追加してください。
 
 ```
 *               hard    memlock         unlimited
 *               soft    memlock         unlimited
 ```
 
-C:\\OpenFoam に limits.conf というファイルを作成 (このテキスト ファイルは Linux の改行コードで保存すること) し、次のコマンドを実行して Linux ノードにコピーします。
+limits.conf ファイルを更新した後で Linux ノードを再起動します。たとえば、次の **clusrun** コマンドを使用します。
 
 ```
-clusrun /nodegroup:LinuxNodes cp /openfoam/limits.conf /etc/security
+clusrun /nodegroup:LinuxNodes systemctl reboot
 ```
 
-limits.confile を更新した後で Linux ノードを再起動します。再起動後、共有フォルダーが /openfoam としてマウントされていることを確認してください。
+再起動後、共有フォルダーが /openfoam としてマウントされていることを確認してください。
 
 ### OpenFOAM のコンパイルとインストール
 
@@ -218,25 +218,33 @@ limits.confile を更新した後で Linux ノードを再起動します。再�
     clusrun /nodegroup:LinuxNodes tar -xzf /opt/OpenFOAM/OpenFOAM-2.3.1.tgz -C /opt/OpenFOAM/
     ```
 
-2.  Intel MPI Library を使って OpenFOAM をコンパイルするにはまず、Intel MPI と OpenFOAM の両方について、いくつかの環境変数を設定します。設定には settings.sh という bash スクリプトを使用します。このファイルの例については、この記事の最後にある付録を参照してください。このファイルを共有フォルダー /openfoam に格納します (Linux の改行コードで保存すること)。このファイルには、後で OpenFOAM ジョブを実行するときに使用する MPI と OpenFOAM のランタイムの設定が格納されています。
+2.  Intel MPI Library を使って OpenFOAM をコンパイルするにはまず、Intel MPI と OpenFOAM の両方について、いくつかの環境変数を設定します。設定には settings.sh という bash スクリプトを使用します。例については、この記事の最後にあるサンプル ファイルを参照してください。このファイルを共有フォルダー /openfoam に格納します (Linux の改行コードで保存すること)。このファイルには、後で OpenFOAM ジョブを実行するときに使用する MPI と OpenFOAM のランタイムの設定が格納されています。
 
-3. OpenFOAM をコンパイルするために必要な依存パッケージをインストールします。そのために、Linux のディストリビューションによっては、最初に多数のリポジトリを追加しなけれならないことがあります。この記事の最後の付録に、一連のリポジトリとパッケージを記載してあります。個々の Linux ノードに ssh で接続し、コマンドが正しく動作することを確認するようお勧めします。
+3. OpenFOAM をコンパイルするために必要な依存パッケージをインストールします。そのために、Linux のディストリビューションによっては、最初にリポジトリの追加が必要になる場合があります。次のような **clusrun** コマンドを実行します。
+
+    ```
+    clusrun /nodegroup:LinuxNodes zypper ar http://download.opensuse.org/distribution/13.2/repo/oss/suse/ opensuse
+    
+    clusrun /nodegroup:LinuxNodes zypper -n --gpg-auto-import-keys install --repo opensuse --force-resolution -t pattern devel_C_C++
+    ```
+    
+    必要な場合は、個々の Linux ノードに ssh で接続し、コマンドが正しく動作することを確認します。
 
 4.  以下のコマンドを実行して、OpenFOAM をコンパイルします。コンパイル処理は完了までに少し時間がかかります。また、大量のログ情報が標準出力に生成されるので、**/interleaved** オプションを使用して、少しずつ出力が表示されるようにしてください。
 
     ```
     clusrun /nodegroup:LinuxNodes /interleaved source /openfoam/settings.sh `&`& /opt/OpenFOAM/OpenFOAM-2.3.1/Allwmake
     ```
-
->[AZURE.NOTE]コマンドの “`” 記号は PowerShell のエスケープ記号です。“`&” は “&” がコマンドの一部であることを意味します。
+    
+    >[AZURE.NOTE]コマンドの “`” 記号は PowerShell のエスケープ記号です。“`&” は “&” がコマンドの一部であることを意味します。
 
 ## OpenFOAM ジョブを実行するための準備
 
-ここでは、sloshingTank3D (OpenFoam サンプルの 1 つ) という MPI ジョブを 2 つの Linux ノード上で実行するための準備を行います。この例の /opt/openfoam231 は、Linux ノード上の OpenFOAM のインストール パスです。
+ここでは、sloshingTank3D (OpenFoam サンプルの 1 つ) という MPI ジョブを 2 つの Linux ノード上で実行するための準備を行います。
 
 ### ランタイム環境のセットアップ
 
-すべての Linux ノードに MPI と OpenFOAM のランタイム環境をセットアップするには、ヘッド ノードの Windows PowerShell ウィンドウで次のコマンドを実行します。
+すべての Linux ノードに MPI と OpenFOAM のランタイム環境をセットアップするには、ヘッド ノードの Windows PowerShell ウィンドウで次のコマンドを実行します。(このコマンドは、SUSE Linux に対してのみ有効です。)
 
 ```
 clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
@@ -305,7 +313,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 
     **Bash スクリプト ラッパー**
 
-    Linux ノードが多数存在し、なおかつその一部でのみジョブを実行する場合、固定ホスト ファイルの使用はお勧めできません。どのノードがジョブに割り当てられるかを把握できないためです。この場合は、**mpirun** の bash スクリプト ラッパーを作成し、ホスト ファイルを自動的に作成してください。この記事の最後にある付録で bash スクリプト ラッパーのサンプル (hpcimpirun.sh) を探し、/openfoam/hpcimpirun.sh として保存してください。そのサンプル スクリプトでは、次の処理が実行されます。
+    Linux ノードが多数存在し、なおかつその一部でのみジョブを実行する場合、固定ホスト ファイルの使用はお勧めできません。どのノードがジョブに割り当てられるかを把握できないためです。この場合は、**mpirun** の bash スクリプト ラッパーを作成し、ホスト ファイルを自動的に作成してください。この記事の最後にあるサンプル ファイルで bash スクリプト ラッパーのサンプル (hpcimpirun.sh) を探し、/openfoam/hpcimpirun.sh として保存してください。そのサンプル スクリプトでは、次の処理が実行されます。
 
     1.	RDMA ネットワークを介して MPI ジョブを実行するために、**mpirun** の環境変数に加え、いくつかのコマンド パラメーターを設定します。このケースでは、次の設定が行われます。
 
@@ -371,10 +379,12 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
         *   **コマンドライン** - `source /openfoam/settings.sh && decomposePar -force > /openfoam/decomposePar${CCP_JOBID}.log`
     
         *   **作業ディレクトリ** - /openfoam/sloshingTank3D
+        
+        次の図を参照してください。残りのタスクも同様に構成します。
 
         ![Task 1 details][task_details1]
 
-    *   **タスク 2**: **interDyMFoam** を並列実行してサンプルを計算します。
+    *   **タスク 2**:**interDyMFoam** を並列実行してサンプルを計算します。
 
         *   このタスクには 2 つのノードを割り当てます。
 
@@ -382,9 +392,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 
         *   **作業ディレクトリ** - /openfoam/sloshingTank3D
 
-        ![Task 2 details][task_details2]
-
-    *   **タスク 3**: **reconstructPar** を実行して、すべての processor\_N\_ ディレクトリにある一連の time ディレクトリを結合し、単一の time ディレクトリにまとめます。
+    *   **タスク 3**:**reconstructPar** を実行して、すべての processor\_N\_ ディレクトリにある一連の time ディレクトリを結合し、単一の time ディレクトリにまとめます。
 
         *   このタスクには 1 つのノードを割り当てます。
 
@@ -392,17 +400,13 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 
         *   **作業ディレクトリ** - /openfoam/sloshingTank3D
 
-        ![Task 3 details][task_details3]
-
-    *   **タスク 4**: **foamToEnsight** を並列実行して、OpenFOAM の結果ファイルを EnSight 形式に変換し、case ディレクトリにある Ensight という名前のディレクトリにこの EnSight ファイルを格納します。
+    *   **タスク 4**:**foamToEnsight** を並列実行して、OpenFOAM の結果ファイルを EnSight 形式に変換し、case ディレクトリにある Ensight という名前のディレクトリにこの EnSight ファイルを格納します。
 
         *   このタスクには 2 つのノードを割り当てます。
 
         *   **コマンドライン** - `source /openfoam/settings.sh && /openfoam/hpcimpirun.sh foamToEnsight -parallel > /openfoam/foamToEnsight${CCP_JOBID}.log`
 
         *   **作業ディレクトリ** - /openfoam/sloshingTank3D
-
-        ![Task 4 details][task_details4]
 
 6.	これらのタスクに依存関係を追加します。タスクの昇順に追加してください。
 
@@ -463,8 +467,7 @@ OpenFOAM ジョブの結果は、[EnSight](https://www.ceisoftware.com/) を使�
 
     ![Tank result][tank_result]
 
-
-## 付録
+## サンプル ファイル
 
 
 ### サンプル cred.xml ファイル
@@ -576,27 +579,6 @@ source /opt/OpenFOAM/OpenFOAM-2.3.1/etc/bashrc
 export WM_MPLIB=INTELMPI
 ```
 
-### Linux ノードにリポジトリと依存パッケージを追加するためのサンプル コマンド
-
-```
-sudo zypper ar ftp://ftp.muug.mb.ca/mirror/opensuse/factory-snapshot/repo/oss/ update1
-
-sudo zypper ar http://download.opensuse.org/distribution/13.2/repo/oss/suse/ update2
-
-sudo zypper ar ftp://ftp.pbone.net/mirror/ftp.opensuse.org/factory-snapshot/repo/oss/ update3
-
-sudo zypper ar ftp://mirror.switch.ch/pool/4/mirror/opensuse/opensuse/distribution/13.2/repo/oss/ update4
-
-sudo zypper ar ftp://bo.mirror.garr.it/pub/1/opensuse/distribution/13.2/repo/oss/ update6
-
-sudo zypper ar ftp://ftp.pbone.net/mirror/ftp.opensuse.org/distribution/13.2/repo/oss/ update7
-
-sudo zypper ar ftp://ftp.icm.edu.pl/vol/rzm5/linux-opensuse/distribution/13.2/repo/oss/ update8
-
-sudo zypper install -t pattern devel_C_C++
-
-sudo zypper install cmake boost-devel gnuplot mpfr-devel openmpi-devel glu-devel  
-```
 
 ###サンプル hpcimpirun.sh スクリプト
 
@@ -664,9 +646,6 @@ exit ${RTNSTS}
 [job_details]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/job_details.png
 [job_resources]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/job_resources.png
 [task_details1]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/task_details1.png
-[task_details2]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/task_details2.png
-[task_details3]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/task_details3.png
-[task_details4]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/task_details4.png
 [task_dependencies]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/task_dependencies.png
 [creds]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/creds.png
 [heat_map]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/heat_map.png
@@ -676,4 +655,4 @@ exit ${RTNSTS}
 [isosurface_color]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/isosurface_color.png
 [linux_processes]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/linux_processes.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

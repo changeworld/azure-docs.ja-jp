@@ -44,16 +44,16 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	- **uploadSampleDataAndScripts.ps1:** このスクリプトは、サンプル データとスクリプトを Azure にアップロードします。
 5. 以下の Azure リソースが作成済みであることを確認してください。			
 	- Azure ストレージ アカウント
-	- Azure SQL Database
+	- Azure SQL データベース
 	- Azure HDInsight クラスター Version 3.1 以上 (または、Data Factory サービスで自動的に作成されるオンデマンド HDInsight クラスターを使用します)	
 7. Azure リソースを作成したなら、上記の各リソースへの接続に必要な情報を持っていることを確認します。
  	- **Azure ストレージ アカウント** - アカウント名とアカウント キー。  
 	- **Azure SQL Database** - サーバー、データベース、ユーザー名、パスワード。
 	- **Azure HDInsight クラスター** - HDInsight クラスター名、ユーザー名、パスワード、このクラスターに関連付けられている Azure ストレージのアカウント名とアカウント キー。独自の HDInsight クラスターではなく、オンデマンド HDInsight クラスターを使用する場合は、この手順を省略できます。  
 8. **Azure PowerShell** を起動して次のコマンドを実行します。Azure PowerShell は開いたままにしておきます。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
-	- **Add-AzureAccount** を実行し、Azure プレビュー ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
+	- **Add-AzureAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
 	- **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
-	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure プレビュー ポータルで使用したものと同じである必要があります。
+	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。
 	
 
 ## 概要
@@ -65,7 +65,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
     
 ## チュートリアル: ワークフローの作成、デプロイ、監視
 1. [手順 1. サンプル データとスクリプトをアップロードする](#MainStep1)。この手順では、すべてのサンプル データ (すべてのログと参照データを含む) とワークフローによって実行される Hive/Pig スクリプトをアップロードします。実行するスクリプトは、Azure SQL Database (MarketingCampaigns)、テーブル、ユーザー定義型、およびストアド プロシージャの作成も行います。
-2. [手順 2. Azure Data Factory を作成する](#MainStep2)。この手順では、"LogProcessingFactory" という名前の Azure Data Factory を作成します。
+2. [手順 2. Azure Data Factory を作成する](#MainStep2)。この手順では、"LogProcessingFactory" という名前の Azure データ ファクトリを作成します。
 3. [手順 3. リンクされたサービスを作成する](#MainStep3)。この手順では、以下のリンクされたサービスを作成します: 
 	
 	- 	**StorageLinkedService**。未処理のゲーム イベント、パーティションに分割されたゲーム イベント、強化されたゲーム イベント、マーケティング キャンペーンの有効な情報、geo コードの参照データを含む Azure ストレージの場所をリンクし、LogProcessingFactory へのマーケティング データの参照を行います。   
@@ -101,7 +101,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 		![MarketingCampaignPipeline][image-data-factory-tutorial-analyze-marketing-campaign-pipeline]
 
 
-6. [手順 6. パイプラインとデータ スライスを監視する](#MainStep6)。この手順では、Azure ポータルを使用して、パイプライン、テーブル、およびデータ スライスを監視します。
+6. [手順 6. パイプラインとデータ スライスを監視する](#MainStep6)。この手順では、Azure クラシック ポータルを使用して、パイプライン、テーブル、データ スライスを監視します。
 
 ## <a name="MainStep1"></a> 手順 1. サンプル データとスクリプトをアップロードする
 この手順では、すべてのサンプル データ (すべてのログと参照データを含む) とワークフローによって呼び出される Hive/Pig スクリプトをアップロードします。実行するスクリプトは、"**MarketingCampaigns**" という名前の Azure SQL Database、テーブル、ユーザー定義型、およびストアド プロシージャの作成も行います。
@@ -122,7 +122,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	
 	または、C:\\ADFWalkthrough\\Scripts フォルダーにあるファイルを使用して pig/hive スクリプトおよびサンプル ファイルを BLOB ストレージ内の adfwalkthrough コンテナーにアップロードし、Azure SQL データベースである MarketingCamapaigns 内に MarketingCampaignEffectiveness テーブルを作成することも可能です。
    
-2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、**Microsoft Azure 管理ポータル**またはマスター データベース上の **sp\_set\_firewall\_rule** を使用して、コンピューターの IP アドレスに対するファイアウォール規則を作成します。この変更が有効になるまで最大で 5 分かかる場合があります。[Azure SQL のファイアウォール規則の設定][azure-sql-firewall]に関するページを参照してください。
+2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、[Azure クラシック ポータル](http://manage.windowsazure.com)、またはマスター データベース上の **sp\_set\_firewall\_rule** を使用して、コンピューターの IP アドレスに対するファイアウォール規則を作成します。この変更が有効になるまで最大で 5 分かかる場合があります。[Azure SQL のファイアウォール規則の設定][azure-sql-firewall]に関するページを参照してください。
 4. Azure PowerShell で、サンプルを展開した場所に移動します (例: **C:\\ADFWalkthrough**)。
 5. **uploadSampleDataAndScripts.ps1** を実行します。 
 6. スクリプトが正常に実行されると、以下が表示されます。
@@ -160,7 +160,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 ## <a name="MainStep2"></a> 手順 2. Azure Data Factory を作成する
 この手順では、"**LogProcessingFactory**" という名前の Azure Data Factory を作成します。
 
-1.	[Azure プレビュー ポータル][azure-preview-portal]にログインしたら、左下隅の **[新規]** をクリックし、**[新規]** ブレードの **[Data Factory]** をクリックします。 
+1.	[Azure ポータル][azure-portal]にログインしたら、左下隅の **[新規]** をクリックし、**[新規]** ブレードの **[Data Factory]** をクリックします。 
 
 	![New->DataFactory][image-data-factory-new-datafactory-menu]
 	
@@ -168,7 +168,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	
 5. **[新しいデータ ファクトリ]** ブレードで、**[名前]** フィールドに「**LogProcessingFactory**」と入力します。
 
-	![[Data Factory] ブレード][image-data-factory-tutorial-new-datafactory-blade]
+	![[データ ファクトリ] ブレード][image-data-factory-tutorial-new-datafactory-blade]
 
 6. "**ADF**" という名前の Azure リソース グループをまだ作成していない場合は、次の手順を実行します。
 	1. **[リソース グループ名]** をクリックし、**[新しいリソース グループを作成]** をクリックします。
@@ -176,16 +176,17 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 		![[リソース グループ] ブレード][image-data-factory-tutorial-resourcegroup-blade]
 	2. **[リソース グループを作成]** ブレードで、リソース グループの名前として「**ADF**」と入力し、**[OK]** をクリックします。
 	
-		![Create Resource Group][image-data-factory-tutorial-create-resourcegroup]
+		![リソース グループの作成][image-data-factory-tutorial-create-resourcegroup]
 7. **[リソース グループ名]** の **[ADF]** を選択します。  
-8.	**[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加]** が既定で選択されていることに注意してください。これにより、スタート画面 (Azure プレビュー ポータルへのログイン時に表示される画面) のデータ ファクトリにリンクが追加されます。
+8.	**[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加]** が既定で選択されていることに注意してください。これにより、スタート画面 (Azure ポータルへのログイン時に表示される画面) のデータ ファクトリにリンクが追加されます。
 
-	![Data Factory 作成ブレード][image-data-factory-tutorial-create-datafactory]
+	![データ ファクトリ作成ブレード  
+][image-data-factory-tutorial-create-datafactory]
 
 9.	**[新しいデータ ファクトリ]** ブレードで、**[作成]** をクリックしてデータ ファクトリを作成します。
 10.	データ ファクトリが作成されると、**LogProcessingFactory** というタイトルの **[Data Factory]** ブレードが表示されます。
 
-	![Data Factory のホーム ページ][image-data-factory-tutorial-datafactory-homepage]
+	![データ ファクトリのホーム ページ][image-data-factory-tutorial-datafactory-homepage]
 
 	
 	表示されない場合は、次のいずれかを行います。
@@ -195,9 +196,9 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
  
 	Azure Data Factor の名前はグローバルに一意にする必要があります。**""LogProcessingFactory" という名前の Data Factory は使用できません"** というエラー メッセージが表示された場合は、名前を変更します (例: yournameLogProcessingFactory)。このチュートリアルの手順の実行中に、この名前を LogProcessingFactory の代わりに使用します。
  
-## <a name="MainStep3"></a>手順 3. リンク サービスを作成する
+## <a name="MainStep3"></a>手順 3. リンクされたサービスを作成する
 
-> [AZURE.NOTE]この記事では、Azure PowerShell を使用して、リンク サービス、テーブル、パイプラインを作成します。Azure ポータル、具体的には Data Factory エディターを使用してこのチュートリアルを実行する場合は、[Data Factory エディターの使用方法に関するチュートリアル][adftutorial-using-editor]をご覧ください。
+> [AZURE.NOTE]この記事では、Azure PowerShell を使用して、リンク サービス、テーブル、パイプラインを作成します。Azure クラシック ポータル、具体的には Data Factory エディターを使用してこのチュートリアルを実行する場合は、[Data Factory エディターの使用方法に関するチュートリアル][adftutorial-using-editor]をご覧ください。
 
 この手順では、StorageLinkedService、AzureSqlLinkedService、HDInsightStorageLinkedService、HDInsightLinkedService というリンクされたサービスを作成します。
 
@@ -208,13 +209,13 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 
 2. **[リンクされたサービス]** ブレードで、コマンド バーの **[+ データ ストア]** をクリックします。
 
-	![Linked Services - ストアの追加][image-data-factory-tutorial-linkedservices-add-datstore]
+	![Linked Services - Add Store][image-data-factory-tutorial-linkedservices-add-datstore]
 
 3. **[新しいデータ ストア]** ブレードで、**[名前]** フィールドに「**StorageLinkedService**」と入力し、**[種類 (設定が必要)]** をクリックして、**[Azure ストレージ アカウント]** を選択します。
 
-	![データ ストア タイプ - Azure Storage][image-data-factory-tutorial-datastoretype-azurestorage]
+	![Data Store Type - Azure Storage][image-data-factory-tutorial-datastoretype-azurestorage]
 
-4. **[新しいデータ ストア]** ブレードに、**[アカウント名]** と **[アカウント キー]** の 2 つの新しいフィールドが表示されます。**Azure Storage アカウント**のアカウント名とアカウント キーを入力します。
+4. **[新しいデータ ストア]** ブレードに、**[アカウント名]** と **[アカウント キー]** の 2 つの新しいフィールドが表示されます。**Azure ストレージ アカウント**のアカウント名とアカウント キーを入力します。
 
 	![Azure Storage Settings][image-data-factory-tutorial-azurestorage-settings]
 
@@ -236,17 +237,17 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 		
  		![Azure SQL Settings][image-data-factory-tutorial-azuresql-settings]
 
-		Microsoft Azure 管理ポータルからこれらの値を取得するには、[MarketingCampaigns データベースの SQL Database 接続文字列を表示する] をクリックします。
+		[Azure クラシック ポータル](http://manage.windowsazure.com)からこれらの値を取得するには、[MarketingCampaigns データベースの SQL Database 接続文字列を表示する] をクリックします。
 
 		![Azure SQL Database 接続文字列][image-data-factory-tutorial-azuresql-database-connection-string]
 
 12. 作成した 3 つのデータ ストア (**StorageLinkedService**、**HDInsightStorageLinkedService**、**AzureSqlLinkedService**) がすべて表示されていることを確認します。
 13. リンクされたサービスをもう 1 つ作成する必要がありますが、これはコンピューティング サービス (具体的には **Azure HDInsight クラスター**) にリンクされたサービスです。ポータルでは、まだリンクされたコンピューティング サービスの作成をサポートしていません。そのため、Azure PowerShell を使用して、このリンクされたサービスを作成する必要があります。 
 14. 既に開いている場合は **Azure PowerShell** に切り替え、そうでない場合は **Azure PowerShell** を起動します。Azure PowerShell を一度閉じてから再度開いた場合は、次のコマンドを実行する必要があります。 
-	- **Add-AzureAccount** を実行し、Azure プレビュー ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
+	- **Add-AzureAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
 	- **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
-	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure プレビュー ポータルで使用したものと同じである必要があります。 
-15. Azure Data Factory コマンドレットは **AzureResourceManager** モードで使用できるので、このモードに切り替えます。
+	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。 
+15. Azure Data Factory コマンドレットは **AzureResourceManager** モードでのみ使用できるので、このモードに切り替えます。
 
 		Switch-AzureMode AzureResourceManager
 
@@ -296,7 +297,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
  
 上の図は、中央の列がパイプラインを、上と下の列がテーブルを表しています。
 
-Azure ポータルはデータ セットとテーブルの作成をまだサポートしていないため、今回のリリースでは Azure PowerShell を使用してテーブルを作成する必要があります。
+Azure クラシック ポータルはデータ セットとテーブルの作成をまだサポートしていないため、このリリースでは Azure PowerShell を使用してテーブルを作成する必要があります。
 
 ### テーブルを作成するには
 
@@ -324,7 +325,7 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 
 
-4. **Azure プレビュー ポータル**で、**[LogProcessingFactory]** の **[Data Factory]** ブレードの **[データセット]** をクリックし、すべてのデータセットが表示されていることを確認します (テーブルは四角形のデータセットです)。
+4. **Azure ポータル**で、**[LogProcessingFactory]** の **[Data Factory]** ブレードの **[データセット]** をクリックし、すべてのデータセットが表示されていることを確認します (テーブルは四角形のデータセットです)。
 
 	![Data Sets All][image-data-factory-tutorial-datasets-all]
 
@@ -390,7 +391,7 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 			
 			Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADF -DataFactoryName $df -StartDateTime 2014-05-01Z -EndDateTime 2014-05-05Z –Name AnalyzeMarketingCampaignPipeline
 
-11. **Azure プレビュー ポータル**で、**[LogProcessingFactory]** の **[Data Factory]** ブレードの (パイプライン名ではなく) **[パイプライン]** タイルをクリックすると、作成したパイプラインが表示されます。
+11. **Azure ポータル**で、**[LogProcessingFactory]** の **[Data Factory]** ブレードの (パイプライン名ではなく) **[パイプライン]** タイルをクリックすると、作成したパイプラインが表示されます。
 
 	![All Pipelines][image-data-factory-tutorial-pipelines-all]
 
@@ -400,9 +401,9 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 13. 表示されているダイアグラムは並べ替えることが可能で、以下のダイアグラムは上部が直接の入力を示し、下部が出力を示しています。**PartitionGameLogsPipeline** の出力が EnrichGameLogsPipeline に入力として渡され、**EnrichGameLogsPipeline** の出力が **AnalyzeMarketingCampaignPipeline** に渡されていることがわかります。タイトルをダブルクリックして、ブレードが示すアーティファクトについての詳細を表示します。
 
-	![ダイアグラム ビュー][image-data-factory-tutorial-diagram-view]
+	![Diagram View][image-data-factory-tutorial-diagram-view]
 
-	**ご利用ありがとうございます。** Azure Data Factory、リンクされたサービス、パイプライン、テーブルを作成し、ワークフローを開始することに成功しました。
+	**ご利用ありがとうございます。** Azure データ ファクトリ、リンクされたサービス、パイプライン、テーブルを作成し、ワークフローを開始することに成功しました。
 
 
 ## <a name="MainStep6"></a>手順 6. パイプラインとデータ スライスを監視する 
@@ -444,7 +445,7 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 12.	**[データ スライス]** ブレードで、**[アクティビティの実行]** の一覧から [実行] をクリックします。そのスライスの [アクティビティの実行] ブレードが表示されるはずです。以下の **[アクティビティの実行の詳細]** ブレードが表示されます。
 
-	![Activity Run Details blade][image-data-factory-monitoring-activity-run-details]
+	![[アクティビティの実行の詳細] ブレード][image-data-factory-monitoring-activity-run-details]
 
 13.	**[ダウンロード]** をクリックしてファイルをダウンロードします。この画面は、HDInsight の処理で発生するエラーのトラブルシューティングを行うときに、特に役立ちます。
 	 
@@ -474,7 +475,7 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 [tutorial-onpremises-using-powershell]: data-factory-tutorial-extend-onpremises-using-powershell.md
 [download-azure-powershell]: ../powershell-install-configure.md
 
-[azure-preview-portal]: http://portal.azure.com
+[azure-portal]: http://portal.azure.com
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -562,4 +563,4 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial-using-powershell/DataFactoryCreateButton.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="08/22/2015"
+	ms.date="12/01/2015"
 	ms.author="krisragh"/>
 
 # iOS モバイル アプリのオフライン同期を有効にする
 
-[AZURE.INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## 概要
 
@@ -32,7 +30,7 @@ Azure Mobile Apps を初めて使用する場合は、最初に [iOS アプリ�
 
 ## <a name="review-sync"></a>クライアント同期コードの確認 
 
-[iOS アプリの作成]に関するチュートリアルでダウンロードしたクライアント プロジェクトには、ローカルのコア データに基づくデータベースを使用したオフライン同期をサポートするコードが既に含まれています。このセクションでは、チュートリアルのコードに既に含まれているものの概要を示します。機能の概念の概要については、「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
+チュートリアル「[iOS アプリの作成]」でダウンロードしたクライアント プロジェクトには、ローカルのコア データに基づくデータベースを使用したオフライン同期をサポートするコードが既に含まれています。このセクションでは、チュートリアルのコードに既に含まれているものの概要を示します。機能の概念的な概要については、「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
 
 Azure Mobile Apps のオフライン データ同期機能を使用すると、ネットワークにアクセスできない場合でもエンド ユーザーはローカル データベースとやり取りできるようになります。アプリケーションでこれらの機能を使用するには、`MSClient` の同期コンテキストを初期化して、ローカル ストアを参照します。その後、`MSSyncTable` インターフェイスを使用してテーブルを参照します。
 
@@ -88,7 +86,7 @@ Azure Mobile Apps のオフライン データ同期機能を使用すると、�
 
     メソッド `pullWithQuery` を使用すると、取得するレコードをフィルター処理するクエリを指定できます。この例でのクエリは、単にリモートの `TodoItem` テーブルのレコードをすべて取得します。
 
-    `pullWithQuery` に対する 2 番目のパラメーターは、*増分同期*に使用するクエリ ID です。増分同期では、前回の同期以降に変更されたレコードのみを、レコードの `UpdatedAt` タイムスタンプ (ローカル ストアでは `ms_updatedAt` と呼ばれます) を使用して取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。増分同期を解除するには、`nil` をクエリ ID として渡します。これは、プル操作のたびにすべてのレコードを取得するため、非効率になる場合があります。
+    `pullWithQuery` に対する 2 番目のパラメーターは、*増分同期*に使用するクエリ ID です。増分同期では、前回の同期以降に変更されたレコードのみを、レコードの `UpdatedAt` タイムスタンプ (ローカル ストアでは `updatedAt` と呼ばれます) を使用して取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。増分同期を解除するには、`nil` をクエリ ID として渡します。これは、プル操作のたびにすべてのレコードを取得するため、非効率になる場合があります。
 
 	<!--     >[AZURE.NOTE] To remove records from the device local store when they have been deleted in your mobile service database, you should enable [Soft Delete]. Otherwise, your app should periodically call `MSSyncTable.purgeWithQuery` to purge the local store.
  -->
@@ -105,9 +103,9 @@ Core Data オフライン ストアを使用するときは、データ モデ�
       * MS\_TableOperations: サーバーと同期する必要がある項目の追跡用
       * MS\_TableOperationErrors: オフライン同期中に発生するエラーの追跡用
       * MS\_TableConfig: すべてのプル操作に対する最後の同期操作の最終更新時刻の追跡用
-      * TodoItem: Todo 項目の格納用。システム列 **ms\_createdAt**、**ms\_updatedAt**、および **ms\_version** は省略可能なシステム プロパティです。
+      * TodoItem: Todo 項目の格納用。システム列 **createdAt**、**updatedAt**、および **version** は省略可能なシステム プロパティです。
 
->[AZURE.NOTE]Azure Mobile Apps SDK では、"**`ms_`**" が付く列名が予約されています。システム列以外でこのプレフィックスを使用しないでください。使用した場合、リモート バックエンドを使用するときに列名が変更されます。
+>[AZURE.NOTE]Azure Mobile Apps SDK では、"**``**" が付く列名が予約されています。システム列以外でこのプレフィックスを使用しないでください。使用した場合、リモート バックエンドを使用するときに列名が変更されます。
 
 - オフライン同期機能を使用する場合は、次のようにシステム テーブルを定義する必要があります。
 
@@ -150,17 +148,16 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
     ### データ テーブル
 
-    ![][defining-core-data-todoitem-entity]
-
     **TodoItem**
-
 
     | 属性 | 型 | 注 |
     |-----------   |  ------ | -------------------------------------------------------|
     | id | 文字列、必須のマーク | リモート ストア内のプライマリ キー |
     | 完了 | Boolean | Todo 項目フィールド |
     | テキスト | String | Todo 項目フィールド |
-    | ms\_createdAt | 日付 | (省略可能) \_\_createdAt システム プロパティにマップ | | ms\_updatedAt | Date | (省略可能) \_\_updatedAt システム プロパティにマップ | | ms\_version | String | (省略可能) 競合の検出に使用され、\_\_version にマップ |
+    | createdAt | 日付 | (省略可能) createdAt システム プロパティにマップします |
+    | updatedAt | 日付 | (省略可能) updatedAt システム プロパティにマップします |
+    | version | String | (省略可能) 競合の検出に使用され、バージョンにマップします |
 
 
 ## <a name="setup-sync"></a>アプリケーションの同期動作を変更する
@@ -183,20 +180,22 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
 ## <a name="test-app"></a>アプリケーションをテストする
 
+ここでは、無効な URL に接続してオフライン シナリオをシミュレートします。データ項目を追加すると、ローカル Core Data ストアに保持されますが、モバイル バックエンドとは同期されません。
 
-このセクションでは、シミュレーターの Wi-Fi をオフにして、オフライン シナリオを作成します。データ項目を追加すると、ローカル Core Data ストアに保持されますが、モバイル バックエンドとは同期されません。
+1. **QSTodoService.m** のモバイル アプリ URL を無効な URL に変更し、アプリを再実行します。
 
-1. iOS シミュレーターの Wi-Fi をオフにします。
+        self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
 
 2. いくつかの Todo 項目を追加するか、一部の項目を完了します。シミュレーターを終了し (またはアプリケーションを強制的に閉じて)、再起動します。変更内容が保存されていることを確認します。
 
 3. リモートの TodoItem テーブルの内容を表示します。
-   - JavaScript バックエンドの場合は、管理ポータルで [データ] タブをクリックして、`TodoItem` テーブルの内容を表示します。
-   - .NET バックエンドの場合は、SQL Server Management Studio のような SQL ツールまたは Fiddler や Postman のような REST クライアントを使用して、テーブルの内容を表示します。
+
+    + Node.js バックエンドの場合は、[Azure ポータル](https://portal.azure.com/)に移動し、Mobile App バックエンドで **[簡易テーブル]**、**[TodoItem]** の順にクリックして、`TodoItem` テーブルの内容を表示します。
+   	+ .NET バックエンドの場合は、SQL Server Management Studio などの SQL ツール、または Fiddler や Postman などの REST クライアントを使用して、テーブルの内容を表示します。
 
     新しい項目が、サーバーと同期*されなかった*ことを確認します。
 
-4. iOS シミュレーターで Wi-Fi をオンにし、項目の一覧をプルダウンして更新ジェスチャを実行します。進行状況を示すスピナーとテキスト "同期中..." が表示されます。
+4. **QSTodoService.m** の URL を正しい URL に変更し、アプリを再実行します。項目の一覧をプルダウンして更新操作を実行します。進行状況を示すスピナーとテキスト "同期中..." が表示されます。
 
 5. TodoItem データをもう一度表示します。新しく変更した TodoItems が表示されます。
 
@@ -229,7 +228,7 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 
 ## その他のリソース
 
-* [Azure Mobile Apps でのオフライン データ同期]
+* [Azure モバイル アプリでのオフライン データ同期]
 
 * [Cloud Cover: Azure Mobile Services でのオフライン同期] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 
@@ -238,6 +237,7 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 
 [iOS アプリの作成]: ../app-service-mobile-ios-get-started.md
 [Azure Mobile Apps でのオフライン データ同期]: ../app-service-mobile-offline-data-sync.md
+[Azure モバイル アプリでのオフライン データ同期]: ../app-service-mobile-offline-data-sync.md
 
 [defining-core-data-tableoperationerrors-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableoperationerrors-entity.png
 [defining-core-data-tableoperations-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableoperations-entity.png
@@ -248,4 +248,4 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

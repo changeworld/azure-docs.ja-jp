@@ -19,7 +19,7 @@
 
 ## 概要
 
-Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。豊富なデータ アクセス機能だけでなく、Microsoft Azure 管理ポータルにあるのと同じ機能の多くを提供します。
+Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。豊富なデータ アクセス機能だけでなく、[Azure ポータル](portal.azure.com)にあるものと同じ機能の多くを使用できます。
 
 このガイドでは、[Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli-install.md) を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。このガイドを使用する前に、最新の Azure CLI をダウンロードしてインストールするか、最新の Azure CLI にアップグレードすることをお勧めします。
 
@@ -222,4 +222,4 @@ Azure Storage の詳細についての関連記事とリソースがあります
 [Image1]: ./media/storage-azure-cli/azure_command.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

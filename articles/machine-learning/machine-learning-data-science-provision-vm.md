@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/23/2015" 
+	ms.date="11/26/2015" 
 	ms.author="bradsev" />
 
 
@@ -51,39 +51,39 @@ Microsoft データ サイエンス仮想マシンを作成する前に、次を
 
 Microsoft データ サイエンス仮想マシンのインスタンスを作成する手順を以下に示します。
 
-1.	[Azure ポータル](https://portal.azure.com/#gallery/microsoft-ads.standard-data-science-vmstandard-data-science-vm)に一覧表示されている仮想マシンに移動します。
+1.	[Azure クラシック ポータル](https://portal.azure.com/#gallery/microsoft-ads.standard-data-science-vmstandard-data-science-vm)に一覧表示されている仮想マシンに移動します。
 2.	 下部にある **[作成]** ボタンをクリックして、ウィザードを起動します。![configure-data-science-vm](./media/machine-learning-data-science-provision-vm/configure-data-science-virtual-machine.png)
 3.	 以下のセクションでは、Microsoft データ サイエンス仮想マシンを作成するために使用されるウィザードの **5 つのステップ** (上の図の右に列挙してあります) の各ステップでの**入力**について説明します。以下は、これらの各ステップを構成するために必要な入力項目です。
 
   **a.基本**:
 
-    - **Name**: Name of your data science server you are creating.
-    - **User Name**: Admin account login id
-    - **Password**: Admin account password
-    - **Subscription**: If you have more than one subscription, select the one on which the machine will be created and billed
-    - **Resource Group**: You can create a new one or use an existing group
-    - **Location**: Select the data center that is most appropriate. Usually it is the data center that has most of your data or is closest to your physical location for fastest network access
+   - **名前**: 作成するデータ サイエンス サーバーの名前です。
+   - **ユーザー名**: 管理者アカウントのログイン ID です。
+   - **パスワード**: 管理者アカウントのパスワードです。
+   - **サブスクリプション**: 複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。
+   - **リソース グループ**: 新しいリソース グループを作成するか、既存のグループを使用します。
+   - **場所**: 最適なデータ センターを選択します。通常は、ネットワーク アクセスを最速にするために、データの大部分があるか、物理的に最も近いデータ センターを選びます。
 
   **b.サイズ**:
 
-    - Select one of the server types that meets your functional requirement and cost constraints. You can get more choices of VM sizes by selecting “View All”
+   - 機能の要件とコストの制約を満たしている、いずれかのサーバーの種類を選択します。[すべて表示] を選択すると、他の VM のサイズも表示されます。
 
   **c.設定**
 
-    - **Disk Type**: Choose Premium if you prefer a solid state drive (SSD), else choose “Standard”.
-    - **Storage Account**: You can create a new Azure storage account in your subscription or use an existing one in the same *Location* that was chosen on the Basics step of the wizard.
-    - **Other parameters**: In most cases you will just use the default values. You can hover over the informational link for help on the specific fields in case you want to consider the use of non-default values.
+   - **ディスクの種類**: ソリッド ステート ドライブ (SSD) を使用する場合は、[Premium] を選択します。それ以外の場合は、[Standard] を選択します。
+   - **ストレージ アカウント**: サブスクリプションに新しい Azure ストレージ アカウントを作成することも、ウィザードの [基本] ステップで選択したのと同じ*場所*の既存のストレージ アカウントを使用することもできます。
+   - **他のパラメーター**: 通常、既定値を使用します。既定以外の値の使用を検討する場合は、情報リンクにポインターを合わせ、該当するフィールドのヘルプを表示できます。
 
   **d.概要**:
 
-    - Verify that all information you entered is correct.
+   - 入力したすべての情報が正しいことを確認します。
 
   **e.購入**:
 
-    - Click on **Buy** to start the provisioning. A link is provided to the terms of the transaction. The VM does not have any additional charges beyond the compute for the server size you chose in the **Size** step. 
+   - プロビジョニングを開始するには、**[購入]** をクリックします。取引条件へのリンクが用意されています。**[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 
 
 
-プロビジョニングには、10 ～ 20 分くらいかかります。プロビジョニングの状態は、Azure ポータルに表示されます。
+プロビジョニングには、10 ～ 20 分くらいかかります。プロビジョニングの状態は、Azure クラシック ポータルに表示されます。
 
 ## Microsoft データ サイエンス仮想マシンにアクセスする方法
 
@@ -111,7 +111,7 @@ Visual Studio Community エディションが VM にインストールされて�
 SQL Server の制限付きバージョンも、Visual Studio Community エディションにパッケージ化されています。SQL サーバーにアクセスするには、**SQL Server Management Studio** を起動します。VM の名前は、サーバー名として設定されます。Windows の管理者としてログインする場合は、Windows 認証を使用します。SQL Server Management Studio にアクセスできたら、他のユーザーの作成、データベースの作成、データのインポート、SQL クエリの実行などを行うことができます。
 
 ### Azure 
-いくつかの Azure ツールが、VM にインストールされています。- Azure SDK ドキュメントにアクセスするためのデスクトップ ショートカットがあります。- **AzCopy** は、Microsoft Azure ストレージ アカウントとの間でデータを移動するために使用されます。- **Azure ストレージ エクスプローラー**は、Azure ストレージ アカウントに格納されているオブジェクトを参照するために使用されます。- **Microsoft Azure Powershell**。- スクリプト言語で Azure リソースを管理するために使用されるスクリプト言語も、VM にインストールされています。
+いくつかの Azure ツールが、VM にインストールされています。- Azure SDK ドキュメントにアクセスするためのデスクトップ ショートカットがあります。- **AzCopy** は、Microsoft Azure Storage アカウントとの間でデータを移動するために使用されます。- **Azure ストレージ エクスプローラー**は、Azure ストレージ アカウントに格納されているオブジェクトを参照するために使用されます。- **Microsoft Azure Powershell**。- スクリプト言語で Azure リソースを管理するために使用されるスクリプト言語も、VM にインストールされています。
 
 ###Power BI
 
@@ -122,4 +122,4 @@ SQL Server の制限付きバージョンも、Visual Studio Community エディ
 ## その他の Microsoft 開発ツール
 [**Microsoft Web Platform Installer**](https://www.microsoft.com/web/downloads/platform.aspx) は、他の Microsoft 開発ツールを検出し、ダウンロードするために使用できます。Microsoft データ サイエンス仮想マシンのデスクトップにはツールのショートカットもあります。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

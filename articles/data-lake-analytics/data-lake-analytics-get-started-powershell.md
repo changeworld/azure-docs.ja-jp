@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/22/2015"
+   ms.date="12/01/2015"
    ms.author="jgao"/>
 
 # チュートリアル: Azure PowerShell で Azure Data Lake Analytics の使用を開始する
@@ -38,30 +38,14 @@ Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを�
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
-- **Azure PowerShell 1.0 以降**。「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」を参照してください。Azure PowerShell 1.0 以降をインストールした後で、次のコマンドレットを実行して Azure Data Lake Analytics モジュールをインストールする必要があります。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell 1.0 以上をインストールする](data-lake-analytics-manage-use-powershell.md#install-azure-powershell-10-and-greater)」を参照してください。
 
-		Install-Module AzureRM.DataLakeStore
-		Install-Module AzureRM.DataLakeAnalytics
-
-	**AzureRM.DataLakeStore** モジュールの詳細については、[PowerShell ギャラリー](http://www.powershellgallery.com/packages/AzureRM.DataLakeStore)を参照してください。**AzureRM.DataLakeAnalytics** モジュールの詳細については、[PowerShell ギャラリー](http://www.powershellgallery.com/packages/AzureRM.DataLakeAnalytics)を参照してください。
-
-	初めて Data Lake アカウントを作成する場合は、次のコマンドレットを実行します。
-
-		Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
-		Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeAnalytics"
-
-	Azure に接続するには、次のコマンドレットを使用します。
-
-		Login-AzureRmAccount
-		Get-AzureRmSubscription  # for finding the Azure Subscription ID
-		Set-AzureRmContext -SubscriptionID <Azure Subscription ID>
-
-##Data Lake Analytics アカウントの作成
+##Data Lake Analytics アカウントを作成する
 
 ジョブを実行するには、Data Lake Analytics アカウントが必要です。Data Lake Analytics アカウントを作成するには、以下を指定する必要があります。
 
-- **Azure リソース グループ**: Data Lake Analytics アカウントは、Azure リソース グループ内で作成する必要があります。[Azure リソース マネージャー](resource-group-overview.md)を使用すると、アプリケーション内のリソースを 1 つのグループと見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。  
+- **Azure リソース グループ**: Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。[Azure リソース マネージャー](resource-group-overview.md)を使用すると、アプリケーション内の複数リソースを 1 つのグループと見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。  
 
 	サブスクリプションのリソース グループを列挙するには:
     
@@ -74,7 +58,7 @@ Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを�
 			-Location "<Azure Data Center>" # For example, "East US 2"
 
 - **Data Lake Analytics アカウント名**
-- **場所**: Data Lake Analytics をサポートする Azure データ センターのいずれかです。
+- **場所**: Data Lake Analytics をサポートするいずれかの Azure データ センター。
 - **既定の Data Lake アカウント**: 各 Data Lake Analytics アカウントには既定の Data Lake アカウントがあります。
 
 	新しい Data Lake アカウントを作成するには:
@@ -151,13 +135,13 @@ Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを�
 	$dataLakeAnalyticsName = "<DataLakeAnalyticsAccountName>"
 	$dataLakeStoreName = (Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAnalyticName).Properties.DefaultDataLakeAccount
 
->[AZURE.NOTE]Azure プレビュー ポータルでは、既定の Data Lake Store アカウントにサンプル データ ファイルをコピーするためのユーザー インターフェイスが提供されます。手順については、「[Azure プレビュー ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md#upload-data-to-the-default-data-lake-store-account)」を参照してください。
+>[AZURE.NOTE]Azure ポータルでは、既定の Data Lake Store アカウントにサンプル データ ファイルをコピーするためのユーザー インターフェイスが提供されます。手順については、「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md#upload-data-to-the-default-data-lake-store-account)」を参照してください。
 
 Data Lake Analytics は、Azure BLOB ストレージにもアクセスできます。Azure BLOB ストレージへのデータのアップロードについては、「[Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)」を参照してください。
 
-##Data Lake Analytics ジョブの送信
+##Data Lake Analytics ジョブを送信する
 
-Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の詳細については、[U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)と [U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/?LinkId=691348)に関する記述を参照してください。
+Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の詳細については、[U-SQL 言語の概要](data-lake-analytics-u-sql-get-started.md)に関する記述と「[U SQL 言語リファレンス](http://go.microsoft.com/fwlink/?LinkId=691348)」を参照してください。
 
 **Data Lake Analytics ジョブ スクリプトを作成するには**
 
@@ -186,7 +170,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
     
         adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
         
-    リンクされたストレージ アカウント内のファイルへのアクセスには、絶対パスを使用する必要があります。リンクされた Azure ストレージ アカウントに格納されているファイルの構文は以下のとおりです。
+    リンクされた Storage アカウント内のファイルへのアクセスには、絶対パスを使用する必要があります。リンクされた Azure Storage アカウントに格納されているファイルの構文は以下のとおりです。
     
         wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 
@@ -227,10 +211,10 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 ## 関連項目
 
 - 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
-- より複雑なクエリを表示する場合は、「[Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)」を参照してください。
-- U-SQL アプリケーションの開発を開始する場合は、「[Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
-- U-SQL の詳細については、「[Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
-- 管理タスクについては、「[Azure プレビュー ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」を参照してください。
-- Data Lake Analytics の概要については、「[Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
+- より複雑なクエリを表示する場合は、「[チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」を参照してください。
+- U-SQL アプリケーションの開発を開始する場合は、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
+- U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
+- 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」を参照してください。
+- Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure Data Factory のパイプラインの監視と管理" 
-	description="Microsoft Azure 管理ポータルおよび Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。" 
+	description="Azure クラシック ポータルおよび Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -22,10 +22,10 @@ Data Factory サービスでは、データの保存、処理、移動の各サ�
 この記事では、パイプラインを監視、管理、およびデバッグする方法について説明します。また、警告を作成して障害時に通知を受け取る方法についての情報も提供します。
 
 ## パイプラインとアクティビティの状態の理解
-Azure プレビュー ポータルを使用すると、Data Factory のダイアグラム、パイプラインのアクティビティ、入力と出力のデータセットなどを表示できます。このセクションでは、スライスの状態がどのように移行するかについても説明します。
+Azure ポータルを使用すると、Data Factory のダイアグラム、パイプラインのアクティビティ、入力と出力のデータセットなどを表示できます。このセクションでは、スライスの状態がどのように移行するかについても説明します。
 
 ### Data Factory に移動する
-1.	[Azure プレビュー ポータル](http://portal.azure.com)にサインインします。
+1.	[Azure ポータル](http://portal.azure.com)にサインインします。
 2.	**[すべて参照]** をクリックし、**[Data Factory]** を選択します。
 	
 	![[すべて参照] -> [Data Factory]](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -96,6 +96,7 @@ Data Factory のデータセット スライスは、次のいずれかの状態
 <td>ValidationRetry</td><td>検証の再試行を待機しています。</td>
 </tr>
 <tr>
+&lt; tr
 <td rowspan="2">InProgress</td><td>Validating</td><td>検証を実行中です。</td>
 </tr>
 <td></td>
@@ -116,7 +117,7 @@ Data Factory のデータセット スライスは、次のいずれかの状態
 <td>Ready</td><td></td><td>スライスは使用可能な状態です。</td>
 </tr>
 <tr>
-<td>Skipped</td><td></td><td>スライスは実行されていません。</td>
+<td>Skipped</td><td></td><td>スライスは処理されていません。</td>
 </tr>
 <tr>
 <td>なし</td><td></td><td>別のステータスで存在していたが、リセットされたスライスです。</td>
@@ -181,12 +182,12 @@ Azure PowerShell を使用してパイプラインを管理できます。たと
 
 
 ## パイプラインをデバッグする
-Azure Data Factory では、パイプラインをデバッグおよびトラブルシューティングするための充実した機能が Azure ポータルおよび Azure PowerShell で提供されています。
+Azure Data Factory では、パイプラインをデバッグおよびトラブルシューティングするための充実した機能が Azure クラシック ポータルおよび Azure PowerShell で提供されています。
 
 ### パイプラインのエラーを発見する
 パイプラインでアクティビティの実行が失敗した場合、パイプラインによって生成されるデータセットは障害のためにエラー状態になります。次のメカニズムを使用して、Azure Data Factory のエラーをデバッグおよびトラブルシューティングできます。
 
-#### Azure ポータルを使用してエラーをデバッグします。
+#### Azure クラシック ポータルを使用してエラーをデバッグします。
 
 1.	Data Factory のホーム ページで、**[データセット]** タイルの **[エラーあり]** をクリックします。
 	
@@ -262,7 +263,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 
 ## Azure ポータルを使用して
 
-### パイプラインのエラーを再実行する
+### Azure クラシック ポータルの使用
 
 パイプラインのエラーをトラブルシューティングおよびデバッグした後は、エラー スライスに移動してコマンド バーの **[実行]** ボタンをクリックすることで、エラーを再実行できます。
 
@@ -391,26 +392,44 @@ OnDemandClusterDeleted | Succeeded
 
 
 #### ユーザー イベントのトラブルシューティング
-**[操作]** タイルをクリックした後で生成されるすべてのイベントを見ることができ、**[イベント]** ブレードに表示されるすべての動作にアラートを設定できます。
-
-![操作](./media/data-factory-monitor-manage-pipelines/operations.png)
-
-次の PowerShell コマンドを実行すると、作成されたすべてのアラートが表示されます。これは、リソース タイプが **microsoft.insights/alertrules** であるメトリックとイベントのアラート設定を表示します。
-
-	Get-AzureResourceGroup -Name $resourceGroupName
-
-	ResourceGroupName : mdwevent
-	Location          : westus
-	ProvisioningState : Succeeded
-	Resources         :
-                    Name                  Type                                 Location
-                    ====================  ===================================  ========
-                    abhieventtest1        Microsoft.DataFactory/dataFactories  westus
-                    abhieventtest2        Microsoft.DataFactory/dataFactories  westus
-                    FailedValidationRuns  microsoft.insights/alertrules        eastus
 
 
-ポータルのブレードにアラート生成イベントが表示されるのに、電子メール通知を受け取らない場合は、指定されている電子メール アドレスが外部の送信者からの電子メールを受信するように設定されているかどうかを確認します。アラートの電子メールが、電子メールの設定によってブロックされている可能性があります。
+- **[操作]** タイルをクリックした後で生成されるすべてのイベントを見ることができ、**[イベント]** ブレードに表示されるすべての動作にアラートを設定できます。
+
+	![操作](./media/data-factory-monitor-manage-pipelines/operations.png)
+
+
+- アラートの追加、取得、削除に使用できる PowerShell コマンドレットについては、「[Azure Insights コマンドレット](https://msdn.microsoft.com/library/mt282452.aspx)」という記事を参照してください。**Get-AlertRule** コマンドレットの使用例をいくつか以下に示します。
+
+		PS C:\> Get-AlertRule -res $resourceGroup
+	
+				Properties : Microsoft.Azure.Management.Insights.Models.Rule
+				Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
+				Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest0
+				Location   : West US
+				Name       : FailedExecutionRunsWest0
+		
+				Properties : Microsoft.Azure.Management.Insights.Models.Rule
+				Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
+				Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest3
+				Location   : West US
+				Name       : FailedExecutionRunsWest3
+	
+		PS C:\> Get-AlertRule -res $resourceGroup -Name FailedExecutionRunsWest0
+		
+				Properties : Microsoft.Azure.Management.Insights.Models.Rule
+				Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
+				Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest0
+				Location   : West US
+				Name       : FailedExecutionRunsWest0
+
+	以下の get-help コマンドを実行すると、Get-AlertRule コマンドレットの詳細および例が示されます。
+
+		get-help Get-AlertRule -detailed 
+		get-help Get-AlertRule -examples
+
+
+- ポータルのブレードにアラート生成イベントが表示されるのに、電子メール通知を受け取らない場合は、指定されている電子メール アドレスが外部の送信者からの電子メールを受信するように設定されているかどうかを確認します。アラートの電子メールが、電子メールの設定によってブロックされている可能性があります。
 
 ### メトリックでのアラート
 Data Factory では、さまざまなメトリックを収集し、メトリックに対してアラートを作成できます。Data Factory のスライスに対して次のメトリックのアラートを監視および作成できます。
@@ -521,4 +540,4 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 	Parameters        :
 	Outputs           
 
-<!----HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

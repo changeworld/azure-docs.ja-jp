@@ -41,7 +41,7 @@
 
 ## Batch クォータの確認
 
-Batch アカウントのクォータは、[Azure プレビュー ポータル](https://portal.azure.com)で確認します。
+Batch アカウントのクォータは、[Azure ポータル](https://portal.azure.com)で確認します。
 
 1. プレビュー ポータルで **Batch アカウント**、Batch アカウント名の順にクリックします。
 
@@ -53,7 +53,7 @@ Batch アカウントのクォータは、[Azure プレビュー ポータル](h
 
 ## クォータを増やす
 
-Azure プレビュー ポータルでクォータの増加を要求するには、次の手順を実行します ([Azure ポータル](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)で増加を要求することもできます)。
+Azure ポータルでクォータの増加を要求するには、次の手順を実行します ([Azure クラシック ポータル](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)で増加を要求することもできます)。
 
 1. プレビュー ポータルのダッシュボードで、**[ヘルプとサポート]** をクリックします。
 
@@ -95,4 +95,4 @@ Azure サポートから連絡があります。要求を完了するには最�
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

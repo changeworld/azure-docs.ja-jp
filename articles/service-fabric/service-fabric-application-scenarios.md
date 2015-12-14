@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA" 
-   ms.date="08/21/2015"
+   ms.date="11/30/2015"
    ms.author="mfussell"/>
 
 # Service Fabric アプリケーションのシナリオ
@@ -55,9 +55,11 @@ Service Fabric の[信頼性の高いサービス](service-fabric-reliable-servi
 
 次のトピッもご覧ください。
 
+[マイクロサービスについて](service-fabric-overview-microservices.md)
+
 [サービス状態の定義と管理](service-fabric-concepts-state.md)
 
-[サービスの可用性](service-fabric-concepts-availability-services.md)
+[サービスの可用性](service-fabric-availability-services.md)
 
 [Service Fabric サービスの拡張性](service-fabric-concepts-scalability.md)
 
@@ -68,4 +70,4 @@ Service Fabric の[信頼性の高いサービス](service-fabric-reliable-servi
  
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

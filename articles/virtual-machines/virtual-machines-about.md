@@ -36,7 +36,7 @@ Azure Virtual Machine は、仮想マシンを実行する物理的なハード�
 
 [Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)
 
-[Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](virtual-machines-windows-tutorial.md)
+[Windows を実行する仮想マシンを Azure ポータルで作成する](virtual-machines-windows-tutorial.md)
 
 これらのチュートリアルには、仮想マシンをすばやく作成できるよう、仮想マシンを作成する際に使用できる多くのツールを取り上げるのではなく、仮想マシン作成の方法をひとつだけ重点的に紹介しています。これらのツールの概要と手順へのリンクは次の項目を参照してください。
 
@@ -52,4 +52,4 @@ Azure 仮想マシンについて習得を始めたばかりであれば、[よ�
 [Virtual Machines]: #tellmevm
 [Cloud Services]: cloud-services-choose-me.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

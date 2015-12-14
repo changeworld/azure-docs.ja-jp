@@ -27,9 +27,9 @@
 
 ## ツールの選択肢
 
-### GUI: Azure プレビュー ポータル
+### GUI: Azure ポータル
 
-Azure ポータルのグラフィカル ユーザー インターフェイスを使用すれば、特に Azure を初めて使用する場合に、仮想マシンを簡単に試すことができます。Azure プレビュー ポータルを使用して、仮想マシンを作成します。
+Azure クラシック ポータルのグラフィカル ユーザー インターフェイスを使用すれば、特に Azure を初めて使用する場合に、仮想マシンを簡単に試すことができます。Azure ポータルを使用して、仮想マシンを作成します。
 
 [Windows を実行する仮想マシンの作成][]
 
@@ -79,4 +79,4 @@ Azure PowerShell については、以下をご覧ください。
 
 [Azure hybrid cloud test environments]: virtual-machines-hybrid-cloud-test-environments.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

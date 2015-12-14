@@ -125,7 +125,7 @@ VSO プロジェクトの操作の詳細については、「[Visual Studio へ�
 
 ### Service Fabric SDK をインストールする
 
-[Service Fabric SDK](https://azure.microsoft.com/ja-JP/campaigns/service-fabric/) をインストールします。
+[Service Fabric SDK](https://azure.microsoft.com/campaigns/service-fabric/) をインストールします。
 
 ### Service Fabric SDK の NuGet リポジトリを登録する
 
@@ -339,4 +339,4 @@ Azure PowerShell をインストールするには、前のセクション「**A
 
 Service Fabric アプリケーションとの継続的インテグレーションの詳細については、「[ビルドに関するドキュメントのホームページ](https://msdn.microsoft.com/Library/vs/alm/Build/overview)」、「[ビルド エージェントのデプロイ](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)」、「[ビルド定義の作成と構成](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)」を参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -17,7 +17,7 @@
 
 # Azure リソース グループ デプロイ プロジェクトの作成とデプロイ
 
-**Azure リソース グループ** デプロイ プロジェクト テンプレートは、Azure SDK 2.6 がインストールされている場合に Visual Studio で使用できます。Azure リソース グループ プロジェクトを使用すると、関連する複数の Azure リソースをグループ化し、1 回のデプロイ操作で発行することができます。Azure リソース グループ プロジェクトでは、**Azure リソース マネージャー**と呼ばれるテクノロジを使用して作業を行います。**Azure リソース マネージャー**は、Azure リソース グループを定義できる REST API サービスです。Azure リソース グループには、通常は一緒に使用され、同じようなライフサイクルを持つ複数の Azure リソースが含まれます。リソース グループを使用すると、個々のリソースごとに異なる関数を呼び出すのではなく、単一の関数呼び出しでグループ内のすべてのリソースを操作できます。Azure リソース グループの詳細については、[Azure プレビュー ポータルを使用した Azure リソースの管理](resource-group-portal.md)に関するページを参照してください。Azure リソース グループ デプロイメントのエンド ツー エンドの詳しいシナリオについては、[Visual Studio 用 Azure リソース グループ](https://azure.microsoft.com/ja-jp/blog/azure-resource-manager-2-5-for-visual-studio/)に関するページを参照してください。
+**Azure リソース グループ** デプロイ プロジェクト テンプレートは、Azure SDK 2.6 がインストールされている場合に Visual Studio で使用できます。Azure リソース グループ プロジェクトを使用すると、関連する複数の Azure リソースをグループ化し、1 回のデプロイ操作で発行することができます。Azure リソース グループ プロジェクトでは、**Azure リソース マネージャー**と呼ばれるテクノロジを使用して作業を行います。**Azure リソース マネージャー**は、Azure リソース グループを定義できる REST API サービスです。Azure リソース グループには、通常は一緒に使用され、同じようなライフサイクルを持つ複数の Azure リソースが含まれます。リソース グループを使用すると、個々のリソースごとに異なる関数を呼び出すのではなく、単一の関数呼び出しでグループ内のすべてのリソースを操作できます。Azure リソース グループの詳細については、[Azure プレビュー ポータルを使用した Azure リソースの管理](resource-group-portal.md)に関するページを参照してください。Azure リソース グループ デプロイメントのエンド ツー エンドの詳しいシナリオについては、[Visual Studio 用 Azure リソース グループ](https://azure.microsoft.com/blog/azure-resource-manager-2-5-for-visual-studio/)に関するページを参照してください。
 
 Azure リソース グループ プロジェクトには、リソース グループにデプロイされる要素を定義する Azure リソース マネージャー JSON テンプレートが含まれています。詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。
 
@@ -195,4 +195,4 @@ Azure SDK 2.5 で作成されたクラウド デプロイ プロジェクトを�
 
 Visual Studio で Azure リソース グループにリソースを追加する方法については、「[Azure リソース グループへのリソースの追加](vs-azure-tools-resource-group-adding-resources.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

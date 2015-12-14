@@ -69,7 +69,7 @@ Azure モジュールは、Service Bus に接続するために必要な情報�
 
 Azure Cloud Service の構成ファイルで環境変数を設定する例については、[Storage を使用する Node.js Cloud Service に関するトピック][]を参照してください。
 
-Azure Web サイトの Azure ポータルで環境変数を設定する例については、[Storage を使用する Node.js Web アプリケーション][]に関するトピックを参照してください。
+Azure Web サイトの [Azure クラシック ポータル][]で環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション][]」を参照してください。
 
 ## トピックを作成する
 
@@ -292,7 +292,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 ## トピックとサブスクリプションを削除する
 
-トピックおよびサブスクリプションは永続的であり、Azure ポータルまたはプログラムによって明示的に削除する必要があります。次の例では、`MyTopic` という名前のトピックを削除する方法を示します。
+トピックおよびサブスクリプションは永続的であり、[Azure クラシック ポータル][]またはプログラムによって明示的に削除する必要があります。次の例では、`MyTopic` という名前のトピックを削除する方法を示します。
 
     serviceBusService.deleteTopic('MyTopic', function (error) {
         if (error) {
@@ -317,14 +317,14 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 -   GitHub の [Azure SDK for Node][] リポジトリ
 
   [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
-  [Azure portal]: http://manage.windowsazure.com
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
   [SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
   [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
   [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
   [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
   [Storage を使用する Node.js Cloud Service に関するトピック]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-  [Storage を使用する Node.js Web アプリケーション]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
+  [ストレージを使用する Node.js Web アプリケーション]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -33,7 +33,7 @@
 オンデマンド HDInsight のリンクされたサービスに関する次の**重要な**点に注意してください。
 
 - 作成したオンデマンド HDInsight クラスターは Azure サブスクリプションに表示されません。Azure Data Factory サービスがあなたの代わりにオンデマンド HDInsight クラスターを管理します。
-- オンデマンド HDInsight クラスターで実行されるジョブのログは HDInsight クラスターに関連付けられているストレージ アカウントにコピーされます。これらのログには Azure ポータルの **[アクティビティ実行の詳細]** ブレードからアクセスできます。詳細については、「[パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)」という記事を参照してください。
+- オンデマンド HDInsight クラスターで実行されるジョブのログは HDInsight クラスターに関連付けられているストレージ アカウントにコピーされます。これらのログには、Azure クラシック ポータルの **[アクティビティの実行の詳細]** ブレードからアクセスできます。詳細については、「[パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)」という記事を参照してください。
 - HDInsight クラスターが稼動し、ジョブを実行している時間に対してのみ課金されます。
 
 > [AZURE.IMPORTANT]オンデマンドで Azure HDInsight クラスターをプロビジョニングするには一般的に **15 分**以上かかります。
@@ -47,7 +47,7 @@
 	    "typeProperties": {
 	      "clusterSize": 4,
 	      "timeToLive": "00:05:00",
-	      "version": "3.1",
+	      "version": "3.2",
 		  "osType": "linux",
 	      "linkedServiceName": "MyBlobStore"
 	      "additionalLinkedServiceNames": [
@@ -65,17 +65,17 @@
 type | type プロパティは **HDInsightOnDemand** に設定されます。 | あり
 clusterSize | オンデマンド クラスターのサイズです。このオンデマンド クラスターに配置するノードの数を指定します。 | あり
 timetolive | <p>オンデマンド HDInsight クラスターに許可されるアイドル時間です。他のアクティブなジョブがクラスターにない場合、アクティビティ実行の完了後にオンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。</p><p>たとえば、アクティビティ実行に 6 分かかるときに timetolive が 5 分に設定されている場合、アクティビティ実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。別のアクティビティ実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。</p><p>オンデマンド HDInsight クラスターの作成は高額な作業であり (時間もかかることがあります)、オンデマンド HDInsight クラスターを再利用し、Data Factory のパフォーマンスを改善する必要がある場合にこの設定を利用します。</p><p>timetolive 値を 0 に設定した場合、アクティビティ実行の処理直後にクラスターが削除されます。その一方で、高い値を設定した場合、クラスターは不必要にアイドル状態を維持し、コストの上昇を招きます。そのため、ニーズに合わせて適切な値を設定することが重要です。</p><p>timetolive プロパティ値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターの同じインスタンスを共有できます。</p> | はい
-version | HDInsight クラスターのバージョン | いいえ
+version | HDInsight クラスターのバージョン。既定値は、Windows クラスターでは 3.1、Linux クラスターでは 3.2 です。 | いいえ
 linkedServiceName | データの保存し、処理するためのオンデマンド クラスターで使用される BLOB ストアです。 | あり
 additionalLinkedServiceNames | Data Factory サービスがあなたの代わりに登録できるように、HDInsight の「リンクされたサービス」の追加ストレージ アカウントを指定します。 | いいえ
-osType | オペレーティング システムの種類。使用可能な値: windows (既定値) および linux | いいえ
+osType | オペレーティング システムの種類。使用可能な値: Windows (既定値) および Linux | いいえ
 
 ### 高度なプロパティ
 
 次のプロパティを指定し、オンデマンド HDInsight クラスターを詳細に設定することもできます。
 
 プロパティ | 説明 | 必須
--------- | ----------- | --------
+:-------- | :----------- | :--------
 coreConfiguration | 作成する HDInsight クラスターに core 構成パラメーター (core-site.xml と同じ) を指定します。 | いいえ
 hBaseConfiguration | HDInsight クラスターに HBase 構成パラメーター (hbase-site.xml) を指定します。 | いいえ
 hdfsConfiguration | HDInsight クラスターに HDFS 構成パラメーター (hdfs-site.xml) を指定します。 | いいえ
@@ -94,7 +94,7 @@ yarnConfiguration | HDInsight クラスターに Yarn 構成パラメーター (
 	    "typeProperties": {
 	      "clusterSize": 16,
 	      "timeToLive": "01:30:00",
-	      "version": "3.1",
+	      "version": "3.2",
 	      "linkedServiceName": "adfods1",
 	      "coreConfiguration": {
 	        "templeton.mapper.memory.mb": "5000"
@@ -119,6 +119,27 @@ yarnConfiguration | HDInsight クラスターに Yarn 構成パラメーター (
 	    }
 	  }
 	}
+
+### ノードのサイズ
+次のプロパティを使用して、ヘッド ノード、データ ノード、Zookeeper ノードのサイズを指定できます。
+
+プロパティ | 説明 | 必須
+:-------- | :----------- | :--------
+headNodeSize | ヘッド ノードのサイズを指定します。既定値は "Large" です。詳細については、下記の「**ノードのサイズの指定**」をご覧ください。 | いいえ
+dataNodeSize | データ ノードのサイズを指定します。既定値は "Large" です。 | いいえ
+zookeeperNodeSize | Zookeeper ノードのサイズを指定します。既定値は "Small" です。 | いいえ
+ 
+#### ノードのサイズの指定
+上記のプロパティで指定する必要がある文字列値については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-size-specs.md#size-tables)」をご覧ください。値は、この記事に記載されている**コマンドレットと API** に準拠する必要があります。この記事に示すように、Large (既定値) サイズのデータ ノードのメモリ容量は 7 GB ですが、シナリオによってはこれでは不十分な場合があります。
+
+D4 サイズのヘッド ノードとワーカー ノードを作成する場合は、headNodeSize プロパティと dataNodeSize プロパティの値として **Standard\_D4** を指定する必要があります。
+
+	"headNodeSize": "Standard_D4",	
+	"dataNodeSize": "Standard_D4",
+
+これらのプロパティに間違った値を指定すると、**エラー**が発生し、"クラスターを作成できませんでした。例外: クラスター作成操作を完了できません。コード '400' で操作が失敗しました。取り残されたクラスターの状態: 'Error'。メッセージ: 'PreClusterCreationValidationFailure'。" というエラー メッセージが表示される場合があります。このエラーが発生した場合は、前述の記事の表に記載されている**コマンドレットと API** の名前を使用していることを確認してください。
+
+
 
 ## Bring Your Own のコンピューティング環境
 
@@ -168,8 +189,8 @@ Azure Batch の「リンクされたサービス」を作成し、仮想マシ�
 Azure Batch サービスの利用が初めての場合、次のトピックを参照してください。
 
 
-- 「[Azure Batch の基本](../batch/batch-technical-overview.md)」。Azure Backup サービスの概要が説明されています。
-- Azure Batch アカウントを作成するための [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) コマンドレット (または) Azure 管理ポータルを利用して Azure Batch アカウントを作成するための [Microsoft Azure 管理ポータル](../batch/batch-account-create-portal.md)コマンドレットの使用方法の詳細については、「[PowerShell を使用した Azure Batch アカウントの管理](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)」トピックをご覧ください。
+- Azure Batch サービスの概要については、「[Azure Batch の基礎](../batch/batch-technical-overview.md)」をご覧ください。
+- Azure Batch アカウントについては、[New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) コマンドレットを使用して作成する方法または[Azure クラシック ポータル](../batch/batch-account-create-portal.md)を使用して作成する方法をご覧ください。コマンドレットの使用方法の詳細については、「[PowerShell を使用した Azure Batch アカウントの管理](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)」トピックをご覧ください。
 - Azure Batch プールを作成するための [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) コマンドレット。
 
 ### 例
@@ -271,4 +292,4 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 
 Azure SQL のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。このリンクされたサービスの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

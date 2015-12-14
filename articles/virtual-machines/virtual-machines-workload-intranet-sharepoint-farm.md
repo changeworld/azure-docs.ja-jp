@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models-classic-include](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャーのデプロイ モデル。
 
-Microsoft Azure で、最初または次の SharePoint ファームを設定し、簡単に構成できる機能と、新機能を追加したり主要な機能を最適化したりするためにファームを迅速に拡張する機能を活用します。多くの SharePoint ファームは、標準、高可用の 3 層構成から、分散キャッシュや検索などのパフォーマンスや個別の役割に合わせて、数十以上のサーバーを含むファームへと成長します。
+Microsoft Azure で、最初または次の SharePoint ファームを設定し、簡単に構成できる機能と、新機能を追加したり主要な機能を最適化したりするためにファームを迅速に拡張する機能を活用します。多くの SharePoint ファームは、標準、高可用の 3 層構成から、分散キャッシュや検索などのパフォーマンスや個別のロールに合わせて、数十以上のサーバーを含むファームへと成長します。
 
 Azure インフラストラクチャ サービスの仮想マシンと仮想ネットワークの機能を使用すると、オンプレミス ネットワークに透過的に接続された SharePoint ファームをすばやくデプロイし、実行できるようになります。セットアップできるネットワークの例を次に示します。
 
@@ -117,7 +117,7 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 
 - フェーズ 1: Azure を構成する。
 
-	Azure ポータルと Azure PowerShell を使用して、ストレージ アカウント、クラウド サービス、およびクロスプレミス仮想ネットワークを作成します。詳細な構成手順については、「[フェーズ 1](virtual-machines-workload-intranet-sharepoint-phase1.md)」を参照してください。
+	Azure クラシック ポータルと Azure PowerShell を使用して、ストレージ アカウント、クラウド サービス、およびクロスプレミス仮想ネットワークを作成します。詳細な構成手順については、「[フェーズ 1](virtual-machines-workload-intranet-sharepoint-phase1.md)」を参照してください。
 
 - フェーズ2: ドメイン コントローラーを構成する
 
@@ -153,4 +153,4 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

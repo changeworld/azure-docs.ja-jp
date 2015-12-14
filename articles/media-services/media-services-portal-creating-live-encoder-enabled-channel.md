@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure ポータルを利用し、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する" 
-	description="このチュートリアルでは、Azure ポータルを利用し、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードするチャネルを作成する手順について説明します。" 
+	pageTitle="Azure クラシック ポータルを利用し、シングル ビットレートからマルチ ビットレート ストリーミングへの Live Encoding を実行するチャネルを作成する" 
+	description="このチュートリアルでは、Azure クラシック ポータルを利用し、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードするチャネルを作成する手順について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako,anilmur" 
@@ -17,7 +17,7 @@
 	ms.author="juliako"/>
 
 
-#Azure ポータルを利用し、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する
+#Azure クラシック ポータルを利用し、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する
 
 > [AZURE.SELECTOR]
 - [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
@@ -58,7 +58,7 @@
 
 ##このチュートリアルの内容
 
-このチュートリアルでは、Microsoft Azure 管理ポータルを使用して、次のタスクを実行します。
+このチュートリアルでは、Azure クラシック ポータルを使用して、次のタスクを実行します。
 
 2.  ストリーミング エンドポイントを構成します。
 3.  ライブ エンコードを実行できるチャネルを作成します。
@@ -85,7 +85,7 @@
 
 ストリーミング占有ユニットの数を変更するには、以下の手順を実行します。
 
-1. [管理ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
 
 2. [ストリーミング エンドポイント] ページを選択します。次に、変更するストリーミング エンドポイントをクリックします。
 
@@ -105,7 +105,7 @@
  
 ##チャネルの作成
 
-1.	[管理ポータル](http://manage.windowsazure.com/)で、[Media Services] をクリックし、目的の Media Services アカウント名をクリックします。
+1.	[Azure クラシック ポータル](http://manage.windowsazure.com/)で、[Media Services] をクリックし、目的の Media Services アカウント名をクリックします。
 2.	[チャネル] ページを選択します。
 3.	[追加+] を選択し、新しいチャネルを追加します。
 
@@ -276,4 +276,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 [standard4]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard4.png
 [standard5]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard_encode.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

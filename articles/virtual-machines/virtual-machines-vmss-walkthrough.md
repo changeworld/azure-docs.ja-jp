@@ -45,10 +45,10 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 1.	任意のテキスト エディターで C:\\VMSSTemplate.json ファイルを作成し、このテンプレートをサポートする初期 JSON 構造体を追加します。
 
 	```
-	{
+{
 		"$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/VM.json",
-		"contentVersion": "1.0.0.0",
-		"parameters": {
+   "contentVersion": "1.0.0.0",
+ "parameters": {
 		}
 		"variables": {
 		}
@@ -71,17 +71,17 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 	```
 	"vmName": {
 		"type": "string"
-	},
+      },
 	"vmSSName": {
 		"type": "string"
-	},
-	"instanceCount": {
+    },
+    "instanceCount": {
 		"type": "string"
-	},
-	"adminUsername": {
+      },
+    "adminUsername": {
 		"type": "string"
-	},
-	"adminPassword": {
+    },
+    "adminPassword": {
 		"type": "securestring"
 	},
 	"storageAccountName": {
@@ -89,7 +89,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 	},
 	"vmssStoragePrefix": {
 		"type": "string"
-	}
+      }
 	```
 
 
@@ -112,9 +112,9 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 	"imagePublisher": "MicrosoftWindowsServer",
 	"imageOffer": "WindowsServer",
 	"imageVersion": "2012-R2-Datacenter",
-	"addressPrefix": "10.0.0.0/16",
+    "addressPrefix": "10.0.0.0/16",
 	"subnetName": "Subnet",
-	"subnetPrefix": "10.0.0.0/24",
+    "subnetPrefix": "10.0.0.0/24",
 	"publicIP1": "[concat(parameters('resourcePrefix'),'ip1')]",
 	"publicIP2": "[concat(parameters('resourcePrefix'),'ip2')]",
 	"loadBalancerName": "[concat(parameters('resourcePrefix'),'lb1')]",
@@ -155,45 +155,45 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 	テンプレートに追加した resources を親要素として、その下にストレージ アカウント リソースを追加します。このテンプレートは、オペレーティング システムのディスクと診断データの保存先として、推奨される 5 つのストレージ アカウントをループを使って作成します。この一連のアカウントは、スケール セットで最大 100 台の仮想マシンをサポートします。これが現時点での最大数となります。各ストレージ アカウントには、変数で定義された文字指定子とテンプレートのパラメーターで指定したサフィックスとを組み合わせた名前が付けられます。
 
 	```
-	{
-		"type": "Microsoft.Storage/storageAccounts",
+    {
+      "type": "Microsoft.Storage/storageAccounts",
 		"name": "[concat(variables('storagePrefix')[copyIndex()], parameters('vmssStorageSuffix'))]",
 		"apiVersion": "2015-05-01-preview",
-		"copy": {
-			"name": "storageLoop",
-			"count": 5
-		},
+      "copy": {
+        "name": "storageLoop",
+        "count": 5
+      },
 		"location": "[resourceGroup().location]",
-		"properties": {
-			"accountType": "[variables('storageAccountType')]"
-		}
-	},
+      "properties": {
+        "accountType": "[variables('storageAccountType')]"
+      }
+    },
 	```
 
 5.	仮想ネットワーク リソースを追加します。詳細については、「[ネットワーク リソース プロバイダー](../virtual-network/resource-groups-networking.md)」を参照してください。
 
 	```
-	{
+    {
 		"apiVersion": "2015-06-15",
-		"type": "Microsoft.Network/virtualNetworks",
-		"name": "[variables('virtualNetworkName')]",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[variables('virtualNetworkName')]",
 		"location": "[resourceGroup().location]",
-		"properties": {
-			"addressSpace": {
-				"addressPrefixes": [
-					"[variables('addressPrefix')]"
-				]
-			},
-			"subnets": [
-				{
-					"name": "[variables('subnetName')]",
-					"properties": {
-						"addressPrefix": "[variables('subnetPrefix')]"
-					}
-				}
-			]
-		}
-	},
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[variables('addressPrefix')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[variables('subnetName')]",
+            "properties": {
+              "addressPrefix": "[variables('subnetPrefix')]"
+            }
+          }
+        ]
+      }
+    },
 	```
 
 6.	ロード バランサーとネットワーク インターフェイスによって使用されるパブリック IP アドレス リソースを追加します。
@@ -228,7 +228,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 7.	スケール セットで使用するロード バランサー リソースを追加します。詳細については、「[Azure リソース マネージャーによるロード バランサーのサポート](../load-balancer/oad-balancer-arm.md)」を参照してください。
 
 	```
-	{
+    {
 		"apiVersion": "2015-06-15",
 		"name": "[variables('loadBalancerName')]",
 		"type": "Microsoft.Network/loadBalancers",
@@ -311,7 +311,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 		"type": "Microsoft.Compute/virtualMachines",
 		"name": "[parameters('vmName')]",
 		"location": "[resourceGroup().location]",
-		"dependsOn": [
+      "dependsOn": [
 			"[concat('Microsoft.Network/networkInterfaces/', variables('nicName1'))]"
 		],
 		"properties": {
@@ -372,53 +372,53 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 			"[concat('Microsoft.Storage/storageAccounts/y', parameters('vmssStorageSuffix'))]",
 			"[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
 			"[concat('Microsoft.Network/loadBalancers/', variables('loadBalancerName'))]"
-		],
-		"sku": {
-			"name": "[variables('vmSize')]",
-			"tier": "Standard",
-			"capacity": "[parameters('instanceCount')]"
-		},
-		"properties": {
-			"upgradePolicy": {
-				"mode": "Manual"
-			},
-			"virtualMachineProfile": {
-				"storageProfile": {
-					"osDisk": {
-						"vhdContainers": [
+      ],
+      "sku": {
+        "name": "[variables('vmSize')]",
+        "tier": "Standard",
+        "capacity": "[parameters('instanceCount')]"
+      },
+      "properties": {
+         "upgradePolicy": {
+         "mode": "Manual"
+        },
+        "virtualMachineProfile": {
+          "storageProfile": {
+            "osDisk": {
+              "vhdContainers": [
 							"[concat('https://a', parameters('vmssStorageSuffix'), '.blob.core.windows.net/vmss')]",
 							"[concat('https://g', parameters('vmssStorageSuffix'), '.blob.core.windows.net/vmss')]",
 							"[concat('https://m', parameters('vmssStorageSuffix'), '.blob.core.windows.net/vmss')]",
 							"[concat('https://s', parameters('vmssStorageSuffix'), '.blob.core.windows.net/vmss')]",
 							"[concat('https://y', parameters('vmssStorageSuffix'), '.blob.core.windows.net/vmss')]"
-						],
+              ],
 						"name": "vmssosdisk",
-						"caching": "ReadOnly",
-						"createOption": "FromImage"
-					},
+              "caching": "ReadOnly",
+              "createOption": "FromImage"
+            },
 					"imageReference": {
 						"publisher": "[variables('imagePublisher')]",
 						"offer": "[variables('imageOffer')]",
 						"sku": "[variables('imageVersion')]",
 						"version": "latest"
 					}
-				},
-				"osProfile": {
-					"computerNamePrefix": "[parameters('vmSSName')]",
-					"adminUsername": "[parameters('adminUsername')]",
-					"adminPassword": "[parameters('adminPassword')]"
-				},
-				"networkProfile": {
-					"networkInterfaceConfigurations": [
-						{
+          },
+          "osProfile": {
+            "computerNamePrefix": "[parameters('vmSSName')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "adminPassword": "[parameters('adminPassword')]"
+          },
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
 							"name": "[variables('nicName2')]",
-							"properties": {
-								"primary": "true",
-								"ipConfigurations": [
-									{
+                "properties": {
+                  "primary": "true",
+                  "ipConfigurations": [
+                    {
 										"name": "ip1",
-										"properties": {
-											"subnet": {
+                      "properties": {
+                        "subnet": {
 												"id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/virtualNetworks/',variables('virtualNetworkName'),'/subnets/',variables('subnetName'))]"
 											},
 											"loadBalancerBackendAddressPools": [
@@ -432,11 +432,11 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 												}
 											]
 										}
-									}
+                        }
 								]
-							}
-						}
-					]
+                      }
+                    }
+                  ]
 				},
 				"extensionProfile": {
 					"extensions": [
@@ -456,12 +456,12 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 									"storageAccountKey": "[listkeys(variables('accountid'), '2015-05-01-preview').key1]",
 									"storageAccountEndPoint": "https://core.windows.net"
 								}
-							}
-						}
-					]
+                }
+              }
+            ]
 				}
 			}
-		}
+          }
 	},
 	```
 
@@ -606,4 +606,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	Remove-AzureRmResource -Name vmsstest1 -ResourceGroupName vmss-test1 -ApiVersion 2015-06-15 -ResourceType Microsoft.Compute/virtualMachineScaleSets
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

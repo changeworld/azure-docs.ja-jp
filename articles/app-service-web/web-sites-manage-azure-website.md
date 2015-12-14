@@ -35,7 +35,7 @@ Azure App Service には、 Free、Shared、Basic、Standard、および Premium
 
 ### 構成
 
-さまざまな構成オプションを設定するには、[Azure プレビュー ポータル](https://portal.azure.com/)を使用します。詳細については、「[Azure App Service での Web アプリの構成](web-sites-configure.md)」を参照してください。以下にクイック チェックリストを示します。
+さまざまな構成オプションを設定するには、[Azure ポータル](https://portal.azure.com/)を使用します。詳細については、「[Azure App Service での Web アプリの構成](web-sites-configure.md)」を参照してください。以下にクイック チェックリストを示します。
 
 - 必要に応じて、.NET、PHP、Java、または Python の**ランタイム バージョン**を選択します。
 - Web アプリで WebSocket プロトコルを使用する場合、**WebSockets** を有効にします。(これには [ASP.NET SignalR](http://www.asp.net/signalr) や [socket.io](web-sites-nodejs-chat-app-socketio.md) を使用するアプリが含まれます。)
@@ -59,14 +59,14 @@ Web アプリの運用中、それが利用可能であり、ユーザー トラ
 
 ### Monitoring
 
-- Azure プレビュー ポータルにより、CPU 使用率やクライアント要求の数などの[パフォーマンス メトリックを追加する](web-sites-monitor.md)ことができます。
+- Azure ポータルにより、CPU 使用率やクライアント要求の数などの[パフォーマンス メトリックを追加する](web-sites-monitor.md)ことができます。
 - 詳細に分析するには、New Relic を使用してパフォーマンスを監視および管理してください。「[Azure App Service の .NET Web アプリに対する New Relic によるパフォーマンス管理](store-new-relic-web-sites-dotnet-application-performance-management.md)」を参照してください。
 - トラフィックに応じた [Web アプリのスケーリング](web-sites-scale.md)。レベルに応じて、VM の数や VM インスタンスのサイズのスケーリングが可能です。 Standard および Premium レベルの場合には、自動スケーリングを設定することができます。その場合、Web アプリは、固定スケジュールに従って、または負荷に応じて、自動スケールされます。  
  
 ### バックアップ
 
 - Web アプリの[自動バックアップ](web-sites-backup.md)を設定します。バックアップについては、[このビデオ](http://azure.microsoft.com/documentation/videos/azure-websites-automatic-and-easy-backup/)を参照してください。
-- Azure SQL Database の[データベース復旧](https://azure.microsoft.com/zh-CN/documentation/articles/sql-database-business-continuity/)のさまざまなオプションを確認してください。
+- Azure SQL データベースの[データベース復旧](../sql-database-business-continuity.md)のさまざまなオプションを確認してください。
 
 ### トラブルシューティング
 
@@ -103,4 +103,4 @@ Visual Studio Team Services を使用する場合は、ソース管理から継�
 
   
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

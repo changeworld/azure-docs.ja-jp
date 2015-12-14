@@ -50,7 +50,7 @@
 
 #### サービス正常性を追跡する
 
-Microsoft Azure は、サービスの中断やパフォーマンスの低下があるたびに、毎回公表します。サービスの正常性は、[Azure プレビュー ポータル](https://portal.azure.com/)で追跡できます。詳細については、[サービスの正常性の追跡](insights-service-health.md)に関するページを参照してください。
+Microsoft Azure は、サービスの中断やパフォーマンスの低下があるたびに、毎回公表します。サービスの正常性は、[Azure ポータル](https://portal.azure.com/)で追跡できます。詳細については、[サービスの正常性の追跡](insights-service-health.md)に関するページを参照してください。
 
 #### Web アプリを監視する
 
@@ -62,7 +62,7 @@ Web アプリに関しては、次のメトリックを監視するようお勧�
 -	平均応答時間
 -	CPU 時間
 -	メモリ ワーキング セット
--	Requests
+-	要求数
 
 ![](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
@@ -174,16 +174,16 @@ Azure App Service では、アプリケーションが実行されるスケー�
 
 ####	AutoHeal を使用する
 
-AutoHeal は、選択された設定 (構成の変更、要求、メモリに基づく制限、要求の実行に必要な時間など) に従って、アプリのワーカー プロセスをリサイクルします。ほとんどの場合、問題を回復するための一番の近道は、プロセスをリサイクルすることです。Web アプリはいつでも、Azure プレビュー ポータル内から直接、再起動できますが、AutoHeal はユーザーの介入なしでそれを自動的に実行します。必要な作業は、Web アプリのルート web.config にいくつかのトリガーを追加することだけです。.Net アプリケーション以外でも、これらの設定は同じように作用します。
+AutoHeal は、選択された設定 (構成の変更、要求、メモリに基づく制限、要求の実行に必要な時間など) に従って、アプリのワーカー プロセスをリサイクルします。ほとんどの場合、問題を回復するための一番の近道は、プロセスをリサイクルすることです。Web アプリはいつでも、Azure ポータル内から直接、再起動できますが、AutoHeal はユーザーの介入なしでそれを自動的に実行します。必要な作業は、Web アプリのルート web.config にいくつかのトリガーを追加することだけです。.Net アプリケーション以外でも、これらの設定は同じように作用します。
 
 詳細については、[Azure Web Sites の自動復旧](/blog/auto-healing-windows-azure-web-sites/)に関するページを参照してください。
 
 ####	Web アプリを再起動する
 
-1 回限りの問題であれば、通常これが最も簡単な復旧方法です。アプリを停止または再起動するためのオプションは、[Azure プレビュー ポータル](https://portal.azure.com)の Web アプリ ブレードにあります。
+1 回限りの問題であれば、通常これが最も簡単な復旧方法です。アプリを停止または再起動するためのオプションは、[Azure ポータル](https://portal.azure.com)の Web アプリ ブレードにあります。
 
  ![](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-Web アプリの管理には、Azure PowerShell を使用することもできます。詳細については、[リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)をご覧ください。
+Web アプリの管理には、Azure PowerShell を使用することもできます。詳細については、[リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager.md)をご覧ください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

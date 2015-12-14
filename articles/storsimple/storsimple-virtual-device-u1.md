@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/16/2015"
+   ms.date="12/01/2015"
    ms.author="alkohli" />
 
 # Azure での StorSimple 仮想デバイスのデプロイと管理
@@ -57,7 +57,7 @@ StorSimple 仮想デバイスを使用する場合、セキュリティに関す
 
 - 仮想デバイスは Microsoft Azure サブスクリプションを通じてセキュリティで保護されます。つまり、仮想デバイスを使用している場合に Azure サブスクリプションが侵害されると、仮想デバイス上に格納されたデータも影響を受けます。
 
-- Azure StorSimple に格納されたデータの暗号化に使われる証明書の公開キーは、Microsoft Azure ポータルに対して安全に公開され、秘密キーは StorSimple デバイス上に保持されます。StorSimple 仮想デバイスでは、公開キーと秘密キーの両方が Azure に格納されます。
+- Azure StorSimple に格納されたデータの暗号化に使われる証明書の公開キーは、Azure クラシック ポータルに対して安全に公開され、秘密キーは StorSimple デバイス上に保持されます。StorSimple 仮想デバイスでは、公開キーと秘密キーの両方が Azure に格納されます。
 
 - 仮想デバイスは、Microsoft Azure データセンターでホストされます。
 
@@ -97,7 +97,7 @@ StorSimple 仮想デバイスを使用する場合、セキュリティに関す
 作業を開始する前に、次の情報を確認してください。
 
 
-- アクセス資格情報のある Azure ポータル アカウントを持っていること。
+- アクセス資格情報のある Azure クラシック ポータル アカウントを持っていること。
 
 - Azure ストレージ アカウントのアクセス資格情報。
 
@@ -118,7 +118,7 @@ StorSimple 仮想デバイスを使用する場合、セキュリティに関す
 
 StorSimple 仮想デバイスを作成するには、次の手順を実行します。
 
-1.  Azure ポータルで **StorSimple Manager** サービスに移動します。
+1.  Azure クラシック ポータルで **StorSimple Manager** サービスに移動します。
 
 2. **[デバイス]** ページに移動します。**[デバイス]** ページ下部の **[仮想デバイスの作成]** をクリックします。
 
@@ -294,7 +294,7 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 仮想デバイス上にパブリック エンドポイントを作成するには、次の手順を実行します。
 
-1. Azure ポータルにサインインします。
+1. Azure クラシック ポータルにサインインします。
 
 - **[Virtual Machines]** をクリックし、仮想デバイスとして使用している仮想マシンを選択します。
 
@@ -376,7 +376,7 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 ### StorSimple 仮想デバイスをシャットダウンするには
 
-1. Azure ポータルにサインインします。
+1. Azure クラシック ポータルにサインインします。
 
 2. **[Virtual Machines]** をクリックし、仮想デバイスを選択します。
 
@@ -384,7 +384,7 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 ### StorSimple 仮想デバイスを削除するには
 
-1. Azure ポータルにサインインします。
+1. Azure クラシック ポータルにサインインします。
 
 - **[Virtual Machines]** をクリックし、仮想デバイスを選択します。
 
@@ -394,4 +394,4 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 [バックアップ セットからの StorSimple ボリュームの復元方法](storsimple-restore-from-backup-set.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

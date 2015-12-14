@@ -54,7 +54,7 @@ Web アプリ用に作成された ****.azurewebsites.net** ドメイン名を�
 
 Azure App Service では、構成情報を Web Apps ランタイム環境の一部である**アプリケーション設定**および**接続文字列**として保存できます。大半のプログラミング言語では、値は、*環境変数*を介して実行時にアプリケーションに公開されます。.NET アプリケーションの場合、これらの値は実行時に .NET 構成に挿入されます。
 
-**アプリケーション設定**と**接続文字列**は、[Azure プレビュー ポータル](http://portal.azure.com)、または PowerShell や Azure CLI などのユーティリティを使用して構成できます。
+**アプリケーション設定**と**接続文字列**は、[Azure ポータル](http://portal.azure.com)、または PowerShell や Azure クロスプラットフォーム コマンドライン インターフェイスなどのユーティリティを使用して構成可能です。
 
 アプリケーション設定と接続文字列の詳細については、「[Web アプリの構成](web-sites-configure.md)」を参照してください。
 
@@ -62,7 +62,7 @@ Azure App Service では、構成情報を Web Apps ランタイム環境の一�
 
 Azure は、**FTPS** を介して Web アプリのファイル システムへの保護された FTP アクセスを提供します。これによって、Web アプリ上のアプリケーション コードや診断ログに安全にアクセスできます。Web アプリの FTPS リンクは、次の手順で見つけることができます。
 
-1. [Azure プレビュー ポータル](http://portal.azure.com)を開きます。
+1. [Azure ポータル](http://portal.azure.com) を開きます。
 2. **[すべて参照]** を選択します。
 3. **[参照]** ブレードで、**[Web Apps]** を選択します。
 4. **[Web Apps]** ブレードで、目的の Web アプリを選択します。
@@ -83,9 +83,6 @@ Web アプリの **web.config** または **applicationhost.config** ファイ�
 攻撃の検出に役立つことのある Web アプリのログ情報の詳細については、「[診断ログの有効化](web-sites-enable-diagnostic-log.md)」を参照してください。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

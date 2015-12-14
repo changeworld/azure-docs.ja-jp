@@ -46,7 +46,7 @@ Azure データセンターのサーバーは、クラスターにパーティ�
 
 仮想マシンでの割り当てエラーの多くを解決するには、以下の手順が役立ちます。
 
-- 同じ可用性セット内のすべての VM を停止および割り当て解除し、それぞれを再起動します。<br> 停止するには: [リソース グループ]、対象とするリソース グループ、[リソース]、対象とする可用性セット、[Virtual Machines]、対象とする仮想マシン、[停止] の順にクリックします。
+- 同じ可用性セット内のすべての VM を停止および割り当て解除し、それぞれを再起動します。<br> 停止するには: [リソース グループ]、対象とするリソース グループ、[リソース]、対象とする可用性セット、[仮想マシン]、対象とする Virtual Machines、[停止] の順にクリックします。
 
 	すべての VM を停止した後で、最初の VM を選択し、[起動] をクリックします。
 
@@ -64,7 +64,7 @@ Azure データセンターのサーバーは、クラスターにパーティ�
 
 一般に、エラーが "要求された VM のサイズがサポートされていない" ことを示してはいない場合は、後で再試行することができます。そのクラスターで要求に応えるための十分なリソースが解放される可能性があるためです。要求された VM サイズがサポートされていないことが問題である場合は、別の VM サイズを試してみます。そうでない場合、唯一のオプションは、固定している制約を削除することです。
 
-2 つの一般的なエラー シナリオは、アフィニティ グループと関連しています。以前は、アフィニティ グループは、VM/サービス インスタンスの近接性を提供したり、仮想ネットワーク (VNet) を作成できるようにするために使用されていました。リージョン仮想ネットワークの導入により、アフィニティ グループは Virtual Network の作成に必要ではなくなりました。Azure インフラストラクチャでのネットワーク待機時間の短縮により、VM/サービス近接性のためにアフィニティ グループを使用する必要性も変わりました。
+2 つの一般的なエラー シナリオは、アフィニティ グループと関連しています。以前は、アフィニティ グループは、VM/サービス インスタンスの近接性を提供したり、Virtual Network (VNet) を作成できるようにするために使用されていました。リージョン仮想ネットワークの導入により、アフィニティ グループは Virtual Network の作成に必要ではなくなりました。Azure インフラストラクチャでのネットワーク待機時間の短縮により、VM/サービス近接性のためにアフィニティ グループを使用する必要性も変わりました。
 
 次の図 5 は、(固定された) 割り当てシナリオの分類を示しています。![Pinned Allocation Taxonomy](./media/virtual-machines-allocation-failure/Allocation3.png)
 
@@ -81,9 +81,9 @@ VM のサイズの変更、または既存のクラウド サービスへの VM 
 
 **対処法**
 
-エラーが Upgrade\_VMSizeNotSupported* である場合は、別の VM サイズを試してみてください。別の VM サイズを使用できないものの、別の仮想 IP アドレス (VIP) を使用できる場合は、新しい VM をホストする新しいクラウド サービスを作成し、新しいクラウド サービスを既存の VM が実行されているリージョン仮想ネットワークに追加します。既存のクラウド サービスがリージョン仮想ネットワークを使用しない場合も、新しいクラウド サービス用の新しい仮想ネットワークを作成し、[既存の VNet を新しい VNet](https://azure.microsoft.com/ja-JP/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/) に接続できます。詳細については、[リージョン仮想ネットワーク](http://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)に関するページを参照してください。
+エラーが Upgrade\_VMSizeNotSupported* である場合は、別の VM サイズを試してみてください。別の VM サイズを使用できないものの、別の仮想 IP アドレス (VIP) を使用できる場合は、新しい VM をホストする新しいクラウド サービスを作成し、新しいクラウド サービスを既存の VM が実行されているリージョン仮想ネットワークに追加します。既存のクラウド サービスがリージョン仮想ネットワークを使用しない場合も、新しいクラウド サービス用の新しい Virtual Network を作成し、[既存の VNet を新しい VNet](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/) に接続できます。詳細については、「[Regional Virtual Network (リージョン仮想ネットワーク)](http://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」を参照してください。
 
-エラーが GeneralError* である場合は、リソースの種類 (特定の VM サイズなど) がクラスターでサポートされているものの、現時点ではクラスターに空きリソースがないと考えられます。上の場合と同じように、新しいクラウド サービスを作成することによって、必要なコンピューティング リソースを追加してみます (新しいクラウド サービスは、別の VIP を使用する必要がある点に注意してください)。その後、リージョン仮想ネットワークを使用して、クラウド サービスに接続します。
+エラーが GeneralError* である場合は、リソースの種類 (特定の VM サイズなど) がクラスターでサポートされているものの、現時点ではクラスターに空きリソースがないと考えられます。上の場合と同じように、新しいクラウド サービスを作成することによって、必要なコンピューティング リソースを追加してみます (新しいクラウド サービスは、別の VIP を使用する必要がある点に注意してください)。その後、リージョン仮想ネットワークを使用して、Cloud Services に接続します。
 
 ### 割り当てシナリオ: 停止した (割り当て解除した) VM の再起動 - 部分的割り当て解除
 
@@ -97,7 +97,7 @@ GeneralError*
 
 **対処法**
 
-別の VIP を使用できる場合は、停止 (割り当て解除) された VM を削除し (ただし、関連付けられているディスクは保持し)、別のクラウド サービスを通じて VM を追加し直します。Cloud Services に接続するには、リージョン仮想ネットワークを使用します。1. 既存の Cloud Services がリージョン仮想ネットワークを使用している場合は、単に新しい Cloud Services を同じ Virtual Network に追加します。2.既存のクラウド サービスがリージョン仮想ネットワークを使用しない場合は、新しいクラウド サービス用の新しい Virtual Network を作成し、[既存の VNet を新しい VNet](https://azure.microsoft.com/ja-JP/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/) に接続します。詳細については、[リージョン仮想ネットワーク](http://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)に関するページを参照してください。
+別の VIP を使用できる場合は、停止 (割り当て解除) された VM を削除し (ただし、関連付けられているディスクは保持し)、別のクラウド サービスを通じて VM を追加し直します。Cloud Services に接続するには、リージョン仮想ネットワークを使用します。1. 既存のクラウド サービスがリージョン仮想ネットワークを使用している場合は、単に新しいクラウド サービスを同じ Virtual Network に追加します。2.既存のクラウド サービスがリージョン仮想ネットワークを使用しない場合は、新しいクラウド サービス用の新しい Virtual Network を作成し、[既存の VNet を新しい VNet](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/) に接続します。詳細については、「[Regional Virtual Network (リージョン仮想ネットワーク)](http://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」を参照してください。
 
 ### 割り当てシナリオ: 停止した (割り当て解除した) VM の再起動 - 完全割り当て解除
 **エラー**
@@ -149,9 +149,9 @@ New\_General* または New\_VMSizeNotSupported*
 
 **対処法**
 
-アフィニティ グループが必要ではない場合は、追加する新しいリソースのための新しいリージョン仮想ネットワークを作成し、[既存の VNet を新しい VNet に接続](https://azure.microsoft.com/ja-JP/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)します。詳細については、[リージョン仮想ネットワーク](http://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)に関するページを参照してください。
+アフィニティ グループが必要ない場合は、追加する新しいリソースのための新しいリージョン仮想ネットワークを作成し、[既存の VNet を新しい VNet に接続](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)します。詳細については、「[Regional Virtual Network (リージョン仮想ネットワーク)](http://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」を参照してください。
 
-または、[アフィニティ グループ ベースの仮想ネットワークをリージョン仮想ネットワークに移行](http://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)し、必要なリソースをもう一度追加してみることもできます。
+または、[アフィニティ グループ ベースの Virtual Network をリージョン仮想ネットワークに移行](http://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)し、必要なリソースをもう一度追加してみることもできます。
 
 ## Azure リソース マネージャー デプロイ モデルでの特定の割り当てエラー シナリオのトラブルシューティング
 以下に、割り当て要求が固定されることになる一般的な割り当てシナリオを示します。この記事の後の方で、各シナリオについて説明します。
@@ -209,7 +209,7 @@ GeneralError*
 ### エラーの文字列の参照
 **New\_VMSizeNotSupported***
 
-デプロイ要求の制約条件のため、このデプロイに必要な VM サイズ (または VM サイズの組み合わせ) をプロビジョニングできません。可能であれば、仮想ネットワークのバインドなどの制約条件の緩和、他のデプロイがなくアフィニティ グループが別のホストされるサービスへのデプロイ、アフィニティ グループのないホステッド サービスへのデプロイ、別のリージョンへのデプロイのいずれかを試してください。
+デプロイ要求の制約条件のため、このデプロイに必要な VM サイズ (または VM サイズの組み合わせ) をプロビジョニングできません。可能であれば、仮想ネットワークのバインドなどの制約条件の緩和、他のデプロイがなくアフィニティ グループが別のホストされるサービスへのデプロイ、アフィニティ グループのないホストされるサービスへのデプロイ、別のリージョンへのデプロイのいずれかを試してください。
 
 **New\_General***
 
@@ -228,4 +228,4 @@ GeneralError*
 
 この記事が Azure の問題の解決に役立たなかった場合は、[MSDN と Stack Overflow](http://azure.microsoft.com/support/forums/) の Azure フォーラムを参照してください。問題についての Azure サポート インシデントを送信することもできます。その場合は、[Azure サポート](http://azure.microsoft.com/support/options/)のサイトに移動して、[サポートの要求] をクリックします。Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -57,7 +57,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 - Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-- Web Platform Installer を使用した、Azure PowerShell コマンドレットの最新バージョン。最新バージョンは、[Web Platform Installer](http://aka.ms/webpi-azps/) からダウンロードしてからのをインストールできます。このドキュメントは、PowerShell 1.0 以降を対象に記述しています。この構成に必要なコマンドレットは、以前のバージョンにはありません。PowerShell 1.0 の詳細については、「[Azure PowerShell 1.0 プレビュー](https://azure.microsoft.com/blog/azps-1-0-pre/)」を参照してください。
+- Azure PowerShell コマンドレット (1.0 以上)。このバージョンは、[ダウンロード ページ](http://azure.microsoft.com/downloads/)の「Windows PowerShell」セクションからダウンロードしてインストールできます。このドキュメントは、PowerShell 1.0 以降を対象に記述しています。この構成に必要なコマンドレットは、以前のバージョンにはありません。
 
 - Azure リソース マネージャーおよび PowerShell の使用方法に精通していない場合は、[この記事](../articles/powershell-azure-resource-manager.md)を参照してください。
 
@@ -71,9 +71,9 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 		Get-AzureRmSubscription
 
-2. Azure サブスクリプション名を指定します。
+2. 使用するサブスクリプションを指定します。
 
-		Get-AzureRmSubscription -SubscriptionName "YourSubscriptionName" | Select-AzureRmSubscription
+		Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 		
 3. リソース グループを作成します。
 
@@ -132,4 +132,4 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 		Get-AzureRmVirtualNetworkGatewayConnection -Name "Connection1" -ResourceGroupName "ForcedTunneling"
 		
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

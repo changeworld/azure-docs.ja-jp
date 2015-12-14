@@ -86,7 +86,7 @@
 	![完了][install_hpc7]
 
 ## Azure サブスクリプションを準備する
-[Azure ポータル](https://manage.windowsazure.com)を使用して、Azure サブスクリプションで次の手順を実行します。これは、後で、オンプレミスのヘッド ノードから Azure ノードをデプロイするために必要です。
+[Azure クラシック ポータル](https://manage.windowsazure.com)を使用して、Azure サブスクリプションで次の手順を実行します。これは、後で、オンプレミスのヘッド ノードから Azure ノードをデプロイするために必要です。
 
 - 管理証明書のアップロード (ヘッド ノードと Azure サービス間の接続をセキュリティ保護するために必要です)
 
@@ -99,7 +99,7 @@
 ### <a>既定の管理証明書のアップロード</a>
 HPC Pack ではヘッド ノードに自己署名証明書 (既定の Microsoft HPC Azure 管理証明書) がインストールされます。これを Azure 管理証明書としてアップロードできます。この証明書は、テスト目的および概念実証のデプロイ用に提供されます。
 
-1. ヘッド ノード コンピューターから、[Azure ポータル](https://manage.windowsazure.com)にサインインします。
+1. ヘッド ノード コンピューターから、[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 
 2. **[設定]** をクリックし、**[管理証明書]** をクリックします。
 
@@ -348,4 +348,4 @@ HPC Pack の **clusrun** コマンドを使用すると、1 つ以上のクラ�
 [stop_node4]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node4.png
 [view_instances2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/view_instances2.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

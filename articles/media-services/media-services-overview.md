@@ -30,7 +30,7 @@ Media Services ソリューションを構築するために、以下を使用�
 
 - [Media Services REST API](https://msdn.microsoft.com/library/azure/hh973617.aspx)
 - 次の使用可能なクライアント SDK のうちのいずれか: [Azure Media Services SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、[Azure Media Services for Node.js](https://github.com/fritzy/node-azure-media)、[Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
-- 既存のツール: [Microsoft Azure 管理ポータル](http://manage.windowsazure.com/) または [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer)。
+- 既存のツール: [Azure クラシック ポータル](http://manage.windowsazure.com/) または [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer)。
 
 
 ##Media Services のラーニング パス
@@ -49,8 +49,8 @@ AMS のラーニング パスについては、以下を参照してください
 
 Azure Media Services を使用するには、次が必要です。
  
-3. Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](azure.microsoft.com)を参照してください。
-2. Azure Media Services アカウントを作成します。Azure Media Services アカウントを作成するには、Windows Microsoft Azure 管理ポータル、.NET、REST API を使用します。詳細については、「[アカウントの作成](media-services-create-account.md)」を参照してください。
+3. Azure アカウント。アカウントがない場合は、無料試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](azure.microsoft.com)を参照してください。
+2. Azure Media Services アカウントを作成します。Azure Media Services アカウントを作成するには、Azure クラシック ポータル、.NET、REST API を使用します。詳細については、「[アカウントの作成](media-services-create-account.md)」を参照してください。
 3. (省略可能) 開発環境をセットアップします。開発環境の .NET または REST API を選択します。詳細については、「[環境を設定する](media-services-dotnet-how-to-use.md)」を参照してください。 
 
 	また、プログラミングによる[接続](media-services-dotnet-connect_programmatically.md)方法についても確認してください
@@ -171,7 +171,7 @@ Azure Media Services、**チャネル**、**プログラム**、**ストリー�
 
 ![ライブ ワークフロー][live-overview1]
 
-詳細については、「[Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+詳細については、「[Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
 
 ###オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
@@ -231,4 +231,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -14,14 +14,14 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/23/2015" 
+	ms.date="12/01/2015" 
 	ms.author="jeffstok"/>
 
 # Stream Analytics 出力について
 
 Stream Analytics ジョブを作成するときの考慮事項として、ジョブの出力がどのように使用されるかということが挙げられます。データ変換のコンシューマーには、Stream Analytics ジョブの結果がどのように表示されますか。 出力の解析にどのツールを使用しますか。 データの保存またはウェアハウジングは必要ですか。
 
-さまざまなアプリケーション パターンを有効にするために、Azure Stream Analytics には、ジョブ出力を保存および表示するための 7 つの異なるメソッドが用意されています。SQL Database、BLOB ストレージ、Event Hubs、Service Bus キュー、Service Bus トピック、Power BI、テーブル ストレージが、サポートされている出力すべてです。これにより、データのウェアハウジングやその他の目的のためのジョブ出力の使用や保存において柔軟性を得たり、ジョブ出力を簡単に表示したりすることができます。
+さまざまなアプリケーション パターンを有効にするために、Azure Stream Analytics には、ジョブ出力を保存および表示するためさまざまなメソッドが用意されています。これにより、データのウェアハウジングやその他の目的のためのジョブ出力の使用や保存において柔軟性を得たり、ジョブ出力を簡単に表示したりすることができます。ジョブで構成される出力は、ジョブが開始されてイベントがフローを開始する前に存在している必要があります。たとえば、出力として BLOB Storage を使用する場合、ジョブはストレージ アカウントを自動的に作成しません。ASA ジョブを開始する前に、ユーザーが作成する必要があります。
 
 
 ## SQL Database ##
@@ -118,11 +118,11 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 
 Stream Analytics ジョブの出力として [Power BI](https://powerbi.microsoft.com/) を使用し、Stream Analytics ユーザーに豊富な視覚化エクスペリエンスを提供できます。この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
 
-> [AZURE.NOTE]現時点では、Power BI 出力の作成および構成は Azure プレビュー ポータルでサポートされていません。
+> [AZURE.NOTE]現時点では、Power BI 出力の作成および構成は Azure ポータルでサポートされていません。
 
 ### Power BI アカウントを承認する
 
-1.	Power BI を Microsoft Azure 管理ポータルで出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
+1.	Power BI を Azure クラシック ポータルで出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
 
     ![Authorize Power BI User](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)
 
@@ -267,4 +267,4 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

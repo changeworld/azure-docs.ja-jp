@@ -59,7 +59,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 
 ##<a id="subheading-2"></a>データベースに対する監査を設定する
 
-1. <a href="https://portal.azure.com" target="_blank">Azure プレビュー ポータル</a>を起動します。
+1. <a href="https://portal.azure.com" target="_blank">Azure ポータル</a>を開きます。
 
 2. 監査する SQL Data Warehouse データベース/SQL Server の構成ブレードに移動します。上部の [**設定**] ボタンをクリックし、[設定] ブレードで [**監査**] を選択します。
 
@@ -102,7 +102,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 
 
 ##<a id="subheading-4">運用環境での使用手法</a>
-このセクションでは、上のスクリーン キャプチャーについて説明します。<a href="https://portal.azure.com" target="_blank">Azure プレビュー ポータル</a>または<a href= "https://manage.windowsazure.com/" target="_bank">従来の Azure ポータル</a>を使用できます。
+このセクションでは、上のスクリーン キャプチャーについて説明します。<a href="https://portal.azure.com" target="_blank">Azure ポータル</a>または<a href= "https://manage.windowsazure.com/" target="_bank">従来の Azure クラシック ポータル</a>を使用できます。
  
 
 ##<a id="subheading-5"></a>ストレージ キーの再生成
@@ -141,4 +141,4 @@ Azure リソース マネージャー モードを実行中に、`Get-Command *A
 
 <!--Link references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

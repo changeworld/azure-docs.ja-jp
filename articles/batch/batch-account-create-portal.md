@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Batch アカウントの作成 | Microsoft Azure"
-	description="Azure プレビュー ポータルで、クラウド内で大規模な並列ワークロードを実行する Azure Batch アカウントを作成する方法について説明します"
+	description="Azure ポータルで、クラウド内で大規模な並列ワークロードを実行する Azure Batch アカウントを作成する方法について説明します"
 	services="batch"
 	documentationCenter=""
 	authors="dlepow"
@@ -18,19 +18,19 @@
 
 
 
-# Azure プレビュー ポータルでの Azure Batch アカウントの作成と管理
+# Azure ポータルで Azure Batch アカウントを作成して管理する
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](batch-account-create-portal.md)
+- [Azure portal](batch-account-create-portal.md)
 - [Batch Management .NET](batch-management-dotnet.md)
 
-[Azure プレビュー ポータル](https://portal.azure.com)を使用して Azure Batch アカウントと設定 (アカウント キーなど) の作成と管理を行う方法について説明します。すべての Batch API 要求を認証するには、Batch アカウント URL と関連するアクセス キーが必要です。また、Batch ワークロードのすべての Batch リソース (プール、ジョブ、タスクなど) を特定の Batch アカウントと関連付けます。
+[Azure ポータル](https://portal.azure.com)を使用して Azure Batch アカウントを作成し、その設定 (アカウント キーなど) を管理する方法について説明します。すべての Batch API 要求を認証するには、Batch アカウント URL と関連するアクセス キーが必要です。また、Batch ワークロードのすべての Batch リソース (プール、ジョブ、タスクなど) を特定の Batch アカウントと関連付けます。
 
 >[AZURE.NOTE]現在、プレビュー ポータルでは、Batch アカウント管理と一部のアカウント リソースの表示の機能をサポートしています。開発時は、Batch API を介して Batch の全機能を使用できます。
 
 ## Batch アカウントを作成する
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
 2. **[新規]**、**[Compute]**、**[Batch Service]** の順にクリックします。
 
@@ -84,4 +84,4 @@ Batch アカウント URL は、**[Essentials]** に表示されます。`https:
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
 [account_keys]: ./media/batch-account-create-portal/account_keys.PNG
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

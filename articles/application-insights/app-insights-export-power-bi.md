@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/17/2015" 
+	ms.date="11/25/2015" 
 	ms.author="awills"/>
  
 # Stream Analytics を利用し、Application Insights のデータを Power BI に入力する
@@ -40,6 +40,9 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 > [AZURE.VIDEO export-to-power-bi-from-application-insights]
 
+
+**サンプリング** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
+
 ## Application Insights によるアプリの監視
 
 まだ試していないなら、今からはじめましょう。Application Insights では、さまざまなプラットフォーム (Windows、iOS、Android、J2EE など) のすべてのデバイスまたは Web アプリを監視できます。[使用を開始するには、こちらを参照してください](app-insights-overview.md)。
@@ -64,7 +67,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 ## Azure Storage への連続エクスポートの開始
 
-[連続エクスポート](app-insights-export-telemetry.md)は、Application Insights から Azure Storage にデータを移動します。
+[連続エクスポート](app-insights-export-telemetry.md)は、Application Insights から Azure のストレージにデータを移動します。
 
 1. Azure ポータルで、アプリケーション用に作成した Application Insights リソースを参照します。
 
@@ -266,4 +269,4 @@ Noam Ben Zeev で、Power BI にエクスポートする方法を確認できま
 * [Application Insights](app-insights-overview.md)
 * [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

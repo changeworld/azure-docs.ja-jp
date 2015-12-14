@@ -38,9 +38,7 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 -	アクティブな [Microsoft Azure アカウント](http://azure.microsoft.com/account/)
 -	Visual Studio 2013 と [Azure SDK](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。
-> + [無料で Azure アカウントを開く](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは残されるため、Web Apps など無料の Azure サービスをご利用になれます。
-> + [MSDN サブスクライバーの特典を有効にする](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。+ [Visual Studio サブスクライバーの特典を有効にする](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。- Visual Studio サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 
 ## 統合された CDN エンドポイントで Azure Web アプリをデプロイする ##
 
@@ -73,14 +71,14 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 	発行が完了すると、発行済みの Web アプリがブラウザーに表示されます。
 
-1. CDN エンドポイントを作成するには、[Azure 管理ポータル](http://manage.windowsazure.com/)にログインします。
+1. CDN エンドポイントを作成するは、[Azure クラシック ポータル](http://manage.windowsazure.com/)にログインします。
 2. **[新規]**、**[App Services]**、**[CDN]**、**[簡易作成]** の順にクリックします。**[http://*&lt;sitename>*.azurewebsites.net/]** を選択し、**[作成]** をクリックします。
 
 	![](media/app-service-with-cdn/7-create-cdn.png)
 
-	> [AZURE.NOTE] CDN エンドポイントが作成されると、その URL と統合先のオリジン ドメインが Azure ポータルに表示されます。ただし、新しい CDN エンドポイントの構成がすべての CDN ノードの場所に完全に反映されるまで少し時間がかかる場合があります。
+	> [AZURE.NOTE]CDN エンドポイントが作成されると、その URL と統合先の元のドメインがクラシック ポータルに表示されます。ただし、新しい CDN エンドポイントの構成がすべての CDN ノードの場所に完全に反映されるまで少し時間がかかる場合があります。
 
-3. Azure ポータルに戻り、**[CDN]** タブで、作成した CDN エンドポイントの名前をクリックします。
+3. クラシック ポータルに戻り、**[CDN]** タブで、作成した CDN エンドポイントの名前をクリックします。
 
 	![](media/app-service-with-cdn/8-select-cdn.png)
 
@@ -88,7 +86,7 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 	![](media/app-service-with-cdn/9-enable-query-string.png)
 
-	>[AZURE.NOTE] チュートリアルのこのセクションでのクエリ文字列の有効化は必須ではありませんが、ここでの変更がすべての CDN ノードに反映されるまで時間がかかるため、できる限り早めに有効にしておくと便利です。また、クエリ文字列非対応コンテンツで CDN キャッシュが停滞するのを防ぐためでもあります (CDN コンテンツの更新については後で説明します)。
+	>[AZURE.NOTE]チュートリアルのこのセクションでのクエリ文字列の有効化は必須ではありませんが、ここでの変更がすべての CDN ノードに反映されるまで時間がかかるため、できる限り早めに有効にしておくと便利です。また、クエリ文字列非対応コンテンツで CDN キャッシュが停滞するのを防ぐためでもあります (CDN コンテンツの更新については後で説明します)。
 
 2. 次に、CDN エンドポイントのアドレスをクリックします。エンドポイントの準備が完了している場合、Web アプリが表示されます。**HTTP 404** エラーが表示された場合は、CDN エンドポイントの準備ができていません。CDN の構成がすべてのエッジ ノードに反映されるまで、最大で 1 時間待機することが必要になる場合があります。
 
@@ -162,7 +160,7 @@ Web アプリで次のような Chuck Norris の若いときの画像 ([Alan Lig
 
 上記の手順を実行して、このコントローラー アクションを設定します。
 
-1. *\Controllers* フォルダーに、*MemeGeneratorController.cs* という名前の新しい .cs ファイルを作成し、その内容を次のコードで置き換えます。`~/Content/chuck.bmp` を実際のファイル パスに、`yourCDNName` を CDN 名に置き換えてください。
+1. *\\Controllers* フォルダーに、*MemeGeneratorController.cs* という名前の新しい .cs ファイルを作成し、その内容を次のコードで置き換えます。`~/Content/chuck.bmp` を実際のファイル パスに、`yourCDNName` を CDN 名に置き換えてください。
 
 
         using System;
@@ -558,4 +556,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 - [Azure 用 CDN の使用](../cdn-how-to-use.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="SQL Database 脅威の検出の概要"
-   description="Azure プレビュー ポータルでの SQL Database 脅威の検出の使用方法"
+   description="Azure ポータルでの SQL Database 脅威の検出の使用方法"
    services="sql-database"
    documentationCenter=""
    authors="ronitr"
@@ -30,7 +30,7 @@
 
 ## データベースに対する脅威の検出の設定
 
-1. [https://portal.azure.com](https://portal.azure.com) で Azure プレビュー ポータルを起動します。
+1. [https://portal.azure.com](https://portal.azure.com) で Azure ポータルを起動します。
 
 2. 監視する SQL Database の構成ブレードに移動します。[設定] ブレードで、**[監査と脅威の検出]** を選択します。
 
@@ -89,4 +89,4 @@
 [8]: ./media/sql-database-threat-detection-get-started/8_td_excel_fast_combine.png
 [9]: ./media/sql-database-threat-detection-get-started/9_td_excel_parameters.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

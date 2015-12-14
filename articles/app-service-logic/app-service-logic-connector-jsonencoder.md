@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="08/23/2015"
+   ms.date="11/25/2015"
    ms.author="rajram"/>
 
 # BizTalk JSON エンコーダーの使用開始とロジック アプリへの追加 
@@ -31,7 +31,7 @@ BizTalk JSON エンコーダー を使用するには、まず、BizTalk JSON En
 - 右側のウィンドウの [BizTalk JSON エンコーダー] をクリックします。
 
 	![アクションの設定][3]
-- -> をクリックします。
+- [->] (右矢印) をクリックします。
 
 	![アクションの一覧][4]
 - BizTalk JSON エンコーダーは、2 つの操作をサポートします。*[Xml から JSON へ]* を選択する
@@ -68,4 +68,4 @@ Remove Outer Envelope|文字列|XML コンテンツからルート ノードを�
 <!--Links -->
 [ロジック アプリの作成]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

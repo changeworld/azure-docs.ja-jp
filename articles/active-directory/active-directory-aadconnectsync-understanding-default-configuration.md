@@ -16,7 +16,7 @@
    ms.date="11/10/2015"
    ms.author="andkjell"/>
 
-# 既定の構成について
+# Azure AD Connect Sync: 既定の構成について
 
 この記事では、Azure AD Connect 同期の既定の構成について説明します。この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。この記事では、インストール ウィザードを使用して既に Azure AD 同期をインストールし、構成していることを前提としています。
 
@@ -150,4 +150,4 @@ NULL
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

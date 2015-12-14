@@ -18,7 +18,7 @@
  
 # SQL Data Warehouse での Transparent Data Encryption (TDE) の概要
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-data-warehouse-encryption-tde.md)
+- [Azure Classic Portal](sql-data-warehouse-encryption-tde.md)
 - [TSQL](sql-data-warehouse-encryption-tde-tsql.md)
 
 Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。
@@ -29,7 +29,7 @@ TDE は、データベース暗号化キーと呼ばれる対称キーを使用�
 
 SQL Data Warehouse の TDE を有効にするには、次の手順を実行します。
 
-1. [Azure ポータル](https://portal.azure.com)でデータベースを開きます
+1. [Azure クラシック ポータル](https://portal.azure.com)でデータベースを開きます
 2. データベース ブレードで **[設定]** ボタンをクリックします。	
 3. **[Transparent Data Encryption]** オプションを選択します ![][1] 
 4. **[ON]** 設定を選択します ![][2] 
@@ -39,7 +39,7 @@ SQL Data Warehouse の TDE を有効にするには、次の手順を実行し�
 
 SQL Data Warehouse の TDE を無効にするには、次の手順を実行します。
 
-1. [Azure ポータル](https://portal.azure.com)でデータベースを開きます
+1. [Azure クラシック ポータル](https://portal.azure.com)でデータベースを開きます
 2. データベース ブレードで **[設定]** ボタンをクリックします。	
 3. **[Transparent Data Encryption]** オプションを選択します ![][1] 
 4. **[OFF]** 設定を選択します ![][4] 
@@ -61,4 +61,4 @@ SQL Data Warehouse の TDE を無効にするには、次の手順を実行し�
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

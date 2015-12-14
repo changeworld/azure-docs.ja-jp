@@ -39,7 +39,7 @@ xrdp はオープン ソースの RDP サーバーで、これを使用すると
 このドキュメントでは、リモート デスクトップに既定のエンドポイント 3389 を使用します。そのため、次のように、Linux VM に対してリモート デスクトップとしてエンドポイント 3389 を設定します。
 
 
-![image](./media/virtual-machines-linux-remote-desktop/no1.png)
+![イメージ](./media/virtual-machines-linux-remote-desktop/no1.png)
 
 
 VM にエンドポイントを設定する方法がわからない場合は、[ガイダンス](virtual-machines-set-up-endpoints.md)を参照してください。
@@ -106,9 +106,9 @@ xrdp サービスを再起動するには、次のコマンドを使用します
 
 
 ##Windows コンピューターから Linux VM を接続する
-Windows コンピューターでリモート デスクトップ クライアントを起動し、Linux VM の DNS 名を入力するか、Azure ポータルで VM の`Dashboard`に移動して [`Connect`] をクリックすると、Linux VM に接続され、次のようなログイン ウィンドウが表示されます。
+Windows コンピューターでリモート デスクトップ クライアントを起動し、Linux VM の DNS 名を入力するか、Azure クラシック ポータルで VM の`Dashboard`に移動して [`Connect`] をクリックすると、Linux VM に接続され、次のようなログイン ウィンドウが表示されます。
 
-![image](./media/virtual-machines-linux-remote-desktop/no2.png)
+![イメージ](./media/virtual-machines-linux-remote-desktop/no2.png)
 
 Linux VM の `user` と `password` を使用してログインすると、Microsoft Azure Linux VM からリモート デスクトップを今すぐ利用できるようになります。
 
@@ -116,4 +116,4 @@ Linux VM の `user` と `password` を使用してログインすると、Micros
 ##次へ
 xrdp の使用の詳細については、[こちら](http://www.xrdp.org/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/20/2015"
+   ms.date="12/01/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでリソースの複数のインスタンスを作成する
@@ -151,9 +151,52 @@ copy 操作では、増分するインデックス値に基づいた一意の名
 	    "outputs": {}
     }
 
+## 入れ子になったリソースでのループ
+
+入れ子になったリソースにコピー ループを使用することはできません。通常、他のリソース内の入れ子として定義するリソースの複数のインスタンスを作成する場合、代わりに最上位のリソースとしてリソースを作成してから**タイプ**と**名前**プロパティを使用して、親リソースとのリレーションシップを定義します。
+
+たとえば、通常は Data Factory 内の入れ子になったリソースとしてデータセットを定義する場合、
+
+    "resources": [
+    {
+        "type": "Microsoft.DataFactory/datafactories",
+        "name": "[variables('dataFactoryName')]",
+        ...
+        "resources": [
+        {
+            "type": "datasets",
+            "name": "[variables('dataSetName')]",
+            "dependsOn": [
+                "[variables('dataFactoryName')]"
+            ],
+            ...
+        }
+    }]
+    
+データセットの複数のインスタンスを作成するには、次のように、テンプレートを変更する必要があります。完全修飾のタイプと名前にデータ ファクトリ名が含まれていることに注目してください。
+
+    "resources": [
+    {
+        "type": "Microsoft.DataFactory/datafactories",
+        "name": "[variables('dataFactoryName')]",
+        ...
+    },
+    {
+        "type": "Microsoft.DataFactory/datafactories/datasets",
+        "name": "[concat(variables('dataFactoryName'), '/', variables('dataSetName'), copyIndex())]",
+        "dependsOn": [
+            "[variables('dataFactoryName')]"
+        ],
+        "copy": { 
+            "name": "datasetcopy", 
+            "count": "[parameters('count')]" 
+        } 
+        ...
+    }]
+
 ## 次のステップ
 - テンプレートのセクションについては、「[Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)」を参照してください。
 - テンプレートで使用できるすべての関数については、「[Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)」を参照してください。
 - テンプレートをデプロイする方法については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

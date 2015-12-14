@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/04/2015" 
+	ms.date="11/25/2015" 
 	ms.author="awills"/>
  
 # トラブルシューティングと Q & A - Application Insights for ASP.NET
@@ -28,8 +28,7 @@
 * アプリが Free レベルの月間クォータより多くのデータを送信すると、ログの記録を停止します。このような場合は、料金の支払いを開始するか、月末にクォータがリセットされるまでお待ちください。
 * 基本的な使用とセッション データは、クォータの対象になりません。
 * 30 日間の無料トライアルが用意されています。この期間中、Premium の機能を無料でご利用いただけます。
-* 各アプリケーション リソースには、個別のクォータがあり、それぞれに個別の価格レベルを設定します。  
-
+* 各アプリケーション リソースには、個別のクォータがあり、それぞれに個別に価格レベルを設定します。
 
 #### 料金を払うと何ができますか。
 
@@ -153,6 +152,17 @@ NuGet パッケージを 0.17 以降に更新した後に上記のエラーが�
 + Internet Explorer がサイトを互換モードで表示していないかご確認ください。
 + ブラウザーのデバッグ機能 (一部のブラウザーでは F12 を押した後に [ネットワーク] を選択) を使用して、dc.services.visualstudio.com にデータが送信されていることをご確認ください。
 
+#### データが表示されていたのに停止しました。
+
+* [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
+* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
+
+
+#### 予期しているデータがすべて表示されません
+
+* **サンプリング。** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。これを無効にすることができます。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
+
+
 #### <a name="q08"></a>Application Insights を使ってイントラネット Web サーバーを監視できますか?
 
 はい。サーバーがデータをパブリック インターネットに送信できる場合は健全性と利用状況を監視できます。ファイアウォールで、dc.services.visualstudio.com と f5.services.visualstudio.com にトラフィックを送るために TCP ポート 80 と 443 を開く必要があります。
@@ -163,18 +173,13 @@ NuGet パッケージを 0.17 以降に更新した後に上記のエラーが�
 
 dc.services.visualstudio.com への https POST 呼び出しを中継できるプロキシを用意する必要があります。
 
-#### データが表示されていたのに停止しました。
-
-* [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
-* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
-
 ## Status Monitor が機能しない
 
 「[Status Monitor のトラブルシューティング](app-insights-monitor-performance-live-website-now.md#troubleshooting)」を参照してください。最も頻繁に問題になるのは、ファイアウォールのポートです。
 
 ## ポータル
 
-#### <a name="q05"></a>Microsoft Azure プレビューのスタート ボードを表示しています。Application Insights でデータを見つけるにはどうすればいいですか?
+#### <a name="q05"></a>Microsoft Azure プレビューのスタート画面を表示しています。Application Insights でデータを見つけるにはどうすればいいですか?
 
 次のどちらかの操作を行います。
 
@@ -217,7 +222,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 <tr><th>表示内容</th><th>表示方法</th><th>用途</th></tr>
 <tr><td>可用性グラフ</td><td><a href="../app-insights-monitor-web-app-availability/">Web テスト</a></td><td>Web アプリが稼働しているか確認する</td></tr>
 <tr><td>サーバー アプリ パフォーマンス: 応答時間、...
-</td><td><a href="../app-insights-start-monitoring-app-health-usage/">Application Insights をプロジェクトに追加する</a><br/>または <br/><a href="../app-insights-monitor-performance-live-website-now/">AI Status Monitor をサーバーにインストールする</a> (または独自のコードを記述して<a href="../app-insights-api-custom-events-metrics/#track-dependency">依存関係を追跡する</a>)</td><td>パフォーマンスの問題を検出する</td></tr>
+</td><td><a href="../app-insights-asp-net/">Application Insights をプロジェクトに追加する</a><br/>または <br/><a href="../app-insights-monitor-performance-live-website-now/">AI Status Monitor をサーバーにインストールする</a> (または独自のコードを記述して<a href="../app-insights-api-custom-events-metrics/#track-dependency">依存関係を追跡する</a>)</td><td>パフォーマンスの問題を検出する</td></tr>
 <tr><td>依存関係テレメトリ</td><td><a href="../app-insights-monitor-performance-live-website-now/">AI Status Monitor をサーバーにインストールする</a></td><td>データベースや、その他の外部コンポーネントの問題を診断する</td></tr>
 <tr><td>例外からスタック トレースを取得する</td><td><a href="../app-insights-search-diagnostic-logs/#exceptions">コード内に TrackException 呼び出しを挿入する</a> (自動で報告されるものもある)</td><td>例外を検出して診断する</td></tr>
 <tr><td>ログ トレースの検索</td><td><a href="../app-insights-search-diagnostic-logs/">ログ アダプターを追加する</a></td><td>例外、パフォーマンスの問題を診断する</td></tr>
@@ -247,4 +252,4 @@ Application Insights リソースを作成するために [PowerShell スクリ�
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

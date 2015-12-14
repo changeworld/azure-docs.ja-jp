@@ -92,7 +92,7 @@ Virtual Machines に関しては、**Set-AzureVMExtension** という既存の A
 
 以下に示すいずれかの手順に従い、選択したロールのクラウド サービスまたは仮想マシンのインスタンスに AzureLogCollector を追加すると、それぞれの VM でログ収集が開始され、収集されたファイルが指定の Azure アカウントに送信されます。
 
-## AzureLogCollector をサービス拡張機能として追加する
+## サービス拡張機能として追加
 
 1. 適切な手順に従って Azure PowerShell を自分のサブスクリプションに接続します。
 
@@ -186,7 +186,7 @@ Virtual Machines に関しては、**Set-AzureVMExtension** という既存の A
       { String Name, String Location, String SearchPattern, Bool Recursive }
              
             
-## AzureLogCollector を VM 拡張機能として追加する
+## VM 拡張機能として追加
 
 適切な手順に従って Azure PowerShell を自分のサブスクリプションに接続します。
 
@@ -521,4 +521,4 @@ SetAzureVMLogCollector.ps1
 
 ログは、すっきりと 1 か所から調査またはコピーすることができます。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

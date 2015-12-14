@@ -167,7 +167,7 @@ Main 関数に次のコードを追加します。
 		blob.UploadFromStream(stream, stream.Length, null, options, null);
 
 
-次に示すのは、Key Vault に保存されているキーを使用してクライアント側暗号化によって暗号化された BLOB の、現在の Azure ポータルでのスクリーンショットです。**KeyId** プロパティは、Key Vault 内のキーに対する URI であり、KEK として機能します。**EncryptedKey** プロパティには、暗号化されたバージョンの CEK が含まれます。
+次に示すのは、Key Vault に保存されているキーを使用してクライアント側暗号化によって暗号化された BLOB の、[Azure クラシック ポータル](manage.windowsazure.com)でのスクリーンショットです。**KeyId** プロパティは、Key Vault 内のキーに対する URI であり、KEK として機能します。**EncryptedKey** プロパティには、暗号化されたバージョンの CEK が含まれます。
 
 ![暗号化メタデータが含まれている BLOB メタデータを示すスクリーンショット][1]
 
@@ -235,4 +235,4 @@ Microsoft Azure Storage の最新情報については、[Microsoft Azure Storag
 <!--Image references-->
 [1]: ./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

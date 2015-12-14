@@ -22,7 +22,7 @@
 
 Azure では、組み込みの診断機能により、[App Service Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)のデバッグを容易に行うことができます。この記事では、診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログに記録された情報にアクセスする方法について説明します。
 
-この記事では、[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)、Azure PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) で診断ログを使用する方法を示します。Visual Studio で診断ログを使用する方法の詳細については、「[Visual Studio での Azure のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
+この記事では、[Azure ポータル](https://portal.azure.com)、Azure PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) で診断ログを使用する方法を示します。Visual Studio で診断ログを使用する方法の詳細については、「[Visual Studio での Azure のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -46,11 +46,11 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 
 実行時にこれらのログを取得してトラブルシューティングに役立てることができます。詳細については、[Visual Studio での Azure Web アプリのトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)に関するページを参照してください。
 
-App Service Web Apps は、Web アプリにコンテンツを発行したときのデプロイ情報もログに記録します。これは自動的に行われ、デプロイ ログの構成設定はありません。デプロイ ログでは、デプロイが失敗した理由を特定できます。たとえば、カスタムのデプロイ スクリプトを使用している場合は、デプロイ ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
+App Service Web Apps は、Web アプリにコンテンツをパブリッシュしたときのデプロイ情報もログに記録します。これは自動的に行われ、デプロイ ログの構成設定はありません。デプロイ ログでは、デプロイが失敗した理由を特定できます。たとえば、カスタムのデプロイ スクリプトを使用している場合は、デプロイ ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
 
 ## <a name="enablediag"></a>診断を有効にする方法
 
-[Azure プレビュー ポータル](https://portal.azure.com)で診断を有効にするには、Web アプリのブレードに移動し、**[設定]、[診断ログ]** の順にクリックします。
+[Azure ポータル](https://portal.azure.com)で診断を有効にするには、Web アプリのブレードに移動し、**[設定]、[診断ログ]** の順にクリックします。
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![ログ パーツ](./media/web-sites-enable-diagnostic-log/logspart.png)
@@ -59,16 +59,16 @@ App Service Web Apps は、Web アプリにコンテンツを発行したとき�
 
 > [AZURE.NOTE]web.config ファイルの変更とは異なり、アプリケーション診断の有効化や診断ログ レベルの変更によって、アプリケーションが実行されているアプリケーション ドメインがリサイクルされることはありません。
 
-[Azure ポータル](https://manage.windowsazure.com)の Web アプリの **[構成]** タブで、**Web サーバーのログ採取**用の**ストレージ**または**ファイル システム**を選択できます。**[ストレージ]** を選択すると、ストレージ アカウントを選択でき、ログ書き込み先の BLOB コンテナーを指定できます。**サイト診断**用のその他のすべてのログはファイル システムにのみ書き込まれます。
+[クラシック ポータル](https://manage.windowsazure.com)の Web アプリの **[構成]** タブで、**Web サーバーのログ採取**用の**ストレージ**または**ファイル システム**を選択できます。**[ストレージ]** を選択すると、ストレージ アカウントを選択でき、ログ書き込み先の BLOB コンテナーを指定できます。**サイト診断**用のその他のすべてのログはファイル システムにのみ書き込まれます。
 
-[Azure ポータル](https://manage.windowsazure.com)の Web アプリの **[構成]** タブには、アプリケーション診断用のその他の設定も含まれています。
+[クラシック ポータル](https://manage.windowsazure.com)の Web アプリの **[構成]** タブには、アプリケーション診断用のその他の設定も含まれています。
 
 * **ファイル システム** - アプリケーション診断情報が Web アプリのファイル システムに保存されます。これらのファイルは、FTP によってアクセスするか、Azure PowerShell または Azure コマンド ライン ツールを使用して Zip アーカイブとしてダウンロードできます。
 * **テーブル ストレージ** - 指定された Azure ストレージ アカウントおよびテーブル名にアプリケーション診断情報が保存されます。
 * **BLOB ストレージ** - 指定された Azure ストレージ アカウントおよび BLOB コンテナーにアプリケーション診断情報が保存されます。
 * **保有期間** - 既定では、**BLOB ストレージ**からログが自動的に削除されることはありません。ログを自動的に削除するには、**[保有期間の設定]** を選択して、ログを保有する日数を入力します。
 
->[AZURE.NOTE][ストレージ アカウントのアクセス キーを再生成する](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)場合は、該当するログ構成を更新後のキーを使用するように設定し直す必要があります。これを行うには、次の手順を実行します。
+>[AZURE.NOTE] [ストレージ アカウントのアクセス キーを再生成する](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)場合は、該当するログ構成を更新後のキーを使用するように設定し直す必要があります。これを行うには、次の手順を実行します。
 >
 > 1. **[構成]** タブで、該当するログ機能を **[オフ]** に設定します。設定を保存します。
 > 2. ストレージ アカウントの BLOB またはテーブルへのログを再び有効にします。設定を保存します。
@@ -99,7 +99,7 @@ Web アプリケーション ファイル システムに保存された診断�
 
 ### FTP
 
-FTP を使用して診断情報にアクセスするには、[Azure ポータル](https://manage.windowsazure.com)で Web アプリの**ダッシュボード**にアクセスします。**[概要]** セクションで、**[FTP 診断ログ]** リンクを使用し、FTP を使用してログ ファイルにアクセスします。**[デプロイ/FTP ユーザー]** エントリには、FTP サイトへのアクセスに使用するユーザー名が一覧表示されます。
+FTP を使用して診断情報にアクセスするには、[クラシック ポータル](https://manage.windowsazure.com)で Web アプリの**ダッシュボード**にアクセスします。**[概要]** セクションで、**[FTP 診断ログ]** リンクを使用し、FTP を使用してログ ファイルにアクセスします。**[デプロイ/FTP ユーザー]** エントリには、FTP サイトへのアクセスに使用するユーザー名が一覧表示されます。
 
 > [AZURE.NOTE]**[デプロイ/FTP ユーザー]** エントリが設定されていない場合や、このユーザーのパスワードを忘れた場合は、**ダッシュボード**の **[概要]** セクションで **[デプロイ資格情報のリセット]** リンクを使用することで、新しいユーザーとパスワードを作成できます。
 
@@ -132,7 +132,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 2. トレース リスナーのパッケージをプロジェクトに追加します。
  * プロジェクトを右クリックし、[NuGet パッケージの管理] を選択します。`Microsoft.ApplicationInsights.TraceListener` を選択します。[詳細情報](../application-insights/app-insights-asp-net-trace-logs.md)
 3. プロジェクトをアップロードして実行し、ログ データを生成します。
-4. [Azure プレビュー ポータル](http://portal.azure.com/)で、新しい Application Insights リソースを参照し、**[検索]** を開きます。ログ データが、要求、使用状況、およびその他の製品利用統計情報と共に表示されます。一部の製品利用統計情報については、表示されるまで数分かかる場合があります。[更新] をクリックします。[詳細情報](../application-insights/app-insights-diagnostic-search.md)
+4. [Azure ポータル](http://portal.azure.com/)で、新しい Application Insights リソースを参照し、**[検索]** を開きます。ログ データが、要求、使用状況、およびその他の製品利用統計情報と共に表示されます。一部の製品利用統計情報については、表示されるまで数分かかる場合があります。[更新] をクリックします。[詳細情報](../application-insights/app-insights-diagnostic-search.md)
 
 [Application Insights でのパフォーマンス追跡についての詳細情報](../insights-perf-analytics.md)
 
@@ -259,15 +259,15 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 
 ##<a name="nextsteps"></a>次のステップ
 
-- [Web Apps を監視する方法](/ja-JP/manage/services/web-sites/how-to-monitor-websites/)
+- [Web Apps を監視する方法](/manage/services/web-sites/how-to-monitor-websites/)
 - [Visual Studio での Azure の Web Apps のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)
 - [HDInsight での Web アプリ ログの分析](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
 > [AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

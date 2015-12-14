@@ -36,7 +36,7 @@ Service Bus のトピックとサブスクリプションを使用すること�
 
 ## サービス名前空間の作成
 
-Azure の Service Bus キューを使用するには、最初にサービス名前空間を作成する必要があります。サービス名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。ポータルではサービス バスの作成に ACS 接続が使用されないため、コマンド ライン インターフェイスを使用して名前空間を作成する必要があります。
+Azure の Service Bus キューを使用するには、最初にサービス名前空間を作成する必要があります。サービス名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。ポータルでは Service Bus の作成に ACS 接続が使用されないため、コマンド ライン インターフェイスを使用して名前空間を作成する必要があります。
 
 名前空間を作成するには:
 
@@ -56,7 +56,7 @@ Azure Service Bus 名前空間を作成するために実行した PowerShell �
 
       ![Copy key](./media/service-bus-ruby-how-to-use-topics-subscriptions/defaultkey.png)
 
-> [AZURE.NOTE]このキーは、[Azure ポータル](http://manage.windowsazure.com/)にログオンして Service Bus の名前空間の接続情報に移動する場合にも見つかります。
+> [AZURE.NOTE]このキーは、[Azure クラシック ポータル](http://manage.windowsazure.com/)にログオンして Service Bus の名前空間の接続情報に移動する場合にも見つかります。
 
 ## Ruby アプリケーションの作成
 
@@ -199,7 +199,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 ## 方法: トピックとサブスクリプションを削除する
 
-トピックおよびサブスクリプションは永続的であり、[Azure ポータル](https://manage.windowsazure.com)またはプログラムによって明示的に削除する必要があります。次の例では、"test-topic" という名前のトピックを削除する方法を示します。
+トピックおよびサブスクリプションは永続的であり、[Azure クラシック ポータル](https://manage.windowsazure.com)またはプログラムによって明示的に削除する必要があります。次の例では、"test-topic" という名前のトピックを削除する方法を示します。
 
 	azure_service_bus_service.delete_topic("test-topic")
 
@@ -216,4 +216,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 -	GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

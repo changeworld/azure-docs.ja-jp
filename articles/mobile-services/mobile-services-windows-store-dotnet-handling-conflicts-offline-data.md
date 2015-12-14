@@ -1,23 +1,28 @@
-<properties 
-	pageTitle="ユニバーサル Windows アプリでのオフライン データの競合の処理 | Microsoft Azure" 
-	description="Azure Mobile Services を使用して、ユニバーサル Windows アプリケーションでのオフライン データの同期時に発生する競合を処理する方法について説明します。" 
-	documentationCenter="windows" 
-	authors="wesmc7777" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="ユニバーサル Windows アプリでのオフライン データの競合の処理 | Microsoft Azure"
+	description="Azure Mobile Services を使用して、ユニバーサル Windows アプリケーションでのオフライン データの同期時に発生する競合を処理する方法について説明します。"
+	documentationCenter="windows"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""
 	services="mobile-services"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="11/12/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-store"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="11/12/2015"
 	ms.author="glenga"/>
 
 
 # モバイル サービスでのオフライン データの同期との競合の処理
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-offline-conflicts](../../includes/mobile-services-selector-offline-conflicts.md)]
 
@@ -45,7 +50,7 @@
 
 このチュートリアルは、[Todo オフラインのモバイル サービスのサンプル]を使用してローカルのオフライン ストアと Azure のモバイル サービス データベースとの間の同期の競合を処理する方法について説明します。
 
-1. [Mobile Services のサンプルの GitHub リポジトリ]にある zip ファイルをダウンロードし、作業ディレクトリに展開します。 
+1. [Mobile Services のサンプルの GitHub リポジトリ]にある zip ファイルをダウンロードし、作業ディレクトリに展開します。
 
 2. 「[オフライン データの使用]」チュートリアルで説明された手順で SQLite for Windows 8.1 および Windows Phone 8.1 をインストールしていない場合は、両方をランタイムでインストールします。
 
@@ -64,7 +69,7 @@
 
 次に、Mobile Services に対してアプリケーションをテストします。
 
-1. Azure の管理ポータルで、**[ダッシュボード]** タブのコマンド バーの **[キーの管理]** をクリックしてモバイル サービスのアプリケーション キーを検索します。**アプリケーション キー**をコピーします。
+1. [Azure クラシック ポータル]で、**[ダッシュボード]** タブのコマンド バーの **[キーの管理]** をクリックしてモバイル サービスのアプリケーション キーを検索します。**アプリケーション キー**をコピーします。
 
 2. Visual Studio のソリューション エクスプローラーで、クライアント サンプル プロジェクトの App.xaml.cs ファイルを開きます。**MobileServiceClient** の初期化を変更して、モバイル サービス URL およびアプリケーション キーを使用します。
 
@@ -88,14 +93,14 @@
 次の手順では、同時に実行する Windows Phone 8.1 クライアントと Windows ストア 8.1 のクライアントに競合が発生し、サンプルを使用してこれを解決する方法を示します。
 
 1. Visual Studio で、Windows Phone 8.1 プロジェクトを右クリックし、[**スタートアップ プロジェクトに設定**] をクリックします。次に、**Ctrl+F5** キーを押して、デバッグせずに Windows Phone 8.1 クライアントを実行します。エミュレーターで Windows Phone 8.1 クライアントが起動したら、[**プル**] をクリックして、ローカル ストアとデータベースの現在の状態を同期します。
- 
+
     ![][3]
- 
-   
+
+
 2. Visual Studio で Windows 8.1 ランタイム プロジェクトを右クリックしてから [**スタートアップ プロジェクトに設定**] をクリックして、もう一度スタートアップ プロジェクトに設定します。次に、**F5** を押して実行します。Windows ストア 8.1 クライアントが起動したら、[**プル**] をクリックして、ローカル ストアとデータベースの現在の状態を同期します。
 
     ![][4]
- 
+
 3. この時点では、両方のクライアントはデータベースと同期しています。両クライアントのコードは増分同期も使用しているため、完了していない Todo 項目のみ同期します。完了した Todo 項目は無視されます。項目のいずれかを選択し、両クライアントで同じ項目のテキストを別の値に編集します。[**プッシュ**] をクリックして両方の変更と、サーバーのデータベースを同期します。
 
     ![][5]
@@ -126,7 +131,7 @@ Mobile Services でオフライン機能を使用するためには、ローカ�
 
 ローカル項目を優先して競合を解決するには、操作を再試行します。競合が発生すると、ローカル項目のバージョンはサーバーのバージョンと一致するように更新されるため、操作をもう一度実行するとサーバーの変更はローカルの変更で上書きされます。
 
-    await operation.ExecuteAsync(); 
+    await operation.ExecuteAsync();
 
 サーバー項目を優先して競合を解決するには、`ExecuteTableOperationAsync` から戻ります。オブジェクトのローカル バージョンは破棄され、サーバーの値に置き換えられます。
 
@@ -158,10 +163,9 @@ Mobile Services でオフライン機能を使用するためには、ローカ�
 [Get started with Mobile Services]: ../mobile-services-windows-store-get-started.md
 [オフライン データの使用]: mobile-services-windows-store-dotnet-get-started-offline-data.md
 [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkId=394776
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Handling Database Conflicts]: mobile-services-windows-store-dotnet-handle-database-conflicts.md#test-app
 [Mobile Services のサンプルの GitHub リポジトリ]: http://go.microsoft.com/fwlink/?LinkId=512865
 [Todo オフラインのモバイル サービスのサンプル]: http://go.microsoft.com/fwlink/?LinkId=512866
- 
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -31,7 +31,7 @@
 
 - **Azure サブスクリプション**: Azure サブスクリプションで使用できるコアの数を確認します。推奨 VM サイズである **A3** で作成する場合は、使用可能なコアが **4 個**必要です。VM サイズとして **A2** を使用する場合は、使用可能なコアが **2** 個必要です。
 	
-	- サブスクリプションのコアの上限を確認するには、Azure ポータルの左側のウィンドウで [設定] をクリックし、上部のメニューの [使用状況] をクリックします。
+	- サブスクリプションのコアの上限を確認するには、Azure クラシック ポータルの左側のウィンドウで [設定] をクリックし、上部のメニューの [使用状況] をクリックします。
 	
 	- コア クォータを増やすには、[Azure サポート](http://azure.microsoft.com/support/options/)にお問い合わせください。VM サイズについては、「[Azure の仮想マシンのサイズ](virtual-machines-size-specs.md)」をご覧ください。
 
@@ -43,7 +43,7 @@
 
 ## 手順 1: Azure 仮想マシンをプロビジョニングする
 
-1. Azure ポータルにアクセスします。
+1. Azure クラシック ポータルに移動します。
 
 1. 左側のウィンドウで、**[Virtual Machines]** をクリックします。
 
@@ -143,7 +143,7 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
 
 1. ローカル VM 上の証明書のルート CA を信頼するには、証明書を**信頼されたルート証明機関**に追加する必要があります。必要な手順の概要を次に示します。CA を信頼する方法の詳しい手順については、「[Install a Server Certificate (サーバー証明書のインストール)](https://technet.microsoft.com/library/cc740068)」をご覧ください。
 
-	1. Azure ポータルで VM を選択し、[接続] をクリックします。ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
+	1. Azure クラシック ポータルで VM を選択し、[接続] をクリックします。ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
 	
 		![connect to azure virtual machine](./media/virtual-machines-sql-server-create-native-mode-report-server-powershell/IC650112.gif)VM の作成時に構成したユーザー VM 名、ユーザー名、パスワードを使用します。
 	
@@ -193,7 +193,7 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
 
 Windows PowerShell スクリプトを使用してレポート サーバーを構成するには、次の手順を実行します。この構成には、HTTPS ではなく HTTP が含まれます。
 
-1. Azure ポータルで VM を選択し、[接続] をクリックします。ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
+1. Azure クラシック ポータルで VM を選択し、[接続] をクリックします。ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
 
 	![connect to azure virtual machine](./media/virtual-machines-sql-server-create-native-mode-report-server-powershell/IC650112.gif)VM の作成時に構成したユーザー VM 名、ユーザー名、パスワードを使用します。
 
@@ -334,7 +334,7 @@ Windows PowerShell スクリプトを使用してレポート サーバーを構
 
 Windows PowerShell を使用してレポート サーバーを構成するには、次の手順を実行します。この構成には、HTTP ではなく HTTPS が含まれます。
 
-1. Azure ポータルで VM を選択し、[接続] をクリックします。ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
+1. Azure クラシック ポータルで VM を選択し、[接続] をクリックします。ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
 
 	![connect to azure virtual machine](./media/virtual-machines-sql-server-create-native-mode-report-server-powershell/IC650112.gif)VM の作成時に構成したユーザー VM 名、ユーザー名、パスワードを使用します。
 
@@ -557,11 +557,11 @@ Windows PowerShell を使用してレポート サーバーを構成するには
 
 レポート サーバーを構成する際に PowerShell スクリプトを実行しない場合は、このセクションの手順に従い、Reporting Services ネイティブ モード構成マネージャーを使用してレポート サーバーを構成します。
 
-1. Azure ポータルで VM を選択し、[接続] をクリックします。VM の作成時に構成したユーザー名とパスワードを使用します。
+1. Azure クラシック ポータルで VM を選択し、[接続] をクリックします。VM の作成時に構成したユーザー名とパスワードを使用します。
 
 	![connect to azure virtual machine](./media/virtual-machines-sql-server-create-native-mode-report-server-powershell/IC650112.gif)
 
-1. Windows Update を実行し、VM に更新プログラムをインストールします。VM の再起動が必要な場合は、VM を再起動し、Azure ポータルから VM に再接続します。
+1. Windows Update を実行し、VM に更新プログラムをインストールします。VM の再起動が必要な場合は、VM を再起動し、Azure クラシック ポータルから VM に再接続します。
 
 1. VM の [スタート] メニューで「**Reporting Services**」と入力し、**Reporting Services 構成マネージャー**を開きます。
 
@@ -683,7 +683,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 ## VM を使用していない場合にコストを最小限に抑える
 
->[AZURE.NOTE]Azure Virtual Machines を使用していないときに料金を最小限に抑えるには、Azure ポータルから VM をシャットダウンします。VM の内部で Windows の電源オプションを使用して VM をシャットダウンしても、VM に対して同じ金額が課金されます。料金を削減するには、Azure ポータルで VM をシャットダウンする必要があります。VM が不要になった場合は、ストレージ料金がかからないように、VM および関連する .vhd ファイルを必ず削除してください。詳細については、「[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines)」の「FAQ」をご覧ください。
+>[AZURE.NOTE]Azure Virtual Machines を使用していないときに料金を最小限に抑えるには、Azure クラシック ポータルから VM をシャットダウンします。VM の内部で Windows の電源オプションを使用して VM をシャットダウンしても、VM に対して同じ金額が課金されます。料金を削減するには、Azure クラシック ポータルで VM をシャットダウンする必要があります。VM が不要になった場合は、ストレージ料金がかからないように、VM および関連する .vhd ファイルを必ず削除してください。詳細については、「[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines)」の「FAQ」をご覧ください。
 
 ## 詳細情報
 
@@ -705,4 +705,4 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 [Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

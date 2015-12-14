@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Stream Analytics の Power BI ダッシュ ボード | Microsoft Azure" 
-	description="リアルタイム ストリーミング Power BI ダッシュ ボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。" 
+	pageTitle="Stream Analytics の Power BI ダッシュボード | Microsoft Azure" 
+	description="リアルタイム ストリーミング Power BI ダッシュボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。" 
 	keywords="ビジネス インテリジェンス ツール,power bi,ストリーミング データ,power bi ダッシュボード"	
 	services="stream-analytics" 
 	documentationCenter="" 
@@ -25,7 +25,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 この記事では、Azure Stream Analytics ジョブの出力として Power BI を使用して独自のカスタム ビジネス インテリジェンス ツールを作成する方法について説明します。
 
-> [AZURE.NOTE]Power BI 出力は Azure Stream Analytics のプレビュー機能です。現時点では、Power BI 出力の作成および構成は Azure プレビュー ポータルでサポートされていません。
+> [AZURE.NOTE]Power BI 出力は Azure Stream Analytics のプレビュー機能です。現時点では、Power BI 出力の作成および構成は Azure ポータルでサポートされていません。
 
 ## 前提条件 ##
 
@@ -35,7 +35,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 ## Azure Stream Analytics ジョブの作成 ##
 
-[Azure ポータル](https://manage.windowsazure.com)で、**[新規]、[Data Services]、[Stream Analytics]、[簡易作成]** の順にクリックします。
+[Azure クラシック ポータル](https://manage.windowsazure.com)で、**[新規]、[Data Services]、[Stream Analytics]、[簡易作成]** の順にクリックします。
 
 次の値を指定してから、**[Stream Analytics ジョブの作成]** をクリックします。
 
@@ -99,11 +99,11 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 * **[データセット名]** - Power BI 出力に設定するデータセット名を入力します。たとえば、"pbidemo" を使用します。
 *	**[テーブル名]** - Power BI 出力のデータセットの下にテーブル名を入力します。たとえば、"pbidemo" という名前にします。現在、Stream Analytics ジョブからの Power BI 出力では、1 つのデータセット内に 1 つのテーブルのみを保持できます。
 
->	[AZURE.NOTE] お使いの Power BI アカウントでこのデータセットとテーブルを明示的に作成しないでください。これらは、Stream Analytics ジョブを開始し、そのジョブによって出力が Power BI に流し込まれるときに自動的に作成されます。ジョブ クエリから結果が返されない場合、データセットとテーブルは作成されません。
+>	[AZURE.NOTE] You should not explicitly create this dataset and table in your Power BI account. They will be automatically created when you start your Stream Analytics job and the job starts pumping output into Power BI. If your job query doesn’t return any results, the dataset and table will not be created.
 
 *	**[OK]**、**[接続のテスト]** の順にクリックします。これで、出力の構成は完了です。
 
->	[AZURE.WARNING] また、この Stream Analytics ジョブで提供したものと同じ名前のデータセットとテーブルが Power BI に既に存在する場合は、既存のデータが上書きされますので注意してください。
+>	[AZURE.WARNING] Also be aware that if Power BI already had a dataset and table with the same name as the one you provided in this Stream Analytics job, the existing data will be overwritten.
 
 
 ## クエリの記述 ##
@@ -133,7 +133,7 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 
 ![図 5][graphic5]
 
-ダッシュ ボードを作成するために、[ダッシュボード] オプションに移動し、新しいダッシュボードを作成します。
+ダッシュボードを作成するために、[ダッシュボード] オプションに移動し、新しいダッシュボードを作成します。
 
 ![図 6][graphic6]
 
@@ -221,4 +221,4 @@ Power BI 出力のあるすべてのジョブについて、90 日おきに認�
 [graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
 [graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

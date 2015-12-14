@@ -34,7 +34,7 @@
 
 - スケーリングは
 
-- リンク済みリソースの管理は運用サイト スロットでのみサポートされています。[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用している場合のみ、非運用スロットを異なる App Service プラン モードに変更することで、この運用スロットに対する影響を回避することができます。なお、2 つのスロットをスワップする前には、非運用スロットと運用スロットを再度同じモードにする必要があります。
+- リンク済みリソースの管理は運用サイト スロットでのみサポートされています。[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用している場合のみ、非運用スロットを異なる App Service プラン モードに変更することで、この運用スロットに対する影響を回避することができます。なお、2 つのスロットをスワップする前には、非運用スロットと運用スロットを再度同じモードにする必要があります。
 
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
@@ -44,7 +44,7 @@
 
 複数のデプロイ スロットを有効にするには、Web アプリが **Standard** または **Premium** モードで実行されている必要があります。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)で、Web アプリのブレードを開きます。
+1. [Azure ポータル](https://portal.azure.com/)の Web アプリのブレードを開きます。
 2. **[デプロイ スロット]** をクリックします。次に、**[デプロイ スロット]** ブレードで **[スロットの追加]** をクリックします。
 
 	![新しいデプロイ スロットの追加][QGAddNewDeploymentSlot]
@@ -241,8 +241,7 @@ Azure CLI には、Web アプリ デプロイ スロットの管理のサポー�
 [Microsoft Azure 無料試用版](/pricing/free-trial/)
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 <!-- IMAGES -->
 [QGAddNewDeploymentSlot]: ./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png
@@ -260,4 +259,4 @@ Azure CLI には、Web アプリ デプロイ スロットの管理のサポー�
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="08/23/2015"
+   ms.date="11/30/2015"
    ms.author="sameerch"/>
 
 
@@ -88,7 +88,7 @@ SQL コネクタをトリガーとして使用するには、**データの存�
 		(SELECT Id FROM [Order] WHERE OrderStatus = 'ProcessedForCollection' ORDER BY Id DESC)
 
 ### トリガーを追加する
-1. ロジック アプリを作成または編集するときに、トリガーとして作成した SQL コネクタを選択します。使用できるトリガーが一覧表示されます: **[データのポーリング (JSON)]** および **[データのポーリング (XML)]**: ![][5]
+1. ロジック アプリを作成または編集するときに、トリガーとして作成した SQL コネクタを選択します。使用できるトリガーが一覧表示されます: **[データのポーリング (JSON)]** および **[データのポーリング (XML)]** ![][5]
 
 2. **[データのポーリング (JSON)]** トリガーを選択し、頻度を入力して、[✓] をクリックします: ![][6]
 
@@ -133,7 +133,7 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 
 
 ## コネクタでできること
-コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -151,4 +151,4 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 [11]: ./media/app-service-logic-connector-sql/LogicApp7.png
 [12]: ./media/app-service-logic-connector-sql/LogicApp8.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="ディレクトリ統合ツールの比較 | Microsoft Azure"
+	pageTitle="Azure AD Connect: ディレクトリ統合ツールの比較 | Microsoft Azure"
 	description="このページの包括的な表では、さまざまなディレクトリ統合ツールを比較しています。"
 	services="active-directory"
 	documentationCenter=""
@@ -91,4 +91,4 @@ AD から Azure AD に流れる属性の削除の許可 | ● | ● | |
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Java および Apache Storm でのイベント ハブの使用 | Microsoft Azure"
+	pageTitle="Java および Apache Storm での Event Hubs の使用 | Microsoft Azure"
 	description="このチュートリアルでは、Java でイベントを送信し、Apache Storm クラスターでイベントを受信するための Azure Event Hubs の使用方法について説明します。"
 	services="event-hubs"
 	documentationCenter=""
@@ -32,11 +32,11 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 + [Maven](http://maven.apache.org/) を実行するように構成された Java 開発環境。このチュートリアルでは、[Eclipse](https://www.eclipse.org/) を想定しています。
 
-+ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
 
 ## Event Hub を作成する
 
-1. [Azure ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
+1. [Azure クラシック ポータル][]にログオンし、画面の下部にある **[新規]** をクリックします。
 
 2. **[App Services]**、**[Service Bus]**、**[イベント ハブ]**、**[簡易作成]** の順にクリックします。
 
@@ -54,7 +54,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
    	![][4]
 
-6. ページ上部にある **[構成]** タブをクリックし、**SendRule** という名前のルールを ”送信” 権限で、**ReceiveRule** という別のルールを "リッスン" 権限で追加し、**[保存]** をクリックします。
+6. ページ上部にある **[構成]** タブをクリックし **SendRule** という名前のルールを *Send* 権限で、**ReceiveRule** という別のルールを *Listen* 権限で追加して、**[保存]** をクリックします。
 
    	![][5]
 
@@ -100,7 +100,7 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [22]: ./media/event-hubs-java-storm-getstarted/receive-storm2.png
 
 <!-- Links -->
-[Azure ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: event-hubs-overview.md
 
@@ -110,4 +110,4 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

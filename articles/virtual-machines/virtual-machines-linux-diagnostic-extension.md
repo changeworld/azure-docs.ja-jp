@@ -39,9 +39,9 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 
 
 ## 拡張機能を有効にする方法
-拡張機能は、[Azure プレビュー ポータル](https://ms.portal.azure.com/#)、Azure PowerShell、または Azure CLI スクリプトから有効にできます。
+拡張機能は、[Azure ポータル](https://ms.portal.azure.com/#)、Azure PowerShell、または Azure CLI スクリプトから有効にできます。
 
-Azure プレビュー ポータルから直接、システムおよびパフォーマンス データを表示および構成するには、[こちらの手順](http://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/ "Windows ブログへの URL")に従ってください。
+Azure ポータルから直接、システムおよびパフォーマンス データを表示および構成するには、[こちらの手順](http://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/ "Windows ブログへの URL")に従ってください。
 
 
 この記事では、Azure CLI コマンドを使用して拡張機能を有効化および構成する方法を説明します。直接ストレージ テーブルからデータを読み取って表示できます。
@@ -144,4 +144,4 @@ Rsyslog データは既定で常に収集されます。
 - バージョン 2.0 の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
 - バージョン 2.0 の場合、最初にスクリプトを使用して Linux 診断拡張機能を有効にすると、ポータルからはデータを表示できません。最初にポータルから拡張機能を有効にした場合は、スクリプトも正常に機能します。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -120,17 +120,17 @@ PowerShell には仮想マシンを作成する機能はなく、バックアッ
 
 ディスクの復元後に仮想マシンを完全に再作成するには、次の手順を実行します。
 
-1. [Azure Backup PowerShell](https://azure.microsoft.com/en-in/documentation/articles/backup-azure-vms-automation/#restore-an-azure-vm) を使用してバックアップからディスクを復元します。
+1. [Azure Backup PowerShell](../backup-azure-vms-automation.md#restore-an-azure-vm) を使用してバックアップ資格情報コンテナーからディスクを復元します。
 
 2. PowerShell コマンドレットを使用して、ロード バランサー、複数の NIC、複数の予約済み IP に必要な VM 構成を作成し、その構成を使用して、目的の構成の VM を作成します。
-	- [内部ロード バランサー](https://azure.microsoft.com/ja-JP/documentation/articles/load-balancer-internal-getstarted/)を使用してクラウド サービスに VM を作成する
+	- [内部ロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)を使用してクラウド サービスに VM を作成する
 	- [インターネットに接続するロード バランサー](https://azure.microsoft.com/ja-JP/documentation/articles/load-balancer-internet-getstarted)に接続する VM を作成する
-	- [NIC が複数](https://azure.microsoft.com/en-in/documentation/articles/virtual-networks-multiple-nics)ある VM を作成する
-	- [予約済み IP が複数](https://azure.microsoft.com/en-in/documentation/articles/virtual-networks-reserved-public-ip/)ある VM を作成する
+	- [NIC が複数](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics)ある VM を作成する
+	- [予約済み IP が複数](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/)ある VM を作成する
   
 
 ## 次のステップ
 - [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)
 - [仮想マシンの管理](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

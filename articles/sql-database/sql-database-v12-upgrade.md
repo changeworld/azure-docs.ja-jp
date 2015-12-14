@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure プレビュー ポータルを使用した Azure SQL Database V12 へのアップグレード | Microsoft Azure" 
-	description="Web および Business データベースのアップグレード方法を含む Azure SQL Database V12 へのアップグレード方法を説明します。また、Azure プレビュー ポータルを使用してエラスティック データベース プールにデータベースを直接移行することで V11 サーバーをアップグレードする方法も説明します。" 
+	pageTitle="Azure ポータルを使用した Azure SQL Database V12 へのアップグレード | Microsoft Azure" 
+	description="Web および Business データベースのアップグレード方法を含む Azure SQL Database V12 へのアップグレード方法を説明します。また、Azure ポータルを使用してエラスティック データベース プールにデータベースを直接移行することで V11 サーバーをアップグレードする方法も説明します。" 
 	services="sql-database" 
 	documentationCenter="" 
 	authors="stevestein" 
@@ -17,11 +17,11 @@
 	ms.author="sstein"/>
 
 
-# Azure プレビュー ポータルを使用した Azure SQL Database V12 へのアップグレード
+# Azure ポータルを使用した Azure SQL Database V12 へのアップグレード
 
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](sql-database-upgrade-server-portal.md)
+- [Azure Portal](sql-database-upgrade-server-portal.md)
 - [PowerShell](sql-database-upgrade-server-powershell.md)
 
 
@@ -54,7 +54,7 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 
 ## アップグレードを開始する
 
-1. [Azure プレビュー ポータル](http://portal.azure.com/)で、 **[すべて参照]**、**[SQL サーバー]** の順に選択し、目的のサーバーを選択することで、アップグレードするサーバーを参照します。
+1. [Azure ポータル](http://portal.azure.com/)で、**[すべて参照]**、**[SQL サーバー]** の順に選択し、目的のサーバーを選択することで、アップグレードするサーバーを参照します。
 2. **[最新の SQL Database 更新]**、**[このサーバーをアップグレード]** の順に選択します。
 
       ![サーバーのアップグレード][1]
@@ -99,7 +99,7 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 
 ## エラスティック データベース プールへのデータベースの移動
 
-[Azure プレビュー ポータル](https://ms.portal.azure.com/)で、V12 サーバーを参照して **[プールの追加]** をクリックします。
+[Azure ポータル](https://ms.portal.azure.com/)で、V12 サーバーを参照して **[プールの追加]** をクリックします。
 
 または
 
@@ -168,4 +168,4 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 [6]: ./media/sql-database-upgrade-server-portal/recommendations.png
 [7]: ./media/sql-database-upgrade-server-portal/new-elastic-pool.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

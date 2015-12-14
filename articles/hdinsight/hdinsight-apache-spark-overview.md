@@ -40,7 +40,7 @@ Azure HDInsight は、完全に管理された Spark サービスを提供しま
 
 | 機能 | 説明 |
 |-------------------------------------|-------------------|
-| プロビジョニングのしやすさ | Microsoft Azure 管理ポータル、Azure PowerShell、または HDInsight .NET SDK を使用すると、HDInsight に新しい Spark クラスターを数分でプロビジョニングできます。「[HDInsight での Spark クラスターのプロビジョニング](hdinsight-apache-spark-provision-clusters.md)」をご覧ください。 |
+| プロビジョニングのしやすさ | Azure クラシック ポータル、Azure PowerShell、または HDInsight .NET SDK を使用すると、HDInsight に新しい Spark クラスターを数分でプロビジョニングできます。「[HDInsight での Spark クラスターのプロビジョニング](hdinsight-apache-spark-provision-clusters.md)」をご覧ください。 |
 | 使いやすさ | HDInsight クラスターの Spark には、Zeppelin および Jupyter の Notebook が事前に構成されています。対話型のデータ処理とビジュアル化にこれらを使用できます。これらの Notebook の URL は https://CLUSTERNAME.azurehdinsight.net/zeppelin と https://CLUSTERNAME.azurehdinsight.net/jupyter です。__CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き換えます。|
 | REST API | HDInsight の Spark に含まれる Spark ジョブ サーバーは REST API サーバーであり、ユーザーはジョブをリモートで送信して実行を監視できます。 |
 | 同時クエリ | HDInsight の Spark は同時クエリをサポートします。これにより、1 人のユーザーからの複数のクエリまたは複数のユーザーおよびアプリケーションからの複数のクエリが、同じクラスター リソースを共有できます。 |
@@ -100,4 +100,4 @@ HDInsight の Spark では、Microsoft Power BI や Tableau などの BI ツー�
 
 [hdinsight-storage]: ../hdinsight-use-blob-storage/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

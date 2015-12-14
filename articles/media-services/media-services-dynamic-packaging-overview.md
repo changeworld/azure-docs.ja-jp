@@ -23,7 +23,7 @@
 
 Microsoft Azure Media Services を使用して、多数のメディア ソース ファイルの形式、メディア ストリーミング形式、およびコンテンツ保護形式をさまざまなクライアント テクノロジ (iOS、XBOX、Silverlight、Windows 8 など) に配信できます。これらのクライアントは異なるプロトコルを認識します。たとえば、iOS は HTTP Live Streaming (HLS) V4 形式が必要で、Silverlight および Xbox はスムーズ ストリーミングが必要です。MPEG DASH、HLS またはスムーズ ストリーミングを認識するクライアントに提供する、一連のアダプティブ ビットレート (マルチビット レート) MP4 (ISO Base Media 14496-12) ファイルまたは一連のアダプティブ ビットレート スムーズ ストリーミング ファイルがある場合、Media Services の動的パッケージを活用する必要があります。
 
-動的パッケージを使用すれば、一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルを含むアセットを作成するだけで済みます。そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
+動的パッケージを使用すれば、一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルを含む資産を作成するだけで済みます。そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
 次の図は、従来のエンコードおよび静的パッケージングのワークフローを示しています。
 
@@ -42,29 +42,29 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 
 1. Mezzanine ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードします。
 
-1. オンデマンド ロケーターを作成することによって、アダプティブ ビットレート MP4 セットを含むアセットを発行します。
+1. オンデマンド ロケーターを作成することによって、アダプティブ ビットレート MP4 セットを含む資産を発行します。
 
 1. コンテンツにアクセスしてストリーミングするストリーミング URL を構築します。
 
 >[AZURE.NOTE]すべての MP4 ファイルの形式が動的パッケージによってサポートされているわけではありません。詳細については、「[動的パッケージでサポートされていない形式](media-services-dynamic-packaging-overview.md#unsupported_formats)」を参照してください。
 
-##動的ストリーミング用のアセットの準備
+##動的ストリーミング用の資産の準備
 
-動的ストリーミング用にアセットを準備するには、2 つのオプションがあります。
+動的ストリーミング用に資産を準備するには、2 つのオプションがあります。
 
 - マスター ファイルをアップロードし、Azure Media Encoder を使用して H.264 MP4 アダプティブ ビットレートのセットを生成します。
 - 既存のアダプティブ ビットレート セットをアップロードし、Media Packager を使用してそれらを検証します。
 
 ###マスター ファイルをアップロードし、Azure Media Encoder を使用して H.264 MP4 アダプティブ ビットレートのセットを生成します。
 
-アセットをアップロードしてエンコードする方法については、次の記事を参照してください。
+資産をアップロードしてエンコードする方法については、次の記事を参照してください。
 
 
-**Microsoft Azure の管理ポータル**、**.NET**、または **REST API** を使用して、ファイルをアップロードします。
+**Azure クラシック ポータル**、**.NET**、または **REST API** を使用して、ファイルをアップロードします。
 
 [AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
 
-**Microsoft Azure の管理ポータル**、**.NET**、または **REST API** を使用して、**Azure Media Encoder** でエンコードします。
+**Azure クラシック ポータル**、**.NET**、または **REST API** を使用して、**Azure Media Encoder** でエンコードします。
 
 [AZURE.INCLUDE [media-services-selector-encode](../../includes/media-services-selector-encode.md)]
 
@@ -81,11 +81,11 @@ Media Services Encoder でエンコードされていないアダプティブ �
 
 [顧客へのコンテンツの配信に関する概要](media-services-deliver-content-overview.md)。
 
-**.NET** または **REST API** を使用してアセット配信ポリシーを構成します。
+**.NET** または **REST API** を使用して資産配信ポリシーを構成します。
 
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
-**Microsoft Azure の管理ポータル**または **.NET** を使用してアセットを公開します (ロケータを作成して)。
+**Azure クラシックポータル**または **.NET** を使用して、(ロケーターを作成して) 資産を公開します。
 
 [AZURE.INCLUDE [media-services-selector-publish](../../includes/media-services-selector-publish.md)]
 
@@ -105,4 +105,4 @@ Media Services Encoder でエンコードされていないアダプティブ �
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

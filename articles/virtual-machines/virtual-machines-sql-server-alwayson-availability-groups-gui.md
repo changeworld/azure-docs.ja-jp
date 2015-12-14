@@ -13,13 +13,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="08/12/2015"
+	ms.date="11/30/2015"
 	ms.author="jroth" />
 
 # Azure VM での AlwaysOn 可用性グループの構成 (GUI)
 
 > [AZURE.SELECTOR]
-- [Azure portal](virtual-machines-sql-server-alwayson-availability-groups-gui.md)
+- [Azure classic portal](virtual-machines-sql-server-alwayson-availability-groups-gui.md)
 - [PowerShell](virtual-machines-sql-server-alwayson-availability-groups-powershell.md)
 
 <br/>
@@ -29,7 +29,7 @@
 
 このエンド ツー エンドのチュートリアルでは、Azure の仮想マシン上で実行されている SQL Server AlwaysOn を使用して可用性グループを実装する方法について説明します。
 
->[AZURE.NOTE]Microsoft Azure 管理ポータルでは、リスナーを含む AlwaysOn 可用性グループ用に新しいギャラリーが設定されています。これを使用すると、AlwaysOn 可用性グループに必要なものすべてが自動的に構成されます。詳細については、[Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。PowerShell を使用するには、「[チュートリアル: Azure AlwaysOn 可用性グループの構成 (PowerShell)](virtual-machines-sql-server-alwayson-availability-groups-powershell.md)」で同じシナリオのチュートリアルを参照してください。
+>[AZURE.NOTE]Microsoft Azure 管理ポータルでは、リスナーを含む AlwaysOn 可用性グループ用に新しいギャラリーが設定されています。これを使用すると、AlwaysOn 可用性グループに必要なものすべてが自動的に構成されます。詳細については、[Microsoft Azure クラシック ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。PowerShell を使用するには、「[チュートリアル: Azure AlwaysOn 可用性グループの構成 (PowerShell)](virtual-machines-sql-server-alwayson-availability-groups-powershell.md)」で同じシナリオのチュートリアルを参照してください。
 
 チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
 
@@ -61,7 +61,7 @@
 
 ## Virtual Network とドメイン コントローラー サーバーの作成
 
-最初に新しい Azure 試用版アカウントを作成します。アカウントのセットアップが完了したら、Azure ポータルのホーム画面が表示されます。
+最初に新しい Azure 試用版アカウントを作成します。アカウントのセットアップが完了したら、Azure クラシック ポータルのホーム画面が表示されます。
 
 1. 次に示すように、ページの左下隅にある **[新規]** をクリックします。
 
@@ -88,11 +88,11 @@
 	|ページ|設定|
 |---|---|
 |仮想マシンのオペレーティング システムの選択|Windows Server 2012 R2 Datacenter|
-|仮想マシンの構成|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoDC<br/>**レベル** = BASIC<br/>**サイズ** = A2 (2 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|
+|仮想マシンの構成|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoDC<br/>**レベル** = STANDARD<br/>**サイズ** = A2 (2 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|
 |仮想マシンの構成|**クラウド サービス** = 新しいクラウド サービスの作成<br/>**クラウド サービス DNS 名** = 一意のクラウド サービス名<br/>** DNS 名** = 一意の名前 (例: ContosoDC123)<br/>**リージョン/アフィニティ グループ/仮想ネットワーク** = ContosoNET<br/>**仮想ネットワーク サブネット** = バック (10.10.2.0/24)<br/>**ストレージ アカウント** = 自動的に生成されたストレージ アカウントを使用<br/>**可用性セット** = (なし)|
 |仮想マシンのオプション|既定値を使用|
 
-新しい VM の構成が完了したら、VM がプロビジョニングされるまで待ちます。このプロセスは完了するまで時間がかかります。Azure ポータルで **[仮想マシン]** タブをクリックすると、ContosoDC の状態が **[開始中 (プロビジョニング中)]** から **[停止済み]**、**[開始中]**、**[実行中 (プロビジョニング中)]**、最後に **[実行中]** へ変化していくことがわかります。
+新しい VM の構成が完了したら、VM がプロビジョニングされるまで待ちます。このプロセスは完了するまで時間がかかります。Azure クラシック ポータルで **[仮想マシン]** タブをクリックすると、ContosoDC の状態が **[開始中 (プロビジョニング中)]** から **[停止済み]**、**[開始中]**、**[実行中 (プロビジョニング中)]**、最後に **[実行中]** へ変化していくことがわかります。
 
 これで、DC サーバーは正常にプロビジョニングされました。次に、この DC サーバー上の Active Directory ドメインを構成します。
 
@@ -192,14 +192,18 @@
 
 ## SQL Server VM の作成
 
-次に、3 つの VM (WSFC クラスター ノードと 2 つの SQL Server VM) を作成します。各 VM を作成するには、Azure ポータルに戻り、**[新規]**、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。その後、次の表のテンプレートを使用すると、VM の作成に役立ちます。
+次に、3 つの VM (WSFC クラスター ノードと 2 つの SQL Server VM) を作成します。各 VM を作成するには、Azure クラシック ポータルに戻り、**[新規]**、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。その後、次の表のテンプレートを使用すると、VM の作成に役立ちます。
 
 |ページ|VM1|VM2|VM3|
 |---|---|---|---|
 |仮想マシンのオペレーティング システムの選択|**Windows Server 2012 R2 Datacenter**|**SQL Server 2014 RTM Enterprise**|**SQL Server 2014 RTM Enterprise**|
-|仮想マシンの構成|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoWSFCNode<br/>**レベル** = BASIC<br/>**サイズ** = A2 (2 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoSQL1<br/>**レベル** = BASIC<br/>**サイズ** = A3 (4 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoSQL2<br/>**レベル** = BASIC<br/>**サイズ** = A3 (4 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|
+|仮想マシンの構成|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoWSFCNode<br/>**レベル** = STANDARD<br/>**サイズ** = A2 (2 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoSQL1<br/>**レベル** = STANDARD<br/>**サイズ** = A3 (4 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoSQL2<br/>**レベル** = STANDARD<br/>**サイズ** = A3 (4 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|
 |仮想マシンの構成|**クラウド サービス** = 以前作成された一意のクラウド サービス DNS 名 (例: ContosoDC123)<br/>**リージョン/アフィニティ グループ/仮想ネットワーク** = ContosoNET<br/>**仮想ネットワーク サブネット** = バック (10.10.2.0/24)<br/>**ストレージ アカウント** = 自動的に生成されたストレージ アカウントを使用<br/>**可用性セット** = 可用性セットの作成<br/>**可用性セット名** = SQLHADR|**クラウド サービス** = 以前作成された一意のクラウド サービス DNS 名 (例: ContosoDC123)<br/>**リージョン/アフィニティ グループ/仮想ネットワーク** = ContosoNET<br/>**仮想ネットワーク サブネット** = バック (10.10.2.0/24)<br/>**ストレージ アカウント** = 自動的に生成されたストレージ アカウントを使用<br/>**可用性セット** SQLHADR (可用性セットは、マシンの作成後に構成することもできます。3 つの仮想マシンはすべて SQLHADR 可用性セットに割り当てる必要があります。)|**クラウド サービス** = 以前作成された一意のクラウド サービス DNS 名 (例: ContosoDC123)<br/>**リージョン/アフィニティ グループ/仮想ネットワーク** = ContosoNET<br/>**仮想ネットワーク サブネット** = バック (10.10.2.0/24)<br/>**ストレージ アカウント** = 自動的に生成されたストレージ アカウントを使用<br/>**可用性セット** SQLHADR (可用性セットは、マシンの作成後に構成することもできます。3 つの仮想マシンはすべて SQLHADR 可用性セットに割り当てる必要があります。)|
 |仮想マシンのオプション|既定値を使用|既定値を使用|既定値を使用|
+
+<br/>
+
+>[AZURE.NOTE]前の構成は、Standard レベルの仮想マシンを示唆しています。これは、Basic レベルのマシンでは、後で可用性グループ リスナーを作成するために必要な負荷分散されるエンドポイントがサポートされないためです。また、ここで示されるマシンのサイズは、Azure VM での可用性グループのテストに対応しています。運用時のワークロードに対して最適なパフォーマンスを得る方法については、「[Azure Virtual Machines における SQL Server のパフォーマンスのベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」の SQL Server マシンのサイズと構成に関する推奨事項を参照してください。
 
 3 つの VM が完全にプロビジョニングされたら、その 3 つの VM を **corp.contoso.com** ドメインに参加させて、それらに対する管理者権限を CORP\\Install に付与する必要があります。この操作を行うには、3 つの VM それぞれで、次の手順を実行します。
 
@@ -544,4 +548,4 @@
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

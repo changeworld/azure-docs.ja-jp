@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Web アプリと Redis Cache にプロビジョニングする" 
-	description="Azure リソース マネージャー テンプレートを使用し、Web アプリと Redis Cache をデプロイします。" 
+	description="Azure リソース マネージャー テンプレートを使用し、Web アプリと Redis Cache を展開します。" 
 	services="app-service" 
 	documentationCenter="" 
 	authors="tfitzmac" 
@@ -31,9 +31,9 @@
 - Azure Web アプリ
 - Azure Redis Cache。
 
-デプロイメントを自動的に実行するには、次のボタンをクリックします。
+展開を自動的に実行するには、次のボタンをクリックします。
 
-[![Azure へのデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
+[![Azure への展開](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
 
 ## 指定するパラメーター
 
@@ -73,7 +73,7 @@ Web アプリで使用される Azure Redis Cache を作成します。キャッ
 
 **siteName** パラメーターで指定された名前で Web アプリを作成します。
 
-Redis Cache との連動を可能にするアプリ設定プロパティで Web アプリが構成されることに注意してください。このアプリ設定はデプロイ時に指定された値に基づいて動的に作成されます。
+Redis Cache との連動を可能にするアプリ設定プロパティで Web アプリが構成されることに注意してください。このアプリ設定は展開時に指定された値に基づいて動的に作成されます。
         
     {
       "apiVersion": "2015-04-01",
@@ -125,4 +125,4 @@ Redis Cache との連動を可能にするアプリ設定プロパティで Web 
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

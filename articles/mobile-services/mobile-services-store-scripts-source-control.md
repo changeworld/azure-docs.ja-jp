@@ -13,10 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="09/15/2015" 
+	ms.date="09/15/2015"
 	ms.author="ggailey777"/>
 
 # ソース管理へのモバイル サービス プロジェクト コードの保存
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 > [AZURE.SELECTOR]
 - [.NET backend](mobile-services-dotnet-backend-store-code-source-control.md)
@@ -93,7 +98,7 @@
 
 	コミットがモバイル サービスにデプロイされることを示す一連のコマンドが表示されるはずです。
 
-6. 管理ポータルに戻って、[**データ**] タブ、**TodoItem** テーブル、[**スクリプト**] の順にクリックし、[**挿入**] 操作を選択します。表示された挿入操作のスクリプトが、直前にリポジトリにアップロードした JavaScript コードと同じであることを確認します。
+6. [Azure クラシック ポータル]に戻って、**[データ]** タブ、**TodoItem** テーブル、**[スクリプト]** の順にクリックし、**[挿入]** 操作を選択します。表示された挿入操作のスクリプトが、直前にリポジトリにアップロードした JavaScript コードと同じであることを確認します。
 
 ##<a name="use-npm"></a>サーバー スクリプトで共有コードと Node.js モジュールを活用する
 
@@ -149,8 +154,8 @@ Node.js モジュールをモバイル サービスに追加するための推�
 [Installing Git (Git のインストール)]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [モバイル サービスの使用]: mobile-services-ios-get-started.md
 [モバイル サービスのサーバー スクリプトの操作]: mobile-services-how-to-use-server-scripts.md
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Modules (モジュール)]: http://nodejs.org/api/modules.html
 [node-uuid]: https://npmjs.org/package/node-uuid
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

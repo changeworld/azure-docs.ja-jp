@@ -26,25 +26,25 @@ Azure Stream Analytics ジョブを 1 つ以上の入力に接続できます。
 
 Stream Analytics ジョブに入力を追加するには:
 
-1. Azure ポータルの Stream Analytics ジョブで、**[入力]** をクリックし、**[入力の追加]** をクリックします。
+1. Azure クラシック ポータルの Stream Analytics ジョブで、**[入力]** をクリックし、**[入力の追加]** をクリックします。
 
     ![入力の追加](./media/stream-analytics-add-inputs/1-stream-analytics-add-inputs.png)
 
-    Azure プレビュー ポータルの Stream Analytics ジョブで、**[入力]** タイルをクリックします。
+    Azure ポータルの Stream Analytics ジョブで、**[入力]** タイルをクリックします。
 
-    ![Azure プレビュー ポータルでの入力の追加](./media/stream-analytics-add-inputs/7-stream-analytics-add-inputs.png)
+    ![Azure ポータルでの入力の追加](./media/stream-analytics-add-inputs/7-stream-analytics-add-inputs.png)
 
 2. 入力の種類として、**[データ ストリーム]** または **[参照データ]** を指定します。
 
     ![データの追加](./media/stream-analytics-add-inputs/2-stream-analytics-add-inputs.png)
 
-    ![Azure プレビュー ポータルでのデータの追加](./media/stream-analytics-add-inputs/8-stream-analytics-add-inputs.png)
+    ![Azure ポータルでのデータの追加](./media/stream-analytics-add-inputs/8-stream-analytics-add-inputs.png)
 
 3. データ ストリーム入力を作成する場合は、入力のソースの種類を指定します。参照データを作成する場合は、現時点でサポートされるのは BLOB ストレージだけなので、この手順はスキップできます。
 
     ![データ ストリームの追加](./media/stream-analytics-add-inputs/3-stream-analytics-add-inputs.png)
 
-    ![Azure プレビュー ポータルでのデータ ストリームの追加](./media/stream-analytics-add-inputs/9-stream-analytics-add-inputs.png)
+    ![Azure ポータルでのデータ ストリームの追加](./media/stream-analytics-add-inputs/9-stream-analytics-add-inputs.png)
 
 4. [入力のエイリアス] ボックスに、この入力のわかりやすい名前を入力します。この名前は、後で入力を参照するためにジョブのクエリで使用されます。
 
@@ -58,13 +58,13 @@ Stream Analytics ジョブに入力を追加するには:
 
     ![データ シリアル化の設定](./media/stream-analytics-add-inputs/5-stream-analytics-add-inputs.png)
 
-    ![Azure プレビュー ポータルでのデータ シリアル化の設定](./media/stream-analytics-add-inputs/10-stream-analytics-add-inputs.png)
+    ![Azure ポータルでのデータ シリアル化の設定](./media/stream-analytics-add-inputs/10-stream-analytics-add-inputs.png)
 
 6. 入力の作成が完了すると、Stream Analytics は入力ソースに接続できることを確認します。Notification Hub でテスト接続操作の状態を表示できます。
 
     ![接続テスト](./media/stream-analytics-add-inputs/6-stream-analytics-add-inputs.png)
 
-    ![Azure プレビュー ポータルでの接続テスト](./media/stream-analytics-add-inputs/11-stream-analytics-add-inputs.png)
+    ![Azure ポータルでの接続テスト](./media/stream-analytics-add-inputs/11-stream-analytics-add-inputs.png)
 
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
@@ -77,4 +77,4 @@ Stream Analytics ジョブに入力を追加するには:
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure Stream Analytics の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

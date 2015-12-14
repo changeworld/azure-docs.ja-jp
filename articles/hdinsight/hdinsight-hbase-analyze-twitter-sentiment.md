@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/09/2015" 
+	ms.date="12/02/2015" 
 	ms.author="jgao"/>
 
 # HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する
@@ -75,11 +75,11 @@ Visual Studio ソリューションの完全なサンプルは、GitHub: [Realti
 
 
 	<table border="1">
-	<tr><th>クラスター プロパティ</th><th>説明</th></tr>
-	<tr><td>HBase クラスター名</td><td>使用する HDInsight HBase クラスター名です。例: https://myhbase.azurehdinsight.net/</td></tr>
-	<tr><td>クラスター ユーザー名</td><td>Hadoop ユーザー アカウント名。既定の Hadoop ユーザー名は <strong>admin</strong> です。</td></tr>
-	<tr><td>クラスター ユーザー パスワード</td><td>Hadoop クラスター ユーザーのパスワード。</td></tr>
-	</table>
+<tr><th>クラスター プロパティ</th><th>説明</th></tr>
+<tr><td>HBase クラスター名</td><td>使用する HDInsight HBase クラスター名です。例: https://myhbase.azurehdinsight.net/</td></tr>
+<tr><td>クラスター ユーザー名</td><td>Hadoop ユーザー アカウント名。既定の Hadoop ユーザー名は <strong>admin</strong> です。</td></tr>
+<tr><td>クラスター ユーザー パスワード</td><td>Hadoop クラスター ユーザーのパスワード。</td></tr>
+</table>
 
 - Visual Studio 2013 がインストールされている**ワークステーション**。手順については、[Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)を参照してください。
 
@@ -98,13 +98,11 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 3. **名前**、**説明**、**Web サイト**を入力します。[Website] フィールドは実際には使用しません。有効な URL である必要はありません。次のテーブルは使用する値のサンプルを示しています。
 
 	<table border="1">
-	<tr><th>フィールド</th><th>値</th></tr>
-	<tr><td>名前</td><td>MyHDInsightHBaseApp</td></tr>
-	<tr><td>説明</td><td>MyHDInsightHBaseApp</td></tr>
-	<tr><td>Web サイト</td><td>http://www.myhdinsighthbaseapp.com</td></tr>
-	</table>
-
-	> [AZURE.NOTE]Twitter アプリケーションの名前は一意の名前にする必要があります。
+<tr><th>フィールド</th><th>値</th></tr>
+<tr><td>名前</td><td>MyHDInsightHBaseApp</td></tr>
+<tr><td>説明</td><td>MyHDInsightHBaseApp</td></tr>
+<tr><td>Web サイト</td><td>http://www.myhdinsighthbaseapp.com</td></tr>
+</table>> [AZURE.NOTE]Twitter アプリケーションの名前は一意の名前にする必要があります。
 
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
 5. **[Permissions]** タブをクリックします。既定のアクセス許可は**読み取り専用**です。このチュートリアルにはこれで十分です。 
@@ -220,9 +218,9 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
         const string HBASETABLENAME = "tweets_by_words";
 
         // Sentiment dictionary file and the punctuation characters
-        const string DICTIONARYFILENAME = @"....\data\dictionary\dictionary.tsv";
+        const string DICTIONARYFILENAME = @"..\..\data\dictionary\dictionary.tsv";
         private static char[] _punctuationChars = new[] { 
-            ' ', '!', '"', '#', '$', '%', '&', ''', '(', ')', '*', '+', ',', '-', '.', '/',   //ascii 23--47
+            ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/',   //ascii 23--47
             ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~' };   //ascii 58--64 + misc.
 
         // For writting to HBase
@@ -678,9 +676,9 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 	- **CLUSTERNAME**: *https://<HBaseClusterName>.azurehdinsight.net/* などの HBase cluster 名。 
     - **HADOOPUSERNAME**: HBase クラスター Hadoop ユーザーのユーザー名。既定の名前は *admin* です。
     - **HADOOPUSERPASSWORD**: HBase クラスター Hadoop ユーザーのパスワード。
-    - **HBASETABLENAME** = "tweets_by_words";
+    - **HBASETABLENAME** = "tweets\_by\_words";
 
-	HBase テーブル名は「**tweets_by_words**」です。値は、ストリーミング サービスで送信した値と同じでなければなりません。そのようにすると、Web アプリケーションは同じ HBase テーブルのデータを読み取ることができます。
+	HBase テーブル名は「**tweets\_by\_words**」です。値は、ストリーミング サービスで送信した値と同じでなければなりません。そのようにすると、Web アプリケーションは同じ HBase テーブルのデータを読み取ることができます。
 
 
 
@@ -1283,7 +1281,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 
 		using System.Web.Http;
 
-2. 以下の行を **Application_Start()** 関数内に追加します。
+2. 以下の行を **Application\_Start()** 関数内に追加します。
 
 		// Register API routes
 		GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -1357,4 +1355,4 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -45,7 +45,7 @@ AMQP 1.0 は、Service Bus SDK Version 2.1 以降でサポートされていま�
 
 	Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp
 
-この場合の `[namespace]` と `SharedAccessKey` は Azure ポータルから取得されます。詳細については、「[Service Bus キューの使用方法][]」を参照してください。
+この場合の `[namespace]` と `SharedAccessKey` は [Azure クラシック ポータル][]から取得されます。詳細については、「[Service Bus キューの使用方法][]」を参照してください。
 
 AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付加します。この表記により、クライアント ライブラリに対して、AMQP 1.0 を使用して Service Bus に接続するように通知します。
 
@@ -199,8 +199,9 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
   [OperationTimeout]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx
 [NuGet]: http://nuget.org/packages/WindowsAzure.ServiceBus/
 
+[Azure クラシック ポータル]: http://manage.windowsazure.com
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

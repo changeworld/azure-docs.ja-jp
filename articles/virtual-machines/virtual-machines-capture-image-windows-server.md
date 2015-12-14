@@ -40,7 +40,7 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 
 ##仮想マシンをキャプチャする
 
-1. [Azure ポータル](http://manage.windowsazure.com)で仮想マシンに**接続**します。詳細については、「[Windows Server が実行されている仮想マシンにサインインする方法][]」を参照してください。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com)で仮想マシンに**接続**します。詳細については、「[Windows Server が実行されている仮想マシンにサインインする方法][]」を参照してください。
 
 2.	管理者としてコマンド プロンプト ウィンドウを開きます。
 
@@ -56,9 +56,9 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 
 	![Sysprep を実行する](./media/virtual-machines-capture-image-windows-server/SysprepGeneral.png)
 
-7.	Sysprep コマンドにより仮想マシンがシャットダウンされます。これにより、Azure ポータルの仮想マシンの状態が **[停止済み]** に変わります。
+7.	Sysprep コマンドにより仮想マシンがシャットダウンされます。これにより、Azure クラシック ポータルの仮想マシンの状態が **[停止済み]** に変わります。
 
-8.	Azure ポータルで **[Virtual Machines]** をクリックし、キャプチャする仮想マシンを選択します。
+8.	Azure クラシック ポータルで **[Virtual Machines]** をクリックし、キャプチャする仮想マシンを選択します。
 
 9.	コマンド バーで、**[取り込み]** をクリックします。
 
@@ -90,4 +90,4 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 [Image capture successful]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
 [Use the captured image]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

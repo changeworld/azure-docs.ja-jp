@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="11/05/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用した StorSimple デバイスの監視 
@@ -21,13 +21,13 @@
 
 StorSimple Manager サービスを使用して、StorSimple ソリューション内にある特定の StorSimple デバイスを監視できます。I/O パフォーマンス、容量使用率、ネットワーク スループット、およびデバイスのパフォーマンス メトリックに基づいて、カスタム グラフを作成できます。
 
-特定のデバイスの監視情報を表示するには、Azure ポータルで、StorSimple Manager サービスを選択し、**[監視]** タブをクリックして、デバイスの一覧から選択します。**[監視]** ページには、次の情報が表示されます。
+特定のデバイスの監視情報を表示するには、Azure クラシック ポータルで、StorSimple Manager サービスを選択し、**[監視]** タブをクリックして、デバイスの一覧から選択します。**[監視]** ページには、次の情報が表示されます。
 
 ## I/O パフォーマンス 
 
 **I/O パフォーマンス**は、ホスト サーバーの iSCSI イニシエーター インターフェイスとデバイスとの間またはデバイスとクラウドとの間の読み取り操作と書き込み操作の数に関連するメトリックを追跡します。このパフォーマンスは、特定のボリューム、特定のボリューム コンテナー、またはすべてのボリューム コンテナーについて測定できます。
 
-次の表では、実稼働環境のデバイスの全ボリュームに対する、デバイスへのイニシエーター用 IO を示しています。プロットされたメトリックは、1 秒あたりの読み取りと書き込みバイト数、1 秒あたりの読み取りと書き込み IO 操作、読み取りと書き込み待機時間です。
+次の表では、運用環境のデバイスの全ボリュームに対する、デバイスへのイニシエーター用 IO を示しています。プロットされたメトリックは、1 秒あたりの読み取りと書き込みバイト数、1 秒あたりの読み取りと書き込み IO 操作、読み取りと書き込み待機時間です。
 
 ![イニシエーターからデバイスへの IO パフォーマンス](./media/storsimple-monitor-device/StorSimple_IO_Performance_For_InitiatorTODevice_For_AllVolumesM.png)
 
@@ -111,7 +111,7 @@ StorSimple Manager サービスを使用して、StorSimple ソリューショ�
 
 ## デバイスのパフォーマンス 
 
-**デバイスのパフォーマンス**は、デバイスのパフォーマンスに関連するメトリックを追跡します。次の表では、実稼働環境のデバイスに対する CPU 使用率の統計値を示しています。
+**デバイスのパフォーマンス**は、デバイスのパフォーマンスに関連するメトリックを追跡します。次の表では、運用環境のデバイスに対する CPU 使用率の統計値を示しています。
 
 ![デバイスの CPU 使用率](./media/storsimple-monitor-device/StorSimple_DeviceMonitor_DevicePerformance1M.png)
 
@@ -121,4 +121,4 @@ StorSimple Manager サービスを使用して、StorSimple ソリューショ�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -8,4 +8,4 @@
 | | [NodeJS Web API をセキュリティで保護する](active-directory-v2-devquickstarts-node-api.md) |
 | | [Web から Office 365 REST API を呼び出す](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) |
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

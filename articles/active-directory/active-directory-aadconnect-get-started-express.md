@@ -1,5 +1,5 @@
 <properties
-	pageTitle="簡単設定を使用した Azure AD Connect の開始 | Microsoft Azure"
+	pageTitle="Azure AD Connect: 簡単設定を使用した開始 | Microsoft Azure"
 	description="Azure AD Connect のセットアップ ウィザードをダウンロード、インストール、および実行する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -49,7 +49,7 @@
 	- 必要に応じて、[構成の準備完了] 画面の **[構成が完了したらすぐに同期プロセスを開始する]** チェック ボックスをオフにします。このチェック ボックスをオフにすると、ウィザードでは、同期が構成されますが、タスクは無効のままになります。そのため、タスクは、タスク スケジューラで手動で有効にするまで実行されません。タスクを有効にすると、同期は 3 時間ごとに実行されます。
 	- また、必要に応じて、**[Exchange ハイブリッド展開]** チェック ボックスをオンにすると、その同期サービスを構成することも選択できます。Exchange メールボックスをクラウドにもオンプレミスにも配置する予定がない場合は、このチェック ボックスをオンにする必要はありません。![Azure AD Connect へようこそ](./media/active-directory-aadconnect-get-started/readyinstall.png)<br>
 8. インストールが完了したら、**[終了]** をクリックします。
-
+9. インストールが完了した後、 Synchronization Service Manager または同期規則エディターを使用する前に、ログオフし、もう一度ログオンします。
 
 <br> <br>
 
@@ -63,4 +63,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

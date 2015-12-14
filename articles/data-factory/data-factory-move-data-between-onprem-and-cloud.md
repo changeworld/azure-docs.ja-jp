@@ -47,7 +47,7 @@ Data Gateway には次の機能が備わっています。
 コピー アクティビティは特定の頻度で実行するので、コンピューターのリソース (CPU、メモリ) の使用も同じピークとアイドルのパターンに従います。リソース使用率はまた、移動されるデータの量に大きく依存します。複数のコピー ジョブが進行中のとき、ピーク時にはリソース使用率が上昇するのがわかります。上記は最小限の構成ですが、データ移動の特定の負荷に応じて、最小構成より多くのリソースを構成することを常にお勧めします。
 
 ## インストール
-Data Management Gateway は、Microsoft ダウンロード センターから MSI セットアップ パッケージをダウンロードしてインストールできます。MSI は、すべての設定を保持しながら、既存の Data Management Gateway を最新のバージョンにアップグレードするためにも使用できます。以下の手順に従って、Azure ポータルから MSI パッケージへのリンクを見つけることができます。
+Data Management Gateway は、Microsoft ダウンロード センターから MSI セットアップ パッケージをダウンロードしてインストールできます。MSI は、すべての設定を保持しながら、既存の Data Management Gateway を最新のバージョンにアップグレードするためにも使用できます。以下の手順に従って、Azure クラシック ポータルから MSI パッケージへのリンクを見つけることができます。
 
 ### インストールのベスト プラクティス:
 1.	コンピューターが休止状態にならないように、ゲートウェイ用のホスト コンピューターの電源プランを構成します。ホスト コンピューターが休止状態の場合、ゲートウェイはデータ要求に応答できません。
@@ -85,9 +85,9 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 このチュートリアルでは、オンプレミスの SQL Server Database から、Azure BLOB にデータを移動するパイプラインを備えたデータ ファクトリを作成します。
 
 ### 手順 1. Azure Data Factory を作成する
-この手順では、Microsoft Azure 管理ポータルを使用して **ADFTutorialOnPremDF** という名前の Azure Data Factory インスタンスを作成します。Azure Data Factory のコマンドレットを使用してデータ ファクトリを作成することもできます。
+この手順では、Azure クラシック ポータルを使用して **ADFTutorialOnPremDF** という名前の Azure Data Factory インスタンスを作成します。Azure Data Factory のコマンドレットを使用してデータ ファクトリを作成することもできます。
 
-1.	[Azure プレビュー ポータル](https://portal.azure.com)にログインしたら、左下隅にある **[新規]** をクリックします。**[作成]** ブレードで **[データ分析]** を選択し、**[データ分析]** ブレードで **[Data Factory]** をクリックします。
+1.	[Azure ポータル](https://portal.azure.com)にログインしたら、左下隅にある **[新規]** をクリックします。**[作成]** ブレードで **[データ分析]** を選択し、**[データ分析]** ブレードで **[Data Factory]** をクリックします。
 
 	![New->DataFactory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)
   
@@ -117,7 +117,7 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 5. **[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
 
 	![タイルの作成とデプロイ](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png) 
-6.	Data Factory エディターのツールバーの **\[...] (省略記号)** をクリックし、**[新しいデータ ゲートウェイ]** をクリックします。 
+6.	Data Factory エディターのツールバーの **[...] (省略記号)** をクリックし、**[新しいデータ ゲートウェイ]** をクリックします。 
 
 	![ツールバーでのデータ ゲートウェイの新規作成](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
 2. **[作成]** ブレードで、**名前**に「**adftutorialgateway**」と入力し、**[OK]** をクリックします。 	
@@ -138,7 +138,7 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 
 	>[AZURE.NOTE]Data Management Gateway を正常にインストールして構成するには、ローカル コンピューターの管理者である必要があります。他のユーザーをローカル Windows グループの Data Management Gateway Users に追加できます。このグループのメンバーは、Data Management Gateway 構成マネージャー ツールを使用して、ゲートウェイを構成できます。
 
-5. 数分待ってから、コンピューターで **Data Management Gateway Configuration Manager** アプリケーションを起動します。**[検索]** ウィンドウで、「**Data Management Gateway**」と入力してこのユーティリティにアクセスします。**C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared** フォルダーの実行可能ファイル **ConfigManager.exe** を検索することもできます。
+5. 数分待ってから、コンピューターで **[Data Management Gateway Configuration Manager]** アプリケーションを起動します。**[検索]** ウィンドウに、このユーティリティにアクセスする **Data Management Gateway** を入力します。**C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared** フォルダーの実行可能ファイル **ConfigManager.exe** を検索することもできます。
 
 	![Gateway Configuration Manager](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
 
@@ -157,25 +157,25 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 	![[診断] タブ](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
 
 	このページを使用すると、ゲートウェイを使用してオンプレミスのデータ ソースへの**接続をテストする**こともできます。
-10. Azure ポータルの **[構成]** ブレードと **[新しいデータ ゲートウェイ]** ブレードで **[OK]** をクリックします。
-6. 左側のツリー ビューの **[データ ゲートウェイ]** に **[adftutorialgateway]** と表示されます。クリックすると、関連する JSON が表示されます。 
+10. Azure クラシック ポータルの **[構成]** ブレードと **[新しいデータ ゲートウェイ]** ブレードで **[OK]** をクリックします。
+6. 左側のツリービューの **[データ ゲートウェイ]** に **[adftutorialgateway]** と表示されます。クリックすると、関連する JSON が表示されます。 
 	
 
-### 手順 3. リンクされたサービスを作成する 
-この手順では、**StorageLinkedService** と **SqlServerLinkedService** の 2 つのリンク サービスを作成します。**SqlServerLinkedService** はオンプレミスの SQL Server データベースをリンクし、**StorageLinkedService** リンク サービスは Azure BLOB ストアをデータ ファクトリにリンクします。このチュートリアルの後半で、オンプレミスの SQL Server Database から Azure BLOB ストアにデータをコピーするパイプラインを作成します。
+### 手順 3: リンクされたサービスを作成する 
+この手順では、**StorageLinkedService** と **SqlServerLinkedService** の 2 つのリンク サービスを作成します。**SqlServerLinkedService** はオンプレミスの SQL Server Database をリンクし、**StorageLinkedService** リンク サービスは Azure BLOB ストアをデータ ファクトリにリンクします。このチュートリアルの後半で、オンプレミスの SQL Server Database から Azure BLOB ストアにデータをコピーするパイプラインを作成します。
 
 #### オンプレミスの SQL Server Database にリンクされたサービスを追加する
-1.	**Data Factory エディター**のツール バーにある **[新しいデータ ストア]** をクリックし、**[SQL Server]** を選択します。 
+1.	**Data Factory エディター**のツール バーにある **[新しいデータ ストア]** クリックし、**[SQL Server]** を選択します。 
 
 	![SQL Server のリンクされているサービス](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png) 
 3.	**JSON エディター**で次の操作を実行します。 
-	1. **gatewayName** に **adftutorialgateway** を指定します。	
+	1. **[gatewayName]** に **[adftutorialgateway]** を指定します。	
 	2. Windows 認証を使用している場合:
-		1. **connectionString**: 
-			1. **Integrated Security** を **true** に設定します。
+		1. **[connectionString]**: 
+			1. **[統合セキュリティ]** を **[true]** に設定します。
 			2. データベースの**サーバー名**と**データベース名**を指定します。 
-			2. **User ID** と **Password** を削除します。 
-		3. **userName** と **password** の各プロパティにユーザー名とパスワードを指定します。
+			2. **[ユーザー ID]** と **[パスワード]** を削除します。 
+		3. **[userName]** と **[password]** の各プロパティにユーザー名とパスワードを指定します。
 		
 				"typeProperties": {
             		"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;",
@@ -185,8 +185,8 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
         		}
 
 	4. SQL 認証を使用している場合:
-		1. **connectionString** にデータベースの**サーバー名**、**データベース名**、**ユーザー ID**、**パスワード**を指定します。       
-		2. 末尾 2 つの JSON プロパティである **userName** と **password** を JSON から削除します。
+		1. データベースの **[connectionString]** にデータベースの**サーバー名**、**データベース名**、**ユーザー ID**、**パスワード**を指定します。       
+		2. 末尾 2 つの JSON プロパティである **[userName]** と **[password]** を JSON から削除します。
 		3. **gatewayName** プロパティの値を指定する行末の **, (コンマ)** を削除します。 
 
 				"typeProperties": {
@@ -204,7 +204,7 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 4. **[デプロイ]** をクリックして **StorageLinkedService** をデプロイします。
    
  
-### 手順 4. 入力データセットと出力データセットを作成する
+### 手順 4: 入力データセットと出力データセットを作成する
 このステップでは、コピー操作 (オンプレミスの SQL Server Database => Azure BLOB ストレージ) の入力および出力データを表す入出力データ セットを作成します。データセットまたはテーブル (四角形のデータセット) を作成する前に、以下を実施する必要があります (一覧の後に詳細な手順があります)。
 
 - リンク サービスとしてデータ ファクトリに追加した SQL Server Database 内に "**emp**" という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
@@ -266,7 +266,7 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 	- **type** は **SqlServerTable** に設定されています。
 	- **tableName** を **emp** に設定します。
 	- **linkedServiceName** を **SqlServerLinkedService** (手順 2. で作成したリンク サービス) に設定します。
-	- Azure Data Factory の別のパイプラインでは生成されない入力テーブルの場合、**external** を **true** に設定する必要があります。これは、入力データが Azure Data Factory サービスの外部で生成されることを意味します。必要に応じて、**Policy** セクションの **externalData** 要素を使用して外部データ ポリシーを指定できます。    
+	- Azure Data Factory の別のパイプラインでは生成されない入力テーブルの場合、**external** を **true** に設定する必要があります。これは、入力データが Azure Data Factory サービスの外部で生成されることを意味します。必要に応じて、**Policy** セクションの **externalData** 要素を使用して外部データ ポリシーを指定できます、    
 
 	JSON プロパティの詳細については、[JSON スクリプト リファレンス][json-script-reference]を参照してください。
 
@@ -327,7 +327,7 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 2.	コマンド バーの **[デプロイ]** をクリックして、データセットをデプロイします (テーブルは四角形のデータセットです)。タイトル バーに "**テーブルは正常にデプロイされました**" というメッセージが表示されていることを確認します。
   
 
-### 手順 5. パイプラインを作成して実行する
+### 手順 5: パイプラインを作成して実行する
 この手順では、**EmpOnPremSQLTable** を入力として使用し、**OutputBlobTable** を出力として使用する**コピー アクティビティ**を 1 つ使用する**パイプライン**を作成します。
 
 1.	**[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
@@ -382,10 +382,10 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 
 	以下の点に注意してください。
  
-	- activities セクションに、**type** が **Copy** に設定されたアクティビティがあるだけです。
+	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
 	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink** を指定します。
-	- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
+- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
 
 	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
@@ -402,7 +402,7 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 **ご利用ありがとうございます。** これで、Azure Data Factory、リンクされたサービス、テーブル、およびパイプラインの作成と、パイプラインのスケジュール設定が完了しました。
 
 #### ダイアグラム ビューでの Data Factory の表示 
-1. **Azure プレビュー ポータル**の **ADFTutorialOnPremDF** データ ファクトリのホーム ページで、**[ダイアグラム]** タイルをクリックします。
+1. **Azure ポータル**の **ADFTutorialOnPremDF** データ ファクトリのホーム ページで、**[ダイアグラム]** タイルをクリックします。
 
 	![Diagram Link](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png)
 
@@ -412,10 +412,10 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 
 	パイプラインとテーブルは、拡大、縮小、100% に拡大、ウィンドウのサイズに合わせて大きさを変更、自動的に配置などの表示が可能です。また、系列情報を表示 (選択した項目の上位項目や下位項目を強調表示) することもできます。オブジェクト (入力/出力テーブルまたはパイプライン) をダブルクリックすると、そのオブジェクトのプロパティを表示できます。
 
-### 手順 6. データセットとパイプラインを監視する
-このステップでは、Azure ポータルを使用して、Azure Data Factory の状況を監視します。PowerShell コマンドレットを使用して、データセットとパイプラインを監視することもできます。監視の詳細については、「[パイプラインの監視と管理](monitor-manage-pipelines.md)」を参照してください。
+### 手順 6: データセットとパイプラインを監視する
+このステップでは、Azure クラシック ポータルを使用して、Azure Data Factory の状況を監視します。PowerShell コマンドレットを使用して、データセットとパイプラインを監視することもできます。監視の詳細については、「[パイプラインの監視と管理](monitor-manage-pipelines.md)」という記事を参照してください。
 
-1. **Azure プレビュー ポータル**に移動します (閉じていた場合)。
+1. **Azure ポータル**に移動します (閉じていた場合)。
 2. **ADFTutorialOnPremDF** のブレードが開いていない場合は、**スタート画面**で **ADFTutorialOnPremDF** をクリックして開きます。
 3. このブレードには、作成したテーブルとパイプラインの**数**と**名前**が表示されます。
 
@@ -503,7 +503,7 @@ SQL Server リンク サービスを作成するには、Data Factory エディ�
 
 	![新しいデータ ストアの作成](./media/data-factory-move-data-between-onprem-and-cloud/new-data-store.png)
 3.	**[種類]** 設定の下でさらに設定する必要があります。
-4.	**[データ ゲートウェイ]** 設定で、作成したゲートウェイを選択します。 
+4.	**[Data Gateway]** の設定で、作成したゲートウェイを選択します。 
 
 	![SQL Server の設定](./media/data-factory-move-data-between-onprem-and-cloud/sql-server-settings.png)
 4.	**[サーバー]** 設定にデータベース サーバーの名前を入力します。
@@ -514,25 +514,20 @@ SQL Server リンク サービスを作成するには、Data Factory エディ�
 7.	**[資格情報]** ブレードで、**[ここをクリックして資格情報を設定する]** をクリックします。
 8.	**[資格情報の設定]** ダイアログ ボックスで、次の手順を実行します。
 
-	![[資格情報の設定] ダイアログ](./media/data-factory-move-data-between-onprem-and-cloud/setting-credentials-dialog.png)
-	1.	Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。 
-	2.	**[ユーザー名]** 設定に、データベースへのアクセス権を持つユーザーの名前を入力します。 
-	3.	**[パスワード]** 設定に、ユーザーのパスワードを入力します。  
-	4.	**[OK]** をクリックしてダイアログ ボックスを閉じます。 
+	![[資格情報の設定] ダイアログ](./media/data-factory-move-data-between-onprem-and-cloud/setting-credentials-dialog.png) 1.Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。2.**[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。3.**[パスワード]** の設定に、ユーザーのパスワードを入力します。4.**[OK]** をクリックしてダイアログ ボックスを閉じます。 
 4. **[OK]** をクリックして **[資格情報]** ブレードを閉じます。 
 5. **[新しいデータ ストア]** ブレードで、**[OK]** をクリックします。 	
-6. [リンクされたサービス] ブレードで **SqlServerLinkedService** のステータスが [オンライン] に設定されていることを確認します。
-	![SQL Server のリンクされているサービスの状態](./media/data-factory-move-data-between-onprem-and-cloud/sql-server-linked-service-status.png)
+6. [リンクされたサービス] ブレードで **SqlServerLinkedService** のステータスが [オンライン] に設定されていることを確認します。![SQL Server のリンクされているサービスの状態](./media/data-factory-move-data-between-onprem-and-cloud/sql-server-linked-service-status.png)
 
 ゲートウェイ コンピューターとは異なるコンピューターからポータルにアクセスする場合は、資格情報マネージャー アプリケーションがゲートウェイ コンピューターに接続できることを確認する必要があります。アプリケーションがゲートウェイ コンピューターにアクセスできない場合、データ ソースの資格情報を設定したり、データ ソースへの接続をテストしたりすることはできません。
 
-Microsoft Azure ポータルから起動した [資格情報の設定] アプリケーションを使用してオンプレミスのデータ ソースの資格情報を設定すると、ポータルは、ユーザーがゲートウェイ コンピューターの Data Management Gateway Configuration Manager の [証明書] タブで指定した証明書で資格情報を暗号化します。
+Azure クラシック ポータルから起動した [資格情報の設定] アプリケーションを使用してオンプレミスのデータ ソースの資格情報を設定すると、ポータルは、ユーザーがゲートウェイ コンピューターの Data Management Gateway Configuration Manager の [証明書] タブで指定した証明書で資格情報を暗号化します。
 
-API を使用して資格情報を暗号化した方がよい場合は、[New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/azure/dn834940.aspx) PowerShell コマンドレットを使用して資格情報を暗号化できます。コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。このコマンドレットによって返される暗号化済みの資格情報を、[New-AzureDataFactoryLinkedService](https://msdn.microsoft.com/library/azure/dn820246.aspx) コマンドレットで使用する JSON ファイルの connectionString の EncryptedCredential 要素や、ポータルの Data Factory エディターで JSON スニペットに、追加できます。
+API を使用して資格情報を暗号化した方がよい場合は、[New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/azure/dn834940.aspx) PowerShell コマンドレットを使用して資格情報を暗号化できます。コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。このコマンドレットによって返される資格情報を、[New-AzureDataFactoryLinkedService](https://msdn.microsoft.com/library/azure/dn820246.aspx) コマンドレットで使用する JSON ファイルの connectionString の EncryptedCredential 要素や、ポータルの Data Factory エディターで JSON スニペットに、追加できます。
 
 	"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
 
-**注:** "資格情報の設定" アプリケーションを使用すると、上記のようにリンクされたサービスに暗号化された資格情報が自動的に設定されます。
+**注:** 「資格情報の設定」アプリケーションを使用すると、上記のようにリンクされたサービスに暗号化された資格情報が自動的に設定されます。
 
 Data Factory エディターを使用して資格情報を設定するもう 1 つの方法があります。エディターを使用して SQL Server のリンクされたサービスを作成し、プレーン テキストで資格情報を入力した場合、資格情報は、ゲートウェイが使用するように構成されている証明書ではなく、Data Factory が所有する証明書で暗号化されます。この方法は、場合によっては少し高速ですが、セキュリティは低下します。したがって、この方法は開発/テストの目的のみに使用することをお勧めします。
 
@@ -594,10 +589,9 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 ## Data Management Gateway を使用したコピーのデータ フロー
 データ パイプラインでコピー アクティビティを使用してオンプレミスのデータを処理のためにクラウドに取り込むとき、またはクラウドの結果データをオンプレミスのデータ ストアにエクスポートして戻すときは、コピー アクティビティは内部的にゲートウェイを使用してオンプレミスのデータ ソースからクラウドに、またはその逆に、データを転送します。
 
-データ ゲートウェイでのコピーのデータ フローと手順の概要を次に示します。
-![ゲートウェイを使用したデータ フロー](./media/data-factory-move-data-between-onprem-and-cloud/data-flow-using-gateway.png)
+データ ゲートウェイでのコピーのデータ フローと手順の概要を次に示します。![ゲートウェイを使用したデータ フロー](./media/data-factory-move-data-between-onprem-and-cloud/data-flow-using-gateway.png)
 
-1.	データの開発者は、[Azure ポータル](http://portal.azure.com)または [PowerShell コマンドレット](https://msdn.microsoft.com/library/dn820234.aspx)を使用して Azure Data Factory 用の新しいゲートウェイを作成します。 
+1.	データの開発者は、[Azure クラシック ポータル](http://portal.azure.com)または [PowerShell コマンドレット](https://msdn.microsoft.com/library/dn820234.aspx)を使用して Azure Data Factory 用の新しいゲートウェイを作成します。 
 2.	データ開発者は、[リンクされたサービス] パネルを使用して、オンプレミスのデータ ストアとゲートウェイのための新しいリンクされたサービスを定義します。リンクされたサービスの設定の一部として、データ開発者は、手順で示したように資格情報の設定アプリケーションを使用して認証の種類と資格情報を指定します。資格情報の設定アプリケーションのダイアログは、データ ストアと通信して接続をテストし、ゲートウェイと通信して資格情報を保存します。
 3.	ゲートウェイは、資格情報をクラウドに保存する前に、(開発者によって提供された) ゲートウェイと関連付けられた証明書で資格情報を暗号化します。
 4.	Data Factory 移動サービスは、共有 Azure Service Bus キューを使用する制御チャネルを介して、ジョブのスケジューリングと管理のためにゲートウェイと通信します。コピー アクティビティ ジョブを開始する必要がある場合、Data Factory はリクエストと資格情報をキューに入れます。ゲートウェイは、キューをポーリングした後でジョブを開始します。
@@ -612,10 +606,10 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 	2.	[New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) PowerShell コマンドレットの使用: a.PowerShell コマンドを使用して資格情報を暗号化しており、結果としてゲートウェイのインストールで Windows ファイアウォールのゲートウェイ コンピューターの受信ポートを開きたくない場合は、インストールの間に次のコマンドを使用して行うことができます。
 	
 			msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
-3.	**資格情報の設定**アプリケーションを使用する場合は、データ ソースの資格情報を設定し、データ ソースへの接続をテストできるようにするために、Data Management Gateway に接続できるコンピューターで資格情報の設定アプリケーションを起動する必要があります。
+3.	**資格情報の設定**アプリケーションを使用している場合は、データ ソースへの接続をテストできるようにするために、Data Management Gateway に接続できるコンピューターで資格情報マネージャー アプリケーションを起動する必要があります。
 4.	オンプレミスの SQL Server と Azure SQL Database の間でデータをコピーするときは、次のことを確認してください。	
 	- 	ゲートウェイ コンピューターのファイアウォールが、**TCP** ポート **1433** での送信 TCP 通信を許可している
 	- 	[Azure SQL ファイアウォール設定](https://msdn.microsoft.com/library/azure/jj553530.aspx)を構成して、**許可する IP アドレス**に**ゲートウェイ コンピューターの IP アドレス**を追加している
 5.	オンプレミスの SQL Server から任意のコピー先にデータをコピーするときに、ゲートウェイ コンピューターと SQL Server コンピューターが異なる場合は、SQL Server インスタンスがリッスンしているポートを介してゲートウェイがデータベースにアクセスできるように、SQL Server コンピューターで [Windows ファイアウォールを構成](https://msdn.microsoft.com/library/ms175043.aspx)します。既定のインスタンスの場合、ポート 1433 です。
 
-<!----HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -31,7 +31,7 @@
 
 学習内容:
 
-* [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用して Web アプリと MySQL データベースを作成する方法。[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
+* [Azure ポータル](https://portal.azure.com)を使用して Web アプリと MySQL データベースを作成する方法。[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
 * Git を使用して Azure にアプリケーションを発行および再発行する方法。
 
 このチュートリアルでは、登録用の単純な Web アプリを PHP で作成します。アプリケーションは、Web Apps でホストされます。完成したアプリケーションのスクリーンショットは次のようになります。
@@ -153,7 +153,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 		<?php
 			// DB connection info
 			//TODO: Update the values for $host, $user, $pwd, and $db
-			//using the values you retrieved earlier from the portal.
+			//using the values you retrieved earlier from the Azure Portal.
 			$host = "value of Data Source";
 			$user = "value of User Id";
 			$pwd = "value of Password";
@@ -220,9 +220,9 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Web Apps に発行できます。ローカルの Git リポジトリを初期化して、アプリケーションを発行します。
 
-> [AZURE.NOTE]これらは、上の「Web アプリの作成と Git 発行の設定」セクションの最後でポータルに示された手順と同じです。
+> [AZURE.NOTE]これらは、上の「Web アプリの作成と Git 発行の設定」セクションの最後で Azure ポータルに示された手順と同じです。
 
-1. (省略可能) Git リモート リポジトリの URL を忘れた場合やスペルを誤った場合は、ポータルの Web アプリ プロパティに移動します。
+1. (省略可能) Git リモート リポジトリの URL を忘れた場合やスペルを誤った場合は、Azure ポータルの Web アプリ プロパティに移動します。
 
 1. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
@@ -268,8 +268,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 詳細については、[PHP デベロッパー センター](/develop/php/)を参照してください。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 [install-php]: http://www.php.net/manual/en/install.php
 [install-SQLExpress]: http://www.microsoft.com/download/details.aspx?id=29062
@@ -303,4 +302,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="AlwaysOn 可用性グループの ILB リスナーを構成する | Microsoft Azure"
-	description="このチュートリアルでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、内部ロード バランサー (ILB) を使用して Azure で AlwaysOn 可用性グループ リスナーを作成します。"
+	description="このチュートリアルでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、内部 Load Balancer (ILB) を使用して Azure で AlwaysOn 可用性グループ リスナーを作成します。"
 	services="virtual-machines"
 	documentationCenter="na"
 	authors="rothja"
@@ -24,7 +24,7 @@
 
 ## 概要
 
-このトピックでは、**内部ロード バランサー (ILB)** を使用して AlwaysOn 可用性グループのリスナーを構成する方法について説明します。
+このトピックでは、**内部 Load Balancer (ILB)** を使用して AlwaysOn 可用性グループのリスナーを構成する方法について説明します。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
  
@@ -44,7 +44,7 @@ ILB を使用した Azure の可用性グループ リスナーに関する次�
 
 [AZURE.INCLUDE [ag-listener-accessibility](../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-この記事では、**内部ロード バランサー (ILB)** を使用するリスナーの作成を中心に説明します。パブリック/外部リスナーが必要な場合は、この記事の、[外部リスナー](virtual-machines-sql-server-configure-public-alwayson-availability-group-listener.md)を設定するための手順を説明するバージョンを参照してください。
+この記事では、**内部 Load Balancer (ILB)** を使用するリスナーの作成を中心に説明します。パブリック/外部リスナーが必要な場合は、この記事の、[外部リスナー](virtual-machines-sql-server-configure-public-alwayson-availability-group-listener.md)を設定するための手順を説明するバージョンを参照してください。
 
 ## Direct Server Return を使用して負荷分散 VM エンドポイントを作成する
 
@@ -84,7 +84,7 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 1. 変数の設定後、スクリプトを、テキスト エディターからそれを実行する Azure PowerShell セッションにコピーします。プロンプトにまだ >> が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーを再度押します。
 
->[AZURE.NOTE]現時点において、Azure ポータルでは内部ロード バランサーをサポートしていないため、Azure ポータルには ILB とエンドポイントのどちらも表示されません。ただし、エンドポイントで Load Balancer が実行されている場合は、**Get-AzureEndpoint** によって内部 IP アドレスが返されます。それ以外の場合、Null が返されます。
+>[AZURE.NOTE]現時点において、Azure クラシック ポータルでは内部 Load Balancer をサポートしていないため、Azure クラシック ポータルには ILB とエンドポイントのどちらも表示されません。ただし、エンドポイントで Load Balancer が実行されている場合は、**Get-AzureEndpoint** によって内部 IP アドレスが返されます。それ以外の場合、Null が返されます。
 
 ## KB2854082 がインストールされていることを確認する (必要に応じて)
 
@@ -98,7 +98,7 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 [AZURE.INCLUDE [ファイアウォール](../../includes/virtual-machines-ag-listener-create-listener.md)]
 
-1. ILB の場合、先ほど作成した内部ロード バランサー (ILB) の IP アドレスを使用する必要があります。この IP アドレスを取得するには、PowerShell で次のスクリプトを使用します。
+1. ILB の場合、先ほど作成した内部 Load Balancer (ILB) の IP アドレスを使用する必要があります。この IP アドレスを取得するには、PowerShell で次のスクリプトを使用します。
 
 		# Define variables
 		$ServiceName="<MyServiceName>" # the name of the cloud service that contains the AG nodes
@@ -138,4 +138,4 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

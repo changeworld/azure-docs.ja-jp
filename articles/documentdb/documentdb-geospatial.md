@@ -177,7 +177,7 @@ DocumentDB は、以下の Open Geospatial Consortium (OGC) 組み込み関数�
       "id": "WakefieldFamily"
     }]
 
-インデックス作成ポリシーに空間インデックスを含めた場合、"距離クエリ" はインデックスを使って効率的に実行されます。空間インデックスの詳細については、以降のセクションを参照してください。指定されたパスに空間インデックスがない場合でも、`x-ms-documentdb-query-enable-scan` 要求ヘッダーの値を "true" に設定して指定することによって空間クエリを実行することはできます。その場合 .NET では、省略可能な引数 **FeedOptions** を、[EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) を true に設定してクエリに渡してください。
+インデックス作成ポリシーに空間インデックスを含めた場合、"距離クエリ" はインデックスを使って効率的に実行されます。空間インデックスの詳細については、以降のセクションを参照してください。指定されたパスに空間インデックスがない場合でも、`x-ms-documentdb-query-enable-scan` 要求ヘッダーの値を "true" に設定して指定することによって空間クエリを実行することはできます。その場合、.NET では、省略可能な引数 **FeedOptions** を、[EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) を true に設定してクエリに渡してください。
 
 ポイントがポリゴン内に存在するかどうかは、ST\_WITHIN を使用してチェックできます。通常ポリゴンは、郵便番号、都道府県の境界など、自然な形状の範囲を表す目的で使用されます。インデックス作成ポリシーに空間インデックスを含めた場合、"範囲内" 検索はインデックスを使って効率的に実行されます。
 
@@ -276,7 +276,7 @@ DocumentDB .NET SDK には、LINQ 式の中で使用するための、`Distance(
 
 /* (すべてのパス) の空間インデックスを含んだインデックス作成ポリシーを指定した場合、コレクション内で検出されたすべてのポイントがインデックス化され、効率的な空間クエリ (ST\_WITHIN および ST\_DISTANCE) の実行が可能となります。空間インデックスには精度値がありません。必ず既定の精度値を使用してください。
 
-以下の JSON スニペットは、空間インデックスを有効にしたインデックス作成ポリシーを示したものです。ドキュメント内に見つかったすべての GeoJSON ポイントのインデックスが作成され、空間クエリに使用されます。Azure プレビュー ポータルを使用してインデックス作成ポリシーを変更する場合、インデックス作成ポリシーで以下の JSON を指定するとコレクションの空間インデックスを有効にすることができます。
+以下の JSON スニペットは、空間インデックスを有効にしたインデックス作成ポリシーを示したものです。ドキュメント内に見つかったすべての GeoJSON ポイントのインデックスが作成され、空間クエリに使用されます。Azure ポータルを使用してインデックス作成ポリシーを変更する場合、インデックス作成ポリシーで以下の JSON を指定するとコレクションの空間インデックスを有効にすることができます。
 
 **インデックス作成ポリシーの JSON でコレクションの空間インデックスを有効にする**
 
@@ -355,4 +355,4 @@ DocumentDB の地理空間機能の基本的な使い方を身に付けたら、
 - [DocumentDB クエリ](documentdb-sql-query.md)についてさらに理解を深める
 - [DocumentDB のインデックス作成ポリシー](documentdb-indexing-policies.md)についてさらに理解を深める
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

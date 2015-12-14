@@ -68,7 +68,7 @@ Azure モジュールは、Service Bus に接続するために必要な情報�
 
 Azure Cloud Service の構成ファイルで環境変数を設定する例については、[Storage を使用する Node.js Cloud Service に関するトピック][]を参照してください。
 
-Azure Web サイトの Azure ポータルで環境変数を設定する例については、[Storage を使用する Node.js Web アプリケーション][]に関するトピックを参照してください。
+Azure Web サイトの [Azure クラシック ポータル][]で環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション][]に関するトピックを参照してください。
 
 ## キューを作成する
 
@@ -192,14 +192,14 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 -   [Node.js デベロッパー センター](/develop/nodejs/)
 
   [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
-  [Azure portal]: http://manage.windowsazure.com
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
   
   [Node.js クラウド サービス]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
   [キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
   [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
   [Storage を使用する Node.js Cloud Service に関するトピック]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
-  [Storage を使用する Node.js Web アプリケーション]: ../storage/storage-nodejs-how-to-use-table-storage.md
+  [ストレージを使用する Node.js Web アプリケーション]: ../storage/storage-nodejs-how-to-use-table-storage.md
   [Azure キューと Service Bus キュー]: service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

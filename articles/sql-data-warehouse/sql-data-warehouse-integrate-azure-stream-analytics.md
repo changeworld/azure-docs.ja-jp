@@ -53,7 +53,7 @@ SQL Database を選択し、[次へ] をクリックします。
 	- SQL Data Warehouse データベースが Stream Analytics ジョブと同じサブスクリプション内に存在する場合は、[現在のサブスクリプションの SQL データベースを使用] を選択します。
 	- データベースが別のサブスクリプション内にある場合は、[別のサブスクリプションの SQL データベースを使用] を選択します。
 - *データベース*: 宛先データベースの名前を指定します。
-- *サーバー名*: 指定したばかりのデータベース用のサーバー名を指定します。Azure ポータルを使用すると、これを見つけることができます。
+- *サーバー名*: 指定したばかりのデータベース用のサーバー名を指定します。これは、Azure クラシック ポータルを使用して見つけることができます。
 
 ![][server-name]
 
@@ -96,4 +96,4 @@ SQL Database を選択し、[次へ] をクリックします。
 <!--Other Web references-->
 [Azure Stream Analytics documentation]: http://azure.microsoft.com/documentation/services/stream-analytics/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

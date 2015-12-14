@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Azure プレビュー ポータルを使用して Azure SQL Database の geo レプリケーションを構成する | Microsoft Azure" 
-    description="Azure プレビュー ポータルを使用して Azure SQL Database の geo レプリケーションを構成する" 
+    pageTitle="Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する | Microsoft Azure" 
+    description="Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する" 
     services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
@@ -13,21 +13,21 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management" 
-    ms.date="11/10/2015"
+    ms.date="12/01/2015"
     ms.author="sstein"/>
 
-# Azure プレビュー ポータルを使用して Azure SQL Database の geo レプリケーションを構成する
+# Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する
 
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](sql-database-geo-replication-portal.md)
+- [Azure portal](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
 - [Transact-SQL](sql-database-geo-replication-transact-sql.md)
 
 
-この記事では、[Azure プレビュー ポータル](https://portal.azure.com)を使用して SQL Database の geo レプリケーションを構成する方法を示します。
+この記事では、[Azure ポータル](https://portal.azure.com)を使用して SQL Database の geo レプリケーションを構成する方法を示します。
 
-geo レプリケーションでは、さまざまなデータ センターの場所 (リージョン) に最大 4 つのレプリカ (セカンダリ) データベースを作成することができます。セカンダリ データベースは、データ センターで障害が発生した場合またはプライマリ データベースに接続できない場合に使用できます。
+geo レプリケーションでは、さまざまなデータ センターの場所 (リージョン) に最大 4 つのレプリカ (セカンダリ) データベースを作成することができます。セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合に使用できます。
 
 geo レプリケーションは、Standard データベースと Premium データベースにのみ使用できます。
 
@@ -56,7 +56,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 ### セカンダリ データベースの追加
 
-1. [Azure プレビュー ポータル](https://portal.azure.com) で、geo レプリケーションについてセットアップするデータベースを参照します。
+1. [Azure ポータル](https://portal.azure.com) で、geo レプリケーションについてセットアップするデータベースを参照します。
 2. [SQL Database] ブレードで、**[すべての設定]**、**[geo レプリケーション]** の順に選択します。
 3. セカンダリ データベースを作成するリージョンを選択します。セカンダリ データベース用のリージョンとして、Premium データベースでは任意のリージョンを使用できますが、Standard データベースでは推奨リージョンを使用する必要があります。
 
@@ -85,11 +85,11 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 
 
-## セカンダリ データベースの削除
+## セカンダリ データベースを削除する
 
 この操作では、セカンダリ データベースへのレプリケーションを完全に終了し、セカンダリ データベースのロールを通常の読み取り/書き込みデータベースに変更します。セカンダリ データベースへの接続が切断された場合、コマンドは成功しますが、接続が復元するまでセカンダリ データベースは読み取り/書き込み状態になりません。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com) で、geo レプリケーション パートナーシップのプライマリ データベースを参照します。
+1. [Azure ポータル](https://portal.azure.com)で、geo レプリケーション パートナーシップのプライマリ データベースを参照します。
 2. [SQL Database] ブレードで、**[すべての設定]**、**[geo レプリケーション]** の順に選択します。
 3. **[セカンダリ]** ボックスの一覧で、geo レプリケーション パートナーシップから削除するデータベースを選択します。
 4. **[レプリケーションを停止する]** をクリックします。
@@ -108,7 +108,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 セカンダリ データベースは、プライマリ データベースとして使用するように切り替えることができます。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com) で、geo レプリケーション パートナーシップのプライマリ データベースを参照します。
+1. [Azure ポータル](https://portal.azure.com)で、geo レプリケーション パートナーシップのプライマリ データベースを参照します。
 2. [SQL Database] ブレードで、**[すべての設定]**、**[geo レプリケーション]** の順に選択します。
 3. **[セカンダリ]** ボックスの一覧で、新しいプライマリ データベースとして使用するデータベースを選択します。
 4. **[フェールオーバー]** をクリックします。
@@ -127,14 +127,14 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 ## 次のステップ
 
-- [geo レプリケーションを使用してビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [災害復旧訓練](sql-database-disaster-recovery-drills.md)
+- [geo レプリケーションを使用したビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [障害復旧訓練](sql-database-disaster-recovery-drills.md)
 
 
 ## その他のリソース
 
 - [新しい geo レプリケーション機能に関するスポットライト](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication)
-- [geo レプリケーションを使用してビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [geo レプリケーションを使用したビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
@@ -151,4 +151,4 @@ geo レプリケーションを構成するには、次のものが必要です�
 [9]: ./media/sql-database-geo-replication-portal/seeding-complete.png
 [10]: ./media/sql-database-geo-replication-portal/failover.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

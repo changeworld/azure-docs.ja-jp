@@ -92,7 +92,7 @@ HTTPS はすべてのサービス要求に必要です。**データ ソース�
 - `Content-Type`: 必須。これを `application/json` に設定します
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**データ ソースの作成**要求には (クエリ キーではなく) 管理者キーに設定された `api-key` ヘッダーを含めます。 
  
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` の両方を [Microsoft Azure 管理ポータル](https://portal.azure.com/)のサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、[Azure クラシック ポータル](https://portal.azure.com/)のサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 <a name="CreateDataSourceRequestSyntax"></a> **要求本文の構文**
 
@@ -120,8 +120,8 @@ HTTPS はすべてのサービス要求に必要です。**データ ソース�
 	- `documentdb` - Azure DocumentDB
 - `credentials`:
 	- 必須の `connectionString` プロパティはデータ ソースの接続文字列を指定します。接続文字列の形式はデータ ソースの種類によって異なります。 
-		- Azure SQL の場合、通常の SQL Server 接続文字列です。Microsoft Azure 管理ポータルを利用して接続文字列を取得する場合、`ADO.NET connection string` オプションを使用します。
-		- DocumentDB の場合、接続文字列は `"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"` の形式にする必要があります。すべての値が必須です。値は [Microsoft Azure 管理ポータル](https://portal.azure.com/)にあります。   
+		- Azure SQL の場合、通常の SQL Server 接続文字列です。Azure クラシック ポータルを利用して接続文字列を取得する場合、`ADO.NET connection string` オプションを使用します。
+		- DocumentDB の場合、接続文字列は `"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"` の形式にする必要があります。すべての値が必須です。値は [Azure クラシック ポータル](https://portal.azure.com/)にあります。   
 		
 - `container`:
 	- 必須の `name` プロパティにより、インデックスが作成されるテーブルまたはビュー (Azure SQL データ ソースの場合) あるいはコレクション (DocumentDB データ ソースの場合) が指定されます。 
@@ -776,4 +776,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

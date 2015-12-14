@@ -1,22 +1,27 @@
-<properties 
-	pageTitle="Mobile Services でのオフライン データの使用 (Xamarin iOS) | Microsoft Azure" 
-	description="Azure Mobile Services を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。" 
-	documentationCenter="xamarin" 
-	authors="lindydonna" 
-	editor="wesmc" 
-	manager="dwrede" 
+<properties
+	pageTitle="Mobile Services でのオフライン データの使用 (Xamarin iOS) | Microsoft Azure"
+	description="Azure Mobile Services を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
+	documentationCenter="xamarin"
+	authors="lindydonna"
+	editor="wesmc"
+	manager="dwrede"
 	services="mobile-services"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
 	ms.date="11/02/2015"
 	ms.author="donnam"/>
 
 # Mobile Services でのオフライン データの同期の使用
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-offline](../../includes/mobile-services-selector-offline.md)]
 
@@ -42,7 +47,7 @@
 このチュートリアルには、次のものが必要です。
 
 * [Xamarin 拡張機能]付きの Visual Studio **または** OS X 用 [Xamarin Studio]
-* XCode 4.5 および iOS 6.0 (またはそれ以降のバージョン) 
+* XCode 4.5 および iOS 6.0 (またはそれ以降のバージョン)
 * チュートリアル「[Mobile Services の使用]」を完了していること
 
 ## <a name="review-offline"></a>Mobile Services 同期コードのレビュー
@@ -145,9 +150,9 @@
 
 2. アプリケーションを再構築して実行します。アプリケーションは現在モバイル サービスに接続されていますが、オフラインの状況と同じ表示になっていることに注意してください。これは、このアプリケーションが、ローカル ストアを示す `IMobileServiceSyncTable` を常に使用するためです。
 
-3. Microsoft Azure の管理ポータルにログインし、モバイル サービスに対応するデータベースを参照します。開発中のサービスが JavaScript バックエンドを使用している場合は、モバイル サービスの [**データ**] タブからデータを参照できます。
+3. [Azure クラシック ポータル]にログインし、モバイル サービスに対応するデータベースを参照します。開発中のサービスが JavaScript バックエンドを使用している場合は、モバイル サービスの [**データ**] タブからデータを参照できます。
 
-    モバイル サービスの .NET バックエンドを使用している場合は、Visual Studio で、[**サーバー エクスプローラー**]、[**Azure**]、[**SQL Databases**] の順に移動します。データベースを右クリックし、[**SQL Server オブジェクト エクスプローラーで開く**] を選択します。
+    モバイル サービスの .NET バックエンドを使用している場合は、Visual Studio で、[**サーバー エクスプローラー**]、[**Azure**]、[**SQL データベース**] の順に移動します。データベースを右クリックし、[**SQL Server オブジェクト エクスプローラーで開く**] を選択します。
 
     データベースとローカル ストアの間でデータがまだ同期されて*いない*ことを確認します。
 
@@ -181,6 +186,6 @@
 
 [Xamarin Studio]: http://xamarin.com/download
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
- 
+[Azure クラシック ポータル]: https://manage.windowsazure.com
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

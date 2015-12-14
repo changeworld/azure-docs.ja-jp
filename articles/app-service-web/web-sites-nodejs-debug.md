@@ -46,7 +46,7 @@ stdout および stderr ストリームのログ記録を有効にするには�
 
 > [AZURE.NOTE]Azure コマンド ライン ツールまたは Azure PowerShell コマンドレットを使用して Web アプリを作成した場合は、既定の **IISNode.yml** ファイルが自動的に作成されます。
 
-Web アプリを再起動するには、[Azure プレビュー ポータル](https://portal.azure.com)で Web アプリを選択し、**[再起動]** ボタンをクリックします。
+Web アプリを再起動するには、[Azure ポータル](https://portal.azure.com)で Web アプリを選択し、**[再起動]** ボタンをクリックします。
 
 ![再起動ボタン][restart-button]
 
@@ -67,7 +67,7 @@ Web アプリを再起動するには、[Azure プレビュー ポータル](htt
 
 ###FTP
 
-FTP を通じて診断情報にアクセスするには、[Azure プレビュー ポータル](https://portal.azure.com)にアクセスし、Web アプリを選択して、**[ダッシュボード]** を選択します。**[クイック リンク]** セクションの **[FTP 診断ログ]** および **[FTPS 診断ログ]** リンクから、FTP プロトコルを使用してログにアクセスできます。
+FTP を通じて診断情報にアクセスするには、[Azure ポータル](https://portal.azure.com)にアクセスし、Web アプリを選択して、**[ダッシュボード]** を選択します。**[クイック リンク]** セクションの **[FTP 診断ログ]** および **[FTPS 診断ログ]** リンクから、FTP プロトコルを使用してログにアクセスできます。
 
 > [AZURE.NOTE]FTP またはデプロイのためにユーザー名とパスワードを構成したことがない場合は、**[クイック スタート]** 管理ページで **[デプロイ資格情報を設定する]** を選択して構成できます。
 
@@ -113,10 +113,9 @@ Azure でのモジュールの操作については、「[Azure アプリケー�
 詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 [IISNode]: https://github.com/tjanczuk/iisnode
 [IISNode Readme]: https://github.com/tjanczuk/iisnode#readme
@@ -127,4 +126,4 @@ Azure でのモジュールの操作については、「[Azure アプリケー�
 [restart-button]: ./media/web-sites-nodejs-debug/restartbutton.png
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

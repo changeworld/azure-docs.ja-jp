@@ -22,8 +22,8 @@
 # Azure でアプリケーションの SSL を構成する
 
 > [AZURE.SELECTOR]
-- [Azure Portal](cloud-services-configure-ssl-certificate.md)
-- [Azure Preview Portal](cloud-services-configure-ssl-certificate-portal.md)
+- [Azure classic portal](cloud-services-configure-ssl-certificate.md)
+- [Azure portal](cloud-services-configure-ssl-certificate-portal.md)
 
 Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
@@ -114,9 +114,9 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 ## ステップ 3: 証明書のアップロード
 
-デプロイ パッケージがこの証明書を使用するように更新され、HTTPS エンドポイントが追加されました。これで、管理ポータルを使用して Azure にパッケージと証明書をアップロードできるようになりました。
+デプロイ パッケージがこの証明書を使用するように更新され、HTTPS エンドポイントが追加されました。これで、Azure クラシック ポータルを使用して Azure にパッケージと証明書をアップロードできるようになりました。
 
-1. [Microsoft Azure 管理ポータル][]にログインします。 
+1. [Azure クラシック ポータル][]にログインします。 
 2. 左側のナビゲーション ウィンドウで、**[Cloud Services]** をクリックします。
 3. 目的のクラウド サービスをクリックします。
 4. **[証明書]** タブをクリックします。
@@ -133,7 +133,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 Azure でデプロイを実行できるようになったため、HTTPS を使用して接続できます。
 
-1.  管理ポータルでデプロイを選択し、**[サイトの URL]** の下にあるリンクをクリックします。
+1.  Azure クラシック ポータルでデプロイを選択し、**[サイトの URL]** の下にあるリンクをクリックします。
 
     ![サイトの URL の確認][2]
 
@@ -143,7 +143,7 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
 
     ![SSL のサンプル Web サイト][3]
 
-運用環境のデプロイではなくステージング環境のデプロイに SSL を使用する場合は、最初に、ステージング環境のデプロイに使用されている URL を確認する必要があります。証明書または証明書情報を含めずに、ステージング環境にクラウド サービスをデプロイしてください。デプロイすると、管理ポータルの **[サイトの URL]** に表示される、GUID ベースの URL を確認できます。GUID ベースの URL (**32818777-6e77-4ced-a8fc-57609d404462.cloudapp.net** など) と同じ共通名 (CN) で証明書を作成し、その証明書をステージングされたクラウド サービスに管理ポータルを使用して追加します。CSDEF ファイルと CSCFG ファイルに証明書情報を追加し、アプリケーションの再パッケージ化を実行して、新しいパッケージと CSCFG ファイルを使用するようステージング デプロイを更新します。
+運用環境のデプロイではなくステージング環境のデプロイに SSL を使用する場合は、最初に、ステージング環境のデプロイに使用されている URL を確認する必要があります。証明書または証明書情報を含めずに、ステージング環境にクラウド サービスをデプロイしてください。展開すると、Azure クラシック ポータルの **[サイトの URL]** に表示される、GUID ベースの URL を確認できます。GUID ベースの URL (**32818777-6e77-4ced-a8fc-57609d404462.cloudapp.net** など) と同じ共通名 (CN) で証明書を作成し、その証明書をステージングされたクラウド サービスに Azure クラシック ポータルを使用して追加します。CSDEF ファイルと CSCFG ファイルに証明書情報を追加し、アプリケーションの再パッケージ化を実行して、新しいパッケージと CSCFG ファイルを使用するようステージング デプロイを更新します。
 
 ## 次のステップ
 
@@ -153,11 +153,11 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
 * [クラウド サービスを管理する](cloud-services-how-to-manage.md)
 
 
-  [Microsoft Azure 管理ポータル]: http://manage.windowsazure.com
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
   [0]: ./media/cloud-services-configure-ssl-certificate/CreateCloudService.png
   [1]: ./media/cloud-services-configure-ssl-certificate/AddCertificate.png
   [2]: ./media/cloud-services-configure-ssl-certificate/CopyURL.png
   [3]: ./media/cloud-services-configure-ssl-certificate/SSLCloudService.png
   [4]: ./media/cloud-services-configure-ssl-certificate/AddCertificateComplete.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

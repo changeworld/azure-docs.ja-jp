@@ -375,14 +375,12 @@ Azure キュー ストレージ クライアントをインスタンス化する
 
 これで、Azure キュー ストレージの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先をご覧ください。
 
-- MSDN リファレンス: [Azure Storage](http://msdn.microsoft.com/library/azure/gg433040.aspx)
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
 詳細については、[PHP デベロッパー センター](/develop/php/)も参照してください。
 
 [download]: http://go.microsoft.com/fwlink/?LinkID=252473
 [require_once]: http://www.php.net/manual/en/function.require-once.php
-[Azure Management Portal]: http://manage.windowsazure.com/
-[Storing and Accessing Data in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
+[Azure Portal]: portal.azure.com
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

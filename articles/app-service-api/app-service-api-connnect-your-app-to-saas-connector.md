@@ -18,6 +18,8 @@
 
 # Azure App Service での SaaS コネクタ API アプリのデプロイおよび構成
 
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
+
 ## 概要
 
 このチュートリアルでは、モバイル アプリなどからプログラムを使用して呼び出すために、[Azure App Service](/documentation/services/app-service/) の[サービスとしてのソフトウェア (SaaS) コネクタ](../app-service-logic-what-are-bizTalk-api-apps.md)をインストール、構成、テストする方法について説明します。SaaS コネクタは、Office 365、Salesforce、Facebook、Dropbox などの SaaS プラットフォームとの対話を簡素化する [API アプリ](app-service-api-apps-why-best-platform.md)です。事前にパッケージ化されたコネクタではなく .NET API のカスタム アプリを作成する場合は、[ASP.NET API アプリからの SaaS プラットフォームへの接続](app-service-api-dotnet-connect-to-saas.md)に関するページを参照してください。
@@ -236,4 +238,4 @@ SaaS コネクタをインストール、構成、テストする方法を説明
 [Azure ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

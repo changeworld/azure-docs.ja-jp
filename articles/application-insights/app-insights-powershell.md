@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/13/2015" 
+	ms.date="11/23/2015" 
 	ms.author="awills"/>
  
 # PowerShell を使用した Application Insights リソースの作成
@@ -76,7 +76,7 @@
 
 2. [Azure リソース マネージャー](https://resources.azure.com/)を開きます。サブスクリプション、resourceGroups、コンポーネントを通り抜けて、アプリ リソースまで下方向に移動します。
 
-    ![](./media/app-insights-create-powershell/01.png)
+    ![](./media/app-insights-powershell/01.png)
 
     *コンポーネント* はアプリケーションを表示するための基本的な Application Insights リソースです。関連するアラート ルールおよび可用性 Web テストに対して別々 のリソースがあります。
 
@@ -288,4 +288,4 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 
 ```
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

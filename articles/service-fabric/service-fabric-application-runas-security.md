@@ -290,4 +290,4 @@ https エンドポイントの場合は、**EndpointBindingPolicy** のクライ
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

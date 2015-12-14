@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric アプリケーションのデプロイ"
+   pageTitle="Service Fabric アプリケーションのデプロイ | Microsoft Azure"
    description="Service Fabric のアプリケーションをデプロイおよび削除する方法"
    services="service-fabric"
    documentationCenter=".net"
@@ -18,19 +18,19 @@
 
 # アプリケーションをデプロイする
 
-[アプリケーションの種類をパッケージ化][10]したら、Service Fabric クラスターにデプロイできる状態になっています。デプロイには、次の 3 つの手順が含まれます。
+[アプリケーションの種類をパッケージ化][10]した後は、Azure Service Fabric クラスターにデプロイできる状態になっています。デプロイには、次の 3 つの手順が含まれます。
 
 1. アプリケーション パッケージのアップロード
 2. アプリケーションの種類の登録
 3. アプリケーション インスタンスの作成
 
->[AZURE.NOTE]Visual Studio を使用して、ローカルの開発クラスターでアプリケーションのデプロイとデバッグを行う場合、アプリケーション プロジェクトの Scripts フォルダーにある PowerShell スクリプトを起動することで、以下に示すすべての手順が自動的に処理されます。この記事では、これらのスクリプトが実行する内容の背景を説明し、Visual Studio の外部で同じ操作を実行できるようにします。
+>[AZURE.NOTE]Visual Studio を使用してローカルの開発クラスターでアプリケーションのデプロイとデバッグを行う場合、以下のすべての手順は、アプリケーション プロジェクトのスクリプト フォルダーにある PowerShell スクリプトによって自動的に処理されます。この記事では、これらのスクリプトが実行する内容の背景を説明し、Visual Studio の外部で同じ操作を実行できるようにします。
 
 ## アプリケーション パッケージをアップロードする
 
-アプリケーション パッケージをアップロードすると、そのパッケージは内部 Service Fabric コンポーネントがアクセスできる場所にアップロードされ、PowerShell 経由で実行できるようになります。この記事では、PowerShell コマンドを実行する前に、まず必ず **Connect-ServiceFabricCluster** を使用して Service Fabric クラスターに接続することから始めます。
+アプリケーション パッケージをアップロードすると、そのパッケージは内部 Service Fabric コンポーネントがアクセスできる場所に保存されます。PowerShell を使用してアップロードを実行できます。この記事の PowerShell コマンドを実行する前に、必ず最初に **Connect-ServiceFabricCluster** で Service Fabric クラスターに接続してください。
 
-必要なアプリケーション マニフェスト、サービス マニフェスト、およびコード/構成/データ パッケージを含む *MyApplicationType* という名前のフォルダーがあるものとします。次いで、**Copy-ServiceFabricApplicationPackage** コマンドでパッケージをアップロードします。次に例を示します。
+必要なアプリケーション マニフェストとサービス マニフェストのほか、コード パッケージ、構成パッケージ、データ パッケージが含まれている *MyApplicationType* という名前のフォルダーがあるとします。**Copy-ServiceFabricApplicationPackage** コマンドは、パッケージをアップロードします。次に例を示します。
 
 ~~~
 PS D:\temp> dir
@@ -82,13 +82,13 @@ DefaultParameters      : {}
 PS D:\temp>
 ~~~
 
-**Register-ServiceFabricApplicationType** コマンドは、アプリケーションのパッケージがシステムによって正常にコピーされた場合にのみ戻ります。この所要時間は、アプリケーション パッケージの内容によって異なります。**- TimeoutSec** パラメーターは、必要に応じてより長いタイムアウトを指定する場合に使用できます (既定のタイムアウトは 60 秒)。
+**Register-ServiceFabricApplicationType** コマンドは、アプリケーション パッケージがシステムによって正常にコピーされた場合にのみ戻ります。この所要時間は、アプリケーション パッケージの内容によって異なります。**-TimeoutSec** パラメーターは、必要に応じてタイムアウトを長く設定するために使用できます(既定のタイムアウトは 60 秒です)。
 
-**Get ServiceFabricApplicationType** コマンドは、正常に登録されているアプリケーションの種類のすべてのバージョンを一覧表示します。
+**Get-ServiceFabricApplicationType** コマンドは、正常に登録されたアプリケーションの種類の全バージョンを一覧表示します。
 
 ## アプリケーションを作成する
 
-**New-ServiceFabricApplication** コマンドを使用して正常に登録したアプリケーションの種類のバージョンを使用して、アプリケーションをインスタンス化できます。各アプリケーションの名前は、*fabric:* スキームで開始され、各アプリケーション インスタンスに対して一意でなければなりません。ターゲット アプリケーションの種類のアプリケーション マニフェストで既定のサービスが定義されている場合、それらのサービスも同時に作成されます。
+**New-ServiceFabricApplication** コマンドを使用して、正常に登録されたアプリケーションの種類のバージョンでアプリケーションをインスタンス化できます。各アプリケーションの名前は、*fabric:* スキームで開始され、各アプリケーション インスタンスに対して一意でなければなりません。ターゲット アプリケーションの種類のアプリケーション マニフェストで既定のサービスが定義されている場合、それらのサービスも同時に作成されます。
 
 ~~~
 PS D:\temp> New-ServiceFabricApplication fabric:/MyApp MyApplicationType AppManifestVersion1
@@ -128,7 +128,7 @@ PS D:\temp>
 
 ## アプリケーションの削除
 
-アプリケーション インスタンスが不要になったときは、**Remove-ServiceFabricApplication** コマンドを使用して完全に削除できます。これによって、アプリケーションに属するすべてのサービスも自動的に削除され、すべてのサービス状態が完全に削除されます。この操作を元に戻すことはできず、アプリケーションの状態を復元することはできません。
+アプリケーション インスタンスが不要になった場合、**Remove-ServiceFabricApplication** コマンドを使用して完全に削除できます。このコマンドを使用すると、アプリケーションに属するすべてのサービスも自動的に削除されます。その結果、すべてのサービスの状態が完全に削除されます。この操作は元に戻せません。また、アプリケーションの状態を復元できません。
 
 ~~~
 PS D:\temp> Remove-ServiceFabricApplication fabric:/MyApp
@@ -142,7 +142,7 @@ PS D:\temp> Get-ServiceFabricApplication
 PS D:\temp>
 ~~~
 
-アプリケーションの種類の特定のバージョンが不要になったときは、**Unregister-ServiceFabricApplicationType** コマンドを使用して登録解除する必要があります。使用していない種類の登録を解除することで、イメージ ストアのその型のアプリケーション パッケージのコンテンツによって使用されるストレージ領域を解放します。あるアプリケーションの種類でインスタンス化されたアプリケーションがない場合、またはそれを参照している保留中のアプリケーションのアップグレードがない場合、そのアプリケーションの種類を登録解除できます。
+アプリケーションの種類の特定のバージョンが不要になった場合は、**Unregister-ServiceFabricApplicationType** コマンドを使用して登録を解除する必要があります。未使用の種類の登録を解除すると、イメージ ストアでその種類のアプリケーション パッケージのコンテンツによって使用されている記憶域が解放されます。あるアプリケーションの種類に対してインスタンス化されたアプリケーションがなく、それを参照している保留中のアプリケーションのアップグレードもない場合に、そのアプリケーションの種類の登録を解除できます。
 
 ~~~
 PS D:\temp> Get-ServiceFabricApplicationType
@@ -185,7 +185,7 @@ TODO [Upgrade applications][11]
 
 ### Copy-ServiceFabricApplicationPackage がImageStoreConnectionString を求める
 
-Service Fabric SDK 環境には、適切な既定値を事前に設定しておく必要があります。ただし、必要に応じて、すべてのコマンドの ImageStoreConnectionString を Service Fabric のクラスターによって使用されている値と一致させます。この値は、**Get-ServiceFabricClusterManifest** コマンドを使用して取得されるクラスター マニフェストで見つかります。
+Service Fabric SDK 環境には、適切な既定値を事前に設定しておく必要があります。ただし、すべてのコマンドの ImageStoreConnectionString が、Service Fabric クラスターによって使用されている値に一致していなければならない場合もあります。この値は **Get-ServiceFabricClusterManifest** コマンドで取得したクラスター マニフェストで確認できます。
 
 ~~~
 PS D:\temp> Copy-ServiceFabricApplicationPackage .\MyApplicationType
@@ -224,6 +224,5 @@ PS D:\temp>
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

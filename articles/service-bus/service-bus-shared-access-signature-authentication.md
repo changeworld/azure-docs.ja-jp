@@ -94,7 +94,7 @@ SAS トークン内の [KeyName](https://msdn.microsoft.com/library/azure/micros
 
 ## 名前空間の共有アクセス承認規則へのアクセス
 
-Service Bus 名前空間のルートに対する操作では、証明書の認証が必要です。Azure サブスクリプションの管理証明書をアップロードする必要があります。管理証明書をアップロードするには、Azure ポータルの左側のウィンドウにある **[設定]** をクリックします。Azure の管理証明書の詳細については、[Azure の管理証明書の作成](https://msdn.microsoft.com/library/azure/gg551722.aspx)に関するページを参照してください。
+Service Bus 名前空間のルートに対する操作では、証明書の認証が必要です。Azure サブスクリプションの管理証明書をアップロードする必要があります。管理証明書をアップロードするには、[Azure クラシック ポータル][]の左側のウィンドウにある **[設定]** をクリックします。Azure の管理証明書の詳細については、[Azure の管理証明書の作成](https://msdn.microsoft.com/library/azure/gg551722.aspx)に関するページを参照してください。
 
 Service Bus 名前空間の共有アクセス承認規則にアクセスするためのエンドポイントは次のようになります。
 
@@ -256,4 +256,6 @@ Service Bus における SAS の概要については、「[Shared Access Signat
 
 Service Bus 認証の背景の詳細については、「[Service Bus の認証と承認](service-bus-authentication-and-authorization.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+[Azure クラシック ポータル]: http://manage.windowsazure.com
+
+<!---HONumber=AcomDC_1203_2015-->

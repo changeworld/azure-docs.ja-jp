@@ -44,7 +44,7 @@ Azure CLI を使用して Azure リソース マネージャーを操作する�
 
 Microsoft Azure の認証の詳細については、「[Azure CLI から Azure サブスクリプションへの接続する](xplat-cli-connect.md)」をご覧ください。
 
->[AZURE.NOTE]Azure Active Directory によって管理される職場か学校のアカウントを使用しするとき、Azure のロールベースのアクセス制御 (RBAC) を使用して、Azure リソースへのアクセスと使用状況を管理することもできます。詳細については、「[リソースへのアクセスの管理と監査](resource-group-rbac.md)」をご覧ください。
+>[AZURE.NOTE]Azure Active Directory によって管理される職場か学校のアカウントを使用しするとき、Azure のロールベースの Access Control (RBAC) を使用して、Azure リソースへのアクセスと使用状況を管理することもできます。詳細については、「[リソースへのアクセスの管理と監査](resource-group-rbac.md)」をご覧ください。
 
 ## Azure リソース マネージャー モードの設定
 
@@ -163,7 +163,7 @@ Azure リソース マネージャー モードは既定で無効になってい
 	azure group deployment create "testDeploy" -g "testResourceGroup" --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-linux-vm/azuredeploy.json
 必要なテンプレート パラメーターを入力するように求められます。
 
-> [AZURE.NOTE]_raw_ モードで JSON テンプレートを開くことが重要です。ブラウザーのアドレス バーに表示される URL は、通常モードで表示される URL とは異なります。GitHub でファイルを表示するときに _raw_ モードでファイルを開くには、右上にある **[未加工]** をクリックします。
+> [AZURE.NOTE]_raw_ モードで JSON テンプレートを開くことが重要です。ブラウザーのアドレス バーに表示される URL は、通常モードで表示される URL とは異なります。GitHub でファイルを表示するときに_未加工_モードでファイルを開くには、右上にある **[未加工]** をクリックします。
 
 ## リソースの操作
 
@@ -204,10 +204,10 @@ Azure リソース マネージャー モードは既定で無効になってい
 ## 次のステップ
 
 * Azure リソース マネージャーで Azure PowerShell を使用する方法の詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
-* Azure プレビュー ポータルから Azure リソース マネージャーを使用する方法の詳細については、「[リソース グループを使用した Azure リソースの管理][psrm]」を参照してください。
+* Azure ポータルから Azure リソース マネージャーを使用する方法の詳細については、「[リソース グループを使用した Azure リソースの管理][psrm]」を参照してください。
 
 [signuporg]: http://www.windowsazure.com/documentation/articles/sign-up-organization/
 [adtenant]: http://technet.microsoft.com/library/jj573650#createAzureTenant
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -68,7 +68,7 @@ DocumentDB では、この 2 つのカテゴリにおいて、アカウント管
 前に説明したように、DocumentDB マスター キーは、DocumentDB アカウント内のすべてのリソースへの完全な管理アクセス権を提供し、読み取り専用キーは、アカウント内のすべてのリソースへの読み取りアクセスを可能にします。次のコード スニペットは、DocumentDB アカウントのエンドポイントとマスター キーを使用して、DocumentClient をインスタンス化し、新しいデータベースを作成する方法を示します。
 
     //Read the DocumentDB endpointUrl and authorization keys from config.
-    //These values are available from the Azure Management Portal on the DocumentDB Account Blade under "Keys".
+    //These values are available from the Azure Classic Portal on the DocumentDB Account Blade under "Keys".
     //NB > Keep these values in a safe and secure location. Together they provide Administrative access to your DocDB account.
     
 	private static readonly string endpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
@@ -163,4 +163,4 @@ DocumentDB アクセス許可リソースは DocumentDB ユーザーに関連付
 - DocumentDB 認証トークンを作成する方法については、[ここ](https://msdn.microsoft.com/library/azure/dn783368.aspx)をクリックしてください。
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -27,7 +27,7 @@ Microsoft Azure では **Azure キュー**と **Service Bus キュー**の 2 種
 
 **Service Bus キュー**は、より大きな [Azure メッセージング](http://azure.microsoft.com/services/service-bus/) インフラストラクチャの一部です。このインフラストラクチャでは、キュー処理だけでなく、発行/サブスクライブ、Web サービスのリモート処理、統合のパターンがサポートされています。Service Bus キュー、トピック/サブスクリプション、リレーの詳細情報は、「[Service Bus メッセージングの概要](service-bus-messaging-overview.md)」をご覧ください。
 
-この 2 つのキュー テクノロジは共存していますが、最初に Azure キューが、Azure ストレージ サービス上に構築された専用のキュー ストレージ メカニズムとして導入されました。Service Bus キューは、より大きな「仲介型メッセージング」インフラストラクチャ上に構築されています。このインフラストラクチャは、複数の通信プロトコル、データ コントラクト、信用ドメイン、ネットワーク環境などにまたがるアプリケーションやアプリケーション コンポーネントの統合を目的としています。
+この 2 つのキュー テクノロジは共存していますが、最初に Azure キューが、Azure ストレージ サービス上に構築された専用のキュー ストレージ メカニズムとして導入されました。Service Bus キューは、より大きな「ブローカー メッセージング」インフラストラクチャ上に構築されています。このインフラストラクチャは、複数の通信プロトコル、データ コントラクト、信用ドメイン、ネットワーク環境などにまたがるアプリケーションやアプリケーション コンポーネントの統合を目的としています。
 
 この記事では、Azure によって提供されるこの 2 つのキュー テクノロジを比較するために、各テクノロジの機能の動作と実装の違いについて説明します。また、アプリケーション開発のニーズに最適な機能を選択する方法についても説明します。
 
@@ -187,7 +187,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 - Service Bus では、キューのサイズが制限されます。キューの最大サイズは、キューの作成時に 1 ～ 80 GB の値を指定できます。キューの作成時に設定したキュー サイズの値に達すると、その後の受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。Service Bus でのクォータの詳細情報については、「[Service Bus のクォータ](service-bus-quotas.md)」をご覧ください。
 
-- Service Bus キューは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。パーティション分割を有効にすると (既定)、Service Bus は指定した各 GB あたりに 16 個のパーティションを作成できます。そのため、5 GB のキューを作成すると、16 個のパーティションで、キューの最大サイズは (5 * 16) = 80 GB になります。パーティション分割したキューまたはトピックの最大サイズは、Azure ポータルの各エントリで確認できます。
+- Service Bus キューは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。パーティション分割を有効にすると (既定)、Service Bus は指定した各 GB あたりに 16 個のパーティションを作成できます。そのため、5 GB のキューを作成すると、16 個のパーティションで、キューの最大サイズは (5 * 16) = 80 GB になります。パーティション分割したキューまたはトピックの最大サイズは、[Azure クラシック ポータル][]の各エントリで確認できます。
 
 - Azure キューでは、内容が XML セーフでないメッセージに対しては **Base64** エンコードを使用する必要があります。メッセージを **Base64** エンコードを使用する場合、ユーザー ペイロードの上限は 64 KB ではなく 48 KB になります。
 
@@ -195,7 +195,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 - クライアントが TCP プロトコルで Service Bus キューと通信する場合は、1 つの Service Bus キューに対する同時接続の最大数が 100 に制限されます。この数は送信側と受信側で共有されます。このクォータに達すると、その後の接続要求は拒否され、呼び出し元のコードが例外を受け取ります。この制限は、REST ベースの API を使用してキューに接続するクライアントには適用されません。
 
-- 1 つの Service Bus Service の名前空間で 10,000 を超える数のキューが必要な場合は、Azure サポート チームに連絡してキューの数を増やすことができます。Service Bus でキューの数を 10,000 より多くするために、Azure ポータルを使用して追加の名前空間を作成することもできます。
+- 1 つの Service Bus Service の名前空間で 10,000 を超える数のキューが必要な場合は、Azure サポート チームに連絡してキューの数を増やすことができます。Service Bus でキューの数を 10,000 より多くするために、[Azure クラシック ポータル][]を使用して追加の名前空間を作成することもできます。
 
 ## 管理と操作
 
@@ -204,7 +204,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 |比較条件|Azure キュー|Service Bus キュー|
 |---|---|---|
 |管理プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**|
-|ランタイム プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**<br/><br/>**AMQP 1.0 Standard (TCP と TLS)**| |.NET マネージ API|**はい**<br/><br/>(.NET 管理対象 Storage クライアント API)|**はい**<br/><br/>(.NET の仲介型メッセージング API)|
+|ランタイム プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**<br/><br/>**AMQP 1.0 Standard (TCP と TLS)**| |.NET マネージ API|**はい**<br/><br/>(.NET 管理対象 Storage クライアント API)|**はい**<br/><br/>(.NET のブローカー メッセージング API)|
 |ネイティブ C++|**はい**|**いいえ**|
 |Java API|**はい**|**はい**|
 |PHP API|**はい**|**はい**|
@@ -220,7 +220,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 - 両方のキュー テクノロジには、メッセージをロックせずに表示できる機能も用意されています。この機能は、キューのエクスプローラー/ブラウザー ツールを実装する際に便利です。
 
-- Service Bus の .NET 仲介型メッセージング API は、全二重 TCP 接続を使用して HTTP 経由の REST より高いパフォーマンスを発揮します。また、AMQP 1.0 標準プロトコルもサポートしています。
+- Service Bus の .NET ブローカー メッセージング API は、全二重 TCP 接続を使用して HTTP 経由の REST より高いパフォーマンスを発揮します。また、AMQP 1.0 標準プロトコルもサポートしています。
 
 - Azure のキュー名は 3 ～ 63 文字の間で指定でき、小文字、数字、ハイフンを使用できます。詳細については、「[キューおよびメタデータの名前付け](https://msdn.microsoft.com/library/azure/dd179349.aspx)」をご覧ください。
 
@@ -248,7 +248,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 - Service Bus キューに対するベンチマークによると、1 つのキューのメッセージ スループットは、約 1 KB のメッセージで最大 2,000 メッセージ/秒です。より高いスループットを達成するには複数のキューを使用します。Service Bus によるパフォーマンスの最適化の詳細については、「[Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](service-bus-performance-improvements.md)」をご覧ください。
 
-- Service Bus キューが最大スループットに達すると、キューが調整されていることを示す [ServerBusyException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx) (.NET 仲介型メッセージング API を使用している場合) または HTTP 503 (REST ベースの API を使用している場合) の応答がキュー クライアントに返されます。
+- Service Bus キューが最大スループットに達すると、キューが調整されていることを示す [ServerBusyException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx) (.NET ブローカー メッセージング API を使用している場合) または HTTP 503 (REST ベースの API を使用している場合) の応答がキュー クライアントに返されます。
 
 ## 認証と権限承認
 
@@ -301,14 +301,17 @@ Service Bus キューには高度な機能が数多く用意されているた�
 次の記事では、Azure キューや Service Bus キューの使用に関する詳細情報を提供します。
 
 - [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
-- [キュー ストレージ サービスを使用する方法](../storage/storage-dotnet-how-to-use-queues.md)
-- [Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](service-bus-performance-improvements.md)
+- [キュー Storage Service を使用する方法](../storage/storage-dotnet-how-to-use-queues.md)
+- [Service Bus のブローカー メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](service-bus-performance-improvements.md)
 - [Introducing Queues and Topics in Azure Service Bus (Azure Service Bus のキューとトピックの概要)](http://www.code-magazine.com/article.aspx?quickid=1112041)
 - [The Developer's Guide to Service Bus (Service Bus の開発者向けガイド)](http://www.cloudcasts.net/devguide/)
 - ["Azure Tables and Queues Deep Dive (Azure のテーブルとキューの詳細)"](http://www.microsoftpdc.com/2009/SVC09)
 - [Azure Storage のアーキテクチャ (ブログの投稿)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 - [Using the Queuing Service in Azure (Azure でのキュー サービスの使用)](http://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
 - [Azure Storage の課金について - 帯域幅、トランザクション、容量 (ブログの投稿)](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
+
+
+[Azure クラシック ポータル]: http://manage.windowsazure.com
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

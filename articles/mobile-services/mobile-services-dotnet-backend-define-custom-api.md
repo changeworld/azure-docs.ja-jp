@@ -19,6 +19,11 @@
 
 # .NET バックエンド モバイル サービスでカスタム API エンドポイントを定義する方法
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 > [AZURE.SELECTOR]
 - [JavaScript backend](./mobile-services-javascript-backend-define-custom-api.md)
 - [.NET backend](./mobile-services-dotnet-backend-define-custom-api.md)
@@ -36,4 +41,4 @@ Mobile Services クライアント ライブラリを使用し、アプリでカ
 
 <!-- URLs. -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

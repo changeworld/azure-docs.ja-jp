@@ -26,7 +26,7 @@ AMQP 1.0 の追加により、サービス バスの仲介型メッセージン�
 
 ## Service Bus の概要
 
-このガイドは、**queue1** という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。まだない場合は、[Azure ポータル](http://manage.windowsazure.com)を使用して名前空間とキューを作成できます。Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)」を参照してください。
+このガイドは、**queue1** という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。まだない場合は、[Azure クラシック ポータル](http://manage.windowsazure.com)を使用して名前空間とキューを作成できます。Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)」を参照してください。
 
 ### AMQP 1.0 JMS クライアント ライブラリのダウンロード
 
@@ -332,4 +332,4 @@ Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、そ�
 * [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

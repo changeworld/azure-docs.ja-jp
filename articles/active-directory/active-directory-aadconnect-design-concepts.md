@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect の設計概念 |Microsoft Azure"
+   pageTitle="Azure AD Connect: 設計概念 |Microsoft Azure"
    description="このトピックでは、特定の実装設計の領域について詳しく説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="Identity"
-   ms.date="10/13/2015"
+   ms.date="12/02/2015"
    ms.author="andkjell"/>
 
 # Azure AD Connect の設計概念
@@ -69,4 +69,4 @@ Azure AD でオブジェクトを作成して、ID を同期した後に、sourc
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

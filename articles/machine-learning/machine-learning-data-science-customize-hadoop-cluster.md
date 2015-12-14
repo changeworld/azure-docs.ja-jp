@@ -29,7 +29,7 @@
 
 ## <a name="customize"></a>Azure HDInsight Hadoop クラスターのカスタマイズ
 
-カスタマイズされた HDInsight Hadoop クラスターをユーザーが作成するには、[**Microsoft Azure 管理ポータル**](https://manage.windowsazure.com/)にログオンし、左下隅にある **[新規]** をクリックした後、[DATA SERVICES] -> [HDINSIGHT] -> **[カスタム作成]** を選択して **[クラスターの詳細]** ウィンドウを表示する必要があります。
+カスタマイズされた HDInsight Hadoop クラスターをユーザーが作成するには、[**Azure クラシック ポータル**](https://manage.windowsazure.com/)にログオンし、左下隅にある **[新規]** をクリックした後、[DATA SERVICES] -> [HDINSIGHT] -> **[カスタム作成]** を選択して **[クラスターの詳細]** ウィンドウを表示する必要があります。
 
 ![Create workspace][1]
 
@@ -68,7 +68,7 @@
 
 ユーザーが RDP を介して Hadoop クラスターのヘッド ノードにアクセスするには、その前に Azure での Hadoop クラスターへのリモート アクセスを有効にする必要があります。
 
-1. [**Microsoft Azure 管理ポータル**](https://manage.windowsazure.com/)にログインし、左側で **[HDInsight]** を選択して、クラスターのリストから Hadoop クラスターを選択します。次に、**[構成]** タブをクリックし、ページの下部にある **[リモートを有効にする]** アイコンをクリックします。
+1. [**Azure クラシック ポータル**](https://manage.windowsazure.com/)にログインし、左側で **[HDInsight]** を選択して、クラスターのリストから Hadoop クラスターを選択します。次に、**[構成]** タブをクリックし、ページの下部にある **[リモートを有効にする]** アイコンをクリックします。
 	
 	![Create workspace][7]
 
@@ -102,4 +102,4 @@ Hive レコードを処理するために使用されるクラスターに格納
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

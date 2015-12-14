@@ -32,8 +32,8 @@ Azure Data Lake Store のデータをセキュリティで保護するには 3 �
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
-- **Azure Data Lake Store アカウント**このアカウントを作成する手順については、「[Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- **Azure Data Lake Store アカウント**。このアカウントを作成する手順については、「[Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください。
 
 ## Azure Active Directory でセキュリティ グループを作成する
 
@@ -125,7 +125,7 @@ Azure Data Lake ファイル システムにユーザーまたはセキュリテ
 
 ## Azure Data Lake Store アカウントのセキュリティ グループを削除する
 
-Azure Data Lake Store アカウントからセキュリティ グループを削除する場合は、Azure プレビュー ポータルと Azure リソース マネージャー API を使用して、アカウントに関する管理操作へのアクセスを変更するだけです。
+Azure Data Lake Store アカウントからセキュリティ グループを削除する場合は、Azure ポータルと Azure リソース マネージャー API を使用して、アカウントに関する管理操作へのアクセスを変更するだけです。
 
 1. Data Lake Store アカウントのブレードで、ユーザー アイコンをクリックします。
 
@@ -161,7 +161,7 @@ Azure Data Lake Store ファイル システムからセキュリティ グル�
 - [Azure Data Lake Store の概要](data-lake-store-overview.md)
 - [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
-- [PowerShell を使用し、Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)
-- [.NET SDK を使用し、Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
+- [PowerShell で Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)
+- [.NET SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

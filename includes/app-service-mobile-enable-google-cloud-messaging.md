@@ -1,18 +1,19 @@
-1. Navigate to the [Google Cloud Console](https://console.developers.google.com/project) and sign-in with your Google account credentials, and then click **Select a project**, then **Create a project**.
+1. [Google Cloud Console](https://console.developers.google.com/project) に移動して、Google アカウント資格情報でサインインします。次に、**[Select a project]**、**[Create a project]** の順にクリックします。
 
-2. Enter a project name, accept the terms of service, and click **Create**. If requested, carry out the SMS Verification, and click **Create** again.
+2. プロジェクトの名前を入力し、サービスの条件に同意して、**[Create]** をクリックします。要求された SMS の確認を実行し、**[Create]** をもう一度クリックします。
 
-3. Make a note of the project number in the **Projects** section. 
+3. **[Projects]** セクションに表示されたプロジェクト番号をメモしておきます。
 
-	Later in the tutorial you set this value as the PROJECT_ID variable in the client.
+	チュートリアルの後の方で、クライアントの PROJECT\_ID 変数に、この値を設定します。
 
-4. Click **Enable and manage APIs** under **User Google APIs** and click **Cloud Messaging for Android**. Then on the next page click **Enable API**. 
+4. **[User Google APIs]** で **[Enable and manage APIs]** をクリックし、**[Cloud Messaging for Android]** をクリックします。次のページで、**[Enable API]** をクリックします。
 
-5. Click **Credentials**, and then click **Add Credential**->**API Key** 
+5. **[Credentials]**、**[Add Credential]**、**[API Key]** の順にクリックします。
 
-6. In **Create a new key**, click **Server key**. In the next window click **Create**.
+6. **[Create a new key]** で、**[Server key]** をクリックします。次のウィンドウで **[Create]** をクリックします。
 
-7. Make a note of the **API KEY** value.
+7. **[API KEY]** の値をメモしておきます。
 
-	You will use this API key value to enable Azure to authenticate with GCM and send push notifications on behalf of your app.
+	この API キー値を使用して、Azure が GCM で認証し、アプリの代わりにプッシュ通知を送信できるようにします。
 
+<!---HONumber=AcomDC_1203_2015-->

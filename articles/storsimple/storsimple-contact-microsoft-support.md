@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/06/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 # Microsoft サポートに問い合わせる
@@ -30,19 +30,19 @@ Microsoft Azure StorSimple ソリューションで問題が発生した場合�
 
 #### サポート要求を作成するには
 
-1. サポート要求は、[管理ポータル](http://manage.windowsazure.com/)を使って作成できます。[管理ポータル](http://manage.windowsazure.com/)で、**アカウント名**をクリックし、**[Microsoft サポートに問い合わせる]** をクリックします。
+1. サポート要求は、[Azure クラシック ポータル](http://manage.windowsazure.com/)を使って作成できます。[ポータル](http://manage.windowsazure.com/)で、**アカウント名**をクリックし、**[Microsoft サポートに問い合わせる]** をクリックします。
 
-	![Contact MS Support via ManagementPortal](./media/storsimple-contact-microsoft-support/IC777286.png)
+	![クラシック ポータルでの MS サポートへの問い合わせ](./media/storsimple-contact-microsoft-support/IC777286.png)
 
 2. **[Microsoft サポートに問い合わせる]** ダイアログで、次の操作を行います。
 
 	1. ドロップダウン リストから、StorSimple Manager サービスに関連付けられているターゲットの**サブスクリプション**を選択します。**[サポートの種類]** で **[技術]** を指定します。テクニカル サポートを利用するには、有料サポート プランに加入している必要があります。
 
-	2. チェック マーク アイコン ![Check icon](./media/storsimple-contact-microsoft-support/IC740895.png) をクリックして**チケットを作成**します。
+	2. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-contact-microsoft-support/IC740895.png) をクリックして**チケットを作成**します。
 
 3. **[Microsoft サポート]** ウィンドウで、**[製品]** ボックスの一覧の **[StorSimple]** を選択します。
 
-	![Contact Microsoft Support - Product](./media/storsimple-contact-microsoft-support/IC777288.png)
+	![Microsoft サポートへの問い合わせ - 製品](./media/storsimple-contact-microsoft-support/IC777288.png)
 
 4. 画面の指示に従い、適切に要求を分類し、問題に関する明確で具体的な説明を入力します。
 
@@ -76,4 +76,4 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 
 > [AZURE.IMPORTANT]サポートへのアクセスは、`Disable-HcsSupportAccess` を実行して無効にできます。また、StorSimple デバイスでは、セッションの開始後 8 時間が経過すると、サポートへのアクセスが無効になります。サポート セッションを開始した後、StorSimple デバイスの資格情報を変更することをお勧めします。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

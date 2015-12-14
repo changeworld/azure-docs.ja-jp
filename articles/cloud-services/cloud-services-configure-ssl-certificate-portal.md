@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="クラウド サービス向けの SSL を構成する (プレビュー ポータル) | Microsoft Azure" 
-	description="Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。これらの例では、Azure プレビュー ポータルを使用します。" 
+	pageTitle="クラウド サービス向けの SSL の構成 | Microsoft Azure" 
+	description="Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。これらの例では、Azure ポータルを使用します。" 
 	services="cloud-services" 
 	documentationCenter=".net" 
 	authors="Thraka" 
@@ -22,8 +22,8 @@
 # Azure でアプリケーションの SSL を構成する
 
 > [AZURE.SELECTOR]
-- [Azure Portal](cloud-services-configure-ssl-certificate.md)
-- [Azure Preview Portal](cloud-services-configure-ssl-certificate-portal.md)
+- [Azure classic portal](cloud-services-configure-ssl-certificate.md)
+- [Azure portal](cloud-services-configure-ssl-certificate-portal.md)
 
 Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
@@ -153,8 +153,6 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
       
     >GUID ベースの URL (**328187776e774ceda8fc57609d404462.cloudapp.net** など) と同じ共通名 (CN) で証明書を作成し、その証明書をステージングされたクラウド サービスにポータルを使用して追加します。CSDEF ファイルと CSCFG ファイルに証明書情報を追加し、アプリケーションの再パッケージ化を実行して、新しいパッケージと CSCFG ファイルを使用するようステージング デプロイメントを更新します。
 
-[Azure Portal]: http://portal.azure.com/
-
 ## 次のステップ
 
 * [クラウド サービスの一般的な構成](cloud-services-how-to-configure-portal.md)
@@ -162,4 +160,4 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

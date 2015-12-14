@@ -59,7 +59,7 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 
 まず、基本構成の Corpnet サブネットをホストすることになる TestLab という仮想ネットワークを作成します。
 
-1.	[Azure ポータル](https://manage.windowsazure.com)のタスク バーで、**[新規]、[Network Services]、[Virtual Network]、[カスタム作成]** の順にクリックします。
+1.	[Azure クラシック ポータル](https://manage.windowsazure.com)のタスク バーで、**[新規]、[Network Services]、[Virtual Network]、[カスタム作成]** の順にクリックします。
 2.	[仮想ネットワークの詳細] ページの**[名前]** に「**TestLab**」と入力します。
 3.	**[場所]** から適切なリージョンを選択します。
 4.	次へ進む矢印をクリックします。
@@ -126,7 +126,7 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 
 続けて、DC1 仮想マシンに接続します。
 
-1.	Azure ポータルの左側のウィンドウで **[Virtual Machines]** をクリックし、DC1 仮想マシンの **[状態]** 列で **[開始済み]** をクリックします。  
+1.	Azure クラシック ポータルの左側のウィンドウで **[Virtual Machines]** をクリックし、DC1 仮想マシンの **[状態]** 列で **[開始済み]** をクリックします。  
 2.	タスク バーで、**[接続]** をクリックします。
 3.	DC1.rdp を開くように求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
@@ -155,7 +155,7 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 
 DC1 を再起動した後、DC1 の仮想マシンに再接続します。
 
-1.	Azure ポータルの [Virtual Machines] ページで、DC1 仮想マシンの **[状態]** 列の **[実行中]** をクリックします。
+1.	Azure クラシック ポータルの [Virtual Machines] ページで、DC1 仮想マシンの **[状態]** 列の **[実行中]** をクリックします。
 2.	タスク バーで、**[接続]** をクリックします。
 3.	DC1.rdp を開くように求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
@@ -288,4 +288,4 @@ Azure PowerShell で順に仮想マシンを起動するには、クラウド �
 	Start-AzureVM -ServiceName $serviceName -Name "APP1"
 	Start-AzureVM -ServiceName $serviceName -Name "CLIENT1"
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

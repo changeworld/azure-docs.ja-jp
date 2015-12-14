@@ -24,7 +24,7 @@
 
 Linux 向け Microsoft Azure カスタム スクリプト拡張機能では、Python や Bash など、仮想マシン (VM) でサポートされているスクリプト言語で記述された任意のコードを実行する VM をカスタマイズすることができます。これによって、非常に柔軟に複数のマシンにアプリケーションを自動的にデプロイすることが可能になります。
 
-カスタム スクリプト拡張機能は、Azure ポータル、Windows PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) を使ってデプロイできます。
+カスタム スクリプト拡張機能は、Azure クラシック ポータル、Windows PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) を使ってデプロイできます。
 
 この記事では、Azure CLI を使って、クラシック デプロイ モデルを使用して作成された Ubuntu VM に単純な LAMP アプリケーションをデプロイします。
 
@@ -32,7 +32,7 @@ Linux 向け Microsoft Azure カスタム スクリプト拡張機能では、Py
 
 この例では、まず、Ubuntu 14.04 以降を実行している 2 つの Azure VM を作成します。VM の名前は *script-vm* と *lamp-vm* です。自分で VM を作成するときは、固有の名前を付けてください。1 つは CLI コマンドの実行に使用し、もう 1 つは LAMP アプリのデプロイに使用します。
 
-また、Azure ストレージ アカウントとアカウントにアクセスするキーが必要になります (Azure ポータルで取得できます)。
+また、Azure ストレージ アカウントとアカウントにアクセスするキーが必要になります (Azure クラシック ポータルで取得できます)。
 
 Azure での Linux VM の作成については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)」をご覧ください。
 
@@ -110,4 +110,4 @@ CustomScript 拡張機能を実行すると、参照用に作成した PHP ペ�
 
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

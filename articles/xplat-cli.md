@@ -22,7 +22,7 @@
 - [PowerShell](powershell-install-configure.md)
 - [Azure CLI](xplat-cli-install.md)
 
-Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。Azure CLI で使用できる機能の多くは、Azure 管理ポータルで使用できるもの (たとえば、Web サイト、仮想マシン、モバイル サービス、SQL Database などの Azure Platform で提供されるサービスを管理する機能) と同じです。
+Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。Azure CLI で使用できる機能の多くは、Azure ポータルで使用できるもの (たとえば、Web サイト、仮想マシン、モバイル サービス、SQL Database などの Azure Platform で提供されるサービスを管理する機能) と同じです。
 
 Azure CLI は JavaScript で記述されており、Node.js が必要です。Azure SDK for Node.js を使用して実装されており、Apache 2.0 ライセンスに基づいてリリースされています。プロジェクトのリポジトリは [https://github.com/azure/azure-xplat-cli](https://github.com/azure/azure-xplat-cli) にあります。
 
@@ -133,7 +133,7 @@ Azure CLI を使用すると、Azure サービスを簡単に管理できます�
 
 	Web サイトが作成される場所を指定するように求められます。地理的に近いリージョンを選択します。次のコマンドを実行すると、Web サイトが http://mywebsite.azurewebsites.net　で使用できるようになります (**mywebsite** は、作成時に指定した名前に置き換えます)。
 
-	> [AZURE.NOTE]プロジェクト ソース管理に Git を使用する場合、`--git` パラメーターを指定して、この Web サイト用の Git リポジトリを Azure に作成します。Git リポジトリがないディレクトリからこのコマンドを実行した場合、Git リポジトリの再初期化も行われます。また、__azure__ という名前の Git リモートも作成されます。これは、`git push azure master` コマンドを使用して Azure Web サイトに展開をプッシュするために使用できます。
+	> [AZURE.NOTE]プロジェクト ソース管理に Git を使用する場合、`--git` パラメーターを指定して、この Web サイト用の Git リポジトリを Azure に作成します。Git リポジトリがないディレクトリからこのコマンドを実行した場合、Git リポジトリの再初期化も行われます。また、__azure__ という名前の Git リモートも作成されます。これは、`git push azure master` コマンドを使用して Azure Web サイトにデプロイをプッシュするために使用できます。
 
 	> [AZURE.NOTE]"site" が Azure のコマンドではないというエラーが発生した場合、高い確率で Azure CLI がリソース グループ モードになっています。リソース モードに戻すには、`azure config mode asm` コマンドを使用してください。
 
@@ -164,7 +164,7 @@ Azure CLI を使用すると、Azure サービスを簡単に管理できます�
 <a id="script"></a>
 ## Mac、Linux、Windows 用の Azure CLI をコード化する方法
 
-Azure CLI を使用して手動でコマンドを発行できますが、お使いのシステムで使用できるコマンド ライン インタープリターやその他のコマンド ライン ユーティリティの機能を利用して、複雑な自動化ワークフローを作成することもできます。たとえば、次のコマンドはすべての Azure Web サイトを停止します。
+Azure CLI を使用して手動でコマンドを発行できますが、お使いのシステムで使用できるコマンド ライン インタープリターやその他のコマンド ライン ユーティリティの機能を利用して、複雑な自動化ワークフローを作成することもできます。たとえば、次のコマンドはすべての Azure Websites を停止します。
 
 	azure site list | grep 'Running' | awk '{system("azure site stop "$2)}'
 
@@ -281,4 +281,4 @@ Azure CLI では、エラー情報を STDERR にログ出力しますが、エ�
 [signuporg]: http://www.windowsazure.com/documentation/articles/sign-up-organization/
 [Using the Azure CLI]: virtual-machines-command-line-tools.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

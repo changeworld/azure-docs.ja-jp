@@ -142,7 +142,7 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 
 1. いずれの方法でも、証明書から X509Certificate オブジェクトを作成し、キーの値を取得します。証明書のパスとその証明書のパスワードを使用します。
 
-        $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate("C:\certificates\examplecert.pfx", "yourpassword")
+        $cert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate -ArgumentList @("C:\certificates\examplecert.pfx", "yourpassword")
         $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
 
 2. キーの資格情報を使用する場合、キーの資格情報オブジェクトを作成し、その値を前の手順の `$keyValue` に設定します。
@@ -312,4 +312,4 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

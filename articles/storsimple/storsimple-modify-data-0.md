@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/02/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスの DATA 0 ネットワーク インターフェイスの設定の変更
@@ -41,7 +41,7 @@ DATA 0 ネットワーク設定を再構成するには、StorSimple デバイ�
 
 3. デバイスの DATA 0 インターフェイスの構成に役立つセットアップ ウィザードが表示されます。IP アドレス、ゲートウェイ、およびネットマスクの新しい値を指定します。
 
-> [AZURE.NOTE]固定コントローラーの IP は、Microsoft Azure 管理ポータルの StorSimple デバイスの **[構成]** ページで再構成する必要があります。詳細については、[ネットワーク インターフェイスの変更](storsimple-modify-device-config.md#modify-network-interfaces)をご覧ください。
+> [AZURE.NOTE]固定コントローラーの IP は、Azure クラシック ポータルの StorSimple デバイスの **[構成]** ページで再構成する必要があります。詳細については、[ネットワーク インターフェイスの変更](storsimple-modify-device-config.md#modify-network-interfaces)をご覧ください。
 
 
 ## Set-HcsNetInterface コマンドレットを使用して DATA 0 ネットワーク設定を変更する
@@ -69,6 +69,7 @@ DATA 0 ネットワーク インターフェイスを再構成するためのも
 
 ## 次のステップ
 
-DATA 0 以外のネットワーク インターフェイスを構成するには、[管理ポータルで [構成] ページ](storsimple-modify-device-config.md)を使用できます。ネットワーク インターフェイスを構成するときに問題が発生した場合は、「[StorSimple デバイスのデプロイメントのトラブルシューティング](storsimple-troubleshoot-deployment.md)」をご覧ください。
+- DATA 0 以外のネットワーク インターフェイスを構成するには、[Azure クラシック ポータルで [構成] ページ](storsimple-modify-device-config.md)を使用できます。 
+- ネットワーク インターフェイスを構成するときに問題が発生した場合は、[デプロイに関する問題のトラブルシューティング](storsimple-troubleshoot-deployment.md)のページを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

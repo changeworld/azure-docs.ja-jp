@@ -1,42 +1,42 @@
-<properties 
-	pageTitle="Azure Mobile Engagement Android SDK の統合" 
+<properties
+	pageTitle="Azure Mobile Engagement Android SDK の統合"
 	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="08/10/2015" 
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="08/10/2015"
 	ms.author="piyushjo" />
 
 #Engagement を Android に統合する方法
 
-> [AZURE.SELECTOR] 
-- [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md) 
-- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) 
-- [iOS](mobile-engagement-ios-integrate-engagement.md) 
-- [Android](mobile-engagement-android-integrate-engagement.md) 
+> [AZURE.SELECTOR]
+- [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md)
+- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
+- [iOS](mobile-engagement-ios-integrate-engagement.md)
+- [Android](mobile-engagement-android-integrate-engagement.md)
 
 この手順では、Engagement の分析機能と監視機能を Android アプリでアクティブ化するための最も簡単な方法について説明します。
 
 > [AZURE.IMPORTANT]Android SDK の最小の API レベルは 10 以降 (Android 2.3.3 以降) である必要があります。
- 
+
 ユーザー、セッション、アクティビティ、クラッシュ、および技術に関するすべての統計をコンピューティングするために必要なログ レポートをアクティブ化するには、以下の手順で十分です。イベント、エラー、ジョブなどの他の統計情報をコンピューティングするのに必要なログのレポートについては、これらの統計がアプリケーションに依存しているので、エンゲージメント API を使用して手動で実行する必要があります ([Android で高度な Mobile Engagement タグ付け API を使用する方法を参照](mobile-engagement-android-use-engagement-api.md))。
 
 ##Android プロジェクトに Engagement SDK とサービスを埋め込む
 
-Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)からダウンロードします。`mobile-engagement-VERSION.jar` を選択して、Andorid プロジェクトの `libs` フォルダーに配置します (libs フォルダーが存在しない場合は作成します)。
+Android SDK を[こちら](https://aka.ms/vq9mfn)からダウンロードします。`mobile-engagement-VERSION.jar` を選択して、Andorid プロジェクトの `libs` フォルダーに配置します (libs フォルダーが存在しない場合は作成します)。
 
 > [AZURE.IMPORTANT]アプリケーション パッケージを ProGuard でビルドする場合は、いくつかのクラスを保持する必要があります。次の構成スニペットを使うことができます。
 >
-> 
+>
 			-keep public class * extends android.os.IInterface
 			-keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
 			<methods>;
@@ -77,7 +77,7 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 			 {
 			   if (EngagementAgentUtils.isInDedicatedEngagementProcess(this))
 			     return;
-			
+
 			   ... Your code...
 			 }
 
@@ -94,10 +94,10 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 **エンゲージメントを使用しない場合:**
 
 			package com.company.myapp;
-			
+
 			import android.app.Activity;
 			import android.os.Bundle;
-			
+
 			public class MyApp extends Activity
 			{
 			  @Override
@@ -111,10 +111,10 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 **エンゲージメントを使用する場合:**
 
 			package com.company.myapp;
-			
+
 			import com.microsoft.azure.engagement.activity.EngagementActivity;
 			import android.os.Bundle;
-			
+
 			public class MyApp extends EngagementActivity
 			{
 			  @Override
@@ -148,7 +148,7 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 			    String activityNameOnEngagement = EngagementAgentUtils.buildEngagementActivityName(getClass()); // Uses short class name and removes "Activity" at the end.
 			    EngagementAgent.getInstance(this).startActivity(this, activityNameOnEngagement, null);
 			  }
-			
+
 			  @Override
 			  protected void onPause()
 			  {
@@ -270,7 +270,7 @@ Mobile Engagement の場合、次のアクセス許可で実行時に承認が�
     public void onCreate(Bundle savedInstanceState)
     {
       /* Other code... */
-    
+
       /* Request permissions */
       requestPermissions();
     }
@@ -288,7 +288,7 @@ Mobile Engagement の場合、次のアクセス許可で実行時に承認が�
          */
         if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
           requestPermissions(new String[] { android.Manifest.permission.ACCESS_FINE_LOCATION }, 0);
-    
+
         /* Only if you want to keep features using external storage */
         if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
           requestPermissions(new String[] { android.Manifest.permission.WRITE_EXTERNAL_STORAGE }, 1);
@@ -380,6 +380,5 @@ Engagement では、この設定を管理するために設定ファイル内で
 
 <!-- URLs. -->
 [Device API]: http://go.microsoft.com/?linkid=9876094
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

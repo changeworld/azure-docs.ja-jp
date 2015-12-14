@@ -43,7 +43,7 @@ Azure .NET SDK を使用して、Azure Data Lake Analytics アカウントを作
 - **[Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs)**。 
 - **Data Lake Analytics アカウント**。[Azure Data Lake Analytics アカウントの作成](data-lake-analytics-get-started-portal.md#create_adl_analytics_account)に関する記述を参照してください。
 
-	Data Lake Tools では、Data Lake Analytics アカウントの作成はサポートされません。そのため、Azure プレビュー ポータル、Azure PowerShell, .NET SDK または Azure CLI を使用して作成する必要があります。
+	Data Lake Tools では、Data Lake Analytics アカウントの作成はサポートされません。そのため、Azure ポータル、Azure PowerShell、.NET SDK、または Azure CLI を使用して作成する必要があります。
 
 ##コンソール アプリケーションの作成
 
@@ -91,7 +91,7 @@ Azure .NET SDK を使用して、Azure Data Lake Analytics アカウントを作
     
         adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
         
-    リンクされたストレージ アカウント内のファイルへのアクセスには、絶対パスを使用する必要があります。リンクされた Azure ストレージ アカウントに格納されているファイルの構文は以下のとおりです。
+    リンクされた Storage アカウント内のファイルへのアクセスには、絶対パスを使用する必要があります。リンクされた Azure Storage アカウントに格納されているファイルの構文は以下のとおりです。
     
         wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 
@@ -252,7 +252,7 @@ Azure .NET SDK を使用して、Azure Data Lake Analytics アカウントを作
 - より複雑なクエリを表示する場合は、「[Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)」を参照してください。
 - U-SQL アプリケーションの開発を開始する場合は、「[Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
 - U-SQL の詳細については、「[Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
-- 管理タスクについては、「[Azure プレビュー ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」を参照してください。
-- Data Lake Analytics の概要については、「[Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
+- 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
+- Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

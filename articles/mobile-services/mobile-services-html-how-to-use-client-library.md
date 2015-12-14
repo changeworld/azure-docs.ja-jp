@@ -43,7 +43,7 @@ Mobile Services クライアントに参照を追加する方法は、アプリ 
 	var MobileServiceClient = WindowsAzure.MobileServiceClient;
     var client = new MobileServiceClient('AppUrl', 'AppKey');
 
-プレースホルダーの `AppUrl` と `AppKey` を、モバイル サービスのアプリケーション URL とアプリケーション キー ([Azure ポータル](http://manage.windowsazure.com/)から取得します) でそれぞれ置き換える必要があります。
+プレースホルダーの `AppUrl` と `AppKey` を、モバイル サービスのアプリケーション URL とアプリケーション キー ([Azure クラシック ポータル](http://manage.windowsazure.com/)から取得します) でそれぞれ置き換える必要があります。
 
 >[AZURE.IMPORTANT]アプリケーション キーは、モバイル サービスに対するランダムな要求をフィルターで除外するためのものであり、アプリケーションと共に配布されます。このキーは暗号化されないため、セキュリティで保護されていると見なすことはできません。モバイル サービスのデータへのアクセスを完全に保護するには、アクセスを許可する前にユーザーを認証する必要があります。詳細については、「[方法: ユーザーを認証する](#authentication)」を参照してください。
 
@@ -620,11 +620,11 @@ promise はいくつかの異なる方法で使用することができます。
 	   next(request, callback);
 	});
 
-フィルターを使用する機会は要求ヘッダーをカスタマイズする機会よりもたくさんあります。フィルターを使用すると、要求の検査または変更、応答の検査または変更、ネットワーキング呼び出しのバイパス、複数の呼び出しの送信などの操作を実行できます。
+フィルターを使用する機会は要求ヘッダーをカスタマイズする機会よりもたくさんあります。フィルターを使用すると、要求の検査または変更、応答の検査または変更、ネットワーク呼び出しのバイパス、複数の呼び出しの送信などの操作を実行できます。
 
 ##<a name="hostnames"></a>方法: クロス オリジン リソース共有を使用する
 
-モバイル サービスとの対話やモバイル サービスへの要求の送信を許可する Web サイトを制御するには、ホストする Web サイトのホスト名をクロス オリジン リソース共有 (CORS) ホワイトリストに追加してください。JavaScript バックエンド モバイル サービスの場合、[Azure 管理ポータル](https://manage.windowsazure.com)の [構成] タブでホワイトリストを構成できます。必要に応じて、ワイルドカードを使用できます。既定では、新しい Mobile Services は `localhost` からのアクセスのみを許可するようブラウザーに指示します。クロス オリジン リソース共有 (CORS) により、外部ホスト名のブラウザーで実行されている JavaScript コードが Mobile Services と対話できるようになります。この構成は、WinJS アプリケーションには必要ありません。
+モバイル サービスとの対話やモバイル サービスへの要求の送信を許可する Web サイトを制御するには、ホストする Web サイトのホスト名をクロス オリジン リソース共有 (CORS) ホワイトリストに追加してください。JavaScript バックエンド モバイル サービスの場合、[Azure クラシック ポータル](https://manage.windowsazure.com)の [構成] タブでホワイトリストを構成できます。必要に応じて、ワイルドカードを使用できます。既定では、新しい Mobile Services は `localhost` からのアクセスのみを許可するようブラウザーに指示します。クロス オリジン リソース共有 (CORS) により、外部ホスト名のブラウザーで実行されている JavaScript コードがモバイル サービスと対話できるようになります。この構成は、WinJS アプリケーションには必要ありません。
 
 <!-- Anchors. -->
 [What is Mobile Services]: #what-is
@@ -665,4 +665,4 @@ promise はいくつかの異なる方法で使用することができます。
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [OData システム クエリ オプション リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=444502
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -24,7 +24,7 @@ Microsoft Azure での Web アプリのスループットとパフォーマン�
 
 Azure で Web アプリをスケール アップするには、2 つの操作が必要です。App Service プランのモードを上位レベルに変更することと、上位レベルのサービスに切り替えた後、特定の設定を構成することです。この記事では、この 2 つのトピックについて説明します。**Standard** モードや **Premium** モードのようにサービス レベルを高くすると、Azure 上のリソースの使用方法を決定する際の堅牢性と柔軟性が向上します。
 
-モードの変更と構成は、管理ポータルの [規模の設定] タブで簡単に実行できます。必要に応じて、規模の拡大または縮小が可能です。これらの変更は適用に数秒を要するのみで、App Service プランに含まれるすべての Web アプリに反映されます。コードの変更やアプリケーションの再デプロイは必要ありません。
+スケール設定は適用に数秒を要するのみで、App Service プランに含まれるすべての Web アプリに反映されます。コードの変更やアプリケーションの再デプロイは必要ありません。
 
 App Service プランの詳細については、「[App Service プラン](../web-sites-web-hosting-plan-overview.md)」および「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。App Service の個々のプランの料金と機能の詳細については、「[App Service の料金の詳細](/pricing/details/web-sites/)」を参照してください。
 
@@ -149,7 +149,7 @@ Web アプリのモードに応じて、次の開発者向け機能を使用で�
 <a name="Next Steps"></a>
 ## 次のステップ
 
-- Azure を利用し始めるには、「[Microsoft Azure の無料試用版サイト](/pricing/free-trial/)」を参照してください。
+- Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイト](/pricing/free-trial/)」を参照してください。
 - 料金、サポート、および SLA については、次のリンクを参照してください。
 	
 	[データ転送の料金詳細](/pricing/details/data-transfers/)
@@ -201,4 +201,4 @@ Web アプリのモードに応じて、次の開発者向け機能を使用で�
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

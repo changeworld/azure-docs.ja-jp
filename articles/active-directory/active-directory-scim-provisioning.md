@@ -95,9 +95,9 @@ Azure Active Directory を接続して動作させる SCIM Web サービスを�
 **前提条件**
 
 * Visual Studio 2013 以降
-* [Azure SDK for .NET](https://azure.microsoft.com/ja-JP/downloads/)
+* [Azure SDK for .NET](https://azure.microsoft.com/downloads/)
 * SCIM エンドポイントとして使用される ASP.NET framework 4.5 をサポートしている Windows コンピューター。このマシンにクラウドからアクセスできる必要があります。
-* [無料試用版またはライセンス版の Azure AD Premium が付随した Azure サブスクリプション](https://azure.microsoft.com/ja-JP/services/active-directory/)
+* [無料試用版またはライセンス版の Azure AD Premium が付随した Azure サブスクリプション](https://azure.microsoft.com/services/active-directory/)
 * Amazon AWS サンプルには、[AWS Toolkit for Visual Studio](http://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/tkv_setup.html) のライブラリが必要です。詳細については、サンプルに含まれている README ファイルを参照してください。
 
 ###Getting Started (概要)
@@ -692,4 +692,4 @@ externalId 属性に特定の値を持つユーザーを照会する上記のサ
 [4]: ./media/active-directory-scim-provisioning/scim-figure-4.PNG
 [5]: ./media/active-directory-scim-provisioning/scim-figure-5.PNG
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

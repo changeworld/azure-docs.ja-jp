@@ -29,7 +29,7 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 
 **関連記事:**
 
-- [HDInsight クラスターに Solr をインストールする](hdinsight-hadoop-solr-install.md): Azure プレビュー ポータルを使用して HDInsight クラスターに Solr をインストールします。
+- [HDInsight クラスターに Solr をインストールする](hdinsight-hadoop-solr-install.md): Azure ポータルを使用して HDInsight クラスターに Solr をインストールする
 - [HDInsight Hadoop クラスターに Solr をインストールして使用する (Linux)](hdinsight-hadoop-solr-install-linux.md)
 - [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md): HDInsight クラスターの作成に関する一般情報。
 - [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: Script Action を使用した HDInsight クラスターのカスタマイズに関する一般情報。
@@ -37,7 +37,7 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 
 ## Solr とは何か
 
-<a href="http://lucene.apache.org/solr/features.html" target="_blank">Apache Solr</a> は、データに対して強力なフルテキスト検索ができるエンタープライズ検索プラットフォームです。Hadoop が大量のデータの保存と管理を可能にするのに対し、Apache Solr は迅速にデータを取得するための検索機能を提供します。
+[Apache Solr](http://lucene.apache.org/solr/features.html) は、データに対して強力なフルテキスト検索ができるエンタープライズ検索プラットフォームです。Hadoop が大量のデータの保存と管理を可能にするのに対し、Apache Solr は迅速にデータを取得するための検索機能を提供します。
 
 ## ポータルを使用して Solr をインストールする
 
@@ -68,7 +68,7 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に Solr を
 
 最初に、いくつかのデータ ファイルに対し Solr のインデックスを作成する必要があります。これにより、インデックス付きデータに対して、Solr を使用して検索クエリを実行できます。HDInsight クラスターで Solr を使用するには、次の手順を実行します。
 
-1. **リモート デスクトップ プロトコル (RDP) を使用してインストールされている Solr で HDInsight クラスターにリモート接続します**。Solr のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」をご覧ください。
+1. **リモート デスクトップ プロトコル (RDP) を使用してインストールされている Solr で HDInsight クラスターにリモート接続します**。Solr のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「[RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」をご覧ください。
 
 2. **データ ファイルをアップロードして Solr のインデックスを作成します**。Solr のインデックスを作成する場合、検索が必要なドキュメントをその中に配置します。Solr のインデックスを作成するには、クラスターに RDP をリモート接続してデスクトップに移動します。次に、Hadoop コマンド ラインを開いて **C:\\apps\\dist\\solr-4.7.2\\example\\exampledocs** に移動します。次のコマンドを実行します。
 	
@@ -180,7 +180,7 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に Solr を
 
 ## 関連項目
 
-- [HDInsight クラスターに Solr をインストールする](hdinsight-hadoop-solr-install.md): Azure プレビュー ポータルを使用して HDInsight クラスターに Solr をインストールします。
+- [HDInsight クラスターに Solr をインストールする](hdinsight-hadoop-solr-install.md): Azure ポータルを使用して HDInsight クラスターに Solr をインストールする
 - [HDInsight Hadoop クラスターに Solr をインストールして使用する (Linux)](hdinsight-hadoop-solr-install-linux.md)
 - [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md): HDInsight クラスターの作成に関する一般情報。
 - [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: Script Action を使用した HDInsight クラスターのカスタマイズに関する一般情報。
@@ -196,4 +196,4 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に Solr を
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

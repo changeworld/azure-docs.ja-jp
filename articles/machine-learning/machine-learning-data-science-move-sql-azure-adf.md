@@ -44,12 +44,12 @@ ADF を使用すると、既存のデータ処理サービスを、可用性が�
 ## <a name="prereqs"></a>前提条件
 このチュートリアルでは、以下があることを前提としています。
 
-* **Azure サブスクリプション**。サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-* **Azure ストレージ アカウント**。このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントを作成する](storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
-* **Azure SQL Database** へのアクセス権。Azure SQL Database を設定する必要がある場合は、「[Microsoft Azure SQL Database ](sql-database-get-started.md)」に説明されている、Azure SQL Database の新しいインスタンスをプロビジョニングする方法を参照してください。
+* **Azure サブスクリプション**。サブスクリプションがない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+* **Azure ストレージ アカウント**。このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」をご覧ください。
+* **Azure SQL Database** へのアクセス権。Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、「[最初の Azure SQL データベースを作成する](sql-database-get-started.md)」をご覧ください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。手順については、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
-> [AZURE.NOTE]この手順では、[Azure プレビュー ポータル](https://ms.portal.azure.com/)を使用します。
+> [AZURE.NOTE]この手順では、[Azure ポータル](https://ms.portal.azure.com/)を使用します。
 
 ##<a name="upload-data"></a>オンプレミスの SQL Server にデータをアップロードする
 
@@ -60,7 +60,7 @@ ADF を使用すると、既存のデータ処理サービスを、可用性が�
 
 ##<a name="create-adf"></a>Azure Data Factory を作成する
 
-[Azure プレビュー ポータル](https://ms.portal.azure.com/)に新しい Azure Data Factory とリソース グループを作成するための手順は、[ここ](data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory)を参照してください。新しい ADF インスタンスに *adfdsp* という名前を付け、作成されたリソース グループに *adfdsprg* という名前を付けます。
+[Azure ポータル](https://ms.portal.azure.com/)に新しい Azure Data Factory とリソース グループを作成するための手順は、[ここ](data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory)を参照してください。新しい ADF インスタンスに *adfdsp* という名前を付け、作成されたリソース グループに *adfdsprg* という名前を付けます。
 
 ## Data Management Gateway をインストールして構成する
 
@@ -81,13 +81,13 @@ Data Management Gateway のセットアップ手順と詳細については、�
 
 
 ###<a name="adf-linked-service-onprem-sql"></a>オンプレミスの SQL Server データベース用のリンクされたサービス
-オンプレミスの SQL Server用にリンクされたサービスを作成するには、Azure ポータルで ADF ランディング ページ内の **[データ ストア]** をクリックし、*SQL* を選択してオンプレミスの SQL Server の*ユーザー名*と*パスワード*に対して資格情報を入力します。サーバー名は**完全修飾サーバー名、バックスラッシュ、インスタンス名 (servername\\instancename)** で入力する必要があります。リンクされたサービスに *adfonpremsql* という名前を付けます。
+オンプレミスの SQL Server用にリンクされたサービスを作成するには、Azure クラシック ポータルで ADF ランディング ページ内の **[データ ストア]** をクリックし、*SQL* を選択してオンプレミスの SQL Server の*ユーザー名*と*パスワード*に対して資格情報を入力します。サーバー名は**完全修飾サーバー名、バックスラッシュ、インスタンス名 (servername\\instancename)** で入力する必要があります。リンクされたサービスに *adfonpremsql* という名前を付けます。
 
 ###<a name="adf-linked-service-blob-store"></a>BLOB 用のリンクされたサービス
-Azure BLOB ストレージ アカウント用にリンクされたサービスを作成するには、Azure ポータルで ADF ランディング ページ内の **[データ ストア]** をクリックし、*ADF ストレージアカウント*を選択して Azure BLOB ストレージ アカウント キーとコンテナー名を入力します。リンク サービスに *adfds* という名前を付けます。
+Azure BLOB ストレージ アカウント用にリンクされたサービスを作成するには、Azure クラシック ポータルで ADF ランディング ページ内の **[データ ストア]** をクリックし、*ADF ストレージアカウント*を選択して Azure BLOB ストレージ アカウント キーとコンテナー名を入力します。リンク サービスに *adfds* という名前を付けます。
 
 ###<a name="adf-linked-service-azure-sql"></a>Azure SQL データベース用のリンクされたサービス
-Azure SQL Database 用にリンクされたサービスを作成するには、Azure ポータルで ADF ランディング ページ内の **[データ ストア]** をクリックし、*Azure SQL* を選択してAzure SQL Database の*ユーザー名*と*パスワード*に対して資格情報を入力します。*ユーザー名*は **user@servername* で指定する必要があります。
+Azure SQL Database 用にリンクされたサービスを作成するには、Azure クラシック ポータルで ADF ランディング ページ内の **[データ ストア]** をクリックし、*Azure SQL* を選択して Azure SQL Database の*ユーザー名*と*パスワード*に対して資格情報を入力します。*ユーザー名*は **user@servername* で指定する必要があります。
 
 
 ##<a name="adf-tables"></a>データセットへのアクセス方法を指定するためのテーブルを定義して作成する
@@ -107,7 +107,7 @@ Azure SQL Database 用にリンクされたサービスを作成するには、A
 2. [BLOB テーブル](#adf-table-blob-store)
 3. [SQL Azure テーブル](#adf-table-azure-sql)
 
-> [AZURE.NOTE]次の手順では、Azure PowerShell を使用して ADF アクティビティの定義と作成を行います。これらのタスクは、Azure プレビュー ポータルを使用しても行えます。詳細については、「[入力データセットと出力データセットを作成する](data-factory-use-onpremises-datasources.md#step-3-create-input-and-output-datasets)」を参照してください。
+> [AZURE.NOTE]次の手順では、Azure PowerShell を使用して ADF アクティビティの定義と作成を行います。これらのタスクは、Azure ポータルを使用しても行えます。詳細については、「[入力データセットと出力データセットを作成する](data-factory-use-onpremises-datasources.md#step-3-create-input-and-output-datasets)」を参照してください。
 
 ###<a name="adf-table-onprem-sql"></a>オンプレミスの SQL テーブル
 
@@ -211,7 +211,7 @@ Azure SQL Database 用にリンクされたサービスを作成するには、A
 * このスクリプトでは、**パイプライン名**を *AMLDSProcessPipeline* としています。
 * また、既定の実行時間 (12 am UTC) を使用して、ジョブが毎日実行されるようにパイプラインの周期性を設定していることにも注目してください。
 
-> [AZURE.NOTE]次の手順では、Azure PowerShell を使用して ADF パイプラインの定義と作成を行います。このタスクは、Azure プレビュー ポータルを使用しても行えます。詳細については、「[パイプラインを作成して実行する](data-factory-use-onpremises-datasources.md#step-4-create-and-run-a-pipeline)」を参照してください。
+> [AZURE.NOTE]次の手順では、Azure PowerShell を使用して ADF パイプラインの定義と作成を行います。このタスクは、Azure ポータルを使用しても行えます。詳細については、「[パイプラインを作成して実行する](data-factory-use-onpremises-datasources.md#step-4-create-and-run-a-pipeline)」を参照してください。
 
 上記のテーブル定義を使用して、ADF のパイプライン定義を次のように指定します。
 
@@ -286,7 +286,7 @@ Azure SQL Database 用にリンクされたサービスを作成するには、A
 
 	New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 
-Azure ポータルで (図をクリックすると) ADF 上にパイプラインが次のように表示されることを確認します。
+Azure クラシック ポータルで (図をクリックすると) ADF 上にパイプラインが次のように表示されることを確認します。
 
 ![](media/machine-learning-data-science-move-sql-azure-adf/DJP1kji.png)
 
@@ -301,4 +301,4 @@ Azure ポータルで (図をクリックすると) ADF 上にパイプライン
 
 ADF が提供するデータを段階的にパイプ処理する機能をまだ活用していないことに注意してください。これを行う方法と ADF が提供するその他の機能の詳細については、[ADF のドキュメント](http://azure.microsoft.com/services/data-factory/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

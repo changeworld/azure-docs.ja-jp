@@ -38,7 +38,7 @@ Azure CLI を使用して、Azure Data Lake Analytics アカウントを作成�
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 - **Azure CLI**。「[Azure CLI のインストールと構成](xplat-cli.md)」をご覧ください。
 	- このデモを完了するためには、**プレリリース版の ** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases)をダウンロードしてインストールします。
 - **認証**。次のコマンドを使用します。
@@ -95,7 +95,7 @@ Azure CLI を使用して、Azure Data Lake Analytics アカウントを作成�
 
 このチュートリアルでは、いくつかの検索ログを処理します。検索ログは、Data Lake Store または Azure BLOB ストレージに格納できます。
 
-Azure プレビュー ポータルでは、検索ログ ファイルを含む、既定の Data Lake アカウントにいくつかのサンプル データ ファイルをコピーするためのユーザー インターフェイスが提供されます。「[ソース データの準備](data-lake-analytics-get-started-portal.md#prepare-source-data)」を参照して、データを既定の Data Lake Store アカウントにアップロードします。
+Azure ポータルには、検索ログ ファイルを含むサンプル データ ファイルを既定の Data Lake アカウントにコピーするためのユーザー インターフェイスが用意されています。「[ソース データの準備](data-lake-analytics-get-started-portal.md#prepare-source-data)」を参照して、データを既定の Data Lake Store アカウントにアップロードします。
 
 CLI を使用してファイルをアップロードするには、次のコマンドを使用します。
 
@@ -166,7 +166,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 - より複雑なクエリを表示する場合は、「[チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」を参照してください。
 - U-SQL アプリケーションの開発を開始する場合は、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
 - U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
-- 管理タスクについては、「[Azure プレビュー ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」を参照してください。
+- 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

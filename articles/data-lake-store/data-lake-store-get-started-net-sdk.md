@@ -29,7 +29,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 ## 前提条件
 
 * Visual Studio 2013 または 2015以下の手順では、Visual Studio 2015 を使用します。
-* **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/zh-CN/pricing/free-trial/)に関するページを参照してください。
+* **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
 
 ## .NET アプリケーションの作成
@@ -223,4 +223,4 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 - [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

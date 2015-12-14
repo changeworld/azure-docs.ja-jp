@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/23/2015" 
+	ms.date="12/01/2015" 
 	ms.author="jeffstok"/>
 
 # Stream Analytics ジョブに**出力を追加**する方法
@@ -24,11 +24,11 @@ Stream Analytics の出力は、ダッシュボードまたはアラートのリ
 
 Stream Analytics ジョブに出力を追加するには:
 
-1. Azure ポータルの Stream Analytics ジョブで、**[出力]** をクリックし、**[出力の追加]** をクリックします。
+1. Azure クラシック ポータルの Stream Analytics ジョブで、**[出力]** をクリックし、**[出力の追加]** をクリックします。
 
     ![出力の追加](./media/stream-analytics-add-outputs/1-stream-analytics-add-outputs.png)
 
-    Azure プレビュー ポータルの Stream Analytics ジョブで、**[出力]** タイルをクリックします。
+    Azure ポータルの Stream Analytics ジョブで、**[出力]** タイルをクリックします。
 
     ![Azure ポータルでの出力の追加](./media/stream-analytics-add-outputs/5-stream-analytics-add-outputs.png)
 
@@ -36,7 +36,7 @@ Stream Analytics ジョブに出力を追加するには:
 
     ![データ型の選択](./media/stream-analytics-add-outputs/2-stream-analytics-add-outputs.png)
 
-    ![Azure プレビュー ポータルでのデータ型の選択](./media/stream-analytics-add-outputs/6-stream-analytics-add-outputs.png)
+    ![Azure ポータルでのデータ型の選択](./media/stream-analytics-add-outputs/6-stream-analytics-add-outputs.png)
 
 3. **[出力のエイリアス]** ボックスに、この出力のわかりやすい名前を入力します。この名前は、後で出力を参照するために、ジョブのクエリの中で使用できます。
     
@@ -50,7 +50,9 @@ Stream Analytics ジョブに出力を追加するには:
 
     ![イベント ハブの追加](./media/stream-analytics-add-outputs/4-stream-analytics-add-outputs.png)
 
-    ![Azure プレビュー ポータルでのイベント ハブの追加](./media/stream-analytics-add-outputs/7-stream-analytics-add-outputs.png)
+    ![Azure ポータルでのイベント ハブの追加](./media/stream-analytics-add-outputs/7-stream-analytics-add-outputs.png)
+
+> [Azure.Note]ジョブに追加される出力要素は、ジョブが開始されてイベントがフローを開始する前に存在している必要があります。たとえば、出力として BLOB Storage を使用する場合、ジョブはストレージ アカウントを自動的に作成しません。ASA ジョブを開始する前に、ユーザーが作成する必要があります。
 
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
@@ -63,4 +65,4 @@ Stream Analytics ジョブに出力を追加するには:
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/17/2015"
+   ms.date="12/01/2015"
    ms.author="tomfitz"/>
 
 # ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する
@@ -111,7 +111,7 @@
 
 ![ユーザーの選択](./media/resource-group-create-service-principal-portal/assign-to-role.png)
 
-ユーザー、アプリケーション、およびロールを使用した作業の詳細については、「[Azure 管理ポータルを使用したアクセス権の管理](active-directory/role-based-access-control-configure/#manage-access-using-the-azure-management-portal)」を参照してください。
+ポータルを使用してユーザーやアプリケーションをロールに割り当てる方法の詳細については、「[Azure 管理ポータルを使用したアクセス権の管理](../role-based-access-control-configure/#manage-access-using-the-azure-management-portal)」を参照してください。
 
 ## アクセス トークンをコードで取得する
 
@@ -162,4 +162,4 @@
 [12]: ./media/resource-group-create-service-principal-portal/add-icon.png
 [13]: ./media/resource-group-create-service-principal-portal/save-icon.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

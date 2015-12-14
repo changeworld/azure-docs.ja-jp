@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/17/2015" 
+	ms.date="11/24/2015" 
 	ms.author="awills"/>
  
 # Windows デバイス用 Application Insights のトラブルシューティングおよび Q&A
@@ -25,9 +25,8 @@
 
 *Application Insights が正常に追加された後でアプリケーションを実行したところ、ポータルにデータが表示されません。*
 
-* 少し待ってから、[最新の情報に更新] をクリックします。現時点では、自動での更新は行われません。
-* ApplicationInsights.config ファイル内で、インストルメンテーション キーが定義されていることをご確認ください。また、定義されているインストルメンテーション キーが Application Insights ポータル内のキーと同じであることをご確認ください。  
-キーを表示するには、概要ブレードで [Essentials] をクリックします。
+* 少し待ってから、[最新の情報に更新] をクリックします。
+* ApplicationInsights.config ファイル内で、インストルメンテーション キーが定義されていることをご確認ください。また、定義されているインストルメンテーション キーが Application Insights ポータル内のキーと同じであることをご確認ください。キーを表示するには、概要ブレードで [Essentials] をクリックします。
 * アプリが[外向きのネットワーク アクセスを要求すること](https://msdn.microsoft.com/library/windows/apps/hh452752.aspx)を確認します。
 * エミュレーターまたはテスト デバイスと Application Insights ポータルの間にファイアウォールはありますか。 dc.services.visualstudio.com と f5.services.visualstudio.com への送信トラフィック用に TCP ポート 80 および 443 を開く必要がある可能性があります。
 * Microsoft Azure のスタート ボードで、サービス状態マップをご確認ください。アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
@@ -36,12 +35,16 @@
 #### データが表示されていたのに停止しました。
 
 * [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
-* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
+* データ ポイントの月間クォータに達していませんか? Open Settings/Quota and Pricing to find out.上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
 
 ## ユニバーサル アプリに Application Insights を追加する方法は?
 
-ソリューションの各デバイス プロジェクトに NuGet パッケージを手動で追加します。「[概要 - ユニバーサル アプリ][universal]」を参照してください。
+Visual Studio 2015 で新しいソリューションを作成する場合は、[新しいプロジェクト] ダイアログで [Application Insights の追加] オプションを選択します。これは、すべてのターゲットとするアプリの種類から、同じ Application Insights リソースにテレメトリを送信します。
+
+ユニバーサル アプリ ソリューションを既に作成している場合は、各プライマリ プロジェクトを右クリックし、**[Application Insights の追加]** を選択します。
+
+
 
 ## テレメトリの無効化
 
@@ -121,4 +124,4 @@
 
  
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="11/04/2015"
+   ms.date="12/02/2015"
    ms.author="lodipalm;barbkess"/>
 
 # SQL Data Warehouse へのデータのロード
@@ -25,7 +25,7 @@ SQL Data Warehouse には、データをロードするために以下のよう�
 - SQL Server Integration Services (SSIS)
 - サード パーティ製のデータ ロード ツール
 
-SQL Data Warehouse では上記のすべてのメソッドを使用できますが、PolyBase が Azure BLOB ストレージからの読み込みを透過的に並列処理する機能を使用すると、データの読み込みが最速になります。[PolyBase を使用して読み込む][]方法を参照してください。また、ユーザーの多くがオンプレミス ソースから 100 GB 単位から 10 TB 単位の初期読み込みを要求した場合のように、以下のセクションでは、初期データ読み込みについていくつかのガイダンスを提供します。
+SQL Data Warehouse では上記のすべてのメソッドを使用できますが、PolyBase が Azure BLOB Storage からの読み込みを透過的に並列処理する機能を使用すると、データの読み込みが最速になります。[PolyBase を使用して読み込む][]方法を参照してください。また、ユーザーの多くがオンプレミス ソースから 100 GB 単位から 10 TB 単位の初期読み込みを要求した場合のように、以下のセクションでは、初期データ読み込みについていくつかのガイダンスを提供します。
 
 ## SQL Server から SQL Data Warehouse への初期ロード 
 オンプレミスの SQL Server インスタンスから SQL Data Warehouse にロードをするには、以下の手順をお勧めします。
@@ -58,7 +58,7 @@ Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name>
 ファイルへのデータのエクスポートに成功したら、ファイルを Azure に移動します。これは、次のセクションで述べる AZCopy もしくは "インポート/エクスポート" サービスで実行可能です。
 
 ## AZCopy またはインポート/エクスポートを使用した Azure へのロード
-5 から 10 TB の範囲かそれ以上のデータを移動する場合、Microsoft のディスク発送サービスの[インポート/エクスポート][]を使用してデータ移動を行うことをお勧めします。しかし、我々が調べたところ、テラバイトまでの範囲なら、AZCopy で公開インターネットを使って問題なくデータを移動できることがわかっています。この処理は ExpressRoute でスピードアップもしくは拡張できます。
+5 から 10 テラバイトもの範囲かそれ以上のデータを移動する場合、Microsoft のディスク発送サービスの[インポート/エクスポート][]を使用してデータ移動を行うことをお勧めします。しかし、我々が調べたところ、テラバイトまでの範囲なら、AZCopy で公開インターネットを使って問題なくデータを移動できることがわかっています。この処理は ExpressRoute でスピードアップもしくは拡張できます。
 
 次のステップで、AZCopy を使って、オンプレミスから Azure ストレージ アカウントにデータを移動する方法を詳しく説明します。同じリージョンに Azure ストレージ アカウントがない場合、[Azure Storage のドキュメント][]に従ってアカウントを 1 つ作成できます。異なるリージョンのストレージ アカウントからもデータをロードできます。しかし、この場合は最適なパフォーマンスとなりません。
 
@@ -151,7 +151,8 @@ WITH
 CREATE TABLE <Table Name> 
 WITH 
 (
-	CLUSTERED COLUMNSTORE INDEX
+	CLUSTERED COLUMNSTORE INDEX,
+	DISTRIBUTION = <HASH(<Column Name>)>/<ROUND_ROBIN>
 )
 AS 
 SELECT  * 
@@ -201,4 +202,4 @@ create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
 [Azure Storage のドキュメント]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-create-storage-account/
 [ExpressRoute に関するドキュメント]: http://azure.microsoft.com/documentation/services/expressroute/
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

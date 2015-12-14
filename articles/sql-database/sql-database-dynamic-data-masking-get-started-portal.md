@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL Database 動的データ マスクの使用 (Azure ポータル)"
-   description="Azure ポータルでの SQL Database 動的データ マスクの使用方法"
+   pageTitle="SQL Database 動的データ マスクの使用 (Azure クラシック ポータル)"
+   description="Azure クラシック ポータルでの SQL Database 動的データ マスクの使用方法"
    services="sql-database"
    documentationCenter=""
    authors="ronitr"
@@ -16,10 +16,10 @@
    ms.date="10/20/2015"
    ms.author="ronitr; ronmat; v-romcal; sstein"/>
 
-# SQL Database 動的データ マスクの使用 (Azure ポータル)
+# SQL Database 動的データ マスクの使用 (Azure クラシック ポータル)
 
 > [AZURE.SELECTOR]
-- [Dynamic Data Masking - Azure Preview portal](sql-database-dynamic-data-masking-get-started.md)
+- [Dynamic Data Masking - Azure Portal](sql-database-dynamic-data-masking-get-started.md)
 
 ## 概要
 
@@ -31,10 +31,10 @@ SQL Database 動的データ マスクは、特権のないユーザーに対し
 
 ## SQL Database 動的データ マスクの基礎
 
-Azure ポータルの [監視とセキュリティ] タブでデータベース用の動的データ マスク ポリシーを設定します。
+Azure クラシック ポータルの [監視とセキュリティ] タブでデータベース用の動的データ マスク ポリシーを設定します。
 
 
-> [AZURE.NOTE]Azure プレビュー ポータルで動的データ マスクを設定する方法について詳しくは、「[SQL Database 動的データ マスク (Azure プレビュー ポータル)](sql-database-dynamic-data-masking-get-started.md)」を参照してください。
+> [AZURE.NOTE]Azure ポータルで動的データ マスクを設定する方法について詳しくは、「[SQL Database 動的データ マスク (Azure ポータル)](sql-database-dynamic-data-masking-get-started.md)」を参照してください。
 
 
 ### 動的データ マスクのアクセス許可
@@ -61,9 +61,9 @@ Azure ポータルの [監視とセキュリティ] タブでデータベース�
 
 <a name="Anchor1"></a>
 
-## Azure ポータル使用によるデータベースの動的データ マスク設定
+## Azure クラシック ポータル使用によるデータベースの動的データ マスク設定
 
-1. Azure ポータル ([https://manage.windowsazure.com](https://manage.windowsazure.com)) を起動します。
+1. [https://manage.windowsazure.com](https://manage.windowsazure.com) で Azure クラシックを起動します。
 
 2. マスクするデータベースをクリックしてから **[監査とセキュリティ]** タブをクリックします。
 
@@ -96,4 +96,4 @@ Azure ポータルの [監視とセキュリティ] タブでデータベース�
 
 「[Azure SQL Database の操作](https://msdn.microsoft.com/library/dn505719.aspx)」を参照してください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

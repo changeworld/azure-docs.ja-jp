@@ -1,27 +1,32 @@
-<properties 
-	pageTitle="コマンド ラインでの Mobile Services の管理 | Microsoft Azure" 
-	description="コマンド ライン ツールを使用して Azure Mobile Services を作成、デプロイ、管理する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="Mobile" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="コマンド ラインでの Mobile Services の管理 | Microsoft Azure"
+	description="コマンド ライン ツールを使用して Azure Mobile Services を作成、デプロイ、管理する方法について説明します。"
+	services="mobile-services"
+	documentationCenter="Mobile"
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="NA" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="11/02/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="NA"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="11/02/2015"
 	ms.author="glenga"/>
 
-# コマンド ライン ツールを使用したモバイル サービスの自動化 
+# コマンド ライン ツールを使用したモバイル サービスの自動化
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 ##概要
 
-このトピックでは、Azure コマンド ライン ツールを使用して、Azure モバイル サービスの作成と管理を自動化する方法を紹介します。このトピックでは、コマンド ライン ツールのインストールとその使用を始めるための方法、およびコマンド ライン ツールを使用して主な Mobile Services を実行する方法について説明します。
- 
+このトピックでは、Azure コマンド ライン ツールを使用して、Azure Mobile Services の作成と管理を自動化する方法を紹介します。このトピックでは、コマンド ライン ツールのインストールとその使用を始めるための方法、およびコマンド ライン ツールを使用して主な Mobile Services を実行する方法について説明します。
+
 個々のコマンドを単一のスクリプトまたはバッチ ファイルと組み合わせることにより、モバイル サービスの作成、確認、および削除のプロセスを自動化することができます。
 
 このトピックでは、Azure コマンド ライン ツールでサポートされている一般的な管理タスクを取り上げます。詳細については、[Azure コマンド ライン ツールに関するドキュメント][reference-docs]を参照してください。
@@ -46,7 +51,7 @@
 
 	azure account download
 
-既定のブラウザーが開き、管理ポータルにサインインするよう求められます。サインインすると、`.publishsettings` ファイルがダウンロードされます。このファイルを保存した場所をメモしておきます。
+これにより、既定のブラウザーが開き、Azure クラシック ポータルにサインインするよう求められます。サインインすると、`.publishsettings` ファイルがダウンロードされます。このファイルを保存した場所をメモしておきます。
 
 次に、次のコマンドを実行して `.publishsettings` ファイルをインポートします。ここで、`<path-to-settings-file>` には、`.publishsettings` ファイルのパスを指定してください。
 
@@ -60,11 +65,11 @@
 
 	azure account -help
 
-発行設定をインポートした後は、セキュリティ上の理由から、`.publishsettings` ファイルを削除する必要があります。詳細については、「[Mac および Linux 用 Windows Azure コマンド ライン ツールのインストール方法]」を参照してください。これで、コマンド ラインまたはバッチ ファイルを使用して Azure モバイル サービスの作成および管理を開始する準備が整いました。
+発行設定をインポートした後は、セキュリティ上の理由から、`.publishsettings` ファイルを削除する必要があります。詳細については、「[Mac および Linux 用 Windows Azure コマンド ライン ツールのインストール方法]」を参照してください。これで、コマンド ラインまたはバッチ ファイルを使用して Azure Mobile Services の作成および管理を開始する準備が整いました。
 
 ##新しい Mobile Services を作成する方法
 
-コマンド ライン ツールを使用して、新しいモバイル サービス インスタンスを作成することができます。モバイル サービスを作成する間に、SQL データベース インスタンスを新しいサーバーに作成することもできます。
+コマンド ライン ツールを使用して、新しいモバイル サービス インスタンスを作成することができます。モバイル サービスを作成する間に、SQL Database インスタンスを新しいサーバーに作成することもできます。
 
 次のコマンドでは、新しいモバイル サービス インスタンスがサブスクリプション内で作成されます。`<service-name>` は新しいモバイル サービスの名前、`<server-admin>` は新しいサーバーのログイン名、`<server-password>` は新しいログインのパスワードです。
 
@@ -84,11 +89,11 @@
 
 ##既存の Mobile Services を削除する方法
 
-コマンド ライン ツールを使用して、関連する SQL データベースおよびサーバーと共に既存のモバイル サービスを削除することができます。次のコマンドでは、モバイル サービスが削除されます。`<service-name>` は、削除するモバイル サービスの名前です。
+コマンド ライン ツールを使用して、関連する SQL Database およびサーバーと共に既存のモバイル サービスを削除することができます。次のコマンドでは、モバイル サービスが削除されます。`<service-name>` は、削除するモバイル サービスの名前です。
 
 	azure mobile delete <service-name> -a -q
 
-このコマンドでは、`-a` パラメーターと `-q` パラメーターを含めることで、モバイル サービスで使用されている SQL データベースやサーバーも、確認メッセージを表示することなく削除されます。
+このコマンドでは、`-a` パラメーターと `-q` パラメーターを含めることで、モバイル サービスで使用されている SQL Database やサーバーも、確認メッセージを表示することなく削除されます。
 
 > [AZURE.NOTE]<code>-a</code> または <code>-d</code> と共に <code>-q</code> パラメーターを指定しなかった場合、例外が一時停止され、SQL Database の削除オプションを選択するように求めるメッセージが表示されます。<code>-a</code> パラメーターは、他のサービスでデータベースまたはサーバーが使用されていない場合にのみ使用してください。それ以外の場合は、削除する Mobile Services に含まれるデータのみを削除できるように <code>-d</code> パラメーターを使用してください。
 
@@ -104,9 +109,9 @@
 
 	azure mobile table create <service-name> <table-name> -p read=public,delete=admin
 
-次のテーブルでは、スクリプトのアクセス許可値と [Azure 管理ポータル]でのアクセス許可値を比較しています。
+次のテーブルでは、スクリプトのアクセス許可値と [Azure クラシック ポータル]でのアクセス許可値を比較しています。
 
-|スクリプト値|管理ポータルの値| |========|========| |`public`|すべてのユーザー| |`application`(既定値)|アプリケーション キーを持つユーザー| |`user`|認証されたユーザーのみ| |`admin`|スクリプトと管理者のみ|
+|スクリプト値|ポータルの値| |========|========| |`public`|すべてのユーザー| |`application`(既定値)|アプリケーション キーを持つユーザー| |`user`|認証されたユーザーのみ| |`admin`|スクリプトと管理者のみ|
 
 指定されたテーブルが既に存在する場合、`mobile table create` コマンドは失敗します。自動化スクリプト内では、テーブルの再作成を試行する前に、そのテーブルを削除する必要があります。
 
@@ -140,9 +145,9 @@
 
 	function insert(item, user, request) {
 	    ...
-	} 
+	}
 
-スクリプトの登録方法の詳細については、[モバイル サービスのサーバー スクリプト リファレンス]を参照してください。
+スクリプトの登録方法の詳細については、[Mobile Services のサーバー スクリプト リファレンス]を参照してください。
 
 <!-- Anchors. -->
 [Download and install the command-line tools]: #install
@@ -171,9 +176,9 @@
 
 
 <!-- URLs. -->
-[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p?LinkId=262293
+[Mobile Services のサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p?LinkId=262293
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [nodejs-org]: http://nodejs.org/
 [install-node-linux]: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 
@@ -182,6 +187,4 @@
 [reference-docs]: http://azure.microsoft.com/documentation/articles/virtual-machines-command-line-tools/#Commands_to_manage_mobile_services
 [Mac および Linux 用 Windows Azure コマンド ライン ツールのインストール方法]: http://go.microsoft.com/fwlink/p/?LinkId=275795
 
- 
-
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/15/2015"
+   ms.date="12/02/2015"
    ms.author="v-sharos"/>
 
 # StorSimple Manager サービスを使用してバックアップ ポリシーを管理する
@@ -28,7 +28,7 @@
 - **ポリシー名** – ポリシーに関連付けられた名前。次の種類のポリシーがあります。
 
    - スケジュールされたポリシー。ユーザーが明示的に作成します。
-   - 自動ポリシー。ボリュームの作成時にこのボリュームのオプションの既定のバックアップが有効になっている場合に作成されます。これらのポリシーの名前は、"VolumeName\_Default" という形式で指定されます。"VolumeName" は、ユーザーが管理ポータルで構成する StorSimple ボリュームの名前です。自動ポリシーにより、デバイス時刻の 22 時 30分を起点として、1 日のクラウド スナップショットを取得します。
+   - 自動ポリシー。ボリュームの作成時にこのボリュームのオプションの既定のバックアップが有効になっている場合に作成されます。これらのポリシーの名前は、"VolumeName\_Default" という形式で指定されます。"VolumeName" は、ユーザーが Azure クラシック ポータルで構成する StorSimple ボリュームの名前です。自動ポリシーにより、デバイス時刻の 22 時 30分を起点として、1 日のクラウド スナップショットを取得します。
    - インポートされたポリシー。作成元は StorSimple Snapshot Manager です。このポリシーには、インポート元の StorSimple Snapshot Manager ホストについて説明するタグが付いています。
 
 - **ボリューム** – ポリシーに関連付けられているボリューム。バックアップ ポリシーに関連付けられているボリュームは、すべてバックアップの作成時にグループ化されます。
@@ -49,7 +49,7 @@
 
 ## バックアップ ポリシーの追加
 
-自動的にバックアップをスケジュールするためのバックアップ ポリシーを追加します。StorSimple デバイスのバックアップ ポリシーを追加するには、管理ポータルで次の手順を実行します。ポリシーを追加した後は、スケジュールを定義できます (「[スケジュールの追加または変更](#add-or-modify-a-schedule)」を参照してください)。
+自動的にバックアップをスケジュールするためのバックアップ ポリシーを追加します。StorSimple デバイスのバックアップ ポリシーを追加するには、Azure クラシック ポータルで次の手順を実行します。ポリシーを追加した後は、スケジュールを定義できます (「[スケジュールの追加または変更](#add-or-modify-a-schedule)」を参照してください)。
 
 [AZURE.INCLUDE [storsimple-add-backup-policy](../../includes/storsimple-add-backup-policy.md)]
 
@@ -60,26 +60,26 @@
 
 ## スケジュールの追加または変更
 
-StorSimple デバイスで、既存のバックアップ ポリシーに関連付けられるスケジュールを追加または変更できます。スケジュールを追加または変更するには、管理ポータルで次の手順を実行します。
+StorSimple デバイスで、既存のバックアップ ポリシーに関連付けられるスケジュールを追加または変更できます。スケジュールを追加または変更するには、Azure クラシック ポータルで次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-add-modify-backup-schedule](../../includes/storsimple-add-modify-backup-schedule.md)]
 
 ## バックアップ ポリシーの削除
 
-StorSimple デバイスからバックアップ ポリシーを削除するには、管理ポータルで次の手順を実行します。
+StorSimple デバイスからバックアップ ポリシーを削除するには、Azure クラシック ポータルで次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-delete-backup-policy](../../includes/storsimple-delete-backup-policy.md)]
 
 
 ## 手動バックアップの取得
 
-1 つのボリュームに対し、オンデマンドの (手動) バックアップを作成するには、管理ポータルで次の手順を実行します。
+1 つのボリュームに対し、オンデマンドの (手動) バックアップを作成するには、Azure クラシック ポータルで次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-create-manual-backup](../../includes/storsimple-create-manual-backup.md)]
 
 ## 複数のボリュームとスケジュールによるカスタム バックアップ ポリシーの作成
 
-複数のボリュームとスケジュールを含むカスタム バックアップ ポリシーを作成するには、管理ポータルで次の手順を実行します。
+複数のボリュームとスケジュールを含むカスタム バックアップ ポリシーを作成するには、Azure クラシック ポータルで次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-create-custom-backup-policy](../../includes/storsimple-create-custom-backup-policy.md)]
 
@@ -88,4 +88,4 @@ StorSimple デバイスからバックアップ ポリシーを削除するに�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

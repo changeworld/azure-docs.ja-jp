@@ -72,12 +72,12 @@ Azure に仮想マシン (VM) を作成し、複数のネットワーク イン�
 |DS11|2|
 |DS12|4|
 |DS13|8|
-|DS14|16|
+|DS14|8|
 |D1\_v2|1|
 |D2\_v2|2|
 |D3\_v2|4|
 |D4\_v2|8|
-|D5\_v2|16|
+|D5\_v2|8|
 |D11\_v2|2|
 |D12\_v2|4|
 |D13\_v2|8|
@@ -265,4 +265,4 @@ Linux VM の場合、既定の動作では弱いホスト ルーティングが�
 - [リソース マネージャー デプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-arm-template) をデプロイします。
 - [従来のデプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-classic-ps) をデプロイします。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

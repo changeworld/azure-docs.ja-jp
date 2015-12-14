@@ -274,7 +274,7 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 > * アプリケーション ID - サービス プリンシパルの作成時に返されます
 > * サービス プリンシパルのパスワード - サービス プリンシパルの作成時に使用
 
-「[Azure リソース マネージャーでのサービス プリンシパルの認証](https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-authenticate-service-principal/#authenticate-service-principal-with-password---azure-cli)」ドキュメントの「_パスワードによるサービス プリンシパルの認証 - Azure CLI_」の手順に従います。これにより、クラスター作成要求の認証に使用できる新しいサービス プリンシパルが作成されます。
+「[Azure リソース マネージャーでのサービス プリンシパルの認証](https://azure.microsoft.com/documentation/articles/resource-group-authenticate-service-principal/#authenticate-service-principal-with-password---azure-cli)」ドキュメントの「_パスワードによるサービス プリンシパルの認証 - Azure CLI_」の手順に従います。これにより、クラスター作成要求の認証に使用できる新しいサービス プリンシパルが作成されます。
 
 ##認証トークンの取得
 
@@ -355,4 +355,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

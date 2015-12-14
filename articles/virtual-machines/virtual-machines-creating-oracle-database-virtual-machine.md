@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure ポータルで Oracle データベース VM を作成する |Microsoft Azure"
-	description="従来のデプロイ モデルと Azure プレビュー ポータルで、Oracle Database を使用して仮想マシンを作成する方法について説明します。"
+	pageTitle="Azure クラシック ポータルで Oracle データベース VM を作成する |Microsoft Azure"
+	description="従来のデプロイ モデルと Azure ポータルで、Oracle Database を使用して仮想マシンを作成する方法について説明します。"
 	services="virtual-machines"
 	authors="bbenz"
 	documentationCenter=""
@@ -24,7 +24,7 @@
 
 ##Azure で Oracle Database VM を作成するには
 
-1.	[Azure プレビュー ポータル](https://ms.portal.azure.com/)にログインします。
+1.	[Azure ポータル](https://ms.portal.azure.com/)にログインします。
 
 2.	**[Marketplace]**、**[Compute]** をクリックし、続いて検索ボックスに**「Oracle」**と入力します。
 
@@ -57,7 +57,7 @@
 
 ##Azure で Oracle Database VM を使ってデータベースを作成するには
 
-1.	[Azure プレビュー ポータル](https://ms.portal.azure.com/)にログインします。
+1.	[Azure ポータル](https://ms.portal.azure.com/)にログインします。
 
 2.	**[Virtual Machines]** をクリックします。
 
@@ -149,7 +149,7 @@
 
 ### ポート 1521 のパブリック エンドポイントを作成する
 
-1.	[Azure プレビュー ポータル](https://ms.portal.azure.com/)にログインします。
+1.	[Azure ポータル](https://ms.portal.azure.com/)にログインします。
 
 2.	**[参照]** をクリックします。
 
@@ -176,9 +176,9 @@
 10. **[OK]** をクリックします。
 
 ##Oracle Database Enterprise Manager のリモート アクセスを有効にする
-Oracle Database Enterprise Manager のリモート アクセスを有効にする場合は、ファイアウォールでポート 5500 を開き、Azure ポータルで 5500 に対して仮想マシンのエンドポイントを作成します (ポート 1521 を開き、1521 に対してエンドポイントを作成する上記手順を使用)。続いて、Oracle Enterprise Manager をリモート コンピューターから実行するには、ブラウザーを開いて `http://<<unique_domain_name>>:5500/em` の形式の URL にアクセスします。
+Oracle Database Enterprise Manager のリモート アクセスを有効にする場合は、ファイアウォールでポート 5500 を開き、Azure クラシック ポータルで 5500 に対して仮想マシンのエンドポイントを作成します (ポート 1521 を開き、1521 に対してエンドポイントを作成する上記手順を使用)。続いて、Oracle Enterprise Manager をリモート コンピューターから実行するには、ブラウザーを開いて `http://<<unique_domain_name>>:5500/em` の形式の URL にアクセスします。
 
-> [AZURE.NOTE]*<<unique\_domain\_name>>* の値を確認するには、[Azure ポータル](https://ms.portal.azure.com/)内で **[Virtual Machines]** をクリックし、続いて Oracle Database を実行するために使用している仮想マシンを選択します。
+> [AZURE.NOTE]*<<unique\_domain\_name>>* の値を確認するには、[Azure クラシック ポータル](https://ms.portal.azure.com/)内で **[Virtual Machines]** をクリックし、続いて Oracle Database を実行するために使用している仮想マシンを選択します。
 
 ##基本的なオプションと高度なオプションのバンドルを構成する
 **Oracle Database と基本的なオプション** または**Oracle Database と高度なオプションのバンドル** を選択した場合、次の手順で Oracle のインストールにアドオン機能を構成します。Windows でこれらを設定する手順については、Oracle のマニュアルを参照してください。個々のコンポーネントのニーズ次第で構成は大きく変わります。
@@ -200,4 +200,4 @@ Oracle Database Enterprise Manager のリモート アクセスを有効にす�
 
 -	[Oracle Database 2 日間 DBA 12c リリース 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

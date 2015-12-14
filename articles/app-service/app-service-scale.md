@@ -62,7 +62,7 @@ Azure に存在する各種コンピューティング階層については、[�
 	
 	![SQL Database のスケーリング](./media/app-service-scale/ScaleDatabase.png)
 	
-4. アプリで Storage を使用する場合、Storage をサポートしている価格レベルを選択すると、geo レプリケーションが自動的に設定します。これに対して、SQL を使用する場合は、SQL Database の高可用性と障害復旧機能を向上させるために、geo レプリケーションを手動で構成する必要があります。そのためには、**[Geo レプリケーション]** パートをクリックします。
+4. アプリで Storage を使用する場合、Storage をサポートしている価格レベルを選択すると、geo レプリケーションが自動的に設定します。これに対して、SQL を使用する場合は、SQL Database の高可用性と障害復旧機能を向上させるために、geo レプリケーションを手動で構成する必要があります。そのためには、**[ジオ (主要地域) レプリケーション]** パートをクリックします。
 	
 	![SQL Database の geo レプリケーションの設定](./media/app-service-scale/GeoReplication.png)
 	
@@ -90,7 +90,7 @@ Azure に存在する各種コンピューティング階層については、[�
 <a name="Next Steps"></a>
 ## 次のステップ
 
-- Azure を利用し始めるには、「[Microsoft Azure の無料試用版サイト](/pricing/free-trial/)」を参照してください。
+- Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイト](/pricing/free-trial/)」を参照してください。
 - 料金、サポート、および SLA については、次のリンクを参照してください。
 	
 	[データ転送の料金詳細](/pricing/details/data-transfers/)
@@ -116,8 +116,7 @@ Azure に存在する各種コンピューティング階層については、[�
 	- [Azure Websites のスケールを設定する方法 - Stefan Schackow 共演](/documentation/videos/how-azure-web-sites-scale/)
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 <!-- LINKS -->
 [vmsizes]: http://go.microsoft.com/fwlink/?LinkId=309169
@@ -131,4 +130,4 @@ Azure に存在する各種コンピューティング階層については、[�
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

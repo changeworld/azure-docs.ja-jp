@@ -34,7 +34,7 @@ Hue は Hadoop クラスターとの情報のやりとりに使用される一�
 
 ## スクリプト アクションを使用した Hue のインストール
 
-HDInsight クラスターに Hue をインストールするには、[https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh) スクリプト アクションが使用されます。このセクションでは、Azure ポータルを使用してクラスターをプロビジョニングする際にスクリプトを使用する方法について説明します。
+HDInsight クラスターに Hue をインストールするには、[https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh) スクリプト アクションが使用されます。このセクションでは、Azure クラシック ポータルを使用してクラスターをプロビジョニングする際にこのスクリプトを使用する方法について説明します。
 
 > [AZURE.NOTE]Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
@@ -47,7 +47,7 @@ HDInsight クラスターに Hue をインストールするには、[https://hd
 	![Hue のスクリプト アクション パラメーターを指定します。](./media/hdinsight-hadoop-hue-linux/hue_script_action.png "Hue のスクリプト アクション パラメーターを指定します。")
 
 	* __[名前]__: スクリプト アクションの表示名を入力します。
-	* __スクリプト URI__: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh
+	* __[スクリプト URI]__: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh
 	* __[ヘッド]__: このオプションをオンにします。
 	* __[ワーカー]__: 空白のままにします。
 	* __[ZOOKEEPER]__: 空白のままにします。
@@ -85,7 +85,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 	![Hive を使用する](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Hive.png "Hive を使用する")
 
-2. **[支援]** タブの **[データベース]** に **hivesampletable** が表示されるはずです。これは HDInsight のすべての Hadoop クラスターに含まれるサンプル テーブルです。右ペインでサンプル クエリを入力します。画面キャプチャのように、下のペインの **[結果]** タブに出力が表示されます。
+2. **[支援]** タブの **[データベース]** に **hivesampletable** が表示されるはずです。これは HDInsight のすべての Hadoop クラスターに含まれるサンプル テーブルです。右ペインでサンプル クエリを入力します。スクリーン キャプチャに示すように、下のペインの **[結果]** タブに出力が表示されます。
 
 	![Hive クエリを実行する](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Hive.Query.png "Hive クエリを実行する")
 
@@ -137,4 +137,4 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

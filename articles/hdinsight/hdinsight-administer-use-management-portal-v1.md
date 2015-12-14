@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure ポータルを使用した HDInsight での Hadoop クラスターの管理 | Microsoft Azure"
+	pageTitle="Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理 | Microsoft Azure"
 	description="HDInsight サービスを管理する方法を学習します。HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。"
 	services="hdinsight"
 	documentationCenter=""
@@ -16,16 +16,16 @@
 	ms.date="11/04/2015"
 	ms.author="jgao"/>
 
-# Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
+# Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理
 
-[Azure ポータル](https://manage.windowsazure.com)を使用すると、Azure HDInsight で Hadoop クラスターをプロビジョニングし、Hadoop ユーザーのパスワードを変更して、クラスターで Hadoop コマンド コンソールにアクセスできるようにリモート デスクトップ プロトコル (RDP) を有効にすることができます。
+[Azure クラシック ポータル](https://manage.windowsazure.com)を使用すると、Azure HDInsight で Hadoop クラスターをプロビジョニングし、Hadoop ユーザーのパスワードを変更して、クラスターで Hadoop コマンド コンソールにアクセスできるようにリモート デスクトップ プロトコル (RDP) を有効にすることができます。
 
 [AZURE.INCLUDE [hdinsight-azure-portal](../../includes/hdinsight-azure-portal.md)]
 
-* [Azure プレビュー ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md)
+* [Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md)
 
 ## HDInsight を管理するためのその他のツール
-Azure ポータル以外にも、HDInsight を管理するツールが用意されています。
+Azure クラシック ポータル以外にも、HDInsight を管理するツールが用意されています。
 
 - Azure PowerShell を使用して HDInsight を管理する方法の詳細については、[Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)に関するページを参照してください。
 
@@ -41,7 +41,7 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 
 ##HDInsight クラスターのプロビジョニング
 
-Azure ポータルから [簡易作成] または [カスタム作成] オプションを使用して、HDInsight クラスターをプロビジョニングできます。手順については、次の各リンクを参照してください。
+Azure クラシック ポータルから [簡易作成] または [カスタム作成] オプションを使用して、HDInsight クラスターをプロビジョニングできます。手順については、次の各リンクを参照してください。
 
 - [簡易作成を使用したクラスターのプロビジョニング](../hdinsight-get-started.md#provision)
 - [カスタム作成を使用したクラスターのプロビジョニング](hdinsight-provision-clusters.md#portal)
@@ -70,7 +70,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 
 **HDInsight クラスターのユーザー名とパスワードを変更するには**
 
-1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 2. 左側のウィンドウで **[HDINSIGHT]** をクリックします。デプロイした HDInsight クラスターが一覧表示されます。
 3. ユーザー名とパスワードをリセットする HDInsight クラスターをクリックします。
 4. ページの上部にある **[構成]** をクリックします。
@@ -87,7 +87,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 
 **リモート デスクトップを有効にするには**
 
-1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 2. 左側のウィンドウで **[HDINSIGHT]** をクリックします。デプロイした HDInsight クラスターが一覧表示されます。
 3. 接続する HDInsight クラスターをクリックします。
 4. ページの上部にある **[構成]** をクリックします。
@@ -105,7 +105,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 
 **RDP を使用してクラスターに接続するには**
 
-1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 2. 左側のウィンドウで **[HDINSIGHT]** をクリックします。デプロイした HDInsight クラスターが一覧表示されます。
 3. 接続する HDInsight クラスターをクリックします。
 4. ページの上部にある **[構成]** をクリックします。
@@ -121,7 +121,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 
 2. 証明書の場所を参照して、証明書を右クリックします。**[証明書のインストール]** をクリックし、コンピューターの個人用ストアに証明書をインストールします。証明書のプロパティを編集し、フレンドリ名を割り当てます。
 
-3. Azure ポータルに証明書をインポートします。ポータルで、ページの左下にある **[設定]** をクリックし、**[管理証明書]** をクリックします。ページの下部で **[アップロード]** をクリックして指示に従い、前の手順で作成した .cer ファイルをアップロードします。
+3. Azure クラシック ポータルに証明書をインポートします。ポータルで、ページの左下にある **[設定]** をクリックし、**[管理証明書]** をクリックします。ページの下部で **[アップロード]** をクリックして指示に従い、前の手順で作成した .cer ファイルをアップロードします。
 
 	![HDI.ClusterCreate.UploadCert][image-hdiclustercreate-uploadcert]
 
@@ -136,13 +136,13 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 - Oozie
 - Templeton
 
-既定では、これらのサービスへのアクセス許可が付与されます。Azure ポータルからアクセス許可を取り消す/付与することができます。
+既定では、これらのサービスへのアクセス許可が付与されます。アクセス権の取り消しまたは付与は、Azure クラシック ポータルから実行できます。
 
 >[AZURE.NOTE]アクセス許可を付与するか、取り消すことで、クラスターのユーザー名とパスワードがリセットされます。
 
 **HTTP Web サービスのアクセス許可を付与する/取り消すには**
 
-1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 2. 左側のウィンドウで **[HDINSIGHT]** をクリックします。デプロイした HDInsight クラスターが一覧表示されます。
 3. 構成する HDInsight クラスターをクリックします。
 4. ページの上部にある **[構成]** をクリックします。
@@ -158,7 +158,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 **Hadoop コマンド ラインを開くには**
 
-1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 2. 左側のウィンドウで **[HDINSIGHT]** をクリックします。デプロイした Hadoop クラスターが一覧表示されます。
 3. 接続する HDInsight クラスターをクリックします。
 3. ページの上部にある **[構成]** をクリックします。
@@ -185,7 +185,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 [HDInsight での Hadoop クラスターのスケール](hdinsight-hadoop-cluster-scaling.md)に関するページを参照してください。
 
 ##次のステップ
-この記事では、Azure ポータルを使用して HDInsight クラスターを作成する方法、および Hadoop コマンド ライン ツールを開く方法について説明しました。詳細については、次の記事を参照してください。
+この記事では、Azure クラシック ポータルを使用して HDInsight クラスターを作成する方法、および Hadoop コマンド ライン ツールを開く方法について説明しました。詳細については、次の記事を参照してください。
 
 * [Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)
 * [Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
@@ -198,4 +198,4 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal-v1/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
 [image-hdiclustercreate-uploadcert]: ./media/hdinsight-administer-use-management-portal-v1/hdi.clustercreate.uploadcert.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

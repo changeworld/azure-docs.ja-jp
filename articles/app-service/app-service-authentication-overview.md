@@ -18,6 +18,8 @@
 
 # Azure App Service での API Apps と Mobile Apps の認証
 
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
+
 ## 概要
 
 この記事では、[API Apps](../app-service-api/app-service-api-apps-why-best-platform.md) と [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop-preview.md)の組み込み認証機能について説明します。
@@ -214,4 +216,4 @@ Azure の [ASP.NET Identity](http://www.asp.net/identity) や [Thinktecture](htt
 
 * [アクセス トークンを取得し、Mobile Apps の SharePoint API を呼び出す](../app-service-mobile/app-service-mobile-dotnet-backend-get-started-connect-to-enterprise.md#obtain-token)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

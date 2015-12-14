@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/13/2015"
+   ms.date="12/02/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ
 
-このトピックでは、Azure リソース マネージャーのテンプレートを使用して Azure にアプリケーションをデプロイする方法について説明します。また、Azure PowerShell、Azure CLI、REST API、または Microsoft Azure プレビュー ポータルを使用して、アプリケーションをデプロイする方法も示します。
+このトピックでは、Azure リソース マネージャーのテンプレートを使用して Azure にアプリケーションをデプロイする方法について説明します。また、Azure PowerShell、Azure CLI、REST API、または Azure ポータルを使用して、アプリケーションをデプロイする方法も示します。
 
 リソース マネージャーの概要については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。テンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
@@ -32,17 +32,7 @@
 
 1. Azure アカウントにログインします。資格情報を提供すると、コマンドがアカウントの情報を返します。
 
-    Azure PowerShell 1.0 Preview 未満:
-
-        PS C:\> Switch-AzureMode AzureResourceManager
-        ...
-        PS C:\> Add-AzureAccount
-
-        Id                             Type       ...
-        --                             ----    
-        someone@example.com            User       ...   
-
-    Azure PowerShell 1.0 Preview:
+    Azure PowerShell 1.0:
 
          PS C:\> Login-AzureRmAccount
 
@@ -219,13 +209,13 @@ Visual Studio では、リソース グループ プロジェクトを作成し�
 
 リソース グループで Visual Studio を使用する概要については、「[Azure リソース グループ デプロイ プロジェクトの作成とデプロイ](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
 
-## プレビュー ポータルでデプロイする
+## ポータルでデプロイする
 
-ご存知でしょうか。 [プレビュー ポータル](https://portal.azure.com/)を使用して作成するすべてのアプリケーションは、Azure リソース マネージャーのテンプレートに基づいています。 ポータルを使用して仮想マシン、Virtual Network、ストレージ アカウント、App Service、またはデータベースを作成するだけで、追加の操作を行わなくても、Azure リソース マネージャーの利点を活用できます。**[新規]** アイコンを選択するだけで、Azure リソース マネージャーを使用してアプリケーションのデプロイを進めることができます。
+ご存知でしょうか。 [ポータル](https://portal.azure.com/)を使用して作成するすべてのアプリケーションは、Azure リソース マネージャーのテンプレートに基づいています。 ポータルを使用して仮想マシン、Virtual Network、ストレージ アカウント、App Service、またはデータベースを作成するだけで、追加の操作を行わなくても、Azure リソース マネージャーの利点を活用できます。**[新規]** アイコンを選択するだけで、Azure リソース マネージャーを使用してアプリケーションのデプロイを進めることができます。
 
 ![新規](./media/resource-group-template-deploy/new.png)
 
-プレビュー ポータルと Azure リソース マネージャーの使用方法の詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)」を参照してください。
+Azure リソース マネージャーの使用方法の詳細については、「[Azure ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)」を参照してください。
 
 
 ## パラメーター ファイル
@@ -259,4 +249,4 @@ Visual Studio では、リソース グループ プロジェクトを作成し�
 
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

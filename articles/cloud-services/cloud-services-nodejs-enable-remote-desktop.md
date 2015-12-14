@@ -58,9 +58,9 @@
 
 サービス定義の更新を発行後は、ロール インスタンスに接続することができます。
 
-1.  [Azure 管理ポータル]で **[クラウド サービス]** を選択し、サービスを選択します。
+1.  [Azure クラシック ポータル]で **[クラウド サービス]** を選択し、サービスを選択します。
 
-	![Azure 管理ポータル][cloud-services]
+	![Azure クラシック ポータル][cloud-services]
 
 2.  **[インスタンス]** をクリックし、**[運用]** または **[ステージング]** をクリックしてサービスのインスタンスを表示します。インスタンスを選択し、ページの下部にある **[接続]** をクリックします。
 
@@ -74,7 +74,7 @@
 
     ![Windows のセキュリティに関するメッセージ][5]
 
-4.  **[接続]** をクリックすると、インスタンスにアクセスするための資格情報を入力するように求めるセキュリティ メッセージが表示されます。[手順 1.](手順 1: Azure PowerShell を使用して、リモート デスクトップ アクセス用にサービスを構成する) で作成したパスワードを入力し、**[OK]** をクリックします。
+4.  **[接続]** をクリックすると、インスタンスにアクセスするための資格情報を入力するように求めるセキュリティ メッセージが表示されます。[手順 1.][手順 1: Azure PowerShell を使用して、リモート デスクトップ アクセス用にサービスを構成する] で作成したパスワードを入力し、**[OK]** をクリックします。
 
     ![ユーザー名/パスワードの入力を求めるメッセージ][6]
 
@@ -102,7 +102,7 @@
 
   [Azure PowerShell ]: http://go.microsoft.com/?linkid=9790229&clcid=0x409
 
-[Azure 管理ポータル]: http://manage.windowsazure.com
+[Azure クラシック ポータル]: http://manage.windowsazure.com
 [publish-project]: ./media/cloud-services-nodejs-enable-remote-desktop/publish-rdp.png
 [enable-rdp]: ./media/cloud-services-nodejs-enable-remote-desktop/enable-rdp.png
 [cloud-services]: ./media/cloud-services-nodejs-enable-remote-desktop/cloud-services-remote.png
@@ -116,4 +116,4 @@
   [Azure ロールでのリモート デスクトップの使用]: http://msdn.microsoft.com/library/windowsazure/gg443832.aspx
  
 
-<!----HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

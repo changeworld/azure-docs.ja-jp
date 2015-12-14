@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Cloud App Discovery のセキュリティとプライバシーの考慮事項"
+	pageTitle="Cloud App Discovery のセキュリティとプライバシーの考慮事項 | Microsoft Azure"
 	description="このトピックでは、Cloud App Discovery に関連するセキュリティとプライバシーの考慮事項について説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/03/2015"
+	ms.date="12/01/2015"
 	ms.author="markusvi"/>
 
 # Cloud App Discovery のセキュリティとプライバシーの考慮事項
@@ -177,4 +177,4 @@ TLS によるインターセプションが、エンド ユーザー エクス�
 
 * [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

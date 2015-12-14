@@ -13,30 +13,27 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/19/2015"
+   ms.date="12/01/2015"
    ms.author="tomfitz"/>
 
 # リソース マネージャーによるサービス、リージョン、API バージョンのサポート
 
-Azure リソース マネージャーは、アプリケーションを構成するサービスをデプロイして管理するための新しい方法を提供します。
-すべてではありませんがほとんどのサービスはリソース マネージャーをサポートし、一部のサービスはリソース マネージャーを部分的にのみサポートします。Microsoft は将来のソリューションに重要なすべてのサービスに対してリソース マネージャーを有効にする予定ですが、サポートが一貫したものになるまでは、各サービスの現在の状態を把握する必要があります。このトピックでは、Azure リソース マネージャーに対してサポートされるリソース プロバイダーの一覧を示します。
+Azure リソース マネージャーは、アプリケーションを構成するサービスをデプロイして管理するための新しい方法を提供します。すべてではありませんがほとんどのサービスはリソース マネージャーをサポートし、一部のサービスはリソース マネージャーを部分的にのみサポートします。Microsoft は将来のソリューションに重要なすべてのサービスに対してリソース マネージャーを有効にする予定ですが、サポートが一貫したものになるまでは、各サービスの現在の状態を把握する必要があります。このトピックでは、Azure リソース マネージャーに対してサポートされるリソース プロバイダーの一覧を示します。
 
 リソースをデプロイするときは、リソースをサポートしているリージョンとリソースで利用できる API バージョンも知っておく必要があります。「[サポートされているリージョン](#supported-regions)」セクションでは、サブスクリプションおよびリソースで有効なリージョンを確認する方法が示されています。「[サポートされる API バージョン](#supported-api-versions)」セクションでは、利用できる API バージョンを決定する方法について紹介します。
 
-次の表では、各サービスがリソース マネージャーによるデプロイメントと管理をサポートするかどうかを示します。「**リソースの移動**」列は、この種類のリソースを新しいリソース グループおよび新しいサブスクリプションの両方に移動できるかどうかを示します。「**プレビュー ポータル**」列は、プレビュー ポータルを使用してサービスを作成できるかどうかを示します。
+次の表では、各サービスがリソース マネージャーによるデプロイメントと管理をサポートするかどうかを示します。「**リソースの移動**」列は、この種類のリソースを新しいリソース グループおよび新しいサブスクリプションの両方に移動できるかどうかを示します。「**ポータル**」列は、[Azure ポータル](https://portal.azure.com)を使用してサービスを作成できるかどうかを示します。
 
 
 ## コンピューティング
 
-| サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
+| サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------------------------ | -------------- | -------------- |-------- | ------ |
 | Virtual Machines | あり | あり、多くのオプション | いいえ | [VM の作成](https://msdn.microsoft.com/library/azure/mt163591.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json) |
 | Batch  
  | あり | [あり (クラシックのみ)](https://portal.azure.com/#create/Microsoft.BatchAccount) | あり | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | |
 | Dynamics Lifecycle Services | はい | いいえ | | | |
-| Virtual Machines (クラシック) | 限定的 | はい | 部分的 (後述参照) | - | - |
-| RemoteApp | いいえ | いいえ | - | - | - |
-| Service Fabric | いいえ | いいえ | - | - | - |
+| Virtual Machines (クラシック) | 限定的 | あり、多くのオプション | 部分的 (後述参照) | - | - | | RemoteApp | いいえ | いいえ | - | - | - | | Service Fabric | いいえ | いいえ | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイメント モデルではなくクラシック デプロイメント モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイメント モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 
@@ -44,7 +41,7 @@ Virtual Machines (クラシック) リソースは、新しいリソース グ�
 
 ## ネットワーク
 
-| サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
+| サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | -------- | -------------- | -------- | ------ |
 | Application Gateway | はい | | | | |
 | DNS | はい | | | [DNS ゾーンの作成](https://msdn.microsoft.com/library/azure/mt130622.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Network.json) |
@@ -55,7 +52,7 @@ Virtual Machines (クラシック) リソースは、新しいリソース グ�
 
 ## データ + ストレージ
 
-| サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
+| サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | ------- | -------------- | -------- | ------ |
 | DocumentDB | あり | [はい](https://portal.azure.com/#create/Microsoft.DocumentDB) | あり | [DocumentDB REST](https://msdn.microsoft.com/library/azure/dn781481.aspx) | |
 | Storage | あり | [はい](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) | いいえ | [Storage の作成](https://msdn.microsoft.com/library/azure/mt163564.aspx) | [ストレージ アカウント](resource-manager-template-storage.md) |
@@ -67,7 +64,7 @@ Virtual Machines (クラシック) リソースは、新しいリソース グ�
 
 ## Web とモバイル
 
-| サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
+| サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | -------- | -------------- | -------- | ------ |
 | API Management | はい | いいえ | はい | [Create API](https://msdn.microsoft.com/library/azure/dn781423.aspx#CreateAPI) | |
 | API Apps | あり | [はい](https://portal.azure.com/#create/microsoft_com.ApiApp.0.2.0-preview) | | | [2015-03-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-03-01-preview/Microsoft.AppService.json) |
@@ -83,29 +80,17 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 ## 分析
 
-| サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
+| サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | --------- | -------------- | -------- | ------ |
 | イベント ハブ | はい | いいえ | | [Event Hub の作成](https://msdn.microsoft.com/library/azure/dn790676.aspx) | |
 | Stream Analytics | あり | [はい](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) | | | |
 | HDInsights | あり | [はい](https://portal.azure.com/#create/Microsoft.HDInsightCluster) | あり | | |
 | Data Factory | あり | [はい](https://portal.azure.com/#create/Microsoft.DataFactory) | あり | [Data Factory の作成](https://msdn.microsoft.com/library/azure/dn906717.aspx) | |
-| Machine Learning | いいえ | いいえ | - | - | - |
-| Data Catalog | いいえ | いいえ | - | - | - |
-
-## ネットワーク
-
-| サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
-| ------- | ------- | -------- | -------------- | -------- | ------ |
-| Application Gateway | はい | | | | |
-| DNS | はい | | | [DNS ゾーンの作成](https://msdn.microsoft.com/library/azure/mt130622.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Network.json) |
-| Load Balancer | はい | | | [Load Balancer の作成](https://msdn.microsoft.com/library/azure/mt163574.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Network.json) |
-| Virtual Networks | あり | [はい](https://portal.azure.com/#create/Microsoft.VirtualNetwork-ARM) | いいえ | [Virtual Network の作成](https://msdn.microsoft.com/library/azure/mt163661.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Network.json) |
-| Traffic Manager | はい | いいえ | | [Traffic Manager プロファイルの作成](https://msdn.microsoft.com/library/azure/mt163581.aspx) | |
-| ExpressRoute | あり | なし | いいえ | [ExpressRoute REST](https://msdn.microsoft.com/library/azure/mt586720.aspx) | |
+| Machine Learning | いいえ | いいえ | - | - | - | | Data Catalog | いいえ | いいえ | - | - | - |
 
 ## メディアと CDN
 
-| サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
+| サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | -------- | -------------- | -------- | ------ |
 | CDN | はい (プレビュー) | いいえ | | | |
 | メディア サービス | いいえ | いいえ | | | |
@@ -113,32 +98,29 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 ## ハイブリッド統合
 
-| サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
+| サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | -------------- | -------------- | -------- | ------ |
 | BizTalk Services | はい | いいえ | | | [2014-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.BizTalkServices.json) |
 | Service Bus | あり | いいえ | | [Service Bus REST](https://msdn.microsoft.com/library/azure/hh780717.aspx) | |
-| Backup | いいえ | いいえ | - | - | - |
-| Site Recovery | いいえ | いいえ| - | - | - |
+| Backup | いいえ | いいえ | - | - | - | | Site Recovery | いいえ | いいえ| - | - | - |
 
 ## ID 管理とアクセス管理 
 
-| サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
+| サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | -------------- | -------------- | -------- | ------ |
-| Azure Active Directory | いいえ | いいえ | - | - | - |
-| Azure Actice Directory B2C | いいえ | いいえ | - | - | - |
-| Multi-Factor Authentication | いいえ | いいえ | - | - | - |
+| Azure Active Directory | いいえ | いいえ | - | - | - | | Azure Actice Directory B2C | いいえ | いいえ | - | - | - | | Multi-Factor Authentication | いいえ | いいえ | - | - | - |
 
 ## 開発者サービス 
 
-| サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
+| サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | ---------- | -------------- | -------- | ------ |
-| アプリケーション インサイト | あり | [はい](https://portal.azure.com/#create/Microsoft.AppInsights.0.2.3-preview) | いいえ | | [2014-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.Insights.json) |
+| Application Insights | あり | [はい](https://portal.azure.com/#create/Microsoft.AppInsights.0.2.3-preview) | いいえ | | [2014-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.Insights.json) |
 | Bing Maps | あり | [はい](https://portal.azure.com/#create/bingmaps.mapapis.1.0.4) | | | |
 | Visual Studio アカウント | はい | | | | [2014-02-26](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-02-26/microsoft.visualstudio.json) |
 
 ## 管理 
 
-| サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
+| サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | --------- | -------------- | -------- | ------ |
 | Automation | あり | [はい](https://portal.azure.com/#create/Microsoft.AutomationAccount.1.0.2-preview) | あり | | |
 | Key Vault | はい | いいえ | はい | [Key Vault](https://msdn.microsoft.com/library/azure/dn903609.aspx) | |
@@ -148,7 +130,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 ## リソース マネージャー
 
-| 機能 | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
+| 機能 | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | -------- | -------------- | -------- | ------ |
 | 承認 | あり | 該当なし | 該当なし | [管理ロック](https://msdn.microsoft.com/library/azure/mt204563.aspx)<br >[ロール ベースのアクセス制御](https://msdn.microsoft.com/library/azure/dn906885.aspx) | [リソース ロック](resource-manager-template-lock.md)<br />[ロールの割り当て](resource-manager-template-role.md) |
 | リソース | あり | 該当なし | 該当なし | [リンク済みリソース](https://msdn.microsoft.com/library/azure/mt238499.aspx) | [リソース リンク](resource-manager-template-links.md) |
@@ -166,7 +148,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 ### PowerShell
 
-次の例では、Azure PowerShell 1.0 Preview を使用して Web サイトのサポートされるリージョンを取得する方法を示します。1.0 Preview リリースの詳細については、「[Azure PowerShell 1.0 Preview](https://azure.microsoft.com/blog/azps-1-0-pre/)」を参照してください。
+次の例では、Azure PowerShell 1.0 を使用して Web サイトのサポートされるリージョンを取得する方法を示します。1.0 リリースの詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
 
     PS C:\> ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
     
@@ -218,7 +200,7 @@ Azure PowerShell 0.9.8 では、次のコマンドを使用します。
 
 ### PowerShell
 
-次の例では、Azure PowerShell 1.0 プレビューを利用し、特定のリソースの種類で利用できる API バージョンを取得する方法を示します。
+次の例では、Azure PowerShell 1.0 を利用し、特定のリソースの種類で利用できる API バージョンを取得する方法を示します。
 
     ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
     
@@ -252,4 +234,4 @@ Azure PowerShell 0.9.8 では、次を使用します。
 - リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 - リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

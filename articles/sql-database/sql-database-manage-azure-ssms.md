@@ -21,7 +21,7 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](sql-database-manage-portal.md)
+- [Azure Portal](sql-database-manage-portal.md)
 - [SSMS](sql-database-manage-azure-ssms.md)
 - [PowerShell](sql-database-command-line-tools.md)
 
@@ -34,7 +34,7 @@ Azure SQL Database を操作する際は、常に最新バージョンの SSMS �
 
 SQL データベースに接続するには、Azure 上のサーバー名が必要になります。この情報を入手するには、ポータルへのサインインが必要になる場合があります
 
-1.  [Azure 管理ポータル](http://manage.windowsazure.com)にサインインします。
+1.  [Azure クラシック ポータル](http://manage.windowsazure.com)にサインインします。
 
 2.  左のウィンドウで、**[SQL データベース]** をクリックします。
 
@@ -192,4 +192,4 @@ SQL データベースでは、個々のデータベースを監視するのに�
  
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

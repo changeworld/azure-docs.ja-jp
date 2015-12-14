@@ -22,10 +22,10 @@
 ## 構成要素の開発
 発行ポータルでソリューション テンプレートに進む前に、ソリューションの構成要素を決定する必要があります。プロセスに役立つドキュメントへのリンクを次に示します。
 
-1. [Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](https://azure.microsoft.com/ja-JP/documentation/articles/best-practices-resource-manager-design-templates/)
-2. [Azure リソース マネージャーのテンプレートの作成](https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-authoring-templates/)
+1. [Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](../best-practices-resource-manager-design-templates.md)
+2. [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
 3. Azure クイック スタート テンプレート:
-  - [https://azure.microsoft.com/ja-JP/documentation/templates/](https://azure.microsoft.com/ja-JP/documentation/templates/)
+  - [https://azure.microsoft.com/ja-JP/documentation/templates/](https://azure.microsoft.com/documentation/templates/)
   - [https://github.com/azure/azure-quickstart-templates](https://github.com/azure/azure-quickstart-templates)
 
 ## 次のステップ
@@ -34,4 +34,4 @@
 
 [link-acct]: marketplace-publishing-accounts-creation-registration.md
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

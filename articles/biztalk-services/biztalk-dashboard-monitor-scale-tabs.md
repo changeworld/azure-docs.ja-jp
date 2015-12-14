@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="BizTalk Services での [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] | Microsoft Azure" 
-	description="BizTalk Services の管理ポータルのタブのコントロールについて説明し、パフォーマンスを監視します: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続]。MABS、WABS" 
+	description="BizTalk Services のクラシック ポータルのタブのコントロールについて説明し、パフォーマンスを監視します: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続]。MABS、WABS" 
 	services="biztalk-services" 
 	documentationCenter="" 
 	authors="MandiOhlinger" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/26/2015" 
+	ms.date="12/02/2015" 
 	ms.author="mandia"/>
 
 
@@ -23,28 +23,25 @@
 
 BizTalk サービスを作成してアプリケーションを配置した後は、BizTalk サービスの設定の一部を変更し、アプリケーションのパフォーマンスを監視できます。
 
-Azure 管理ポータルを開くと、自動的に [**すべてのアイテム**] タブが表示されます。BizTalk サービスを表示するには、**[すべてのアイテム]** タブで BizTalk サービスを選択するか、**[BizTalk サービス]** タブを選択してから BizTalk サービス名を選択します。
+Azure クラシック ポータルを開くと、自動的に [**すべてのアイテム**] タブが表示されます。BizTalk サービスを表示するには、**[すべてのアイテム]** タブで BizTalk サービスを選択するか、**[BizTalk サービス]** タブを選択してから BizTalk サービス名を選択します。
 
 新しいウィンドウが開き、次のタブが表示されます。このトピックでは、これらのタブについて説明します。
 
 ## クイック スタート (![クイック スタート][QuickStart])
-BizTalk サービスのエディションによっては、ここに示したオプションの一部が表示されないこともあります。
-<table border="1">
-    <tr>
-        <td><strong>ツールの入手</strong></td>
+BizTalk サービスのエディションによっては、ここに示したオプションの一部が表示されないこともあります。<table border="1"> <tr> <td><strong>ツールの入手</strong></td>
 
-        <td>BizTalk サービス SDK をダウンロードし、Visual Studio プロジェクト テンプレートを内部設置型の開発用コンピューターにインストールします。 これらのテンプレートは、BizTalk サービスにデプロイされる<strong>BizTalk サービス</strong> (ブリッジ) および <strong>BizTalk サービス アーティファクト</strong> (変換) Visual Studio プロジェクトを作成します。
+        <td>Download the BizTalk Services SDK to install the Visual Studio project templates on your on-premises development computer. These templates create the <strong>BizTalk Services</strong> (bridge) and the <strong>BizTalk Service Artifacts</strong> (Transform) Visual Studio projects that are deployed to your BizTalk Service.
         <br/><br/>
-		作業を開始する手順については、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">Azure BizTalk Services SDK を使用して開始する方法に関するページ</a> および <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">Azure BizTalk Services SDK のインストールに関するページ</a> を参照してください。
+		<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335"> How do I Start Using the Azure BizTalk Services SDK </a> and <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">Installing the Azure BizTalk Services SDK</a> lists the steps to get started.
         </td>
     </tr>
 
     <tr>
-        <td><strong>パートナー契約の作成</strong></td>
+        <td><strong>Create partner agreements</strong></td>
 
-        <td>Azure でホストされている Azure BizTalk サービス ポータルを開きます。ここで、パートナーを追加し、X12 契約、AS2 契約、および EDIFACT EDI 契約を作成します。
+        <td>Opens the Azure BizTalk Services Portal hosted on Azure where you add partners and create X12, AS2, and EDIFACT EDI agreements.
         <br/><br/>
-        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk サービス ポータル上の EDI メッセージングのコンポーネントの構成に関するページ</a>で、作業を開始する手順を説明しています。
+        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">Configuring Components for EDI Messaging on BizTalk Services Portal</a> lists the steps to get started.
         </td>
     </tr>
 
@@ -72,7 +69,7 @@ BizTalk サービス ポータルに関する詳細情報については、<a HR
 <td>Access Control 名前空間の<strong>接続情報</strong></td>
 <td>[接続情報] を選択すると、[Access Control 名前空間]、[既定の発行者]、および [既定のキー] が表示されます。この値はコピーできます。
 <br/><br/>
-Access Control 管理ポータルを開くこともできます。「<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">方法: Access Control 名前空間を作成する</a>」では、Access Control 管理ポータルについて詳細に説明されています。</td>
+Access Control ポータルを開くこともできます。「<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">方法: Access Control 名前空間を作成する</a>」では、Access Control ポータルについて詳細に説明されています。</td>
 </tr>
 
 <tr>
@@ -83,9 +80,9 @@ Access Control 管理ポータルを開くこともできます。「<a HREF="ht
 <br/><br/>
 <ol>
 <li>BizTalk サービスを選択し、<strong>[キーの同期]</strong> を選択します。セカンダリ キーを選択します。これを行うと、BizTalk サービスはセカンダリ キーの使用を開始します。</li>
-<li>Azure 管理ポータルで、ストレージ アカウントを選択してプライマリ キーを再生成します。BizTalk サービスはセカンダリ キーを使用していることに注意してください。</li>
+<li>Azure クラシック ポータルで、ストレージ アカウントを選択してプライマリ キーを再生成します。BizTalk サービスはセカンダリ キーを使用していることに注意してください。</li>
 <li>BizTalk サービスを選択し、<strong>[キーの同期]</strong> を選択します。プライマリ キーを選択します。これは、再生成した新しいプライマリ キーです。</li>
-<li>Azure 管理ポータルで、ストレージ アカウントを選択してセカンダリ キーを再生成します。</li>
+<li>Azure クラシック ポータルで、ストレージ アカウントを選択してセカンダリ キーを再生成します。</li>
 </ol>
 <br/>
 このプロセスを "キーのロールオーバー" といいます。その目的は、BizTalk サービスを中断せずにプライマリ キーとセカンダリ キーの間で切り替えを行うことです。</td>
@@ -170,7 +167,7 @@ BizTalk サービス名を選択すると、[ダッシュボード] タブが表
 </tr>
 <tr>
 <td><strong>サブスクリプション名</strong></td>
-<td>この BizTalk サービスをホストしているサブスクリプションの名前が表示されます。サブスクリプションは、Azure 管理ポータルへのアクセスを管理します。</td>
+<td>この BizTalk サービスをホストしているサブスクリプションの名前が表示されます。サブスクリプションは、Azure クラシック ポータルへのアクセスを管理します。</td>
 </tr>
 <tr>
 <td><strong>サブスクリプション ID</strong></td>
@@ -178,7 +175,7 @@ BizTalk サービス名を選択すると、[ダッシュボード] タブが表
 </tr>
 </table>
 
-「[BizTalk サービス: Azure 管理ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)」に、BizTalk サービスを作成する手順が記載されています。
+「[BizTalk サービス: Azure クラシック ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)」に、BizTalk サービスを作成する手順が記載されています。
 
 
 ##### タスク バーの [管理]、[接続情報]、[キーの同期]、[削除]:
@@ -197,9 +194,9 @@ BizTalk サービス ポータルに関する詳細情報については、<a HR
 <td>Access Control 名前空間の<strong>接続情報</strong></td>
 <td>[Access Control 名前空間]、[既定の発行者]、[既定のキー] が表示されます。これらの値はコピー可能です。
 <br/><br/>
-Access Control 管理ポータルを開くこともできます。この Access Control 管理ポータルは、左のナビゲーション ウィンドウにある [Active Directory] オプションを使用するのと同じです。
+Access Control ポータルを開くこともできます。Access Control ポータルは、左のナビゲーション ウィンドウで [Active Directory] オプションを使用するのと同じです。
 <br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">ACS 名前空間の管理に関するページ</a>では、Access Control 管理ポータルについて詳細に説明されています。</td>
+<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">ACS 名前空間の管理に関するページ</a>では、Access Control ポータルについて詳細に説明されています。</td>
 </tr>
 <tr>
 <td>ストレージ アカウントの<strong>キーの同期</strong></td>
@@ -209,9 +206,9 @@ Access Control 管理ポータルを開くこともできます。この Access 
 <br/><br/>
 <ol>
 <li>BizTalk サービスを選択し、<strong>[キーの同期]</strong> を選択します。セカンダリ キーを選択します。これを行うと、BizTalk サービスはセカンダリ キーの使用を開始します。</li>
-<li>Azure 管理ポータルで、ストレージ アカウントを選択してプライマリ キーを再生成します。BizTalk サービスはセカンダリ キーを使用していることに注意してください。</li>
+<li>Azure クラシック ポータルで、ストレージ アカウントを選択してプライマリ キーを再生成します。BizTalk サービスはセカンダリ キーを使用していることに注意してください。</li>
 <li>BizTalk サービスを選択し、<strong>[キーの同期]</strong> を選択します。プライマリ キーを選択します。これは、再生成した新しいプライマリ キーです。</li>
-<li>Azure 管理ポータルで、ストレージ アカウントを選択してセカンダリ キーを再生成します。</li>
+<li>Azure クラシック ポータルで、ストレージ アカウントを選択してセカンダリ キーを再生成します。</li>
 </ol>
 <br/>
 このプロセスを "キーのロールオーバー" といいます。その目的は、BizTalk サービスを中断せずにプライマリ キーとセカンダリ キーの間で切り替えを行うことです。</td>
@@ -236,17 +233,14 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 
 ##### グラフ内のメトリックを削除または表示するには:
 1. **[監視]** タブを選択します。
-2. タスク バーで [**メトリックの追加**] を選択します。  
-![[メトリックの追加] を選択する][AddMetrics]
+2. タスク バーで [**メトリックの追加**] を選択します。![[メトリックの追加] を選択する][AddMetrics]
 3. 表示したいパフォーマンス メトリックのチェック ボックスをオンにします。
 4. チェックマークを選択して **[監視]** タブに戻ります。
 5. グラフにメトリック値を表示するメトリックの横にある円を選択します。  
 
-	たとえば、**[CPU 使用率]** メトリックが淡色表示されているとき、グラフにその出力は表示されません。  
-![CPU 使用率のメトリックは淡色表示される][GrayedMetric]  
+	たとえば、**[CPU 使用率]** メトリックが淡色表示されているとき、グラフにその出力は表示されません。![CPU 使用率のメトリックは淡色表示される][GrayedMetric]
 
-	淡色表示された円をクリックすると、**[CPU 使用率]** メトリックが有効になり、グラフ内で表示されます。  
-![[CPU 使用率] メトリックが有効になっている][EnabledMetric]
+	淡色表示された円をクリックすると、**[CPU 使用率]** メトリックが有効になり、グラフ内で表示されます。![[CPU 使用率] メトリックが有効になっている][EnabledMetric]
 
 6. 特定のメトリックをグラフ表示とリストから削除するには、タスク バーの **[メトリックの削除]** を選択します。メトリックを再びリストに追加するには、タスク バーの **[メトリックの追加]** を選択し、そのメトリックのチェック ボックスをオンにしてから、チェックマークを選択して **[監視]** タブに戻ります。淡色表示されている円を選択すると、そのメトリックが有効な状態になります。
 
@@ -335,7 +329,7 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 
 
 ## <a name="HybridConnections"></a>ハイブリッド接続
-"ハイブリッド接続" を使用すると、Azure のアプリケーション (たとえば Web サイトや Mobile Services) と、静的 TCP ポートを使用する内部設置型リソース (たとえば SQL Server、MySQL、HTTP Web API、ほとんどのカスタム Web サービス) とを接続できます。ハイブリッド接続の管理は、BizTalk サービスで、Azure 管理ポータルを使用して行います。
+"ハイブリッド接続" を使用すると、Azure のアプリケーション (たとえば Web サイトや Mobile Services) と、静的 TCP ポートを使用する内部設置型リソース (たとえば SQL Server、MySQL、HTTP Web API、ほとんどのカスタム Web サービス) とを接続できます。ハイブリッド接続の管理は、BizTalk サービスで、Azure クラシック ポータルを使用して行います。
 
 Azure の Web サイトでハイブリッド接続を作成するには、[ハイブリッド接続: Azure Web サイトから内部設置型リソースへの接続に関するページ](http://go.microsoft.com/fwlink/p/?LinkId=397538)を参照してください。
 
@@ -355,7 +349,7 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
 ## 関連項目
 - [ハイブリッド接続](integration-hybrid-connection-overview.md)  
 - [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)  
-- [BizTalk サービス: Azure 管理ポータルを使用した BizTalk サービスのプロビジョニング](biztalk-provision-services.md)  
+- [BizTalk サービス: Azure クラシック ポータルを使用したプロビジョニング](biztalk-provision-services.md)  
 - [BizTalk サービス: BizTalk サービスの状態のグラフに関するページ](biztalk-service-state-chart.md)  
 - [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
@@ -365,4 +359,4 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

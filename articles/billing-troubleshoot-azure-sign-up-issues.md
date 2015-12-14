@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="11/25/2015"
-	ms.author="rgarodia, azuresbcic"/>
+	ms.author="rgarodia"/>
 
 # Azure サインアップに関する問題のトラブルシューティング
 この記事は、Azure にサインアップする際に発生の可能性がある問題について、その一般的な原因を探るのに役立ちます。
@@ -60,4 +60,4 @@ Azure 使用条件契約書では、以前に使用経験のないユーザー�
 ## まだサインアップできませんか?
 サインアップに関する問題がまだ解決しない場合、または発生している問題がこの記事で扱われていない場合は、[Azure サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

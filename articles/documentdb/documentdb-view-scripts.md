@@ -1,6 +1,6 @@
 <properties
 	pageTitle="DocumentDB スクリプト エクスプローラーを使用したストアド プロシージャ、トリガー、およびユーザー定義関数の表示 | Microsoft Azure"
-	description="DocumentDB のサーバー側プログラミング アーティファクト (ストアド プロシージャ、トリガー、ユーザー定義関数など) を表示するための Azure プレビュー ポータル ツール、DocumentDB スクリプト エクスプローラーについて説明します。"
+	description="DocumentDB のサーバー側プログラミング アーティファクト (ストアド プロシージャ、トリガー、ユーザー定義関数など) を表示するための Azure ポータル ツール、DocumentDB スクリプト エクスプローラーについて説明します。"
 	services="documentdb"
 	authors="AndrewHoh"
 	manager="jhubbard"
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="09/02/2015"
+	ms.date="12/01/2015"
 	ms.author="anhoh"/>
 
 # DocumentDB スクリプト エクスプローラーを使用してストアド プロシージャ、トリガー、ユーザー定義関数を表示、編集、作成する
 
-この記事では、DocumentDB のサーバー側プログラミング アーティファクト (ストアド プロシージャ、トリガー、ユーザー定義関数など) の表示を可能にする Azure プレビュー ポータル ツール、[Microsoft Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) スクリプト エクスプローラーの概要を説明します。DocumentDB サーバー側のプログラミングについて詳しくは、[こちら](documentdb-programming.md)をご覧ください。
+この記事では、DocumentDB のサーバー側プログラミング アーティファクト (ストアド プロシージャ、トリガー、ユーザー定義関数など) の表示を可能にする Azure ポータル ツール、[Microsoft Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) スクリプト エクスプローラーの概要を説明します。DocumentDB サーバー側のプログラミングについて詳しくは、[こちら](documentdb-programming.md)をご覧ください。
 
 このチュートリアルを完了すると、次の質問に回答できるようになります。
 
@@ -106,4 +106,4 @@
 DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

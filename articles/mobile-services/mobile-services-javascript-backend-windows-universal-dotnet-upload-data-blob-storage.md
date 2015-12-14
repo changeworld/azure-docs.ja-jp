@@ -38,7 +38,7 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 
 このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
 
-##管理ポータルで登録されている挿入スクリプトを更新する
+##Azure クラシック ポータルで登録されている挿入スクリプトを更新する
 
 [AZURE.INCLUDE [mobile-services-configure-blob-storage](../../includes/mobile-services-configure-blob-storage.md)]
 
@@ -79,12 +79,10 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 [Send push notifications to Windows Store apps using Service Bus from a .NET back-end]: http://go.microsoft.com/fwlink/?LinkId=277073&clcid=0x409
 [Mobile Services のサーバー スクリプト リファレンス]: mobile-services-how-to-use-server-scripts.md
 [モバイル サービスの使用]: mobile-services-javascript-backend-windows-store-dotnet-get-started.md
-
-[Azure Management Portal]: https://manage.windowsazure.com/
 [How To Create a Storage Account]: ../storage-create-storage-account.md
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
 [Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

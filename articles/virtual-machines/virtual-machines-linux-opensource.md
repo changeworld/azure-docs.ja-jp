@@ -77,7 +77,7 @@ Debian は、dpkg および apt-get パッケージ管理に基づく、Linux �
 CentOS Linux ディストリビューションは、Red Hat Enterprise Linux (RHEL) のソースから派生した、安定した、予測可能で管理しやすい再現可能なプラットフォームです。
 
 1. [MSOpenTech VM Depot](https://vmdepot.msopentech.com/List/Index?sort=Featured&search=centos)
-2. [イメージ ギャラリー](http://azure.microsoft.com/en-in/marketplace/partners/OpenLogic/)
+2. [イメージ ギャラリー](http://azure.microsoft.com/marketplace/partners/OpenLogic/)
 3. [方法: Azure 用のカスタム CentOS ベースの VM の準備](virtual-machines-linux-create-upload-vhd-centos.md)
 4. [ブログ: OpenLogic から CentOS VM イメージをデプロイする方法](http://azure.microsoft.com/blog/2013/01/11/deploying-openlogic-centos-images-on-windows-azure-virtual-machines/)
 6. [方法: AMQP や Service Bus 用の Apache Qpid Proton-C のインストール](http://msdn.microsoft.com/library/azure/dn235560.aspx)
@@ -96,7 +96,7 @@ CentOS Linux ディストリビューションは、Red Hat Enterprise Linux (RH
 
 CoreOS は、カスタマイズを細かく制御できる純粋なコンピューティングのスケーリングのための軽量で最適化されたディストリビューションです。
 
-10. [イメージ ギャラリー](http://azure.microsoft.com/en-in/marketplace/partners/coreos/)  
+10. [イメージ ギャラリー](http://azure.microsoft.com/marketplace/partners/coreos/)  
 11. [方法: Azure での CoreOS の使用](virtual-machines-linux-coreos-how-to.md)
 12. [方法: Azure 上の CoreOS での fleet と Docker の使用](virtual-machines-linux-coreos-fleet-get-started.md)
 13. [ブログ: TechEd Europe -- Windows Docker クライアント と Linux コンテナー](http://azure.microsoft.com/blog/2014/10/28/new-docker-coreos-topics-linux-on-azure/)
@@ -121,7 +121,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 1. [基本: Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli-install.md)
 4. [基本: 証明書の使用と管理](http://msdn.microsoft.com/library/azure/gg981929.aspx)
 5. [基本: Linux ユーザー名の選択](virtual-machines-linux-usernames.md)
-6. [基本: Azure ポータルを使用した Linux VM へのログオン](virtual-machines-linux-how-to-log-on.md)
+6. [基本: Azure クラシック ポータルを使用した Linux VM へのログオン](virtual-machines-linux-how-to-log-on.md)
 7. [基本: SSH](virtual-machines-linux-use-ssh-key.md)
 8. [基本: Linux 用のパスワードまたは SSH プロパティをリセットする方法](virtual-machines-linux-use-vmaccess-reset-password-or-ssh.md)
 9. [基本: ルートの使用](virtual-machines-linux-use-root-privileges.md)
@@ -150,7 +150,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 
 1. [イメージ](https://vmdepot.msopentech.com/List/Index?sort=Featured&search=java)
 2. [方法: AMQP 1.0 を使用した Java からの Service Bus の使用](http://msdn.microsoft.com/library/azure/jj841073.aspx)
-3. [方法: Azure ポータルを使用した Linux 上での Tomcat7 の設定](virtual-machines-linux-setup-tomcat7-linux.md)
+3. [方法: Azure クラシック ポータルを使用した Linux 上での Tomcat7 の設定](virtual-machines-linux-setup-tomcat7-linux.md)
 4. [ビデオ: サービス管理用の Azure Java SDK](http://channel9.msdn.com/Shows/Cloud+Cover/Episode-157-The-Java-SDK-for-Azure-Management-with-Brady-Gaster)
 5. [ブログ: Java 用 Azure 管理ライブライの概要](http://azure.microsoft.com/blog/2014/09/15/getting-started-with-the-azure-java-management-libraries/)
 5. [GitHub のリポジトリ: Azure Toolkit for Eclipse with Java](https://github.com/MSOpenTech/WindowsAzureToolkitForEclipseWithJava)
@@ -185,7 +185,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 
 このセクションで不足を埋めましょう。ご提案があれば PR をお送りください。または下記のコメントにご記載ください。
 
-1. [Azure CLI を使用して複数の VM のデプロイメントを作成する](virtual-machines-create-multi-vm-deployment-../xplat-cli-install.md)
+1. [Azure CLI を使用して複数の VM のデプロイを作成する](virtual-machines-create-multi-vm-deployment-../xplat-cli-install.md)
 2. [Patrick Chanezon の Azure Linux GitHub リポジトリ](https://github.com/chanezon/azure-linux)
 3. [ビデオ: **usbip** を使用して Linun のオンプレミス USB データを Azure に移動する方法](http://channel9.msdn.com/Blogs/Open/On-premises-USB-devices-on-Linux-on-Azure-via-usbip)
 4. [ビデオ: fernapp を使用してブラウザーで Azure の Linux ベースの GUI にアクセスする](http://channel9.msdn.com/Blogs/Open/Accessing-Linux-based-GUI-on-Azure-over-browser-with-fernapp)
@@ -263,7 +263,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 1. Docker
 	- [Azure での Linux 用 Docker VM 拡張機能](virtual-machines-docker-vm-extension.md)
 	- [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](virtual-machines-docker-with-../xplat-cli-install.md)
-	- [Azure プレビュー ポータルでの Docker VM 拡張機能の使用](virtual-machines-docker-with-portal.md)
+	- [Azure ポータルでの Docker VM 拡張機能の使用](virtual-machines-docker-with-portal.md)
 	- [Azure Marketplace で Docker をすばやく開始する](virtual-machines-docker-ubuntu-quickstart.md)
 	- [Azure で docker マシンを使用する方法](virtual-machines-docker-machine.md)
 	- [Azure 上の Swarm における Docker の使用方法](virtual-machines-docker-swarm.md)
@@ -273,7 +273,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 3. Deis
 	- [GitHub のリポジトリ: Azure 上の CoreOS クラスターへの Deis のインストール](https://github.com/chanezon/azure-linux/tree/master/coreos/deis)
 4. Kubernetes
-	- [CoreOS と Weave を使用した Kubernetes クラスターのデプロイメントの自動化に関する包括的なガイド](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)
+	- [CoreOS と Weave を使用した Kubernetes クラスターのデプロイの自動化に関する包括的なガイド](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)
 	- [Kubernetes Visualizer](http://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure)
 5. Jenkins と Hudson
 	- [ブログ: Azure 用 Jenkins スレーブ プラグイン](http://msopentech.com/blog/2014/09/23/announcing-jenkins-slave-plugin-azure/)
@@ -311,4 +311,4 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 [How to use docker-machine on Azure]: virtual-machines-docker-machine.md
 [How to use docker with swarm on Azure]: virtual-machines-docker-swarm.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

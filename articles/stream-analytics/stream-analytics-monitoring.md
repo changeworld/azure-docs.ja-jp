@@ -21,19 +21,19 @@
 
 ## [監視] ページ
 
-Microsoft Azure 管理ポータルと Azure プレビュー ポータルは両方とも、ジョブの監視とトラブルシューティングに使用できる主要なパフォーマンス メトリックを明らかにします。
+Azure クラシック ポータルと Azure ポータルは両方とも、ジョブの監視とトラブルシューティングに使用できる主要なパフォーマンス メトリックを明らかにします。
 
-Microsoft Azure 管理ポータルでは、実行中の Stream Analytics ジョブの **[監視]** タブをクリックし、これらのメトリックを確認します。[監視] ページにパフォーマンス メトリックが表示されるまで、最大 1 分の遅延が生じます。
+Azure クラシック ポータルでは、実行中の Stream Analytics ジョブの **[監視]** タブをクリックし、これらのメトリックを確認します。[監視] ページにパフォーマンス メトリックが表示されるまで、最大 1 分の遅延が生じます。
 
   ![Monitoring Dashboard](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)
 
-Azure プレビュー ポータルでは、メトリックの確認に関心のある Stream Analytics ジョブを参照し、**[監視]** 画面を表示します。
+Azure ポータルでは、メトリックの確認に関心のある Stream Analytics ジョブを参照し、**[監視]** 画面を表示します。
 
-  ![Azure プレビュー ポータルの Monitoring Dashboard](./media/stream-analytics-monitoring/06-stream-analytics-monitoring.png)
+  ![Azure ポータルの監視ダッシュボード](./media/stream-analytics-monitoring/06-stream-analytics-monitoring.png)
 
 Stream Analytics ジョブを初めてリージョンに作成したときに、そのリージョン用の診断を構成する必要があります。これを行うには、**[監視]** セクションのいずれかの場所をクリックし、**[診断]** ブレードを表示します。ここで、診断を有効にし、データを監視するためのストレージ アカウントを指定できます。
 
-  ![Azure プレビュー ポータルの診断構成](./media/stream-analytics-monitoring/07-stream-analytics-monitoring.png)
+  ![Azure ポータルの診断構成](./media/stream-analytics-monitoring/07-stream-analytics-monitoring.png)
 
 ## Stream Analytics に利用できるメトリック  
 
@@ -46,7 +46,7 @@ Stream Analytics ジョブを初めてリージョンに作成したときに、
 | 異常イベント | イベント順序ポリシーに基づいて、削除された、または調整されたタイムスタンプが付与された、順不同で受信したイベントの数。誤順序の許容期間の設定の構成により、影響を受けることがあります。 |
 | データ変換エラー | Stream Analytics のジョブによって発生した、データ変換エラーの数。 |
 | 遅延入力イベント | 到着遅延許容期間の設定のイベント順序ポリシーの構成に基づいて、削除された、または調整されたタイムスタンプが付与された、ソースから遅れて到着するイベントの数。 |
-## Microsoft Azure 管理ポータルでの監視のカスタマイズ ##
+## Azure クラシック ポータルでの監視のカスタマイズ ##
 
 最大 6 つのメトリックをグラフに表示することができます。
 
@@ -62,15 +62,15 @@ Stream Analytics ジョブを初めてリージョンに作成したときに、
 
 定義済みのしきい値をジョブが超えた場合に電子メールで通知されるように規則を設定することができます。
 
-## Azure プレビュー ポータルでの監視のカスタマイズ ##
+## Azure ポータルでの監視のカスタマイズ ##
 
 グラフのタイプ、表示されるメトリック、および時間範囲を [グラフの編集] 設定で調整できます。詳細については、「[監視のカスタマイズ方法](./azure-portal/insights-how-to-customize-monitoring.md)」をご覧ください。
 
-  ![Azure プレビュー ポータルの Time Scale](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)
+  ![Azure ポータルのタイム スケール](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)
 
 ## ジョブの状態
 
-Stream Analytics のジョブの状態は、Azure ポータルのジョブの一覧で確認することができます。Azure ポータルで Stream Analytics アイコンをクリックすると、ジョブの一覧が表示されます。
+Stream Analytics のジョブの状態は、Azure クラシック ポータルのジョブの一覧で確認することができます。Azure クラシック ポータルで Stream Analytics アイコンをクリックすると、ジョブの一覧が表示されます。
 
 | 状態 | 定義 |
 |--------|------------|
@@ -85,7 +85,7 @@ Stream Analytics のジョブの状態は、Azure ポータルのジョブの一
 
 ## 診断
 
-Microsoft Azure 管理ポータルのジョブのダッシュボードには、入力、出力、操作ログ、またはこれらすべての診断情報を検索する場所の情報が表示されます。適切な場所へのリンクをクリックすると、診断情報を表示することができます。
+Azure クラシック ポータルのジョブのダッシュボードには、入力、出力、操作ログ、またはこれらすべての診断情報を検索する場所の情報が表示されます。適切な場所へのリンクをクリックすると、診断情報を表示することができます。
 
   ![エラー](./media/stream-analytics-monitoring/04-stream-analytics-monitoring.png)
 
@@ -104,4 +104,4 @@ Microsoft Azure 管理ポータルのジョブのダッシュボードには、�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

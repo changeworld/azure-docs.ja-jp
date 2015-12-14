@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="10/13/2015"
+    ms.date="12/01/2015"
     ms.author="sstein"/>
 
 # PowerShell で BACPAC ファイルをインポートして新しい Azure SQL Database を作成する
@@ -21,7 +21,7 @@
 **1 つのデータベース**
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](sql-database-import.md)
+- [Azure portal](sql-database-import.md)
 - [PowerShell](sql-database-import-powershell.md)
 
 
@@ -74,7 +74,7 @@ SQL Database をインポートするには、以下が必要です。
     $DatabaseName = "databasename"
 
 
-BACPAC が配置されているストレージ アカウントの変数を以下に示します。[Azure プレビュー ポータル](https://portal.azure.com)でストレージ アカウントを参照し、これらの値を取得します。プライマリ アクセス キーは、ストレージ アカウントのブレードで **[すべての設定]** をクリックしてから **[キー]** をクリックすることで検索できます。
+BACPAC が配置されているストレージ アカウントの変数を以下に示します。[Azure ポータル](https://portal.azure.com)でストレージ アカウントを参照し、これらの値を取得します。プライマリ アクセス キーは、ストレージ アカウントのブレードで **[すべての設定]** をクリックしてから **[キー]** をクリックすることで検索できます。
 
 BLOB 名は、データベースの作成元の、既存の .bacpac ファイルの名前です。.bacpac 拡張子を含める必要があります。
 
@@ -152,4 +152,4 @@ BLOB 名は、データベースの作成元の、既存の .bacpac ファイル
 - [災害復旧訓練](sql-database-disaster-recovery-drills.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

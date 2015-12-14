@@ -82,9 +82,9 @@ amqps://[username]:[password]@[namespace].servicebus.windows.net
 
 | 名前 | 意味 | | | | |
 |---------------|--------------------------------------------------------------------------------|---|---|---|---|
-| `[namespace]` | Azure ポータルから取得した Service Bus 名前空間。 | | | | |
-| `[username]` | Azure ポータルから取得した Service Bus 発行者名。 | | | | |
-| `[password]` | Azure ポータルから取得した Service Bus 発行者キーの URL エンコード形式。 | | | | |
+| `[namespace]` | [Azure クラシック ポータル][]から取得した Service Bus 名前空間。 | | | | |
+| `[username]` | [Azure クラシック ポータル][]から取得した Service Bus 発行者名。 | | | | |
+| `[password]` | [Azure クラシック ポータル][]から取得した Service Bus 発行者キーの URL エンコード形式。 | | | | |
 
 > [AZURE.NOTE]パスワードは手動で URL エンコードする必要があります。便利な URL エンコード ユーティリティは、[http://www.w3schools.com/tags/ref\_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) で入手できます。
 
@@ -407,5 +407,6 @@ Service Bus で AMQP 1.0 を介して JMS を使用する場合は、次の制�
 [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
 
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
+[Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -68,7 +68,7 @@ CPU、メモリ、IIS インストールのネットワーク負荷など、[シ
 
 ### Web 要求の追跡
 
-HTTP 要求の[応答時間と結果コード](app-insights-start-monitoring-app-health-usage.md)を報告します。
+HTTP 要求の[応答時間と結果コード](app-insights-asp-net.md)を報告します。
 
 * `Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet パッケージ
@@ -97,7 +97,6 @@ HTTP 要求の[応答時間と結果コード](app-insights-start-monitoring-app
 テレメトリ チャネルにより、テレメトリのバッファリングと Application Insights サービスへの送信が管理されます。
 
 * `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` がサービスの既定のチャネルです。メモリにデータをバッファーします。
-* `OperationNameTelemetryInitializer` は、自動生成された `RequestTelemetry.Id` を備えた要求を処理しつつ、追跡対象となっているすべてのテレメトリ項目の `Operation.Id` コンテキスト プロパティを更新します。
 * `Microsoft.ApplicationInsights.PersistenceChannel` はコンソール アプリケーションの代替です。アプリが停止したときにフラッシュされていないデータを永続ストレージに保存できます。また、アプリが再開したときにそのデータを送信します。
 
 
@@ -136,6 +135,29 @@ HTTP 要求の[応答時間と結果コード](app-insights-start-monitoring-app
 テレメトリ プロセッサは、SDK からポータルに送信される直前の各テレメトリ アイテムをフィルター処理し、変更できます。
 
 [独自のテレメトリ プロセッサを記述](app-insights-api-filtering-sampling.md#filtering)できます。
+
+
+#### アダプティブ サンプリング テレメトリ プロセッサー (2.0.0-beta3 以降)
+
+この機能は、既定では有効になっています。アプリが多数のテレメトリを送信する場合、このプロセッサはその一部を削除します。
+
+```xml
+
+    <TelemetryProcessors>
+      <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+        <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
+      </Add>
+    </TelemetryProcessors>
+
+```
+
+パラメーターは、アルゴリズムが実現しようとするターゲットを指定します。SDK の各インスタンスは独立して機能するため、サーバーが複数のコンピューターのクラスターである場合、テレメトリの実際の量もそれに応じて増加します。
+
+[サンプリングの詳細についてはこちらを参照してください](app-insights-sampling.md)。
+
+
+
+#### 固定レート サンプリング テレメトリ プロセッサー (2.0.0-beta1 以降)
 
 標準的な [サンプリング テレメトリ プロセッサ](app-insights-api-filtering-sampling.md#sampling)も用意されています (2.0.1 以降)。
 
@@ -257,10 +279,10 @@ TelemetryClient のすべてのインスタンスのキーを設定するには 
 [azure]: ../insights-perf-analytics.md
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
-[exceptions]: app-insights-web-failures-exceptions.md
+[exceptions]: app-insights-asp-net-exceptions.md
 [netlogs]: app-insights-asp-net-trace-logs.md
 [new]: app-insights-create-new-resource.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

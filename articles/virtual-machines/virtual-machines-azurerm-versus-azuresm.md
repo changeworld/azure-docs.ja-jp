@@ -70,9 +70,9 @@ Azure リソース マネージャーでは、既製のアプリケーション 
 
 Azure テンプレートを初めて使用する際は、開発とプラットフォームへのデプロイを目的とした各種のツールが用意されているのでご利用ください。
 
-### Azure プレビュー ポータル
+### Azure ポータル
 
-Azure プレビュー ポータルには、Virtual Machines のクラシック デプロイ モデルと、Virtual Machines のリソース マネージャー デプロイ モデルのデプロイ オプションが引き続き同時にあります。Azure プレビュー ポータルでカスタム テンプレートのデプロイメントを行うこともできます。
+Azure ポータルには、Virtual Machines のクラシック デプロイ モデルと、Virtual Machines のリソース マネージャー デプロイ モデルのデプロイ オプションが引き続き同時にあります。Azure ポータルでカスタム テンプレートのデプロイメントを行うこともできます。
 
 ### Azure PowerShell
 
@@ -116,4 +116,4 @@ Azure コマンドライン インターフェイス (Azure CLI) には、**Azur
 
 広範囲にわたるスターター テンプレートを「[Azure リソース マネージャー クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」で見つけることができます。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

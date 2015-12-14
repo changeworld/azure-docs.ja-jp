@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-command-line-tools.md)
 
-この記事では、Azure リソース マネージャー モードで Azure コマンド ライン インターフェイス (Azure CLI) を使用し、Mac、Linux、および Windows コンピューターのコマンド ライン上でサービスを作成、管理、削除する方法について説明します。Azure SDK のさまざまなライブラリや、Azure PowerShell、Azure プレビュー ポータルを使用しても同じタスクの多くを実行できます。
+この記事では、Azure リソース マネージャー モードで Azure コマンド ライン インターフェイス (Azure CLI) を使用し、Mac、Linux、および Windows コンピューターのコマンド ライン上でサービスを作成、管理、削除する方法について説明します。Azure SDK のさまざまなライブラリや、Azure PowerShell、Azure ポータルを使用しても同じタスクの多くを実行できます。
 
 Azure リソース マネージャーを使用することにより、リソースのグループ (仮想マシン、Web サイト、データベースなど) を 1 つのデプロイ可能なユニットとして作成できます。そうすることで、アプリケーションのすべてのリソースのデプロイ、更新、または削除が、1 回の連携した操作で実行できます。デプロイメント用 JSON テンプレートでグループ リソースについて説明して、このテンプレートをテスト、ステージング、運用環境などのさまざまな環境に使用することができます。
 
@@ -1760,4 +1760,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

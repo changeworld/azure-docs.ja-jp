@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure Mobile Engagement Android SDK の統合" 
+<properties
+	pageTitle="Azure Mobile Engagement Android SDK の統合"
 	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="08/10/2015" 
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="08/10/2015"
 	ms.author="piyushjo" />
 
 #GCM を Mobile Engagement に統合する方法
@@ -24,16 +24,11 @@
 
 ##はじめに
 
-GCM を統合すると、アプリケーションが実行されていないときもアプリケーションをプッシュすることができます。
+GCM を統合すると、アプリケーションをプッシュできます。
 
-キャンペーン データが GCM によって実際に送信されることはありません。それはアプリケーションに Engagement プッシュをフェッチするように通知する単なるバックグラウンド シグナルです。ADM プッシュの受信中にアプリケーションが実行されていない場合は、プッシュをフェッチするために Engagement サーバーへの接続がトリガーされ、Engagement との接続は、ユーザーがプッシュに応答してアプリケーションを起動した場合に備えて約 1 分間アクティブのままになります。
+SDK にプッシュされた GCM ペイロードのデータ オブジェクトには常に `azme` キーが含まれています。そのため、アプリケーションで別の目的で GCM を使用する場合、そのキーに基づいてプッシュをフィルター処理できます。
 
-ご参考までに、Engagement では、[Send-to-Sync] メッセージのみを `engagement.tickle` 短縮キーとの組み合わせで使用します。
-
-> [AZURE.IMPORTANT]Android 2.2 移行を実行中のデバイスで、Google Play がインストールされ、Google バックグラウンド接続が有効になっているデバイスのみが GCM によってウェイクアップできます。ただし、このコードは、Android SDK の旧バージョンで、GCM をサポートできないデバイス上に安全に統合できます (インテントのみを使用します)。アプリケーションが GCM によってウェイクアップできない場合、Engagement 通知はアプリケーションの次回の起動時に受信されます。
-
-
-> [AZURE.WARNING]Engagement SDK が GCM を使うように構成されているときに、独自のクライアント コードで C2DM 登録 ID を管理すると、登録 ID の競合が発生します。独自のコードで C2DM を使用しない場合にのみ、Engagement で GCM を使用してください。
+> [AZURE.IMPORTANT]Android 2.2 以降を実行中のデバイスで、Google Play がインストールされ、Google バックグラウンド接続が有効になっているデバイスのみを GCM でプッシュできます。ただし、このコードはサポートされていないデバイスで安全に統合できます (インテントのみを使用します)。
 
 ##GCM にサインアップして GCM Service を有効にする
 
@@ -74,7 +69,7 @@ GCM を統合すると、アプリケーションが実行されていないと�
 			    <action android:name="com.microsoft.azure.engagement.intent.action.APPID_GOT" />
 			  </intent-filter>
 			</receiver>
-			
+
 			<receiver android:name="com.microsoft.azure.engagement.gcm.EngagementGCMReceiver" android:permission="com.google.android.c2dm.permission.SEND">
 			  <intent-filter>
 			    <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
@@ -115,12 +110,9 @@ GCM を統合すると、アプリケーションが実行されていないと�
 「Android での Engagement の統合をテストする方法」を読んで、統合を検証してください。
 
 
-[Send-to-Sync]: http://developer.android.com/google/gcm/adv.html#collapsible
 [<http://developer.android.com/guide/google/gcm/gs.html>]: http://developer.android.com/guide/google/gcm/gs.html
 [Google Developers Console]: https://cloud.google.com/console
 [GCM クライアント ライブラリ]: http://developer.android.com/guide/google/gcm/gs.html#libs
 [Google Developers Console]: https://cloud.google.com/console
 
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

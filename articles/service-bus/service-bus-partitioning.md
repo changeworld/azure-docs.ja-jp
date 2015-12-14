@@ -33,7 +33,7 @@ Service Bus 内部の詳細については、「[Service Bus アーキテクチ�
 
 Microsoft Azure Service Bus でパーティション分割されたキューとトピックを使用するには、Azure SDK Version 2.2 以降を使用するか、HTTP 要求で `api-version=2013-10` を指定します。
 
-Service Bus のキューとトピックは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。パーティション分割が有効な場合、Service Bus は指定された GB 数に対して 1 GB ごとに 16 個のパーティションを作成します。そのため、サイズが 5 GB のキューを作成すると、パーティションが 16 個であるため、最大キュー サイズは 5 x 16 = 80 GB になります。パーティション分割したキューまたはトピックの最大サイズは、[Azure ポータル][]の各エントリで確認できます。
+Service Bus のキューとトピックは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。パーティション分割が有効な場合、Service Bus は指定された GB 数に対して 1 GB ごとに 16 個のパーティションを作成します。そのため、サイズが 5 GB のキューを作成すると、パーティションが 16 個であるため、最大キュー サイズは 5 x 16 = 80 GB になります。パーティション分割したキューまたはトピックの最大サイズは、[Azure クラシック ポータル][]の各エントリで確認できます。
 
 パーティション分割されたキューまたはトピックを作成する方法は複数あります。ご使用のアプリケーションからキューまたはトピックを作成する際に、[QueueDescription.EnablePartitioning][] プロパティまたは [TopicDescription.EnablePartitioning][] プロパティをそれぞれ **true** に設定することで、キューまたはトピックのパーティション分割を有効にできます。これらのプロパティは、キューまたはトピックの作成時に設定する必要があります。既存のキューまたはトピックでこれらのプロパティを変更することはできません。次に例を示します。
 
@@ -45,7 +45,7 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-また、Visual Studio または [Azure ポータル][]で、パーティション分割されたキューまたはトピックを作成することもできます。ポータルで新しいキューまたはトピックを作成する場合は、キューまたはトピック ウィンドウの **[構成]** タブにある **[パーティション分割の有効化]** チェック ボックスをオンにします。Visual Studio で作成する場合は、**[新しいキュー]** または **[新しいトピック]** ダイアログ ボックスの **[パーティション分割の有効化]** チェック ボックスをオンにします。
+また、Visual Studio または [Azure クラシック ポータル][]で、パーティション分割されたキューまたはトピックを作成することもできます。ポータルで新しいキューまたはトピックを作成する場合は、キューまたはトピック ウィンドウの **[構成]** タブにある **[パーティション分割の有効化]** チェック ボックスをオンにします。Visual Studio で作成する場合は、**[新しいキュー]** または **[新しいトピック]** ダイアログ ボックスの **[パーティション分割の有効化]** チェック ボックスをオンにします。
 
 ## パーティション キーの使用
 
@@ -128,7 +128,7 @@ Azure Service Bus では、パーティション分割されたエンティテ�
 メッセージング エンティティのパーティション分割の詳細については、Service Bus のパーティション分割されたキューとトピックの AMQP 1.0 のサポートについての説明 (近日公開予定!) を参照してください。
 
   [Service Bus アーキテクチャ]: service-bus-architecture.md
-  [Azure ポータル]: http://manage.windowsazure.com
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
   [QueueDescription.EnablePartitioning]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.enablepartitioning.aspx
   [TopicDescription.EnablePartitioning]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.enablepartitioning.aspx
   [BrokeredMessage.SessionId]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.sessionid.aspx
@@ -144,4 +144,4 @@ Azure Service Bus では、パーティション分割されたエンティテ�
   [QueueDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx
   [AMQP 1.0 support for Service Bus partitioned queues and topics]: service-bus-partitioned-entities-amqp-overview.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

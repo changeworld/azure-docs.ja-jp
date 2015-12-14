@@ -129,7 +129,7 @@ IT コンテナーと仮想マシンの組み合わせは、オペレーショ�
 
 Azure では先ごろ、[Azure リソース管理](virtual-machines-azurerm-versus-azuresm.md) REST API と、この API を簡単に使用できるように更新された、PowerShell および Azure CLI ツールをリリースしました。[Azure リリース マネージャー テンプレート](../resource-group-authoring-templates.md)と Azure リソース管理 API、および下記のツールを使用すれば、アプリケーション トポロジ全体を効率的にデプロイ、変更、または再デプロイできます。
 
-- [テンプレートを使用した Azure プレビュー ポータル](https://github.com/Azure/azure-quickstart-templates)&mdash;"DeployToAzure" ボタンを使用するなど
+- [テンプレートを使用した Azure ポータル](https://github.com/Azure/azure-quickstart-templates)&mdash;"DeployToAzure" ボタンを使用するなど
 - [Azure CLI](virtual-machines-deploy-rmtemplates-azure-cli.md)
 - [Azure PowerShell モジュール](virtual-machines-deploy-rmtemplates-azure-cli.md)
 
@@ -187,7 +187,7 @@ Docker on Microsoft Azure:
 - [Azure での Linux 用 Docker VM 拡張機能](virtual-machines-docker-vm-extension.md)
 - [Azure の Docker 用 VM 拡張機能のユーザー ガイド](https://github.com/Azure/azure-docker-extension/blob/master/README.md)
 - [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](virtual-machines-docker-with-xplat-cli-install.md)
-- [Azure プレビュー ポータルでの Docker VM 拡張機能の使用](virtual-machines-docker-with-portal.md)
+- [Azure ポータルでの Docker VM 拡張機能の使用](virtual-machines-docker-with-portal.md)
 - [Azure Marketplace で Docker をすばやく開始する](virtual-machines-docker-ubuntu-quickstart.md)
 - [Azure で docker マシンを使用する方法](virtual-machines-docker-machine.md)
 - [Azure 上の Swarm における Docker の使用方法](virtual-machines-docker-swarm.md)
@@ -240,4 +240,4 @@ Linux ディストリビューションと Azure での導入例:
 [マイクロサービス]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

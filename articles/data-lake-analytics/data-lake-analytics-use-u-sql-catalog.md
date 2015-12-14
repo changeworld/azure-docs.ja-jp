@@ -34,7 +34,7 @@ U-SQL データベースには以下のものが含まれています。
 ## カタログの管理
 各 Azure Data Lake Analytics アカウントには、既定の Azure Data Lake Store アカウントが関連付けられています。この Data Lake Store アカウントを既定の Data Lake Store アカウントと呼びます。U-SQL カタログは、/catalog フォルダーの下の既定の Data Lake Store アカウントに格納されます。/catalog フォルダー内のファイルは削除しないでください。
 
-### Azure プレビュー ポータルの使用
+### Azure ポータルを使用
 
 [ポータルを使用する Data Lake Analytics の管理](data-lake-analytics-use-portal.md#view-u-sql-catalog)に関する記述を参照してください。
 
@@ -64,24 +64,24 @@ Data Lake Tools for Visual Studio を使用して、カタログを管理でき�
 ## 関連項目
 
 - 作業開始
-    - [Azure プレビュー ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
-    - [Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
+    - [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
+    - [Azure PowerShell で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
     - [Azure .NET SDK で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-net-sdk.md)
     - [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
     - [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
 
-- U-SQL および開発
+- U-SQL と開発
     - [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
     - [Azure Data Lake Analytics ジョブに U-SQL ウィンドウ関数を使用する](data-lake-analytics-use-window-functions.md)
     - [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analtyics-u-sql-user-defined-operators.md)
 
 - 管理
-    - [Azure プレビュー ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-portal.md)
+    - [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-portal.md)
     - [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-powershell.md)
-    - [Azure プレビュー ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+    - [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 - エンド ツー エンド チュートリアル
     - [Azure Data Lake Analytics の対話型チュートリアルの使用](data-lake-analytics-use-interactive-tutorials.md)
     - [Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

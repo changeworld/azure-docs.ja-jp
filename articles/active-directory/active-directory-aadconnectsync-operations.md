@@ -114,4 +114,4 @@ Azure AD Connect に付属している SQL Server Express を使用しない場�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

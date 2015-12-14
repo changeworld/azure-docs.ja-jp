@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/18/2015" 
+	ms.date="12/01/2015" 
 	ms.author="tamram"/>
 
 # Xamarin から BLOB ストレージを使用する方法 (プレビュー)
@@ -173,10 +173,7 @@ Azure Storage Client Library for Xamarin で開発するとき、自分のアカ
 
 BLOB、テーブル、キューの詳細は次のリンクで確認できます。
 
-[Microsoft Azure ストレージの概要](storage-introduction.md)  
-[.NET から BLOB ストレージを利用する方法](storage-dotnet-how-to-use-blobs.md)  
-[.NET からテーブル ストレージを利用する方法](storage-dotnet-how-to-use-tables.md)  
-[.NET からキュー ストレージを利用する方法](storage-dotnet-how-to-use-queues.md)
+[Microsoft Azure ストレージの概要](storage-introduction.md) [.NET から BLOB ストレージを利用する方法](storage-dotnet-how-to-use-blobs.md) [.NET からテーブル ストレージを利用する方法](storage-dotnet-how-to-use-tables.md) [.NET からキュー ストレージを利用する方法](storage-dotnet-how-to-use-queues.md)
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

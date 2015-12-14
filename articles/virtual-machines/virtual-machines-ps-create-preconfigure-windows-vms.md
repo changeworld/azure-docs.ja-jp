@@ -20,7 +20,7 @@
 # Powershell とクラシック デプロイ モデルを使用して Windows 仮想マシンを作成する 
 
 > [AZURE.SELECTOR]
-- [Azure portal - Windows](virtual-machines-windows-tutorial-classic-portal.md)
+- [Azure classic portal - Windows](virtual-machines-windows-tutorial-classic-portal.md)
 - [Powershell - Windows](virtual-machines-ps-create-preconfigure-windows-vms.md)
 - [PowerShell - Linux](virtual-machines-ps-create-preconfigure-linux-vms.md)
 
@@ -157,7 +157,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 	New-AzureVM –ServiceName "<short name of the cloud service>" -VMs $vm1
 
-クラウド サービスの短い名前が、Azure ポータルの [Cloud Services] ボックスの一覧か、Azure プレビュー ポータルの [リソース グループ] ボックスの一覧に表示されます。
+クラウド サービスの短い名前が、Azure クラシック ポータルの [Cloud Services] ボックスの一覧か、Azure ポータルの [リソース グループ] ボックスの一覧に表示されます。
 
 オプション 2. 仮想マシンを既存のクラウド サービスと仮想ネットワークに作成します。
 
@@ -174,7 +174,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。
 
 - このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
-- Azure ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する
+- Azure クラシック ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
 
 ## <a id="examples"></a>例
 
@@ -265,4 +265,4 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

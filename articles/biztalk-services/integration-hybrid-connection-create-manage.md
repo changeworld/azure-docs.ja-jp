@@ -31,14 +31,14 @@
 
 ## <a name="CreateHybridConnection"></a>ハイブリッド接続の作成
 
-ハイブリッド接続は、Azure 管理ポータルで Web Web Apps と BizTalk Services の**いずれか**を使用して作成できます。
+ハイブリッド接続は、Azure ポータルで Web Apps と BizTalk Services の**いずれか**を使用して作成できます。
 
 **Web サイトを使用してハイブリッド接続を作成する**には、「[Azure Web アプリをオンプレミス リソースに接続する](../web-sites-hybrid-connection-get-started.md)」を参照してください。
 
 **BizTalk Services でハイブリッド接続を作成する**には、以下の手順に従います。
 
-1. [Azure 管理ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 左側のナビゲーション ウィンドウで、**[BizTalk サービス]** をクリックし、BizTalk Services を選択します。 
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
+2. 左側のナビゲーション ウィンドウで、**[BizTalk サービス]** をクリックし、BizTalk サービスを選択します。 
 
 	既存の BizTalk サービスがない場合は、[BizTalk サービスを作成する](biztalk-provision-services.md)ことができます。
 3. [ハイブリッド接続] タブを選択します。![[ハイブリッド接続] タブ][HybridConnectionTab]
@@ -61,7 +61,7 @@ Port | オンプレミス リソースのポート番号を入力します。た
 
 ## <a name="LinkWebSite"></a>Azure Web Apps または Azure Mobile Apps の関連付け
 
-既存のハイブリッド接続に Azure Web Apps を関連付けるには、ハイブリッド接続ブレードで **[既存のハイブリッド接続を使用する]** を選択します。「[Azure Web アプリを内部設置型リソースに接続する](../web-sites-hybrid-connection-get-started.md)」を参照してください。
+既存のハイブリッド接続に Azure Web Apps を関連付けるには、ハイブリッド接続ブレードで **[既存のハイブリッド接続を使用する]** を選択します。「[Azure Web アプリをオンプレミス リソースに接続する](../web-sites-hybrid-connection-get-started.md)」を参照してください。
 
 既存のハイブリッド接続に Azure Mobile Apps を関連付けるには、モバイル サービスの変更時または作成時に、**[ハイブリッド接続の追加]** を選択します。「[Connect to an on-premises SQL Server from Azure Mobile Services and Hybrid Connections (ハイブリッド接続を使用した Azure Mobile Services から内部設置型 SQL Server への接続)](../mobile-services-dotnet-backend-hybrid-connections-get-started.md)」を参照してください。
 
@@ -70,7 +70,7 @@ Port | オンプレミス リソースのポート番号を入力します。た
 
 ハイブリッド接続の作成後、オンプレミス リソースに Hybrid Connection Manager をインストールします。Hybrid Connection Manager は Azure Web Apps または BizTalk サービスからダウンロードできます。BizTalk Services の手順は以下のとおりです。
 
-1. [Azure 管理ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
 2. 左側のナビゲーション ウィンドウで、**[BizTalk サービス]** をクリックし、BizTalk サービスを選択します。 
 3. **[ハイブリッド接続]** タブを選択します。![[ハイブリッド接続] タブ][HybridConnectionTab]
 4. タスク バーで **[オンプレミス設定]** をクリックします。![On-Premises Setup][HCOnPremSetup]
@@ -112,14 +112,14 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 
 #### ハイブリッド接続文字列をコピー、再生成する
 
-1. [Azure 管理ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
 2. 左側のナビゲーション ウィンドウで、**[BizTalk サービス]** をクリックし、BizTalk サービスを選択します。 
 3. **[ハイブリッド接続]** タブを選択します。![[ハイブリッド接続] タブ][HybridConnectionTab]
 4. [ハイブリッド接続] を選択します。タスク バーで **[接続の管理]** を選択します。![Manage Options][HCManageConnection]
 
 	**[接続の管理]** でアプリケーション接続文字列と内部設置型接続文字列が一覧表示されます。接続文字列をコピーすることも、接続文字列で使用するアクセス キーを再生成することもできます。
 
-	**[再生成]** を選択すると、接続文字列内で使用される共有アクセス キーが変更されます。次の操作を実行します。 - Microsoft Azure 管理ポータルで、Azure アプリケーションの **[キーの同期]** を選択します。 - **[オンプレミス設定]** を再実行します。[オンプレミス設定] を再実行すると、更新されたプライマリ接続文字列がオンプレミス リソースによって使用されるように自動的に構成されます。
+	**[再生成]** を選択すると、接続文字列内で使用される共有アクセス キーが変更されます。次の操作を実行します。 - Azure クラシック ポータルで、Azure アプリケーションの **[キーの同期]** を選択します。 - **[オンプレミス設定]** を再実行します。[オンプレミス設定] を再実行すると、更新されたプライマリ接続文字列がオンプレミス リソースによって使用されるように自動的に構成されます。
 
 
 #### ハイブリッド接続で使用するオンプレミス リソースを管理するグループ ポリシーの使用
@@ -129,7 +129,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 3. グループ ポリシーを変更するコンピューターで、以下の手順を実行します。  
 
 	- .ADMX ファイルを *%WINROOT%\\PolicyDefinitions* フォルダーにコピーします。
-	- .ADML ファイルを *%WINROOT%\\PolicyDefinitions\\ja-jp* フォルダーにコピーします。
+	- .ADML ファイルを *%WINROOT%\\PolicyDefinitions\\ja-JP* フォルダーにコピーします。
 
 コピーが終了すると、グループ ポリシー エディターを使用してポリシーを変更できます。
 
@@ -143,11 +143,11 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 
 ## 関連項目
 
-[Microsoft Azure の BizTalk Services を管理するための REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx) [BizTalk Services: エディション チャート](biztalk-editions-feature-chart.md) [Microsoft Azure 管理ポータルを利用した BizTalk サービスの作成](biztalk-provision-services.md) [BizTalk Services: ダッシュボード、[モニター] タブ、[スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)
+[Microsoft Azure の BizTalk サービスを管理するための REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx) [BizTalk サービス: エディションのチャート](biztalk-editions-feature-chart.md) [Azure クラシック ポータルを利用した BizTalk サービスの作成](biztalk-provision-services.md) [BizTalk Services: ダッシュボード タブ、モニター タブ、スケール タブ](biztalk-dashboard-monitor-scale-tabs.md)
 
 
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

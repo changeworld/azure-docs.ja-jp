@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="data-management" 
-   ms.date="08/25/2015"
+   ms.date="12/01/2015"
    ms.author="sstein"/>
 
 # C&#x23; で SQL Database を作成し、管理する
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](sql-database-elastic-pool-portal.md)
+- [Azure Portal](sql-database-elastic-pool-portal.md)
 - [C#](sql-database-client-library.md)
 - [PowerShell](sql-database-elastic-pool-powershell.md)
 
@@ -55,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 
 [Azure リソース マネージャー REST API](https://msdn.microsoft.com/library/azure/dn948464.aspx) は、認証に、以前の Azure サービス管理 REST API で使用された証明書ではなく、Azure Active Directory を使用します。
 
-現在のユーザーに基づいてクライアント アプリケーションを認証するには、まず、Azure のリソースが作成されたサブスクリプションに関連付けられている AAD ドメインにアプリケーションを登録する必要があります。職場アカウントまたは学校アカウントではなく、Microsoft アカウントで Azure サブスクリプションが作成されている場合は、既定の AAD ドメインが既に存在します。アプリケーションの登録は、[管理ポータル](https://manage.windowsazure.com/)で実行できます。
+現在のユーザーに基づいてクライアント アプリケーションを認証するには、まず、Azure のリソースが作成されたサブスクリプションに関連付けられている AAD ドメインにアプリケーションを登録する必要があります。職場アカウントまたは学校アカウントではなく、Microsoft アカウントで Azure サブスクリプションが作成されている場合は、既定の AAD ドメインが既に存在します。アプリケーションの登録は、[クラシック ポータル](https://manage.windowsazure.com/)で実行できます。
 
 新しいアプリケーションを作成し、適切な Active Directory に登録するには、以下を実行します。
 
@@ -105,7 +105,7 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 
 コードにはドメイン名が必要です。適切なドメイン名を指定する簡単な方法を以下に示します。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. 右上隅の自分の名前にマウスを合わせ、ポップアップ ウィンドウに表示されるドメインをメモしてください。
 
     ![ドメイン名の指定][3]
@@ -798,4 +798,4 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 [8]: ./media/sql-database-client-library/add-application2.png
 [9]: ./media/sql-database-client-library/clientid.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

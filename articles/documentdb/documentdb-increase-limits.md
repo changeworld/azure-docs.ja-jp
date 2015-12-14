@@ -47,7 +47,7 @@ Azure サポートに問い合わせて調整できる DocumentDB クォータ�
 ##<a id="RequestQuotaIncrease"></a> クォータ調整の要求
 クォータ調整を要求するには、次の手順を実行します。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)の **[参照]**、**[ヘルプとサポート]** を順にクリックします。
+1. [Azure ポータル](https://portal.azure.com)の **[参照]**、**[ヘルプとサポート]** を順にクリックします。
 
 	![ヘルプとサポート起動時のスクリーンショット](media/documentdb-increase-limits/helpsupport.png)
 
@@ -75,4 +75,4 @@ Azure サポートに問い合わせて調整できる DocumentDB クォータ�
 ##<a name="NextSteps"></a>次のステップ
 - DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

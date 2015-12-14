@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Mobile Apps でのオフライン データ同期 | Microsoft Azure"
-	description="Azure Mobile Apps のオフライン データ同期機能の概念リファレンスと概要"
+	pageTitle="Azure モバイル アプリ でのオフライン データ同期 | Microsoft Azure"
+	description="Azure モバイル アプリのオフライン データ同期機能の概念リファレンスと概要"
 	documentationCenter="windows"
 	authors="wesmc7777"
 	manager="dwrede"
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="08/11/2015"
+	ms.date="11/30/2015"
 	ms.author="wesmc"/>
 
-# Azure Mobile Apps でのオフライン データ同期
+# Azure モバイル アプリでのオフライン データ同期
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## オフライン データ同期について
 
-オフライン データ同期は、ネットワーク接続なしで機能するアプリを開発者が作成しやすくする、Azure Mobile Apps のクライアントおよびサーバーの SDK 機能です。
+オフライン データ同期は、ネットワーク接続なしで機能するアプリを開発者が作成しやすくする、Azure モバイル アプリのクライアントおよびサーバーの SDK 機能です。
 
 アプリがオフライン モードの場合でもユーザーはデータを作成および変更できますが、それらのデータはローカル ストアに保存されます。アプリは、オンラインに復帰するとローカルの変更内容を Azure モバイル アプリ バックエンドと同期します。この機能には、クライアントとバックエンドの両方で同じレコードが変更された場合の競合検出のサポートも含まれています。検出された競合は、サーバーまたはクライアントのどちらでも処理することができます。
 
@@ -34,7 +34,7 @@
 * 複数のデバイス間でデータを同期させ、同じレコードが 2 つのデバイスによって変更されたときに競合を検出する。
 * 待ち時間の長いネットワークや従量制ネットワークの使用を制限する。
 
-以下のチュートリアルで、Azure Mobile Apps を使用してモバイル アプリにオフライン同期を追加する方法について説明しています。
+以下のチュートリアルで、Azure モバイル アプリ を使用してモバイル アプリにオフライン同期を追加する方法について説明しています。
 
 * [iOS: オフライン同期を有効にする]			
 * [Xamarin iOS: オフライン同期を有効にする]	
@@ -49,7 +49,7 @@ Azure Mobile クライアント SDK では、"/tables" エンドポイントに�
 
 ## ローカル ストアについて
 
-ローカル ストアは、クライアント デバイス上のデータ永続化レイヤーです。Azure Mobile Apps クライアントの SDK では、既定のローカル ストアの実装を提供します。ローカル ストアのベースは、Windows、Xamarin、および Android では SQLite ですが、iOS では Core Data です。
+ローカル ストアは、クライアント デバイス上のデータ永続化レイヤーです。Azure モバイル アプリ クライアントの SDK では、既定のローカル ストアの実装を提供します。ローカル ストアのベースは、Windows、Xamarin、および Android では SQLite ですが、iOS では Core Data です。
 
 Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用するには、SQLite の拡張機能をインストールする必要があります。詳細については、「[Windows 8.1: オフライン同期を有効にする]」を参照してください。Android と iOS では、デバイスのオペレーティング システム自体にあるバージョンの SQLite が同梱されているので、独自のバージョンの SQLite を参照する必要はありません。
 
@@ -126,4 +126,4 @@ The sync table uses the [System Properties](https://msdn.microsoft.com/library/a
 [Xamarin Android: オフライン同期を有効にする]: ../app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Windows 8.1: オフライン同期を有効にする]: ../app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

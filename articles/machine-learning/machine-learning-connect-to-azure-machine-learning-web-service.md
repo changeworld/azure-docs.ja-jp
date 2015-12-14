@@ -41,12 +41,12 @@ Azure Machine Learning には、2 種類のサービスがあります。
 Azure Machine Learning Web サービスの詳細については、「[Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
 
 ## Azure Machine Learning の承認キーを取得する ##
-Web サービスの API キーを ML Web サービスから取得します。Microsoft Azure Machine Learning Studio または Microsoft Azure 管理ポータルから取得できます。
+Web サービスの API キーを ML Web サービスから取得します。Microsoft Azure Machine Learning Studio または Azure クラシック ポータルから取得できます。
 ### Microsoft Azure Machine Learning Studio ###
 1. Microsoft Azure Machine Learning Studio で、左側の **[Web サービス]** をクリックします。
 2. Web サービスをクリックします。**[ダッシュボード]** タブに [API キー] があります。
 
-### Azure 管理ポータル ###
+### Azure クラシック ポータル ###
 
 1. 左側の **[Machine Learning]** をクリックします。
 2. ワークスペースをクリックします。
@@ -103,4 +103,4 @@ Azure ML Web サービスに接続するには、ScoreData を渡す **urllib2**
 2. Web サービスからのキーを持つ apiKey を割り当てます。Azure の ML 承認キーを取得する方法を参照してください。
 3. 要求の URI を含む serviceUri を割り当てます。要求の URI を取得する方法を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

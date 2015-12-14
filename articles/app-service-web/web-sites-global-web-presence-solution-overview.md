@@ -65,7 +65,7 @@ Azure Traffic Manager で諸地域のサイトにサービス提供し、Azure C
 
 自動スケールで自動的にスケールし、Azure Redis Cache でキャッシュして、Web ジョブでタスクをバックグラウンドで実行し、Azure Traffic Manager で高可用性を維持することで、.COM サイトを最適化します。
 
-ワークロードのサイズに関係なく、App Service Web Apps の[スケールアップやスケールアウト]機能は .COM サイトのニーズを満たしています。Web サイトは [Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)から手動で、[サービス管理 API] や [PowerShell スクリプト]を通じてプログラムで、そして自動スケール機能によって自動でスケールアウトできます。**標準**ホスティング プランでは、自動スケールにより CPU 使用率に基づいて Web サイトを自動的にスケールアウトします。ベスト プラクティスについては、[Troy Hunt] の「[10 things I learned about rapidly scaling web apps with Azure (Azure での Web アプリの迅速なスケーリングに関する 10 項目)]」をご覧ください。
+ワークロードのサイズに関係なく、App Service Web Apps の[スケールアップやスケールアウト]機能は .COM サイトのニーズを満たしています。Web サイトは [Azure ポータル](https://portal.azure.com)から手動で、[サービス管理 API] や [PowerShell スクリプト]を通じてプログラムで、そして自動スケール機能によって自動でスケールアウトできます。**標準**ホスティング プランでは、自動スケールにより CPU 使用率に基づいて Web サイトを自動的にスケールアウトします。ベスト プラクティスについては、[Troy Hunt] の「[10 things I learned about rapidly scaling web apps with Azure (Azure での Web アプリの迅速なスケーリングに関する 10 項目)]」をご覧ください。
 
 [Azure Redis Cache] を使用して Web サイトの応答性を向上します。バックエンド データベースのデータのキャッシュと [ASP.NET のセッション状態]や[出力キャッシュ]などのその他のことに使用します。
 
@@ -75,7 +75,7 @@ Azure Traffic Manager で諸地域のサイトにサービス提供し、Azure C
 
 Azure またはサードパーティ製のツールで Web サイトのパフォーマンスを最新の状態に維持します。Web サイトの重大なイベントでアラートを受信します。Application Insight や HDInsight からの Web ログ分析でユーザー情報を簡単に取得します。
 
-[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)の Web アプリのブレードで、Web サイトの現在のパフォーマンス メトリックとリソースのクォータの[概要]を取得します。可用性、パフォーマンス、使用状況など、アプリケーションの全体像を把握するために、迅速かつ強力なトラブルシューティング、診断、使用状況の分析を提供する [Azure Application Insights] を使用します。または [New Relic] など、Web サイトの詳細監視データを提供するサードパーティ製のツールを使用します。
+[Azure ポータル](https://portal.azure.com)の Web アプリのブレードで、Web サイトの現在のパフォーマンス メトリックとリソースのクォータの[概要]を取得します。可用性、パフォーマンス、使用状況など、アプリケーションの全体像を把握するために、迅速かつ強力なトラブルシューティング、診断、使用状況の分析を提供する [Azure Application Insights] を使用します。または [New Relic] など、Web サイトの詳細監視データを提供するサードパーティ製のツールを使用します。
 
 **標準**ホスティング プランでは、サイトが応答を停止するたびに、応答性監視サイトは電子メール通知を受信します。詳細については、「[方法: Azure でアラート通知を受け取り、アラート ルールを管理する]」を参照してください。
 
@@ -137,4 +137,4 @@ Azure またはサードパーティ製のツールで Web サイトのパフォ
 
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

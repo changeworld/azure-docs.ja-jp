@@ -90,7 +90,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
           /* Initialize Engagement angent with above configuration. */
           EngagementAgent.Instance.Init(e, engagementConfiguration);
 
-アプリケーションの接続文字列が Azure ポータルに表示されます。
+アプリケーションの接続文字列が Azure クラシック ポータルに表示されます。
 
 ### Engagement の初期化
 
@@ -285,4 +285,4 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 [NuGet website]: http://docs.nuget.org/docs/start-here/overview
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

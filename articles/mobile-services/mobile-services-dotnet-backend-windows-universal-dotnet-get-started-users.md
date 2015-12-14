@@ -1,22 +1,26 @@
-<properties 
-	pageTitle="ユニバーサル Windows 8.1 アプリへの認証の追加 | Microsoft Azure" 
-	description="Mobile Services を使用して、Google、Facebook、Twitter、および Microsoft などのさまざまな ID プロバイダーを通じてユニバーサル Windows 8.1 アプリのユーザーを認証する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="ユニバーサル Windows 8.1 アプリへの認証の追加 | Microsoft Azure"
+	description="Mobile Services を使用して、Google、Facebook、Twitter、および Microsoft などのさまざまな ID プロバイダーを通じてユニバーサル Windows 8.1 アプリのユーザーを認証する方法について説明します。"
+	services="mobile-services"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="11/23/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="11/23/2015"
 	ms.author="glenga"/>
 
-# Mobile Services アプリへの認証の追加 
+# Mobile Services アプリへの認証の追加
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../../includes/mobile-services-selector-get-started-users.md)]
 
@@ -42,10 +46,10 @@
 
 &nbsp;&nbsp;7.共有プロジェクトで、App.xaml.cs プロジェクト ファイルを開き、[MobileServiceClient](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx) の定義を見つけ、Azure で実行されているモバイル サービスに接続するように構成されていることを確認します。
 
->[AZURE.NOTE]Visual Studio ツールを使用してアプリを Mobile Services に接続する場合、ツールはクライアント プラットフォームごとに 1 つずつ、**MobileServiceClient** 定義を合計 2 セット生成します。この機会に、`#if...#endif` でラップされた **MobileServiceClient** 定義を、両方のバージョンのアプリで使用される、ラップされていない 1 つの定義に統合することによって、生成されたコードを単純化することができます。Microsoft Azure 管理ポータルからクイック スタート アプリをダウンロードした場合は、これを行う必要はありません。
+>[AZURE.NOTE]Visual Studio ツールを使用してアプリを Mobile Services に接続する場合、ツールはクライアント プラットフォームごとに 1 つずつ、**MobileServiceClient** 定義を合計 2 セット生成します。この機会に、`#if...#endif` でラップされた **MobileServiceClient** 定義を、両方のバージョンのアプリで使用される、ラップされていない 1 つの定義に統合することによって、生成されたコードを単純化することができます。[Azure クラシック ポータル]からクイック スタート アプリをダウンロードした場合、この操作は必要ありません。
 
 &nbsp;&nbsp;8.F5 キーを押して、Windows ストア アプリを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
-   
+
 &nbsp;&nbsp;この問題が発生するのは、認証されないユーザーとしてアプリケーションが Mobile Services にアクセスしようとすると、*TodoItem* テーブルで認証が要求されるようになったことが原因です。
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
@@ -71,7 +75,7 @@
 
 ##関連項目
 
-+ [強化されたユーザー機能](http://azure.microsoft.com/blog/2014/10/02/custom-login-scopes-single-sign-on-new-asp-net-web-api-updates-to-the-azure-mobile-services-net-backend/)<br/> .NET バックエンドで **ServiceUser.GetIdentitiesAsync()** メソッドを呼び出すことによって、モバイル サービス内で ID プロバイダーが管理するユーザー データを追加取得できます。 
++ [強化されたユーザー機能](http://azure.microsoft.com/blog/2014/10/02/custom-login-scopes-single-sign-on-new-asp-net-web-api-updates-to-the-azure-mobile-services-net-backend/)<br/> .NET バックエンドで **ServiceUser.GetIdentitiesAsync()** メソッドを呼び出すことによって、モバイル サービス内で ID プロバイダーが管理するユーザー データを追加取得できます。
 
 + [Mobile Servicesでの .NET の使用方法に関する概念リファレンス]<br/>Mobile Services で .NET クライアントを使用する方法について説明します。
 
@@ -95,9 +99,8 @@
 [Authorize users with scripts]: ../mobile-services-dotnet-backend-windows-store-dotnet-authorize-users-in-scripts.md
 [JavaScript and HTML]: ../mobile-services-dotnet-backend-windows-store-javascript-get-started-users.md
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Mobile Servicesでの .NET の使用方法に関する概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
- 
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

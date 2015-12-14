@@ -1,9 +1,9 @@
 <properties
-   	pageTitle="Azure CLI を使用した HDInsight 用の Linux ベースの Hadoop、HBase、または Storm クラスターの作成 | Microsoft Azure"
-   	description="Azure CLI を使用して、HDInsight 用の Linux ベースの Hadoop、HBase、または Storm クラスターを作成する方法について説明します。"
+   	pageTitle="Azure PowerShell を使用した HDInsight 用の Linux ベースの Hadoop、HBase、または Storm クラスターの作成 | Microsoft Azure"
+   	description="Azure PowerShell を使用して、HDInsight 用の Linux ベースの Hadoop、HBase、または Storm クラスターを作成する方法について説明します。"
    	services="hdinsight"
    	documentationCenter=""
-   	authors="nitinme"
+   	authors="mumian"
    	manager="paulettm"
    	editor="cgronlun"
 	tags="azure-portal"/>
@@ -25,11 +25,12 @@ Azure PowerShell は、Azure のワークロードのデプロイと管理を制
 
 > [AZURE.NOTE]Azure PowerShell は、Windows クライアントだけで利用できます。Linux、Unix、または Mac OS X クライアントを使用している場合は、Azure CLI によるクラスターの作成について、「[Azure CLI を使用した Linux ベースの HDInsight クラスターの作成](hdinsight-hadoop-create-linux-cluster-azure-cli.md)」を参照してください。
 
-##前提条件
+###前提条件
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 - __Azure PowerShell__。ワークステーションを構成して HDInsight Windows Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../install-configure-powershell.md)」をご覧ください。HDInsight で Azure PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)」をご覧ください。HDInsight Windows PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn858087.aspx)」をご覧ください。
+
 
 ##クラスターを作成する
 
@@ -125,6 +126,6 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 
 * [HDInsight での Storm の Java トポロジの開発](hdinsight-storm-develop-java-topology.md)
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python.md)
-* [HDInsight での Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
+* [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

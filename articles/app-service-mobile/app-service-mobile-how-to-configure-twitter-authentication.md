@@ -33,7 +33,7 @@
 ## <a name="register"> </a>Twitter にアプリケーションを登録する
 
 
-1. [Microsoft Azure 管理ポータル]にログオンし、目的のアプリケーションに移動します。**[URL]** をコピーします。この URL は、Twitter アプリの構成で使用します。
+1. [Azure ポータル]にログオンし、アプリケーションに移動します。**[URL]** をコピーします。この URL は、Twitter アプリの構成で使用します。
 
 2. [Twitter Developers] の Web サイトに移動し、Twitter アカウント資格情報でサインインして、**[Create New App]** をクリックします。
 
@@ -43,11 +43,11 @@
 
 3.  ページの下部で、条項を読み、同意します。**[Create your Twitter application]** をクリックします。これでアプリケーションが登録され、アプリケーションの詳細が表示されます。
 
-4. **[設定]** タブをクリックし、**[Allow this application to be used to sign in with Twitter]** チェック ボックスをオンにして、**[Update Settings]** をクリックします。
+4. **[Settings]** タブをクリックし、**[Allow this application to be used to sign in with Twitter]** チェック ボックスをオンにして、**[Update Settings]** をクリックします。
 
 5. **[Keys and Access Tokens]** タブをクリックします。**[Consumer Key (API Key)]** と **[Consumer secret (API Secret)]** の値を書き留めます。
 
-    > [AZURE.NOTE] コンシューマー シークレットは、重要なセキュリティ資格情報です。このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。
+    > [AZURE.NOTE]コンシューマー シークレットは、重要なセキュリティ資格情報です。このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。
 
 
 ## <a name="secrets"> </a>アプリケーションに Twitter 情報を追加する
@@ -55,7 +55,7 @@
 > [AZURE.NOTE]App Service ゲートウェイを使用する場合は、このセクションの内容は無視し、ポータル内で目的のゲートウェイに移動します。**[設定]**、**[ID]**、**[Twitter]** の順に選択します。先に取得した値を貼り付けて、**[保存]** をクリックします。
 
 
-13. [Microsoft Azure 管理ポータル]に戻り、目的のアプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックします。
+13. [Azure ポータル]に戻り、アプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックします。
 
 14. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。
 
@@ -85,7 +85,7 @@
 <!-- URLs. -->
 
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
-[Microsoft Azure 管理ポータル]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

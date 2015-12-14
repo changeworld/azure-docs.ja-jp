@@ -28,11 +28,11 @@ MSDN Azure クレジットを活用するために、個人の Azure アカウ�
 
 > [AZURE.NOTE]管理者からユーザー名とパスワードが提供されている場合は、既に職場または学校の ID を持っている可能性があります (*組織 ID* とも呼ばれます)。その場合、いつでも Azure アカウントの使用を開始して、アカウントが必要な Azure リソースにアクセスできます。これらのリソースを使用できない場合は、この記事をもう一度ご確認ください。詳細については、「[サインインで使用できるアカウント](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SignInAccounts)」、「[Azure サブスクリプションと Azure AD との関係](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir)」をご覧ください。
 
-手順は簡単です。Azure ポータルで署名済み ID を見つけて、既定の Azure Active Directory ドメインを検出し、Azure 共同管理者として新しいユーザーを追加する必要があります。
+手順は簡単です。Azure クラシック ポータルで署名済み ID を見つけて、既定の Azure Active Directory ドメインを検出し、Azure 共同管理者として新しいユーザーを追加する必要があります。
 
-## Azure ポータルで既定のディレクトリを見つける
+## Azure クラシック ポータルで既定のディレクトリを見つける
 
-まず、個人の Microsoft アカウント ID で [Azure ポータル](https://manage.windowsazure.com) にログインします。ログインしたら、左側の青色のパネルを下にスクロールし、**[ACTIVE DIRECTORY]** をクリックします。
+まず、個人の Microsoft アカウント ID で [Azure クラシック ポータル](https://manage.windowsazure.com)にログインします。ログインしたら、左側の青色のパネルを下にスクロールし、**[ACTIVE DIRECTORY]** をクリックします。
 
 ![Azure Active Directory](./media/resource-group-create-work-id-from-personal/azureactivedirectorywidget.png)
 
@@ -144,4 +144,4 @@ Azure Active Directory から取得した新しいユーザー、**開発者の 
     data:
     info:    group create command OK
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

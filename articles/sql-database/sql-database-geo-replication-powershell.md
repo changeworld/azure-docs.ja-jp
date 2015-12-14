@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="11/10/2015"
+    ms.date="12/01/2015"
     ms.author="sstein"/>
 
 # PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する
@@ -21,14 +21,14 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](sql-database-geo-replication-portal.md)
+- [Azure portal](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
 - [Transact-SQL](sql-database-geo-replication-transact-sql.md)
 
 
 この記事では、PowerShell を使用して SQL Database の geo レプリケーションを構成する方法を示します。
 
-geo レプリケーションでは、さまざまなデータ センターの場所 (リージョン) に最大 4 つのレプリカ (セカンダリ) データベースを作成することができます。セカンダリ データベースは、データ センターで障害が発生した場合またはプライマリ データベースに接続できない場合に使用できます。
+geo レプリケーションでは、さまざまなデータ センターの場所 (リージョン) に最大 4 つのレプリカ (セカンダリ) データベースを作成することができます。セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合に使用できます。
 
 geo レプリケーションは、Standard データベースと Premium データベースにのみ使用できます。
 
@@ -92,7 +92,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 
 
-### 読み取り可能なセカンダリ データベース (単一のデータベース) の追加
+### 読み取り可能なセカンダリ (単一データベース) の追加
 
 次のコマンドでは、リソース グループ "rg2" に属するサーバー "srv2" のデータベース "mydb" に対して読み取り可能なセカンダリ データベースが作成されます。
 
@@ -121,9 +121,9 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 
 
-## セカンダリ データベースの削除
+## セカンダリ データベースを削除する
 
-セカンダリ データベースとそのプライマリ データベースとの間のレプリケーション パートナーシップを完全に終了させるには、**Remove-AzureRmSqlDatabaseSecondary** コマンドレットを使用します。リレーションシップの終了後、セカンダリ データベースは読み取り/書き込みデータベースになります。セカンダリ データベースへの接続が切断された場合、コマンドは成功しますが、接続が復元するまでセカンダリ データベースは読み取り/書き込み状態になりません。詳細については、「[Remove-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603457.aspx)」 と 「[サービス レベル](https://azure.microsoft.com/documentation/articles/sql-database-service-tiers/)」を参照してください。
+セカンダリ データベースとそのプライマリ データベースとの間のレプリケーション パートナーシップを完全に終了させるには、**Remove-AzureRmSqlDatabaseSecondary** コマンドレットを使用します。リレーションシップの終了後、セカンダリ データベースは読み取り/書き込みデータベースになります。セカンダリ データベースへの接続が切断された場合、コマンドは成功します。ただし、接続が復元されると、セカンダリ データベースは読み取り/書き込みデータベースになります。詳細については、「[Remove-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603457.aspx)」 と 「[サービス レベル](sql-database-service-tiers.md)」を参照してください。
 
 このコマンドレットは、レプリケーション用の Stop-AzureSqlDatabaseCopy に取って代わります。
 
@@ -189,7 +189,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 
 
-## geo レプリケーションの構成と正常性の監視
+## geo レプリケーションの構成と正常性を監視する
 
 監視タスクには、geo レプリケーションの構成に関する監視と、データ レプリケーションの正常性に関する監視が含まれます。
 
@@ -206,7 +206,7 @@ sys.geo\_replication\_links のカタログ ビューに表示される順方向
 
 ## 次のステップ
 
-- [災害復旧訓練](sql-database-disaster-recovery-drills.md)
+- [障害復旧訓練](sql-database-disaster-recovery-drills.md)
 
 
 
@@ -214,8 +214,8 @@ sys.geo\_replication\_links のカタログ ビューに表示される順方向
 ## その他のリソース
 
 - [新しい geo レプリケーション機能に関するスポットライト](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication)
-- [geo レプリケーションを使用してビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [geo レプリケーションを使用したビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

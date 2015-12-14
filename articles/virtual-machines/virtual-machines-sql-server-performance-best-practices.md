@@ -23,7 +23,7 @@
 
 このトピックでは、Microsoft Azure 仮想マシンで SQL Server のパフォーマンスを最適化するためのベスト プラクティスを紹介します。Azure Virtual Machines で SQL Server を実行するときは、オンプレミスのサーバー環境で SQL Server に適用されるデータベース パフォーマンス チューニング オプションと同じものを引き続き使用することをお勧めします。ただし、パブリック クラウド内のリレーショナル データベースのパフォーマンスは、仮想マシンのサイズやデータ ディスクの構成などのさまざまな要素に左右されます。
 
-SQL Server イメージを作成するときは、Azure プレビュー ポータルを使用して、Premium Storage を既定使用する機能や、自動修正、自動バックアップ、および AlwaysOn 構成などのその他のオプションを活用することを検討してください。
+SQL Server イメージを作成するときは、Azure ポータルを使用して、Premium Storage を既定使用する機能や、自動修正、自動バックアップ、および AlwaysOn 構成などのその他のオプションを活用することを検討してください。
 
 このドキュメントは、Azure VM で SQL Server の最適なパフォーマンスを得ることに重点を置いています。ワークロードの要求が厳しくない場合は、以下に示す最適化がすべて必要になるわけではありません。各推奨事項を評価するときに、パフォーマンスのニーズとワークロードのパターンを考慮してください。
 
@@ -133,4 +133,4 @@ SQL Server と Premium Storage についてさらに詳しく調べたい場合�
 
 SQL Server Virtual Machines に関する他のトピックについては、[Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

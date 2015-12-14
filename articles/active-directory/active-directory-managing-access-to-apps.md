@@ -71,4 +71,4 @@ Azure AD では、Salesforce のようなアプリケーションをシングル
 - [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access.md)
 - [セルフサービス グループの管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

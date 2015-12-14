@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="09/10/2015"
+	ms.date="12/01/2015"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -22,10 +22,10 @@
 **1 つのデータベース**
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](sql-database-scale-up.md)
+- [Azure Portal](sql-database-scale-up.md)
 - [PowerShell](sql-database-scale-up-powershell.md)
 
-この記事では、[Azure プレビュー ポータル](https://portal.azure.com)で SQL Database のサービス階層とパフォーマンス レベルを変更する方法について説明します。
+この記事では、[Azure ポータル](https://portal.azure.com)で SQL Database のサービス階層とパフォーマンス レベルを変更する方法について説明します。
 
 [SQL Database の Web/Business データベースの新しいサービス階層へのアップグレード](sql-database-upgrade-new-service-tiers.md)に関するトピックと「[Azure SQL Database のサービス階層とパフォーマンス レベル](sql-database-service-tiers.md)」の情報を使用して、Azure SQL Database に適したサービス階層とパフォーマンス レベルを決定します。
 
@@ -50,7 +50,7 @@
 
 スケールアップまたはスケールダウンするデータベースの [SQL Database] ブレードを開きます。
 
-1.	[Azure プレビュー ポータル](https://portal.azure.com)にアクセスします。
+1.	[Azure ポータル](https://portal.azure.com)にアクセスします。
 2.	**[すべて参照]** をクリックします。
 3.	**[SQL Database]** をクリックします。
 2.	変更するデータベースをクリックします。
@@ -98,4 +98,4 @@
 [3]: ./media/sql-database-scale-up/scale-notification.png
 [4]: ./media/sql-database-scale-up/new-tier.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

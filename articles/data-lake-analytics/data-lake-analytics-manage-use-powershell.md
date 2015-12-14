@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/27/2015"
+   ms.date="12/01/2015"
    ms.author="jgao"/>
 
 # Azure PowerShell を使用する Azure Data Lake Analytics の管理
@@ -26,36 +26,56 @@ Azure PowerShell を使用して、Azure Data Lake Analytics のアカウント�
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版に関するページ］https://azure.microsoft.com/ja-JP/pricing/free-trial/) を参照してください。
-- **Azure PowerShell 1.0 以降**。「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」を参照してください。Azure PowerShell 1.0 以降をインストールした後で、次のコマンドレットを実行して Azure Data Lake Analytics モジュールをインストールする必要があります。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得に関するページ]https://azure.microsoft.com/ja-JP/pricing/free-trial/) を参照してください。
+
+
+<!-- ################################ -->
+<!-- ################################ -->
+
+
+##Azure PowerShell 1.0 以上をインストールする
+
+最初に 0.9x バージョンをアンインストールする必要があります。
+
+インストールされている PowerShell のバージョンを確認するには:
+
+	Get-Module *azure*
 	
-		Install-Module AzureRM.DataLakeStore
-		Install-Module AzureRM.DataLakeAnalytics
+以前のバージョンをアンインストールするには、コントロール パネルで [プログラムと機能] を実行します。
 
-	**AzureRM.DataLakeStore** モジュールの詳細については、[PowerShell ギャラリー](http://www.powershellgallery.com/packages/AzureRM.DataLakeStore)を参照してください。**AzureRM.DataLakeAnalytics** モジュールの詳細については、[PowerShell ギャラリー](http://www.powershellgallery.com/packages/AzureRM.DataLakeAnalytics)を参照してください。
+Azure PowerShell をインストールするための主な 2 つのオプションは次のとおりです。
 
-	初めて Data Lake アカウントを作成する場合は、次のコマンドレットを実行します。
+- [PowerShell ギャラリー](https://www.powershellgallery.com/)管理者特権の PowerShell ISE または管理者特権の Windows PowerShell コンソールから、次のコマンドを実行します。
 
-		Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
-		Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeAnalytics"
-
-	Azure に接続するには、次のコマンドレットを使用します。
-
-		Login-AzureRmAccount
-		Get-AzureRmSubscription  # for finding the Azure Subscription ID
-		Set-AzureRmContext -SubscriptionID <Azure Subscription ID>
+		# Install the Azure Resource Manager modules from PowerShell Gallery
+		Install-Module AzureRM
+		Install-AzureRM
 		
+		# Install the Azure Service Management module from PowerShell Gallery
+		Install-Module Azure
+		
+		# Import AzureRM modules for the given version manifest in the AzureRM module
+		Import-AzureRM
+		
+		# Import Azure Service Management module
+		Import-Module Azure
+
+	詳細については、「[PowerShell ギャラリー](https://www.powershellgallery.com/)」を参照してください。
+
+- [Microsoft Web プラットフォーム インストーラー (WebPI)](http://aka.ms/webpi-azps)。Azure PowerShell 0.9.x をインストールしている場合は、0.9.x のアンインストールを要求するメッセージが表示されますAzure PowerShell モジュールを PowerShell ギャラリーからインストールした場合、一貫した Azure PowerShell 環境を保つため、インストーラーにより、インストール前にモジュールを削除することが求められます。手順については、[WebPI を介した Azure PowerShell 1.0 のインストール](https://azure.microsoft.com/blog/azps-1-0/)に関するページを参照してください。
+
+WebPI は月次の更新プログラムを受け取ります。PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。PowerShell ギャラリーからのインストールを選んだ場合は、これが Azure PowerShell で最新および最良の点について情報を取得できる最初のチャネルになります。
+
 **コマンドレットをリストするには**:
 
 	Get-Command *Azure*DataLakeAnalytics*
 
-<!-- ################################ -->
-<!-- ################################ -->
+**Azure に接続するには、次のコマンドレットを使用します。**
 
-
-
-<!-- ################################ -->
-<!-- ################################ -->
+	Login-AzureRmAccount
+	Get-AzureRmSubscription  # for finding the Azure Subscription ID
+	Set-AzureRmContext -SubscriptionID <Azure Subscription ID>
+	
 ## アカウントの管理
 
 Data Lake Analytics ジョブを実行するには、Data Lake Analytics アカウントが必要です。Azure HDInsight とは異なり、ジョブを実行しなければ、Analytics アカウントには課金されません。ジョブの実行時にのみ課金されます。詳細については、「[Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
@@ -166,7 +186,7 @@ Analytics アカウントを削除しても、従属する Data Lake ストレ�
 
 Data Lake Analytics では現在、以下のデータ ソースがサポートされています。
 
-- [Azure Data Lake ストレージ](data-lake-storage-overview.md)
+- [Azure Data Lake Storage](data-lake-storage-overview.md)
 - [Azure Storage](storage-introduction.md)
 
 Analytics アカウントを作成する際には、既定のストレージ アカウントとして Azure Data Lake ストレージ アカウントを指定する必要があります。既定の Data Lake Store アカウントは、ジョブ メタデータとジョブ監査ログの格納に使用されます。Analytics アカウントを作成したら、さらに Data Lake ストレージ アカウントや Azure ストレージ アカウントを追加することができます。
@@ -195,7 +215,7 @@ Analytics アカウントを作成する際には、既定のストレージ ア
 	
 	Add-AzureRmDataLakeAnalyticsDataSource -ResourceGroupName $resourceGroupName -AccountName $dataLakeAnalyticName -DataLake $AzureDataLakeName 
 
-### データ ソースのリスト:
+### データ ソースの一覧表示:
 
 	$resourceGroupName = "<ResourceGroupName>"
 	$dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
@@ -337,9 +357,9 @@ U-SQL カタログを使用して、U-SQL スクリプトで共有できるよ�
 Data Lake Analtyics サービスには、次のコンポーネントを含めることができます。
 
 - Azure Data Lake Analytics アカウント
-- 必要な既定の Azure Data Lake ストレージ アカウント
-- 追加の Azure Data Lake ストレージ アカウント
-- 追加の Azure ストレージ アカウント
+- 必要な既定の Azure Data Lake Storage アカウント
+- 追加の Azure Data Lake Storage アカウント
+- 追加の Azure Storage アカウント
 
 管理しやすくするために 1 つの ARM グループの下にこれらすべてのコンポーネントを作成することができます。
 
@@ -350,9 +370,9 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 ##関連項目 
 
 - [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-- [Azure プレビュー ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
-- [Azure プレビュー ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-portal.md)
-- [Azure プレビュー ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+- [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
+- [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-portal.md)
+- [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 ##付録 A - Data Lake Analytics ARM テンプレート
 
@@ -411,4 +431,4 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 		}
 	}
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

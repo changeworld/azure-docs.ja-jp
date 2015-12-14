@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/12/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用して StorSimple 帯域幅テンプレートを管理する
@@ -35,7 +35,7 @@
 
 - **[使用元]** - 帯域幅テンプレートを使用しているボリュームの数。
 
-帯域幅テンプレートを管理するには、管理ポータルで StorSimple Manager サービスの **[構成]** ページを使用します。このページで実行できる帯域幅テンプレート関連の最も一般的なタスクは、次のとおりです。
+帯域幅テンプレートを管理するには、Azure クラシック ポータルで StorSimple Manager サービスの **[構成]** ページを使用します。このページで実行できる帯域幅テンプレート関連の最も一般的なタスクは、次のとおりです。
 
 - 帯域幅テンプレートを追加する
 - 帯域幅テンプレートを編集する
@@ -174,6 +174,7 @@ StorSimple デバイスに関する次のベスト プラクティスに従っ�
 
 ## 次のステップ
 
-[StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
+- [StorSimple コンポーネントの詳細](storsimple-components.md) 
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

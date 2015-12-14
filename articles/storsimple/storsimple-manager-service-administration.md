@@ -1,6 +1,6 @@
 <properties 
    pageTitle="StorSimple Manager サービス管理 | Microsoft Azure"
-   description="Microsoft Azure 管理ポータルで StorSimple Manager サービスを使用して、StorSimple デバイスを管理する方法を説明します。"
+   description="Azure クラシック ポータルで StorSimple Manager サービスを使用して、StorSimple デバイスを管理する方法を説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/11/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用した StorSimple デバイスの管理
@@ -30,13 +30,13 @@
 
 ## StorSimple Manager サービスへの接続
 
-StorSimple Manager サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。これらのデバイスを管理するには、中央の Microsoft Azure 管理ポータルをブラウザーで実行して使用します。StorSimple Manager サービスに接続するには、次の手順を実行します。
+StorSimple Manager サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。これらのデバイスを管理するには、中央の Microsoft Azure クラシック ポータルをブラウザーで実行して使用します。StorSimple Manager サービスに接続するには、次の手順を実行します。
 
 #### サービスに接続するには
 
 1. [http://azure.microsoft.com/](http://azure.microsoft.com/) にアクセスします。
 
-1. Microsoft アカウントの資格情報を使用して、ウィンドウの右上にある Microsoft Azure 管理ポータルにログオンします。
+1. Microsoft アカウントの資格情報を使用して、ウィンドウの右上にある Microsoft Azure クラシック ポータルにログオンします。
 
 1. 左側のナビゲーション ウィンドウで下へスクロールして、StorSimple Manager サービスにアクセスします。
 
@@ -57,11 +57,7 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 |ランディング ページ|サービス レベルのページ|デバイス レベルのページ|デバイス レベルのページ|
 |---|---|---|---|
 |StorSimple Manager サービス|サービスのダッシュボード|デバイス ダッシュボード||
-||デバイス →|監視|| 
-||バックアップ カタログ|ボリューム コンテナー →|ボリューム| 
-||構成 (サービス)|バックアップ ポリシー|| 
-||ジョブ|構成 (デバイス)|| 
-||アラート|メンテナンス||
+||デバイス →|監視| ||バックアップ カタログ|ボリューム コンテナー →|ボリューム| ||構成 (サービス)|バックアップ ポリシー|| ||ジョブ|構成 (デバイス)| ||アラート|メンテナンス|
 
 ![ビデオ](./media/storsimple-manager-service-administration/Video_icon.png) **ビデオ**
 
@@ -116,4 +112,4 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 
 -  [Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

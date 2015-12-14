@@ -80,9 +80,9 @@ Jenkins で BLOB サービスを使用するには、Azure Storage プラグイ�
 1. Jenkins ダッシュボードで、**[Manage Jenkins]** をクリックします。
 2. **[Manage Jenkins]** ページで **[Configure System]** をクリックします。
 3. **[Microsoft Azure Storage Account Configuration]** セクションで、次の操作を行います。
-    1. Azure ポータル (<https://manage.windowsazure.com>) で取得したストレージ アカウント名を入力します。
-    2. 同様に、Azure ポータルで取得したストレージ アカウント キーを入力します。
-    3. パブリック Azure クラウドを使用している場合、**[Blob Service Endpoint URL]** には既定値を使用します。これとは異なる Azure クラウドを使用している場合には、Azure 管理ポータルでストレージ アカウント用に指定されたエンドポイントを使用します。 
+    1. [Azure ポータル](portal.azure.com) で取得したストレージ アカウント名を入力します。
+    2. 同様に、[Azure ポータル](portal.azure.com)で取得したストレージ アカウント キーを入力します。
+    3. パブリック Azure クラウドを使用している場合、**[Blob Service Endpoint URL]** には既定値を使用します。これとは異なる Azure クラウドを使用している場合には、[Azure ポータル](portal.azure.com)でストレージ アカウント用に指定されたエンドポイントを使用します。 
     4. **[Validate storage credentials]** をクリックしてストレージ アカウントを検証します。 
     5. [省略可能] Jenkins CI で利用できるストレージ アカウントを追加する場合には、**[Add more Storage Accounts]** をクリックします。
     6. **[Save]** をクリックして設定を保存します。
@@ -110,14 +110,14 @@ Jenkins で BLOB サービスを使用するには、Azure Storage プラグイ�
     
     **[Execute Windows batch command]** にスクリプトを入力した **[Command]** セクションの下には、Jenkins が認識できる環境変数へのリンクがあります。環境変数の名前および説明を確認するには、リンクをクリックします。**BUILD\_URL** など、特殊文字が含まれる環境変数は、コンテナー名および共通仮想パスに使用できません。
 
-8. この例では **[Make new container public by default]** をクリックします。(プライベート コンテナーを使用する場合には、Shared Access Signature を作成してアクセスを許可する必要があります。ただし、この点についてはこのトピックでは取り扱いません。Shared Access Signature の詳細については、[Shared Access Signature の作成](http://go.microsoft.com/fwlink/?LinkId=279889)に関するページを参照してください)。
+8. この例では **[Make new container public by default]** をクリックします。(プライベート コンテナーを使用する場合には、Shared Access Signature を作成してアクセスを許可する必要があります。ただし、この点についてはこのトピックでは取り扱いません。共有アクセス署名に関する詳細については、[Shared Access Signature の作成に関するページ](http://go.microsoft.com/fwlink/?LinkId=279889)を参照してください)。
 9. [省略可能] ビルド アーティファクトをアップロードする前にコンテナーの内容をクリアする場合、**[Clean container before uploading]** をクリックします (コンテナーの内容をクリアしない場合は、チェック ボックスをオフにします)。
 10. **[List of Artifacts to upload]** では、「**text/*.txt**」と入力します。
 11. このチュートリアルでは、**[Common virtual path for uploaded artifacts]** に「**${BUILD\_ID}/${BUILD\_NUMBER}**」と入力します。
 12. **[Save]** をクリックして設定を保存します。
 13. Jenkins ダッシュボードで、**[Build Now]** をクリックして **MyJob** を実行します。コンソール出力でステータスを確認します。ビルド後のアクションによってビルド アーティファクトのアップロードが開始されると、コンソール出力に Azure Storage に関するステータス メッセージが表示されます。
 14. ジョブが正常に完了すると、パブリック BLOB を開いてビルド アーティファクトを確認できます。
-    1. Azure 管理ポータル (<https://manage.windowsazure.com>) にログインします。
+    1. [Azure ポータル](portal.azure.com)にログインします。
     2. **[Storage]** をクリックします。
     3. Jenkins に使用したストレージ アカウント名をクリックします。
     4. **[コンテナー]** をクリックします。
@@ -150,7 +150,7 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
     
-    (ここに挙げた形式は、パブリック Azure クラウドに適用されるものです。これとは異なる Azure クラウドを使用している場合には、Azure 管理ポータル内のエンドポイントを使用して URL エンドポイントを指定します。)
+    (ここに挙げた形式は、パブリック Azure クラウドに適用されるものです。これとは異なる Azure クラウドを使用している場合は、[Azure ポータル](portal.azure.com)内のエンドポイントを使用して URL エンドポイントを指定します。)
 
     この形式では、`storageaccount` はストレージ アカウントの名前、`container_name` はコンテナーの名前、`blob_name` は BLOB の名前をそれぞれ表します。コンテナー名にはパスを複数使用することができます。その場合には、スラッシュ (**/**) で区切ります。このチュートリアルで例に使用したコンテナー名は **MyJob**、共通仮想パスは **${BUILD\_ID}/${BUILD\_NUMBER}** でした。このため、BLOB の URL は次のようになります。
 
@@ -162,4 +162,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   [Meet Jenkins (Jenkins について)]: https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -3,7 +3,7 @@
 	description="国のフィルタリング機能では、国コードを使用して、セキュリティ保護されたディレクトリに対して要求を許可またはブロックする要求発信元の国を定義します。" 
 	services="cdn" 
 	documentationCenter=".NET" 
-	authors="juliako" 
+	authors="camsoper" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
-	ms.author="juliako"/>
+	ms.date="12/02/2015" 
+	ms.author="casoper"/>
 
 #国コード
 
@@ -268,4 +268,4 @@
 | ZM | ザンビア | |
 | ZW | ジンバブエ | |
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

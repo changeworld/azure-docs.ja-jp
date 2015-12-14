@@ -1,6 +1,6 @@
 <properties
 	pageTitle="データ ディスクを接続する |Microsoft Azure"
-	description="Azure プレビュー ポータルでリソース マネージャーデプロイ モデルを使用して、新規または既存のデータ ディスクを VM に接続する方法。"
+	description="Azure ポータルでリソース マネージャーデプロイ モデルを使用して、新規または既存のデータ ディスクを VM に接続する方法。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -17,11 +17,11 @@
 	ms.date="09/14/2015"
 	ms.author="cynthn"/>
 
-# Azure プレビュー ポータルでデータ ディスクを接続する方法
+# Azure ポータルでデータ ディスクを接続する方法
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](storage-windows-attach-disk.md)。
 
-この記事では、Azure プレビュー ポータルを使用して新しいディスクと既存のディスクを仮想マシンに接続する方法について説明します。接続する前に、次のヒントを確認してください。
+この記事では、Azure ポータルを使用して新しいディスクと既存のディスクを仮想マシンに接続する方法について説明します。接続する前に、次のヒントを確認してください。
 
 - 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。詳細については、「[仮想マシンのサイズ](virtual-machines-size-specs.md)」を参照してください。
 - Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。これらの仮想マシンでは、Premium および Standard のストレージ アカウントのディスクを使用できます。Premium Storage は特定のリージョンで使用できます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage-preview-portal.md)」を参照してください。
@@ -31,7 +31,7 @@
 
 ## 仮想マシンの検索
 
-1. Azure プレビュー ポータルにサインインします。
+1. Azure ポータルにサインインします。
 
 2. ハブ メニューの **[参照]** をクリックします。
 
@@ -90,4 +90,4 @@
 
 [Azure ストレージ アカウントについて]: ../storage-whatis-account/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

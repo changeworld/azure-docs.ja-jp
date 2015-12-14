@@ -17,7 +17,7 @@
 	ms.author="spelluru"/>
 
 # Data Factory のトラブルシューティング
-Azure ポータル (または) Azure PowerShell コマンドレットを使用して Azure Data Factory の問題についてトラブルシューティングを行うことができます。このトピックには、Azure ポータルを使用し、Data Factory で発生するエラーをすばやく解決する方法について学べるチュートリアルが含まれています。
+Azure クラシック ポータルまたは Azure PowerShell コマンドレットを使用して、Azure Data Factory の問題のトラブルシューティングを行うことができます。このトピックには、Azure クラシック ポータルを使用して、Data Factory で発生するエラーをすばやく解決する方法を示すチュートリアルが含まれています。
 
 ## 問題: Data Factory コマンドレットを実行できない
 この問題を解決するには、Azure のモードを **AzureResourceManager** に切り替えます。
@@ -31,23 +31,23 @@ Azure PowerShell で使用する Azure アカウントまたはサブスクリ�
 
 1. Add-AzureAccount - 適切なユーザー ID とパスワードを使用します。
 2. Get-AzureSubscription - アカウントのサブスクリプションをすべて表示します。 
-3. Select-AzureSubscription <subscription name> - 適切なサブスクリプションを選択します。Azure プレビュー ポータルでデータ ファクトリの作成に使用するのと同じものを使用します。
+3. Select-AzureSubscription <subscription name> - 適切なサブスクリプションを選択します。Azure ポータルでデータ ファクトリの作成に使用するのと同じものを使用します。
 
-## 問題: Azure ポータルから Data Gateway の高速セットアップを起動できない
+## 問題: Azure クラシック ポータルからデータ ゲートウェイの高速セットアップを起動できない
 Data Gateway の高速セットアップを起動するには、Internet Explorer または Microsoft ClickOnce と互換性のある Web ブラウザーが必要です。高速セットアップを開始できない場合、次の手順を実行できます。
 
 1. 他のブラウザーで失敗した場合は、Internet Explorer に切り替えます。または
 2. ポータルの同じブレードに表示される [手動セットアップ] リンクを使用してインストールを実行し、Data Management Gateway 構成の準備ができたら、画面に表示されているキーをコピーしておき、Data Management Gateway 構成の準備ができたときに貼り付けます。起動しない場合は、"Microsoft Data Management Gateway" の [スタート] メニューを確認し、起動した時点でキーを貼り付けます。 
 
 
-## 問題: Azure ポータルから資格情報マネージャーを起動できない
-Azure ポータルから SQL Server のリンクされたサービスをセットアップまたは更新する場合、資格情報マネージャー アプリケーションが起動してセキュリティを確保します。この場合、Internet Explorer か、Microsoft の ClickOnce と互換性のある Web ブラウザーが必要です。他のブラウザーで失敗した場合は、Internet Explorer に切り替えることができます。
+## 問題: Azure クラシック ポータルから資格情報マネージャーを起動できない
+Azure クラシック ポータルから SQL Server のリンクされたサービスをセットアップまたは更新する場合、セキュリティを確保するために、資格情報マネージャー アプリケーションを起動します。この場合、Internet Explorer か、Microsoft の ClickOnce と互換性のある Web ブラウザーが必要です。他のブラウザーで失敗した場合は、Internet Explorer に切り替えることができます。
 
 ## 問題: オンプレミス SQL Server に接続できない 
 ゲートウェイがインストールされているコンピューターから SQL Server に接続できることを確認します。ゲートウェイがインストールされているコンピューターで、次のことを実行できます。
 
 1. SQL Server がインストールされているコンピューターに Ping を送信します。または
-2. SQL Server Management Studio (SSMS) を使用して、Azure ポータルで指定した資格情報で SQL Server のインスタンスに接続してみます。
+2. SQL Server Management Studio (SSMS) を使用して、Azure クラシック ポータルで指定した資格情報で SQL Server インスタンスに接続してみます。
 
 
 ## 問題: 入力スライスが PendingExecution または PendingValidation 状態のままになっている
@@ -92,7 +92,7 @@ Azure ポータルから SQL Server のリンクされたサービスをセッ�
 ## 問題: ハイブリッド コピー操作に失敗する
 詳細情報:
 
-1. ゲートウェイがインストールされているコンピューターで Data Management Gateway Configuration Manager を起動します。**[ゲートウェイ名]** が **Azure ポータル**の論理ゲートウェイ名に設定されており、**[ゲートウェイ キーの状態]** が **[登録済み]**、**[サービスの状態]** が **[開始]** になっていることを確認します。 
+1. ゲートウェイがインストールされているコンピューターで Data Management Gateway Configuration Manager を起動します。**[ゲートウェイ名]** が **Azure クラシック ポータル**の論理ゲートウェイ名に設定されており、**[ゲートウェイ キーの状態]** が **[登録済み]**、**[サービスの状態]** が **[開始]** になっていることを確認します。 
 2. **イベント ビューアー**を起動します。**[アプリケーションとサービス ログ]** を展開し、**[Data Management Gateway]** をクリックします。Data Management Gateway に関連するエラーがあるか確認します。 
 
 ## 問題: オンデマンドの HDInsight プロビジョニングがエラーで失敗する
@@ -110,11 +110,11 @@ Azure ポータルから SQL Server のリンクされたサービスをセッ�
 ## 問題: カスタム アクティビティが失敗する
 Azure Data Factory でカスタム アクティビティ (パイプライン アクティビティの種類が CustomActivity) を使用する場合、カスタム アプリケーションは、所定のリンクされたサービスから HDInsight に対して、マップのみのストリーミング MapReduce ジョブとして実行されます。
 
-カスタム アクティビティを実行すると、Azure Data Factory が HDInsight クラスターからその出力をキャプチャし、Azure BLOB ストレージ アカウントの*adfjobs* ストレージ コンテナーに保存できます。エラーが発生した場合は、エラーが発生した後に出力テキスト ファイル **stderr** からテキストを読み取ることができます。このファイルは、Web ブラウザーで開いた Azure ポータルからアクセスして読み取ることができます。またはストレージ エクスプローラー ツールを使用して、Azure BLOB ストレージのストレージ コンテナーに保存されているファイルに直接アクセスできます。
+カスタム アクティビティを実行すると、Azure Data Factory が HDInsight クラスターからその出力をキャプチャし、Azure BLOB ストレージ アカウントの*adfjobs* ストレージ コンテナーに保存できます。エラーが発生した場合は、エラーが発生した後に出力テキスト ファイル **stderr** からテキストを読み取ることができます。このファイルは、Web ブラウザーで開いた Azure クラシック ポータルからアクセスして読み取ることができます。または、ストレージ エクスプローラー ツールを使用して、Azure BLOB ストレージのストレージ コンテナーに保存されているファイルに直接アクセスできます。
 
 特定のカスタム アクティビティのログを列挙して読み取るには、このページの後半で紹介するチュートリアルのいずれかの手順に従います。概要:
 
-1.  Azure ポータルで Data Factory を**参照**して場所を特定します。
+1.  Azure クラシック ポータルで Data Factory を**参照**して場所を特定します。
 2.  **[ダイアグラム]** ボタンを使用してデータ ファクトリのダイアグラムを表示し、**[データセット]** テーブルをクリックすると、カスタム アクティビティを持つ特定の**パイプライン**が表示されます。 
 3.  **[テーブル]** ブレードで、調査対象期間の **[問題のあるスライス]** にある対象のスライスをクリックします。
 4.  詳しい情報が示された **[データ スライス]** ブレードが表示され、そのスライスの**アクティビティの実行**が一覧表示されます。一覧の**アクティビティ**をクリックします。 
@@ -168,7 +168,7 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 
 
 ## <a name="copywalkthrough"></a>チュートリアル: データのコピーで発生するエラーのトラブルシューティング
-このチュートリアルでは、「Data Factory を使ってみる」の記事にあるチュートリアルでエラーを発生させ、Azure ポータルを使用してエラーのトラブルシューティングを行う方法を学びます。
+このチュートリアルでは、「Data Factory を使ってみる」の記事にあるチュートリアルでエラーを発生させ、Azure クラシック ポータルを使用してエラーのトラブルシューティングを行う方法について説明します。
 
 ### 前提条件
 1. 記事「[Azure Data Factory を使ってみる][adfgetstarted]」にあるチュートリアルを最後まで実施します。
@@ -182,9 +182,9 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 	**StartDateTime** の値を現在の日付に置き換え、**EndDateTime** の値を翌日の日付に置き換えます。
 
 
-### Azure プレビュー ポータルを使用して、エラーのトラブルシューティングを行う
+### Azure ポータルを使用したエラーのトラブルシューティング
 
-1.	[Azure プレビュー ポータル][azure-preview-portal]にログインします。 
+1.	[Azure ポータル][azure-portal]にログインします。 
 2.	**スタート画面**で **[ADFTutorialDataFactory]** をクリックします。**スタート画面**にデータ ファクトリのリンクが表示されていない場合は、**[参照]** ハブ、**[すべて]** の順にクリックします。**[参照]** ブレードの **[データ ファクトリ…]** をクリックし、**[ADFTutorialDataFactory]** をクリックします。
 3.	**[データセット]** タイルに **[エラーあり]** が表示されていることに注目してください。**[エラーあり]** をクリックします。**[エラーありデータセット]** ブレードが表示されます。
 
@@ -267,10 +267,10 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
  
 
 ## <a name="pighivewalkthrough"></a> チュートリアル: Hive/Pig 処理で発生するエラーのトラブルシューティング
-このチュートリアルでは、Azure プレビュー ポータルと Azure PowerShell の両方を使用して、Hive/Pig 処理で発生するエラーのトラブルシューティングを行う手順を説明します。
+このチュートリアルでは、Azure ポータルと Azure PowerShell の両方を使用して、Hive/Pig 処理で発生するエラーのトラブルシューティングを行う手順を説明します。
 
 
-### チュートリアル: Azure ポータルを使用して Pig/Hive 処理で発生するエラーのトラブルシューティングを行う
+### チュートリアル: Azure クラシック ポータルを使用した Pig/Hive 処理で発生するエラーのトラブルシューティング
 このシナリオでは、HDInsight クラスターでの Hive 処理で発生するエラーが原因で、データ セットがエラー状態になっています。
 
 1. **[Data Factory]** のホーム ページから **[データセット]** タイル上の **[エラーあり]** をクリックします。
@@ -359,7 +359,7 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
 [json-scripting-reference]: http://go.microsoft.com/fwlink/?LinkId=516971
 
-[azure-preview-portal]: https://portal.azure.com/
+[azure-portal]: https://portal.azure.com/
 
 [image-data-factory-troubleshoot-with-error-link]: ./media/data-factory-troubleshoot/DataFactoryWithErrorLink.png
 
@@ -382,4 +382,4 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

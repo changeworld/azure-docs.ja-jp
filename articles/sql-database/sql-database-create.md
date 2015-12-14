@@ -30,7 +30,7 @@ SQL Database V12 [(一部の地域ではプレビュー)](sql-database-v12-whats
 
 | データベースを作成する | スクリーン ショット |
 | :--- | :--- |
-| 1\.[http://portal.azure.com/](http://portal.azure.com/) にサインインします。 | ![新しい Azure ポータル][1] |
+| 1\.[http://portal.azure.com/](http://portal.azure.com/) にサインインします。 | ![新しい Azure クラシック ポータル][1] |
 | 2\.ページの左下の **[新規]** をクリックします。 | ![新しいサービスの開始][2]|
 | 3\.**[SQL Database]** をクリックします。| ![選択するさまざまなサービス][3] |
 | 4\.**[SQL Database]** ブレードが開きます。**[名前]** フィールドに、データベース名を指定します。 | ![データベースを名前を付けます][4] |
@@ -66,4 +66,4 @@ SQL Database V12 [(一部の地域ではプレビュー)](sql-database-v12-whats
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

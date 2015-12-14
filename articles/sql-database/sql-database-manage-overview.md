@@ -22,17 +22,17 @@
 
 
 
-## Azure ポータル
+## Azure クラシック ポータル
 
 
-[Azure ポータル](http://portal.azure.com)は、データベースや論理サーバーを作成、更新、削除したり、データベース アクティビティを監視したりできる、Web ベースの管理ポータルです。このツールは、Azure を使い始めたばかりの場合、管理対象のデータベースの数が少ない場合、すばやく作業を行う必要がある場合に便利です。
+[Azure クラシック ポータル](http://portal.azure.com)は、データベースや論理サーバーを作成、更新、削除したり、データベース アクティビティを監視したりできる、Web ベースのクラシック ポータルです。このツールは、Azure を使い始めたばかりの場合、管理対象のデータベースの数が少ない場合、すばやく作業を行う必要がある場合に便利です。
 
-ポータルの使用法の詳細については、「[Azure の管理ポータルを使用した SQL データベースの管理](sql-database-manage-portal.md)」を参照してください。
+ポータルの使用法の詳細については、「[Azure クラシック ポータルを使用した SQL データベースの管理](sql-database-manage-portal.md)」を参照してください。
 
 ## SQL Server Management Studio と Visual Studio の SQL Server Data Tools
 
 
-SQL Server Management Studio (SSMS) と Visual Studio の SQL Server Data Tools (SSDT) は、クラウドのデータベースに接続し、管理や開発を行うための、コンピューター上で実行するクライアント ツールです。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、[Visual Studio の SSDT の使用をお勧めします](https://msdn.microsoft.com/library/mt204009.aspx)。ハイブリッド環境での SQL Server データベースの管理など、SSDT ではまだ使用できない高度な SQL 機能が必要な場合は、SSMS を使用してください。
+SQL Server Management Studio (SSMS) と Visual Studio の SQL Server Data Tools (SSDT) は、クラウドのデータベースに接続し、管理や開発を行うための、コンピューター上で実行するクライアント ツールです。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、[Visual Studio の SSDT の使用をお勧めします](https://msdn.microsoft.com/library/mt204009.aspx)。ハイブリッド環境での SQL Server Database の管理など、SSDT ではまだ使用できない高度な SQL 機能が必要な場合は、SSMS を使用してください。
 
 SSMS を使用して Azure SQL Database を管理する方法の詳細については、「[SSMS を使用した SQL データベースの管理](sql-database-manage-azure-ssms.md)」を参照してください。
 
@@ -44,4 +44,4 @@ PowerShell などのコマンド ライン ツールを使って、データベ�
 コマンド ライン ツールを使った Azure SQL Database の管理の詳細については、「[PowerShell を使用した SQL Database の管理](sql-database-command-line-tools.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -32,7 +32,7 @@
 
 クラスター内のノードのワーカーの数を増やすことで、より多くの mapper と reducer を同時に実行できるようになります。HDInsight でのスケール アウトを向上させる方法が 2 つあります。
 
-- プロビジョニング時に、Azure プレビュー ポータル、Azure PowerShell またはクロス プラットフォームのコマンド ライン インターフェイスを使用して worker ノードの数を指定できます。詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」をご覧ください。次の画面は、Azure プレビュー ポータル上に表示された worker ノード構成を示しています。
+- プロビジョニング時に、Azure ポータル、Azure PowerShell またはクロス プラットフォームのコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」をご覧ください。次の画面は、Azure ポータル上に表示されたワーカー ノード構成を示しています。
 
 	![scaleout\_1][image-hdi-optimize-hive-scaleout_1]
 
@@ -226,4 +226,4 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

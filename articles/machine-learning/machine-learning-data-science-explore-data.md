@@ -29,4 +29,4 @@
 - **Hive テーブル** データは、Hive クエリを使用して探索します。
 - **Azure Machine Learning (AML) Studio** データは、AML モジュールを使用して探索します。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

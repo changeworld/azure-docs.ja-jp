@@ -31,7 +31,7 @@
 この記事の手順を完了するには、次のものが必要です。
 
 - **Azure HDInsight (HDInsight での Hadoop) クラスター (Windows または Linux ベース)**
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+- **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell 1.0 以上のインストール](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」を参照してください。
 
 ##Azure PowerShell を使用して Hive クエリを実行する
 
@@ -184,4 +184,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

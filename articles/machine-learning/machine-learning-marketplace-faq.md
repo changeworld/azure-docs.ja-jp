@@ -40,9 +40,9 @@
 
 Marketplace の **[このデータセットの参照]** ページで Web サービスを使用するときに、Web サービスの 1 つ以上の入力パラメーターが長さの制限を超過した可能性があります。HTTP POST メソッドを使用して、より長い入力文字列でサービスを呼び出すことができます。例については、「[Azure ML で R を使用して構築され、Marketplace に発行されたサンプル Web サービス](machine-learning-r-csharp-web-service-examples.md)」をご覧ください。
 
-**4.なぜ Microsoft Azure の管理ポータルのストアの [API エクスプローラー] タブに何も表示されないのでしょうか。**
+**4.なぜ Azure クラシック ポータルのストアの [API エクスプローラー] タブに何も表示されないのでしょうか。**
 
-これは、Azure 管理ポータルの Marketplace の既知の問題です。チームではこの問題を解決するために作業中です。
+これは、Azure クラシック ポータルの Marketplace の既知の問題です。チームではこの問題を解決するために作業中です。
 
 
 ##Marketplace の Azure Machine Learning からの発行に関する質問
@@ -77,4 +77,4 @@ Azure Machine Learning Web サービスに直接接続するときと、これ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

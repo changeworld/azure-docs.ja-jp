@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="11/18/2015"
+   ms.date="12/01/2015"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用してボリュームを管理する
@@ -21,7 +21,7 @@
 
 このチュートリアルでは、StorSimple Manager サービスを使用して、StorSimple デバイスおよび StorSimple 仮想デバイスにボリュームを作成して管理する方法について説明します。
 
-StorSimple Manager サービスは、StorSimple ソリューションを単一の Web インターフェイスから管理できる、Azure ポータルの拡張機能です。StorSimple Manager サービスを使用すると、ボリュームの管理に加え、StorSimple サービスの作成と管理、デバイスの表示と管理、アラートの表示、バックアップ ポリシーやバックアップ カタログの表示と管理を行うことができます。
+StorSimple Manager サービスは、StorSimple ソリューションを単一の Web インターフェイスから管理できる、Azure クラシック ポータルの拡張機能です。StorSimple Manager サービスを使用すると、ボリュームの管理に加え、StorSimple サービスの作成と管理、デバイスの表示と管理、アラートの表示、バックアップ ポリシーやバックアップ カタログの表示と管理を行うことができます。
 
 > [AZURE.NOTE]Azure StorSimple は、仮想プロビジョニングされたボリュームのみを作成できます。完全にプロビジョニングされたボリュームまたは部分的にプロビジョニングされたボリュームを Azure StorSimple システム上に作成することはできません。
 >
@@ -115,8 +115,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
  
     > [AZURE.NOTE]ボリュームの **[このボリュームの既定のバックアップを有効にする]** オプションは変更できません。
 
-6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-volumes/HCS_CheckIcon.png) をクリックして変更を保存します。Azure
-7.  ポータルにはボリュームを更新中であることを示すメッセージが表示されます。ボリュームが正常に更新されると、成功メッセージが表示されます。
+6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-volumes/HCS_CheckIcon.png) をクリックして変更を保存します。ボリュームを更新中であることを示すメッセージが Azure クラシック ポータルに表示されます。ボリュームが正常に更新されると、成功メッセージが表示されます。
 
 7. ボリュームを拡張する場合は、Windows ホスト コンピューターで次の手順を実行します。
 
@@ -196,4 +195,4 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -18,6 +18,8 @@
 
 # API アプリの保護: Azure Active Directory またはソーシャル プロバイダーの認証の追加
 
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
+
 ## 概要
 
 このチュートリアルでは、認証されたユーザーのみがアクセスできるように API アプリを保護する方法を示します。さらに、ASP.NET API アプリで使用できる、ログオンしているユーザーに関する情報を取得するためのコードも紹介します。
@@ -263,7 +265,7 @@ Visual Studio でリソース グループが作成されたときに、*ゲー�
 
 	応答メッセージに、ログインするときに使用したユーザーの名前と ID が表示されます。
 
-	![ログイン時に使用したユーザー名が応答メッセージに表示](./media/app-service-api-dotnet-add-authentication/chromegetuserinfo.png)
+	![Response message with logged on user](./media/app-service-api-dotnet-add-authentication/chromegetuserinfo.png)
 
 ## 次のステップ
 
@@ -272,4 +274,4 @@ Visual Studio でリソース グループが作成されたときに、*ゲー�
 [Azure ポータル]: https://manage.windowsazure.com/
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

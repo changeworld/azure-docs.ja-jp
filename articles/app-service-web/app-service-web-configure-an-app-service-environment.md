@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="App Service Environment の構成方法" 
-	description="App Service Environment の構成、管理、および監視" 
+	pageTitle="App Service 環境の構成方法" 
+	description="App Service 環境の構成、管理、および監視" 
 	services="app-service" 
 	documentationCenter="" 
 	authors="ccompy" 
@@ -17,15 +17,15 @@
 	ms.author="ccompy"/>
 
 
-# App Service Environment の構成 #
+# App Service 環境の構成 #
 
 ## 概要 ##
 
-App Service Environment は、Azure App Service の Premium レベルの機能であり、新しいスケールおよびネットワーク アクセス機能を提供します。この新しいスケール機能では、VNET に Azure App Service のインスタンスを配置することができます。この機能で、Web Apps、Mobile Apps、API Apps をホストできます。ただし、Logic Apps は ASE でまだ実行されていません。
+App Service Environment は、Azure App Service の Premium レベルの機能であり、新しいスケーリング機能とネットワーク アクセス機能を提供します。この新しいスケール機能では、VNET に Azure App Service のインスタンスを配置することができます。この機能で、Web Apps、Mobile Apps、API Apps をホストできます。ただし、Logic Apps は ASE でまだ実行されていません。
 
-App Service Environment (ASE) の機能に慣れていない場合は、[App Service Environment の概要](app-service-app-service-environment-intro.md)に関するページのドキュメントを参照してください。ASE を作成する方法の詳細については、[App Service Environment の作成方法](app-service-web-how-to-create-an-app-service-environment.md)のドキュメントを参照してください。
+App Service 環境 (ASE) の機能に慣れていない場合は、[App Service 環境の概要](app-service-app-service-environment-intro.md)に関するページのドキュメントを参照してください。ASE を作成する方法の詳細については、[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)のドキュメントを参照してください。
 
-大まかに言えば、App Service Environment は次に挙げるいくつかの主要なコンポーネントで構成されます。
+大まかに言えば、App Service 環境は次に挙げるいくつかの主要なコンポーネントで構成されます。
 
 - Azure App 環境ホステッド サービスで実行中のコンピューティング リソース
 - Storage
@@ -51,7 +51,7 @@ App Service Environment を管理および監視する UI は、Azure ポータ�
 
 この最初のブレードには、ASE の一部のプロパティと、リソース プールごとのメトリック グラフが表示されます。Essentials ブロックに表示されるプロパティの一部は、関連付けられているブレードを開くハイパーリンクです。たとえば、VNET 名を選択して、ASE が実行されている VNET と関連付けられた UI を開くことができます。App Service プランとアプリでそれぞれブレードが開き、ASE 内にある項目が一覧表示されます。
 
-## 監視 ##
+## Monitoring ##
 
 グラフから、各リソース プールの多様なパフォーマンス メトリックを確認できます。フロント エンド プールの場合、平均的な CPU とメモリの監視には、多くの利点があります。平均を監視して、フロント エンドの負荷を分散し、全般的なパフォーマンスに関する適切なビューを得ることができます。ただし、ワーカー プールは同じではありません。App Service プランが複数ある場合、ワーカー プール内のワーカーを利用することができます。この場合、CPU とメモリの使用状況は、有益な情報の点で多くの情報を提供しません。それまでに使用したワーカー数と、特に、このシステムを管理する場合に、他のシステムが使用できるワーカー数を追跡することは重要です。
 
@@ -92,7 +92,7 @@ ASE ブレードを選択すると、設定ブレードが自動的に開きま�
 
 ASE 内のアプリのスケールの詳細については、「[App Service Environment 内での Web アプリのスケール](app-service-web-scale-a-web-app-in-an-app-service-environment.md)」を参照してください。ASE リソース プールの自動スケールを構成する方法については、「[自動スケールと App Service Environment][ASEAutoscale]」を参照してください。このドキュメントには、リソース プールの手動スケール操作について詳しく説明されています。
 
-リソース プール、フロント エンド、ワーカーは、テナントに直接アクセスできません。つまり、テナントに対する RDP、プロビジョニングの変更、またはテナントでの管理者権限での操作は実行できません。このような操作は、Azure が処理し、保守しています。ただし、コンピューティング リソースの数量とサイズは、ユーザーの決定次第です。
+リソース プール、フロント エンド、ワーカーは、テナントに直接アクセスできません。つまり、テナントに対する RDP、プロビジョニングの変更、またはテナントでの管理者権限での操作は実行できません。このような操作は、Azure が処理し、保守しています。ただし、コンピューティング リソースの数量とサイズはユーザーが決定します。
 
 リソース プール内のサーバー数を制御する方法は、実際のところ 3 つあります。 - 上部にあるメイン ASE ブレードからのスケール操作 - 個々のリソース プールの [設定] にある [スケール] ブレードからの手動スケール操作 - 個々のリソース プールの [スケール] ブレードから設定する自動スケール
 
@@ -104,7 +104,7 @@ ASE ブレードで [スケール] 操作を使用するには、[スケール] 
 
 ![][7]
 
-App Service Environment は合計 55 個までのコンピューティング リソースを使用するように構成できます。この 55 個のコンピューティング リソースのうち、ワークロードのホストに使用できるのは 50 個のみです。その理由は 2 つあります。フロントエンドのコンピューティング リソースは最小で 2 つです。これにより、ワーカー プールの割り当てのサポートには最大で 53 個残ります。フォールト トレランスを提供するには、次のルールに従い、追加のコンピューティング リソースを割り当てる必要があります。
+App Service 環境は合計 55 個までのコンピューティング リソースを使用するように構成できます。この 55 個のコンピューティング リソースのうち、ワークロードのホストに使用できるのは 50 個のみです。その理由は 2 つあります。フロントエンドのコンピューティング リソースは最小で 2 つです。これにより、ワーカー プールの割り当てのサポートには最大で 53 個残ります。フォールト トレランスを提供するには、次のルールに従い、追加のコンピューティング リソースを割り当てる必要があります。
 
 - 各ワーカー プールには、ワークロードに割り当てることができない追加のコンピューティング リソースを 1 つ以上用意する必要があります。
 - ワーカー プール内のコンピューティング リソースの数量が特定の値を超えた場合、フォールト トレランスのために別のコンピューティング リソースが必要になります。この対応は、フロント エンド プールの場合には該当しません。
@@ -126,7 +126,7 @@ App Service Environment は合計 55 個までのコンピューティング リ
 
 ### コンピューティング リソースのサイズ スケール ###
 
-任意のプールに割り当てることのできるコンピューティング リソースの数量を管理できるだけでなく、サイズを制御することもできます。App Service Environment では、P1 ～ P4 のラベルが付けられた 4 種類のサイズから選択することができます。これらのサイズとその料金設定の詳細については、[App Service の料金](../app-service/app-service-value-prop-what-is.md)に関するページを参照してください。P1 ～ P3 のコンピューティング リソース サイズは、通常利用できるものと同様です。P4 コンピューティング リソースでは、8 つのコアと 14 GB の RAM が提供され、App Service Environment でのみ利用できます。
+任意のプールに割り当てることのできるコンピューティング リソースの数量を管理できるだけでなく、サイズを制御することもできます。App Service 環境では、P1 ～ P4 のラベルが付けられた 4 種類のサイズから選択することができます。これらのサイズとその料金設定の詳細については、[App Service の料金](../app-service/app-service-value-prop-what-is.md)に関するページを参照してください。P1 ～ P3 のコンピューティング リソース サイズは、通常利用できるものと同様です。P4 コンピューティング リソースでは、8 つのコアと 14 GB の RAM が提供され、App Service 環境でのみ利用できます。
 
 プールに使用されるコンピューティング リソースのサイズを変更する場合、2 つの方法があります。ASE ブレードと価格レベル ブレード (個々のリソース プールの [設定] からアクセスできます) から使用できるスケール コマンドがあります。
 
@@ -135,19 +135,19 @@ App Service Environment は合計 55 個までのコンピューティング リ
 ただし、何らかの変更を加える前に、次の点に注意する必要があります。
 
 - 変更が完了するまでには、変更の規模によっては数時間かかる可能性があります。
-- 既に処理中の App Service Environment の構成の変更が存在する場合、他の変更を開始することはできません。
-- ワーカー プールで使用されるコンピューティング リソースのサイズを変更する場合、そのワーカー プールで実行中のアプリが停止する可能性があります。
+- 既に処理中の App Service 環境の構成の変更が存在する場合、他の変更を開始することはできません。
+- ワーカー プールで使用されるコンピューティング リソースのサイズを変更すると、そのワーカー プールで実行中のアプリが停止する可能性があります。
 
-ワーカー プールへのインスタンスの追加は害のない操作であり、そのプール内のリソースのためにアプリが停止することはありません。ただし、ワーカー プールで使用されるコンピューティング リソースのサイズを変更する場合は別です。ワーカー プールのサイズ変更中にアプリのダウンタイムが発生するのを避けるためには、次のことをお勧めします。
+ワーカー プールへのインスタンスの追加は害のない操作であり、そのプール内のリソースのためにアプリが停止することはありません。ただし、ワーカー プールで使用されるコンピューティング リソースのサイズを変更する場合は別です。ワーカー プールのサイズの変更中にアプリのダウンタイムが発生しないようにするために、次のことをお勧めします。
 
 - 未使用のワーカー プールを使用して、必要なサイズで必要なインスタンスを呼び出す。
 - App Service プランを新しいワーカー プールにスケーリングする。  
  
-こうすれば、実行中のワークロードでコンピューティング リソースのサイズを変更する場合に比べ、アプリの実行に与える影響は大幅に小さくなります。App Service Environment でのアプリのスケールの詳細については、「[App Service Environment 内での Web アプリのスケール](app-service-web-scale-a-web-app-in-an-app-service-environment.md)」を参照してください。
+こうすれば、実行中のワークロードでコンピューティング リソースのサイズを変更する場合に比べ、アプリの実行に与える影響は大幅に小さくなります。App Service Environment でのアプリのスケーリングの詳細については、「[App Service 環境内でのアプリのスケーリング](app-service-web-scale-a-web-app-in-an-app-service-environment.md)」をご覧ください。
 
 ## Virtual Network ##
 
-ASE などのホステッド サービスとは異なり、[Virtual Network][virtualnetwork] とサブネットは、すべてがユーザーの制御下にあります。App Service Environment には少数のネットワーク要件がありますが、残りの部分はユーザーが制御します。ASE の要件を次に示します。
+ASE などのホステッド サービスとは異なり、[Virtual Network][virtualnetwork] とサブネットは、すべてがユーザーの制御下にあります。App Service Environment にはネットワーク要件がいくつかありますが、残りの部分はユーザーが制御します。ASE の要件を次に示します。
 
 - 従来の "v1" VNET 
 - 8 個以上のアドレスを持つサブネット 
@@ -155,21 +155,21 @@ ASE などのホステッド サービスとは異なり、[Virtual Network][vir
  
 VNET の管理は、Virtual Network UI または PowerShell によって行われます。
 
-この機能によって Azure App Service が VNET に配置されるため、ASE でホストされているアプリが ExpressRoute またはサイト間 VPN によってリソースに直接アクセスできるようになっています。App Service Environment をホストしている VNET から利用できるリソースにアクセスするために、App Service Environment 内のアプリにネットワーク機能を追加する必要はありません。つまり、VNET 統合またはハイブリッド接続を使用して、リソースを取り込んだり、VNET に接続したりする必要はありません。VNET に接続されていないネットワーク内のリソースにアクセスするために、今後もこれらの両方の機能を使用できます。たとえば、VNET 統合を使用して、サブスクリプション内にあり、ASE が属している VNET に接続していない VNET と統合することができます。また、ハイブリッド接続を使用して、通常と同様の方法で他のネットワーク内のリソースにアクセスすることもできます。
+この機能によって Azure App Service が VNET に配置されるため、ASE でホストされているアプリが ExpressRoute またはサイト間 VPN によってリソースに直接アクセスできるようになっています。App Service 環境をホストしている VNET から利用できるリソースにアクセスするために、App Service 環境内のアプリにネットワーク機能を追加する必要はありません。つまり、VNET 統合またはハイブリッド接続を使用して、リソースを取り込んだり、VNET に接続したりする必要はありません。VNET に接続されていないネットワーク内のリソースにアクセスするために、今後もこれらの両方の機能を使用できます。たとえば、VNET 統合を使用して、サブスクリプション内にあり、ASE が属している VNET に接続していない VNET と統合することができます。また、ハイブリッド接続を使用して、通常と同様の方法で他のネットワーク内のリソースにアクセスすることもできます。
 
 ExpressRoute VPN を使用して VNET を構成している場合、ASE に関するいくつかのルーティング ニーズに気を付ける必要があります。ASE とは互換性がないユーザー定義ルート (UDR) 構成がいくつかあります。ExpressRoute を使用する VNET 環境で ASE を実行する場合の詳細については、「[ExpressRoute を使用した App Service Environment のネットワーク構成の詳細][ExpressRoute]」を参照してください。
 
-また、ネットワーク セキュリティ グループを使用してアプリへのアクセスを制御することもできます。この機能によって、App Service Environment をロック ダウンして必要な IP アドレスのみに制限することができます。この方法の詳細については、「[App Service Environment での受信トラフィックの制御方法](app-service-app-service-environment-control-inbound-traffic.md)」のドキュメントを参照してください。
+ネットワーク セキュリティ グループを使用して、アプリへのアクセスを制御することもできるようになりました。この機能によって、App Service 環境をロック ダウンして必要な IP アドレスのみに制限することができます。この方法の詳細については、「[App Service 環境での受信トラフィックの制御方法](app-service-app-service-environment-control-inbound-traffic.md)」のドキュメントを参照してください。
 
-## App Service Environment の削除 ##
+## App Service 環境の削除 ##
 
-App Service Environment を削除する必要がある場合は、単に [App Service Environment] ブレード上部の [削除] アクションを使用します。この操作を実行すると、App Service Environment の名前を入力し、操作の実行を確定するように求められます。注: App Service Environment を削除すると、その内部のすべてのコンテンツも削除されます。
+App Service 環境を削除する必要がある場合は、単に [App Service 環境] ブレード上部の [削除] アクションを使用します。この操作を実行すると、App Service Environment の名前を入力し、操作の実行を確定するように求められます。注: App Service Environment を削除すると、その内部のすべてのコンテンツも削除されます。
 
 ![][9]
 
 ## 使用の開始
 
-App Service Environment の使用を開始するには、[App Service Environment の作成方法](app-service-web-how-to-create-an-app-service-environment.md)に関するページを参照してください。
+App Service 環境の使用を開始するには、[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)に関するページを参照してください。
 
 Azure App Service プラットフォームの詳細については、[Azure App Service](../app-service/app-service-value-prop-what-is.md) に関するページを参照してください。
 
@@ -200,4 +200,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 [ExpressRoute]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-configuration-expressroute/
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

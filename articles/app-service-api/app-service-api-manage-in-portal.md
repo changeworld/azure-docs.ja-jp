@@ -18,6 +18,8 @@
 
 # Azure App Service の API アプリの管理
 
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
+
 この記事では、[Azure プレビュー ポータル](https://portal.azure.com/)を使用して API アプリの管理および監視タスクを実行する方法について説明します。実行できるタスクのいくつかを次に示します。
 
 - 認証を構成する。 
@@ -134,4 +136,4 @@ Visual Studio の**サーバー エクスプローラー**には、リモート 
 
 コマンド ラインを使用して API アプリを管理する方法については、この記事の左側 (幅の広いブラウザー ウィンドウの場合) または上部 (幅の狭いブラウザー ウィンドウの場合) に表示されているメニューの **[自動化]** セクションの記事を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

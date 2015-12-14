@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="AzurePortal"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/11/2015"
+	ms.date="12/02/2015"
 	ms.author="tomfitz"/>
 
 
@@ -51,9 +51,9 @@
         }
     ]
 
-## プレビュー ポータルでのタグ
+## ポータルでのタグ
 
-プレビュー ポータルでリソースやリソース グループをタグ付けするのは簡単です。[参照] ハブを使用してタグを付けるリソースまたはリソース グループに移動し、ブレードの上部にある [概要] セクションの [タグ] 部分をクリックします。
+ポータルでリソースやリソース グループをタグ付けするのは簡単です。[参照] ハブを使用してタグを付けるリソースまたはリソース グループに移動し、ブレードの上部にある [概要] セクションの [タグ] 部分をクリックします。
 
 ![リソース ブレードとリソース グループのブレードの [タグ] 部分](./media/resource-group-using-tags/tag-icon.png)
 
@@ -139,7 +139,7 @@
     rbacdemo-group
     tag-demo
 
-Azure PowerShell 1.0 プレビューよりも前のバージョンで特定のタグが付けられたリソースを取得するには、次のコマンドを使用します。
+Azure PowerShell 1.0 よりも前のバージョンで特定のタグが付けられたリソースを取得するには、次のコマンドを使用します。
 
     PS C:\> Get-AzureResourceGroup -Tag @{ Name="env"; Value="demo" } | %{ $_.ResourceGroupName }
     rbacdemo-group
@@ -181,6 +181,6 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 - カスタマイズしたポリシーを使用して、サブスクリプションの制約と規則を適用できます。定義するポリシーには、場合によっては、すべてのリソースに特定のタグを設定することが必要になります。詳細については、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」を参照してください。
 - リソースのデプロイ時に Azure PowerShell を使用する方法の概要については、「[Azure リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)」をご覧ください。
 - リソースのデプロイ時に Azure CLI を使用する方法の概要については、「[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](./xplat-cli-azure-resource-manager.md)」をご覧ください。
-- プレビュー ポータルの使用方法の概要については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](./resource-group-portal.md)」をご覧ください。  
+- ポータルの使用方法の概要については、「[Azure ポータルを使用した Azure リソースの管理](./resource-group-portal.md)」をご覧ください。  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

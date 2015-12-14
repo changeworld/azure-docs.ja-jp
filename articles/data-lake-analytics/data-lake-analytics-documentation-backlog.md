@@ -38,6 +38,7 @@ U-SQL | 文法のレールロード ダイアグラム | 1 | 進行中 ([これ]
 サービス | Data Lake Analytics におけるジョブ、データ、およびテーブルのセキュリティ保護 |1| 進行中 | [@mumian](https://github.com/mumian) | [@MikeRys](https://github.com/mikerys)
 サービス | Data Factory を使用する SQL Data Warehouse へのジョブ出力の移動 |1 | 進行中 | [@mumian](https://github.com/mumian) | 
 ツール | 診断ツールの使用 | 1 | Pending | [@mumian](https://github.com/mumian) | 
+U-SQL | 範囲基準の結合を行うための手法を説明します。 | 1 | Pending | [@MikeRys](https://github.com/mikerys) |[@saveenr](https://github.com/saveenr) 
 
 
 
@@ -46,13 +47,13 @@ U-SQL | 文法のレールロード ダイアグラム | 1 | 進行中 ([これ]
 
 領域 |トピック | location
 ------------- | ------------- | -------------- 
-サービス | ARM テンプレートを使用する他の Azure サービスとの Data Lake Analytics のデプロイメント調整 | [location](https://azure.microsoft.com/documentation/articles/data-lake-analytics-manage-use-powershell/)
+サービス | ARM テンプレートを使用する他の Azure サービスとの Data Lake Analytics のデプロイメント調整 | [location](../data-lake-analytics-manage-use-powershell.md)
 
 ## バックログに関するフィードバックの送信方法
 バックログに関するフィードバックを送信する場合に使用できる以下のようないくつかのオプションがあります。
 
 * 下にコメントを追加する。
 * [Azure コンテンツ リポジトリ](https://github.com/Azure/azure-content/blob/master/articles/data-lake-analytics/data-lake-analytics-documentation-backlog.md)でこのドキュメントに関するプル要求を送信する。
-* [microsoft.com adlafeedback](mailto:adlafeedback@microsoft.com?subject=DocBacklog) に電子メールを送信する。
+* [adlafeedback at microsoft.com](mailto:adlafeedback@microsoft.com?subject=DocBacklog) に電子メールを送信する。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

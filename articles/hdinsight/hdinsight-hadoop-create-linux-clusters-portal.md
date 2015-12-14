@@ -1,6 +1,6 @@
 <properties
    	pageTitle="ポータルを使用して Linux ベースの Hadoop、HBase、Storm クラスターを HDInsight に作成する | Microsoft Azure"
-   	description="Web ブラウザーと Azure プレビュー ポータルを使用して、Linux ベースの Hadoop、HBase、Storm クラスターを HDInsight に作成する方法を説明します。"
+   	description="Web ブラウザーと Azure ポータルを使用して、Linux ベースの Hadoop、HBase、Storm クラスターを HDInsight に作成する方法を説明します。"
    	services="hdinsight"
    	documentationCenter=""
    	authors="nitinme"
@@ -18,25 +18,25 @@
    	ms.author="nitinme"/>
 
 
-#Azure プレビュー ポータルを使用して HDInsight に Linux ベースのクラスターを作成する
+#Azure ポータルを使用した HDInsight の Linux ベースのクラスターの作成
 
 [AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Azure プレビュー ポータルは、Microsoft Azure クラウドでホストされるサービスやリソースの Web ベースの管理ツールです。このドキュメントでは、プレビュー ポータルと Web ブラウザーを使用して、Linux ベースの HDInsight クラスターを新たに作成する際に役立つ情報を紹介しています。
+Azure ポータルは、Microsoft Azure クラウドでホストされるサービスやリソースの Web ベースの管理ツールです。このドキュメントでは、ポータルと Web ブラウザーを使用して、Linux ベースの HDInsight クラスターを新たに作成する際に役立つ情報を紹介しています。
 
 ##前提条件
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-- __最新の Web ブラウザー__。Azure プレビュー ポータルには、HTML5 と Javascript が使用されています。Web ブラウザーのバージョンが低いと正しく機能しない場合があります。
+- __最新の Web ブラウザー__。Azure ポータルには、HTML5 と Javascript が使用されています。Web ブラウザーのバージョンが低いと正しく機能しない場合があります。
 
 ##クラスターの作成
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
 2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
 
-    ![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.1.png "Azure プレビュー ポータルでの新しいクラスターの作成")
+    ![Azure ポータルでの新しいクラスターの作成](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.1.png "Azure ポータルでの新しいクラスターの作成")
 
 3. **[クラスター名]** を入力し、**[クラスターの種類]** で **[Hadoop]** を選択し、**[クラスターのオペレーティング システム]** ボックスの一覧から **[Ubuntu]** を選択します。クラスターを使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
 
@@ -144,7 +144,7 @@ Azure プレビュー ポータルは、Microsoft Azure クラウドでホスト
 
 	* **ユーザー** (![ユーザー アイコン](./media/hdinsight-hadoop-create-linux-cluster-portal/users.png)): このクラスターの_ポータル管理_に対する権限を、Azure サブスクリプションの他のユーザーに設定できます。
 
-		> [AZURE.IMPORTANT]これは Azure プレビュー ポータルでのこのクラスターへのアクセスと権限のみに影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
+		> [AZURE.IMPORTANT]これは、Azure ポータルでのこのクラスターへのアクセスと権限だけに影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
 
 	* **タグ** (![タグ アイコン](./media/hdinsight-hadoop-create-linux-cluster-portal/tags.png)): タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。たとえば、__プロジェクト__という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスで共通の値を使用できます。
 
@@ -169,4 +169,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

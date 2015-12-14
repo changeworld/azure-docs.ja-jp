@@ -131,7 +131,7 @@ Title プロパティ (文字列) のみに対する Order By のインデック
 
 今回導入された Order By サポートは、今後のサービス更新で拡張される予定です。現在、次の追加機能に取り組んでおり、お客様からのフィードバックを基に、これらの機能強化のリリースを優先して行う予定です。
 
-- 動的なインデックス作成ポリシー: コレクション作成後の Azure ポータルでのインデックス作成ポリシーの変更のサポート
+- 動的なインデックス作成ポリシー : コレクション作成後の Azure クラシック ポータルでのインデックス作成ポリシーの変更のサポート
 - 複合インデックスのサポートによる、より効率的な Order By の実現と、複数のプロパティでの Order By のサポート
 
 ## FAQ
@@ -177,4 +177,4 @@ Order By を使用してクエリ結果を並べ替えるには、並べ替え�
 * [DocumentDB Order By のサンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.OrderBy)
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

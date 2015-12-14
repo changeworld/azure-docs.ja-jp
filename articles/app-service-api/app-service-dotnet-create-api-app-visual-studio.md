@@ -18,6 +18,8 @@
 
 # API アプリとしての Web API プロジェクトの構成
 
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
+
 ## 概要
 
 このチュートリアルでは、既存の Web API プロジェクトを利用して、[Azure App Service](../app-service/app-service-value-prop-what-is.md) で [API アプリ](app-service-api-apps-why-best-platform.md)としてデプロイするために構成する方法を説明します。このシリーズの続きのチュートリアルで、このチュートリアルで作成する API アプリ プロジェクトの[デプロイ](app-service-dotnet-deploy-api-app.md)と[デバッグ](../app-service-dotnet-remotely-debug-api-app.md)の方法について説明します。
@@ -83,4 +85,4 @@ API アプリの詳細については、「[API Apps とは](app-service-api-app
 これで API アプリをデプロイする準備ができました。[API アプリのデプロイ](app-service-dotnet-deploy-api-app.md)に関するチュートリアルの手順に従って実際にデプロイできます。
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -26,7 +26,7 @@
 
 Microsoft Azure Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と PlayReady DRM を使用して動的に暗号化したコンテンツを配信できます。Media Services は、クライアントがキーまたはライセンスを取得して暗号化されたコンテンツを再生する **Key\\License 配信サービス**も提供しています。
 
-このトピックでは、**Microsoft Azure 管理ポータル**を使用して、コンテンツ キー承認ポリシーを構成する方法について説明します。キーは、動的にコンテンツを暗号化するために、後で使用できます。現時点で暗号化できるストリーミング形式は、HLS、MPEG DASH、およびスムーズ ストリーミングであることに注意してください。HDS 形式のストリーミングやプログレッシブ ダウンロードは暗号化できません。
+このトピックでは、**Azure クラシック ポータル**を使用して、コンテンツ キー承認ポリシーを構成する方法について説明します。キーは、動的にコンテンツを暗号化するために、後で使用できます。現時点で暗号化できるストリーミング形式は、HLS、MPEG DASH、およびスムーズ ストリーミングであることに注意してください。HDS 形式のストリーミングやプログレッシブ ダウンロードは暗号化できません。
  
 プレーヤーが動的に暗号化するように設定されたストリームを要求すると、Media Services は、AES または PlayReady 暗号化で構成済みのキーを使用してコンテンツを暗号化します。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
@@ -95,7 +95,7 @@ Media Services では、**Secure Token Service** は提供されません。ト�
 
 
 ##次のステップ
-コンテンツ キーの認証ポリシーを構成したので、「[方法: Microsoft Azure 管理ポータルを使用した暗号化の有効化](../media-services-manage-content#encrypt/)」トピックに移動します。
+コンテンツ キーの認証ポリシーを構成したので、「[方法: Azure クラシック ポータルを使用した暗号化の有効化](../media-services-manage-content#encrypt/)」トピックに移動します。
 
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
@@ -103,4 +103,4 @@ Media Services では、**Secure Token Service** は提供されません。ト�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

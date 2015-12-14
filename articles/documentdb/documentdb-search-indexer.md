@@ -121,7 +121,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
 ##<a id="CreateIndex"></a>手順 2: インデックスを作成する
 
-ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[Azure ポータル UI](../search-get-started.md#test-service-operations) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。
+ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[Azure クラシック ポータル UI](../search-get-started.md#test-service-operations) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。
 
 	POST https://[Search service name].search.windows.net/indexes?api-version=[api-version]
 	Content-Type: application/json
@@ -137,7 +137,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 |ブール値|Edm.Boolean、Edm.String|
 |整数などの数値|Edm.Int32、Edm.Int64、Edm.String|
 |浮動小数点などの数値|Edm.Double、Edm.String|
-|文字列|Edm.String|
+|String|Edm.String|
 |プリミティブ型の配列。例: "a"、"b"、"c" |Collection(Edm.String)|
 |日付などの文字列| Edm.DateTimeOffset、Edm.String|
 |GeoJSON オブジェクト。例: { "type": "Point", "coordinates": [ long, lat ] } | Edm.GeographyPoint |
@@ -164,7 +164,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
        }]
      }
 
-###応答
+###Response
 
 インデックスが正常に作成された場合、HTTP 201 Created 応答を受け取ります。
 
@@ -270,4 +270,4 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
  - Azure Search の詳細については、[ここ](/services/search/)をクリックしてください。
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

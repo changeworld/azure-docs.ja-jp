@@ -1,22 +1,27 @@
-<properties 
-	pageTitle="Cordova モバイル サービス プロジェクトの概要 (Visual Studio 接続済みサービス)" 
-	description="Visual Studio 接続済みサービスを使用して Azure Mobile Services に Cordova プロジェクトを接続した後の最初の手順について説明します。" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="TomArcher" 
-	manager="douge" 
+<properties
+	pageTitle="Cordova モバイル サービス プロジェクトの概要 (Visual Studio 接続済みサービス)"
+	description="Visual Studio 接続済みサービスを使用して Azure Mobile Services に Cordova プロジェクトを接続した後の最初の手順について説明します。"
+	services="mobile-services"
+	documentationCenter=""
+	authors="TomArcher"
+	manager="douge"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="vs-getting-started" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="09/17/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="vs-getting-started"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="09/17/2015"
 	ms.author="tarcher"/>
 
 # Mobile Services の使用 (Cordova プロジェクト)
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 > [AZURE.SELECTOR]
 > - [Getting Started](vs-mobile-services-cordova-getting-started.md)
@@ -47,7 +52,7 @@
         this.text = text;
         this.complete = false;
     }
-    
+
     var items = new Array();
     var insertTodoItem = function (todoItem) {
         todoTable.insert(todoItem).done(function (item) {
@@ -94,4 +99,4 @@ where メソッドを使用してクエリを変更できます。次の例で�
 
 [モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

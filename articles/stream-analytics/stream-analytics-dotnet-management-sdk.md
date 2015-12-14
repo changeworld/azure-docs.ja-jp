@@ -365,4 +365,4 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="cache-redis"
    ms.workload="tbd"
-   ms.date="10/09/2015"
+   ms.date="12/01/2015"
    ms.author="sdanie" />
 
 # Azure Redis Cache の構成方法
 
 このトピックでは、Azure Redis Cache インスタンスの構成を確認し、更新する方法と、Azure Redis Cache インスタンス用の既定の Redis サーバー構成について説明します。
 
->[AZURE.NOTE]Azure Redis Cache Premium レベルは、現在プレビュー中です。プレビュー期間中、Premium の機能はキャッシュ作成プロセス中にのみ構成できます。Premium キャッシュ機能の使用について詳しくは、「[How to configure persistence for a Premium Azure Redis Cache (Premium Azure Redis Cache の永続性の構成方法)](cache-how-to-premium-persistence.md)」、「[How to configure clustering for a Premium Azure Redis Cache (Premium Azure Redis Cache のクラスタリングの構成方法)](cache-how-to-premium-clustering.md)」、および「[How to configure Virtual Network support for a Premium Azure Redis Cache (Premium Azure Redis Cache に対する仮想ネットワーク サポートの構成方法)](cache-how-to-premium-vnet.md)」をご覧ください。
+>[AZURE.NOTE]Premium Cache 機能の構成と使用について詳しくは、「[Premium Azure Redis Cache のデータ永続化の構成方法](cache-how-to-premium-persistence.md)」、「[Premium Azure Redis Cache の Redis クラスタリングの構成方法](cache-how-to-premium-clustering.md)」、および「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
 
 ## Redis Cache の設定の構成
 
@@ -102,6 +102,22 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 
 詳細については、[Redis キースペース通知](http://redis.io/topics/notifications)に関するトピックを参照してください。サンプル コードについては、[Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルの [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) ファイルを参照してください。
 
+## Redis データの保持
+
+**[Redis データ永続化]** をクリックして、Premium Cache のデータ永続化を有効にする、無効にする、または構成することができます。
+
+![Redis データの保持](./media/cache-configure/redis-cache-persistence-settings.png)
+
+Redis の永続化を有効にするには、**[有効]** をクリックして RDB (Redis データベース) のバックアップを有効にします。Redis の永続化を無効にするには、**[無効]** をクリックします。
+
+バックアップの間隔を構成するには、ドロップダウン リストから **[バックアップの頻度]** を選択します。選択肢は、**15 分**、**30 分**、**60 分**、**6 時間**、**12 時間**、**24 時間**です。前のバックアップ操作が正常に完了するとこの間隔のカウントダウンが開始し、期間が経過すると新しいバックアップが開始されます。
+
+**[ストレージ アカウント]** をクリックして使用するストレージ アカウントを選択し、**[ストレージ キー]** ドロップダウンから使用する**プライマリ キー**または**セカンダリ キー**を選択します。Cache と同じリージョンのストレージ アカウントを選択する必要があり、また、スループットが高いため **Premium Storage** アカウントを使用することをお勧めします。永続化アカウントのストレージ キーを再生成する場合は常に、**[ストレージ キー]** ドロップダウンから目的のキーを再選択する必要があります。
+
+**[OK]** をクリックして永続化の構成を保存します。
+
+>[AZURE.IMPORTANT]Redis のデータ永続化は、Premium Cache でのみ使用できます。
+
 ## ユーザーとタグ
 
 ![Redis Cache Users and Tags](./media/cache-configure/IC808320.png)
@@ -183,4 +199,4 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

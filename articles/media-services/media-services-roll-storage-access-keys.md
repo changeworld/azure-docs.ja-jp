@@ -39,11 +39,11 @@ Media Services は、1 つのストレージ キー (プライマリまたはセ
 
 Media Services を更新してセカンダリ ストレージ アクセス キーを使用します。再生成されたストレージ キーを Media Services と同期するには、次の 2 つの方法のどちらかを使用できます。
 
-- Azure ポータルを使用する場合: Media Service アカウントを選択し、ポータル ウィンドウの下部にある [キーの管理] アイコンをクリックします。Media Services で同期するストレージ キーに応じて、同期するキーをプライマリ キーとセカンダリ キーのどちらかに指定します。この例では、セカンダリ キーを使用します。
+- Azure クラシック ポータルを使用する場合: Media Service アカウントを選択し、ポータル ウィンドウの下部にある [キーの管理] アイコンをクリックします。Media Services で同期するストレージ キーに応じて、同期するキーをプライマリ キーとセカンダリ キーのどちらかに指定します。この例では、セカンダリ キーを使用します。
 
 - Media Services Management REST API を使用します。
 
-	次のコード例では、指定したストレージ キーを Media Services と同期するために、https://endpoint/<subscriptionId>/services/mediaservices/Accounts/<accountName>/StorageAccounts/<storageAccountName>/Key 要求を作成する方法を示します。この例では、セカンダリ ストレージ キーの値が使用されます。詳細については、「[方法: Media Services Management REST API の使用](http://msdn.microsoft.com/library/azure/dn167656.aspx)」を参照してください。
+次のコード例では、指定したストレージ キーを Media Services と同期するために、https://endpoint/<subscriptionId>/services/mediaservices/Accounts/<accountName>/StorageAccounts/<storageAccountName>/Key 要求を作成する方法を示します。この例では、セカンダリ ストレージ キーの値が使用されます。詳細については、「[方法: Media Services Management REST API の使用](http://msdn.microsoft.com/library/azure/dn167656.aspx)」を参照してください。
  
 		public void UpdateMediaServicesWithStorageAccountKey(string mediaServicesAccount, string storageAccountName, string storageAccountKey)
 		{
@@ -159,4 +159,4 @@ SAS ロケーターを更新 (または再作成) するときに、URL は常�
 
 この文書の作成に協力してくれた Cenk Dingiloglu、Milan Gada、 Seva Titov に感謝します。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -22,18 +22,18 @@
 # Cloud Services の構成方法
 
 > [AZURE.SELECTOR]
-- [Azure Portal](cloud-services-how-to-configure.md)
-- [Azure Preview Portal](cloud-services-how-to-configure-portal.md)
+- [Azure classic portal](cloud-services-how-to-configure.md)
+- [Azure portal](cloud-services-how-to-configure-portal.md)
 
-クラウド サービスで最もよく使用される設定は Microsoft Azure 管理ポータルで構成できます。また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
+クラウド サービスで最もよく使用される設定は Azure クラシックポータルで構成できます。また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
 
-Microsoft Azure 管理ポータルでは、[Azure Cloud Services でのロールに対するリモート デスクトップ接続を有効にする](cloud-services-role-enable-remote-desktop.md)こともできます。
+Azure クラシック ポータルでは、[Azure Cloud Services でのロールに対するリモート デスクトップ接続を有効にする](cloud-services-role-enable-remote-desktop.md)こともできます。
 
 Azure で構成の更新中に 99.95% の可用性を保証できるのは、各ロールに少なくとも 2 つのロール インスタンスがある場合だけです。この場合、1 台の仮想マシンでクライアントからの要求を処理し、もう 1 台で更新を行うことができます。詳細については、「[サービス レベル アグリーメント](http://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
 ## クラウド サービスの変更
 
-1. [Azure ポータル](http://manage.windowsazure.com/)で **[クラウド サービス]** をクリックし、クラウド サービスの名前をクリックして、**[構成]** をクリックします。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com/)で **[Cloud Services]** をクリックし、クラウド サービスの名前をクリックして、**[構成]** をクリックします。
 
     ![[構成] ページ](./media/cloud-services-how-to-configure/CloudServices_ConfigurePage1.png)
     
@@ -86,4 +86,4 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 * [Enable Remote Desktop Connection for a Role in Azure Cloud Services (Azure Cloud Services でのロールに対するリモート デスクトップ接続を有効にする)](cloud-services-role-enable-remote-desktop.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

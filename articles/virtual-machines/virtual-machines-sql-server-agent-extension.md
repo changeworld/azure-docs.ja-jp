@@ -19,7 +19,7 @@
 
 # SQL Server IaaS Agent 拡張機能
 
-この拡張機能を使用すると、Azure Virtual Machines の SQL Server で、この記事に掲載されている特定のサービスを使用できるようになります。これらのサービスは、この拡張機能がインストールされている場合にのみ使用できます。この拡張機能は、Azure プレビュー ポータルの SQL Server Gallery Images の場合に自動的にインストールされます。Azure VM Guest Agent がインストールされている Azure の任意の SQL Server VM にインストールできます。
+この拡張機能を使用すると、Azure Virtual Machines の SQL Server で、この記事に掲載されている特定のサービスを使用できるようになります。これらのサービスは、この拡張機能がインストールされている場合にのみ使用できます。この拡張機能は、Azure ポータルの SQL Server Gallery Images の場合に自動的にインストールされます。Azure VM Guest Agent がインストールされている Azure の任意の SQL Server VM にインストールできます。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
@@ -41,7 +41,7 @@ VM で拡張機能を使用するための要件:
 - **SQL 自動修正プログラム適用**: このサービスを使用すると、VM の更新プログラムを実行できるメンテナンス期間を構成できるので、ワークロードのピーク時の更新プログラムを回避できます。このサービスの詳細については、「[Azure Virtual Machines における SQL Server の自動化された修正プログラムの適用](virtual-machines-sql-server-automated-patching.md)」を参照してください。
 
 ## Powershell を使用した拡張機能の追加
-[Azure プレビュー ポータル](https://portal.azure.com/)を使用して SQL Server VM をプロビジョニングすると、拡張機能は自動的にインストールされます。[Azure ポータル](https://manage.windowsazure.com)で SQL Server VM をプロビジョニングした場合、または SQL ライセンスを持っている VM の場合、次の Azure PowerShell コマンドレットを使用して、既存の VM にこの拡張機能を追加できます。
+[Azure ポータル](https://portal.azure.com/)を使用して SQL Server VM をプロビジョニングすると、拡張機能は自動的にインストールされます。[Azure クラシック ポータル](https://manage.windowsazure.com)で SQL Server VM をプロビジョニングした場合、または SQL ライセンスを持っている VM の場合、次の Azure PowerShell コマンドレットを使用して、既存の VM にこの拡張機能を追加できます。
 
 **Set-AzureVMSqlServerExtension**
 
@@ -78,4 +78,4 @@ VM からこの拡張機能を削除する場合は、次の Azure Powershell �
 ### 構文
 Remove-AzureVMSqlServerExtension -VM <IPersistentVM> [<CommonParameters>]
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

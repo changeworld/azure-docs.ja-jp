@@ -19,7 +19,7 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 サービス名前空間を作成するには:
 
-1.  [Azure ポータル][]にログオンします。
+1.  [Azure クラシック ポータル][]にログオンします。
 
 2.  ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
@@ -51,8 +51,8 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 4.  プライマリ キーを書き留めておくか、クリップボードにコピーしておいてください。
 
-  [Azure ポータル]: http://manage.windowsazure.com
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
 
   [34]: ./media/service-bus-java-how-to-create-queue/VSProperties.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

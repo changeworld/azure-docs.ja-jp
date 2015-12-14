@@ -233,7 +233,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 #### オンデマンド HDInsight クラスターを使用するには
 
-1. **Azure ポータル**の Data Factory のホーム ページで、**[作成とデプロイ]** をクリックします。
+1. **Azure クラシック ポータル**の Data Factory のホーム ページで、**[作成とデプロイ]** をクリックします。
 2. Data Factory エディターで、コマンド バーの **[新しいコンピューティング]** をクリックし、メニューから **[オンデマンド HDInsight クラスター]** を選択します。
 2. JSON スクリプトで、以下の手順を実行します。
 	1. **clusterSize** プロパティには、HDInsight クラスターのサイズを指定します。
@@ -248,7 +248,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 			    "typeProperties": {
 			      "clusterSize": "1",
 			      "timeToLive": "00:05:00",
-			      "version": "3.1",
+			      "version": "3.2",
 			      "linkedServiceName": "StorageLinkedService"
 			    }
 			  }
@@ -374,7 +374,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 	(BLOB の場所), (BLOB の名前), (BLOB 内の行数), (アクティビティが実行されたノード), (日付タイムスタンプ)
 
-10.	[Azure ポータル][azure-preview-portal]または Azure PowerShell コマンドレットを使用して、データ ファクトリ、パイプライン、データセットを監視します。カスタム アクティビティのコード内の **ActivityLogger** からのメッセージは、ポータルからダウンロードできるログ (user-0.log など) で確認することも、コマンドレットを使用して確認することもできます。
+10.	[Azure クラシック ポータル][azure-preview-portal]または Azure PowerShell コマンドレットを使用して、データ ファクトリ、パイプライン、データセットを監視します。カスタム アクティビティのコード内の **ActivityLogger** からのメッセージは、ポータルからダウンロードできるログ (user-0.log など) で確認することも、コマンドレットを使用して確認することもできます。
 
 	![カスタム アクティビティのダウンロード ログ][image-data-factory-download-logs-from-custom-activity]
 
@@ -398,7 +398,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 ここでは、前のセクションのチュートリアルで説明した、Azure Batch リンク サービスを使用するための手順の概要を示します。
 
-1. Microsoft Azure 管理ポータルを使用して、Azure Batch アカウントを作成します。手順については、「[Azure プレビュー ポータルでの Azure Batch アカウントの作成と管理][batch-create-account]」の記事を参照してください。Azure Batch のアカウント名とアカウント キーをメモしておきます。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com)を使用して、Azure Batch アカウントを作成します。手順については、「[Azure Batch アカウントの作成と管理][batch-create-account]」の記事を参照してください。Azure Batch のアカウント名とアカウント キーをメモしておきます。
 
 	[New-AzureBatchAccount][new-azure-batch-account] コマンドレットを使用して、Azure Batch アカウントを作成することもできます。このコマンドレットの使用方法の詳細については、「[Using Azure PowerShell to Manage Azure Batch Account (Azure PowerShell を使用した Azure Batch アカウントの管理)][azure-batch-blog]」をご覧ください。
 2. Azure Batch プールの作成[Azure Batch Explorer ツール][batch-explorer]のソース コードをダウンロードし、コンパイルして使用することもできますが、[.NET 向け Azure Batch ライブラリ][batch-net-library]を使用して Azure Batch プールを作成することもできます。Azure Batch Explorer の使用手順については、[Azure Batch Explorer サンプル チュートリアル][batch-explorer-walkthrough]のページを参照してください。
@@ -474,4 +474,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

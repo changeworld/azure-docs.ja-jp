@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="mobile-windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/10/2015" 
+	ms.date="11/25/2015" 
 	ms.author="glenga"/>
 
 # Windows Runtime 8.1 ユニバーサル アプリへのプッシュ通知の追加
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ##概要
 
@@ -48,7 +46,7 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 [AZURE.INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
 
-##プッシュ要求を送信するようにモバイル アプリを構成する
+##プッシュ通知を送信するようにバックエンドを構成する
 
 [AZURE.INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
@@ -57,50 +55,7 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 アプリでプッシュ通知が有効にされたので、プッシュ通知を送信するようにアプリ バックエンドを更新する必要があります。
 
-1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージを管理]** をクリックして `Microsoft.Azure.NotificationHubs` を見つけ、**[インストール]** をクリックします。これにより、Notification Hubs のクライアント ライブラリがインストールされます。
-
-2. サーバー プロジェクトで、**[Controllers]**、**[TodoItemController.cs]** の順に開き、次の using ステートメントを追加します。
-
-		using System.Collections.Generic;
-		using Microsoft.Azure.NotificationHubs;
-		using Microsoft.Azure.Mobile.Server.Config;
-
-3. **PostTodoItem** メソッドで、次のコードを **InsertAsync** に対する呼び出しの後ろに追加します。
-
-        // Get the settings for the server project.
-        HttpConfiguration config = this.Configuration;
-        MobileAppSettingsDictionary settings = 
-			this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
-        
-        // Get the Notification Hubs credentials for the Mobile App.
-        string notificationHubName = settings.NotificationHubName;
-        string notificationHubConnection = settings
-            .Connections[MobileAppSettingsKeys.NotificationHubConnectionString].ConnectionString;
-
-        // Create a new Notification Hub client.
-        NotificationHubClient hub = NotificationHubClient
-        .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
-
-		// Define a WNS payload
-		var windowsToastPayload = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" 
-                                + item.Text + @"</text></binding></visual></toast>";
-
-        try
-        {
-			// Send the push notification and log the results.
-            var result = await hub.SendWindowsNativeNotificationAsync(windowsToastPayload);
-
-            // Write the success result to the logs.
-            config.Services.GetTraceWriter().Info(result.State.ToString());
-        }
-        catch (System.Exception ex)
-        {
-            // Write the failure result to the logs.
-            config.Services.GetTraceWriter()
-                .Error(ex.Message, null, "Push.SendAsync Error");
-        }
-
-    このコードは、新しい項目が挿入された後、プッシュ通知を送信するように通知ハブに指示します。
+[AZURE.INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
 
 ## <a name="publish-the-service"></a>モバイル バックエンドを Azure に発行する
@@ -149,10 +104,14 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 [AZURE.INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
+##次のステップ
+
+最後に、プッシュ通知を特定の認証ユーザーに属しているすべてのデバイス登録に送信するか、任意のデバイス プラットフォームで送信する方法が「[特定のユーザーにクロスプラット フォーム通知を送信する](app-service-mobile-windows-store-dotnet-push-notifications-to-users.md)」チュートリアルに示されています。
+
 ##<a id="more"></a>詳細
 
-* テンプレートを利用すれば、プラットフォーム間のプッシュやローカライズされたプッシュを柔軟に送信できます。テンプレートの登録方法は「[Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md)」にあります。
-* タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」にあります。
+* テンプレートを利用すれば、プラットフォーム間のプッシュやローカライズされたプッシュを柔軟に送信できます。テンプレートの登録方法は「[Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md#how-to-register-push-templates-to-send-cross-platform-notifications)」にあります。
+* タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags)」にあります。
 
 <!-- Anchors. -->
 
@@ -161,4 +120,4 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 <!-- Images. -->
 
-<!---HONumber=AcomDC_1125_2015--->
+<!---HONumber=AcomDC_1203_2015-->

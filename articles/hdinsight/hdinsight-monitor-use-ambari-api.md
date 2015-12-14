@@ -35,7 +35,7 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+- **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell 1.0 以上のインストール](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」を参照してください。
 
 
 - [cURL][curl] は省略可能です。インストールするには、「[cURL のリリースとダウンロード][curl-download]」をご覧ください。
@@ -130,24 +130,24 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 API 呼び出しの監視|URI|説明
 ---|---|---
 クラスターの取得|`/api/v1/clusters`|
-クラスター情報の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net`|クラスター、サービス、ホスト
-サービスの取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services`|含まれるサービス: hdfs、mapreduce
-サービス情報の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>`|
-サービス コンポーネントの取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>/components`|HDFS: namenode、datanode<br/>MapReduce: jobtracker、tasktracker
-コンポーネント情報の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>/components/<ComponentName>`|ServiceComponentInfo、host-components、metrics
-ホストの取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts`|headnode0、workernode0
-ホスト情報の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts/<HostName>`|
-ホスト コンポーネントの取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts/<HostName>/host_components`|namenode、resourcemanager
-ホスト コンポーネント情報の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts/<HostName>/host_components/<ComponentName>`|HostRoles、component、host、metrics
-構成の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations`|構成の種類: core-site、hdfs-site、mapred-site、hive-site
-構成情報の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations?type=<ConfigType>&tag=<VersionName>`|構成の種類: core-site、hdfs-site、mapred-site、hive-site
+クラスター情報の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net`|クラスター、サービス、ホスト
+サービスの取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/services`|含まれるサービス: hdfs、mapreduce
+サービス情報の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/services/&lt;ServiceName&gt;`|
+サービス コンポーネントの取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/services/&lt;ServiceName&gt;/components`|HDFS: namenode、datanode<br/>MapReduce: jobtracker、tasktracker
+コンポーネント情報の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/services/&lt;ServiceName&gt;/components/&lt;ComponentName&gt;`|ServiceComponentInfo、host-components、metrics
+ホストの取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/hosts`|headnode0、workernode0
+ホスト情報の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/hosts/&lt;HostName&gt;`|
+ホスト コンポーネントの取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/hosts/&lt;HostName&gt;/host_components`|namenode、resourcemanager
+ホスト コンポーネント情報の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/hosts/&lt;HostName&gt;/host_components/&lt;ComponentName&gt;`|HostRoles、component、host、metrics
+構成の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/configurations`|構成の種類: core-site、hdfs-site、mapred-site、hive-site
+構成情報の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/configurations?type=&lt;ConfigType&gt;&tag=&lt;VersionName&gt;`|構成の種類: core-site、hdfs-site、mapred-site、hive-site
 
 
 ##次のステップ
 
 ここでは Ambari での API 呼び出しの監視の使用方法を説明しました。詳細については、次を参照してください。
 
-- [Azure プレビュー ポータルを使用した HDInsight クラスターの管理][hdinsight-admin-portal]
+- [Azure ポータルを使用した HDInsight クラスターの管理][hdinsight-admin-portal]
 - [Azure PowerShell を使用した HDInsight クラスターの管理][hdinsight-admin-powershell]
 - [コマンド ライン インターフェイスを使用した HDInsight クラスターの管理][hdinsight-admin-cli]
 - [HDInsight のドキュメント][hdinsight-documentation]
@@ -175,4 +175,4 @@ API 呼び出しの監視|URI|説明
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -13,15 +13,19 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="10/05/2015" 
+	ms.date="10/05/2015"
 	ms.author="ricksal"/>
 
 
-# モバイル サービス向け Android クライアント ライブラリの使用方法
+# Mobile Services 向け Android クライアント ライブラリの使用方法
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 
 [AZURE.INCLUDE [mobile-services-selector-client-library](../../includes/mobile-services-selector-client-library.md)]
 
-このガイドでは、Azure のモバイル サービス向け Android クライアントを使用して一般的なシナリオを実行する方法について説明します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理、クライアントのカスタマイズなどです。
+このガイドでは、AzureMobile Services 向け Android クライアントを使用して一般的なシナリオを実行する方法について説明します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理、クライアントのカスタマイズなどです。
 
 Mobile Services を初めて使用する場合は、クイックスタート チュートリアル「[Mobile Services を使い始める]」を先に完了しておく必要があります。このチュートリアルを完了すると、Android Studio がインストールされ、アカウントの構成、初めてのモバイル サービスの作成、Mobile Services SDK のインストールに役立ちます。Mobile Services SDK は、Android 2.2 以降をサポートしていますが、Android 4.2 以降にビルドすることをお勧めします。
 
@@ -45,7 +49,7 @@ Mobile Services を初めて使用する場合は、クイックスタート チ
 		private Boolean complete;
 	}
 
-動的スキーマが有効な場合、挿入または更新の要求に含まれるオブジェクトに基づいて、Azure のモバイル サービスによって自動的に新しい列が生成されます。詳細については、「[動的スキーマ](http://go.microsoft.com/fwlink/p/?LinkId=296271)」を参照してください。
+動的スキーマが有効な場合、挿入または更新の要求に含まれるオブジェクトに基づいて、Azure Mobile Services によって自動的に新しい列が生成されます。詳細については、「[動的スキーマ](http://go.microsoft.com/fwlink/p/?LinkId=296271)」を参照してください。
 
 ##<a name="create-client"></a>方法: Mobile Services クライアントを作成する
 次のコードは、モバイル サービスにアクセスするために使用される [MobileServiceClient](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html) オブジェクトを生成します。このコードは、**MAIN** アクションと **LAUNCHER** カテゴリとして *AndroidManifest.xml* で指定された Activity クラスの `onCreate` メソッドにあります。
@@ -55,7 +59,7 @@ Mobile Services を初めて使用する場合は、クイックスタート チ
 				"AppKey", 			// replace with the Application Key
 				this)
 
-前のコードの `MobileServiceUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーで順に置き換えます。どちらも Microsoft Azure 管理ポータルで確認できます。モバイル サービスを選択し、*[ダッシュボード]* をクリックしてください。
+前のコードの `MobileServiceUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーで順に置き換えます。どちらも Azure クラシック ポータルで確認できます。モバイル サービスを選択し、*[ダッシュボード]* をクリックしてください。
 
 ##<a name="instantiating"></a>方法: テーブル参照を作成する
 
@@ -133,7 +137,7 @@ Java は厳密に型指定された言語であるため、モバイル サー�
                     final MobileServiceList<ToDoItem> result =
 						mToDoTable.where().field("complete").eq(false).execute().get();
 					for (ToDoItem item : result) {
-                		Log.i(TAG, "Read object with ID " + item.id);  
+                		Log.i(TAG, "Read object with ID " + item.id);
 					}
                 } catch (Exception exception) {
                     createAndShowDialog(exception, "Error");
@@ -174,7 +178,7 @@ Java は厳密に型指定された言語であるため、モバイル サー�
 					(startsWith("text", "PRI0").or().field("duration").gt(10))
 					.execute().get();
 
-フィルター処理の詳細と例については、[モバイル サービスの Android クライアント クエリ モデルの機能に関する記事](http://hashtagfail.com/post/46493261719/mobile-services-android-querying)を参照してください。
+フィルター処理の詳細と例については、[Mobile Services の Android クライアント クエリ モデルの機能に関する記事](http://hashtagfail.com/post/46493261719/mobile-services-android-querying)を参照してください。
 
 ### <a name="sorting"></a>方法: 返されるデータを並べ替える
 
@@ -265,14 +269,14 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 
 このコードが新しい項目を挿入し、これをアダプターに追加すると、UI に項目が表示されます。
 
-モバイル サービスでは、テーブル ID として一意のカスタム文字列値がサポートされています。これによって、アプリケーションはモバイル サービス テーブルの ID 列に電子メール アドレスやユーザー名などのカスタム値を使用できます。たとえば、各レコードを電子メール アドレスで識別する場合は、次の JSON オブジェクトを使用できます。
+Mobile Services では、テーブル ID として一意のカスタム文字列値がサポートされています。これによって、アプリケーションは Mobile Services テーブルの ID 列に電子メール アドレスやユーザー名などのカスタム値を使用できます。たとえば、各レコードを電子メール アドレスで識別する場合は、次の JSON オブジェクトを使用できます。
 
 		ToDoItem mToDoItem = new ToDoItem();
 		mToDoItem.id = "myemail@mydomain.com";
 		mToDoItem.text = "Test Program";
 		mToDoItem.complete = false;
 
-新しいレコードをテーブルに挿入するときに文字列 ID 値が指定されない場合は、モバイル サービスによって ID 用の一意の値が生成されます。
+新しいレコードをテーブルに挿入するときに文字列 ID 値が指定されない場合は、Mobile Services によって ID 用の一意の値が生成されます。
 
 文字列 ID のサポートは、開発者にとって次のような利点があります。
 
@@ -280,7 +284,7 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 + 他のテーブルやデータベースのレコードをより簡単にマージできます。
 + ID 値をより適切にアプリケーションのロジックに統合できます。
 
-サーバー スクリプトを使用して ID 値を設定することもできます。次のスクリプト例は、カスタム GUID を生成し、新しいレコードの ID に割り当てます。これは、レコードの ID として値を渡さなかった場合に、モバイル サービスによって生成される ID 値に似ています。
+サーバー スクリプトを使用して ID 値を設定することもできます。次のスクリプト例は、カスタム GUID を生成し、新しいレコードの ID に割り当てます。これは、レコードの ID として値を渡さなかった場合に、Mobile Services によって生成される ID 値に似ています。
 
 	//Example of generating an id. This is not required since Mobile Services
 	//will generate an id if one is not passed in.
@@ -294,7 +298,7 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 	}
 
 
-アプリケーションが ID の値を指定すると、モバイル サービスはそれをそのまま格納します。これには、前後の空白文字も含まれます。値から空白文字が除去されることはありません。
+アプリケーションが ID の値を指定すると、Mobile Services はそれをそのまま格納します。これには、前後の空白文字も含まれます。値から空白文字が除去されることはありません。
 
 `id` の値は一意である必要があり、次のセット内の文字を含まないようにする必要があります。
 
@@ -371,7 +375,7 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 	}
 
 
-次のコードは、別の方法でこの操作を行う方法を示しています。このコードでは、削除する行の id フィールドの値 ("2FA404AB-E458-44CD-BC1B-3BC847EF0902" に等しいと想定) を指定して、ToDoItem テーブル内の既存の項目を削除します。実際のアプリケーションでは、何らかの方法で ID を選択し、これを変数として渡すことができます。ここでは、テストを簡単にするため、使用している Azure Mobile Services ポータルにアクセスして、**[データ]** タブをクリックし、テストする ID をコピーします。
+次のコードは、別の方法でこの操作を行う方法を示しています。このコードでは、削除する行の id フィールドの値 ("2FA404AB-E458-44CD-BC1B-3BC847EF0902" に等しいと想定) を指定して、ToDoItem テーブル内の既存の項目を削除します。実際のアプリケーションでは、何らかの方法で ID を選択し、これを変数として渡すことができます。ここでは、テストを簡単にするため、Azure クラシック ポータルのサービスに移動して、**[データ]** タブをクリックし、テストする ID をコピーします。
 
     public void deleteItem(View view) {
 
@@ -396,7 +400,7 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
     }
 
 ##<a name="lookup"></a>方法: 特定の項目を検索する
-一般的にクエリを使って特定の条件を満たした項目のコレクションを取得する代わりに、特定の項目を *id* で検索する必要がある場合があります。その方法を次のコードに示します (ここでは id 値として `0380BAFB-BCFF-443C-B7D5-30199F730335` を想定しています)。実際のアプリケーションでは、何らかの方法で ID を選択し、これを変数として渡すことができます。ここでは、テストを簡単にするため、使用している Azure Mobile Services ポータルにアクセスして、**[データ]** タブをクリックし、テストする ID をコピーします。
+一般的にクエリを使って特定の条件を満たした項目のコレクションを取得する代わりに、特定の項目を *id* で検索する必要がある場合があります。その方法を次のコードに示します (ここでは id 値として `0380BAFB-BCFF-443C-B7D5-30199F730335` を想定しています)。実際のアプリケーションでは、何らかの方法で ID を選択し、これを変数として渡すことができます。ここでは、テストを簡単にするため、Azure クラシック ポータルのサービスに移動して、**[データ]** タブをクリックし、テストする ID をコピーします。
 
     /**
      * Lookup specific item from table and UI
@@ -433,7 +437,7 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 
 ### <a name="json_instance"></a>方法: 型指定のないテーブルのインスタンスを作成する
 
-型指定されたモデルと同様、テーブル参照を取得することから始めますが、このケースでのオブジェクトは[MobileServicesJsonTable](http://go.microsoft.com/fwlink/p/?LinkId=298733) です。モバイル サービス クライアントのインスタンスで [getTable()](http://go.microsoft.com/fwlink/p/?LinkId=298734) メソッドを呼び出して、参照を取得します。
+型指定されたモデルと同様、テーブル参照を取得することから始めますが、このケースでのオブジェクトは[MobileServicesJsonTable](http://go.microsoft.com/fwlink/p/?LinkId=298733) です。Mobile Services クライアントのインスタンスで [getTable()](http://go.microsoft.com/fwlink/p/?LinkId=298734) メソッドを呼び出して、参照を取得します。
 
 まず、変数を定義します。
 
@@ -444,7 +448,7 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 
 
 
-**onCreate** メソッドのモバイル サービス クライアントのインスタンス (ここでは、*mClient* 変数) を作成した後は、次のコードを使用して **MobileServiceJsonTable** のインスタンスを作成します。
+**onCreate** メソッドの Mobile Services クライアントのインスタンス (ここでは、*mClient* 変数) を作成した後は、次のコードを使用して **MobileServiceJsonTable** のインスタンスを作成します。
 
 
             // Get the Mobile Service Json Table to use
@@ -658,18 +662,18 @@ ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレ�
 
 ##<a name="authentication"></a>方法: ユーザーを認証する
 
-モバイル サービスは、Facebook、Google、Microsoft アカウント、Twitter、Azure Active Directory などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、バックエンドで承認ルールを実装することもできます。詳細については、「[認証の使用](http://go.microsoft.com/fwlink/p/?LinkId=296316)」を参照してください。
+Mobile Services は、Facebook、Google、Microsoft アカウント、Twitter、Azure Active Directory などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、バックエンドで承認ルールを実装することもできます。詳細については、「[認証の使用](http://go.microsoft.com/fwlink/p/?LinkId=296316)」を参照してください。
 
 *サーバー* フローと*クライアント* フローという 2 つの認証フローがサポートされます。サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
 
 アプリケーションで認証を有効にするには、次の 3 つの手順を実行する必要があります。
 
-- 認証するアプリケーションをプロバイダーに登録し、モバイル サービスを構成する
+- 認証するアプリケーションをプロバイダーに登録し、Mobile Services を構成する
 - テーブルのアクセス許可を、認証されたユーザーのみに制限する
 - アプリケーションに認証コードを追加する
 
 
-モバイル サービスは、ユーザーを認証するために使用できる次の既存の ID プロバイダーをサポートしています。
+Mobile Services は、ユーザーを認証するために使用できる次の既存の ID プロバイダーをサポートしています。
 
 - Microsoft アカウント
 - Facebook
@@ -679,7 +683,7 @@ ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレ�
 
 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用して要求を変更することもできます。
 
-これらの最初の 2 つのタスクは、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)を使用して実行します。詳細については、「[認証の使用](http://go.microsoft.com/fwlink/p/?LinkId=296316)」を参照してください。
+これらの最初の 2 つのタスクは、[Azure クラシック ポータル](https://manage.windowsazure.com/)を使用して実行します。詳細については、「[認証の使用](http://go.microsoft.com/fwlink/p/?LinkId=296316)」を参照してください。
 
 ### <a name="caching"></a>方法: アプリケーションに認証コードを追加する
 
@@ -820,7 +824,7 @@ Mobile Services クライアントの既定の動作は、さまざまな方法�
 
 ### <a name="serialization"></a>方法: シリアル化をカスタマイズする
 
-モバイル サービスでは、サーバー上のテーブル名、列名、データ型のすべてがクライアント上の対応する名前や型と一致するものと既定で想定しています。ただし、サーバーとクライアントとの間で名前が一致しない理由はいくつかあります。1 つの例として、既存のクライアントがあり、これを競合企業の製品の代わりに Mobile Services を使用するように変更することを検討しているとします。
+Mobile Services では、サーバー上のテーブル名、列名、データ型のすべてがクライアント上の対応する名前や型と一致するものと既定で想定しています。ただし、サーバーとクライアントとの間で名前が一致しない理由はいくつかあります。1 つの例として、既存のクライアントがあり、これを競合企業の製品の代わりに Mobile Services を使用するように変更することを検討しているとします。
 
 次の種類のカスタマイズを行うことができます。
 
@@ -882,13 +886,13 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 
 
 
-このコードは、モバイル サービス クライアント オブジェクトのすべてのメソッド呼び出しの前に実行する必要があります。
+このコードは、Mobile Services クライアント オブジェクトのすべてのメソッド呼び出しの前に実行する必要があります。
 
 ### <a name="complex"></a>方法: オブジェクトまたは配列プロパティをテーブルに保存する
 
 これまでのシリアル化のすべての例には、JSON およびモバイル サービス テーブルに簡単にシリアル化できるプリミティブ型 (整数、文字列など) が使用されていました。ここで、JSON やテーブルに自動的にシリアル化されない複合オブジェクトをクライアント型に追加する場合を想定します。たとえば、文字列の配列をクライアント オブジェクトに追加するとします。この段階で、シリアル化を行う方法と配列をモバイル サービス テーブルに格納する方法は自由に選ぶことができます。
 
-これを行う方法の例については、<a href="http://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson" target="_blank">モバイル サービス Android クライアントでの <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> ライブラリを使用したシリアル化のカスタマイズに関するブログ記事を参照してください。</a>
+これを行う方法の例については、<a href="http://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson" target="_blank">Mobile Services Android クライアントでの <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> ライブラリを使用したシリアル化のカスタマイズに関するブログ記事を参照してください。</a>
 
 この汎用的な方法は、JSON やモバイル サービス テーブルに自動的にシリアル化されない複合オブジェクトがある場合にいつでも使用できます。
 
@@ -933,4 +937,4 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 [Mobile Services を使い始める]: mobile-services-android-get-started.md
 [ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

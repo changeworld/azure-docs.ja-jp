@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure プレビュー ポータルを使用した Azure SQL Database V12 へのアップグレード | Microsoft Azure" 
-	description="Web および Business データベースのアップグレード方法を含む Azure SQL Database V12 へのアップグレード方法を説明します。また、Azure プレビュー ポータルを使用してエラスティック データベース プールにデータベースを直接移行することで V11 サーバーをアップグレードする方法も説明します。" 
+	pageTitle="Azure ポータルを使用した Azure SQL Database V12 へのアップグレード | Microsoft Azure" 
+	description="Web および Business データベースのアップグレード方法を含む Azure SQL Database V12 へのアップグレード方法を説明します。また、Azure ポータルを使用してエラスティック データベース プールにデータベースを直接移行することで V11 サーバーをアップグレードする方法も説明します。" 
 	services="sql-database" 
 	documentationCenter="" 
 	authors="stevestein" 
@@ -13,15 +13,15 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-management" 
-	ms.date="11/11/2015" 
+	ms.date="12/01/2015" 
 	ms.author="sstein"/>
 
 
-# Azure プレビュー ポータルを使用した Azure SQL Database V12 へのアップグレード
+# Azure ポータルを使用した Azure SQL Database V12 へのアップグレード
 
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](sql-database-upgrade-server-portal.md)
+- [Azure portal](sql-database-upgrade-server-portal.md)
 - [PowerShell](sql-database-upgrade-server-powershell.md)
 
 
@@ -48,13 +48,13 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 
 - **すべての Web および Business データベースのアップグレード**: 以下の「[すべての Web および Business データベースのアップグレード](sql-database-upgrade-server-portal.md#upgrade-all-web-and-business-databases)」セクションを参照するか、[PowerShell を使用してデータベースとサーバーをアップグレード](sql-database-upgrade-server-powershell.md)します。
 - **geo レプリケーションをレビューして一時停止**: Azure SQL Database が geo レプリケーション用に構成されている場合、現在の構成を文書化し、[geo レプリケーションを停止](sql-database-geo-replication-portal.md#remove-secondary-database)する必要があります。アップグレードが完了したら、geo レプリケーション用にデータベースを再構成します。
-- **Azure VM にクライアントがある場合、これらのポートを開く**: クライアントが Azure 仮想マシン (VM) で実行されるときに、クライアント プログラムが SQL Database V12 に接続する場合、VM でポート範囲の 11000-11999 と 14000-14999 を開く必要があります。詳細については、「[SQL Database V12のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」をご覧ください。
+- **Azure VM にクライアントがある場合、これらのポートを開く**: クライアントが Azure 仮想マシン (VM) で実行されるときに、クライアント プログラムが SQL Database V12 に接続する場合、VM でポート範囲の 11000 ～ 11999 と 14000 ～ 14999 を開く必要があります。詳細については、「[SQL Database V12のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」をご覧ください。
 
 
 
 ## アップグレードを開始する
 
-1. [Azure プレビュー ポータル](http://portal.azure.com/)で、 **[すべて参照]**、**[SQL サーバー]** の順に選択し、目的のサーバーを選択することで、アップグレードするサーバーを参照します。
+1. [Azure ポータル](http://portal.azure.com/)で、 **[すべて参照]**、**[SQL サーバー]** の順に選択し、目的のサーバーを選択することで、アップグレードするサーバーを参照します。
 2. **[最新の SQL Database 更新]**、**[このサーバーをアップグレード]** の順に選択します。
 
       ![サーバーのアップグレード][1]
@@ -99,7 +99,7 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 
 ## エラスティック データベース プールへのデータベースの移動
 
-[Azure プレビュー ポータル](https://ms.portal.azure.com/)で、V12 サーバーを参照して **[プールの追加]** をクリックします。
+[Azure ポータル](https://portal.azure.com/)で、V12 サーバーを参照して **[プールの追加]** をクリックします。
 
 または
 
@@ -148,8 +148,8 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 ## 次のステップ
 
 - [エラスティック データベース プールの推奨事項を確認します](sql-database-elastic-pool-portal.md#recommended-elastic-database-pools)。
-- [エラスティック データベース プールを作成し、](sql-database-elastic-pool-portal.md)データベースの一部またはすべてをプールに追加します。
-- [データベースのサービス レベルとパフォーマンス レベルを変更します](sql-database-scale-up.md)。
+- [エラスティック データベース プールを作成し、](sql-database-elastic-pool-portal.md)データベースの一部またはすべてをプールに追加する。
+- [データベースのサービス レベルとパフォーマンス レベルを変更する](sql-database-scale-up.md)。
 
 
 
@@ -168,4 +168,4 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 [6]: ./media/sql-database-upgrade-server-portal/recommendations.png
 [7]: ./media/sql-database-upgrade-server-portal/new-elastic-pool.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

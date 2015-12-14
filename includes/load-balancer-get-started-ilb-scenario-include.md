@@ -1,10 +1,9 @@
-## Scenario
+## シナリオ
 
-You are creating an internal load balancer according to the following scenario
+次のシナリオに従って、内部ロード バランサーを作成します
 
-![IMAGE DESCRIPTION](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
+![イメージの説明](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
 
-An internal load balancer is configured in a virtual network  
-- 2 virtual machines called DB1 and DB2<BR>
-- endpoints <BR>
--  internal load balancer<BR>
+内部ロード バランサーは、仮想ネットワークで構成されます - DB1 および DB2 と呼ばれる 2 つの仮想マシン<BR> - エンドポイント <BR> - 内部ロード バランサー<BR>
+
+<!---HONumber=AcomDC_1203_2015-->

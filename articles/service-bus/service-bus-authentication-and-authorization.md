@@ -45,7 +45,7 @@ Service Bus の SAS 認証サポートは、Azure .NET SDK バージョン 2.0 �
 
 ## ACS 認証
 
-ACS を使用した Service Bus の認証は、付属の "-sb" ACS 名前空間を通じて管理されます。付属の ACS 名前空間を Service Bus 名前空間用に作成すると、Azure ポータルを使用して Service Bus 名前空間を作成することはできません。この場合、この名前空間は、PowerShell コマンドレット [New-AzureSBNamespace](https://msdn.microsoft.com/library/azure/dn495165.aspx) を使用して作成する必要があります。次に例を示します。
+ACS を使用した Service Bus の認証は、付属の "-sb" ACS 名前空間を通じて管理されます。付属の ACS 名前空間を Service Bus 名前空間用に作成すると、Azure クラシック ポータルを使用して Service Bus 名前空間を作成することはできません。この場合、この名前空間は、PowerShell コマンドレット [New-AzureSBNamespace](https://msdn.microsoft.com/library/azure/dn495165.aspx) を使用して作成する必要があります。次に例を示します。
 
 ```
 New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $true
@@ -73,4 +73,4 @@ Service Bus における SAS の概要については、「[Shared Access Signat
 
 ACS トークンの詳細については、「[方法: OAuth WRAP プロトコルを使用して ACS からのトークンを要求する](https://msdn.microsoft.com/library/hh674475.aspx)」を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

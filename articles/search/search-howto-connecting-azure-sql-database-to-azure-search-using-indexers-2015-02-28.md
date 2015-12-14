@@ -28,7 +28,7 @@ Azure Search サービスはホスト型のクラウド検索サービスであ�
 
 Azure SQL インデクサーをセットアップして構成するときは、[Azure Search REST API](http://go.microsoft.com/fwlink/p/?LinkID=528173) を呼び出して**インデクサー**および**データ ソース**を作成および管理できます。
 
-インデクサーの作成とスケジュールは、[.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) の[インデクサー クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.indexer.aspx)を使用するか、[Azure ポータル](https://portal.azure.com)でデータインポートウィザードを使用して実行することもできます。
+インデクサーの作成とスケジュールは、[.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) の[インデクサー クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.indexer.aspx)を使用するか、[Azure クラシック ポータル](https://portal.azure.com)でデータのインポート ウィザードを使用して実行することもできます。
 
 **データ ソース**では、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Search がデータの変更 (新しい行、変更された行、削除された行) を効率よく識別できるようにするポリシーを指定します。データ ソースは、複数のインデクサーで使用できるように、独立したリソースとして定義します。
 
@@ -66,7 +66,7 @@ Azure SQL インデクサーをセットアップして構成するときは、[
 	}
 
 
-[Azure ポータル](https://portal.azure.com)から接続文字列を取得し、`ADO.NET connection string` オプションを使用できます。
+[Azure クラシック ポータル](https://portal.azure.com)から接続文字列を取得し、`ADO.NET connection string` オプションを使用できます。
 
 その後、ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[ポータル UI](https://portal.azure.com) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。ターゲット インデックスのスキーマとソース テーブルのスキーマに互換性があることを確認します。SQL と Azure Search のデータ型のマッピングについては、次の表を参照してください。
 
@@ -279,4 +279,4 @@ A: はい。インデクサーは検索サービス内のノードの 1 つで�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

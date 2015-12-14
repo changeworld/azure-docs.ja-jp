@@ -132,9 +132,7 @@
 <!-- URLs. -->
 [モバイル サービスの使用]: mobile-services-html-get-started.md
 [スクリプトを使用したユーザーの認証]: mobile-services-javascript-backend-service-side-authorization.md
-
-[Azure Management Portal]: https://manage.windowsazure.com/
 [モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: mobile-services-html-how-to-use-client-library.md
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

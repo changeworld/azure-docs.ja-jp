@@ -39,7 +39,7 @@
 	- デモ アカウントには、このチュートリアルで示される火山データが設定されています。このデモ アカウントは、どの SLA の制約も受けず、目的がデモンストレーションに限定されています。Microsoft では、事前の通知や理由の提示なしでいつでもこのデモ アカウントに変更を加える権利を保有しています。これには、アカウントの終了、キーの変更、アクセスの制限、データの変更と削除などが含まれます。 
 		- URL: https://analytics.documents.azure.com
 		- 読み取り専用キー: MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
-	- または、独自のアカウントを作成する場合は、「[Azure プレビュー ポータルを使用して DocumentDB データベース アカウントを作成する](https://azure.microsoft.com/documentation/articles/documentdb-create-account/)」を参照してください。その後で、このチュートリアルで使用されるデータと同様のサンプル火山データ (ただし、GeoJSON ブロックは含まれていません) を取得するために、[NOAA サイト](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5)にアクセスし、[DocumentDB データ移行ツール](https://azure.microsoft.com/documentation/articles/documentdb-import-data/)を使用してデータをインポートしてください。
+	- または、独自のアカウントを作成する場合は、「[Azure ポータルを使用して DocumentDB データベース アカウントを作成する](https://azure.microsoft.com/documentation/articles/documentdb-create-account/)」を参照してください。その後で、このチュートリアルで使用されるデータと同様のサンプル火山データ (ただし、GeoJSON ブロックは含まれていません) を取得するために、[NOAA サイト](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5)にアクセスし、[DocumentDB データ移行ツール](https://azure.microsoft.com/documentation/articles/documentdb-import-data/)を使用してデータをインポートしてください。
 
 
 PowerBI.com でレポートを共有するには、PowerBI.com のアカウントが必要です。Power BI (無料) および Power BI Pro の詳細については、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing) を参照してください。
@@ -86,7 +86,7 @@ DocumentDB アカウントから火山データを取得し、次のような対
 
 	![Power BI Desktop データの取得](./media/documentdb-powerbi-visualize/power_bi_connector_pbigetdata.png)
 
-6. 次のように、データを取得する DocumentDB アカウント エンドポイント URL を指定し、**[OK]** をクリックします。URL は、Azure プレビュー ポータルの **[キー]** ブレードで URI ボックスから取得するか、上記で指定されたデモ アカウント情報を使用することができます。詳細については、[キー](documentdb-manage-account.md#keys)に関するページを参照してください。
+6. 次のように、データを取得する DocumentDB アカウント エンドポイント URL を指定し、**[OK]** をクリックします。URL は、Azure ポータルの **[キー]** ブレードで URI ボックスから取得するか、上記で指定されたデモ アカウント情報を使用することができます。詳細については、[キー](documentdb-manage-account.md#keys)に関するページを参照してください。
 
 
 	*注: このチュートリアルでは、オプションのフィールドであるデータベース名、コレクション名、および SQL ステートメントは指定しません。代わりに、ナビゲーターを使用して、データを取得するデータベースとコレクションを選択します。*
@@ -95,7 +95,7 @@ DocumentDB アカウントから火山データを取得し、次のような対
 
 7. このエンドポイントに初めて接続した場合は、アカウント キーの入力を求められます。アカウント キーを入力し、**[接続]** をクリックします。
 	
-	*注: レポートを作成する際は読み取り専用キーを使用することをお勧めします。これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。読み取り専用キーは、Azure プレビュー ポータルの [読み取り専用キー] ブレードで取得できます。また、上記のデモ アカウント情報を使用することもできます。*
+	*注: レポートを作成する際は読み取り専用キーを使用することをお勧めします。これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。読み取り専用キーは、Azure ポータルの [読み取り専用キー] ブレードで取得できます。また、上記のデモ アカウント情報を使用することもできます。*
 
     ![Power BI Desktop アカウント キーL](./media/documentdb-powerbi-visualize/power_bi_connector_pbidocumentdbkey.png)
 
@@ -194,4 +194,4 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 - Power BI の詳細については、[ここ](https://support.powerbi.com/knowledgebase)をクリックしてください。
 - DocumentDB の詳細については、[ここ](https://azure.microsoft.com/documentation/services/documentdb/)をクリックしてください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

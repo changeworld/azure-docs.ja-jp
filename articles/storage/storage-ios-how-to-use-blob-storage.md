@@ -72,11 +72,11 @@ Storage サービスにアクセスできるようにアプリケーションを
 
 > [AZURE.WARNING (Only use Shared Key authentication for testing purposes!) ]アカウント名とアカウント キーは、関連付けられているストレージ アカウントへの完全な読み取りおよび書き込みアクセスが付与されており、アプリをダウンロードするすべてのユーザーに配布されます。これは信頼できないクライアントによってキーが侵害される危険があるため、**お勧めしません**。
 
-共有キー認証を使用する場合は、"接続文字列" を作成します。 接続文字列の構成要素は次のとおりです。
+共有キー認証を使用する場合は、接続文字列を作成します。接続文字列の構成要素は次のとおりです。
 
-- **DefaultEndpointsProtocol** - http または https を選択できます。ただし、https の使用を強くお勧めします。
+- **DefaultEndpointsProtocol** - HTTP または HTTPS を選択できますが、HTTPS の使用を強くお勧めします。
 - **Account Name** - ストレージ アカウントの名前
-- **Account Key** - [管理ポータル](manage.windowsazure.com)を使用している場合は、*[アクセス キーの管理]* をクリックすると見つかります。[プレビュー ポータル](portal.azure.com)を使用している場合は、[キー] アイコンをクリックすると、この情報が見つかります。
+- **Account Key** - この情報を確認するには、[Azure ポータル](portal.azure.com)を使用してお使いのストレージ アカウントに移動し、**[キー]** アイコンをクリックします。[Azure クラシック ポータル](manage.windowsazure.com)を使用している場合は、ポータルでストレージ アカウントに移動し、**[アクセス キーの管理]** をクリックします。 
 
 アプリケーションでは次のようになります。
 
@@ -137,7 +137,7 @@ Azure Storage のどの BLOB もコンテナーに格納する必要がありま
         }];
     }
 
-このコード例が正常に機能していることを確認するには、[ポータル](portal.azure.com)または任意の[ストレージ エクスプローラー](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)で、*newcontainer* がストレージ アカウントのコンテナーの一覧に含まれていることを確認します。
+このコード例が正常に機能していることを確認するには、[Azure ポータル](portal.azure.com)または任意の[ストレージ エクスプローラー](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)で、*newcontainer* がストレージ アカウントのコンテナーの一覧に含まれていることを確認します。
 
 ## コンテナーのアクセス許可を設定する
 コンテナーのアクセス許可は、既定では、**プライベート** アクセス用に構成されています。ただし、コンテナーには、コンテナー アクセス用にいくつかの異なるオプションが用意されています。
@@ -202,7 +202,7 @@ Azure Storage のどの BLOB もコンテナーに格納する必要がありま
          }];
      }
 
-このコード例が正常に機能していることを確認するには、[ポータル](portal.azure.com)または任意の[ストレージ エクスプローラー](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)で、コンテナー *containerpublic* に BLOB *sampleblob* が含まれていることを確認します。この例ではパブリック コンテナーを使用したため、次の BLOB URI にアクセスすることによっても、これを確認できます。
+このコード例が正常に機能していることを確認するには、[Azure ポータル](portal.azure.com)または任意の[ストレージ エクスプローラー](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)で、コンテナー *containerpublic* に BLOB *sampleblob* が含まれていることを確認します。この例ではパブリック コンテナーを使用したため、次の BLOB URI にアクセスすることによっても、これを確認できます。
 
     https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
 
@@ -352,10 +352,10 @@ NSString からブロック BLOB をアップロードする場合だけでな�
 - [Azure Storage REST API]
 - [Azure Storage チーム ブログ]
 
-このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/ja-JP/home?forum=windowsazuredata)または[スタック オーバーフロー](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)に投稿してください。Azure Storage の機能についてご提案がある場合は、[Azure Storage のフィードバック](http://feedback.azure.com/forums/217298-storage)に投稿してください。
+このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata)または[スタック オーバーフロー](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)に投稿してください。Azure Storage の機能についてご提案がある場合は、[Azure Storage のフィードバック](http://feedback.azure.com/forums/217298-storage)に投稿してください。
 
 [Azure Storage iOS ライブラリ]: https://github.com/azure/azure-storage-ios
-[Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
+[Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

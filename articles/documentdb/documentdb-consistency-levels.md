@@ -56,7 +56,7 @@ Eventual の一貫性は、読み取りの一貫性という点は最も弱い�
 
 ### データベースの一貫性レベルの変更
 
-1.  [Azure プレビュー ポータル](https://portal.azure.com/)で、ジャンプバーの **[DocumentDB アカウント]** をクリックします。
+1.  [Azure ポータル](https://portal.azure.com/)で、ジャンプバーの **[DocumentDB アカウント]** をクリックします。
 
 2. **[DocumentDB アカウント]** ブレードで、変更するデータベース アカウントを選択します。
 
@@ -88,4 +88,4 @@ Eventual の一貫性は、読み取りの一貫性という点は最も弱い�
 -	Werner Vogels 著:Eventual Consistent - Revisited (結果的な一貫性 - 改訂版) [http://allthingsdistributed.com/2008/12/eventually\_consistent.html](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

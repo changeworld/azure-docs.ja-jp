@@ -46,4 +46,6 @@
 
     このコードは、"messageParam" を含んでいるすべてのテンプレート登録にテンプレート通知を送信するよう、通知ハブに指示を出します。登録に "messageParam" が使用されている各 PNS で、messageParam の位置に文字列が挿入されます。これにより、APNS、GCM、WNS、またはその他の任意の PNS に通知を送信できるようになります。
 
-<!---HONumber=AcomDC_1125_2015-->
+	通知ハブを使用するテンプレートの詳細については、[テンプレート](notification-hubs-templates.md)を参照してください。
+
+<!---HONumber=AcomDC_1203_2015-->

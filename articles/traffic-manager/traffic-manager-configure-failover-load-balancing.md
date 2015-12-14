@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
+   ms.date="12/01/2015"
    ms.author="joaoma" />
 
 # フェールオーバーのルーティング方法の構成
@@ -23,8 +23,8 @@ Azure Websites では、Web サイトのモードに関係なく、データセ�
 
 ## フェールオーバーによるトラフィック ルーティング方法の構成
 
-1. 管理ポータルの左側のウィンドウで、**[Traffic Manager]** アイコンをクリックして [Traffic Manager] ウィンドウを開きます。まだ Traffic Manager プロファイルを作成していない場合は、「[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)」に記載された手順に従って、基本的な Traffic Manager プロファイルを作成してください。
-2. 管理ポータルの [Traffic Manager] ペインで、変更するエンドポイント設定が含まれた Traffic Manager プロファイルを見つけ、プロファイル名の右にある矢印をクリックします。これにより、プロファイルの設定ページが開きます。
+1. Azure ポータルの左側のウィンドウで、**[Traffic Manager]** アイコンをクリックして [Traffic Manager] ウィンドウを開きます。まだ Traffic Manager プロファイルを作成していない場合は、「[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)」に記載された手順に従って、基本的な Traffic Manager プロファイルを作成してください。
+2. Azure ポータルの Traffic Manager ウィンドウで、変更対象のエンドポイント設定が保存されている Traffic Manager プロファイルを見つけて、そのプロファイル名の右側にある矢印をクリックします。これにより、プロファイルの設定ページが開きます。
 3. プロファイル ページで、ページの上部にある **[エンドポイント]** をクリックし、構成に含めるクラウド サービスと Web サイトの両方 (エンドポイント) が存在することを確認します。エンドポイントを追加または削除する手順については、「[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)」を参照してください。
 4. プロファイル ページで、上部にある **[構成]** をクリックし、構成ページを開きます。
 5. **[トラフィック ルーティング方法の設定]** で、トラフィック ルーティング方法が **[フェールオーバー]** に設定されていることを確認します。他の方法に設定されている場合は、ドロップダウン リストから **[フェールオーバー]** をクリックします。
@@ -53,4 +53,4 @@ Azure Websites では、Web サイトのモードに関係なく、データセ�
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

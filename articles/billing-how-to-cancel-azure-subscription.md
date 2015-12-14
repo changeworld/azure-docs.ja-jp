@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/21/2015"
+	ms.date="12/01/2015"
 	ms.author="genli"/>
 
 # Azure サブスクリプションをキャンセルする方法
@@ -30,4 +30,4 @@
 4. **[はい、サブスクリプションをキャンセルします。]** を選択します。</br> ![cancelbox](.\media\billing-how-to-cancel-azure-subscription\cancelbox.png)
 5. ![checkbutton](.\media\billing-how-to-cancel-azure-subscription\checkbutton.png) をクリックしてダイアログ ウィンドウを閉じます。サブスクリプション ページに戻ります。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

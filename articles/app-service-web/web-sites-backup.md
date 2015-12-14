@@ -42,7 +42,7 @@ Web Apps では、次の情報をバックアップできます。
 
 * バックアップと復元の機能を使用するには、サイトを標準モードにする必要があります。標準モードを使用するための Web アプリの拡張の詳細については、「[Azure App Service での Web アプリの拡張](web-sites-scale.md)」をご覧ください。プレミアム モードでは、標準モードよりも多くの毎日のバックアップを実行できることに注意してください。
 
-* バックアップと復元の機能では、バックアップする Web アプリと同じサブスクリプションに属する Azure ストレージ アカウントとコンテナーが必要です。ストレージ アカウントをまだ持っていない場合は、[Azure プレビュー ポータル](http://portal.azure.com)の **[バックアップ]** ブレードで **[ストレージ アカウント]** をクリックし、**[バックアップ先]** ブレードで **[ストレージ アカウント]** と **[コンテナー]** を選択することで作成できます。Azure のストレージ アカウントの詳細については、この記事の末尾に示されている[リンク](#moreaboutstorage)を参照してください。
+* バックアップと復元の機能では、バックアップする Web アプリと同じサブスクリプションに属する Azure ストレージ アカウントとコンテナーが必要です。ストレージ アカウントをまだ持っていない場合は、[Azure ポータル](http://portal.azure.com)の **[バックアップ]** ブレードで **[ストレージ アカウント]** をクリックし、**[バックアップ先]** ブレードで **[ストレージ アカウント]** と **[コンテナー]** を選択することで作成できます。Azure のストレージ アカウントの詳細については、この記事の末尾に示されている[リンク](#moreaboutstorage)を参照してください。
 
 * バックアップと復元の機能では、Web サイトとデータベースの最大 10 GB のコンテンツをサポートします。ペイロードがこの上限を超えるためにバックアップ機能を続行できない場合は、処理ログにエラーが示されます。
 
@@ -109,7 +109,7 @@ Web Apps では、次の情報をバックアップできます。
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 <a name="partialbackups"></a>
-## Web サイトの一部のみをバックアップする
+## Web アプリの一部のみをバックアップする
 
 Web アプリのすべてをバックアップしたくない場合があります。次に例をいくつか示します。
 
@@ -125,8 +125,7 @@ Web アプリのすべてをバックアップしたくない場合がありま�
 
 今後まったく変更されることがない過去のログ ファイルや静止画像を含む Web アプリがあるとします。古い画像を含む Web アプリの完全バックアップは既に存在します。今後、Web アプリのバックアップを毎日実行しますが、変更されることがないログ ファイルや静止画像ファイルはバックアップしないようにするとします。
 
-![Logs フォルダー][LogsFolder]
-![images フォルダー][ImagesFolder]
+![Logs フォルダー][LogsFolder] ![images フォルダー][ImagesFolder]
 	
 次の手順は、これらのファイルをバックアップから除外する方法を示しています。
 
@@ -142,7 +141,7 @@ Web アプリのすべてをバックアップしたくない場合がありま�
 
 2. `_backup.filter` という名前のファイルを作成し、上のリストをこのファイルに配置します。ただし `D:\home` は削除します。1 つのディレクトリまたはファイルを 1 行に配置します。したがって、ファイルの内容は次のようになります。
 
-    \site\wwwroot\Logs \LogFiles \site\wwwroot\Images\2013 \site\wwwroot\Images\2014 \site\wwwroot\Images\brand.png
+    \\site\\wwwroot\\Logs \\LogFiles \\site\\wwwroot\\Images\\2013 \\site\\wwwroot\\Images\\2014 \\site\\wwwroot\\Images\\brand.png
 
 3. このファイルを、[ftp](web-sites-deploy.md#ftp)やその他の方法を使用して、サイトの `D:\home\site\wwwroot` ディレクトリにアップロードします。ファイルを `http://{yourapp}.scm.azurewebsites.net/DebugConsole` 内に直接作成し、そこにコンテンツを挿入することもできます。
 
@@ -150,7 +149,7 @@ Web アプリのすべてをバックアップしたくない場合がありま�
 
 これで、`_backup.filter` 内に指定されたファイルとフォルダーはバックアップから除外されます。この例では、ログ ファイル、2013 年と 2014 年の画像ファイル、および brand.png がバックアップされなくなります。
 
->[AZURE.NOTE][定期的なバックアップからの復元](web-sites-restore.md)と同様の手順で、サイトを部分バックアップから復元することもできます。復元プロセスは正常に実行されます。
+>[AZURE.NOTE] [定期的なバックアップからの復元](web-sites-restore.md)と同様の手順で、サイトを部分バックアップから復元することもできます。復元プロセスは正常に実行されます。
 >
 >完全バックアップが復元されると、サイト上のすべてのコンテンツは、バックアップの中身に置き換えられます。サイト上に存在したファイルも、バックアップに存在しなければ削除されます。ただし、部分バックアップが復元されるとき、ブラック リスト化されたディレクトリまたはファイルのいずれかに配置されているコンテンツは放置されます。
 
@@ -200,11 +199,10 @@ Azure を利用し始めるには、「[Microsoft Azure の無料試用版サイ
 
 [ストレージ アカウントの監視方法](../storage-monitor-storage-account.md)
 
-[Azure ストレージでの課金について](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
+[Azure Storage での課金について](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 <!-- IMAGES -->
 [ChooseBackupsPage]: ./media/web-sites-backup/01ChooseBackupsPage.png
@@ -222,4 +220,4 @@ Azure を利用し始めるには、「[Microsoft Azure の無料試用版サイ
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

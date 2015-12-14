@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/15/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスの Web プロキシを構成する
@@ -33,7 +33,7 @@ Web プロキシの構成が完了したら、Microsoft Azure StorSimple Manager
 
 - セットアップ ウィザードとコマンドレットを使用して Web プロキシを構成する
 - コマンドレットを使用して Web プロキシを有効にする
-- 管理ポータルで Web プロキシ設定を表示する
+- Azure クラシック ポータルで Web プロキシ設定を表示する
 - Web プロキシの構成中のエラーをトラブルシューティングする
 
 
@@ -75,7 +75,7 @@ Web プロキシ設定を構成するには、次のいずれかを使用しま�
 
 初めてデバイスを登録する場合は、登録に進みます。デバイスが既に登録されている場合、ウィザードは終了します。構成した設定は保存されます。
 
-また、Web プロキシも有効になります。「[Web プロキシを有効にする](#enable-web-proxy)」の手順を省略し、すぐに、「[管理ポータルで Web プロキシ設定を表示する](#view-web-proxy-settings-in-the-management-portal)」に進むことができます。
+また、Web プロキシも有効になります。「[Web プロキシを有効にする](#enable-web-proxy)」の手順を省略し、すぐに、「[Azure クラシック ポータルで Web プロキシ設定を表示する](#view-web-proxy-settings-in-the-azure-classic-portal)」に進むことができます。
 
 
 ## StorSimple 用 Windows PowerShell のコマンドレットを使用して Web プロキシを構成する
@@ -116,9 +116,9 @@ StorSimple 用 Windows PowerShell で次の手順を実行し、デバイスで 
 
 	![Configure Web Proxy On StorSimple Device4](./media/storsimple-configure-web-proxy/IC751832.png)
 
-## 管理ポータルで Web プロキシ設定を表示する
+## Azure クラシック ポータルで Web プロキシ設定を表示する
 
-Web プロキシ設定は、Windows PowerShell インターフェイスを使用して構成します。管理ポータル内から変更することはできません。ただし、構成済みの設定を管理ポータルで表示することはできます。次の手順を実行して、Web プロキシを表示します。
+Web プロキシ設定は、Windows PowerShell インターフェイスを使用して構成します。クラシック ポータル内から変更することはできません。ただし、構成済みの設定をクラシック ポータルで表示することはできます。次の手順を実行して、Web プロキシを表示します。
 
 #### Web プロキシ設定を表示するには
 1. **[StorSimple Manager サービス]、[デバイス]** の順に移動します。デバイスを選択してクリックし、**[構成]** に移動します。
@@ -143,7 +143,7 @@ Web プロキシの設定が正しく構成されていない場合は、StorSim
 > [AZURE.NOTE]
 > 
 > -  上記のエラー メッセージの一覧ですべてを網羅しているわけではありません。 
-> - Web プロキシの設定に関連するエラーは、StorSimple Manager サービスの管理ポータルには表示されません。構成が完了した後で Web プロキシに問題がある場合、管理ポータルではデバイスの状態が **"オフライン"** になります。
+> - Web プロキシの設定に関連するエラーは、StorSimple Manager サービスの Azure クラシック ポータルには表示されません。構成が完了した後で Web プロキシに問題がある場合、クラシック ポータルではデバイスの状態が **"オフライン"** になります。
 
 ## 次のステップ
 
@@ -151,4 +151,4 @@ Web プロキシの設定が正しく構成されていない場合は、StorSim
 
 - StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

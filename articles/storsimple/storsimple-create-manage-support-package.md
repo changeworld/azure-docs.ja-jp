@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/15/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 
@@ -33,13 +33,13 @@
 - サポート パッケージの暗号化を解除して編集する
 
 
-## 管理ポータルでサポート パッケージを作成する
+## Azure クラシック ポータルでサポート パッケージを作成する
 
-StorSimple Manager サービスで発生する可能性のある問題をトラブルシューティングするには、管理ポータルのサービスの **[メンテナンス]** ページで、サポート パッケージを作成して Microsoft サポート サイトにアップロードします。アップロードを許可するには、サポート パスキーを指定する必要があります。サポート パスキーは、サポート エンジニアから電子メールで提供されます。暗号化されていない、圧縮されたサポート パッケージが作成されます (.cab ファイル)。その後、このパッケージは、サポート エンジニアがパスキーを指定したときにサポート サイトから取得できます。
+StorSimple Manager サービスで発生する可能性のある問題をトラブルシューティングするには、Azure クラシック ポータルのサービスの **[メンテナンス]** ページで、サポート パッケージを作成して Microsoft サポート サイトにアップロードします。アップロードを許可するには、サポート パスキーを指定する必要があります。サポート パスキーは、サポート エンジニアから電子メールで提供されます。暗号化されていない、圧縮されたサポート パッケージが作成されます (.cab ファイル)。その後、このパッケージは、サポート エンジニアがパスキーを指定したときにサポート サイトから取得できます。
 
-サポート パッケージを作成するには、管理ポータルで次の手順を実行します。
+サポート パッケージを作成するには、クラシック ポータルで次の手順を実行します。
 
-#### 管理ポータルでサポート パッケージを作成するには
+#### Azure クラシック ポータルでサポート パッケージを作成するには
 
 1. **[デバイス]、[メンテナンス]** の順にクリックします。
 
@@ -47,13 +47,13 @@ StorSimple Manager サービスで発生する可能性のある問題をトラ�
 
 3. **[サポート パッケージの作成とアップロード]** ダイアログ ボックスで、次の操作を実行します。
 
-	![Create Support Package](./media/storsimple-create-manage-support-package/IC740923.png)
+	![サポート パッケージの作成](./media/storsimple-create-manage-support-package/IC740923.png)
 											
 	- **サポート パスキー**を指定します。このキーは、Microsoft サポート エンジニアから電子メールで送信されます。
  	
 	- **サポート パッケージを Microsoft サポート サイトへ自動的にアップロードする**ことに同意するチェック ボックスをオンにします。
  	
-	- チェック マーク アイコン ![Check icon](./media/storsimple-create-manage-support-package/IC740895.png) をクリックします。
+	- チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-create-manage-support-package/IC740895.png) をクリックします。
 
 
 ## StorSimple 用 Windows PowerShell でサポート パッケージを作成する
@@ -81,7 +81,7 @@ StorSimple 用 Windows PowerShell でサポート パッケージを作成する
 	 
 		`Password1`
 
-		![PowerShell Session To SSAdminConsole Runspace](./media/storsimple-create-manage-support-package/IC740962.png)
+		![SSAdmin コンソール実行空間に対する PowerShell セッション](./media/storsimple-create-manage-support-package/IC740962.png)
 
 	2. **[OK]** をクリックします。
 	1. コマンド プロンプトに、次のコマンドを入力します。 
@@ -123,7 +123,7 @@ Export-HcsSupportPackage コマンドレットで使用できるさまざまな�
 
 サポート パッケージを生成した後、パッケージを編集して、ボリューム名、デバイスの IP アドレス、バックアップ名などのユーザー固有の情報をログ ファイルから削除することが必要になる場合があります。
 
-> [AZURE.IMPORTANT]編集できるのは、StorSimple 用 Windows PowerShell を使って生成されたサポート パッケージのみです。管理ポータルで StorSimple Manager サービスを使用して作成したパッケージを編集することはできません。
+> [AZURE.IMPORTANT]編集できるのは、StorSimple 用 Windows PowerShell を使って生成されたサポート パッケージのみです。Azure クラシック ポータルで StorSimple Manager サービスを使用して作成したパッケージを編集することはできません。
 
 サポート パッケージを Microsoft サポート サイトにアップロードする前に編集するには、サポート パッケージの暗号化を解除し、ファイルを編集して、もう一度暗号化する必要があります。サポート パッケージを編集するには、次の手順を実行します。
 
@@ -143,7 +143,7 @@ Export-HcsSupportPackage コマンドレットで使用できるさまざまな�
 
 	これにより、ファイルが展開され、暗号化が解除されます。すべてのファイルに実際のファイルの拡張子が表示されます。
 	
-	![Edit Support Package 3](./media/storsimple-create-manage-support-package/IC750706.png)
+	![サポート パッケージの編集 3](./media/storsimple-create-manage-support-package/IC750706.png)
 
 
 5. 暗号化パスフレーズの入力を求められたら、サポート パッケージの作成時に使用したパスフレーズを入力します。
@@ -158,7 +158,7 @@ Export-HcsSupportPackage コマンドレットで使用できるさまざまな�
 
 	`Close-HcsSupportPackage <Path to the folder that contains support package files>`
 
-	![Edit Support Package 2](./media/storsimple-create-manage-support-package/IC750707.png)
+	![サポート パッケージの編集 2](./media/storsimple-create-manage-support-package/IC750707.png)
 
 8. 入力を求められたら、変更したサポート パッケージの暗号化パスフレーズを入力します。
 
@@ -172,7 +172,7 @@ Export-HcsSupportPackage コマンドレットで使用できるさまざまな�
 
 サポート パッケージを暗号化解除、編集、再暗号化する方法の例は次のとおりです。
 
-![Edit Support Package1](./media/storsimple-create-manage-support-package/IC750708.png)
+![サポート パッケージの編集 1](./media/storsimple-create-manage-support-package/IC750708.png)
 
     	PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
     
@@ -199,4 +199,4 @@ Export-HcsSupportPackage コマンドレットで使用できるさまざまな�
 - [サポート パッケージとデバイスのログを使用してデバイスのデプロイをトラブルシューティングする方法](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting) 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

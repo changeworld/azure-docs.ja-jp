@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="07/29/2015"
+   ms.date="12/02/2015"
    ms.author="jgao"/>
 
 # HDInsight での Phoenix、SQuirreL、HBase クラスターの使用  
@@ -29,7 +29,7 @@
 SQLLine を使用するには、以下のものが必要です。
 
 - **HDInsight 環境の HBase クラスター**。HBase クラスターのプロビジョニングについては、「[Get started with Apache HBase in HDInsight (HDInsight での Apache HBase の使用)][hdinsight-hbase-get-started]」を参照してください。
-- **リモート デスクトップ プロトコルを使用した HBase クラスターへの接続**。方法については、「[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。
+- **リモート デスクトップ プロトコルを使用した HBase クラスターへの接続**。方法については、「[Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。
 
 **ホスト名を確認するには**
 
@@ -116,7 +116,7 @@ Azure 仮想ネットワークに HBase クラスターをプロビジョニン�
 
 **ポイント対サイト接続を構成するには**
 
-1. [Azure ポータル][azure-portal]にサインインします。
+1. [Azure クラシック ポータル][azure-portal]にサインインします。
 2. 左側の **[ネットワーク]** をクリックします。
 3. 作成してある仮想ネットワークをクリックします (「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」を参照)。
 4. 上部にある **[構成]** をクリックします。
@@ -129,7 +129,7 @@ Azure 仮想ネットワークに HBase クラスターをプロビジョニン�
 
 **動的ルーティング ゲートウェイを作成するには**
 
-1. Azure ポータルで、ページの上部にある **[ダッシュボード]** をクリックします。
+1. Azure クラシック ポータルで、ページの上部にある **[ダッシュボード]** をクリックします。
 2. ページの下部にある **[ゲートウェイの作成]** をクリックします。
 3. **[はい]** をクリックして確定します。ゲートウェイが作成されるまで待ちます。
 4. 上部にある **[ダッシュボード]** をクリックします。仮想ネットワークの図が表示されます。
@@ -147,7 +147,7 @@ X.509 証明書を作成する方法の 1 つは、[Microsoft Visual Studio Expr
 
 1. ワークステーションからコマンド プロンプト ウィンドウを開きます。
 2. Visual Studio ツールのフォルダーに移動します。 
-3. 次の例のコマンドを使用すると、ルート証明書が作成されてワークステーションの個人用証明書ストアにインストールされ、後で Azure ポータルにアップロードする対応する .cer ファイルが作成されます。 
+3. 次の例のコマンドを使用すると、ルート証明書が作成されてワークステーションの個人用証明書ストアにインストールされ、後で Azure クラシック ポータルにアップロードする対応する .cer ファイルが作成されます。 
 
 		makecert -sky exchange -r -n "CN=HBaseVnetVPNRootCertificate" -pe -a sha1 -len 2048 -ss My "C:\Users\JohnDole\Desktop\HBaseVNetVPNRootCertificate.cer"
 
@@ -171,9 +171,9 @@ X.509 証明書を作成する方法の 1 つは、[Microsoft Visual Studio Expr
 
 	クライアント証明書は、仮想ネットワークに接続する各コンピューターにインストールする必要があります。仮想ネットワークに接続する各コンピューターに、一意のクライアント証明書を作成することをお勧めします。クライアント証明書をエクスポートするには、certmgr.msc を使用します。
 
-**Azure ポータルにルート証明書をアップロードするには**
+**Azure クラシック ポータルにルート証明書をアップロードするには**
 
-1. Azure ポータルの左側で **[ネットワーク]** をクリックします。
+1. Azure クラシック ポータルの左側の **[ネットワーク]** をクリックします。
 2. HBase クラスターのデプロイ先の仮想ネットワークをクリックします。
 3. 上部の **[証明書]** をクリックします。
 4. 下部の **[アップロード]** をクリックして、最後の前の手順で作成したルート証明書ファイルを指定します。証明書がインポートされるまで待ちます。
@@ -242,7 +242,7 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 	- **Example URL**: jdbc:phoenix:zookeeper2.contoso-hbase-eu.f5.internal.cloudapp.net
 	- **Class Name**: org.apache.phoenix.jdbc.PhoenixDriver
 
-	>[AZURE.WARNING][Example URL] はすべて小文字で指定します。いずれかがダウンした場合に備えて、完全な zookeeper クォーラムを使用できます。ホスト名は、zookeeper0、zookeeper1、zookeeper2 です。
+	>[AZURE.WARNING] [Example URL] はすべて小文字で指定します。いずれかがダウンした場合に備えて、完全な zookeeper クォーラムを使用できます。ホスト名は、zookeeper0、zookeeper1、zookeeper2 です。
 
 	![HDInsight HBase Phoenix SQuirreL ドライバー][img-squirrel-driver]
 4. **[OK]** をクリックします。
@@ -306,4 +306,4 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

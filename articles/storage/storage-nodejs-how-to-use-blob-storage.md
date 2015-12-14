@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="11/20/2015"
+	ms.date="12/01/2015"
 	ms.author="robmcm"/>
 
 
@@ -67,7 +67,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 Azure モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 `AZURE_STORAGE_ACCOUNT` と `AZURE_STORAGE_ACCESS_KEY`、または `AZURE_STORAGE_CONNECTION_STRING` を読み取ります。これらの環境変数が設定されていない場合は、**createBlobService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの Azure ポータルで環境変数を設定する例については、[Storage を使用する Node.js Web アプリケーション]に関するトピックを参照してください。
+Azure Web アプリの [Azure ポータル](portal.azure.com)で環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション]に関するトピックを参照してください。
 
 ## コンテナーを作成する
 
@@ -361,7 +361,6 @@ ACL を設定したら、ポリシーの ID に基づいて共有アクセス署
 詳細については、次のリソースを参照してください。
 
 -   [Azure Storage SDK for Node の API リファレンス][]
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
 -   [Azure Storage チーム ブログ][]
 -   GitHub の [Azure Storage SDK for Node][] リポジトリ
 -   [Node.js デベロッパー センター](/develop/nodejs/)
@@ -369,13 +368,12 @@ ACL を設定したら、ポリシーの ID に基づいて共有アクセス署
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
 [Create and deploy a Node.js application to an Azure Web Site]: /develop/nodejs/tutorials/create-a-website-(mac)/
 [Node.js Cloud Service with Storage]: ../storage-nodejs-use-table-storage-cloud-service-app.md
-[Storage を使用する Node.js Web アプリケーション]: ../storage-nodejs-use-table-storage-web-site.md
+[ストレージを使用する Node.js Web アプリケーション]: ../storage-nodejs-use-table-storage-web-site.md
 [Node.js クラウド サービス]: ../web-sites-nodejs-use-webmatrix.md
 [Using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
-[Azure portal]: http://manage.windowsazure.com
+[Azure Portal]: portal.azure.com
 [Node.js Cloud Service]: ../cloud-services-nodejs-develop-deploy-app.md
-[Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

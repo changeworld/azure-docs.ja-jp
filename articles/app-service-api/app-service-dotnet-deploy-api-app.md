@@ -18,6 +18,8 @@
 
 # Azure App Service での API アプリのデプロイ 
 
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
+
 ## 概要
 
 このチュートリアルでは、[前のチュートリアル](app-service-dotnet-create-api-app.md)で作成した Web API プロジェクトを新しい [API アプリ](app-service-api-apps-why-best-platform.md)にデプロイします。Visual Studio を使用して [Azure App Service](../app-service/app-service-value-prop-what-is.md) で API アプリ リソースを作成し、その Azure API アプリに Web API コードをデプロイします。
@@ -127,4 +129,4 @@ API アプリは、API をホストするための特別な機能を持つ Web �
 
 API アプリの機能については、「[API Apps とは](app-service-api-apps-why-best-platform.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -65,7 +65,7 @@ Visual Studio に新しいプロジェクトを作成するとき、Application 
 
 このコマンドによって次の手順が実行されます (必要に応じて、代わりに[手動で実行](app-insights-start-monitoring-app-health-usage.md)できます)。
 
-* [Azure ポータル][portal]に Application Insights のリソースが作成されます。ここにデータが表示されます。リソースを識別する *インストルメンテーション キー* を取得します。
+* [Azure ポータル][portal]に Application Insights のリソースが作成されます。ここにデータが表示されます。リソースを識別する*インストルメンテーション キー*を取得します。
 * プロジェクトに Application Insights Web SDK NuGet パッケージが追加されます。Visual Studio で表示するには、プロジェクトを右クリックし、[NuGet パッケージの管理] を選択します。
 * インストルメンテーション キーが `ApplicationInsights.config` に配置されます。
 
@@ -123,6 +123,8 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 [このトラブルシューティング項目](app-insights-troubleshoot-faq.md#NuGetBuild)を参照してください。
 
+> [AZURE.NOTE](ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。[サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
+
 ## 次のステップ
 
 - [ユーザーとページのデータ](../article/application-insights/app-insights-asp-net-client.md#selector1)
@@ -168,4 +170,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

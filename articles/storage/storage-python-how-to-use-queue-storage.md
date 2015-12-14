@@ -104,15 +104,13 @@
 
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
 
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
 -   [Azure Storage チームのブログ][]
 
 詳細については、[Python デベロッパー センター](/develop/python/)も参照してください。
 
-[Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure Storage チームのブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
 [Python Azure Storage パッケージ]: https://pypi.python.org/pypi/azure-storage
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

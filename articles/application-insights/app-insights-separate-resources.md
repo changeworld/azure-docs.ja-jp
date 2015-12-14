@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/02/2015" 
+	ms.date="11/25/2015" 
 	ms.author="awills"/>
 
 # 開発、テスト、および実稼働用に Application Insights リソースを分ける
@@ -20,7 +20,7 @@
 
 アプリのデバッグ、テスト、実稼働の各バーションのテレメトリの混同を避けるために、各バージョンからデータを受け取るために個別の [Application Insights][start] リソースを作成します。
 
-アプリケーションから受け取ったデータは Microsoft Azure リソースに格納され、Application Insights によって処理されます。各リソースは、インストルメンテーション キーによって識別されます。 アプリ内で、Application Insights SDK にキーが提供され、これにより、収集したデータを適切なリソースに送信できます。キーは、コード内または ApplicationInsights.config で指定できます。SDK 内のキーを変更することで、データをさまざまなリソースに送信できます。
+アプリケーションから受け取ったデータは Microsoft Azure *リソース*に格納され、Application Insights によって処理されます。各リソースは、*インストルメンテーション キー*によって識別されます。 アプリ内で、Application Insights SDK にキーが提供され、これにより、収集したデータを適切なリソースに送信できます。キーは、コード内または ApplicationInsights.config で指定できます。SDK 内のキーを変更することで、データをさまざまなリソースに送信できます。
 
 
 ## Application Insights リソースの作成
@@ -28,7 +28,7 @@
 
 [portal.azure.com](https://portal.azure.com) で、Application Insights リソースを追加します。
 
-![[新規]、[Application Insights] の順にクリックする](./media/app-insights-create-new-resource/01-new.png)
+![[新規]、[Application Insights] の順にクリックする](./media/app-insights-separate-resources/01-new.png)
 
 
 * **アプリケーションの種類**に応じて、概要ブレードに表示されるものと[メトリック エクスプローラー][metrics]で使用できるプロパティが決まります。自分のアプリの種類が表示されない場合、Web ページの Web の種類のいずれかと、その他のデバイスの電話の種類のいずれかを選択します。
@@ -46,14 +46,14 @@
 
 インストルメンテーション キーは作成したリソースを識別します。
 
-![Essentials、インストルメンテーション キーの順にクリックし、Ctrl キーを押しながら C キーを押します。](./media/app-insights-create-new-resource/02-props.png)
+![Essentials、インストルメンテーション キーの順にクリックし、Ctrl キーを押しながら C キーを押します。](./media/app-insights-separate-resources/02-props.png)
 
 アプリがデータを送信する宛先のすべてのリソースのインストルメンテーション キーが必要です。
 
 
 ## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
-通常、SDK が ApplicationInsights.config から iKey を取得します。 代わりにコードの中で設定すると、変更しやすくなります。
+通常、SDK が ApplicationInsights.config から iKey を取得します。Instead, make it more easy to change by setting it in your code.
 
 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
@@ -98,4 +98,4 @@ iKey は、アプリの Web ページや、[クイック スタート ブレー�
 
  
 
-<!-----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

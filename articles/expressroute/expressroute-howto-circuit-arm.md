@@ -28,14 +28,14 @@
 
 ## 構成の前提条件
 
-- Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) が必要になります。Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順を示す、[Azure PowerShell をインストールして構成する方法](../powershell-install-configure.md)の手順に従ってください。 
+- Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) が必要です。Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順を示す、[Azure PowerShell をインストールして構成する方法](../powershell-install-configure.md)の手順に従ってください。 
 - 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)ページと[ワークフロー](expressroute-workflows.md)ページを確認してください。
 
 ## ExpressRoute 回線を作成してプロビジョニングするには
 
 1. **ExpressRoute 用の PowerShell モジュールをインポートします。**
 
- 	[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートしてから ExpressRoute コマンドレットの使用を開始する必要があります。管理者として PowerShell を実行する必要があります。
+ 	ExpressRoute コマンドレットを使用するには、[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートする必要があります。管理者として PowerShell を実行する必要があります。
 
 	    Install-Module AzureRM
 
@@ -76,7 +76,7 @@
 		
 3. **ExpressRoute 回線を作成します。**
 
-	ExpressRoute 回線を作成する前に、リソース グループがまだない場合はまず作成する必要があります。以下のコマンドを実行してこれを行うことができます。
+	ExpressRoute 回線を作成する前に、リソース グループがまだない場合は作成しておく必要があります。リソース グループを作成するには、次のコマンドを実行します。
 
 		New-AzureRmResourceGroup -Name “ExpressRouteResourceGroup” -Location "West US"
 
@@ -219,7 +219,7 @@
 
 7. **ExpressRoute 回線への VNet のリンク**
 
-	次に、ExpressRoute 回線に VNet をリンクします。詳しい手順については、[VNet への ExpressRoute 回線のリンク](expressroute-howto-linkvnet-arm.md)に関するページを参照してください。ExpressRoute 用の仮想ネットワークを作成する必要がある場合は、[ExpressRoute 用の仮想ネットワークの作成](expressroute-howto-createvnet-classic.md)に関するページを参照してください。
+	次に、ExpressRoute 回線に VNet をリンクします。詳しい手順については、[VNet への ExpressRoute 回線のリンク](expressroute-howto-linkvnet-arm.md)に関するページをご覧ください。ExpressRoute 用の仮想ネットワークを作成する必要がある場合は、[ExpressRoute 用の仮想ネットワークの作成](expressroute-howto-createvnet-classic.md)に関するページを参照してください。
 
 ##  ExpressRoute 回線の状態を取得するには
 
@@ -294,7 +294,7 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 ### ExpressRoute Premium アドオンを有効にする方法
 
-次の PowerShell スニペットを使用して、既存の回線の ExpressRoute Premium アドオンを有効にできます。
+次の PowerShell スニペットを使用して、既存の回線の ExpressRoute Premium アドオンを有効にすることができます。
 
 		$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
@@ -320,7 +320,7 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 これで回線の Premium アドオンが無効になります。
 
-標準回線で許可されるリソースより多くのリソースを使用する場合、この操作は失敗する可能性があることに注意してください。
+標準回線で許可されるリソースより多くのリソースを使用していると、この操作は失敗する可能性があることに注意してください。
 
 - Premium から標準にダウングレードする前に、回線にリンクされている仮想ネットワークの数が 10 未満であることを確認する必要があります。そうしないと、更新要求は失敗し、Premium 料金が課金されます。
 - 他の地理的リージョンではすべての仮想ネットワークのリンクを解除する必要があります。そうしないと、更新要求は失敗し、Premium 料金が課金されます。
@@ -356,6 +356,5 @@ ExpressRoute 回線サービス プロバイダーのプロビジョニング状
 ## 次のステップ
 
 - [ルーティングの構成](expressroute-howto-routing-arm.md)
-- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-arm.md) 
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

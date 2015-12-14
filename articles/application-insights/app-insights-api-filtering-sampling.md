@@ -32,7 +32,7 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 開始する前に次の操作を実行してください。
 
-* [アプリに Application Insights SDK](app-insights-start-monitoring-app-health-usage.md) をインストールする。NuGet パッケージを手動でインストールし、最新の*プレリリース* バージョンを選択します。
+* [アプリに Application Insights SDK](app-insights-asp-net.md) をインストールする。NuGet パッケージを手動でインストールし、最新の*プレリリース* バージョンを選択します。
 * [Application Insights API](app-insights-api-custom-events-metrics.md) を試用する。 
 
 
@@ -43,7 +43,7 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 [サンプリング](app-insights-sampling.md)は、正確な統計情報を保持したままでトラフィックを削減するお勧めの方法です。フィルターを使用すると、関連のある項目が選択されるため、診断内の項目間を移動しやすくなります。フィルター処理された項目を補正するために、メトリックス エクスプローラーでイベントの数が調整されます。
 
 * アダプティブ サンプリングをお勧めします。アダプティブ サンプリングはサンプリングの割合を自動的に調整し、要求が一定の量になるようにします。現在は、ASP.NET サーバー側テレメトリでのみ使用できます。  
-* 固定レート サンプリングも利用できます。サンプリングの割合を指定します。ASP.NET Web アプリ コードおよび JavaScript Web ページで使用できます。クライアントとサーバーはサンプリングを同期するので、検索では関連のあるページ ビューと要求の間を移動できます。
+* [固定レート サンプリング](app-insights-sampling.md)も利用できます。サンプリングの割合を指定します。ASP.NET Web アプリ コードおよび JavaScript Web ページで使用できます。クライアントとサーバーはサンプリングを同期するので、検索では関連のあるページ ビューと要求の間を移動できます。
 
 ### サンプリングを有効にするには
 
@@ -86,7 +86,7 @@ Web ページからのデータに対して固定レートのサンプリング�
 
 ### テレメトリ プロセッサを作成する
 
-1. Application Insights SDK を最新バージョンに (2.0.0-beta2 以降) に更新します。Visual Studio ソリューション エクスプローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] をクリックします。NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、"Microsoft.ApplicationInsights" を検索します。
+1. Application Insights SDK を最新バージョンに (2.0.0-beta2 以降) に更新します。Visual Studio ソリューション エクスプローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] をクリックします。NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、Microsoft.ApplicationInsights を検索します。
 
 1. フィルターを作成するには、ITelemetryProcessor を実装します。これは、テレメトリ モジュール、テレメトリ初期化子、テレメトリ チャネルと同じく、機能拡張ポイントの 1 つです。
 
@@ -395,7 +395,7 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 [data]: app-insights-data-retention-privacy.md
 [diagnostic]: app-insights-diagnostic-search.md
 [exceptions]: app-insights-asp-net-exceptions.md
-[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[greenbrown]: app-insights-asp-net.md
 [java]: app-insights-java-get-started.md
 [metrics]: app-insights-metrics-explorer.md
 [qna]: app-insights-troubleshoot-faq.md
@@ -404,4 +404,4 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

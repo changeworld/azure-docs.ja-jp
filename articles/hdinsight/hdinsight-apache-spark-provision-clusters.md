@@ -1,6 +1,6 @@
 <properties
    pageTitle="Hdinsight での Apache Spark クラスターのプロビジョニング | Microsoft Azure"
-   description="Azure ポータル、Azure PowerShell、コマンド ライン、または HDInsight .NET SDK を使用して、Azure HDInsight 用の Spark クラスターをプロビジョニングする方法について説明します"
+   description="Azure クラシック ポータル、Azure PowerShell、コマンド ライン、または HDInsight .NET SDK を使用して、Azure HDInsight 用の Spark クラスターをプロビジョニングする方法について説明します"
    services="hdinsight"
    documentationCenter=""
    authors="nitinme"
@@ -21,7 +21,7 @@
 
 ほとんどのシナリオでは、「[HDInsight での Apache Spark の概要](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md)」で説明されている簡易作成方法を使用して Spark クラスターをプロビジョニングできます。特定のシナリオでは、カスタマイズされたクラスターのプロビジョニングが必要になる場合があります。たとえば、外部メタデータ ストアをアタッチしてクラスターの有効期間より長く永続的 Hive メタデータを保持する場合や、クラスターで追加のストレージを使用する場合です。
 
-このようなシナリオのため、この記事では、Azure ポータル、Azure PowerShell、または HDInsight .NET SDK を使用して、HDInsight 上のカスタマイズされた Spark クラスターをプロビジョニングする方法を説明します。
+このようなシナリオのため、この記事では、Azure クラシック ポータル、Azure PowerShell、または HDInsight .NET SDK を使用して、HDInsight 上のカスタマイズされた Spark クラスターをプロビジョニングする方法を説明します。
 
 
 **前提条件:**
@@ -46,12 +46,12 @@ Azure での SQL データベースの作成方法について詳しくは、「
 
 ### クラスターのカスタマイズ
 
-追加コンポーネントをインストールするか、プロビジョニング中にスクリプトを使用してクラスターの構成をカスタマイズできます。このようなスクリプトは、**スクリプト操作**を使用して実行します。これは Azure ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする][hdinsight-customize-cluster]」をご覧ください。
+追加コンポーネントをインストールするか、プロビジョニング中にスクリプトを使用してクラスターの構成をカスタマイズできます。このようなスクリプトは、**スクリプト操作**を使用して実行します。これは Azure クラシック ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。詳細については、「[Script Action を使って HDInsight をカスタマイズする][hdinsight-customize-cluster]」をご覧ください。
 
 
 ###仮想ネットワーク
 
-[Azure Virtual Network](http://azure.microsoft.com/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
+[Azure Virtual Network](http://azure.microsoft.com/documentation/services/virtual-network/) では、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
 
 * プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
 
@@ -67,7 +67,7 @@ Azure での SQL データベースの作成方法について詳しくは、「
 
 	![ポイント対サイト構成の図](./media/hdinsight-apache-spark-provision-clusters/hdinsight-vnet-point-to-site.png)
 
-Virtual Network の機能、利点の詳細については、「[Azure 仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
+Virtual Network の機能、利点の詳細については、「[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
 > [AZURE.NOTE]クラスターをプロビジョニングする前に、Azure 仮想ネットワークを作成する必要があります。詳細については、「[仮想ネットワークの作成方法](virtual-networks-create-vnet.md)」をご覧ください
 >
@@ -75,16 +75,16 @@ Virtual Network の機能、利点の詳細については、「[Azure 仮想ネ
 >
 > 1 つのクラスターには単一のサブネットを指定することを強くお勧めします。
 
-##Azure プレビュー ポータルの使用
+##Azure ポータルの使用
 
 HDInsight 上の Spark クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには、同じデータ センターにある Azure ストレージ アカウントが必要です。詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。Azure ストレージ アカウントの作成の詳細については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」をご覧ください。
 
 **カスタム作成オプションを使用して HDInsight クラスターを作成するには**
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
 
-    ![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.1.png "Azure プレビュー ポータルでの新しいクラスターの作成")
+    ![Azure ポータルでの新しいクラスターの作成](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.1.png "Azure ポータルでの新しいクラスターの作成")
 
 3. **[クラスター名]** を入力し、**[クラスターの種類]** で **[Spark]** を選択し、**[クラスターのオペレーティング システム]** ボックスの一覧から **[Windows Server 2012 R2 Datacenter]** を選択します。クラスターを使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
 
@@ -92,7 +92,7 @@ HDInsight 上の Spark クラスターは、既定のファイル システム�
 
 4. 複数のサブスクリプションがある場合は、**[サブスクリプション]** エントリをクリックし、クラスターで使用する Azure サブスクリプションを選択します。
 
-5. **[リソース グループ]** をクリックして既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択します。または、**[新規作成]** をクリックし、新しいリソース グループの名前を入力します。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
+5. **[リソース グループ]** をクリックして既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択します。または、**[新規作成]** をクリックし、新しいリソース グループの名前を入力できます。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
 
 	> [AZURE.NOTE]このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
 
@@ -152,7 +152,7 @@ HDInsight 上の Spark クラスターは、既定のファイル システム�
 
 		**[新しい HDInsight クラスター]** ブレードに戻るまで **[選択]** をクリックします。
 
-10. **[新しい HDInsight クラスター]** ブレードで、**[スタート画面にピン留めする]** が選択されていることを確認し、**[作成]** をクリックします。これでクラスターが作成され、Azure ポータルのスタート画面にクラスター用のタイルが追加されます。アイコンはクラスターがプロビジョニング中であることを示し、プロビジョニングが完了すると、[HDInsight] アイコンを表示するように変化します。
+10. **[新しい HDInsight クラスター]** ブレードで、**[スタート画面にピン留めする]** が選択されていることを確認し、**[作成]** をクリックします。これでクラスターが作成され、Azure クラシック ポータルのスタート画面にクラスター用のタイルが追加されます。アイコンはクラスターがプロビジョニング中であることを示し、プロビジョニングが完了すると、[HDInsight] アイコンを表示するように変化します。
 
 	| プロビジョニング中 | プロビジョニング完了 |
 	| ------------------ | --------------------- |
@@ -178,11 +178,11 @@ HDInsight 上の Spark クラスターは、既定のファイル システム�
 
 	* **[クイック スタート]** (![雲と雷のアイコン = クイック スタート](./media/hdinsight-apache-spark-provision-clusters/quickstart.png)): HDInsight の操作を開始するために役立つ情報を表示します。
 
-	* **ユーザー** (![ユーザー アイコン](./media/hdinsight-apache-spark-provision-clusters/users.png)): このクラスターの_ポータル管理_に対する権限を、Azure サブスクリプションの他のユーザーに設定できます。
+	* **[ユーザー]** (![ユーザー アイコン](./media/hdinsight-apache-spark-provision-clusters/users.png)): このクラスターの_ポータル管理_に対する権限を、Azure サブスクリプションの他のユーザーに対して設定できます。
 
-		> [AZURE.IMPORTANT]これは Azure プレビュー ポータルでのこのクラスターへのアクセスと権限のみに影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
+		> [AZURE.IMPORTANT]これは、Azure ポータルでのこのクラスターへのアクセスと権限だけに影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
 
-	* **タグ** (![タグ アイコン](./media/hdinsight-apache-spark-provision-clusters/tags.png)): タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。たとえば、__プロジェクト__という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスで共通の値を使用できます。
+	* **[タグ]** (![タグ アイコン](./media/hdinsight-apache-spark-provision-clusters/tags.png)): タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。たとえば、__プロジェクト__という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスで共通の値を使用できます。
 
 	* **クラスター ダッシュボード**: クラスター ダッシュボード、Zeppelin Notebook、Jupyter Notebook を起動できる場所から [クラスター ダッシュボード] ブレードを起動します。
 
@@ -245,4 +245,4 @@ Spark クラスターの種類を指定します。
 
 [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

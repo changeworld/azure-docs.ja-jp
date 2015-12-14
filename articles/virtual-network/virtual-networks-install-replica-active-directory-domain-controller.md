@@ -23,7 +23,7 @@
 
 必要に応じて次の関連するトピックも参照してください。
 
-- オプションで、Azure の仮想ネットワーク上に新しい Active Directory フォレストをインストールすることもできます。これらの手順については、「[Azure の仮想ネットワークでの Active Directory フォレストのインストール](../active-directory-new-forest-virtual-machine.md)」をご覧ください。
+-  オプションで、Azure の仮想ネットワーク上に新しい Active Directory フォレストをインストールすることもできます。これらの手順については、「[Azure の仮想ネットワークでの Active Directory フォレストのインストール](../active-directory-new-forest-virtual-machine.md)」をご覧ください。
 -  Azure の仮想ネットワークに Active Directory ドメイン サービス (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)」を参照してください。
 
 
@@ -98,12 +98,12 @@ VM にサインインし、サイト間 VPN 接続または ExpressRoute 接続�
 	------------- | -------------
 	**イメージの選択** | Windows Server 2012 R2 Datacenter
 	**仮想マシンの構成** | <p>仮想マシン名: 単一ラベルの名前 (例: AppServer1) を入力します。</p><p>新しいユーザー名: ユーザーの名前を入力します。このユーザーは、VM 上のローカルの Administrators グループのメンバーになります。最初に VM にサインインするときは、この名前でサインインする必要があります。Administrator という名前の組み込みのアカウントは機能しません。</p><p>。新しいパスワード/確認入力: パスワードを入力します。</p>
-	**仮想マシンの構成** | <p>クラウド サービス: 1 台目の VM の作成時には **[新しいクラウド サービスの作成]** を選択します。アプリケーションをホストする VM の追加作成時には、1 台目の VM と同じクラウド サービス名を選択します。</p><p>クラウド サービス DNS 名: グローバルに一意の名前を指定します。</p><p>リージョン/アフィニティ グループ/仮想ネットワーク: 仮想ネットワーク名 (例: WestUSVNet) を指定します。</p><p>ストレージ アカウント: 1 台目の VM の作成時には **[自動的に生成されたストレージ アカウントを使用]** を選択します。アプリケーションをホストする VM の追加作成時には、1 台目の VM と同じストレージ アカウント名を選択します。</p><p>可用性セット: **[可用性セットの作成]** を選択します。</p><p>可用性セット名: 1 台目の VM の作成時に、可用性セットの名前を入力します。その後、VM を追加で作成するときには、1 台目の VM と同じ可用性セット名を選択します。</p>
+	**仮想マシンの構成** | <p>クラウド サービス: 1 台目の VM の作成時には **[新しいクラウド サービスの作成]** を選択します。アプリケーションをホストする VM の追加作成時には、1 台目の VM と同じクラウド サービス名を選択します。</p><p>クラウド サービス DNS 名: グローバルに一意の名前を指定します。</p><p>リージョン/アフィニティ グループ/Virtual Network: 仮想ネットワーク名 (例: WestUSVNet) を指定します。</p><p>ストレージ アカウント: 1 台目の VM の作成時には **[自動的に生成されたストレージ アカウントを使用]** を選択します。アプリケーションをホストする VM の追加作成時には、1 台目の VM と同じストレージ アカウント名を選択します。</p><p>可用性セット: **[可用性セットの作成]** を選択します。</p><p>可用性セット名: 1 台目の VM の作成時に、可用性セットの名前を入力します。その後、VM を追加で作成するときには、1 台目の VM と同じ可用性セット名を選択します。</p>
 	**仮想マシンの構成** | <p><b>[VM エージェントのインストール]</b> と、必要な他の拡張機能を選択します。</p>
 
-2. 各 VM がプロビジョニングされたら、サインインし、ドメインに参加させます。**サーバー マネージャー**で、**[ローカル サーバー]**、**[ワークグループ]**、**[変更…]** の順にクリックし、**[ドメイン]** を選択して、内部設置型ドメインの名前を入力します。ドメイン ユーザーの資格情報を入力し、VM を再起動して、ドメインへの参加を完了します。
+2. 各 VM がプロビジョニングされたら、サインインし、ドメインに参加させます。**サーバー マネージャー**で、**[ローカル サーバー]**、**[ワークグループ]**、**[変更…]** の順にクリックし、**[ドメイン]** を選択して、オンプレミス ドメインの名前を入力します。ドメイン ユーザーの資格情報を入力し、VM を再起動して、ドメインへの参加を完了します。
 
-UI ではなく Windows PowerShell を使用して VM を作成する方法については、「[UAzure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](../virtual-machines/virtual-machines-ps-create-preconfigure-windows-vms.md)」を参照してください。
+UI ではなく Windows PowerShell を使用して VM を作成する方法については、「[UAzure PowerShell を使用して Windows ベースの Virtual Machines を作成し事前構成する](../virtual-machines/virtual-machines-ps-create-preconfigure-windows-vms.md)」を参照してください。
 
 Windows PowerShell の使い方の詳細については、「[Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」と「[Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/jj554330.aspx)」をご覧ください。
 
@@ -121,4 +121,4 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 <!--Image references-->
 [1]: ./media/virtual-networks-install-replica-active-directory-domain-controller/ReplicaDCsOnAzureVNet.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

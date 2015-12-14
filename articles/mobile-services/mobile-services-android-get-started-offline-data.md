@@ -18,13 +18,17 @@
 
 # オフライン データ同期を Android Mobile Services アプリケーションに追加する
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 [AZURE.INCLUDE [mobile-services-selector-offline](../../includes/mobile-services-selector-offline.md)]
 
 ## 概要
 
 モバイル アプリのネットワーク接続は、サービスのない地域に移動したときや、ネットワークの問題によって切断されることがあります。たとえば、建設業界用アプリを使用する際、遠くの建設現場でスケジュール データを入力し、後で Azure に同期する場合があります。Azure Mobile Services のオフライン同期は、ネットワーク接続が失われたときにも作業を続行できるため、多くのモバイル アプリに不可欠な機能です。オフライン同期を使用すると、Azure SQL Server テーブルのローカル コピーで作業するため、これら 2 つが定期的に再同期されます。
 
-このチュートリアルでは、[Mobile Services Quick Start tutorial (Mobile Services のクイック スタート チュートリアル)] でアプリを更新し、オフライン同期を有効にしてからアプリをテストします。テストでは、オフラインでのデータ追加や、これらの項目のオンライン データベースへの同期を実行して Azure 管理ポータルで変更内容を確認します。
+このチュートリアルでは、[Mobile Services Quick Start tutorial (Mobile Services のクイック スタート チュートリアル)] でアプリを更新し、オフライン同期を有効にしてからアプリをテストします。テストでは、オフラインでのデータ追加や、これらの項目のオンライン データベースへの同期を実行して Azure クラシック ポータルで変更内容を確認します。
 
 オフラインかオンラインかにかかわらず、複数の変更をデータに加えると競合が発生する場合があります。今後のチュートリアルでは、いずれのバージョンの変更を承認すべきかを選択することになる、同期の競合を掘り下げて説明します。このチュートリアルでは、同期の競合を想定しないで、既存データに加えたすべての変更が Azure SQL Server に直接適用されるものとします。
 
@@ -179,12 +183,12 @@ One thing which is important to point out: if there are pending changes in the l
 
 3. Azure の *TodoItem* テーブルの内容を表示します。新しい項目が、サーバーと同期_されなかった_ことを確認します。
 
-   - JavaScript バックエンドの場合は、管理ポータルで [データ] タブをクリックして、`TodoItem` テーブルの内容を表示します。
+   - JavaScript バックエンドの場合は、Azure クラシック ポータルで [データ] タブをクリックして、`TodoItem` テーブルの内容を表示します。
    - .NET バックエンドの場合は、*SQL Server Management Studio* のような SQL ツールまたは *Fiddler* や *Postman* のような REST クライアントを使用して、テーブルの内容を表示します。
 
 4. デバイスまたはシミュレーターの WiFi を有効にします。次に [**更新**] ボタンを押します。
 
-5. Azure ポータルで、もう一度 TodoItem のデータを参照します。新しく変更した TodoItems が表示されます。
+5. Azure クラシック ポータルで、もう一度 TodoItem のデータを参照します。新しく変更した TodoItems が表示されます。
 
 
 ## 次のステップ
@@ -219,4 +223,4 @@ One thing which is important to point out: if there are pending changes in the l
 
 [Mobile Services Quick Start tutorial (Mobile Services のクイック スタート チュートリアル)]: mobile-services-android-get-started.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

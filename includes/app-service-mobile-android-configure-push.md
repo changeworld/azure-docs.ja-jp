@@ -1,14 +1,15 @@
 
-1. Azure ポータルで、**[すべて参照]**、**[Mobile Apps]** の順にクリックし、作成したモバイル アプリをクリックします。
+1. [Azure ポータル](https://azure.portal.com/) で、**[参照]**、**[App Services]** の順にクリックします。お使いのモバイル アプリ バックエンドを探してクリックした後、**[すべての設定]**、**[モバイル]**、**[プッシュ]** の順にクリックします。
 
-2. ブレードの **[関連]** セクションをクリックし、**[プッシュ通知サービス]**、**[Google Cloud Messaging]** の順にクリックして、前の手順で GCM から取得した **API キー**の値を入力してから、**[保存]** をクリックします。
+2. [プッシュ通知サービス] で、**[Google (GCM)]** をクリックし、前の手順で GCM から取得した **[API キー]** の値を入力し、**[保存]** をクリックします。
 
-    ![][1]
+    ![ポータルで GCM API キーを設定する](./media/app-service-mobile-android-configure-push/mobile-push-api-key.png)
+
+これで、モバイル アプリ バックエンドは、通知ハブを使用している Android デバイスで実行中のアプリに GCM を使用してプッシュ通知を使用するように構成されました。
 
 <!-- URLs. -->
-[Azure Portal]: https://azure.portal.com/
+
 
 <!-- images -->
-[1]: ./media/app-service-mobile-android-configure-push/mobile-push-api-key.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -7,7 +7,7 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/29/2015" ms.author="trinadhk";"aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/25/2015" ms.author="trinadhk";"aashishr"/>
 
 
 # Azure 仮想マシンのバックアップのトラブルシューティング
@@ -24,8 +24,8 @@
 | バックアップ操作 | エラーの詳細 | 対処法 |
 | -------- | -------- | -------|
 | 登録 | 仮想マシンに接続されたデータ ディスクの数がサポートされている上限を超えています - この仮想マシンのデータ ディスクをいくつか切断してから、操作をやり直してください。Azure Backup では、バックアップ用に Azure の仮想マシンに接続できるデータ ディスクは 16 個までです。 | なし |
-| 登録 | Microsoft Azure Backup で内部エラーが発生しました。しばらくしてから操作をやり直してください。引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 | 次のいずれかの構成がサポートされていないことが原因で、このエラーが発生する場合があります。<ol><li>Premium LRS <li>マルチ NIC <li>ロード バランサー (内部およびインターネット接続)</ol> |
-| 登録 | エージェントのインストール処理がタイムアウトしたため、登録できませんでした | 仮想マシンの OS のバージョンがサポート対象かどうかを確認します。 |
+| 登録 | Microsoft Azure Backup で内部エラーが発生しました。しばらくしてから操作をやり直してください。引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 | 次のいずれかの構成がサポートされていないことが原因で、このエラーが発生する場合があります。<ul><li>Premium LRS </ul> |
+| Register | エージェントのインストール処理がタイムアウトしたため、登録できませんでした | 仮想マシンの OS のバージョンがサポート対象かどうかを確認します。 |
 | 登録 | コマンド実行に失敗しました - この項目で別の操作が実行中です。前の操作が完了するまでお待ちください。 | なし |
 | 登録 | 仮想ハード ディスクが Premium Storage に格納されている仮想マシンは、バックアップでサポートされていません。 | なし |
 | 登録 | 仮想マシン エージェントが仮想マシン上に存在しません - 必要な前提条件である VM エージェントをインストールしてから、操作をやり直してください。 | VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法については、[こちら](#vm-agent)を参照してください。 |
@@ -44,10 +44,6 @@
 | Backup | スナップショットの操作は、"このドライブは、BitLocker ドライブ暗号化でロックされています。コントロール パネルからドライブのロックを解除してください。" という VSS 操作エラーで失敗しました。 | VM 上のすべてのドライブで BitLocker をオフにして、VSS の問題が解決されたかどうかを確認します。 |
 | Backup | 仮想ハード ディスクが Premium Storage に格納されている仮想マシンは、バックアップでサポートされていません。 | なし |
 | Backup  
- | ロード バランサーが構成されている仮想マシンのバックアップはサポートされていません。 | なし<br><br>内部ロード バランサーおよびインターネット接続のロード バランサーに適用されます。|
-| Backup  
- | 複数の NIC を持つ仮想マシンのバックアップはサポートされません。 | なし |
-| Backup  
  | Azure 仮想マシンが見つかりません。 | これは、プライマリ VM が削除されているのに、バックアップ ポリシーによってバックアップを実行する VM が検索され続ける場合に発生します。このエラーを解決するには、次の手順に従います。<ol><li>同じ名前と同じリソース グループ名 [クラウド サービス名] を使用して仮想マシンを作成し直します。<br>(または)<li>バックアップ ジョブが作成されないように、この VM の保護を無効にします。</ol> |
 | Backup  
  | 仮想マシン エージェントが仮想マシン上に存在しません - 必要な前提条件である VM エージェントをインストールしてから、操作をやり直してください。 | VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法については、[こちら](#vm-agent)を参照してください。 |
@@ -64,7 +60,7 @@
 ## 復元
 | 操作 | エラーの詳細 | 対処法 |
 | -------- | -------- | -------|
-| 復元 | クラウドの内部エラーの復元に失敗しました | <ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。<br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production" Get-AzureDns -DnsSettings $deployment.DnsSettings<br> を確認します。構成済みのアドレスがある場合は、DNS 設定が構成されていることを意味します。<br> <li>復元先のクラウド サービスに ReservedIP が構成されており、クラウド サービス内の既存 VM が停止状態になっています。<br>次の PowerShell コマンドレットを使用して、クラウド サービスに予約済み IP があることを確認できます。<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName</ol> |
+| 復元 | クラウドの内部エラーの復元に失敗しました | <ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。<br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production" Get-AzureDns -DnsSettings $deployment.DnsSettings<br> を確認します。構成済みのアドレスがある場合は、DNS 設定が構成されていることを意味します。<br> <li>復元を試みているクラウド サービスが ReservedIP で構成されています。<br>次の PowerShell コマンドレットを使用して、クラウド サービスに予約済み IP があることを確認できます。<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName <br><li>次の特殊なネットワーク構成の仮想マシンを同じクラウド サービスに復元しようとしています。<br>- ロード バランサー構成の仮想マシン (内部と外部)<br>- 複数のよく済み IP がある仮想マシン<br>- 複数の NIC がある仮想マシン<br>UI で新しいクラウド サービスを選択するか、特殊なネットワーク構成の VM の[復元に関する考慮事項](backup-azure-restore-vms.md/#restoring-vms-with-special-network-configurations)を参照してください</ol> |
 | 復元 | 選択した DNS 名は既に使用されています - 別の DNS 名を指定してからやり直してください。 | この場合、DNS 名はクラウド サービス名 (通常、末尾に cloudapp.net が付いています) を表します。これは一意である必要があります。このエラーが発生した場合は、復元中に別の VM の名前を選択する必要があります。<br><br> このエラーは Azure ポータルのユーザーのみに表示されることに注意してください。PowerShell による復元操作は、ディスクを復元するだけで、VM を作成しないため、成功します。ディスクの復元操作後に VM を明示的に作成すると、このエラーが発生します。 |
 | 復元 | 指定された仮想ネットワークの構成が正しくありません - 別の仮想ネットワークの構成を指定してからやり直してください。 | なし |
 | 復元 | 指定したクラウド サービスでは、復元対象の仮想マシンの構成と一致しない予約済み IP が使用されています - 予約済み IP を使用していない別のクラウド サービスを指定するか、復元元に別の回復ポイントを選択してください。 | なし |
@@ -128,4 +124,4 @@ Backup 拡張機能は、他の拡張機能と同様に、パブリックなイ�
 1. ホワイトリストに登録する [Azure データセンター IP](https://msdn.microsoft.com/library/azure/dn175718.aspx) の一覧を取得します。
 2. [New-NetRoute](https://technet.microsoft.com/library/hh826148.aspx) コマンドレットを使用して、IP アドレスのブロックを解除します。管理者特権の PowerShell ウィンドウ (管理者として実行) で、Azure VM 内でこのコマンドレットを実行します。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

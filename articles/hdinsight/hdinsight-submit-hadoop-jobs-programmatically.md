@@ -24,15 +24,15 @@ Azure PowerShell を使用して MapReduce、と Hive ジョブを送信する�
 > [AZURE.NOTE]この記事の手順は、Windows クライアントから実行する必要があります。Linux、OS X、または Unix クライアントを使用して、HDInsight で MapReduce、Hive、または Pig を操作する方法の詳細については、次の記事を参照し、**SSH** または **Curl** のリンクを選択してください。
 >
 > - [HDInsight での Hive の使用](hdinsight-use-hive.md)
-> - [HDInsight での Pig の使用](hdinsight-use-pig.md)
+> - [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 > - [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
 ##前提条件
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-* **Azure HDInsight クラスター**。手順については、「[HDInsight の使用][hdinsight-get-started]」または「[HDInsight で Hadoop クラスターを作成する][hdinsight-provision]」を参照してください。
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+- **Azure HDInsight クラスター**。手順については、「[HDInsight の使用][hdinsight-get-started]」または「[HDInsight で Hadoop クラスターを作成する][hdinsight-provision]」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell 1.0 以上のインストール](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」を参照してください。
 
 ##PowerShell を使用して MapReduce ジョブを送信する
 
@@ -266,4 +266,4 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリと Pig ス
 
 [apache-hive]: http://hive.apache.org/
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

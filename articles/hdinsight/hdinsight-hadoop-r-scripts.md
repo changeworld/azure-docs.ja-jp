@@ -35,15 +35,15 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 
 <a href="http://www.r-project.org/" target="_blank">統計計算用 R プロジェクト</a>は、統計計算用のオープン ソースの言語と環境です。R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。また、広範なグラフィカル機能も提供します。R は、さまざまな分野におけるほぼすべての統計学専門家や科学者に推奨されるプログラミング環境です。
 
-R は Azure BLOB ストレージ (WASB) と互換性があるので、そこに格納されているデータは HDInsight 上の R を使用して処理できます。
+R は Azure BLOB Storage (WASB) と互換性があるので、そこに格納されているデータは HDInsight 上の R を使用して処理できます。
 
 ## R のインストール
 
-HDInsight クラスターで R をインストールする[サンプル スクリプト](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1)は、Azure Storage の読み取り専用 BLOB から入手できます。このセクションでは、Azure プレビュー ポータルを使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
+HDInsight クラスターで R をインストールする[サンプル スクリプト](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1)は、Azure Storage の読み取り専用 BLOB から入手できます。このセクションでは、Azure ポータルを使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
 
 > [AZURE.NOTE]サンプル スクリプトは、HDInsight クラスター バージョン 3.1 で導入されました。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](../hdinsight-component-versioning/)」をご覧ください。
 
-1. HDInsight クラスターをプレビュー ポータルから作成する場合は、**[オプションの構成]**、**[スクリプト アクション]** の順にクリックします。
+1. HDInsight クラスターをポータルから作成する場合は、**[オプションの構成]**、**[スクリプト アクション]** の順にクリックします。
 2. **[スクリプト アクション]** ページで、次の値を入力します。
 
 	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-r-scripts/hdi-r-script-action.png "Script Action を使ってクラスターをカスタマイズする")
@@ -65,7 +65,7 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に R をイ
 ## R スクリプトの実行
 このセクションでは、HDInsight で Hadoop クラスター上の R スクリプトを実行する方法について説明します。
 
-1. **クラスターへのリモート デスクトップ接続の確立**: プレビュー ポータルから、R をインストールして作成したクラスターに対してリモート デスクトップを有効にし、クラスターに接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」をご覧ください。
+1. **クラスターへのリモート デスクトップ接続の確立**: ポータルから、R をインストールして作成したクラスターに対してリモート デスクトップを有効にし、クラスターに接続します。手順については、「[RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」をご覧ください。
 
 2. **Rコンソールを開く**: R をインストールすると、ヘッドノードのデスクトップに R コンソールへのリンクが設定されます。それをクリックして、R コンソールを開きます。
 
@@ -113,4 +113,4 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に R をイ
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

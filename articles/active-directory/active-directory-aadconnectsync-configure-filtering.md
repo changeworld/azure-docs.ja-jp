@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect Sync のフィルター処理の構成 | Microsoft Azure"
+	pageTitle="Azure AD Connect Sync: フィルター処理の構成 | Microsoft Azure"
 	description="Azure AD Connect Sync でフィルター処理を構成する方法を説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -281,4 +281,4 @@ Azure AD Connect をインストールした後にフォレスト内のドメイ
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

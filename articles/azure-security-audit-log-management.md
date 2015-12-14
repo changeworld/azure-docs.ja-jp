@@ -3,7 +3,7 @@
    description="Azure でホストされているサービスからのセキュリティ ログの生成、収集、および分析の概要について説明します。組織のセキュリティおよびコンプライアンス担当者など、日常的に情報資産の管理に携わる IT プロフェッショナルとセキュリティ アナリストを対象とした内容です。"
    services="virtual-machines, cloud-services, storage"
    documentationCenter="na"
-   authors="TerryLanfear"
+   authors="nayak-mahesh"
    manager="msStevenPo"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/13/2015"
+   ms.date="11/30/2015"
    ms.author="mnayak;tomsh;terrylan"/>
 
 # Microsoft Azure のセキュリティと監査ログの管理
@@ -614,4 +614,4 @@ Azure サブスクリプション リソースに関連する操作のログは�
 [19]: ./media/azure-security-audit-log-management/sec-view-blob-container.png
 [20]: ./media/azure-security-audit-log-management/sec-hdinsight-analysis.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

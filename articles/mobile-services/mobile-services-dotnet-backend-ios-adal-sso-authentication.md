@@ -13,10 +13,15 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="08/18/2015" 
+	ms.date="08/18/2015"
 	ms.author="mahender"/>
 
 # Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-adal-sso](../../includes/mobile-services-selector-adal-sso.md)]
 
@@ -117,7 +122,7 @@
 [Mobile Services の使用]: mobile-services-dotnet-backend-ios-get-started.md
 [モバイル サービスの使用]: mobile-services-dotnet-backend-ios-get-started.md
 [Azure Active Directory 認証用の登録]: mobile-services-how-to-register-active-directory-authentication.md
-[Microsoft Azure の管理ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [iOS 向け Active Directory 認証ライブラリ]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

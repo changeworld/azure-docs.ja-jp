@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="11/18/2015"
+   ms.date="12/01/2015"
    ms.author="juliako"/>
 
 
@@ -58,9 +58,9 @@ Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NE
 
 - **In-Role Cache** で **Microsoft Azure Storage SDK** バージョン 4.3 を使用できるようになりました。今まで **In-Role Cache** では Azure Storage SDK バージョン 1.7 を使用していました。
 
-	Azure SDK 2.5 以前を使用しているお客様は、Azure SDK 2.6 に更新し、新しいバージョンの Azure Storage SDK に移行する必要があります。Azure Storage バージョン 2011-08-18 は 2015 年 12 月 9 日を以て廃止されるます。詳しくは、[こちらのお知らせ](http://azure.microsoft.com/blog/2014/08/04/microsoft-azure-storage-service-version-removal/)をお読みください。
+	Azure SDK 2.5 以前を使用しているお客様は、Azure SDK 2.6 に更新し、新しいバージョンの Azure Storage SDK に移行する必要があります。
 
-	詳細については、「[Azure Cache の In-Role Cache](https://msdn.microsoft.com/library/azure/dn386103.aspx)」を参照してください。
+	現時点では、Azure Storage バージョン 2011-08-18 は、2016 年 8 月 1 日に削除される予定です。Azure SDK 2.5 以下から 2.6 へのすべての In-Role Cache の移行は、この日までに完了する必要があります。Azure Storage バージョン 2011-08-18 の廃止の詳細については、[Microsoft Azure Storage Service のバージョンの削除に関する最新情報: 2016 年まで延長](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)に関するページを参照してください。
 
 ##Azure App Service ツール
 
@@ -76,7 +76,7 @@ Azure SDK 2.6 リリースで次の項目が更新されました。
 
 Azure リソース マネージャー ツールで Virtual Machines、Networking、Storage のテンプレートを使用できるようになりました。JSON 編集操作にテンプレート用の新しいアウトライン表示と、JSON スニペットを使用してテンプレートを編集する機能が追加されました。Visual Studio からデプロイしたテンプレートでプロジェクトで指定した PowerShell スクリプトが使用されるため、スクリプトに対する変更が Visual Studio でも使用されます。
 
-##クラウド サービスの診断機能の強化
+##Cloud Services の診断機能の強化
 
 Azure SDK 2.6 において、Azure コンピューティング エミュレーターでの診断ログの収集と、それらの開発スとレージへの転送機能が復活しました。アプリケーションのエミュレーターでの実行時に生成される診断ログ (アプリケーションのトレース ログ、Event Tracing for Windows (ETW) ログ、パフォーマンス カウンター、インフラストラクチャ ログ、Windows イベント ログなど) を開発ストレージに転送して、診断ログがローカル コンピューターで機能していることを確認できます。
 
@@ -106,4 +106,4 @@ Azure SDK 2.6 において、Azure コンピューティング エミュレー�
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

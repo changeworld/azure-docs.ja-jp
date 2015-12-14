@@ -28,7 +28,7 @@ Azure Active Directory を強化するには、Azure Active Directory Basic エ�
 Office 365 サブスクリプションには、下の比較表に記載されているその他の Azure Active Directory 機能が含まれます。
 
 
-> [AZURE.NOTE]これらのエディションの価格オプションについては、「[Azure Active Directory の価格](https://azure.microsoft.com/ja-JP/pricing/details/active-directory/)」を参照してください。<br>Azure Active Directory Premium と Azure Active Directory Basic は、現在、中国ではサポートされていません。詳細については、Azure Active Directory フォーラムからお問い合わせください。
+> [AZURE.NOTE]これらのエディションの価格オプションについては、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。<br>Azure Active Directory Premium と Azure Active Directory Basic は、現在、中国ではサポートされていません。詳細については、Azure Active Directory フォーラムからお問い合わせください。
 
 
 - **Azure Active Directory Basic**: このエディションは、クラウド優先のニーズを持つタスク ワーカー向けに設計されており、クラウド中心のアプリケーション アクセスおよびセルフサービス ID 管理のソリューションを提供します。Azure Active Directory Basic エディションでは、グループベースのアクセス管理、クラウド アプリケーション向けのセルフサービスのパスワード リセット、Azure Active Directory アプリケーション プロキシ (Azure Active Directory を使用してオンプレミス Web アプリケーションを発行するため) などの生産性の強化とコスト削減の機能が提供され、すべてがアップタイム 99.9% のエンタープライズレベルの SLA によって保証されます。
@@ -65,7 +65,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 | | [クラウド ユーザーに対するセルフ サービスのパスワード リセット](active-directory-passwords.md)| Office 365 サブスクリプションに含まれる [4]| ![○][12]| ![○][12]|
 | | [アプリケーション プロキシ: オンプレミスの Web アプリケーションに対するセキュリティで保護されたリモート アクセスと SSO](active-directory-application-proxy-get-started.md)| | ![○][12]| ![○][12]|
 | | [グループ ベースのアプリケーション アクセス管理とプロビジョニング](active-directory-accessmanagement-group-saasapps.md)| | ![○][12]| ![○][12]|
-| | [高可用性 SLA アップタイム (99.9%)](https://azure.microsoft.com/ja-JP/support/legal/sla/)| Microsoft Online Services SLA [5]| ![○][12]| ![○][12]|
+| | [高可用性 SLA アップタイム (99.9%)](https://azure.microsoft.com/support/legal/sla/)| Microsoft Online Services SLA [5]| ![○][12]| ![○][12]|
 | **Premium のみの機能**| [高度なアプリケーション使用状況レポート](active-directory-view-access-usage-reports.md)| | | ![○][12]|
 | | [クラウド ユーザーに対するセルフ サービスのグループ管理](Self-service group management for users in Azure AD)| | | ![○][12]|
 | | [オンプレミスへのライトバックを備えたセルフ サービスのパスワード リセット](active-directory-passwords-getting-started.md/#enable-users-to-reset-or-change-their-ad-passwords)| | | ![○][12]|
@@ -74,7 +74,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 | | [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)| | | ![○][12]|
 | | [クラウド ユーザー向けの Multi-factor Authentication サービス](multi-factor-authentication.md)| Office 365 サブスクリプションに含まれる [4]| | ![○][12]|
 | | [オンプレミス ユーザー向けの Multi-factor Authentication サーバー](multi-factor-authentication.md)| | | ![○][12]|
-| | オンプレミスの Active Directory インフラストラクチャの正常性を監視し、利用状況分析を取得する [Azure Active Directory Connect Health](active-directory-aadconnect-health.md)| | | ![○][12]|
+| | [オンプレミスの Active Directory インフラストラクチャの正常性を監視し、利用状況分析を取得する Azure Active Directory Connect Health](active-directory-aadconnect-health.md)| | | ![○][12]|
 
 
 
@@ -102,4 +102,4 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

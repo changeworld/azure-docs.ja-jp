@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/13/2015"
+   ms.date="11/19/2015"
    ms.author="chackdan"/>
 
 # ARM テンプレートを使用した Service Fabric クラスターのセットアップ
@@ -37,7 +37,7 @@
 
 ## カスタム ARM テンプレートの作成
 
-2. ここで選択する必要があります。 
+2. ここでどちらかを選択します。 
 	1. [github の Azure クイック スタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates)からサンプル テンプレートを入手し、テンプレートに変更を加えます。
 	2. Azure ポータルにログインし、Service Fabric ポータル ページを使用して、カスタマイズするテンプレートを生成します。このプロセスを次に示します。
 3. Azure ポータル ([http://aka.ms/servicefabricportal](http://aka.ms/servicefabricportal)) にログオンします。
@@ -45,7 +45,7 @@
 
 ## Azure PS を使用した ARM テンプレートの Azure へのデプロイ
 
-方法に関する詳しいガイダンスについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-template-deploy/)」をご覧ください。
+方法に関する詳しいガイダンスについては、「[PS を使用した Azure リソース マネージャーのテンプレートのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
@@ -56,4 +56,4 @@
 <!--Image references-->
 [DownloadTemplate]: ./media/service-fabric-cluster-creation-via-arm/DownloadTemplate.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -3,8 +3,8 @@
 	description="Azure Active Directory と UserEcho の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
-	manager="stevenpo"
+	authors="jeevansd"
+	manager="prasannas"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/05/2015"
-	ms.author="markusvi"/>
+	ms.date="12/01/2015"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と UserEcho の統合
@@ -56,15 +56,15 @@ Azure AD への UserEcho の統合を構成するには、ギャラリーから�
 
 **ギャラリーから UserEcho を追加するには、次の手順に従います。**
 
-1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br> ![Active Directory][1]<br>
+1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br> ![Active Directory][1]<br>
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. アプリケーション ビューを開くために、ディレクトリ ビューで、上部のメニューの **[アプリケーション]** をクリックします。<br><br> ![アプリケーション][2]<br>
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br> ![アプリケーション][2]<br>
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに、「**UserEcho**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_01.png)<br>
-7. 結果ウィンドウで **[UserEcho]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>
+7. 結果ウィンドウで **[UserEcho]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_02.png)<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、UserEcho で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -88,18 +88,18 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
 
 **UserEcho で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure AD ポータルの **UserEcho** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6] <br>
+1. Azure AD ポータルの **UserEcho** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][6] <br>
 
-2. **[ユーザーの UserEcho へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Configure Single Sign-On](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_03.png) <br>
+2. **[ユーザーの UserEcho へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_03.png) <br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_04.png) <br>
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_04.png) <br>
 
     a.**[サインオン URL]** ボックスに、ユーザーが UserEcho アプリケーションへのサインオンに使用する URL (例: **https://fabrikam.UserEcho.com/*)) を入力します。
 
     b.**[次へ]** をクリックします。
  
  
-4. **[UserEcho でのシングル サインオンの構成]** ページで、次の手順を実行します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_05.png) <br>
+4. **[UserEcho でのシングル サインオンの構成]** ページで、次の手順を実行します。<br><br>![シングル サインオンの構成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_05.png) <br>
 
     a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
@@ -108,19 +108,19 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
 
 1. 別の Web ブラウザー ウィンドウで、管理者として UserEcho 企業サイトにサインオンします。
 
-1. 上部にあるツール バーで、ユーザー名をクリックして、メニューを展開し、**[Setup]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_06.png) <br>
+1. 上部にあるツール バーで、ユーザー名をクリックして、メニューを展開し、**[Setup]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_06.png) <br>
 
-1. **[Integrations]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_07.png) <br>
-
-
-1. **[Website]**、**[Single sign-on (SAML2)]** の順にクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_08.png) <br>
+1. **[Integrations]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_07.png) <br>
 
 
-1. **[Single sign-on (SAML)]** ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_09.png) <br>
+1. **[Website]**、**[Single sign-on (SAML2)]** の順にクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_08.png) <br>
+
+
+1. **[Single sign-on (SAML)]** ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_09.png) <br>
 
     a.**[SAML-enabled]** で **[Yes]** を選択します。
 
-    b.Azure ポータルの **[UserEcho でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーして、**[SAML SSO URL]** ボックスに貼り付けます。
+    b.Azure ポータルの **[UserEcho でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーして貼り付けます。ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[SAML SSO URL]** テキストボックスに貼り付けます。
 
     c.Azure ポータルの **[UserEcho でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーして、**[Remote logoout URL]** ボックスに貼り付けます。
 
@@ -129,9 +129,9 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
     e.**[保存]** をクリックします。
 
 
-6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD Single Sign-On][10]<br>
+6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD のシングル サインオン][10]<br>
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD Single Sign-On][11]
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD のシングル サインオン][11]
 
 
 
@@ -145,9 +145,9 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. ユーザーの一覧を表示するために、上部のメニューの **[ユーザー]** をクリックします。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_03.png) <br>
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_03.png) <br>
  
-4. **[ユーザーの追加]** ダイアログを開くために、下部にあるツール バーの **[ユーザーの追加]** をクリックします。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_04.png) <br>
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_04.png) <br>
 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_05.png) <br>
 
@@ -157,7 +157,7 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_06.png) <br>
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_06.png) <br>
  
     a.**[名]** ボックスに「**Britta**」と入力します。
 
@@ -169,7 +169,7 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_07.png) <br>
  
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順を実行します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_08.png) <br>
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_08.png) <br>
   
     a.**[新しいパスワード]** の値を書き留めます。
 
@@ -185,22 +185,22 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
 
 1. UserEcho 企業サイトに管理者としてサインオンします。
 
-1. 上部にあるツール バーで、ユーザー名をクリックして、メニューを展開し、**[Setup]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_06.png) <br>
+1. 上部にあるツール バーで、ユーザー名をクリックして、メニューを展開し、**[Setup]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_06.png) <br>
 
-1. **[Users]** をクリックして、**[Users]** セクションを展開します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_10.png) <br>
+1. **[Users]** をクリックして、**[Users]** セクションを展開します。<br><br>![シングル サインオンの構成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_10.png) <br>
 
-1. **[Users]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_11.png) <br>
+1. **[Users]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_11.png)<br>
 
-1. **[Invite a new user]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_12.png) <br>
+1. **[Invite a new user]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_12.png) <br>
 
 
-1. **[Invite a new user]** ダイアログで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_13.png) <br>
+1. **[Invite a new user]** ダイアログで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_13.png) <br>
 
     a.**[Name]** ボックスに「**Britta Simon**」と入力します。
 
     b.**[Email]** ボックスに、Azure ポータルの Britta の電子メール アドレスを入力します。
 
-    c.**[Invite]** をクリックします。
+    c.**[招待]** をクリックします。
 
 Britta に招待状が送信され、UserEcho の使用を開始できるようになります。
 
@@ -212,21 +212,21 @@ Britta に招待状が送信され、UserEcho の使用を開始できるよう�
 
 **UserEcho に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure ポータルで、アプリケーション ビューを開くために、ディレクトリ ビューで、上部のメニューの **[アプリケーション]** をクリックします。<br><br>![ユーザーの割り当て][201] <br>
+1. Azure ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br>![ユーザーの割り当て][201] <br>
 
-2. アプリケーションの一覧で **[UserEcho]** を選択します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_50.png) <br>
+2. アプリケーションの一覧で **[UserEcho]** を選択します。<br><br>![シングル サインオンの構成](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_50.png) <br>
 
-1. 上部のメニューの **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
+1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
 
 1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-2. 下部にあるツール バーの **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][205]
+2. 下部にあるツール バーで **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][205]
 
 
 
 ### シングル サインオンのテスト
 
-このセクションの目的は、アクセス パネルを使用して Azure AD シングル サインオン構成をテストすることです。<br> アクセス パネルで UserEcho のタイルをクリックすると、自動的に UserEcho アプリケーションにサインオンします。
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。<br> アクセス パネルで UserEcho のタイルをクリックすると、自動的に UserEcho アプリケーションにサインオンします。
 
 
 ## その他のリソース
@@ -253,4 +253,4 @@ Britta に招待状が送信され、UserEcho の使用を開始できるよう�
 [204]: ./media/active-directory-saas-userecho-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-userecho-tutorial/tutorial_general_205.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

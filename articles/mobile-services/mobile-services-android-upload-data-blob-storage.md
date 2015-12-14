@@ -18,6 +18,10 @@
 
 # Android デバイスから Azure Storage へのイメージのアップロード
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 [AZURE.INCLUDE [mobile-services-selector-upload-data-blob-storage](../../includes/mobile-services-selector-upload-data-blob-storage.md)]
 
 このトピックでは、Android 向け Azure Mobile Services アプリで Azure Storage にイメージをアップロードできるようにする方法について説明します。
@@ -50,7 +54,7 @@ Azure Storage サービスにデータをアップロードするために必要
 ## サンプル コード
 [ここ](https://github.com/Azure/mobile-services-samples/tree/master/UploadImages)に、このアプリの完成したクライアント ソース コードがあります。このコードを実行するには、このチュートリアルの Mobile Services バックエンドの部分を完了する必要があります。
 
-## 管理ポータルで登録されている挿入スクリプトを更新する
+## Azure クラシック ポータルで登録されている挿入スクリプトを更新する
 
 [AZURE.INCLUDE [mobile-services-configure-blob-storage](../../includes/mobile-services-configure-blob-storage.md)]
 
@@ -369,7 +373,7 @@ Azure Storage サービスにデータをアップロードするために必要
 
 4. **[Upload]** を押します。通常どおり、ToDoItem が一覧に追加されていることを確認します。
 
-5. Microsoft Azure ポータルで、ストレージ アカウントに移動します。**[コンテナー]** タブを押し、一覧内のコンテナーの名前を押します。
+5. Azure クラシック ポータルで、ストレージ アカウントに移動します。**[コンテナー]** タブを押し、一覧内のコンテナーの名前を押します。
 
 6. アップロードされている BLOB ファイルの一覧が表示されます。いずれかのファイルを選択し、**[ダウンロード]** を押します。
 
@@ -416,10 +420,10 @@ Azure Storage サービスにデータをアップロードするために必要
 [Mobile Services のサーバー スクリプト リファレンス]: mobile-services-how-to-use-server-scripts.md
 [Mobile Services の使用]: mobile-services-javascript-backend-windows-store-dotnet-get-started.md
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure classic portal]: https://manage.windowsazure.com/
 [How To Create a Storage Account]: ../storage-create-storage-account.md
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
 [Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

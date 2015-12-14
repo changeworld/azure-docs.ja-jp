@@ -1,6 +1,6 @@
 1. [Azure Active Directory でモバイル アプリを構成する方法]に従って、モバイル アプリのバックエンドを Azure Active Directory テナントに登録します。
 
-2. [Microsoft Azure の管理ポータル]の **[Active Directory]** に移動します。
+2. [Azure クラシック ポータル]の **[Active Directory]** に移動します。
 
    ![](./media/app-service-mobile-adal-register-app/app-service-navigate-aad.png)
 
@@ -24,7 +24,7 @@
 
 これで、アプリケーションが AAD 内に構成され、ユーザーは AAD サインオンを使用してログインできます。
 
-[Microsoft Azure の管理ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Azure Active Directory でモバイル アプリを構成する方法]: ../articles/app-service-how-to-configure-active-directory-authentication.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

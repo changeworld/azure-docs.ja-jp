@@ -348,7 +348,7 @@ Azure Storage のリンクされたサービスを利用し、Azure ストレー
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | type | type プロパティを AzureStorage に設定する必要があります。 | あり |
-| connectionString | connectionString プロパティのために Azure ストレージに接続するために必要な情報を指定します。Azure ポータルから Azure ストレージの connectionString を取得できます。 | あり |
+| connectionString | connectionString プロパティのために Azure ストレージに接続するために必要な情報を指定します。Azure クラシック ポータルから Azure ストレージの connectionString を取得できます。 | あり |
 
 ## Azure テーブル データセットの type プロパティ
 
@@ -504,4 +504,4 @@ lastlogindate | Edm.DateTime
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

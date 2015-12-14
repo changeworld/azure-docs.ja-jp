@@ -3,7 +3,7 @@
 	description="このトピックでは、Azure コンテンツ配信ネットワーク (CDN) の POP の場所の一覧を示します。" 
 	services="cdn" 
 	documentationCenter="" 
-	authors="Juliako" 
+	authors="camsoper" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -11,10 +11,10 @@
 	ms.service="cdn" 
 	ms.workload="media" 
 	ms.tgt_pltfrm="na" 
-	ms.devlang="ne" 
+	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
-	ms.author="juliako"/>
+	ms.date="12/02/2015" 
+	ms.author="casoper"/>
 
 
 #Azure コンテンツ配信ネットワーク (CDN) の POP の場所
@@ -25,7 +25,7 @@
 ![CDN の POP の場所](./media/cdn-pop-locations/CDN_POP_locations_update.png)
 
 
-##米国
+##北米
 
 - アトランタ
 - シカゴ
@@ -39,6 +39,10 @@
 - ワシントン DC
 - ボストン
 
+##南アメリカ
+
+- サンパウロ
+- キト
 
 ##ヨーロッパ
 
@@ -64,11 +68,14 @@
 - ソウル
 - シンガポール
 - 東京
-
+- バンガロール
+- チェンナイ
+- デリー
+- ムンバイ
 
 ##オーストラリア
 
 - メルボルン
 - シドニー 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

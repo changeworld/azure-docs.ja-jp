@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="08/07/2015"
+	ms.date="11/29/2015"
 	ms.author="nitinme"/>
 
 # HDInsight Emulator (Hadoop サンドボックス) を使用した Hadoop エコシステム入門
@@ -37,8 +37,7 @@ HDInsight Emulator は、Hadoop サンドボックスによく似たローカル
 
 - HDInsight Emulator には 64 ビット版 Windows が必要です。次の要件のうち 1 つを満たしている必要があります。
 
-	- Windows 7 Service Pack 1
-	- Windows Server 2008 R2 Service Pack 1
+	- Windows 10
 	- Windows 8
 	- Windows Server 2012
 
@@ -111,7 +110,7 @@ HDInsight Visual Studio ツールのインストール方法については、[�
 
 1. HDInsight Emulator への接続中に、ダイアログ ボックスに HiveServer2 の接続の成功が示された場合でも、C:\\hdp\\hive-*version*\\conf\\hive-site.xml にある Hive 構成ファイルの **hive.security.authorization.enabled プロパティ**を手動で **false** に設定し、ローカル エミュレーターを再起動する必要があります。HDInsight Tools for Visual Studio は、テーブルの上位 100 行をプレビューしている場合のみ、HiveServer2 に接続します。このようなクエリを使用しない場合は、Hive 構成をそのままにすることができます。
 
-2. HDInsight Emulator を実行するコンピューターで動的 IP の割り当て (DHCP) を使用している場合は、C:\\hdp\\hadoop-*version*\\etc\\hadoop\\core-site.xml を更新し、**hadoop.proxyuser.hadoop.hosts** プロパティの値を (*) に変更することが必要になる可能性があります。これにより、Hadoop ユーザーは、すべてのホストから接続して Visual Studio で入力されたユーザーに偽装することができます。
+2. HDInsight Emulator を実行するコンピューターで動的 IP の割り当て (DHCP) を使用している場合は、C:\\hdp\\hadoop-*version*\\etc\\hadoop\\core-site.xml を更新し、**hadoop.proxyuser.hadoop.hosts** プロパティの値を (*) に変更することが必要である可能性があります。これにより、Hadoop ユーザーは、すべてのホストから接続して Visual Studio で入力されたユーザーに偽装することができます。
 
 		<property>
 			<name>hadoop.proxyuser.hadoop.hosts</name>
@@ -397,7 +396,7 @@ HDInsight Emulator は、既定のファイル システムとして HDFS を使
 
 **コンテナーを作成するには**
 
-1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)にサインインします。
+1. [Azure ポータル](https://ms.portal.azure.com/)にサインインします。
 2. 左側の **[新規]** をクリックし、**[データ + ストレージ]**、**[Storage]** の順にクリックします。
 3. [ストレージ アカウント] ブレードで、以下の画面キャプチャに示すように、プロパティを構成します。
 	
@@ -498,4 +497,4 @@ Emulator をインストールしたコンピューターでコントロール �
 [image-hdi-emulator-services]: ./media/hdinsight-hadoop-emulator-get-started/HDI.Emulator.Services.png
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

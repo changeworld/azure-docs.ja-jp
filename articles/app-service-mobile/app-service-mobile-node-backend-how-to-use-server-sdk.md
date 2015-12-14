@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="node"
 	ms.topic="article"
-	ms.date="11/13/2015"
+	ms.date="12/02/2015"
 	ms.author="adrianhall"/>
 
 # Azure Mobile Apps Node.js SDK の使用方法
 
 この記事では、Azure App Service Mobile Apps で Node.js バックエンドを使用する方法についての詳細な情報と例を提供します。
 
-> [AZURE.NOTE]この SDK はプレビュー段階です。そのため、運用環境でこの SDK を使用することは推奨されません。このドキュメントの例では、v2.0.0-alpha6 の [azure-mobile-apps] を使用しています。
+> [AZURE.NOTE]この SDK はプレビュー段階です。そのため、運用環境でこの SDK を使用することは推奨されません。このドキュメントの例では、v2.0.0-beta1 の [azure-mobile-apps] を使用しています。
 
 ## <a name="Introduction"></a>はじめに
 
@@ -98,7 +98,7 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
 5. **npm** ノードを右クリックし、**[新しい npm パッケージのインストール...]** を選択します。
 
-6. 最初の Node.js アプリケーションの作成時に、**[更新]** をクリックして npm カタログを更新する必要があります。
+6. 最初の Node.js アプリケーションの作成時に、npm カタログを更新することが必要な場合があります。更新が必要な場合は、更新するよう求められるので、**[更新]** をクリックします。
 
 7. 検索ボックスに「_azure-mobile-apps_」と入力します。**azure-mobile-apps 2.0.0** パッケージをクリックしてから、**[パッケージのインストール]** をクリックします。
 
@@ -211,8 +211,8 @@ WebAPI を使用して公開する列を明示的に定義することができ�
 Azure Mobile Apps Node SDK には、データをすぐに使用できる 3 つのオプションが用意されています。
 
 - **メモリ** ドライバーを使用して、非永続ストアの例を提供します。
-- **sql** ドライバーを使用して、開発用の SQL Express データ ストアを提供します。
-- **sql** ドライバーを使用して、実稼働用の SQL Azure データ ストアを提供します。
+- **mssql** ドライバーを使用して、開発用の SQL Express データ ストアを提供します。
+- **mssql** ドライバーを使用して、実稼働用の SQL Azure データ ストアを提供します。
 
 Azure Mobile Apps Node.js SDK では [mssql Node.js パッケージ]を使用して、SQL Express と SQL Azure への両方の接続を確立および使用します。このパッケージでは、SQL Express インスタンスで TCP 接続を有効にする必要があります。
 
@@ -222,27 +222,44 @@ Azure Mobile Apps Node.js SDK では [mssql Node.js パッケージ]を使用し
 
 2. SQL Server 2014 構成マネージャーを実行します。
 
-  a.左側のツリー メニューにある **[SQL Server ネットワークの構成]** ノードを展開します。b.**[SQLEXPRESS のプロトコル]** をクリックします。c.**[TCP/IP]** を右クリックして、**[有効化]** を選択します。ポップアップ ダイアログで **[OK]** をクリックします。d.**[TCP/IP]** を右クリックして、**[プロパティ]** を選択します。e.**[IP アドレス]** タブをクリックします。f.**IPAll** ノードを見つけます。**[TCP ポート]** フィールドに、「**1433**」と入力します。
-
-  ![TCP/IP の SQL Express の構成][3]
-
-  g.**[OK]** をクリックします。ポップアップ ダイアログで **[OK]** をクリックします。h.左側のツリー メニューにある **[SQL Server のサービス]** をクリックします。i.**[SQL Server (SQLEXPRESS)]** を右クリックして、**[再起動]** を選択します。j.SQL Server 2014 構成マネージャーを閉じます。
+  1. 左側のツリー メニューにある **[SQL Server ネットワークの構成]** ノードを展開します。
+  2. **[SQLEXPRESS のプロトコル]** をクリックします。
+  3. **[TCP/IP]** を右クリックし、**[有効化]** を選択します。ポップアップ ダイアログで **[OK]** をクリックします。
+  4. **[TCP/IP]** を右クリックし、**[プロパティ]** を選択します。
+  5. **[IP アドレス]** タブをクリックします。
+  6. **[IPAll]** ノードを見つけます。**[TCP ポート]** フィールドに、「**1433**」と入力します。
+  
+	 	 ![Configure SQL Express for TCP/IP][3]
+  7. **[OK]** をクリックします。ポップアップ ダイアログで **[OK]** をクリックします。
+  8. 左側のツリー メニューにある **[SQL Server のサービス]** をクリックします。
+  9. **[SQL Server (SQLEXPRESS)]** を右クリックし、**[再起動]** を選択します。
+  10. SQL Server 2014 構成マネージャーを閉じます。
 
 3. SQL Server 2014 Management Studio を実行して、ローカルの SQL Express インスタンスに接続します。
 
-  a.オブジェクト エクスプローラーでインスタンスを右クリックして、**[プロパティ]** を選択します。b.**[セキュリティ]** ページを選択します。c.**[SQL Server 認証モードと Windows 認証モード]** が選択されていることを確認します。d.**[OK]** をクリックします。
+  1. オブジェクト エクスプローラーでインスタンスを右クリックし、**[プロパティ]** を選択します。
+  2. **[セキュリティ]** ページを選択します。
+  3. **[SQL Server 認証モードと Windows 認証モード]** が選択されていることを確認します。
+  4. **[OK]** をクリックします。
 
-  ![SQL Express 認証の構成][4]
+  		![Configure SQL Express Authentication][4]
 
-  e.オブジェクト エクスプローラーで、**[セキュリティ]**、**[ログイン]** の順に展開します。f.**[ログイン]** を右クリックして、**[新しいログイン...]** を選択します。g.ログイン名を入力します。**[SQL Server 認証]** を選択します。パスワードを入力してから、**[パスワードの確認]** に同じパスワードを入力します。パスワードは Windows の複雑さの要件を満たす必要があることに注意してください。h.**[OK]** をクリックします。
+  5. オブジェクト エクスプローラーで、**[セキュリティ]**、**[ログイン]** の順に展開します。
+  6. **[ログイン]** を右クリックし、**[新しいログイン...]** を選択します。
+  7. ログイン名を入力します。**[SQL Server 認証]** を選択します。パスワードを入力し、**[パスワードの確認入力]** に同じパスワードを入力します。パスワードは、Windows の複雑さの要件を満たしている必要があります。
+  8. **[OK]** をクリックします。
 
-  ![SQL Express に新しいユーザーを追加する][5]
+  		![Add a new user to SQL Express][5]
 
-  i.新しいログインを右クリックして、**[プロパティ]** を選択します。j.**[サーバーの役割]** ページを選択します。k.**dbcreator** サーバーの役割の横にあるチェック ボックスをオンにします。l.**[OK]** をクリックします。m.SQL Server 2015 Management Studio を閉じます。
+  9. 新しいログインを右クリックし、**[プロパティ]** を選択します。
+  10. **[サーバーの役割]** ページを選択します。
+  11. **[dbcreator]** サーバーの役割の横にあるチェック ボックスをオンにします。
+  12. **[OK]** をクリックします。
+  13. SQL Server 2015 Management Studio を閉じます。
 
 選択したユーザー名とパスワードは必ず記録してください。特定のデータベース要件に応じて、他のサーバーの役割またはアクセス許可の割り当てが必要になる場合があります。
 
-Node.js アプリケーションは **SQLCONNSTR\_MS\_TableConnectionString** 環境変数を読み取り、このデータベースの接続文字列を確認します。ご使用の環境内にこれを設定することができます。たとえば、PowerShell を使用して、以下のようにこの環境変数を設定することができます。
+Node.js アプリケーションは、**SQLCONNSTR\_MS\_TableConnectionString** 環境変数を読み取って、このデータベースの接続文字列を確認します。ご使用の環境内にこれを設定することができます。たとえば、PowerShell を使用して、以下のようにこの環境変数を設定することができます。
 
     $env:SQLCONNSTR_MS_TableConnectionString = "Server=127.0.0.1; Database=mytestdatabase; User Id=azuremobile; Password=T3stPa55word;"
 
@@ -250,20 +267,20 @@ TCP/IP 接続を介して、データベースにアクセスし、接続用の�
 
 ### <a name="howto-config-localdev"></a>ローカル開発用のプロジェクトの構成
 
-Azure Mobile Apps は、ローカル ファイルシステムから _azureMobile.js_ という JavaScript ファイルを読み取ります。実稼働環境での Azure Mobile Apps SDK の構成ではこのファイルを使用しないでください。代わりに、[Azure ポータル]内の [アプリ設定] を使用します。_azureMobile.js_ ファイルでは構成オブジェクトをエクスポートする必要があります。最も一般的な設定は次のとおりです。
+Azure Mobile Apps は、ローカル ファイルシステムから _azureMobile.js_ という JavaScript ファイルを読み取ります。実稼働環境で Azure Mobile Apps SDK を構成するときは、このファイルを使用しないでください。代わりに、[Azure ポータル]内の [アプリ設定] を使用します。_azureMobile.js_ ファイルでは、構成オブジェクトをエクスポートする必要があります。最も一般的な設定は次のとおりです。
 
 - データベース設定
 - 診断ログ設定
 - 代替 CORS 設定
 
-上記のデータベース設定を実装する _azureMobile.js_ ファイルの例を以下に示します。
+上記のデータベース設定を実装する _azureMobile.js_ ファイルの例を次に示します。
 
     module.exports = {
         cors: {
             origins: [ 'localhost' ]
         },
         data: {
-            provider: 'sql',
+            provider: 'mssql',
             server: '127.0.0.1',
             database: 'mytestdatabase',
             user: 'azuremobile',
@@ -274,11 +291,11 @@ Azure Mobile Apps は、ローカル ファイルシステムから _azureMobile
         }
     };
 
-パスワードがクラウドに格納されないように、_azureMobile.js_ を _.gitignore_ ファイル (または他のソース コード管理の無視ファイル) に追加することをお勧めします。必ず、[Azure ポータル]内の [アプリ設定] で実稼働設定を構成してください。
+パスワードがクラウドに保存されないように、_azureMobile.js_ を _.gitignore_ ファイル (または他のソース コード管理の無視ファイル) に追加することをお勧めします。必ず、[Azure ポータル]内の [アプリ設定] で実稼働設定を構成してください。
 
 ### <a name="howto-use-sqlazure"></a>実稼働データストアとしての SQL Azure の使用
 
-<!-- ALTERNATE INCLUDE - we can't use ../includes/app-service-mobile-dotnet-backend-create-new-service.md - slightly different semantics -->
+<!--- ALTERNATE INCLUDE - we can't use ../includes/app-service-mobile-dotnet-backend-create-new-service.md - slightly different semantics -->
 
 Azure App Service アプリケーションのすべての種類でデータ ストアとして SQL Azure を使用します。モバイル アプリ バックエンドをまだ作成していない場合は、次の手順に従って新しいものを作成します。
 
@@ -310,11 +327,11 @@ Azure App Service アプリケーションのすべての種類でデータ ス�
 
 11. もう一度 **[データ接続の追加]** ブレードに戻り、**[OK]** をクリックしてデータベースを作成します。
 
-<!-- END OF ALTERNATE INCLUDE -->
+<!--- END OF ALTERNATE INCLUDE -->
 
-データベースの作成には数分かかる場合があります。**[通知]** 領域を使用して、デプロイメントの進行状況を監視します。データベースのデプロイが正常に完了するまでは、先に進まないでください。正常にデプロイされると、モバイル バックエンドの [アプリ設定] で、SQL Azure データベース インスタンスの接続文字列が作成されます。このアプリ設定は、**[設定]** > **[アプリケーション設定]** > **[接続文字列]** で確認できます。
+データベースの作成には数分かかる場合があります。**[通知]** 領域を使用して、デプロイの進行状況を監視します。データベースのデプロイが正常に完了するまでは、先に進まないでください。正常にデプロイされると、モバイル バックエンドの [アプリ設定] で、SQL Azure データベース インスタンスの接続文字列が作成されます。このアプリ設定は、**[設定]** > **[アプリケーション設定]** > **[接続文字列]** で確認できます。
 
-### <a name="howto-tables-auth"></a>テーブルへのアクセスに認証を必要とする
+### <a name="howto-tables-auth"></a>テーブルへのアクセスに対する認証の要求
 
 テーブル エンドポイントで App Service 認証を使用する場合は、まず、[Azure ポータル]で App Service 認証を構成する必要があります。Azure App Service での認証構成の詳細については、以下の使用する ID プロバイダーの構成ガイドを参照してください。
 
@@ -352,7 +369,7 @@ access プロパティには、次の 3 つの値を使用できます。
 
 access プロパティが定義されていない場合は、非認証アクセスが許可されます。
 
-### <a name="howto-tables-disabled"></a>特定のテーブル操作へのアクセスを無効にする
+### <a name="howto-tables-disabled"></a>特定のテーブル操作へのアクセスの無効化
 
 テーブルでの表示だけでなく、個々の操作を制御するために access プロパティを使用できます。操作には以下の 4 つがあります。
 
@@ -408,7 +425,7 @@ access プロパティが定義されていない場合は、非認証アクセ�
 
     module.exports = table;
 
-通常はクエリを実行する操作には、where 句で調整できる query プロパティがあります。query プロパティは [QueryJS] オブジェクトであり、これを使用して、データ バックアップで処理できるものに OData クエリを変換します。(上記のような) 単純な等式の場合、マップを使用できます。特定の SQL 句の追加も比較的容易です。
+通常はクエリを実行する操作には、where 句で調整できる query プロパティがあります。query プロパティは、OData クエリをデータ バックエンドが処理できるものに変換する際に使用する [QueryJS] オブジェクトです。(上記のような) 単純な等式の場合、マップを使用できます。特定の SQL 句の追加も比較的容易です。
 
     context.query.where('myfield eq ?', 'value');
 
@@ -519,7 +536,7 @@ initialize() メソッドを明示的に呼び出して、サービスの実行�
 
 各パラメーターは、標準的な RESTful 動詞 (GET、POST、PATCH または DELETE) のいずれかです。メソッドは、必要な出力を送信する標準的な [ExpressJS ミドルウェア]関数です。
 
-### <a name="howto-customapi-auth"></a>カスタム API へのアクセスに認証を必要とする
+### <a name="howto-customapi-auth"></a>カスタム API へのアクセスに対する認証の要求
 
 Azure Mobile Apps SDK では、テーブル エンドポイントとカスタム API の両方に対して同じ方法で認証を実装します。前のセクションで開発した API に認証を追加するには、**access** プロパティを追加します。
 
@@ -549,7 +566,7 @@ Azure Mobile Apps SDK では、テーブル エンドポイントとカスタム
 
 認証を必要とするカスタム API には、テーブル エンドポイントで使用されるものと同じトークンを使用する必要があります。
 
-## <a name="Debugging"></a>デバッグおよびトラブルシューティング
+## <a name="Debugging"></a>デバッグとトラブルシューティング
 
 Azure App Service では、Node.js アプリケーションに関するいくつかのデバッグとトラブルシューティングの手法が提供されます。これらの手法をすべて使用できます。
 
@@ -559,7 +576,7 @@ Azure App Service では、Node.js アプリケーションに関するいくつ
 
 ### <a name="howto-diagnostic-logs"></a>Azure Mobile Apps の診断ログへの書き込み
 
-Node.js アプリケーションは、広範囲の診断ログ ツールにアクセスできます。Azure Mobile Apps Node.js SDK は内部で診断ログに [Winston] を使用します。これを自動的に有効にするには、デバッグ モードを有効にするか、[Azure ポータル]で **MS\_DebugMode** アプリ設定を true に設定します。生成されたログは、[Azure ポータル]の [診断ログ] に表示されます。
+Node.js アプリケーションは、広範囲の診断ログ ツールにアクセスできます。Azure Mobile Apps Node.js SDK は、内部で診断ログに [Winston] を使用します。これを自動的に有効にするには、デバッグ モードを有効にするか、[Azure ポータル]で **MS\_DebugMode** アプリ設定を true に設定します。生成されたログは、[Azure ポータル]の [診断ログ] に表示されます。
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png
@@ -607,4 +624,4 @@ Node.js アプリケーションは、広範囲の診断ログ ツールにア�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

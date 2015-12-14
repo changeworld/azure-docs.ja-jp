@@ -1,8 +1,8 @@
 <properties
     pageTitle="SaaS アプリと Azure Active Directory シングル サインオンを統合する | Microsoft Azure"
-    description="Azure Active Directory での SaaS アプリのシングル サインオン認証およびユーザー プロビジョニングによるアクセス管理の一元化を有効にします。Azure AD を SaaS アプリに統合する方法の概要。"
+    description="Azure Active Directory での SaaS アプリのシングル サインオン認証およびユーザー プロビジョニングによるアクセス管理の一元化を有効にします。Azure Active Directory を SaaS アプリに統合する方法の概要について説明します。"
     services="active-directory"
-	keywords="Azure AD と SaaS アプリの統合"
+	  keywords="Azure AD と SaaS アプリの統合"
     documentationCenter=""
     authors="curtand"
     manager="stevenpo"
@@ -14,14 +14,14 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="11/20/2015"
+      ms.date="12/01/2015"
       ms.author="curtand"/>
 
-# SaaS アプリと Azure Active Directory (Azure AD) シングル サインオンを統合する  
+# SaaS アプリと Azure Active Directory シングル サインオンを統合する  
 
 [AZURE.INCLUDE [active-directory-sso-use-case-intro](../../includes/active-directory-sso-use-case-intro.md)]
 
-組織に展開するアプリのためのシングル サインオンのセットアップ作業では、Azure Active Directory 内にある既存のディレクトリを使用します。Microsoft Azure、Office 365、または Windows Intune を通じて取得した Azure AD ディレクトリを使用できます。これらのうち 2 つ以上を所有している場合は、「[Azure AD ディレクトリの管理](active-directory-administer.md)」を参照して、どれを使用するかを判断してください。
+組織に展開するアプリのためのシングル サインオンのセットアップ作業では、Azure Active Directory (Azure AD) 内にある既存のディレクトリを使用します。Microsoft Azure、Office 365、または Windows Intune を通じて取得した Azure AD ディレクトリを使用できます。これらのうち 2 つ以上を所有している場合は、「[Azure AD ディレクトリの管理](active-directory-administer.md)」を参照して、どれを使用するかを判断してください。
 
 ## 認証
 
@@ -41,7 +41,7 @@ Azure AD には、組織内のエンド ユーザーにアプリケーション�
 
 ## 使用中のアプリケーションに関する追加の考慮事項
 
-組織が既に使用しているアプリケーションにシングル サインオンをセットアップするプロセスは、新しいアプリケーションに新しいアカウントを作成するプロセスとは異なります。いくつかの準備手順: アプリケーション内のユーザー ID を Azure Active Directory (AD) の ID にマップする、統合後にユーザーがアプリケーションへのログインを経験する方法を把握する、など。
+組織が既に使用しているアプリケーションにシングル サインオンをセットアップするプロセスは、新しいアプリケーションに新しいアカウントを作成するプロセスとは異なります。いくつかの準備手順: アプリケーション内のユーザー ID を Azure AD の ID にマップする、統合後にユーザーがアプリケーションへのログインを経験する方法を把握する、など。
 
 > [AZURE.NOTE]既存のアプリケーションの SSO を設定するには、Azure AD と SaaS アプリケーションの両方でグローバル管理者権限が必要です。
 
@@ -62,10 +62,10 @@ Azure AD には、組織内のエンド ユーザーにアプリケーション�
 ## 次のステップ
 
 
-アプリケーション ギャラリーにある SaaS アプリについては、[SaaS アプリを統合する方法に関するチュートリアル](active-directory-saas-tutorial-list.md)が Azure Active Directory 内に多数用意されています。
+アプリケーション ギャラリーにある SaaS アプリについては、[SaaS アプリを統合する方法に関するチュートリアル](active-directory-saas-tutorial-list.md)が Azure AD 内に多数用意されています。
 
-アプリケーション ギャラリーにないアプリは、[カスタム アプリケーションとして Azure Active Directory アプリケーション ギャラリーに追加](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)できます。
+アプリケーション ギャラリーにないアプリは、[カスタム アプリケーションとして Azure AD アプリケーション ギャラリーに追加](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)できます。
 
 Azure.com ライブラリには、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をはじめとして、ここで紹介した問題に関する詳細情報があります。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -55,7 +55,7 @@ PKI のデプロイ要件の代替策として、次の操作を実行できま�
 
 Azure AD Connect により、オンプレミスのコンピューターをクラウド内のデバイス オブジェクトとしてプロビジョニングできます。Azure AD Connect をデプロイするには、Azure AD Connect によるディレクトリのハイブリッド管理の有効化に関するページを参照してください。
 
- - [Azure AD Connect のカスタム インストール](https://azure.microsoft.com/ja-JP/documentation/articles/active-directory-aadconnect-get-started-custom/) (高速インストールではありません) を実行した場合は、次の「**オンプレミスの Active Directory でサービス接続ポイント (SCP) を作成する**」の手順に従う必要があります。
+ - [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md) (高速インストールではありません) を実行した場合は、次の「**オンプレミスの Active Directory でサービス接続ポイント (SCP) を作成する**」の手順に従う必要があります。
  - Azure AD Connect をインストールする前に Azure AD で構成をフェデレーションした場合 (たとえば、以前に Active Directory フェデレーション サービス (AD FS) をデプロイした場合)、以下の「**AD FS の要求規則を構成する**」の手順に従う必要があります。
 
 ### オンプレミスの Active Directory でサービス接続ポイント (SCP) を作成する
@@ -137,4 +137,4 @@ Active Directory グループ ポリシーを使用すると、自動的に Azur
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

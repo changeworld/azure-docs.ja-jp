@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/08/2015" 
+	ms.date="12/01/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory - よく寄せられる質問
@@ -57,7 +57,7 @@ Azure Data Factory の料金の詳細については、[Data Factory の料金�
   
 ### 顧客は Data Factory にどのようにアクセスしますか。
 
-お客様は [Azure プレビュー ポータル][azure-preview-portal]を通じて Data Factory にアクセスできます。
+お客様は [Azure ポータル][azure-portal]を通じて Data Factory にアクセスできます。
 
 ### Data Factory を利用可能な地域はどこですか。
 
@@ -72,7 +72,7 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 
 データ ファクトリを生成または作成する方法には、以下のものがあります。
 
-- **Azure プレビュー ポータル**。Azure プレビュー ポータルの Data Factory ブレードは、データ ファクトリ、およびリンクされたサービスを作成するための優れたユーザー インターフェイスです。**Data Factory エディター**は、ポータルの一部でもあり、これらの成果物の JSON の定義を指定することによって、リンクされたサービス、テーブル、データ セット、パイプラインを簡単に作成できる機能です。エディターの概要については、[Data Factory エディター][data-factory-editor]に関するページを、データ ファクトリを作成してデプロイするためのポータルやエディターの使用例については、[Data Factory の使用][datafactory-getstarted]に関するページをご覧ください。   
+- **Azure ポータル**Azure ポータルの Data Factory ブレードは、データ ファクトリ、およびリンクされたサービスを作成するための優れたユーザー インターフェイスです。**Data Factory エディター**は、ポータルの一部でもあり、これらの成果物の JSON の定義を指定することによって、リンクされたサービス、テーブル、データ セット、パイプラインを簡単に作成できる機能です。エディターの概要については、[Data Factory エディター][data-factory-editor]に関するページを、データ ファクトリを作成してデプロイするためのポータルやエディターの使用例については、[Data Factory の使用][datafactory-getstarted]に関するページをご覧ください。   
 - **Azure PowerShell**PowerShell ユーザーがポータル UI ではなく PowerShell の使用を希望している場合は、Azure PowerShell の一部として出荷される Azure Data Factory コマンドレットを使用してデータ ファクトリを作成し、デプロイできます。単純な例については、[Azure PowerShell を使用した Azure データ ファクトリの作成と監視][create-data-factory-using-powershell]に関するページをご覧ください。PowerShell コマンドレットを使用してデータ ファクトリを作成してデプロイする高度な例については、[Data Factory を使用したログ ファイルの移動と処理][adf-tutorial]に関するチュートリアルをご覧ください。Data Factory コマンドレットの包括的なドキュメントについては、[MSDN ライブラリの Data Factory コマンドレット リファレンス][adf-powershell-reference]に関するコンテンツをご覧ください。  
 - **Visual Studio**。また、Visual Studio を使用して、プログラムによりデータ ファクトリを作成、監視、管理できます。詳細については、記事「[Data Factory .NET SDK を使用して Azure データ ファクトリを作成、監視、管理する](data-factory-create-data-factories-programmatically)」を参照してください。  
 - **.NET クラス ライブラリ**。Data Factory .NET SDK を使用すると、プログラムでデータ ファクトリを作成できます。.NET SDK を使用したデータ ファクトリの作成のチュートリアルについては、[.NET SDK を使用したデータ ファクトリの作成、監視、管理][create-factory-using-dotnet-sdk]に関するページをご覧ください。Data Factory .NET SDK の包括的なドキュメントについては、[Data Factory クラス ライブラリ リファレンス][msdn-class-library-reference]に関するページをご覧ください。  
@@ -168,7 +168,7 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 
 [adf-powershell-reference]: https://msdn.microsoft.com/library/dn820234.aspx
 [adf-documentation-landingpage]: http://go.microsoft.com/fwlink/?LinkId=516909
-[azure-preview-portal]: http://portal.azure.com
+[azure-portal]: http://portal.azure.com
 [set-azure-datafactory-slice-status]: https://msdn.microsoft.com/library/azure/dn835095.aspx
 
 [adf-pricing-details]: http://go.microsoft.com/fwlink/?LinkId=517777
@@ -177,4 +177,4 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

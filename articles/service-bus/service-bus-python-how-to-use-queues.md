@@ -44,7 +44,7 @@ bus_service = ServiceBusService(
 	shared_access_key_value='sharedaccesskey')
 ```
 
-SAS キーの名前と値は、[Azure ポータル][]接続情報に含まれています。また、サービス エクスプローラーで Service Bus 名前空間を選択すると、Visual Studio の**プロパティ** ウィンドウに表示されます (前のセクションに示されているとおり)。
+SAS キーの名前と値は、[Azure クラシック ポータル][]接続情報に含まれています。また、サービス エクスプローラーで Service Bus 名前空間を選択すると、Visual Studio の**プロパティ** ウィンドウに表示されます (前のセクションに示されているとおり)。
 
 ```
 bus_service.create_queue('taskqueue')
@@ -109,10 +109,10 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 -   [キュー、トピック、およびサブスクリプション][]に関するページをご覧ください。
 
-[Azure ポータル]: http://manage.windowsazure.com
+[Azure クラシック ポータル]: http://manage.windowsazure.com
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
 [キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
 [Azure キューと Service Bus キュー]: service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

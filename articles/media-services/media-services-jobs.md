@@ -33,7 +33,7 @@
 
 [AZURE.INCLUDE [media-services-selector-get-media-processor](../../includes/media-services-selector-get-media-processor.md)]
 
-##ジョブの作成 
+##ジョブの作成
 
 ジョブは、一連のタスク (エンコード、インデックス作成など) に関するメタデータを含むエンティティです。各タスクでは、入力資産でアトミック操作が実行されます。エンコード ジョブの作成方法の例については、以下をご覧ください。
 
@@ -43,22 +43,22 @@
 
 [AZURE.INCLUDE [media-services-selector-index-content](../../includes/media-services-selector-index-content.md)]
 
-##エンコード 
+##エンコード
 
-**Azure の管理ポータル**、**.NET**、または **REST API** を使用して、**Azure Media Encoder** でエンコードします。
- 
+**Azure クラシック ポータル**、**.NET**、または **REST API** を使用して、**Azure Media Encoder** でエンコードします。
+
 [AZURE.INCLUDE [media-services-selector-encode](../../includes/media-services-selector-encode.md)]
 
 ##ジョブの進行状況の監視
 
-**Azure 管理ポータル**、**.NET**、**REST API** を使用してジョブの進行状況を監視するには、以下をご覧ください。
+**Azure クラシック ポータル**、**.NET**、**REST API** を使用してジョブの進行状況を監視するには、以下をご覧ください。
 
 [AZURE.INCLUDE [media-services-selector-job-progress](../../includes/media-services-selector-job-progress.md)]
 
 ##関連リンク
 
 [クォータと制限](media-services-quotas-and-limitations.md) – Media Services Encoder で使用するクォータと制限について説明します。
- 
+
 
 ##Media Services のラーニング パス
 
@@ -68,4 +68,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

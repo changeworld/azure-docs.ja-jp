@@ -18,6 +18,8 @@
 
 # Azure App Service での ASP.NET API アプリから SaaS プラットフォームへの接続
 
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
+
 ## 概要
 
 このチュートリアルでは、[App Service API Apps SDK for .NET](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/) を使用して[サービスとしてのソフトウェア (SaaS) プラットフォーム](../app-service/app-service-authentication-overview.md#obotosaas)に接続する [API アプリ](app-service-api-apps-why-best-platform.md)のコード記述と構成の方法について説明します。また、[App Service SDK for .NET](http://www.nuget.org/packages/Microsoft.Azure.AppService) を使用して .NET クライアントから API アプリを呼び出す方法についても説明します。このチュートリアルでは、最終的に、Azure App Service で実行される .NET API アプリを .NET コンソール アプリのクライアントで呼び出すことができるようになります。この API アプリから Dropbox API を呼び出し、ユーザーの Dropbox アカウント内にあるファイルとフォルダーの一覧を返します。
@@ -376,12 +378,7 @@ API アプリから Dropbox API を呼び出すことができるようにする
 
 		browser.Navigate(string.Format(@"{0}/login/aad", GATEWAY_URL));
 
-	他のプロバイダーで使用する値を次に示します:
-	* "microsoftaccount"
-	* "facebook"
-	* "twitter"
-	* "google"
-<br/><br/>
+	他のプロバイダーで使用する値を次に示します: * "microsoftaccount" * "facebook" * "twitter" * "google"<br/><br/>
 
 * `GetConsentLinkAsync()` メソッドの 2 番目のパラメーターは、ユーザーが Dropbox にログインしてユーザー アカウントへのアクセスに同意した後に、同意サーバーによりリダイレクトされるコールバック URL です。
 
@@ -449,7 +446,7 @@ Dropbox ログイン後のリダイレクト URL は、次の例のようにな�
 
 SaaS プラットフォームに接続する API アプリのコード記述と構成の方法について説明しました。API アプリでの認証を処理する方法に関するその他のチュートリアルへのリンクについては、[API Apps と Mobile Apps の認証に関するページの「次のステップ」](../app-service/app-service-authentication-overview.md#next-steps)を参照してください。
 
-[Azure プレビュー ポータル]: https://portal.azure.com/
-[Azure ポータル]: https://manage.windowsazure.com/
+[Azure preview portal]: https://portal.azure.com/
+[Azure portal]: https://manage.windowsazure.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -33,7 +33,7 @@
 
 Ruby アプリケーションを作成します。手順については、[Windows Azure での Ruby アプリケーションの作成に関するページ](/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
 
-## アプリケーションの Storage へのアクセスの構成
+## アプリケーションのストレージへのアクセスの構成
 
 Azure Storage を使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
@@ -49,7 +49,7 @@ Azure Storage を使用するには、Ruby azure パッケージをダウンロ�
 
 	require "azure"
 
-## Azure Storage 接続の設定
+## Azure のストレージ接続文字列の設定
 
 azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS\_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::Blob::BlobService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
@@ -59,7 +59,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 これらの値を取得するには、次の手順を実行します。
 
-1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)にログインします。
+1. [Azure ポータル](portal.azure.com)にログインします。
 2. 使用するストレージ アカウントを表示します。
 3. ナビゲーション ウィンドウの下部にある **[キーの管理]** をクリックします。
 4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーには、プライマリとセカンダリのどちらでも使用できます。
@@ -142,8 +142,7 @@ BLOB をダウンロードするには、**get\_blob()** メソッドを使用�
 
 さらに複雑なストレージ タスクの詳細については、次のリンク先をご覧ください。
 
-- MSDN リファレンス: [Azure Storage](http://msdn.microsoft.com/library/azure/gg433040.aspx)
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

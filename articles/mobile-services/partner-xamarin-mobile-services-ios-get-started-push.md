@@ -18,6 +18,11 @@
 
 # Mobile Services アプリへのプッシュ通知の追加
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
 ##概要
@@ -155,7 +160,7 @@ APNS では、証明書を使用してモバイル サービスを認証しま�
 
     エクスポートした証明書のファイル名と場所を書き留めます。
 
-2. [Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+2. [Azure クラシック ポータル]にログオンし、**[Mobile Services]**、アプリケーションの順にクリックします。
 
     ![][18]
 
@@ -275,9 +280,9 @@ APNS と連携するようにモバイル サービスが構成されました�
 
 これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
-## <a name="update-scripts"></a>管理ポータルで登録されている挿入スクリプトを更新する
+## <a name="update-scripts"></a>Azure クラシック ポータルで登録されている挿入スクリプトを更新する
 
-1. 管理ポータルで、**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
+1. [Azure クラシック ポータル]で、**[データ]** タブ、**TodoItem** テーブルの順にクリックします。
 
     ![][21]
 
@@ -392,10 +397,10 @@ APNS と連携するようにモバイル サービスが構成されました�
 [Xamarin デバイス プロビジョニング]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
 
 
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [apns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 [Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
 [completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331303
 [Xamarin.iOS]: http://xamarin.com/download
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

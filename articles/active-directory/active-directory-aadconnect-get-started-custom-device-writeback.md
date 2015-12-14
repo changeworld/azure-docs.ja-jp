@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect でのデバイスの書き戻しの有効化 | Microsoft Azure"
+	pageTitle="Azure AD Connect: デバイスの書き戻しの有効化 | Microsoft Azure"
 	description="Azure AD Connect を使用するデバイスの書き戻しを有効にする方法について詳しく説明します"
 	services="active-directory"
 	documentationCenter=""
@@ -24,7 +24,8 @@ AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利�
 
 これにより、セキュリティが強化され、アプリケーションへのアクセスが信頼されたデバイスに対してのみ許可されることが保証されます。条件付きアクセスの詳細については、「[条件付きアクセス ポリシーを使用したリスクの管理](active-directory-conditional-access.md)」および「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](https://msdn.microsoft.com/library/azure/dn788908.aspx)」をご覧ください。
 
->[AZURE.NOTE]Azure Active Directory Device Registration Service の条件付きアクセス ポリシーに登録されているデバイスを使用する場合は、Office 365 または Azure AD Premium のサブスクリプションが必要になります。これには、Active Directory フェデレーション サービス (AD FS) によってオンプレミス リソースに適用されるポリシーが含まれます。
+>[AZURE.NOTE]デバイスの書き戻しには、Azure AD Premium に対するサブスクリプションが必要です。
+
 
 ## パート 1: Azure AD Connect のインストール
 1. カスタム設定または簡単設定を使用して Azure AD Connect をインストールします。すべてのユーザーとグループの同期に成功してから、デバイスの書き戻しを有効にすることをお勧めします。
@@ -125,4 +126,4 @@ Active Directory の構成を確認します。つまり、configuration 名前�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

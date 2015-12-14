@@ -5,4 +5,4 @@
 - [Microsoft account](../articles/app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md)
 - [Twitter](../articles/app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

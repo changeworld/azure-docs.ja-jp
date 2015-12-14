@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="11/18/2015" 
+	ms.date="11/30/2015" 
 	ms.author="awills"/>
 
 # カスタムのイベントとメトリックのための Application Insights API 
@@ -104,22 +104,26 @@ Application Insights では、*カスタム イベント*はデータ ポイン�
 
     telemetry.trackEvent("WinGame");
 
-ここでは、"WinGame"は、Application Insights ポータルに表示される名前です。[概要] ブレードでカスタム イベントのタイルをクリックします。
+ここでは、"WinGame"は、Application Insights ポータルに表示される名前です。
 
-![portal.azure.com でアプリケーション リソースを参照する](./media/app-insights-api-custom-events-metrics/01-custom.png)
+イベントの数を表示するには、[[メトリックス エクスプローラー]](app-insights-metrics-explorer.md) ブレードを開き、新しいグラフを追加して、[イベント] を選択します。
+
+![](./media/app-insights-api-custom-events-metrics/01-custom.png)
+
+さまざまなイベントの数を比較するには、グラフの種類を [グリッド] に設定し、イベント名でグループ化します。
+
+![](./media/app-insights-api-custom-events-metrics/07-grid.png)
 
 
-グラフはイベント名でグループ化されるため、最も重要なイベントの相対的寄与率を確認できます。これを制御するには、グラフを選択し、グループ化コントロールを使用します。
-
-![グラフを選択し、グループ化を設定する](./media/app-insights-api-custom-events-metrics/02-segment.png)
-
-グラフの下にある一覧から、イベント名を選択します。クリックし、イベントの個別インスタンスを表示します。
+グリッドでイベント名をクリックすると、そのイベントの個々の発生の情報が表示されます。
 
 ![イベントをドリルスルーする](./media/app-insights-api-custom-events-metrics/03-instances.png)
 
 任意のインスタンスをクリックすると、詳細が表示されます。
 
+検索またはメトリックス エクスプローラーで特定のイベントを対象にするには、ブレードのフィルターを対象となるイベントの名前に設定します。
 
+![[フィルター] を開き、イベント名を展開して、1 つ以上の値を選択する](./media/app-insights-api-custom-events-metrics/06-filter.png)
 
 ## メトリックを追跡する
 
@@ -541,7 +545,7 @@ ASP.NET Web MVC アプリケーションでの例:
 
 **JavaScript Web クライアント**の場合、[JavaScript テレメトリ初期化子](#js-initializer)を使用します。
 
-標準コレクション モジュールからのデータなど、**すべてのテレメトリにプロパティを追加する**には、[テレメトリ初期化子を作成](app-insights-api-filtering-sampling.md#add-properties)します。
+標準コレクション モジュールのデータなど、**すべてのテレメトリにプロパティを追加する**には、[テレメトリ初期化子を作成](app-insights-api-filtering-sampling.md#add-properties)します。
 
 
 ## テレメトリのサンプリング、フィルター処理、および処理 
@@ -549,8 +553,8 @@ ASP.NET Web MVC アプリケーションでの例:
 SDK からテレメトリを送信する前に、テレメトリを処理するコードを記述することができます。この処理では、HTTP 要求のコレクションや依存関係のコレクションなど、標準的なテレメトリ モジュールから送信されるデータも対象となります。
 
 * テレメトリへの[プロパティの追加](app-insights-api-filtering-sampling.md#add-properties) - たとえば、バージョン番号や、他のプロパティから算出された値などです。
-* [サンプリング](app-insights-api-filtering-sampling.md#sampling)では、表示されるメトリックに影響を与えることなく、また、例外、要求、ページ ビューなどの関連する項目間を移動して問題を診断する機能に影響を与えることなく、アプリからポータルに送信するデータの量が削減されます。
-* [フィルター処理](app-insights-api-filtering-sampling.md#filtering)の場合もまたデータ量が削減されます。何を送信して何を破棄するかを操作できますが、メトリックへの影響を考慮する必要があります。項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
+* [サンプリング](app-insights-api-filtering-sampling.md#sampling)では、表示されるメトリックに影響を与えず、例外、要求、ページ ビューなどの関連項目間を移動して問題を診断する機能にも影響を与えずに、アプリからポータルに送信されるデータの量が削減されます。
+* [フィルター処理](app-insights-api-filtering-sampling.md#filtering)によってもデータ量が削減されます。何を送信して何を破棄するかを操作できますが、メトリックへの影響を考慮する必要があります。項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
 
 [詳細情報](app-insights-api-filtering-sampling.md)
 
@@ -568,7 +572,7 @@ SDK からテレメトリを送信する前に、テレメトリを処理する�
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
-**選択されている標準のコレクターを無効にする**には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config][config] 内の該当する行を削除するか、またはコメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
+パフォーマンス カウンター、HTTP 要求、依存関係など、**選択されている標準のコレクターを無効にする**には、[ApplicationInsights.config][config] 内の該当する行を削除するか、コメントにします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
 ## <a name="debug"></a>開発者モード
 
@@ -654,16 +658,24 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
 ## 制限
 
-アプリケーションごとのメトリックとイベントの数には制限があります。
+アプリケーションごと (インストルメンテーション キーごと) のメトリックとイベントの数には制限があります。
 
-1. インストルメンテーション キー (つまり、アプリケーション) ごとに 1 秒あたり最大 500 のテレメトリ データ ポイント。これには、SDK モジュールによって送信される標準テレメトリと、コードによって送信されるカスタム イベント、メトリック、およびその他のテレメトリの両方が含まれます。
+1. インストルメンテーション キーごとに個別に適用される 1 秒あたりの最大レート。上限を超えると、一部のデータが破棄されます。
+ * TrackTrace 呼び出しとキャプチャされたログ データの場合、1 秒あたり最大 500 データ ポイント (無料の価格レベルの場合、1 秒あたり 100 データ ポイント)。
+ * モジュールまたは TrackException 呼び出しによってキャプチャされた例外の場合、1 秒あたり最大 50 データ ポイント。 
+ * SDK モジュールによって送信される標準テレメトリと、コードによって送信されるカスタム イベント、メトリックなどのテレメトリの両方を含む、他のすべてのデータの場合、1 秒あたり最大 500 データ ポイント (無料の価格レベルの場合、1 秒あたり 100 データ ポイント)。
+1. [価格レベル](app-insights-pricing.md)に応じた 1 か月あたりのデータ総量。
 1.	アプリケーションに対して最大 200 の一意のメトリックの名前と 200 の一意のプロパティの名前。メトリックには、TrackMetric を通じて送信されるデータと、イベントなどの他のデータ型の測定値が含まれます。メトリックとプロパティの名前は、データ型にスコープが制限されず、インストルメンテーション キーごとにグローバルです。
 2.	各プロパティに対する一意の値は 100 未満であり、プロパティは、フィルタリングとグループ化のみに使用できます。一意の値が 100 を超えた後も、プロパティは検索とフィルタリングに使用できますが、フィルター処理には使用できなくなります。
 3.	要求名やページの URL などの標準プロパティは、1 週間あたりの 1000 の一意な値に制限されます。1000 の一意の値を超えると、追加の値は「その他の値」としてマークされます。元の値は、全文テキスト検索とフィルタリングに引き続き使用できます。
 
-* *質問: データは、どのくらいの期間保持されますか。*
+*データ速度の上限に達するのを回避する方法*
 
-    [データの保持とプライバシーに関するページ][data]を参照してください。
+* 最新の SDK をインストールして、[サンプリング](app-insights-sampling.md)を使用します。
+
+*データが保持される期間*
+
+* [データの保持とプライバシー][data]に関するページを参照してください。
 
 
 ## リファレンス ドキュメント
@@ -715,7 +727,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 [data]: app-insights-data-retention-privacy.md
 [diagnostic]: app-insights-diagnostic-search.md
 [exceptions]: app-insights-asp-net-exceptions.md
-[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[greenbrown]: app-insights-asp-net.md
 [java]: app-insights-java-get-started.md
 [metrics]: app-insights-metrics-explorer.md
 [qna]: app-insights-troubleshoot-faq.md
@@ -724,4 +736,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

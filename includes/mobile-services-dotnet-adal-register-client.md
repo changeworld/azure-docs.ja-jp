@@ -28,7 +28,4 @@
 
 これで、モバイル サービスが、アプリケーションからシングル サインオン ログインを受信するように AAD で構成されます。
 
-
-[Azure の管理ポータル]: https://manage.windowsazure.com/
-
-<!-----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

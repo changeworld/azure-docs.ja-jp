@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
-このチュートリアルでは、Active Directory 認証ライブラリ (ADAL) を使用して、クイック スタート プロジェクトに認証を追加します。「[Mobile Services アプリへの認証の追加]」チュートリアルに説明されている Mobile Apps SDK を使用して、より少ない構成で認証を有効にすることもできます。ADAL のこのトピックでは、エンド ユーザー向けのより統合された認証方法を説明します。ADAL には、その他の AAD 保護されたリソースにアクセスするための豊富な機能も用意されています。
+このチュートリアルでは、Active Directory 認証ライブラリ (ADAL) を使用して、クイック スタート プロジェクトに認証を追加します。「[Add authentication to your app (アプリケーションに認証を追加する)]」チュートリアルに説明されている Mobile Apps SDK を使用して、より少ない構成で認証を有効にすることもできます。ADAL のこのトピックでは、エンド ユーザー向けのより統合された認証方法を説明します。ADAL には、その他の AAD 保護されたリソースにアクセスするための豊富な機能も用意されています。
 
 ADAL を使用してユーザーを認証できるようにするには、Azure Active Directory (AAD) テナントにアプリケーションを登録する必要があります。この処理は 2 段階の手順で実行されます。まず、App Service を登録し、App Service に対するアクセス許可を公開する必要があります。次に、iOS アプリを登録し、これらのアクセス許可へのアクセス権を付与する必要があります。
 
@@ -98,7 +98,7 @@ ADAL を使用してユーザーを認証できるようにするには、Azure 
             }];
         }
 
-4. 上記の `loginAndGetData` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com にする必要があります。この値は、[Microsoft Azure の管理ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
+4. 前の `loginAndGetData` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com である必要があります。この値は、[Azure クラシック ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
 
 5. 上記の `loginAndGetData` メソッドのコードで、**INSERT-RESOURCE-URI-HERE** をモバイル アプリの**アプリ ID の URI** に置き換えます。[Azure Active Directory でモバイル アプリを構成する方法]に関するトピックに従った場合、アプリ ID の URI は https://contosogateway.azurewebsites.net/login/aad のようになります。
 
@@ -118,9 +118,9 @@ ADAL を使用してユーザーを認証できるようにするには、Azure 
 
 <!-- URLs. -->
 [Azure Active Directory でモバイル アプリを構成する方法]: app-service-mobile-how-to-configure-active-directory-authentication.md
-[Microsoft Azure の管理ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [iOS 向け Active Directory 認証ライブラリ]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
 [Mobile Apps の使用]: app-service-mobile-ios-get-started.md
-[Mobile Services アプリへの認証の追加]: app-service-mobile-ios-get-started-users.md
+[Add authentication to your app (アプリケーションに認証を追加する)]: app-service-mobile-ios-get-started-users.md
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="10/13/2015"
+	ms.date="12/01/2015"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -23,10 +23,10 @@
 **1 つのデータベース**
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](sql-database-import.md)
+- [Azure portal](sql-database-import.md)
 - [PowerShell](sql-database-import-powershell.md)
 
-この記事は、[Azure プレビュー ポータル](https://portal.azure.com)を使用して BACPAC ファイルから新しい Azure SQL Database を作成する手順について説明します。
+この記事は、[Azure ポータル](https://portal.azure.com)を使用して BACPAC ファイルから新しい Azure SQL Database を作成する手順について説明します。
 
 BACPAC は、データベース スキーマとデータを含む .bacpac ファイルです。詳細については、「[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx)」の「バックアップ パッケージ (.bacpac)」を参照してください。
 
@@ -47,7 +47,7 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 
 次のように、インポートするデータベースの [SQL Server] ブレードを開きます。
 
-1.	[Azure プレビュー ポータル](https://portal.azure.com)に移動します。
+1.	[Azure ポータル](https://portal.azure.com)にアクセスします。
 2.	**[すべて参照]** をクリックします。
 3.	**[SQL Server]** をクリックします。
 2.	データベースを復元するサーバーをクリックします。
@@ -87,7 +87,7 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 ## サーバーにデータベースが存在することの確認
 
 2.	**[すべて参照]** をクリックします。
-3.	**[SQL Database]** をクリックしし、新しいデータベースが**オンライン**であることを確認します。
+3.	**[SQL データベース]** をクリックしし、新しいデータベースが**オンライン**であることを確認します。
 
 
 
@@ -110,4 +110,4 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

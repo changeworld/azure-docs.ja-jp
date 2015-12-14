@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/16/2015" 
+	ms.date="12/02/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management ポリシー リファレンス
@@ -34,6 +34,11 @@
 	-	[制御フロー][] - ブール[式][]の評価の結果に基づいてポリシー ステートメントを条件付きで適用します。
 	-	[要求の転送][] - バックエンド サービスに要求を転送します。
 	-	[Event Hub へのログ記録][] - [Logger](https://msdn.microsoft.com/library/azure/mt592020.aspx#Logger) エンティティによって定義されたメッセージ ターゲットに、指定された形式でメッセージを送信します。
+	-	[応答を返す](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) - パイプラインの実行を中止し、指定された応答を呼び出し元に直接返します。
+	-	[1 方向の要求を送信する](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest) - 指定された URL に要求を送信します。応答は待機しません。
+	-	[要求を送信する](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) - 指定された URL に要求を送信します。
+	-	[要求メソッドを設定する](https://msdn.microsoft.com/library/azure/dn894085.aspx#SetRequestMethod) - 要求の HTTP メソッドを変更できます。
+	-	[状態コードを設定する](https://msdn.microsoft.com/library/azure/dn894085.aspx#SetStatus) - HTTP 状態コードを指定された値に変更します。
 	-	[変数の設定][] - 名前付き[コンテキスト][]変数の値を、後でアクセスできるように保持します。
 -	[認証ポリシー][]
 	-	[基本認証][] -基本認証を使用してバックエンド サービスで認証します。
@@ -110,4 +115,4 @@
 
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

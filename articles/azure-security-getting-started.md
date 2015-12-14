@@ -33,27 +33,27 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 
 IT インフラストラクチャ、データ、およびアプリケーションへのアクセスの制御は、非常に重要です。Microsoft Azure では、そのための機能が、Azure Active Directory、Azure Storage などのサービスと、さまざまな標準および API のサポートによって提供されています。
 
-[Azure Active Directory](active-directory-whatis.md) (Azure AD) は、組織のユーザー、グループ、およびオブジェクトの認証、承認、およびアクセス制御を行う ID リポジトリとエンジンです。開発者は、Azure AD を使用すると、ID 管理をアプリケーションに効果的に統合できます。[SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0)、[WS-Federation](https://msdn.microsoft.com/library/bb498017.aspx)、[OpenID Connect](http://openid.net/connect/) など、業界標準のプロトコルがサポートされているため、.NET、Java、Node.js、PHP など幅広いプラットフォームでのサインインを実現できます。
+[Azure Active Directory](active-directory-whatis.md) (Azure AD) は、組織のユーザー、グループ、およびオブジェクトの認証、承認、およびアクセス制御を行う ID リポジトリとエンジンです。Azure AD を使用すると、開発者はアプリケーションで ID 管理を効果的に統合できます。[SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0)、[WS-Federation](https://msdn.microsoft.com/library/bb498017.aspx)、[OpenID Connect](http://openid.net/connect/) など、業界標準のプロトコルがサポートされているため、.NET、Java、Node.js、PHP など幅広いプラットフォームでのサインインを実現できます。
 
-REST ベースの Graph API により、開発者は任意のプラットフォームからディレクトリへの書き込みと読み取りを行うことができます。[OAuth 2.0](http://oauth.net/2/) がサポートされることで、開発者は、マイクロソフトやサード パーティの Web API と連携するモバイル アプリケーションや Web アプリケーションを作成できるほか、セキュリティに優れた独自の Web API を作成することができます。.NET、Windows ストア、iOS、Android 向けにオープン ソースのクライアント ライブラリが用意されており、その他のライブラリも開発が進められています。
+REST ベースの Graph API により、開発者は任意のプラットフォームからディレクトリに対して読み取りと書き込みを行うことができます。[OAuth 2.0](http://oauth.net/2/) がサポートされることで、開発者は、マイクロソフトやサード パーティの Web API と連携するモバイル アプリケーションや Web アプリケーションを作成できるほか、セキュリティに優れた独自の Web API を作成することができます。.NET、Windows ストア、iOS、Android 向けにオープン ソースのクライアント ライブラリが用意されており、その他のライブラリも開発が進められています。
 
 ### Azure の ID 管理とアクセス管理のしくみ
 
-Azure AD は組織のスタンドアロン クラウド ディレクトリや、既存のオンプレミス Active Directory との統合ソリューションとして使用できます。一部の統合機能には、ディレクトリ同期とシングル サインオン (SSO) が含まれています。これらの機能により、既存のオンプレミス ID の有効範囲がクラウドまで拡張され、管理者とエンド ユーザーのエクスペリエンスが向上します。
+Azure AD は、組織のスタンドアロン クラウド ディレクトリとして使用することも、既存のオンプレミス Active Directory との統合ソリューションとして使用することもできます。一部の統合機能には、ディレクトリ同期とシングル サインオン (SSO) が含まれています。これらの機能により、既存のオンプレミス ID の有効範囲がクラウドまで拡張され、管理者とエンド ユーザーのエクスペリエンスが向上します。
 
 ID およびアクセス管理に関しては、他にも次のような機能があります。
 
 -   Azure AD では、どこでホストされているかにかかわらず、SaaS アプリケーションへの [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) が可能です。一部のアプリケーションは Azure AD とフェデレーションされ、他のアプリケーションはパスワード SSO を使用します。フェデレーション アプリケーションでは、ユーザー プロビジョニングとパスワード保管もサポートできます。
 
--   [Azure Storage](https://azure.microsoft.com/ja-JP/services/storage/) のデータへのアクセスは、認証を通じて制御されます。各ストレージ アカウントには、プライマリ キー ([ストレージ アカウント キー](https://msdn.microsoft.com/library/azure/ee460785.aspx): SAK) とセカンダリ秘密キー ([Shared Access Signature](storage-dotnet-shared-access-signature-part-1.md): SAS) があります。
+-   [Azure Storage](https://azure.microsoft.com/services/storage/) のデータへのアクセスは、認証によって制御されます。各ストレージ アカウントには、プライマリ キー ([ストレージ アカウント キー](https://msdn.microsoft.com/library/azure/ee460785.aspx): SAK) とセカンダリ秘密キー ([Shared Access Signature](storage-dotnet-shared-access-signature-part-1.md): SAS) があります。
 
 -   Azure AD は、フェデレーションを通じて、ID をサービスとして提供します (オンプレミス ディレクトリとの [Active Directory フェデレーション サービス](fundamentals-identity.md)、同期、およびレプリケーションを使用)。
 
 -   [Azure Multi-Factor Authentication (MFA)](multi-factor-authentication.md) は、ユーザーにモバイル アプリ、電話、またはテキスト メッセージを使用したサインインの確認も要求する多要素認証サービスです。Azure MFA サーバーによってオンプレミス リソースをセキュリティで保護するために Azure AD と共に使用したり、SDK を利用してカスタム アプリケーションやディレクトリと共に使用したりすることができます。
 
--   [Azure AD ドメイン サービス](https://azure.microsoft.com/ja-JP/services/active-directory-ds/)を使用すると、ドメイン コントローラーをデプロイせずに Azure 仮想マシンをドメインに参加させることができます。ユーザーは会社の Active Directory 資格情報を使用してこれらの仮想マシンにサインインし、グループ ポリシーによってすべての Azure 仮想マシンにセキュリティ基準を適用することで、ドメインに参加している仮想マシンを管理できます。
+-   [Azure AD ドメイン サービス](https://azure.microsoft.com/services/active-directory-ds/)を使用すると、ドメイン コントローラーをデプロイしなくても、Azure 仮想マシンをドメインに参加させることができます。ユーザーは会社の Active Directory 資格情報を使用してこれらの仮想マシンにサインインし、グループ ポリシーによってすべての Azure 仮想マシンにセキュリティ基準を適用することで、ドメインに参加している仮想マシンを管理できます。
 
--   [Azure Active Directory B2C](https://azure.microsoft.com/ja-JP/services/active-directory-b2c/) は、数億個の ID を扱うコンシューマー向けアプリケーション用の高可用性グローバル ID 管理サービスを提供します。モバイルと Web の両方のプラットフォームにわたる統合を実現できます。コンシューマーは、既に持っているソーシャル アカウントを使用するか、新たな資格情報を作成して、すべてのアプリケーションにログオンできます。その際のエクスペリエンスは、カスタマイズすることができます。
+-   [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) は、数億個の ID を扱うコンシューマー向けアプリケーション用の高可用性グローバル ID 管理サービスを提供します。モバイルと Web の両方のプラットフォームにわたる統合を実現できます。コンシューマーは、既に持っているソーシャル アカウントを使用するか、新たな資格情報を作成して、すべてのアプリケーションにログオンできます。その際のエクスペリエンスは、カスタマイズすることができます。
 
 ##データ アクセス制御と暗号化
 
@@ -107,7 +107,7 @@ Azure では、ハイパーバイザー ファイアウォール (パケット �
 
 共有マルチ テナント アーキテクチャ内のデプロイ間で、許可されておらず、意図されてしない情報の転送が行われないようにするために分離を維持することは、もう 1 つの重要なクラウド セキュリティ要件です。
 
-Azure は、[ネットワーク アクセス制御](https://azure.microsoft.com/ja-JP/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)、VLAN 分離による分掌、ACL、ロード バランサー、および IP フィルターを実装しています。仮想マシンが受信する外部トラフィックは、定義したポートとプロトコルだけに制限されます。ネットワーク フィルター処理は、なりすましトラフィックを避けるために実装されていて、送受信トラフィックをトラステッド プラットフォーム コンポーネントだけに制限します。トラフィック フローのポリシーは、既定ではトラフィックを拒否する境界保護デバイス上で実装されます。
+Azure は、VLAN 分離、ACL、ロード バランサー、および IP フィルターによる[ネットワーク アクセス制御](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)と分離を実装しています。仮想マシンが受信する外部トラフィックは、定義したポートとプロトコルだけに制限されます。ネットワーク フィルター処理は、なりすましトラフィックを避けるために実装されていて、送受信トラフィックをトラステッド プラットフォーム コンポーネントだけに制限します。トラフィック フローのポリシーは、既定ではトラフィックを拒否する境界保護デバイス上で実装されます。
 
 ![Azure での Microsoft マルウェア対策](./media/azure-security-getting-started\sec-azgsfig3.PNG)
 
@@ -133,7 +133,7 @@ Azure の[分散仮想ネットワーク](http://download.microsoft.com/download
 
 サブスクリプションには、分離された複数のプライベート ネットワークを含めることができ、ファイアウォール、負荷分散、およびネットワーク アドレス変換も含めることができます。
 
-Azure では、各 Azure クラスター内に、トラフィックを論理的に分離するための、ネットワーク分離の 3 つのプライマリ レベルがあります。[仮想ローカル エリア ネットワーク](https://azure.microsoft.com/ja-JP/services/virtual-network/) (VLAN) は、利用者のトラフィックをその他の Azure ネットワークから分離するために使用されます。クラスターの外部からの Azure ネットワークへのアクセスは、ロード バランサーによって制限されます。
+Azure では、各 Azure クラスター内に、トラフィックを論理的に分離するための、ネットワーク分離の 3 つのプライマリ レベルがあります。[仮想ローカル エリア ネットワーク](https://azure.microsoft.com/services/virtual-network/) (VLAN) は、顧客のトラフィックを Azure ネットワークの残りの部分から分離するために使用されます。クラスターの外部からの Azure ネットワークへのアクセスは、ロード バランサーによって制限されます。
 
 VM 間のネットワーク トラフィックは、ハイパーバイザーの仮想スイッチを通じて渡される必要があります。ルート OS の IP フィルター コンポーネントは、ゲスト VM からルート VM を分離し、各ゲスト VM を分離します。このコンポーネントは、テナントのノードとパブリック インターネット間の通信を制限するために、顧客のサービスの構成に基づいてトラフィックのフィルター処理を実行し、他のテナントから分離します。
 
@@ -147,7 +147,7 @@ IP フィルターは、ゲスト VM による以下の動作を防ぐために�
 
 - 不適切なブロードキャスト トラフィックの送受信
 
-仮想マシンは、[Azure 仮想ネットワーク](https://azure.microsoft.com/ja-JP/documentation/services/virtual-network/)上に配置できます。これらの仮想ネットワークは、オンプレミス環境で構成するネットワークに似ています。この環境では、通常、ネットワークが仮想スイッチに関連付けられています。同じ Azure Virtual Network に接続されている仮想マシンどうしは、追加の構成なしで通信できます。また、Azure Virtual Network 内に別のサブネットを構成するオプションもあります。
+仮想マシンは、[Azure Virtual Networks](https://azure.microsoft.com/documentation/services/virtual-network/) に配置できます。これらの仮想ネットワークは、オンプレミス環境で構成するネットワークに似ています。この環境では、通常、ネットワークが仮想スイッチに関連付けられています。同じ Azure Virtual Network に接続されている仮想マシンどうしは、追加の構成なしで通信できます。また、Azure Virtual Network 内に別のサブネットを構成するオプションもあります。
 
 Azure Virtual Network で安全な通信を行うために、以下の Azure Virtual Network テクノロジを使用できます。
 
@@ -155,13 +155,13 @@ Azure Virtual Network で安全な通信を行うために、以下の Azure Vir
 
 -   [**ユーザー定義ルーティング**](virtual-networks-udr-overview.md)。仮想ネットワーク セキュリティ アプライアンスに到達するように特定のサブネットに送信されるパケットの次のホップを指定するユーザー定義のルートを作成することによって、仮想アプライアンスを通じてパケットのルーティングを制御できます。
 
--   [**IP 転送**](virtual-networks-udr-overview.md)。仮想ネットワーク セキュリティ アプライアンスは、自分宛てではない着信トラフィックを受信できることが必要です。VM が自分以外の宛先に向かうトラフィックを受信するためには、VM の IP 転送を有効にします。
+-   [**IP 転送**](virtual-networks-udr-overview.md)。仮想ネットワーク セキュリティ アプライアンスは、自分宛てではない着信トラフィックを受信できることが必要です。VM が自分以外の宛先へのトラフィックを受信できるようにするには、VM の IP 転送を有効にします。
 
--   [**強制トンネリング**](vpn-gateway-about-forced-tunneling.md)。強制トンネリングでは、検査および監査のために、Azure Virtual Network 内の仮想マシンによって生成されたインターネットへのすべてのトラフィックをサイト間の VPN トンネルを介してオンプレミス ロケーションにリダイレクトまたは "強制" できます。
+-   [**強制トンネリング**](vpn-gateway-about-forced-tunneling.md)。強制トンネリングでは、検査と監査のために、Azure Virtual Network 内の仮想マシンによって生成されたインターネットへのすべてのトラフィックを、サイト間 VPN トンネルを介してオンプレミスの場所にリダイレクトまたは "強制的に" 戻すことができます。
 
 -   [**エンドポイント** ACL](virtual-machines-set-up-endpoints.md)。エンドポイント ACL を定義することで、どのコンピューターがインターネットから Azure Virtual Network 上の仮想マシンへの着信接続を許可されるかを制御できます。
 
--   [**パートナー ネットワーク セキュリティ ソリューション**](https://azure.microsoft.com/ja-JP/marketplace/)。Azure Marketplace から、多くのパートナー ネットワーク セキュリティ ソリューションにアクセスできます。
+-   [**パートナー ネットワーク セキュリティ ソリューション**](https://azure.microsoft.com/marketplace/)。Azure Marketplace から、多くのパートナー ネットワーク セキュリティ ソリューションにアクセスできます。
 
 ### Azure での仮想ネットワークとファイアウォールの実装方法
 
@@ -183,15 +183,15 @@ Azure で通常業務の一環として、または障害発生時に、顧客�
 
 クラウドに格納されたデータは、悪用されず、転送中の機密性と整合性が維持されるように、十分に保護されている必要があります。たとえば、組織のポリシー ベースの監査可能な ID およびアクセス管理メカニズムと結び付いたネットワーク制御などです。
 
-組み込みの暗号化テクノロジを使用すると、デプロイ内やデプロイ間の通信、Azure リージョン間の通信、および Azure からオンプレミス データセンターへの通信を暗号化できます。[リモート デスクトップ セッション](virtual-machines-log-on-windows-server.md)、[リモート Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx)、および [Azure 管理ポータル](https://azure.microsoft.com/ja-JP/overview/preview-portal/)を介した仮想マシンへの管理アクセスは、常に暗号化されます。
+組み込みの暗号化テクノロジを使用すると、デプロイ内やデプロイ間の通信、Azure リージョン間の通信、および Azure からオンプレミス データセンターへの通信を暗号化できます。[リモート デスクトップ セッション](virtual-machines-log-on-windows-server.md)、[リモート Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx)、および [Microsoft Azure 管理ポータル](https://azure.microsoft.com/overview/preview-portal/)を介した仮想マシンへの管理者アクセスは、常に暗号化されます。
 
 オンプレミス データセンターをクラウドに安全に拡張するために、Azure には [サイト間 VPN](vpn-gateway-create-site-to-site-rm-powershell.md) と [ポイント対サイト VPN](vpn-gateway-point-to-site-create.md) や、[ExpressRoute](expressroute-introduction.md) との専用リンクが用意されています (VPN 経由での Azure 仮想ネットワークへの接続は暗号化されます)。
 
 ### Azure での安全なリモート アクセスの実装方法
 
-Azure ポータルへの接続は、常に認証される必要があり、SSL や TLS を必要とします。セキュリティで保護された管理ができるように、管理証明書を構成することができます。[SSTP](https://technet.microsoft.com/ja-JP/magazine/2007.06.cableguy.aspx)、[IPsec](https://en.wikipedia.org/wiki/IPsec) など、セキュリティで保護された業界標準プロトコルが完全にサポートされています。
+Azure ポータルへの接続は、常に認証される必要があり、SSL や TLS を必要とします。セキュリティで保護された管理ができるように、管理証明書を構成することができます。[SSTP](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx)、[IPsec](https://en.wikipedia.org/wiki/IPsec) など、セキュリティで保護された業界標準プロトコルが完全にサポートされています。
 
-[Azure ExpressRoute](expressroute-introduction.md) は、Azure のデータセンターとオンプレミスや共用環境にあるインフラストラクチャの間でプライベート接続を作成するサービスです。ExpressRoute 接続では、公共のインターネットを利用できません。一般的なインターネット ベースのリンクよりも信頼性が高く、高速で、待機時間が少なく、セキュリティの高い接続が提供されます。オンプレミスと Azure の間のデータ転送に ExpressRoute 接続を使用することで、大きなコスト上のメリットが得られる場合もあります。
+[Azure ExpressRoute](expressroute-introduction.md) を使用すると、Azure のデータセンターとオンプレミスや共用環境にあるインフラストラクチャ間にプライベート接続を作成できます。ExpressRoute 接続では、公共のインターネットを利用できません。一般的なインターネット ベースのリンクよりも信頼性が高く、高速で、待機時間が少なく、セキュリティの高い接続が提供されます。オンプレミスと Azure の間のデータ転送に ExpressRoute 接続を使用することで、大きなコスト上のメリットが得られる場合もあります。
 
 ##ログ記録と監視
 
@@ -209,7 +209,7 @@ Azure 管理者は、ログへのアクセスを認証および制御される�
 
 Microsoft は、Syslog プロトコルを使用してネットワーク デバイスからログを収集し、Microsoft 監査コレクション サービス (ACS) を使用してホスト サーバーからログを収集しています。これらのログはログ データベースに格納され、不審なイベントがあると、このデータベースから Microsoft 管理者への直接の警告が生成されます。管理者は、これらのログにアクセスして分析することができます。
 
-[Azure 診断](https://msdn.microsoft.com/library/azure/gg433048.aspx)は、Azure で実行されているアプリケーションから診断データを収集できるようにするための Azure の機能です。診断データは、デバッグ、トラブルシューティング、パフォーマンス測定、リソース使用状況の監視、トラフィック解析と容量計画、監査などに使用できます。収集された診断データは、保存用に Azure ストレージ アカウントに転送できます。転送は、スケジュールして実行することも、オンデマンドで実行することもできます。「[Microsoft Azure のセキュリティと監査ログの管理](azure-security-audit-log-management.md)」という記事では、情報の収集と分析の方法について詳しく説明しています。
+[Azure 診断](https://msdn.microsoft.com/library/azure/gg433048.aspx)は、Azure で実行されているアプリケーションから診断データを収集できるようにするための Azure の機能です。診断データは、デバッグとトラブルシューティング、パフォーマンスの測定、リソース使用状況の監視、トラフィック分析とキャパシティ プランニング、監査などに使用できます。収集された診断データは、保存用に Azure ストレージ アカウントに転送できます。転送は、スケジュールして実行することも、オンデマンドで実行することもできます。「[Microsoft Azure のセキュリティと監査ログの管理](azure-security-audit-log-management.md)」という記事では、情報の収集と分析の方法について詳しく説明しています。
 
 ##脅威の緩和
 
@@ -229,11 +229,11 @@ Azure には、脅威の緩和を実装し、お客様の環境での潜在的�
 
 -   Microsoft の侵入テストには、"[レッド チーム](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)" も含まれています。このテストでは、Microsoft のセキュリティ専門家が Azure の実際の運用システム (お客様のシステム以外) を攻撃して、現実の高度な継続的脅威に対する防御を検証します。
 
--   Azure プラットフォーム全体のセキュリティ更新プログラムの配布とインストールは、統合されたデプロイ システムが管理しています。
+-   Azure プラットフォーム全体にわたるセキュリティ更新プログラムの配布とインストールは、統合されたデプロイ システムが管理しています。
 
 ##次のステップ
 
-[Azure セキュリティ センター](https://azure.microsoft.com/ja-JP/support/trust-center/)
+[Azure のトラスト センター](https://azure.microsoft.com/support/trust-center/)
 
 [Azure セキュリティ チームのブログ](http://blogs.msdn.com/b/azuresecurity/)
 
@@ -241,4 +241,4 @@ Azure には、脅威の緩和を実装し、お客様の環境での潜在的�
 
 [Active Directory のブログ](http://blogs.technet.com/b/ad/)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

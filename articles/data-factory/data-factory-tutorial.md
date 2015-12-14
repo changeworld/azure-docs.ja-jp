@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Data Factory を使用してログ ファイルの移動と処理を行う (Azure ポータル)" 
-	description="この高度なチュートリアルでは、現実に近いシナリオについて説明し、そのシナリオを Azure ポータルで Azure Data Factory サービスと Data Factory Editor を使用して実装します。" 
+	pageTitle="Azure Data Factory を使用してログ ファイルの移動と処理を行う (Azure クラシック ポータル)" 
+	description="この高度なチュートリアルでは、現実に近いシナリオについて説明し、そのシナリオを Azure クラシック ポータルで Azure Data Factory サービスと Data Factory Editor を使用して実装します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -48,9 +48,9 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	- **Azure SQL Database** - サーバー、データベース、ユーザー名、パスワード。
 	- **Azure HDInsight クラスター** - HDInsight クラスター名、ユーザー名、パスワード、このクラスターに関連付けられている Azure ストレージのアカウント名とアカウント キー。独自の HDInsight クラスターではなく、オンデマンド HDInsight クラスターを使用する場合は、この手順を省略できます。  
 8. **Azure PowerShell** を起動して次のコマンドを実行します。Azure PowerShell は開いたままにしておきます。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
-	- **Add-AzureAccount** を実行し、Azure プレビュー ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
+	- **Add-AzureAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
 	- **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
-	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure プレビュー ポータルで使用したものと同じである必要があります。	
+	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。	
 
 ## 概要
 全体のワークフローは以下のとおりです。
@@ -99,7 +99,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 		![MarketingCampaignPipeline][image-data-factory-tutorial-analyze-marketing-campaign-pipeline]
 
 
-6. [手順 6. パイプラインとデータ スライスを監視する](#MainStep6)。この手順では、Azure ポータルを使用して、パイプライン、テーブル、およびデータ スライスを監視します。
+6. [手順 6. パイプラインとデータ スライスを監視する](#MainStep6)。この手順では、Azure クラシック ポータルを使用して、パイプライン、テーブル、データ スライスを監視します。
 
 ## <a name="MainStep1"></a> 手順 1. サンプル データとスクリプトをアップロードする
 この手順では、すべてのサンプル データ (すべてのログと参照データを含む) とワークフローによって呼び出される Hive/Pig スクリプトをアップロードします。実行するスクリプトは、"**MarketingCampaigns**" という名前の Azure SQL Database、テーブル、ユーザー定義型、およびストアド プロシージャの作成も行います。
@@ -120,7 +120,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	
 	または、C:\\ADFWalkthrough\\Scripts フォルダーにあるファイルを使用して pig/hive スクリプトおよびサンプル ファイルを BLOB ストレージ内の adfwalkthrough コンテナーにアップロードし、Azure SQL データベースである MarketingCamapaigns 内に MarketingCampaignEffectiveness テーブルを作成することも可能です。
    
-2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、**Azure 管理ポータル**またはマスター データベース上の **sp\_set\_firewall\_rule** を使用して、コンピューターの IP アドレスに対するファイアウォール規則を作成します。この変更が有効になるまで最大で 5 分かかる場合があります。[Azure SQL のファイアウォール規則の設定][azure-sql-firewall]に関するページを参照してください。
+2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、[Azure クラシック ポータル](http://manage.windowsazure.com)、またはマスター データベース上の **sp\_set\_firewall\_rule** を使用して、コンピューターの IP アドレスに対するファイアウォール規則を作成します。この変更が有効になるまで最大で 5 分かかる場合があります。[Azure SQL のファイアウォール規則の設定][azure-sql-firewall]に関するページを参照してください。
 4. Azure PowerShell で、サンプルを展開した場所に移動します (例: **C:\\ADFWalkthrough**)。
 5. **uploadSampleDataAndScripts.ps1** を実行します。 
 6. スクリプトが正常に実行されると、以下が表示されます。
@@ -157,7 +157,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 ## <a name="MainStep2"></a> 手順 2. Azure Data Factory を作成する
 この手順では、"**LogProcessingFactory**" という名前の Azure Data Factory を作成します。
 
-1.	[Azure プレビュー ポータル][azure-preview-portal]にログインした後、左下隅にある **[新規]** をクリックして、**[作成]** ブレードで **[データ分析]** をクリックし、**[データ分析]** ブレードで **[Data Factory]** をクリックします。 
+1.	[Azure ポータル][azure-portal]にログインした後、左下隅にある **[新規]** をクリックして、**[作成]** ブレードで **[データ分析]** をクリックし、**[データ分析]** ブレードで **[Data Factory]** をクリックします。 
 
 	![New->DataFactory][image-data-factory-new-datafactory-menu]
 
@@ -173,9 +173,10 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	
 		![リソース グループの作成][image-data-factory-tutorial-create-resourcegroup]
 7. **[リソース グループ名]** の **[ADF]** を選択します。  
-8.	**[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加]** が既定で選択されていることに注意してください。これにより、スタート画面 (Azure プレビュー ポータルへのログイン時に表示される画面) のデータ ファクトリにリンクが追加されます。
+8.	**[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加]** が既定で選択されていることに注意してください。これにより、スタート画面 (Azure ポータルへのログイン時に表示される画面) のデータ ファクトリにリンクが追加されます。
 
-	![Create Data Factory Blade][image-data-factory-tutorial-create-datafactory]
+	![データ ファクトリ作成ブレード  
+][image-data-factory-tutorial-create-datafactory]
 
 9.	**[新しいデータ ファクトリ]** ブレードで、**[作成]** をクリックしてデータ ファクトリを作成します。
 10.	データ ファクトリが作成されると、**LogProcessingFactory** というタイトルの **[Data Factory]** ブレードが表示されます。
@@ -192,7 +193,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
  
 ## <a name="MainStep3"></a>手順 3. リンクされたサービスを作成する
 
-> [AZURE.NOTE]この記事では、Azure ポータル、具体的には Data Factory エディターを使用して、リンクされたサービス、テーブル、パイプラインを作成する方法について説明します。Azure PowerShell を使用してこのチュートリアルを実行する場合は、[Azure PowerShell の使用に関するチュートリアル][adftutorial-using-powershell]を参照してください。
+> [AZURE.NOTE]この記事では、Azure クラシック ポータル (具体的には Data Factory エディター) を使用して、リンクされたサービス、テーブル、パイプラインを作成する方法について説明します。Azure PowerShell を使用してこのチュートリアルを実行する場合は、[Azure PowerShell の使用に関するチュートリアル][adftutorial-using-powershell]を参照してください。
 
 この手順では、以下のリンクされたサービスを作成します:
 
@@ -248,7 +249,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 		    	    "type": "HDInsightOnDemandLinkedService",
 		    	    "clusterSize": "4",
 		    	    "timeToLive": "00:05:00",
-		    	    "version": "3.1",
+		    	    "version": "3.2",
 		    	    "linkedServiceName": "HDInsightStorageLinkedService"
 		    	}
 			}
@@ -332,11 +333,11 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 1. **[LogProcessingFactory]** の **[Data Factory]** ブレードで、**[ダイアグラム]** をクリックします。 
 
-	![ダイアグラム リンク][image-data-factory-tutorial-diagram-link]
+	![[ダイアグラム] リンク][image-data-factory-tutorial-diagram-link]
 
 2. 表示されているダイアグラムは並べ替えることが可能で、以下のダイアグラムは上部が直接の入力を示し、下部が出力を示しています。**PartitionGameLogsPipeline** の出力が EnrichGameLogsPipeline に入力として渡され、**EnrichGameLogsPipeline** の出力が **AnalyzeMarketingCampaignPipeline** に渡されていることがわかります。タイトルをダブルクリックして、ブレードが示すアーティファクトについての詳細を表示します。
 
-	![ダイアグラム ビュー][image-data-factory-tutorial-diagram-view]
+	![[ダイアグラム] ビュー][image-data-factory-tutorial-diagram-view]
 
 3. **[AnalyzeMarketingCampaignPipeline]** を右クリックし、**[パイプラインを開く]** をクリックします。アクティビティの入力呼び出し力のデータセットと、パイプライン内のすべてのアクティビティが表示されます。
  
@@ -371,7 +372,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 6. **[RawGameEventsTable]** の [テーブル] ブレードに、すべてのスライスが表示されています。以下のスクリーン ショットでは、すべてのスライスが **[準備完了]** の状態で、問題のあるスライスはありません。これは、そのデータがすぐに処理できることを意味します。
 
-	![RawGameEventsTable の テーブル ブレード][image-data-factory-monitoring-raw-game-events-table]
+	![[RawGameEventsTable] の [テーブル] ブレード][image-data-factory-monitoring-raw-game-events-table]
 
 	**[最近更新したスライス]** と **[最近失敗したスライス]** の一覧は、どちらも **[最終更新時刻]** で並べ替えられます。次の状況では、スライスの更新時刻が変更されます。
 
@@ -390,7 +391,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 10.	すべてのスライスの **[状態]** が **[準備完了]** になっていることを確認します。 
 11.	**[準備完了]** になっているスライスの 1 つをクリックし、そのスライスの **[データ スライス]** ブレードを表示します。
 
-	![RawGameEventsTable の [データ スライス] ブレード][image-data-factory-monitoring-raw-game-events-table-dataslice-blade]
+	![[RawGameEventsTable] の [データ スライス] ブレード][image-data-factory-monitoring-raw-game-events-table-dataslice-blade]
 
 	エラーが発生していた場合、ここに **[失敗]** という状態が表示されます。また、スライスがどの程度の速さで処理されるかによって、両方のスライスが **[準備完了]** 状態で表示される場合もあれば、**[検証を保留中]** 状態で表示される場合もあります。
 
@@ -400,7 +401,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 12.	**[データ スライス]** ブレードで、**[アクティビティの実行]** の一覧から [実行] をクリックします。そのスライスの [アクティビティの実行] ブレードが表示されるはずです。以下の **[アクティビティの実行の詳細]** ブレードが表示されます。
 
-	![アクティビティの実行の詳細 ブレード][image-data-factory-monitoring-activity-run-details]
+	![[アクティビティの実行の詳細] ブレード][image-data-factory-monitoring-activity-run-details]
 
 13.	**[ダウンロード]** をクリックしてファイルをダウンロードします。この画面は、HDInsight の処理で発生するエラーのトラブルシューティングを行うときに、特に役立ちます。
 	 
@@ -431,7 +432,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [tutorial-onpremises]: data-factory-tutorial-extend-onpremises.md
 [download-azure-powershell]: ../powershell-install-configure.md
 
-[azure-preview-portal]: http://portal.azure.com
+[azure-portal]: http://portal.azure.com
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -524,4 +525,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial/DataFactoryCreateButton.png
 
-<!-----HONumber=AcomDC_1125_2015--->
+<!---HONumber=AcomDC_1203_2015-->

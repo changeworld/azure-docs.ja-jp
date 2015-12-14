@@ -13,10 +13,22 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/10/2015"
+	ms.date="11/30/2015"
 	ms.author="kenhoff;Justinha;curtand"/>
 
+
 # アクセスおよび使用状況レポートを表示します。
+
+## レポート ドキュメントの記事
+
+ - [レポート API](active-directory-reporting-api-getting-started.md)
+ - [イベントの監査](active-directory-reporting-audit-events.md)
+ - [保持](active-directory-reporting-retention.md)
+ - [プレビュー](active-directory-reporting-previews.md)
+ - [Search](active-directory-reporting-search.md)
+ - [バックフィル](active-directory-reporting-backfill.md)
+ - [待機時間](active-directory-reporting-latencies.md)
+ - ["Unknown Actor" イベント](active-directory-reporting-unknown-actor.md)
 
 Azure Active Directory のアクセスおよび使用状況レポートを使用すると、組織のディレクトリの整合性とセキュリティを表示できます。ディレクトリ管理者は、この情報を使用して、リスクを軽減するために適切に計画できるように、セキュリティ上のリスクがある箇所をより適切に確認できます。
 
@@ -163,7 +175,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 事前に統合された Microsoft アプリケーションには、Office 365、Sharepoint、Microsoft Azure 管理ポータルなどが含まれます。
 
-![アプリケーションの使用状況の概要](./media/active-directory-view-access-usage-reports/applicationUsage.PNG)
+![アプリケーションの利用状況の概要](./media/active-directory-view-access-usage-reports/applicationUsage.PNG)
 
 
 ### アプリケーションの使用状況: 詳細
@@ -275,4 +287,4 @@ Azure AD のレポート通知の詳細については、「[Azure Active Direct
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

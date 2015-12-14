@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/15/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイス コントローラーを管理する
@@ -47,14 +47,11 @@
 
 > - 以下の手順は、StorSimple の物理デバイスにのみ当てはまります。仮想デバイスの起動、停止、再起動については、[仮想デバイスの作業](storsimple-virtual-device-u1.md#work-with-the-storsimple-virtual-device)に関するページを参照してください。
 
-単一のデバイス コントローラーを再起動またはシャットダウンするには、次の手段があります。
+StorSimple Manager サービスの Azure クラシック ポータルまたは StorSimple 用 Windows PowerShell を使用して、1 つのデバイス コント ローラーを再起動またはシャットダウンすることができます。
 
-- StorSimple Manager サービスの管理ポータル
-- StorSimple 用 Windows PowerShell。 
+Azure クラシック ポータルからデバイス コントローラーを管理するには、次の手順を実行します。
 
-管理ポータルからデバイス コントローラーを管理するには、次の手順を実行します。
-
-#### 管理ポータルでコントローラーを再起動またはシャットダウンするには
+#### クラシック ポータルでコントローラーを再起動またはシャットダウンするには
 
 1. **[デバイス]、[メンテナンス]** の順にクリックします。
 
@@ -96,7 +93,7 @@
 
 
 #### StorSimple 用 Windows PowerShell でコントローラーを再起動またはシャットダウンするには
-StorSimple デバイスの単一のコントローラーを管理ポータルからシャットダウンまたは再起動するには、次の手順を実行します。
+StorSimple デバイスの単一のコントローラーを Azure クラシック ポータルからシャットダウンまたは再起動するには、次の手順を実行します。
 
 
 1. リモート コンピューターからシリアル コンソールまたは Telnet セッションを使ってデバイスにアクセスします。「[PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)」の手順に従い、コントローラー 0 またはコントローラー 1 に接続します。
@@ -128,7 +125,7 @@ StorSimple デバイスの単一のコントローラーを管理ポータルか
 
 #### StorSimple デバイスをシャットダウンするには
 
-1. [コントローラーの再起動とシャットダウン](#restart-or-shut-down-a-single-controller)の手順に従って、デバイス上のパッシブ コントローラーを特定し、シャットダウンします。この操作は、管理ポータルまたは StorSimple 用 Windows PowerShell でのみ実行できます。
+1. [コントローラーの再起動とシャットダウン](#restart-or-shut-down-a-single-controller)の手順に従って、デバイス上のパッシブ コントローラーを特定し、シャットダウンします。この操作は、Azure クラシック ポータルまたは StorSimple 用 Windows PowerShell でのみ実行できます。
 2. 上の手順を繰り返してアクティブ コントローラーをシャットダウンします。
 3. ここでデバイスのバックプレーンを確認する必要があります。2 つのコントローラーが完全にシャットダウンされた後、両方のコントローラーのステータス LED が赤色に点滅しています。この時点でデバイスの電源を完全にオフにする必要がある場合は、両方の電源/冷却モジュール (PCM) の電源スイッチをオフの位置に設定してください。これでデバイスの電源が切れます。
 
@@ -224,4 +221,4 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 - StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

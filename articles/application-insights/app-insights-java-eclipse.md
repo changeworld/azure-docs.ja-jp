@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.date="11/25/2015" 
 	ms.author="awills"/>
  
 # Eclipse で Java 用に Application Insights を使う
@@ -99,7 +99,7 @@ HTML ファイルの先頭にコード スニペットを挿入します。
 
 #### クライアント側のデータの表示
 
-更新された Web ページを開いて使用します。1 ～ 2 分待ってから、Application Insights に戻り、[使用状況] ブレードを更新します。
+更新された Web ページを開いて使用します。1 ～ 2 分待ってから、Application Insights に戻り、[使用状況] ブレードを開きます ([概要] ブレードで下へスクロールし、[使用状況] をクリックします)。
 
 [使用状況] ブレードに、ページ ビュー、ユーザー、セッションのメトリックが表示されます。
 
@@ -129,7 +129,7 @@ HTML ファイルの先頭にコード スニペットを挿入します。
 
 未処理の例外は、自動的に収集されます。
 
-![](./media/app-insights-java-get-started/21-exceptions.png)
+![](./media/app-insights-java-eclipse/21-exceptions.png)
 
 その他の例外に関するデータを収集するには 2 つのオプションがあります。
 
@@ -144,10 +144,10 @@ HTML ファイルの先頭にコード スニペットを挿入します。
 
 ## パフォーマンス カウンター
 
-**[サーバー]** タイルをクリックすると、一連のパフォーマンス カウンターが表示されます。
+概要ブレードで下にスクロールし、**[サーバー]** タイルをクリックします。一連のパフォーマンス カウンターが表示されます。
 
 
-![](./media/app-insights-java-get-started/11-perf-counters.png)
+![下にスクロールして [サーバー] タイルをクリック](./media/app-insights-java-eclipse/11-perf-counters.png)
 
 ### パフォーマンス カウンター コレクションをカスタマイズする
 
@@ -198,7 +198,7 @@ HTML ファイルの先頭にコード スニペットを挿入します。
 
 パフォーマンス カウンターは、[メトリックス エクスプローラー][metrics]でカスタム メトリックとして表示されます。
 
-![](./media/app-insights-java-get-started/12-custom-perfs.png)
+![](./media/app-insights-java-eclipse/12-custom-perfs.png)
 
 
 ### Unix パフォーマンス カウンター
@@ -207,7 +207,9 @@ HTML ファイルの先頭にコード スニペットを挿入します。
 
 ## 可用性 Web テスト
 
-Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。セットアップするには、概要ブレードの空の Web テスト グラフをクリックし、パブリック URL を入力します。
+Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。[設定するには][availability]、下にスクロールして [可用性] をクリックします。
+
+![下にスクロール、[可用性] をクリック、[Web テストを追加]](./media/app-insights-java-eclipse/31-config-web-test.png)
 
 応答時間のグラフが表示されます。また、サイトがダウンしている場合はメールによる通知を受け取ります。
 
@@ -258,4 +260,4 @@ Java Web アプリケーションに数行のコードを挿入して、ユー�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

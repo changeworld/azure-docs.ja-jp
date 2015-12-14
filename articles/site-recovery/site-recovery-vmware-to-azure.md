@@ -185,11 +185,11 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 **パブリック インターネット:** オンプレミスのサーバー (プロセス サーバー、保護対象サーバー) と Azure インフラストラクチャ コンポーネントのサーバー (構成サーバー、マスター ターゲット サーバー) 間におけるデータの通信とレプリケーションは、オンプレミスから、構成サーバーとマスター ターゲット サーバー上のパブリック エンドポイントへの安全な SSL/TLS 接続上で行われます。(唯一の例外は、プロセス サーバーとマスター ターゲット サーバー間の TCP ポート 9080 上の接続です。この接続は暗号化されません。レプリケーション プロトコルに関連して、レプリケーションのセットアップに使用される制御情報だけがこの接続でやり取りされます)。
 
-![Deployment diagram internet](./media/site-recovery-vmware-to-azure/ASRVmware_deploymentInternet.png)
+![インターネットのデプロイメント図](./media/site-recovery-vmware-to-azure/ASRVmware_deploymentInternet.png)
 
 **VPN:** オンプレミスのサーバー (プロセス サーバー、保護対象サーバー) と Azure インフラストラクチャ コンポーネントのサーバー (構成サーバー、マスター ターゲット サーバー) 間におけるデータの通信とレプリケーションは、オンプレミス ネットワークと、構成サーバーおよびマスター ターゲット サーバーのデプロイ先となる Azure Virtual Network とを結ぶ VPN 接続上で行われます。オンプレミス ネットワークが、ExpressRoute 接続またはサイト間 VPN 接続で Azure Virtual Network に接続されていることを確認してください。
 
-![Deployment diagram VPN](./media/site-recovery-vmware-to-azure/ASRVmware_deploymentVPN.png)
+![VPN のデプロイメント図](./media/site-recovery-vmware-to-azure/ASRVmware_deploymentVPN.png)
 
 
 ## ステップ 1: コンテナーの作成
@@ -273,12 +273,12 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 	- **[次へ]** をクリックすると、プロキシの接続を確認するテストが実行されます。
 	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合、アドレス、ポート、資格情報などの詳細を入力する必要があります。
 	- 次の URL にプロキシ経由でアクセスできる必要があります。
-		- *.hypervrecoverymanager.windowsazure.com
-		- *.accesscontrol.windows.net
-		- *.backup.windowsazure.com
-		- *.blob.core.windows.net
-		- *.store.core.windows.net
-	- IP アドレス ベースのファイアウォール ルールがある場合は、構成サーバーから「[Azure Datacenter の IP 範囲](https://msdn.microsoft.com/ja-jp/library/azure/dn175718.aspx)」で説明されている IP アドレスへの通信および HTTPS (443) プロトコルを許可するようにルールが設定されていることを確認します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+		- **.hypervrecoverymanager.windowsazure.com
+- **.accesscontrol.windows.net
+- **.backup.windowsazure.com
+- **.blob.core.windows.net
+- **.store.core.windows.net
+- IP アドレス ベースのファイアウォール ルールがある場合は、構成サーバーから「[Azure Datacenter の IP 範囲](https://msdn.microsoft.com/ja-JP/library/azure/dn175718.aspx)」で説明されている IP アドレスへの通信および HTTPS (443) プロトコルを許可するようにルールが設定されていることを確認します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
 	![プロキシの登録](./media/site-recovery-vmware-to-azure/ASRVMWare_RegistrationProxy.png)
 
@@ -564,10 +564,10 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 4. ソース Linux サーバーの /etc/hosts ファイルに、ローカル ホスト名を、すべての NIC に関連付けられた IP アドレスにマップするエントリが含まれることを確認します。
 5. 保護するマシンに最新の openssh、openssh-server、openssl の各パッケージをインストールします。
 6. SSH がポート 22 で有効であり実行中であることを確認します。 
-7. 以下の手順で、sshd_config ファイルで SFTP サブシステムとパスワード認証を有効にします。 
+7. 以下の手順で、sshd\_config ファイルで SFTP サブシステムとパスワード認証を有効にします。 
 
 	- a) root としてログインします。
-	- b) /etc/ssh/sshd_config ファイルで、**PasswordAuthentication** で始まる行を見つけます。
+	- b) /etc/ssh/sshd\_config ファイルで、**PasswordAuthentication** で始まる行を見つけます。
 	- c) この行のコメントを解除し、値 "no" を "yes" に変更します。
 
 		![Linux のモビリティ](./media/site-recovery-vmware-to-azure/ASRVMWare_LinuxPushMobility1.png)
@@ -592,7 +592,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 **Windows サーバーにモビリティ サービスを手動でインストールするには**、次のようにします。
 
-1. **Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe** パッケージを、前記の表のプロセス サーバーのディレクトリ パスからソース マシンにコピーします。
+1. **Microsoft-ASR\_UA\_8.4.0.0\_Windows\_GA\_28Jul2015\_release.exe** パッケージを、前記の表のプロセス サーバーのディレクトリ パスからソース マシンにコピーします。
 2. ソース マシンで実行可能ファイルを実行して、モビリティ サービスをインストールします。
 3. 次の手順のようにします。
 4. ロールとして **[モビリティ サービス]** を選択し、**[次へ]** をクリックします。
@@ -762,16 +762,16 @@ Azure で実行しているフェールオーバーされたマシンをオン�
 5. チェック マークをクリックして、新しいプロセス サーバーへのレプリケーションを開始します。重要な状態になったプロセス サーバーからすべての仮想マシンを削除すると、重大な警告はダッシュボードに表示されなくなります。
 
 
-## サード パーティ製ソフトウェアに関する通知および情報
+## Third-party software notices and information
 
 Do Not Translate or Localize
 
-The software and firmware running in the Microsoft product or service is based on or incorporates material from the projects listed below (collectively, “Third Party Code”).  Microsoft is the not original author of the Third Party Code.  The original copyright notice and license, under which Microsoft received such Third Party Code, are set forth below.
+マイクロソフトの製品またはサービスで実行されるソフトウェアおよびファームウェアは、以下に記載されたプロジェクトの情報 (総称して " サード パーティのコード" と呼びます) に基づくか、その情報を組み込んでいます。Microsoft is the not original author of the Third Party Code.マイクロソフトは、サード パーティのコードの元の作成者ではありません。元の著作権情報と、マイクロソフトがサード パーティのコードなどを受け取った際に適用された使用許諾契約は、以下に記載されています。
 
-The information in Section A is regarding Third Party Code components from the projects listed below. Such licenses and information are provided for informational purposes only.  This Third Party Code is being relicensed to you by Microsoft under Microsoft's software licensing terms for the Microsoft product or service.  
+セクション A の情報は、以下に記載されたプロジェクトに含まれるサード パーティのコードのコンポーネントに関するものです。Such licenses and information are provided for informational purposes only.このサード パーティのコードは、マイクロソフトの製品またはサービスに対するマイクロソフトのソフトウェア使用許諾契約条件の下で、マイクロソフトからお客様に使用が再許諾されています。
 
 The information in Section B is regarding Third Party Code components that are being made available to you by Microsoft under the original licensing terms.
 
-The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
+完全なファイルは、[Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=529428)から入手できる場合があります。マイクロソフトは、この契約の下で明示的には付与されないその他すべての権利を、黙示、禁反言、その他のいずれによるかを問わず留保します。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

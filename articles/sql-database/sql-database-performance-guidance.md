@@ -106,7 +106,7 @@ Standard と Premium のパフォーマンス レベル設定では、必要と�
 
 ### 障害復旧
 
-**障害回復**は、プライマリ SQL データベースで障害から復旧する機能です。
+**障害復旧**は、プライマリ SQL データベースで障害から復旧する機能です。
 
 *geo リストア*はすべてのサービス層で追加料金なしで利用できます。障害の発生時、最も新しい geo 冗長バックアップを利用し、任意の Azure リージョンにデータベースを復元できます。
 
@@ -115,7 +115,7 @@ Standard と Premium のパフォーマンス レベル設定では、必要と�
 詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
 
 ### 最大インメモリ OLTP ストレージ
-**最大インメモリ OLTP ストレージ**とは、Premium データベースの[インメモリ OLTP プレビュー](sql-database-in-memory.md)で利用できる最大ストレージ容量です。これは、*XTP インメモリ ストレージ*と呼ばれることもあります。Azure ポータルまたは **sys.dm\_db\_resource\_stats** ビューを利用し、インメモリ ストレージの使用を監視できます。監視の詳細については、「[OLTP インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)」を参照してください。
+**最大インメモリ OLTP ストレージ**とは、Premium データベースの[インメモリ OLTP プレビュー](sql-database-in-memory.md)で利用できる最大ストレージ容量です。これは、*XTP インメモリ ストレージ*と呼ばれることもあります。Azure クラシック ポータルまたは **sys.dm\_db\_resource\_stats** ビューを利用し、メモリ内ストレージの使用を監視できます。監視の詳細については、「[OLTP インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)」を参照してください。
 
 >[AZURE.NOTE]メモリ内 OLTP プレビューは現在のところ、単一データベースでのみサポートされており、エラスティック データベース プールのデータベースではサポートされていません。
 
@@ -168,7 +168,7 @@ SQL データベースのリソース使用をそのサービス層との関連�
 - [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 - [sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
->[AZURE.NOTE]Microsoft Azure 管理ポータルを使用し、リソース使用を表示することもできます。たとえば、「[サービス層 - パフォーマンスの監視](sql-database-service-tiers.md#monitoring-performance)」を参照してください。
+>[AZURE.NOTE]Azure クラシック ポータルを使用し、リソース使用を表示することもできます。たとえば、「[サービス層 - パフォーマンスの監視](sql-database-service-tiers.md#monitoring-performance)」を参照してください。
 
 ### sys.dm\_db\_resource\_stats の使用
 [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) ビューは各 SQL データベースにあり、サービス層との関連で最近リソース使用率データを提供します。CPU、データ IO、ログ書き込み、メモリの平均 (%) が 15 秒ごとに記録され、1 時間保持されます。
@@ -292,7 +292,7 @@ Azure SQL Database では、各サーバーの**マスター** データベー�
 このセクションでは、 Azure SQL Database を調整し、アプリケーションから最良のパフォーマンスを引き出し、可能な限り下位のパフォーマンス レベルで実行するための手法について説明します。多くの手法が従来の SQL Server 調整の最良事例と同じものですが、一部は Azure SQL Database に固有です。従来の SQL Server 手法を拡大し、Azure SQL Database に応用することもできます。その場合、データベースに利用されるリソースを調べ、さらに細かく調整するべき領域を見つけます。
 
 ### Query Performance Insight と Index Advisor
-SQL Database は Azure ポータルでデータベースのパフォーマンス問題を分析し、解消するための 2 つのツールを提供します。
+SQL Database は Azure クラシック ポータルでデータベースのパフォーマンス問題を分析し、解消するための 2 つのツールを提供します。
 
 - [Query Performance Insight](sql-database-query-performance.md)
 - [Index Advisor](sql-database-index-advisor.md)
@@ -489,6 +489,6 @@ Azure SQL Database 内で使用されるスケールアウト アーキテクチ
 
 ## まとめ
 
-Azure SQL Database のサービス層を利用すると、クラウドに構築する各種アプリケーションの水準を上げることができます。さらにアプリケーションの調整も頻繁に行うことで、アプリケーションのパフォーマンスが強力かつ予測可能となります。このドキュメントでは、特定のパフォーマンス レベルに問題なく適合するようにデータベースのリソース利用を最適化するための推奨手法について説明します。クラウド モデルにおいては調整は継続的に実施するものであり、それにより、各種のサービス層とそのパフォーマンス レベルにおいて、管理者はパフォーマンスを最大限に引き出し、同時に Microsoft Azure プラットフォームのコストを最小限に抑えることができます。
+Azure SQL Database のサービス層を利用すると、クラウドに構築する各種アプリケーションの水準を上げることができます。さらにアプリケーションの調整も頻繁に行うことで、アプリケーションのパフォーマンスが強力かつ予測可能となります。このドキュメントでは、特定のパフォーマンス レベルに問題なく適合するようにデータベースのリソース利用を最適化するための推奨手法について説明します。クラウド モデルにおいては調整は継続的に実施するものであり、それにより、各種のサービス層とそのパフォーマンス レベルにおいて、管理者はパフォーマンスを最大限に引き出し、同時に Microsoft Azure Platform のコストを最小限に抑えることができます。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

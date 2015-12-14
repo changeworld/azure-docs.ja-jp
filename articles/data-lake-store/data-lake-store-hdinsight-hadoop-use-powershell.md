@@ -43,9 +43,9 @@ PowerShell を使用して、Data Lake Store を使用するように HDInsight 
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/zh-CN/pricing/free-trial/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 - Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
-- **Windows SDK**。[ここ](https://dev.windows.com/zh-CN/downloads)からインストールできます。この機能は、セキュリティ証明書の作成に使用します。
+- **Windows SDK**。[ここ](https://dev.windows.com/ja-JP/downloads)からインストールできます。この機能は、セキュリティ証明書の作成に使用します。
 - **Azure PowerShell 1.0 以降**。手順については、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」を参照してください。
  
 
@@ -96,7 +96,7 @@ Data Lake Store を作成するには、次の手順に従います。
 
 ## Data Lake Store へのロールベースのアクセスの認証を設定する
 
-各 Azure サブスクリプションは Azure Active Directory と関連付けられます。Azure ポータルか Azure リソース マネージャー API を使ってサブスクリプションのリソースにアクセスするユーザーやサービスは、最初に Azure Active Directory での認証を実行する必要があります。Azure のサブスクリプションやサービスにアクセス権を付与するには、Azure リソースに対する該当するロールを割り当てます。サービスの場合は、サービス プリンシパルにより、Azure Active Directory (AAD) 内のサービスが識別されます。このセクションでは、Azure PowerShell を使用してアプリケーションのサービス プリンシパルを作成し、作成したサービス プリンシパルにロールを割り当てることで、HDInsight のようなアプリケーション サービスに Azure のリソース (先ほど作成した Azure Data Lake Store アカウント) へのアクセス権を付与する方法を説明します。
+各 Azure サブスクリプションは Azure Active Directory と関連付けられます。Azure クラシック ポータルか Azure リソース マネージャー API を使ってサブスクリプションのリソースにアクセスするユーザーやサービスは、最初に Azure Active Directory での認証を実行する必要があります。Azure のサブスクリプションやサービスにアクセス権を付与するには、Azure リソースに対する該当するロールを割り当てます。サービスの場合は、サービス プリンシパルにより、Azure Active Directory (AAD) 内のサービスが識別されます。このセクションでは、Azure PowerShell を使用してアプリケーションのサービス プリンシパルを作成し、作成したサービス プリンシパルにロールを割り当てることで、HDInsight のようなアプリケーション サービスに Azure のリソース (先ほど作成した Azure Data Lake Store アカウント) へのアクセス権を付与する方法を説明します。
 
 Azure Data Lake の Active Directory 認証を設定するには、次のタスクを行う必要があります。
 
@@ -105,7 +105,7 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
 
 ### 自己署名証明書の作成
 
-このセクションの手順を進める前に、[Windows SDK](https://dev.windows.com/zh-CN/downloads) がインストールされていることを確認してください。証明書の作成先となるディレクトリ (**C:\\mycertdir** など) も作成しておく必要があります。
+このセクションの手順を進める前に、[Windows SDK](https://dev.windows.com/ja-JP/downloads) がインストールされていることを確認してください。証明書の作成先となるディレクトリ (**C:\\mycertdir** など) も作成しておく必要があります。
 
 1. PowerShell ウィンドウで、Windows SDK をインストールした場所 (通常は `C:\Program Files (x86)\Windows Kits\10\bin\x86`) に移動し、[MakeCert][makecert] ユーティリティを使用して、自己署名証明書と秘密キーを作成します。次のコマンドを使用します。
 
@@ -265,7 +265,7 @@ Hive クエリを実行するには、次のコマンドレットを使用しま
 
 Data Lake Store を使用するように HDInsight クラスターを構成したら、HDFS シェル コマンドを使用してストアにアクセスできます。
 
-1. 新しい [Azure プレビュー ポータル](https://portal.azure.com)にサインオンします。
+1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
 
 2. **[参照]**、**[HDInsight クラスター]** の順にクリックし、作成した HDInsight クラスターをクリックします。
 
@@ -291,7 +291,7 @@ Data Lake Store を使用するように HDInsight クラスターを構成し�
 
 * [ポータル: Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-[makecert]: https://msdn.microsoft.com/zh-CN/library/windows/desktop/ff548309(v=vs.85).aspx
-[pvk2pfx]: https://msdn.microsoft.com/zh-CN/library/windows/desktop/ff550672(v=vs.85).aspx
+[makecert]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff548309(v=vs.85).aspx
+[pvk2pfx]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

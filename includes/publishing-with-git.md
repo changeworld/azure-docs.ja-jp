@@ -58,7 +58,7 @@ Web Apps では、さまざまなプログラミング言語で作成された�
 
 次に示している手順を実行して、Web アプリに対して Git リポジトリを有効にします。
 
-1. [Azure プレビュー ポータル]にログインします。
+1. [Azure ポータル]にログインします。
 
 2. Web アプリのブレードで、**[デプロイ]** セクションにスクロールし、**[継続的なデプロイの設定]** をクリックします。**[ソースの選択]** をクリックし、**[ローカル Git リポジトリ]** をクリックして **[OK]** をクリックします。
 
@@ -160,7 +160,7 @@ Azure によって、選択したリポジトリとの関連付けが作成さ�
 
 ### <a id="Step75"></a>BitBucket、CodePlex、Dropbox、GitHub、Mercurial からの Visual Studio ソリューションのデプロイ
 
-Visual Studio ソリューションを Azure App Service の Web アプリにプッシュすることは、単純な index.html ファイルをプッシュすることと同じくらい簡単です。Web Apps のデプロイ プロセスでは、NuGet 依存関係の復元やアプリケーション バイナリの構築などのすべての詳細が合理化されます。Git リポジトリでコードのみを維持し、Web Apps デプロイメントで残りを処理する、ソース管理のベスト プラクティスに従うことができます。
+Visual Studio ソリューションを Azure App Service の Web Apps にプッシュすることは、単純な index.html ファイルをプッシュすることと同じくらい簡単です。Web Apps のデプロイ プロセスでは、NuGet 依存関係の復元やアプリケーション バイナリの構築などのすべての詳細が合理化されます。Git リポジトリでコードのみを維持し、Web Apps デプロイメントで残りを処理する、ソース管理のベスト プラクティスに従うことができます。
 
 Visual Studio ソリューションを Web Apps にプッシュする手順は、ソリューションとリポジトリを次のように構成するのであれば、[前のセクション](#Step7)と同じです。
 
@@ -213,7 +213,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: ホスト 'hostname' を解決できませんでした
+**症状**: Couldn't resolve host 'hostname'
 
 **原因**: このエラーは、"azure" リモートを作成するときに入力したアドレス情報が間違っている場合に発生します。
 
@@ -221,7 +221,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: refs がなく、何も指定されていません。何も処理を行いません。'master' などの分岐を指定する必要があるものと思われます.
+**症状**: No refs in common and none specified; doing nothing.Perhaps you should specify a branch such as 'master'.
 
 **原因**: このエラーは、git push 操作を実行するときに分岐を指定せず、Git で使用される push.default 値を設定していない場合に発生します。
 
@@ -231,7 +231,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: src refspec [branchname] と一致するものがありません。
+**症状**: src refspec [branchname] does not match any.
 
 **原因**: このエラーは、"azure" リモートの master 以外の分岐にプッシュしようとした場合に発生します。
 
@@ -268,11 +268,10 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 [Azure Developer Center]: http://azure.microsoft.com/develop/overview/
-[Azure プレビュー ポータル]: https://portal.azure.com
+[Azure ポータル]: https://portal.azure.com
 [Git website]: http://git-scm.com
 [Installing Git (Git のインストール)]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)]: ../articles/install-configure-powershell.md
@@ -298,4 +297,4 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 [Using Dropbox to Share Git Repositories (Dropbox を使用した Git リポジトリの共有)]: https://gist.github.com/trey/2722927
 [Visual Studio Team Services を使用した Azure への継続的な配信]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

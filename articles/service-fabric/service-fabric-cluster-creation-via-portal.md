@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/16/2015"
+   ms.date="11/19/2015"
    ms.author="chackdan"/>
 
 # Azure ポータルからの Service Fabric クラスターのセットアップ
@@ -64,7 +64,7 @@
 
 
 
-1. **オプション: 配置プロパティ** - ここでは構成を追加する必要はありません。"NodeTypeName" の既定の配置プロパティがシステムによって追加されます。アプリケーションで必要な場合はさらに追加できます。 
+10. **オプション: 配置プロパティ** - ここでは構成を追加する必要はありません。"NodeTypeName" の既定の配置プロパティがシステムによって追加されます。アプリケーションで必要な場合はさらに追加できます。 
 
   
 ## セキュリティの構成
@@ -178,14 +178,11 @@ Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $applicationPath -A
 Register your application type with service fabric.
 
 ```powershell
-Register-ServiceFabricApplicationType -ApplicationPathInImageStore "WordCount"
-````
+Register-ServiceFabricApplicationType -ApplicationPathInImageStore "WordCount" ````
 
 登録したアプリケーションの種類で新しいインスタンスを作成します。
 
-```powershell
-New-ServiceFabricApplication -ApplicationName fabric:/WordCount -ApplicationTypeName WordCount -ApplicationTypeVersion 1.0.0.0
-````
+```powershell New-ServiceFabricApplication -ApplicationName fabric:/WordCount -ApplicationTypeName WordCount -ApplicationTypeVersion 1.0.0.0 ````
 
 選択したブラウザーが開き、アプリケーションがリッスンしているエンドポイントに接続します。このサンプル アプリケーションの場合、URL は次のようになります。
 
@@ -211,4 +208,4 @@ http://sfcluster4doc.westus.cloudapp.azure.com:31000
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
 
-<!-----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

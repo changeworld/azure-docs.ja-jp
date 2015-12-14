@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure プレビュー ポータルを使用する Azure Data Lake Analytics の管理 | Azure" 
+   pageTitle="Azure ポータルを使用する Azure Data Lake Analytics の管理 | Azure" 
    description="Data Lake Analytics のアカウント、データ ソース、ユーザー、およびジョブの管理方法について説明します。" 
    services="data-lake-analytics" 
    documentationCenter="" 
@@ -16,17 +16,17 @@
    ms.date="10/27/2015"
    ms.author="jgao"/>
 
-# Azure プレビュー ポータルを使用する Azure Data Lake Analytics の管理
+# Azure ポータルを使用する Azure Data Lake Analytics の管理
 
 [AZURE.INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Azure プレビュー ポータルを使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、およびジョブを管理する方法について説明します。他のツールを使用する管理のトピックを表示する場合は、上のタブ セレクターをクリックします。
+Azure ポータルを使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、およびジョブを管理する方法について説明します。他のツールを使用する管理のトピックを表示する場合は、上のタブ セレクターをクリックします。
 
 **前提条件**
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 
 
@@ -48,8 +48,8 @@ Data Lake Analytics ジョブを実行するには、Data Lake Analytics アカ�
 	- **名前**: Analytics アカウントに名前を付けます。
 	- **Data Lake Store**: 各 Data Lake Analytics アカウントには、従属する Azure Data Lake Store アカウントがあります。Data Lake Analytics アカウントと従属する Data Lake Store アカウントは、同じ Azure データ センターに配置する必要があります。以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。
 	- **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
-	- **リソース グループ**。既存の Azure リソース グループを選択するか、新しいものを作成します。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内のリソースを 1 つのグループと見なして作業できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。 
-	- **場所**。Data Lake Analytics アカウントの Azure データ センターを選択します。 
+	- **リソース グループ**。既存の Azure リソース グループを選択するか、新しいグループを作成します。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内のリソースを 1 つのグループと見なして作業できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。 
+	- **[場所]**: Data Lake Analytics アカウントの Azure データ センターを選択します。 
 
 8. **[作成]** をクリックします。ポータルのホーム画面が表示されます。新しいタイルはスタート画面に追加され、"Azure Data Lake Analytics のデプロイ" を示すラベルが付けられます。Data Lake Analytics アカウントの作成にはしばらく時間がかかります。アカウントが作成されると、ポータルの新しいブレードにアカウントが開きます。
 
@@ -145,7 +145,7 @@ Data Lake Analytics アカウントを作成する際には、既定のストレ
 
 <a name="upload-data-to-adls"></a> **Data Lake Store アカウントにファイルをアップロードするには**
 
-1. プレビュー ポータルで、左側のメニューにある **[参照]** をクリックしてから **[Data Lake Store]** をクリックします。
+1. ポータルで、左側のメニューにある **[参照]** をクリックしてから **[Data Lake Store]** をクリックします。
 2. データをアップロードする Data Lake Store アカウントをクリックします。既定の Data Lake ストレージ アカウントを検索する場合は、[こちら](#default-adl-account)を参照してください。
 3. 上部のメニューにある **[データ エクスプローラー]** をクリックします。
 4. **[新しいディレクトリ]** をクリックして新しいフォルダーを作成するか、フォルダー名をクリックしてフォルダーを変更します。
@@ -163,11 +163,11 @@ Data Lake Analytics では、Azure Active Directory でのロール ベースの
 
 |ロール|説明|
 |----|-----------|
-|所有者|リソースへのアクセスを含め、すべてを管理できます|
+|所有者|リソースへのアクセスを含め、すべてを管理できます。|
 |共同作成者|ポータルにアクセスし、ジョブを送信および監視します。ジョブを送信するには、共同作成者に Data Lake Store アカウントに対する読み取りまたは書き込みアクセス許可も必要になります。|
 |DataLakeAnalyticsDeveloper | ユーザーはジョブを送信し、すべてのジョブを監視できますが、取り消すことができるのは自分のジョブのみです。ユーザーの追加、アクセス許可の変更、アカウントの削除などを行って、自分のアカウントを管理することはできません。ジョブを実行するには、Data Lake Store アカウントに対する読み取りまたは書き込みアクセス許可が必要です。 | 
 |閲覧者|すべてを表示できますが、変更することはできません。|  
-|DevTest Lab ユーザー|すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます|  
+|DevTest Lab ユーザー|すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます。|  
 |ユーザーアクセスの管理者|Azure リソースに対するユーザー アクセスを管理します。|  
 
 Azure Active Directory ユーザーとセキュリティ グループの作成については、「[Azure Active Directory とは](active-directory-whatis.md)」を参照してください。
@@ -256,7 +256,7 @@ Azure Active Directory ユーザーとセキュリティ グループの作成�
 
 ##U-SQL カタログの表示
 
-[U-SQL カタログ](data-lake-analytics-use-u-sql-catalog.md)を使用して、U-SQL スクリプトで共有できるように、データとコードを構成します。カタログでは、Azure Data Lake のデータを使用して可能な限り最高のパフォーマンスを実現できます。Azure プレビュー ポータルで、U-SQL カタログを表示することができます。
+[U-SQL カタログ](data-lake-analytics-use-u-sql-catalog.md)を使用して、U-SQL スクリプトで共有できるように、データとコードを構成します。カタログでは、Azure Data Lake のデータを使用して可能な限り最高のパフォーマンスを実現できます。Azure ポータルで、U-SQL カタログを表示することができます。
 
 **U-SQL カタログを参照するには**
 
@@ -278,7 +278,7 @@ Data Lake Analtyics サービスには、次のコンポーネントを含める
 - Azure Data Lake Analytics アカウント
 - 必要な既定の Azure Data Lake Store アカウント
 - 追加の Azure Data Lake Store アカウント
-- 追加の Azure ストレージ アカウント
+- 追加の Azure Storage アカウント
 
 管理しやすくするために 1 つの ARM グループの下にこれらすべてのコンポーネントを作成することができます。
 
@@ -291,8 +291,8 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 ##関連項目 
 
 - [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-- [Azure プレビュー ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
+- [Azure ポータルで Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 - [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-powershell.md)
-- [Azure プレビュー ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+- [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

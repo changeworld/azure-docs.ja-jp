@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/26/2015"
+   ms.date="12/03/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # SQL Data Warehouse での統計の管理
@@ -47,7 +47,7 @@ SQL Data Warehouse で実現されるクエリのパフォーマンスを得る�
 
 そのため、SQL Data Warehouse の開発を開始するときは、次のパターンを実装することをお勧めします。- すべてのテーブルのすべての列の単一列統計を作成します。- クエリの結合句とグループ化句で使用される列の複数列統計を作成します。
 
-データを照会する方法を把握したら、特にテーブルの幅が広い場合に、このモデルを改良することもできます。さらに高度な手法については、[「統計管理の実装」](## 統計管理の実装) をご覧ください。
+データを照会する方法を把握したら、特にテーブルの幅が広い場合に、このモデルを改良することもできます。さらに高度な手法については、「統計管理の実装」(## 統計管理の実装) をご覧ください。
 
 ## 統計を更新する場合
 統計の更新をデータベース管理ルーチンに含めることが重要です。データベース内のデータの分布が変わったら、統計を更新する必要があります。そうしないと、クエリのパフォーマンスが十分に最適化されない可能性があり、労力をかけてクエリのトラブルシューティングをさらに行うだけの価値がなくなります。
@@ -441,8 +441,8 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW\_STATISTICS() が�
 <!--Image references-->
 
 <!--Link references--In actual articles, you only need a single period before the slash.-->
-[SQL Data Warehouse の開発の概要]: ./sql-data-warehouse-overview-develop/
-[一時テーブル]: ./sql-data-warehouse-develop-temporary-tables/
+[SQL Data Warehouse の開発の概要]: ./sql-data-warehouse-overview-develop.md
+[一時テーブル]: ./sql-data-warehouse-develop-temporary-tables.md
 
 <!-- External Links -->
 [基数推定]: https://msdn.microsoft.com/library/dn600374.aspx
@@ -459,4 +459,4 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW\_STATISTICS() が�
 [sys.table\_types]: https://msdn.microsoft.com/library/bb510623.aspx
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

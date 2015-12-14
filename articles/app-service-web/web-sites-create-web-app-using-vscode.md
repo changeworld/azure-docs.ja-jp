@@ -20,7 +20,7 @@
 
 ## 概要
 
-このチュートリアルでは、[Visual Studio コード (VS コード)](http://code.visualstudio.com//Docs/whyvscode) を使用して ASP.NET 5 Web アプリを作成したり、それを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイしたりする方法について説明します。ASP.NET 5 は、ASP.NET の刷新版です。ASP.NET 5 は、.NET を使用して最新のクラウドベースの Web アプリを構築するための、新しいオープン ソースのクロスプラットフォーム フレームワークです。詳細については、[ASP.NET 5 の概要](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)に関するページを参照してください。Azure Service Web Apps については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
+このチュートリアルでは、[Visual Studio コード (VS コード)](http://code.visualstudio.com//Docs/whyvscode) を使用して ASP.NET 5 Web アプリを作成したり、それを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイしたりする方法について説明します。ASP.NET 5 は、ASP.NET の刷新版です。ASP.NET 5 は、.NET を使用して最新のクラウドベースの Web アプリを構築するための、新しいオープン ソースのクロスプラットフォーム フレームワークです。詳細については、[ASP.NET 5 の概要](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)に関するページを参照してください。Azure App Service Web Apps については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
 
 [AZURE.INCLUDE [app-service-web-try-app-service.md](../../includes/app-service-web-try-app-service.md)]
 
@@ -139,11 +139,11 @@ Web アプリが作成され、アプリのすべての NuGet パッケージが
 
 3. ブラウザーを閉じます。コマンド ウィンドウで、**Ctrl + C** キーを押してアプリケーションをシャットダウンするか、コマンド ウィンドウを閉じます。
 
-## Azure プレビュー ポータルで Web アプリを作成する
+## Azure ポータルで Web アプリを作成する
 
-次の手順では、Azure プレビュー ポータルでの Web アプリの作成について説明します。
+次の手順では、Azure ポータルでの Web アプリの作成について説明します。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にログインします。
+1. [Azure ポータル](https://portal.azure.com)にログインします。
 
 2. ポータルの左下にある **[新規]** をクリックします。
 
@@ -153,7 +153,7 @@ Web アプリが作成され、アプリのすべての NuGet パッケージが
 
 4. **[名前]** に **SampleWebAppDemo** などの値を入力します。この名前は、一意にする必要があります。ポータルで名前を入力しようとするときに、この一意性が要求されます。したがって、別の値を選択する場合は、このチュートリアルに表示されるすべての **SampleWebAppDemo** をこの値に置き換える必要があります。
 
-5. 既存の **App Service プラン**を選択するか、新しいプランを作成します。新しいプランを作成する場合は、料金レベル、および場所などのオプションを選択します。App Service プランの詳細については、「[Azure App Service プランの詳細](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」の記事を参照してください。
+5. 既存の **App Service プラン**を選択するか、新しいプランを作成します。新しいプランを作成する場合は、価格レベル、および場所などのオプションを選択します。App Service プランの詳細については、「[Azure App Service プランの詳細](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」の記事を参照してください。
 
 	![Azure の新しい Web アプリ ブレード](./media/web-sites-create-web-app-using-vscode/10-azure-newappblade.png)
 
@@ -165,7 +165,7 @@ Web アプリが作成され、アプリのすべての NuGet パッケージが
 
 Git は、Azure App Service の Web アプリをデプロイするために使用できる分散型バージョン コントロール システムです。Web アプリ用に記述したコードはローカルの Git リポジトリに格納されます。このコードをリモート リポジトリにプッシュして Azure にデプロイします。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にログインします。
+1. [Azure ポータル](https://portal.azure.com)にログインします。
 
 2. **[参照]** をクリックします。
 
@@ -258,7 +258,7 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 
 		http://SampleWebAppDemo.azurewebsites.net
  
-* Azure プレビュー ポータルで、Web アプリの Web アプリ ブレードを見つけ、**[参照]** をクリックして、既定のブラウザーで
+* Azure ポータルで、Web アプリの Web アプリ ブレードを見つけ、**[参照]** をクリックして、既定のブラウザーで
 * アプリを表示します。
 
 ![Azure の Web アプリ](./media/web-sites-create-web-app-using-vscode/21-azurewebapp.png)
@@ -266,4 +266,4 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 ## 概要
 このチュートリアルでは、VS コードで、Web アプリを作成し、Azure にデプロイする方法を学習しました。VS コードの詳細については、[Visual Studio Code を使用する理由](https://code.visualstudio.com/Docs/)に関する記事をご覧ください。 App Service Web Apps の詳細については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

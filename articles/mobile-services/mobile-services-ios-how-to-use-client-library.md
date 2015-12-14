@@ -18,6 +18,11 @@
 
 # Azure Mobile Services 向け iOS クライアント ライブラリの使用方法
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 [AZURE.INCLUDE [mobile-services-selector-client-library](../../includes/mobile-services-selector-client-library.md)]
 
 このガイドでは、Azure Mobile Services の [iOS SDK] を使用して一般的なシナリオを実行する方法について説明します。Mobile Services を初めて使用する場合は、まず、「[Mobile Services のクイック スタート]」を実行してアカウントを構成し、テーブルを作成し、モバイル サービスを作成してください。
@@ -329,4 +334,4 @@ Azure Mobile Services は、次の 2 つの認証ワークフローをサポー�
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [競合ハンドラー]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

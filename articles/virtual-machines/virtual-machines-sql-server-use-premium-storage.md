@@ -680,7 +680,7 @@ SQL クライアント アプリケーションが .Net 4.5 SQLClient をサポ�
 
     Set-ClusterQuorum -NodeMajority  
 
-クラスター クォーラムの管理と構成の詳細については、「[Configure and Manage the Quorum in a Windows Server 2012 Failover Cluster (Windows Server 2012 フェールオーバー クラスターでのクォーラムの構成と管理)](https://technet.microsoft.com/ja-JP/library/jj612870.aspx)」を参照してください。
+クラスター クォーラムの管理と構成の詳細については、「[Configure and Manage the Quorum in a Windows Server 2012 Failover Cluster (Windows Server 2012 フェールオーバー クラスターでのクォーラムの構成と管理)](https://technet.microsoft.com/library/jj612870.aspx)」を参照してください。
 
 #### 手順 6. 既存のエンドポイントと ACL を抽出する
     #GET Endpoint info
@@ -1083,7 +1083,7 @@ TLOG ボリュームの場合、これらを NONE に設定する必要があり
     Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEndpoint -Name $epname -Protocol $prot -LocalPort $locport -PublicPort $pubport -ProbePort 59999 -ProbeIntervalInSeconds 5 -ProbeTimeoutInSeconds 11  -ProbeProtocol "TCP" -InternalLoadBalancerName $ilb -LBSetName $ilb -DirectServerReturn $true | Update-AzureVM
     
     
-    #STOP!!! CHECK in the Azure portal or Machine Endpoints through powershell that these Endpoints are created!
+    #STOP!!! CHECK in the Azure classic portal or Machine Endpoints through powershell that these Endpoints are created!
     
     #SET ACLs or Azure Network Security Groups & Windows FWs 
      
@@ -1118,7 +1118,7 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 
 ## その他のリソース
 - [Azure Premium Storage](../storage-premium-storage-preview-portal.md)
-- [仮想マシン](http://azure.microsoft.com/services/virtual-machines/)
+- [Virtual Machines](http://azure.microsoft.com/services/virtual-machines/)
 - [Azure の仮想マシンにおける SQL Server](virtual-machines-sql-server-infrastructure-services.md)
 
 <!-- IMAGES -->
@@ -1149,4 +1149,4 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 [25]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_15.png
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

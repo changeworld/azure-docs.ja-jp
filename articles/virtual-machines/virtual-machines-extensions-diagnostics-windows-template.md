@@ -72,7 +72,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
    
 **Microsoft.Azure.Diagnostics** の *publisher* プロパティや *type* プロパティの **IaaSDiagnostics** によって、Azure 診断の拡張機能が一意に識別されます。
 
-リソース グループの拡張機能を参照するには、*name* プロパティの値を使用することができます。このプロパティを具体的に **Microsoft.Insights.VMDiagnosticsSettings** に設定することで、Azure ポータルでの識別が簡単になり、Azure ポータルで監視グラフが正しく表示されるようになります。
+リソース グループの拡張機能を参照するには、*name* プロパティの値を使用することができます。このプロパティを具体的に **Microsoft.Insights.VMDiagnosticsSettings** に設定することで、Azure クラシック ポータルでの識別が簡単になり、Azure クラシック ポータルで監視グラフが正しく表示されるようになります。
 
 *typeHandlerVersion* は使用する拡張機能のバージョンを指定します。*autoUpgradeMinorVersion* を **true** に設定することで、使用できる拡張機能で最新のマイナー バージョンが表示されるようになります。新機能とバグの修正がすべて含まれる、最新の診断の拡張機能を常に使用できるように、*autoUpgradeMinorVersion* は常に **true** に設定することを強くお勧めします。
 
@@ -119,7 +119,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
         "wadmetricsresourceid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name , '/providers/', 'Microsoft.Compute/virtualMachines/')]",
         "wadcfgxend": ""><MetricAggregation scheduledTransferPeriod="PT1H"/><MetricAggregation scheduledTransferPeriod="PT1M"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>"
 
-上記の構成のメトリック定義の xml ノードは、xml の *PerformanceCounter* で先に定義されているパフォーマンス カウンターを集計して格納する方法を定義するため、重要な構成要素です。このメトリックにより、何によって Azure プレビュー ポータルのグラフとアラートが起動するかが決まるので、ポータルに監視データを表示する場合はメトリックを構成に含めることが重要です。
+上記の構成のメトリック定義の xml ノードは、xml の *PerformanceCounter* で先に定義されているパフォーマンス カウンターを集計して格納する方法を定義するため、重要な構成要素です。このメトリックにより、何によって Azure ポータルのグラフとアラートが起動するかが決まるので、ポータルに監視データを表示する場合はメトリックを構成に含めることが重要です。
 
 メトリックの定義に関する xml の例を次に示します。
 
@@ -165,4 +165,4 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 - [Azure PowerShell](virtual-machines-deploy-rmtemplates-powershell.md) または [Azure コマンド ライン](virtual-machines-deploy-rmtemplates-powershell.md)を使用してリソース マネージャー テンプレートをデプロイします
 - [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)について確認します
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

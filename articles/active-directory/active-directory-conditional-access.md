@@ -44,4 +44,4 @@ Azure Active Directory、Office 365、Microsoft Intune が提供する複数の�
 <!--Image references-->
 [1]: ./media/active-directory-conditional-access/condaccoverviewvsdx1.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -22,12 +22,12 @@
 # クラウド サービスを作成してデプロイする方法
 
 > [AZURE.SELECTOR]
-- [Azure Portal](cloud-services-how-to-create-deploy.md)
-- [Azure Preview Portal](cloud-services-how-to-create-deploy-portal.md)
+- [Azure classic portal](cloud-services-how-to-create-deploy.md)
+- [Azure portal](cloud-services-how-to-create-deploy-portal.md)
 
-Azure ポータルには、クラウド サービスを作成してデプロイする方法として、**[簡易作成]** と **[カスタム作成]** の 2 つの方法が用意されています。
+Azure クラシック ポータルには、クラウド サービスを作成してデプロイする方法として、**[簡易作成]** と **[カスタム作成]** の 2 つの方法が用意されています。
 
-このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、**[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。この方法を使うと、Azure ポータルに、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。クラウド サービスの作成時にデプロイする準備が整っている場合は、**[カスタム作成]** を使用して作成とデプロイを同時に実行できます。
+このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、**[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。この方法を使うと、Azure クラシック ポータルに、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。クラウド サービスの作成時にデプロイする準備が整っている場合は、**[カスタム作成]** を使用して作成とデプロイを同時に実行できます。
 
 > [AZURE.NOTE]Visual Studio Team Services (VSTS) からクラウド サービスを発行する予定の場合は、[簡易作成] を使用した後、**[クイック スタート]** またはダッシュボードから VSTS 発行を設定する必要があります。詳細については、「[Visual Studio Team Services を使用した Azure への継続的な配信に関するページ][TFSTutorialForCloudService]」を参照するか、**[クイック スタート]** ページのヘルプを参照してください。
 
@@ -61,12 +61,12 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 - 証明書を必要とするロール インスタンスがある場合は、証明書を作成します。クラウド サービスには、秘密キーのある .pfx ファイルが必要です。証明書は、クラウド サービスを作成してデプロイするときに、Azure にアップロードできます。証明書の詳細については、「[証明書の管理](http://msdn.microsoft.com/library/gg981929.aspx)」を参照してください。
 
-- クラウド サービスをアフィニティ グループにデプロイすることを予定している場合は、アフィニティ グループを作成します。アフィニティ グループを使用すると、自分のクラウド サービスおよびその他の Azure サービスをリージョンの同じ場所にデプロイすることができます。アフィニティ グループは、管理ポータルの **[Networks]** 領域の **[アフィニティ グループ]** ページで作成できます。詳細については、「[管理ポータルでのアフィニティ グループの作成](http://msdn.microsoft.com/library/jj156209.aspx)」を参照してください。
+- クラウド サービスをアフィニティ グループにデプロイすることを予定している場合は、アフィニティ グループを作成します。アフィニティ グループを使用すると、自分のクラウド サービスおよびその他の Azure サービスをリージョンの同じ場所にデプロイすることができます。アフィニティ グループは、Azure クラシック ポータルの **[Networks]** 領域にある **[アフィニティ グループ]** ページで作成できます。詳細については、[Azure クラシック ポータルでのアフィニティ グループの作成](http://msdn.microsoft.com/library/jj156209.aspx)に関する記述を参照してください。
 
 
 ## 方法: 簡易作成によるクラウド サービスの作成
 
-1. [管理ポータル](http://manage.windowsazure.com/)で、**[新規]**、**[Compute]**、**[クラウド サービス]**、**[簡易作成]** の順にクリックします。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com/)で、**[新規]**、**[コンピューティング]**、**[クラウド サービス]**、**[簡易作成]** の順にクリックします。
 
 	![CloudServices\_QuickCreate](./media/cloud-services-how-to-create-deploy/CloudServices_QuickCreate.png)
 
@@ -87,7 +87,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 ## 方法: クラウド サービスの証明書のアップロード
 
-1. [管理ポータル](http://manage.windowsazure.com/)で **[Cloud Services]** をクリックし、クラウド サービスの名前をクリックして、**[証明書]** をクリックします。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com/)で **[Cloud Services]** をクリックし、クラウド サービスの名前をクリックして、**[証明書]** をクリックします。
 
 	![CloudServices\_QuickCreate](./media/cloud-services-how-to-create-deploy/CloudServices_EmptyDashboard.png)
 
@@ -108,7 +108,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 ## 方法: クラウド サービスのデプロイ
 
-1. [管理ポータル](http://manage.windowsazure.com/)で **[Cloud Services]** をクリックし、クラウド サービスの名前をクリックして、**[ダッシュボード]** をクリックします。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com/)で **[Cloud Services]** をクリックし、クラウド サービスの名前をクリックして、**[ダッシュボード]** をクリックします。
 
 	運用環境でダッシュボードが開きます。この時点で、[ステージング] を選択すれば、アプリケーションをステージング環境にデプロイすることもできます。詳細については、「[Azure でのデプロイの管理](http://msdn.microsoft.com/library/gg433027.aspx)」を参照してください。
 
@@ -153,4 +153,4 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 * [クラウド サービスを管理する](cloud-services-how-to-manage.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

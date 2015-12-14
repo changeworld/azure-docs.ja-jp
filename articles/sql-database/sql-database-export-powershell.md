@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="10/23/2015"
+	ms.date="12/01/2015"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -22,7 +22,7 @@
 **1 つのデータベース**
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](sql-database-export.md)
+- [Azure portal](sql-database-export.md)
 - [PowerShell](sql-database-export-powershell.md)
 
 
@@ -56,11 +56,11 @@ BACPAC は Azure Storage BLOB コンテナーにエクスポートされます�
 
 ### Azure サブスクリプションを選択します。
 
-サブスクリプションを選択するには、サブスクリプション ID またはサブスクリプション名 (**-SubscriptionName**) が必要です。サブスクリプション ID は前の手順で示された情報からコピーできます。複数のサブスクリプションがあり、詳しい情報が必要な場合は、**Get-AzureSubscription** コマンドレットを実行し、結果セットから目的のサブスクリプション情報をコピーできます。ご利用のサブスクリプションを取得したら次のコマンドレットを実行します。
+サブスクリプションを選択するには、サブスクリプション ID またはサブスクリプション名 (**-SubscriptionName**) が必要になります。サブスクリプション ID は前の手順で示された情報からコピーできます。または、複数のサブスクリプションがあり、詳しい情報が必要な場合は、**Get-AzureSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。ご利用のサブスクリプションを取得したら次のコマンドレットを実行します。
 
 	Select-AzureSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
 
-**Select-AzureSubscription** を正常に実行すると、PowerShell プロンプトに戻ります。サブスクリプションが複数ある場合は、**Get-AzureSubscription** を実行し、使用するサブスクリプションが **IsCurrent: True** と表示されていることを確認できます。
+**Select-AzureSubscription** を正常に実行すると、PowerShell プロンプトに戻ります。サブスクリプションが複数ある場合は、**Get-AzureSubscription** を実行して、使用するサブスクリプションが **IsCurrent: True** と表示されていることを確認できます。
 
 
 ## 特定の環境用の変数の設定
@@ -73,7 +73,7 @@ BACPAC は Azure Storage BLOB コンテナーにエクスポートされます�
     $DatabaseName = "nameofdatabasetoexport"
     $BlobName = "filename.bacpac"
 
-[Azure プレビュー ポータル](https://portal.azure.com)で、ストレージ アカウントを参照して、これらの値を取得します。プライマリ アクセス キーは、ストレージ アカウントのブレードで **[すべての設定]** をクリックし、**[キー]** をクリックすることで検索できます。
+[Azure ポータル](https://portal.azure.com)でストレージ アカウントを参照し、これらの値を取得します。プライマリ アクセス キーは、ストレージ アカウントのブレードで **[すべての設定]** をクリックしてから **[キー]** をクリックすることで検索できます。
 
     $StorageName = "storageaccountname"
     $ContainerName = "blobcontainername"
@@ -145,7 +145,7 @@ BACPAC は Azure Storage BLOB コンテナーにエクスポートされます�
 ## その他のリソース
 
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [災害復旧訓練](sql-database-disaster-recovery-drills.md)
+- [障害復旧訓練](sql-database-disaster-recovery-drills.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

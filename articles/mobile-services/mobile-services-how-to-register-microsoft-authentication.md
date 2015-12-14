@@ -1,26 +1,31 @@
-<properties 
-	pageTitle="Microsoft 認証用の登録 | Microsoft Azure" 
-	description="Azure Mobile Services アプリケーションで Microsoft 認証用に登録する方法について説明します。" 
-	authors="ggailey777" 
-	services="mobile-services" 
-	documentationCenter="Mobile" 
-	manager="dwrede" 
+<properties
+	pageTitle="Microsoft 認証用の登録 | Microsoft Azure"
+	description="Azure Mobile Services アプリケーションで Microsoft 認証用に登録する方法について説明します。"
+	authors="ggailey777"
+	services="mobile-services"
+	documentationCenter="Mobile"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="NA" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="11/15/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="NA"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="11/15/2015"
 	ms.author="glenga"/>
 
 # 認証で Microsoft アカウントを使用するためのアプリケーションの登録
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 [AZURE.INCLUDE [mobile-services-selector-register-identity-provider](../../includes/mobile-services-selector-register-identity-provider.md)]
 
-## 概要 
+## 概要
 
 このトピックでは、Azure Mobile Services の ID プロバイダーとして Microsoft アカウントを使用できるようにモバイル アプリを登録する方法について説明します。Live SDK を使用するサービス主導型認証とクライアント主導型認証の両方に同じ手順が適用されます。
 
@@ -31,7 +36,7 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 >[AZURE.NOTE]Windows Phone 8、Windows Phone 8.1 Silverlight、および Windows 以外のアプリは、このセクションをスキップできます。
 
 1. アプリケーションをまだ登録していない場合は、[Windows デベロッパー センター](https://dev.windows.com/dashboard/Application/New)に移動して Microsoft アカウントでログインし、アプリの名前を入力して **[アプリ名の予約]** をクリックします。
- 
+
 3. Visual Studio で Windows アプリ プロジェクトを開き、ソリューション エクスプローラーで Windows Store アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。
 
   	![](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-store-association.png)
@@ -50,14 +55,14 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 
 このセクションの最初の手順は、Windows Phone 8、Windows Phone 8.1 Silverlight、および Windows 以外のストア アプリにのみ適用されます。これらのアプリの場合、Windows ストア アプリでだけ使用可能なパッケージ セキュリティ ID (SID) も無視できます。
 
-1. Windows ストア アプリ以外の場合、Microsoft アカウント デベロッパー センターの [[マイ アプリケーション]](http://go.microsoft.com/fwlink/p/?LinkId=262039) ページに移動し、Microsoft アカウントでログオンして (必要な場合)、 **[アプリケーションの作成]** をクリックし、**[アプリケーション名]** を入力して、**[同意する]** をクリックします。
+1. Windows ストア アプリ以外の場合、Microsoft アカウント デベロッパー センターの [[マイ アプリケーション]](http://go.microsoft.com/fwlink/p/?LinkId=262039) ページに移動し、Microsoft アカウントでログオンして (必要な場合)、**[アプリケーションの作成]** をクリックし、**[アプリケーション名]** を入力して、**[同意する]** をクリックします。
 
    	これにより Microsoft アカウントでアプリ名が確保され、アプリの Microsoft アカウント ページが表示されます。
 
 2. アプリの Microsoft アカウント ページで、**[API 設定]** をクリックして **[モバイル アプリまたはデスクトップ クライアント アプリ]** を有効にし、モバイル サービス URL を **[ターゲット ドメイン]** として設定して **[リダイレクト URL]** に次の URL 形式のいずれかを指定し、**[保存]** をクリックします。
 
 	+ **.NET バックエンド**: `https://<mobile_service>.azure-mobile.net/signin-microsoft`
-	+ **JavaScript バックエンド**: `https://<mobile_service>.azure-mobile.net/login/microsoftaccount` 
+	+ **JavaScript バックエンド**: `https://<mobile_service>.azure-mobile.net/login/microsoftaccount`
 
 	 >[AZURE.NOTE]Mobile Services バックエンドの種類として、正しいリダイレクト URL パスの形式を使用してください。これが正しくない場合、認証は失敗します。**[ルート ドメイン]** は自動的に設定されます。&nbsp;
 
@@ -65,16 +70,16 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 
 
 4. **[アプリ設定]** をクリックして、**[クライアント ID]**、**[クライアント シークレット]**、**[パッケージ SID]** の値を書き留めます。
-	
+
    	![Microsoft アカウント アプリの設定](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-app-push-auth.png)
-	
-	
+
+
     > [AZURE.NOTE]クライアント シークレットは、重要なセキュリティ資格情報です。クライアント シークレットは、他のユーザーと共有したり、アプリケーションで配信したりしないでください。Windows ストア アプリの登録でのみ、パッケージ SID フィールドが表示されます。
 
-4. [Microsoft Azure 管理ポータル]で、モバイル サービスの **[ID]** タブをクリックし、ID プロバイダーから入手したクライアント ID、クライアント シークレット、パッケージ SID を入力して、**[保存]** をクリックします。
-	
+4. [Microsoft Azure クラシック ポータル]で、モバイル サービスの **[ID]** タブをクリックし、ID プロバイダーから入手したクライアント ID、クライアント シークレット、パッケージ SID を入力して、**[保存]** をクリックします。
+
 	>[AZURE.NOTE]Windows Phone 8、Windows Phone Store 8.1 Silverlight、または Windows 以外のアプリの場合は、パッケージ SID を指定する必要はありません。
-	
+
 これで、Microsoft アカウントと連携するようにモバイル サービスとアプリケーションが構成されました。
 
 <!-- Anchors. -->
@@ -86,7 +91,6 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 
-[Microsoft Azure 管理ポータル]: https://manage.windowsazure.com/
- 
+[Microsoft Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

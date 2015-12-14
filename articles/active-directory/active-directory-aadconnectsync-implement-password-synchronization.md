@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect Sync - パスワード同期の実装 | Microsoft Azure"
+	pageTitle="Azure AD Connect Sync: パスワード同期の実装 | Microsoft Azure"
 	description="パスワード同期機能のしくみを理解するために必要な情報と環境でパスワード同期を有効にする方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -160,4 +160,4 @@ config ファイルの末尾に configuration/runtime ノードがあります�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

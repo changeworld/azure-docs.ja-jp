@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="08/23/2015"
+   ms.date="11/30/2015"
    ms.author="sameerch"/>
 
 
@@ -25,8 +25,7 @@ Twilio アカウントに接続して、SMS メッセージを送受信します
 
 1. Azure のスタート画面で、**[Marketplace]** を選択します。
 2. "Twilio コネクタ" を検索して選択し、**[作成]** を選択します。
-3. 次のように、Twilio コネクタを構成します。  
-![][1]  
+3. 次のように、Twilio コネクタを構成します。![][1]  
 	- **[場所]** - コネクタをデプロイする地域を選択します。
 	- **[サブスクリプション]** - コネクタを作成するサブスクリプションを選択します。
 	- **[リソース グループ]** - コネクタを格納するリソース グループを選択するか、作成します。
@@ -44,12 +43,9 @@ Twilio アカウントに接続して、SMS メッセージを送受信します
 ## Logic App で Twilio コネクタを使用する ##
 API アプリを作成すると、Logic App のアクションとして Twilio コネクタを使用できます。そのためには、次の手順を実行する必要があります。
 
-1.	新しいロジック アプリを作成し、Twilio コネクタと同じリソース グループを選択します。  
-![][2]
-2.	[トリガーとアクション] を選択して Logic Apps デザイナーを開き、フローを構成します。  
-![][3]
-3.	Twilio コネクタが右側のギャラリーの [API Apps in this resource group (このリソース グループの API Apps)] セクションに表示されます。  
-![][4]
+1.	新しいロジック アプリを作成し、Twilio コネクタと同じリソース グループを選択します。![][2]
+2.	[トリガーとアクション] を選択して Logic Apps デザイナーを開き、フローを構成します。![][3]
+3.	Twilio コネクタが右側のギャラリーの [API Apps in this resource group (このリソース グループの API Apps)] セクションに表示されます。![][4]
 4. [Twilio コネクタ] をクリックして、Twilio コネクタの API アプリをエディターにドロップできます。
 
 5.	これで、フローで Twilio コネクタを使用できるようになりました。フローで [メッセージの送信] アクションを使用すると、メッセージを送信できます。[メッセージを送信] アクションの入力プロパティを次のように構成します。
@@ -57,11 +53,10 @@ API アプリを作成すると、Logic App のアクションとして Twilio �
 	- **通話先の電話番号** - 宛先電話番号。使用できる書式: + の後に国コード、その次に電話番号を続けます。たとえば、+16175551212 です。+ を省略した場合、Twilio は [通話元の電話番号] に入力した国コードを使用します。
 	- **テキスト** - 送信するメッセージのテキスト。
 
-	![][5]
-	![][6]
+	![][5] ![][6]
 
 ## コネクタでできること
-コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -77,4 +72,4 @@ API アプリを作成すると、Logic App のアクションとして Twilio �
 [5]: ./media/app-service-logic-connector-twilio/img5.PNG
 [6]: ./media/app-service-logic-connector-twilio/img6.PNG
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

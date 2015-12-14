@@ -21,7 +21,7 @@
 # Azure での SQL Server 仮想マシンのプロビジョニング
 
 > [AZURE.SELECTOR]
-- [Azure portal](virtual-machines-provision-sql-server.md)
+- [Azure classic portal](virtual-machines-provision-sql-server.md)
 - [PowerShell](virtual-machines-sql-server-create-vm-with-powershell.md)
 
 ## 概要
@@ -32,7 +32,7 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 
 このチュートリアルでは、次のことについて説明します。
 
-* [Azure ポータルに接続し、ギャラリーから仮想マシンのプロビジョニングを行う](#Provision)
+* [Azure クラシック ポータルに接続し、ギャラリーから仮想マシンのプロビジョニングを行う](#Provision)
 * [リモート デスクトップを使用して仮想マシンを開き、セットアップを完了する](#RemoteDesktop)
 * [別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する](#SSMS)
 * [次のステップ](#Optional)
@@ -41,9 +41,9 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 
 ##<a id="Provision">ギャラリーからの SQL Server 仮想マシンのプロビジョニング</a>
 
-1. アカウントを使用して [Azure ポータル](http://manage.windowsazure.com)にログインします。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
+1. アカウントを使用して [Azure クラシック ポータル](http://manage.windowsazure.com)にログインします。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
-2. Azure ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+2. Azure クラシック ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
 3. **[イメージの選択]** ページで、**[SQL SERVER]** をクリックします。SQL Server イメージを選択します。ページの右下にある [次へ] 矢印をクリックします。
 
@@ -77,7 +77,7 @@ Azure でサポートされる SQL Server イメージの最新情報につい�
 	- **[クラウド サービス]** ボックスで、**[新しいクラウド サービスの作成]** を選択します。
 	- **[クラウド サービス DNS 名]** ボックスに、目的の DNS 名の最初の部分を入力すると、**TESTNAME.cloudapp.net** という形式の完全な名前を指定できます。 
 	- 複数のサブスクリプションがある場合は、**[サブスクリプション]** を選択します。この選択で、利用できる**ストレージ アカウントが決まります。
-	- **[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、この仮想イメージをホストするリージョンを選択します。
+- **[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、この仮想イメージをホストするリージョンを選択します。
 	- **[ストレージ アカウント]** で、自動的にアカウントを生成するか、一覧から 1 つ選択します。**[サブスクリプション]** を変更して複数のアカウントを表示します。 
 	- **[可用性セット]** ボックスの一覧の **[(なし)]** を選択します。
 	- 法律条項を読み、同意します。
@@ -155,4 +155,4 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-sql-server-application-patterns-and-development-strategies.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

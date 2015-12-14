@@ -53,7 +53,7 @@ Azure Media Services では、**チャネル**は、ライブ ストリーミン
 
 3. プログラムを作成します。
 
-	Azure 管理ポータルを使用する場合、プログラムを作成すると資産も作成されます。
+	Azure クラシック ポータルを使用する場合、プログラムを作成すると資産も作成されます。
 
 	.NET SDK または REST を使用する場合は、プログラムを作成するときに資産を作成し、その資産を使用するように指定する必要があります。 
 1. プログラムに関連付けられた資産を発行します。   
@@ -157,7 +157,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 チャネルがデータの取り込みを開始した後、ストリームをプレビューできます。
 
-現在、プレビュー ストリームを配信できるのは指定された入力タイプにかかわらず、Fragmented MP4 (スムーズ ストリーミング) 形式のみです。スムーズ ストリーミングのテストには、[http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor) プレーヤーを使用できます。また、Azure 管理ポータルでホストされているプレーヤーを使用してストリームを表示することもできます。
+現在、プレビュー ストリームを配信できるのは指定された入力タイプにかかわらず、Fragmented MP4 (スムーズ ストリーミング) 形式のみです。スムーズ ストリーミングのテストには、[http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor) プレーヤーを使用できます。また、Azure クラシック ポータルでホストされているプレーヤーを使用してストリームを表示することもできます。
 
 
 ####許可された IP アドレス
@@ -269,4 +269,4 @@ SCTE-35|広告の挿入のキューには、デジタル信号システムが使
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

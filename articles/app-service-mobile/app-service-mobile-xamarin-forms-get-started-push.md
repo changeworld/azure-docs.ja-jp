@@ -10,17 +10,15 @@
 <tags 
 	ms.service="app-service-mobile" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-ios" 
+	ms.tgt_pltfrm="mobile-xamarin" 
 	ms.devlang="dotnet" 
 	ms.topic="article"
-	ms.date="11/23/2015" 
+	ms.date="11/25/2015" 
 	ms.author="wesmc"/>
 
 # Xamarin.Forms アプリにプッシュ通知を追加する
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ##概要
 
@@ -62,39 +60,6 @@
 ##更新したサーバー プロジェクトを Azure にデプロイする
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service](../../includes/app-service-mobile-dotnet-backend-publish-service.md)]
-
-
-## ポータブル クラス ライブラリ プロジェクトを更新する 
-
-共有プロジェクトで定義されている `TodoItemManager` クラスは、Mobile App バックエンドへのクライアント接続を、モバイル アプリ バックエンドでホストされているテーブルに対して実行する操作と共にラップします。クライアント接続は、プッシュ通知を登録できるように公開します。
-
-1. Visual Studio または Xamarin Studio で、共有プロジェクトの TodoItemManager.cs を開きます。次の静的メンバーとアクセサーを `TodoItemManager` クラスに追加します。プラットフォーム固有の `Microsoft.WindowsAzure.MobileServices.Push` オブジェクトを取得する必要がある場合は、このクラスを使用して `MobileServiceClient` にアクセスします。 
-
-        static TodoItemManager defaultInstance = null;
-
-        public static TodoItemManager DefaultInstance
-        {
-            get
-            {
-                return defaultInstance;
-            }
-            private set
-            {
-                defaultInstance = value;
-            }
-        }
-
-		public MobileServiceClient CurrentClient
-		{
-			get { return client; }
-		}
-
-
-2. `DefaultInstance` を初期化するコードを、`TodoItemManager` クラスのコンストラクターの先頭に追加します。
-
-        DefaultClient = this;
-
-
 
 
 ##(省略可能) Android プロジェクトを構成して実行する
@@ -178,7 +143,7 @@
 
 7. 新しいクラス ファイルを **Droid** プロジェクトに追加します。新しいクラス ファイルに **GcmService** という名前を付けます。
 
-8. 次の `using` ステートメントがファイルの上部に追加されていることを確認します。
+8. ファイルの先頭に、次の `using` ステートメントが含まれていることを確認します。
 
 		using Gcm.Client;
 		using Microsoft.WindowsAzure.MobileServices;
@@ -191,7 +156,7 @@
 		using System.Text;
 		using System.Linq;
 
-9. ファイルの上部の `using` ステートメントと `namespace` 宣言の間に、次のアクセス許可要求を追加します。
+9. ファイルの先頭の `using` ステートメントと `namespace` 宣言の間に、次のアクセス許可要求を追加します。
 
 		[assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
 		[assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -227,7 +192,7 @@
 
 12. OnRegistered イベント ハンドラーをオーバーライドし、`Register` メソッドを実装する次のコードを GcmService クラスに追加します。
 
-	このコードによって、`messageParam` パラメーターを使用したテンプレート通知を受け取るためのテンプレート本文が登録されます。テンプレート通知を使用すると、クロスプラットフォームの通知を送信できます。詳細については、「[テンプレート](https://msdn.microsoft.com/library/azure/dn530748.aspx)」を参照してください。
+	このコードによって、`messageParam` パラメーターを使用したテンプレート通知を受け取るためのテンプレート本文が登録されます。テンプレート通知を使用すると、クロスプラットフォームの通知を送信できます。詳細については、「[テンプレート](https://msdn.microsoft.com/library/azure/dn530748.aspx)」をご覧ください。
 		
 		protected override void OnRegistered(Context context, string registrationId)
 		{
@@ -236,7 +201,7 @@
 		
 		    createNotification("GcmService Registered...", "The device has been Registered, Tap to View!");
 		
-            var push = TodoItemManager.DefaultInstance.CurrentClient.GetPush();
+            var push = TodoItemManager.DefaultManager.CurrentClient.GetPush();
 		
 		    MainActivity.CurrentActivity.RunOnUiThread(() => Register(push, null));
 		
@@ -381,7 +346,7 @@
 		using Newtonsoft.Json.Linq;
 
 
-2. IOS プロジェクトで、AppDelegate.cs を開き、リモート通知をサポートするように `FinishedLaunching` を次のように更新します。
+2. iOS プロジェクトで、AppDelegate.cs を開き、リモート通知をサポートするように `FinishedLaunching` を次のように更新します。
 
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
@@ -422,7 +387,7 @@
                 };
 
             // Register for push with your mobile app
-            Push push = TodoItemManager.DefaultInstance.CurrentClient.GetPush();
+            Push push = TodoItemManager.DefaultManager.CurrentClient.GetPush();
             push.RegisterAsync(deviceToken, templates);
         }
 
@@ -450,7 +415,7 @@
 
 1. iOS プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
 
-2. Visual Studio で **[実行]** または **F5** キーを押して、プロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。**[OK]** をクリックして、プッシュ通知を受け入れます。
+2. Visual Studio で **[実行]** または **F5** キーを押して、プロジェクトをビルドし、iOS 対応デバイスでアプリケーションを起動します。**[OK]** をクリックして、プッシュ通知を受け入れます。
 	
 	> [AZURE.NOTE]アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
@@ -478,7 +443,7 @@
 
 ####Windows アプリにプッシュ通知を追加する
 
-1. Visual Studio で、**WinApp** プロジェクトにある **App.xaml.cs** を開きます次の `using` ステートメントを追加します。
+1. Visual Studio で、**WinApp** プロジェクトにある **App.xaml.cs** を開きます。次の `using` ステートメントを追加します。
 
 		using System.Threading.Tasks;
 		using Windows.Networking.PushNotifications;
@@ -486,7 +451,7 @@
 		using Microsoft.WindowsAzure.MobileServices;
 		using Newtonsoft.Json.Linq;
 
-2. App.xaml.cs に、次の `InitNotificationsAsync` メソッドを追加します。このメソッドによって、プッシュ通知チャネルが取得され、通知ハブからテンプレート通知を受け取るためのテンプレートが登録されます。`messageParam` に対応したテンプレート通知が、このクライアントに配信されるようになります。
+2. App.xaml.cs に、次の `InitNotificationsAsync` メソッドを追加します。このメソッドによって、プッシュ通知チャネルが取得され、通知ハブからテンプレート通知を受け取るためのテンプレートが登録されます。`messageParam` をサポートするテンプレート通知が、このクライアントに配信されるようになります。
 
         private async Task InitNotificationsAsync()
         {
@@ -505,7 +470,7 @@
                   {"headers", headers} // Only needed for WNS & MPNS
                 };
 
-            await TodoItemManager.DefaultInstance.CurrentClient.GetPush().RegisterAsync(channel.Uri, templates);
+            await TodoItemManager.DefaultManager.CurrentClient.GetPush().RegisterAsync(channel.Uri, templates);
         }
 
 3. App.xaml.cs で、`async` 属性を使用して `OnLaunched` イベント ハンドラーを更新し、`InitNotificationsAsync` を呼び出します。
@@ -572,10 +537,6 @@
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
 [Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
-[Azure Management Portal]: https://manage.windowsazure.com/
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
-
- 
-
-<!---HONumber=AcomDC_1125_2015--->
+<!---HONumber=AcomDC_1203_2015-->

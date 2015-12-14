@@ -27,11 +27,11 @@
 - [インシデント対応要件の決定](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
 
 ## データ保護オプションの定義
-[ディレクトリ同期要件の決定](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)に関するページで説明したとおり、Microsoft Azure AD は、オンプレミスにある Active Directory ドメイン サービス (AD DS) と同期できます。この統合により、組織は Azure AD を利用して、ユーザーが企業のリソースにアクセスしようとしたときに資格情報を確認できます。これは、オンプレミスの保存データとクラウドの保存データの両方のシナリオで実行できます。Azure AD 内のデータへのアクセスには、セキュリティ トークン サービス (STS) によるユーザー認証が要求されます。
+[ディレクトリ同期要件の決定](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)に関するページで説明したとおり、Microsoft Azure AD は、オンプレミスにある Active Directory ドメイン サービス (AD DS) と同期できます。この統合により、組織は Azure AD を利用して、ユーザーが企業のリソースにアクセスしようとしたときに資格情報を確認できます。これは、オンプレミスの保存データとクラウドの保存データの両方のシナリオで実行できます。Azure AD 内のデータへのアクセスには、Security Token Service (STS) によるユーザー認証が要求されます。
 
 認証されると、認証トークンからユーザー プリンシパル名 (UPN) が読み取られ、ユーザーのドメインに対応するレプリケート対象のパーティションとコンテナーが判断されます。承認システムでは、ユーザーの存在、有効状態、ロールに関する情報を使用して、ターゲット テナントへのアクセス要求を当該セッションの当該ユーザーに対して承認するかどうかを決定します。承認された特定のアクション (具体的には、ユーザーの作成やパスワードのリセットなど) を実行すると、テナント管理者がコンプライアンスへの取り組みや調査の管理に使用できる監査証跡が作成されます。
 
-データの量や帯域幅の可用性などの考慮事項によって、インターネット接続を使用してオンプレミスのデータ センターから Azure Storage にデータを移動することが必ずしも適していない場合があります。[Azure Storage Import/Export サービス](http://azure.microsoft.com/documentation/articles/storage-import-export-service/)では、Blob Storage 内の大容量データを配置/取得するためのハードウェア ベースのオプションを提供します。このオプションでは、[BitLocker で暗号化された](https://technet.microsoft.com/library/dn306081#BKMK_BL2012R2)ハード ディスク ドライブを直接 Azure のデータセンターに発送していただき、クラウド オペレーターがストレージ アカウントにコンテンツをアップロードしたり、Azure のデータをドライブにダウンロードしたりした後に返送します。このプロセスで受け付けできるのは、(ジョブのセットアップ中にサービス自体によって生成された BitLocker キーを使用して) 暗号化されたディスクのみです。BitLocker キーは別途 Azure に提供されるため、帯域外でキーが共有されます。
+データの量や帯域幅の可用性などの考慮事項によって、インターネット接続を使用してオンプレミスのデータ センターから Azure Storage にデータを移動することが必ずしも適していない場合があります。[Azure Storage Import/Export Service](../storage/storage-import-export-service.md)は、BLOB ストレージ内の大容量データを配置/取得するためのハードウェア ベースのオプションを提供します。このオプションでは、[BitLocker で暗号化された](https://technet.microsoft.com/library/dn306081#BKMK_BL2012R2)ハード ディスク ドライブを直接 Azure のデータセンターに発送していただき、クラウド オペレーターがストレージ アカウントにコンテンツをアップロードしたり、Azure のデータをドライブにダウンロードしたりした後に返送します。このプロセスで受け付けできるのは、(ジョブのセットアップ中にサービス自体によって生成された BitLocker キーを使用して) 暗号化されたディスクのみです。BitLocker キーは別途 Azure に提供されるため、帯域外でキーが共有されます。
 
 転送中のデータは、さまざまなシナリオで発生する可能性があるため、Microsoft Azure では[仮想ネットワーク](http://azure.microsoft.com/documentation/services/virtual-network/)を使用して、ホストレベルとゲストレベルのファイアウォール、IP パケットのフィルタリング、ポートのブロック、HTTPS エンドポイントなどの手段を採用しながら、テナントのトラフィックを相互に分離していることを知っておくと役立ちます。ただし、インフラストラクチャ間やインフラストラクチャとお客様 (オンプレミス) の間など、Azure の内部通信の大部分も暗号化されます。もう 1 つの重要なシナリオが Azure データセンター内での通信です。マイクロソフトでは、VM が別の VM の IP アドレスで偽装や盗聴を一切できないようにするためにネットワークを管理しています。Azure Storage または SQL Databases にアクセスする場合、または Cloud Services に接続する場合は、TLS/SSL が使用されます。この場合、TLS/SSL 証明書の取得とテナント インフラストラクチャへのデプロイは、お客様の管理者が行います。同じデプロイ内の Virtual Machines 間を移動するデータ トラフィック、または Microsoft Azure Virtual Network 経由で単一デプロイのテナント間を移動するデータ トラフィックは、HTTPS や SSL/TLS などの暗号化された通信プロトコルを介して保護できます。
 
@@ -50,11 +50,11 @@
 >[AZURE.NOTE]各 Azure サービスが準拠している認定の詳細については、[Microsoft Azure セキュリティ センター](http://azure.microsoft.com/support/trust-center/)の「[製品ごとのコンプライアンス](http://azure.microsoft.com/support/trust-center/services/)」をお読みください。データ保護のオプションでは複数層のアプローチを使用しているため、オプションを比較することはこのタスクには適しません。必ず、データの状態ごとに使用可能なすべてのオプションを使用してください。
 
 ## コンテンツ管理オプションの定義
-Azure AD を使用してハイブリッド ID インフラストラクチャを管理する利点の 1 つは、プロセスがエンド ユーザーから見て完全に透過的な点です。ユーザーが共有リソースにアクセスしようとする場合、リソースの認証が必要となり、ユーザーは、トークンを取得してリソースにアクセスするために、Azure AD に認証要求を送信する必要があります。このプロセス全体はバックグラウンドで発生し、ユーザーが介入することはありません。ユーザーの[グループ](https://azure.microsoft.com/documentation/articles/active-directory-manage-groups/#getting-started-with-access-management)に権限を付与し、特定の共通アクションを実行できるようにすることもできます。
+Azure AD を使用してハイブリッド ID インフラストラクチャを管理する利点の 1 つは、プロセスがエンド ユーザーから見て完全に透過的な点です。ユーザーが共有リソースにアクセスしようとする場合、リソースの認証が必要となり、ユーザーは、トークンを取得してリソースにアクセスするために、Azure AD に認証要求を送信する必要があります。このプロセス全体はバックグラウンドで発生し、ユーザーが介入することはありません。ユーザーの[グループ](active-directory-manage-groups.md#getting-started-with-access-management)に権限を付与し、特定の共通アクションを実行できるようにすることもできます。
 
 データのプライバシーを懸念する組織では、一般的に、使用するソリューションにデータ分類が不可欠です。現在のオンプレミス インフラストラクチャで既にデータ分類を使用している場合は、ユーザー ID の主要リポジトリとして Azure AD を利用できます。オンプレミスでのデータ分類に使用されている一般的なツールは [Data Classification Toolkit](https://msdn.microsoft.com/library/Hh204743.aspx) for Windows Server 2012 R2 です。このツールは、プライベート クラウド内のファイル サーバーにあるデータを識別、分類、保護するのに役立ちます。Windows Server 2012 の[自動ファイル分類](https://technet.microsoft.com/library/hh831672.aspx)を利用してこれを実現することもできます。
 
-組織がデータ分類を配置していないが、オンプレミスで新しいサーバーを追加せずに機密ファイルを保護する必要がある場合、Microsoft [Azure Rights Management Service](https://technet.microsoft.com/ja-JP/library/JJ585026.aspx) を使用できます。Azure RMS では、暗号化、ID、承認ポリシーを使用してファイルと電子メールを保護し、携帯電話、タブレット、PC などの複数のデバイスで動作します。Azure RMS はクラウド サービスであるため、保護されたコンテンツを共有する前に、他の組織との信頼関係を明示的に構成する必要はありません。既に Office 365 や Azure AD ディレクトリが組織にある場合、組織間のコラボレーションが自動的にサポートされます。また、Azure Active Directory 同期サービス (AAD Sync) または Azure AD Connect を使用することにより、Azure RMS でオンプレミスの Active Directory アカウントの共通 ID をサポートするために必要なディレクトリ属性のみを同期することもできます。
+組織がデータ分類を配置していないが、オンプレミスの新しいサーバーを追加せずに機密ファイルを保護する必要がある場合、Microsoft [Azure Rights Management Service](https://technet.microsoft.com/library/JJ585026.aspx) を使用できます。Azure RMS では、暗号化、ID、承認ポリシーを使用してファイルと電子メールを保護し、携帯電話、タブレット、PC などの複数のデバイスで動作します。Azure RMS はクラウド サービスであるため、保護されたコンテンツを共有する前に、他の組織との信頼関係を明示的に構成する必要はありません。既に Office 365 や Azure AD ディレクトリが組織にある場合、組織間のコラボレーションが自動的にサポートされます。また、Azure Active Directory 同期サービス (AAD Sync) または Azure AD Connect を使用することにより、Azure RMS でオンプレミスの Active Directory アカウントの共通 ID をサポートするために必要なディレクトリ属性のみを同期することもできます。
 
 コンテンツ管理で重要な部分は、どのユーザーがどのリソースにアクセスするかを理解することです。したがって、ID 管理ソリューションの場合、機能豊富なログ記録機能が重要です。Azure AD では、30 日間にわたり次を記録するログを提供します。
 
@@ -91,7 +91,7 @@ Azure Active Directory では、何千もの SaaS アプリケーションやオ
 
 >[AZURE.NOTE]Azure で使用できる各プロトコルとその機能の詳細については、「[Azure Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)」をお読みください。Azure AD のサポートを使用すると、モバイル ビジネス アプリケーションでも簡単な Mobile Services の認証エクスペリエンスを使用できるため、従業員は会社の Active Directory 資格情報を使用してモバイル アプリケーションにサインインできます。この機能により、既にサポートしている ID プロバイダー (Microsoft アカウント、Facebook ID、Google ID、Twitter ID など) と共に、Azure AD が Mobile Services の ID プロバイダーとしてサポートされます。オンプレミスのアプリケーションで、会社の AD DS にあるユーザーの資格情報が使用されている場合、クラウドのユーザーやパートナーからのアクセスを透過的にする必要があります。(クラウドベースの) Web アプリケーション、Web API、Microsoft Cloud Services、サードパーティの SaaS アプリケーション、およびネイティブの (モバイル) クライアント アプリケーションに対するユーザーの条件付きアクセス制御を管理できます。また、セキュリティ、監査、レポートを 1 か所で実行できる利点があります。ただし、非運用環境で、またはユーザー数を限定してこれを検証することをお勧めします。
 
->[AZURE.TIP]AD DS にあるようなグループ ポリシーが Azure AD にはないことを断っておくことが重要です。デバイスのポリシーを適用するには、[Microsoft Intune](https://technet.microsoft.com/ja-JP/library/jj676587.aspx) などのモバイル デバイス管理ソリューションが必要です。
+>[AZURE.TIP]AD DS にあるようなグループ ポリシーが Azure AD にはないことを断っておくことが重要です。デバイスのポリシーを適用するには、[Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) などのモバイル デバイス管理ソリューションが必要です。
 
 Azure AD を使用してユーザーが認証されたら、そのユーザーが持つアクセスのレベルを評価する必要があります。ユーザーがリソースに対して持つアクセスのレベルは異なりますが、Azure AD では一部のリソースへのアクセスを制御することにより、セキュリティ層を追加することができるため、ファイル サーバーにあるファイルのアクセス制御など、リソース自体にそれぞれ独自のアクセス制御リストを持たせることができる点にも注意する必要があります。次の図は、ハイブリッド シナリオで使用できるアクセス制御のレベルをまとめたものです。
 
@@ -100,7 +100,7 @@ Azure AD を使用してユーザーが認証されたら、そのユーザー�
 
 図 X に示した個々のやり取りは、Azure AD で対応できる 1 つのアクセス制御シナリオを表しています。各シナリオの説明を以下に示します。
 
-1. オンプレミスでホストされるアプリケーションへの条件付きアクセス: Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。オンプレミスの条件付きアクセスを設定する方法の詳細については、「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](https://azure.microsoft.com/ja-JP/documentation/articles/active-directory-conditional-access-on-premises-setup/)」を参照してください。 
+1. オンプレミスでホストされるアプリケーションへの条件付きアクセス: Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。オンプレミスの条件付きアクセスを設定する方法の詳細については、「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](active-directory-conditional-access-on-premises-setup.md)」を参照してください。 
 2. Azure 管理ポータルに対する Access Control: Azure には、RBAC (ロールベースの Access Control) を使用して管理ポータルへのアクセスを制御する機能もあります。この方法により、ユーザーが Azure 管理ポータルにアクセスした時点で実行できる操作の量を会社が制限できます。RBAC を使用してポータルへのアクセスを制御することで、IT 管理者は、次のアクセスの管理方法を使用してアクセスを委任できます。
 
  - グループベースのロールの割り当て: ローカルの Active Directory から同期できる Azure AD グループにアクセスを割り当てることができます。これにより、グループ管理用のツールとプロセスに組織が費やした既存の投資を活用できます。また、Azure AD Premium の委任されたグループ管理機能も使用できます。
@@ -109,14 +109,14 @@ Azure AD を使用してユーザーが認証されたら、そのユーザー�
 
  >[AZURE.NOTE]この機能の詳細については、[Azure プレビュー ポータルのロールベースのアクセス制御](http://azure.microsoft.com/updates/role-based-access-control-in-azure-preview-portal/)に関するページを参照してください。アプリケーションをビルドしていて、それらのアクセス制御をカスタマイズする必要がある開発者の場合、Azure AD アプリケーション ロールを使用して承認を実行することもできます。この機能を使用するアプリケーションをビルドする方法については、こちらの [WebApp-RoleClaims-DotNet の例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet)を参照してください。
 
-3. Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠デバイスからサービスへのアクセスを許可できます。詳細については、「[Office 365 サービス用条件付きアクセスのデバイス ポリシー](https://azure.microsoft.com/ja-JP/documentation/articles/active-directory-conditional-access-device-policies/?rnd=1)」を参照してください。
+3. Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠デバイスからサービスへのアクセスを許可できます。詳細については、「[Office 365 サービス用条件付きアクセスのデバイス ポリシー](active-directory-conditional-access-device-policies.md)」を参照してください。
 
 4. Saas アプリの条件付きアクセス: [この機能](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx)を使用すると、アプリケーションごとの Multi-Factor Authentication のアクセス規則と、信頼されたネットワークを使用していないユーザーのアクセスをブロックする機能を構成できます。Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。
 
 アクセス制御のオプションでは複数層のアプローチを使用しているため、オプションを比較することはこのタスクには適しません。必ず、リソースへのアクセスを制御する必要があるシナリオごとに使用可能なすべてのオプションを使用してください。
 
 ## インシデント対応オプションの定義
-Azure AD は、ユーザーのアクティビティを監視することによって、IT 部門が環境内の潜在的なセキュリティ リスクを識別できるよう支援します。IT 部門は、Azure AD のアクセスおよび使用状況レポート機能を活用することで、組織のディレクトリの完全性とセキュリティを視覚的に確認できます。IT 管理者は、この情報を使用して、潜在的なセキュリティ リスクがある箇所をより的確に特定でき、リスクを軽減するための計画を適切に作成できます。[Azure AD Premium サブスクリプション](https://azure.microsoft.com/ja-JP/documentation/articles/active-directory-get-started-premium/)には一連のセキュリティ レポートがあります。IT 部門は、これらのレポートからセキュリティに関する情報を取得できます。[Azure AD のレポート](https://azure.microsoft.com/ja-JP/documentation/articles/active-directory-view-access-usage-reports/)は、次のように分類されます。
+Azure AD は、ユーザーのアクティビティを監視することによって、IT 部門が環境内の潜在的なセキュリティ リスクを識別できるよう支援します。IT 部門は、Azure AD のアクセスおよび使用状況レポート機能を活用することで、組織のディレクトリの完全性とセキュリティを視覚的に確認できます。IT 管理者は、この情報を使用して、潜在的なセキュリティ リスクがある箇所をより的確に特定でき、リスクを軽減するための計画を適切に作成できます。[Azure AD Premium サブスクリプション](articles/active-directory-get-started-premium.md)には一連のセキュリティ レポートがあります。IT 部門は、これらのレポートからセキュリティに関する情報を取得できます。[Azure AD のレポート](active-directory-view-access-usage-reports.md)は、次のように分類されます。
 
 - **異常レポート**: 異常と考えられるサインイン イベントが含まれます。この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。 
 - **統合アプリケーション レポート**: 組織内のクラウド アプリケーションの使用状況を明らかにします。Azure Active Directory は、何千ものクラウド アプリケーションとの統合を提供します。 
@@ -150,4 +150,4 @@ Azure AD Premium で提供され、インシデント対応調査時に使用で
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

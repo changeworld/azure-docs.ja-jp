@@ -130,4 +130,4 @@ Java 用 Microsoft Azure IoT サービス SDK は、次の構成でテストさ�
 
 **Certified for IoT** デバイスを使用したソリューションの開発に関する詳細については、[こちら](http://azure.com/iotdev)を参照してください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

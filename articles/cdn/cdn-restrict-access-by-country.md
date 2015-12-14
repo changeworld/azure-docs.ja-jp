@@ -3,7 +3,7 @@
 	description="ユーザーがコンテンツを要求した場合、既定では、ユーザーが要求を行った場所に関係なく、コンテンツは提供されます。場合によっては、国によってコンテンツへのアクセスを制限することがあります。このトピックでは、**国のフィルタリング**機能を使用して、国別にアクセスを許可またはブロックするようにサービスを構成する方法について説明します。" 
 	services="cdn" 
 	documentationCenter=".NET" 
-	authors="juliako" 
+	authors="camsoper" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
-	ms.author="juliako"/>
+	ms.date="12/02/2015" 
+	ms.author="casoper"/>
 
 #国に応じてコンテンツへのアクセスを制限する
 
@@ -49,8 +49,8 @@
 
 たとえば、/Photos/Strasbourg/ をブロックするルールは、次のようなファイルをフィルターします。
 
-	http://az123456.vo.msecnd.net/Photos/Strasbourg/1000.jpg. 
-	http://az123456.vo.msecnd.net/Photos/Strasbourg/Cathedral/1000.jpg. 
+	http://az123456.azureedge.net/Photos/Strasbourg/1000.jpg
+	http://az123456.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg
 
 
 ##国コード
@@ -65,4 +65,4 @@
 - 相対パスに関連付けられている国フィルタリング構成は、そのパスに再帰的に適用されます。
 - 同じ相対パスに適用できるルールは 1 つだけです (同じ相対パスを参照する複数の国フィルターを作成することはできません)。ただし、フォルダーには複数の国フィルターを適用できます。これは、国フィルターの再帰的な性質のためです。つまり、以前に構成されているフォルダーのサブフォルダーに、別の国フィルターを割り当てることができます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

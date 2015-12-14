@@ -6,7 +6,7 @@
    authors="aashishr"
    manager="shreeshd"
    editor=""/>
-<tags  ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="08/28/2015" ms.author="aashishr"; "jimpark"/>
+<tags  ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="11/25/2015" ms.author="aashishr"; "jimpark"/>
 
 # Azure Backup でのオフライン バックアップのワークフロー
 
@@ -27,7 +27,7 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 7. [こちら](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)から、SATA ドライブ ライターが接続されているコンピューターに Azure Import/Export ツールをダウンロードします。
 
 ## ワークフロー
-このセクションで提供される情報は、**オフライン バックアップ** ワークフローを完了するためのものなので、このデータを Azure データ センターに配信したり、Azure Storage にアップロードしたりできます。インポート サービスやプロセスの他の側面について質問がある場合は、[上記](../storage-import-export-service.md)で参照したインポート サービスの概要をご覧ください。
+このセクションで提供される情報は、**オフライン バックアップ** ワークフローを完了するためのものなので、このデータを Azure データ センターに配信したり、Azure Storage にアップロードしたりできます。インポート サービスやプロセスの他の側面について質問がある場合は、上記で参照した[インポート サービスの概要](../storage-import-export-service.md)をご覧ください。
 
 ### オフライン バックアップを開始する
 
@@ -108,4 +108,4 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 - Azure Import/Export ワークフローに関するご質問は、こちらの[記事](../storage-import-export-service.md)をご覧ください。
 - ワークフローに関するご質問は、Azure Backup [FAQ](backup-azure-backup-faq.md) のオフライン バックアップのセクションをご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

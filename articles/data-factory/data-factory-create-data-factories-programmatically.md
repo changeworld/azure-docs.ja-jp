@@ -261,7 +261,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 
 	
 
-12. **Main** メソッドで使用される次のヘルパー メソッドを **Program** クラスに追加します。このメソッドは、Azure ポータルへのログインに使用する**ユーザー名**と**パスワード**の入力が可能なダイアログ ボックスを表示します。
+12. **Main** メソッドで使用される次のヘルパー メソッドを **Program** クラスに追加します。このメソッドは、Azure クラシック ポータルへのログインに使用する**ユーザー名**と**パスワード**の入力が可能なダイアログ ボックスを表示します。
  
 		public static string GetAuthorizationHeader()
         {
@@ -371,7 +371,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 		Jane, Doe
 	 
 17. メニューの **[デバッグ]**、**[デバッグの開始]** の順にクリックして、サンプルを実行します。**[Getting run details of a data slice]** が表示されている場合は、数分待機して、**Enter** を押します。
-18. Azure プレビュー ポータルを使用して、データ ファクトリの **APITutorialFactory** が次のアーティファクトで作成されることを確認します。 
+18. Azure ポータルを使用して、データ ファクトリの **APITutorialFactory** が次のアーティファクトで作成されることを確認します。 
 	- リンクされたサービス: **LinkedService\_AzureStorage** 
 	- データセット: **DatasetBlobSource** と **DatasetBlobDestination**
 	- パイプライン: **PipelineBlobSample** 
@@ -392,4 +392,4 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -26,7 +26,7 @@ Azure 仮想マシンが既にあり、IPython Notebook サーバーをセット
 
 Azure で仮想マシンを作成するプロセスを始める前に、プロジェクトのデータ処理に必要なマシンのサイズを決定する必要があります。小さいマシンは大きいマシンに比べてメモリの量と CPU コア数が少ないですが、より安価でもあります。マシンの種類と価格については、「<a href="http://azure.microsoft.com/pricing/details/virtual-machines/" target="_blank">Virtual Machines 価格</a>」ページをご覧ください。
 
-1. <a href="https://manage.windowsazure.com" target="_blank">Azure ポータル</a>にログインし、左下隅にある **[新規]** をクリックします。ウィンドウがポップアップ表示されます。**[コンピューティング]** -> **[仮想マシン]** -> **[ギャラリーから]** の順にクリックします。
+1. <a href="https://manage.windowsazure.com" target="_blank">Azure クラシック ポータル</a>にログインし、左下隅にある **[新規]** をクリックします。ウィンドウがポップアップ表示されます。**[Compute]** -> **[仮想マシン]** -> **[ギャラリーから]** の順にクリックします。
 
 	![Create workspace][24]
 
@@ -60,7 +60,7 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 
 「手順 1」の指示に従って仮想マシンを作成した場合、IPython Notebook 用のエンドポイントは既に作成されており、このステップを省略できます。
 
-仮想マシンが既に存在する場合、下記の「手順 3」でインストールする IPython Notebook 用のエンドポイントを追加する必要があれば、まず Azure 管理ポータルにログインし、仮想マシンを選択して、IPython Notebook サーバー用のエンドポイントを追加します。次の図は、IPython Notebook 用のエンドポイントを Windows 仮想マシンに追加した後のポータルのスクリーン ショットを示しています。
+仮想マシンが既に存在する場合、下記の「手順 3」でインストールする IPython Notebook 用のエンドポイントを追加する必要があれば、まず Azure クラシック ポータルにログインし、仮想マシンを選択して、IPython Notebook サーバー用のエンドポイントを追加します。次の図は、IPython Notebook 用のエンドポイントを Windows 仮想マシンに追加した後のポータルのスクリーン ショットを示しています。
 
 ![Create workspace][17]
 
@@ -79,7 +79,7 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 ## <a name="access"></a>手順 4: Web ブラウザーから IPython Notebook にアクセスする
 IPython Notebook サーバーにアクセスするには、Web ブラウザーを開き、URL テキスト ボックスに「*https://&#60;virtual マシンの DNS 名>:&#60;パブリック ポート番号>*」と入力します。ここでは、*&#60;パブリック ポート番号>* として、IPython Notebook エンドポイントの追加時に指定したポート番号を入力してください。
 
-*&#60;仮想マシンの DNS 名>* は、Microsoft Azure 管理ポータルで確認できます。管理ポータルにログインしたら、**[仮想マシン]** をクリックし、作成済みのマシンを選択して **[ダッシュボード]** を選択すると、DNS 名が次のように表示されます。
+*&#60;仮想マシンの DNS 名>* は、Microsoft Azure クラシック ポータルで確認できます。クラシック ポータルにログインしたら、**[仮想マシン]** をクリックし、作成済みのマシンを選択して **[ダッシュボード]** を選択すると、DNS 名が次のように表示されます。
 
 ![Create workspace][19]
 
@@ -104,11 +104,11 @@ IPython Notebook を使用すると、ユーザーはローカル マシン上�
 
 Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用しないときに課金されないようにするには、未使用時に **[停止 (割り当て解除)]** 状態にする必要があります。
 
-> [AZURE.NOTE] \(Windows 電源オプションを使用して) 仮想マシン内部から VM をシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Microsoft Azure 管理ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その場合、"PostShutdownAction" を "StoppedDeallocated" に設定して **ShutdownRoleOperation** を呼び出します。
+> [AZURE.NOTE](Windows 電源オプションを使用して) 仮想マシン内部から VM をシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Microsoft Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その場合、"PostShutdownAction" を "StoppedDeallocated" に設定して **ShutdownRoleOperation** を呼び出します。
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 
-1. アカウントを使用して [Azure 管理ポータル](http://manage.windowsazure.com/)にログインします。  
+1. アカウントを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/)にログインします。  
 
 2. 左側のナビゲーション バーから **[仮想マシン]** を選択します。
 
@@ -118,7 +118,7 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 
 ![VM シャットダウン][15]
 
-仮想マシンの割り当てが解除されますが、削除はされません。Azure 管理ポータルから、いつでも仮想マシンを再起動することができます。
+仮想マシンの割り当てが解除されますが、削除はされません。Azure クラシック ポータルから、いつでも仮想マシンを再起動することができます。
 
 ## Azure VM を使用する準備ができました。次のステップは ...
 
@@ -143,4 +143,4 @@ Advanced Analytics Process and Technology における次のステップは、�
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

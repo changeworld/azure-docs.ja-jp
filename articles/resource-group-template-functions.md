@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/12/2015"
+   ms.date="12/02/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの関数
@@ -78,26 +78,44 @@
 
 現在のデプロイ操作に関する情報を返します。
 
-デプロイに関する情報が、次のプロパティを含むオブジェクトとして返されます。
+この式は、デプロイ中に渡されたオブジェクトを返します。返されるオブジェクトのプロパティは、デプロイメント オブジェクトがリンクとして渡されたか、インライン オブジェクトとして渡されたかによって異なります。デプロイメント オブジェクトがインラインで渡された場合 (Azure PowerShell の **TemplateFile** パラメーターを使用してローカル ファイルを参照する場合など)、返されるオブジェクトは次の形式になります。
 
     {
-      "name": "",
-      "properties": {
-        "template": {},
-        "parameters": {},
-        "mode": "",
-        "provisioningState": ""
-      }
+        "name": "",
+        "properties": {
+            "template": {
+                "$schema": "",
+                "contentVersion": "",
+                "resources": [
+                ],
+                "outputs": {}
+            },
+            "parameters": {},
+            "mode": "",
+            "provisioningState": ""
+        }
     }
 
-次の例は、デプロイ情報を出力のセクションで返す方法を示します。
+オブジェクトがリンクとして渡された場合 (**TemplateUri** パラメーターを使用してリモート オブジェクトを参照する場合など)、オブジェクトは次の形式で返されます。
 
-    "outputs": {
-      "exampleOutput": {
-        "value": "[deployment()]",
-        "type" : "object"
-      }
+    {
+        "name": "",
+        "properties": {
+            "templateLink": {
+                "uri": "",
+                "contentVersion": ""
+            },
+            "mode": "",
+            "provisioningState": ""
+        }
     }
+
+次の例は、deployment() を使用し、親テンプレートの URI に基づいて別のテンプレートにリンクする方法を示しています。
+
+    "variables": {  
+        "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
+    }  
+
 
 ## div
 
@@ -131,9 +149,25 @@
 
 ## length
 
-**length(array)**
+**length(配列または文字列)**
 
-配列内の要素数を返します。通常、リソースの作成時にイテレーション数の指定に使用します。この関数を使用する例については、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
+配列の要素数または文字列の文字数を返します。この関数を配列と共に使用して、リソースを作成するときのイテレーション数を指定できます。次の例では、**siteNames** パラメーターは、Web サイトの作成時に使用する名前の配列を参照します。
+
+    "copy": {
+        "name": "websitescopy",
+        "count": "[length(parameters('siteNames'))]"
+    }
+
+この関数を配列と共に使用する方法の詳細については、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
+
+次のように、文字列と共に使用することもできます。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "nameLength": "[length(parameters('appName'))]"
+    }
 
 ## listKeys
 
@@ -559,9 +593,11 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 | baseUri | あり | ベース URI 文字列。
 | relativeUri | あり | ベース URI 文字列に追加する相対 URI 文字列。
 
-次の例では、テンプレート リンクの絶対 URI を作成する方法を示します。結果は ****http://contoso.com/resources/nested/azuredeploy.json** です。
+**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。たとえば、baseUri パラメーターとして ****http://contoso.com/resources/azuredeploy.json** を渡すと、****http://contoso.com/resources/** というベース URI が作成されます。
 
-    "templateLink": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]"
+次の例は、親テンプレートの値に基づいて、入れ子になったテンプレートへのリンクを作成する方法を示しています。
+
+    "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
 
 
 ## variables
@@ -581,4 +617,4 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 - 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 - 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

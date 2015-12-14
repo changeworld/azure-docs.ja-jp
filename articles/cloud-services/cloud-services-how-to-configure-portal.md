@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="クラウド サービスを構成する (プレビュー ポータル) | Microsoft Azure" 
-	description="Azure のクラウド サービスの構成方法について説明します。クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。これらの例では、Azure プレビュー ポータルを使用します。" 
+	pageTitle="クラウド サービスの構成方法 | Microsoft Azure" 
+	description="Azure のクラウド サービスの構成方法について説明します。クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。これらの例では、Azure ポータルを使用します。" 
 	services="cloud-services" 
 	documentationCenter="" 
 	authors="Thraka" 
@@ -22,10 +22,10 @@
 # Cloud Services の構成方法
 
 > [AZURE.SELECTOR]
-- [Azure Portal](cloud-services-how-to-configure.md)
-- [Azure Preview Portal](cloud-services-how-to-configure-portal.md)
+- [Azure classic portal](cloud-services-how-to-configure.md)
+- [Azure portal](cloud-services-how-to-configure-portal.md)
 
-クラウド サービスで最もよく使用される設定は Microsoft Azure 管理ポータルで構成できます。また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
+クラウド サービスで最もよく使用される設定は Azure ポータルで構成できます。また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
 
 クラウド サービスで実行中の 1 つまたはすべてのロールへのリモート デスクトップ接続を有効にすることもできます。リモート デスクトップを使用すると、アプリケーションの実行中にそのデスクトップにアクセスし、問題のトラブルシューティングや診断を行うことができます。アプリケーション開発時にリモート デスクトップのサービス定義ファイル (.csdef) を構成しなかった場合でも、ロールへのリモート デスクトップ接続を有効にできます。リモート デスクトップ接続を有効にするために、アプリケーションを再デプロイする必要はありません。
 
@@ -33,7 +33,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 
 ## クラウド サービスの変更
 
-1. [Azure プレビュー ポータル](http://portal.azure.com/)で、クラウド サービスに移動します。
+1. [Azure ポータル](http://portal.azure.com/)で、クラウド サービスに移動します。
 
 2. **[設定]** アイコンまたは **[Essentials]/[すべての設定]** リンクをクリックして、**[設定]** ブレードを開きます。
 
@@ -53,13 +53,13 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
     
     ![クラウド サービス インスタンスのボタン](./media/cloud-services-how-to-configure-portal/cs-instance-buttons.png)
 
->[AZURE.NOTE]**Azure プレビュー ポータル**を使用して、クラウド サービスで使用するオペレーティング システムを変更することはできません。この設定を変更するには、[非プレビュー ポータル](http://manage.windowsazure.com/)を使用する必要があります。詳細については、[ここ](cloud-services-how-to-configure.md#update-a-cloud-service-configuration-file)を参照してください。
+>[AZURE.NOTE]**Azure ポータル**を使用して、クラウド サービスで使用するオペレーティング システムを変更することはできません。この設定を変更するには、[Azure クラシック ポータル](http://manage.windowsazure.com/)を使用する必要があります。詳細については、[ここ](cloud-services-how-to-configure.md#update-a-cloud-service-configuration-file)を参照してください。
 
 ## クラウド サービス構成ファイルの更新
 
 1. まず、既存のクラウド サービス構成ファイル (.cscfg) をダウンロードします。
 
-    1. [Azure プレビュー ポータル](http://portal.azure.com/)で、クラウド サービスに移動します。
+    1. [Azure ポータル](http://portal.azure.com/)で、クラウド サービスに移動します。
 
     2. **[設定]** アイコンまたは **[Essentials]/[すべての設定]** リンクをクリックして、**[設定]** ブレードを開きます。
 
@@ -85,7 +85,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 
 ## ロール インスタンスへのリモート アクセスの構成
 
-**Azure プレビュー ポータル**を使用して、リモート アクセスを構成することはできません。この設定を変更するには、[非プレビュー ポータル](http://manage.windowsazure.com/)を使用する必要があります。[こちら](cloud-services-role-enable-remote-desktop.md)に説明があります。
+**Azure ポータル**を使用して、リモート アクセスを構成することはできません。この設定を変更するには、[Azure クラシック ポータル](http://manage.windowsazure.com/)を使用する必要があります。[こちら](cloud-services-role-enable-remote-desktop.md)に説明があります。
 			
 ## 次のステップ
 
@@ -94,4 +94,4 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

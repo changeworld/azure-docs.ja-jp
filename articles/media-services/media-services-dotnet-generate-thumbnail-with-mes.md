@@ -368,7 +368,7 @@
 	また、Start は特殊なマクロの {Best} もサポートしています。このマクロは、コンテンツの最初の "関連する" フレームを決定しようと試みます。注: (Start が {Best} に設定されている場合、Step と Range は無視されます)
 	
 	- 既定: Start:{Best}
-- 各画像形式の出力形式は明示的に指定する必要があります (Jpg/Png/BmpFormat)。指定されている場合、JpgVideo は JpgFormat に、などと AMS によって関連付けられます。OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
+- 各画像形式の出力形式は明示的に指定する必要があります (Jpg/Png/BmpFormat)。指定されている場合、JpgVideo は JpgFormat に、などと MES によって関連付けられます。OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
 
 
 ##Media Services のラーニング パス
@@ -383,4 +383,4 @@
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

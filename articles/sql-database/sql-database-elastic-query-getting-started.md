@@ -33,7 +33,7 @@ Azure SQL Database 用の エラスティック データベース クエリ (�
 	![コマンド プロンプト][1]
 
 2.  コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。「3」を入力し、**Enter** キーを押します。この操作を 4 回を繰り返します。これにより、サンプルのデータ行がシャードに挿入されます。
-3.  [Azure プレビュー ポータル](https://portal.azure.com) に、v12 サーバーにある次の 3 つの新しいデータベースが表示されるはずです。
+3.  [Azure ポータル](https://portal.azure.com) に、v12 サーバーにある次の 3 つの新しいデータベースが表示されるはずです。
 
 	![Visual Studio の確認][2]
 
@@ -43,7 +43,7 @@ Azure SQL Database 用の エラスティック データベース クエリ (�
 
 ## エラスティック クエリ データベースを作成する
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)を開き、ログインします。
+1. [Azure ポータル](https://portal.azure.com)を開き、ログインします。
 2. シャード セットアップと同じサーバーに新しい Azure SQL Database を作成します。このデータベースに "ElasticDBQuery" という名前を付けます。 価格レベルについては、プレミアム プランのいずれかを選択する必要があります。エラスティック データベース クエリは現在、プレミアム レベルでのみ使用できます。
 
 	![Azure ポータルと価格レベル][3]
@@ -142,4 +142,4 @@ ElasticDBQuery データベースでこのクエリを実行します。
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

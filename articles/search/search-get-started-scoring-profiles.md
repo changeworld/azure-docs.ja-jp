@@ -46,8 +46,8 @@ codeplex の [Azure Search スコアリング プロファイルのデモ](https
 ## app.config の編集
 
 1. ファイルを抽出した後で、Visual Studio でソリューションを開き構成ファイルを編集します。
-1. ソリューション エクスプローラーで、**[app.config]** をダブルクリックします。このファイルは、要求を認証するためのサービス エンドポイントと `api-key` を指定します。これらの値は管理ポータルで取得できます。
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. ソリューション エクスプローラーで、**[app.config]** をダブルクリックします。このファイルは、要求を認証するためのサービス エンドポイントと `api-key` を指定します。これらの値はクラシック ポータルで取得できます。
+1. [Azure クラシック ポータル](https://portal.azure.com)にサインインします。
 1. Azure Search のサービス ダッシュボードに移動します。
 1. **[プロパティ]** タイルをクリックして、サービスの URL をコピーします。
 1. **[キー]** タイルをクリックして、`api-key` をコピーします。
@@ -126,4 +126,4 @@ app.config に URL と `api-key` を追加すると、アプリケーション�
 [10]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX1.PNG
 [9]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX2.PNG
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

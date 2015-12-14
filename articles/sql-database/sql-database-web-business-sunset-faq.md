@@ -23,15 +23,15 @@ Web データベースおよび Business データベースをアップグレー
 
 **お勧めの価格レベルは次のとおりです。**
 
-- [Azure ポータルを使用し、SQL Database V12 にアップグレードします](sql-database-v12-upgrade.md)
-- [PowerShell を使用し、SQL Database V12 にアップグレードします](sql-database-upgrade-server.md)
+- [Azure ポータルを使用し、SQL Database V12 にアップグレードします](sql-database-upgrade-server-portal.md)
+- [PowerShell を使用し、SQL Database V12 にアップグレードします](sql-database-upgrade-server-powershell.md)
 - [Web または Business データベースの価格レベルを変更します](sql-database-service-tier-advisor.md)
  
 
 
-## Microsoft Azure 管理ポータルで Web Edition および Business Edition のデータベースが提供終了と表示されるのはどうしてですか
+## Azure ポータルで Web Edition および Business Edition のデータベースが提供終了と表示されるのはどうしてですか
 
-Web Edition および Business Edition のデータベースは、2015年 9 月以降利用できなくなるため、管理ポータルでは、Web データベースおよび Business データベースに提供終了のラベル表示をしています。Web Edition および Business Edition のデータベースはまだ通常どおりプロビジョニングおよび管理できますが、新しいデータベースでは、Basic、Standard、または Premium サービス階層を使用することが最善であるということを提供終了のラベルで注意喚起しています。また、すべての Web Edition および Business Edition のデータベースを Standard、Basic、または Premium にアップグレードする必要があることも、提供終了のラベルで注意喚起しています。既存の Web データベースまたは Business データベースを新しいサービス階層にアップグレードする方法の詳細については、「[SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする](sql-database-upgrade-new-service-tiers.md)」を参照してください。
+Web Edition および Business Edition のデータベースは、2015年 9 月以降利用できなくなるため、ポータルでは、Web データベースおよび Business データベースに提供終了のラベル表示をしています。Web Edition および Business Edition のデータベースはまだ通常どおりプロビジョニングおよび管理できますが、新しいデータベースでは、Basic、Standard、または Premium サービス階層を使用することが最善であるということを提供終了のラベルで注意喚起しています。また、すべての Web Edition および Business Edition のデータベースを Standard、Basic、または Premium にアップグレードする必要があることも、提供終了のラベルで注意喚起しています。既存の Web データベースまたは Business データベースを新しいサービス階層にアップグレードする方法の詳細については、「[SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする](sql-database-upgrade-new-service-tiers.md)」を参照してください。
 
 ## 既存の Web Edition および Business Edition のデータベースをアップグレードする最適な新しいサービス階層はどれでしょうか
 
@@ -49,9 +49,9 @@ Azure SQL Database には、お客様からのフィードバックに基づい�
 
 ## Basic、Standard、および Premium で利用できなくなった機能は何ですか
 
-フェデレーション機能が Web および Business Edition で提供終了となります。データベースをスケールアウトする必要があるお客様は、[Azure SQL Database](sql-database-elastic-scale-get-started.md) 用の [エラスティック データベース ツール](sql-database-elastic-scale-get-started.md)を使用するか、それに移行してください。これにより、シャーディングを使用するアプリケーションの構築および管理が簡単になります。アプリケーションで .NET クライアント ライブラリを使用すると、データをシャードにマッピングして OLTP リクエストを適切なデータベースにルーティングする方法を定義できます。データをシャードにどのように割り振るかを再構成する管理操作に役立つように、お客様の Azure サブスクリプションの中でご利用いただける Azure クラウド サービス テンプレートが付属しています。Microsoft では、[エラスティック データベース ツール](sql-database-elastic-scale-get-started.md)に加え、お客様との密接な関わりから学んだことに基づく[カスタムのシャーディング パターンおよび実施のガイダンス](https://msdn.microsoft.com/library/azure/dn764977.aspx)を継続して作成および公開していきます。機能のスケールアウトを必要とする新しいお客様は、「[エラスティック データベース ツール](sql-database-elastic-scale-get-started.md)」を確認するか、Microsoft サポートに問い合わせて選択肢を評価してください。
+フェデレーション機能が Web および Business Edition で提供終了となります。データベースをスケールアウトする必要があるお客様は、[Azure SQL Database](sql-database-elastic-scale-get-started.md) 用の [Elastic Database ツール](sql-database-elastic-scale-get-started.md)を使用するか、それに移行してください。これにより、シャーディングを使用するアプリケーションの構築および管理が簡単になります。アプリケーションで .NET クライアント ライブラリを使用すると、データをシャードにマッピングして OLTP リクエストを適切なデータベースにルーティングする方法を定義できます。データをシャードにどのように割り振るかを再構成する管理操作に役立つように、お客様の Azure サブスクリプションの中でご利用いただける Azure クラウド サービス テンプレートが付属しています。Microsoft では、[エラスティック データベース ツール](sql-database-elastic-scale-get-started.md)に加え、お客様との密接な関わりから学んだことに基づく[カスタムのシャーディング パターンおよび実施のガイダンス](https://msdn.microsoft.com/library/azure/dn764977.aspx)を継続して作成および公開していきます。機能のスケールアウトを必要とする新しいお客様は、「[エラスティック データベース ツール](sql-database-elastic-scale-get-started.md)」を確認するか、Microsoft サポートに問い合わせて選択肢を評価してください。
 
-また、Premium データベースのデータベースのコピー操作も変わります。以前は、Premium データベースのクォータは制限されており、T-SQL で CREATE DATABASE … AS A COPY OF を実行すると、リソースの予約なしで Suspended Premium データベースが作成されていました。このデータベースには Business データベースと同じ料金が加算されていました。現在では、Premium クォータはより自由に使用できるようになり、Suspended Premium はサポートされなくなりました。これからは、データベースのコピーは、ソースと同じエディションとパフォーマンス レベルで作成され、それに応じて課金されます。必要に応じて、コピーされたデータベースを別のサービス階層やパフォーマンス レベルにダウングレードしてコストを下げることができます。今回のリリースの一環として、既存の Suspended Premium データベースは Business Edition に変換される予定です。ポイント イン タイム リストアの導入により、データベースのバックアップ コピーを作成する必要性が軽減されると予想されます。
+また、Premium データベースのデータベースのコピー操作も変わります。以前は、Premium データベースのクォータは制限されており、T-SQL で CREATE DATABASE … AS A COPY OF を実行すると、リソースの予約なしで Suspended Premium データベースが作成されていました。このデータベースには Business データベースと同じ料金が加算されていました。現在では、Premium クォータはより自由に使用できるようになり、Suspended Premium はサポートされなくなりました。これからは、データベースのコピーは、ソースと同じエディションとパフォーマンス レベルで作成され、それに応じて課金されます。必要に応じて、コピーされたデータベースを別のサービス階層やパフォーマンス レベルにダウングレードしてコストを下げることができます。今回のリリースの一環として、既存の Suspended Premium データベースは Business Edition に変換される予定です。ポイントインタイム リストアの導入により、データベースのバックアップ コピーを作成する必要性が軽減されると予想されます。
 
 ## Basic、Standard、および Premium での課金処理に改善はありますか
 
@@ -68,4 +68,4 @@ Basic、Standard、Premium の Azure SQL Database は時間単位で課金され
 
 [SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする](sql-database-upgrade-new-service-tiers.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

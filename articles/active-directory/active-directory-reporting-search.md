@@ -13,10 +13,21 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="09/29/2015"
+	ms.date="11/30/2015"
 	ms.author="kenhoff"/>
 
 # Azure Active Directory のレポート検索
+
+## ドキュメント記事のレポート
+
+ - [Reporting API](active-directory-reporting-api-getting-started.md)
+ - [イベントの監査](active-directory-reporting-audit-events.md)
+ - [保持](active-directory-reporting-retention.md)
+ - [プレビュー](active-directory-reporting-previews.md)
+ - [Search](active-directory-reporting-search.md)
+ - [バックフィル](active-directory-reporting-backfill.md)
+ - [待機時間](active-directory-reporting-latencies.md)
+ - ["Unknown Actor"　イベント](active-directory-reporting-unknown-actor.md)
 
 Azure Active Directory には、ディレクトリ管理者向けに、複数のレポートにわたってユーザーのセキュリティ、アクティビティ、および監査イベントを検索する機能が用意されています。
 
@@ -56,4 +67,4 @@ RMS デバイスの利用状況 | いいえ
  - [Azure Active Directory レポート](active-directory-view-access-usage-reports.md)
  - [Azure Active Directory レポートの監査イベント](active-directory-reporting-audit-events.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

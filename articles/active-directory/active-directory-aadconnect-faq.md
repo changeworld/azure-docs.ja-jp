@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect の FAQ | Microsoft Azure"
+	pageTitle="Azure AD Connect: FAQ | Microsoft Azure"
 	description="このページでは、Azure AD Connect についてよく寄せられる質問を紹介します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/16/2015"
+	ms.date="12/02/2015"
 	ms.author="billmath"/>
 
-# Azure Active Directory Connect の FAQ
+# Azure AD Connect の FAQ
 
 ## 一般的なインストール
 **Q: Azure AD のグローバル管理者が 2FA を有効化している場合、インストールを実行できますか。**
@@ -90,4 +90,4 @@
 
 - このリンクを使用して、Azure ポータルからサポートを受けることができます。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

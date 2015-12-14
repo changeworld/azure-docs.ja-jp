@@ -48,7 +48,7 @@ Azure AD を使用して Azure リソース マネージャーへの要求を認
 
 	    New-AzureRmADApplication -DisplayName "My AD Application 1" -HomePage "https://myapp1.com" -IdentifierUris "https://myapp1.com"  -Password "{password}"
 
-	>[AZURE.NOTE]アプリケーションが作成された後で、返されたアプリケーション ID をメモしてください。これは次の手順で必要になります。アプリケーション ID は、Azure プレビュー ポータルの Active Directory セクションにあるアプリケーションのクライアント ID フィールドでも確認できます。
+	>[AZURE.NOTE]アプリケーションが作成された後で、返されたアプリケーション ID をメモしてください。これは次の手順で必要になります。アプリケーション ID は、Azure ポータルの Active Directory セクションにあるアプリケーションのクライアント ID フィールドでも確認できます。
 
 3. {application-id} を記録しておいた ID に置き換えてから、次のようにアプリケーションのサービス プリンシパルを作成します。
 
@@ -86,16 +86,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 1.	作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭に追加します。
 
-        using Microsoft.Azure;
-        using Microsoft.IdentityModel.Clients.ActiveDirectory;
-		using Microsoft.Azure.Management.Resources;
-		using Microsoft.Azure.Management.Resources.Models;
-		using Microsoft.Azure.Management.Storage;
-		using Microsoft.Azure.Management.Storage.Models;
-		using Microsoft.Azure.Management.Network;
-		using Microsoft.Azure.Management.Network.Models;
-		using Microsoft.Azure.Management.Compute;
-		using Microsoft.Azure.Management.Compute.Models;
+    Microsoft.Azure の使用; Microsoft.IdentityModel.Clients.ActiveDirectory の使用; Microsoft.Azure.Management.Resources の使用; Microsoft.Azure.Management.Resources.Models の使用; Microsoft.Azure.Management.Storage の使用; Microsoft.Azure.Management.Storage.Models の使用; Microsoft.Azure.Management.Network の使用; Microsoft.Azure.Management.Network.Models の使用; Microsoft.Azure.Management.Compute の使用; Microsoft.Azure.Management.Compute.Models の使用;
 
 
 2. 資格情報の作成に必要なトークンを取得するために、次のメソッドを Program クラスに追加します。
@@ -378,10 +369,10 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 2.	各状態コードが返されたら **Enter** キーを押して各リソースを作成します。仮想マシンが作成されたら、次の手順を実行した後、Enter キーを押してすべてのリソースを削除します。
 
-	このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。Enter キーを押してリソースの削除を開始する前に、Azure プレビュー ポータルでリソースの作成状況を確認することもできます。
+	このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。Enter キーを押してリソースの削除を開始する前に、Azure ポータルでリソースの作成状況を確認することもできます。
 
-3. Azure プレビュー ポータルで監査ログを参照して、リソースの状態を確認します。
+3. Azure ポータルで監査ログを参照し、リソースの状況を確認します。
 
 	![AD アプリケーションの作成](./media/virtual-machines-arm-deployment/crpportal.png)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

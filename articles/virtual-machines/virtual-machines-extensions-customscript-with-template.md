@@ -27,7 +27,7 @@
 
 カスタム スクリプト拡張機能は、導入以来、Windows VM と Linux VM でワークロードを構成するために広く使用されてきました。Azure リソース マネージャー テンプレートの導入により、VM をプロビジョニングするだけでなく、VM でワークロードも構成する単一のテンプレートを作成できるようになりました。
 
-## Azure リソース マネージャー テンプレートの概要
+## Azure リソース マネージャーのテンプレートについて
 
 Azure リソース マネージャー テンプレートでは、リソース間の依存関係を定義することで、JSON 言語で Azure IaaS インフラストラクチャを宣言によって指定できます。Azure リソース マネージャー テンプレートの概要については、次の記事をご覧ください。
 
@@ -35,7 +35,7 @@ Azure リソース マネージャー テンプレートでは、リソース間
 - [Azure CLI を使用したテンプレートのデプロイ](virtual-machines-deploy-rmtemplates-azure-cli)
 - [Azure Powershell を使用したテンプレートのデプロイ](virtual-machines-deploy-rmtemplates-powershell)
 
-### カスタム スクリプト拡張機能を実行する前提条件
+### 前提条件
 
 1. [ここ](http://azure.microsoft.com/downloads)から最新の Azure PowerShell コマンドレットまたは Azure CLI をインストールします。
 2. スクリプトが既存の VM で実行されている場合、VM エージェントがその VM 上で有効であることをご確認ください。そうでない場合は、[こちら](virtual-machines-extensions-install)の手順に従ってインストールしてください。
@@ -43,11 +43,11 @@ Azure リソース マネージャー テンプレートでは、リソース間
 4. スクリプトを Github アカウントにアップロードすることもできます。
 5. スクリプトは、拡張機能によって起動されるエントリ スクリプトが、他のスクリプトを順に起動するように記述されている必要があります。
 
-## テンプレートでのカスタム スクリプト拡張機能の使用方法の概要
+## カスタム スクリプト拡張機能の使用
 
 テンプレートを使用したデプロイでは、Azure サービス管理 API で使用できるバージョンと同じバージョンのカスタム スクリプト拡張機能を使用します。拡張機能では、同じパラメーターとシナリオ (Azure ストレージ アカウントまたは Github へのファイルのアップロードなど) をサポートします。テンプレートで使用する際の重要な違いは、拡張機能のバージョンを majorversion.* 形式で指定するのではなく、正確なバージョンを指定する必要があることです。
 
- ## Linux VM のカスタム スクリプト拡張機能のテンプレート スニペット
+ ## Linux VM のテンプレートの例
 
 テンプレートの Resource セクションで、次の拡張機能リソースを定義します。
 
@@ -69,7 +69,7 @@ Azure リソース マネージャー テンプレートでは、リソース間
     }
     }
 
-## Windows VM のカスタム スクリプト拡張機能のテンプレート スニペット
+## Windows VM のテンプレートの例
 
 テンプレートの Resource セクションで、次のリソースを定義します。
 
@@ -102,4 +102,4 @@ Azure リソース マネージャー テンプレートでは、リソース間
 
 <a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/" target="_blank">Linux VM のカスタム スクリプト拡張機能</a>。</br> <a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/" target="_blank">Windows VM のカスタム スクリプト拡張機能</a>。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

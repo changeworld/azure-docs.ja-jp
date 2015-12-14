@@ -24,7 +24,7 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 
 **関連記事:**
 
-- [HDInsight クラスターに Giraph をインストールする](hdinsight-hadoop-giraph-install.md): Azure プレビュー ポータルを使用して Giraph をインストールします
+- [HDInsight クラスターに Giraph をインストールする](hdinsight-hadoop-giraph-install.md): Azure ポータルを使用して Giraph をインストールする
 - [HDInsight Hadoop クラスターに Giraph をインストールする (Linux)](hdinsight-hadoop-giraph-install-linux.md)
 - [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md): HDInsight クラスターの作成に関する一般情報。
 - [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: Script Action を使用した HDInsight クラスターのカスタマイズに関する一般情報。
@@ -171,7 +171,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 
 ## 関連項目
 
-- [HDInsight クラスターに Giraph をインストールする](hdinsight-hadoop-giraph-install.md): Azure プレビュー ポータルを使用して Giraph をインストールします
+- [HDInsight クラスターに Giraph をインストールする](hdinsight-hadoop-giraph-install.md): Azure ポータルを使用して Giraph をインストールする
 - [HDInsight Hadoop クラスターに Giraph をインストールする (Linux)](hdinsight-hadoop-giraph-install-linux.md)
 - [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md): HDInsight クラスターの作成に関する一般情報。
 - [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: Script Action を使用した HDInsight クラスターのカスタマイズに関する一般情報。
@@ -190,4 +190,4 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

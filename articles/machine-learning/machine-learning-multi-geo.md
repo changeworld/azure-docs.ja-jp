@@ -23,7 +23,7 @@
 
 ## ワークスペースの作成
 
-1. Azure 管理ポータルにサインインします。
+1. Azure クラシック ポータルにサインインします。
 
 2.  **[+新規]**、**[Data Services]**、**[Machine Learning]**、**[簡易作成]** の順にクリックします。**[場所]** で、**[東南アジア]** など別のリージョンを選択します。![複数の地理的リージョンに関するヘルプ 画像 1][1]
 3. ワークスペースを選択し、**[ML Studio にサインイン]** をクリックします。![複数の地理的リージョンに関するヘルプ 画像 2][2]
@@ -57,4 +57,4 @@
 [3]: ./media/machine-learning-multi-geo/multi-geo_3.png
 [4a]: ./media/machine-learning-multi-geo/multi-geo_4a.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

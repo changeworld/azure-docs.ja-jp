@@ -56,7 +56,7 @@ Azure Service Bus 名前空間を作成するために実行した PowerShell �
 
 ![キーのコピー](./media/service-bus-ruby-how-to-use-queues/defaultkey.png)
 
-> [AZURE.NOTE]このキーは、[Azure ポータル](http://manage.windowsazure.com/)にログオンして Service Bus の名前空間の接続情報に移動する場合にも見つかります。
+> [AZURE.NOTE]このキーは、[Azure クラシック ポータル](http://manage.windowsazure.com/)にログオンして Service Bus の名前空間の接続情報に移動する場合にも見つかります。
 
 ## Ruby アプリケーションの作成
 
@@ -151,4 +151,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 この記事で説明されている Azure サービス バス キューと、「[サービス バス キューの使用方法](/develop/ruby/how-to-guides/queue-service/)」で説明されている Azure サービス バス キューの比較については、「[Azure Queues and Azure Service Bus Queues - Compared and Contrasted (Azure キューと Azure サービス バス キューの比較)](service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

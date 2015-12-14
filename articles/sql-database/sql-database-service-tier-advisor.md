@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="10/02/2015"
+   ms.date="12/01/2015"
    ms.author="sstein"/>
 
 # SQL Database の価格レベルの提案
 
  既存の Azure SQL Database のワークロードを実行するのに最適な価格レベルとパフォーマンス レベルを提案する価格レベルの提案が用意されています。
 
-> [AZURE.NOTE]価格レベルの提案は、Web データベース、ビジネス データベース、およびエラスティック データベース プールのみを対象として、[Azure プレビュー ポータル](https://portal.azure.com/)でのみ利用できます。
+> [AZURE.NOTE]価格レベルの提案は、Web データベース、ビジネス データベース、およびエラスティック データベース プールのみを対象として、[Azure ポータル](https://portal.azure.com/)でのみ利用できます。
 
 
 価格レベルの提案は、次のタスクの実行中に取得します。
@@ -58,7 +58,7 @@ SQL Database サービスでは、SQL Database の過去のリソースの使用
 
 価格レベルの提案を受けるには、既存の Web または Business データベースを選択し、**[価格レベル]** タイルをクリックします。(価格レベルの提案は、[SQL サーバーを V12 にアップグレードする](sql-database-v12-upgrade.md)ときにも利用できます)。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. **[参照]**、**[SQL データベース]** の順にクリックします。
 4. **[SQL データベース]** ブレードで、推奨情報を見るデータベースをクリックします。
 
@@ -87,7 +87,7 @@ SQL Database サービスでは、SQL Database の過去のリソースの使用
 
 ## 次のステップ
 
-データベースの内容によっては、アップグレードまたはダウングレードをすぐに実行することはできません。管理ポータルでは、データベースが新しいレベルに移行されるときに通知が提供されます。また、SQL Database サーバーのマスター データベースで [sys.dm\_operation\_status (Azure SQL Database )](https://msdn.microsoft.com/library/dn270022.aspx) ビューを照会することにより、アップグレードを監視できます。
+データベースの内容によっては、アップグレードまたはダウングレードをすぐに実行することはできません。ポータルでは、データベースが新しいレベルに移行されるときに通知が提供されます。また、SQL Database サーバーのマスター データベースで [sys.dm\_operation\_status (Azure SQL Database )](https://msdn.microsoft.com/library/dn270022.aspx) ビューを照会することにより、アップグレードを監視できます。
 
 
 <!--Image references-->
@@ -100,4 +100,4 @@ SQL Database サービスでは、SQL Database の過去のリソースの使用
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

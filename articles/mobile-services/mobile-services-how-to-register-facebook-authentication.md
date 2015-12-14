@@ -1,29 +1,34 @@
-<properties 
-	pageTitle="Facebook 認証用に登録する | Azure Mobile Services" 
-	description="Azure Mobile Services アプリケーションで Facebook 認証を使用する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Facebook 認証用に登録する | Azure Mobile Services"
+	description="Azure Mobile Services アプリケーションで Facebook 認証を使用する方法について説明します。"
+	services="mobile-services"
+	documentationCenter=""
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="11/15/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="11/15/2015"
 	ms.author="glenga"/>
 
 # Mobile Services での Facebook 認証用のアプリケーションの登録
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-register-identity-provider](../../includes/mobile-services-selector-register-identity-provider.md)]
 
 このトピックでは、Facebook を使用して Azure Mobile Services で認証できるようにアプリケーションを登録する方法について説明します。
 
 >[AZURE.NOTE]このチュートリアルはあらゆるプラットフォームにおいて拡張性の高いモバイル アプリケーションを作成するソリューションの [Azure Mobile Services] について説明します。Mobile Services によって簡単にデータの同期化を行い、ユーザーを認証して、プッシュ通知を送信できます。このページはアプリケーションへユーザーをログインさせる方法を説明する「[認証の使用](mobile-services-ios-get-started-users.md)」チュートリアルをサポートしています。Mobile Services を初めて使用する場合は、チュートリアル「[Mobile Services の使用](mobile-services-ios-get-started.md)」を完了することをお勧めします。
-	
+
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Facebook アカウントおよび携帯電話番号が必要になります。新しい Facebook アカウントを作成するには、[facebook.com](http://go.microsoft.com/fwlink/p/?LinkId=268285) にアクセスしてください。
 
 1. [Facebook Developers](http://go.microsoft.com/fwlink/p/?LinkId=268285) の Web サイトに移動し、Facebook アカウントの資格情報でサインインします。
@@ -45,17 +50,17 @@
 7. **[Show]** をクリックし、入力を求められたらパスワードを入力し、**[App ID]** と **[App Secret]** の値を書き留めておきます。
 
    	![][5] &nbsp;
-	
+
     >[AZURE.IMPORTANT]アプリケーション シークレットは、重要なセキュリティ資格情報です。このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。&nbsp;
 
 8. **[Advanced]** タブをクリックし、次のいずれかの URL 形式を **[Valid OAuth redirect URIs]** に入力して、**[Save Changes]** をクリックします。
- 
+
 	+ **.NET バックエンド**: `https://<mobile_service>.azure-mobile.net/signin-facebook`
-	+ **JavaScript バックエンド**: `https://<mobile_service>.azure-mobile.net/login/facebook` 
+	+ **JavaScript バックエンド**: `https://<mobile_service>.azure-mobile.net/login/facebook`
 
 	 >[AZURE.NOTE]Mobile Services バックエンドの種類として、正しいリダイレクト URL パスの形式を使用してください。これが正しくない場合、認証は失敗します。
 
-       
+
 9. [**Status & Review**]、[**Yes**] の順にクリックし、アプリへの汎用パブリック アクセスを有効にします。
 
 	新しいアプリを登録するために使用した Facebook アカウントは、アプリの管理者であり、アプリへの管理者としてのアクセス権があります。この手順で汎用パブリック アクセスが与えられるため、アプリはその他の Facebook アカウントを使用して認証できるようになります。
@@ -72,8 +77,6 @@
 <!-- URLs. -->
 [Facebook Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268286
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-dotnet/
-[Azure Management Portal]: https://manage.windowsazure.com/
 [Azure Mobile Services]: http://azure.microsoft.com/services/mobile-services/
- 
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

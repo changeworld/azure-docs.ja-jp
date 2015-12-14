@@ -72,7 +72,7 @@
 
 BLOB サービス エンドポイントを検索するには:
 
-1. Azure ポータルで、**[参照]**、**[ストレージ アカウント]** の順に選択します。
+1. Azure クラシック ポータルで、**[参照]**、**[ストレージ アカウント]** の順に選択します。
 2. 使用するストレージ アカウントをクリックします。
 3. ストレージ アカウントのブレードで、BLOB をクリックします。
 
@@ -282,4 +282,4 @@ PolyBase を使用するソリューションを開発する際に知ってお�
 [Create Database Scoped Credential (Transact-SQL)]: https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

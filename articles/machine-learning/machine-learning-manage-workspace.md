@@ -18,7 +18,7 @@
 
 
 # Azure Machine Learning ワークスペースの管理
-Microsoft Azure 管理ポータルを使用すると、Machine Learning ワークスペースで次の操作を管理できます。
+Azure クラシック ポータルを使用すると、Machine Learning ワークスペースで次の操作を管理できます。
 
 - ワークスペースの使用方法を監視する
 - アクセスを許可または拒否するようにワークスペースを構成する
@@ -34,7 +34,7 @@ Microsoft Azure 管理ポータルを使用すると、Machine Learning ワー�
 ワークスペースを管理するには
 
 1.	Azure サブスクリプションに関連付けられているアカウントを使用して、Microsoft Azure アカウントにサインインします。
-2.	Microsoft Azure サービス パネルの [[Microsoft Azure 管理ポータル]](https://manage.windowsazure.com/) で、**[MACHINE LEARNING]** をクリックします。
+2.	Microsoft Azure サービス パネルの [[Azure クラシック ポータル]](https://manage.windowsazure.com/) で、**[MACHINE LEARNING]** をクリックします。
 3.	管理するワークスペースをクリックします。
 
 ワークスペースのページには次の 3 つのタブがあります。
@@ -54,7 +54,7 @@ Microsoft Azure 管理ポータルを使用すると、Machine Learning ワー�
 - **[使用状況の概要]** は、ワークスペースで使用されている Azure ストレージを表示します。
 - **[概要]** は、ワークスペース情報や役に立つリンクを提供します。
 
-> [AZURE.NOTE]**[ML Studio にサインイン]** リンクは、現在サインイン中の Microsoft アカウントを使用して Machine Learning Studio を開きます。Azure ポータルへのサインインに使用する Microsoft アカウントでワークスペースを作成する場合は、ワークスペースを開く権限が自動的には付与されません。ワークスペースを開くには、ワークスペースの所有者として定義された Microsoft アカウントにサインインするか、所有者からワークスペースへの参加の招待を受け取る必要があります。
+> [AZURE.NOTE]**[ML Studio にサインイン]** リンクは、現在サインイン中の Microsoft アカウントを使用して Machine Learning Studio を開きます。Azure クラシック ポータルへのサインインに使用する Microsoft アカウントでワークスペースを作成する場合は、ワークスペースを開く権限が自動的には付与されません。ワークスペースを開くには、ワークスペースの所有者として定義された Microsoft アカウントにサインインするか、所有者からワークスペースへの参加の招待を受け取る必要があります。
 
 
 ## ユーザーのアクセスを許可または一時停止するには ##
@@ -94,4 +94,4 @@ Web サービス エンドポイントの名前をクリックして開きます
 [consume]: machine-learning-consume-web-services.md
 [marketplace]: machine-learning-publish-web-service-to-azure-marketplace.md
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,13 +1,15 @@
-### Prerequisites ###
+### 前提条件 ###
 
-The Azure Toolkit for Eclipse requires the following software components:
+Azure Toolkit for Eclipse には、以下のソフトウェア コンポーネントが必要です。
 
-* Eclipse IDE for Java EE Developers, Indigo or later. This can be downloaded from <http://www.eclipse.org/downloads/>.
-* A Java Developer Kit (JDK), v1.7 or later. 
-* Operating Systems - the Azure Toolkit for Eclipse has been tested on the following operating systems:
-    * Windows 10, Windows 8 and 8.1, Windows 7
-    * Windows Server 2012, Windows Server 2008
+* Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。
+* Java Developer Kit (JDK) v1.7 以降。 
+* オペレーティング システム - Azure Toolkit for Eclipse は、次のオペレーティング システムでテストされています。
+    * Windows 10、Windows 8 および 8.1、Windows 7
+    * Windows Server 2012、Windows Server 2008
     * [Mac OS X](http://www.apple.com/osx)
     * [Ubuntu Linux](http://www.ubuntu.com)
 
->[AZURE.NOTE] More information can be found on the [Azure Toolkit for Eclipse](http://marketplace.eclipse.org/content/azure-toolkit-eclipse) page at the Eclipse Marketplace.
+>[AZURE.NOTE]詳細については、Eclipse Marketplace の [Azure Toolkit for Eclipse](http://marketplace.eclipse.org/content/azure-toolkit-eclipse) に関するページを参照してください。
+
+<!---HONumber=AcomDC_1203_2015-->

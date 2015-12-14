@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure AD でのパスワードの管理 | Microsoft Azure"
-	description="Azure AD でのパスワードの管理方法"
+	pageTitle="Azure Active Directory 内のパスワードを管理する | Microsoft Azure"
+	description="Azure Active Directory のパスワードを管理する方法。"
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/21/2015"
+	ms.date="12/01/2015"
 	ms.author="curtand"/>
 
-# Azure AD でのパスワードの管理
+# Azure Active Directory のパスワードを管理する
 
-管理者は、Azure クラシック ポータルを使用して Azure でのユーザーのパスワードをリセットできます。ディレクトリの名前をクリックし、[ユーザー] ページでユーザーの名前をクリックして、ポータルの下部にある **[パスワードのリセット]** をクリックします。
+管理者は、Azure クラシック ポータルで Azure Active Directory (Azure AD) のユーザーのパスワードをリセットできます。ディレクトリの名前をクリックし、[ユーザー] ページでユーザーの名前をクリックして、ポータルの下部にある **[パスワードのリセット]** をクリックします。
 
-このトピックの以降では、Azure Active Directory がサポートする次のようなパスワード管理機能について詳しく説明します。
+このトピックの以降の部分では、Azure Active Directory がサポートする次のようなパスワード管理機能について詳しく説明します。
 
 - **セルフ サービスによるパスワード**の変更では、エンド ユーザーまたは管理者は、管理者またはヘルプ デスクにサポートを依頼することなく、有効期限が切れた、または有効期限が切れていないパスワードを変更できます。
 - **セルフ サービスによるパスワード**のリセットでは、エンド ユーザーまたは管理者は、管理者またはヘルプ デスクにサポートを依頼することなく、パスワードを自動的にリセットできます。セルフ サービスのパスワード リセットには、Azure AD Premium または Basic が必要です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
-- **管理者によるパスワードのリセット**では、管理者は、Azure 管理ポータル内からエンド ユーザーまたは別の管理者のパスワードをリセットできます。
+- **管理者によるパスワードのリセット**では、管理者は、Azure クラシック ポータル内からエンド ユーザーまたは別の管理者のパスワードをリセットできます。
 - **パスワード管理アクティビティ レポート**では、組織内で発生したパスワードのリセットおよび登録アクティビティの詳細が管理者に提供されます。
 - **パスワード ライトバック**では、クラウドからオンプレミスのパスワードを管理できるので、フェデレーション ユーザーまたはパスワード同期済みユーザーは、またはこれらのユーザーに代わって、上記のシナリオをすべて実行できます。パスワード ライトバックには Azure AD Premium が必要です。詳細については、「[Azure Active Directory Premium の概要](active-directory-get-started-premium.md)」を参照してください。
 
@@ -48,4 +48,4 @@
 - [Azure AD でのユーザーの作成または編集](active-directory-create-users.md)
 - [Azure AD でのグループの管理](active-directory-manage-groups.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

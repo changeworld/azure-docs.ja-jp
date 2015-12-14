@@ -279,4 +279,4 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

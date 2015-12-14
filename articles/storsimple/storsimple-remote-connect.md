@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/12/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスにリモート接続する
@@ -37,9 +37,9 @@ Windows PowerShell インターフェイスにリモート接続できます。�
 
 HTTP セッション経由の Windows PowerShell for StorSimple への接続は、StorSimple デバイスのシリアル コンソール経由での接続よりも高い安全性を提供します。これは最も安全な方法ではありませんが、信頼されたネットワークでは容認できます。
 
-Azure ポータルまたはシリアル コンソールを使用してリモート管理を構成できます。次の手順から選択してください。
+Azure クラシック ポータルまたはシリアル コンソールを使用してリモート管理を構成できます。次の手順から選択してください。
 
-- [Azure ポータルを使用して HTTP 経由でリモート管理を有効にする](#use-the-azure-portal-to-enable-remote-management-over-http)
+- [Azure クラシック ポータルを使用して HTTP 経由でリモート管理を有効にする](#use-the-azure-classic-portal-to-enable-remote-management-over-http)
 
 - [シリアル コンソールを使用して HTTP 経由でリモート管理を有効にする](#use-the-serial-console-to-enable-remote-management-over-http)
 
@@ -47,11 +47,11 @@ Azure ポータルまたはシリアル コンソールを使用してリモー�
 
 - [リモート接続用のクライアントを準備する](#prepare-the-client-for-remote-connection)
 
-### Azure ポータルを使用して HTTP 経由でリモート管理を有効にする 
+### Azure クラシック ポータルを使用して HTTP 経由でリモート管理を有効にする 
 
-Azure ポータルで、次の手順に従って、HTTP 経由でのリモート管理を有効にします。
+Azure クラシック ポータルで、次の手順に従って、HTTP 経由でのリモート管理を有効にします。
 
-#### Azure ポータル経由でリモート管理を有効にするには
+#### Azure クラシック ポータル経由でリモート管理を有効にするには
 
 1. **[デバイス]** を選択し、デバイス用の **[構成]** をクリックします。
 
@@ -122,9 +122,9 @@ Azure ポータルで、次の手順に従って、HTTP 経由でのリモート
 
 HTTPS セッション経由での Windows PowerShell for StorSimple への接続は、Microsoft Azure StorSimple デバイスへのリモート接続よりも安全性が高い推奨される方法です。次の手順は、HTTPS を使用して Windows PowerShell for StorSimple に接続できるようにシリアル コンソールとクライアント コンピューターを設定する方法について説明しています。
 
-Azure ポータルまたはシリアル コンソールを使用してリモート管理を構成できます。次の手順から選択してください。
+Azure クラシック ポータルまたはシリアル コンソールを使用してリモート管理を構成できます。次の手順から選択してください。
 
-- [Azure ポータルを使用して HTTPS 経由でリモート管理を有効にする](#use-the-azure-portal-to-enable-remote-management-over-https)
+- [Azure クラシック ポータルを使用して HTTPS 経由でリモート管理を有効にする](#use-the-azure-classic-portal-to-enable-remote-management-over-https)
 
 - [シリアル コンソールを使用して HTTPS 経由でのリモート管理を有効にする](#use-the-serial-console-to-enable-remote-management-over-https)
 
@@ -134,11 +134,11 @@ Azure ポータルまたはシリアル コンソールを使用してリモー�
 
 - [リモート ホストからデバイスに接続する](#connect-to-the-device-from-the-remote-host)
 
-### Azure ポータルを使用して HTTPS 経由でリモート管理を有効にする
+### Azure クラシック ポータルを使用して HTTPS 経由でリモート管理を有効にする
 
-Azure ポータルで、次の手順に従って、HTTPS 経由でのリモート管理を有効にします。
+Azure クラシック ポータルで、次の手順に従って、HTTPS 経由でのリモート管理を有効にします。
 
-#### Azure ポータル経由で HTTPS 経由でリモート管理を有効にするには
+#### Azure クラシック ポータル経由で HTTPS 経由でリモート管理を有効にするには
 
 1. **[デバイス]** を選択し、デバイス用の **[構成]** をクリックします。
 
@@ -272,4 +272,4 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)の詳細を確認する。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

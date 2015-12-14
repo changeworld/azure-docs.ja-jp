@@ -29,7 +29,7 @@ Service Bus のサンプルでは、Service Bus (クラウド サービス) と 
 
 ### Azure Service Bus の接続文字列を取得するには
 
-1. [Azure ポータル](http://manage.windowsazure.com)にログオンします。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com)にログオンします。
 
 1. 左側の列で、**[Service Bus]** をクリックします。
 
@@ -132,4 +132,4 @@ Service Bus のその他の概要については、次のトピックを参照�
 - [Service Bus のアーキテクチャ](service-bus-architecture.md)
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

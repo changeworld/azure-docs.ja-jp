@@ -1,8 +1,8 @@
-## Retrieve the IoT Hub keys
+## IoT Hub キーを取得します。
 
-Display the authentication keys for the new IoT Hub.
+新しい IoT Hub の認証キーを表示します。
 
-1. Add the following method to Program.cs:
+1. 次のメソッドを Program.cs に追加します。
 
     ```
     static void ShowIoTHubKeys(ResourceManagementClient client, string token)
@@ -11,7 +11,7 @@ Display the authentication keys for the new IoT Hub.
     }
     ```
 
-2. Add the following code to the **ShowIoTHubKeys** method to print the authentication keys to the console:
+2. 次のコードを **ShowIoTHubKeys** メソッドに追加して、認証キーをコンソールに出力します。
 
     ```
     client.HttpClient.DefaultRequestHeaders.Authorization = 
@@ -24,3 +24,5 @@ Display the authentication keys for the new IoT Hub.
     Console.WriteLine("Keys: {0}, 
         httpsRepsonse.Content.ReadAsStringAsync().Result);
     ```
+
+<!---HONumber=AcomDC_1203_2015-->

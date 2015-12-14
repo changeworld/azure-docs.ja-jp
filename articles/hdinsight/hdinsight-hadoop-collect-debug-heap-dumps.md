@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/29/2015"
+	ms.date="11/12/2015"
 	ms.author="jgao"/>
 
 
@@ -22,15 +22,15 @@
 
 [AZURE.INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-Hadoop サービスのヒープ ダンプを自動的に収集し、HDInsightHeapDumps 下のユーザーの Azure BLOB ストレージ アカウント内に置くことができます。サービスのヒープ ダンプ ファイルはアプリケーションのメモリのスナップショットを含みます。これには、ダンプの作成時の変数の値が含まれます。
+ヒープ ダンプには、ダンプが作成された時点の変数の値を含む、アプリケーションのメモリのスナップショットが含まれています。これらは、実行時に発生する問題を診断するのに便利です。Hadoop サービスのヒープ ダンプを自動的に収集し、HDInsightHeapDumps 下のユーザーの Azure BLOB ストレージ アカウント内に置くことができます。
 
 さまざまなサービスに対するヒープ ダンプの収集は、各クラスター上のサービスに対して、個別に有効にする必要があります。既定では、クラスターに対してこの機能はオフになっています。これらのヒープ ダンプのサイズは大きくなる可能性があるため、収集を有効にした後はヒープ ダンプの保存先である BLOB ストレージ アカウントを定期的に確認してください。
 
 > [AZURE.NOTE]この記事の情報は、Windows ベースの HDInsight にのみ適用されます。Linux ベースの HDInsight については、「[Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)」を参照してください。
 
-## <a name="whichServices"></a>ヒープ ダンプの対象サービス
+## ヒープ ダンプの対象サービス
 
-要求に応じてヒープ ダンプを有効にすることができるサービスは次のとおりです。
+次のサービスのヒープ ダンプを有効にできます。
 
 *  **hcatalog** - tempelton
 *  **hive** - hiveserver2、metastore、derbyserver
@@ -38,7 +38,7 @@ Hadoop サービスのヒープ ダンプを自動的に収集し、HDInsightHea
 *  **yarn** - resourcemanager、nodemanager、timelineserver
 *  **hdfs** - datanode、secondarynamenode、namenode
 
-## <a name="configuration"></a>ヒープ ダンプを有効にする構成要素
+## ヒープ ダンプを有効にする構成要素
 
 サービスのヒープ ダンプを有効にするには、そのサービスのセクション内に適切な構成要素を設定する必要があります。これは **service\_name** で指定します。
 
@@ -47,7 +47,7 @@ Hadoop サービスのヒープ ダンプを自動的に収集し、HDInsightHea
 
 **service\_name** の値には、上記のように、tempelton、hiveserver2、metastore、derbyserver、jobhistoryserver、resourcemanager、nodemanager、timelineserver、datanode、secondarynamenode、namenode のいずれかを指定できます。
 
-## <a name="powershell"></a>Azure PowerShell を使用してヒープ ダンプを有効にする方法
+## Azure PowerShell を使用して有効にする
 
 たとえば、Azure PowerShell を使用して jobhistoryserver のヒープ ダンプを有効にするには、次の操作を実行します。
 
@@ -55,7 +55,7 @@ Hadoop サービスのヒープ ダンプを自動的に収集し、HDInsightHea
 
 	$MapRedConfigValues.Configuration = @{ "javaargs.jobhistoryserver.XX:+HeapDumpOnOutOfMemoryError"="-XX:+HeapDumpOnOutOfMemoryError" ; "javaargs.jobhistoryserver.XX:HeapDumpPath" = "-XX:HeapDumpPath=c:\\Dumps\\jobhistoryserver_%date:~4,2%_%date:~7,2%_%date:~10,2%_%time:~0,2%_%time:~3,2%_%time:~6,2%.hprof" }
 
-## <a name="sdk"></a>Azure HDInsight .NET SDK でヒープ ダンプを有効にする方法
+## .NET SDK を使用して有効にする
 
 たとえば、Azure HDInsight .NET SDK を使用して jobhistoryserver のヒープ ダンプを有効にするには、次の操作を実行します。
 
@@ -63,4 +63,4 @@ Hadoop サービスのヒープ ダンプを自動的に収集し、HDInsightHea
 
 	clusterInfo.MapReduceConfiguration.ConfigurationCollection.Add(new KeyValuePair<string, string>("javaargs.jobhistoryserver.XX:HeapDumpPath", "-XX:HeapDumpPath=c:\\Dumps\\jobhistoryserver_%date:~4,2%_%date:~7,2%_%date:~10,2%_%time:~0,2%_%time:~3,2%_%time:~6,2%.hprof"));
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

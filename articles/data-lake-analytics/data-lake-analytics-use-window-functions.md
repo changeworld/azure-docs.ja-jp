@@ -23,7 +23,7 @@
 
 ウィンドウ関数は、*ウィンドウ*と呼ばれる行セット内で計算処理を実行するために使用されます。ウィンドウは OVER 句で定義されます。ウィンドウ関数は、いくつかの重要なシナリオを非常に効率的な方法で解決します。
 
-このチュートリアルと学習ガイドでは、2 つのサンプル データセットを使用して、ウィンドウ関数を適用できるサンプル シナリオについて説明します。詳細については、[U-SQL リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=691348)を参照してください。
+このチュートリアルと学習ガイドでは、2 つのサンプル データセットを使用して、ウィンドウ関数を適用できるサンプル シナリオについて説明します。詳細については、「[U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=691348)」をご覧ください。
 
 ウィンドウ関数は、次のカテゴリに分類されます。
 
@@ -35,8 +35,8 @@
 
 - 次の 2 つのチュートリアルを完了します。
 
-    - [Azure Data Lake Tools for Visual Studio を使ってみる](data-lake-analytics-use-data-lake-tools.md)。
-    - [Azure Data Lake Analytics ジョブに U-SQL を使ってみる](data-lake-analytics-u-sql-get-started.md)。
+    - [Azure Data Lake Tools for Visual Studio を使ってみる](data-lake-analytics-use-data-lake-tools.md)
+    - [Azure Data Lake Analytics ジョブに U-SQL を使ってみる](data-lake-analytics-u-sql-get-started.md)
 - [Azure Data Lake Tools for Visual Studio の使用](data-lake-analytics-use-data-lake-tools.md)に関するページの説明に従って、Data Lake Analytic アカウントを作成します。
 - [Azure Data Lake Analytics ジョブでの U-SQL の使用](data-lake-analytics-u-sql-get-started.md)に関するページの説明に従って、Visual Studio U-SQL プロジェクトを作成します。
 
@@ -381,7 +381,7 @@ RANK() では、ROW\_NUMBER() とは異なり、ウィンドウに ORDER BY 句�
 
 Latency の最初の 2 つの値が同じであるため、RANK 列は (1,1,3) で始まります。その次の値は、Latency 値が 500 に変わったため、3 になります。重要な点は、重複する値に同じ順位が指定された場合でも、RANK の数値は次の ROW\_NUMBER 値に "スキップ" することです。このパターンは、Web バーティカルのシーケンス (2,2,4) で繰り返されていることがわかります。
 
-![U-SQL window function RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-rank-result.png)
+![U-SQL ウィンドウ関数 RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-rank-result.png)
 
 ### DENSE\_RANK
 	
@@ -604,7 +604,7 @@ CUME\_DIST は、値のグループにおける指定された値の相対位置
 
 - 値が 500 以下の行は 6 行あるため、CUME\_DIST は 6/6=1 となります。
 - 値が 400 以下の行は 5 行あるため、CUME\_DIST は 5/6=0.83 となります。
-- 値が 300 以下の行は 4 行あるため、CUME\_DIST は 5/6=0.66 となります。
+- 値が 300 以下の行は 4 行あるため、CUME\_DIST は 4/6=0.66 となります。
 - 値が 200 以下の行は 3 行あるため、CUME\_DIST は 3/6=0.5 となります。待機時間の値が同じ行が 2 行あります。
 - 値が 100 以下の行は 1 行あるため、CUME\_DIST は 1/6=0.16 となります。 
 
@@ -733,14 +733,14 @@ PERCENTILE\_DISC では値が補間されないため、Web の中央値は 200 
 ## 関連項目
 
 - [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-- [Azure プレビュー ポータルで Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
+- [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 - [Azure PowerShell で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
 - [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
 - [Azure Data Lake Analytics の対話型チュートリアルの使用](data-lake-analytics-use-interactive-tutorials.md)
-- [Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)
-- [Azure Data Lake Analytics U-SQL 言語の使用を開始する](data-lake-analytics-u-sql-get-started.md)
-- [Azure プレビュー ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-portal.md)
+- [Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)
+- [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
+- [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-portal.md)
 - [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-powershell.md)
-- [Azure プレビュー ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+- [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

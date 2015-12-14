@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect アカウントとアクセス許可 | Microsoft Azure"
+   pageTitle="Azure AD Connect: アカウントとアクセス許可 | Microsoft Azure"
    description="このトピックでは、使用および作成されるアカウントと、必要なアクセス許可について説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="11/02/2015"
+   ms.date="12/02/2015"
    ms.author="andkjell;billmath"/>
 
 
@@ -95,11 +95,11 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 ![AD アカウント](./media/active-directory-aadconnect-accounts-permissions/adsyncserviceaccount.png)
 
 ### Azure AD Connect 同期サービス アカウント
-2 つのローカル サービス アカウントはインストール ウィザードで作成します (カスタム設定で使用するアカウントを指定しない限り)。アカウントは、先頭に **AAD\_** が付けられ、そのアカウントで実行するために実際の同期サービスに使用されます。Azure AD Connect をドメイン コントローラーにインストールした場合、アカウントはドメインに作成されます。リモート サーバーで SQL Server を使用した場合、**AAD\_** サービス アカウントをドメインに配置する必要があります。アカウントは、先頭に **AADSyncSched\_** が付けられ、同期エンジンを実行するスケジュールされたタスクに使用されます。
+インストール ウィザードによって2 つのローカル サービス アカウントが作成されます (使用するアカウントをカスタム設定に指定している場合は除きます)。先頭に **AAD\_** が付くアカウントは、実行される実際の同期サービスで使用されます。Azure AD Connect をドメイン コントローラーにインストールした場合、アカウントはドメインに作成されます。リモート サーバーで SQL Server を使用する場合は、**AAD\_** サービス アカウントをドメインに配置する必要があります。アカウントは、先頭に **AADSyncSched\_** が付けられ、同期エンジンを実行するスケジュールされたタスクに使用されます。
 
 ![同期サービス アカウント](./media/active-directory-aadconnect-accounts-permissions/syncserviceaccount.png)
 
-アカウントは、長い複雑なパスワードで作成されますが、このパスワードには有効期限はありません。
+アカウントは、長い複雑なパスワード付きで作成されますが、このパスワードには有効期限はありません。
 
 同期エンジン サービス アカウントの場合、このアカウントは Windows が暗号化キーを格納するために使用されるため、このアカウントのパスワードをリセットまたは変更しないでください。
 
@@ -120,6 +120,6 @@ Azure AD のアカウントは、同期サービスで使用するために作�
 
 ## 次のステップ
 
-「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
+「[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

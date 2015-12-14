@@ -71,9 +71,9 @@ Windows のカスタム スクリプト拡張機能を使うと、リモート�
       Get-AzureVM -Name $name -ServiceName $servicename | Set-AzureVMCustomScriptExtension -StorageAccountName $storageaccount -StorageAccountKey $storagekey -ContainerName $container -FileUri $fileUrl1, $fileUrl2 -Run 'file.ps1' | Update-AzureVM
 
 
-### Azure プレビュー ポータルからのカスタム スクリプト拡張機能の追加
+### Azure ポータルからのカスタム スクリプト拡張機能の追加
 
-<a href="https://portal.azure.com/ " target="_blank">Azure プレビュー ポータル</a>で VM を参照し、実行するスクリプト ファイルを指定して拡張機能を追加します。
+<a href="https://portal.azure.com/ " target="_blank">Azure ポータル</a>で VM を参照し、実行するスクリプト ファイルを指定して拡張機能を追加します。
 
   ![][5]
 
@@ -91,4 +91,4 @@ Windows のカスタム スクリプト拡張機能を使うと、リモート�
 <!--Image references-->
 [5]: ./media/virtual-machines-extensions-customscript/addcse.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

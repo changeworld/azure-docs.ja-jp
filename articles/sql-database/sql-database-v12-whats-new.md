@@ -132,7 +132,7 @@ Azure SQL Database を今すぐ V11 から V12 にアップグレードするこ
 以前のバージョンの SQL Database サービスでデータベースまたは論理サーバーが実行されているかどうかは、次の方法で簡単に確認できます。
 
 
-1. [Azure プレビュー ポータル](http://portal.azure.com/)にアクセスします。
+1. [Azure ポータル](http://portal.azure.com/)にアクセスします。
 2. **[参照]** をクリックします。
 3. **[SQL Server]** をクリックします。
 4. サーバーまたはデータベースの隣のアイコンから、現在の状態がわかります。
@@ -161,4 +161,4 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 
 [Microsoft Azure プレビューの使用条件に関する補足](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

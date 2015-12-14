@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="07/08/2015"
+   ms.date="12/02/2015"
    ms.author="jgao"/>
 
 # HDInsight での HBase geo レプリケーションの構成
@@ -67,7 +67,7 @@
 
 「[2 つの Azure 仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-replication-vnet]」では、ヨーロッパと米国のデータ センターに仮想ネットワークを作成しました。2 つの仮想ネットワークは VPN で接続されています。このセッションでは、各仮想ネットワークに HBase クラスターをプロビジョニングします。このチュートリアルの後半では、一方の HBase クラスターが他の HBase クラスターにレプリケートするようにします。
 
-Azure ポータルでは、カスタム構成オプションで HDInsight クラスターをプロビジョニングすることはできません。たとえば、*hbase.replication* を *true* に設定するような場合です。クラスターをプロビジョニングした後で構成ファイルの値を設定した場合、クラスターが再イメージ化された後で設定は失われます。詳細については、「[HDInsight での Hadoop クラスターのプロビジョニング][hdinsight-provision]」を参照してください。カスタム オプションで HDInsight クラスターをプロビジョニングする方法の 1 つは、Azure PowerShell を使用することです。
+Azure クラシック ポータルでは、カスタム構成オプションで HDInsight クラスターをプロビジョニングすることはできません。たとえば、*hbase.replication* を *true* に設定するような場合です。クラスターをプロビジョニングした後で構成ファイルの値を設定した場合、クラスターが再イメージ化された後で設定は失われます。詳細については、「[HDInsight での Hadoop クラスターのプロビジョニング][hdinsight-provision]」を参照してください。カスタム オプションで HDInsight クラスターをプロビジョニングする方法の 1 つは、Azure PowerShell を使用することです。
 
 
 **Contoso-VNet-EU で HBase クラスターをプロビジョニングするには**
@@ -156,7 +156,7 @@ Azure ポータルでは、カスタム構成オプションで HDInsight クラ
 
 **2 つの HBase クラスターのドメイン サフィックスを調べるには**
 
-1. RDP で **Contoso-HBase-EU** に接続します。方法については、「[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。これは、実際にはクラスターの headnode0 です。
+1. RDP で **Contoso-HBase-EU** に接続します。方法については、「[Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。これは、実際にはクラスターの headnode0 です。
 2. Windows PowerShell コンソールまたはコマンド プロンプトを開きます。
 3. **ipconfig** を実行し、**接続固有の DNS サフィックス**の値を記録します。
 4. RDP セッションを閉じないでください。後でドメイン名の解決をテストするために必要です。
@@ -311,4 +311,4 @@ Azure ポータルでは、カスタム構成オプションで HDInsight クラ
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 [hdinsight-hbase-get-started]: ../hdinsight-hbase-get-started.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

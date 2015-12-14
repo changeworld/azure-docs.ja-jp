@@ -13,22 +13,21 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/18/2015" 
+	ms.date="08/18/2015"
 	ms.author="glenga"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
-このトピックでは、Azure モバイル サービスを使用して Xamarin Android アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Google Cloud Messaging (GCM) を使用するプッシュ通知を [Mobile Services の使用]プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
+##概要
 
-このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
-
-1. [Google Cloud Messaging を有効にする](#register)
-2. [Mobile Services を構成する](#configure)
-3. [プッシュ通知のプロジェクトを構成する](#configure-app)
-4. [アプリケーションにプッシュ通知コードを追加する](#add-push)
-5. [データを挿入して通知を受け取る](#test)
+このトピックでは、Azure Mobile Services を使用して Xamarin Android アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Google Cloud Messaging (GCM) を使用するプッシュ通知を [Mobile Services の使用]プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
 このチュートリアルには、次のものが必要です。
 
@@ -75,4 +74,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 [Xamarin.Android]: http://xamarin.com/download/
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

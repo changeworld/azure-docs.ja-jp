@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="09/28/2015"
+	ms.date="11/30/2015"
 	ms.author="krisragh"/>
 
 # Azure Mobile Apps 向け iOS クライアント ライブラリの使用方法
@@ -23,6 +23,10 @@
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 このガイドでは、最新の [Azure Mobile Apps iOS SDK](https://go.microsoft.com/fwLink/?LinkID=266533&clcid=0x409) を使用して一般的なシナリオを実行する方法について説明します。Azure Mobile Apps を初めて使用する場合は、まず、「[iOS アプリの作成]」を参照して、バックエンドの作成、テーブルの作成、構築済みの iOS Xcode プロジェクトのダウンロードを行ってください。このガイドでは、クライアント側の iOS SDK に重点を置いています。バックエンドの .NET サーバー側 SDK の詳細については、「[Azure モバイル アプリ用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」をご覧ください。
+
+## リファレンス ドキュメント
+
+iOS クライアント SDK のリファレンス ドキュメントは次の場所にあります。[Azure Mobile Apps iOS クライアント リファレンス](http://azure.github.io/azure-mobile-services/iOS/v3/)。
 
 ##<a name="Setup"></a>セットアップと前提条件
 
@@ -191,6 +195,21 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 
 削除操作を行う場合は、少なくとも `id` 属性を設定する必要があります。
 
+##<a name="templates"></a>方法: プッシュ テンプレートを登録してクロス プラットフォーム通知を送信する
+
+テンプレートを登録するには、**client.push registerDeviceToken** メソッドを使用してクライアント アプリにテンプレートを渡すだけです。
+
+        [client.push registerDeviceToken:deviceToken template:iOSTemplate completion:^(NSError *error) {
+        	...
+        }];
+
+テンプレートは NSDictionary 型となり、次のような形式で複数のテンプレートを含めることができます。
+
+        NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"alert": @"$(message)" } } } };
+
+セキュリティのためにタグはすべて取り除かれるので注意してください。インストールまたはインストール内のテンプレートにタグを追加する方法については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)」を参照してください。
+
+これらの登録済みテンプレートを使用して通知を送信するには、[Notification Hubs API](https://msdn.microsoft.com/library/azure/dn495101.aspx) を使用します。
 
 ##<a name="errors"></a>方法: エラーを処理する
 
@@ -249,4 +268,4 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [競合ハンドラー]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

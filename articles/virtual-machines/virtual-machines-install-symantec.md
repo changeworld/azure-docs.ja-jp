@@ -30,7 +30,7 @@ Symantec のオンプレミス ソリューション用サブスクリプショ�
 
 ## 新しい仮想マシンに Symantec Endpoint Protection をインストールする
 
-[[ギャラリーから]][Portal] オプションを使用して仮想マシンを作成する際に、**Azure ポータル**で、VM エージェントと Symantec のセキュリティ拡張機能をインストールできます。仮想マシンを 1 つだけ作成する場合には、この方法が Symantec の保護機能を追加する最も簡単な方法です。
+**[ギャラリーから]** オプションを使用して仮想マシンを作成する際に、[Azure クラシック ポータル][Portal]で、VM エージェントと Symantec のセキュリティ拡張機能をインストールできます。仮想マシンを 1 つだけ作成する場合には、この方法が Symantec の保護機能を追加する最も簡単な方法です。
 
 この **[ギャラリーから]** をクリックすると、仮想マシンの設定を支援するウィザードが起動します。ウィザードの最後のページで、VM エージェントと Symantec のセキュリティ拡張機能をインストールします。
 
@@ -41,7 +41,7 @@ Symantec のオンプレミス ソリューション用サブスクリプショ�
 2.	[セキュリティ拡張機能] で **[Symantec Endpoint Protection]** チェック ボックスをオンにします。
 
 
-	![Install the VM Agent and the Endpoint Protection Client](./media/virtual-machines-install-symantec/InstallVMAgentandSymantec.png)
+	![VM エージェントと Endpoint Protection クライアントのインストール](./media/virtual-machines-install-symantec/InstallVMAgentandSymantec.png)
 
 3.	ページの下部にあるチェック マークをオンにして、仮想マシンを保存します。
 
@@ -98,4 +98,4 @@ Symantec のセキュリティ拡張機能がインストールされ、最新�
 
 [Ext]: http://go.microsoft.com/fwlink/p/?linkid=390493
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

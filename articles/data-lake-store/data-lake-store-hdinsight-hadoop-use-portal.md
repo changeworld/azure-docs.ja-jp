@@ -1,6 +1,6 @@
 <properties 
    pageTitle="ポータルを使用して Azure Data Lake Store で HDInsight Hadoop クラスターをプロビジョニングする | Azure" 
-   description="Azure プレビュー ポータルを使用して、Azure Data Lake Store で HDInsight Hadoop クラスターを構成し、使用します。" 
+   description="Azure ポータルを使用して、Azure Data Lake Store で HDInsight Hadoop クラスターを構成し、使用します。" 
    services="data-lake-store" 
    documentationCenter="" 
    authors="nitinme" 
@@ -16,21 +16,21 @@
    ms.date="11/13/2015"
    ms.author="nitinme"/>
 
-# Azure プレビュー ポータルを使用し、Data Lake Store で HDInsight クラスターにプロビジョニングする
+# Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする
 
 > [AZURE.SELECTOR]
 - [Using Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Using PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 
-Azure プレビュー ポータルを使用して、Azure Data Lake Store を使用するように HDInsight クラスター (Hadoop、HBase、または Storm) を構成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
+Azure ポータルを使用して、Azure Data Lake Store を使用するように HDInsight クラスター (Hadoop、HBase、または Storm) を構成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
 
 * **Hadoop クラスターと Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure ストレージ BLOB (WASB) のままです。
 
 * **HBase クラスター (Windows および Linux) の場合**、Data Lake Store を既定のストレージまたは追加ストレージとして使用できます。
 
 
-この記事では、追加のストレージとして Data Lake Store を使用して Hadoop クラスターをプロビジョニングします。Azure プレビュー ポータルを使用して Data Lake Store を使用するように HDInsight を構成するには、次の手順が必要です。
+この記事では、追加のストレージとして Data Lake Store を使用して Hadoop クラスターをプロビジョニングします。Azure ポータルを使用して Data Lake Store を使用するように HDInsight を構成するには、次の手順が必要です。
 
 * Azure Active Directory サービス プリンシパルへの認証を使用して HDInsight クラスターを作成する
 * 同じサービス プリンシパルを使用して Data Lake Store アクセスを構成する
@@ -40,7 +40,7 @@ Azure プレビュー ポータルを使用して、Azure Data Lake Store を使
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 - Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
 
 
@@ -48,7 +48,7 @@ Azure プレビュー ポータルを使用して、Azure Data Lake Store を使
 
 このセクションでは、Data Lake Store を追加のストレージとして使用する HDInsight Hadoop クラスターを作成します。このリリースでは、Hadoop クラスターの場合、Data Lake Store はクラスターの追加のストレージとしてのみ使用できます。既定のストレージは、Azure Storage BLOB (WASB) のままです。そのため、クラスターに必要なストレージ アカウントとストレージ コンテナーを最初に作成します。
 
-1. 新しい [Azure プレビュー ポータル](https://portal.azure.com)にサインオンします。
+1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
 
 2. 「[HDInsight で Hadoop クラスターを作成する](../hdinsight/hdinsight-provision-clusters.md#create-using-the-preview-portal)」の手順に従って、HDInsight クラスターのプロビジョニングを開始します。
  
@@ -83,9 +83,9 @@ Azure プレビュー ポータルを使用して、Azure Data Lake Store を使
 
 ## <a name="acl"></a>Data Lake Store ファイル システムにアクセスするようにサービス プリンシパルを構成する
 
-1. 新しい [Azure プレビュー ポータル](https://portal.azure.com)にサインオンします。
+1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
 
-2. Data Lake Store アカウントがない場合は、アカウントを作成します。「[Azure プレビュー ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。
+2. Data Lake Store アカウントがない場合は、アカウントを作成します。「[Azure ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。
 
 	Data Lake Store アカウントが既にある場合は、左側のウィンドウで **[参照]**、**[Data Lake Store]** の順にクリックし、アクセスを許可するアカウントの名前をクリックします。
 
@@ -167,13 +167,13 @@ HDInsight クラスターを構成したら、クラスターでテスト ジョ
 
 Data Lake Store を使用するように HDInsight クラスターを構成したら、HDFS シェル コマンドを使用してストアにアクセスできます。
 
-1. 新しい [Azure プレビュー ポータル](https://portal.azure.com)にサインオンします。
+1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
 
 2. **[参照]**、**[HDInsight クラスター]** の順にクリックし、作成した HDInsight クラスターをクリックします。
 
 3. クラスター ブレードで **[リモート デスクトップ]** をクリックし、**[リモート デスクトップ]** ブレードで **[接続]** をクリックします。
 
-	![HDI クラスターにリモートから接続する](./media/data-lake-store-hdinsight-hadoop-use-portal/ADL.HDI.PS.Remote.Desktop.png "Azure Resource Group を作成する")
+	![HDI クラスターにリモートから接続する](./media/data-lake-store-hdinsight-hadoop-use-portal/ADL.HDI.PS.Remote.Desktop.png "Azure リソース グループを作成する")
 
 	メッセージが表示されたら、リモート デスクトップ ユーザーに対して指定した資格情報を入力します。
 
@@ -207,4 +207,4 @@ HBase クラスターでは、Data Lake Store アカウントを既定のスト�
 [makecert]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="カスタム仮想マシンを作成する | Microsoft Azure"
-	description="クラシック デプロイ モデルを使用して Azure ポータルからカスタム仮想マシンを作成する方法。"
+	description="クラシック デプロイ モデルを使用して Azure クラシック ポータルからカスタム仮想マシンを作成する方法を説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -36,4 +36,4 @@
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-windowsvm.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

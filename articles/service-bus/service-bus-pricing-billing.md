@@ -33,7 +33,7 @@ Service Bus では、キューとトピック/サブスクリプションに次�
 
 標準の基本料金は、Azure サブスクリプションごとに毎月 1 回だけ課金されることに注意してください。つまり、Standard または Premium 階層の Service Bus 名前空間を 1 つ作成した後は、その同じ Azure サブスクリプションの下に必要なだけいくつでも Standard または Premium 階層の名前空間を追加作成でき、追加の基本料金はかかりません。
 
-2014 年 11 月 1 日より前に作成された既存の Service Bus 名前空間はすべて、Standard 階層に自動的に配置されます。これにより、Service Bus で現在利用可能なすべての機能に引き続きアクセスできます。その後、必要であれば、Azure ポータルを使用して Basic 階層にダウングレードできます。
+2014 年 11 月 1 日より前に作成された既存の Service Bus 名前空間はすべて、Standard 階層に自動的に配置されます。これにより、Service Bus で現在利用可能なすべての機能に引き続きアクセスできます。その後、必要であれば、[Azure クラシック ポータル][]を使用して Basic 階層にダウングレードできます。
 
 次の表は、Basic 階層と Standard/Premium 階層の機能の違いをまとめたものです。
 
@@ -147,4 +147,6 @@ Basic 階層には Service Bus 名前空間あたり 100 個の仲介型接続�
 
 [Service Bus の料金に関する FAQ](service-bus-pricing-faq.md)
 
-<!---HONumber=Oct15_HO3-->
+[Azure クラシック ポータル]: http://manage.windowsazure.com
+
+<!---HONumber=AcomDC_1203_2015-->

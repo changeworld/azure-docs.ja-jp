@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/04/2015"
+	ms.date="12/01/2015"
 	ms.author="pehteh"/>
 
 # SQL Database と SQL Server の接続ライブラリ
@@ -31,7 +31,7 @@ Microsoft からリリースされているライブラリを次の表に示し�
 | Java | Windows | [JDBC for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) | 2\.0 以降 | 標準の JDBC API を介してデータベース接続を提供する Type 4 JDBC ドライバー | [リンク](http://msdn.microsoft.com/library/dn425070.aspx) |
 | ODBC | Windows | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=36434) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | [リンク](http://msdn.microsoft.com/library/jj730308.aspx) |
 | ODBC | Suse Linux | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=34687) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | . |
-| ODBC | Redhat Linux | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=34687) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | ()。 |
+| ODBC | Redhat Linux | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=34687) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | . |
 
 ### ODBC のサポート
 
@@ -68,4 +68,4 @@ Microsoft OLE DB Provider for DB2 バージョン 5.0 (Data Provider) では、I
 https://en.wikipedia.org/wiki/Draft:Microsoft_SQL_Server_Libraries/Drivers
 -->
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

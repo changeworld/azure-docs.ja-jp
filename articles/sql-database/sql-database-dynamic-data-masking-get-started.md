@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL Database 動的データ マスクの使用 (Azure プレビュー ポータル)"
-   description="Azure プレビュー ポータルでの SQL Database 動的データ マスクの使用方法"
+   pageTitle="SQL Database 動的データ マスクの使用 (Azure ポータル)"
+   description="Azure ポータルでの SQL Database 動的データ マスクの使用方法"
    services="sql-database"
    documentationCenter=""
    authors="ronitr"
@@ -17,10 +17,10 @@
    ms.author="ronitr; ronmat; v-romcal; sstein"/>
 
 
-# SQL Database 動的データ マスクの使用 (Azure プレビュー ポータル)
+# SQL Database 動的データ マスクの使用 (Azure ポータル)
 
 > [AZURE.SELECTOR]
-- [Dynamic Data Masking - Azure portal](sql-database-dynamic-data-masking-get-started-portal.md)
+- [Dynamic Data Masking - Azure Classic Portal](sql-database-dynamic-data-masking-get-started-portal.md)
 
 ## 概要
 
@@ -32,7 +32,7 @@ SQL Database 動的データ マスクは、特権のないユーザーに対し
 
 ## SQL Database 動的データ マスクの基礎
 
-SQL Database の構成ブレードまたは設定ブレードの動的データ マスク操作を選択することで、Azure プレビュー ポータルで動的データ マスク ポリシーを設定します。
+SQL Database の構成ブレードまたは設定ブレードの動的データ マスク操作を選択することで、Azure ポータルで動的データ マスク ポリシーを設定します。
 
 
 ### 動的データ マスクのアクセス許可
@@ -62,9 +62,9 @@ SQL Database の構成ブレードまたは設定ブレードの動的データ 
 
 DDM の推奨エンジンでは、データベースの特定のフィールドに「機密データの可能性あり」の注意が付けられます。この注意を参考にマスク候補を選択できます。ポータルの動的データ マスク ブレードには、データベースの推奨列が表示されます。1 つまたは複数の列の **[マスクの追加]** をクリックし、**[保存]** をクリックするだけでそれらのフィールドにマスクを適用できます。
 
-## Azure プレビュー ポータル使用によるデータベースの動的データ マスク設定
+## Azure ポータル使用によるデータベースの動的データ マスク設定
 
-1. [https://portal.azure.com](https://portal.azure.com) で Azure プレビュー ポータルを起動します。
+1. [https://portal.azure.com](https://portal.azure.com) で Azure ポータルを起動します。
 
 2. マスクするデリケートなデータを含むデータベースの設定ブレードに移動します。
 
@@ -109,4 +109,4 @@ DDM の推奨エンジンでは、データベースの特定のフィールド�
 
 「[Azure SQL Database の操作](https://msdn.microsoft.com/library/dn505719.aspx)」を参照してください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

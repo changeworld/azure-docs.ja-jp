@@ -87,8 +87,8 @@ await client.SendAsync(data);
 // Create the Event Hub client
 EventHubClient eventHubClient = EventHubClient.Create(EventHubName);
 
-// Get the default subscriber group
-EventHubSubscriberGroup defaultSubscriberGroup = eventHubClient.GetDefaultSubscriberGroup();
+// Get the default consumer group
+EventHubConsumerGroup defaultConsumerGroup = eventHubClient.GetDefaultConsumerGroup();
 
 // All messages
 EventHubReceiver consumer = await defaultConsumerGroup.CreateReceiverAsync(shardId: index);
@@ -188,4 +188,4 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 - [Service Bus と Event Hubs の .NET API リファレンス](https://msdn.microsoft.com/library/azure/mt419900.aspx)
 - [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/azure/mt445521.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

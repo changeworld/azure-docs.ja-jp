@@ -20,7 +20,7 @@
 # Azure Batch アカウントとクォータを Batch Management .NET で管理する
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](batch-account-create-portal.md)
+- [Azure portal](batch-account-create-portal.md)
 - [Batch Management .NET](batch-management-dotnet.md)
 
 [Batch Management .NET][api_mgmt_net] ライブラリを使用して Batch アカウントの作成、削除、キー管理、およびクォータ検出を自動化することにより、Azure Batch アプリケーションにおける保守の負担が減ります。
@@ -30,7 +30,7 @@
 - **アカウントのクォータを確認し**、Batch アカウントに対する制限の決定から試行錯誤の当て推量を排除します。ジョブ開始前にアカウントのクォータをチェックしたり、プールを作成したり、コンピューティング ノードを追加したりすることで、いつどこでコンピューティング リソースが作成されるのかを事前に調整できます。アカウントに追加リソースを割り当てる前に、クォータの増量が必要なアカウントを特定できます。
 - Batch Management .NET、[Azure Active Directory][aad_about]、[Azure Resource Manager][resman_overview] を同じアプリケーションで使用することにより、完全な機能を備えた管理エクスペリエンスのために**他の Azure サービスの機能を組み合わせます**。これらの機能とその API を使用して、エンド ツー エンドの管理ソリューションに摩擦のない認証エクスペリエンス、リソース グループの作成と削除、上記の機能を提供できます。
 
-> [AZURE.NOTE]この記事では、プログラムによる Batch アカウント、キー、およびクォータの管理に重点を置いて説明しますが、これらのアクティビティの多くは [Azure プレビュー ポータル][azure_portal]を使用して実行できます。詳細については、「[Azure プレビュー ポータルでの Azure Batch アカウントの作成と管理](batch-account-create-portal.md)」および「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
+> [AZURE.NOTE]この記事では、プログラムによる Batch アカウント、キー、およびクォータの管理に重点を置いて説明しますが、これらのアクティビティの多くは [Azure ポータル][azure_portal]を使用して実行できます。詳細については、「[Azure ポータルでの Azure Batch アカウントの作成と管理](batch-account-create-portal.md)」および「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
 ## Batch アカウントの作成と削除
 
@@ -119,7 +119,7 @@ Console.WriteLine("Pool quota: {0}", account.Properties.PoolQuota);
 Console.WriteLine("Active job and job schedule quota: {0}", account.Properties.ActiveJobAndJobScheduleQuota);
 ```
 
-> [AZURE.IMPORTANT]Azure サブスクリプションおよびサービスには既定のクォータがありますが、[Azure プレビュー ポータル][azure_portal]で要求を発行することによってこれらの制限の多くを増やすことができます。たとえば、Batch アカウントのクォータを増やす方法については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
+> [AZURE.IMPORTANT]Azure サブスクリプションおよびサービスには既定のクォータがありますが、[Azure ポータル][azure_portal]で要求を発行することによってこれらの制限の多くを増やすことができます。たとえば、Batch アカウントのクォータを増やす方法については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
 ## Batch Management .NET、AAD、リソース マネージャー
 
@@ -133,7 +133,7 @@ Azure 自体が、顧客、サービス管理者、および組織のユーザ�
 
 ### リソース マネージャー
 
-Batch Management .NET ライブラリで Batch アカウントを作成するときは通常、[リソース グループ][resman_overview]内でそれらを作成します。[Resource Manager .NET][resman_api] ライブラリの [ResourceManagementClient][resman_client] を使用してプログラムでリソース グループを作成したり、[Azure プレビュー ポータル][azure_portal]を使用して以前に作成した既存のリソース グループにアカウントを追加したりできます。
+Batch Management .NET ライブラリで Batch アカウントを作成するときは通常、[リソース グループ][resman_overview]内でそれらを作成します。[Resource Manager .NET][resman_api] ライブラリの [ResourceManagementClient][resman_client] を使用してプログラムでリソース グループを作成したり、[Azure ポータル][azure_portal]を使用して以前に作成した既存のリソース グループにアカウントを追加したりできます。
 
 ## <a name="sample"></a>GitHub のサンプル プロジェクト
 
@@ -159,9 +159,9 @@ GitHub の [AccountManagment][acct_mgmt_sample] サンプル プロジェクト�
   - 新しく作成されたアカウントを削除します
 7. リソース グループを削除します
 
-新しく作成した Batch アカウントおよびリソース グループを削除する前に、[Azure プレビュー ポータル][azure_portal]で両方を調べることができます。
+新しく作成した Batch アカウントおよびリソース グループを削除する前に、[Azure ポータル][azure_portal]で両方を調べることができます。
 
-![Azure プレビュー ポータルでのリソース グループと Batch アカウントの表示][1] <br /> *Azure プレビュー ポータルでの新しいリソース グループと Batch アカウントの表示*
+![Azure ポータルでのリソース グループと Batch アカウントの表示][1] <br /> *Azure ポータルでの新しいリソース グループと Batch アカウントの表示*
 
 [aad_about]: ../active-directory/active-directory-whatis.md "Azure Active Directory とは"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md
@@ -190,4 +190,4 @@ GitHub の [AccountManagment][acct_mgmt_sample] サンプル プロジェクト�
 
 [1]: ./media/batch-management-dotnet/portal-01.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure プレビュー ポータルでの VM の FQDN の作成 | Microsoft Azure"
-   description="Azure プレビュー ポータルで仮想マシンに基づいて、リソース マネージャーの完全修飾ドメイン名 (FQDN) を作成する方法を説明します。"
+   pageTitle="Azure ポータルでの VM の FQDN の作成 | Microsoft Azure"
+   description="Azure ポータルで仮想マシンに基づいて、リソース マネージャーの完全修飾ドメイン名 (FQDN) を作成する方法を説明します。"
    services="virtual-machines"
    documentationCenter=""
    authors="dsk-2015"
@@ -17,12 +17,12 @@
    ms.date="08/21/2015"
    ms.author="dkshir"/>
 
-# Azure プレビュー ポータルでの完全修飾ドメイン名の作成
+# Azure ポータルでの完全修飾ドメイン名の作成
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
 
-**リソース マネージャー** デプロイ モデルを使用して [Azure プレビュー ポータル](https://portal.azure.com) で仮想マシンを作成すると、ポータルによって仮想マシン用のパブリック IP リソースが作成されます。この IP アドレスを使用して、仮想マシンにリモートでアクセスできます。ただし、既定では、ポータルによって[完全修飾ドメイン名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) は作成されません。IP アドレスよりも FQDN の方が記憶および使用が簡単なため、この記事では仮想マシンに FQDN を追加する方法について説明します。
+**リソース マネージャー** デプロイ モデルを使用して [Azure ポータル](https://portal.azure.com) で仮想マシンを作成すると、ポータルによって仮想マシン用のパブリック IP リソースが作成されます。この IP アドレスを使用して、仮想マシンにリモートでアクセスできます。ただし、既定では、ポータルによって[完全修飾ドメイン名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) は作成されません。IP アドレスよりも FQDN の方が記憶および使用が簡単なため、この記事では仮想マシンに FQDN を追加する方法について説明します。
 
 この記事では、ポータルでサブスクリプションにログインし、**リソース マネージャー** を使用して、使用可能なイメージで仮想マシンを作成していることを前提としています。仮想マシンの起動後、次の手順に従います。
 
@@ -54,4 +54,4 @@
 
     この DNS 名を使用して、仮想マシンにリモートで接続できるようになります。たとえば、`SSH adminuser@testdnslabel.eastus.cloudapp.azure.com` を使用して、完全修飾ドメイン名が `testdnslabel.eastus.cloudapp.azure.com` でユーザー名が `adminuser` の Linux 仮想マシンに接続できます。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

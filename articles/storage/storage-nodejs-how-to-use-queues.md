@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="11/20/2015" 
+	ms.date="12/01/2015" 
 	ms.author="robmcm"/>
 
 
@@ -66,7 +66,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT、AZURE\_STORAGE\_ACCESS\_KEY、および AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**createQueueService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Azure Table サービスを使用する Node.js Web アプリケーション]」を参照してください。
+Azure Web サイトの [Azure ポータル](portal.azure.com)で環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション]に関するトピックを参照してください。
 
 ## 方法: キューを作成する
 
@@ -309,16 +309,15 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
--   MSDN リファレンスの [Azure のデータの格納とアクセス][]に関するページを参照してください。
--   [Azure Storage チームのブログ][]
+-   [Azure のストレージ チーム ブログ][]
 -   GitHub の [Azure Storage SDK for Node][] リポジトリ
 
   [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
   [using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
-  [Azure Management Portal]: http://manage.windowsazure.com
+  [Azure Portal]: portal.azure.com
   [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../web-sites-nodejs-develop-deploy-mac.md
   [Node.js Cloud Service with Storage]: ../storage-nodejs-use-table-storage-cloud-service-app.md
-  [Azure Table サービスを使用する Node.js Web アプリケーション]: ../storage-nodejs-use-table-storage-web-site.md
+  [ストレージを使用する Node.js Web アプリケーション]: ../storage-nodejs-use-table-storage-web-site.md
 
   
   [Queue1]: ./media/storage-nodejs-how-to-use-queues/queue1.png
@@ -328,9 +327,8 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   
   
   [Node.js Cloud Service]: ../cloud-services-nodejs-develop-deploy-app.md
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
-  [Azure Storage チームのブログ]: http://blogs.msdn.com/b/windowsazurestorage/
- [WebMatrix による Web サイトの作成とデプロイ]: ../web-sites-nodejs-use-webmatrix.md
+  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+  [WebMatrix による Web サイトの作成とデプロイ]: ../web-sites-nodejs-use-webmatrix.md
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

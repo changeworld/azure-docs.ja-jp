@@ -13,20 +13,18 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/01/2015" 
+	ms.date="12/02/2015" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
-Azure Redis Cache には、新しい Premium レベル (現在はプレビュー版) など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。
+Azure Redis Cache には、新しい Premium レベルなど、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。
 
 Azure Redis Cache の Premium レベルには、クラスタリング、永続性、および Virtual Network (VNET) のサポートが含まれています。VNET は、クラウド内のユーザー独自のネットワークを表すものです。VNET を使用して Azure Redis Cache インスタンスを構成する場合、パブリックにアドレスを指定することはできず、VNET 内のクライアントからのみ指定できます。この記事では、Azure Redis Cache インスタンスの Virtual Network のサポートを構成する方法について説明します。
 
 その他の Premium キャッシュ機能については、「[Premium Azure Redis Cache の永続性を構成する方法](cache-how-to-premium-persistence.md)」と「[Premium Azure Redis Cache のクラスタリングを構成する方法](cache-how-to-premium-clustering.md)」を参照してください。
 
->[AZURE.NOTE]Azure Redis Cache Premium レベルは、現在プレビュー中です。
-
 ## VNET を選ぶ理由
-[Azure Virtual Network (VNET)](https://azure.microsoft.com/ja-jp/services/virtual-network/) のデプロイメントでは、Azure Redis Cache のための強化されたセキュリティと分離、サブネット、アクセス制御ポリシーなど、Azure Redis Cache へのアクセスをさらに制限するための機能が提供されます。
+[Azure Virtual Network (VNET)](https://azure.microsoft.com/services/virtual-network/) のデプロイメントでは、Azure Redis Cache のための強化されたセキュリティと分離、サブネット、アクセス制御ポリシーなど、Azure Redis Cache へのアクセスをさらに制限するための機能が提供されます。
 
 ## Virtual Network のサポート
 Virtual Network (VNET) のサポートは、キャッシュの作成中に **[Redis Cache の新規作成]** ブレードで構成します。キャッシュを作成するには、[Azure プレビュー ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** をクリックします。
@@ -39,7 +37,7 @@ VNET のサポートを構成するには、まず **[料金レベルの選択]*
 
 Azure Redis Cache VNET の統合は、**[Virtual Network]** ブレードで構成します。ここでは、既存の従来型 VNET を選択できます。新しい VNET を使用するには、「[Azure プレビュー ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」の手順に従って作成し、**[Redis Cache Virtual Network]** ブレードに戻って選択します。
 
->[AZURE.NOTE]Premium キャッシュのプレビュー期間中、Azure Redis Cache は従来型 VNET で動作します。従来型 VNET を作成する方法については、「[」Azure プレビュー ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。
+>[AZURE.NOTE]Azure Redis Cache は、クラシック VNET に対応しています。従来型 VNET を作成する方法については、「[」Azure プレビュー ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。
 
 ![Virtual Network][redis-cache-vnet]
 
@@ -58,6 +56,21 @@ Azure Redis Cache VNET の統合は、**[Virtual Network]** ブレードで構�
 目的の **[静的 IP アドレス]** を入力し、**[OK]** をクリックして VNET の構成を保存します。選択した静的 IP が既に使用中の場合、エラー メッセージが表示されます。
 
 キャッシュを作成すると、同じ VNET 内のクライアントからのみアドレスを指定できます。
+
+>[AZURE.IMPORTANT]VNET を使用するときに Azure Redis Cache インスタンスにアクセスするには、VNET で 1 つ目のパラメーターとしてキャッシュの静的 IP アドレスを渡し、`sslhost` パラメーターにキャッシュのエンドポイントを指定して渡します。次の例では、静的 IP アドレスは `10.10.1.5`、キャッシュ エンドポイントは `contoso5.redis.cache.windows.net` です。
+
+	private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+	{
+	    return ConnectionMultiplexer.Connect("10.10.1.5,sslhost=contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
+	});
+	
+	public static ConnectionMultiplexer Connection
+	{
+	    get
+	    {
+	        return lazyConnection.Value;
+	    }
+	}
 
 ## Azure Redis Cache VNET についてよく寄せられる質問 (FAQ)
 
@@ -103,4 +116,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-vnet-subnet]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-subnet.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

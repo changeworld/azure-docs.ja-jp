@@ -134,9 +134,9 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 予備の電話番号を構成している場合は、サインイン ページでプロンプトが表示されたらその電話番号を選択して再試行することをお勧めします。別の方法を構成していなかった場合は、管理者に連絡して設定のクリアを依頼します。そうすると、次回サインインしたときに再度[多要素認証をセットアップする](multi-factor-authentication-manage-users-and-devices.md#require-selected-users-to-provide-contact-methods-again)ようにメッセージが表示されます。
 
 ##アプリ パスワードが機能しない場合
-最初に、アプリ パスワードが正しく入力されていることを確認します。それでも機能しない場合は、サインインを試し、[新しいアプリ パスワードを作成](multi-factor-authentication-end-user-app-passwords)します。このパスワードが機能しない場合は、管理者に連絡して[既存のアプリ パスワードの削除](multi-factor-authentication-manage-users-and-devices.md#delete-users-existing-app-passwords)を依頼し、新しいパスワードを作成して使用します。
+最初に、アプリ パスワードが正しく入力されていることを確認します。それでも機能しない場合は、サインインを試し、[新しいアプリ パスワードを作成](multi-factor-authentication-end-user-app-passwords.md)します。このパスワードが機能しない場合は、管理者に連絡して[既存のアプリ パスワードの削除](multi-factor-authentication-manage-users-and-devices.md#delete-users-existing-app-passwords)を依頼し、新しいパスワードを作成して使用します。
 
 ##古いデバイスから Azure Authenticator をクリーンアップして新しいデバイスに移行する場合
 デバイスからアプリをアンインストールしても、デバイスを再フラッシュしても、アクティブ化はバック エンドで削除されません。[新しいデバイスへの移行](multi-factor-authentication-azure-authenticator.md#how-to-move-to-the-new-azure-authenticator-app)に関するトピックで説明されている手順に従ってください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

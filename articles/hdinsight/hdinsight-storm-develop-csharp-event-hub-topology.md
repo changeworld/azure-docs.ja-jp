@@ -70,7 +70,7 @@ Event Hubs スパウトとボルトは Java コンポーネントで、これら
 
 Event Hubs は、この例のデータ ソースです。新しい Event Hub を作成するには、次の手順に従います。
 
-1. [Azure ポータル](https://manage.windowsazure.com)から、**[新規作成]**、**[Service Bus]**、**[Event Hub]**、**[カスタム作成]** の順に選択します。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)から、**[新規作成]**、**[Service Bus]**、**[Event Hub]**、**[カスタム作成]** の順に選択します。
 
 2. **[新しい Event Hub の追加]** 画面で **Event Hub 名**を入力し、ハブを作成する **[リージョン]** を選択して、新しい名前空間を作成するか、既存の名前空間を選択します。**矢印**をクリックして続行します。
 
@@ -100,7 +100,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
 テーブル ストレージは、Event Hubs から読み取った値を格納するために使用されます。テーブル ストレージは、Visual Studio から**サーバー エクスプローラー**を使用して簡単に表示できます。新しいテーブル ストレージを作成するには、次の手順に従います。
 
-1. [Azure ポータル](https://manage.windowsazure.com)から、**[新規]**、**[Data Services]**、**[ストレージ]**、**[簡易作成]** の順に選択します。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)から、**[新規]**、**[Data Services]**、**[ストレージ]**、**[簡易作成]** の順に選択します。
 
 	![ストレージの簡易作成](./media/hdinsight-storm-develop-csharp-event-hub-topology/storagecreate.png)
 
@@ -141,11 +141,11 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 3. 次の設定を入力します。**[値]** 列では、前の手順で作成した Event Hub の情報を使用します。
 
 	<table>
-<tr><th style="text-align:left">名前</th><th style="text-align:left">型</th><th style="text-align:left">スコープ</th></tr>
-<tr><td style="text-align:left">EventHubPolicyName</td><td style="text-align:left">文字列</td><td style="text-align:left">アプリケーション</td></tr>
+<tr><th style="text-align:left">名前</th><th style="text-align:left">型</th><th style="text-align:left">Scope</th></tr>
+<tr><td style="text-align:left">EventHubPolicyName</td><td style="text-align:left">string</td><td style="text-align:left">アプリケーション</td></tr>
 <tr><td style="text-align:left">EventHubPolicyKey</td><td style="text-align:left">文字列</td><td style="text-align:left">アプリケーション</td></tr>
-<tr><td style="text-align:left">EventHubNamespace</td><td style="text-align:left">文字列</td><td style="text-align:left">アプリケーション</td></tr>
-<tr><td style="text-align:left">EventHubName</td><td style="text-align:left">文字列</td><td style="text-align:left">アプリケーション</td></tr>
+<tr><td style="text-align:left">EventHubNamespace</td><td style="text-align:left">string</td><td style="text-align:left">アプリケーション</td></tr>
+<tr><td style="text-align:left">EventHubName</td><td style="text-align:left">string</td><td style="text-align:left">アプリケーション</td></tr>
 <tr><td style="text-align:left">EventHubPartitionCount</td><td style="text-align:left">int</td><td style="text-align:left">アプリケーション</td></tr>
 </table>
 
@@ -296,19 +296,19 @@ Event Hubs のボルトは、Event Hub にルーティングされる単一の�
 3. 次の設定を入力します。**[値]** 列では、前の手順で作成した Event Hub とストレージ アカウントの情報を使用します。
 
 	<table>
-<tr><th style="text-align:left">名前</th><th style="text-align:left">型</th><th style="text-align:left">スコープ</th></tr>
-<tr><th style="text-align:left">EventHubPolicyName</th><th style="text-align:left">文字列</th><th style="text-align:left">アプリケーション</th></tr>
+<tr><th style="text-align:left">名前</th><th style="text-align:left">型</th><th style="text-align:left">Scope</th></tr>
+<tr><th style="text-align:left">EventHubPolicyName</th><th style="text-align:left">string</th><th style="text-align:left">アプリケーション</th></tr>
 <tr><th style="text-align:left">EventHubPolicyKey</th><th style="text-align:left">文字列</th><th style="text-align:left">アプリケーション</th></tr>
-<tr><th style="text-align:left">EventHubNamespace</th><th style="text-align:left">文字列</th><th style="text-align:left">アプリケーション</th></tr>
-<tr><th style="text-align:left">EventHubName</th><th style="text-align:left">文字列</th><th style="text-align:left">アプリケーション</th></tr>
+<tr><th style="text-align:left">EventHubNamespace</th><th style="text-align:left">string</th><th style="text-align:left">アプリケーション</th></tr>
+<tr><th style="text-align:left">EventHubName</th><th style="text-align:left">string</th><th style="text-align:left">アプリケーション</th></tr>
 <tr><th style="text-align:left">EventHubPartitionCount</th><th style="text-align:left">int</th><th style="text-align:left">アプリケーション</th></tr>
 <tr><th style="text-align:left">StorageConnection</th><th style="text-align:left">(接続文字列)</th><th style="text-align:left">アプリケーション</th></tr>
-<tr><th style="text-align:left">TableName</th><th style="text-align:left">文字列</th><th style="text-align:left">アプリケーション</th></tr>
+<tr><th style="text-align:left">TableName</th><th style="text-align:left">string</th><th style="text-align:left">アプリケーション</th></tr>
 </table>**TableName** には、イベントを格納するテーブルの名前を入力します。
 
     **StorageConnection** には、`DefaultEndpointsProtocol=https;AccountName=myAccount;AccountKey=myKey;` の値を入力します。**myAccount** と **myKey** を先ほど取得したストレージ アカウント名とキーに置き換えます。
 
-	これらの値は、Event Hubs とテーブル ストレージと通信するために、トポロジによって使用されます。
+	これらの値は、Event Hubs と Table Storage と通信するために、トポロジによって使用されます。
 
 4. **[プロパティ]** ページを保存して閉じます。
 
@@ -486,7 +486,7 @@ Event Hubs のボルトは、Event Hub にルーティングされる単一の�
 
     > [AZURE.IMPORTANT]EventHubSpout コンポーネントは、このボトルなどのダウンストリームのコンポーネントから各タプルに ACK を想定します。ACK を受信しない場合、EventHubSpout はタプルの処理が失敗したものと見なします。
 
-これで、Event Hub からデータを読み取り、読み取ったデータを、**events** という名前のテーブルにあるテーブル ストレージに格納するトポロジが完成しました。
+これで、Event Hub からデータを読み取り、読み取ったデータを、**events** という名前のテーブルにある Table Storage に格納するトポロジが完成しました。
 
 ## トポロジのデプロイ
 
@@ -532,7 +532,7 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 
 * トポロジが強制終了され、**同じ名前で**再起動されます。
 
-また、保存されたチェックポイントを WASB (HDInsight クラスターで使用される Azure Storage) にエクスポート、インポートできます。 これを実行するスクリプトは、**c:\\apps\\dist\\storm-0.9.3.2.2.1.0-2340\\zkdatatool-1.0\\bin** の HDInsight クラスター上の Storm に配置されています。
+また、保存されたチェックポイントを WASB (HDInsight クラスターで使用される Azure のストレージ) にエクスポート、インポートできます。 これを実行するスクリプトは、**c:\\apps\\dist\\storm-0.9.3.2.2.1.0-2340\\zkdatatool-1.0\\bin** の HDInsight クラスター上の Storm に配置されています。
 
 >[AZURE.NOTE]クラスターにインストールされた Storm のバージョンは今後変更される可能性があるため、パスのバージョン番号は異なる場合があります。
 
@@ -557,4 +557,4 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

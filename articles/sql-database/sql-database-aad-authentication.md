@@ -95,7 +95,7 @@ Azure Active Directory 認証は、最新の SQL Database V12 でサポートさ
 
 既存のデータベースがある場合は、(たとえば SQL Server Management Studio を使用して) データベースに接続して `SELECT @@VERSION;` を実行することで、SQL Database V12 でホストされていることを確認します。SQL Database V12 のデータベースで予想される出力は **Microsoft SQL Azure (RTM) - 12.0** 以上です。
 
-データベースが SQL Database V12 でホストされていない場合は、「[SQL Database V12 へのアップグレードの計画と準備をする](sql-database-v12-plan-prepare-upgrade.md)」を参照してから、Azure ポータルにアクセスしてデータベースを SQL Database V12 に移行してください。
+データベースが SQL Database V12 でホストされていない場合は、「[SQL Database V12 へのアップグレードの計画と準備をする](sql-database-v12-plan-prepare-upgrade.md)」を参照してから、Azure クラシック ポータルにアクセスしてデータベースを SQL Database V12 に移行してください。
 
 または、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」に記載されている手順に従って、SQL Database V12 で新しいデータベースを作成することもできます。**ヒント**: 新しいデータベースのサブスクリプションを選択する前に、次の手順をお読みください。
 
@@ -107,7 +107,7 @@ Azure Active Directory 認証は、最新の SQL Database V12 でサポートさ
 
 次の手順では、特定のサブスクリプションの関連付けられたディレクトリを変更する方法について詳しく説明します。
 
-1. Azure サブスクリプションの管理者を使用して [Azure ポータル](https://manage.windowsazure.com/)に接続します。
+1. Azure サブスクリプションの管理者を使用して [Azure クラシック ポータル](https://manage.windowsazure.com/)に接続します。
 2. 左側のバナーで **[設定]** を選択します。 
 3. [設定] 画面にサブスクリプションが表示されます。目的のサブスクリプションが表示されない場合は、上部にある **[サブスクリプション]** をクリックし、**[ディレクトリでフィルター]** ボックスの一覧で、サブスクリプションを含むディレクトリを選択して、**[適用]** をクリックします。
 
@@ -131,9 +131,9 @@ Azure Active Directory 認証は、最新の SQL Database V12 でサポートさ
 
 > [AZURE.NOTE]Azure AD アカウント (Azure SQL Server の管理者アカウントを含む) に基づいていないユーザーは、Azure AD に基づくユーザーを作成できません。これは、Azure AD で提示されるデータベース ユーザーを検証するアクセス許可がないためです。
 
-### Azure ポータルを使用して、Azure SQL Server の Azure Active Directory 管理者をプロビジョニングします。 
+### Azure クラシック ポータルを使用して、Azure SQL Server の Azure Active Directory 管理者をプロビジョニングします。 
 
-1. [Azure ポータル](https://portal.azure.com/)の右上隅にある接続をクリックすると、考えられる Active Directory のボックスの一覧が表示されます。既定の Azure AD として適切な Active Directory を選択します。この手順では、Active Directory とサブスクリプションの関連付けを Azure SQL Database とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします。
+1. [Azure クラシック ポータル](https://portal.azure.com/)の右上隅にある接続をクリックすると、考えられる Active Directory のボックスの一覧が表示されます。既定の Azure AD として適切な Active Directory を選択します。この手順では、Active Directory とサブスクリプションの関連付けを Azure SQL Database とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします。
 
 	![choose-ad][8]
 2. 左側のバナーで **[SQL Server]** を選択し、使用する **SQL Server** を選択した後、**[SQL Server]** ブレードの上部にある **[設定]** をクリックします。
@@ -192,7 +192,7 @@ Set-AzureRMSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23"
 –ServerName "demo_server" -DisplayName "DBA_Group" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353f"
 ```
 
-> [AZURE.NOTE]**DisplayName** が一意でない場合は、Azure AD の **ObjectID** が必要です。**ObjectID** と **DisplayName** の値を取得するには、Azure ポータルの [Active Directory] セクションを使用して、ユーザーまたはグループのプロパティを表示します。
+> [AZURE.NOTE]**DisplayName** が一意でない場合は、Azure AD の **ObjectID** が必要です。**ObjectID** と **DisplayName** の値を取得するには、Azure クラシック ポータルの [Active Directory] セクションを使用して、ユーザーまたはグループのプロパティを表示します。
 
 次の例では、Azure SQL Server の現在の Azure AD 管理者に関する情報が返されます。
 
@@ -327,4 +327,4 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 [9]: ./media/sql-database-aad-authentication/9ad-settings.png
 [10]: ./media/sql-database-aad-authentication/10choose-admin.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

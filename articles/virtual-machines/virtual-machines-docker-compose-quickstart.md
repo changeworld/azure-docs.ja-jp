@@ -17,7 +17,7 @@
    ms.date="11/16/2015"
    ms.author="danlep"/>
 
-# Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを起動する
+# Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する
 
 この記事では、Docker と [Compose](http://github.com/docker/compose) を使用して、Azure の Linux 仮想マシンで複雑なアプリケーションを定義し、実行する方法について説明します。Compose (*Fig* の後継) では、単純なテキスト ファイルを使用して、複数の Docker コンテナーで構成されるアプリケーションを定義します。次に、VM 上でアプリケーションを実行するためのあらゆる操作を実行する単一のコマンドで、アプリケーションを起動します。たとえば、この記事では、バックエンド MariaDB SQL Database で WordPress ブログをすばやくセットアップする方法を示していますが、Compose を使用してさらに複雑なアプリケーションをセットアップすることもできます。
 
@@ -49,7 +49,10 @@ Compose のインストールをテストするには、次のコマンドを実
 $ docker-compose --version
 ```
 
-`docker-compose 1.4.1` のような出力が表示されます。
+のような出力が表示されます。
+```
+docker-compose 1.3.2
+```
 
 
 ## 手順3: docker-compose.yml 構成ファイルの作成
@@ -122,9 +125,8 @@ WordPress スタート画面が表示されます。この画面の手順に従�
 * Docker Compose と [Docker Swarm](virtual-machines-docker-swarm.md) クラスターを統合できます。このシナリオについては、
 [Docker Compose/Swarm の統合](https://github.com/docker/compose/blob/master/SWARM.md)に関するページを参照してください。
 
-
 <!--Image references-->
 
 [wordpress_start]: ./media/virtual-machines-docker-compose-quickstart/WordPress.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

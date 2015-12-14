@@ -43,7 +43,7 @@ bus_service = ServiceBusService(
 	shared_access_key_value='sharedaccesskey')
 ```
 
-SAS キー名とキー値のそれぞれの値は、[Azure ポータル][]の「**接続情報**」ウィンドウから取得できます。
+SAS キー名とキー値のそれぞれの値は、[Azure クラシック ポータル][]の **[接続情報]** ウィンドウから取得できます。
 
 ```
 bus_service.create_topic('mytopic')
@@ -157,7 +157,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 ## トピックとサブスクリプションを削除する
 
-トピックおよびサブスクリプションは永続的であり、Azure ポータルまたはプログラムによって明示的に削除する必要があります。次の例では、`mytopic` という名前のトピックを削除する方法を示しています。
+トピックおよびサブスクリプションは永続的であり、[Azure クラシック ポータル][]またはプログラムによって明示的に削除する必要があります。次の例では、`mytopic` という名前のトピックを削除する方法を示しています。
 
 ```
 bus_service.delete_topic('mytopic')
@@ -176,10 +176,10 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 -   [キュー、トピック、およびサブスクリプション][]に関するページをご覧ください。
 -   [SqlFilter.SqlExpression][] のリファレンス
 
-[Azure ポータル]: http://manage.windowsazure.com
+[Azure クラシック ポータル]: http://manage.windowsazure.com
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
 [キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
 [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 [Azure キューと Service Bus キュー]: service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Microsoft Azure のホスト型のクラウド検索サービスである Azure Search を利用し、最初の検索ソリューションを作成します。" 
+	pageTitle="Azure Search を使用して最初の検索ソリューションを作成する方法 | Microsoft Azure | ホスト型クラウド検索サービス" 
 	description="Microsoft Azure のホスト型のクラウド検索サービスである Azure Search を利用し、最初の検索ソリューションを作成します。" 
 	services="search" 
 	documentationCenter="" 
@@ -70,7 +70,7 @@
 
 > [AZURE.NOTE]"invalid value for key 'attachdbfilename' (キー 'attachdbfilename' の値が無効です)" というメッセージが含まれるエラー、または他のデータベース接続エラーが表示された場合は、UAC 競合が発生している可能性があります。このデモの目的上、次の操作によってこれらのエラーを回避してください。このソリューションを、認証されたユーザーがアクセス可能な新しいフォルダーや既存フォルダー (Temp など) にコピーします。**[管理者として実行]** を使用して、Visual Studio を開始します。ソリューションを開き、ビルドして、**F5** を押してインデックスを作成します。
 
-インデックスの作成とドキュメントのアップロードを検証するには、[Microsoft Azure 管理ポータル](https://portal.azure.com)の Search サービス ダッシュボードに移動します。[使用状況] のインデックスは 1 つずつ増えます。データベース内の 1 製品につき 1 個のドキュメントがあるため、合計 294 個のドキュメントがあります。
+インデックスの作成を検証してドキュメントをアップロードするには、[Azure クラシック ポータル](https://portal.azure.com)の Search サービス ダッシュボードを開きます。[使用状況] のインデックスは 1 つずつ増えます。データベース内の 1 製品につき 1 個のドキュメントがあるため、合計 294 個のドキュメントがあります。
 
 **[インデックス]** タイルをクリックしてインデックス リストを表示します。インデックス リストがスライドして現れ、新しいインデックスとドキュメント数が表示されます。無料の価格レベルでは、使用できるインデックスが最大で 3 つであることに注意してください。既に 3 つのインデックスが存在する場合は、新しいインデックスのための領域を解放するために、1 つのインデックスを削除する必要があります。
 
@@ -206,4 +206,4 @@ AdventureWorksWeb をビルドするときに、「ファイルまたはアセ�
 [11]: ./media/search-create-first-solution/AzureSearch_Create1_Suggestions.PNG
 [12]: ./media/search-create-first-solution/AzureSearch_Create1_CodeplexDownload.PNG
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

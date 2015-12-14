@@ -66,7 +66,7 @@ Azure Batch サービスを使用する際は、以下のリソースを利用�
 
 ### <a name="account"></a>アカウント
 
-Batch アカウントは、Batch サービス内で一意に識別されるエンティティです。すべての処理は、Batch アカウントに関連付けられています。Batch サービスで処理を実行するには、アカウント名とアカウント キーが必要です。Batch アカウントを作成する方法については、「[Azure プレビュー ポータルでの Azure Batch アカウントの作成と管理](batch-account-create-portal.md)」を参照してください。
+Batch アカウントは、Batch サービス内で一意に識別されるエンティティです。すべての処理は、Batch アカウントに関連付けられています。Batch サービスで処理を実行するには、アカウント名とアカウント キーが必要です。Batch アカウントを作成する方法については、「[Azure ポータルでの Azure Batch アカウントの作成と管理](batch-account-create-portal.md)」を参照してください。
 
 ### <a name="computenode"></a>コンピューティング ノード
 
@@ -354,4 +354,4 @@ Batch ソリューション内のタスクとアプリケーションの障害�
 [rest_update_job]: https://msdn.microsoft.com/library/azure/dn820162.aspx
 [rest_rdp]: https://msdn.microsoft.com/library/azure/dn820120.aspx
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -81,7 +81,7 @@ Runbook や DSC の構成で使用できるコマンドレットを含む [Power
 
 ## Azure Automation と他のオートメーション ツールを関連付けるにはどうすればよいですか。
 
-[Service Management Automation (SMA)](http://technet.microsoft.com/library/dn469260.aspx) は、プライベート クラウドでの管理タスクを自動化するためのものです。[Windows Azure Pack](https://www.microsoft.com/ja-JP/server-cloud/) のコンポーネントとしてデータ センターにローカルにインストールされます。SMA と Azure Automation では Windows PowerShell と Windows PowerShell Workflow と同じ Runbook 形式を使用しますが、SMA では[グラフィカル Runbook](automation-graphical-authoring-intro.md) はサポートされません。
+[Service Management Automation (SMA)](http://technet.microsoft.com/library/dn469260.aspx) は、プライベート クラウドでの管理タスクを自動化するためのものです。[Microsoft Azure Pack](https://www.microsoft.com/ja-JP/server-cloud/) のコンポーネントとしてデータ センターにローカルにインストールされます。SMA と Azure Automation では Windows PowerShell と Windows PowerShell Workflow と同じ Runbook 形式を使用しますが、SMA では[グラフィカル Runbook](automation-graphical-authoring-intro.md) はサポートされません。
 
 [System Center 2012 Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) はオンプレミスのリソースを自動化するためのものです。Azure Automation および Service Management Automation とは異なる形式の Runbook を使用し、スクリプトを作成する必要なしに Runbook を作成するためのグラフィカル インターフェイスを備えています。その Runbook は、Orchestrator 用に特に作成された統合パックのアクティビティで構成されます。
 
@@ -92,7 +92,7 @@ Azure Automation や独自の Runbook の作成方法の詳細を確認できる
 
 * ここは、**Azure Automation ライブラリ**です。このライブラリの記事では、Azure Automation の構成や管理、また独自の Runbook の作成に関する完全なドキュメントが提供されます。 
 * [Azure PowerShell コマンドレット](http://msdn.microsoft.com/library/jj156055.aspx)では、Windows PowerShell を使用した Azure の操作の自動化に関する情報が提供されます。Runbook ではこれらのコマンドレットを使用して Azure リソースを操作します。 
-* [管理ブログ](https://azure.microsoft.com/ja-JP/blog/tag/azure-automation/)では、Azure Automation およびその他の Microsoft の管理テクノロジに関する最新情報を提供しています。このブログをサブスクライブすると、Azure Automation チームによる最新の情報を把握できます。 
+* [管理ブログ](https://azure.microsoft.com/blog/tag/azure-automation/)では、Azure Automation およびその他の Microsoft の管理テクノロジに関する最新情報を提供しています。このブログをサブスクライブすると、Azure Automation チームによる最新の情報を把握できます。 
 * [Automation フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=390561)では Azure Automation に関する質問を投稿でき、マイクロソフトや Automation コミュニティから回答を取得できます。 
 * [Azure Automation コマンドレット](https://msdn.microsoft.com/library/mt244122.aspx)は、管理タスクを自動化するための情報を提供します。Automation アカウント、資産、Runbook、DSC を管理するコマンドレットが含まれます。
 
@@ -101,4 +101,4 @@ Azure Automation や独自の Runbook の作成方法の詳細を確認できる
 
 **フィードバックをお待ちしています。** Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

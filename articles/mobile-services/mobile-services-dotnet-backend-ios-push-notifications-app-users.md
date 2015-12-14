@@ -18,6 +18,11 @@
 
 # 認証されたユーザーへのプッシュ通知の送信
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 [AZURE.INCLUDE [mobile-services-selector-push-users](../../includes/mobile-services-selector-push-users.md)]
 
 このトピックでは、iOS 上の認証されたユーザーにプッシュ通知を送信する方法を説明します。このチュートリアルを開始する前に、まず、「[認証の使用]」 と 「[プッシュ通知の使用]」を実行してください。
@@ -46,8 +51,6 @@
 <!-- URLs. -->
 [認証の使用]: mobile-services-dotnet-backend-ios-get-started-users.md
 [プッシュ通知の使用]: mobile-services-dotnet-backend-ios-get-started-push.md
-
-[Azure Management Portal]: https://manage.windowsazure.com/
 [Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -22,7 +22,7 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](sql-database-configure-firewall-settings.md)
+- [Azure Portal](sql-database-configure-firewall-settings.md)
 - [TSQL](sql-database-configure-firewall-settings-tsql.md)
 - [PowerShell](sql-database-configure-firewall-settings-powershell.md)
 - [REST API](sql-database-configure-firewall-settings-rest.md)
@@ -35,7 +35,7 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 
 ## Transact-SQL を使用してサーバー レベルのファイアウォール規則を管理する
 
-1. 管理ポータルまたは SQL Server Management Studio を使用して、クエリ ウィンドウを起動します。
+1. クラシック ポータルまたは SQL Server Management Studio を使用して、クエリ ウィンドウを起動します。
 2. マスター データベースに接続していることを確認します。
 3. サーバーレベルのファイアウォール規則は、クエリ ウィンドウから選択、作成、更新、または削除することができます。
 4. サーバーレベルのファイアウォール規則を更新または作成するには、sp\_set\_firewall rule ストアド プロシージャを実行します。次の例では、Contoso サーバーの IP アドレス範囲を有効にします。<br/>まず、既に存在する規則を確認します。
@@ -54,7 +54,7 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
  
 ## データベース レベルのファイアウォール規則
 
-1. サーバーレベルのファイアウォールを IP アドレスで作成した後、管理ポータルまたは SQL Server Management Studio からクエリ ウィンドウを起動します。
+1. サーバーレベルのファイアウォールを IP アドレスで作成した後、クラシック ポータルまたは SQL Server Management Studio からクエリ ウィンドウを起動します。
 2. データベースレベルのファイアウォール規則を作成するデータベースに接続します。
 
 	既存のデータベースレベルのファイアウォール規則を新規作成または更新するには、sp\_set\_database\_firewall\_rule ストアド プロシージャを実行します。次の例では ContosoFirewallRule という名前の新しいファイアウォール規則を作成します。
@@ -70,4 +70,4 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 
 データベース作成のチュートリアルについては、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照してください。オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、「[プログラムで Azure SQL Database に接続するためのガイドライン](https://msdn.microsoft.com/library/azure/ee336282.aspx)」を参照してください。データベースに移動する方法の詳細については、「[Azure SQL Database におけるデータベース、ログインの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)」を参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

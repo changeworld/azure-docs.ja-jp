@@ -27,9 +27,9 @@ VM は多様なユーザーや目的に適しているため、Azure には VM �
 
 ## ツールの選択肢
 
-### GUI: Azure ポータルまたは Azure プレビュー ポータル
+### GUI: Azure クラシック ポータルまたは Azure ポータル
 
-ポータルのグラフィカル ユーザー インターフェイスを使用すれば、特に Azure を初めて使用する場合に、仮想マシンを簡単に試すことができます。VM の作成は、[Azure ポータル](http://manage.windowsazure.com)と [Azure プレビュー ポータル](http://portal.azure.com)のいずれかを使用して行います。一般的な手順については、「[カスタム仮想マシンの作成][]」をご覧ください。その後、**[ギャラリー]** から Linux イメージを選びます。[Azure ポータル](http://manage.windowsazure.com)は、クラシック デプロイ モデルのみを使用して仮想マシンを作成することにご注意ください。
+ポータルのグラフィカル ユーザー インターフェイスを使用すれば、特に Azure を初めて使用する場合に、仮想マシンを簡単に試すことができます。VM の作成は、[Azure クラシック ポータル](http://manage.windowsazure.com)と [Azure ポータル](http://portal.azure.com)のいずれかを使用して行います。一般的な手順については、「[カスタム仮想マシンの作成][]」をご覧ください。その後、**[ギャラリー]** から Linux イメージを選びます。[Azure クラシック ポータル](http://manage.windowsazure.com)は、クラシック デプロイ モデルのみを使用して仮想マシンを作成することにご注意ください。
 
 ### コマンド シェル: Azure CLI または Azure PowerShell
 
@@ -103,4 +103,4 @@ Azure PowerShell の場合は、「[Azure PowerShell を使用して Linux ベ�
 [Linux を実行する仮想マシンの作成]: virtual-machines-linux-tutorial.md
 [カスタム仮想マシンの作成]: virtual-machines-create-custom.md
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

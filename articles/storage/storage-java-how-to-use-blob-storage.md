@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="11/19/2015" 
+	ms.date="12/01/2015" 
 	ms.author="robmcm"/>
 
 # Java から BLOB ストレージを使用する方法
@@ -46,7 +46,7 @@ Azure Storage API を使用して BLOB にアクセスする Java ファイル�
 
 ## Azure Storage 接続文字列の設定
 
-Azure Storage クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントや資格情報を保存します。クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、Azure ポータルに表示されるストレージ アカウントの名前とプライマリ アクセス キーを使用します。次の例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
+Azure Storage クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントや資格情報を保存します。クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、[Azure ポータル](portal.azure.com)に表示されるストレージ アカウントの名前とプライマリ アクセス キーを使用します。次の例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
     // Define the connection-string with your values
     public static final String storageConnectionString =
@@ -265,7 +265,7 @@ BLOB を削除するには、BLOB の参照を取得し、**deleteIfExists** を
 [Azure Storage SDK for Android に関するページ]: https://github.com/azure/azure-storage-android
 [Azure Storage クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
 [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
-[Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
+[Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

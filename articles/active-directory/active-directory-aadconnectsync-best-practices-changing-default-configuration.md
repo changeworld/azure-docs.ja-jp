@@ -1,5 +1,5 @@
 <properties
-	pageTitle="既定の構成を変更するためのベスト プラクティス | Microsoft Azure"
+	pageTitle="Azure AD Connect Sync: 既定の構成を変更するためのベスト プラクティス | Microsoft Azure"
 	description="Azure AD Connect Sync の既定の構成を変更するためのベスト プラクティスを紹介します。"
 	services="active-directory"
 	documentationCenter=""
@@ -83,4 +83,4 @@ Fabrikam では、クラウドと同期する属性の一部が不要である�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -18,8 +18,7 @@
 
 # Microsoft アカウント ログインを使用するように App Service アプリケーションを構成する方法
 
-[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
-&nbsp;
+[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]&nbsp;
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
@@ -31,7 +30,7 @@
 
 ## <a name="register"> </a>Microsoft アカウントにアプリケーションを登録する
 
-1. [Microsoft Azure 管理ポータル]にログオンし、目的のアプリケーションに移動します。**[URL]** をコピーします。この URL は、Microsoft アカウント アプリを構成するのに使用します。
+1. [Azure ポータル]にログオンし、アプリケーションに移動します。**[URL]** をコピーします。この URL は、Microsoft アカウント アプリを構成するのに使用します。
 
 2. Microsoft アカウント デベロッパー センターの [[マイ アプリケーション]] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
 
@@ -56,7 +55,7 @@
 > [AZURE.NOTE]App Service ゲートウェイを使用する場合は、このセクションの内容は無視し、ポータル内で目的のゲートウェイに移動します。**[設定]**、**[ID]**、**[Microsoft アカウント]** の順に選択します。先に取得した値を貼り付けて、**[保存]** をクリックします。
 
 
-7. [Microsoft Azure 管理ポータル]に戻り、目的のアプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックします。
+7. [Azure ポータル]に戻り、アプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックします。
 
 8. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。
 
@@ -88,7 +87,7 @@
 
 <!-- URLs. -->
 
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Microsoft Azure 管理ポータル]: https://portal.azure.com/
+[[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

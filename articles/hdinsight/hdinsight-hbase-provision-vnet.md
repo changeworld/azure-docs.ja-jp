@@ -60,7 +60,7 @@ Azure リソース マネージャーを使用すると、アプリケーショ�
 
 **リソース グループを作成するには**
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. **[新規]**、**[管理]**、**[リソース グループ]** の順にクリックします。
 3. 次の値を入力または選択します。
 
@@ -74,7 +74,7 @@ HBase クラスターをプロビジョニングする前に、Azure 仮想ネ�
 
 **Azure ポータルを使用して仮想ネットワークを作成するには**
 
-1. [プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. [ポータル](https://portal.azure.com)にサインインします。
 2. **[新規]**、**[ネットワーク]**、**[仮想ネットワーク]** の順にクリックします。
 3. Windows ベースの HDInsight クラスターを使用する場合は、**[デプロイ モデルの選択]** で **[クラシック]** を選択し、Linux ベースの HDInsight クラスターを使用する場合は、**[リソース マネージャー]** を選択します。最後に、**[作成]** をクリックします。
 
@@ -115,10 +115,10 @@ DNS サーバーはオプションですが、場合によっては必要にな�
 
 **HDInsight クラスターを作成するには**
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
 
-    ![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-provision-clusters/HDI.CreateCluster.1.png "Azure プレビュー ポータルでの新しいクラスターの作成")
+    ![Azure ポータルでの新しいクラスターの作成](./media/hdinsight-provision-clusters/HDI.CreateCluster.1.png "Azure ポータルでの新しいクラスターの作成")
 
 3. 次の値を入力または選択します。
 
@@ -389,4 +389,4 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 
 [azure-preview-portal]: https://portal.azure.com
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

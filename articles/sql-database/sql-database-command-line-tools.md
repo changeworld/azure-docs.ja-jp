@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/08/2015" 
-	ms.author="sstein; vinsonyu"/>
+	ms.date="12/01/2015" 
+	ms.author="sstein"/>
 
 # PowerShell を使用した Azure SQL Database の管理
 
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](sql-database-manage-portal.md)
+- [Azure Portal](sql-database-manage-portal.md)
 - [Transact-SQL (SSMS)](sql-database-manage-azure-ssms.md)
 - [PowerShell](sql-database-command-line-tools.md)
 
@@ -36,7 +36,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 ## 資格情報の構成
 
-Azure サブスクリプションに PowerShell コマンドレットを実行するには、Azure アカウントにまずアクセスできるようにする必要があります。次を実行すると資格情報を入力するサインイン画面が表示されます。Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
+Azure サブスクリプションに PowerShell コマンドレットを実行するには、Azure アカウントにまずアクセスできるようにする必要があります。次を実行すると資格情報を入力するサインイン画面が表示されます。Azure クラシック ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
 
 	Add-AzureAccount
 
@@ -115,7 +115,7 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
 これらの Azure SQL リソースまたは同様のリソースを再作成する場合は、次のことができます。
 
 - これを PowerShell スクリプト ファイル (*.ps1) として保存します
-- Microsoft Azure 管理ポータルの [オートメーション] セクションに、これを Azure Automation Runbook として保存する。 
+- Azure クラシック ポータルの [Automation] セクションに、これを Azure Automation Runbook として保存する。 
 
 ## 次のステップ
 
@@ -131,4 +131,4 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
 
 - [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

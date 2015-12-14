@@ -40,7 +40,7 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 ## アーキテクチャ
 
-![architecture diagram](./media/hdinsight-storm-sensor-data-analysis/devicesarchitecture.png)
+![アーキテクチャ ダイアグラム](./media/hdinsight-storm-sensor-data-analysis/devicesarchitecture.png)
 
 この例は、次のコンポーネントで構成されています。
 
@@ -93,7 +93,7 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 Event Hub は、この例のデータ ソースです。新しい Event Hub を作成するには、次の手順に従います。
 
-1. [Azure ポータル](https://manage.windowsazure.com)から、**[新規作成]、[Service Bus]、[Event Hub]、[カスタム作成]** の順に選択します。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)から、**[新規作成]、[Service Bus]、[Event Hub]、[カスタム作成]** の順に選択します。
 
 2. **[新しい Event Hub の追加]** ダイアログで **Event Hub 名**を入力し、ハブを作成する **[リージョン]** を選択して、新しい名前空間を作成するか、既存の名前空間を選択します。最後に、矢印をクリックして続行します。
 
@@ -113,7 +113,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 ### HDInsight クラスターに Storm を作成する
 
-1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 
 2. 左側のウィンドウにある **[HDInsight]** をクリックし、ページの左下隅にある **[+ 新規]** をクリックします。
 
@@ -258,7 +258,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 1. Azure Web サイトにダッシュボードをデプロイするには、「[Node.js Web サイトの構築と Azure へのデプロイ](../web-sites-nodejs-develop-deploy-mac.md)」の手順に従います。Web サイトの URL が、**mywebsite.azurewebsites.net** のようになることに注意してください。
 
-2. Web サイトが作成されたら、Azure ポータルに移動して、**[構成]** を選択します。**[Web ソケット]** を有効にし、ページの下部にある **[保存]** をクリックします。
+2. Web サイトが作成されたら、Azure クラシック ポータル内のサイトに移動して、**[構成]** タブを選択します。**[Web ソケット]** を有効にし、ページの下部にある **[保存]** をクリックします。
 
 2. **hdinsight-eventhub-example\\TemperatureMonitor\\src\\main\\java\\com\\microsoft\\examples\\bolts\\DashboardBolt.java** を開き、発行されたダッシュボードの URL をポイントするように次の行を変更します。
 
@@ -288,7 +288,7 @@ Storm と HBase を一緒に使用するには、Azure Virtual Network を作成
 
 この例で HBase を使用する場合は、HDInsight クラスター上の Storm と HDInsight クラスター上の HBase を格納する Azure Virtual Network を作成する必要があります。
 
-1. [Azure ポータル](https://manage.windowsazure.com)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 
 2. ページ下部で、**[+ 新規]** > **[Network Services]** > **[Virtual Network]** > **[簡易作成]** をクリックします。
 
@@ -324,7 +324,7 @@ Storm と HBase を一緒に使用するには、Azure Virtual Network を作成
 
 ### 仮想ネットワークに Storm クラスターと HBase クラスターを作成します。
 
-1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 
 2. 左側のウィンドウにある **[HDInsight]** をクリックし、ページの左下隅にある **[+ 新規]** をクリックします。
 
@@ -422,4 +422,4 @@ Storm クラスターのトポロジを開始し、データを処理すると�
 
 [azure-portal]: https://manage.windowsazure.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

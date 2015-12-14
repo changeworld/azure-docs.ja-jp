@@ -29,7 +29,7 @@ Azure Search は Web サービスと HTTP の使い方を理解している開�
 
 Azure Search は [PaaS サービス](https://wikipedia.org/wiki/Platform_as_a_service)であり、サーバーとインフラストラクチャの管理を Microsoft に委任します。あなたはすぐに利用できるサービスに検索データを入力し、アプリケーションからアクセスします。サービスの構成方法に基づき、他の Azure Search サブスクライバーと共有される無料サービスを利用するか、あなたのサービス専用のリソースを提供する Standard 価格レベルを利用します。Standard 検索は拡張可能です。ストレージやクリエの負荷要求の増加に対応できます。
 
-Azure Search ではデータがインデックスに保存されます。それを全文クエリで検索できます。このようなインデックスのスキーマは Azure ポータルで作成するか、クライアント ライブラリまたは REST API でプログラミングして作成できます。スキーマが定義されたら、データを Azure Search サービスにアップロードできます。データには順番にインデックスが付けられます。
+Azure Search ではデータがインデックスに保存されます。それを全文クエリで検索できます。このようなインデックスのスキーマは Azure クラシック ポータルで作成するか、クライアント ライブラリまたは REST API でプログラミングして作成できます。スキーマが定義されたら、データを Azure Search サービスにアップロードできます。データには順番にインデックスが付けられます。
 
 プル モデルまたはプッシュ モデルを使用し、インデックスにデータをアップロードできます。プル モデルは構成可能なインデクサー (「[インデクサー操作 (Azure Search Service REST API)](https://msdn.microsoft.com/library/azure/dn946891.aspx)」を参照してください) によって提供され、オンデマンドまたは定期的な更新に利用されます。Azure DocumentDB、Azure SQL Database、または Azure VM にホストされている SQL Server から簡単にデータとデータ変更を取り込むことができます。プッシュ モデルは SDK または REST API によって提供され、更新したドキュメントをインデックスに送信するために使用されます。JSON 形式であれば、実質上、あらゆるデータセットからデータをプッシュできます。データの読み込み方法については、「[ドキュメントの追加、更新、削除](https://msdn.microsoft.com/library/azure/dn798930.aspx)」または「[.NET SDK の使用方法](search-howto-dotnet-sdk.md)」を参照してください。
 
@@ -61,7 +61,7 @@ Azure Search は、プロビジョニングと拡大縮小、プログラミン�
 
 ###容量と拡大縮小の機能と制限
 
-このサービスは Standard と共有サービスのデプロイメントのいずれかとして実行できます。Standard 検索では、ワークロードに基づいて規模の変更が可能な専用リソースがサポートされます。共有サービスは無料であり、サービスの機能を確認するために提供され、パフォーマンスは保証されません。
+このサービスは Standard と共有サービスのデプロイのいずれかとして実行できます。Standard 検索では、ワークロードに基づいて規模の変更が可能な専用リソースがサポートされます。共有サービスは無料であり、サービスの機能を確認するために提供され、パフォーマンスは保証されません。
 
 ストレージとドキュメント カウント (パーティション) のインクリメントとクエリ負荷 (レプリカ) で**拡張可能**各レプリカでインデックスの 1 つのコピーが実行されます。高可用性にはクエリ ワークロードのために 2 つのレプリカと読み書きワークロード (クエリとインデックス作成) のために 3 つのレプリカが要求されます。容量計画の詳細について「制限と制約 (Azure Search)」を参照してください。
 
@@ -89,7 +89,7 @@ Azure Search には HTTPS でのみアクセスできます。
 
 **ドキュメント**にはフィールドと関連付けられている属性が含まれています。フィールドには検索可能テキスト、フィルターとスコアリング プロファイルで主に (あるいは排他的に) 使用される値、そして多くの場合、画像など、他のデータ ストアのコンテンツの URL またはポインターが含まれます。多くの検索アプリケーションで複数のストレージ形態が利用されています。画像と動画は、Azure BLOB ストレージなど、他のストレージ メディアに保管すればコストが減ります。
 
-**インデクサー**を利用し、Azure SQL Database、Azure VM の SQL Server、Azure DocumentDB で変更されたデータのインデックス更新をスケジュールできます。詳細については、「[インデクサー操作 (Azure Search サービス REST API)]((https://msdn.microsoft.com/library/azure/dn946891.aspx)」 を参照してください。
+**インデクサー**を利用し、Azure SQL Database、Azure VM の SQL Server、Azure DocumentDB で変更されたデータのインデックス更新をスケジュールできます。詳細については、「インデクサー操作 (Azure Search サービス REST API (https://msdn.microsoft.com/library/azure/dn946891.aspx))」を参照してください。
 
 **クエリ**はブール型フィルターの場合は OData 構文で、全文検索の場合は簡単なクエリ構文で作成できます。詳細については、「[Azure Search の OData 式の構文](https://msdn.microsoft.com/library/azure/dn798921.aspx)」と「[Azure Search の簡単なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)」を参照してください。
 
@@ -131,4 +131,4 @@ ID に基づいて特定のドキュメントを探し、特定のアイテム�
 
 [.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md) [Azure Search .NET の使用](search-get-started-dotnet.md) [Azure Search: チュートリアル、ビデオ デモ、サンプル](search-video-demo-tutorial-list.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

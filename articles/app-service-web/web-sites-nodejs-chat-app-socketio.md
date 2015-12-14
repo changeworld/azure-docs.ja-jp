@@ -205,7 +205,7 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 
 	これにより IIS WebSocket モジュールが無効になりますが、それには WebSocket の独自の実装が含まれ、それは Socket.IO などの Node.js 固有の WebSocket モジュールと競合します。この行が存在しない場合、または `true` に設定されている場合は、WebSocket トランスポートがアプリケーションで動作しない原因になる可能性があります。
 
-	通常、Node.js アプリケーションには **web.config** ファイルが含まれないので、Azure Websites はデプロイされるときに Node.js アプリケーション用にこのファイルを自動的に生成します。このファイルはサーバー上に自動的に生成されるので、Web サイトでこのファイルを参照するには FTP または FTPS URL を使用する必要があります。Microsoft Azure 管理ポータルでサイトの FTP および FTPS URL を検索するには、Web サイトを選択して、**[ダッシュボード]** リンクをクリックします。URL は **[概要]** セクションに表示されます。
+	通常、Node.js アプリケーションには **web.config** ファイルが含まれないので、Azure Websites はデプロイされるときに Node.js アプリケーション用にこのファイルを自動的に生成します。このファイルはサーバー上に自動的に生成されるので、Web サイトでこのファイルを参照するには FTP または FTPS URL を使用する必要があります。クラシック ポータルでサイトの FTP および FTPS URL を検索するには、Web サイトを選択して、**[ダッシュボード]** リンクをクリックします。URL は **[概要]** セクションに表示されます。
 
 	> [AZURE.NOTE]**web.config** ファイルが Azure Websites によって生成されるのは、アプリケーションで提供されていない場合だけです。アプリケーション プロジェクトのルートで **web.config** ファイルを提供した場合は、それが Azure Web Apps によって使用されます。
 
@@ -285,4 +285,4 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 [pricing]: /pricing/details/web-sites/
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

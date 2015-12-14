@@ -159,7 +159,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 	New-AzureVM –ServiceName "<short name of the cloud service>" -VMs $vm1
 
-クラウド サービスの短い名前が、Azure ポータルの [クラウド サービス] ボックスの一覧か、Azure プレビュー ポータルの [リソース グループ] ボックスの一覧に表示されます。
+クラウド サービスの短い名前が、Azure クラシック ポータルの [クラウド サービス] ボックスの一覧か、Azure ポータルの [リソース グループ] ボックスの一覧に表示されます。
 
 **オプション 2**: 仮想マシンを既存のクラウド サービスと仮想ネットワークに作成します。
 
@@ -178,7 +178,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 コマンド セットを再利用する場合は、以下の操作を実行できます。
 
 - このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
-- Microsoft Azure ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する
+- Azure クラシック ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する
 
 ## <a id="examples"></a>例
 
@@ -280,4 +280,4 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

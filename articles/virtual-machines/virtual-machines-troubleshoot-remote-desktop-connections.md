@@ -34,7 +34,7 @@ Windows ベースの Azure 仮想マシンに接続しようとしたときに�
 
 これらの基本手順を使用すると、クラシック デプロイメント モデルを使用して作成された仮想マシンのリモート デスクトップ接続に関する一般的なエラーをほとんど解決できます。各手順を実行した後、仮想マシンに再接続してみてください。
 
-- RDP サーバーでの起動の問題を解決するには、[Azure プレビュー ポータル](https://portal.azure.com)からリモート デスクトップ サービスをリセットします。<br> [すべて参照]、[仮想マシン (クラシック)]、ご使用の Windows 仮想マシン、**[リモート アクセスのリセット]** の順にクリックします。
+- RDP サーバーでの起動の問題を解決するには、[Azure ポータル](https://portal.azure.com)からリモート デスクトップ サービスをリセットします。<br> [すべて参照]、[仮想マシン (クラシック)]、ご使用の Windows 仮想マシン、**[リモート アクセスのリセット]** の順にクリックします。
 
     ![RDP 構成のリセットを示すスクリーンショット](./media/virtual-machines-troubleshoot-remote-desktop-connections/Portal-RDP-Reset-Windows.png)
 
@@ -169,4 +169,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

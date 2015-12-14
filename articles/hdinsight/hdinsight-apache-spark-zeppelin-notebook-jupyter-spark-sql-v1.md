@@ -39,10 +39,10 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 **Azure ストレージ アカウントを作成するには**
 
-1. [Azure ポータル][azure-management-portal]にサインインします。
+1. [Azure クラシック ポータル][azure-management-portal]にサインインします。
 2. 左下隅にある **[新規]** をクリックし、次の図に示すように、値を入力します。
 
-	![簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.StorageAccount.QuickCreate.png "簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル")
+	![簡易作成を使用して新しいストレージ アカウントを設定できる Azure クラシック ポータル。](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.StorageAccount.QuickCreate.png "簡易作成を使用して新しいストレージ アカウントを設定できる Azure クラシック ポータル。")
 
 >[AZURE.NOTE]ストレージ アカウントは、クラスターでサポートされる場所
 
@@ -57,7 +57,7 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 **Spark クラスターをプロビジョニングするには**
 
-1. [Azure ポータル][azure-management-portal]にサインインします。 
+1. [Azure クラシック ポータル][azure-management-portal]にサインインします。 
 
 2. 左下隅にある **[新規]** をクリックし、次の図に示すように、値を入力します。
 
@@ -70,7 +70,7 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 >[AZURE.NOTE]以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Zeppelin を起動した後、**Zeppelin HVAC tutorial** という名前でこの Notebook を検索します。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 
 2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Zeppelin Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
@@ -156,7 +156,7 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 >[AZURE.NOTE]以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Jupyter を起動した後、**HVACTutorial.ipynb** という名前でこの Notebook を検索します。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 
 2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュ ボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
@@ -260,4 +260,4 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

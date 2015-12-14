@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect のプレビュー段階の機能 |Microsoft Azure"
+   pageTitle="Azure AD Connect: プレビュー段階の機能 |Microsoft Azure"
    description="このトピックでは、Azure AD Connect のプレビュー段階の機能について詳しく説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="10/13/2015"
+   ms.date="12/02/2015"
    ms.author="andkjell;billmath"/>
 
 # プレビュー段階の機能の詳細
@@ -60,4 +60,4 @@ Office 365 グループの詳細については、[こちら](http://aka.ms/O365
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

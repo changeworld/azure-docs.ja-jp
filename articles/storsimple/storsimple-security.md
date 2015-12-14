@@ -36,9 +36,9 @@ Microsoft Azure StorSimple ソリューションは、互いに連携し合う 4
 
 ## StorSimple Manager サービスの保護
 
-StorSimple Manager サービスは、Microsoft Azure でホストされる管理サービスです。皆さんの会社で導入したすべての StorSimple デバイスは、このサービスを使用して管理されます。StorSimple Manager サービスにアクセスするには、Web ブラウザーから社内の資格情報を使用して Azure ポータルにログオンします。
+StorSimple Manager サービスは、Microsoft Azure でホストされる管理サービスです。皆さんの会社で導入したすべての StorSimple デバイスは、このサービスを使用して管理されます。StorSimple Manager サービスにアクセスするには、Web ブラウザーから社内の資格情報を使用して Azure クラシック ポータルにログオンします。
 
-StorSimple Manager サービスにアクセスするには、StorSimple を含む Azure サブスクリプションを会社が保有している必要があります。Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。Azure サブスクリプションを会社が保有していない場合、「[Azure への組織としてのサインアップ](../sign-up-organization.md)」で詳しい情報をご覧いただけます。
+StorSimple Manager サービスにアクセスするには、StorSimple を含む Azure サブスクリプションを会社が保有している必要があります。Azure クラシック ポータルから利用できる機能は、保有するサブスクリプションによって決まります。Azure サブスクリプションを会社が保有していない場合、「[Azure への組織としてのサインアップ](../sign-up-organization.md)」で詳しい情報をご覧いただけます。
 
 StorSimple Manager サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。Microsoft Azure のセキュリティ機能の詳細については、「[Microsoft Azure セキュリティ センター](http://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
 
@@ -46,7 +46,7 @@ StorSimple Manager サービスは Azure でホストされるため、Azure の
 
 StorSimple デバイスは、ソリッド ステート ドライブ (SSD) とハード ディスク ドライブ (HDD) に冗長コントローラーと自動フェールオーバー機能が組み合わされたオンプレミスのハイブリッド ストレージ デバイスです。コントローラーは、ストレージの階層を管理します。使用頻度の高いデータ (ホット データ)を (StorSimple デバイスまたはオンプレミス サーバー内の) ローカル ストレージに配置し、使用頻度の低いデータをクラウドに移動します。
 
-Azure サブスクリプションで作成した StorSimple Manager サービスに参加できるのは、承認されている StorSimple デバイスだけです。デバイスを承認するためには、サービス登録キーを指定して、StorSimple Manager サービスに対象のデバイスを登録する必要があります。サービス登録キーは、Azure ポータルで生成される 128 ビットのランダムなキーです。
+Azure サブスクリプションで作成した StorSimple Manager サービスに参加できるのは、承認されている StorSimple デバイスだけです。デバイスを承認するためには、サービス登録キーを指定して、StorSimple Manager サービスに対象のデバイスを登録する必要があります。サービス登録キーは、Azure クラシック ポータルで生成される 128 ビットのランダムなキーです。
 
 ![サービス登録キー](./media/storsimple-security/ServiceRegistrationKey.png)
 
@@ -131,7 +131,7 @@ StorSimple のパスワードの強度と保護を徹底するために、次の
 
 ## サービスを流れるデータの保護
 
-StorSimple Manager サービスの主な目的は、StorSimple デバイスの管理と構成です。StorSimple Manager サービスは Microsoft Azure 内で実行されます。ユーザーが Azure ポータルを使用してデバイスの構成データを入力すると、Microsoft Azure が StorSimple Manager サービスを使用してそのデータをデバイスに送信します。Azure サービスのセキュリティ侵害が、保管されている情報の侵害にまで発展するのを防ぐために、StorSimple には非対称キー ペアのシステムが使用されています。
+StorSimple Manager サービスの主な目的は、StorSimple デバイスの管理と構成です。StorSimple Manager サービスは Microsoft Azure 内で実行されます。ユーザーが Azure クラシック ポータルを使用してデバイスの構成データを入力すると、Microsoft Azure が StorSimple Manager サービスを使用してそのデータをデバイスに送信します。Azure サービスのセキュリティ侵害が、保管されている情報の侵害にまで発展するのを防ぐために、StorSimple には非対称キー ペアのシステムが使用されています。
 
 ![移動中のデータの暗号化](./media/storsimple-security/DataEncryption.png)
 
@@ -183,7 +183,7 @@ StorSimple デバイスは、データの保存先をその使用頻度に応じ
 キーのローテーションに関しては、以下のベスト プラクティスに従うようお勧めします。
 
 - 承認されていないユーザーがストレージ アカウントにアクセスできないようストレージ アカウント キーのローテーションは日常的に行う。
-- Azure ポータルの [ストレージ] セクションを使用し、Azure 管理者がストレージ アカウントに直接アクセスして、プライマリ キーやセカンダリ キーを定期的に変更または再生成する。
+- Azure クラシック ポータルの [ストレージ] セクションを使用し、Azure 管理者がストレージ アカウントに直接アクセスして、プライマリ キーやセカンダリ キーを定期的に変更または再生成する。
 
 
 ## 暗号化によるデータの保護
@@ -192,8 +192,8 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 | アルゴリズム | キーの長さ | プロトコル/アプリケーション/コメント |
 | --------- | ---------- | ------------------------------- |
-| RSA | 2048 | RSA PKCS 1 v1.5 は、Azure ポータルでデバイスに送信される構成データ (ストレージ アカウントの資格情報、StorSimple デバイスの構成、クラウド ストレージ暗号化キーなど) の暗号化に使用されます。 |
-| AES | 256 | サービス データ暗号化キーの公開部分を (StorSimple デバイスから Azure ポータルに送信する前に) 暗号化する用途で AES と CBC の組み合わせが使用されます。クラウド ストレージ アカウントに送信する前のデータを StorSimple デバイスが暗号化する際にも使用されます。 |
+| RSA | 2048 | RSA PKCS 1 v1.5 は、Azure クラシック ポータルでデバイスに送信される構成データ (ストレージ アカウントの資格情報、StorSimple デバイスの構成、クラウド ストレージ暗号化キーなど) の暗号化に使用されます。 |
+| AES | 256 | サービス データ暗号化キーの公開部分を (StorSimple デバイスから Azure クラシック ポータルに送信する前に) 暗号化する用途で AES と CBC の組み合わせが使用されます。クラウド ストレージ アカウントに送信する前のデータを StorSimple デバイスが暗号化する際にも使用されます。 |
 
 
 ## StorSimple 仮想デバイスのセキュリティ
@@ -269,4 +269,4 @@ StorSimple ソリューションに保存されるデータとソリューショ
 [StorSimple デバイスをデプロイする](storsimple-deployment-walkthrough.md)
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

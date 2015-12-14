@@ -73,6 +73,7 @@ Reliable Services は、重要な機能をアプリケーションに組み込�
 - [アーキテクチャ](service-fabric-reliable-services-platform-architecture.md)
 - [Reliable Collection](service-fabric-reliable-services-reliable-collections.md)
 - [ステートフル Reliable Services の構成](../Service-Fabric/service-fabric-reliable-services-configuration.md)
+- [シリアル化](../Service-Fabric/service-fabric-reliable-services-serialization.md)
 - [Reliable Services プログラミング モデルの詳細な使用方法](../Service-Fabric/service-fabric-reliable-services-advanced-usage.md)
 
 Reliable Services との通信と、クライアントがサービス エンドポイントでの検出と通信に利用できる抽象化については、次で説明しています。
@@ -87,4 +88,4 @@ Reliable Services はイベントとパフォーマンス カウンターを出�
 
 - [ステートフル Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

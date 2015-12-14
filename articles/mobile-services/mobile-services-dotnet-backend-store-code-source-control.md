@@ -10,13 +10,18 @@
 <tags
 	ms.service="mobile-services"
 	ms.workload="mobile"
-	ms.tgt_pltfrm="na" 
+	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
 	ms.date="09/15/2015"
 	ms.author="glenga"/>
 
 # ソース管理へのモバイル サービス プロジェクト コードの保存
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 > [AZURE.SELECTOR]
 - [.NET backend](mobile-services-dotnet-backend-store-code-source-control.md)
@@ -60,7 +65,7 @@
 
 ##<a name="deploy-scripts"></a>Git を使用して、プロジェクトを発行する
 
-1. Visual Studio 2013 で新しい .NET バックエンド モバイル サービス プロジェクトを作成するか既存のプロジェクトを新しいローカル リポジトリに移動します。  
+1. Visual Studio 2013 で新しい .NET バックエンド モバイル サービス プロジェクトを作成するか既存のプロジェクトを新しいローカル リポジトリに移動します。
 
 	クイック テストでは、モバイル サービスのクイック スタート プロジェクトをダウンロードして、このフォルダーに保存します。
 
@@ -97,7 +102,6 @@
 [Source control]: http://msdn.microsoft.com/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
 [Installing Git (Git のインストール)]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [モバイル サービスの使用]: mobile-services-dotnet-backend-ios-get-started.md
-[Azure Management Portal]: https://manage.windowsazure.com/
 [.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

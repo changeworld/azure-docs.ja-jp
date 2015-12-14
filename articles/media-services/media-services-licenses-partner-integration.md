@@ -45,6 +45,6 @@ Media Services .NET SDK バージョン 3.5.2 以降、Media Services を使用�
 
 [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
 
-[Mingfei のブログ](https://azure.microsoft.com/zh-CN/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)
+[Mingfei のブログ](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

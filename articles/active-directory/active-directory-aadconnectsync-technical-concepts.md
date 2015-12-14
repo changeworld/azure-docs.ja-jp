@@ -89,4 +89,4 @@ ID が一緒にリンクされ、インポート フローのマッピングを�
 <!--Image references-->
 [1]: ./media/active-directory-aadsync-technical-concepts/ic750598.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

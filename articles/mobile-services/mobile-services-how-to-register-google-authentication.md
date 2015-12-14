@@ -1,22 +1,27 @@
-<properties 
-	pageTitle="Google 認証用の登録 | Microsoft Azure" 
-	description="Google を使用して Azure Mobile Services で認証できるようにアプリケーションを登録する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="android" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Google 認証用の登録 | Microsoft Azure"
+	description="Google を使用して Azure Mobile Services で認証できるようにアプリケーションを登録する方法について説明します。"
+	services="mobile-services"
+	documentationCenter="android"
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="11/15/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="11/15/2015"
 	ms.author="glenga"/>
 
 # Mobile Services での Google ログイン用のアプリケーションの登録
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-register-identity-provider](../../includes/mobile-services-selector-register-identity-provider.md)]
 
@@ -35,9 +40,9 @@
 6. **[Credentials]** タブで、**[Add credentials]**、**[OAuth 2.0 client ID]** の順にクリックした後、**[Web application]** を選択します。
 
 7. **[Authorized JavaScript Origins]** にモバイル サービスの URL を入力し、**[Authorized Redirect URI]** で生成された URL を次のいずれかの URL 形式に置き換えて、**[Create client ID]** をクリックします。
- 
+
 	+ **.NET バックエンド**: `https://<mobile_service>.azure-mobile.net/signin-google`
-	+ **JavaScript バックエンド**: `https://<mobile_service>.azure-mobile.net/login/google` 
+	+ **JavaScript バックエンド**: `https://<mobile_service>.azure-mobile.net/login/google`
 
 	 >[AZURE.NOTE]Mobile Services バックエンドの種類として、正しいリダイレクト URL パスの形式を使用してください。これが正しくない場合、認証は失敗します。
 
@@ -56,7 +61,4 @@
 [Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-dotnet/
 
-[Azure Management Portal]: https://manage.windowsazure.com/
- 
-
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

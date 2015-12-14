@@ -105,7 +105,7 @@ IoT Hub に関するその他の情報:
 [Azure Storage]: https://azure.microsoft.com/ja-JP/documentation/services/storage/
 [Azure Service Bus]: https://azure.microsoft.com/ja-JP/documentation/services/service-bus/
 
-[Azure preview portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 
 [IoT Hub を使用したクラウドからデバイスへのメッセージの送信]: iot-hub-csharp-csharp-c2d.md
 [Process Device-to-Cloud messages]: iot-hub-csharp-csharp-process-d2c.md
@@ -119,4 +119,4 @@ IoT Hub に関するその他の情報:
 [Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
 [Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

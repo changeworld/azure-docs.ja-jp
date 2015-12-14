@@ -29,7 +29,7 @@
 2. **トレーニング実験を予測実験に変換する**。既存のデータでモデルがトレーニングされ、それを使用して新しいデータをスコア付けする準備ができると、スコア付け用に実験を用意し、合理化します。
 3. **Web サービスとしてデプロイする**。Azure Web サービスとしてスコア付け実験を発行できます。この Web サービスのエンドポイントを使用して、ユーザーはモデルにデータを送信し、モデルの予測を受信できます。  
 
-Azure Data Factory を使用すると、発行された [Azure Machine Learning][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。Azure Data Factory パイプラインで**バッチ実行アクティビティ**を使用すると、Azure ML Web サービスを呼び出して、データの予測を一括で行うことができます。詳細については、「[バッチ実行アクティビティを使用して、Azure ML Web サービスを呼び出す](#invoking-an-azure-ml-web-service-using-the-batch-execution-activity)」を参照してください。
+Azure Data Factory を使用すると、公開された [Azure Machine Learning][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。Azure Data Factory パイプラインで**バッチ実行アクティビティ**を使用すると、Azure ML Web サービスを呼び出して、データの予測を一括で行うことができます。詳細については、「[バッチ実行アクティビティを使用して、Azure ML Web サービスを呼び出す](#invoking-an-azure-ml-web-service-using-the-batch-execution-activity)」を参照してください。
 
 時間の経過と共に、Azure ML スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。次の手順を実行することで、Data Factory パイプラインから Azure ML モデルを再トレーニングできます。
 
@@ -38,7 +38,7 @@ Azure Data Factory を使用すると、発行された [Azure Machine Learning]
   
 再トレーニングを実行したら、スコア付け Web サービス (Web サービスとして公開した予測実験) を新しくトレーニングを行ったモデルで更新する必要があります。次の手順に従って行います。
 
-1. スコア付け Web サービスに既定以外のエンドポイントを追加します。Web サービスの既定のエンドポイントは更新できません。そのため、Azure 管理ポータルを使用して既定以外のエンドポイントを新しく作成する必要があります。この概念と手順については、[エンドポイントの作成](../machine-learning/machine-learning-create-endpoint.md)に関するページを参照してください。
+1. スコア付け Web サービスに既定以外のエンドポイントを追加します。Web サービスの既定のエンドポイントは更新できません。そのため、Azure クラシック ポータルを使用して既定以外のエンドポイントを新しく作成する必要があります。この概念と手順については、[エンドポイントの作成](../machine-learning/machine-learning-create-endpoint.md)に関するページを参照してください。
 2. 既存のスコア付け用 Azure ML のリンクされたサービスを、既定以外のエンドポイントを使用するように更新します。更新された Web サービスを使用するには、新しいエンドポイントの使用を開始する必要があります。
 3. **Azure ML 更新リソース アクティビティ**を使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。  
 
@@ -53,13 +53,13 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 	1. 発行済みの Azure Machine Learning Web サービスの **API キー**。API キーは、発行した Web サービスをクリックするとわかります。 
  2. **AzureMLBatchExecution** アクティビティを使用します。
 
-	![Machine Learning ダッシュボード](./media/data-factory-azure-ml-batch-execution-activity/AzureMLDashboard.png)
+	![Machine Learning Dashboard](./media/data-factory-azure-ml-batch-execution-activity/AzureMLDashboard.png)
 
 	![Batch URI](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
 
 
-### シナリオ: Azure Blob Storage のデータを参照する Web サービスの入力/出力を使用する
-このシナリオの Azure Machine Learning Web サービスは、Azure Blob Storage 内のファイルのデータを使用して予測を作成し、Blob Storage に予測結果を保存します。次の JSON では、AzureMLBatchExecution アクティビティを使用する Azure Data Factory パイプラインが定義されています。このアクティビティは、入力としてデータセット **DecisionTreeInputBlob** を使用し、出力として **DecisionTreeResultBlob** を使用します。**DecisionTreeInputBlob** は **webServiceInput** JSON プロパティを使用して Web サービスに入力として渡され、**DecisionTreeResultBlob** は **webServiceOutputs** JSON プロパティを使用して Web サービスに出力として渡されます。アクティビティの入力/出力であるデータセットだけを、Web サービスの入力および出力として渡すことができます。
+### シナリオ: Azure BLOB ストレージのデータを参照する Web サービスの入力/出力を使用する
+このシナリオの Azure Machine Learning Web サービスは、Azure BLOB ストレージ内のファイルのデータを使用して予測を作成し、BLOB ストレージに予測結果を保存します。次の JSON では、AzureMLBatchExecution アクティビティを使用する Azure Data Factory パイプラインが定義されています。このアクティビティは、入力としてデータセット **DecisionTreeInputBlob** を使用し、出力として **DecisionTreeResultBlob** を使用します。**DecisionTreeInputBlob** は **webServiceInput** JSON プロパティを使用して Web サービスに入力として渡され、**DecisionTreeResultBlob** は **webServiceOutputs** JSON プロパティを使用して Web サービスに出力として渡されます。アクティビティの入力/出力であるデータセットだけを、Web サービスの入力および出力として渡すことができます。
 
 
 	{
@@ -153,7 +153,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 		  }
 		}
 	
-	入力 csv ファイルには列ヘッダー行がある必要があります。**コピー アクティビティ**を使用している csv を Blob Storage に作成または移動する場合、シンクの **blobWriterAddHeader** プロパティを **true** に設定する必要があります。次に例を示します。
+	入力 csv ファイルには列ヘッダー行がある必要があります。**コピー アクティビティ**を使用している csv を BLOB ストレージに作成または移動する場合、シンクの **blobWriterAddHeader** プロパティを **true** に設定する必要があります。次に例を示します。
 	
 	     sink: 
 	     {
@@ -291,9 +291,9 @@ Web サービス パラメーターを使用するシナリオを見てみまし
 > [AZURE.NOTE]Web サービス パラメーターでは大文字と小文字が区別されるため、アクティビティ JSON に指定した名前が Web サービスによって公開されている名前と一致していることを確認してください。
 
 ### リーダー モジュールを使用して Azure BLOB の複数のファイルからデータを読み取る
-ビッグ データ パイプライン (Pig、Hive など) は、拡張子が付いていない出力ファイルを 1 つ以上生成できます。たとえば、外部 Hive テーブルを指定するとき、外部 Hive テーブルのデータを 000000\_0 という名前で Azure Blob Storage に格納できます。実験では、リーダー モジュールを使用して複数のファイルを読み取り、予測に使用できます。
+ビッグ データ パイプライン (Pig、Hive など) は、拡張子が付いていない出力ファイルを 1 つ以上生成できます。たとえば、外部 Hive テーブルを指定するとき、外部 Hive テーブルのデータを 000000\_0 という名前で Azure BLOB ストレージに格納できます。実験では、リーダー モジュールを使用して複数のファイルを読み取り、予測に使用できます。
 
-Azure Machine Learning の実験でリーダー モジュールを使用する場合は、入力として Azure BLOB を指定できます。Azure Blob Storage 内のファイルは、HDInsight で実行する Pig および Hive スクリプトによって生成される出力ファイル (例: 000000\_0) でもかまいません。リーダー モジュールを使用すると、次に示すように、ファイルを含むコンテナー/フォルダーを指し示すようにリーダー モジュールの **Path to container, directory or blob** プロパティを構成することによって、(拡張子がない) ファイルを読み取ることができます。アスタリスク (つまり *) は、**コンテナー/フォルダー内のすべてのファイル (つまり、data/aggregateddata/year=2014/month-6/*)** が実験の一部として読み取られることを指定します。
+Azure Machine Learning の実験でリーダー モジュールを使用する場合は、入力として Azure BLOB を指定できます。Azure BLOB ストレージ内のファイルは、HDInsight で実行する Pig および Hive スクリプトによって生成される出力ファイル (例: 000000\_0) でもかまいません。リーダー モジュールを使用すると、次に示すように、ファイルを含むコンテナー/フォルダーを指し示すようにリーダー モジュールの **Path to container, directory or blob** プロパティを構成することによって、(拡張子がない) ファイルを読み取ることができます。アスタリスク (つまり *) は、**コンテナー/フォルダー内のすべてのファイル (つまり、data/aggregateddata/year=2014/month-6/*)** が実験の一部として読み取られることを指定します。
 
 ![Azure BLOB のプロパティ](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -361,10 +361,10 @@ Azure Machine Learning の実験でリーダー モジュールを使用する�
 
 次の表で、この例で使用する Web サービスについて説明します。詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](../machine-learning/machine-learning-retrain-models-programmatically.md)」を参照してください。
 
-| Web サービスの種類 | 説明 
+| Web サービスの種類 | description 
 | :------------------ | :---------- 
 | **トレーニング Web サービス** | トレーニング データを受信し、トレーニング済みのモデルを作成します。再トレーニングの出力は、Azure Blob Storage 内の .ilearner ファイルになります。**既定のエンドポイント**が、トレーニング実験を Web サービスとして発行するときに自動的に作成されます。エンドポイントは複数作成することができますが、この例では、既定のエンドポイントのみを使用します。 |
-| **スコア付け Web サービス** | ラベルの付いていないデータの例を受信し、予測を作成します。予測の出力は、実験の構成に応じてさまざまな形式 (.csv ファイル、Azure SQL Database の行など) をとります。既定のエンドポイントが、予測実験を Web サービスとして発行するときに自動的に作成されます。[Azure ポータル](https://manage.windowsazure.com)を使用して、2 つ目の**更新可能な既定以外のエンドポイント**を作成する必要があります。エンドポイントは複数作成することができますが、この例では、更新可能な既定以外のエンドポイントを 1 つだけ使用します。手順の詳細については、[エンドポイントの作成](../machine-learning/machine-learning-create-endpoint.md)に関する記事を参照してください。       
+| **スコア付け Web サービス** | ラベルの付いていないデータの例を受信し、予測を作成します。予測の出力は、実験の構成に応じてさまざまな形式 (.csv ファイル、Azure SQL Database の行など) をとります。既定のエンドポイントが、予測実験を Web サービスとして発行するときに自動的に作成されます。[Azure クラシック ポータル](https://manage.windowsazure.com)を使用して、2 つ目の**更新可能な既定以外のエンドポイント**を作成する必要があります。エンドポイントは複数作成することができますが、この例では、更新可能な既定以外のエンドポイントを 1 つだけ使用します。手順の詳細については、[エンドポイントの作成](../machine-learning/machine-learning-create-endpoint.md)に関する記事を参照してください。       
  
 次の図は、Azure ML でのトレーニングとスコア付けのエンドポイントの関係を示しています。
 
@@ -385,7 +385,7 @@ Azure Machine Learning の実験でリーダー モジュールを使用する�
 ![pipeline diagram](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 
 
-#### Azure Blob Storage のリンクされたサービス:
+#### Azure BLOB ストレージのリンクされたサービス:
 Azure Storage には次のデータが格納されています。
 
 - トレーニング データ。これは、Azure ML トレーニング Web サービス用の入力データです。  
@@ -623,4 +623,4 @@ AzureMLBatchExecution アクティビティには入力は必要ありません 
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

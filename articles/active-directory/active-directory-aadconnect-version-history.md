@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="11/03/2015"
+   ms.date="12/02/2015"
    ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
@@ -26,6 +26,16 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 - 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。
 - [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
+
+## 1\.0.9131.0
+リリース日: 2015 年 12 月
+
+**修正された問題:**
+
+- AD DS でパスワードを変更するときにはパスワードの同期が機能しない場合があるが、パスワードの設定時には機能する。
+- プロキシ サーバーがある場合、Azure AD に対する認証が、構成ページ上でのインストールまたはアップグレード中に失敗する場合がある。
+- SQL の SA でない場合、完全な SQL Server で以前のリリースの Azure AD Connect から更新すると失敗する。
+- リモートの SQL Server で以前のリリースの Azure AD Connect から更新すると、「ADSync SQL データベースにアクセスできません」というエラーが表示される。
 
 ## 1\.0.9125.0
 リリース: 2015 年 11 月
@@ -44,7 +54,7 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 **新しくサポートされたシナリオ:**
 
-- 複数のオンプレミス Exchange 組織がサポートされました。詳細については、「[複数の Active Directory フォレストを伴うハイブリッド展開](https://technet.microsoft.com/ja-JP/library/jj873754.aspx)」を参照してください。
+- 複数のオンプレミス Exchange 組織がサポートされました。詳細については、「[複数の Active Directory フォレストを伴うハイブリッド デプロイメント](https://technet.microsoft.com/library/jj873754.aspx)」を参照してください。
 
 **修正された問題:**
 
@@ -197,6 +207,6 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 **Azure AD Sync の最初のリリースです。**
 
 ## 次のステップ
-「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

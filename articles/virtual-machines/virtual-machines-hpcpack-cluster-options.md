@@ -57,7 +57,7 @@ Microsoft HPC Pack と、Azure のコンピューティングおよびインフ�
 
 
 
-### Azure ポータルを使用した手動デプロイメント
+### Azure クラシック ポータルを使用した手動デプロイメント
 
 
 
@@ -97,4 +97,4 @@ Microsoft HPC Pack と、Azure のコンピューティングおよびインフ�
 
 <!-- * [Set up a Linux RDMA cluster to run MPI applications](virtual-machines-linux-hpcpack-cluster-rdma.md) -->
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1203_2015-->

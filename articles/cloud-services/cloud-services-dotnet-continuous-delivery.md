@@ -16,7 +16,7 @@
 	ms.date="08/19/2015"
 	ms.author="kempb"/>
 
-# Azure でのクラウド サービスの継続的な配信
+# Azure での Cloud Services の継続的な配信
 
 この記事のプロセスでは、Azure クラウド アプリケーションの継続的な配信を設定する方法について説明します。このプロセスを使用すると、自動的にパッケージを作成し、コードをチェックインするたびにそのパッケージを Azure にデプロイできます。この記事で説明するパッケージのビルド プロセスは Visual Studio のパッケージ コマンドに相当し、発行手順は Visual Studio の発行コマンドに相当します。この記事では、MSBuild コマンド ライン ステートメントと Windows PowerShell スクリプトを使用してビルド サーバーを作成するためのいくつかの方法を紹介し、オプションで Visual Studio Team Foundation Server を構成する方法 (MSBuild コマンドと PowerShell スクリプトを使用するためのチーム ビルド定義) について説明します。このプロセスは、ビルド環境や Azure ターゲット環境に合わせてカスタマイズできます。
 
@@ -44,7 +44,7 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 
 1.  ビルド サーバーに Visual Studio がインストールされている場合は、**[スタート]** メニューの **[すべてのプログラム]** をクリックし、**[Visual Studio ツール]** フォルダーの **[Visual Studio コマンド プロンプト]** をクリックします。
 
-    Visual Studio がビルド サーバーにインストールされていない場合は、コマンド プロンプトを開き、MSBuild.exe へのパスを確認します。MSBuild は、.NET Framework と共に %WINDIR%\\Microsoft.NET\\Framework\\*Version* というパスにインストールされます。たとえば、.NET Framework 4 をインストールしたときに MSBuild.exe を PATH 環境変数に追加するには、コマンド プロンプトで次のコマンドを入力します。
+    Visual Studio がビルド サーバーにインストールされていない場合は、コマンド プロンプトを開き、MSBuild.exe へのパスを確認します。MSBuild は、.NET Framework と共に %WINDIR%\\Microsoft.NET\\Framework\*Version* というパスにインストールされます。たとえば、.NET Framework 4 をインストールしたときに MSBuild.exe を PATH 環境変数に追加するには、コマンド プロンプトで次のコマンドを入力します。
 
         set PATH=%PATH%;"C:\Windows\Microsoft.NET\Framework\v4.0.30319"
 
@@ -58,7 +58,7 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 
     必要に応じて、プロジェクト名を MSBuild のパラメーターとして指定できます。このパラメーターを指定しない場合は、現在のディレクトリが使用されます。MSBuild のコマンド ライン オプションの詳細については、「MSBuild コマンド ライン リファレンス」[1]を参照してください。
 
-4.  出力を見つけます。既定では、プロジェクトのルート フォルダーに対してディレクトリが作成されます (たとえば、*ProjectDir*\\bin\\*Configuration*\\app.publish\\)。Azure プロジェクトをビルドすると、パッケージ ファイルとそれに対応する構成ファイルの 2 つのファイルが生成されます。
+4.  出力を見つけます。既定では、プロジェクトのルート フォルダーに対してディレクトリが作成されます (たとえば、*ProjectDir*\\bin\*Configuration*\\app.publish\\)。Azure プロジェクトをビルドすると、パッケージ ファイルとそれに対応する構成ファイルの 2 つのファイルが生成されます。
 
     -   Project.cspkg
     -   ServiceConfiguration.*TargetProfile*.cscfg
@@ -93,7 +93,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 5.  **[プロセス]** タブをクリックします。**[プロセス]** タブで、既定のテンプレートを選択します。**[ビルド]** で、プロジェクトがまだ選択されていない場合はこれを選択し、グリッドの [ビルド] セクションの **[詳細設定]** セクションを展開します。
 
-6.  **[MSBuild 引数]** を選択し、上の手順 2. で説明したように適切な MSBuild コマンド ライン引数を設定します。たとえば、パッケージをビルドしてパッケージ ファイルを \\\myserver\\drops\\ にコピーするには、「**/t:Publish /p:PublishDir=\\\myserver\\drops\\**」と入力します。
+6.  **[MSBuild 引数]** を選択し、上の手順 2. で説明したように適切な MSBuild コマンド ライン引数を設定します。たとえば、パッケージをビルドしてパッケージ ファイルを \\\myserver\\drops\\ にコピーするには、「**/t:Publish /p:PublishDir=\\\myserver\\drops\**」と入力します。
 
     ![][2]
 
@@ -123,17 +123,17 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     サブスクリプションに関する情報が表示されます。すべての情報が正しいことを確認します。
 
-4.  [この記事の末尾][]に示されているスクリプト テンプレートをスクリプト フォルダーに c:\\scripts\\WindowsAzure\\**PublishCloudService.ps1** として保存します。
+4.  [この記事の末尾][]に示されているスクリプト テンプレートをスクリプト フォルダーに c:\\scripts\\WindowsAzure\**PublishCloudService.ps1** として保存します。
 
 5.  スクリプトのパラメーター セクションを見直します。既定値を追加または変更します。これらの値は、明示的なパラメーター値を渡すことでオーバーライドできます。
 
 6.  発行スクリプトの対象となる有効なクラウド サービスおよびストレージ アカウントがサブスクリプションに作成されていることを確認します。ストレージ アカウント (BLOB ストレージ) はアップロード用に使用され、デプロイを作成するときにデプロイ パッケージと config ファイルを一時的に格納します。
 
-    -   新しいクラウド サービスを作成するには、このスクリプトを呼び出すか、Azure 管理ポータルを使用することができます。クラウド サービス名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。
+    -   新しいクラウド サービスを作成するには、このスクリプトを呼び出すか、Azure クラシック ポータルを使用することができます。クラウド サービス名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。
 
             New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 
-    -   新しいストレージ アカウントを作成するには、このスクリプトを呼び出すか、Azure 管理ポータルを使用します。ストレージ アカウント名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。クラウド サービスと同じ名前を使用してもかまいません。
+    -   新しいストレージ アカウントを作成するには、このスクリプトを呼び出すか、Azure クラシック ポータルを使用することができます。ストレージ アカウント名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。クラウド サービスと同じ名前を使用してもかまいません。
 
             New-AzureStorageAccount -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 
@@ -169,7 +169,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
         Add-AzureCertificate -serviceName 'mytestcloudservice' -certToDeploy (get-item cert:\CurrentUser\MY\C33B6C432C25581601B84C80F86EC2809DC224E8
 
-    または、Azure 管理ポータルを使用して、証明書ファイル PFX を秘密キーと共にエクスポートし、証明書を各ターゲット クラウド サービスにアップロードすることもできます。詳細については、[http://msdn.microsoft.com/library/windowsazure/gg443832.aspx][] の記事を参照してください。
+    または、Azure クラシック ポータルを使用して、証明書ファイル PFX を秘密キーと共にエクスポートし、証明書を各ターゲット クラウド サービスにアップロードすることもできます。詳細については、[http://msdn.microsoft.com/library/windowsazure/gg443832.aspx][] の記事を参照してください。
 
     **デプロイのアップグレードと、デプロイの削除後に新しいデプロイを作成する操作**
 
@@ -576,4 +576,4 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
   [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
   [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
 
-<!----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

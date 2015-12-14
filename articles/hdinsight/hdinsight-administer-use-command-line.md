@@ -73,7 +73,7 @@ HDInsight クラスターを作成するには、Azure リソース マネージ
 
 	> [AZURE.NOTE]ストレージ アカウントは、HDInsight と共にデータ センターに配置する必要があります。ZRS ではテーブルがサポートされないため、ストレージ アカウントの種類を ZRS にすることはできません。
 
-	Azure プレビュー ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成、管理、削除][azure-create-storageaccount]」をご覧ください
+	Azure ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成、管理、削除][azure-create-storageaccount]」をご覧ください。
 	
 	既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
 	
@@ -84,7 +84,7 @@ HDInsight クラスターを作成するには、Azure リソース マネージ
 		-- Lists the keys for a Storage account
 		azure storage account keys list "<Storage Account Name>" -g "<Resource Group Name>"
 
-	Azure プレビュー ポータルを使用して情報を取得する方法の詳細については、[ストレージ アカウントの作成、管理、削除][azure-create-storageaccount]に関するページの「ストレージ アクセス キーを表示、コピー、再生成する」セクションを参照してください。
+	Azure ポータルを使用して情報を取得する方法の詳細については、[ストレージ アカウントの作成、管理、削除][azure-create-storageaccount]に関するページの「ストレージ アクセス キーを表示、コピー、再生成する」セクションを参照してください。
 
 - **(省略可能) 既定の BLOB コンテナー**: **azure hdinsight cluster create** コマンドは、コンテナーが存在しない場合、コンテナーを作成します。コンテナーを事前に作成する場合は、次のコマンドを使用できます。
 
@@ -160,7 +160,7 @@ Azure PowerShell を使用して Hadoop クラスターのサイズを変更す�
 ##次のステップ
 この記事では、さまざまな HDInsight クラスター管理タスクを実行する方法について説明しました。詳細については、次の記事を参照してください。
 
-* [Azure プレビュー ポータルを使用した HDInsight の管理][hdinsight-admin-portal]
+* [Azure ポータルを使用した HDInsight の管理][hdinsight-admin-portal]
 * [Azure PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 * [Azure HDInsight の概要][hdinsight-get-started]
 * [Azure CLI の使い方][azure-command-line-tools]
@@ -182,4 +182,4 @@ Azure PowerShell を使用して Hadoop クラスターのサイズを変更す�
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -17,14 +17,14 @@
 	ms.date="11/18/2015" 
 	ms.author="mimig"/>
 
-# DocumentDB の概要: NoSQL JSON データベース
+# DocumentDB の概要: NoSQL JSON Database
 
 DocumentDB とは、簡単に拡大縮小でき、高い可用性を必要とする、JSON データを扱う、ビッグ データ ソリューション用の NoSQL ドキュメント データベースです。
 
 この JSON データベースを簡単に理解して動作を確認するには、次の 3 つの手順に従います。
 
 1. [DocumentDB について説明する 2 分間のビデオ](http://azure.microsoft.com/documentation/videos/what-is-azure-documentdb/)を視聴します。このビデオでは、DocumentDB を使用する利点が紹介されています。
-2. [Azure での DocumentDB の作成に関する 3 分間のビデオ](http://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/)を視聴します。このビデオでは、Azure プレビュー ポータルを使用して DocumentDB の使用を開始する方法が紹介されています。
+2. [Azure での DocumentDB の作成に関する 3 分間のビデオ](http://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/)を視聴します。このビデオでは、Azure ポータルを使用して DocumentDB の使用を開始する方法が紹介されています。
 3. [クエリのプレイ グラウンド](http://www.documentdb.com/sql/demo)にアクセスします。このページでは、DocumentDB で利用できる豊富なクエリ機能について理解するためのさまざまな手順を確認できます。次に [サンドボックス] タブに移動して、独自のカスタム SQL クエリを実行し、DocumentDB を試してみます。
 
 その後でこの記事に戻ると、より詳しく調べることができ、次の質問の答えを見つけることができます。
@@ -99,7 +99,7 @@ DocumentDB では、アプリケーション ロジックを JavaScript だけ�
 DocumentDB における JavaScript は、Transact-SQL の後継として、リレーショナル データベース システムによって裏付けられた概念に沿って実行がモデル化されています。すべての JavaScript ロジックは、スナップショット分離機能を使用し、現在参加している ACID トランザクション内で実行されます。その実行中に JavaScript で例外がスローされた場合、トランザクション全体が中止されます。
 
 ## 次のステップ
-既に Azure アカウントをお持ちの場合は、[DocumentDB データベース アカウントを作成する](documentdb-create-account.md)ことにより、[Azure プレビュー ポータル](https://portal.azure.com/#gallery/Microsoft.DocumentDB)で DocumentDB の使用を開始できます。
+既に Azure アカウントをお持ちの場合は、[DocumentDB データベース アカウントを作成する](documentdb-create-account.md)ことにより、[Azure ポータル](https://portal.azure.com/#gallery/Microsoft.DocumentDB)で DocumentDB の使用を開始できます。
 
 Azure アカウントをお持ちでない場合は、
 
@@ -112,4 +112,4 @@ Azure アカウントをお持ちでない場合は、
 [1]: ./media/documentdb-introduction/json-database-resources1.png
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

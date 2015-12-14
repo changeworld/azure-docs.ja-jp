@@ -3,8 +3,8 @@
 	description="Azure Active Directory と Moxtra の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
-	manager="stevenpo"
+	authors="jeevansd"
+	manager="prasannas"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/05/2015"
-	ms.author="markusvi"/>
+	ms.date="12/01/2015"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と Moxtra の統合
@@ -64,7 +64,7 @@ Azure AD への Moxtra の統合を構成するには、ギャラリーから管
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに、「**Moxtra**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_01.png)<br>
-7. 結果ウィンドウで **[Moxtra]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>
+7. 結果ウィンドウで **[Moxtra]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_02.png)<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Moxtra で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -83,11 +83,11 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
 
 このセクションの目的は、Azure AD ポータルで Azure AD のシングル サインオンを有効にすることと、Moxtra アプリケーションでシングル サインオンを構成することです。
 
-Moxtra アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。次のスクリーンショットにこの例を示します。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_09.png)<br>
+Moxtra アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。次のスクリーンショットはその例です。<br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_09.png)<br>
 
 
 
-**Moxtra で Azure AD シングル サインオンを構成するには、次の手順を実行します。**
+**Moxtra で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
 1. Azure AD ポータルの **Moxtra** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][6] <br>
 
@@ -109,20 +109,20 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
 
 1. 別の Web ブラウザー ウィンドウで、管理者として Moxtra 企業サイトにサインオンします。
 
-1. 左のツールハーで、**[管理コンソール] > [SAML シングル サインオン]** をクリックし、**[新規]** をクリックします。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_06.png) <br>
+1. 左のツールバーで、**[Admin Console]、[SAML Single Sign-on]** の順にクリックし、**[New]** をクリックします。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_06.png) <br>
 
 
 1. **[SAML]** ページで、次の手順を実行します。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_08.png)<br>
 
-    a.**[名前]** テキストボックスに、構成の名前を入力します (例: *SAML*)。
+    a.**[Name]** ボックスに、構成の名前を入力します (例: *SAML*)。
 
-    b.Azure ポータルで、**[Moxtra でのシングル サインオンの構成]** ダイアログ ページの **[エンティティ ID]** の値をコピーし、**[IdP エンティティ ID]** ボックスに貼り付けます。
+    b.Azure ポータルで、**[Moxtra でのシングル サインオンの構成]** ダイアログ ページの **[エンティティ ID]** の値をコピーし、**[IdP Entity ID]** ボックスに貼り付けます。
 
-    c.Azure ポータルで、**[Moxtra でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[ログイン URL]** ボックスに貼り付けます。
+    c.Azure ポータルで、**[Moxtra でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[Login URL]** ボックスに貼り付けます。
 
     d.**[AuthnContextClassRef]** ボックスに、「**urn:oasis:names:tc:SAML:2.0:ac:classes:Password**」と入力します。
 
-    e.Azure ポータルの **[Moxtra でのシングル サインオンの構成]** ダイアログ ページで、**[名前識別子形式]** の値をコピーし、**[名前識別子形式]** テキストボックスに貼り付けます。
+    e.Azure ポータルの **[Moxtra でのシングル サインオンの構成]** ダイアログ ページで、**[名前識別子形式]** の値をコピーし、**[NameID Format]** ボックスに貼り付けます。
 
     f.ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[Certificate]** ボックスに貼り付けます。
 
@@ -150,7 +150,7 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
     | idpid | *<Azure ポータルの **[Moxtra でのシングル サインオンの構成]** ダイアログの **[エンティティ ID]** 値>* |
 
  
-    a.[ユーザー属性の追加] をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_general_81.png) <br>
+    a.[ユーザー属性の追加] をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_general_81.png)<br>
 
     b.**[ユーザー属性の追加]** ダイアログで、テーブルのその行に表示されている属性名と属性値を入力します。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_general_82.png) <br>
 
@@ -158,7 +158,7 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
 
 
 
-1. **[変更の適用]** をクリックします。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_general_84.png) <br>
+1. **[変更の適用]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_general_84.png)<br>
 
 
 
@@ -172,7 +172,7 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moxtra-tutorial/create_aaduser_09.png) <br> 
+1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moxtra-tutorial/create_aaduser_09.png) <br> 
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -216,7 +216,7 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
 
 1. Moxtra 企業サイトに管理者としてサインオンします。
 
-1. 左のツールハーで、**[管理コンソール] > [ユーザー管理]** をクリックし、**[ユーザーの追加]** をクリックします。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_10.png) <br>
+1. 左のツールバーで、**[Admin Console]、[User Management]** の順にクリックし、**[Add User]** をクリックします。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_10.png) <br>
 
 
 
@@ -226,13 +226,13 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
 
     b.**[Last Name]** ボックスに「**Simon**」と入力します。
 
-    c.**[電子メール]** ボックスに、Azure ポータルの Britta の電子メール アドレスを入力します。
+    c.**[Email]** ボックスに、Azure ポータルの Britta の電子メール アドレスを入力します。
 
-    d.**[事業部]** テキストボックスに、「**Dev**」と入力します。
+    d.**[Division]** テキストボックスに、「**Dev**」と入力します。
 
-    e.**[部署]** テキストボックスに、「**IT**」と入力します。
+    e.**[Department]** テキストボックスに、「**IT**」と入力します。
 
-    f.**[管理者]** を選択します。
+    f.**[Adminitrator]** を選択します。
 
     g.**[追加]** をクリックします。
 
@@ -287,4 +287,4 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
 [204]: ./media/active-directory-saas-moxtra-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-moxtra-tutorial/tutorial_general_205.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

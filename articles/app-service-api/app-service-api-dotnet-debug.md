@@ -18,6 +18,8 @@
 
 # Azure App Service の API アプリのデバッグ
 
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
+
 ## 概要
 
 このチュートリアルでは、[Azure App Service](../app-service/app-service-value-prop-what-is.md) の [API アプリ](app-service-api-apps-why-best-platform.md)で実行するように構成された ASP.NET Web API コードをデバッグする方法について説明します。ローカルで実行しているときと Azure でリモートで実行しているときに、このコードをデバッグします。
@@ -136,4 +138,4 @@ Azure サーバーへのラウンドトリップによってデバッグが低�
 
 トラブルシューティングの詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。API Apps は、Web サービスをホストする追加機能を備えた Web アプリです。そのため、Web アプリに使用する API アプリ用と同じデバッグとトラブルシューティング ツールを使用できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

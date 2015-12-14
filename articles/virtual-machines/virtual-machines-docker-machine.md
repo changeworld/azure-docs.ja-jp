@@ -62,7 +62,7 @@ Linux ディストリビューションの使用経験があれば、コンピ�
 
 		openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-2. 証明書の .cer ファイルを Azure にアップロードします。[Azure ポータル](https://manage.windowsazure.com)で、下図のとおりサービス エリアの左下にある **[設定]** をクリックします。
+2. 証明書の .cer ファイルを Azure にアップロードします。[Azure クラシック ポータル](https://manage.windowsazure.com)で、下図のとおりサービス エリアの左下にある **[設定]** をクリックします。
 
 	![][portalsettingsitem]
 
@@ -214,4 +214,4 @@ Docker でコンテナーのポート 80 が VM のポート 49153 に割り当�
 [Link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

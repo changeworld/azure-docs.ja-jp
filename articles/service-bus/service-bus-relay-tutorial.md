@@ -35,7 +35,7 @@
 
 >[AZURE.NOTE]クライアント アプリケーションとサービス アプリケーションの両方に同じ名前空間を使用する必要はありません。
 
-1. Azure ポータルのメイン ウィンドウで、前の手順で作成したサービス名前空間の名前をクリックします。
+1. [Azure クラシック ポータル][]のメイン ウィンドウで、前の手順で作成したサービス名前空間の名前をクリックします。
 
 2. **[構成]** をクリックし、サービス名前空間の既定の共有アクセス ポリシーを表示します。
 
@@ -841,4 +841,6 @@ Service Bus の詳細については、次のトピックを参照してくだ�
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus のアーキテクチャ](service-bus-architecture.md)
 
-<!---HONumber=Oct15_HO3-->
+[Azure クラシック ポータル]: http://manage.windowsazure.com
+
+<!---HONumber=AcomDC_1203_2015-->

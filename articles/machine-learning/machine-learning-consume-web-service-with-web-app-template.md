@@ -56,7 +56,7 @@ Web サービスをデプロイした後は、次の図のように、以下の�
 
 	![要求 URI][image4]
 
-3. [Azure ML Request-Response Service Web App](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) に移動して、**[Web アプリを作成]** をクリックします。新しい Web アプリが作成された、Microsoft Azure ポータルが表示されます。
+3. [Azure ML Request-Response Service Web App](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) に移動して、**[Web アプリを作成]** をクリックします。テンプレートから、新しい Web アプリが作成された Microsoft Azure クラシック ポータルにアクセスできます。
 
 	- Web アプリに一意の名前を付けます。Web アプリの URL は、この名前の後に `.azurewebsites.net.` を付けたものです。たとえば、`http://carprediction.azurewebsites.net.` のようになります。
 
@@ -86,7 +86,7 @@ Web サービスをデプロイした後は、次の図のように、以下の�
 
 **構成**ページに戻るには、Web アプリの `setting.aspx` ページに移動します。たとえば、`http://carprediction.azurewebsites.net/setting.aspx.` ページに移動します。もう一度 API キーを入力するように求められます。ページにアクセスして設定を更新するには、キーの入力が必要です。
 
-他の Web アプリと同様に、Azure ポータルでこの Web アプリの停止、再開、または削除を行うことができます。実行中は、ホーム Web アドレスに移動して、新しい値を入力することができます。
+他の Web アプリと同様に、Azure クラシック ポータルでこの Web アプリの停止、再開、または削除を行うことができます。実行中は、ホーム Web アドレスに移動して、新しい値を入力することができます。
 
 ## Batch Execution Service (BES) テンプレートの使用方法
 
@@ -102,7 +102,7 @@ BES Web アプリ テンプレートは、RRS テンプレートと同じよう�
 
 2. 結果の格納先を指定するには、Web アプリのホーム ページで格納先コンテナーの情報を入力します。Web アプリが入力値を取得する場所として、ローカル ファイルまたは Azure ストレージ コンテナーも指定します。**[Submit]** をクリックします。
 
-	![Storage 情報][image7]
+	![ストレージ情報][image7]
 
 ページが表示され、ジョブの状態が示されます。ジョブが完了すると、Azure BLOB ストレージ内の結果の場所が表示されます。結果をローカル ファイルにダウンロードするためのオプションも表示されます。
 
@@ -125,4 +125,4 @@ BES Web アプリ テンプレートは、RRS テンプレートと同じよう�
 [image6]: media\machine-learning-consume-web-service-with-web-app-template\web-service-info.png
 [image7]: media\machine-learning-consume-web-service-with-web-app-template\storage.png
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -55,13 +55,13 @@ Standard レベルのデータベースには、アクティブ geo レプリケ
 
 ##geo レプリケーションを有効にする方法
 
-geo レプリケーションは Azure ポータルを使用するか REST API や PowerShell コマンドを呼び出すことによって有効にできます。
+geo レプリケーションは Azure クラシック ポータルを使用するか REST API や PowerShell コマンドを呼び出すことによって有効にできます。
 
-###Azure ポータル
+###Azure クラシック ポータル
 
 [AZURE.VIDEO sql-database-enable-geo-replication-in-azure-portal]
 
-1. [Azure ポータル](https://portal.Azure.com)にログインします。
+1. [Azure クラシック ポータル](https://portal.Azure.com)にログインします。
 2. 画面の左側にある、**[参照]** をクリックして、**[SQL Database]** を選択します。
 3. データベースのブレードに移動し **[geo レプリケーション マップ]** を選択して**[geo レプリケーションの構成]** をクリックします。
 4. geo レプリケーションのブレードに移動します。ターゲット リージョンを選択します。 
@@ -98,4 +98,4 @@ geo レプリケーションのセカンダリ データベースをプログラ
 
 ビジネス継続性向けのアプリケーションを設計する際は、いくつかの構成オプションを検討する必要があります。アプリケーションのデプロイメント トポロジと、停止時に最も脆弱になるアプリケーションの部分によって選択肢が異なります。詳細は「[Geo レプリケーションを使用してビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->
