@@ -289,8 +289,10 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 	![Using your Java Contacts REST API live in Azure](media/app-service-api-java-api-app/postman-calling-azure-contacts.png)
 	
 ## 次のステップ
-この記事では、初めに Swagger JSON ファイルを使用し、Swagger.io エディターでスキャフォールディングされた Java コードを作成しました。そこから、単純な変更と Git デプロイ プロセスにより、Java で記述された機能的な API アプリを作成しました。ここで、戻って [Storage SDK for Java](../storage/storage-java-how-to-use-blob-storage.md) の詳細を確認し、JSON BLOB を保持することができます。または、[Document DB Java SDK](../documentdb/documentdb-java-application.md) を使用して、Azure Document DB に Contact データを保存することもできます。
+この記事では、初めに Swagger JSON ファイルを使用し、Swagger.io エディターでスキャフォールディングされた Java コードを作成しました。そこから、単純な変更と Git デプロイ プロセスにより、Java で記述された機能的な API アプリを作成しました。API Apps 入門シリーズの次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について学習します。
+
+[Storage SDK for Java](../storage/storage-java-how-to-use-blob-storage.md) についての理解を深めれば、このサンプルを応用して JSON BLOB を永続化することができます。または、[Document DB Java SDK](../documentdb/documentdb-java-application.md) を使用して、Azure Document DB に Contact データを保存することもできます。
 
 Azure での Java の使用に関する詳細については、「[Java デベロッパー センター](/develop/java/)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

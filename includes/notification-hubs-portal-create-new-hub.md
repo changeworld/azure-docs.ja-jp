@@ -1,6 +1,6 @@
 
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com/)にログオンし、画面の下部にある **[+新規]** をクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にログオンし、画面の下部にある **[+新規]** をクリックします。
 
 2. **[App Services]**、**[Service Bus]**、**[通知ハブ]**、**[簡易作成]** の順にクリックします。
 
@@ -25,4 +25,4 @@
 
 	![](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings.png)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

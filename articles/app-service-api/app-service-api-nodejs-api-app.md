@@ -44,7 +44,7 @@ Node.js コマンド ラインを使用して次のコマンドを実行しま�
         
     **注:** API.json は、API Apps プレビュー期間の *apiapp.json* ファイルとは異なる内容です。
 
-1. Swaggerize はハンドラーをスキャフォールディングし、**api.json** に含まれる Swagger メタデータに合わせて構成します。スキャフォールディング プロセス中は、GitHub ユーザー名や電子メール アドレスなど、さまざまな質問に回答します。この情報は、アプリケーションのフォルダーに **package.json** ファイルを生成するために使用されます。スキャフォールディング プロセス中の質問で最も重要な点は、質問されたときに **express** を選択することです。このサンプルでは、後で Azure で API App を実行するときに express ビュー エンジンを利用して Swagger ヘルプ ページを生成するためです。
+1. Swaggerize はハンドラーをスキャフォールディングし、**api.json** に含まれる Swagger メタデータに合わせて構成します。スキャフォールディング プロセス中は、GitHub ユーザー名や電子メール アドレスなど、さまざまな質問に回答します。この情報は、アプリケーションのフォルダーに **package.json** ファイルを生成するために使用されます。スキャフォールディング プロセス中の質問で最も重要な点は、質問されたときに **express** を選択することです。このサンプルでは、後で Azure で API アプリを実行するときに express ビュー エンジンを利用して Swagger ヘルプ ページを生成するためです。
 
 	![Swaggerize コマンド ライン](media/app-service-api-nodejs-api-app/swaggerize-command-line.png)
     
@@ -146,30 +146,30 @@ Node.js コマンド ラインを使用して次のコマンドを実行しま�
 
     ![Swagger UI](media/app-service-api-nodejs-api-app/swagger-ui.png)
 
-## Azure ポータルでの新しい API App の作成
-このセクションでは、新しい空の API App を Azure に作成するプロセスの手順について説明します。次に、アプリを Git リポジトリに接続し、コードの変更を継続的に配信できるようにします。
+## Azure ポータルでの新しい API アプリの作成
+このセクションでは、新しい空の API アプリを Azure に作成するプロセスの手順について説明します。次に、アプリを Git リポジトリに接続し、コードの変更を継続的に配信できるようにします。
 
-ソース コードを複製した GitHub リポジトリは、デプロイメントのためにコードをプッシュするリポジトリと同じではありません。サンプル GitHub リポジトリにはコードの "Start" 状態が含まれていましたが、現在では、コードの "end" 状態をスキャフォールディングするようになりました。API App に関連付けられた Git リポジトリにのみ、そのコードをプッシュする必要があります。最初の手順は、Azure ポータルを使用して API App を作成することです。次に、
+ソース コードを複製した GitHub リポジトリは、デプロイメントのためにコードをプッシュするリポジトリと同じではありません。サンプル GitHub リポジトリにはコードの "Start" 状態が含まれていましたが、現在では、コードの "end" 状態をスキャフォールディングするようになりました。API アプリに関連付けられた Git リポジトリにのみ、そのコードをプッシュする必要があります。最初の手順は、Azure ポータルを使用して API アプリを作成することです。次に、
 
 1. [Azure ポータル](http://portal.azure.com)にアクセスします。 
 
-1. 新しい API App を作成します。
+1. 新しい API アプリを作成します。
 
-    ![新しい Api App ポータル](media/app-service-api-nodejs-api-app/new-api-app-portal.png)
+    ![New Api App Portal](media/app-service-api-nodejs-api-app/new-api-app-portal.png)
 
-1. 新しい API App を既存のリソース グループまたは App Service プランに追加するか、スクリーンショットのように、新しいリソース グループと App Service プランを作成することができます。
+1. 新しい API アプリを既存のリソース グループまたは App Service プランに追加するか、スクリーンショットのように、新しいリソース グループと App Service プランを作成することができます。
 
-    ![Api App 作成ブレード](media/app-service-api-nodejs-api-app/api-app-creation-blade.png)
+    ![Api App Creation Blade](media/app-service-api-nodejs-api-app/api-app-creation-blade.png)
 
-1. ポータルに API App が作成されたら、次のように API App の設定を含むブレードを参照します。
+1. ポータルに API アプリが作成されたら、次のように API アプリの設定を含むブレードを参照します。
 
     ![ポータルの設定へのナビゲーション](media/app-service-api-nodejs-api-app/portal-nav-to-settings.png)
 
-1. [設定] メニューの **[デプロイ資格情報]** ナビゲーション項目をクリックします。ブレードが開いたら、Node.js を API App に発行するときに使用するユーザー名とパスワードを追加します。**[デプロイ資格情報の設定]** ブレードの **[保存]** をクリックします。
+1. [設定] メニューの **[デプロイ資格情報]** ナビゲーション項目をクリックします。ブレードが開いたら、Node.js を API アプリに発行するときに使用するユーザー名とパスワードを追加します。**[デプロイ資格情報の設定]** ブレードの **[保存]** をクリックします。
 
     ![デプロイ資格情報](media/app-service-api-nodejs-api-app/deployment-credentials.png)
 
-1. デプロイ資格情報を設定したら、App Service に関連付けられている Git リポジトリを作成できます。このリポジトリにコードをプッシュするたびに、Azure App Service は変更を選択し、API App インスタンスに直接デプロイします。Git リポジトリを作成してサイトに関連付けるには、次のように [設定] メニュー ブレードの **[継続的なデプロイ]** メニュー項目をクリックします。次に、**[ソースの選択]** ブレードの **[ローカル Git リポジトリ]** オプションを選択します。次に、[OK] をクリックして Git リポジトリを作成します。
+1. デプロイ資格情報を設定したら、App Service に関連付けられている Git リポジトリを作成できます。このリポジトリにコードをプッシュするたびに、Azure App Service は変更を選択し、API アプリ インスタンスに直接デプロイします。Git リポジトリを作成してサイトに関連付けるには、次のように [設定] メニュー ブレードの **[継続的なデプロイ]** メニュー項目をクリックします。次に、**[ソースの選択]** ブレードの **[ローカル Git リポジトリ]** オプションを選択します。次に、[OK] をクリックして Git リポジトリを作成します。
 
     ![Git リポジトリの作成](media/app-service-api-nodejs-api-app/create-git-repo.png)
 
@@ -177,16 +177,16 @@ Node.js コマンド ラインを使用して次のコマンドを実行しま�
 
     ![アクティブなデプロイメントがない](media/app-service-api-nodejs-api-app/no-active-deployments.png)
 
-1. 最後に、ポータルから Git リポジトリの URL をコピーします。コピーするには、新しい API App のブレードを開き、ブレードの **[要点]** セクションを確認します。[要点] セクションに **[Git クローン URL]** が表示されます。その横に、クリップボードに URL をコピーするアイコンがあります。アイコンをクリックして URL をコピーするか (URL にマウス ポイントを移動するとボタンが表示されます)、URL 全体を選択してクリップボードにコピーします。
+1. 最後に、ポータルから Git リポジトリの URL をコピーします。コピーするには、新しい API アプリのブレードを開き、ブレードの **[要点]** セクションを確認します。[要点] セクションに **[Git クローン URL]** が表示されます。その横に、クリップボードに URL をコピーするアイコンがあります。アイコンをクリックして URL をコピーするか (URL にマウス ポイントを移動するとボタンが表示されます)、URL 全体を選択してクリップボードにコピーします。
 
     ![ポータルから Git Url を取得する](media/app-service-api-nodejs-api-app/get-the-git-url-from-the-portal.png)
 
     **注**: Git クローン URL は次の手順で必要になるので、どこかの時点で保存しておく必要があります。
 
-以上の手順で Git リポジトリに新しい API App がバックアップされました。リポジトリにコードをプッシュし、Azure の継続的なデプロイメント機能を利用して変更を自動的にデプロイできるようになります。
+以上の手順で Git リポジトリに新しい API アプリがバックアップされました。リポジトリにコードをプッシュし、Azure の継続的なデプロイ機能を利用して変更を自動的にデプロイできるようになります。
 
-## API App の複製を Azure にデプロイする
-Azure App Service が提供する組み込みの継続的な配信機能を使用すると、App Service に関連付けられた Git リポジトリにコードをコミットするだけで、Azure でソース コードが選択され、API App にデプロイされます。
+## API アプリの複製を Azure にデプロイする
+Azure App Service が提供する組み込みの継続的な配信機能を使用すると、App Service に関連付けられた Git リポジトリにコードをコミットするだけで、Azure でソース コードが選択され、API アプリにデプロイされます。
 
 1. 入門用コードを含め、GitHub から複製したメイン リポジトリの外部で実行するコードの新しいローカル Git リポジトリを作成するときに、Swaggerize スキャフォールダーで作成された **src/end/ContactList** をデスクトップまたは他のフォルダーにコピーします。 
 
@@ -198,7 +198,7 @@ Azure App Service が提供する組み込みの継続的な配信機能を使�
 
     ![新しいローカル Git リポジトリ](media/app-service-api-nodejs-api-app/new-local-git-repo.png)
 
-1. Node.js コマンド ライン エクスペリエンスを使用して次のコマンドを実行します。Git リモートがローカル リポジトリに追加されます。リモート リポジトリは、先ほど作成し、Azure で実行されている API App と関連付けられているものです。
+1. Node.js コマンド ライン エクスペリエンスを使用して次のコマンドを実行します。Git リモートがローカル リポジトリに追加されます。リモート リポジトリは、先ほど作成し、Azure で実行されている API アプリと関連付けられているものです。
 
         git remote add azure YOUR_GIT_CLONE_URL_HERE
 
@@ -213,11 +213,11 @@ Azure App Service が提供する組み込みの継続的な配信機能を使�
 
     ![Git Commit の出力](media/app-service-api-nodejs-api-app/git-commit-output.png)
 
-1. コードを Azure にプッシュして、API App へのデプロイメントをトリガーするには、Node.js コマンドラインで次のコマンドを実行します。パスワードの入力を求められたら、Azure ポータルでデプロイ資格情報を作成するときに使用したパスワードを入力します。
+1. コードを Azure にプッシュして、API アプリへのデプロイメントをトリガーするには、Node.js コマンドラインで次のコマンドを実行します。パスワードの入力を求められたら、Azure ポータルでデプロイ資格情報を作成するときに使用したパスワードを入力します。
 
         git push azure master
 
-1. API App の **[継続的なデプロイ]** ブレードに戻ると、実行中のデプロイメントが表示されます。
+1. API アプリの **[継続的なデプロイ]** ブレードに戻ると、実行中のデプロイメントが表示されます。
 
     ![デプロイメントの実行中](media/app-service-api-nodejs-api-app/deployment-happening.png)
 
@@ -225,19 +225,22 @@ Azure App Service が提供する組み込みの継続的な配信機能を使�
 
     ![Node Js デプロイメントの実行中](media/app-service-api-nodejs-api-app/node-js-deployment-happening.png)
 
-1. デプロイメントが完了すると、**[継続的なデプロイ]** ブレードに、コードの変更のデプロイメントが API App に反映されます。API App ブレードの **[要点]** セクションの **[URL]** をコピーします。
+1. デプロイメントが完了すると、**[継続的なデプロイ]** ブレードに、コードの変更のデプロイメントが API アプリに反映されます。API アプリ ブレードの **[要点]** セクションの **[URL]** をコピーします。
 
     ![デプロイメントの完了](media/app-service-api-nodejs-api-app/deployment-completed.png)
 
-1. Postman や Fiddler などの REST API クライアント (または Web ブラウザー) を使用して contacts API 呼び出しの URL を指定します。これは、API App の **/contacts** エンドポイントです。
+1. Postman や Fiddler などの REST API クライアント (または Web ブラウザー) を使用して contacts API 呼び出しの URL を指定します。これは、API アプリの **/contacts** エンドポイントです。
 
     **注:** http://myapiapp.azurewebsites.net/contacts のような URL です。
 
-    このエンドポイントに GET 要求を発行すると、API App の JSON 出力が表示されます。
+    このエンドポイントに GET 要求を発行すると、API アプリの JSON 出力が表示されます。
 
     ![Postman に接続する Api](media/app-service-api-nodejs-api-app/postman-hitting-api.png)
 
-## まとめ
-ここでは、Node.js を使用して、初めての API App を作成してデプロイしました。ここから、ハンドラーにコードを追加して、データベースや、API App インスタンスのディスクにデータを格納できるようになります。[継続的なデプロイ] を有効にしたので、API App の機能を変更し、拡張する操作は、コードを変更して Git リポジトリにプッシュする操作と同じくらい簡単になります。
+## 次のステップ
 
-<!---HONumber=AcomDC_1203_2015-->
+ここでは、Node.js を使用して、初めての API アプリを作成してデプロイしました。API Apps 入門シリーズの次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について学習します。
+
+このサンプルを応用すれば、ハンドラーにコードを追加して、データベースや、API アプリ インスタンスのディスクにデータを格納できるようになります。[継続的なデプロイ] を有効にしたので、API アプリの機能を変更し、拡張する操作は、コードを変更して Git リポジトリにプッシュする操作と同じくらい簡単になります。
+
+<!---HONumber=AcomDC_1210_2015-->

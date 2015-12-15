@@ -114,8 +114,8 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 1. Android アプリケーションと通知ハブについて次の情報を収集します。
 
 	- **GoogleProjectNumber**: このプロジェクト番号の値は、Google 開発者ポータルでアプリの概要から取得します。この値は、以前ポータルでアプリを作成したときにメモしています。
-	- **Listen connection string**: Azure ポータルのダッシュボードで **[接続文字列の表示]** をクリックします。この値として接続文字列 *DefaultListenSharedAccessSignature* をコピーします。
-	- **Hub name**。これは Azure ポータルから得られるハブの名前です。たとえば、*mynotificationhub2* です。
+	- **Listen connection string**: [Azure クラシック ポータル]のダッシュボードで **[接続文字列の表示]** をクリックします。この値として接続文字列 *DefaultListenSharedAccessSignature* をコピーします。
+	- **Hub name**: これは [Azure クラシック ポータル]から取得できるハブの名前です。たとえば、*mynotificationhub2* です。
 
 	Xamarin プロジェクトの **Constants.cs** クラスを作成し、このクラスに次の定数値を定義します。プレースホルダーを実際の値に置き換えます。
 
@@ -378,7 +378,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 ##バックエンドから通知を送信する
 
 
-以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、Azure ポータルで通知を送信し、アプリケーションで通知の受信テストを行うことができます。
+以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、[Azure クラシック ポータル]で通知を送信することで、アプリケーションで通知の受信テストを行うことができます。
 
 ![][30]
 
@@ -418,7 +418,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 
         using Microsoft.Azure.NotificationHubs;
 
-5. `Program` クラスで、次のメソッドを追加します。プレースホルダーのテキストを、Azure ポータルからの接続文字列 *DefaultFullSharedAccessSignature* とハブの名前で更新します。
+5. `Program` クラスで、次のメソッドを追加します。プレースホルダーのテキストを、[Azure クラシック ポータル]にある接続文字列 *DefaultFullSharedAccessSignature* とハブの名前で更新します。
 
         private static async void SendNotificationAsync()
         {
@@ -439,7 +439,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 
 1. 「[Mobile Services の使用]」に従って、以下の操作を行います。
 
-1. [Azure ポータル]にサインインし、モバイル サービスを選択します。
+1. [Azure クラシック ポータル]にサインインし、モバイル サービスを選択します。
 
 2. 上部にある **[Scheduler]** タブを選択します。
 
@@ -507,7 +507,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 [Mobile Services の使用]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
-[Azure ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Microsoft Azure Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [方法: Microsoft Azure Notification Hubs (Android アプリ)]: http://msdn.microsoft.com/library/dn282661.aspx
@@ -522,4 +522,4 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 [Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
 [Azure Messaging コンポーネント]: http://components.xamarin.com/view/azure-messaging
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

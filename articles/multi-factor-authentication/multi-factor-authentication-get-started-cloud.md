@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="11/19/2015" 
+	ms.date="12/10/2015" 
 	ms.author="billmath"/>
 
 # クラウドでの Azure Multi-Factor Authentication Server の概要
@@ -25,13 +25,13 @@
 クラウドで多要素認証を使用することを決めたので、早速開始してみましょう。 Multi-Factor Authentication for Office 365 または Multi-Factor Authentication for Azure Administrators を使用している場合、手順 3 にスキップできます。また、このドキュメントでは、次に取り組みます。
 
 
-1. **Azure サブスクリプションへのサインアップ**
+1. [Azure サブスクリプションへのサインアップ](https://azure.microsoft.com/pricing/free-trial/)
 	- Azure サブスクリプションをまだ取得していない場合、サインアップする必要があります。Azure MFA を開始して使い勝手を調べるだけの場合、評価版のサブスクリプションを使用できます。
-2. **Multi-Factor Auth Provider を作成するか、Azure AD Premium または Enterprise Mobility Suite ライセンスをユーザーに割り当てます**
+2. [多要素認証プロバイダーを作成する](#creating-an-azure-multi-factor-auth-provider)か、[Azure AD Premium または Enterprise Mobility Suite のライセンスをユーザーに割り当てる](#assigning-an-azure-ad-premium-or-enterprise-mobility-license-top-users)
 	- Azure Multi-Factor Auth Provider を作成するか、それをディレクトリーに割り当てるか、またはライセンスを Azure AD Premium ユーザーまたは EMS ユーザーに割り当てます。Azure Multi Factor Authentication は Azure Active Directory Premium に含まれるため、Enterprise Mobility Suite にも含まれることになります。Azure AD Premium または EMS がある場合、Multi-Factor Auth Provider を作成する必要はありません。むしろ、Azure AD Premium または EMS ユーザーの MFA を有効にするために、Azure AD Premium または EMS ライセンスをそのユーザーに割り当てる必要があります。こうすれば、管理者は管理ポータルを介して MFA をユーザーに割り当てることができます。ライセンスをユーザーに割り当てる方法については、以下のセクションを参照してください。
-3. **ユーザーの Multi-Factor Authentication を有効にする** 
+3. [ユーザーの Multi-Factor Authentication を有効にする](#turn-on-multi-factor-authentication-for-users)
 	- Office 365 または Azure ポータルを通じてユーザーの Azure MFA を有効にします。これを行う方法については、以下のセクションを参照してください。
-4. **電子メールをエンド ユーザーに送信して MFA に関して通知する**
+4. [電子メールをエンド ユーザーに送信して MFA に関して通知する](#send-email-to-end-users)
 	- ユーザーがアカウントの多要素認証を有効にした場合、電子メールでそのことを通知するようお勧めします。ユーザーは、次回のサインインの際に処理を完了するよう求められます。これにより、何が期待されているかが分かります。電子メールのテンプレートの例については、以下のセクションを参照してください。
 
 
@@ -156,4 +156,4 @@ Windows PowerShell を使用してユーザーの状態を変更するには、�
 ## 次のステップ
 クラウドでの多要素認証のセットアップが完了したので、「[Azure Multi-Factor Authentication の構成](multi-factor-authentication-whats-next.md)」に移動して次の手順に移動できます。 そこでは、レポート、不正行為のアラート、音声メッセージのカスタマイズ、および Azure Multi-Factor Authentication が提供するすべての機能について学びます。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1210_2015-->

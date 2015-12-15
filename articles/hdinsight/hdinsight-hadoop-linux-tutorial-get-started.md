@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="11/29/2015"
+   	ms.date="12/03/2015"
    	ms.author="nitinme"/>
 
 # Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する
@@ -23,7 +23,7 @@
 - [Windows](hdinsight-hadoop-tutorial-get-started-windows.md)
 - [Linux](hdinsight-hadoop-linux-tutorial-get-started.md)
 
-このドキュメントでは、Linux ベースの Hadoop クラスターを作成する方法、Secure Shell (SSH) を使用してクラスターに接続する方法、クラスターに含まれているサンプル データに対して Hive クエリ実行する方法を示しながら、Linux 上の Azure HDInsight の基本手順について説明します。
+このドキュメントでは、Linux ベースの Hadoop クラスターを作成する方法、Ambari Web UI を開く方法、Ambari Hive ビューを使用して Hive クエリを実行する方法を紹介することで、Linux 上の Azure HDInsight の基本な使用方法について説明します。
 
 > [AZURE.NOTE]Hadoop とビッグ データを初めて扱う場合は、[Apache Hadoop](http://go.microsoft.com/fwlink/?LinkId=510084)、[MapReduce](http://go.microsoft.com/fwlink/?LinkId=510086)、[Hadoop Distributed File System (HDFS)](http://go.microsoft.com/fwlink/?LinkId=510087)、[Hive](http://go.microsoft.com/fwlink/?LinkId=510085) に関するトピックを参照してください。HDInsight によって Azure でどのように Hadoop を利用できるかについては、「[Introduction to Hadoop in HDInsight (HDInsight の Hadoop 入門)](hdinsight-hadoop-introduction.md)」を参照してください。
 
@@ -32,16 +32,6 @@
 Linux でこの Hadoop チュートリアルを開始する前に、以下の条件を満たしている必要があります。
 
 - **Azure サブスクリプション**: [Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページをご覧ください。
-
-- **Secure Shell (SSH) クライアント**: Linux、Unix、OS X システムには、`ssh` コマンドで SSH クライアントを提供していました。Windows システムの場合は [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をお勧めします。
-
-    > [AZURE.NOTE]すべてのクライアント オペレーティング システムで SSH を使用できるので、このドキュメントの手順では SSH を使用して HDInsight に接続します。HDInsight Tools for Visual Studio など、HDInsight クラスターへの接続に他の方法を使用する場合は、このドキュメントの「[次の手順](#nextsteps)」の Hive、Pig、MapReduce リンクを参照してください。
-    
-- **Secure Shell (SSH) キー** (省略可能): クラスターへの接続に使用する SSH アカウントは、パスワードまたはパブリック キーを使用してセキュリティで保護できます。パスワードを使用すると、すぐに始められます。すばやくクラスターをプロビジョニングし、テスト ジョブをいくつか実行する場合に、このオプションを使用してください。キーのほうが安全ですが、追加の設定が必要です。運用環境のクラスターをプロビジョニングするとき、この手法を利用することがあります。この記事では、パスワード手法を使用します。HDInsight で SSH キーを作成して使用する手順については、次の記事を参照してください。
-
-	-  Linux コンピューターの場合 - [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-    
-	-  Windows コンピューターの場合 - [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 ## <a name="provision"></a>Linux での HDInsight クラスターのプロビジョニング
 
@@ -54,7 +44,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 1. [Azure ポータル](https://ms.portal.azure.com/)にサインインします。
 2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
 
-    ![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.1.png "Azure プレビュー ポータルでの新しいクラスターの作成")
+    ![Creating a new cluster in the Azure Portal](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.1.png "Creating a new cluster in the Azure Portal")
 
 3. **[クラスター名]** を入力し、**[クラスターの種類]** で **[Hadoop]** を選択し、**[クラスターのオペレーティング システム]** ボックスの一覧から **[Ubuntu]** を選択します。クラスターを使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
 
@@ -88,7 +78,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。新しいストレージ アカウントを作成する場合は **[新規作成]** をクリックします。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
 
-	- **[既定のコンテナーの選択]**: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
+	- **[既定のコンテナーの選択]**: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
 
 	- **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。
 
@@ -102,7 +92,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
     
     > [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
     >
-    > ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+    > ノードのサイズと関連コストの詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 	**[選択]** をクリックして、ノードの価格構成を保存します。
 
@@ -116,47 +106,31 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 プロビジョニングが完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。
 
-## <a name="connect"></a>クラスターに接続するには
+##Hive ビューへの接続
 
-Linux 上の HDInsight クラスターには、Linux コンピューターまたは Windows ベースのコンピューターから SSH を使用して接続できます。
+Ambari のビューでは、1 つの Web ページを介して複数のユーティリティを提供しています。以降のセクションでは、Hive ビューを使用して、HDInsight クラスターに対して Hive クエリを実行します。
 
-###Linux コンピューターから接続するには
+> [AZURE.NOTE]Ambari は、Linux ベースの HDInsight クラスターに付属する管理および監視ユーティリティです。Ambari には多数の機能がありますが、このドキュメントではそれらについて説明しません。詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
-1. ターミナルを開き、次のコマンドを入力します。
+Azure ポータルから Ambari のビューを表示するには、HDInsight クラスターを選択し、__[クイック リンク]__ セクションの __[Ambari のビュー]__ を選択します。
 
-		ssh <username>@<clustername>-ssh.azurehdinsight.net
+![quick links section](./media/hdinsight-hadoop-linux-tutorial-get-started/quicklinks.png)
 
-	&lt;username> は、クラスター作成時に使用した SSH ユーザー名に置き換えます。&lt;clustername> は、クラスターの名前に置き換えます。
+また、Ambari に直接移動することもできます。これには、Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net (この場合、__CLUSTERNAME__ は HDInsight クラスターの名前) に移動し、ページ メニューにある四角形のセット (__[Admin]__ リンクとページの左側のボタンの横) を選択して、使用可能なビューの一覧を表示します。__[Hive view]__ を選択します。
 
-2. プロンプトが表示されたら、クラスターのプロビジョニング時に入力したパスワードを入力します。正常に接続されると、プロンプトが次のように変わります。
+![Selecting ambari views](./media/hdinsight-hadoop-linux-tutorial-get-started/selecthiveview.png)
 
-		hdiuser@hn0-clustername:~$
+> [AZURE.NOTE]Ambari にアクセスすると、サイトに対する認証が求められます。クラスターの作成時に使用した管理者アカウント名 (既定値は `admin`) とパスワードを入力します。
 
-    > [AZURE.NOTE]プロンプトの `@hn0-clustername` の部分は、クラスターによって異なる場合があります。
+次のようなページが表示されます。
 
-###Windows ベースのコンピューターから接続するには
-
-1. Windows ベースのクライアント用の [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をダウンロードします。
-
-2. PuTTY を開きます。**[Category]** で、**[Session]** をクリックします。**[PuTTY セッションの基本設定]** 画面で、**[ホスト名 (または IP アドレス)]** フィールドに HDInsight サーバーの SSH アドレスを入力します。SSH アドレスは、クラスター名に続けて「-ssh.azurehdinsight.net」と入力します (**myhdinsightcluster-ssh.azurehdinsight.net** など)。
-
-	![PuTTY を使用した Linux での HDInsight クラスターへの接続。](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.linux.connect.putty.png)
-
-3. 後で使用するために接続情報を保存するには、**[保存されたセッション]** にこの接続の名前を入力し、**[保存]** をクリックします。接続が、保存済みセッションの一覧に追加されます。
-
-4. **[開く]** をクリックして、クラスターに接続します。ユーザー名の入力を求められたら、クラスターを作成するときに使用した SSH のユーザー名を入力します。パスワードには、クラスターを作成するときに指定したパスワードを入力します。正常に接続されると、プロンプトが次のように変わります。
-
-		hdiuser@hn0-clustername:~$
+![Image of the hive view page, containing a query editor section](./media/hdinsight-hadoop-linux-tutorial-get-started/hiveview.png)
 
 ##<a name="hivequery"></a>Hive クエリを実行する
 
-SSH を使用してクラスターに接続したら、次のコマンドを使用して Hive クエリを実行します。
+クラスターに含まれるデータに対して Hive クエリを実行するには、Hive ビューで次の手順に従います。
 
-1. プロンプトで次のコマンドを入力して、Hive コマンド ライン インターフェイス (CLI) を開始します。
-
-		hive
-
-2. CLI を使用して次のステートメントを入力し、クラスターにあらかじめ用意されているサンプル データを使用して、**log4jLogs** という名前の新しいテーブルを作成します。
+1. ページの __[クエリ エディター]__ セクションで、次の HiveQL ステートメントをワークシートに貼り付けます。
 
 		DROP TABLE log4jLogs;
 		CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -174,59 +148,62 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 
 	>[AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。外部テーブルを削除しても、データは削除 *されません* 。テーブル定義のみが削除されます。
 
-	返される出力は次のとおりです。
+2. クエリ エディターの下部にある __[Execute]__ ボタンを使用してクエリを開始します。ボタンの色がオレンジ色に変わり、テキストが __[Stop execution]__ に変わります。クエリ エディターの下に __[Query Process Results]__ セクションが表示され、ジョブに関する情報が表示されます。
 
-		Query ID = username_20150116000202_cceb9c6b-4356-4931-b9a7-2c373ebba493
-		Total jobs = 1
-		Launching Job 1 out of 1
-		Number of reduce tasks not specified. Estimated from input data size: 1
-		In order to change the average load for a reducer (in bytes):
-		  set hive.exec.reducers.bytes.per.reducer=<number>
-		In order to limit the maximum number of reducers:
-		  set hive.exec.reducers.max=<number>
-		In order to set a constant number of reducers:
-		  set mapreduce.job.reduces=<number>
-		Starting Job = job_1421200049012_0006, Tracking URL = <URL>:8088/proxy/application_1421200049012_0006/
-		Kill Command = /usr/hdp/2.2.1.0-2165/hadoop/bin/hadoop job  -kill job_1421200049012_0006
-		Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
-		2015-01-16 00:02:40,823 Stage-1 map = 0%,  reduce = 0%
-		2015-01-16 00:02:55,488 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 3.32 sec
-		2015-01-16 00:03:05,298 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 5.62 sec
-		MapReduce Total cumulative CPU time: 5 seconds 620 msec
-		Ended Job = job_1421200049012_0006
-		MapReduce Jobs Launched:
-		Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 5.62 sec   HDFS Read: 0 HDFS Write: 0 SUCCESS
-		Total MapReduce CPU Time Spent: 5 seconds 620 msec
-		OK
-		[ERROR]    3
-		Time taken: 60.991 seconds, Fetched: 1 row(s)
+    > [AZURE.IMPORTANT]ブラウザーによっては、ログまたは結果の情報が正しく更新されない場合があります。ジョブを実行したときに、ログの更新または結果の表示が行われずにいつまでもジョブが実行される可能性がある場合は、代わりに Mozilla FireFox または Google Chrome を使用してみてください。
+    
+3. クエリが完了すると、__[Query Process Results]__ セクションに操作の結果が表示されます。さらに、__[Stop execution]__ ボタンが緑色の __[Execute]__ ボタンに戻ります。__[Results]__ タブには次の情報が含まれます。
 
-	ここでは、この値を含む行が 3 行あるため、出力には **[ERROR] 3** が返されています。
+        sev       cnt
+        [ERROR]   3
 
-3. 次のステートメントを使用して、**errorLogs** という名前の新しい "内部" テーブルを作成します。
+    __[Logs]__ タブを使用すると、ジョブによって作成されたログ情報を表示できます。このログ情報は、クエリに問題が発生した場合のトラブルシューティングに使用できます。
+    
+    > [AZURE.TIP]__[Query Process Results]__ セクションの左上にある __[Save results]__ ボックスに注意してください。これを使用すると、結果をダウンロードすることも、CSV ファイルとして HDInsight のストレージに保存することもできます。
+
+3. このクエリの最初の 4 行を選択し、__[Execute]__ を選択します。ジョブが完了したときには結果が表示されないことに注意してください。これは、クエリの一部が選択されているときに __[Execute]__ ボタンを使用すると、選択したステートメントのみが実行されるためです。この場合は、テーブルから行を取得する最終的なステートメントが選択範囲に含まれていませんでした。その行だけを選択して __[Execute]__ を使用すると、予想される結果が表示されます。
+
+3. __クエリ エディター__の下部にある __[New Worksheet]__ ボタンを使用して新しいワークシートを作成します。新しいワークシートで、次の HiveQL ステートメントを入力します。
 
 		CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
 		INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
-
 
 	これらのステートメントは次のアクションを実行します。
 
 	- **CREATE TABLE IF NOT EXISTS** - 既存のテーブルがない場合、テーブルを作成します。**EXTERNAL** キーワードが使用されていないため、これは内部テーブルであり、Hive のデータ保管先に格納され、完全に Hive によって管理されます。外部テーブルとは異なり、内部テーブルを削除すると、基盤となるデータも削除されます。
 	- **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
 	- **INSERT OVERWRITE ...SELECT** - [ERROR] を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
+    
+    __[Execute]__ ボタンを使用してこのクエリを実行します。このクエリで返される行はないため、__[Results]__ タブには情報が表示されませんが、状態は __[SUCCEEDED]__ と表示されます。
+    
+4. クエリ エディターの右側には、一連のアイコンが表示されます。チェーンのようなアイコンを選択します。
 
-4. **errorLogs** テーブルに格納された、t4 列に [ERROR] を含む列のみを確認するには、次のステートメントを使用して、**errorLogs** 列からすべての列を返します。
+    ![icons](./media/hdinsight-hadoop-linux-tutorial-get-started/icons.png)
+    
+    これは、クエリの __[Visual Explain]__ ビューです。このビューは、複雑なクエリのフローを理解する際に役立ちます。クエリ エディターの __[Explain]__ ボタンを使用すると、このビューに対応するテキストを表示できます。
+    
+    ![visual explain image](./media/hdinsight-hadoop-linux-tutorial-get-started/visualexplain.png)
+    
+    その他のアイコンは次のとおりです。
+    
+        * Settings: The gear icon allows you to change Hive settings, such as setting `hive.execution.engine` or Tez parameters.
+        * Tez: Displays the Directed Acyclic Graph (DAG) that Tez used to perform the query. If you want to view the DAG for queries you've ran in the past, use the __Tez View__ instead.
+        * Notifications: Displays notifications, such as "Query has been submitted" or if an error occurs when running a query.
 
-		SELECT * from errorLogs;
+5. __[SQL]__ アイコンを選択してクエリ エディターに戻り、新しいワークシートを作成して次のクエリを入力します。
 
-	次の出力がコンソールに表示されます。
+        SELECT * from errorLogs;
+    
+    エディターの下部にある __[Save as]__ ボタンを使用します。このクエリに __Errorlogs__ という名前を付けて、__[OK]__ を選択します。ワークシートの名前が __Errorlogs__ に変わります。
+    
+    保存済みのクエリは、ページの上部にある __[Saved Queries]__ タブにも表示されます。このタブを選択すると、__Errorlogs__ が表示されていることがわかります。その名前を選択すると、クエリ エディターにクエリが表示されます。
 
-		2012-02-03	18:35:34	SampleClass0	[ERROR]	 incorrect		id
-		2012-02-03	18:55:54	SampleClass1	[ERROR]	 incorrect		id
-		2012-02-03	19:25:27	SampleClass4	[ERROR]	 incorrect		id
-		Time taken: 0.987 seconds, Fetched: 3 row(s)
+4. __Errorlogs__ クエリを実行します。結果は次のようになります。
 
-	返されるデータはすべて、[ERROR] ログに対応しています。
+        errorlogs.t1 	errorlogs.t2 	errorlogs.t3 	errorlogs.t4 	errorlogs.t5 	errorlogs.t6 	errorlogs.t7
+        2012-02-03 	18:35:34 	SampleClass0 	[ERROR] 	incorrect 	id 	
+        2012-02-03 	18:55:54 	SampleClass1 	[ERROR] 	incorrect 	id 	
+        2012-02-03 	19:25:27 	SampleClass4 	[ERROR] 	incorrect 	id
 
 ## <a name="nextsteps"></a>次のステップ
 
@@ -283,4 +260,4 @@ HDInsight クラスターの作成または管理の詳細については、以�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

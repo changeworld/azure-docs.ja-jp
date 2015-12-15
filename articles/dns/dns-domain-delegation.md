@@ -159,4 +159,4 @@ PowerShell の例を次に示します。最初に、親ゾーンと子ゾーン
 
 [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

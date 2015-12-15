@@ -3,8 +3,8 @@
 	description="Azure クラシック ポータルでストレージ アカウントを作成、管理、削除する方法について説明します。"
 	services="storage"
 	documentationCenter=""
-	authors="tamram"
-	manager="adinah"
+	authors="robinsh"
+	manager="carmonm"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/01/2015" 
-	ms.author="tamram"/>
+	ms.date="12/04/2015" 
+	ms.author="robinsh"/>
 
 
 # Azure ストレージ アカウントについて
@@ -172,4 +172,4 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 - Azure Storage の詳細については、[Azure.com](http://azure.microsoft.com/documentation/services/storage/) にある Azure Storage のドキュメントを参照してください。
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

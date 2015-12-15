@@ -141,7 +141,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
 ##通知ハブを構成する
 
-1. [Azure ポータル]にサインインし、画面の下部にある **[+新規]** をクリックします。
+1. [Azure クラシック ポータル]にサインインし、画面の下部にある **[+新規]** をクリックします。
 
 2. **[App Services]**、**[Service Bus]**、**[通知ハブ]** の順にクリックし、**[簡易作成]** をクリックします。
 
@@ -264,7 +264,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 				public static String NotificationHubConnectionString = "...";
 			}
 
-	**API\_KEY** には前もって Baidu クラウド プロジェクトから取得した値、**NotificationHubName** には Azure ポータルの通知ハブ名、**NotificationHubConnectionString** には Azure ポータルの DefaultListenSharedAccessSignature をそれぞれ設定します。
+	**API\_KEY** には前もって Baidu クラウド プロジェクトから取得した値、**NotificationHubName** には Azure クラシック ポータルの通知ハブ名、**NotificationHubConnectionString** には Azure クラシック ポータルの DefaultListenSharedAccessSignature をそれぞれ設定します。
 
 11. **DemoApplication.java** という名前の新しいクラスを追加し、それに次のコードを追加します。
 
@@ -399,7 +399,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 ##アプリケーションに通知を送信する
 
 
-以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、Azure ポータルで通知を送信し、アプリケーションで通知の受信テストを行うことができます。
+以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、Azure クラシック ポータルで通知を送信し、アプリケーションで通知の受信テストを行うことができます。
 
 ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-debug.png)
 
@@ -459,7 +459,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
 アプリケーションが Baidu プッシュ通知サービスから 'userId' と 'channelId' を取得し、通知ハブに登録します。
 
-テスト通知は、ポータルの [デバッグ] タブを使用して送信できます。Visual Studio で .Net コンソール アプリケーションを作成する場合、Visual Studio で F5 キーを押してアプリケーションを実行します。アプリケーションから通知が送信され、デバイスまたはエミュレーターの上部の通知領域に表示されます。
+テスト通知は、Azure クラシック ポータルの [デバッグ] タブを使用して送信できます。Visual Studio で .Net コンソール アプリケーションを作成する場合、Visual Studio で F5 キーを押してアプリケーションを実行します。アプリケーションから通知が送信され、デバイスまたはエミュレーターの上部の通知領域に表示されます。
 
 
 <!-- Images. -->
@@ -500,7 +500,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Push Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
-[Azure ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Baidu ポータル]: http://www.baidu.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

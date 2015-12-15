@@ -22,21 +22,19 @@
 
 ## 概要
 
-このチュートリアルでは、Azure App Service の認証および承認機能を使用し、API アプリを保護する方法と、保護されている API アプリをサービス アカウントで使用する方法について説明します。サービス アカウントは*サービス プリンシパル*とも呼ばれ、このようなアカウントでの認証は、*サービス間*シナリオとも呼ばれます。このチュートリアルでは、認証および .NET クライアントからの API の使用に Azure Active Directory を使用し、サービス間シナリオで API アプリを保護します。
+このチュートリアルでは、Azure App Service の認証および承認機能を使用し、API アプリを保護する方法と、保護されている API アプリをサービス アカウントで使用する方法について説明します。このチュートリアルで示した認証プロバイダーは Azure Active Directory です。また、クライアントと API はどちらも、API アプリで実行される ASP.NET Web API です。
 
-このチュートリアルでは、呼び出すクライアントと呼び出された API の両方で ASP.NET Web API を使用していますが、示しているテクニックは、Azure App Service でサポートされている他の言語やフレームワークでも使用できます。ここに示すクライアント コードは、サービス アカウント用のベアラー トークンを取得して渡すための標準の Azure Active Directory コードです。Mobile Services Zumo トークンの処理で使用されていたような Azure 専用の特殊なコードは不要です。
+## App Service での認証と承認
 
-これは、Azure App Service で API アプリを使用する方法を示すチュートリアルのシリーズの 4 回目です。このシリーズの詳細については、1 回目のチュートリアルの「[Azure App Service で API Apps と ASP.NET を使ってみる](app-service-api-dotnet-get-started.md)」を参照してください。Azure App Service での認証と承認については、シリーズの前のチュートリアルの「[Azure App Service での API Apps のユーザー認証](app-service-api-dotnet-user-principal-auth.md)」を参照してください。
+このチュートリアルで使用している認証機能の概要については、このシリーズの前回のチュートリアル「[Azure App Service での API Apps の認証と承認](app-service-api-dotnet-get-started.md)」を参照してください。
 
-## サービス間認証のその他のオプション
+## このチュートリアルの使い方
 
-クライアントの証明書を使用する場合など、App Service 認証および承認を使用せずにサービス間シナリオを処理する場合、「[次のステップ](#next-steps)」セクションを参照してください。
+このチュートリアルは、[API Apps と ASP.NET の入門シリーズの最初のチュートリアル](app-service-api-dotnet-get-started.md)でダウンロードして API アプリを作成するサンプル アプリケーションに基づいています。
 
 ## CompanyUsers.API サンプル プロジェクト
 
-このチュートリアルでは、[このシリーズの 1 回目のチュートリアル](app-service-api-dotnet-get-started.md)でダウンロードしたサンプル プロジェクトと、前のチュートリアルで作成した Azure リソース (API アプリと Web アプリ) を使用します。
-
-CompanyUsers.API プロジェクトは、ハード コーディングされた連絡先リストを返す Get メソッドを 1 つ含む単純な Web API プロジェクトです。ContactsList.API の Get メソッドが、CompanyContacts.API の Get メソッドを呼び出して、取得した連絡先を独自のデータ ストア内の任意のものに追加し、次いで結合されたリストを返すサービス間シナリオの例を示します。
+[ContactsList サンプル アプリケーション](https://github.com/Azure-Samples/app-service-api-dotnet-contact-list)の CompanyUsers.API プロジェクトは、ハード コーディングされた連絡先リストを返す Get メソッドを 1 つ含む単純な Web API プロジェクトです。ContactsList.API の Get メソッドが、CompanyContacts.API の Get メソッドを呼び出して、取得した連絡先を独自のデータ ストア内の任意のものに追加し、次いで結合されたリストを返すサービス間シナリオの例を示します。
 
 これが CompanyUsers.API の Get メソッドです。
 
@@ -70,7 +68,7 @@ CompanyUsers.API プロジェクトは、ハード コーディングされた�
 		    return contactsList;
 		}
 
-CompanyContacts.API のクライアント オブジェクトは、HTTP 要求にトークンを追加する、生成された API アプリのクライアント コードの変更です。
+上のコードで `CompanyContactsAPIClientWithAuth()` から返されるクライアント オブジェクトは、生成されたクライアント コードをベースとしていますが、承認トークンは HTTP 要求に追加します。
 
 		private static CompanyContactsAPI CompanyContactsAPIClientWithAuth()
 		{
@@ -90,13 +88,13 @@ CompanyContacts.API のクライアント オブジェクトは、HTTP 要求に
 
 4. まだ行っていない場合は Azure アカウントにサインインし、有効期限が切れている場合は資格情報を更新します。
 
-4. [App Service] ダイアログ ボックスで、使用する Azure **サブスクリプション**を選択して、**[新規]** をクリックします。
+4. **[App Service]** ダイアログ ボックスで、使用する Azure **サブスクリプション**を選択して、**[新規]** をクリックします。
 
 	![](./media/app-service-api-dotnet-service-principal-auth/clicknew.png)
 
-3. **[App Service の作成]** ダイアログ ボックスの **[ホスティング]** タブで、**[種類の変更]**、**[API App]** を順にクリックします。
+3. **[App Service の作成]** ダイアログ ボックスの **[ホスティング]** タブで、**[種類の変更]**、**[API アプリ]** を順にクリックします。
 
-4. *azurewebsites.net* ドメインに固有の **API App 名** を入力します。
+4. *azurewebsites.net* ドメインに固有の **API アプリ名**を入力します。
 
 6. **[リソース グループ]** ドロップダウン リストから、これらのチュートリアルで使用しているリソース グループを選択します。
 
@@ -108,7 +106,7 @@ CompanyContacts.API のクライアント オブジェクトは、HTTP 要求に
 
 	Visual Studio によって API アプリが作成され、新しい API アプリに必要なすべての設定が含まれる発行プロファイルが作成されます。
 
-8. **Web の発行**ウィザードの **[発行]** タブで、**[次へ]** をクリックします。
+8. **Web の発行**ウィザードの **[接続]** タブで、**[発行]** をクリックします。
 
 	![](./media/app-service-api-dotnet-service-principal-auth/conntab.png)
 
@@ -127,6 +125,8 @@ ContactsList.API プロジェクトには既に生成済みのクライアント
 3. **[REST API クライアントの追加]** ダイアログ ボックスで、**[Microsoft Azure API アプリからダウンロード]**、**[参照]** を順にクリックします。
 
 8. **[App Service]** ダイアログ ボックスで、このチュートリアルで使用しているリソース グループを展開して、先ほど作成した API アプリを選択します。
+
+	API アプリが一覧に表示されない場合、API アプリを作成するときに、アプリの種類を (Web アプリから API アプリに) 変更する手順を誤って省略した可能性があります。その場合は、先行する手順をやり直して新しい API アプリを作成してください。API アプリに別の名前を選択する必要があります。または、ポータルに移動して先に Web アプリを削除しておいてください。
 
 10. **[OK]** をクリックします。
 
@@ -152,7 +152,7 @@ ContactsList.API プロジェクトには既に生成済みのクライアント
 		     return client;
 		 }
  
-4. Get メソッド内で `CompanyContactsAPIClientWithAuth` で返されるクライアント オブジェクトを使用するコードのブロックをコメント解除します。
+4. `Get` メソッドで、CompanyContacts.API を呼び出すコード ブロックのコメントを解除します。
 
 		using (var client = CompanyContactsAPIClientWithAuth())
 		{
@@ -169,27 +169,29 @@ ContactsList.API プロジェクトには既に生成済みのクライアント
 
 3. **Web の発行**ウィザードで、**[発行]** をクリックします。
 
+	Visual Studio によってプロジェクトがデプロイされ、API アプリのベース URL がブラウザー ウィンドウで開きます。このブラウザー ウィンドウを閉じます。
+
 ## Azure での新しい API アプリの認証と承認の設定
 
 1. [Azure ポータル](https://portal.azure.com/)で、このチュートリアルで CompanyContacts.API プロジェクト用に作成した API アプリの API App ブレードに移動し、**[設定]** をクリックします。
 
 2. **[機能]** セクションを探し **[認証/承認]** をクリックします。
 
-3. **認証/承認**ブレードで、**[オン]** をクリックします。
+3. **[認証/承認]** ブレードで、**[オン]** をクリックします。
 
-4. **[要求が認証されていない場合のアクション]** ドロップダウン リストで、**[Azure Active Directory でログイン]** を選択します。
+4. **[要求が認証されていない場合のアクション]** ボックスの一覧の **[Azure Active Directory でログイン]** を選択します。
 
 5. **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。
 
-6. **Azure Active Directory 設定**ブレードで **[Express]** をクリックします。
+6. **[Azure Active Directory 設定]** ブレードで **[Express]** をクリックします。
 
 	Azure が AAD テナントに AAD アプリケーションを自動的に作成します。クライアント ID を取得するために Azure クラシック ポータルに後で移動して選択するために、新しい AAD アプリケーションの名前をメモします。
 
 7. **[OK]** をクリックします。
 
-10. **認証/承認**ブレードで、**[保存]** をクリックします。
+10. **[認証/承認]** ブレードで、**[保存]** をクリックします。
  
-11. [Azure クラシック ポータル](https://manage.windowsazure.com/)で **[Azure Active Directory]** に進みます。
+11. [Azure クラシック ポータル](https://manage.windowsazure.com/)で **[Azure Active Directory]** に移動します。
 
 12. **[ディレクトリ]** タブで AAD テナントをクリックします。
 
@@ -199,23 +201,11 @@ ContactsList.API プロジェクトには既に生成済みのクライアント
 
 16. **[構成]** をクリックします。
 
-15. ページ下部で **[マニフェストの管理]、[マニフェストのダウンロード]** をクリックし、編集できる場所にファイルを保存します。
-
-16. ダウンロードしたマニフェスト ファイル内で、 `oauth2AllowImplicitFlow` プロパティを検索します。このプロパティの値を `false` から `true` に変更し、ファイルを保存します。
-
-16. **[マニフェストの管理]、[マニフェストのアップロード]** をクリックし、前の手順で更新したファイルをアップロードします。
-
 17. チュートリアルの後の手順で、値をコピーして貼り付けることができるよう、このページは開いたままにします。
 
 ## ContactsList.API プロジェクト コードを実行する API アプリの設定の更新
 
-1. [Azure ポータル](https://portal.azure.com/)で ContactsList.API プロジェクトをデプロイした API アプリ用の API アプリ ブレードに移動します。これは、このチュートリアルで作成したばかりの呼び出される API アプリではなく、呼び出し元の API アプリです。)
-
-2. **[設定]、[アプリケーションの設定]** の順にクリックします。
-
-	ここではいくつかの設定を追加しますが、Azure クラシック ポータルの別のページからそれを取得する必要があります。
-
-3. [Azure クラシック ポータル](https://manage.windowsazure.com/)から ContactsList.API API アプリ用に作成した AAD アプリケーションの **[構成]** タブに移動します。
+3. 別のブラウザー ウィンドウで [Azure クラシック ポータル](https://manage.windowsazure.com/)に移動し、ContactsList.API API アプリ用に作成した AAD アプリケーションの **[構成]** タブに移動します。
 
 5. **[キー]** の **[時間の選択]** ドロップダウン リストで **[1 年間]** を選択します。
 
@@ -223,20 +213,27 @@ ContactsList.API プロジェクトには既に生成済みのクライアント
 
 	![](./media/app-service-api-dotnet-service-principal-auth/genkey.png)
 
-
 7. キー値をコピーします。
 
 	![](./media/app-service-api-dotnet-service-principal-auth/genkeycopy.png)
 
-3. Azure ポータルの **アプリケーションの設定**ブレードの **[アプリケーション設定]** セクションで ida: ClientSecret という名前のキーを追加し、[値] フィールドに作成したキーを貼り付けます。
+1. 別のブラウザー ウィンドウで [Azure ポータル](https://portal.azure.com/)に移動し、ContactsList.API プロジェクトをデプロイした API アプリ用の API アプリ ブレードに移動します。(これは呼び出し先ではなく呼び出し元の API アプリです。つまり、ContactsList.API であって、CompanyContacts.API ではありません。)
 
-3. 従来の Azure ポータルで、CompanyContacts.API API アプリ用に作成した AAD アプリケーションの **[構成]** タブに移動します。
+2. **[設定]、[アプリケーションの設定]** の順にクリックします。
+
+3. **[アプリケーション設定]** セクションで "ida:ClientSecret" という名前のキーを追加し、[値] フィールドに作成したキーを貼り付けます。
+
+3. "ida:ClientId" という名前のキーを追加し、その値フィールドに、同じ AAD **[構成]** ページからコピーしたクライアント ID を貼り付けます。
+
+4. "ida:Authority" という名前のキーを追加し、その値フィールドに「https://login.windows.net/{該当するテナント}」と入力します (例: https://login.windows.net/contoso.onmicrosoft.com)。
+
+3. Azure クラシック ポータルで、CompanyContacts.API API アプリ用に作成した AAD アプリケーションの **[構成]** タブに移動します。
 
 4. クライアント ID をコピーします。
 
-3. Azure ポータルの **アプリケーションの設定**ブレードの **[アプリケーション設定]** セクションで ida:Resource という名前のキーを追加し、[値] フィールドにコピーしたクライアント ID を貼り付けます。
+3. Azure ポータルの **[アプリケーションの設定]** ブレードの **[アプリケーション設定]** セクションで ida:Resource という名前のキーを追加し、[値] フィールドにコピーしたクライアント ID を貼り付けます。
 
-4. CompanyContactsAPIUrl という名前のキーを追加し、[値] フィールドに、https://{your api app name}.azurewebsites.net と入力します (例: https://companycontactsapi.azurewebsites.net)。
+4. "CompanyContactsAPIUrl" という名前のキーを追加し、その値フィールドに「https://{API アプリ名}.azurewebsites.net」と入力します (例: https://companycontactsapi.azurewebsites.net)。
 
 6. [保存] をクリックします。
 
@@ -246,23 +243,49 @@ ContactsList.API プロジェクトには既に生成済みのクライアント
 
 1. ContactsList.Angular.AAD プロジェクトをデプロイした Web アプリの URL に移動します。
 
-2. **[連絡先**] タブをクリックし、ログインします。
+2. **[連絡先]** タブをクリックし、ログインします。
 
 	CompanyContacts.API API アプリから取得した追加の連絡先が含まれる [連絡先] ページが開きます。
 
 	![](./media/app-service-api-dotnet-service-principal-auth/contactspagewithdavolio.png)
 
+前のチュートリアルと同様、この Visual Studio プロジェクトは localhost の SSL URL でセットアップし、アプリケーションをローカルで実行することもできます。その場合、Azure での実行を想定して Azure に保存した設定 (クライアント ID、クライアント シークレットなど) は、Web.config ファイルに保存できます。ただし、クライアント シークレットなどの機密情報を含んだ Web.config ファイルをソース管理にチェックインしないよう注意してください。詳細については、「[Best practices for deploying passwords and other sensitive data to ASP.NET and Azure App Service (ASP.NET および Azure App Service にパスワードや機密データをデプロイするためのベスト プラクティス)](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)」を参照してください。
+
+## ブラウザー アクセスから API アプリを保護する
+
+このチュートリアルでは、サービス プリンシパル認証を使ってアクセスする API アプリに対し、Azure ポータルの [Express] オプションを使用して AAD 認証を設定しました。既定では、ブラウザーから API アプリの URL にアクセスしてログオンすることをユーザーに許可するような構成が、App Service によって新しい AAD アプリケーションに適用されます。つまり、サービス プリンシパルだけでなくエンド ユーザーも API にアクセスすることができます。API へのアクセスをサービス プリンシパルに限定する必要がある場合は、AAD アプリケーションの **[応答 URL]** を API アプリのベース URL とは異なる値に変更して、ブラウザー アクセスを無効にしてください。
+
+### ブラウザー アクセスが有効であることを確認する
+
+1. 新しいブラウザー ウィンドウから、CompanyContacts.API プロジェクト用に作成した API アプリの HTTPS URL にアクセスします。
+
+	ブラウザーにログイン画面が表示されます。
+	
+2. AAD テナント内のユーザーの資格情報を使用してログインします。
+
+3. 正常に作成されたことを示す API アプリの画面がブラウザーに表示されます。
+
+	Swagger UI が有効になっていれば、`/swagger` URL にアクセスして、API を呼び出すことができます。この URL に `/api/contacts/get` を追加することによって、ブラウザーから API を呼び出すことができます。
+
+### ブラウザー アクセスを無効にする
+
+1. クラシック ポータルの **[構成]** タブで、CompanyContacts.API プロジェクト用に作成した AAD アプリケーションの **[応答 URL]** フィールドの値を、API アプリの URL 以外の有効な URL に変更します。
+ 
+2. **[保存]** をクリックします。
+
+### ブラウザー アクセスが無効になったことを確認する
+
+1. 新しいブラウザー ウィンドウで、API アプリの URL にもう一度アクセスします。
+
+2. ログインを求められたらログインします。
+
+3. ログインは成功しますが、エラー ページにリダイレクトされます。
+
+	サービス プリンシパルのトークンを使って API アプリにアクセスすることはできますが、AAD テナントのユーザーがブラウザーからログインして API を利用することはできません。
+
 ## 次のステップ
 
 これは、API Apps の概要シリーズの最終のチュートリアルです。このセクションでは、API アプリを使用する方法に関するその他の推奨事項を示します。
-
-* Azure App Service の認証と承認によって保護されている API アプリを使用するその他の方法。
-
-	この記事では、API アプリを保護する方法、および別の API アプリで実行されているコードから呼び出す方法を説明しています。ロジック アプリから保護されている API アプリを呼び出す方法については、「[App Service でホストされたカスタム API のロジック アプリでの使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」を参照してください。
-
-* サービス間シナリオで API アプリを保護する方法
-
-	API アプリを保護する App Service 認証と承認の代わりに、クライアント証明書または基本認証を使用できます。Azure のクライアント証明書の詳細については、「[Web Apps の TLS 相互認証を構成する方法](../app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。
 
 * App Service アプリをデプロイするその他の方法
 
@@ -281,4 +304,4 @@ ContactsList.API プロジェクトには既に生成済みのクライアント
 	* [Azure App Service のカスタム ドメイン名の構成](web-sites-custom-domain-name.md)
 	* [Azure の Web サイトでの HTTPS の有効化](web-sites-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

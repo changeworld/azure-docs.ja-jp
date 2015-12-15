@@ -139,6 +139,7 @@ CDN の HTTP エンドポイントをカスタム ドメイン名にマップし
 
 - [Azure の Content Delivery Network を有効にする方法](cdn-create-new-endpoint.md)
 - [Azure Content Delivery Network (CDN) の概要](cdn-overview.md)
+- [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

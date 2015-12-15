@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Site Recovery のしくみ"
+	pageTitle="Site Recovery のしくみ | Microsoft Azure"
 	description="この記事では、Site Recovery アーキテクチャの概要を説明します"
 	services="site-recovery"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="11/29/2015"
+	ms.date="12/07/2015"
 	ms.author="raynew"/>
 
 # Azure Site Recovery のしくみ
@@ -44,8 +44,8 @@ VMware 仮想マシンまたは Windows/Linux 物理マシンのいずれかを 
 **場所** | **必要なもの** 
 --- | --- 
  オンプレミスの  
- | **プロセス サーバー**: このサーバーでは、保護対象の VMware 仮想マシンまたは Windows/Linux 物理マシンからのデータを、Azure に送信する前に最適化します。また、保護されたマシンへのモビリティ サービス コンポーネントのプッシュ インストールを処理し、VMware 仮想マシンの自動検出を実行します。<br/><br/> **VMware vCenter サーバー**: VMware 仮想マシンを保護する場合は、vSphere ハイパーバイザーを管理する VMwave vCenter サーバーが必要です。<br/><br/> **ESX サーバー**: VMware 仮想マシンを保護する場合は、最新の更新プログラムが適用された ESX/ESXi バージョン 5.1 または 5.5 を実行するサーバーが必要です。<br/><br/> **マシン**: VMware を保護する場合は、VMware ツールがインストールされ実行されている VMware 仮想マシンが必要です。物理マシンを保護する場合は、サポートされている Windows または Linux オペレーティング システムがそこで実行されている必要があります。[サポートされているオペレーティング システム](site-recovery-vmware-to-azure/#before-you-start)を参照してください。<br/><br/> **モビリティ サービス**: 変更をキャプチャしてプロセス サーバーに送信するために、保護するマシン上にインストールします。<br/><br/>サード パーティ コンポーネント: このデプロイメントは、いくつかの[サード パーティ コンポーネント](http://download.microsoft.com/download/C/D/7/CD79E327-BF5A-4026-8FF4-9EB990F9CEE2/Third-Party_Notices.txt)に依存します。
-Azure | **構成サーバー**: 保護対象のマシン、プロセス サーバー、および Azure のマスター ターゲット サーバーの間でのやり取りを調整する Standard A3 Azure VM です。レプリケーションをセットアップし、フェールオーバーが発生した場合に復旧を調整します。<br/><br/>**マスター ターゲット サーバー**: Azure ストレージ アカウントの BLOB ストレージに作成された接続済みの VHD を使用して、保護対象のマシンからレプリケートされたデータを保持する Azure VM です。Azure VM を VMware VM にフェールバックすることができるように、フェールバック マスター ターゲット サーバーはオンプレミスで実行されます。<br/><br/> **Site Recovery コンテナー**: 少なくとも 1 つの Azure Site Recovery コンテナー (Site Recovery サービスへのサブスクリプションでセットアップ)<br/><br/> **仮想ネットワーク**: Site Recovery サービスと同じサブスクリプションおよびリージョンに属し、構成サーバーとマスター ターゲット サーバーが置かれている Azure ネットワーク。<br/><br/> **Azure Storage**: レプリケートしたデータを格納する Azure ストレージ アカウント。Site Recovery サブスクリプションと同じリージョンの geo 冗長標準アカウントまたは Premium アカウントである必要があります。
+ | **プロセス サーバー**: このサーバーでは、保護対象の VMware 仮想マシンまたは Windows/Linux 物理マシンからのデータを、Azure に送信する前に最適化します。また、保護されたマシンへのモビリティ サービス コンポーネントのプッシュ インストールを処理し、VMware 仮想マシンの自動検出を実行します。<br/><br/> **VMware vCenter サーバー**: VMware 仮想マシンを保護する場合は、vSphere ハイパーバイザーを管理する VMwave vCenter サーバーが必要です。<br/><br/> **ESX サーバー**: VMware 仮想マシンを保護する場合は、最新の更新プログラムが適用された ESX/ESXi バージョン 5.1 または 5.5 を実行するサーバーが必要です。<br/><br/> **マシン**: VMware を保護する場合は、VMware ツールがインストールされ実行されている VMware 仮想マシンが必要です。物理マシンを保護する場合は、サポートされている Windows または Linux オペレーティング システムがそこで実行されている必要があります。[サポートされているオペレーティング システム](site-recovery-vmware-to-azure.md/#before-you-start)を参照してください。<br/><br/> **モビリティ サービス**: 変更をキャプチャしてプロセス サーバーに送信するために、保護するマシン上にインストールします。<br/><br/>サード パーティ コンポーネント: このデプロイメントは、いくつかの[サード パーティ コンポーネント](http://download.microsoft.com/download/C/D/7/CD79E327-BF5A-4026-8FF4-9EB990F9CEE2/Third-Party_Notices.txt)に依存します。
+Azure | **構成サーバー**: 保護対象のマシン、プロセス サーバー、および Azure のマスター ターゲット サーバーの間でのやり取りを調整する Standard A3 Azure VM です。レプリケーションをセットアップし、フェールオーバーが発生した場合に復旧を調整します。<br/><br/>**マスター ターゲット サーバー**: Azure ストレージ アカウントの Blob Storage に作成された接続済みの VHD を使用して、保護対象のマシンからレプリケートされたデータを保持する Azure VM です。Azure VM を VMware VM にフェールバックすることができるように、フェールバック マスター ターゲット サーバーはオンプレミスで実行されます。<br/><br/> **Site Recovery コンテナー**: 少なくとも 1 つの Azure Site Recovery コンテナー (Site Recovery サービスへのサブスクリプションでセットアップ)<br/><br/> **仮想ネットワーク**: Site Recovery サービスと同じサブスクリプションおよびリージョンに属し、構成サーバーとマスター ターゲット サーバーが置かれている Azure ネットワーク。<br/><br/> **Azure Storage**: レプリケートしたデータを格納する Azure ストレージ アカウント。Site Recovery サブスクリプションと同じリージョンの geo 冗長標準アカウントまたは Premium アカウントである必要があります。
 
 
 このシナリオでは、Azure ネットワーク上の内部ポートとの通信が VPN 接続を介して発生 (Azure ExpressRoute またはサイト間 VPN を使用)、または構成およびマスター ターゲット サーバー VM に対する、Azure クラウド サービス上のマップされたパブリック エンドポイントとの通信がセキュリティで保護されたインターネット接続を介して発生します。
@@ -159,4 +159,4 @@ Azure | **Site Recovery コンテナー**: 少なくとも 1 つの Azure Site R
 
 [デプロイの準備をする](site-recovery-best-practices.md)。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

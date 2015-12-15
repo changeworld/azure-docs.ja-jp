@@ -67,8 +67,8 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [サンプル データを読み込んだり]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-get-started-manually-load-samples/
 [Powershell]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-reference-powershell-cmdlets/
 [REST API]: https://msdn.microsoft.com/library/azure/dn505719.aspx
-[MSDN]: https://msdn.microsoft.com/ja-JP/library/azure/dn546722.aspx
+[MSDN]: https://msdn.microsoft.com/library/azure/dn546722.aspx
 [firewall rules]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-database-configure-firewall-settings/
 [Azure PowerShell のインストールと構成の方法]: powershell-install-configure.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

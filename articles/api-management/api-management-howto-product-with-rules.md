@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/27/2015"
+	ms.date="12/07/2015"
 	ms.author="sdanie"/>
 
 # Azure API Management でレート制限を使用して API を保護する
@@ -28,11 +28,11 @@
 
 この手順では、サブスクリプションの承認が不要な無料試用版の成果物を作成します。
 
-最初に、ご利用の API Management サービスの Azure ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
+最初に、ご利用の API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
->まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」をご覧ください。
+>まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
 
 左側の **[API Management]** メニューにある **[成果物]** をクリックして、**[成果物]** ページを表示します。
 
@@ -100,7 +100,7 @@ API Management の成果物は、保護することも開くこともできま�
 
 ![ポリシー ステートメント][api-management-limit-policies]
 
-**inbound** ポリシー要素にカーソルを置いたら、**呼び出しレート制限** の横の矢印をクリックしてそのポリシー テンプレートを挿入します。
+**inbound** ポリシー要素にカーソルを置いたら、**[呼び出しレート制限]** の横の矢印をクリックしてそのポリシー テンプレートを挿入します。
 
 	<rate-limit calls="number" renewal-period="seconds">
 	<api name="name" calls="number">
@@ -108,7 +108,7 @@ API Management の成果物は、保護することも開くこともできま�
 	</api>
 	</rate-limit>
 
-**呼び出しレート制限** は、成果物レベルのほか、API レベルや個々の操作名レベルで使用することもできます。このチュートリアルで使用するのは、成果物レベルのポリシーだけです。そのため、**api** 要素と **operation** 要素は **rate-limit** 要素から削除してください。次の例に示すとおり、外部の **rate-limit** 要素だけが残ります。
+**[呼び出しレート制限]** は、成果物レベルのほか、API レベルや個々の操作名レベルで使用することもできます。このチュートリアルで使用するのは、成果物レベルのポリシーだけです。そのため、**api** 要素と **operation** 要素は **rate-limit** 要素から削除してください。次の例に示すとおり、外部の **rate-limit** 要素だけが残ります。
 
 	<rate-limit calls="number" renewal-period="seconds">
 	</rate-limit>
@@ -118,7 +118,7 @@ API Management の成果物は、保護することも開くこともできま�
 	<rate-limit calls="10" renewal-period="60">
 	</rate-limit>
 
-**使用量クォータの設定** ポリシーを構成するには、**inbound** 要素内に新しく追加した **rate-limit** 要素のすぐ下にカーソルを置き、**使用量クォータの設定** の左側の矢印をクリックします。
+**[使用量クォータの設定]** ポリシーを構成するには、**inbound** 要素内に新しく追加した **rate-limit** 要素のすぐ下にカーソルを置き、**[使用量クォータの設定]** の左側の矢印をクリックします。
 
 	<quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
 	<api name="name" calls="number" bandwidth="kilobytes">
@@ -292,4 +292,4 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 [呼び出しレート制限]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [使用量クォータの設定]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
-<!----HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1210_2015-->

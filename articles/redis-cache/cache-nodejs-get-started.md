@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="10/23/2015"
+	ms.date="12/03/2015"
 	ms.author="sdanie"/>
 
 # Node.js で Azure Redis Cache を使用する方法
@@ -26,7 +26,7 @@
 
 Azure Redis Cache を使用すると、Microsoft が管理している、セキュリティで保護された専用 Redis Cache にアクセスできます。キャッシュは、Microsoft Azure 内の任意のアプリケーションからアクセスできます。
 
-このトピックでは、Node.js を使用して Azure Redis Cache を使用する方法を説明しています。Node.js で Azure Redis Cache を使用する別の例については、[Azure Web サイトでの Socket.IO を使用する Node.js チャット アプリケーションの構築][]に関するページを参照してください。
+このトピックでは、Node.js を使用して Azure Redis Cache を使用する方法を説明しています。Node.js で Azure Redis Cache を使用する別の例については、Azure Web サイトでの [Socket.IO を使用した Node.js チャット アプリケーションの構築][]に関するページを参照してください。
 
 
 ## 前提条件
@@ -39,34 +39,34 @@ Azure Redis Cache を使用すると、Microsoft が管理している、セキ�
 
 ## Azure で Redis Cache を作成する
 
-[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=398536)で、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
+[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=398536)で、**[新規]**、**[データ + ストレージ]** の順にクリックし、**[Redis Cache]** を選択します。
 
   ![][1]
 
-DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.net` が表示されます。**[作成]** をクリックします。
+DNS ホスト名を入力します。フォーム `<name>
+  .redis.cache.windows.net` が表示されます。**[作成]** をクリックします。
 
   ![][2]
 
 
-キャッシュを作成したら、プレビュー ポータルでそのキャッシュをクリックして設定を表示します。**[キー]** の下のリンクをクリックして、プライマリ キーをコピーします。このキーは、要求を認証するために必要です。
+  キャッシュを作成したら、[そのキャッシュを参照して](cache-configure.md#configure-redis-cache-settings)キャッシュ設定を表示します。**[キー]** の下のリンクをクリックして、プライマリ キーをコピーします。このキーは、要求を認証するために必要です。
 
   ![][4]
 
 
-## 非 SSL エンドポイントを有効にする
+  ## 非 SSL エンドポイントを有効にする
 
 
-**[ポート]** の下のリンクをクリックし、[SSL 経由でのみアクセスを許可する] に対して **[いいえ]** をクリックします。これにより、キャッシュに対して非 SSL ポートが有効になります。現在、node\_redis クライアントは SSL をサポートしていません。
+  **[ポート]** の下のリンクをクリックし、[SSL 経由でのみアクセスを許可する] に対して **[いいえ]** をクリックします。これにより、キャッシュに対して非 SSL ポートが有効になります。現在、node\_redis クライアントは SSL をサポートしていません。
 
   ![][3]
 
 
-## キャッシュに何か追加し、取得する
+  ## キャッシュに何かを追加して取得する
 
-	var redis = require("redis");
+  var redis = require("redis");
 
-    // Add your cache name and access key.
-	var client = redis.createClient(6379,'<name>.redis.cache.windows.net', {auth_pass: '<key>' });
+  // Add your cache name and access key. var client = redis.createClient(6379,'<name>.redis.cache.windows.net', {auth\_pass: '<key>' });
 
 	client.set("foo", "bar", function(err, reply) {
 	    console.log(reply);
@@ -95,6 +95,6 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 [3]: ./media/cache-nodejs-get-started/cache03.png
 [4]: ./media/cache-nodejs-get-started/cache04.png
 
-[Azure Web サイトでの Socket.IO を使用する Node.js チャット アプリケーションの構築]: ../app-service-web/web-sites-nodejs-chat-app-socketio.md
+[Socket.IO を使用した Node.js チャット アプリケーションの構築]: ../app-service-web/web-sites-nodejs-chat-app-socketio.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -30,26 +30,37 @@
 
 ## 学習内容
 
-このチュートリアルでは、次のことについて説明します。
+Azure App Service が備えている機能のうち、API の開発とホスティングで特に利便性を発揮するのは次の 3 点です。
+
+* API メタデータの統合サポート
+* CORS のサポート
+* 認証と承認のサポート
+ 
+このトピックは、これらの機能を紹介するシリーズの第 1 回目となるチュートリアルです。このチュートリアルでは API のメタデータを中心に説明します。2 回目では CORS について、3 回目と 4 回目では認証と承認について取り上げます。
+
+チュートリアルで紹介する内容は次のとおりです。
 
 * Azure SDK for .NET をインストールして、Azure 向け開発用にコンピューターを準備する方法。
 * Visual Studio 2015 に組み込まれたツールを利用し、Azure App Service で API アプリと Web アプリを使用する方法。
 * Swashbuckle NuGet パッケージを利用して API 検出を自動化し、Swagger API 定義 JSON を動的に生成する方法。
 * 自動的に生成されたクライアント コードを使用し、.NET クライアントから API アプリを使用する方法。
-* API ポータルを使用し、API アプリ メタデーのエンドポイントを構成する方法。
-
-これは一連のチュートリアルの最初のチュートリアルです。後続のチュートリアルは、このチュートリアルで作成した内容に基づきます。後続のチュートリアルでは次の内容を学習します。
- 
-* クライアントのドメインが API のドメインと異なるとき、CORS を利用して JavaScript クライアントから API を呼び出す方法。
+* Azure ポータルを使用し、API アプリ メタデータのエンドポイントを構成する方法。
+* クライアントのドメインが API のドメインと異なるとき、CORS を利用して JavaScript クライアントから API アプリを呼び出す方法。
 * Azure Active Directory を使用し、認証されていないアクセスから API を保護する方法。
 * Azure Active Directory にログインしたユーザーが保護されている API を使用する方法。
 * サービス プリンシパルを使用し、保護されている API を使用する方法。
 
 ## 前提条件
 
+### ASP.NET Web API
+
 このチュートリアルは ASP.NET Web API に関する知識を前提としています。概要については、「[ASP.NET Web API 2 の使用](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)」を参照してください。
 
+## Visual Studio 2015
+
 指示とスクリーン ショットは Visual Studio 2015 の使用を前提としていますが、Visual Studio 2013 の場合でも操作は同じです。
+
+## Azure アカウント
 
 このチュートリアルを完了するには、Azure アカウントが必要です。そのための方法は次のとおりです。
 
@@ -70,7 +81,7 @@ Azure アカウントにサインアップする前に Azure App Service を開�
 * **ContactsList.MVC** - ContactsList API の ASP.NET MVC クライアント。
 * **ContactsList.Angular** - ContactsList API の単純な AngularJS UI クライアント。保護されていない (認証のない) API アプリを呼び出す方法を示します。
 * **ContactsList.Angular.AAD** - Azure Active Directory を使用してユーザーを認証する方法を示す AngularJS クライアント。
-* **CompanyContacts.API** - Get 要求に対する応答として連絡先のハードコードされた一覧を返す ASP.NET Web API プロジェクト。**ContactsList.API** Get メソッドにより呼び出され、service-to-service (サービス プリンシパル) 認証で API を呼び出す方法を示します。
+* **CompanyContacts.API** - Get 要求に対する応答として連絡先のハードコードされた一覧を返す ASP.NET Web API プロジェクト。**ContactsList.API** Get メソッドにより呼び出され、サービス間 (サービス プリンシパル) 認証で API を呼び出す方法を示します。
  
 ## サンプル アプリケーションのダウンロード 
 
@@ -82,15 +93,17 @@ Azure アカウントにサインアップする前に Azure App Service を開�
 
 2. ソリューションをビルドし、NuGet パッケージを復元します。
 
-## ローカル実行時、Swashbuckle と Swagger を使用する
+## Swagger のメタデータと UI の使用
 
-[Swagger](http://swagger.io/) は API のメソッドと応答を表すための JSON 形式です。Swagger 2.0 のサポートは Azure App Service に組み込まれています。このチュートリアルの後半で紹介しますが、API に Swagger メタデータを入力すると、Visual Studio は API の使用を簡単にするクライアント コードを生成できます。
+[Swagger 2.0](http://swagger.io/) API メタデータのサポートは、Azure App Service に組み込まれています。それぞれの API アプリで、API のメタデータを Swagger の JSON 形式で返す URL エンドポイントを定義できます。そのエンドポイントから返されたメタデータを使うことで、API の使いやすさに寄与するクライアント コードを生成できます。
 
-ASP.NET Web API プロジェクトに Swagger 2.0 メタデータを入力するために、[Swashbuckle](https://www.nuget.org/packages/Swashbuckle) NuGet パッケージをインストールできます。Swashbuckle はリフレクションを使用し、メタデータを動的に生成します。NuGet パッケージはダウンロードした ContactsList.API プロジェクトに既にインストールされています。また、**Azure API App** プロジェクト テンプレートを利用して新しいプロジェクトを作成するとき、既にインストールされています。
+このセクションでは、ASP.NET Web API プロジェクトのメタデータを自動的に生成する方法のほか、API テスト ツールの実行について説明します。これらのタスクではまだ、Azure App Service を使用しません。API Apps でメタデータを活用する方法については後ほど説明します。
+
+ASP.NET Web API プロジェクトに Swagger 2.0 メタデータを入力するために、[Swashbuckle](https://www.nuget.org/packages/Swashbuckle) NuGet パッケージをインストールできます。Swashbuckle はリフレクションを使用し、メタデータを動的に生成します。Swashbuckle NuGet パッケージはダウンロードした ContactsList.API プロジェクトに既にインストールされています。また、**Azure API アプリ** プロジェクト テンプレートを利用して新しいプロジェクトを作成するとき、既にインストールされています (Visual Studio で **[ファイル]、[新規作成]、[プロジェクト]、[ASP.NET Web アプリケーション]、[Azure API アプリ]** の順にクリック)。
 
 チュートリアルのこのセクションでは、生成した Swagger 2.0 メタデータを確認し、Swagger メタデータに基づいてテスト UI を試します。
 
-2. ContactsList.API プロジェクトをスタートアップ プロジェクトとして設定します。(**ソリューション エクスプローラー**のプロジェクトを右クリックし、コンテキスト メニューで **[スタートアップ プロジェクトに設定]** をクリックします。)
+2. ContactsList.API プロジェクトをスタートアップ プロジェクトとして設定します。(CompanyContacts.API プロジェクトではありません。このプロジェクトは後続のチュートリアルで使用します。)
  
 4. F5 キーを押してデバッグ モードでプロジェクトを実行します。
 
@@ -104,7 +117,7 @@ ASP.NET Web API プロジェクトに Swagger 2.0 メタデータを入力する
 
 	![](./media/app-service-api-dotnet-get-started/iev1json.png)
 
-	Chrome を使用している場合、ブラウザーのウィンドウで JSON が表示されます。
+	Chrome または Edge を使用している場合、ブラウザーのウィンドウで JSON が表示されます。
 
 	![](./media/app-service-api-dotnet-get-started/chromev1json.png)
 
@@ -159,7 +172,7 @@ ASP.NET Web API プロジェクトに Swagger 2.0 メタデータを入力する
 
 	![](./media/app-service-api-dotnet-get-started/contactsmethods.png)
 
-5. **[Get] > [実際に使ってみる]** をクリックします。
+5. **[Get]、[実際に使ってみる]** を順にクリックします。
 
 	Swagger UI が ContactsList Get メソッドを呼び出し、JSON 結果を表示します。
 
@@ -184,15 +197,19 @@ ASP.NET Web API プロジェクトに Swagger 2.0 メタデータを入力する
 
 	ContactsList API は HTTP 200 と応答本文を返し、追加内容を確認します。
 
-11. **[Get] > [実際に使ってみる]** をクリックします。
+11. **[Get]、[実際に使ってみる]** を順にクリックします。
 
 	Get メソッドの応答に新しい連絡先が含まれます。
 
 12. Put、Delete、Get by ID メソッドも試し、ブラウザーを閉じます。
 
-Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できます。Swagger メタデータ生成を既存のプロジェクトに追加する場合、Swashbuckle パッケージをインストールします。App Service API アプリとしてデプロイするプロジェクトを新規作成する場合、ASP.NET **Azure API App** プロジェクト テンプレートを使用します。そのテンプレートにより、Swashbuckle がインストールされた Web API プロジェクトが作成されます。
+Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できます。Swagger メタデータ生成を既存のプロジェクトに追加する場合、Swashbuckle パッケージをインストールします。App Service API アプリとしてデプロイするプロジェクトを新規作成する場合、ASP.NET **Azure API App** プロジェクト テンプレート (下図) を使用します。
 
 ![](./media/app-service-api-dotnet-get-started/apiapptemplate.png)
+
+そのテンプレートにより、Swashbuckle がインストールされた Web API プロジェクトが作成されます。
+
+**注:** 既定では、コントローラー メソッドに対して重複する Swagger 操作 ID が Swashbuckle によって生成される場合があります。この現象は、コントローラーに HTTP メソッドのオーバーロード (`Get()` と `Get(id)` など) が存在すると発生します。オーバーロードの扱い方については、「[Swashbuckle が生成する API 定義をカスタマイズする](app-service-api-dotnet-swashbuckle-customize.md)」を参照してください。Visual Studio から Azure API アプリ テンプレートを使って Web API プロジェクトを作成した場合、一意の操作 ID を生成するコードが *SwaggerConfig.cs* ファイルに自動的に追加されます。
 
 ## Azure で API アプリを作成し、それに ContactsList.API プロジェクトをデプロイする
 
@@ -210,9 +227,11 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 
 	![](./media/app-service-api-dotnet-get-started/clicknew.png)
 
-3. **[App Service の作成]** ダイアログ ボックスの **[ホスティング]** タブで、**[種類の変更]**、**[API App]** を順にクリックします。
+3. **[App Service の作成]** ダイアログ ボックスの **[ホスティング]** タブで、**[種類の変更]**、**[API アプリ]** を順にクリックします。
 
-4. *azurewebsites.net* ドメインに固有の **API App 名** を入力します。
+	![](./media/app-service-api-dotnet-get-started/apptype.png)
+
+4. *azurewebsites.net* ドメインに固有の **API アプリ名**を入力します。
 
 	Visual Studio により、プロジェクト名に date-time 文字列が追加された一意の名前が提案されます。その名前で問題なければ、それを利用して構いません。
 
@@ -250,9 +269,9 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 
 	Visual Studio によって API アプリが作成され、新しい API アプリに必要なすべての設定が含まれる発行プロファイルが作成されます。次の手順では、新しい発行プロファイルを使用し、プロジェクトをデプロイします。
  
-	注: Azure App Service で API アプリを作成する方法は他にもあります。Visual Studio では、新しいプロジェクトを作成するとき、同じダイアログが利用できます。Azure ポータル、[Windows PowerShell 用の Azure コマンドレット](../powershell-install-configure.md)、[クロスプラットフォーム コマンドライン インターフェイス](../xplat-cli.md)を利用し、API アプリを作成することもできます。
+	**注:** Azure App Service で API アプリを作成する方法は他にもあります。Visual Studio では、新しいプロジェクトを作成するとき、同じダイアログが利用できます。Azure ポータル、[Windows PowerShell 用の Azure コマンドレット](../powershell-install-configure.md)、[クロスプラットフォーム コマンドライン インターフェイス](../xplat-cli.md)を利用し、API アプリを作成することもできます。
 
-8. **Web の発行**ウィザードの **[発行]** タブで、**[次へ]** をクリックします。
+8. **Web の発行**ウィザードの **[接続]** タブで、**[発行]** をクリックします。
 
 	![](./media/app-service-api-dotnet-get-started/clickpublish.png)
 
@@ -266,7 +285,7 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 
 12. [Azure ポータル](https://portal.azure.com/) を開きます。
  
-14. **[参照] > [API Apps] > {新しい API アプリ}** の順にクリックします。
+14. **[参照]、[API Apps]、{新しい API アプリ}** の順にクリックします。
 
 	![](./media/app-service-api-dotnet-get-started/choosenewapiappinportal.png)
 
@@ -278,21 +297,33 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 
 	![](./media/app-service-api-dotnet-get-started/apidefurl.png)
 
-	コードを生成する API アプリを選択するとき、Visual Studio はこの URL からメタデータを取得します。
+	クライアント コードを生成する API アプリを選択するとき、Visual Studio はこの URL からメタデータを取得します。
 
-## <a id="codegen"></a> 生成されたクライアント コードを使用し、.NET から使用します。 
+### Azure リソース マネージャーのツールにおける API 定義 URL
 
-Azure API Apps と Swagger の統合の利点の 1 つは、自動コード生成です。生成されたクライアント クラスにより、API アプリを呼び出すコードの記述が容易になります。
+API アプリの API 定義 URL は、Azure リソース マネージャーのツール (Azure PowerShell、CLI、[リソース エクスプローラー](https://resources.azure.com/)など) を使って構成することもできます。
+
+`apiDefinition` プロパティは、<site name>/web リソースの Microsoft.Web/sites/config リソース タイプで設定します。たとえば、**リソース エクスプローラー**から **[subscriptions]、{該当するサブスクリプション}、[resourceGroups]、{該当するリソース グループ}、[providers]、[Microsoft.Web]、[sites]、{該当サイト}、[config]、[web]** の順に移動すると、cors プロパティが表示されます。
+
+		"apiDefinition": {
+		  "url": "https://contactslistapi.azurewebsites.net/swagger/docs/v1"
+		}
+
+## <a id="codegen"></a> 生成されたクライアント コードを使用して .NET クライアントから利用する 
+
+Azure API アプリと Swagger の統合の利点の 1 つは、自動コード生成です。生成されたクライアント クラスにより、API アプリを呼び出すコードの記述が容易になります。
 
 このセクションでは、ASP.NET MVC Web アプリから API アプリを使用する方法について確認します。先にローカルで MVC クライアントと Web API を実行し、次に Azure App Service で新しい Web アプリにクライアントをデプロイし、クラウドで実行します。
 
 ### クライアント コードの生成
 
-Visual Studio を使用するか、またはコマンドラインから、API アプリのクライアント コードを生成できます。このチュートリアルでは、Visual Studio を使用します。コマンドラインから実行する方法については、GitHub.com の [Azure/autorest](https://github.com/azure/autorest) リポジトリにある readme ファイルを参照してください。
+API アプリのクライアント コードは、Visual Studio を使用して生成するか、コマンド ラインから生成することができます。このチュートリアルでは、Visual Studio を使用します。コマンドラインから実行する方法については、GitHub.com の [Azure/autorest](https://github.com/azure/autorest) リポジトリにある readme ファイルを参照してください。
 
-ContactsList.MVC プロジェクトによりクライアント コードが既に生成されていますが、それを削除して再生成し、そのしくみを観察し、独自の API アプリの URL を既定のターゲット URL にできます。
+ContactsList.MVC プロジェクトによりクライアント コードが既に生成されていますが、それを削除して再生成し、独自の API アプリの URL を既定のターゲット URL にできます。
 
 1. Visual Studio の**ソリューション エクスプローラー**の ContactsList.MVC プロジェクトで、*ContactsList.API* フォルダーを削除します。
+
+	このフォルダーは、今まさに行おうとしているコード生成プロセスを使って作成されたものです。
 
 	![](./media/app-service-api-dotnet-get-started/deletecodegen.png)
 
@@ -304,13 +335,15 @@ ContactsList.MVC プロジェクトによりクライアント コードが既�
 
 	![](./media/app-service-api-dotnet-get-started/codegenbrowse.png)
 
-8. **[App Service]** ダイアログ ボックスで、**[ContactsListGroup]** リソース グループを展開し、API アプリを選択し、**[OK]** をクリックします。
+8. **[App Service]** ダイアログ ボックスで、**[ContactsListGroup]** リソース グループを展開し、API アプリを選択して、**[OK]** をクリックします。
 
 	このダイアログ ボックスでは、API アプリが多すぎてスクロールできない場合、いくつかの方法で一覧の API アプリを整理できます。検索文字列を入力し、名前で API アプリを絞り込むこともできます。
 
 	![](./media/app-service-api-dotnet-get-started/codegenselect.png)
 
-	**[REST API クライアントの追加]** に戻ると、ポータルで先に見た API 定義 URL 値がテキスト ボックスに入力されていることに注意してください。
+	API アプリが一覧に表示されない場合、API アプリを作成するときに、アプリの種類を (Web アプリから API アプリに) 変更する手順を誤って省略した可能性があります。その場合は、先行する手順をやり直して新しい API アプリを作成してください。API アプリに別の名前を選択する必要があります。または、ポータルに移動して先に Web アプリを削除しておいてください。
+
+	**[REST API クライアントの追加]** ダイアログに戻ると、ポータルで先に見た API 定義 URL 値がテキスト ボックスに入力されていることに注意してください。
 
 	![](./media/app-service-api-dotnet-get-started/codegenurlplugged.png)
 
@@ -337,7 +370,14 @@ ContactsList.MVC プロジェクトによりクライアント コードが既�
 
 	このコードにより、クライアント クラス コンストラクターへの API プロジェクトのローカル IIS Express URL に渡されるので、MVC Web プロジェクトと API プロジェクトをローカルで実行できます。コンストラクター パラメーターを省略した場合、既定のエンドポイントはコードの生成元の URL です。
 
-6. クライアント クラスは API アプリ名に基づく別の名前で生成されます。型名がプロジェクトで生成されたものに一致するようにこのコードを変更します。
+6. クライアント クラスは API アプリ名に基づく別の名前で生成されます。型名がプロジェクトで生成されたものに一致するようにこのコードを変更します。たとえば、API アプリに ContactsListAPIContoso という名前を付けた場合、コードは次のようになります。
+
+		private ContactsListAPIContoso db = new ContactsListAPIContoso(new Uri("http://localhost:51864"));
+		
+		public ActionResult Index()
+		{
+		    return View(db.Contacts.Get());
+		}
 
 7. ソリューションをビルドします。
 
@@ -378,7 +418,7 @@ Azure にデプロイする前に、コードがデプロイされると、local
 
 1. **ソリューション エクスプローラー**で ContactsList.MVC プロジェクトを右クリックし、**[発行]** をクリックします。
 
-2. **[Web の発行]** ウィザードで、**[プロファイル]** タブをクリックします。
+2. **Web の発行**ウィザードで、**[プロファイル]** タブをクリックします。
 
 3.  **Web の発行**ウィザードの **[プロファイル]** タブで、**[Microsoft Azure App Service]** をクリックします。
 
@@ -396,7 +436,7 @@ Azure にデプロイする前に、コードがデプロイされると、local
 
 7. **[作成]** をクリックします。
 
-	Visual Studio により Web アプリが作成され、その発行プロファイルが作成され、**[Web の発行]** ウィザードの **[接続]** ステップが表示されます。
+	Visual Studio により Web アプリが作成され、その発行プロファイルが作成され、**Web の発行**ウィザードの **[接続]** ステップが表示されます。
 
 ### ContactsList.Web プロジェクトを新しい Web アプリにデプロイする
 
@@ -408,6 +448,6 @@ Azure にデプロイする前に、コードがデプロイされると、local
 
 ## 次のステップ
 
-このチュートリアルでは、API アプリを作成、それにコードをデプロイし、.NET クライアントから使用する方法について学習しました。入門シリーズの次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について学習します。
+このチュートリアルでは、API アプリを作成、それにコードをデプロイし、.NET クライアントから使用する方法について学習しました。API Apps 入門シリーズの次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について学習します。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->
