@@ -25,4 +25,4 @@
 
 	![](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings.png)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!----HONumber=AcomDC_1210_2015-->

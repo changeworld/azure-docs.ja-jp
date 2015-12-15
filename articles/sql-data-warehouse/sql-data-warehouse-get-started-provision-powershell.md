@@ -71,4 +71,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [firewall rules]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-database-configure-firewall-settings/
 [Azure PowerShell のインストールと構成の方法]: powershell-install-configure.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!----HONumber=AcomDC_1210_2015-->
