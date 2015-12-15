@@ -76,16 +76,16 @@ db:
 
 ```
 
-## Step 4: Start the containers with Compose
+## 手順 4: Compose によるコンテナーの起動
 
-In the working directory on your VM, simply run the following command.
+VM の作業ディレクトリで、次のコマンドを実行するだけです。
 
 ```
 $ docker-compose up -d
 
 ```
 
-This starts the Docker containers specified in `docker-compose.yml`. You'll see output similar to:
+`docker-compose.yml` 에서 지정된 Docker 컨테이너를 시작합니다:
 
 ```
 Creating wordpress\_db\_1...

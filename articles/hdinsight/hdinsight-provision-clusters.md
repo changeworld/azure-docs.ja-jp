@@ -299,7 +299,7 @@ Virtual Network の機能、利点の詳細については、「[Azure 仮想ネ
   		
 		* **[外部メタストア]**: クラスターに関連付けられた Hive と Oozie のメタデータを保存するための SQL Database を指定します。
  
-            > [AZURE.NOTE] Metastore configuration is not available for HBase cluster types.
+            > [AZURE.NOTE] HBase のクラスターの種類では、メタストア構成は使用できません。
 
 			![Custom metastores blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.7.png "Specify external metastores")
 
