@@ -85,7 +85,7 @@ $ docker-compose up -d
 
 ```
 
-`docker-compose.yml` 에서 지정된 Docker 컨테이너를 시작합니다:
+ これにより、`docker-compose.yml` で指定された Docker コンテナーが起動されます。次のような出力が表示されます:
 
 ```
 Creating wordpress\_db\_1...
