@@ -72,9 +72,12 @@ ATOM pub の拡張機能です。各エントリで 1 行の結果セットが�
 > [AZURE.TIP]記事が表示されない場合は、**他のバージョン**のドロップダウンをクリックしてバージョンを選択してください。
 
 ### EDM - Entry Data Model
-- 概要: [http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx][OverviewLink] [OverviewLink]:http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx
-- プレビュー: [http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx][PreviewLink] [PreviewLink]:http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx
-- データ型: [http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx][DataTypesLink] [DataTypesLink]:http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx
+- 概要: [http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx](OverviewLink)
+[OverviewLink]:http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx
+- プレビュー: [http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx](PreviewLink)
+[PreviewLink]:http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx
+- データ型: [http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx](DataTypesLink)
+[DataTypesLink]:http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx
 
 次に、クライアントが OData ステートメントを入力して (コンテンツ プロバイダーの Web サービスを呼び出して)、結果/データを取得するフロー (左から右方向) の詳細を示します。
 
@@ -298,4 +301,4 @@ CSDL は、Web サービスを記述するための XML 文法です。CSDL の�
 - 例に関心がある場合は、[データ サービス OData マッピング例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関するページでサンプル コードを参照し、コード構文とコンテキストを学習してください。
 - データ サービスを Azure Marketplace に発行するための指定のパスに戻る場合は、この[データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->

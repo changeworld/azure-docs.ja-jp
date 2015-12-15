@@ -57,7 +57,7 @@ ServiceFabricExplorer でのクラスターのビュー。
 [1]: ./media/service-fabric-view-entities-aggregated-health/servicefabric-explorer-cluster-health.png
 
 
-> [AZURE.NOTE][Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) の詳細をご覧ください。
+> [AZURE.NOTE] [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) の詳細をご覧ください。
 
 ## 正常性クエリ
 Service Fabric では、サポート対象の各[エンティティ型](service-fabric-health-introduction.md#health-entities-and-hierarchy)について正常性クエリが公開されています。API (FabricClient.HealthManager のメソッド)、Powershell コマンドレットおよび REST を使用してアクセスできます。これらのクエリは、正常性状態の集計、エンティティに報告された正常性イベント、子の正常性状態 (該当する場合) 、エンティティが正常でない場合の異常性の評価などのエンティティの正常性についての完全な情報を返します。
@@ -836,4 +836,4 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
  
 
-<!---HONumber=Nov15_HO1-->
+<!----HONumber=Nov15_HO1-->
