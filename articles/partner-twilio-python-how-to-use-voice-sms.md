@@ -42,7 +42,7 @@ Twilio API の主要な側面として、Twilio 動詞と Twilio Markup Language
 ### <a id="Verbs"></a>Twilio 動詞
 API では、Twilio 動詞を使用します。たとえば、**&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。
 
-Twilio 動詞の一覧を次に示します。他の動詞と機能については、[Twilio Markup Language のドキュメント][http://www.twilio.com/docs/api/twiml] を参照してください。
+Twilio 動詞の一覧を次に示します。他の動詞と機能については、[Twilio Markup Language のドキュメント](http://www.twilio.com/docs/api/twiml) を参照してください。
 
 * **&lt;Dial&gt;**: 呼び出し元を別の電話に接続します。
 * **&lt;Gather&gt;**: 電話キーパッドに入力された数字を収集します。
@@ -268,4 +268,4 @@ Azure で PHP に基づいて Twilio を使用する方法の詳細について�
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->

@@ -23,7 +23,7 @@ Azure Batch ジョブでは、実行前の何らかのセットアップ、お�
 
 ジョブ準備タスクは、タスクの実行がスケジュールされているすべての計算ノードにおいて、ジョブのタスク実行前に実行されます。ジョブが完了すると、少なくとも 1 つのタスクを実行したプールの各ノードでジョブ解放タスクが実行されます。ジョブ準備タスクおよびジョブ解放タスクのどちらでも、タスクをいつ呼び出すかをコマンド ラインで指定し、ファイルのダウンロード、管理者特権での実行、カスタム環境変数、最大実行期間、再試行回数、ファイル保持時間などの機能を提供できます。
 
-以下のセクションでは、[Batch .NET][api_net] API の [JobPreparationTask][net_job_prep] および [JobReleaseTask][net_job_release] を使用してこれら 2 つの特別なタスクの種類を使用する方法を説明します。
+以下のセクションでは、[Batch .NET](api_net) API の [JobPreparationTask](net_job_prep) および [JobReleaseTask](net_job_release) を使用してこれら 2 つの特別なタスクの種類を使用する方法を説明します。
 
 > [AZURE.TIP]ジョブ準備および解放タスクは、「共有プール」環境で特に役に立ちます。共有プール環境では、計算ノードのプールが異なるジョブ実行の間も維持され、多くの異なるジョブの間で共有されます。
 
@@ -33,7 +33,7 @@ Azure Batch ジョブでは、実行前の何らかのセットアップ、お�
 
 - **共通タスク データの転送** - バッチ ジョブでは、ジョブのタスクに対する入力として共通のデータ セットが必要になることがよくあります。たとえば、毎日のリスク分析の計算では、市場データはジョブ固有ですが、ジョブのすべてのタスクに共通です。このような市場データはサイズが数ギガバイトになることも多く、各計算ノードに 1 回だけダウンロードして、そのノードで実行する各タスクがそれを使用できるようにする必要があります。*ジョブ準備タスク*を使用して、他のタスクが実行する前に各ノードにデータをダウンロードします。
 - **ジョブ データの削除** - ジョブとジョブの間でプールの計算ノードが使用停止されない共有プール環境では、ノードのディスク領域を節約するため、または組織のセキュリティ ポリシーを満たすために、実行の間にジョブ データの削除が必要になる場合があります。ジョブ準備タスクによってダウンロードされたデータ、またはタスク実行の間に生成されたデータを削除するには、*ジョブ解放タスク*を使用します。
-- **ログの保持** - タスクによって生成されたログ ファイルのコピーや、障害が発生したアプリケーションによって生成されたクラッシュ ダンプ ファイルを、保持することが必要な場合があります。そのような場合は、*ジョブ解放タスク*を使用してこのデータを圧縮し、[Azure ストレージ][azure_storage] アカウントにアップロードします。
+- **ログの保持** - タスクによって生成されたログ ファイルのコピーや、障害が発生したアプリケーションによって生成されたクラッシュ ダンプ ファイルを、保持することが必要な場合があります。そのような場合は、*ジョブ解放タスク*を使用してこのデータを圧縮し、[Azure ストレージ](azure_storage) アカウントにアップロードします。
 
 ## ジョブ準備タスク
 
@@ -41,7 +41,7 @@ Azure Batch ジョブでは、実行前の何らかのセットアップ、お�
 
 ジョブ準備タスクは、タスクを実行するようにスケジュールされているノードでのみ実行されます。これにより、タスクを割り当てられていないノードで必要のない準備タスクが実行されなくなり、たとえばデータ転送コストを節約できます。このような状況が発生するのは、1 つのジョブのタスクの数がプール内のノードの数より少ない場合や、[同時タスク実行](batch-parallel-node-tasks.md)が有効になっているときに、同時実行可能なタスクの総数よりタスクの数が少なくて一部のノードがアイドル状態になる場合です。
 
-> [AZURE.NOTE][JobPreparationTask][net_job_prep_cloudjob] と [CloudPool.StartTask][pool_starttask] の機能は同じではありません。JobPreparationTask は各ジョブの開始時に実行しますが、StartTask は計算ノードがプールに初めて参加するときまたは再起動するときにのみ実行します。
+> [AZURE.NOTE] [JobPreparationTask](net_job_prep_cloudjob) と [CloudPool.StartTask](pool_starttask) の機能は同じではありません。JobPreparationTask は各ジョブの開始時に実行しますが、StartTask は計算ノードがプールに初めて参加するときまたは再起動するときにのみ実行します。
 
 ## ジョブ解放タスク
 
@@ -51,9 +51,9 @@ Azure Batch ジョブでは、実行前の何らかのセットアップ、お�
 
 ## Batch .NET でのジョブ準備タスクとジョブ解放タスク
 
-ジョブ準備タスクを指定するには、[JobPreparationTask][net_job_prep] を作成して構成し、それをジョブの [CloudJob.JobPreparationTask][net_job_prep_cloudjob] プロパティに割り当てます。同様に、ジョブの解放タスクを設定するには、[JobReleaseTask][net_job_release] を初期化し、それをジョブの [CloudJob.JobReleaseTask][net_job_prep_cloudjob] プロパティに割り当てます。
+ジョブ準備タスクを指定するには、[JobPreparationTask](net_job_prep) を作成して構成し、それをジョブの [CloudJob.JobPreparationTask](net_job_prep_cloudjob) プロパティに割り当てます。同様に、ジョブの解放タスクを設定するには、[JobReleaseTask](net_job_release) を初期化し、それをジョブの [CloudJob.JobReleaseTask](net_job_prep_cloudjob) プロパティに割り当てます。
 
-次のコード例では、`myBatchClient` は完全に初期化された [BatchClient][net_batch_client] のインスタンスであり、`myPool` は Batch アカウント内の既存のプールです。
+次のコード例では、`myBatchClient` は完全に初期化された [BatchClient](net_batch_client) のインスタンスであり、`myPool` は Batch アカウント内の既存のプールです。
 
 		// Create the CloudJob for CloudPool "myPool"
 		CloudJob myJob = myBatchClient.JobOperations.CreateJob("JobPrepReleaseSampleJob",
@@ -71,7 +71,7 @@ Azure Batch ジョブでは、実行前の何らかのセットアップ、お�
 
 		await myJob.CommitAsync();
 
-前述のように、解放タスクはジョブが終了または削除されたときに実行されます。Batch .NET API でジョブを終了するには [PoolOperations.TerminateJobAsync][net_job_terminate] を呼び出し、ジョブを削除するには [PoolOperations.DeleteJobAsync][net_job_delete] を呼び出します。どちらも通常は、ジョブのタスクが完了したとき、または定義されているタイムアウトに達したときに行われます。
+前述のように、解放タスクはジョブが終了または削除されたときに実行されます。Batch .NET API でジョブを終了するには [PoolOperations.TerminateJobAsync](net_job_terminate) を呼び出し、ジョブを削除するには [PoolOperations.DeleteJobAsync](net_job_delete) を呼び出します。どちらも通常は、ジョブのタスクが完了したとき、または定義されているタイムアウトに達したときに行われます。
 
 		// Terminate the job to mark it as Completed; this will initiate the Job Release Task on any node
 		// that executed job tasks. Note that the Job Release Task is also executed when a job is deleted,
@@ -82,7 +82,7 @@ Azure Batch ジョブでは、実行前の何らかのセットアップ、お�
 
 ### GitHub のサンプル プロジェクト
 
-動作するジョブ準備タスクおよびジョブ解放タスクは、GitHub の [JobPrepRelease][job_prep_release_sample] サンプル プロジェクトで確認できます。このコンソール アプリケーションは次のことを行います。
+動作するジョブ準備タスクおよびジョブ解放タスクは、GitHub の [JobPrepRelease](job_prep_release_sample) サンプル プロジェクトで確認できます。このコンソール アプリケーションは次のことを行います。
 
 1. 2 つの "小さい" ノードを含むプールを作成します
 2. ジョブ準備、解放、および標準タスクを使用するジョブを作成します。
@@ -140,7 +140,7 @@ Sample complete, hit ENTER to exit...
 
 ### Batch Explorer でのジョブ準備タスクとジョブ解放タスクの確認
 
-[Batch Explorer][batch_explorer_article] (やはり GitHub の Batch [サンプル コード リポジトリ][batch_explorer_project]にあります) は、Azure Batch でソリューションを開発するときに使用できる優れたツールです。たとえば、上のサンプル アプリケーションを実行するときに Batch Explorer を使用して、ジョブとそのタスクのプロパティを表示したり、ジョブのタスクによって変更された共有テキスト ファイルをダウンロードしたりできます。
+[Batch Explorer](batch_explorer_article) (やはり GitHub の Batch [サンプル コード リポジトリ](batch_explorer_project)にあります) は、Azure Batch でソリューションを開発するときに使用できる優れたツールです。たとえば、上のサンプル アプリケーションを実行するときに Batch Explorer を使用して、ジョブとそのタスクのプロパティを表示したり、ジョブのタスクによって変更された共有テキスト ファイルをダウンロードしたりできます。
 
 次のスクリーンショットでは、[Jobs] タブで *JobPrepReleaseSampleJob* ジョブを選択したときに [Details] ウィンドウに表示されるジョブ準備タスクとジョブ解放タスクのプロパティが示されています。
 
@@ -179,4 +179,4 @@ Sample complete, hit ENTER to exit...
 [1]: ./media/batch-job-prep-release/batchexplorer-01.png
 [2]: ./media/batch-job-prep-release/batchexplorer-02.png
 
-<!---HONumber=Nov15_HO1-->
+<!-----HONumber=Nov15_HO1-->

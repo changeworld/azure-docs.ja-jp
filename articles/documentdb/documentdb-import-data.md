@@ -93,7 +93,7 @@ MongoDB ソース インポーター オプションを使用して、個々の 
 
 	mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database>
 
-> [AZURE.NOTE][確認] を使用して、[接続文字列] フィールドで指定した MongoDB インスタンスにアクセスできることを確認してください。
+> [AZURE.NOTE] [確認] を使用して、[接続文字列] フィールドで指定した MongoDB インスタンスにアクセスできることを確認してください。
 
 データのインポート元となるコレクションの名前を入力します。必要に応じて、クエリ (例: {pop: {$gt: 5000}}) やプロジェクション (例: {loc:0}) を直接入力するか、そのためのファイルを指定して、インポートするデータのフィルター処理と整形を実行できます。
 
@@ -125,7 +125,7 @@ SQL ソース インポーター オプションを使用して、個々の SQL 
 
 接続文字列の形式は、標準的な SQL 接続文字列の形式です。
 
-> [AZURE.NOTE][確認] を使用して、[接続文字列] フィールドで指定した SQL Server インスタンスにアクセスできることを確認してください。
+> [AZURE.NOTE] [確認] を使用して、[接続文字列] フィールドで指定した SQL Server インスタンスにアクセスできることを確認してください。
 
 [入れ子の区切り記号] プロパティは、インポート時に階層関係 (サブドキュメント) を作成する場合に使用します。次の SQL クエリについて考えてみましょう。
 
@@ -184,7 +184,7 @@ Azure テーブル ストレージの接続文字列の形式は次のとおり�
 
 	DefaultEndpointsProtocol=<protocol>;AccountName=<Account Name>;AccountKey=<Account Key>;
 
-> [AZURE.NOTE][確認] を使用して、[接続文字列] フィールドで指定した Azure テーブル ストレージ インスタンスにアクセスできることを確認してください。
+> [AZURE.NOTE] [確認] を使用して、[接続文字列] フィールドで指定した Azure テーブル ストレージ インスタンスにアクセスできることを確認してください。
 
 データのインポート元となる Azure テーブルの名前を入力します。必要に応じて、[フィルター](https://msdn.microsoft.com/library/azure/ff683669.aspx)を指定することもできます。
 
@@ -213,7 +213,7 @@ Amazon DynamoDB の接続文字列の形式は次のとおりです。
 
 	ServiceURL=<Service Address>;AccessKey=<Access Key>;SecretKey=<Secret Key>;
 
-> [AZURE.NOTE][確認] を使用して、[接続文字列] フィールドで指定した Amazon DynamoDB インスタンスにアクセスできることを確認してください。
+> [AZURE.NOTE] [確認] を使用して、[接続文字列] フィールドで指定した Amazon DynamoDB インスタンスにアクセスできることを確認してください。
 
 Amazon DynamoDB からインポートするためのコマンド ライン サンプルを以下に示します。
 
@@ -239,7 +239,7 @@ DocumentDB の接続文字列の形式は次のとおりです。
 
 	AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;
 
-> [AZURE.NOTE][確認] を使用して、[接続文字列] フィールドで指定した DocumentDB インスタンスにアクセスできることを確認してください。
+> [AZURE.NOTE] [確認] を使用して、[接続文字列] フィールドで指定した DocumentDB インスタンスにアクセスできることを確認してください。
 
 1 つの DocumentDB コレクションからインポートするには、データのインポート元のコレクション名を入力します。複数の DocumentDB コレクションからインポートするには、1 つ以上のコレクション名に一致する正規表現を指定します (例: collection01 | collection02 | collection03)。必要に応じて、クエリを直接入力するか、そのためのファイルを指定して、インポートするデータのフィルター処理と整形を実行できます。
 
@@ -280,7 +280,7 @@ HBase Stargate の接続文字列の形式は次のとおりです。
 
 	ServiceURL=<server-address>;Username=<username>;Password=<password>
 
-> [AZURE.NOTE][確認] を使用して、[接続文字列] フィールドで指定した HBase インスタンスにアクセスできることを確認してください。
+> [AZURE.NOTE] [確認] を使用して、[接続文字列] フィールドで指定した HBase インスタンスにアクセスできることを確認してください。
 
 HBase からインポートするためのコマンド ライン サンプルを以下に示します。
 
@@ -296,7 +296,7 @@ DocumentDB の接続文字列の形式は次のとおりです。
 
 	AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;
 
-> [AZURE.NOTE][確認] を使用して、[接続文字列] フィールドで指定した DocumentDB インスタンスにアクセスできることを確認してください。
+> [AZURE.NOTE] [確認] を使用して、[接続文字列] フィールドで指定した DocumentDB インスタンスにアクセスできることを確認してください。
 
 1 つのコレクションにインポートするには、データのインポート先のコレクション名を入力し、[追加] をクリックします。複数のコレクションにインポートするには、各コレクション名を個別に入力するか、次の構文を使用して複数のコレクションを指定します。*collection\_prefix*[開始インデックス - 終了インデックス]。この構文を使用して複数のコレクションを指定する場合、次の点に注意してください。
 
@@ -348,7 +348,7 @@ DocumentDB の接続文字列の形式は次のとおりです。
 
 	AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;
 
-> [AZURE.NOTE][確認] を使用して、[接続文字列] フィールドで指定した DocumentDB インスタンスにアクセスできることを確認してください。
+> [AZURE.NOTE] [確認] を使用して、[接続文字列] フィールドで指定した DocumentDB インスタンスにアクセスできることを確認してください。
 
 1 つのコレクションにインポートするには、データのインポート先のコレクション名を入力し、[追加] をクリックします。複数のコレクションにインポートするには、各コレクション名を個別に入力するか、次の構文を使用して複数のコレクションを指定します。*collection\_prefix*[開始インデックス - 終了インデックス]。この構文を使用して複数のコレクションを指定する場合、次の点に注意してください。
 
@@ -477,4 +477,4 @@ DocumentDB JSON エクスポーターを使用して、使用可能な任意の�
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!----HONumber=Oct15_HO4-->

@@ -191,7 +191,7 @@ MSDN の[トースト カタログ]および[タイル カタログ]に関する
 <!-- URLs. -->
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
 [Azure ポータル]: https://manage.windowsazure.com/
-[Windows Azure 通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[Microsoft Azure 通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [MPNS authenticated mode]: http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
 [通知ハブを使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
 [通知ハブを使用したニュース速報の送信]: notification-hubs-windows-phone-send-breaking-news.md
