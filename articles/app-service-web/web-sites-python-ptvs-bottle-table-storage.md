@@ -71,7 +71,9 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 2. ポータルの左上にある **[新規]** アイコンをクリックし、**[データ + ストレージ]** > **[ストレージ アカウント]** をクリックします。**[作成]** ボタンをクリックし、ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソースグループ](../resource-group-overview.md)を作成します。
 
-  	<!-- ![New Button](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzurePlusNew.png) -->ストレージ アカウントが作成されると、**[通知]** ボタンに緑色の "**成功**" という文字が点滅し、ストレージ アカウントのブレードが開いて、作成した新しいリソース グループに属していることが示されます。
+  	<!-- ![New Button](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzurePlusNew.png) -->
+
+	ストレージ アカウントが作成されると、**[通知]** ボタンに緑色の "**成功**" という文字が点滅し、ストレージ アカウントのブレードが開いて、作成した新しいリソース グループに属していることが示されます。
 
   	<!-- ![Quick Create](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzureStorageCreate.png) -->
 
@@ -214,4 +216,4 @@ Python Tools for Visual Studio、Bottle および Azure テーブル ストレ�
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
