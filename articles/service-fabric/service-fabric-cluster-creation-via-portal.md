@@ -178,11 +178,14 @@ Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $applicationPath -A
 Register your application type with service fabric.
 
 ```powershell
-Register-ServiceFabricApplicationType -ApplicationPathInImageStore "WordCount" ````
+Register-ServiceFabricApplicationType -ApplicationPathInImageStore "WordCount"
+````
 
 登録したアプリケーションの種類で新しいインスタンスを作成します。
 
-```powershell New-ServiceFabricApplication -ApplicationName fabric:/WordCount -ApplicationTypeName WordCount -ApplicationTypeVersion 1.0.0.0 ````
+```powershell
+New-ServiceFabricApplication -ApplicationName fabric:/WordCount -ApplicationTypeName WordCount -ApplicationTypeVersion 1.0.0.0
+````
 
 選択したブラウザーが開き、アプリケーションがリッスンしているエンドポイントに接続します。このサンプル アプリケーションの場合、URL は次のようになります。
 
@@ -208,4 +211,4 @@ http://sfcluster4doc.westus.cloudapp.azure.com:31000
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
