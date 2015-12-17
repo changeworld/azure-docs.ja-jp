@@ -27,7 +27,7 @@ Visual Studio Service Fabric Tools は、ローカルまたはリモート ク�
 
   - *Monitored* アップグレードでは、アップグレードとアプリケーションの正常性チェックが自動化されます。
 
-  - * UnmonitoredAuto* アップグレードでは、アップグレードは自動化されますが、アプリケーションの正常性チェックは省略されます。
+  - *UnmonitoredAuto* アップグレードでは、アップグレードは自動化されますが、アプリケーションの正常性チェックは省略されます。
 
   - *Manual* アップグレードを実行する場合は、各アップグレード ドメインを手動でアップグレードする必要があります。
 
@@ -90,4 +90,4 @@ Service Fabric アプリケーションの各サービスでは、既定値を�
 ## 次のステップ
 アプリケーションのデプロイの詳細については、「[Azure Service Fabric への既存のアプリケーションのデプロイ](service-fabric-deploy-existing-app.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO4-->
+<!----HONumber=Nov15_HO4-->

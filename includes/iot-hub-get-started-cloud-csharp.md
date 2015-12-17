@@ -59,7 +59,7 @@
 
 ## デバイスからクラウドへのメッセージの受信
 
-このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Windows コンソール アプリを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るために [Event Hubs][Event Hubs Overview] と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルでは読者を単純化しているため、高スループットのデプロイメントには適しません。IoT Hub のデバイスからクラウドへのメッセージを処理する方法の詳細については、「[Process Device-to-Cloud messages (デバイスからクラウドへのメッセージの処理)]」チュートリアルを参照してください。Event Hubs からのメッセージを処理する方法の詳細については、「[Event Hubs の使用]」チュートリアルを参照してください。
+このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Windows コンソール アプリを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るために [Event Hubs][Event Hubs Overview] と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルでは読者を単純化しているため、高スループットのデプロイメントには適しません。IoT Hub のデバイスからクラウドへのメッセージを処理する方法の詳細については、「[Process Device-to-Cloud messages] (デバイスからクラウドへのメッセージの処理)」チュートリアルを参照してください。Event Hubs からのメッセージを処理する方法の詳細については、「[Event Hubs の使用]」チュートリアルを参照してください。
 
 1. 現在の Visual Studio ソリューションで、**[ファイル]、[追加]、[プロジェクト]** の順にクリックし、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。プロジェクトに **ReadDeviceToCloudMessages** という名前を付けます。
 
@@ -134,4 +134,4 @@
 [11]: ./media/iot-hub-getstarted-cloud-csharp/create-identity-csharp2.png
 [12]: ./media/iot-hub-getstarted-cloud-csharp/create-identity-csharp3.png
 
-<!----HONumber=Nov15_HO3-->
+<!-----HONumber=Nov15_HO3-->

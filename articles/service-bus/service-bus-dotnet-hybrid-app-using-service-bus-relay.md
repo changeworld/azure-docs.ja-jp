@@ -145,7 +145,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
 7.  ソリューション エクスプローラーで **[参照]** を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 
-8.  **[NuGet]** ダイアログ ボックスの左側の列で、**[オンライン]** をクリックします。
+8.  **NuGet** ダイアログ ボックスの左側の列で、**[オンライン]** をクリックします。
 
 9. 	右側の列で、**[検索]** ボックスをクリックして「**Service Bus**」と入力し、**[Microsoft Azure Service Bus]** 項目を選択します。**[インストール] **をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
 
@@ -610,4 +610,4 @@ Service Bus の詳細については、次のリソースを参照してくだ�
   [sbwacomqhowto]: service-bus-dotnet-how-to-use-queues.md
   [executionmodels]: ../cloud-services/fundamentals-application-models.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
