@@ -567,7 +567,8 @@ Visual Studio で Web サーバーのログを初めて有効にしたとき、�
 
 1. Visual Studio の **[Azure Web アプリ]** ウィンドウで、**[ログ]** タブをクリックし、**[管理ポータルでのログの構成]** をクリックします。
 
-    <!-- todo:screenshot of new portal if the VS page link goes to new portal -->![ログの構成](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png)
+    <!-- todo:screenshot of new portal if the VS page link goes to new portal -->
+	![ログの構成](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png)
 
 	これにより、クラシック ポータルで Web アプリの **[構成]** タブが開きます。
 
@@ -761,4 +762,4 @@ Web アプリではなく Azure Cloud Services をデバッグする場合は、
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
