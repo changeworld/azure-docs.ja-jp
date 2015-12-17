@@ -88,7 +88,10 @@ API のいずれかにより返される ID は大文字と小文字の区別が
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-|	modelName |	英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 20 | | apiVersion | 1.0 | ||| | Request Body | NONE |
+|	modelName	|	英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 20 |
+|	apiVersion		| 1.0 |
+|||
+| Request Body | NONE |
 
 
 **応答**:
@@ -134,12 +137,15 @@ OData XML
 
 | HTTP メソッド | URI |
 |:--------|:--------|
-|POST |`<rootURI>/ImportCatalogFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/ImportCatalogFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27catalog10_small.txt%27&apiVersion=%271.0%27`|
+|POST     |`<rootURI>/ImportCatalogFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/ImportCatalogFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27catalog10_small.txt%27&apiVersion=%271.0%27`|
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-|	modelId |	モデルの一意識別子 (大文字小文字を区別する) |
-| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 50 | | apiVersion | 1.0 | ||| | Request Body | カタログ データ。形式:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>名前</th><th>必須</th><th>タイプ</th><th>説明</th></tr><tr><td>項目 ID</td><td>Yes</td><td>英数字、最大の長さ 50</td><td>項目の一意識別子</td></tr><tr><td>項目名</td><td>Yes</td><td>英数字、最大の長さ 255</td><td>、項目名</td></tr><tr><td>項目カテゴリ</td><td>Yes</td><td>英数字、最大の長さ 255</td><td>この項目 (例: 料理ブック、ドラマ...) が属しているカテゴリ</td></tr><tr><td>説明</td><td>No</td><td>英数字、最大の長さ 4000</td><td>この項目の説明</td></tr></table><br>最大ファイル サイズ 200 MB<br><br>例:<br><pre>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book</pre> |
+|	modelId	|	モデルの一意識別子 (大文字小文字を区別する)  |
+| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 50 |
+|	apiVersion		| 1.0 |
+|||
+| Request Body | カタログ データ。形式:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>名前</th><th>必須</th><th>タイプ</th><th>説明</th></tr><tr><td>項目 ID</td><td>Yes</td><td>英数字、最大の長さ 50</td><td>項目の一意識別子</td></tr><tr><td>項目名</td><td>Yes</td><td>英数字、最大の長さ 255</td><td>、項目名</td></tr><tr><td>項目カテゴリ</td><td>Yes</td><td>英数字、最大の長さ 255</td><td>この項目 (例: 料理ブック、ドラマ...) が属しているカテゴリ</td></tr><tr><td>説明</td><td>No</td><td>英数字、最大の長さ 4000</td><td>この項目の説明</td></tr></table><br>最大ファイル サイズ 200 MB<br><br>例:<br><pre>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book</pre> |
 
 
 **応答**:
@@ -180,12 +186,15 @@ OData XML
 
 | HTTP メソッド | URI |
 |:--------|:--------|
-|POST |`<rootURI>/ImportUsageFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/ImportUsageFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27ImplicitMatrix10_Guid_small.txt%27&apiVersion=%271.0%27`|
+|POST      |`<rootURI>/ImportUsageFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/ImportUsageFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27ImplicitMatrix10_Guid_small.txt%27&apiVersion=%271.0%27`|
 
-|	パラメーター名 |	有効な値 |
+|	パラメーター名	|	有効な値						|
 |:--------			|:--------								|
-|	modelId |	モデルの一意識別子 (大文字小文字を区別する) |
-| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 50 | | apiVersion | 1.0 | ||| | Request Body | 利用状況データ。形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>説明</th></tr><tr><td>ユーザー ID</td><td>はい</td><td>英字</td><td>ユーザーの一意識別子</td></tr><tr><td>アイテム ID</td><td>はい</td><td>英字、最大の長さ 50</td><td>項目の一意識別子</td></tr><tr><td>時間</td><td>いいえ</td><td>次の形式の日付: YYYY/MM/DDTHH:MM:SS (例. 2013/06/20T10:00:00)</td><td>データの時間</td></tr><tr><td>イベント</td><td>いいえ、指定した場合は日付も指定すること</td><td>次のいずれか:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>最大ファイルサイズ 200MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+|	modelId	|	モデルの一意識別子 (大文字小文字を区別する) |
+| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 50 |
+|	apiVersion		| 1.0 |
+|||
+| Request Body | 利用状況データ。形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>説明</th></tr><tr><td>ユーザー ID</td><td>はい</td><td>英字</td><td>ユーザーの一意識別子</td></tr><tr><td>アイテム ID</td><td>はい</td><td>英字、最大の長さ 50</td><td>項目の一意識別子</td></tr><tr><td>時間</td><td>いいえ</td><td>次の形式の日付: YYYY/MM/DDTHH:MM:SS (例. 2013/06/20T10:00:00)</td><td>データの時間</td></tr><tr><td>イベント</td><td>いいえ、指定した場合は日付も指定すること</td><td>次のいずれか:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>最大ファイルサイズ 200MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **応答**:
 
@@ -314,14 +323,15 @@ OData XML
 
 | HTTP メソッド | URI |
 |:--------|:--------|
-|POST |`<rootURI>/BuildModel?modelId=%27<modelId>%27&userDescription=%27<description>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&userDescription=%27First%20build%27&apiVersion=%271.0%27`|
+|POST.... |`<rootURI>/BuildModel?modelId=%27<modelId>%27&userDescription=%27<description>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&userDescription=%27First%20build%27&apiVersion=%271.0%27`|
 
-|	パラメーター名 |	有効な値 |
+|	パラメーター名	|	有効な値						|
 |:--------			|:--------								|
-| modelId |	モデルの一意識別子 (大文字小文字を区別する) |
+| modelId |	モデルの一意識別子 (大文字小文字を区別する) .|
 | userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例をご覧ください。<br>最大長: 50 |
 | apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -391,7 +401,7 @@ OData XML
 
 
 
-|	パラメーター名 |	有効な値 |
+|	パラメーター名	|	有効な値						|
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 (大文字小文字を区別する) |
 |	onlyLastBuild |	モデルのすべてのビルド履歴を返すか、最新のビルドの状態のみを返すかを示します。 |
@@ -466,7 +476,7 @@ OData XML
 
 
 
-|	パラメーター名 |	有効な値 |
+|	パラメーター名	|	有効な値						|
 |:--------			|:--------								|
 | modelId | モデルの一意識別子 (大文字小文字を区別する) |
 | itemIds | <br> の推奨項目のコンマ区切りの一覧。最大の長さ: 1024 |
@@ -648,11 +658,12 @@ OData XML
 |PUT |`<rootURI>/UpdateModel?id=%27<modelId>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/UpdateModel?id=%279559872f-7a53-4076-a3c7-19d9385c1265%27&apiVersion=%271.0%27`|
 
 
-|	パラメーター名 |	有効な値 |
-|:--------			|:--------								|
+|	パラメーター名 |	有効な値	|
+|	:--------	|	:--------						|
 | id | モデルの一意識別子 (大文字小文字を区別する) |
 | apiVersion | 1\.0 |
-|||| Request Body | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能であることに注意してください。Description や ActiveBuildId を設定したくない場合は、タグ全体を削除します。|
+|||
+| Request Body | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能であることに注意してください。Description や ActiveBuildId を設定したくない場合は、タグ全体を削除します。|
 
 **応答**:
 
@@ -673,4 +684,4 @@ OData XML
 このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報と見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。社内での参照目的に限り、このドキュメントを複製して使用できます。© 2014 Microsoft.All rights reserved.
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!----HONumber=AcomDC_1125_2015-->
