@@ -51,7 +51,7 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 
 2. **[新規]**、__[データ分析]__、__[HDInsight]__ の順にクリックします。
 
-	![Azure ポータルでの新しいクラスターの作成](./media/hdinsight-administer-use-portal-linux/new-cluster.png)
+	![Creating a new cluster in the Azure Portal](./media/hdinsight-administer-use-portal-linux/new-cluster.png)
 
 3. __[クラスター名]__ を入力し、作成する __[クラスターの種類]__ を選択します。クラスターを使用できる場合は、__[クラスター名]__ の横に緑色のチェック マークが表示されます。
 
@@ -73,7 +73,7 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 
 	* [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows)
+	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 7. __[データ ソース]__ では、エントリを選択することで既存のデータ ソースを選択するか、新しいデータ ソースを作成できます。
 
@@ -188,9 +188,9 @@ HDInsight クラスター ブレードの __[使用状況]__ セクションに�
 * [Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
 * [HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)
 * [プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
-* [Azure HDInsight の概要](../hdinsight-get-started.md)
+* [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [Azure HDInsight でサポートされている Hadoop のバージョン](hdinsight-component-versioning.md)
 
 [preview-portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

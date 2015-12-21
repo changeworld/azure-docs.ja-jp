@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Stream Analytics の概要 | Microsoft Azure" 
-	description="モ ノのインターネット (IoT) からのストリーミング データをリアルタイムで分析するのに役立つ完全に管理されたクラウド サービスである、Azure Stream Analytics について説明します。" 
-	keywords="ビッグ データ分析,クラウド サービス,モノのインターネット,管理サービス,ストリーム処理,ストリーミング分析,ストリーミング データ"
+	description="モノのインターネット (IoT) からのストリーミング データをリアルタイムで分析するのに役立つ管理されたサービスである Stream Analytics について説明します。" 
+	keywords="サービスとしての分析、管理されたサービス、ストリーム プロセス、Stream Analytics、Stream Analytics とは"
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -14,11 +14,11 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/23/2015" 
+	ms.date="12/04/2015" 
 	ms.author="jeffstok"/>
 
 
-# Azure Stream Analytics とは
+# Stream Analytics とは
 
 Azure Stream Analytics (ASA) は、完全に管理された、コスト効率の高いリアルタイムのイベント処理エンジンです。データから深い洞察を明らかにするうえで役立ちます。Stream Analytics では、デバイス、センサー、Web サイト、ソーシャル メディア、アプリケーション、インフラストラクチャ システムなどのデータ ストリーミングのリアルタイム分析の計算を簡単に設定できます。
 
@@ -53,4 +53,4 @@ Stream Analytics で活用されている、時間が重要となる処理向け
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

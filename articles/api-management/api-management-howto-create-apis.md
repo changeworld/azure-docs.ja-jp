@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/23/2015" 
+	ms.date="12/07/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API を作成する方法
@@ -24,7 +24,7 @@ API Management における API は、クライアント アプリケーショ�
 
 ## <a name="create-new-api"> </a>新しい API の作成
 
-API を作成および構成するには、パブリッシャー ポータルを使用します。パブリッシャー ポータルにアクセスするには、API Management サービスの Azure ポータルで **[管理]** をクリックします。
+API を作成および構成するには、パブリッシャー ポータルを使用します。パブリッシャー ポータルにアクセスするには、API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
@@ -32,7 +32,7 @@ API を作成および構成するには、パブリッシャー ポータルを
 
 左側の **[API Management]** メニューの **[API]** をクリックし、**[API の追加]** をクリックします。
 
-![Create API][api-management-create-api]
+![API の作成][api-management-create-api]
 
 **[新しい API の追加]** ウィンドウを使用して、新しい API を構成します。
 
@@ -40,7 +40,7 @@ API を作成および構成するには、パブリッシャー ポータルを
 
 新しい API を構成するには、次のフィールドを使用します。
 
--	**[Web API 名]** は、API に対する一意のわかりやすい名前です。開発者ポータルと管理ポータルには、この名前が表示されます。
+-	**[Web API 名]** は、API に対する一意のわかりやすい名前です。開発者ポータルとパブリッシャー ポータルには、この名前が表示されます。
 -	**[Web サービスの URL]** は、API が実装されている HTTP サービスの URL です。要求は、API Management によってこのアドレスに転送されます。
 -	**[Web API URL サフィックス]** は、API Management サービスのベース URL に付加されます。ベース URL は、API Management サービス インスタンスによってホストされるすべての API に共通です。API Management では API がサフィックスによって識別されるため、サフィックスは、特定の発行者のすべての API で一意である必要があります。
 -	**[Web API の URL スキーム]** により、API へのアクセスに使用できるプロトコルが決まります。既定では、HTTP が指定されます。
@@ -48,13 +48,13 @@ API を作成および構成するには、パブリッシャー ポータルを
 
 必要な値を構成した後、**[保存]** をクリックします。新しい API が作成されると、その API の概要ページがパブリッシャー ポータルに表示されます。
 
-![API summary][api-management-api-summary]
+![API の概要][api-management-api-summary]
 
 ## <a name="configure-api-settings"> </a>API 設定の構成
 
 API の構成を確認および編集するには、**[設定]** タブを使用します。**[Web API 名]**、**[Web サービスの URL]**、および **[Web API URL サフィックス]** は、最初に API の作成時に設定され、ここで編集できます。**[説明]** には、オプションの説明を入力します。**[Web API の URL スキーム]** により、API へのアクセスに使用できるプロトコルが決まります。
 
-![API settings][api-management-api-settings]
+![API 設定][api-management-api-settings]
 
 API を実装するバックエンド サービスのゲートウェイ認証を構成するには、**[セキュリティ]** タブを選択します。**[資格情報]** ボックスの一覧を使用して、**[HTTP 基本]** 認証または **[クライアント証明書]** 認証を構成できます。HTTP 基本認証を使用するには、単に必要な資格情報を入力します。クライアント証明書認証の使用方法については、「[Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法][]」を参照してください。
 
@@ -99,4 +99,4 @@ API を作成し、設定を構成した後は、操作を API に追加しま�
 [Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法]: api-management-howto-mutual-certificates.md
 [Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法]: api-management-howto-oauth2.md
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1210_2015-->

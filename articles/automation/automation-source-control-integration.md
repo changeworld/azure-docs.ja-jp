@@ -126,7 +126,7 @@ Runbook をチェックインすると、Azure Automation で Runbook に対し�
 
 ### ソース管理から Azure Automation に Runbook を同期する 
 
-[Runbook の同期] ブレードの [同期] ボタンを使用すると、リポジトリの Runbook フォルダーのパスにあるすべての Runbook を Automation アカウントにプルできます。同一リポジトリを複数の Automation アカウントに同期できます。Runbook の同期手順は次のとおりです。
+[リポジトリの同期] ブレードの [同期] ボタンを使用すると、リポジトリの Runbook フォルダーのパスにあるすべての Runbook を Automation アカウントにプルできます。同一リポジトリを複数の Automation アカウントに同期できます。Runbook の同期手順は次のとおりです。
 
 1. ソース管理を設定した Automation アカウントで、**[ソース管理の統合] の [リポジトリの同期] ブレード**を開き、**[同期]** をクリックします。その後、確認メッセージが表示されたら、**[はい]** をクリックして続行します。  
 
@@ -158,4 +158,4 @@ GitHub アカウントから切断するには、[リポジトリの同期] ブ�
 
 ソース管理の統合の詳細については、次のリソースを参照してください。 - [Azure Automation: Azure Automation でのソース管理の統合](https://azure.microsoft.com/blog/azure-automation-source-control-13/) - [お気に入りのソース管理システムに関するアンケート](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d) - [Azure Automation: Visual Studio Online を使用した Runbook ソース管理の統合](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1210_2015-->

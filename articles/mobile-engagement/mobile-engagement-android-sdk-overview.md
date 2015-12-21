@@ -35,11 +35,7 @@ Azure Mobile Engagement を Android アプリに統合する方法の詳細に�
 
 ##リリース ノート
 
-##4\.1.2 (11/25/2015)
-
-- 安定性が向上しました。
-
-##4\.1.1 (11/04/2015)
+##4\.1.3 (12/9/2015)
 
 - 安定性が向上しました。
 
@@ -56,4 +52,4 @@ Azure Mobile Engagement を Android アプリに統合する方法の詳細に�
 
 SDK の旧バージョンをアプリケーションに既に統合している場合、[アップグレード手順](mobile-engagement-android-upgrade-procedure.md)を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

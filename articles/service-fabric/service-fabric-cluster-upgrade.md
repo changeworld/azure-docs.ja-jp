@@ -66,6 +66,8 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
 ![CertificateUpgrade][CertificateUpgrade]
 
+**注** クラスター リソースに使用する証明書を特定する前に、次の手順を完了しておく必要があります。この手順を行わなかった場合、新しい証明書は使用されません。1) 新しい証明書を Key Vault にアップロードします。[Service Fabric のセキュリティ](service-fabric-cluster-security.md)に関するページの手順を参照し、手順 2 から開始してください。2) 証明書がデプロイされるように、クラスターを構成するすべての Virtual Machines を更新します。手順については、[このブログの投稿](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx)を参照してください。
+
 ### アプリケーション ポート
 
 この制御は、ノードのタイプに関連付けられている、ロード バランサーのリソース プロパティを変更することによって行います。ポータルを使用するか、ARM PowerShell で直接行います。
@@ -105,7 +107,7 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
 ## 次のステップ
 
-- [クラスターの拡大と縮小](service-fabric-cluster-scale-up-down.md)の方法を学習する
+- [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)の方法を学習する
 - [アプリケーションのアップグレード](service-fabric-application-upgrade.md)の方法を学習する
 
 <!--Image references-->
@@ -113,4 +115,4 @@ Microsoft は、クラスターで実行されるファブリック コードと
 [AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes.png
 [AddingLBRules]: ./media/service-fabric-cluster-upgrade/addingLBRules.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

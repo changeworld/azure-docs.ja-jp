@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/17/2015"
+	ms.date="12/03/2015"
 	ms.author="jroth"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -96,7 +96,7 @@
 [AZURE.INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 
-#### 仮想マシンの制限 - Azure リソース マネージャー
+#### Virtual Machines の制限 - Azure リソース マネージャー
 
 次の制限は、Azure リソース マネージャーと Azure リソース グループの使用時に適用されます。Azure リソース マネージャーで変更されていない制限はこの一覧に含まれません。これらの制限については、前の表を参照してください。
 
@@ -181,9 +181,17 @@
 
 ### Search の制限
 
-[AZURE.INCLUDE [azure-search-limits](../includes/azure-search-limits.md)]
+価格レベルは、容量と検索サービスの制限を決定します。
 
-共有サービスの上限、またはキー、要求、および応答に対する制限の分類の詳細については、「[Azure Search でのサービスの制限](search/search-limits-quotas-capacity.md)」を参照してください。
+####Standard レベル
+
+[AZURE.INCLUDE [azure-search-limits-standard](../includes/azure-search-limits-standard.md)]
+
+####Shared レベル (マルチテナントサービスの一部。Azure サブスクライバーは無料)
+
+[AZURE.INCLUDE [azure-search-limits-free](../includes/azure-search-limits-free.md)]
+
+キー、レプリカとパーティションの組み合わせ、要求、応答に関する制限と、さまざまなワークロードで高可用性を実現する方法の詳細については、「[Azure Search サービスの制限](search/search-limits-quotas-capacity.md)」を参照してください。
 
 ### Media Services の制限
 
@@ -274,4 +282,4 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 [Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1210_2015-->

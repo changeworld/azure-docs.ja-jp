@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="08/18/2015"
+	ms.date="12/01/2015" 
 	ms.author="wesmc;ricksal"/>
 
 # Mobile Services .NET バックエンドのトラブルシューティング
@@ -43,23 +43,23 @@ HTTP トラフィックを送信し、調査するために、任意の HTTP デ
 
     >[AZURE.NOTE]サービスがローカルでホストされている場合は、リンクをクリックすると次のページに進みます。ただし、クラウドでホストされている場合は、一連の資格情報を入力するよう求められます。これにより、認証されていないユーザーは、開発者の API とペイロードに関する情報にアクセスできなくなります。ページを参照するには、**空のユーザー名**と、パスワードに**アプリケーション キー**を入力してログインする必要があります。アプリケーション キーを入手するには、Azure クラシック ポータルで、モバイル サービスの **[ダッシュボード]** タブに移動して、**[キーの管理]** を選択します。
     >
-    > ![アクセスのための認証プロンプトに関するヘルプ ページ][HelpPageAuth]
+    > ![Authentication prompt to access help page][HelpPageAuth]
 
 3. 表示される画面 ("ヘルプ ページ" と呼びます) に、モバイル サービスが使用可能にしている HTTP API がすべて一覧で表示されます。いずれかの API を選択します (Visual Studio で Mobile Services プロジェクト テンプレートを使用して開始した場合は **GET tables/TodoItem** が表示されます)。
 
-    ![ヘルプ ページ][HelpPage]
+    ![Help page][HelpPage]
 
 4. 表示されたページには、API に必要な要求と応答に関するドキュメントと JSON の例が表示されます。**[試してみる]** ボタンをクリックします。
 
-    ![API のテスト ページ][HelpPageApi]
+    ![Test page for an API][HelpPageApi]
 
 5. これが "テスト クライアント" で、HTTP 要求を送信して API のテストに使用できます。**[送信]** を選択します。
 
-    ![テスト クライアント][TestClient]
+    ![Test client][TestClient]
 
 6. ブラウザーのウィンドウに、モバイル サービスから返される HTTP 応答が表示されます。
 
-    ![HTTP 応答付きテスト クライアント][TestClientResponse]
+    ![Test client with HTTP response][TestClientResponse]
 
 これで、Web ブラウザーを使用して、モバイル サービスによって公開されるさまざまな HTTP API を調査できます。
 
@@ -71,23 +71,23 @@ HTTP トラフィックを送信し、調査するために、任意の HTTP デ
 1. **Visual Studio 2013 Update 2** 以降でデバッグするモバイル サービス プロジェクトを開きます。
 2. シンボルの読み込みを構成します。**[デバッグ]** メニューに移動して、**[オプションと設定]** を選択します。**[マイ コードのみを有効にする]** がオフになっていて、**[ソース サーバー サポートを有効にする]** がオンになっていることを確認します。
 
-    ![シンボルの読み込みを構成する][SymbolLoading]
+    ![Configure symbol loading][SymbolLoading]
 
-3. 左側の [**シンボル**] ノードを選択し、URI [http://srv.symbolsource.org/pdb/Public](http://srv.symbolsource.org/pdb/Public) を使用して (SymbolSource)[http://symbolsource.org] サーバーへの参照を追加します。Mobile Services .NET バックエンドのシンボルが、すべての新しいリリースで使用可能になります。
+3. 左側の **[シンボル]** ノードを選択し、URI [http://srv.symbolsource.org/pdb/Public](http://srv.symbolsource.org/pdb/Public) を使用して [SymbolSource] サーバーへの参照を追加します。Mobile Services .NET バックエンドのシンボルが、すべての新しいリリースで使用可能になります。
 
-    ![シンボル サーバーを構成する][SymbolServer]
+    ![Configure symbol server][SymbolServer]
 
 4. デバッグするコードの一部にブレークポイントを設定します。たとえば、Visual Studio の Mobile Services プロジェクト テンプレートに付属する **TodoItemController** の **GetAllTodoItems()** メソッドにブレークポイントを設定します。
 5. **F5** キーを押して、ローカルでサービスをデバッグします。Visual Studio が Mobile Services .NET バックエンドのシンボルをダウンロードするため、最初の読み込みに時間がかかる場合があります。
 6. 前の HTTP デバッグのセクションで説明したように、テスト クライアントを使用して、ブレークポイントを設定したメソッドに HTTP 要求を送信します。たとえば、**GetAllTodoItems()** メソッドに要求を送信するには、ヘルプ ページで **GET tables/TodoItem** を選択してから、**[試してみる]**、**[送信]** の順に選択します。
 7. 設定したブレークポイントで Visual Studio が一時停止し、ソース コード付きの完全なスタック トレースが Visual Studio の **[コール スタック]** ウィンドウで利用できます。
 
-    ![ブレイクポイントのヒット][Breakpoint]
+    ![Hitting a breakpoint][Breakpoint]
 
 8. これで Azure にサービスを発行できるようになったので、上で実行したようにデバッグを使用できます。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[発行]** を選択して、プロジェクトを発行します。
 9. 発行ウィザードの **[設定]** タブで、**[デバッグ]** 構成を選択します。これにより、関連するデバッグ シンボルがコードと共に発行されます。
 
-    ![デバッグの発行][PublishDebug]
+    ![Publish debug][PublishDebug]
 
 10. サービスが正常に発行されたら、**サーバー エクスプローラー**を開き、**[Azure]** ノードと **[Mobile Services]** ノードを展開します。必要に応じてサインインします。
 11. 発行先となったモバイル サービスを右クリックし、**[デバッガーの接続]** を選択します。
@@ -106,11 +106,11 @@ HTTP トラフィックを送信し、調査するために、任意の HTTP デ
 
 ローカルでデバッグすると、Visual Studio の **[出力]** ウィンドウにログが表示されます。
 
-![Visual Studio 出力ウィンドウのログ][LogsOutputWindow]
+![Logs in Visual Studio Output window][LogsOutputWindow]
 
 Azure にサービスを発行した後、Visual Studio の**サーバー エクスプローラー**でモバイル サービスを右クリックして、**[ログの表示]** を選択すると、クラウドで実行されるサービス インスタンスのログが使用できます。
 
-![Visual Studio サーバー エクスプローラ－のログ][LogsServerExplorer]
+![Logs in Visual Studio Server Explorer][LogsServerExplorer]
 
 同じログは、Azure クラシック ポータルで、モバイル サービスの **[ログ]** タブでも使用できます。
 
@@ -127,7 +127,7 @@ Azure にサービスを発行した後、Visual Studio の**サーバー エク
 
 更新されたサービスを Azure に発行するときに、そのいずれかのパッケージをアップグレードする場合は、次のように競合を示す警告ページが表示されます。
 
-![アセンブリの読み込み競合を示すヘルプ ページ][HelpConflict]
+![Help page indicating assembly loading conflict][HelpConflict]
 
 この現象と共に、次と類似する例外メッセージがサービス ログに記録されます。
 
@@ -159,4 +159,8 @@ SQL Database と共に Mobile Services .NET バックエンドを使用してい
 [LogsPortal]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/13.png
 [HelpConflict]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/14.png
 
-<!---HONumber=AcomDC_1203_2015-->
+
+<!-- Links -->
+[SymbolSource]: http://symbolsource.org
+
+<!---HONumber=AcomDC_1210_2015-->

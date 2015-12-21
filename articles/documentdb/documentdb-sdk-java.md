@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="11/16/2015" 
+	ms.date="12/07/2015" 
 	ms.author="ryancraw"/>
 
 # DocumentDB SDK
@@ -29,6 +29,9 @@
 <table> <tr><td>**ダウンロード**</td><td>[Maven](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)</td></tr> <tr><td>**投稿**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr> <tr><td>**ドキュメント**</td><td>[Java SDK リファレンス ドキュメント](http://azure.github.io/azure-documentdb-java/)</td></tr> <tr><td>**使用**</td><td>[Java SDK の使用](documentdb-java-application.md)</td></tr> <tr><td>**現在サポートされているランタイム**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr> </table></br>
 
 ## リリース ノート
+
+### <a name="1.5.0"/>[1\.5.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.5.0)
+- ハッシュおよび範囲パーティション リゾルバーを追加して、複数のパーティションにわたってシャーディング アプリケーションを支援します。
 
 ### <a name="1.4.0"/>[1\.4.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.4.0)
 - Upsert を実装します。Upsert 機能をサポートするために新しい upsertXXX メソッドが追加されました。
@@ -61,18 +64,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
-| [1\.4.0](#1.4.0) | 2015 年 10 月 05 日 |---
-| [1\.3.0](#1.3.0) | 2015 年 10 月 05 日 |---
-| [1\.2.0](#1.2.0) | 2015 年 8 月 05 日 |---
-| [1\.1.0](#1.1.0) | 2015 年 7 月 09 日 |---
-| [1\.0.1](#1.0.1) | 2015 年 5 月 12 日 |---
-| [1\.0.0](#1.0.0) | 2015 年 4 月 07 日 |---
-| 0.9.5-prelease | 2015 年 3 月 09 日 | 2016 年 2 月 29 日
-| 0.9.4-prelease | 2015 年 2 月 17 日 | 2016 年 2 月 29 日
-| 0.9.3-prelease | 2015 年 1 月 13 日 | 2016 年 2 月 29 日
-| 0.9.2-prelease | 2014 年 12 月 19 日 | 2016 年 2 月 29 日
-| 0.9.1-prelease | 2014 年 12 月 19 日 | 2016 年 2 月 29 日
-| 0.9.0-prelease | 2014 年 12 月 10 日 | 2016 年 2 月 29 日
+| [1\.5.0](#1.5.0) | 2015 年 12 月 4 日 |--- | [1\.4.0](#1.4.0) | 2015 年 10 月 05 日 |--- | [1\.3.0](#1.3.0) | 2015 年 10 月 05 日 |--- | [1\.2.0](#1.2.0) | 2015 年 8 月 05 日 |--- | [1\.1.0](#1.1.0) | 2015 年 7 月 09 日 |--- | [1\.0.1](#1.0.1) | 2015 年 5 月 12 日 |--- | [1\.0.0](#1.0.0) | 2015 年 4 月 07 日 |--- | 0.9.5-prelease | 2015 年 3 月 09 日 | 2016 年 2 月 29 日 | 0.9.4-prelease | 2015 年 2 月 17 日 | 2016 年 2 月 29 日 | 0.9.3-prelease | 2015 年 1 月 13 日 | 2016 年 2 月 29 日 | 0.9.2-prelease | 2014 年 12 月 19 日 | 2016 年 2 月 29 日 | 0.9.1-prelease | 2014 年 12 月 19 日 | 2016 年 2 月 29 日 | 0.9.0-prelease | 2014 年 12 月 10 日 | 2016 年 2 月 29 日
 
 ## FAQ
 [AZURE.INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -81,4 +73,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

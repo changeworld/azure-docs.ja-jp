@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/26/2015"
+   ms.date="12/04/2015"
    ms.author="larryfr"/>
 
 #Beeline による HDInsight での Hive と Hadoop の使用
@@ -153,7 +153,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 4. Beeline を終了するには、`!quit` を使用します。
 
-##<a id="file"></a>HiveQL ファイルの実行
+##<a id="file"></a>HiveQL ファイルを実行する
 
 Beeline を使用し、HiveQL ステートメントを含むファイルを実行することもできます。次の手順でファイルを作成し、Beeline を使用してそれを実行します。
 
@@ -180,7 +180,7 @@ Beeline を使用し、HiveQL ステートメントを含むファイルを実�
 
         beeline -u 'jdbc:hive2://HOSTNAME:10001/;transportMode=http' -n admin -p PASSWORD -f query.hql
 
-5. **errorLogs** テーブルが作成されたことを確認するには、Beeline を起動し、HiveServer2 に接続して、**errorLogs** からすべての行を返す、次のステートメントを使用します。
+5. **errorLogs** テーブルが作成されたことを確認するには、Beeline を起動し、HiveServer2 に接続し、**errorLogs** からすべての行を返す次のステートメントを使用します。
 
         SELECT * from errorLogs;
 
@@ -229,18 +229,12 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 [putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 
-[hdinsight-storage]: hdinsight-use-blob-storage.md
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]: hdinsight-get-started.md
 
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-[image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
-[img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
-[image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
-
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1210_2015-->

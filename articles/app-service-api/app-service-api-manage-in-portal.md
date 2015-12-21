@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="09/08/2015" 
+	ms.date="12/04/2015" 
 	ms.author="tdykstra"/>
 
 # Azure App Service の API アプリの管理
@@ -136,4 +136,4 @@ Visual Studio の**サーバー エクスプローラー**には、リモート 
 
 コマンド ラインを使用して API アプリを管理する方法については、この記事の左側 (幅の広いブラウザー ウィンドウの場合) または上部 (幅の狭いブラウザー ウィンドウの場合) に表示されているメニューの **[自動化]** セクションの記事を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

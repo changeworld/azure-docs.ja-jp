@@ -3,7 +3,7 @@
     description="Visual Studio Online を使用して Azure Service Fabric アプリケーションのストレス テストを実行する方法について説明します。"
     services="service-fabric"
     documentationCenter="na"
-    authors="cawa"
+    authors="cawams"
     manager="timlt"
     editor="" />
 
@@ -140,4 +140,4 @@ Visual Studio Online のロード テストで提供されている API を使�
 [8]: ./media/service-fabric-vso-load-test/RunTest2.png
 [9]: ./media/service-fabric-vso-load-test/Graph.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

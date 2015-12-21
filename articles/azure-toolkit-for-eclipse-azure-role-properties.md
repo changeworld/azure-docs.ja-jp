@@ -16,7 +16,7 @@
     ms.date="11/20/2015" 
     ms.author="robmcm"/>
 
-<!-- Legacy MSDN URL = https://msdn.microsoft.com/ja-JP/library/azure/hh690945.aspx -->
+<!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690945.aspx -->
 
 # Azure ロールのプロパティ #
 
@@ -288,13 +288,13 @@ Windows 上で Eclipse を使用している場合は、コンピューティン
 1. ドロップダウン リストから、Azure で利用可能なサード パーティ製の JDK パッケージを選択します。
 1. Windows を使用している場合、**[JDK]** タブは次のようになります。 ![][ic780648] Mac OS またはサポートされている他の非 Windows オペレーティング システムを使用している場合、[JDK] タブは次のようになります。 ![][ic789643]
 1. **[OK]** をクリックして変更を保存します。
-1. サード パーティの JDK パッケージ プロバイダーからライセンス契約に同意することを求められたら、ライセンス条項を確認します。(条項に同意する場合) **[Yes]** をクリックして **[Accept license agreement]** ダイアログを閉じます。**[Deploy a 3rd party JDK package available from Azure]** ボックスの一覧に表示される項目を決定するロジックはカスタマイズすることができます。項目をカスタマイズするには、**[JDK]** ダイアログ ボックスで、**[Customize]** リンクをクリックします。すると、**[JDK]** プロパティ ページが閉じ、**componentsets.xml** ファイルが Eclipse で開かれます。このファイルを、必要に応じて変更できます。**componentsets.xml** に関するドキュメントは、**componentsets.xml** ファイル自体に含まれています。
+1. サード パーティ製の JDK パッケージ プロバイダーからライセンス契約に同意することを求められたら、ライセンス条項を確認します。(条項に同意する場合) **[Yes]** をクリックして **[Accept license agreement]** ダイアログを閉じます。**[Deploy a 3rd party JDK package available from Azure]** ボックスの一覧に表示される項目を決定するロジックはカスタマイズすることができます。項目をカスタマイズするには、**[JDK]** ダイアログ ボックスで、**[Customize]** リンクをクリックします。すると、**[JDK]** プロパティ ページが閉じ、**componentsets.xml** ファイルが Eclipse で開かれます。このファイルを、必要に応じて変更できます。**componentsets.xml** に関するドキュメントは、**componentsets.xml** ファイル自体に含まれています。
 
 **[Deploy a JDK from a custom download]** オプションを使用する場合:
 
 1. JDK インストール ディレクトリの ZIP を作成します。このとき、ディレクトリの内容ではなくノード自体が ZIP 構造の子になるようにします。後で必要になるのでこのディレクトリの名前を控えておきます。この JDK インストールは Windows 仮想マシンにデプロイされることに注意してください。
 1. Azure ストレージ アカウントに ZIP を BLOB としてアップロードします。Azure Storage への BLOB のアップロードには、外部のツールを使用できます。プライベート BLOB を使用することをお勧めします。ZIP コンテンツの BLOB の URL を書き留めます。
-1. **[Deploy a JDK from a custom download]** チェック ボックスをオンにします。Azure ストレージ アカウントからダウンロードする場合は、**[Storage account]** ボックスの一覧から目的のストレージ アカウントを選択します (**[Accounts]** リンクをクリックすると一覧内の項目を変更できます)。この操作によって **[URL]** ボックスに値の一部が入力されたら、URL の残りの部分を手動で入力します。Azure Storage を使用しない場合は、**[Storage account]** ボックスの一覧の **[(none)]** を選択し、**[URL]** ボックスに JDK ダウンロードの URL を入力します。Azure Storage を使用する場合、URL 内の BLOB 名は小文字で指定してください。
+1. **[Deploy a JDK from a custom download]** チェックボックスをオンにします。Azure ストレージ アカウントからダウンロードする場合は、**[Storage account]** ボックスの一覧から目的のストレージ アカウントを選択します (**[Accounts]** リンクをクリックすると一覧内の項目を変更できます)。この操作によって **[URL]** ボックスに値の一部が入力されたら、URL の残りの部分を手動で入力します。Azure Storage を使用しない場合は、**[Storage account]** ボックスの一覧の **[(none)]** を選択し、**[URL]** ボックスに JDK ダウンロードの URL を入力します。Azure Storage を使用する場合、URL 内の BLOB 名は小文字で指定してください。
 1. **[JAVA\_HOME]** ボックスに適切なディレクトリ名が指定されていることを確認します。既定では、ローカルでの使用のために選択した値と同じ JDK ディレクトリ名が参照されます。ただし、(たとえば、別のバージョンを使用した結果) ZIP に含まれているディレクトリの名前が異なる場合は、それに応じて **[JAVA\_HOME]** ボックスのディレクトリ名を更新します。それは、この設定が (コンピューティング エミュレーターではなく) クラウドで使用されるためです。
 1. **[OK]** をクリックして変更を保存します。
 
@@ -323,7 +323,7 @@ Windows 上で Eclipse を使用している場合は、コンピューティン
 **[Deploy from a custom download]** オプションを使用する場合:
 
 1. 前の手順に従ってサーバーの種類が既に選択されていることを確認します。サーバーは選択したサーバーの種類と同じファミリに属している必要があるため、この選択で、カスタム ダウンロードからサーバーをデプロイする方法をプラグインに指示します。
-1. **[Deploy from a custom download]** チェック ボックスをオンにします。Azure ストレージ アカウントからダウンロードする場合は、**[Storage account]** ボックスの一覧から目的のストレージ アカウントを選択します (**[Accounts]** リンクをクリックすると一覧内の項目を変更できます)。この操作によって **[URL]** ボックスに値の一部が入力されたら、サーバー ダウンロード ZIP に対する URL の残りの部分を手動で入力します (Azure Storage を使用する場合、URL 内の BLOB 名は小文字で表記する必要があります)。Azure Storage を使用しない場合は、**[Storage account]** ボックスの一覧の **[(none)]** を選択し、**[URL]** ボックスにサーバー ダウンロード ZIP の URL を入力します。通常この ZIP に、アプリケーション サーバーのインストール ディレクトリを表す子フォルダーが格納されます。たとえば、Apache Tomcat 7.0.35 の zip を使用している場合、zip 内には、**apache-tomcat-7.0.35** などのインストール ディレクトリを表す子フォルダーがあります。 
+1. **[Deploy from a custom download]** チェックボックスをオンにします。Azure ストレージ アカウントからダウンロードする場合は、**[Storage account]** ボックスの一覧から目的のストレージ アカウントを選択します (**[Accounts]** リンクをクリックすると一覧内の項目を変更できます)。この操作によって **[URL]** ボックスに値の一部が入力されたら、サーバー ダウンロード ZIP に対する URL の残りの部分を手動で入力します (Azure Storage を使用する場合、URL 内の BLOB 名は小文字で表記する必要があります)。Azure Storage を使用しない場合は、**[Storage account]** ボックスの一覧の **[(none)]** を選択し、**[URL]** ボックスにサーバー ダウンロード ZIP の URL を入力します。通常この ZIP に、アプリケーション サーバーのインストール ディレクトリを表す子フォルダーが格納されます。たとえば、Apache Tomcat 7.0.35 の zip を使用している場合、zip 内には、**apache-tomcat-7.0.35** などのインストール ディレクトリを表す子フォルダーがあります。 
 1. ホーム ディレクトリの環境変数の値を指定します。この値は、ローカル アプリケーション サーバーがある場合に既定で使用される値になりますが、クラウドのアプリケーション サーバーがローカル アプリケーション サーバーと異なる場合は別の値を指定することができます。ただし、クラウド アプリケーション サーバーは、前に選択したサーバーの種類と同じファミリに属している必要があります。今後、クラウド アプリケーション サーバーの zip を更新する場合は、ホーム ディレクトリ設定を手動で変更するか、ローカル設定に合わせて変更することができます (ローカル アプリケーション サーバーも変更した場合)。
 1. **[OK]** をクリックして変更を保存します。
 
@@ -331,7 +331,7 @@ Windows 上で Eclipse を使用している場合は、コンピューティン
 
 **[Deploy my local server (auto-upload to cloud storage)]** オプションを使用する場合:
 
-1. **[Deploy my local server (auto-upload to cloud storage)]** チェック ボックスをオンにします。
+1. **[Deploy my local server (auto-upload to cloud storage)]** チェックボックスをオンにします。
 1. **[Storage account]** ボックスの一覧の **[(auto)]** を選択します。**[(auto)]** を指定すると、**[Publish to Azure]** ダイアログ ボックスでデプロイに対して選択したものと同じサーバーのストレージ アカウントが使用されます。
 1. **[OK]** をクリックして変更を保存します。
 
@@ -388,7 +388,7 @@ Eclipse の Project Explorer ウィンドウで、ロールのコンテキスト
 
 [Azure Toolkit for Eclipse のインストール][]
 
-[Azure 向け Hello World アプリケーションを Eclipse で作成する][]
+[Azure の Hello World アプリケーションを Eclipse で作成する][]
 
 [Azure プロジェクトのプロパティ][]
 
@@ -404,7 +404,7 @@ Java での Azure の使用方法の詳細については、[Azure Java デベ�
 [Azure プロジェクトのプロパティ]: http://go.microsoft.com/fwlink/?LinkID=699524
 [Azure ストレージ アカウントの一覧]: http://go.microsoft.com/fwlink/?LinkID=699528
 [com.microsoft.windowsazure.serviceruntime パッケージの概要]: http://azure.github.io/azure-sdk-for-java/com/microsoft/windowsazure/serviceruntime/package-summary.html
-[Azure 向け Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Azure の Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
 [複数インスタンス デプロイでの特定のロール インスタンスのデバッグ]: http://go.microsoft.com/fwlink/?LinkID=699535#debugging_specific_role_instance
 [Eclipse での Azure アプリケーションのデバッグ]: http://go.microsoft.com/fwlink/?LinkID=699535
 [大規模なデプロイ]: http://go.microsoft.com/fwlink/?LinkID=699536
@@ -439,4 +439,4 @@ Java での Azure の使用方法の詳細については、[Azure Java デベ�
 [ic719512]: ./media/azure-toolkit-for-eclipse-azure-role-properties/ic719512.png
 [ic719481]: ./media/azure-toolkit-for-eclipse-azure-role-properties/ic719481.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

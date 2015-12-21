@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="10/23/2015"
+   	ms.date="12/04/2015"
    	ms.author="larryfr"/>
 
 #cURL と Azure REST API を使用して HDInsight に Linux ベースのクラスターを作成する
@@ -33,7 +33,7 @@ Azure REST API を使用すると、Azure プラットフォームでホスト�
 
 - __Azure CLI__。Azure CLI を使用してサービス プリンシパルを作成し、Azure REST API に対する要求用の認証トークンを生成します。
 
-    CLI のインストール方法については、「[Azure CLI のインストール](xplat-cli-install.md)」をご覧ください。
+    CLI のインストール方法については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
 
 - __cURL__。このユーティリティは、パッケージ管理システムを通じてまたは [http://curl.haxx.se/](http://curl.haxx.se/) からダウンロードして使用できます。
 
@@ -259,7 +259,7 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 
 ##Azure サブスクリプションへのログイン
 
-「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](xplat-cli-connect.md)」に記載されている手順に従い、__login__ メソッドを使用してサブスクリプションに接続します。
+「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」に記載されている手順に従い、__login__ メソッドを使用してサブスクリプションに接続します。
 
 ##サービス プリンシパルの作成
 
@@ -346,13 +346,13 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 
 ###HBase クラスター
 
-* [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-stared-linux.md)
-* [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux)
+* [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started-linux.md)
+* [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux.md)
 
 ###Storm クラスター
 
 * [HDInsight での Storm の Java トポロジの開発](hdinsight-storm-develop-java-topology.md)
-* [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python.md)
+* [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

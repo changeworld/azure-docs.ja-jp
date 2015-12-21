@@ -3,8 +3,8 @@
    description="Visual Studio Online (VSO) を使用して Service Fabric アプリケーションの継続的インテグレーションをセットアップする方法の概要"
    services="service-fabric"
    documentationCenter="na"
-   authors="cawa"
-   manager="paulyuk"
+   authors="cawams"
+   manager="timlt"
    editor="" />
 <tags
    ms.service="multiple"
@@ -339,4 +339,4 @@ Azure PowerShell をインストールするには、前のセクション「**A
 
 Service Fabric アプリケーションとの継続的インテグレーションの詳細については、「[ビルドに関するドキュメントのホームページ](https://msdn.microsoft.com/Library/vs/alm/Build/overview)」、「[ビルド エージェントのデプロイ](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)」、「[ビルド定義の作成と構成](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

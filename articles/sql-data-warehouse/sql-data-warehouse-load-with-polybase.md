@@ -61,11 +61,15 @@ Azure BLOB ストレージにアクセスするには、Azure ストレージ �
     ```
     -- Check for existing database-scoped credentials.
     SELECT * FROM sys.database_credentials;
-    ```
 
 3. [CREATE CREDENTIAL (Transact-SQL)][] を使用して、アクセスする Azure ストレージ アカウントごとにデータベース スコープの資格情報を作成します。次の例では、IDENTITY は資格情報を表すわかりやすい名前になっています。この名前は Azure ストレージへの認証には影響を及ぼしません。SECRET は Azure ストレージ アカウント キーです。
 
-    -- データベース スコープの資格情報の作成 CREATE DATABASE SCOPED CREDENTIAL ASBSecret WITH IDENTITY = 'joe' , Secret = '<azure_storage_account_key>' ; ```
+    -- データベース スコープの資格情報の作成
+    CREATE DATABASE SCOPED CREDENTIAL ASBSecret 
+    WITH IDENTITY = 'joe'
+    ,    Secret = '<azure_storage_account_key>'
+    ;
+    ```
 
 1. データベース スコープの資格情報を削除する必要がある場合は、[DROP CREDENTIAL (Transact-SQL)][] を使用します。
 
@@ -206,7 +210,7 @@ SELECT * FROM [ext].[CarSensor_Data]
 
 ```
 
-> [AZURE.NOTE]外部テーブルに対するクエリが、*"クエリは中止されました。外部ソースの読み取り中に最大拒否しきい値に達しました"* というエラーで失敗する場合があります。これは、外部データに*ダーティ*なレコードが含まれていることを示します。データ レコードは、列の実際のデータの種類/数値が外部テーブルの列定義と一致しない場合、またはデータが指定された外部ファイルの形式に従っていない場合に「ダーティ」であると見なされます。これを修正するには、外部テーブルと外部ファイルの形式の定義が正しいこと、および外部データがこれらの定義に従っていることを確認します。外部データ レコードのサブセットがダーティである場合は、CREATE EXTERNAL TABLE DDL の中で拒否オプションを使用することで、クエリでこれらのレコードを拒否することを選択できます。
+> [AZURE.NOTE]外部テーブルに対するクエリが、*"クエリは中止されました。外部ソースの読み取り中に最大拒否しきい値に達しました"* というエラーで失敗する場合があります。これは、外部データに*ダーティ*なレコードが含まれていることを示します。データ レコードは、列の実際のデータの種類/数値が外部テーブルの列定義と一致しない場合、またはデータが指定された外部ファイルの形式に従っていない場合に「ダーティ」であるとみなされます。これを修正するには、外部テーブルと外部ファイルの形式の定義が正しいこと、および外部データがこれらの定義に従っていることを確認します。外部データ レコードのサブセットがダーティである場合は、CREATE EXTERNAL TABLE DDL の中で拒否オプションを使用することで、クエリでこれらのレコードを拒否することを選択できます。
 
 
 ## Azure BLOB ストレージからのデータのロード
@@ -293,39 +297,39 @@ Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name>
 
 以下のコード サンプルはやや複雑ですが、ソースからターゲットにデータ行をストリームするため、はるかに効率的です。この方法は、大規模なファイル向けです。
 
+```
+#Static variables
+$ascii = [System.Text.Encoding]::ASCII
+$utf16le = [System.Text.Encoding]::Unicode
+$utf8 = [System.Text.Encoding]::UTF8
+$ansi = [System.Text.Encoding]::Default
+$append = $False
 
-	#Static variables
-	$ascii = [System.Text.Encoding]::ASCII
-	$utf16le = [System.Text.Encoding]::Unicode
-	$utf8 = [System.Text.Encoding]::UTF8
-	$ansi = [System.Text.Encoding]::Default
-	$append = $False
-	
-	#Set source file path and file name
-	$src = [System.IO.Path]::Combine("C:\input_file_path","input_file_name.txt")
-	
-	#Set source file encoding (using list above)
-	$src_enc = $ansi
-	
-	#Set target file path and file name
-	$tgt = [System.IO.Path]::Combine("C:\output_file_path","output_file_name.txt")
-	
-	#Set target file encoding (using list above)
-	$tgt_enc = $utf8
-	
-	$read = New-Object System.IO.StreamReader($src,$src_enc)
-	$write = New-Object System.IO.StreamWriter($tgt,$append,$tgt_enc)
-	
-	while ($read.Peek() -ne -1)
-	{
-	    $line = $read.ReadLine();
-	    $write.WriteLine($line);
-	}
-	$read.Close()
-	$read.Dispose()
-	$write.Close()
-	$write.Dispose()
+#Set source file path and file name
+$src = [System.IO.Path]::Combine("C:\input_file_path","input_file_name.txt")
 
+#Set source file encoding (using list above)
+$src_enc = $ansi
+
+#Set target file path and file name
+$tgt = [System.IO.Path]::Combine("C:\output_file_path","output_file_name.txt")
+
+#Set target file encoding (using list above)
+$tgt_enc = $utf8
+
+$read = New-Object System.IO.StreamReader($src,$src_enc)
+$write = New-Object System.IO.StreamWriter($tgt,$append,$tgt_enc)
+
+while ($read.Peek() -ne -1)
+{
+    $line = $read.ReadLine();
+    $write.WriteLine($line);
+}
+$read.Close()
+$read.Dispose()
+$write.Close()
+$write.Dispose()
+```
 
 ## 次のステップ
 開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
@@ -351,13 +355,13 @@ Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name>
 [CREATE EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/dn935026(v=sql.130).aspx
 [CREATE EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935021(v=sql.130).aspx
 
-[DROP EXTERNAL DATA SOURCE (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/mt146367.aspx
-[DROP EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/mt146379.aspx
-[DROP EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/mt130698.aspx
+[DROP EXTERNAL DATA SOURCE (Transact-SQL)]: https://msdn.microsoft.com/library/mt146367.aspx
+[DROP EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/mt146379.aspx
+[DROP EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/library/mt130698.aspx
 
 [CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
-[CREATE MASTER KEY (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms174382.aspx
-[CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189522.aspx
-[DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189450.aspx
+[CREATE MASTER KEY (Transact-SQL)]: https://msdn.microsoft.com/library/ms174382.aspx
+[CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189522.aspx
+[DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
-<!------HONumber=Nov15_HO3-->
+<!------HONumber=AcomDC_1210_2015-->

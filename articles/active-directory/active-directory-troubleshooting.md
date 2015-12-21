@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="08/24/2015"
+   ms.date="12/04/2015"
    ms.author="mbaldwin"/>
 
 # トラブルシューティング: Active Directory 項目が不足しているか使用できない
@@ -54,4 +54,4 @@ Access Control 名前空間または Multi-factor Authentication プロバイダ
 
 ![画面ショット: Active Directory を使用できない](./media/active-directory-troubleshooting/not-available.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

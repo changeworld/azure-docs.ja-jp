@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/02/2015" 
+	ms.date="12/05/2015" 
 	ms.author="mbaldwin"/>
 
 
@@ -37,7 +37,7 @@ ACS では、次の機能を使用できます。
 -   ACS 設定へのプログラムによるアクセスを提供する Open Data Protocol (OData) ベースの管理サービス。
 -   ACS 設定への管理アクセスが可能な管理ポータル。
 
-ACS の詳細については、[Access Control Service 2.0 に関するページ][]を参照してください。
+ACS の詳細については、[アクセス制御サービス 2.0 に関するページ][]を参照してください。
 
 ## 概念
 
@@ -289,7 +289,7 @@ Visual Studio の Identity and Access Tool は、アプリケーションと ACS
 
 これらの構成設定は、ACS 管理ポータルで確認して変更できます。ポータルで変更を確認するには、次のステップを使用します。
 
-1.	[Windows Azure 管理ポータル](http://manage.WindowsAzure.com)にログインします。
+1.	[Microsoft Azure 管理ポータル](http://manage.WindowsAzure.com)にログインします。
 
 2.	**[Active Directory]** をクリックします。
 
@@ -372,7 +372,7 @@ ACS と統合された Web アプリケーションを作成できました。�
   [vpp]: #bkmk_VP
 
   [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
-  [Access Control Service 2.0 に関するページ]: http://go.microsoft.com/fwlink/?LinkID=212360
+  [アクセス制御サービス 2.0 に関するページ]: http://go.microsoft.com/fwlink/?LinkID=212360
   [Identity and Access Tool のダウンロード ページ]: http://go.microsoft.com/fwlink/?LinkID=245849
   [Azure 管理ポータル]: http://manage.WindowsAzure.com
 
@@ -402,4 +402,4 @@ ACS と統合された Web アプリケーションを作成できました。�
   [19]: ./media/active-directory-dotnet-how-to-use-access-control/acsShowKey.png
   [20]: ./media/active-directory-dotnet-how-to-use-access-control/acsConfigAcsNamespace2.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -126,14 +126,14 @@ ASR への SQL AlwaysON の統合の手順を以下に示します。
 - オンプレミスの SQL Server と Azure で実行されている SQL Server 間の SQL 可用性グループ セットアップ
 - PowerShell リモート処理をオンプレミスの SQL Server で有効にする必要があります。VMM Server から SQL Server へのリモート PowerShell 呼び出しが可能になっている必要があります。
 - オンプレミスの SQL Server では、SQL ユーザー グループにユーザー アカウントを追加する際に、少なくとも次のアクセス権を付与する必要があります。
-	- ALTER AVAILABILITY GROUP - [参照 1](https://msdn.microsoft.com/ja-JP/library/hh231018.aspx)、[参照 2](https://msdn.microsoft.com/ja-JP/library/ff878601.aspx#Anchor_3)
-	- ALTER DATABASE - [参照 1](https://msdn.microsoft.com/ja-JP/library/ff877956.aspx#Security)
+	- ALTER AVAILABILITY GROUP - [参照 1](https://msdn.microsoft.com/library/hh231018.aspx)、[参照 2](https://msdn.microsoft.com/library/ff878601.aspx#Anchor_3)
+	- ALTER DATABASE - [参照 1](https://msdn.microsoft.com/library/ff877956.aspx#Security)
 - そのアカウントの実行アカウントは事前に VMM Server 上で作成しておく必要があります。
 - SQL PS モジュールをオンプレミスで実行している SQL Servers と Azure Virtual Machines 上にインストールする必要があります。
 - Azure で実行している仮想マシン上に VM Agent をインストールする必要があります。
 - Azure の仮想マシン上で実行している SQL Server でNTAUTHORITY\\System に次のアクセス権が付与されている必要があります。
-	- ALTER AVAILABILITY GROUP - [参照 1](https://msdn.microsoft.com/ja-JP/library/hh231018.aspx)、[参照 2](https://msdn.microsoft.com/ja-JP/library/ff878601.aspx#Anchor_3)
-	- ALTER DATABASE - [参照 1](https://msdn.microsoft.com/ja-JP/library/ff877956.aspx#Security)
+	- ALTER AVAILABILITY GROUP - [参照 1](https://msdn.microsoft.com/library/hh231018.aspx)、[参照 2](https://msdn.microsoft.com/library/ff878601.aspx#Anchor_3)
+	- ALTER DATABASE - [参照 1](https://msdn.microsoft.com/library/ff877956.aspx#Security)
 
 ##### 1\.SQL Server の追加
 
@@ -374,4 +374,4 @@ SQL Standard のクラスターの場合、計画外のフェールオーバー�
 
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1210_2015-->

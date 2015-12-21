@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/14/2015" 
+	ms.date="12/03/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API Inspector を使用して呼び出しをトレースする方法
@@ -34,11 +34,11 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
 
 
 
-最初に、ご利用の API Management サービスの Azure ポータルで **[開発者ポータル]** をクリックします。開発者ポータルには、API の操作を見てテストするための便利な環境が用意されており、操作を直接呼び出すことができます。
+最初に、ご利用の API Management サービスの Azure クラシック ポータルで **[開発者ポータル]** をクリックします。開発者ポータルには、API の操作を見てテストするための便利な環境が用意されており、操作を直接呼び出すことができます。
 
 >まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
 
-![API Management developer portal][api-management-developer-portal-menu]
+![API Management 開発者ポータル][api-management-developer-portal-menu]
 
 上部のメニューの **[API]** をクリックし、**[Basic Calculator]** をクリックします。
 
@@ -245,7 +245,7 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
 [Azure API Management の使用]: api-management-get-started.md
 [API Management インスタンスの作成]: api-management-get-started.md#create-service-instance
 [Azure API Management の詳細な構成について]: api-management-get-started-advanced.md
-[Management Portal]: https://manage.windowsazure.com/
+[Azure Classic Portal]: https://manage.windowsazure.com/
 
 
 [api-management-developer-portal-menu]: ./media/api-management-howto-api-inspector/api-management-developer-portal-menu.png
@@ -261,4 +261,4 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

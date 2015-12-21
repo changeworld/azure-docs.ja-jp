@@ -13,22 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="11/30/2015"
+   ms.date="12/07/2015"
    ms.author="kenhoff"/>
 
 
 # Azure AD Reporting API の概要
 
-## ドキュメント記事のレポート
-
- - [Reporting API](active-directory-reporting-api-getting-started.md)
- - [イベントの監査](active-directory-reporting-audit-events.md)
- - [保持](active-directory-reporting-retention.md)
- - [プレビュー](active-directory-reporting-previews.md)
- - [Search](active-directory-reporting-search.md)
- - [バックフィル](active-directory-reporting-backfill.md)
- - [待機時間](active-directory-reporting-latencies.md)
- - ["Unknown Actor"　イベント](active-directory-reporting-unknown-actor.md)
+*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
 
 Azure Active Directory には、アクティビティ、セキュリティ、監査に関するさまざまなレポートがあります。このデータは、Azure ポータルで使用できますが、SIEM システム、監査、ビジネス インテリジェンス ツールなど、他の多くのアプリケーションでも非常に役に立ちます。
 
@@ -179,4 +170,4 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 - 監査レポートの詳細については、「[Azure Active Directory 監査レポートのイベント](active-directory-reporting-audit-events.md)」を参照してください
 - Graph API REST サービスの詳細については、「[Azure AD Reports and Events (Preview) (Azure AD のレポートとイベント (プレビュー))](https://msdn.microsoft.com/library/azure/mt126081.aspx)」を参照してください
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

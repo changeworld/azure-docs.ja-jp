@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="09/23/2015"
+ ms.date="12/04/2015"
  ms.author="larryfr"/>
 
 # Power BI (プレビュー) を使用した Apache Storm トポロジのデータの視覚化
@@ -55,9 +55,9 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 ## Power BI アプリケーションの登録
 
-1. 「[Power BI のクイック スタート](https://msdn.microsoft.com/ja-jp/library/dn931989.aspx)」に示されている手順に従って、Power BI にサインアップします。
+1. 「[Power BI のクイック スタート](https://msdn.microsoft.com/library/dn931989.aspx)」に示されている手順に従って、Power BI にサインアップします。
 
-2. 「[アプリの登録](https://msdn.microsoft.com/ja-jp/library/dn877542.aspx)」に示されている手順に従って、アプリケーションの登録を行います。登録情報は、Power BI REST API にアクセスするときに使用します。
+2. 「[アプリの登録](https://msdn.microsoft.com/library/dn877542.aspx)」に示されている手順に従って、アプリケーションの登録を行います。登録情報は、Power BI REST API にアクセスするときに使用します。
 
     > [AZURE.IMPORTANT]アプリケーション登録に**クライアント ID** を保存します。
 
@@ -83,7 +83,7 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 1. **ソリューション エクスプローラー**で **WordCount** プロジェクトを右クリックし、[**HDInsight の Storm に送信 (Submit to Storm on HDInsight)**] を選択します。[**Storm クラスター**] ドロップダウン ダイアログから HDInsight クラスターを選択します。
 
-    > [AZURE.NOTE][**Storm クラスター**] ドロップダウンにサーバー名が設定されるには数秒かかることがあります。
+    > [AZURE.NOTE] [**Storm クラスター**] ドロップダウンにサーバー名が設定されるには数秒かかることがあります。
     >
     > メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスターの Storm があるサブスクリプションにログインします。
 
@@ -139,4 +139,4 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015--->

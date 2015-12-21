@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="12/04/2015"
    ms.author="larryfr"/>
 
 # Apache Storm、Event Hub、HBase を HDInsight (Hadoop) で使用してセンサー データを分析する
@@ -68,7 +68,7 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 このトポロジのダイアグラムを次に示します。
 
-![topology diagram](./media/hdinsight-storm-sensor-data-analysis/sensoranalysis.png)
+![トポロジ ダイアグラム](./media/hdinsight-storm-sensor-data-analysis/sensoranalysis.png)
 
 > [AZURE.NOTE]これは、トポロジの非常に簡略化されたビューです。実行時に、各コンポーネントのインスタンスは、読み取られている Event Hub のパーティションごとに作成されます。これらのインスタンスはクラスター内のノード間に配布され、次のようにデータはルーティングされます。
 >
@@ -422,4 +422,4 @@ Storm クラスターのトポロジを開始し、データを処理すると�
 
 [azure-portal]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

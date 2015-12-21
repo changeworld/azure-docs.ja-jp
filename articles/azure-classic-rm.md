@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/14/2015"
+   ms.date="12/07/2015"
    ms.author="telmos"/>
 
 # Azure デプロイ モデル
@@ -68,4 +68,4 @@ CLI を使用して、Windows、OS X、または Linux コンピューターか�
 - [テンプレートの設計](/best-practices-resource-manager-design-templates.md)方法を理解する
 - [ベスト プラクティス](/best-practices-resource-manager-examples.md)を使用する
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

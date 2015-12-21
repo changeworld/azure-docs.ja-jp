@@ -43,7 +43,7 @@
 
 Batch アカウントのクォータは、[Azure ポータル](https://portal.azure.com)で確認します。
 
-1. プレビュー ポータルで **Batch アカウント**、Batch アカウント名の順にクリックします。
+1. ポータルで **Batch アカウント**、Batch アカウント名の順にクリックします。
 
 2. アカウント ブレードで **[設定]**、**[プロパティ]** の順にクリックします。
 
@@ -95,4 +95,4 @@ Azure サポートから連絡があります。要求を完了するには最�
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -391,6 +391,7 @@ Azure Mobile Engagement のセットアップはきわめて単純です。ユ�
 
 ## 次のステップ
 
+- [Azure Mobile Engagement アカウントを作成します](mobile-engagement-create-account.md)。
 - Mobile Engagement 戦略を定義する方法について詳しくは、[Mobile Engagement 戦略の定義](mobile-engagement-define-your-mobile-engagement-strategy.md)に関するページを参照してください。
 
 
@@ -403,4 +404,4 @@ Azure Mobile Engagement のセットアップはきわめて単純です。ユ�
 <!--Link references-->
 [Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -3,7 +3,7 @@
    description="Cloud Services で使用される Azure ゲスト OS について Microsoft がサポートする内容について説明します。" 
    services="cloud-services" 
    documentationCenter="na" 
-   authors="Thraka" 
+   authors="yuemlu" 
    manager="timlt" 
    editor=""/>
 
@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="08/18/2015"
-   ms.author="adegeo"/>
+   ms.date="12/07/2015"
+   ms.author="yuemlu"/>
 
 # Azure ゲスト OS のサポートと提供終了のポリシー
-このページの情報は、Cloud Services の worker ロールと Web ロール (PaaS) Azure ゲスト オペレーティング システム ([ゲスト OS](https://msdn.microsoft.com/library/azure/ff729422.aspx)) に関連しています。このページの情報は、Virtual Machines (IaaS) には適用されません。
+このページの情報は、Cloud Services の worker ロールと Web ロール (PaaS) Azure ゲスト オペレーティング システム ([ゲスト OS](cloud-services-guestos-update-matrix.md)) に関連しています。このページの情報は、Virtual Machines (IaaS) には適用されません。
 
 Microsoft では、[ゲスト OS のサポート ポリシー](http://support.microsoft.com/gp/azure-cloud-lifecycle-faq)を公開しています。現在表示されているページでは、ポリシーの実装方法について説明します。
 
@@ -81,13 +81,13 @@ Microsoft は、"有効期限" と呼ばれる移行期間の最終日まで、�
 
 1. 新しいファミリへの移行の計画を早めに開始します。 
 2. 一時的なテスト デプロイをセットアップして、クラウド サービスを新しいファミリでテストします。 
-3. 新しいゲスト OS バージョンへの移行が自動的に行われるように、"自動" ([.CSCFG](https://msdn.microsoft.com/library/azure/gg456324.aspx) ファイル内では osVersion=*) に[ゲスト OS バージョンを設定](https://msdn.microsoft.com/library/azure/gg433101.aspx)します。
+3. ゲスト OS バージョン ([.cscfg](cloud-services-model-and-package.md#cscfg) ファイルの osVersion=*) を **Automatic** に設定して、新しいゲスト OS バージョンへの移行が自動的に行われるようにします。
 
 **Web アプリケーションで OS との緊密な統合が必要な場合はどうすればよいでしょうか。**
 
-Web アプリケーションのアーキテクチャが、基になるオペレーティング システムに深く依存する場合は、"[スタートアップ タスク](https://msdn.microsoft.com/library/windowsazure/gg456327.aspx)" のような機能や、将来的に存在する可能性がある他の拡張メカニズムなど、プラットフォームでサポートされる機能を使用します。または、[Azure Virtual Machines](http://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS: Infrastructure as a Service) を使用することもできます。この場合、ユーザーが基になるオペレーティング システムの管理を担当します。
+Web アプリケーションのアーキテクチャが、基になるオペレーティング システムに深く依存する場合は、[スタートアップ タスク](cloud-services-startup-tasks.md) のような機能や、将来的に存在する可能性がある他の拡張メカニズムなど、プラットフォームでサポートされる機能を使用します。または、[Azure Virtual Machines](http://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS: Infrastructure as a Service) を使用することもできます。この場合、ユーザーが基になるオペレーティング システムの管理を担当します。
  
 ## 次のステップ
 最新の[ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

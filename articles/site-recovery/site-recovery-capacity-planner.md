@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Site Recovery Capacity Planner | Microsoft Azure" 
+	pageTitle="Site Recovery で仮想マシンおよび物理サーバーを保護するための容量計画 | Microsoft Azure"
 	description="Azure Site Recovery は、オンプレミスに配置されている仮想マシンと物理サーバーの Azure またはセカンダリ オンプレミス サイトへのレプリケーション、フェールオーバー、および復旧を調整します。" 
 	services="site-recovery" 
 	documentationCenter="" 
-	authors="prateek9us" 
-	manager="abhiag" 
+	authors="rayne-wiselman" 
+	manager="jwhit" 
 	editor=""/>
 
 <tags 
@@ -13,99 +13,124 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="11/27/2015" 
-	ms.author="pratshar"/>
+	ms.date="12/07/2015" 
+	ms.author="raynew"/>
 
-# Site Recovery Capacity Planner
+# Azure Site Recovery で仮想マシンおよび物理サーバーを保護するための容量計画
 
-このドキュメントでは、Microsoft ASR キャパシティ プランニング ツールについて説明しています。このツールは、Site Recovery のシームレスな操作のためにプロビジョニングする必要があるリソースのガイダンスを提供します。キャパシティ プランニング ツールは、ソース環境 (ワークロード)、帯域幅要件、ターゲット側のリソース要件 (VM、ストレージ)、およびソース側 (SC VMM、構成サーバー、プロセス サーバーなど) で必要な任意の追加のサーバー リソースを分析するために使用できます。[Azure Site Recovery Capacity Planner](http://aka.ms/asr-capacity-planner-excel) ツールをダウンロードします。
- 
-Capacity Planner は次の 2 つのモードで使用できます。
- 
-- **クイック プランニング**: VM、ディスク、ストレージ、変更率の数値の平均に基づいて、ネットワークとサーバーの予測を取得します。 
-- **詳細なプランニング**: VM レベルで各ワークロードの詳細を提供します。VM レベルで互換性を分析し、ネットワークおよびサーバーの予測も取得します。
-     
-このドキュメントでは、ユーザーが Azure Site Recovery に習熟していることを前提としています。「[Azure Site Recovery の概要](site-recovery-overview.md)」を参照してください。
+Capacity Planner ツールを使用すると、Azure Site Recovery で HYPER-V VM、VMware VM、Windows および Linux 物理サーバーを保護するために必要な容量を算出できます。
 
-## Getting Started (概要)
-###前提条件
-使用する Planner のモードによっては、変更を続行するために詳細情報が必要になります。VM、VM あたりのディスク、ディスクあたりの Storage などのインフラストラクチャの詳細の他に、いくつかの詳細が必要になります。キー 1 は、1 日の変更率または解約率です。ソース環境が HYPER-V の場合、[HYPER-V キャパシティ プランニング ツール](https://www.microsoft.com/en-in/download/details.aspx?id=39057)を使用して解約率を取得します。[Hyper-V キャパシティ プランニング ツール](site-recovery-capacity-planning-for-hyper-v-replication.md)の使用方法に関する説明をお読みください。VMWare の場合は、[VMware キャパシティ プランニング アプライアンス ツール](https://labs.vmware.com/flings/vsphere-replication-capacity-planning-appliance)を使用します。
 
-##クイック プランナー
-1.	**ASR Capacity Planner.xlsm** ファイルを開きます。これには、マクロを実行する必要があります。そのため **[編集を有効にする]** と **[コンテンツの有効化]** が表示されたら、 
-1.	リスト ボックスから **[クイック プランナー]** を選択します。これにより**「Capacity Planner」**というタイトルの別のワークシートが開きます。
+## 概要
 
-	![Getting Started (概要)](./media/site-recovery-capacity-planner/getting-started.png)
+このツールでは、ソース環境やワークロードを分析したり、必要な帯域幅、ソースの場所で必要なサーバー リソース、ターゲットの場所に必要な (仮想マシンやストレージなどの) リソースを算出できます。
 
-1.	「Capacity Planner」ワークシートに、必要に応じて入力します。丸で囲まれたフィールドはすべて、必須の入力フィールドです。
-	1.	リスト ボックスを使用してシナリオを選択します。リスト ボックスでは、ソース環境が使用するシナリオを「Hyper-V から Azure」と「VMware/物理 から Azure」に切り替えることができます。
-	1. 	日次データの平均変更率を測定する必要があります。Hyper-V 環境では、Hyper-V Capacity Planner ツールが使用できます。VMWare の場合は、VMWare Capacity Planner ツールが使用できます。任意のピークをキャプチャして平均するために、通常はこのツールを 1 週間以上実行することをお勧めします。 
-	1. 	圧縮 – これは、VMware/物理 から Azure のシナリオで ASR によって提供される圧縮です。Hyper-V から Azure のシナリオでは、これは Riverbed などのサード パーティ製のアプライアンスで実現できます。 
-	1. VMware/物理 から Azure のシナリオでは、保持期間を日数で入力します。Hyper-V のシナリオでは、これは時間単位で入力します。 
-	1. 最後の 2 つの入力は、初期レプリケーション (IR) の計算に使用されます。ASR セットアップのデプロイ時に、初期データ セット全体をアップロードする必要があります。仮想マシンのバッチの初期レプリケーションを完了させる時間と、初期レプリケーションのバッチあたりの仮想マシンの数を、入力として使用することお勧めします。一方で、これらの数字は既存の帯域幅を調整するために微調整することができます。 
+このツールは、いくつかのモードで実行できます。
+
+- **クイック プランニング**: VM、ディスク、ストレージ、変更率の数値の平均に基づいてネットワークとサーバーを予測するには、このモードでツールを実行します。
+- **詳細なプランニング**: VM レベルで各ワークロードの詳細を得るには、このモードでツールを実行します。VM の互換性が分析され、ネットワークおよびサーバーが予測されます。
+
+## 開始する前に
+
+ツールを実行する前に、以下を行ってください。
+
+1. VM、VM あたりのディスク数、ディスクあたりのストレージなど、環境の情報を収集します。
+2. レプリケートされたデータの 1 日の変更 (チャーン) 率を識別します。これを行うには、次の手順を実行します。
+
+	- HYPER-V の VM をレプリケートする場合、[HYPER-V キャパシティ プランニング ツール](https://www.microsoft.com/download/details.aspx?id=39057)をダウンロードして変更率を得ます。このツールの詳細については、[こちら](site-recovery-capacity-planning-for-hyper-v-replication.md)を参照してください。このツールは 1 週間に渡って実行して平均をキャプチャすることをお勧めします。
+	- VMware の仮想マシンをレプリケートする場合、[vSphere キャパシティ プランニング アプライアンス](https://labs.vmware.com/flings/vsphere-replication-capacity-planning-appliance)を使用してチャーン率を算出します。
+	- 物理サーバーをレプリケートする場合、手動で評価を行う必要があります。
+
+## クイック プランナーの実行
+1.	[Azure Site Recovery Capacity Planner](http://aka.ms/asr-capacity-planner-excel) ツールをダウンロードして起動します。マクロを実行する必要があるので、求められたら編集の有効化とコンテンツの有効化を選択します。 
+2.	**[プランナーの種類を選択する]** リストボックスから **[クイック プランナー]**を選択します。
+
+	![使用の開始](./media/site-recovery-capacity-planner/getting-started.png)
+
+3.	**Capacity Planner** ワークシートに、必要な情報を入力します。以下のスクリーンショットの赤の丸がついているすべてのフィールドに、入力を行う必要があります。
+
+	- **[シナリオの選択]** で **[HYPER-V から Azure]** または **[VMware/物理から Azure]** を選択します。
+	- **[1 日の平均データ変更率]** に [HYPER-V キャパシティ プランニング ツール](site-recovery-capacity-planning-for-hyper-v-replication.md)または [vSphere キャパシティ プランニング アプライアンス](https://labs.vmware.com/flings/vsphere-replication-capacity-planning-appliance)を使用して収集した情報を入力します。  
+	- **[圧縮]** 設定は、Azure に VMware の VM または物理サーバーをレプリケートする場合の圧縮のみに該当します。30% 以上を見積もっています。必要に応じて設定を変更します。HYPER-V の VM を Azure の圧縮にレプリケートする場合、Riverbed などのサードパーティのアプライアンスを使用できます。 
+	-  **[保持期間数]** には、レプリカを保持する期間を指定します。VMware または物理サーバーをレプリケートする場合は、日数で値を入力します。Hyper-V をレプリケートする場合、時間単位で時間を入力します。
+	-  **[仮想マシンのバッチの初期レプリケーションを完了させる時間]** と **[初期レプリケーションのバッチあたりの仮想マシンの数]** には、初期レプリケーションの要件の計算に使用した設定を入力します。Site Recovery をデプロイする際には、初期データ セット全体をアップロードする必要があります。 
 
 	![入力](./media/site-recovery-capacity-planner/inputs.png)
 
-1. ソース環境の詳細を入力すると、表示される出力に以下のガイダンスが含まれます。
-	1.	ネットワーク帯域幅の要件
-		1. デルタ レプリケーションに必要な帯域幅の合計 (Mbps)。これは、1 日の平均データ変更率に基づいて計算されます。 
-		1. 初期レプリケーションに必要な帯域幅 (Mbps) も表示されます。これは、入力項目 (最後の 2 行) に表示された初期レプリケーションの入力に基づいて計算されます。 
-	1.	Azure の要件
-		1. 	このセクションでは、Azure で必要なディスク、IOPS、ストレージ アカウント、Storage に関する詳細が示されます。 
-	1. 	その他のインフラ要件 
-		1. 構成サーバーとプロセス サーバーの要件など、VMware/物理 から Azure のシナリオでの追加の要件。 
-		1. 	ソースで必要な追加ストレージなど、Hyper-V から Azure のシナリオでの追加の要件。
+2.	ソース環境の値を入力した後には、以下などが出力されます。
+
+	- ネットワーク帯域幅の要件:
+		- **[デルタ レプリケーションに必要な帯域幅** (MB/秒)]。これは、1 日の平均データ変更率に基づいて計算されます。
+		- **[初期レプリケーションに必要な帯域幅** (MB/秒)]。これは入力した初期レプリケーション値を使用して計算されます。 
+	- Azure の要件: Azure で必要なストレージ、IOPS、ストレージ アカウントおよびディスクについての詳しい説明です。
+		- **[必要なストレージ (単位: GB)]** は Azure で必要なストレージの合計です。
+		- **[Standard Storage アカウントの IOPS 合計]** は、Standard Storage アカウントの合計での IOPS が 8K の単位サイズで計算されます。クイック プランナーの場合、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。詳細なプランナーの場合、この数値は、Standard の Azure VM にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。 
+		- **[Standard Storage アカウントの数]** は、VM の保護に必要な Standard Storage アカウントの総数を示します。Standard Storage アカウントの場合、Standard Storage のすべての VM で最大 20000 の IOPS まで対応でき、またディスクごとでは最大 500 の IOPS まで対応できます。 
+		- **[必要な BLOB ディスク数]** は、Azure ストレージに作成されるディスクの数を示します。
+		- **[必要な Premium Storage アカウント数]** は、VM の保護に必要な Premium Storage アカウントの総数を示します。(20000 を超える) IOPS が多いソース VM には、Premium Storage アカウントが必要です。Premium Storage アカウントでは、最大 80000 の IOPS に対応できます。
+		- **[Premium Storage アカウントの IOPS 合計]** は、Premium Storage アカウントの合計での IOPS が 256 K の単位サイズで計算されます。クイック プランナーの場合、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。詳細なプランナーの場合、この数値は、Premium の Azure VM (DS および GS シリーズ) にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。 
+
+	- その他のインフラストラクチャの要件
+		- VMware および物理から Azure にレプリケーションする際の構成サーバーやプロセス サーバーなどのその他の要件です。
+		- [必要なその他のプロセス サーバー数]: その他にプロセス サーバーが必要かどうかを示します。つまり、既定で構成サーバーに構成されている以外に必要なプロセス サーバーです。N
+		- Hyper-V から Azure にレプリケーションする際のソースで必要な追加ストレージなどのその他の要件です。
 			
 	![出力](./media/site-recovery-capacity-planner/output.png)
  
-##詳細なプランナー
+## 詳細なプランナーの実行
 
-1.	**ASR Capacity Planner.xlsm** ファイルを開きます。これには、マクロを実行する必要があります。そのため **[編集を有効にする]** と **[コンテンツの有効化]** が表示されたら、 
-1.	リスト ボックスから **[詳細なプランナー]** を選択します。これにより**「Workload Qualification」**というタイトルの別のワークシートが開きます。
+
+1.	[Azure Site Recovery Capacity Planner](http://aka.ms/asr-capacity-planner-excel) ツールをダウンロードして起動します。マクロを実行する必要があるので、求められたら編集の有効化とコンテンツの有効化を選択します。 
+2.	**[プランナーの種類を選択する]** から **[詳細なプランナー]**を選択します。
 
 	![Getting Started (概要)](./media/site-recovery-capacity-planner/getting-started-2.png)
 
+3.	**Workload Qualification ** ワークシートに、必要な情報を入力します。マークが付いているフィールドはすべて入力する必要があります。
 
-1.	Workload Qualification ワークシートに、必要に応じて入力します。赤でマークされている列はすべて、必須フィールドです。その他の列は省略できます。
-	1.	プロセス コア: ソース サーバーのコアの総数を指定します。
-	1. メモリの割り当て (MB): ソース サーバーの RAM サイズを指定します。
-	1.	NIC の数: ソース サーバーの NIC の数を指定します。
-	1. Storage の合計 (GB): VM のストレージの合計サイズを指定します。たとえば、ソース サーバーにそれぞれ 500 GB の 3 つのディスクがある場合、ストレージの合計サイズは 1500 GB になります。
-	1. 接続されているディスクの数: ソース サーバーのディスクの合計数を指定します。
-	1. ディスク容量の使用率: 平均使用率を指定します。 
-	1. 1 日の変更率 (%) : ソース サーバーの 1 日のデータ変更率を指定します。
-	1. Azure サイズのマッピング: マッピングする Azure VM のサイズを入力することも、[IaaS VM の計算] ボタンを使用して最適な一致を計算することもできます。 
+	- **[プロセッサ コア]** には、ソース サーバー上のコアの総数を指定します。
+	- **[メモリの割り当て (MB)]** には、ソース サーバーの RAM サイズを指定します。 
+	- **[NIC 数]** には、ソース サーバー上のネットワーク アダプターの数を指定します。 
+	-  **[ストレージ合計 (GB)]** には、VM ストレージの合計サイズを指定します。たとえば、ソース サーバーにそれぞれ 500 GB のディスクが 3 つある場合、ストレージの合計サイズは 1500 GB になります。
+	-  **[接続されているディスクの数]** には、ソース サーバーのディスクの合計数を指定します。
+	-  **[ディスク容量の使用率]** には、平均使用率を指定します。
+	-  **[1 日の変更率 (%)]** には、ソース サーバーの 1 日のデータ変更率を指定します。
+	-  **[マッピングする Azure サイズ]** には、マップする Azure VM のサイズを入力します。これを行わない場合は、手動で [IaaS VM を計算する] をクリックします。
+
+4.	**[IaaS VM を計算する]** をクリックすると、以下が実行されます。
+
+	- 入力が検証され、Azure へのレプリケーション対象である各 VM 用に最も一致する Azure VM が取得されます。Azure VM の適切なサイズを検出できない場合、エラーが発行されます。たとえば、接続されているディスク数が 65 の場合、Azure VM の最大サイズは 64 であるため、エラーが発行されます。
+	- Azure VM に使用できるストレージ アカウントが推奨されます。
+	- ワークロードに必要な Standard Storage アカウントおよび Premium Storage アカウントの総数が算出されます。右下にスクロールして、ソース サーバーに使用できる Azure のストレージ タイプとストレージ アカウントを表示します。
+	- VM に割り当てられた (Standard または Premium の) 必要なストレージの種類に基づき、残りのテーブルが完了およびソートされます。Azure のバックアップ要件を満たすすべての VM では、列 A (対象 VM) に [はい] が表示されます。VM を Azure にバックアップできない場合は、エラーが表示されます。
 
 	![Workload Qualification](./media/site-recovery-capacity-planner/workload-qualification.png)
- 
-
-1. **[IaaS VM の計算]** ボタンをクリックすると、上記の入力が検証され、Azure VM の最適な一致が提案されます。ソース サーバーに最適なサイズの Azure VM が見つからない場合、サーバーにエラーを示します。たとえば、ソース VM に接続されているディスクの数が 65 の場合、最も大きいサイズの Azure VM に接続できるディスクの最大数は 64 であるとして、エラーを示します。
 
 
-**[IaaS VM の計算]** は、VM に Azure の標準ストレージ アカウントまたは Azure Premium Storage アカウントのどちらが必要かも計算します。また、ワークロードに必要な標準ストレージ アカウントと Premium Storage アカウントの数も提案します。右下にスクロールして、ソース サーバーに使用できる Azure のストレージ タイプとストレージ アカウントを表示します。
- 
-**例** : 次の値を持つ 5 つの VM に対し、ツールは最適な Azure VM のサイズを計算して割り当て、その VM に標準ストレージ アカウントと Premium Storage アカウントのどちらが必要かを提案しました。
+- **例**: テーブルに示した値を持つ 6 つの VM に最も一致する Azure VM および Azure ストレージ要件が、ツールによって計算されて割り当てられます。
 
-![Workload Qualification](./media/site-recovery-capacity-planner/workload-qualification-2.png)
+	![Workload Qualification](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
-例では、5 つの VM に標準ストレージ アカウントが 2 つと Premium Storage アカウントが 1 つ必要でした。VM1、VM2 は、1 つ目の標準ストレージ アカウントを使用でき、VM3 は 2 つ目の標準ストレージ アカウントを使用できます。VM4 と VM5 には Premium Storage アカウントが必要で、1 つの Premium Storage アカウントで対応することができます。
+- 出力例で以下に注意してください。
+	- 5 つの VM に Standard Storage アカウントが 2 つと Premium Storage アカウントが 1 つ必要でした。 
+	-  1 つ以上のディスクが 1 TB 以上であるために、VM3 は保護の対象とはなりません。
+	-  VM1 と VM2 は、最初の Standard Storage アカウントを使用できます。
+	-  VM4 は、2 つ目の Standard Storage アカウントを使用できます。
+	-  VM5 と VM6 には、Premium Storage アカウントが必要で、いずれも単一のアカウントを使用できます。
 
-![Workload Qualification](./media/site-recovery-capacity-planner/workload-qualification-3.png)
+	![Workload Qualification](./media/site-recovery-capacity-planner/workload-qualification-3.png)
+
+	>[AZURE.NOTE]ストレージの IOPS はディスク レベルではなく、VM レベルで計算されます。ソース VM の中の 1 つのディスクの IOPS が 500 を超えていて、VM の合計 IOPS がサポートされる標準的な Azure VM の範囲内の場合、他のすべての値 (ディスクの数、NIC の数、CPU コアの数、メモリ サイズ) が、標準的な VM の制限に収まり、ツールは Premium Storage の代わりに標準の VM を選択します。ユーザーは適切な DS または GS シリーズ VM を使用して Azure サイズ セルのマッピングを手動で更新する必要があります。
+
+	>[AZURE.NOTE]最初の列は、VM、ディスク、およびチャーンの検証列です。ストレージの IOPS はディスク レベルではなく、VM レベルで計算されます。ソース VM の中の 1 つのディスクの IOPS が 500 を超えていて、VM の合計 IOPS がサポートされる標準的な Azure VM の範囲内の場合、他のすべての値 (ディスクの数、NIC の数、CPU コアの数、メモリ サイズ) が、標準的な VM の制限に収まり、ツールは Premium Storage の代わりに標準の VM を選択します。ユーザーは適切な DS または GS シリーズ VM を使用して Azure サイズ セルのマッピングを手動で更新する必要があります。
+
+5. すべての詳細を定義したら、**[データをプランナー ツールに送信]** をクリックして、**Capacity Planner** を開きます。ワークロードが保護対象かどうかは強調表示によって示されます。
 
 
->[AZURE.NOTE]IOPS はディスク レベルではなく、VM レベルで計算されます。ソース VM の中の 1 つのディスクの IOPS が 500 を超えていて、VM の合計 IOPS がサポートされる標準的な Azure VM 以内の場合、他のすべての値 (ディスクの数、NIC の数、CPU コアの数、メモリ サイズ) が、標準的な VM の制限に収まり、ツールは Premium Storage の代わりに標準の VM を選択します。ユーザーは適切な DS または GS シリーズ VM を使用して Azure サイズ セルのマッピングを手動で更新する必要があります。
+### Capacity Planner の実行
 
-
-1.	最初の列は、VM、ディスクおよび解約の検証列です。 
-1.	すべての詳細を指定したら、上部にある **[プランナー ツールにデータを送信]** ボタンをクリックします。次の図のように、平均値が自動的に入力された **Capacity Planner** ワークシートが開きます。 
-1.	この操作により、どのワークロードが保護の対象で、どのワークロードが保護の対象外かも示されます。
-
-
-###Capacity Planner
-
-1.	**Capacity Planner** ワークシートでは、最初の行のインフラの入力ソース **ワークロード**は、入力情報が **Workload Qualification** ワークシートから取得されることを示しています。  
-1.	変更が必要な場合は、必ず **Workload Qualification** ワークシートで必要な変更を行い、**[プランナー ツールにデータを送信]** ボタンをクリックします。 
+1.	**Capacity Planner** ワークシートに入力します。Infra 入力ソース セルに 'Workload' という語が表示され、**Workload Qualification** ワークシートに入力されたことを示します。  
+2.	変更する設定を変更し、**[データをプランナー ツールに送信]** をクリックします。 
 
 	![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

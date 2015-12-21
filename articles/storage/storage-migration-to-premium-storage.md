@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="12/01/2015"
-    ms.author="tamram"/>
+    ms.date="12/04/2015"
+    ms.author="robinsh"/>
 
 
 # Azure Premium Storage への移行
@@ -78,7 +78,7 @@ Premium Storage の仕様の詳細については、「[Premium Storage を使�
 #### ディスク キャッシュ ポリシー
 既定では、ディスクのキャッシュ ポリシーは、すべてのPremium データ ディスクに対して「*読み取り専用*」、VM にアタッチされた Premium オペレーティング システム ディスクに対して「*読み取り/書き込み*」です。アプリケーションの IO パフォーマンスを最適化するには、この構成をお勧めします。書き込み量の多いディスクや書き込み専用のディスク (SQL Server ログ ファイルなど) の場合は、ディスク キャッシュを無効にすることで、アプリケーションのパフォーマンスを向上できる場合があります。既存のデータ ディスクのキャッシュ設定は、[Azure ポータル](portal.azure.com)、または *Set-AzureDataDisk* コマンドレットの *-HostCaching* パラメーターを使用して更新できます。
 
-#### 場所
+#### Location (場所)
 Azure Premium Storage を使用できる場所を選択します。使用できる場所に関する最新情報については、「[リージョン別のサービス](http://azure.microsoft.com/regions/#services)」を参照してください。VM のディスクを保存するストレージ アカウントと同じリージョンにある VM は、個々のリージョン内にある場合よりも優れたパフォーマンスを提供します。
 
 #### Azure VM のその他の構成設定
@@ -348,7 +348,7 @@ OS イメージまたは OS ディスクが登録されたら、新しい DS シ
 
 7.	最後の手順として、アプリケーションのニーズに応じて、新しい VM のバックアップとメンテナンスのスケジュールを計画します。
 
-### Automation
+### 自動化
 移行する VM が複数ある場合は、PowerShell スクリプトを使用した自動化が便利です。次に示すサンプルは、VM の移行を自動化するサンプル スクリプトです。このスクリプトはほんの一例であり、現在の VM ディスクについていくつかの仮定が含まれていることに注意してください。特定のシナリオに対応するように、スクリプトの更新が必要になる場合があります。
 
     <#
@@ -677,4 +677,4 @@ OS イメージまたは OS ディスクが登録されたら、新しい DS シ
 [2]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

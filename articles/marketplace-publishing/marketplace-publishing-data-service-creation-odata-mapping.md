@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="11/30/2015"
+      ms.date="12/06/2015"
       ms.author="hascipio; avikova" />
 
 # CSDL を使用した既存の Web サービスの OData へのマッピング
@@ -123,7 +123,7 @@ CSDL は、Web サービスを記述するための XML 文法です。CSDL の�
 
 次に CSDL の例について説明します (以下の CSDL 例をコピーして XML エディターに貼り付け、実際のサービスに合わせて変更します。[Azure Marketplace 発行ポータル](https://publish.windowsazure.com)でサービスを作成するときに、変更した内容を [データ サービス] タブの CSDL マッピングに貼り付けます)。
 
-**用語:** CSDL の用語を[発行ポータル](https://publish.windowsazure.com) UI (PPUI) の用語に関連付けます。- PPUI のオファーの "タイトル" は MyWebOffer に関連付けられます - PPUI の MyCompany は [販売者ダッシュボード](https://sellerdashboard.microsoft.com) UI の会社名に関連付けられます - API は Web またはデータ サービスに関連付けられます (PPUI ではプラン)
+**用語:** CSDL の用語を[発行ポータル](https://publish.windowsazure.com) UI (PPUI) の用語に関連付けます。- PPUI のオファーの "タイトル" は MyWebOffer に関連付けられます - PPUI の MyCompany は [Microsoft デベロッパー センター](http://dev.windows.com/registration?accountprogram=azure) UI の**発行者表示名**に関連付けられます - API は Web またはデータ サービス (PPUI のプラン) に関連付けられます
 
 **階層:** 会社 (コンテンツ プロバイダー) は、API に沿って、プラン (つまりサービス) を含むオファーを所有しています。
 
@@ -298,7 +298,7 @@ CSDL は、Web サービスを記述するための XML 文法です。CSDL の�
 
 ## 関連項目
 - 特定のノードとそのパラメーターについて知りたい場合は、定義と説明、例、ユース ケースのコンテキストなどが記載された、この[データ サービスの OData マッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)に関する記事を参照してください。
-- 例に関心がある場合は、[データ サービス OData マッピング例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関するページでサンプル コードを参照し、コード構文とコンテキストを学習してください。
-- データ サービスを Azure Marketplace に発行するための指定のパスに戻る場合は、この[データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
+- 例を確認したい場合は、[データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関する記事でサンプル コードを参照し、コード構文とコンテキストを学習してください。
+- データ サービスを Azure Marketplace に発行するために指定のパスに戻る場合は、[データ サービス発行ガイド](marketplace-publishing-data-service-creation.md)に関する記事を参照してください。
 
-<!----HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1210_2015-->

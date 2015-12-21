@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Linux ベースの HDInsight での Hive を使用したフライトの遅延データの分析 | Microsoft Azure" 
-	description="Linux ベースの HDInsight で Hive を使用してフライト データを分析し、Sqoop を使用して SQL データベースにデータをエクスポートする方法について説明します。" 
+	description="Linux ベースの HDInsight で Hive を使用してフライト データを分析し、Sqoop を使用して SQL Database にデータをエクスポートする方法について説明します。" 
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="Blackmist" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/09/2015" 
+	ms.date="12/04/2015" 
 	ms.author="larryfr"/>
 
 #HDInsight での Hive を使用したフライト遅延データの分析
@@ -31,7 +31,7 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
 
 - __HDInsight クラスター__。新しい Linux ベースの HDInsight クラスターを作成する手順については、「[Linux 上の HDInsight で Hive と Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
 
-- __Azure SQL Database__。保存先データ ストアとして Azure SQL Database を使用します。SQL Database がまだない場合、SQL Database を作成するには、「[How to create and configure an Azure SQL Database (Azure SQL Database を作成して構成する方法)](../sql-database/sql-database-create-configure.md)」をご覧ください。
+- __Azure SQL Database__。保存先データ ストアとして Azure SQL Database を使用します。SQL Database がまだない場合は、[Azure SQL Database を作成する方法](../sql-database/sql-database-create.md)に関するページをご覧ください。
 
 - __Azure CLI__。Azure CLI をインストールしていない場合、詳しい手順については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
 
@@ -63,7 +63,7 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
 	
 	* [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows)
+	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 	
 3. 接続したら、次のコマンドを使用して .zip ファイルを解凍します。
 
@@ -285,7 +285,6 @@ Azure SQL Database を作成するには、次の手順に従います。これ�
 
 [rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
-[powershell-install-configure]: ../install-configure-powershell.md
 
 [hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
@@ -305,4 +304,4 @@ Azure SQL Database を作成するには、次の手順に従います。これ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

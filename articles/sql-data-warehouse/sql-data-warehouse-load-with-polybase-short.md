@@ -152,7 +152,7 @@ FROM   [dbo].[DimDate2External];
 ```
 
 
-## 手順 5: 新しくロードしたデータの統計を作成する 
+## 手順 5: 新しく読み込んだデータの統計を作成する 
 
 Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。統計の詳細については、開発トピック グループの「[統計][]」トピックを参照してください。この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します
 
@@ -174,8 +174,8 @@ create statistics [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 [CREATE EXTERNAL DATA SOURCE ]: https://msdn.microsoft.com/library/dn935022(v=sql.130).aspx
 [CREATE EXTERNAL FILE FORMAT ]: https://msdn.microsoft.com/library/dn935026(v=sql.130).aspx
 [Create External Table]: https://msdn.microsoft.com/library/dn935021(v=sql.130).aspx
-[CREATE MASTER KEY ]: https://msdn.microsoft.com/ja-JP/library/ms174382.aspx
-[CREATE DATABASE SCOPED CREDENTIAL ]: https://msdn.microsoft.com/ja-JP/library/mt270260.aspx
+[CREATE MASTER KEY ]: https://msdn.microsoft.com/library/ms174382.aspx
+[CREATE DATABASE SCOPED CREDENTIAL ]: https://msdn.microsoft.com/library/mt270260.aspx
 [CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
 
 
@@ -183,4 +183,4 @@ create statistics [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 
 [統計]: ./sql-data-warehouse-develop-statistics.md
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1210_2015-->

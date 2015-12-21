@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/08/2015"
+   ms.date="12/06/2015"
    ms.author="v-jeana; hascipio"/>
 
 
@@ -60,7 +60,7 @@ https://publish.windowsazure.com/ に移動し、Microsoft アカウントの資
   - **顧客の管理**
   - **プランの管理**
   - **支払**
-  - **販売者ダッシュボード**
+  - **デベロッパー センター**
   - **その他**
 
 ## 4\.サポートの要求
@@ -92,4 +92,4 @@ https://publish.windowsazure.com/ に移動し、Microsoft アカウントの資
 [5]: ./media/marketplace-publishing-get-publisher-support/step5.png
 [6]: ./media/marketplace-publishing-get-publisher-support/step6.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

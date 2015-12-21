@@ -41,7 +41,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	- **uploadSampleDataAndScripts.ps1:** このスクリプトは、サンプル データとスクリプトを Azure にアップロードします。
 5. 以下の Azure リソースが作成済みであることを確認してください。			
 	- Azure ストレージ アカウント
-	- Azure SQL データベース
+	- Azure SQL Database
 	- Azure HDInsight クラスター Version 3.1 以上 (または、Data Factory サービスで自動的に作成されるオンデマンド HDInsight クラスターを使用します)	
 7. Azure リソースを作成したなら、上記の各リソースへの接続に必要な情報を持っていることを確認します。
  	- **Azure ストレージ アカウント** - アカウント名とアカウント キー。  
@@ -188,7 +188,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	- **スタート画面** (ホーム ページ) で **[LogProcessingFactory]** をクリックします。
 	- 左側の **[参照]** をクリックし、**[すべて]**、**[Data Factory]** の順にクリックし、最後に目的のデータ ファクトリをクリックします。
  
-	Azure Data Factor の名前はグローバルに一意にする必要があります。**""LogProcessingFactory" という名前の Data Factory は使用できません"** というエラー メッセージが表示された場合は、名前を変更します (例: yournameLogProcessingFactory)。このチュートリアルの手順の実行中に、この名前を LogProcessingFactory の代わりに使用します。
+	Azure Data Factory の名前はグローバルに一意にする必要があります。**""LogProcessingFactory" という名前の Data Factory は使用できません"** というエラー メッセージが表示された場合は、名前を変更します (例: yournameLogProcessingFactory)。このチュートリアルの手順の実行中に、この名前を LogProcessingFactory の代わりに使用します。
  
 ## <a name="MainStep3"></a>手順 3. リンクされたサービスを作成する
 
@@ -215,13 +215,13 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 
 3. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーの値に置き換えます。
 
-	![BLOB ストレージ JSON の編集][image-editor-blob-storage-json]
+	![Editor Blob Storage JSON][image-editor-blob-storage-json]
 	
 	JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](http://go.microsoft.com/fwlink/?LinkId=516971)を参照してください。
 
 4. ツール バーの **[デプロイ]** をクリックして、StorageLinkedService をデプロイします。タイトル バーに **"リンクされたサービスが正常に作成されました"** というメッセージが表示されていることを確認します。
 
-	![エディターの BLOB ストレージのデプロイ][image-editor-blob-storage-deploy]
+	![エディターの Blob Storage のデプロイ][image-editor-blob-storage-deploy]
 
 5. 手順を繰り返して、HDInsight クラスターに関連付けられているストレージに対して **HDInsightStorageLinkedService** という名前で Azure Storage のリンクされたサービスを作成します。リンクされたサービスの JSON スクリプトで、**name** プロパティの値を **HDInsightStorageLinkedService** に変更します。
 
@@ -243,19 +243,22 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 	5. **linkedServiceName** には、入門チュートリアルで作成した **HDInsightStorageLinkedService** を指定します。 
 
 			{
-		    	"name": "HDInsightLinkedService",
+			    "name": "HDInsightOnDemandLinkedService",
 				    "properties": {
-		    	    "type": "HDInsightOnDemandLinkedService",
+			        "type": "HDInsightOnDemand",
+			        "description": "",
+			        "typeProperties": {
 		    	    "clusterSize": "4",
-		    	    "timeToLive": "00:05:00",
+			            "timeToLive": "00:30:00",
 		    	    "version": "3.2",
-		    	    "linkedServiceName": "HDInsightStorageLinkedService"
+			            "linkedServiceName": "StorageLinkedService"
+			        }
 		    	}
 			}
 
-		リンクされたサービスの **type** は **HDInsightOnDemandLinkedService** に設定されます。
+		リンクされたサービスの **type** は **HDInsightOnDemand** に設定されます。
 
-2. コマンド バーの **[デプロイ]** をクリックして、リンクされたサービスをデプロイします。
+2. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
    
    
 #### 独自の HDInsight クラスターを使用するには 
@@ -322,6 +325,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 	このチュートリアルのサンプル データが 2014 年 5 月 1 日から 2014 年 5 月 5 日であるため、開始時刻と終了時刻が 2014 年 5 月 1 日および 2014 年 5 月 5 日に設定されていることに注意してください。
  
+	オンデマンド HDInsight のリンクされたサービスを使用する場合は、**linkedServiceName** プロパティを **HDInsightOnDemandLinkedService** に設定します。
 3. ツール バーの **[デプロイ]** クリックして、パイプラインを作成してデプロイします。エディターのタイトル バーに "**パイプラインが正常に作成されました**" というメッセージが表示されていることを確認します。
 4. 次のファイルの内容で手順 1. ～ 3. を繰り返します。 
 	1. EnrichGameLogsPipeline.json
@@ -355,11 +359,9 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 		![監視スタート画面][image-data-factory-monitoring-startboard]
 
-	2. **[参照]** ハブをクリックし、**[すべて]** をクリックします。
 	 	
-		![すべてのハブの監視][image-data-factory-monitoring-hub-everything]
 
-		**[参照]** ブレードで **[Data Factory]** を選択し、**[Data Factory]** ブレードで **[LogProcessingFactory]** を選択します。
+	2. **[参照]** をクリックし、**[参照]** ブレードで **[Data Factory]** を選択し、**[Data Factory]** ブレードで **[LogProcessingFactory]** を選択します。
 
 		![データ ファクトリの監視][image-data-factory-monitoring-browse-datafactories]
 2. いくつかの方法でデータ ファクトリが監視できます。パイプラインまたはデータ セットで監視が始められます。パイプラインで監視を始め、さらに詳しく学びましょう。 
@@ -375,7 +377,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 	**[最近更新したスライス]** と **[最近失敗したスライス]** の一覧は、どちらも **[最終更新時刻]** で並べ替えられます。次の状況では、スライスの更新時刻が変更されます。
 
-	-  **Set-AzureDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
+	-  **Set-AzureRmDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 	-  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
  
 	一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
@@ -524,4 +526,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial/DataFactoryCreateButton.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

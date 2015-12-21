@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="12/05/2015" 
 	ms.author="juliako"/>
 
 
@@ -59,9 +59,9 @@ CloudMediaContext には、5 つのコンストラクター オーバーロー�
 	_context = new CloudMediaContext(_cachedCredentials);
 
 
-## アクセス制御サービス トークンの再利用
+## Access Control Service トークンの再利用
 
-このセクションでは、パラメーターとして MediaServicesCredentials を受け取る CloudMediaContext コンストラクターを使用してアクセス制御サービス トークンを再利用する方法を示します。
+このセクションでは、パラメーターとして MediaServicesCredentials を受け取る CloudMediaContext コンストラクターを使用して Access Control Service トークンを再利用する方法を示します。
 
 
 [Azure Active Directory Access Control](https://msdn.microsoft.com/library/hh147631.aspx) (Access Control Service か ACS とも呼ばれます) は、認証とユーザーへの Web アプリへのアクセス許可を簡単に行うことができるクラウドベースのサービスです。Microsoft Azure Media Services は、ACS トークンを必要とする OAuth プロトコルを使用して、サービスへのアクセスを制御します。Media Services は、承認サーバーから ACS トークンを受け取ります。
@@ -150,9 +150,9 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 		    return cloudMediaContext;
 		}
 		
-## 中国北部地域にある Media Services アカウントへの接続
+## 中国北部リージョンにある Media Services アカウントへの接続
 
-アカウントが中国北部地域に存在する場合は、次のコンストラクターを使用します。
+アカウントが中国北部リージョンに存在する場合は、次のコンストラクターを使用します。
 
 	public CloudMediaContext(Uri apiServer, string accountName, string accountKey, string scope, string acsBaseAddress)
 
@@ -196,4 +196,4 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

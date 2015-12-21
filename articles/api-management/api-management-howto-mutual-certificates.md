@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/23/2015" 
+	ms.date="12/07/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
@@ -28,7 +28,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ## <a name="step1"> </a>クライアント証明書のアップロード
 
-最初に、ご利用の API Management サービスの Azure ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
+最初に、ご利用の API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
 ![API Publisher ポータル][api-management-management-console]
 
@@ -141,4 +141,4 @@ HTTP 基本認証や共有シークレット認証など、バックエンド �
 
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1210_2015-->

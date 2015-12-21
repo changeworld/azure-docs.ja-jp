@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Microsoft Azure App Service での取引先契約の作成" 
+   pageTitle="Azure App Service で取引先契約を作成する | Microsoft Azure" 
    description="取引先契約の作成" 
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="10/01/2015"
+   ms.date="12/07/2015"
    ms.author="rajram"/>
 
 
@@ -73,9 +73,9 @@ BizTalk API Apps には、次のようなものがあります。Azure ポータ
 ![][3]
 
 <!--Image references-->
-[1]: ./media/app-service-logic-create-a-trading-partner-agreement/TPMResourceView.jpg
-[2]: ./media/app-service-logic-create-a-trading-partner-agreement/ProtocolSelection.jpg
-[3]: ./media/app-service-logic-create-a-trading-partner-agreement/X12AgreementCreation.jpg
+[1]: ./media/app-service-logic-create-a-trading-partner-agreement/TPMResourceView.png
+[2]: ./media/app-service-logic-create-a-trading-partner-agreement/ProtocolSelection.png
+[3]: ./media/app-service-logic-create-a-trading-partner-agreement/X12AgreementCreation.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

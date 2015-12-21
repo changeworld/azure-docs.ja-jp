@@ -23,13 +23,13 @@ Azure SQL Database は、障害から回復するために次の機能を備え�
 - アクティブ geo レプリケーション [(ブログ)](http://azure.microsoft.com/blog/2014/07/12/spotlight-on-sql-database-active-geo-replication/)
 - 標準 geo レプリケーション [(ブログ)](http://azure.microsoft.com/blog/2014/09/03/azure-sql-database-standard-geo-replication/)
 - geo リストア [(ブログ)](http://azure.microsoft.com/blog/2014/09/13/azure-sql-database-geo-restore/)
-- 新しい geo レプリケーション機能 [(ブログ)](https://azure.microsoft.com/blog/azure-sql-database-geo-replication-october-2015-update/)
+- 新しい geo レプリケーション機能 [(ブログ)](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 
 災害とデータベースを復旧するための準備の詳細については、「[ビジネス継続性のための設計](sql-database-business-continuity-design.md)」をご覧ください。
 
 ##復旧を開始するタイミング 
 
-復旧操作はアプリケーションに影響します。SQL 接続文字列を変更する必要があり、永続的にデータが失われる可能性があります。そのため、障害がアプリケーションの RTO よりも長くかかる可能性が高い場合にのみ行ってください。アプリケーションが運用環境にデプロイされている場合は、アプリケーションの健全性の定期的な監視を実行し、次のデータ ポイントを使用して、復旧が保証されていることをアサートします。
+復旧操作はアプリケーションに影響します。SQL 接続文字列を変更する必要があり、永続的にデータが失われる可能性があります。そのため、障害がアプリケーションの RTO よりも長くかかる可能性が高い場合にのみ行ってください。アプリケーションが実稼働環境にデプロイされている場合は、アプリケーションの健全性の定期的な監視を実行し、次のデータ ポイントを使用して、復旧が保証されていることをアサートします。
 
 1. 接続の永続的な障害は、アプリケーション層からデータベースに渡ります。
 2. Azure クラシック ポータルは、幅広い影響のあるリージョンでのインシデントに関するアラートを示します。
@@ -42,7 +42,7 @@ Azure SQL Database は、障害から回復するために次の機能を備え�
 ###Azure クラシック ポータル
 Azure クラシック ポータルを利用し、geo レプリケーションされたセカンダリ データベースとの連続コピー リレーションシップを終了します。
 
-1. [Azure クラシック ポータル](https://portal.Azure.com)にログインします。
+1. [Azure クラシック ポータル](https://portal.Azure.com)にログインする
 2. 画面の左側にある、**[参照]** をクリックして、**[SQL Database]** を選択します。
 3. 目的のデータベースに移動し、それを選択します。 
 4. データベースのブレードの下部にある **[Geo Replication map]** を選択します。
@@ -131,4 +131,4 @@ REST を使用して、プログラムでデータベースの復旧を実行し
 
 データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。クライアント アプリケーションで *.database.secure.windows.net パターンのセキュリティで保護された接続文字列を使用している場合は、監査が必要であることを表しています。詳細については、「[SQL Database 監査の使用](sql-database-auditing-get-started.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

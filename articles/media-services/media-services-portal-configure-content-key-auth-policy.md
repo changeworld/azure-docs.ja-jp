@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="12/04/2015" 
 	ms.author="juliako"/>
 
 
@@ -95,7 +95,7 @@ Media Services では、**Secure Token Service** は提供されません。ト�
 
 
 ##次のステップ
-コンテンツ キーの認証ポリシーを構成したので、「[方法: Azure クラシック ポータルを使用した暗号化の有効化](../media-services-manage-content#encrypt/)」トピックに移動します。
+コンテンツ キーの承認ポリシーを構成したので、「[方法: Azure クラシック ポータルを使用した暗号化の有効化](../media-services-manage-content#encrypt/)」トピックに移動します。
 
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
@@ -103,4 +103,4 @@ Media Services では、**Secure Token Service** は提供されません。ト�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

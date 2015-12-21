@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/09/2015"
+   ms.date="12/04/2015"
    ms.author="larryfr"/>
 
 #Curl を使用した HDInsight の Hadoop での Hive クエリの実行
@@ -116,7 +116,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
 
 4. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、****wasb:///example/curl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/curl** ディレクトリに保存されます。
 
-    これらのファイルは [Mac、Linux、Windows 用の Azure CLI](xplat-cli-install.md) を使用して一覧表示し、ダウンロードできます。たとえば、**example/curl** 内のファイルを一覧表示するには、次のコマンドを使用します。
+    これらのファイルは [Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md) を使用して一覧表示し、ダウンロードできます。たとえば、**example/curl** 内のファイルを一覧表示するには、次のコマンドを使用します。
 
 		azure storage blob list <container-name> example/curl
 
@@ -180,18 +180,11 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 
 
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
 
-[Powershell-install-configure]: ../install-configure-powershell.md
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-[image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
-[img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
-[image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

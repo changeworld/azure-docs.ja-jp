@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/10/2015" 
+	ms.date="12/07/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で Azure Event Hubs にイベントを記録する方法
@@ -24,17 +24,17 @@ Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むこ�
 
 ## Azure Event Hub を作成します
 
-新しいイベント ハブを作成するには、[[Azure ポータル]](https://manage.windowsazure.com) にサインインして **[新規]**、**[App Services]**、**[Service Bus]**、**[イベント ハブ]**、**[簡易作成]** の順にクリックします。イベント ハブの名前とリージョンを入力し、サブスクリプションを選択して、名前空間を選択します。名前空間の作成がまだ済んでいない場合は、**[名前空間]** ボックスに名前を入力して作成してください。すべてのプロパティの構成が完了したら、**[新しいイベント ハブの作成]** をクリックしてイベント ハブを作成します。
+新しいイベント ハブを作成するには、[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインして **[新規]**、**[App Services]**、**[Service Bus]**、**[イベント ハブ]**、**[簡易作成]** の順にクリックします。イベント ハブの名前とリージョンを入力し、サブスクリプションを選択して、名前空間を選択します。名前空間の作成がまだ済んでいない場合は、**[名前空間]** ボックスに名前を入力して作成してください。すべてのプロパティの構成が完了したら、**[新しいイベント ハブの作成]** をクリックしてイベント ハブを作成します。
 
 ![イベント ハブの作成][create-event-hub]
 
 次に、新しいイベント ハブの **[構成]** タブに移動し、**共有アクセス ポリシー**を 2 つ作成します。1 つは **"Sending"** という名前を付けて、**送信**アクセス許可を与えます。
 
-![ポリシーの送信][sending-policy]
+![Sending policy][sending-policy]
 
 もう 1 つには **"Receiving"** という名前を付けて**リッスン**アクセス許可を追加し、**[保存]** をクリックします。
 
-![ポリシーの受信][receiving-policy]
+![Receiving policy][receiving-policy]
 
 アプリケーションは、この 2 つの共有アクセス ポリシーによって、イベント ハブにイベントを送信したり、イベント ハブからイベントを受信したりすることができます。これらのポリシーの接続文字列にアクセスするには、イベント ハブの **[ダッシュボード]** タブに移動し、**[接続情報]** をクリックします。
 
@@ -48,20 +48,20 @@ Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むこ�
 
 イベント ハブが完成したら、そこにイベントを記録できるようにするための構成を API Management サービスの[ロガー](https://msdn.microsoft.com/library/azure/mt592020.aspx)に対して行います。
 
-API Management のロガーは、[API Management REST API](http://aka.ms/smapi) を使用して構成します。REST API を初めて使用する場合は、あらかじめ[前提条件](https://msdn.microsoft.com/library/azure/dn776326.aspx#Prerequisites)を確認し、[REST API へのアクセスを有効化](https://msdn.microsoft.com/library/azure/dn776326.aspx#EnableRESTAPI)してください。
+API Management のロガーは、[API Management REST API](http://aka.ms/smapi) を使用して構成します。REST API を初めて使用する前には、[前提条件](https://msdn.microsoft.com/library/azure/dn776326.aspx#Prerequisites)を確認し、[REST API へのアクセスを有効化](https://msdn.microsoft.com/library/azure/dn776326.aspx#EnableRESTAPI)してください。
 
 ロガーを作成するには、次の URL テンプレートを使用して HTTP PUT 要求を送信します。
 
     https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2014-02-14-preview
 
 -	`{your service}` は、実際の API Management サービス インスタンスの名前です。
--	`{new logger name}` は、新しいロガーに付ける名前です。[log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) ポリシーを構成する際は、この名前を参照します。
+-	`{new logger name}` は、新しいロガーに付ける名前です。[log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) ポリシーを構成するときに、この名前を参照します。
 
 次のヘッダーを要求に追加します。
 
 -	Content-Type : application/json
 -	Authorization : SharedAccessSignature uid=...
-	-	`SharedAccessSignature` を生成する手順については、[Azure API Management REST API の認証](https://msdn.microsoft.com/library/azure/dn798668.aspx)に関するページを参照してください。
+	-	`SharedAccessSignature` を生成する手順については、[Azure API Management REST API の認証に関するページ](https://msdn.microsoft.com/library/azure/dn798668.aspx)を参照してください。
 
 次のテンプレートを使用して要求の本文を指定します。
 
@@ -69,24 +69,24 @@ API Management のロガーは、[API Management REST API](http://aka.ms/smapi) 
       "type" : "AzureEventHub",
       "description" : "Sample logger description",
       "credentials" : {
-        "name" : "Name of the Event Hub from the Azure portal",
+        "name" : "Name of the Event Hub from the Azure Classic Portal",
         "connectionString" : "Endpoint=Event Hub Sender connection string"
         }
     }
 
 -	`type` は `AzureEventHub` に設定する必要があります。
--	`description` は、ロガーの説明です (省略可能)。必要であれば、長さゼロの文字列にしてください。
--	`credentials` には、Azure Event Hub の `name` と `connectionString` が含まれます。
+-	`description` は、ロガーの説明です (省略可能)。必要に応じて、長さゼロの文字列にしてください。
+-	`credentials` には、Azure Event Hubs の `name` と `connectionString` が含まれます。
 
-要求を実行したとき、ロガーが作成された場合、状態コード `201 Created` が返されます。
+要求を実行したとき、ロガーが作成されると、状態コード `201 Created` が返されます。
 
->[AZURE.NOTE]その他のリターン コードとその理由については、[ロガーの作成](https://msdn.microsoft.com/library/azure/mt592020.aspx#PUT)に関するページを参照してください。その他、リスト、更新、削除など、各種操作の実行方法については、[ロガー](https://msdn.microsoft.com/library/azure/mt592020.aspx) エンティティのドキュメントを参照してください。
+>[AZURE.NOTE]その他のリターン コードとその理由については、[ロガーの作成に関するページ](https://msdn.microsoft.com/library/azure/mt592020.aspx#PUT)を参照してください。リスト、更新、削除など、その他の操作の実行方法については、[ロガー](https://msdn.microsoft.com/library/azure/mt592020.aspx) エンティティのドキュメントを参照してください。
 
 ## log-to-eventhub ポリシーの構成
 
 API Management でロガーを構成したら、必要なイベントを記録するための構成を log-to-eventhub ポリシーに対して行います。log-to-eventhub ポリシーは、inbound と outbound のどちらかのポリシー セクションで使用します。
 
-ポリシーを構成するには、[Azure ポータル](https://manage.windowsazure.com)にサインインして API Management サービスに移動し、**[発行者ポータル]** または **[管理]** をクリックして発行者ポータルにアクセスします。
+ポリシーを構成するには、[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインして API Management サービスに移動し、**[発行者ポータル]** または **[管理]** をクリックして発行者ポータルにアクセスします。
 
 ![パブリッシャー ポータル][publisher-portal]
 
@@ -133,4 +133,4 @@ API Management でロガーを構成したら、必要なイベントを記録�
 [event-hub-policy]: ./media/api-management-howto-log-event-hubs/event-hub-policy.png
 [add-policy]: ./media/api-management-howto-log-event-hubs/add-policy.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

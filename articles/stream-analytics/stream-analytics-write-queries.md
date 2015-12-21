@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="クエリを作成する | Microsoft Azure" 
-	description="Stream Analytics でのクエリの作成 | ラーニング パス セグメント。"
+	pageTitle="Stream Analytics でクエリを記述する方法 | Microsoft Azure" 
+	description="Stream Analytics でのクエリ記述とクエリ データ | ラーニング パス セグメント。"
+	keywords="クエリの記述方法、クエリ データ、クエリの記述、クエリの記述"
 	documentationCenter=""
 	services="stream-analytics"
 	authors="jeffstokes72" 
@@ -13,43 +14,43 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/23/2015" 
+	ms.date="12/04/2015" 
 	ms.author="jeffstok"/>
 
 # Stream Analytics でクエリを記述する方法
 
-Azure Stream Analytics のストリーム処理ロジックは、ジョブが開始する前に定義され、ジョブに到着したデータに対して実行される、"継続クエリ" として実装されます。データの変換は、SQL に似たクエリ言語で表されます。この言語は、主として T-SQL のサブセットであり、時間的なセマンティクスを表すために使用される[ウィンドウ化](https://msdn.microsoft.com/library/azure/dn835019.aspx)などの言語拡張機能が追加されています。
+Azure Stream Analytics のストリーム処理ロジックのクエリ記述は、ジョブが開始する前に定義され、ジョブに到着したデータに対して実行される、"継続クエリ" として実装されます。データの変換は、SQL に似たクエリ言語で表されます。この言語は、主として T-SQL のサブセットであり、時間的なセマンティクスを表すために使用される[ウィンドウ化](https://msdn.microsoft.com/library/azure/dn835019.aspx)などの言語拡張機能が追加されています。
 
-## Stream Analytics クエリを作成するには: ##
+## クエリの記述: ##
 
-1. Azure クラシック ポータルの Stream Analytics ジョブで、**[クエリ]** をクリックします。
+1. Microsoft Azure 管理ポータルの Stream Analytics ジョブで、**[クエリ]** をクリックします。
 
     ![クエリの選択](./media/stream-analytics-write-queries/1-stream-analytics-write-queries.png)
 
-    Azure ポータルで、**[クエリ]** をクリックします。
+    Azure プレビュー ポータルで **[クエリ]** をクリックします。
 
     ![クエリの選択のプレビュー](./media/stream-analytics-write-queries/query-preview-portal.png)
 
 2.	作業を始めやすいように、新しいジョブにはクエリ テンプレートが付いています。クエリ テンプレートは、入力イベントのすべてのフィールドを出力に反映させる「パススルー」クエリを実行します。
 
-    - ジョブに少なくとも 1 つの入力と出力が定義されている場合、プレースホルダーの "[YourOutputAlias]" および "[YourInputAlias]" フィールドを最初に使用する入力および出力のエイリアスに置き換えることができます。さらに、ジョブで入力と出力を定義していなくても、Azure クラシック ポータルでクエリを作成してテストできます。
+    - ジョブに少なくとも 1 つの入力と出力が定義されている場合、プレースホルダーの "[YourOutputAlias]" および "[YourInputAlias]" フィールドを最初に使用する入力および出力のエイリアスに置き換えることができます。さらに、ジョブで入力と出力を定義していなくても、Azure ポータルでクエリを作成してテストできます。
     - 単純なパススルーでは対応できない処理を実行する必要がある場合は、クエリの定義を編集できます。クエリの作成を始めるに際は、よく使用されるクエリのパターンを[こちら](stream-analytics-query-patterns)で確認してください。  
   
-    ![[クエリ] ウィンドウ](./media/stream-analytics-write-queries/2-stream-analytics-write-queries.png)
+    ![クエリ データ ウィンドウ](./media/stream-analytics-write-queries/2-stream-analytics-write-queries.png)
 
-## クエリをテストするには: ##
+## クエリ データが動作することを検証するには: ##
 
 テスト データを含むローカル JSON ファイルを使用してブラウザーでクエリを実行することにより、クエリが意図したとおりに動作することを確認できます。これを行っても、ジョブが開始したり、課金に影響することはありません。
 
-> [AZURE.NOTE]現在、Azure ポータルでは、ブラウザー内クエリ テストはサポートされていません。
+> [AZURE.NOTE]現在、Azure プレビュー ポータルでは、ブラウザー内クエリ テストはサポートされていません。
 
 1.	クエリにエラーがないことを確認し (エラーがある場合は [テスト] ボタンが無効になります)、[テスト] ボタンをクリックします。  
 
-    ![クエリのテスト](./media/stream-analytics-write-queries/3-stream-analytics-write-queries.png)
+    ![クエリ データ テスト](./media/stream-analytics-write-queries/3-stream-analytics-write-queries.png)
 
 2.	クエリで参照されている各入力に対するファイルの指定を求められます。この例では、テンプレートのクエリをそのままに使用しているので、ダイアログで要求される入力の名前は "yourinputalias" です。
 
-    ![テスト データ](./media/stream-analytics-write-queries/4-stream-analytics-write-queries.png)
+    ![テスト データ クエリ](./media/stream-analytics-write-queries/4-stream-analytics-write-queries.png)
 
 3.	テスト ファイルを参照します。[github] (https://github.com/Azure/azure-stream-analytics/tree/master/Sample データ) では複数のサンプル ファイルを入手でき、[入力] タブの [サンプル データ] 機能で独自のデータ ストリーム入力からサンプル データを取得することもできます。
 
@@ -70,4 +71,4 @@ Azure Stream Analytics のストリーム処理ロジックは、ジョブが開
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

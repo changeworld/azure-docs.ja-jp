@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/01/2015" 
+	ms.date="12/03/2015" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache のデータ永続化の構成方法
@@ -33,7 +33,7 @@ Azure Redis Cache の Redis 永続化では、[RDB モデル](http://redis.io/to
 
 ## Premium キャッシュの作成
 
-キャッシュを作成し、永続化を構成するには、[Azure プレビュー ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** をクリックします。
+キャッシュを作成し、永続化を構成するには、[Azure ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** をクリックします。
 
 ![Redis Cache の作成][redis-cache-new-cache-menu]
 
@@ -107,4 +107,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-settings]: ./media/cache-how-to-premium-persistence/redis-cache-settings.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

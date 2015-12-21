@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="12/05/2015" 
 	ms.author="juliako"/>
 
 #タスク プリセットのカスタマイズによるエンコード タスクの操作 
@@ -233,7 +233,7 @@ Azure Media Services Encoder では、イメージ (jpg、bmp、gif、tif)、ビ
 
 
 
->[AZURE.NOTE]このスニペットは、わかりやすくするために順番に各資産を読み込みます。実稼働環境では、資産は一括で読み込まれます。複数の資産を一括アップロードする方法については、[Media Services SDK for .NET を使用する資産の一括取り込み](media-services-dotnet-upload-files.md#ingest_in_bulk)に関するページを参照してください。
+>[AZURE.NOTE]このスニペットは、わかりやすくするために順番に各資産を読み込みます。運用環境では、資産は一括で読み込まれます。複数の資産を一括アップロードする方法については、[Media Services SDK for .NET を使用する資産の一括取り込み](media-services-dotnet-upload-files.md#ingest_in_bulk)に関するページを参照してください。
 
 完全なサンプル コードは、「[Media Services Encoder でのオーバーレイの作成](https://code.msdn.microsoft.com/Creating-Audio-and-Video-c2942c47)」のページを参照してください。
 
@@ -386,7 +386,7 @@ Media Services Encoder は、一連のビデオの結合をサポートします
 		} 
 
 
-このスニペットは、わかりやすくするために順番に各資産を読み込みます。実稼働環境では、資産は一括で読み込まれます。複数の資産を一括アップロードする方法については、[Media Services SDK for .NET を使用する資産の一括取り込み](media-services-dotnet-upload-files.md#ingest_in_bulk)に関するページを参照してください。完全なサンプル コードは、「[Media Services Encoder での結合](https://code.msdn.microsoft.com/Stitching-with-Media-8fd5f203)」を参照してください。
+このスニペットは、わかりやすくするために順番に各資産を読み込みます。運用環境では、資産は一括で読み込まれます。複数の資産を一括アップロードする方法については、[Media Services SDK for .NET を使用する資産の一括取り込み](media-services-dotnet-upload-files.md#ingest_in_bulk)に関するページを参照してください。完全なサンプル コードは、「[Media Services Encoder での結合](https://code.msdn.microsoft.com/Stitching-with-Media-8fd5f203)」を参照してください。
 
 ###1 つの資産からのビデオの結合
 
@@ -516,6 +516,6 @@ Media Services Encoder は、一連のビデオの結合をサポートします
 
 ##関連項目
 
-[Azure メディア エンコーダーの XML スキーマ](https://msdn.microsoft.com/library/azure/dn584702.aspx)
+[Azure Media Encoder の XML スキーマ](https://msdn.microsoft.com/library/azure/dn584702.aspx)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -68,7 +68,7 @@ Visual Studio 2012 も必要です。
 
 
 
-テンプレートは有用な機能です。詳細については、「[通知ハブの概要]」の記事を参照してください。テンプレート式言語のリファレンスは、「[方法: Windows Azure 通知ハブ (Windows ストア アプリ)]」にあります。
+テンプレートは有用な機能です。詳細については、「[通知ハブの概要]」の記事を参照してください。テンプレート式言語のリファレンスは、「[方法: Microsoft Azure 通知ハブ (Windows ストア アプリ)]」にあります。
 
 
 ##アプリケーションのユーザー インターフェイス
@@ -176,7 +176,7 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 
 ## 次のステップ
 
-テンプレートの使用方法の詳細については、「[Notification Hubs によるユーザーへの通知: ASP.NET]」、「[Notification Hubs によるユーザーへの通知: Mobile Services]」、「[Notification Hubs の概要]」をご覧ください。テンプレート式言語のリファレンスは、「[方法: Windows Azure 通知ハブ (Windows ストア アプリ)]」にあります。
+テンプレートの使用方法の詳細については、「[Notification Hubs によるユーザーへの通知: ASP.NET]」、「[Notification Hubs によるユーザーへの通知: Mobile Services]」、「[Notification Hubs の概要]」をご覧ください。テンプレート式言語のリファレンスは、「[方法: Microsoft Azure 通知ハブ (Windows ストア アプリ)]」にあります。
 
 <!-- Anchors. -->
 [Template concepts]: #concepts
@@ -225,11 +225,10 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
-[Azure Management Portal]: https://manage.windowsazure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
-[方法: Windows Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/library/jj927172.aspx
+[方法: Microsoft Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/library/jj927172.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

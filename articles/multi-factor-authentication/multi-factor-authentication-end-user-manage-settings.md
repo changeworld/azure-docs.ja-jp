@@ -13,22 +13,26 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/19/2015" 
+	ms.date="12/10/2015" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication での問題
+>[AZURE.IMPORTANT]このページの改善にご協力ください。このページで回答が見つからない場合、マイクロソフトが追加できるように詳しいフィードバックをご提供ください。
+
 ここでは、ユーザーが遭遇することがある一般的な問題に対処するときに役立つ情報を紹介します。
 
 
 - [関連付け ID のエラー](#correlation-id-errors)
 - [電話を紛失した場合や電話が盗まれた場合](#i-have-lost-my-phone-or-it-was-stolen?)
 - [電話番号を変更する必要がある場合](#i-want-to-change-my-phone-number)
+- [電話を新しくしたので、電話番号を変更する必要がある場合](#i-have-a-new-phone-and-need-to-change-my-phone-number)
 - [電話でコードを受け取ることができない場合](#i-am-not-receiving-a-code-on-my-phone)
 - [アプリ パスワードが機能しない場合](#app-passwords-are-not-working)
 - [古いデバイスから Azure Authenticator をクリーンアップして新しいデバイスに移行する場合](#how-do-i-clean-up-azure-authenticator-from-my-old-device-and-move-to-a-new-one)
+- [問題に対する回答が見つからなかった場合](#i-didn't-find-an-answer-to-my-problem)
 
 ##関連付け ID のエラー
-以下のトラブルシューティングの手順を試してもまだ問題が発生する場合は、[Azure AD フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)に質問を投稿するか、[Microsoft 技術情報 (KB) を検索する](https://www.microsoft.com/ja-JP/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)か、あるいは[サポートに問い合わせる](https://support.microsoft.com/ja-JP)ことで、問題が迅速に対応されます。
+以下のトラブルシューティングの手順を試しても引き続き問題が発生する場合は、[Azure AD フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)に質問を投稿するか、[Microsoft 技術情報 (KB) を検索する](https://www.microsoft.com/ja-JP/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)か、[サポートに問い合わせ](https://support.microsoft.com/ja-JP)ていただければ、すぐに問題に対応いたします。
 
 サポートへのお問い合わせの際は、次の情報を含めることをお勧めします。
 
@@ -113,10 +117,29 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 3. ドロップダウン ボックスで、[追加のセキュリティ確認] を選択します。![Azure](./media/multi-factor-authentication-end-user-manage/azure1.png)
 4. 設定を変更できるページに移動します。![追加のセキュリティ確認](./media/multi-factor-authentication-end-user-manage-azure/proofup.png)
 
-##電話でコードを受け取ることができない場合
+##電話を新しくしたので、電話番号を変更する必要がある場合
+
+新しい電話を用意し、mfa が使用する 1 つ目の連絡先番号を変更する必要がある場合、2 つの方法のいずれかでそれを実行できます。
+
+最初の方法は、2 つ目の認証方法を使用することです。2 つ目の認証用電話番号を指定していた場合は、その番号を使用してサインインします。![セットアップ](./media/multi-factor-authentication-end-user-manage/altphone.png)上のスクリーン ショットでは、2 つの電話番号がセットアップされています。1 つ目は末尾が 67 の番号で、2 つ目は末尾が 30 の番号です。
+  
+代替の電話番号を使用してサインインするには、通常どおりサインインしてから、単に **[別の確認オプションを使用する]** を選択するだけです。![Different Verification](./media/multi-factor-authentication-end-user-manage/differentverification.png)
+
+それから 2 つ目の電話番号を選択します。ここでは、**[折り返し先: X XXXXXXXX30]** を選択します。
+
+![Alternate phone](./media/multi-factor-authentication-end-user-manage/altphone2.png)
+
+>[AZURE.IMPORTANT]2 つ目の認証用電話番号を構成することは重要です。1 つ目の電話番号の携帯電話にモバイル アプリがインストールされている場合が多いため、電話の紛失や盗難が起きた場合にアカウントに再度サインインできる唯一の手段は、2 つ目の電話番号を使用する方法になります。
+
+2 つ目の方法は、管理者または代わりに mfa を設定した人に連絡することです。これは、2 つ目の認証電話番号を構成していない場合にのみ必要となります。そうでなければ、管理者または mfa を設定した人に連絡して設定のクリアを依頼する必要があります。それによって、次回サインインしたときに再度[多要素認証をセットアップする](multi-factor-authentication-manage-users-and-devices.md#require-selected-users-to-provide-contact-methods-again)ようにメッセージが表示されます。
+
+##電話でコードまたは呼び出しを受け取ることができない場合
 
 最初に次のことを確認する必要があります。
 
+
+
+- 電話の呼び出しを携帯電話で受けるように選択している場合、呼び出し信号が適切であることを確認します。配信の速度や利用可能性は、場所やサービス プロバイダーによって異なります。
 - 確認コードをテキスト メッセージで携帯電話に送信するように選択している場合は、ご利用のサービス プランと、デバイスがテキスト メッセージの配信をサポートしていることを確認します。配信の速度や利用可能性は、場所やサービス プロバイダーによって異なります。また、これらのコードの受信を試みているときに、十分な電波が届いていることを確認します。
 - モバイル アプリを使って確認コードを受信するように選択している場合は、電波状態が良いことを確認します。配信の速度や利用可能性は、場所とサービス プロバイダーによって異なる場合があることも忘れないでください。 
 
@@ -125,7 +148,6 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 サインインするときに **[別の確認オプションを使用する]** を選択することで、検証コードを受信する方法をモバイル アプリからテキスト メッセージに切り替えることができます。
 
 ![Different Verification](./media/multi-factor-authentication-end-user-manage/differentverification.png)
-
 
 これらのいずれかのサービスの配信方法が、他の方法よりも確実な場合があります。
 
@@ -139,4 +161,11 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 ##古いデバイスから Azure Authenticator をクリーンアップして新しいデバイスに移行する場合
 デバイスからアプリをアンインストールしても、デバイスを再フラッシュしても、アクティブ化はバック エンドで削除されません。[新しいデバイスへの移行](multi-factor-authentication-azure-authenticator.md#how-to-move-to-the-new-azure-authenticator-app)に関するトピックで説明されている手順に従ってください。
 
-<!---HONumber=AcomDC_1203_2015-->
+##問題に対する回答が見つからなかった場合
+このページで問題に対する回答が見つからなかった場合、[Azure AD フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)に質問を投稿するか、[Microsoft サポート技術情報 (KB) を検索するか](https://www.microsoft.com/ja-JP/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)、[サポートにお問い合わせください](https://support.microsoft.com/ja-JP)。
+
+また、管理者または代わりに多要素認証を設定した人に問い合わせ、サポートを要請できます。
+
+最後に、このページに関する詳しいフィードバックを残してください。それにより、このページを更新し、情報を追加して継続的に改善できます。
+
+<!---HONumber=AcomDC_1210_2015-->

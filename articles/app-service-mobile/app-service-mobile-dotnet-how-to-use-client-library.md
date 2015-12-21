@@ -25,11 +25,11 @@
 
 ##概要 
 
-このガイドでは、Windows および Xamarin アプリで Azure App Service Mobile Apps 用の管理されたクライアント ライブラリを使用する一般的なシナリオの実行方法を示します。Mobile Apps を初めて使用する場合は、まず、「[Mobile Apps のクイックスタート](app-service-mobile-windows-store-dotnet-get-started.md)」チュートリアルを完了することを検討してください。このガイドでは、クライアント側の管理された SDK に重点を置いています。.NET バックエンドのサーバー側 SDK の詳細については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+このガイドでは、Windows および Xamarin アプリで Azure App Service Mobile Apps 用の管理されたクライアント ライブラリを使用する一般的なシナリオの実行方法を示します。Mobile Apps を初めて使用する場合は、まず、「[Mobile Apps のクイックスタート](app-service-mobile-windows-store-dotnet-get-started.md)」チュートリアルを完了することを検討してください。このガイドでは、クライアント側の管理された SDK に重点を置いています。Mobile Apps 用のサーバー側 SDK の詳細については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」または「[Azure Mobile Apps Node.js SDK の使用方法](app-service-mobile-node-backend-how-to-use-server-sdk.md)」を参照してください。
 
 ## リファレンス ドキュメント
 
-クライアント SDK のリファレンス ドキュメントは次の場所にあります。[Azure Mobile Apps .NET クライアント リファレンス](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.aspx)。
+クライアント SDK のリファレンス ドキュメントについては、「[Azure Mobile Apps .NET クライアント リファレンス](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.aspx)」を参照してください。
 
 ##<a name="setup"></a>セットアップと前提条件
 
@@ -51,11 +51,15 @@
 
 [JsonPropertyAttribute](http://www.newtonsoft.com/json/help/html/Properties_T_Newtonsoft_Json_JsonPropertyAttribute.htm) を使用してクライアントの型とテーブルの間の *PropertyName* のマッピングが定義されていることに注意してください。
 
+Mobile Apps バックエンドに新しいテーブルを作成する方法については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-define-a-table-controller)」または「[動的スキーマを使用するテーブルの定義](app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations)」(Node.js バックエンド) を参照してください。Node.js バックエンドでは、[Azure ポータル](https://portal.azure.com)の **[テーブルの簡単操作]** 設定を使用することもできます。
+
 ##<a name="create-client"></a>方法: モバイル アプリ クライアントを作成する
 
 次のコードは、モバイル アプリ バックエンドにアクセスするために使用される `MobileServiceClient` オブジェクトを作成します。
 
-	MobileServiceClient client = new MobileServiceClient("MOBILE_APP_URL");
+
+	MobileServiceClient client = new MobileServiceClient(
+		"MOBILE_APP_URL", "", "");
 
 上記のコードで、`MOBILE_APP_URL` を、[Azure ポータル](https://portal.azure.com)のモバイル アプリ バックエンド用のブレードで確認できるモバイル アプリ バックエンドの URL に置き換えます。
 
@@ -242,7 +246,7 @@
 
 ###ID 値の操作
 
-Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値をサポートしています。このため、アプリケーションは、ID にメール アドレスやユーザー名などのカスタム値を使用できます。
+Mobile Apps は、テーブルの **id** 列で一意のカスタム文字列値をサポートしています。このため、アプリケーションは、ID にメール アドレスやユーザー名などのカスタム値を使用できます。
 
 文字列 ID には、次のような利点があります。
 
@@ -265,7 +269,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
 	jo.Add("Complete", false);
 	var inserted = await table.UpdateAsync(jo);
 
-更新を行うときは ID を指定する必要があることに注意してください。バックエンドはそれによって更新するインスタンスを識別します。ID は、`InsertAsync` の呼び出しの結果から取得できます。"Id" の値を指定しないで項目を更新しようとすると、`ArgumentException` が発生します。
+更新を行うときは ID を指定する必要があることに注意してください。バックエンドはそれによって更新するインスタンスを識別します。ID は、`InsertAsync` の呼び出しの結果から取得できます。"ID" の値を指定しないで項目を更新しようとすると、`ArgumentException` が発生します。
 
 
 ##<a name="deleting"></a>方法: モバイル アプリ バックエンドのデータを削除する
@@ -280,7 +284,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
 	jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
 	await table.DeleteAsync(jo);
 
-削除要求を行うときは、ID を指定する必要があります。それ以外のプロパティは、サービスに渡されないか、またはサービスで無視されます。通常、`DeleteAsync` の呼び出しの結果は `null` です。渡す ID は、`InsertAsync` の呼び出しの結果から取得できます。"Id" フィールドを設定しないで項目を削除しようとすると、`MobileServiceInvalidOperationException` がバックエンドから返されます。
+削除要求を行うときは、ID を指定する必要があります。それ以外のプロパティは、サービスに渡されないか、またはサービスで無視されます。通常、`DeleteAsync` の呼び出しの結果は `null` です。渡す ID は、`InsertAsync` の呼び出しの結果から取得できます。"ID" フィールドを設定しないで項目を削除しようとすると、`MobileServiceInvalidOperationException` がバックエンドから返されます。
 
 ##<a name="#custom-api"></a>方法: カスタム API の呼び出し
 
@@ -292,7 +296,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
         .InvokeApiAsync<MarkAllResult>("completeAll",
         System.Net.Http.HttpMethod.Post, null);
 
-これは型指定メソッドの呼び出しのため、返される **MarkAllResult** の型を定義する必要があります。型指定および型指定のないメソッドの両方がサポートされます。型指定でペイロードを送信せず、クエリ パラメーターがなく、また要求ヘッダーを変更しないため、これは簡単な例になります。より現実的な例と [InvokeApiAsync] についてのより完全な説明については、「[Azure Mobile Services クライアント SDK のカスタム API]」を参照してください。
+これは型指定メソッドの呼び出しのため、返される **MarkAllResult** の型を定義する必要があります。型指定および型指定のないメソッドの両方がサポートされます。型指定でペイロードを送信せず、クエリ パラメーターがなく、また要求ヘッダーを変更しないため、これは簡単な例になります。より現実的な例と [InvokeApiAsync] についてのより完全な説明については、「[Azure モバイル サービス クライアント SDK のカスタム API]」を参照してください。
 
 ##方法: プッシュ通知に登録する
 
@@ -349,7 +353,7 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 
 セキュリティのためにタグはすべて取り除かれるので注意してください。インストールまたはインストール内のテンプレートにタグを追加する方法については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作]」を参照してください。
 
-これらの登録済みテンプレートを使用して通知を送信するには、[Notification Hubs APIs](https://msdn.microsoft.com/library/azure/dn495101.aspx) を使用します。
+これらの登録済みテンプレートを使用して通知を送信するには、[Notification Hubs API](https://msdn.microsoft.com/library/azure/dn495101.aspx) を使用します。
 
 ##<a name="optimisticconcurrency"></a>方法: オプティミスティック同時実行制御を使用する
 
@@ -483,7 +487,7 @@ Windows アプリでは、プッシュ通知と特定の認証モードを有効
 1. Visual Studio ソリューション エクスプローラーで、Windows Store アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。
 2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインし、**[新しいアプリケーション名の予約]** にアプリの名前を入力し、**[予約]** をクリックします。
 3. アプリの登録が正常に作成されたら、新しいアプリ名を選択し、**[次へ]** をクリックし、**[関連付け]** をクリックします。この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
-4. Microsoft アカウントを使用して [Windows デベロッパー センター](https://dev.windows.com/ja-JP/overview) にログインします。**[マイ アプリ]** で、先ほど作成したアプリ登録をクリックします。
+4. Microsoft アカウントを使用して [Windows デベロッパー センター](https://dev.windows.com/ja-JP/overview)にログインします。**[マイ アプリ]** で、先ほど作成したアプリ登録をクリックします。
 5. **[アプリ管理]**、**[アプリ ID]** の順にクリックし、下にスクロールして **[パッケージ SID]** を探します。
 
 多くの場合、パッケージ SID は URI として使用されます。その場合はスキームとして _ms-app://_ を使用する必要があります。この値をプレフィックスとして連結して形成されたパッケージ SID のバージョンをメモしておきます。
@@ -756,8 +760,8 @@ Mobile Apps クライアント ライブラリは、Json.NET を使用して、�
 [Skip]: http://msdn.microsoft.com/library/windowsazure/dn250573.aspx
 [Take]: http://msdn.microsoft.com/library/windowsazure/dn250574.aspx
 [Fiddler]: http://www.telerik.com/fiddler
-[Azure Mobile Services クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
+[Azure モバイル サービス クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

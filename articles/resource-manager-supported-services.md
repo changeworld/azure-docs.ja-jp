@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/01/2015"
+   ms.date="12/04/2015"
    ms.author="tomfitz"/>
 
 # リソース マネージャーによるサービス、リージョン、API バージョンのサポート
@@ -30,11 +30,10 @@ Azure リソース マネージャーは、アプリケーションを構成す�
 | サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------------------------ | -------------- | -------------- |-------- | ------ |
 | Virtual Machines | あり | あり、多くのオプション | いいえ | [VM の作成](https://msdn.microsoft.com/library/azure/mt163591.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json) |
-| Batch   | あり | [あり (クラシックのみ)](https://portal.azure.com/#create/Microsoft.BatchAccount) | あり | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | |
+| Batch  
+ | あり | [あり (クラシックのみ)](https://portal.azure.com/#create/Microsoft.BatchAccount) | あり | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | |
 | Dynamics Lifecycle Services | はい | いいえ | | | |
-| Virtual Machines (クラシック) | 限定的 | あり、多くのオプション | 部分的 (後述参照) | - | - |
-| RemoteApp | いいえ | いいえ | - | - | - |
-| Service Fabric | いいえ | いいえ | - | - | - |
+| Virtual Machines (クラシック) | 限定的 | あり、多くのオプション | 部分的 (後述参照) | - | - | | RemoteApp | いいえ | いいえ | - | - | - | | Service Fabric | いいえ | いいえ | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイメント モデルではなくクラシック デプロイメント モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイメント モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 
@@ -58,9 +57,9 @@ Virtual Machines (クラシック) リソースは、新しいリソース グ�
 | DocumentDB | あり | [はい](https://portal.azure.com/#create/Microsoft.DocumentDB) | あり | [DocumentDB REST](https://msdn.microsoft.com/library/azure/dn781481.aspx) | |
 | Storage | あり | [はい](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) | いいえ | [Storage の作成](https://msdn.microsoft.com/library/azure/mt163564.aspx) | [ストレージ アカウント](resource-manager-template-storage.md) |
 | Redis Cache | あり | [はい](https://portal.azure.com/#create/Microsoft.Cache.1.0.4) | あり | | [2014-04-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01-preview/Microsoft.Cache.json) |
-| SQL Database | あり | [はい](https://portal.azure.com/#create/Microsoft.SQLDatabase.0.5.9-preview) | あり | [データベースの作成](https://msdn.microsoft.com/library/azure/mt163685.aspx) | [2014-04-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01-preview/Microsoft.Sql.json) |
+| SQL Database | あり | [はい](https://portal.azure.com/#create/Microsoft.SQLDatabase.1.0.3) | あり | [データベースの作成](https://msdn.microsoft.com/library/azure/mt163685.aspx) | [2014-04-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01-preview/Microsoft.Sql.json) |
 | 検索 | あり | [はい](https://portal.azure.com/#create/Microsoft.Search) | あり | [Search REST](https://msdn.microsoft.com/library/azure/dn798935.aspx) | |
-| SQL Data Warehouse | あり | [はい](https://portal.azure.com/#create/Microsoft.SQLDataWarehouse.0.1.12-preview) | | | |
+| SQL Data Warehouse | あり | [はい](https://portal.azure.com/#create/Microsoft.SQLDataWarehouse.0.1.13-preview) | | | |
 | StorSimple | いいえ | いいえ | - | - | - | | Managed Cache | いいえ | いいえ| - | - | - |
 
 ## Web とモバイル
@@ -68,7 +67,7 @@ Virtual Machines (クラシック) リソースは、新しいリソース グ�
 | サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | -------- | -------------- | -------- | ------ |
 | API Management | はい | いいえ | はい | [Create API](https://msdn.microsoft.com/library/azure/dn781423.aspx#CreateAPI) | |
-| API Apps | あり | [はい](https://portal.azure.com/#create/microsoft_com.ApiApp.0.2.0-preview) | | | [2015-03-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-03-01-preview/Microsoft.AppService.json) |
+| API Apps | あり | [はい](https://portal.azure.com/#create/Microsoft.ApiApp) | | | [2015-03-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-03-01-preview/Microsoft.AppService.json) |
 | Web Apps | あり | [はい](https://portal.azure.com/#create/Microsoft.WebSite) | はい、制限あり (後述参照) | | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Web.json) |
 | Notification Hubs | あり | [はい](https://portal.azure.com/#create/Microsoft.NotificationHub) | あり | [Notification Hub の作成](https://msdn.microsoft.com/library/azure/dn223269.aspx) | [2015-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-04-01/Microsoft.NotificationHubs.json) |
 | Logic Apps | あり | [はい](https://portal.azure.com/#create/Microsoft.EmptyWorkflow.0.2.0-preview) | あり | | |
@@ -81,19 +80,19 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 ## 分析
 
-| サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
+| サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | --------- | -------------- | -------- | ------ |
-| イベント ハブ | はい | いいえ | | [Event Hub の作成](https://msdn.microsoft.com/library/azure/dn790676.aspx) | |
-| Stream Analytics | あり | [はい](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) | | | |
-| HDInsights | あり | [はい](https://portal.azure.com/#create/Microsoft.HDInsightCluster) | あり | | |
-| Data Factory | あり | [はい](https://portal.azure.com/#create/Microsoft.DataFactory) | あり | [Data Factory の作成](https://msdn.microsoft.com/library/azure/dn906717.aspx) | |
-| Machine Learning | いいえ | いいえ | - | - | - | | Data Catalog | いいえ | いいえ | - | - | - |
+| イベント ハブ | はい | いいえ |         | [Event Hub の作成](https://msdn.microsoft.com/library/azure/dn790676.aspx) |        |
+| Stream Analytics | あり | [はい](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) |        |          |        |
+| HDInsights | あり | [はい](https://portal.azure.com/#create/Microsoft.HDInsightCluster) |            |          |        |
+| Data Factory | あり | [はい](https://portal.azure.com/#create/Microsoft.DataFactory) | あり | [Data Factory の作成](https://msdn.microsoft.com/library/azure/dn906717.aspx) |    |
+| Machine Learning | いいえ | いいえ | -          | -        | -      |
 
 ## メディアと CDN
 
 | サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | -------- | -------------- | -------- | ------ |
-| CDN | はい (プレビュー) | いいえ | | | |
+| CDN | あり | [はい](https://portal.azure.com/#create/Microsoft.CDN) | | | |
 | メディア サービス | いいえ | いいえ | | | |
 
 
@@ -115,7 +114,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 | サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | ---------- | -------------- | -------- | ------ |
-| Application Insights | あり | [はい](https://portal.azure.com/#create/Microsoft.AppInsights.0.2.3-preview) | いいえ | | [2014-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.Insights.json) |
+| Application Insights | あり | [はい](https://portal.azure.com/#create/Microsoft.AppInsights) | いいえ | | [2014-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.Insights.json) |
 | Bing Maps | あり | [はい](https://portal.azure.com/#create/bingmaps.mapapis.1.0.4) | | | |
 | Visual Studio アカウント | はい | | | | [2014-02-26](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-02-26/microsoft.visualstudio.json) |
 
@@ -123,7 +122,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 | サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | --------- | -------------- | -------- | ------ |
-| Automation | あり | [はい](https://portal.azure.com/#create/Microsoft.AutomationAccount.1.0.2-preview) | あり | | |
+| Automation | あり | [はい](https://portal.azure.com/#create/Microsoft.AutomationAccount.1.0.5) | あり | | |
 | Key Vault | はい | いいえ | はい | [Key Vault](https://msdn.microsoft.com/library/azure/dn903609.aspx) | |
 | Scheduler | はい | いいえ | | | [2014-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-08-01/Microsoft.Scheduler.json) |
 | Operational Insights | はい | いいえ | はい | | |
@@ -235,4 +234,4 @@ Azure PowerShell 0.9.8 では、次を使用します。
 - リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 - リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

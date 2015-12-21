@@ -4,7 +4,7 @@
 	services="virtual-network" 
 	documentationCenter="" 
 	authors="telmosampaio" 
-	manager="carolz" 
+	manager="carmonm" 
 	editor="tysonn"/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services" 
-	ms.date="08/10/2015"
+	ms.date="12/07/2015"
 	ms.author="telmos"/>
 
 # ネットワーク構成ファイルを使用した仮想ネットワークの構成
@@ -48,4 +48,4 @@ PowerShell または管理ポータルを使用して、ネットワーク構成
 3. **[ネットワーク構成ファイルをインポートする]** ページで、ネットワーク構成ファイルを参照して、**[次へ]** 矢印をクリックします。
 4. **[ネットワークを構築しています]** ページに、変更または作成されるネットワーク構成のセクションを示す情報が表示されます。変更が適切であることを確認して、チェックマークをクリックして仮想ネットワークの更新または作成処理に進みます。 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -1,7 +1,7 @@
 <!---Use the procedure that matches your backend project type&mdash;either [.NET backend](#dotnet) or [Node.js backend](#nodejs).
 
 ### <a name="dotnet"></a>.NET backend project -->
-1. In Visual Studio, update the `PostTodoItem` method definition with the following code:  
+1. Visual Studio で、`PostTodoItem` メソッド定義を次のコードで更新します。  
 
 	    public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
 	    {
@@ -44,9 +44,9 @@
 	        return CreatedAtRoute("Tables", new { id = current.Id }, current);
 	    }
 
-	This code sends a template notification only to registrations tagged with the current user's SID. Note that the SID value can change since it derived from the authentication provider's token. 
+	このコードは、現在のユーザー SID でタグ付けされた登録のみにテンプレート通知を送信します。SID 値は、認証プロバイダーのトークンから派生するので変更される可能性があります。
  
-2. Republish the server project.
+2. サーバー プロジェクトを発行します。
 
 <!---### <a name="nodejs"></a>Node.js backend project
 
@@ -97,3 +97,5 @@
 	This sends a template notification only to registrations tagged with the current user's SID. Note that the SID value can change since it derived from the authentication provider's token. 
 
 2. When editing the file in your local computer, republish the server project.-->
+
+<!---HONumber=AcomDC_1210_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="12/05/2015" 
 	ms.author="juliako"/>
 
 
@@ -21,7 +21,7 @@
 
 Microsoft Azure Media Services 2.2 以降では、1 つの Media Services アカウントに複数のストレージ アカウントをアタッチできます。Media Services アカウントに複数のストレージ アカウントをアタッチする機能には、次のような利点があります。資産を複数のストレージ アカウントに負荷分散します。
 
-大量のコンテンツ処理のために Media Services を拡張します (現在、1 つのストレージ アカウントには最大 500 TB の制限があります)。
+大量のコンテンツ処理のために Media Services を拡張します (現在、1 つのストレージ アカウントには最大 500 TB (テラバイト) の制限があります)。
 
 このトピックでは、[Azure サービス管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) を使用して、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。また、Media Services SDK を使用して資産を作成するときに、別のストレージ アカウントを指定する方法も説明します。
 
@@ -258,4 +258,4 @@ Media Services は、ストリーミング コンテンツ (例: http://{WAMSAcc
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

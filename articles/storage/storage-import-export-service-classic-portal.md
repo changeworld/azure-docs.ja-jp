@@ -1,8 +1,8 @@
 <properties 
 	pageTitle="Import/Export を使用した BLOB ストレージへのデータの転送 | Microsoft Azure" 
 	description="Microsoft Azure 管理ポータルでインポート ジョブおよびエクスポート ジョブを作成し、データを BLOB ストレージに転送する方法について説明します。" 
-	authors="tamram" 
-	manager="adinah" 
+	authors="robinsh" 
+	manager="carmonm" 
 	editor="" 
 	services="storage" 
 	documentationCenter=""/>
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/01/2015" 
-	ms.author="tamram"/>
+	ms.date="12/04/2015" 
+	ms.author="robinsh"/>
 
 
 # Microsoft Azure Import/Export サービスを使用した BLOB ストレージへのデータの転送
@@ -275,4 +275,4 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 [export-job-bitlocker-keys]: ./media/storage-import-export-service-classic-portal/export-job-bitlocker-keys.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

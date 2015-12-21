@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/13/2015" 
+	ms.date="12/07/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management でグループを作成および使用して開発者アカウントを管理する方法
@@ -34,7 +34,7 @@ API Management には、次に示すシステム グループが用意されて�
 
 ## <a name="create-group"> </a>グループの作成
 
-新しいグループを作成するには、API Management サービスの Azure ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
+新しいグループを作成するには、API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
@@ -42,15 +42,15 @@ API Management には、次に示すシステム グループが用意されて�
 
 左側の **[API Management]** メニューの **[グループ]** をクリックし、**[グループの追加]** をクリックします。
 
-![Add new group][api-management-add-group]
+![新しいグループを追加する][api-management-add-group]
 
 グループの一意の名前とオプションの説明を入力し、**[保存]** をクリックします。
 
-![Add new group][api-management-add-group-window]
+![新しいグループを追加する][api-management-add-group-window]
 
 新しいグループが [グループ] タブに表示されます。グループの **[名前]** または **[説明]** を編集するには、一覧内のグループの名前をクリックします。グループを削除するには、**[削除]** をクリックします。
 
-![Group added][api-management-new-group]
+![グループが追加された][api-management-new-group]
 
 グループが作成されます。このグループは、成果物および開発者と関連付けることができます。
 
@@ -58,11 +58,11 @@ API Management には、次に示すシステム グループが用意されて�
 
 グループを成果物に関連付けるには、左側の **[API Management]** メニューの **[成果物]** をクリックし、目的の成果物の名前をクリックします。
 
-![Set visibility][api-management-add-group-to-product]
+![可視性の設定][api-management-add-group-to-product]
 
 **[可視性]** タブを選択すると、グループを追加または削除したり、成果物の現在のグループを表示したりできます。グループを追加または削除するには、目的のグループのチェック ボックスをオンまたはオフにし、**[保存]** をクリックします。
 
-![Set visibility][api-management-add-group-to-product-visibility]
+![可視性の設定][api-management-add-group-to-product-visibility]
 
 >[AZURE.NOTE]Azure Active Directory グループを追加するには、「[Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法](api-management-howto-aad.md)」をご覧ください。
 >
@@ -74,7 +74,7 @@ API Management には、次に示すシステム グループが用意されて�
 
 グループを開発者に関連付けるには、左側の **[API Management]** メニューの **[ユーザー]** をクリックし、グループに関連付ける開発者の横のチェック ボックスをオンにします。
 
-![Add developer to group][api-management-add-group-to-developer]
+![開発者をグループに追加する][api-management-add-group-to-developer]
 
 目的の開発者を選択したら、**[グループに追加]** ボックスの一覧で目的のグループをクリックします。開発者をグループから削除するには、**[グループから削除]** ボックスを使用します。
 
@@ -111,4 +111,4 @@ API Management には、次に示すシステム グループが用意されて�
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
 [関連付けられている Azure Active Directory テナントの外部グループを活用する]: api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

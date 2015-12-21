@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="サイト間 Azure Virtual Network の接続の VPN デバイスについて | Microsoft Azure"
-   description="Azure Virtual Network のサイト間 VPN Gateway 接続用の VPN デバイスおよび IPsec パラメーターについて理解する。"
+   pageTitle="サイト間 Azure 仮想ネットワークの接続の VPN デバイスについて | Microsoft Azure"
+   description="Azure 仮想ネットワークのサイト間 VPN Gateway 接続用の VPN デバイスおよび IPsec パラメーターについて理解する。"
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -51,7 +51,7 @@ VPN デバイスのサポートは、デバイスの製造元に問い合わせ�
 | Cisco | ASR | IOS 15.1 (静的)、IOS 15.2 (動的) | [Cisco のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=691833) | [Cisco のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=691833) |
 | Cisco | ISR | IOS 15.0 (静的)、IOS 15.1 (動的) | [Cisco のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=691833) | [Cisco のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=691833) |
 | Citrix | CloudBridge MPX アプライアンス、または VPX 仮想アプライアンス | 該当なし | [統合の手順](https://www.citrix.com/welcome.html?resource=%2Fdownloads%2Fcloudbridge%2Fbetas-and-tech-previews%2Fcloudbridge-azure-integration) | 互換性なし |
-| Dell SonicWALL | TZ シリーズ、NSA シリーズ、SuperMassive シリーズ、E-class NSA シリーズ | SonicOS 5.8.x、SonicOS 5.9.x、SonicOS 6.x | [構成の手順](https://www.sonicwall.com/app/projects/file_downloader/document_lib.php?t=TN&id=348) | 互換性なし |
+| Dell SonicWALL | TZ シリーズ、NSA シリーズ、SuperMassive シリーズ、E-class NSA シリーズ | SonicOS 5.8.x、[SonicOS 5.9.x](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=850)、[SonicOS 6.x](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=646) | [指示 - SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [指示 - SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) | [指示 - SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [指示 - SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
 | F5 | BIG-IP シリーズ | 該当なし | [構成の手順](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) | 互換性なし |
 | Fortinet | FortiGate | FortiOS 5.0.7 | [構成の手順](http://docs.fortinet.com/fortigate/admin-guides) | [構成の手順](http://docs.fortinet.com/fortigate/admin-guides) |
 | Internet Initiative Japan (IIJ) | SEIL シリーズ | SEIL/x 4.60、SEIL/B1 4.60、SEIL/x86 3.20 | [構成の手順](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) | 互換性なし |
@@ -156,4 +156,4 @@ VPN Gateway について詳しくは、「[VPN Gateway について](vpn-gateway
 
 サイト間 VPN を構成するには、「[サイト間 VPN 接続を使用した仮想ネットワークの作成](vpn-gateway-site-to-site-create.md)」を参照してください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1210_2015-->

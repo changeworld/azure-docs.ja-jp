@@ -1,5 +1,5 @@
 <properties 
-pageTitle=".NET を使用したクラウド サービスのライフサイクル イベントに応答する" 
+pageTitle="クラウド サービスのライフ サイクル イベントの処理 |Microsoft Azure" 
 description=".NET でクラウド サービスのロールのライフサイクル メソッドを使用する方法について説明します。" 
 services="cloud-services" 
 documentationCenter=".net" 
@@ -12,16 +12,16 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="09/08/2015" 
+ms.date="12/07/2015" 
 ms.author="adegeo"/>
 
-# .NET で Web またはワーカー ロールのライフサイクルをカスタマイズする
+# .NET で Web または Worker ロールのライフサイクルをカスタマイズする
 
-ワーカー ロールを作成する際に、[RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) クラスを拡張します。このクラスは、ライフサイクル イベントに応答できるようオーバーライドするメソッドを提供します。Web ロールの場合、このクラスは任意であり、必要に応じてライフサイクル イベントへの応答に使用します。
+worker ロールを作成する際に、[RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) クラスを拡張します。このクラスは、ライフサイクル イベントに応答できるようオーバーライドするメソッドを提供します。Web ロールの場合、このクラスは任意であり、必要に応じてライフサイクル イベントへの応答に使用します。
 
 ## RoleEntryPoint クラスを拡張する
 
-[RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) クラスには、Web ロールやワーカー ロールを**開始**、**実行**、**停止**するときに Azure が呼び出すメソッドが含まれています。必要に応じてこれらのメソッドをオーバーライドし、ロールの初期化、ロールのシャットダウン シーケンス、ロールの実行スレッドを管理できます。
+[RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) クラスには、Web ロールやworker ロールを**開始**、**実行**、**停止**するときに Azure が呼び出すメソッドが含まれています。必要に応じてこれらのメソッドをオーバーライドし、ロールの初期化、ロールのシャットダウン シーケンス、ロールの実行スレッドを管理できます。
 
 **RoleEntryPoint** を拡張した場合、メソッドの次のような動作に注意する必要があります。
 
@@ -80,4 +80,4 @@ Web ロールの初期化とシャットダウン シーケンスを管理する
 ## 次のステップ
 [クラウド サービス パッケージを作成する方法](cloud-services-model-and-package.md)について説明します。
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015--->

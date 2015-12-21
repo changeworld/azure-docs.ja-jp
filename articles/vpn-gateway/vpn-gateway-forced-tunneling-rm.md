@@ -10,7 +10,11 @@
 
 # PowerShell および Azure リソース マネージャーを使用した強制トンネリングの構成
 
-この記事は、Azure リソース マネージャー デプロイメント モデルを使用して作成された VNet および VPN ゲートウェイを対象としています。サービス管理デプロイメント モデルを使用して、強制トンネリングを構成する場合、「[強制トンネリングの構成](vpn-gateway-about-forced-tunneling.md)」を参照してください。
+> [AZURE.SELECTOR]
+- [PowerShell - Service Management](vpn-gateway-about-forced-tunneling.md)
+- [PowerShell - Resource Manager](vpn-gateway-forced-tunneling-rm.md)
+
+この記事は、Azure リソース マネージャー デプロイメント モデルを使用して作成された VNet および VPN ゲートウェイを対象としています。サービス管理 (別名、クラシック デプロイ モデル) を利用して作成された VNet の強制トンネリングを構成する場合、「[強制トンネリングの構成](vpn-gateway-about-forced-tunneling.md)」を参照してください。
 
 [AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
@@ -132,4 +136,4 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 		Get-AzureRmVirtualNetworkGatewayConnection -Name "Connection1" -ResourceGroupName "ForcedTunneling"
 		
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

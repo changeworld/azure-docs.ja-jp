@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/24/2015" 
+	ms.date="12/03/2015" 
 	ms.author="mandia"/>
 
 
@@ -38,10 +38,10 @@
 **BizTalk Services でハイブリッド接続を作成する**には、以下の手順に従います。
 
 1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 左側のナビゲーション ウィンドウで、**[BizTalk サービス]** をクリックし、BizTalk サービスを選択します。 
+2. 左側のナビゲーション ウィンドウで、**[BizTalk サービス]** をクリックし、BizTalk Services を選択します。 
 
 	既存の BizTalk サービスがない場合は、[BizTalk サービスを作成する](biztalk-provision-services.md)ことができます。
-3. [ハイブリッド接続] タブを選択します。![[ハイブリッド接続] タブ][HybridConnectionTab]
+3. **[ハイブリッド接続]** タブを選択します。![[ハイブリッド接続] タブ][HybridConnectionTab]
 
 4. **[ハイブリッド接続の作成]** を選択するか、タスク バーの **[追加]** ボタンを選択します。次のように入力します。
 
@@ -113,7 +113,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 #### ハイブリッド接続文字列をコピー、再生成する
 
 1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 左側のナビゲーション ウィンドウで、**[BizTalk サービス]** をクリックし、BizTalk サービスを選択します。 
+2. 左側のナビゲーション ウィンドウで、**[BizTalk サービス]** をクリックし、BizTalk Services を選択します。 
 3. **[ハイブリッド接続]** タブを選択します。![[ハイブリッド接続] タブ][HybridConnectionTab]
 4. [ハイブリッド接続] を選択します。タスク バーで **[接続の管理]** を選択します。![Manage Options][HCManageConnection]
 
@@ -143,11 +143,11 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 
 ## 関連項目
 
-[Microsoft Azure の BizTalk サービスを管理するための REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx) [BizTalk サービス: エディションのチャート](biztalk-editions-feature-chart.md) [Azure クラシック ポータルを利用した BizTalk サービスの作成](biztalk-provision-services.md) [BizTalk Services: ダッシュボード タブ、モニター タブ、スケール タブ](biztalk-dashboard-monitor-scale-tabs.md)
+[Microsoft Azure の BizTalk Services を管理するための REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx) [BizTalk サービス: エディションのチャート](biztalk-editions-feature-chart.md) [Azure クラシック ポータルを利用した BizTalk サービスの作成](biztalk-provision-services.md) [BizTalk Services: ダッシュボード タブ、モニター タブ、スケール タブ](biztalk-dashboard-monitor-scale-tabs.md)
 
 
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

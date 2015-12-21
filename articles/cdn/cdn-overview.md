@@ -16,11 +16,11 @@
 	ms.date="12/02/2015" 
 	ms.author="casoper"/>
 
-# Azure コンテンツ配信ネットワーク (CDN) の概要
+# Azure Content Delivery Network (CDN) の概要
 
 Azure Content Delivery Network (CDN) では、クラウド サービスで使用される Azure の BLOB と静的コンテンツを戦略的に配置された場所にキャッシュし、ユーザーへのコンテンツ配信に最大帯域幅を使用できます。
 
-既存の CDN 顧客は、[Microsoft Azure の管理ポータル](https://portal.azure.com)から CDN エンドポイントを管理できるようになりました。
+既存の CDN 顧客は、[Microsoft Azure ポータル](https://portal.azure.com)から CDN エンドポイントを管理できるようになりました。
 
 
 CDN では、世界各地の物理ノードにコンテンツをキャッシュすることによって、高帯域幅コンテンツを配信するためのグローバル ソリューションを開発者に提供します。現在の CDN ノードの場所の一覧については、「[Azure コンテンツ配信ネットワーク (CDN) POP 場所](cdn-pop-locations.md)」を参照してください。
@@ -39,7 +39,7 @@ CDN を使用して Azure データをキャッシュすると、次のような
 
 Standard CDN レベルには、以下の機能が含まれます。
 
-- [Storage、Web Apps、および Media Services](cdn-create-a-storage-account-with-cdn.md) などの Azure サービスと簡単に統合
+- [Storage、Web Apps、Media Services](cdn-create-a-storage-account-with-cdn.md) などの Azure サービスと簡単に統合
 - [クエリ文字列のキャッシュ](cdn-query-string.md)
 - [カスタム ドメイン名のサポート](cdn-map-content-to-custom-domain.md)
 - [国のフィルタリング](cdn-restrict-access-by-country.md)
@@ -48,7 +48,7 @@ Standard CDN レベルには、以下の機能が含まれます。
 - [HTTPS のサポート](cdn-how-to-use-cdn.md#accessing-cached-content-over-https)
 - 負荷分散
 - DDOS 保護
-- 高速消去
+- [高速消去](cdn-purge-endpoint.md)
 
  
 ## Premium の機能
@@ -59,4 +59,4 @@ Premium CDN レベルには Standard レベルのすべての機能に加え、�
 - [詳細な HTTP レポート](cdn-advanced-http-reports.md)
 - [リアルタイム統計](cdn-read-time-stats.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

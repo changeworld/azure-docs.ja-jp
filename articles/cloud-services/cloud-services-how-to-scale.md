@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/08/2015"
+	ms.date="12/07/2015"
 	ms.author="adegeo"/>
 
 
@@ -28,11 +28,11 @@ Virtual Machines を実行しているアプリケーションの規模を増減
 
 アプリケーションの規模の設定を構成する前に、以下に示す情報を考慮してください。
 
-- Virtual Machines を使用するアプリケーションの規模を設定するには、作成するマシンを可用性セットに追加する必要があります。追加する Virtual Machines は最初はオンでもオフでもかまいませんが、規模拡大操作ではオンに、規模縮小操作ではオフに設定されます。Virtual Machines と可用性セットの詳細については、「[Manage the Availability of Virtual Machines (仮想マシンの可用性の管理)](../virtual-machines-manage-availability.md)」を参照してください。
+- Virtual Machines を使用するアプリケーションの規模を設定するには、作成するマシンを可用性セットに追加する必要があります。追加する Virtual Machines は最初はオンでもオフでもかまいませんが、規模拡大操作ではオンに、規模縮小操作ではオフに設定されます。Virtual Machines と可用性セットの詳細については、「[Manage the Availability of Virtual Machines (Virtual Machines の可用性の管理)](../virtual-machines-manage-availability.md)」を参照してください。
 
 - 規模設定はコア使用量の影響を受けます。より大きいロール インスタンスまたは Virtual Machines は、より多くのコアを使用します。アプリケーションの規模の設定は、サブスクリプションのコア数の制限内でのみ行うことができます。たとえば、サブスクリプションにコア数 20 の制限があり、アプリケーションを 2 つの中規模の Virtual Machines で実行している場合 (合計 4 コア)、サブスクリプション内の他のクラウド サービスのデプロイメントは 16 コアまでしかスケールアップできません。アプリケーションの規模の設定に使用される可用性セット内のすべての Virtual Machines は、同じサイズである必要があります。コア使用量とマシンのサイズの詳細については、「[Virtual Machine and Cloud Service Sizes for Azure (Azure の仮想マシンおよびクラウド サービスのサイズ)](http://msdn.microsoft.com/library/dn197896.aspx)」を参照してください。
 
-- メッセージのしきい値に基づいてアプリケーションの規模を設定する前に、キューを作成してロールまたは可用性セットに関連付ける必要があります。詳細については、「[How to use the Queue Storage Service (キュー Storage Service の使用方法)](../storage-dotnet-how-to-use-queues.md)」を参照してください。
+- メッセージのしきい値に基づいてアプリケーションの規模を設定する前に、キューを作成してロールまたは可用性セットに関連付ける必要があります。詳細については、「[How to use the Queue Storage Service ( Queue Storage サービスの使用方法)](../storage-dotnet-how-to-use-queues.md)」を参照してください。
 
 - クラウド サービスにリンクされたリソースの規模を設定できます。リソースのリンクの詳細については、「[方法: クラウド サービスに対するリソースのリンク](cloud-services-how-to-manage.md#how-to-link-a-resource-to-a-cloud-service)」を参照してください。
 
@@ -227,4 +227,4 @@ Virtual Machines を実行しているアプリケーションの規模を増減
 [scale_schedule]: ./media/cloud-services-how-to-scale/CloudServices_SetUpSchedule.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -57,13 +57,13 @@ Microsoft HPC Pack は、Azure で Windows Server ベースの HPC クラスタ�
 
 >[AZURE.NOTE]HPC Pack を使用した Azure へのバーストのチュートリアルについては、[HPC Pack を使用したハイブリッド クラスターのセットアップ](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)に関するページを参照してください。次の手順の考慮事項は、特に A8 および A9 サイズの Azure ノードに適用されます。
 
-![Azure へのバースト][burst]
+![Burst to Azure][burst]
 
 
 
 4. **HPC Pack 2012 R2 ヘッド ノードをデプロイして構成する**
 
-    最新の HPC Pack インストール パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=47755)からダウンロードします。Azure のバースト デプロイの要件と手順については、[HPC Pack の概要ガイド](https://technet.microsoft.com/library/jj884144.aspx)と [Microsoft HPC Pack を使用した Azure へのバースト](https://technet.microsoft.com/library/gg481749.aspx)に関するページを参照してください。
+    最新の HPC Pack インストール パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=49922)からダウンロードします。Azure のバースト デプロイの要件と手順については、[HPC Pack の概要ガイド](https://technet.microsoft.com/library/jj884144.aspx)と [Microsoft HPC Pack を使用した Azure へのバースト](https://technet.microsoft.com/library/gg481749.aspx)に関するページを参照してください。
 
 5. **Azure のサブスクリプションで管理証明書を構成する**
 
@@ -71,7 +71,7 @@ Microsoft HPC Pack は、Azure で Windows Server ベースの HPC クラスタ�
 
 6. **新しいクラウド サービスとストレージ アカウントを作成する**
 
-    Azure クラシック ポータルを使用して、コンピューティング集中型インスタンスが使用可能なリージョンでのデプロイのためにクラウド サービスとストレージ アカウントを作成します(クラウド サービスとストレージ アカウントは、他のデプロイに使用されている既存のアフィニティ グループに関連付けないでください)。
+    Azure クラシック ポータルを使用して、コンピューティング集中型インスタンスが使用可能なリージョンでのデプロイメントのためにクラウド サービスとストレージ アカウントを作成します(クラウド サービスとストレージ アカウントは、他のデプロイに使用されている既存のアフィニティ グループに関連付けないでください)。
 
 7. **Azure ノード テンプレートを作成する**
 
@@ -107,14 +107,14 @@ Microsoft HPC Pack は、Azure で Windows Server ベースの HPC クラスタ�
 
 ## シナリオ 2. 計算ノードをコンピューティング集中型 VM にデプロイする (IaaS)
 
-このシナリオでは、Azure 仮想ネットワークの Active Directory ドメインに参加している VM に HPC Pack ヘッド ノードとクラスター計算ノードをデプロイします。 [HPC Pack の IaaS デプロイ スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)は、このプロセスのほとんどを自動化するもので、クラスター ノードに A8 または A9 VM のサイズを指定する機能を含む、柔軟なデプロイ オプションを提供します。この自動デプロイ方法を使用する方法を次の手順に示します。また、Azure のクイック スタート テンプレートを使用して、リソース マネージャー デプロイ モデルでクラスターをデプロイすることもできます。テスト デプロイ用に、Active Directory ドメイン、ヘッド ノード VM、計算ノード VM、および Azure の HPC Pack クラスター インフラストラクチャの他の部分を手動でデプロイすることもできます。[Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](virtual-machines-hpcpack-cluster-options.md)に関するページを参照してください。
+このシナリオでは、Azure 仮想ネットワークの Active Directory ドメインに参加している VM に HPC Pack ヘッド ノードとクラスター計算ノードをデプロイします。 [HPC Pack の IaaS デプロイ スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)は、このプロセスのほとんどを自動化するもので、クラスター ノードに A8 または A9 VM のサイズを指定する機能を含む、柔軟なデプロイ オプションを提供します。この自動デプロイ方法を使用する方法を次の手順に示します。また、Azure のクイック スタート テンプレートを使用して、リソース マネージャー デプロイメント モデルでクラスターをデプロイすることもできます。テスト デプロイ用に、Active Directory ドメイン、ヘッド ノード VM、計算ノード VM、および Azure の HPC Pack クラスター インフラストラクチャの他の部分を手動でデプロイすることもできます。[Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](virtual-machines-hpcpack-cluster-options.md)に関するページを参照してください。
 
-![Azure VM でのクラスター][iaas]
+![Cluster in Azure VMs][iaas]
 
 
 1. **クライアント コンピューターで HPC Pack の IaaS デプロイ スクリプトを実行して、クラスター ヘッド ノードと計算ノード VM を作成する**
 
- HPC Pack の IaaS デプロイ スクリプト パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=47755)からダウンロードします。
+ HPC Pack の IaaS デプロイ スクリプト パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=49922)からダウンロードします。
 
  クライアント コンピューターを準備し、スクリプトの構成ファイルを作成して、スクリプトを実行するには、[HPC Pack の IaaS デプロイ スクリプトを使用した HPC クラスターの作成](virtual-machines-hpcpack-cluster-powershell-script.md)に関するページを参照してください。A8 および A9 サイズの計算ノードをデプロイする場合は、この記事の後半にある追加の考慮事項を参照してください。
 
@@ -186,7 +186,7 @@ Microsoft HPC Pack は、Azure で Windows Server ベースの HPC クラスタ�
 
     出力には、次のように待機時間の結果が含まれます。
 
-    ![ピンポンの待機時間][pingpong1]
+    ![Ping pong latency][pingpong1]
 
 4. Azure バースト ノードのペア間のスループットを推定するために、次のコマンドを入力して、パケット サイズが大きく繰り返し数が少ない設定で **mpipingpong** を実行するジョブを送信します。
 
@@ -198,11 +198,15 @@ Microsoft HPC Pack は、Azure で Windows Server ベースの HPC クラスタ�
 
     Azure VM にデプロイされた HPC Pack クラスターで、手順 2. に示したようにコマンドを変更します。
 
-5. ジョブが完了したら、出力 (この場合は、ジョブの 1 番目のタスクの出力) を表示するために次のように入力します。task view &lt;JobID&gt;.1
+5. ジョブが完了したら、出力 (この場合は、ジョブの 1 番目のタスクの出力) を表示するために次のように入力します。
 
+    ```
+    task view &lt;JobID&gt;.1
+    ```
+    
   出力には、次のようにスループットの結果が含まれます。
 
-  ![ピンポンのスループット][pingpong2]
+  ![Ping pong throughput][pingpong2]
 
 
 ### MPI アプリケーションに関する考慮事項
@@ -246,4 +250,4 @@ Azure インスタンスで MPI アプリケーションを実行する場合の
 [pingpong1]: ./media/virtual-machines-windows-hpcpack-cluster-rdma/pingpong1.png
 [pingpong2]: ./media/virtual-machines-windows-hpcpack-cluster-rdma/pingpong2.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

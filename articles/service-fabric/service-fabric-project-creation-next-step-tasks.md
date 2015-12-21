@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/16/2015"
+   ms.date="12/06/2015"
    ms.author="seanmck"/>
 
 # Service Fabric アプリケーションと次の手順
@@ -31,7 +31,7 @@ Service Fabric アプリケーションが作成されました。この記事�
 
 - サービス用に作成するパーティション数などの環境に固有のアプリケーション構成を維持するために使用する (ローカルとクラウドの) 2 つのアプリケーション パラメーター ファイル。
 
-- コマンドラインまたは自動化された継続的インテグレーション パイプラインの一環としての、アプリケーションを展開するために使用するデプロイメント スクリプト。
+- コマンドラインまたは自動化された継続的インテグレーション パイプラインの一環としての、アプリケーションをデプロイするために使用するデプロイメント スクリプト。
 
 - アプリケーションを説明するアプリケーション マニフェスト。
 
@@ -59,8 +59,12 @@ Service Fabric は、アプリケーションへの Web ベースのエントリ
 ### Azure クラスターの作成
 Service Fabric SDK には、開発およびテスト用のローカル クラスターが用意されています。Azure でのクラスターの作成については、「[Azure ポータルからの Service Fabric クラスターのセットアップ][create-cluster-in-portal]」を参照してください。
 
+### パーティ クラスターを使用した Azure へのデプロイの無料試行
+
+独自のクラスターを設定せずに Azure でのアプリケーションのデプロイと管理を試してみる場合は、無料の[パーティ クラスター サービス](http://aka.ms/tryservicefabric)を使用できます。
+
 ### Azure へのアプリケーションの発行
-Visual Studio から Azure クラスターに直接アプリケーションを発行することができます。方法については、「[Azure へのアプリケーションの発行][publish-app-to-azure]」を参照してください。
+Visual Studio から Azure クラスターに直接アプリケーションを発行することができます。方法については、[Azure へのアプリケーションの発行][publish-app-to-azure]に関するページを参照してください。
 
 ### Service Fabric Explorer を使用したクラスターの視覚化
 Service Fabric Explorer には、デプロイ済みのアプリケーションや物理的なレイアウトなど、クラスターを視覚化するための簡単な方法が用意されています。詳細については、「[Service Fabric Explorer を使用したクラスターの視覚化][visualize-with-sfx]」を参照してください。
@@ -81,4 +85,4 @@ Service Fabric アプリケーション向けに継続的な統合プロセス�
 [reliable-services-webapi]: ./service-fabric-reliable-services-communication-webapi.md
 [app-upgrade-tutorial]: ./service-fabric-application-upgrade-tutorial.md
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1210_2015-->

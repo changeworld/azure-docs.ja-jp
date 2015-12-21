@@ -45,11 +45,14 @@ Azure IoT の予測的なメンテナンスの構成済みのソリューショ�
 
 Azure IoT が予測的なメンテナンスのシナリオを実現する方法の詳細については、「[Capture value from the Internet of Things (モ ノのインターネットから価値を得る)][lnk_capture_value]」を参照してください。
 
+予測的なメンテナンスの構成済みソリューションの[チュートリアル][lnk-predictive-walkthrough]をご利用ください。
+
+[lnk-predictive-walkthrough]: iot-suite-predictive-walkthrough.md
 [lnk_preconfigured_solutions]: iot-suite-what-are-preconfigured-solutions.md
 [lnk_iot_suite]: iot-suite-overview.md
 [lnk_machine_learning]: https://azure.microsoft.com/services/machine-learning/
-[lnk_infographic]: https://www.microsoft.com/server-cloud/predictivemaintenance/Index.html
+[lnk_infographic]: https://www.microsoft.com/ja-JP/server-cloud/predictivemaintenance/Index.html
 [lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3
 [lnk_capture_value]: http://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

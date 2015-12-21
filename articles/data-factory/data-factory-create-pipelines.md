@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" y
-	ms.date="10/20/2015" 
+	ms.date="12/08/2015" 
 	ms.author="spelluru"/>
 
 # パイプラインとアクティビティの概要
@@ -115,7 +115,7 @@
 	}
 
 
-下のパイプラインのコピー アクティビティは、Azure SQL から Azure BLOB Storage にデータをコピーします。1 時間ごとに入力データセットとして Azure SQL のテーブルを受け取り、"AzureBlobOutput" データセットによって表される Azure BLOB ストレージにデータを書き込みます。出力データセットも 1 時間ごとです。時間単位でデータをコピーする方法については、「スケジュールと実行」セクションを参照してください。このパイプラインの有効期間は、"2015-01-01T08:00:00" から "2015-01-01T11:00:00" までの 3 時間です。
+下のパイプラインのコピー アクティビティは、Azure SQL から Azure Blob Storage にデータをコピーします。1 時間ごとに入力データセットとして Azure SQL のテーブルを受け取り、"AzureBlobOutput" データセットによって表される Azure BLOB ストレージにデータを書き込みます。出力データセットも 1 時間ごとです。時間単位でデータをコピーする方法については、「スケジュールと実行」セクションを参照してください。このパイプラインの有効期間は、"2015-01-01T08:00:00" から "2015-01-01T11:00:00" までの 3 時間です。
 
 **パイプライン:**
 	
@@ -224,7 +224,7 @@ Azure Data Factory でパイプラインを作成する一般的な手順は次�
 
 タグ | 説明 | 必須
 --- | ----------- | --------
-name | アクティビティまたはパイプラインの名前です。アクティビティまたはパイプラインが実行するように構成されているアクションを表す名前を指定します<br/><ul><li>最大文字数: 260</li><li>文字、数字、またはアンダースコア (\_) で始める必要があります</li><li>次の文字は使用できません: “.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\\”</li></ul> | ○
+name | アクティビティまたはパイプラインの名前です。アクティビティまたはパイプラインが実行するように構成されているアクションを表す名前を指定します<br/><ul><li>最大文字数: 260</li><li>文字、数字、またはアンダースコア (_) で始める必要があります</li><li>次の文字は使用できません: “.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\\”</li></ul> | ○
 description | アクティビティまたはパイプラインの用途を説明するテキスト | ○
 type | アクティビティの種類を指定します。アクティビティの種類については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」および「[データ変換アクティビティ](data-factory-data-transformation-activities.md)」を参照してください。 | ○
 inputs | アクティビティによって使用される入力テーブル<p>// 1 つの入力テーブル<br/>"inputs": [ { "name": "inputtable1" } ],</p><p>// 2 つの入力テーブル<br/>"inputs": [ { "name": "inputtable1" }, { "name": "inputtable2" } ],</p> | ○
@@ -235,7 +235,7 @@ policy | アクティビティの実行時の動作に影響を与えるポリ�
 start | パイプラインの開始日時。[ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)にする必要があります。(例: 2014-10-14T16:32:41Z)。<p>start プロパティと end プロパティで、パイプラインの有効期間を指定します。出力スライスは、この有効期間にのみ生成されます。</p> | ×<p>end プロパティの値を指定する場合、start プロパティの値も指定する必要があります。</p><p>パイプラインを作成するには、開始時間と終了時間の両方を空にする必要がありますが、パイプラインを実行できる有効期間を設定するには、両方の時間を指定する必要があります。パイプラインの作成時に開始時間と終了時間を指定しない場合、後で Set-AzureDataFactoryPipelineActivePeriod コマンドレットを使用して設定できます。</p>
 end | パイプラインの終了日時。ISO 形式で指定する必要があります。例: 2014-10-14T17:32:41Z <p>無期限でパイプラインを実行するには、end プロパティの値として 9999-09-09 を指定します。</p>| × <p>start プロパティの値を指定する場合、end プロパティの値も指定する必要があります。</p><p>**start** プロパティの注意事項を参照してください。</p>
 isPaused | true に設定すると、パイプラインは実行されません。既定値 = false。このプロパティを使用して有効または無効にできます。 | × 
-scheduler | アクティビティのスケジュールを定義します。サブプロパティは、[データセットの availability プロパティ](data-factory-create-datasets.md#Availability)と同じです。 | × | 
+scheduler | アクティビティのスケジュールを定義します。サブプロパティは、[データセットの availability プロパティ](data-factory-create-datasets.md#Availability)と同じです。| × | 
 
 ### アクティビティの種類
 Azure Data Factory には、[データ移動](data-factory-data-movement-activities.md)および[データ変換](data-factory-data-transformation-activities.md)のための広範なアクティビティがあります。
@@ -282,9 +282,9 @@ Visual Studio を使用して、パイプラインを作成して Azure Data Fac
 ### Azure PowerShell の使用
 Azure PowerShell を使用して、Azure Data Factory にパイプラインを作成できます。たとえば、c:\\DPWikisample.json のファイルでパイプライン JSON を定義しておきます。次の例のように Azure Data Factory インスタンスにそれをアップロードできます。
 
-	New-AzureDataFactoryPipeline -ResourceGroupName ADF -Name DPWikisample -DataFactoryName wikiADF -File c:\DPWikisample.json
+	New-AzureRmDataFactoryPipeline -ResourceGroupName ADF -Name DPWikisample -DataFactoryName wikiADF -File c:\DPWikisample.json
 
-このコマンドレットの詳細については、「[New-AzureDataFactoryPipeline コマンドレット](https://msdn.microsoft.com/library/dn820227.aspx)」を参照してください。
+このコマンドレットの詳細については、「[New-AzureDataFactoryPipeline コマンドレット](https://msdn.microsoft.com/library/mt619358.aspx)」を参照してください。
 
 ### REST API の使用
 REST API を使用してパイプラインを作成およびデプロイすることもできます。このメカニズムを利用すると、プログラムでパイプラインを作成できます。詳細については、「[パイプラインを作成または更新する](https://msdn.microsoft.com/library/azure/dn906741.aspx)」を参照してください。
@@ -335,4 +335,4 @@ REST API を使用してパイプラインを作成およびデプロイする�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

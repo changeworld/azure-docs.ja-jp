@@ -50,9 +50,9 @@
 
 これは、ロジック アプリが Active Directory に対する認証に使用する ID です。この実行が*必要*なのは、ディレクトリに対して 1 回だけです。たとえば、必要に応じてロジック アプリごとに一意の ID を作成することもできますが、すべてのロジック アプリに同じ ID を使用することもできます。この操作は UI で、または PowerShell を使用して実行できます。
 
-#### Azure ポータルを使用したアプリケーション ID の作成
+#### Azure クラシック ポータルを使用してアプリケーション ID を作成する
 
-1. [Azure ポータルの Active Directory](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) に移動して、Web アプリに使用するディレクトリを選択します。
+1. [Azure クラシック ポータルの Active Directory](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) に移動して、Web アプリに使用するディレクトリを選択します。
 2. **[アプリケーション]** タブをクリックします。
 3. ページの下部にあるコマンド バーで、**[追加]** をクリックします。
 4. ID に使用する名前を付けて、[次へ] 矢印をクリックします。
@@ -81,7 +81,7 @@ Web アプリが既にデプロイされている場合、ポータルでその�
 
 この時点で、アプリケーションが自動的に作成されます。このアプリケーションのクライアント ID は、パート 3 で必要となるため、次の手順を実行する必要があります。
 
-1. [Azure ポータルの Active Directory](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) に移動してディレクトリを選択します。 
+1. [Azure クラシック ポータルの Active Directory](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) に移動してディレクトリを選択します。 
 2. 検索ボックスでアプリを検索します。
 3. 一覧からアプリをクリックします。
 4. **[構成]** タブをクリックします。
@@ -91,7 +91,7 @@ Web アプリが既にデプロイされている場合、ポータルでその�
 
 最初に、Web アプリ用のアプリケーションを作成する必要があります。これは、ロジック アプリに使用するアプリケーションとは別に作成します。まず上記のパート 1 の手順を実行しますが、今回は **HomePage** と **IdentifierUris** に Web アプリの実際の https://**URL** を使用します。
 
->[AZURE.NOTE]Web アプリ用にアプリケーションを作成する際、PowerShell コマンドレットではユーザーが Web サイトにサインインするのに必要なアクセス許可が設定されないため、[Azure ポータルによるアプローチ](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory)を使用する必要があります。
+>[AZURE.NOTE]Web アプリ用にアプリケーションを作成する際、PowerShell コマンドレットではユーザーが Web サイトにサインインするのに必要なアクセス許可が設定されないため、[Azure クラシック ポータルによるアプローチ](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory)を使用する必要があります。
 
 クライアント ID とテナント ID を取得したら、Web アプリのサブ リソースとして、デプロイ テンプレートに次を追加します。
 
@@ -170,4 +170,4 @@ Web アプリが既にデプロイされている場合、ポータルでその�
 
 ただし、ロジック アプリのアプリケーション ID を作成して API の呼び出しに使用する場合は、このページの手順に従う必要があります。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

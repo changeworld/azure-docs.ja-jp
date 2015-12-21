@@ -1,7 +1,7 @@
 <properties
 	pageTitle="スループット向上のための Stream Analytics ジョブのスケーリング | Microsoft Azure"
 	description="Stream Analytics ジョブをスケールするために入力パーティションの構成、クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。"
-	keywords="分析ジョブ,データ ストリーム,データ ストリーミング"
+	keywords="データ ストリーミング、ストリーミング データ処理、分析のチューニング"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -14,22 +14,22 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="11/23/2015"
+	ms.date="12/04/2015"
 	ms.author="jeffstok"/>
 
-# スループット向上のための Azure Stream Analytics ジョブのスケーリング #
+# ストリーム データ処理スループット向上のための Azure Stream Analytics ジョブのスケーリング #
 
-Stream Analytics ジョブの*ストリーミング ユニット*を計算する方法と、Stream Analytics ジョブをスケールするために入力パーティションの構成、クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。
+Stream Analytics の分析ジョブをチューニングし、*ストリーミング ユニット*を計算する方法と、Stream Analytics ジョブをスケールするために入力パーティションの構成、分析クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。
 
 ## Stream Analytics ジョブの構成について教えてください。 ##
-Azure Stream Analytics のジョブ定義は、入力、クエリ、および出力で構成されます。入力は、ジョブがデータ ストリームを読み取る場所です。クエリは、データ入力ストリームを変換するために使用します。出力は、ジョブがジョブ結果を送信する宛先です。
+Stream Analytics のジョブ定義は、入力、クエリ、および出力で構成されます。入力は、ジョブがデータ ストリームを読み取る場所です。クエリは、データ入力ストリームを変換するために使用します。出力は、ジョブがジョブ結果を送信する宛先です。
 
 ジョブにはデータ ストリーミング用に少なくとも 1 つの入力ソースが必要です。データ ストリームの入力ソースは、Azure Service Bus Event Hub または Azure BLOB ストレージに格納できます。詳細については、「[Azure Stream Analytics の概要](stream-analytics-introduction.md)」、「[Azure Stream Analytics の使用](stream-analytics-get-started.md)」、および「[Azure Stream Analytics 開発者ガイド](../stream-analytics-developer-guide.md)」を参照してください。
 
 ## ストリーミング ユニットの構成 ##
 ストリーミング ユニット (SU) は、Azure Stream Analytics ジョブを実行するリソースとパワーを表します。SU は、CPU、メモリ、および読み取りと書き込みのレートを組み合わせた測定に基づいて、相対的なイベントの処理能力を記述する方法を提供します。各ストリーミング ユニットは、約 1 MB/秒のスループットに対応します。
 
-特定のジョブに必要な SU の数の選択は、入力のパーティション構成と、ジョブに定義されたクエリによって異なります。Azure クラシック ポータルを使用して、1 つのジョブにクォータまでのストリーミング ユニットを設定できます。また、1 つの Azure サブスクリプションの既定のクォータでは、ストリーミング ユニットの最大数は特定のリージョン内のすべての分析ジョブを合わせて 50 個です。サブスクリプションのストリーミング ユニット数を増やすには、[Microsoft サポート](http://support.microsoft.com)までご連絡ください。
+特定のジョブに必要な SU の数の選択は、入力のパーティション構成と、ジョブに定義されたクエリによって異なります。Azure ポータルを使用して、1 つのジョブにクォータまでのストリーミング ユニットを設定できます。また、1 つの Azure サブスクリプションの既定のクォータでは、ストリーミング ユニットの最大数は特定のリージョン内のすべての分析ジョブを合わせて 50 個です。サブスクリプションのストリーミング ユニット数を増やすには、[Microsoft サポート](http://support.microsoft.com)までご連絡ください。
 
 ジョブで使用できるストリーミング ユニットの数は、入力のパーティション構成とジョブに定義されているクエリによって異なります。ストリームのユニットの有効な値を使用する必要がある点にも注意してください。次に示すように、有効な値は 1、3、6 から開始し、増分単位 6 で増加します。
 
@@ -147,20 +147,20 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 
 **ジョブのストリーミング ユニットを調整するには**
 
-1. [クラシック ポータル](https://manage.windowsazure.com)にサインインします。
+1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
 2. 左側のウィンドウで **[Stream Analytics]** をクリックします。
 3. スケールする Stream Analytics ジョブをクリックします。
 4. ページの上部にある **[スケール]** をクリックします。
 
 ![Azure Stream Analytics のストリーミング ユニットのスケーリング][img.stream.analytics.streaming.units.scale]
 
-Azure ポータルの [設定] からスケールの設定にアクセスできます。
+Azure プレビュー ポータルの [設定] からスケールの設定にアクセスできます。
 
-![Azure ポータルでの Stream Analytics ジョブの構成][img.stream.analytics.preview.portal.settings.scale]
+![Azure プレビュー ポータルでの Stream Analytics ジョブの構成][img.stream.analytics.preview.portal.settings.scale]
 
 ## ジョブのパフォーマンスを監視する ##
 
-クラシック ポータルを使用して、ジョブのスループット (イベント数/秒) を追跡できます。
+管理ポータルを使用して、ジョブのスループット (イベント数/秒) を追跡できます。
 
 ![Azure Stream Analytics のジョブの監視][img.stream.analytics.monitor.job]
 
@@ -265,4 +265,4 @@ Azure ポータルの [設定] からスケールの設定にアクセスでき�
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

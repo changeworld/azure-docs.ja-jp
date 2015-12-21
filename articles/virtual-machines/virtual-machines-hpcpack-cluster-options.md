@@ -49,11 +49,13 @@ Microsoft HPC Pack と、Azure のコンピューティングおよびインフ�
 
 ### Tutorials (チュートリアル)
 
-* [チュートリアル: Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](../virtual-machines/virtual-machines-linux-cluster-hpcpack.md)
+* [チュートリアル: Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-cluster-hpcpack.md)
 
-* [チュートリアル: Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する](../virtual-machines/virtual-machines-linux-cluster-hpcpack-namd.md)
+* [チュートリアル: Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する](virtual-machines-linux-cluster-hpcpack-namd.md)
 
-* [チュートリアル: Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する](../virtual-machines/virtual-machines-excel-cluster-hpcpack.md)
+* [チュートリアル: Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFOAM を実行する](virtual-machines-linux-cluster-hpcpack-openfoam.md)
+
+* [チュートリアル: Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する](virtual-machines-excel-cluster-hpcpack.md)
 
 
 
@@ -97,4 +99,4 @@ Microsoft HPC Pack と、Azure のコンピューティングおよびインフ�
 
 <!-- * [Set up a Linux RDMA cluster to run MPI applications](virtual-machines-linux-hpcpack-cluster-rdma.md) -->
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

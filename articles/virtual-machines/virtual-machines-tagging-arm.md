@@ -183,11 +183,11 @@ Azure リソース マネージャーで Compute、Network、および Storage �
 
 
 [Azure リソース マネージャーで PowerShell 環境]: ../powershell-azure-resource-manager.md
-[Azure リソース コマンドレット]: https://msdn.microsoft.com/ja-JP/library/azure/dn757692.aspx
+[Azure リソース コマンドレット]: https://msdn.microsoft.com/library/azure/dn757692.aspx
 [Azure CLI 環境]: ./xplat-cli-azure-resource-manager.md
 [Azure リソース マネージャーの概要]: ../resource-group-overview.md
 [タグを使用した Azure リソースの整理]: ../resource-group-using-tags.md
 [Microsoft Azure の課金内容の確認]: ../billing-understand-your-bill.md
 [Microsoft Azure リソースの消費を把握する]: ../billing-usage-rate-card-overview.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

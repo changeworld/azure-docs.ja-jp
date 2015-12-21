@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/10/2015"   
+	ms.date="12/05/2015"   
 	ms.author="juliako"/>
 
 
 # Azure Media Packager を使用して静的パッケージ タスクを実行する
 
->[AZURE.NOTE]Windows Azure Media Packager と Windows Azure Media Encryptor は 2016 年 3 月 1 日に提供が中止されます。提供中止後は、これらのコンポーネントを使用できなくなります。形式の変換機能と暗号化機能は、動的パッケージと動的暗号化で引き続き使用できます。
+>[AZURE.NOTE]Microsoft Azure Media Packager と Microsoft Azure Media Encryptor は 2016 年 3 月 1 日に提供が中止されます。提供中止後は、これらのコンポーネントを使用できなくなります。形式の変換機能と暗号化機能は、動的パッケージと動的暗号化で引き続き使用できます。
 
 ## 概要
 
@@ -1447,4 +1447,4 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

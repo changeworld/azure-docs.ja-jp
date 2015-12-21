@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/15/2015" 
+	ms.date="12/07/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法
 
 Azure API Management を介して API の発行と管理を行うように選択することで、そうしなければ自分で設計、実装、および管理する必要のある、さまざまなフォールト トレランス機能やインフラストラクチャ機能を利用できるようになります。Azure プラットフォームにより、わずかな料金で潜在的な障害の大部分が軽減されます。
 
-API Management サービスがホストされているリージョンに影響する可用性の問題から復旧するためには、いつでも異なるリージョンにサービスを再構成できるように準備しておく必要があります。可用性の目標と復旧時間の目標に応じて、バックアップ サービスを 1 つ以上のリージョンに確保し、それらの構成と内容がアクティブ サービスと同期するように保守することができます。サービス バックアップと復元の機能は、災害復旧戦略を実装するために必要な構成要素となります。
+API Management サービスがホストされているリージョンに影響する可用性の問題から復旧するためには、いつでも異なるリージョンにサービスを再構成できるように準備しておく必要があります。可用性の目標と復旧時間の目標に応じて、バックアップ サービスを 1 つ以上のリージョンに確保し、それらの構成と内容がアクティブ サービスと同期するように保守することができます。サービス バックアップと復元の機能は、障害復旧戦略を実装するために必要な構成要素となります。
 
 このガイドでは、Azure リソース マネージャーの要求を認証する方法と、API Management サービス インスタンスをバックアップおよび復元する方法を説明します。
 
@@ -36,25 +36,25 @@ Azure リソース マネージャーを使用してリソースに実行する�
 -	追加したアプリケーションのアクセス許可を設定する。
 -	Azure リソース マネージャーへの要求を認証するためのトークンを取得する。
 
-最初の手順は、Azure Active Directory アプリケーションの作成です。API Management サービス インスタンスが含まれたサブスクリプションを使用して[管理ポータル](http://manage.windowsazure.com/)にログインし、既定の Azure Active Directory の **[アプリケーション]** タブに移動します。
+最初の手順は、Azure Active Directory アプリケーションの作成です。API Management サービス インスタンスが含まれたサブスクリプションを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/)にログインし、既定の Azure Active Directory の **[アプリケーション]** タブに移動します。
 
->[AZURE.NOTE]Azure Active Directory の既定のディレクトリがアカウントに表示されない場合は、必要なアクセス許可をアカウントに付与するよう Azure サブスクリプションの管理者に連絡してください。既定のディレクトリを見つける方法の詳細については、「[Azure ポータルで既定のディレクトリを見つける](../virtual-machines/resource-group-create-work-id-from-persona.md/#locate-your-default-directory-in-the-azure-portal)」を参照してください。
+>[AZURE.NOTE]Azure Active Directory の既定のディレクトリがアカウントに表示されない場合は、必要なアクセス許可をアカウントに付与するよう Azure サブスクリプションの管理者に連絡してください。既定のディレクトリを見つける方法の詳細については、「[既定のディレクトリを見つける](../virtual-machines/resource-group-create-work-id-from-persona.md/#locate-your-default-directory-in-the-azure-portal)」を参照してください。
 
-![Create Azure Active Directory application][api-management-add-aad-application]
+![Azure Active Directory アプリケーションを作成する][api-management-add-aad-application]
 
 **[追加]**、**[組織で開発中のアプリケーションを追加]** を順にクリックし、**[ネイティブ クライアント アプリケーション]** を選択します。わかりやすい名前を入力し、次へ進む矢印をクリックします。**[リダイレクト URI]** に `http://resources` などのプレース ホルダー URL を入力します。これは必須フィールドですが、値を後で使用することはありません。チェック ボックスをオンにして、アプリケーションを保存します。
 
 アプリケーションが保存されたら、**[構成]** をクリックし、ページを **[他のアプリケーションに対するアクセス許可]** セクションが表示されるまで下へスクロールして、**[アプリケーションの追加]** をクリックします。
 
-![Add permissions][api-management-aad-permissions-add]
+![アクセス許可を追加する][api-management-aad-permissions-add]
 
 **[Windows** **Azure Service Management API]** を選択し、チェック ボックスをオンにしてアプリケーションを追加します。
 
-![Add permissions][api-management-aad-permissions]
+![アクセス許可を追加する][api-management-aad-permissions]
 
 新たに追加された **Windows** **Azure Service Management API** アプリケーションの横にある **[デリゲートされたアクセス許可]** をクリックし、**[Azure Service 管理へのアクセス (プレビュー)]** のチェック ボックスをオンにして、**[保存]** をクリックします。
 
-![Add permissions][api-management-aad-delegated-permissions]
+![アクセス許可を追加する][api-management-aad-delegated-permissions]
 
 サービス インスタンスをバックアップおよび復元する API を呼び出す前に、トークンを取得する必要があります。次の例では、[Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet パッケージを使用して、トークンを取得します。
 
@@ -85,9 +85,9 @@ Azure リソース マネージャーを使用してリソースに実行する�
 
 `{tenant id}` を、作成した Azure Active Directory アプリケーションのテナント ID に置き換えます。ID にアクセスするには、**[エンドポイントの表示]** をクリックします。
 
-![Endpoints][api-management-aad-default-directory]
+![エンドポイント][api-management-aad-default-directory]
 
-![Endpoints][api-management-endpoint]
+![エンドポイント][api-management-endpoint]
 
 `{application id}` および `{redirect uri}` を、Azure Active Directory アプリケーションの **[構成]** タブにある **[リダイレクト URI]** セクションに表示されている **クライアント ID** と URL に置き換えます。
 
@@ -189,4 +189,4 @@ API Management サービスをバックアップするには、次の HTTP 要�
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015"
+	ms.date="12/09/2015"
 	ms.author="juliako"/>
 
 
@@ -23,6 +23,7 @@
 > [AZURE.SELECTOR]
 - [Portal](media-services-manage-origins.md)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+- [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 
 Microsoft Azure Media Services では、**ストリーミング エンドポイント**は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。Media Services は、シームレスな Azure CDN 統合もサポートしています。StreamingEndpoint サービスからの送信ストリームには、ライブ ストリームまたは Media Services アカウントのオンデマンド ビデオ資産を使用します。
 
@@ -33,17 +34,17 @@ StreamingEndpoint が実行状態の場合にのみ課金されます。
 このトピックでは、ストリーミング エンドポイントで提供される主な機能の概要を説明します。また、このトピックでは、Azure クラシック ポータルを使用してストリーミング エンドポイントを管理する方法についても説明します。
 
 
-##ストリーミング エンドポイントの追加および削除
+##ストリーミング エンドポイントの追加および削除 
 
 ストリーミング エンドポイントは、.NET SDK、REST API、Azure クラシック ポータルを使用して追加または削除できます。
 
 Azure クラシック ポータルを使用してストリーミング エンドポイントを追加または削除するには、次の操作を行います。
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
-2. [**ストリーミング エンドポイント**] ページを選択します。
-3. ページの下部にある [追加] または [削除] をクリックします。既定のストリーミング エンドポイントは削除できない点に注意してください。
-4. [開始] をクリックしてストリーミング エンドポイントを開始します。
-5. ストリーミング エンドポイントの名前をクリックして、それを構成します。
+2. [**ストリーミング エンドポイント**] ページを選択します。 
+3. ページの下部にある [追加] または [削除] をクリックします。既定のストリーミング エンドポイントは削除できない点に注意してください。 
+4. [開始] をクリックしてストリーミング エンドポイントを開始します。 
+5. ストリーミング エンドポイントの名前をクリックして、それを構成します。   
 
 	![ストリーミング エンドポイント ページ][streaming-endpoint]
 
@@ -100,7 +101,7 @@ Azure クラシック ポータルを使用してストリーミング エンド
 
 3. Akamai 署名ヘッダー認証の構成を指定する。
 
-4. Adobe Flash クライアントについては、クロス ドメインのアクセス ポリシーを指定できます (詳細については、[クロス ドメイン ポリシー ファイルの仕様](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)に関するページをご覧ください)。Microsoft Silverlight クライアントについてはクライアント アクセス ポリシーを指定できます (詳細については、「Making a Service Available Across Domain Boundaries （ドメインの境界を越えたサービス提供)https://msdn.microsoft.com/library/cc197955(v=vs.95).aspx)」をご覧ください)。
+4. Adobe Flash クライアントについては、クロス ドメインのアクセス ポリシーを指定できます (詳細については、[クロス ドメイン ポリシー ファイルの仕様](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)に関するページをご覧ください)。Microsoft Silverlight クライアントについてはクライアント アクセス ポリシーを指定できます (詳細については、「[Making a Service Available Across Domain Boundaries（ドメインの境界を越えたサービス提供)](https://msdn.microsoft.com/library/cc197955(v=vs.95).aspx)」をご覧ください)。
 
 5. **[構成]** ボタンをクリックしてカスタム ホスト名も構成できます。詳細については、[StreamingEndpont](https://msdn.microsoft.com/library/dn783468.aspx) のトピックの **CustomHostNames** プロパティをご覧ください。
 
@@ -132,7 +133,7 @@ CDN 統合は、すべての Azure データ センター (米国西部、米国
 - 新しいストリーミング エンドポイントの場合は、新しいエンドポイントを作成するだけで CDN を有効にできます。既存のストリーミング エンドポイントの場合は、最初にエンドポイントを停止してから CDN を有効にする必要があります。
  
 
-詳細については、[「Azure CDN (Content Delivery Network) との Azure Media Services 統合の発表 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/17/announcing-azure-media-services-integration-with-azure-cdn-content-delivery-network/) 」をご覧ください。
+詳細については、[「Azure CDN (コンテンツ配信ネットワーク) との Azure Media Services 統合の発表 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/17/announcing-azure-media-services-integration-with-azure-cdn-content-delivery-network/) 」をご覧ください。
 
 
 ##Media Services のラーニング パス
@@ -149,4 +150,4 @@ CDN 統合は、すべての Azure データ センター (米国西部、米国
 [configure-origin-configure-custom-host-names]: ./media/media-services-manage-origins/media-services-configure-custom-host-names.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

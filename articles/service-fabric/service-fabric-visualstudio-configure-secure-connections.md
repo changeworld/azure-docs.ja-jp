@@ -46,9 +46,9 @@ Visual Studio から Service Fabric プロジェクトを発行するには、**
 
 4.	[省略可能]: 発行プロファイルを編集して、セキュリティ保護されたクラスターの接続を指定できます。
 
-    発行プロファイルの XML ファイルを手動で編集して証明書の情報を指定するため、証明書ストアの名前、ストアの場所、および証明書の拇印をメモしておいてください。後で、証明書ストアの名前とストアの場所に対して値の指定が必要になります。詳細については、[方法: 証明書のサムプリントを取得する] (https://msdn.microsoft.com/ja-JP/library/ms734695(v=vs.110).aspx) を参照してください。
+    発行プロファイルの XML ファイルを手動で編集して証明書の情報を指定するため、証明書ストアの名前、ストアの場所、および証明書の拇印をメモしておいてください。後で、証明書ストアの名前とストアの場所に対して値の指定が必要になります。詳細については、[方法: 証明書のサムプリントを取得する] (https://msdn.microsoft.com/library/ms734695(v=vs.110).aspx) を参照してください。
 
-    *ClusterConnectionParameters* パラメーターを使用して、Service Fabric クラスターに接続するときに使用する PowerShell のパラメーターを指定できます。Connect-ServiceFabricCluster コマンドレットが受け取るパラメーターをすべて使用できます。使用可能なパラメーターの一覧については、[Connect-ServiceFabricCluster](https://msdn.microsoft.com/ja-JP/library/mt125938.aspx) に関するページを参照してください。
+    *ClusterConnectionParameters* パラメーターを使用して、Service Fabric クラスターに接続するときに使用する PowerShell のパラメーターを指定できます。Connect-ServiceFabricCluster コマンドレットが受け取るパラメーターをすべて使用できます。使用可能なパラメーターの一覧については、「[Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx)」を参照してください。
 
     リモート クラスターに発行する場合は、そのクラスターに適したパラメーターを指定する必要があります。次は、セキュリティ保護されていないクラスターに接続する場合の例です。
 
@@ -76,4 +76,4 @@ Service Fabric クラスターにアクセスする方法の詳細について�
 [publishdialog]: ./media/service-fabric-visualstudio-configure-secure-connections/publishdialog.png
 [selectsfcluster]: ./media/service-fabric-visualstudio-configure-secure-connections/selectsfcluster.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

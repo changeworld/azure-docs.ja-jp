@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/14/2015" 
+	ms.date="12/03/2015" 
 	ms.author="antonba"/>
 
 # ユーザーの登録と成果物のサブスクリプションを委任する方法
@@ -34,7 +34,7 @@
 
 これを実現するには、最初に委任エンドポイント経由で要求をルーティングするように API Management を設定します。API Management パブリッシャー ポータルで、**[セキュリティ]** をクリックし、**[委任]** タブをクリックします。チェックボックスをクリックして、[サインインおよびサインアップの委任] を有効にします。
 
-![Delegation page][api-management-delegation-signin-up]
+![[委任] ページ][api-management-delegation-signin-up]
 
 * 特殊な委任エンドポイントの URL を決めて **[委任エンドポイント URL]** フィールドに入力します。 
 
@@ -46,7 +46,7 @@
 
 	> *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL 元のページ}&salt={文字列}&sig={文字列}*
 
-	サインイン/サインアップ処理のためのクエリ パラメーター: - **operation**: 委任要求の種類を識別します - この場合は **SignIn** のみを指定できます - **returnUrl**: ユーザーがサインインまたはサインアップ リンクをクリックしたページの URL - **salt**: セキュリティ ハッシュのコンピューティングに使用される特殊な salt 文字列 - **sig**: 自分でコンピューティングしたハッシュとの比較に使用される、コンピューティングによって求められたセキュリティ ハッシュ
+	サインイン/サインアップ処理のためのクエリ パラメーター: - **operation**: 委任要求の種類を識別します - この場合は **SignIn** のみを指定できます - **returnUrl**: ユーザーがサインインまたはサインアップ リンクをクリックしたページの URL - **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列 - **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ
 
 2. 要求の送信元が Azure API Management であることを確認します (省略できますが、セキュリティ上強く推奨されます)。
 
@@ -117,7 +117,7 @@
 
 ## <a name="delegate-example-code"> </a> コード例 ##
 
-これらのコード サンプルでは、API Management ポータルの [委任] 画面に設定された*委任検証キー*を取得して、署名の検証に使用する HMAC を作成し、渡された returnUrl の有効性を証明する方法を示します。同じコードは、わずかに変更するだけで、productId と userId に対して機能します。
+これらのコード サンプルでは、パブリッシャー ポータルの [委任] 画面に設定された*委任検証キー*を取得して、署名の検証に使用する HMAC を作成し、渡された returnUrl の有効性を証明する方法を示します。同じコードは、わずかに変更するだけで、productId と userId に対して機能します。
 
 **returnUrl のハッシュを生成する C# のコード**
 
@@ -166,4 +166,4 @@
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

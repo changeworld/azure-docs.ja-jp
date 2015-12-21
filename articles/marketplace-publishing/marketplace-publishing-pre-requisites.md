@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="Azure"
   ms.workload="na"
-  ms.date="11/17/2015"
+  ms.date="12/06/2015"
   ms.author="hascipio; v-divte"/>
 
 # Azure Marketplace 向けプラン作成の一般的な前提条件
@@ -29,9 +29,9 @@ Microsoft で販売者アカウントを登録する方法の詳細な手順に�
 
 > [AZURE.IMPORTANT]無料プランのみを発行する予定 (またはライセンス持ち込み) であれば、会社の税金や銀行情報を入力する必要はありません。
 
-> プラン作成を開始するには、会社の登録を完了する必要があります。ただし、会社が販売者ダッシュボードで税金と銀行情報を入力している途中でも、開発者は[発行ポータル](https://publish.windowsazure.com)で仮想マシン イメージの作成を開始し、それらのイメージの認定取得、および Azure ステージング環境でのテストを実行できます。販売者アカウントの承認が必要になるのは、プランを Azure Marketplace に発行する最後の手順のみです。
+> プラン作成を開始するには、会社の登録を完了する必要があります。ただし、会社が Microsoftデベロッパー センターで税金と銀行情報を入力している途中でも、開発者は[発行ポータル](https://publish.windowsazure.com)で仮想マシン イメージの作成を開始し、それらのイメージの認定取得、および Azure ステージング環境でのテストを実行できます。販売者アカウントの承認が必要になるのは、プランを Azure Marketplace に発行する最後の手順のみです。
 
-> 販売者の登録作業で問題が発生した場合は、次の手順でサポート チケットをログしてください。1.[サポート](http://go.microsoft.com/fwlink?LinkId=272975)に問い合わせる。2.**[販売者ダッシュボードの登録およびアカウント]** を選択する。3.**[開発者アカウントの登録]** を選択する。4.連絡方法を選択する。
+> 販売者の登録作業で問題が発生した場合は、次の手順でサポート チケットをログしてください。1.[サポート](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&supportregion=ja-JP&pesid=15635&ccsid=635847950577064286)に問い合わせる。2.**[デベロッパー センター]** を選択する。3.**[Publisher Profile]** を選択します。4.連絡方法を選択する。
 
 
 ## Azure の「従量課金制」サブスクリプションを取得する
@@ -50,4 +50,4 @@ Microsoft で販売者アカウントを登録する方法の詳細な手順に�
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

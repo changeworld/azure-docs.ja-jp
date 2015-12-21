@@ -28,7 +28,7 @@ Azure App Service にアップグレードされたモバイル バックエン�
 
 [AZURE.INCLUDE [app-service-mobile-migrate-vs-upgrade](../../includes/app-service-mobile-migrate-vs-upgrade.md)]
 
->[AZURE.TIP]アップグレードする前に、[移行する](app-service-mobile-dotnet-backend-migrating-from-mobile-services.md)ことをお勧めします。そうすることで、同じ App Service プランに両方のバージョンのアプリケーションを指定できるため、追加コストが発生しません。
+>[AZURE.TIP]アップグレードする前に、[移行する](app-service-mobile-migrating-from-mobile-services.md)ことをお勧めします。そうすることで、同じ App Service プランに両方のバージョンのアプリケーションを指定できるため、追加コストが発生しません。
 
 ###Mobile Apps .NET サーバー SDK の機能強化
 
@@ -199,7 +199,7 @@ Mobile Services には、ASP.NET CORS ソリューションをラップするこ
 CORS を使用する場合の主な懸念事項は、クライアント SDK が適切に機能するように `eTag` と `Location` ヘッダーを許可する必要があることです。
 
 ### プッシュ通知
-プッシュについては、サーバー SDK に含まれていない主な項目として、PushRegistrationHandler クラスがあります。登録処理は Mobile App アプリとはわずかに異なり、タグのない登録が既定で有効になっています。カスタム API を使用してタグを管理することができます。詳細については、[タグの登録](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)手順に関する記述を参照してください。
+プッシュについては、サーバー SDK に含まれていない主な項目として、PushRegistrationHandler クラスがあります。登録処理は Mobile Apps アプリとはわずかに異なり、タグのない登録が既定で有効になっています。カスタム API を使用してタグを管理することができます。詳細については、[タグの登録](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)手順に関する記述を参照してください。
 
 ### スケジュールされたジョブ
 スケジュールされたジョブは、Mobile Apps には組み込まれません。そのため、.NET バックエンド内にある既存のジョブは個別にアップグレードする必要があります。1 つの方法としては、スケジュールされた [Web ジョブ]をモバイル アプリ コード サイトで作成します。また、ジョブ コードを保持するコントローラーを設定し、必要なスケジュールでそのエンドポイントをヒットするように [Azure Scheduler] を構成することもできます。
@@ -271,11 +271,10 @@ Mobile App バックエンドを運用している場合は、それを利用す
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
 [Azure Scheduler]: /ja-JP/documentation/services/scheduler/
 [Web ジョブ]: ../app-service-web/websites-webjobs-resources.md
-[Send cross-platform push notifications]: app-service-mobile-xamarin-ios-push-notifications-to-user.md
 [.NET サーバー SDK の使用方法]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-dotnet-backend-migrating-from-mobile-services.md
-[Migrate your existing Mobile Service to App Service]: app-service-mobile-dotnet-backend-migrating-from-mobile-services.md
+[Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
+[Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [App Service の価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
 [.NET サーバー SDK の概要]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

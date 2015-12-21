@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="ロジック アプリの定義の作成" 
+	pageTitle="ロジック アプリの定義の作成 | Microsoft Azure" 
 	description="ロジック アプリの JSON 定義を記述する方法について説明します。" 
 	authors="stepsic-microsoft-com" 
 	manager="dwrede" 
@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/08/2015"
+	ms.date="12/07/2015"
 	ms.author="stepsic"/>
 	
-#ロジック アプリの定義の作成
+# ロジック アプリの定義の作成
 このトピックでは、単純な宣言型の JSON 言語である、[App Service Logic Apps](app-service-logic-what-are-logic-apps.md) 定義の使用方法を示します。まだ使用したことがない場合は、まず[新しいロジック アプリの作成方法](../app-service-create-a-logic-app.md)に関するページを参照してください。また、[MSDN の定義言語の完全リファレンス マテリアル](https://msdn.microsoft.com/library/azure/dn948512.aspx)を参照することもできます。
 
 ## リストに対して繰り返す複数のステップ
 
 一般的なパターンとしては、最初のステップでアイテムのリストを取得した後、そのリストに対して必要な 2 つ以上の一連のアクションを実行します。
 
-![Repeat over lists](./media/app-service-logic-author-definitions/repeatoverlists.png)
+![リストに対して繰り返す](./media/app-service-logic-author-definitions/repeatoverlists.png)
 
 この例には、次の 3 つのアクションがあります。
 
@@ -99,7 +99,7 @@
         "destinationMap": {
             "defaultValue": {
                 "science": "http://www.nasa.gov",
-                "microsoft": "https://www.microsoft.com/ja-jp/default.aspx",
+                "microsoft": "https://www.microsoft.com/ja-JP/default.aspx",
                 "google": "https://www.google.com",
                 "robots": "https://en.wikipedia.org/wiki/Robot",
                 "NSA": "https://www.nsa.gov/"
@@ -234,14 +234,14 @@ Logic Apps は、多くの場合、離散されているほど管理が簡単に
 }
 ```
 
-MSDN の[ロジック アプリの種類のアクション](https://msdn.microsoft.com/ja-jp/library/azure/dn948511.aspx)に関するページを参照してください。
+MSDN の[ロジック アプリの種類のアクション](https://msdn.microsoft.com/library/azure/dn948511.aspx)に関するページを参照してください。
 
 >[AZURE.NOTE]ロジック アプリ デザイナーでは、ロジック アプリの種類のアクションがサポートされていないため、定義を手動で編集する必要があります。
 
 
 ## 問題が発生した場合のエラー処理ステップ
 
-一般的に、*修復ステップ*を作成できるようになるいつ用があります。これは、1 つ以上の呼び出しが失敗した**場合に限り**実行されるいくつかのロジックです。この例では、さまざまな場所からデータを取得しますが、呼び出しに失敗した場合は、後でそのエラーを追跡できるように、どこかにメッセージを POST する必要があります。
+一般的に、*修復ステップ*を作成できるようにする必要があります。これは、1 つ以上の呼び出しが失敗した**場合に限り**実行されるいくつかのロジックです。この例では、さまざまな場所からデータを取得しますが、呼び出しに失敗した場合は、後でそのエラーを追跡できるように、どこかにメッセージを POST する必要があります。
 
 ```
 {
@@ -250,7 +250,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
     "parameters": {
         "dataFeeds": {
             "defaultValue": [
-                "https://www.microsoft.com/ja-jp/default.aspx",
+                "https://www.microsoft.com/ja-JP/default.aspx",
                 "https://gibberish.gibberish/"
             ],
             "type": "Array"
@@ -289,7 +289,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 
 2 つの条件を使用しているのは、最初のステップでリストの繰り返し処理を行っているためです。アクションが 1 つしかない場合、必要な条件は最初の 1 つだけになります。また、修復ステップでは、失敗したアクションに対して *inputs* を使用できる点にも注意してください。ここでは、エラーになった URL を 2 番目のステップに渡します。
 
-![Remediation](./media/app-service-logic-author-definitions/remediation.png)
+![修復](./media/app-service-logic-author-definitions/remediation.png)
 
 最後に、エラーの処理が完了したので、実行は **"失敗"** としてマークされなくなります。ご覧のとおり、この実行は、1 つのステップは失敗しましたが、このエラーを処理するステップを記述したため、**"成功"** となっています。
 
@@ -297,7 +297,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 
 複数のアクションを順番に実行するのではなく並列実行するには、2 つのアクションをリンクする `dependsOn` 条件を削除する必要があります。依存関係が削除されると、アクションは、互いのデータを必要とする場合を除いて、自動的に並列実行されます。
 
-![Branches](./media/app-service-logic-author-definitions/branches.png)
+![分岐](./media/app-service-logic-author-definitions/branches.png)
 
 ```
 {
@@ -306,7 +306,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
     "parameters": {
         "dataFeeds": {
             "defaultValue": [
-                "https://www.microsoft.com/ja-jp/default.aspx",
+                "https://www.microsoft.com/ja-JP/default.aspx",
                 "https://office.live.com/start/default.aspx"
             ],
             "type": "Array"
@@ -345,7 +345,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 
 上の例からわかるように、branch1 と branch2 は readData の内容のみに依存しています。その結果、これらの分岐 (branch) の両方が並列実行されます。
 
-![Parallel](./media/app-service-logic-author-definitions/parallel.png)
+![並列](./media/app-service-logic-author-definitions/parallel.png)
 
 両方の分岐のタイムスタンプが一致していることを確認できます。
 
@@ -723,4 +723,4 @@ API を呼び出しているときに、特定の応答を待ってから処理�
 
 ロジック アプリの作成と管理用に用意したすべてのオプションについては、[REST API のドキュメント](https://msdn.microsoft.com/library/azure/dn948513.aspx)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

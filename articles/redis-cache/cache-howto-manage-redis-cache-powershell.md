@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="cache-redis"
    ms.workload="multiple"
-   ms.date="12/02/2015"
+   ms.date="12/03/2015"
    ms.author="riande"/>
 
 # Azure PowerShell を使用した Azure Redis Cache の管理
@@ -94,9 +94,9 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 
 - [MSDN 上の Azure Redis Cache コマンドレットのドキュメント](https://msdn.microsoft.com/library/azure/mt634513.aspx)
 - [Azure リソース マネージャー コマンドレットに関するページ](http://go.microsoft.com/fwlink/?LinkID=394765): AzureResourceManager モジュールのコマンドレットを使用する方法について説明します。
-- [リソース グループを使用した Azure リソースの管理](../azure-portal/resource-group-portal.md): Azure プレビュー ポータルでリソース グループを作成して管理する方法について説明します。
+- [リソース グループを使用した Azure リソースの管理](../azure-portal/resource-group-portal.md): Azure ポータルでリソース グループを作成して管理する方法について説明します。
 - [Azure blog (Azure のブログ)](http://blogs.msdn.com/windowsazure): Azure の新機能について説明します。
 - [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

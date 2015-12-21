@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/17/2015"
+   ms.date="12/04/2015"
    ms.author="hascipio" />
 
 # Azure Marketplace へのプランの発行方法
@@ -50,7 +50,7 @@
 - [Troubleshooting Common Publishing Problems in the Marketplace (Marketplace での発行に関してよくある問題のトラブルシューティング)][suppt-common]
 
 ## その他のリソース
-- 使用されるポータルの詳細については、「[Portals You Will Need (必要なポータル)](marketplace-publishing-portals.md)」を参照してください。
+- 使用されるポータルの詳細については、「[必要なポータル](marketplace-publishing-portals.md)」を参照してください。
 
 **仮想マシン**
 
@@ -58,7 +58,11 @@
 - [Creating a VM Image on-premise (オンプレミスでの VM イメージの作成)](marketplace-publishing-vm-image-creation-on-premise.md)
 - [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines-windows-tutorial/)
 
-**Data Services** - [Data Service OData マッピング](marketplace-publishing-data-service-creation-odata-mapping.md) - [Data Service OData マッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) - [Data Service OData マッピング例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)
+**Data Services**
+
+- [データ サービスの OData のマッピング](marketplace-publishing-data-service-creation-odata-mapping.md)
+- [データ サービスの OData のマッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)
+- [データ サービスの OData のマッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)
 
 [suppt-general]: marketplace-publishing-get-publisher-support.md
 [suppt-rpt-insights]: marketplace-publishing-report-seller-insights.md
@@ -77,4 +81,4 @@
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 [link-pushprod]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

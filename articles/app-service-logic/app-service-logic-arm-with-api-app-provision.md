@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="ロジック アプリと API アプリを作成します。" 
+	pageTitle="API アプリを使用してロジック アプリを作成する | Microsoft Azure" 
 	description="Azure リソース マネージャーのテンプレートを使用し、ロジック アプリと API アプリをデプロイします。" 
 	services="app-service\logic" 
 	documentationCenter="" 
@@ -13,18 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/01/2015" 
+	ms.date="12/07/2015" 
 	ms.author="tomfitz"/>
 
 # テンプレートを使用したロジック アプリと API アプリの作成
 
 このトピックでは、ロジック アプリと App Service API アプリを作成するための Azure リソース マネージャー テンプレートを作成する方法について説明します。ロジック アプリを使用すると、トリガーと一連の手順によって目的を明確に表すワークフローを設計できます。各手順から API アプリを呼び出すと同時に、認証と、持続性のある実行などのベスト プラクティスにも確実に対処します。
 
-さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-ロジック アプリのプロパティの詳細については、[ロジック アプリ ワークフローの管理 API](https://msdn.microsoft.com/library/azure/dn948513.aspx) に関するページを参照してください。定義自体の例については、「[ロジック アプリの定義の作成](app-service-logic-author-definitions.md)」を参照してください。
+ロジック アプリのプロパティの詳細については、[ロジック アプリ ワークフローの管理 API](https://msdn.microsoft.com/library/azure/dn948513.aspx) に関するページを参照してください。
 
-テンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)に関するページを参照してください。
+定義自体の例については、「[ロジック アプリの定義の作成](app-service-logic-author-definitions.md)」を参照してください。
+
+テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
 
 完全なテンプレートについては、[ロジック アプリと API アプリのテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/201-logic-app-api-app-create/azuredeploy.json)に関するページを参照してください。
 
@@ -35,9 +37,9 @@
 - ロジック アプリ
 - API アプリ
 
-展開を自動的に実行するには、次のボタンをクリックします。
+デプロイを自動的に実行するには、次のボタンを選択します。
 
-[![Azure への展開](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-api-app-create%2Fazuredeploy.json)
+[![Azure へのデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-api-app-create%2Fazuredeploy.json)
 
 ## パラメーター
 
@@ -394,4 +396,4 @@ App Service プランを作成します。
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -1,5 +1,5 @@
 <properties
-  pageTitle="Mobile Apps と Mobile Services のクライアントとサーバーのバージョン管理 | Azure App Service"
+  pageTitle="Mobile Apps と Mobile Services のクライアントとサーバーの SDK バージョン管理 | Azure App Service"
   description="Mobile Services と Azure Mobile Apps のクライアント SDK およびサーバー SDK バージョンとの互換性の一覧"
   services="app-service\mobile"
   documentationCenter=""
@@ -88,7 +88,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 ### Mobile Services バックエンドの動作
 
-| ZUMO-API-VERSION | MS\_SkipVersionCheck の値 | Response |
+| ZUMO-API-VERSION | MS\_SkipVersionCheck の値 | 応答 |
 | ---------------- | ---------------------------- | -------- |
 | 指定なし | 任意 | 200 - OK |
 | 任意の値 | True | 200 - OK |
@@ -139,6 +139,6 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 
 [Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
-[Mobile Service を Azure App Service に移行する]: app-service-mobile-dotnet-backend-migrating-from-mobile-services.md
+[Mobile Service を Azure App Service に移行する]: app-service-mobile-migrating-from-mobile-services.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

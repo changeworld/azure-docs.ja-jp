@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="12/05/2015" 
 	ms.author="juliako"/>
 
 
@@ -39,13 +39,28 @@ A: Media Services では Azure CDN との統合をサポートしています (�
 
 Q: Azure Media services では画像の保存はサポートされますか。
 
-A: JPEG や PNG 画像を保存するだけの場合は、Azure Blob ストレージを使用してください。これらをビデオやオーディオ アセットに関連付けることがない限り、 Media Services アカウントに保存するメリットはありません。または、ビデオ エンコーダーで画像をオーバーレイとして使用する必要がある場合、Media Services エンコーダーではビデオの上に画像をオーバーレイさせることができ、JPEG や PNG が入力形式としてサポートされています。詳細については、「[オーバーレイの作成](https://msdn.microsoft.com/library/azure/dn640496.aspx)」を参照してください。
+A: JPEG や PNG 画像を保存するだけの場合は、Azure Blob Storage を使用してください。これらをビデオやオーディオ アセットに関連付けることがない限り、 Media Services アカウントに保存するメリットはありません。または、ビデオ エンコーダーで画像をオーバーレイとして使用する必要がある場合、Media Services エンコーダーではビデオの上に画像をオーバーレイさせることができ、JPEG や PNG が入力形式としてサポートされています。詳細については、「[オーバーレイの作成](https://msdn.microsoft.com/library/azure/dn640496.aspx)」を参照してください。
 
 Q: 1 つの Media Services アカウントから他のアカウントにアセットをコピーする方法を教えてください。
 
 A: 1 つの Media Services アカウントから他のアカウントにアセットをコピーするには、[Azure Media Services .NET SDK Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions/) リポジトリで入手できる [IAsset.Copy](https://github.com/Azure/azure-sdk-for-media-services-extensions/blob/dev/MediaServices.Client.Extensions/IAssetExtensions.cs#L354) 拡張メソッドを使用します。詳細については、[こちらの](https://social.msdn.microsoft.com/Forums/azure/28912d5d-6733-41c1-b27d-5d5dff2695ca/migrate-media-services-across-subscription?forum=MediaServices)フォーラムのスレッドをご覧ください。
 
+Q: エンコーディング プロセスでビデオをローテーションする方法を教えてください。
 
+A: [メディア エンコーダー スタンダード](media-services-dotnet-encode-with-media-encoder-standard.md)は、90/180/270 の角度によるローテーションをサポートしています。既定の動作 "自動" により、受信 MP4/MOV ファイルのローテーション メタデータの検出、およびこの補正が試行されます。[ここ](http://msdn.microsoft.com/library/azure/mt269960.aspx)で定義されたいずれかの JSON プリセットに対する次の**ソース**要素を含めます。
+	
+	"Version": 1.0,
+	"Sources": [
+	{
+	  "Streams": [],
+	  "Filters": {
+	    "Rotation": "90"
+	  }
+	}
+	],
+	"Codecs": [
+	
+	...
 
 ##Media Services のラーニング パス
 
@@ -55,4 +70,4 @@ A: 1 つの Media Services アカウントから他のアカウントにアセ�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

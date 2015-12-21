@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="cache-redis"
    ms.workload="tbd"
-   ms.date="10/23/2015"
+   ms.date="12/03/2015"
    ms.author="sdanie" />
 
 # Azure Redis Cache の ASP.NET セッション状態プロバイダー
@@ -25,13 +25,13 @@ Azure Redis Cache には、セッション状態プロバイダーが用意さ�
 
 Visual Studio で Redis Cache Session State NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-![Azure Redis Cache Manage NuGet Packages](./media/cache-asp.net-session-state-provider/IC729541.png)
+![Azure Redis Cache Manage NuGet パッケージ](./media/cache-asp.net-session-state-provider/IC729541.png)
 
 [オンライン検索] ボックスに「**RedisSessionStateProvider**」と入力し、結果の中からそのプロバイダーを選択して、[インストール] をクリックします。
 
 >[AZURE.IMPORTANT]Premium レベルでクラスター機能を使用する場合は、[RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.0 以降を使用する必要があります。そうしないと、例外がスローされます。これは重大な変更です。詳細については、「[v2.0.0 の重大な変更の詳細](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)」を参照してください。
 
-![Azure Redis Cache Session State Provider](./media/cache-asp.net-session-state-provider/IC751730.png)
+![Azure Redis Cache セッション状態プロバイダー](./media/cache-asp.net-session-state-provider/IC751730.png)
 
 Redis セッション状態プロバイダー NuGet パッケージは、StackExchange.Redis.StrongName パッケージに依存します。StackExchange.Redis.StrongName パッケージは、プロジェクト内に存在しなければインストールされます。厳密な名前を持つ StackExchange.Redis.StrongName パッケージ以外に、厳密な名前を持たない StackExchange.Redis バージョンもあります。厳密な名前を持たない StackExchange.Redis バージョンをプロジェクトで使用している場合は、Redis セッション状態プロバイダー NuGet パッケージのインストールの前か後にこのバージョンをアンインストールする必要があります。アンインストールしなかった場合は、名前の競合がプロジェクトで発生します。これらのパッケージの詳細については、[.NET キャッシュ クライアントの構成](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)に関するトピックを参照してください。
 
@@ -59,13 +59,13 @@ NuGet パッケージによって、必要なアセンブリ参照がダウン�
 
 コメント化されたセクションには、属性の例と各属性のサンプル設定が記述されています。
 
-属性の構成には、Microsoft Azure プレビュー ポータルのキャッシュ ブレードの値を使用してください。その他の値は適宜構成します。キャッシュ プロパティにアクセスする方法については、[Redis キャッシュ設定の構成](cache-configure.md#configure-redis-cache-settings)に関するトピックを参照してください。
+属性の構成には、Microsoft Azure ポータルのキャッシュ ブレードの値を使用してください。その他の値は適宜構成します。キャッシュ プロパティにアクセスする方法については、[Redis キャッシュ設定の構成](cache-configure.md#configure-redis-cache-settings)に関するトピックを参照してください。
 
 -	**host**: キャッシュ エンドポイントを指定します。
 -	**port**: SSL の設定に応じて、非 SSL ポートまたは SSL ポートを使用します。
 -	**accessKey**: キャッシュのプライマリ キーまたはセカンダリ キーを使用します。
 -	**ssl**: キャッシュとクライアント間の通信を SSL で保護する場合は true、保護しない場合は false を指定します。必ず適切なポートを指定してください。
-	-	既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。SSL ポートを使用するには、この設定に true を指定します。非 SSL ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。
+	-	既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。SSL ポートを使用するには、この設定に true を指定します。非 SSL ポートの有効化の詳細については、「[Azure Redis Cache の構成方法](cache-configure.md)」トピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。
 -	**throwOnError**: 失敗時に例外がスローされるようにする場合は true、操作の失敗時にエラー メッセージが表示されないようにする場合は false を指定します。静的 Microsoft.Web.Redis.RedisSessionStateProvider.LastException プロパティをチェックすることでエラーを確認できます。既定値は true です。
 -	**retryTimeoutInMilliseconds**: 失敗した操作がこの時間に再試行されます。ミリ秒単位で指定します。最初は 20 ミリ秒後に再試行され、その後 retryTimeoutInMilliseconds の時間が経過するまで 1 秒ごとに再試行されます。この時間を過ぎるとすぐに、操作が最後に 1 回再試行されます。操作が失敗した場合、throwOnError 設定に応じて、例外がスローされて呼び出し元に戻ります。既定値は 0 です。これは再試行されないことを意味します。
 -	**databaseId**: キャッシュ出力データに使用するデータベースを指定します。指定されていない場合は、既定値の 0 が使用されます。
@@ -94,7 +94,7 @@ web.config の標準の InProc セッション状態プロバイダー セクシ
 
 ## ASP.NET セッション状態のオプション
 
-- メモリ内のセッション状態プロバイダー: このプロバイダーでは、メモリ内にセッション状態が格納されます。このプロバイダーを使用する利点は、単純で高速なことです。ただし、メモリ内プロバイダーを使用する場合、このプロバイダーは分散型でないため、Web アプリは拡張できません。
+- メモリ内のセッション状態プロバイダー: このプロバイダーでは、メモリ内にセッション状態が格納されます。このプロバイダーを使用する利点は、単純で高速なことです。ただし、メモリ内プロバイダーを使用する場合、このプロバイダーは分散型でないため、Web Apps は拡張できません。
 
 - SQL Server のセッション状態プロバイダー: このプロバイダーでは、SQL Server 内にセッション状態が格納されます。永続的なストレージにセッション状態を保持するには、このプロバイダーを使用する必要があります。Web アプリは拡張できますが、セッションに SQL Server を使用すると、Web アプリのパフォーマンスに影響を与えます。
 
@@ -106,4 +106,4 @@ web.config の標準の InProc セッション状態プロバイダー セクシ
 
 「[Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー](cache-asp.net-output-cache-provider.md)」を参照してください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1210_2015-->

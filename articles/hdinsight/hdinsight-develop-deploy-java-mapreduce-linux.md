@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="10/09/2015"
+	ms.date="12/04/2015"
 	ms.author="larryfr"/>
 
 # HDInsight での Hadoop 用 Java MapReduce プログラムの開発
@@ -31,7 +31,7 @@
 
 - [Apache Maven](http://maven.apache.org/)
 
-- **Azure サブスクリプション**: [Azure 無料試用版の取得](get-azure-free-trial-for-testing-hadoop-in-hdinsight.md)に関するページをご覧ください。
+- **Azure サブスクリプション**
 
 - **Azure CLI**: 詳細については、[Azure CLI のインストールおよび構成](../xplat-cli-install.md)に関するページをご覧ください。
 
@@ -267,10 +267,10 @@ Java と JDK をインストールするときに、次のような環境変数�
 このドキュメントでは、Java MapReduce ジョブを作成する方法を説明しました。HDInsight を使用する他の方法については、次のドキュメントを参照してください。
 
 - [HDInsight での Hive の使用][hdinsight-use-hive]
-- [HDInsight での Pig の使用][hdinsight-use-pig]
+- [HDInsight の Hadoop での Pig の使用][hdinsight-use-pig]
 - [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-詳細については、[Java デベロッパー センター](/develop/java/)も参照してください。
+詳細については、[Java デベロッパー センター](http://azure.microsoft.com/develop/java/)も参照してください。
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
@@ -282,22 +282,14 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 [hdinsight-develop-streaming]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 
-[hdinsight-get-started]: ../hdinsight-get-started.md
-[hdinsight-emulator]: ../hdinsight-get-started-emulator.md
-[hdinsight-emulator-wasb]: ../hdinsight-get-started-emulator.md#blobstorage
+
+
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 
 [powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
-[powershell-install-configure]: ../install-configure-powershell.md
 
-
-
-[image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
-[image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

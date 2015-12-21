@@ -107,7 +107,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 
 ###Mac、Linux、Windows の Azure コマンド ライン インターフェイス
 
-[Mac、Linux、Windows の Azure CLI](../xplat.md) では、`azure hdinsight cluster create` コマンドを使用して新しいクラスターを作成できます。
+[Mac、Linux、Windows の Azure CLI](../xplat-cli.md) では、`azure hdinsight cluster create` コマンドを使用して新しいクラスターを作成できます。
 
 このコマンドの使用方法の詳細については、「[カスタム オプションを使用した HDInsight での Hadoop Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
@@ -238,4 +238,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

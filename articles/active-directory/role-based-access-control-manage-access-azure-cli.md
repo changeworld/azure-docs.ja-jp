@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="10/12/2015"
+	ms.date="12/04/2015"
 	ms.author="inhenk"/>
 
 # Azure コマンド ライン インターフェイス (CLI) を使用したロールベースのアクセス制御 (RBAC) の管理
@@ -107,7 +107,50 @@
 
 ![](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-assignment-delete.png)
 
+## カスタム ロールの作成
+カスタム ロールを作成するには、`azure role create` コマンドを使用します。
+
+次の例では、「*Virtual Machine Operator*」という名前のカスタム ロールが作成されます。このロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。カスタム ロールは 2 つのサブスクリプションで使用できます。この例では、入力として json ファイルが採用されます。
+
+![](./media/role-based-access-control-manage-access-azure-cli/2-azure-role create-1.png)
+
+![](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-create-2.png)
+
+## カスタム ロールの修正
+
+カスタム ロールを修正するには、最初に azure role show コマンドを使用してロール定義を取得します。必要に応じてロール定義を変更します。最後に、azure role set コマンドを使用して変更したロール定義を保存します。
+
+次の例では、Microsoft.Insights/diagnosticSettings/* 操作が Actions に追加され、Azure サブスクリプションが Virtual Machine Operator カスタム ロールの AssignableScopes に追加されます。
+
+![](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-set-1.png)
+
+![](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-set2.png)
+
+## カスタム ロールの削除
+
+カスタム ロールを削除するには、最初に `azure role show` コマンドを使用し、ロールの **Id** を決定します。次に、`azure role delete` コマンドを使用し、**Id** を指定してロールを削除します。
+
+次の例では、*Virtual Machine Operator* カスタム ロールが削除されます。
+
+![](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-delete.png)
+
+## カスタム ロールの一覧表示
+
+特定のスコープで割り当て可能なロールを一覧表示するには、`azure role list` コマンドを使用します。
+
+次の例では、選択したサブスクリプションで割り当て可能なすべてのロールが一覧表示されます。
+
+![](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list1.png)
+
+次の例では、*Virtual Machine Operator* カスタム ロールは *Production4* サブスクリプションでは利用できません。そのサブスクリプションはロールの **AssignableScopes** にないためです。
+
+![](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list2.png)
+
+
+
+
+
 ## RBAC のトピック
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

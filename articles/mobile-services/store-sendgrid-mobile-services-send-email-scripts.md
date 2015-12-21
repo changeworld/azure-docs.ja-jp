@@ -7,13 +7,14 @@
 	manager="sendgrid"
 	editor=""/>
 
-<tags
-	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="07/31/2015"
+
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/30/2015" 
 	ms.author="Erikre"/>
 
 
@@ -139,4 +140,4 @@ Mobile Services で SendGrid 電子メール サービスを簡単に使用で�
 [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
 [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="media" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/03/2015"   
+	ms.date="12/09/2015"   
 	ms.author="juliako"/>
 
 
@@ -25,7 +25,8 @@
 
 - [現在の既知の問題](#issues)
 - [REST API バージョン履歴](#rest_version_history)
-- [2015年 11 月のリリース](#nov_changes_15)
+- [2015 年 12 月のリリース](#dec_changes_15)
+- [2015 年 11 月のリリース](#nov_changes_15)
 - [2015 年 10 月のリリース](#oct_changes_15)
 - [2015 年 9 月のリリース](#september_changes_15)
 - [2015 年 8 月のリリース](#august_changes_15)
@@ -76,6 +77,19 @@ SDK 内の Media Services オブジェクトをシリアル化できず、その
 
 Media Services REST API バージョン履歴の詳細については、「[Azure モバイル サービス REST API リファレンス]」を参照してください。
 
+##<a id="dec_changes_15"></a>2015 年 12 月のリリース
+
+Azure SDK チームは [Azure SDK for PHP](http://github.com/Azure/azure-sdk-for-php) パッケージの新しいリリースを公開しました。これには Microsoft Azure Media Services の更新プログラムと新機能が含まれています。具体的には、Azure Media Services SDK for PHP で、最新の[コンテンツ保護](media-services-content-protection-overview.md)機能、AES と DRM (PlayReady と Widevine) による動的暗号化 (トークン制限あり/なし) がサポートされるようになりました。[エンコーディング ユニット](media-services-dotnet-encoding-units.md)のスケーリングにも対応しています。
+
+詳細については、次を参照してください。
+
+- [Microsoft Azure Media Services SDK for PHP](http://southworks.com/blog/2015/12/09/new-microsoft-azure-media-services-sdk-for-php-release-available-with-new-features-and-samples/) ブログ。
+- 次の[コード サンプル](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)はクイック ガイドとして役立ちます。
+	- **vodworkflow\_aes.php**: これは PHP ファイルであり、AES-128 動的暗号化とキー配信サービスの使用方法を示します。[この](media-services-protect-with-aes128.md)記事で説明されている .NET サンプルに基づきます。
+	- **vodworkflow\_aes.php**: これは PHP ファイルであり、PlayReady 動的暗号化とライセンス配信サービスの使用方法を示します。[この](media-services-protect-with-drm.md)記事で説明されている .NET サンプルに基づきます。
+	- **scale\_encoding\_units.php**: これはエンコード予約ユニットのスケーリング方法を示す PHP ファイルです。
+
+
 ##<a id="nov_changes_15"></a>2015 年 11 月のリリース
 
 Azure Media Services は、クラウドで Google Widevine ライセンス配信サービスを提供するようになりました。詳しくは、[こちらの案内ブログ](http://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)をお読みください。また、[こちらのチュートリアル](media-services-protect-with-drm.md)および [GitHub リポジトリ](http://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)もご覧ください。
@@ -103,7 +117,7 @@ Azure Media Services (AMS) は、現在、ブラジル南部、インド西部�
 - 次のフィルター処理の更新が行われました。
 
 	- オーディオ専用フィルター付きの Apple HTTP Live Streaming (HLS) 形式を使用できるようになりました。この更新では、(audio-only=false) を、URL に指定することで、オーディオ専用トラックを削除できます。
-	- 資産用のフィルターを定義するときに、複数のフィルター (最大 3 つ) を 1 つの URL に組み合わせることができるようになりました。
+	- アセット用のフィルターを定義するときに、複数のフィルター (最大 3 つ) を 1 つの URL に組み合わせることができるようになりました。
 
 	詳細については、[この投稿](http://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support)を参照してください。
 
@@ -188,7 +202,7 @@ Azure Media Services .NET SDK が 3.2.0.0 にバージョン アップしまし�
 ### Media Services の全般的な更新
 
 - Media Services で、シームレスな Azure CDN 統合が提供されるようになりました。統合をサポートするために、**CdnEnabled** プロパティが **StreamingEndpoint** に追加されました。**CdnEnabled** はバージョン 2.9 以降の REST API で使用できます (詳細については「[StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx)」をご覧ください)。**CdnEnabled** はバージョン 3.1.0.2 以降の .NET SDK で使用できます (詳細については「[StreamingEndpoint.aspx]」https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint(v=azure.10).aspx))をご覧ください)。
-- **Media Encoder Premium Workflow** の発表。詳細については、[Azure Media Services へのプレミアム Encoding の導入に関するページ](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)をご覧ください。
+- **Media Encoder Premium Workflow** の発表。詳細については、[Azure Media Services へのプレミアム エンコードの導入に関するページ](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)をご覧ください。
  
 
 
@@ -268,7 +282,7 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.8 です。
 
 ##<a id="september_changes_14"></a>2014 年 9 月のリリース
 
-Media Services REST メタデータは、現在、バージョン 2.7 です。最新の REST 更新プログラムの詳細については、「[Azure Media Services REST API リファレンス]」を参照してください。
+Media Services REST メタデータは、現在、バージョン 2.7 です。最新の REST 更新プログラムの詳細については、「[Azure モバイル サービス REST API リファレンス]」を参照してください。
 
 Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
  
@@ -398,7 +412,7 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 現在、Media Services SDK の最新バージョンは 3.0.0.0 です。Nuget から最新パッケージをダウンロードするか、[GitHub] からビットを取得できます。
 
-Media Services SDK Version 3.0.0.0 から、[Azure Active Directory Access Control Service (ACS)] トークンを再利用できます。詳細については、「[Media Services SDK による Media Services への接続]」の「Access Control Service トークンの再利用」を参照してください。
+Media Services SDK Version 3.0.0.0 から、[Azure Active Directory Access Control Service (ACS)] トークンを再利用できます。詳細については、「[Media Services SDK による Media Services への接続]」の「アクセス制御サービス トークンの再利用」を参照してください。
 
 ### <a name="dec_13_donnet_ext_changes"></a>Azure Media Services .NET SDK Extensions 2.0.0.0
 
@@ -588,7 +602,6 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 
 <!-- URLs. -->
 [Azure Media Services MSDN フォーラム]: http://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
-[Azure Media Services REST API リファレンス]: http://msdn.microsoft.com/library/azure/hh973617.aspx
 [Azure モバイル サービス REST API リファレンス]: http://msdn.microsoft.com/library/azure/hh973617.aspx
 [Media Services の料金詳細]: http://azure.microsoft.com/pricing/details/media-services/
 [Input Metadata (入力メタデータ)]: http://msdn.microsoft.com/library/azure/dn783120.aspx
@@ -625,4 +638,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

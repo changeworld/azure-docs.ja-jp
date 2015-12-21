@@ -25,7 +25,7 @@
 
 ##Notification Hubs とは
 
-Azure Notification Hubs によって、モバイル デバイスにプッシュ通知を送信するための、使いやすく拡張性の高いマルチプラットフォーム インフラストラクチャが提供されます。詳細については、「[Azure Notification Hubs とは](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx)」を参照してください。
+Azure Notification Hubs によって、モバイル デバイスにプッシュ通知を送信するための、使いやすく拡張性の高いマルチプラットフォーム インフラストラクチャが提供されます。詳細については、「[Azure 通知ハブ](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx)」を参照してください。
 
 ##Node.js アプリケーションの作成
 
@@ -67,9 +67,9 @@ Azure Notification Hub を使用するには、Node.js azure パッケージを�
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 
-接続 **connectionstring** の値は、Microsoft Azure 管理ポータルで次の手順を実行して取得できます。
+接続 **connectionstring** の値は、[Azure クラシック ポータル]で次の手順を実行して取得できます。
 
-1. Microsoft Azure 管理ポータルで **[Service Bus]** を選択し、通知ハブが含まれている名前空間を選択します。
+1. [Azure クラシック ポータル]で **[Service Bus]** を選択し、通知ハブが含まれている名前空間を選択します。
 
 2. **[Notification Hubs]** を選択し、使用するハブを選択します。
 
@@ -197,7 +197,7 @@ Azure Notification Hub を使用するには、Node.js azure パッケージを�
   [How to: Delete Topics and Subscriptions]: #How_to_Delete_Topics_and_Subscriptions
   [1]: #Next_Steps
   [Topic Concepts]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-topics-01.png
-  [Azure Management Portal]: http://manage.windowsazure.com
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
   [image]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-03.png
   [2]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-04.png
   [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
@@ -213,4 +213,4 @@ Azure Notification Hub を使用するには、Node.js azure パッケージを�
   [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
   [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -14,10 +14,14 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/18/2015"
+	ms.date="12/03/2015"
 	ms.author="glenga"/>
 
 # Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
+
+[AZURE.INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]&nbsp;
+
+[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 このトピックでは、Azure App Service Mobile Apps の主要なシナリオで .NET バックエンド サーバー SDK を使用する方法について説明します。Azure Mobile Apps SDK を使用すると、ASP.NET アプリケーションからモバイル クライアントを操作することができます。
 
@@ -25,17 +29,17 @@
 
 ## リファレンス ドキュメント
 
-サーバー SDK のリファレンス ドキュメントは次の場所にあります。[Azure Mobile Apps .NET リファレンス](https://msdn.microsoft.com/library/azure/dn961176.aspx)。
+サーバー SDK のリファレンス ドキュメントについては、「[Azure Mobile Apps .NET リファレンス](https://msdn.microsoft.com/library/azure/dn961176.aspx)」を参照してください。
 
 ## <a name="create-app"></a>方法: モバイル アプリケーション用の .NET バックエンドを作成する
 
 新しいプロジェクトを開始する場合は、[Azure ポータル]または Visual Studio を使用して、App Service アプリケーションを作成できます。このセクションでは、このいずれかを使用して、シンプルな To Do List API をホストするモバイル アプリケーション バックエンドを新規作成する方法を紹介します。これをローカルで実行することも、プロジェクトをクラウド ベースの App Service モバイル アプリに発行することもできます。
 
-既存のプロジェクトにモバイル機能を追加する場合は、「[SDK をダウンロードして初期化する](#install-sdk)」セクションを参照してください
+既存のプロジェクトにモバイル機能を追加する場合は、「[SDK をダウンロードして初期化する](#install-sdk)」セクションを参照してください。
 
 ### Azure ポータルで .NET バックエンドを作成する
 
-[Azure ポータル]でモバイル アプリケーションを新規作成できます。以下の手順に従う以外に、チュートリアル「[モバイル アプリを作成する](app-service-mobile-ios-get-started.md)」の手順に従ってクライアントとサーバーをまとめて新規作成することもできます。
+[Azure ポータル]でモバイル アプリケーションを新規作成できます。以下の手順を実行するか、チュートリアル「[モバイル アプリを作成する](app-service-mobile-ios-get-started.md)」の手順でクライアントとサーバーをまとめて新規作成することもできます。
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
@@ -47,7 +51,7 @@
 
 Visual Studio で Mobile Apps プロジェクトを作成するには、[Azure SDK for .NET](https://azure.microsoft.com/downloads/) バージョン 2.8.1 以降をインストールする必要があります。SDK のインストールが完了したら、ASP.NET アプリケーションを新規作成します。
 
-1. **[新しいプロジェクト]** ダイアログを開きます (*[ファイル]*、**[新規作成]**、**[プロジェクト]** の順にクリックします)。
+1. **[新しいプロジェクト]** ダイアログを開きます (*[ファイル]*、**[新規作成]**、**[プロジェクト...]** の順にクリックします)。
 
 2. **[テンプレート]**、**[Visual C#]** の順に展開し、**[Web]** を選択します。
 
@@ -89,7 +93,7 @@ OWIN スタートアップ クラスの `Configuration()` メソッドで、サ�
 	    app.UseWebApi(config);
 	}
 
-個別の機能を有効化するには、**ApplyTo** を呼び出す前に、**MobileAppConfiguration** オブジェクトに対して拡張機能メソッドを呼び出す必要があります。たとえば、次のコードでは、初期化中に`[MobileAppController]` 属性が設定されているすべての API コントローラーに既定のルートを追加します。
+個別の機能を有効化するには、**ApplyTo** を呼び出す前に、**MobileAppConfiguration** オブジェクトに対して拡張機能メソッドを呼び出す必要があります。たとえば、次のコードでは、初期化中に `[MobileAppController]` 属性が設定されているすべての API コントローラーに既定のルートを追加します。
 
 	new MobileAppConfiguration()
 	    .MapApiControllers()
@@ -138,7 +142,7 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service](../../includes/app-service-mobile-dotnet-backend-publish-service.md)]
 
-[Azure App Service のデプロイに関するドキュメント](../app-service-web/web-site-deploy.md)に記載されている上記以外の方法を使用することもできます。
+[Azure App Service のデプロイメントに関するドキュメント](../app-service-web/web-site-deploy.md)に記載されている上記以外の方法を使用することもできます。
 
 ## 方法: テーブル コントローラーを定義する
 
@@ -356,4 +360,4 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

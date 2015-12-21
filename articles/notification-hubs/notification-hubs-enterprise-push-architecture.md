@@ -213,7 +213,7 @@
 
 	![][3]
 
-	g.ジョブを [連続実行する] ように構成すると、Azure 管理ポータルにログインしたときに、以下のような画面が表示されます。
+	g.ジョブを [連続実行する] ように構成すると、[Azure クラシック ポータル]にログインしたときに、以下のような画面が表示されます。
 
 	![][4]
 
@@ -250,7 +250,7 @@
 
 	![][5]
 
-4. メッセージは、最初に WebJobs の Service Bus のサブスクリプションによって監視されていた Service Bus のトピックに送信されます。メッセージを受信すると、通知が作成されてモバイル アプリに送信されます。Azure 管理ポータルで WebJobs の [ログ] リンクをクリックすると、WebJobs ログで処理を確認することができます。
+4. メッセージは、最初に WebJobs の Service Bus のサブスクリプションによって監視されていた Service Bus のトピックに送信されます。メッセージを受信すると、通知が作成されてモバイル アプリに送信されます。[Azure クラシック ポータル]で WebJobs の [ログ] リンクをクリックすると、WebJobs ログで処理を確認することができます。
 
 	![][6]
 
@@ -270,5 +270,6 @@
 [Azure WebJobs]: http://azure.microsoft.com/documentation/articles/web-sites-create-web-jobs/
 [Notification Hubs の使用 - Windows Universal チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Notification Hubs の使用 - Windows ユニバーサル チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

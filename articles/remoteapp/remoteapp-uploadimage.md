@@ -1,19 +1,19 @@
 
-<properties 
-    pageTitle="Azure RemoteApp のカスタム イメージをアップロードする"
-    description="Azure RemoteApp のカスタム イメージをアップロードする方法について説明します。" 
-    services="remoteapp" 
-    documentationCenter="" 
-    authors="ericorman" 
+<properties
+    pageTitle="Azure RemoteApp のカスタム イメージをアップロードする | Microsoft Azure"
+    description="Azure RemoteApp のカスタム イメージをアップロードする方法について説明します。"
+    services="remoteapp"
+    documentationCenter=""
+    authors="ericorman"
     manager="mbaldwin" />
 
-<tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/12/2015" 
+<tags
+    ms.service="remoteapp"
+    ms.workload="compute"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="12/05/2015"
     ms.author="ericor" />
 
 
@@ -32,7 +32,7 @@
 
 1.      Azure 管理ポータルを開いて、[RemoteApp] ページに移動します。
 2.      **[テンプレート イメージ]** タブで、ページの下部にある **[アップロード]** をクリックします。
-4.      イメージのフレンドリ名を入力し、ストレージ アカウントの場所を指定します。この場所が、RemoteApp コレクションの場所、またはコレクションを作成しようとしている場所と同じであることを確認します。 
+4.      イメージのフレンドリ名を入力し、ストレージ アカウントの場所を指定します。この場所が、RemoteApp コレクションの場所、またはコレクションを作成しようとしている場所と同じであることを確認します。
 5.      メッセージが表示されたら、ローカル PC にスクリプトをダウンロードします。
 6.      テキスト ボックスのコマンド パラメーターをクリップボードにコピーします。
 7.      管理者特権の Windows PowerShell ウィンドウを開きます。
@@ -47,9 +47,8 @@
 
 ## 一般的な問題
 
-- Azure PowerShell ではなく、Windows PowerShell を使用してください。Azure PowerShell モジュールをインストールする必要があります。アップロード プロセス中に特定のモジュールが必要になるためです。 
+- Azure PowerShell ではなく、Windows PowerShell を使用してください。Azure PowerShell モジュールをインストールする必要があります。アップロード プロセス中に特定のモジュールが必要になるためです。
 - スクリプトを変更しないでください。スクリプトには検証が含まれています。
 - アップロード中に vhd ファイルがロックアウトされる場合は、ファイルを新しい場所にコピーまたは移動して、再度アップロードを実行してください。一部の Windows プロセスがアップロードを阻んでいる可能性があります。  
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

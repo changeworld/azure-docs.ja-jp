@@ -1,18 +1,18 @@
-<properties 
-    pageTitle="Azure RemoteApp イメージの作成"
-    description="Azure RemoteApp のイメージ作成に使用できるオプションについて説明します。" 
-    services="remoteapp" 
-    documentationCenter="" 
-    authors="lizap" 
+<properties
+    pageTitle="Azure RemoteApp イメージの作成 | Microsoft Azure"
+    description="Azure RemoteApp のイメージ作成に使用できるオプションについて説明します。"
+    services="remoteapp"
+    documentationCenter=""
+    authors="lizap"
     manager="mbaldwin" />
 
-<tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/12/2015" 
+<tags
+    ms.service="remoteapp"
+    ms.workload="compute"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="12/05/2015"
     ms.author="elizapo" />
 
 
@@ -30,6 +30,5 @@ Azure RemoteApp は、イメージを使用してユーザーと共有してい�
 - RemoteApp サブスクリプションに含まれる[テンプレート イメージ](remoteapp-images.md)のいずれか 1 つを使用できます。これらのイメージは、RemoteApp チームによって作成および管理されているもので、イメージに含まれる標準的なアプリケーション (Office スイートなど) をユーザーが使用できます。なお、運用設定では Office 365 Pro Plus イメージのみ使用可能です。
 
 イメージの取得および作成方法に関わりなく、[アプリ要件](remoteapp-appreqs.md)を正しく理解し、アプリが RemoteApp で正常に動作することを確認してください。次の手順は、[クラウド](remoteapp-create-cloud-deployment.md) コレクションまたは[ハイブリッド](remoteapp-create-hybrid-deployment.md) コレクションの作成です。
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

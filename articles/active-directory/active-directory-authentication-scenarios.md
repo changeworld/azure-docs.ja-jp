@@ -204,7 +204,7 @@ Azure AD によって発行されたトークンの有効期間が終了する�
 ### シングル ページ アプリケーション (SPA)
 
 
-このセクションでは、Azure AD を使用して Web API バックエンドを保護するシングル ページ アプリケーションの認証について説明します。一般に、シングル ページ アプリケーションは、ブラウザーで動作する JavaScript プレゼンテーション層 (フロントエンド) と、サーバー上で動作し、アプリケーションのビジネス ロジックを実装する Web API バックエンドとして構築されます。このシナリオでは、ユーザーがサインインすると、JavaScript フロントエンドが [Active Directory Authentication Library for JavaScript (ADAL.JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js/tree/dev) プレビューと OAuth 2.0 Implicit Grant プロトコルを使用して、Azure AD から ID トークン (id\_token) を取得します。トークンがキャッシュされ、クライアントは、OWIN ミドルウェアを使用して保護された Web API バックエンドを呼び出すときに、トークンをベアラー トークンとして要求に添付します。
+このセクションでは、Azure AD を使用して Web API バックエンドを保護するシングル ページ アプリケーションの認証について説明します。一般に、シングル ページ アプリケーションは、ブラウザーで動作する JavaScript プレゼンテーション層 (フロントエンド) と、サーバー上で動作し、アプリケーションのビジネス ロジックを実装する Web API バックエンドとして構築されます。このシナリオでは、ユーザーがサインインすると、JavaScript フロントエンドが [Active Directory Authentication Library for JavaScript (ADAL.JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js/tree/dev) と OAuth 2.0 Implicit Grant プロトコルを使用して、Azure AD から ID トークン (id\_token) を取得します。トークンがキャッシュされ、クライアントは、OWIN ミドルウェアを使用して保護された Web API バックエンドを呼び出すときに、トークンをベアラー トークンとして要求に添付します。
 
 
 #### ダイアグラム
@@ -467,4 +467,4 @@ Web アプリケーションは、認証コードを使用して JWT アクセ�
 
 [Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

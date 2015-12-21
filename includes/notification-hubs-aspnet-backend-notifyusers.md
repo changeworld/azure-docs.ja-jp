@@ -132,7 +132,7 @@
 
         using Microsoft.Azure.NotificationHubs;
 
-6. 次に、`Notifications` クラス定義を以下に置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Microsoft Azure 管理ポータル](http://manage.windowsazure.com)で確認できます) に置き換えてください。
+6. 次に、`Notifications` クラス定義を以下に置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Azure クラシック ポータル](http://manage.windowsazure.com)で確認できます) に置き換えてください。
 
 		public class Notifications
         {
@@ -364,4 +364,4 @@
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->
