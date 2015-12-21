@@ -19,7 +19,7 @@
 
 ## DNS 要素
 
-サービス構成ファイルでは、サービスが使用するドメイン ネーム システム (DNS) サーバーの IPv4 アドレスのリストである DnsServers 要素を指定できます。サービス構成ファイルの設定は、ネットワーク構成ファイルの設定より優先されます。詳細については、「[Windows Azure サービスの構成スキーマ (.cscfg ファイル)](https://msdn.microsoft.com/library/azure/ee758710.aspx)」を参照してください。
+サービス構成ファイルでは、サービスが使用するドメイン ネーム システム (DNS) サーバーの IPv4 アドレスのリストである DnsServers 要素を指定できます。サービス構成ファイルの設定は、ネットワーク構成ファイルの設定より優先されます。詳細については、「[Microsoft Azure サービスの構成スキーマ (.cscfg ファイル)](https://msdn.microsoft.com/library/azure/ee758710.aspx)」を参照してください。
 
 **NetworkConfiguration 要素**
 

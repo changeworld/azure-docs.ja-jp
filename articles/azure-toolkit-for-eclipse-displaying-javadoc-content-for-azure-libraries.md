@@ -26,7 +26,7 @@ Java 用 Azure ライブラリの Javadoc コンテンツは、Javadoc コンテ
 
 ## Java 用 Azure ライブラリの Javadoc コンテンツを Eclipse で表示するには ##
 
-* Eclipse の Project Explorer で、プロジェクトの **[Referenced Libraries]** セクションにある Java JAR 用 Azure ライブラリ(例: **microsoft windows azure api 0.1.0.jar** (インストールされているバージョンによって、バージョン番号が異なることがあります)) のコンテキスト メニューを開きます。
+* Eclipse の Project Explorer で、プロジェクトの **[Referenced Libraries]** セクションにある Java JAR 用 Azure ライブラリ(例: **microsoft Microsoft Azure api 0.1.0.jar** (インストールされているバージョンによって、バージョン番号が異なることがあります)) のコンテキスト メニューを開きます。
 * **[プロパティ]** をクリックします。
 * **[Properties]** ダイアログの左側のウィンドウで、**[Javadoc Location]** をクリックします。**[Javadoc Location]** ダイアログが表示されます。
 * **[Javadoc URL]** または **[Javadoc in archive]** を指定できます。

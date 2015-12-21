@@ -346,7 +346,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 サブネットの最初の 4 つの IP アドレスは Azure 内部用に確保されていることに注意してください。その他の利用可能な IP アドレスを指定します。
 
->[AZURE.NOTE][Premium Storage アカウント](../storage/storage-premium-storage-preview-portal.md)を使用して IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、Standard DS4 を選択します。
+>[AZURE.NOTE] [Premium Storage アカウント](../storage/storage-premium-storage-preview-portal.md)を使用して IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、Standard DS4 を選択します。
 
 
 3. Windows マスター ターゲット サーバーの仮想マシンは、以下のエンドポイントで作成されます (パブリック エンドポイントは、デプロイメントの種類がパブリック インターネットである場合にのみ作成されます)。
@@ -774,4 +774,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1210_2015--->

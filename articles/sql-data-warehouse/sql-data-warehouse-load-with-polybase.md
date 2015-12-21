@@ -58,11 +58,18 @@ Azure BLOB ストレージにアクセスするには、Azure ストレージ �
 
 1. データベースの資格情報が既に存在するかどうかを確認します。これを行うには、サーバーの資格情報を表示するだけの sys.credentials ではなく、sys.database\_credentials システム ビューを使用します。
 
-    ``` -- Check for existing database-scoped credentials.SELECT * FROM sys.database\_credentials;
+    ```
+    -- Check for existing database-scoped credentials.
+    SELECT * FROM sys.database_credentials;
 
 3. [CREATE CREDENTIAL (Transact-SQL)][] を使用して、アクセスする Azure ストレージ アカウントごとにデータベース スコープの資格情報を作成します。次の例では、IDENTITY は資格情報を表すわかりやすい名前になっています。この名前は Azure ストレージへの認証には影響を及ぼしません。SECRET は Azure ストレージ アカウント キーです。
 
-    -- データベース スコープの資格情報の作成 CREATE DATABASE SCOPED CREDENTIAL ASBSecret WITH IDENTITY = 'joe' , Secret = '<azure_storage_account_key>' ; ```
+    -- データベース スコープの資格情報の作成
+    CREATE DATABASE SCOPED CREDENTIAL ASBSecret 
+    WITH IDENTITY = 'joe'
+    ,    Secret = '<azure_storage_account_key>'
+    ;
+    ```
 
 1. データベース スコープの資格情報を削除する必要がある場合は、[DROP CREDENTIAL (Transact-SQL)][] を使用します。
 
@@ -171,7 +178,7 @@ DROP EXTERNAL TABLE [ext].[CarSensor_Data]
 
 リファレンス トピック: [DROP EXTERNAL TABLE (Transact-SQL)][]。
 
-外部テーブルは両方の `sys.tables`で表示できること、より具体的には `sys.external_tables` カタログ ビューに表示できることにも注意してください。
+外部テーブルは両方の `sys.tables` で表示できること、より具体的には `sys.external_tables` カタログ ビューに表示できることにも注意してください。
 
 ## ストレージ キーの交換
 
@@ -357,4 +364,4 @@ $write.Dispose()
 [CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189522.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
-<!---HONumber=AcomDC_1210_2015-->
+<!------HONumber=AcomDC_1210_2015-->

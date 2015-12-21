@@ -181,7 +181,7 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
 - [Notification Hubs によるユーザーへの通知: Mobile Services]
 - [Notification Hubs の概要]
 
-テンプレート式言語のリファレンスは、「[方法: Windows Azure 通知ハブ (iOS アプリ)]」にあります。
+テンプレート式言語のリファレンスは、「[方法: Microsoft Azure 通知ハブ (iOS アプリ)]」にあります。
 
 
 
@@ -220,6 +220,6 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[方法: Windows Azure 通知ハブ (iOS アプリ)]: http://msdn.microsoft.com/library/jj927168.aspx
+[方法: Microsoft Azure 通知ハブ (iOS アプリ)]: http://msdn.microsoft.com/library/jj927168.aspx
 
 <!---HONumber=AcomDC_1210_2015-->

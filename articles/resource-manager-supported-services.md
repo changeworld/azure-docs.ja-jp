@@ -80,13 +80,13 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 ## 分析
 
-| サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
+| サービス | リソース マネージャーが有効 | プレビュー ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | --------- | -------------- | -------- | ------ |
-| イベント ハブ | はい | いいえ | | [Event Hub の作成](https://msdn.microsoft.com/library/azure/dn790676.aspx) | |
-| Stream Analytics | あり | [はい](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) | | | |
-| HDInsights | あり | [はい](https://portal.azure.com/#create/Microsoft.HDInsightCluster) | あり | | |
-| Data Factory | あり | [はい](https://portal.azure.com/#create/Microsoft.DataFactory) | あり | [Data Factory の作成](https://msdn.microsoft.com/library/azure/dn906717.aspx) | |
-| Machine Learning | いいえ | いいえ | - | - | - | | Data Catalog | いいえ | いいえ | - | - | - |
+| イベント ハブ | はい | いいえ |         | [Event Hub の作成](https://msdn.microsoft.com/library/azure/dn790676.aspx) |        |
+| Stream Analytics | あり | [はい](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) |        |          |        |
+| HDInsights | あり | [はい](https://portal.azure.com/#create/Microsoft.HDInsightCluster) |            |          |        |
+| Data Factory | あり | [はい](https://portal.azure.com/#create/Microsoft.DataFactory) | あり | [Data Factory の作成](https://msdn.microsoft.com/library/azure/dn906717.aspx) |    |
+| Machine Learning | いいえ | いいえ | -          | -        | -      |
 
 ## メディアと CDN
 

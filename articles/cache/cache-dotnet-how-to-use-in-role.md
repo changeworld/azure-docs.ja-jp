@@ -131,9 +131,9 @@ In-Role Cache のキャッシュにアクセスするには、クライアント
 
 ![RoleCache4][RoleCache4]
 
-**[インロール キャッシュ]** を選択し、**[インストール]**、**[同意する]** の順にクリックします。
+**[ インロール キャッシュ ]** を選択し、**[インストール]**、**[同意する]** の順にクリックします。
 
->一覧に **[インロール キャッシュ]** が表示されない場合は、**[オンライン検索]** ボックスに「**WindowsAzure.Caching**」と入力し、結果の中から選択します。
+>一覧に **[ インロール キャッシュ ]** が表示されない場合は、**[オンライン検索]** ボックスに「**WindowsAzure.Caching**」と入力し、結果の中から選択します。
 
 ![RoleCache5][RoleCache5]
 
@@ -351,7 +351,7 @@ In-Role Cache の出力キャッシュ プロバイダーの使い方の詳細�
 これで、In-Role Cache の基本を学習できました。さらに複雑なキャッシュ タスクを実行する方法については、次のリンク先を参照してください。
 
 -   MSDN リファレンス: [In-Role Cache][]
--   In-Role Cache への移行方法を確認する: [Windows Azure のキャッシュのインロール キャッシュへの移行][]
+-   In-Role Cache への移行方法を確認する: [Microsoft Azure のキャッシュのインロール キャッシュへの移行][]
 -   サンプルをチェックする: [In-Role Cache のサンプル][]
 -	TechEd 2013 の「[Maximum Performance: Accelerate Your Cloud Services Applications with Azure Caching (最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する)][]」セッションで、In-Role Cache に関する説明をご覧ください。
 
@@ -396,7 +396,7 @@ In-Role Cache の出力キャッシュ プロバイダーの使い方の詳細�
 [In-Role Cache]: http://go.microsoft.com/fwlink/?LinkId=252658
 [In-Role Cache]: http://www.microsoft.com/showcase/Search.aspx?phrase=azure+caching
 [Maximum Performance: Accelerate Your Cloud Services Applications with Azure Caching (最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する)]: http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/WAD-B326#fbid=kmrzkRxQ6gU
-[Windows Azure のキャッシュのインロール キャッシュへの移行]: http://msdn.microsoft.com/library/hh914163.aspx
+[Microsoft Azure のキャッシュのインロール キャッシュへの移行]: http://msdn.microsoft.com/library/hh914163.aspx
 [NuGet パッケージ マネージャーのインストールのページ]: http://go.microsoft.com/fwlink/?LinkId=240311
 [インロール キャッシュの出力キャッシュ プロバイダーに関するページ]: http://msdn.microsoft.com/library/windowsazure/gg185662.aspx
 [OutputCache ディレクティブに関するページ]: http://go.microsoft.com/fwlink/?LinkId=251979
@@ -407,7 +407,7 @@ In-Role Cache の出力キャッシュ プロバイダーの使い方の詳細�
 [Azure AppFabric Cache: Caching Session State]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
 [Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 
-[Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
+[最適な Azure のキャッシュ オファリング]: cache-faq.md#which-azure-cache-offering-is-right-for-me
  
 
 <!---HONumber=AcomDC_1210_2015-->

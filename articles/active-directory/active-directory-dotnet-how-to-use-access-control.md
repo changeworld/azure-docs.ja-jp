@@ -289,7 +289,7 @@ Visual Studio の Identity and Access Tool は、アプリケーションと ACS
 
 これらの構成設定は、ACS 管理ポータルで確認して変更できます。ポータルで変更を確認するには、次のステップを使用します。
 
-1.	[Windows Azure 管理ポータル](http://manage.WindowsAzure.com)にログインします。
+1.	[Microsoft Azure 管理ポータル](http://manage.WindowsAzure.com)にログインします。
 
 2.	**[Active Directory]** をクリックします。
 

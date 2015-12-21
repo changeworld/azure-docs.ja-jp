@@ -175,8 +175,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 7. **[リソース グループ名]** の **[ADF]** を選択します。  
 8.	**[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加]** が既定で選択されていることに注意してください。これにより、スタート画面 (Azure ポータルへのログイン時に表示される画面) のデータ ファクトリにリンクが追加されます。
 
-	![データ ファクトリ作成ブレード  
-][image-data-factory-tutorial-create-datafactory]
+	![データ ファクトリ作成ブレード][image-data-factory-tutorial-create-datafactory]
 
 9.	**[新しいデータ ファクトリ]** ブレードで、**[作成]** をクリックしてデータ ファクトリを作成します。
 10.	データ ファクトリが作成されると、**LogProcessingFactory** というタイトルの **[Data Factory]** ブレードが表示されます。
@@ -245,16 +244,16 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 			{
 			    "name": "HDInsightOnDemandLinkedService",
-			    "properties": {
+				    "properties": {
 			        "type": "HDInsightOnDemand",
 			        "description": "",
 			        "typeProperties": {
-			            "clusterSize": "4",
+		    	    "clusterSize": "4",
 			            "timeToLive": "00:30:00",
-			            "version": "3.2",
+		    	    "version": "3.2",
 			            "linkedServiceName": "StorageLinkedService"
 			        }
-			    }
+		    	}
 			}
 
 		リンクされたサービスの **type** は **HDInsightOnDemand** に設定されます。
@@ -325,7 +324,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
         "isPaused": false
 
 	このチュートリアルのサンプル データが 2014 年 5 月 1 日から 2014 年 5 月 5 日であるため、開始時刻と終了時刻が 2014 年 5 月 1 日および 2014 年 5 月 5 日に設定されていることに注意してください。
- 	
+ 
 	オンデマンド HDInsight のリンクされたサービスを使用する場合は、**linkedServiceName** プロパティを **HDInsightOnDemandLinkedService** に設定します。
 3. ツール バーの **[デプロイ]** クリックして、パイプラインを作成してデプロイします。エディターのタイトル バーに "**パイプラインが正常に作成されました**" というメッセージが表示されていることを確認します。
 4. 次のファイルの内容で手順 1. ～ 3. を繰り返します。 
@@ -359,6 +358,8 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 	1.	**スタート画面**で **[LogProcessingFactory]** をクリックします。データ ファクトリの作成中に、**[スタート画面に追加]** オプションが自動でオンになっています。
 
 		![監視スタート画面][image-data-factory-monitoring-startboard]
+
+	 	
 
 	2. **[参照]** をクリックし、**[参照]** ブレードで **[Data Factory]** を選択し、**[Data Factory]** ブレードで **[LogProcessingFactory]** を選択します。
 

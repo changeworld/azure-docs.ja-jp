@@ -48,9 +48,9 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 1. Hive アクションでは、HiveQL スクリプトを実行して、HDInsight に含まれている **hivesampletable** からレコードを抽出します。各データ行は、特定のモバイル デバイスからのアクセスを表します。レコードの形式は次のようになります。
 
-		8       18:54:20        ja-JP   Android Samsung SCH-i500        California     United States    13.9204007      0       0
-		23      19:19:44        ja-JP   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
-		23      19:19:46        ja-JP   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+		8       18:54:20        JA-JP   Android Samsung SCH-i500        California     United States    13.9204007      0       0
+		23      19:19:44        JA-JP   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
+		23      19:19:46        JA-JP   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
 
 	このドキュメントで使用する Hive スクリプトは、プラットフォームごと (Android や iPhone など) の合計アクセス数をカウントし、カウントしたアクセス数を新しい Hive テーブルに保存します。
 
@@ -479,6 +479,8 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
 1. HDInsight クラスターへの SSH トンネルを作成します。これを実行する方法の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 
+
+
 2. トンネルが作成されたら、Web ブラウザーで Ambari Web UI を開きます。Ambari サイトの URI は、****https://CLUSTERNAME.azurehdinsight.net** です。**CLUSTERNAME** を、Linux ベースの HDInsight クラスターの名前に置き換えます。
 
 3. ページの左側で **[Oozie]** を選択し、**[Quick Links]**、**[Oozie Web UI]** の順にクリックします。
@@ -711,7 +713,7 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: powershell-install-configure.md
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
-[powershell-script]: https://technet.microsoft.com/ja-JP/library/ee176961.aspx
+[powershell-script]: https://technet.microsoft.com/ja-jp/library/ee176961.aspx
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 

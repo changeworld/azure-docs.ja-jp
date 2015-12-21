@@ -20,7 +20,7 @@
 
 BizTalk XPath Extract コネクタは、指定された XPath に基づいて XML コンテンツからデータを検索して抽出します。
 
-## BizTalk XPath Extractor の使用
+##BizTalk XPath Extractor の使用
 1. BizTalk XPath Extractor を使用するには、まず、BizTalk XPath Extractor API アプリのインスタンスを作成する必要があります。これは、ロジック アプリを作成するときにインラインで、または Azure Marketplace から BizTalk XPath Extractor API アプリを選択することによって、行うことができます。
 
 	>[AZURE.NOTE]BizTalk Xpath Extractor に関連付けられた構成設定はありません。
@@ -30,7 +30,7 @@ BizTalk XPath Extract コネクタは、指定された XPath に基づいて XM
 
 5. [XPath を使用して抽出] を選択します。[XPath を使用して抽出] は、指定された入力 XML で入力 XPath 式を評価します。![BizTalk XPath Extractor の入力][2]
 
-	パラメーター|型|パラメーターの説明
+パラメーター|型|パラメーターの説明
 ---|---|---
 XPath|string|XMl 内部のクエリ パスです。
 入力 XML|string|入力 XML の内容。

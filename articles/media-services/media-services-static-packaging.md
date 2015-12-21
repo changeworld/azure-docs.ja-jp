@@ -19,7 +19,7 @@
 
 # Azure Media Packager を使用して静的パッケージ タスクを実行する
 
->[AZURE.NOTE]Windows Azure Media Packager と Windows Azure Media Encryptor は 2016 年 3 月 1 日に提供が中止されます。提供中止後は、これらのコンポーネントを使用できなくなります。形式の変換機能と暗号化機能は、動的パッケージと動的暗号化で引き続き使用できます。
+>[AZURE.NOTE]Microsoft Azure Media Packager と Microsoft Azure Media Encryptor は 2016 年 3 月 1 日に提供が中止されます。提供中止後は、これらのコンポーネントを使用できなくなります。形式の変換機能と暗号化機能は、動的パッケージと動的暗号化で引き続き使用できます。
 
 ## 概要
 

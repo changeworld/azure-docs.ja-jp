@@ -414,7 +414,7 @@ Pig|/PigPython/stderr<p>/PigPython/stdout
 
 ##<a name="next"></a>次のステップ
 
-既定では提供されない Python モジュールを読み込む必要がある場合は、方法を「[How to deploy a Python module to Windows Azure HDInsight (Python モジュールを Windows Azure HDInsight にデプロイする方法)](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)」で参照してください。
+既定では提供されない Python モジュールを読み込む必要がある場合は、方法を「[How to deploy a Python module to Microsoft Azure HDInsight (Python モジュールを Microsoft Azure HDInsight にデプロイする方法)](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)」で参照してください。
 
 Pig と Hive を使用する他の方法と、MapReduce の使用方法については、以下をご覧ください。
 
