@@ -47,11 +47,11 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](https://tryappservice.azure.com/?appServiceName=mobile)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 <!-- URLs. -->
-[Migrate your Mobile Service to App Service]: app-service-mobile-dotnet-backend-migrating-from-mobile-services.md
+[Migrate your Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [作業の開始]: app-service-mobile-ios-get-started.md
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

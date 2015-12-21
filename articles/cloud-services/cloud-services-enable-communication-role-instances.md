@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="08/18/2015" 
+ms.date="12/07/2015" 
 ms.author="adegeo"/>
 
 # Azure におけるロール インスタンスの通信の有効化
@@ -266,7 +266,7 @@ namespace WorkerRole1
 ```
 
 ### シナリオ 2
-**WebRole1** から **WorkerRole1** へのネットワーク トラフィック、および **WorkerRole2** へのネットワーク トラフィックのみを許可する。
+**WebRole1** から **WorkerRole1** へのネットワーク トラフィック、および WebRole1 から **WorkerRole2** へのネットワーク トラフィックのみを許可する。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -359,4 +359,4 @@ namespace WorkerRole1
 ## 次のステップ
 Cloud Service [モデル](cloud-services-model-and-package.md)の詳細について参照できます。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="PowerShell を使用した ExpressRoute 回線の構成手順 |Microsoft Azure"
+   pageTitle="PowerShell を使用した ExpressRoute 回線の構成手順 | Microsoft Azure"
    description="この記事では、ExpressRoute 回線の作成およびプロビジョニング手順について説明します。この記事では回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。"
    documentationCenter="na"
    services="expressroute"
@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/05/2015"
+   ms.date="12/08/2015"
    ms.author="cherylmc"/>
 
 # PowerShell を使用した ExpressRoute 回線の作成と変更
@@ -22,7 +22,7 @@
 [PowerShell - Classic](expressroute-howto-circuit-classic.md)
 [PowerShell - Resource Manager](expressroute-howto-circuit-arm.md)
 
-この記事では、PowerShell コマンドレットとクラシック デプロイメント モデルを使用して、ExpressRoute 回線を作成する手順について説明します。以下の手順では、ExpressRoute 回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
+この記事では、PowerShell コマンドレットとクラシック デプロイ モデルを使用して、ExpressRoute 回線を作成する手順について説明します。以下の手順では、ExpressRoute 回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
 
 [AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
@@ -108,11 +108,11 @@
 		$ServiceProvider = "Equinix"
 		$Location = "Silicon Valley"
 
-		New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Standard
+		New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Standard -BillingType MeteredData 
 
 	または、Premium アドオンを使用して ExpressRoute 回線を作成する場合は、次の例を使用します。Premium アドオンの詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」ページを参照してください。
 
-		New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Premium
+		New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Premium - BillingType MeteredData
 	
 	
 	応答にはサービス キーが含まれます。以下を実行することで、すべてのパラメーターの詳細な説明を取得できます。
@@ -327,6 +327,5 @@ ExpressRoute 回線サービス プロバイダーのプロビジョニング状
 ## 次のステップ
 
 - [ルーティングの構成](expressroute-howto-routing-classic.md)
-- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md) 
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

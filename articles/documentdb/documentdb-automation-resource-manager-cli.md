@@ -15,16 +15,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/02/2015" 
+	ms.date="12/03/2015" 
 	ms.author="mimig"/>
 
-# Azure リソース マネージャーのテンプレートと Azure CLI を利用し、DocumentDB データベース アカウントを自動作成する
+# Azure リソース マネージャーのテンプレートと Azure CLI を利用し、DocumentDB アカウントを自動作成する
 
 > [AZURE.SELECTOR]
 - [Azure Portal](documentdb-create-account.md)
 - [Azure CLI and ARM](documentdb-automation-resource-manager-cli.md)
 
-この記事では、Azure リソース マネージャーのテンプレートと Azure CLI (コマンドライン インターフェイス) を利用し、DocumentDB データベース アカウントを自動作成する方法について説明します。
+この記事では、Azure リソース マネージャーのテンプレートと Azure CLI (コマンドライン インターフェイス) を利用し、DocumentDB データベース アカウントを自動作成する方法について説明します。Azure ポータルを使用して DocumentDB アカウントを作成する方法については、「[DocumentDB データベース アカウントの作成](documentdb-create-account.md)」を参照してください。
 
 - [CLI を利用して DocumentDB アカウントを作成する](#quick-create-documentdb-account)
 - [ARM テンプレートを利用して DocumentDB アカウントを作成する](#deploy-documentdb-from-a-template)
@@ -33,7 +33,7 @@
 
 ## 準備
 
-Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと Azure アカウントを用意する必要があります。Azure CLI がない場合は、[インストールします](../xplat-cli-install.md)。
+Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと Azure アカウントを用意する必要があります。Azure CLI をインストールしていない場合は、[インストールします](../xplat-cli-install.md)。
 
 ### Azure CLI のバージョンを更新する
 
@@ -93,7 +93,7 @@ Azure リソース管理テンプレートを使用するには、職場のア�
 
 `azure config mode asm` と入力することで、既定のコマンド セットに戻すことができます。
 
-## <a id="quick-create-documentdb-account"></a>作業: CLI を利用して DocumentDB アカウントを作成する
+## <a id="quick-create-documentdb-account"></a>作業: Azure CLI を利用して DocumentDB アカウントを作成する
 
 このセクションの指示に従い、Azure CLI で DocumentDB アカウントを作成します。
 
@@ -107,9 +107,12 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
 新しいリソース グループを作成するには、作成する新しいリソース グループの名前とリソース グループを作成するリージョンを指定します。
 
-	azure group create <resourcegroupname> <location>
+	azure group create <resourcegroupname> <resourcegrouplocation>
 
-次に例を示します。
+ - `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。 
+ - `<resourcegrouplocation>` には、DocumentDB が一般公開されているリージョンのいずれかを指定します。最新のリージョン一覧については、[Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
+
+入力例:
 
 	azure group create new_res_group westus
 
@@ -135,9 +138,13 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
 > [AZURE.TIP]Azure PowerShell または Windows PowerShell でこのコマンドを実行する場合、予想外のコマンドに関するエラーを受け取ります。代わりに、Windows PowerShell コマンド プロンプトでこのコマンドを実行します。
 
-    azure resource create -g <resourceGroupName> -n <databaseaccountname> -r "Microsoft.DocumentDB/databaseAccounts" -o "2015-04-08" -l <databaseaccountlocation> -p "{"databaseAccountOfferType":"Standard"}" 
+    azure resource create -g <resourcegroupname> -n <databaseaccountname> -r "Microsoft.DocumentDB/databaseAccounts" -o "2015-04-08" -l <databaseaccountlocation> -p "{"databaseAccountOfferType":"Standard"}" 
 
-次に例を示します。
+ - `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。 
+ - `<databaseaccountname>` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。
+ - `<databaseaccountlocation>` には、DocumentDB が一般公開されているリージョンのいずれかを指定します。最新のリージョン一覧については、[Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
+
+入力例:
 
     azure resource create -g new_res_group -n samplecliacct -r "Microsoft.DocumentDB/databaseAccounts" -o 2015-04-08  -l westus -p "{"databaseAccountOfferType":"Standard"}"
 
@@ -159,7 +166,7 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
 エラーが発生した場合、「[トラブルシューティング](#troubleshooting)」を参照してください。
 
-コマンドが戻ると、アカウントは数分間「**作成中**」の状態になります。その後、「**オンライン**」の状態に変化し、使用する準備ができます。[Azure ポータル](https://portal.azure.com)の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
+コマンドが終了すると、アカウントは数分間「**作成中**」の状態になります。その後、「**オンライン**」の状態に変化し、使用する準備ができます。[Azure ポータル](https://portal.azure.com)の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
 
 ## <a id="deploy-documentdb-from-a-template"></a>作業: ARM テンプレートを利用して DocumentDB アカウントを作成する
 
@@ -169,7 +176,7 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
 大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の DocumentDB アカウント、ストレージ アカウント、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。既定の Azure サービス管理 API と Azure ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。この方法では、個々のサービスを 1 つの論理的なデプロイ単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
 
-*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを 1 つの論理的なデプロイメント単位として、宣言型の方法でデプロイし、管理することが可能になります。何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイメント全体、つまりすべてのリソースと、関連する構成およびデプロイメント パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
+*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを 1 つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイメント全体、つまりすべてのリソースと、関連する構成およびデプロイメント パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
 
 Azure リソース グループとその機能の詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。テンプレートの作成に興味がある場合は、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
 
@@ -216,13 +223,11 @@ Azure リソース グループとその機能の詳細については、「[Azu
         }
     }
 
-azuredeploy.parameters.json ファイルで、「samplearmacct」という値を使用するデータベース名に変更し、ファイルを保存します。
-
-> [AZURE.TIP]データベース アカウント名に含めることができるのは英小文字、数字、「-」のみであり、文字数は 3 ～ 50 文字にする必要があります。
+azuredeploy.parameters.json ファイルで、「samplearmacct」という値を使用するデータベース名に変更し、ファイルを保存します。`<databaseAccountName>` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。
 
 ### 手順 2: リソース グループを作成または取得する
 
-DocumentDB アカウントを作成するには、最初にリソース グループを用意する必要があります。使用するリソース グループの名前がわかっている場合、[手順 3](#create-account-from-template) に移動してください。
+DocumentDB アカウントを作成するには、最初にリソース グループを用意する必要があります。使用するリソース グループ名を既に知っている場合は、場所が [DocumentDB の一般公開されているリージョン](https://azure.microsoft.com/regions/#services)であることを確認し、[手順 3](#create-account-from-template) に進みます。テンプレートでは、アカウントの場所はリソース グループと同じリージョンに作成されるので、DocumentDB を使用できないリージョンにアカウントを作成しようとすると、デプロイメント エラーが発生します。
 
 現在のすべてのリソース グループの一覧を確認するには、次のコマンドを実行し、使用するリソース グループの名前をメモします。
 
@@ -230,9 +235,12 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
 新しいリソース グループを作成するには、作成する新しいリソース グループの名前とリソース グループを作成するリージョンを指定します。
 
-	azure group create <resourcegroupname> <location>
+	azure group create <resourcegroupname> <databaseaccountlocation>
 
-次に例を示します。
+ - `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。 
+ - `<databaseaccountlocation>` には、DocumentDB が一般公開されているリージョンのいずれかを指定します。最新のリージョン一覧については、[Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
+
+入力例:
 
 	azure group create new_res_group westus
 
@@ -260,7 +268,12 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
     azure group deployment create -f <PathToTemplate> -e <PathToParameterFile> -g <resourcegroupname> -n <deploymentname>
 
-次に例を示します。
+ - `<PathToTemplate>` は、手順 1 で作成した azuredeploy.json ファイルのパスです。
+ - `<PathToParameterFile>` は、手順 1 で作成した azuredeploy.parameters.json ファイルのパスです。
+ - `<resourcegroupname>` は、DocumentDB データベース アカウントを追加する既存のリソース グループ名です。 
+ - `<deploymentname>` は、デプロイメント名 (省略可能) です。
+
+入力例:
 
     azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json -g new_res_group -n azuredeploy
 
@@ -268,12 +281,12 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
     azure group deployment create -f <PathToTemplate> -g <resourcegroupname> -n <deploymentname>
 
-例 (これは「new\_db\_acct」という名前のデータベース アカウントのプロンプトとエントリを表示します):
+入力例 (「new\_db\_acct」というデータベース アカウントのプロンプトとエントリが表示されます):
 
     azure group deployment create -f azuredeploy.json -g new_res_group -n azuredeploy
     info:    Executing command group deployment create
     info:    Supply values for the following parameters
-    databaseAccountName: newarmacct
+    databaseAccountName: samplearmacct
 
 アカウントがプロビジョニングされると、次の情報を受け取ります。
 
@@ -289,37 +302,41 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
     data:    Mode               : Incremental
     data:    Name                 Type    Value
     data:    -------------------  ------  ------------------
-    data:    databaseAccountName  String  newarmacct
+    data:    databaseAccountName  String  samplearmacct
     data:    location             String  West US
     info:    group deployment create command OK
 
 エラーが発生した場合、「[トラブルシューティング](#troubleshooting)」を参照してください。
 
-コマンドが戻ると、アカウントは数分間「**作成中**」の状態になります。その後、「**オンライン**」の状態に変化し、使用する準備ができます。[Azure ポータル](https://portal.azure.com)の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
+コマンドが終了すると、アカウントは数分間「**作成中**」の状態になります。その後、「**オンライン**」の状態に変化し、使用する準備ができます。[Azure ポータル](https://portal.azure.com)の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
 
 ## トラブルシューティング
 
-リソース グループまたはデータベース アカウントの作成中に「`Deployment provisioning state was not successful`」のようなエラーが表示された場合、次のコマンドを実行し、リソース グループのログを表示します。
+リソース グループまたはデータベース アカウントの作成中に `Deployment provisioning state was not successful` のようなエラーが発生する場合、いくつかのトラブルシューティング方法があります。
 
-    azure group log show <resourcegroupname> --last-deployment
+> [AZURE.NOTE]データベース アカウント名に正しくない文字を指定するか、DocumentDB を使用できない場所を指定すると、デプロイメント エラーが発生します。データベース アカウント名に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。有効なデータベース アカウントの場所一覧については、[Azure リージョンのページ](https://azure.microsoft.com/regions/#services)を参照してください。
 
-次に例を示します。
+- 出力に次の `Error information has been recorded to C:\Users\wendy\.azure\azure.err` が含まれている場合は、azure.err ファイルでエラー情報を確認してください。
 
-    azure group log show new_res_group --last-deployment
+- このログ ファイルには、リソース グループの役立つ情報が記録されている場合があります。ログ ファイルを表示するには、次のコマンドを実行します。
 
-追加情報については、「[Azure のリソース グループ デプロイのトラブルシューティング](../resource-group-deploy-debug.md)」を参照してください。
+    	azure group log show <resourcegroupname> --last-deployment
 
-データベース アカウント名に含めることができるのは英小文字、数字、「-」のみであり、文字数は 3 ～ 50 文字にする必要があります。
+    入力例:
 
-次のスクリーンショットのように、エラー情報は Azure ポータルでも確認できます。エラー情報に移動するには: ジャンプバーで [リソース グループ] をクリックし、エラーが発生したリソース グループを選択します。次に、[リソース グループ] ブレードの [Essentials] 領域で [前回のデプロイ] の日付をクリックし、[デプロイ履歴] ブレードで失敗したデプロイを選択し、[デプロイ] ブレードで赤い感嘆符が付いた [操作の詳細] 詳細をクリックします。失敗したデプロイメントの状態メッセージが [操作の詳細] ブレードに表示されます。
+    	azure group log show new_res_group --last-deployment
 
-![デプロイメント エラー メッセージに移動する方法を示す Azure ポータルのスクリーンショット](media/documentdb-automation-resource-manager-cli/portal-troubleshooting-deploy.png)
+    追加情報については、「[Azure のリソース グループ デプロイのトラブルシューティング](../resource-group-deploy-debug.md)」を参照してください。
+
+- 次のスクリーンショットのように、エラー情報は Azure ポータルでも確認できます。エラー情報に移動するには: ジャンプバーで [リソース グループ] をクリックし、エラーが発生したリソース グループを選択します。次に、[リソース グループ] ブレードの [Essentials] 領域で [前回のデプロイ] の日付をクリックし、[デプロイ履歴] ブレードで失敗したデプロイを選択し、[デプロイ] ブレードで赤い感嘆符が付いた [操作の詳細] 詳細をクリックします。失敗したデプロイメントの状態メッセージが [操作の詳細] ブレードに表示されます。
+
+    ![デプロイメント エラー メッセージに移動する方法を示す Azure ポータルのスクリーンショット](media/documentdb-automation-resource-manager-cli/portal-troubleshooting-deploy.png)
 
 ## 次のステップ
 
 DocumentDB アカウントを作成できたら、次の手順として DocumentDB データベースを作成します。データベースを作成するには、次のいずれかを使用します。
 
-- Azure ポータル。[Azure ポータルを使用した DocumentDB データベースの作成](documentdb-create-database.md)に関するページの説明を参照してください。
+- Azure ポータル。[Azure ポータルを使用した DocumentDB データベースの作成に関するページ](documentdb-create-database.md)の説明を参照してください。
 - GitHub の [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) リポジトリの [DatabaseManagement](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/DatabaseManagement) プロジェクトにある C# .NET のサンプル。
 - [DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)。DocumentDB には、.NET、Java、Python、Node.js、および JavaScript API の SDK があります。 
 
@@ -334,4 +351,4 @@ DocumentDB の詳細については、以下の資料を参照してください
 
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

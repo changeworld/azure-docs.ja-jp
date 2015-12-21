@@ -180,9 +180,9 @@ ORDER BY 1,2,3
 [開発の概要]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[GROUP BY]: https://msdn.microsoft.com/ja-jp/library/ms177673.aspx
+[GROUP BY]: https://msdn.microsoft.com/library/ms177673.aspx
 
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

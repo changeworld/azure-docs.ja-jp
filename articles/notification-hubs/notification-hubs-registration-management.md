@@ -128,7 +128,7 @@ SecondaryTiles ディクショナリは、Windows ストア アプリで Seconda
         if (deviceInstallation.installationId == null)
             return HttpStatusCode.BadRequest;
 
-        // Parse connection string (https://msdn.microsoft.com/ja-JP/library/azure/dn495627.aspx)
+        // Parse connection string (https://msdn.microsoft.com/library/azure/dn495627.aspx)
         ConnectionStringUtility connectionSaSUtil = new ConnectionStringUtility(listenConnectionString);
         string hubResource = "installations/" + deviceInstallation.installationId + "?";
         string apiVersion = "api-version=2015-04";
@@ -137,7 +137,7 @@ SecondaryTiles ディクショナリは、Windows ストア アプリで Seconda
         string uri = connectionSaSUtil.Endpoint + hubName + "/" + hubResource + apiVersion;
 
         //=== Generate SaS Security Token for Authorization header ===
-		// See, https://msdn.microsoft.com/ja-JP/library/azure/dn495627.aspx
+		// See, https://msdn.microsoft.com/library/azure/dn495627.aspx
         string SasToken = connectionSaSUtil.getSaSToken(uri, 60);
 
         using (var httpClient = new HttpClient())
@@ -332,4 +332,4 @@ SecondaryTiles ディクショナリは、Windows ストア アプリで Seconda
 
 バックエンドは、登録の更新が複数ある場合の並行処理に対応する必要があります。Service Bus は、登録管理向けにオプティミスティック同時実行制御を提供しています。HTTP レベルでは、この処理は登録管理操作に対して ETag を使用して実装されます。この機能は、Microsoft SDK から透過的に使用されます。並行処理の理由で更新が拒否された場合は、例外がスローされます。このような例外に対応し、必要に応じて更新を再試行する処理は、アプリ バックエンドの役割です。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

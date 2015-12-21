@@ -52,13 +52,15 @@
 	  "properties": {
 	    "type": "OnPremisesFileServer",
 	    "typeProperties": {
-	      "host": "\\Contosogame-Asia",
+	      "host": "\\\Contosogame-Asia.<region>.corp.<company>.com",
 	      "userid": "Admin",
 	      "password": "123456",
 	      "gatewayName": "mygateway"
 	    }
 	  }
 	}
+
+ホストの場合、ファイル共有がゲートウェイ コンピューター自体にあれば **Local** または **localhost** を指定できます。また、**userid** や **password** プロパティを使用するのではなく、**encryptedCredential** プロパティを使用することをお勧めします。このリンクされたサービスの詳細については、[ファイル システムのリンクされたサービス](#onpremisesfileserver-linked-service-properties)に関するページを参照してください。
 
 **Azure BLOB ストレージのリンクされたサービス:**
 
@@ -84,7 +86,7 @@
 	    "type": " FileShare",
 	    "linkedServiceName": " OnPremisesFileServerLinkedService ",
 	    "typeProperties": {
-	      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}",
+	      "folderPath": "mysharedfolder/yearno={Year}/monthno={Month}/dayno={Day}",
 	      "fileName": "{Hour}.csv",
 	      "partitionedBy": [
 	        {
@@ -146,7 +148,7 @@
 	    "type": "AzureBlob",
 	    "linkedServiceName": "StorageLinkedService",
 	    "typeProperties": {
-	      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
+	      "folderPath": "mycontainer/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
 	      "partitionedBy": [
 	        {
 	          "name": "Year",
@@ -273,13 +275,15 @@
 	  "properties": {
 	    "type": "OnPremisesFileServer",
 	    "typeProperties": {
-	      "host": "\\Contosogame-Asia",
+	      "host": "\\\Contosogame-Asia.<region>.corp.<company>.com",
 	      "userid": "Admin",
 	      "password": "123456",
 	      "gatewayName": "mygateway"
 	    }
 	  }
 	}
+
+ホストの場合、ファイル共有がゲートウェイ コンピューター自体にあれば **Local** または **localhost** を指定できます。また、**userid** や **password** プロパティを使用するのではなく、**encryptedCredential** プロパティを使用することをお勧めします。このリンクされたサービスの詳細については、[ファイル システムのリンクされたサービス](#onpremisesfileserver-linked-service-properties)に関するページを参照してください。
 
 **Azure SQL の入力データセット:**
 
@@ -320,7 +324,7 @@
 	    "type": "FileShare",
 	    "linkedServiceName": " OnPremisesFileServerLinkedService ",
 	    "typeProperties": {
-	      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}",
+	      "folderPath": "mysharedfolder/yearno={Year}/monthno={Month}/dayno={Day}",
 	      "fileName": "{Hour}.csv",
 	      "partitionedBy": [
 	        {
@@ -427,10 +431,10 @@
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 type | type プロパティは、**OnPremisesFileServer** に設定されます。 | あり 
-host | サーバーのホスト名。次の例のように '\\' をエスケープ文字として使用します: 共有が \\servername である場合、\\servername を指定します。<p>。ファイル システムが、ゲートウェイ コンピューターに対してローカルである場合は、Local または localhost を使用します。ファイル システムがゲートウェイ コンピューターとは異なるサーバー上にある場合は、\\servername を使用します。</p> | あり
+host | サーバーのホスト名。次の例のように '\\' をエスケープ文字として使用します: 共有が \\servername である場合、\\\servername を指定します。<p>。ファイル システムが、ゲートウェイ コンピューターに対してローカルである場合は、Local または localhost を使用します。ファイル システムがゲートウェイ コンピューターとは異なるサーバー上にある場合は、\\\servername を使用します。</p> | あり
 userid | サーバーにアクセスするユーザーの ID を指定します | No (encryptedCredential を選択する場合)
 パスワード | ユーザー (userid) のパスワードを指定します | No (encryptedCredential を選択する場合) 
-encryptedCredential | New-AzureDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します<p>**注: ** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以上の Azure PowerShell を使用する必要があります</p> | No (プレーン テキストでユーザー ID とパスワードを指定する場合)
+encryptedCredential | New-AzureRmDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します<p>**注: ** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以上の Azure PowerShell を使用する必要があります</p> | No (プレーン テキストでユーザー ID とパスワードを指定する場合)
 gatewayName | Data Factory サービスが、オンプレミスのファイル サーバーへの接続に使用するゲートウェイの名前 | あり
 
 オンプレミスのファイル システム データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
@@ -442,7 +446,7 @@ gatewayName | Data Factory サービスが、オンプレミスのファイル �
 	  "properties": {
 	    "type": "OnPremisesFileServer",
 	    "typeProperties": {
-	      "host": "\\Contosogame-Asia",
+	      "host": "\\\Contosogame-Asia",
 	      "userid": "Admin",
 	      "password": "123456",
 	      "gatewayName": "mygateway"
@@ -472,7 +476,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-folderPath | フォルダーへのパス。例: myfolder<p>文字列内の特殊文字にはエスケープ文字 '\\' を使用します。例: folder\\subfolder の場合は folder\\subfolder を指定し、d:\\samplefolder の場合は d:\\samplefolder を指定します。</p><p>これを **partitionBy** と組み合わせて、スライス開始/終了の日時に基づいたフォルダーのパスを設定することができます。</p> | あり
+folderPath | フォルダーへのパス。例: myfolder<p>文字列内の特殊文字にはエスケープ文字 '\\' を使用します。例: folder\\subfolder の場合は folder\\\subfolder を指定し、d:\\samplefolder の場合は d:\\\samplefolder を指定します。</p><p>これを **partitionBy** と組み合わせて、スライス開始/終了の日時に基づいたフォルダーのパスを設定することができます。</p> | あり
 fileName | テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。このプロパティの値を指定しない場合、テーブルはフォルダー内のすべてのファイルを指定します。<p>出力データセットに fileName が指定されていない場合、生成されるファイル名は次の形式になります:</p><p>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p>) | いいえ
 partitionedBy | partitionedBy を利用して時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 | いいえ
 形式 | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。AvroFormat が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある形式のセクションを参照してください。 | いいえ
@@ -599,4 +603,4 @@ false | mergeFiles | <p>ソース フォルダ Folder1 が次のような構造�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

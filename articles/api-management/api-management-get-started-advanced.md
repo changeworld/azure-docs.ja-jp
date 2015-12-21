@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="12/07/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management の詳細な構成について
@@ -36,4 +36,4 @@
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1210_2015-->

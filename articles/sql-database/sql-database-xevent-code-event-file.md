@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/30/2015" 
+	ms.date="12/09/2015" 
 	ms.author="genemi"/>
 
 
@@ -331,7 +331,7 @@ GO
 ------  Create credential (your Azure Storage container must already exist).
 
 
-IF EXISTS
+IF NOT EXISTS
 	(SELECT * FROM sys.symmetric_keys
 		WHERE symmetric_key_id = 101)
 BEGIN
@@ -597,4 +597,4 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="12/04/2015"
    ms.author="larryfr"/>
 
 # Hadoop Tools for Visual Studio を使用した HDInsight での Apache Storm の C# トポロジの開発
@@ -656,6 +656,6 @@ HDInsight を使用するさまざまな方法や、HDInsight での Storm の�
 
 **HDInsight での Apache HBase**
 
--	[HDInsight での HBase の使用](../hdinsight-hbase-get-started.md)
+-	[HDInsight での HBase の使用](hdinsight-hbase-get-started.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

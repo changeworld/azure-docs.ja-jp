@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/29/2015" 
+	ms.date="12/07/2015" 
 	ms.author="mandia"/>
 
 # 組み込み API Apps とコネクタの管理と監視を実行する
@@ -132,4 +132,4 @@ API アプリへのユーザーの追加と特定のロールの割り当ては�
 [hostsettings]: ./media/app-service-logic-monitor-your-connectors/hostsettings.png
 [apiapphost]: ./media/app-service-logic-monitor-your-connectors/apiapphost.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

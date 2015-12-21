@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="オンプレミスの VMWare サイト間の保護の設定" 
-	description="この記事を使用して、2 つの VMware サイト間の保護を Azure Site Recovery を使用して構成します。" 
-	services="site-recovery" 
-	documentationCenter="" 
-	authors="rayne-wiselman" 
-	manager="jwhit" 
+<properties
+	pageTitle="オンプレミスの VMWare サイト間の保護の設定"
+	description="この記事を使用して、2 つの VMware サイト間の保護を Azure Site Recovery を使用して構成します。"
+	services="site-recovery"
+	documentationCenter=""
+	authors="rayne-wiselman"
+	manager="jwhit"
 	editor=""/>
 
-<tags 
-	ms.service="site-recovery" 
-	ms.workload="backup-recovery" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="10/07/2015" 
+<tags
+	ms.service="site-recovery"
+	ms.workload="backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="12/03/2015"
 	ms.author="raynew"/>
 
 
@@ -60,16 +60,16 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 
 次のようにインストールします。
 
-1. [update](http://download.microsoft.com/download/9/F/D/9FDC6001-1DD0-4C10-BDDD-8A9EBFC57FDF/ASR Scout 8.0.1 Update1.zip) zip ファイルをダウンロードします。この zip ファイルには、次のファイルが含まれています。
+1. [更新プログラム](http://aka.ms/scoutupdates)の zip ファイルをダウンロードします。この zip ファイルには、次のファイルが含まれています。
 
 	-  RX\_8.0.1.0\_GA\_Update\_1\_3279231\_23Jun15.tar.gz
-	-  CX\_Windows\_8.0.1.0\_GA\_Update\_1\_3259146\_23Jun15.exe
+	-  CX\_Windows\_8.0.2.0\_GA\_Update\_2\_4306954\_21Aug15.exe
 	-  UA\_Windows\_8.0.1.0\_GA\_Update\_1\_3259401\_23Jun15.exe
 	-  UA\_RHEL6-64\_8.0.1.0\_GA\_Update\_1\_3259401\_23Jun15.tar.gz
 	-  vCon\_Windows\_8.0.1.0\_GA\_Update\_1\_3259523\_23Jun15.exe
 2. zip ファイルを抽出します。
 2. **RX server**: **RX\_8.0.1.0\_GA\_Update\_1\_3279231\_23Jun15.tar.gz** を RX サーバーにコピーし、抽出します。抽出したフォルダで、**/Install** を実行します。
-2. **Configuration server/process server**: **CX\_Windows\_8.0.1.0\_GA\_Update\_1\_3259146\_23Jun15.exe** を構成サーバーとプロセス サーバーにコピーします。ダブルクリックして実行します。
+2. **Configuration server/process server**: **CX\_Windows\_8.0.2.0\_GA\_Update\_2\_4306954\_21Aug15.exe** を構成サーバーとプロセス サーバーにコピーします。ダブルクリックして実行します。
 3. **Windows マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA\_Windows\_8.0.1.0\_GA\_Update\_1\_3259401\_23Jun15.exe** をマスター ターゲット サーバーにコピーします。ダブルクリックして実行します。Windows 用の統合エージェントは、ソース サーバーでは適用できません。これは、Windows マスター ターゲット サーバーのみにインストールしてください。
 4. **Linux マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA\_RHEL6-64\_8.0.1.0\_GA\_Update\_1\_3259401\_23Jun15.tar.gz** をマスター ターゲット サーバーにコピーし、抽出します。抽出したフォルダで、**/Install** を実行します。
 5. **vContinuum サーバー**: **vCon\_Windows\_8.0.1.0\_GA\_Update\_1\_3259523\_23Jun15.exe** を vContinuum サーバーにコピーします。vContinuum ウィザードを閉じたことを確認してください。ファイルをダブルクリックして実行します。
@@ -86,6 +86,19 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 
 
 ## 更新プログラム
+
+### ASR Scout 8.0.1 更新プログラム 03Dec15
+
+修正プログラムの更新プログラム 03-Dec-15 には次が含まれます。
+
+- **構成サーバー**: 構成サーバーが Site Recovery に登録される際に、31 日間の無料計測機能が予期どおりに動作しない問題が修正されます。
+- **統合エージェント**: Master Target の Update 1 の問題が修正され、Master Target サーバーがバージョン 8.0 から 8.0.1 にアップグレードされる際に、アップグレードがインストールされないようにします。
+
+>[AZURE.NOTE]
+>
+>-	ASR のすべての更新プログラムは累積的です。
+>-	CS および RX の更新プログラムは、システムに適用後はロールバックできません。
+
 
 ### ASR Scout 8.0.1 更新プログラム 1
 
@@ -112,9 +125,9 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 	-  vContinuum ウィザードで、MSCS 仮想マシンの保護中にディスク ビューで **[詳細]** をクリックすると、ディスクが自動的に選択解除される。
 	- CIMnotify など、P2V シナリオが必要な HP サービス中に、復元仮想マシンで CqMgHost が手動に移行せず、起動時間が長くなる。
 	- マスター ターゲット サーバーに 27 個以上のディスクがある場合、保護されている Linux 仮想マシンが失敗する。
-	
+
 ## 次のステップ
 
-ご質問があれば、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
+質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

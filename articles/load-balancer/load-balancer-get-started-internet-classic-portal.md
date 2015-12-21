@@ -1,6 +1,7 @@
+
 <properties 
-   pageTitle="Azure ポータルを使用したインターネットに接続するクラシック デプロイ モデルのロード バランサーの作成の開始 | Microsoft Azure"
-   description="Azure ポータルを使用し、インターネットに接続するクラシック デプロイ モデルのロード バランサーを作成する方法について説明します"
+   pageTitle="Azure クラシック ポータルを使用したインターネットに接続するクラシック デプロイ モデルのロード バランサーの作成の開始 | Microsoft Azure"
+   description="Azure クラシック ポータルを使用し、インターネットに接続するクラシック デプロイ モデルのロード バランサーを作成する方法について説明します"
    services="load-balancer"
    documentationCenter="na"
    authors="joaoma"
@@ -14,10 +15,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/20/2015"
+   ms.date="12/07/2015"
    ms.author="joaoma" />
 
-# Azure ポータルを使用したインターネットに接続するロード バランサー (クラシック) の作成の開始
+# Azure クラシック ポータルを使用したインターネットに接続するロード バランサー (クラシック) の作成の開始
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-classic-selectors-include.md](../../includes/load-balancer-get-started-internet-classic-selectors-include.md)]
 
@@ -34,7 +35,7 @@
 
 **仮想マシンの負荷分散セットを構成するには**
 
-1. Azure ポータルで、**[Virtual Machines]** をクリックし、負荷分散セットの仮想マシンの名前をクリックします。
+1. Azure クラシック ポータルで、**[Virtual Machines]** をクリックし、負荷分散セットの仮想マシンの名前をクリックします。
 2.	**[エンドポイント]** をクリックし、**[追加]** をクリックします。
 
 4.	**[仮想マシンにエンドポイントを追加します]** ページで、右矢印をクリックします。
@@ -66,4 +67,4 @@
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

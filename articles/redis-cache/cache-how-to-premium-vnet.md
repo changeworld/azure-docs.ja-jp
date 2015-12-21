@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/02/2015" 
+	ms.date="12/03/2015" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
@@ -27,17 +27,17 @@ Azure Redis Cache の Premium レベルには、クラスタリング、永続�
 [Azure Virtual Network (VNET)](https://azure.microsoft.com/services/virtual-network/) のデプロイメントでは、Azure Redis Cache のための強化されたセキュリティと分離、サブネット、アクセス制御ポリシーなど、Azure Redis Cache へのアクセスをさらに制限するための機能が提供されます。
 
 ## Virtual Network のサポート
-Virtual Network (VNET) のサポートは、キャッシュの作成中に **[Redis Cache の新規作成]** ブレードで構成します。キャッシュを作成するには、[Azure プレビュー ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** をクリックします。
+Virtual Network (VNET) のサポートは、キャッシュの作成中に **[Redis Cache の新規作成]** ブレードで構成します。キャッシュを作成するには、[Azure ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
 
 ![Redis Cache の作成][redis-cache-new-cache-menu]
 
 VNET のサポートを構成するには、まず **[料金レベルの選択]** ブレードで **[Premium]** キャッシュのいずれかを選択します。
 
-![料金レベルの選択][redis-cache-premium-pricing-tier]
+![価格レベルの選択][redis-cache-premium-pricing-tier]
 
-Azure Redis Cache VNET の統合は、**[Virtual Network]** ブレードで構成します。ここでは、既存の従来型 VNET を選択できます。新しい VNET を使用するには、「[Azure プレビュー ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」の手順に従って作成し、**[Redis Cache Virtual Network]** ブレードに戻って選択します。
+Azure Redis Cache VNET の統合は、**[Virtual Network]** ブレードで構成します。ここでは、既存の従来型 VNET を選択できます。新しい VNET を使用するには、「[Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」の手順に従って作成し、**[Redis Cache Virtual Network]** ブレードに戻って選択します。
 
->[AZURE.NOTE]Azure Redis Cache は、クラシック VNET に対応しています。従来型 VNET を作成する方法については、「[」Azure プレビュー ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。
+>[AZURE.NOTE]Azure Redis Cache は、クラシック VNET に対応しています。従来型 VNET を作成する方法については、「[」Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。従来の VNET を ARM VNETS に接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
 
 ![Virtual Network][redis-cache-vnet]
 
@@ -80,6 +80,7 @@ Azure Redis Cache VNET の統合は、**[Virtual Network]** ブレードで構�
 
 Azure Redis Cache が正常に動作しなくなる可能性がある一般的な構成の誤りを次の一覧に示します。
 
+-	DNS へのアクセスがありません。VNET 内の Azure Redis Cache インスタンスは、キャッシュの監視およびランタイム システムの一部で DNS へのアクセスを必要とします。キャッシュ インスタンスに DNS へのアクセスがない場合、監視が機能せず、キャッシュは正しく機能しません。
 -	クライアントから Redis への接続に使用する TCP ポート (6379 または 6380) がブロックされています。
 -	Virtual Network からの送信 HTTPS トラフィックがブロックまたは遮断されています。Azure Redis Cache は、Azure サービス (特に Storage) に対する送信 HTTPS トラフィックを使用します。
 -	サブネット内の Redis ロール インスタンス VM が相互に通信できません。Redis ロール インスタンスは、使用されているポートのいずれかで TCP を使用して相互に通信できるようにする必要があります。ポートは変化する可能性がありますが、最低でも Redis CSDEF ファイルで使用されているすべてのポートを使用できると仮定できます。
@@ -116,4 +117,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-vnet-subnet]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-subnet.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

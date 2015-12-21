@@ -18,9 +18,7 @@
 
 # Windows Runtime 8.1 ユニバーサル アプリへのプッシュ通知の追加
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ##概要
 
@@ -55,10 +53,103 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 ##<a id="update-service"></a>プッシュ通知を送信するようにサーバーを更新する
 
-アプリでプッシュ通知が有効にされたので、プッシュ通知を送信するようにアプリ バックエンドを更新する必要があります。
+アプリでプッシュ通知が有効にされたので、プッシュ通知を送信するようにアプリ バックエンドを更新する必要があります。バックエンド プロジェクトの種類 ([.NET バックエンド](#dotnet)または [Node.js バックエンド](#nodejs)のいずれか) に一致する以下の手順を使用します。
 
-[AZURE.INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
+### <a name="dotnet"></a>.NET バックエンド プロジェクト
 
+1. Visual Studio で、サーバー プロジェクトを右クリックして **[NuGet パッケージの管理]** をクリックし、Microsoft.Azure.NotificationHubs を検索して、**[インストール]** をクリックします。これにより、Notification Hubs のクライアント ライブラリがインストールされます。
+
+2. **Controllers** を展開し、TodoItemController.cs を開いて、次の using ステートメントを追加します。
+
+		using System.Collections.Generic;
+		using Microsoft.Azure.NotificationHubs;
+		using Microsoft.Azure.Mobile.Server.Config;
+
+3. **PostTodoItem** メソッドで、次のコードを **InsertAsync** に対する呼び出しの後ろに追加します。
+
+	    // Get the settings for the server project.
+	    HttpConfiguration config = this.Configuration;
+	    MobileAppSettingsDictionary settings =
+	        this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
+	
+	    // Get the Notification Hubs credentials for the Mobile App.
+	    string notificationHubName = settings.NotificationHubName;
+	    string notificationHubConnection = settings
+	        .Connections[MobileAppSettingsKeys.NotificationHubConnectionString].ConnectionString;
+	
+	    // Create the notification hub client.
+	    NotificationHubClient hub = NotificationHubClient
+	        .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
+	
+	    // Define a WNS payload
+	    var windowsToastPayload = @"<toast><visual><binding template=""ToastText01""><text id=""1"">"
+	                            + item.Text + @"</text></binding></visual></toast>";
+	    try
+	    {
+	        // Send the push notification.
+	        var result = await hub.SendWindowsNativeNotificationAsync(windowsToastPayload);
+	
+	        // Write the success result to the logs.
+	        config.Services.GetTraceWriter().Info(result.State.ToString());
+	    }
+	    catch (System.Exception ex)
+	    {
+	        // Write the failure result to the logs.
+	        config.Services.GetTraceWriter()
+	            .Error(ex.Message, null, "Push.SendAsync Error");
+	    }
+	
+	このコードは、新しい項目が挿入された後、プッシュ通知を送信するように通知ハブに指示します。
+
+### <a name="nodejs"></a>Node.js バックエンド プロジェクト
+
+1. これをまだ行っていない場合は、[クイック スタート プロジェクトをダウンロードする](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)か、または[Azure ポータルでオンライン エディター](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。
+
+2. todoitem.js ファイル内の既存のコードを次のコードに置き換えます。
+
+		var azureMobileApps = require('azure-mobile-apps'),
+	    promises = require('azure-mobile-apps/src/utilities/promises'),
+	    logger = require('azure-mobile-apps/src/logger');
+	
+		var table = azureMobileApps.table();
+		
+		table.insert(function (context) {
+	    // For more information about the Notification Hubs JavaScript SDK,  
+	    // see http://aka.ms/nodejshubs
+	    logger.info('Running TodoItem.insert');
+	    
+	    // Define the WNS payload that contains the new item Text.
+	    var payload = "<toast><visual><binding template=\ToastText01><text id="1">"
+		                            + context.item.text + "</text></binding></visual></toast>";
+	    
+	    // Execute the insert.  The insert returns the results as a Promise,
+	    // Do the push as a post-execute action within the promise flow.
+	    return context.execute()
+	        .then(function (results) {
+	            // Only do the push if configured
+	            if (context.push) {
+					// Send a WNS native toast notification.
+	                context.push.wns.sendToast(null, payload, function (error) {
+	                    if (error) {
+	                        logger.error('Error while sending push notification: ', error);
+	                    } else {
+	                        logger.info('Push notification sent successfully!');
+	                    }
+	                });
+	            }
+	            // Don't forget to return the results from the context.execute()
+	            return results;
+	        })
+	        .catch(function (error) {
+	            logger.error('Error while running context.execute: ', error);
+	        });
+		});
+
+		module.exports = table;  
+
+	これにより、新しい ToDo 項目が挿入されたときには item.text を含む WNS トースト通知が送信されます。
+
+2. ローカル コンピューターでファイルを編集するときは、サーバー プロジェクトを再発行します。
 
 ## <a name="publish-the-service"></a>モバイル バックエンドを Azure に発行する
 
@@ -75,10 +166,12 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
     
         private async Task InitNotificationsAsync()
         {
+            // Get a channel URI from WNS.
             var channel = await PushNotificationChannelManager
                 .CreatePushNotificationChannelForApplicationAsync();
 
-            await MobileService.GetPush().RegisterAsync(channel.Uri);
+            // Register the channel URI with Notification Hubs.
+            await App.MobileService.GetPush().RegisterAsync(channel.Uri);
         }
     
     このコードにより、WNS からアプリケーションの ChannelURI が取得され、その ChannelURI が App Service モバイル アプリに登録されます。
@@ -106,9 +199,6 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 [AZURE.INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
-##次のステップ
-
-最後に、プッシュ通知を特定の認証ユーザーに属しているすべてのデバイス登録に送信するか、任意のデバイス プラットフォームで送信する方法が「[特定のユーザーにクロスプラット フォーム通知を送信する](app-service-mobile-windows-store-dotnet-push-notifications-to-users.md)」チュートリアルに示されています。
 
 ##<a id="more"></a>詳細
 
@@ -122,4 +212,4 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 <!-- Images. -->
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_1210_2015-->

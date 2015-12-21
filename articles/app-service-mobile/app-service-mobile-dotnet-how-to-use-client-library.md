@@ -18,18 +18,17 @@
 
 # Azure Mobile Apps 用の管理されたクライアントの使用方法
 
-[AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-&nbsp;
+[AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]&nbsp;
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ##概要 
 
-このガイドでは、Windows および Xamarin アプリで Azure App Service Mobile Apps 用の管理されたクライアント ライブラリを使用する一般的なシナリオの実行方法を示します。Mobile Apps を初めて使用する場合は、まず、「[Mobile Apps のクイックスタート](app-service-mobile-windows-store-dotnet-get-started.md)」チュートリアルを完了することを検討してください。このガイドでは、クライアント側の管理された SDK に重点を置いています。.NET バックエンドのサーバー側 SDK の詳細については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+このガイドでは、Windows および Xamarin アプリで Azure App Service Mobile Apps 用の管理されたクライアント ライブラリを使用する一般的なシナリオの実行方法を示します。Mobile Apps を初めて使用する場合は、まず、「[Mobile Apps のクイックスタート](app-service-mobile-windows-store-dotnet-get-started.md)」チュートリアルを完了することを検討してください。このガイドでは、クライアント側の管理された SDK に重点を置いています。Mobile Apps 用のサーバー側 SDK の詳細については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」または「[Azure Mobile Apps Node.js SDK の使用方法](app-service-mobile-node-backend-how-to-use-server-sdk.md)」を参照してください。
 
 ## リファレンス ドキュメント
 
-クライアント SDK のリファレンス ドキュメントは次の場所にあります。[Azure Mobile Apps .NET クライアント リファレンス](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.aspx)。
+クライアント SDK のリファレンス ドキュメントについては、「[Azure Mobile Apps .NET クライアント リファレンス](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.aspx)」を参照してください。
 
 ##<a name="setup"></a>セットアップと前提条件
 
@@ -50,6 +49,8 @@
 	}
 
 [JsonPropertyAttribute](http://www.newtonsoft.com/json/help/html/Properties_T_Newtonsoft_Json_JsonPropertyAttribute.htm) を使用してクライアントの型とテーブルの間の *PropertyName* のマッピングが定義されていることに注意してください。
+
+Mobile Apps バックエンドに新しいテーブルを作成する方法については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-define-a-table-controller)」または「[動的スキーマを使用するテーブルの定義](app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations)」(Node.js バックエンド) を参照してください。Node.js バックエンドでは、[Azure ポータル](https://portal.azure.com)の **[テーブルの簡単操作]** 設定を使用することもできます。
 
 ##<a name="create-client"></a>方法: モバイル アプリ クライアントを作成する
 
@@ -83,7 +84,7 @@
 - [特定の列を選択する]
 - [ID でデータを検索する]
 
->[AZURE.NOTE] すべての行が返されるのを防ぐために、サーバー側で設定されたページ サイズが適用されます。これにより、大きなデータ セットの既定の要求がサービスに悪影響を与えないようにします。50 以上の行を返すには、「[ページにデータを返す]」で説明されている `Take` メソッドを使用します。
+>[AZURE.NOTE]すべての行が返されるのを防ぐために、サーバー側で設定されたページ サイズが適用されます。これにより、大きなデータ セットの既定の要求がサービスに悪影響を与えないようにします。50 以上の行を返すには、「[ページにデータを返す]」で説明されている `Take` メソッドを使用します。
 
 ### <a name="filtering"></a>方法: 返されるデータをフィルター処理する
 
@@ -170,7 +171,7 @@
 
 これは、ハードコーディングされたページング値を `Take` メソッドおよび `Skip` メソッドに渡す、簡略化したシナリオです。実際のアプリケーションでは、ユーザーが前後のページに移動できるように、ページャー コントロールまたは同等の UI と共に上記と同様のクエリを使用することができます。
 
->[AZURE.NOTE] モバイル アプリ バックエンドの 50 行の制限をオーバーライドするには、[EnableQueryAttribute](https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx) をパブリック GET メソッドに適用してページング動作を指定することも必要です。次のコードをメソッドに適用すると、返される最大行数が 1000 行に設定されます。
+>[AZURE.NOTE]モバイル アプリ バックエンドの 50 行の制限をオーバーライドするには、[EnableQueryAttribute](https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx) をパブリック GET メソッドに適用してページング動作を指定することも必要です。次のコードをメソッドに適用すると、返される最大行数が 1000 行に設定されます。
 
     [EnableQuery(MaxTop=1000)]
 
@@ -258,12 +259,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
 
 	await todoTable.UpdateAsync(todoItem);
 
-型指定されていないデータを挿入するには、次のような Json.NET を利用できます。
-	JObject jo = new JObject();
-	jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
-	jo.Add("Text", "Hello World");
-	jo.Add("Complete", false);
-	var inserted = await table.UpdateAsync(jo);
+型指定されていないデータを挿入するには、次のような Json.NET を利用できます。 JObject jo = new JObject(); jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D"); jo.Add("Text", "Hello World"); jo.Add("Complete", false); var inserted = await table.UpdateAsync(jo);
 
 更新を行うときは ID を指定する必要があることに注意してください。バックエンドはそれによって更新するインスタンスを識別します。ID は、`InsertAsync` の呼び出しの結果から取得できます。"Id" の値を指定しないで項目を更新しようとすると、`ArgumentException` が発生します。
 
@@ -292,7 +288,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
         .InvokeApiAsync<MarkAllResult>("completeAll",
         System.Net.Http.HttpMethod.Post, null);
 
-これは型指定メソッドの呼び出しのため、返される **MarkAllResult** の型を定義する必要があります。型指定および型指定のないメソッドの両方がサポートされます。型指定でペイロードを送信せず、クエリ パラメーターがなく、また要求ヘッダーを変更しないため、これは簡単な例になります。より現実的な例と [InvokeApiAsync] についてのより完全な説明については、「[Azure Mobile Services クライアント SDK のカスタム API]」を参照してください。
+これは型指定メソッドの呼び出しのため、返される **MarkAllResult** の型を定義する必要があります。型指定および型指定のないメソッドの両方がサポートされます。型指定でペイロードを送信せず、クエリ パラメーターがなく、また要求ヘッダーを変更しないため、これは簡単な例になります。より現実的な例と [InvokeApiAsync] についてのより完全な説明については、「[Azure モバイル サービス クライアント SDK のカスタム API]」を参照してください。
 
 ##方法: プッシュ通知に登録する
 
@@ -349,7 +345,7 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 
 セキュリティのためにタグはすべて取り除かれるので注意してください。インストールまたはインストール内のテンプレートにタグを追加する方法については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作]」を参照してください。
 
-これらの登録済みテンプレートを使用して通知を送信するには、[Notification Hubs APIs](https://msdn.microsoft.com/library/azure/dn495101.aspx) を使用します。
+これらの登録済みテンプレートを使用して通知を送信するには、[Notification Hubs API](https://msdn.microsoft.com/library/azure/dn495101.aspx) を使用します。
 
 ##<a name="optimisticconcurrency"></a>方法: オプティミスティック同時実行制御を使用する
 
@@ -483,7 +479,7 @@ Windows アプリでは、プッシュ通知と特定の認証モードを有効
 1. Visual Studio ソリューション エクスプローラーで、Windows Store アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。
 2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインし、**[新しいアプリケーション名の予約]** にアプリの名前を入力し、**[予約]** をクリックします。
 3. アプリの登録が正常に作成されたら、新しいアプリ名を選択し、**[次へ]** をクリックし、**[関連付け]** をクリックします。この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
-4. Microsoft アカウントを使用して [Windows デベロッパー センター](https://dev.windows.com/ja-JP/overview) にログインします。**[マイ アプリ]** で、先ほど作成したアプリ登録をクリックします。
+4. Microsoft アカウントを使用して [Windows デベロッパー センター](https://dev.windows.com/ja-JP/overview)にログインします。**[マイ アプリ]** で、先ほど作成したアプリ登録をクリックします。
 5. **[アプリ管理]**、**[アプリ ID]** の順にクリックし、下にスクロールして **[パッケージ SID]** を探します。
 
 多くの場合、パッケージ SID は URI として使用されます。その場合はスキームとして _ms-app://_ を使用する必要があります。この値をプレフィックスとして連結して形成されたパッケージ SID のバージョンをメモしておきます。
@@ -756,8 +752,8 @@ Mobile Apps クライアント ライブラリは、Json.NET を使用して、�
 [Skip]: http://msdn.microsoft.com/library/windowsazure/dn250573.aspx
 [Take]: http://msdn.microsoft.com/library/windowsazure/dn250574.aspx
 [Fiddler]: http://www.telerik.com/fiddler
-[Azure Mobile Services クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
+[Azure モバイル サービス クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

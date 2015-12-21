@@ -24,7 +24,7 @@ GSM と LSM はシャード化環境内の各データベースのマッピン�
 RecoveryManager クラスは、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library)に含まれています。
 
 
-![Shard map][1]
+![シャード マップ][1]
 
 
 用語の定義については、「[Elastic Database ツールの用語集](sql-database-elastic-scale-glossary.md)」を参照してください。**ShardMapManager** を使用してシャーディング ソリューション内のデータを管理する方法については、「[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)」を参照してください。
@@ -42,7 +42,7 @@ Elastic Database クライアント ツール ライブラリなどのツール�
  
 復旧操作を自動化すると、geo 対応データベースを円滑に管理でき、ユーザーによる手動操作もなくすことができます。また、データが誤って削除された場合の回復シナリオにも役立ちます。
 
-SQL Database Elastic Database ツール、geo レプリケーション、および復元の詳細については、次のページを参照してください。
+Azure SQL Database の Elastic Database ツール、geo レプリケーション、および復元の詳細については、次のページを参照してください。
 
 * [Azure SQL Database の Elastic Database 機能](sql-database-elastic-scale-introduction.md) 
 * [Azure SQL Database の継続性](sql-database-business-continuity.md) 
@@ -85,7 +85,7 @@ SQL Database Elastic Database ツール、geo レプリケーション、およ�
 
 ## マッピングの相違点を解決するには
 
-[ResolveMappingDifferences メソッド](https://msdn.microsoft.com/ja-JP/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx)を実行すると、シャード マップ (ローカルとグローバルのいずれか) のうち 1 つが唯一の情報源として選択され、両方のシャード マップ (GSM および LSM) でマッピングが調整されます。
+[ResolveMappingDifferences メソッド](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx)を実行すると、シャード マップ (ローカルとグローバルのいずれか) のうち 1 つが唯一の情報源として選択され、両方のシャード マップ (GSM および LSM) でマッピングが調整されます。
 
 	ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution);
    
@@ -157,4 +157,4 @@ geo フェールオーバーと復旧は一般的に、アプリケーション�
 [1]: ./media/sql-database-elastic-database-recovery-manager/recovery-manager.png
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

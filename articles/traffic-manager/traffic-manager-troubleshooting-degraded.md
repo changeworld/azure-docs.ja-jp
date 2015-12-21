@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/12/2015"
+   ms.date="12/02/2015"
    ms.author="joaoma" />
 
 # Azure Traffic Manager での機能低下状態のトラブルシューティング
@@ -80,4 +80,4 @@ wget で URL が http://watestsdp2008r2.cloudapp.net/Default.aspx に対して 3
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/02/2015"
+   ms.date="12/04/2015"
    ms.author="larryfr"/>
 
 #HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
@@ -23,7 +23,7 @@
 
 このドキュメントでは、.NET SDK for Hadoop を使用して HDInsight クラスターで Hadoop に Pig ジョブを送信する方法の例を紹介します。
 
-HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。Pig では、一連のデータ変換をモデル化することで MapReduce 操作を作成できます。基本的な C# アプリケーションを使用して、Pig ジョブを HDInsight クラスターに送信する方法を説明します。
+HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。Pig では、一連のデータ変換をモデル化することで MapReduce 操作を作成できます。基本的な C#アプリケーションを使用して、Pig ジョブを HDInsight クラスターに送信する方法を説明します。
 
 [AZURE.INCLUDE [azure-portal](../../includes/hdinsight-azure-portal.md)]
 
@@ -43,7 +43,7 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 
 この方法に関する手順については、「[自己署名証明書の作成](http://go.microsoft.com/fwlink/?LinkId=511138)」をご覧ください。
 
-> [AZURE.NOTE]後で使用するため、証明書にはわかりやすい名前を付けてください。
+> [AZURE.NOTE] 後で使用するため、証明書にはわかりやすい名前を付けてください。
 
 ##<a id="subscriptionid"></a>サブスクリプション ID の検索
 
@@ -60,7 +60,9 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 ##<a id="create"></a>アプリケーションを作成する
 
 1. Visual Studio 2012 または 2013 を開く
+
 2. **[ファイル]** メニューから **[新規]**、**[プロジェクト]** の順に選択します。
+
 3. 新しいプロジェクトの場合は、次の値を入力または選択します。
 
 	<table>
@@ -81,8 +83,11 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 <th>SubmitPigJob</th>
 </tr>
 </table>
+
 4. **[OK]** をクリックしてプロジェクトを作成します。
+
 5. **[ツール]** メニューで **[ライブラリ パッケージ マネージャー]** または **[NuGet パッケージ マネージャー]** を選択し、**[パッケージ マネージャー コンソール]** を選択します。
+
 6. コンソールで次のコマンドを実行して、.NET SDK パッケージをインストールします。
 
 		Install-Package Microsoft.Azure.Management.HDInsight.Job -Pre
@@ -158,4 +163,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

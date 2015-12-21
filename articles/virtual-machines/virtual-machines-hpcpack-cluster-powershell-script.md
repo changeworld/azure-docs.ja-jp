@@ -75,13 +75,15 @@ New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminP
 
 ### 例
 
-次の例では、「MyConfigFile.xml」という構成ファイルを使用して新しい HPC Pack クラスターを作成し、クラスターをインストールするための管理者資格情報を指定します。 ```
-New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName
-<username> –AdminPassword <password>
+次の例では、「MyConfigFile.xml」という構成ファイルを使用して新しい HPC Pack クラスターを作成し、クラスターをインストールするための管理者資格情報を指定します。
+
 ```
+New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName <username> –AdminPassword <password>
+```
+
 ### 追加の考慮事項
 
-* このスクリプトは Azure Marketplace の HPC Pack VM イメージを使用し、クラスター ヘッド ノードを作成します。現在のイメージは HPC Pack 2012 R2 更新プログラム 2 をインストールした Windows Server 2012 R2 Datacenter に基づいています。
+* このスクリプトは Azure Marketplace の HPC Pack VM イメージを使用し、クラスター ヘッド ノードを作成します。現在のイメージは HPC Pack 2012 R2 更新プログラム 3 をインストールした Windows Server 2012 R2 Datacenter に基づいています。
 
 * このスクリプトでは、任意で、HPC Pack Web ポータルまたは HPC Pack REST API を通してジョブ送信を有効にできます。
 
@@ -386,8 +388,8 @@ New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName
 
 * クラスターでテスト ワークロードを実行してみます。たとえば、HPC Pack [ファースト ステップ ガイド](https://technet.microsoft.com/library/jj884144)を参照してください。
 
-* スクリプトを使用してクラスターを作成し、HPC ワークロードを実行するチュートリアルについては、「[Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する](virtual-machines-excel-cluster-hpcpac)」または「[Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する](virtual-machines-linux-cluster-hpcpack-namd.md)」を参照してください。
+* スクリプトを使用してクラスターを作成し、HPC ワークロードを実行するチュートリアルについては、「[Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する](virtual-machines-excel-cluster-hpcpac)」、「[Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する](virtual-machines-linux-cluster-hpcpack-namd.md)」、「[Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して OpenFOAM を実行する](virtual-machines-linux-cluster-hpcpack-openfoam.md)」を参照してください。
 
 * HPC Pack のツールを試し、作成したクラスターからコンピューティング ノードを開始、停止、追加、削除してください。「[Azure の HPC Pack クラスターでコンピューティング ノードを管理する](virtual-machines-hpcpack-cluster-node-manage.md)」を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

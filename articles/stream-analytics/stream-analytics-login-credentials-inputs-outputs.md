@@ -1,6 +1,7 @@
 <properties 
 	pageTitle="Stream Analytics: 入力と出力のログイン資格情報の交換 |Microsoft Azure" 
-	description="Stream Analytics の入力と出力の資格情報を更新する方法について説明します。" 
+	description="Stream Analytics の入力と出力の資格情報を更新する方法について説明します。"
+	keywords="ログイン資格情報"
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -13,28 +14,28 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/06/2015" 
+	ms.date="12/04/2015" 
 	ms.author="jeffstok"/>
 
-#入力/出力の資格情報の交換
+#ログイン資格情報の交換
 
 ##要約
 現在、Azure Stream Analytics では、ジョブの実行中に入力/出力の資格情報を置き換えることができません。
 
-Azure Stream Analytics では、最後の出力からのジョブの再開がサポートされていますが、ジョブを停止して開始するまでの遅延を最小限に抑えるためのプロセス全体を共有することを考えました。
+Azure Stream Analytics では、最後の出力からのジョブの再開がサポートされていますが、ジョブを停止して開始し、ログイン資格情報を交換するまでの遅延を最小限に抑えるためのプロセス全体を共有することを考えました。
 
 ##パート 1: 新しい資格情報セットの準備
 このパートは、次の入力/出力に適用できます。
 
-* BLOB Storage
+* BLOB ストレージ
 * Event Hubs
 * SQL Database
-* Table Storage
+* テーブル ストレージ
 
 その他の入力/出力の場合は、パート2 へ進んでください。
 
 ###BLOB ストレージとテーブル ストレージ
-1.  Azure クラシック ポータルで [ストレージ] 拡張に移動します。![図 1][graphic1]
+1.  Azure の管理ポータルで [ストレージ] 拡張に移動します。![図 1][graphic1]
 2.  ジョブで使用されているストレージを見つけ、そこに移動します。![図 2][graphic2]
 3.  [アクセス キーの管理] コマンドをクリックします。![図 3][graphic3]
 4.  [プライマリ アクセス キー] と [セカンダリ アクセス キー] の間で、**ジョブで使用されていないキーを選択**します。
@@ -44,7 +45,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 
 ###Event Hubs  
 
-1.  Azure クラシック ポータルで [Service Bus] 拡張に移動します。![図 6][graphic6]
+1.  Azure の管理ポータルで [Service Bus] 拡張に移動します。![図 6][graphic6]
 2.  ジョブで使用されている Service Bus 名前空間を見つけ、そこに移動します。![図 7][graphic7]
 3.  ジョブが Service Bus 名前空間で共有アクセス ポリシーを使用している場合は、手順 6. に進みます。  
 4.  [イベント ハブ] タブに移動します。![図 8][graphic8]
@@ -58,9 +59,9 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 
 ###SQL Database
 
->[AZURE.NOTE]注: SQL Databse サービスに接続する必要があります。Azure クラシック ポータルで管理機能を使用して実行する方法を説明しますが、SQL Server Management Studio などのクライアント側のツールを使用することもできます。
+>[AZURE.NOTE]注: SQL Databse サービスに接続する必要があります。Azure の管理ポータルで管理機能を使用して実行する方法を説明しますが、SQL Server Management Studio などのクライアント側のツールを使用することもできます。
 
-1.  Azure クラシック ポータルで [SQL Database] 拡張に移動します。![図 14][graphic14]
+1.  Azure の管理ポータルで [SQL データベース] 拡張に移動します。![図 14][graphic14]
 2.  ジョブで使用されている SQL Database を見つけ、同じ行にある**サーバーのリンクをクリック**します。![図 15][graphic15]
 3.  [管理] コマンドをクリックします。![図 16][graphic16]
 4.  [データベース] に「Master」と入力します。![図 17][graphic17]
@@ -78,7 +79,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 16. パート 2 に進みます。
 
 ##パート 2: Stream Analytics ジョブの停止
-1.  Azure クラシック ポータルで [Stream Analytics] 拡張に移動します。![図 26][graphic26]
+1.  Azure の管理ポータルで [Stream Analytics] 拡張に移動します。![図 26][graphic26]
 2.  ジョブを見つけ、それに移動します。![図 27][graphic27]
 3.  入力時と出力時のどちらで資格情報を交換するかに基づいて、[入力] タブまたは [出力] タブに移動します。![図 28][graphic28]
 4.  [停止] コマンドをクリックし、ジョブが停止されたことを確認します。![図 29][graphic29] ジョブが停止するまで待機します。
@@ -122,7 +123,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 4.	パート 5 に進みます。  
 
 ##パート 5: 以前の資格情報セットの削除
-このパートは、次の入力/出力を対象とします。* BLOB Storage * Event Hubs * SQL Database * Table Storage
+このパートは、次の入力/出力を対象とします。* BLOB ストレージ * イベント ハブ * SQL Database * テーブル ストレージ
 
 ###BLOB ストレージとテーブル ストレージ
 ジョブで以前に使用されていたアクセス キーに対してパート 1 を繰り返し、現在未使用のアクセス キーを更新します。
@@ -195,4 +196,4 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/03/2015"
+	ms.date="12/07/2015"
 	ms.author="sdanie"/>
 
 # Azure Active Directory と API Management で Web API バックエンドを保護する方法
@@ -30,7 +30,7 @@
 
 ## Azure AD Directory を作成する
 
-Azure Active Directory を使用して Web API バックエンドを保護するには、AAD テナントが必要です。このビデオでは、**APIMDemo** という名前のテナントを使用します。AAD テナントを作成するには、[Azure ポータル](https://manage.windowsazure.com)にサインインし、**[新規]**、**[App Services]**、**[Active Directory]**、**[ディレクトリ]**、**[カスタム作成]** の順にクリックします。
+Azure Active Directory を使用して Web API バックエンドを保護するには、AAD テナントが必要です。このビデオでは、**APIMDemo** という名前のテナントを使用します。AAD テナントを作成するには、[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインし、**[新規]**、**[App Services]**、**[Active Directory]**、**[ディレクトリ]**、**[カスタム作成]** の順にクリックします。
 
 ![Azure Active Directory][api-management-create-aad-menu]
 
@@ -143,11 +143,7 @@ Azure へのサインインを求めるメッセージが表示され、Web ア�
         public HttpResponseMessage GetDiv([FromUri]int a, [FromUri]int b)
         {
             string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a / b);
-            HttpResponseMessage response = Request.CreateResponse();
-            response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
-            return response;
-        }
-    }
+HttpResponseMessage response = Request.CreateResponse(); response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml"); return response; } }
 
 
 **F6** キーを押して、ソリューションをビルドし、検証します。
@@ -178,7 +174,7 @@ Azure AD アプリケーションが API Management 開発者ポータルに構�
 
 ## API Management に Web API をインポートする
 
-API は API パブリッシャー ポータルから構成されます。このポータルには、Azure の管理ポータルからアクセスします。パブリッシャー ポータルにアクセスするには、API Management サービスの Azure ポータルで **[管理]** をクリックします。API Management サービス インスタンスをまだ作成していない場合は、「[Azure API Management での最初の API の管理][]」チュートリアルの「[API Management インスタンスの作成][]」をご覧ください。
+API の構成は、Azure クラシック ポータルから API 発行者ポータルにアクセスして行います。発行者ポータルにアクセスするには、API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。API Management サービス インスタンスをまだ作成していない場合は、「[Azure API Management での最初の API の管理][]」チュートリアルの「[API Management インスタンスの作成][]」をご覧ください。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
@@ -186,137 +182,7 @@ API は API パブリッシャー ポータルから構成されます。この�
 
 次の内容のファイルを `calcapi.json` という名前で作成し、コンピューターに保存します。`host` 属性がお使いの Web API バックエンドを指定していることを確認します。この例では、`"host": "apimaaddemo.azurewebsites.net"` が使用されます。
 
-	{
-	  "swagger": "2.0",
-	  "info": {
-		"title": "Calculator",
-		"description": "Arithmetics over HTTP!",
-		"version": "1.0"
-	  },
-	  "host": "apimaaddemo.azurewebsites.net",
-	  "basePath": "/api",
-	  "schemes": [
-		"http"
-	  ],
-	  "paths": {
-		"/add?a={a}&b={b}": {
-		  "get": {
-			"description": "Responds with a sum of two numbers.",
-			"operationId": "Add two integers",
-			"parameters": [
-			  {
-				"name": "a",
-				"in": "query",
-				"description": "First operand. Default value is <code>51</code>.",
-				"required": true,
-				"default": "51",
-				"enum": [
-				  "51"
-				]
-			  },
-			  {
-				"name": "b",
-				"in": "query",
-				"description": "Second operand. Default value is <code>49</code>.",
-				"required": true,
-				"default": "49",
-				"enum": [
-				  "49"
-				]
-			  }
-			],
-			"responses": {}
-		  }
-		},
-		"/sub?a={a}&b={b}": {
-		  "get": {
-			"description": "Responds with a difference between two numbers.",
-			"operationId": "Subtract two integers",
-			"parameters": [
-			  {
-				"name": "a",
-				"in": "query",
-				"description": "First operand. Default value is <code>100</code>.",
-				"required": true,
-				"default": "100",
-				"enum": [
-				  "100"
-				]
-			  },
-			  {
-				"name": "b",
-				"in": "query",
-				"description": "Second operand. Default value is <code>50</code>.",
-				"required": true,
-				"default": "50",
-				"enum": [
-				  "50"
-				]
-			  }
-			],
-			"responses": {}
-		  }
-		},
-		"/div?a={a}&b={b}": {
-		  "get": {
-			"description": "Responds with a quotient of two numbers.",
-			"operationId": "Divide two integers",
-			"parameters": [
-			  {
-				"name": "a",
-				"in": "query",
-				"description": "First operand. Default value is <code>100</code>.",
-				"required": true,
-				"default": "100",
-				"enum": [
-				  "100"
-				]
-			  },
-			  {
-				"name": "b",
-				"in": "query",
-				"description": "Second operand. Default value is <code>20</code>.",
-				"required": true,
-				"default": "20",
-				"enum": [
-				  "20"
-				]
-			  }
-			],
-			"responses": {}
-		  }
-		},
-		"/mul?a={a}&b={b}": {
-		  "get": {
-			"description": "Responds with a product of two numbers.",
-			"operationId": "Multiply two integers",
-			"parameters": [
-			  {
-				"name": "a",
-				"in": "query",
-				"description": "First operand. Default value is <code>20</code>.",
-				"required": true,
-				"default": "20",
-				"enum": [
-				  "20"
-				]
-			  },
-			  {
-				"name": "b",
-				"in": "query",
-				"description": "Second operand. Default value is <code>5</code>.",
-				"required": true,
-				"default": "5",
-				"enum": [
-				  "5"
-				]
-			  }
-			],
-			"responses": {}
-		  }
-		}
-	  }
-	}
+{ "swagger": "2.0", "info": { "title": "Calculator", "description": "Arithmetics over HTTP!", "version": "1.0" }, "host": "apimaaddemo.azurewebsites.net", "basePath": "/api", "schemes": [ "http" ], "paths": { "/add?a={a}&b={b}": { "get": { "description": "Responds with a sum of two numbers.", "operationId": "Add two integers", "parameters": [ { "name": "a", "in": "query", "description": "First operand.Default value is <code>51</code>.", "required": true, "default": "51", "enum": [ "51" ] }, { "name": "b", "in": "query", "description": "Second operand.Default value is <code>49</code>.", "required": true, "default": "49", "enum": [ "49" ] } ], "responses": {} } }, "/sub?a={a}&b={b}": { "get": { "description": "Responds with a difference between two numbers.", "operationId": "Subtract two integers", "parameters": [ { "name": "a", "in": "query", "description": "First operand.Default value is <code>100</code>.", "required": true, "default": "100", "enum": [ "100" ] }, { "name": "b", "in": "query", "description": "Second operand.Default value is <code>50</code>.", "required": true, "default": "50", "enum": [ "50" ] } ], "responses": {} } }, "/div?a={a}&b={b}": { "get": { "description": "Responds with a quotient of two numbers.", "operationId": "Divide two integers", "parameters": [ { "name": "a", "in": "query", "description": "First operand.Default value is <code>100</code>.", "required": true, "default": "100", "enum": [ "100" ] }, { "name": "b", "in": "query", "description": "Second operand.Default value is <code>20</code>.", "required": true, "default": "20", "enum": [ "20" ] } ], "responses": {} } }, "/mul?a={a}&b={b}": { "get": { "description": "Responds with a product of two numbers.", "operationId": "Multiply two integers", "parameters": [ { "name": "a", "in": "query", "description": "First operand.Default value is <code>20</code>.", "required": true, "default": "20", "enum": [ "20" ] }, { "name": "b", "in": "query", "description": "Second operand.Default value is <code>5</code>.", "required": true, "default": "5", "enum": [ "5" ] } ], "responses": {} } } } }
 
 電卓 API をインポートするには、左側の **[API Management]** メニューの **[API]** をクリックし、**[API のインポート]** をクリックします。
 
@@ -547,4 +413,4 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 [API Management インスタンスの作成]: api-management-get-started.md#create-service-instance
 [Azure API Management での最初の API の管理]: api-management-get-started.md
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1210_2015-->

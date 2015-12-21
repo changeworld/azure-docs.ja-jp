@@ -18,9 +18,7 @@
 
 #Android アプリの作成
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## 概要
 
@@ -32,13 +30,10 @@
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [アクティブな Azure アカウント](http://azure.microsoft.com/pricing/free-trial/)
-
-* [Visual Studio Community 2013] 以降のバージョンがインストールされた PC
-
 * Android Studio 統合開発環境と最新の Android プラットフォームを含む [Android Developer Tools](https://developer.android.com/sdk/index.html)
-
 * Azure Mobile Android SDK。ダウンロードしたクイックスタート プロジェクトの一部として自動的に参照されます。
+* [Visual Studio Community 2013] 以降のバージョンがインストールされた PC (Node.js バックエンドでは不要)
+* [アクティブな Azure アカウント](http://azure.microsoft.com/pricing/free-trial/)
 
 ## 新しい Azure モバイル アプリ バックエンドを作成する
 
@@ -59,4 +54,4 @@
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_1210_2015-->

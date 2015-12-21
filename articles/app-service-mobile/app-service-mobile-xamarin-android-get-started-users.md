@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="mobile-xamarin-android" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="08/27/2015" 
+	ms.date="12/07/2015" 
 	ms.author="mahender"/>
 
 # Xamarin.Android アプリに認証を追加する
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 このトピックでは、クライアント アプリケーションから Mobile App のユーザーを認証する方法について説明します。このチュートリアルでは、Azure Mobile Apps でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。Mobile App によって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
@@ -97,7 +95,11 @@ Visual Studio または Xamarin Studio で、デバイスまたはエミュレ�
             android:onClick="LoginUser"
             android:text="@string/login_button_text" />
 
-4. Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターでクライアント プロジェクトを実行し、選択した ID プロバイダーを使用してサインインします。
+5. 次の要素を Strings.xml リソース ファイルに追加します。
+
+		<string name="login_button_text">Sign in</string> 
+
+6. Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターでクライアント プロジェクトを実行し、選択した ID プロバイダーを使用してサインインします。
 
    	ログインに成功すると、アプリケーションにログイン ID と todo 項目の一覧が表示され、データを更新することができます。
 
@@ -106,4 +108,4 @@ Visual Studio または Xamarin Studio で、デバイスまたはエミュレ�
 [Xamarin.Android アプリの作成]: app-service-mobile-xamarin-android-get-started.md
  
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_1210_2015-->

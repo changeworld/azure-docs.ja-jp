@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="10/29/2015"
+    ms.date="12/04/2015"
     ms.author="larryfr"/>
 
 # HDInsight での Script Action 開発
@@ -220,4 +220,4 @@ _解決_: ファイルを ASCII として、または BOM なしの UTF-8 とし
 
 [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

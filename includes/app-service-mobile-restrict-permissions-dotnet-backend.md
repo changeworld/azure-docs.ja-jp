@@ -3,7 +3,7 @@
 
 + **Node.js バックエンド (ポータル経由)** :  
 	
-	モバイル アプリの **[設定]** で、**[簡単テーブル]** をクリックし、目的のテーブルを選択します。**[アクセス許可の変更]** をクリックし、すべてのアクセス許可に対して **[認証済みアクセスのみ]** を選択し、**[保存]** を選択します。
+	モバイル アプリの **[設定]** で、**[簡単テーブル]** をクリックし、目的のテーブルを選択します。**[アクセス許可の変更]** をクリックし、すべてのアクセス許可に対して **[認証済みアクセスのみ]** を選択し、**[保存]** をクリックします。
 
 + **.NET バックエンド (C#)**:
 
@@ -20,6 +20,6 @@
 
         table.access = 'authenticated';
 
-	詳細については、「[Azure Mobile Apps Node.js SDK を使用する方法](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md)」の「[テーブルへのアクセスに対して認証を要求](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth)」を参照してください。
+	詳細については、「[方法: テーブルへのアクセスに認証を要求する](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth)」を参照してください。自社サイトからクイック スタート コード プロジェクトをダウンロードする方法については、「[方法: Git を使用して Node.js バックエンド クイック スタート コード プロジェクトをダウンロードする](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

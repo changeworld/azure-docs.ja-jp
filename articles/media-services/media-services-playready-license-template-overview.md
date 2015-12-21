@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015"
+	ms.date="12/05/2015"
 	ms.author="juliako"/>
 
 #Media Services PlayReady ライセンス テンプレートの概要
@@ -311,4 +311,4 @@ Silverlight でサポートされる保護レベルの例については、「[S
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

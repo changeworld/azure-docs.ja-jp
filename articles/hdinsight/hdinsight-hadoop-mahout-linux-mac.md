@@ -249,9 +249,9 @@ Mahout ジョブは、ジョブの処理中に作成された一時データを�
 
 ここまで、Mahout の使用方法を学習し、HDInsight でデータを操作するその他の方法を確認してきました。
 
-* [HDInsight での Hive の使用](../hadoop-use-hive.md)
-* [HDInsight での Pig の使用](../hadoop-use-pig.md)
-* [HDInsight での MapReduce の使用](../hadoop-use-mapreduce.md)
+* [HDInsight での Hive の使用](hadoop-use-hive.md)
+* [HDInsight での Pig の使用](hadoop-use-pig.md)
+* [HDInsight での MapReduce の使用](hadoop-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html
 [movielens]: http://grouplens.org/datasets/movielens/
@@ -267,4 +267,4 @@ Mahout ジョブは、ジョブの処理中に作成された一時データを�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

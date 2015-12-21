@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="powershell" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/01/2015" 
+	ms.date="12/08/2015" 
 	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでの Azure PowerShell の使用
@@ -338,7 +338,7 @@ Web サイトなどの特定の種類のリソースについてサポートさ�
 
     PS C:\> New-AzureRmResourceGroupDeployment -ResourceGroupName TestRG1 -TemplateFile c:\Azure\Templates\azuredeploy.json
 
-リソース グループとテンプレートの場所を指定します。テンプレートがローカルでない場合は、-TemplateUri パラメーターを使用してテンプレートの URI を指定できます。
+リソース グループとテンプレートの場所を指定します。テンプレートがローカルでない場合は、**-TemplateUri** パラメーターを使用してテンプレートの URI を指定できます。**-Mode** パラメーターを **Incremental** または **Complete** のいずれかに設定できます。既定では、リソース マネージャーはデプロイ中に増分更新を実行するため、**増分**が必要な場合に **-Mode** を設定する必要はありません。これらのデプロイ モード間の相違については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
 ###動的なテンプレート パラメーター
 
@@ -441,4 +441,4 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
 - プロジェクトのデプロイの詳細な例については、[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)方法に関するページを参照してください。
 - 失敗したデプロイのトラブルシューティングについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](./virtual-machines/resource-group-deploy-debug.md)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -19,10 +19,6 @@
 # チュートリアル: Data Factory を使用したログ ファイルの移動と処理 [PowerShell]
 この記事では、Azure Data Factory を使用してデータをログ ファイルから洞察へと変化させながら、ログ処理の標準的なシナリオを包括的なチュートリアルとして提供します。
 
-> [AZURE.IMPORTANT]この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス][cmdlet-reference]」を参照してください。
->    
-> Azure PowerShell 1.0 プレビューを使用する場合は、[ここ](https://msdn.microsoft.com/library/dn820234.aspx)に記載されているコマンドレットを使用する必要があります。たとえば、New-AzureDataFactory を使用する代わりに、New-AzureRMDataFactory を使用します。
-
 ## シナリオ
 Contoso は、ゲーム機、携帯デバイス、パーソナル コンピューター (PC) など、複数のプラットフォーム向けにゲームを製作するゲーム会社です。これらのゲームはそれぞれが大量のログを産み出します。Contoso 社の目標は、これらのゲームが産み出すログを収集解析することで有益な情報を手に入れ、アップセルやクロスセルの機会を見極め、新しい魅力的な機能などを開発する、つまりビジネスを向上させて顧客により良い体験を提供することです。
  
@@ -31,7 +27,20 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 ## チュートリアルの準備をする
 1.	「[Azure Data Factory の概要][adfintroduction]」を読んで Azure Data Factory の概要を理解し、全体的な概念を把握します。
 2.	このチュートリアルを実施するには Azure サブスクリプションが必要です。サブスクリプションの入手方法の詳細については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料試用版][azure-free-trial]に関するページを参照してください。
-3.	[Azure PowerShell][download-azure-powershell] をダウンロードしてコンピューターにインストールする必要があります。 
+3.	[Azure PowerShell][download-azure-powershell] をダウンロードしてコンピューターにインストールする必要があります。
+
+	この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス](https://msdn.microsoft.com/library/dn820234.aspx)」を参照してください。
+    
+	Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用する場合は、[ここ][old-cmdlet-reference]に記載されているコマンドレットを使用する必要があります。また、Data Factory コマンドレットを使用する前に、次のコマンドを実行する必要があります。
+
+	1. **Add-AzureAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
+	2. **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
+	3. **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。
+	
+	Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+
+2. Azure Data Factory コマンドレットは AzureResourceManager モードでのみ使用できるため、**Switch-AzureMode AzureResourceManager** を実行して、このモードに切り替えます。
+ 
 2.	**(推奨)** ポータルとコマンドレットに慣れるための簡単なチュートリアルについての記事「[Azure Data Factory を使ってみる][adfgetstarted]」にあるチュートリアルを確認し、実際に行ってみます。
 3.	**(推奨)** パイプラインを作成してオンプレミスのデータ ソースから Azure BLOB ストアにデータを移動するチュートリアルについての記事「[Azure Data Factory で Pig と Hive を使用する][usepigandhive]」にあるチュートリアルを確認し、実際に行ってみます。
 4.	[ADFWalkthrough][adfwalkthrough-download] ファイルを **C:\\ADFWalkthrough** フォルダーにダウンロードしますが、**以下のフォルダー構造は維持してください**。
@@ -51,7 +60,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	- **Azure SQL Database** - サーバー、データベース、ユーザー名、パスワード。
 	- **Azure HDInsight クラスター** - HDInsight クラスター名、ユーザー名、パスワード、このクラスターに関連付けられている Azure ストレージのアカウント名とアカウント キー。独自の HDInsight クラスターではなく、オンデマンド HDInsight クラスターを使用する場合は、この手順を省略できます。  
 8. **Azure PowerShell** を起動して次のコマンドを実行します。Azure PowerShell は開いたままにしておきます。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
-	- **Add-AzureAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
+	- **Login-AzureRmAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
 	- **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
 	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。
 	
@@ -122,7 +131,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	
 	または、C:\\ADFWalkthrough\\Scripts フォルダーにあるファイルを使用して pig/hive スクリプトおよびサンプル ファイルを BLOB ストレージ内の adfwalkthrough コンテナーにアップロードし、Azure SQL データベースである MarketingCamapaigns 内に MarketingCampaignEffectiveness テーブルを作成することも可能です。
    
-2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、[Azure クラシック ポータル](http://manage.windowsazure.com)、またはマスター データベース上の **sp\_set\_firewall\_rule** を使用して、コンピューターの IP アドレスに対するファイアウォール規則を作成します。この変更が有効になるまで最大で 5 分かかる場合があります。[Azure SQL のファイアウォール規則の設定][azure-sql-firewall]に関するページを参照してください。
+2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、[Azure クラシック ポータル](http://manage.windowsazure.com)またはマスター データベース上の **sp\_set\_firewall\_rule** を使用して、コンピューターの IP アドレスに対するファイアウォール規則を作成します。この変更が有効になるまで最大で 5 分かかる場合があります。[Azure SQL のファイアウォール規則の設定][azure-sql-firewall]に関するページを参照してください。
 4. Azure PowerShell で、サンプルを展開した場所に移動します (例: **C:\\ADFWalkthrough**)。
 5. **uploadSampleDataAndScripts.ps1** を実行します。 
 6. スクリプトが正常に実行されると、以下が表示されます。
@@ -160,100 +169,50 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 ## <a name="MainStep2"></a> 手順 2. Azure Data Factory を作成する
 この手順では、"**LogProcessingFactory**" という名前の Azure Data Factory を作成します。
 
-1.	[Azure ポータル][azure-portal]にログインしたら、左下隅の **[新規]** をクリックし、**[新規]** ブレードの **[Data Factory]** をクリックします。 
+1. 既に開いている場合は **Azure PowerShell** に切り替え、そうでない場合は **Azure PowerShell** を起動します。Azure PowerShell を一度閉じてから再度開いた場合は、次のコマンドを実行する必要があります。 
+	- **Login-AzureRmAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
+	- **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
+	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。 
 
-	![New->DataFactory][image-data-factory-new-datafactory-menu]
-	
-	**[Data Factory]** が **[新規]** ブレードに表示されていない場合は、下にスクロールします。
-	
-5. **[新しいデータ ファクトリ]** ブレードで、**[名前]** フィールドに「**LogProcessingFactory**」と入力します。
+2. 次のコマンドを実行して、**ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します (まだ作成していない場合)。
 
-	![[データ ファクトリ] ブレード][image-data-factory-tutorial-new-datafactory-blade]
+		New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
 
-6. "**ADF**" という名前の Azure リソース グループをまだ作成していない場合は、次の手順を実行します。
-	1. **[リソース グループ名]** をクリックし、**[新しいリソース グループを作成]** をクリックします。
-	
-		![[リソース グループ] ブレード][image-data-factory-tutorial-resourcegroup-blade]
-	2. **[リソース グループを作成]** ブレードで、リソース グループの名前として「**ADF**」と入力し、**[OK]** をクリックします。
-	
-		![リソース グループの作成][image-data-factory-tutorial-create-resourcegroup]
-7. **[リソース グループ名]** の **[ADF]** を選択します。  
-8.	**[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加]** が既定で選択されていることに注意してください。これにより、スタート画面 (Azure ポータルへのログイン時に表示される画面) のデータ ファクトリにリンクが追加されます。
+	このチュートリアルの一部の手順は、ADFTutorialResourceGroup という名前のリソース グループを使用することを前提としています。異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループを使用する必要があります。
+4. **New-AzureRmDataFactory** コマンドレットを実行し、DataFactoryMyFirstPipelinePSH という名前の Data Factory を作成します。  
 
-	![データ ファクトリ作成ブレード  
-][image-data-factory-tutorial-create-datafactory]
+		New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name LogProcessingFactory –Location "West US"
 
-9.	**[新しいデータ ファクトリ]** ブレードで、**[作成]** をクリックしてデータ ファクトリを作成します。
-10.	データ ファクトリが作成されると、**LogProcessingFactory** というタイトルの **[Data Factory]** ブレードが表示されます。
+	> [AZURE.IMPORTANT]Azure Data Factory の名前はグローバルに一意にする必要があります。**""LogProcessingFactory" という名前の Data Factory は使用できません"** というエラー メッセージが表示された場合は、名前を変更します (例: yournameLogProcessingFactory)。このチュートリアルの手順の実行中に、この名前を LogProcessingFactory の代わりに使用します。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
+	> 
+	> データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 
-	![データ ファクトリのホーム ページ][image-data-factory-tutorial-datafactory-homepage]
-
-	
-	表示されない場合は、次のいずれかを行います。
-
-	- **スタート画面** (ホーム ページ) で **[LogProcessingFactory]** をクリックします。
-	- 左側の **[参照]** をクリックし、**[すべて]**、**[Data Factory]** の順にクリックし、最後に目的のデータ ファクトリをクリックします。
- 
-	Azure Data Factor の名前はグローバルに一意にする必要があります。**""LogProcessingFactory" という名前の Data Factory は使用できません"** というエラー メッセージが表示された場合は、名前を変更します (例: yournameLogProcessingFactory)。このチュートリアルの手順の実行中に、この名前を LogProcessingFactory の代わりに使用します。
  
 ## <a name="MainStep3"></a>手順 3. リンクされたサービスを作成する
 
-> [AZURE.NOTE]この記事では、Azure PowerShell を使用して、リンク サービス、テーブル、パイプラインを作成します。Azure クラシック ポータル、具体的には Data Factory エディターを使用してこのチュートリアルを実行する場合は、[Data Factory エディターの使用方法に関するチュートリアル][adftutorial-using-editor]をご覧ください。
+> [AZURE.NOTE]この記事では、Azure PowerShell を使用して、リンク サービス、テーブル、パイプラインを作成します。Azure ポータル、具体的には Data Factory エディターを使用してこのチュートリアルを実行する場合は、[Data Factory エディターの使用方法に関するチュートリアル][adftutorial-using-editor]をご覧ください。
 
 この手順では、StorageLinkedService、AzureSqlLinkedService、HDInsightStorageLinkedService、HDInsightLinkedService というリンクされたサービスを作成します。
 
+16. Azure PowerShell で、**C:\\ADFWalkthrough** またはファイルの展開先のフォルダーから **LinkedServices** サブフォルダーに移動します。
+17. 以下のコマンドを使用して、データ ファクトリの名前に $df 変数を設定します。
 
-1.	**[LogProcessingFactory]** ブレードで、**[リンクされたサービス]** タイルをクリックします。
+		$df = “LogProcessingFactory”
+17. 任意のエディターで **StorageLinkedService.json** を開き、**account name** と **account key** の各値を入力し、ファイルを保存します。
+17. **New-AzureRmDataFactoryLinkedService** コマンドレットを使用して、以下のようにリンクされたサービスを作成します。 
 
-	![Linked Services Tile][image-data-factory-tutorial-linkedservice-tile]
+		New-AzureRmDataFactoryLinkedService -ResourceGroupName ADF -DataFactoryName $df -File .\StorageLinkedService.json
+	
+18. 任意のエディターで **StorageLinkedService.json** を開き、**account name** と **account key** の各値を入力し、ファイルを保存します。
+19. **HDInsightStorageLinkedService** を作成します。
 
-2. **[リンクされたサービス]** ブレードで、コマンド バーの **[+ データ ストア]** をクリックします。
+		New-AzureRmDataFactoryLinkedService -ResourceGroupName ADF -DataFactoryName $df -File .\HDInsightStorageLinkedService.json
+ 
+19. 任意のエディターで **AzureSqlLinkedService.json** を開き、**azure sql server** の名前、**user name**、および **password** の各値を入力し、ファイルを保存します。
+19. **New-AzureRmDataFactoryLinkedService** コマンドレットを使用して、以下のようにリンクされたサービスを作成します。 
 
-	![Linked Services - Add Store][image-data-factory-tutorial-linkedservices-add-datstore]
-
-3. **[新しいデータ ストア]** ブレードで、**[名前]** フィールドに「**StorageLinkedService**」と入力し、**[種類 (設定が必要)]** をクリックして、**[Azure ストレージ アカウント]** を選択します。
-
-	![Data Store Type - Azure Storage][image-data-factory-tutorial-datastoretype-azurestorage]
-
-4. **[新しいデータ ストア]** ブレードに、**[アカウント名]** と **[アカウント キー]** の 2 つの新しいフィールドが表示されます。**Azure ストレージ アカウント**のアカウント名とアカウント キーを入力します。
-
-	![Azure Storage Settings][image-data-factory-tutorial-azurestorage-settings]
-
-	以下に示すように、ポータルから Azure ストレージ アカウントのアカウント名とアカウント キーを取得できます。
-
-	![Storage Key][image-data-factory-tutorial-storage-key]
-  
-5. [新しいデータ ストア] ブレードで **[OK]** をクリックすると、**[リンクされたサービス]** ブレードの **[データ ストア]** の一覧に **[StorageLinkedService]** が表示されます。(左側の) **[通知]** ハブでメッセージを確認します。
-
-	![Linked Services Blade with Storage][image-data-factory-tutorial-linkedservices-blade-storage]
-   
-6. **手順 2. ～ 5.** を繰り返して、**HDInsightStorageLinkedService** という名前の別のリンクされたサービスを作成します。これは、HDInsight クラスターで使用するストレージです。
-7. [リンクされたサービス] ブレードの一覧に、**StorageLinkedService** と **HDInsightStorageLinkedService** が表示されていることを確認します。
-8. **[リンクされたサービス]** ブレードで、コマンド バーの **[+ データ ストア]** をクリックします。
-9. 名前として「**AzureSqlLinkedService**」と入力します。
-10. **[種類 (設定が必要)]** をクリックし、**[Azure SQL Database]** を選択します。
-11. これで、**[新しいデータ ストア]** ブレードに、次の追加フィールドが表示されます。Azure SQL Database の**サーバー**、**データベース名**、**ユーザー名**、**パスワード**を入力し、**[OK]** をクリックします。
-	1. **[データベース]** に「**MarketingCampaigns**」と入力します。これは、手順 1. で実行したスクリプトによって作成された Azure SQL Database です。このデータベースがスクリプトによって実際に作成されていることを確認する必要があります (エラーが発生した場合)。
-		
- 		![Azure SQL Settings][image-data-factory-tutorial-azuresql-settings]
-
-		[Azure クラシック ポータル](http://manage.windowsazure.com)からこれらの値を取得するには、[MarketingCampaigns データベースの SQL Database 接続文字列を表示する] をクリックします。
-
-		![Azure SQL Database 接続文字列][image-data-factory-tutorial-azuresql-database-connection-string]
-
-12. 作成した 3 つのデータ ストア (**StorageLinkedService**、**HDInsightStorageLinkedService**、**AzureSqlLinkedService**) がすべて表示されていることを確認します。
-13. リンクされたサービスをもう 1 つ作成する必要がありますが、これはコンピューティング サービス (具体的には **Azure HDInsight クラスター**) にリンクされたサービスです。ポータルでは、まだリンクされたコンピューティング サービスの作成をサポートしていません。そのため、Azure PowerShell を使用して、このリンクされたサービスを作成する必要があります。 
-14. 既に開いている場合は **Azure PowerShell** に切り替え、そうでない場合は **Azure PowerShell** を起動します。Azure PowerShell を一度閉じてから再度開いた場合は、次のコマンドを実行する必要があります。 
-	- **Add-AzureAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
-	- **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
-	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。 
-15. Azure Data Factory コマンドレットは **AzureResourceManager** モードでのみ使用できるので、このモードに切り替えます。
-
-		Switch-AzureMode AzureResourceManager
-
-16. **C:\\ADFWalkthrough** またはファイルの展開先のフォルダーから **LinkedServices** サブフォルダーに移動します。
-17. 好みのエディターで **HDInsightLinkedService.json** を開き、種類が **HDInsightOnDemandLinkedService** に設定されていることを確認します。
-
+		New-AzureRmDataFactoryLinkedService -ResourceGroupName ADF -DataFactoryName $df -File .\AzureSqlLinkedService.json
+19. 好みのエディターで **HDInsightLinkedService.json** を開き、種類が **HDInsightOnDemandLinkedService** に設定されていることを確認します。
 
 	Azure Data Factory サービスはオンデマンド クラスターの作成をサポートしており、このクラスターを使用して入力データの処理と出力データの生成を行います。また、独自のクラスターを使って同じ処理を行うことも可能です。オンデマンド HDInsight クラスターを使用する場合は、スライスごとにクラスターが作成されます。一方、独自の HDInsight クラスターを使用する場合、そのクラスターはすぐにスライスを処理できる状態にあります。そのため、オンデマンド クラスターを使用すると、独自のクラスターを使用するよりデータの出力が遅いと感じる場合があります。試しに、オンデマンド クラスターを使用してみましょう。
 	
@@ -269,17 +228,13 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 		}
 		
 
-18. 以下のコマンドを使用して、データ ファクトリの名前に $df 変数を設定します。
 
-		$df = “LogProcessingFactory”
-19. **New-AzureDataFactoryLinkedService** コマンドレットを使用して、以下のようにリンクされたサービスを作成します。ストレージ アカウントから始めます。
+19. **New-AzureRmDataFactoryLinkedService** コマンドレットを使用して、以下のようにリンクされたサービスを作成します。ストレージ アカウントから始めます。
 
-		New-AzureDataFactoryLinkedService -ResourceGroupName ADF -DataFactoryName $df -File .\HDInsightLinkedService.json
+		New-AzureRmDataFactoryLinkedService -ResourceGroupName ADF -DataFactoryName $df -File .\HDInsightLinkedService.json
  
 	ResourceGroupName、DataFactoryName または LinkedService の名前に別の名前を使用している場合は、上記コマンドレットでそれらの名前を参照します。また、リンクされたサービスの JSON ファイルが見つからない場合は、そのファイルの完全なパスを入力します。
-20. 次に示すように、**[リンクされたサービス]** ブレードに 4 つのリンク サービスがすべて表示されます。[リンクされたサービス] ブレードが開いていない場合は、**[LogProcessingFactory]** の **[DATA FACTORY]** ページで [リンクされたサービス] をクリックします。[リンクされたサービス] ブレードが更新されるまで数秒かかる場合があります。
 
-	![Linked Services All][image-data-factory-tutorial-linkedservices-all]
  
 
 ## <a name="MainStep4"></a>手順 4. テーブルを作成する 
@@ -302,26 +257,26 @@ Azure クラシック ポータルはデータ セットとテーブルの作成
 ### テーブルを作成するには
 
 1.	Azure PowerShell で、サンプルを展開した場所から **Tables** フォルダー (**C:\\ADFWalkthrough\\Tables**) に移動します。
-2.	**New-AzureDataFactoryDataset** コマンドレットを使用して、次のように **RawGameEventsTable**.json のデータセットを作成します。	
+2.	**New-AzureRmDataFactoryDataset** コマンドレットを使用して、次のように **RawGameEventsTable**.json のデータセットを作成します。	
 
 
-		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\RawGameEventsTable.json
+		New-AzureRmDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\RawGameEventsTable.json
 
 	ResourceGroupName および DataFactoryName に別の名前を使用している場合は、上記コマンドレットでそれらの名前を参照します。また、テーブルの JSON ファイルがコマンドレットで見つけられない場合は、そのファイルの完全なパスを入力します。
 
 3. 前の手順を繰り返して、以下のテーブルを作成します。
 		
-		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\PartitionedGameEventsTable.json
+		New-AzureRmDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\PartitionedGameEventsTable.json
 		
-		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\RefGeoCodeDictionaryTable.json
+		New-AzureRmDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\RefGeoCodeDictionaryTable.json
 			
-		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\RefMarketingCampaignTable.json
+		New-AzureRmDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\RefMarketingCampaignTable.json
 			
-		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\EnrichedGameEventsTable.json
+		New-AzureRmDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\EnrichedGameEventsTable.json
 			
-		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\MarketingCampaignEffectivenessSQLTable.json
+		New-AzureRmDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\MarketingCampaignEffectivenessSQLTable.json
 			
-		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\MarketingCampaignEffectivenessBlobTable.json
+		New-AzureRmDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\MarketingCampaignEffectivenessBlobTable.json
 
 
 
@@ -331,7 +286,7 @@ Azure クラシック ポータルはデータ セットとテーブルの作成
 
 	また、Azure PowerShell から次のコマンドを使用することも可能です。
 			
-		Get-AzureDataFactoryDataset –ResourceGroupName ADF –DataFactoryName $df
+		Get-AzureRmDataFactoryDataset –ResourceGroupName ADF –DataFactoryName $df
 
 	
 
@@ -352,29 +307,29 @@ Azure クラシック ポータルはデータ セットとテーブルの作成
 	**重要:** すべての <storageaccountname> を自分のストレージ アカウント名に置き換えたことを確認してください。
  
 4.  **Azure PowerShell** で、**C:\\ADFWalkthrough** フォルダー (またはサンプルを展開した場所) から **Pipelines** サブフォルダーに移動します。
-5.  **New-AzureDataFactoryPipeline** コマンドレットを使用して、次のように **PartitionGameLogspeline**.json のパイプラインを作成します。	 
+5.  **New-AzureRmDataFactoryPipeline** コマンドレットを使用して、次のように **PartitionGameLogspeline**.json のパイプラインを作成します。	 
 			
-		New-AzureDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName $df –File .\PartitionGameLogsPipeline.json
+		New-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName $df –File .\PartitionGameLogsPipeline.json
 
 	ResourceGroupName、DataFactoryName、またはパイプライン名に別の名前を使用している場合は、上記コマンドレットでそれらの名前を参照します。また、パイプラインの JSON ファイルのファイルの完全パスを提供します。
 6. 前の手順を繰り返して、以下のパイプラインを作成します。
 	1. **EnrichGameLogsPipeline**
 			
-			New-AzureDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName $df –File .\EnrichGameLogsPipeline.json
+			New-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName $df –File .\EnrichGameLogsPipeline.json
 
 	2. **AnalyzeMarketingCampaignPipeline**
 				
-			New-AzureDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName $df –File .\AnalyzeMarketingCampaignPipeline.json
+			New-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName $df –File .\AnalyzeMarketingCampaignPipeline.json
 
-7. **Get-AzureDataFactoryPipeline** コマンドレットを使用して、パイプラインの一覧を取得します。
+7. **Get-AzureRmDataFactoryPipeline** コマンドレットを使用して、パイプラインの一覧を取得します。
 			
-		Get-AzureDataFactoryPipeline –ResourceGroupName ADF –DataFactoryName $df
+		Get-AzureRmDataFactoryPipeline –ResourceGroupName ADF –DataFactoryName $df
 
 8. パイプラインを作成したら、データ処理を実行する期間を指定できます。パイプラインの有効期間を指定することで、各 ADF テーブルに対して定義された Availability プロパティに基づいてデータ スライスが処理される期間を定義します。
 
-パイプラインの有効期間を指定するために、Set-AzureDataFactoryPipelineActivePeriod コマンドレットが使用できます。このチュートリアルでは、サンプル データは 05/01 ～ 05/05 のものです。2014-05-01 を StartDateTime として使用します。EndDateTime は任意です。
+パイプラインの有効期間を指定するために、Set-AzureRmDataFactoryPipelineActivePeriod コマンドレットが使用できます。このチュートリアルでは、サンプル データは 05/01 ～ 05/05 のものです。2014-05-01 を StartDateTime として使用します。EndDateTime は任意です。
 			
-		Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADF -DataFactoryName $df -StartDateTime 2014-05-01Z -EndDateTime 2014-05-05Z –Name PartitionGameLogsPipeline
+		Set-AzureRmDataFactoryPipelineActivePeriod -ResourceGroupName ADF -DataFactoryName $df -StartDateTime 2014-05-01Z -EndDateTime 2014-05-05Z –Name PartitionGameLogsPipeline
   
 9. パイプラインの有効期間を設定することを確認します。
 			
@@ -385,11 +340,11 @@ Azure クラシック ポータルはデータ セットとテーブルの作成
 10. 前の 2 つの手順を繰り返して、以下のパイプラインの有効期間を設定します。
 	1. **EnrichGameLogsPipeline**
 			
-			Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADF -DataFactoryName $df -StartDateTime 2014-05-01Z –EndDateTime 2014-05-05Z –Name EnrichGameLogsPipeline
+			Set-AzureRmDataFactoryPipelineActivePeriod -ResourceGroupName ADF -DataFactoryName $df -StartDateTime 2014-05-01Z –EndDateTime 2014-05-05Z –Name EnrichGameLogsPipeline
 
 	2. **AnalyzeMarketingCampaignPipeline**
 			
-			Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADF -DataFactoryName $df -StartDateTime 2014-05-01Z -EndDateTime 2014-05-05Z –Name AnalyzeMarketingCampaignPipeline
+			Set-AzureRmDataFactoryPipelineActivePeriod -ResourceGroupName ADF -DataFactoryName $df -StartDateTime 2014-05-01Z -EndDateTime 2014-05-05Z –Name AnalyzeMarketingCampaignPipeline
 
 11. **Azure ポータル**で、**[LogProcessingFactory]** の **[Data Factory]** ブレードの (パイプライン名ではなく) **[パイプライン]** タイルをクリックすると、作成したパイプラインが表示されます。
 
@@ -487,6 +442,8 @@ Azure クラシック ポータルはデータ セットとテーブルの作成
 [adfwalkthrough-download]: http://go.microsoft.com/fwlink/?LinkId=517495
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 
+[old-cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
+
 
 [image-data-factory-tutorial-end-to-end-flow]: ./media/data-factory-tutorial-using-powershell/EndToEndWorkflow.png
 
@@ -563,4 +520,4 @@ Azure クラシック ポータルはデータ セットとテーブルの作成
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial-using-powershell/DataFactoryCreateButton.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

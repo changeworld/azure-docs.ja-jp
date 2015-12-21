@@ -41,7 +41,7 @@ REST インターフェイスを有効にして HTTPS でクラスターにジ�
 
 詳細な手順については、「[Microsoft HPC Pack Web コンポーネントのインストール](http://technet.microsoft.com/library/hh314627.aspx)」を参照してください。
 
->[AZURE.TIP] [HPC Pack IaaS デプロイメント スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)のような自動化手法を利用してクラスターを作成する場合、デプロイメントの一環として任意で Web コンポーネントをインストールし、構成します。
+>[AZURE.TIP] [HPC Pack IaaS デプロイメント スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)を利用してクラスターを作成する場合、デプロイメントの一環として任意で Web コンポーネントをインストールし、構成します。
 
 **Web コンポーネントをインストールするには**
 
@@ -79,12 +79,12 @@ REST インターフェイスを有効にして HTTPS でクラスターにジ�
 
     ```
     net stop hpcscheduler
-net start hpcscheduler
+    net start hpcscheduler
     ```
 
 ## 手順 2: HPC Pack クライアント ユーティリティをオンプレミス コンピューターにインストールする
 
-互換性のあるバージョンの HPC Pack セットアップ ファイルをダウンロードしていない場合、それを [Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=328024)からクライアント コンピューターにダウンロードし、HPC Pack クライアント ユーティリティのセットアップ オプションを選択します。
+互換性のあるバージョンの HPC Pack セットアップ ファイルをダウンロードしていない場合、それを [Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=328024)からクライアント コンピューターにダウンロードします。インストールを開始するとき、HPC Pack クライアント ユーティリティのセットアップ オプションを選択します。
 
 HPC Pack クライアント ツールを使用し、ジョブをヘッド ノード VM に送信するには、ヘッド ノードから証明書をエクスポートし、それをクライアント コンピューターにインストールする必要もあります。証明書は .CER 形式にする必要があります。
 
@@ -94,7 +94,7 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 
 2. コンソール ツリーで、**[証明書 - ローカル コンピューター]** を展開し、**[個人]** を展開し、**[証明書]** をクリックします。
 
-3. 「[手順 1: ヘッド ノードに Web コンポーネントをインストールし、構成する](#step-1:-install-and-configure-the-web-components-on-the-head-node)」で HPC Pack Web コンポーネントに構成した証明書を見つけます (たとえば、「&lt;*HeadNodeDnsName*&gt;.cloudapp.net」という名前)。
+3. 「[手順 1: ヘッド ノードに Web コンポーネントをインストールし、構成する](#step-1:-install-and-configure-the-web-components-on-the-head-node)」で HPC Pack Web コンポーネントに構成した証明書を見つけます (たとえば、「&lt;HeadNodeDnsName&gt;.cloudapp.net」という名前)。
 
 4. 証明書を右クリックし、**[すべてのタスク]** をクリックしてから **[エクスポート]** をクリックします。
 
@@ -133,9 +133,10 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
     ```
     job list /scheduler:https://<HeadNodeDnsName>.cloudapp.net /all
     ```
+    
     >[AZURE.TIP]スケジューラ URL には、IP アドレスではなく、ヘッド ノードの完全 DNS 名を使用します。IP アドレスを指定した場合、「The server certificate needs to either have a valid chain of trust or to be placed in the trusted root store (サーバー証明書は有効な信頼チェーンを持つか、信頼されたルート ストアに置かれている必要があります)」のようなエラーが表示されます。
 
-3. 入力が求められたら、HPC クラスター管理者または構成した別のクラスター ユーザーのユーザー名 (&lt;DomainName&gt;&lt;UserName&gt; 形式) とパスワードを入力します。ジョブ操作が多ければ、資格情報をローカルに保存できます。
+3. 入力が求められたら、HPC クラスター管理者または構成した別のクラスター ユーザーのユーザー名 (&lt;DomainName&gt;\\&lt;UserName&gt; 形式) とパスワードを入力します。ジョブ操作が多ければ、資格情報をローカルに保存できます。
 
     ジョブの一覧が表示されます。
 
@@ -148,18 +149,20 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 
     b.**[Windows 資格情報]** をクリックし、**[汎用資格情報の追加]** をクリックします。
 
-    c.インターネット アドレス https://&lt;*HeadNodeDnsName*&gt;.cloudapp.net/HpcScheduler を指定し、HPC クラスター管理者または構成した別のクラスター ユーザーのユーザー名 (&lt;DomainName&gt;&lt;UserName&gt; 形式) とパスワードを入力します。
+    c.インターネット アドレス https://&lt;HeadNodeDnsName&gt;.cloudapp.net/HpcScheduler を指定し、HPC クラスター管理者または構成した別のクラスター ユーザーのユーザー名 (&lt;DomainName&gt;\\&lt;UserName&gt; 形式) とパスワードを入力します。
 
 2. クライアント コンピューターで、HPC ジョブ マネージャーを起動します。
 
-3. **[ヘッド ノードの選択]** ダイアログ ボックスに、Azure のヘッド ノードの URL を https://&lt;*HeadNodeDnsName*&gt;.cloudapp.net 形式で入力します。
+3. **[ヘッド ノードの選択]** ダイアログ ボックスに、Azure のヘッド ノードの URL を https://&lt;HeadNodeDnsName&gt;.cloudapp.net 形式で入力します。
 
     HPC ジョブ マネージャーが開き、ヘッド ノードでジョブの一覧が表示されます。
 
 **ヘッド ノードで実行されている Web ポータルを使用するには**
 
-1. クライアント コンピューターで Web ブラウザーを起動し、次のアドレスを入力します。 ```
-    https://HeadNodeDnsName.cloudapp.net/HpcPortal
+1. クライアント コンピューターで Web ブラウザーを起動し、次のアドレスを入力します。
+
+    ```
+    https://<HeadNodeDnsName>.cloudapp.net/HpcPortal
     ```
 2. セキュリティ ダイアログ ボックスが表示されたら、HPC クラスター管理者のドメイン資格情報を入力します。(さまざまなロールで他のクラスター ユーザーを追加することもできます。詳細については、「[クラスター ユーザーの管理](https://technet.microsoft.com/library/ff919335.aspx)」を参照してください。)
 
@@ -183,4 +186,4 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 <!--Image references-->
 [jobsubmit]: ./media/virtual-machines-hpcpack-cluster-submit-jobs/jobsubmit.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

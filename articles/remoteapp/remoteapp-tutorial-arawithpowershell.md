@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Powershell とともに Azure RemoteApp を使用開始する"
+   pageTitle="Powershell とともに Azure RemoteApp を使用開始する | Microsoft Azure"
    description="Powershell とともに Azure RemoteApp を使用開始する方法の詳細"
    services="remoteapp"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="08/12/2015"
+   ms.date="12/05/2015"
    ms.author="guscatal;spatnaik;elizapo"/>
 
 
@@ -22,7 +22,7 @@
 =====================================
 
 
-## コマンドレットの取得 
+## コマンドレットの取得
 -------------
 最初に Azure Powershell コマンドレットを[ここ](http://go.microsoft.com/?linkid=9811175)からダウンロードする必要があります。RemoteApp のコマンドレットもそれに含まれています。
 
@@ -99,6 +99,5 @@ RemoteApp テンプレート イメージのコマンドレット:
 - Get-AzureRemoteAppWorkspace
 - Set-AzureRemoteAppWorkspace
 - Get-AzureRemoteAppOperationResult
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

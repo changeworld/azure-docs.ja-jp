@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/10/2015" 
+	ms.date="12/07/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API の定義を操作と共にインポートする方法
@@ -29,13 +29,13 @@ API と操作は、次の形式を使用してインポートできます。
 
 ## <a name="import-api"> </a>API のインポート
 
-API を作成および構成するには、パブリッシャー ポータルを使用します。パブリッシャー ポータルにアクセスするには、API Management サービスの Azure ポータルで **[管理]** をクリックします。まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」をご覧ください。
+API を作成および構成するには、パブリッシャー ポータルを使用します。パブリッシャー ポータルにアクセスするには、API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
 左側の **[API Management]** メニューの **[API]** をクリックし、**[API のインポート]** をクリックします。
 
-![Import API][api-management-import-apis]
+![API のインポート][api-management-import-apis]
 
 **[API のインポート]** ウィンドウには、3 つのタブがあります。これらのタブは、API 仕様を指定するための 3 つの方法に対応しています。
 
@@ -43,7 +43,7 @@ API を作成および構成するには、パブリッシャー ポータルを
 -	**[ファイルから]** では、API 仕様を含むファイルを参照して選択できます。
 -	**[URL から]** では、API の仕様を示す URL を指定できます。
 
-![Import API format][api-management-import-api-clipboard]
+![API の形式のインポート][api-management-import-api-clipboard]
 
 API 仕様を指定した後は、右側のラジオ ボタンを使用して仕様の形式を指定します。次の形式がサポートされています。
 
@@ -60,11 +60,11 @@ API 仕様を指定した後は、右側のラジオ ボタンを使用して仕
 
 新しい API をインポートする操作に加えて、パブリッシャー ポータルから API の定義をエクスポートすることもできます。そのためには、**API** の **[概要] タブ**で **[API のエクスポート]** をクリックします。
 
-![Export API][api-management-export-api]
+![API のエクスポート][api-management-export-api]
 
 API は、WADL または Swagger を使用してエクスポートできます。目的の形式を選択し、**[保存]** をクリックして、ファイルを保存する場所を選択します。
 
-![Export API format][api-management-export-api-format]
+![API の形式のエクスポート][api-management-export-api-format]
 
 ## <a name="next-steps"> </a>次のステップ
 
@@ -95,4 +95,4 @@ API を作成して操作をインポートした後は、追加の設定を確�
 [Azure API Management で API を作成する方法]: api-management-howto-create-apis.md
 [API 設定を構成する方法]: api-management-howto-create-apis.md#configure-api-settings
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

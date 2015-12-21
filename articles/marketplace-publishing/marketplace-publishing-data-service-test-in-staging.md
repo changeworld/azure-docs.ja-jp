@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/24/2015"
+   ms.date="12/03/2015"
    ms.author="hascipio; avikova" />
 
 # ステージング環境でのデータ サービス プランのテスト
-最初の[販売者ダッシュボードで Microsoft 販売者アカウントを作成する](marketplace-publishing-accounts-creation-registration.md)と[公開ポータルでデータ サービス プランを作成する](marketplace-publishing-data-service-creation.md)の 2 つの手順が完了したら、Azure Marketplace でプランを使用可能にする準備が整います。このトピックは第一ステップ、中間ステップといった「ステージング」について説明します。
+最初の 2 つの手順 ([Microsoft 開発者アカウントの作成](marketplace-publishing-accounts-creation-registration.md)と[公開ポータルでのデータ サービス プランの作成](marketplace-publishing-data-service-creation.md)) が完了したら、Azure Marketplace でオファーを使用可能にする準備が整います。このトピックは第一ステップ、中間ステップといった「ステージング」について説明します。
 
 ステージングとは、プランをプライベートの「サンドボックス」にデプロイすることです。そこでは、本番にプッシュする前に、機能をテストおよび検証できます。ステージングでは、プランはそれをデプロイしたお客様に表示されるのと同じように表示されます。
 
@@ -86,4 +86,4 @@
 ## 関連項目
 - [Getting Started: How to publish an offer to the Azure Marketplace (概要: Azure Marketplace へのプランの発行方法)](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

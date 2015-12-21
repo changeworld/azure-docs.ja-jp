@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/09/2015"
+	ms.date="12/03/2015"
 	ms.author="inhenk"/>
 
 # Azure AD とアプリケーション: アプリケーションへのグループの割り当て
 ユーザーとグループをアプリケーションに割り当てる前に、ユーザー割り当てを要求する必要があります。ユーザー割り当てを要求する方法については、「[ユーザー割り当ての要求](active-directory-applications-guiding-developers-requiring-user-assignment.md)」を参照してください。
 
-この記事では、このアプリケーションに使用する Active Directory に既にグループが作成されていることを前提としています。手順は、以下のビデオに含まれています。
+この記事では、このアプリケーションに使用する Active Directory に既にグループが作成されていることを前提としています。
 
 ## アプリケーションへのグループの割り当て
 1. 管理者アカウントを使用して、Azure ポータルにログインします。
@@ -36,4 +36,4 @@
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

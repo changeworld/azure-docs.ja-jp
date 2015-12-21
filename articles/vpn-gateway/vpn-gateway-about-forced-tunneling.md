@@ -10,7 +10,11 @@
 
 # 強制トンネリングについて
 
-この記事は、従来のデプロイ モデルを使用して作成された VNet および VPN ゲートウェイを対象としています。リソース マネージャーのデプロイメント モデルを使用して作成された Vnet および VPN Gateway に強制トンネリングを構成する場合は、「[PowerShell および Azure リソース マネージャーを使用して強制トンネリングを構成する](vpn-gateway-forced-tunneling-rm.md)」を参照してください。
+> [AZURE.SELECTOR]
+- [PowerShell - Service Management](vpn-gateway-about-forced-tunneling.md)
+- [PowerShell - Resource Manager](vpn-gateway-forced-tunneling-rm.md)
+
+この記事は、クラシック デプロイメント モデル (別名、サービス管理) を使用して作成された VNet および VPN ゲートウェイを対象としています。リソース マネージャーのデプロイメント モデルを使用して作成された Vnet および VPN Gateway に強制トンネリングを構成する場合は、「[PowerShell および Azure リソース マネージャーを使用して強制トンネリングを構成する](vpn-gateway-forced-tunneling-rm.md)」を参照してください。
 
 [AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
@@ -153,4 +157,4 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 	Remove-AzureVnetGatewayDefaultSites -VNetName <virtualNetworkName>
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.topic="article"
 	ms.devlang="dotnet"
-	ms.date="10/01/2015"
+	ms.date="12/09/2015"
 	ms.author="krisragh"/>
 
 # モバイル サービスでのユーザーのサービス側承認
@@ -41,7 +41,7 @@
 
 2. Visual Studio で、Controllers フォルダーを展開し、**TodoItemController.cs** を開き、ステートメントを使用して次を追加します。
 
-		using Microsoft.Azure.Mobile.Server.Security;
+		using Microsoft.WindowsAzure.Mobile.Service.Security;
 
 3. **PostTodoItem** メソッドを見つけ、メソッドの先頭に次のコードを追加します。
 
@@ -84,4 +84,4 @@
 <!-- URLs. -->
 [既存の Mobile Services アプリケーションに認証を追加]: mobile-services-dotnet-backend-ios-get-started-users.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

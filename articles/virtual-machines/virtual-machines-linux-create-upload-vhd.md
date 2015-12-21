@@ -54,6 +54,7 @@ Azure の仮想マシンでは、仮想マシンの作成時に選択したイ�
 Azure は、さまざまな Linux ディストリビューションをサポートしています (「[Azure での動作保証済み Linux ディストリビューション](../linux-endorsed-distributions.md)」を参照してください)。次の記事では、Azure でサポートされる以下のさまざまな Linux ディストリビューションを準備する方法について説明します。
 
 - **[CentOS ベースのディストリビューション](virtual-machines-linux-create-upload-vhd-centos.md)**
+- **[Debian Linux](virtual-machines-linux-create-upload-vhd-debian.md)**
 - **[Oracle Linux](virtual-machines-linux-create-upload-vhd-oracle.md)**
 - **[Red Hat Enterprise Linux](virtual-machines-linux-create-upload-vhd-redhat.md)**
 - **[SLES と openSUSE](../virtual-machines-linux-create-upload-vhd-suse)**
@@ -74,7 +75,7 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 
 最新の Azure CLI は既定でリソース マネージャーのデプロイ モデルになっているので、必ず次のコマンドを使用してクラシック デプロイ モデルにしてください。
 
-		azure change mode asm  
+		azure config mode asm  
 
 次に、以下のログイン方法のいずれかを使用して Azure サブスクリプションに接続します。
 
@@ -164,11 +165,11 @@ VHD ファイルをアップロードするストレージ アカウントが必
 
 詳細については、[Add-AzureVhd に関するページ](https://msdn.microsoft.com/library/azure/dn495173.aspx)を参照してください。
 
-> [AZURE.NOTE] [Azure Powershell 1.0 Preview バージョン](https://azure.microsoft.com/blog/azps-1-0-pre/)では、クラシック デプロイメント モデルとリソース マネージャーのデプロイメント モデル用のコマンドレットを処理する方法が大幅に変更されます。この記事ではまだ Preview バージョンを使用していません。
+> [AZURE.NOTE][Azure Powershell 1.0 Preview バージョン](https://azure.microsoft.com/blog/azps-1-0-pre/)では、クラシック デプロイメント モデルとリソース マネージャーのデプロイメント モデル用のコマンドレットを処理する方法が大幅に変更されます。この記事ではまだ Preview バージョンを使用していません。
 
 
 [Step 1: Prepare the image to be uploaded]: #prepimage
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_1210_2015-->

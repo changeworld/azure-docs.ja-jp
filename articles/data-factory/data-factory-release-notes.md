@@ -265,15 +265,12 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 ## Data Factory の 2015 年 04 月 10 日リリース ノート
 **[テーブル]** ブレードに **[最近更新したスライス]** と **[最近失敗したスライス]** の一覧が表示されるようになりました。これらの一覧は、スライスの更新時間で並べ替えられます。次の状況では、スライスの更新時刻が変更されます。
 
--  **Set-AzureDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
+-  **Set-AzureRmDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 -  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
 
-一覧のタイトルをクリックするか、**... (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツールバーの **[フィルター]** をクリックします。
+一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツールバーの **[フィルター]** をクリックします。
  
-**[データ スライス (スライスの時刻別)]** タイルをクリックして、スライスを時間別に並べ替えて表示することもできます。これらのコレクションのスライスは、スライスの時間で並べ替えられます。たとえば、1 時間ごとのスケジュールである場合、スライスは次のようになります:
- - 4/4/2015 5pm 処理中
-  - 4/4/2015 4pm 成功
-   - 4/4/2015 3pm 失敗
+**[データ スライス (スライスの時刻別)]** タイルをクリックして、スライスを時間別に並べ替えて表示することもできます。これらのコレクションのスライスは、スライスの時間で並べ替えられます。たとえば、1 時間ごとのスケジュールである場合、スライスは次のようになります: 4/4/2015 5pm 処理中 - 4/4/2015 4pm 成功 - 4/4/2015 3pm 失敗
 
 ただし、使用していないスライスを再実行した場合、ユーザーがそのスライスに最も関心がある場合でも、そのスライスは一覧の先頭に表示されません。
 
@@ -307,7 +304,7 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 - **SqlSink** で新しいプロパティ **WriteBatchTimeout** がサポートされるようになりました。このプロパティを使用すると、操作がタイムアウトになる前にバッチ挿入操作が完了するまでの待機時間を柔軟に構成できます。ハイブリッド コピー (オンプレミスのデータ ソースとクラウドのデータ ソースが関連するコピー操作) の場合、このプロパティを使用するには 1.4 以上のバージョンのゲートウェイが必要です。 
 - **SQL Server のリンクされたサービス** で、**Windows 認証**がサポートようになりました。 
 	- ポータルを使用して SQL Server のリンクされたサービスを作成する場合、Windows 認証を使用して適切な資格情報を設定できるようになりました。この設定には 1.4 以上のバージョンのゲートウェイが必要です。 
-	- Azure PowerShell を使用して SQL Server のリンクされたサービスを作成する場合、プレーン テキストで接続情報を指定するか、更新された [New-AzureDataFactoryEncryptValue コマンドレット][adf-encrypt-value-cmdlet]を使用して接続情報を暗号化したうえで、リンクされたサービスの JSON ペイロードの接続文字列プロパティに、暗号化された文字列を使用できます。JSON でリンクされたサービスを定義する方法については、「[リンクされたサービス][adf-msdn-linked-services]」を参照してください現時点では、暗号化機能は New-AzureDataFactoryEncryptValue コマンドレットでサポートされていません。 
+	- Azure PowerShell を使用して SQL Server のリンクされたサービスを作成する場合、プレーン テキストで接続情報を指定するか、更新された [New-AzureRmDataFactoryEncryptValue コマンドレット](https://msdn.microsoft.com/library/mt603802.aspx)を使用して接続情報を暗号化したうえで、リンクされたサービスの JSON ペイロードの接続文字列プロパティに、暗号化された文字列を使用できます。現時点では、暗号化機能は New-AzureRmDataFactoryEncryptValue コマンドレットでサポートされていません。 
 
 ## Data Factory の 2014 年 12 月 11 日リリース ノート ##
 
@@ -316,16 +313,16 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 - Azure Machine Learning 統合
 	- Azure Data Factory サービスのこのリリースでは、**AzureMLLinkedService** と **AzureMLBatchScoringActivity** を使用して、Azure Data Factory と Azure Machine Learning (ML) を統合できます。詳細については、「[Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する][adf-azure-ml]」を参照してください。 
 - ゲートウェイ バージョンのステータスが提供される
-	- 現在インストールされているゲートウェイよりも新しいバージョンのゲートウェイを使用できる場合は、"NewVersionAvailable" ステータスが Azure ポータルおよび Get-AzureDataFactoryGateway コマンドレットの出力に表示されます。ポータルの指示に従って新しいインストール ファイル (.msi) をダウンロードし、これを実行して最新のゲートウェイをインストールできます。追加の構成は必要ありません。
+	- 現在インストールされているゲートウェイよりも新しいバージョンのゲートウェイを使用できる場合は、"NewVersionAvailable" ステータスが Azure ポータルおよび Get-AzureRmDataFactoryGateway コマンドレットの出力に表示されます。ポータルの指示に従って新しいインストール ファイル (.msi) をダウンロードし、これを実行して最新のゲートウェイをインストールできます。追加の構成は必要ありません。
 
 ### 変更点
 
 - HdInsightOnDemandLinkedService 内の JobsContainer が削除されました。
-	- HDInsightOnDemandLinkedService の JSON 定義で、**jobsContainer** プロパティを指定する必要がありません。オンデマンドのリンクされたサービスで指定したプロパティがある場合、そのプロパティは無視されます。リンクされたサービスの JSON 定義からそのプロパティを削除し、New-AzureDataFactoryLinkedService コマンドレットを使用してリンクされたサービスの定義を更新できます。
+	- HDInsightOnDemandLinkedService の JSON 定義で、**jobsContainer** プロパティを指定する必要がありません。オンデマンドのリンクされたサービスで指定したプロパティがある場合、そのプロパティは無視されます。リンクされたサービスの JSON 定義からそのプロパティを削除し、New-AzureRmDataFactoryLinkedService コマンドレットを使用してリンクされたサービスの定義を更新できます。
 - HDInsightOnDemandLinkedService のオプションの構成パラメーター
 	- このリリースでは、HDInsightOnDemandLinked (オンデマンドの HDInsight クラスター) 用の複数のオプションの構成パラメーターのサポートが導入されています。詳細については、「[ClusterCreateParameters プロパティ][on-demand-hdi-parameters]」を参照してください。
 - ゲートウェイの場所が削除される
-	- ポータルまたは PowerShell (New-AzureDataFactoryGateway) 経由で Azure Data Factory ゲートウェイを作成する場合は、ゲートウェイの場所を指定する必要がありません。Data Factory 領域は継承されます。同様に、JSON を使用して SQL Server のリンクされたサービスを構成する場合、"gatewayLocation" プロパティは必要ありません。Data Factory .NET SDK もこれらの変更点を反映して更新されます。
+	- ポータルまたは PowerShell (New-AzureRmDataFactoryGateway) 経由で Azure Data Factory ゲートウェイを作成する場合は、ゲートウェイの場所を指定する必要がありません。Data Factory 領域は継承されます。同様に、JSON を使用して SQL Server のリンクされたサービスを構成する場合、"gatewayLocation" プロパティは必要ありません。Data Factory .NET SDK もこれらの変更点を反映して更新されます。
 	- 古いバージョンの SDK および Azure PowerShell を使用している場合は、引き続き場所を設定する必要があります。
  
      
@@ -357,4 +354,4 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

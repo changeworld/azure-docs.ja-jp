@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="09/23/2015"
+ ms.date="12/04/2015"
  ms.author="larryfr"/>
 
 #Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続します。
@@ -72,4 +72,4 @@ Java クライアントを使用して HDInsight の Hive をクエリする例�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

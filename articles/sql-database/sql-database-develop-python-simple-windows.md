@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Windows 上で Python を使用して SQL Database に接続する" 
+<properties
+	pageTitle="Windows 上で Python を使用して SQL Database に接続する"
 	description="Azure SQL Database への接続に使用できる Python コード サンプルについて説明します。このサンプルは、pymssql ドライバーを使用します。"
-	services="sql-database" 
-	documentationCenter="" 
-	authors="meet-bhagdev" 
-	manager="jeffreyg" 
+	services="sql-database"
+	documentationCenter=""
+	authors="meet-bhagdev"
+	manager="jeffreyg"
 	editor=""/>
 
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="python" 
-	ms.topic="article" 
-	ms.date="10/20/2015" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="python"
+	ms.topic="article"
+	ms.date="12/08/2015"
 	ms.author="meetb"/>
 
 
@@ -27,7 +27,7 @@
 このトピックでは Python で記述されたコード サンプルについて説明します。サンプルは、Windows コンピューター上で実行されます。サンプルは、**pymssql** ドライバーを使用して、Azure SQL Database に接続されます。
 
 
-## 必要条件
+## 前提条件
 
 
 - [Python 2.7.6](https://www.python.org/download/releases/2.7.6/)
@@ -43,19 +43,22 @@
 たとえば、64 ビット コンピューター上で Python 2.7 を使用している場合は、pymssql‑2.1.1‑cp27‑none‑win\_amd64.whl を選択します。.whl ファイルをダウンロードしたら、C:/Python27 フォルダーに配置します。
 
 これでコマンドライン .cd から pip を使用して、pymssql ドライバーを C:/Python27 にインストールし、次を実行します
-	
+
 	pip install pymssql‑2.1.1‑cp27‑none‑win_amd64.whl
 
 pip の使用を有効にする手順については、[ここ](http://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows)をご覧ください
 
 
-## データベースを作成し、接続文字列を取得します。
+### SQL Database
+
+「[作業の開始](sql-database-get-started.md)」ページで、サンプル データベースを作成する方法についてご確認ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
+
+## 手順 1. 接続の詳細を取得する
+
+[AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
 
-「[トピックの開始」](sql-database-get-started.md)」ページで、サンプル データベースの作成方法と接続文字列を取得する方法についてご確認ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
-
-
-## SQL Database に接続する
+## 手順 2. 接続する
 
 
 [pymssql.connect](http://pymssql.org/en/latest/ref/pymssql.html) 関数は、SQL Database に接続するために使用します。
@@ -64,7 +67,7 @@ pip の使用を有効にする手順については、[ここ](http://stackover
 	conn = pymssql.connect(server='yourserver.database.windows.net', user='yourusername@yourserver', password='yourpassword', database='AdventureWorks')
 
 
-## SQL SELECT ステートメントの実行
+## 手順 3. クエリを実行する
 
 [Cursor.execute](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.execute) 関数は、SQL Database に対するクエリから結果セットを取得するために使用できます。この関数は基本的に任意のクエリを受け取り、[cursor.fetchone()](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.fetchone) を使用して反復処理できる結果セットを返します。
 
@@ -79,9 +82,9 @@ pip の使用を有効にする手順については、[ここ](http://stackover
 	    row = cursor.fetchone()
 
 
-## 行を挿入し、パラメーターを渡し、生成されたプライマリ キーを取得する
+## 手順 4. 行を挿入する
 
-SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) プロパティと [SEQUENCE](https://msdn.microsoft.com/library/ff878058.aspx) オブジェクトを使用して、[プライマリ キーの値](https://msdn.microsoft.com/library/ms179610.aspx)を自動生成できます。
+この例では、[INSERT](https://msdn.microsoft.com/library/ms174335.aspx) ステートメントを安全に実行し、[SQL インジェクション](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) の脆弱性からアプリケーションを保護するパラメーターを渡し、自動生成された[プライマリ キー](https://msdn.microsoft.com/library/ms179610.aspx)値を取得する方法について説明しています。
 
 
 	import pymssql
@@ -94,17 +97,17 @@ SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.asp
 	    row = cursor.fetchone()
 
 
-## トランザクション
+## 手順 5. トランザクションをロールバックする
 
 
 このコード例は、以下のトランザクションの使用について示します。
 
 
--トランザクションの開始
+- トランザクションの開始
 
--データの挿入
+- データの挿入
 
--トランザクションをロールバックして、挿入を元に戻す
+- トランザクションをロールバックして、挿入を元に戻す
 
 
 	import pymssql
@@ -118,4 +121,4 @@ SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.asp
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

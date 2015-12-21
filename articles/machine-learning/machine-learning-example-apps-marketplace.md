@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
+	ms.date="12/08/2015" 
 	ms.author="luisca"/>
 
 # Azure Marketplace での Machine Learning のアプリ
@@ -33,12 +33,6 @@ Azure Machine Learning を使用して、データ サイエンティストは�
 
 [クイック スタート ガイド](machine-learning-recommendation-api-quick-start-guide.md)
   
-##よく一緒に購入されている品目##
-よく一緒に購入されている品目を顧客がカタログから見つけやすくするための API。顧客の購入履歴を使用して、よく一緒に購入される推奨製品を Web サイトに追加することで、デジタル ストアのコンバージョンを向上させることができます。
-
-[データ マーケットのリンク](https://datamarket.azure.com/dataset/amla/mba)
-
-[ドキュメント](machine-learning-apps-frequently-bought-together-api.md)
 
 ##異常検出##
 時系列データ (サーバー遠隔測定やセンサーに基づくデータなど) の中で異常なイベントを見つけるための API。
@@ -63,4 +57,4 @@ Azure Machine Learning を使用して、データ サイエンティストは�
 
 [ドキュメント](https://churn.cloudapp.net/documentation)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

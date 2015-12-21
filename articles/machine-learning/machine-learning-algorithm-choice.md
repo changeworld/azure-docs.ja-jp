@@ -114,7 +114,7 @@
 |[ローカル詳細サポート ベクター マシン](https://msdn.microsoft.com/library/azure/dn913070.aspx)|○| | |8|大きい特徴セットに好適|
 |[ベイズ ポイント マシン](https://msdn.microsoft.com/library/azure/dn905930.aspx)| |○|●|3| |
 |**多クラス分類**| | | | | |
-|[ロジスティック回帰](https://msdn.microsoft.com/JA-JP/library/azure/dn905853.aspx)| |●|●|5| |
+|[ロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905853.aspx)| |●|●|5| |
 |[デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn906015.aspx)|●|○| |6| |
 |[デシジョン ジャングル](https://msdn.microsoft.com/library/azure/dn905963.aspx)|●|○| |6|低メモリ フットプリント|
 |[ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn906030.aspx)|●| | |9|[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867)|
@@ -237,4 +237,4 @@ Azure Machine Learning には、[Vowpal Wabbit](https://msdn.microsoft.com/libra
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

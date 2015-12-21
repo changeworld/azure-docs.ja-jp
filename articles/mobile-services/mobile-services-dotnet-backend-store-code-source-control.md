@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="09/15/2015"
+	ms.date="12/07/2015"
 	ms.author="glenga"/>
 
 # ソース管理へのモバイル サービス プロジェクト コードの保存
@@ -37,7 +37,7 @@
 
 ##<a name="clone-repo"></a>Git をインストールし、ローカル リポジトリを作成する
 
-1. ローカル コンピューターに Git をインストールします。
+1. ローカル コンピューターに Git をインストールします。 
 
 	Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)]」を参照してください。
 
@@ -65,7 +65,7 @@
 
 ##<a name="deploy-scripts"></a>Git を使用して、プロジェクトを発行する
 
-1. Visual Studio 2013 で新しい .NET バックエンド モバイル サービス プロジェクトを作成するか既存のプロジェクトを新しいローカル リポジトリに移動します。
+1. Visual Studio 2013 で新しい .NET バックエンド モバイル サービス プロジェクトを作成するか既存のプロジェクトを新しいローカル リポジトリに移動します。  
 
 	クイック テストでは、モバイル サービスのクイック スタート プロジェクトをダウンロードして、このフォルダーに保存します。
 
@@ -104,4 +104,4 @@
 [モバイル サービスの使用]: mobile-services-dotnet-backend-ios-get-started.md
 [.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -35,9 +35,9 @@ SQL DB のエラスティック データベース トランザクションの�
 
 ## インストールと移行
 
-SQL DB のエラスティック データベース トランザクションに必要な機能は、.NET ライブラリ System.Data.dll と System.Transactions.dll に対する更新プログラムを通じて提供されます。これらの DLL によって、必要なときに確実に 2 フェーズ コミットが適用され、原子性が確保されます。エラスティック データベース トランザクションを使ったアプリケーションを開発するには、[.NET 4.6.1 製品候補版](http://blogs.msdn.com/b/dotnet/archive/2015/10/29/announcing-net-framework-4-6-1-rc.aspx)以降の .NET Framework をインストールしてください。それより前のバージョンの .NET framework を実行していると、分散トランザクションへの昇格に失敗して例外が発生します。
+SQL DB のエラスティック データベース トランザクションに必要な機能は、.NET ライブラリ System.Data.dll と System.Transactions.dll に対する更新プログラムを通じて提供されます。これらの DLL によって、必要なときに確実に 2 フェーズ コミットが適用され、原子性が確保されます。エラスティック データベース トランザクションを使ったアプリケーションを開発するには、[.NET Framework 4.6.1](https://www.microsoft.com/ja-JP/download/details.aspx?id=49981) 以降のバージョンをインストールしてください。それより前のバージョンの .NET framework を実行していると、分散トランザクションへの昇格に失敗して例外が発生します。
 
-インストール作業が完了すると、System.Transactions の分散トランザクション API と SQL DB への接続を使用できるようになります。これらの API を使った MSDTC アプリケーションが既に存在する場合は、.NET 4.6 の製品候補版のインストール後、単に既存のアプリケーションを再ビルドしてください。プロジェクトのターゲット フレームワークが .NET 4.6 である場合は、製品候補版の最新の DLL が自動的に使用され、分散トランザクション API 呼び出しと SQL DB への接続に成功します。
+インストール作業が完了すると、System.Transactions の分散トランザクション API と SQL DB への接続を使用できるようになります。これらの API を使った MSDTC アプリケーションが既に存在する場合は、4.6.1 Framework のインストール後、単に .NET 4.6 の既存のアプリケーションを再ビルドしてください。プロジェクトのターゲット フレームワークが .NET 4.6 である場合は、新しい Framework バージョンの最新の DLL が自動的に使用され、分散トランザクション API 呼び出しと SQL DB への接続に成功します。
 
 エラスティック データベース トランザクションを使用するために MSDTC をインストールする必要はありません。エラスティック データベース トランザクションは、SQL DB 内で直接管理されます。SQL DB での分散トランザクションには MSDTC のデプロイが不要であるため、クラウドのシナリオが大幅に単純化されます。エラスティック データベース トランザクションと必須の .NET Framework をクラウド アプリケーションと併せて Azure にデプロイする方法については、セクション 4 で詳しく説明しています。
 
@@ -96,7 +96,7 @@ SQL DB のエラスティック データベース トランザクションで�
 
 ## Azure worker ロールのセットアップ
 
-エラスティック データベース トランザクションに必要なバージョンの .NET とライブラリを Azure (ご利用のクラウド サービスのゲスト OS) にインストールしてデプロイする作業は自動化することができます。Azure worker ロールの場合、スタートアップ タスクを使用します。その概念と手順については、「[クラウド サービスのロールに .NET をインストールする](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/)」を参照してください。
+エラスティック データベース トランザクションに必要なバージョンの .NET とライブラリを Azure (ご利用のクラウド サービスのゲスト OS) にインストールしてデプロイする作業は自動化することができます。Azure worker ロールの場合、スタートアップ タスクを使用します。その概念と手順については、「[クラウド サービスのロールに .NET をインストールする](../cloud-services/cloud-services-dotnet-install-dotnet.md)」を参照してください。
 
 .NET 4.6.1 のインストーラーは、Azure クラウド サービスでのブートストラップ プロセス中に、.NET 4.6 のインストーラーよりも一時的なストレージを多く必要とすることに注意してください。正常かつ確実にインストールするには、次の例に示すように、ServiceDefinition.csdef ファイルの LocalResources セクションと、スタートアップ タスクの環境設定で、Azure クラウド サービスの一時的なストレージを増やす必要があります。
 
@@ -121,7 +121,7 @@ SQL DB のエラスティック データベース トランザクションで�
 
 ## トランザクションの状態の監視
 
-現在実行されているエラスティック データベース トランザクションの状態と進行状況は、SQL DB の動的管理ビュー (DMV) を使用して監視します。トランザクションに関連したすべての DMV は、SQL DB の分散トランザクションにとって重要となります。対応する DMV については、[トランザクション関連の動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx) に関するページの表を参照してください。
+現在実行されているエラスティック データベース トランザクションの状態と進行状況は、SQL DB の動的管理ビュー (DMV) を使用して監視します。トランザクションに関連したすべての DMV は、SQL DB の分散トランザクションにとって重要となります。対応する DMV の一覧については、[トランザクション関連の動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx) を参照してください。
  
 次の DMV が特に重要となります。
 
@@ -140,9 +140,9 @@ SQL DB のエラスティック データベース トランザクションに�
 
 ## 詳細情報
 
-Azure アプリケーションでエラスティック データベースの機能を使ったことがないという方は、 [ドキュメント マップ](https://azure.microsoft.com/documentation/articles/sql-database-elastic-scale-documentation-map/)を参照してください。質問がある場合は、[SQL Database のフォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](http://feedback.azure.com/forums/217321-sql-database)にお寄せください。
+Azure アプリケーションでエラスティック データベースの機能を使ったことがないという方は、 [ドキュメント マップ](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)を参照してください。質問がある場合は、[SQL Database のフォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](http://feedback.azure.com/forums/217321-sql-database)にお寄せください。
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="10/08/2015"
+      ms.date="12/06/2015"
       ms.author="v-jeana; hascipio"/>
 
 # Azure Marketplace Publisher に関する一般的な問題をトラブルシューティングする方法
@@ -63,16 +63,16 @@
 
 ## Publisher Profile を更新する方法を教えてください。
 
-Publisher Profile を更新するには、販売者ダッシュボードを使用して以下を実行します。
+発行者プロファイルを更新するには、Microsoft デベロッパー センターを使用して以下を実行します。
 
-**1.販売者ダッシュボードにサインインします**。
+**1.Microsoft デベロッパー センターにサインインします。**
 
 - 新しい Chrome Incognito または Internet Explorer InPrivate ブラウズ セッションを開き、個人用アカウントにサインインしていないことを確認します。
-- http://sellerdashboard.microsoft.com にアクセスします。
+- [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) に移動します。
 
 ![inprivate][4]
 
-**2.職場または学校のアカウント** (つまり、AzureStore@yourcompany.com) を使用してサインインします。
+**2.職場または学校のアカウント** (つまり AzureStore@yourcompany.com)) を使用してサインインします。
 
 ![signin][5]
 
@@ -91,7 +91,7 @@ Publisher Profile を更新するには、販売者ダッシュボードを使�
 ![manageadmins][8]
 
 1. 発行ポータルに移動します。
-2. **[公開元]** を選択します。
+2. **[発行元]** を選択します。
 3. **[管理者]** を選択します。
 4. 追加または削除する共同管理者の電子メール アドレスを追加します。
 5. [**保存**] を選択します。
@@ -120,4 +120,4 @@ Publisher Profile を更新するには、販売者ダッシュボードを使�
 [7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
 [8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1210_2015-->

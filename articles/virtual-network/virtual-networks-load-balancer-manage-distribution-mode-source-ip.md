@@ -4,7 +4,7 @@
    services="virtual-network" 
    documentationCenter="" 
    authors="telmosampaio" 
-   manager="carolz" 
+   manager="carmonm" 
    editor=""
    />
 
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/21/2015"
+   ms.date="12/07/2015"
    ms.author="telmos"
    />
    
@@ -161,4 +161,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
     Date: Thu, 16 Oct 2014 22:49:21 GMT
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

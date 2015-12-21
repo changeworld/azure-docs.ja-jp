@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015"
+	ms.date="12/09/2015"
 	ms.author="juliako"/>
 
 
@@ -23,6 +23,7 @@
 > [AZURE.SELECTOR]
 - [Portal](media-services-manage-origins.md)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+- [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 
 Microsoft Azure Media Services では、**ストリーミング エンドポイント**は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。Media Services は、シームレスな Azure CDN 統合もサポートしています。StreamingEndpoint サービスからの送信ストリームには、ライブ ストリームまたは Media Services アカウントのオンデマンド ビデオ資産を使用します。
 
@@ -45,7 +46,7 @@ Azure クラシック ポータルを使用してストリーミング エンド
 4. [開始] をクリックしてストリーミング エンドポイントを開始します。
 5. ストリーミング エンドポイントの名前をクリックして、それを構成します。
 
-	![ストリーミング エンドポイント ページ][streaming-endpoint]
+![ストリーミング エンドポイント ページ][streaming-endpoint]
 
 
 既定では、最大 2 つのストリーミング エンドポイントを作成できます。それ以上を要求する必要がある場合は、「[クォータと制限](media-services-quotas-and-limitations.md)」をご覧ください。
@@ -132,7 +133,7 @@ CDN 統合は、すべての Azure データ センター (米国西部、米国
 - 新しいストリーミング エンドポイントの場合は、新しいエンドポイントを作成するだけで CDN を有効にできます。既存のストリーミング エンドポイントの場合は、最初にエンドポイントを停止してから CDN を有効にする必要があります。
  
 
-詳細については、[「Azure CDN (Content Delivery Network) との Azure Media Services 統合の発表 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/17/announcing-azure-media-services-integration-with-azure-cdn-content-delivery-network/) 」をご覧ください。
+詳細については、[「Azure CDN (コンテンツ配信ネットワーク) との Azure Media Services 統合の発表 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/17/announcing-azure-media-services-integration-with-azure-cdn-content-delivery-network/) 」をご覧ください。
 
 
 ##Media Services のラーニング パス
@@ -149,4 +150,4 @@ CDN 統合は、すべての Azure データ センター (米国西部、米国
 [configure-origin-configure-custom-host-names]: ./media/media-services-manage-origins/media-services-configure-custom-host-names.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

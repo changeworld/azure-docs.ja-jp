@@ -34,7 +34,7 @@ API Apps には、次の機能が用意されています。
 
 - **Visual Studio の統合** - Visual Studio の専用ツールを使えば、API アプリを作成、デプロイ、使用、デバッグ、管理する作業が効率的になります。詳細については、[Azure SDK 2.8.1 for .NET の発表に関するページ](/blog/announcing-azure-sdk-2-8-1-for-net/)を参照してください。
 
-- **Logic Apps との統合** - 作成した API アプリは、[App Service Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) で使用できます。API Apps を Logic Apps と統合する方法の継続的な変更については、「[App Service API Apps - 変更内容](app-service-api-whats-changed.md)」を参照してください。
+- **Logic Apps との統合** - 作成した API アプリは、[App Services Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) で使用できます。方法については、「[App Service でホストされたカスタム API のロジック アプリでの使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」を参照してください。API Apps を Logic Apps と統合する方法の継続的な変更については、「[App Service API Apps - 変更内容](app-service-api-whats-changed.md)」を参照してください。
 
 - **既存の API をそのまま使用できる** - API Apps 機能を利用するために既存の API のコードを変更する必要はありません。お持ちのコードを API アプリにデプロイするだけです。API では、App Service でサポートされている任意の言語またはフレームワークを使用できます。たとえば、ASP.NET、C#、Java、PHP、Node.js、Python などを使用できます。
 
@@ -51,10 +51,10 @@ API Apps には、次の機能が用意されています。
 
 ## 使用の開始
 
-API アプリの使用を開始するには、[API アプリの使用に関するチュートリアル](app-service-api-dotnet-get-started.md)に従ってください。
+API アプリの使用を開始するには、[API Apps の使用に関するチュートリアル](app-service-api-dotnet-get-started.md)に従ってください。
 
 API Apps に関する既知の問題の一覧については、[API Apps の既知の問題に関するフォーラムの投稿](https://social.msdn.microsoft.com/Forums/ja-JP/7f8b42f2-ac0d-48b8-a35e-3b4934e1c25e/api-app-known-issues?forum=AzureAPIApps)を参照してください。
 
 Azure App Service プラットフォームの詳細については、[Azure App Service](../app-service/app-service-value-prop-what-is.md) に関するページを参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

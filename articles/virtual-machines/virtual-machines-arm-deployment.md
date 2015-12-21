@@ -86,7 +86,16 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 1.	作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭に追加します。
 
-    Microsoft.Azure の使用; Microsoft.IdentityModel.Clients.ActiveDirectory の使用; Microsoft.Azure.Management.Resources の使用; Microsoft.Azure.Management.Resources.Models の使用; Microsoft.Azure.Management.Storage の使用; Microsoft.Azure.Management.Storage.Models の使用; Microsoft.Azure.Management.Network の使用; Microsoft.Azure.Management.Network.Models の使用; Microsoft.Azure.Management.Compute の使用; Microsoft.Azure.Management.Compute.Models の使用;
+        using Microsoft.Azure;
+        using Microsoft.IdentityModel.Clients.ActiveDirectory;
+		using Microsoft.Azure.Management.Resources;
+		using Microsoft.Azure.Management.Resources.Models;
+		using Microsoft.Azure.Management.Storage;
+		using Microsoft.Azure.Management.Storage.Models;
+		using Microsoft.Azure.Management.Network;
+		using Microsoft.Azure.Management.Network.Models;
+		using Microsoft.Azure.Management.Compute;
+		using Microsoft.Azure.Management.Compute.Models;
 
 
 2. 資格情報の作成に必要なトークンを取得するために、次のメソッドを Program クラスに追加します。
@@ -333,14 +342,14 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
           }
         }
 
-	>[AZURE.NOTE]イメージの vhd 名はイメージ ギャラリーで定期的に変更されるので、仮想マシンをデプロイするには現在のイメージ名を取得する必要があります。「[Windows PowerShell を使用してイメージを管理する](https://msdn.microsoft.com/library/azure/dn790330.aspx)」でその方法を参照し、{source-image-name} を使用する vhd ファイルの名前に置き換えます。たとえば、"a699494373c04fc0bc8f2bb1389d6106\_\_Windows-Server-2012-R2-201411.01-en.us-127GB.vhd" などです。
+	>[AZURE.NOTE]イメージの vhd 名はイメージ ギャラリーで定期的に変更されるので、仮想マシンをデプロイするには現在のイメージ名を取得する必要があります。「[Windows PowerShell を使用してイメージを管理する](https://msdn.microsoft.com/library/azure/dn790330.aspx)」でその方法を参照し、{source-image-name} を使用する vhd ファイルの名前に置き換えます。たとえば、"a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201411.01-en.us-127GB.vhd" などです。
 
 	{subscription-id} を、サブスクリプションの ID に置き換えます。
 
 2.	追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
 		CreateVirtualMachine(credential);
-    Console.ReadLine();
+        Console.ReadLine();
 
 ##手順 5. リソースを削除するコードを追加する
 
@@ -375,4 +384,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/virtual-machines-arm-deployment/crpportal.png)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

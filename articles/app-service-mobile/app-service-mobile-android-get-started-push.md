@@ -18,20 +18,18 @@
 
 # プッシュ通知を Android アプリに追加する
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## 概要
-このチュートリアルでは、[ クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。最初に、このチュートリアルの基になっている「[Android クイック スタート]」チュートリアルを完了しておく必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+このチュートリアルでは、[Android クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。最初に、このチュートリアルの基になっている「[Android クイック スタート]」チュートリアルを完了しておく必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
 ##前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
 * 確認済みの電子メール アドレスがある [Google アカウント](http://go.microsoft.com/fwlink/p/?LinkId=268302)
-* [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934)
-* [クイック スタート チュートリアル](../app-service-mobile-android-get-started.md)の完了。
+* [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) (Node.js バックエンド プロジェクトには不要)
+* [クイック スタート チュートリアル](../app-service-mobile-android-get-started.md)を完了していること。
 
 ##<a name="create-hub"></a>通知ハブを作成する
 
@@ -41,7 +39,7 @@
 
 [AZURE.INCLUDE [mobile-services-enable-google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
-##プッシュ要求を送信するようにモバイル アプリ バックエンドを構成する
+##プッシュ要求を送信するように Mobile App バックエンドを構成する
 
 [AZURE.INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
@@ -80,7 +78,6 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 * タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」にあります。
 
 <!-- URLs -->
-[ クイック スタート]: app-service-mobile-android-get-started.md
 [Android クイック スタート]: app-service-mobile-android-get-started.md
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_1210_2015-->

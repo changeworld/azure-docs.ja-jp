@@ -27,7 +27,7 @@ ms.service="virtual-machines"
 
 >[AZURE.TIP] [HPC Pack IaaS デプロイ スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)を使用し、Azure でクラスターを作成する場合、自動化されたデプロイに Azure バーストを追加できます。
 
-この記事の手順を実行すれば、テストまたは概念実証のデプロイのために、クラウドベース HPC Pack ヘッド ノード VM に Azure ノードをすばやく追加できます。手順は基本的にオンプレミスの HPC Pack クラスターにクラウド コンピューティング能力を追加する「Azure へのバースト」の手順と同じです。チュートリアルが必要な場合、「[Microsoft HPC Pack を使用したハイブリッド コンピューティング クラスターのセットアップ](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)」を参照してください。詳細なガイドと本稼働デプロイにおける考慮事項については、「[Microsoft HPC Pack を使用した Azure へのバースト](http://go.microsoft.com/fwlink/p/?LinkID=200493)」を参照してください。
+この記事の手順を実行すれば、テストまたは概念実証のデプロイのために、クラウドベース HPC Pack ヘッド ノード VM に Azure ノードをすばやく追加できます。手順は基本的にオンプレミスの HPC Pack クラスターにクラウド コンピューティング能力を追加する「Azure へのバースト」の手順と同じです。チュートリアルが必要な場合、「[Microsoft HPC Pack を使用したハイブリッド コンピューティング クラスターのセットアップ](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)」を参照してください。詳細なガイドと本稼働デプロイにおける考慮事項については、「[Microsoft HPC Pack を使用した Azure へのバースト](https://technet.microsoft.com/library/gg481749.aspx)」を参照してください。
 
 A8 または A9 のコンピューティング集中型インスタンス サイズを使用する場合は、「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-a8-a9-a10-a11-specs.md)」を参照してください。
 
@@ -69,7 +69,7 @@ Azure ノードをコンピューティング リソースとして追加する�
 
 
 
-このシナリオで Azure ノードを追加し、起動する手順は、おおむね、オンプレミス ヘッド ノードで使用される手順と同じです。詳しくは、[Microsoft HPC Pack で Azure ノードをデプロイするための手順](https://technet.microsoft.com/library/gg481758(v=ws.10).aspx)) の次のセクションを参照してください。
+このシナリオで Azure ノードを追加し、起動する手順は、おおむね、オンプレミス ヘッド ノードで使用される手順と同じです。詳しくは、「[Microsoft HPC Pack で Azure ノードをデプロイするための手順](https://technet.microsoft.com/library/gg481758.aspx)」の次のセクションを参照してください。
 
 * Azure ノード テンプレートを作成する
 
@@ -79,7 +79,7 @@ Azure ノードをコンピューティング リソースとして追加する�
 
 ノードを追加し、起動したら、ノードを利用してクラスター ジョブを実行できます。
 
-Azure ノードのデプロイで問題が発生した場合、[Microsoft HPC Pack で Azure ノードをデプロイするときのトラブルシューティング](http://technet.microsoft.com/library/jj159097(v=ws.10).aspx)) を参照してください 。
+Azure ノードのデプロイで問題が発生した場合、[Microsoft HPC Pack で Azure ノードをデプロイするときのトラブルシューティング] を参照してください (http://technet.microsoft.com/library/jj159097(v=ws.10).aspx))。
 
 ## 次のステップ
 
@@ -88,4 +88,4 @@ Azure ノードのデプロイで問題が発生した場合、[Microsoft HPC Pa
 <!--Image references-->
 [burst]: ./media/virtual-machines-hpcpack-cluster-node-burst/burst.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

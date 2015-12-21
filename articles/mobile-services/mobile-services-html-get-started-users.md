@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="07/21/2015" 
+	ms.date="11/30/2015" 
 	ms.author="glenga"/>
 
 # Mobile Services アプリへの認証の追加 
@@ -35,7 +35,7 @@
 
 3. app ディレクトリで、**server** サブフォルダーから次のいずれかのコマンド ファイルを実行します。
 
-	+ **.\\start-iisexpress.ps1** (Windows コンピューター) 
+	+ **launch-windows** (Windows コンピューター) 
 	+ **launch-mac.command** (Mac OS X コンピューター)
 	+ **launch-linux.sh** (Linux コンピューター)
 
@@ -135,4 +135,4 @@
 [モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: mobile-services-html-how-to-use-client-library.md
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

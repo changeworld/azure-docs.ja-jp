@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="12/01/2015"
+   ms.date="12/02/2015"
    ms.author="juliako"/>
 
 
@@ -62,6 +62,8 @@ Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NE
 
 	現時点では、Azure Storage バージョン 2011-08-18 は、2016 年 8 月 1 日に削除される予定です。Azure SDK 2.5 以下から 2.6 へのすべての In-Role Cache の移行は、この日までに完了する必要があります。Azure Storage バージョン 2011-08-18 の廃止の詳細については、[Microsoft Azure Storage Service のバージョンの削除に関する最新情報: 2016 年まで延長](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)に関するページを参照してください。
 
+>[AZURE.IMPORTANT]Azure Managed Cache Service と Azure In-Role Cache は、2016 年 11 月 30 日に提供を終了する予定です。提供終了に備えて、Azure Redis Cache に移行することをお勧めします。日付と移行のガイドラインの詳細については、「[どの Azure Cache を利用すればよいですか](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)」を参照してください。
+
 ##Azure App Service ツール
 
 Azure SDK 2.6 リリースで次の項目が更新されました。
@@ -106,4 +108,4 @@ Azure SDK 2.6 において、Azure コンピューティング エミュレー�
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

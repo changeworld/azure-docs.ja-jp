@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/31/2015"
+   ms.date="12/04/2015"
    ms.author="heeldin;motanv"/>
 
 # Testability アクション
@@ -232,6 +232,5 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
 - サービスをテストする方法
    - [サービス ワークロード中のエラーのシミュレーション](service-fabric-testability-workload-tests.md)
    - [サービス間の通信障害](service-fabric-testability-scenarios-service-communication.md)
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

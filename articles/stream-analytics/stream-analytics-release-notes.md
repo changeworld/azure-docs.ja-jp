@@ -13,10 +13,19 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/12/2015" 
+	ms.date="12/10/2015" 
 	ms.author="jeffstok"/>
 
 #Microsoft Stream Analytics リリース ノート
+
+## Stream Analytics の 2015 年 12 月 10 日付けリリースに関するノート ##
+
+このリリースには、次の更新プログラムが含まれています。
+
+タイトル | 説明
+---|---
+REST API バージョン更新 | REST API バージョンが 2015-10-01 に更新されました。詳細は [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)の MSDN にあります。
+Azure Machine Learning 統合 | このリリースで、Azure Machine Learning ユーザー定義関数のサポートが付きます。チュートリアルは[ここ](stream-analytics-machine-learning-tutorial.md)にあります。一般的なブログ告知は[ここ](http://blogs.msdn.com/b/streamanalytics/)にあります。
 
 ## Stream Analytics の 2015 年 11 月 12 日付けリリースに関するノート ##
 
@@ -45,7 +54,7 @@ Added OFFSET for Tumbling and Hopping windows (タンブリング ウィンド�
 タイトル | 説明
 ---|---
 Azure IoT Suite のパブリック プレビュー | Stream Analytics は、Azure IoT Suite のパブリック プレビューに含まれています。
-Azure ポータルの統合 | Azure クラシック ポータルで引き続き使用されている Stream Analytics が、[Azure ポータル](http://azure.microsoft.com/overview/preview-portal/)にも統合されました。現在、Azure ポータルの Stream Analytics 機能は Azure クラシック ポータルで提供されている機能のサブセットであり、ブラウザ内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。
+Azure プレビュー ポータルの統合 | Microsoft Azure 管理ポータルで引き続き使用されている Stream Analytics が、[Azure プレビュー ポータル](http://azure.microsoft.com/overview/preview-portal/)にも統合されました。現在、プレビュー ポータルの Stream Analytics 機能は Microsoft Azure 管理ポータルで提供されている機能のサブセットであり、ブラウザ内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。
 DocumentDB 出力のサポート | Stream Analytics のジョブを [DocumentDB](http://azure.microsoft.com/services/documentdb/) に出力できるようになりました。
 IoT Hub 入力に対するサポート | Stream Analytics ジョブで、IoT Hub からデータを取り込めるようになりました。
 多様なイベントに対する TIMESTAMP BY | 単一のデータ ストリームに、異なるフィールドにタイムスタンプを持つ複数のイベント タイプが含まれている場合、式と共に [TIMESTAMP BY](http://msdn.microsoft.com/library/mt573293.aspx) を使用してケースごとに異なるタイムスタンプ フィールドを指定できるようになりました。
@@ -124,4 +133,4 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 - [Stream Analytics 管理 REST API 参照](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

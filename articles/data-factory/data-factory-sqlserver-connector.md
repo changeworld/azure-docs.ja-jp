@@ -397,7 +397,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 | username | Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ |
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ |
 
-**New-AzureDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
+**New-AzureRmDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
 
 	"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
 
@@ -445,7 +445,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 ## SQL Server のコピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
 
 > [AZURE.NOTE]コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
 
@@ -543,4 +543,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

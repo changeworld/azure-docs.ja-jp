@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/17/2015"
+	ms.date="12/04/2015"
 	ms.author="markvi"/>
 
 # Azure Active Directory のエディション
@@ -47,52 +47,45 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 <br>
 
-
-
-
-| 機能の種類| 特徴| Free エディション| Basic エディション| Premium エディション |
-| --- | --- | --- | --- | --- |
-| **共通機能**| サービスとしてのディレクトリ| ![○][12] 最大 500,000 ユーザー [1]| ![○][12] オブジェクトの制限なし| ![○][12] オブジェクトの制限なし|
-| | [UI または Windows PowerShell コマンドレットを使用するユーザーとグループの管理](active-directory-administer.md)| ![○][12]| ![○][12]| ![○][12]|
-| | [デバイス登録](active-directory-conditional-access-device-registration-overview.md)| ![○][12]| ![○][12]| ![○][12]|
-| | [SaaS アプリケーションとカスタム アプリケーションへの SSO ベースのユーザー アクセスのためのアクセス パネル ポータル](active-directory-saas-access-panel-introduction.md)| ![○][12] ユーザーごとに最大 10 個のアプリケーション [2]| ![○][12] ユーザーごとに最大 1 個のアプリケーション [2]| ![○][12] アプリケーションの制限なし|
-| | [ユーザー ベースのアプリケーション アクセス管理とプロビジョニング](active-directory-saas-app-provisioning.md)| ![○][12]| ![○][12]| ![○][12]|
-| | クラウド ユーザーに対するセルフ サービスのパスワード変更| ![○][12]| ![○][12]| ![○][12]|
-| | [Azure AD Connect - オンプレミスのディレクトリと Azure Active Directory 間の同期に使用](active-directory-aadconnect.md)| ![○][12]| ![○][12]| ![○][12]|
-| | [標準的なセキュリティ レポート](active-directory-view-access-usage-reports.md)| ![○][12]| ![○][12]| ![○][12]|
-| | [B2B コラボレーション (組織間のコラボレーション) (プレビュー)](active-directory-b2b-collaboration-overview.md)| ![○][12]| ![○][12]| ![○][12]|
-| **Premium および Basic の機能**| [サインインおよびアクセス パネル ページでの会社のロゴと色のカスタマイズ](active-directory-add-company-branding.md)| Office 365 サブスクリプションに含まれる [4]| ![○][12]| ![○][12]|
-| | [クラウド ユーザーに対するセルフ サービスのパスワード リセット](active-directory-passwords.md)| Office 365 サブスクリプションに含まれる [4]| ![○][12]| ![○][12]|
-| | [アプリケーション プロキシ: オンプレミスの Web アプリケーションに対するセキュリティで保護されたリモート アクセスと SSO](active-directory-application-proxy-get-started.md)| | ![○][12]| ![○][12]|
-| | [グループ ベースのアプリケーション アクセス管理とプロビジョニング](active-directory-accessmanagement-group-saasapps.md)| | ![○][12]| ![○][12]|
-| | [高可用性 SLA アップタイム (99.9%)](https://azure.microsoft.com/support/legal/sla/)| Microsoft Online Services SLA [5]| ![○][12]| ![○][12]|
-| **Premium のみの機能**| [高度なアプリケーション使用状況レポート](active-directory-view-access-usage-reports.md)| | | ![○][12]|
-| | [クラウド ユーザーに対するセルフ サービスのグループ管理](Self-service group management for users in Azure AD)| | | ![○][12]|
-| | [オンプレミスへのライトバックを備えたセルフ サービスのパスワード リセット](active-directory-passwords-getting-started.md/#enable-users-to-reset-or-change-their-ad-passwords)| | | ![○][12]|
-| | [Microsoft Identity Manager (MIM) ユーザー ライセンス - オンプレミスの ID とアクセスの管理用](http://www.microsoft.com/ja-JP/server-cloud/products/microsoft-identity-manager/default.aspx)| | | ![○][12] [3]|
-| | [詳細な異常セキュリティ レポート (Machine Learning に基づく)](active-directory-view-access-usage-reports.md)| | | ![○][12]|
-| | [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)| | | ![○][12]|
-| | [クラウド ユーザー向けの Multi-factor Authentication サービス](multi-factor-authentication.md)| Office 365 サブスクリプションに含まれる [4]| | ![○][12]|
-| | [オンプレミス ユーザー向けの Multi-factor Authentication サーバー](multi-factor-authentication.md)| | | ![○][12]|
-| | [オンプレミスの Active Directory インフラストラクチャの正常性を監視し、利用状況分析を取得する Azure Active Directory Connect Health](active-directory-aadconnect-health.md)| | | ![○][12]|
-
-
-
-
-[1] ディレクトリ サービスとして Azure Active Directory を利用する Office 365、Microsoft Intune、その他の Microsoft オンライン サービスには、500 K オブジェクトの制限は適用されません。
-
-[2] Azure Active Directory Free と Azure Active Directory Basic では、各 SaaS アプリケーションへのアクセスが割り当てられているエンド ユーザーは、アクセス パネルに最大 10 個のアプリケーションを表示することができ、それらのアプリケーションへの SSO アクセスが可能です (エンド ユーザーの SSO を管理者があらかじめ構成している場合)。Free でも管理者が SSO を構成してユーザー アクセスを割り当てることができる SaaS アプリの数に制限はありませんが、エンド ユーザーのアクセス パネルに一度に表示されるアプリは 10 個だけです。
-
-[3] Microsoft Identity Manager サーバー ソフトウェアの使用権は、Windows Server ライセンス (任意のエディション) と共に付与されます。Microsoft Identity Manager は Windows Server オペレーティング システム上で実行されるので、サーバーで Windows Server の有効なライセンス版が実行されていれば、そのサーバーに Microsoft Identity Manager をインストールして使用できます。Microsoft Identity Manager サーバーに他の個別のライセンスは不要です。
-
-[4] Office 365 に含まれる Azure AD の有料機能は、Office 365 アプリケーションにアクセスするときのみ使用できるように制限されています。
-
-[5] Microsoft の各オンライン ビジネス サービス、Office 365、Microsoft Intune、その他、ディレクトリ サービスに Azure Active Directory を使用するすべての Microsoft オンライン サービスに、Azure Active Directory の使用にも適用される独自のサービス SLA が付随しています。詳細については、[Microsoft online services SLA](https://gallery.technet.microsoft.com/online-SLA-ea09109e) に関するページを参照してください。
+| 機能の種類| 特徴| Free エディション| Basic エディション| Premium Edition| Office 365 アプリのみ |
+| --- | --- | --- | --- | --- | --- |
+| **共通機能**| ディレクトリ オブジェクト [1]| 最大で 500,000 のオブジェクト| オブジェクトの制限なし| オブジェクトの制限なし| Office 365 ユーザー アカウントにはオブジェクトの制限なし|
+| | [ユーザーおよびグループの管理 (追加/更新/削除)、ユーザー ベースのプロビジョニング](active-directory-administer.md)、[デバイス登録](active-directory-conditional-access-device-registration-overview.md)| ![○][12]| ![○][12]| ![○][12]| ![○][12]|
+| | [SaaS アプリ、カスタム アプリ、アプリケーション プロキシ アプリへの SSO](active-directory-enable-sso-scenario.md)| 10 個のアプリ (ユーザーあたり) [2]| 10 個のアプリ (ユーザーあたり) [2]| 制限なし| 10 個のアプリ (ユーザーあたり) [2]|
+| | [クラウド ユーザーに対するセルフ サービスのパスワード変更](active-directory-passwords-update-your-own-password.md)| ![○][12]| ![○][12]| ![○][12]| ![○][12]|
+| | [Connect - オンプレミスのディレクトリと Azure Active Directory 間の同期用](active-directory-aadconnect.md)| ![○][12]| ![○][12]| ![○][12]| ![○][12]|
+| | **プレビュー**:[ B2B コラボレーション](active-directory-b2b-collaboration-overview.md)| ![○][12]| ![○][12]| ![○][12]| ![○][12]|
+| | [セキュリティ/使用状況レポート](active-directory-view-access-usage-reports.md)| 基本レポート| 基本レポート| 詳細レポート| 基本レポート|
+| **Premium および Basic の機能**| [グループ ベースのアプリケーション アクセス管理とプロビジョニング](active-directory-accessmanagement-group-saasapps.md)| | ![○][12]| ![○][12]| |
+| | [クラウド ユーザーに対するセルフ サービスのパスワード リセット](active-directory-passwords.md)| | ![○][12]| ![○][12]| ![○][12]|
+| | [企業ブランド (ログオン ページとアクセス パネルのカスタマイズ)](active-directory-add-company-branding.md)| | ![○][12]| ![○][12]| ![○][12]|
+| | [アプリケーション プロキシ](active-directory-application-proxy-get-started.md)| | ![○][12]| ![○][12]| |
+| | [高可用性 SLA アップタイム (99.9%)](https://azure.microsoft.com/support/legal/sla/)| | ![○][12]| ![○][12]| ![○][12]|
+| **Premium のみの機能**| セルフサービスによるグループ管理/セルフサービスによるアプリケーションの追加/動的なグループ| | | ![○][12]| |
+| | [セルフサービスによるパスワードのリセット、変更、ロック解除 (オンプレミスの書き戻しが可能)](active-directory-passwords-getting-started.md/#enable-users-to-reset-or-change-their-ad-passwords)| | | ![○][12]| |
+| | [Multi-Factor Authentication (クラウドおよびオンプレミス )](multi-factor-authentication.md)| | | ![○][12]| Office 365 アプリ用のクラウドのみに限定|
+| | [Microsoft Identity Manager (MIM) ユーザー ライセンスと MIM サーバー [3]](http://www.microsoft.com/server-cloud/products/microsoft-identity-manager/default.aspx)| | | ![○][12]| |
+| | [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)| | | ![○][12]| |
+| | [Azure Active Directory Connect Health](active-directory-aadconnect-health.md)| | | ![○][12]| |
+| | グループ アカウントの自動パスワード ロールオーバー| | | ![○][12]| |
+| | **プレビュー**: 条件付きアクセス| | | ![○][12]| |
+| | **プレビュー**: Azure AD Privileged Identity Management| | | ![○][12]| |
+| **Windows 10 および Azure AD 参加に関連する機能**| Azure AD、デスクトップ SSO、Azure AD 用の Microsoft Passport、管理者による Bitlocker 回復への Windows 10 デバイスの参加| ![○][12]| ![○][12]| ![○][12]| ![○][12]|
+| | MDM の自動登録、セルフサービスによる Bitlocker 回復、Azure AD Join による Windows 10 デバイスへのローカル管理者の追加| | | ![○][12]| |
 
 
 
 
-## 次の手順
+
+[1] 既定の使用量クォータは 150,000 オブジェクトです。1 個のオブジェクトは、一意の識別名によって表される、ディレクトリ サービス内の 1 つのエントリです。オブジェクトの例としては、認証目的に使用されるユーザー エントリなどがあります。この既定のクォータを超えるオブジェクト数が必要な場合は、サポートにお問い合わせください。ディレクトリ サービスとして Azure Active Directory を利用する Office 365、Microsoft Intune、その他の有料 Microsoft オンライン サービスには、500,000 オブジェクトの制限は適用されません。
+
+[2] Azure AD Free と Azure AD Basic で、SaaS アプリへのアクセス権が割り当てられているエンド ユーザーは、アクセス パネルで最大 10 個のアプリを表示でき、アプリへの SSO アクセスを取得できます。管理者は SSO を構成して、Free と Basic のユーザーに対して、SaaS アプリへのアクセス権を何個でも割り当てることができますが、エンド ユーザーはアクセス パネルで一度に 10 個のアプリしか表示できません。
+
+[3] Microsoft Identity Manager サーバー ソフトウェアの使用権は、Windows Server ライセンス (任意のエディション) と共に付与されます。Microsoft Identity Manager は、Windows Server OS で実行されるため、サーバーで Windows Server の有効なライセンス コピーが実行されている限り、そのサーバー上に Microsoft Identity Manager をインストールでき、使用することができます。Microsoft Identity Manager サーバーに他の個別のライセンスは不要です。
+
+
+
+## 参照トピック
 
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
@@ -102,4 +95,4 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

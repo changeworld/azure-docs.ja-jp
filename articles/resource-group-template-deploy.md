@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/02/2015"
+   ms.date="12/08/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ
@@ -24,6 +24,21 @@
 
 テンプレートを使用してアプリケーションをデプロイする場合は、パラメーター値を指定することで、リソースの作成方法をカスタマイズすることができます。これらのパラメーターの値は、インラインか、パラメーター ファイルのどちらかで指定します。
 
+## 増分デプロイと完全デプロイ
+
+既定では、リソース マネージャーはデプロイメントをリソース グループへの増分更新として処理します。増分デプロイメントでは、リソース マネージャーは次の処理を行います。
+
+- リソース グループに存在するが、テンプレートに指定されていないリソースを**変更せず、そのまま残します**
+- テンプレートに指定されているが、リソース グループに存在しないリソースを**追加します** 
+- テンプレートに定義されている同じ条件でリソース グループに存在するリソースを**再プロビジョニングしません**
+
+Azure PowerShell または REST API を利用し、リソース グループへの完全更新を指定できます。現在のところ、Azure CLI は完全デプロイメントに対応していません。完全デプロイメントでは、リソース マネージャーは次の処理を行います。
+
+- リソース グループに存在するが、テンプレートに指定されていないリソースを**削除します**
+- テンプレートに指定されているが、リソース グループに存在しないリソースを**追加します** 
+- テンプレートに定義されている同じ条件でリソース グループに存在するリソースを**再プロビジョニングしません**
+ 
+**[モード]** プロパティでデプロイメントの種類を指定します。
 
 ## PowerShell でデプロイする
 
@@ -59,7 +74,7 @@
                     *
         ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
 
-5. リソース グループに新しいデプロイを作成するには、**New-AzureRmResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。
+5. リソース グループに新しいデプロイを作成するには、**New-AzureRmResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。**[モード]** パラメーターは指定されません。つまり、既定値の **[増分]** が使用されます。
    
      次のオプションを使用してパラメーターの値を提供できます。
    
@@ -85,10 +100,18 @@
           Mode              : Incremental
           ...
 
+     完全デプロイメントを実行するには、**[モード]** を **[完全]** に設定します。
+
+          PS C:\> New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -Mode Complete
+          Confirm
+          Are you sure you want to use the complete deployment mode? Resources in the resource group 'ExampleResourceGroup' which are not
+          included in the template will be deleted.
+          [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+
 6. デプロイ エラーに関する情報を取得するには
 
         PS C:\> Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -Name ExampleDeployment
-
+        
         
 ### ビデオ
 
@@ -180,7 +203,7 @@
              }
            }
    
-3. リソース グループの新しいデプロイを作成します。サブスクリプション ID、デプロイするリソース グループの名前、デプロイの名前、およびテンプレートの場所を指定します。テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。リソース グループを作成する REST API の詳細については、「[テンプレートのデプロイを作成する](https://msdn.microsoft.com/library/azure/dn790564.aspx)」を参照してください。
+3. リソース グループの新しいデプロイを作成します。サブスクリプション ID、デプロイするリソース グループの名前、デプロイの名前、およびテンプレートの場所を指定します。テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。リソース グループを作成する REST API の詳細については、「[テンプレートのデプロイを作成する](https://msdn.microsoft.com/library/azure/dn790564.aspx)」を参照してください。完全デプロイメントを実行するには、**[モード]** を **[完全]** に設定します。
     
          PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
             <common headers>
@@ -207,7 +230,7 @@
 
 Visual Studio では、リソース グループ プロジェクトを作成して、それをユーザー インターフェイスから Azure にデプロイできます。プロジェクトに含めるリソースの種類を選択すると、それらのリソースがリソース マネージャー テンプレートに自動的に追加されます。プロジェクトでは、テンプレートをデプロイするための PowerShell スクリプトも提供されます。
 
-リソース グループで Visual Studio を使用する概要については、「[Azure リソース グループ デプロイ プロジェクトの作成とデプロイ](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
+リソース グループで Visual Studio を使用する概要については、「[Visual Studio を使用した Azure リソース グループの作成とデプロイ](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
 
 ## ポータルでデプロイする
 
@@ -249,4 +272,4 @@ Azure リソース マネージャーの使用方法の詳細については、�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

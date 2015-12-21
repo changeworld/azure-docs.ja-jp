@@ -22,7 +22,7 @@ Azure API Management では、API とその操作を成果物に追加します�
 
 ## <a name="create-apis"> </a>API の作成方法
 
-API Management における API は、クライアント アプリケーションから呼び出すことのできる一連の操作を表します。新しい API は、API Management ポータルで作成します。
+API Management における API は、クライアント アプリケーションから呼び出すことのできる一連の操作を表します。新しい API は、パブリッシャー ポータルで作成します。
 
 このガイドでは、API Management で新しい API を作成して構成する方法を説明します。
 
@@ -62,4 +62,4 @@ API Management の成果物には、少なくとも 1 つの API に加え、使
 [API の定義を操作と共にインポートする方法]: api-management-howto-import-api.md
 [成果物を作成して詳細設定を構成する方法]: api-management-howto-product-with-rules.md
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1210_2015-->

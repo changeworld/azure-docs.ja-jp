@@ -1,26 +1,26 @@
 
-<properties 
-    pageTitle="RemoteApp ハイブリッド コレクション作成のトラブルシューティング"
-    description="RemoteApp のハイブリッド コレクション作成でエラーが発生したときのトラブルシューティング方法について説明します。" 
-    services="remoteapp" 
-    documentationCenter="" 
-    authors="vkbucha" 
+<properties
+    pageTitle="RemoteApp ハイブリッド コレクション作成のトラブルシューティング | Microsoft Azure"
+    description="RemoteApp のハイブリッド コレクション作成でエラーが発生したときのトラブルシューティング方法について説明します。"
+    services="remoteapp"
+    documentationCenter=""
+    authors="vkbucha"
     manager="mbaldwin" />
 
-<tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="11/04/2015" 
+<tags
+    ms.service="remoteapp"
+    ms.workload="compute"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="11/04/2015"
     ms.author="elizapo" />
 
 
 
 # Azure RemoteApp ハイブリッド コレクション作成のトラブルシューティング
 
-ハイブリッド コレクション では、Azure クラウドにホストされ、データはクラウドに格納されますが、ユーザーはローカル ネットワークに格納されたデータとリソースにアクセスすることもできます。ユーザーは、Azure Active Directory と同期また連携した企業資格情報でログインしてアプリにアクセスできます。既存の Azure 仮想ネットワークを使用するハイブリッド コレクションをデプロイすることも、新しい仮想ネットワークを作成することもできます。今後、予測される Azure RemoteApp の成長に十分な CIDR 範囲で仮想ネットワーク サブネットを作成または使用することが推奨されます。
+ハイブリッド コレクション では、Azure クラウドにホストされ、データはクラウドに格納されますが、ユーザーはローカル ネットワークに格納されたデータとリソースにアクセスすることもできます。ユーザーは、Azure Active Directory と同期また連携した企業資格情報でログインしてアプリにアクセスできます。既存の Azure Virtual Network を使用するハイブリッド コレクションをデプロイすることも、新しい仮想ネットワークを作成することもできます。今後、予測される Azure RemoteApp の成長に十分な CIDR 範囲で仮想ネットワーク サブネットを作成または使用することが推奨されます。
 
 コレクションをまだ作成していませんか。 手順については、「[ハイブリッド コレクションの作成](remoteapp-create-hybrid-deployment.md)」を参照してください。
 
@@ -74,7 +74,7 @@ Azure がコレクションにプロビジョニングするのを待ってい�
 ![DNS を定義する](./media/remoteapp-hybridtrouble/dnsvpn.png)
 
 ## コレクションで Active Directory ドメイン コント ローラーを使用していますか。 ##
-現在のところ、1 つの Active Directory ドメインだけを Azure RemoteApp に関連付けることができます。ハイブリッド コレクションは、Windows Server Active Directory のデプロイメントから DirSync ツールを使用して同期されている Azure Active Directory アカウントのみをサポートします。具体的には、パスワード同期オプションで同期されているか、または Active Directory フェデレーション サービス (AD FS) の構成されたフェデレーションのいずれかで同期されます。オンプレミスのドメインの UPN ドメイン サフィックスと一致するカスタム ドメインを作成し、ディレクトリ統合を設定する必要があります。
+現在のところ、1 つの Active Directory ドメインだけを Azure RemoteApp に関連付けることができます。ハイブリッド コレクションは、Windows Server Active Directory のデプロイから DirSync ツールを使用して同期されている Azure Active Directory アカウントのみをサポートします。具体的には、パスワード同期オプションで同期されているか、または Active Directory フェデレーション サービス (AD FS) の構成されたフェデレーションのいずれかで同期されます。オンプレミスのドメインの UPN ドメイン サフィックスと一致するカスタム ドメインを作成し、ディレクトリ統合を設定する必要があります。
 
 詳細については、「[Azure RemoteApp の Active Directory を構成する](remoteapp-ad.md)」を参照してください。
 
@@ -84,4 +84,4 @@ Azure がコレクションにプロビジョニングするのを待ってい�
 
 作成または追加したドメイン名は (Azure AD ドメイン名ではなく) 内部ドメイン名であり、解決可能な DNS 形式 (contoso.local) になっている必要があります。たとえば、Active Directory 内部名 (contoso.local) と Active Directory UPN (contoso.com) が与えられている場合、コレクションの作成時にその内部名を使用する必要があります。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1210_2015-->

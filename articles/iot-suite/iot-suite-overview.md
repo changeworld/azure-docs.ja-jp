@@ -3,7 +3,7 @@
 	description="パッケージ化と構成済みのソリューションを含む、Azure IoT Suite の概要を説明します。"
 	services=""
 	documentationCenter=""
-	authors="aguilaaj"
+	authors="dominicbetts"
 	manager="timlt"
 	editor=""/>
 
@@ -13,12 +13,20 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="10/06/2015"
-     ms.author="araguila"/>
+     ms.date="11/27/2015"
+     ms.author="dobett"/>
 
 # Azure IoT Suite の概要
 
-Microsoft では、Azure IoT サービスによって幅広い機能を提供しています。これらのサービスは、デバイスからのデータの収集、進行中のデータ ストリームの分析、大規模なデータ セットの保存とクエリ、リアルタイム データと履歴データの両方の視覚化、重要なバックオフィス システムの統合に関して、企業レベルの機能を備えています。Azure IoT Suite は、一般的に利用される一連のサービスと、お客様が目標を達成するまでの時間を短縮できる拡張機能をパッケージ化しています。これらの拡張機能には、最も一般的なソリューション パターンの基本実装を行う構成済みのソリューションが含まれています。お客様は、IoT ソフトウェア開発キット (SDK) と組み合わせることで、構成済みのソリューションのカスタマイズや新しいソリューションを開発するためのサンプルとしての利用を容易に実行できます。
+Azure IoT サービスは、さまざまな機能を提供しています。このエンタープライズ クラスのサービスを使用すると、次の操作を実行できます。
+
+- デバイスからデータを収集する
+- インモーション データ ストリームを分析する
+- 大規模なデータ セットを格納して照会する
+- リアルタイム データと履歴データを表示する
+- バックオフィス システムと統合する
+
+Azure IoT Suite には、一般的に利用されている Azure サービスとカスタム拡張機能が構成済みソリューションとしてパッケージ化されています。構成済みソリューションは、一般的な IoT ソリューション パターンの基本実装です。このソリューションを使用して、IoT ソリューションを提供する時間を短縮できます。[IoT ソフトウェア開発キット][lnk-sdks]を使用して独自の要件に合わせて構成済みソリューションを簡単にカスタマイズしたり、新しいソリューションを開発するときの例として利用したりすることができます。
 
 次のビデオで、Azure IoT Suite の概要について説明します。
 
@@ -26,20 +34,39 @@ Microsoft では、Azure IoT サービスによって幅広い機能を提供し
 
 ## Azure IoT Suite の Azure IoT サービス
 
-Azure IoT Suite の中核となるものは IoT Hub サービスです。このサービスでは、デバイスとクラウドの間のメッセージング機能を提供します。クラウドやその他の主要な IoT Suite サービスへのゲートウェイとして機能します。
+Azure IoT Suite の中核となるものは [Azure IoT Hub][lnk-iot-hub] サービスです。このサービスは、デバイスからクラウドへ、およびクライアントからデバイスへのメッセージング機能を提供し、クラウドや他の主要な IoT Suite サービスに対するゲートウェイとして機能します。
 
-インモーション データ分析は Azure Stream Analytics から提供されます。IoT Suite は、受信テレメトリ メッセージの処理、集計、イベントの削除にこのサービスを利用します。また、デバイス メタデータやコマンドの応答に使用できる情報メッセージの処理に使用されます。
+[Azure Stream Analytics][lnk-asa] には、インモーション データ分析機能があります。IoT Suite は、このサービスを利用して、受信テレメトリを処理し、集計を実行してイベントを検出します。また、事前構成されたソリューションは、ストリーム分析を使用して、メタデータやデバイスからのコマンド応答などのデータを含む情報メッセージも処理します。
 
-データ ストレージ機能は Azure Storage と Azure Document DB の組み合わせにより有効になります。Azure Storage では、保存や将来の分析のためテレメトリの BLOB ストレージを有効にできます。Document DB は、デバイス メタデータを管理するために、半構造化されたデータにインデックスを付けて保存するために使用されます。異なるデバイスで異なるコンテンツを保持できるため、異種デバイスの管理が可能になります。
+[Azure Storage][lnk-azure-storage] と [Azure DocumentDB][lnk-document-db] には、データ ストレージ機能があります。構成済みソリューションでは、BLOB ストレージを使用してテレメトリを保存し、分析に使用することができます。構成済みソリューションでは、DocumentDB の半構造化データ機能でインデックス化されたストレージを使用します。その結果、ストレージ要件が異なる複数種類のデバイスをソリューションで管理できるようになります。
 
-データの視覚化は Azure Websites と Microsoft Power BI の組み合わせによって提供されます。Power BI の柔軟性により、お客様は IoT Suite データから独自の対話型ダッシュボードをすばやく構築できます。
+[Azure Web Apps][lnk-web-apps] と [Microsoft Power BI][lnk-power-bi] には、データ仮想化機能があります。Power BI は柔軟なので、IoT Suite データを使用する独自の対話型ダッシュボードをすばやく構築できます。
 
-アーキテクチャとこれらのサービスの使用方法に関する詳細は、「[Microsoft Azure とモノのインターネット (IoT)](iot-suite-what-is-azure-iot.md)」という記事にあります。
+一般的な IoT ソリューションのアーキテクチャの概要については、「[Microsoft Azure とモノのインターネット (IoT)][iot-suite-what-is-azure-iot]」を参照してください。
 
 ## 構成済みのソリューション
 
-構成済みのソリューションが Azure IoT Suite に含まれており、お客様は Azure IoT Suite をすぐに開始し、可能なシナリオを試すことができます。
+IoT Suite には構成済みソリューションが含まれているので、Azure IoT Suite で実現できる一般的な IoT シナリオをすぐに始めて、調べることができます。構成済みソリューションを Azure サブスクリプションにデプロイし、完全なエンドツーエンドの IoT ソリューションを実行することができます。
 
-使用可能な最初の構成済みのソリューションは[リモート監視](iot-suite-what-are-preconfigured-solutions.md)です。
+## 次のステップ
 
-<!---HONumber=Nov15_HO1-->
+IoT Suite の構成済みソリューションについては、「[Azure IoT の構成済みソリューションとは][lnk-what-are-preconfig]」を参照してください。
+
+構成済みソリューションのいずれかを初めて使用する方法については、[IoT の構成済みソリューションの使用に関するページ][lnk-preconfig-start]を参照してください。
+
+Azure IoT Hub サービスについては、「[IoT Hub のドキュメント][lnk-iot-hub]」を参照してください。
+
+
+[lnk-sdks]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
+[lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
+[lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
+[lnk-azure-storage]: https://azure.microsoft.com/documentation/services/storage/
+[lnk-document-db]: https://azure.microsoft.com/documentation/services/documentdb/
+[lnk-power-bi]: https://powerbi.microsoft.com/
+[lnk-web-apps]: https://azure.microsoft.com/documentation/services/app-service/web/
+[iot-suite-what-is-azure-iot]: iot-suite-what-is-azure-iot.md
+[lnk-what-are-preconfig]: iot-suite-what-are-preconfigured-solutions.md
+[lnk-preconfig-start]: iot-suite-getstarted-preconfigured-solutions/
+[lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
+
+<!---HONumber=AcomDC_1210_2015-->

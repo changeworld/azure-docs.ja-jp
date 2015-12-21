@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="javascript" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="08/17/2015" 
+	ms.date="12/01/2015" 
 	ms.author="ricksal"/>
 
 
@@ -289,7 +289,7 @@ JavaScript では、これは次のようなより長い構文の短縮版です
 
 ###<a name="work-with-users"></a>方法: ユーザーを処理する
 
-Azure Mobile Services では、ID プロバイダーを使用して、ユーザーを認証できます。詳細については、「[認証の使用]」を参照してください。認証されたユーザーがテーブル操作を呼び出したとき、Mobile Services では [user オブジェクト]を使用して、登録されたスクリプト関数にユーザーに関する情報を渡します。**userId** プロパティを使用すると、ユーザー固有の情報を保存および取得できます。次の例では、認証済みのユーザーの userId に基づいて、item の owner プロパティを設定します。
+Azure Mobile Services では、ID プロバイダーを使用して、ユーザーを認証できます。詳細については、「[認証の使用]」を参照してください。認証されたユーザーがテーブル操作を呼び出したとき、Mobile Services では [user オブジェクト]を使用して、登録されたスクリプト関数にユーザーに関する情報を渡します。**userId** プロパティを使用すると、ユーザー固有の情報を保存および取得できます。次の例では、認証済みのユーザーの **userId** に基づいて、item の owner プロパティを設定します。
 
 	function insert(item, user, request) {
 	    item.owner = user.userId;
@@ -378,7 +378,7 @@ Azure Mobile Services では、ID プロバイダーを使用して、ユーザ�
 
 Azure Mobile Services では、ID プロバイダーを使用して、ユーザーを認証できます。詳細については、「[認証の使用]」を参照してください。認証されたユーザーがカスタム API を要求すると、Mobile Services は [user オブジェクト]を使用して、カスタム API コードにユーザーに関する情報を提供します。[user オブジェクト]には、[request オブジェクト]の user プロパティからアクセスします。**userId** プロパティを使用すると、ユーザー固有の情報を保存および取得できます。
 
-次の **OrderPizza** カスタム API 関数では、認証済みのユーザーの userId に基づいて、item の owner プロパティを設定します。
+次の **OrderPizza** カスタム API 関数では、認証済みのユーザーの **userId** に基づいて、item の owner プロパティを設定します。
 
 		exports.post = function(request, response) {
 			var userTable = request.service.tables.getTable('user');
@@ -453,7 +453,7 @@ Mobile Services を使用すると、決まったスケジュールでのジョ�
 
 スケジュールされたジョブは、次のいずれかの方法で定義できます。
 
-+ [Azure クラシック ポータル]のスケジューラのーの **[スクリプト]** タブで。
++ [Azure クラシック ポータル]のスケジューラの **[スクリプト]** タブで
 
 	![3][3]
 
@@ -1056,4 +1056,4 @@ Stream|サポートされていません
 [Azure Mobile Services 内での package.json のサポート]: http://go.microsoft.com/fwlink/p/?LinkId=391036
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

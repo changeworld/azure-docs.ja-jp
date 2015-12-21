@@ -448,8 +448,8 @@ FROM	sys.dm_pdw_wait_stats w
 [開発の概要]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[Azure SQL データベースにおけるデータベース、ログイン、およびユーザーの管理]: https://msdn.microsoft.com/ja-jp/library/azure/ee336235.aspx
+[Azure SQL データベースにおけるデータベース、ログイン、およびユーザーの管理]: https://msdn.microsoft.com/library/azure/ee336235.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

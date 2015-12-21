@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/25/2015"
+	ms.date="12/07/2015"
 	ms.author="donnam"/>
 
 # Mobile Services でのオフライン データの同期の使用
@@ -177,4 +177,4 @@
 [NuGet Addin for Xamarin]: https://github.com/mrward/monodevelop-nuget-addin
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

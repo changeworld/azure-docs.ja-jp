@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/09/2015"
+	ms.date="12/08/2015"
 	ms.author="roalexan" />
 
 
@@ -128,9 +128,9 @@ RRS 操作の追加の場合とよく似ているため、BES 操作のスクリ
 
 ![try-it](./media/machine-learning-manage-web-service-endpoints-using-api-management/try-it.png)
 
-要求パラメーターで、**[apiversion]** に「**workspace**」、「**service**」、「**2.0**」と入力し、**[詳細]** に「**true**」と入力します。AzureML Web サービスのダッシュボードに **ワークスペース** と **サービス** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+要求パラメーターで、**[apiversion]** に「**workspace**」、「**service**」、「**2.0**」と入力し、**[詳細]** に「**true**」と入力します。AzureML Web サービスのダッシュ ボードに **ワークスペース** と **サービス** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
-要求ヘッダーで、**[ヘッダーの追加]** をクリックして「**Content-Type**」と「**application/json**」を入力し、**[ヘッダーの追加]** をクリックして「**Authorization**」と「**Bearer <YOUR AZUREML SERVICE API-KEY>**」を入力します。AzureML Web サービスのダッシュボードに **api key** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+要求ヘッダーで、**[ヘッダーの追加]** をクリックして「**Content-Type**」と「**application/json**」を入力し、**[ヘッダーの追加]** をクリックして「**Authorization**」と「**Bearer <YOUR AZUREML SERVICE API-KEY>**」を入力します。AzureML Web サービスのダッシュ ボードに **api key** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
 要求本文に「**{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}**」と入力します。
 
@@ -200,11 +200,11 @@ Web サービスを作成します。**[Web サービス]** を展開し、**[�
 
 AzureML web サービスは、RSS (要求/応答サービス) と BES (バッチ実行サービス) のエンドポイントで構成されます。RSS は、同期の実行用です。BES は、同期ジョブの実行用です。次のサンプルの Python ソースを使用して、Web サービスをテストするには、Azure SDK for Python をダウンロードして、インストールする必要があります (「[Python をインストールする方法](python-how-to-install.md)」をご覧ください)。
 
-次のサンプルのソースには、実験の**workspace**、**service**、**api\_key** が必要です。Web サービス ダッシュボードの実験の **[要求/応答]** か **[バッチの実行]** をクリックするとワークスペースとサービスが表示されます。
+次のサンプルのソースには、実験の**workspace**、**service**、**api\_key** が必要です。Web サービス ダッシュ ボードの実験の **[要求/応答]** か **[バッチの実行]** をクリックするとワークスペースとサービスが表示されます。
 
 ![find-workspace-and-service](./media/machine-learning-manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
-Web サービス ダッシュボードの実験をクリックすると **api\_key** が表示されます。
+Web サービス ダッシュ ボードの実験をクリックすると **api\_key** が表示されます。
 
 ![find-api-key](./media/machine-learning-manage-web-service-endpoints-using-api-management/find-api-key.png)
 
@@ -212,7 +212,7 @@ Web サービス ダッシュボードの実験をクリックすると **api\_k
 
 #####テスト ボタン
 
-RRS エンドポイントを簡単にテストするには、Web サービス ダッシュボードで **[テスト]** をクリックします。
+RRS エンドポイントを簡単にテストするには、Web サービス ダッシュ ボードで **[テスト]** をクリックします。
 
 ![test](./media/machine-learning-manage-web-service-endpoints-using-api-management/test.png)
 
@@ -226,7 +226,7 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 
 #####サンプル コード
 
-クライアント コードから RRS テストする方法もあります。ダッシュボードで **[要求/応答]** をクリックし、と最下部までスクロールすると、C#、Python、R のサンプル コードが表示されます。また、要求 URI、ヘッダー、本文 を含むRRS 要求の構文も表示されます。
+クライアント コードから RRS テストする方法もあります。ダッシュ ボードで **[要求/応答]** をクリックし、と最下部までスクロールすると、C#、Python、R のサンプル コードが表示されます。また、要求 URI、ヘッダー、本文 を含むRRS 要求の構文も表示されます。
 
 このガイドでは、Python の機能例について説明します。実験の**workspace**、**service**、**api\_key** を使用して変更する必要があります。
 
@@ -258,7 +258,7 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
     	print(json.loads(error.read()))
 
 ####BES エンドポイントのテスト
-ダッシュボードの **[バッチの実行]** をクリックして、最下部までスクロールします。C# の場合、Python、R のサンプル コードが表示されます。また、ジョブを送信する、ジョブを送信する、ジョブを開始する、ジョブのステータスか結果を取得する、ジョブを削除するなどの BES 要求の構文も表示されます。
+ダッシュ ボードの **[バッチの実行]** をクリックして、最下部までスクロールします。C# の場合、Python、R のサンプル コードが表示されます。また、ジョブを送信する、ジョブを送信する、ジョブを開始する、ジョブのステータスか結果を取得する、ジョブを削除するなどの BES 要求の構文も表示されます。
 
 このガイドでは、Python の機能例について説明します。実験の**workspace**、**service**、**api\_key** を使用して変更する必要があります。また、**ストレージ アカウント名**、**ストレージ アカウント キー**、**ストレージ コンテナー名**を変更するがあります。最後に、**[入力ファイル]** の場所と **[出力ファイル]** の場所を変更する必要があります。
 
@@ -384,4 +384,4 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 	return
 	invokeBatchExecutionService()
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

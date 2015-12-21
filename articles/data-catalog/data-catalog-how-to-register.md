@@ -37,6 +37,7 @@
 * SQL Server Analysis Services 表形式テーブル
 * SQL Server Reporting Services レポート
 * Azure Storage BLOB およびディレクトリ
+* Azure Data Lake Store
 * HDFS のファイルとディレクトリ
 * Apache Hive テーブル
 * Teradata テーブルと Teradata ビュー
@@ -95,4 +96,4 @@
 ## 概要
 **Azure Data Catalog** でデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされることによって、データ ソースの検出と理解が容易になります。登録されたデータ ソースは、**Azure Data Catalog** ポータルを使用して注釈付け、管理、および検出することができます。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

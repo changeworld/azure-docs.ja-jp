@@ -4,7 +4,7 @@
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
-   manager="stevenpo"
+   manager="StevenPo"
    editor=""/>
 
 <tags
@@ -29,12 +29,12 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 
 Azure セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。Azure セキュリティ センターは、サブスクリプションがある場合に有効です。サブスクリプションがない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
 
-Azure セキュリティ センターは [Microsoft Azure プレビュー ポータル](http://azure.microsoft.com/features/azure-portal/)からアクセスします。詳細は [Azure プレビュー ポータルのドキュメント](https://azure.microsoft.com/documentation/services/azure-portal/)を参照してください。
+Azure セキュリティ センターは [Azure ポータル](http://azure.microsoft.com/features/azure-portal/)からアクセスします。詳細は、[ポータルのドキュメント](https://azure.microsoft.com/documentation/services/azure-portal/)を参照してください。
 
 
 ## Azure セキュリティ センターへのアクセス
 
-Azure セキュリティ センターにアクセスするには、Azure ポータルで次のようにします。
+Azure セキュリティ センターにアクセスするには、ポータルで次の手順を実行します。
 
 1. **[参照]** を選択し、**[セキュリティ センター]** オプションまでスクロールします。 ![][1]
 
@@ -103,4 +103,4 @@ Azure セキュリティ センターにアクセスするには、Azure ポー�
 [6]: ./media/security-center-get-started/security-alert.png
 [7]: ./media/security-center-get-started/security-alert-detail.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

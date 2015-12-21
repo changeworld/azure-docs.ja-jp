@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="10/12/2015"
+	ms.date="12/04/2015"
 	ms.author="inhenk"/>
 
 # Azure PowerShell を使用したロールベースのアクセス制御 (RBAC) の管理
@@ -26,14 +26,14 @@
 ### 使用可能なすべてのロールの表示
 割り当てることができる RBAC のロールを表示したり、アクセス権が付与されている操作を調べたりするには、次のコマンドを使用します。
 
-		Get-AzureRoleDefinition
+		Get-AzureRmRoleDefinition
 
 ![](./media/role-based-access-control-manage-access-powershell/1-get-azure-rm-role-definition1.png)
 
 ### ロールのアクションの表示
 特定のロールのアクションを表示するには、次のコマンドを使用します。
 
-    Get-AzureRoleDefinition <role name>
+    Get-AzureRmRoleDefinition <role name>
 
 ![](./media/role-based-access-control-manage-access-powershell/1-get-azure-rm-role-definition2.png)
 
@@ -41,26 +41,26 @@
 ### 選択したサブスクリプションのすべてのロールの割り当ての表示
 指定したサブスクリプション、リソース、またはリソース グループで有効な RBAC のアクセス権の割り当てを表示するには、次のコマンドを使用します。
 
-    Get-AzureRoleAssignment
+    Get-AzureRmRoleAssignment
 
 ###	リソース グループに対して有効なロールの割り当ての表示
 リソース グループのアクセス権の割り当てを表示するには、次のコマンドを使用します。
 
-    Get-AzureRoleAssignment -ResourceGroupName <resource group name>
+    Get-AzureRmRoleAssignment -ResourceGroupName <resource group name>
 
 ![](./media/role-based-access-control-manage-access-powershell/4-get-azure-rm-role-assignment1.png)
 
 ### ユーザーへのロールの割り当て (ユーザー グループに割り当てられているロールを含む) の表示
 指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを表示するには、次のコマンドを使用します。
 
-    Get-AzureRoleAssignment -ExpandPrincipalGroups
+    Get-AzureRmRoleAssignment -ExpandPrincipalGroups
 
 ![](./media/role-based-access-control-manage-access-powershell/4-get-azure-rm-role-assignment2.png)
 
 ### 従来のサービス管理者ロールと共同管理者ロールの割り当ての表示
 従来のサブスクリプション管理者と共同管理者のアクセス権の割り当てを表示するには、次のコマンドを使用します。
 
-    Get-AzureRoleAssignment -IncludeClassicAdministrators
+    Get-AzureRmRoleAssignment -IncludeClassicAdministrators
 
 ## アクセスの許可
 ### オブジェクト ID の検索
@@ -69,47 +69,84 @@
 #### Azure AD グループのオブジェクト ID の検索
 Azure AD グループのオブジェクト ID を取得するには、次のコマンドを使用します。
 
-    Get-AzureADGroup -SearchString <group name in quotes>
+    Get-AzureRmADGroup -SearchString <group name in quotes>
 
 #### Azure AD サービス プリンシパルのオブジェクト ID の検索
-Azure AD サービス プリンシパルのオブジェクト ID を取得するには、Get-AzureADServicePrincipal -SearchString<service name in quotes> を使用します。
+Azure AD サービス プリンシパルのオブジェクト ID を取得するには、Get-AzureRmADServicePrincipal -SearchString<service name in quotes> を使用します。
 
 ### サブスクリプションのスコープでのグループへのロールの割り当て
 サブスクリプションのスコープでグループにアクセス権を付与するには、次のコマンドを使用します。
 
-    New-AzureRoleAssignment -ObjId <object id> -RoleDefinitionName <role name in quotes> -Scope <scope such as subscription/subscription id>
+    New-AzureRmRoleAssignment -ObjId <object id> -RoleDefinitionName <role name in quotes> -Scope <scope such as subscription/subscription id>
 
 ![](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment1.png)
 
 ### サブスクリプションのスコープでのアプリケーションへのロールの割り当て
 サブスクリプションのスコープでアプリケーションにアクセス権を付与するには、次のコマンドを使用します。
 
-    New-AzureRoleAssignment -ObjId <object id> -RoleDefinitionName <role name in quotes> -Scope <scope such as subscription/subscription id>
+    New-AzureRmRoleAssignment -ObjId <object id> -RoleDefinitionName <role name in quotes> -Scope <scope such as subscription/subscription id>
 
 ![](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment2.png)
 
 ### リソース グループのスコープでのユーザーへのロールの割り当て
 リソース グループのスコープでユーザーにアクセス権を付与するには、次のコマンドを使用します。
 
-    New-AzureRoleAssignment -SignInName <email of user> -RoleDefinitionName <role name in quotes> -ResourceGroupName <resource group name>
+    New-AzureRmRoleAssignment -SignInName <email of user> -RoleDefinitionName <role name in quotes> -ResourceGroupName <resource group name>
 
 ![](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment3.png)
 
 ### リソースのスコープでのグループへのロールの割り当て
 リソースのスコープでグループにアクセス権を付与するには、次のコマンドを使用します。
 
-    New-AzureRoleAssignment -ObjId <object id> -RoleDefinitionName <role name in quotes> -ResourceName <resource name> -ResourceType <resource type> -ParentResource <parent resource> -ResourceGroupName <resource group name>
+    New-AzureRmRoleAssignment -ObjId <object id> -RoleDefinitionName <role name in quotes> -ResourceName <resource name> -ResourceType <resource type> -ParentResource <parent resource> -ResourceGroupName <resource group name>
 
 ![](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment4.png)
 
 ## アクセス権の削除
 ユーザー、グループ、アプリケーションのアクセス権を削除するには、次のコマンドを使用します。
 
-    Remove-AzureRoleAssignment -ObjId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription/subscription id>
+    Remove-AzureRmRoleAssignment -ObjId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription/subscription id>
 
 ![](./media/role-based-access-control-manage-access-powershell/3-remove-azure-rm-role-assignment.png)
+
+## カスタム ロールの作成
+カスタム ロールを作成するには、`New-AzureRmRoleDefinition` コマンドを使用します。
+
+次の例では、「*Virtual Machine Operator*」という名前のカスタム ロールが作成されます。このロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。カスタム ロールは 2 つのサブスクリプションで使用できます。
+
+![](./media/role-based-access-control-manage-access-powershell/2-new-azurermroledefinition.png)
+
+## カスタム ロールの修正
+カスタム ロールを修正するには、最初に `Get-AzureRmRoleDefinition` コマンドを使用してロール定義を取得します。必要に応じてロール定義を変更します。最後に、`Set-AzureRmRoleDefinition` コマンドを使用して変更したロール定義を保存します。
+
+次の例では、`Microsoft.Insights/diagnosticSettings/*` 操作が *Virtual Machine Operator* カスタム ロールに追加されます。
+
+![](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-1.png)
+
+次の例では、Azure サブスクリプションが Virtual Machine Operator カスタム ロールの割り当て可能なスコープに追加されます。
+
+![](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-2.png)
+
+## カスタム ロールの削除
+
+カスタム ロールを削除するには、`Remove-AzureRmRoleDefinition` コマンドを使用します。
+
+次の例では、*Virtual Machine Operator* カスタム ロールが削除されます。
+
+![](./media/role-based-access-control-manage-access-powershell/4-remove-azurermroledefinition.png)
+
+## カスタム ロールの一覧表示
+特定のスコープで割り当て可能なロールを一覧表示するには、`Get-AzureRmRoleDefinition` コマンドを使用します。
+
+次の例では、選択したサブスクリプションで割り当て可能なすべてのロールが一覧表示されます。
+
+![](./media/role-based-access-control-manage-access-powershell/5-get-azurermroledefinition-1.png)
+
+次の例では、*Virtual Machine Operator* カスタム ロールは *Production4* サブスクリプションでは利用できません。そのサブスクリプションはロールの **AssignableScopes** にないためです。
+
+![](./media/role-based-access-control-manage-access-powershell/5-get-azurermroledefinition2.png)
 
 ## RBAC のトピック
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

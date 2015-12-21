@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="08/08/2015"
+	ms.date="11/30/2015"
 	ms.author="christopheranderson"/>
 
 # 障害発生時のモバイル サービスの復旧
@@ -22,13 +22,13 @@
 
 &nbsp;
 
-Azure Mobile Services を使用して、アプリケーションをデプロイした場合、組み込み機能を使用することで、サーバーの障害、ネットワークの中断、データの消失、広範囲に及ぶ設備の損失など、可用性の問題が発生したときにビジネス継続性を維持できます。Azure Mobile Services を使用して、アプリケーションをデプロイすることで、従来の内部設置型ソリューションをデプロイする場合に設計、実装、および管理する必要があるさまざまなフォールト トレランス機能やインフラストラクチャ機能を利用することができます。Azure により、わずかな料金で潜在的な障害の大部分が軽減されます。
+Azure Mobile Services を使用して、アプリケーションをデプロイした場合、組み込み機能を使用することで、サーバーの障害、ネットワークの中断、データの消失、広範囲に及ぶ設備の損失など、可用性の問題が発生したときにビジネス継続性を維持できます。Azure Mobile Services を使用して、アプリケーションをデプロイすることで、従来のオンプレミスのソリューションをデプロイする場合に設計、実装、および管理する必要があるさまざまなフォールト トレランス機能やインフラストラクチャ機能を利用することができます。Azure により、わずかな料金で潜在的な障害の大部分が軽減されます。
 
 ## <a name="prepare"></a>考えられる災害に対応する準備
 
 可用性の問題が発生した場合に簡単に復旧するには、あらかじめ対応する準備を整えておきます。
 
-+ **Azure Mobile Services の SQL データベースのデータをバックアップする** モバイル サービス アプリケーションのデータは、Azure SQL Database に格納されています。「[Azure SQL Database におけるビジネス継続性]」の説明に従ってバックアップすることをお勧めします。
++ **Azure Mobile Services の SQL Database のデータをバックアップする** モバイル サービス アプリケーションのデータは、Azure SQL Database に格納されています。「[Azure SQL データベースにおけるビジネス継続性]」の説明に従ってバックアップすることをお勧めします。
 + **モバイル サービス スクリプトをバックアップする** [Team Foundation Service] や [GitHub] などのソース管理システムにモバイル サービス スクリプトを保存し、モバイル サービス自体でのコピーのみに頼らないようにすることをお勧めします。スクリプトは、Mobile Services の[ソース管理機能]または [Azure CLI を使用]して、Azure クラシック ポータルからダウンロードできます。Azure クラシック ポータルで "プレビュー" というラベルが付いている機能には、細心の注意を払ってください。それらのスクリプトの復旧は保証されておらず、独自のソース管理の元のスクリプトから復旧することが必要になる場合があります。
 + **セカンダリ モバイル サービスを予約する** モバイル サービスで可用性の問題が発生した場合、Azure の代替リージョンに再デプロイすることが必要になる場合があります。(たとえば、リージョン全体のデータの損失などのまれな状況で) 容量の可用性を確保するためには、代替リージョンにセカンダリ モバイル サービスを作成し、そのモードをプライマリ サービスのモードと同じかそれ以上に設定することをお勧めします。(プライマリ サービスが Basic モードの場合、セカンダリ サービスは Basic と Standard のどちらかに設定できます。ただし、プライマリが Standard の場合、セカンダリも Standard である必要があります)。
 
@@ -37,7 +37,7 @@ Azure Mobile Services を使用して、アプリケーションをデプロイ�
 次の状況は、復旧操作が必要となる可能性がある問題を示しています。
 
 + モバイル サービスに接続されているアプリケーションが長時間にわたってモバイル サービスと通信できない。
-+ **Azure クラシック ポータル**で、モバイル サービスの状態が "[異常]" と表示されている。
++ [Azure クラシック ポータル]で、モバイル サービスの状態が "**異常**" と表示されている。
 + Azure クラシック ポータルで、モバイル サービスのどのタブの上部にも "**異常**" というバナーが表示され、管理操作を実行するとエラー メッセージが生成される。
 + [Azure サービス ダッシュボード]に可用性の問題が示されている。
 
@@ -83,11 +83,18 @@ Azure Mobile Services を使用して、アプリケーションをデプロイ�
 	+ Azure クラシック ポータルで、モバイル サービスの **[構成]** タブにある [データベースの変更] をクリックし、新しく復旧したデータベースを選択します。
 
 7. これでモバイル サービスは、別の物理的な場所でホストされるようになりました。実行中のサイトを更新できるように、発行と git の資格情報を更新する必要があります。
-	+ **.NET バックエンド** を使用している場合、「[Publish your mobile service (モバイル サービスの発行)](mobile-services-dotnet-backend-windows-store-dotnet-get-started/#publish-your-mobile-service)」で説明されるように発行プロファイルをもう一度設定します。これで新しいサービスの場所を指定する発行の詳細が更新されます。
-	+ **Javascript バックエンド**を使用し、Azure クラシック ポータルでサービスを管理する場合、追加の操作を行う必要はありません。
+
+	+ **.NET バックエンド** を使用している場合、「[Publish your mobile service (モバイル サービスの発行)](mobile-services-dotnet-backend-windows-store-dotnet-get-started.md#publish-your-mobile-service)」で説明されるように発行プロファイルをもう一度設定します。これで新しいサービスの場所を指定する発行の詳細が更新されます。
+	+ **Javascript バックエンド**を使用し、ポータルでサービスを管理する場合、追加の操作を行う必要はありません。
+
 	+ **Javascript バックエンド**を使用してノードでサービスを管理する場合、新しいリポジトリを指定する Git リモートを更新します。これを実行するには、Git リモートから git ファイルのパスを削除します。
 
-		1. 現在の配信元のリモートを探します (git remote -v origin https://myservice.scm.azure-mobile.net/myservice.git (fetch) origin https://myservice.scm.azure-mobile.net/myservice.git (push))。
+		1. 現在の配信元のリモートを探します。
+
+				git remote -v
+				 origin  https://myservice.scm.azure-mobile.net/myservice.git (fetch)
+				 origin  https://myservice.scm.azure-mobile.net/myservice.git (push)
+
 		3. 最後の .git ファイルのパスを指定せずに同じ URL を使用してリモートを更新します (git remote set-url origin https://myservice.scm.azure-mobile.net)。
 		4. 配信元からプルして正常に機能していることを確認します。
 
@@ -99,12 +106,13 @@ Azure Mobile Services を使用して、アプリケーションをデプロイ�
 
 <!-- URLs. -->
 [Azure SQL Database におけるビジネス継続性]: http://msdn.microsoft.com/library/windowsazure/hh852669.aspx
+[Azure SQL データベースにおけるビジネス継続性]: http://msdn.microsoft.com/library/windowsazure/hh852669.aspx
 [Team Foundation Service]: http://tfs.visualstudio.com/
-
+[Github]: https://github.com/
 [ソース管理機能]: http://www.windowsazure.com/develop/mobile/tutorials/store-scripts-in-source-control/
 [Azure CLI を使用]: http://www.windowsazure.com/develop/mobile/tutorials/command-line-administration/
-[異常]: http://manage.windowsazure.com/
+[Azure クラシック ポータル]: http://manage.windowsazure.com/
 [Azure サービス ダッシュボード]: http://www.windowsazure.com/support/service-dashboard/
 [Azure CLI を使用したモバイル サービスの自動化]: http://www.windowsazure.com/develop/mobile/tutorials/command-line-administration/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

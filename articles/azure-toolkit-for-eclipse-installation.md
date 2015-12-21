@@ -16,7 +16,7 @@
     ms.date="11/19/2015" 
     ms.author="robmcm"/>
 
-<!-- Legacy MSDN URL = https://msdn.microsoft.com/ja-JP/library/azure/hh690946.aspx -->
+<!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690946.aspx -->
 
 # Azure Toolkit for Eclipse のインストール #
 
@@ -87,4 +87,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic590123]: ./media/azure-toolkit-for-eclipse-installation/ic590123.png
 [ic719482]: ./media/azure-toolkit-for-eclipse-installation/ic719482.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

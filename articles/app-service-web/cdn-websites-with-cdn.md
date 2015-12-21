@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.date="12/08/2015" 
 	ms.author="cephalin"/>
 
 
 # Azure App Service で Azure CDN を使用する
 
-[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) は、[Azure CDN](/services/cdn/) との統合が可能で、顧客の近くにあるサーバー ノードから Web アプリのコンテンツをグローバルに配信することにより、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) が備えるグローバル スケーリング機能を向上させることができます (現在のノードの場所を示す最新のリストについては、[こちら](http://msdn.microsoft.com/library/azure/gg680302.aspx)を参照してください)。静的な画像を配信するシナリオでは、この統合により、Azure App Service Web Apps のパフォーマンスが飛躍的に向上し、Web アプリのユーザー エクスペリエンスが世界中で大幅に改善します。
+[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) は、[Azure CDN](/services/cdn/) との統合が可能で、顧客の近くにあるサーバー ノードから Web Apps のコンテンツをグローバルに配信することにより、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) が備えるグローバル スケーリング機能を向上させることができます (現在のノードの場所を示す最新のリストについては、[こちら](http://msdn.microsoft.com/library/azure/gg680302.aspx)を参照してください)。静的な画像を配信するシナリオでは、この統合により、Azure App Service Web Apps のパフォーマンスが飛躍的に向上し、Web Apps のユーザー エクスペリエンスが世界中で大幅に改善します。
 
 Web App と Azure CDN の統合には、次の利点があります。
 
@@ -39,11 +39,9 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 このチュートリアルの前提条件は次のとおりです。
 
 -	アクティブな [Microsoft Azure アカウント](/account/)
--	Visual Studio 2013 と [Azure SDK for .NET](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
+-	Visual Studio 2015 と [Azure SDK for .NET](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)Visual Studio を使用する場合、手順が異なることがあります。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。
-+ [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。
-+ [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。- Visual Studio サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。+ [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。- Visual Studio サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 >
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -51,36 +49,33 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 このセクションでは、Visual Studio 2013 の既定の ASP.NET MVC アプリケーション テンプレートを App Service にデプロイした後、これを新しい CDN エンドポイントと統合します。次の手順に従ってください。
 
-1. Visual Studio 2013 で、メニュー バーから **[ファイル]、[新規]、[プロジェクト]、[Web]、[ASP.NET Web アプリケーション]** に移動し、新しい ASP.NET Web アプリケーションを作成します。クラウド サービスに名前を付けて、**[OK]** をクリックします。
+1. Visual Studio 2015 で、メニュー バーから **[ファイル]、[新規]、[プロジェクト]、[Web]、[ASP.NET Web アプリケーション]** に移動し、新しい ASP.NET Web アプリケーションを作成します。クラウド サービスに名前を付けて、**[OK]** をクリックします。
 
 	![](media/cdn-websites-with-cdn/1-new-project.png)
 
-3. **MVC** を選択し、**[サブスクリプションの管理]** をクリックします。
+3. **[MVC]** を選択し、**[OK]** をクリックします。
 
 	![](media/cdn-websites-with-cdn/2-webapp-template.png)
 
-4. **[サインイン]** をクリックします。
+4. Azure アカウントにまだログインしていない場合は、右上隅の [アカウント] アイコンをクリックし、ダイアログに従ってAzure アカウントにログインします。ログインしたら、次のようにアプリを構成し、**[新規]** をクリックしてアプリ用の新しい App Service プランを作成します。
 
-	![](media/cdn-websites-with-cdn/3-manage-subscription.png)
+	![](media/cdn-websites-with-cdn/3-configure-webapp.png)
 
-6. サインイン ページで、Azure アカウントをアクティブ化する際に使用した Microsoft アカウントでサインインします。
-7. サインインしたら、**[閉じる]** をクリックします。次に、**[OK]** をクリックして続行します。
+5. 新しい App Service プランをダイアログで次のように構成し、**[OK]** をクリックします。
 
-	![](media/cdn-websites-with-cdn/4-signed-in.png)
+	![](media/cdn-websites-with-cdn/4-app-service-plan.png)
 
-8. Azure で Web アプリを作成していない場合は、Visual Studio でアプリを作成できます。**[Microsoft Azure Websites を構成する]** ダイアログ ボックスで、サイト名が一意になっていることを確認します。次に、**[OK]** をクリックします
+8. **[作成]** をクリックして、Web アプリを作成します。
 
-	<!--todo: need 2.5.1 screenshot-->
 	![](media/cdn-websites-with-cdn/5-create-website.png)
 
-9. ASP.NET アプリケーションが作成されたら、[Web 発行アクティビティ] ウィンドウで **[`<app name>` をこのサイトに今すぐ発行する]** をクリックして、そのアプリケーションを Azure に発行します。**[発行]** をクリックしてプロセスを完了します。
+9. ASP.NET アプリケーションが作成されたら、[Azure App Service アクティビティ] ウィンドウで **[今すぐ `<app name>` をこの Web アプリに発行する]** をクリックして、Azure に発行します。**[発行]** をクリックしてプロセスを完了します。
 
-	<!--todo: need 2.5.1 screenshot-->
 	![](media/cdn-websites-with-cdn/6-publish-website.png)
 
 	発行が完了すると、発行済みの Web アプリがブラウザーに表示されます。
 
-1. CDN エンドポイントを作成するは、[Azure クラシック ポータル](https://manage.windowsazure.com)にログインします。
+1. CDN エンドポイントを作成するには、[Azure クラシック ポータル](https://manage.windowsazure.com)にログインします。
 2. **[新規]**、**[App Services]**、**[CDN]**、**[簡易作成]** の順にクリックします。**[http://*&lt;sitename>*.azurewebsites.net/]** を選択し、**[作成]** をクリックします。
 
 	![](media/cdn-websites-with-cdn/7-create-cdn.png)
@@ -365,7 +360,7 @@ Azure Web アプリでこの Razor コードが実行されると、次のよう
 
 ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合するには、次の手順に従います。
 
-1. *App\_Start\BundleConfig.cs* に戻り、CDN アドレスを指定する別の [Bundle コンストラクター](http://msdn.microsoft.com/library/jj646464.aspx)を使用するように `bundles.Add()` メソッドを変更します。そのためには、`RegisterBundles` メソッドの定義を次のコードで置き換えます。  
+1. *App\_Start\\BundleConfig.cs* に戻り、CDN アドレスを指定する別の [Bundle コンストラクター](http://msdn.microsoft.com/library/jj646464.aspx)を使用するように `bundles.Add()` メソッドを変更します。そのためには、`RegisterBundles` メソッドの定義を次のコードで置き換えます。  
 	
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -382,7 +377,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
           // Use the development version of Modernizr to develop with and learn from. Then, when you're
           // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-          bundles.Add(new ScriptBundle("~/bundles/modernizr", string.Format(cdnUrl, "bundles/modernizer")).Include(
+          bundles.Add(new ScriptBundle("~/bundles/modernizr", string.Format(cdnUrl, "bundles/modernizr")).Include(
                 "~/Scripts/modernizr-*"));
 
           bundles.Add(new ScriptBundle("~/bundles/bootstrap", string.Format(cdnUrl, "bundles/bootstrap")).Include(
@@ -509,27 +504,8 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 4. もう一度 Azure Web アプリに発行し、ホーム ページにアクセスします。
 5. ページの HTML コードを表示します。次のようなスクリプトが挿入されていることを確認できます。    
 	
-	```
-	...
-	<link href="http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474" rel="stylesheet"/>
-<script>(function() {
-                var loadFallback,
-                    len = document.styleSheets.length;
-                for (var i = 0; i < len; i++) {
-                    var sheet = document.styleSheets[i];
-                    if (sheet.href.indexOf('http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474') !== -1) {
-                        var meta = document.createElement('meta');
-                        meta.className = 'sr-only';
-                        document.head.appendChild(meta);
-                        var value = window.getComputedStyle(meta).getPropertyValue('width');
-                        document.head.removeChild(meta);
-                        if (value !== '1px') {
-                            document.write('<link href="/Content/css" rel="stylesheet" type="text/css" />');
-                        }
-                    }
-                }
-                return true;
-            }())||document.write('<script src="/Content/css"><\/script>');</script>
+	``` ... <link href="http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474" rel="stylesheet"/>
+<script>(function() { var loadFallback, len = document.styleSheets.length; for (var i = 0; i < len; i++) { var sheet = document.styleSheets[i]; if (sheet.href.indexOf('http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474') !== -1) { var meta = document.createElement('meta'); meta.className = 'sr-only'; document.head.appendChild(meta); var value = window.getComputedStyle(meta).getPropertyValue('width'); document.head.removeChild(meta); if (value !== '1px') { document.write('<link href="/Content/css" rel="stylesheet" type="text/css" />'); } } } return true; }())||document.write('<script src="/Content/css"><\\/script>');</script>
 
 	<script src="http://az673227.vo.msecnd.net/bundles/modernizer?v=1.0.0.25474"></script>
  	<script>(window.Modernizr)||document.write('<script src="/bundles/modernizr"><\/script>');</script>
@@ -562,8 +538,8 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 - [Azure 用 CDN の使用](../cdn-how-to-use-cdn.md)
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

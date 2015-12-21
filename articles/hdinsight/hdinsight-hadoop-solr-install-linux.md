@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/26/2015"
+	ms.date="12/04/2015"
 	ms.author="larryfr"/>
 
 # HDInsight Hadoop クラスターに Solr をインストールして使用する
@@ -57,7 +57,7 @@ HDInsight クラスターに Solr をインストールするためのサンプ�
 
 3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
 
-4. 「[Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-provision-linux-clusters.md#portal)」の説明に従って、クラスターのプロビジョニングを続行します。
+4. 「[Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-hadoop-create-linux-clusters-portal.md)」の説明に従って、クラスターのプロビジョニングを続行します。
 
 ## <a name="usesolr"></a>HDInsight で Solr を使用する方法
 
@@ -302,10 +302,8 @@ Solr のバックアップと復元の操作の詳細については、[SolrCore
 
 
 
-
-[hdinsight-provision]: hdinsight-provision-clusters-linux.md
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -23,7 +23,7 @@ Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提
 
 **主な利点:**
 
-- 接続プロバイダーによるオンプレミス ネットワークと Microsoft クラウド間のレイヤー 3 接続。接続には、任意の環境間 (IP VPN) 接続、ポイント ツー ポイントのイーサネット接続、イーサネット交換による仮想交差接続があります。
+- 接続プロバイダーによるオンプレミス ネットワークと Microsoft Cloud 間のレイヤー 3 接続。接続には、任意の環境間 (IP VPN) 接続、ポイント ツー ポイントのイーサネット接続、イーサネット交換による仮想交差接続があります。
 - 地政学的領域のすべての地域にわたる Microsoft のクラウド サービスへの接続。
 - ExpressRoute プレミアム アドオンを持つすべての領域にわたる Microsoft サービスへのグローバル接続。
 - 業界標準プロトコル (BGP) でのネットワークと Microsoft 間の動的ルーティング。
@@ -63,7 +63,7 @@ ExpressRoute 接続は次のサービスへのアクセスを有効にします�
 
 - Microsoft Azure サービス
 - Microsoft Office 365 サービス
-- Microsoft CRM Online サービス (近日対応予定) 
+- Microsoft CRM Online サービス 
  
 [ExpressRoute FAQ](expressroute-faqs.md) ページには、ExpressRoute でサポートされているサービスの詳しい一覧があります。
 
@@ -124,4 +124,4 @@ Microsoft は特殊な地政学的領域と顧客区分のために隔離され�
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

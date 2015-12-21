@@ -1,19 +1,19 @@
 
-<properties 
-    pageTitle="Azure RemoteApp の VNET に関するサイズ情報"
-    description="VNET で実行する Azure RemoteApp の IP アドレス要件について説明します。" 
-    services="remoteapp" 
-    documentationCenter="" 
-    authors="lizap" 
+<properties
+    pageTitle="Azure RemoteApp の VNET に関するサイズ情報 | Microsoft Azure"
+    description="VNET で実行する Azure RemoteApp の IP アドレス要件について説明します。"
+    services="remoteapp"
+    documentationCenter=""
+    authors="lizap"
     manager="mbaldwin" />
 
-<tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/02/2015" 
+<tags
+    ms.service="remoteapp"
+    ms.workload="compute"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="12/05/2015"
     ms.author="elizapo" />
 
 
@@ -28,7 +28,5 @@ Azure RemoteApp を仮想ネットワーク (VNET) で使用する場合、Remot
 
 - [個人の VNET から Azure VNET への切り替え](remoteapp-migratevnet.md)
 - [Azure RemoteApp で使用する Azure VNET の検証](remoteapp-vnet.md)
-  
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

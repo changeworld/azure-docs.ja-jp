@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="cache-redis"
     ms.workload="tbd"
-    ms.date="11/30/2015"
+    ms.date="12/03/2015"
     ms.author="sdanie" />
 
 # Managed Cache Service から Azure Redis Cache への移行
@@ -42,7 +42,7 @@ Azure Managed Cache Service と Azure Redis Cache は似ていますが、一部
 |Managed Cache Service の機能|Managed Cache Service のサポート|Azure Redis Cache のサポート|
 |---|---|---|
 |名前付きキャッシュ|既定のキャッシュが構成され、Standard および Premium キャッシュ プランでは、必要に応じて最大 9 個の名前付きキャッシュを追加構成できます。|Azure Redis キャッシュには 16 個のデータベースがあり、名前付きキャッシュに似た機能の実装に使用できます。詳細については、「[既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。|
-|高可用性|Standard および Premium キャッシュ プランでは、キャッシュ内のアイテムの高可用性が提供されます。アイテムが障害によって失われた場合でも、キャッシュ内のアイテムのバックアップ コピーを使用できます。セカンダリ キャッシュへの書き込みは同期的に行われます。|高可用性は Standard および Premium キャッシュ プランで利用でき、2 ノードのプライマリ/レプリカ構成を使用します (Premium キャッシュではシャードごとにプライマリ/レプリカ ペアがあります)。レプリカへの書き込みは非同期的に行われます。詳細については、[Azure Redis Cache の価格](https://azure.microsoft.com/pricing/details/cache/)に関するページを参照してください。|
+|高可用性|Standard および Premium キャッシュ プランでは、キャッシュ内のアイテムの高可用性が提供されます。アイテムが障害によって失われた場合でも、キャッシュ内のアイテムのバックアップ コピーを使用できます。セカンダリ キャッシュへの書き込みは同期的に行われます。|高可用性は Standard および Premium キャッシュ プランで利用でき、2 ノードのプライマリ/レプリカ構成を使用します (Premium キャッシュではシャードごとにプライマリ/レプリカ ペアがあります)。レプリカへの書き込みは非同期的に行われます。詳細については、[Azure Redis Cache の価格に関するページ](https://azure.microsoft.com/pricing/details/cache/)を参照してください。|
 |通知|名前付きキャッシュでさまざまなキャッシュ操作が発生したとき、クライアントは非同期の通知を受け取ることができます。|クライアント アプリケーションは、Redis のパブリッシュ/サブスクライブまたは[キースペース通知](cache-configure.md#keyspace-notifications-advanced-settings)を使用して、同様の通知機能を実現できます。|
 |ローカル キャッシュ|特に高速のアクセスのため、キャッシュされたオブジェクトのコピーをクライアントにローカルに格納します。|クライアント アプリケーションは、ディクショナリまたは類似のデータ構造を使用してこの機能を実装する必要があります。|
 |削除ポリシー|None または LRU。既定のポリシーは LRU です。|Azure Redis Cache は、volatile-lru、allkeys-lru、volatile-random、allkeys-random、volatile-ttl、noeviction の各削除ポリシーをサポートします。既定のポリシーは volatile-lru です。詳細については、「[既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。|
@@ -58,15 +58,15 @@ Microsoft Azure Redis Cache には、次のレベルがあります。
 -	**Standard** – 2 ノード (プライマリ/レプリカ)。複数のサイズ、最大 53 GB99.9% の SLA。
 -	**Premium** – 最大 10 個のシャードがある 2 ノード (プライマリ/レプリカ)。6 GB から 530 GB までの複数のサイズ (詳細はお問い合わせください)。Standard レベルのすべての機能と、[Redis クラスター](cache-how-to-premium-clustering.md)、[Redis の永続化](cache-how-to-premium-persistence.md)、[Azure Virtual Network](cache-how-to-premium-vnet.md) のサポートを含むその他の機能。99.9% の SLA。
 
-各レベルは、機能と価格ごとに異なります。機能については、このガイドで後述します。価格の詳細については、[キャッシュの価格の詳細](https://azure.microsoft.com/pricing/details/cache/)に関するページを参照してください。
+各レベルは、機能と価格ごとに異なります。機能については、このガイドで後述します。料金の詳細については、「[キャッシュの料金詳細](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。
 
 移行では最初に、前の Managed Cache Service キャッシュのサイズに合ったサイズを選択し、アプリケーションの要件に応じてスケールアップまたはスケールダウンします。Azure Redis Cache の適切なプランの選択に関する詳細なガイダンスについては、「[Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」をご覧ください。
 
 ## キャッシュを作成する
 
-Azure Redis Cache のキャッシュは、[Azure プレビュー ポータル](https://portal.azure.com)で、または ARM テンプレート、PowerShell、Azure CLI を使用して作成できます。
+Azure Redis Cache のキャッシュは、[Azure ポータル](https://portal.azure.com)で、または ARM テンプレート、PowerShell、Azure CLI を使用して作成できます。
 
--	Azure プレビュー ポータルでキャッシュを作成する方法については、「[キャッシュの作成](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)」をご覧ください。
+-	Azure ポータルでキャッシュを作成する方法については、「[キャッシュの作成](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)」をご覧ください。
 -	ARM テンプレートを使用してキャッシュを作成する方法については、「[テンプレートを使用して Redis Cache を作成する](cache-redis-cache-arm-provision.md)」をご覧ください。
 -	Azure PowerShell を使用してキャッシュを作成する方法については、「[Azure PowerShell を使用した Azure Redis Cache の管理](cache-howto-manage-redis-cache-powershell.md)」をご覧ください。
 -	Azure CLI を使用してキャッシュを作成する方法については、「[Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法](cache-manage-cli.md)」を参照してください。
@@ -195,4 +195,4 @@ Azure Redis Cache には、ASP.NET セッション状態とページ出力キャ
 
 [Azure Redis Cache ドキュメント](https://azure.microsoft.com/documentation/services/cache/)のチュートリアル、サンプル、ビデオ、その他をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

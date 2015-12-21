@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Microsoft Azure App Service で B2B プロセスを作成する" 
-   description="B2B プロセスの作成の概要" 
+   pageTitle="Azure App Service での B2B プロセスの作成 | Microsoft Azure" 
+   description="企業間プロセスの作成方法の概要" 
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
    authors="rajram" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="10/01/2015"
+   ms.date="12/07/2015"
    ms.author="rajram"/>
 
 
@@ -42,9 +42,9 @@ Contoso 社と Northwind 社は、ビジネス パートナーの関係にあり
 **必要な API アプリを作成および構成する**
 
 1. **Azure ストレージ BLOB コネクタ**のインスタンスを作成します。これには、Azure Storage アカウントの資格情報が必要です。インスタンスの作成前に、資格情報があることを確認してください。
-2. **BizTalk 取引先管理**のインスタンスを作成します。これには、正常に機能する空の SQL データベースが必要です。インスタンスの作成前に、空の SQL データベースがあることを確認してください。
-3. **AS2 Connector** のインスタンスを作成します。これにも、正常に機能する空の SQL データベースが必要です。インスタンスの作成前に、空の SQL データベースがあることを確認してください。AS2 の処理の一環としてメッセージのアーカイブを作成する場合には、データベースの作成中に、併せて Azure BLOB の資格情報を指定します。
-4. 作成した TPM (取引先管理) サービスを、以下のとおり構成します。
+2. **BizTalk 取引先管理**のインスタンスを作成します。これには、正常に機能する空の SQL Database が必要です。インスタンスの作成前に、空の SQL データベースがあることを確認してください。
+3. **AS2 Connector** のインスタンスを作成します。これにも、正常に機能する空の SQL Database が必要です。インスタンスの作成前に、空の SQL データベースがあることを確認してください。AS2 の処理の一環としてメッセージのアーカイブを作成する場合には、データベースの作成中に、併せて Azure BLOB の資格情報を指定します。
+4. 作成した TPM (取引先管理) サービスを、以下のとおり構成します。  
 	1. 上の手順で作成した TPM サービスのインスタンスを参照します。
 	2. *[コンポーネント]* の下にある **[パートナー]** オプションを使用して、**Contoso** という名前のパートナーを新たに**追加**し、そのプロファイルに必要な AS2 ID を入力します。
 	3. *[コンポーネント]* の下にある **[パートナー]** オプションを使用して、**Northwind** という名前のパートナーを新たに**追加**し、そのプロファイルに必要な AS2 ID を入力します。
@@ -52,13 +52,9 @@ Contoso 社と Northwind 社は、ビジネス パートナーの関係にあり
 
 
 ## フロー / ビジネス プロセスを作成する
-1. ここでは、最初のステップが AS2 のフローを新たに作成します。**AS2 Connector** をドラッグ アンド ドロップし、あらかじめ作成しておいたインスタンスを選択します。機能にはトリガーを選択します。
-
-![][1]
-
-2. **Azure Storage Blob Connector** をドラッグ アンド ドロップし、あらかじめ作成しておいたインスタンスを選択します。機能にはアクションを選択し、そのなかから希望する機能として [BLOB のアップロード] を選択します。必要に応じて構成します
-
-3. フローを作成およびデプロイします
+1. ここでは、最初のステップが AS2 のフローを新たに作成します。**AS2 Connector** をドラッグ アンド ドロップし、あらかじめ作成しておいたインスタンスを選択します。機能にはトリガーを選択します。![][1]  
+2. **Azure Storage Blob Connector** をドラッグ アンド ドロップし、あらかじめ作成しておいたインスタンスを選択します。機能にはアクションを選択し、その中から希望する機能として **[BLOB のアップロード]** を選択します。必要に応じて構成します。
+3. フローを作成/デプロイします。
 
 
 ## メッセージの処理およびトラブルシューティング
@@ -69,8 +65,8 @@ Contoso 社と Northwind 社は、ビジネス パートナーの関係にあり
 ![][2]
 
 <!--Image references-->
-[1]: ./media/app-service-logic-create-a-b2b-process/Flow.jpg
-[2]: ./media/app-service-logic-create-a-b2b-process/Tracking.jpg
+[1]: ./media/app-service-logic-create-a-b2b-process/Flow.png
+[2]: ./media/app-service-logic-create-a-b2b-process/Tracking.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

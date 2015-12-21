@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/12/2015"
+	ms.date="12/03/2015"
 	ms.author="mandia"/>
 
 
@@ -67,10 +67,10 @@ Bing 翻訳 | Bing を使用して、テキストを別の言語に翻訳しま�
 [BizTalk X12](app-service-logic-connector-x12.md) | 企業間通信で X12 プロトコルを使用して、メッセージを送受信します。
 [BizTalk XML Validator](app-service-logic-xml-validator.md) | 定義済みの XML スキーマを基準として XML データを検証します。既存のスキーマを使用することも、フラット ファイルのインスタンス、JSON のインスタンス、または既存のコネクタに基づいてスキーマを生成することもできます。
 [BizTalk XPath Extractor](app-service-logic-xpath-extract.md) | 選択した XPath に基づいて XML コンテンツを検索し、データを抽出します。
-DB2 コネクタ | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM DB2 データベースに接続します。Informix Structured Query Language (Informix 構造化クエリ言語) のコマンドに Web API と OData API の操作をマップできます。<br/><br/>トリガーはありません。アクションには、テーブルの選択、挿入、更新、削除、およびカスタム ステートメントが含まれます。<br/><br/>このコネクタには、TCP/IP ネットワーク経由で Informix サーバーに接続するための Microsoft Client for DRDA も含まれています。
+[DB2 コネクタ](app-service-logic-connector-db2.md) | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM DB2 データベースに接続します。Informix Structured Query Language (Informix 構造化クエリ言語) のコマンドに Web API と OData API の操作をマップできます。<br/><br/>トリガーはありません。アクションには、テーブルの選択、挿入、更新、削除、およびカスタム ステートメントが含まれます。<br/><br/>このコネクタには、TCP/IP ネットワーク経由で Informix サーバーに接続するための Microsoft Client for DRDA も含まれています。
 [ファイル](app-service-logic-connector-file.md) | このコネクタを使用すると、オンプレミスのファイル システムやネットワークに接続して、ファイルのアップロード、削除、一覧の取得などのさまざまなファイル タスクを実行できます。
 [FTP<br/>FTPS](app-service-logic-connector-ftp.md) | FTP/FTPS サーバーに接続して、ファイルのアップロード、取得、削除などのさまざまな FTP タスクを実行できます。
-Informix | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM Informix データベースに接続します。Informix Structured Query Language (Informix 構造化クエリ言語) のコマンドに Web API と OData API の操作をマップできます。<br/><br/>トリガーはありません。アクションには、テーブルの選択、挿入、更新、削除、およびカスタム ステートメントが含まれます。<br/><br/>オンプレミスで使用する場合は、VPN または Azure ExpressRoute を使用できます。このコネクタには、TCP/IP ネットワーク経由で Informix サーバーに接続するための Microsoft Client for DRDA も含まれています。
+[Informix](app-service-logic-connector-informix.md) | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM Informix データベースに接続します。Informix Structured Query Language (Informix 構造化クエリ言語) のコマンドに Web API と OData API の操作をマップできます。<br/><br/>トリガーはありません。アクションには、テーブルの選択、挿入、更新、削除、およびカスタム ステートメントが含まれます。<br/><br/>オンプレミスで使用する場合は、VPN または Azure ExpressRoute を使用できます。このコネクタには、TCP/IP ネットワーク経由で Informix サーバーに接続するための Microsoft Client for DRDA も含まれています。
 [Microsoft SQL Server](app-service-logic-connector-sql.md) | オンプレミスの SQL Server または Azure SQL Database に接続します。SQL データベース テーブルのエントリを作成、更新、取得、削除できます。
 MQ | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM WebSphere MQ Server Version 8 に接続します。オンプレミスで使用する場合は、VPN または Azure ExpressRoute を使用できます。コネクタには、Microsoft Client for MQ も含まれています。<br/><br/>トリガーはありません。アクションはありません。<br/><br/>**注** 現在のところ、Logic Apps で使用することはできません。
 [Oracle Database](app-service-logic-connector-oracle.md) | オンプレミスの Oracle Database に接続して、データベース テーブルのエントリを作成、更新、取得、削除できます。
@@ -94,4 +94,4 @@ MQ | Windows オペレーティング システムを実行している Azure �
 ## コネクタと API Apps の詳細
 [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md) [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md) [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

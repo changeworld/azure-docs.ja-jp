@@ -42,6 +42,7 @@
                 // expired, as shown in this post: http://aka.ms/jww5vp.
 
                 success = true;
+			    message = string.Format("Cached credentials for user - {0}", user.UserId);
             }
             else
             {
@@ -73,10 +74,10 @@
 
 	この **AuthenticateAsync** バージョンで、アプリはサービスにアクセスするために、**PasswordVault** に格納された資格情報の使用を試みます。保存された資格情報がないときも通常のサインインが実行されます。
 
-	>[AZURE.NOTE]キャッシュされたトークンは有効期限が切れている場合があります。また、認証後にアプリケーションを使用している際にトークンの期限切れが発生する場合があります。トークンの期限切れを確認する方法については、「[有効期限が切れた認証トークンのチェック](http://aka.ms/jww5vp)」を参照してください。トークンの期限切れに関連する認証エラーを処理するためのソリューションについては、投稿「[Azure Mobile Services マネージ SDK での有効期限切れトークンのキャッシュと処理](hive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx)」を参照してください。
+	>[AZURE.NOTE]キャッシュされたトークンは有効期限が切れている場合があります。また、認証後にアプリケーションを使用している際にトークンの期限切れが発生する場合があります。トークンの期限切れを確認する方法については、「[有効期限が切れた認証トークンのチェック](http://aka.ms/jww5vp)」を参照してください。トークンの期限切れに関連する認証エラーを処理するためのソリューションについては、投稿「[Azure Mobile Services マネージ SDK での有効期限切れトークンのキャッシュと処理](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx)」を参照してください。
 
 3. アプリケーションを 2 回再起動します。
 
 	最初の再起動では、プロバイダーによるサインインが再度必要になります。ただし、2 回目の再起動ではキャッシュされた資格情報が使用され、サインインは回避されます。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

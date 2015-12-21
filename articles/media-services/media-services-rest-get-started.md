@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/18/2015" 
+	ms.date="12/05/2015" 
 	ms.author="juliako"/>
 
 #REST API を使用したオンデマンド コンテンツ配信の概要
@@ -1209,4 +1209,4 @@ MPEG DASH をストリーミングするには、"/manifest" の後に (format=m
 <!-- URLs. -->
   [Azure クラシック ポータル]: http://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="09/23/2015"
+ ms.date="12/04/2015"
  ms.author="larryfr"/>
 
 # HDInsight での Apache Storm の Storm トポロジとコンポーネントの例
@@ -45,7 +45,7 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
 
 * [HDInsight での Apache Storm のデプロイと管理][6eb0d3b8]
 
-  [2b8c3488]: ../hdinsight-storm-getting-started.md "HDInsight クラスターで Storm を作成し、Storm ダッシュボードを使用してトポロジの例をデプロイする方法について説明します。"
+  [2b8c3488]: hdinsight-apache-storm-tutorial-get-started-linux.md "HDInsight クラスターで Storm を作成し、Storm ダッシュボードを使用してトポロジの例をデプロイする方法について説明します。"
   [6eb0d3b8]: hdinsight-storm-deploy-monitor-topology.md "Web ベースの Storm ダッシュボードと Storm UI または HDInsight Tools for Visual Studio を使用してトポロジをデプロイおよび管理する方法を説明します。"
   [16fce2d1]: hdinsight-storm-develop-csharp-visual-studio-topology.md "HDInsight Tools for Visual Studio を使用して C# Storm トポロジを作成する方法を説明します。"
   [5797064f]: hdinsight-storm-develop-java-topology.md "基本的なワード カウント トポロジを作成し、Maven を使用して Java で Storm トポロジを作成する方法について説明します。"
@@ -60,4 +60,4 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
   [ce0c02a2]: https://github.com/hdinsight/hdinsight-storm-examples/tree/master/templates/HDInsightStormExamples "このプロジェクトには、Event Hubs、DocumentDB、SQL Database などの Azure サービスと対話するためのスパウト、ボルト、トポロジのテンプレートが含まれます。"
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

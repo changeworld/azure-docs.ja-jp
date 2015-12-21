@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/26/2015"
+   ms.date="12/04/2015"
    ms.author="larryfr"/>
 
 # Linux での HDInsight の使用方法
@@ -106,7 +106,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
         wasb://CONTAINTERNAME@STORAGEACCOUNTNAME.blob.core.windows.net
 
-	> [AZURE.TIP] [jq](http://stedolan.github.io/jq/) をインストールしている場合は、次のコマンドを使用すると `fs.defaultFS` エントリのみが返されます。
+	> [AZURE.TIP][jq](http://stedolan.github.io/jq/) をインストールしている場合は、次のコマンドを使用すると `fs.defaultFS` エントリのみが返されます。
 	>
 	> `curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'`
 
@@ -116,7 +116,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 4. 返された JSON データで、`fs.azure.account.key` で始まるエントリを見つけます。エントリ名の残りの部分は、ストレージ アカウント名です。たとえば、「`fs.azure.account.key.mystorage.blob.core.windows.net`」のように入力します。このエントリに格納されている値が、ストレージ アカウントの認証に使用するキーです。
 
-	> [AZURE.TIP] [jq](http://stedolan.github.io/jq/) をインストールした場合は、次のコマンドを使用してキーおよび値の一覧を取得できます。
+	> [AZURE.TIP][jq](http://stedolan.github.io/jq/) をインストールした場合は、次のコマンドを使用してキーおよび値の一覧を取得できます。
 	>
 	> `curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties as $in | $in | keys[] | select(. | contains("fs.azure.account.key.")) as $item | $item | ltrimstr("fs.azure.account.key.") | { storage_account: ., storage_account_key: $in[$item] }'`
 
@@ -252,4 +252,4 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_1210_2015-->

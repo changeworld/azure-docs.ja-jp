@@ -49,7 +49,7 @@ IoT Hub はデバイスからクラウドへのメッセージを受信するた
 
 + Microsoft Visual Studio 2015、
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fprocess-d2c%2F target="\_blank") を参照してください。
++ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fprocess-d2c%2F target="\_blank") を参照してください。
 
 また、[Azure Storage] と [Azure Service Bus] について、ある程度の知識があることを前提とします。
 
@@ -98,7 +98,7 @@ IoT Hub に関するその他の情報:
 [Service Bus キュー]: https://azure.microsoft.com/ja-JP/documentation/articles/service-bus-dotnet-how-to-use-queues/
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 
-[Transient Fault Handling]: https://msdn.microsoft.com/ja-JP/library/hh680901(v=pandp.50).aspx
+[Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
 [IoT Hub のガイダンスの Event Hubs との互換性]: iot-hub-guidance.md#eventhubcompatible
 
@@ -119,4 +119,4 @@ IoT Hub に関するその他の情報:
 [Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
 [Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

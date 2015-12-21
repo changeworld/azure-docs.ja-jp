@@ -47,10 +47,8 @@
 - Azure SQL Database。SQL Database がない場合は、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
 - Azure PowerShell。
 
-> [AZURE.IMPORTANT]Azure PowerShell 1.0 Preview のリリースから、Switch-AzureMode コマンドレットは利用できなくなりました。また、Azure ResourceManger モジュールで使用されていたコマンドレットは名前が変更されました。この記事の例では、新しい PowerShell 1.0 Preview の名付け規則が使用されています。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページを参照してください。
 
-
-PowerShell コマンドレットを実行するには、Azure PowerShell をインストールして実行する必要があります。Switch-AzureMode が削除されたため、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行し、最新の Azure PowerShell をダウンロードしてインストールする必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
 
 
@@ -58,7 +56,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 まず、Azure アカウントへのアクセスを確立する必要があるため、PowerShell を起動してから以下のコマンドレットを実行します。ログイン画面で、Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを入力します。
 
-	Add-AzureAccount
+	Add-AzureRmAccount
 
 正常にサインインすると、サインインしている ID や使用中の Azure サブスクリプションを含む情報が画面に表示されます。
 
@@ -68,7 +66,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 サブスクリプションを選択するには、サブスクリプション ID またはサブスクリプション名 (**-SubscriptionName**) が必要になります。サブスクリプション ID は前の手順で示された情報からコピーできます。または、複数のサブスクリプションがあり、詳しい情報が必要な場合は、**Get-AzureSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。ご利用のサブスクリプションを取得したら次のコマンドレットを実行します。
 
 	$SubscriptionId = "4cac86b0-1e56-bbbb-aaaa-000000000000"
-    Select-AzureSubscription -SubscriptionId $SubscriptionId
+    Select-AzureRmSubscription -SubscriptionId $SubscriptionId
 
 **Select-AzureSubscription** を正常に実行すると、PowerShell プロンプトに戻ります。サブスクリプションが複数ある場合は、**Get-AzureSubscription** を実行して、使用するサブスクリプションが **IsCurrent: True** と表示されていることを確認できます。
 
@@ -78,7 +76,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 ## SQL Database のサービス階層とパフォーマンス レベルを変更する
 
-**Set-AzureRMSqlDatabase** コマンドレットを実行し、**-RequestedServiceObjectiveName** を目的の価格レベルのパフォーマンス レベルに設定します (*S0*、*S1*、*S2*、*S3*、*P1*、*P2* など)。
+**Set-AzureRmSqlDatabase** コマンドレットを実行し、**-RequestedServiceObjectiveName** を目的の価格レベルのパフォーマンス レベルに設定します (*S0*、*S1*、*S2*、*S3*、*P1*、*P2* など)。
 
     $ResourceGroupName = "resourceGroupName"
     
@@ -88,7 +86,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
     $NewEdition = "Standard"
     $NewPricingTier = "S2"
 
-    $ScaleRequest = Set-AzureSqlDatabase -DatabaseName $DatabaseName -ServerName $ServerName -ResourceGroupName $ResourceGroupName -Edition $NewEdition -RequestedServiceObjectiveName $NewPricingTier
+    $ScaleRequest = Set-AzureRmSqlDatabase -DatabaseName $DatabaseName -ServerName $ServerName -ResourceGroupName $ResourceGroupName -Edition $NewEdition -RequestedServiceObjectiveName $NewPricingTier
 
 
   
@@ -112,10 +110,10 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
     $NewEdition = "Standard"
     $NewPricingTier = "S2"
     
-    Add-AzureAccount
-    Select-AzureSubscription -SubscriptionId $SubscriptionId
+    Add-AzureRmAccount
+    Select-AzureRmSubscription -SubscriptionId $SubscriptionId
     
-    $ScaleRequest = Set-AzureRMSqlDatabase -DatabaseName $DatabaseName -ServerName $ServerName -ResourceGroupName $ResourceGroupName -Edition $NewEdition -RequestedServiceObjectiveName $NewPricingTier
+    $ScaleRequest = Set-AzureRmSqlDatabase -DatabaseName $DatabaseName -ServerName $ServerName -ResourceGroupName $ResourceGroupName -Edition $NewEdition -RequestedServiceObjectiveName $NewPricingTier
     
     $ScaleRequest
     
@@ -134,4 +132,4 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 - [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt163521.aspx)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

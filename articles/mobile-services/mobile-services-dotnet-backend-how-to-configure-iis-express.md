@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="09/16/2015"
+	ms.date="12/07/2015"
 	ms.author="glenga"/>
 
 # ローカル モバイル サービスへの接続を可能にするローカル Web サーバーの構成
@@ -29,4 +29,4 @@ Azure モバイル サービスを利用すると、サポートされている 
 
 [AZURE.INCLUDE [mobile-services-how-to-configure-iis-express](../../includes/mobile-services-how-to-configure-iis-express.md)]
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

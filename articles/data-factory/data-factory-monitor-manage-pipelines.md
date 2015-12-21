@@ -96,6 +96,7 @@ Data Factory のデータセット スライスは、次のいずれかの状態
 <td>ValidationRetry</td><td>検証の再試行を待機しています。</td>
 </tr>
 <tr>
+&lt; tr
 <td rowspan="2">InProgress</td><td>Validating</td><td>検証を実行中です。</td>
 </tr>
 <td></td>
@@ -165,19 +166,19 @@ Azure PowerShell を使用してパイプラインを管理できます。たと
 
 **PartitionProductsUsagePipeline** を中断するには、次の PowerShell コマンドを実行します。
 
-	Suspend-AzureDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+	Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 
 次に例を示します。
 
-	Suspend-AzureDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
+	Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
 
 **PartitionProductsUsagePipeline** の問題が解決されたら、次の PowerShell コマンドを実行して中断されているパイプラインを再開できます。
 
-	Resume-AzureDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+	Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 
 次に例を示します。
 
-	Resume-AzureDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
+	Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
 
 
 ## パイプラインをデバッグする
@@ -211,24 +212,24 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 		switch-azuremode AzureResourceManager
 3.	**Get-AzureDataFactorySlice** コマンドを実行してスライスとその状態を確認します。[状態] が **[Failed]** になっているスライスが表示されます。
 
-		Get-AzureDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-TableName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
+		Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-TableName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
 	
 	次に例を示します。
 
 
-		Get-AzureDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
+		Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
 
 	**StartDateTime** を、Set-AzureDataFactoryPipelineActivePeriod に対して指定した StartDateTime の値に置き換えます。
-4. **Get-AzureDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
+4. **Get-AzureRmDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
 
-		Get-AzureDataFactoryRun [-ResourceGroupName] <String> [-
+		Get-AzureRmDataFactoryRun [-ResourceGroupName] <String> [-
 		DataFactoryName] <String> [-TableName] <String> [-StartDateTime] 
 		<DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
 	
 	次に例を示します。
 
 
-		Get-AzureDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
+		Get-AzureRmDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
 
 	StartDateTime の値は、前の手順でメモしたエラーまたは問題のあるスライスの開始日時です。日時は二重引用符で囲む必要があります。
 5. 	エラーの詳細を含む (以下のような) 出力結果が表示されます。
@@ -257,10 +258,10 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 	
 6. 	上記出力結果の ID 値を使用して **Save-AzureDataFactoryLog** コマンドレットを実行し、同コマンドレットの **-DownloadLogs** オプションを使用してログ ファイルをダウンロードできます。
 
-	Save-AzureDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\\Test"
+	Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\\Test"
 
 
-## Azure ポータルを使用して
+## パイプラインのエラーを再実行する
 
 ### Azure クラシック ポータルの使用
 
@@ -272,15 +273,15 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 
 ### Azure PowerShell の使用
 
-Set-AzureDataFactorySliceStatus コマンドレットを使用してエラーを再実行できます。
+Set-AzureRmDataFactorySliceStatus コマンドレットを使用してエラーを再実行できます。
 
-	Set-AzureDataFactorySliceStatus [-ResourceGroupName] <String> [-DataFactoryName] <String> [-TableName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Status] <String> [[-UpdateType] <String> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
+	Set-AzureRmDataFactorySliceStatus [-ResourceGroupName] <String> [-DataFactoryName] <String> [-TableName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Status] <String> [[-UpdateType] <String> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
 
 **例:** 次の例では、Azure Data Factory "WikiADF" のテーブル "DAWikiAggregatedData" のすべてのスライスの状態を "PendingExecution" に設定します。
 
 **注:** UpdateType は UpstreamInPipeline に設定されます。これは、テーブルの各スライスの状態、およびパイプラインのアクティビティの入力テーブルとして使用されるすべての依存 (アップストリーム) テーブルの状態が、"PendingExecution" に設定されることを意味します。このパラメーターに指定できる他の値は、"Individual" です。
 
-	Set-AzureDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -TableName DAWikiAggregatedData -Status PendingExecution -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
+	Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -TableName DAWikiAggregatedData -Status PendingExecution -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 
 
 ## アラートを作成する
@@ -322,7 +323,7 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 	                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource",
 	                        "operationName": "RunFinished",
 	                        "status": "Failed",
-	                            "subStatus": "FailedExecution"   
+	                        "subStatus": "FailedExecution"   
 	                    }
 	                },
 	                "action": 
@@ -353,10 +354,12 @@ OnDemandClusterCreateStarted | 開始済み
 OnDemandClusterCreateSuccessful | Succeeded
 OnDemandClusterDeleted | Succeeded
 
+上記の例で使用する JSON 要素の詳細については、「[アラート ルールの作成](https://msdn.microsoft.com/library/azure/dn510366.aspx)」を参照してください。
+
 #### アラートのデプロイ 
 アラートをデプロイするには、次の例に示すように Azure PowerShell コマンドレットの **New-AzureResourceGroupDeployment** を使用します。
 
-	New-AzureResourceGroupDeployment -ResourceGroupName adf     -TemplateFile .\ADFAlertFailedSlice.json  
+	New-AzureResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\ADFAlertFailedSlice.json  
 
 リソース グループのデプロイメントが正常に終了すると、次のメッセージが表示されます。
 
@@ -400,6 +403,33 @@ OnDemandClusterDeleted | Succeeded
 
 - アラートの追加、取得、削除に使用できる PowerShell コマンドレットについては、「[Azure Insights コマンドレット](https://msdn.microsoft.com/library/mt282452.aspx)」という記事を参照してください。**Get-AlertRule** コマンドレットの使用例をいくつか以下に示します。
 
+
+		PS C:\> get-alertrule -res $resourceGroup -n ADFAlertsSlice -det
+			
+				Properties :
+		        Action      : Microsoft.Azure.Management.Insights.Models.RuleEmailAction
+		        Condition   :
+				DataSource :
+				EventName             :
+				Category              :
+				Level                 :
+				OperationName         : RunFinished
+				ResourceGroupName     :
+				ResourceProviderName  :
+				ResourceId            :
+				Status                : Failed
+				SubStatus             : FailedExecution
+				Claims                : Microsoft.Azure.Management.Insights.Models.RuleManagementEventClaimsDataSource
+		        Condition  	:
+				Description : One or more of the data slices for the Azure Data Factory has failed processing.
+				Status      : Enabled
+				Name:       : ADFAlertsSlice
+				Tags       :
+				$type          : Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage
+				Id: /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/ADFAlertsSlice
+				Location   : West US
+				Name       : ADFAlertsSlice
+		
 		PS C:\> Get-AlertRule -res $resourceGroup
 	
 				Properties : Microsoft.Azure.Management.Insights.Models.Rule
@@ -539,4 +569,4 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 	Parameters        :
 	Outputs           
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

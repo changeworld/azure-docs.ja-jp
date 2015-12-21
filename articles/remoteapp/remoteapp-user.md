@@ -1,18 +1,18 @@
-<properties 
-    pageTitle="Azure RemoteApp コレクションにユーザーを追加する" 
-    description="Azure RemoteApp コレクションにユーザーを追加する方法について説明します。" 
-    services="remoteapp" 
-	documentationCenter="" 
-    authors="lizap" 
+<properties
+    pageTitle="ユーザーを Azure RemoteApp コレクションに追加する | Microsoft Azure"
+    description="Azure RemoteApp コレクションにユーザーを追加する方法について説明します。"
+    services="remoteapp"
+	documentationCenter=""
+    authors="lizap"
     manager="mbaldwin" />
 
-<tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/12/2015" 
+<tags
+    ms.service="remoteapp"
+    ms.workload="compute"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="12/05/2015"
     ms.author="elizapo" />
 
 # Azure RemoteApp コレクションにユーザーを追加する方法
@@ -35,13 +35,13 @@ Office 365 ユーザーは、Azure Active Directory のユーザーです。そ�
 
 |ユーザー アカウント |クラウド |ハイブリッド|
 |--------------|--------|------|
-|Microsoft アカウント| 	あり|	いいえ|
-|Azure Active Directory (Azure AD)| | |	
+|Microsoft アカウント| 	はい|	いいえ|
+|Azure Active Directory (Azure AD)| | |
 |Azure AD クラウドのみ |あり |いいえ |
 |パスワード同期がある ADsync |あり |あり |
 |パスワード同期がない ADsync|	あり |いいえ |
 |AD FS がある ADsync |あり |あり |
-|サード パーティの Azure サポート ID プロバイダー (Ping など) |あり |あり|	
+|サード パーティの Azure サポート ID プロバイダー (Ping など) |あり |あり|
 |Multi-Factor Authentication |あり |あり |
 
 RemoteApp を使用するために Active Directory を構成する方法の詳細については、[ここ](remoteapp-ad.md)を参照してください。
@@ -51,6 +51,5 @@ RemoteApp を使用するために Active Directory を構成する方法の詳�
 
 ## Office 365 ProPlus ユーザー アカウントの情報
 コレクションに、Office 365 ProPlus のテンプレート イメージを使用しているか*または* Office 365 を使用するカスタム イメージを作成した場合は、サブスクリプションの既定のドメイン用の Office 365 サブスクリプションを持つ Azure Active Directory のユーザーのみを追加できます。詳細については、「[Azure RemoteApp で Office 365 を使用する](remoteapp-o365.md)」を参照してください。
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

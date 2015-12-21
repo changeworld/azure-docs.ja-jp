@@ -55,9 +55,7 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 
 サーバーを PowerShell を使用する V12 にアップグレードするには、Azure PowerShell がインストールされ実行されている必要があります。バージョンによっては、リソース マネージャー モードに切り替えて Azure リソース マネージャーの PowerShell コマンドレットにアクセスする必要があります。
 
-> [AZURE.IMPORTANT]Azure PowerShell 1.0 Preview のリリースから、Switch-AzureMode コマンドレットは利用できなくなりました。また、Azure ResourceManger モジュールで使用されていたコマンドレットは名前が変更されました。この記事の例では、新しい PowerShell 1.0 Preview の名付け規則が使用されています。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページを参照してください。
-
-PowerShell コマンドレットを実行するには、Azure PowerShell をインストールして実行する必要があります。Switch-AzureMode が削除されたため、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行し、最新の Azure PowerShell をダウンロードしてインストールする必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
 
 ## 資格情報を構成してサブスクリプションを選択
@@ -165,7 +163,7 @@ ElasticPoolCollection と DatabaseCollection parameters は省略可能です。
 個々のデータベースを監視するだけではなく、[ポータルを使用して](sql-database-elastic-pool-portal.md#monitor-and-manage-an-elastic-database-pool)、または [PowerShell](sql-database-elastic-pool-powershell.md#monitoring-elastic-databases-and-elastic-database-pools) を使用してエラスティック データベース プールを監視することもできます。
 
 
-**リソース消費データ:** Basic、Standard、Premium データベースの場合、ユーザー データベース内の [sys.dm\_ db\_ resource\_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV から、Premium データベース リソース消費データを利用できます。この DMV は、直近 1 時間の操作に関する 15 秒おきのほぼリアル タイムのリソース消費情報を提供します。1 つの間隔内の DTU 消費割合は、CPU、IO、ログにおける最大消費割合として算出されます。次は、過去 1 時間における DTU の平均消費割合を算出するクエリです。
+**リソース消費データ:** Basic、Standard、Premium データベースの場合、ユーザー データベース内の [sys.dm\_ db\_ resource\_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV から、リソース消費データを利用できます。この DMV は、直近 1 時間の操作に関する 15 秒おきのほぼリアル タイムのリソース消費情報を提供します。1 つの間隔内の DTU 消費割合は、CPU、IO、ログにおける最大消費割合として算出されます。次は、過去 1 時間における DTU の平均消費割合を算出するクエリです。
 
     SELECT end_time
     	 , (SELECT Max(v)
@@ -203,4 +201,4 @@ ElasticPoolCollection と DatabaseCollection parameters は省略可能です。
 - [Start-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt619403.aspx)
 - [Stop-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603589.aspx)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

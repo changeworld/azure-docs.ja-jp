@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="07/28/2015"
+ ms.date="12/04/2015"
  ms.author="krisragh"/>
 
 # Scheduler の制限、既定値、エラー コード
@@ -59,18 +59,23 @@ API 操作は、管理サービスで定義されている追加のエラー情�
 
 ## 関連項目
 
- [Scheduler Concepts, Terminology, and Entity Hierarchy (Scheduler の概念、用語集、エンティティ階層構造)](scheduler-concepts-terms.md)
 
- [管理ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
+ [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
+ 
+ [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 
- [Plans and Billing in Azure Scheduler (Azure Scheduler のプランと課金)](scheduler-plans-billing.md)
+ [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
 
- [How to Build Complex Schedules and Advanced Recurrence with Azure Scheduler (Azure Scheduler で複雑なスケジュールと高度な定期実行を構築する方法)](scheduler-advanced-complexity.md)
+ [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
 
- [Scheduler REST API リファレンス](https://msdn.microsoft.com/library/dn528946)
+ [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/dn528946)
 
- [Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
+ [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
 
- [Scheduler 送信認証](scheduler-outbound-authentication.md)
+ [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
 
-<!---HONumber=Oct15_HO3-->
+ [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
+ 
+  
+
+<!---HONumber=AcomDC_1210_2015-->

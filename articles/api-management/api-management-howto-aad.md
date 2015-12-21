@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/10/2015" 
+	ms.date="12/07/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法
@@ -26,7 +26,7 @@
 
 ## Azure Active Directory を使用して開発者アカウントを認証する方法
 
-最初に、ご利用の API Management サービスの Azure ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
+最初に、ご利用の API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
@@ -36,7 +36,7 @@
 
 ![外部 ID][api-management-security-external-identities]
 
-**[Azure Active Directory]** をクリックします。**リダイレクト URL** を書き留めて、Azure ポータルの Azure Active Directory に切り替えます。
+**[Azure Active Directory]** をクリックします。**リダイレクト URL** を書き留めて、Azure クラシック ポータルの Azure Active Directory に切り替えます。
 
 ![外部 ID][api-management-security-aad-new]
 
@@ -122,7 +122,7 @@ Azure Active Directory 内のユーザーのアクセスを有効にした後は
 
 外部の Azure Active Directory グループの追加は、グループにアクセス許可を付与する成果物の **[可視性]** タブで実行します。**[成果物]** をクリックし、目的の成果物の名前をクリックします。
 
-![Configure product][api-management-configure-product]
+![成果物の構成][api-management-configure-product]
 
 **[可視性]** タブに切り替え、**[Azure Active Directory からグループを追加]** をクリックします。
 
@@ -138,7 +138,7 @@ Azure Active Directory 内のユーザーのアクセスを有効にした後は
 
 **[追加]** をクリックすると、グループ名が検証され、グループが追加されます。この例では、**Contoso 5 Developers** という外部グループが追加されました。
 
-![Group added][api-management-aad-group-added]
+![グループが追加された][api-management-aad-group-added]
 
 **[保存]** をクリックして、グループの新しい選択肢を保存します。
 
@@ -228,4 +228,4 @@ Azure Active Directory 内のいずれかのユーザーの資格情報を入力
 
 [Azure Active Directory アカウントを使用して開発者ポータルにログインする方法]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

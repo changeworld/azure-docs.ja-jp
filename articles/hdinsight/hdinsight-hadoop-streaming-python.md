@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/09/2015"
+   ms.date="12/04/2015"
    ms.author="larryfr"/>
 
 #HDInsight 用 Python ストリーミング プログラムの開発
@@ -23,7 +23,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 > [AZURE.NOTE]このドキュメントの Python コードは Windows ベースの HDInsight クラスターで使用できますが、ドキュメント内の手順は Linux ベースのクラスターに固有のものです。
 
-この記事は、Michael Noll が [http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/] (Python での Hadoop MapReduce プログラムの作成方法) に公開した情報とサンプルを基にしています。
+この記事は、[Python での Hadoop MapReduce プログラムの記述](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/)に関するページの Michael Noll が公開する情報および例に基づいています。
 
 ##前提条件
 
@@ -205,4 +205,4 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

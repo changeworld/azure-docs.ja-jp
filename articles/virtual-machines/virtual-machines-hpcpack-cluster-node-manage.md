@@ -29,20 +29,21 @@ Azure VM で HPC Pack クラスターを作成した場合、クラスターに�
 
 * **Azure VM の HPC Pack クラスター** - HPC Pack 2012 R2 更新プログラム 1 以降を利用し、従来 (サービス管理) のデプロイ モデルで HPC Pack クラスターを作成します。たとえば、Azure Marketplace の HPC Pack VM イメージや Azure PowerShell スクリプトを利用し、デプロイを自動化できます。詳細と前提条件については、「[HPC Pack IaaS デプロイ スクリプトを使用した HPC クラスターの作成](virtual-machines-hpcpack-cluster-powershell-script.md)」を参照してください。
 
-* **Azure 管理証明書または発行設定ファイル** - ヘッド ノードで次のいずれかを行う必要があります。
+* **Azure 発行設定ファイルまたは管理証明書** - ヘッド ノードで次のいずれかを行う必要があります。
 
-    * **Azure 発行設定ファイルをインポートします**。これを行うには、ヘッド ノードで次の Azure PowerShell コマンドレットを実行します。 ```
-        Get-AzurePublishSettingsFile  
-Import-AzurePublishSettingsFile –PublishSettingsFile <publish settings file>
-        ```
+    * **Azure 発行設定ファイルをインポートします**。これを行うには、ヘッド ノードで次の Azure PowerShell コマンドレットを実行します。
+
+    ```
+    Get-AzurePublishSettingsFile 
+         
+    Import-AzurePublishSettingsFile –PublishSettingsFile <publish settings file>
+    ```
+    
     * **ヘッド ノードで Azure 管理証明書を構成します**。.cer ファイルがある場合、それを CurrentUser\\My 証明書ストアにインポートし、Azure 環境 (either AzureCloud または AzureChinaCloud) に対して次の Azure PowerShell コマンドレットを実行します。
 
     ```
     Set-AzureSubscription -SubscriptionName <Sub Name> -SubscriptionId <Sub ID> -Certificate (Get-Item Cert:\CurrentUser\My<Cert Thrumbprint>) -Environment <AzureCloud | AzureChinaCloud>
     ```
-
-
-
 
 ## コンピューティング ノード VM の追加
 
@@ -178,4 +179,4 @@ Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 
 * クラスターのジョブやタスクの現在のワークロードに合わせ、Azure コンピューティング リソースを自動的に拡大縮小する方法については、「[HPC Pack クラスターの Azure コンピューティング リソースを拡大縮小する](virtual-machines-hpcpack-cluster-node-autogrowshrink.md)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

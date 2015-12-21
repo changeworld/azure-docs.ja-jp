@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/19/2015" 
+	ms.date="12/04/2015" 
 	ms.author="larryfr"/>
 
 # HDInsight Hadoop クラスターで Spark をインストールして使用する
@@ -46,13 +46,13 @@ Spark を使用して、従来のディスク ベースのデータ処理を実�
 
 HDInsight クラスターに Spark をインストールするためのサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh](https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh) の読み取り専用の Azure ストレージ BLOB から入手できます。このセクションでは、Azure ポータルを使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE]Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の使用の詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+> [AZURE.NOTE]Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
 
-1. [Linux ベースの HDInsight クラスターの作成](hdinsight-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターの作成を開始します。ただし、作成を完了しないでください。
+1. [Linux ベースの HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)に関するページに記載されている手順を使用して、クラスターの作成を開始します。ただし、作成を完了しないでください。
 
 2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下の情報を指定します。
 
-	* __[名前]__: スクリプト アクションのわかりやすい名前を入力します。
+	* __[名前]__: スクリプト アクションの表示名を入力します。
 	* __[スクリプト URI]__: https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh
 	* __[ヘッド]__: このオプションをオンにします。
 	* __[worker]__: このオプションをオフにします。
@@ -63,7 +63,7 @@ HDInsight クラスターに Spark をインストールするためのサンプ
 
 3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
 
-4. [Linux ベースの HDInsight クラスターの作成](hdinsight-provision-linux-clusters.md#portal)に関するページの説明に従って、クラスターのプロビジョニングを続行します。
+4. 「[Linux ベースの HDInsight クラスターの作成](hdinsight-provision-linux-clusters.md#portal)」の説明に従って、クラスターのプロビジョニングを続行します。
 
 ## <a name="usespark"></a>HDInsight で Spark を使用する方法
 
@@ -232,10 +232,8 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 
 
 
-[hdinsight-provision]: hdinsight-provision-clusters-linux.md
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
-[powershell-install-configure]: ../install-configure-powershell.md
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

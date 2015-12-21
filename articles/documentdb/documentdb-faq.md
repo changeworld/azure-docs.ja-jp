@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/30/2015" 
+	ms.date="12/03/2015" 
 	ms.author="mimig"/>
 
 
@@ -41,6 +41,9 @@ DocumentDB は、JSON 形式でデータを格納する NoSQL ドキュメント
 
 ### DocumentDB の一般的な使用事例にはどのようなものがありますか?  
 DocumentDB は、拡張性、パフォーマンス、およびスキーマフリー データでのクエリを実行できることが重要である新しい Web アプリケーションやモバイル アプリケーションに適しています。DocumentDB は、迅速な開発に役立ち、アプリケーション データ モデルの継続的な反復をサポートします。ユーザーが生成したコンテンツとデータを管理するアプリケーションは、[DocumentDB の一般的な使用事例](documentdb-use-cases.md)です。
+
+### DocumentDB HIPAA は準拠していますか?
+DocumentDB は現在 HIPAA に準拠していませんが、Azure サービスは HIPAA 準拠になる予定です。Microsoft および HIPAA の詳細については[HIPAA および HITECH Act](https://www.microsoft.com/ja-JP/TrustCenter/Compliance/HIPAA) に関するページを参照してください。
 
 ### DocumentDB のスケール制限とは何ですか?
 ストレージおよびスループットの観点では、DocumentDB アカウントはコレクションを追加してスケールすることができます。コレクションの数に対するサービスのクォータについては、「[DocumentDB の制限](documentdb-limits.md)」を参照してください。追加のコレクションが必要な場合は、[サポートに連絡して](documentdb-increase-limits.md)、アカウント クォータの増加を依頼してください。
@@ -112,4 +115,4 @@ DocumentDB にドキュメントを一括挿入するには 3 つの方法があ
 [query]: documentdb-sql-query.md
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

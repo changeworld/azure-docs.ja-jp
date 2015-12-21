@@ -26,7 +26,7 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 
 ##<a id="whatis"></a>Azure Virtual Network とは
 
-[Azure Virtual Network](/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
+[Azure Virtual Network](http://azure.microsoft.com/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
 
 * プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
 
@@ -58,7 +58,7 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 
 Virtual Network の機能、利点の詳細については、「[Azure 仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
-> [AZURE.NOTE]HDInsight クラスターをプロビジョニングする前に、Azure Virtual Network を作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](/documentation/services/virtual-network/)」を参照してください。
+> [AZURE.NOTE]HDInsight クラスターをプロビジョニングする前に、Azure Virtual Network を作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](http://azure.microsoft.com/documentation/services/virtual-network/)」を参照してください。
 >
 > Azure HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在取り扱っていません。
 >
@@ -176,4 +176,4 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 
 Azure のかそうネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

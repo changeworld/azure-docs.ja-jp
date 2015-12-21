@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/28/2015"
+	ms.date="12/07/2015"
 	ms.author="wesmc"/>
 
 # Mobile Services での論理削除の使用方法
@@ -165,4 +165,4 @@ JavaScript バックエンド Mobile Services でのスケジュール ジョブ
 [Mobile Services でのオフライン データの同期]: mobile-services-windows-store-dotnet-get-started-offline-data.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

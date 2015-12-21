@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="12/09/2015"
    ms.author="guayan"/>
 
 # App Service 環境内でホストされている API の登録
@@ -27,11 +27,11 @@ App Service 環境で API をホストするときは、[App Service 環境](../
 
 これらの API をアプリで使用するには、Azure ポータルで API を「登録」する必要があります。以下のオプションを使用できます。
 
-- [Microsoft 管理の API または IT 管理の API](powerapps-register-from-available-apis.md) を登録する。
-- App Service 環境内でホストされている API を登録する。
-- [Swagger 2.0 API の定義](powerapps-register-existing-api-from-api-definition.md)を使用して登録する。
+- 事前に構築された [Microsoft 管理の API または IT 管理の API](powerapps-register-from-available-apis.md) を登録します。
+- App Service Environment (このトピックの) 内にホストされた Web アプリ、API アプリ、およびモバイル アプリを登録します。
+- [Swagger 2.0 API 定義](powerapps-register-existing-api-from-api-definition.md)を使用して、いずれかの独自の Swagger API を登録します。
 
-この記事では、**App Service 環境内でホストされている API を登録する**方法について説明します。
+この記事では、**アプリ サービス環境内でホストされている Web アプリ、API アプリ、モバイル アプリを登録する**方法について説明します。
 
 #### 開始のための前提条件
 
@@ -62,13 +62,14 @@ App Service 環境に API をデプロイした後は、以下の手順を使用
 4. **[App Service 環境でホストされている API]** で、インポートするAPI を選択します。この一覧には、App Service 環境内に存在し、**apiDefinition.url** プロパティが構成されている、すべての Web アプリ、API アプリ、モバイル アプリが表示されます。API をインポートするには、このプロパティを使用して公開される Swagger 2.0 API 定義を使用します。API を登録するときは、この URL にパブリックにアクセスできることを確認します。 ![][14]
 5. **[追加]** を選択して、手順を完了します。
 
-> [AZURE.TIP]API を登録すると、その API が App Service 環境に登録されます。API が App Service 環境に登録されると、同じ App Service 環境内の他のアプリでも使用することができます。
+> [AZURE.TIP]API を登録すると、その API が App Service Environment に登録されます。API が App Service Environment に登録されると、同じ App Service Environment 内の他のアプリでも使用することができます。
 
 ## まとめと次のステップ
 このトピックでは、App Service 環境内でホストされている API を登録する方法について説明しました。PowerApps についての関連トピックとリソースがあります。
 
-- [API の構成](../powerapps-configure-apis.md)
-- [新しい API の追加](../powerapps-register-from-available-apis.md)
+- [API プロパティの構成](powerapps-configure-apis.md)
+- [ユーザーへの API アクセス許可](powerapps-manage-api-connection-user-access.md)
+- [PowerApps でのアプリ作成の開始](https://powerapps.microsoft.com/tutorials/)に関するページ
 
 <!--Reference-->
 [11]: ./media/powerapps-register-api-hosted-in-app-service/registered-apis-part.png
@@ -76,4 +77,4 @@ App Service 環境に API をデプロイした後は、以下の手順を使用
 [13]: ./media/powerapps-register-api-hosted-in-app-service/add-api-blade.png
 [14]: ./media/powerapps-register-api-hosted-in-app-service/add-api-select-from-ase.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

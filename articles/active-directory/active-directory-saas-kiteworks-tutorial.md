@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="12/04/2015"
 	ms.author="jeedes"/>
 
 
@@ -23,7 +23,7 @@
 
 - Kiteworks にアクセスする Azure AD ユーザーを制御できます。 
 - ユーザーが自分の Azure AD アカウントで自動的に Kiteworks にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Active Directory ポータル) でアカウントを管理できます。
+- 1 つの中央サイト (Azure Active Directory ポータル) でアカウントを管理できます。 
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
@@ -56,7 +56,7 @@ Azure AD への Kiteworks の統合を構成するには、ギャラリーから
 
 **ギャラリーから Kiteworks を追加するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br> ![Active Directory][1]<br>
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Active Directory][1]<br>
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -81,19 +81,19 @@ Kiteworks で Azure AD のシングル サインオンを構成してテスト�
 
 ### Azure AD シングル サインオンの構成
 
-このセクションの目的は、Azure AD ポータルで Azure AD のシングル サインオンを有効にすることと、Kiteworks アプリケーションでシングル サインオンを構成することです。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Kiteworks アプリケーションでシングル サインオンを構成することです。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-Kiteworks のシングル サインオンを構成するには、登録済みのドメインが必要です。登録済みのドメインがない場合は、Kiteworks のサポート チーム ([support@flatterfiles.com](mailto:support@flatterfiles.com)) にお問い合わせください。
+Kiteworks のシングル サインオンを構成するには、登録済みのドメインが必要です。登録済みのドメインがない場合は、Kiteworks のサポート チームにお問い合わせください。
 
 
 
 **Kiteworks で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure AD ポータルの **Kiteworks** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br>![シングル サインオンの構成][6]<br>
+1. Azure クラシック ポータルの **Kiteworks** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br>![シングル サインオンの構成][6]<br>
 
 2. **[ユーザーの Kiteworks へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_03.png)<br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_04.png) <br>
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_04.png)<br>
 
 
     a.**[サインオン URL]** ボックスに、ユーザーが Kiteworks アプリケーションへのサインオンに使用する URL (例: **https://fabrikam.kiteworks.com/*) を入力します。
@@ -122,18 +122,18 @@ Kiteworks のシングル サインオンを構成するには、登録済みの
 
     b.**[Initiate AuthnRequest]** を選択します。
 
-    c.Azure ポータルの **[Kiteworks でのシングル サインオンの構成]** ダイアログ ページで **[エンティティ ID]** の値をコピーし、**[IDP Entity ID]** ボックスに貼り付けます。
+    c.Azure クラシック ポータルの **[Kiteworks でのシングル サインオンの構成]** ダイアログ ページで **[エンティティ ID]** の値をコピーし、**[IDP Entity ID]** ボックスに貼り付けます。
 
-    d.Azure ポータルの **[Kiteworks でのシングル サインオンの構成]** ダイアログ ページで **[シングル サインオン サービス URL]** の値をコピーし、**[Single Sign-On Service URL]** ボックスに貼り付けます。
+    d.Azure クラシック ポータルの **[Kiteworks でのシングル サインオンの構成]** ダイアログ ページで **[シングル サインオン サービス URL]** の値をコピーし、**[Single Sign-On Service URL]** ボックスに貼り付けます。
 
-    e.Azure ポータルの **[Kiteworks でのシングル サインオンの構成]** ダイアログ ページで **[シングル サインアウト サービス URL]** の値をコピーし、**[Single Logout Service URL]** ボックスに貼り付けます。
+    e.Azure クラシック ポータルの **[Kiteworks でのシングル サインオンの構成]** ダイアログ ページで **[シングル サインアウト サービス URL]** の値をコピーし、**[Single Logout Service URL]** ボックスに貼り付けます。
 
     f.ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[RSA Public Key Certificate]** ボックスに貼り付けます。
 
     g.**[保存]** をクリックします。
 
 
-6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD のシングル サインオン][10]<br>
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD のシングル サインオン][10]<br>
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD のシングル サインオン][11]
 
@@ -141,11 +141,11 @@ Kiteworks のシングル サインオンを構成するには、登録済みの
 
 
 ### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Create Azure AD User][20]<br>
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_09.png) <br> 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_09.png)<br> 
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -237,4 +237,4 @@ Kiteworks のシングル サインオンを構成するには、登録済みの
 [204]: ./media/active-directory-saas-kiteworks-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-kiteworks-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

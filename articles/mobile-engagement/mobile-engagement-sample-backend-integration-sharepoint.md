@@ -118,7 +118,7 @@
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", CreateAuthZHeader());
                 
                 // Create the payload to send the content
-                // Reference -> https://msdn.microsoft.com/ja-jp/library/dn913749.aspx
+                // Reference -> https://msdn.microsoft.com/library/dn913749.aspx
                 string data =
                     @"{""name"":""" + campaignName + @"""," + 
                     @"""type"":""only_notif""," + 
@@ -207,4 +207,4 @@
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

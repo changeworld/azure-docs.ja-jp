@@ -16,7 +16,7 @@
     ms.date="11/30/2015" 
     ms.author="robmcm"/>
 
-<!-- Legacy MSDN URL = https://msdn.microsoft.com/ja-JP/library/azure/hh690950.aspx -->
+<!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690950.aspx -->
 
 # セッション アフィニティを有効にする #
 
@@ -70,4 +70,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 
 [ic719492]: ./media/azure-toolkit-for-eclipse-enable-session-affinity/ic719492.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

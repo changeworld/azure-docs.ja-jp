@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/04/2015" 
+	ms.date="12/06/2015" 
 	ms.author="spelluru"/>
 
 # Azure Machine Learning アクティビティを使用して予測パイプラインを作成する   
@@ -58,7 +58,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 	![Batch URI](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
 
 
-### シナリオ: Azure BLOB ストレージのデータを参照する Web サービスの入力/出力を使用する
+### シナリオ: Azure Blob Storage のデータを参照する Web サービスの入力/出力を使用する
 このシナリオの Azure Machine Learning Web サービスは、Azure BLOB ストレージ内のファイルのデータを使用して予測を作成し、BLOB ストレージに予測結果を保存します。次の JSON では、AzureMLBatchExecution アクティビティを使用する Azure Data Factory パイプラインが定義されています。このアクティビティは、入力としてデータセット **DecisionTreeInputBlob** を使用し、出力として **DecisionTreeResultBlob** を使用します。**DecisionTreeInputBlob** は **webServiceInput** JSON プロパティを使用して Web サービスに入力として渡され、**DecisionTreeResultBlob** は **webServiceOutputs** JSON プロパティを使用して Web サービスに出力として渡されます。アクティビティの入力/出力であるデータセットだけを、Web サービスの入力および出力として渡すことができます。
 
 
@@ -623,4 +623,4 @@ AzureMLBatchExecution アクティビティには入力は必要ありません 
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

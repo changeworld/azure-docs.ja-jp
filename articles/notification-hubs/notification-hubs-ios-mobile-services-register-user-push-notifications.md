@@ -22,7 +22,7 @@
 [Windows Store C#](notification-hubs-windows-store-mobile-services-register-user-push-notifications.md)
 [iOS](notification-hubs-ios-mobile-services-register-user-push-notifications.md)
 
-このトピックでは、Azure Mobile Services により登録が行われる場合、Azure Notification Hubs でプッシュ通知登録を要求する方法について説明します。このトピックは、チュートリアル「[Notification Hubs によるユーザーへの通知]」を拡張したものです。認証されたモバイル サービスを作成するには、このチュートリアルの必要な手順を既に完了している必要があります。ユーザー通知シナリオの詳細については、「[Notification Hubs によるユーザーへの通知]」を参照してください。
+このトピックでは、Azure Mobile Services により登録が行われる場合、Azure Notification Hubs でプッシュ通知登録を要求する方法について説明します。このトピックは、チュートリアル「[Notification Hubs によるユーザーへの通知]」を拡張したものです。認証されたモバイル サービスを作成するには、このチュートリアルの必要な手順を既に完了している必要があります。ユーザー通知シナリオの詳細については、「[通知ハブによるユーザーへの通知]」を参照してください。
 
 1. Xcode で、前提条件のチュートリアルである「[認証の使用]」を実行したときに作成したプロジェクトの QSTodoService.h ファイルを開き、次の **deviceToken** プロパティを追加します。
 
@@ -116,10 +116,10 @@
 
 <!-- URLs. -->
 [Notification Hubs によるユーザーへの通知]: /manage/services/notification-hubs/notify-users
+[通知ハブによるユーザーへの通知]: /manage/services/notification-hubs/notify-users
 [認証の使用]: /develop/mobile/tutorials/get-started-with-users-ios/
 
-[Azure Management Portal]: https://manage.windowsazure.com/
 [Get Started with Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1210_2015-->

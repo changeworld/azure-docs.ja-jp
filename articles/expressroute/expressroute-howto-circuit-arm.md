@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/06/2015"
+   ms.date="12/04/2015"
    ms.author="cherylmc"/>
 
 # Azure リソース マネージャーと PowerShell を使用して ExpressRoute 回線を作成および変更する
@@ -219,7 +219,7 @@
 
 7. **ExpressRoute 回線への VNet のリンク**
 
-	次に、ExpressRoute 回線に VNet をリンクします。詳しい手順については、[VNet への ExpressRoute 回線のリンク](expressroute-howto-linkvnet-arm.md)に関するページをご覧ください。ExpressRoute 用の仮想ネットワークを作成する必要がある場合は、[ExpressRoute 用の仮想ネットワークの作成](expressroute-howto-createvnet-classic.md)に関するページを参照してください。
+	次に、ExpressRoute 回線に VNet をリンクします。Azure リソース マネージャーのデプロイメント モードを使用している場合は、[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)を使用できます。PowerShell の手順は現在作成中です。
 
 ##  ExpressRoute 回線の状態を取得するには
 
@@ -357,4 +357,4 @@ ExpressRoute 回線サービス プロバイダーのプロビジョニング状
 
 - [ルーティングの構成](expressroute-howto-routing-arm.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

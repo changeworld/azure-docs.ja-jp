@@ -252,6 +252,4 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Windows Phone]: ??
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

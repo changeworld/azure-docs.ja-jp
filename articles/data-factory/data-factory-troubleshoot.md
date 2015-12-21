@@ -20,6 +20,8 @@
 Azure クラシック ポータルまたは Azure PowerShell コマンドレットを使用して、Azure Data Factory の問題のトラブルシューティングを行うことができます。このトピックには、Azure クラシック ポータルを使用して、Data Factory で発生するエラーをすばやく解決する方法を示すチュートリアルが含まれています。
 
 ## 問題: Data Factory コマンドレットを実行できない
+バージョン 1.0 より前のバージョンの Azure PowerShell を使用する場合
+ 
 この問題を解決するには、Azure のモードを **AzureResourceManager** に切り替えます。
 
 **Azure PowerShell** を起動し、以下のコマンドを実行して **AzureResourceManager** モードに切り替えます。**AzureResourceManager** モードでは Azure Data Factory コマンドレットが使用できます。
@@ -97,7 +99,7 @@ Azure クラシック ポータルから SQL Server のリンクされたサー�
 
 ## 問題: オンデマンドの HDInsight プロビジョニングがエラーで失敗する
 
-種類が HDInsightOnDemandLinkedService のリンクされたサービスを使用する場合、Azure BLOB ストレージを指す linkedServiceName を指定する必要があります。このストレージ アカウントを使用して、オンデマンド HDInsight クラスターのすべてのログとサポート ファイルをコピーします。HDInsight でオンデマンド プロビジョニングを実行するアクティビティは、次のエラーで失敗することがあります。
+種類が HDInsightOnDemandLinkedService のリンクされたサービスを使用する場合、Azure Blob Storage を指す linkedServiceName を指定する必要があります。このストレージ アカウントを使用して、オンデマンド HDInsight クラスターのすべてのログとサポート ファイルをコピーします。HDInsight でオンデマンド プロビジョニングを実行するアクティビティは、次のエラーで失敗することがあります。
 
 		Failed to create cluster. Exception: Unable to complete the cluster create operation. Operation failed with code '400'. Cluster left behind state: 'Error'. Message: 'StorageAccountNotColocated'.
 
@@ -110,7 +112,7 @@ Azure クラシック ポータルから SQL Server のリンクされたサー�
 ## 問題: カスタム アクティビティが失敗する
 Azure Data Factory でカスタム アクティビティ (パイプライン アクティビティの種類が CustomActivity) を使用する場合、カスタム アプリケーションは、所定のリンクされたサービスから HDInsight に対して、マップのみのストリーミング MapReduce ジョブとして実行されます。
 
-カスタム アクティビティを実行すると、Azure Data Factory が HDInsight クラスターからその出力をキャプチャし、Azure BLOB ストレージ アカウントの*adfjobs* ストレージ コンテナーに保存できます。エラーが発生した場合は、エラーが発生した後に出力テキスト ファイル **stderr** からテキストを読み取ることができます。このファイルは、Web ブラウザーで開いた Azure クラシック ポータルからアクセスして読み取ることができます。または、ストレージ エクスプローラー ツールを使用して、Azure BLOB ストレージのストレージ コンテナーに保存されているファイルに直接アクセスできます。
+カスタム アクティビティを実行すると、Azure Data Factory が HDInsight クラスターからその出力をキャプチャし、Azure Blob Storage アカウントの*adfjobs* ストレージ コンテナーに保存できます。エラーが発生した場合は、エラーが発生した後に出力テキスト ファイル **stderr** からテキストを読み取ることができます。このファイルは、Web ブラウザーで開いた Azure クラシック ポータルからアクセスして読み取ることができます。または、ストレージ エクスプローラー ツールを使用して、Azure Blob Storage のストレージ コンテナーに保存されているファイルに直接アクセスできます。
 
 特定のカスタム アクティビティのログを列挙して読み取るには、このページの後半で紹介するチュートリアルのいずれかの手順に従います。概要:
 
@@ -177,7 +179,7 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 4. **Azure PowerShell** で以下のコマンドを実行し、**emp** テーブルにデータの書き込みを試みるよう、パイプラインのアクティブ期間を更新しても、このテーブルは存在しません。
 
          
-		Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactory -StartDateTime 2014-09-29 –EndDateTime 2014-09-30 –Name ADFTutorialPipeline
+		Set-AzureRmDataFactoryPipelineActivePeriod -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactory -StartDateTime 2014-09-29 –EndDateTime 2014-09-30 –Name ADFTutorialPipeline
 	
 	**StartDateTime** の値を現在の日付に置き換え、**EndDateTime** の値を翌日の日付に置き換えます。
 
@@ -214,17 +216,12 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 
 ### Azure PowerShell コマンドレットを使用して、エラーのトラブルシューティングを行う
 1.	**Azure PowerShell** を起動します。 
-2.	Data Factory コマンドレットは **AzureResourceManager** モードでのみ使用できるので、このモードに切り替えます。
+3. Get-AzureDataFactorySlice コマンドを実行してスライスとその状態を確認します。[状態] が [失敗] になっているスライスが表示されるはずです。	
 
          
-		switch-azuremode AzureResourceManager
+		Get-AzureRmDataFactorySlice -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactory -TableName EmpSQLTable -StartDateTime 2014-10-15
 
-3. Get-AzureDataFactorySlice コマンドを実行してスライスとその状態を確認します。[状態] が [失敗] になっているスライスが表示されるはずです。
-
-         
-		Get-AzureDataFactorySlice -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactory -TableName EmpSQLTable -StartDateTime 2014-10-15
-
-	**StartDateTime** を **Set-AzureDataFactoryPipelineActivePeriod** 用に指定した StartDateTime の値に置き換えます。
+	**StartDateTime** を、**Set-AzureRmDataFactoryPipelineActivePeriod** に対して指定した StartDateTime の値に置き換えます。
 
 		ResourceGroupName 		: ADFTutorialResourceGroup
 		DataFactoryName   		: ADFTutorialDataFactory
@@ -237,9 +234,9 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 		LongRetryCount    		: 0
 
 	出力結果のうち、問題のあるスライス (**[状態]** が **[失敗]** になっているスライス) の **[開始]** の日時をメモしてください。 
-4. **Get-AzureDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
+4. **Get-AzureRmDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
          
-		Get-AzureDataFactoryRun -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactory -TableName EmpSQLTable -StartDateTime "10/15/2014 4:00:00 PM"
+		Get-AzureRmDataFactoryRun -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactory -TableName EmpSQLTable -StartDateTime "10/15/2014 4:00:00 PM"
 
 	**StartDateTime** の値は、前の手順でメモしたエラーまたは問題のあるスライスの [開始] の日時です。日時は二重引用符で囲む必要があります。
 5. エラーの詳細を含む (以下のような) 出力結果が表示されます。
@@ -296,17 +293,12 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
     
 ### チュートリアル: Azure PowerShell を使用して Pig/Hive 処理で発生するエラーのトラブルシューティングを行う
 1.	**Azure PowerShell** を起動します。 
-2.	Data Factory コマンドレットは **AzureResourceManager** モードでのみ使用できるので、このモードに切り替えます。
+3. Get-AzureDataFactorySlice コマンドを実行してスライスとその状態を確認します。[状態] が [失敗] になっているスライスが表示されるはずです。	
 
          
-		switch-azuremode AzureResourceManager
+		Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
 
-3. Get-AzureDataFactorySlice コマンドを実行してスライスとその状態を確認します。[状態] が [失敗] になっているスライスが表示されるはずです。
-
-         
-		Get-AzureDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
-
-	**StartDateTime** を **Set-AzureDataFactoryPipelineActivePeriod** 用に指定した StartDateTime の値に置き換えます。
+	**StartDateTime** を、**Set-AzureRmDataFactoryPipelineActivePeriod** に対して指定した StartDateTime の値に置き換えます。
 
 		ResourceGroupName : ADF
 		DataFactoryName   : LogProcessingFactory
@@ -320,9 +312,9 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 
 
 	出力結果のうち、問題のあるスライス (**[状態]** が **[失敗]** になっているスライス) の **[開始]** の日時をメモしてください。 
-4. **Get-AzureDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
+4. **Get-AzureRmDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
          
-		Get-AzureDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
+		Get-AzureRmDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
 
 	**StartDateTime** の値は、前の手順でメモしたエラーまたは問題のあるスライスの [開始] の日時です。日時は二重引用符で囲む必要があります。
 5. エラーの詳細を含む (以下のような) 出力結果が表示されます。
@@ -346,7 +338,7 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 		PipelineName        : EnrichGameLogsPipeline
 		Type                :
 
-6. 上記出力結果の Id 値を使用して **Save-AzureDataFactoryLog** コマンドレットを実行し、同コマンドレットの **-DownloadLogs** オプションを使用してログ ファイルをダウンロードできます。
+6. 上記出力結果の Id 値を使用して **Save-AzureRmDataFactoryLog** コマンドレットを実行し、同コマンドレットの **-DownloadLogs** オプションを使用してログ ファイルをダウンロードできます。
 
 
 
@@ -382,4 +374,4 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

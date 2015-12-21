@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="12/08/2015" 
 	ms.author="juliako"/>
 
 
@@ -22,7 +22,9 @@
 > [AZURE.SELECTOR]
 - [Portal](media-services-create-account.md)
 - [PowerShell](media-services-manage-with-powershell.md)
-- [REST](https://msdn.microsoft.com/library/azure/dn167014.aspx)
+- [REST](http://msdn.microsoft.com/library/azure/dn194267.aspx)
+
+> [AZURE.NOTE]Azure Media Services アカウントを作成するには、Azure アカウントが必要です。アカウントがない場合は、無料試用アカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」をご覧ください。
 
 ##概要 
 
@@ -119,4 +121,4 @@ Azure Media Services を削除する準備ができたら、[Remove-AzureMediaSe
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

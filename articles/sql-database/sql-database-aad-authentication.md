@@ -153,15 +153,14 @@ Azure Active Directory 認証は、最新の SQL Database V12 でサポートさ
 
 ### PowerShell を使用して Azure SQL Server の Azure AD 管理者をプロビジョニングする 
 
-> [AZURE.IMPORTANT]Azure PowerShell 1.0 プレビューのリリースから、Switch-AzureMode コマンドレットは不要になりました。また、Azure ResourceManger モジュールに含まれていたコマンドレットの名前が変更されました。この記事の例では、新しい PowerShell 1.0 プレビューの命名規則が使用されています。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページを参照してください。
 
 
-PowerShell コマンドレットを実行するには、Azure PowerShell をインストールして実行する必要があります。Switch-AzureMode が削除されたため、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行し、最新の Azure PowerShell をダウンロードしてインストールする必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
 Azure AD 管理者をプロビジョニングするには、次のような Azure PowerShell コマンドを実行する必要があります。
 
-- Add-AzureAccount
-- Select-AzureSubscription
+- Add-AzureRmAccount
+- Select-AzureRmSubscription
 
 
 Azure AD 管理者のプロビジョニングと管理に使用するコマンドレットは、次のとおりです。
@@ -172,23 +171,23 @@ Azure AD 管理者のプロビジョニングと管理に使用するコマン�
 | [Remove-AzureRMSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt619340.aspx) | Azure SQL Server の Azure Active Directory 管理者を削除します。 |
 | [Get-AzureRMSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt603737.aspx) | 現在 Azure SQL Server 用に構成されている Azure Active Directory 管理者に関する情報を返します。 |
 
-これらの各コマンドの詳細を確認するには、``get-help Set-AzureRMSqlServerActiveDirectoryAdministrator`` のように PowerShell コマンドの get-help を使用します。
+これらの各コマンドの詳細を確認するには、``get-help Set-AzureRmSqlServerActiveDirectoryAdministrator`` のように PowerShell コマンドの get-help を使用します。
 
 次のスクリプトでは、**Group-23** という名前のリソース グループ内にあるサーバー **demo\_server** に対して、**DBA\_Group** という名前の Azure AD 管理者グループ (オブジェクト ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`) をプロビジョニングします。
 
 ```
-Set-AzureRMSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" 
+Set-AzureRmSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" 
 –ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
 **DisplayName** 入力パラメーターには、Azure AD の表示名またはユーザー プリンシパル名を使用できます。たとえば、``DisplayName="John Smith"`` や ``DisplayName="johns@contoso.com"`` のようになります。Azure AD グループの場合は、Azure AD の表示名のみがサポートされています。
 
-> [AZURE.NOTE]Azure PowerShell コマンド ```Set-AzureRMSqlServerActiveDirectoryAdministrator``` によって、サポートされていないユーザーに対して Azure AD 管理者をプロビジョニングできなくなることはありません。サポートされていないユーザーのプロビジョニングは可能ですが、このようなユーザーはデータベースに接続できません(サポートされている管理者の一覧については、上記の「**Azure AD の機能と制限事項**」を参照してください)。
+> [AZURE.NOTE]Azure PowerShell コマンド ```Set-AzureRmSqlServerActiveDirectoryAdministrator``` によって、サポートされていないユーザーに対して Azure AD 管理者をプロビジョニングできなくなることはありません。サポートされていないユーザーのプロビジョニングは可能ですが、このようなユーザーはデータベースに接続できません(サポートされている管理者の一覧については、上記の「**Azure AD の機能と制限事項**」を参照してください)。
 
 次の例では、オプションとして **ObjectID** を使用します。
 
 ```
-Set-AzureRMSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" 
+Set-AzureRmSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" 
 –ServerName "demo_server" -DisplayName "DBA_Group" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353f"
 ```
 
@@ -197,11 +196,11 @@ Set-AzureRMSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23"
 次の例では、Azure SQL Server の現在の Azure AD 管理者に関する情報が返されます。
 
 ```
-Get-AzureRMSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" –ServerName "demo_server" | Format-List
+Get-AzureRmSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" –ServerName "demo_server" | Format-List
 ```
 
 次の例では、Azure AD 管理者が削除されます。```
-Remove-AzureRMSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" –ServerName "demo_server"
+Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" –ServerName "demo_server"
 ```
 
 ## 5\.クライアント コンピューターを構成する
@@ -327,4 +326,4 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 [9]: ./media/sql-database-aad-authentication/9ad-settings.png
 [10]: ./media/sql-database-aad-authentication/10choose-admin.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

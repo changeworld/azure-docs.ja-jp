@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="PowerShell | Microsoft Azure を使用した Stream Analytics ジョブの監視および管理" 
 	description="Azure PowerShell およびコマンドレットを使用して Stream Analytics ジョブを監視および管理する方法について説明します。" 
-	keywords="azure powershell,azure powershell コマンドレット,powershell コマンド"	
+	keywords="azure powershell、azure powershell コマンドレット、powershell コマンド、powershell スクリプト"	
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -14,14 +14,13 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/17/2015" 
+	ms.date="12/04/2015" 
 	ms.author="jeffstok"/>
 
 
 # Azure PowerShell コマンドレットを使用した Stream Analytics ジョブの監視および管理
 
-基本的な Stream Analytics タスクを実行する Azure PowerShell コマンドレットを使用して、Stream Analytics リソースをモニターおよび管理する方法について説明します。
-
+基本的な Stream Analytics タスクを実行する Azure PowerShell コマンドレットと PowerShell スクリプトを使用して、Stream Analytics リソースを監視および管理する方法について説明します。
 
 ## Stream Analytics 用に Azure PowerShell コマンドレットを実行するための前提条件
 
@@ -290,4 +289,4 @@ Microsoft Azure で実行中の Stream Analytics ジョブを非同期的に停�
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

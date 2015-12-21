@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="11/25/2015" 
+	ms.date="12/03/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache のサンプル 
@@ -65,7 +65,7 @@
 
 ## カスタム監視のサンプル
 
-「[Redis Cache の監視データへのアクセス](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)」サンプルは、Azure プレビュー ポータルの外部から Azure Redis Cache の監視データにアクセスする方法を示しています。
+「[Redis Cache の監視データへのアクセス](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)」サンプルは、Azure ポータルの外部から Azure Redis Cache の監視データにアクセスする方法を示しています。
 
 ## PHP と Redis を使用して記述された Twitter 形式の複製
 
@@ -75,4 +75,4 @@
 
 「[帯域幅モニター](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor)」サンプルでは、クライアントで使用されている帯域幅を監視できます。帯域幅を測定するには、キャッシュ クライアント コンピューターでサンプルを実行し、キャッシュを呼び出し、帯域幅モニターのサンプルで報告された帯域幅を観察します。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

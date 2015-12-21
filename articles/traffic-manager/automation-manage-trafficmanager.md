@@ -3,7 +3,7 @@
  description="Azure Automation サービスを使用して Azure Traffic Manager を管理する方法について説明します。" 
  services="traffic-manager, automation" 
  documentationCenter="" 
- authors="eamonoreilly" 
+ authors="joaoma" 
  manager="carmonm" 
  editor=""/>
 
@@ -42,4 +42,4 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 * [Azure Automation の使用](http://go.microsoft.com/fwlink/?LinkId=390560) (Azure Automation のファースト ステップ ガイド)
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

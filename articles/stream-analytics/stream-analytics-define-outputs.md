@@ -1,27 +1,27 @@
-<properties 
-	pageTitle="出力の定義 | Microsoft Azure" 
-	description="Stream Analytics 出力について" 
-	keywords="ビッグ データ分析,クラウド サービス,モノのインターネット,管理サービス,ストリーム処理,ストリーミング分析,ストリーミング データ"
-	services="stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage" 
-	documentationCenter="" 
-	authors="jeffstokes72" 
-	manager="paulettm" 
+<properties
+	pageTitle="データ変換出力: ストレージ、分析のオプション | Microsoft Azure"
+	description="データ ストレージ オプションをターゲットにした Stream Analytics データ変換出力について説明します。また、分析結果に Power BI を使用します。"
+	keywords="データ変換、分析結果、データ ストレージ オプション"
+	services="stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage"
+	documentationCenter=""
+	authors="jeffstokes72"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="stream-analytics" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.workload="data-services" 
-	ms.date="12/01/2015" 
+<tags
+	ms.service="stream-analytics"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="data-services"
+	ms.date="12/01/2015"
 	ms.author="jeffstok"/>
 
-# Stream Analytics 出力について
+# 分析ツールとデータ ストレージ オプションをターゲットにした Stream Analytics データ変換出力
 
-Stream Analytics ジョブを作成するときの考慮事項として、ジョブの出力がどのように使用されるかということが挙げられます。データ変換のコンシューマーには、Stream Analytics ジョブの結果がどのように表示されますか。 出力の解析にどのツールを使用しますか。 データの保存またはウェアハウジングは必要ですか。
+Stream Analytics ジョブを作成するときは、データ変換出力の使用方法を考慮します。Stream Analytics ジョブの結果はどのように表示しますか。 データ分析結果の表示にどのツールを使用しますか。 データ ストレージ オプションは要件ですか。
 
-さまざまなアプリケーション パターンを有効にするために、Azure Stream Analytics には、ジョブ出力を保存および表示するためさまざまなメソッドが用意されています。これにより、データのウェアハウジングやその他の目的のためのジョブ出力の使用や保存において柔軟性を得たり、ジョブ出力を簡単に表示したりすることができます。ジョブで構成される出力は、ジョブが開始されてイベントがフローを開始する前に存在している必要があります。たとえば、出力として BLOB Storage を使用する場合、ジョブはストレージ アカウントを自動的に作成しません。ASA ジョブを開始する前に、ユーザーが作成する必要があります。
+さまざまなアプリケーション パターンを有効にするために、Azure Stream Analytics には、出力を保存し、分析結果を表示するためのさまざまなオプションが用意されています。そのため、ジョブ出力を簡単に確認したり、データのウェアハウジングやその他の用途でジョブ出力を柔軟に使用および保存したりすることができます。ジョブで構成される出力は、ジョブが開始されてイベントがフローを開始する前に存在している必要があります。たとえば、出力として BLOB Storage を使用する場合、ジョブはストレージ アカウントを自動的に作成しません。ASA ジョブを開始する前に、ユーザーが作成する必要があります。
 
 
 ## SQL Database ##
@@ -116,13 +116,13 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 | 形式 | JSON 型のみに適用されます。行区切りを指定すると、各 JSON オブジェクトを新しい行で区切ることで、出力が書式設定されます。配列を指定すると、出力が JSON オブジェクトの配列として書式設定されます。 |
 ## Power BI
 
-Stream Analytics ジョブの出力として [Power BI](https://powerbi.microsoft.com/) を使用し、Stream Analytics ユーザーに豊富な視覚化エクスペリエンスを提供できます。この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
+Stream Analytics ジョブの出力として [Power BI](https://powerbi.microsoft.com/) を使用し、分析結果の豊富な視覚化エクスペリエンスを提供できます。この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
 
-> [AZURE.NOTE]現時点では、Power BI 出力の作成および構成は Azure ポータルでサポートされていません。
+> [AZURE.NOTE]現時点では、Power BI 出力の作成および構成は Azure プレビュー ポータルでサポートされていません。
 
 ### Power BI アカウントを承認する
 
-1.	Power BI を Azure クラシック ポータルで出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
+1.	Power BI を Microsoft Azure 管理ポータルで出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
 
     ![Authorize Power BI User](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)
 
@@ -267,4 +267,4 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Apache Ambari Web UI を使用して HDInsight クラスターを監視および管理する |Microsoft Azure"
+   pageTitle="Apache Ambari Web UI を使用して HDInsight クラスターを監視および管理する | Microsoft Azure"
    description="Ambari を使用して Linux ベースの HDInsight クラスターを監視および管理する方法を説明します。このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/27/2015"
+   ms.date="12/03/2015"
    ms.author="larryfr"/>
 
 #Ambari Web UI を使用した HDInsight クラスターの管理
@@ -216,4 +216,12 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 3. 表示されたフィールドを使用して構成を変更し、**[Save]** を選択します。または、以前の構成を選択し、**[Make current]** を選択して以前の設定にロールバックします。
 
-<!---HONumber=Nov15_HO1-->
+##Ambari ビュー
+
+Ambari ビューを使うと、開発者は [Ambari ビュー フレームワーク](https://cwiki.apache.org/confluence/display/AMBARI/Views)を使用して Ambari Web UI に UI 要素をプラグインできます。HDInsight には、Hadoop クラスター タイプの異なる次のビューが用意されています。
+
+* Yarn Queue Manager: このキュー マネージャーでは、シンプルな UI により YARN キューを表示、変更できます。
+* Hive ビュー: Hive ビューを使用すると、Web ブラウザーから直接 Hive クエリを実行できます。クエリの保存、結果の表示、結果のクラスター ストレージへの保存、または結果のローカル システムへのダウンロードを行えます。Hive ビューの使用法の詳細については、[HDInsight での Hive ビューの使用](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
+* Tez ビュー: このビューでは、Tez ジョブの実行方法や、ジョブで使用するリソース関する情報を表示することで、ジョブをより良く理解、最適化できます。
+
+<!---HONumber=AcomDC_1210_2015-->

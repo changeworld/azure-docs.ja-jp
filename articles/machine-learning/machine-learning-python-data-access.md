@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/14/2015" 
+	ms.date="12/04/2015" 
 	ms.author="huvalo;bradsev" />
 
 
@@ -82,7 +82,7 @@ Python クライアント ライブラリで使用するために Studio で提�
 
 1. 所有者からトークンをリクエストします。所有者は Studio のワークスペースの [設定] ページから認証トークンを確認できます。左側のウィンドウから **[設定]** を選択し、**[認証トークン]** をクリックしてプライマリとセカンダリのトークンを確認します。プライマリとセカンダリの認証トークンのどちらもコード スニペットで使用できますが、所有者はセカンダリの認証トークンのみ共有することをお勧めします。
 
-    ![](http://i.imgur.com/h33GoZX.jpg)
+![](./media/machine-learning-python-data-access/ml-python-access-settings-tokens.png)
 
 2. 所有者への役割の昇格を申請するそのためにはまず、ワークスペースの現在の所有者にワークスペースから削除してもらい、その後所有者としてに再度招待してもらう必要があります。
 
@@ -367,4 +367,4 @@ Python クライアント ライブラリは、Pandas DataFrame を次の形式�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

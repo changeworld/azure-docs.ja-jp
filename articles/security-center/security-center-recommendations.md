@@ -4,7 +4,7 @@
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
-   manager="stevenpo"
+   manager="StevenPo"
    editor=""/>
 
 <tags
@@ -138,4 +138,4 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 [9]: ./media/security-center-recommendations/finalize-waf.png
 [10]: ./media/security-center-recommendations/restrict-traffic.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

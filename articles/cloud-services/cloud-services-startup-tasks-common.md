@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="08/24/2015" 
+ms.date="12/07/2015" 
 ms.author="adegeo"/>
 
 # クラウド サービス共通のスタートアップ タスク
@@ -491,7 +491,7 @@ Startup2.cmd:
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
 [Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Runtime]: https://msdn.microsoft.com/ja-JP/library/azure/gg557552.aspx#Runtime
+[Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
@@ -503,4 +503,4 @@ Startup2.cmd:
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

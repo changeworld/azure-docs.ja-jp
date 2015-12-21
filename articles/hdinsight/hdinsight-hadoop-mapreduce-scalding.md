@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="10/15/2015"
+ ms.date="12/04/2015"
  ms.author="larryfr"/>
 
 # HDInsight での Apache Hadoop による Scalding MapReduce ジョブの開発
@@ -231,7 +231,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 > [AZURE.NOTE]次の手順では、Windows PowerShell を使用します。MapReduce ジョブを実行する他の方法については、「[HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)」を参照してください。
 
-1. [Azure PowerShell をインストールして構成します](../install-configure-powershell.md)。
+1. [Azure PowerShell をインストールして構成します](../powershell-install-configure.md)。
 
 2. Azure PowerShell を起動し、Azure アカウントにログインします。資格情報を提供すると、コマンドがアカウントの情報を返します。
 
@@ -298,7 +298,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
             -HttpCredential $creds
         #Download the output of the job
         Get-AzureStorageBlobContent `
-            -Blob example/wordcountout/part-r-00000 `
+            -Blob example/wordcountout/part-00000 `
             -Container $container `
             -Destination output.txt `
             -Context $context
@@ -344,4 +344,4 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1210_2015-->

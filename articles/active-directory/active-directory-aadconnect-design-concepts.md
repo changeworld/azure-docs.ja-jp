@@ -56,7 +56,6 @@ sourceAnchor 属性は、大文字小文字を区別します。値 "JohnDoe" �
 
 別のソリューションは、変更されないことがわかっている既存の属性を選択することです。一般的に使用される属性に **employeeID** があります。文字が含まれる属性を検討する場合は、属性値の文字 (大文字と小文字) が変更される可能性がないことを確認します。使用しない方がよい属性として、ユーザーの名前を含む属性があります。名前は、結婚や離婚によって変更されることが予想されるため、この属性には使用できません。これは、**userPrincipalName**、**mail**、**targetAddress** などの属性を Azure AD Connect のインストール ウィザードで選択できない理由の 1 つでもあります。これらの属性に含まれる @ 文字も sourceAnchor では使用できません。
 
-
 ### sourceAnchor 属性の変更
 Azure AD でオブジェクトを作成して、ID を同期した後に、sourceAnchor 属性の値を変更することはできません。
 
@@ -69,4 +68,4 @@ Azure AD でオブジェクトを作成して、ID を同期した後に、sourc
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

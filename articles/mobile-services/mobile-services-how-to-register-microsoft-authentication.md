@@ -7,13 +7,13 @@
 	manager="dwrede"
 	editor=""/>
 
-<tags
-	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="NA"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="11/15/2015"
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="NA" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/30/2015" 
 	ms.author="glenga"/>
 
 # 認証で Microsoft アカウントを使用するためのアプリケーションの登録
@@ -93,4 +93,4 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 
 [Microsoft Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

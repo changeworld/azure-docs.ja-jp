@@ -13,8 +13,8 @@
 	ms.topic="reference" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="multiple" 
-	ms.date="07/28/2015" 
-	ms.author="luisca"/>
+	ms.date="12/08/2015" 
+	ms.author="pingf"/>
 
 
 # Machine Learning 異常検出サービス#
@@ -89,4 +89,4 @@ API は時系列データでこれらの検出を実行し、時系列の各ポ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

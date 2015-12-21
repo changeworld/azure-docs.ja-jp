@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Site Recovery: よく寄せられる質問" 
+	pageTitle="Site Recovery: よく寄せられる質問 | Microsoft Azure" 
 	description="この記事では、Azure Site Recovery に関してよく寄せられる質問について説明します。" 
 	services="site-recovery" 
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na" 
 	ms.workload="storage-backup-recovery"
-	ms.date="12/01/2015" 
+	ms.date="12/07/2015" 
 	ms.author="raynew"/>
 
 
@@ -43,9 +43,9 @@ Site Recovery は、オンプレミスの仮想マシンと物理サーバーか
 
 Hyper-V ホスト サーバーの前提条件を以下で確認します。
 
-- [Hyper-V VM を (VMM なしで) Azure にレプリケートする](site-recovery-hyper-v-site-to-azure/#before-you-start)
-- [Hyper-V VM を (VMM を使って) Azure にレプリケートする](site-recovery-vmm-to-azure/#before-you-start)
-- [Hyper-V VM をセカンダリ データセンターにレプリケートする](site-recovery-vmm-to-vmm/#before-you-start)
+- [Hyper-V VM を (VMM なしで) Azure にレプリケートする](site-recovery-hyper-v-site-to-azure.md/#before-you-start)
+- [Hyper-V VM を (VMM を使って) Azure にレプリケートする](site-recovery-vmm-to-azure.md/#before-you-start)
+- [Hyper-V VM をセカンダリ データセンターにレプリケートする](site-recovery-vmm-to-vmm.md/#before-you-start)
 
 ゲスト オペレーティング システムについて:
 
@@ -74,17 +74,17 @@ Site Recovery を使用すると、仮想マシンまたは物理サーバーで
 
 ### どの物理サーバーを保護できますか。
 
-Windows および Linux を実行している物理サーバーを保護することができます。オペレーティング システムの要件については、「[必要なもの](site-recovery-vmware-to-azure/#what-do-i-need)」を参照してください。物理サーバーを Azure にレプリケートする場合も、セカンダリ サイトにレプリケートする場合も、同じ制限が適用されます。
+Windows および Linux を実行している物理サーバーを保護することができます。オペレーティング システムの要件については、「[必要なもの](site-recovery-vmware-to-azure.md/#what-do-i-need)」を参照してください。物理サーバーを Azure にレプリケートする場合も、セカンダリ サイトにレプリケートする場合も、同じ制限が適用されます。
 
 オンプレミスのサーバーがダウンした場合には、物理サーバーは Azure では VM として実行されることに注意してください。オンプレミスの物理サーバーへのフェールバックは現在サポートされていませんが、Hyper-V または VMware 上で実行されている仮想マシンにフェールバックすることはできます。
 
 ### どの VMware VM を保護できますか。
 
-このシナリオでは VMware vCenter サーバー、vSphere ハイパーバイザー、および VMware ツールが実行されている仮想マシンが必要です。正確な要件については、「[必要なもの](site-recovery-vmware-to-azure/#what-do-i-need)」を参照してください。物理サーバーを Azure にレプリケートする場合も、セカンダリ サイトにレプリケートする場合も、同じ制限が適用されます。
+このシナリオでは VMware vCenter サーバー、vSphere ハイパーバイザー、および VMware ツールが実行されている仮想マシンが必要です。正確な要件については、「[必要なもの](site-recovery-vmware-to-azure.md/#what-do-i-need)」を参照してください。物理サーバーを Azure にレプリケートする場合も、セカンダリ サイトにレプリケートする場合も、同じ制限が適用されます。
 
 ### 仮想マシンを Azure にレプリケートするための前提条件はありますか。
 
-Azure にレプリケートする仮想マシンは、[Azure 要件](site-recovery-best-practices/#virtual-machines)に適合している必要があります。
+Azure にレプリケートする仮想マシンは、[Azure 要件](site-recovery-best-practices.md/#virtual-machines)に適合している必要があります。
 
 ### Hyper-V 第 2 世代仮想マシンを Azure にレプリケートできますか。
 
@@ -127,7 +127,7 @@ Site Recovery は ISO 27001:2005 の認証を受けており、HIPAA、DPA、お
 
 ### Azure にレプリケートする場合、どの種類のストレージ アカウントが必要ですか。
 
-[標準の地理冗長ストレージ](../storage/storage-redundancy/#geo-redundant-storage)を持つストレージ アカウントが必要になります。[Premium Storage アカウント](../storage/storage-premium-storage-preview-portal/)は、VMware 仮想マシンまたは Windows/Linux 物理サーバーを Azure にレプリケートする場合にのみサポートされます。
+[標準の地理冗長ストレージ](../storage/storage-redundancy.md/#geo-redundant-storage)を持つストレージ アカウントが必要になります。[Premium Storage アカウント](../storage/storage-premium-storage-preview-portal/)は、VMware 仮想マシンまたは Windows/Linux 物理サーバーを Azure にレプリケートする場合にのみサポートされます。
 
 標準のローカル冗長ストレージのサポートはバックログにあります。「[フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/7204469-local-redundant-type-azure-storage-support)」でこの機能に関するフィードバックを送信してください。
 
@@ -154,7 +154,7 @@ Site Recovery は ISO 27001:2005 の認証を受けており、HIPAA、DPA、お
 
 ### Azure にフェールオーバーする場合、フェールオーバー後に Azure の仮想マシンにどうしたらアクセスできますか。 
 
-Azure VM には、セキュリティで保護されたインターネット接続を経由して、またはある場合には、サイト間 VPN (または Azure ExpressRoute) 経由でアクセスできます。VPN 接続を経由した通信は、VM が配置されている Azure ネットワーク上の内部ポートにマップされます。インターネットを経由した通信は、VM の Azure クラウド サービスのパブリック エンドポイントにマップされます。[詳細については、こちらを参照してください。](site-recovery-network-design/#connectivity-after-failover)
+Azure VM には、セキュリティで保護されたインターネット接続を経由して、またはある場合には、サイト間 VPN (または Azure ExpressRoute) 経由でアクセスできます。VPN 接続を経由した通信は、VM が配置されている Azure ネットワーク上の内部ポートにマップされます。インターネットを経由した通信は、VM の Azure クラウド サービスのパブリック エンドポイントにマップされます。[詳細については、こちらを参照してください。](site-recovery-network-design.md/#connectivity-after-failover)
 
 ### Azure にフェールオーバーする場合、Azure はどのようにデータの回復力を確認しますか。
 
@@ -223,4 +223,4 @@ Azure パック、クラウド プラットフォーム システム、および
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

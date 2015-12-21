@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="11/24/2015"
+      ms.date="12/03/2015"
       ms.author="hascipio; avikova" />
 
 # Azure Marketplace のデータ サービスの発行ガイド
@@ -23,7 +23,7 @@
 
 [https://publish.windowsazure.com](https://publish.windowsazure.com.) を開きます。
 
-**初めて発行ポータルにログインする場合は、販売者ダッシュボードに会社の販売者プロファイルファイルを登録したときに使用したものと同じアカウントを使用します。** 発行ポータルでは、他の従業員を共同管理者として後で追加できます。発行ポータルでサービスを作成し始めるには、発行者契約に同意する必要があります。
+**初めて発行ポータルにログインする場合は、デベロッパー センターに会社の販売者プロファイルファイルを登録したときに使用したものと同じアカウントを使用します。** 発行ポータルでは、他の従業員を共同管理者として後で追加できます。
 
 初めて発行ポータルにログインする場合は、**[Data Services の発行]** タイルをクリックします。
 
@@ -41,7 +41,7 @@
 
 **[チュートリアル]** タブをクリックし、Azure Marketplace に適切にデータ サービスを発行するために必要なすべての手順を確認します。
 
-> [AZURE.TIP] [チュートリアル] ページのリンクと、左側のデータ サービス オファーのサブメニューのタブはいつでも使用できます。
+> [AZURE.TIP][チュートリアル] ページのリンクと、左側のデータ サービス オファーのサブメニューのタブはいつでも使用できます。
 
 ## 5\.新しいオファーを作成します。
 
@@ -146,4 +146,4 @@ Web サービスの場合
 [link-acct-creation]: marketplace-publishing-microsoft-accounts-creation-registration.md
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_1210_2015-->

@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="09/15/2015"
-	ms.author="ggailey777"/>
+	ms.date="12/07/2015"
+	ms.author="glenga"/>
 
 # ソース管理へのモバイル サービス プロジェクト コードの保存
 
@@ -66,7 +66,7 @@
 
 7. .\\service\\table サブフォルダーを開くと、TodoItem.json ファイルが含まれていることがわかります。これは、TodoItem テーブルに対する操作のアクセス許可の JSON 表現です。
 
-	このテーブルにサーバー スクリプトが定義されている場合、<code>TodoItem._&lt;operation&gt;_.js</code> という名前のファイルが 1 つ以上存在します。このファイルには特定のテーブル操作に対応するスクリプトが含まれます。Scheduler スクリプトとカスタム API スクリプトは、各スクリプトの名前が付けられたフォルダーに別々に格納されます。詳細については、「[ソース管理]」を参照してください。
+	このテーブルにサーバー スクリプトが定義されている場合、<code>TodoItem._&lt;operation&gt;_.js</code> という名前のファイルが 1 つ以上存在します。このファイルには特定のテーブル操作に対応するスクリプトが含まれます。スケジューラ スクリプトとカスタム API スクリプトは、各スクリプトの名前が付けられたフォルダーに別々に格納されます。詳細については、「[ソース管理]」を参照してください。
 
 これでローカル リポジトリが作成できたので、サーバー スクリプトを変更して、モバイル サービスに変更をプッシュ バックできます。
 
@@ -158,4 +158,4 @@ Node.js モジュールをモバイル サービスに追加するための推�
 [Modules (モジュール)]: http://nodejs.org/api/modules.html
 [node-uuid]: https://npmjs.org/package/node-uuid
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

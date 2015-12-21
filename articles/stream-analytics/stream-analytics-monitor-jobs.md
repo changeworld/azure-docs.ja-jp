@@ -1,6 +1,7 @@
 <properties 
 	pageTitle="Stream Analytics 上のジョブをプログラムで監視する |Microsoft Azure" 
-	description="REST API、Azure SDK、または Powershell を介して作成された Stream Analytics ジョブをプログラムで監視する方法の詳細について説明します。" 
+	description="REST API、Azure SDK、または Powershell を介して作成された Stream Analytics ジョブをプログラムで監視する方法の詳細について説明します。"
+	keywords=".net モニター、ジョブ モニター、監視アプリ"
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -13,14 +14,14 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/23/2015" 
+	ms.date="12/04/2015" 
 	ms.author="jeffstok"/>
 
 
-# プログラムでの Stream Analytics ジョブの監視 
-この記事では、Stream Analytics ジョブの監視を有効にする方法を示します。REST API、Azure SDK、または Powershell を介して作成された Stream Analytics ジョブは、既定では監視は有効になっていません。Azure ポータルで、ジョブの [監視] ページに移動し、[有効にする] ボタンをクリックして、手動で監視を有効にできます。または、この記事にある手順に従って、有効にするプロセスを自動化することもできます。監視データは、Stream Analytics ジョブ用の Azure ポータルの [監視] タブに表示されます。
+# Stream Analytics ジョブ モニターをプログラムで作成する
+ この記事では、Stream Analytics ジョブの監視を有効にする方法を示します。REST API、Azure SDK、または Powershell を介して作成された Stream Analytics ジョブは、既定では監視は有効になっていません。Azure ポータルで、ジョブの [監視] ページに移動し、[有効にする] ボタンをクリックして、手動で監視を有効にできます。または、この記事にある手順に従って、有効にするプロセスを自動化することもできます。監視データは、Stream Analytics ジョブ用の Azure ポータルの [監視] タブに表示されます。
 
-![[ジョブ] タブの監視](./media/stream-analytics-monitor-jobs/stream-analytics-monitor-jobs-tab.png)
+![ジョブ モニター、[ジョブ] タブ](./media/stream-analytics-monitor-jobs/stream-analytics-monitor-jobs-tab.png)
 
 ## 前提条件
 この記事を読み始める前に、次の項目を用意する必要があります。
@@ -178,4 +179,4 @@
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

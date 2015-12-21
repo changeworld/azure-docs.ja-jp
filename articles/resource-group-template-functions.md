@@ -1,5 +1,5 @@
 <properties
-   pageTitle="リソース マネージャーのテンプレートの関数 | Microsoft Azure"
+   pageTitle="リソース マネージャーのテンプレートの式 | Microsoft Azure"
    description="値の取得、文字列の処理、デプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。"
    services="azure-resource-manager"
    documentationCenter="na"
@@ -13,16 +13,31 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/02/2015"
+   ms.date="12/07/2015"
    ms.author="tomfitz"/>
 
-# Azure リソース マネージャーのテンプレートの関数
+# Azure リソース マネージャーのテンプレートの式
 
-このトピックでは、Azure リソース マネージャーのテンプレートで使用できるすべての関数について説明します。
+このトピックでは、Azure リソース マネージャーのテンプレートで使用できるすべての式について説明します。
 
-テンプレート関数とそのパラメーターでは大文字と小文字が区別されません。たとえば、Resource Manager では、**variables('var1')** と **VARIABLES('VAR1')** が同じものとして解決されます。評価の際、関数は、大文字/小文字を明確に変更する (toUpper、toLower など) 場合を除き、大文字/小文字を保持します。特定のリソースの種類では、式の評価方法とは無関係に、大文字/小文字の要件が存在する場合があります。
+テンプレート式とそのパラメーターでは大文字と小文字が区別されません。たとえば、Resource Manager では、**variables('var1')** と **VARIABLES('VAR1')** が同じものとして解決されます。評価の際、式は、大文字/小文字を明確に変更する (toUpper、toLower など) 場合を除き、大文字/小文字を保持します。特定のリソースの種類では、式の評価方法とは無関係に、大文字/小文字の要件が存在する場合があります。
 
-## 追加
+## 数値式
+
+リソース マネージャーは、整数を操作する次の式を提供します。
+
+- [追加](#add)
+- [copyIndex](#copyindex)
+- [div](#div)
+- [int](#int)
+- [length](#length)
+- [mod](#mod)
+- [mul](#mul)
+- [sub](#sub)
+
+
+<a id="add" />
+### 追加
 
 **add(operand1, operand2)**
 
@@ -34,7 +49,134 @@
 | operand2 | あり | 使用する 2 番目のオペランドです。
 
 
-## base64
+<a id="copyindex" />
+### copyIndex
+
+**copyIndex(offset)**
+
+反復処理のループの現在のインデックスを返します。
+
+この式は常に **copy** オブジェクトと共に使用されます。**copyIndex** を使用する例については、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
+
+
+<a id="div" />
+### div
+
+**div(operand1, operand2)**
+
+指定された 2 つの整数の整数除算を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| operand1 | あり | 割られる数。
+| operand2 | あり | 割る数。ゼロ (0) 以外にする必要があります。
+
+
+<a id="int" />
+### int
+
+**int(valueToConvert)**
+
+指定された値を整数に変換します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| valueToConvert | あり | 整数に変換する値。値の種類は文字列か整数になります。
+
+次の例では、ユーザー指定のパラメーター値を整数に変換します。
+
+    "parameters": {
+        "appId": { "type": "string" }
+    },
+    "variables": { 
+        "intValue": "[int(parameters('appId'))]"
+    }
+
+
+<a id="length" />
+### length
+
+**length(配列または文字列)**
+
+配列の要素数または文字列の文字数を返します。この関数を配列と共に使用して、リソースを作成するときのイテレーション数を指定できます。次の例では、**siteNames** パラメーターは、Web サイトの作成時に使用する名前の配列を参照します。
+
+    "copy": {
+        "name": "websitescopy",
+        "count": "[length(parameters('siteNames'))]"
+    }
+
+この関数を配列と共に使用する方法の詳細については、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
+
+次のように、文字列と共に使用することもできます。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "nameLength": "[length(parameters('appName'))]"
+    }
+
+
+<a id="mod" />
+### mod
+
+**mod(operand1, operand2)**
+
+指定された 2 つの整数を使用した整数除算の剰余を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| operand1 | あり | 割られる数。
+| operand2 | あり | 割る数。ゼロ (0) 以外にする必要があります。
+
+
+
+<a id="mul" />
+### mul
+
+**mul(operand1, operand2)**
+
+指定された 2 つの整数の乗算を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| operand1 | あり | 使用する最初のオペランドです。
+| operand2 | あり | 使用する 2 番目のオペランドです。
+
+
+<a id="sub" />
+### sub
+
+**sub(operand1, operand2)**
+
+指定された 2 つの整数の減算を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| operand1 | あり | 減算される数値。
+| operand2 | あり | 減算する数値。
+
+
+## 文字列式
+
+リソース マネージャーは、文字列を操作する次の式を提供します。
+
+- [base64](#base64)
+- [concat](#concat)
+- [padLeft](#padleft)
+- [replace](#replace)
+- [split](#split)
+- [string](#string)
+- [toLower](#tolower)
+- [toUpper](#toupper)
+- [trim](#trim)
+- [uniqueString](#uniquestring)
+- [uri](#uri)
+
+文字列または配列の文字数を取得する方法については、「[length](#length)」を参照してください。
+
+<a id="base64" />
+### base64
 
 **base64 (inputString)**
 
@@ -51,7 +193,8 @@
       "authorizationHeader": "[concat('Basic ', base64(variables('usernameAndPassword')))]"
     }
 
-## concat
+<a id="concat" />
+### concat
 
 **concat (arg1, arg2, arg3, ...)**
 
@@ -66,13 +209,218 @@
         }
     }
 
-## copyIndex
+<a id="padleft" />
+### padLeft
 
-**copyIndex(offset)**
+**padLeft(stringToPad, totalLength, paddingCharacter)**
 
-反復処理のループの現在のインデックスを返します。この関数を使用する例については、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
+指定された長さに到達するまで左側に文字を追加していくことで、右揃えの文字列を返します。
+  
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| stringToPad | あり | 右揃えにする文字列。
+| totalLength | あり | 返される文字列の文字合計数。
+| paddingCharacter | あり | 左余白の長さに到達するまで使用する文字。
 
-## デプロイ
+次の例では、文字列が 10 文字に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値に埋め込む方法を示します。元のパラメーター値が 10 文字より長い場合、文字は追加されません。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "paddedAppName": "[padLeft(parameters('appName'),10,'0')]"
+    }
+
+<a id="replace" />
+### replace
+
+**replace(originalString, oldCharacter, newCharacter)**
+
+指定された文字列内で、1 文字を別の文字で置き換えたすべてのインスタンスを含む新しい文字列を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| originalString | あり | 1 文字を別の文字で置き換えたすべてのインスタンスを含む文字列。
+| oldCharacter | あり | 元の文字列から削除する文字。
+| newCharacter | あり | 削除された文字の代わりに追加する文字。
+
+次の例では、ユーザーが指定した文字列からすべてのダッシュ (-) を削除する方法を示します。
+
+    "parameters": {
+        "identifier": { "type": "string" }
+    },
+    "variables": { 
+        "newidentifier": "[replace(parameters('identifier'),'-','')]"
+    }
+
+<a id="split" />
+### split
+
+**split(inputString, delimiter)** **split(inputString, [delimiters])**
+
+送信された区切り記号で区切られた、入力文字列の部分文字列が格納されている、文字列の配列を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| inputString | あり | 分割する文字列。
+| delimiter | あり | 使用する区切り記号。1 つの文字列または文字列の配列を指定できます。
+
+次の例では、入力文字列をコンマで分割します。
+
+    "parameters": {
+        "inputString": { "type": "string" }
+    },
+    "variables": { 
+        "stringPieces": "[split(parameters('inputString'), ',')]"
+    }
+
+<a id="string" />
+### string
+
+**string(valueToConvert)**
+
+指定された値を文字列に変換します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| valueToConvert | あり | 文字列に変換する値。値の種類はブール値、整数、文字列のいずれかになります。
+
+次の例では、ユーザー指定のパラメーター値を文字列に変換します。
+
+    "parameters": {
+        "appId": { "type": "int" }
+    },
+    "variables": { 
+        "stringValue": "[string(parameters('appId'))]"
+    }
+
+<a id="tolower" />
+### toLower
+
+**toLower(stringToChange)**
+
+指定された文字列を小文字に変換します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| stringToChange | あり | 小文字に変換する文字列。
+
+次の例では、ユーザー指定のパラメーター値を小文字に変換します。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "lowerCaseAppName": "[toLower(parameters('appName'))]"
+    }
+
+<a id="toupper" />
+### toUpper
+
+**toUpper(stringToChange)**
+
+指定した文字列を大文字に変換します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| stringToChange | あり | 大文字に変換する文字列。
+
+次の例では、ユーザー指定のパラメーター値を大文字に変換します。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "upperCaseAppName": "[toUpper(parameters('appName'))]"
+    }
+
+<a id="trim" />
+### trim
+
+**trim (stringToTrim)**
+
+指定された文字列から先頭と末尾の空白文字をすべて削除します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| stringToTrim | あり | トリムする文字列。
+
+次の例では、ユーザー指定のパラメーター値から空白文字を削除します。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "trimAppName": "[trim(parameters('appName'))]"
+    }
+
+<a id="uniquestring" />
+### uniqueString
+
+**uniqueString (stringForCreatingUniqueString, ...)**
+
+指定された文字列の 64 ビット ハッシュを実行し、一意の文字列を作成します。この関数は、リソースの一意の名前を作成する必要がある場合に便利です。結果の一意性のレベルを表すパラメーターの値を指定します。サブスクリプション、リソース グループ、またはデプロイメントに関して名前が一意であるかどうかを指定できます。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| stringForCreatingUniqueString | あり | 一意の文字列を作成するためにハッシュ関数で使用される基本文字列。
+| 必要に応じて追加のパラメーター | いいえ | 文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。
+
+返される値は完全にランダムな文字列ではなく、ハッシュ関数の結果になります。返される値は、13 文字です。グローバルに一意であるかは保証されません。命名規則にある何らかのプレフィックスをこの値と組み合わせて、よりわかりやすい名前を作成することもできます。
+
+次の例は、uniqueString を使用して、一般的に使用されている別のレベル用に一意の値を作成する方法を示しています。
+
+サブスクリプションに基づいて一意
+
+    "[uniqueString(subscription().subscriptionId)]"
+
+リソース グループに基づいて一意
+
+    "[uniqueString(resourceGroup().id)]"
+
+リソース グループのデプロイメントに基づいて一意
+
+    "[uniqueString(resourceGroup().id, deployment().name)]"
+    
+次の例は、リソース グループに基づいてストレージ アカウントの一意の名前を作成する方法を示しています。
+
+    "resources": [{ 
+        "name": "[concat('ContosoStorage', uniqueString(resourceGroup().id))]", 
+        "type": "Microsoft.Storage/storageAccounts", 
+        ...
+
+<a id="uri" />
+### uri
+
+**uri (baseUri, relativeUri)**
+
+baseUri と relativeUri の文字列を組み合わせることにより、絶対 URI を作成します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| baseUri | あり | ベース URI 文字列。
+| relativeUri | あり | ベース URI 文字列に追加する相対 URI 文字列。
+
+**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。たとえば、baseUri パラメーターとして ****http://contoso.com/resources/azuredeploy.json** を渡すと、****http://contoso.com/resources/** というベース URI が作成されます。
+
+次の例は、親テンプレートの値に基づいて、入れ子になったテンプレートへのリンクを作成する方法を示しています。
+
+    "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
+
+
+
+## デプロイの値式
+
+リソース マネージャーは、テンプレートのセクションから値を取得し、デプロイに関連する値を取得するために次の式を提供します。
+
+- [デプロイ](#deployment)
+- [parameters](#parameters)
+- [variables](#variables)
+
+リソース、リソース グループ、サブスクリプションから値を取得する方法については、「[リソース式](#resource-expressions)」を参照してください。
+
+<a id="deployment" />
+### デプロイ
 
 **デプロイ()**
 
@@ -117,125 +465,8 @@
     }  
 
 
-## div
-
-**div(operand1, operand2)**
-
-指定された 2 つの整数の整数除算を返します。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| operand1 | あり | 割られる数。
-| operand2 | あり | 割る数。ゼロ (0) 以外にする必要があります。
-
-## int
-
-**int(valueToConvert)**
-
-指定された値を整数に変換します。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| valueToConvert | あり | 整数に変換する値。値の種類は文字列か整数になります。
-
-次の例では、ユーザー指定のパラメーター値を整数に変換します。
-
-    "parameters": {
-        "appId": { "type": "string" }
-    },
-    "variables": { 
-        "intValue": "[int(parameters('appId'))]"
-    }
-
-## length
-
-**length(配列または文字列)**
-
-配列の要素数または文字列の文字数を返します。この関数を配列と共に使用して、リソースを作成するときのイテレーション数を指定できます。次の例では、**siteNames** パラメーターは、Web サイトの作成時に使用する名前の配列を参照します。
-
-    "copy": {
-        "name": "websitescopy",
-        "count": "[length(parameters('siteNames'))]"
-    }
-
-この関数を配列と共に使用する方法の詳細については、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
-
-次のように、文字列と共に使用することもできます。
-
-    "parameters": {
-        "appName": { "type": "string" }
-    },
-    "variables": { 
-        "nameLength": "[length(parameters('appName'))]"
-    }
-
-## listKeys
-
-**listKeys (resourceName or resourceIdentifier, [apiVersion])**
-
-ストレージ アカウントのキーを返します。resourceId は、[resourceId function](./#resourceid) を使用して、または形式 **providerNamespace/resourceType/resourceName** を使用して指定できます。関数を使用して、PrimaryKey と secondaryKey を取得できます。
-  
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| resourceName または resourceIdentifier | あり | ストレージ アカウントの一意の識別子。
-| apiVersion | あり | リソースのランタイム状態の API バージョン。
-
-次の例は、出力のセクションで、ストレージ アカウントからキーを返す方法を示しています。
-
-    "outputs": { 
-      "exampleOutput": { 
-        "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-05-01-preview')]", 
-        "type" : "object" 
-      } 
-    } 
-
-## mod
-
-**mod(operand1, operand2)**
-
-指定された 2 つの整数を使用した整数除算の剰余を返します。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| operand1 | あり | 割られる数。
-| operand2 | あり | 割る数。ゼロ (0) 以外にする必要があります。
-
-
-## mul
-
-**mul(operand1, operand2)**
-
-指定された 2 つの整数の乗算を返します。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| operand1 | あり | 使用する最初のオペランドです。
-| operand2 | あり | 使用する 2 番目のオペランドです。
-
-
-## padLeft
-
-**padLeft(stringToPad, totalLength, paddingCharacter)**
-
-指定された長さに到達するまで左側に文字を追加していくことで、右揃えの文字列を返します。
-  
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| stringToPad | あり | 右揃えにする文字列。
-| totalLength | あり | 返される文字列の文字合計数。
-| paddingCharacter | あり | 左余白の長さに到達するまで使用する文字。
-
-次の例では、文字列が 10 文字に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値に埋め込む方法を示します。元のパラメーター値が 10 文字より長い場合、文字は追加されません。
-
-    "parameters": {
-        "appName": { "type": "string" }
-    },
-    "variables": { 
-        "paddedAppName": "[padLeft(parameters('appName'),10,'0')]"
-    }
-
-
-## parameters
+<a id="parameters" />
+### parameters
 
 **parameters (parameterName)**
 
@@ -261,7 +492,55 @@
        }
     ]
 
-## プロバイダー
+<a id="variables" />
+### variables
+
+**variables (variableName)**
+
+変数の値を返します。指定した変数名は、テンプレートの変数セクションで定義されている必要があります。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| variable Name | あり | 返す変数の名前。
+
+
+
+## リソース式
+
+リソース マネージャーは、リソース式を取得する次の式を提供します。
+
+- [listkeys](#listkeys)
+- [プロバイダー](#providers)
+- [reference](#reference)
+- [resourceGroup](#resourcegroup)
+- [resourceId](#resourceid)
+- [subscription](#subscription)
+
+パラメーター、変数、現在のデプロイから値を取得する方法については、「[デプロイの値式](#deployment-value-expressions)」を参照してください。
+
+<a id="listkeys" />
+### listKeys
+
+**listKeys (resourceName or resourceIdentifier, [apiVersion])**
+
+ストレージ アカウントのキーを返します。resourceId は、[resourceId function](./#resourceid) を使用して、または形式 **providerNamespace/resourceType/resourceName** を使用して指定できます。関数を使用して、PrimaryKey と secondaryKey を取得できます。
+  
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| resourceName または resourceIdentifier | あり | ストレージ アカウントの一意の識別子。
+| apiVersion | あり | リソースのランタイム状態の API バージョン。
+
+次の例は、出力のセクションで、ストレージ アカウントからキーを返す方法を示しています。
+
+    "outputs": { 
+      "exampleOutput": { 
+        "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-05-01-preview')]", 
+        "type" : "object" 
+      } 
+    } 
+
+<a id="providers" />
+### プロバイダー
 
 **providers (providerNamespace, [resourceType])**
 
@@ -289,7 +568,8 @@
 	    }
     }
 
-## reference
+<a id="reference" />
+### reference
 
 **reference (resourceName or resourceIdentifier, [apiVersion])**
 
@@ -298,41 +578,59 @@
 | パラメーター | 必須 | 説明
 | :--------------------------------: | :------: | :----------
 | resourceName または resourceIdentifier | あり | 名前またはリソースの一意の識別子。
-| apiVersion | いいえ | リソースのランタイム状態の API バージョン。リソースが同じテンプレート内でプロビジョニングされていない場合は、パラメーターを使用する必要があります。
+| apiVersion | いいえ | 指定したリソースの API バージョンです。同じテンプレート内でリソースがプロビジョニングされないとき、このパラメーターを追加する必要があります。
 
 **reference** 関数はその値をランタイム状態から取得するので、変数セクションでは使用できません。これは、テンプレートの出力セクションで使用できます。
 
 参照式を使用して、参照先のリソースが同じテンプレート内でプロビジョニングされる場合に、1 つのリソースが他のリソースに依存していることを暗黙的に宣言します。**dependsOn** プロパティを一緒に使用する必要はありません。参照先のリソースがデプロイを完了するまでは、式は評価されません。
 
+次の例では、同じテンプレートでデプロイされるストレージ アカウントが参照されます。
+
     "outputs": {
-      "siteUri": {
-          "type": "string",
-          "value": "[concat('http://',reference(resourceId('Microsoft.Web/sites', parameters('siteName'))).hostNames[0])]"
-      }
-    }
+		"NewStorage": {
+			"value": "[reference(parameters('storageAccountName'))]",
+			"type" : "object"
+		}
+	}
 
-## replace
+次の例では、このテンプレートでデプロイされないが、デプロイされるリソースと同じリソース グループ内に存在するストレージ アカウントが参照されます。
 
-**replace(originalString, oldCharacter, newCharacter)**
+    "outputs": {
+		"ExistingStorage": {
+			"value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2015-06-15')]",
+			"type" : "object"
+		}
+	}
 
-指定された文字列内で、1 文字を別の文字で置き換えたすべてのインスタンスを含む新しい文字列を返します。
+下の図のように、BLOB エンドポイント URI など、返されたオブジェクトから特定の値を取得できます。
 
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| originalString | あり | 1 文字を別の文字で置き換えたすべてのインスタンスを含む文字列。
-| oldCharacter | あり | 元の文字列から削除する文字。
-| newCharacter | あり | 削除された文字の代わりに追加する文字。
+    "outputs": {
+		"BlobUri": {
+			"value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2015-06-15').primaryEndpoints.blob]",
+			"type" : "string"
+		}
+	}
 
-次の例では、ユーザーが指定した文字列からすべてのダッシュ (-) を削除する方法を示します。
+テンプレートに API バージョンを直接指定しない場合、下の図のように、**providers** 式を使用し、最新版などの値を取得できます。
 
-    "parameters": {
-        "identifier": { "type": "string" }
-    },
-    "variables": { 
-        "newidentifier": "[replace(parameters('identifier'),'-','')]"
-    }
+    "outputs": {
+		"BlobUri": {
+			"value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).primaryEndpoints.blob]",
+			"type" : "string"
+		}
+	}
 
-## resourceGroup
+次の例では、別のリソース グループにあるストレージ アカウントが参照されます。
+
+    "outputs": {
+		"BlobUri": {
+			"value": "[reference(resourceId(parameters('relatedGroup'), 'Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2015-06-15').primaryEndpoints.blob]",
+			"type" : "string"
+		}
+	}
+
+<a id="resourcegroup" />
+### resourceGroup
 
 **resourceGroup()**
 
@@ -356,7 +654,8 @@
        }
     ]
 
-## resourceId
+<a id="resourceid" />
+### resourceId
 
 **resourceId ([resourceGroupName], resourceType, resourceName1, [resourceName2]...)**
 
@@ -419,58 +718,8 @@
       }]
     }
 
-## split
-
-**split(inputString, delimiter)** **split(inputString, [delimiters])**
-
-送信された区切り記号で区切られた、入力文字列の部分文字列が格納されている、文字列の配列を返します。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| inputString | あり | 分割する文字列。
-| delimiter | あり | 使用する区切り記号。1 つの文字列または文字列の配列を指定できます。
-
-次の例では、入力文字列をコンマで分割します。
-
-    "parameters": {
-        "inputString": { "type": "string" }
-    },
-    "variables": { 
-        "stringPieces": "[split(parameters('inputString'), ',')]"
-    }
-
-## string
-
-**string(valueToConvert)**
-
-指定された値を文字列に変換します。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| valueToConvert | あり | 文字列に変換する値。値の種類はブール値、整数、文字列のいずれかになります。
-
-次の例では、ユーザー指定のパラメーター値を文字列に変換します。
-
-    "parameters": {
-        "appId": { "type": "int" }
-    },
-    "variables": { 
-        "stringValue": "[string(parameters('appId'))]"
-    }
-
-## sub
-
-**sub(operand1, operand2)**
-
-指定された 2 つの整数の減算を返します。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| operand1 | あり | 減算される数値。
-| operand2 | あり | 減算する数値。
-
-
-## subscription
+<a id="subscription" />
+### subscription
 
 **subscription()**
 
@@ -490,126 +739,6 @@
       } 
     } 
 
-## toLower
-
-**toLower(stringToChange)**
-
-指定された文字列を小文字に変換します。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| stringToChange | あり | 小文字に変換する文字列。
-
-次の例では、ユーザー指定のパラメーター値を小文字に変換します。
-
-    "parameters": {
-        "appName": { "type": "string" }
-    },
-    "variables": { 
-        "lowerCaseAppName": "[toLower(parameters('appName'))]"
-    }
-
-## toUpper
-
-**toUpper(stringToChange)**
-
-指定した文字列を大文字に変換します。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| stringToChange | あり | 大文字に変換する文字列。
-
-次の例では、ユーザー指定のパラメーター値を大文字に変換します。
-
-    "parameters": {
-        "appName": { "type": "string" }
-    },
-    "variables": { 
-        "upperCaseAppName": "[toUpper(parameters('appName'))]"
-    }
-
-## trim
-
-**trim (stringToTrim)**
-
-指定された文字列から先頭と末尾の空白文字をすべて削除します。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| stringToTrim | あり | トリムする文字列。
-
-次の例では、ユーザー指定のパラメーター値から空白文字を削除します。
-
-    "parameters": {
-        "appName": { "type": "string" }
-    },
-    "variables": { 
-        "trimAppName": "[trim(parameters('appName'))]"
-    }
-
-
-## uniqueString
-
-**uniqueString (stringForCreatingUniqueString, ...)**
-
-指定された文字列の 64 ビット ハッシュを実行し、一意の文字列を作成します。この関数は、リソースの一意の名前を作成する必要がある場合に便利です。結果の一意性のレベルを表すパラメーターの値を指定します。サブスクリプション、リソース グループ、またはデプロイメントに関して名前が一意であるかどうかを指定できます。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| stringForCreatingUniqueString | あり | 一意の文字列を作成するためにハッシュ関数で使用される基本文字列。
-| 必要に応じて追加のパラメーター | いいえ | 文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。
-
-返される値は完全にランダムな文字列ではなく、ハッシュ関数の結果になります。返される値は、13 文字です。グローバルに一意であるかは保証されません。命名規則にある何らかのプレフィックスをこの値と組み合わせて、よりわかりやすい名前を作成することもできます。
-
-次の例は、uniqueString を使用して、一般的に使用されている別のレベル用に一意の値を作成する方法を示しています。
-
-サブスクリプションに基づいて一意
-
-    "[uniqueString(subscription().subscriptionId)]"
-
-リソース グループに基づいて一意
-
-    "[uniqueString(resourceGroup().id)]"
-
-リソース グループのデプロイメントに基づいて一意
-
-    "[uniqueString(resourceGroup().id, deployment().name)]"
-    
-次の例は、リソース グループに基づいてストレージ アカウントの一意の名前を作成する方法を示しています。
-
-    "resources": [{ 
-        "name": "[concat('ContosoStorage', uniqueString(resourceGroup().id))]", 
-        "type": "Microsoft.Storage/storageAccounts", 
-        ...
-
-## uri
-
-**uri (baseUri, relativeUri)**
-
-baseUri と relativeUri の文字列を組み合わせることにより、絶対 URI を作成します。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| baseUri | あり | ベース URI 文字列。
-| relativeUri | あり | ベース URI 文字列に追加する相対 URI 文字列。
-
-**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。たとえば、baseUri パラメーターとして ****http://contoso.com/resources/azuredeploy.json** を渡すと、****http://contoso.com/resources/** というベース URI が作成されます。
-
-次の例は、親テンプレートの値に基づいて、入れ子になったテンプレートへのリンクを作成する方法を示しています。
-
-    "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
-
-
-## variables
-
-**variables (variableName)**
-
-変数の値を返します。指定した変数名は、テンプレートの変数セクションで定義されている必要があります。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| variable Name | あり | 返す変数の名前。
-
 
 ## 次のステップ
 - Azure リソース マネージャー テンプレートのセクションの説明については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。
@@ -617,4 +746,4 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 - 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 - 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

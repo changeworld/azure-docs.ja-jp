@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Microsoft Azure App Service でオンプレミスの SAP サーバーと統合する"
+	pageTitle="Azure App Service でオンプレミスの SAP サーバーと統合する | Microsoft Azure"
 	description="オンプレミスの SAP サーバーと統合する方法について説明します。"
 	authors="rajeshramabathiran"
 	manager="dwrede"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/01/2015"
+	ms.date="12/07/2015"
 	ms.author="sameerch"/>
 
 
@@ -40,15 +40,13 @@ SAP コネクタを使用すると、Azure App Services を構成する Web ア�
 
 
 ## 新しい SAP コネクタの作成
-1. Microsoft Azure 管理ポータルにサインインします。
+1. Azure ポータルにサインインします。
 2. **[新規]** を選択します。
 3. [作成] ブレードで、**[コンピューティング]**、**[Azure Marketplace]** の順に選択します。
-4. Marketplace のブレードで、**[API Apps]** を選択し、検索バーで "SAP" を検索します。
-
-	![SAP コネクタの API アプリ][2]
+4. Marketplace ブレードで、**[API Apps]** を選択し、検索バーで SAP を検索します。![SAP コネクタの API アプリ][2]
 5. マイクロソフト発行の **SAP コネクタ**を選択します。
 6. SAP コネクタのブレードで、**[作成]** を選択します。
-7. 表示された新しいブレードで、次のように入力します。
+7. 表示された新しいブレードで、次のように入力します。  
 	1. **[場所]** - コネクタをデプロイする地理的な場所を選択します。
 	2. **[サブスクリプション]** - コネクタを作成するサブスクリプションを選択します。
 	3. **[リソース グループ]** - コネクタを格納するリソース グループを選択するか、作成します。
@@ -83,7 +81,7 @@ SAP コネクタを使用すると、Azure App Services を構成する Web ア�
 
 ![ハイブリッド接続のクリック ワンス インストーラー][4]
 
-**[インストール]** を選択し、先ほどコピーしたプライマリ ゲートウェイの構成文字列を入力します。
+**[インストール]** を選択し、前にコピーしたプライマリ ゲートウェイの構成文字列を入力します。
 
 ![リレー リッスン接続文字列][5]
 
@@ -93,7 +91,7 @@ SAP コネクタを使用すると、Azure App Services を構成する Web ア�
 
 ![ハイブリッド接続マネージャーのインストール (完了)][7]
 
-## ハイブリッド接続の検証
+## ハイブリッド接続を検証する
 **[参照]**、**[API Apps]**、*コネクタの名前*の順に選択して、作成した SAP コネクタを参照します。
 
 コネクタのブレードで、ハイブリッド接続ステータスが*接続済み*になっていることを確認してください。
@@ -102,7 +100,7 @@ SAP コネクタを使用すると、Azure App Services を構成する Web ア�
 
 
 ## Logic Apps での SAP コネクタの使用
-作成した SAP コネクタは、Logic Apps のワークフローで使用できます。そのためには、**[新規]**、**[Logic Apps]**、**[作成]** の順に選択して、新しい Logic Apps を作成します。ロジック アプリのメタデータ (リソース グループなど) を入力します。
+作成した SAP コネクタは、Logic Apps のワークフローで使用できます。そのためには、**[新規]**、**[Logic Apps]**、**[作成]** の順に選択して、新しい Logic Apps を作成します。ロジック アプリのメタデータを、リソース グループを含めて入力します。
 
 **[トリガーとアクション]** を選択します。Logic Apps のワークフロー デザイナーが開きます。
 
@@ -123,4 +121,4 @@ SAP コネクタを使用すると、Azure App Services を構成する Web ア�
 [8]: ./media/app-service-logic-integrate-with-an-on-premise-SAP-server/SAPConnector.HybridConnection.Connected.PNG
 [9]: http://download.microsoft.com/download/2/D/7/2D7CE8DF-A6C5-45F0-8319-14C3F1F9A0C7/InstallationGuide.htm
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

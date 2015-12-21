@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="10/30/2015"
+ ms.date="12/04/2015"
  ms.author="larryfr"/>
 
 #HDInsight で WebHCat (Templeton) から受信したエラーの説明と解決策
@@ -51,7 +51,7 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 | ----- | ---------- |
 | WebHCat によって 1 分間に処理される同時要求の最大数を超過した (既定値は 20)。 | 最大同時要求数を超える数の要求を送信しないようにワークロードを減らすか、`templeton.exec.max-procs` を変更して同時要求の上限をより大きな値にします。詳細については、「[構成の変更](#modifying-configuration)」を参照してください。 |
 
-##サーバーを使用できません
+##Server unavailable
 
 **HTTP 状態コード**: 503
 
@@ -59,7 +59,7 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 | ---------------- | ------------------- |
 | これは、通常、クラスターのプライマリ ヘッドノードとセカンダリ ヘッドノードの間のフェールオーバー中に発生します。 | 2 分待ってから操作をやり直してください。 |
 
-##無効な要求　内容：ジョブが見つかりませんでした
+##Bad request Content: Could not find job
 
 **HTTP 状態コード**: 400
 
@@ -69,7 +69,7 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 | フェールオーバーによってジョブが強制終了した。 | 最大で 2 分間にわたってジョブの送信を再試行してください。 |
 | 無効なジョブ ID が使用された。 | ジョブ ID が正しいことを確認してください。 |
 
-##ゲートウェイが無効です
+##Bad gateway
 
 **HTTP 状態コード**: 502
 
@@ -86,4 +86,4 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 [max-age-ms]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/ds_Hadoop/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1210_2015-->

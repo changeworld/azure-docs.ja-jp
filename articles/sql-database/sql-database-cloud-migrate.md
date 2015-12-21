@@ -62,7 +62,7 @@ SQL Server データベースを Azure SQL Database に移行するワークフ�
 
 ## データ層アプリケーションのエクスポートを使用してデータベースの互換性を調べる
 
-1. SQL Server Management Studio がバージョン 13.0.600.65 以降であることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure クラシック ポータルの更新との同期が維持されます。
+1. SQL Server Management Studio がバージョン 13.0.600.65 以降であることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure ポータルの更新との同期が維持されます。
 
  	 >[AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。最新バージョンの Management Studio を使用することを常にお勧めします。
 
@@ -98,9 +98,9 @@ SQL Server データベースを Azure SQL Database に移行するワークフ�
 
 > [AZURE.WARNING]これらの方法のいずれかでデータベースを移行する前に、移行中にトランザクションの整合性が維持されるように、アクティブなトランザクションがないことを確認します。クライアント接続を無効にしたり、[データベース スナップショット](https://msdn.microsoft.com/library/ms175876.aspx)を作成したりするなど、データベースはさまざまな方法で停止できます。
 
-- 小規模から中規模のデータベースの場合、[互換性のある](#determine-if-your-database-is-compatible) SQL Server 2005 以降のデータベースの移行は、SQL Server Management Studio の [[データベースの Microsoft Azure Database へのデプロイ]](#use-the-deploy-database-to-microsoft-azure-database-wizard) ウィザードを実行するのと同じくらい簡単です。接続に問題 (接続なし、低帯域幅、タイムアウト) がある場合は、Azure SQL Database への SQL Server データベースの[移行を BACPAC を使用して行う](#use-a-bacpac-to-migrate-a-database-to-azure-sql-database)ことができます。
-- 中規模から大規模のデータベースの場合、または接続に問題がある場合は、[BACPAC を使用](#use-a-bacpac-to-migrate-a-database-to-azure-sql-database)して SQL Server データベースを Azure SQL Database に移行します。この方法では、SQL Server Management Studio を使用して、データとスキーマを [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) ファイル (ローカルまたは Azure BLOB に保存される) にエクスポートしてから、Azure SQL インスタンスに BACPAC ファイルをインポートします。Azure BLOB に BACPAC を保存する場合は、[Azure クラシック ポータル](sql-database-import.md)から、または [PowerShell を使用](sql-database-import-powershell.md)して、BACPAC ファイルをインポートすることもできます。
-- 大規模なデータベースの場合は、スキーマとデータを個別に移行することでパフォーマンスを最適化できます。この方法では、[BACPAC ファイルをデータのなしで](#use-a-bacpac-to-migrate-a-database-to-azure-sql-database)作成し、Azure SQL Database にこの BACPAC をインポートします。Azure SQL Database にスキーマをインポートした後、[BCP](https://msdn.microsoft.com/library/ms162802.aspx) を使用してフラット ファイルにデータを抽出し、Azure SQL Database にこれらのファイルをインポートします。
+- 小規模から中規模のデータベースの場合、[互換性のある](#determine-if-your-database-is-compatible) SQL Server 2005 以降のデータベースの移行は、SQL Server Management Studio の [[データベースの Microsoft Azure Database へのデプロイ]](#use-deploy-database-to-microsoft-azure-database-wizard) ウィザードを実行するのと同じくらい簡単です。接続に問題 (接続なし、低帯域幅、タイムアウト) がある場合は、Azure SQL Database への SQL Server データベースの[移行を BACPAC を使用して行う](#use-a-bacpac-to-migrate-a-sql-server-database-to-azure-sql-database)ことができます。
+- 中規模から大規模のデータベースの場合、または接続に問題がある場合は、[BACPAC を使用](#use-a-bacpac-to-migrate-a-sql-server-database-to-azure-sql-database)して SQL Server データベースを Azure SQL Database に移行します。この方法では、SQL Server Management Studio を使用して、データとスキーマを [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) ファイル (ローカルまたは Azure BLOB に保存される) にエクスポートしてから、Azure SQL インスタンスに BACPAC ファイルをインポートします。Azure BLOB に BACPAC を保存する場合は、[Azure ポータル](sql-database-import.md)から、または [PowerShell を使用](sql-database-import-powershell.md)して、BACPAC ファイルをインポートすることもできます。
+- 大規模なデータベースの場合は、スキーマとデータを個別に移行することでパフォーマンスを最適化できます。この方法では、[BACPAC ファイルをデータなしで](#use-a-bacpac-to-migrate-a-sql-server-database-to-azure-sql-database)作成し、Azure SQL Database にこの BACPAC をインポートします。Azure SQL Database にスキーマをインポートした後、[BCP](https://msdn.microsoft.com/library/ms162802.aspx) を使用してフラット ファイルにデータを抽出し、Azure SQL Database にこれらのファイルをインポートします。
 
 	 ![SSMS の移行ダイアグラム](./media/sql-database-cloud-migrate/01SSMSDiagram_new.png)
 
@@ -127,7 +127,7 @@ SQL Server Management Studio の Microsoft Azure SQL Database へのデータベ
 
 > [AZURE.NOTE]以下の手順では、Azure SQL 論理インスタンスを既に[プロビジョニング](../sql-database-get-started.md)してあり、接続情報がわかっているものとします。
 
-1. SQL Server Management Studio がバージョン 13.0.600.65 以降であることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure クラシック ポータルの更新との同期が維持されます。
+1. SQL Server Management Studio がバージョン 13.0.600.65 以降であることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure ポータルの更新との同期が維持されます。
 
 	 >[AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。最新バージョンの Management Studio を使用することを常にお勧めします。
 
@@ -150,7 +150,7 @@ SQL Server Management Studio の Microsoft Azure SQL Database へのデータベ
 
 6.	データベースを移行するウィザードを完了します。データベースのサイズと複雑さに応じて、デプロイメントには数分から数時間かかる場合があります。
 7.	オブジェクト エクスプローラーを使用して、Azure SQL Database サーバーの移行されたデータベースに接続します。
-8.	Azure クラシック ポータルを使用して、データベースとそのプロパティを表示します。
+8.	Azure ポータルを使用して、データベースとそのプロパティを表示します。
 
 ## BACPAC を使用して SQL Server データベースを Azure SQL Database に移行する
 
@@ -163,14 +163,14 @@ SQL Server Management Studio の Microsoft Azure SQL Database へのデータベ
 
 - [SQL Server Management Studio を使用して BACPAC ファイルを Azure SQL Database にインポートする](#import-from-a-bacpac-file-into-azure-sql-database-using-sql-server-management-studio)
 - [SqlPackage を使用して BACPAC ファイルを Azure SQL Database にインポートする](#import-from-a-bacpac-file-into-azure-sql-database-using-sqlpackage)
-- [Azure クラシック ポータルを使用して BACPAC ファイルを Azure SQL Database にインポートする](sql-database-import.md)
+- [Azure ポータルを使用して BACPAC ファイルを Azure SQL Database にインポートする](sql-database-import.md)
 - [PowerShell を使用して BACPAC ファイルを Azure SQL Database にインポートする](sql-database-import-powershell.md)
 
 ## SQL Server Management Studio を使用して互換性のある SQL Server データベースを BACPAC ファイルにエクスポートする
 
 以下の手順では、Management Studio を使用して[互換性のある](#determine-if-your-database-is-compatible) SQL Server データベースを BACPAC ファイルにエクスポートします。
 
-1. SQL Server Management Studio がバージョン 13.0.600.65 以降であることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure クラシック ポータルの更新との同期が維持されます。
+1. SQL Server Management Studio がバージョン 13.0.600.65 以降であることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure ポータルの更新との同期が維持されます。
 
 	 >[AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。最新バージョンの Management Studio を使用することを常にお勧めします。
 
@@ -211,9 +211,9 @@ SQL Server Management Studio の Microsoft Azure SQL Database へのデータベ
 
 > [AZURE.NOTE]以下の手順では、Azure SQL 論理インスタンスを既にプロビジョニングしてあり、接続情報がわかっているものとします。
 
-1. SQL Server Management Studio がバージョン 13.0.600.65 以降であることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure クラシック ポータルの更新との同期が維持されます。
+1. SQL Server Management Studio がバージョン 13.0.600.65 以降であることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure ポータルの更新との同期が維持されます。
 
-	> [AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。最新バージョンの Management Studio を使用することを常にお勧めします。
+	> [AZURE.IMPORTANT][最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。最新バージョンの Management Studio を使用することを常にお勧めします。
 
 2. Management Studio を開き、オブジェクト エクスプローラーで移行元データベースに接続します。
 
@@ -235,7 +235,7 @@ SQL Server Management Studio の Microsoft Azure SQL Database へのデータベ
 
 7. オブジェクト エクスプローラーを使用して、Azure SQL Database サーバーの移行されたデータベースに接続します。
 
-8.	Azure クラシック ポータルを使用して、データベースとそのプロパティを表示します。
+8.	Azure ポータルを使用して、データベースとそのプロパティを表示します。
 
 ## SqlPackage を使用して BACPAC ファイルを Azure SQL Database にインポートする
 
@@ -277,4 +277,4 @@ SQL Server Management Studio の Microsoft Azure SQL Database へのデータベ
 
 - SQL Server Management Studio。Management Studio では、**ALTER DATABASE** などのさまざまな Transact-SQL コマンドを使用して問題を修正できます。
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_1210_2015-->

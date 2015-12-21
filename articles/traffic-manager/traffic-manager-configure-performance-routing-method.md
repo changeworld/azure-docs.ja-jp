@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/01/2015"
+   ms.date="12/07/2015"
    ms.author="joaoma" />
 
 # パフォーマンスによるトラフィック ルーティング方法の構成
@@ -21,8 +21,8 @@
 
 ## 一連のエンドポイント間で、最も短い待機時間に基づいてトラフィック ルーティングを行う
 
-1. Azure ポータルの左側のウィンドウで、**[Traffic Manager]** アイコンをクリックして [Traffic Manager] ウィンドウを開きます。まだ Traffic Manager プロファイルを作成していない場合は、「[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)」に記載された手順に従って、基本的な Traffic Manager プロファイルを作成してください。
-2. Azure ポータルの Traffic Manager ウィンドウで、変更対象のエンドポイント設定が保存されている Traffic Manager プロファイルを見つけて、そのプロファイル名の右側にある矢印をクリックします。これにより、プロファイルの設定ページが開きます。
+1. Azure クラシック ポータルの左側のウィンドウで、**[Traffic Manager]** アイコンをクリックして [Traffic Manager] ウィンドウを開きます。まだ Traffic Manager プロファイルを作成していない場合は、「[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)」に記載された手順に従って、基本的な Traffic Manager プロファイルを作成してください。
+2. Azure クラシック ポータルの Traffic Manager ウィンドウで、変更対象のエンドポイント設定が保存されている Traffic Manager プロファイルを見つけて、そのプロファイル名の右側にある矢印をクリックします。これにより、プロファイルの設定ページが開きます。
 3. プロファイルのページで、ページの上部にある **[エンドポイント]** をクリックし、構成に含めるサービス エンドポイントが存在することを確認します。プロファイルにエンドポイントを追加または削除する手順については、「[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)」を参照してください。
 4. プロファイルのページで、上部にある **[構成]** をクリックし、構成ページを開きます。
 5. **[トラフィック ルーティング方法の設定]** で、トラフィック ルーティング方法が **[パフォーマンス]* に設定されていることを確認します。他の方法に設定されている場合は、ドロップダウン リストから **[パフォーマンス]** をクリックします。
@@ -49,4 +49,4 @@
 [Traffic Manager - エンドポイントの無効化または有効化](disable-or-enable-an-endpoint.md)
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

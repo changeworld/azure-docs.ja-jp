@@ -1,7 +1,7 @@
 <properties
-	pageTitle="比較: Apache Storm vs.Azure Stream Analytics | Microsoft Azure"
-	description="リアルタイム Twitter センチメント分析で Stream Analytics を使用する方法について説明します。イベントの生成からライブ ダッシュボード上でのデータ操作までの手順。"
-	keywords="リアルタイム Twitter,センチメント分析,ソーシャル メディア分析,ソーシャル メディア分析ツール"
+	pageTitle="分析プラットフォーム: Apache Storm と Stream Analytics の比較 |Microsoft Azure"
+	description="Apache Storm と Stream Analytics を比較し、クラウドの分析プラットフォームを選択する際の指針を示します。機能と違いについて説明します。"
+	keywords="分析プラットフォーム、クラウド分析プラットフォーム、storm との比較"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -17,15 +17,13 @@
 	ms.date="11/06/2015"
 	ms.author="jeffstok"/>
 
-# Apache Storm と Azure Stream Analytics の比較 #
+# Stream Analytics プラットフォームの選択: Apache Storm と Azure Stream Analytics との比較
 
-## はじめに ##
+Apache Storm と Azure Stream Analytics を比較し、クラウドの分析プラットフォームを選択する際の指針を示します。また、実際のビジネス事例に適したソリューションを選択できるように、Azure HDInsight の管理されたサービスとして Stream Analytics と Apache Storm が持つ価値提案について説明します。
 
-このドキュメントでは、HDInsight で管理されたサービスとしての Azure Stream Analytics と Apache Storm の位置付けを示します。目標は、ユーザーが両方のサービスの価値提案を理解し、どちらのサービスがユーザーのビジネス ユース ケースに適切かを決定する際に役立てることです。
+どちらの分析プラットフォームにも PaaS ソリューションのメリットがありますが、2 つのプラットフォームを区別する主な機能がいくつかあります。2 つのサービスの機能と制限を一覧にまとめました。この一覧を参照して、目標を達成するために必要なソリューションを選択してください。
 
-どちらも PaaS ソリューションのメリットを提供しますが、これらのサービスを区別する主な機能がいくつかあります。これらのサービスの機能と制限事項を一覧にすることで、ユーザーが目標を実現するのに必要なソリューションを決定する際に役立てられると考えています。
-
-## 全般 ##
+## Storm と Stream Analytics の比較: 全般的な機能 ##
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -138,7 +136,7 @@
         </tr>
     </tbody>
 </table>
-## 作成 ##
+## 各分析プラットフォームでの作成 ##
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -262,7 +260,7 @@
         </tr>
     </tbody>
 </table>
-## 入力と出力 ##
+## データ ソースと出力 ##
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -590,4 +588,4 @@
     </tbody>
 </table>
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

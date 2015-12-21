@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/30/2015" 
+	ms.date="12/03/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -84,7 +84,7 @@ Azure Redis Cache の価格については、[ここ](http://azure.microsoft.com
 <a name="cache-monitor"></a>
 ## キャッシュの正常性とパフォーマンスの監視方法
 
-Microsoft Azure Redis Cache のインスタンスは、[Azure プレビュー ポータル](https://portal.azure.com)で監視できます。メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。これらのツールによって、Azure Redis Cache インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。キャッシュの監視の詳細については、「[Azure Redis Cache の監視](https://msdn.microsoft.com/library/azure/dn763945.aspx)」を参照してください。
+Microsoft Azure Redis Cache のインスタンスは、[Azure ポータル](https://portal.azure.com)で監視できます。メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。これらのツールによって、Azure Redis Cache インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。キャッシュの監視の詳細については、「[Azure Redis Cache の監視](https://msdn.microsoft.com/library/azure/dn763945.aspx)」を参照してください。
 
 <a name="cache-disconnect"></a>
 ## クライアントがキャッシュから切断される理由
@@ -138,7 +138,7 @@ ConnectTimeout|接続操作のタイムアウト (ミリ秒単位)。|
 ## 一般的な Redis コマンドの使用に関するいくつかの考慮事項
 
 -	処理に時間がかかる特定の Redis コマンドについては、その影響を理解せずに実行することは避けてください。
-	-	たとえば、[KEYS](http://redis.io/commands/keys) コマンドは運用環境で実行しないでください。キーの数によっては、結果が返されるまでに長い時間がかかる場合があります。Redis はシングル スレッド サーバーであり、一度に 1 つずつコマンドを処理します。KEYS の後に他のコマンドが発行されている場合、それらのコマンドは Redis によって KEYS コマンドが処理されるまで処理されません。
+	-	たとえば、[KEYS](http://redis.io/commands/keys) コマンドは実稼働環境で実行しないでください。キーの数によっては、結果が返されるまでに長い時間がかかる場合があります。Redis はシングル スレッド サーバーであり、一度に 1 つずつコマンドを処理します。KEYS の後に他のコマンドが発行されている場合、それらのコマンドは Redis によって KEYS コマンドが処理されるまで処理されません。
 -	キー サイズ - 小さなキー/値と大きなキー/値のどちらを使用するか。 一般に、それはシナリオしだいです。サイズの大きなキーが必要となるシナリオでは、ConnectionTimeout 値、再試行回数、再試行ロジックを調整できます。Redis サーバーの観点からは、小さな値を設定した方がパフォーマンスが高くなります。
 	-	これは、サイズの大きな値を Redis に格納できないという意味ではありません。次の点に考慮する必要があります。待機時間は長くなります。サイズの大きなデータ セットとサイズの小さなデータ セットがある場合は、前の「[StackExchange.Redis 構成オプションについて](#cache-configuration)」に説明したように、それぞれ異なるタイムアウト値と再試行回数が構成された複数の ConnectionMultiplexer インスタンスを使用できます。
 
@@ -157,7 +157,7 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 <a name="cache-benchmarking"></a>
 ## キャッシュのベンチマークを実行およびテストする方法
 
--	[キャッシュ診断の有効化](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics)によってキャッシュの正常性を[監視](https://msdn.microsoft.com/library/azure/dn763945.aspx)できるようにします。プレビュー ポータルではメトリックを表示できますが、お好みのツールを使用し、それを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
+-	[キャッシュ診断の有効化](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics)によってキャッシュの正常性を[監視](https://msdn.microsoft.com/library/azure/dn763945.aspx)できるようにします。Azure ポータルでメトリックを表示できますが、任意のツールを使用して、メトリックを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
 -	redis-benchmark.exe を使用して Redis サーバーのロード テストを実行できます。
 	-	ロード テスト クライアントと Redis Cache が同じリージョン内にあることを確認します。
 -	redis-cli.exe を使用し、INFO コマンドを使用してキャッシュを監視します。
@@ -169,7 +169,7 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 
 「[Azure Redis Cache でサポートされない Redis コマンド](cache-configure.md#redis-commands-not-supported-in-azure-redis-cache)」で示されているコマンドを除き、[Redis コマンド](http://redis.io/commands#)のページに示されているすべてのコマンドを使用できます。Redis コマンドを実行するには、いくつかのオプションがあります。
 
--	Standard または Premium キャッシュがある場合は、[Redis コンソール](cache-configure.md#redis-console)を使用して Redis コマンドを実行できます。これは、プレビュー ポータルで Redis コマンドを安全に実行するための方法です。
+-	Standard または Premium キャッシュがある場合は、[Redis コンソール](cache-configure.md#redis-console)を使用して Redis コマンドを実行できます。これは、Azure ポータルで Redis コマンドを安全に実行するための方法です。
 -	Redis コマンド ライン ツールを使用することもできます。これらを使用するには、次の手順に従います。
 	-	[Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/download/win-2.8.19.1/redis-2.8.19.zip)をダウンロードします。
 	-	`redis-cli.exe` を使用してキャッシュに接続します。次の例に示すように、-h スイッチを使用してキャッシュ エンドポイントを渡し、-a を使用してキーを渡します。
@@ -202,9 +202,20 @@ Microsoft Azure Redis Cache は、広く普及しているオープン ソース
 -	Azure Managed Cache Service
 -	Azure In-Role Cache
 
+>[AZURE.IMPORTANT]Azure Managed Cache Service と Azure In-Role Cache は、2016 年 11 月 30 日に提供を終了する予定です。提供終了に備えて、Azure Redis Cache に移行することをお勧めします。
+>
+>Azure Redis Cache は一般公開され、中国と米国政府を含むすべての Azure リージョンで使用できるようになったため、推奨されるキャッシュ ソリューションになりました。この一般公開により、Managed Cache Service と In-Role Cache サービスは提供が終了されます。
+>
+>今回のお知らせ (2015 年 11 月 30 日) から最長 12 か月間、Managed Cache Service と In-Role Cache サービスの既存のユーザーは引き続きサービスを利用できます。両サービスの提供終了日は、2016 年 11 月 30 日です。その後は、Managed Cache Service はシャットダウンされ、In-Role Cache サービスはサポートされなくなります。
+>
+>最初の Azure SDK リリースで In-Role Cache を新規作成する処理のサポートは削除されます (2016 年 2 月 1 日以降の予定)。In-Role Cache を含む既存のプロジェクトを開くことはできます。
+>
+>この期間中は、既存の Managed Cache Service と In-Role Cache サービス ユーザーをすべて Azure Redis Cache に移行することをお勧めします。Azure Redis Cache は旧サービスよりも機能数が多く、全体的に優れたサービスです。移行の詳細については、「[Managed Cache Service から Azure Redis Cache への移行](cache-migrate-to-redis.md)」ドキュメント Web ページを参照してください。
+>
+>不明な点については、[お問い合わせください](https://azure.microsoft.com/support/options/?WT.mc_id=azurebg_email_Trans_933)。
 
 ### Azure Redis Cache
-Azure Redis Cache は、最大 53 GB で一般公開されています。可用性の SLA は 99.9% です。新しい [Premium 階層](cache-premium-tier.md)は、最大 530 GB のサイズを提供し、クラスタリング、VNET、および永続化を 99.9% の SLA でサポートします。
+Azure Redis Cache は、最大 53 GB で一般公開されています。可用性の SLA は 99.9% です。新しい [Premium レベル](cache-premium-tier.md)は、最大 530 GB のサイズを提供し、クラスタリング、VNET、および永続化を 99.9% の SLA でサポートします。
 
 Azure Redis Cache では、Microsoft が管理する安全な専用 Redis Cache を利用できます。このサービスでは、Redis が提供する豊富な機能セットとエコシステムを利用し、Microsoft による信頼性の高いホスティングと監視を受けられます。
 
@@ -212,12 +223,12 @@ Azure Redis Cache では、Microsoft が管理する安全な専用 Redis Cache 
 
 Redis が正常に動作するために重要な点は、Redis を中心として正常に動作する強力なオープン ソース エコシステムが構築されていることです。また、その環境を複数の言語で使用できる多様な Redis クライアントに反映します。そうすることで、Azure 内に構築するほとんどすべてのワークロードに使用できるようになります。
 
-Azure Redis Cache の使用方法については、「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」と [Azure Redis Cache のドキュメント](https://azure.microsoft.com/documentation/services/redis-cache/)に関するページを参照してください。
+Azure Redis Cache の使用方法については、「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」と [Azure Redis Cache のドキュメントに関するページ](https://azure.microsoft.com/documentation/services/redis-cache/)を参照してください。
 
 ### Managed Cache Service
 既存の Azure Managed Cache Service のお客様は、既存のサービスを引き続き利用することも、Azure Redis Cache へ移行して豊富な機能セットを利用することもできます。また、Azure Managed Cache Service は一般公開されており、可用性の SLA は 99.9% です。
 
-### In-Role Cache
+### インロール キャッシュ
 In-role Cache を使用してキャッシュを自己ホストしている場合は、自己ホストを継続できます。In-Role Cache は自己ホスト型コンポーネントであり、Microsoft ホスト型サービスではないので、SLA は用意されていません。In-Role Cache ユーザーは、Azure Redis Cache に移行することで、豊富な機能を利用し、SLA を受けることができます。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/29/2015"
+   ms.date="12/09/2015"
    ms.author="guayan"/>
 
 # Microsoft 管理の API または IT 管理の API を登録する
@@ -24,9 +24,9 @@ IT 管理の API を使用して、メモリ、接続性、信頼などを含め
 
 **Microsoft 管理**または **IT 管理**の API を使用するには、Azure ポータルで API を "登録" する必要があります。登録されると、アプリでこれらの API を使用することができます。以下のオプションを使用できます。
 
-- Microsoft 管理の API または IT 管理の API を登録する
-- [App Service Environment ](powerapps-register-api-hosted-in-app-service.md)内でホストされる API を登録する
-- [Swagger 2.0 API の定義](powerapps-register-existing-api-from-api-definition.md)を使用して登録する
+- 事前に構築された Microsoft 管理の API または IT 管理の API を登録します (本トピック)。
+- [App Service Environment](powerapps-register-api-hosted-in-app-service.md) 内にホストされた Web アプリ、API アプリ、およびモバイル アプリを登録します。
+- [Swagger 2.0 API 定義](powerapps-register-existing-api-from-api-definition.md)を使用して、いずれかの独自の Swagger API を登録します。
 
 この記事では **Microsoft 管理の API および IT 管理の API の登録**について取り上げます。
 
@@ -124,8 +124,11 @@ API | 説明 | 手順のリンク
 
 このトピックでは、PowerApps が既定で提供する利用可能な API の独自のインスタンスを登録する方法について説明しました。PowerApps についての関連トピックとリソースがあります。
 
-- [API の構成](powerapps-configure-apis.md)
-- [新しい API の追加](powerapps-register-from-available-apis.md)
+
+- [API プロパティの構成](powerapps-configure-apis.md)
+- [ユーザーへの API アクセス許可](powerapps-manage-api-connection-user-access.md)
+- [PowerApps でのアプリ作成の開始](https://powerapps.microsoft.com/tutorials/)に関するページ
+
 
 <!--References-->
 
@@ -148,4 +151,4 @@ API | 説明 | 手順のリンク
 [42]: ./media/powerapps-register-from-available-apis/sqlserver.png
 [43]: ./media/powerapps-register-from-available-apis/twitter.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

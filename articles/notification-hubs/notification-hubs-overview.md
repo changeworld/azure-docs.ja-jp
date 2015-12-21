@@ -161,8 +161,8 @@ Notification Hubs の詳細については、次のトピックを参照して�
   [Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx
   [Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx
   [App Service Mobile Apps]: https://azure.microsoft.com/ja-JP/documentation/articles/app-service-mobile-value-prop/
-  [テンプレート]: https://msdn.microsoft.com/ja-JP/library/azure/dn530748.aspx
+  [テンプレート]: https://msdn.microsoft.com/library/azure/dn530748.aspx
   [Azure ポータル]: https://portal.azure.com
   [タグ]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1210_2015-->

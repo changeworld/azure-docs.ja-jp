@@ -14,17 +14,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="12/09/2015"
    ms.author="guayan"/>
 
 # Swagger 2.0 API 定義からの API の登録  
 多くの組織には、ユーザーが自分のアプリ内で使用できる API が既にあります。これらの API をアプリで使用するには、Azure ポータルで API を「登録」する必要があります。以下のオプションを使用できます。
 
-- [Microsoft 管理の API または IT 管理の API](powerapps-register-from-available-apis.md) を登録する
-- [App Service 環境内](powerapps-register-api-hosted-in-app-service.md)でホストされている API を登録する
-- Swagger 2.0 API の定義を使用して登録する
+- 事前に構築された [Microsoft 管理の API または IT 管理の API](powerapps-register-from-available-apis.md) を登録します。
+- [App Service Environment](powerapps-register-api-hosted-in-app-service.md) 内にホストされた Web アプリ、API アプリ、およびモバイル アプリを登録します。
+- Swagger 2.0 API 定義 (このトピック内の) を使用して、独自のいずれかの Swagger API を登録します。
 
-この記事では、既存の API から作成した **Swagger 2.0 API 定義を登録する**方法を説明します。
+この記事では、既存の API から作成した **Swagger 2.0 API 定義を使用して独自のいずれかの API を登録する**方法を説明します。
 
 #### 開始のための前提条件
 
@@ -52,18 +52,19 @@
 6. **[API 定義 (Swagger 2.0)]** で、Swagger 2.0 API 定義ファイルをアップロードします。 ![][13]
 7. **[追加]** を選択して、手順を完了します。
 
-> [AZURE.TIP]API を登録すると、その API が App Service 環境に登録されます。API が App Service 環境に登録されると、同じ App Service 環境内の他のアプリでも使用することができます。
+> [AZURE.TIP]API を登録すると、その API が App Service Environment に登録されます。API が App Service Environment に登録されると、同じ App Service Environment 内の他のアプリでも使用することができます。
 
 ## まとめと次のステップ
 
 このトピックでは、Swagger 2.0 API 定義から API を登録する方法を説明しました。PowerApps についての関連トピックとリソースがあります。
 
-- [API の構成](powerapps-configure-apis.md)
-- [新しい API の追加](powerapps-register-from-available-apis.md)
+- [API プロパティの構成](powerapps-configure-apis.md)
+- [ユーザーへの API アクセス許可](powerapps-manage-api-connection-user-access.md)
+- [PowerApps でのアプリ作成の開始](https://powerapps.microsoft.com/tutorials/)に関するページ
 
 <!--References-->
 [11]: ./media/powerapps-register-existing-api-from-api-definition/registered-apis-part.png
 [12]: ./media/powerapps-register-existing-api-from-api-definition/add-api-button.png
 [13]: ./media/powerapps-register-existing-api-from-api-definition/add-api-blade.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

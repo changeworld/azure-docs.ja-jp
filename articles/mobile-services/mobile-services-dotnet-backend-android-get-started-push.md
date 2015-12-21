@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="10/01/2015"
+	ms.date="12/06/2015"
 	ms.author="ricksal"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
@@ -117,4 +117,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [登録者へのブロードキャスト通知の送信]: ../notification-hubs-windows-store-dotnet-send-breaking-news.md
 [登録者への通知の送信]: ../notification-hubs-windows-store-dotnet-send-localized-breaking-news.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -13,21 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="11/30/2015"
+   ms.date="12/07/2015"
    ms.author="kenhoff"/>
 
 # Azure Active Directory での 'Unknown Actor' イベントのレポート
 
-## ドキュメント記事のレポート
-
- - [Reporting API](active-directory-reporting-api-getting-started.md)
- - [イベントの監査](active-directory-reporting-audit-events.md)
- - [保持](active-directory-reporting-retention.md)
- - [プレビュー](active-directory-reporting-previews.md)
- - [Search](active-directory-reporting-search.md)
- - [バックフィル](active-directory-reporting-backfill.md)
- - [待機時間](active-directory-reporting-latencies.md)
- - ["Unknown Actor" イベント](active-directory-reporting-unknown-actor.md)
+*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
 
 まれに、Azure AD のレポートの "Actor" または "User" フィールドで異常な値を参照する可能性があります。この動作は予期されているものであり、次の 2 つのイベントのいずれかによって発生します。
 
@@ -49,4 +40,4 @@
 
 <!-- ![](./media/active-directory-reporting-unknown-actor/uid-actor.png) -->
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->

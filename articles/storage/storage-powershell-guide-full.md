@@ -3,8 +3,8 @@
 	description="Azure Storage 用の Azure PowerShell コマンドレットを使用して、ストレージ アカウントの作成と管理、BLOB、テーブル、キュー、およびファイルの操作、ストレージ分析の構成と照会、共有アクセス署名の作成を行う方法について説明します。"
 	services="storage"
 	documentationCenter="na"
-	authors="tamram" 
-	manager="adinah"/>
+	authors="robinsh" 
+	manager="carmonm"/>
 
 <tags
 	ms.service="storage"
@@ -12,8 +12,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/26/2015"
-	ms.author="selcint"/>
+	ms.date="12/07/2015"
+	ms.author="robinsh"/>
 
 # Azure Storage での Azure PowerShell の使用
 
@@ -730,4 +730,4 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 [Next Steps]: #next
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1210_2015-->
