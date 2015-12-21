@@ -120,7 +120,7 @@
 [プッシュ通知の使用]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md
 
 [「オフライン データの同期の使用」]: mobile-services-windows-store-dotnet-get-started-offline-data.md
-
+[「オフライン データ同期の使用」]: mobile-services-windows-store-dotnet-get-started-offline-data.md
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
 [デベロッパー サンプル コード集のサイト]: http://go.microsoft.com/fwlink/p/?LinkID=510826
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
