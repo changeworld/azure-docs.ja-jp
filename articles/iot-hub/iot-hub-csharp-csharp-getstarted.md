@@ -3,7 +3,7 @@
 	description="このチュートリアルに従って、C# で Azure IoT Hub を使用します。"
 	services="iot-hub"
 	documentationCenter=".net"
-	authors="fsautomata"
+	authors="dominicbetts"
 	manager="timlt"
 	editor=""/>
 
@@ -13,63 +13,71 @@
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="09/29/2015"
-     ms.author="elioda"/>
+     ms.date="12/14/2015"
+     ms.author="dobett"/>
 
-# チュートリアル: IoT Hub の使用
+# チュートリアル: Azure IoT Hub の使用
 
 ## はじめに
 
-Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バック エンドの間に信頼性のある保護された双方向通信を確立できる、完全に管理されたサービスです。IoT プロジェクトが直面する最も大きな課題の 1 つは、アプリケーション バック エンドにデバイスを確実かつ安全に接続する方法です。このシナリオを簡素化するために、Azure IoT Hub は、信頼性に優れた非常にスケール性の高いデバイスとクラウド間のメッセージングを提供し、デバイスごとのセキュリティ資格情報とアクセス制御を使用してセキュリティで保護された通信を可能にし、最も一般的な言語とプラットフォームのデバイス ライブラリを含みます。
+Azure IoT Hub は、何百万もの IoT デバイスとソリューション バック エンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。IoT プロジェクトが直面する最も大きな課題の 1 つは、ソリューション バックエンドにデバイスを確実かつ安全に接続する方法です。この課題に対応するために、IoT Hub は次の機能を備えています。
 
-このチュートリアルでは、Azure ポータルを使用して IoT ハブを作成する方法を示します。また、IoT ハブでデバイス ID を作成し、デバイスからクラウドへのメッセージを送信して、クラウド バックエンドからこれらのメッセージを受信するシミュレーション対象デバイスを作成する方法も示します。
+- 非常にスケール性が高く信頼性に優れた、デバイスとクラウド間の双方向メッセージングを提供します。
+- デバイスごとのセキュリティ資格情報とアクセス制御を使用して、セキュリティで保護された通信を可能します。
+- 最も一般的な言語とプラットフォームのデバイスのライブラリが含まれます。
+
+このチュートリアルでは、次の操作方法について説明します。
+
+- Azure ポータルを使用して IoT Hub を作成する。
+- IoT Hub におけるデバイス ID を作成する。
+- クラウド バックエンドへのテレメトリの送信とクラウド バックエンドからのコマンドの受信をシミュレーション対象デバイスを作成する。
 
 このチュートリアルの最後には、次の 3 つの Windows コンソール アプリケーションが作成されています。
 
 * **CreateDeviceIdentity**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイスを接続します。
-* **ReadDeviceToCloudMessages**。デバイスからクラウドへのメッセージを読み取り、その内容を表示します。
-* **SimulatedDevice**。以前に作成したデバイス ID で IoT ハブに接続して、1 秒ごとにデバイスからクラウドへのメッセージを送信します。
+* **ReadDeviceToCloudMessages**。シミュレーション対象デバイスから送信されたテレメトリを表示します。
+* **SimulatedDevice**。以前に作成したデバイス ID で IoT ハブに接続して、1 秒ごとにテレメトリ メッセージを送信します。
 
-> [AZURE.NOTE]IoT Hub には、Azure IoT デバイス SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター][]を参照してください。Java および Node 用の Azure IoT サービス SDK は、近日リリース予定です。
+> [AZURE.NOTE]デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの作成に利用できる各種 SDK に関する情報は、「[IoT Hub SDK][lnk-hub-sdks]」の記事で取り上げています。
 
-このチュートリアルを完了するには、以下が必要になります。
+このチュートリアルで行う作業には次のものが必要となります。
 
-+ Microsoft Visual Studio 2015、
++ Microsoft Visual Studio 2015
 
-+ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[「Azure の無料試用版サイト」](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fgetstarted%2F target="\_blank") を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
 
 ## IoT Hub の作成
 
-1. [Azure ポータル]にログオンします。
+シミュレーション対象デバイスの接続先となる IoT Hub を作成する必要があります。次の手順では、この作業を Azure ポータルで行う方法を示しています。
 
-2. ジャンプバーで、**[新規]**、**[モノのインターネット]**、**[IoT Hub]** の順にクリックします。
+1. [Azure ポータル][lnk-portal]にサインインします。
 
-   	![][1]
+2. ジャンプバーで、**[新規]**、**[モノのインターネット]**、**[Azure IoT Hub]** の順にクリックします。
 
-3. **[IoT Hub の新規作成]** ブレードで、IoT Hub の必要な構成を指定します。
+    ![][1]
 
-   	![][2]
+3. **[IoT Hub]** ブレードで、IoT Hub の構成を選択します。
 
-    * **[名前]** ボックスに、IoT ハブを識別するための名前を入力します。**名前**が検証されると、緑色のチェック マークが **[名前]** ボックスに表示されます。
-    * 必要に応じて、**[価格とスケール レベル]** を変更します。このチュートリアルでは特定のレベルは必要ありません。
-    * **[リソース グループ]** ボックスで、新しいリソース グループを作成するか、既存のものを選択します。詳細については、[リソース グループを使用した Azure リソースの管理](resource-group-portal.md)に関するページを参照してください。
-    * **[場所]** を使用して、IoT ハブのホストの地理的場所を指定します。  
+    ![][2]
 
+    * **[名前]** ボックスに IoT Hub の名前を入力します。その**名前**が有効で利用できる場合、**[名前]** ボックスに緑色のチェック マークが表示されます。
+    * **[価格とスケール レベル]** を選択します。このチュートリアルでは特定のレベルは必要ありません。
+    * **[リソース グループ]** で、新しいリソース グループを作成するか、既存のリソース グループを選択します。詳細については、[リソース グループを使用した Azure リソースの管理][lnk-resource-groups]に関するページを参照してください。
+    * **[場所]** で、IoT Hub をホストする場所を選択します。  
 
-4. 新しい IoT Hub オプションを構成したら、**[作成]** をクリックします。IoT ハブが作成されるまで数分かかる場合があります。状態を確認するには、スタート画面で進行状況を監視してください。または、通知セクションから進行状況を監視できます。
+4. 必要な IoT Hub 構成オプションを選択したら、**[作成]** をクリックします。Azure が IoT Hub を作成するまでに数分かかる場合があります。状態を確認するには、スタート画面または通知パネルで進行状況を監視してください。
 
     ![][3]
 
+5. IoT Hub が正常に作成されたら、新しい IoT Hub のブレードを開き、**[ホスト名]** を書き留めて**鍵**のアイコンをクリックします。
 
-5. IoT ハブが正常に作成されたら、新しい IoT ハブのブレードを開き、URI をメモして、上部の**キー** アイコンを選択します。
+    ![][4]
 
-   	![][4]
+6. **[iothubowner]** ポリシーをクリックし、**[iothubowner]** ブレードで接続文字列をコピーして書き留めます。
 
-6. **iothubowner** という共有アクセス ポリシーを選択し、右のブレードにある接続文字列をコピーしてメモします。
+    ![][5]
 
-   	![][5]
-
-これで IoT ハブが作成され、このチュートリアルを完了するために必要な URI と接続文字列の準備ができました。
+IoT Hub の作成は以上です。以降の作業に必要なホスト名と接続文字列が得られました。
 
 [AZURE.INCLUDE [iot-hub-get-started-cloud-csharp](../../includes/iot-hub-get-started-cloud-csharp.md)]
 
@@ -80,29 +88,29 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 これで、アプリケーションを実行する準備が整いました。
 
-1.	Visual Studio 内でソリューションを右クリックし、**[スタートアップ プロジェクトの設定...]** を選択します。**[マルチ スタートアップ プロジェクト]** を選択してから、**ProcessDeviceToCloudMessages** と **SimulatedDevice** の両方のアプリの **[開始]** アクションを選択します。
+1.	Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** をクリックします。**[マルチ スタートアップ プロジェクト]** を選択し、**ReadDeviceToCloudMessages** プロジェクトと **SimulatedDevice** プロジェクトの **[アクション]** としてどちらも **[開始]** を選択します。
 
    	![][41]
 
-2.	**F5** キーを押すと、両方のアプリケーションが開始され、シミュレーション対象アプリによってメッセージが送信され、プロセッサ アプリで受信されたことを確認できます。
+2.	**F5** キーを押して両方のアプリケーションを実行します。**SimulatedDevice** アプリケーションからのコンソール出力には、シミュレーション対象デバイスから IoT Hub に送られたメッセージが表示されます。また、**ReadDeviceToCloudMessages** アプリケーションからのコンソール出力には、IoT Hub で受信されたメッセージが表示されます。
 
    	![][42]
 
 ## 次のステップ
 
-このチュートリアルでは、新しい IoT ハブを設定し、ハブの ID レジストリでデバイス ID を作成し、この ID を使用して、デバイスからクラウドへのメッセージを送信するシミュレーション対象デバイスをプログラミングしました。次のチュートリアルで IoT Hub の機能やシナリオをさらに詳しく調べることができます。
+このチュートリアルでは、ポータルで新しい IoT Hub を構成し、ハブの ID レジストリにデバイス ID を作成しました。デバイスからクラウドへのメッセージをハブに送信するシミュレーション対象デバイスでこのデバイス ID を使用しました。また、それとは別に、ハブで受け取ったメッセージを表示するアプリケーションを作成しました。IoT Hub の機能や、他の IoT のシナリオを次のチュートリアルでさらに詳しく説明しています。
 
-- 「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信][]」には、デバイスにメッセージを送信し、IoT Hub によって生成される配信フィードバックを処理する方法が示されています。
-- 「[デバイスからクラウドへのメッセージの処理][]」には、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
-- 「[デバイスからのファイルのアップロード][]」では、デバイスからのファイル アップロードを容易にするためにクラウドからデバイスへのメッセージを活用したパターンについて説明しています。
+- 「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信][lnk-c2d-tutorial]」には、デバイスにメッセージを送信し、IoT Hub によって生成される配信フィードバックを処理する方法が示されています。
+- 「[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]」には、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
+- 「[デバイスからのファイルのアップロード][lnk-upload-tutorial]」では、デバイスからのファイル アップロードを容易にするためにクラウドからデバイスへのメッセージを活用したパターンについて説明しています。
 
-IoT Hub に関するその他の情報:
+IoT Hub の詳細については、次の記事を参照してください。
 
-* [IoT Hub の概要][]
-* [Azure IoT Hub 開発者ガイド][]
-* [Azure IoT Hub のガイダンス][]
-* [サポートされているデバイスのプラットフォームおよび言語][Supported devices]
-* [Azure IoT デベロッパー センター][]
+* [IoT Hub の概要][lnk-hub-overview]
+* [Azure IoT Hub 開発者ガイド][lnk-hub-dev-guide]
+* [IoT Hub ソリューションの設計][lnk-hub-guidance]
+* [サポートされているデバイスのプラットフォームおよび言語][lnk-supported-devices]
+* [Azure IoT デベロッパー センター][lnk-dev-center]
 
 <!-- Images. -->
 [1]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub1.png
@@ -110,23 +118,22 @@ IoT Hub に関するその他の情報:
 [3]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub3.png
 [4]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub4.png
 [5]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub5.png
-
 [41]: ./media/iot-hub-csharp-csharp-getstarted/run-apps1.png
 [42]: ./media/iot-hub-csharp-csharp-getstarted/run-apps2.png
 
 <!-- Links -->
-[Azure ポータル]: https://portal.azure.com/
+[lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
+[lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-upload-tutorial]: iot-hub-csharp-csharp-file-upload.md
 
-[IoT Hub を使用したクラウドからデバイスへのメッセージの送信]: iot-hub-csharp-csharp-c2d.md
-[デバイスからクラウドへのメッセージの処理]: iot-hub-csharp-csharp-process-d2c.md
-[デバイスからのファイルのアップロード]: iot-hub-csharp-csharp-file-upload.md
+[lnk-hub-overview]: iot-hub-what-is-iot-hub.md
+[lnk-hub-guidance]: iot-hub-guidance.md
+[lnk-hub-dev-guide]: iot-hub-devguide.md
+[lnk-supported-devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
+[lnk-dev-center]: http://www.azure.com/develop/iot
+[lnk-hub-sdks]: iot-hub-sdks-summary.md
+[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[lnk-resource-groups]: resource-group-portal.md
+[lnk-portal]: https://portal.azure.com/
 
-[IoT Hub の概要]: iot-hub-what-is-iot-hub.md
-[Azure IoT Hub のガイダンス]: iot-hub-guidance.md
-[Azure IoT Hub 開発者ガイド]: iot-hub-devguide.md
-[IoT Hub Supported Devices]: iot-hub-supported-devices.md
-[Get started with IoT Hub]: iot-hub-csharp-csharp-getstarted.md
-[Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
-[Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
-
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

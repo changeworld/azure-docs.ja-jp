@@ -75,7 +75,7 @@
 
 ## エクスポートとデータの分析
 
-+ [Alooma](http://alooma.com/blog/application-insights-amazon-redshift)
++ [Alooma](https://www.alooma.com/blog/application-insights-amazon-redshift)
 + [Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 + [Stream Analytics](app-insights-export-power-bi.md)
 
@@ -83,4 +83,4 @@
 
 使用する言語やプラットフォーム用の SDK がない場合は、自分で作成するという方法があります。 [GitHub の Application Insights SDK プロジェクト](https://github.com/Microsoft/AppInsights-Home)に示されている既存の SDK のコードをご覧ください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -135,11 +135,16 @@ CDN の HTTP エンドポイントをカスタム ドメイン名にマップし
 
 カスタム ドメインのマッピングの詳細については、「[カスタム ドメインに Content Delivery Network (CDN) コンテンツをマップする方法](cdn-map-content-to-custom-domain.md)」を参照してください。
 
+## CDN をプログラムで管理する
+
+Microsoft Azure CDN は、[CDN リソース プロバイダーの REST API](https://msdn.microsoft.com/library/mt634456.aspx) を使用して、プログラムから管理することができます。
+
+
 ## 関連項目
 
 - [Azure の Content Delivery Network を有効にする方法](cdn-create-new-endpoint.md)
 - [Azure Content Delivery Network (CDN) の概要](cdn-overview.md)
 - [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
- 
+- [CDN リソース プロバイダーの REST API](https://msdn.microsoft.com/library/mt634456.aspx)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Site Recovery のネットワーク インフラストラクチャの考慮事項" 
+	pageTitle="Site Recovery のネットワーク インフラストラクチャの考慮事項 | Microsoft Azure" 
 	description="この記事では、Site Recovery を使用してフェールオーバーを行うためのネットワーク設計に関する実際の考慮事項について説明します。" 
 	services="site-recovery" 
 	documentationCenter="" 
@@ -13,18 +13,18 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="08/10/2015" 
+	ms.date="12/14/2015" 
 	ms.author="raynew"/>
 
 #  Site Recovery のネットワーク インフラストラクチャの考慮事項
 
-Azure Site Recovery サービスは、Azure またはオンプレミスのセカンダリ データセンターへのレプリケーションとフェールオーバーを調整および自動化して、オンプレミスの物理サーバーおよび仮想マシンを保護および復旧することにより、堅牢なビジネス継続性と災害復旧 (BCDR) ソリューションを構築するのに役立ちます。
+Azure Site Recovery サービスは、Azure またはオンプレミスのセカンダリ データセンターへのレプリケーションとフェールオーバーを調整および自動化して、オンプレミスの物理サーバーおよび仮想マシンを保護および復旧することにより、堅牢なビジネス継続性と障害復旧 (BCDR) ソリューションを構築するのに役立ちます。
 
 この記事は、System Center VMM および Azure Site Recovery を備えた BCDR ソリューションおよびインフラストラクチャの設計、実装、およびサポートを担当する仮想化チームを対象にしています。
 
 ## 概要
 
-BCDR 戦略の目的は、ビジネス アプリケーションを稼働状態に維持すること、およびワークロードやサービスで障害が発生した場合に組織が通常の操作をすばやく再開できるように復元することにあります。災害復旧戦略を策定することは容易ではありません。不測のイベントを予測するのは本質的に難しく、広範囲に及ぶ障害に対処する適切な保護を実装するには高いコストがかかるからです。Azure Site Recovery を使用すれば、保護と、プライマリ データ センターからセカンダリ データ センター (または Azure) へのフェールオーバーとを容易に実装することができます。そのためには、最初にプライマリ データをコピー (複製) し、その後、レプリカを定期的に更新するという方法をとります。
+BCDR 戦略の目的は、ビジネス アプリケーションを稼働状態に維持すること、およびワークロードやサービスで障害が発生した場合に組織が通常の操作をすばやく再開できるように復元することにあります。障害復旧戦略を策定することは容易ではありません。不測のイベントを予測するのは本質的に難しく、広範囲に及ぶ障害に対処する適切な保護を実装するには高いコストがかかるからです。Azure Site Recovery を使用すれば、保護と、プライマリ データ センターからセカンダリ データ センター (または Azure) へのフェールオーバーとを容易に実装することができます。そのためには、最初にプライマリ データをコピー (複製) し、その後、レプリカを定期的に更新するという方法をとります。
 
 BCDR を計画する上で重要な作業として、目標復旧時間 (RTO) と目標復旧時点 (RPO) を定義する必要があります。そうすることで、データの損失を最小限に抑え (低 RPO)、可能な限り迅速に (低 RTO で) 組織のデータをオンラインに戻すことができます。組織でのネットワーク設計は、RTO および RPO の目標実現の妨げになる可能性があります。堅牢な設計計画は、この障害を回避するのに効果があります。
 
@@ -62,10 +62,9 @@ Hyper-V レプリカを使用して VM に VMM を 1 つデプロイするには
 ### クラスター化された VMM サーバー
 
 
-[クラスターに VMM をデプロイする](https://technet.microsoft.com/ja-jp/library/gg610675.aspx)と、可用性を向上させ、ハードウェア フェールオーバーを防止することができます。Site Recovery と一緒に VMM クラスターをデプロイする場合は、以下の点に注意してください。
+[クラスターに VMM をデプロイする](https://technet.microsoft.com/library/gg610675.aspx)と、可用性を向上させ、ハードウェア フェールオーバーを防止することができます。Site Recovery と一緒に VMM クラスターをデプロイする場合は、以下の点に注意してください。
 
-VMM サーバーは、地理的に離れたサイトにまたがる拡張クラスターにデプロイする必要があります。
-VMM によって使用される SQL Server データベースは、セカンダリ サイト上にレプリカを配置して、SQL Server AlwaysOn 可用性グループで保護する必要があります。災害が発生した場合は、VMM サーバーとそれに対応する SQL Server が自動的に復旧サイトにフェールオーバーされます。Site Recovery を使用してワークロードをフェールオーバーすることができます。
+VMM サーバーは、地理的に離れたサイトにまたがる拡張クラスターにデプロイする必要があります。VMM によって使用される SQL Server データベースは、セカンダリ サイト上にレプリカを配置して、SQL Server AlwaysOn 可用性グループで保護する必要があります。災害が発生した場合は、VMM サーバーとそれに対応する SQL Server が自動的に復旧サイトにフェールオーバーされます。Site Recovery を使用してワークロードをフェールオーバーすることができます。
 
 ![拡張された VMM クラスター](./media/site-recovery-network-design/ASR_NetworkDesign1.png)
 
@@ -78,7 +77,7 @@ VMM によって使用される SQL Server データベースは、セカンダ�
 
 ### オプション 1: 固定の IP アドレス
 
-災害復旧の観点からは、固定 IP アドレスを使用するのが最も簡単な実装方法のようです。ただし、この方法には、多くの課題が存在する可能性があるため、実際には一般的ではありません。Azure Site Recovery を使用すれば、すべてのシナリオで IP アドレスを保持することができます。この方法を採用する場合は、事前に主要なシナリオ (拡張サブネットおよびサブネットのフェールオーバー) に関する考慮事項を確認してください。
+障害復旧の観点からは、固定 IP アドレスを使用するのが最も簡単な実装方法のようです。ただし、この方法には、多くの課題が存在する可能性があるため、実際には一般的ではありません。Azure Site Recovery を使用すれば、すべてのシナリオで IP アドレスを保持することができます。この方法を採用する場合は、事前に主要なシナリオ (拡張サブネットおよびサブネットのフェールオーバー) に関する考慮事項を確認してください。
 
 #### 拡張サブネット
 
@@ -94,7 +93,7 @@ VMM によって使用される SQL Server データベースは、セカンダ�
 
 サブネットのフェールオーバーを実装すれば、サブネットを実際に拡張することなしに拡張サブネットの恩恵を得ることができます。この構成では、指定されるサブネットはいずれもサイト 1 またはサイト 2 に存在し、両方のサイトに同時に存在することはありません。フェールオーバーの発生時に IP アドレス空間を維持するには、サイトからサイトへサブネットを移動するためのルーター インフラストラクチャをプログラムによって準備することができます。フェールオーバー シナリオでは、サブネットは関連する保護された VM と一緒に移動します。この方法の主な短所は、フェールオーバー時にサブネット全体を移動する必要があるということです。これは理にかなった解決策かもしれないが、フェールオーバーの粒度に関する考慮事項に影響を与える可能性があります。
 
-架空の企業が (Contoso) が、サブネット全体をフェールオーバーするとき、どのようにして VM を復旧場所にレプリケートすることができるのかを見てみましょう。Contoso が 2 つのオンプレミスの場所の間で VM をレプリケーションするとき、どのようにサブネットを管理できるかを確認し、さらに、Azure が災害復旧サイトとして使用される場合にサブネットのフェールオーバーがどのように動作するかについて説明します。
+架空の企業が (Contoso) が、サブネット全体をフェールオーバーするとき、どのようにして VM を復旧場所にレプリケートすることができるのかを見てみましょう。Contoso が 2 つのオンプレミスの場所の間で VM をレプリケーションするとき、どのようにサブネットを管理できるかを確認し、さらに、Azure が障害復旧サイトとして使用される場合にサブネットのフェールオーバーがどのように動作するかについて説明します。
 
 ##### 例: 企業内でのサブネットのフェールオーバー
  
@@ -123,12 +122,9 @@ Site Recovery では、特定の仮想マシンに対して保護を有効にす
 	![IP アドレスの設定](./media/site-recovery-network-design/ASR_NetworkDesign4.png)
 
 3. 同じ IP アドレスが利用できない場合、Site Recovery はプールから別のアドレスを割り当てます。
-4. 仮想マシンの保護が有効になった後、次のサンプル スクリプトを使用して、仮想マシンに割り当てられている IP アドレスを確認することができます。同じ IP アドレスであれば、フェールオーバー IP アドレスとして設定され、フェールオーバー時に仮想マシンに割り当てられます。
+4. 仮想マシンの保護が有効になった後、次のサンプル スクリプトを使用して、仮想マシンに割り当てられている IP アドレスを確認することができます。同じ IP アドレスであれば、フェールオーバー IP アドレスとして設定され、フェールオーバー時に VM に割り当てられます。
 
-    $vm = Get-SCVirtualMachine -Name 
-    $na = $vm[0].VirtualNetworkAdapters
-    $ip = Get-SCIPAddress -GrantToObjectID $na[0].id 
-    $ip.address
+    $vm = Get-SCVirtualMachine -Name $na = $vm[0].VirtualNetworkAdapters $ip = Get-SCIPAddress -GrantToObjectID $na[0].id $ip.address
 
 仮想マシンで DHCP が使用されている場合、Site Recovery によって IP アドレスの管理は行われないので注意してください。復旧サイトに対して IP アドレスを割り当てる DHCP サーバーが、プライマリ サイトの場合と同じ範囲からアドレスを割り当てることができることを確認する必要があります。
 
@@ -155,12 +151,10 @@ Woodgrove がレプリケーションをデプロイし、IP アドレスを維�
 
 	![Azure ネットワーク](./media/site-recovery-network-design/ASR_NetworkDesign7.png)
 
-- VM の IP アドレスが確実に保持されるようにするために、Site Recovery の VM プロパティで、同じ IP アドレスが使用されるように指定します。フェールオーバー後、Site Recover は指定した IP アドレスを VM に割り当てます。
-	![Azure ネットワーク](./media/site-recovery-network-design/ASR_NetworkDesign8.png)
+- VM の IP アドレスが確実に保持されるようにするために、Site Recovery の VM プロパティで、同じ IP アドレスが使用されるように指定します。フェールオーバー後、Site Recover は指定した IP アドレスを VM に割り当てます。![Azure ネットワーク](./media/site-recovery-network-design/ASR_NetworkDesign8.png)
 
 
-- フェールオーバーをトリガーし、回復ネットワーク内に必要な IP アドレスを使用して VM を作成する場合、VM への接続は を使用して確立することができます。この操作はスクリプト化することができます。サブネットのフェールオーバーについて前のセクションで説明したように、Azure へのフェールオーバーの場合も、192.168.1.0/24 が Azure に移動されたことを反映するためにルートを適切に変更する必要があります。
-	![Azure ネットワーク](./media/site-recovery-network-design/ASR_NetworkDesign9.png)
+- フェールオーバーをトリガーし、回復ネットワーク内に必要な IP アドレスを使用して VM を作成する場合、VM への接続は を使用して確立することができます。この操作はスクリプト化することができます。サブネットのフェールオーバーについて前のセクションで説明したように、Azure へのフェールオーバーの場合も、192.168.1.0/24 が Azure に移動されたことを反映するためにルートを適切に変更する必要があります。![Azure ネットワーク](./media/site-recovery-network-design/ASR_NetworkDesign9.png)
 
 ### オプション 2: 変更される IP アドレス
 
@@ -183,24 +177,17 @@ Woodgrove がレプリケーションをデプロイし、IP アドレスを維�
 - 仮想マシンは起動後に使用されている DNS サーバーを更新します。DNS エントリは、通常、ネットワーク全体で変更またはフラッシュする必要あります。ネットワーク テーブル内のキャッシュされたエントリも更新またはフラッシュする必要があります。したがって、これらの状態が変更が発生している間、ダウンタイムが発生するのは珍しいことではありません。これは以下の方法で軽減できます。
 
 	- イントラネット アプリケーションに低 TTL 値を使用する。
-	- イントラネット ベースのアプリケーションに対して [Azure Traffic Manger と Site Recovery](http://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/) を使用する。
+	- イントラネット ベースのアプリケーションに対して [Azure Traffic Manger と Site Recovery]http://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/ を使用する。
 	- タイムリーな更新を可能にするために、復旧計画で次のスクリプトを使用して DNS サーバーを更新する (動的 DNS 登録が構成されている場合、このスクリプトは必要ありません)。
 
-    [string]$Zone,
-    [string]$name,
-    [string]$IP
-    )
-    $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
-    $newrecord = $record.clone()
-    $newrecord.RecordData[0].IPv4Address  =  $IP
-    Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecor
+    [string]$Zone, [string]$name, [string]$IP ) $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name $newrecord = $record.clone() $newrecord.RecordData[0].IPv4Address = $IP Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
 
 #### 例: Azure へのフェールオーバー
 
-「災害復旧サイトとして Azure 用にセットアップされたネットワーク インフラストラクチャ」[ブログ投稿](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)では、IP アドレスを維持することが要件になっていない場合に、必要な Azure ネットワーク インフラストラクチャをセットアップする方法について説明します。アプリケーションを説明することから始め、オンプレミスおよび Azure でネットワークを設定する方法についても説明します。これには、最後に、テスト フェールオーバーおよび計画されたフェールオーバーを実行するための手順が示されています。
+「障害復旧サイトとして Azure 用にセットアップされたネットワーク インフラストラクチャ」[ブログ投稿](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)では、IP アドレスを維持することが要件になっていない場合に、必要な Azure ネットワーク インフラストラクチャをセットアップする方法について説明します。アプリケーションを説明することから始め、オンプレミスおよび Azure でネットワークを設定する方法についても説明します。これには、最後に、テスト フェールオーバーおよび計画されたフェールオーバーを実行するための手順が示されています。
 
 ## 次のステップ
 
 [学習内容](site-recovery-network-mapping.md): Site Recovery がソースおよびターゲット ネットワークをマップする方法。
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

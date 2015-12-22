@@ -205,10 +205,10 @@ ExpressRoute 接続またはサイト間 VPN 接続経由で接続されてい�
 		          </ConnectionsToLocalNetwork>
 		        </Gateway>
 
-5. この時点では、VNet にゲートウェイがありません。新しいゲートウェイを作成し、接続を完了するために、この記事の「[ExpressRoute とサイト間接続の両方で新しい仮想ネットワークを作成する](#create-a-new-virtual-network-with-both-expressroute-and-site-to-site-connectivity)」の**手順 3.** に進むことができます。
+5. この時点では、VNet にゲートウェイがありません。新しいゲートウェイを作成し、接続を完了するために、この記事の「[ExpressRoute とサイト間接続の両方で新しい仮想ネットワークを作成する](#create-a-new-virtual-network-with-both-expressroute-and-site-to-site-connectivity)」の**手順 4.** に進むことができます。
 
 ## 次のステップ
 
 ExpressRoute の詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

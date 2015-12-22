@@ -21,10 +21,15 @@
 # Linux を実行する仮想マシンの作成
 
 > [AZURE.SELECTOR]
+- [Azure Portal - Windows](virtual-machines-windows-tutorial.md)
+- [Azure PowerShell](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
+- [Azure PowerShell - Template](virtual-machines-create-windows-powershell-resource-manager-template.md)
+- [Azure Portal - Linux](virtual-machines-linux-tutorial-portal-rm.md)
 - [Azure CLI](virtual-machines-linux-tutorial.md)
-- [Azure portal](virtual-machines-linux-tutorial-portal-rm.md)
 
-<br>コマンド ラインやポータルを使用すると、Linux を実行する Azure 仮想マシン (VM) を簡単に作成できます。このチュートリアルでは、Mac、Linux、および Windows 用の Azure コマンド ライン インターフェイス (CLI) を使用して、Azure で実行する Ubuntu Server VM を簡単に作成し、**ssh** を使用してその VM に接続してから、新しいディスクを作成してマウントする方法を説明します このトピックでは Ubuntu Server VM を使用しますが、[テンプレートとして独自のイメージ](virtual-machines-linux-create-upload-vhd.md)を使用して Linux 仮想マシンを作成することもできます。
+<br>
+
+コマンド ラインやポータルを使用すると、Linux を実行する Azure 仮想マシン (VM) を簡単に作成できます。このチュートリアルでは、Mac、Linux、および Windows 用の Azure コマンド ライン インターフェイス (CLI) を使用して、Azure で実行する Ubuntu Server VM を簡単に作成し、**ssh** を使用してその VM に接続してから、新しいディスクを作成してマウントする方法を説明します このトピックでは Ubuntu Server VM を使用しますが、[テンプレートとして独自のイメージ](virtual-machines-linux-create-upload-vhd.md)を使用して Linux 仮想マシンを作成することもできます。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
@@ -323,4 +328,4 @@ Azure 上の Linux の詳細については、次の内容を参照してくだ�
 
 - [Azure の Linux 用 Docker 仮想マシン拡張機能](virtual-machines-docker-vm-extension.md)
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->
