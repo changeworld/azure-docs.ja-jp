@@ -350,6 +350,7 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
 - [.NET 用の Table Storage の概要](storage-dotnet-how-to-use-tables.md)
 - [.NET 用の Queue Storage の概要](storage-dotnet-how-to-use-queues.md)
 - [.NET 用の File Storage の概要](storage-dotnet-how-to-use-files.md)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 - [SQL Database を使用したリレーショナル データの格納](../sql-database/articles/sql-database-dotnet-how-to-use.md)
 - [Web ジョブ SDK で Azure Blob Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
 
@@ -365,4 +366,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

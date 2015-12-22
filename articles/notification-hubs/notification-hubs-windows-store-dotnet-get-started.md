@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="11/23/2015"
+	ms.date="12/14/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用 (Windows ストア アプリ)
@@ -49,7 +49,7 @@
 
 Windows ストア アプリにプッシュ通知を送信するには、アプリケーションを Windows ストアに関連付ける必要があります。さらに、WNS に統合するために通知ハブを構成する必要があります。
 
-1. アプリケーションをまだ登録していない場合は、<a href="http://go.microsoft.com/fwlink/p/?LinkID=266582" target="_blank">Windows デベロッパー センター</a>に移動し、Microsoft アカウントでサインインし、**[新しいアプリの作成]** をクリックします。
+1. アプリケーションをまだ登録していない場合は、[Windows デベロッパー センター](http://go.microsoft.com/fwlink/p/?LinkID=266582)に移動し、Microsoft アカウントでサインインし、**[新しいアプリの作成]** をクリックします。
 
 
 2. アプリの名前を入力し、**[アプリの名前の予約]** をクリックします。
@@ -78,7 +78,7 @@ Windows ストア アプリにプッシュ通知を送信するには、アプ�
 
 7. (省略可能) Windows Phone ストア アプリ プロジェクトのステップ 4.～6. を繰り返します。
 
-8. Windows デベロッパー センターで新しいアプリケーションのページに戻り、**[サービス]**、**[プッシュ通知]** の順にクリックし、**[Windows プッシュ通知サービス (WNS) と Microsoft Azure Mobile Services]** の下にある **[Live サービス サイト]** をクリックします。
+8. [Windows デベロッパー センター](http://go.microsoft.com/fwlink/p/?LinkID=266582)で新しいアプリケーションのページに戻り、**[サービス]**、**[プッシュ通知]** の順にクリックし、**[Windows プッシュ通知サービス (WNS) と Microsoft Azure Mobile Services]** の下にある **[Live サービス サイト]** をクリックします。
 
    	![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-win8-app-live-services.png)
 
@@ -283,4 +283,4 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [タイル カタログ]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
 [バッジの概要]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

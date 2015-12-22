@@ -27,7 +27,7 @@ Azure のファイル共有は、 [Azure ポータル](portal.azure.com)、Azure
 
 Azure で実行されているアプリケーションでは、Azure の仮想マシンのファイル共有を簡単にマウントできます。また、File Storage の最新のリリースでは、SMB 3.0 をサポートしているオンプレミス アプリケーションからファイル共有をマウントできます。
 
-File Storage は、Blob、Table、および Queue Storage と同じテクノロジ上に構築されているため、既存の可用性、持続性、スケーラビリティ、および Azure ストレージ プラットフォームに組み込まれている geo 冗長性を利用できます。
+File Storage は、Blob、Table、および Queue Storage と同じテクノロジ上に構築されているため、既存の可用性、持続性、スケーラビリティ、および Azure Storage プラットフォームに組み込まれている geo 冗長性を利用できます。
 
 Linux で File Storage を使用する方法の詳細については、「[Linux で Azure File Storage を使用する方法](storage-how-to-use-files-linux.md)」を参照してください。
 
@@ -204,7 +204,7 @@ File Storage をプログラミングする場合、.NET と Java のストレ�
 
 Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage NuGet パッケージをインストールするには、次の手順を実行します。
 
-1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から [コンソール アプリケーション]**をクリックします。
+1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から \[コンソール アプリケーション\]**をクリックします。
 2. コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
 3. プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
@@ -473,7 +473,7 @@ Azure Storage 分析で File Storage のメトリックがサポートされる�
 
 ## File Storage のよく寄せられる質問
 
-1. **でFile Storage は、Active Directory ベースの認証はサポートされていますか。** 
+1. **File Storage では、Active Directory ベースの認証はサポートされていますか。** 
 
 	現在、AD ベースの認証や、ACL はサポートしていませんが、今後サポートする可能性はあります。現時点では、ファイル共有の認証には、Azure Storage のアカウント キーを使用しています。REST API またはクライアント ライブラリを使用した Shared Access Signature (SAS) での回避策を提供しています。SAS を使用すると、指定した時間間隔の間に有効な特定のアクセス許可を持つトークンを生成できます。たとえば、特定のファイルへの読み取り専用のアクセス許可を持つトークンを生成できます。トークンを所有するすべてのユーザーは、そのファイルへの読み取り専用アクセスをその有効期間の間持ちます。
 
@@ -531,6 +531,7 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 
 - [Azure File Storage: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
 - [Linux で Azure File Storage を使用する方法](storage-how-to-use-files-linux.md)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
 ### File Storage 用のツールのサポート
 
@@ -550,4 +551,4 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -26,7 +26,7 @@
 
 ## App Service での認証と承認
 
-このチュートリアルで使用している認証機能の概要については、このシリーズの前回のチュートリアル「[Azure App Service での API Apps の認証と承認](app-service-api-dotnet-get-started.md)」を参照してください。
+このチュートリアルで使用している認証機能の概要については、このシリーズの前回のチュートリアル「[Azure App Service での API Apps の認証と承認](app-service-api-authentication.md)」を参照してください。
 
 ## このチュートリアルの使い方
 
@@ -289,7 +289,7 @@ ContactsList.API プロジェクトには既に生成済みのクライアント
 
 * App Service アプリをデプロイするその他の方法
 
-	Visual Studio の使用、または[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)からの[デプロイメントの自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)による Web プロジェクトの Web アプリへのデプロイの他の方法については、[Azure Web アプリをデプロイする方法](web-sites-deploy.md)に関するページを参照してください。
+	Visual Studio の使用、または[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)からの[デプロイの自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)による Web プロジェクトの Web アプリへのデプロイの他の方法については、[Azure Web アプリをデプロイする方法](web-sites-deploy.md)に関するページを参照してください。
 
 	Visual Studio により、デプロイを自動化するために使用可能な Windows PowerShell スクリプトも生成できます。詳細については、「[Automate Everything (Building Real-World Cloud Apps with Azure) (すべてを自動化 - Azure での実際のクラウド アプリケーションのビルド)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)」を参照してください。
 
@@ -304,4 +304,4 @@ ContactsList.API プロジェクトには既に生成済みのクライアント
 	* [Azure App Service のカスタム ドメイン名の構成](web-sites-custom-domain-name.md)
 	* [Azure の Web サイトでの HTTPS の有効化](web-sites-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

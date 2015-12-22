@@ -74,15 +74,15 @@ App Service は、HTTP 要求の Authorization ヘッダーで JWT トークン�
  
 .NET API では `Authorize` 属性を使用できます。要求の情報は .NET のクラスで自動的に設定されるため、要求に基づくコードをすぐに記述して、きめ細かな承認処理を行うことができます。
 
-## サービス プリンシパルの認証
+## <a id="internal"></a> サービス アカウントの認証
 
-App Service 認証は、内部的なシナリオ (API アプリから別の API アプリを呼び出すなど) で利用することもできます。このシナリオで認証に使用するのは、エンド ユーザーの資格情報ではなくサービス アカウントの資格情報です。サービス アカウントは*サービス プリンシパル*とも呼ばれ、このようなアカウントでの認証は、サービス間シナリオとも呼ばれます。
+App Service 認証は、内部的なシナリオ (API アプリから別の API アプリを呼び出すなど) で利用することもできます。このシナリオで認証に使用するのは、エンド ユーザーの資格情報ではなくサービス アカウントの資格情報です。サービス アカウントは、Azure Active Directory では*サービス プリンシパル*とも呼ばれ、このようなアカウントでの認証は、サービス間シナリオとも呼ばれます。
 
-内部的なシナリオでは、呼び出し先の API アプリを Azure Active Directory で保護し、その API アプリを呼び出すときに AAD サービス プリンシパル承認トークンを渡すことができます。そのトークンは、クライアント ID とクライアント シークレットを AAD アプリケーションから渡すことによって要求することができます。Mobile Services Zumo トークンの処理で使用されていたような Azure 専用の特殊なコードは不要です。このシナリオについて、ASP.NET API アプリを使った例が、[API Apps のサービス プリンシパル認証](app-service-api-dotnet-service-principal-auth.md)に関するチュートリアルで紹介されています。
+サービス間シナリオでは、呼び出し先の API アプリを Azure Active Directory で保護し、その API アプリを呼び出すときに AAD サービス プリンシパル承認トークンを渡すことができます。そのトークンは、クライアント ID とクライアント シークレットを AAD アプリケーションから渡すことによって要求することができます。Mobile Services Zumo トークンの処理で使用されていたような Azure 専用の特殊なコードは不要です。このシナリオについて、ASP.NET API アプリを使った例が、[API Apps のサービス プリンシパル認証](app-service-api-dotnet-service-principal-auth.md)に関するチュートリアルで紹介されています。
 
-App Service 認証を使わずにサービス間の認証を行う場合、クライアント証明書または基本認証を利用することができます。Azure のクライアント証明書の詳細については、「[Web Apps の TLS 相互認証を構成する方法](../app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。
+App Service 認証を使わずにサービス間の認証を行う場合、クライアント証明書または基本認証を利用することができます。Azure のクライアント証明書の詳細については、「[Web Apps の TLS 相互認証を構成する方法](../app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。ASP.NET で基本認証を構成する方法については、[ASP.NET Web API 2 での認証フィルター](http://www.asp.net/web-api/overview/security/authentication-filters)に関するページを参照してください。
 
-App Service ロジック アプリから API アプリへのサービス プリンシパル認証は特殊なケースであり、「[App Service でホストされたカスタム API のロジック アプリでの使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」で説明されています。
+App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、「[App Service でホストされたカスタム API のロジック アプリでの使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」で説明されています。
 
 ## 詳細情報
 
@@ -96,4 +96,4 @@ Azure App Service での認証および承認サービスの詳細について�
 
 Azure App Service における Node と Java の使用について詳しくは、[Node.js デベロッパー センター](/develop/nodejs/)と [Java デベロッパー センター](/develop/java/)を参照してください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

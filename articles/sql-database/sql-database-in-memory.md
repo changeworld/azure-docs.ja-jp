@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="11/20/2015"
+	ms.date="12/11/2015"
 	ms.author="jodebrui"/>
 
 
@@ -28,6 +28,7 @@
 - バリエーションをテストするコードを使用して、パフォーマンスの結果の違いを確認します。
 - コードを読んで、シナリオを把握し、インメモリ オブジェクトの作成および利用の方法を確認します。
 
+> [AZURE.VIDEO azure-sql-database-in-memory-technologies]
 
 #### インメモリ OLTP
 
@@ -69,7 +70,7 @@
 
 完全一般公開 (GA)
 
-- *ディスク上* の[列ストア インデックス](http://msdn.microsoft.com/library/dn817827.aspx)。
+- *ディスク上*の[列ストア インデックス](http://msdn.microsoft.com/library/dn817827.aspx)。
 
 
 更新:
@@ -101,7 +102,7 @@
 #### インストール手順
 
 1. [Azure ポータル](http://portal.azure.com/)で、V12 サーバー上に Premium データベースを作成します。**ソース**を AdventureWorksLT [V12] サンプル データベースに設定します。
- - 詳細な手順については、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照してください。
+ - 詳細な手順については、[最初の Azure SQL データベースの作成](sql-database-get-started.md)に関するページを参照してください。
 
 2. SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx) を使用して、データベースに接続します。
 
@@ -150,7 +151,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 
 SSMS で**オブジェクト エクスプローラー**を使用してメモリ最適化テーブルを確認できます。
 
-- **[テーブル]** を右クリックし、**[フィルター]** > **[フィルターの設定]** > **[メモリ最適化]** が 1 であることを確認します。
+- **[テーブル]** を右クリックし、**[フィルター]**、**[フィルターの設定]** の順に選択して、**[メモリ最適化]** が 1 であることを確認します。
 
 
 または、次のようにカタログ ビューをクエリすることができます。
@@ -163,7 +164,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 ```
 
 
-**ネイティブでコンパイルされたストアド プロシージャ**: SalesLT.usp\_InsertSalesOrder\_inmem は、カタログ ビュー クエリで確認できます。
+**ネイティブ コンパイル ストアド プロシージャ**: SalesLT.usp\_InsertSalesOrder\_inmem は、カタログ ビューのクエリを使用して確認できます。
 
 
 ```
@@ -177,13 +178,13 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 ## サンプルの OLTP ワークロードを実行する
 
-次の 2 つの *ストアド プロシージャ* の違いは、1 つ目のプロシージャはメモリ最適化バージョンのテーブルを使用し、2 つ目のプロシージャは通常のディスク上のテーブルを使用している点です。
+次の 2 つの*ストアド プロシージャ*の違いは、1 つ目のプロシージャはメモリ最適化バージョンのテーブルを使用し、2 つ目のプロシージャは通常のディスク上のテーブルを使用している点です。
 
 - SalesLT**.**usp\_InsertSalesOrder**\_inmem**
 - SalesLT**.**usp\_InsertSalesOrder**\_ondisk**
 
 
-このセクションでは、便利な **ostress.exe** ユーティリティを使用して、ストレスが高いレベルで 2 つのストアド プロシージャを実行する方法について説明します。2 つのストレス実行が完了するまでの時間を比較することができます。
+このセクションでは、便利な **ostress.exe** ユーティリティを使用して、負荷が高い状態で 2 つのストアド プロシージャを実行する方法について説明します。2 つのストレス実行が完了するまでの時間を比較することができます。
 
 
 ostress.exe を実行する場合、指定したパラメーター値を両方に渡すことをお勧めします。
@@ -201,7 +202,7 @@ ostress.exe を実行する場合、指定したパラメーター値を両方�
 このセクションでは、ostress.exe コマンド ラインに埋め込まれた T-SQL スクリプトを示します。このスクリプトでは、インストールした T-SQL スクリプトで作成されたアイテムを使用します。
 
 
-次のスクリプトでは、5 行のアイテムがあるサンプルの販売注文を、次のメモリ最適化 *テーブル* に挿入します。
+次のスクリプトでは、5 行のアイテムがあるサンプルの販売注文を、次のメモリ最適化*テーブル*に挿入します。
 
 - SalesLT.SalesOrderHeader\_inmem
 - SalesLT.SalesOrderDetail\_inmem
@@ -236,7 +237,7 @@ end
 ### RML ユーティリティと ostress をインストールする
 
 
-Azure VM で ostress.exe を実行する計画を立てるのが理想的です。AdventureWorksLT データベースがある Azure リージョンと同じリージョンに [Azure Virtual Machines](http://azure.microsoft.com/documentation/services/virtual-machines/) を作成します。代わりにノートパソコンで ostress.exe を実行することもできます。
+Azure VM で ostress.exe を実行する計画を立てるのが理想的です。AdventureWorksLT データベースがある Azure リージョンと同じリージョンに [Azure 仮想マシン](http://azure.microsoft.com/documentation/services/virtual-machines/)を作成します。代わりにノートパソコンで ostress.exe を実行することもできます。
 
 
 VM または選択した任意のホストに、ostress.exe を含む Replay Markup Language (RML) ユーティリティをインストールします。
@@ -357,7 +358,7 @@ OLTP ワークロードのリアルタイム分析では、多くの場合、ク
 #### 重要なテーブルと列ストア インデックス
 
 
-- dbo.FactResellerSalesXL\_CCI は、クラスター化された**列ストア** インデックスがあるテーブルです。*データ* レベルの高い圧縮率です。
+- dbo.FactResellerSalesXL\_CCI は、クラスター化された**列ストア** インデックスがあるテーブルです。これは、*データ* レベルで高度に圧縮されています。
 
 - dbo.FactResellerSalesXL\_PageCompressed は、通常のクラスター化されたインデックスと同等のテーブルです。*ページ* レベルでのみ圧縮されます。
 
@@ -456,7 +457,7 @@ Azure SQL Database のインメモリ OLTP 機能は、[2015 年 10 月 28 日�
 
 一般公開 (GA) 前のプレビュー段階では、インメモリ OLTP は次の条件でのみサポートされます。
 
-- *Premium* サービス階層のデータベース。
+- *Premium* サービス レベルのデータベース。
 
 - インメモリ OLTP 機能が有効になった後に作成されたデータベース。
  - インメモリ OLTP 機能がアクティブになる前に作成されたデータベースから復元された新しいデータベースは、インメモリ OLTP をサポートできません。
@@ -469,7 +470,7 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 ```
 
 
-クエリに対して **1** が返された場合、そのデータベースではインメモリ OLTP がサポートされており、このデータベースに基づいて作成されたデータベース コピーとデータベースの復元でもサポートされます。
+クエリによって **1** が返された場合、そのデータベースではインメモリ OLTP がサポートされており、このデータベースに基づいて作成されたデータベース コピーとデータベースの復元でもサポートされます。
 
 
 #### Premium でのみ使用できるオブジェクト
@@ -527,4 +528,4 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 - インメモリ OLTP のために[インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

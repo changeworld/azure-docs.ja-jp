@@ -22,6 +22,7 @@
 - [Using Data Factory Editor](data-factory-build-your-first-pipeline-using-editor.md)
 - [Using PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Using Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+- [Using Resource Manager Template](data-factory-build-your-first-pipeline-using-arm.md)
 
 この記事では、Azure Data Factory を初めて構築する方法について説明します。
 
@@ -172,4 +173,4 @@ Hive スクリプトが実行した後、結果は Azure Blob Storage コンテ�
 - Azure PowerShell を使用してチュートリアルを実行するには、上部にある「[PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)」というリンクをクリックします。
 - Visual Studio を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)」というリンクをクリックします。 
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

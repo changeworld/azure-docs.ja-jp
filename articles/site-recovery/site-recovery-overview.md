@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Site Recovery とは" 
+	pageTitle="Site Recovery とは | Microsoft Azure" 
 	description="Azure Site Recovery は、オンプレミスに配置されている仮想マシンと物理サーバーの Azure またはセカンダリ オンプレミス サイトへのレプリケーション、フェールオーバー、および復旧を調整します。" 
 	services="site-recovery" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="11/29/2015" 
+	ms.date="12/14/2015" 
 	ms.author="raynew"/>
 
 #  Site Recovery とは
@@ -22,9 +22,10 @@ Site Recovery は、オンプレミスのセカンダリ データセンター�
 
 
 ## Site Recovery を使用する理由 
+
 - **BCDR のストーリーがシンプルになる**: Site Recovery を使用すると、オンプレミスのワークロードとアプリケーションのレプリケーション、フェールオーバー、復旧が扱いやすくなります。
 - **柔軟なレプリケーション**: オンプレミスのサーバー、Hyper-V 仮想マシン、VMware 仮想マシンをレプリケートすることができます。Site Recovery は、最初のレプリケーションに VHD 全体ではなくデータのブロックのみをレプリケートするスマート レプリケーションを使用します。進行中のレプリケーションでは、差分の変更のみがレプリケートされます。Site Recovery は、オフライン データ転送をサポートし、WAN オプティマイザーと連携します。 
-- **セカンダリ データセンターが必要なくなる**: Site Recovery を使用すると、データセンター間のレプリケーションを自動化できますが、レプリケート先を Azure にすることで、オンサイトのセカンダリ データセンターを廃止することもできます。レプリケートされたデータは、元の復元性を十分に備えた状態で Azure ストレージに格納されます。
+- **セカンダリ データセンターが必要なくなる**: Site Recovery を使用すると、データセンター間のレプリケーションを自動化できますが、レプリケート先を Azure にすることで、オンサイトのセカンダリ データセンターを廃止することもできます。レプリケートされたデータは、元の復元性を十分に備えた状態で Azure Storage に格納されます。
 
 
 ## デプロイ シナリオ
@@ -37,10 +38,10 @@ VMware 仮想マシン | オンプレミスの VMware サーバー | Azure Stora
 Windows または Linux の物理サーバー | オンプレミスの物理サーバー | Azure Storage | [デプロイする](site-recovery-vmware-to-azure.md)
 Hyper-V 仮想マシン | VMM クラウド内のオンプレミスの Hyper-V ホスト サーバー | Azure Storage | [デプロイする](site-recovery-vmm-to-azure.md)
 Hyper-V 仮想マシン | オンプレミスの Hyper-V サイト (1 つ以上の Hyper-V ホスト サーバー) | Azure Storage | [デプロイする](site-recovery-hyper-v-site-to-azure.md)
-オンプレミスの Hyper-V 仮想マシン| VMM クラウド内のオンプレミスの Hyper-V ホスト サーバー | セカンダリ データセンターの VMM クラウド内のオンプレミス Hyper-V ホスト サーバー | [デプロイする](site-recovery-vmm-to-vmm)
+オンプレミスの Hyper-V 仮想マシン| VMM クラウド内のオンプレミスの Hyper-V ホスト サーバー | セカンダリ データセンターの VMM クラウド内のオンプレミス Hyper-V ホスト サーバー | [デプロイする](site-recovery-vmm-to-vmm.md)
 Hyper-V 仮想マシン | VMM クラウド内のオンプレミス Hyper-V ホスト サーバーと SAN ストレージ| セカンダリ データセンターの VMM クラウド内のオンプレミス Hyper-V ホスト サーバーと SAN ストレージ | [デプロイする](site-recovery-vmm-san.md)
-VMware 仮想マシン | オンプレミスの VMware サーバー | VMware が実行されているセカンダリ データセンター | [デプロイする](https://microsoft.sharepoint.com/sites/academy/media/AEVD-3-85237) 
-Windows または Linux の物理サーバー | オンプレミスの物理サーバー | セカンダリ データセンター | [デプロイする](https://microsoft.sharepoint.com/sites/academy/media/AEVD-3-85237) 
+VMware 仮想マシン | オンプレミスの VMware サーバー | VMware が実行されているセカンダリ データセンター | [デプロイする](site-recovery-vmware-to-vmware.md) 
+Windows または Linux の物理サーバー | オンプレミスの物理サーバー | セカンダリ データセンター | [デプロイする](site-recovery-vmware-to-vmware.md) 
 
 これらを次の図にまとめて示します。
 
@@ -67,4 +68,4 @@ Site Recovery は、アプライアンス対応のビジネス継続性に貢献
 この概要の確認が終わったら、Site Recovery のアーキテクチャの[詳細](site-recovery-components.md)を確認してください。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -82,7 +82,7 @@
 
   	![][9]
 
-	> [AZURE.IMPORTANT]localhost 以外の Web サーバーにクイック スタート アプリケーションをデプロイする場合は、**[ホスト名からの要求を許可する]** の一覧に Web サーバーのホスト名を追加する必要があります。詳細については、「[クロス オリジン リソース共有](http://msdn.microsoft.com/library/windowsazure/dn155871.aspx"%20target="_blank)」を参照してください。
+	> [AZURE.IMPORTANT]localhost 以外の Web サーバーにクイック スタート アプリケーションをデプロイする場合は、**[ホスト名からの要求を許可する]** の一覧に Web サーバーのホスト名を追加する必要があります。詳細については、「[クロス オリジン リソース共有](http://msdn.microsoft.com/library/windowsazure/dn155871.aspx)」を参照してください。
 
 ## HTML アプリのホストと実行
 
@@ -154,4 +154,4 @@
 [Cross-origin resource sharing]: http://msdn.microsoft.com/library/azure/dn155871.aspx
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

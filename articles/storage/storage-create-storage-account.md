@@ -27,7 +27,7 @@ Azure ストレージ アカウントを使用すると、Azure Storage の Azur
 
 ストレージ アカウントには、次の 2 種類があります。
 
-- 標準ストレージ アカウント。Blob、Table、Queue、File Storage が含まれています。 
+- Standard Storage アカウント。Blob、Table、Queue、File Storage が含まれています。 
 - Premium Storage アカウント。現在、Azure 仮想マシン ディスクでのみサポートされています。Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)」をご覧ください。
 
 ## ストレージ アカウントの課金
@@ -58,6 +58,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 - Queue サービス: http://*mystorageaccount*.queue.core.windows.net
 
 - File サービス: http://*mystorageaccount*.file.core.windows.net
+
 
 ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になります。http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
 
@@ -137,5 +138,6 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 - Azure Storage の詳細については、[Azure.com](http://azure.microsoft.com/documentation/services/storage/) にある Azure Storage のドキュメントを参照してください。
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

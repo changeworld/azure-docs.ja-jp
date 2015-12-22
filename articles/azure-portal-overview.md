@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Microsoft Azure プレビュー ポータルの概要"
-	description="Microsoft Azure プレビュー ポータルの使用方法を説明します。"
+	pageTitle="Microsoft Azure ポータルの概要"
+	description="Microsoft Azure ポータルの使用方法を説明します。"
 	services=""
 	documentationCenter=""
 	authors="davidwrede"
@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na" 
 	ms.topic="hero-article"
-	ms.date="04/28/2015"
+	ms.date="12/16/2015"
 	ms.author="dwrede"/>
 
-# Microsoft Azure プレビュー ポータルの概要
+# Microsoft Azure ポータルの概要
 
-Microsoft Azure プレビュー ポータルは、Azure リソースをプロビジョン、管理できる一元的な場所です。このチュートリアルでは、ポータルについて理解し、次の一部の主要な機能を使用する方法をを説明します。- **包括的なマーケットプレイス**。ここでは、マイクロソフトや他のベンダーから購入またはプロビジョニングできる数千に及ぶ項目を参照できます。- **統合されたスケーラブルな参照機能**。関心のあるリソースの検索やさまざまな管理操作の簡単な実行を可能にします。- **一貫した管理ページ** (またはブレード)。設定、アクション、課金情報、稼働状況/使用状況データのほか、多くのことを一貫した方法で公開することで、Azure の広範なサービスを管理できます。- **個人的なエクスペリエンス**。ログイン時に表示したい情報を示すカスタム スタート画面を作成できます。タイルが含まれた管理ブレードもカスタマイズできます。
+Azure リソースのプロビジョニングと管理は、Microsoft Azure ポータルを使って 1 か所で行うことができます。このチュートリアルでは、ポータルについて理解し、次の一部の主要な機能を使用する方法をを説明します。- **包括的なマーケットプレイス**。ここでは、マイクロソフトや他のベンダーから購入またはプロビジョニングできる数千に及ぶ項目を参照できます。- **統合されたスケーラブルな参照機能**。関心のあるリソースの検索やさまざまな管理操作の簡単な実行を可能にします。- **一貫した管理ページ** (またはブレード)。設定、アクション、課金情報、稼働状況/使用状況データのほか、多くのことを一貫した方法で公開することで、Azure の広範なサービスを管理できます。- **個人的なエクスペリエンス**。ログイン時に表示したい情報を示すカスタム スタート画面を作成できます。タイルが含まれた管理ブレードもカスタマイズできます。
 
  ![Azure ポータル UI の説明][UIOrientation]
 
 ## 開始する前に
 
-このチュートリアルを使用するには、有効な Azure サブスクリプションが必要です。お持ちでない場合は、今すぐ[無料評価版にサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。サブスクリプションの取得後すぐに、[https://portal.azure.com] にアクセスできるようになります。
+このチュートリアルを使用するには、有効な Azure サブスクリプションが必要です。お持ちでない場合は、今すぐ[無料試用版にサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。サブスクリプションの取得後すぐに、[https://portal.azure.com] にアクセスできるようになります。
 
 ## リソースの作成方法
 
@@ -78,7 +78,7 @@ Azure ではリソースに応じてブレードが事前設定されますが�
 
 このチュートリアルでは、以下のことを学習しました。- サインアップ方法、サブスクリプションの取得方法、およびポータルの参照方法 - ポータル UI の詳細と、リソースを作成および参照する方法、 - 構造または管理ブレードの詳細と、各種リソースを一貫して管理する方法 - 必要な情報が前面の中央に表示されるようにポータルをカスタマイズする方法 - ロール ベース アクセス (RBAC) を使用してリソースへのアクセスを制御する方法 - ヘルプとサポートを利用する方法
 
-Microsoft Azure プレビュー ポータルならクラウドでのアプリケーションの構築や管理を大幅に簡素化できます。最新の状態を保つために[管理ブログ](http://azure.microsoft.com/blog/topics/management/)をご覧ください。定期的に[フィードバックを確認](http://feedback.azure.com/forums/223579-azure-preview-portal)し、改善を行っています。[ScottGu のブログ](http://weblogs.asp.net/scottgu)も Azure の更新情報を確認する場合に最適です。
+Microsoft Azure ポータルならクラウドでのアプリケーションの構築や管理を大幅に簡素化できます。最新の状態を保つために[管理ブログ](http://azure.microsoft.com/blog/topics/management/)をご覧ください。定期的に[フィードバックを確認](http://feedback.azure.com/forums/223579-azure-preview-portal)し、改善を行っています。[ScottGu のブログ](http://weblogs.asp.net/scottgu)も Azure の更新情報を確認する場合に最適です。
 
 [UIOrientation]: ./media/azure-portal-how-to-use/azure_portal_1.png
 [PortalCategories]: ./media/azure-portal-how-to-use/azure_portal_2.png
@@ -87,4 +87,4 @@ Microsoft Azure プレビュー ポータルならクラウドでのアプリケ
 [CustomizeBlades]: ./media/azure-portal-how-to-use/azure_portal_5.png
 [HelpSupport]: ./media/azure-portal-how-to-use/azure_portal_6.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

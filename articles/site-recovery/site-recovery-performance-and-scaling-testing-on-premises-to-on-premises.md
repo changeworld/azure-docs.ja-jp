@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Site Recovery: オンプレミス間の Hyper-V レプリケーションに関するパフォーマンス テストとスケールの結果"
+	pageTitle="Site Recovery を使用したオンプレミス間の Hyper-V レプリケーションに関するパフォーマンス テストとスケールの結果 | Microsoft Azure"
 	description="この記事では、Azure Site Recovery を使用したオンプレミス間のレプリケーションのパフォーマンス テストについての情報を提供します。"
 	services="site-recovery" 
 	documentationCenter=""
@@ -13,10 +13,10 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="12/01/2015"
+	ms.date="12/14/2015"
 	ms.author="raynew"/>
 
-# Azure Site Recovery: オンプレミス間の Hyper-V レプリケーションに関するパフォーマンス テストとスケールの結果
+# Site Recovery を使用したオンプレミス間の Hyper-V レプリケーションに関するパフォーマンス テストとスケールの結果
 
 Microsoft Azure Site Recovery を使用すると、Azure またはセカンダリ データセンターへの仮想マシンと物理サーバーのレプリケーションを調整および管理することができます。この記事では、2 つのオンプレミス データセンター間で Hyper-V 仮想マシンを複製する際に実行したパフォーマンス テストの結果を示します。
 
@@ -210,4 +210,4 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

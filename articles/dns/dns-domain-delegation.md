@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/10/2015"
+   ms.date="12/15/2015"
    ms.author="joaoma"/>
 
 
@@ -71,8 +71,8 @@ Azure DNS 内に DNS ゾーンを作成した後は、Azure DNS がゾーンの�
 
 Azure PowerShell を使用すると、権限のある NS レコードを次の方法で取得できます (レコード名 "@" は、ゾーンの頂点にあるレコードを指すために使用されています)。
 
-	PS C:\> $zone = Get-AzureDnsZone –Name contoso.com –ResourceGroupName MyAzureResourceGroup
-	PS C:\> Get-AzureDnsRecordSet –Name “@” –RecordType NS –Zone $zone
+	PS C:\> $zone = Get-AzureRmDnsZone –Name contoso.com –ResourceGroupName MyAzureResourceGroup
+	PS C:\> Get-AzureRmDnsRecordSet –Name “@” –RecordType NS –Zone $zone
 
 	Name              : @
 	ZoneName          : contoso.com
@@ -118,18 +118,18 @@ Azure DNS で "contoso.com" を設定して委任した後、別の子ゾーン 
 
 PowerShell の例を次に示します。最初に、親ゾーンと子ゾーンを作成します。リソース グループは同じでも異なっていてもかまいません。
 
-	PS C:\> $parent = New-AzureDnsZone -Name contoso.com -ResourceGroupName RG1
-	PS C:\> $child = New-AzureDnsZone -Name partners.contoso.com -ResourceGroupName RG1
+	PS C:\> $parent = New-AzureRmDnsZone -Name contoso.com -ResourceGroupName RG1
+	PS C:\> $child = New-AzureRmDnsZone -Name partners.contoso.com -ResourceGroupName RG1
 
 次に、次の例で示すように、子ゾーンから権限のある NS レコードを取得します。
 
-	PS C:\> $child_ns_recordset = Get-AzureDnsRecordSet -Zone $child -Name "@" -RecordType NS
+	PS C:\> $child_ns_recordset = Get-AzureRmDnsRecordSet -Zone $child -Name "@" -RecordType NS
 
 最後に、対応する NS レコード セットを親ゾーンに作成し、委任を完了します (親ゾーンのレコード セット名は子ゾーンの名前と一致します。ここでは "partners" です)。
 
-	PS C:\> $parent_ns_recordset = New-AzureDnsRecordSet -Zone $parent -Name "partners" -RecordType NS -Ttl 3600
+	PS C:\> $parent_ns_recordset = New-AzureRmDnsRecordSet -Zone $parent -Name "partners" -RecordType NS -Ttl 3600
 	PS C:\> $parent_ns_recordset.Records = $child_ns_recordset.Records
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $parent_ns_recordset
+	PS C:\> Set-AzureRmDnsRecordSet -RecordSet $parent_ns_recordset
 
 レジストラーを使用して委任したときと同様に、子ゾーンの SOA レコードを検索することで、すべてが正しく設定されていることを確認できます。
 
@@ -149,14 +149,14 @@ PowerShell の例を次に示します。最初に、親ゾーンと子ゾーン
 
 ## 次のステップ
 
-[DNS ゾーンの管理](../dns-operations-dnszones)
+[DNS ゾーンの管理](dns-operations-dnszones.md)
 
-[DNS レコードの管理](../dns-operations-recordsets)
+[DNS レコードの管理](dns-operations-recordsets.md)
 
-[Traffic Manager の概要](../traffic-manager-overview)
+[Traffic Manager の概要](traffic-manager-overview.md)
 
-[.NET SDK を使用した Azure の操作の自動化](../dns-sdk)
+[.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)
 
 [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

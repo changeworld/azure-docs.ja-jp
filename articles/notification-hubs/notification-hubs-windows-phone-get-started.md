@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="10/23/2015"
+	ms.date="12/14/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用 (Windows Phone)
@@ -91,7 +91,12 @@
         channel.ChannelUriUpdated += new EventHandler<NotificationChannelUriEventArgs>(async (o, args) =>
         {
             var hub = new NotificationHub("<hub name>", "<connection string>");
-            await hub.RegisterNativeAsync(args.ChannelUri.ToString());
+            var result = await hub.RegisterNativeAsync(args.ChannelUri.ToString());
+
+            System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                MessageBox.Show("Registration :" + result.RegistrationId, "Registered", MessageBoxButton.OK);
+            });
         });
 
     必ず、ハブの名前と、前のセクションで取得した **DefaultListenSharedAccessSignature** という接続文字列を挿入してください。
@@ -103,11 +108,14 @@
 
    	![][14]
 
+
    	これにより、アプリケーションでプッシュ通知の受信が有効になります。
 
 7. F5 キーを押してアプリケーションを実行します。
 
 	登録メッセージが表示されます。
+
+8. アプリケーションを閉じます。トースト通知を受信するには、アプリケーションを閉じる必要があります。
 
 ##バックエンドから通知を送信する
 
@@ -190,13 +198,12 @@ MSDN の[トースト カタログ]および[タイル カタログ]に関する
 
 <!-- URLs. -->
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
-[Azure ポータル]: https://manage.windowsazure.com/
-[Microsoft Azure 通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [MPNS authenticated mode]: http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
-[通知ハブを使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
-[通知ハブを使用したニュース速報の送信]: notification-hubs-windows-phone-send-breaking-news.md
+[Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
+[Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-phone-send-breaking-news.md
 [トースト カタログ]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
 [タイル カタログ]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
 [Notification Hub - WP Silverlight tutorial]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

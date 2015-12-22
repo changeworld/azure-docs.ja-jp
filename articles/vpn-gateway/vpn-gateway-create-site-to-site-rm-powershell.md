@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure リソース マネージャーと PowerShell を使用してサイト間 VPN 接続で仮想ネットワークを作成する | Microsoft Azure"
-   description="この記事では、リソース マネージャ モデルを使用して VNet を作成し、サイト間 VPN ゲートウェイ接続を使用してローカルのオンプレミス ネットワークにこれを接続する方法を説明します。既存のローカル サイトの IP アドレスのプレフィックスを変更する追加の手順が含まれています。"
+   description="この記事では、リソース マネージャ モデルを使用して VNet を作成し、S2S VPN ゲートウェイ接続を使用してローカルのオンプレミス ネットワークにこれを接続する方法を説明します。サイト間接続は、ハイブリッド構成に使用できます。既存のローカル サイトの IP アドレスのプレフィックスを変更する追加の手順が含まれています。"
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/30/2015"
+   ms.date="12/14/2015"
    ms.author="cherylmc"/>
 
 # PowerShell を使用してサイト間 VPN 接続で仮想ネットワークを作成する
@@ -23,9 +23,12 @@
 - [Azure Classic Portal](vpn-gateway-site-to-site-create.md)
 - [PowerShell - Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
-この記事では、Azure リソース マネージャーのデプロイ モデルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。上にあるタブを使用して、デプロイ モデルとデプロイ ツールに関する記事を選択できます。
+この記事では、Azure リソース マネージャーのデプロイ モデルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。この構成に対して別のデプロイ モデルを探す場合は、上のタブで必要な記事を選択してください。VNet どうしは接続しても、オンプレミスへの接続は作成しない場合は、[VNet 間の接続の構成](vpn-gateway-vnet-vnet-rm-ps.md)に関するページを参照してください。
 
->[AZURE.NOTE]Azure は現在、2 つのデプロイ モデル (リソース マネージャーおよびクラシック) で使用できることを理解しておくことが重要です。構成を開始する前に、デプロイ モデルとツールについて理解しておくようにしてください。デプロイ モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
+
+**Azure のデプロイ モデルについて**
+
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## 開始する前に
 
@@ -37,8 +40,11 @@
 	
 - Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-- Azure PowerShell コマンドレット (1.0 以上)。このバージョンは、[ダウンロード ページ](http://azure.microsoft.com/downloads/)の「Windows PowerShell」セクションからダウンロードしてインストールできます。
-	
+## PowerShell モジュールのインストール
+
+接続を構成するには、Azure リソース マネージャー PowerShell コマンドレットの最新版が必要です。
+
+[AZURE.INCLUDE [vpn-gateway-ps-rm-howto](../../includes/vpn-gateway-ps-rm-howto-include.md)]
 
 ## 1\.サブスクリプションへの接続 
 
@@ -82,7 +88,7 @@ PowerShell コンソールを開き、アカウントに接続します。接続
 
 ### <a name="gatewaysubnet"></a>VNet にゲートウェイ サブネットを追加するには (省略可能)
 
-この手順は、VNet にゲートウェイ サブネットを追加する必要がある場合にのみ必要です。
+この手順は、前の手順で作成した VNet にゲートウェイ サブネットを追加する必要がある場合にのみ必要です。
 
 既存の仮想ネットワークがあり、仮想ネットワークにゲートウェイ サブネットを追加する場合は、次のサンプルを使用してゲートウェイ サブネットを作成できます。ゲートウェイ サブネットには、必ず 'GatewaySubnet' という名前を付けてください。別の名前を付けてサブネットを作成しても、Azure はそれをゲートウェイ サブネットとして認識しません。
 
@@ -136,7 +142,7 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 
 ## 6\.ゲートウェイを作成する
 
-この手順では、仮想ネットワーク ゲートウェイを作成します。ゲートウェイの作成が完了するまで、少し時間がかかります。
+この手順では、仮想ネットワーク ゲートウェイを作成します。ゲートウェイの作成には、しばらく時間がかかる場合があります。20 分以上かかることも珍しくありません。
 
 次の値を使用します。
 
@@ -158,7 +164,7 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 次に、仮想ネットワーク ゲートウェイと VPN デバイス間にサイト間 VPN 接続を作成します。サンプルの値は必ず実際の値に変更してください。共有キーは、VPN デバイスの構成に使用したものと同じ値にする必要があります。
 
 		$gateway1 = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
-		$local = Get-AzureLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
+		$local = Get-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
 
 		New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 
@@ -246,6 +252,6 @@ VPN 接続を作成していた場合に、ローカル サイトに含まれて
 
 ## 次のステップ
 
-仮想ネットワークに仮想マシンを追加します。[仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -22,6 +22,7 @@
 - [Using Data Factory Editor](data-factory-build-your-first-pipeline-using-editor.md)
 - [Using PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Using Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+- [Using Resource Manager Template](data-factory-build-your-first-pipeline-using-arm.md)
 
 
 この記事では、Visual Studio を使用して最初のパイプラインを作成する方法を学習します。このチュートリアルの手順は次のとおりです。
@@ -51,7 +52,7 @@
 1. **Visual Studio 2013** または **Visual Studio 2015** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。  
 2. **[新しいプロジェクト]** ダイアログ ボックスで、**[DataFactory]** テンプレートを選択し、**[空の Data Factory プロジェクト]** をクリックします。   
 
-	![New project dialog box](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
+	![New Project dialog box](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
 
 3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
 
@@ -204,7 +205,7 @@
 
 21. Data Factory の構成ページで、次の操作を行います。
 	1. **[Data Factory の新規作成]** オプションを選択します。
-	2. **[名前]** に「**FirstPipelineUsingVS**」と入力します。 
+	2. **[名前]** に「**FirstPipelineUsingVS**」と入力します。
 	
 		> [AZURE.IMPORTANT]Azure Data Factory の名前はグローバルに一意にする必要があります。発行時に "**"FirstPipelineUsingVS" という名前のデータ ファクトリは使用できません**" というエラーが発生した場合は、名前を変更します (yournameFirstPipelineUsingVS など)。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
 		> 
@@ -243,4 +244,4 @@ Azure ポータルを使用して、このチュートリアルで作成した�
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started.md)」を参照してください。
   
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

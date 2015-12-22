@@ -19,7 +19,7 @@
 
 # Azure クラシック ポータルでの Azure Search サービスの作成
 
-Microsoft Azure Search は、検索機能をカスタム アプリケーションに埋め込むことができるホスト型クラウド検索サービスです。Microsoft Azure Search には、検索エンジンと、検索データのストレージが用意されています。これは、Azure クラシック ポータル、.NET SDK、または REST API を使用してアクセスおよび管理できます。主な機能には、オートコンプリート クエリ、あいまい一致、検索結果の強調表示、ファセット ナビゲーション、スコアリング プロファイル、多言語のサポートなどがあります。Azure Search の機能の詳細については、「[Azure Search とは](seach-what-is-search.md)」を参照してください。
+Microsoft Azure Search は、検索機能をカスタム アプリケーションに埋め込むことができるホスト型クラウド検索サービスです。Microsoft Azure Search には、検索エンジンと、検索データのストレージが用意されています。これは、Azure クラシック ポータル、.NET SDK、または REST API を使用してアクセスおよび管理できます。主な機能には、オートコンプリート クエリ、あいまい一致、検索結果の強調表示、ファセット ナビゲーション、スコアリング プロファイル、多言語のサポートなどがあります。Azure Search の機能の詳細については、「[Azure Search とは](search-what-is-azure-search.md)」を参照してください。
 
 ## Azure Search を無料でサブスクリプションに追加する
 
@@ -123,4 +123,4 @@ Azure Search 構成の最後の手順では、サービスがクライアント 
 [2]: ./media/search-create-service-portal/create-search-portal-2.PNG
 [3]: ./media/search-create-service-portal/create-search-portal-3.PNG
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

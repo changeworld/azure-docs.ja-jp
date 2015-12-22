@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="11/30/2015"
+	ms.date="12/15/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用 (iOS アプリ)
@@ -87,6 +87,8 @@
    	![][9]
 
 4. [Mobile Services iOS SDK バージョン 1.2.4] をダウンロードしてファイルを解凍します。Xcode でプロジェクトを右クリックして **[Add Files to]** オプションをクリックし、Xcode プロジェクトに **WindowsAzureMessaging.framework** フォルダーを追加します。**[Copy items if needed]** を選択し、**[Add]** をクリックします。
+
+	>[AZURE.NOTE]Notification Hubs SDK は現在、Xcode 7 におけるビットコードをサポートしていません。プロジェクトの **[Build Options]** で **[Enable Bitcode]** を **[No]** に設定する必要があります。
 
    	![][10]
 
@@ -253,6 +255,7 @@
 		{
 			[super viewDidLoad];
 			[self ParseConnectionString];
+			[_notificationMessage setDelegate:self];
 		}
 
 		-(NSString *)CF_URLEncodedString:(NSString *)inputString
@@ -504,4 +507,4 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->
