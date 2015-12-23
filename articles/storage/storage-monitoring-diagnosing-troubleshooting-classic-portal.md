@@ -246,7 +246,7 @@ Storage Client Library for .NET では、アプリケーションで実行され
 
 - ストレージ クライアント ライブラリが作成するクライアント側のログの場合、クライアント要求 ID は、その要求に関連したすべてのログ エントリの **[クライアント要求 ID]** フィールドに表示されます。
 - Fiddler などによってキャプチャされたネットワーク トレースの場合、クライアント要求 ID は、要求メッセージの **x-ms-client-request-id** HTTP ヘッダー値として表示されます。
-- サーバー側の Storage Logging ログの場合、クライアント要求 ID は [クライアント要求 ID] 列に表示されます。
+- サーバー側の Storage Logging ログの場合、クライアント要求 ID は クライアント要求 ID 列に表示されます。
 
 > [AZURE.NOTE]複数の要求が同じクライアント要求 ID を共有する可能性があります。クライアントがこの値を割り当てることができるからです (一方、ストレージ クライアント ライブラリは新しい値を自動的に割り当てます)。クライアントから再試行する場合には、必ず同じクライアント要求 ID を共有します。クライアントからの送信されるバッチの場合、バッチのクライアント要求 ID は 1 つだけです。
 
@@ -916,4 +916,4 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-2.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->

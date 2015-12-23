@@ -41,7 +41,7 @@ SQL Data Warehouse インスタンスを作成するときに、何らかのサ�
 
 2. 売上の棒グラフを作成するには、[SalesAmount] 列をクリックすると、自動的に作成されます。[CustomerIncome] グラフを [AggregateSales] の左にある [Axis] フィールドにドラッグすると、次元が追加され、顧客の収入ブラケット別の売上が表示されます。
 
-3. 最後に、売上のタイムラインを作成する場合、必要な操作は、[SalesAmount]、[OrderDate]、および [折れ線グラフ] ([視覚エフェクト] の 2 行目の最初のアイコン) のクリックのみです。
+3. 最後に、売上のタイムラインを作成する場合、必要な操作は、[SalesAmount]、[OrderDate]、および \[折れ線グラフ] ([視覚エフェクト] の 2 行目の最初のアイコン) のクリックのみです。
 
 左上にある [保存] をクリックし、視覚エフェクトをレポートとして保存することで、進行状況をいつでも保存できます。
 
@@ -95,4 +95,4 @@ WHERE 句を使用して、ある日付以前の注文をフィルター処理�
 <!--Other Web references-->
 [Sample Data Scripts]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksPDW2012.zip/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->

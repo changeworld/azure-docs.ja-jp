@@ -70,7 +70,7 @@ Linux ディストリビューションの使用経験があれば、コンピ�
 
 	![][managementcertificatesitem]
 
-	ページ下部にある **[アップロード]** ![][uploaditem] をクリックし、上記の手順で作成した **mycert.cer** ファイルをアップロードします。
+	ページ下部にある **アップロード** ![][uploaditem] をクリックし、上記の手順で作成した **mycert.cer** ファイルをアップロードします。
 
 3. ポータルの同じ **[設定]** ウィンドウで、**[サブスクリプション]** をクリックして VM の作成時に使ったサブスクリプション ID をキャプチャします。この ID は次の手順で使用します (サブスクリプション ID はコマンドラインで Azure CLI コマンド `azure account list` を使っても確認できます。アカウントに保持している各サブスクリプションの ID が表示されます)。
 
@@ -214,4 +214,4 @@ Docker でコンテナーのポート 80 が VM のポート 49153 に割り当�
 [Link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
