@@ -90,7 +90,8 @@ JSON テンプレートとその他の関連ファイル用のローカル フ�
 
 	git clone https://github.com/Azure/azure-quickstart-templates C:\Azure\Templates
 
-完了後に、C:\\Azure\\Templates ディレクトリの datastax-enterprise フォルダーを探します。<!--Wrapping name of folder in bold typeface is not corp style  -->
+完了後に、C:\\Azure\\Templates ディレクトリの datastax-enterprise フォルダーを探します。
+<!--Wrapping name of folder in bold typeface is not corp style  -->
 ### 手順 2. (省略可能) テンプレート パラメーターを理解する
 
 DataStax に基づく Apache Cassandra クラスターのような自明ではないソリューションをデプロイする場合、必要な複数の設定を処理するために構成パラメーターのセットを指定する必要があります。テンプレートの定義でこれらのパラメーターを宣言することで、デプロイ時に外部ファイルまたはコマンド ラインを通して値を指定することができます。
