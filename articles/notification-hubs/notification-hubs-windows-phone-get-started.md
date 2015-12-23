@@ -173,7 +173,7 @@ MSDN の[トースト カタログ]および[タイル カタログ]に関する
 
 ##次のステップ
 
-この簡単な例では、すべての Windows Phone 8 デバイスに通知をブロードキャストしました。特定のユーザーをターゲットとするには、「[Notification Hubs を使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。Notification Hubs の使用方法の詳細については、「[Notification Hubs の概要]」を参照してください。
+この簡単な例では、すべての Windows Phone 8 デバイスに通知をブロードキャストしました。特定のユーザーをターゲットとするには、[Notification Hubs を使用したユーザーへのプッシュ通知](notification-hubs-aspnet-backend-windows-dotnet-notify-users.md)のチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、[Notification Hubs を使用したニュース速報の送信](notification-hubs-windows-phone-send-breaking-news.md)を参照してください。Notification Hubs の使用方法の詳細については、[Notification Hubs の概要](http://msdn.microsoft.com/library/jj927170.aspx)を参照してください。
 
 
 
@@ -206,4 +206,4 @@ MSDN の[トースト カタログ]および[タイル カタログ]に関する
 [タイル カタログ]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
 [Notification Hub - WP Silverlight tutorial]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->
