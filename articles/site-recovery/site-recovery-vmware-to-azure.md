@@ -23,7 +23,8 @@
 - **VMware 仮想マシンを保護する** — Azure へのオンプレミス VMware 仮想マシンのレプリケーション、フェールオーバー、復旧を調整します
 - **物理サーバーを保護する** — Azure Site Recovery サービスを使用した Azure へのオンプレミス Windows および Linux 物理サーバーのレプリケーション、フェールオーバー、および内復旧を調整します
 
-この記事では、概要、デプロイの前提条件、設定方法について説明します。この記事を読み終わると、VMware 仮想マシンまたは物理サーバーを Azure にレプリケートできるようになります。問題が発生した場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
+この記事では、概要、デプロイの前提条件、設定方法について説明します。この記事を読み終わると、VMware 仮想マシンまたは物理サーバーを Azure にレプリケートできるようになります。
+問題が発生した場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
 
 
 ## Azure Site Recovery とは
@@ -250,7 +251,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
     >[AZURE.WARNING]構成サーバーのデプロイ中に作成されたエンドポイントのパブリック ポート番号またはプライベート ポート番号は削除または変更しないでください。
 
-構成サーバーは、予約された IP アドレスで自動的に作成される Azure クラウド サービスにデプロイされます。予約されたアドレスは、クラウド サービスで仮想マシン (構成サーバーを含む) の再起動の間に構成サーバーのクラウド サービスの IP アドレスが変わらないために必要です。構成サーバーを使用停止するときは予約されたパブリック IP アドレスを手動で予約解除する必要があります。そうしないと、予約されたまま残ります。サブスクリプションごとに 20 個の予約されたパブリック IP アドレスの既定の制限があります。予約済み IP アドレスの詳細は、[ここ](../virtual-network/virtual-networks-reserved-private-ip.md)を参照してください。
+構成サーバーは、予約された IP アドレスで自動的に作成される Azure クラウド サービスにデプロイされます。予約されたアドレスは、クラウド サービスで仮想マシン (構成サーバーを含む) の再起動の間に構成サーバーのクラウド サービスの IP アドレスが変わらないために必要です。構成サーバーを使用停止するときは予約されたパブリック IP アドレスを手動で予約解除する必要があります。そうしないと、予約されたまま残ります。サブスクリプションごとに 20 個の予約されたパブリック IP アドレスの既定の制限があります。予約済み IP アドレスの詳細は、 [詳細を確認する](../virtual-network/virtual-networks-reserved-private-ip.md)を参照してください。
 
 ### 構成サーバーのコンテナーへの登録
 
@@ -757,8 +758,10 @@ Azure で実行しているフェールオーバーされたマシンをオン�
 
 1. **[サーバー]** の **[構成サーバー]** ページに移動します。
 2. 構成サーバーの名前をクリックし、**[サーバーの詳細]** に移動します。
-3. **[プロセス サーバー]** ボックスの一覧で、変更するサーバーの **[プロセスのサーバーの変更]** をクリックします。![Change Process Server 1](./media/site-recovery-vmware-to-azure/ASRVMware_ChangePS1.png)
-4. **[プロセス サーバーの変更]** ダイアログの **[ターゲット プロセス サーバー]** で新しいサーバーを選択し、新しいサーバーにレプリケートする仮想マシンを選択します。サーバー名の隣の情報アイコンをクリックすると、空き容量や使用済みメモリなど、サーバーについての情報が表示されます。負荷の決定に役立つように、選択されている各仮想マシンを新しいプロセス サーバーにレプリケートするために必要な平均容量が表示されます。![Change Process Server 2](./media/site-recovery-vmware-to-azure/ASRVMware_ChangePS2.png)
+3. **[プロセス サーバー]** ボックスの一覧で、変更するサーバーの **[プロセスのサーバーの変更]** をクリックします。
+	![Change Process Server 1](./media/site-recovery-vmware-to-azure/ASRVMware_ChangePS1.png)
+4. **[プロセス サーバーの変更]** ダイアログの **[ターゲット プロセス サーバー]** で新しいサーバーを選択し、新しいサーバーにレプリケートする仮想マシンを選択します。サーバー名の隣の情報アイコンをクリックすると、空き容量や使用済みメモリなど、サーバーについての情報が表示されます。負荷の決定に役立つように、選択されている各仮想マシンを新しいプロセス サーバーにレプリケートするために必要な平均容量が表示されます。
+	![Change Process Server 2](./media/site-recovery-vmware-to-azure/ASRVMware_ChangePS2.png)
 5. チェック マークをクリックして、新しいプロセス サーバーへのレプリケーションを開始します。重要な状態になったプロセス サーバーからすべての仮想マシンを削除すると、重大な警告はダッシュボードに表示されなくなります。
 
 
@@ -775,3 +778,4 @@ The information in Section B is regarding Third Party Code components that are b
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
 <!---HONumber=AcomDC_1210_2015--->
+
