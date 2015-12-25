@@ -174,7 +174,6 @@ StorSimple デバイスに関する次のベスト プラクティスに従っ�
 
 ## 次のステップ
 
-- [StorSimple コンポーネントの詳細](storsimple-components.md) 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
 <!---HONumber=AcomDC_1203_2015-->
