@@ -97,7 +97,7 @@ Mixpanel で Azure AD のシングル サインオンを構成してテストす
 
     a.**[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Mixpanel アプリケーションへのサインオンに使用する URL を入力します。**“https://mixpanel.com/login/”**
 
-    > [AZURE.NOTE][https://mixpanel.com/register/](https://mixpanel.com/register/) で登録してログイン資格情報を設定し、[Mixpanel サポート チーム](mailto:support@Mixpanel.com)に問い合わせ、テナントの SSO 設定を有効にするように要請してください。<br>必要であれば、Mixpanel サポート チームはサインオン URL 値も提供します。
+    > [AZURE.NOTE] [https://mixpanel.com/register/](https://mixpanel.com/register/) で登録してログイン資格情報を設定し、[Mixpanel サポート チーム](mailto:support@Mixpanel.com)に問い合わせ、テナントの SSO 設定を有効にするように要請してください。<br>必要であれば、Mixpanel サポート チームはサインオン URL 値も提供します。
 
     b.**[次へ]** をクリックします。
 
@@ -237,4 +237,4 @@ Mixpanel で Azure AD のシングル サインオンを構成してテストす
 [204]: ./media/active-directory-saas-mixpanel-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-mixpanel-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->

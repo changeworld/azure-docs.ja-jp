@@ -5,7 +5,7 @@
 	documentationCenter="mobile"
 	authors="MehrdadMzfr"
 	manager="dwrede"
-	editor="" />
+	editor=""/>
 
 <tags
 	ms.service="mobile-engagement"
@@ -14,7 +14,7 @@
 	ms.devlang="objective-c"
 	ms.topic="article"
 	ms.date="08/05/2015"
-	ms.author="MehrdadMzfr" />
+	ms.author="MehrdadMzfr"/>
 
 #Engagement を iOS に統合する方法
 
@@ -67,7 +67,7 @@ Engagement では追加のフレームワークを動作させる必要がある
 
 ### 推奨される方法: `UIViewController` クラスをオーバーロードします
 
-Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計のコンピューティングに必要なすべてのログのレポートを有効化するには、単にすべての `UIViewController` サブクラスを `EngagementViewController` クラスから継承するように設定します (`UITableViewController` -\\> `EngagementTableViewController` と同じルール)。
+Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計のコンピューティングに必要なすべてのログのレポートを有効化するには、単にすべての `UIViewController` サブクラスを `EngagementViewController` クラスから継承するように設定します (`UITableViewController` -\> `EngagementTableViewController` と同じルール)。
 
 **エンゲージメントを使用しない場合:**
 

@@ -74,15 +74,15 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 1.	.NET クラス ライブラリ プロジェクトを作成します。
 	<ol type="a">
 	<li><b>Visual Studio 2012</b> または <b>Visual Studio 2013</b> を起動します。</li>
-	<li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li>
-	<li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。このチュートリアルでは C# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。</li>
+	<li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li> 
+	<li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。このチュートリアルでは C# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。</li> 
 	<li>右側にあるプロジェクトの種類の一覧から <b>[クラス ライブラリ]</b> を選択します。</li>
-	<li><b>[プロジェクト名]</b> に「<b>MyDotNetActivity</b>」と入力します。</li>
+	<li><b>[プロジェクト名]</b> に「<b>MyDotNetActivity</b>」と入力します。</li> 
 	<li><b>[場所]</b> で <b>[C:\ADFGetStarted]</b> を選択します。</li>
 	<li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
 </ol>
 2.  <b>[ツール]</b> をクリックし、<b>[NuGet パッケージ マネージャー]</b> をポイントして、<b>[パッケージ マネージャー コンソール]</b> をクリックします。
-3.	<b>[パッケージ マネージャー コンソール]</b> で、次のコマンドを実行して <b>Microsoft.Azure.Management.DataFactories</b> をインポートします。
+3.	<b>[パッケージ マネージャー コンソール]</b> で、次のコマンドを実行して <b>Microsoft.Azure.Management.DataFactories</b> をインポートします。 
 
 		Install-Package Microsoft.Azure.Management.DataFactories
 
@@ -102,7 +102,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 		using Microsoft.WindowsAzure.Storage;
 		using Microsoft.WindowsAzure.Storage.Blob;
-
+  
 6. **namespace** の名前を **MyDotNetActivityNS** に変更します。
 
 		namespace MyDotNetActivityNS
@@ -112,6 +112,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 		public class MyDotNetActivity : IDotNetActivity
 
 8. **IDotNetActivity** インターフェイスの **Execute** メソッドを **MyDotNetActivity** クラスに実装 (追加) し、次のサンプル コードをメソッドにコピーします。
+
 
 	次のサンプル コードでは、入力 BLOB 内の行数をカウントし、BLOB へのパス、BLOB 内の行数、アクティビティが実行されたコンピューター、現在の日時を出力 BLOB に生成します。
 
@@ -140,8 +141,8 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
             foreach (LinkedService ls in linkedServices)
                 logger.Write("linkedService.Name {0}", ls.Name);
 
-            // using First method instead of Single since we are using the same 
-            // Azure Storage linked service for input and output. 
+			// using First method instead of Single since we are using the same 
+			// Azure Storage linked service for input and output. 
             inputLinkedService = linkedServices.First(
                 linkedService =>
                 linkedService.Name ==
@@ -419,11 +420,11 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 1. **Azure ポータル**の Data Factory のホーム ページで、**[作成とデプロイ]** をクリックします。
 2. Data Factory エディターで、コマンド バーの **[新しいコンピューティング]** をクリックし、メニューから **[オンデマンド HDInsight クラスター]** を選択します。
-2. JSON スクリプトで、以下の手順を実行します。
+2. JSON スクリプトで、以下の手順を実行します。 
 	1. **clusterSize** プロパティには、HDInsight クラスターのサイズを指定します。
-	3. **timeToLive** プロパティには、顧客が削除されるまでの間にアイドル状態でいられる時間を指定します。
+	3. **timeToLive** プロパティには、顧客が削除されるまでの間にアイドル状態でいられる時間を指定します。 
 	4. **version** プロパティには、使用する HDInsight のバージョンを指定します。このプロパティを除外した場合は、最新バージョンが使用されます。  
-	5. **linkedServiceName** には、入門チュートリアルで作成した **StorageLinkedService** を指定します。
+	5. **linkedServiceName** には、入門チュートリアルで作成した **StorageLinkedService** を指定します。 
 
 			{
 			  "name": "HDInsightOnDemandLinkedService",
@@ -444,11 +445,11 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 1. **Azure ポータル**の Data Factory のホーム ページで、**[作成とデプロイ]** をクリックします。
 2. **Data Factory エディター**で、コマンド バーの **[新しいコンピューティング]** をクリックし、メニューから **[HDInsight クラスター]** を選択します。
-2. JSON スクリプトで、以下の手順を実行します。
+2. JSON スクリプトで、以下の手順を実行します。 
 	1. **clusterUri** プロパティには、HDInsight の URL を入力します。たとえば、https://<clustername>.azurehdinsight.net/ などです。     
 	2. **UserName** プロパティには、HDInsight クラスターにアクセスできるユーザー名を入力します。
-	3. **Password** プロパティには、ユーザーのパスワードを入力します。
-	4. **LinkedServiceName** プロパティには、「**StorageLinkedService**」と入力します。これは、入門チュートリアルで作成したリンク サービスです。
+	3. **Password** プロパティには、ユーザーのパスワードを入力します。 
+	4. **LinkedServiceName** プロパティには、「**StorageLinkedService**」と入力します。これは、入門チュートリアルで作成したリンク サービスです。 
 
 2. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
@@ -539,10 +540,10 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 
 ### カスタム アクティビティを使用するパイプラインの作成と実行
-
+   
 1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] (省略記号)** をクリックすると表示されます。
-2. 右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。**HDInsightLinkedService** リンク サービスの作成手順を実行した場合、独自のクラスターを使用するには、次の JSON で **HDInsightOnDemandLinkedService** を **HDInsightLinkedService** に置き換えます。
-
+2. 右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。**HDInsightLinkedService** リンク サービスの作成手順を実行した場合、独自のクラスターを使用するには、次の JSON で **HDInsightOnDemandLinkedService** を **HDInsightLinkedService** に置き換えます。 
+		
 		{
 		  "name": "ADFTutorialPipelineCustom",
 		  "properties": {
@@ -673,7 +674,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 1. [Azure ポータル](http://manage.windowsazure.com)を使用して、Azure Batch アカウントを作成します。手順については、「[Azure Batch アカウントの作成と管理][batch-create-account]」の記事を参照してください。Azure Batch のアカウント名とアカウント キーをメモしておきます。
 
-	[New-AzureBatchAccount][new-azure-batch-account] コマンドレットを使用して、Azure Batch アカウントを作成することもできます。このコマンドレットの使用方法の詳細については、「[Using Azure PowerShell to Manage Azure Batch Account (Azure PowerShell を使用した Azure Batch アカウントの管理)][azure-batch-blog]」をご覧ください。
+	[New-AzureBatchAccount][new-azure-batch-account] コマンドレットを使用して、Azure Batch アカウントを作成することもできます。このコマンドレットの使用方法の詳細については、「[Using Azure PowerShell to Manage Azure Batch Account (Azure PowerShell を使用した Azure Batch アカウントの管理)][azure-batch-blog]」をご覧ください。 
 2. Azure Batch プールの作成[Azure Batch Explorer ツール][batch-explorer]のソース コードをダウンロードし、コンパイルして使用することもできますが、[.NET 向け Azure Batch ライブラリ][batch-net-library]を使用して Azure Batch プールを作成することもできます。Azure Batch Explorer の使用手順については、[Azure Batch Explorer サンプル チュートリアル][batch-explorer-walkthrough]のページを参照してください。
 
 	[New-AzureRmBatchPool](https://msdn.microsoft.com/library/mt628690.aspx) コマンドレットを使用して、Azure Batch プールを作成することもできます。
@@ -708,13 +709,13 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 		}
 
 	> [AZURE.IMPORTANT]**[Azure Batch アカウント] ブレード**の **URL** は、accountname.region.batch.azure.com です。JSON の **batchUri** プロパティでは、この URL から **"accountname" を削除**し、**accountName** JSON プロパティの**accountname** を必要があります。
-
+	  
 	**poolName** プロパティでは、プール名の代わりにプール ID を指定することもできます。
 
 	これらのプロパティについては、[Azure Batch リンク サービスに関する MSDN のトピック](https://msdn.microsoft.com/library/mt163609.aspx)をご覧ください。
 
 2.  Data Factory エディターで、チュートリアルで作成したパイプラインの JSON 定義を開き、**HDInsightLinkedService** を **AzureBatchLinkedService** に置き換えます。
-3.  Azure Batch サービスを使用してシナリオをテストできるように、パイプラインの開始時刻と終了時刻を変更できます。
+3.  Azure Batch サービスを使用してシナリオをテストできるように、パイプラインの開始時刻と終了時刻を変更できます。 
 4.  次の図に示すように、Azure Batch Explorer でスライスの処理に関連する Azure Batch のタスクを確認できます。
 
 	![Azure Batch のタスク][image-data-factory-azure-batch-tasks]

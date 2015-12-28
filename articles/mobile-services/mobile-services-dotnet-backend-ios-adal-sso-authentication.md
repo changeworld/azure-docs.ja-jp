@@ -112,7 +112,7 @@
 ##認証を使用してクライアントをテストする
 
 1. [Product] メニューの [Run] をクリックして、アプリケーションを開始します。
-2. Azure Active Directory にログインするための画面が表示されます。
+2. Azure Active Directory にログインするための画面が表示されます。  
 3. アプリケーションが認証を実行し、Todo 項目を返します。
 
    ![](./media/mobile-services-dotnet-backend-ios-adal-sso-authentication/mobile-services-app-run.png)

@@ -59,7 +59,7 @@ Azure App Service Web アプリで次の機能を持つ基本的な ASP.NET ア�
 
 2.	サンプル ソリューション [WebApp-WSFederation-DotNet](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet) をローカル ディレクトリに複製またはダウンロードします。
 
-	> [AZURE.NOTE][README.md](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet/blob/master/README.md) には Azure Active Directory にアプリケーションを設定する手順が記載されていますが、このチュートリアルでは AD FS を使用して設定するため、以降の説明に従ってください。
+	> [AZURE.NOTE] [README.md](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet/blob/master/README.md) には Azure Active Directory にアプリケーションを設定する手順が記載されていますが、このチュートリアルでは AD FS を使用して設定するため、以降の説明に従ってください。
 
 3.	ソリューションを開き、**ソリューション エクスプローラー**で Controllers\\AccountController.cs を開きます。
 
@@ -343,4 +343,4 @@ Azure App Service Web Apps では、[ハイブリッド接続](../integration-hy
  
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->

@@ -96,7 +96,6 @@ Data Factory のデータセット スライスは、次のいずれかの状態
 <td>ValidationRetry</td><td>検証の再試行を待機しています。</td>
 </tr>
 <tr>
-&lt; tr
 <td rowspan="2">InProgress</td><td>Validating</td><td>検証を実行中です。</td>
 </tr>
 <td></td>
@@ -323,7 +322,7 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 	                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource",
 	                        "operationName": "RunFinished",
 	                        "status": "Failed",
-	                        "subStatus": "FailedExecution"   
+	                            "subStatus": "FailedExecution"   
 	                    }
 	                },
 	                "action": 
@@ -357,7 +356,7 @@ OnDemandClusterDeleted | Succeeded
 #### アラートのデプロイ 
 アラートをデプロイするには、次の例に示すように Azure PowerShell コマンドレットの **New-AzureResourceGroupDeployment** を使用します。
 
-	New-AzureResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\ADFAlertFailedSlice.json  
+	New-AzureResourceGroupDeployment -ResourceGroupName adf     -TemplateFile .\ADFAlertFailedSlice.json  
 
 リソース グループのデプロイメントが正常に終了すると、次のメッセージが表示されます。
 

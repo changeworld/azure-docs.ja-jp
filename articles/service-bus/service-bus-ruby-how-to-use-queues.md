@@ -64,7 +64,7 @@ Azure Service Bus 名前空間を作成するために実行した PowerShell �
 
 ## Ruby アプリケーションの作成
 
-Ruby アプリケーションを作成します。手順については、[Windows Azure での Ruby アプリケーションの作成に関するページ](/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
+Ruby アプリケーションを作成します。手順については、[Microsoft Azure での Ruby アプリケーションの作成に関するページ](/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
 
 ## Service Bus を使用するようにアプリケーションを構成する
 
@@ -167,4 +167,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 この記事で説明されている Azure Service Bus キューと、「[Azure Queue Service の使用方法](/develop/ruby/how-to-guides/queue-service/)」の記事で説明されている Azure Queues の比較については、「[Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->

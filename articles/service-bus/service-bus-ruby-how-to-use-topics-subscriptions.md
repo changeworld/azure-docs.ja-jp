@@ -60,7 +60,7 @@ Service Bus 名前空間を作成するために実行した PowerShell コマ�
 
 ## Ruby アプリケーションの作成
 
-手順については、[Windows Azure での Ruby アプリケーションの作成に関するページ](/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
+手順については、[Microsoft Azure での Ruby アプリケーションの作成に関するページ](/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
 
 ## Service Bus を使用するようにアプリケーションを構成する
 
@@ -217,4 +217,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
  
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->

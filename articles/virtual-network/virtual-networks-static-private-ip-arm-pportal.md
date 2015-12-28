@@ -54,7 +54,9 @@
 
 6. **[設定]** ブレードで、次のプロパティが以下の値に設定されていることを確認してから **[OK]** をクリックします。
 
-	- **ストレージ アカウント**: *vnetstorage* - **ネットワーク**: *TestVNet* - **サブネット**: *FrontEnd*
+	-**ストレージ アカウント**: *vnetstorage*
+	- **ネットワーク**: *TestVNet*
+	- **サブネット**: *FrontEnd*
 
 	![[サイズの選択] ブレード](./media/virtual-networks-static-ip-arm-pportal/figure05.png)
 
@@ -92,7 +94,7 @@
 ## 次のステップ
 
 - [予約済みパブリック IP](../virtual-networks-reserved-public-ip) アドレスについて理解する。
-- [インスタンスレベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip) アドレスについて理解する。
+- [インスタンス レベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip) アドレスについて理解する。
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
 <!---HONumber=AcomDC_1217_2015-->

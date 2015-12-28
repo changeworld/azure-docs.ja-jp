@@ -22,7 +22,7 @@
 
 使用する Azure Active Directory テナントを Azure 専用ディレクトリにするか、オンプレミスの Active Directory (AD) とディレクトリを同期して、オンプレミス ユーザーやリモート ユーザーがシングル サインオン環境を構築できます。
 
->[AZURE.NOTE]Azure App Service Web Apps の場合、ボタンを数回クリックするだけで、Azure Active Directory に対する認証を構成できます。詳細については、「[Azure App Service での認証には、Active Directory を使用します](web-sites-authentication-authorization.md)」を参照してください。
+>[AZURE.NOTE] Azure App Service Web Apps の場合、ボタンを数回クリックするだけで、Azure Active Directory に対する認証を構成できます。詳細については、「[Azure App Service での認証には、Active Directory を使用します](web-sites-authentication-authorization.md)」を参照してください。
 
 <a name="bkmk_build"></a>
 ## 学習内容 ##
@@ -40,7 +40,7 @@
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -63,7 +63,8 @@
 
 1.	[WebApp-RoleClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) からサンプル ソリューションをローカル ディレクトリに複製またはダウンロードします。
 
-2.	[シングル テナント アプリケーションとしてのサンプルの実行方法](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims#how-to-run-the-sample-as-a-single-tenant-app)に関するページの手順に従って、Azure Active Directory アプリケーションとプロジェクトを設定します。アプリケーションをマルチテナントからシングル テナントに変換するには、必ずすべての手順に従ってください。
+2.	[シングル テナント アプリケーションとしてのサンプルの実行方法](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims#how-to-run-the-sample-as-a-single-tenant-app)に関するページの手順に従って、Azure Active Directory アプリケーションとプロジェクトを設定します。
+アプリケーションをマルチテナントからシングル テナントに変換するには、必ずすべての手順に従ってください。
 
 3.	先ほど作成した Azure Active Directory アプリケーションの [Azure クラシック ポータル](https://manage.windowsazure.com) ビューで、**[ユーザー]** タブをクリックします。次に、必要なロールに目的のユーザーを割り当てます。
 
@@ -155,7 +156,9 @@
    &lt;add key="ida:ClientId" value="<mark>[e.g. 82692da5-a86f-44c9-9d53-2f88d52b478b]</mark>" xdt:Transform="SetAttributes" xdt:Locator="Match(key)" />
    &lt;add key="ida:AppKey" value="<mark>[e.g. rZJJ9bHSi/cYnYwmQFxLYDn/6EfnrnIfKoNzv9NKgbo=]</mark>" xdt:Transform="SetAttributes" xdt:Locator="Match(key)" />
    &lt;add key="ida:PostLogoutRedirectUri" value="<mark>[e.g. https://mylobapp.azurewebsites.net/]</mark>" xdt:Transform="SetAttributes" xdt:Locator="Match(key)" />
-&lt;/appSettings></pre>ida:PostLogoutRedirectUri の値の末尾が "/" になっていることを確認します。
+&lt;/appSettings></pre>
+
+	ida:PostLogoutRedirectUri の値の末尾が "/" になっていることを確認します。
 
 1. プロジェクトを右クリックし、**[発行]** を選択します。
 
@@ -250,9 +253,13 @@ public class WorkItemsController : Controller
     <mark>[Authorize(Roles = "Admin, Writer, Approver")]</mark>
     public async Task&lt;ActionResult> DeleteConfirmed(int id)
     ...
-}</pre>ロール マッピングの処理は Azure クラシック ポータルの UI で行うため、必要となるのは、各操作で正しいロールが承認されているかどうかを確認することだけです。
+	}</pre>
+    ロール マッピングの処理は Azure クラシック ポータルの UI で行うため、必要となるのは、各操作で正しいロールが承認されているかどうかを確認することだけです。
 
-	> [AZURE.NOTE]一部の操作では <code>[ValidateAntiForgeryToken]</code> 装飾を使用します。[Brock Allen](https://twitter.com/BrockLAllen) が [MVC 4 の AntiForgeryToken とクレーム](http://brockallen.com/2012/07/08/mvc-4-antiforgerytoken-and-claims/)に関するページで説明している動作により、HTTP POST が偽造防止トークンの検証に次の理由で失敗する可能性があります。+ 既定で偽造防止トークンに必要となる http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider を Azure Active Directory が送信しない。+ Azure Active Directory が AD FS とディレクトリを同期している場合、AD FS トラストは既定で http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider の要求を送信しない。ただし、AD FS を手動で構成してこの要求を送信することはできます。これについては次の手順で対処します。
+	> [AZURE.NOTE]一部の操作では <code>[ValidateAntiForgeryToken]</code> 装飾を使用します。[Brock Allen](https://twitter.com/BrockLAllen) が [MVC 4 の AntiForgeryToken とクレーム](http://brockallen.com/2012/07/08/mvc-4-antiforgerytoken-and-claims/)に関するページで説明している動作により、HTTP POST が偽造防止トークンの検証に次の理由で失敗する可能性があります。
+	> + 既定で偽造防止トークンに必要となる http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider を Azure Active Directory が送信しない。
+	> + Azure Active Directory が AD FS とディレクトリを同期している場合、AD FS トラストは既定で http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider の要求を送信しない。ただし、AD FS を手動で構成してこの要求を送信することはできます。
+	> これについては次の手順で対処します。
 
 12.  App\_Start\\Startup.Auth.cs で、以下のコード行を `ConfigureAuth` メソッドに追加します。各名前付け解決エラーを右クリックすると、そのエラーが修正されます。
 
@@ -340,8 +347,9 @@ public class WorkItemsController : Controller
                 $("#main-form").get()[0].elements["AssignedToID"].value = picker.Selected().objectId;
             });
     &lt;/script></mark>
+	}</pre>
 
-}</pre>スクリプトでは、AadPicker オブジェクトが [Azure Active Directory Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) を呼び出し、入力に一致するユーザーとグループを検索します。
+	スクリプトでは、AadPicker オブジェクトが [Azure Active Directory Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) を呼び出し、入力に一致するユーザーとグループを検索します。
 
 15. [パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console)を開き、**Enable-Migrations –EnableAutomaticMigrations** を実行します。アプリを Azure に発行したときに選択したオプションと同様、このコマンドは、Visual Studio でデバッグする際に [LocalDB](https://msdn.microsoft.com/library/hh510202.aspx) でアプリのデータベース スキーマを更新するのに役立ちます。
 

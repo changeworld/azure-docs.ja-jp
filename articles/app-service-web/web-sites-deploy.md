@@ -118,7 +118,7 @@ Team Foundation Server は、ソース管理とチーム コラボレーショ�
 
 詳細については、次のリソースを参照してください。
 
-* [Windows Azure のクラウド サービスの継続的な配信](../cloud-services-dotnet-continuous-delivery.md)このドキュメントは Azure クラウド サービスを対象にしていますが、そのコンテンツの一部は Web Apps にも当てはまります。
+* [Microsoft Azure のクラウド サービスの継続的な配信](../cloud-services-dotnet-continuous-delivery.md)このドキュメントは Azure クラウド サービスを対象にしていますが、そのコンテンツの一部は Web Apps にも当てはまります。
 
 ##<a name="gitmercurial"></a>内部設置型の Git または Mercurial リポジトリ
 
@@ -204,4 +204,4 @@ Azure のロール ベースのアクセス制御を使用して、Web アプリ
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->

@@ -425,7 +425,7 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Using Power BI in a Hybrid Environment (ハイブリッド環境での Power BI の使用)](https://msdn.microsoft.com/library/dn798994.aspx)
 
->[AZURE.NOTE] [Submit feedback and contact information through Microsoft SQL Server Connect](https://connect.microsoft.com/SQLServer/Feedback)
+>[AZURE.NOTE] [Microsoft SQL Server Connect でフィードバックと連絡先情報を送信する](https://connect.microsoft.com/SQLServer/Feedback)
 
 ### コミュニティ コンテンツ
 

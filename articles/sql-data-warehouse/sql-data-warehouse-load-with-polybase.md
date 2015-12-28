@@ -180,7 +180,7 @@ DROP EXTERNAL TABLE [ext].[CarSensor_Data]
 
 リファレンス トピック: [DROP EXTERNAL TABLE (Transact-SQL)][]。
 
-外部テーブルは両方の `sys.tables`で表示できること、より具体的には `sys.external_tables` カタログ ビューに表示できることにも注意してください。
+外部テーブルは両方の `sys.tables` で表示できること、より具体的には `sys.external_tables` カタログ ビューに表示できることにも注意してください。
 
 ## ストレージ キーの交換
 
