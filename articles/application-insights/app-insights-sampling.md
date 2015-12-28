@@ -51,11 +51,11 @@ Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降の既定
 
     サンプリング率が変化してから、どのくらいの時間が経過すると、サンプリング率を上げてキャプチャ データ量を増やすことができるようになるかを指定します。
 
-* `<MinSamplingPercentage>0.1<\MinSamplingPercentage>`
+* `<MinSamplingPercentage>0.1</MinSamplingPercentage>`
 
     サンプリング率の変化に合わせて、設定できる最小値。
 
-* `<MaxSamplingPercentage>100.0<\MaxSamplingPercentage>`
+* `<MaxSamplingPercentage>100.0</MaxSamplingPercentage>`
 
     サンプリング率の変化に合わせて、設定できる最大値。
 
@@ -63,7 +63,7 @@ Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降の既定
 
     移動平均の計算で最新値に割り当てられる重み。1 以下の値を使用します。小さい値にすると、急変に対する反応が低いアルゴリズムになります。
 
-* `<InitialSamplingPercentage>100<\InitialSamplingPercentage>`
+* `<InitialSamplingPercentage>100</InitialSamplingPercentage>`
 
     アプリの起動直後に割り当てられる値。デバッグ中はこの値を減らさないでください。
 
@@ -297,4 +297,4 @@ Application Insights では、精度が問題のあるレベルまで低下す�
 
  * (既定のアクティブ インスタンスではなく) 新しい TelemetryConfiguration で TelemetryClient の別のインスタンスを初期化します。そのインスタンスを使用して、頻度の低いイベントを送信してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

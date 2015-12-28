@@ -3,9 +3,9 @@
    description="仮想マシンに Web アプリケーションをデプロイする方法を学習します。このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="dotnet"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="09/30/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # Publish-WebApplicationVM (Windows PowerShell スクリプト)
 
@@ -189,4 +189,4 @@ JSON 構成ファイルではデプロイ対象の詳細が指定されます。
 
 プロビジョニング対象が変更されるように JSON 構成ファイルを編集できます。仮想マシンとクラウド サービスは必須ですが、データベースのセクションは省略可能です。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

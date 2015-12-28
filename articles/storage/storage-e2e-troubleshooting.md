@@ -351,9 +351,9 @@ Azure Storage におけるエンド ツー エンド シナリオのトラブル
 - [Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)
 - [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx)
 - [ストレージ アカウントの監視方法](storage-monitor-storage-account.md)
-- [Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 - [Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)
  
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

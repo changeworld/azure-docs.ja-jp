@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="10/20/2015"
+   ms.date="12/16/2015"
    ms.author="andkjell"/>
 
 # Azure AD Connect Sync: 誤って削除されないように保護する
@@ -25,7 +25,7 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 
 この機能が有効なときに、Azure AD にエクスポートするようにステージングされた削除の数が多すぎる場合は、エクスポートは続行されず、次のような電子メールが送信されます。
 
-![電子メールを誤って削除する](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/email.png)
+![Hello.At time the Identity synchronization service detected that the number of deletions exceeded the configured threshold for fabrikam.com.A total of 1234 objects were sent for deletion in this Identity synchronization run.This met or exceeded the configured deletion threshold value of 500 objects.We need you to provide confirmation that these deletions should be processed before we will proceed.Please see the preventing accidental deletions for more information about the error listed in this email message.](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/email.png)
 
 これを予想していなかった場合は、調査し、修正のアクションを実行します。削除されようとしているオブジェクトを表示するには、次の操作を行います。
 
@@ -48,4 +48,4 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

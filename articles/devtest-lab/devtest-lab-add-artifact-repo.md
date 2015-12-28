@@ -1,6 +1,6 @@
     <properties
 	pageTitle="Add a Git artifact repository to your DevTest Lab | Microsoft Azure"
-	description="Add a GitHub or Visual Studio Online Git repository for your custom artifacts to your lab"
+	description="Add a GitHub or Visual Studio Team Services Git repository for your custom artifacts to your lab"
 	services="devtest-lab,virtual-machines,visual-studio-online"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -20,10 +20,10 @@
 
 ## 概要
 
-既定では、公式の Azure DevTest ラボ アーティファクト リポジトリからのアーティファクトが DevTest ラボに含まれます。ラボに Git アーティファクト リポジトリを追加することで、チームが作成したアーティファクトを含めることができます。リポジトリは、[GitHub](https://github.com) または [Visual Studio Online (VSO)](https://visualstudio.com) 上にホストできます。
+既定では、公式の Azure DevTest ラボ アーティファクト リポジトリからのアーティファクトが DevTest ラボに含まれます。ラボに Git アーティファクト リポジトリを追加することで、チームが作成したアーティファクトを含めることができます。リポジトリは、[GitHub](https://github.com) または [Visual Studio Team Services (VSTS)](https://visualstudio.com) 上にホストできます。
 
 - GitHub リポジトリを作成する方法については、「[GitHub Bootcamp (GitHub ブートキャンプ)](https://help.github.com/categories/bootcamp/)」を参照してください。
-- Git リポジトリを使用して、VSO プロジェクトを作成する方法については、「[Connect to Visual Studio Online (Visual Studio Online への接続)](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)」を参照してください。
+- Git リポジトリを使用して、Team Services プロジェクトを作成する方法については、「[Connect to Visual Studio Team Services (Visual Studio Team Services への接続)](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)」を参照してください。
 
 次のスクリーン ショットでは、GitHub でアーティファクトを含むリポジトリがどのように表示されるかの例を示します。 ![GitHub アーティファクト リポジトリのサンプル](./media/devtest-lab-add-artifact-repo/devtestlab-github-artifact-repo-home.png)
 
@@ -115,4 +115,4 @@
     3. アーティファクト リポジトリに保存された**個人用アクセス トークン**を入力します。
     4. **[保存]** をタップします。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

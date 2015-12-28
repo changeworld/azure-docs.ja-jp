@@ -22,12 +22,12 @@
 
 このサンプルでは次のことを実行しています。
 
-* ImageStore の WordCount アプリケーション パッケージから WordCount 1.0.0 サンプルをプロビジョニングします。
+* イメージ ストアの WordCount アプリケーション パッケージから **WordCount 1.0.0** サンプルをプロビジョニングします。
 * アプリケーションの種類の一覧を表示します。一覧には WordCount 1.0.0 が含まれています。
-* WordCount アプリケーションを fabric:/WordCount として作成します。
+* WordCount アプリケーションを **fabric:/WordCount** として作成します。
 * アプリケーションの一覧を表示します。一覧には fabric:/WordCount バージョン 1.0.0 が含まれています。
-* ImageStore の WordCountUpgrade アプリケーション パッケージから WordCount サンプルの 1.1.0 バージョンをプロビジョニングします。
-* アプリケーションの種類の一覧を表示します。一覧には WordCount 1.0.0 と WordCount 1.1.0 の両方が含まれています。
+* イメージ ストアの **WordCountUpgrade** アプリケーション パッケージから WordCount サンプルの 1.1.0 バージョンをプロビジョニングします。
+* アプリケーションの種類の一覧を表示します。一覧には WordCount 1.0.0 と **WordCount 1.1.0** の両方が含まれています。
 * WordCount アプリケーションをバージョン 1.1.0 にアップグレードします。
 * アプリケーションの一覧を表示します。一覧には WordCount バージョン 1.1.0 が含まれていますが、WordCount バージョン 1.0.0 は含まれていません。
 * WordCount アプリケーションを削除します。
@@ -40,21 +40,21 @@
 
 ## 前提条件
 
-このサンプルでは [WordCount サンプル](http://aka.ms/servicefabricsamples) (入門サンプル内に収録) を使用します。最初に WordCount サンプルをビルドした後、2 つのアプリケーション パッケージを ImageStore にコピーする必要があります。
+このサンプルでは [WordCount サンプル](http://aka.ms/servicefabricsamples) (**入門**サンプル内に収録) を使用します。最初に WordCount サンプルをビルドした後、2 つのアプリケーション パッケージをイメージ ストアにコピーする必要があります。
 
 |フォルダー|説明|
 |------|-----------|
-|WordCount|WordCount サンプル アプリケーション。ApplicationManifest.xml には ApplicationTypeVersion="1.0.0" が含まれています。|
-|WordCountUpgrade|WordCount サンプル アプリケーション。ApplicationManifest.xml ファイルを ApplicationTypeVersion="1.1.0" に変更し、アプリケーションのアップグレードを実行できるようにします。|
+|WordCount|WordCount サンプル アプリケーション。**ApplicationManifest.xml** には **ApplicationTypeVersion="1.0.0"** が含まれています。|
+|WordCountUpgrade|WordCount サンプル アプリケーション。ApplicationManifest.xml ファイルを **ApplicationTypeVersion="1.1.0"** に変更し、アプリケーションのアップグレードを実行できるようにします。|
 
-アプリケーション パッケージを作成し、作成したパッケージを ImageStore にコピーする方法は、次のとおりです。
+アプリケーション パッケージを作成し、作成したパッケージをイメージ ストアにコピーする方法は、次のとおりです。
 
-1. C:\\ServiceFabricSamples\\Services\\WordCount\\WordCount\\pkg\\Debug を C:\\Temp\\WordCount にコピーします。これにより、WordCount アプリケーション パッケージが作成されます。
-2. C:\\Temp\\WordCount を C:\\Temp\\WordCountUpgrade にコピーします。これにより、WordCountUpgrade アプリケーション パッケージが作成されます。
-3. C:\\Temp\\WordCountUpgrade\\ApplicationManifest.xml をテキスト エディターで開きます。
-4. ApplicationManifest 要素で、ApplicationTypeVersion 属性を "1.1.0" に変更します。これにより、アプリケーションのバージョン番号が更新されます。
+1. **C:\\ServiceFabricSamples\\Services\\WordCount\\WordCount\\pkg\\Debug** を **C:\\Temp\\WordCount** にコピーします。これにより、WordCount アプリケーション パッケージが作成されます。
+2. C:\\Temp\\WordCount を **C:\\Temp\\WordCountUpgrade** にコピーします。これにより、**WordCountUpgrade アプリケーション** パッケージが作成されます。
+3. **C:\\Temp\\WordCountUpgrade\\ApplicationManifest.xml** をテキスト エディターで開きます。
+4. **ApplicationManifest** 要素で、**ApplicationTypeVersion** 属性を **"1.1.0"** に変更します。これにより、アプリケーションのバージョン番号が更新されます。
 5. 変更された ApplicationManifest.xml ファイルを保存します。
-6. 以下の PowerShell スクリプトを管理者として実行し、アプリケーションを ImageStore にコピーします。
+6. 以下の PowerShell スクリプトを管理者として実行し、アプリケーションをイメージ ストアにコピーします。
 
 ```powershell
 # Deploy the WordCount and upgrade applications
@@ -71,7 +71,7 @@ Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $applicationPathWor
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $applicationPathUpgrade -ImageStoreConnectionString $imageStoreConnection
 ```
 
-PowerShell スクリプトが完了すると、このアプリケーションを実行できるようになります。
+PowerShell スクリプトが終了すると、このアプリケーションを実行できるようになります。
 
 ## 例
 
@@ -709,4 +709,4 @@ namespace ServiceFabricRestCaller
 
 [Service Fabric アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

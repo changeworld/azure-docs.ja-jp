@@ -1,5 +1,5 @@
 <properties
-	pageTitle="異なる Azure リージョン間での Azure IaaS 仮想マシンの移行"
+	pageTitle="Site Recovery を使用した異なる Azure リージョン間での Azure IaaS 仮想マシンの移行 | Microsoft Azure"
 	description="Azure Site Recovery を使用して、異なる Azure リージョン間で Azure IaaS 仮想マシンを移行します。"
 	services="site-recovery"
 	documentationCenter=""
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/26/2015"
+	ms.date="12/14/2015"
 	ms.author="raynew"/>
 
-#  Azure リージョン間での Azure IaaS 仮想マシンの移行
+#  Site Recovery を使用した Azure リージョン間での Azure IaaS 仮想マシンの移行
 
 
 ## 概要
@@ -69,4 +69,4 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 ご意見やご質問がありましたら、[Site Recovery フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -1,31 +1,22 @@
-<properties 
+<properties
     pageTitle="キュー ストレージと Visual Studio 接続済みサービスの概要 (クラウド サービス) | Microsoft Azure"
 	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio のクラウド サービス プロジェクトで Azure キュー ストレージの使用を開始する方法について説明します。"
-	services="storage" 
-	documentationCenter="" 
-	authors="TomArcher" 
-	manager="douge" 
-	editor="tglee"/>
+	services="storage"
+	documentationCenter=""
+	authors="TomArcher"
+	manager="douge"
+	editor=""/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="web" 
+<tags
+	ms.service="storage"
+	ms.workload="web"
 	ms.tgt_pltfrm="vs-getting-started" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/03/2015" 
+	ms.devlang="na"
+	ms.topic="article"
+  ms.date="12/16/2015"
 	ms.author="tarcher"/>
 
 # Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Cloud Services プロジェクト)
-
-> [AZURE.SELECTOR]
-> - [Getting started](vs-storage-cloud-services-getting-started-queues.md)
-> - [What happened](vs-storage-cloud-services-what-happened.md)
-
-> [AZURE.SELECTOR]
-> - [Blobs](vs-storage-cloud-services-getting-started-blobs.md)
-> - [Queues](vs-storage-cloud-services-getting-started-queues.md)
-> - [Tables](vs-storage-cloud-services-getting-started-tables.md)
 
 ## 概要
 
@@ -76,9 +67,9 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 
 コードでキューが作成するには、**CreateIfNotExists** に呼び出しを追加します。
 
-    // Get a reference to a CloudQueue object with the variable name 'messageQueue' 
+    // Get a reference to a CloudQueue object with the variable name 'messageQueue'
     // as described in the "Access queues in code" section.
-	
+
 	// Create the CloudQueue if it does not exist
 	messageQueue.CreateIfNotExists();
 
@@ -90,7 +81,7 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 
 次の例では、'Hello, World' というメッセージを挿入します。
 
-    // Get a reference to a CloudQueue object with the variable name 'messageQueue' as described in 
+    // Get a reference to a CloudQueue object with the variable name 'messageQueue' as described in
     // the "Access queues in code" section.
 
 	// Create a message and add it to the queue.
@@ -101,9 +92,9 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 
 **PeekMessage** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
 
-    // Get a reference to a CloudQueue object with the variable name 'messageQueue' 
+    // Get a reference to a CloudQueue object with the variable name 'messageQueue'
     // as described in the "Access queues in code" section.
-	
+
 	// Peek at the next message
     CloudQueueMessage peekedMessage = messageQueue.PeekMessage();
 
@@ -116,9 +107,9 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 
 このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。次のコードでは、メッセージが処理された直後に **DeleteMessage** を呼び出します。
 
-    // Get a reference to a CloudQueue object with the variable name 'messageQueue' 
+    // Get a reference to a CloudQueue object with the variable name 'messageQueue'
     // as described in the "Access queues in code" section.
-	
+
 	// Get the next message in the queue.
 	CloudQueueMessage retrievedMessage = messageQueue.GetMessage();
 
@@ -137,25 +128,25 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 
 次に例を示します。
 
-    // Get a reference to a CloudQueue object with the variable name 'messageQueue' 
+    // Get a reference to a CloudQueue object with the variable name 'messageQueue'
     // as described in the "Access queues in code" section.
-	
+
     foreach (CloudQueueMessage message in messageQueue.GetMessages(20, TimeSpan.FromMinutes(5)))
     {
         // Process all messages in less than 5 minutes, deleting each message after processing.
-    
+
         // Then delete the message after processing
         messageQueue.DeleteMessage(message);
-    
+
     }
 
 ## キューの長さを取得する
 
 キュー内のメッセージの概数を取得できます。**FetchAttributes** メソッドは、メッセージ数などのキューの属性を取得するようキュー サービスに要求します。**ApproximateMethodCount** プロパティは、キュー サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
 
-    // Get a reference to a CloudQueue object with the variable name 'messageQueue' 
+    // Get a reference to a CloudQueue object with the variable name 'messageQueue'
     // as described in the "Access queues in code" section.
-	
+
 	// Fetch the queue attributes.
 	messageQueue.FetchAttributes();
 
@@ -169,9 +160,9 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 
 この例では、Async-Await パターンを一般的な Azure Queue API で使用する方法を示します。このサンプルは、特定のメソッドの非同期バージョンをそれぞれ呼び出しています。これは、各メソッドの **Async** 接尾辞によって確認できます。非同期のメソッドを使用するとき、async-await パターンは、呼び出しが完了するまでローカルでの実行を中断します。この動作により、現在のスレッドで別の作業を実行できるようになるため、パフォーマンスのボトルネックを回避し、アプリケーションの全体的な応答性が向上させることができます。.NET での Async-Await パターンの使用方法の詳細については、[Async と Await (C# と Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) に関するページを参照してください。
 
-    // Get a reference to a CloudQueue object with the variable name 'messageQueue' 
+    // Get a reference to a CloudQueue object with the variable name 'messageQueue'
     // as described in the "Access queues in code" section.
-	
+
     // Create a message to put in the queue
     CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");
 
@@ -191,15 +182,14 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 
 キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの **Delete** メソッドを呼び出します。
 
-    // Get a reference to a CloudQueue object with the variable name 'messageQueue' 
+    // Get a reference to a CloudQueue object with the variable name 'messageQueue'
     // as described in the "Access queues in code" section.
-	
+
     // Delete the queue.
     messageQueue.Delete();
 
 ## 次のステップ
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
-			
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

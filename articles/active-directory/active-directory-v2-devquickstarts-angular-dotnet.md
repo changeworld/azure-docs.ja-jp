@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="11/19/2015"
+	ms.date="12/09/2015"
 	ms.author="dastrock"/>
 
 
@@ -225,4 +225,4 @@ return $http.get('/api/tasks');
 - [Stack Overflow の Azure AD 情報 >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 - [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

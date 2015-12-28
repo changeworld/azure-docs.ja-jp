@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="09/14/2015"
+	ms.date="12/11/2015"
 	ms.author="glenga"/>
 
 # テーブル ストレージを使用する .NET バックエンド モバイル サービスの作成
@@ -159,4 +159,4 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 [What is the Table Service]: ../storage-dotnet-how-to-use-tables.md#what-is
 [MongoLab Add-on Page]: /gallery/store/mongolab/mongolab
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

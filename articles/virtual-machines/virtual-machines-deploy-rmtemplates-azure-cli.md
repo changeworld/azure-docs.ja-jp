@@ -19,6 +19,14 @@
 
 # Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理
 
+> [AZURE.SELECTOR]
+- [Azure PowerShell](virtual-machines-deploy-rmtemplates-powershell.md)
+- [Azure CLI](virtual-machines-deploy-rmtemplates-azure-cli.md)
+
+<br>
+
+
+
 この記事では、Azure リソース マネージャー テンプレートと Azure CLI を使用し、Azure 仮想マシンのデプロイと管理に関する以下の一般的なタスクを実行する方法について説明します。使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)に関するページを参照してください。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。クラシック デプロイ モデルのテンプレートは使用できません。
@@ -37,7 +45,7 @@
 
 ## 準備
 
-Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと Azure アカウントを用意する必要があります。Azure CLI がない場合は、[インストールします](xplat-cli-install.md)。
+Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと Azure アカウントを用意する必要があります。Azure CLI をインストールしていない場合は、[インストールします](xplat-cli-install.md)。
 
 ### Azure CLI のバージョンを 0.9.0 以降に更新する
 
@@ -767,7 +775,7 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
 
 ### 手順 1. テンプレートの JSON ファイルを確認する
 
-テンプレートの JSON ファイルの内容を次に示します。最新バージョンが必要な場合は、[こちら](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json)から入手できます。このトピックでは、テンプレートの呼び出しに `--template-uri` スイッチを使用しますが、ローカル バージョンを渡すために `--template-file` スイッチを使用することもできます。
+テンプレートの JSON ファイルの内容を次に示します。最新のバージョンについては、[Github リポジトリのテンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json)をご覧ください。このトピックでは、テンプレートの呼び出しに `--template-uri` スイッチを使用しますが、ローカル バージョンを渡すために `--template-file` スイッチを使用することもできます。
 
 
     {
@@ -1301,4 +1309,4 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
 
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

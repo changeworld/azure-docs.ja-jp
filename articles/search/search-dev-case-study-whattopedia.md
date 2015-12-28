@@ -52,7 +52,7 @@ Azure Search はプロジェクトに大きな変革をもたらしました。A
  
 ### 高レベルのコンポーネント
 
-サイトだけでなく、ビジネスを構築しました。作業全体をサポートするには、広範なツールとアプリケーションを要しました。開発用に Visual Studio および Visual Studio Online、ソース管理とスクラム管理用に Team Foundation Service (TFS) Online、 通信とコラボレーション用に Office 365、そして当然ながら、サイトに関連するすべての操作とストレージ用に Microsoft Azure を採用しました。Visual Studio により、IDE は Azure への直接プロビジョニングを提供し、TFS Online への統合により、さらなる生産性向上を実現しました。
+サイトだけでなく、ビジネスを構築しました。作業全体をサポートするには、広範なツールとアプリケーションを要しました。開発用に Visual Studio および Visual Studio Team Services、ソース管理とスクラム管理用に Team Foundation Service (TFS) Online、 通信とコラボレーション用に Office 365、そして当然ながら、サイトに関連するすべての操作とストレージ用に Microsoft Azure を採用しました。Visual Studio により、IDE は Azure への直接プロビジョニングを提供し、TFS Online への統合により、さらなる生産性向上を実現しました。
 
 次の図は、WhatToPedia インフラストラクチャで使用される高レベルのコンポーネントを示しています。
 
@@ -421,4 +421,4 @@ Azure SQL Database 内のサブスクライバー データは、最も重要な
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

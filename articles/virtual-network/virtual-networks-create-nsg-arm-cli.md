@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn"
    tags="azure-resource-manager"
 />
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/15/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # Azure CLI で NSG を作成する方法
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、リソース マネージャーのデプロイメント モデルについて説明します。[クラシック デプロイメント モデルで NSG を作成](virtual-networks-create-nsg-classic-cli.md)することもできます。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、リソース マネージャーのデプロイ モデルについて説明します。[クラシック デプロイ モデルで NSG を作成](virtual-networks-create-nsg-classic-cli.md)することもできます。
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
@@ -68,10 +68,7 @@
 		data:    DenyAllOutBound                *                  *            *               *                 *         Outbound   Deny    65500   
 		info:    network nsg create command OK
 
-	パラメーター:
-	- **-g (または --resource-group)**。NSG の作成場所となるリソース グループの名前です。ここでは、*TestRG* です。
-	- **-l (または --location)**。NSG が作成される Azure リージョンです。ここでは、*westus* です。
-	- **-n (または --name)**。新しい NSG の名前です。ここでは、*NSG-FrontEnd* です。
+	パラメーター: -**-g (または --resource-group)**。NSG の作成場所となるリソース グループの名前です。ここでは、*TestRG* です。- **-l (または --location)**。NSG が作成される Azure リージョンです。ここでは、*westus* です。- **-n (または --name)**。新しい NSG の名前です。ここでは、*NSG-FrontEnd* です。
 
 4. **azure network nsg rule create** コマンドを実行して、インターネットからポート 3389 (RDP) へのアクセスを許可する規則を作成します。
 
@@ -105,7 +102,7 @@
 	- **-n (または --name)**。新しい規則の名前です。ここでは、*rdp-rule* です。
 	- **-c (または --access)**。規則のアクセス レベルです (拒否または許可)。
 	- **-p (または --protocol)**。規則のプロトコル (TCP、UDP、または *) です。
-	- **-r (または --direction)**。接続の方向です (受信または送信)。
+- **-r (または --direction)**。接続の方向です (受信または送信)。
 	- **-y (または --priority)**。規則の優先度です。
 	- **-f (または --source-address-prefix)**。CIDR または既定のタグを使用する発信元アドレスのプレフィックス。
 	- **-o (または --source-port-range)**。発信元ポート、またはポート範囲です。
@@ -269,4 +266,4 @@
 		data:    
 		info:    network vnet subnet set command OK
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -32,8 +32,8 @@
 
 項目 | 仮想マシン名 | ギャラリー イメージ | 最小サイズ 
 --- | --- | --- | --- 
-1\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (最初のドメイン コントローラー (例: DC1)) | Windows Server 2012 R2 Datacenter | Standard\_D1
-2\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (2 番目のドメイン コントローラー (例: DC2)) | Windows Server 2012 R2 Datacenter | Standard\_D1
+1\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (最初のドメイン コントローラー (例: DC1)) | Windows Server 2012 R2 Datacenter | Standard\_D2
+2\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (2 番目のドメイン コントローラー (例: DC2)) | Windows Server 2012 R2 Datacenter | Standard\_D2
 3\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (プライマリ データベース サーバー (例: SQL1)) | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | 	Standard\_DS4
 4\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (セカンダリ データベース サーバー (例: SQL2)) | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | 	Standard\_DS4
 5\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (クラスターのマジョリティ ノード (例: MN1)) | Windows Server 2012 R2 Datacenter | Standard\_D1
@@ -42,9 +42,9 @@
 
 **表 M - Azure での高可用な基幹業務アプリケーションのデプロイ用の仮想マシン**
 
-仮想マシンのサイズの一覧については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」をご覧ください。
+仮想マシンのサイズの完全な一覧については、「[仮想マシンのサイズ](virtual-machines-size-specs.md)」をご覧ください。
 
-Azure PowerShell コマンドの次のブロックを使用して、2 つのドメイン コントローラーの仮想マシンを作成します。< and > の文字を削除して、各変数の値を指定します。この PowerShell コマンド セットでは、次の値を使用します。
+Azure PowerShell コマンドの次のブロックを使用して、2 つのドメイン コントローラーの仮想マシンを作成します。< and > の文字を削除して、各変数の値を指定します。この PowerShell コマンド ブロックでは、次の値を使用します。
 
 - 表 M (仮想マシン)
 - 表 V (仮想ネットワーク設定)
@@ -54,7 +54,7 @@ Azure PowerShell コマンドの次のブロックを使用して、2 つのド�
 
 V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-machines-workload-high-availability-LOB-application-phase1.md)」で定義したものです。
 
-> [AZURE.NOTE]この記事には、Azure PowerShell プレビュー 1.0 のコマンドが使用されています。Azure PowerShell 0.9.8 以前のバージョンでこれらのコマンドを実行するには、"-AzureRM" のすべてのインスタンスを "-Azure" に置き換え、すべてのコマンド実行の前に **Switch-AzureMode AzureResourceManager** コマンドを追加します。詳細については、「[Azure PowerShell 1.0 プレビュー](https://azure.microsoft.com/blog/azps-1-0-pre/)」を参照してください。
+> [AZURE.NOTE]次のコマンド セットは、Azure PowerShell 1.0 以降を使用します。詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
 
 適切な値をすべて指定したら、Azure PowerShell プロンプトでそのブロックを実行します。
 
@@ -165,17 +165,16 @@ V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-
 
 次に、DNS サーバーとして使用する 2 つの新しいドメイン コントローラーの IP アドレスが仮想マシンに割り当てられるように、仮想ネットワークの DNS サーバーを更新する必要があります。この手順では、表 V (仮想ネットワーク設定) および表 M (仮想マシン) の値を使用します。
 
-1.	Azure ポータルの左ウィンドウで、**[すべて参照]、[仮想ネットワーク]** の順にクリックしてから、仮想ネットワークの名前 (表 V - 項目 1 - [値] 列) をクリックします。
-2.	仮想ネットワークのウィンドウで、**[すべての設定]** をクリックします。
-3.	**[設定]** ウィンドウで、**[DNS サーバー]** をクリックします。
-4.	**[DNS サーバー]** ウィンドウで、次を入力します。
+1.	Azure ポータルの左ウィンドウで、**[仮想ネットワーク]** をクリックし、仮想ネットワークの名前 (テーブル V - 項目 1 - "値" 列) をクリックします。
+2.	**[設定]** ウィンドウで、**[DNS サーバー]** をクリックします。
+3.	**[DNS サーバー]** ウィンドウで、次を入力します。
 	- **プライマリ DNS サーバー**: 表 V - 項目 6 - "値" 列
 	- **セカンダリ DNS サーバー**: 表 V - 項目 7 - "値" 列
-5.	Azure ポータルの左ウィンドウで、**[すべて参照]、[仮想マシン]** の順にクリックします。
-6.	**[仮想マシン]** ウィンドウで、最初のドメイン コントローラーの名前 (表 M – 項目 1 - "仮想マシン名" 列) をクリックします。
-7.	仮想マシンのウィンドウで、**[再起動]** をクリックします。
-8.	最初のドメイン コントローラーが起動したら、**[仮想マシン]** ウィンドウで、2 番目のドメイン コントローラーの名前 (表 M – 項目 2 - "仮想マシン名" 列) をクリックします。
-9.	仮想マシンのウィンドウで、**[再起動]** をクリックします。2 番目のドメイン コントローラーが起動するまで待ちます。
+4.	Azure ポータルの左ウィンドウで、**[仮想マシン]** をクリックします。
+5.	**[仮想マシン]** ウィンドウで、最初のドメイン コントローラーの名前 (表 M – 項目 1 - "仮想マシン名" 列) をクリックします。
+6.	仮想マシンのウィンドウで、**[再起動]** をクリックします。
+7.	最初のドメイン コントローラーが起動したら、**[仮想マシン]** ウィンドウで、2 番目のドメイン コントローラーの名前 (表 M – 項目 2 - "仮想マシン名" 列) をクリックします。
+8.	仮想マシンのウィンドウで、**[再起動]** をクリックします。2 番目のドメイン コントローラーが起動するまで待ちます。
 
 2 つのドメイン コントローラーを再起動するのは、オンプレミス DNS サーバーで DNS サーバーとして構成されないようにするためです。これらのドメイン コントローラーは、それ自体が DNS サーバーであるため、ドメイン コントローラーに昇格されたときに、オンプレミス DNS サーバーで DNS フォワーダーとして自動的に構成されています。
 
@@ -196,18 +195,6 @@ V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-
 
 ## 次のステップ
 
-このワークロードを引き続き構成するには、「[フェーズ 3: SQL Server インフラストラクチャを構成する](virtual-machines-workload-high-availability-LOB-application-phase3.md)」に進んでください。
+- [フェーズ 3](virtual-machines-workload-high-availability-LOB-application-phase3.md) を使用して、このワークロードを引き続き構成します。
 
-## その他のリソース
-
-[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-workload-high-availability-LOB-application-overview.md)
-
-[基幹業務アプリケーションのアーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)
-
-[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
-
-[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
-
-[Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
-
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

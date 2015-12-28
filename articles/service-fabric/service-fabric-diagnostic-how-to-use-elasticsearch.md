@@ -20,7 +20,7 @@
 ## はじめに
 この記事では、[Service Fabric](http://azure.microsoft.com/documentation/services/service-fabric/) アプリケーションがアプリケーション トレース ステートレス、インデックス作成、および検索に **ElasticSearch** と **Kibana** を使用する方法について説明します。[ElasticSearch](https://www.elastic.co/guide/index.html) は、オープンソースの分散型でスケーラブルなリアルタイム検索および分析エンジンです。検索とおよび分析タスクに適しており、Microsoft Azure で実行される Windows または Linux 仮想マシンにインストールできます。ElasticSearch は、**Event Tracing for Windows (ETW)** などのテクノロジを使用して生成された*構造化*トレースを高い効率で処理できます。
 
-ETW は、Service Fabric ランタイムが診断情報 (トレース) をソースにするために使用します。Service Fabric アプリケーションも診断情報をソースにする場合に推奨される方法です。この方法ではランタイムで提供されたトレースとアプリケーションから提供されたトレースを関連付けることができるので、トラブルシューティングが簡単になります。Visual Studio の Service Fabric プロジェクト テンプレートには、(.NET **EventSource** クラスに基づいて) 既定で ETW トレースを出力するロギング API が含まれています。ETW を使用した Service Fabric アプリケーションのトレース処理の概要については、[この記事](https://azure.microsoft.com/documentation/articles/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/)を参照してください。
+ETW は、Service Fabric ランタイムが診断情報 (トレース) をソースにするために使用します。Service Fabric アプリケーションも診断情報をソースにする場合に推奨される方法です。この方法ではランタイムで提供されたトレースとアプリケーションから提供されたトレースを関連付けることができるので、トラブルシューティングが簡単になります。Visual Studio の Service Fabric プロジェクト テンプレートには、(.NET **EventSource** クラスに基づいて) 既定で ETW トレースを出力するロギング API が含まれています。ETW を使用した Service Fabric アプリケーションのトレース処理の概要については、[こちらの記事](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)を参照してください。
 
 ElasticSearch に出現するトレースの場合、リアル タイムで Service Fabric クラスター ノードでキャプチャし、ElasticSearch エンドポイントに送信する必要があります。トレースのキャプチャには、主に 2 つのオプションがあります。
 
@@ -32,7 +32,7 @@ ElasticSearch に出現するトレースの場合、リアル タイムで Serv
 
 
 ## Azure で ElasticSearch を設定する
-Azure で ElasticSearch サービスを設定するには、[**Azure ARM テンプレート**](https://azure.microsoft.com/documentation/articles/resource-group-overview/)を使用する方法が最も簡単です。Azure クイックスタート テンプレート リポジトリから、[ElasticSearch 用の包括的なクイックスタート ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/elasticsearch)を利用できます。このテンプレートでは、スケール ユニット (ノードのグループ) に別のストレージ アカウントを使用するので、異なる構成で、接続されているデータ ディスク数が異なる別のクライアントとサーバーをプロビジョニングできます。
+Azure で ElasticSearch サービスを設定するには、[**Azure ARM テンプレート**](../resource-group-overview.md)を使用する方法が最も簡単です。Azure クイックスタート テンプレート リポジトリから、[ElasticSearch 用の包括的なクイックスタート ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/elasticsearch)を利用できます。このテンプレートでは、スケール ユニット (ノードのグループ) に別のストレージ アカウントを使用するので、異なる構成で、接続されているデータ ディスク数が異なる別のクライアントとサーバーをプロビジョニングできます。
 
 この記事では、[Microsoft Patterns & Practices ELK ブランチ](https://github.com/mspnp/semantic-logging/tree/elk/)の **ES-MultiNode** という別のテンプレートを使用します。このテンプレートは使い方が簡単で、既定で HTTP 基本認証で保護たれ ElasticSearch クラスターを簡単に作成できます。次に進む前に、GitHub からお使いのコンピューターに [Microsoft P&P "elk" repo](https://github.com/mspnp/semantic-logging/tree/elk/) をダウンロードしてください (repo をコピーするか、ZIP ファイルをダウンロードします)。ES-MultiNode テンプレートは、同じ名前のフォルダーに格納されています。
 >[AZURE.NOTE]現在、ES-MultiNode テンプレートは関連するスクリプトは ElasticSearch 1.7 リリースをサポートしています。今後、ElasticSearch 2.0 のサポートが追加される予定です。
@@ -240,10 +240,10 @@ ElasticSearch 接続データは、サービス構成ファイル (PackageRoot\\
 ![PartyCluster アプリケーション イベントを表示する Kibana][2]
 
 ## 次のステップ
-- [Service Fabric サービスの診断と監視](service-fabric-diagnose-monitor-your-service-index.md)
+- [Service Fabric サービスの診断と監視](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/listener-lib-references.png
 [2]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/kibana.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

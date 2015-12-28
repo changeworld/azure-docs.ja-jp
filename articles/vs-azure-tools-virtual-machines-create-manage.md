@@ -1,11 +1,11 @@
 <properties
-   pageTitle="Visual Studio での Azure Virtual Machines の作成と管理"
+   pageTitle="Visual Studio での Azure Virtual Machines の作成と管理 | Microsoft Azure"
    description="Visual Studio での Azure Virtual Machines の作成と管理"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags
    ms.service="virtual-machines"
    ms.devlang="multiple"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="09/30/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # Visual Studio での Azure Virtual Machines の作成と管理
 
@@ -177,4 +177,4 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
 仮想マシンの作成の詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)」および「[Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](virtual-machines-windows-tutorial.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

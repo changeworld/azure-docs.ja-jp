@@ -101,6 +101,7 @@ Azure Storage の詳細については、次のリソースをご覧ください
 * [.NET から BLOB Storageを使用する方法](storage-dotnet-how-to-use-blobs.md)
 * [.NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md)
 * [.NET からキュー ストレージを使用する方法](storage-dotnet-how-to-use-queues.md)
+* [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 * [Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
 * [Azure Storage Client Library](https://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
 * [Azure Storage REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
@@ -108,4 +109,4 @@ Azure Storage の詳細については、次のリソースをご覧ください
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

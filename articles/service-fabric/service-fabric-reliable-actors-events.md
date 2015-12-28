@@ -1,6 +1,6 @@
 <properties
-   pageTitle="高信頼アクターのイベント"
-   description="Service Fabric 高信頼アクターのイベントの概要"
+   pageTitle="Reliable Actors のイベント | Microsoft Azure"
+   description="Service Fabric Reliable Actors のイベントの概要"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -72,4 +72,4 @@ var ev = GetEvent<IGameEvents>();
 ev.GameScoreUpdated(Id.GetGuidId(), State.Status.Score);
 ```
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

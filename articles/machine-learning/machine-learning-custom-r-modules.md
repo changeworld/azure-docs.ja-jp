@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="tbd" 
-	ms.date="07/29/2015" 
+	ms.date="12/11/2015" 
 	ms.author="bradsev;ankarloff" />
 
 
@@ -92,7 +92,7 @@ XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値
 
 Machine Learning ワークスペースにモジュールを登録するには、Machine Learning Studio でワークスペースに移動します。下部にある **[+新規]** ボタンをクリックし、**[モジュール] -> [zip パッケージから]** を選択して新しい Custom Add Rows モジュールをアップロードします。
 
-![](http://i.imgur.com/RFJhCls.png)
+![Zip のアップロード](./media/machine-learning-custom-r-modules/upload-from-zip-package.png)
 
 これで、**Machine Learning** の実験で Custom Add Rows モジュールにアクセスできるようになります。
 
@@ -152,7 +152,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 
 カスタム R モジュールでは、zip ファイルは自動的に R 作業ディレクトリに展開されるので、Zip ポートの ID は R 関数のどのパラメーターとも一致する必要はありません。
 
-**入力の規則**:
+**入力の規則:**
 
 * **Input** 要素の **id** 属性の値には、有効な R 変数名を指定する必要があります。
 * **Input** 要素の **id** 属性の値は、64 文字以内で指定する必要があります。
@@ -209,7 +209,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
       <Description>View the R console graphics device output.</Description>
     </Output>
 	
-**出力の規則**:
+**出力の規則:**
 
 * **Output** 要素の **id** 属性の値には、有効な R 変数名を指定する必要があります。
 * **Output** 要素の **id** 属性の値は、32 文字以内で指定する必要があります。
@@ -363,4 +363,4 @@ R スクリプトの実行環境では、**Execute R Script** モジュールと
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/11/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # 予約済み IP の概要
@@ -41,7 +41,7 @@ IP アドレスが変更されないようにするには、IP アドレスを�
 
 予約済み IP アドレスは、使用する前にサブスクリプションに追加する必要があります。*Central US* 地域で使用できるパブリック IP アドレスのプールから予約済み IP を作成するには、次の PowerShell コマンドを実行します。
 
-	New-AzureReservedIP –ReservedIPName MyReservedIP –Location “Central US”
+	New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
 
 ただし、予約する IP を指定できないのでご注意ください。サブスクリプションで予約された IP アドレスを表示するには、次の PowerShell コマンドを実行し、*ReservedIPName* および *Address* の値を参照してください 。
 
@@ -67,7 +67,7 @@ IP アドレスが予約されると、サブスクリプションとの関連�
 ## 予約済み IP を新しいクラウド サービスに関連付ける方法
 次のスクリプトによって新しい予約済み IP が作成され、*TestService* という名前の新しいクラウド サービスに関連付けられます。
 
-	New-AzureReservedIP –ReservedIPName MyReservedIP –Location “Central US”
+	New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
 	$image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
 	New-AzureVMConfig -Name TestVM -InstanceSize Small -ImageName $image.ImageName `
 	| Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
@@ -119,4 +119,4 @@ IP アドレスが予約されると、サブスクリプションとの関連�
 
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

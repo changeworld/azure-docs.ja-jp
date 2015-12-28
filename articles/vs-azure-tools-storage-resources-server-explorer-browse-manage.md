@@ -1,11 +1,11 @@
 <properties
-   pageTitle="サーバー エクスプローラーを使用したストレージ リソースの参照と管理"
+   pageTitle="サーバー エクスプローラーを使用したストレージ リソースの参照と管理 | Microsoft Azure"
    description="サーバー エクスプローラーを使用したストレージ リソースの参照と管理"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags
    ms.service="storage"
    ms.devlang="multiple"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="08/24/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # サーバー エクスプローラーを使用したストレージ リソースの参照と管理
 
@@ -177,7 +177,7 @@ Azure Table ストレージ サービスは、大量の構造化データを格�
 
 ### テーブル データを表示するには
 
-1. サーバー エクスプローラーで、**[Azure]** ノードを開いてから **[Storage]** ノードを開きます。
+1. サーバー エクスプローラーで **[Azure]** ノードを開き、**[Storage]** ノードを開きます。
 
 1. 目的のストレージ アカウント ノードを開き、**[テーブル]** ノードを開いて、そのストレージ アカウントのテーブルの一覧を表示します。
 
@@ -313,4 +313,4 @@ Azure Table ストレージ サービスは、大量の構造化データを格�
 
 Azure ストレージ サービスの使用方法の詳細については、「[Azure ストレージ サービスへのアクセス](https://msdn.microsoft.com/library/azure/ee405490.aspx)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

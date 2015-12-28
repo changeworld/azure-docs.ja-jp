@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/12/2015" 
+	ms.date="12/14/2015" 
 	ms.author="erikre"/>
 
 # Visual Studio Code を使用した ASP.NET 5 Web アプリの作成
@@ -31,9 +31,7 @@
 * Git をインストールします。これは、[Chocolatey](https://chocolatey.org/packages/git) または [git-scm.com](http://git-scm.com/downloads) のいずれかの場所からインストールできます。Git を初めて使う場合は、[git-scm.com](http://git-scm.com/downloads) を選択し、**Windows コマンド プロンプトから Git を使用する**オプションを選択します。Git をインストールした後、(VS コードからコミットを実行する場合に) チュートリアルの後半で必要になるため、Git のユーザー名と電子メールも設定する必要があります。  
 
 ## ASP.NET 5 と DNX のインストール
-ASP.NET 5 と DNX は、OS X、Linux、Windows 上で動作する最新のクラウドや Web アプリを構築するための、効率の優れた .NET スタックです。ASP.NET 5 および DNX は、一から設計し直され、クラウドにデプロイされるアプリまたはオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
-
-> [AZURE.NOTE]OS X および Linux の ASP.NET 5 および DNX (.NET Execution Environment) は、初期のベータまたはプレビュー状態にあります。
+ASP.NET 5 と DNX (.NET Execution Environment) は、OS X、Linux、Windows 上で動作する最新のクラウドや Web アプリを構築するための、効率の優れた .NET スタックです。ASP.NET 5 および DNX は、一から設計し直され、クラウドにデプロイされるアプリまたはオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
 
 このチュートリアルでは、最新の開発バージョンの ASP.NET 5 と DNX を使用してアプリケーションの構築を開始する方法について説明します。次の手順は、Windows に固有の手順です。OS X、Linux、および Windows 用の詳細なインストール手順については、[ASP.NET 5 と DNX のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページを参照してください。
 
@@ -43,9 +41,9 @@ ASP.NET 5 と DNX は、OS X、Linux、Windows 上で動作する最新のクラ
 
 	DNVM スクリプトがダウンロードされ、ユーザー プロファイル ディレクトリに配置されます。
 
-2. DNVM のインストールを完了するには、Windows を再起動します。
+2. DNVM のインストールを完了するには、**Windows を再起動**します。
 
-3. コマンド プロンプトを開き、次のように入力して、DNVM の場所を確認します。
+	Windows を再起動した後、コマンド プロンプトを開き、以下を入力して、DNVM の場所を確認できます。
 
 		where dnvm
 
@@ -53,11 +51,11 @@ ASP.NET 5 と DNX は、OS X、Linux、Windows 上で動作する最新のクラ
 
 	![dnvm の場所](./media/web-sites-create-web-app-using-vscode/00-where-dnvm.png)
 
-4. これで、DNVM を利用できるようになりました。アプリケーションを実行するには、これを使って DNX をダウンロードする必要があります。コマンド プロンプトで、次のコマンドを実行します。
+3. これで、DNVM を利用できるようになりました。アプリケーションを実行するには、これを使って DNX をダウンロードする必要があります。コマンド プロンプトで、次のコマンドを実行します。
 
 		dnvm upgrade
 
-5. コマンド プロンプトで次のコマンドを実行して、DNVM を確認し、アクティブなランタイムを表示します。
+	コマンド プロンプトで次のコマンドを実行して、DNVM を確認し、アクティブなランタイムを表示します。
 
 		dnvm list
 
@@ -65,9 +63,9 @@ ASP.NET 5 と DNX は、OS X、Linux、Windows 上で動作する最新のクラ
 
 	![DNVM の場所](./media/web-sites-create-web-app-using-vscode/00b-dnvm-list.png)
 
-6. 複数の DNX ランタイムが表示される場合は、コマンド プロンプトで次のコマンドを入力します。これにより、このチュートリアルで後に Web アプリを作成するときに、ASP.NET 5 ジェネレーターによって使用されるものと同じバージョンに、アクティブな DNX ランタイムを設定します。*最新バージョンに設定されている場合は、アクティブなランタイムを変更する必要はありません。*
+	複数の DNX ランタイムが表示されている場合は、コマンド プロンプトで以下 (またはこれ以降のバージョン) を入力してアクティブな DNX ランタイムを設定することを選択できます。このチュートリアルの後半で Web アプリを作成するときに、ASP.NET 5 ジェネレーターによって使用される同じバージョンに設定します。*最新バージョンに設定されている場合は、アクティブなランタイムを変更する必要はありません。*
 
-		dnvm use 1.0.0-beta4 –p
+		dnvm use 1.0.0-update1 –p
 
 > [AZURE.NOTE]OS X、Linux、および Windows 用の詳細なインストール手順については、[ASP.NET 5 と DNX のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページを参照してください。
 
@@ -81,63 +79,57 @@ ASP.NET 5 と DNX は、OS X、Linux、Windows 上で動作する最新のクラ
 
 		npm install -g yo grunt-cli generator-aspnet bower
 
+	> [AZURE.NOTE]npm バージョンが古くなっていること示す警告が表示される場合があります。この警告は、このチュートリアルには影響しません。
+
 3. コマンド プロンプトで次のコマンドを入力して、プロジェクト フォルダーを作成し、アプリをスキャフォールディングします。
 
 		yo aspnet
 
-4. 方向キーを使用して、ASP.NET 5 ジェネレーター メニューから種類として **Web アプリケーション**を選択し、**Enter** キーを押します。
+4. 方向キーを使用して、ASP.NET 5 ジェネレーター メニューから種類として **Web アプリケーション Basic** を選択し、**Enter** キーを押します。
 
 	![Yeoman - ASP.NET 5 ジェネレーター](./media/web-sites-create-web-app-using-vscode/01-yo-aspnet.png)
 
 5. 新しい ASP.NET Web アプリの名前を **SampleWebApp** に設定します。この名前はチュートリアル全体で使用されるため、別の名前を選択する場合は、**SampleWebApp** をすべてその名前に置き換える必要があります。**Enter** キーを押すと、Yeoman によって、**SampleWebApp** という名前の新しいフォルダーと新しいアプリに必要なファイルが作成されます。
 
-6. コマンド プロンプトで次のコマンドを入力して、VS コードを開きます。
+6. コマンド プロンプトで、ディレクトリを新しいプロジェクト フォルダーに変更します。
+
+		cd SampleWebApp
+
+7. また、コマンド プロンプトで、必要な NuGet パッケージをインストールしてアプリケーションを実行し、次のコマンドを入力します。
+
+		dnu restore
+
+8. コマンド プロンプトで次のコマンドを入力して、VS コードを開きます。
 
 		code .
-
-7. VS コードで**[ファイル] > [フォルダーを開く]** を選択し、ASP.NET Web アプリを含むフォルダーを選択します。
-
-	![[フォルダー] ダイアログ ボックスの選択](./media/web-sites-create-web-app-using-vscode/02-open-folder.png)
-
-	VS コードにプロジェクトが読み込まれ、**エクスプローラー** ウィンドウにそのファイルが表示されます。
-
-	![SampleWebApp プロジェクトを表示する VS コード](./media/web-sites-create-web-app-using-vscode/03-vscode-project.png)
-
-8. **[ビュー] > [コマンド パレット]** を選択します。
-
-9. **コマンド パレット** で、次のコマンドを入力します。
-
-		dnx:dnu restore - (SampleWebApp)
-
-	入力を開始すると、一覧に完全なコマンド ラインが表示されます。
-
-	![Restore コマンド](./media/web-sites-create-web-app-using-vscode/04-dnu-restore.png)
-
-	Restore コマンドは、アプリケーションを実行するために必要な NuGet パッケージをインストールします。準備が整うと、コマンド プロンプトに "**復元が完了しました**" と表示されます。
 
 ## ローカルでの Web アプリの実行
 
 Web アプリが作成され、アプリのすべての NuGet パッケージが取得されたため、Web アプリをローカルで実行できます。
 
-1. VS コードの**コマンド パレット**で、次のコマンドを入力してアプリをローカルで実行します。
+1. VS コードの**コマンド パレット**で、次のコマンドを入力して使用可能な実行コマンド オプションを表示します。
 
-		dnx: kestrel - (SampleWebApp, Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.Kestrel --config hosting.ini)
+		dnx: Run Command
 
-	コマンド ウィンドウに "*開始しました*" と表示されます。コマンド ウィンドウに "*開始しました*" と表示されない場合は、VS コードの左下隅にプロジェクトのエラーが示されていないかどうかを確認します。
+	> [AZURE.NOTE]Omnisharp サーバーが実行されていない場合は、起動されます。上のコマンドを再入力します。
+
+	次に、次のコマンドを選択して Web アプリを実行します。
+		
+		dnx web - (SampleWebApp)
+
+	コマンド ウィンドウに、アプリケーションが起動したことが示されます。コマンド ウィンドウにこのメッセージが表示されない場合は、VS コードの左下隅にプロジェクトのエラーが示されていないかどうかを確認します。
 	
-	> [AZURE.NOTE]**コマンド パレット**からコマンドを発行するには、コマンド ラインの先頭に **>** 文字が必要です。また、*project.json* ファイル内の kestrel コマンドの詳細を表示できます。
+	> [AZURE.NOTE]**コマンド パレット**からコマンドを発行するには、コマンド ラインの先頭に **>** 文字が必要です。*project.json* ファイル内の **web** コマンドに関する詳細を表示できます。
 
 2. ブラウザーを開き、次の URL に移動します。
 
 	****http://localhost:5000**
 
-	> [AZURE.NOTE]*project.json* ファイルで指定されている kestrel コマンドは、ローカル アプリの場所を指定するホスティング詳細ファイル (*hosting.ini*) を参照しています。この例では、上記の URL からアプリを表示できます。
-
 	Web アプリの既定のページが次のように表示されます。
 
 	![ブラウザーでのローカル Web アプリ](./media/web-sites-create-web-app-using-vscode/08-web-app.png)
 
-3. ブラウザーを閉じます。コマンド ウィンドウで、**Ctrl + C** キーを押してアプリケーションをシャットダウンするか、コマンド ウィンドウを閉じます。
+3. ブラウザーを閉じます。**コマンド ウィンドウ**で、**Ctrl+C** キーを押してアプリケーションをシャットダウンするか、**コマンド ウィンドウ**を閉じます。
 
 ## Azure ポータルで Web アプリを作成する
 
@@ -145,7 +137,7 @@ Web アプリが作成され、アプリのすべての NuGet パッケージが
 
 1. [Azure ポータル](https://portal.azure.com)にログインします。
 
-2. ポータルの左下にある **[新規]** をクリックします。
+2. ポータルの左上にある **[新規]** をクリックします。
 
 3. **[Web アプリ] > [Web アプリ]** をクリックします。
 
@@ -266,4 +258,4 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 ## 概要
 このチュートリアルでは、VS コードで、Web アプリを作成し、Azure にデプロイする方法を学習しました。VS コードの詳細については、[Visual Studio Code を使用する理由](https://code.visualstudio.com/Docs/)に関する記事をご覧ください。 App Service Web Apps の詳細については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

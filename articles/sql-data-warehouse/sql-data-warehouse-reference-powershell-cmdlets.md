@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="sidneyh"
-   manager="jhubbard"
+   manager="barbkess"
    editor=""/>
 
 <tags
@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="12/15/2015"
    ms.author="twounder;sidneyh;barbkess"/>
 
 # Azure Data Warehouse コマンドレットと REST API の概要
 
 SQL Data Warehouse は、Azure PowerShell コマンドレットまたは REST API を使用して管理できます。
 
-**Azure SQL Database** に対して定義されているコマンドは、**SQL Data Warehouse** に対しても使用されます。最新のリストについては、「[Azure SQL Database Cmdlets (Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/dn546726.aspx)」を参照してください。コマンドレット **Suspend-AzureSqlDatabase** と **Resume-AzureSqlDatabase** (以下参照) は、SQL Data Warehouse 用に追加作成されたものです。
+**Azure SQL Database** に対して定義されているコマンドは、**SQL Data Warehouse** に対しても使用されます。最新のリストについては、「[Azure SQL Database Cmdlets (Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/mt574084.aspx)」を参照してください。コマンドレット **Suspend-AzureSqlDatabase** と **Resume-AzureSqlDatabase** (以下参照) は、SQL Data Warehouse 用に追加作成されたものです。
 
 同様に、**SQL Azure Database** 用の REST API も **SQL Data Warehouse** インスタンスに使用できます。最新のリストについては、「[Azure SQL データベースの操作](https://msdn.microsoft.com/library/azure/dn505719.aspx)」を参照してください。
 
@@ -111,4 +111,4 @@ RestorePointCreationDate |バックアップのスナップショット時間 (r
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

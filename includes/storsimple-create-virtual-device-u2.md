@@ -1,36 +1,39 @@
-#### To create a virtual device
+#### 仮想デバイスを作成するには
 
-1.  In the Azure portal, go to the **StorSimple Manager** service.
+1.  Azure ポータルで **StorSimple Manager** サービスに移動します。
 
-2. Go to the **Devices** page. Click **Create virtual device** at the bottom of the **Devices** page.
+2. **[デバイス]** ページに移動します。**[デバイス]** ページ下部の **[仮想デバイスの作成]** をクリックします。
 
-3. In the **Create Virtual Device dialog box**, specify the following details.
+3. **[仮想デバイスの作成]** ダイアログ ボックスで、次のように詳細を指定します。
 
-     ![StorSimple create virtual device](./media/storsimple-create-virtual-device-u2/CreatePremiumsva1.png)
+     ![StorSimple 仮想デバイスの作成  
+](./media/storsimple-create-virtual-device-u2/CreatePremiumsva1.png)
 
-	1. **Name** – A unique name for your virtual device.
+	1. **[名前]** – 仮想デバイスの一意の名前。
 
 
-	2. **Model** - Choose the model of the virtual device. This field is presented only if you are running Update 2 or later. An 8010 device model offers 30 TB of Standard Storage whereas 8020 has 64 TB of Premium Storage. Specify 8010
-	3.  to deploy item level retrieval  scenarios from backups. Select 8020 to deploy high performance, low latency workloads or used as a secondary device for disaster recovery.
+	2. **[モデル]** - 仮想デバイスのモデルを選択します。このフィールドは、Update 2 以降を実行している場合のみ表示されます。8010 デバイス モデルは 30 TB (テラバイト) の Standard Storage を提供し、8020 は 64 TB の Premium Storage を提供します。バックアップから項目レベルの取得を行うシナリオをデプロイする場合は、8010 を
+	3.  指定します。パフォーマンスが高く、待機時間が短いワークロードをデプロイするか、災害復旧のためのセカンダリ デバイスとして使用する場合は、8020 を選択します。
 	 
-	4. **Version** - Choose the version of the virtual device. If an 8020 device model is selected, then the version field will not be presented to the user. This option is absent if all the physical devices registered with this service are running Update 1 (or later). This field is presented only if you have a mix of pre-Update 1 and Update 1 physical devices registered with the same service. Given the version of the virtual device will determine which physical device you can failover or clone from, it is important that you create an appropriate version of the virtual device. Select:
+	4. **[バージョン]** -仮想デバイスのバージョンを選択します。8020 デバイス モデルを選択した場合、バージョン フィールドはユーザーには表示されません。このサービスに登録されたすべての物理デバイスが Update 1 (またはそれ以降) で実行されている場合、このオプションは表示されません。このフィールドは、Update 1 を適用する前の物理デバイスと Update 1 が適用された物理デバイスが、同じサービスに同時に登録されている場合のみ表示されます。フェールオーバーまたは複製元として有効な物理デバイスは仮想デバイスのバージョンによって決まるので、適切なバージョンの仮想デバイスを作成することが重要です。選択肢:
 
-	   - Version Update 0.3 if you will fail over or DR from a physical device running Update 0.3 or earlier. 
-	   - Version Update 1 if you will fail over or clone from a physical device running Update 1 (or later). 
+	   - バージョン Update 0.3。Update 0.3 以前を実行中の物理デバイスからフェールオーバーまたは DR を行う場合。- 
+	   - バージョン Update 1。Update 1 以降を実行中の物理デバイスからフェールオーバーまたは複製を行う場合。 
 	   
 	
-	5. **Virtual Network** – Specify a virtual network that you want to use with this virtual device. If using Premium Storage (Update 2 or later), you must select a virtual network that is supported with the Premium Storage account. The unsupported virtual networks will be grayed out in the dropdown list. You will be warned if you select an unsupported virtual network. 
+	5. **Virtual Network** – この仮想デバイスで使用する仮想ネットワークを指定します。Premium Storage (Update 2 以降) を使用する場合は、Premium Storage アカウントでサポートされている仮想ネットワークを選択する必要があります。サポートされていない仮想ネットワークは、ドロップダウン リストに淡色表示され、選択できません。サポートされていない仮想ネットワークを選択すると、警告が表示されます。 
 
-	5. **Storage Account for Virtual Device Creation** – Select a storage account to hold the image of the virtual device during provisioning. This storage account should be in the same region as the virtual device and virtual network. It should not be used for data storage by either the physical or the virtual device. By default, a new storage account will be created for this purpose. However, if you know that you already have a storage account that is suitable for this use, you can select it from the list. If creating a premium virtual device, the dropdown list will only display Premium Storage accounts. 
+	5. **仮想デバイスの作成に使用するストレージ アカウント** – プロビジョニング中に仮想デバイスのイメージを保持するストレージ アカウントを選択します。このストレージ アカウントは、仮想デバイスおよび仮想ネットワークと同じリージョンに存在する必要があります。物理デバイスまたは仮想デバイスのデータ保管にこのストレージ アカウントを使用することは避けてください。既定では、この目的に使用する新しいストレージ アカウントが作成されます。ただし、この用途に適したストレージ アカウントが既にあることがわかっている場合は、一覧からそのアカウントを選択してください。Premium 仮想デバイスを作成する場合、ドロップダウン リストには Premium Storage アカウントだけが表示されます。
 
-    	>[AZURE.NOTE] The virtual device can only work with the Azure storage accounts. Other cloud service providers such as Amazon, HP, and OpenStack (that are supported for the physical device) are not supported for the StorSimple virtual device.
+    	>[AZURE.NOTE]仮想デバイスは Azure ストレージ アカウントでのみ使用できます。Amazon、HP、OpenStack などの他のクラウド サービス プロバイダーは StorSimple 仮想デバイスではサポートされません (物理デバイスではサポートされます)。
 	
-	1. Click the check mark to indicate that you understand that the data stored on the virtual device will be hosted in a Microsoft datacenter. When you use only a physical device, your encryption key is kept with your device; therefore, Microsoft cannot decrypt it. 
+	1. 仮想デバイスに格納するデータがマイクロソフトのデータセンターでホストされることに同意する旨のチェック ボックスをオンにします。物理デバイスのみを使用する場合は、暗号化キーがご利用のデバイスに保管されるため、マイクロソフトが暗号化を解除することはできません。
 	 
-		When you use a virtual device, both the encryption key and the decryption key are stored in Microsoft Azure. For more information, see [security considerations for using a virtual device](storsimple-security/#storsimple-virtual-device-security).
-	2. Click the check icon to create the virtual device. The device may take around 30 minutes to be provisioned.
+		仮想デバイスを使用する場合、暗号化キーと復号化キーの両方が Microsoft Azure に保管されます。詳細については、「[仮想デバイスを使用するためのセキュリティに関する考慮事項](storsimple-security/#storsimple-virtual-device-security)」を参照してください。
+	2. チェック アイコンをクリックして仮想デバイスを作成します。デバイスは、プロビジョニングされるまで約 30 分かかることがあります。
 
-	![StorSimple virtual device creating stage](./media/storsimple-create-virtual-device-u2/StorSimple_VirtualDeviceCreating1M.png)
+	![StorSimple 仮想デバイスの作成ステージ](./media/storsimple-create-virtual-device-u2/StorSimple_VirtualDeviceCreating1M.png)
 
     
+
+<!---HONumber=AcomDC_1217_2015-->

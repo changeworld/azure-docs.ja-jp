@@ -3,7 +3,7 @@
 	description="Azure SQL Database でデータとデータベースをコピー、移動、および移行するための簡単な手順。"
 	services="sql-database"
 	documentationCenter=""
-	authors="dalechen"
+	authors="v-shysun"
 	manager="msmets"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/10/2015"
-	ms.author="daleche"/>
+	ms.date="12/11/2015"
+	ms.author="v-shysun"/>
 
 # サーバー間、サブスクリプション間、および Azure の内外にデータベースを移動する
 ##同じサブスクリプション内の別のサーバーにデータベースを移動するには
@@ -29,4 +29,4 @@
 ## Azure の外部で使用するためにデータベースのコピーを作成するには
 - [BACPAC ファイルをエクスポートします。](sql-database-export.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

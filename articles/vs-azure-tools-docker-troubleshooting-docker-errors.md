@@ -3,9 +3,9 @@
    description="Visual Studio を使用して、Windows 上で Web アプリを作成し、Docker にデプロイする際に発生する問題のトラブルシューティングを行います。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="dotnet"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="08/20/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # Docker エラーのトラブルシューティング
 
@@ -52,7 +52,7 @@ Visual Studio で Docker ホストを作成する際に独自の証明書を使�
 
 ## Docker コンテナーへの発行には PowerShell 3.0 が必要である
 
-オペレーティング システムが Windows 7 または Windows Server 2008 の場合は、Docker コンテナーに発行する前に、PowerShell 3.0 をインストールする必要があります。PowerShell 3.0 は、[Windows Management Framework 3.0](https://www.microsoft.com/ja-jp/download/details.aspx?id=34595) に含まれています。インストール後にシステムを再起動する必要があります。
+オペレーティング システムが Windows 7 または Windows Server 2008 の場合は、Docker コンテナーに発行する前に、PowerShell 3.0 をインストールする必要があります。PowerShell 3.0 は、[Windows Management Framework 3.0](https://www.microsoft.com/ja-JP/download/details.aspx?id=34595) に含まれています。インストール後にシステムを再起動する必要があります。
 
 別の回避策として、PowerShell 3.0 が既に組み込まれている Windows 8.1 または Windows 10 にアップグレードすることができます。
 
@@ -100,4 +100,4 @@ A: 1 つの方法は、サーバーで OpenSSL を使用して、CA、サーバ�
 
 別のオプションは、Windows 用の OpenSSL をダウンロードして、必要な証明書とキーを生成してから、CA、サーバーの証明書、およびキーを Linux コンピューターにアップロードすることです。Docker へのセキュリティで保護された接続の確立の詳細については、[HTTPS による Docker デーモン ソケットの保護](https://docs.docker.com/articles/https/)に関するページを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Application Insights と Azure 診断を使用したクラウド サービスの問題のトラブルシューティング | Microsoft Azure"
+   pageTitle="Application Insights を使用したクラウド サービスのトラブルシューティング | Microsoft Azure"
    description="Application Insights を使用して Azure 診断データを処理することで、クラウド サービスの問題をトラブルシューティングする方法について説明します。"
    services="cloud-services"
    documentationCenter=".net"
@@ -12,11 +12,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/16/2015"
+   ms.date="12/15/2015"
    ms.author="saurabh" />
 
 
-# Application Insights と Azure 診断を使用したクラウド サービスの問題のトラブルシューティング
+# Application Insights を使用したクラウド サービスのトラブルシューティング
 
 [Azure SDK 2.8](https://azure.microsoft.com/downloads/) と Azure 診断の拡張機能 1.5 を使用して、クラウド サービスの Azure 診断データを Application Insights に直接送信できるようになりました。アプリケーション ログ、Windows イベント ログ、ETW ログ、パフォーマンス カウンターなど、Azure 診断によって収集されるさまざまな種類のログを Application Insights に送信し、Application Insights ポータル UI で視覚化できます。Application Insights SDK と共に使用すると、Azure 診断のシステムやインフラストラクチャ レベルのデータだけでなくアプリケーションから取得したメトリックとログの洞察を得ることができます。
   
@@ -78,4 +78,4 @@ Application Insights で Azure 診断データを表示するには:
 [5]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/metrics-explorer-custom-metrics.png
 [6]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/search-windowseventlog-error.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/13/2015"
+	ms.date="12/15/2015"
 	ms.author="saurabh"/>
 
 # Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルの使用について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
 Azure 診断の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。Azure リソース マネージャー テンプレートの一部として拡張機能を含めることによって、仮想マシンでこれらの機能を有効にすることができます。仮想マシン テンプレートの一部として拡張機能を含める方法については、「[VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成](virtual-machines-extensions-authoring-templates.md)」を参照してください。この記事では、Windows 仮想マシン テンプレートに Azure 診断の拡張機能を追加する方法について説明します。
   
@@ -119,7 +119,9 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
         "wadmetricsresourceid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name , '/providers/', 'Microsoft.Compute/virtualMachines/')]",
         "wadcfgxend": ""><MetricAggregation scheduledTransferPeriod="PT1H"/><MetricAggregation scheduledTransferPeriod="PT1M"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>"
 
-上記の構成のメトリック定義の xml ノードは、xml の *PerformanceCounter* で先に定義されているパフォーマンス カウンターを集計して格納する方法を定義するため、重要な構成要素です。このメトリックにより、何によって Azure ポータルのグラフとアラートが起動するかが決まるので、ポータルに監視データを表示する場合はメトリックを構成に含めることが重要です。
+上記の構成のメトリック定義の xml ノードは、xml の *PerformanceCounter* で先に定義されているパフォーマンス カウンターを集計して格納する方法を定義するため、重要な構成要素です。
+
+> [AZURE.IMPORTANT]これらのメトリックは、Azure ポータルでのグラフやアラートの監視を促進します。Azure ポータルで VM 監視データを表示するには、*resourceID* および **MetricAggregation** のある **Metrics** ノードを VM の診断構成に含める必要があります。
 
 メトリックの定義に関する xml の例を次に示します。
 
@@ -130,18 +132,19 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 
 *resourceID* 属性はサブスクリプションで仮想マシンを一意に識別します。テンプレートがデプロイしているサブスクリプションとリソース グループに基づいて値を自動的に更新するように、subscription() と resourceGroup() 関数を使用してください。
 
-ループ内で複数の Virtual Machines を作成している場合は、各仮想マシンを正しく区別するため、copyIndex() 関数に *resourceID* の値を入力する必要があります。これをサポートするために、*xmlCfg* の値を次のように更新することができます。
+ループ内で複数の Virtual Machines を作成している場合は、各 VM を正しく区別するため、copyIndex() 関数に *resourceID* の値を入力する必要があります。これをサポートするには、*xmlCfg* の値を次のように更新します。
 
 	"xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), concat(parameters('vmNamePrefix'), copyindex()), variables('wadcfgxend')))]", 
 
-
 *PT1H* と *PT1M* の MetricAggregation 値は、1 分間以上の集計と 1 時間以上の集計を表します。
+
+## ストレージの WADMetrics テーブル
 
 上記のメトリックの構成によって、次の名前付け規則による診断ストレージ アカウントのテーブルが生成されます。
 
 - **WADMetrics**: すべての WADMetrics テーブルの標準プレフィックス
 - **PT1H** または **PT1M**: テーブルに 1 時間または 1 分間以上の集計データが含まれることを示します
-- **P10D**: テーブルがデータの収集を開始してから 10 日間のデータが、テーブルに含まれることを示します
+- **P10D**: テーブルがデータの収集を開始してから 10 日間のデータがテーブルに含まれることを示します
 - **V2S**: 文字列定数
 - **yyyymmdd**: テーブルがデータの収集を開始した日付
 
@@ -150,7 +153,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 各 WADMetrics テーブルには次の列が含まれます。
 
 - **PartitionKey**: Partitionkey は *resourceID* の値に基づいて構築され、VM リソースを一意に識別します。例: 002Fsubscriptions:<subscriptionID>: 002FresourceGroups:002F<ResourceGroupName>: 002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>  
-- **RowKey**：<Descending time tick>:<Performance Counter Name> の形式に従います。降順の時間ティック計算は、最大時間ティックから集計期間の開始時間を引いたものです。たとえば、サンプル期間が 2015 年 11 月 10 日に開始し、00:00 UTC の場合、計算は DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks) になります。メモリで使用可能なバイトのパフォーマンス カウンターの場合、行キーは2519551871999999999\_\_:005CMemory:005CAvailable:0020Bytes のようになります。
+- **RowKey**: <Descending time tick>:<Performance Counter Name> の形式に従います。降順の時間ティック計算は、最大時間ティックから集計期間の開始時間を引いたものです。たとえば、サンプル期間が 2015 年 11 月 10 日に開始し、00:00 UTC の場合、計算は DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks) になります。メモリで使用可能なバイトのパフォーマンス カウンターの場合、行キーは2519551871999999999\_\_:005CMemory:005CAvailable:0020Bytes のようになります。
 - **CounterName**: パフォーマンス カウンターの名前。これは、xml 構成に定義されている *counterSpecifier* と一致します。
 - **Maximum**: 集計期間にわたるパフォーマンス カウンターの最大値。
 - **Minimum**: 集計期間にわたるパフォーマンス カウンターの最小値。
@@ -165,4 +168,4 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 - [Azure PowerShell](virtual-machines-deploy-rmtemplates-powershell.md) または [Azure コマンド ライン](virtual-machines-deploy-rmtemplates-powershell.md)を使用してリソース マネージャー テンプレートをデプロイします
 - [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)について確認します
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

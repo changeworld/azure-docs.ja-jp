@@ -3,9 +3,9 @@
    description="Visual Studio を使用して、Azure クラウド サービスに Web アプリケーションを移行および発行する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="dotnet"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="09/30/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # 方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行
 
@@ -151,7 +151,7 @@ Visual Studio から Azure に Web アプリケーションを移行および発
     |---|---|---|
     |ASP.NET Web アプリケーション|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|**[Microsoft Azure のアクティビティ ログ]** の **[デプロイメント]** タブに表示される URL ハイパーリンクを選択して、ブラウザーでスタート ページを読み込みます。|
     |ASP.NET MVC 2 Web アプリケーション|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|**[Microsoft Azure のアクティビティ ログ]** の **[デプロイメント]** タブに表示される URL ハイパーリンクを選択して、ブラウザーでスタート ページを読み込みます。|
-    |ASP.NET MVC 3 Web アプリケーション|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|**[Microsoft Azure のアクティビティ ログ]** の **[デプロイメント]** タブに表示される URL ハイパーリンクを選択して、ブラウザーでスタート ページを読み込みます。|
+    |ASP.NET MVC 3 Web アプリケーション|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順にクリックします (または、キーボードの **F5** キーを押します)。|**[Microsoft Azure のアクティビティ ログ]** の **[デプロイメント]** タブに表示される URL ハイパーリンクを選択して、ブラウザーでスタート ページを読み込みます。|
     |ASP.NET MVC 4 Web アプリケーション|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|**[Microsoft Azure のアクティビティ ログ]** の **[デプロイメント]** タブに表示される URL ハイパーリンクを選択して、ブラウザーでスタート ページを読み込みます。|
     |空の ASP.NET Web アプリケーション|Web プロジェクトのスタート ページとして設定したアプリケーションに .aspx ページを追加する必要があります。次にメニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|アプリケーションで既定の .aspx ページを使用している場合は、**[Microsoft Azure のアクティビティ ログ]** の **[デプロイメント]** タブに表示される URL ハイパーリンクを選択すると、ブラウザーでそのページが読み込まれます。別の .aspx ページを使用している場合は、`<url for deployment>/<name of page>.aspx` 形式の URL を使用して、そのページに移動する必要があります。|
     |Silverlight アプリケーション|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|`<url for deployment>/<name of page>.aspx` 形式の URL を使用して、アプリケーションの特定のページに移動する必要があります。|
@@ -208,4 +208,4 @@ Azure に Web アプリケーションを発行するには、次の表に記載
 ## 次のステップ
 発行の詳細については、「[Visual Studio からの Azure アプリケーションの発行またはデプロイの準備](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)」を参照してください。また、「[名前付き認証資格情報の設定](vs-azure-tools-setting-up-named-authentication-credentials.md)」も確認してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

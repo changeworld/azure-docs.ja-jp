@@ -20,7 +20,6 @@
 # 基幹業務アプリケーションのワークロード フェーズ 4: Web サーバーを構成する
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
- 
 
 高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、Web サーバーを構築して基幹業務アプリケーションをロードします。
 
@@ -30,11 +29,21 @@
 
 ASP.NET アプリケーション、または Windows Server 2012 R2 のインターネット インフォメーション サービス (IIS) 8 でホストできる古いアプリケーションをデプロイできる、2 つの Web サーバー仮想マシンがあります。
 
-> [AZURE.NOTE]この記事には、Azure PowerShell プレビュー 1.0 のコマンドが使用されています。Azure PowerShell 0.9.8 以前のバージョンでこれらのコマンドを実行するには、"-AzureRM" のすべてのインスタンスを "-Azure" に置き換え、すべてのコマンド実行の前に **Switch-AzureMode AzureResourceManager** コマンドを追加します。詳細については、「[Azure PowerShell 1.0 プレビュー](https://azure.microsoft.com/blog/azps-1-0-pre/)」を参照してください。
-
 最初に、基幹業務アプリケーションへのクライアント トラフィックが、Azure によって 2 つの Web サーバーに均等に配分されるように、内部ロード バランサーを構成します。この場合、名前とサブネットのアドレス空間 (Azure 仮想ネットワークに割り当てたアドレス空間) から割り当てられた独自の IP アドレスで構成される内部負荷分散インスタンスを指定する必要があります。
 
-変数を入力し、以下の一連のコマンドを実行します。
+> [AZURE.NOTE]次のコマンド セットは、Azure PowerShell 1.0 以降を使用します。詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
+
+< and > の文字を削除して、各変数の値を指定します。次の Azure PowerShell コマンド セットでは、以下の表の値を使用します。
+
+- 表 M (仮想マシン)
+- 表 V (仮想ネットワーク設定)
+- 表 S (サブネット)
+- 表 ST (ストレージ アカウント)
+- 表 A (可用性セット)
+
+表 M は[フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) で、V、S、ST、A の各表は[フェーズ 1](virtual-machines-workload-high-availability-LOB-application-phase1.md) で定義したものです。
+
+適切な値をすべて指定したら、Azure PowerShell コマンド プロンプトでそのブロックを実行します。
 
 	# Set up key variables
 	$rgName="<resource group name>"
@@ -53,15 +62,7 @@ ASP.NET アプリケーション、または Windows Server 2012 R2 のインタ
 
 次に、基幹業務アプリケーションの完全修飾ドメイン名 (lobapp.corp.contoso.com など) を、内部ロード バランサーに割り当てられている IP アドレス (前の Azure PowerShell コマンド ブロックの $privIP の値) に解決する DNS アドレス レコードを、組織の内部 DNS インフラストラクチャに追加します。
 
-次に、PowerShell コマンドの次のブロックを使用して、2 つの Web サーバーの仮想マシンを作成します。この PowerShell コマンド セットでは、次の表の値を使用します。
-
-- 表 M (仮想マシン)
-- 表 V (仮想ネットワーク設定)
-- 表 S (サブネット)
-- 表 ST (ストレージ アカウント)
-- 表 A (可用性セット)
-
-表 M は[フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) で、V、S、ST、A の各表は[フェーズ 1](virtual-machines-workload-high-availability-LOB-application-phase1.md) で定義したものです。
+次に、PowerShell コマンドの次のブロックを使用して、2 つの Web サーバーの仮想マシンを作成します。
 
 適切な値をすべて指定したら、Azure PowerShell プロンプトでそのブロックを実行します。
 
@@ -99,7 +100,7 @@ ASP.NET アプリケーション、または Windows Server 2012 R2 のインタ
 	$vmSize="<Table M – Item 7 - Minimum size column>"
 	$nic=New-AzureRMNetworkInterface -Name ($vmName + "-NIC") -ResourceGroupName $rgName -Location $locName -Subnet $backendSubnet -LoadBalancerBackendAddressPool $webLB.BackendAddressPools[0]
 	$vm=New-AzureRMVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avset.Id
-	$cred=Get-Credential -Message "Type the name and password of the local administrator account for the second second SQL Server computer." 
+	$cred=Get-Credential -Message "Type the name and password of the local administrator account for the second SQL Server computer." 
 	$vm=Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
 	$vm=Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
 	$vm=Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id
@@ -148,18 +149,6 @@ ASP.NET アプリケーション、または Windows Server 2012 R2 のインタ
 
 ## 次のステップ
 
-このワークロードを引き続き構成する場合は、「[フェーズ 5: 可用性グループを作成してアプリケーション データベースを追加する](virtual-machines-workload-high-availability-LOB-application-phase5.md)」に進んでください。
+- [フェーズ 5](virtual-machines-workload-high-availability-LOB-application-phase5.md) を使用して、このワークロードの構成を完了します。
 
-## その他のリソース
-
-[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-workload-high-availability-LOB-application-overview.md)
-
-[基幹業務アプリケーションのアーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)
-
-[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
-
-[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
-
-[Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
-
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -35,7 +35,7 @@ Fabrikam の航空機のエンジンは、飛行中のエンジンの状態を�
 
 予測的なメンテナンスの潜在力を実現するためにお客様が必要とする機能を [Azure IoT Suite][lnk_iot_suite] がどのように提供しているかについては、この[インフォグラフィック][lnk_infographic]を参照してください。
 
-IoT Suite サービスを通じて収集されたデバイスのテレメトリを使用するこれらの機能を示し、Web アプリケーションのユーザーに見えるようにするために、ソリューションでは、テンプレートとして利用可能な既存の Azure Machine Learning モデルを使用しています。Microsoft は、回帰モデルを作成し、テンプレートの一式、データ<sup>[1]</sup>、およびステップ バイ ステップ ガイダンスを[こちら][lnk_regression_model]で公開しています。
+IoT Suite サービスを通じて収集されたデバイスのテレメトリを使用するこれらの機能を示し、Web アプリケーションのユーザーに見えるようにするために、ソリューションでは、テンプレートとして利用可能な既存の Azure Machine Learning モデルを使用しています。Microsoft は、[回帰モデル][lnk_regression_model]を作成し、テンプレートの一式、データ<sup>[1]</sup>、およびステップ バイ ステップ ガイダンスを公開しています。
 
 Azure IoT の予測的なメンテナンスの構成済みのソリューションでは、このテンプレートから作成された回帰モデルを使用しています。このモデルは、Azure サブスクリプションにデプロイされ、発行された API を介して公開されます。ソリューションには、トレーニング済みのモデルから正確な結果を提供する、4 つのエンジン (合計 100) および 4 つのセンサー (合計 21) のデータ ストリームを示すテスト データのサブセットが含まれます。
 
@@ -55,4 +55,4 @@ Azure IoT が予測的なメンテナンスのシナリオを実現する方法�
 [lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3
 [lnk_capture_value]: http://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

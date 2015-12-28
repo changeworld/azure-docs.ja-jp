@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Web ジョブ プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス) | Microsoft Azure"
-	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後の、Azure Web ジョブ プロジェクトの変更点について説明します。" 
+	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後の、Azure Web ジョブ プロジェクトの変更点について説明します。"
 	services="storage"
 	documentationCenter=""
 	authors="TomArcher"
 	manager="douge"
-	editor="tglee"/>
+	editor=""/>
 
 <tags
 	ms.service="storage"
@@ -13,15 +13,10 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/03/2015"
+	ms.date="12/16/2015"
 	ms.author="tarcher"/>
 
 # Web ジョブ プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス)
-
-> [AZURE.SELECTOR]
-> - [Getting Started](vs-storage-webjobs-getting-started-blobs.md)
-> - [What Happened](vs-storage-webjobs-what-happened.md)
-
 
 ## リファレンスの追加
 
@@ -41,4 +36,4 @@ Visual Studio プロジェクトで Azure Storage の NuGet パッケージが�
 
 詳細については、[Azure WebJobs の推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)に関するページをご覧ください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

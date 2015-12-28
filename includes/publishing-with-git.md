@@ -60,7 +60,7 @@ Web Apps では、さまざまなプログラミング言語で作成された�
 
 1. [Azure ポータル]にログインします。
 
-2. Web アプリのブレードで、**[デプロイ]** セクションにスクロールし、**[継続的なデプロイの設定]** をクリックします。**[ソースの選択]** をクリックし、**[ローカル Git リポジトリ]** をクリックして **[OK]** をクリックします。
+2. Web アプリのブレードで、**[設定]、[継続的なデプロイ]** の順にクリックします。**[ソースの選択]** をクリックし、**[ローカル Git リポジトリ]** をクリックして **[OK]** をクリックします。
 
 	![ローカルの Git リポジトリ](./media/publishing-with-git/azure1-local-git.png)
 
@@ -76,7 +76,7 @@ Web Apps では、さまざまなプログラミング言語で作成された�
 
 次に示している手順に従って、ローカル Git を使用して Web アプリを Azure に発行します。
 
-1. Web アプリのブレードの [デプロイ] セクションで、**[デプロイが見つかりませんでした]** をクリックします。
+1. Web アプリのブレードで、**[設定]、[プロパティ]** の順にクリックし、**[Git の URL]** を確認します。
 
 	![](./media/publishing-with-git/azure3-repo-details.png)
 
@@ -138,7 +138,7 @@ GitHub、CodePlex、BitBucket からファイルを展開するには、これ�
 
 1. まず、継続的なデプロイ用に選択したリポジトリに Web アプリのファイルを配置します。
 
-2. ポータルの Web アプリのブレードで、**[デプロイ]** セクションにスクロールし、**[継続的なデプロイの設定]** をクリックします。**[ソースの選択]** をクリックし、(たとえば) **[GitHub]** をクリックします。
+2. ポータルの Web アプリのブレードで、**[設定]、[継続的な配信]** の順にクリックします。**[ソースの選択]** をクリックし、(たとえば) **[GitHub]** をクリックします。
 
 	![](./media/publishing-with-git/azure6-setup-github.png)
 	
@@ -192,11 +192,11 @@ Visual Studio ソリューションを Web Apps にプッシュする手順は�
 
 ## 継続的なデプロイの無効化
 
-継続的なデプロイメントは、**[デプロイ]** ブレードから無効にできます。Web アプリのブレードの **[デプロイ]** セクションで、**[アクティブなデプロイ]** をクリックします。次に、**[切断]** をクリックします。
+継続的なデプロイメントは、**[デプロイ]** ブレードから無効にできます。Web アプリのブレードで、**[設定]、[継続的なデプロイ]** の順にクリックします。次に、**[切断]** をクリックします。
 
 ![git-DisconnectFromGitHub](./media/publishing-with-git/azure5-disconnect.png)
 
-別のソースからの発行を設定する場合は、確認メッセージで **[はい]** を選択した後、Web アプリのブレードに戻り、**[継続的なデプロイの設定]** をクリックできます。
+別のソースからの発行を設定する場合、確認メッセージで **[はい]** を選択した後、Web アプリのブレードに戻り、**[設定]、[継続的なデプロイ]** の順にクリックします。
 
 ## <a id="Step8"></a>トラブルシューティング
 
@@ -213,7 +213,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: ホスト 'hostname' を解決できませんでした
+**症状**: Couldn't resolve host 'hostname'
 
 **原因**: このエラーは、"azure" リモートを作成するときに入力したアドレス情報が間違っている場合に発生します。
 
@@ -221,7 +221,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: refs がなく、何も指定されていません。何も処理を行いません。'master' などの分岐を指定する必要があるものと思われます.
+**症状**: No refs in common and none specified; doing nothing.Perhaps you should specify a branch such as 'master'.
 
 **原因**: このエラーは、git push 操作を実行するときに分岐を指定せず、Git で使用される push.default 値を設定していない場合に発生します。
 
@@ -231,7 +231,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: src refspec [branchname] と一致するものがありません。
+**症状**: src refspec [branchname] does not match any.
 
 **原因**: このエラーは、"azure" リモートの master 以外の分岐にプッシュしようとした場合に発生します。
 
@@ -297,4 +297,4 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 [Using Dropbox to Share Git Repositories (Dropbox を使用した Git リポジトリの共有)]: https://gist.github.com/trey/2722927
 [Visual Studio Team Services を使用した Azure への継続的な配信]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

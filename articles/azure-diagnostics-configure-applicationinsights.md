@@ -7,12 +7,12 @@
    manager=""
    editor="" />
 <tags
-   ms.service="multiple"
+   ms.service="application-insights"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/16/2015"
+   ms.date="12/15/2015"
    ms.author="saurabh" />
 
 # Application Insights にデータを送信するための Azure 診断の構成
@@ -101,4 +101,4 @@ Application Insights にすべてのエラー (**DiagnosticMonitorConfiguration*
 - [PowerShell](cloud-services-diagnostics-powershell.md) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。 
 - [Visual Studio](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。 
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

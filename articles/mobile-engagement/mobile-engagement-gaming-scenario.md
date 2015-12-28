@@ -1,6 +1,6 @@
-	<properties 
-	pageTitle="Azure Mobile Engagement implementation for Gaming App"
-	description="Gaming app scenario to implement Azure Mobile Engagement" 
+<properties 
+	pageTitle="ゲーム アプリでの Azure Mobile Engagement の実装"
+	description="Azure Mobile Engagement を実装するためのゲーム アプリのシナリオ" 
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
 	authors="piyushjo"
@@ -22,7 +22,7 @@
 
 ゲームのスタートアップが、新しい釣りベースのロールプレイング/戦略ゲーム アプリを立ち上げました。このゲームは発売から 6 か月が経過しています。ゲームは大成功し、数百万ものダウンロードがあり、他のスタートアップのゲーム アプリと比べ、リテンション期間が非常に長くなっています。四半期ごとのレビュー会議で、関係者はユーザー 1 人あたりの平均収益 (ARPU) を向上させる必要があることに同意しました。特別プランとしてゲーム内のプレミアム パッケージが提供されています。このゲーム パックにより、ユーザーはゲームで使用する釣り糸やルアーなどの道具の外観や性能をアップグレードできるようになります。しかし、パッケージの売上は非常に低いです。そこで、分析ツールを使用してカスタマー エクスペリエンスを分析し、セグメント化を細分化して売上を向上させるエンゲージメント プログラムを開発することにしました。
 
-[Azure Mobile Engagement - 概要とベスト プラクティス](mobile-engagement-getting-started-best-practices.md)に基づき、エンゲージメント戦略を構築します。
+「[Azure Mobile Engagement - 概要とベスト プラクティス](mobile-engagement-getting-started-best-practices.md)」に基づき、エンゲージメント戦略を構築します。
 
 ##目標と KPI
 
@@ -61,7 +61,7 @@ IT チームからの推奨事項に基づき、次の質問に答えるため�
 * レベル 20 をクリアしたユーザーは週に $10 以上費やすようになる。
 * ユーザーは、レベル 16、24、および 32 でプレミアム パッケージを購入する傾向がある。
 
-この分析により、モバイル プロジェクト ディレクターは、アプリの売上を強化するための特定のプッシュ通知シーケンスを作成することにしました。彼は、スタート時プログラム、セールス プログラムおよび非アクティブ プログラムを呼び出す 3 つのプッシュ シーケンスを作成します。詳しくは、[プレイブック](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks) ![][1]を参照してください。
+この分析により、モバイル プロジェクト ディレクターは、アプリの売上を強化するための特定のプッシュ通知シーケンスを作成することにしました。彼は、スタート時プログラム、セールス プログラムおよび非アクティブ プログラムを呼び出す 3 つのプッシュ シーケンスを作成します。詳しくは、[プレイブック](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)を参照してください。![][1]
 
 <!--Image references-->
 
@@ -69,4 +69,4 @@ IT チームからの推奨事項に基づき、次の質問に答えるため�
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

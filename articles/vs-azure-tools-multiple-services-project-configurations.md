@@ -3,9 +3,9 @@
    description="ServiceDefinition.csdef および ServiceConfiguration.cscfg ファイルを変更して、Azure クラウド サービス プロジェクトを構成する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="multiple"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="09/29/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # 複数のサービス構成を使用した Azure プロジェクトの構成
 
@@ -110,4 +110,4 @@ Azure クラウド サービス プロジェクト全体に適用される設定
 |開発|このページでは、ビルド構成の手順や、ビルド後イベントを実行する条件を指定できます。|
 |Web|このページでは、Web サーバーに関連する設定を構成できます。|
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -293,7 +293,8 @@ BLOB を削除するには、コンテナー名と BLOB 名を **BlobRestProxy->
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - PHP ブロック BLOB の例: <https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php>
 - PHP ページ BLOB の例: <https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php>
-
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
+ 
 詳細については、[PHP デベロッパー センター](/develop/php/)も参照してください。
 
 
@@ -305,4 +306,4 @@ BLOB を削除するには、コンテナー名と BLOB 名を **BlobRestProxy->
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

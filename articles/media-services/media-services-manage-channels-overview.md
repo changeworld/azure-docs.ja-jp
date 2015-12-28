@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="11/03/2015"  
+	ms.date="12/15/2015"  
 	ms.author="juliako"/>
 
 #オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
@@ -208,7 +208,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 停止中|停止中|いいえ (遷移状態)
 停止済み|停止済み|いいえ
 
-###クローズド キャプションと広告の挿入 
+##<a id="cc_and_ads"></a>クローズド キャプションと広告の挿入 
 
 次の表は、サポートされているクローズド キャプションや広告挿入の標準を示しています。
 
@@ -269,4 +269,4 @@ SCTE-35|広告の挿入のキューには、デジタル信号システムが使
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

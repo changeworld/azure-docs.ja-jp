@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/07/2015"
+   ms.date="12/09/2015"
    ms.author="joaoma" />
 
 # パフォーマンスによるトラフィック ルーティング方法の構成
@@ -49,4 +49,4 @@
 [Traffic Manager - エンドポイントの無効化または有効化](disable-or-enable-an-endpoint.md)
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -108,10 +108,10 @@ Azure IaaS (Windows) 診断パッケージを実行できないか、実行し�
 
 ## その他のリソース
 
-[Azure VM 拡張機能とその機能](http://msdn.microsoft.com/library/azure/dn606311.aspx)
+[Azure VM 拡張機能とその機能](virtual-machines-extensions-features.md)
 
 [RDP または SSH を使用した Azure Virtual Machines への接続](http://msdn.microsoft.com/library/azure/dn535788.aspx)
 
 [Windows ベースの Azure Virtual Machines へのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

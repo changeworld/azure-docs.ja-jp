@@ -86,7 +86,7 @@ PowerShell コマンドレットを実行し、ExpressRoute 回線を作成す�
 
 PowerShell コマンドレットを実行し、ExpressRoute 回線を削除すると、直後に ExpressRoute 回線の状態が以下のようになります。
 
-	ServiceProviderProvisioningState : Provisioning
+	ServiceProviderProvisioningState : Provisioned
 	Status                           : Disabling
 
 ExpressRoute 回線のプロビジョニングを解除するには、接続プロバイダーに接触する必要があります。**重要:** PowerShell コマンドレットを実行し、回線のプロビジョニングを解除するまで、Microsoft は回線に課金を続けます。
@@ -121,4 +121,4 @@ BGP プロビジョニング状態からは、Microsoft エッジで BGP セッ�
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -42,6 +42,7 @@ Microsoft Azure IoT サービス SDK には、IoT Hub と直接やりとりし�
 次の IoT サービス SDK は GitHub からダウンロードできます。
 
 - [Node.js 用 Azure IoT サービス SDK][]
+- [Java 用 Azure IoT サービス SDK][]
 
 ## オンライン API リファレンス ドキュメント
 
@@ -62,6 +63,7 @@ Azure IoT サービス ライブラリのオンライン API リファレンス 
 [C 用 Azure IoT デバイス SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/c/readme.md
 [.NET 用 Azure IoT デバイス SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/csharp/device/readme.md
 [Java 用 Azure IoT デバイス SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/java/device/readme.md
+[Java 用 Azure IoT サービス SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/java/service/readme.md
 [Node.js 用 Azure IoT デバイス SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/node/device/readme.md
 [Node.js 用 Azure IoT サービス SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/node/service/
 [OS Platforms and hardware compatibility]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
@@ -73,4 +75,4 @@ Azure IoT サービス ライブラリのオンライン API リファレンス 
 [Microsoft Azure IoT device SDK for Node.js (Node.js 用 Microsoft Azure IoT デバイス SDK)]: http://azure.github.io/azure-iot-sdks/node/api_reference/index.html
 [IoT Hub REST]: https://msdn.microsoft.com/library/mt548492.aspx
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

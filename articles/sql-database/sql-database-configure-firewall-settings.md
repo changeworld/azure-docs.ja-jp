@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article" 
-	ms.date="11/13/2015"
+	ms.date="12/16/2015"
 	ms.author="rickbyh"/>
 
 
-# 方法: Azure クラシック ポータルを使用してファイアウォール設定を構成する (SQL Database)
+# 方法: Azure ポータルを使用してファイアウォール設定を構成する (SQL Database)
 
 
 > [AZURE.SELECTOR]
@@ -28,20 +28,20 @@
 - [REST API](sql-database-configure-firewall-settings-rest.md)
 
 
-Microsoft Azure SQL Database では、サーバーとデータベースの接続許可に、ファイアウォール規則を使用します。データベースへのアクセスを選択的に許可するには、Azure SQL Database サーバーのマスター データベースまたはユーザー データベースに、サーバーレベルおよびデータベースレベルのファイアウォール設定を定義します。
+SQL Database では、サーバーとデータベースの接続許可に、ファイアウォール規則を使用します。データベースへのアクセスを選択的に許可するには、SQL Database サーバーのマスター データベースまたはユーザー データベースに、サーバーレベルおよびデータベースレベルのファイアウォール設定を定義します。
 
 > [AZURE.IMPORTANT]Azure のアプリケーションからデータベース サーバーに接続を許可するには、Azure の接続を有効にする必要があります。ファイアウォール規則と Azure からの接続を有効にする方法については、「[Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)」を参照してください。Azure クラウド境界内で接続を行う場合は、追加の TCP ポートをいくつか開かなければならない場合があります。詳細については、「[ADO.NET 4.5 と SQL Database V12 の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」の「**SQL Database V12: 外部と内部**」を参照してください。
 
 
-### 新しい Azure クラシック ポータルでサーバー レベルのファイアウォール規則を管理する
+### Azure ポータルでサーバー レベルのファイアウォール規則を管理する
 
 
 [AZURE.INCLUDE [sql-database-include-ip-address-22-v12portal](../../includes/sql-database-include-ip-address-22-v12portal.md)]
 
 
-## クラシック ポータルでサーバー レベルのファイアウォール規則を管理する 
+## サーバーレベルのファイアウォール規則を管理する 
 
-1. クラシック ポータルから、**[SQL Database]** をクリックします。すべてのデータベースと、対応するサーバーが表示されます。
+1. Azure ポータルで **[SQL データベース]** をクリックします。すべてのデータベースと、対応するサーバーが表示されます。
 2. ページの上部にある **[サーバー]** をクリックします。
 3. ファイアウォール規則を管理するサーバーの横の矢印をクリックします。
 4. ページの上部にある **[構成]** をクリックします。
@@ -62,4 +62,4 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 [2]: ./media/sql-database-configure-firewall-settings/AzurePortalFirewallSettings.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

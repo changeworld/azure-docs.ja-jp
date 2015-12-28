@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/16/2015"
+	ms.date="12/09/2015"
 	ms.author="cephalin"/>
 
 # Azure App Service の Web アプリの高度な構成と拡張機能
@@ -26,7 +26,7 @@
 ##<a id="transform"></a>ApplicationHost.config を使用した高度な構成
 App Service プラットフォームにより、Web アプリ構成の柔軟性と制御を実現できます。IIS の標準的な ApplicationHost.config 構成ファイルは、App Service 内で直接編集することはできませんが、プラットフォームは XML ドキュメント変換 (XDT) に基づく宣言型の ApplicationHost.config 変換モデルをサポートします。
 
-この変換機能を利用するには、XDT の内容を使用して ApplicationHost.xdt ファイルを作成し、Web アプリのルートの直下に配置します。場合によっては、変更を反映するために Web App を再起動する必要があります。
+この変換機能を利用するには、XDT の内容を使用して ApplicationHost.xdt ファイルを作成し、[Kudu Console](https://github.com/projectkudu/kudu/wiki/Kudu-console) 内のサイトのルート (d:\\home\\site) の直下に配置します。場合によっては、変更を反映するために Web App を再起動する必要があります。
 
 PHP 5.4 を使用する Web アプリに新しいカスタム環境変数を追加する方法を、次の applicationHost.xdt サンプルに示します。
 
@@ -46,7 +46,7 @@ PHP 5.4 を使用する Web アプリに新しいカスタム環境変数を追�
 
 変換ステータスと詳細を記録したログ ファイルは、FTP ルートの LogFiles\\Transform で利用できます。
 
-その他のサンプルについては、[https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) を参照してください。
+その他のサンプルについては、[https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples) を参照してください。
 
 **メモ**<br /> `system.webServer` の下にあるモジュールの一覧に所属している要素の削除や並べ替えは実行できませんが、この一覧への追加は可能です。
 
@@ -181,4 +181,4 @@ HTTPS が使用され、".scm" が含まれていることを除き、開発す�
 [TransformSiteSolEx]: ./media/web-sites-transform-extend/TransformSiteSolEx.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

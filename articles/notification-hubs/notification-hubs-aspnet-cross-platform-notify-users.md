@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="08/18/2015" 
+	ms.date="12/11/2015" 
 	ms.author="wesmc"/>
 
 # 通知ハブによるユーザーへのクロスプラットフォーム通知の送信
@@ -88,9 +88,6 @@
 
 +  **[Azure 通知ハブの概要][Templates]**<br/>この概要トピックでは、テンプレートについて詳細に説明されています。
 
-+  **[方法: Azure 通知ハブ (Windows ストア アプリ)]**<br/>テンプレート式言語のリファレンスが記載されています。
-
-
 
 <!-- Anchors. -->
 
@@ -108,6 +105,6 @@
 [Azure Notification Hubs]: http://go.microsoft.com/fwlink/p/?LinkId=314257
 [通知ハブによるユーザーへの通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
 [Templates]: http://go.microsoft.com/fwlink/p/?LinkId=317339
-[方法: Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
+[Notification Hub How to for Windows Store]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

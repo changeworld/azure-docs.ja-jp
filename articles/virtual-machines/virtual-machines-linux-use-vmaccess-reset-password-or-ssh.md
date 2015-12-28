@@ -263,7 +263,7 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 <!--Link references-->
 [Azure Linux エージェント ユーザー ガイド]: virtual-machines-linux-agent-user-guide.md
 [Azure PowerShell のインストールと構成の方法]: ../install-configure-powershell.md
-[Azure VM 拡張機能とその機能]: http://msdn.microsoft.com/library/azure/dn606311.aspx
+[Azure VM 拡張機能とその機能]: virtual-machines-extensions-features.md
 [RDP または SSH を使用した Azure 仮想マシンへの接続]: http://msdn.microsoft.com/library/azure/dn535788.aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -323,7 +323,7 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 	                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource",
 	                        "operationName": "RunFinished",
 	                        "status": "Failed",
-	                            "subStatus": "FailedExecution"   
+	                        "subStatus": "FailedExecution"   
 	                    }
 	                },
 	                "action": 
@@ -348,8 +348,6 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 -------------- | ------ | ----------
 RunStarted | 開始済み | Starting
 RunFinished | Failed / Succeeded | <p>FailedResourceAllocation</p><p>Succeeded</p><p>FailedExecution</p><p>TimedOut</p><p><Canceled/p><p>FailedValidation</p><p>Abandoned</p>
-SliceOnTime | 進行中 | Ontime
-SliceDelayed | 進行中 | Late
 OnDemandClusterCreateStarted | 開始済み
 OnDemandClusterCreateSuccessful | Succeeded
 OnDemandClusterDeleted | Succeeded
@@ -359,7 +357,7 @@ OnDemandClusterDeleted | Succeeded
 #### アラートのデプロイ 
 アラートをデプロイするには、次の例に示すように Azure PowerShell コマンドレットの **New-AzureResourceGroupDeployment** を使用します。
 
-	New-AzureResourceGroupDeployment -ResourceGroupName adf     -TemplateFile .\ADFAlertFailedSlice.json  
+	New-AzureResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\ADFAlertFailedSlice.json  
 
 リソース グループのデプロイメントが正常に終了すると、次のメッセージが表示されます。
 
@@ -401,7 +399,7 @@ OnDemandClusterDeleted | Succeeded
 	![操作](./media/data-factory-monitor-manage-pipelines/operations.png)
 
 
-- アラートの追加、取得、削除に使用できる PowerShell コマンドレットについては、「[Azure Insights コマンドレット](https://msdn.microsoft.com/library/mt282452.aspx)」という記事を参照してください。**Get-AlertRule** コマンドレットの使用例をいくつか以下に示します。
+- アラートの追加、取得、削除に使用できる PowerShell コマンドレットについては、「[Azure Insights Cmdlets (Azure Insights コマンドレット)](https://msdn.microsoft.com/library/mt282452.aspx)」という記事を参照してください。以下に、**Get-AlertRule** コマンドレットの使用例をいくつか示します。
 
 
 		PS C:\> get-alertrule -res $resourceGroup -n ADFAlertsSlice -det
@@ -569,4 +567,4 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 	Parameters        :
 	Outputs           
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

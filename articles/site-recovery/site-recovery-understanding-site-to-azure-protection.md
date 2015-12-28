@@ -1,5 +1,5 @@
 <properties
-	pageTitle="サイトと Azure 間の保護について" 
+	pageTitle="Azure Site Recovery を使用した Hyper-V レプリケーションについて | Microsoft Azure" 
 	description="この記事を使用すると、Azure Site Recovery を正常にインストール、構成、管理するのに役立つ技術的な概念を理解できます。" 
 	services="site-recovery" 
 	documentationCenter="" 
@@ -13,11 +13,11 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="09/01/2015" 
+	ms.date="12/14/2015" 
 	ms.author="anbacker"/>
 
 
-# HYPER-V または VMM サイトと Azure 間の保護について
+# Azure Site Recovery を使用した Hyper-V レプリケーションについて
 
 この記事では、Azure Site Recovery を使用した HYPER-V サイトまたは VMM サイトと Azure 間の保護を正常に構成および管理するのに役立つ、技術的な概念について説明します。
 
@@ -79,4 +79,4 @@ HYPER-V レプリカ レプリケーション トラッカーは、HYPER-V レ�
 - [Microsoft サポートを得る](./site-recovery-monitoring-and-troubleshooting.md#reaching-out-for-microsoft-support)
 - [ASR の一般的なエラーとその解決策](./site-recovery-monitoring-and-troubleshooting.md#common-asr-errors-and-their-resolutions)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

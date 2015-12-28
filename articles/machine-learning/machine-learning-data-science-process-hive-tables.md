@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.date="12/11/2015"
 	ms.author="hangzh;bradsev" />
 
 #<a name="heading"></a>Advanced Analytics Process and Technology で HDInsight Hadoop クラスターに Hive クエリを送信する 
 
-このドキュメントでは、Azure の HDInsight サービスが管理する Hadoop クラスターに Hive クエリを送信するさまざまな方法について説明します。このタスクは、Azure Machine Learning が提供する Advanced Analytics Process and Technology (ADAPT) の一部です。いくつかのデータを処理するタスク (データの探索および特徴の生成) について説明します。Azure の HDInsight Hadoop クラスターで Hive を使用してデータの探索や特徴の生成を行う方法を示す汎用の Hive クエリが取り上げられます。これらの Hive クエリでは、用意されている埋め込みの Hive のユーザー定義関数 (UDF) を使用します。
+このドキュメントでは、Azure の HDInsight サービスが管理する Hadoop クラスターに Hive クエリを送信するさまざまな方法について説明します。このタスクは、Cortana Analytics Process (CAP) の一部です。いくつかのデータを処理するタスク (データの探索および特徴の生成) について説明します。Azure の HDInsight Hadoop クラスターで Hive を使用してデータの探索や特徴の生成を行う方法を示す汎用の Hive クエリを紹介します。これらの Hive クエリでは、用意されている埋め込みの Hive のユーザー定義関数 (UDF) を使用します。
 
 [NYC タクシー乗車データ](http://chriswhong.com/open-data/foil_nyc_taxi/) シナリオに固有のクエリの例も、[Github リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)に用意されています。これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。
 
-最後のセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターについて説明します。
+最後のセクションでは、Hive クエリのパフォーマンスを調整および向上させるために使用できるパラメーターについて説明します。
 
 ## 前提条件
 この記事では、以下のことを前提としています。
@@ -34,12 +34,12 @@
 
 
 ## <a name="submit"></a>Hive クエリを送信する方法
-Hive クエリは、以下のものを使用して送信できます。
+Hive クエリは、次のアプリケーションを使用して送信できます。
 
-* クラスターのヘッドノードでの Hadoop コマンド ライン
-* IPython Notebook
-* Hive エディター
-* Azure PowerShell スクリプト
+* クラスターのヘッドノードでの **Hadoop コマンド ライン コンソール**
+* **IPython Notebook**
+* **Hive エディター**
+* **PowerShell** スクリプト
 
 Hive クエリは SQL に似ています。SQL を使い慣れているユーザーには、<a href="http://hortonworks.com/wp-content/uploads/downloads/2013/08/Hortonworks.CheatSheet.SQLtoHive.pdf" target="_blank">SQL-to-Hive チート シート</a>が役立つ場合があります。
 
@@ -67,11 +67,11 @@ Hadoop コマンド ライン コンソールで Hive クエリを送信する�
 
 Hadoop コマンド ラインで簡単な Hive クエリを直接送信できます。次に例を示します。ここで赤いボックスは Hive クエリを送信するコマンドを囲んでいます。緑色のボックスは Hive クエリの出力を囲んでいます。
 
-![ワークスペースの作成][10]
+![ワークスペースの作成](./media/machine-learning-data-science-process-hive-tables/run-hive-queries-1.png)
 
 #### .hql ファイルで Hive クエリを送信する
 
-Hive クエリがより複雑で、複数の行がある場合、Hadoop コマンド ラインまたは Hive コマンド コンソールでクエリを編集することは実用的ではありません。別の方法は、Hadoop クラスターのヘッド ノードでテキスト エディターを使用して、ヘッド ノードのローカル ディレクトリにある .hql ファイルに Hive クエリを保存することです。その後、次のように `hive` コマンドで `-f` 引数を使用して、.hql ファイル内の Hive クエリを送信します。
+Hive クエリがより複雑で、複数の行がある場合、Hadoop コマンド ラインまたは Hive コマンド コンソールでクエリを編集することは実用的ではありません。別の方法は、Hadoop クラスターのヘッド ノードでテキスト エディターを使用して、ヘッド ノードのローカル ディレクトリにある .hql ファイルに Hive クエリを保存することです。続いて、次のように `hive` コマンドで `-f` 引数を使用して、.hql ファイル内の Hive クエリを送信します。
 
 	`hive -f "<path to the .hql file>"`
 
@@ -87,7 +87,7 @@ Hive クエリがより複雑で、複数の行がある場合、Hadoop コマ�
 
 Hadoop コマンドラインから `hive` コマンドを実行して Hive コマンド コンソールに入った後、Hive コマンド コンソールの **hive>** プロンプトで Hive クエリを送信することもできます。たとえば次のようになります。
 
-![ワークスペースの作成][11]
+![Create workspace](./media/machine-learning-data-science-process-hive-tables/run-hive-queries-2.png)
 
 この例では、2 つの赤いボックスは、それぞれ Hive コマンド コンソールに入るために使用するコマンドと、Hive コマンド コンソールで送信された Hive クエリを強調表示しています。緑色のボックスは、Hive クエリからの出力を強調表示しています。
 
@@ -108,11 +108,11 @@ Hive クエリの結果をヘッド ノード上のローカル ディレクト�
 
 次の例では、Hive クエリの出力が、Hadoop クラスターの既定のコンテナー内にある BLOB ディレクトリ `queryoutputdir` に書き込まれます。ここでは、ディレクトリ名のみを指定する必要があります。BLOB 名を指定する必要はありません。**wasb:///queryoutputdir/queryoutput.txt* のように、ディレクトリ名と BLOB 名の両方を指定すると、エラーがスローされます。
 
-![ワークスペースの作成][13]
+![Create workspace](./media/machine-learning-data-science-process-hive-tables/output-hive-results-2.png)
 
 Azure ストレージ エクスプローラーの (またはそれと同等の) ツールを使用して、Hadoop クラスターの既定のコンテナーを開くと、Hive クエリの出力を BLOB ストレージで確認できます。指定された文字が名前に含まれる BLOB のみを取得する場合は、フィルター (赤いボックスで強調表示) を適用できます。
 
-![ワークスペースの作成][14]
+![Create workspace](./media/machine-learning-data-science-process-hive-tables/output-hive-results-3.png)
 
 ### Hive エディターまたは Azure PowerShell コマンドを介して
 
@@ -272,7 +272,7 @@ Hive テーブルに、スペースで区切られた単語から成る文字列
 
 2 つの GPS 座標の距離を計算する方程式は、Peter Lapisu による <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> サイトにあります。彼の Javascript で、関数 `toRad()` は単に *lat\_or\_lon*pi/180* であり、これは、角度をラジアンに変換します。ここで、*lat\_or\_lon* は緯度または経度です。Hive には関数 `atan2` はありませんが関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> に記載された定義を使用して、`atan` 関数により実装されています。
 
-![ワークスペースの作成][1]
+![test](./media/machine-learning-data-science-process-hive-tables/atan2new.png)
 
 Hive の組み込み UDF のリストは、<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive Wiki</a> の**組み込み関数**のセクションにあります。
 
@@ -310,13 +310,8 @@ Hive クラスターの既定のパラメーター設定は、Hive クエリお�
 		set mapred.reduce.tasks=128;
 		set mapred.tasktracker.reduce.tasks.maximum=128;
 
-[1]: ./media/machine-learning-data-science-process-hive-tables/atan2new.png
-[10]: ./media/machine-learning-data-science-process-hive-tables/run-hive-queries-1.png
-[11]: ./media/machine-learning-data-science-process-hive-tables/run-hive-queries-2.png
-[12]: ./media/machine-learning-data-science-process-hive-tables/output-hive-results-1.png
-[13]: ./media/machine-learning-data-science-process-hive-tables/output-hive-results-2.png
-[14]: ./media/machine-learning-data-science-process-hive-tables/output-hive-results-3.png
-[15]: ./media/machine-learning-data-science-process-hive-tables/run-hive-queries-3.png
+
+
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

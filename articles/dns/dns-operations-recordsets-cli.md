@@ -24,6 +24,10 @@
 
 このガイドでは、DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
 
+>[AZURE.NOTE]Azure DNS は、Azure リソース マネージャー専用のサービスです。ASM API はありません。したがって、"azure config mode arm" コマンドを使用して、リソース マネージャー モードを使用するように Azure CLI を構成するようにする必要があります。
+
+>"エラー: 'dns' は、Azure のコマンドではありません" と表示される場合は、多くの場合、リソース マネージャー モードではなく、ASM モードで Azure CLI を使用していることが原因です。
+
 DNS レコード セットと個々の DNS レコードの違いを理解することは重要です。レコード セットとは、1 つのゾーン内にある同じ名前、同じ種類のレコードのコレクションです。詳細については、「[レコード セットとレコードについて](dns-getstarted-create-recordset.md#Understanding-record-sets-and-records)」を参照してください。
 
 ## レコード セットの作成
@@ -239,4 +243,4 @@ A レコード セットを作成した後、`azure network dns record-set add-r
 [Azure DNS へのドメインの委任](dns-domain-delegation.md)<BR> [DNS ゾーンの管理](dns-operations-dnszones-cli.md)<BR> [.NET SDK を使用した操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

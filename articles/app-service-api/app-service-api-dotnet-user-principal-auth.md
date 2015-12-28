@@ -28,7 +28,7 @@
  
 ## App Service での認証と承認
 
-このチュートリアルで使用している認証機能の概要については、このシリーズの前回のチュートリアル「[Azure App Service での API Apps の認証と承認](app-service-api-dotnet-get-started.md)」を参照してください。
+このチュートリアルで使用している認証機能の概要については、このシリーズの前回のチュートリアル「[Azure App Service での API Apps の認証と承認](app-service-api-authentication.md)」を参照してください。
 
 ## このチュートリアルの使い方
 
@@ -268,4 +268,4 @@ ContactsList.Angular.AAD プロジェクト内のコードは、単純な Contac
 
 このチュートリアルでは、App Service の認証および承認を使用して、認証されたユーザーのみが呼び出すことができるよう、API アプリへのアクセスを制限しました。このシリーズの次のチュートリアルでは、[サービス間シナリオで API アプリへのアクセスを制限する](app-service-api-dotnet-service-principal-auth.md)方法を学習します。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

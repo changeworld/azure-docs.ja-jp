@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="12/15/2015" 
 	ms.author="juliako"/>
 
 
@@ -21,7 +21,7 @@
 
 このトピックでは、クライアント側でさまざまな種類の広告を挿入する方法について説明します。
 
-ライブ ストリーミング ビデオでのクローズド キャプションと広告のサポートの詳細については、「[サポートされる字幕と広告挿入の標準](https://msdn.microsoft.com/library/azure/dn783466.aspx#caption_ad)」をご覧ください。
+ライブ ストリーミング ビデオでのクローズド キャプションと広告のサポートの詳細については、「[サポートされる字幕と広告挿入の標準](media-services-manage-channels-overview.md#cc_and_ads)」をご覧ください。
 
  
 ##<a id="insert_ads_into_media"></a>メディアへの広告の挿入
@@ -812,4 +812,4 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
 
 [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

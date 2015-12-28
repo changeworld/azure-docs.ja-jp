@@ -3,9 +3,9 @@
 	description="継続的な配信を使用した Azure へのデプロイ時にリモート デバッグを有効にする方法を説明します。"
 	services="cloud-services"
 	documentationCenter=".net"
-	authors="kempb"
+	authors="TomArcher"
 	manager="douge"
-	editor="tglee"/>
+	editor=""/>
 
 <tags
 	ms.service="cloud-services"
@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="10/19/2015"
-	ms.author="kempb"/>
+	ms.author="tarcher"/>
 # 継続的な配信を使用して Azure に発行する場合にリモート デバッグを有効にする
 
 次の手順に従って、[継続的な配信](cloud-services-dotnet-continuous-delivery.md)を使用して Azure に発行する場合に、クラウド サービスまたは仮想マシンに対して、Azure でリモート デバッグを有効にすることができます。
@@ -41,53 +41,53 @@
 4. 「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」の説明に従って、Azure PowerShell (バージョン 0.7.4 以降) をインストールします。
 5. 次のスクリプトを実行して RemoteDebug 拡張機能を有効にします。パスおよび個人用データを自分自身のサブスクリプション名、サービス名、サムプリントなどで置き換えます。
 
-	>[AZURE.NOTE] このスクリプトは Visual Studio 2015 用に構成されています。Visual Studio 2013 を使用する場合は、ReferenceName と ExtensionName に対して "RemoteDebugVS2013" を使用します。
+	>[AZURE.NOTE]このスクリプトは Visual Studio 2015 用に構成されています。Visual Studio 2013 を使用する場合は、ReferenceName と ExtensionName に対して "RemoteDebugVS2013" を使用します。
 
 	<pre>
-    Add-AzureAccount
+Add-AzureAccount
 
-    Select-AzureSubscription "My Microsoft Subscription"
+Select-AzureSubscription "My Microsoft Subscription"
 
-    $vm = Get-AzureVM -ServiceName "mytestvm1" -Name "mytestvm1"
+$vm = Get-AzureVM -ServiceName "mytestvm1" -Name "mytestvm1"
 
-    $endpoints = @(
-    ,@{Name="RDConnVS2013"; PublicPort=30400; PrivatePort=30398}
-    ,@{Name="RDFwdrVS2013"; PublicPort=31400; PrivatePort=31398}
-    )
+$endpoints = @(
+,@{Name="RDConnVS2013"; PublicPort=30400; PrivatePort=30398}
+,@{Name="RDFwdrVS2013"; PublicPort=31400; PrivatePort=31398}
+)
 
-    foreach($endpoint in $endpoints)
-    {
-    Add-AzureEndpoint -VM $vm -Name $endpoint.Name -Protocol tcp -PublicPort $endpoint.PublicPort -LocalPort $endpoint.PrivatePort
-    }
+foreach($endpoint in $endpoints)
+{
+Add-AzureEndpoint -VM $vm -Name $endpoint.Name -Protocol tcp -PublicPort $endpoint.PublicPort -LocalPort $endpoint.PrivatePort
+}
 
-    $referenceName = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug.RemoteDebugVS2015"
-    $publisher = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug"
-    $extensionName = "RemoteDebugVS2015"
-    $version = "1.*"
-    $publicConfiguration = "<PublicConfig><Connector.Enabled>true</Connector.Enabled><ClientThumbprint>56D7D1B25B472268E332F7FC0C87286458BFB6B2</ClientThumbprint><ServerThumbprint>E7DCB00CB916C468CC3228261D6E4EE45C8ED3C6</ServerThumbprint><ConnectorPort>30398</ConnectorPort><ForwarderPort>31398</ForwarderPort></PublicConfig>"
+$referenceName = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug.RemoteDebugVS2015"
+$publisher = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug"
+$extensionName = "RemoteDebugVS2015"
+$version = "1.*"
+$publicConfiguration = "<PublicConfig><Connector.Enabled>true</Connector.Enabled><ClientThumbprint>56D7D1B25B472268E332F7FC0C87286458BFB6B2</ClientThumbprint><ServerThumbprint>E7DCB00CB916C468CC3228261D6E4EE45C8ED3C6</ServerThumbprint><ConnectorPort>30398</ConnectorPort><ForwarderPort>31398</ForwarderPort></PublicConfig>"
 
-    $vm | Set-AzureVMExtension `
-    -ReferenceName $referenceName `
-    -Publisher $publisher `
-    -ExtensionName $extensionName `
-    -Version $version `
-    -PublicConfiguration $publicConfiguration
+$vm | Set-AzureVMExtension `
+-ReferenceName $referenceName `
+-Publisher $publisher `
+-ExtensionName $extensionName `
+-Version $version `
+-PublicConfiguration $publicConfiguration
 
-    foreach($extension in $vm.VM.ResourceExtensionReferences)
-    {
-    if(($extension.ReferenceName -eq $referenceName) `
-    -and ($extension.Publisher -eq $publisher) `
-    -and ($extension.Name -eq $extensionName) `
-    -and ($extension.Version -eq $version))
-    {
-    $extension.ResourceExtensionParameterValues[0].Key = 'config.txt'
-    break
-    {
-    {
+foreach($extension in $vm.VM.ResourceExtensionReferences)
+{
+if(($extension.ReferenceName -eq $referenceName) `
+-and ($extension.Publisher -eq $publisher) `
+-and ($extension.Name -eq $extensionName) `
+-and ($extension.Version -eq $version))
+{
+$extension.ResourceExtensionParameterValues[0].Key = 'config.txt'
+break
+{
+{
 
-    $vm | Update-AzureVM
-	</pre>
+$vm | Update-AzureVM
+</pre>
 
 6. Visual Studio と Azure SDK for .NET がインストールされているマシンに証明書 (.pfx) をインポートします。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

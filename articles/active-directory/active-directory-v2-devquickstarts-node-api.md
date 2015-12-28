@@ -13,13 +13,12 @@
   	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="09/11/2015"
+	ms.date="12/09/2015"
 	ms.author="brandwe"/>
 
 # アプリ モデル v2.0 プレビュー: node.js を使用して Web API をセキュリティで保護する
 
-> [AZURE.NOTE]
-この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
+> [AZURE.NOTE]この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
 
 v2.0 アプリ モデルでは、[OAuth 2.0](active-directory-v2-protocols.md#oauth2-authorization-code-flow) アクセス トークンを使用して Web API を保護でき、ユーザーが個人または職場/学校の Microsoft アカウントの両方を使って Web API に安全にアクセスできるようにすることができます。
 
@@ -38,7 +37,7 @@ v2.0 アプリ モデルでは、[OAuth 2.0](active-directory-v2-protocols.md#oa
 完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
 
-## 1.アプリを登録します
+## 1\.アプリを登録します
 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
@@ -46,12 +45,12 @@ v2.0 アプリ モデルでは、[OAuth 2.0](active-directory-v2-protocols.md#oa
 - ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
 
 
-## 2. プラットフォーム用の Node.js をダウンロードする
+## 2\. プラットフォーム用の Node.js をダウンロードする
 このサンプルを正常に使用するには、Node.js の実稼働するインストール環境が必要になります。
 
 Node.js を [http://nodejs.org](http://nodejs.org) からインストールします。
 
-## 3. プラットフォームに MongoDB をインストールする
+## 3\. プラットフォームに MongoDB をインストールする
 
 このサンプルを正常に使用するには、MongoDB の実稼働するインストール環境が必要になります。MongoDB を使用して、REST API がサーバー インスタンス間で持続されるようにします。
 
@@ -272,8 +271,7 @@ identityMetadata: 'https://login.microsoftonline.com/common/.well-known/openid-c
 
 *audience*: ポータルのリダイレクト URI。
 
-> [AZURE.NOTE]
-キーは頻繁に公開されます。"openid\_keys" URL からキーを常に取得し、アプリがインターネットにアクセスできるようにします。
+> [AZURE.NOTE]キーは頻繁に公開されます。"openid\_keys" URL からキーを常に取得し、アプリがインターネットにアクセスできるようにします。
 
 
 ## 11: 構成を server.js ファイルに追加する
@@ -650,8 +648,7 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
 次に、ディレクトリを変更し、curl コマンドを実行してコンテンツを取得します。
 
-`$ cd azuread`
-`$ node server.js`
+`$ cd azuread` `$ node server.js`
 
 `$ curl -isS http://127.0.0.1:8080 | json`
 
@@ -717,8 +714,7 @@ server.use(passport.initialize()); // Starts passport
 server.use(passport.session()); // Provides session support
 ```
 
-> [AZURE.TIP]
-API を記述するときは、ユーザーがなりすますことができないトークンの一意の情報に常にデータをリンクする必要があります。このサーバーは、TODO 項目を保存するときに、“owner” フィールドに配置される(token.sub を通して呼び出される) トークン内のユーザーのサブスクリプション ID に基づいてそれらを保存します。これにより、そのユーザーだけが自分の TODO にアクセスでき、他のユーザーは入力された TODO にアクセスすることはできません。API 内で “owner” が公開されることはないため、外部ユーザーは、認証された場合でも、他のユーザーの TODO を要求することができます。
+> [AZURE.TIP]API を記述するときは、ユーザーがなりすますことができないトークンの一意の情報に常にデータをリンクする必要があります。このサーバーは、TODO 項目を保存するときに、“owner” フィールドに配置される(token.sub を通して呼び出される) トークン内のユーザーのサブスクリプション ID に基づいてそれらを保存します。これにより、そのユーザーだけが自分の TODO にアクセスでき、他のユーザーは入力された TODO にアクセスすることはできません。API 内で “owner” が公開されることはないため、外部ユーザーは、認証された場合でも、他のユーザーの TODO を要求することができます。
 
 次に、passport-azure-ad に含まれる Open ID Connect Bearer 戦略を使用します。今はコードをざっと見てください。内容は後で説明します。このコードを、上述のコードの後ろに置きます。
 
@@ -767,8 +763,7 @@ passport.use(oidcStrategy);
 
 Passport は、すべての戦略ライターが従うすべての戦略 (Twitter や Facebook など) に対して類似するパターンを使用します。戦略を調べると、それは、パラメーターとして token と done を持つ function() が渡されることがわかります。戦略は、その処理をすべて終えると、必ず戻ってきます。戻ったら、再度要求しなくてもいいように、ユーザーを保存し、トークンを隠します。
 
-> [AZURE.IMPORTANT]
-上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。これは、自動登録と呼ばれます。運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。これは、Facebook への登録は許可するが、その後で追加情報の入力を求めるコンシューマー アプリで通常見られるパターンです。これがコマンド ライン プログラムでなければ、返されるトークン オブジェクトから電子メールを抽出した後、追加情報の入力を要求できます。これはテスト サーバーなので、単純にユーザーをメモリ内データベースに追加します。
+> [AZURE.IMPORTANT]上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。これは、自動登録と呼ばれます。運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。これは、Facebook への登録は許可するが、その後で追加情報の入力を求めるコンシューマー アプリで通常見られるパターンです。これがコマンド ライン プログラムでなければ、返されるトークン オブジェクトから電子メールを抽出した後、追加情報の入力を要求できます。これはテスト サーバーなので、単純にユーザーをメモリ内データベースに追加します。
 
 ### 2\.最後にいくつかのエンドポイントを保護する
 
@@ -856,8 +851,6 @@ Restify と OAuth2 を使用して REST API を実装する方法についての
 
 [Node.js の v2.0 アプリ モデルで Web アプリをセキュリティ保護する >>](active-directory-v2-devquickstarts-node-web.md)
 
-その他のリソースについては、以下を参照してください。 
-- [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) 
-- [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

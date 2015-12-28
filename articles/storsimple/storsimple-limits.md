@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/28/2015"
+   ms.date="12/15/2015"
    ms.author="alkohli" />
 
 # StorSimple システムの制限
@@ -27,4 +27,4 @@ StorSimple は、データセンターのスケーラブルかつフレキシブ
 
 [StorSimple のシステム要件](storsimple-system-requirements.md)を確認します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

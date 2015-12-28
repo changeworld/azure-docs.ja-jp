@@ -1,7 +1,7 @@
 
 <properties 
-    pageTitle="Azure RemoteApp のユーザー プロファイル データ | Microsoft Azure"
-	description="Azure RemoteApp でのユーザー データの格納およびアクセス方法について説明します"
+    pageTitle="Office 365 ユーザー アカウントで Azure RemoteApp を使用する方法 | Microsoft Azure"
+	description="Office 365 ユーザー アカウントで Azure RemoteApp を使用する方法について説明します。"
 	services="remoteapp"
 	documentationCenter="" 
 	authors="lizap" 
@@ -15,8 +15,6 @@
     ms.topic="article" 
     ms.date="12/04/2015" 
     ms.author="elizapo" />
-
-
 
 # Azure RemoteApp によるユーザー データと設定の保存方法
 
@@ -139,4 +137,4 @@ OneDrive for Business などのデータ同期アプリを使用することも�
 
 いいえ。Azure RemoteApp ではサポートされません。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

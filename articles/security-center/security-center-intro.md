@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/02/2015"
+   ms.date="12/10/2015"
    ms.author="terrylan"/>
 
 # Azure セキュリティ センターの概要
@@ -112,7 +112,7 @@ Azure セキュリティ センターは [Azure ポータル](http://azure.micro
 このドキュメントでは、Azure セキュリティ センターの主な機能と開始する方法を紹介しました。詳細については、次の記事を参照してください。
 
 - 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 – セキュリティ ポリシーの設定方法についての説明
-- [Azure セキュリティ センターのセキュリティに関する推奨事項の実装](security-center-recommendations.md) – 推奨事項に従って Azure リソースを保護する方法についての説明
+- 「[Azure セキュリティ センターのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 – 推奨事項に従って Azure リソースを保護する方法についての説明
 - 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」 – Azure リソースのヘルスを監視する方法についての説明
 - 「[Azure セキュリティ センターでのセキュリティのアラートの管理と対応](security-center-managing-and-responding-alerts.md)」 -セキュリティの警告の管理および対応について
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
@@ -126,4 +126,4 @@ Azure セキュリティ センターは [Azure ポータル](http://azure.micro
 [5]: ./media/security-center-intro/security-alert.png
 [6]: ./media/security-center-intro/security-alert-detail.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

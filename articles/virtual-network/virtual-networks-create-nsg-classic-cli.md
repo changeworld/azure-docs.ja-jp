@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn"
    tags="azure-service-management"
 />
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/15/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # Azure CLI で NSG (クラシック) を作成する方法
@@ -104,7 +104,7 @@
 	- **-n (または --name)**。新しい規則の名前です。ここでは、*rdp-rule* です。
 	- **-c (または --action)**。規則のアクセス レベルです (拒否または許可)。
 	- **-p (または --protocol)**。規則のプロトコル (TCP、UDP、または *) です。
-	- **-r (または --type)**。接続の方向です (受信または送信)。
+- **-r (または --type)**。接続の方向です (受信または送信)。
 	- **-y (または --priority)**。規則の優先度です。
 	- **-f (または --source-address-prefix)**。CIDR または既定のタグを使用する発信元アドレスのプレフィックス。
 	- **-o (または --source-port-range)**。発信元ポート、またはポート範囲です。
@@ -239,4 +239,4 @@
 		info:    Creating a network security group "NSG-BackEndX"
 		info:    network nsg subnet add command OK
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

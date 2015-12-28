@@ -3,9 +3,9 @@
    description="Visual Studio を使用し、Azure クラウド サービスのロールをセットアップして構成する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="dotnet"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="09/08/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # Visual Studio で Azure クラウド サービスのロールを構成する
 
@@ -269,7 +269,7 @@ Azure クラウド サービスの診断データを収集することができ�
 
     **[ストレージ接続文字列の作成]** ダイアログ ボックスが表示されます。
 
-1. ローカル接続文字列を使用するには、[Azure ストレージ エミュレーター] オプションをオンにし、**[OK]** ボタンをクリックします。
+1. ローカル接続文字列を使用するには、[Azure ストレージ エミュレーター] オプションをオンにし、**[OK]** をクリックします。
 
 1. Azure サブスクリプションに関連付けられているストレージ アカウントを使用するには、**[自分のサブスクリプション]** オプションをオンにします。
 
@@ -376,4 +376,4 @@ HTTPS エンドポイントを追加する場合、SSL 証明書を使用する�
 ## 次のステップ
 Visual Studio における Azure プロジェクトの詳細については、「[Azure プロジェクトの構成](vs-azure-tools-configuring-an-azure-project.md)」を参照してください。クラウド サービスのスキーマの詳細については、「[スキーマ リファレンス](https://msdn.microsoft.com/library/azure/dd179398)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

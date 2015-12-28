@@ -78,7 +78,7 @@ IoT Hub を認識しない SDK (または製品の統合) を使用する場合�
 IoT Hub に使用できる SDK と統合の一覧を次に示します。
 
 * [Event Hubs の Java クライアント](https://github.com/hdinsight/eventhubs-client)
-* [Apache Storm のスパウト](../hdinsight/hdinsight-storm-develop-csharp-event-hub-topology.md)。スパウト ソースへのリンクは、[こちら](https://github.com/apache/storm/tree/master/external/storm-eventhubs)にあります
+* [Apache Storm のスパウト](../hdinsight/hdinsight-storm-develop-csharp-event-hub-topology.md)。[スパウトのソース](https://github.com/apache/storm/tree/master/external/storm-eventhubs)は GitHub で確認できます。
 * [Apache Spark の統合](../hdinsight/hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
 
 ## デバイス ID レジストリ
@@ -250,7 +250,7 @@ SASL PLAIN では、**ユーザー名**を以下のように指定できます�
 
 どちらの場合も、[トークン形式](#tokenformat)に関するセクションで説明するように、パスワード フィールドにトークンが含まれています。
 
-> [AZURE.NOTE] [Azure IoT Hub の SDK][lnk-apis-sdks] を使用すると、サービスに接続した時点で自動的にトークンが生成されます。場合によっては、サポートするプロトコル、または使用可能な認証方法で SDK が制限されます。詳細については、[Azure IoT Hub の SDK][lnk-apis-sdks] に関するドキュメントを参照してください。
+> [AZURE.NOTE][Azure IoT Hub の SDK][lnk-apis-sdks] を使用すると、サービスに接続した時点で自動的にトークンが生成されます。場合によっては、サポートするプロトコル、または使用可能な認証方法で SDK が制限されます。詳細については、[Azure IoT Hub の SDK][lnk-apis-sdks] に関するドキュメントを参照してください。
 
 #### SASL PLAIN と CBS の比較
 
@@ -532,4 +532,4 @@ IoT Hub の開発の概要については以上です。詳細については、
 [lnk-tls]: https://tools.ietf.org/html/rfc5246
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_1217_2015-->

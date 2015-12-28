@@ -312,4 +312,4 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

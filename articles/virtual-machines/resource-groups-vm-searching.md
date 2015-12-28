@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="command-line-interface"
    ms.workload="infrastructure"
-   ms.date="08/25/2015"
+   ms.date="12/08/2015"
    ms.author="rasquill"/>
 
 # Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択
@@ -23,7 +23,7 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
 
-この記事では、最新バージョンの Azure CLI または Azure PowerShell を使用して、仮想マシン イメージをナビゲートして選択する方法について説明します。前提条件として、リソース マネージャー モードに変更しておく必要があります。Azure CLI を使用している場合、次のように入力してこのモードに入ります`azure config mode arm`。PowerShell を使用している場合、次のように入力します`Switch-AzureMode AzureResourceManager`。更新と構成の詳細については、「[Using Azure CLI with Resource Manager (リソース マネージャーでの Azure CLI の使用)](xplat-cli-azure-resource-manager.md)」と「[Using Azure PowerShell with Azure Resource Manager (Azure リソース マネージャーでの Azure PowerShell の使用)](../powershell-azure-resource-manager.md)」をご覧ください。
+
 
 ## よく使用されるイメージの表
 
@@ -51,6 +51,8 @@
 
 
 ## Azure CLI
+
+> [AZURE.NOTE]この記事では、最新バージョンの Azure CLI または Azure PowerShell を使用して、仮想マシン イメージをナビゲートして選択する方法について説明します。前提条件として、リソース マネージャー モードに変更しておく必要があります。Azure CLI を使用している場合、次のように入力してこのモードに入ります`azure config mode arm`。
 
 `azure vm quick-create` と共に使用するため、またはリソース グループのテンプレート ファイルを作成するための、イメージを検索する簡単で素早い方法は、`azure vm image list` コマンドを呼び出して、場所、発行元名 (大文字と小文字は区別されません)、およびプラン (プランを知っている場合) を渡すことです。たとえば、次のリストは、"Canonical" が "UbuntuServer" プランの発行元であることを知っている場合の短い例にすぎません。多数のリストは非常に長くなります。
 
@@ -149,6 +151,11 @@
 
 ## PowerShell
 
+PowerShell を使用している場合、次のように入力します`Switch-AzureMode AzureResourceManager`。更新と構成の詳細については、「[Using Azure CLI with Resource Manager (リソース マネージャーでの Azure CLI の使用)](xplat-cli-azure-resource-manager.md)」と「[Using Azure PowerShell with Azure Resource Manager (Azure リソース マネージャーでの Azure PowerShell の使用)](../powershell-azure-resource-manager.md)」をご覧ください。
+
+> [AZURE.NOTE]1.0 以降の Azure PowerShell モジュールでは、`Switch-AzureMode` コマンドレットが削除されました。このバージョン以降では、以下のコマンドの `Azure` の部分を `AzureRm` に置き換えてください。バージョン 1.0 より前の Azure PowerShell を使用する場合は以下のコマンドを使用できますが、初めに `Switch-AzureMode AzureResourceManager` を実行する必要があります。
+
+
 Azure リソース マネージャーを使用して新しい仮想マシンを作成するとき、場合によっては、以下のイメージ プロパティの組み合わせによりイメージを指定する必要があります。
 
 - 発行元
@@ -182,7 +189,7 @@ Azure リソース マネージャーを使用して新しい仮想マシンを�
 	$offerName="<offer>"
 	Get-AzureVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
 
-**Get AzureVMImageSku** コマンドの表示から、新しい仮想マシンのイメージを指定するために必要なすべての情報が得られます。
+**Get AzureVMImageSku** コマンドの表示から、新しいバーチャル マシンのイメージを指定するために必要なすべての情報が得られます。
 
 たとえば次のようになります。
 
@@ -244,4 +251,4 @@ Azure リソース マネージャーを使用して新しい仮想マシンを�
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

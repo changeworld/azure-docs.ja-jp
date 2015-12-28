@@ -49,8 +49,9 @@ Standard CDN レベルには、以下の機能が含まれます。
 - 負荷分散
 - DDOS 保護
 - [高速消去](cdn-purge-endpoint.md)
+- [REST API を介した管理](https://msdn.microsoft.com/library/mt634456.aspx)
 
- 
+
 ## Premium の機能
 
 Premium CDN レベルには Standard レベルのすべての機能に加え、以下の機能があります。
@@ -59,4 +60,4 @@ Premium CDN レベルには Standard レベルのすべての機能に加え、�
 - [詳細な HTTP レポート](cdn-advanced-http-reports.md)
 - [リアルタイム統計](cdn-read-time-stats.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

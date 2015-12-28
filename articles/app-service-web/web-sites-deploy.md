@@ -40,7 +40,7 @@ Web アプリをデプロイする最善の方法は、[継続的な配置ワー
 
 * [MSBuild を使用したデプロイの自動化](#msbuild)
 * [FTP ツールとスクリプトを使用してファイルをコピー](#ftp)
-* Windows PowerShell(#powershell) を使用したデプロイの自動化
+* [Windows PowerShell を使用したデプロイの自動化](#powershell)
 * [.NET 管理 API を使用したデプロイの自動化](#api)
 * [Azure コマンド ライン インターフェイス (Azure CLI) からデプロイ](#cli)
 * [Web デプロイ コマンド ラインからデプロイ](#webdeploy)
@@ -52,7 +52,7 @@ Web アプリをデプロイする最善の方法は、[継続的な配置ワー
 
 もう 1 つのデプロイ オプションとして、[Octopus Deploy](http://en.wikipedia.org/wiki/Octopus_Deploy) などのクラウド ベースのサービスを使用することもできます。詳細については、「[Deploy ASP.NET applications to Azure Web Sites (ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする)](https://octopusdeploy.com/blog/deploy-aspnet-applications-to-azure-websites)」をご覧ください。
 
-##<a name="vso"></a>Visual Studio Team Services を使用した継続的な配信
+##<a name="vsts"></a>Visual Studio Team Services を使用した継続的な配信
 
 [Visual Studio Team Services](http://www.visualstudio.com/) (旧 Team Foundation Service) は、ソース管理とチーム コラボレーションを対象にする、マイクロソフトのクラウドベースのソリューションです。開発者が 5 人以下のチームは、このサービスを無料で使用できます。App Services で Web アプリへの継続的な配信を実行することができ、リポジトリでは [Git または TFVC](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#gittfs) を使用できます。
 
@@ -67,9 +67,9 @@ Web アプリをデプロイする最善の方法は、[継続的な配置ワー
 
 詳細については、次のリソースを参照してください。
 
-* [Git を使用したソース管理から Web Apps への発行](web-sites-publish-source-control.md)。Git を使用してローカル コンピューターから Web Apps に直接発行する方法 (Azure では、この発行方法をローカル Git と呼びます)。また、GitHub、CodePlex、BitBucket からの Git リポジトリの継続的なデプロイを有効にする方法も示します。
-* [Deploying to Web Apps with GitHub using Kudu (Kudu を使用した GitHub による Web Apps へのデプロイ)](http://azure.microsoft.com/documentation/videos/deploying-to-azure-from-github/)。Scott Hanselman と David Ebbo によるビデオ。GitHub から Web Apps へ直接 Web アプリをデプロイする方法を示します。
-* [Web Apps に対する Azure ボタンのデプロイ](http://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/)。Git リポジトリからのデプロイをトリガーする方法に関するブログです。
+* [Git を使用したソース管理から Web アプリへの発行](web-sites-publish-source-control.md)。Git を使用してローカル コンピューターから Web Apps に直接発行する方法 (Azure では、この発行方法をローカル Git と呼びます)。また、GitHub、CodePlex、BitBucket からの Git リポジトリの継続的なデプロイを有効にする方法も示します。
+* [Deploying to Web Apps with GitHub using Kudu (Kudu を使用した GitHub による Web アプリへのデプロイ)](http://azure.microsoft.com/documentation/videos/deploying-to-azure-from-github/)。Scott Hanselman と David Ebbo によるビデオ。GitHub から Web Apps へ直接 Web アプリをデプロイする方法を示します。
+* [Web アプリに対する Azure ボタンのデプロイ](http://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/)。Git リポジトリからのデプロイをトリガーする方法に関するブログです。
 * [Git、Mercurial、Dropbox に関する Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azuregit)。
 
 ##<a name="mercurial"></a>Mercurial を使用したリポジトリ Web サイト
@@ -78,15 +78,15 @@ Web アプリをデプロイする最善の方法は、[継続的な配置ワー
 
 Mercurial を使用してデプロイを行う方法の詳細については、次のリソースを参照してください。
 
-* [Git を使用したソース管理から Web Apps への発行](web-sites-publish-source-control.md)。このチュートリアルでは、Git リポジトリを発行する方法を示していますが、CodePlex または BitBucket でホストされている Mercurial リポジトリに関するプロセスは類似しています。
+* [Git を使用したソース管理から Web アプリへの発行](web-sites-publish-source-control.md)。このチュートリアルでは、Git リポジトリを発行する方法を示していますが、CodePlex または BitBucket でホストされている Mercurial リポジトリに関するプロセスは類似しています。
 * [Git、Mercurial、Dropbox に関する Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azuregit)。
 
 ##<a name="dropbox"></a>Dropbox からのデプロイの自動化
 
 [Dropbox](https://www.dropbox.com/) はソース管理システムではありませんが、ソース コードを DropBox に格納する場合は、DropBox アカウントからのデプロイを自動化することもできます。
 
-* [Dropbox から Web Apps へのデプロイ](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx)。[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用して Dropbox デプロイを設定する方法。
-* [Web Apps に対する Dropbox デプロイ](http://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Dropbox-Deployment-to-Windows-Azure-Web-Sites)。このビデオでは、Dropbox フォルダーを Web アプリに接続する方法について説明し、Web アプリを迅速に設定して動作させる方法や、簡単なドラッグ アンド ドロップのデプロイを使用して Web サイトを保持する方法を示します。
+* [Dropbox から Web アプリへのデプロイ](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx)。[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用して Dropbox デプロイを設定する方法。
+* [Web アプリに対する Dropbox デプロイ](http://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Dropbox-Deployment-to-Windows-Azure-Web-Sites)。このビデオでは、Dropbox フォルダーを Web アプリに接続する方法について説明し、Web アプリを迅速に設定して動作させる方法や、簡単なドラッグ アンド ドロップのデプロイを使用して Web サイトを保持する方法を示します。
 * [Git、Mercurial、Dropbox に関する Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azuregit)。
 
 ##<a name="vs"></a>Visual Studio から直接デプロイ
@@ -95,7 +95,7 @@ Visual Studio から Web Apps をデプロイする方法については、次�
 
 * [Azure と ASP.NET を使ってみる](web-sites-dotnet-get-started.md)Visual Studio と Web Deploy を使用して簡単な ASP.NET MVC Web プロジェクトを作成し、デプロイする方法。
 * [Visual Studio を使用した Azure WebJobs のデプロイ方法](websites-dotnet-deploy-webjobs.md)。コンソール アプリケーション プロジェクトを Web ジョブとしてデプロイするための構成方法。  
-* [メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC 5 アプリケーションの Web Apps へのデプロイ](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)。Visual Studio、Web Deploy、Entity Framework、Code First Migrations を使用して、ASP.NET MVC Web プロジェクトを SQL データベースと共に配置する方法。
+* [メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションの Web アプリへのデプロイ](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)。Visual Studio、Web Deploy、Entity Framework、Code First Migrations を使用して、ASP.NET MVC Web プロジェクトを SQL データベースと共に配置する方法。
 * [Visual Studio と ASP.NET に関する Web デプロイの概要](http://msdn.microsoft.com/library/dd394698.aspx)Visual Studio を使用して Web デプロイを実行するための基本的な概要です。作成以来期間が経過していますが、現在も引き続き当てはまる情報が掲載されており、その中には Web アプリケーションと共にデータベースをデプロイするためのオプションの概要、実行する必要が生じる可能性のある付加的なデプロイ タスクの一覧、Visual Studio を独自に手動で構成する方法が含まれています。このトピックには、Web Apps へのデプロイのみではなく、デプロイ全般に関する情報も掲載されています。
 * [Visual Studio を使用した ASP.NET Web デプロイ](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/introduction)。12 部構成のチュートリアル シリーズであり、このリスト内に掲載されている他のリソースより詳細にデプロイ タスクの範囲を網羅しています。チュートリアルを作成した後で、不足している事項を説明するためにメモが追加されたため、一部の Azure デプロイ機能が追加されました。
 * [Git リポジトリから ASP.NET Web サイトを Visual Studio 2012 内にある Azure へ直接のデプロイ](http://www.dotnetcurry.com/ShowArticle.aspx?ID=881)。Visual Studio 内で ASP.NET Web プロジェクトをデプロイし、Git プラグインを使用してコードを Git にコミットして、Azure を Git リポジトリに接続する方法について説明します。Visual Studio 2013 以降、Git のサポートは組み込まれており、プラグインのインストールは必要ありません。
@@ -112,7 +112,7 @@ WebMatrix から Web Apps をデプロイする方法については、次のリ
 
 * [PHP-MySQL Web アプリの作成と FTP でのデプロイ](web-sites-php-mysql-deploy-use-ftp.md)。
 
-##<a name="tfs"></a>Team Foundation Server (TFS) による継続的なデプロイ
+##<a name="tfs"></a>Team Foundation Server (TFS) による継続的な配信
 
 Team Foundation Server は、ソース管理とチーム コラボレーションを対象にする、マイクロソフトのオンプレミスのソリューションです。Web アプリへの継続的な配信を実行するように TFS を設定することができます。
 
@@ -120,14 +120,14 @@ Team Foundation Server は、ソース管理とチーム コラボレーショ�
 
 * [Windows Azure のクラウド サービスの継続的な配信](../cloud-services-dotnet-continuous-delivery.md)このドキュメントは Azure クラウド サービスを対象にしていますが、そのコンテンツの一部は Web Apps にも当てはまります。
 
-##<a name="gitmercurial"></a>オンプレミスの Git または Mercurial リポジトリ
+##<a name="gitmercurial"></a>内部設置型の Git または Mercurial リポジトリ
 
 Git または Mercurial を使用する任意のリポジトリからデプロイを実行するために、Azure でそのリポジトリの URL を入力することができます。ローカルの Git リポジトリから Web アプリへの直接のプッシュを実行することもできます。
 
 詳細については、次のリソースを参照してください。
 
-* [Git を使用したソース管理から Web Apps への発行](web-sites-publish-source-control.md)。Git を使用してローカル コンピューターから Web アプリに直接発行する方法 (Azure では、この発行方法をローカル Git と呼びます)。また、GitHub、CodePlex、BitBucket からの Git リポジトリの継続的なデプロイを有効にする方法も示します。
-* [任意の git/hg リポジトリから Web Apps への発行](http://blog.davidebbo.com/2013/04/publishing-to-azure-web-sites-from-any.html)。Web Apps で "外部リポジトリ" 機能を使用する方法を説明しているブログ。
+* [Git を使用したソース管理から Web アプリへの発行](web-sites-publish-source-control.md)。Git を使用してローカル コンピューターから Web アプリに直接発行する方法 (Azure では、この発行方法をローカル Git と呼びます)。また、GitHub、CodePlex、BitBucket からの Git リポジトリの継続的なデプロイを有効にする方法も示します。
+* [任意の git/hg リポジトリから Web アプリへの発行](http://blog.davidebbo.com/2013/04/publishing-to-azure-web-sites-from-any.html)。Web Apps で "外部リポジトリ" 機能を使用する方法を説明しているブログ。
 * [Git、Mercurial、Dropbox に関する Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azuregit)。
 * [1 つの Git リポジトリから Azure への 2 つの Web サイトのデプロイ](http://www.hanselman.com/blog/DeployingTWOWebsitesToWindowsAzureFromOneGitRepository.aspx)。Scott Hanselman 氏によるブログの投稿です。
 
@@ -184,7 +184,7 @@ Windows、Mac、Linux マシンでコマンド ラインを使用し、FTP を�
 
 詳細については、次のリソースを参照してください。
 
-* [シンプルな Web Apps: デプロイ](http://azure.microsoft.com/blog/2014/07/28/simple-azure-websites-deployment/)。Web デプロイの使用を簡単にするために作成したツールに関する David Ebbo のブログ
+* [シンプルな Web アプリ: デプロイ](http://azure.microsoft.com/blog/2014/07/28/simple-azure-websites-deployment/)。Web デプロイの使用を簡単にするために作成したツールに関する David Ebbo のブログ
 * [Web デプロイ ツール](http://technet.microsoft.com/library/dd568996)。Microsoft TechNet サイトの公式ドキュメント。作成以来期間が経過していますが、現在も有効な出発点として使用できます。
 * [Web Deploy の使用](http://www.iis.net/learn/publish/using-web-deploy)。Microsoft IIS.NET サイトの公式ドキュメント。同じく作成以来期間が経過していますが、現在も有効な出発点として使用できます。
 * [StackOverflow](http://www.stackoverflow.com)。コマンドラインから Web Deploy を使用する方法に関する最新の情報を掲載した、出発点として最適な場所です。
@@ -192,16 +192,16 @@ Windows、Mac、Linux マシンでコマンド ラインを使用し、FTP を�
 
 ##<a name="nextsteps"></a>次のステップ
 
-シナリオによっては、Web アプリをステージングと運用バージョンの間で簡単に切り替えられる環境が必要です。詳細については、[Web Apps のステージングされたデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
+シナリオによっては、Web アプリをステージングと運用バージョンの間で簡単に切り替えられる環境が必要です。詳細については、[Web アプリのステージングされたデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
 
 バックアップと復元計画を策定することは、デプロイ ワークフローの重要な部分です。Web Apps のバックアップと復元の機能については、[Web Apps のバックアップ](web-sites-backup.md)に関するページをご覧ください。
 
-Azure のロール ベースの Access Control を使用して、Web Apps のデプロイへのアクセスを管理する方法については、[RBAC と Web Apps の公開](http://azure.microsoft.com/blog/2015/01/05/rbac-and-azure-websites-publishing)に関するブログをご覧ください。
+Azure のロール ベースのアクセス制御を使用して、Web アプリのデプロイへのアクセスを管理する方法については、[RBAC と Web アプリの公開](http://azure.microsoft.com/blog/2015/01/05/rbac-and-azure-websites-publishing)に関するブログをご覧ください。
 
-その他のデプロイのトピックについては、[Web Apps に関するドキュメント](/documentation/services/web-sites/)の「デプロイ」セクションをご覧ください。
+その他のデプロイのトピックについては、[Web アプリに関するドキュメント](/documentation/services/web-sites/)の「デプロイ」セクションをご覧ください。
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

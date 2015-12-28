@@ -60,7 +60,7 @@ ASP.NET 5 は軽量のクロスプラットフォーム Web 開発フレーム�
 
 ## サービスへの接続
 
-Service Fabric は、Reliable Services との通信方法において完全な柔軟性を提供します。1 つのアプリケーションに、TCP でアクセス可能なサービス、HTTP REST API でアクセス可能なサービス、Web ソケットでアクセス可能なサービスが含まれることがあります。使用可能なオプションおよびトレードオフについては、「[サービスとの通信](service-fabric-connect-and-communicate-with-services.md)」を参照してください。このチュートリアルでは簡単な手法の 1 つに従い、SDK で提供される `ServiceProxy`/`ServiceCommunicationListener` クラスを使用します。
+Service Fabric は、Reliable Services との通信方法において完全な柔軟性を提供します。1 つのアプリケーションに、TCP でアクセス可能なサービス、HTTP REST API でアクセス可能なサービス、Web ソケットでアクセス可能なサービスが含まれることがあります。使用可能なオプションおよびトレードオフについては、「[サービスとの通信](service-fabric-connect-and-communicate-with-services.md)」を参照してください。このチュートリアルでは簡単な手法の 1 つに従い、SDK で提供される `ServiceProxy`/`ServiceRemotingListener` クラスを使用します。
 
 `ServiceProxy` の方法 (リモート プロシージャ呼び出しまたは RPC でモデル化) では、サービスに対するパブリック コントラクトとして機能するようにインターフェイスを定義し、そのインターフェイスを使用してサービスと対話するためのプロキシ クラスを生成します。
 
@@ -130,13 +130,13 @@ Service Fabric は、Reliable Services との通信方法において完全な�
     ```
 
 
-### ServiceCommunicationListener を使用したステートフル サービスの公開
+### ServiceRemotingListener を使用したステートフル サービスの公開
 
 `ICounter` インターフェイスを実装した後、ステートフル サービスを他のサービスから呼び出すことができるようにする最後の手順は、通信チャネルを開くことです。ステートフル サービスの場合、Service Fabric が提供するオーバーライド可能な `CreateServiceReplicaListeners` という名前のメソッドでは、サービスで可能にする通信の種類に基づいて、1 つ以上の通信リスナーを指定できます。
 
 >[AZURE.NOTE]ステートレス サービスへの通信チャネルを開く同等のメソッドは、`CreateServiceInstanceListeners` という名前です。
 
-ここで提供する `ServiceCommunicationListener` は、`ServiceProxy` を使用してクライアントから呼び出すことができる RPC エンドポイントを作成します。
+ここで提供する `ServiceRemotingListener` は、`ServiceProxy` を使用してクライアントから呼び出すことができる RPC エンドポイントを作成します。
 
 ```c#
 protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -145,7 +145,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
     {
         new ServiceReplicaListener(
             (initParams) =>
-                new ServiceCommunicationListener<ICounter>(initParams, this))
+                new ServiceRemotingListener<ICounter>(initParams, this))
     };
 }
 ```
@@ -194,7 +194,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 このチュートリアルではステートフル サービスと通信する Web フロントエンドの追加に注目しましたが、非常によく似たモデルに従ってアクターと対話できます。実際にはもう少し簡単です。
 
-アクター プロジェクトを作成すると、Visual Studio によってインターフェイス プロジェクトが自動的に生成されます。そのインターフェイスを使用して Web プロジェクトでアクター プロキシを生成し、アクターと通信できます。通信チャネルは自動的に提供されるので、このチュートリアルでステートフル サービスに関して行ったような `ServiceCommunicationListener` の確立に相当するようなことは何も行う必要がありません。
+アクター プロジェクトを作成すると、Visual Studio によってインターフェイス プロジェクトが自動的に生成されます。そのインターフェイスを使用して Web プロジェクトでアクター プロキシを生成し、アクターと通信できます。通信チャネルは自動的に提供されるので、このチュートリアルでステートフル サービスに関して行った `ServiceRemotingListener` の確立に相当するようなことは何も行う必要がありません。
 
 ## ローカル クラスターでの Web サービスの実行
 
@@ -221,4 +221,4 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

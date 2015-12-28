@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー"
+	pageTitle="Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー | Microsoft Azure"
 	description="Microsoft やコミュニティからの Runbook とモジュールを Azure Automation 環境にインストールして使用できます。この記事では、これらのリソースにアクセスしたり、自分の Runbook をギャラリーに投稿したりする方法について説明します。"
 	services="automation"
 	documentationCenter=""
@@ -58,6 +58,8 @@ Runbook ギャラリーから直接インポートするのは、Azure ポータ
 
 - アップロードは、単一の .ps1 ファイルまたは .graphrunbook ファイルである必要があります。Runbook でモジュール、子 Runbook、または資産が必要な場合は、送信の説明および Runbook のコメント セクションで列記する必要があります。複数の Runbook を必要とするソリューションがある場合は、各 Runbook を個別にアップロードし、それぞれの説明に関連する Runbook の名前を列記します。同じカテゴリに表示されるように同じタグを使用していることを確認します。ソリューションが動作するためには他の Runbook が必要であることをユーザーが知るには、説明を読む必要があります。
 
+- **[コード セクションの挿入]** アイコンを使用して、PowerShell または PowerShell ワークフローのコード スニペットを説明に挿入します。
+
 - アップロードの概要が Runbook ギャラリーの結果に表示されるので、ユーザーが Runbook の機能を特定するのに役立つ詳細な情報を提供する必要があります。
 
 - 次のタグから 1 ～ 3 個をアップロードに割り当てる必要があります。ウィザードでは、Runbook はそのタグに一致するカテゴリの下に表示されます。この一覧にないタグは、ウィザードによって無視されます。一致するタグを指定しないと、Runbook はその他のカテゴリに表示されます。
@@ -100,11 +102,11 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
 
 ## Runbook またはモジュールの要求
 
-[ユーザーの声](http://feedback.azure.com/forums/246290-azure-automation)に要求を送信できます。Runbook の作成について支援が必要な場合、または PowerShell について質問がある場合は、[フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/ja-jp/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)に質問を投稿してください。
+[ユーザーの声](http://feedback.azure.com/forums/246290-azure-automation)に要求を送信できます。Runbook の作成について支援が必要な場合、または PowerShell について質問がある場合は、[フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/ja-JP/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)に質問を投稿してください。
 
 ## 関連記事:
 
 - [Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)
 - [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

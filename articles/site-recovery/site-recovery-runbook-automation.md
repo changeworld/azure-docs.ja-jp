@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="復旧計画への Azure Automation Runbook の追加" 
+   pageTitle="復旧計画への Azure Automation Runbook の追加 | Microsoft Azure" 
    description="この記事では、Azure Site Recovery において、Azure Automation を使用して復旧計画を拡張し、Azure への復旧中に複雑なタスクを実行可能にする方法について説明します。" 
    services="site-recovery" 
    documentationCenter="" 
@@ -13,11 +13,9 @@
    ms.tgt_pltfrm="na"
    ms.topic="article"
    ms.workload="required" 
-   ms.date="10/07/2015"
+   ms.date="12/14/2015"
    ms.author="ruturajd@microsoft.com"/>
 
-  
-   
 
 # 復旧計画への Azure Automation Runbook の追加
 
@@ -158,69 +156,68 @@ CloudServiceName | 仮想マシンが作成される Azure Cloud Service の名�
 
 1.  Azure Automation アカウントに、**OpenPort80** という名前で新しい Runbook を作成します。
 
-![](media/site-recovery-runbook-automation/14.png)
+	![](media/site-recovery-runbook-automation/14.png)
 
 2.  Runbook の [作成者] ビューに移動し、ドラフト モードに移行します。
 
 3.  まず、復旧計画のコンテキストとして使用する変数を指定します。
-
-```
-	param (
-		[Object]$RecoveryPlanContext
-	)
-
-```
   
+	```
+		param (
+			[Object]$RecoveryPlanContext
+		)
+
+	```
 
 4.  次に、資格情報とサブスクリプション名を使用して、サブスクリプションに接続します。
 
-```
-	$Cred = Get-AutomationPSCredential -Name 'AzureCredential'
+	```
+		$Cred = Get-AutomationPSCredential -Name 'AzureCredential'
 	
-	# Connect to Azure
-	$AzureAccount = Add-AzureAccount -Credential $Cred
-	$AzureSubscriptionName = Get-AutomationVariable –Name ‘AzureSubscriptionName’
-	Select-AzureSubscription -SubscriptionName $AzureSubscriptionName
-```
+		# Connect to Azure
+		$AzureAccount = Add-AzureAccount -Credential $Cred
+		$AzureSubscriptionName = Get-AutomationVariable –Name ‘AzureSubscriptionName’
+		Select-AzureSubscription -SubscriptionName $AzureSubscriptionName
+	```
 
-> ここで、**AzureCredential** と **AzureSubscriptionName** という Azure アセットを使用することに注意してください。
+	ここで、**AzureCredential** と **AzureSubscriptionName** という Azure アセットを使用することに注意してください。
 
 5.  ここで、エンドポイントの詳細と、エンドポイントを公開する仮想マシンの GUID を指定します。この場合は、フロントエンドの仮想マシンです。
 
-```
-	# Specify the parameters to be used by the script
-	$AEProtocol = "TCP"
-	$AELocalPort = 80
-	$AEPublicPort = 80
-	$AEName = "Port 80 for HTTP"
-	$VMGUID = "7a1069c6-c1d6-49c5-8c5d-33bfce8dd183"
-```
+	```
+		# Specify the parameters to be used by the script
+		$AEProtocol = "TCP"
+		$AELocalPort = 80
+		$AEPublicPort = 80
+		$AEName = "Port 80 for HTTP"
+		$VMGUID = "7a1069c6-c1d6-49c5-8c5d-33bfce8dd183"
+	```
 
-これにより、Azure エンドポイント プロトコル、VM のローカル ポート、およびそのマップされたパブリック ポートが指定されます。これらの変数は、VM にエンドポイントを追加する Azure のコマンドに必要なパラメーターです。VMGUID には、稼働に必要な仮想マシンの GUID が保持されます。
+	これにより、Azure エンドポイント プロトコル、VM のローカル ポート、およびそのマップされたパブリック ポートが指定されます。これらの変数は、VM にエンドポイントを追加する Azure のコマンドに必要なパラメーターです。VMGUID には、稼働に必要な仮想マシンの GUID が保持されます。
 
 6.  ここで、このスクリプトは、特定の VM GUID のコンテキストを抽出し、VM GUID で参照される仮想マシンにエンドポイントを作成します。
 
-```
-	#Read the VM GUID from the context
-	$VM = $RecoveryPlanContext.VmMap.$VMGUID
+	```
+		#Read the VM GUID from the context
+		$VM = $RecoveryPlanContext.VmMap.$VMGUID
 
-	if ($VM -ne $null)
-	{
-		# Invoke pipeline commands within an InlineScript
+		if ($VM -ne $null)
+		{
+			# Invoke pipeline commands within an InlineScript
 
-		$EndpointStatus = InlineScript {
-			# Invoke the necessary pipeline commands to add a Azure Endpoint to a specified Virtual Machine
-			# This set of commands includes: Get-AzureVM | Add-AzureEndpoint | Update-AzureVM (including necessary parameters)
+			$EndpointStatus = InlineScript {
+				# Invoke the necessary pipeline commands to add a Azure Endpoint to a specified Virtual Machine
+				# Commands include: Get-AzureVM | Add-AzureEndpoint | Update-AzureVM (including parameters)
 
-			$Status = Get-AzureVM -ServiceName $Using:VM.CloudServiceName -Name $Using:VM.RoleName | `
-				Add-AzureEndpoint -Name $Using:AEName -Protocol $Using:AEProtocol -PublicPort $Using:AEPublicPort -LocalPort $Using:AELocalPort | `
-				Update-AzureVM
-			Write-Output $Status
+				$Status = Get-AzureVM -ServiceName $Using:VM.CloudServiceName -Name $Using:VM.RoleName | `
+					Add-AzureEndpoint -Name $Using:AEName -Protocol $Using:AEProtocol -PublicPort $Using:AEPublicPort -LocalPort $Using:AELocalPort | `
+					Update-AzureVM
+				Write-Output $Status
+			}
 		}
-	}
-```
+	```
 
-7. この処理が完了したら、[発行]![](media/site-recovery-runbook-automation/20.png) をクリックし、スクリプトが実行で利用できるようにします。 
+7. この処理が完了したら、[発行]![](media/site-recovery-runbook-automation/20.png) をクリックし、スクリプトが実行で利用できるようにします。
 
 以下に、完全なスクリプトを参考として示します。
 
@@ -313,4 +310,4 @@ Runbook を計画に追加したら、テスト フェールオーバーを開�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

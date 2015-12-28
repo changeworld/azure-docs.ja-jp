@@ -53,14 +53,14 @@ ADF を使用すると、既存のデータ処理サービスを、可用性が�
 
 ##<a name="upload-data"></a>オンプレミスの SQL Server にデータをアップロードする
 
-[NYC タクシー データセット](http://chriswhong.com/open-data/foil_nyc_taxi/)を使用して、移行プロセスを説明します。NYC タクシー データセットは、記事に記載されているように、Azure BLOB ストレージの[ここ](http://www.andresmh.com/nyctaxitrips/)から入手できます。データには、乗車の詳細を含む trip\_data.csv ファイルと、乗車ごとの料金の詳細を含む trip\_far.csv ファイルの 2 つのファイルがあります。これらのファイルのサンプルと説明は、「[NYC タクシー乗車データセットの説明](machine-learning-data-science-process-sql-walkthrough.md#dataset)」にあります。
+[NYC タクシー データセット](http://chriswhong.com/open-data/foil_nyc_taxi/)を使用して、移行プロセスを説明します。NYC タクシー データセットは、記事に記載されているように、Azure BLOB ストレージの [NYC タクシー データ](http://www.andresmh.com/nyctaxitrips/)から入手できます。データには、乗車の詳細を含む trip\_data.csv ファイルと、乗車ごとの料金の詳細を含む trip\_far.csv ファイルの 2 つのファイルがあります。これらのファイルのサンプルと説明は、「[NYC タクシー乗車データセットの説明](machine-learning-data-science-process-sql-walkthrough.md#dataset)」にあります。
 
 
 ここに示されている手順は、自身のデータに適用することも、NYC タクシー データセットを使用してこの手順に従って行うこともできます。NYC タクシー データセットを自身のオンプレミスの SQL Server データベースにアップロードするには、「[SQL Server データベースにデータを一括インポートする](machine-learning-data-science-process-sql-walkthrough.md#dbload)」に記載されている手順に従います。これらは Azure Virtual Machine 上の SQL Server にアップロードする手順ですが、オンプレミスの SQL Server へのアップロード手順も同じです。
 
 ##<a name="create-adf"></a>Azure Data Factory を作成する
 
-[Azure ポータル](https://ms.portal.azure.com/)に新しい Azure Data Factory とリソース グループを作成するための手順は、[ここ](data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory)を参照してください。新しい ADF インスタンスに *adfdsp* という名前を付け、作成されたリソース グループに *adfdsprg* という名前を付けます。
+[Azure ポータル](https://ms.portal.azure.com/)に新しい Azure Data Factory とリソース グループを作成するための手順については、「[Azure Data Factory を作成する](data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory)」を参照してください。新しい ADF インスタンスに *adfdsp* という名前を付け、作成されたリソース グループに *adfdsprg* という名前を付けます。
 
 ## Data Management Gateway をインストールして構成する
 
@@ -301,4 +301,4 @@ Azure クラシック ポータルで (図をクリックすると) ADF 上に�
 
 ADF が提供するデータを段階的にパイプ処理する機能をまだ活用していないことに注意してください。これを行う方法と ADF が提供するその他の機能の詳細については、[ADF のドキュメント](http://azure.microsoft.com/services/data-factory/)を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/09/2015"
+	ms.date="12/10/2015"
 	ms.author="spelluru"/>
 
 # コンピューティングのリンクされたサービス
@@ -49,7 +49,8 @@
 	      "timeToLive": "00:05:00",
 	      "version": "3.2",
 		  "osType": "linux",
-	      "linkedServiceName": "MyBlobStore"
+	      "linkedServiceName": "MyBlobStore",
+		  "hcatalogLinkedServiceName": "AzureSqlLinkedService",
 	      "additionalLinkedServiceNames": [
 	        "otherLinkedServiceName1",
 	        "otherLinkedServiceName2"
@@ -69,6 +70,7 @@ version | HDInsight クラスターのバージョン。既定値は、Windows �
 linkedServiceName | データの保存し、処理するためのオンデマンド クラスターで使用される BLOB ストアです。 | あり
 additionalLinkedServiceNames | Data Factory サービスがあなたの代わりに登録できるように、HDInsight の「リンクされたサービス」の追加ストレージ アカウントを指定します。 | いいえ
 osType | オペレーティング システムの種類。使用可能な値: Windows (既定値) および Linux | いいえ
+hcatalogLinkedServiceName | HCatalog データベースを指す Azure SQL のリンクされたサービスの名前。オンデマンド HDInsight クラスターは、Azure SQL データベースをメタストアとして使用して作成されます。 | いいえ
 
 ### 高度なプロパティ
 
@@ -103,14 +105,15 @@ yarnConfiguration | HDInsight クラスターに Yarn 構成パラメーター (
 	        "templeton.mapper.memory.mb": "5000"
 	      },
 	      "mapReduceConfiguration": {
-	        "mapreduce.reduce.java.opts": "-Xmx8000m",
-	        "mapreduce.map.java.opts": "-Xmx8000m",
+	        "mapreduce.reduce.java.opts": "-Xmx4000m",
+	        "mapreduce.map.java.opts": "-Xmx4000m",
 	        "mapreduce.map.memory.mb": "5000",
 	        "mapreduce.reduce.memory.mb": "5000",
 	        "mapreduce.job.reduce.slowstart.completedmaps": "0.8"
 	      },
 	      "yarnConfiguration": {
-	        "yarn.app.mapreduce.am.resource.mb": "5000"
+	        "yarn.app.mapreduce.am.resource.mb": "5000",
+	        "mapreduce.map.memory.mb": "5000"
 	      },
 	      "additionalLinkedServiceNames": [
 	        "datafeeds",
@@ -137,7 +140,7 @@ D4 サイズのヘッド ノードとワーカー ノードを作成する場合
 	"headNodeSize": "Standard_D4",	
 	"dataNodeSize": "Standard_D4",
 
-これらのプロパティに間違った値を指定すると、**エラー**が発生し、"クラスターを作成できませんでした。例外: クラスター作成操作を完了できません。コード '400' で操作が失敗しました。取り残されたクラスターの状態: 'Error'。メッセージ: 'PreClusterCreationValidationFailure'。" というエラー メッセージが表示される場合があります。このエラーが発生した場合は、前述の記事の表に記載されている**コマンドレットと API** の名前を使用していることを確認してください。
+これらのプロパティに間違った値を指定すると、次のエラーが発生します。**エラー:** クラスターを作成できませんでした。例外: クラスター作成操作を完了できません。コード '400' で操作が失敗しました。取り残されたクラスターの状態: 'Error'。メッセージ: 'PreClusterCreationValidationFailure'。" というエラー メッセージが表示される場合があります。このエラーが発生した場合は、前述の記事の表に記載されている**コマンドレットと API** の名前を使用していることを確認してください。
 
 
 
@@ -189,8 +192,8 @@ Azure Batch の「リンクされたサービス」を作成し、仮想マシ�
 Azure Batch サービスの利用が初めての場合、次のトピックを参照してください。
 
 
-- Azure Batch サービスの概要については、「[Azure Batch の基礎](../batch/batch-technical-overview.md)」をご覧ください。
-- Azure Batch アカウントについては、[New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) コマンドレットを使用して作成する方法または[Azure クラシック ポータル](../batch/batch-account-create-portal.md)を使用して作成する方法をご覧ください。コマンドレットの使用方法の詳細については、「[PowerShell を使用した Azure Batch アカウントの管理](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)」トピックをご覧ください。
+- Azure Batch サービスの概要については、「[Azure Batch の基本](../batch/batch-technical-overview.md)」をご覧ください。
+- Azure Batch アカウントについては、[New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) コマンドレットを使用して作成する方法または [Azure クラシック ポータル](../batch/batch-account-create-portal.md)を使用して作成する方法をご覧ください。コマンドレットの使用方法の詳細については、「[PowerShell を使用した Azure Batch アカウントの管理](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)」トピックをご覧ください。
 - Azure Batch プールを作成するための [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) コマンドレット。
 
 ### 例
@@ -214,8 +217,8 @@ Azure Batch サービスの利用が初めての場合、次のトピックを�
 
 もう 1 つの選択肢は下のように batchUri エンドポイントを指定することです。
 
-			accountName: "adfteam",
-			batchUri: "https://eastus.batch.azure.com",
+			"accountName": "adfteam",
+			"batchUri": "https://eastus.batch.azure.com",
 
 ### プロパティ
 
@@ -279,7 +282,7 @@ apiKey | 公開されたワークスペース モデルの API です。 | あ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-型 | type プロパティを **AzureDataLakeAnalytics** に設定する必要があります。 | あり
+型 | type プロパティは **AzureDataLakeAnalytics** に設定する必要があります。 | あり
 accountName | Azure Data Lake Analytics アカウント名。 | あり
 dataLakeAnalyticsUri | Azure Data Lake Analytics URI。 | いいえ
 authorization | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | あり
@@ -292,4 +295,4 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 
 Azure SQL のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。このリンクされたサービスの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

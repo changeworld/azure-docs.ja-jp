@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="08/25/2015"
+	ms.date="12/11/2015"
 	ms.author="emgerner"/>
 
 # Python から Azure BLOB ストレージを使用する方法
@@ -106,7 +106,8 @@ BLOB からデータをダウンロードするには、**get\_blob\_to\_path**�
 
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先をご覧ください。
 
--   [Azure Storage チームのブログ][]
+- [Azure Storage チームのブログ][]
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
 詳細については、[Python デベロッパー センター](/develop/python/)も参照してください。
 
@@ -114,4 +115,4 @@ BLOB からデータをダウンロードするには、**get\_blob\_to\_path**�
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
 [Python Azure Storage パッケージ]: https://pypi.python.org/pypi/azure-storage
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

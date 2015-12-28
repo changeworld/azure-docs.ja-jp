@@ -274,11 +274,11 @@ Hive テーブルでデータを探索するために使用する、いくつか
 		and dropoff_latitude between 30 and 90
 		limit 10; 
 
-2 つの GPS 座標間の距離を計算する数式は、[ここ](http://www.movable-type.co.uk/scripts/latlong.html) (Peter Lapisu によって作成されました) にあります。彼の Javascript で、関数 toRad() は単に `lat_or_lon*pi/180` であり、これは、角度をラジアンに変換します。ここで、`lat_or_lon` は緯度または経度です。Hive には関数 `atan2` はありませんが、関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は [Wikipedia](http://en.wikipedia.org/wiki/Atan2) に記載された定義を使用して、`atan` 関数により実装されています。
+2 つの GPS 座標間の距離を計算する数式は、[Movable Type Scripts](http://www.movable-type.co.uk/scripts/latlong.html) (Peter Lapisu によって作成されました) にあります。彼の Javascript で、関数 toRad() は単に `lat_or_lon*pi/180` であり、これは、角度をラジアンに変換します。ここで、`lat_or_lon` は緯度または経度です。Hive には関数 `atan2` はありませんが、関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は [Wikipedia](http://en.wikipedia.org/wiki/Atan2) に記載された定義を使用して、`atan` 関数により実装されています。
 
 ![Create workspace][1]
 
-Hive 埋め込み UDF のリストについては、[こちら](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions)をご覧ください。
+Hive 埋め込み UDF のリストについては、[UDF 言語マニュアル](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions)をご覧ください。
 
 ## <a name="tuning"></a>高度なトピック: Hive パラメーターを調整してクエリ速度を向上させる
 
@@ -325,4 +325,4 @@ Hive 埋め込み UDF のリストについては、[こちら](https://cwiki.ap
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

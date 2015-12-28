@@ -56,8 +56,7 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
 
 有効な Azure SQL Database サーバーの場所一覧については、次のコマンドレットを実行します。
 
-	$AzureSQLLocations = Get-AzureRmLocation | Where-Object Name -Like "*SQL/Servers"
-	$AzureSQLLocations.Locations
+	$AzureSQLLocations = (Get-AzureRmResourceProvider -ListAvailable | Where-Object {$_.ProviderNamespace -eq 'Microsoft.Sql'}).Locations
 
 既にリソース グループがある場合、サーバーの作成に進みます。次のコマンドを実行して新しいリソース グループを作ることもできます。
 
@@ -128,4 +127,4 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
 
 - [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

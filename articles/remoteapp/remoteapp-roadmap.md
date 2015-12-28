@@ -12,14 +12,14 @@
     ms.tgt_pltfrm="NA"
     ms.devlang="NA"
     ms.topic="article"
-    ms.date="12/04/2015"
+    ms.date="12/16/2015"
     ms.author="elizapo" />
 
 # Azure RemoteApp で予定される新機能
 
 マイクロソフトは、お客様からのフィードバックに基づいて Azure RemoteApp の改善に常に取り組んでいます。今後、新機能が使用可能になるおおよその時期は次のとおりです。
 
-|機能|2016 年 1 月 - 3 月|2016 年 3 月 - 5 月|
+|機能|2016 年 1 月 - 3 月|2016 年 4 月 - 6 月|
 |-----------|-------|-------|
 |[Azure クラシック ポータル](http://manage.windowsazure.com)と [Azure ポータル](http://portal.azure.com)で Azure Remote App が利用可能 |○ | |
 |Azure RemoteApp プレビュー用 Windows 10 ユニバーサル アプリケーション|○| |
@@ -28,6 +28,9 @@
 |Azure RemoteApp の HTML5 ベースのクライアント|○ ||
 |Azure リソース マネージャー (ARM) のサポート||○|
 |Cloud Solution Provider (CSP)||○|
+|インド リージョンでの可用性|○||
+|英国リージョンでの可用性||○|
+
 
 今年、これまでに追加されたその他の機能強化
 
@@ -43,4 +46,4 @@
 - オーストラリア データ センターでの可用性
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

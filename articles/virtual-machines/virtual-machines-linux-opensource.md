@@ -131,7 +131,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 13. [基本: RAID](virtual-machines-linux-configure-raid.md)
 14. [基本: テンプレートを作成するための Linux VM のキャプチャ](virtual-machines-linux-capture-image.md)
 15. [基本: Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)
-16. [基本: Azure VM 拡張機能とその機能](http://msdn.microsoft.com/library/azure/dn606311.aspx)
+16. [基本: Azure VM 拡張機能とその機能](virtual-machines-extensions-features.md)
 17. [基本: Cloud-init で使用するカスタム データの VM への挿入](virtual-machines-how-to-inject-custom-data.md)
 18. [基本に関するブログ: 12 の手順から成る Azure 上での高可用性 Linux の構築](http://blogs.technet.com/b/keithmayer/archive/2014/10/03/quick-start-guide-building-highly-available-linux-servers-in-the-cloud-on-microsoft-azure.aspx)
 19. [基本に関するブログ: Azure CLI、node.js、jhawk を使用した、Azure 上での Linux のプロビジョニングの自動化](http://blogs.technet.com/b/keithmayer/archive/2014/11/24/step-by-step-automated-provisioning-for-linux-in-the-cloud-with-microsoft-azure-xplat-cli-json-and-node-js-part-1.aspx)
@@ -311,4 +311,4 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 [How to use docker-machine on Azure]: virtual-machines-docker-machine.md
 [How to use docker with swarm on Azure]: virtual-machines-docker-swarm.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

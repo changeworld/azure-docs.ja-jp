@@ -1,6 +1,6 @@
 <properties
    pageTitle="Service Fabric の継続的インテグレーション | Microsoft Azure"
-   description="Visual Studio Online (VSO) を使用して Service Fabric アプリケーションの継続的インテグレーションをセットアップする方法の概要"
+   description="Visual Studio Team Services (VSTS) を使用して Service Fabric アプリケーションの継続的インテグレーションをセットアップする方法の概要について説明します。"
    services="service-fabric"
    documentationCenter="na"
    authors="cawams"
@@ -15,19 +15,19 @@
    ms.date="10/16/2015"
    ms.author="cawa" />
 
-# Visual Studio Online (VSO) を使用して Service Fabric アプリケーションの継続的インテグレーションをセットアップする
+# Visual Studio Team Services (VSTS) を使用して Service Fabric アプリケーションの継続的インテグレーションをセットアップする
 
-この記事では、アプリケーションを自動的にビルド、パッケージ化、およびデプロイできるように、Visual Studio Online (VSO) を使用して、Service Fabric アプリケーションの継続的インテグレーション (CI) をセットアップする方法について説明します。このドキュメントは、現在のエクスペリエンスを示しており、開発の進行状況に応じて変更されることが予想されるので注意してください。また、説明する手順では、毎回、クラスターを最初から作成し直します。
+この記事では、アプリケーションを自動的にビルド、パッケージ化、およびデプロイできるように、Visual Studio Team Services (VSTS) を使用して、Service Fabric アプリケーションの継続的インテグレーション (CI) をセットアップする方法について説明します。このドキュメントは、現在のエクスペリエンスを示しており、開発の進行状況に応じて変更されることが予想されるので注意してください。また、説明する手順では、毎回、クラスターを最初から作成し直します。
 
 ## 前提条件
 
-作業を開始するために、Visual Studio Online でプロジェクトをセットアップします。
+作業を開始するために、Visual Studio Team Services でプロジェクトをセットアップします。
 
-1. まだセットアップしていない場合は、[Microsoft アカウント](http://www.microsoft.com/account)を使用して VSO アカウントを作成します。
-2. Microsoft アカウントを使用して VSO 上で新しいプロジェクトを作成します。
+1. まだセットアップしていない場合は、[Microsoft アカウント](http://www.microsoft.com/account)を使用して Team Services アカウントを作成します。
+2. Microsoft アカウントを使用して Team Services 上で新しいプロジェクトを作成します。
 3. 新規または既存の Service Fabric アプリのソースをこのプロジェクトにプッシュします。
 
-VSO プロジェクトの操作の詳細については、「[Visual Studio への接続](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)」を参照してください。
+Team Services プロジェクトの操作の詳細については、「[Visual Studio への接続](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)」を参照してください。
 
 ## セットアップの手順
 
@@ -192,7 +192,7 @@ Azure PowerShell をインストールするには、前のセクション「**A
 ### ビルド エージェントを登録する
 
 1.	agent.zip をダウンロードします。これを行うには、次の手順を実行します。
-    1.	* ***https://[your-VSO-account-name].visualstudio.com** などのチーム プロジェクトにログオンします。
+    1.	* ***https://[your-VSTS-account-name].visualstudio.com** などのチーム プロジェクトにログオンします。
 1.	画面の右上隅にある '歯車' アイコンを選択します。
     1.	コントロール パネルで、**[エージェント プール]** タブを選択します。
     1.	**[ダウンロード エージェント]** を選択し、agent.zip ファイルをダウンロードします。
@@ -206,7 +206,7 @@ Azure PowerShell をインストールするには、前のセクション「**A
     |パラメーター|値|
     |---|---|
     |エージェント名|既定値 `Agent-[machine name]` を受け入れます。
-    |TFS URL|チーム プロジェクトに `https://[your-VSO-account-name].visualstudio.com` のような URL を入力します。
+    |TFS URL|チーム プロジェクトに `https://[your-VSTS-account-name].visualstudio.com` のような URL を入力します。
     |エージェント プール|エージェント プールの名前を入力します(エージェント プールを作成していない場合は、既定値を使用します)。|
     |作業フォルダー|既定値をそのまま使用します。これは、ビルド エージェントによってアプリケーションが実際にビルドされるフォルダーです。注: ASP.NET 5 Web Services の構築を計画している場合は、デプロイ中に PathTooLongExceptions エラーが発生するのを防ぐために、フォルダーに対しては可能な限り短い名前を選択することをお勧めします。|
     |Windows サービスとしてインストールしますか?|既定値は N です。値を Y に変更します。|
@@ -216,9 +216,9 @@ Azure PowerShell をインストールするには、前のセクション「**A
 1. 資格情報を入力するように求められます。チーム プロジェクトに対する権限を持つ Microsoft アカウントの資格情報を入力します。
 1. ビルド エージェントが登録されていることを確認します。これを行うには、次の手順を実行します。
 
-    1. Web ブラウザー (ページ `https://[your-VSO-account-name].visualstudio.com/_admin/_AgentPool`) に戻り、ページを更新します。
+    1. Web ブラウザー (ページ `https://[your-VSTS-account-name].visualstudio.com/_admin/_AgentPool`) に戻り、ページを更新します。
     1. 前に ConfigureAgent.ps1 を実行したときに選択したエージェント プールを選びます。
-    1. ビルド エージェントが一覧の中に表示され、緑色で強調表示されていることを確認します。赤色で強調表示されている場合は、ビルド エージェントで VSO への接続に関する問題が発生しています。
+    1. ビルド エージェントが一覧の中に表示され、緑色で強調表示されていることを確認します。赤色で強調表示されている場合は、ビルド エージェントで Team Services への接続に関する問題が発生しています。
 
 ![](media/service-fabric-set-up-continuous-integration/vso-configured-agent.png)
 
@@ -233,7 +233,7 @@ Azure PowerShell をインストールするには、前のセクション「**A
 ### ビルド定義を作成する
 
 1.	空のビルド定義を作成します。これを行うには、次の手順を実行します。
-    1.	Visual Studio Online でプロジェクトを開きます。
+    1.	Visual Studio Team Services でプロジェクトを開きます。
     1.	**[ビルド]** タブを選択します。
     1.	緑色の **+** 記号を選択して、新しいビルド定義を作成します。
     1.	**[空]** を選択し、**[次へ]** ボタンをクリックします。
@@ -339,4 +339,4 @@ Azure PowerShell をインストールするには、前のセクション「**A
 
 Service Fabric アプリケーションとの継続的インテグレーションの詳細については、「[ビルドに関するドキュメントのホームページ](https://msdn.microsoft.com/Library/vs/alm/Build/overview)」、「[ビルド エージェントのデプロイ](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)」、「[ビルド定義の作成と構成](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)」を参照してください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

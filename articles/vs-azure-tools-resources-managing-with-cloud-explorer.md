@@ -3,9 +3,9 @@
    description="クラウド エクスプローラーを使用し、Visual Studio 内で Azure リソースを参照および管理する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags 
    ms.service="multiple"
    ms.devlang="dotnet"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="08/13/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # クラウド エクスプローラーを使用した Azure リソースの管理
 
@@ -95,4 +95,4 @@ Azure アカウントのサブスクリプションで特定の名前のリソ�
 
 検索ボックスに文字を入力すると、その文字に一致するリソースのみがリソース ツリーに表示されます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

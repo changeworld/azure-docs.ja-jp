@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SQL Server および Azure Site Recovery を使用した障害復旧 | Microsoft Azure" 
+	pageTitle="SQL Server 障害復旧および Azure Site Recovery を使用した SQL Server の保護 | Microsoft Azure" 
 	description="Azure Site Recovery は、セカンダリ オンプレミス サイトまたは Azure への SQL Server のレプリケーション、フェールオーバー、および復旧を調整します。" 
 	services="site-recovery" 
 	documentationCenter="" 
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/18/2015" 
+	ms.date="12/14/2015" 
 	ms.author="raynew"/>
 
 
-# SQL Server および Azure Site Recovery を使用した障害復旧 
+# SQL Server 障害復旧および Azure Site Recovery を使用した SQL Server の保護 
 
 Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、および復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略を支援する Azure サービスです。Site Recovery では、いくつかのレプリケーション メカニズムをサポートし、常にマシンを Azure またはセカンダリ データセンターで保護し、Azure またはセカンダリ データセンターにレプリケートおよびフェールオーバーします。すべてのデプロイメント シナリオの概要については、「[Azure Site Recovery の概要](site-recovery-overview.md)」を参照してください。
 
@@ -374,4 +374,4 @@ SQL Standard のクラスターの場合、計画外のフェールオーバー�
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

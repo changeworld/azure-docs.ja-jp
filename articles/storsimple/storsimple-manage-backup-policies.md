@@ -12,10 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="12/14/2015"
    ms.author="v-sharos"/>
 
 # StorSimple Manager サービスを使用してバックアップ ポリシーを管理する
+
+[AZURE.INCLUDE [storsimple-version-selector-manage-backup-policies](../../includes/storsimple-version-selector-manage-backup-policies.md)]
 
 ## 概要
 
@@ -88,4 +90,4 @@ StorSimple デバイスからバックアップ ポリシーを削除するに�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

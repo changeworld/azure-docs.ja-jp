@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="09/08/2015" 
+	ms.date="12/15/2015" 
 	ms.author="wesmc"/>
 
 
@@ -25,7 +25,7 @@
 
 このトピックでは、Azure Notification Hubs を使用してニュース速報通知を Android アプリケーションにブロードキャストする方法について説明します。完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。
 
-ブロードキャスト シナリオは、通知ハブでの登録の作成時に 1 つ以上の_タグ_を追加することで有効にします。通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。タグは文字列にすぎないため、事前にプロビジョニングする必要はありません。タグの詳細については、「[Notification Hubs の概要]」を参照してください。
+ブロードキャスト シナリオは、通知ハブでの登録の作成時に 1 つ以上の_タグ_を追加することで有効にします。通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。タグは文字列にすぎないため、事前にプロビジョニングする必要はありません。タグの詳細については、「[ルーティングとタグ式](notification-hubs-routing-tag-expressions.md)」を参照してください。
 
 
 ##前提条件
@@ -121,13 +121,14 @@
 			private Context context;
 			private String senderId;
 
-			public Notifications(Context context, String senderId) {
-				this.context = context;
-				this.senderId = senderId;
-
-				gcm = GoogleCloudMessaging.getInstance(context);
-		        hub = new NotificationHub(<hub name>, <connection string with listen access>, context);
-			}
+		    public Notifications(Context context, String senderId, String hubName, 
+									String listenConnectionString) {
+		        this.context = context;
+		        this.senderId = senderId;
+		
+		        gcm = GoogleCloudMessaging.getInstance(context);
+		        hub = new NotificationHub(hubName, listenConnectionString, context);
+		    }
 
 			public void storeCategoriesAndSubscribe(Set<String> categories)
 			{
@@ -136,36 +137,42 @@
 			    subscribeToCategories(categories);
 			}
 
-			public void subscribeToCategories(final Set<String> categories) {
-				new AsyncTask<Object, Object, Object>() {
-					@Override
-					protected Object doInBackground(Object... params) {
-						try {
-							String regid = gcm.register(senderId);
-					        hub.register(regid, categories.toArray(new String[categories.size()]));
-						} catch (Exception e) {
-							Log.e("MainActivity", "Failed to register - " + e.getMessage());
-							return e;
-						}
-						return null;
-					}
-
-					protected void onPostExecute(Object result) {
-						String message = "Subscribed for categories: "
-								+ categories.toString();
-						Toast.makeText(context, message,
-								Toast.LENGTH_LONG).show();
-					}
-				}.execute(null, null, null);
+			public Set<String> retrieveCategories() {
+				SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
+				return settings.getStringSet("categories", new HashSet<String>());
 			}
+
+		    public void subscribeToCategories(final Set<String> categories) {
+		        new AsyncTask<Object, Object, Object>() {
+		            @Override
+		            protected Object doInBackground(Object... params) {
+		                try {
+		                    String regid = gcm.register(senderId);
+		
+		                    String templateBodyGCM = "{"data":{"message":"$(messageParam)"}}";
+		
+		                    hub.registerTemplate(regid,"simpleGCMTemplate", templateBodyGCM, 
+								categories.toArray(new String[categories.size()]));
+		                } catch (Exception e) {
+		                    Log.e("MainActivity", "Failed to register - " + e.getMessage());
+		                    return e;
+		                }
+		                return null;
+		            }
+		
+		            protected void onPostExecute(Object result) {
+		                String message = "Subscribed for categories: "
+		                        + categories.toString();
+		                Toast.makeText(context, message,
+		                        Toast.LENGTH_LONG).show();
+		            }
+		        }.execute(null, null, null);
+		    }
 
 		}
 
 	このクラスは、このデバイスが受信するニュースのカテゴリを格納するためにローカル ストレージを使用します。ローカル ストレージには、これらのカテゴリを登録するメソッドも格納されます。
 
-4. 上のコード内で、`<hub name>` と `<connection string with listen access>` のプレースホルダーを、通知ハブの名前と既に取得してある *DefaultListenSharedAccessSignature* の接続文字列に置き換えます。
-
-	> [AZURE.NOTE]クライアント アプリケーションを使用して配布される資格情報は一般にセキュリティで保護されないため、クライアント アプリケーションではリッスン アクセス用のキーだけを配布してください。リッスン アクセスにより、アプリケーションが通知を登録できるようになりますが、既存の登録を変更することはできないため、通知を送信できません。通知を送信して既存の登録を変更するセキュリティで保護されたバックエンド サービスでは、フル アクセス キーが使用されます。
 
 4. **MainActivity** クラスで、**NotificationHub** および **GoogleCloudMessaging** のプライベート フィールドを削除し、**Notifications** に対するフィールドを追加します。
 
@@ -173,20 +180,32 @@
 		// private NotificationHub hub;
 		private Notifications notifications;
 
-5. 次に、**onCreate** メソッドで、**hub** フィールドの初期化と **registerWithNotificationHubs** を削除します。次に、**Notifications** クラスのインスタンスを初期化する次の行を追加します。メソッドには次の行が含まれています。
+5. 次に、**onCreate** メソッドで、**hub** フィールドの初期化と **registerWithNotificationHubs** を削除します。次に、**Notifications** クラスのインスタンスを初期化する次の行を追加します。
 
-		@Override
-		protected void onCreate(Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
-			setContentView(R.layout.activity_main);
 
-			NotificationsManager.handleNotifications(this, SENDER_ID,
-					MyHandler.class);
+	    protected void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        setContentView(R.layout.activity_main);
+	        MyHandler.mainActivity = this;
+	
+	        NotificationsManager.handleNotifications(this, SENDER_ID,
+	                MyHandler.class);
+	
+	        notifications = new Notifications(this, SENDER_ID, HubName, HubListenConnectionString);
+	
+	        notifications.subscribeToCategories(notifications.retrieveCategories());
+	    }
 
-			notifications = new Notifications(this, SENDER_ID);
-		}
+	`HubName` と `HubListenConnectionString` は、通知ハブの名前と取得済みの *DefaultListenSharedAccessSignature* の接続文字列のプレースホルダーである `<hub name>` と `<connection string with listen access>` によって既に設定されています。
 
-6. その後、次のメソッドを追加します。
+	> [AZURE.NOTE]クライアント アプリケーションを使用して配布される資格情報は一般にセキュリティで保護されないため、クライアント アプリケーションではリッスン アクセス用のキーだけを配布してください。リッスン アクセスにより、アプリケーションが通知を登録できるようになりますが、既存の登録を変更することはできないため、通知を送信できません。通知を送信して既存の登録を変更するセキュリティで保護されたバックエンド サービスでは、フル アクセス キーが使用されます。
+
+
+6. 次に、[購読] ボタンのクリック イベントを処理する次の imports と `subscribe` メソッドを追加します。
+		
+		import android.widget.CheckBox;
+		import java.util.HashSet;
+		import java.util.Set;
 
 	    public void subscribe(View sender) {
 			final Set<String> categories = new HashSet<String>();
@@ -223,66 +242,52 @@
 
 > [AZURE.NOTE]Google Cloud Messaging (GCM) によって割り当てられた registrationId はいつでも変更できるので、通知の失敗を回避するため、通知を頻繁に登録するようにしてください。この例では、アプリケーションが起動するたびに通知を登録します。頻繁に実行されるアプリケーションの場合 (1 日に複数回など)、帯域幅を節約するため、前回の登録から 1 日経過していない場合は登録をスキップできます。
 
-1. **Notifications** クラスに、次のコードを追加します。
 
-		public Set<String> retrieveCategories() {
-			SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
-			return settings.getStringSet("categories", new HashSet<String>());
-		}
-
-	クラスで定義されたカテゴリが返されます。
-
-2. ここで、**MainActivity** クラスの **onCreate** メソッドの最後にこのコードを追加します。
+1. **MainActivity** クラスの **onCreate** メソッドの最後に次のコードを追加します。
 
 		notifications.subscribeToCategories(notifications.retrieveCategories());
 
-	これにより、アプリケーションが起動するたびに、ローカル ストレージからカテゴリを取得し、これらのカテゴリの登録を要求するようになります。「Notification Hubs の使用」チュートリアルの一部として **InitNotificationsAsync** メソッドが作成されましたが、このトピックでは必要ありません。
+	これにより、アプリケーションが起動するたびに、ローカル ストレージからカテゴリを取得し、これらのカテゴリの登録を要求するようになります。
 
-3. その後、次のメソッドを **MainActivity** に追加します。
+2. 次に、`MainActivity` クラスの `onStart()` メソッドを次のように更新します。
 
-		@Override
-		protected void onStart() {
-			super.onStart();
+    @Override protected void onStart() { super.onStart(); isVisible = true;
 
-			Set<String> categories = notifications.retrieveCategories();
+        Set<String> categories = notifications.retrieveCategories();
 
-			CheckBox world = (CheckBox) findViewById(R.id.worldBox);
-			world.setChecked(categories.contains("world"));
-			CheckBox politics = (CheckBox) findViewById(R.id.politicsBox);
-			politics.setChecked(categories.contains("politics"));
-			CheckBox business = (CheckBox) findViewById(R.id.businessBox);
-			business.setChecked(categories.contains("business"));
-			CheckBox technology = (CheckBox) findViewById(R.id.technologyBox);
-			technology.setChecked(categories.contains("technology"));
-			CheckBox science = (CheckBox) findViewById(R.id.scienceBox);
-			science.setChecked(categories.contains("science"));
-			CheckBox sports = (CheckBox) findViewById(R.id.sportsBox);
-			sports.setChecked(categories.contains("sports"));
-		}
+        CheckBox world = (CheckBox) findViewById(R.id.worldBox);
+        world.setChecked(categories.contains("world"));
+        CheckBox politics = (CheckBox) findViewById(R.id.politicsBox);
+        politics.setChecked(categories.contains("politics"));
+        CheckBox business = (CheckBox) findViewById(R.id.businessBox);
+        business.setChecked(categories.contains("business"));
+        CheckBox technology = (CheckBox) findViewById(R.id.technologyBox);
+        technology.setChecked(categories.contains("technology"));
+        CheckBox science = (CheckBox) findViewById(R.id.scienceBox);
+        science.setChecked(categories.contains("science"));
+        CheckBox sports = (CheckBox) findViewById(R.id.sportsBox);
+        sports.setChecked(categories.contains("sports"));
+    {
 
 	これにより、以前に保存されたカテゴリの状態に基づいてメイン アクティビティが更新されます。
 
 これで、アプリケーションが完成し、デバイスのローカル ストレージに一連のカテゴリを格納できるようになりました。ローカル ストレージは、ユーザーがカテゴリの選択を変更したときに通知ハブに登録するために使用されます。次に、このアプリケーションにカテゴリ通知を送信できるバックエンドを定義します。
 
-##バックエンドから通知を送信する
+##タグ付けされた通知の送信
 
-[AZURE.INCLUDE [notification-hubs-back-end](../../includes/notification-hubs-back-end.md)]
+[AZURE.INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 ##アプリケーションを実行して通知を生成する
 
-1. Eclipse で、アプリケーションをビルドし、デバイスまたはエミュレーターで起動します。
+1. Android Studio で、アプリケーションをビルドし、デバイスまたはエミュレーターで起動します。
 
 	アプリケーションの UI には、購読するカテゴリを選択できる一連の切り替えボタンが表示されている点に注目してください。
 
 2. 1 つ以上のカテゴリ切り替えボタンを有効にし、**[Subscribe]** をクリックします。
 
-	アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。登録されたカテゴリが返され、ダイアログに表示されます。
+	アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。登録されたカテゴリが返され、トースト通知に表示されます。
 
-4. 新しい通知は、次のいずれかの方法でバックエンドから送信します。
-
-	+ **.NET コンソール アプリケーション**: コンソール アプリケーションを起動します。
-
-	+ **Java/PHP:** アプリケーションとスクリプトを実行します。
+4. .NET コンソール アプリケーションを実行して、新しい通知を送信します。または、[Azure クラシック ポータル]で通知ハブの [デバッグ] タブを使用して、タグ付けされたテンプレート通知を送信できます。
 
 	選択されたカテゴリの通知がトースト通知として表示されます。
 
@@ -294,9 +299,6 @@
 
 	ニュース速報アプリケーションを拡張して、ローカライズした通知を送信できるようにする方法について説明します。
 
-+ [Notification Hubs によるユーザーへの通知]
-
-	認証された特定のユーザーにプッシュ通知する方法について説明します。これは、特定のユーザーにのみ通知を送信する場合に適したソリューションです。
 
 
 
@@ -307,14 +309,14 @@
 <!-- URLs.-->
 [get-started]: notification-hubs-android-get-started.md
 [Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]: /manage/services/notification-hubs/breaking-news-localized-dotnet/
-[Notification Hubs によるユーザーへの通知]: /manage/services/notification-hubs/notify-users
+[Notify users with Notification Hubs]: /manage/services/notification-hubs/notify-users
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-
+[Azure クラシック ポータル]: https://manage.windowsazure.com
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

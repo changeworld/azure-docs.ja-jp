@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/07/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # ネットワーク リソース プロバイダー
@@ -244,7 +244,7 @@ ARM テンプレート言語の詳細については、「[Azure リソース �
 テンプレートから Azure にサービスをデプロイするには、PowerShell、AzureCLI を使用するか、または GitHub からクリック操作によってデプロイします。GitHub でテンプレートからサービスをデプロイするには、次の手順を実行します。
 
 1. GitHub で template3 ファイルを開きます。たとえば、[2 つのサブネットを含む仮想ネットワーク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-virtual-network) を開きます。
-2. **[Azure に展開]** をクリックし、資格情報を使用して Azure ポータルにサインインします。
+2. **[Azure にデプロイ]** をクリックし、資格情報を使用して Azure ポータルにサインインします。
 3. テンプレートを確認し、**[保存]** をクリックします。
 4. **[パラメーターの編集]** をクリックし、VNET およびサブネットの場所 (*[米国西部]* など) を選択します。
 5. 必要に応じて、**ADDRESSPREFIX** および **SUBNETPREFIX** パラメーターを変更し、**[OK]** をクリックします。
@@ -274,4 +274,6 @@ ARM テンプレート言語の詳細については、「[Azure リソース �
 
 [テンプレートのデプロイ](https://msdn.microsoft.com/library/azure/dn790549.aspx)
 
-<!---HONumber=Oct15_HO3-->
+現在
+
+<!---HONumber=AcomDC_1217_2015-->

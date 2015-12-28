@@ -149,7 +149,7 @@ BLOB などのさまざまなストレージ オブジェクトのサイズを�
 
 Storage サービスのパフォーマンスを監視するには、時間単位および分単位のメトリック テーブルにある次のメトリックを使用します。
 
-- **AverageE2ELatency** および **AverageServerLatency** の値は、Storage サービスまたは API 操作タイプが要求の処理に要した時間の平均を示します。**AverageE2ELatency** は、要求の処理にかかった時間に加えて要求の読み取りと応答の送信にかかった時間を含む、エンドツーエンドの待機時間の測定値です (そのため、要求が Storage サービスに達した後のネットワーク待機時間も含まれます)。一方、**AverageServerLatency** は、処理時間のみの測定値であるため、クライアントとの通信に関するネットワーク待機時間は含まれません。これらの 2 つの値が大きく異なる場合がありますが、その理由については、このガイド中の後のセクション「[メトリックが示す AverageE2ELatency が高く、AverageServerLatency が低い]」を参照してください。
+- **AverageE2ELatency** 列と **AverageServerLatency** 列の値は、ストレージ サービスまたは API 操作タイプが要求の処理に要した時間の平均を示します。**AverageE2ELatency** は、要求の処理にかかった時間に加えて要求の読み取りと応答の送信にかかった時間を含む、エンドツーエンドの待機時間の測定値です (そのため、要求が Storage サービスに達した後のネットワーク待機時間も含まれます)。一方、**AverageServerLatency** は、処理時間のみの測定値であるため、クライアントとの通信に関するネットワーク待機時間は含まれません。これらの 2 つの値が大きく異なる場合がありますが、その理由については、このガイド中の後のセクション「[メトリックが示す AverageE2ELatency が高く、AverageServerLatency が低い]」を参照してください。
 - **TotalIngress** および **TotalEgress** 列の値は、Storage サービスまたは特定の API 操作タイプの送受信データの総量 (バイト単位) を示します。
 - **TotalRequests** 列の値は、API 操作の Storage サービスが受信した要求の総数を示します。**TotalRequests** は、Storage サービスが受信した要求の総数です。
 
@@ -215,7 +215,7 @@ Azure SDK には、開発用ワークステーションで実行できるスト�
 
 Storage Client Library for .NET では、アプリケーションで実行されたストレージ操作に関するクライアント側のログ データを収集できます。クライアント側のログを有効にしてログ データにアクセスする方法の詳細については、MSDN の<a href="http://go.microsoft.com/fwlink/?LinkId=510868" target="_blank">ストレージ クライアント ライブラリを使用したクライアント側のログ</a>に関するページを参照してください。
 
-> [AZURE.NOTE]\(SAS の許可エラーなどの) 状況によっては、サーバー側のストレージ ログには要求データが見つからないエラーを、ユーザーから報告される可能性があります。ストレージ クライアント ライブラリのログ機能を使用して問題の原因がクライアント側にあるか調べたり、ネットワーク監視ツールを使用してネットワークを調べたりできます。
+> [AZURE.NOTE](SAS の許可エラーなどの) 状況によっては、サーバー側の ストレージ ログには要求データが見つからないエラーを、ユーザーから報告される可能性があります。ストレージ クライアント ライブラリのログ機能を使用して問題の原因がクライアント側にあるか調べたり、ネットワーク監視ツールを使用してネットワークを調べたりできます。
 
 ### <a name="using-network-logging-tools"></a>ネットワーク ログ ツールの使用
 
@@ -240,9 +240,9 @@ Storage Client Library for .NET では、アプリケーションで実行され
 
 ストレージ クライアント ライブラリは、要求ごとに固有のクライアント要求 ID を自動生成します。
 
-- ストレージ クライアント ライブラリが作成するクライアント側のログの場合、クライアント要求 ID は、その要求に関連したすべてのログ エントリの **[クライアント要求 ID\]** フィールドに表示されます。
+- ストレージ クライアント ライブラリが作成するクライアント側のログの場合、クライアント要求 ID は、その要求に関連したすべてのログ エントリの **[クライアント要求 ID]** フィールドに表示されます。
 - Fiddler などによってキャプチャされたネットワーク トレースの場合、クライアント要求 ID は、要求メッセージの **x-ms-client-request-id** HTTP ヘッダー値として表示されます。
-- サーバー側の Storage Logging ログの場合、クライアント要求 ID は [クライアント要求 ID\] 列に表示されます。
+- サーバー側の Storage Logging ログの場合、クライアント要求 ID は [クライアント要求 ID] 列に表示されます。
 
 > [AZURE.NOTE]複数の要求が同じクライアント要求 ID を共有する可能性があります。クライアントがこの値を割り当てることができるからです (一方、ストレージ クライアント ライブラリは新しい値を自動的に割り当てます)。クライアントから再試行する場合には、必ず同じクライアント要求 ID を共有します。クライアントからの送信されるバッチの場合、バッチのクライアント要求 ID は 1 つだけです。
 
@@ -363,7 +363,7 @@ Storage サービスが正常な要求に関して算出するのはメトリッ
 
 #### クライアントのパフォーマンス上の問題に関する調査
 
-クライアントの応答が低下する理由の 1 つとして考えられるのは、使用可能な接続またはスレッドの数に限界がある場合です。この問題は、クライアント コードをより効率的に変更する (たとえば、Storage サービスに対する非同期呼び出しを使用する)、または (コアおよびメモリを増加させた) より大きな仮想マシンを使用するように変更すると、解決できる場合があります。
+クライアントの応答が低下する理由として、使用可能な接続またはスレッドの数が制限されていること、または CPU、メモリ、ネットワーク帯域幅などのリソースが不足していることが考えられます。この問題は、クライアント コードをより効率的に変更する (たとえば、Storage サービスに対する非同期呼び出しを使用する)、または (コアおよびメモリを増加させた) より大きな仮想マシンを使用するように変更すると、解決できる場合があります。
 
 Table サービスおよび Queue サービスの場合、Nagle アルゴリズムも **AverageE2ELatency** が **AverageServerLatency** と比較して高くなる原因となる可能性があります。詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx" target="_blank">小さな要求に不親切な Nagle アルゴリズム</a>に関する Microsoft Azure Storage チームのブログ記事を参照してください。Nagle アルゴリズムは、**System.Net** 名前空間で **ServicePointManager** クラスを使用するとコード内で無効にすることができます。この操作は、既に開かれている接続に対しては影響を及ぼさないため、アプリケーションの中で Table サービスまたは Queue サービスを呼び出す前に実行する必要があります。以下の例は、worker ロールの **Application\_Start** メソッドに関係する部分です。
 
@@ -387,7 +387,13 @@ Microsoft Message Analyzer によるネットワーク問題のトラブルシ�
 
 このシナリオの場合、最も可能性が高い原因は、Storage サービスに到達するストレージ要求の遅延です。クライアントの要求が BLOB サービスにうまく送られない原因を調査する必要があります。
 
-要求送信でクライアントに遅延が生じる理由として、使用可能な接続またはスレッドの数に限りがあるという可能性があります。クライアントが複数回試行したかどうか、その場合にはその理由についても調査しなければなりません。この調査はプログラムで実行できます。その場合、要求に関連した **OperationContext** オブジェクトを調べ、**ServerRequestId** 値を取得します。詳しくは、『[サーバー要求 ID]』セクションにあるコード サンプルを参照してください。
+要求送信でクライアントに遅延が生じる理由の 1 つとして、使用可能な接続またはスレッドの数が制限されていることが考えられます。
+
+クライアントが複数回再試行したかどうかを確認し、試行している場合はその理由を調査する必要があります。クライアントが複数回再試行しているかどうかを確認するには、以下を実行できます。
+
+- Storage Analytics のログを調べます。再試行が複数回発生している場合は、クライアント要求 ID が同じでサーバー要求 ID が異なる複数の操作があります。
+- クライアントのログを調べます。詳細ログに、再試行が発生したことが示されます。
+- コードをデバッグし、要求に関連付けられた **OperationContext** オブジェクトのプロパティをチェックします。操作が再試行されている場合、**RequestResults** プロパティに複数の重複しないサーバー要求 ID が含まれます。各要求の開始時刻と終了時刻をチェックすることもできます。詳細については、「[サーバー要求 ID]」セクションのコード サンプルを参照してください。 
 
 クライアントに問題がない場合、パケット損失などの考えられるネットワーク問題について調査してください。Wireshark または Microsoft Message Analyzer などのツールを使用して、ネットワーク問題を調査できます。
 
@@ -403,7 +409,7 @@ BLOB ダウンロード要求の **AverageServerLatency** が高い場合、Stor
 
 また **AverageServerLatency** 値が高いという症状は、テーブルやクエリがうまく設計されていないために、スキャン操作が生じたり、前後にアンチ パターンが存在したりする場合に起こり得ます。詳しくは、『[メトリックが PercentThrottlingError の増加を示す]』を参照してください。
 
-> [AZURE.NOTE]注意が必要な他の問題を含む総合的なチェック リストについては、[拡張可能でパフォーマンスの高い Storage ベースのアプリケーションを設計するためのチェックリスト](storage-performance-checklist.md)のページを参照してください。
+> [AZURE.NOTE]注意が必要な他の問題を含む総合的なチェック リストについては、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](storage-performance-checklist.md)」を参照してください。
 
 ### <a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>キューのメッセージ配信で予期しない遅延が発生する
 
@@ -481,10 +487,10 @@ Microsoft.WindowsAzure.Storage|エラー|1|85d077ab -…|再試行ポリシー�
 
 - 一般に、クライアントがすぐに使用できるように SAS を作成する場合には開始時刻は設定しないでください。現行時間を使用して SAS を生成するホストと、Storage サービスのクロックに小さな差異が存在すると、有効になっていない SAS を Storage サービスが受け取る可能性があります。
 - SAS に非常に短い有効期限は設定しないでください。やはり、SAS を生成するホストと Storage サービス間のクロックに小さい差異があると、予想されていたよりも明らかに早く SAS の有効期限が切れる恐れがあります。
-- SAS キーのバージョン パラメーター (例: **sv=2012-02-12**) が、使用しているストレージ クライアント ライブラリのバージョンと一致するようにします。必ず、最新バージョンのストレージ クライアント ライブラリを使用してください。SAS トークンのバージョン管理およびクライアント ライブラリ バージョンの依存関係の詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/14/what-s-new-for-microsoft-azure-storage-at-teched-2014.aspx" target="_blank">Microsoft Azure Storage の新機能</a>に関するページを参照してください。
+- SAS キーのバージョン パラメーター (例: **sv=2015-04-05**) が、使用しているストレージ クライアント ライブラリのバージョンと一致するようにします。 常に最新バージョンの[ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)を使用することをお勧めします。SAS トークンのバージョン管理およびクライアント ライブラリ バージョンの依存関係の詳細については、[Microsoft Azure Storage の新機能](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/14/what-s-new-for-microsoft-azure-storage-at-teched-2014.aspx)に関するページを参照してください。
 - ストレージ アクセス キーを再生成すると、既存の SAS トークンが無効になる可能性があります。この状況は、SAS トークンを生成する際にクライアント アプリケーションがキャッシュする有効期限を長く設定していると問題となることがあります。
 
-SAS トークンを生成するためのストレージ クライアント ライブラリを使用すると、有効なトークンの作成が容易です。ただし、Storage REST API を使用し、手動で SAS トークンを構成している場合、MSDN の「<a href="http://msdn.microsoft.com/library/azure/ee395415.aspx" target="_blank">Shared Access Signature を使用したアクセスの委任</a>」を注意深くお読みください。
+SAS トークンを生成するためのストレージ クライアント ライブラリを使用すると、有効なトークンの作成が容易です。ただし、Storage REST API を使用し、手動で SAS トークンを構成している場合、MSDN の「<a href="http://msdn.microsoft.com/library/azure/ee395415.aspx" target="_blank">共有アクセス署名を使用したアクセスの委任</a>」を注意深くお読みください。
 
 ### <a name="the-client-is-receiving-404-messages"></a>クライアントが HTTP 404 (見つからない) のメッセージを受け取る
 クライアント アプリケーションが HTTP 404 (未検出) メッセージをサーバーから受け取った場合は、クライアントが使用しようとしていたオブジェクト (エンティティ、テーブル、BLOB、コンテナー、キューなど) が Storage サービス内に存在しないことを意味します。これには以下のようなさまざまな理由が考えられます。
@@ -613,7 +619,7 @@ JavaScript クライアントを使用していて Storage サービスから HT
 
 これらのエラーは、Web ページがそのページのドメインとは異なるドメインの API を呼び出さないようにする <a href="http://www.w3.org/Security/wiki/Same_Origin_Policy" target="_blank">Same Origin Policy</a> セキュリティ制限を Web ブラウザーで実装しているために発生します。
 
-この JavaScript の問題を回避するには、クライアントがアクセスする Storage サービスにクロス オリジン リソース共有 (CORS) を構成します。詳細については、MSDN の「<a href="http://msdn.microsoft.com/library/azure/dn535601.aspx" target="_blank">Azure Storage サービスでのクロス オリジン リソース共有 (CORS) のサポート</a>」を参照してください。
+この JavaScript の問題を回避するには、クライアントがアクセスする Storage サービスにクロス オリジン リソース共有 (CORS) を構成します。詳細については、MSDN の「<a href="http://msdn.microsoft.com/library/azure/dn535601.aspx" target="_blank">Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート</a>」を参照してください。
 
 以下のコード サンプルは、Contoso ドメインで実行される JavaScript に対して Blob Storage サービスの BLOB へのアクセスを許可する BLOB サービスを構成する方法を示しています。
 
@@ -687,7 +693,7 @@ JavaScript クライアントを使用していて Storage サービスから HT
 
 #### <a name="feature-X-is-not-working"></a>機能 "X" がストレージ エミュレーターで機能しない
 
-ストレージ エミュレーターは、ファイル サービスなどの Azure Storage サービスの機能をすべてサポートしているわけではありません。詳細については、MSDN の「<a href="http://msdn.microsoft.com/library/azure/gg433135.aspx" target="_blank">ストレージ エミュレーターと Azure Storage サービスとの違い</a>」を参照してください。
+ストレージ エミュレーターは、ファイル サービスなどの Azure Storage サービスの機能をすべてサポートしているわけではありません。詳細については、MSDN の「<a href="http://msdn.microsoft.com/library/azure/gg433135.aspx" target="_blank">ストレージ エミュレーターと Azure ストレージ サービスとの違い</a>」を参照してください。
 
 ストレージ エミュレーターでサポートされない機能については、クラウドの Azure Storage サービスを使用してください。
 
@@ -721,7 +727,7 @@ SDK をインストールしようとすると、ローカル マシンへのス
 
 **delete** コマンドは、ストレージ エミュレーターの既存のインストール環境から古いデータベース ファイルをすべて削除します。
 
-### <a name="you-have-a-different-issue-with-a-storage-service"></a>ストレージ サービスで別の問題が発生する
+### <a name="you-have-a-different-issue-with-a-storage-service"></a>Storage サービスで別の問題が発生する
 
 これまでのトラブルシューティング セクションに、ストレージ サービスで発生している問題が含まれていない場合は、以下のアプローチによって問題を診断およびトラブルシューティングする必要があります。
 
@@ -789,7 +795,7 @@ Microsoft Message Analyzer を使用すると、Fiddler と同様の方法で HT
 
 #### Microsoft Message Analyzer を使用した Web トレース セッションの構成
 
-Microsoft Message Analyzer を使用した HTTP および HTTPS トラフィックの Web トレース セッションを構成するには、Microsoft Message Analyzer アプリケーションを実行し、[**File**] メニューで [**Capture/Trace**] をクリックします。使用可能なトレース シナリオのリストで、[**Web Proxy**] を選択します。[**Trace Scenario Configuration**] パネルの [**HostnameFilter**] ボックスに、ストレージ エンドポイントの名前を入力します (これらの名前は [Azure ポータル](portal.azure.com)で調べられます)。たとえば、Azure ストレージ アカウントの名前が **contosodata** である場合は、[**HostnameFilter**] テキストボックスに以下を追加する必要があります。
+Microsoft Message Analyzer を使用した HTTP および HTTPS トラフィックの Web トレース セッションを構成するには、Microsoft Message Analyzer アプリケーションを実行し、[**File**] メニューで [**Capture/Trace**] をクリックします。使用可能なトレース シナリオのリストで、[**Web Proxy**] を選択します。**[Trace Scenario Configuration]** パネルの **[HostnameFilter]** ボックスに、ストレージ エンドポイントの名前を入力します (これらの名前は [Azure ポータル](portal.azure.com)で調べられます)。たとえば、Azure ストレージ アカウントの名前が **contosodata** である場合は、[**HostnameFilter**] テキストボックスに以下を追加する必要があります。
 
     contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
 
@@ -911,4 +917,4 @@ Blob Storage からダウンロードしたストレージ ログ データを E
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

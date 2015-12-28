@@ -1,11 +1,11 @@
 <properties
-   pageTitle="現行バージョンの Azure Tools にプロジェクトをアップグレードする方法"
+   pageTitle="現行バージョンの Azure Tools にプロジェクトをアップグレードする方法 | Microsoft Azure"
    description="Visual Studio の Azure プロジェクトを現行バージョンの Azure Tools にアップグレードする方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="dotnet"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="09/28/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # 現行バージョンの Azure Tools for Visual Studio にプロジェクトをアップグレードする方法
 
@@ -51,4 +51,4 @@
 
 1. プロジェクトをビルドし、API の変更に起因するエラーがあれば解決してください。新しいバージョンのコードを変更する方法については、特定の API に関するドキュメントを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

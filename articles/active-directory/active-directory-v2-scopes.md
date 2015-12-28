@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/10/2015"
+	ms.date="12/09/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 プレビュー: スコープ、アクセス許可、および同意
@@ -116,4 +116,4 @@ OAuth 2.0 プロトコルとアクセス トークンの取得方法の詳細に
 
 更新トークンの取得方法と使用方法の詳細については、「[アプリ モデル v2.0 プロトコルのリファレンス](active-directory-v2-protocols.md)」を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

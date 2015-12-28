@@ -19,12 +19,19 @@
 
 # Linux VM 拡張機能の構成のサンプル
 
+> [AZURE.SELECTOR]
+- [Azure PowerShell - Template](virtual-machines-extensions-configuration-samples-windows.md)
+- [Azure CLI - Template](virtual-machines-extensions-configuration-samples-linux.md)
+
+<br>
+
+
 この記事には、Linux VM に対して Azure VM 拡張機能を構成する際の構成のサンプルが記載されています。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
 
-これらの拡張機能の詳細については、「[Azure VM 拡張機能とその機能](https://msdn.microsoft.com/library/azure/dn606311.aspx)」を参照してください。
+これらの拡張機能の詳細については、「[Azure VM 拡張機能とその機能](virtual-machines-extensions-features.md)」を参照してください。
 
 拡張機能テンプレートの作成の詳細については、「[拡張機能テンプレートの作成](virtual-machines-extensions-authoring-templates.md)」を参照してください。
 
@@ -190,4 +197,4 @@
 
 [Linux VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

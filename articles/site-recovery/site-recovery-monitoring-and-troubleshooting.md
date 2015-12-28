@@ -1,5 +1,5 @@
 <properties
-	pageTitle="VMM と Hyper-V サイト保護の監視とトラブルシューティング ガイド" 
+	pageTitle="仮想マシンおよび物理サーバーの保護の監視とトラブルシューティング | Microsoft Auzre" 
 	description="Azure Site Recovery は、オンプレミスのサーバーに配置されている仮想マシンの Azure またはセカンダリ データセンターへのレプリケーション、フェールオーバー、および復旧を調整します。この記事を利用し、VMM または Hyper-V サイト保護を監視し、トラブルシューティングします。" 
 	services="site-recovery" 
 	documentationCenter="" 
@@ -13,10 +13,10 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="09/01/2015" 
+	ms.date="12/14/2015" 
 	ms.author="anbacker"/>
 	
-# VMware、VMM、Hyper-V、および物理サイトの監視とトラブルシューティング
+# 仮想マシンおよび物理サーバーの保護の監視とトラブルシューティング
 
 この監視とトラブルシューティング ガイドでは、Azure Site Recovery のレプリケーション正常性を追跡する方法とトラブルシューティング手法について説明します。
 
@@ -199,4 +199,4 @@ ASR のサポート チケットを発行するには、Azure サポートにア
 ### リモート デスクトップのフェールオーバー後のトラブルシューティング
 -   多くのお客様が、Azure でフェールオーバー後の VM への接続について、問題に直面しています。[VM への RDP 接続におけるトラブルシューティングに関するドキュメントを使用してください。](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

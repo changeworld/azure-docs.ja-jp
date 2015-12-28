@@ -32,7 +32,7 @@
 
 ##Engagement SDK を iOS プロジェクトに埋め込む
 
-Engagement SDK の iOS プロジェクトへの追加: Xcode でプロジェクトを右クリックし、**[Add files to ...]** を選択して、`EngagementSDK` フォルダーを選択します。
+[ここ](http://aka.ms/qk2rnj)から iOS SDK をダウンロードします。Engagement SDK の iOS プロジェクトへの追加: Xcode でプロジェクトを右クリックし、**[Add files to ...]** を選択して、`EngagementSDK` フォルダーを選択します。
 
 Engagement では追加のフレームワークを動作させる必要がある: プロジェクト エクスプローラーでプロジェクト ペインを開き、適切なターゲットを選択します。次に、[**Build phases**] タブを開き、[**Link Binary With Libraries**] メニューでこれらのフレームワークを追加します。
 
@@ -207,4 +207,4 @@ Engagement でログの送信を停止したい場合は、以下を呼び出し
 [startMonitoringSignificantLocationChanges]: http://developer.apple.com/library/IOs/#documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instm/CLLocationManager/startMonitoringSignificantLocationChanges
 [IDFA]: https://developer.apple.com/library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html#//apple_ref/occ/instp/ASIdentifierManager/advertisingIdentifier
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

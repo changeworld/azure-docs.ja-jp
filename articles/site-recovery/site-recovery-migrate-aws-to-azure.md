@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Windows 仮想マシンの Amazon Web Services から Microsoft Azure への移行"
+	pageTitle="Azure Site Recovery を使用した Windows 仮想マシンの Amazon Web Services から Microsoft Azure への移行 | Microsoft Azure"
 	description="Azure Site Recovery を使用して、Amazon Web Services (AWA) で実行中の Windows 仮想マシンを Azure に移行します。"
 	services="site-recovery"
 	documentationCenter=""
@@ -13,10 +13,10 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="backup-recovery"
-	ms.date="08/26/2015"
+	ms.date="12/14/2015"
 	ms.author="raynew"/>
 
-#  Amazon Web Services (AWS) の Windows 仮想マシンの Azure への移行
+#  Azure Site Recovery を使用した Amazon Web Services (AWS) の Windows 仮想マシンの Azure への移行
 
 
 ## 概要
@@ -71,4 +71,4 @@ Azure Site Recovery は、さまざまなデプロイでの仮想マシンのレ
 
 ご意見やご質問がありましたら、[Site Recovery フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -97,7 +97,7 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
     > [AZURE.NOTE]シングル サインオンを構成するために必要なメタデータは、StatusPage サポート チーム ([SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io)) に連絡して入手してください。
 
 
-    a.メタデータから発行者の値をコピーし、**[発行者]** ボックスに貼り付けます。
+    a.メタデータから発行者の値をコピーし、**[識別子]** ボックスに貼り付けます。
 
     b.メタデータから応答 URL をコピーし、**[応答 URL]** ボックスに貼り付けます。
 
@@ -136,7 +136,7 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
 
 
 ### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Create Azure AD User][20]<br>
+このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
@@ -244,4 +244,4 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
 [204]: ./media/active-directory-saas-statuspage-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-statuspage-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

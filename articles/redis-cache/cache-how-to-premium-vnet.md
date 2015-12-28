@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/03/2015" 
+	ms.date="12/14/2015" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
@@ -53,7 +53,7 @@ Azure Redis Cache VNET の統合は、**[Virtual Network]** ブレードで構�
 
 ![Virtual Network][redis-cache-vnet-ip]
 
-目的の **[静的 IP アドレス]** を入力し、**[OK]** をクリックして VNET の構成を保存します。選択した静的 IP が既に使用中の場合、エラー メッセージが表示されます。
+**[静的 IP アドレス]** フィールドは省略可能です。ここでなにも指定しない場合は、選択したサブネットから選択されます。特定の静的 IP が必要な場合は、目的の **[静的 IP アドレス]** を入力し、**[OK]** をクリックして VNET の構成を保存します。選択した静的 IP が既に使用中の場合、エラー メッセージが表示されます。
 
 キャッシュを作成すると、同じ VNET 内のクライアントからのみアドレスを指定できます。
 
@@ -117,4 +117,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-vnet-subnet]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-subnet.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

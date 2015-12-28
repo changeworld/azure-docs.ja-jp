@@ -13,16 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="12/16/2015" 
 	ms.author="juliako"/>
 
 
 
 #スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法
 
-Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマンドおよびライブ スムーズ ストリーミング コンテンツの再生が可能な Windows ストア アプリケーションを作成できます。スムーズ ストリーミング コンテンツの基本再生機能に加えて、SDK では、Microsoft PlayReady Protection、品質レベル制限、ライブ DVR、オーディオ ストリーム切り替え、ステータス更新 (品質レベルの変化など) のリスニング、エラー イベントなどの豊富な機能が提供されます。サポートされている機能の詳細については、[リリース ノート](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)を参照してください。
-
-このチュートリアルでは、API について説明します。Microsoft では、プレーヤーの開発には [Windows 8 用プレーヤー フレームワーク](http://playerframework.codeplex.com/)の使用を強くお勧めします。プレーヤー フレームワークを使用すると、多数の追加機能が提供され、アプリケーションの作成が容易になります。
+Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマンドおよびライブ スムーズ ストリーミング コンテンツの再生が可能な Windows ストア アプリケーションを作成できます。スムーズ ストリーミング コンテンツの基本再生機能に加えて、SDK では、Microsoft PlayReady Protection、品質レベル制限、ライブ DVR、オーディオ ストリーム切り替え、ステータス更新 (品質レベルの変化など) のリスニング、エラー イベントなどの豊富な機能が提供されます。サポートされている機能の詳細については、[リリース ノート](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)を参照してください。詳細については、[Windows 8 用プレーヤー フレームワークに関する記事](http://playerframework.codeplex.com/)を参照してください。
 
 このチュートリアルには、次の 4 つのレッスンが含まれています。
 
@@ -32,13 +30,21 @@ Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマン�
 4. スムーズ ストリーミング トラックの選択
 
 ##前提条件
+
 - Windows 8 32 ビットまたは 64 ビット。MSDN から [Windows 8 Enterprise Evaluation](http://msdn.microsoft.com/evalcenter/jj554510.aspx) を入手することもできます。
-- Visual Studio 2012 または Visual Studio Express 2012 for Windows 8 が、Windows 8 にインストールされている必要があります。評価版は[こちら](http://www.microsoft.com/visualstudio/11/downloads)から入手できます。
+- Visual Studio 2012 または Visual Studio Express 2012 (またはそれ以降のバージョン)。評価版は[こちら](http://www.microsoft.com/visualstudio/11/downloads)から入手できます。
 - [Windows 8 用 Microsoft Smooth Streaming Client SDK](http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Homehttp://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home)。
 
-各レッスンの完成したソリューションは、MSDN デベロッパー サンプル コード集 (コード ギャラリー) からダウンロードできます。[レッスン 1](http://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f "シンプルな Windows 8 スムーズ ストリーミング用のメディア プレーヤー")、[レッスン 2](http://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a "シンプルな Windows 8 スムーズ ストリーミング用のメディア プレーヤーとスライダー バー制御")、[レッスン 3](http://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44 "Windows 8 スムーズ ストリーミング用のメディア プレーヤーとストリーム選択")、[レッスン 4](http://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907 "Windows 8 スムーズ ストリーミング用のメディア プレーヤーとトラック選択") があります。
+
+各レッスンの完成したソリューションは、MSDN デベロッパー サンプル コード集 (コード ギャラリー) からダウンロードできます:
+
+- [レッスン 1](http://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f) - シンプルな Windows 8 スムーズ ストリーミング用のメディア プレーヤー 
+- [レッスン 2](http://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a) - シンプルな Windows 8 スムーズ ストリーミング用のメディア プレーヤーとスライダー バー制御 
+- [レッスン 3](http://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) - Windows 8 スムーズ ストリーミング用のメディア プレーヤーとストリーム選択  
+- [レッスン 4](http://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907) - Windows 8 スムーズ ストリーミング用のメディア プレーヤーとトラック選択
 
 ##レッスン 1: 基本的なスムーズ ストリーミング ストア アプリケーションの作成
+
 このレッスンでは、スムーズ ストリーミング コンテンツを再生するための MediaElement コントロールを備えた Windows ストア アプリケーションを作成します。実行中のアプリケーションは次のような外観になります。
 
 ![スムーズ ストリーミング用の Windows ストア アプリケーションの例][PlayerApplication]
@@ -980,4 +986,4 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

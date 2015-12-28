@@ -77,12 +77,13 @@ Azure App Service Mobile Apps の Node.js バックエンドはすべて Express
 
 このアプリケーションでは、単一のエンドポイント (`/tables/TodoItem`) でモバイルに最適化された WebAPI が作成され、動的スキーマを使用する基になる SQL データ ストアへの非認証アクセスが可能になります。次のクライアント ライブラリのクイック スタートに従う場合に適しています。
 
+- [Android クライアントのクイック スタート]
 - [iOS クライアントのクイック スタート]
+- [Windows ストア クライアントのクイック スタート]
 - [Xamarin.iOS クライアントのクイック スタート]
 - [Xamarin.Android クライアントのクイック スタート]
 - [Xamarin.Forms クライアントのクイック スタート]
-- [Windows Store クライアントのクイック スタート]
-- [HTML/JavaScript クライアントのクイック スタート]
+
 
 この基本的なアプリケーションのコードは、[GitHub の basicapp サンプル]にあります。
 
@@ -130,11 +131,11 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
 ### <a name="download-quickstart"></a>方法: Git を使用して Node.js バックエンド クイック スタート コード プロジェクトをダウンロードする
 
-ポータルの **[クイック スタート]** ブレードを使用して新しい Node.js モバイル アプリ バックエンドを作成すると、新しい Node.js プロジェクトが作成され、サイトにデプロイされます。ポータルでは、テーブルと API を追加したり、Node.js バックエンドのコード ファイルを編集したりできます。また、さまざまなデプロイ ツールの 1 つを使用してバックエンド プロジェクトをダウンロードすると、テーブルと API を追加または変更した後でプロジェクトを再発行できます。詳細については、[Azure App Service のデプロイ ガイド]を参照してください。次の手順では、Git リポジトリを使用して、クイック スタート プロジェクトのコードをダウンロードします。
+ポータルの **[クイック スタート]** ブレードを使用して新しい Node.js モバイル アプリ バックエンドを作成すると、新しい Node.js プロジェクトが作成され、サイトにデプロイされます。ポータルでは、テーブルと API を追加したり、Node.js バックエンドのコード ファイルを編集したりできます。また、さまざまなデプロイメント ツールの 1 つを使用してバックエンド プロジェクトをダウンロードすると、テーブルと API を追加または変更した後でプロジェクトを再発行できます。詳細については、[Azure App Service のデプロイ ガイド]を参照してください。次の手順では、Git リポジトリを使用して、クイック スタート プロジェクトのコードをダウンロードします。
 
 1. Git をまだインストールしていない場合はインストールします。Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)](http://git-scm.com/book/en/Getting-Started-Installing-Git)」を参照してください。
 
-2. 「[Web アプリのリポジトリの有効化](../app-service-web/web-sites-publish-source-control.md#Step4)」の手順に従って、バックエンド サイトの Git リポジトリを有効にします。このとき、デプロイ用のユーザー名とパスワードをメモしておきます。
+2. 「[Web アプリのリポジトリの有効化](../app-service-web/web-sites-publish-source-control.md#Step4)」の手順に従って、バックエンド サイトの Git リポジトリを有効にします。このとき、デプロイメント用のユーザー名とパスワードをメモしておきます。
 
 3. モバイル アプリ バックエンドのブレードで、**[Git クローン URL]** の設定をメモしておきます。
 
@@ -322,6 +323,33 @@ Azure Mobile Apps は、ローカル ファイルシステムから _azureMobile
 
 パスワードがクラウドに保存されないように、_azureMobile.js_ を _.gitignore_ ファイル (または他のソース コード管理の無視ファイル) に追加することをお勧めします。必ず、[Azure ポータル]内の [アプリ設定] で運用設定を構成してください。
 
+### <a name="howto-appsettings"><a>モバイル アプリを構成するためのアプリ設定
+
+_azureMobile.js_ ファイル内のほとんどの設定には、[Azure ポータル] 内に対応するアプリ設定があります。[アプリ設定] でアプリを構成するには、次の一覧を使用します。
+
+| アプリ設定 | _azureMobile.js_ 設定 | 説明 | 有効な値 |
+| :-------------------------- | :------------------------ | :---------------------------------------- | :------------------------------------------ |
+| **MS\_MobileAppName** | name | アプリの名前 | string |
+| **MS\_MobileLoggingLevel** | logging.level | ログ記録するメッセージの最小ログ レベル | error、warning、info、verbose、debug、silly |
+| **MS\_DebugMode** | debug | デバッグ モードの有効化または無効化 | true、false |
+| **MS\_TableSchema** | data.schema | SQL テーブルの既定のスキーマ名 | string (既定: dbo) |
+| **MS\_DynamicSchema** | data.dynamicSchema | デバッグ モードの有効化または無効化 | true、false |
+| **MS\_DisableVersionHeader** | version (undefined に設定)| X-ZUMO-Server-Version ヘッダーの無効化 | true、false |
+| **MS\_SkipVersionCheck** | skipversioncheck | クライアント API バージョン チェックの無効化 | true、false |
+
+アプリ設定を設定するには:
+
+1. [Azure ポータル]にログインします。
+2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
+3. 既定で [設定] ブレードが開きます。開かない場合は、**[設定]** をクリックします。
+4. [全般] メニューで、**[アプリケーション設定]** をクリックします。
+5. [アプリ設定] セクションまでスクロールします。
+6. アプリ設定が既に存在する場合は、アプリ設定の値をクリックして値を編集します。
+7. アプリ設定が存在しない場合は、[キー] ボックスにアプリ設定を入力し、[値] ボックスに値を入力します。
+8. 完了したら、**[保存]** をクリックします。
+
+ほとんどのアプリ設定を変更した場合、サービスの再起動が必要になります。
+
 ### <a name="howto-use-sqlazure"></a>方法: SQL Database を運用データ ストアとして使用する
 
 <!--- ALTERNATE INCLUDE - we can't use ../includes/app-service-mobile-dotnet-backend-create-new-service.md - slightly different semantics -->
@@ -358,7 +386,7 @@ Azure SQL Database をデータ ストアとして使用する方法は、Azure 
 
 <!--- END OF ALTERNATE INCLUDE -->
 
-データベースの作成には数分かかる場合があります。**[通知]** 領域を使用して、デプロイの進行状況を監視します。データベースのデプロイが正常に完了するまでは、先に進まないでください。正常にデプロイされると、モバイル バックエンドの [アプリ設定] で、SQL Database インスタンスの接続文字列が作成されます。このアプリ設定を確認するには、**[設定]**、**[アプリケーション設定]**、**[接続文字列]** を順に選択します。
+データベースの作成には数分かかる場合があります。**[通知]** 領域を使用して、デプロイメントの進行状況を監視します。データベースのデプロイが正常に完了するまでは、先に進まないでください。正常にデプロイされると、モバイル バックエンドの [アプリ設定] で、SQL Database インスタンスの接続文字列が作成されます。このアプリ設定を確認するには、**[設定]**、**[アプリケーション設定]**、**[接続文字列]** を順に選択します。
 
 ### <a name="howto-tables-auth"></a>方法: テーブルへのアクセスに認証を要求する
 
@@ -609,7 +637,7 @@ Node.js アプリケーションは、広範囲の診断ログ ツールにア�
 
 ## <a name="in-portal-editing"></a>ポータル内のコード編集機能
 
-Azure ポータルに用意されている特殊なツールを使用すると、コード プロジェクトをダウンロードしなくても、Node.js バックエンド プロジェクトを簡単に操作できます。ポータルの [テーブルの簡単操作] と [API の簡単操作] を使用すると、ポータル内でテーブルとカスタム API をすぐに作成して操作できます。Visual Studio Online の "Monaco" エディターを使用して、ポータル内ですぐにテーブル操作と API スクリプトを編集することもできます。
+Azure ポータルに用意されている特殊なツールを使用すると、コード プロジェクトをダウンロードしなくても、Node.js バックエンド プロジェクトを簡単に操作できます。ポータルの [テーブルの簡単操作] と [API の簡単操作] を使用すると、ポータル内でテーブルとカスタム API をすぐに作成して操作できます。Visual Studio Team Services の "Monaco" エディターを使用して、ポータル内ですぐにテーブル操作と API スクリプトを編集することもできます。
 
 ### <a name="work-easy-tables"></a>方法: Azure ポータルで [テーブルの簡単操作] を使用する
 
@@ -620,7 +648,7 @@ Azure ポータルに用意されている特殊なツールを使用すると�
 テーブル用のコマンド バーには、次のコマンドが用意されています。
 
 + **[アクセス許可の変更]** - テーブルに対する読み取り、挿入、更新、削除操作のアクセス許可を変更します。匿名アクセスを許可するオプション、認証を要求するオプション、操作に対するすべてのアクセスを無効にするオプションがあります。これにより、table.json プロジェクト コード ファイルは変更されます。
-+ **[スクリプトの編集]** - テーブルのスクリプト ファイルが Visual Studio Online エディターで開かれます。
++ **[スクリプトの編集]** - テーブルのスクリプト ファイルが Visual Studio Team Services エディターで開かれます。
 + **[スキーマの管理]** - 列の追加または削除やテーブルのインデックスの変更を実行します。
 + **[テーブルのクリア]** - 既存のテーブルですべてのデータ行が削除されるように切り捨てます。ただし、スキーマは変更されません。
 + **[行の削除]** - 個々のデータ行を削除します。
@@ -632,15 +660,15 @@ Azure ポータルに用意されている特殊なツールを使用すると�
 
 ![Work with Easy APIs](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-apis.png)
 
-ポータルでは、特定の HTTP アクションのアクセス許可を変更できます。また、Visual Studio Online エディターで API スクリプト ファイルをしたり、ストリーミング ログを表示したりできます。
+ポータルでは、特定の HTTP アクションのアクセス許可を変更できます。また、Visual Studio Team Services エディターで API スクリプト ファイルをしたり、ストリーミング ログを表示したりできます。
 
-###<a name="online-editor"></a>方法: Visual Studio Online でコードを編集する
+###<a name="online-editor"></a>方法: Visual Studio Team Services でコードを編集する
 
-Azure ポータルでは、ローカル コンピューターにプロジェクトをダウンロードする必要なく、Visual Studio Online を使用して Node.js バックエンド スクリプト ファイルを編集できます。オンライン エディターでスクリプト ファイルを編集するには、次の手順に従います。
+Azure ポータルでは、ローカル コンピューターにプロジェクトをダウンロードする必要なく、Visual Studio Team Services を使用して Node.js バックエンド スクリプト ファイルを編集できます。オンライン エディターでスクリプト ファイルを編集するには、次の手順に従います。
 
-1. モバイル アプリ バックエンドのブレードで、**[すべての設定]**、**[テーブルの簡単操作]** または **[API の簡単操作]** の順にクリックし、テーブルまたは API をクリックしてから、**[スクリプトの編集]** をクリックします。スクリプト ファイルが Visual Studio Online エディターで開かれます。
+1. モバイル アプリ バックエンドのブレードで、**[すべての設定]**、**[テーブルの簡単操作]** または **[API の簡単操作]** の順にクリックし、テーブルまたは API をクリックしてから、**[スクリプトの編集]** をクリックします。スクリプト ファイルが Visual Studio Team Services エディターで開かれます。
 
-	![Visual Studio Online code editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
+	![Visual Studio Team Services コード エディター](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
 
 2. オンライン エディターで、コード ファイルを変更します。変更内容は、入力時に自動的に保存されています。
 
@@ -657,12 +685,13 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [6]: ../../includes/media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-db.png
 
 <!-- URLs -->
+[Android クライアントのクイック スタート]: app-service-mobile-android-get-started.md
 [iOS クライアントのクイック スタート]: app-service-mobile-ios-get-started.md
 [Xamarin.iOS クライアントのクイック スタート]: app-service-mobile-xamarin-ios-get-started.md
 [Xamarin.Android クライアントのクイック スタート]: app-service-mobile-xamarin-android-get-started.md
 [Xamarin.Forms クライアントのクイック スタート]: app-service-mobile-xamarin-forms-get-started.md
-[Windows Store クライアントのクイック スタート]: app-service-mobile-windows-store-dotnet-get-started.md
-[HTML/JavaScript クライアントのクイック スタート]: app-service-html-get-started.md
+[Windows ストア クライアントのクイック スタート]: app-service-mobile-windows-store-dotnet-get-started.md
+[HTML/Javascript Client QuickStart]: app-service-html-get-started.md
 [オフライン データ同期]: app-service-mobile-offline-data-sync.md
 [Azure Active Directory 認証の構成方法]: app-service-mobile-how-to-configure-active-directory-authentication.md
 [Facebook 認証の構成方法]: app-service-mobile-how-to-configure-facebook-authentication.md
@@ -693,4 +722,4 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

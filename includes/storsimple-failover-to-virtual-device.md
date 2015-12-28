@@ -1,19 +1,21 @@
-#### To restore your physical device to the StorSimple virtual device
+#### 物理デバイスを StorSimple 仮想デバイスに復元するには
 
-1. Verify that the volume container you want to fail over has associated cloud snapshots.
+1. フェールオーバーするボリューム コンテナーにクラウド スナップショットが関連付けられていることを確認します。
 
-2. Open the **Device** page, and then click the **Volume Containers** tab.
+2. **[デバイス]** ページを開いて、**[ボリューム コンテナー]** タブをクリックします。
 
-3. Select a volume container that you would like to fail over to the virtual device. Click the volume container to display the list of volumes within the container. Select a volume and click **Take Offline** to take the volume offline. Repeat this process for all the volumes in the volume container.
+3. 仮想デバイスにフェールオーバーするボリューム コンテナーを選択します。ボリューム コンテナーをクリックし、そのコンテナー内のボリュームを一覧表示します。ボリュームを選択し、**[オフラインにする]** をクリックしてボリュームをオフラインにします。ボリューム コンテナーのすべてのボリュームでこのプロセスを繰り返します。
 
-4. Repeat the previous step for all the volume containers you want to fail over to the virtual device.
+4. 仮想デバイスにフェールオーバーするすべてのボリューム コンテナーに前の手順を繰り返します。
 
-5. On the **Device** page, select the device that you need to fail over, and then click **Failover** to open the **Device Failover** wizard.
+5. **[デバイス]** ページで、フェールオーバーするデバイスを選択し、**[フェールオーバー]** をクリックして、**[デバイス フェールオーバー]** ウィザードを開きます。
 
-6. In **Choose volume container to failover**, select the volume containers you would like to fail over. To be displayed in this list, the volume container must contain a cloud snapshot and be offline. If a volume container that you expected to see is not present, cancel the wizard and verify that it is offline.
+6. **[フェールオーバーするボリューム コンテナーを選択する]** で、フェールオーバーするボリューム コンテナーを選択します。ボリューム コンテナーがこの一覧に表示されるには、ボリューム コンテナーにクラウド スナップショットが含まれていて、オフラインである必要があります。表示されるはずのボリューム コンテナーが表示されない場合、ウィザードをキャンセルし、ボリューム コンテナーがオフラインになっていることを確認します。
 
-7. On the next page, in **Choose a target device for the volumes** in the selected containers, select the virtual device from the drop-down list of available devices. Only the devices that have the available capacity are displayed on the list. 
+7. 次のページの **[選択したコンテナーのボリュームのターゲット デバイスを選択する]** で、利用できるデバイスのドロップダウン リストから仮想デバイスを選択します。利用できる容量があるデバイスのみが一覧に表示されます。
 
-8. Review all the failover settings on the **Confirm failover** page. If they are correct, click the check icon.
+8. **[フェールオーバーの確認]** ページですべてのフェールオーバー設定を見直します。すべての設定が正しければ、チェック マーク アイコンをクリックします。
 
-The failover process will begin. When the failover is finished, go to the Devices page and select the virtual device that was used as the target for the failover process. Go to the Volume Containers page. All the volume containers, along with the volumes from the old device should appear.
+フェールオーバー プロセスが開始されます。フェールオーバーが完了したら、[デバイス] ページに進み、フェールオーバー プロセスのターゲットとして使用した仮想デバイスを選択します。[ボリューム コンテナー] ページに移動します。すべてのボリューム コンテナーと古いデバイスのボリュームが表示されます。
+
+<!---HONumber=AcomDC_1217_2015-->

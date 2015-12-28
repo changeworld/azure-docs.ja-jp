@@ -3,9 +3,7 @@
 #チュートリアル: Azure Active Directory と Salesforce Sandbox の統合
 >[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=521878)をクリックしてください。
   
-このチュートリアルでは、Azure と Salesforce Sandbox の統合について説明します。  
-Sandbox を使用すると、Salesforce 運用組織内のデータとアプリケーションを侵害することなく、多様な用途 (開発、テスト、トレーニングなど) ごとに別環境に組織の複数コピーを作成できます。  
-詳細については、「[サンドボックスの概要](https://help.salesforce.com/HTViewHelpDoc?id=create_test_instance.htm&language=en_US)」をご覧ください。
+このチュートリアルでは、Azure と Salesforce Sandbox の統合について説明します。Sandbox を使用すると、Salesforce 運用組織内のデータとアプリケーションを侵害することなく、多様な用途 (開発、テスト、トレーニングなど) ごとに別環境に組織の複数コピーを作成できます。詳細については、「[サンドボックスの概要](https://help.salesforce.com/HTViewHelpDoc?id=create_test_instance.htm&language=en_US)」をご覧ください。
   
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
@@ -68,11 +66,11 @@ Sandbox を使用すると、Salesforce 運用組織内のデータとアプリ�
 
     ![アプリ URL の構成](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781022.png "アプリケーション URL の構成")
 
-4. ディレクトリで別の Salesforce Sandbox インスタンスのシングル サイオンを既に構成している場合は、**[サインオン URL]** と同じ値を使用するように **[発行者の URL]** も構成する必要があります。**[発行者の URL]** フィールドは、ダイアログの **[アプリケーション URL の構成]** ページで **[詳細設定の表示]** チェック ボックスをオンにすることで表示できます。
+4. ディレクトリで別の Salesforce Sandbox インスタンスのシングル サイオンを既に構成している場合は、**[サインオン URL]** と同じ値を使用するように **[識別子]** も構成する必要があります。**[識別子]** フィールドは、ダイアログの **[アプリケーション URL の構成]** ページで **[詳細設定の表示]** チェック ボックスをオンにすることで表示できます。
 
 4.  **[Salesforce Sandbox でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781023.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781023.png "Configure Single Sign-On")
 
 5.  別の Web ブラウザーのウィンドウで、Salesforce Sandbox 企業サイトに管理者としてログインします。
 
@@ -97,8 +95,8 @@ Sandbox を使用すると、Salesforce 運用組織内のデータとアプリ�
 
     1.  [名前] ボックスに、構成の名前を入力します (例: *SPSSOWAAD\_Test*)。
     2.  Azure ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[発行者の URL]** の値をコピーし、**[発行者]** ボックスに貼り付けます。
-    3.  これがディレクトリに追加する最初の Salesforce Sandbox インスタンスの場合は、**[エンティティ ID]** ボックスに「**https://test.salesforce.com**」と入力します。Salesforce Sandbox のインスタンスを既に追加している場合は、**[エンティティ ID]** に次の形式の**サインオン URL** を入力します。`http://company.my.salesforce.com`
-    4.  **[参照]** をクリックして、ダウンロードした証明書をアップロードします。
+    3.  これがディレクトリに追加する最初の Salesforce Sandbox インスタンスの場合は、**[エンティティ ID]** ボックスに「****https://test.salesforce.com**」と入力します。Salesforce Sandbox のインスタンスを既に追加している場合は、**[エンティティ ID]** に次の形式の**サインオン URL** を入力します。`http://company.my.salesforce.com`
+4.  **[参照]** をクリックして、ダウンロードした証明書をアップロードします。
     5.  **[SAML ID の種類]** では、**[アサーションには、ユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
     6.  **[SAML ID の場所]** では、**[ID は Subject ステートメントの NameIdentifier 要素にあります]** を選択します。
     7.  Azure ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーし、**[ID プロバイダー ログイン URL]** ボックスに貼り付けます。
@@ -182,7 +180,7 @@ Sandbox を使用すると、Salesforce 運用組織内のデータとアプリ�
 
     ![ユーザーの割り当て](./media/active-directory-saas-salesforce-sandbox-tutorial/IC769574.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![あり](./media/active-directory-saas-salesforce-sandbox-tutorial/IC767830.png "あり")
   
@@ -190,4 +188,4 @@ Sandbox を使用すると、Salesforce 運用組織内のデータとアプリ�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -60,7 +60,7 @@ Service Fabric には、次のシナリオのセキュリティが用意され�
 
 ## 手順 2. x509 証明書を Key Vault にアップロードする
 
-この手順は複雑なため、弊社が Git Repp にアップロードした PowerShell モジュールを使用してください。
+この手順は複雑なため、弊社が Git リポジトリにアップロードした PowerShell モジュールを使用してください。
 
 **手順 2.1**. [Git リポジトリ](https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers)からこのフォルダーをコンピューターにコピーします。
 
@@ -72,7 +72,9 @@ Service Fabric には、次のシナリオのセキュリティが用意され�
 Remove-Module ServiceFabricRPHelpers
 ```
 
-次の内容をコピーし、.psm1 へのパスを実際のコンピューター上のパスに合わせて変更します。この内容は例です。```
+次の内容をコピーし、.psm1 へのパスを実際のコンピューター上のパスに合わせて変更します。たとえば次のようになります。
+
+```
 Import-Module "C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 ```
   
@@ -91,8 +93,10 @@ Login-AzureRmAccount
 ```
 Invoke-AddCertToKeyVault -SubscriptionId <you subscription id> -ResourceGroupName <string> -Location <region> -VaultName <Name of the Vault> -CertificateName <Name of the Certificate> -Password <Certificate password> -UseExistingCertificate -ExistingPfxFilePath <Full path to the .pfx file> 
 ```
-実際の値を入力したスクリプトの例は次のようになります。```
-Invoke-AddCertToKeyVault -SubscriptionId 35389201-c0b3-405e-8a23-9f1450994307 -ResourceGroupName chackdankeyvault4doc -Location westus -VaultName chackdankeyvault4doc  -CertificateName chackdantestcertificate2 -Password (Read-Host -AsSecureString -Prompt "Enter Certificate Password ") -UseExistingCertificate -ExistingPfxFilePath C:\MyCertificates\ChackdanTestCertificate.pfx 
+実際の値を入力したスクリプトの例は次のようになります。
+
+```
+Invoke-AddCertToKeyVault -SubscriptionId 35389201-c0b3-405e-8a23-9f1450994307 -ResourceGroupName chackdankeyvault4doc -Location westus -VaultName chackdankeyvault4doc  -CertificateName chackdantestcertificate2 -Password abcd123 -UseExistingCertificate -ExistingPfxFilePath C:\MyCertificates\ChackdanTestCertificate.pfx 
 ```
 
 スクリプトが正常に終了すると、次のような出力が表示されます。手順 3. でこの出力が必要になります。
@@ -125,7 +129,7 @@ Invoke-AddCertToKeyVault -SubscriptionId <you subscription id> -ResourceGroupNam
 一般的な自己署名証明書の作成の詳細については、[https://technet.microsoft.com/library/hh848633.aspx](https://technet.microsoft.com/library/hh848633.aspx) を参照してください。
 
 実際の値を入力したスクリプトの例は次のようになります。```
-Invoke-AddCertToKeyVault -SubscriptionId 35389201-c0b3-405e-8a23-9f1450994307 -ResourceGroupName chackdankeyvault4doc -Location westus -VaultName chackdankeyvault4doc  -CertificateName chackdantestcertificate3 -Password (Read-Host -AsSecureString -Prompt "Enter Certificate Password ") -CreateSelfSignedCertificate -DnsName www.chackdan.westus.azure.com -OutputPath C:\MyCertificates
+Invoke-AddCertToKeyVault -SubscriptionId 35389201-c0b3-405e-8a23-9f1450994307 -ResourceGroupName chackdankeyvault4doc -Location westus -VaultName chackdankeyvault4doc  -CertificateName chackdantestcertificate3 -Password abcd123 -CreateSelfSignedCertificate -DnsName www.chackdan.westus.azure.com -OutputPath C:\MyCertificates
 ```
 
 これは自己署名証明書であるため、セキュリティで保護されたクラスターへの接続にこの証明書を使用するには、コンピューターの "信頼されたユーザー" ストアにインポートする必要があります。```
@@ -240,4 +244,4 @@ Service Fabric では、プライマリとセカンダリという 2 つの証�
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

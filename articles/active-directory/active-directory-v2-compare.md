@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/10/2015"
+	ms.date="12/09/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 プレビュー: 相違点
@@ -26,7 +26,7 @@
 ## Microsoft アカウントと Azure AD アカウント
 v2.0 アプリ モデルを使用すると、開発者は、1 つのエンドポイントを使用して Microsoft アカウントと Azure AD アカウントの両方からのサインインを受け付けるアプリを作成できます。これにより、まったくアカウントに依存しないアプリを作成できます。ユーザーがサインインにどのアカウントを使用するかを考慮する必要がありません。もちろん、特定のセッションで使用されるアカウントの種類を確認することは*できます*が、そうする必要はありません。
 
-たとえば、アプリで [Office 365 の REST API](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) を呼び出す場合、エンタープライズ環境のユーザーは、SharePoint サイトや Directory データなどの追加の機能とデータを使用できます。ただし、[ユーザーのメールを読む](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)などの多くの操作について、Microsoft アカウントと Azure AD アカウントの両方に対して完全に同じコードを作成できます。
+たとえば、アプリで [Office 365 の REST API](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) を呼び出す場合、エンタープライズ環境のユーザーは、SharePoint サイトや Directory データなどの追加の機能とデータを使用できます。ただし、[ユーザーのメールを読む](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)などの多くの操作について、Microsoft アカウントと Azure AD アカウントの両方に対して完全に同じコードを作成できます。
 
 Microsoft アカウントと Azure AD アカウントのアプリを 1 つの単純なプロセスで統合できるようになりました。1 組のエンドポイント、1 つのライブラリ、1 回のアプリ登録によって、コンシューマー向けおよびエンタープライズ向けの両方の環境にアクセスできます。v2.0 アプリ モデル プレビューの詳細については、[概要](active-directory-appmodel-v2-overview.md)のページを参照してください。
 
@@ -121,4 +121,4 @@ v2.0 アプリ モデル トークンによって発行される特定の要求�
 ## プレビューの制限事項
 パブリック プレビュー期間中に v2.0 アプリ モデルを使用してアプリをビルドする際、注意が必要な制限事項がいくつかあります。それらの制限事項が実際のシナリオに当てはまるかどうかについては、「[v2.0 アプリ モデルの制限事項に関するドキュメント](active-directory-v2-limitations.md)を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

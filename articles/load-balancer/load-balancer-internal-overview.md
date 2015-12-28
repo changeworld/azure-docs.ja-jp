@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/12/2015"
+   ms.date="12/09/2015"
    ms.author="joaoma" />
 
 
@@ -92,4 +92,4 @@ LOB のもう 1 つのシナリオは、ILB エンドポイントが構成され
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

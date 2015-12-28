@@ -3,9 +3,9 @@
    description="Visual Studio を使用して Azure クラウド サービス プロジェクトを発行する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="dotnet"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="09/04/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # Azure Tools を使用したクラウド サービスの発行
 
@@ -173,4 +173,4 @@ Web Deploy を使用して、Web ロールを更新するための要件を次�
 
 Visual Studio から Azure への発行の詳細については、「[Azure アプリケーションの発行ウィザード](vs-azure-tools-publish-azure-application-wizard.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->
