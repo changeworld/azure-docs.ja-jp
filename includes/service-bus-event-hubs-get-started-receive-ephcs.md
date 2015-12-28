@@ -42,9 +42,10 @@
 
 	次に、クラスの本文に次のコードを置き換えます。
 
-		class SimpleEventProcessor : IEventProcessor
-	    {
-	        Stopwatch checkpointStopWatch;
+	```
+    class SimpleEventProcessor : IEventProcessor
+	{
+	    Stopwatch checkpointStopWatch;
 
 	    async Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
 	    {
@@ -80,7 +81,8 @@
                 this.checkpointStopWatch.Restart();
             }
 	    }
-	} ````
+	}
+    ````
 
 	このクラスは、**EventProcessorHost** から呼び出されて、Event Hub から受信したイベントを処理します。`SimpleEventProcessor` クラスは、ストップウォッチを使用して **EventProcessorHost** コンテキストで定期的にチェックポイント メソッドを呼び出します。これにより、受信側を再起動すると、処理の作業の 5 分以内に機能が失われます。
 
