@@ -17,7 +17,7 @@
 
 # 仮想ネットワークのセキュリティで保護されたクロスプレミス接続について
 
-オンプレミスのサイトを仮想ネットワークに安全に接続するには、[サイト間](#site-to-site-connections)、[ポイント対サイト](#point-to-site-connections)、および [ExpressRoute](#expressroute-connections) の 3 つのオプションがあります。
+オンプレミスのサイトを仮想ネットワークに安全に接続するには、サイト間、ポイント対サイト、および ExpressRoute の 3 つのオプションがあります。
 
 選択するオプションは、次のようなさまざまな考慮事項によって異なります。
 
@@ -88,4 +88,4 @@ ExpressRoute の詳細については、「[ExpressRoute の技術概要](../exp
 
 「[ExpressRoute の FAQ](../expressroute/expressroute-faqs.md)」と「[VPN Gateway の FAQ](vpn-gateway-vpn-faq.md)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

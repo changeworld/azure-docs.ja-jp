@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="event-hubs"
-	ms.workload="core"
+	ms.workload="na"
 	ms.tgt_pltfrm="c"
 	ms.devlang="java"
 	ms.topic="article" 
-	ms.date="09/01/2015"
+	ms.date="12/09/2015"
 	ms.author="sethm"/>
 
 # Event Hubs の使用
@@ -86,8 +86,8 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 Event Hubs と Storm を統合するアプリケーションの開発には、次のリソースを使用できます。
 
-- 「[HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]」は、Hadoop クラスター内のセンサー データを取り込むための Event Hubs、Storm、および HBase を使用した完全なシナリオ チュートリアルです。
-- 「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]」は、C# を使用して Storm のパイプラインを作成する方法に関するチュートリアルです。
+- 「[HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析][]」は、Hadoop クラスター内のセンサー データを取り込むための Event Hubs、Storm、および HBase を使用した完全なシナリオ チュートリアルです。
+- 「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発][]」は、C# を使用して Storm のパイプラインを作成する方法に関するチュートリアルです。
 
 <!-- Images. -->
 [1]: ./media/event-hubs-c-storm-getstarted/create-event-hub1.png
@@ -111,4 +111,4 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

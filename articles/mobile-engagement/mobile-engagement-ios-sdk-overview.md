@@ -32,12 +32,9 @@
 
 ##リリース ノート
 
-##3\.2.0 (10/08/2015)
+###3\.2.1 (12/11/2015)
 
--   **Xcode 7** と連携できるように、SDK のビットコードを有効化。
--   アプリ内通知に関連するバグを修正。
--   バッテリ低下のような状況でのアプリ内通知の信頼性を向上。
--   サード パーティ製のライブラリによって生成される余分なコンソール ログの削除。
+-   新しいアプリケーション インスタンスがディープ リンクを持つ通知によってトリガーされたときの遅延を修正。 
 
 以前のバージョンについては、「[完全リリース ノート](mobile-engagement-ios-release-notes.md)」をご覧ください。
 
@@ -62,4 +59,4 @@ AEPushDelegate.h インターフェイスは廃止されるため、すべての
 	-(void)didFailToRetrieveLaunchMessage;
 	-(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

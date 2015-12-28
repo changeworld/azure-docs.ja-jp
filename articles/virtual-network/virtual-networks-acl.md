@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/22/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # エンドポイント アクセス制御リスト (ACL) とは
@@ -99,4 +99,4 @@ ACL は、ルールの一覧が格納されたオブジェクトです。ACL を
 
 [PowerShell を使用してエンドポイントのアクセス制御リスト (ACL) を管理する方法](../virtual-networks-acl-powershell)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

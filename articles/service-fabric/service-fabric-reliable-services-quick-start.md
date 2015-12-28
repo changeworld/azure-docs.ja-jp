@@ -145,7 +145,7 @@ protected override async Task RunAsync(CancellationToken cancelServicePartitionR
             await myDictionary.AddOrUpdateAsync(tx, "Counter-1", 0, (k, v) => ++v);
 
             // Committing the transaction serializes the changes and writes them to this partition's secondary replicas.
-            // If an exception is thrown before calling CommitAsync, the transaction aborts, all changes are 
+            // If an exception is thrown before calling CommitAsync, the transaction aborts, all changes are
             // discarded, and nothing is sent to this partition's secondary replicas.
             await tx.CommitAsync();
         }
@@ -214,8 +214,10 @@ Reliable Collection には、LINQ など、`System.Collections.Generic` およ�
 
 [Reliable Collection の詳細](service-fabric-reliable-services-reliable-collections.md)
 
-[Service Fabric サービスの管理](service-fabric-manage-your-service-index.md)
+[アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)
+
+[アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
 [Reliable Service の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

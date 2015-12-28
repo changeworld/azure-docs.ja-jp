@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/28/2015"
+   ms.date="12/10/2015"
    ms.author="yuridio"/>
 
 #Microsoft Azure セキュリティの概要
@@ -241,4 +241,4 @@ Azure には、脅威の緩和を実装し、お客様の環境での潜在的�
 
 [Active Directory のブログ](http://blogs.technet.com/b/ad/)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

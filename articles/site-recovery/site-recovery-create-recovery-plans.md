@@ -1,5 +1,5 @@
 <properties
-	pageTitle="復旧計画の作成" 
+	pageTitle="復旧計画の作成 | Microsoft Azure" 
 	description="Azure Site Recovery は、オンプレミスのサーバーに配置されている仮想マシンの Azure またはセカンダリ データセンターへのレプリケーション、フェールオーバー、および復旧を調整します。" 
 	services="site-recovery" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="10/07/2015" 
+	ms.date="12/14/2015" 
 	ms.author="raynew"/>
 
 # 復旧計画の作成
@@ -124,4 +124,4 @@ VMM ソース サイトが存在する場合、スクリプトをその VMM サ�
 
  
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

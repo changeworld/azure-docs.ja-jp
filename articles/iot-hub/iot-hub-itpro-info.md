@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="09/28/2015"
+ ms.date="12/15/2015"
  ms.author="dobett"/>
 
 # IoT Hub へのアクセスの構成と管理
@@ -42,11 +42,11 @@ IoT Hub のその他の管理エンドポイントへのアクセスも、*iothu
 この記事には、開発環境およびテスト環境を構成する IT プロフェッショナルと開発者向けの具体的な情報が含まれています。Azure IoT Hub サービスについてさらに学習するには、次のリンクを使用してください。
 
 - [What is Azure IoT Hub? (Azure IoT Hub とは)][lnk-iothub]
-- ["Security" in the Azure IoT Hub developer guide (「Azure IoT Hub 開発者ガイド」の「セキュリティ」)][lnk-devguide]セクションには、IoT Hub でのトークンおよびアクセス許可システムに関する詳細な情報が記載されています。
+- [「Azure IoT Hub 開発者ガイド」の「セキュリティ」セクション][lnk-devguide]には、IoT Hub でのトークンおよびアクセス許可システムに関する詳細な情報が記載されています。
 - 「[Manage IoT Hub through the Azure Portal (Azure ポータルを使用した IoT Hub の管理)][lnk-manage-portal]」には、Azure ポータルを使用して IoT Hub を管理する方法が記載されています。
 
 [lnk-iothub]: iot-hub-what-is-iot-hub.md
 [lnk-devguide]: iot-hub-devguide.md#security
 [lnk-manage-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

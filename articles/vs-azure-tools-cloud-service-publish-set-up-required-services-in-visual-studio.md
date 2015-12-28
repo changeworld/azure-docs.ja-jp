@@ -3,9 +3,9 @@
    description="クラウド サービスとストレージ アカウント サービスを設定し、Azure アプリケーションを構成する手順を説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="dotnet"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="09/28/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # Visual Studio からの Azure アプリケーションの発行またはデプロイの準備
 
@@ -153,4 +153,4 @@ Azure にクラウド サービスを発行するには、まず、Azure 環境�
 
 Visural Studio からの Azure へのアプリ発行の詳細については、「[Azure Tools を使用したクラウド サービスの発行](vs-azure-tools-publishing-a-cloud-service.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

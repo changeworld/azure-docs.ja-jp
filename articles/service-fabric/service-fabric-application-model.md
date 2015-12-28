@@ -3,7 +3,7 @@
    description="Service Fabric のアプリケーションとサービスをモデル化し、記述する方法。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="alexwun"
+   authors="seanmck"
    manager="timlt"
    editor="mani-ramaswamy"/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/02/2015"
-   ms.author="alexwun"/>
+   ms.date="12/10/2015"   
+   ms.author="seanmck"/>
 
 # Service Fabric でのアプリケーションのモデル化
 
@@ -248,4 +248,4 @@ PS D:\temp>
 [11]: service-fabric-manage-multiple-environment-app-configuration.md
 [12]: service-fabric-application-runas-security.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

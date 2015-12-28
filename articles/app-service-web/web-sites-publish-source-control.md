@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.date="12/11/2015" 
 	ms.author="cephalin"/>
 
 # Azure App Service での GIT による継続的なデプロイ
@@ -23,4 +23,4 @@
 [AZURE.INCLUDE [publishing-with-git](../../includes/publishing-with-git.md)]
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

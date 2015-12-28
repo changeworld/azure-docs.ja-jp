@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/29/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # Virtual Network の概要
@@ -31,6 +31,8 @@ VNet をより詳しく説明するために、次の図に簡略化されたオ
 
 Azure インフラストラクチャが VNet からパブリック インターネットへのアクセスを有効にするルーターのロールを担っていることがわかります。構成を行う必要はありません。ファイアウォールは、個々のサブネットに適用されたネットワーク セキュリティ グループ (NSG) に置き換えることができます。すべての物理ロード バランサーは Azure でインターネットに接続する内部ロード バランサーに置き換えられます。
 
+>[AZURE.NOTE]Azure には、クラシック (サービス管理とも呼ばれます) と Azure リソース マネージャー (ARM) の 2 つのデプロイ モードがあります。クラシック VNet はアフィニティ グループに追加するか、リージョン VNet として作成できます。アフィニティ グループに VNet がある場合は、[リージョン VNet に移行する方法](./virtual-networks-migrate-to-regional-vnet.md)がお勧めです。
+
 ## Virtual Network のメリット
 
 - **分離**: VNet は、相互に完全に分離されているため、同じ CIDR アドレス ブロックを使用する、開発、テスト、実稼働環境用に切り離されたネットワークを作成できます。
@@ -46,10 +48,6 @@ Azure インフラストラクチャが VNet からパブリック インター�
 - **接続**: VNet は相互に接続することも、サイト間 VPN 接続や ExpressRoute 接続を使用して、オンプレミスのデータセンターに接続することもできます。VPN ゲートウェイについては、「[VPN Gateway について](./vpn-gateway-about-vpngateways.md)」をご覧ください。ExpressRoute の詳細については、「[ExpressRoute の技術概要](./expressroute-introduction.md)」をご覧ください。
 
     >[AZURE.NOTE]Azure 環境に IaaS VM や PaaS ロール インスタンスをデプロイする前に、VNet を作成するようにしてください。ARM ベースの VM には VNet が必要です。既存の VNet を指定しない場合、Azure が既定の VNet を作成します。この VNet には、独自のオンプレミス ネットワークと競合する CIDR アドレス ブロックが含まれる場合があります。この場合、VNet からオンプレミスのネットワークに接続できなくなります。
-
-## デプロイメント モデル
-
-    >[AZURE.NOTE] There are two deployment modes in Azure: classic (also known as Service Management) and Azure Resource Manager (ARM). Classic VNets could be added to an affinity group, or created as a regional VNet. If you have a VNet in an affinity group, it is recommended to [migrate it to a regional VNet](./virtual-networks-migrate-to-regional-vnet.md). 
     
 ## サブネット
 
@@ -58,7 +56,7 @@ Azure インフラストラクチャが VNet からパブリック インター�
 ## IP アドレス
 
 
-Azure のリソースには、*パブリック*と*プライベート*の 2 種類の IP アドレスが割り当てられています。Azure は、パブリック IP アドレスで、インターネットや [Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) など、Azure の公開されている他のサービスと通信できます。プライベート IP アドレスを使用すると、インターネット経由でルーティング可能な IP アドレスを使用する必要なく、仮想ネットワーク内のリソースまたは VPN 経由で接続されているリソースが通信できるようになります。
+Azure のリソースには、*パブリック*と*プライベート*の 2 種類の IP アドレスが割り当てられています。Azure リソースは、パブリック IP アドレスを使用して、インターネットや [Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) など、Azure の公開されている他のサービスと通信できます。プライベート IP アドレスを使用すると、インターネット経由でルーティング可能な IP アドレスを使用する必要なく、仮想ネットワーク内のリソースまたは VPN 経由で接続されているリソースが通信できるようになります。
 
 Azure 内の IP アドレスの詳細については、「[仮想ネットワークの IP アドレス](virtual-network-ip-addresses-arm.md)」を参照してください。
 
@@ -100,4 +98,4 @@ Azure では追加のコストの必要なく Virtual Network を使用できま
 - [予約済み IP の概要](../virtual-networks-reserved-public-ip.md)
 - [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)の概要。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

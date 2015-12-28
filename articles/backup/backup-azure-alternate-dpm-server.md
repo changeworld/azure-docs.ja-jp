@@ -7,12 +7,19 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/14/2015" ms.author="giridham"; "jimpark"/>
+<tags
+	ms.service="backup"
+	ms.workload="storage-backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="12/10/2015"
+	ms.author="giridham;jimpark"/>
 
 # バックアップ コンテナーで別の DPM サーバーからデータを復元する
 コンテナーに登録されている DPM サーバーから、Azure Backup コンテナーに保護しているデータを復元できるようになりました。この復元プロセスは DPM 管理コンソールに完全統合されており、その他の復元ワークフローと似ています。
 
-バックアップ コンテナーで別の DPM サーバーからデータを復元するには、[System Center Data Protection Manager UR7](https://support.microsoft.com/ja-jp/kb/3065246) と[最新の Azure Backup エージェント](http://aka.ms/azurebackup_agent)が必要です。
+バックアップ コンテナーで別の DPM サーバーからデータを復元するには、[System Center Data Protection Manager UR7](https://support.microsoft.com/ja-JP/kb/3065246) と[最新の Azure Backup エージェント](http://aka.ms/azurebackup_agent)が必要です。
 
 ## 別の DPM サーバーからデータを復元する
 別の DPM サーバーからデータを復元するには:
@@ -21,7 +28,7 @@
 
     ![外部 DPM の追加](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
 
-2. データを復元する DPM サーバーに関連付けられている**コンテナー資格情報**を指定し、バックアップ コンテナーに登録されている **DPM サーバー**の一覧から DPM サーバーを選択し、データを復元する DPM サーバーに関連付けられている**暗号化パスフレーズ**を指定します。
+2. データを復元する **DPM サーバー**に関連付けられているコンテナーから新しい**コンテナー資格情報**をダウンロードし、バックアップ コンテナーに登録されている DPM サーバーの一覧から DPM サーバーを選択し、データを復元する DPM サーバーに関連付けられている**暗号化パスフレーズ**を指定します。
 
     ![外部 DPM の資格情報](./media/backup-azure-alternate-dpm-server/external-dpm-credentials.png)
 
@@ -96,4 +103,4 @@
 ## 次のステップ:
 • [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

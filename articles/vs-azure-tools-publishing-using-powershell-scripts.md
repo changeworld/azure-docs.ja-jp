@@ -3,9 +3,9 @@
    description="Visual Studio から Windows PowerShell スクリプトを使用して、開発環境とテスト環境に発行する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="dotnet"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="09/08/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行
 
@@ -351,4 +351,4 @@ Windows PowerShell コマンド プロンプトで使用できる関数のヘル
 
 PowerShell スクリプトの詳細については、「[Windows PowerShell を使用したスクリプト](https://technet.microsoft.com/library/bb978526.aspx)」をお読みください。また、「[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)」で他の Azure PowerShell スクリプトもご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

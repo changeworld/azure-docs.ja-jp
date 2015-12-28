@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="NoSQL データベースである DocumentDB での SQL クエリ | Microsoft Azure" 
-	description="NoSQL データベースである DocumentDBに対して SQL クエリのステートメントを使用する方法について説明します。SQL クエリは、JSON クエリ言語として、ビッグ データを分析するために使用できます。" 
+	description="NoSQL データベースである DocumentDB に対して SQL クエリのステートメントを使用する方法について説明します。SQL クエリは、JSON クエリ言語として、ビッグ データを分析するために使用できます。" 
 	keywords="sql クエリ、sql クエリ、sql の構文、json クエリ言語、データベースの概念と sql クエリ"
 	services="documentdb" 
 	documentationCenter="" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/18/2015" 
+	ms.date="12/14/2015" 
 	ms.author="arramac"/>
 
 # DocumentDB における SQL クエリ
@@ -31,7 +31,7 @@ Microsoft Azure DocumentDB は、JSON クエリ言語として SQL (Structured Q
 
 > [AZURE.VIDEO dataexposedqueryingdocumentdb]
 
-その後、この記事に戻って、いくつかのシンプルなな JSON ドキュメントと SQL コマンドを使用する SQL クエリのチュートリアルを開始します。
+その後、この記事に戻って、いくつかのシンプルな JSON ドキュメントと SQL コマンドを使用する SQL クエリのチュートリアルを開始します。
 
 ## DocumentDB での SQL コマンドの概要
 DocumentDB SQL の動作を確認するため、最初にシンプルな JSON ドキュメントを見てみましょう。その後このドキュメントに対して実施するシンプルなクエリについて説明します。これら 2 つの JSON ドキュメントは、2 つの家族に関するドキュメントです。DocumentDB では、スキーマやセカンダリ インデックスを明示的に作成する必要がありません。必要なことは、JSON ドキュメントを DocumentDB コレクションに挿入した後、クエリを実行するだけです。以下は、Andersen 一家に関するシンプルな JSON ドキュメントです。両親、子供 (および子供のペット)、住所、登録に関する情報が記載されています。ドキュメントには、文字列、数値、ブール値、配列、入れ子になったプロパティがあります。
@@ -186,7 +186,7 @@ DocumentDB SQL の構文について詳しく説明する前に、DocumentDB の
 ## DocumentDB SQL クエリの基礎
 すべてのクエリは ANSI-SQL 標準に従って SELECT 句とオプションの FROM および WHERE 句で構成されます。通常は、各クエリで FROM 句のソースが列挙されます。次に WHERE 句のフィルターがソースに適用され、JSON ドキュメントのサブセットが取得されます。最後に SELECT 句を使用して、要求された JSON 値が特定のリストにプロジェクションされます。
     
-    SELECT <select_list> 
+    SELECT [TOP <top_expression>] <select_list> 
     [FROM <from_specification>] 
     [WHERE <filter_condition>]
     [ORDER BY <sort_specification]    
@@ -661,6 +661,37 @@ SELECT 句は、プロパティ参照に加えて、定数、算術式、論理�
 	    "isRegistered": true
 	}]
 
+###TOP 演算子
+TOP キーワードを使用すると、クエリの値数を制限できます。TOP と ORDER BY 句を併用すると、結果セットは、指定された順序で並べ替えられた値の先頭 N 個に制限されます。ORDER BY 句を使用しない場合、未定義の順序の結果の先頭 N 個が返されます。SELECT ステートメントでは、ベスト プラクティスとして常に ORDER BY 句と TOP 句を併用することをお勧めします。TOP の影響を受ける行を予想どおりに指定するには、併用する必要があります。
+
+
+**クエリ**
+
+	SELECT TOP 1 * 
+	FROM Families f 
+
+**結果**
+
+	[{
+	    "id": "AndersenFamily",
+	    "lastName": "Andersen",
+	    "parents": [
+	       { "firstName": "Thomas" },
+	       { "firstName": "Mary Kay"}
+	    ],
+	    "children": [
+	       {
+	           "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
+	           "pets": [{ "givenName": "Fluffy" }]
+	       }
+	    ],
+	    "address": { "state": "WA", "county": "King", "city": "seattle" },
+	    "creationDate": 1431620472,
+	    "isRegistered": true
+	}]
+
+(前述のように)、TOP には、定数、またはパラメーター化されたクエリを使用した変数を指定できます。詳細については、後述のパラメーター化されたクエリを参照してください。
+
 ## ORDER BY 句
 ANSI SQL 同様、クエリ実行にオプションで Order By 句を含めることができます。句に ASC/DESC 引数 (オプション) を含めて、結果を取得する順番を指定できます。Order By の詳細については「[DocumentDB Order By チュートリアル](documentdb-orderby.md)」を参照してください。
 
@@ -1073,6 +1104,15 @@ DocumentDB では、使い慣れた @ 表記で表されたパラメーターを
         "parameters": [          
             {"name": "@lastName", "value": "Wakefield"},         
             {"name": "@addressState", "value": "NY"},           
+        ] 
+    }
+
+以下のように、パラメーター化されたクエリを使用して TOP の引数を設定できます。
+
+    {      
+        "query": "SELECT TOP @n * FROM Families",     
+        "parameters": [          
+            {"name": "@n", "value": 10},         
         ] 
     }
 
@@ -1603,6 +1643,22 @@ DocumentDB クエリ プロバイダーは、LINQ クエリから DocumentDB SQL
 		new { first = 1, second = 2 }; //an anonymous type with 2 fields              
 		new int[] { 3, child.grade, 5 };
 
+### サポートされている LINQ 演算子の一覧
+DocumentDB .NET SDK に含まれる LINQ プロバイダーでサポートされる LINQ 演算子の一覧です。
+
+-	**Select**: オブジェクトの構築など、プロジェクションによって SQL SELECT に変換します。
+-	**Where**: フィルターによって SQL WHERE に変換します。また、&&、||、および ! から SQL 演算子への変換をサポートします。
+-	**SelectMany**: SQL JOIN 句に対して配列をアンワインドできます。配列要素に関してフィルターする式を連結または入れ子にするために使用できます。
+-	**OrderBy と OrderByDescending**: ORDER BY 昇順/降順に変換します。
+-	**CompareTo**: 範囲比較に変換します。.NET では文字列を比較できないので、一般的に文字列に使用されます。
+-	**Take**: クエリからの結果を制限するために SQL TOP に変換します。
+-	**数学関数**: .NET の Abs、Acos、Asin、Atan、Ceiling、Cos、Exp、Floor、Log、Log10、Pow、Round、Sign、Sin、Sqrt、Tan、Truncate から、同等の SQL 組み込み関数への変換をサポートします。
+-	**文字列関数**: .NET の Concat、Contains、EndsWith、IndexOf、Count、ToLower、TrimStart、Replace、Reverse、TrimEnd、StartsWith、SubString、ToUpper から、同等の SQL 組み込み関数への変換をサポートします。
+-	**配列関数**: .NET のからの変換をサポートしています。NET の Concat、Contains、Count から、同等の SQL 組み込み関数への変換をサポートします。
+-	**地理空間の拡張関数**: スタブ メソッドの Distance、Within、IsValid、IsValidDetailed から、同等の SQL 組み込み関数への変換をサポートします。
+-	**ユーザー定義関数の拡張関数**: スタブ メソッドの UserDefinedFunctionProvider.Invoke から、対応するユーザー定義関数への変換をサポートします。
+-	**その他**: 合体演算子と条件演算子の変換をサポートします。コンテキストに応じて、Contains から、CONTAINS、ARRAY\_CONTAINS、または SQL IN に変換できます。
+
 ### SQL クエリ演算子
 標準 LINQ クエリ演算子が DocumentDB クエリに変換される方法を以下のいくつかの例で示します。
 
@@ -2088,4 +2144,4 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 [consistency-levels]: documentdb-consistency-levels.md
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -48,7 +48,7 @@ Azure AD では、アプリケーションに対するあらゆる種類のパ�
 
 アカウントの共有を有効にする Azure AD の機能は、次のとおりです。
 
-- [パスワード シングル サインオン](active-directory-passwords-getting-started.md)
+- [パスワード シングル サインオン](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
 - パスワード シングル サインオン エージェント
 - [グループの割り当て](active-directory-accessmanagement-self-service-group-management.md)
 - カスタム パスワード アプリケーション
@@ -72,4 +72,4 @@ Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 
 - [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access.md)
 - [セルフサービス グループの管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -18,7 +18,7 @@
 
 # Machine Learning の Recommendations API のクイック スタート ガイド
 
-このドキュメントでは、サービスやアプリケーションで Microsoft Azure Machine Learning の Recommendations を使用する方法について説明します。
+このドキュメントでは、サービスやアプリケーションで Microsoft Azure Machine Learning の Recommendations を使用する方法について説明します。Recommendations API の詳細については、[ギャラリー](http://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)を参照してください。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -34,7 +34,7 @@ Azure Machine Learning の Recommendations を使用するには、次の手順�
 * 推奨モデルの構築 – これは、推奨システムがすべての使用状況データを受け取って推奨モデルを作成する非同期操作です。この操作は、データのサイズとビルド構成パラメーターによっては、数分または数時間かかることがあります。ビルドをトリガーすると、ビルドの ID を取得します。Recommendations の使用を開始する前に、ビルド ID を使用してビルド プロセスの終了を確認します。
 * 推奨の使用 – 特定の項目や項目一覧に対する推奨を取得します。
 
-これらの手順がすべて、Azure Machine Learning の Recommendations API で実行されます。
+これらの手順がすべて、Azure Machine Learning の Recommendations API で実行されます。[ギャラリー](http://1drv.ms/1xeO2F3)では、これらの各手順を実装するサンプル アプリケーションをダウンロードすることもできます。
 
 ##制限事項
 
@@ -47,24 +47,23 @@ Azure Machine Learning の Recommendations を使用するには、次の手順�
 ##統合
 
 ###認証
-Micosoft Azure Marketplace は、Basic または OAuth のいずれかの認証方法をサポートします。
+Micosoft Azure Marketplace は、Basic または OAuth のいずれかの認証方法をサポートします。アカウント キーは、[アカウント設定](https://datamarket.azure.com/account/keys)のマーケットプレース内のキーに移動すると簡単に見つけることができます。
 ####基本認証
 承認ヘッダーの追加:
 
 	Authorization: Basic <creds>
                
-	Where <creds> = ConvertToBase64(“AccountKey:” + yourAccountKey);  
+	Where <creds> = ConvertToBase64("AccountKey:" + yourAccountKey);  
 	
 Base 64 に変換 (c#)
 
-	var bytes = Encoding.UTF8.GetBytes(“AccountKey:” + yourAccountKey);
+	var bytes = Encoding.UTF8.GetBytes("AccountKey:" + yourAccountKey);
 	var creds = Convert.ToBase64String(bytes);
 	
 Base 64 に変換 (JavaScript)
 
 	var creds = window.btoa("AccountKey" + ":" + yourAccountKey);
 	
-アカウント キーは[こちら](https://datamarket.azure.com/account/keys)で取得します。
 
 
 
@@ -661,7 +660,7 @@ OData XML
 |	パラメーター名 |	有効な値	|
 |	:--------	|	:--------						|
 | id | モデルの一意識別子 (大文字小文字を区別する) |
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 |||
 | Request Body | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能であることに注意してください。Description や ActiveBuildId を設定したくない場合は、タグ全体を削除します。|
 
@@ -684,4 +683,4 @@ OData XML
 このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報と見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。社内での参照目的に限り、このドキュメントを複製して使用できます。© 2014 Microsoft.All rights reserved.
  
 
-<!----HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1217_2015-->

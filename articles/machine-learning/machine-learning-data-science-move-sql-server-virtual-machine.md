@@ -32,9 +32,8 @@ Machine Learning 用に Azure SQL データベースにデータを移動する�
 
 <b>ソース</b> |<b>移動先: Azure VM 上の SQL Server</b> |
 ------------------ |-------------------- |
-<b>フラット ファイル</b> |1\.<a href="#insert-tables-bcp">コマンド ライン一括コピー ユーティリティ (BCP)</a><br> 2.<a href="#insert-tables-bulkquery">一括挿入 SQL クエリ</a><br> 3.<a href="#sql-builtin-utilities">SQL Server のグラフィカル組み込みユーティリティ</a>
-<b>オンプレミスの SQL Server</b> | 1\.<a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード</a><br> 2.<a href="#export-flat-file">フラット ファイルへのエクスポート</a><br> 3.<a href="#sql-migration">SQL Database 移行ウィザード</a><br> 4.<a href="#sql-backup">データベースのバックアップと復元</a><br>
-
+<b>フラット ファイル</b> |1.<a href="#insert-tables-bcp">コマンド ライン一括コピー ユーティリティ (BCP)</a><br> 2.<a href="#insert-tables-bulkquery">一括挿入 SQL クエリ</a><br> 3.<a href="#sql-builtin-utilities">SQL Server のグラフィカル組み込みユーティリティ</a>
+<b>オンプレミスの SQL Server</b> | 1.<a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード</a><br> 2.<a href="#export-flat-file">フラット ファイルへのエクスポート</a><br> 3.<a href="#sql-migration">SQL Database 移行ウィザード</a><br> 4.<a href="#sql-backup">データベースのバックアップと復元</a><br>
 このドキュメントでは、SQL Server Management Studio または Visual Studio のデータベース エクスプローラーから SQL コマンドが実行されることを想定していることに注意してください。
 
 > [AZURE.TIP]別の方法として、[Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用して、データを Azure の SQL Server VM に移動するパイプラインの作成とスケジュール設定を実行できます。詳細については、「[Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)](../data-factory/data-factory-copy-activity.md)」を参照してください。
@@ -58,7 +57,7 @@ Machine Learning 用に Azure SQL データベースにデータを移動する�
 3. [SQL Server のグラフィカル組み込みユーティリティ (インポート/エクスポート、SSIS)](#sql-builtin-utilities)
 
 
-### <a name="insert-tables-bcp"></a>コマンド ライン一括コピー ユーティリティ (BCP)
+### <a name="insert-tables-bcp"> </a>コマンド ライン一括コピー ユーティリティ (BCP)
 
 BCP は、SQL Server と一緒にインストールされるコマンド ライン ユーティリティであり、データを移動する最も簡単な方法の 1 つです。これは、3 つの異なる SQL Server (オンプレミスの SQL Server、SQL Azure、および Azure での SQL Server VM) すべて機能します。
 
@@ -131,7 +130,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 
 ### <a name="insert-tables-bulkquery"></a>一括挿入 SQL クエリ
 
-[一括挿入 SQL クエリ](https://msdn.microsoft.com/library/ms188365)は、行/列ベースのファイルからデータをデータベースにインポートする場合に使用できます (サポートされるタイプについては[ここ](https://msdn.microsoft.com/library/ms188609)で説明されています)。
+[一括挿入 SQL クエリ](https://msdn.microsoft.com/library/ms188365)は、行/列ベースのファイルからデータをデータベースにインポートする場合に使用できます (サポートされるタイプについては「[一括エクスポートまたは一括インポートのデータの準備 (SQL Server)](https://msdn.microsoft.com/library/ms188609)」のトピックで説明されています)。
 
 一括挿入用のいくつかのサンプル コマンドを以下に示します。
 
@@ -176,7 +175,7 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 
 ### <a name="export-flat-file"></a>フラット ファイルへのエクスポート
 
-[ここ](https://msdn.microsoft.com/library/ms175937.aspx)で説明されているように、さまざまな方法を使用してオンプレミスの SQL Server からデータを一括エクスポートできます。このドキュメントでは、一例として一括コピー プログラム (BCP) について説明します。データをフラット ファイルにエクスポートした後は、一括インポートを使用して別の SQL Server にそのデータをインポートできます。
+「[データの一括インポートと一括エクスポート (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx)」のトピックで説明されているように、さまざまな方法を使用してオンプレミスの SQL Server からデータを一括エクスポートできます。このドキュメントでは、一例として一括コピー プログラム (BCP) について説明します。データをフラット ファイルにエクスポートした後は、一括インポートを使用して別の SQL Server にそのデータをインポートできます。
 
 1. 次のように bcp ユーティリティを使用して、オンプレミスの SQL Server からファイルにデータをエクスポートします。
 
@@ -184,7 +183,7 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 
 2. 手順 1 でエクスポートされたテーブル スキーマに対して `create database` と `create table` を使用して、データベースとテーブルを Azure の SQL Server VM に作成します。
 
-3. エクスポート/インポートされているデータのテーブルのスキーマを記述するためのフォーマット ファイルを作成します。フォーマット ファイルの詳細については、[ここ](https://msdn.microsoft.com/library/ms191516.aspx)で説明されています。
+3. エクスポート/インポートされているデータのテーブルのスキーマを記述するためのフォーマット ファイルを作成します。フォーマット ファイルの詳細については、「[フォーマット ファイルの作成 (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx)」を参照してください。
 
 	SQL Server マシンから BCP を実行する場合のフォーマット ファイルの生成
 
@@ -223,4 +222,4 @@ SQL Server は以下のものをサポートします。
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="登録と保護の管理" 
+	pageTitle="サーバーの登録解除と保護の無効化 | Microsoft Azure" 
 	description="Azure Site Recovery は、オンプレミスのサーバーに配置されている仮想マシンの Azure またはセカンダリ データセンターへのレプリケーション、フェールオーバー、および復旧を調整します。この記事を使用して、Site Recovery コンテナーからサーバーの登録を解除して、仮想マシンと物理サーバーの保護を無効にします。" 
 	services="site-recovery" 
 	documentationCenter="" 
@@ -13,10 +13,10 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="10/07/2015" 
+	ms.date="12/14/2015" 
 	ms.author="raynew"/>
 
-# 登録と保護の管理
+# サーバーの登録解除と保護の無効化
 
 この記事では、Site Recovery コンテナーからサーバーの登録を解除する方法と Site Recovery によって保護される仮想マシンの保護を無効にする方法について説明します。この記事の内容について質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
@@ -212,4 +212,4 @@ VMware 仮想マシンまたは物理サーバーの保護を停止する場合�
 	- **[保護を無効にする]**—このオプションを有効にして保存すると、マシンは Site Recovery によって保護されなくなります。マシンの保護設定は、自動的にクリーンアップされます。
 	- **[コンテナーから削除する]**—このオプションを選択すると、Site Recovery のコンテナーからのみマシンが削除されます。マシンのオンプレミスの保護設定には影響しません。マシンの設定を削除したり、Azure のサブスクリプションから仮想マシンを削除したりするには、モビリティ サービスをアンインストールして、設定をクリーンアップする必要があります。 ![オプションを削除する](./media/site-recovery-manage-registration-and-protection/RegistrationProtection_RemoveVM.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

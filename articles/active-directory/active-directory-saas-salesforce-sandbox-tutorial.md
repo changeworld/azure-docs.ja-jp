@@ -68,11 +68,11 @@ Sandbox を使用すると、Salesforce 運用組織内のデータとアプリ�
 
     ![アプリ URL の構成](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781022.png "アプリケーション URL の構成")
 
-4. ディレクトリで別の Salesforce Sandbox インスタンスのシングル サイオンを既に構成している場合は、**[サインオン URL]** と同じ値を使用するように **[発行者の URL]** も構成する必要があります。**[発行者の URL]** フィールドは、ダイアログの **[アプリケーション URL の構成]** ページで **[詳細設定の表示]** チェック ボックスをオンにすることで表示できます。
+4. ディレクトリで別の Salesforce Sandbox インスタンスのシングル サイオンを既に構成している場合は、**[サインオン URL]** と同じ値を使用するように **[識別子]** も構成する必要があります。**[識別子]** フィールドは、ダイアログの **[アプリケーション URL の構成]** ページで **[詳細設定の表示]** チェック ボックスをオンにすることで表示できます。
 
 4.  **[Salesforce Sandbox でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781023.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781023.png "Configure Single Sign-On")
 
 5.  別の Web ブラウザーのウィンドウで、Salesforce Sandbox 企業サイトに管理者としてログインします。
 
@@ -182,7 +182,7 @@ Sandbox を使用すると、Salesforce 運用組織内のデータとアプリ�
 
     ![ユーザーの割り当て](./media/active-directory-saas-salesforce-sandbox-tutorial/IC769574.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![あり](./media/active-directory-saas-salesforce-sandbox-tutorial/IC767830.png "あり")
   
@@ -190,4 +190,4 @@ Sandbox を使用すると、Salesforce 運用組織内のデータとアプリ�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

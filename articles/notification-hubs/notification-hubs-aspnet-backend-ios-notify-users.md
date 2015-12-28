@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Notification Hubs と .NET バックエンドによるユーザーへの通知"
+	pageTitle="Azure Notification Hubs と .NET バックエンドによる iOS ユーザーへの通知"
 	description="Azure のユーザーにプッシュ通知を送信する方法について説明します。コード サンプルは Objective-C で記述されています。また、バックエンドには .NET API を使用しています。"
 	documentationCenter="ios"
 	authors="wesmc7777"
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="09/24/2015"
+	ms.date="12/16/2015"
 	ms.author="wesmc"/>
 
-#Azure Notification Hubs と .NET バックエンドによるユーザーへの通知
+#Azure Notification Hubs と .NET バックエンドによる iOS ユーザーへの通知
 
 [AZURE.INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 ##概要
 
-Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。ガイダンス トピック「[アプリ バックエンドからの登録](http://msdn.microsoft.com/library/dn743807.aspx)」に示すように、ASP.NET WebAPI バックエンドを使用してクライアントを認証し、通知を生成します。
+Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。ガイダンス トピック「[アプリ バックエンドからの登録](notification-hubs-registration-management.md#registration-management-from-a-backend)」に示すように、ASP.NET WebAPI バックエンドを使用してクライアントを認証し、通知を生成します。
 
 > [AZURE.NOTE]このチュートリアルでは、「[Notification Hubs の使用 (iOS)](notification-hubs-ios-get-started.md)」での説明に従って通知が作成され、構成されていると想定しています。また、「[安全なプッシュ (iOS)](notification-hubs-aspnet-backend-ios-secure-push.md)」チュートリアルの前提条件でもあります。バックエンド サービスとして Mobile Services を使用している場合は、このチュートリアルの [Mobile Services バージョン](../mobile-services-javascript-backend-ios-push-notifications-app-users.md)をご覧ください。
 
@@ -262,7 +262,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 		@end
 
-	上記のコードは、アプリケーション バックエンドへの REST 呼び出しを実行するための NSURLSession、および通信ハブによって返される registrationId をローカルに格納するための NSUserDefaults の使用についてのガイダンス記事「[アプリ バックエンドからの登録](http://msdn.microsoft.com/library/dn743807.aspx)」で説明したロジックを実装します。
+	上記のコードは、アプリケーション バックエンドへの REST 呼び出しを実行するための NSURLSession、および通信ハブによって返される registrationId をローカルに格納するための NSUserDefaults の使用についてのガイダンス記事「[アプリ バックエンドからの登録](notification-hubs-registration-management.md#registration-management-from-a-backend)」で説明したロジックを実装します。
 
 	このクラスが適切に機能するためには、プロパティ **authorizationHeader** を設定する必要があります。このプロパティは、ログイン後に **ViewController** クラスによって設定されます。
 
@@ -465,4 +465,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [3]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-registered.png
 [4]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-msg.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1217_2015-->

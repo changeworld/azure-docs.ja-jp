@@ -3,9 +3,9 @@
    description="Visual Studio を使用して、Azure リソース グループ プロジェクトを作成し、リソースを Azure にデプロイします。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags
    ms.service="azure-resource-manager"
    ms.devlang="multiple"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="11/13/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # Visual Studio での Azure リソース グループの作成とデプロイ
 
@@ -196,4 +196,4 @@ Azure SDK 2.5 で作成されたクラウド デプロイ プロジェクトを�
 
 Visual Studio で Azure リソース グループにリソースを追加する方法については、「[Visual Studio でのリソース マネージャー テンプレートの編集](vs-azure-tools-resource-group-adding-resources.md)」を参照してください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

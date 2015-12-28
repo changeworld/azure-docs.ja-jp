@@ -98,7 +98,7 @@ Azure にレプリケートする仮想マシンは、[Azure 要件](site-recove
 
 はい。ブランチ オフィスでのレプリケーションとフェールオーバーを調整するために Site Recovery を使用すると、1 か所ですべてのブランチ オフィスのワークロードの統一されたオーケストレーションとビューが得られます。ブランチ オフィスに出向くことなく、フェールオーバーを容易に実行し、本社からすべてのブランチの障害復旧を管理できます。
 
-### ASR ワークフローを自動化するために利用できる SDK は提供されていますか。
+### Site Recovery ワークフローを自動化するために利用できる SDK は提供されていますか。
 
 はい。Rest API、PowerShell、Azure SDK のいずれかを使用して、Site Recovery ワークフローを自動化することができます。詳細については、「[PowerShell を使用した Site Recovery のデプロイ](site-recovery-deploy-with-powershell.md)」を参照してください。
 
@@ -223,4 +223,4 @@ Azure パック、クラウド プラットフォーム システム、および
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

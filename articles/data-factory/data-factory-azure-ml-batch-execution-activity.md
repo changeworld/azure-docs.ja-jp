@@ -59,7 +59,9 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 
 
 ### シナリオ: Azure Blob Storage のデータを参照する Web サービスの入力/出力を使用する
-このシナリオの Azure Machine Learning Web サービスは、Azure BLOB ストレージ内のファイルのデータを使用して予測を作成し、BLOB ストレージに予測結果を保存します。次の JSON では、AzureMLBatchExecution アクティビティを使用する Azure Data Factory パイプラインが定義されています。このアクティビティは、入力としてデータセット **DecisionTreeInputBlob** を使用し、出力として **DecisionTreeResultBlob** を使用します。**DecisionTreeInputBlob** は **webServiceInput** JSON プロパティを使用して Web サービスに入力として渡され、**DecisionTreeResultBlob** は **webServiceOutputs** JSON プロパティを使用して Web サービスに出力として渡されます。アクティビティの入力/出力であるデータセットだけを、Web サービスの入力および出力として渡すことができます。
+このシナリオの Azure Machine Learning Web サービスは、Azure BLOB ストレージ内のファイルのデータを使用して予測を作成し、BLOB ストレージに予測結果を保存します。次の JSON では、AzureMLBatchExecution アクティビティを使用する Azure Data Factory パイプラインが定義されています。このアクティビティは、入力としてデータセット **DecisionTreeInputBlob** を使用し、出力として **DecisionTreeResultBlob** を使用します。**DecisionTreeInputBlob** は **webServiceInput** JSON プロパティを使用して Web サービスに入力として渡され、**DecisionTreeResultBlob** は **webServiceOutputs** JSON プロパティを使用して Web サービスに出力として渡されます。
+
+> [AZURE.NOTE]**webServiceInput** と **webServiceOutputs** の各プロパティ (**typeProperties** 内) から参照されているデータセットもアクティビティの **inputs** と **outputs** に含める必要があります。
 
 
 	{
@@ -123,7 +125,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 		  }
 		}
 
-2. **入力**用の Azure Data Factory **データセット**を作成します。他の Data Factory データセットとは異なり、これらは **folderPath** 値と **fileName** 値を含む必要があります。パーティション分割を使用すると、各バッ チ実行 (各データ スライス) で一意の入力ファイルと出力ファイルを処理または生成できます。入力を CSV ファイル形式に変換し、これを各スライスのストレージ アカウントに配置するには、いくつかのアップストリーム アクティビティを含める必要があります。その場合は、次の例に示す **external** および **externalData** の設定を含めないと、DecisionTreeInputBlob は別のアクティビティの出力データセットになります。
+2. **入力**用の Azure Data Factory **データセット**を作成します。他の Data Factory データセットとは異なり、これらは **folderPath** 値と **fileName** 値を含む必要があります。パーティション分割を使用すると、各バッチ実行 (各データ スライス) で一意の入力ファイルと出力ファイルを処理または生成できます。入力を CSV ファイル形式に変換し、これを各スライスのストレージ アカウントに配置するには、いくつかのアップストリーム アクティビティを含める必要があります。その場合は、次の例に示す **external** および **externalData** の設定を含めないと、DecisionTreeInputBlob は別のアクティビティの出力データセットになります。
 
 		{
 		  "name": "DecisionTreeInputBlob",
@@ -351,7 +353,96 @@ Azure Machine Learning の実験でリーダー モジュールを使用する�
 
 - デプロイされた Azure Machine Learning Web サービスは、リーダー モジュールとライター モジュールを使用して、Azure SQL Database のデータを読み書きします。この Web サービスでは、Database server name、Database name、Server user account name、Server user account password という 4 つのパラメーターが公開されています。  
 - **start** と **end** の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能です。**end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx)を参照してください。
- 
+
+### その他のシナリオ
+
+#### Web サービスに入力が必要ではない
+
+Azure ML バッチ実行 Web サービスを使用すると、R や Python のスクリプトなど、入力が必要ではない任意のワークフローを実行できます。また、GlobalParameters を公開しない Reader モジュールを使用して構成する方法を実験することもできます。この場合、AzureMLBatchExecution アクティビティは次のように構成されます。
+
+	{
+        "name": "scoring service",
+        "type": "AzureMLBatchExecution",
+        "outputs": [
+            {
+                "name": "myBlob"
+            }
+        ],
+        "typeProperties": {
+            "webServiceOutputs": {
+                "output1": "myBlob"
+            }              
+         },
+        "linkedServiceName": "mlEndpoint",
+        "policy": {
+            "concurrency": 1,
+            "executionPriorityOrder": "NewestFirst",
+            "retry": 1,
+            "timeout": "02:00:00"
+        }
+    },
+   
+
+#### Web サービスに入力/出力が必要ではない
+Azure ML Batch 実行 Web サービスに Web サービスの出力を構成しない場合があります。この例では、Web サービスの入力も出力ありません。また、GlobalParameters も構成されていません。アクティビティ自体に構成されている出力があっても、webServiceOutput として出力されません。
+
+	{
+        "name": "retraining",
+        "type": "AzureMLBatchExecution",
+        "outputs": [
+            {
+                "name": "placeholderOutputDataset"
+            }
+        ],
+        "typeProperties": {
+         },
+        "linkedServiceName": "mlEndpoint",
+        "policy": {
+            "concurrency": 1,
+            "executionPriorityOrder": "NewestFirst",
+            "retry": 1,
+            "timeout": "02:00:00"
+        }
+    },
+
+#### Web サービスはリーダーとライターを使用し、他のアクティビティが成功した場合にのみアクティビティを実行する
+
+Azure ML Web サービスのリーダーとライター モジュールは、GlobalParameters あり、またはなしで構成できます。ただし、データセットの依存関係を使用するサービスの呼び出しを処理パイプラインに組み込み、一部のアップストリーム処理が完了した場合にのみサービスを呼び出し、バッチ実行が完了した後にその他のアクションをトリガーすることもできます。この場合、Web サービスの入力または出力として指定せずに、アクティビティの入力と出力を使用する依存関係を表現することができます。
+
+	{
+	    "name": "retraining",
+	    "type": "AzureMLBatchExecution",
+	    "inputs": [
+	        {
+	            "name": "upstreamData1"
+	        },
+	        {
+	            "name": "upstreamData2"
+	        }
+	    ],
+	    "outputs": [
+	        {
+	            "name": "downstreamData"
+	        }
+	    ],
+	    "typeProperties": {
+	     },
+	    "linkedServiceName": "mlEndpoint",
+	    "policy": {
+	        "concurrency": 1,
+	        "executionPriorityOrder": "NewestFirst",
+	        "retry": 1,
+	        "timeout": "02:00:00"
+	    }
+	},
+
+**次の点に注意が必要です**。
+
+-   実験用エンドポイントが webServiceInput を使用している場合、そのエンドポイントは BLOB データセットで表され、アクティビティの入力と webServiceInput プロパティに含まれます。使用していない場合、webServiceInput プロパティは省略されます。 
+-   実験用エンドポイントが webServiceOutput を使用している場合、そのエンドポイントは BLOB データセットで表され、アクティビティの出力と webServicepOutputs プロパティに含まれます (実験の各出力の名前でマップされます)。使用していない場合、webServiceOutputs プロパティは省略されます。
+-   実験用エンドポイントが globalParameter を公開している場合、アクティビティの globalParameters プロパティでキーと値のペアとして指定されます。公開していない場合、globalParameters プロパティは省略されます。キーは大文字と小文字が区別されます。[Azure Data Factory 関数](data-factory-scheduling-and-execution.md#data-factory-functions-reference)を値に使用することができます。 
+- アクティビティの入力と出力のプロパティには、アクティビティの typeProperties から参照せずに含めることができるその他のデータセットがあります。このようなデータセットは実行の制御にスライスの依存関係を使用しますが、それ以外の場合は、AzureMLBatchExecution アクティビティから無視されます。 
+
 
 ## 更新リソース アクティビティを使用して Azure ML モデルを更新する
 時間の経過と共に、Azure ML スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。再トレーニングが完了したら、再トレーニング済みの ML モデルでスコア付け Web サービスを更新する必要があります。Web サービスを使用して Azure ML モデルの再トレーニングと更新を有効にするための標準的な手順を次に示します。
@@ -583,30 +674,88 @@ Azure ML 更新リソース アクティビティは出力を作成しません�
 	                "name": "AzureML Update Resource",
 	                "linkedServiceName": "updatableScoringEndpoint2"
 	            }
-	        ]
+	        ],
+	    	"start": "2015-02-13T00:00:00Z",
+	   		"end": "2015-02-14T00:00:00Z"
 	    }
 	}
 
 
+### リーダーとライター モジュール
+
+Web サービス パラメーターの使用を伴う一般的なシナリオとして、Azure SQL のリーダーとライターを使用するシナリオがあります。リーダー モジュールは、Azure Machine Learning Studio の外部のデータ管理サービスからデータを実験に読み込むために使用します。ライター モジュールは、Azure Machine Learning Studio の外部のデータ管理サービスに実験のデータを保存するために使用します。
+
+Azure BLOB と Azure SQL のリーダー/ライターの詳細については、MSDN ライブラリの「[リーダー](https://msdn.microsoft.com/library/azure/dn905997.aspx)」と「[ライター](https://msdn.microsoft.com/library/azure/dn905984.aspx)」をご覧ください。前のセクションの例では、Azure BLOB リーダーと Azure BLOB ライターを使用しています。ここでは、Azure SQL リーダーと Azure SQL ライターの使用について説明します。
 
 
 ## よく寄せられる質問
-
-**Q:** AzureMLBatchScoring アクティビティを使用しています。AzureMLBatchExecution アクティビティを使用するように切り替えた方がいいですか?
-
-**A:** はい。AzureMLBatchScoring アクティビティを使用して Azure Machine Learning と統合している場合は、最新の AzureMLBatchExecution アクティビティを使用することをお勧めします。AzureMLBatchScoring アクティビティは非推奨になっており、将来のリリースで削除されます。
-
-AzureMLBatchExecution アクティビティは、Azure SDK および Azure PowerShell の 2015 年 8 月のリリースで導入されました。
-
-AzureMLBatchExecution アクティビティには入力は必要ありません (入力の依存関係が必要ない場合)。また、Web サービス入力と Web サービス出力を使用するか、または使用しないかを、明示できます。Web サービス入力/出力を使用する場合は、使用する関連 Azure BLOB データセットを指定できます。さらに、Web サービスによって提供される Web サービス パラメーターの値を明確に指定できます。
-
-それでも引き続き AzureMLBatchScoring アクティビティを使用したい場合は、「[Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する](data-factory-create-predictive-pipelines.md)」で詳細をご覧ください。
-
 
 **Q:** ビッグ データ パイプラインによって生成される複数のファイルがあります。AzureMLBatchExecution アクティビティを使用して、すべてのファイルで処理できますか。
 
 **A:** はい。詳しくは、「**リーダー モジュールを使用して Azure BLOB の複数のファイルからデータを読み取る**」をご覧ください。
 
+## Azure ML バッチ スコアリング アクティビティ
+**AzureMLBatchScoring** アクティビティを使用して Azure Machine Learning と統合している場合は、最新の **AzureMLBatchExecution** アクティビティを使用することをお勧めします。
+
+AzureMLBatchExecution アクティビティは、Azure SDK および Azure PowerShell の 2015 年 8 月のリリースで導入されました。
+
+AzureMLBatchScoring アクティビティを引き続き使用する場合は、このセクションを読んでください。
+
+### 入力/出力に Azure Storage を使用する Azure ML バッチ スコアリング アクティビティ 
+
+	{
+	  "name": "PredictivePipeline",
+	  "properties": {
+	    "description": "use AzureML model",
+	    "activities": [
+	      {
+	        "name": "MLActivity",
+	        "type": "AzureMLBatchScoring",
+	        "description": "prediction analysis on batch input",
+	        "inputs": [
+	          {
+	            "name": "ScoringInputBlob"
+	          }
+	        ],
+	        "outputs": [
+	          {
+	            "name": "ScoringResultBlob"
+	          }
+	        ],
+	        "linkedServiceName": "MyAzureMLLinkedService",
+	        "policy": {
+	          "concurrency": 3,
+	          "executionPriorityOrder": "NewestFirst",
+	          "retry": 1,
+	          "timeout": "02:00:00"
+	        }
+	      }
+	    ],
+	    "start": "2015-02-13T00:00:00Z",
+	    "end": "2015-02-14T00:00:00Z"
+	  }
+	}
+
+### Web サービス パラメーター
+パイプライン JSON の **AzureMLBatchScoringActivty** セクションに **typeProperties** セクションを追加して、そのセクション内で Web サービス パラメーターの値を指定します。次に例を示します。
+
+	"typeProperties": {
+		"webServiceParameters": {
+			"Param 1": "Value 1",
+			"Param 2": "Value 2"
+		}
+	}
+
+
+また、次の例に示すように、[Data Factory 関数](https://msdn.microsoft.com/library/dn835056.aspx)を使用して、Web サービス パラメーターの値を渡すこともできます。
+
+	"typeProperties": {
+    	"webServiceParameters": {
+    	   "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(WindowStart, 0))"
+    	}
+  	}
+ 
+> [AZURE.NOTE]Web サービス パラメーターでは大文字と小文字が区別されるため、アクティビティ JSON に指定した名前が Web サービスによって公開されている名前と一致していることを確認してください。
 
 ## 関連項目
 
@@ -623,4 +772,4 @@ AzureMLBatchExecution アクティビティには入力は必要ありません 
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

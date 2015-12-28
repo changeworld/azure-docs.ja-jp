@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/20/2015"    
+	ms.date="12/15/2015"    
 	ms.author="juliako"/>
 
 
@@ -357,7 +357,7 @@
 次の考慮事項が適用されます。
 
 - 明示的に Start、Step、Range でタイムスタンプを使用する場合、入力ソースは少なくとも 1 分であると仮定しています。
-- Jpg/Png/BmpVideo 要素には Start、Step、Range の文字列属性があり、次のように解釈できます。
+- Jpg/Png/BmpImage 要素には Start、Step、Range の文字列属性があり、次のように解釈できます。
 
 	- 負ではない整数の場合は、フレーム番号 (例:"Start": "120")
 	- % サフィックス付きで表現される場合は、ソース期間に対する相対値 (例:"Start": "15%")
@@ -383,4 +383,4 @@
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

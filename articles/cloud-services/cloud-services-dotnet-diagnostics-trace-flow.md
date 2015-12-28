@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="10/17/2015"
+	ms.date="12/15/2015"
 	ms.author="robb"/>
 
 
@@ -61,6 +61,8 @@ Visual Studio で提供されるテンプレートを使用すると、リスナ
 		</trace>
 	</system.diagnostics>
 	```
+	>[AZURE.IMPORTANT]Microsoft.WindowsAzure.Diagnostics アセンブリへのプロジェクト参照があることを確認してください。参照先の Microsoft.WindowsAzure.Diagnostics アセンブリのバージョンと一致するように上記の xml のバージョン番号を更新します。
+	
 3. 構成ファイルを保存します。
 
 リスナーの詳細については、「[トレース リスナー](https://msdn.microsoft.com/library/4y5y10s7.aspx)」を参照してください。
@@ -77,4 +79,4 @@ Visual Studio で提供されるテンプレートを使用すると、リスナ
 3. Trace ステートメントを追加し、アプリケーションの状態に関する情報をキャプチャします。Trace ステートメントの出力は、さまざまな方法で書式設定できます。詳細については、「[トレース ステートメントをアプリケーション コードに追加する方法](https://msdn.microsoft.com/library/zd83saa2.aspx)」を参照してください。
 4. ソース ファイルを保存します。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1217_2015-->

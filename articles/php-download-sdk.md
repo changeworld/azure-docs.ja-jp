@@ -2,18 +2,18 @@
 	pageTitle="Azure SDK for PHP をダウンロードする"
 	description="Azure SDK for PHP をダウンロードしてインストールする方法について説明します。"
 	documentationCenter="php"
-	services=""
+	services="app-service\web"
 	authors="tfitzmac"
 	manager="wpickett"
 	editor=""/>
 
 <tags
-	ms.service="multiple"
+	ms.service="app-service-web"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="08/31/2015"
+	ms.date="12/16/2015"
 	ms.author="tomfitz"/>
 
 #Azure SDK for PHP をダウンロードする
@@ -33,7 +33,7 @@ Azure SDK for PHP には、Azure 向けの PHP アプリケーションを開発
 
 > [AZURE.NOTE]Azure 用 PHP クライアント ライブラリを使用するには、PHP 5.3 以上が必要です。
 
-##Windows Azure 用 PHP クライアント ライブラリ
+##Microsoft Azure 用 PHP クライアント ライブラリ
 
 Azure 用 PHP クライアント ライブラリには、任意のオペレーティング システムからデータ管理サービスやクラウド サービスなどの Azure の機能にアクセスするためのインターフェイスが用意されています。これらのライブラリは、Composer または PEAR パッケージ マネージャーを使用してインストールすることも、手動でインストールすることもできます。
 
@@ -130,4 +130,4 @@ Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サー
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=AcomDC_1217_2015-->

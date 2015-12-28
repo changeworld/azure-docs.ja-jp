@@ -1,11 +1,11 @@
 <properties
-	pageTitle="Visual Studio Team Services を使用した Azure での継続的な配信"
+	pageTitle="Visual Studio Team Services を使用した Azure での継続的な配信 | Microsoft Azure"
 	description="Visual Studio Team Services チーム プロジェクトを自動的にビルドして Azure App Service の Web アプリ機能またはクラウド サービスにデプロイするための構成方法について説明します。"
 	services="cloud-services"
 	documentationCenter=".net"
-	authors="kempb"
+	authors="TomArcher"
 	manager="douge"
-	editor="tglee"/>
+	editor=""/>
 
 <tags
 	ms.service="cloud-services"
@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="09/02/2015"
-	ms.author="kempb"/>
+	ms.author="tarcher"/>
 
 # Visual Studio Team Services を使用した Azure への継続的な配信
 
@@ -321,4 +321,4 @@ VSTS での単位テストの詳細については、[「ビルド プロセス�
 [49]: ./media/cloud-services-continuous-delivery-use-vso/TestsFailed.PNG
 [50]: ./media/cloud-services-continuous-delivery-use-vso/TestsResultsFailed.PNG
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

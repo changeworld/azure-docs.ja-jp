@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Azure Redis Cache の構成方法"
-   description="Azure Redis Cache の既定の Redis 構成を理解し、Azure Redis Cache インスタンスの構成方法について説明します。"
-   services="redis-cache"
-   documentationCenter="na"
-   authors="steved0x"
-   manager="dwrede"
-   editor="tysonn" />
+	pageTitle="Azure Redis Cache の構成方法"
+	description="Azure Redis Cache の既定の Redis 構成を理解し、Azure Redis Cache インスタンスの構成方法について説明します。"
+	services="redis-cache"
+	documentationCenter="na"
+	authors="steved0x"
+	manager="dwrede"
+	editor="tysonn" />
 <tags 
-   ms.service="cache"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="cache-redis"
-   ms.workload="tbd"
-   ms.date="12/03/2015"
-   ms.author="sdanie" />
+	ms.service="cache"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="cache-redis"
+	ms.workload="tbd"
+	ms.date="12/11/2015"
+	ms.author="sdanie" />
 
 # Azure Redis Cache の構成方法
 
@@ -116,7 +116,20 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 
 **[OK]** をクリックして永続化の構成を保存します。
 
->[AZURE.IMPORTANT]Redis のデータ永続化は、Premium Cache でのみ使用できます。
+>[AZURE.IMPORTANT]Redis のデータ永続化は、Premium Cache でのみ使用できます。詳細については、「[Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
+
+## Redis クラスター サイズ
+
+クラスタリングが有効になっている実行中の Premium キャッシュに対してシャードを追加または削除するには、**[(プレビュー) Redis クラスター サイズ]** をクリックします。
+
+>[AZURE.NOTE]Azure Redis Cache の Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階であることに注意してください。
+
+![Redis クラスター サイズ](./media/cache-configure/redis-cache-redis-cluster-size.png)
+
+シャード数を変更するには、スライダーを使用するか、**[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、**[OK]** をクリックして保存します。
+
+>[AZURE.IMPORTANT]Redis クラスタリングは、Premium キャッシュでのみ使用できます。詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
+
 
 ## ユーザーとタグ
 
@@ -134,7 +147,7 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 >
 >`StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >  
->**max-memory-policy** などの構成可能な値、Azure ポータルを使用して構成できます。
+>**max-memory-policy** などの構成可能な値を、Azure ポータルを使用して構成できます。
 
 |設定|既定値|説明|
 |---|---|---|
@@ -199,4 +212,4 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

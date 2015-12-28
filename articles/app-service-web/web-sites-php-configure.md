@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure App Service Web Apps での PHP の構成方法"
+	pageTitle="Azure App Service Web Apps での PHP の構成 | Microsoft Azure"
 	description="Azure App Service の Web Apps 用に既定の PHP インストールを構成する方法、またはカスタム PHP インストールを追加する方法を説明します。"
 	services="app-service"
 	documentationCenter="php"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="09/16/2015"
+	ms.date="12/16/2015"
 	ms.author="tomfitz"/>
 
 #Azure App Service Web Apps での PHP の構成方法
@@ -45,27 +45,34 @@ PHP 5.5 および PHP 5.6 も使用できますが、既定では有効になっ
 
 ### Azure PowerShell (Windows)。
 
-1. Windows PowerShell を開きます。
-2. `Set-AzureWebsite -PhpVersion [5.4 | 5.5 | 5.6] -Name <site-name>` を入力してから、Enter キーを押します。
-3. PHP バージョンが設定されました。
+1. Azure PowerShell を起動し、アカウントにログインします。
 
-	![Azure PowerShell での PHP バージョンを設定します。][SETPHPVERPS]
-4. 「`Get-AzureWebiste -Name <site-name>`」と入力してから Enter キーを押して、これらの設定を確認することができます。
+        PS C:\> Login-AzureRmAccount
 
-	![Azure PowerShell での PHP バージョンを検証します。][GETPHPVERPS]
+2. Web アプリの PHP バージョンを設定します。
+
+        PS C:\> Set-AzureWebsite -PhpVersion [5.4 | 5.5 | 5.6] -Name {site-name}
+
+3. PHP バージョンが設定されました。これらの設定を確認できます。
+
+        PS C:\> Get-AzureWebsite -Name {site-name} | findstr PhpVersion
 
 ### Azure コマンド ライン インターフェイス (Mac、Linux、Windows)
 
 Azure コマンド ライン インターフェイスを使用するには、**Node.js** をコンピューターにインストールする必要があります。
 
-1. ターミナルを開きます。
-2. `azure site set --php-version [5.4 | 5.5] [site-name]` を入力してから、Enter キーを押します。
-3. PHP バージョンが設定されました。
+1. ターミナルを開いてアカウントにログインします。
 
-	![Azure コマンド ライン インターフェイスを使用して PHP のバージョンを設定します。][SETPHPVERCLI]
-4. 「`azure site show [site-name]`」と入力してから Enter キーを押して、これらの設定を確認することができます。
+        azure login
 
-	![Azure コマンド ライン インターフェイスを使用して PHP のバージョンを検証します。][GETPHPVERCLI]
+2. Web アプリの PHP バージョンを設定します。
+
+        azure site set --php-version [5.4 | 5.5] {site-name}
+
+3. PHP バージョンが設定されました。これらの設定を確認できます。
+
+        azure site show {site-name}
+
 
 ## 方法: ビルトインの PHP 構成を変更する
 
@@ -160,7 +167,7 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 [無料試用版]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: http://php.net/manual/en/function.phpinfo.php
@@ -181,4 +188,4 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

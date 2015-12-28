@@ -20,10 +20,16 @@
 # Linux を実行する仮想マシンを Azure ポータルを使用して作成する
 
 > [AZURE.SELECTOR]
+- [Azure Portal - Windows](virtual-machines-windows-tutorial.md)
+- [Azure PowerShell](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
+- [Azure PowerShell - Template](virtual-machines-create-windows-powershell-resource-manager-template.md)
+- [Azure Portal - Linux](virtual-machines-linux-tutorial-portal-rm.md)
 - [Azure CLI](virtual-machines-linux-tutorial.md)
-- [Azure portal](virtual-machines-linux-tutorial-portal-rm.md)
 
-<br>[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+<br>
+
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
 Linux を実行する Azure 仮想マシン (VM) は簡単に作成できます。このチュートリアルでは、Azure ポータルを使用して仮想マシンを簡単に作成する方法について説明し、`~/.ssh/id_rsa.pub` 公開キー ファイルを使用して、VM への **SSH** 接続をセキュリティで保護します。また、[独自のイメージをテンプレートとして](virtual-machines-linux-create-upload-vhd.md)使用して、Linux VM を作成することもできます。
 
@@ -116,7 +122,7 @@ Linux を実行する Azure 仮想マシン (VM) は簡単に作成できます�
 	ops@ubuntuvm:~$
 
 
-> [AZURE.NOTE]ポータルで仮想マシンに完全修飾ドメイン名 (FQDN) を構成することもできます。FQDN の詳細については、[ここ](virtual-machines-create-fqdn-on-portal.md)をご覧ください。
+> [AZURE.NOTE]ポータルで仮想マシンに完全修飾ドメイン名 (FQDN) を構成することもできます。ポータルでの FQDN の作成の詳細については、[ここ](virtual-machines-create-fqdn-on-portal.md)を参照してください。
 
 ## 次のステップ
 
@@ -130,4 +136,4 @@ Azure 上の Linux の詳細については、次の内容を参照してくだ�
 
 - [Azure の Linux 用 Docker 仮想マシン拡張機能](virtual-machines-docker-vm-extension.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

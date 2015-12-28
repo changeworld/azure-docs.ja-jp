@@ -63,6 +63,7 @@
 - 複数の規則が表示される順序は、これらの規則の処理方法に影響します。前の規則で指定したアクションは、後続の規則でオーバーライドされます。
 
 ## 関連項目
+* [ルール エンジンの一致条件と機能詳細](cdn-rules-engine-details.md)
 * [Azure CDN の概要](cdn-overview.md)
 * [Microsoft Azure CDN でのリアルタイム統計情報](cdn-real-time-stats.md)
 * [詳細な HTTP レポート](cdn-advanced-http-reports.md)
@@ -71,4 +72,4 @@
 
 	
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

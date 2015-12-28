@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/18/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # 従来の VNet を新しい VNet に接続する
@@ -363,4 +363,4 @@ ARM VNet (vnet02) 用に作成されたゲートウェイの IP アドレスが�
 - [ネットワーク リソース プロバイダー](../resource-groups-networking.md)についてさらに学習できます。
 - [create a S2S VPN connection between a classic VNet and an ARM VNet (従来の VNet と ARM VNet の間の S2S VPN 接続を作成する)](../virtual-networks-arm-asm-s2s-howto.md) 方法に関する一般的なガイドラインを参照してください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

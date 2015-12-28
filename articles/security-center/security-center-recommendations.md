@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure セキュリティ センターでのセキュリティに関する推奨事項の実装 | Microsoft Azure"
+   pageTitle="Azure セキュリティ センターでのセキュリティに関する推奨事項の管理 | Microsoft Azure"
    description="このドキュメントでは、Azure セキュリティ センターでの推奨事項に従ってご使用の Azure のリソースを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。"
    services="security-center"
    documentationCenter="na"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/02/2015"
+   ms.date="12/10/2015"
    ms.author="terrylan"/>
 
-# Azure セキュリティ センターでのセキュリティに関する推奨事項の実装
+# Azure セキュリティ センターでのセキュリティに関する推奨事項の管理
 
 このドキュメントでは、Azure セキュリティ センターでの推奨事項に従ってご使用の Azure のリソースを保護する方法について説明します。
 
@@ -25,24 +25,22 @@
 ## Azure セキュリティ センターとは
 Azure セキュリティ センターは、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。これにより、サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-##セキュリティに関する推奨事項とは
+## セキュリティに関する推奨事項とは
 Azure セキュリティ センターは、Azure リソースのセキュリティの状態を定期的に分析します。潜在的なセキュリティの脆弱性が識別されると、推奨事項が作成されます。推奨事項では、必要なコントロールを構成する手順を説明します。
 
-## 推奨事項の設定
+## セキュリティに関する推奨事項の実装
 
-「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」では、次のことを学習します。
+### 推奨事項の設定
+
+「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」に、以下の説明があります。
 
 - セキュリティ ポリシーの構成
 - データ取集の有効化
 - セキュリティ ポリシーの一環として見なす推奨事項の選択
 
-現在のポリシーの推奨事項は、システムの更新、基準ルール、マルウェア対策、[エンドポイントの ACL](virtual-machines-set-up-endpoints.md)、サブネットとネットワーク インターフェイス上の[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)、SQL Database の監査、SQL Database の透過的なデータ暗号化、および Web アプリケーション ファイアウォールに集中しています。[セキュリティ ポリシーの設定](security-center-policies.md)では、推奨事項の各オプションの説明を提供します。
+現在のポリシーの推奨事項は、システムの更新、基準ルール、マルウェア対策、[エンドポイントの ACL](virtual-machines-set-up-endpoints.md)、サブネットとネットワーク インターフェイス上の[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)、SQL Database の監査、SQL Database の透過的なデータ暗号化、および Web アプリケーション ファイアウォールに集中しています。[セキュリティ ポリシーの設定](security-center-policies.md)では、推奨事項の各オプションについて説明します。
 
-**[セキュリティ ポリシー]** ブレードの **[推奨事項の表示]** のセクションでは、指定されたサブスクリプションのリソースのために有効にできる推奨事項の一覧が提供されます。
-
-![][1]
-
-## 監視に関する推奨事項
+### 監視に関する推奨事項
 
 セキュリティ ポリシーを設定すると、潜在的な脆弱性を識別するために、Azure セキュリティ センターがリソースのセキュリティの状態を分析します。**[セキュリティ センター]** ブレードの **[推奨事項]** タイルでは、Azure セキュリティ センターで識別された推奨事項の総数を把握することができます。
 
@@ -86,7 +84,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 | SQL データベースでの透過的なデータ暗号化の有効化 | SQL データベース (Azure SQL のサービスのみ) に対して暗号化を有効にすることをお勧めします。 |
 | VM エージェントのデプロイ | VM エージェントを必要とする VM を確認できます。パッチのスキャン、基準のスキャン、およびマルウェア対策をプロビジョニングするには、VM 上に VM エージェントをインストールする必要があります。既定では、Azure Marketplace からデプロイされた VM には VM エージェントがインストールされます。「[VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)」の記事には、VM エージェントのインストール方法が記載されています。 |
 
-## 推奨事項の適用
+### 推奨事項の適用
 すべての推奨事項を確認したら、最初に適用する推奨事項を決めることができます。重要度の評価を主なパラメーターとして使用して、最初に適用すべき推奨事項を評価することをお勧めします。マルウェア対策の推奨事項を使用して、推奨事項の適用方法の例を紹介しましょう。
 
 1. **[推奨事項]** ブレードで、 **[マルウェア対策の有効化]** を選択します。 ![][5]
@@ -98,7 +96,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 
 [Microsoft マルウェア対策](azure-security-antimalware.md)が、選択した仮想マシンでアクティブになります。
 
-## 統合パートナー ソリューションのデプロイ
+### 推奨されるパートナー ソリューションのデプロイ
 
 推奨事項は、Microsoft パートナーからの統合セキュリティ ソリューションをデプロイすることです。このやり方の例を紹介しましょう。
 
@@ -120,14 +118,13 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 ## 次のステップ
 このドキュメントでは、Azure セキュリティ センターのセキュリティに関する推奨事項について説明しました。Azure セキュリティ センターの詳細については、次を参照してください。
 
-- 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 – セキュリティ ポリシーの設定方法について
+- 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 – セキュリティ ポリシーの設定方法についての説明
 - 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」 – Azure リソースのヘルスを監視する方法についての説明
-- 「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -セキュリティの警告の管理および応答の方法について
+- 「[Azure セキュリティ センターでのセキュリティのアラートの管理と対応](security-center-managing-and-responding-alerts.md)」 -セキュリティの警告の管理および対応について
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
 
 <!--Image references-->
-[1]: ./media/security-center-recommendations/show-recommendations-for.png
 [2]: ./media/security-center-recommendations/recommendations-tile.png
 [3]: ./media/security-center-recommendations/filter-recommendations.png
 [4]: ./media/security-center-recommendations/dismiss-recommendations.png
@@ -138,4 +135,4 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 [9]: ./media/security-center-recommendations/finalize-waf.png
 [10]: ./media/security-center-recommendations/restrict-traffic.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

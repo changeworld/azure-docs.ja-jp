@@ -31,7 +31,7 @@
 
 ## Ruby アプリケーションの作成
 
-Ruby アプリケーションを作成します。手順については、[Windows Azure での Ruby アプリケーションの作成に関するページ](/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
+Ruby アプリケーションを作成します。手順については、[Microsoft Azure での Ruby アプリケーションの作成に関するページ](/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
 
 ## アプリケーションのストレージへのアクセスの構成
 
@@ -144,5 +144,6 @@ BLOB をダウンロードするには、**get\_blob()** メソッドを使用�
 
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1217_2015-->

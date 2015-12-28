@@ -52,7 +52,7 @@ Azure BLOB ストレージにアクセスするには、Azure ストレージ �
 2. [CREATE MASTER KEY (Transact-SQL)][] を使用して、データベースのマスター キーを作成します。データベースに既にマスター キーがある場合は、マスター キーを余分に作成する必要はありません。このキーは、次の手順で資格情報 "シークレット" の暗号化に使用されます。
 
     ```
-    -- Create a E master key
+    -- Create a master key
     CREATE MASTER KEY;
     ```
 
@@ -61,10 +61,12 @@ Azure BLOB ストレージにアクセスするには、Azure ストレージ �
     ```
     -- Check for existing database-scoped credentials.
     SELECT * FROM sys.database_credentials;
+    ```
 
 3. [CREATE CREDENTIAL (Transact-SQL)][] を使用して、アクセスする Azure ストレージ アカウントごとにデータベース スコープの資格情報を作成します。次の例では、IDENTITY は資格情報を表すわかりやすい名前になっています。この名前は Azure ストレージへの認証には影響を及ぼしません。SECRET は Azure ストレージ アカウント キーです。
 
-    -- データベース スコープの資格情報の作成
+    ```
+    -- Create a database scoped credential
     CREATE DATABASE SCOPED CREDENTIAL ASBSecret 
     WITH IDENTITY = 'joe'
     ,    Secret = '<azure_storage_account_key>'
@@ -364,4 +366,4 @@ $write.Dispose()
 [CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189522.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
-<!------HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

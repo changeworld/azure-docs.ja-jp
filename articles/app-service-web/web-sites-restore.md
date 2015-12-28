@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure App Service での Web アプリの復元" 
-	description="Web アプリをバックアップから復元する方法について説明します。" 
+	pageTitle="Azure App Service でのアプリの復元" 
+	description="アプリをバックアップから復元する方法について説明します。" 
 	services="app-service" 
 	documentationCenter="" 
 	authors="cephalin" 
@@ -13,34 +13,40 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.date="12/11/2015" 
 	ms.author="cephalin"/>
 
-# Azure App Service での Web アプリの復元
+# Azure App Service でのアプリの復元
 
-この記事では、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) のバックアップ機能を使用して以前にバックアップした Web アプリを復元する方法について説明します。詳細については、「[App Service Web Apps のバックアップ](web-sites-backup.md)」を参照してください。
+この記事では、[App Service](app-service-value-prop-what-is) の Backup 機能を使用して以前にバックアップした App Service アプリを復元する方法について説明します。詳細については、「[App Service の Backup](web-sites-backup.md)」を参照してください。
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+App Service の復元機能を使用すると、リンクされたデータベース (SQL Database または MySQL) をオンデマンドで使用してアプリを以前の状態に戻したり、元のアプリのいずれかのバックアップに基づいて新しいアプリを作成したりすることができます。最新バージョンと並行して実行される新しいアプリを作成すると、A/B テストを実施する場合に役立ちます。
 
-Web Apps の復元機能では、Web アプリをオンデマンドで以前の状態に戻したり、元の Web アプリのバックアップに基づいて新しい Web アプリを作成することができます。最新バージョンと並列で実行する新しい Web アプリを作成すると、A/B テストを実施する場合に役立ちます。
-
-Web Apps の復元機能 ([Azure プレビュー ポータル](http://portal.azure.com)の **[バックアップ]** ブレードで使用可能) は、Standard モードと Premium モードでのみ使用できます。アプリを Standard モードまたは Premium モードに拡張する方法については、「[Azure App Service での Web アプリの拡張](web-sites-scale.md)」を参照してください。プレミアム モードでは、日次バックアップの実行回数を標準モードよりも多く設定できます。
+App Service の復元機能 ([Azure ポータル](http://portal.azure.com)の **[Backup]** ブレードで利用可能) は、Standard および Premium の価格レベルでのみ使用できます。Standard または Premium レベルを使用しているアプリをスケーリングする方法については、「[Azure App Service のアプリをスケーリングする](web-sites-scale.md)」を参照してください。Premium レベルでは、日次バックアップの実行回数を Standard レベルよりも多く設定できます。
 
 <a name="PreviousBackup"></a>
-## 以前に作成したバックアップから Web アプリを復元するには
+## 以前に作成したバックアップからアプリを復元するには
 
-1. Azure ポータルにある Web アプリの **[設定]** ブレードで、**[バックアップ]** オプションをクリックして **[バックアップ]** ブレードを表示します。このブレードで画面をスクロールし、バックアップ リストの**バックアップ時間**と**状態**を見ながらバックアップ項目を選択します。
+1. Azure ポータルにあるアプリの **[設定]** ブレードで、**[Backup]** をクリックして **[バックアップ]** ブレードを表示します。コマンド バーで、**[今すぐ復元]** をクリックします。 
 	
-	![バックアップ ソースの選択][ChooseBackupSource]
-	
-2. **[バックアップ]** ブレードの上部にある **[今すぐ復元]** を選択します。
-
 	![今すぐ復元の選択][ChooseRestoreNow]
 
-3. 既存の Web アプリを復元するには、**[復元]** ブレードで表示されているすべての詳細を確認し、**[OK]** をクリックします。
+3. **[復元]** ブレードで、最初にバックアップ ソースを選択します。
+
+	![](./media/web-sites-restore/021ChooseSource.png)
 	
-**[復元]** ブレードから **[Web アプリ]** を選択し、**[Web アプリを新規作成]** を選択することで、 Web アプリを新規の Web アプリに復元することもできます。
+	**[アプリのバックアップ]** オプションには、アプリ自体で直接作成されたすべてのバックアップが表示されます。アプリが認識するのはこれらのバックアップのみです。1 つのバックアップを簡単に選択できます。**[Storage]** オプションを使用して、**[Backup]** ブレードで構成されたストレージ アカウントおよびコンテナーから実際のバックアップ zip ファイルを選択できます。コンテナー内に他のアプリからのバックアップ ファイルが存在する場合、それらを選択して復元することもできます。
+
+4. 次に、**[復元先]** でアプリの復元先を指定します。
+
+	![](./media/web-sites-restore/022ChooseDestination.png)
 	
+	>[AZURE.WARNING]**[上書き]** を選択すると、既存のアプリに関連するすべてのデータが削除されます。**[OK]** をクリックする前に、実行する操作内容が正しいことを確認します。
+	
+	**[既存のアプリ]** を選択して、アプリのバックアップを同じリソース グループ内の別のアプリに復元することができます。このオプションを使用する前に、リソース グループ内に別のアプリを作成済みであり、データベース構成を、アプリのバックアップ内に定義されている構成にミラーリングしている必要があります。
+	
+5. **[OK]** をクリックします。
+
 <a name="StorageAccount"></a>
 ## ストレージ アカウントからバックアップをダウンロードまたは削除するには
 	
@@ -65,11 +71,11 @@ Web Apps の復元機能 ([Azure プレビュー ポータル](http://portal.azu
 <a name="OperationLogs"></a>
 ## 監査ログを表示するには
 	
-1. Web アプリケーションの復元操作が成功したかどうかについて詳細を確認するには、メインの **[参照]** ブレードで **[監査ログ]** を選択します。 
+1. アプリの復元操作が成功したかどうかについて詳細を確認するには、メインの **[参照]** ブレードで **[監査ログ]** を選択します。 
 	
 	**[監査ログ]** ブレードには、すべての操作と、レベル、状態、リソース、および時刻が表示されます。
 	
-2. ブレードをスクロールして、Web アプリに関連する操作を検索します。
+2. ブレードをスクロールして、アプリに関連する操作を検索します。
 3. 操作に関する追加情報を表示するには、一覧で操作を選択します。
 	
 詳細ブレードに、操作に関連する利用可能な情報が表示されます。
@@ -77,11 +83,9 @@ Web Apps の復元機能 ([Azure プレビュー ポータル](http://portal.azu
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 	
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 <!-- IMAGES -->
-[ChooseBackupSource]: ./media/web-sites-restore/01ChooseBackupSource.png
 [ChooseRestoreNow]: ./media/web-sites-restore/02ChooseRestoreNow.png
 [ViewContainers]: ./media/web-sites-restore/03ViewContainers.png
 [StorageAccountFile]: ./media/web-sites-restore/02StorageAccountFile.png
@@ -98,4 +102,4 @@ Web Apps の復元機能 ([Azure プレビュー ポータル](http://portal.azu
 [OperationDetails]: ./media/web-sites-restore/13OperationDetails.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

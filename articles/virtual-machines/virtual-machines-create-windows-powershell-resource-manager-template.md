@@ -19,6 +19,17 @@
 
 # リソース マネージャー テンプレートで Windows 仮想マシンを作成する
 
+> [AZURE.SELECTOR]
+- [Azure Portal - Windows](virtual-machines-windows-tutorial.md)
+- [Azure PowerShell](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
+- [Azure PowerShell - Template](virtual-machines-create-windows-powershell-resource-manager-template.md)
+- [Azure Portal - Linux](virtual-machines-linux-tutorial-portal-rm.md)
+- [Azure CLI](virtual-machines-linux-tutorial.md)
+
+<br>
+
+
+
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。このリソースは、クラシック デプロイ モデルを使用して作成することはできません。
 
 Windows ベースの Azure 仮想マシンは、Azure PowerShell からリソース マネージャー テンプレートを使って簡単に新規作成できます。このテンプレートは、新しいリソース グループにサブネットを 1 つ持った新しい仮想ネットワークに、Windows を実行する単一の仮想マシンを作成するものです。
@@ -288,4 +299,4 @@ Azure のデプロイ名、リソース グループ名、Azure データ セン
 
 [Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

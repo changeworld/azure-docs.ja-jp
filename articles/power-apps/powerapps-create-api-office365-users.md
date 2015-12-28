@@ -21,11 +21,11 @@
 
 ## Azure ポータルでの API の作成
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*ユーザー名*@*会社名*.com でサインインします。これにより、自動的に会社のサブスクリプションにサインインされます。
+1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
  
-2. タスク バーの **[参照]** をクリックします。![][14]
+2. タスク バーの **[参照]** をクリックします。 ![][14]
 
-3. 一覧で、PowerApps が見つかるまでスクロールするか、「powerapps」と入力します。![][15]
+3. 一覧で、PowerApps が見つかるまでスクロールするか、「*powerapps*」と入力します。 ![][15]
 
 4. **[PowerApps]** で、**[API の管理]** を選択します。![登録されている API の参照][1]
 
@@ -101,9 +101,5 @@
 [9]: ./media/powerapps-create-api-office365-users/aad-tenant-applications-add-app-properties.PNG
 [10]: ./media/powerapps-create-api-office365-users/contoso-aad-app.PNG
 [11]: ./media/powerapps-create-api-office365-users/contoso-aad-app-configure.PNG
-[12]: ./media/powerapps-create-api-office365-users/contoso-aad-app-delegate-office365-users.PNG
-[13]: ./media/powerapps-create-api-office365-users/contoso-aad-app-delegate-office365-users-permissions.PNG
-[14]: ./media/powerapps-create-api-office365-outlook/browseall.png
-[15]: ./media/powerapps-create-api-office365-outlook/allresources.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

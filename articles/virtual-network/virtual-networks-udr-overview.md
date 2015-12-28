@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/12/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # ユーザー定義のルートと IP 転送
@@ -90,4 +90,4 @@ Azure で仮想マシン (VM) を仮想ネットワーク (VNet) に追加する
 - [リソース マネージャーのデプロイ モデルでルートを作成](../virtual-network-create-udr-arm-template)し、サブネットに関連付ける方法について説明します。 
 - [クラシック デプロイ モデルでルートを作成](../virtual-network-create-udr-classic-ps)し、サブネットに関連付ける方法について説明します。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1217_2015-->

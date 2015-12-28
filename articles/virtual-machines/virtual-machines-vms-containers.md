@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="仮想マシンとコンテナー | Microsoft Azure" 
-	description="仮想マシン、Docker、および Linux コンテナーの概要を説明するとともに、それらのグループを Azure で使用するための方法と、各方法のメリットについて説明します。また、どの方法がどのようなシナリオに適しているかについても説明します。" 
+	pageTitle="Virtual Machines とコンテナー | Microsoft Azure" 
+	description="Virtual Machines、Docker、および Linux コンテナーの概要を説明するとともに、それらのグループを Azure で使用するための方法と、各方法のメリットについて説明します。また、どの方法がどのようなシナリオに適しているかについても説明します。" 
 	services="virtual-machines" 
 	documentationCenter="virtual-machines" 
 	authors="squillace" 
@@ -15,12 +15,12 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="infrastructure" 
 	ms.workload="infrastructure" 
-	ms.date="07/02/2015" 
+	ms.date="12/14/2015" 
 	ms.author="rasquill" 
 />
 
 <!--The next line, with one pound sign at the beginning, is the page title-->
-# 仮想マシンとコンテナーが Azure にもたらすメリット
+# Virtual Machines とコンテナーが Azure にもたらすメリット
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
  
@@ -33,13 +33,13 @@ Azure は、物理コンピューター ハードウェアをエミュレート�
 - [Azure リソース マネージャー](resource-group-overview.md)と[リソース グループ テンプレート](resource-group-authoring-templates.md)を使用して、複雑な分散アプリケーションのデプロイや更新を簡略化できる
 - 自社製かオープン ソースかを問わず、さまざまな構成管理ツールを統合できる
 
-また、VM や Linux コンテナーを Azure 上でコーディングできるので、VM とコンテナーの*オーケストレーション* ツールを使用して仮想マシン (VM) のグループを作成し、Linux コンテナーと、まもなくリリースされる [Windows Server コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)の両方にアプリケーションをデプロイすることができます。
+また、VM や Linux コンテナーを Azure 上でコーディングできるので、VM とコンテナーの*オーケストレーション* ツールを使用して Virtual Machines (VM) のグループを作成し、Linux コンテナーと、まもなくリリースされる [Windows コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)の両方にアプリケーションをデプロイすることができます。
 
-この記事では、これらの技術の概念について俯瞰的に説明とともに、 Azure でのコンテナーとクラスターの使用に関連する詳細情報、チュートリアル、および製品へのリンクを紹介します。技術については既にご存知で、リンクだけを確認したいという方は[こちら](#tools-for-working-with-containers)でご確認ください。
+この記事では、これらの技術の概念について俯瞰的に説明とともに、 Azure でのコンテナーとクラスターの使用に関連する詳細情報、チュートリアル、および製品へのリンクを紹介します。技術については既にご存知で、リンクだけを確認したいという方は[コンテナーを操作するためのツールに関するページ](#tools-for-working-with-containers)でご確認ください。
 
 ## 仮想マシンとコンテナーの違い
 
-仮想マシンは、[ハイパーバイザー](http://en.wikipedia.org/wiki/Hypervisor)によって提供される隔離されたハードウェア仮想化環境内で実行されます。Azure では、[仮想マシン](http://azure.microsoft.com/services/virtual-machines/) サービスによってすべてが管理されるため、ユーザーはオペレーティング システムを選択し、必要に応じて構成を変更したり、独自のカスタム VM をアップロードするだけで仮想マシンを作成できます。仮想マシンは市場で長年使用され、その価値を広く認められているテクノロジであり、オペレーティング システムの管理やアプリケーションの構成を行うためのツールも多数提供されています。仮想マシンで実行されるプログラムはホスト オペレーティング システムからは見えず、仮想マシン内で実行されているアプリケーションやユーザーの観点から見ると、仮想マシンは自立した物理コンピューターのように見えます。
+仮想マシンは、[ハイパーバイザー](http://en.wikipedia.org/wiki/Hypervisor)によって提供される隔離されたハードウェア仮想化環境内で実行されます。Azure では、[Virtual Machines](http://azure.microsoft.com/services/virtual-machines/) サービスによってすべてが管理されるため、ユーザーはオペレーティング システムを選択し、必要に応じて構成を変更したり、独自のカスタム VM をアップロードするだけで Virtual Machines を作成できます。Virtual Machines は市場で長年使用され、その価値を広く認められているテクノロジであり、オペレーティング システムの管理やアプリケーションの構成を行うためのツールも多数提供されています。仮想マシンで実行されるプログラムはホスト オペレーティング システムからは見えず、仮想マシン内で実行されているアプリケーションやユーザーの観点から見ると、仮想マシンは自立した物理コンピューターのように見えます。
 
 [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)は Docker などのツールを使用して作成、ホストされ、ハイパーバイザーによる分離機能を必要としません。代わりにコンテナー ホストによって、特定のカーネル機能と独自の分離型ファイル システムだけが (最小限の単位で) コンテナー (およびそのアプリケーション) に公開されます。コンテナーの内部で実行されるアプリケーションから見ると、コンテナーは独立したオペレーティング システム インスタンスのように見えます。内部のアプリケーションからは、コンテナーの外部にあるその他のプロセスやリソースは見えません。
 
@@ -47,7 +47,7 @@ Azure は、物理コンピューター ハードウェアをエミュレート�
 
 実に合理的です。
 
-[Windows Server コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)は、Linux コンテナーと同じメリットを Windows 上のアプリケーションに提供するためのものです。Windows Server コンテナーは、Docker イメージのフォーマットと Docker API をサポートしています。そのため、Windows Server コンテナーを使用したアプリケーションは、Mac や Linux と同様のコマンドを使用して開発、発行、取得、デプロイすることができます。さらに、[Microsoft Visual Studio の新しい Docker サポート](https://visualstudiogallery.msdn.microsoft.com/6f638067-027d-4817-bcc7-aa94163338f0)も追加されています。また、すべてのユーザーがをコンテナーを効率的に操作できるよう、広範な[コンテナー エコシステム](https://msdn.microsoft.com/virtualization/windowscontainers/about/container_ecosystem)によって各種のツールも提供されます。
+Windows コンテナーは、Linux コンテナーと同じメリットを Windows 上のアプリケーションに提供するためのものです。Windows コンテナーは、Docker イメージのフォーマットと Docker API をサポートしていますが、PowerShell を使用して管理することもできます。2 つのコンテナーのランタイムは、Windows コンテナー、Windows コンテナー、Hyper-V コンテナーで使用可能です。Hyper-V コンテナーは、非常に最適化された仮想マシンで各コンテナーをホストすることで分離のレイヤーを追加します。Windows コンテナーの詳細については、[Windows コンテナーに関するページ](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)をご覧ください。Azure で Windows コンテナーを試すには、[Windows コンテナー Azure クイック スタート](https://msdn.microsoft.com/virtualization/windowscontainers/quick_start/azure_setup)を参照してください。
 
 これも大きな魅力と言えます。
 
@@ -140,9 +140,9 @@ Azure では先ごろ、[Azure リソース管理](virtual-machines-azurerm-vers
 
 Docker は、独自の VM 作成ツール セット ([docker-machine](virtual-machines-docker-machine.md)) と、負荷分散に対応した Docker コンテナー クラスター管理ツール ([swarm](virtual-machines-docker-swarm.md)) を提供しています。また [Azure Docker VM Extension](https://github.com/Azure/azure-docker-extension/blob/master/README.md) では、構成済みのアプリケーション コンテナーを複数のコンテナーにわたってデプロイできる、[`docker-compose`](https://docs.docker.com/compose/) が既定でサポートされています。
 
-[Mesosphere のデータ センター オペレーティング システム (DCOS)](http://docs.mesosphere.com/install/azurecluster/) も有効なシステムです。DCOS は、[Mesos](http://mesos.apache.org/) というオープン ソースの "分散システム カーネル" をベースにしています、このカーネルでは、データ センターが 1 つのアドレス可能サービスとして扱われます。DCOS には、いくつかの重要なシステム ([Spark](http://spark.apache.org/) や [Kafka](http://kafka.apache.org/) など) に対応した組み込みパッケージが備わっているほか、[Marathon](https://mesosphere.github.io/marathon/) (コンテナー管理システム) や [Chronos](https://mesosphere.github.io/chronos/) (分散スケジューラ) などの組み込みサービスも含まれています。Mesos は、Twitter、AirBnb、およびその他の Web スケール ビジネスに影響を受けて開発されたものです。
+[Mesosphere のデータ センター オペレーティング システム (DCOS)](http://docs.mesosphere.com/install/azurecluster/) も有効なシステムです。DCOS は、[Mesos](http://mesos.apache.org/) というオープン ソースの "分散システム カーネル" をベースにしています、このカーネルでは、データ センターが 1 つのアドレス可能サービスとして扱われます。DCOS には、いくつかの重要なシステム ([Spark](http://spark.apache.org/) や [Kafka](http://kafka.apache.org/) など) に対応した組み込みパッケージが備わっているほか、[Marathon](https://mesosphere.github.io/marathon/) (コンテナー管理システム) や [Chronos](https://mesosphere.github.io/chronos/) (分散スケジューラー) などの組み込みサービスも含まれています。Mesos は、Twitter、AirBnb、およびその他の Web スケール ビジネスに影響を受けて開発されたものです。
 
-[Kubernetes](http://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure) は、Google に影響を受けて開発された、VM およびコンテナー グループ管理のためのオープン ソース システムです。[Kubernetes を Weave と併用して、ネットワー キング サポートを提供する](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)こともできます。
+[Kubernetes](http://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure) は、Google に影響を受けて開発された、VM およびコンテナー グループ管理のためのオープン ソース システムです。[Kubernetes を Weave と併用して、ネットワーク サポートを提供する](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)こともできます。
 
 [Deis](http://deis.io/overview/) は、独自のサーバー上アプリケーションを簡単にデプロイして管理できる、オープン ソースの PaaS (Platform-as-a-Service) です。Deis はDocker と CoreOS をベースとしており、それによって、Heroku 風のワークフローを使用した軽量な PaaS を実現しています。Azure では、[3 ノードの Azure VM グループを簡単に作成して Deis をインストール](virtual-machines-deis-cluster.md)した後、[Hello World Go アプリケーションをインストール](virtual-machines-deis-cluster.md#deploy-and-scale-a-hello-world-application)できます。
 
@@ -166,9 +166,9 @@ Ubuntu も非常にポピュラーな Linux ディストリビューションで
 - [Open Container Project](http://opencontainers.org/)
 - [RancherOS](http://rancher.com/rancher-os/)
 
-Windows Server コンテナー関連のリンク:
+Windows コンテナー関連のリンク:
 
-- [Windows Server コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)
+- [Windows コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)
 
 Visual Studio Docker 関連のリンク:
 
@@ -221,7 +221,7 @@ Linux ディストリビューションと Azure での導入例:
 	- [サード パーティ: Azure 用 Hudson ストレージ プラグイン](https://github.com/hudson3-plugins/windows-azure-storage-plugin)
 	
 -	[Chef](https://docs.chef.io/index.html)
-	- [Chef と仮想マシン](virtual-machines-windows-install-chef-client.md)
+	- [Chef と Virtual Machines](virtual-machines-windows-install-chef-client.md)
 	- [ビデオ: Chef の概要とそのしくみ](https://msopentech.com/blog/2014/03/31/using-chef-to-manage-azure-resources/)
 
 -	[Azure Automation](http://azure.microsoft.com/services/automation/)
@@ -233,11 +233,11 @@ Linux ディストリビューションと Azure での導入例:
 
 ## 次のステップ
 
-[Docker](https://www.docker.com) と [Windows Server コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)についてチェックしてください。
+[Docker](https://www.docker.com) と [Windows コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)についてチェックしてください。
 
 <!--Anchors-->
 [microservices]: http://martinfowler.com/articles/microservices.html
 [マイクロサービス]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

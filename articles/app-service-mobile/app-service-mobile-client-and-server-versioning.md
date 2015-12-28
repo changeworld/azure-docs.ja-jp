@@ -13,7 +13,7 @@
   ms.tgt_pltfrm="mobile-multiple"
   ms.devlang="dotnet"
   ms.topic="article"
-  ms.date="11/09/2015"
+  ms.date="12/15/2015"
   ms.author="donnam"/>
 
 # Mobile Apps と Mobile Services のクライアントとサーバーのバージョン管理
@@ -101,21 +101,20 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 バージョン チェックは **Azure Mobile Apps** の次のバージョンのクライアント SDK から導入されました。
 
 | クライアント プラットフォーム | バージョン | バージョンのヘッダー値 |
-| -------------------               | ------------------------                                                  | -----------------    |
-| 管理されたクライアント (Windows、Xamarin) | [2\.0.0-beta-3](https://www.nuget.org/packages/WindowsAzure.MobileServices/2.0.0-beta-3) | 2\.0.0 |
-| iOS | [3\.0.0-beta4](http://go.microsoft.com/fwlink/?LinkID=529823) | 2\.0.0 |
-| Android | 3\.0.0-beta1 | 2\.0.0 |
-| HTML | 2\.0.0-beta2 | 2\.0.0 |
+| -------------------               | ------------------------  | -----------------    |
+| 管理されたクライアント (Windows、Xamarin) | [2\.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) | 2\.0.0 |
+| iOS | [3\.0.0](http://go.microsoft.com/fwlink/?LinkID=529823) | 2\.0.0 |
+| Android | [3\.0.0](http://go.microsoft.com/fwlink/?LinkID=717033&clcid=0x409) | 3\.0.0 |
 
-<!-- TODO: add Android and HTML versions when released -->
+<!-- TODO: add HTML version when released -->
 
 ### Mobile *Apps* サーバー SDK
 
 バージョン チェックは次のサーバー SDK バージョンに含まれています。
 
-| サーバー プラットフォーム | バージョン | 同意済みのバージョン ヘッダー |
+| サーバー プラットフォーム | SDK | 同意済みのバージョン ヘッダー |
 | ---------------- | ------------------------------------------------------------                                                   | ----------------------- |
-| .NET | [Microsoft.Azure.Mobile.Server.* バージョン 0.3.x (以降)](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) | 2\.0.0 |
+| .NET | [Microsoft.Azure.Mobile.Server.](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) | 2\.0.0 |
 | Node.js | [azure-mobile-apps バージョン 1.0-beta1 (以降)](https://www.npmjs.com/package/azure-mobile-apps) | 2\.0.0 |
 
 ### Mobile Apps バックエンドの動作
@@ -141,4 +140,4 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 [Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
 [Mobile Service を Azure App Service に移行する]: app-service-mobile-migrating-from-mobile-services.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="TomArcher"
 	manager="douge"
-	editor="tglee"/>
+	editor=""/>
 
 <tags
 	ms.service="storage"
@@ -13,18 +13,10 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/03/2015"
+	ms.date="12/16/2015"
 	ms.author="tarcher"/>
 
 # テーブル ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET)
-> [AZURE.SELECTOR]
-> - [Getting Started](vs-storage-aspnet-getting-started-tables.md)
-> - [What Happened](vs-storage-aspnet-what-happened.md)
-
-> [AZURE.SELECTOR]
-> - [Blobs](vs-storage-aspnet-getting-started-blobs.md)
-> - [Queues](vs-storage-aspnet-getting-started-queues.md)
-> - [Tables](vs-storage-aspnet-getting-started-tables.md)
 
 ## 概要
 この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して ASP.NET プロジェクトで Azure ストレージ アカウントを参照または作成した後に、Visual Studio で Azure テーブル ストレージの使用を開始する方法について説明します。この記事では、テーブルの作成と削除、テーブル エンティティの操作など、Azure のテーブルにおける一般的なタスクの実行方法について説明します。例は C# のコードで記述され、[Azure .NET 用ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)を利用しています。Azure テーブル ストレージの使用についてのより一般的な情報については、「[.NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md)」をご覧ください。
@@ -167,4 +159,4 @@ Azure テーブルは、前のコードに **CreateIfNotExistsAsync()** への�
 
 [AZURE.INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

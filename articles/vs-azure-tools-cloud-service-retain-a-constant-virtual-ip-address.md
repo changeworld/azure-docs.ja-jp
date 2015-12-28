@@ -3,9 +3,9 @@
    description="Azure クラウド サービスの仮想 IP アドレス (VIP) が変化しないようにする方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="dotnet"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="09/08/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # クラウド サービスの固定仮想 IP アドレスを保持する方法
 
@@ -45,4 +45,4 @@ Azure でホストされているクラウド サービスを更新するとき�
 
 Visual Studio から Azure への発行の詳細については、[Azure アプリケーションの公開ウィザード](vs-azure-tools-publish-azure-application-wizard.md)に関するページをご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

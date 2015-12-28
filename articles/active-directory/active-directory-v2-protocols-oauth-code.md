@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/19/2015"
+	ms.date="12/09/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 プレビュー: プロトコル - OAuth 2.0 承認コード フロー
@@ -230,4 +230,4 @@ Content-Type: application/json
 
 ![OAuth Auth Code Flow](../media/active-directory-v2-flows/convergence_scenarios_native.png)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

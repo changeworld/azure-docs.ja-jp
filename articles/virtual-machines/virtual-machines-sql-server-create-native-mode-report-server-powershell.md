@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="08/19/2015"
+	ms.date="12/11/2015"
 	ms.author="jroth" />
 
 # ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
@@ -705,4 +705,4 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 [Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -306,7 +306,7 @@ Power BI では、新しいデータセットが生成されます。**Connected
 
 • ローカルに保存します。
 
-**PowerBI レポートの構成** • PowerBI Desktop を使用して、デザイナー ファイル "VehicleTelemetryAnalytics - Desktop Report.pbix" を開きます。PowerBI Desktop をまだ持っていない場合は、[ここ](http://www.microsoft.com/download/details.aspx?id=45331)でインストールします。
+**PowerBI レポートの構成** • PowerBI Desktop を使用して、デザイナー ファイル "VehicleTelemetryAnalytics - Desktop Report.pbix" を開きます。PowerBI Desktop をまだ持っていない場合は、[PowerBI Desktop インストール サイト](http://www.microsoft.com/download/details.aspx?id=45331)でインストールします。
 
 • **[クエリを編集]** をクリックします。
 
@@ -390,4 +390,4 @@ Power BI では、新しいデータセットが生成されます。**Connected
 
 お疲れさまでした。 レポートとダッシュボードが正常に作成され、車両の状態と運転の習慣に関するリアルタイム情報や予測情報を一括して把握できるようになりました。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

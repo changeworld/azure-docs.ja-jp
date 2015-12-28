@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/13/2015" 
+	ms.date="12/11/2015" 
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定
@@ -185,4 +185,4 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 
 [Azure インフラストラクチャ サービス実装ガイドライン](../virtual-machines/virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -236,10 +236,10 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
 -	[C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)
 -	[C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
 -	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
-
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
 
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

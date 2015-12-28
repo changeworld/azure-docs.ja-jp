@@ -19,6 +19,13 @@
 
 # Azure Windows VM 拡張機能の構成サンプル
 
+> [AZURE.SELECTOR]
+- [Azure PowerShell - Template](virtual-machines-extensions-configuration-samples-windows.md)
+- [Azure CLI - Template](virtual-machines-extensions-configuration-samples-linux.md)
+
+<br>
+
+
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
 
@@ -26,7 +33,7 @@
 この記事には、Windows VM に対して Azure VM 拡張機能を構成する際の構成のサンプルが記載されています。
 
 
-これらの拡張機能の詳細については、「[Azure VM 拡張機能とその概要](https://msdn.microsoft.com/library/azure/dn606311.aspx)」を参照してください。
+これらの拡張機能の詳細については、「[Azure VM 拡張機能とその機能](virtual-machines-extensions-features.md)」を参照してください。
 
 拡張機能テンプレートの作成の詳細については、「[拡張機能テンプレートの作成](virtual-machines-extensions-authoring-templates.md)」を参照してください。
 
@@ -309,4 +316,4 @@
 
 [Windows VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

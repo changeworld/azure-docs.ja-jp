@@ -121,11 +121,11 @@ Azure サブスクリプションを表示するには、「**Get-AzureSubscript
 
 
 
-- Azure PowerShell モジュールの参照情報は、Azure ライブラリからも利用できます。詳細については、「[Azure コマンドレット リファレンス](http://msdn.microsoft.com/library/windowsazure/jj554330.aspx)」を参照してください。
+- Azure PowerShell モジュールの参照情報は、Azure ライブラリからも利用できます。詳細については、「[Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn708514.aspx)」を参照してください。
 
 コミュニティの情報を参照する場合は、以下の人気フォーラムもご覧ください。
 
 - [MSDN 上の Azure フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=320212)
 - [StackOverflow](http://go.microsoft.com/fwlink/?LinkId=320213)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

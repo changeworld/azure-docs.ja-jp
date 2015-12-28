@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="08/06/2015" 
+	ms.date="12/10/2015" 
 	ms.author="erikre"/>
 
 
@@ -218,7 +218,7 @@ ASP.NET Web フォームでは、マスター ページを使うことで、ア�
 
 1. **ソリューション エクスプローラー**で *Models* フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。![クラスの選択](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms12.png) **[新しい項目の追加]** ダイアログ ボックスが表示されます。  
 
-2. 新しいクラスに *Contacts.cs* という名前を付けます。![[新しい項目の追加] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13.png)
+2. 新しいクラスに *Contacts.cs* という名前を付けて **[追加]** をクリックします。![[新しい項目の追加] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13.png)
 3. 既定のコードを以下のコードに置き換えます。  
 
 		using System.ComponentModel.DataAnnotations;
@@ -389,8 +389,8 @@ ASP.NET Web フォームは、メンバーシップと認証のオプション�
 
 3. [Google Developers Console](https://console.developers.google.com/) にアクセスします。Google デベロッパーの電子メール アカウント (gmail.com) でサインインする必要があります。Google アカウントを持っていない場合は、**[Create an account]** リンクを選択します。**Google Developers Console** が表示されます。![Google Developers Console](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21a.png)
 
-4. **[Create Project]** ボタンをクリックして、プロジェクトの名前と ID を入力します (既定値を使用できます)。**同意のチェック ボックス**をオンにして、**[Create]** ボタンをクリックします。![Google - 新しいプロジェクト](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21b.png) 新しいプロジェクトが数秒で作成され、新しいプロジェクトのページがブラウザーに表示されます。
-5. 左側のタブで **[APIs & auth]**、**[Credentials]** の順にクリックします。
+4. **[Select a project]** から**[Create Project]** ボタンをクリックして、プロジェクトの名前と ID を入力します (既定値を使用できます)。**同意のチェック ボックス**をオンにして、**[Create]** ボタンをクリックします。![Google - 新しいプロジェクト](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21b.png) 新しいプロジェクトが数秒で作成され、新しいプロジェクトのページがブラウザーに表示されます。
+5. **Google Developers Console** ドロップダウン メニューから、 **[API Manager]**、**[Credentials]** の順にクリックします。
 6. **[OAuth]** にある **[Create New Client ID]** をクリックします。**[Create Client ID]** ダイアログ ボックスが表示されます。![Google - クライアント ID の作成](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21c.png)  
 7. **[Create Client ID]** ダイアログ ボックスでは、アプリケーションの種類を既定の **[Web application]** のままにします。  
 8. **[Authorized JavaScript Origins]** には、このチュートリアルで前に使用した SSL URL を設定します (他の SSL プロジェクトを作成していない限り ****https://localhost:44300/**)。この URL がアプリケーションのオリジンです。このサンプルではローカルホストのテスト URL を入力するだけですが、アカウントには複数の URL を入力できます (ローカルホストおよび本稼働用)。
@@ -401,7 +401,7 @@ ASP.NET Web フォームは、メンバーシップと認証のオプション�
 
 	この値は、ASP.NET OAuth ユーザーが Google の OAuth サーバーとの通信に使用する URI です。必ず、先ほど使用した SSL URL を使用してください (他の SSL プロジェクトを作成していない限り ****https://localhost:44300/**)。
  
-10. **[Create Client ID]** ボタンをクリックします。
+10. **[Create]** ボタンをクリックします。
 11. Visual Studio で、*Startup.Auth.cs* ページの `UseGoogleAuthentication` メソッドを更新します。これを行うには、**アプリケーション ID** と**アプリケーション シークレット**をコピーして、そのメソッドに貼り付けます。次に示す**アプリケーション ID** と**アプリケーション シークレット**の値はサンプルであり、動作しません。  
 
 		using System;
@@ -638,13 +638,14 @@ Web アプリケーションが完成したら、Azure に発行することが�
 ###アプリケーションを発行する 
 1. Visual Studio でプロジェクトをビルドします (**Ctrl + Shift + B**)。
 2. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[発行]** をクリックします。![[発行] メニュー オプション](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms22.png) **[Web の発行]** ダイアログ ボックスが表示されます。![[Web の発行] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms22a.png)  
-3. **[プロファイル]** タブで発行先に **[Azure Web アプリ]** をクリックします (選択されていない場合)。![[Web の発行] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms23.png)  
+3. **[プロファイル]** タブで発行先に **[Azure App Service]** をクリックします (選択されていない場合)。![[Web の発行] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms23.png)  
 4. **[サインイン]** をクリックします (サインインしていない場合)。
 5. **[既存の Web アプリ]** ドロップダウン ボックスで、このチュートリアルで作成した Web アプリを選択し、**[OK]** をクリックします。![既存の Web サイト選択ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms25.png) プロファイルに対する変更の保存が確認された場合は、**[はい]** を選択します。
 6. **[設定]** タブをクリックします。![既存の Web サイト選択ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms26.png)  
 7. **[構成]** ドロップダウン ボックスを **[デバッグ]** に設定します。
 8. **[ApplicationDbContext]** の**下向き矢印**アイコンをクリックして、**ContactDB** に設定します。
-9. **[Code First Migrations を実行]** チェック ボックスをオンにします。この例では、アプリケーションを最初に発行する際にのみ、このチェック ボックスをオンにします。これによって、*Configuration.cs* ファイルの *Seed* メソッドが 1 回だけ呼び出されます。  
+9. **[Code First Migrations を実行]** チェック ボックスをオンにします。  
+	この例では、アプリケーションを最初に発行する際にのみ、このチェック ボックスをオンにします。これによって、*Configuration.cs* ファイルの *Seed* メソッドが 1 回だけ呼び出されます。  
 
 10. **[発行]** をクリックします。アプリケーションが Azure に発行されます。
 
@@ -701,4 +702,4 @@ ASP.NET Web フォームの詳細については、ASP.NET Web アプリの「[L
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

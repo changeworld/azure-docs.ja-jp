@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="12/04/2015"
+	ms.date="12/16/2015"
 	ms.author="jeffstok"/>
 
 # ストリーム データ処理スループット向上のための Azure Stream Analytics ジョブのスケーリング #
@@ -61,7 +61,7 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 
 ステップをパーティション分割するには、次の条件を満たす必要があります。
 
-- 入力ソースはパーティション分割する。詳細については、「[Azure Stream Analytics 開発者ガイド](../stream-analytics-developer-guide.md)」と「[Event Hubs プログラミング ガイド](../azure-event-hubs-developer-guide.md)」を参照してください。
+- 入力ソースはパーティション分割する。詳細については、「[Azure Stream Analytics 開発者ガイド](../stream-analytics-developer-guide.md)」と「[Event Hubs プログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)」を参照してください。
 - クエリの SELECT ステートメントは、パーティション分割された入力ソースから読み取る。
 - ステップ内のクエリに **Partition By** 句を含める。
 
@@ -265,4 +265,4 @@ Azure プレビュー ポータルの [設定] からスケールの設定にア
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

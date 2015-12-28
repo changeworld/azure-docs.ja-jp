@@ -364,6 +364,7 @@ ACL を設定したら、ポリシーの ID に基づいて共有アクセス署
 -   [Azure Storage チーム ブログ][]
 -   GitHub の [Azure Storage SDK for Node][] リポジトリ
 -   [Node.js デベロッパー センター](/develop/nodejs/)
+-   [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
 [Create and deploy a Node.js application to an Azure Web Site]: /develop/nodejs/tutorials/create-a-website-(mac)/
@@ -376,4 +377,4 @@ ACL を設定したら、ポリシーの ID に基づいて共有アクセス署
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -78,7 +78,9 @@
 
 	- iOS Push Notifications の証明書が有効であり、かつ期限切れになっていないことを確認します。 
 	- Mobile Engagement アプリの *運用*証明書が正しく構成されていることを確認します。 
+	- *実在する物理デバイス*をテストしていることを確認します。 IOS シミュレーターはプッシュ メッセージを処理できません。
 	- モバイル アプリでバンドル識別子が正しく構成されていることを確認します。手順については、[こちら](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)を参照してください。
+	- テストするときは、モバイル プロビジョニング プロファイルの "アドホック" ディストリビューションを使用します。アプリが "デバッグ" を使用してコンパイルされている場合、通知は受信できません。
 
 2. **Android**
 
@@ -118,4 +120,4 @@ Mobile Engagement で作成した**キャンペーン**がそのように呼び�
 	- Mobile Engagement SDK のバージョン (例: Android SDK v2.1.0)
 	- 表示されるエラー メッセージとシナリオを含むエラーの詳細
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="web" 
-	ms.date="09/29/2015" 
+	ms.date="12/15/2015" 
 	ms.author="cephalin"/>
 
 # AD FS の認証を使用して Azure App Service で .NET MVC Web アプリを作成する
@@ -59,7 +59,7 @@ Azure App Service Web アプリで次の機能を持つ基本的な ASP.NET ア�
 
 2.	サンプル ソリューション [WebApp-WSFederation-DotNet](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet) をローカル ディレクトリに複製またはダウンロードします。
 
-	> [AZURE.NOTE][README.md](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet/blob/master/README.md) には Azure Active Directory にアプリケーションを設定する手順が記載されていますが、このチュートリアルでは AD FS を使用して設定するため、以降の説明に従ってください。
+	> [AZURE.NOTE] [README.md](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet/blob/master/README.md) には Azure Active Directory にアプリケーションを設定する手順が記載されていますが、このチュートリアルでは AD FS を使用して設定するため、以降の説明に従ってください。
 
 3.	ソリューションを開き、**ソリューション エクスプローラー**で Controllers\\AccountController.cs を開きます。
 
@@ -119,7 +119,7 @@ private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIden
 
 	![](./media/web-sites-dotnet-lob-application-adfs/01-publish-website.png)
 
-2. **[Microsoft Azure Web Apps]** を選択します。
+2. **[Microsoft Azure App Service]** を選択します。
 3. Azure にサインインしていない場合は、**[サインイン]** をクリックし、Azure サブスクリプションの Microsoft アカウントを使用してサインインします。
 4. サインインしたら、**[新規]** をクリックして新しい Web アプリを作成します。
 5. すべての必須フィールドに必要事項を入力します。後でオンプレミス データに接続するため、この Web アプリ用のデータベースは作成しません。
@@ -144,7 +144,7 @@ Azure で発行した Web アプリをデバッガーにアタッチする場合
 <a name="bkmk_rptrusts"></a>
 ## AD FS 管理で証明書利用者信頼を構成する ##
 
-AD FS を使用してサンプル アプリケーションの認証を行う前に、AD FS 管理で RP 信頼を構成する必要があります。デバッグ環境用と発行した Web アプリ用の 2 つの別個の RP 信頼を設定する必要があります。
+AD FS を使用してサンプル アプリケーションの認証を実際に行う前に、AD FS 管理で RP 信頼を構成する必要があります。デバッグ環境用と発行した Web アプリ用の 2 つの別個の RP 信頼を設定する必要があります。
 
 > [AZURE.NOTE]両方の環境に対して次の手順を繰り返してください。
 
@@ -333,14 +333,14 @@ Azure App Service Web Apps では、[ハイブリッド接続](../integration-hy
 - [SSL と Authorize 属性を使用してアプリケーションを保護する](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md#protect-the-application-with-ssl-and-the-authorize-attribute)
 - [Azure App Service での認証には、Active Directory を使用します](web-sites-authentication-authorization.md)
 - [Azure Active Directory の認証を使用して Azure App Service に .NET MVC Web アプリを作成する](web-sites-dotnet-lob-application-azure-ad.md)
-- [Visual Studio 2013 で ASP.NET のオンプレミス組織認証オプション (ADFS) を使用する方法](http://www.cloudidentity.com/blog/2014/02/12/use-the-on-premises-organizational-authentication-option-adfs-with-asp-net-in-visual-studio-2013/)に関するページ
+- [Visual Studio 2013 で ASP.NET のオンプレミス組織認証オプション (ADFS) を使用する方法に関するページ](http://www.cloudidentity.com/blog/2014/02/12/use-the-on-premises-organizational-authentication-option-adfs-with-asp-net-in-visual-studio-2013/)
 - [Vittorio Bertocci のブログ](http://blogs.msdn.com/b/vbertocci/)
-- [VS2013 Web プロジェクトを WIF から Katana に移植する方法](http://www.cloudidentity.com/blog/2014/09/15/MIGRATE-A-VS2013-WEB-PROJECT-FROM-WIF-TO-KATANA/)に関するページ
-- [Active Directory フェデレーション サービスの概要](http://technet.microsoft.com/library/hh831502.aspx)に関するページ
+- [VS2013 Web プロジェクトを WIF から Katana に移植する方法に関するページ](http://www.cloudidentity.com/blog/2014/09/15/MIGRATE-A-VS2013-WEB-PROJECT-FROM-WIF-TO-KATANA/)
+- [Active Directory フェデレーション サービスの概要に関するページ](http://technet.microsoft.com/library/hh831502.aspx)
 - [WS-Federation 1.1 仕様](http://download.boulder.ibm.com/ibmdl/pub/software/dw/specs/ws-fed/WS-Federation-V1-1B.pdf?S_TACT=105AGX04&S_CMP=LP)
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
  
  
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=AcomDC_1217_2015-->

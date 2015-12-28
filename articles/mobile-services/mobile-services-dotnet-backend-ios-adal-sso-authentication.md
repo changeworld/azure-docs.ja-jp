@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="08/18/2015"
+	ms.date="12/15/2015"
 	ms.author="mahender"/>
 
 # Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証
@@ -42,6 +42,7 @@
 
 * XCode 4.5 および iOS 6.0 (またはそれ以降のバージョン)
 * チュートリアル「[Mobile Services の使用]」を完了していること。
+* 「[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]」を完了していること。
 * Microsoft Azure Mobile Services SDK
 * [iOS 向け Active Directory 認証ライブラリ]
 
@@ -95,7 +96,7 @@
         }
 
 
-6. 上記の `loginAndGetData` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com にする必要があります。この値は、[Microsoft Azure の管理ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
+6. 前の `loginAndGetData` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com である必要があります。この値は、[Azure クラシック ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
 
 7. 前の `loginAndGetData` メソッドのコードで、**INSERT-RESOURCE-URI-HERE** をモバイル サービスの **App ID URI** に置き換えます。トピック「[Azure Active Directory 認証用の登録]」に従った場合は、アプリケーション ID URI が https://todolist.azure-mobile.net/login/aad と同様になる必要があります。
 
@@ -121,8 +122,9 @@
 <!-- URLs. -->
 [Mobile Services の使用]: mobile-services-dotnet-backend-ios-get-started.md
 [モバイル サービスの使用]: mobile-services-dotnet-backend-ios-get-started.md
+[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure Active Directory 認証用の登録]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [iOS 向け Active Directory 認証ライブラリ]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -3,9 +3,9 @@
    description="Visual Studio を使用して、Docker コンテナーで Web アプリケーションをホストする方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="dotnet"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="08/20/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # Docker での Web アプリのホスト
 
@@ -177,4 +177,4 @@ Visual Studio での Docker の使用に関する問題については、「[Vis
 [7]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/IC796685.png
 [8]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/IC796686.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

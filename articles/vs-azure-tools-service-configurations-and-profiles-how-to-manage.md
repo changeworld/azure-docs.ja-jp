@@ -1,11 +1,11 @@
 <properties
-   pageTitle="サービス構成とプロファイルを管理する方法"
+   pageTitle="サービス構成とプロファイルを管理する方法 | Microsoft Azure"
    description="サービス構成とプロファイルの構成ファイルを使用する方法について説明します。構成ファイルには、デプロイ環境の設定とクラウド サービスの発行設定が保存されます。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="dotnet"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="08/13/2015"
-   ms.author="kempb" />
+   ms.author="tarcher" />
 
 # サービス構成とプロファイルを管理する方法
 
@@ -131,4 +131,4 @@
 
 Visual Studio で Azure プロジェクトの他の部分を構成する方法については、[Azure プロジェクトの構成](http://go.microsoft.com/fwlink/p/?LinkID=623075)に関するページを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

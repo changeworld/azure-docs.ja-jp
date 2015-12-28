@@ -40,14 +40,14 @@
  
 Azure エンドポイントを仮想マシンに追加してロード バランサー分散モードを設定する
 
-	Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution “sourceIP”| Update-AzureVM
+	Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 
 >[AZURE.NOTE]LoadBalancerDistribution は、2 組 (ソース IP と接続先 IP) の負荷分散の場合は sourceIP、3 組 (ソース IP、接続先 IP、プロトコル) の負荷分散の場合は sourceIPProtocol に設定できます。設定しない場合は、既定の動作 (5 組の負荷分散) を使用します。
 
 
 エンドポイント ロード バランサー分散モード構成を取得する
 
-	PS C:\> Get-AzureVM –ServiceName “MyService” –Name “MyVM” | Get-AzureEndpoint
+	PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
 	VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
 	LBSetName : MyLoadBalancedSet
@@ -74,7 +74,7 @@ LoadBalancerDistribution 要素が存在しない場合、Azure Load Balancer �
 
 エンドポイントが負荷分散エンドポイント セットの一部である場合、分散モードは負荷分散エンドポイント セットで設定される必要があります。
 
-	Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution "sourceIP"
+	Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocol TCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 
 ### 分散モードを変更するクラウド サービス構成
 
@@ -99,9 +99,9 @@ Azure SDK for .NET 2.5 (11 月にリリース予定) を使用して、.csdef �
 
 ## API の例
 
-サービス管理 API を使用して、ロード バランサーの分散を構成できます。x-ms-version ヘッダーが 2014-09-01 以降のバージョンに設定されていることを確認してください。
+サービス管理 API を使用して、ロード バランサーの分散を構成できます。`x-ms-version` ヘッダーが `2014-09-01` 以降のバージョンに設定されていることを確認してください。
  
-デプロイで指定した負荷分散セットの構成を更新します。
+デプロイで指定した負荷分散セットの構成をアップデートします。
 
 要求の例
 
@@ -149,4 +149,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1217_2015-->

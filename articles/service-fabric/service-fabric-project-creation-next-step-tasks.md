@@ -72,8 +72,8 @@ Service Fabric Explorer には、デプロイ済みのアプリケーション�
 ### サービスのアップグレードとバージョン管理
 Service Fabric では、アプリケーションにおいて、独立したサービスの個別のバージョン管理とアップグレードを実行できます。詳細については、「[サービスのバージョン管理とアップグレード][app-upgrade-tutorial]」を参照してください。
 
-### Visual Studio Online を使用した継続的な統合の構成
-Service Fabric アプリケーション向けに継続的な統合プロセスを設定する方法については、「[Visual Studio Online を使用した継続的な統合の構成][ci-with-vso]」を参照してください。
+### Visual Studio Team Services を使用した継続的な統合の構成
+Service Fabric アプリケーション向けに継続的な統合プロセスを設定する方法については、「[Visual Studio Team Services を使用した継続的な統合の構成][ci-with-vso]」を参照してください。
 
 
 <!-- Links -->
@@ -85,4 +85,4 @@ Service Fabric アプリケーション向けに継続的な統合プロセス�
 [reliable-services-webapi]: ./service-fabric-reliable-services-communication-webapi.md
 [app-upgrade-tutorial]: ./service-fabric-application-upgrade-tutorial.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

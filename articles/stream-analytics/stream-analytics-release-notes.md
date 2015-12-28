@@ -24,8 +24,8 @@
 
 タイトル | 説明
 ---|---
-REST API バージョン更新 | REST API バージョンが 2015-10-01 に更新されました。詳細は [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)の MSDN にあります。
-Azure Machine Learning 統合 | このリリースで、Azure Machine Learning ユーザー定義関数のサポートが付きます。チュートリアルは[ここ](stream-analytics-machine-learning-tutorial.md)にあります。一般的なブログ告知は[ここ](http://blogs.msdn.com/b/streamanalytics/)にあります。
+REST API バージョン更新 | REST API バージョンが 2015-10-01 に更新されました。詳細については、MSDN の [Stream Analytics の管理 REST API リファレンスに関する記事](https://msdn.microsoft.com/library/azure/dn835031.aspx)、および「[Stream Analytics への Machine Learning の統合](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)」を参照してください。
+Azure Machine Learning 統合 | このリリースで、Azure Machine Learning ユーザー定義関数のサポートが付きます。チュートリアルは[ここ](stream-analytics-machine-learning-tutorial.md)にあります。一般的なブログ告知は[ここ](http://blogs.technet.com/b/machinelearning/archive/2015/12/10/apply-azure-ml-as-a-function-in-azure-stream-analytics.aspx)にあります。
 
 ## Stream Analytics の 2015 年 11 月 12 日付けリリースに関するノート ##
 
@@ -133,4 +133,4 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 - [Stream Analytics 管理 REST API 参照](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

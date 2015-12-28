@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
+	ms.date="12/11/2015"
 	ms.author="josephd"/>
 
 # Azure リソース マネージャーでの基本構成テスト環境
@@ -56,9 +56,22 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 
 ## フェーズ 1: 仮想ネットワークを作成する
 
-> [AZURE.NOTE]この記事には、Azure PowerShell プレビュー 1.0 のコマンドが使用されています。Azure PowerShell 0.9.8 以前のバージョンでこれらのコマンドを実行するには、"-AzureRM" のすべてのインスタンスを "-Azure" に置き換え、すべてのコマンド実行の前に **Switch-AzureMode AzureResourceManager** コマンドを追加します。詳細については、「[Azure PowerShell 1.0 プレビュー](https://azure.microsoft.com/blog/azps-1-0-pre/)」を参照してください。
+まず Azure PowerShell プロンプトを開始します。
 
-最初に、Azure PowerShell プロンプトを開きます。
+> [AZURE.NOTE]次のコマンド セットは、Azure PowerShell 1.0 以降を使用します。詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
+
+ご使用のアカウントにログインします。
+
+	Login-AzureRMAccount
+
+次のコマンドを使用して、サブスクリプション名を取得します。
+
+	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
+
+Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+
+	$subscr="<subscription name>"
+	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
 
 次に、基本構成テスト ラボ用の新しいリソース グループを作成します。一意のリソース グループ名を確認するには、次のコマンドを実行して、既存のリソース グループの一覧を取得します。
 
@@ -72,7 +85,7 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 
 リソース マネージャー ベースの仮想マシンには、リソース マネージャー ベースのストレージ アカウントが必要です。小文字のアルファベットと数字のみが含まれているストレージ アカウントのグローバルに一意の名前を選択する必要があります。既存のストレージ アカウントの一覧を取得するには、次のコマンドを実行します。
 
-	Get-AzureRMStorageAccount | Sort Name | Select Name
+	Get-AzureRMStorageAccount | Sort StorageAccountName | Select StorageAccountName
 
 次のコマンドを実行して、新しいテスト環境の新しいストレージ アカウントを作成します。
 
@@ -118,7 +131,7 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 
 続けて、DC1 仮想マシンに接続します。
 
-1.	Azure ポータルで、左側のウィンドウの **[すべて参照]** をクリックし、**[参照]** リストの** [仮想マシン]** をクリックして、**DC1** 仮想マシンをクリックします。  
+1.	Azure ポータルで、**[仮想マシン]**、**DC1** 仮想マシンの順にクリックします。  
 2.	**[DC1]** ウィンドウで、**[接続]** をクリックします。
 3.	メッセージが表示されたら、DC1.rdp ダウンロード ファイルを開きます。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
@@ -147,8 +160,8 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 
 DC1 を再起動した後、DC1 の仮想マシンに再接続します。
 
-1.	Azure ポータルで、左側のウィンドウの [すべて参照] をクリックし、[参照] リストの [仮想マシン] をクリックして、DC1 仮想マシンをクリックします。
-2.	[DC1] ウィンドウで、[接続] をクリックします。
+1.	Azure ポータルで、**[仮想マシン]**、**DC1** 仮想マシンの順にクリックします。
+2.	**[DC1]** ウィンドウで、**[接続]** をクリックします。
 3.	DC1.rdp を開くように求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
 5.	資格情報の入力を求められたら、次の情報を使用します。
@@ -276,11 +289,9 @@ CLIENT1 が再起動した後、CORP\\User1 のアカウント名とパスワー
 
 Azure の基本構成の準備が整いました。アプリケーションの開発やテスト、および追加のテスト環境に使用できます。
 
-## その他のリソース
+## 次のステップ
 
-[ハイブリッド クラウド テスト環境](../virtual-network/virtual-networks-setup-hybrid-cloud-environment-testing.md)
-
-[基本構成テスト環境](virtual-machines-base-configuration-test-environment.md)
+- この構成を基にして、[シミュレートされたハイブリッド クラウド テスト環境](../virtual-network/virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)を構築します。
 
 
 ## <a id="costs"></a>Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法
@@ -310,4 +321,4 @@ Azure PowerShell で仮想マシンを順番に起動するには、リソース
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

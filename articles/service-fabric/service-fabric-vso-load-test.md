@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Visual Studio Online を使用してアプリケーションのロード テストを実行する |Microsoft Azure"
-    description="Visual Studio Online を使用して Azure Service Fabric アプリケーションのストレス テストを実行する方法について説明します。"
+    pageTitle="Visual Studio Team Services を使用してアプリケーションのロード テストを実行する | Microsoft Azure"
+    description="Visual Studio Team Services を使用して Azure Service Fabric アプリケーションのストレス テストを実行する方法について説明します。"
     services="service-fabric"
     documentationCenter="na"
     authors="cawams"
@@ -16,7 +16,7 @@
     ms.date="10/28/2015"
     ms.author="cawa" />
 
-# Visual Studio Online を使用してアプリケーションのロード テストを実行する
+# Visual Studio Team Services を使用してアプリケーションのロード テストを実行する
 
 この記事では、Visual Studio ロード テスト機能を使用して、アプリケーションのストレス テストを実行する方法について説明します。この機能では、Service Fabric のステートフル サービス バックエンドとステートレス サービス Web フロントエンドが使用されます。この記事で使用するサンプル アプリケーションは、飛行機の位置特定シミュレーターです。ユーザーが飛行機の ID、出発地、および到着地を指定すると、アプリケーションのバックエンドによって要求が処理され、フロントエンドによって条件に一致する飛行機がマップに表示されます。
 
@@ -27,7 +27,7 @@
 ## 前提条件
 始める前には、次の手順を実行する必要があります。
 
-- Visual Studio Online (VSO) アカウントを取得する。[Visual Studio Online](https://www.visualstudio.com) で無料で取得できます。
+- Visual Studio Team Services (VSTS) アカウントを取得します。[Visual Studio Team Services](https://www.visualstudio.com) で無料で取得できます。
 - Visual Studio 2013 または Visual Studio 2015 を取得してインストールする。この記事では、Visual Studio 2015 Enterprise エディションを使用しますが、Visual Studio 2013 など他のエディションも同様に機能します。
 - ステージング環境にアプリケーションをデプロイする。詳細については、[Visual Studio を使用してリモート クラスターにアプリケーションをデプロイする方法](service-fabric-publish-app-remote-cluster.md)を参照してください。
 - アプリケーションの使用パターンを理解する。この情報は、ロード パターンをシミュレートするために使用されます。
@@ -94,13 +94,13 @@ Web パフォーマンス テストをパラメーター化するには、コー
 1. **[実行設定]** セクションで、ロード テストの時間を指定します。
     >[AZURE.NOTE]**[テスト イテレーション]** オプションは、Visual Studio を使用してローカルでロード テストを実行する場合にのみ使用できます。
 
-1. **[実行設定]** の **[場所]** で、ロード テストの要求が生成される場所を指定します。ウィザードで、VSO アカウントにログインするよう要求される場合があります。VSO アカウントを使用してログインし、地理的な場所を選択します。完了したら、**[完了]** をクリックします。
+1. **[実行設定]** の **[場所]** で、ロード テストの要求が生成される場所を指定します。ウィザードで、Team Services アカウントにログインするよう要求される場合があります。Team Services アカウントを使用してログインし、地理的な場所を選択します。完了したら、**[完了]** をクリックします。
 
 1. ロード テストを作成したら、.loadtest プロジェクトを開き、**[実行設定]** の **[Run Settings1 [Active]]** など、現在の実行設定を選択します。**[プロパティ]** ウィンドウの実行設定が開きます。
 
-1. **[実行設定]** プロパティ ウィンドウの **[結果]** セクションで、**[タイミングの詳細ストレージ**] 設定の既定値が **[なし]** に設定されています。ロード テスト結果の詳細情報を取得するために、この値を **[すべての個別詳細]** に変更します。Visual Studio Online に接続し、ロード テストを実行する方法の詳細については、[ロード テスト](https://www.visualstudio.com/load-testing.aspx)に関するページを参照してください。
+1. **[実行設定]** プロパティ ウィンドウの **[結果]** セクションで、**[タイミングの詳細ストレージ**] 設定の既定値が **[なし]** に設定されています。ロード テスト結果の詳細情報を取得するために、この値を **[すべての個別詳細]** に変更します。Visual Studio Team Services に接続し、ロード テストを実行する方法の詳細については、[ロード テスト](https://www.visualstudio.com/load-testing.aspx)に関するページを参照してください。
 
-### Visual Studio Online を使用してロード テストを実行する
+### Visual Studio Team Services を使用してロード テストを実行する
 
 **[ロード テストの実行]** を選択して、テストの実行を開始します。
 
@@ -124,7 +124,7 @@ Web パフォーマンス テストをパラメーター化するには、コー
 
 ## ロード テストの自動化
 
-Visual Studio Online のロード テストで提供されている API を使用して、VSO アカウントでロード テストを管理し、結果を分析できます。詳細については、[クラウドのロード テスト用 Rest API](http://blogs.msdn.com/b/visualstudioalm/archive/2014/11/03/cloud-load-testing-rest-apis-are-here.aspx) に関するページを参照してください。
+Visual Studio Team Services のロード テストで提供されている API を使用して、Team Services アカウントでロード テストを管理し、結果を分析できます。詳細については、[クラウドのロード テスト用 Rest API](http://blogs.msdn.com/b/visualstudioalm/archive/2014/11/03/cloud-load-testing-rest-apis-are-here.aspx) に関するページを参照してください。
 
 ## 次のステップ
 - [ローカル コンピューターの開発のセットアップでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
@@ -140,4 +140,4 @@ Visual Studio Online のロード テストで提供されている API を使�
 [8]: ./media/service-fabric-vso-load-test/RunTest2.png
 [9]: ./media/service-fabric-vso-load-test/Graph.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="12/03/2015"
+   ms.date="12/11/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # SQL Data Warehouse での統計の管理
@@ -47,7 +47,7 @@ SQL Data Warehouse で実現されるクエリのパフォーマンスを得る�
 
 そのため、SQL Data Warehouse の開発を開始するときは、次のパターンを実装することをお勧めします。- すべてのテーブルのすべての列の単一列統計を作成します。- クエリの結合句とグループ化句で使用される列の複数列統計を作成します。
 
-データを照会する方法を把握したら、特にテーブルの幅が広い場合に、このモデルを改良することもできます。さらに高度な手法については、「統計管理の実装」(## 統計管理の実装) をご覧ください。
+データを照会する方法を把握したら、特にテーブルの幅が広い場合に、このモデルを改良することもできます。さらに高度な手法については、[「統計管理の実装」](## 統計管理の実装) をご覧ください。
 
 ## 統計を更新する場合
 統計の更新をデータベース管理ルーチンに含めることが重要です。データベース内のデータの分布が変わったら、統計を更新する必要があります。そうしないと、クエリのパフォーマンスが十分に最適化されない可能性があり、労力をかけてクエリのトラブルシューティングをさらに行うだけの価値がなくなります。
@@ -381,7 +381,7 @@ JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
 JOIN    sys.tables          AS tb ON  co.[object_id]        = tb.[object_id]
 JOIN    sys.schemas         AS sm ON  tb.[schema_id]        = sm.[schema_id]
 WHERE   1=1 
-AND     sts.[user_created] = 1
+AND     st.[user_created] = 1
 ;
 ```
 
@@ -459,4 +459,4 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW\_STATISTICS() が�
 [sys.table\_types]: https://msdn.microsoft.com/library/bb510623.aspx
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
 
-<!---HONumber=AcomDC_1203_2015--->
+<!----HONumber=AcomDC_1217_2015-->

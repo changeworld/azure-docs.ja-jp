@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="11/16/2015"
+   ms.date="12/11/2015"
    ms.author="jgao"/>
 
 # HDInsight で Hadoop クラスターを作成する
@@ -251,7 +251,7 @@ Virtual Network の機能、利点の詳細については、「[Azure 仮想ネ
 
 ## ポータルを使用した作成
 
-各フィールドについては、「[基本的な構成オプション](#basic-configuration-options)」および「[高度な構成オプション](#advanced-configuration-options)」を参照してください。
+各フィールドについては、「[基本的な構成オプション](#basic-configuration-options)」および「[高度な構成オプション](#advanced-configuration-options)」をご覧ください。
 
 **HDInsight クラスターを作成するには**
 
@@ -408,6 +408,7 @@ Azure PowerShell を使用して HDInsight クラスターを作成するには�
 - Azure のストレージ アカウントの作成
 - Azure BLOB コンテナーの作成
 - HDInsight クラスターの作成
+
 
 	$subscriptionId = "<Azure Subscription ID>"
 	
@@ -755,4 +756,4 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [ssisclustercreate]: http://msdn.microsoft.com/library/mt146774(v=sql.120).aspx
 [ssisclusterdelete]: http://msdn.microsoft.com/library/mt146778(v=sql.120).aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

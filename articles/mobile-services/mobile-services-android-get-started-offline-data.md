@@ -39,7 +39,7 @@
 
 ## オフライン同期をサポートするようにアプリケーションを更新する
 
-オフライン同期では、*同期テーブル*に対して読み取りや書き込みをします (*IMobileServiceSyncTable* インターフェイスを使用)。このテーブルは、デバイス上の **SQL Light** データベースの一部です。
+オフライン同期では、*同期テーブル*に対して読み取りと書き込みを行います (*IMobileServiceSyncTable* インターフェイスを使用)。このテーブルは、デバイス上の **SQLite** データベースの一部です。
 
 デバイスと Azure Mobile Services の間で変更をプッシュしたりプルしたりするには、*同期コンテキスト* (*MobileServiceClient.SyncContext*) を使用します。この同期コンテキストは、データをローカルに格納するローカル データベースで初期化されます。
 
@@ -223,4 +223,4 @@ One thing which is important to point out: if there are pending changes in the l
 
 [Mobile Services Quick Start tutorial (Mobile Services のクイック スタート チュートリアル)]: mobile-services-android-get-started.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

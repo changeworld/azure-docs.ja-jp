@@ -15,7 +15,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="12/10/2015" 
+	ms.date="12/14/2015" 
 	ms.author="jeffstok"
 />
 
@@ -38,20 +38,20 @@
 この記事の前提条件は次のとおりです。
 
 1.	有効な Azure サブスクリプション
-2.	ある程度のデータが入力された CSV ファイル。図 2 のファイルはこちらでダウンロードできますが、自分で作成することもできます。このチュートリアルは、ダウンロードしたファイルを使用している前提で説明しています。
+2.	ある程度のデータが入力された CSV ファイル。図 2 のファイルは、[GitHub](https://github.com/jeffstokes72/azure-stream-analytics-repository/blob/master/sampleinputs.csv) からダウンロードできますが、自分で作成することもできます。このチュートリアルは、ダウンロードしたファイルを使用している前提で説明しています。
 
 概要としては次の手順を実行します。
 
-1.	CSV の入力ファイルを Blob ストレージにアップロードします
+1.	CSV の入力ファイルを Blob Storage にアップロードします
 2.	Cortana Analytics ギャラリーのセンチメント分析モデルを Machine Learning ワークスペースに追加します
 3.	このモデルを Web サービスとして Azure Machine Learning ワークスペースにデプロイします
 4.	この Web サービスを、テキスト入力のセンチメントを決定する関数として呼び出す Stream Analytics ジョブを作成します
 5.	Stream Analytics ジョブを開始し、出力を確認します 
 
 
-## CSV の入力ファイルを Blob ストレージにアップロードします
+## CSV の入力ファイルを Blob Storage にアップロードします
 
-この手順では、概要で説明したものなど、任意の CSV ファイルを使用できます。ファイルをアップロードするには、[Azure ストレージ エクスプローラー](http://storageexplorer.com/)や Visual Studio だけでなく、カスタム モードも使用できます。このチュートリアルでは、Visual Studio の例を紹介しています。
+この手順では、概要で説明したものなど、任意の CSV ファイルを使用できます。ファイルをアップロードするには、[Azure ストレージ エクスプローラー](http://storageexplorer.com/)や Visual Studio だけでなく、カスタム コードも使用できます。このチュートリアルでは、Visual Studio の例を紹介しています。
 
 1.	Azure を展開し、**[ストレージ]** を右クリックします。**[外部ストレージのアタッチ]** を選択し、**[アカウント名]** と **[アカウント キー]** を指定します。  
 
@@ -79,7 +79,7 @@
 
 ![Stream Analytics Machine Learning チュートリアル: 分析データ](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-analysis-data.png)
 
-**Excel 2010 以前**のブックのリンクをクリックして、後で Stream Analytics ジョブを設定する際に必要になる API キーと URL を取得します(この手順は、別の Azure アカウントのワークスペースから Machine Learning モデルを利用する場合にのみ必要です。このチュートリアルでは、このシナリオに対応する場合を想定しています)。
+**Excel 2010 以前**のブックのリンクをクリックして、後で Stream Analytics ジョブを設定する際に必要になる API キーと URL を取得します (この手順は、別の Azure アカウントのワークスペースから Machine Learning モデルを利用する場合にのみ必要です。このチュートリアルでは、このシナリオに対応する場合を想定しています)。
 
 ![Stream Analytics Machine Learning チュートリアル: 分析実験](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-analysis-experiement.png)
 
@@ -113,9 +113,17 @@
 
 11.	**[クエリ]** タブに移動し、次のようにクエリを変更します。
 
-    ![Stream Analytics Machine Learning チュートリアル: Machine Learning クエリ](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-ml-query.png)
+```
+	WITH subquery AS (  
+		SELECT text, sentiment(text) as result from input  
+	)  
+	  
+	Select text, result.[Score]  
+	Into output  
+	From subquery  
+```
 
-12. **[保存]** をクリックしてクエリを保存します。
+12. **[保存]** をクリックしてクエリを保存します。    
 
 ## Stream Analytics ジョブを開始し、出力を確認します
 
@@ -142,4 +150,4 @@ Azure Machine Language 関数に関連するメトリックも確認できます
 
     ![Stream Analytics Machine Learning チュートリアル: ML 監視ビュー](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-ml-monitor-view.png)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/08/2015" 
+	ms.date="12/15/2015" 
 	ms.author="wesmc"/>
 
 # 通知ハブを使用したローカライズ ニュース速報の送信
@@ -39,7 +39,7 @@
 
 「[通知ハブを使用したニュース速報の送信]」のチュートリアルを完了し、コードが使用可能な状態になっている必要があります。このチュートリアルでは、そのコードに基づいているためです。
 
-Visual Studio 2012 も必要です。
+Visual Studio 2012 以降も必要です。
 
 
 ##テンプレートの概念
@@ -56,7 +56,7 @@ Visual Studio 2012 も必要です。
 		"News_Mandarin": "..."
 	}
 
-次に、デバイスが、適切なプロパティを参照するテンプレートを登録するようにします。たとえば、簡単なトースト メッセージを受信する Windows ストア アプリケーションは、次のテンプレートを登録します。
+次に、デバイスが、適切なプロパティを参照するテンプレートを登録するようにします。たとえば、簡単なトースト メッセージを受信する Windows ストア アプリケーションは、次の対応するタグを持つテンプレートを登録します。
 
 	<toast>
 	  <visual>
@@ -68,16 +68,12 @@ Visual Studio 2012 も必要です。
 
 
 
-テンプレートは有用な機能です。詳細については、「[通知ハブの概要]」の記事を参照してください。テンプレート式言語のリファレンスは、「[方法: Microsoft Azure 通知ハブ (Windows ストア アプリ)]」にあります。
+テンプレートは有用な機能です。詳細については、「[テンプレート](notification-hubs-templates.md)」の記事を参照してください。
 
 
 ##アプリケーションのユーザー インターフェイス
 
 ここでは、「[通知ハブを使用したニュース速報の送信]」で作成したニュース速報アプリケーションを変更し、テンプレートを使用してローカライズしたニュース速報を送信します。
-
-
-クライアント アプリケーションがローカライズしたメッセージを受信できるようにするには、*ネイティブ*登録 (つまり、テンプレートを指定する登録) をテンプレート登録に置き換える必要があります。
-
 
 Windows ストア アプリケーションで、以下の手順を実行します。
 
@@ -109,29 +105,37 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
         <ToggleSwitch Header="Technology" Name="TechnologyToggle" Grid.Row="2" Grid.Column="1"/>
         <ToggleSwitch Header="Science" Name="ScienceToggle" Grid.Row="3" Grid.Column="1"/>
         <ToggleSwitch Header="Sports" Name="SportsToggle" Grid.Row="4" Grid.Column="1"/>
-        <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="Button_Click" />
+        <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
 
 ##Windows ストア クライアント アプリケーションを構築する
 
 1. Notifications クラスで、*StoreCategoriesAndSubscribe* メソッドと *SubscribeToCateories* メソッドにロケール パラメーターを追加します。
 
-		public async Task StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
+        public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
         {
             ApplicationData.Current.LocalSettings.Values["categories"] = string.Join(",", categories);
             ApplicationData.Current.LocalSettings.Values["locale"] = locale;
-            await SubscribeToCategories(locale, categories);
+            return await SubscribeToCategories(categories);
         }
 
-        public async Task SubscribeToCategories(string locale, IEnumerable<string> categories)
+        public async Task<Registration> SubscribeToCategories(string locale, IEnumerable<string> categories = null)
         {
             var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
-            var template = String.Format(@"<toast><visual><binding template=""ToastText01""><text id=""1"">$(News_{0})</text></binding></visual></toast>", locale);
 
-            await hub.RegisterTemplateAsync(channel.Uri, template, "newsTemplate", categories);
+            if (categories == null)
+            {
+                categories = RetrieveCategories();
+            }
+
+            // Using a template registration. This makes supporting notifications across other platforms much easier.
+            // Using the localized tags based on locale selected.
+            string templateBodyWNS = String.Format("<toast><visual><binding template="ToastText01"><text id="1">$(News_{0})</text></binding></visual></toast>", locale);
+
+            return await hub.RegisterTemplateAsync(channel.Uri, templateBodyWNS, "localizedWNSTemplateExample", categories);
         }
 
-	*RegisterNativeAsync* メソッドを呼び出す代わりに *RegisterTemplateAsync* を呼び出す点に注意してください。テンプレートがロケールに依存している特定の通知形式を登録します。さらに、テンプレートの名前 ("newsTemplate") も指定します。複数のテンプレートを登録する可能性があり (たとえば、トースト通知用のテンプレートとタイル通知用のテンプレートなど)、それらを更新または削除するには名前を付ける必要があるためです。
+	*RegisterNativeAsync* メソッドを呼び出す代わりに *RegisterTemplateAsync* を呼び出す点に注意してください。テンプレートがロケールに依存している特定の通知形式を登録します。さらに、テンプレートの名前 ("localizedWNSTemplateExample") も指定します。複数のテンプレートを登録する可能性があり (たとえば、トースト通知用のテンプレートとタイル通知用のテンプレートなど)、それらを更新または削除するには名前を付ける必要があるためです。
 
 	同じタグを持つ複数のテンプレートがデバイスによって登録された場合、そのタグをターゲットとするメッセージが受信されると複数の通知がデバイスに配信される点に注意してください (テンプレートごとに 1 つずつ)。この動作は、同じ論理メッセージによって複数のビジュアル通知を生成する必要がある場合に役立ちます。たとえば、Windows ストア アプリケーションにバッジとトーストの両方を表示する場合などです。
 
@@ -143,27 +147,44 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
             return locale != null ? locale : "English";
         }
 
-3. 次に示すように、MainPage.xaml.cs でロケール コンボボックスの現在の値を取得し、それを Notifications クラスへの呼び出しに提供することで、ボタン クリック ハンドラーを更新します。
+3. 次に示すように、MainPage.xaml.cs でロケール コンボ ボックスの現在の値を取得し、それを Notifications クラスへの呼び出しに提供することで、ボタン クリック ハンドラーを更新します。
 
-		 var locale = (string)Locale.SelectedItem;
+        private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var locale = (string)Locale.SelectedItem;
 
-         var categories = new HashSet<string>();
-         if (WorldToggle.IsOn) categories.Add("World");
-         if (PoliticsToggle.IsOn) categories.Add("Politics");
-         if (BusinessToggle.IsOn) categories.Add("Business");
-         if (TechnologyToggle.IsOn) categories.Add("Technology");
-         if (ScienceToggle.IsOn) categories.Add("Science");
-         if (SportsToggle.IsOn) categories.Add("Sports");
+            var categories = new HashSet<string>();
+            if (WorldToggle.IsOn) categories.Add("World");
+            if (PoliticsToggle.IsOn) categories.Add("Politics");
+            if (BusinessToggle.IsOn) categories.Add("Business");
+            if (TechnologyToggle.IsOn) categories.Add("Technology");
+            if (ScienceToggle.IsOn) categories.Add("Science");
+            if (SportsToggle.IsOn) categories.Add("Sports");
 
-         await ((App)Application.Current).Notifications.StoreCategoriesAndSubscribe(locale, categories);
+            var result = await ((App)Application.Current).notifications.StoreCategoriesAndSubscribe(locale,
+				 categories);
 
-         var dialog = new MessageDialog(String .Format("Locale: {0}; Subscribed to: {1}", locale, string.Join(",", categories)));
-         dialog.Commands.Add(new UICommand("OK"));
-         await dialog.ShowAsync();
+            var dialog = new MessageDialog("Locale: " + locale + " Subscribed to: " + 
+				string.Join(",", categories) + " on registration Id: " + result.RegistrationId);
+            dialog.Commands.Add(new UICommand("OK"));
+            await dialog.ShowAsync();
+        }
 
-4. 最後に、App.xaml.cs ファイルで、*OnLaunched* メソッドにある Notifications シングルトンへの呼び出しを更新します。
 
-		Notifications.SubscribeToCategories(Notifications.RetrieveLocale(), Notifications.RetrieveCategories());
+4. 最後に、App.xaml.cs ファイルで `InitNotificationsAsync` メソッドを必ず更新してロケールを取得し、購読しているときに使用します。
+
+        private async void InitNotificationsAsync()
+        {
+            var result = await notifications.SubscribeToCategories(notifications.RetrieveLocale());
+
+            // Displays the registration ID so you know it was successful
+            if (result.RegistrationId != null)
+            {
+                var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
+                dialog.Commands.Add(new UICommand("OK"));
+                await dialog.ShowAsync();
+            }
+        }
 
 
 ##バックエンドからローカライズした通知を送信する
@@ -174,9 +195,6 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 
 
 
-## 次のステップ
-
-テンプレートの使用方法の詳細については、「[Notification Hubs によるユーザーへの通知: ASP.NET]」、「[Notification Hubs によるユーザーへの通知: Mobile Services]」、「[Notification Hubs の概要]」をご覧ください。テンプレート式言語のリファレンスは、「[方法: Microsoft Azure 通知ハブ (Windows ストア アプリ)]」にあります。
 
 <!-- Anchors. -->
 [Template concepts]: #concepts
@@ -187,30 +205,10 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 
 <!-- Images. -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- URLs. -->
 [Mobile Service]: /develop/mobile/tutorials/get-started
-[Notification Hubs によるユーザーへの通知: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
-[Notification Hubs によるユーザーへの通知: Mobile Services]: /manage/services/notification-hubs/notify-users
+[Notify users with Notification Hubs: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
+[Notify users with Notification Hubs: Mobile Services]: /manage/services/notification-hubs/notify-users
 [Notification Hubs を使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-dotnet
 [通知ハブを使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-dotnet
 
@@ -226,9 +224,8 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
-[方法: Microsoft Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

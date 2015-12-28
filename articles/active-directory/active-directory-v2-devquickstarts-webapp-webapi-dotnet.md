@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/11/2015"
+	ms.date="12/09/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 プレビュー: .NET Web アプリから Web API を呼び出す
@@ -118,7 +118,7 @@ public void ConfigureAuth(IAppBuilder app)
 
 - まず、ADAL のプレビュー バージョンをインストールします。
 
-```PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoList-WebApp -IncludePrerelease``` 
+```PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoList-WebApp -IncludePrerelease```
 - 別の `using` ステートメントを ADAL の `App_Start\Startup.Auth.cs` ファイルに追加します。
 - 次に、新しいメソッドとして `OnAuthorizationCodeReceived` イベント ハンドラーを追加します。このハンドラーは、ADAL を使用して To Do List API へのアクセス トークンを取得し、後で使用できるように ADAL のトークン キャッシュに格納します。
 
@@ -149,7 +149,7 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 
     `using Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory;`
 
-- `Index` アクションで ADAL の `AcquireTokenSilentAsync` メソッドを使用して access\_token を取得します。これは、To-Do List サービスからデータを読み取る際に使用できます。
+- `Index` アクションで ADAL の `AcquireTokenSilentAsync` メソッドを使用して access\_token を取得します。これは、To-Do List サービスからデータを読み取るのに使用できます。
 
 ```C#
 ...
@@ -204,4 +204,4 @@ catch (AdalException ee)
 
 その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

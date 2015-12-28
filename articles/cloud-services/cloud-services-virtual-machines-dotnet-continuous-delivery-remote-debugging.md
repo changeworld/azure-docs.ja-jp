@@ -3,9 +3,9 @@
 	description="継続的な配信を使用した Azure へのデプロイ時にリモート デバッグを有効にする方法を説明します。"
 	services="cloud-services"
 	documentationCenter=".net"
-	authors="kempb"
+	authors="TomArcher"
 	manager="douge"
-	editor="tglee"/>
+	editor=""/>
 
 <tags
 	ms.service="cloud-services"
@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="10/19/2015"
-	ms.author="kempb"/>
+	ms.author="tarcher"/>
 # 継続的な配信を使用して Azure に発行する場合にリモート デバッグを有効にする
 
 次の手順に従って、[継続的な配信](cloud-services-dotnet-continuous-delivery.md)を使用して Azure に発行する場合に、クラウド サービスまたは仮想マシンに対して、Azure でリモート デバッグを有効にすることができます。
@@ -90,4 +90,4 @@
 
 6. Visual Studio と Azure SDK for .NET がインストールされているマシンに証明書 (.pfx) をインポートします。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

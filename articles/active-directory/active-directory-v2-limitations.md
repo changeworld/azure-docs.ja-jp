@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/11/2015"
+	ms.date="12/09/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 プレビュー: 制限事項
@@ -85,4 +85,4 @@ v2.0 アプリ モデルは、Open ID Connect および OAuth 2.0 をサポー�
 
 v2.0 アプリ モデルでサポートされるプロトコル機能の範囲について、より詳細な情報については、[OpenID Connect と OAuth 2.0 のプロトコル リファレンス](active-directory-v2-protocols.md)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

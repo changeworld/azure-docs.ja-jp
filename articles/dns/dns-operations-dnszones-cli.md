@@ -23,13 +23,16 @@
 - [PowerShell](dns-operations-dnszones.md)
 
 このガイドでは、DNS ゾーンの管理方法を説明します。このガイドは、DNS ゾーンを管理するために実行する一連の操作を理解するのに役立ちます。
- 
+
+>[AZURE.NOTE]Azure DNS は、Azure リソース マネージャー専用のサービスです。ASM API はありません。したがって、"azure config mode arm" コマンドを使用して、リソース マネージャー モードを使用するように Azure CLI を構成するようにする必要があります。
+
+>"エラー: 'dns' は、Azure のコマンドではありません" と表示される場合は、多くの場合、リソース マネージャー モードではなく、ASM モードで Azure CLI を使用していることが原因です。
  
 ## 新しい DNS ゾーンの作成
 
 ドメインをホストする新しい DNS ゾーンを作成するには、`azure network dns zone create` を使用します。
 
-		Azure network dns zone create -n contoso.com -g myresourcegroup -t "project=demo";"env=test"
+	azure network dns zone create -n contoso.com -g myresourcegroup -t "project=demo";"env=test"
 
 この操作は、Azure DNS に新しい DNS ゾーンを作成します。必要に応じて、Azure リソース マネージャーのタグの配列を指定することができます。詳細については、「[Etag とタグ](dns-getstarted-create-dnszone.md#Etags-and-tags)」を参照してください。
 
@@ -77,4 +80,4 @@ Azure DNS の DNS ゾーンを削除する前に、ゾーンの作成時に自�
 
 [.NET SDK を使用した操作の自動化](dns-sdk.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1217_2015-->

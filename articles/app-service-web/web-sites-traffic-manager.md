@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/29/2015" 
+	ms.date="12/10/2015" 
 	ms.author="cephalin"/>
 
 # Azure トラフィック マネージャーによる Azure の Web アプリのトラフィックの制御
@@ -63,4 +63,4 @@ Azure トラフィック マネージャーでの負荷分散の詳細につい�
 Web Apps での Traffic Manager の使用の詳細については、ブログ記事「[Azure Web サイトでの Azure Traffic Manager の使用](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx)」および「[Azure Traffic Manager と Azure Web サイトの統合が可能になりました](http://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

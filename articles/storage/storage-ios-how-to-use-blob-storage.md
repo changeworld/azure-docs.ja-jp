@@ -350,6 +350,7 @@ NSString からブロック BLOB をアップロードする場合だけでな�
 
 - [Azure Storage iOS ライブラリ]
 - [Azure Storage REST API]
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 - [Azure Storage チーム ブログ]
 
 このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata)または[スタック オーバーフロー](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)に投稿してください。Azure Storage の機能についてご提案がある場合は、[Azure Storage のフィードバック](http://feedback.azure.com/forums/217298-storage)に投稿してください。
@@ -358,4 +359,4 @@ NSString からブロック BLOB をアップロードする場合だけでな�
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

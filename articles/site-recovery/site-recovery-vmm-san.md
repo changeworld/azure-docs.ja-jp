@@ -1,5 +1,5 @@
 <properties
-	pageTitle="SAN を使用したオンプレミスの VMM サイト間での保護の設定"
+	pageTitle="Azure Site Recovery での SAN を使用したオンプレミスの VMM サイト間の保護の設定 | Microsoft Azure"
 	description="Azure Site Recovery は、SAN レプリケーションを使用して、オンプレミスのサイト間での Hyper-V 仮想マシンのレプリケーション、フェールオーバー、および回復を調整します。"
 	services="site-recovery"
 	documentationCenter=""
@@ -16,7 +16,7 @@
 	ms.date="10/12/2015"
 	ms.author="raynew"/>
 
-# SAN を使用したオンプレミスの VMM サイト間での保護の設定
+# Azure Site Recovery での SAN を使用したオンプレミスの VMM サイト間の保護の設定
 
 Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。考えられるデプロイ シナリオについては、「[Azure Site Recovery の概要](site-recovery-overview.md)」をご覧ください。
 
@@ -139,8 +139,8 @@ VMM コンソールで SAN を追加し、分類します。
 
 1. SAN 記憶域が VMM に統合されたら、論理ユニット (LUN) を作成 (プロビジョニング) します。
 
-	- [VMM で論理ユニットの作成方法を選択](http://go.microsoft.com/fwlink/?LinkId=518490)します。
-	- [VMM で記憶域論理ユニットをプロビジョニング](http://go.microsoft.com/fwlink/?LinkId=518491)します。
+	- [VMM で論理ユニットの作成方法を選択します。](http://go.microsoft.com/fwlink/?LinkId=518490)
+	- [VMM で記憶域論理ユニットをプロビジョニングします。](http://go.microsoft.com/fwlink/?LinkId=518491)
 
 2. 次に、VMM がプロビジョニングされたストレージに仮想マシンのデータをデプロイできるように、Hyper-V ホスト クラスターにストレージ容量を割り当てます。
 
@@ -383,4 +383,4 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 
 ジョブの操作とダッシュボードの詳細については、「[Operations and monitoring (運用と監視)](http://go.microsoft.com/fwlink/?LinkId=398534)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

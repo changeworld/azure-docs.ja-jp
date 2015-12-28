@@ -156,6 +156,6 @@ GitHub アカウントから切断するには、[リポジトリの同期] ブ�
 
 ## 次のステップ
 
-ソース管理の統合の詳細については、次のリソースを参照してください。 - [Azure Automation: Azure Automation でのソース管理の統合](https://azure.microsoft.com/blog/azure-automation-source-control-13/) - [お気に入りのソース管理システムに関するアンケート](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d) - [Azure Automation: Visual Studio Online を使用した Runbook ソース管理の統合](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)
+ソース管理の統合の詳細については、次のリソースを参照してください。- [Azure Automation: Azure Automation でのソース管理の統合](https://azure.microsoft.com/blog/azure-automation-source-control-13/) - [お気に入りのソース管理システムに関するアンケート](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d) - [Azure Automation: Visual Studio Team Services を使用した Runbook ソース管理の統合](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

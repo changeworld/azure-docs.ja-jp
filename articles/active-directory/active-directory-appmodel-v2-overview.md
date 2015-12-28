@@ -49,7 +49,7 @@ v2.0 のアプリ モデルを使用して、ご自分のアプリケーショ�
 - [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) を使用して、プレビューに関する感想をお寄せください。皆様からのご意見をお待ちしております。 識別しやすいように、投稿のタイトルに "AppModelv2:" という言葉を入れてください。
 - [アプリ モデル v2.0 プロトコルのリファレンス](active-directory-v2-protocols.md)
 - [アプリ モデル v2.0 トークンのリファレンス](active-directory-v2-tokens.md)
-- [Office 365 の REST API リファレンス](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)
+- [Office 365 の REST API リファレンス](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)
 - [v2 のエンドポイントでのスコープと同意](active-directory-v2-scopes.md)
 
 <!-- TODO: These articles
@@ -57,4 +57,4 @@ v2.0 のアプリ モデルを使用して、ご自分のアプリケーショ�
 - [v2 Endpoint FAQs](active-directory-v2-faq.md)
 -->
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

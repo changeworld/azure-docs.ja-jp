@@ -30,6 +30,13 @@
 
 ## リリース ノート
 
+### <a name="1.5.2"/>[1\.5.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.2)
+  - ページング、条件付きの式、および範囲比較用の新しい演算子を使用できるように LINQ を拡張しました。
+    - LINQ で SELECT TOP 動作を有効にする Take 演算子
+    - 文字列の範囲の比較を有効にする CompareTo 演算子
+    - 条件付き (?) および合体演算子 (??)
+  - **[修正済み]** linq クエリでモデル プロジェクションを Where-In と組み合わせると ArgumentOutOfRangeException が発生します。[#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
+
 ### <a name="1.5.1"/>[1\.5.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.1)
  - **[修正済み]** Select が最後の式ではない場合、LINQ プロバイダーはプロジェクションがないものと想定し、SELECT * を不適切に生成しました。 [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
 
@@ -38,8 +45,8 @@
  - すべての要求のパフォーマンス改善
  - LINQ プロバイダーによる文字列の条件、結合、CompareTo メソッドのサポート
  - **[修正済み]** LINQ プロバイダー --> List に Contains メソッドを実行し、IEnumerable や Arraymethod の場合と同じ SQL を生成
- - **[修正済み]** BackoffRetryUtility は、再試行時に新規作成する代わりに、同じ HttpRequestMessage をもう一度使用します。
- - **[廃止]** UriFactory.CreateCollection --> 今後は UriFactory.CreateDocumentCollection を使用
+ - **[修正済み]** BackoffRetryUtility は、再試行時に新規作成する代わりに、同じ HttpRequestMessage をもう一度使用します
+ - **[廃止]** UriFactory.CreateCollection --> 今後は UriFactory.CreateDocumentCollection を使用する必要があります
  
 ### <a name="1.4.1"/>[1\.4.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.4.1)
  - **[修正済み]** nl-NL など、非英語文化情報の使用時のローカリゼーション問題 
@@ -105,17 +112,18 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
  
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
-| [1\.5.1](#1.5.1) | 2015 年 11 月 23 日 |---
-| [1\.5.0](#1.5.0) | 2015 年 10 月 05 日 |---
-| [1\.4.1](#1.4.1) | 2015 年 8 月 25 日 |---
-| [1\.4.0](#1.4.0) | 2015 年 8 月 13 日 |---
-| [1\.3.0](#1.3.0) | 2015 年 8 月 05 日 |---
-| [1\.2.0](#1.2.0) | 2015 年 7 月 06 日 |---
-| [1\.1.0](#1.1.0) | 2015 年 4 月 30 日 |---
-| [1\.0.0](#1.0.0) | 2015 年 4 月 08 日 |---
-| [0\.9.3-prelease](#0.9.x-preview) | 2015 年 3 月 12 日 | 2016 年 2 月 29 日
-| [0\.9.2-prelease](#0.9.x-preview) | 2015 年 1 月 | 2016 年 2 月 29 日
-| [0\.9.1-prelease](#0.9.x-preview) | 2014 年 10 月 13 日 | 2016 年 2 月 29 日
+|[ 1\.5.2](#1.5.2) | 2015 年 12 月 14 日|--- 
+| [1\.5.1](#1.5.1) | 2015 年 11 月 23 日 |--- 
+| [1\.5.0](#1.5.0) | 2015 年 10 月 05 日 |--- 
+| [1\.4.1](#1.4.1) | 2015 年 8 月 25 日 |--- 
+| [1\.4.0](#1.4.0) | 2015 年 8 月 13 日 |--- 
+| [1\.3.0](#1.3.0) | 2015 年 8 月 05 日 |--- 
+| [1\.2.0](#1.2.0) | 2015 年 7 月 06 日 |--- 
+| [1\.1.0](#1.1.0) | 2015 年 4 月 30 日 |--- 
+| [1\.0.0](#1.0.0) | 2015 年 4 月 08 日 |--- 
+| [0\.9.3-prelease](#0.9.x-preview) | 2015 年 3 月 12 日 | 2016 年 2 月 29 日 
+| [0\.9.2-prelease](#0.9.x-preview) | 2015 年 1 月 | 2016 年 2 月 29 日 
+| [0\.9.1-prelease](#0.9.x-preview) | 2014 年 10 月 13 日 | 2016 年 2 月 29 日 
 | [0\.9.0-prelease](#0.9.x-preview) | 2014 年 8 月 21 日 | 2016 年 2 月 29 日
 
 ## FAQ
@@ -125,5 +133,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
-
+<!---HONumber=AcomDC_1217_2015-->

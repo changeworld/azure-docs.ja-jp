@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Automation を使用した Azure Service Bus の管理"
+	pageTitle="Azure Automation を使用した Azure Service Bus の管理 | Microsoft Azure"
 	description="Azure Automation サービスを使用して、Azure Service Bus を管理する方法について説明します。"
 	services="service-bus, automation"
 	documentationCenter=""
@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="service-bus"
-	ms.workload="core"
+	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/28/2015"
+	ms.date="12/09/2015"
 	ms.author="csand"/>
 
 
@@ -42,4 +42,4 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 * [PowerShell で Service Bus を管理する](service-bus-powershell-how-to-provision.md) (記事)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

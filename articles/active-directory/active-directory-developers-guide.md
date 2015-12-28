@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="11/06/2015"
+   ms.date="12/10/2015"
    ms.author="mbaldwin"/>
 
 
@@ -29,9 +29,7 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 1. [アプリケーションと Azure Active Directory の統合](active-directory-integrating-applications.md): Azure Active Directory にアプリケーションを追加し、それを更新および削除する方法と、統合されたアプリのブランド化のガイドラインについて説明します。
 
-1. [Azure Active Directory Graph API](active-directory-graph-api.md)： Azure Active Directory Graph API を使用して、REST API エンドポイント経由でプログラムによって Azure Active Directory にアクセスする方法を説明します。
-
-    > [AZURE.IMPORTANT]Azure AD Graph API の機能は、[Microsoft Graph](https://graph.microsoft.io/) からも利用できます。Microsoft Graph は、Outlook、OneDrive、OneNote、Planner、Office Graph などの他の Microsoft サービスからの API を含む統合 API であり、単一のエンドポイントから単一のアクセス トークンを使用してアクセスできます。
+1. [Azure Active Directory Graph API](active-directory-graph-api.md)： Azure Active Directory Graph API を使用して、REST API エンドポイント経由でプログラムによって Azure Active Directory にアクセスする方法を説明します。Azure AD Graph API には、[Microsoft Graph](https://graph.microsoft.io/) からもアクセスできます。Microsoft Graph は、単一の REST API エンドポイントから単一のアクセス トークンを使用して複数の Microsoft クラウド サービス API にアクセスできる統合 API です。
 
 1. [Azure Active Directory の認証ライブラリ](active-directory-authentication-libraries.md): Azure 認証ライブラリを使用して、ユーザーを認証し、アクセス トークンを取得する処理を簡単に組み込む方法を説明します。
 
@@ -140,4 +138,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1217_2015-->

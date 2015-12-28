@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/11/2015"
+	ms.date="12/09/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 プレビュー: .NET MVC Web アプリへのサインインの追加
@@ -38,7 +38,7 @@ v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/
 
 完成したアプリは、このチュートリアルの終わりにも示しています。
 
-## 1\.アプリを登録します
+## 1. アプリを登録します
 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
@@ -46,18 +46,18 @@ v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/
 - 適切な**リダイレクト URI** を入力します。リダイレクト URI は、認証の応答が送られる Azure AD を示します。このチュートリアルの既定値は `https://localhost:44326/` です。
 
 ## 2\.アプリで OWIN 認証パイプラインを使用するよう設定します。
-ここでは、OpenID Connect 認証プロトコルを使用するように、OWIN ミドルウェアを構成します。OWIN は、サインイン要求またはサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
+ここでは、OpenID Connect 認証プロトコルを使用するように、OWIN ミドルウェアを構成します。  OWIN は、サインイン要求またはサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
 -	最初に、プロジェクトのルートにある `web.config` ファイルを開いて、`<appSettings>` セクションでアプリの構成値を入力します。
     -	`ida:ClientId` は、登録ポータルでアプリに割り当てられた**アプリケーション ID** です。
-    -	`ida:RedirectUri` は、ポータルで入力した**リダイレクト URI** です。
+    -	`ida:RedirectUri`は、ポータルで入力した**リダイレクト URI** です。
 
--	次に、パッケージ マネージャー コンソールを使用して、プロジェクトに OWIN ミドルウェア NuGet パッケージを追加します。
+-    次に、パッケージ マネージャー コンソールを使用して、プロジェクトに OWIN ミドルウェア NuGet パッケージを追加します。
 
 ```
-PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
-PM> Install-Package Microsoft.Owin.Security.Cookies
-PM> Install-Package Microsoft.Owin.Host.SystemWeb
+PM> Install-Package Microsoft.Owin.Security.OpenIdConnect 
+PM> Install-Package Microsoft.Owin.Security.Cookies 
+PM> Install-Package Microsoft.Owin.Host.SystemWeb 
 ```
 
 -	"OWIN Startup クラス" を `Startup.cs` という名前のプロジェクトに追加します。プロジェクトを右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックして、"OWIN" を検索します。アプリが起動すると、OWIN ミドルウェアは `Configuration(...)` メソッドを呼び出します。
@@ -77,10 +77,12 @@ namespace TodoList_WebApp
 	}
 }```
 
--	Open the file `App_Start\Startup.Auth.cs` and implement the `ConfigureAuth(...)` method.  The parameters you provide in `OpenIdConnectAuthenticationOptions` will serve as coordinates for your app to communicate with Azure AD.  You'll also need to set up Cookie Authentication - the OpenID Connect middleware uses cookies underneath the covers.
+-	ファイル `App_Start\Startup.Auth.cs` を開いて、`ConfigureAuth(...)` メソッドを実装します。`OpenIdConnectAuthenticationOptions` で提供されたパラメーターは、アプリが Azure AD と通信するための調整役として機能します。OpenID Connect ミドルウェアは、ユーザーに意識されない Cookie を使用するため、Cookie 認証もセットアップする必要があります。
 
 ```C#
-public void ConfigureAuth(IAppBuilder app) { app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
+public void ConfigureAuth(IAppBuilder app)
+			 {
+					 app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
 
 					 app.UseCookieAuthentication(new CookieAuthenticationOptions());
 
@@ -210,4 +212,6 @@ public ActionResult About()
 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=Sept15_HO3-->
+
+<!---HONumber=AcomDC_1217_2015-->

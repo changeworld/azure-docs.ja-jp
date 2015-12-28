@@ -1,9 +1,9 @@
 <properties
-	pageTitle="Visual Studio Team Services と Git を使用した Azure での継続的な配信" 
+	pageTitle="Visual Studio Team Services と Git を使用した Azure での継続的な配信 | Microsoft Azure" 
 	description="Visual Studio Team Services チーム プロジェクトを Git を使用して自動的にビルドして Azure App Service の Web アプリ機能またはクラウド サービスにデプロイするための構成方法について説明します。"
 	services="cloud-services"
 	documentationCenter=".net"
-	authors="kempb"
+	authors="TomArcher"
 	manager="douge"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="09/02/2015"
-	ms.author="kempb"/>
+	ms.author="tarcher"/>
 
 # Visual Studio Team Services と Git を使用した Azure への継続的な配信
 
@@ -23,8 +23,7 @@ Visual Studio Team Services チーム プロジェクトを使用してソース
 Visual Studio 2013 および Azure SDK をインストールする必要があります。Visual Studio 2013 がない場合は、**www.visualstudio.com** で[無料利用の開始](http://www.visualstudio.com)リンクをクリックしてダウンロードします。Azure SDK を[ここ](http://go.microsoft.com/fwlink/?LinkId=239540)からインストールしてください。
 
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Visual Studio Team Services アカウントが必要です。
-> [Visual Studio Team Services アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Visual Studio Team Services アカウントが必要です。[Visual Studio Team Services アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
 
 Visual Studio Team Services を使用してクラウド サービスを自動的にビルドして Azure にデプロイするようにセットアップするには、次の手順に従います。
 
@@ -273,4 +272,4 @@ Visual Studio Team Services で Git を使用する場合のその他のヒン�
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

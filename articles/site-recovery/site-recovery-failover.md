@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Site Recovery でのフェールオーバー" 
+	pageTitle="Site Recovery でのフェールオーバー | Microsoft Azure" 
 	description="Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、回復を調整します。Azure またはセカンダリ データセンターへのフェールオーバーについて説明します。" 
 	services="site-recovery" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="10/12/2015" 
+	ms.date="12/14/2015" 
 	ms.author="raynew"/>
 
 # Site Recovery でのフェールオーバー
@@ -250,4 +250,4 @@ Azure にフェールオーバーした場合、仮想マシンは、仮想マ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

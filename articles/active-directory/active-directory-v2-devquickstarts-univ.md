@@ -13,7 +13,7 @@
 	ms.topic="article"
   ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
-	ms.date="09/11/2015"
+	ms.date="12/09/2015"
 	ms.author="dastrock"/>
 
   # アプリ モデル v2.0 プレビュー: Windows ユニバーサル アプリへのサインインの追加
@@ -22,4 +22,4 @@
 
   >[AZURE.NOTE]この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

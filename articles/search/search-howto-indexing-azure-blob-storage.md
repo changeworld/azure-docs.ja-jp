@@ -12,12 +12,12 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="12/09/2015"
+ms.date="12/11/2015"
 ms.author="eugenesh" />
 
 # Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
 
-以前から Azure Search には、広く普及しているデータ ソースについて、[Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md) と [Azure DocumentDB](documentdb-search-indexer.md) のインデクサーを使って "自動的に" インデックスを作成する機能が導入されています。
+以前から Azure Search には、広く普及しているデータ ソースについて、[Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md) と [Azure DocumentDB](../documentdb/documentdb-search-indexer.md) のインデクサーを使って "自動的に" インデックスを作成する機能が導入されています。
 
 現在は、Azure Blob Storage に格納されているドキュメントについてもインデックスを作成できるように、その機能を強化しているところです。PDF、Office ドキュメント、HTML ページなど、BLOB に格納されているドキュメントのインデックスをもっと簡単に作成できるようにしてほしいという要望が多くのお客様から寄せられました。これまで、そのようなことを実現するためには、独自にテキストを抽出して Azure Search インデックスにドキュメントを追加するコードを記述する必要がありました。
 
@@ -104,7 +104,7 @@ Azure Search は、各ドキュメント (BLOB) のインデックスを次の�
 
 検索インデックスに対し、ここに挙げたすべてのプロパティのフィールドを定義する必要はありません。実際のアプリケーションで必要となるプロパティだけを取り込んでください。
 
-> [AZURE.NOTE]既存のインデックス内のフィールド名が、ドキュメントの抽出過程で生成されたフィールド名と異なることは少なくありません。Azure Search によって出力されたプロパティ名は、**フィールドのマッピング**を使用して、検索インデックス内のフィールド名に対応付けることができます。
+> [AZURE.NOTE]既存のインデックス内のフィールド名が、ドキュメントの抽出過程で生成されたフィールド名と異なることは少なくありません。Azure Search によって出力されたプロパティ名は、**フィールドのマッピング**を使用して、検索インデックス内のフィールド名に対応付けることができます。フィールドのマッピングの例を次に示します。
 
 ## ドキュメントのキー フィールドの選択と各種フィールド名の処理
 
@@ -144,6 +144,8 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 	  "parameters" : { "base64EncodeKeys": true }
 	}
 
+> [AZURE.NOTE]フィールドのマッピングの詳細については、[こちらの記事](search-indexers-customization.md)を参照してください。
+
 ## インデックスの増分作成と削除の検出
 
 スケジュールに従って実行するように BLOB のインデクサーを設定すると、その BLOB の `LastModified` タイムスタンプから判断された変更済みの BLOB のみインデックスが再構築されます。
@@ -152,7 +154,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 特定のドキュメントをインデックスから削除するよう指定する場合は、論理削除方式を使用してください。つまり、該当する BLOB を削除するのではなく、それらが削除されたことを示すカスタムのメタデータ プロパティをデータ ソースに追加し、論理削除の検出ポリシーを設定します。
 
-> [AZURE.NOTE]削除の検出ポリシーを使用せず単純に BLOB を削除した場合、検索インデックスからは、該当するドキュメントが削除されません。
+> [AZURE.WARNING]削除の検出ポリシーを使用せず単純に BLOB を削除した場合、検索インデックスからは、該当するドキュメントが削除されません。
 
 たとえば、以下に示すポリシーでは、メタデータのプロパティ `IsDeleted` の値が `true` であるとき、BLOB が削除されたと見なされます。
 
@@ -177,189 +179,33 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 以下の表は、各ドキュメント形式に関して実行される処理と、Azure Search によって抽出されるメタデータのプロパティをまとめたものです。
 
-<table style="font-size:12">
-
-<tr>
-<th>ドキュメントの形式/コンテンツの種類</th>
-<th>コンテンツの種類ごとのメタデータのプロパティ</th>
-<th>処理の詳細 </th>
-</tr>
-
-<tr>
-<td>HTML (`text/html`)</td>
-<td>
-`metadata_content_encoding`<br/>
-`metadata_content_type`<br/>
-`metadata_language`<br/>
-`metadata_description`<br/>
-`metadata_keywords`<br/>
-`metadata_title`
-</td>
-<td>HTML マークアップを削除し、テキストを抽出します。</td>
-</tr>
-
-<tr>
-<td>PDF (`application/pdf`)</td>
-<td>
-`metadata_content_type`<br/>
-`metadata_language`<br/>
-`metadata_author`<br/>
-`metadata_title`
-</td>
-<td>テキストを抽出します。埋め込みドキュメントも対象となります (画像を除く)。</td>
-</tr>
-
-<tr>
-<td>DOCX (application/vnd.openxmlformats-officedocument.wordprocessingml.document)</td>
-<td>
-`metadata_content_type`<br/>
-`metadata_author`<br/>
-`metadata_character_count`<br/>
-`metadata_creation_date`<br/>
-`metadata_last_modified`<br/>
-`metadata_page_count`<br/>
-`metadata_word_count`
-</td>
-<td>テキストを抽出します。埋め込みドキュメントも対象となります。</td>
-</tr>
-
-<tr>
-<td>DOC (application/msword)</td>
-<td>
-`metadata_content_type`<br/>
-`metadata_author`<br/>
-`metadata_character_count`<br/>
-`metadata_creation_date`<br/>
-`metadata_last_modified`<br/>
-`metadata_page_count`<br/>
-`metadata_word_count`
-</td>
-<td>テキストを抽出します。埋め込みドキュメントも対象となります。</td>
-</tr>
-
-<tr>
-<td>XLSX (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)</td>
-<td>
-`metadata_content_type`<br/>
-`metadata_author`<br/>
-`metadata_creation_date`<br/>
-`metadata_last_modified`
-</td>
-<td>テキストを抽出します。埋め込みドキュメントも対象となります。</td>
-</tr>
-
-<tr>
-<td>XLS (application/vnd.ms-excel)</td>
-<td>
-`metadata_content_type`<br/>
-`metadata_author`<br/>
-`metadata_creation_date`<br/>
-`metadata_last_modified`
-</td>
-<td>テキストを抽出します。埋め込みドキュメントも対象となります。</td>
-</tr>
-
-<tr>
-<td>PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation)</td>
-<td>
-`metadata_content_type`<br/>
-`metadata_author`<br/>
-`metadata_creation_date`<br/>
-`metadata_last_modified`<br/>
-`metadata_slide_count`<br/>
-`metadata_title`
-</td>
-<td>テキストを抽出します。埋め込みドキュメントも対象となります。</td>
-</tr>
-
-<tr>
-<td>PPT (application/vnd.ms-powerpoint)</td>
-<td>
-`metadata_content_type`<br/>
-`metadata_author`<br/>
-`metadata_creation_date`<br/>
-`metadata_last_modified`<br/>
-`metadata_slide_count`<br/>
-`metadata_title`
-</td>
-<td>テキストを抽出します。埋め込みドキュメントも対象となります。</td>
-</tr>
-
-<tr>
-<td>MSG (application/vnd.ms-outlook)</td>
-<td>
-`metadata_content_type`<br/>
-`metadata_message_from`<br/>
-`metadata_message_to`<br/>
-`metadata_message_cc`<br/>
-`metadata_message_bcc`<br/>
-`metadata_creation_date`<br/>
-`metadata_last_modified`<br/>
-`metadata_subject`
-</td>
-<td>テキストを抽出します。添付ファイルも対象となります。</td>
-</tr>
-
-<tr>
-<td>ZIP (application/zip)</td>
-<td>
-`metadata_content_type`
-</td>
-<td>アーカイブ内のすべてのドキュメントからテキストを抽出します。</td>
-</tr>
-
-<tr>
-<td>XML (application/xml)</td>
-<td>
-`metadata_content_type`</br>
-`metadata_content_encoding`</br>
-</td>
-<td>XML マークアップを削除し、テキストを抽出します。 </td>
-</tr>
-
-<tr>
-<td>JSON (application/json)</td>
-<td>
-`metadata_content_type`</br>
-`metadata_content_encoding`
-</td>
-<td></td>
-</tr>
-
-<tr>
-<td>プレーン テキスト (text/plain)</td>
-<td>
-`metadata_content_type`</br>
-`metadata_content_encoding`</br>
-</td>
-<td></td>
-</tr>
-</table>
+ドキュメントの形式/コンテンツの種類 | コンテンツの種類ごとのメタデータのプロパティ | 処理の詳細
+-------------------------------|-------------------------------------------|-------------------
+HTML (`text/html`) | `metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` | HTML マークアップを削除し、テキストを抽出します。
+PDF (`application/pdf`) | `metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title`| テキストを抽出します。埋め込みドキュメントも対象となります (画像を除く)。
+DOCX (application/vnd.openxmlformats-officedocument.wordprocessingml.document) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` | テキストを抽出します。埋め込みドキュメントも対象となります。
+DOC (application/msword) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` | テキストを抽出します。埋め込みドキュメントも対象となります。
+XLSX (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` | テキストを抽出します。埋め込みドキュメントも対象となります。
+XLS (application/vnd.ms-excel) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` | テキストを抽出します。埋め込みドキュメントも対象となります。
+PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` | テキストを抽出します。埋め込みドキュメントも対象となります。
+PPT (application/vnd.ms-powerpoint) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` | テキストを抽出します。埋め込みドキュメントも対象となります。
+MSG (application/vnd.ms-outlook) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` | テキストを抽出します。添付ファイルも対象となります。
+ZIP (application/zip) | `metadata_content_type` | アーカイブ内のすべてのドキュメントからテキストを抽出します。
+XML (application/xml) | `metadata_content_type`</br>`metadata_content_encoding`</br> | XML マークアップを削除し、テキストを抽出します。</td>
+JSON (application/json) | `metadata_content_type`</br>`metadata_content_encoding` | テキストを抽出します。<br/>注: JSON BLOB から複数のドキュメント フィールドを抽出する必要がある場合は、[こちらの UserVoice の提案](https://feedback.azure.com/forums/263029-azure-search/suggestions/11113539-extract-document-structure-from-json-blobs) に投票してください。
+プレーン テキスト (text/plain) | `metadata_content_type`</br>`metadata_content_encoding`</br> | 
 
 <a name="CustomMetadataControl"></a>
 ## カスタム メタデータを使ったドキュメント抽出の制御
 
 BLOB のインデックス作成とドキュメント抽出プロセスは、メタデータのプロパティを BLOB に追加することによって、ある程度制御することができます。現在サポートされているプロパティは次のとおりです。
 
-<table style="font-size:12">
-
-<tr>
-<th>プロパティ名</th>
-<th>プロパティ値</th>
-<th>説明</th>
-</tr>
-
-<tr>
-<td>AzureSearch_Skip</td>
-<td>"true"</td>
-<td>BLOB を完全にスキップするようそのインデクサーに指示するプロパティです。メタデータもコンテンツも、一切抽出されません。特定のコンテンツ タイプをスキップする必要があるときに利用できます。また、特定の BLOB で何度もエラーが発生し、インデックス作成プロセスが中断されるときにも利用できます。
-</td>
-</tr>
-
-</table>
+プロパティ名 | プロパティ値 | 説明
+--------------|----------------|------------
+AzureSearch\_Skip | "true" | BLOB を完全にスキップするようそのインデクサーに指示するプロパティです。メタデータもコンテンツも、一切抽出されません。特定のコンテンツ タイプをスキップする必要があるときに利用できます。また、特定の BLOB で何度もエラーが発生し、インデックス作成プロセスが中断されるときにも利用できます。
 
 ## Azure Search の品質向上にご協力ください
 
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search)にぜひお寄せください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

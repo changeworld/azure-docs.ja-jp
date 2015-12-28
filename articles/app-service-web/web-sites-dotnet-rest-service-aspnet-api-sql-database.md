@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="08/31/2015" 
+	ms.date="12/04/2015" 
 	ms.author="riande"/>
 
 # ASP.NET Web API と SQL Database を使用する Rest サービスを Azure App Service に作成する
 
-このチュートリアルでは、Visual Studio 2013 または Visual Studio 2013 for Web Express の Web の発行ウィザードを使用して、ASP.NET Web アプリを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法を示します。
+このチュートリアルでは、Visual Studio 2013 または Visual Studio 2013 Community Edition の Web の発行ウィザードを使用して、ASP.NET Web アプリを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法を示します。
 
 Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Azure 向けの開発を完全に無料で始めることができます。
 
@@ -44,7 +44,7 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 1. Visual Studio 2013 を起動します。
 1. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
-3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** を展開して **[Web]**、**[ASP.NET MVC 5 Web アプリケーション]** の順にクリックします。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
+3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** を展開して **[Web]**、**[ASP.NET Web アプリケーション]** の順にクリックします。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
 
 	![New Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.PNG)
 
@@ -58,7 +58,7 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 	作成中のサンプル アプリケーションには、ユーザーのログインが必要な機能は実装されません。認証と承認の機能を実装する方法については、このチュートリアルの最後にある「[次のステップ](#nextsteps)」セクションを参照してください。
 
-1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで **[OK]** をクリックします。
+1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで **[クラウドでホスト]** がチェックされていることを確認して、[**OK**] をクリックします。
 
 	![New ASP.NET Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt3.PNG)
 
@@ -187,7 +187,7 @@ Azure サーバーにファイルをコピーする処理が開始されます�
     		}
 		}
 
-**Contacts** クラスでは、各連絡先について保存するデータと、データベースが必要とする主キー (ContactID) を定義します。データ モデルの詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。
+**Contact** クラスでは、各連絡先について保存するデータと、データベースが必要とする主キー (ContactID) を定義します。データ モデルの詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。
 
 ### アプリケーション ユーザーが連絡先を操作できる Web ページを作成する
 
@@ -500,10 +500,11 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 1. パッケージ マネージャー コンソールで、次のコマンドを実行して Knockout をインストールします。
 
-	Install-Package knockoutjs
+		Install-Package knockoutjs
+
 ## Web API を使用する REST ベースのインターフェイスに対応したコントローラーを追加する
 
-1. **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
+1. **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。 
 
 1. **[スキャフォールディングの追加]** ダイアログ ボックスで、「**Entity Framework を使用した、操作のある Web API 2 コントローラー**」と入力し、**[追加]** をクリックします。
 
@@ -624,11 +625,13 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 1. 次の *using* ステートメントを contracts コントローラーに追加します。これにより **[ValidateHttpAntiForgeryToken]** 属性にアクセスできるようになります。
 
-	using ContactManager.Filters;
+		using ContactManager.Filters;
 
 1. **[ValidateHttpAntiForgeryToken]** 属性を **ContactsController** の Post メソッドに追加して、XSRF の脅威から保護します。そのコードを "PutContact"、"PostContact"、**DeleteContact** の各アクション メソッドに追加します。
 
-	[ValidateHttpAntiForgeryToken] public IHttpActionResult PutContact(int id, Contact contact) {
+		[ValidateHttpAntiForgeryToken]
+	        public IHttpActionResult PutContact(int id, Contact contact)
+	        {
 
 1. *Views\\Home\\Index.cshtml* ファイルの *[Scripts]* セクションを更新して、XSRF トークンを取得するコードを含めます。
 
@@ -683,6 +686,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
                }
                ko.applyBindings(new ContactsViewModel());
             </script>
+		 }
 
 
 ## Azure および SQL データベースにアプリケーションの更新を発行する
@@ -810,4 +814,4 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 [prevent-csrf-attacks]: http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!------HONumber=AcomDC_1217_2015-->

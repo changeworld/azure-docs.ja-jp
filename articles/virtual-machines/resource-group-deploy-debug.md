@@ -22,7 +22,7 @@
 
 このトピックでは、デプロイのトラブルシューティングを行うための、デプロイ コマンドの使用に重点を置いて説明します。リソースに対するすべての操作を追跡するための監査ログを使用する方法の詳細については、「[リソース マネージャーの監査操作](../resource-group-audit.md)」を参照してください。
 
-このトピックでは、Azure PowerShell、Azure CLI および REST API を使用してのトラブルシューティング情報を取得する方法を示します。プレビュー ポータルを使用してデプロイをトラブルシューティングする方法の詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](../azure-portal/resource-group-portal.md)」を参照してください。
+このトピックでは、Azure PowerShell、Azure CLI および REST API を使用してのトラブルシューティング情報を取得する方法を示します。プレビュー ポータルを使用してデプロイをトラブルシューティングする方法の詳細については、「[Azure ポータルを使用した Azure リソースの管理](../azure-portal/resource-group-portal.md)」を参照してください。
 
 ユーザーに表示される一般的なエラーの対処方法もこのトピックで説明しています。
 
@@ -407,7 +407,7 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 
 ただし、これは必ずしもリソース グループが「アクティブで、ユーザーが使用できる状態」であるとは限りません。たとえば、ほとんどのデプロイメントでは、アップグレードのダウンロード、他の非テンプレート リソースの待機、または複雑なスクリプトや、Azure が認識していない他の実行可能なアクティビティのインストールをデプロイメントに要求します。これは、アクティビティが、プロバイダーが追跡しているアクティビティではないためです。このような場合、リソースが実際に使用できる状態になるまで時間がかかります。その結果、デプロイが使用できるまでのある時にデプロイが成功の状態になることを予期する必要があります。
 
-ただし、(たとえば [CustomScriptExtension](http://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用して) カスタム テンプレートにカスタム スクリプトを作成することで、Azure がデプロイの成功を報告できないようにすることができます。CustomScriptExtension は、デプロイメント全体がシステム規模で準備ができていることを監視し、ユーザーがデプロイ全体と対話できる場合のみ「成功」を返す方法を認識しています。拡張機能が最後に実行されるようにしたい場合は、テンプレートで **dependsOn** プロパティを使用します。例は[こちら](https://msdn.microsoft.com/library/azure/dn790564.aspx)で確認できます。
+ただし、(たとえば [CustomScriptExtension](http://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用して) カスタム テンプレートにカスタム スクリプトを作成することで、Azure がデプロイの成功を報告できないようにすることができます。CustomScriptExtension は、デプロイメント全体がシステム規模で準備ができていることを監視し、ユーザーがデプロイ全体と対話できる場合のみ「成功」を返す方法を認識しています。拡張機能が最後に実行されるようにしたい場合は、テンプレートで **dependsOn** プロパティを使用します。サンプルは、[テンプレート デプロイを作成](https://msdn.microsoft.com/library/azure/dn790564.aspx)するときに確認できます。
 
 ## Azure とやり取りする便利なツール
 コマンドラインから Azure リソースを使用する場合に、作業に役立つツールがあります。Azure リソース グループのテンプレートは JSON ドキュメントで、Azure リソース マネージャー API は JSON を受信して返します。このため、JSON 解析ツールは、リソースに関する情報を参照したり、テンプレートとテンプレートのパラメーター ファイルを設計し、操作する際に最初に使用するツールの 1 つになります。
@@ -433,4 +433,4 @@ PowerShell には、同じ手順を実行するいくつかの基本的なコマ
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

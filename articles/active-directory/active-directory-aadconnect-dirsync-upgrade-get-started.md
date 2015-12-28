@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure AD Connect: Windows Azure AD 同期ツール (DirSync) からのアップグレード | Microsoft Azure"
-   description="DirSync から Azure AD Connect にアップグレードする方法について説明します。この記事では、Windows Azure AD 同期 ツール (DirSync) を Azure AD Connect へアップグレードするための手順について説明します。"
+   pageTitle="Azure AD Connect: Microsoft Azure AD 同期ツール (DirSync) からのアップグレード | Microsoft Azure"
+   description="DirSync から Azure AD Connect にアップグレードする方法について説明します。この記事では、Microsoft Azure AD 同期 ツール (DirSync) を Azure AD Connect へアップグレードするための手順について説明します。"
    services="active-directory"
    documentationCenter=""
    authors="andkjell"
@@ -13,10 +13,10 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="12/02/2015"
+   ms.date="12/16/2015"
    ms.author="shoatman;billmath"/>
 
-# Windows Azure Active Directory sync (DirSync) の Azure AD Connect へのアップグレード
+# Microsoft Azure Active Directory sync (DirSync) の Azure AD Connect へのアップグレード
 
 次のドキュメントは、既存の DirSync インストールの Azure AD Connect へのアップグレードに役立ちます。
 
@@ -56,6 +56,7 @@ DirSync では次の構成の変更が サポートされており、アップ�
 - 別の ID (UPN)
 - パスワード同期と Exchange ハイブリッドの設定
 - フォレスト/ドメインと Azure AD の設定
+- ユーザー属性に基づくフィルター処理
 
 次のような変更をアップグレードすることはできません。これらの変更を加えた場合は、アップグレードがブロックされます。
 
@@ -63,9 +64,7 @@ DirSync では次の構成の変更が サポートされており、アップ�
 
 そのような場合、[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)で新しい Azure AD Connect サーバーをインストールし、古い DirSync と新しい Azure AD Connect の構成を確認することが推奨されます。カスタム構成を使用して変更を再適用する場合は、「[Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)」を参照してください。
 
-
 - サポートされていない DirSync の変更 (削除された属性やカスタム拡張 DLL の使用など)
-- ユーザー属性に基づくフィルター処理
 
 DirSync がサービス アカウントで使用したパスワードは取得できず、移行されません。これらのパスワードはアップグレード中にリセットされます。
 
@@ -170,8 +169,8 @@ Azure AD Connect が DirSync からの引き継ぎの準備を完了している
 
 ### DirSync (古いサーバー) をアンインストールする
 
-- **[プログラムと機能]** で **[Windows Azure Active Directory 同期ツール]** を検索します。
-- **[Windows Azure Active Directory 同期ツール]** をアンインストールします。
+- **[プログラムと機能]** で **[Microsoft Azure Active Directory 同期ツール]** を検索します。
+- **[Microsoft Azure Active Directory 同期ツール]** をアンインストールします。
 - アンインストールが完了するまで 15 分ほどかかる場合があります。
 
 DirSync がアンインストールされていると、アクティブなサーバーが Azure AD にエクスポートされません。オンプレミスの Active Directory のすべての変更が引き続き Azure AD に同期されるには、次の手順を完了する必要があります。
@@ -198,4 +197,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1217_2015-->

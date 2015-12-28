@@ -86,12 +86,12 @@ Service Fabric では、"RunAs" と呼ばれる別のユーザー アカウン�
 
 それでは、MySetup.bat ファイルを Visual Studio プロジェクトに追加して、Administrator 特権をテストしてみます。Visual Studio でサービス プロジェクトを右クリックし、MySetup.bat の新しいファイル呼び出しを追加します。次に、このファイルをサービス パッケージに含める必要があります。既定では含まれません。MySetup.bat ファイルをパッケージに含めるには、ファイルを右クリックしてコンテキスト メニューを表示し、[プロパティ] を選択して、[プロパティ] ダイアログで **[出力ディレクトリにコピー]** を **[新しい場合はコピーする]** に設定します。これを示したものが下記のスクリーンショットです。
 
-![SetupEntryPoint バッチ ファイルの Visual Studio CopyToOutput][image1]
+![SetupEntryPoint バッチ ファイルの Visual Studio CopyToOutput][Image1]
 
 次に、MySetup.bat ファイルを開き、次のコマンドを追加します。
 
 ~~~
-REM Set a system environment variable. This requires administrator privilege
+REM Set a system environment variable.This requires administrator privilege
 setx -m TestVariable "MyValue"
 echo System TestVariable set to > test.txt
 echo %TestVariable% >> test.txt
@@ -103,8 +103,7 @@ REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Mana
 次に、ソリューションをビルドして、開発用のローカル クラスターにデプロイします。サービスが開始した後、Service Fabric Explorer で示されるように、MySetup.bat が成功したことを 2 つの方法で確認できます。PowerShell コマンド プロンプトを起動し、次を入力します。
 
 ~~~
-PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
-MyValue
+PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine") MyValue
 ~~~
 
 もう 1 つの方法は、サービスがデプロイされて開始されたノードの名前を Service Fabric Explorer で確認し (例: Node 1)、アプリケーション インスタンスの作業フォルダーに移動して、out.txt ファイルで **TestVariable** の値を調べます。たとえば、これが Node 2 にデプロイされた場合、MyApplicationType の次のパスに移動します。
@@ -129,7 +128,7 @@ PowerShell ファイルで、システム環境変数を設定するために次
 [Environment]::GetEnvironmentVariable("TestVariable","Machine") > out.txt
 ```
 
-## サービスへの RunAsPolicy の適用
+## サービスへの RunAsPolicy の適用 
 上の手順では、SetupEntryPoint に RunAs ポリシーを適用する方法を説明しました。ここでは、サービス ポリシーとして適用できる別のプリンシパルを作成する方法をもう少し詳しく説明します。
 
 ### ローカル ユーザー グループの作成
@@ -169,7 +168,7 @@ PowerShell ファイルで、システム環境変数を設定するために次
   </Users>
 </Principals>
 ~~~
-
+ 
 <!-- If an application requires that the user account and password be same on all machines (e.g. to enable NTLM authentication), the cluster manifest must set NTLMAuthenticationEnabled to true and also specify an NTLMAuthenticationPasswordSecret that will be used to generate the same password across all machines.
 
 <Section Name="Hosting">
@@ -184,8 +183,8 @@ PowerShell ファイルで、システム環境変数を設定するために次
 
 ~~~
 <Policies>
-  <RunAsPolicy CodePackageRef="Code" UserRef="LocalAdmin" EntryPointType="Setup"/>
-  <RunAsPolicy CodePackageRef="Code" UserRef="Customer3" EntryPointType="Main"/>
+<RunAsPolicy CodePackageRef="Code" UserRef="LocalAdmin" EntryPointType="Setup"/>
+<RunAsPolicy CodePackageRef="Code" UserRef="Customer3" EntryPointType="Main"/>
 </Policies>
 ~~~
 
@@ -272,7 +271,7 @@ https エンドポイントの場合は、**EndpointBindingPolicy** のクライ
       </Users>
    </Principals>
    <Policies>
-      <DefaultRunAsPolicy UserRef="MyDefaultAccount" />
+      <DefaultRunAsPolicy UserRef="LocalAdmin" />
    </Policies>
    <Certificates>
 	 <EndpointCertificate Name="Cert1" X509FindValue="FF EE E0 TT JJ DD JJ EE EE XX 23 4T 66 "/>
@@ -290,4 +289,4 @@ https エンドポイントの場合は、**EndpointBindingPolicy** のクライ
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

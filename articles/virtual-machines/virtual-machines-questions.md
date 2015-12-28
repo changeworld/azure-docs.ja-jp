@@ -69,7 +69,7 @@ Windows 仮想マシンまたは Linux VM 用の Secure Shell (SSH) に対する
 - [Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-log-on-windows-server.md)。最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
 - [Linux が実行されている仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)。SSH では、既定で最大 10 の同時接続が可能です。この接続数は構成ファイルを編集することで増やすことができます。
 
-リモート デスクトップまたは SSH について問題が発生する場合は、[VMAccess](http://go.microsoft.com/fwlink/p/?LinkId=396856) 拡張機能をインストールして使用し、問題を修正してください。
+リモート デスクトップまたは SSH について問題が発生する場合は、[VMAccess](virtual-machines-extensions-features.md) 拡張機能をインストールして使用し、問題を修正してください。
 
 Windows VM の場合は、次のオプションもあります。
 
@@ -102,7 +102,7 @@ Windows Server の移行に関するツールとプロセスの詳細につい�
 
 Azure によって提供されるイメージには、事前に構成されたユーザー名とパスワードはありません。これらのイメージのいずれかを使用して仮想マシンを作成する際は、仮想マシンへのログオンに使用するユーザー名とパスワードを指定する必要があります。
 
-ユーザー名やパスワードを忘れてしまった場合、VM エージェントが既にインストールされていれば、[VMAccess](http://go.microsoft.com/fwlink/p/?LinkId=396856) 拡張機能をインストールして使用し、問題を解決することができます。
+ユーザー名やパスワードを忘れてしまった場合、VM エージェントが既にインストールされていれば、[VMAccess](virtual-machines-extensions-features.md) 拡張機能をインストールして使用し、問題を解決することができます。
 
 追加情報:
 
@@ -158,4 +158,4 @@ Azure では、Azure データ センターでの定期的な計画メンテナ�
 
 [Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

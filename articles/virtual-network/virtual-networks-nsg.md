@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/10/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # ネットワーク セキュリティ グループ (NSG) について
@@ -248,4 +248,4 @@ NSG はサブネットに適用できるため、リソースをサブネット�
 - [リソース マネージャーで NSG をデプロイします](virtual-networks-create-nsg-arm-pportal.md)。
 - [NSG のログを管理します](virtual-network-nsg-manage-log.md)。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

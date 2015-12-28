@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/03/2015" 
+	ms.date="12/11/2015" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Redis クラスタリングの構成方法
@@ -36,7 +36,7 @@ Premium キャッシュのサイズ、スループット、帯域幅の詳細に
 Azure では、Redis クラスターは、各シャードがプライマリ/レプリカ ペアを持つプライマリ/レプリカ モデルとして提供され、レプリケーションは Azure Redis Cache Service によって管理されます。
 
 ## クラスタリング
-クラスタリングは、キャッシュの作成中に **[Redis Cache の新規作成]** ブレードで構成します。キャッシュを作成するには、[Azure ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
+クラスタリングは、キャッシュの作成中に **[Redis Cache の新規作成]** ブレードで有効化されます。キャッシュを作成するには、[Azure ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
 
 ![Redis Cache の作成][redis-cache-new-cache-menu]
 
@@ -77,6 +77,16 @@ Azure では、Redis クラスターは、各シャードがプライマリ/レ�
 	        return lazyConnection.Value;
 	    }
 	}
+
+## 実行中の Premium キャッシュに対してシャードを追加または削除する
+
+クラスタリングが有効になっている実行中の Premium キャッシュに対してシャードを追加または削除するには、**[設定]** ブレードで **[(プレビュー) Redis クラスター サイズ]** をクリックします。
+
+>[AZURE.NOTE]Azure Redis Cache の Premiumの Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階であることに注意してください。
+
+![Redis クラスター サイズ][redis-cache-redis-cluster-size]
+
+シャード数を変更するには、スライダーを使用するか、**[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、**[OK]** をクリックして保存します。
 
 ## クラスタリングの FAQ
 
@@ -131,7 +141,7 @@ SSL の場合は、`1300N` を `1500N` に置き換えます。
 
 ## 以前に作成したキャッシュのクラスタリングを構成できますか。
 
-現時点では、クラスタリングを有効にして構成できるのは、キャッシュを作成するときだけです。
+現時点では、クラスタリングを有効にできるのは、キャッシュを作成するときだけです。キャッシュの作成後は、シャード数を変更することはできますが、Premium キャッシュに対するクラスタリングの追加または削除は実行できません。クラスタリングが有効になっている Premium キャッシュと、クラスタリングがない同じサイズの Premium キャッシュでシャードが 1 つだけ異なるものが可能です。
 
 ## Basic または Standard キャッシュのクラスタリングを構成できますか。
 
@@ -166,4 +176,6 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-clustering-selected]: ./media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png
 
-<!---HONumber=AcomDC_1210_2015-->
+[redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png
+
+<!---HONumber=AcomDC_1217_2015-->

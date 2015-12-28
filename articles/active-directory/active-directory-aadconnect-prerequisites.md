@@ -34,6 +34,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 - **パスワード ライトバック**機能を使用する場合、ドメイン コントローラーが (最新の SP が適用された) Windows Server 2008 以降にインストールされている必要があります。
 - Small Business Server または Windows Server Essentials には、Azure AD Connect をインストールできません。サーバーは Windows Server Standard 以上を使用する必要があります。
 - Azure AD Connect は、Windows Server 2008 以降にインストールする必要があります。このサーバーをドメイン コントローラーにすることができます。Express 設定を使用する場合はメンバー サーバーにすることもできます。カスタム設定を使用する場合、サーバーはスタンドアロンにすることもでき、ドメインに参加する必要はありません。
+- Azure AD Connect を Windows Server 2008 にインストールする場合は、Windows Update から最新の修正プログラムが適用されていることを確認してください。修正プログラムが適用されていないサーバーでインストールを開始することはできません。
 - **パスワード同期**機能を使用する場合、Azure AD Connect サーバーが Windows Server 2008 R2 SP1 以降にインストールされている必要があります。
 - Azure AD Connect サーバーに、[.Net 4.5.1](#component-prerequisites) 以降と [PowerShell 3.0](#component-prerequisites) 以降がインストールされている必要があります。
 - Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。リモート インストールのために、これらのサーバーで [Windows リモート管理](#windows-remote-management)を有効にする必要があります。
@@ -48,7 +49,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 
 **接続**
 
-- 送信プロキシを使用してインターネットに接続する場合は、次の設定を **C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config** ファイルに追加して、インストール ウィザードと Azure AD Sync がインターネットと Azure AD に接続できるようにする必要があります。
+- 送信プロキシを使用してインターネットに接続する場合は、次の設定を **C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config** ファイルに追加して、インストール ウィザードと Azure AD Sync がインターネットと Azure AD に接続できるようにする必要があります。このテキストは、ファイルの末尾に入力する必要があります。このコードの &lt;PROXYADRESS&gt; は実際のプロキシ IP アドレスまたはホスト名を表します。
 
 ```
     <system.net>
@@ -62,7 +63,25 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
     </system.net>
 ```
 
-このテキストは、ファイルの末尾に入力する必要があります。このコードの &lt;PROXYADRESS&gt; は、実際のプロキシ IP アドレスまたはホスト名を表します。 - プロキシがアクセスできる URL を制限している場合は、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/ja-JP/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL をプロキシで開く必要があります。
+プロキシ サーバーで認証が必要な場合、セクションは次のようになります。
+
+```
+    <system.net>
+        <defaultProxy enabled="true" useDefaultCredentials="true">
+            <proxy
+            usesystemdefault="true"
+            proxyaddress="http://<PROXYADDRESS>:<PROXYPORT>"
+            bypassonlocal="true"
+            />
+        </defaultProxy>
+    </system.net>
+```
+
+この machine.config の変更によって、インストール ウィザードと同期エンジンは、プロキシ サーバーからの認証要求に応答します。**[構成]** ページを除くインストール ウィザードのすべてのページで、サインインしたユーザーの資格情報を使用します。インストール ウィザードの最後の **[構成]** ページで、コンテキストは作成された[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に切り替えられます。
+
+[既定のプロキシ要素](https://msdn.microsoft.com/library/kd3cf2ex.aspx)の詳細については、MSDN を参照してください。
+
+- アクセスできる URL をプロキシが制限している場合は、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL をプロキシで開く必要があります。
 
 **その他**
 
@@ -148,4 +167,4 @@ AD FS または Web アプリケーション サーバーを実行するコン�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1217_2015-->

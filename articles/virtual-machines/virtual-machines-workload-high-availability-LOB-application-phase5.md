@@ -21,7 +21,6 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
-
 高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこの最終フェーズでは、新しい SQL Server AlwaysOn 可用性グループを作成し、アプリケーションのデータベースを追加します。
 
 全フェーズについては、「[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-workload-high-availability-LOB-application-overview.md)」をご覧ください。
@@ -59,7 +58,7 @@
 3.	左ウィンドウで **[データベース]** ノードを展開します。
 4.	バックアップするデータベースを右クリックし、**[タスク]** をポイントして、**[バックアップ]** をクリックします。
 5.	**[バックアップ先]** セクションで、**[削除]** をクリックして、バックアップ ファイルの既定のファイル パスを削除します。
-6.	**[追加]** をクリックします。**[ファイル名]** に、「**\[machineName]\\backup[databaseName].bak**」と入力します。ここで、**machineName** はプライマリ SQL **Server コンピューター**の名前、**databaseName** はデータベースの名前です。**[OK]** をクリックし、バックアップの成功に関するメッセージが表示されたら、もう一度 **[OK]** をクリックします。
+6.	**[追加]** をクリックします。**[ファイル名]** に、「**\\[machineName]\\backup[databaseName].bak**」と入力します。ここで、**machineName** はプライマリ SQL **Server コンピューター**の名前、**databaseName** はデータベースの名前です。**[OK]** をクリックし、バックアップの成功に関するメッセージが表示されたら、もう一度 **[OK]** をクリックします。
 7.	左ウィンドウで、**[databaseName]** を右クリックし、**[タスク]** をポイントして、**[バックアップ]** をクリックします。
 8.	**[バックアップの種類]** で **[トランザクション ログ]** を選択し、**[OK]** を 2 回クリックします。
 9.	このリモート デスクトップ セッションを開いたままにしておきます。
@@ -72,7 +71,7 @@
 4.	左ウィンドウで、**[データベース]** を右クリックし、**[データベースの復元]** をクリックします。
 5.	**[ソース]** セクションで **[デバイス]** を選択し、省略記号 (…) ボタンをクリックします。
 6.	**[バックアップ デバイスの選択]** で、**[追加]** をクリックします。
-7.	**[バックアップ ファイルの場所]** で、「**\[machineName]\\backup**」と入力し、**Enter** キーを押します。**[databaseName].bak** を選択し、**[OK]** を 2 回クリックします。**[復元するバックアップ セット]** セクションに完全バックアップとログ バックアップが表示されます。
+7.	**[バックアップ ファイルの場所]** で、「**\\[machineName]\\backup**」と入力し、**Enter** キーを押します。**[databaseName].bak** を選択し、**[OK]** を 2 回クリックします。**[復元するバックアップ セット]** セクションに完全バックアップとログ バックアップが表示されます。
 8.	**[ページの選択]** で **[オプション]** をクリックします。**[復元オプション]** セクションの **[復旧状態]** で、**[RESTORE WITH NORECOVERY]** を選択し、**[OK]** をクリックします。 
 9.	メッセージが表示されたら、**[OK]** をクリックします。
 
@@ -116,16 +115,8 @@
 
 リスナーを構成したら、クラスターの最初の SQL サーバーの名前ではなく、リスナーを使用するようにすべての Web サーバー仮想マシンを構成する必要があります。新しい DNS 名と、内部負荷分散インスタンスの仮想 IP アドレスにマップするレコードを使用するのではなく、Web サーバー仮想マシンを構成して SQL エイリアスを使用します。詳細と手順については、「[SQL Alias for SharePoint (SharePoint の SQL エイリアス)](http://blogs.msdn.com/b/priyo/archive/2013/09/13/sql-alias-for-sharepoint.aspx)」をご覧ください。
 
-## その他のリソース
+## 次のステップ
 
-[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-workload-high-availability-LOB-application-overview.md)
+- Azure で独自の IT ワークロードをデプロイする場合は、こちらの[ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)をご覧ください。
 
-[基幹業務アプリケーションのアーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)
-
-[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
-
-[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
-
-[Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
-
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

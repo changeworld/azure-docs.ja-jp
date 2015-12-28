@@ -19,11 +19,12 @@
 
 #複数のストレージ アカウントでの Media Services 資産の管理
 
-Microsoft Azure Media Services 2.2 以降では、1 つの Media Services アカウントに複数のストレージ アカウントをアタッチできます。Media Services アカウントに複数のストレージ アカウントをアタッチする機能には、次のような利点があります。資産を複数のストレージ アカウントに負荷分散します。
+Microsoft Azure Media Services 2.2 以降では、1 つの Media Services アカウントに複数のストレージ アカウントをアタッチできます。Media Services アカウントに複数のストレージ アカウントをアタッチする機能には、次のような利点があります。
 
-大量のコンテンツ処理のために Media Services を拡張します (現在、1 つのストレージ アカウントには最大 500 TB (テラバイト) の制限があります)。
+- アセットを複数のストレージ アカウントに負荷分散します。
+- 大量のコンテンツ処理のために Media Services を拡張します (現在、1 つのストレージ アカウントには最大 500 TB (テラバイト) の制限があります)。 
 
-このトピックでは、[Azure サービス管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) を使用して、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。また、Media Services SDK を使用して資産を作成するときに、別のストレージ アカウントを指定する方法も説明します。
+このトピックでは、Azure サービス管理 REST API を使用して、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。また、Media Services SDK を使用して資産を作成するときに、別のストレージ アカウントを指定する方法も説明します。
 
 ##考慮事項
 
@@ -39,7 +40,7 @@ Media Services は、ストリーミング コンテンツ (例: http://{WAMSAcc
 
 ##Azure サービス管理 REST API でストレージ アカウントをアタッチするには
 
-現時点で、複数のストレージ アカウントをアタッチする唯一の方法は、[Azure サービス管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) を使用することです。「[方法: Media Services Management REST API の使用](https://msdn.microsoft.com/library/azure/dn167656.aspx)」トピックのコード サンプルは、**AttachStorageAccountToMediaServiceAccount** メソッドを定義して、指定された Media Services アカウントにストレージ アカウントをアタッチします。同じトピックのコードは、**ListStorageAccountDetails** メソッドを定義し、指定された Media Services アカウントにアタッチされたすべてのストレージ アカウントを表示します。
+現時点で、複数のストレージ アカウントをアタッチする唯一の方法は、[Azure サービス管理 REST API](http://msdn.microsoft.com/library/azure/dn167014.aspx) を使用することです。「[方法: Media Services Management REST API の使用](https://msdn.microsoft.com/library/azure/dn167656.aspx)」トピックのコード サンプルは、**AttachStorageAccountToMediaServiceAccount** メソッドを定義して、指定された Media Services アカウントにストレージ アカウントをアタッチします。同じトピックのコードは、**ListStorageAccountDetails** メソッドを定義し、指定された Media Services アカウントにアタッチされたすべてのストレージ アカウントを表示します。
 
 
 ##複数のストレージ アカウントで Media Services 資産を管理するには
@@ -258,4 +259,4 @@ Media Services は、ストリーミング コンテンツ (例: http://{WAMSAcc
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1217_2015-->

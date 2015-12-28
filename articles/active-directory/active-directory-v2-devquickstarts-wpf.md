@@ -10,10 +10,10 @@
 <tags
 	ms.service="active-directory"
 	ms.workload="identity"
-  ms.tgt_pltfrm="na"
+	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/11/2015"
+	ms.date="12/09/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 プレビュー: Windows デスクトップ アプリへのサインインの追加
@@ -40,12 +40,12 @@ v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/
 
 完成したアプリは、このチュートリアルの終わりにも示しています。
 
-## 1\.アプリを登録します
+## 1.アプリを登録します
 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
 - アプリ用の**モバイル** プラットフォームを追加します。
-- ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
+- ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob` を使用する必要があります。
 
 ## 2. ADAL のインストールと構成
 マイクロソフトへのアプリの登録が完了したら、ADAL をインストールし、自分の ID 関連コードを記述できます。ADAL が v2.0 エンドポイントと通信できるようにするには、アプリの登録に関するいくつかの情報を ADAL に提供する必要があります。
@@ -53,7 +53,7 @@ v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/
 -    最初に、パッケージ マネージャー コンソールを使用して、ADAL を TodoListClient プロジェクトに追加します。
 
 ```
-PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoListClient -IncludePrerelease
+PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoListClient -IncludePrerelease 
 ```
 
 -	TodoListClient プロジェクトで `app.config` を開きます。アプリ登録ポータルで入力した値が反映されるように、`<appSettings>` セクションの要素の値を置き換えます。これらの値は、コードで ADAL を使用する際に常に参照されます。
@@ -247,4 +247,4 @@ ADAL では、個人用アカウントと職場アカウントの両方を使用
 
 その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->
