@@ -201,13 +201,13 @@
 6.	DAL\\RoleClaimContext.cs を開き、次の強調表示されたコードを追加します。
 	<pre class="prettyprint">
 public class RoleClaimContext : DbContext
-{
+	{
     public RoleClaimContext() : base("RoleClaimContext") { }
 
     public DbSet&lt;Task> Tasks { get; set; }
     <mark>public DbSet&lt;WorkItem> WorkItems { get; set; }</mark>
     public DbSet&lt;TokenCacheEntry> TokenCacheEntries { get; set; }
-}</pre>
+	}</pre>
 
 7.	プロジェクトをビルドして、新しいモデルから Visual Studio のスキャフォールディング ロジックにアクセスできるようにします。
 
@@ -223,11 +223,11 @@ public class RoleClaimContext : DbContext
 
 11. 強調表示された [Authorize] 装飾を以下の各操作に追加します。
 	<pre class="prettyprint">
-...
+	...
 
-<mark>[Authorize(Roles = "Admin, Observer, Writer, Approver")]</mark>
-public class WorkItemsController : Controller
-{
+	<mark>[Authorize(Roles = "Admin, Observer, Writer, Approver")]</mark>
+	public class WorkItemsController : Controller
+	{
 	...
 
     <mark>[Authorize(Roles = "Admin, Writer")]</mark>
@@ -285,7 +285,7 @@ public class WorkItemsController : Controller
 		
 14.	Views\\WorkItems\\Create.cshtml (自動的にスキャフォールディングされた項目) で、`Html.BeginForm` ヘルパー メソッドを探し、以下のように変更します。
 	<pre class="prettyprint">@using (Html.BeginForm(<mark>"Create", "WorkItems", FormMethod.Post, new { id = "main-form" }</mark>))
-{
+	{
     @Html.AntiForgeryToken()
 
     &lt;div class="form-horizontal">
@@ -367,7 +367,7 @@ public class WorkItemsController : Controller
 
 承認とさまざまな操作の基幹業務機能を WorkItems コントローラーに構成できましたので、さまざまなアプリケーション ロールのユーザーとしてログインし、アプリケーションの応答を確認してみてください。
 
-![](./media/web-sites-dotnet-lob-application-azure-ad/11-edit-unauthorized.png)
+	![](./media/web-sites-dotnet-lob-application-azure-ad/11-edit-unauthorized.png)
 
 <a name="bkmk_resources"></a>
 ## 他の関連リソース
