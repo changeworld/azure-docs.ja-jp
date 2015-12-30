@@ -65,7 +65,7 @@ Web プロキシ設定を構成するには、次のいずれかを使用しま�
 
 	既定では、TCP ポート番号 8080 が指定されています。
 
-4. 認証の種類として、**[NTLM]**、**[Basic]**、または **[None]** を選択します。[Basic] は、プロキシ サーバー構成で最も安全性が低い認証です。[NTLM] (NT LAN Manager) は、ユーザーを認証するために 3 段階のメッセージング システム (さらに整合性が要求される場合は 4 段階の場合もあります) を使用する最も安全性が高く複雑な認証プロトコルです。既定の認証は NTLM です。詳細については、[基本認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページと[NTLM 認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページを参照してください。
+4. 認証の種類として、**[NTLM]**、**[Basic]**、または **[None]** を選択します。[Basic] は、プロキシ サーバー構成で最も安全性が低い認証です。[NTLM] \(NT LAN Manager) は、ユーザーを認証するために 3 段階のメッセージング システム (さらに整合性が要求される場合は 4 段階の場合もあります) を使用する最も安全性が高く複雑な認証プロトコルです。既定の認証は NTLM です。詳細については、[基本認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページと[NTLM 認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページを参照してください。
 
 	> [AZURE.IMPORTANT]**StorSimple Manager サービスのデバイス監視グラフは、デバイスのプロキシ サーバーの構成で基本認証または NTLM 認証が有効になっている場合に正しく機能しません。監視グラフを機能させるには、認証が [None] に設定されていることを確認する必要があります。**
 

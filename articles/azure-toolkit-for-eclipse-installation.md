@@ -49,7 +49,7 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 1. Eclipse を起動します。
 2. Eclipse の中で、次の図に示すように、<strong>[Help]</strong> メニューをクリックし、<strong>[Install New Software]</strong> をクリックします。![][ic590123]
 3. <strong>[Available Software]</strong> ダイアログで、<strong>[Work with]</strong> ボックスに「<strong>http://dl.msopentech.com/eclipse</strong>」と入力し、<strong>Enter</strong> キーを押します。
-4. <strong>[Name]</strong> ウィンドウで、<strong>[Azure Toolkit for Eclipse]</strong> をオンにし、<strong>[Contact all update sites during install to find required software]</strong> をオフにします。画面は次のようになります。![][ic719482]
+4. <strong>[Name]</strong> ウィンドウで、<strong>[ Azure Toolkit for Eclipse ]</strong> をオンにし、<strong>[Contact all update sites during install to find required software]</strong> をオフにします。画面は次のようになります。![][ic719482]
 5. <strong>Azure Toolkit for Eclipse</strong> を展開すると、次の項目が表示されます。
     * **Azure Access Control Services Filter**: このコンポーネントは、Azure ACS でのアプリケーション ユーザーの認証をサポートします。
     * **Azure Common Plugin**: このコンポーネントには、他のコンポーネントが依存する共有機能が含まれています。
@@ -87,4 +87,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic590123]: ./media/azure-toolkit-for-eclipse-installation/ic590123.png
 [ic719482]: ./media/azure-toolkit-for-eclipse-installation/ic719482.png
 
-<!--------HONumber=AcomDC_1210_2015-->
+<!---------HONumber=AcomDC_1210_2015-->
