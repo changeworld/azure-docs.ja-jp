@@ -165,7 +165,7 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
     | ---            | ---             |
     | firstname | givenname |
     | lastname | surname |
-    | idpid | *<Azure ポータルの **[Moxtra でのシングル サインオンの構成]** ダイアログの **[エンティティ ID]** 値>* |
+    | idpid | *\<Azure ポータルの **[Moxtra でのシングル サインオンの構成]** ダイアログの **[エンティティ ID]** 値 \> * |
 
  
     a.[ユーザー属性の追加] をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_general_81.png) <br>
@@ -322,4 +322,4 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
 [204]: ./media/active-directory-saas-moxtra-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-moxtra-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
