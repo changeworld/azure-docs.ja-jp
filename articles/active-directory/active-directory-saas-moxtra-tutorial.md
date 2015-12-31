@@ -57,21 +57,22 @@ Azure AD への Moxtra の統合を構成するには、ギャラリーから管
 
 **ギャラリーから Moxtra を追加するには、次の手順を実行します。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
-<br><br> ![Active Directory][1]<br>
+1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>
+![Active Directory][1]<br>
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-<br><br> ![アプリケーション][2]<br>
-4. ページの下部にある **[追加]** をクリックします。
-<br><br> ![アプリケーション][3]<br>
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
-<br><br> ![アプリケーション][4]<br>
-6. 検索ボックスに、「**Moxtra**」と入力します。
-<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_01.png)<br>
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br>
+![アプリケーション][2]<br>
+4. ページの下部にある **[追加]** をクリックします。<br><br>
+![アプリケーション][3]<br>
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br>
+![アプリケーション][4]<br>
+6. 検索ボックスに、「**Moxtra**」と入力します。<br><br>
+![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_01.png)<br>
 7. 結果ウィンドウで **[Moxtra]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 <br><br>
+![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_02.png)<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Moxtra で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -107,7 +108,7 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
 <br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_04.png) <br>
 
-    a.**[サインオン URL]** テキストボックスに、URL ****https://www.moxtra.com/service/#login** を入力します。
+    a.**[サインオン URL]** テキストボックスに、URL **https://www.moxtra.com/service/#login** を入力します。
 
     b.**[次へ]** をクリックします。
  
@@ -165,7 +166,7 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
     | ---            | ---             |
     | firstname | givenname |
     | lastname | surname |
-    | idpid | *\<Azure ポータルの **[Moxtra でのシングル サインオンの構成]** ダイアログの **[エンティティ ID]** 値 \> * |
+    | idpid | *\<Azure ポータルの [Moxtra でのシングル サインオンの構成] ダイアログの [エンティティ ID] 値 \>* |
 
  
     a.[ユーザー属性の追加] をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_general_81.png) <br>
