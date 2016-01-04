@@ -133,7 +133,9 @@ ClearDB MySQL データベースを管理できます
 | **アクション** ||
 | ------- | ------ |
 | * | あらゆる種類のリソースの作成と管理 |
-| ****Not Actions | | | Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません | | Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |
+| ****Not Actions | |
+| Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません |
+| Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |
 
 ### Data Factory の共同作業者
 Data Factory を管理できます

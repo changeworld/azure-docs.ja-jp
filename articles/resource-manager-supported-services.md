@@ -1,5 +1,5 @@
 <properties
-   pageTitle="リソース マネージャーでサポートされるサービスとリージョン |Microsoft Azure"
+   pageTitle="リソース マネージャーでサポートされるサービスとリージョン | Microsoft Azure"
    description="リソース マネージャーをサポートするリソース プロバイダーおよびリソースをホストできるリージョンについて説明します。"
    services="azure-resource-manager"
    documentationCenter="na"
@@ -30,10 +30,11 @@ Azure リソース マネージャーは、アプリケーションを構成す�
 | サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------------------------ | -------------- | -------------- |-------- | ------ |
 | Virtual Machines | あり | あり、多くのオプション | いいえ | [VM の作成](https://msdn.microsoft.com/library/azure/mt163591.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json) |
-| Batch  
- | あり | [あり (クラシックのみ)](https://portal.azure.com/#create/Microsoft.BatchAccount) | あり | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | |
+| Batch   | あり | [あり (クラシックのみ)](https://portal.azure.com/#create/Microsoft.BatchAccount) | あり | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | |
 | Dynamics Lifecycle Services | はい | いいえ | | | |
-| Virtual Machines (クラシック) | 限定的 | あり、多くのオプション | 部分的 (後述参照) | - | - | | RemoteApp | いいえ | いいえ | - | - | - | | Service Fabric | いいえ | いいえ | - | - | - |
+| Virtual Machines (クラシック) | 限定的 | あり、多くのオプション | 部分的 (後述参照) | - | - | 
+| RemoteApp | いいえ | いいえ | - | - | - | 
+| Service Fabric | いいえ | いいえ | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイメント モデルではなくクラシック デプロイメント モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイメント モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 
@@ -60,7 +61,8 @@ Virtual Machines (クラシック) リソースは、新しいリソース グ�
 | SQL Database | あり | [はい](https://portal.azure.com/#create/Microsoft.SQLDatabase.1.0.3) | あり | [データベースの作成](https://msdn.microsoft.com/library/azure/mt163685.aspx) | [2014-04-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01-preview/Microsoft.Sql.json) |
 | 検索 | あり | [はい](https://portal.azure.com/#create/Microsoft.Search) | あり | [Search REST](https://msdn.microsoft.com/library/azure/dn798935.aspx) | |
 | SQL Data Warehouse | あり | [はい](https://portal.azure.com/#create/Microsoft.SQLDataWarehouse.0.1.13-preview) | | | |
-| StorSimple | いいえ | いいえ | - | - | - | | Managed Cache | いいえ | いいえ| - | - | - |
+| StorSimple | いいえ | いいえ | - | - | - | 
+| Managed Cache | いいえ | いいえ| - | - | - |
 
 ## Web とモバイル
 
@@ -87,6 +89,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | HDInsights | あり | [はい](https://portal.azure.com/#create/Microsoft.HDInsightCluster) |            |          |        |
 | Data Factory | あり | [はい](https://portal.azure.com/#create/Microsoft.DataFactory) | あり | [Data Factory の作成](https://msdn.microsoft.com/library/azure/dn906717.aspx) |    |
 | Machine Learning | いいえ | いいえ | -          | -        | -      |
+| Data Catalog | いいえ | いいえ |  -             | -        | -       |
 
 ## メディアと CDN
 
@@ -102,13 +105,16 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | ------- | ------- | -------------- | -------------- | -------- | ------ |
 | BizTalk Services | はい | いいえ | | | [2014-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.BizTalkServices.json) |
 | Service Bus | あり | いいえ | | [Service Bus REST](https://msdn.microsoft.com/library/azure/hh780717.aspx) | |
-| Backup | いいえ | いいえ | - | - | - | | Site Recovery | いいえ | いいえ| - | - | - |
+| Backup | いいえ | いいえ | - | - | - | 
+| Site Recovery | いいえ | いいえ| - | - | - |
 
 ## ID 管理とアクセス管理 
 
 | サービス | リソース マネージャーが有効 | ポータル | リソースの移動 | REST API | スキーマ |
 | ------- | ------- | -------------- | -------------- | -------- | ------ |
-| Azure Active Directory | いいえ | いいえ | - | - | - | | Azure Actice Directory B2C | いいえ | いいえ | - | - | - | | Multi-Factor Authentication | いいえ | いいえ | - | - | - |
+| Azure Active Directory | いいえ | いいえ | - | - | - | 
+| Azure Actice Directory B2C | いいえ | いいえ | - | - | - | 
+| Multi-Factor Authentication | いいえ | いいえ | - | - | - |
 
 ## 開発者サービス 
 
