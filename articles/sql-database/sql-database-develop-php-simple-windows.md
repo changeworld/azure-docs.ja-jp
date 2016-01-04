@@ -135,10 +135,10 @@
 - 挿入と更新に成功した場合はトランザクションをコミット。そのどちらか一方に失敗した場合はトランザクションをロールバック
 
 
-	function Transactions()
-	{
-		try
+		function Transactions()
 		{
+			try
+			{
 			$conn = OpenConnection();
 
 			if (sqlsrv_begin_transaction($conn) == FALSE)
@@ -172,7 +172,7 @@
 		{
 			echo("Error!");
 		}
-	}
+		}
 
 
 ## 次のステップ
@@ -180,4 +180,4 @@
 
 PHP のインストールと使用に関する詳細については、「[Accessing SQL Server Databases with PHP (PHP を使用して SQL Server のデータベースにアクセスする)](http://technet.microsoft.com/library/cc793139.aspx)」をご覧ください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!----HONumber=AcomDC_1210_2015-->

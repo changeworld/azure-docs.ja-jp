@@ -159,4 +159,4 @@ Excel の回帰と Azure Machine Learning の実験を並行して実行する�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!----HONumber=AcomDC_1210_2015-->
+<!-----HONumber=AcomDC_1210_2015-->

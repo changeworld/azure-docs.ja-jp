@@ -43,6 +43,7 @@ VHD をダウンロードするには、まず、オペレーティング シス
 
 ### VHD のダウンロード
 BLOB URL が分かったら、[Azure ポータル](http://manage.windowsazure.com/)または PowerShell を使用して VHD をダウンロードできます。
+
 > [AZURE.NOTE]このガイドの作成時点では、VHD をダウンロードするための機能は、新しい Microsoft Azure ポータルにはまだ存在していません。
 
 **現在の [Azure ポータル](http://manage.windowsazure.com/)経由でのオペレーティング システム VHD のダウンロード**
@@ -138,4 +139,4 @@ PowerShell の [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495
 - [Marketplace 向けの仮想マシン イメージの作成](marketplace-publishing-vm-image-creation.md)
 - [Azure PowerShell の設定](marketplace-publishing-powershell-setup.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!----HONumber=AcomDC_1210_2015-->

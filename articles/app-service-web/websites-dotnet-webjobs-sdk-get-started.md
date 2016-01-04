@@ -148,7 +148,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 6. ContosoAdsWeb プロジェクトで *Web.config* ファイルを開きます。
 
-	このファイルには、アプリケーション データ用に 1 つとログ用に 1 つの計 2 つのストレージ接続文字列があります。このチュートリアルでは、どちらも同じアカウントを使用します。接続文字列には、ストレージ アカウント キーのプレースホルダーがあります。
+	このファイルには、アプリケーション データ用に 1 つとログ用に 1 つの計 2 つのストレージ接続文字列があります。ストレージ アカウントは、アプリケーション データ用とログ用とで使い分けることができるほか、[データ用に複数のストレージ アカウント](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)を使用することができます。このチュートリアルでは、1 つのストレージ アカウントを使用します。接続文字列には、ストレージ アカウント キーのプレースホルダーがあります。
   	<pre class="prettyprint">&lt;configuration&gt;
     &lt;connectionStrings&gt;
         &lt;add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
@@ -821,4 +821,4 @@ https://{webappname}.scm.azurewebsites.net/azurejobs/#/functions
 
 詳細については、「[Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?LinkId=390226)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->

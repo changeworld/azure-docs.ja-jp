@@ -39,6 +39,7 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
 
 1.	Azure PowerShell をインストールします。
     - PowerShellGet をインストールします。このためには、PowerShellGet が付属している [Windows Management Framework 5.0](http://www.microsoft.com/download/details.aspx?id=48729) をインストールします。
+
     >[AZURE.NOTE]最新の更新プログラムを適用した Windows 10 を実行している場合は、この手順を省略できます。
 
 1.	AzureRM モジュールをインストールし更新します。
@@ -339,4 +340,4 @@ Azure PowerShell をインストールするには、前のセクション「**A
 
 Service Fabric アプリケーションとの継続的インテグレーションの詳細については、「[ビルドに関するドキュメントのホームページ](https://msdn.microsoft.com/Library/vs/alm/Build/overview)」、「[ビルド エージェントのデプロイ](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)」、「[ビルド定義の作成と構成](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->

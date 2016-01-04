@@ -184,7 +184,10 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
 
 ##アプリケーションへの変更の発行
 
-1. テキスト エディターで **server.js** ファイルを開き、'Hello World\\n' を 'Hello Azure\\n' に変更します。ファイルを保存します。
+1. テキスト エディターで **server.js** ファイルを開き、'Hello World\\n' を 'Hello Azure\\n' に変更します。 
+
+2. ファイルを保存します。
+
 2. コマンド ラインから、**helloworld** ディレクトリに移動し、次のコマンドを実行します。
 
 		git add .
@@ -223,4 +226,4 @@ Azure で Node.js アプリケーションを開発する方法の詳細につ�
 [deployment-credentials]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-credentials.png
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->

@@ -141,11 +141,6 @@ Hyper-V クラスターをインストールする場合は、フェールオー
 
 	![インターネット設定](./media/site-recovery-hyper-v-site-to-azure/SRHVSite_Provider4.png)
 
-		- *.hypervrecoverymanager.windowsazure.com
-		- *.accesscontrol.windows.net
-		- *.backup.windowsazure.com
-		- *.blob.core.windows.net
-		- *.store.core.windows.net
 9. **[コンテナーの設定]** ページで **[参照]** をクリックし、キー ファイルを選択します。Azure Site Recovery のサブスクリプション、コンテナー名、Hyper-V サーバーが属している Hyper-V サイトを指定します。
 
 	![サーバー登録](./media/site-recovery-hyper-v-site-to-azure/SRHVSite_SelectKey.png)
@@ -301,4 +296,4 @@ Azure ネットワークを指定せずにテスト フェールオーバーを�
 
 デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、[こちら](site-recovery-failover.md)を参照してください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!----HONumber=AcomDC_1210_2015-->
