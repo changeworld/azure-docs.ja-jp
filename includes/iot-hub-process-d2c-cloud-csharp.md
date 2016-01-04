@@ -207,7 +207,7 @@
 
         using Microsoft.ServiceBus.Messaging;
 
-    次に、以下のように **Main** メソッドを **Program** クラスに変更します。その場合、IoT Hub の **iothubowner** 接続文字列 (「IoT Hub の概要」チュートリアルを参照)、ストレージ接続文字列、および Service Bus の接続文字列を **d2ctutorial** という名前のキューの **Send** アクセス許可に置き換えます。
+    次に、以下のように **Main** メソッドを **Program** クラスに変更します。その場合、IoT Hub の **iothubowner** 接続文字列 ([Event Hubs の使用]チュートリアルを参照)、ストレージ接続文字列、および Service Bus の接続文字列を **d2ctutorial** という名前のキューの **Send** アクセス許可に置き換えます。
 
         static void Main(string[] args)
         {
@@ -324,4 +324,4 @@
 [31]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue3.png
 [32]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue4.png
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=Nov15_HO3-->
