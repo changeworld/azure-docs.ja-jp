@@ -32,7 +32,8 @@
 
 ##Engagement SDK を iOS プロジェクトに埋め込む
 
-[ここ](http://aka.ms/qk2rnj)から iOS SDK をダウンロードします。Engagement SDK の iOS プロジェクトへの追加: Xcode でプロジェクトを右クリックし、**[Add files to ...]** を選択して、`EngagementSDK` フォルダーを選択します。
+[ここ](http://aka.ms/qk2rnj)から iOS SDK をダウンロードします。
+Engagement SDK の iOS プロジェクトへの追加: Xcode でプロジェクトを右クリックし、**[Add files to ...]** を選択して、`EngagementSDK` フォルダーを選択します。
 
 Engagement では追加のフレームワークを動作させる必要がある: プロジェクト エクスプローラーでプロジェクト ペインを開き、適切なターゲットを選択します。次に、[**Build phases**] タブを開き、[**Link Binary With Libraries**] メニューでこれらのフレームワークを追加します。
 
@@ -43,7 +44,9 @@ Engagement では追加のフレームワークを動作させる必要がある
 > -   `CoreLocation.framework`
 > -   `libxml2.dylib`
 
-> [AZURE.NOTE]AdSupport フレームワークは削除してもかまいません。Engagement では、IDFA の収集のためこのフレームワークが必要です。ただし、IDFA コレクションは、この ID に関する新しい Apple ポリシーに準じて無効にできます <ios-sdk-engagement-idfa>。
+
+> [AZURE.NOTE] AdSupport フレームワークは削除してもかまいません。Engagement では、IDFA の収集のためこのフレームワークが必要です。ただし、IDFA コレクションは、この ID に関する新しい Apple ポリシーに準じて無効にできます \<ios-sdk-engagement-idfa\>。
+
 
 ##エンゲージメント SDK を初期化する
 
