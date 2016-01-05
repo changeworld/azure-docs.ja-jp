@@ -49,7 +49,7 @@ Azure DNS では、A、AAAA、CNAME、MX、NS、SOA、SRV、TXT というレコ�
 
 Azure DNS は、[ワイルドカード レコード](https://en.wikipedia.org/wiki/Wildcard_DNS_record)をサポートしています。ワイルドカード レコードは、一致する名前を含むクエリに対してに返されます (非ワイルドカード レコード セットに、より近い一致がない場合)。
 
->[AZURE.NOTE]ワイルドカード レコード セットを作成するには、レコード セット名 "*" を使用するか、最初のラベルが "*" の名前 ("*.foo" など) を使用します。
+>[AZURE.NOTE]ワイルドカード レコード セットを作成するには、レコード セット名 "\*" を使用するか、最初のラベルが "\*" の名前 ("\*.foo" など) を使用します。
 
 >ワイルドカード レコード セットは、NS と SOA を除くすべてのレコードの種類でサポートされています。
 
@@ -243,4 +243,4 @@ A レコード セットを作成した後、`azure network dns record-set add-r
 [Azure DNS へのドメインの委任](dns-domain-delegation.md)<BR> [DNS ゾーンの管理](dns-operations-dnszones-cli.md)<BR> [.NET SDK を使用した操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->

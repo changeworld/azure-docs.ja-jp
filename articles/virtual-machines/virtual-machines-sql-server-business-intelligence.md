@@ -388,7 +388,9 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 	|ポート|型|説明|
 |---|---|---|
-|**80**|TCP|レポート サーバー リモート アクセス (*).| |**1433**|TCP|SQL Server Management Studio (*).| |**1434**|UDP|SQL Server Browser。これは、VM がドメインに参加しているときに必要となります。|
+|**80**|TCP|レポート サーバー リモート アクセス (*).|
+|**1433**|TCP|SQL Server Management Studio (*).|
+|**1434**|UDP|SQL Server Browser。これは、VM がドメインに参加しているときに必要となります。|
 |**2382**|TCP|SQL Server Browser。|
 |**2383**|TCP|SQL Server Analysis Services の既定のインスタンスとクラスター化された名前付きインスタンス。|
 |**ユーザー定義**|TCP|選択したポート番号で Analysis Services の名前付きインスタンスの静的ポートを作成し、ファイアウォールでそのポート番号のブロックを解除します。|
@@ -431,4 +433,4 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->
