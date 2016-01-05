@@ -36,12 +36,14 @@ vContinuum サーバーをオンプレミスにインストールし、構成サ
 
 1.  [vContinuum をダウンロードします](http://go.microsoft.com/fwlink/?linkid=526305)。 
 2.  ダウンロードしたら、更新された [vContinuum 更新](http://go.microsoft.com/fwlink/?LinkID=533813)バージョンをダウンロードします。
-3.  vContinuum をインストールするには、最新バージョンのセットアップを実行します。**[ようこそ]** ページで **[次へ]** をクリックします。![](./media/site-recovery-failback-azure-to-vmware/image2.png)
+3.  vContinuum をインストールするには、最新バージョンのセットアップを実行します。**[ようこそ]** ページで **[次へ]** をクリックします。
+	![](./media/site-recovery-failback-azure-to-vmware/image2.png)
 4.  ウィザードの最初のページで CX サーバーの IP アドレスとポートを指定します。**[HTTPS の使用]** を選択します。
 
 	![](./media/site-recovery-failback-azure-to-vmware/image3.png)
 
-5.  Azure の構成サーバー VM の **[ダッシュボード]** タブで、構成サーバーの ID アドレスを探します。![](./media/site-recovery-failback-azure-to-vmware/image4.png)
+5.  Azure の構成サーバー VM の **[ダッシュボード]** タブで、構成サーバーの ID アドレスを探します。
+	![](./media/site-recovery-failback-azure-to-vmware/image4.png)
 
 6.  Azure の構成サーバー VM の **[エンドポイント]** タブで、構成サーバーの HTTPS パブリック ポートを探します。
 
@@ -55,7 +57,8 @@ vContinuum サーバーをオンプレミスにインストールし、構成サ
 
 	![](./media/site-recovery-failback-azure-to-vmware/image7.png)
 
-9. インストールが完了したら、vContinuum を起動することができます。![](./media/site-recovery-failback-azure-to-vmware/image8.png)
+9. インストールが完了したら、vContinuum を起動することができます。
+	![](./media/site-recovery-failback-azure-to-vmware/image8.png)
 
 
 ## 手順 2: Azure にプロセス サーバーをインストールする 
@@ -73,11 +76,11 @@ Azure の VM がデータをオンプレミスのマスター ターゲット �
 
 4.  プロセス サーバーをデプロイするジョブがトリガーされます。
 
-![](./media/site-recovery-failback-azure-to-vmware/image11.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image11.png)
 
 5.  プロセス サーバーが Azure にデプロイされたら、指定した資格情報を使用してプロセス サーバーにログインできます。オンプレミスのプロセス サーバーを登録したのと同じ方法で、プロセス サーバーを登録します。
 
-![](./media/site-recovery-failback-azure-to-vmware/image12.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image12.png)
 
 >[AZURE.NOTE]フェールバック中に登録されたサーバーは、Site Recovery の VM プロパティの下に表示されません。それらのサーバーは、それらが登録されている構成サーバーの **[サーバー]** タブの下にのみ表示されます。プロセス サーバーがタブに表示されるまで約 10 分から 15 分かかることがあります。
 
@@ -208,18 +211,18 @@ reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 5. パブリック インターネット接続経由で Linux マスター ターゲット サーバーに接続している場合、(仮想マシンの **[ダッシュボード]** タブにある) Linux マスター ターゲット サーバーのパブリック仮想 IP アドレスと、ssh 用に作成されたパブリック エンドポイントを使用して、Linux サーバーにログインします。
 6. インストーラー ファイルを含むディレクトリから次を実行して、gzip された Linux マスター ターゲット サーバー インストーラー tar アーカイブからファイルを抽出します: *“tar –xvzf Microsoft-ASR\_UA\_8.2.0.0\_RHEL6-64*”*
 
-![](./media/site-recovery-failback-azure-to-vmware/image16.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image16.png)
 
 7. インストーラー ファイルを別のディレクトリに抽出した場合、tar アーカイブのコンテンツの抽出先であるディレクトリに移動します。このディレクトリ パスから、“sudo ./install.sh” を実行します。
 
-![](./media/site-recovery-failback-azure-to-vmware/image17.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image17.png)
 
 8. プライマリ ロールの選択を求められたら、**2 (マスター ターゲット)** を選択します。その他の対話型インストール オプションについては、既定値のままにします。
 9. インストールが進行し、[Host Config Interface] が表示されるまで待機します。Linux マスター ターゲット サーバー用の Host Configuration ユーティリティは、コマンド ライン ユーティリティです。ssh クライアント ユーティリティ ウィンドウのサイズを変更しないでください。矢印キーを使用して **[Global]** オプションを選択し、キーボードで Enter キーを押します。
 
-![](./media/site-recovery-failback-azure-to-vmware/image18.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image18.png)
 
-![](./media/site-recovery-failback-azure-to-vmware/image19.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image19.png)
 
 
 10. **[IP]** フィールドに構成サーバーの内部 IP アドレス (構成サーバー VM の **[ダッシュボード]** タブにあります) を入力し、Enter キーを押します。**[Port]** に、「**22**」と入力し、Enter キーを押します。
@@ -227,7 +230,7 @@ reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 12.  構成サーバーで生成されたパスフレーズを入力します。Windows マシンから PuTTY クライアントを使用して、ssh 経由で Linux 仮想マシンに接続している場合、Shift キーを押しながら Insert キーを押すことにより、クリップボードのコンテンツを貼り付けることができます。Ctrl キーを押しながら C キーを押してパスフレーズをローカルのクリップボードにコピーし、Shift キーを押しながら Insert キーを押して貼り付けます。Enter キーを押します。
 13.  右矢印キーを使用して [quit] を選択し、Enter キーを押します。インストールが完了するのを待ちます。
 
-![](./media/site-recovery-failback-azure-to-vmware/image20.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image20.png)
 
 何らかの理由により、Linux マスター ターゲット サーバーを構成サーバーに登録する処理が失敗した場合、Host Configuration ユーティリティを /usr/local/ASR/Vx/bin/hostconfigcli から再び実行できます (最初に、super ユーザーとして chmod を実行して、このディレクトリにアクセス許可を設定する必要があります)。
 
@@ -255,33 +258,33 @@ VM は Azure にフェールオーバーするときに、ページ ファイル
 
 1. Azure ポータルで仮想マシンの状態をチェックし、フェールオーバーしていることを確認します。
 
-![](./media/site-recovery-failback-azure-to-vmware/image21.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image21.png)
 
 2. お使いのマシンで vContinuum を起動します。
 
-![](./media/site-recovery-failback-azure-to-vmware/image8.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image8.png)
 
 3. **[New Protection]** をクリックし、オペレーティング システムの種類を選択します。
 
 4.  新しいウィンドウが開き、フェールバックする VM の **[OS type]** > **[Get Details]** を選択します。**[Primary server details]** で、保護対象の仮想マシンを識別して選択します。VM は、フェールオーバー前の vCenter のホスト名の下に表示されます。
 5.  (既に Azure にフェールオーバーしている) 保護対象の仮想マシンを選択すると、ポップアップ ウィンドウに仮想マシンの 2 つのエントリが表示されます。これは、構成サーバーが、登録されている仮想マシンの 2 つのインスタンスを検出しているためです。オンプレミス VM のエントリを削除して、正しい VM を保護できるようにする必要があります。ここで、正しい Azure VM エントリを識別するには、Azure VM にログインし、C:\\Program Files (x86)\\Microsoft Azure Site Recovery\\Application Data\\etc にアクセスします。ファイル drscout.conf に、ホスト ID のエントリがあります。vContinuum のダイアログで、VM のホスト ID が見つかったエントリを残します。他のエントリはすべて削除します。正しい VM を選択するため、VMの IP アドレスを参照できます。オンプレミスの IP アドレス範囲は、オンプレミスの VM になります。
 
-![](./media/site-recovery-failback-azure-to-vmware/image22.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image22.png)
 
-![](./media/site-recovery-failback-azure-to-vmware/image23.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image23.png)
 
 6. vCenter サーバーで、仮想マシンを停止します。VM をオンプレミスで削除することもできます。
 7. 次に、VM を保護するために宛先とするオンプレミス MT サーバーを指定します。これを行うには、フェールバック先の vCenter サーバーに接続します。
 
-![](./media/site-recovery-failback-azure-to-vmware/image24.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image24.png)
 
 8. VM の復旧先となるホストに基づいて、マスター ターゲット サーバーを選択します。
 
-![](./media/site-recovery-failback-azure-to-vmware/image24.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image24.png)
 
 9. 次に、各仮想マシンのレプリケーション オプションを設定します。これを行うには、復旧側のデータストアを選択する必要があります。これは、VM の復旧先となるデータストアです。テーブルは、各 VM に提供する必要があるさまざまなオプションをまとめたものです。
 
-![](./media/site-recovery-failback-azure-to-vmware/image25.png)
+	![](./media/site-recovery-failback-azure-to-vmware/image25.png)
 
 	**オプション** | **推奨されるオプション値**
 	---|---

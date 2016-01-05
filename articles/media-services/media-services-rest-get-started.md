@@ -88,12 +88,12 @@ Azure Media Services にアクセスする際には、Azure Access Control Servi
 	> ODATA API メタデータの説明が含まれる HTTP/1.1 200 応答が表示される場合もあります。
 3. 新しい URL に後続の API 呼び出しを投稿します。 
 	
-		たとえば、接続しようとした後に次のようなメッセージが表示されます。
+	たとえば、接続しようとした後に次のようなメッセージが表示されます。
 		
 		HTTP/1.1 301 Moved Permanently
 		Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
 
-		この場合、続けて、https://wamsbayclus001rest-hs.cloudapp.net/api/ へ API コールを行う必要があります。
+	この場合、続けて、https://wamsbayclus001rest-hs.cloudapp.net/api/ へ API コールを行う必要があります。
 
 ###アクセス トークンの取得
 

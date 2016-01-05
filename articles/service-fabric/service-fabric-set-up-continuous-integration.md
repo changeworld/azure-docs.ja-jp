@@ -40,7 +40,7 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
 1.	Azure PowerShell をインストールします。
     - PowerShellGet をインストールします。このためには、PowerShellGet が付属している [Windows Management Framework 5.0](http://www.microsoft.com/download/details.aspx?id=48729) をインストールします。
 
-    >[AZURE.NOTE]最新の更新プログラムを適用した Windows 10 を実行している場合は、この手順を省略できます。
+    >[AZURE.NOTE] 最新の更新プログラムを適用した Windows 10 を実行している場合は、この手順を省略できます。
 
 1.	AzureRM モジュールをインストールし更新します。
     1.  Azure PowerShell の以前のバージョンがインストールされている場合は、それを削除します。[スタート] ボタンを右クリックし、[プログラムの追加と削除] を選択します。"Azure PowerShell" を見つけて、それをアンインストールします。
@@ -138,7 +138,7 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
     ```
 
 3.	NuGet.config がまだ存在していない場合は、次の内容を使用して作成します。`<path to service fabric SDK>` を、ビルド コンピューター上の Service Fabric SDK へのパスに置き換えます。
->[AZURE.NOTE]既定では、`<path to service fabric SDK>` は `%ProgramFiles%\Microsoft SDKs\Service Fabric` です。
+>[AZURE.NOTE] 既定では、`<path to service fabric SDK>` は `%ProgramFiles%\Microsoft SDKs\Service Fabric` です。
 
     NuGet.config:
 
