@@ -68,9 +68,11 @@ Azure クラシック ポータルを使用してストリーミング エンド
 	新しいストリーミング ユニットの割り当ては完了するまでに約 20 分かかります。
 
 	 
-	>[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
+>[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
 
-	>[AZURE.NOTE]コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+</br>
+
+>[AZURE.NOTE]コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 	
 ##<a id="configure_streaming_endpoints"></a>ストリーミング エンドポイントの構成
 
@@ -150,4 +152,4 @@ CDN 統合は、すべての Azure データ センター (米国西部、米国
 [configure-origin-configure-custom-host-names]: ./media/media-services-manage-origins/media-services-configure-custom-host-names.png
  
 
-<!----HONumber=AcomDC_1217_2015-->
+<!-----HONumber=AcomDC_1217_2015-->

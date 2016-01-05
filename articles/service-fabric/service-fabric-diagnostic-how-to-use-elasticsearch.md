@@ -35,7 +35,7 @@ ElasticSearch に出現するトレースの場合、リアル タイムで Serv
 Azure で ElasticSearch サービスを設定するには、[**Azure ARM テンプレート**](../resource-group-overview.md)を使用する方法が最も簡単です。Azure クイックスタート テンプレート リポジトリから、[ElasticSearch 用の包括的なクイックスタート ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/elasticsearch)を利用できます。このテンプレートでは、スケール ユニット (ノードのグループ) に別のストレージ アカウントを使用するので、異なる構成で、接続されているデータ ディスク数が異なる別のクライアントとサーバーをプロビジョニングできます。
 
 この記事では、[Microsoft Patterns & Practices ELK ブランチ](https://github.com/mspnp/semantic-logging/tree/elk/)の **ES-MultiNode** という別のテンプレートを使用します。このテンプレートは使い方が簡単で、既定で HTTP 基本認証で保護たれ ElasticSearch クラスターを簡単に作成できます。次に進む前に、GitHub からお使いのコンピューターに [Microsoft P&P "elk" repo](https://github.com/mspnp/semantic-logging/tree/elk/) をダウンロードしてください (repo をコピーするか、ZIP ファイルをダウンロードします)。ES-MultiNode テンプレートは、同じ名前のフォルダーに格納されています。
->[AZURE.NOTE]現在、ES-MultiNode テンプレートは関連するスクリプトは ElasticSearch 1.7 リリースをサポートしています。今後、ElasticSearch 2.0 のサポートが追加される予定です。
+>[AZURE.NOTE] 現在、ES-MultiNode テンプレートは関連するスクリプトは ElasticSearch 1.7 リリースをサポートしています。今後、ElasticSearch 2.0 のサポートが追加される予定です。
 
 ### コンピューターで ElasticSearch のインストール スクリプトを実行する準備を整える
 ES-MultiNode テンプレートを使用するには、提供されている `CreateElasticSearchCluster`という PowerShell スクリプトを使用するのが最も簡単な方法です。このスクリプトを使用するには、Azure PowerShell モジュールと、openssl というツールをインストールする必要があります。openssl は、SSH キーを作成するために必要です。SSH キーは、ElasticSearch クラスターをリモート管理するために使用できます。
@@ -246,4 +246,4 @@ ElasticSearch 接続データは、サービス構成ファイル (PackageRoot\\
 [1]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/listener-lib-references.png
 [2]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/kibana.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->

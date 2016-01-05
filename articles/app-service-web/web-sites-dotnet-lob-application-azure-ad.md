@@ -200,14 +200,14 @@
 
 6.	DAL\\RoleClaimContext.cs を開き、次の強調表示されたコードを追加します。
 	<pre class="prettyprint">
-public class RoleClaimContext : DbContext
-	{
-    public RoleClaimContext() : base("RoleClaimContext") { }
+    public class RoleClaimContext : DbContext
+    {
+        public RoleClaimContext() : base("RoleClaimContext") { }
 
-    public DbSet&lt;Task> Tasks { get; set; }
-    <mark>public DbSet&lt;WorkItem> WorkItems { get; set; }</mark>
-    public DbSet&lt;TokenCacheEntry> TokenCacheEntries { get; set; }
-	}</pre>
+        public DbSet&lt;Task> Tasks { get; set; }
+        <mark>public DbSet&lt;WorkItem> WorkItems { get; set; }</mark>
+        public DbSet&lt;TokenCacheEntry> TokenCacheEntries { get; set; }
+    }</pre>
 
 7.	プロジェクトをビルドして、新しいモデルから Visual Studio のスキャフォールディング ロジックにアクセスできるようにします。
 
@@ -225,18 +225,18 @@ public class RoleClaimContext : DbContext
 	<pre class="prettyprint">
 	...
 
-	<mark>[Authorize(Roles = "Admin, Observer, Writer, Approver")]</mark>
-	public class WorkItemsController : Controller
-	{
-	...
+    <mark>[Authorize(Roles = "Admin, Observer, Writer, Approver")]</mark>
+    public class WorkItemsController : Controller
+    {
+		...
 
     <mark>[Authorize(Roles = "Admin, Writer")]</mark>
     public ActionResult Create()
     ...
 
-    <mark>[Authorize(Roles = "Admin, Writer")]</mark>
-    public async Task&lt;ActionResult> Create([Bind(Include = "ItemID,AssignedToID,AssignedToName,Description,Status")] WorkItem workItem)
-    ...
+        <mark>[Authorize(Roles = "Admin, Writer")]</mark>
+        public async Task&lt;ActionResult> Create([Bind(Include = "ItemID,AssignedToID,AssignedToName,Description,Status")] WorkItem workItem)
+        ...
 
     <mark>[Authorize(Roles = "Admin, Writer")]</mark>
     public async Task&lt;ActionResult> Edit(int? id)
@@ -285,7 +285,7 @@ public class RoleClaimContext : DbContext
 		
 14.	Views\\WorkItems\\Create.cshtml (自動的にスキャフォールディングされた項目) で、`Html.BeginForm` ヘルパー メソッドを探し、以下のように変更します。
 	<pre class="prettyprint">@using (Html.BeginForm(<mark>"Create", "WorkItems", FormMethod.Post, new { id = "main-form" }</mark>))
-	{
+{
     @Html.AntiForgeryToken()
 
     &lt;div class="form-horizontal">
@@ -388,4 +388,4 @@ public class RoleClaimContext : DbContext
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->
