@@ -138,7 +138,9 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
     ```
 
 3.	NuGet.config がまだ存在していない場合は、次の内容を使用して作成します。`<path to service fabric SDK>` を、ビルド コンピューター上の Service Fabric SDK へのパスに置き換えます。
+
 >[AZURE.NOTE]既定では、`<path to service fabric SDK>` は `%ProgramFiles%\Microsoft SDKs\Service Fabric` です。
+
 
     NuGet.config:
 
@@ -340,4 +342,4 @@ Azure PowerShell をインストールするには、前のセクション「**A
 
 Service Fabric アプリケーションとの継続的インテグレーションの詳細については、「[ビルドに関するドキュメントのホームページ](https://msdn.microsoft.com/Library/vs/alm/Build/overview)」、「[ビルド エージェントのデプロイ](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)」、「[ビルド定義の作成と構成](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)」を参照してください。
 
-<!------HONumber=AcomDC_1217_2015-->
+<!--------HONumber=AcomDC_1217_2015-->

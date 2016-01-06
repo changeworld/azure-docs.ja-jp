@@ -26,9 +26,9 @@ Install-Module Azure
 3. 次のコマンドを使用して新しい Azure Active Directory アプリケーションを作成します。プレース ホルダーを以下のとおりに置き換えます。
 
     - **{Display name}:** **MySampleApp** など、アプリケーションの表示名
-    - **{Home page URL}:** ****http://mysampleapp/home** など、アプリケーションのホーム ページの URL。この URL は実際のアプリケーションを示している必要はありません。
-- **{Application identifier}:** ****http://mysampleapp** などの一意識別子。この URL は実際のアプリケーションを示している必要はありません。
-- **{Password}:** 自分のアプリで認証に使用するパスワード。
+    - **{Home page URL}:** **http://mysampleapp/home** など、アプリケーションのホーム ページの URL。この URL は実際のアプリケーションを示している必要はありません。
+    - **{Application identifier}:** **http://mysampleapp** などの一意識別子。この URL は実際のアプリケーションを示している必要はありません。
+    - **{Password}:** 自分のアプリで認証に使用するパスワード。
 
     ```
     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} IdentifierUris {Application identifier} -Password {Password}
@@ -58,4 +58,4 @@ Install-Module Azure
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
 [lnk-powershell-install]: https://azure.microsoft.com/ja-JP/blog/azps-1-0-pre/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
