@@ -7,11 +7,19 @@
 	manager="jwhit"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="hero-article" ms.date="11/26/2015" ms.author="jimpark"; "aashishr"/>
+<tags
+	ms.service="backup"
+	ms.workload="storage-backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="hero-article"
+	ms.date="11/26/2015"
+	ms.author="jimpark"; "aashishr"/>
 
 # Windows コンピューターをバックアップする環境の準備
 
 この記事では、Windows サーバーで Azure Backup を使用するための準備手順について説明します。Windows サーバーまたは Windows クライアントを Azure にバックアップするには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+
 >[AZURE.NOTE]以前は、バックアップ サーバーを登録するために、X.509 v3 証明書の作成や取得が必要でした。証明書は現在でもサポートされていますが、サーバーへの Azure 資格情報コンテナーの登録を容易にするために、[クイック スタート] ページから資格情報コンテナーの資格情報を作成できます。
 
 ## 開始する前に
@@ -34,4 +42,4 @@
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 - [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->

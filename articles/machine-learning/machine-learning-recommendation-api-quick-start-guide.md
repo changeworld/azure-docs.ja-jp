@@ -294,7 +294,23 @@ OData XML
   		</EventData>
 		</Event>
 
-- 'Purchase' のイベントの例: <Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId> <SessionId>11112222</SessionId> <EventData> <EventData> <Name>Purchase</Name> <PurchaseItems> <PurchaseItems> <ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId> <Count>3</Count> </PurchaseItems> </PurchaseItems> </EventData> </EventData> </Event>
+- 'Purchase' のイベントの例:
+
+		<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
+		<SessionId>11112222</SessionId>
+		<EventData>
+		<EventData>
+			<Name>Purchase</Name>
+			<PurchaseItems>
+			 <PurchaseItems>
+				<ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
+				<Count>3</Count>
+			</PurchaseItems>
+		</PurchaseItems>
+		</EventData>
+		</EventData>
+		</Event>
 
 - 2 つのイベント "Click" と "AddShopCart" を送信する例:
 
@@ -427,9 +443,19 @@ HTTP 状態コード: 200
 - `feed/entry/content/properties/ExecutionTime` – ビルドの期間。
 - `feed/entry/content/properties/ProgressStep` - 進行中のビルドの現在のステージの詳細。
 
-有効なビルドの状態: - Created - ビルド要求のエントリが作成されました。 - Queued – ビルド要求がトリガーされ、キューに登録されました。 - Building – ビルドが処理中です。 - Success - ビルドが正常に終了しました。 - Error - ビルドがエラーで終了しました。 - Cancelled - ビルドは取り消されました。 - Cancelling - ビルドは取り消されます。
+有効なビルドの状態:
+- Created - ビルド要求のエントリが作成されました。
+- Queued – ビルド要求がトリガーされ、キューに登録されました。
+- Building – ビルドが処理中です。
+- Success - ビルドが正常に終了しました。
+- Error - ビルドがエラーで終了しました。
+- Cancelled - ビルドは取り消されました。
+- Cancelling - ビルドは取り消されます。
 
-ビルドの種類における有効な値: - Rank - 順番付けのビルド。(順番付けのビルドの詳細については、「Machine Learning Recommendation API ドキュメント」をご覧ください)。 - 推奨事項 - 推奨事項のビルド。- Fbt - Frequently Bought Together ビルド
+ビルドの種類における有効な値:
+- Rank - 順番付けのビルド。(順番付けのビルドの詳細については、「Machine Learning Recommendation API ドキュメント」をご覧ください)。
+- 推奨事項 - 推奨事項のビルド。
+- Fbt - Frequently Bought Together ビルド
 
 OData XML
 
@@ -648,7 +674,8 @@ OData XML
 	</feed>
 
 ###モデルの更新
-モデルの説明またはアクティブなビルド ID を更新できます。*アクティブなビルド ID* - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。
+モデルの説明またはアクティブなビルド ID を更新できます。
+*アクティブなビルド ID* - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。
 
 このメカニズムにより、推奨モデルが運用環境にあるときに、新しいモデルを構築して、それを運用環境に移行する前にテストすることができます。
 
@@ -680,7 +707,9 @@ OData XML
 	</feed>
 
 ##法的情報
-このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報と見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。社内での参照目的に限り、このドキュメントを複製して使用できます。© 2014 Microsoft.All rights reserved.
+このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報と見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。
+使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。
+このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。社内での参照目的に限り、このドキュメントを複製して使用できます。© 2014 Microsoft.All rights reserved.
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->
