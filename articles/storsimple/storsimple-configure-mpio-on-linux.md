@@ -466,7 +466,22 @@ A.ご使用のデバイスがホワイトリストに登録されているかど
 |型|コマンド|説明|
 |---|---|---|
 |**iSCSI**|`service iscsid start`|iSCSI サービスを開始する|
-||`service iscsid stop`|iSCSI サービスを停止する| ||`service iscsid restart`|iSCSI サービスを再起動する| ||`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>`|指定したアドレスで使用可能なターゲットを検出する| ||`iscsiadm -m node --login -T <TARGET_IQN>`|iSCSI ターゲットにログインする| ||`iscsiadm -m node --logout -p <Target_IP>`|iSCSI ターゲットからログアウトする| ||`cat /etc/iscsi/initiatorname.iscsi`|iSCSI イニシエーター名を出力する| ||`iscsiadm –m session –s <sessionid> -P 3`|ホスト上で検出された iSCSI セッションとボリュームの状態を確認する| ||`iscsi –m session`|ホストと StorSimple デバイス間で確立されたすべての iSCSI セッションを表示する| | | | | |**マルチパス**|`service multipathd start`|マルチパス デーモンを起動する| ||`service multipathd stop`|マルチパス デーモンを停止する| ||`service multipathd restart`|マルチパス デーモンを再起動する| ||`chkconfig multipathd on` </br> または </br> `mpathconf –with_chkconfig y`|ブート時にマルチパス デーモンを起動できるようにする| ||`multipathd –k`|トラブルシューティング用に対話型コンソールを起動する| ||`multipath –l`|マルチパス接続とデバイスを一覧表示する| ||`mpathconf --enable`|`/etc/mulitpath.conf` でサンプル mulitpath.conf ファイルを作成する| ||||
+||`service iscsid stop`|iSCSI サービスを停止する|
+||`service iscsid restart`|iSCSI サービスを再起動する|
+||`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>`|指定したアドレスで使用可能なターゲットを検出する| ||`iscsiadm -m node --login -T <TARGET_IQN>`|iSCSI ターゲットにログインする|
+||`iscsiadm -m node --logout -p <Target_IP>`|iSCSI ターゲットからログアウトする|
+||`cat /etc/iscsi/initiatorname.iscsi`|iSCSI イニシエーター名を出力する|
+||`iscsiadm –m session –s <sessionid> -P 3`|ホスト上で検出された iSCSI セッションとボリュームの状態を確認する|
+||`iscsi –m session`|ホストと StorSimple デバイス間で確立されたすべての iSCSI セッションを表示する|
+| | | |
+|**マルチパス**|`service multipathd start`|マルチパス デーモンを起動する|
+||`service multipathd stop`|マルチパス デーモンを停止する|
+||`service multipathd restart`|マルチパス デーモンを再起動する|
+||`chkconfig multipathd on` </br> または </br> `mpathconf –with_chkconfig y`|ブート時にマルチパス デーモンを起動できるようにする|
+||`multipathd –k`|トラブルシューティング用に対話型コンソールを起動する|
+||`multipath –l`|マルチパス接続とデバイスを一覧表示する|
+||`mpathconf --enable`|`/etc/mulitpath.conf` でサンプル mulitpath.conf ファイルを作成する|
+||||
 
 ## 次のステップ
 
@@ -475,4 +490,4 @@ Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキ
 - [CentOS での MPIO の設定](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
 - [Linux トレーニング ガイド](http://linux-training.be/files/books/LinuxAdm.pdf)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->

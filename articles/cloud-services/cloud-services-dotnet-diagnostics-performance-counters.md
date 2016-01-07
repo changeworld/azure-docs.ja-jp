@@ -21,7 +21,10 @@
 
 また、Windows Server、IIS、ASP.NET で使用できるパフォーマンス カウンターでは、Azure の Web ロール、worker ロール、Virtual Machines のパフォーマンス データを収集して状態を把握することもできます。カスタム パフォーマンス カウンターを作成して使用することもできます。
 
-パフォーマンス カウンターのデータを確認するには、1.リモート デスクトップを使用してアクセスするパフォーマンス モニター ツールを通じてアプリケーション ホストを直接調べるか、2.System Center Operations Manager の Azure 管理パック、または 3.Azure Storage に転送された診断データにアクセスするその他の監視ツールを使用します。詳細については、「[Azure Storage への診断データの保存と表示](https://msdn.microsoft.com/library/azure/hh411534.aspx)」を参照してください。
+パフォーマンス カウンターのデータを確認するには、
+1.リモート デスクトップを使用してアクセスするパフォーマンス モニター ツールを通じてアプリケーション ホストを直接調べるか、
+2.System Center Operations Manager の Azure 管理パック、または 
+3.Azure Storage に転送された診断データにアクセスするその他の監視ツールを使用します。詳細については、「[Azure Storage への診断データの保存と表示](https://msdn.microsoft.com/library/azure/hh411534.aspx)」を参照してください。
 
 [Azure クラシック ポータル](http://manage.azure.com/)でアプリケーションのパフォーマンスを監視する方法の詳細については、[Cloud Services の監視方法](https://www.azure.com/manage/services/cloud-services/how-to-monitor-a-cloud-service/)に関する記述を参照してください。
 
@@ -53,7 +56,16 @@ Azure は、Windows Server、IIS、および ASP.NET スタックで使用でき
 |ASP.NET v4.0.30319 |Requests Rejected |ASP.NET 用のパフォーマンス カウンター|
 |メモリ |Available MBytes |メモリ パフォーマンス カウンター|
 |メモリ |Committed Bytes |メモリ パフォーマンス カウンター|
-|Processor(\_Total) |% Processor Time |ASP.NET 用のパフォーマンス カウンター| |TCPv4 |Connection Failures |TCP オブジェクト| |TCPv4 |Connections Established |TCP オブジェクト| |TCPv4 |Connections Reset |TCP オブジェクト| |TCPv4 |Segments Sent/sec |TCP オブジェクト| |Network Interface(*) |Bytes Received/sec |ネットワーク インターフェイス オブジェクト| |Network Interface(*) |Bytes Sent/sec |ネットワーク インターフェイス オブジェクト| |Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Received/sec|ネットワーク インターフェイス オブジェクト| |Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Sent/sec|ネットワーク インターフェイス オブジェクト| |Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Total/sec|ネットワーク インターフェイス オブジェクト|
+|Processor(\_Total) |% Processor Time |ASP.NET 用のパフォーマンス カウンター|
+|TCPv4 |Connection Failures |TCP オブジェクト|
+|TCPv4 |Connections Established |TCP オブジェクト|
+|TCPv4 |Connections Reset |TCP オブジェクト|
+|TCPv4 |Segments Sent/sec |TCP オブジェクト|
+|Network Interface(*) |Bytes Received/sec |ネットワーク インターフェイス オブジェクト|
+|Network Interface(*) |Bytes Sent/sec |ネットワーク インターフェイス オブジェクト|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Received/sec|ネットワーク インターフェイス オブジェクト|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Sent/sec|ネットワーク インターフェイス オブジェクト|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Total/sec|ネットワーク インターフェイス オブジェクト|
 
 ## カスタム パフォーマンス カウンターの作成とアプリケーションへの追加
 
@@ -313,4 +325,4 @@ Azure 診断エージェントは起動の 1 分後に .wadcfg ファイルの�
 
 [Cloud Services の監視方法](./how-to-monitor-a-cloud-service.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->

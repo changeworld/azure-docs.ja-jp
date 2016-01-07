@@ -22,9 +22,11 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 2.  ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
-3.  ポータルの下のウィンドウで、**[作成]** をクリックします。![](./media/howto-service-bus-queues/sb-queues-03.png)
+3.  ポータルの下のウィンドウで、**[作成]** をクリックします。
+	![](./media/howto-service-bus-queues/sb-queues-03.png)
 
-4.  **[新しい名前空間を追加する]** ダイアログで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。![](./media/howto-service-bus-queues/sb-queues-04.png)
+4.  **[新しい名前空間を追加する]** ダイアログで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。
+	![](./media/howto-service-bus-queues/sb-queues-04.png)
 
 5.  入力した名前空間の名前が利用できることを確認できたら、名前空間をホストする国またはリージョンを選択します (コンピューティング リソースを展開する国またはリージョンと同じ国またはリージョンを必ず使用してください)。
 
@@ -42,7 +44,8 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 ###ポータルから管理資格情報を取得するには
 
-1.  左側のナビゲーション ウィンドウで **[Service Bus]** ノードをクリックして、利用可能な名前空間の一覧を表示します。![](./media/howto-service-bus-queues/sb-queues-13.png)
+1.  左側のナビゲーション ウィンドウで **[Service Bus]** ノードをクリックして、利用可能な名前空間の一覧を表示します。
+	![](./media/howto-service-bus-queues/sb-queues-13.png)
 
 2.  表示された一覧から先ほど作成した名前空間を選択します。 
 	
@@ -60,4 +63,4 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
   [Azure ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->

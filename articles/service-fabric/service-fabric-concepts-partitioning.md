@@ -281,7 +281,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
       }
       ```
 
-    Let's walk through it step by step. The code reads the first letter of the query string parameter `lastname` into a char. Then it determines the partition key for this letter by subtracting the hex value of `A` from the hex value of the last names' first letter.
+    このコードを詳しく見ていきましょう。 Tこのコードは、クエリ文字列パラメーター `lastname` の最初の文字を char 型で読み取ります。 その後、姓の最初の文字の 16 進数値から `A` の 16 進数値を引くことで、この文字のパーティション キーが決まります。
 
     ```CSharp
     string lastname = context.Request.QueryString["lastname"]; char firstLetterOfLastName = lastname.First(); int partitionKey = Char.ToUpper(firstLetterOfLastName) - 'A'; ```
@@ -336,4 +336,4 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!----HONumber=AcomDC_1125_2015-->
