@@ -37,12 +37,12 @@ Engagement SDK の iOS プロジェクトへの追加: Xcode でプロジェク�
 
 Engagement では追加のフレームワークを動作させる必要がある: プロジェクト エクスプローラーでプロジェクト ペインを開き、適切なターゲットを選択します。次に、[**Build phases**] タブを開き、[**Link Binary With Libraries**] メニューでこれらのフレームワークを追加します。
 
-> -   `AdSupport.framework` - リンクを `Optional` として設定します。
-> -   `SystemConfiguration.framework`
-> -   `CoreTelephony.framework`
-> -   `CFNetwork.framework`
-> -   `CoreLocation.framework`
-> -   `libxml2.dylib`
+ -   `AdSupport.framework` - リンクを `Optional` として設定します。
+ -   `SystemConfiguration.framework`
+ -   `CoreTelephony.framework`
+ -   `CFNetwork.framework`
+ -   `CoreLocation.framework`
+ -   `libxml2.dylib`
 
 > [AZURE.NOTE] AdSupport フレームワークは削除してもかまいません。Engagement では、IDFA の収集のためこのフレームワークが必要です。ただし、IDFA コレクションは、この ID に関する新しい Apple ポリシーに準じて無効にできます \<ios-sdk-engagement-idfa\>。
 
@@ -209,4 +209,4 @@ Engagement でログの送信を停止したい場合は、以下を呼び出し
 [startMonitoringSignificantLocationChanges]: http://developer.apple.com/library/IOs/#documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instm/CLLocationManager/startMonitoringSignificantLocationChanges
 [IDFA]: https://developer.apple.com/library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html#//apple_ref/occ/instp/ASIdentifierManager/advertisingIdentifier
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->
