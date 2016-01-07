@@ -362,7 +362,25 @@ while (propertyNames.hasMoreElements())
 
 | .NET プロパティの型 | JMS プロパティの型 | メモ |
 |--------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte | UnsignedByte | - | | sbyte | Byte | - | | char | Character | - | | short | Short | - | | ushort | UnsignedShort | - | | int | Integer | - | | uint | UnsignedInteger | - | | long | Long | - | | ulong | UnsignedLong | - | | float | Float | - | | double | Double | - | | decimal | BigDecimal | - | | bool | Boolean | - | | Guid | UUID | - | | string | String | - | | DateTime | Date | - | | DateTimeOffset | DescribedType | AMQP 型にマップされる DateTimeOffset.UtcTicks:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> | | TimeSpan | DescribedType | AMQP 型にマップされる Timespan.Ticks:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> | | Uri | DescribedType | AMQP 型にマップされる Uri.AbsoluteUri:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type> |
+| byte | UnsignedByte | - |
+| sbyte | Byte | - |
+| char | Character | - |
+| short | Short | - |
+| ushort | UnsignedShort | - |
+| int | Integer | - |
+| uint | UnsignedInteger | - |
+| long | Long | - |
+| ulong | UnsignedLong | - |
+| float | Float | - |
+| double | Double | - |
+| decimal | BigDecimal | - |
+| bool | Boolean | - |
+| Guid | UUID | - |
+| string | String | - |
+| DateTime | Date | - |
+| DateTimeOffset | DescribedType | AMQP 型にマップされる DateTimeOffset.UtcTicks:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
+| TimeSpan | DescribedType | AMQP 型にマップされる Timespan.Ticks:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> |
+| Uri | DescribedType | AMQP 型にマップされる Uri.AbsoluteUri:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type> |
 
 ### 標準ヘッダー
 
@@ -372,13 +390,32 @@ while (propertyNames.hasMoreElements())
 
 | JMS | Service Bus .NET | メモ |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| JMSCorrelationID | Message.CorrelationID | - | | JMSDeliveryMode | 現在使用できません。 | Service Bus は、指定した内容にかかわらず、持続的なメッセージ (DeliveryMode.PERSISTENT など) のみをサポートします。 | | JMSDestination | Message.To | - | | JMSExpiration | Message.TimeToLive | 換算 | | JMSMessageID | Message.MessageID | 既定では、JMSMessageID は AMQP メッセージのバイナリ形式でエンコードされます。バイナリ message-id を受信すると、.NET クライアント ライブラリはバイトの Unicode 値に基づいて文字列表現に変換します。文字列メッセージ ID を使用するように JMS ライブラリを切り替えるには、"binary-messageid=false" 文字列を JNDI ConnectionURL のクエリ パラメーターに追加します。例: "amqps://[username]:[password]@[namespace].servicebus.windows.net? binary-messageid=false" | | JMSPriority | 現在使用できません。 | Service Bus ではメッセージの優先度はサポートされません。 | | JMSRedelivered | 現在使用できません。 | - | | JMSReplyTo | Message.ReplyTo | - | | JMSTimestamp | Message.EnqueuedTimeUtc | 換算 | | JMSType | Message.Properties["jms-type"] | - |
+| JMSCorrelationID | Message.CorrelationID | - |
+| JMSDeliveryMode | 現在使用できません。 | Service Bus は、指定した内容にかかわらず、持続的なメッセージ (DeliveryMode.PERSISTENT など) のみをサポートします。 |
+| JMSDestination | Message.To | - |
+| JMSExpiration | Message.TimeToLive | 換算 |
+| JMSMessageID | Message.MessageID | 既定では、JMSMessageID は AMQP メッセージのバイナリ形式でエンコードされます。バイナリ message-id を受信すると、.NET クライアント ライブラリはバイトの Unicode 値に基づいて文字列表現に変換します。文字列メッセージ ID を使用するように JMS ライブラリを切り替えるには、"binary-messageid=false" 文字列を JNDI ConnectionURL のクエリ パラメーターに追加します。例: "amqps://[username]:[password]@[namespace].servicebus.windows.net? binary-messageid=false" |
+| JMSPriority | 現在使用できません。 | Service Bus ではメッセージの優先度はサポートされません。 |
+| JMSRedelivered | 現在使用できません。 | - |
+| JMSReplyTo | Message.ReplyTo | - |
+| JMSTimestamp | Message.EnqueuedTimeUtc | 換算 |
+| JMSType | Message.Properties["jms-type"] | - |
 
 #### Service Bus .NET API から JMS へ
 
 | Service Bus .NET | JMS | メモ |
 |-------------------------|------------------|-------------------------|
-| ContentType | - | 現在使用できません。 | | CorrelationId | JMSCorrelationID | - | | EnqueuedTimeUtc | JMSTimestamp | 換算 | | Label | なし | 現在使用できません。 | | MessageId | JMSMessageID | - | | ReplyTo | JMSReplyTo | - | | ReplyToSessionId | なし | 現在使用できません。 | | ScheduledEnqueueTimeUtc | なし | 現在使用できません。 | | SessionId | なし | 現在使用できません。| | TimeToLive | JMSExpiration | 換算 | | To | JMSDestination | - |
+| ContentType | - | 現在使用できません。 |
+| CorrelationId | JMSCorrelationID | - |
+| EnqueuedTimeUtc | JMSTimestamp | 換算 |
+| Label | なし | 現在使用できません。 |
+| MessageId | JMSMessageID | - |
+| ReplyTo | JMSReplyTo | - |
+| ReplyToSessionId | なし | 現在使用できません。 |
+| ScheduledEnqueueTimeUtc | なし | 現在使用できません。 |
+| SessionId | なし | 現在使用できません。|
+| TimeToLive | JMSExpiration | 換算 |
+| To | JMSDestination | - |
 
 ## サポートされていない機能および制限
 
@@ -409,4 +446,4 @@ Service Bus で AMQP 1.0 を介して JMS を使用する場合は、次の制�
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->

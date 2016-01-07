@@ -175,7 +175,7 @@ $applicationPath = "C:\VS2015\WordCount\WordCount\pkg\Debug"
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $applicationPath -ApplicationPackagePathInImageStore "WordCount" -ImageStoreConnectionString fabric:ImageStore
 ````
-Register your application type with service fabric.
+アプリケーションの種類を Service Fabric に登録します。
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPathInImageStore "WordCount"
@@ -211,4 +211,4 @@ http://sfcluster4doc.westus.cloudapp.azure.com:31000
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
 
-<!----HONumber=AcomDC_1203_2015-->
+<!-----HONumber=AcomDC_1203_2015-->

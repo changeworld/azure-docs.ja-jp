@@ -44,6 +44,8 @@
 * **[完了]** をクリックします。
 * Eclipse の Project Explorer ビューで、**MyHelloWorld** を展開します。**WebContent** を右クリックし、**[New]**、**[JSP File]** の順にクリックします。
 * **[New JSP File]** ダイアログ ボックスで、ファイルに **index.jsp** という名前を付けます。次に示しているように、親フォルダーは引き続き **MyHelloWorld/WebContent** としてください。
+
+
     ![][ic659262]
 * **[Select JSP Template]** ダイアログで、このチュートリアルのために **[New JSP File (html)]** を選択し、**[Finish]** をクリックします。
 * index.jsp ファイルが Eclipse で開いたら、"**Hello World!**" を動的に表示するためのテキストを既存の `<body>` 要素に追加します。更新した `<body>` の内容は次のようになります。
@@ -62,6 +64,7 @@ Java Web アプリケーションをテストする準備が整ったらすぐ�
 1. Eclipse ツール バーの **[Publish to Azure Cloud]** ボタン をクリックします。
     ![][ic710882]
 1. このアプリケーションを Azure に発行するのが初めてで、アプリケーションの Azure デプロイ プロジェクトを過去に作成したことがない場合、Azure デプロイ プロジェクトが自動的に作成されます。次のプロンプトが表示され、アプリケーションを実行する目的で自動的にデプロイされる JDK パッケージとアプリケーション サーバーが表示されます。
+
     ![][ic789598]
     この方法を使えば、Azure ですばやく簡単にアプリケーションをテストすることができます。サーバーを個別に構成したり、既定とは異なる JDK を構成したりする必要はありません。既定の設定で問題がない場合は、**[OK]** をクリックして以降の手順に進みます。
     ただし、アプリケーションに使用する JDK またはアプリケーション サーバーを変更する必要がある場合は、自動的に作成された Azure デプロイ プロジェクトを編集して後で変更することができます。または、ここで **[Cancel]** をクリックし、このチュートリアルの「**Azure デプロイ プロジェクトについて**」をお読みください。
@@ -70,6 +73,7 @@ Java Web アプリケーションをテストする準備が整ったらすぐ�
         1. **[Import from PUBLISH-SETTINGS file]** をクリックします。
         1. **[Import Subscription Information]** ダイアログの **[Download PUBLISH-SETTINGS File]** をクリックします。まだ Azure アカウントにログインしていない場合は、ログインするように求められます。その後、Azure 発行設定ファイルを保存するよう求めるメッセージが表示されます。このファイルは、ローカル コンピューターに保存してください。
         1. 引き続き **[Import Subscription Information]** ダイアログで **[Browse]** ボタンをクリックし、前の手順でローカルに保存した発行設定ファイルを選択して **[Open]** をクリックします。画面は次のようになります。
+
             ![][ic644267]
         1. **[OK]** をクリックします。
     1. デプロイに使用するサブスクリプションを **[Subscription]** で選択します。
@@ -193,4 +197,4 @@ Java での Azure の使用方法の詳細については、[Azure Java デベ�
 [ic719491]: ./media/azure-toolkit-for-eclipse-creating-a-hello-world-application/ic719491.png
 [ic789598]: ./media/azure-toolkit-for-eclipse-creating-a-hello-world-application/ic789598.png
 
-<!----HONumber=AcomDC_1210_2015-->
+<!-----HONumber=AcomDC_1210_2015-->
