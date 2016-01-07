@@ -37,7 +37,8 @@ ElasticSearch に出現するトレースの場合、リアル タイムで Serv
 Azure で ElasticSearch サービスを設定するには、[**Azure ARM テンプレート**](../resource-group-overview.md)を使用する方法が最も簡単です。Azure クイックスタート テンプレート リポジトリから、[ElasticSearch 用の包括的なクイックスタート ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/elasticsearch)を利用できます。このテンプレートでは、スケール ユニット (ノードのグループ) に別のストレージ アカウントを使用するので、異なる構成で、接続されているデータ ディスク数が異なる別のクライアントとサーバーをプロビジョニングできます。
 
 この記事では、[Microsoft Patterns & Practices ELK ブランチ](https://github.com/mspnp/semantic-logging/tree/elk/)の **ES-MultiNode** という別のテンプレートを使用します。このテンプレートは使い方が簡単で、既定で HTTP 基本認証で保護たれ ElasticSearch クラスターを簡単に作成できます。次に進む前に、GitHub からお使いのコンピューターに [Microsoft P&P "elk" repo](https://github.com/mspnp/semantic-logging/tree/elk/) をダウンロードしてください (repo をコピーするか、ZIP ファイルをダウンロードします)。ES-MultiNode テンプレートは、同じ名前のフォルダーに格納されています。  
->[AZURE.NOTE] 現在、ES-MultiNode テンプレートは関連するスクリプトは ElasticSearch 1.7 リリースをサポートしています。今後、ElasticSearch 2.0 のサポートが追加される予定です。
+
+>[AZURE.NOTE] 現在、ES-MultiNode テンプレートは関連するスクリプトは ElasticSearch 1.7 リリースをサポートしています。今後、ElasticSearch 2.0 のサポートが追加される予定です。  
 
 ### コンピューターで ElasticSearch のインストール スクリプトを実行する準備を整える
 ES-MultiNode テンプレートを使用するには、提供されている `CreateElasticSearchCluster`という PowerShell スクリプトを使用するのが最も簡単な方法です。このスクリプトを使用するには、Azure PowerShell モジュールと、openssl というツールをインストールする必要があります。openssl は、SSH キーを作成するために必要です。SSH キーは、ElasticSearch クラスターをリモート管理するために使用できます。
@@ -45,7 +46,8 @@ ES-MultiNode テンプレートを使用するには、提供されている `Cr
 注: `CreateElasticSearchCluster` スクリプトは、Windows コンピューターから ES-MultiNode テンプレートを簡単に使用できるように設計されています。Windows 以外のコンピューターでもこのテンプレートを使用できますが、そのシナリオについては、この記事では説明しません。
 
 1. まだインストールしていない場合は、[**Azure PowerShell モジュール**](http://go.microsoft.com/fwlink/p/?linkid=320376)をインストールします。メッセージが表示されたら、[実行] をクリックしてインストールします。  
->[AZURE.NOTE]Azure PowerShell は Azure PowerShell 1.0 リリースで大規模な変更が行われています。現在、CreateElasticSearchCluster は、Azure PowerShell 0.9.8 で動作するように設計されており、Azure PowerShell 1.0 プレビューをサポートしていません。今後、Azure PowerShell 1.0 互換のスクリプトが提供される予定です。
+
+>[AZURE.NOTE] Azure PowerShell は Azure PowerShell 1.0 リリースで大規模な変更が行われています。現在、CreateElasticSearchCluster は、Azure PowerShell 0.9.8 で動作するように設計されており、Azure PowerShell 1.0 プレビューをサポートしていません。今後、Azure PowerShell 1.0 互換のスクリプトが提供される予定です。  
 
 2. **openssl** ツールは、[**Git for Windows**](http://www.git-scm.com/downloads) のディストリビューションに含まれています。まだインストールしていない場合は、今すぐ [Git for Windows](http://www.git-scm.com/downloads) をインストールしてください (既定のインストール オプションで問題ありません)。
 
@@ -80,7 +82,7 @@ ES-MultiNode テンプレートを使用するには、提供されている `Cr
 CreateElasticSearchCluster -ResourceGroupName <es-group-name>
 ``` この `<es-group-name>` は、Azure リソース グループ名です。すべてのクラスター リソースが含まれます。
 
->[AZURE.NOTE]Test-AzureResourceGroup コマンドレットで NullReferenceException が発生する場合、Azure にログオン (`Add-AzureAccount`) し忘れていることを示します。
+>[AZURE.NOTE] Test-AzureResourceGroup コマンドレットで NullReferenceException が発生する場合、Azure にログオン (`Add-AzureAccount`) し忘れていることを示します。
 
 スクリプトを実行してエラーが発生し、エラーの原因が誤ったテンプレート パラメーター値であると判断した場合は、パラメーター ファイルを修正し、別のリソース グループ名でスクリプトを再実行します。`-RemoveExistingResourceGroup`パラメーターをスクリプトの呼び出しに追加すると、同じリソース グループ名を再利用して、古いリソース グループを消去することもできます。
 
@@ -248,4 +250,4 @@ ElasticSearch 接続データは、サービス構成ファイル (PackageRoot\\
 [1]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/listener-lib-references.png
 [2]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/kibana.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->
