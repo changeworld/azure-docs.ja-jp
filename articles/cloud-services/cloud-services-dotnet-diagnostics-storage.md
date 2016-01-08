@@ -87,7 +87,7 @@ SDK 2.4 およびそれ以前のバージョンでは、構成ファイルを介
 
 - **Azure ストレージ エクスプローラー (Neudesic)** - [Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)は、Azure ストレージ プロジェクト内のデータ (Azure アプリケーションのログを含む) を調査したり変更したりするための実用的な GUI ツールです。ツールをダウンロードするには、「[Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)」を参照してください。
 
-- Azure 診断マネージャー (Cerebrata) - [Azure 診断マネージャー](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx) は、Windows Azure 診断を管理するための Windows (WPF) ベースのクライアントです。Azure 内のアプリケーションによって収集された診断データの表示、ダウンロード、および管理ができます。ツールをダウンロードするには、「[Azure 診断マネージャー](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx)」を参照してください。
+- Azure 診断マネージャー (Cerebrata) - [Azure 診断マネージャー](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx) は、Microsoft Azure 診断を管理するための Windows (WPF) ベースのクライアントです。Azure 内のアプリケーションによって収集された診断データの表示、ダウンロード、および管理ができます。ツールをダウンロードするには、「[Azure 診断マネージャー](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx)」を参照してください。
 
 ## 次のステップ
 

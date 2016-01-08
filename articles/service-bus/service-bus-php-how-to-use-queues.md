@@ -26,7 +26,7 @@
 
 ## PHP アプリケーションの作成
 
-Windows Azure BLOB サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から [Windows Azure SDK for PHP](../php-download-sdk.md) のクラスを参照することのみです。アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
+Microsoft Azure BLOB サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から [Microsoft Azure SDK for PHP](../php-download-sdk.md) のクラスを参照することのみです。アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
 
 > [AZURE.NOTE]PHP のインストールでは、[OpenSSL 拡張機能](http://php.net/openssl)をインストールして有効にしておく必要もあります。
 

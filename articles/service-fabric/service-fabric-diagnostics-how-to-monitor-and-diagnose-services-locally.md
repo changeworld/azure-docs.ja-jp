@@ -58,6 +58,6 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 カスタムの ETW トレースをサービスのコードに追加した後で、もう一度アプリケーションをビルド、デプロイ、および実行して、診断ビューアーでイベントを表示することができます。F5 キーを使用してアプリケーションをデバッグする場合は、診断ビューアーが自動的に開きます。
 
 ## 次のステップ
-前述のアプリケーションに追加したローカル診断のための同じトレース コードは、Azure クラスターでアプリケーションの実行中にこれらのイベントを表示するツールと連動します。次の記事では、ツールの様々なオプションやそれらの設定方法について説明します。* [WAD (Windows Azure 診断) と Operational Insights を使用して Azure の Service Fabric クラスターのログを収集する](service-fabric-diagnostics-how-to-setup-wad-operational-insights.md) * [Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する](service-fabric-diagnostic-how-to-use-elasticsearch.md)
+前述のアプリケーションに追加したローカル診断のための同じトレース コードは、Azure クラスターでアプリケーションの実行中にこれらのイベントを表示するツールと連動します。次の記事では、ツールの様々なオプションやそれらの設定方法について説明します。* [WAD (Microsoft Azure 診断) と Operational Insights を使用して Azure の Service Fabric クラスターのログを収集する](service-fabric-diagnostics-how-to-setup-wad-operational-insights.md) * [Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する](service-fabric-diagnostic-how-to-use-elasticsearch.md)
 
 <!---HONumber=Nov15_HO4-->

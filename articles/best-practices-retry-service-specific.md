@@ -355,7 +355,7 @@ Entity Framework の再試行メカニズムを使用する他の例について
 
 ## 詳細
 
-* [Windows Azure SQL Database Performance and Elasticity Guide (Windows Azure SQL Database のパフォーマンスと弾力性に関するガイド)](http://social.technet.microsoft.com/wiki/contents/articles/3507.windows-azure-sql-database-performance-and-elasticity-guide.aspx)
+* [Microsoft Azure SQL Database Performance and Elasticity Guide (Microsoft Azure SQL Database のパフォーマンスと弾力性に関するガイド)](http://social.technet.microsoft.com/wiki/contents/articles/3507.windows-azure-sql-database-performance-and-elasticity-guide.aspx)
 
 ## ADO.NET の再試行ガイドラインを使用する SQL Database
 
@@ -493,7 +493,7 @@ using (var reader = await sqlCommand.ExecuteReaderWithRetryAsync(retryPolicy))
 
 SQL Database を最大限に活用することに関する一般的なガイダンスについては、次を参照してください。
 
-* [Windows Azure SQL Database Performance and Elasticity Guide (Windows Azure SQL Database のパフォーマンスと弾力性に関するガイド)](http://social.technet.microsoft.com/wiki/contents/articles/3507.windows-azure-sql-database-performance-and-elasticity-guide.aspx)
+* [Microsoft Azure SQL Database Performance and Elasticity Guide (Microsoft Azure SQL Database のパフォーマンスと弾力性に関するガイド)](http://social.technet.microsoft.com/wiki/contents/articles/3507.windows-azure-sql-database-performance-and-elasticity-guide.aspx)
 * [Minimizing Connection Pool errors in SQL Azure (SQL Azure での接続プール エラーの最小化)](http://blogs.msdn.com/b/adonet/archive/2011/11/05/minimizing-connection-pool-errors-in-sql-azure.aspx)
 
 ## Service Bus の再試行ガイドライン

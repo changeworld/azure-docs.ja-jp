@@ -75,7 +75,7 @@ Twilio アカウントを取得する準備ができたら、[Twilio のサイ�
 Twilio アカウントにサインアップすると、アカウント ID と認証トークンが発行されます。Twilio API を呼び出すには、この両方が必要になります。自分のアカウントが不正にアクセスされないように、認証トークンを安全に保管してください。アカウント ID と認証トークンは、[Twilio アカウント ページ][twilio_account]の **[ACCOUNT SID]** フィールドと **[AUTH TOKEN]** フィールドでそれぞれ確認できます。
 
 ## <a id="create_app"></a>Azure アプリケーションの作成
-Twilio 対応のアプリケーションをホストする Azure アプリケーションには、他の Azure アプリケーションとの違いはありません。Twilio .NET ライブラリを追加し、その Twilio .NET ライブラリを使用するようにロールを構成します。最初の Windows Azure プロジェクトの作成に関する詳細については、「[Visual Studio を使用した Windows Azure プロジェクトの作成][vs_project]」を参照してください。
+Twilio 対応のアプリケーションをホストする Azure アプリケーションには、他の Azure アプリケーションとの違いはありません。Twilio .NET ライブラリを追加し、その Twilio .NET ライブラリを使用するようにロールを構成します。最初の Microsoft Azure プロジェクトの作成に関する詳細については、「[Visual Studio を使用した Microsoft Azure プロジェクトの作成][vs_project]」を参照してください。
 
 ## <a id="configure_app"></a>Twilio ライブラリを使用するアプリケーションの構成
 Twilio は、一連の .NET ヘルパー ライブラリを提供します。このライブラリは、Twilio のさまざまな側面をラップし、Twilio REST API および Twilio Client と対話して TwiML 応答を生成するためのシンプルで簡単な方法を提供します。
@@ -238,7 +238,7 @@ Twilio から提供される URL を使用する代わりに、HTTP 応答を返
 
 TwiML の詳細については、[https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml) を参照してください。
 
-TwiML 応答を提供する方法を設定したら、**client.InitiateOutboundCall** メソッドにその URL を渡すことができます。たとえば、Windows Azure クラウド サービスにデプロイされた MyTwiML という名前の Web アプリケーションがあり、ASP.NET ハンドラーの名前が mytwiml.ashx である場合、次のコード例に示すように URL を **client.InitiateOutboundCall** に渡すことができます。
+TwiML 応答を提供する方法を設定したら、**client.InitiateOutboundCall** メソッドにその URL を渡すことができます。たとえば、Microsoft Azure クラウド サービスにデプロイされた MyTwiML という名前の Web アプリケーションがあり、ASP.NET ハンドラーの名前が mytwiml.ashx である場合、次のコード例に示すように URL を **client.InitiateOutboundCall** に渡すことができます。
 
     // Place the call From, To, and URL values into a hash map.
     // This sample uses the sandbox number provided by Twilio to make the call.
@@ -250,7 +250,7 @@ TwiML 応答を提供する方法を設定したら、**client.InitiateOutboundC
     var call = client.InitiateOutboundCall(options);
 
 
-ASP.NET を使用する Windows Azure での Twilio の使用に関する詳細については、「[Windows Azure の Web ロールで Twilio を使用して通話する方法][howto_phonecall_dotnet]」を参照してください。
+ASP.NET を使用する Microsoft Azure での Twilio の使用に関する詳細については、「[Microsoft Azure の Web ロールで Twilio を使用して通話する方法][howto_phonecall_dotnet]」を参照してください。
 
 [AZURE.INCLUDE [twilio\_additional\_services\_and\_next\_steps](../includes/twilio_additional_services_and_next_steps.md)]
 

@@ -17,7 +17,7 @@ Node.js モジュールである **package.json** および **npm-shrinkwrap.jso
 
 > [AZURE.NOTE]VM でのデプロイは Virtual Machines でホストされているオペレーティング システムに依存するので、この記事では Azure Virtual Machines については説明しません。
 
-> [AZURE.NOTE]**package.json** または **npm-shrinkwrap.json** ファイルを使用したモジュール インストールのサポートを有効にできますが、このサポートを有効にするには、クラウド サービスのプロジェクトで使用される既定のスクリプトをカスタマイズする必要があります。これを行う方法の例については、「[npm インストールを実行してノード モジュールのデプロイを回避するための Windows Azure スタートアップ タスク](http://nodeblog.azurewebsites.net/startup-task-to-run-npm-in-azure)」をご覧ください。
+> [AZURE.NOTE]**package.json** または **npm-shrinkwrap.json** ファイルを使用したモジュール インストールのサポートを有効にできますが、このサポートを有効にするには、クラウド サービスのプロジェクトで使用される既定のスクリプトをカスタマイズする必要があります。これを行う方法の例については、「[npm インストールを実行してノード モジュールのデプロイを回避するための Microsoft Azure スタートアップ タスク](http://nodeblog.azurewebsites.net/startup-task-to-run-npm-in-azure)」をご覧ください。
 
 ##Node.js モジュール
 
