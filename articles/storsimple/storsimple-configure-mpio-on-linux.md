@@ -468,7 +468,8 @@ A.ご使用のデバイスがホワイトリストに登録されているかど
 |**iSCSI**|`service iscsid start`|iSCSI サービスを開始する|
 ||`service iscsid stop`|iSCSI サービスを停止する|
 ||`service iscsid restart`|iSCSI サービスを再起動する|
-||`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>`|指定したアドレスで使用可能なターゲットを検出する| ||`iscsiadm -m node --login -T <TARGET_IQN>`|iSCSI ターゲットにログインする|
+||`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>`|指定したアドレスで使用可能なターゲットを検出する|
+||`iscsiadm -m node --login -T <TARGET_IQN>`|iSCSI ターゲットにログインする|
 ||`iscsiadm -m node --logout -p <Target_IP>`|iSCSI ターゲットからログアウトする|
 ||`cat /etc/iscsi/initiatorname.iscsi`|iSCSI イニシエーター名を出力する|
 ||`iscsiadm –m session –s <sessionid> -P 3`|ホスト上で検出された iSCSI セッションとボリュームの状態を確認する|
@@ -490,4 +491,4 @@ Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキ
 - [CentOS での MPIO の設定](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
 - [Linux トレーニング ガイド](http://linux-training.be/files/books/LinuxAdm.pdf)
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1203_2015-->
