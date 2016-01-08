@@ -93,7 +93,7 @@ Web 開発者とデザイナーのために、Azure App Service は、Git や FT
 - [タスクの自動化][scripting]のためのコマンドライン ツールを使用できます。
 - [.Net][dotnet]、[PHP][]、[Node.js][nodejs]、[Python][] など、一般的な言語で作業できます。
 - 非常に高い容量に拡張するための 3 つの異なる拡張レベルを選択できます。
-- [SQL Database][sqldatabase]、[Service Bus][servicebus]、[Storage][] などの他の Azure サービスや、MySQL、MongoDB など、[Windows Azure ストア][azurestore]からのパートナーの製品と統合できます。
+- [SQL Database][sqldatabase]、[Service Bus][servicebus]、[Storage][] などの他の Azure サービスや、MySQL、MongoDB など、[Microsoft Azure ストア][azurestore]からのパートナーの製品と統合できます。
 - Visual Studio、Git、WebMatrix、WebDeploy、TFS、FTP などのツールと統合できます。
 
 ### <a id="multitier"></a>Web フロント エンドを含む多層アプリケーションをクラウドに移行しています。

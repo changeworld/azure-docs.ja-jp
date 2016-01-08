@@ -1,6 +1,6 @@
 <properties
    pageTitle="WAD と Operational Insights でログを収集する方法 | Microsoft Azure"
-   description="この記事では、Azure で実行されている Service Fabric クラスターのログを収集するように Windows Azure 診断と Operational Insights を設定する方法について説明します"
+   description="この記事では、Azure で実行されている Service Fabric クラスターのログを収集するように Microsoft Azure 診断と Operational Insights を設定する方法について説明します"
    services="service-fabric"
    documentationCenter=".net"
    authors="kunaldsingh"
@@ -17,12 +17,12 @@
    ms.author="kunalds"/>
 
 
-# WAD (Windows Azure 診断) と Operational Insights を使用して Azure の Service Fabric クラスターのログを収集する
+# WAD (Microsoft Azure 診断) と Operational Insights を使用して Azure の Service Fabric クラスターのログを収集する
 
-Azure で Service Fabric クラスターを実行するときに、すべてのノードのログを 1 か所に収集する場合があります。1 か所にログを収集すると、クラスターと、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決が簡単になります。ログのアップロードと収集には、ログを Azure テーブル ストレージにアップロードする WAD (Windows Azure 診断) 拡張機能を使用する方法があります。Operational Insights (Microsoft Operations Management Suite の一部) は、ログの分析と検索が簡単になる SaaS ソリューションです。以下の手順では、クラスター内の VM で WAD を設定してログを中央のストアにアップロードし、ログを取得するように Operational Insights を構成して、Operational Insights ポータルで確認する方法について説明します。Operational Insights は、Service Fabric クラスターからアップロードされたさまざまなログのソースを格納されている Azure ストレージ テーブル名ごとに識別します。そのため、その Operational Insights が検索する名前を持つ Azure ストレージ テーブルにログをアップロードするように WAD を構成する必要があります。このドキュメントの構成設定例では、ストレージ テーブル名の例も示します。
+Azure で Service Fabric クラスターを実行するときに、すべてのノードのログを 1 か所に収集する場合があります。1 か所にログを収集すると、クラスターと、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決が簡単になります。ログのアップロードと収集には、ログを Azure テーブル ストレージにアップロードする WAD (Microsoft Azure 診断) 拡張機能を使用する方法があります。Operational Insights (Microsoft Operations Management Suite の一部) は、ログの分析と検索が簡単になる SaaS ソリューションです。以下の手順では、クラスター内の VM で WAD を設定してログを中央のストアにアップロードし、ログを取得するように Operational Insights を構成して、Operational Insights ポータルで確認する方法について説明します。Operational Insights は、Service Fabric クラスターからアップロードされたさまざまなログのソースを格納されている Azure ストレージ テーブル名ごとに識別します。そのため、その Operational Insights が検索する名前を持つ Azure ストレージ テーブルにログをアップロードするように WAD を構成する必要があります。このドキュメントの構成設定例では、ストレージ テーブル名の例も示します。
 
 ## 推奨される記事
-* [Windows Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md) (Cloud Services 関連ですが、お勧めの情報と例が掲載されています)
+* [Microsoft Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md) (Cloud Services 関連ですが、お勧めの情報と例が掲載されています)
 * [Operational Insights](https://azure.microsoft.com/services/operational-insights/)
 * [Azure リソース マネージャー](https://azure.microsoft.com/documentation/articles/resource-group-overview/)
 
@@ -37,7 +37,7 @@ Azure で Service Fabric クラスターを実行するときに、すべての�
 2. アプリケーション イベント: サービス コードから生成され、Visual Studio テンプレートで指定された EventSource ヘルパー クラスを使用して出力されるイベントです。アプリケーションからログを出力する方法については、[この記事](https://azure.microsoft.com/documentation/articles/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/)を参照してください。
 
 
-## WAD (Windows Azure の診断) を Service Fabric クラスターにデプロイしてログの収集とアップロードを行う
+## WAD (Microsoft Azure の診断) を Service Fabric クラスターにデプロイしてログの収集とアップロードを行う
 ログ収集の最初の手順は、Service Fabric クラスター内の各 VM に WAD 拡張機能をデプロイすることです。WAD によって各 VM 上のログが収集され、指定したストレージ アカウントにアップロードされます。ポータルを使用するか ARM を使用するかによって、またクラスター作成の一環としてのデプロイか、既に存在するクラスターの場合かによって、一部の手順が変わります。各シナリオの手順を見てみましょう。
 
 ### ポータルを使用してクラスター作成の一環で WAD をデプロイする
@@ -164,7 +164,7 @@ Operational Insights ワークスペースの作成手順については、以�
 [Operational Insights の運用](https://technet.microsoft.com/library/mt484118.aspx)
 
 ### クラスター ログを表示するように Operational Insights ワークスペースを構成する
-前述のように Operational Insights ワークスペースを作成したら、次に、WAD によってクラスターからアップロードされる Azure テーブルのログを取得するようにワークスペースを構成します。現在、この構成は、Operational Insights ポータルでは使用できません。PowerShell コマンドを使用する必要があります。この PS スクリプトを実行してください。```powershell <# このスクリプトは、Azure ストレージ アカウントから Windows Azure 診断を読み取るように Operations Management Suite ワークスペース (別名 Operational Insights ワークスペース) を構成します。
+前述のように Operational Insights ワークスペースを作成したら、次に、WAD によってクラスターからアップロードされる Azure テーブルのログを取得するようにワークスペースを構成します。現在、この構成は、Operational Insights ポータルでは使用できません。PowerShell コマンドを使用する必要があります。この PS スクリプトを実行してください。```powershell <# このスクリプトは、Azure ストレージ アカウントから Microsoft Azure 診断を読み取るように Operations Management Suite ワークスペース (別名 Operational Insights ワークスペース) を構成します。
 
     It will enable all supported data types (currently Windows Event Logs, Syslog, Service Fabric Events, ETW Events and IIS Logs).
 

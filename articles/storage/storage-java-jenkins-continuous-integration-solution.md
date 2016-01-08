@@ -102,7 +102,7 @@ Jenkins で BLOB サービスを使用するには、Azure Storage プラグイ�
         date /t > date.txt
         time /t >> date.txt
  
-5. ジョブ構成の **[Post-build Actions]** セクションで **[Add post-build action]** をクリックした後、**[Upload artifacts to Windows Azure Blob storage]** を選択します。
+5. ジョブ構成の **[Post-build Actions]** セクションで **[Add post-build action]** をクリックした後、**[Upload artifacts to Microsoft Azure Blob storage]** を選択します。
 6. **[Storage Account Name]** では、使用するストレージ アカウントを選択します。
 7. **[Container name]** では、コンテナー名を指定します(コンテナーは、ビルド アーティファクトをアップロードする時点で存在していなければ、自動で作成されます)。 環境変数を使用することもできます。この例では、コンテナー名に「**${JOB\_NAME}**」と入力します。
 

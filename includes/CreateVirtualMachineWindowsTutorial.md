@@ -1,6 +1,6 @@
 # Windows Server を実行する仮想マシンの作成 #
 
-このチュートリアルは、Windows Azure の管理ポータルのイメージ ギャラリーを使用すると Server を実行する Azure 仮想マシン (VM) を簡単に作成できることを示します。イメージ ギャラリーは、Windows オペレーティング システム、Linux ベースのオペレーティング システム、アプリケーション イメージなどさまざまなイメージを提供します。
+このチュートリアルは、Microsoft Azure の管理ポータルのイメージ ギャラリーを使用すると Server を実行する Azure 仮想マシン (VM) を簡単に作成できることを示します。イメージ ギャラリーは、Windows オペレーティング システム、Linux ベースのオペレーティング システム、アプリケーション イメージなどさまざまなイメージを提供します。
 
 > [AZURE.NOTE]このチュートリアルは、Azure VM の使用経験がなくても完了できます。ただし、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure アカウントの作成に関するページ](http://www.windowsazure.com/develop/php/tutorials/create-a-windows-azure-account/)を参照してください。
 
@@ -71,7 +71,7 @@
 
 	![Specify the size of the empty disk](./media/CreateVirtualMachineWindowsTutorial/emptydisksize.png)
 	
-	>[AZURE.NOTE]ディスクはすべて、VHD ファイルから Windows Azure ストレージに作成されます。ストレージに追加する VHD ファイルの名前は **[ファイル名]** で指定できますが、ディスクの名前は Azure によって自動的に生成されます。
+	>[AZURE.NOTE]ディスクはすべて、VHD ファイルから Microsoft Azure ストレージに作成されます。ストレージに追加する VHD ファイルの名前は **[ファイル名]** で指定できますが、ディスクの名前は Azure によって自動的に生成されます。
 
 6. ダッシュボードに戻り、空のデータ ディスクが仮想マシンに正常に接続されたことを確認します。空のディスクは 2 番目のディスクとして **[ディスク]** 一覧に OS ディスクと共に表示されます。
 

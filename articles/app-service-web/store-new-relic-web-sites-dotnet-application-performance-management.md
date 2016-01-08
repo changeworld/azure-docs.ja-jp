@@ -32,7 +32,7 @@ New Relic は、Web トランザクションの読み込み時間とスループ
 
 New Relic Standard は、Azure ユーザーであれば無料でご利用いただけます。New Relic Pro は、使用している Web サイト モード (および占有モードを使用している場合はインスタンス サイズ) に基づいて複数のパッケージで提供されます。
 
-料金情報については、[Windows Azure Marketplace の New Relic のページ](/marketplace/partners/newrelic/newrelic)を参照してください。
+料金情報については、[Microsoft Azure Marketplace の New Relic のページ](/marketplace/partners/newrelic/newrelic)を参照してください。
 
 > [AZURE.NOTE]コンピューティング インスタンス 10 個までについてのみ、料金を表示しています。10 個を超える場合は、ボリューム ディスカウント料金について New Relic (sales@newrelic.com) までお問い合わせください。
 

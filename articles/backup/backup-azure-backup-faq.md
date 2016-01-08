@@ -166,8 +166,8 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 	| レジストリ パス | レジストリ キー | 値 |
 	| ------ | ------- | ------ |
-	| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
-	| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
+	| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Azure Backup\Config` | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
+	| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Azure Backup\Config\CloudBackupProvider` | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
 
 
 + 管理者特権のコマンド プロンプトで次のコマンドを実行して OBEngine を開始します。

@@ -43,7 +43,7 @@ Web サイトでアプリケーションをホストしている場合は、環�
 
 ##PowerShell で Cloud Services のバージョンを指定する
 
-クラウド サービスでアプリケーションをホストしており、Windows Azure PowerShell を使用してアプリケーションをデプロイしている場合は、PowerShell の **Set-AzureServiceProjectRole** コマンドレットを使用して既定の Node.js のバージョンをオーバーライドできます。次に例を示します。
+クラウド サービスでアプリケーションをホストしており、Microsoft Azure PowerShell を使用してアプリケーションをデプロイしている場合は、PowerShell の **Set-AzureServiceProjectRole** コマンドレットを使用して既定の Node.js のバージョンをオーバーライドできます。次に例を示します。
 
 	Set-AzureServiceProjectRole WebRole1 Node 0.8.4
 

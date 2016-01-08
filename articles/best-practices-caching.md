@@ -247,7 +247,7 @@ Azure の Web ロールを使用して実行される ASP.NET Web アプリケ�
 
 ## カスタムの Redis キャッシュの構築
 
-Azure Redis キャッシュは、基になる Redis サーバーに対するファサードとして機能します。現在は、構成の固定セットがサポートされていますが、Redis クラスタリング用の構成は提供されていません。Azure Redis Cache の対象ではない高度な構成 (53 GB を超えるキャッシュなど) が必要な場合は、Azure 仮想マシンを使用して独自の Redis サーバーを構築し、ホストできます。このプロセスは、レプリケーションを実装する場合にマスター ノードと下位ノードとして機能する複数の VM を作成する必要があるため、複雑になる可能性があります。さらに、クラスターを作成する場合は、複数のマスター サーバーと下位サーバーが必要になります。高度な可用性とスケーラビリティを実現する、最小限にクラスター化されたレプリケーション トポロジは、3 組のマスター/下位サーバーとして編成した少なくとも 6 台の VM で構成されます (1 つのクラスターには少なくとも 3 つのマスター ノードが必要です)。各マスター/下位の組は、待機時間を最小限に抑えるために近接して配置する必要があります。ただし、キャッシュされたデータを、そのデータを使用する可能性が最も高いアプリケーションの近くに配置する場合は、異なるリージョンに置かれた別々の Azure データセンターで各組のセットを実行することができます。Microsoft Web サイトの「[Running Redis on a CentOS Linux VM in Windows Azure](http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx)」(Windows Azure の CentOS Linux VM 上での Redis の実行) ページでは、Azure VM として実行される Redis ノードの構築および設定方法を示す例について説明しています。
+Azure Redis キャッシュは、基になる Redis サーバーに対するファサードとして機能します。現在は、構成の固定セットがサポートされていますが、Redis クラスタリング用の構成は提供されていません。Azure Redis Cache の対象ではない高度な構成 (53 GB を超えるキャッシュなど) が必要な場合は、Azure 仮想マシンを使用して独自の Redis サーバーを構築し、ホストできます。このプロセスは、レプリケーションを実装する場合にマスター ノードと下位ノードとして機能する複数の VM を作成する必要があるため、複雑になる可能性があります。さらに、クラスターを作成する場合は、複数のマスター サーバーと下位サーバーが必要になります。高度な可用性とスケーラビリティを実現する、最小限にクラスター化されたレプリケーション トポロジは、3 組のマスター/下位サーバーとして編成した少なくとも 6 台の VM で構成されます (1 つのクラスターには少なくとも 3 つのマスター ノードが必要です)。各マスター/下位の組は、待機時間を最小限に抑えるために近接して配置する必要があります。ただし、キャッシュされたデータを、そのデータを使用する可能性が最も高いアプリケーションの近くに配置する場合は、異なるリージョンに置かれた別々の Azure データセンターで各組のセットを実行することができます。Microsoft Web サイトの「[Running Redis on a CentOS Linux VM in Microsoft Azure](http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx)」(Microsoft Azure の CentOS Linux VM 上での Redis の実行) ページでは、Azure VM として実行される Redis ノードの構築および設定方法を示す例について説明しています。
 
 この方法で独自の Redis キャッシュを実装する場合、サービスを監視、管理、および保護する責任があることに注意してください。
 
@@ -800,7 +800,7 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 - Redis Web サイトの「[Transactions](http://redis.io/topics/transactions)」(トランザクション) ページ。
 - Redis Web サイトの「[Redis Security](http://redis.io/topics/security)」(Redis のセキュリティ) ページ。
 - Azure のブログの「[Lap around Azure Redis Cache](http://azure.microsoft.com/blog/2014/06/04/lap-around-azure-redis-cache-preview/)」(Azure Redis Cache に関する説明) ページ。
-- Microsoft Web サイトの「[Running Redis on a CentOS Linux VM in Windows Azure](http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx)」(Windows Azure の CentOS Linux VM 上での Redis の実行) ページ。
+- Microsoft Web サイトの「[Running Redis on a CentOS Linux VM in Microsoft Azure](http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx)」(Microsoft Azure の CentOS Linux VM 上での Redis の実行) ページ。
 - Microsoft Web サイトの「[Azure Redis Cache 用の ASP.NET セッション状態プロバイダー](http://msdn.microsoft.com/library/azure/dn690522.aspx)」ページ。
 - Microsoft Web サイトの「[Azure Redis Cache 用の ASP.NET 出力キャッシュ プロバイダー](http://msdn.microsoft.com/library/azure/dn798898.aspx)」ページ。
 - Azure サイトの「[Azure Redis キャッシュ (プレビュー) の開発](http://msdn.microsoft.com/library/azure/dn690520.aspx)」ページ。

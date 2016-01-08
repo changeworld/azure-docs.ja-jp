@@ -35,7 +35,7 @@
 
 また、電子メールを送信するには、SendGrid のユーザー名とパスワードを取得している必要があります。SendGrid を利用し始めるには、「[Java から SendGrid を使用して電子メールを送信する方法](store-sendgrid-java-how-to-send-email.md)」を参照してください。
 
-さらに、[Windows Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](http://msdn.microsoft.com/library/windowsazure/hh690944)にある情報に精通すること、または、Eclipse を使用していない場合は、Windows Azure 上の Java アプリケーションをホストする別の手法に精通することを強くお勧めします。
+さらに、[Microsoft Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](http://msdn.microsoft.com/library/windowsazure/hh690944)にある情報に精通すること、または、Eclipse を使用していない場合は、Microsoft Azure 上の Java アプリケーションをホストする別の手法に精通することを強くお勧めします。
 
 ## 電子メール送信用の Web フォームの作成
 

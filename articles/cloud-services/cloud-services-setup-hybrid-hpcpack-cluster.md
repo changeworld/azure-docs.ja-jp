@@ -209,7 +209,7 @@ HPC クラスター マネージャーを使用して Azure ノードをデプ�
 
 	![ノードの指定][add_node2]
 
-	使用できる仮想マシンのサイズの詳細については、「[Windows Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
+	使用できる仮想マシンのサイズの詳細については、「[Microsoft Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
 
 4. **[ノード追加ウィザードの完了]** ページで、**[完了]** をクリックします。
 

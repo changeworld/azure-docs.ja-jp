@@ -86,7 +86,7 @@ Management Studio でクエリ ウィンドウを開くには、[データベー
 
 **[実行]** をクリックしてクエリを実行します。
 
--   データベースの名前とエディションを変更する場合など、既存のデータベースを変更するには、**ALTER DATABASE** ステートメントを使用します。詳細については、「[ALTER DATABASE (Windows Azure SQL データベース)](https://msdn.microsoft.com/library/ms174269.aspx)」を参照してください。次のステートメントは、前の手順で作成したデータベースのエディションを Standard S1 に変更します。
+-   データベースの名前とエディションを変更する場合など、既存のデータベースを変更するには、**ALTER DATABASE** ステートメントを使用します。詳細については、「[ALTER DATABASE (Microsoft Azure SQL データベース)](https://msdn.microsoft.com/library/ms174269.aspx)」を参照してください。次のステートメントは、前の手順で作成したデータベースのエディションを Standard S1 に変更します。
 
         ALTER DATABASE myTestDB
         MODIFY
@@ -106,10 +106,10 @@ Management Studio でクエリ ウィンドウを開くには、[データベー
 
 ## ログインを作成と管理する
 
-**master** データベースでは、ログインと、どのログインにデータベースや他のログインを作成するためのアクセス許可があるかが追跡されます。ログインを管理するには、サーバーのセットアップ時に作成したサーバー レベルのプリンシパル ログインを使用して **master** データベースに接続します。**CREATE LOGIN**、**ALTER LOGIN**、または **DROP LOGIN** ステートメントを使用すると、サーバー全体でログインを管理する master データベースに対してクエリを実行できます。詳細については、「[Windows Azure SQL データベースにおけるデータベースとログインの管理](http://msdn.microsoft.com/library/azure/ee336235.aspx)」を参照してください。
+**master** データベースでは、ログインと、どのログインにデータベースや他のログインを作成するためのアクセス許可があるかが追跡されます。ログインを管理するには、サーバーのセットアップ時に作成したサーバー レベルのプリンシパル ログインを使用して **master** データベースに接続します。**CREATE LOGIN**、**ALTER LOGIN**、または **DROP LOGIN** ステートメントを使用すると、サーバー全体でログインを管理する master データベースに対してクエリを実行できます。詳細については、「[Microsoft Azure SQL データベースにおけるデータベースとログインの管理](http://msdn.microsoft.com/library/azure/ee336235.aspx)」を参照してください。
 
 
--   新しいサーバー レベル ログインを作成するには、**CREATE LOGIN** ステートメントを使用します。詳細については、「[CREATE LOGIN (Windows Azure SQL データベース)](https://msdn.microsoft.com/library/ms189751.aspx)」を参照してください。次のステートメントは、**login1** という新しいログインを作成します。**password1** を適切なパスワードに置き換えてください。
+-   新しいサーバー レベル ログインを作成するには、**CREATE LOGIN** ステートメントを使用します。詳細については、「[CREATE LOGIN (Microsoft Azure SQL データベース)](https://msdn.microsoft.com/library/ms189751.aspx)」を参照してください。次のステートメントは、**login1** という新しいログインを作成します。**password1** を適切なパスワードに置き換えてください。
 
         CREATE LOGIN login1 WITH password='password1';
 
