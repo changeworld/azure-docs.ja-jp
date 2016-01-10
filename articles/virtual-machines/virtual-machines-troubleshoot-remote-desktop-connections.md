@@ -119,7 +119,7 @@ Azure 仮想マシンに Remote Desktop 接続しようとしたときに発生�
 
 原因: ターゲット仮想マシンが、資格情報のユーザー名の部分でセキュリティ機関を見つけることができませんでした。
 
-ユーザー名が *SecurityAuthority*\*UserName* という形式 (例: CORP\\User1) の場合、*SecurityAuthority* の部分は、仮想マシンのコンピューター名 (ローカル セキュリティ機関) または Active Directory ドメイン名になります。
+ユーザー名が *SecurityAuthority\UserName* という形式 (例: CORP\\User1) の場合、*SecurityAuthority* の部分は、仮想マシンのコンピューター名 (ローカル セキュリティ機関) または Active Directory ドメイン名になります。
 
 考えられる解決策:
 
@@ -134,8 +134,8 @@ Azure 仮想マシンに Remote Desktop 接続しようとしたときに発生�
 
 Windows ベースのコンピューターでは、ローカル アカウントとドメイン アカウントの資格情報を認証できます。
 
-- ローカル アカウントの場合は、*ComputerName*\*UserName* という構文を使用します (例: SQL1\\Admin4798)。
-- ドメイン アカウントの場合は、*DomainName*\*UserName* という構文を使用します (例: CONTOSO\\johndoe)。
+- ローカル アカウントの場合は、*ComputerName\UserName* という構文を使用します (例: SQL1\\Admin4798)。
+- ドメイン アカウントの場合は、*DomainName\UserName* という構文を使用します (例: CONTOSO\\johndoe)。
 
 新しい AD フォレスト内で仮想マシンがドメイン コントローラーに昇格している場合、ログイン時に使用したローカル管理者アカウントも、新しいフォレストとドメイン内で同じパスワードを持つ同等のアカウントに変換されます。その後、ローカル管理者アカウントは削除されます。たとえば、ローカル管理者アカウント DC1\\DCAdmin でログインして、新しいフォレストで仮想マシンを corp.contoso.com ドメインのドメイン コント ローラーとして昇格すると、DC1\\DCAdmin のローカル アカウントは削除され、新しいドメイン アカウント (CORP\\DCAdmin) が同じパスワードで作成されます。
 
@@ -169,4 +169,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->

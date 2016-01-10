@@ -70,7 +70,7 @@ Azure AD Connect により、オンプレミスのコンピューターをクラ
 
 >[AZURE.NOTE] [*connector account name*] を、AD Connector アカウントとして使用したドメイン アカウントに置き換えます。
 
->[AZURE.NOTE]Get-Credential というポップアップが表示されたときに入力する資格情報のユーザー名は、**user@example.com* 形式にする必要があります。
+>[AZURE.NOTE]Get-Credential というポップアップが表示されたときに入力する資格情報のユーザー名は、*user@example.com* 形式にする必要があります。
 
 ### AD FS の要求規則を構成する
 これにより、AD FS 経由での Kerberos/NTLM を使用した認証がコンピューターに許可されるため、Azure DRS には即座にコンピューターを登録できます。この手順を実行しないと、コンピューターは Azure AD への到達が遅くなります (Azure AD Connect の同期時間の影響を受けます)。
@@ -137,4 +137,4 @@ Active Directory グループ ポリシーを使用すると、自動的に Azur
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
