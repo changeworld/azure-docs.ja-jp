@@ -296,7 +296,7 @@ ApplicationInsights.config で:
       </TelemetryInitializers>
     </ApplicationInsights>
 
-*または、* Global.aspx.cs などのコード内で初期化子をインスタンス化することもできます。
+*または* 、 Global.aspx.cs などのコード内で初期化子をインスタンス化することもできます。
 
 
 ```C#
