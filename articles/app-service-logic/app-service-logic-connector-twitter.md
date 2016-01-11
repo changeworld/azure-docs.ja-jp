@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="11/30/2015"
+   ms.date="12/17/2015"
    ms.author="sameerch"/>
 
 
@@ -53,7 +53,7 @@ New Tweet From Search | <ul><li>Get User Timeline</li><li>Search Tweets</li><li>
 5. コネクタ名、App Service、およびリソース グループなど、その他の必要な設定を入力します。
 6.	**[作成]** をクリックします。
 
-> [AZURE.NOTE]リダイレクト URL で Twitter API をさらに保護する場合は、[ここ](app-service-logic-oauth-security.md)をクリックして詳細な方法を参照できます。
+> [AZURE.NOTE]リダイレクト URL で Twitter API をさらに保護する場合は、[OAUTH セキュリティ](app-service-logic-oauth-security.md)を使用できます。
 
 
 ## ロジック アプリで Twitter Connector を使用する
@@ -90,4 +90,4 @@ API アプリを作成した後は、Logic Apps のトリガーまたはアク�
 [9]: ./media/app-service-logic-connector-twitter/settings.PNG
 [10]: ./media/app-service-logic-connector-twitter/TwitterAPISettings.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

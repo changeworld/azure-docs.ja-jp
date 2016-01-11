@@ -44,7 +44,7 @@ Azure CLI を使用して Azure リソース マネージャーを操作する�
 
 Microsoft Azure の認証の詳細については、「[Azure CLI から Azure サブスクリプションへの接続する](xplat-cli-connect.md)」をご覧ください。
 
->[AZURE.NOTE]Azure Active Directory によって管理される職場か学校のアカウントを使用しするとき、Azure のロールベースの Access Control (RBAC) を使用して、Azure リソースへのアクセスと使用状況を管理することもできます。詳細については、「[リソースへのアクセスの管理と監査](resource-group-rbac.md)」をご覧ください。
+>[AZURE.NOTE]Azure Active Directory によって管理される職場か学校のアカウントを使用しするとき、Azure のロールベースの Access Control (RBAC) を使用して、Azure リソースへのアクセスと使用状況を管理することもできます。詳細については、「[ロールベースの Access Control](./active-directory/role-based-access-control-configure.md)」を参照してください。
 
 ## Azure リソース マネージャー モードの設定
 
@@ -77,7 +77,7 @@ Azure リソース マネージャー モードは既定で無効になってい
 
 テンプレートを使用する場合、[独自のテンプレートを作成する](resource-group-authoring-templates.md)か、[GitHub](https://github.com/Azure/azure-quickstart-templates) でも取得できる[テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)のテンプレートを使用します。
 
-新しいテンプレートの作成はこの記事では扱いません。そのため、[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-linux-vm) から取得できる _101-simple-vm-from-image_ テンプレートを利用しましょう。既定では、これにより新しい仮想ネットワークで Ubuntu 4.04.2-LTS 仮想マシンが 1 つ作成されます。リージョンは米国西部でサブネットが 1 つです。次のパラメーターをいくつか指定すれば、このテンプレートを使用できます。
+新しいテンプレートの作成はこの記事では扱いません。そのため、[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-linux-vm) から取得できる _101-simple-vm-from-image_ テンプレートを利用しましょう。既定では、これにより新しい仮想ネットワークで Ubuntu 14.04.2-LTS 仮想マシンが 1 つ作成されます。リージョンは米国西部でサブネットが 1 つです。次のパラメーターをいくつか指定すれば、このテンプレートを使用できます。
 
 * 一意のストレージ アカウント名
 * VM の管理者ユーザー名
@@ -210,4 +210,4 @@ Azure リソース マネージャー モードは既定で無効になってい
 [adtenant]: http://technet.microsoft.com/library/jj573650#createAzureTenant
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

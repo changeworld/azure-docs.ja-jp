@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/05/2015" 
+	ms.date="12/17/2015" 
 	ms.author="juliako"/>
 
 
@@ -32,7 +32,7 @@
 
 また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。
 
-このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
+このトピックでは、オンデマンド ストリーミング ロケーターを作成して資産を発行し、Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
   	 
 ##オンデマンド ストリーミング ロケーターを作成する
 
@@ -40,9 +40,9 @@
 
    1. コンテンツが暗号化されている場合は、アクセス ポリシーを定義します。
    2. オンデマンド ストリーミング ロケーターを作成します。
-   3. ストリーミングする場合は、アセットのストリーミング マニフェスト ファイル (.ism) を取得します。 
+   3. ストリーミングする場合は、資産のストリーミング マニフェスト ファイル (.ism) を取得します。 
    		
-	プログレッシブ ダウンロードをする場合は、アセット内の MP4 ファイルの名前を取得します。  
+	プログレッシブ ダウンロードをする場合は、資産内の MP4 ファイルの名前を取得します。  
    4. マニフェスト ファイルまたは MP4 ファイルへの URL を作成します。 
    
 
@@ -54,6 +54,7 @@
 	{
 	
 	    // Create a 30-day readonly access policy. 
+      	// You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.
 	    IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
 	        TimeSpan.FromDays(30),
 	        AccessPermissions.Read);
@@ -168,6 +169,6 @@
 
 ##関連項目
 
-[資産のダウンロード](media-services-deliver-asset-download.md)
+[資産をダウンロードする](media-services-deliver-asset-download.md)[資産配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->

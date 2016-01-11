@@ -28,10 +28,6 @@
 
 ## 前提条件
 
->[AZURE.IMPORTANT]Azure ポータルを使用してサブスクリプションに初めて Redis Cache を作成すると、そのサブスクリプションの `Microsoft.Cache` 名前空間がポータルによって登録されます。PowerShell を使用してサブスクリプションに最初の Redis Cache を作成する場合は、先に次のコマンドを使用して名前空間を登録する必要があります。これを実行しないと、`New-AzureRmRedisCache` や `Get-AzureRmRedisCache` などのコマンドレットが失敗します。
->
->`Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Cache"`
-
 Azure PowerShell をインストール済みである場合、Azure PowerShell Version 1.0.0 以降であることが必要です。インストールした Azure PowerShell のバージョンは、Azure PowerShell コマンド プロンプトで次のコマンドを使用して確認できます。
 
 	Get-Module azure | format-table version
@@ -79,7 +75,7 @@ Azure リソース マネージャーで Windows PowerShell を使用するに�
 | RedisConfiguration | maxmemory-delta、maxmemory-policy、notify-keyspace-events の Redis 構成設定を指定します。maxmemory-delta と notify-keyspace-events は Standard および Premium のキャッシュでのみ使用できます。 | |
 | EnableNonSslPort | 非 SSL ポートが有効になっているかどうかを示します。 | False |
 | MaxMemoryPolicy | このパラメーターは廃止されました。代わりに、RedisConfiguration を使用します。 | |
-| StaticIP | VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 | |
+| StaticIP | VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 | |
 | サブネット | VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 | |
 | VirtualNetwork | VNET でキャッシュをホストする場合に、キャッシュをデプロイする VNET のリソース ID を指定します。 | |
 | KeyType | アクセス キーを更新するときに再生成するアクセス キーを指定します。有効な値: Primary、Secondary | | | |
@@ -88,6 +84,10 @@ Azure リソース マネージャーで Windows PowerShell を使用するに�
 ## Redis Cache の作成方法
 
 Azure Redis Cache インスタンスを新規作成するには、[New-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634517.aspx) コマンドレットを使用します。
+
+>[AZURE.IMPORTANT]Azure ポータルを使用してサブスクリプションに初めて Redis Cache を作成すると、そのサブスクリプションの `Microsoft.Cache` 名前空間がポータルによって登録されます。PowerShell を使用してサブスクリプションに最初の Redis Cache を作成する場合は、先に次のコマンドを使用して名前空間を登録する必要があります。これを実行しないと、`New-AzureRmRedisCache` や `Get-AzureRmRedisCache` などのコマンドレットが失敗します。
+>
+>`Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Cache"`
 
 `New-AzureRmRedisCache` で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
@@ -242,7 +242,8 @@ Azure Redis Cache インスタンスを更新するには、[Set-AzureRmRedisCac
 
 	Set-AzureRmRedisCache -ResourceGroupName "myGroup" -Name "myCache" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
 
-## PowerShell を使用した Redis Cache のスケール方法
+<a name="scale"></a>
+## Redis Cache をスケーリングするには
 
 `Size`、`Sku`、または `ShardCount` のプロパティが変更されたときに、`Set-AzureRmRedisCache` を使用して、Azure Redis Cache インスタンスをスケールできます。
 
@@ -255,7 +256,7 @@ Azure Redis Cache インスタンスを更新するには、[Set-AzureRmRedisCac
 >
 >詳細については、「[Azure Redis Cache のスケーリング方法](cache-how-to-scale.md)」を参照してください。
 
-次の例は、`myCache` という名前のキャッシュを 2.5 GB のキャッシュにスケールアップする方法を示しています。このコマンドは、Basic と Standard の両方のキャッシュで使用できます。
+次の例は、`myCache` という名前のキャッシュを 2.5 GB のキャッシュにスケーリングする方法を示しています。このコマンドは、Basic と Standard の両方のキャッシュで使用できます。
 
 	Set-AzureRmRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
@@ -568,4 +569,4 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 - [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

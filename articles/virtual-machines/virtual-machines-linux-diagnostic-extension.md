@@ -15,7 +15,7 @@
 		ms.tgt_pltfrm="vm-linux"
 		ms.devlang="na"
 		ms.topic="article"
-		ms.date="07/20/2015"
+		ms.date="12/15/2015"
 		ms.author="Ning"/>
 
 
@@ -35,7 +35,7 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 - この[ドキュメント](https://scx.codeplex.com/wikipage?title=xplatproviders")で指定されているすべてのシステム データ。
 - ユーザーが指定したログ ファイル。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+この拡張機能は、クラシック モデルとリソース マネージャーのデプロイメント モデルの両方で機能します。
 
 
 ## 拡張機能を有効にする方法
@@ -132,7 +132,7 @@ Rsyslog データは既定で常に収集されます。
 さらに、次の UI ツールを使用してデータにアクセスすることもできます。
 
 1.	Visual Studio のサーバー エクスプローラーを使用します。ストレージ アカウントに移動します。VM を約 5 分間稼働した後、既定のテーブル「LinuxCpu」、「LinuxDisk」、「LinuxMemory」、および「Linuxsyslog」を確認する必要があります。データを表示するには、テーブル名をダブルクリックします。
-2.	[Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")を使用してデータにアクセスします。
+2.	[Azure Storage エクスプローラー](https://azurestorageexplorer.codeplex.com/ "Azure Storage エクスプローラー")を使用してデータにアクセスします。
 
 ![image](./media/virtual-machines-linux-diagnostic-extension/no1.png)
 
@@ -142,6 +142,5 @@ Rsyslog データは既定で常に収集されます。
 
 ## 既知の問題
 - バージョン 2.0 の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
-- バージョン 2.0 の場合、最初にスクリプトを使用して Linux 診断拡張機能を有効にすると、ポータルからはデータを表示できません。最初にポータルから拡張機能を有効にした場合は、スクリプトも正常に機能します。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

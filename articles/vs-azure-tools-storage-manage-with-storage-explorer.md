@@ -3,7 +3,7 @@
 	description="Microsoft Azure ストレージ エクスプローラー (プレビュー) を使用して Azure ストレージ リソースを作成して管理する方法について説明します。"
 	services="visual-studio-online"
 	documentationCenter="na"
-	authors="kempb"
+	authors="TomArcher"
 	manager="douge"
 	editor="tlee" />
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
 	ms.date="11/17/2015"
-	ms.author="kempb" />
+	ms.author="tarcher" />
 
 # ストレージ エクスプローラー (プレビュー) を使用した Azure ストレージ リソースの管理
 
@@ -182,4 +182,4 @@ BLOB コンテナーへのアクセスを制御するには、**[アクセス制
 [19]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS3c.png
 [20]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS4c.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

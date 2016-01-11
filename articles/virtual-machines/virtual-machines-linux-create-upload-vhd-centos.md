@@ -322,11 +322,21 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 
 12.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常これが既定です。
 
-13. 次のコマンドを実行して Azure Linux エージェントをインストールします。
+13.	**VMWare VirtualBox または KVM からイメージを構築する場合にのみ**、Hyper-V モジュールを initramfs に追加します。
+
+    `/etc/dracut.conf` を編集して、コンテンツを追加します。
+
+        add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
+
+    Initramfs を再構築します。
+
+        # dracut –f -v
+
+14. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
 		# sudo yum install WALinuxAgent
 
-14.	OS ディスクにスワップ領域を作成しないでください。
+15.	OS ディスクにスワップ領域を作成しないでください。
 
 	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは*一時*ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
@@ -336,12 +346,12 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 		ResourceDisk.EnableSwap=y
 		ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-15.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+16.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
 		# sudo waagent -force -deprovision
 		# export HISTSIZE=0
 		# logout
 
-16. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+17. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1223_2015-->

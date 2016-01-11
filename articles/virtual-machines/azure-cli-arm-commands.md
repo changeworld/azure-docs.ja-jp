@@ -49,7 +49,7 @@ Azure CLI でリソース マネージャー モードを使用するための�
 
 アカウントを用意して Azure CLI をインストールしたら、
 
-- 職場または学校のアカウント、あるいは Microsoft アカウント ID を使用するように [Azure CLI を構成します](../xplat-cli-connect.md)。 
+- 職場または学校のアカウント、あるいは Microsoft アカウント ID を使用するように [Azure CLI を構成します](../xplat-cli-connect.md)。
 - `azure config mode arm` を入力して、リソース マネージャー モードに切り替えます。
 
 
@@ -1686,9 +1686,9 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 	vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>
 
-**リソース グループ内の仮想マシンを一覧表示します**
+**アカウント内の仮想マシンを一覧表示します**
 
-	vm list [options] <resource-group>
+	vm list [options]
 
 **リソース グループ内の仮想マシンを 1 つ取得します**
 
@@ -1730,7 +1730,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 	vm get-instance-view [options] <resource-group> <name>
 
-**Virtual Machine 上のリモート デスクトップ アクセスまたは SSH の設定をリセットし、管理者または sudo の権限を持つアカウントのパスワードをリセットできます**
+**仮想マシン上のリモート デスクトップ アクセスまたは SSH の設定をリセットし、管理者または sudo の権限を持つアカウントのパスワードをリセットできます**
 
 	vm reset-access [options] <resource-group> <name>
 
@@ -1779,7 +1779,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	 
 例: Linux クラスターでの Storm の作成
 
-	azure hdinsight cluster create -g mahirg001 -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
+	azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
 	
 	info:    Executing command hdinsight cluster create
 	+ Submitting the request to create cluster...
@@ -1787,7 +1787,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 例: スクリプト アクションによるクラスターの作成
 
-	azure hdinsight cluster create -g mahirg001 -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
+	azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
 	
 	info:    Executing command hdinsight cluster create
 	+ Submitting the request to create cluster...
@@ -1879,4 +1879,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 	hdinsight cluster disable-rdp-access [options] <clusterName>
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

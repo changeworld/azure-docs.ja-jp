@@ -50,9 +50,11 @@
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 
+4. サーバー プロジェクトを発行します。
+
 ### <a name="nodejs"></a>Node.js バックエンド プロジェクト
 
-1. これをまだ行っていない場合は、[クイック スタート プロジェクトをダウンロードする](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)か、または [Azure ポータルでオンライン エディター](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。
+1. これをまだ行っていない場合は、[クイック スタート プロジェクトをダウンロードする](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)か、[Azure ポータルでオンライン エディター](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。
  
 1. todoitem.js ファイル内の既存のコードを次のコードに置き換えます。
 
@@ -103,4 +105,4 @@
 
 2. ローカル コンピューターでファイルを編集するときは、サーバー プロジェクトを再発行します。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->

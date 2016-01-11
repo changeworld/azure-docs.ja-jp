@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric クラスター オーケストレーション配置の制約"
+   pageTitle="Service Fabric クラスター オーケストレーション配置の制約 | Microsoft Azure"
    description="Service Fabric における配置の制約の概念的概要"
    services="service-fabric"
    documentationCenter=".net"
@@ -18,7 +18,7 @@
 
 # 配置の制約の概要
 
-Service Fabric を使用すると、開発者はサービス レプリカの配置先を、特定の条件を満たすノードに制限することができます。これらの条件は、適切なサービス コンテキストの特定の値で評価されるブール式を使用して表現されます。
+Azure Service Fabric を使用すると、開発者はサービス レプリカの配置先を、特定の条件を満たすノードに制限することができます。これらの条件は、適切なサービス コンテキスト固有の値で評価されるブール式を使用して表現されます。
 
 
 ## 機能
@@ -36,7 +36,6 @@ NodeProperty - ユーザーまたはシステムによって定義される、�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 
-詳細については、[アプリケーション シナリオ](../service-fabric-application-scenarios)に関するページを参照してください。
- 
+詳細については、「[アプリケーション シナリオ](../service-fabric-application-scenarios)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

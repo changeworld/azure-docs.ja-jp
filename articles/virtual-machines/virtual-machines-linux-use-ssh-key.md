@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/28/2015" 
+	ms.date="12/15/2015" 
 	ms.author="rasquill"/>
 
 #Azure 上の Linux または Mac における SSH の使用方法
@@ -86,7 +86,7 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 
 ### 例: id\_rsa.pub ファイルで VM を作成する
 
-最も一般的な使用方法は VM を強制的に作成するか、VM を作成するためのテンプレートをアップロードするときです。次のコード例では、パブリック ファイル名 (この場合、既定の `~/.ssh/id_rsa` ファイル) を `azure vm create` コマンドに渡し、Azure で新しい安全な Linux VM が作成されます。(他の引数は前に作成されました。)
+最も一般的な使用方法は VM を強制的に作成するか、VM を作成するためのテンプレートをアップロードするときです。次のコード例では、パブリック ファイル名 (この場合、既定の `~/.ssh/id_rsa.pub` ファイル) を `azure vm create` コマンドに渡し、Azure で新しい安全な Linux VM が作成されます。(他の引数は前に作成されました。)
 
 	azure vm create \
 	--nic-name testnic \
@@ -96,7 +96,7 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 	--storage-account-name computeteststore 
 	--image-urn canonical:UbuntuServer:14.04.3-LTS:latest \
 	--username ops \
-	-ssh-publickey-file ~/.ssh/id_rsa \
+	-ssh-publickey-file ~/.ssh/id_rsa.pub \
 	testrg testvm westeurope linux
 
 次の例では、リソース マネージャー テンプレートと Azure CLI と共に **ssh-rsa** 形式を利用し、文字列として `~/.ssh/id_rsa.pub` のユーザー名とコンテンツで保護される Ubuntu VM が作成されます。(この場合、公開鍵の文字列が読みやすいように短くされます。)
@@ -264,7 +264,7 @@ VM の作成時に既定の SSH ポート 22 を使用しなかった場合、�
 	Are you sure you want to continue connecting (yes/no)? yes
 	Warning: Permanently added 'testpemasm.cloudapp.net,40.83.178.221' (RSA) to the list of known hosts.
 	Saving password to keychain failed
-	Identity added: /Users/rasquill/.ssh/id_rsa (/Users/rasquill/.ssh/id_rsa)
+	Identity added: /Users/user/.ssh/id_rsa.pub (/Users/user/.ssh/id_rsa.pub)
 	Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.19.0-28-generic x86_64)
 
 	* Documentation:  https://help.ubuntu.com/
@@ -298,4 +298,4 @@ VM の作成時に既定の SSH ポート 22 を使用しなかった場合、�
  
 これで VM に接続できたので、選択したディストリビューションを必ず更新してから使用を続けます。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

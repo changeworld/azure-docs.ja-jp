@@ -3,7 +3,7 @@
 	description="Azure リソース グループのデプロイメント プロジェクトの PowerShell スクリプトの動作について説明します。"
 	services="visual-studio-online"
 	documentationCenter="na"
-	authors="kempb"
+	authors="TomArcher"
 	manager="douge"
 	editor="tlee" />
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
 	ms.date="11/17/2015"
-	ms.author="kempb" />
+	ms.author="tarcher" />
 
 # Azure リソース グループ プロジェクトのデプロイメント スクリプトの概要
 
@@ -264,4 +264,4 @@ Azure リソース マネージャーの詳細については、「[Azure リソ
 [4]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy5c.png
 [5]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy6c.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

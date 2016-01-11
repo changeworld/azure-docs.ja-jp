@@ -262,7 +262,7 @@
 
 8.	RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
-        # subscription-manager register –auto-attach --username=XXX --password=XXX
+        # subscription-manager register --auto-attach --username=XXX --password=XXX
 
 9.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで `/boot/grub/menu.lst` を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
 
@@ -379,7 +379,7 @@
 
 7.	RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
-        # subscription-manager register –auto-attach --username=XXX --password=XXX
+        # subscription-manager register --auto-attach --username=XXX --password=XXX
 
 8.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで `/etc/default/grub` を開き、次のように、**GRUB\_CMDLINE\_LINUX** パラメーターを編集します。
 
@@ -396,12 +396,22 @@
 9.	上記のとおりに `/etc/default/grub` の編集を終了したら、次のコマンドを実行して GRUB 構成をリビルドします。
 
         # grub2-mkconfig -o /boot/grub2/grub.cfg
+        
+10.	Hyper-V モジュールを initramfs に追加します。
 
-10.	cloud-init をアンインストールします。
+    `/etc/dracut.conf` を編集して、コンテンツを追加します。
+
+        add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
+
+    Initramfs を再構築します。
+
+        # dracut –f -v
+        
+11.	cloud-init をアンインストールします。
 
         # yum remove cloud-init
 
-11.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
+12.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
 
         # systemctl enable sshd
 
@@ -414,12 +424,12 @@
 
         systemctl restart sshd	
 
-12.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が Fedora EPEL 6 リポジトリにプッシュされました。次のコマンドを実行して epel リポジトリを有効にします。
+13.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が Fedora EPEL 6 リポジトリにプッシュされました。次のコマンドを実行して epel リポジトリを有効にします。
 
         # wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
         # rpm -ivh epel-release-7-5.noarch.rpm
 
-13.	次のコマンドを実行して Azure Linux エージェントをインストールします。
+14.	次のコマンドを実行して Azure Linux エージェントをインストールします。
 
         # yum install WALinuxAgent
 
@@ -427,7 +437,7 @@
 
         # systemctl enable waagent.service
 
-14.	OS ディスクにスワップ領域を作成しないでください。Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux Agent のインストール後に (前の手順を参照)、`/etc/waagent.conf` にある次のパラメーターを正確に変更します。
+15.	OS ディスクにスワップ領域を作成しないでください。Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux Agent のインストール後に (前の手順を参照)、`/etc/waagent.conf` にある次のパラメーターを正確に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -435,19 +445,19 @@
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-15.	次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
+16.	次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
 
         # subscription-manager unregister
 
-16.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+17.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
 
-17.	KVM で仮想マシンをシャットダウンします。
+18.	KVM で仮想マシンをシャットダウンします。
 
-18.	qcow2 イメージを vhd 形式に変換します。
+19.	qcow2 イメージを vhd 形式に変換します。
 
     まず、イメージを未加工の形式に変換します。
 
@@ -615,7 +625,7 @@
 
     クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。必要に応じて crashkernel オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
 
-6.	上記のとおりに `/etc/default/grub` の編集を終了したら、次のコマンドを実行して GRUB 構成をリビルドします。
+6.	上記のとおりに `/etc/default/grub` を編集したら、次のコマンドを実行して GRUB 構成をリビルドします。
 
          # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
@@ -834,4 +844,4 @@ HYPER-V と Azure で RHEL 7.1 を使用する場合に既知の問題があり�
 ## 次のステップ
 これで、Red Hat Enterprise Linux .vhd を使用して、Azure に新しい Azure Virtual Machines を作成する準備が整いました。Red Hat Enterprise Linux の実行が認定されているハイパーバイザーの詳細については、[Red Hat の Web サイト](https://access.redhat.com/certified-hypervisors)を参照してください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->

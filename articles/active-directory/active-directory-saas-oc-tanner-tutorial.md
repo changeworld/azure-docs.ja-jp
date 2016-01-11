@@ -3,7 +3,7 @@
 	description="Azure Active Directory と O.C. Tanner - AppreciateHub の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="jeevansd"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/09/2015"
-	ms.author="markusvi"/>
+	ms.date="12/18/2015"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と O.C. Tanner - AppreciateHub の統合
@@ -56,15 +56,15 @@ Azure AD への O.C. Tanner - AppreciateHub の統合を構成するには、ギ
 
 **ギャラリーから O.C. Tanner - AppreciateHub を追加するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br> ![Active Directory][1] <br>
+1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br> ![Active Directory][1] <br>
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br> ![アプリケーション][2]<br>
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br> ![アプリケーション][2] <br>
 
-4. ページの下部にある **[追加]** をクリックします。 <br><br> ![アプリケーション][3] <br>
+4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3] <br>
 
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。 <br><br> ![アプリケーション][4] <br>
+5. **[実行する内容]** ダイアログ ボックスで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4] <br>
 
 6. 検索ボックスに、「**O.C.Tanner - AppreciateHub**」と入力します。 <br><br> ![アプリケーション][5] <br>
 
@@ -88,7 +88,7 @@ O.C. Tanner - AppreciateHub で Azure AD のシングル サインオンを構�
 
 ### Azure AD シングル サインオンの構成
 
-このセクションの目的は、Azure AD ポータルで Azure AD のシングル サインオンを有効にすることと、O.C. Tanner - AppreciateHub application でシングル サインオンを構成することです。<br>
+このセクションの目的は、Azure AD ポータルで Azure AD のシングル サインオンを有効にすることと、O.C. Tanner - AppreciateHub アプリケーションでシングル サインオンを構成することです。<br>
 
 **O.C. Tanner - AppreciateHub で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
@@ -110,7 +110,7 @@ O.C. Tanner - AppreciateHub で Azure AD のシングル サインオンを構�
 
      e.**[次へ]** をクリックします。
  
-4. **[O.C. Tanner - AppreciateHub でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにローカルでメタデータ ファイルを保存します。<br><br>![What is Azure AD Connect][9]
+4. **[O.C. Tanner - AppreciateHub でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターのローカルにメタデータ ファイルを保存します。<br><br>![What is Azure AD Connect][9]
 
 5. O.C. Tanner - AppreciateHub サポート チーム (xyz) に連絡してメタデータ ファイルを提供し、SSO を有効にする必要があることを伝えます。
 
@@ -123,33 +123,33 @@ O.C. Tanner - AppreciateHub で Azure AD のシングル サインオンを構�
 
 
 ### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Create Azure AD User][20]<br>
+このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、[**Active Directory]** をクリックします。<br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_02.png) 
+1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、[**Active Directory]** をクリックします。<br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_02.png) 
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
 3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_03.png)
  
-4. 下部にあるツールバーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログを開きます。 <br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_04.png)
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 <br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_05.png)
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_05.png)
 
     a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
-    b.**[ユーザー名]** テキスト ボックスに「**BrittaSimon**」と入力します。
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
     c.**[次へ]** をクリックします。
 
 6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_06.png)
  
-    a.**[名]** テキスト ボックスに「**Britta**」と入力します。
+    a.**[名]** ボックスに「**Britta**」と入力します。
 
-    b.**[姓]** テキスト ボックスに「**Simon**」と入力します。
+    b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    c.**[表示名]** テキスト ボックスに「**Britta Simon**」と入力します。
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
 
     d.**[ロール]** 一覧で **[ユーザー]** を選択します。e.**[次へ]** をクリックします。
 
@@ -178,9 +178,9 @@ O.C. Tanner - AppreciateHub で Azure AD のシングル サインオンを構�
 
 **O.C. Tanner - AppreciateHub に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br> <br><br>![ユーザーの割り当て][201]
+1. Azure ポータルでアプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br> <br><br>![ユーザーの割り当て][201]
 2. アプリケーションの一覧で **[O.C. Tanner - AppreciateHub]** を選択します。 <br><br>![ユーザーの割り当て][202]
-1. 上部のメニューで **[ユーザー]** をクリックします。<br><br><br> ![ユーザーの割り当て][203]
+1. 上部のメニューで **[ユーザー]** をクリックします。<br> <br><br>![ユーザーの割り当て][203]
 1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
 2. 下部にあるツール バーで **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][205]
@@ -223,4 +223,4 @@ O.C. Tanner - AppreciateHub で Azure AD のシングル サインオンを構�
 [204]: ./media/active-directory-saas-oc-tanner-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-oc-tanner-tutorial/tutorial_general_205.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

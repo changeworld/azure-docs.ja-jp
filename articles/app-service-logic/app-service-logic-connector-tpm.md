@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="11/30/2015"
+   ms.date="12/17/2015"
    ms.author="rajram"/>
 
 # BizTalk 取引先管理の使用開始とロジック アプリへの追加
@@ -25,7 +25,7 @@ TPM API アプリは、AS2 コネクタ、X12 API アプリ、または EDIFACT 
 - 空の SQL Azure データベース - 新しい TPM API App を作成する前に、空の SQL Azure データベースを作成する必要があります。
 
 ## パートナー、契約およびプロファイルを理解する
-取引先契約の詳細については、[こちら][1]を参照してください。
+[取引先契約の作成の詳細についてはこちらをご覧ください][1]。
 
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
@@ -39,4 +39,4 @@ TPM API アプリは、AS2 コネクタ、X12 API アプリ、または EDIFACT 
 <!--References-->
 [1]: app-service-logic-create-a-trading-partner-agreement.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

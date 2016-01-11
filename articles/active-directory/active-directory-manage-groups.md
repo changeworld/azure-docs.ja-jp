@@ -52,6 +52,8 @@ Azure Active Directory の主な機能の 1 つが、リソースへのアクセ
 
 詳細を説明した短いビデオをご覧ください。
 
+[Azure AD: グループの動的なメンバーシップの概要に関するページ](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD--Introduction-to-Dynamic-Memberships-for-Groups)
+
 > [AZURE.VIDEO azure-ad--introduction-to-dynamic-memberships-for-groups]
 
 ## Azure Active Directory でのアクセス管理のしくみ
@@ -96,4 +98,4 @@ Azure Active Directory のアクセス管理ソリューションの核となる
 
 * [グループ用の Graph API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1223_2015-->

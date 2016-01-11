@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="09/02/2015"
+   ms.date="12/18/2015"
    ms.author="tarcher" />
 
 # 名前付き認証資格情報の設定
@@ -71,4 +71,4 @@ Visual Studio では、サブスクリプション ID が証明書データと�
 
     1. 作成した .cer ファイルのフル パスを貼り付け、指定したパスワードを入力します。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

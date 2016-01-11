@@ -4,12 +4,12 @@ Traffic Manager とその子エンドポイントのリソースは、Azure 内�
 
 | プロパティ | 説明 |
 |---|---|
-|**トラフィックのルーティング方法**| 指定できる値は、*Performance*、*Weighted*、および *Priority* です。 | 
-| **DNS の構成** | プロファイルの FQDN | 
+|**trafficRoutingMethod**| 指定できる値は、*Performance*、*Weighted*、および *Priority* です。 | 
+| **dnsConfig** | プロファイルの FQDN | 
 | **プロトコル** | 監視プロトコル。有効な値は、*HTTP* と *HTTPS* です。|
 | **ポート** | 監視ポート |  
 | **パス** | 監視パス |
-| **エンドポイント** | エンドポイント リソースのコンテナー | 
+| **Endpoints** | エンドポイント リソースのコンテナー | 
 
 ### エンドポイント 
 
@@ -18,7 +18,7 @@ Traffic Manager とその子エンドポイントのリソースは、Azure 内�
 | プロパティ | 説明 | 
 |---|---| 
 | **型** | エンドポイントの種類。有効な値は *Azure エンドポイント*、*外部エンドポイント*、および*入れ子になったエンドポイント*です。 | 
-| **ターゲット リソース ID** | サービスまたは Web のエンドポイントのパブリック IP アドレスです。Azure のエンドポイントまたは外部のエンドポイントを指定できます。 | 
+| **targetResourceId** | サービスまたは Web のエンドポイントのパブリック IP アドレスです。Azure のエンドポイントまたは外部のエンドポイントを指定できます。 | 
 | **重量** | トラフィック管理に使用されるエンドポイントの重み付けです。 | 
 | **優先順位** | フェールオーバー アクションを定義するために使用されるエンドポイントの優先度です。 |
 
@@ -82,6 +82,6 @@ Json 形式での Traffic Manager のサンプル:
  
 ## その他のリソース
 
-詳細については、「[Traffic Manager の REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt163664.aspx)」を参照してください。
+詳細については、[Traffic Manager の REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt163664.aspx)を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

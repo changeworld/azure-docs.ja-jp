@@ -59,7 +59,7 @@
 
 ![][4]
 
-> [AZURE.NOTE]user\_name アプリ情報が設定されていないユーザーは通知を受け取りません。
+> [AZURE.NOTE]user\_name アプリ情報が設定されていないユーザーは通知を受け取りません。通知キャンペーンをテスト モードで実行したときにアプリ情報を設定しなかった場合は、プレース ホルダーを置換するために'?' が送信されます。
 
 2) Mobile Engagement がこの通知を送信するデバイスを選択するとき、このアプリ情報を見て、プレースホルダーの値を置換します。たとえば、ユーザーに `str = "Scott"` を設定している場合、このユーザーに関して、デバイス登録が **user\_name = SCOTT** というアプリ情報に関連付けられます。このユーザーにはアプリ プッシュ情報の出力が次の形式で表示されます。
 
@@ -72,4 +72,4 @@
 [4]: ./media/mobile-engagement-send-personalized-notifications/personal-notification.png
 [5]: ./media/mobile-engagement-send-personalized-notifications/notification.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->

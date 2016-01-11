@@ -36,13 +36,13 @@ Key Vault にアクセスする Web アプリケーションは、Azure Active D
 
 
 ## <a id="packages"></a>NuGet パッケージの追加 ##
-Web アプリケーションをインストールしておく必要のあるパッケージは 3 つあります。
+Web アプリケーションでインストールしておく必要のあるパッケージは 2 つあります。
 
 - Active Directory 認証ライブラリ: Azure Active Directory と対話してユーザー ID を管理するためのメソッドが含まれています。
 - Azure Key Vault ライブラリ: Azure Key Vault と対話するためのメソッドが含まれています。
 
 
-これらの 3 つのパッケージはすべて、パッケージ マネージャー コンソールで Install-Package コマンドを使用するとインストールできます。
+どちらのパッケージも、パッケージ マネージャー コンソールで Install-Package コマンドを使用してインストールできます。
 
 	// this is currently the latest stable version of ADAL
 	Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
@@ -114,7 +114,7 @@ Azure Active Directory からアクセス トークンを取得するコード�
 ## <a id="portalsettings"></a>Azure ポータルのアプリ設定の追加 (省略可能) ##
 Azure の Web アプリがある場合は、Azure ポータルでアプリ設定の実際の値を追加できます。これにより、実際の値は web.config ファイルに存在しなくなりますが、個別のアクセス制御機能があるポータルによって保護されます。これらの値は、web.config で入力した値の代わりに使用されます。名前が同じであるかどうかを確認してください。
 
-![Application Settings displayed in Azure Portal][1]
+![Azure ポータルに表示されるアプリケーションの設定][1]
 
 
 ## クライアント シークレットではなく、証明書を使用して認証する 
@@ -133,10 +133,10 @@ Azure AD アプリケーションを認証する別の方法は、クライア�
 
 終了日と .pfx のパスワードをメモしておいてください (この例では、2016 年 7 月 31 日と test123)。この情報は以下で必要になります。
 
-テスト証明書の作成の詳細については、[独自のテスト証明書を作成する方法](https://msdn.microsoft.com/en-in/library/ff699202.aspx)に関するページを参照してください。
+テスト証明書の作成の詳細については、[独自のテスト証明書を作成する方法](https://msdn.microsoft.com/library/ff699202.aspx)に関するページを参照してください。
 
 
-**証明書を Azure AD アプリケーションに関連付ける** 証明書を作成したので、それを Azure AD アプリケーションに関連付ける必要があります。ただし、現在 Azure 管理ポータルではサポートされていません。代わりに Powershell を使用する必要があります。実行する必要のあるコマンドを次に示します。
+**証明書を Azure AD アプリケーションに関連付ける** 証明書を作成したので、それを Azure AD アプリケーションに関連付ける必要があります。ただし、現在 Microsoft Azure 管理ポータルではサポートされていません。代わりに Powershell を使用する必要があります。実行する必要のあるコマンドを次に示します。
 
 	$x509 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
 	
@@ -223,7 +223,7 @@ StoreLocation は LocalMachine ではなく CurrentUser であることに注意
 
 **証明書を Web アプリに追加する** 証明書を Web アプリに追加する手順は、簡単な 2 段階のプロセスです。まず Azure ポータルに移動し、Web アプリに移動します。Web アプリの [設定] ブレードで、[カスタム ドメインおよび SSL] のエントリをクリックします。開いたブレードで、先ほど作成した証明書 KVWebApp.pfx をアップロードし、pfx のパスワードを覚えているかどうかを確認できます。
 
-![Adding a Certificate to a Web App in the Azure Portal][2]
+![Azure ポータルでの Web アプリへの証明書の追加][2]
 
 
 最後に、名前が WEBSITE\_LOAD\_CERTIFICATES で値が * の Web アプリに、アプリケーション設定を追加する必要があります。これにより、すべての証明書が読み込まれます。アップロードした証明書のみを読み込む場合は、そのサムプリントのコンマ区切りリストを入力できます。
@@ -243,4 +243,4 @@ Web アプリに証明書を追加する方法の詳細については、[Azure 
 [2]: ./media/key-vault-use-from-web-application/PortalAddCertificate.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

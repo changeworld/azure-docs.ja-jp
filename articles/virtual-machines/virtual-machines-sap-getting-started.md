@@ -19,7 +19,7 @@
    
 # Azure Virtual Machines (VM) における SAP の使用
 
-クラウド コンピューティングという言葉は、今や多くの人々に認知され、小規模な企業から大企業、多国籍企業にいたるまで、IT 業界における存在感を日増しに高めています。Microsoft Azure はマイクロソフトが提供するクラウド サービス プラットフォームで、多方面にわたって新たな可能性を生み出しています。アプリケーションをクラウド サービスとして迅速にプロビジョニングしたり、プロビジョニング解除したりすることができるようになった今、技術や予算の制約に縛られることはありません。企業は、ハードウェア インフラストラクチャに貴重な時間と予算を費やすことなく、アプリケーションやビジネス プロセス、そして顧客とユーザーの利益にのみ目を向けることができます。
+クラウド コンピューティングという言葉は、今や多くの人々に認知され、小規模な企業から大企業、多国籍企業にいたるまで、IT 業界における存在感を日増しに高めています。Microsoft Azure はマイクロソフトが提供する Cloud Services プラットフォームで、多方面にわたって新たな可能性を生み出しています。アプリケーションを Cloud Services として迅速にプロビジョニングしたり、プロビジョニング解除したりすることができるようになった今、技術や予算の制約に縛られることはありません。企業は、ハードウェア インフラストラクチャに貴重な時間と予算を費やすことなく、アプリケーションやビジネス プロセス、そして顧客とユーザーの利益にのみ目を向けることができます。
 
 Microsoft Azure Virtual Machines サービスを通じて、マイクロソフトは包括的な IaaS (Infrastructure as a Service) プラットフォームを提供しています。SAP NetWeaver ベースのアプリケーションは、Azure Virtual Machines (IaaS) でサポートされます。以下のホワイトペーパーには、SAP NetWeaver ベースのアプリケーションに最適なプラットフォームをプランニングし、Microsoft Azure に導入する方法が説明されています。
 
@@ -44,9 +44,9 @@ Microsoft Azure Virtual Machines サービスを通じて、マイクロソフ�
 ## Azure における SAP DBMS
 タイトル: Azure への SAP DBMS のデプロイ ガイド
 
-概要: このホワイト ペーパーでは、SAP と連携させる DBMS システムの計画と導入に関する注意点を取り上げています。最初のパートでは、全般的な注意点が列挙されています。その後、SAP でサポートされる各種 DBMS を Azure にデプロイする作業に関連した説明が続きます。紹介されている DBMS は、SQL Server、SAP ASE、Oracle です。その個々の領域において、これらの DBMS と共に SAP システムを Azure で実行する際に考慮する必要のある事柄を説明します。Azure 上の各種 DBMS でサポートされるバックアップと高可用性の手法といったテーマは、SAP アプリケーションの使用法の観点から取り上げています。
+概要: このホワイト ペーパーでは、SAP と連携させる DBMS システムの計画と導入に関する注意点を取り上げています。最初のパートでは、全般的な注意点が列挙されています。その後、SAP でサポートされる各種 DBMS を Azure にデプロイする作業に関連した説明が続きます。列挙されている DBMS は、Linux、Unix、および Windows 用の SQL Server、SAP ASE、Oracle、SAP MaxDB および IBM DB2 です。その個々の領域において、これらの DBMS と共に SAP システムを Azure で実行する際に考慮する必要のある事柄を説明します。Azure 上の各種 DBMS でサポートされるバックアップと高可用性の手法といったテーマは、SAP アプリケーションの使用法の観点から取り上げています。
 
-更新日: 2015 年 8 月
+更新日: 2015 年 12 月
 
 [このガイドを今すぐダウンロードする](http://go.microsoft.com/fwlink/?LinkId=397965)
 
@@ -70,4 +70,14 @@ Microsoft Azure Virtual Machines サービスを通じて、マイクロソフ�
 
 [このガイドを今すぐダウンロードする](http://go.microsoft.com/fwlink/?LinkId=613056)
 
-<!---HONumber=AcomDC_1125_2015-->
+## Azure SUSE Linux Virtual Machines における SAP NetWeaver
+
+タイトル: Microsoft Azure SUSE Linux VM での SAP NetWeaver のテスト
+
+概要: 現時点では、SAP は Azure Linux VMs での SAP NetWeaver の実行を正式にはサポートしていません。それでも、SAP サポートに連絡する必要がない限り、顧客はテストを実施する、または Azure Linux VMs で SAP のデモやトレーニング システムを実行することを検討する場合があります。この記事では、SAP を実行するために必要な Azure SUSE Linux VMs の設定方法と、潜在的な落とし穴を回避するための基本的なヒントをいくつか示します。
+
+更新日: 2015 年 12 月
+
+[記事はこちら](virtual-machines-sap-on-linux-suse-quickstart.md)
+
+<!---HONumber=AcomDC_1223_2015-->

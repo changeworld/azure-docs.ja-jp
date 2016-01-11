@@ -18,7 +18,7 @@
 
 # Visual Studio を利用すれば、Service Fabric アプリケーションの記述と管理が簡単になりまする
 
-Service Fabric アプリケーションとサービスを Visual Studio で管理することができます。[開発環境のセットアップ](service-fabric-setup-your-development-environment.md)が済んだら、Visual Studio を使用して、Service Fabric アプリケーションの作成、サービスの追加、ローカル開発クラスターでのアプリケーションのパッケージ化、登録、およびデプロイができます。
+Azure Service Fabric アプリケーションとサービスを Visual Studio で管理できます。[開発環境のセットアップ](service-fabric-setup-your-development-environment.md)が済んだら、Visual Studio を使用して、Service Fabric アプリケーションの作成、サービスの追加、ローカル開発クラスターでのアプリケーションのパッケージ化、登録、およびデプロイができます。
 
 アプリケーションを管理するには、ソリューション エクスプローラーで、アプリケーション プロジェクトを右クリックします。
 
@@ -34,15 +34,15 @@ Service Fabric アプリケーションとサービスを Visual Studio で管�
 4. 実行している任意のアプリケーション インスタンスの削除
 5. 新しいアプリケーション インスタンスの作成
 
-Visual Studio では、**[F5]** キーを押してもアプリケーションはデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。**[Ctrl + F5]** キーを押すとデバッグなしでアプリケーションをデプロイし、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。「[Visual Studio を使用してリモート クラスターにアプリケーションを発行する](service-fabric-publish-app-remote-cluster.md)」を参照してください。
+Visual Studio では、**[F5]** キーを押してもアプリケーションはデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。**[Ctrl + F5]** キーを押してデバッグなしでアプリケーションをデプロイするか、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。詳細については、「[Visual Studio を使用してリモート クラスターにアプリケーションを発行する](service-fabric-publish-app-remote-cluster.md)」を参照してください。
 
 ### テスト実行間でのデータの保持
 
-多くの場合、サービスはテスト データ入力の追加、コード ブロックの微調整、ローカルでの再デバッグと、ローカルでテストします。Visual Studio Service Fabric のツールには、前のセッションで入力したデータを保持して再利用できる、**[開始時にデータを保持する]**と呼ばれる便利なプロパティが用意されています。
+多くの場合、サービスはテスト データ入力の追加、コード ブロックの微調整、ローカルでの再デバッグと、ローカルでテストします。Visual Studio Service Fabric のツールには、前のセッションで入力したデータを保持して再利用できる、**[開始時にデータを保持する]** と呼ばれる便利なプロパティが用意されています。
 
-### [開始時にデータを保持する] プロパティを有効にするには
+#### [開始時にデータを保持する] プロパティを有効にするには
 
-1. アプリケーション プロジェクトのショートカット メニューで、**[プロパティ]** (または **[F4]** キー) を選択します。
+1. アプリケーション プロジェクトのショートカット メニューで、**[プロパティ]** を選択します (または **[F4]** キーを押します)。
 1. **[プロパティ]** ウィンドウで、**[開始時にデータを保持する]** プロパティを **[はい]** に設定します。
 
 	![[開始時にデータを保持する] プロパティの設定][preservedata]
@@ -53,7 +53,7 @@ Visual Studio では、**[F5]** キーを押してもアプリケーションは
 
 データは、Service Fabric プラットフォームのアップグレード機能を活用して保持されます。アプリケーションのアップグレードの詳細については、「[Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)」を参照してください。
 
-## Service Fabric アプリケーションへのサービスの追加
+## Service Fabric アプリケーションにサービスを追加します。
 
 新しい Fabric サービスをアプリケーションに追加して、機能を拡張することができます。サービスがアプリケーション パッケージに含まれているかどうかを確認するには、**[新規 Fabric サービス]** メニュー項目からサービスを追加します。
 
@@ -69,11 +69,11 @@ Visual Studio では、**[F5]** キーを押してもアプリケーションは
 
 ## Service Fabric アプリケーションのパッケージ化
 
-アプリケーション パッケージは、アプリケーションとそのサービスをクラスターにデプロイするために作成する必要があります。パッケージは、アプリケーション マニフェスト、サービス マニフェスト、および特定のレイアウトで必要なその他のファイルを整理します。Visual Studio は、パッケージを 'pkg' ディレクトリのアプリケーション プロジェクト フォルダーに設定し、管理します。**[アプリケーション]** コンテキスト メニューから **[パッケージ]** をクリックすると、アプリケーション パッケージが作成または更新されます。カスタム Powershell スクリプトを使用してアプリケーションをデプロイする場合に、これを実行できます。
+アプリケーションとそのサービスをクラスターにデプロイするには、アプリケーション パッケージを作成する必要があります。パッケージは、アプリケーション マニフェスト、サービス マニフェスト、および特定のレイアウトで必要なその他のファイルを整理します。Visual Studio は、パッケージを 'pkg' ディレクトリのアプリケーション プロジェクト フォルダーに設定し、管理します。**[アプリケーション]** コンテキスト メニューから **[パッケージ]** をクリックすると、アプリケーション パッケージが作成または更新されます。カスタム Powershell スクリプトを使用してアプリケーションをデプロイする場合に、これを実行できます。
 
 ## アプリケーションの削除
 
-Service Fabric Explorer を使用して、ローカル クラスターからアプリケーション タイプのプロビジョニングを解除できます。クラスター エクスプローラーは、http://localhost:19080/Explorer などのクラスターの HTTP エンドポイント (通常 19080 または 19007) からアクセスできます。これで、次のように、上で説明したデプロイの手順を元に戻すことができます。
+Service Fabric Explorer を使用して、ローカル クラスターからアプリケーション タイプのプロビジョニングを解除できます。クラスター エクスプローラーは、http://localhost:19080/Explorer などのクラスターの HTTP ゲートウェイ エンドポイント (通常 19080 または 19007) からアクセスできます。これで、次のように、上で説明したデプロイの手順を元に戻すことができます。
 
 1. 実行している任意のアプリケーション インスタンスの削除
 2. アプリケーションの種類の登録解除
@@ -87,7 +87,7 @@ Service Fabric Explorer を使用して、ローカル クラスターからア�
 - [Service Fabric アプリケーションのデプロイ](service-fabric-deploy-remove-applications.md)
 - [複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)
 - [Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
-- [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
+- [Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
 <!--Image references-->
 [addserviceproject]: ./media/service-fabric-manage-application-in-visual-studio/addserviceproject.png
@@ -97,4 +97,4 @@ Service Fabric Explorer を使用して、ローカル クラスターからア�
 [preservedata]: ./media/service-fabric-manage-application-in-visual-studio/preservedata.png
 [preservedate]: ./media/service-fabric-manage-application-in-visual-studio/preservedate.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1223_2015-->

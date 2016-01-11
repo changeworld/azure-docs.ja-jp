@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/26/2015" 
+	ms.date="12/17/2015" 
 	ms.author="bradsev" />
 
 
@@ -91,6 +91,20 @@ VM を作成した後は、リモート デスクトップを使用して、手�
 
 VM が作成され、プロビジョニングされた後は、VM にインストールされて構成されたツールを使い始めることができます。多くのツールには、デスクトップ アイコンとスタート メニュー タイルがあります。
 
+## データ サイエンス仮想マシンで強力なパスワードを作成する方法
+
+データ サイエンス仮想マシン用の強力なパスワードを作成するには、マシンのコマンド プロンプトで次のコマンドを実行します。
+
+	c:\anaconda\python.exe -c "import IPython;print IPython.lib.passwd()"
+
+パスワードを求められたら、入力します。
+
+"sha1:xxxxxx" 形式のパスワード ハッシュが出力されます。このパスワード ハッシュをコピーし、Notebook 構成ファイル (**C:\\Aaqs.ipython\\profile\_nbserver\\ipython\_notebook\_config.py**) 内の既存のハッシュを ***c.NotebookApp.password*** パラメーターで置き換えます。
+
+引用符内にある既存のハッシュ値のみを置き換える必要があります。引用符とパラメーター値の ***sha1:*** プレフィックスを保持する必要があります。
+
+最後に、VM 上で実行中の Ipython サーバーを停止し、"Start\_IPython\_Notebook" と呼ばれる Windows スケジュール タスクとして再起動する必要があります。このタスクを再起動した後、新しいパスワードが拒否される場合は、仮想マシンを再起動してください。
+
 ## Microsoft データ サイエンス仮想マシンにインストールされているツール
 
 ### R
@@ -111,7 +125,7 @@ Visual Studio Community エディションが VM にインストールされて�
 SQL Server の制限付きバージョンも、Visual Studio Community エディションにパッケージ化されています。SQL サーバーにアクセスするには、**SQL Server Management Studio** を起動します。VM の名前は、サーバー名として設定されます。Windows の管理者としてログインする場合は、Windows 認証を使用します。SQL Server Management Studio にアクセスできたら、他のユーザーの作成、データベースの作成、データのインポート、SQL クエリの実行などを行うことができます。
 
 ### Azure 
-いくつかの Azure ツールが、VM にインストールされています。- Azure SDK ドキュメントにアクセスするためのデスクトップ ショートカットがあります。- **AzCopy** は、Microsoft Azure Storage アカウントとの間でデータを移動するために使用されます。- **Azure ストレージ エクスプローラー**は、Azure ストレージ アカウントに格納されているオブジェクトを参照するために使用されます。- **Microsoft Azure Powershell**。- スクリプト言語で Azure リソースを管理するために使用されるスクリプト言語も、VM にインストールされています。
+いくつかの Azure ツールが、VM にインストールされています。- Azure SDK ドキュメントにアクセスするためのデスクトップ ショートカットがあります。- **AzCopy** は、Microsoft Azure Storage アカウントとの間でデータを移動するために使用されます。- **Azure スStorage エクスプローラー**は、Azure Storage アカウントに格納されているオブジェクトを参照するために使用されます。- **Microsoft Azure Powershell**。- スクリプト言語で Azure リソースを管理するために使用されるスクリプト言語も、VM にインストールされています。
 
 ###Power BI
 
@@ -122,4 +136,4 @@ SQL Server の制限付きバージョンも、Visual Studio Community エディ
 ## その他の Microsoft 開発ツール
 [**Microsoft Web Platform Installer**](https://www.microsoft.com/web/downloads/platform.aspx) は、他の Microsoft 開発ツールを検出し、ダウンロードするために使用できます。Microsoft データ サイエンス仮想マシンのデスクトップにはツールのショートカットもあります。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

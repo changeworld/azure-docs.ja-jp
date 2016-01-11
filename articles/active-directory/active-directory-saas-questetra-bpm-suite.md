@@ -3,8 +3,8 @@
 	description="Azure Active Directory と Questetra BPM Suite の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
-	manager="msStevenPo"
+	authors="jeevansd"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/02/2015"
-	ms.author="markusvi"/>
+	ms.date="12/18/2015"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と Questetra BPM Suite の統合
@@ -89,12 +89,12 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 1. Azure AD ポータルの **Questetra BPM Suite** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][8]
 
-2. **[ユーザーの Questetra BPM Suite へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD Single Sign-On][9]
+2. **[ユーザーの Questetra BPM Suite へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD のシングル サインオン][9]
 
 
 3. 別の Web ブラウザーのウィンドウで、管理者として **Questetra BPM Suite** 企業サイトにログインします。
 
-4. 上部のメニューで **[システム設定]** をクリックします。<br><br> ![Azure AD Single Sign-On][10]
+4. 上部のメニューで **[システム設定]** をクリックします。<br><br> ![Azure AD のシングル サインオン][10]
 
 5. **[SingleSignOnSAML]** ページを開くには、**[SSO (SAML)]** をクリックします。 <br><br> ![Azure AD Single Sign-On][11]
 
@@ -113,7 +113,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 7. **[Questetra BPM Suite でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。<br><br>![Configure Single Sign-On][14]
 
 
-8. **Questetra BPM Suite** 企業サイトで、次の手順を実行します。<br><br>![Configure Single Sign-On][15]
+8. **Questetra BPM Suite** 企業サイトで、次の手順を実行します。<br><br>![シングル サインオンの構成][15]
 
     a.**[シングル サインオンを有効にする]** を選択します。
      
@@ -135,7 +135,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
     h.**[保存]** をクリックします。
 
 
-9. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![What is Azure AD Connect][17]
+9. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD Connect の概要][17]
 
 
 10. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![What is Azure AD Connect][18]
@@ -148,7 +148,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成][100] 
+1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br>![Azure AD のテスト ユーザーの作成][100] 
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -177,7 +177,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成][105]
 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順を実行します。<br><br>![Azure AD のテスト ユーザーの作成][106]
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成][106]
   1. **[新しいパスワード]** の値を書き留めます。
   2. **[完了]** をクリックします。   
   
@@ -265,4 +265,4 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 [300]: ./media/active-directory-saas-questetra-bpm-suite/questera_bpm_suite_11.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

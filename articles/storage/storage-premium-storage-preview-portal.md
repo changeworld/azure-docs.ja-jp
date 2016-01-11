@@ -25,6 +25,8 @@ Azure Premium Storage は、高負荷の I/O ワークロードを実行する�
 
 Azure VM では複数の Premium Storage ディスクをアタッチすることができるので、アプリケーションには VM あたり最大で 64 TB のストレージを設定することができます。Premium Storage を使用すると、アプリケーションは、VM あたり 80,000 IOPS (1 秒あたりの入力/出力操作) と、VM あたり 2000 MB/秒のディスク スループットを実現でき、読み取り操作の待ち時間も非常に短くなります。
 
+Premium Storage により、Azure は Dynamics AX、Dynamics CRM、Exchange Server、SharePoint Farms、SAP Business Suite などの要件の厳しいエンタープライズ アプリケーションを本当の意味でクラウドに昇格および移行できます。Premium Storage を使用すると、SQL Server、Oracle、MongoDB、MySQL、Redis のような一貫して高パフォーマンスと低待機時間を必要とする負荷の要件が厳しいデータベースを実行できます。
+
 >[AZURE.NOTE]高い IOPS を必要とする仮想マシンのディスクは Azure Premium Storage に移行して、アプリケーションが最高のパフォーマンスを発揮できるようにすることをお勧めします。ディスクが高い IOPS を必要としない場合は、ディスクを Standard Storage 内に保持することでコストを抑えることができます。Standard Storage の場合、仮想マシンのディスク データは SSD ではなくハード ディスク ドライブ (HDD) に格納されます。
 
 Azure Premium Storage を使用するには、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)のページをご覧ください。既存の仮想マシンを Premium Storage に移行する方法の詳細については、「[Azure Premium Storage への移行](storage-migration-to-premium-storage.md)」を参照してください。
@@ -327,7 +329,7 @@ azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 ## 次のステップ
 
 - [Azure Premium Storage での BLOB サービス操作の使用](http://go.microsoft.com/fwlink/?LinkId=521969)
-- [Azure Premium Storage への移行](storage-migration-to-premium-storage.md)
+- [Azure Premium Storage に移行](storage-migration-to-premium-storage.md)します。
 - [Windows を実行する仮想マシンの作成](../virtual-machines-windows-tutorial-azure-preview.md)
 - [Azure の仮想マシンおよびクラウド サービスのサイズ](../virtual-machines/virtual-machines-size-specs.md)
 - [Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
@@ -335,4 +337,4 @@ azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 [Image1]: ./media/storage-premium-storage-preview-portal/Azure_pricing_tier.png
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->

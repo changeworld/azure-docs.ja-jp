@@ -12,16 +12,21 @@
 	ms.service="sql-database" 
 	ms.workload="data-management" 
 	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
+	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/30/2015" 
+	ms.date="12/17/2015" 
 	ms.author="genemi"/>
 
 
 # コード サンプル: SQL Database に接続するための C# の再試行ロジック
 
 
-[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
+
+> [AZURE.SELECTOR]
+- [PHP](sql-database-develop-php-retry-windows.md)
+- [C#](sql-database-develop-csharp-retry-windows.md)
+- [C# EntLib6](sql-database-develop-entlib-csharp-retry-windows.md)
+
 
 
 このトピックでは、カスタムの再試行ロジックを記述した C# コードのサンプルについて説明します。この再試行ロジックは、プログラムが数秒間待機、または数回再試行すると解消される傾向がある一時的なエラーや*一時的な障害*を適切に処理することを目的としています。
@@ -282,4 +287,6 @@ filetable_updates_2105058535    2105058535
 
 - [SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+- [SQL Database を試す: C# を使用して SQL Database Library for .NET で SQL Database を作成する](sql-database-get-started-csharp.md)
+
+<!---HONumber=AcomDC_1223_2015-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2015"
+   ms.date="12/17/2015"
    ms.author="masashin"/>
 
 # API 実装ガイダンス
@@ -247,26 +247,26 @@ ASP.NET Web API を使用して実装されたサービスでは、各要求は 
 	...
 	Content-Length: ...
 	{"CustomerID":2,"CustomerName":"Bert","Links":[
-	  {"Relationship":"self",
-	   "HRef":"http://adventure-works.com/customers/2",
-	   "Action":"GET",
-	   "LinkedResourceMIMETypes":["text/xml","application/json"]},
-	  {"Relationship":"self",
-	   "HRef":"http://adventure-works.com/customers/2",
-	   "Action":"PUT",
-	   "LinkedResourceMIMETypes":["application/x-www-form-urlencoded"]},
-	  {"Relationship":"self",
-	   "HRef":"http://adventure-works.com/customers/2",
-	   "Action":"DELETE",
-	   "LinkedResourceMIMETypes":[]},
-	  {"Relationship":"orders",
-	   "HRef":"http://adventure-works.com/customers/2/orders",
-	   "Action":"GET",
-	   "LinkedResourceMIMETypes":["text/xml","application/json"]},
-	  {"Relationship":"orders",
-	   "HRef":"http://adventure-works.com/customers/2/orders",
-	   "Action":"POST",
-	   "LinkedResourceMIMETypes":["application/x-www-form-urlencoded"]}
+	  {"rel":"self",
+	   "href":"http://adventure-works.com/customers/2",
+	   "action":"GET",
+	   "types":["text/xml","application/json"]},
+	  {"rel":"self",
+	   "href":"http://adventure-works.com/customers/2",
+	   "action":"PUT",
+	   "types":["application/x-www-form-urlencoded"]},
+	  {"rel":"self",
+	   "href":"http://adventure-works.com/customers/2",
+	   "action":"DELETE",
+	   "types":[]},
+	  {"rel":"orders",
+	   "href":"http://adventure-works.com/customers/2/orders",
+	   "action":"GET",
+	   "types":["text/xml","application/json"]},
+	  {"rel":"orders",
+	   "href":"http://adventure-works.com/customers/2/orders",
+	   "action":"POST",
+	   "types":["application/x-www-form-urlencoded"]}
 	]}
 	```
 
@@ -283,10 +283,10 @@ ASP.NET Web API を使用して実装されたサービスでは、各要求は 
 
 	public class Link
 	{
-    	public string Relationship { get; set; }
-    	public string HRef { get; set; }
+    	public string Rel { get; set; }
+    	public string Href { get; set; }
     	public string Action { get; set; }
-    	public string [] LinkedResourceMIMETypes { get; set; }
+    	public string [] Types { get; set; }
 	}
 	```
 
@@ -294,11 +294,11 @@ ASP.NET Web API を使用して実装されたサービスでは、各要求は 
 
 	- 返されるオブジェクトとリンクで示されているオブジェクトの関係。この例の "self" は、リンクがそのオブジェクト自体の参照であることを示しています (多くのオブジェクト指向言語での `this` ポインターと同様)。また、"orders" は関連する注文情報が含まれたコレクションの名前です。
 
-	- リンクで示されているオブジェクトの URI 形式のハイパーリンク (`HRef`)。
+	- リンクで示されているオブジェクトの URI 形式のハイパーリンク (`Href`)。
 
 	- この URI に送信できる HTTP 要求の種類 (`Action`)。
 
-	- 要求の種類に応じて、HTTP 要求で提供するか、または応答で返すことができるデータの形式 (`LinkedResourceMIMETypes`)。
+	- 要求の種類に応じて、HTTP 要求で提供するか、または応答で返すことができるデータの形式 (`Types`)。
 
 	HTTP 応答の例に示す HATEOAS リンクは、クライアント アプリケーションが次の操作を実行できることを示しています。
 
@@ -406,7 +406,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 	Cache-Control: max-age=600, private
 	Content-Type: text/json; charset=utf-8
 	Content-Length: ...
-	{"OrderID":2,"ProductID":4,"Quantity":2,"OrderValue":10.00}
+	{"orderID":2,"productID":4,"quantity":2,"orderValue":10.00}
 	```
 
 	この例では、Cache-Control ヘッダーは、返されるデータを 600 秒後に期限切れにすることと、返されるデータは 1 つのクライアント専用であり、他のクライアントが使用する共有キャッシュには保存できないこと (_private_) を指定しています。データを共有キャッシュに保存できる場合は、Cache-Control ヘッダーで _private_ ではなく _public_ を指定できます。また、データをクライアントでキャッシュできない場合は、_no-store_ を指定できます。次のコード例は、応答メッセージの Cache-Control ヘッダーを作成する方法を示しています。
@@ -514,7 +514,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 	Content-Type: text/json; charset=utf-8
 	ETag: "2147483648"
 	Content-Length: ...
-	{"OrderID":2,"ProductID":4,"Quantity":2,"OrderValue":10.00}
+	{"orderID":2,"productID":4,"quantity":2,"orderValue":10.00}
 	```
 
 	> [AZURE.TIP]セキュリティ上の理由から、機密データや認証された (HTTPS) 接続経由で返されるデータのキャッシュは許可しないでください。
@@ -646,7 +646,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 	...
 	Date: Fri, 12 Sep 2014 09:18:37 GMT
 	Content-Length: ...
-	ProductID=3&Quantity=5&OrderValue=250
+	productID=3&quantity=5&orderValue=250
 	```
 
 	- Web API の PUT 操作で、要求されたデータ (前の例では order 1) の現在の ETag を取得し、If-Match ヘッダーの値と比較します。
@@ -1152,4 +1152,4 @@ API Management サービスを使用して Web API を公開した場合、Micro
 - Visual Studio を使用した単体テストの作成と管理の詳細については、Microsoft Web サイトの「[単体テストを使用したコードの検証](https://msdn.microsoft.com/library/dd264975.aspx)」をご覧ください。
 - Visual Studio Ultimate を使用して、Web パフォーマンスおよびロード テスト プロジェクトを作成する方法については、Microsoft Web サイトの[リリース前のアプリケーションでのパフォーマンス テストの実行](https://msdn.microsoft.com/library/dn250793.aspx)に関するページをご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

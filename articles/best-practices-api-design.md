@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/28/2015"
+   ms.date="12/17/2015"
    ms.author="masashin"/>
 
 # API 設計ガイダンス
@@ -51,14 +51,14 @@ GET http://adventure-works.com/orders HTTP/1.1
 ...
 ```
 
-以下に示す応答は、注文を XML リスト構造でエンコードします。このリストには、7 件の注文が含まれています。
+以下に示す応答は、注文を JSON リスト構造でエンコードします。
 
 ```HTTP
 HTTP/1.1 200 OK
 ...
 Date: Fri, 22 Aug 2014 08:49:02 GMT
 Content-Length: ...
-<OrderList xmlns:i="..." xmlns="..."><Order><OrderID>1</OrderID><OrderValue>99.90</OrderValue><ProductID>1</ProductID><Quantity>1</Quantity></Order><Order><OrderID>2</OrderID><OrderValue>10.00</OrderValue><ProductID>4</ProductID><Quantity>2</Quantity></Order><Order><OrderID>3</OrderID><OrderValue>16.60</OrderValue><ProductID>2</ProductID><Quantity>4</Quantity></Order><Order><OrderID>4</OrderID><OrderValue>25.90</OrderValue><ProductID>3</ProductID><Quantity>1</Quantity></Order><Order><OrderID>7</OrderID><OrderValue>99.90</OrderValue><ProductID>1</ProductID><Quantity>1</Quantity></Order></OrderList>
+[{"orderId":1,"orderValue":99.90,"productId":1,"quantity":1},{"orderId":2,"orderValue":10.00,"productId":4,"quantity":2},{"orderId":3,"orderValue":16.60,"productId":2,"quantity":4},{"orderId":4,"orderValue":25.90,"productId":3,"quantity":1},{"orderId":5,"orderValue":99.90,"productId":1,"quantity":1}]
 ```
 個々 の注文を取得するには、注文の識別子を _/orders/2_ などの _orders_ リソースから指定する必要があります。
 
@@ -72,11 +72,10 @@ HTTP/1.1 200 OK
 ...
 Date: Fri, 22 Aug 2014 08:49:02 GMT
 Content-Length: ...
-<Order xmlns:i="..." xmlns="...">
-<OrderID>2</OrderID><OrderValue>10.00</OrderValue><ProductID>4</ProductID><Quantity>2</Quantity></Order>
+{"orderId":2,"orderValue":10.00,"productId":4,"quantity":2}
 ```
 
-> [AZURE.NOTE]わかりやすくするため、これらの例では XML テキスト データとして返される応答の情報が表示されています。ただし、バイナリ情報や暗号化情報など HTTP によりサポートされている他の種類のデータをリソースに一切含めるべきでない理由はありません。HTTP 応答の content-type では種類を指定する必要があります。また、REST モデルは XML や JSON など、異なる形式の同じデータを返すことができる場合があります。この場合、Web サービスは要求を行うクライアントとのコンテント ネゴシエーションを実行できる必要があります。要求にはクライアントが受け取る優先形式を指定する _Accept_ ヘッダーを含めることができ、Web サービスは可能な限りこの形式を使用しようとする必要があります。
+> [AZURE.NOTE]わかりやすくするため、これらの例では JSON テキスト データとして返される応答の情報が表示されています。ただし、バイナリ情報や暗号化情報など HTTP によりサポートされている他の種類のデータをリソースに一切含めるべきでない理由はありません。HTTP 応答の content-type では種類を指定する必要があります。また、REST モデルは XML や JSON など、異なる形式の同じデータを返すことができる場合があります。この場合、Web サービスは要求を行うクライアントとのコンテント ネゴシエーションを実行できる必要があります。要求にはクライアントが受け取る優先形式を指定する _Accept_ ヘッダーを含めることができ、Web サービスは可能な限りこの形式を使用しようとする必要があります。
 
 REST 要求からの応答では標準 HTTP 状態 コードが使用されていることに注意してください。たとえば、有効なデータを返す要求には HTTP 応答コード 200 (OK) を含める必要があり、指定したリソースの確認および削除に失敗した要求は HTTP 状態コード 404 (Not Found) を含む応答を返す必要があります。
 
@@ -166,10 +165,10 @@ Content-Type: application/json; charset=utf-8
 ...
 Date: Fri, 22 Aug 2014 09:18:37 GMT
 Content-Length: ...
-{"OrderID":2,"ProductID":4,"Quantity":2,"OrderValue":10.00}
+{"orderID":2,"productID":4,"quantity":2,"orderValue":10.00}
 ```
 
-Web サーバーが要求されたメディアの種類をサポートしていない場合、異なる形式でデータを送信できます。すべての場合で、Content-Type ヘッダーでメディアの種類を指定する必要があります (_text/xml_ など)。応答メッセージを解析し、メッセージ本文内の結果を適切に解釈することはクライアント アプリケーションの役割です。
+Web サーバーが要求されたメディアの種類をサポートしていない場合、異なる形式でデータを送信できます。すべての場合で、Content-Type ヘッダーでメディアの種類を指定する必要があります (_application/json_ など)。応答メッセージを解析し、メッセージ本文内の結果を適切に解釈することはクライアント アプリケーションの役割です。
 
 この例では、Web サーバーが要求されたデータを正常に取得し、応答ヘッダーで状態コード 200 を渡すことで成功を示しています。一致するデータが見つからない場合は、代わりに状態コード 404 (見つかりません) が返され、応答メッセージの本文には追加情報を含めることができます。この情報の形式は、次の例で示されるように Content-Type ヘッダーにより指定されます。
 
@@ -189,7 +188,7 @@ Content-Type: application/json; charset=utf-8
 ...
 Date: Fri, 22 Aug 2014 09:18:37 GMT
 Content-Length: ...
-{"Message":"No such order"}
+{"message":"No such order"}
 ```
 
 アプリケーションがリソースを更新するために HTTP PUT 要求を送信すると、リソースの URI が指定され、要求メッセージの本文で変更されるデータが提供されます。Content-Type ヘッダーを使用して、このデータの形式を指定する必要もあります。テキスト ベースの情報で使用される一般的な形式は _application/x-www-form-urlencoded_ で、& の文字で区切られた一連の名前/値のペアで構成されています。次の例は、注文 1 の情報を変更する HTTP PUT 要求を示しています。
@@ -229,7 +228,7 @@ Content-Type: application/x-www-form-urlencoded
 ...
 Date: Fri, 22 Aug 2014 09:18:37 GMT
 Content-Length: ...
-ProductID=5&Quantity=15&OrderValue=400
+productID=5&quantity=15&orderValue=400
 ```
 
 要求が成功する場合、Web サーバーは HTTP 状態コード 201 (Created) を含むメッセージ コードで応答します。Location ヘッダーには新しく作成されたリソースの URI が含まれ、応答の本文には新しいリソースのコピーが含まれます。Content-Type ヘッダーは次のデータの形式を指定します。
@@ -242,7 +241,7 @@ Location: http://adventure-works.com/orders/99
 ...
 Date: Fri, 22 Aug 2014 09:18:37 GMT
 Content-Length: ...
-{"OrderID":99,"ProductID":5,"Quantity":15,"OrderValue":400}
+{"orderID":99,"productID":5,"quantity":15,"orderValue":400}
 ```
 
 > [AZURE.TIP]PUT または POST 要求によって提供されたデータが無効な場合、Web サーバーは HTTP 状態コード 400 (Bad Request) を含むメッセージで応答します。このメッセージの本文には、要求の問題および想定される形式に関する追加情報を含めるか、詳細が記載された URL のリンクを含めることができます。
@@ -289,7 +288,7 @@ URI をシンプルで直感的に保つように努める必要があります�
 単一のリソースに、ファイルやイメージなど、大きなバイナリ フィールドが含まれている可能性があります。信頼性が低く断続的な接続であることが原因となっている伝送の問題を克服し、応答時間を向上させるには、そのようなリソースをクライアント アプリケーションがチャンクで取得できるようにする操作を提供することを検討してください。そのためには、Web API が大きなリソースの GET 要求で Accept-Ranges ヘッダーをサポートし、理想的にはこれらのリソースの HTTP HEAD 要求を実装するようにします。Accept-Ranges ヘッダーは、GET 操作が一部の結果をサポートし、クライアント アプリケーションがバイト数の範囲として指定されたリソースのサブセットを返す GET 要求を送信できることを示します。HEAD 要求は GET 要求に似ていますが、リソースおよび空のメッセージ本文を記述するヘッダーのみを返す点が異なります。クライアント アプリケーションは HEAD 要求を発行し、部分的 GET 要求を使用して、リソースを取得するかどうかを判断します。次の例は、製品イメージに関する情報を取得する HEAD 要求を示しています。
 
 ```HTTP
-HEAD http://adventure-works.com/products/10?fields=ProductImage HTTP/1.1
+HEAD http://adventure-works.com/products/10?fields=productImage HTTP/1.1
 ...
 ```
 
@@ -307,7 +306,7 @@ Content-Length: 4580
 クライアント アプリケーションはこの情報を使用して、より小さいチャンクのイメージを取得する一連の GET 要求を作成できます。最初の要求では、Range ヘッダーを使用して最初の 2,500 バイトを取得します。
 
 ```HTTP
-GET http://adventure-works.com/products/10?fields=ProductImage HTTP/1.1
+GET http://adventure-works.com/products/10?fields=productImage HTTP/1.1
 Range: bytes=0-2499
 ...
 ```
@@ -328,7 +327,7 @@ _{binary data not shown}_
 クライアント アプリケーションのその後の要求により、適切な Range ヘッダーを使用することで残りのリソースを取得できます。
 
 ```HTTP
-GET http://adventure-works.com/products/10?fields=ProductImage HTTP/1.1
+GET http://adventure-works.com/products/10?fields=productImage HTTP/1.1
 Range: bytes=2500-
 ...
 ```
@@ -359,7 +358,7 @@ Accept: application/json
 ...
 ```
 
-応答メッセージの本文には、リレーションシップの性質を指定する `Links` アレイ (コード例で強調表示されている) (_Customer_)、顧客の URI (\__http://adventure-works.com/customers/3_)、この顧客の詳細を取得する方法 (_GET_)、この情報を取得するのに Web サーバーがサポートする MIME の種類 (_text/xml_ と _application/json_) が含まれます。クライアント アプリケーションが顧客の詳細を取得するのに必要な情報はこれですべてです。さらに Links アレイには、PUT (Web サーバーがクライアントに提供を期待する形式とともに顧客を変更する) や DELETE など、実行可能な他の操作のリンクも含まれます。
+応答メッセージの本文には、リレーションシップの性質を指定する `links` アレイ (コード例で強調表示されている) (_Customer_)、顧客の URI (\__http://adventure-works.com/customers/3_)、この顧客の詳細を取得する方法 (_GET_)、この情報を取得するのに Web サーバーがサポートする MIME の種類 (_text/xml_ と _application/json_) が含まれます。クライアント アプリケーションが顧客の詳細を取得するのに必要な情報はこれですべてです。さらに Links アレイには、PUT (Web サーバーがクライアントに提供を期待する形式とともに顧客を変更する) や DELETE など、実行可能な他の操作のリンクも含まれます。
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -367,8 +366,8 @@ HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ...
 Content-Length: ...
-{"OrderID":3,"ProductID":2,"Quantity":4,"OrderValue":16.60,"Links":[(some links omitted){"Relationship":"customer","HRef":" http://adventure-works.com/customers/3", "Action":"GET","LinkedResourceMIMETypes":["text/xml","application/json"]},{"Relationship":"
-customer","HRef":" http://adventure-works.com /customers/3", "Action":"PUT","LinkedResourceMIMETypes":["application/x-www-form-urlencoded"]},{"Relationship":"customer","HRef":" http://adventure-works.com /customers/3","Action":"DELETE","LinkedResourceMIMETypes":[]}]}
+{"orderID":3,"productID":2,"quantity":4,"orderValue":16.60,"links":[(some links omitted){"rel":"customer","href":" http://adventure-works.com/customers/3", "action":"GET","types":["text/xml","application/json"]},{"rel":"
+customer","href":" http://adventure-works.com /customers/3", "action":"PUT","types":["application/x-www-form-urlencoded"]},{"rel":"customer","href":" http://adventure-works.com /customers/3","action":"DELETE","types":[]}]}
 ```
 
 完全を期すために、Links アレイには取得したリソースに関する自己参照型の情報も含めるようにします。これらのリンクは、以前の例から省略されていますが、次のコードでは強調表示されています。これらのリンクで、これが操作により返されるリソースの参照であるのを示すために、リレーションシップ _self_ が使用されることに注意してください。
@@ -379,8 +378,8 @@ HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ...
 Content-Length: ...
-{"OrderID":3,"ProductID":2,"Quantity":4,"OrderValue":16.60,"Links":[{"Relationship":"self","HRef":" http://adventure-works.com/orders/3", "Action":"GET","LinkedResourceMIMETypes":["text/xml","application/json"]},{"Relationship":" self","HRef":" http://adventure-works.com /orders/3", "Action":"PUT","LinkedResourceMIMETypes":["application/x-www-form-urlencoded"]},{"Relationship":"self","HRef":" http://adventure-works.com /orders/3", "Action":"DELETE","LinkedResourceMIMETypes":[]},{"Relationship":"customer",
-"HRef":" http://adventure-works.com /customers/3", "Action":"GET","LinkedResourceMIMETypes":["text/xml","application/json"]},{"Relationship":" customer" (customer links omitted)}]}
+{"orderID":3,"productID":2,"quantity":4,"orderValue":16.60,"links":[{"rel":"self","href":" http://adventure-works.com/orders/3", "action":"GET","types":["text/xml","application/json"]},{"rel":" self","href":" http://adventure-works.com /orders/3", "action":"PUT","types":["application/x-www-form-urlencoded"]},{"rel":"self","href":" http://adventure-works.com /orders/3", "action":"DELETE","types":[]},{"rel":"customer",
+"href":" http://adventure-works.com /customers/3", "action":"GET","types":["text/xml","application/json"]},{"rel":" customer" (customer links omitted)}]}
 ```
 
 この方法を効率的にするために、クライアント アプリケーションでこの追加情報を取得および解析する準備を行う必要があります。
@@ -395,7 +394,7 @@ Content-Length: ...
 
 これは最も単純な方法で、一部の内部 API で許容されます。大きな変更は新しいリソースまたは新しいリンクとして示されます。既存のリソースにコンテンツを追加しても、このコンテンツの表示を想定していないクライアント アプリケーションはそれを無視するだけであるため、重大な変更はありません。
 
-たとえば、URI \__http://adventure-works.com/customers/3_ への要求により、次のクライアント アプリケーションにより期待される `Id`、`Name`、および `Address` フィールドを含む単一の顧客に関する詳細が返されます。
+たとえば、URI \__http://adventure-works.com/customers/3_ への要求により、次のクライアント アプリケーションにより期待される `id`、`name`、および `address` フィールドを含む単一の顧客に関する詳細が返されます。
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -403,7 +402,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ...
 Content-Length: ...
-[{"Id":3,"Name":"Contoso LLC","Address":"1 Microsoft Way Redmond WA 98053"}]
+{"id":3,"name":"Contoso LLC","address":"1 Microsoft Way Redmond WA 98053"}
 ```
 
 > [AZURE.NOTE]簡潔でわかりやすくするために、このセクションで示す応答例には HATEOAS リンクは含まれません。
@@ -416,7 +415,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ...
 Content-Length: ...
-[{"Id":3,"Name":"Contoso LLC","DateCreated":"2014-09-04T12:11:38.0376089Z","Address":"1 Microsoft Way Redmond WA 98053"}]
+{"id":3,"name":"Contoso LLC","dateCreated":"2014-09-04T12:11:38.0376089Z","address":"1 Microsoft Way Redmond WA 98053"}
 ```
 
 既存のクライアント アプリケーションが認識されていないフィールドを無視できる場合は、正常に機能を続行する場合がありますが、新しいクライアント アプリケーションではこの新しいフィールドを処理するように設計できます。とはいえ、リソースのスキーマにさらに重大な変更があるか (フィールドの削除や名前の変更など)、リソース間のリレーションシップが変更される場合、これらは既存のクライアント アプリケーションが正常に機能できなくなる重大な変更となる可能性があります。このような状況では、次の方法のいずれかを検討してください。
@@ -425,7 +424,7 @@ Content-Length: ...
 
 Web API を変更するか、リソースのスキーマを変更するたびに、バージョン番号を各リソースの URI に追加します。既存の URI はこれまでと同様に動作を続け、元のスキーマに準拠するリソースを返します。
 
-前の例を拡張し、`Address` フィールドをアドレスの各構成部分 (`StreetAddress`、`City`、`State`、`ZipCode` など) を含むサブフィールドに再構築する場合、このバージョンのリソースは http://adventure-works.com/v2/customers/3 などのバージョン番号を含む URI より公開できます:
+前の例を拡張し、`address` フィールドをアドレスの各構成部分 (`streetAddress`、`city`、`state`、`zipCode` など) を含むサブフィールドに再構築する場合、このバージョンのリソースは http://adventure-works.com/v2/customers/3 などのバージョン番号を含む URI より公開できます:
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -433,7 +432,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ...
 Content-Length: ...
-[{"Id":3,"Name":"Contoso LLC","DateCreated":"2014-09-04T12:11:38.0376089Z","Address":{"StreetAddress":"1 Microsoft Way","City":"Redmond","State":"WA","ZipCode":98053}}]
+{"id":3,"name":"Contoso LLC","dateCreated":"2014-09-04T12:11:38.0376089Z","address":{"streetAddress":"1 Microsoft Way","city":"Redmond","state":"WA","zipCode":98053}}
 ```
 
 このバージョン管理メカニズムは非常に単純ですが、適切なエンドポイントに要求をルーティングするサーバーにより変わります。とはいえ、Web API は何度も繰り返すことで成熟し、サーバーは多くの異なるバージョンをサポートする必要があるため、扱いにくくなる可能性があります。また、純正主義者の観点からすると、すべての場合でクライアント アプリケーションは同じデータを取得しているため (顧客 3)、URI はバージョンによってそれほど異なるべきではありません。すべてのリンクで URI にバージョン番号が含まれる必要があるため、このスキームによっても HATEOAS の実装が複雑になります。
@@ -465,7 +464,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ...
 Content-Length: ...
-[{"Id":3,"Name":"Contoso LLC","Address":"1 Microsoft Way Redmond WA 98053"}]
+{"id":3,"name":"Contoso LLC","address":"1 Microsoft Way Redmond WA 98053"}
 ```
 
 バージョン 2:
@@ -483,7 +482,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ...
 Content-Length: ...
-[{"Id":3,"Name":"Contoso LLC","DateCreated":"2014-09-04T12:11:38.0376089Z","Address":{"StreetAddress":"1 Microsoft Way","City":"Redmond","State":"WA","ZipCode":98053}}]
+{"id":3,"name":"Contoso LLC","dateCreated":"2014-09-04T12:11:38.0376089Z","address":{"streetAddress":"1 Microsoft Way","city":"Redmond","state":"WA","zipCode":98053}}
 ```
 
 前の 2 つの方法と同様、HATEOAS の実装では任意のリンクに適切なカスタム ヘッダーを追加することが必要です。
@@ -507,7 +506,7 @@ HTTP/1.1 200 OK
 Content-Type: application/vnd.adventure-works.v1+json; charset=utf-8
 ...
 Content-Length: ...
-[{"Id":3,"Name":"Contoso LLC","Address":"1 Microsoft Way Redmond WA 98053"}]
+{"id":3,"name":"Contoso LLC","address":"1 Microsoft Way Redmond WA 98053"}
 ```
 
 Accept ヘッダーにより既知のメディアの種類が指定されない場合、Web サーバーは HTTP 406 (Not Acceptable) 応答メッセージを生成するか、既定のメディアの種類でメッセージを返すことができます。
@@ -523,4 +522,4 @@ Accept ヘッダーにより既知のメディアの種類が指定されない�
 - [RESTful Cookbook](http://restcookbook.com/) では、RESTful API の構築に関する概要が説明されています。
 - Web [API Checklist](https://mathieu.fenniak.net/the-api-checklist/) には、Web API を設計および実装するときに検討する、役立つ項目の一覧が含まれています。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

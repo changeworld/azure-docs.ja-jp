@@ -5,7 +5,7 @@
    documentationCenter="NA"
    authors="lodipalm"
    manager="barbkess"
-   editor="jrowlandjones"/>
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="12/02/2015"
+   ms.date="12/17/2015"
    ms.author="lodipalm;barbkess"/>
 
 # SQL Data Warehouse へのデータのロード
@@ -181,8 +181,8 @@ create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
 
 <!--Article references-->
 [Load data with bcp]: sql-data-warehouse-load-with-bcp.md
-[PolyBase を使用したデータのロード]: sql-data-warehouse-load-with-polybase.md
-[PolyBase を使用して読み込む]: sql-data-warehouse-load-with-polybase.md
+[PolyBase を使用したデータのロード]: sql-data-warehouse-get-started-load-with-polybase.md
+[PolyBase を使用して読み込む]: sql-data-warehouse-get-started-load-with-polybase.md
 [solution partners]: sql-data-warehouse-solution-partners.md
 [開発の概要]: sql-data-warehouse-overview-develop.md
 [スキーマの移行]: sql-data-warehouse-migrate-schema.md
@@ -202,4 +202,4 @@ create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
 [Azure Storage のドキュメント]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-create-storage-account/
 [ExpressRoute に関するドキュメント]: http://azure.microsoft.com/documentation/services/expressroute/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

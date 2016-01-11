@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/11/2015" 
+	ms.date="12/16/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache のスケーリング方法
 
->[AZURE.NOTE]Azure Redis Cache のスケーリング機能は現在プレビュー中です。プレビュー期間中は、Premium レベル キャッシュに対するスケーリングは行えませんが、Premium キャッシュ内での価格レベルは変更できます。
+>[AZURE.NOTE]Azure Redis Cache のスケーリング機能は現在プレビュー中です。プレビュー期間中は、Premium レベル キャッシュに対するスケーリングは行えませんが、Premium キャッシュ内での価格レベルは変更でき、また、クラスタリングが有効になっている Premium キャッシュの[クラスター サイズは変更](cache-how-to-premium-clustering.md#cluster-size)できます。
 
 Azure Redis Cache は、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングを用意しています。キャッシュを作成した後にご利用のアプリケーションの要件が変わった場合は、[Azure ポータル](https://portal.azure.com)の **[価格レベルの変更]** ブレードを使用して、キャッシュのサイズを変更することができます。
 
@@ -61,7 +61,25 @@ Azure Redis Cache の[監視](cache-how-to-monitor.md)機能を使用して、�
 
 ## スケーリング処理を自動化する方法
 
-Azure Redis Cache インスタンスは、Azure ポータルのほか、[Microsoft Azure 管理ライブラリ (MAML)](http://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/) を使用してスケーリングすることができます。キャッシュをスケーリングするには、`IRedisOperations.CreateOrUpdate` メソッドを呼び出して `RedisProperties.SKU.Capacity` に新しいサイズを指定します。
+Azure Redis Cache インスタンスは、Azure ポータルのほか、Azure Redis Cache PowerShell コマンドレット、Azure CLI、および Microsoft Azure 管理ライブラリ (MAML) を使用してスケーリングすることができます。
+
+### PowerShell を使用したスケーリング
+
+PowerShell を使用して Azure Redis Cache インスタンスをスケーリングするには、`Size`、`Sku`、または `ShardCount` プロパティを変更するときに [Set-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634518.aspx) コマンドレットを使用します。次の例は、`myCache` という名前のキャッシュを 2.5 GB のキャッシュにスケーリングする方法を示しています。
+
+	Set-AzureRmRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+
+PowerShell によるスケーリングの詳細については、[Powershell を使用した Redis キャッシュのスケーリングに関するページ](cache-howto-manage-redis-cache-powershell.md#scale)を参照してください。
+
+### Azure CLI を使用したスケーリング
+
+Azure CLI を使用して Azure Redis Cache インスタンスをスケーリングするには、`azure rediscache set` コマンドを呼び出し、必要なスケーリング操作に基づいて、新しいサイズ、sku、またはクラスター サイズを含む必要な構成変更を指定します。
+
+Azure CLI によるスケーリングの詳細については、「[既存の Redis Cache の設定を変更する](cache-manage-cli.md#scale)」を参照してください。
+
+### MAML を使用したスケーリング
+
+[Microsoft Azure 管理ライブラリ (MAML)](http://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/) を使用して Azure Redis Cache インスタンスをスケーリングするには、`IRedisOperations.CreateOrUpdate` メソッドを呼び出して `RedisProperties.SKU.Capacity` に新しいサイズを指定します。
 
     static void Main(string[] args)
     {
@@ -92,7 +110,7 @@ Azure Redis Cache インスタンスは、Azure ポータルのほか、[Microso
 -	**Basic** または **Standard** の価格レベルから **Premium** キャッシュの価格レベルにスケーリングすることはできません。
 -	**Premium** キャッシュの価格レベルから **Basic** または **Standard** の価格レベルにスケーリングすることはできません。
 -	ある **Premium** キャッシュの価格レベルから別の Premium キャッシュの価格レベルにスケーリングすることはできます。
--	**Premium** キャッシュを作成しているときにクラスタリングを有効にした場合、シャード数を増減できます。
+-	**Premium** キャッシュを作成しているときにクラスタリングを有効にした場合、[クラスター サイズを変更](cache-how-to-premium-clustering.md#cluster-size)できます。
 
 詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
 
@@ -160,4 +178,4 @@ Standard および Premium キャッシュには可用性について 99.9% の 
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

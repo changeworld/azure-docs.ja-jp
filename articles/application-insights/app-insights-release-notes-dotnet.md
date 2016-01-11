@@ -11,8 +11,8 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/11/2015" 
-	ms.author="sergkanz"/>
+	ms.date="12/17/2015" 
+	ms.author="abaranch"/>
  
 # .NET 向けの Application Insights SDK のリリース ノート
 
@@ -35,7 +35,17 @@
 
 ## バージョン 2.0.0-beta3
 
-- [アダプティブ サンプリング](app-insights-sampling.md)
+- [アダプティブ サンプリング](app-insights-sampling.md)が、サーバーのテレメトリ チャネルで既定で有効になっています。 
+- ```UseSampling``` の署名が、テレメトリ プロセッサの ```Use``` へのその他の呼び出しとのチェーンを可能にするように修正されました。  
+- プロパティ ```Request.ID``` が復活しました。```OperationContext``` にエンド ツー エンドの相関関係のプロパティ ```ParentId``` が含まれるようになりました。
+- ```TimestampTelemetryInitializer``` が削除されました。タイムスタンプが ```TelemetryClient``` により自動的に追加されます。
+- 操作の相関関係を有効にするため、```OperationCorrelationTelemetryInitializer``` が既定で追加されます。
+- ```OperationIdTelemetryInitializer``` の代わりに ```OperationCorrelationTelemetryInitializer``` が使用されます。
+- ユーザー エージェントが、既定で収集されなくなります。ユーザー エージェントのテレメトリ初期化子が削除されました。
+- ```DependencyTelemetry.Async``` フィールドは、依存関係コレクター テレメトリ モジュールによって収集されません。 
+- 静的コンテンツと診断の要求は、要求テレメトリ モジュールによって収集されません。```RequestTrackingTelemetryModule``` コレクションの ```HandlersToFilter``` を使用して、特定の http ハンドラーによって生成された要求を除外します。 
+- 自動生成された要求テレメトリには、HttpContext 拡張メソッド System.Web.HttpContextExtension.GetRequestTelemetry を通じてアクセスできます。  
+
 
 ## バージョン 2.0.0-beta2
 - ITelemetryProcessor のサポート、コードまたは構成ファイルを使用して構成する機能が追加されました。[SDK でのカスタム フィルターの有効化](app-insights-api-telemetry-processors/#telemetry-processors)
@@ -89,7 +99,7 @@
 
 ## バージョン 0.17
 - Framework 4.5 アプリケーションの EventSource NuGet に対する依存関係が削除されました。
-- 匿名ユーザーとセッションの Cookie は、サーバー側では生成されません。 アプリのユーザーおよびセッションの追跡を実装するために JS SDK によるインストルメンテーションが必要になりました。JavaScript SDK の Cookie は引き続き適用されます。テレメトリ モジュール ```WebSessionTrackingTelemetryModule``` と ```WebUserTrackingTelemetryModule``` はサポートされなくなり、ApplicationInsights.config ファイルから削除されました。この変更により、ユーザー数とセッション数の大幅な再計算が発生する場合があることに注意してください。これは、ユーザーが開始したセッションのみがカウントされるようになったためです。
+- Anonymous User and Session cookies will not be generated on server side.Web アプリのユーザーおよびセッションの追跡を実装するために JS SDK によるインストルメンテーションが必要になりました。JavaScript SDK の Cookie は引き続き適用されます。テレメトリ モジュール ```WebSessionTrackingTelemetryModule``` と ```WebUserTrackingTelemetryModule``` はサポートされなくなり、ApplicationInsights.config ファイルから削除されました。この変更により、ユーザー数とセッション数の大幅な再計算が発生する場合があることに注意してください。これは、ユーザーが開始したセッションのみがカウントされるようになったためです。
 - OSVersion の値が SDK により既定で設定されなくなりました。空の場合、OS と OSVersion が Application Insights のパイプラインによってユーザー エージェントに基づいて計算されます。 
 - Web SDK では、高負荷のシナリオ用に最適化された永続化チャネルが使用されます。"Spiral of death (悪循環)" の問題が修正されました。"Spiral of death (悪循環)" とは、テレメトリの項目数が急激に増加し、エンドポイントの調整の限界を大幅に超えた場合に、一定時間の経過後に処理が再試行されるものの、その再試行でも調整が発生するような状態を指します。
 - 開発者モードは実稼働用に最適化されています。誤ってそのままにしておいても、追加情報の出力を試行する前ほどの大きな負荷は発生しません。
@@ -114,4 +124,4 @@
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

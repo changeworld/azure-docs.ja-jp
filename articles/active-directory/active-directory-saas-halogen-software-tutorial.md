@@ -3,7 +3,7 @@
 	description="Azure Active Directory と Halogen Software の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="jeevansd"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/01/2015"
-	ms.author="markusvi"/>
+	ms.date="12/18/2015"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と Halogen Software の統合
@@ -35,7 +35,7 @@ Halogen Software と Azure AD の統合を構成するには、次のものが�
 - シングル サインオン対応の Halogen Software サブスクリプション
 
 
-> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -45,8 +45,7 @@ Halogen Software と Azure AD の統合を構成するには、次のものが�
 
  
 ## シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。<br>
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。<br>このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Halogen Software の追加 
 2. Azure AD シングル サインオンの構成とテスト
@@ -111,7 +110,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
      8\.3.ダウンロードしたメタデータ ファイルをアップロードするには、**[Browse]** をクリックしてファイルを選択し、**[Upload File]** をクリックします。
 
-     8\.4.構成をテストするには、**[Run Test]** をクリックします。 > [AZURE.NOTE] "*The SAML test is complete.Please close this window*" というメッセージが表示されるまで待機する必要があります。次に、開いているブラウザー ウィンドウを閉じます。<br>**[Enable SAML]** チェック ボックスは、テストが完了した場合にのみ有効にします。
+     8\.4.構成をテストするには、**[Run Test]** をクリックします。[AZURE.NOTE]"*The SAML test is complete.Please close this window*" というメッセージが表示されるまで待機する必要があります。次に、開いているブラウザー ウィンドウを閉じます。<br>**[Enable SAML]** チェック ボックスは、テストが完了した場合にのみ有効にします。
 
      8\.5.**[Enable SAML]** を選択します。
     
@@ -129,7 +128,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![What is Azure AD Connect][100] 
+1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br>![What is Azure AD Connect][100] 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 3. ユーザーの一覧を表示するには、上部のメニューで **[ユーザー]** をクリックします。<br><br>![What is Azure AD Connect][101] 
 4. **[ユーザーの追加]** ダイアログを開くには、下部にあるツール バーで **[ユーザーの追加]** をクリックします。<br><br>![What is Azure AD Connect][102] 
@@ -181,8 +180,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
 ### シングル サインオンのテスト
 
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。<br>
-アクセス パネルで Halogen Software のタイルをクリックすると、自動的に Halogen Software アプリケーションにサインオンします。
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。<br> アクセス パネルで Halogen Software のタイルをクリックすると、自動的に Halogen Software アプリケーションにサインオンします。
 
 
 ## その他のリソース
@@ -223,4 +221,4 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 [300]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_300.png
 [301]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_301.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

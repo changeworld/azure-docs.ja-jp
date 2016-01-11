@@ -1,0 +1,139 @@
+<properties
+   pageTitle="Public and private IP addressing (classic) in Azure (Azure でのパブリックおよびプライベート IP アドレス指定 (クラシック)) | Microsoft Azure"
+   description="Azure でのパブリックおよびプライベート IP アドレス指定について説明します。"
+   services="virtual-network"
+   documentationCenter="na"
+   authors="telmosampaio"
+   manager="carmonm"
+   editor="tysonn"
+   tags="azure-service-management" />
+<tags
+   ms.service="virtual-network"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="12/14/2015"
+   ms.author="telmos" />
+
+# Azure の IP アドレス (クラシック)
+Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。Azure で使用できる IP アドレスには、パブリックとプライベートの 2 種類があります。
+
+パブリック IP アドレスは、Azure の公開されたサービスを含め、インターネットとの通信に使用します。
+
+プライベート IP アドレスは、Azure 仮想ネットワーク (VNet)、クラウド サービス、およびオンプレミス ネットワーク (VPN Gateway または ExpressRoute 回線を使用してネットワークを Azure に拡張する場合) 内での通信に使用します。
+
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [resource manager deployment model](virtual-network-ip-addresses-overview-arm.md)。
+
+## パブリック IP アドレス
+パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Redis Cache](https://azure.microsoft.com/services/cache)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs)、[SQL データベース](sql-database-technical-overview.md)、[Azure ストレージ](storage-introduction.md)など、Azure の公開されたサービスと通信できます。
+
+パブリック IP アドレスは、次の種類のリソースと関連付けられます。
+
+- クラウド サービス
+- IaaS Virtual Machines (VM)
+- PaaS ロール インスタンス
+- VPN ゲートウェイ
+- Application Gateway
+
+### 割り当て方法
+パブリック IP アドレスを Azure リソースに割り当てる必要がある場合は、リソースが作成された場所内の使用可能なパブリック IP アドレスのプールから*動的に*割り当てられます。この IP アドレスは、リソースが停止したときに解放されます。クラウド サービスの場合、この開放はすべてのロール インスタンスが停止したときに発生します。これは、*静的* (予約済み) IP アドレスを使用することで回避できます (下記の「クラウド サービス」を参照)。
+
+>[AZURE.NOTE]Azure リソースへのパブリック IP アドレスの割り当てに使用する IP アドレス範囲のリストは、「[Azure データセンターの IP アドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)」で公開されています。
+
+### DNS ホスト名の解決
+クラウド サービスまたは IaaS VM を作成する場合は、Azure 内のすべてのリソース間で一意のクラウド サービス DNS 名を指定する必要があります。これにより、Azure で管理される DNS サーバー内で、リソースのパブリック IP アドレスへの *dnsname*.cloudapp.net のマッピングが作成されます。たとえば、クラウド サービス DNS 名 **contoso** を持つクラウド サービスを作成すると、完全修飾ドメイン名 (FQDN) **contoso.cloudapp.net** がクラウド サービスのパブリック IP アドレス (VIP) に解決されます。この FQDN を使用して、Azure 内のパブリック IP アドレスをポイントするカスタム ドメイン CNAME レコードを作成できます。
+
+### クラウド サービス
+クラウド サービスには、仮想 IP アドレス (VIP) と呼ばれるパブリック IP アドレスが必ずあります。クラウド サービスのエンドポイントを作成して、VIP 内のさまざまなポートをクラウド サービス内の VM およびロール インスタンス上の内部ポートに関連付けることができます。
+
+[複数の VIP をクラウド サービスに](load-balancer-multivip.md)割り当てることができます。これにより、SSL ベースの Web サイトを含むマルチ テナント環境のようなマルチ VIP シナリオが有効になります。
+
+すべてのロール インスタンスが停止した場合でも、[予約済み IP](virtual-networks-reserved-public-ip.md) と呼ばれる*静的*パブリック IP アドレスを使用することで、クラウド サービスのパブリック IP アドレスが変わらないようにできます。特定の場所で静的 (予約済み) IP リソースを作成し、その場所内の任意のクラウド サービスに割り当てることができます。予約済み IP に対して実際の IP アドレスを指定することはできません。これは、作成された場所内の使用可能な IP アドレスのプールから割り当てられます。この IP アドレスは、明示的に削除するまで解放されません。
+
+静的 (予約済み) パブリック IP アドレスは、通常は次のようなクラウド サービスのシナリオで使用されます。
+
+- エンドユーザーがファイアウォール規則をセットアップする必要がある。
+- 外部 DNS 名の解決に依存し、動的 IP が A レコードの更新を必要とする。
+- IP ベースのセキュリティ モデルを使用する外部 Web サービスを使用する。
+- IP アドレスにリンクされている SSL 証明書を使用する。
+
+### IaaS VM と PaaS ロール インスタンス
+パブリック IP アドレスは、クラウド サービス内の IaaS [VM](virtual-machines-about.md) または PaaS ロール インスタンスに割り当てることができます。これはインスタンス レベル パブリック IP アドレス ([ILPIP](virtual-networks-instance-level-public-ip.md)) と呼ばれます。このパブリック IP アドレスは動的にのみ割り当てることができます。
+
+### VPN ゲートウェイ
+[VPN Gateway](vpn-gateway-about-vpngateways.md) は、Azure VNet を他の Azure VNet またはオンプレミス ネットワークに接続するために使用できます。VPN Gateway には、パブリック IP アドレスが*動的に*割り当てられ、リモート ネットワークとの通信が可能になります。
+
+### Application Gateway
+Azure [Application Gateway](application-gateway-introduction.md) は、HTTP に基づいてネットワーク トラフィックをルーティングするために Layer7 負荷分散に使用できます。Application Gateway には、パブリック IP アドレスが*動的に*割り当てられます。これは負荷分散された VIP として機能します。
+
+### 概略
+次の表は、各リソースの種類と、可能な割り当て方法 (動的または静的) および複数のパブリック IP アドレスの割り当てが可能かどうかを示しています。
+
+|リソース|動的|静的|複数の IP アドレス|
+|---|---|---|---|
+|クラウド サービス|あり|あり|あり|
+|IaaS VM または PaaS ロール インスタンス|あり|なし|いいえ|
+|VPN Gateway|あり|なし|いいえ|
+|Application Gateway|あり|なし|いいえ|
+
+## プライベート IP アドレス
+プライベート IP アドレスを使用すると、Azure リソースは、インターネットが到達可能な IP アドレスを使用せずに、クラウド サービス内の他のリソース、[仮想ネットワーク](virtual-networks-overview.md) (VNet)、あるいはオンプレミス ネットワーク (VPN Gateway または ExpressRoute 回線経由) と通信することができます。
+
+Azure クラシック デプロイメント モデルでは、プライベート IP アドレスは Azure のさまざまなリソースに割り当てられます。
+
+- IaaS VM と PaaS ロール インスタンス
+- 内部ロード バランサー
+- Application Gateway
+
+### IaaS VM と PaaS ロール インスタンス
+クラシック デプロイメント モデルで作成された仮想マシン (VM) は、PaaS ロール インスタンスと同様に、常にクラウド サービス内に配置されます。したがって、プライベート IP アドレスの動作はこれらのリソースに似てます。
+
+クラウド サービスは次の 2 つの方法でデプロイできることに注意してください。
+
+- *スタンドアロン* クラウド サービスとして。この場合、クラウド サービスは仮想ネットワーク内にはありません。
+- 仮想ネットワークの一部として。
+
+#### 割り当て方法
+*スタンドアロン* クラウド サービスの場合、リソースは、Azure データ センターのプライベート IP アドレス範囲から*動的に*割り当てられたプライベート IP アドレスを取得します。これは、同じクラウド サービス内の他の VM との通信にのみ使用できます。この IP アドレスは、リソースが停止して開始されると変わる可能性があります。
+
+仮想ネットワーク内にデプロイされたクラウド サービスの場合、リソースは、関連付けられているサブネットのアドレス範囲から割り当てられたプライベート IP アドレスを取得します (そのネットワーク構成で指定)。このプライベート IP アドレスは、VNet 内のすべての VM 間の通信に使用できます。
+
+また、VNet 内のクラウド サービスの場合、プライベート IP アドレスは既定で (DHCP を使用して) *動的に*割り当てられます。これは、リソースが停止して開始されると変わる可能性があります。IP アドレスが変わらないようにするには、割り当て方法を*静的*に設定し、対応するアドレスの範囲内の有効な IP アドレスを指定する必要があります。
+
+ 静的プライベート IP アドレスは、通常は次のものに使用されます。
+
+ - ドメイン コントローラーまたは DNS サーバーとして機能する VM。
+ - IP アドレスを使用するファイアウォール規則を必要とする VM。
+ - IP アドレスを使用して他のアプリからアクセスされる、サービスを実行している VM。
+
+#### 内部 DNS ホスト名の解決
+カスタムの DNS サーバーを明示的に構成しない限り、既定ではすべての Azure VM および PaaS ロール インスタンスが、[Azure で管理される DNS サーバー](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution)で構成されます。これらの DNS サーバーは、同じ VNet またはクラウド サービス内に存在する VM およびロール インスタンスの内部名前解決を可能にします。
+
+VM を作成すると、そのプライベート IP アドレスへのホスト名のマッピングが、Azure で管理される DNS サーバーに追加されます。複数の NIC を備える VM の場合、ホスト名はプライマリ NIC のプライベート IP アドレスにマップされます。ただし、このマッピング情報は、同じクラウド サービスまたは VNet 内のリソースに限定されます。
+
+*スタンドアロン* クラウド サービスの場合は、同じクラウド サービス内のみのすべての VM/ロール インスタンスのホスト名を解決できます。VNet 内のクラウド サービスの場合は、VNet 内のすべての VM/ロール インスタンスのホスト名を解決できます。
+
+### 内部ロード バランサー (ILB) と Application Gateway
+[Azure 内部ロード バランサー](load-balancer-internal-overview.md) (ILB) または [Azure Application Gateway](application-gateway-introduction.md) の**フロント エンド**構成にプライベート IP アドレスを割り当てることができます。このプライベート IP アドレスは内部エンドポイントとして機能し、その仮想ネットワーク (VNet) 内のリソースおよび VNet に接続されたリモート ネットワークからのみアクセスできます。フロント エンド構成には、動的または静的のどちらかのプライベート IP アドレスを割り当てることができます。複数のプライベート IP アドレスを割り当てて、マルチ VIP シナリオを有効にすることもできます。
+
+### 概略
+次の表は、各リソースの種類と、可能な割り当て方法 (動的または静的) および複数のプライベート IP アドレスの割り当てが可能かどうかを示しています。
+
+|リソース|動的|静的|複数の IP アドレス|
+|---|---|---|---|
+|VM (*スタンドアロン* クラウド サービス内)|あり|あり|あり|
+|PaaS ロール インスタンス (*スタンドアロン* クラウド サービス内)|あり|なし|あり|
+|VM または PaaS ロール インスタンス (VNet 内)|あり|あり|あり|
+|内部ロード バランサーのフロント エンド|あり|あり|あり|
+|Application Gateway のフロント エンド|あり|あり|あり|
+
+## 次のステップ
+- [Deploy a VM with a static public IP (静的パブリック IP で VM をデプロイする)](virtual-network-deploy-static-pip-classic-ps.md)
+- [Deploy a VM with a static private IP address (静的プライベート IP アドレスで VM をデプロイする)](virtual-networks-static-private-ip-classic-pportal.md)
+- [Create a load balancer using PowerShell (PowerShell を使用してロード バランサーを作成する)](load-balancer-get-started-internet-classic-cli.md)
+- [Create an internal load balancer using PowerShell (PowerShell を使用して内部ロード バランサーを作成する)](load-balancer-get-started-ilb-classic-ps.md)
+- [Create an application gateway using PowerShell (PowerShell を使用して Application Gateway を作成する)](application-gateway-create-gateway.md)
+- [Create an internal application gateway using PowerShell (PowerShell を使用して内部 Application Gateway を作成する)](application-gateway-ilb.md)
+
+<!---HONumber=AcomDC_1223_2015-->

@@ -5,14 +5,14 @@
    documentationCenter="na"
    authors="TomArcher"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags 
    ms.service="visual-studio-online"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="mobile"
-   ms.date="08/12/2015"
+   ms.date="12/16/2015"
    ms.author="tarcher" />
 
 # Visual Studio 接続済みサービスを使用した Mobile Services の追加
@@ -49,9 +49,7 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
 1. **[Azure Mobile Services]** ダイアログ ボックスで、既存のモバイル サービスがある場合はそのモバイル サービスを選択します。新しい Azure モバイル サービスを作成する必要がある場合は、次の手順に従って作成します。そうでない場合は、次の手順に進みます。
 
-    新しいモバイル サービス アカウントを作成するには:
-    1. ダイアログ ボックスの一番下にある **サービスの作成** リンクを選択します。
-        ![新しいモバイル接続サービスを追加する](./media/vs-azure-tools-connected-services-add-mobile-services/IC797637.png)
+    新しいモバイル サービス アカウントを作成するには: 1. ダイアログ ボックスの一番下にある **サービスの作成** リンクを選択します。![新しいモバイル接続サービスを追加する](./media/vs-azure-tools-connected-services-add-mobile-services/IC797637.png)
 
 
 
@@ -91,4 +89,4 @@ Visual Studio でプロジェクトを変更する方法はプロジェクトの
 
  - [azure.microsoft.com の Azure Mobile Services](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!----HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

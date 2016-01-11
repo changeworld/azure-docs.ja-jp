@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="09/08/2015"
+   ms.date="12/19/2015"
    ms.author="tarcher" />
 
 # Visual Studio で Azure クラウド サービスのロールを構成する
@@ -376,4 +376,4 @@ HTTPS エンドポイントを追加する場合、SSL 証明書を使用する�
 ## 次のステップ
 Visual Studio における Azure プロジェクトの詳細については、「[Azure プロジェクトの構成](vs-azure-tools-configuring-an-azure-project.md)」を参照してください。クラウド サービスのスキーマの詳細については、「[スキーマ リファレンス](https://msdn.microsoft.com/library/azure/dd179398)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/02/2015" 
+	ms.date="12/16/2015" 
 	ms.author="sdanie"/>
 
 # Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法
@@ -38,16 +38,22 @@ Azure CLI を使用して Azure Redis Cache インスタンスを作成および
 Redis Cache インスタンスを作成および更新する場合には、次のプロパティを使用します。
 
 | プロパティ | Switch | 説明 |
-|------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+|---------------------|-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | name | -n, --name | Redis Cache の名前です。 |
 | resource group | -g, --resource-group | リソース グループの名前です。 |
 | location | -l, --location | キャッシュを作成する場所です。 |
-| size | -z, --size | Redis Cache のサイズです。有効な値: [C0、C1、C2、C3、C4、C5、C6] |
-| sku | -x, --sku | Redis SKU です。値は次のいずれかです: [Basic、Standard] |
-| MaxMemoryPolicy | -m, --max-memory-policy | Redis Cache の MaxMemoryPolicy プロパティです。有効な値: [AllKeysLRU、AllKeysRandom、NoEviction、VolatileLRU、VolatileRandom、VolatileTTL] |
+| size | -z, --size | Redis Cache のサイズです。有効な値: [C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |
+| sku | -x, --sku | Redis SKU です。値は次のいずれかです: [Basic、Standard、Premium] |
 | EnableNonSslPort | -e、--enable-non-ssl-port | Redis Cache の EnableNonSslPort プロパティです。キャッシュの非 SSL ポートを有効にする場合は、このフラグを追加します。 |
-| subscription | -s、--subscription | サブスクリプションの識別子です。 |
+| Redis 構成 | -c、--redis-configuration | Redis 構成。構成のキーと値の JSON 形式の文字列をここに入力します。形式: "{"":"","":""}" |
+| Redis 構成 | -f、--redis-configuration-file | Redis 構成。構成キーおよび値を含むファイルのパスをここに入力します。ファイル エントリの形式: {"":"","":""} |
+| シャード数 | -r、--shard-count | クラスタリングにより Premium クラスター キャッシュに作成するシャードの数。 |
+| Virtual Network | -v、--virtual-network | VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | key type | -t、--key-type | 更新するキーの種類です。有効な値: [Primary、Secondary] |
+| StaticIP | -p、--static-ip <static-ip> | VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 |
+| サブネット | t、--subnet <subnet> | VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 |
+| VirtualNetwork | -v、--virtual-network <virtual-network> | VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| [サブスクリプション] | -s、--subscription | サブスクリプションの識別子です。 |
 
 ## すべての Redis Cache コマンドを参照してください。
 
@@ -69,7 +75,7 @@ Redis Cache インスタンスを作成および更新する場合には、次�
 	help:      rediscache show [--name <name> --resource-group <resource-group>]
 	help:
 	help:    Change settings of an existing Redis Cache
-	help:      rediscache set [--name <name> --resource-group <resource-group> --max-memory-policy <max-memory-policy>]
+	help:      rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
 	help:
 	help:    Renew the authentication key for an existing Redis Cache
 	help:      rediscache renew-key [--name <name> --resource-group <resource-group> ]
@@ -96,18 +102,23 @@ Redis Cache を作成するには、次のコマンドを使用します。
 	help:    Usage: rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
 	help:
 	help:    Options:
-	help:      -h, --help                                   output usage information
-	help:      -v, --verbose                                use verbose output
-	help:      -vv                                          more verbose with debug output
-	help:      --json                                       use json output
-	help:      -n, --name <name>                            Name of the Redis Cache.
-	help:      -g, --resource-group <resource-group>        Name of the Resource Group
-	help:      -l, --location <location>                    Location to create cache.
-	help:      -z, --size <size>                            Size of the Redis Cache. Valid values: [C0, C1, C2, C3, C4, C5, C6]
-	help:      -x, --sku <sku>                              Redis SKU. Should be one of : [Basic, Standard]
-	help:      -m, --max-memory-policy <max-memory-policy>  MaxMemoryPolicy property of the Redis Cache. Valid values: [AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL]
-	help:      -e, --enable-non-ssl-port                    EnableNonSslPort property of the Redis Cache. Add this flag if you want to enable the Non SSL Port for your cache
-	help:      -s, --subscription <id>                      the subscription identifier
+	help:      -h, --help                                               output usage information
+	help:      -v, --verbose                                            use verbose output
+	help:      -vv                                                      more verbose with debug output
+	help:      --json                                                   use json output
+	help:      -n, --name <name>                                        Name of the Redis Cache.
+	help:      -g, --resource-group <resource-group>                    Name of the Resource Group
+	help:      -l, --location <location>                                Location to create cache.
+	help:      -z, --size <size>                                        Size of the Redis Cache. Valid values: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4]
+	help:      -x, --sku <sku>                                          Redis SKU. Should be one of : [Basic, Standard, Premium]
+	help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Redis Cache. Add this flag if you want to enable the Non SSL Port for your cache
+	help:      -c, --redis-configuration <redis-configuration>          Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:"{"<key1>":"<value1>","<key2>":"<value2>"}"
+	help:      -f, --redis-configuration-file <redisConfigurationFile>  Redis Configuration. Enter the path of a file containing configuration keys and values here. Format for the file entry: {"<key1>":"<value1>","<key2>":"<value2>"}
+	help:      -r, --shard-count <shard-count>                          Number of Shards to create on a Premium Cluster Cache
+	help:      -v, --virtual-network <virtual-network>                  The exact ARM resource ID of the virtual network to deploy the redis cache in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1
+	help:      -t, --subnet <subnet>                                    Required when deploying a redis cache inside an existing Azure Virtual Network
+	help:      -p, --static-ip <static-ip>                              Required when deploying a redis cache inside an existing Azure Virtual Network
+	help:      -s, --subscription <id>                                  the subscription identifier
 	help:
 	help:    Current Mode: arm (Azure Resource Management)
 
@@ -182,28 +193,30 @@ Redis Cache を削除するには、次のコマンドを使用します。
 	help:
 	help:    Current Mode: arm (Azure Resource Management)
 
+<a name="scale"></a>
 ## 既存の Redis Cache の設定を変更する
 
 既存の Redis Cache の設定を変更するには、次のコマンドを使用します。
 
-	azure rediscache set [--name <name> --resource-group <resource-group> --max-memory-policy <max-memory-policy>]
+	azure rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
 
 このコマンドの詳細を確認するには、`azure rediscache set -h` コマンドを実行します。
 
 	C:\>azure rediscache set -h
 	help:    Change settings of an existing Redis Cache
 	help:
-	help:    Usage: rediscache set [--name <name> --resource-group <resource-group> --max-memory-policy <max-memory-policy>]
+	help:    Usage: rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
 	help:
 	help:    Options:
-	help:      -h, --help                                   output usage information
-	help:      -v, --verbose                                use verbose output
-	help:      -vv                                          more verbose with debug output
-	help:      --json                                       use json output
-	help:      -n, --name <name>                            Name of the Redis Cache.
-	help:      -g, --resource-group <resource-group>        Name of the Resource Group
-	help:      -m, --max-memory-policy <max-memory-policy>  Max Memory Policy of the Redis Cache. Valid values: [AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL]
-	help:      -s, --subscription <subscription>            the subscription identifier
+	help:      -h, --help                                               output usage information
+	help:      -v, --verbose                                            use verbose output
+	help:      -vv                                                      more verbose with debug output
+	help:      --json                                                   use json output
+	help:      -n, --name <name>                                        Name of the Redis Cache.
+	help:      -g, --resource-group <resource-group>                    Name of the Resource Group
+	help:      -c, --redis-configuration <redis-configuration>          Redis Configuration. Enter a JSON formatted string of configuration keys and values here.
+	help:      -f, --redis-configuration-file <redisConfigurationFile>  Redis Configuration. Enter the path of a file containing configuration keys and values here.
+	help:      -s, --subscription <subscription>                        the subscription identifier
 	help:
 	help:    Current Mode: arm (Azure Resource Management)
 
@@ -229,7 +242,7 @@ Redis Cache を削除するには、次のコマンドを使用します。
 	help:      --json                                 use json output
 	help:      -n, --name <name>                      Name of the Redis Cache.
 	help:      -g, --resource-group <resource-group>  Name of the Resource Group under which cache exists
-	help:      -t, --key-type <key-type>              type of key to renew
+	help:      -t, --key-type <key-type>              type of key to renew. Valid values are: 'Primary', 'Secondary'.
 	help:      -s, --subscription <subscription>      the subscription identifier
 	help:
 	help:    Current Mode: arm (Azure Resource Management)
@@ -258,4 +271,4 @@ Redis Cache を削除するには、次のコマンドを使用します。
 	help:
 	help:    Current Mode: arm (Azure Resource Management)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

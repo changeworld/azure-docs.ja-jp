@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Search サービス REST API バージョン 2015-02-28-Preview | Microsoft Azure | ホスト型クラウド検索サービス"
-   description="Azure Search サービス REST API バージョン 2015-02-28-Preview には、Lucene クエリ構文や moreLikeThis 検索などの試験的機能が含まれています。"
+   pageTitle="Azure Search サービス REST API バージョン 2015-02-28-Preview | Microsoft Azure"
+   description="Azure Search サービス REST API バージョン 2015-02-28-Preview には、Lucene クエリ構文やカスタム アナライザーなどの試験的機能が含まれています。"
    services="search"
    documentationCenter="na"
    authors="HeidiSteen"
@@ -13,26 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search"
-   ms.date="11/04/2015"
+   ms.date="12/21/2015"
    ms.author="heidist"/>
 
 # Azure Search サービス REST API: バージョン 2015-02-28-Preview
 
-Azure Search は Microsoft Azure のホスト型クラウド検索サービスです。この記事は、`api-version=2015-02-28-Preview` のリファレンス ドキュメントです。このプレビューは、以下の試験的機能を提供することによって、現在一般公開されているバージョン [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx) を拡張するものです。
+この記事は、`api-version=2015-02-28-Preview` のリファレンス ドキュメントです。このプレビューは、以下の試験的機能を提供することによって、現在一般公開されているバージョン [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx) を拡張するものです。
 
-- [Lucene クエリ構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)は、[Lucene Query Parser](https://lucene.apache.org/core/4_10_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) の実装です。[Search 操作](#SearchDocs)で queryType パラメーターを使用して指定できます。
-- `moreLikeThis` は [Search 操作](#SearchDocs)で使用されるクエリ キュー パラメーターであり、別の特定のドキュメントに関連する他のドキュメントを探します。
-
-`2015-02-28-Preview` のいくつかの追加機能は、別のドキュメントに記載されています。学習した内容は次のとおりです。
-
-- [スコアリング プロファイル](search-api-scoring-profiles-2015-02-28-preview.md)
-- [インデクサー](search-api-indexers-2015-02-28-preview.md)
+- Azure Search でクエリに [Lucene クエリ構文](https://msdn.microsoft.com/library/mt589323.aspx)を使用できるようになりました。Lucene クエリ パーサーを使用するには、Search の操作で `queryType` を指定します。
+- [カスタム アナライザー](https://msdn.microsoft.com/library/azure/mt605304.aspx)を使用すると、テキストをインデックス可能なトークンまたは検索可能なトークンに変換するプロセスを制御できます。
+- `moreLikeThis` は [Search 操作](#SearchDocs)で使用されるクエリ パラメーターであり、別の特定のドキュメントに関連する他のドキュメントを探します。
 
 Azure Search サービスは複数のバージョンで使用できます。詳細については、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
 ##このドキュメントの API
-
-Azure Search サービス API は、API 操作に簡単な構文と OData 構文 (詳細については、「[OData のサポート (Azure Search)](http://msdn.microsoft.com/library/azure/dn798932.aspx)」を参照してください) という 2 つの URL 構文をサポートしています。簡単な構文の一覧を次に示します。
 
 [インデックスの作成](#CreateIndex)
 
@@ -153,7 +147,7 @@ HTTPS はすべてのサービス要求に必要です。**Create Index** 要求
 - `api-key`: 必須。`api-key` は、
 - Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Create Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure クラシック ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 <a name="RequestData"></a> **要求本文の構文**
 
@@ -185,8 +179,10 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
           "sortable": true (default where applicable) | false (Collection(Edm.String) fields cannot be sortable),
           "facetable": true (default where applicable) | false (Edm.GeographyPoint fields cannot be facetable),
           "key": true | false (default, only Edm.String fields can be keys),
-          "retrievable": true (default) | false,
-		  "analyzer": "name of text analyzer"
+          "retrievable": true (default) | false,		      
+          "analyzer": "name of the analyzer used for search and indexing", (only if 'searchAnalyzer' and 'indexAnalyzer' are not set)
+          "searchAnalyzer": "name of the search analyzer", (only if 'indexAnalyzer' is set and 'analyzer' is not set)
+          "indexAnalyzer": "name of the indexing analyzer" (only if 'searchAnalyzer' is set and 'analyzer' is not set)
         }
       ],
       "suggesters": [
@@ -267,7 +263,11 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
 
 `retrievable` - 検索結果でフィールドを返すことができるかどうかを設定します。これは、フィールド (たとえば、マージン) をフィルター、並べ替え、またはスコアリングのメカニズムとして使用するけれども、エンド ユーザーに対しては表示したくない場合に役立ちます。`key` フィールドに対してはこの属性が `true` である必要があります。
 
-`analyzer` - フィールドに使用するテキスト アナライザーの名前を設定します。設定できる値については、「[言語のサポート](#LanguageSupport)」を参照してください。このオプションは、`searchable` フィールドでのみ使用できます。フィールドのアナライザーを選択した後は変更できません。
+`analyzer` - 検索時およびインデックス作成時にフィールドに対して使用するアナライザーの名前を設定します。指定できる一連の値については、[アナライザー](https://msdn.microsoft.com/library/mt605304.aspx)に関するページを参照してください。このオプションは、`searchable` フィールドでのみ使用できます。また、`searchAnalyzer` または `indexAnalyzer` と共に設定することはできません。フィールドのアナライザーを選択した後は変更できません。
+
+`searchAnalyzer` - 検索時にフィールドに対して使用するアナライザーの名前を設定します。指定できる一連の値については、[アナライザー](https://msdn.microsoft.com/library/mt605304.aspx)に関するページを参照してください。このオプションは、`searchable` フィールドでのみ使用できます。`indexAnalyzer` と共に設定する必要があります。また、`analyzer` オプションと共に設定することはできません。フィールドのアナライザーを選択した後は変更できません。
+
+`indexAnalyzer` - インデックス作成時にフィールドに対して使用するアナライザーの名前を設定します。指定できる一連の値については、[アナライザー](https://msdn.microsoft.com/library/mt605304.aspx)に関するページを参照してください。このオプションは、`searchable` フィールドでのみ使用できます。`searchAnalyzer` と共に設定する必要があります。また、`analyzer` オプションと共に設定することはできません。フィールドのアナライザーを選択した後は変更できません。
 
 `suggesters` - 検索モードおよび検索候補の内容のソースであるフィールドを設定します。詳細については、「[サジェスター](#Suggesters)」を参照してください。
 
@@ -455,7 +455,7 @@ Azure Search は、さまざまな言語をサポートしています。各言�
 	</tr>
     <tr>
 		<td>韓国語</td>
-		<td></td>
+		<td>ko.microsoft</td>
 		<td>ko.lucene</td>
 	</tr>
     <tr>
@@ -733,7 +733,7 @@ HTTPS はすべてのサービス要求に必要です。**Update Index** 要求
 - `Content-Type`: 必須。これを `application/json` に設定します
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Update Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure クラシック ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文の構文**
 
@@ -752,8 +752,10 @@ HTTPS はすべてのサービス要求に必要です。**Update Index** 要求
           "sortable": true (default where applicable) | false (Collection(Edm.String) fields cannot be sortable),
           "facetable": true (default where applicable) | false (Edm.GeographyPoint fields cannot be facetable),
           "key": true | false (default, only Edm.String fields can be keys),
-          "retrievable": true (default) | false,
-		  "analyzer": "name of text analyzer"
+          "retrievable": true (default) | false, 
+		  "analyzer": "name of the analyzer used for search and indexing", (only if 'searchAnalyzer' and 'indexAnalyzer' are not set)
+          "searchAnalyzer": "name of the search analyzer", (only if 'indexAnalyzer' is set and 'analyzer' is not set)
+          "indexAnalyzer": "name of the indexing analyzer" (only if 'searchAnalyzer' is set and 'analyzer' is not set)
         }
       ],
       "suggesters": [
@@ -833,7 +835,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**List Indexes** 要求の `api-key` には (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure クラシック ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
@@ -900,7 +902,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Get Index** 要求の `api-key` には (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure クラシック ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
@@ -915,7 +917,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 <a name="DeleteIndex"></a>
 ## インデックスの削除
 
-**Delete Index** 操作は、Azure Search サービスからインデックスおよび関連するドキュメントを削除します。インデックス名は、Azure クラシック ポータルのサービス ダッシュボードまたは API から取得できます。詳細については、「[インデックスの一覧取得](#ListIndexes)」を参照してください。
+**Delete Index** 操作は、Azure Search サービスからインデックスおよび関連するドキュメントを削除します。インデックス名は、Azure ポータルのサービス ダッシュボードまたは API から取得できます。詳細については、「[インデックスの一覧取得](#ListIndexes)」を参照してください。
 
     DELETE https://[service name].search.windows.net/indexes/[index name]?api-version=[api-version]
     api-key: [admin key]
@@ -934,7 +936,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Delete Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure クラシック ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
@@ -967,7 +969,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Get Index Statistics** 要求の `api-key` には (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure クラシック ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
@@ -1022,7 +1024,7 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
 - `Content-Type`: 必須。これを `application/json` に設定します
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Add Documents** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure クラシック ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](.search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](.search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
@@ -1174,7 +1176,7 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 `searchFields=[string]` (省略可能) - 指定したテキストを検索するフィールド名のコンマ区切りのリスト。対象フィールドは、`searchable` としてマークされている必要があります。
 
-`queryType=simple|full` (省略可能、既定は `simple`) - "simple" に設定すると、検索テキストは簡単なクエリ言語 (+、*、"" などの記号を使用できます) を使用して解釈されます。既定で、各ドキュメント内のすべての検索可能なフィールド (または `searchFields` で指定したフィールド) に対してクエリが評価されます。クエリの種類を `full`に設定すると、検索テキストは Lucene クエリ言語 (フィールドの指定や重み付けによる検索を使用できます) を使用して解釈されます。検索構文の詳細については、[簡単なクエリ構文](https://msdn.microsoft.com/library/dn798920.aspx)と [Lucene クエリ構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)に関するページを参照してください。
+`queryType=simple|full` (省略可能、既定は `simple`) - "simple" に設定すると、検索テキストは簡単なクエリ言語 (+、*、"" などの記号を使用できます) を使用して解釈されます。既定で、各ドキュメント内のすべての検索可能なフィールド (または `searchFields` で指定したフィールド) に対してクエリが評価されます。クエリの種類を `full`に設定すると、検索テキストは Lucene クエリ言語 (フィールドの指定や重み付けによる検索を使用できます) を使用して解釈されます。検索構文の詳細については、[簡単なクエリ構文](https://msdn.microsoft.com/library/dn798920.aspx)と [Lucene クエリ構文](https://msdn.microsoft.com/library/mt589323.aspx)に関するページを参照してください。
  
 > [AZURE.NOTE]Lucene クエリ言語の範囲検索は、同様の機能を提供する $filter が用意されているため、サポートされません。
 
@@ -1186,11 +1188,9 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 `$top=#` (省略可能) - 取得する検索結果の数。これは、`$skip` と組み合わせて使用して、検索結果のクライアント側のページングを実装できます。
 
-> [AZURE.NOTE]Azure Search では、***サーバー側のページング***を使用して、クエリが一度に大量のドキュメントを取得することを防ぎます。既定のページ サイズは 50 で、最大ページ サイズは 1,000 です。つまり、`$top` を指定しない場合、既定では **Search** は最大で 50 個の結果を返します。50 個を超える結果がある場合は、応答には 最大で 50 個の結果を含む次のページを取得するための情報が含まれています ([次の例](#SearchResponse)の `@odata.nextLink` と `@search.nextPageParameters` を参照)。　同様に、`$top` に 1,000 を超える値を指定し、結果が 1,000 個より多い場合は、最初の 1,000 個の結果だけが返されます。その際、最大 1,000 個の結果を含む次のページを取得するための情報も含まれます。
+> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$top` ではなく `top` です。
 
-> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `top` ではなく `$top` です。
-
-`$count=true|false` (省略可能、既定値は `false`) - 結果の合計数を取得するかどうか。この値を `true` に設定すると、パフォーマンスに影響する場合があります。返されるカウントは概数であることに注意してください。
+`$count=true|false` (省略可能、既定値は `false`) - 結果の合計数を取得するかどうか。これは、`search` パラメーターおよび `$filter` パラメーターと一致するすべてのドキュメントの数です。`$top` と `$skip` は無視されます。この値を `true` に設定すると、パフォーマンスに影響する場合があります。返されるカウントは概数であることに注意してください。
 
 > [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$count` ではなく `count` です。
 
@@ -1254,7 +1254,7 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Search** 要求では、`api-key` に対して管理者キーまたはクエリ キーを指定できます。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure クラシック ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
@@ -1282,6 +1282,12 @@ POST の場合:
       "top": #
     }
 
+**部分的な検索応答の継続**
+
+Azure Search では、1 回の検索応答で要求された結果がすべて返されないことがあります。これは、`$top` を指定しなかったり、`$top` に指定した値が大きすぎたりしたために、クエリで要求したドキュメントが多すぎるなど、さまざまな理由で発生します。このような場合、Azure Search では、応答本文に `@odata.nextLink` 注釈が含まれます。さらに、POST 要求の場合は、`@search.nextPageParameters` も含まれます。これらの注釈の値を使用して別の Search 要求を作成して、検索応答の次の部分を取得できます。これは元の Search 要求の***継続***と呼ばれ、注釈は一般に***継続トークン***と呼ばれます。これらの注釈の構文の詳細と、注釈が応答本文のどこに含まれているかについては、[次の例](#SearchResponse)を参照してください。
+
+Azure Search が継続トークンを返す理由は、実装に固有で、変わることがあります。堅牢なクライアントでは、返されたドキュメントが予想よりも少なく、ドキュメントの取得を継続するために継続トークンが含まれている場合を処理する準備が常にできている必要があります。また、継続するためには、元の要求と同じ HTTP メソッドを使用する必要がある点にも注意してください。たとえば、GET 要求を送信した場合、送信する継続の要求でも GET を使用する必要があります (POST の場合も同様です)。
+
 <a name="SearchResponse"></a> **応答**
 
 状態コード: 応答の成功に対して「200 OK」が返されます。
@@ -1300,7 +1306,7 @@ POST の場合:
         ],
         ...
       },
-      "@search.nextPageParameters": { (request body to fetch the next page of results if result count exceeds page size and Search was called with POST)
+      "@search.nextPageParameters": { (request body to fetch the next page of results if not all results could be returned in this response and Search was called with POST)
         "count": ... (value from request body if present),
         "facets": ... (value from request body if present),
         "filter": ... (value from request body if present),
@@ -1332,7 +1338,7 @@ POST の場合:
         },
         ...
       ],
-      "@odata.nextLink": (URL to fetch the next page of results if result count exceeds page size; Applies to both GET and POST)
+      "@odata.nextLink": (URL to fetch the next page of results if not all results could be returned in this response; Applies to both GET and POST)
     }
 
 **例:**
@@ -1486,7 +1492,7 @@ POST の場合:
 
 上の `searchMode=all` の使用に注意してください。このパラメーターを含めると、既定の `searchMode=any` が上書きされて、`-motel` が "OR NOT" ではなく "AND NOT" を意味することが保証されます。`searchMode=all` を指定しないと、検索結果を制限するのではなく拡大する "OR NOT" になり、一部のユーザーにとっては直感に反している可能性があります。
 
-15) [lucene クエリ構文](http://lucene.apache.org/core/4_10_4/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#Overview)を使用して、インデックス内のドキュメントを検索します。このクエリは、カテゴリ フィールドに "budget" (低料金) が含まれ、すべての検索可能なフィールドに "recently renovated" (最近改修済み) というフレーズが含まれるホテルを返します。"recently renovated" というフレーズを含むドキュメントは、用語のブースト値 (3) の結果、高いランクになります。
+15) [lucene クエリ構文](https://msdn.microsoft.com/library/mt589323.aspx)を使用して、インデックス内のドキュメントを検索します。このクエリは、カテゴリ フィールドに "budget" (低料金) が含まれ、すべての検索可能なフィールドに "recently renovated" (最近改修済み) というフレーズが含まれるホテルを返します。"recently renovated" というフレーズを含むドキュメントは、用語のブースト値 (3) の結果、高いランクになります。
 
     GET /indexes/hotels/docs?search=category:budget AND "recently renovated"^3&searchMode=all&api-version=2015-02-28-Preview&querytype=full
 
@@ -1531,7 +1537,7 @@ POST の場合:
 
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Lookup Document** 要求では、`api-key` に対して管理者キーまたはクエリ キーを指定できます。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure クラシック ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
@@ -1579,7 +1585,7 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 - `Accept`: この値は `text/plain` に設定する必要があります。
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Count Documents** 要求では、`api-key` に対して管理者キーまたはクエリ キーを指定できます。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure クラシック ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
@@ -1660,9 +1666,9 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 > [AZURE.NOTE]POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `$orderby` ではなく `orderby` です。
 
-`$select=[string]` (省略可能) - 取得するフィールドのコンマ区切りリスト。指定しないと、ドキュメント キーと検索候補テキストのみが返されます。
+`$select=[string]` (省略可能) - 取得するフィールドのコンマ区切りリスト。指定しないと、ドキュメント キーと検索候補テキストのみが返されます。このパラメーターを `*` に設定することによって、明示的にすべてのフィールドを要求することができます。
 
-> [AZURE.NOTE]POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `select` ではなく `$select` です。
+> [AZURE.NOTE]POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `$select` ではなく `select` です。
 
 `minimumCoverage` (省略可能、既定値は 80) - クエリが成功として報告されるために、検索候補クエリで照合する必要があるインデックスの割合を示す 0 ～ 100 の範囲の数値。既定では、インデックスの 80 % 以上が一致している必要があります。そうでないと、`Suggest` は HTTP 状態コード 503 を返します。`minimumCoverage` を設定し、`Suggest` が成功した場合は、HTTP 200 が返され、応答にはクエリで照合したインデックスの割合を示す `@search.coverage` 値が含められます。
 
@@ -1678,7 +1684,7 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Suggestions** 要求では、`api-key` として管理者キーまたはクエリ キーを指定できます。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure クラシック ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
@@ -1742,4 +1748,4 @@ POST の場合:
       "suggesterName": "sg"
     }
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

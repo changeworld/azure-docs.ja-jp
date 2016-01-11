@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Visual Studio での Azure プライベート クラウドへのアクセス"
+   pageTitle="Visual Studio での Azure プライベート クラウドへのアクセス | Microsoft Azure"
    description="Visual Studio を使用してプライベート クラウドのリソースにアクセスする方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="08/13/2015"
+   ms.date="12/17/2015"
    ms.author="tarcher" />
 
 # Visual Studio での Azure プライベート クラウドへのアクセス
@@ -43,4 +43,4 @@
 
 [方法: 発行設定とサブスクリプション情報のダウンロードとインポート](https://msdn.microsoft.com/library/dn385850(v=nav.70).aspx)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

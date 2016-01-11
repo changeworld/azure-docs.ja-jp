@@ -138,11 +138,29 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 
 - [Microsoft.Azure.Mobile.Server.Login] MobileAppLoginHandler.CreateToken() メソッドを使用したカスタム認証のプレビュー サポートを提供します。これは静的メソッドであり、この構成で有効にする必要はありません。
 
-## 方法: サーバー プロジェクトを発行する
+## <a name="publish-server-project"></a>方法: サーバー プロジェクトを発行する
 
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service](../../includes/app-service-mobile-dotnet-backend-publish-service.md)]
+このセクションでは、Visual Studio から .NET バックエンド プロジェクトを発行する方法を示します。[Azure App Service のデプロイに関するドキュメント](../app-service-web/web-site-deploy.md)に記載されている Git などの方法を使用して、バックエンド プロジェクトをデプロイすることもできます。
 
-[Azure App Service のデプロイメントに関するドキュメント](../app-service-web/web-site-deploy.md)に記載されている上記以外の方法を使用することもできます。
+1. Visual Studio でプロジェクトをリビルドして、NuGet パッケージを復元します。
+
+2. ソリューション エクスプローラーで目的のプロジェクトを右クリックし、**[発行]** をクリックします。初めて発行するときには、発行プロファイルを定義する必要があります。既に定義したプロファイルがある場合は、単にそれを選択し、**[発行]** をクリックします。
+
+2. 発行先の選択を求められた場合は、**[Microsoft Azure App Service]**、**[次へ]** の順にクリックして、必要であれば Azure の資格情報でサインインします。Visual Studio によって Azure から発行設定が直接ダウンロードされ、安全に保存されます。
+
+	![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-1.png)
+
+3. **サブスクリプション**を選択し、**[表示]** で **[リソースの種類]** を選択して、**[モバイル アプリ]** を展開します。次に、モバイル アプリ バックエンドをクリックし、**[OK]** をクリックします。
+
+	![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-2.png)
+
+4. 発行プロファイル情報を確認し、**[発行]** をクリックします。
+
+	![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-3.png)
+
+	モバイル アプリ バックエンドが正常に発行されると、そのことを示すランディング ページが表示されます。
+
+	![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
 ## 方法: テーブル コントローラーを定義する
 
@@ -166,7 +184,7 @@ Azure SQL Database のデータへのアクセスに Entity Framework を使用�
 
 ## 方法: カスタム API コントローラーを定義する
 
-カスタム API コントローラーは、エンドポイントを公開して、モバイル アプリのバックエンドに最も基本的な機能を提供します。`MobileAppControllerAttribute` 属性を使用して、モバイル固有の API コント ローラーを登録できます。この属性は、ルートを登録し、Mobile Apps JSON シリアライザーも設定します。
+カスタム API コントローラーは、エンドポイントを公開して、モバイル アプリのバックエンドに最も基本的な機能を提供します。`MobileAppControllerAttribute` 属性を使用して、モバイル固有の API コントローラーを登録できます。この属性は、ルートを登録し、Mobile Apps JSON シリアライザーも設定します。
 
 1. Visual Studio で、Controllers フォルダーを右クリックして、**[追加]**、**[コントローラー]** の順にクリックし、**[Web API 2 コントローラー - 空]** を選択して **[追加]** をクリックします。
 
@@ -194,8 +212,15 @@ Azure SQL Database のデータへのアクセスに Entity Framework を使用�
 
 クライアントは **MobileAppControllerAttribute** が適用されていないコントローラーにもアクセスできますが、こうしたコントローラーはモバイル アプリ クライアント SDK を使用するクライアントでは適切に使用されない場合があります。
 
+## 方法: 認証を操作する
 
-## 方法: サーバー プロジェクトに認証を追加する
+Mobile Apps は、アプリの認証を有効化する処理を簡単にするために、App Service 認証と ASP.NET の機能を使用します。このセクションでは、.NET バックエンド サーバー プロジェクトで以下の認証関連のタスクを実行する方法を説明します。
+
++ [方法: サーバー プロジェクトに認証を追加する](#add-auth) 
++ [方法: アプリケーションにカスタム認証を使用する](#custom-auth) 
++ [方法: 認証されたユーザー情報を取得する](#user-info)
+
+### <a name="add-auth"></a>方法: サーバー プロジェクトに認証を追加する
 
 **MobileAppConfiguration** オブジェクトを拡張し、OWIN ミドルウェアを構成すると、サーバー プロジェクトに認証を追加することができます。[Microsoft.Azure.Mobile.Server.Quickstart] パッケージをインストールし、**UseDefaultConfiguration** 拡張メソッドを呼び出している場合は、手順 3 に進むことができます。
 
@@ -211,7 +236,7 @@ Azure SQL Database のデータへのアクセスに Entity Framework を使用�
 
 Mobile Apps バックエンドに対してクライアントを認証する方法については、「[アプリケーションに認証を追加する](app-service-mobile-ios-get-started-users.md)」をご覧ください。
 
-## <a name="custom-auth"></a>方法: アプリケーションにカスタム認証を使用する
+### <a name="custom-auth"></a>方法: アプリケーションにカスタム認証を使用する
 
 App Service Authentication/Authorization プロバイダーの中に使用したいものがない場合は、自身でログイン システムを用意することもできます。これを行うには、[Microsoft.Azure.Mobile.Server.Login] パッケージをインストールします。
 
@@ -251,9 +276,48 @@ App Service Authentication/Authorization プロバイダーの中に使用した
 			}
 		}
 
-`MobileAppLoginHandler.CreateToken()` メソッドには、_audience_ パラメーターと _issuer_ パラメーターが含まれています。どちらも通常は、HTTPS スキームを使用して、アプリケーション ルートの URL に設定します。同様に、_secretKey_ をアプリケーションの署名キーの値に設定する必要があります。これは機密性の高い値なので、共有したりクライアントに保存したりしないでください。この値を取得するには、App Service でホストされているときに _WEBSITE\_AUTH\_SIGNING\_KEY_ 環境変数を参照します。ローカル デバッグの実行で必要な場合は、「[認証に関するローカル デバッグ](#local-debug)」セクションの手順に従ってキーを取得し、アプリケーション設定として保存します。
+`MobileAppLoginHandler.CreateToken()` メソッドには、_audience_ パラメーターと _issuer_ パラメーターが含まれています。どちらも通常は、HTTPS スキームを使用して、アプリケーション ルートの URL に設定します。同様に、_secretKey_ をアプリケーションの署名キーの値に設定する必要があります。これは機密性の高い値なので、共有したりクライアントに保存したりしないでください。この値を取得するには、App Service でホストされているときに _WEBSITE\_AUTH\_SIGNING\_KEY_ 環境変数を参照します。ローカル デバッグのコンテキストで必要な場合は、「[認証に関するローカル デバッグ](#local-debug)」セクションの手順に従ってキーを取得し、アプリケーション設定として保存します。
 
 また、発行されたトークンの有効期間と、含めたい要求を指定する必要があります。サンプル コードに示すとおり、サブジェクトの要求を指定する必要があります。
+
+###<a name="user-info"></a>方法: 認証されたユーザー情報を取得する
+
+ユーザーが App Service によって認証されると、.NET バックエンド コードで、割り当てられたユーザー ID とその他の情報にアクセスできます。これは、バックエンドで特定のユーザーに対する承認を判断する場合に便利です。たとえば、特定のユーザーがテーブル行やその他のリソースにアクセスできるかどうかの判断などです。次のコードは、ログインしたユーザーのユーザー ID を取得する方法を示しています。
+
+    // Get the current user SID and create a tag for the current user.
+    var claimsPrincipal = this.User as ClaimsPrincipal;
+    string sid = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+SID はプロバイダー固有のユーザー ID から派生し、特定のユーザーとログイン プロバイダーに対して静的です。
+
+App Service では、ログイン プロバイダーからの特定の要求を行うこともできます。これにより、Facebook Graph API を使用したりして、プロバイダーからの詳細情報を要求することができます。ポータルのプロバイダー ブレードで、要求を指定できます。いくつかの要求では、プロバイダーの追加の構成が必要です。
+
+次のコードは、**GetAppServiceIdentityAsync** 拡張メソッドを呼び出して、ログイン資格情報を取得します。この情報には、Facebook Graph API に対する要求を行うために必要なアクセス トークンが含まれています。
+
+    // Get the credentials for the logged-in user.
+    var credentials = 
+        await this.User
+        .GetAppServiceIdentityAsync<FacebookCredentials>(this.Request);
+
+    if (credentials.Provider == "Facebook")
+    {
+        // Create a query string with the Facebook access token.
+        var fbRequestUrl = "https://graph.facebook.com/me/feed?access_token=" 
+            + credentials.AccessToken;
+
+        // Create an HttpClient request.
+        var client = new System.Net.Http.HttpClient();
+
+        // Request the current user info from Facebook.
+        var resp = await client.GetAsync(fbRequestUrl);
+        resp.EnsureSuccessStatusCode();
+
+        // Do something here with the Facebook user information.
+        var fbInfo = await resp.Content.ReadAsStringAsync();
+    }
+
+**GetAppServiceIdentityAsync** 拡張メソッドを動作させるには、`System.Security.Principal` の using ステートメントを追加する必要があります。
+
 
 ## 方法: サーバー プロジェクトにプロジェクトを追加する
 
@@ -297,7 +361,7 @@ App Service Authentication/Authorization プロバイダーの中に使用した
 
 ##<a name="tags"></a>方法: タグへのプッシュを有効にするために、タグをデバイス インストールに追加する
 
-上記の「**方法: カスタム API コントローラーを定義する**」の手順を実行したら、バックエンドにカスタム API を設定し、Notification Hubs と連動させて、タグを特定のデバイス インストールに追加します。クライアント ローカル ストレージに保存されているインストール ID と追加するタグ (タグはバックエンドで直接指定できるため、これは任意) を指定します。Notification Hubs と連動させ、タグをデバイス インストール ID に追加するために、次のスニペットをコントローラーに追加してください。
+上記の「**方法: カスタム API コントローラーを定義する**」の後、バックエンドにカスタム API を設定し、Notification Hubs と連動させて、タグを特定のデバイス インストールに追加します。クライアント ローカル ストレージに保存されているインストール ID と追加するタグ (タグはバックエンドで直接指定できるため、これは任意) を指定します。Notification Hubs と連動させ、タグをデバイス インストール ID に追加するために、次のスニペットをコントローラーに追加してください。
 
 [Azure Notification Hubs NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) の使用 ([リファレンス](https://msdn.microsoft.com/library/azure/mt414893.aspx)):
 
@@ -327,10 +391,24 @@ Azure App Service には、ASP.NET アプリケーションのデバッグとト
 
 ### ログの記録
 
-標準の ASP.NET トレース書き込みを使用して、App Service の診断ログを作成できます。
+標準の ASP.NET トレース書き込みを使用して、App Service の診断ログを作成できます。ログに書き込めるようにするには、モバイル アプリ バックエンドで診断を有効にする必要があります。
+
+診断を有効にして、ログに書き込むには、次の手順を実行します。
+
+1. 「[診断を有効にする方法](../app-service-web/web-sites-enable-diagnostic-log.md#enablediag)」の手順に従います。
+
+2. 次の using ステートメントをコード ファイルに追加します。
+
+		using System.Web.Http.Tracing;
+
+3. .NET バックエンドから診断ログに書き込むために、次のようにトレース ライターを作成します。
 
 		ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
 		traceWriter.Info("Hello, World");  
+
+4. サーバー プロジェクトを再発行し、モバイル アプリ バックエンドにアクセスして、ログ記録付きでコード パスを実行します。
+
+5. 「[ログをダウンロードする方法](../app-service-web/web-sites-enable-diagnostic-log.md#download)」で説明されているように、ログをダウンロードして評価します。
 
 ### <a name="local-debug"></a>認証に関するローカル デバッグ
 
@@ -360,4 +438,4 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->

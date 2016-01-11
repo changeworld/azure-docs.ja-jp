@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/07/2015"
+   ms.date="12/23/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの式
@@ -167,6 +167,7 @@
 - [replace](#replace)
 - [split](#split)
 - [string](#string)
+- [substring](#substring)
 - [toLower](#tolower)
 - [toUpper](#toupper)
 - [trim](#trim)
@@ -292,6 +293,28 @@
     },
     "variables": { 
         "stringValue": "[string(parameters('appId'))]"
+    }
+
+<a id="substring" />
+### substring
+
+**substring(stringToParse, startIndex, length)**
+
+指定した文字位置から始まる指定された文字数分の部分文字列を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| stringToParse | あり | 部分文字列の抽出元となる文字列。
+| startIndex | いいえ | 部分文字列の 0 から始まる開始文字位置。
+| length | いいえ | 部分文字列の文字数。
+
+次の例では、パラメーターから先頭の 3 文字を抽出します。
+
+    "parameters": {
+        "inputString": { "type": "string" }
+    },
+    "variables": { 
+        "prefix": "[substring(parameters('inputString'), 0, 3)]"
     }
 
 <a id="tolower" />
@@ -426,7 +449,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 現在のデプロイ操作に関する情報を返します。
 
-この式は、デプロイ中に渡されたオブジェクトを返します。返されるオブジェクトのプロパティは、デプロイメント オブジェクトがリンクとして渡されたか、インライン オブジェクトとして渡されたかによって異なります。デプロイメント オブジェクトがインラインで渡された場合 (Azure PowerShell の **TemplateFile** パラメーターを使用してローカル ファイルを参照する場合など)、返されるオブジェクトは次の形式になります。
+この式は、デプロイ中に渡されたオブジェクトを返します。返されるオブジェクトのプロパティは、デプロイメント オブジェクトがリンクとして渡されたか、インライン オブジェクトとして渡されたかによって異なります。デプロイ オブジェクトがインラインで渡された場合 (Azure PowerShell の **TemplateFile** パラメーターを使用してローカル ファイルを参照する場合など)、返されるオブジェクトは次の形式になります。
 
     {
         "name": "",
@@ -746,4 +769,4 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 - 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 - 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->

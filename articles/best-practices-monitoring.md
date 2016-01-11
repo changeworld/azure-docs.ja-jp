@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/28/2015"
+   ms.date="12/17/2015"
    ms.author="masashin"/>
 
 # 監視と診断のガイダンス
@@ -101,7 +101,7 @@
 %Availability =  ((Total Time – Total Downtime) / Total Time ) * 100
 ```
 
-これは SLA に対応するために役立ちます (「[SLA の監視](#SLA-monitoring)」については、このガイダンスの中で後述します)。”ダウンタイム” の定義は、サービスによって異なります。たとえば、Visual Studio Team Services では、ダウンタイムを、顧客がサービスに接続しようしている時間が 120 秒を超えている期間と、その時間内に接続は確立されたがすべての基本的な読み取りと書き込みの操作が失敗した期間と定義しています。
+これは SLA に対応するために役立ちます (「[SLA の監視](#SLA-monitoring)」については、このガイダンスの中で後述します)。”ダウンタイム” の定義は、サービスによって異なります。たとえば、Visual Studio Team Services ビルド サービスでは、ダウンタイムはビルド サービスを利用できない期間 (合計した蓄積分数) として定義されます。お客様が開始した操作を実行するように求めるビルド サービスに対するすべての HTTP 要求が 1 分間連続してエラー コードで終わるか、応答が返されなかった場合に、ビルド サービスは 1 分間使用できなかったとみなされます。
 
 ## パフォーマンスの監視
 ユーザー数とユーザーがアクセスするデータセットのサイズの増加によってシステムにかかるストレスが大きくなにつれて、1 つ以上のコンポーネントでエラーが発生する可能性が高くなります。多くの場合、コンポーネント エラーが発生する前にパフォーマンスが低下します。このような低下を検出できれば、状況を改善するための手順を前もって実行できます。
@@ -283,14 +283,14 @@ SLA の監視をサポートするために必要な生データは、パフォ�
 - 各ユーザーが使用しているデータ ストレージのボリューム。
 - 各ユーザーがアクセスしているリソース。
 
-さらに、オペレーターは、最もリソースを消費しているユーザーや最も頻繁にアクセスされるリソースを示すグラフを生成できる必要があります。
+さらに、オペレーターは、最もリソースを消費しているユーザーや最も頻繁にアクセスされるリソースまたはシステム機能を示すグラフを生成できる必要があります。
 
 ### データ ソース、インストルメンテーション、およびデータ収集の要件
 使用状況の追跡は、相対的に高いレベルで実行でき、各要求の開始時刻と終了時刻、要求の性質 (読み取りや書き込みなど。問題のリソースによって異なります) を記録します。この情報は、以下を実行することで取得できます。
 
 - ユーザー アクティビティのトレース。
 - 各リソースの使用率を測定するパフォーマンス カウンターのキャプチャ。
-- 各ユーザーが実行した操作の CPU および I/O 使用率の監視。
+- 各ユーザーによるリソース消費の監視。
 
 さらに、計測を目的として、どのユーザーがどの操作を実行し、それらの操作でどのリソースが使用されたかを識別できる必要があります。収集される情報は、正確な課金を実行できるだけの詳細さを持っている必要があります。
 
@@ -446,7 +446,6 @@ SLA の監視をサポートするために必要な生データは、パフォ�
 
 Azure のアプリケーションとサービスでは、Azure Diagnostics (WAD) がデータをキャプチャするための 1 つの可能性のあるソリューションを提供します。WAD は、各計算ノードの次のソースからデータを収集して集計した後、Azure ストレージにアップロードします。
 
-- Azure ログ
 - IIS ログ
 - IIS の失敗した要求ログ
 - Windows イベント ログ
@@ -454,6 +453,8 @@ Azure のアプリケーションとサービスでは、Azure Diagnostics (WAD)
 - クラッシュ ダンプ
 - Azure 診断インフラストラクチャ ログ  
 - カスタム エラー ログ
+- .NET EventSource
+- マニフェスト ベースの ETW
 
 詳細については、Microsoft Web サイトの記事「[Azure: Telemetry Basics and Troubleshooting (Azure: 製品利用統計情報の基本とトラブルシューティング)」](http://social.technet.microsoft.com/wiki/contents/articles/18146.windows-azure-telemetry-basics-and-troubleshooting.aspx)を参照してください。
 
@@ -465,7 +466,7 @@ Azure のアプリケーションとサービスでは、Azure Diagnostics (WAD)
 #### _インストルメンテーション データのプルとプッシュ_
 インストルメンテーション データ収集サブシステムは、アプリケーションの各インスタンスのさまざまなログとその他のソースからアクティブにデータを取得する (プル モデル) か、アプリケーションの各インスタンスを構成するコンポーネントからデータが送信されるのを待つパッシブ受信者として機能する (プッシュ モデル) ことができます。
 
-プル モデルを実装するアプローチの 1 つは、アプリケーションの各インスタンスでローカルで実行される監視エージェントを使用することです。監視エージェントは、ローカル ノードで収集された製品利用統計情報データを定期的に取得 (プル) し、その情報をアプリケーションのすべてのインスタンスによって共有される中央ストレージに直接書き込む、独立したプロセスです。これは、WAD によって実装されるメカニズムです。Azure Web または worker ロールの各インスタンスは、ローカルに保存される診断情報とその他のトレース情報をキャプチャするように構成できます。実行される各監視エージェントは、指定されたデータを Azure ストレージにコピーします。このプロセスの詳細については、Microsoft Web サイトの「[Azure Cloud Services および Virtual Machines 用の診断の構成](https://msdn.microsoft.com/library/azure/dn186185.aspx)」を参照してください。IIS ログ、クラッシュ ダンプ、カスタム エラー ログなどの要素は BLOB ストレージに書き込まれ、Windows Event ログ、ETW イベント、およびパフォーマンス カウンターからのデータはテーブル ストレージに記録されます。図 3 は、このメカニズムを示しています。
+プル モデルを実装するアプローチの 1 つは、アプリケーションの各インスタンスでローカルで実行される監視エージェントを使用することです。監視エージェントは、ローカル ノードで収集された製品利用統計情報データを定期的に取得 (プル) し、その情報をアプリケーションのすべてのインスタンスによって共有される中央ストレージに直接書き込む、独立したプロセスです。これは、WAD によって実装されるメカニズムです。Azure Web または worker ロールの各インスタンスは、ローカルに保存される診断情報とその他のトレース情報をキャプチャするように構成できます。実行される各監視エージェントは、指定されたデータを Azure ストレージにコピーします。このプロセスの詳細については、Microsoft Web サイトの「[Azure Cloud Services および Virtual Machines の診断機能](cloud-services-dotnet-diagnostics.md)」を参照してください。IIS ログ、クラッシュ ダンプ、カスタム エラー ログなどの要素は BLOB ストレージに書き込まれ、Windows Event ログ、ETW イベント、およびパフォーマンス カウンターからのデータはテーブル ストレージに記録されます。図 3 は、このメカニズムを示しています。
 
 ![](media/best-practices-monitoring/PullModel.png)
 
@@ -473,7 +474,6 @@ Azure のアプリケーションとサービスでは、Azure Diagnostics (WAD)
 
 > [AZURE.NOTE]監視エージェントの使用は、SQL Server 管理ビューの情報や Azure Service Bus Queue の長いデータなど、データ ソースから自然に取得されるインストルメンテーション データをキャプチャするのに最適です。
 
-Azure Diagnostics の構成と使用については、Microsoft web サイトの「[Azure 診断を使用したログ データの収集](https://msdn.microsoft.com/library/azure/gg433048.aspx)」を参照してください。
 
 限定された数のノードで実行されている小規模なアプリケーションの製品利用統計情報データは、ここで説明した方法を使用して 1 か所に保存できます。ただし、複雑で拡張性の高いグローバルなクラウド アプリケーションでは、何百もの Web とワーカー ロール、データベース シャード、およびその他のサービスから、膨大な量のデータが簡単に生成されることがあります。このデータの殺到は、一元化された場所で使用できる I/O 帯域幅ではすぐに対応できなくなる可能性があります。したがって、製品利用統計情報ソリューションは、システムが拡張したときにボトルネックになることがないように拡張可能である必要があり、システムの一部で障害が発生した場合に重要な監視情報 (監査データや課金データなど) が失われるリスクを低減する冗長性を組み込むのが理想的です。
 
@@ -604,12 +604,11 @@ _図 6: 分析要件とストレージ要件に基づくデータのパーティ
 ## 詳細
 - Microsoft Web サイトの記事「[Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」。
 - Microsoft Web サイトの記事「[Azure: Telemetry Basics and Troubleshooting （Azure: 製品利用統計情報の基本とトラブルシューティング）」](http://social.technet.microsoft.com/wiki/contents/articles/18146.windows-azure-telemetry-basics-and-troubleshooting.aspx)。
-- Microsoft Web サイトのページ「[Azure 診断を使用したログ データの収集](https://msdn.microsoft.com/library/azure/gg433048.aspx)」。
-- Microsoft Web サイトのページ「[Azure Cloud Services および Virtual Machines 用の診断の構成](https://msdn.microsoft.com/library/azure/dn186185.aspx)」。
+- Microsoft Web サイトのページ「[Azure Cloud Services および Virtual Machines の診断機能](cloud-services-dotnet-diagnostics.md)」。
 - Microsoft Web サイトの [Azure Redis Cache](http://azure.microsoft.com/services/cache/)、[Azure DocumentDB](http://azure.microsoft.com/services/documentdb/)、および [HDInsight](http://azure.microsoft.com/services/hdinsight/) に関するページ。
-- Microsoft Web サイトのページ「[Service Bus キューの使用方法](http://azure.microsoft.com/)」。
+- Microsoft Web サイトのページ「[Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)」。
 - Microsoft Web サイトの記事「[Azure の仮想マシンでの SQL Server Business Intelligence](./virtual-machines/virtual-machines-sql-server-business-intelligence.md)」。
-- Microsoft Web サイトのページ「[Azure の監視アラートと通知について](https://msdn.microsoft.com/library/azure/dn306639.aspx)」。
-- Microsoft web サイトの [Application Insights](app-insights-get-started/) に関するページ。
+- Microsoft Web サイトのページ「[アラート通知の受信](insights-receive-alert-notifications.md)」および「[サービス正常性を追跡する](insights-service-health.md)」。
+- Microsoft web サイトの [Application Insights](app-insights-get-started.md) に関するページ。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1223_2015-->

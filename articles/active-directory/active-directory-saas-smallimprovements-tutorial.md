@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/14/2015"
+	ms.date="12/18/2015"
 	ms.author="jeedes"/>
 
 
@@ -64,7 +64,7 @@ Azure AD への Small Improvements の統合を構成するには、ギャラリ
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに、「**Small Improvements**」と入力します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_01.png)<br>
-7. 結果ウィンドウで **[Small Improvements]** を選び、**[完了]** をクリックしてアプリケーションを追加します。<br><br>
+7. 結果ウィンドウで **[Small Improvements]** を選び、**[完了]** をクリックしてアプリケーションを追加します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_02.png)<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Small Improvements で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -188,9 +188,9 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 
 1. [ユーザー管理] セクションで、**[ユーザー ディレクトリ]** ボタンをクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_10.png)<br>
 
-1. **[チーム メンバーの追加]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_11.png)<br>
+1. **[チームメンバーの追加]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_11.png) <br>
 
-1. 対応するテキスト ボックスに、プロビジョニングする有効なユーザーの **[名]**、**[姓]**、**[電子メール アドレス]**を入力します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_12.png)<br>
+1. 対応するテキスト ボックスに、プロビジョニングする有効なユーザーの **[名]**、**[姓]**、**[電子メール アドレス]** を入力します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_12.png)<br>
 
 1. **[通知電子メールを送信する]** ボックスに、個人のメッセージを入力することもできます。通知を送信しない場合は、このチェック ボックスをオフにします。
 
@@ -243,4 +243,4 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 [204]: ./media/active-directory-saas-smallimprovements-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-smallimprovements-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

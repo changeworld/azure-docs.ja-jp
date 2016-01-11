@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="12/09/2015"
+   ms.date="12/17/2015"
    ms.author="guayan"/>
 
 # Microsoft 管理の API または IT 管理の API を登録する
@@ -107,17 +107,13 @@ API | 説明 | 手順のリンク
 
 ## Microsoft 管理の API または IT 管理の API を登録する
 
-1. [Azure ポータル](https://portal.azure.com/)で、**[PowerApps]** を選択して、**[API の管理]**: を選択します。  
-![][17]
-2. [API の管理] で、**[追加]**: を選択します。  
-![][18]  
+1. [Azure ポータル](https://portal.azure.com/)で、**[PowerApps]** を選択して、**[API の管理]** を選択します。![][17]
+2. [API の管理] で、**[追加]** を選択します。 ![][18]  
 3. **[API の追加]** に、API のプロパティを入力します。  
 
 	- **[名前]** に、API の名前を入力します。入力した名前が、API のランタイム URL に含まれていることを確認してください。名前は意味があり、組織内で一意のものにしてください。
-	- **[ソース]** で、**[利用可能な API から]**: を選択します。  
-	![][19]
-4. **[API]** を選択して、登録する API を選択します。  
-![][20]
+	- **[ソース]** で、**[利用可能な API から]**: ![][19] を選択します。
+4. **[API]** を選択して、登録する API を選択します。![][20]
 5. 特定の API を選択し、構成可能なプロパティをすべて追加します。
 6. **[追加]** を選択して、手順を完了します。
 
@@ -131,7 +127,7 @@ API | 説明 | 手順のリンク
 
 - [API プロパティの構成](powerapps-configure-apis.md)
 - [ユーザーへの API アクセス許可](powerapps-manage-api-connection-user-access.md)
-- [PowerApps でのアプリ作成の開始に関するページ](https://powerapps.microsoft.com/tutorials/)
+- [PowerApps でのアプリ作成の開始](https://powerapps.microsoft.com/tutorials/)に関するページ
 
 
 <!--References-->
@@ -155,4 +151,4 @@ API | 説明 | 手順のリンク
 [42]: ./media/powerapps-register-from-available-apis/sqlserver.png
 [43]: ./media/powerapps-register-from-available-apis/twitter.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->
