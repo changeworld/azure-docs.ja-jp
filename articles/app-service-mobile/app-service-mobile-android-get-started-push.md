@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="12/02/2015"
+	ms.date="12/18/2015"
 	ms.author="yuaxu"/>
 
 # プッシュ通知を Android アプリに追加する
@@ -49,11 +49,9 @@
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-configure-push-google](../../includes/app-service-mobile-dotnet-backend-configure-push-google.md)]
 
-## <a name="publish-the-service"></a>モバイル バックエンドを Azure に発行する
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service](../../includes/app-service-mobile-dotnet-backend-publish-service.md)]
-
 ## アプリケーションにプッシュ通知を追加する
+
+Android アプリ プロジェクトでプッシュ通知を処理する準備が整っていることを確認する必要があります。
 
 ###Android SDK バージョンの検証
 
@@ -77,9 +75,9 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 ##<a id="more"></a>詳細
 
-* タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」にあります。
+* タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」に記載されています。
 
 <!-- URLs -->
 [Android クイック スタート]: app-service-mobile-android-get-started.md
 
-<!---HONumber=AcomDC_1210_2015--->
+<!----HONumber=AcomDC_1223_2015-->

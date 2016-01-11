@@ -48,7 +48,7 @@ Azure インフラストラクチャが VNet からパブリック インター�
 - **接続**: VNet は相互に接続することも、サイト間 VPN 接続や ExpressRoute 接続を使用して、オンプレミスのデータセンターに接続することもできます。VPN ゲートウェイについては、「[VPN Gateway について](./vpn-gateway-about-vpngateways.md)」をご覧ください。ExpressRoute の詳細については、「[ExpressRoute の技術概要](./expressroute-introduction.md)」をご覧ください。
 
     >[AZURE.NOTE]Azure 環境に IaaS VM や PaaS ロール インスタンスをデプロイする前に、VNet を作成するようにしてください。ARM ベースの VM には VNet が必要です。既存の VNet を指定しない場合、Azure が既定の VNet を作成します。この VNet には、独自のオンプレミス ネットワークと競合する CIDR アドレス ブロックが含まれる場合があります。この場合、VNet からオンプレミスのネットワークに接続できなくなります。
-    
+
 ## サブネット
 
 サブネットは、VNet 内の IP アドレスの範囲で、VNet は組織とセキュリティ用に複数のサブネットに分割することができます。VNet 内の (同じまたは異なる) サブネットにデプロイした VM と PaaS ロール インスタンスは、追加の構成をしなくても互いに通信できます。また、サブネットへのルート テーブルおよび NSG も構成できます。
@@ -56,9 +56,9 @@ Azure インフラストラクチャが VNet からパブリック インター�
 ## IP アドレス
 
 
-Azure のリソースには、*パブリック*と*プライベート*の 2 種類の IP アドレスが割り当てられています。Azure リソースは、パブリック IP アドレスを使用して、インターネットや [Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) など、Azure の公開されている他のサービスと通信できます。プライベート IP アドレスを使用すると、インターネット経由でルーティング可能な IP アドレスを使用する必要なく、仮想ネットワーク内のリソースまたは VPN 経由で接続されているリソースが通信できるようになります。
+Azure のリソースには、*パブリック*と*プライベート*の 2 種類の IP アドレスが割り当てられています。Azure リソースは、Public IP Addresses を使用して、インターネットや [Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) など、Azure の公開されている他のサービスと通信できます。プライベート IP アドレスを使用すると、インターネット経由でルーティング可能な IP アドレスを使用する必要なく、仮想ネットワーク内のリソースまたは VPN 経由で接続されているリソースが通信できるようになります。
 
-Azure 内の IP アドレスの詳細については、「[仮想ネットワークの IP アドレス](virtual-network-ip-addresses-arm.md)」を参照してください。
+Azure 内の IP アドレスの詳細については、「[仮想ネットワークの IP アドレス](virtual-network-ip-addresses-overview-arm.md)」を参照してください。
 
 ## Azure ロード バランサー
 
@@ -78,7 +78,7 @@ NSG を作成すると、ネットワーク インターフェイス (NIC)、VM�
 
 仮想アプライアンスは、ファイアウォール、WAN の最適化、不正侵入検出などのソフトウェア ベースのアプライアンス機能を実行する VNet 内の別の VM です。仮想アプライアンス経由で VNet トラフィックをルーティングしてこの機能を使用するためのルートを Azure で作成できます。
 
-たとえば、NSG を使用して VNet にセキュリティを確保できます。ただし、NSG では、受信と送信パケットにレイヤー 4 のアクセス制御リスト (ACL) を提供します。レイヤー 7 のセキュリティ モデルが必要な場合は、ファイアウォール アプライアンスを使用する必要があります。
+たとえば、NSG を使用して VNet にセキュリティを確保できます。ただし、NSG では、受信と送信パケットにレイヤー 4 の Access Control リスト (ACL) を提供します。レイヤー 7 のセキュリティ モデルが必要な場合は、ファイアウォール アプライアンスを使用する必要があります。
 
 仮想アプライアンスは、[ユーザー定義のルートと IP 転送](../virtual-networks-udr-overview.md)によって異なります。
 
@@ -86,7 +86,7 @@ NSG を作成すると、ネットワーク インターフェイス (NIC)、VM�
 サブスクリプションで許可される Virtual Network 数には制限があります。詳細については、「[Azure ネットワークの制限](azure-subscription-service-limits.md#networking-limits)」を参照してください。
 
 ## 価格
-Azure では追加のコストの必要なく Virtual Network を使用できます。Vnet 内で開始されたコンピューティング インスタンスは、「[Azure VM の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」で説明されている標準の価格が課せられます。VNet で使用されている [VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/) と[パブリック IP アドレス](https://azure.microsoft.com/pricing/details/ip-addresses/)も標準の価格が課せられます。
+Azure では追加のコストの必要なく Virtual Network を使用できます。Vnet 内で開始されたコンピューティング インスタンスは、「[Azure VM の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」で説明されている標準の価格が課せられます。VNet で使用されている [VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/) と [Public IP Addresses](https://azure.microsoft.com/pricing/details/ip-addresses/) も標準の価格が課せられます。
 
 ## 次のステップ
 
@@ -98,4 +98,4 @@ Azure では追加のコストの必要なく Virtual Network を使用できま
 - [予約済み IP の概要](../virtual-networks-reserved-public-ip.md)
 - [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)の概要。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

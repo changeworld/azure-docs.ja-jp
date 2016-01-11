@@ -15,7 +15,7 @@
    ms.date="12/15/2015"
    ms.author="v-sharos" />
 
-# StorSimple Manager サービスを使用してボリュームを管理する
+# StorSimple Manager サービスを使用してボリュームを管理する (Update 2)
 
 [AZURE.INCLUDE [storsimple-version-selector-manage-volumes](../../includes/storsimple-version-selector-manage-volumes.md)]
 
@@ -69,7 +69,7 @@ StorSimple ボリュームは、次のいずれかです。
 
 **[ボリューム]** ページでは、イニシエーター (サーバー) 用に Microsoft Azure StorSimple デバイスにプロビジョニングされているストレージ ボリュームを管理することができます。このページには、StorSimple デバイス上のボリュームの一覧が表示されます。
 
- ![Volumes page](./media/storsimple-manage-volumes-u2/VolumePage.png)
+ ![[ボリューム] ページ](./media/storsimple-manage-volumes-u2/VolumePage.png)
 
 ボリュームは、次の一連の属性で構成されます。
 
@@ -119,13 +119,13 @@ StorSimple ボリュームは、次のいずれかです。
 
     ローカル固定ボリュームを構成している場合は、次のメッセージが表示されます。
 
-    ![Change Volume type message](./media/storsimple-manage-volumes-u2/LocalVolMessage.png)
+    ![ボリュームのメッセージ型の変更](./media/storsimple-manage-volumes-u2/LocalVolMessage.png)
 
     次のページが表示されます。
 
     ![ボリュームの追加ウィザードの追加設定](./media/storsimple-manage-volumes-u2/AddVolume2.png)<br>
    
-5. 矢印アイコン ![Arrow icon](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png) をクリックして **[追加設定]** ページに移動します。
+5. 矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png) をクリックして **[追加設定]** ページに移動します。
 
 6. **[追加設定]** で、新しいアクセス制御レコード (ACR) を追加します。
   
@@ -135,7 +135,7 @@ StorSimple ボリュームは、次のいずれかです。
 
 
   2. **[このボリュームの既定のバックアップの有効化]** チェック ボックスをオンにすることをお勧めします。
-  3. チェック マーク アイコン ![Check icon](./media/storsimple-manage-volumes-u2/HCS_CheckIcon.png) をクリックして、指定した設定でボリュームを作成します。
+  3. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-volumes-u2/HCS_CheckIcon.png) をクリックして、指定した設定でボリュームを作成します。
 
 新しいボリュームが使用できるようになります。
 
@@ -168,7 +168,7 @@ StorSimple ボリュームは、次のいずれかです。
 
     > [AZURE.NOTE]ボリュームの**既定のバックアップを有効にする**オプションは変更できません。
 
-6. チェック マーク アイコン ![check-icon](./media/storsimple-manage-volumes-u2/HCS_CheckIcon.png) をクリックして変更を保存します。ボリュームを更新中であることを示すメッセージが Azure ポータルに表示されます。ボリュームが正常に更新されると、成功メッセージが表示されます。
+6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-volumes-u2/HCS_CheckIcon.png) をクリックして変更を保存します。ボリュームを更新中であることを示すメッセージが Azure ポータルに表示されます。ボリュームが正常に更新されると、成功メッセージが表示されます。
 
 7. ボリュームを拡張する場合は、Windows ホスト コンピューターで次の手順を実行します。
 
@@ -211,17 +211,17 @@ StorSimple ボリュームは、次のいずれかです。
     - 種類を **[ローカル固定]** に変更する場合は、十分な容量があるかどうかを StorSimple が確認します。
     - 種類を **[階層化]** に変更し、このボリュームをアーカイブ データ用に使用する場合は、**[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにします。
 
-    ![Archive checkbox](./media/storsimple-manage-volumes-u2/ModifyVolume1.png)
+    ![[アーカイブ] チェックボックス](./media/storsimple-manage-volumes-u2/ModifyVolume1.png)
 
-5. **[追加設定]** ページに移動するには、矢印アイコン ![Arrow icon](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png) をクリックしてください。
+5. **[追加設定]** ページに移動するには、矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png) をクリックしてください。
 
     次のメッセージが表示されます。
 
-    ![Change Volume type message](./media/storsimple-manage-volumes-u2/TypeChangeMessage.png)
+    ![ボリュームのメッセージ型の変更](./media/storsimple-manage-volumes-u2/TypeChangeMessage.png)
 
-6. もう一度矢印アイコン ![arrow icon](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png) をクリックして続行します。
+6. もう一度矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png) をクリックして続行します。
 
-7. チェック アイコン ![Check icon](./media/storsimple-manage-volumes-u2/HCS_CheckIcon.png) をクリックして、変換プロセスを開始します。ボリュームを更新中であることを示すメッセージが Azure ポータルに表示されます。ボリュームが正常に更新されると、成功メッセージが表示されます。
+7. チェック アイコン ![チェック マーク アイコン](./media/storsimple-manage-volumes-u2/HCS_CheckIcon.png) をクリックして、変換プロセスを開始します。ボリュームを更新中であることを示すメッセージが Azure ポータルに表示されます。ボリュームが正常に更新されると、成功メッセージが表示されます。
 
 ## ボリュームをオフラインにする
 
@@ -282,7 +282,7 @@ StorSimple ボリュームは、次のいずれかです。
 
 5. ボリュームの変更ウィザードの **[基本設定]** で、**[監視]** ボックスの一覧の **[有効]** または **[無効]** を選択します。
 
-    ![Archive checkbox](./media/storsimple-manage-volumes-u2/ModifyVolume1.png)
+    ![[アーカイブ] チェックボックス](./media/storsimple-manage-volumes-u2/ModifyVolume1.png)
 
 ## 次のステップ
 
@@ -291,4 +291,4 @@ StorSimple ボリュームは、次のいずれかです。
 
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

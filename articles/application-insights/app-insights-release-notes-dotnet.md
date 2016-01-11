@@ -11,8 +11,8 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/11/2015" 
-	ms.author="sergkanz"/>
+	ms.date="12/17/2015" 
+	ms.author="abaranch"/>
  
 # .NET 向けの Application Insights SDK のリリース ノート
 
@@ -35,11 +35,21 @@
 
 ## バージョン 2.0.0-beta3
 
-- [アダプティブ サンプリング](app-insights-sampling.md)
+- [アダプティブ サンプリング](app-insights-sampling.md)が、サーバーのテレメトリ チャネルで既定で有効になっています。 
+- ```UseSampling``` の署名が、テレメトリ プロセッサの ```Use``` へのその他の呼び出しとのチェーンを可能にするように修正されました。  
+- プロパティ ```Request.ID``` が復活しました。```OperationContext``` にエンド ツー エンドの相関関係のプロパティ ```ParentId``` が含まれるようになりました。
+- ```TimestampTelemetryInitializer``` が削除されました。タイムスタンプが ```TelemetryClient``` により自動的に追加されます。
+- 操作の相関関係を有効にするため、```OperationCorrelationTelemetryInitializer``` が既定で追加されます。
+- ```OperationIdTelemetryInitializer``` の代わりに ```OperationCorrelationTelemetryInitializer``` が使用されます。
+- ユーザー エージェントが、既定で収集されなくなります。ユーザー エージェントのテレメトリ初期化子が削除されました。
+- ```DependencyTelemetry.Async``` フィールドは、依存関係コレクター テレメトリ モジュールによって収集されません。 
+- 静的コンテンツと診断の要求は、要求テレメトリ モジュールによって収集されません。```RequestTrackingTelemetryModule``` コレクションの ```HandlersToFilter``` を使用して、特定の http ハンドラーによって生成された要求を除外します。 
+- 自動生成された要求テレメトリには、HttpContext 拡張メソッド System.Web.HttpContextExtension.GetRequestTelemetry を通じてアクセスできます。  
+
 
 ## バージョン 2.0.0-beta2
 - ITelemetryProcessor のサポート、コードまたは構成ファイルを使用して構成する機能が追加されました。[SDK でのカスタム フィルターの有効化](app-insights-api-telemetry-processors/#telemetry-processors)
-- コンテキストの初期化子が削除されました。代わりに、[テレメトリの初期化子](https://azure.microsoft.com/documentation/articles/app-insights-api-telemetry-processors/#telemetry-initializers)を使用します。
+- コンテキストの初期化子が削除されました。代わりに、[テレメトリの初期化子]( https://azure.microsoft.com/documentation/articles/app-insights-api-telemetry-processors/#telemetry-initializers)を使用します。
 - Application Insights for .Net framework 4.6 が更新されました。 
 - カスタム イベント名に最大 512 文字まで使用できるようになりました。
 - プロパティ ```OperationContext.Name``` の名前が ```RootName``` に変更されました。
@@ -114,4 +124,4 @@
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015--->

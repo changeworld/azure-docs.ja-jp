@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin" 
 	ms.devlang="dotnet" 
 	ms.topic="article"
-	ms.date="11/25/2015" 
+	ms.date="12/19/2015" 
 	ms.author="wesmc"/>
 
 # Xamarin.Forms アプリにプッシュ通知を追加する
@@ -59,10 +59,6 @@
 
 [AZURE.INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-##更新したサーバー プロジェクトを Azure にデプロイする
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service](../../includes/app-service-mobile-dotnet-backend-publish-service.md)]
-
 
 ##(省略可能) Android プロジェクトを構成して実行する
 
@@ -84,7 +80,7 @@
 
 ####Android プロジェクトにプッシュ通知を追加する
 
-1. Components フォルダーを右クリックし、[その他のコンポーネントを取得] をクリックします。**[Google Cloud Messaging クライアント]** コンポーネントを検索し、それをプロジェクトに追加します。このコンポーネントにより、Xamarrin Android プロジェクトでプッシュ通知を簡単に操作できます。
+1. Components フォルダーを右クリックし、[その他のコンポーネントを取得...] をクリックし、**[Google Cloud Messaging Client]** コンポーネントを検索し、それをプロジェクトに追加します。このコンポーネントにより、Xamarrin Android プロジェクトでプッシュ通知を簡単に操作できます。
 
 2. MainActivity.cs プロジェクト ファイルを開き、次の using ステートメントをファイルの先頭に追加します。
 
@@ -194,7 +190,7 @@
 
 12. OnRegistered イベント ハンドラーをオーバーライドし、`Register` メソッドを実装する次のコードを GcmService クラスに追加します。
 
-	このコードによって、`messageParam` パラメーターを使用したテンプレート通知を受け取るためのテンプレート本文が登録されます。テンプレート通知を使用すると、クロスプラットフォームの通知を送信できます。詳細については、「[テンプレート](https://msdn.microsoft.com/library/azure/dn530748.aspx)」をご覧ください。
+	このコードによって、`messageParam` パラメーターを使用したテンプレート通知を受け取るためのテンプレート本文が登録されます。テンプレート通知を使用すると、クロスプラットフォームの通知を送信できます。詳細については、「[テンプレート](https://msdn.microsoft.com/library/azure/dn530748.aspx)」を参照してください。
 		
 		protected override void OnRegistered(Context context, string registrationId)
 		{
@@ -541,4 +537,4 @@
 [Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
-<!---HONumber=AcomDC_1203_2015--->
+<!----HONumber=AcomDC_1223_2015-->

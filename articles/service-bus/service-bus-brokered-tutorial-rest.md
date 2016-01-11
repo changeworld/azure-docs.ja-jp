@@ -183,7 +183,8 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
 1 つ前の手順で追加した `GetSASToken()` のコードの直後に、次のコードを貼り付けます。
 
 ```
-// Uses HTTP PUT to create the queueprivatestaticstring CreateQueue(string queueName, string token)
+// Uses HTTP PUT to create the queue
+private static string CreateQueue(string queueName, string token)
 {
     // Create the URI of the new queue, note that this uses the HTTPS schemestring queueAddress = baseAddress + queueName;
     WebClient webClient = new WebClient();
@@ -210,7 +211,8 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
 
 	```
 	// Sends a message to the "queueName" queue, given the name and the value to enqueue
-	// Uses an HTTP POST request.privatestaticvoid SendMessage(string queueName, string body)
+	// Uses an HTTP POST request.
+	private static void SendMessage(string queueName, string body)
 	{
 	    string fullAddress = baseAddress + queueName + "/messages" + "?timeout=60&api-version=2013-08 ";
 	    Console.WriteLine("\nSending message {0} - to address {1}", body, fullAddress);
@@ -631,4 +633,4 @@ namespace Microsoft.ServiceBus.Samples
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

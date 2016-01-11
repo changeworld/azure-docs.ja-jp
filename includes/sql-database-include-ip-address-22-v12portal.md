@@ -15,7 +15,7 @@ articles/sql-database/sql-database-connect-query.md
 -->
 
 
-1. [Azure プレビュー ポータル](http://portal.azure.com/) (http://portal.azure.com/) を通してログインします。
+1. http://portal.azure.com/ で [Azure ポータル](http://portal.azure.com/)にログインします。
 
 2. 左側のバナーの **[すべて参照]** をクリックします。**[参照]** ブレードが表示されます。
 
@@ -63,4 +63,4 @@ includes/sql-database-include-ip-address-22-v12portal.md
 ? includes/sql-database-include-ip-address-*.md
 -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

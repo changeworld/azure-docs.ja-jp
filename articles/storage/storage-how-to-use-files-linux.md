@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Linux で Azure File ストレージを使用する方法 | Microsoft Azure"
-        description="クラウドにファイル共有を作成して、Azure VM または Linux で実行されているオンプレミスのアプリケーションからマウントします。"
+	pageTitle="Linux で Azure Files を使用する方法 | Microsoft Azure"
+        description="この詳しい手順を示したチュートリアルでは、クラウドに Azure ファイル共有を作成します。Linux を実行している Azure の仮想マシン (VM) または SMB 3.0 をサポートするオンプレミスのアプリケーションから、ファイル共有のコンテンツを管理し、ファイル共有をマウントします。"
         services="storage"
         documentationCenter="na"
         authors="jasontang501"
@@ -12,21 +12,23 @@
       ms.tgt_pltfrm="na"
       ms.devlang="na"
       ms.topic="article"
-      ms.date="10/26/2015"
+      ms.date="12/17/2015"
       ms.author="jutang;tamram" />
 
 
-# Linux で Azure File ストレージを使用する方法 
+# Linux で Azure File Storage を使用する方法 
 
 ## 概要
 
-Azure File Storageは、標準的な SMB プロトコルを使用してクラウドでのファイル共有を提供します。File ストレージは現在一般に提供されており、SMB 3.0 と SMB 2.1 の両方をサポートしています。
+Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。Azure Files を使用すると、ファイル サーバーを利用しているエンタープライズ アプリケーションを Azure に移行できます。Azure で実行されているアプリケーションでは、Linux を実行している Azure の仮想マシンからファイル共有を簡単にマウントできます。また、File ストレージの最新のリリースでは、SMB 3.0 をサポートしているオンプレミス アプリケーションからファイル共有をマウントできます。
 
-Azure のファイル共有は、 [Azure ポータル](portal.azure.com)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。また、ファイル共有は SMB 共有であるため、それらには標準の使い慣れたファイル システム API を使用してアクセスできます。
+Azure のファイル共有は、 [Azure ポータル](portal.azure.com)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。また、ファイル共有は SMB 共有であるため、それらには標準のファイル システム API を使用してアクセスできます。
 
-Azure で実行されているアプリケーションでは、Azure の仮想マシンのファイル共有を簡単にマウントできます。また、File ストレージの最新のリリースでは、SMB 3.0 をサポートしているオンプレミス アプリケーションからファイル共有をマウントできます。
+File Storage は、BLOB、Table、および Queue Storage と同じテクノロジ上に構築されているため、可用性、持続性、スケーラビリティ、および Azure Storage プラットフォームに組み込まれている geo 冗長性を利用できます。File Storage のパフォーマンスのターゲットと制限事項の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」を参照してください。
 
-Linux の SMB クライアントでは暗号化はまだサポートされていないため、Linux からファイル共有をマウントするには、クライアントがファイル共有と同じ Azure リージョンに存在する必要があります。ただし、Linux での暗号化のサポートは、SMB 機能を担当している Linux 開発者によって実装される予定です。今後の暗号化をサポートする Linux ディストリビューションによって、任意の場所から Azure File 共有をマウントできるようになります。
+File Storage は現在一般に提供されており、SMB 2.1 と SMB 3.0 の両方をサポートしています。File Storage の詳細については、「[ファイル サービスの REST API](https://msdn.microsoft.com/library/azure/dn167006.aspx)」を参照してください。
+
+>[AZURE.NOTE]Linux の SMB クライアントでは暗号化はまだサポートされていないため、Linux からファイル共有をマウントするには、クライアントがファイル共有と同じ Azure リージョンに存在する必要があります。ただし、Linux での暗号化のサポートは、SMB 機能を担当している Linux 開発者によって実装される予定です。今後の暗号化をサポートする Linux ディストリビューションによって、任意の場所から Azure File 共有をマウントできるようになります。
 
 ## ビデオ: Linux で Azure File ストレージを使用する方法
 
@@ -65,7 +67,7 @@ Azure で Linux 仮想マシンを作成するときに、Azure イメージ ギ
 
 たとえば、Linux image Ubuntu Server 15.04 (Azure イメージ ギャラリーから入手可能) を使用して Azure VM を作成した場合、次のようにファイルをマウントできます。
 
-    azureuser@azureconubuntu:~$ sudo apt-get install apt-file
+    azureuser@azureconubuntu:~$ sudo apt-get install cifs-utils
     azureuser@azureconubuntu:~$ sudo mkdir /mnt/mountpoint
     azureuser@azureconubuntu:~$ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mountpoint -o vers=3.0,user=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
     azureuser@azureconubuntu:~$ df -h /mnt/mountpoint
@@ -91,14 +93,14 @@ Open SUSE 13.2 を使用する場合は、次に示すようにファイルを�
 
 ## ファイル共有の管理 ##
 
-[Azure ポータル](portal.azure.com)では、Azure File ストレージを管理するためのユーザー インターフェイスを使用できます。Web ブラウザーから、次の操作を実行できます。
+[Azure ポータル](portal.azure.com)では、Azure File Storage を管理するためのユーザー インターフェイスを使用できます。Web ブラウザーから、次の操作を実行できます。
 
 - ファイル共有からのファイルのアップロードおよびダウンロード
 - 各ファイル共有の実際の使用状況の監視
 - ファイル共有のサイズ クォータの調整
 - Windows クライアントからファイル共有をマウントするために使用する `net use` コマンドのコピー 
 
-また、Linux から Azure のクロスプラットフォームのコマンドライン インターフェイス (Azure CLI) を使用してファイル共有を管理することもできます。Azure CLI には、File ストレージなど、Azure Storage を処理できるオープン ソースのクロスプラットフォーム コマンド セットが用意されています。豊富なデータ アクセス機能だけでなく、Azure ポータルにあるものと同じ機能の多くを使用できます。たとえば、「[Azure Storage での Azure CLI の使用](storage-azure-cli.md)」をご覧ください。
+また、Linux から Azure のクロスプラットフォームのコマンドライン インターフェイス (Azure CLI) を使用してファイル共有を管理することもできます。Azure CLI には、File Storage など、Azure Storage を処理できるオープン ソースのクロスプラットフォーム コマンド セットが用意されています。豊富なデータ アクセス機能だけでなく、Azure ポータルにあるものと同じ機能の多くを使用できます。たとえば、「[Azure Storage での Azure CLI の使用](storage-azure-cli.md)」をご覧ください。
 
 ## File ストレージを使用した開発 ##
 
@@ -119,7 +121,7 @@ Azure File ストレージの詳細については、次のリンクを参照し
 ### 概念に関する記事とビデオ
 
 - [Azure File Storage: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-- [Windows で Azure File ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
+- [Windows で Azure File Storage を使用する方法](storage-dotnet-how-to-use-files.md)
 - [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
 ### File ストレージ用のツールのサポート
@@ -138,4 +140,4 @@ Azure File ストレージの詳細については、次のリンクを参照し
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

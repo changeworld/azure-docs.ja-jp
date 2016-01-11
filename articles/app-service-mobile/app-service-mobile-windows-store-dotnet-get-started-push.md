@@ -103,9 +103,11 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 	
 	このコードは、新しい項目が挿入された後、プッシュ通知を送信するように通知ハブに指示します。
 
+4. サーバー プロジェクトを発行します。
+
 ### <a name="nodejs"></a>Node.js バックエンド プロジェクト
 
-1. これをまだ行っていない場合は、[クイック スタート プロジェクトをダウンロードする](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)か、または[Azure ポータルでオンライン エディター](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。
+1. これをまだ行っていない場合は、[クイック スタート プロジェクトをダウンロードする](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)か、または [Azure ポータルでオンライン エディター](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。
 
 2. todoitem.js ファイル内の既存のコードを次のコードに置き換えます。
 
@@ -152,10 +154,6 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 	これにより、新しい ToDo 項目が挿入されたときには item.text を含む WNS トースト通知が送信されます。
 
 2. ローカル コンピューターでファイルを編集するときは、サーバー プロジェクトを再発行します。
-
-## <a name="publish-the-service"></a>モバイル バックエンドを Azure に発行する
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service](../../includes/app-service-mobile-dotnet-backend-publish-service.md)]
 
 ##<a id="update-service"></a>アプリケーションにプッシュ通知を追加する
 
@@ -204,8 +202,8 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 ##<a id="more"></a>詳細
 
-* テンプレートを利用すれば、プラットフォーム間のプッシュやローカライズされたプッシュを柔軟に送信できます。テンプレートの登録方法は「[Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md#how-to-register-push-templates-to-send-cross-platform-notifications)」にあります。
-* タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags)」にあります。
+* テンプレートを利用すれば、プラットフォーム間のプッシュやローカライズされたプッシュを柔軟に送信できます。テンプレートの登録方法は「[Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md#how-to-register-push-templates-to-send-cross-platform-notifications)」に記載されています。
+* タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags)」に記載されています。
 
 <!-- Anchors. -->
 
@@ -214,4 +212,4 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 <!-- Images. -->
 
-<!---HONumber=AcomDC_1210_2015--->
+<!----HONumber=AcomDC_1223_2015-->

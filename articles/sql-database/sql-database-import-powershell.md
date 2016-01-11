@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="12/01/2015"
+    ms.date="12/17/2015"
     ms.author="sstein"/>
 
 # PowerShell で BACPAC ファイルをインポートして新しい Azure SQL Database を作成する
@@ -21,9 +21,10 @@
 **1 つのデータベース**
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-import.md)
+- [Azure Portal](sql-database-import.md)
 - [PowerShell](sql-database-import-powershell.md)
-
+- [SSMS](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
+- [SqlPackage](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
 
 この記事は、PowerShell で BACPAC ファイルをインポートして Azure SQL Database を作成する手順について説明します。
 
@@ -152,4 +153,4 @@ BLOB 名は、データベースの作成元の、既存の .bacpac ファイル
 - [災害復旧訓練](sql-database-disaster-recovery-drills.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

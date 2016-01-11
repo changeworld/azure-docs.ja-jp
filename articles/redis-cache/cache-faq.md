@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/03/2015" 
+	ms.date="12/16/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -27,10 +27,10 @@ Azure Redis Cache には、さまざまなレベルの**サイズ**、**帯域�
 Cache のオプションを選択するときの考慮事項を次に示します。
 
 -	**メモリ**: Basic レベルと Standard レベルでは、250 MB ～ 53 GB です。Premium レベルは最大 530 GB であり、[要求すれば](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)さらに多く使用できます。詳細については、「[Azure Redis Cache の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。
--	**ネットワーク パフォーマンス**: 高いスループットを必要とするワークロードがある場合、Standard または Basic より Premium レベルの方が多くの帯域幅を提供します。また、各レベル内では、キャッシュをホストする基盤の VM のため、キャッシュのサイズが大きいほど帯域幅も増えます。詳細については後の表を参照してください。
+-	**ネットワーク パフォーマンス**: 高いスループットを必要とするワークロードがある場合、Standard または Basic より Premium レベルの方が多くの帯域幅を提供します。また、各レベル内では、キャッシュをホストする基盤の VM のため、キャッシュのサイズが大きいほど帯域幅も増えます。詳細については[後の表](#cache-performance)を参照してください。
 -	**スループット**: Premium レベルでは、使用可能な最大のスループットが提供されます。キャッシュ サーバーまたはクライアントが帯域幅の限界に達した場合、クライアント側でタイムアウトが発生します。詳細については後の表を参照してください。
--	**High Availability/SLA**: Azure Redis Cache は、Standard/Premium キャッシュについて 99.9% の可用性を保証します。SLA の詳細については、「[Azure Redis Cache の価格](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)」を参照してください。SLA は、Cache エンドポイントへの接続のみをカバーします。SLA は、データ損失からの保護には対応していません。Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。
--	**Redis データの保持**: Premium レベルでは、Azure ストレージ アカウント内のキャッシュ データを永続化できます。Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。基盤となるインフラストラクチャに問題が発生した場合、データが失われる可能性があります。Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。Azure Redis Cache には、Redis の永続化の RDB オプションと AOF オプション (近日公開予定) があります。詳細については、「[Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
+-	**高可用性/SLA**: Azure Redis Cache は、Standard/Premium キャッシュについて 99.9% の可用性を保証します。SLA の詳細については、「[Azure Redis Cache の価格](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)」を参照してください。SLA は、Cache エンドポイントへの接続のみをカバーします。SLA は、データ損失からの保護には対応していません。Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。
+-	**Redis データの保持**: Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。基盤となるインフラストラクチャに問題が発生した場合、データが失われる可能性があります。Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。Azure Redis Cache には、Redis の永続化の RDB オプションと AOF オプション (近日公開予定) があります。詳細については、「[Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
 -	**Redis クラスター**: 53 GB を超えるキャッシュを作成するか、複数の Redis ノード間でデータを共有する場合、Premium レベルで利用可能な Redis クラスタリングを使用することができます。各ノードは、高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
 -	**強化されたセキュリティとネットワーク分離**: Azure Virtual Network (VNET) のデプロイメントでは、Azure Redis Cache のための強化されたセキュリティと分離、およびサブネット、アクセス制御ポリシー、さらにアクセスを制限するためのその他の機能が提供されます。詳細については、「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
 -	**Redis の構成**: Standard レベルと Premium レベルでは、Keyspace 通知用に Redis を構成できます。
@@ -39,7 +39,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 -	**Redis はシングル スレッドです**。したがって、3 つ以上のコアを使用しても 2 つのコアを使用する場合と比べて追加のメリットはありません。ただし、一般に、VM のサイズが大きいほど、小さなサイズよりも多くの帯域幅を利用できます。キャッシュ サーバーまたはクライアントが帯域幅の制限に達すると、クライアント側でタイムアウトが発生します。
 -	**パフォーマンス向上**: Premium レベルのキャッシュは、高速プロセッサを備え、Basic/Standard レベルと比較して優れたパフォーマンスを発揮するハードウェア上にデプロイされます。Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。
 
-次の表に、Azure Redis Cache のエンドポイントに対して Iaas VM から `redis-benchmark.exe` を使用して Standard および Premium キャッシュのさまざまなサイズをテストした結果得られた最大帯域幅を示します。これらの値は保証された値ではなく、これらの値の SLA もありません。これらの値は、標準的な値と考えてください。アプリケーションに最適なキャッシュ サイズを特定するには、アプリケーションに対してロード テストを実行する必要があります。
+<a name="cache-performance"></a> 次の表に、Azure Redis Cache のエンドポイントに対して Iaas VM から `redis-benchmark.exe` を使用して Standard および Premium キャッシュのさまざまなサイズをテストした結果得られた最大帯域幅を示します。これらの値は保証された値ではなく、これらの値の SLA もありません。これらの値は、標準的な値と考えてください。アプリケーションに最適なキャッシュ サイズを特定するには、アプリケーションに対してロード テストを実行する必要があります。
 
 この表からは次のような結論が得られます。
 
@@ -226,9 +226,9 @@ Redis が正常に動作するために重要な点は、Redis を中心とし�
 Azure Redis Cache の使用方法については、「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」と [Azure Redis Cache のドキュメントに関するページ](https://azure.microsoft.com/documentation/services/redis-cache/)を参照してください。
 
 ### Managed Cache Service
-既存の Azure Managed Cache Service のお客様は、既存のサービスを引き続き利用することも、Azure Redis Cache へ移行して豊富な機能セットを利用することもできます。また、Azure Managed Cache Service は一般公開されており、可用性の SLA は 99.9% です。
+Managed Cache サービスは 2016 年 11 月 30 日に終了となります。
 
-### インロール キャッシュ
-In-role Cache を使用してキャッシュを自己ホストしている場合は、自己ホストを継続できます。In-Role Cache は自己ホスト型コンポーネントであり、Microsoft ホスト型サービスではないので、SLA は用意されていません。In-Role Cache ユーザーは、Azure Redis Cache に移行することで、豊富な機能を利用し、SLA を受けることができます。
+### In-Role Cache
+In-Role Cache は 2016 年 11 月 30 日に終了となります。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->

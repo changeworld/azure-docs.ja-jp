@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="11/20/2015"
+   ms.date="12/18/2015"
    ms.author="maroche"/>
 
 # Azure Data Catalog とは何ですか
@@ -80,6 +80,10 @@ Microsoft **Azure Data Catalog** は、完全に管理されたクラウド サ�
 - HDFS ファイル
 - HDFS ディレクトリ
 - Hive テーブル
+- Azure Data Lake Store のファイル
+- Azure Data Lake Store のディレクトリ
+- MySQL テーブル
+- MySQL ビュー
 
 **Azure Data Catalog** のプレビュー期間中に、データ ソースと資産の種類は追加される予定です。
 
@@ -129,4 +133,4 @@ Microsoft **Azure Data Catalog** は、完全に管理されたクラウド サ�
 
 > [AZURE.NOTE]Azure Data Catalog のプレビューでは、直接サポートされているのは Microsoft Excel と SQL Server Reporting Services レポート マネージャーのみです。これらは **[開く]** メニューで使用できます。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1223_2015-->

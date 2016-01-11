@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios" 
 	ms.devlang="dotnet" 
 	ms.topic="article"
-	ms.date="12/01/2015" 
+	ms.date="12/18/2015" 
 	ms.author="wesmc"/>
 
 # Xamarin iOS アプリへのプッシュ通知の追加
@@ -36,7 +36,7 @@
 
 * 物理的な iOS デバイスiOS シミュレーターでは、プッシュ通知はサポートされていません。
 
-* [Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)。Apple Push Notification Service (APNS) に登録する場合に必要です。
+* [Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)。Apple Push Notification サービス (APNS) に登録する場合に必要です。
 
 * [Xamarin.iOS クイック スタート チュートリアル](app-service-mobile-xamarin-ios-get-started.md)を完了してください。
 
@@ -55,17 +55,15 @@
 
 2. [通知ハブの作成] ブレードで、**[作成]** をクリックします。
 
-3. **[プッシュ]**、**[Apple (APNs)]**、**[証明書のアップロード]** の順にクリックします。以前にエクスポートした .p12 プッシュ証明書ファイルをアップロードします。開発とテスト用に開発プッシュ証明書を作成した場合は、**[サンドボックス]** を選択します。それ以外の場合は、**[運用]** を選択します。これで、iOS のプッシュ通知と連携するようにサービスが構成されました。
+3. **[プッシュ]**、**[Apple (APNs)]**、**[証明書のアップロード]** の順にクリックします。以前にエクスポートした .p12 プッシュ証明書ファイルをアップロードします。開発とテスト用に開発プッシュ証明書を作成した場合は、**[サンドボックス]** を選択します。それ以外の場合は、**[運用]** を選択します。
 
 	![](./media/app-service-mobile-xamarin-ios-get-started-push/mobile-app-upload-apns-cert.png)
+
+これで、iOS のプッシュ通知と連携するようにサービスが構成されました。
 
 ##プッシュ通知を送信するようにサーバー プロジェクトを更新する
 
 [AZURE.INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
-
-##サーバー プロジェクトを Azure にデプロイする
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service](../../includes/app-service-mobile-dotnet-backend-publish-service.md)]
 
 ##Xamarin.iOS プロジェクトを構成する
 
@@ -176,4 +174,4 @@
 
  
 
-<!---HONumber=AcomDC_1203_2015--->
+<!----HONumber=AcomDC_1223_2015-->

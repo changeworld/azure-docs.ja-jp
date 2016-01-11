@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ruby" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="12/16/2015" 
 	ms.author="tomfitz"/>
 
 
@@ -152,4 +152,4 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 この記事で説明されている Azure Queue サービスと、「[Service Bus キューの使用方法](/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Microsoft Azure キューと Microsoft Azure サービス バス キューの比較](http://msdn.microsoft.com/library/azure/hh767287.aspx)」を参照してください。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015--->

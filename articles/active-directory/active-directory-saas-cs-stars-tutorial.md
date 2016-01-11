@@ -3,7 +3,7 @@
 	description="Azure Active Directory と CS Stars の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="jeevansd"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/06/2015"
-	ms.author="markusvi"/>
+	ms.date="12/18/2015"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と CS Stars の統合
@@ -110,13 +110,13 @@ CS Stars で Azure AD のシングル サインオンを構成してテストす
 
 6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![What is Azure AD Connect][10]<br>
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![What is Azure AD Connect][11]<br>
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD Connect の概要][11]<br>
 
 
 
 
 ### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Create Azure AD User][20]<br>
+このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
@@ -134,9 +134,9 @@ CS Stars で Azure AD のシングル サインオンを構成してテストす
   3. [次へ] をクリックします。
 
 6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-amazon-web-service/create_aaduser_06.png)<br>
-  1. **[名]** テキスト ボックスに「**Britta**」と入力します。  
+  1. **[名]** ボックスに「**Britta**」と入力します。  
   2. **[姓]** ボックスに「**Simon**」と入力します。
-  3. **[表示名]** テキスト ボックスに「**Britta Simon**」と入力します。
+  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
   4. **[ロール]** 一覧で **[ユーザー]** を選択します。
   5. **[次へ]** をクリックします。
 
@@ -168,7 +168,7 @@ CS Stars で Azure AD のシングル サインオンを構成してテストす
 1. 上部のメニューで **[ユーザー]** をクリックします。<br> <br><br>![ユーザーの割り当て][203]<br>
 1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-2. 下部にあるツール バーで **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][205]<br>
+2. 下部にあるツールバーで **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][205]<br>
 
 
 
@@ -205,4 +205,4 @@ CS Stars で Azure AD のシングル サインオンを構成してテストす
 
 [400]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_403.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

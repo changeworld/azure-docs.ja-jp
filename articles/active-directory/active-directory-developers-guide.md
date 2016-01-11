@@ -31,7 +31,7 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 1. [Azure Active Directory Graph API](active-directory-graph-api.md)： Azure Active Directory Graph API を使用して、REST API エンドポイント経由でプログラムによって Azure Active Directory にアクセスする方法を説明します。Azure AD Graph API には、[Microsoft Graph](https://graph.microsoft.io/) からもアクセスできます。Microsoft Graph は、単一の REST API エンドポイントから単一のアクセス トークンを使用して複数の Microsoft クラウド サービス API にアクセスできる統合 API です。
 
-1. [Azure Active Directory の認証ライブラリ](active-directory-authentication-libraries.md): Azure 認証ライブラリを使用して、ユーザーを認証し、アクセス トークンを取得する処理を簡単に組み込む方法を説明します。
+1. [Azure Active Directory の認証ライブラリ](active-directory-authentication-libraries.md): Azure 認証ライブラリ ([.NET](https://msdn.microsoft.com/library/azure/mt417579.aspx)、[JavaScript](https://github.com/AzureAD/azure-activedirectory-library-for-js)、[Objective-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc)、[Android](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/o) [など](active-directory-authentication-libraries.md)用) を使用して、ユーザーを認証し、アクセス トークンを取得する処理を簡単に組み込む方法を説明します。
 
 
 ## 使用の開始
@@ -86,7 +86,7 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 - [Azure Active Directory オープン ソース ライブラリ](http://github.com/AzureAD): [ライブラリ リスト](active-directory-authentication-libraries.md)を使用すると、ライブラリのソースを最も簡単に見つけることができます。
 
-- [Azure Active Directory のサンプル](http://github.com/AzureADSamples): [コード サンプルのインデックス](active-directory-code-samples.md)を使用すると、サンプルのリスト内を最も簡単に移動できます。
+- [Azure Active Directory のサンプル](https://github.com/azure-samples?query=active-directory): [コード サンプルのインデックス](active-directory-code-samples.md)を使用すると、サンプルのリスト内を最も簡単に移動できます。
 
 
 ### Graph API
@@ -95,6 +95,9 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 - [Graph API Permission Scopes (Graph API のアクセス許可スコープ)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/graph-api-permission-scopes): OAuth 2.0 のアクセス許可スコープは、アプリケーションに付与されている、テナント内のディレクトリ データに対するアクセス権を制御するために使用されます。
 
+### 認証ライブラリ
+
+- [.NET](https://msdn.microsoft.com/library/azure/mt417579.aspx): .NET 認証ライブラリに関するドキュメント。
 
 ### 認証プロトコル
 
@@ -138,4 +141,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

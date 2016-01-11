@@ -1,9 +1,9 @@
 <properties
 	pageTitle="Mobile Services から Azure App Service (Node.js) へのアップグレード"
-	description="簡単に Mobile Services アプリケーションを App Service Mobile App にアップグレードする方法について説明します。"
+	description="簡単に Mobile Services アプリケーションを App Service モバイル アプリにアップグレードする方法について説明します。"
 	services="app-service\mobile"
 	documentationCenter=""
-	authors="christopheranderson"
+	authors="adrianhall"
 	manager="dwrede"
 	editor=""/>
 
@@ -42,27 +42,30 @@ Azure App Service にアップグレードされたモバイル バックエン�
 
 - クロスプラットフォームとローカル開発用に構築されており、Mobile Apps SDK を開発して Windows、Linux、および OSX プラットフォーム上でローカルに実行できます。デプロイメントの前の [Mocha](https://mochajs.org/) テストの実行などの一般的な Node 開発手法を簡単に使用できるようになりました。
 
-- [hiredis](https://www.npmjs.com/package/hiredis) などのネイティブ モジュールと共に Redis を使用できます。App Service は npm パッケージを自動的にインストールするため、デプロイ時にユーザーがデプロイメント パッケージにバイナリを含める必要はありません。
+- [hiredis](https://www.npmjs.com/package/hiredis) などのネイティブ モジュールと共に、Redis を使用できます。App Service によって npm パッケージがインストールされるため、デプロイ パッケージにバイナリを含める必要はありません。
 
 ## <a name="overview"></a>基本的なアップグレードの概要
 
 .NET Mobile Apps SDK とは異なり、Node バックエンドを Mobile Services から Mobile Apps にアップグレードすることは、パッケージ交換のように単純なものではありません。Azure で制御するのではなく、ユーザーがアプリケーション スタック全体を所有するようになったため、基本的な Express アプリを作成してモバイル バックエンドをホストする必要があります。テーブルと API コントローラーについては、概念は似ていますが、テーブル オブジェクトのエクスポートが必要になり、関数 API が多少変わりました。この記事では、アップグレードの基本的な戦略について説明しますが、移行を開始する前に [Node バックエンドの使用方法](app-service-mobile-node-backend-how-to-use-server-sdk.md)に関する記述を参照してください。
 
->[AZURE.TIP]アップグレードを開始する前に、このトピックの残りの部分を読み、よく理解しておくことをお勧めします。下に列記した機能のうち、使用する機能をすべてメモしてください。
+>[AZURE.TIP]アップグレードを開始する前に、このトピックの残りの部分を読み、よく理解しておいてください。下に列記した機能のうち、使用する機能をすべてメモしてください。
 
 Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK の間に互換性は**ありません**。アプリ用にサービスを接続する場合は、発行されたクライアントを現在使用しているサイトに変更を発行しないでください。代わりに、複製として機能する新しいモバイル アプリを作成する必要があります。このアプリケーションを同じ App Service プランに指定することで、追加の財務費用が発生しないようにすることができます。
 
-アプリケーションには 2 つのバージョンがあります。1 つは変わらず、発行されたアプリとしてそのままの状態で機能し、もう 1 つはユーザーがアップグレードし、新しいクライアント リリースのターゲットにすることができます。自分のペースでコードを移動し、テストできますが、バグの修正が両方に適用されることを確認する必要があります。必要な数の (そのままの状態の) クライアント アプリを最新バージョンに更新したら、必要に応じて、元の移行されたアプリを削除することができます。Mobile App と同じ App Service プランでホストされている場合は、追加の金銭的コストが発生することはありません。
+アプリケーションには 2 つのバージョンがあります。1 つは変わらず、発行されたアプリとしてそのままの状態で機能し、もう 1 つはユーザーがアップグレードし、新しいクライアント リリースのターゲットにすることができます。自分のペースでコードを移動し、テストできますが、バグの修正が両方に適用されることを確認する必要があります。必要な数の (そのままの状態の) クライアント アプリを最新バージョンに更新したら、必要に応じて、元の移行されたアプリを削除することができます。モバイル アプリと同じ App Service プランでホストされている場合は、追加の金銭的コストが発生することはありません。
 
 このアップグレード プロセスの全概要は、次のとおりです。
 
-1. 新しい Mobile App を作成する
-2. 新しい Server SDK を使用するようにプロジェクトを更新する
-3. クライアント アプリケーションの新しいバージョンをリリースする
-4. (省略可能) 元の移行されたモバイル サービス アプリを削除する
+1. 新しいモバイル アプリを作成する。
+2. 新しい Server SDK を使用するようにプロジェクトを更新する。
+3. 新しいモバイル アプリのプロジェクトを発行する。
+4. 新しいモバイル アプリを使用するクライアント アプリケーションの新しいバージョンをリリースする。
+5. (省略可能) 元の移行されたモバイル サービス アプリを削除する。
+
+削除は、元の移行されたモバイル サービス アプリのトラフィックがないときに実行されます。
 
 ## <a name="mobile-app-version"></a> アップグレードの開始
-アップグレードの最初のステップは、新しいバージョンのアプリケーションをホストする Mobile App リソースを作成することです。既存のモバイル サービスを既に移行している場合は、同じホスティング プランでこのバージョンを作成します。[Azure ポータル]を開き、移行済みのアプリケーションに移動します。実行されている App Service プランをメモしてをおきます。
+アップグレードの最初のステップは、新しいバージョンのアプリケーションをホストするモバイル アプリ リソースを作成することです。既存のモバイル サービスを既に移行している場合は、同じホスティング プランでこのバージョンを作成します。[Azure ポータル]を開き、移行済みのアプリケーションに移動します。実行されている App Service プランをメモしてをおきます。
 
 ### 2 番目のアプリケーション インスタンスの作成
 次に、2 番目のアプリケーション インスタンスを作成します。App Service プランまたは "ホスティング プラン" を選択するよう求められたら、移行済みアプリケーションのプランを選択します。
@@ -71,9 +74,9 @@ Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK
 
 Mobile Services で使用したのと同じデータベースと通知ハブを使用することもできます。[Azure ポータル]を開き、元のアプリケーションに移動してから、**[設定]**、**[アプリケーションの設定]** の順にクリックして、これらの値をコピーできます。**[接続文字列]** の `MS_NotificationHubConnectionString` と `MS_TableConnectionString` をコピーします。新しいアップグレード サイトに移動し、接続文字列を貼り付けて既存の値を上書きします。アプリに必要な他のアプリケーション設定について、このプロセスを繰り返します。移行したサービスを使用しない場合は、[Azure ポータル]の [Mobile Services] セクションにある **[構成]** タブで接続文字列とアプリ設定を参照できます。
 
-### Node を持つ基本的な Mobile App バックエンドを作成する
+### Node を持つ基本的なモバイル アプリ バックエンドを作成する
 
-Azure App Service Mobile App の Node.js バックエンドはすべて ExpressJS アプリケーションとして開始されます。基本的な [Express](http://expressjs.com/en/index.html) アプリケーションは次のように作成できます。
+Azure App Service モバイル アプリの Node.js バックエンドはすべて ExpressJS アプリケーションとして開始されます。次のように、基本的な [Express](http://expressjs.com/en/index.html) アプリケーションを作成できます。
 
 1. コマンドまたは PowerShell ウィンドウで、プロジェクト用の新しいディレクトリを作成します。
 
@@ -110,28 +113,31 @@ Azure App Service Mobile App の Node.js バックエンドはすべて ExpressJ
            app.use(mobile);
 
            // Start listening on HTTP
-           app.listen(process.env.PORT || 3000);
-           console.log('Now listening on ' + (process.env.PORT || 3000)));
+           var port = process.env.PORT || 3000;
+           app.listen(port, function () {
+               console.log('Now listening on ', port)
+           });
         });
 
+他のサンプルについては、[GitHub リポジトリ](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples)を参照してください。
 
 ## サーバー プロジェクトの更新
 
-Mobile Apps は、Mobile Services ランタイムとほぼ同じ機能を持つ新しい [Mobile App Server SDK] を提供しますが、ユーザーがフル ランタイムを所有するようになったため、Mobile Apps では Node のバージョンやコードの更新を強制しません。上記の手順に従った場合、基本バージョンの Node モバイル ランタイムを使用できます。これで、テーブルと API ロジックの Mobile Service から Mobile App への移動、サーバー構成のカスタマイズ、プッシュの有効化、認証構成などを開始できます。
+Mobile Apps は、Mobile Services ランタイムとほぼ同じ機能を持つ新しい [Mobile App Server SDK] を提供しますが、ユーザーがフル ランタイムを所有するようになったため、Mobile Apps では Node のバージョンやコードの更新を強制しません。上記の手順に従った場合、基本バージョンの Node モバイル ランタイムを使用できます。これで、テーブルと API ロジックの Mobile Service からモバイル アプリへの移動、サーバー構成のカスタマイズ、プッシュの有効化、認証構成などを開始できます。
 
 ### 基本構成
 
 サーバーには多数の構成設定がありますが、さまざまな既定値を使用することで作業を簡単に開始できます。設定の多くは、[Azure ポータル]の **[データ]**、**[認証/承認]**、および **[プッシュ]** 設定メニューを介して、自動的に設定されます。ローカル開発では、データ、認証、およびプッシュを使用する場合に、ローカル開発環境の構成が必要になることがあります。
 
-Mobile App バックエンドの [アプリケーション設定] を使用して設定できる環境変数でサーバーを構成できます。
+モバイル アプリ バックエンドの [アプリケーション設定] を使用して設定できる環境変数でサーバーを構成できます。
 
-[構成オブジェクト](http://azure.github.io/azure-mobile-apps-node/global.html#configuration)を初期化子に渡すか、プロジェクトのルートに [azureMobile.js という名前のファイルを作成](app-service-mobile-node-backend-how-to-use-server-sdk/#howto-config-localdev)することで、Mobile Apps SDK をさらにカスタマイズできます。
+[構成オブジェクト](http://azure.github.io/azure-mobile-apps-node/global.html#configuration)を初期化子に渡すか、プロジェクトのルートに [azureMobile.js という名前のファイルを作成する](app-service-mobile-node-backend-how-to-use-server-sdk/#howto-config-localdev)ことで、Mobile Apps SDK をさらにカスタマイズできます。
 
 ### データとテーブルの操作
 
 SDK には、作業を素早く簡単に開始できるようにするインメモリ データ プロバイダーが付属しています。インメモリ プロバイダーでは再始動時にすべてのデータが失われ、複数のインスタンス間の整合性が保たれないため、早い段階で SQL DB の使用に切り替える必要があります。
 
-ビジネス ロジックの Mobile Service から Mobile Apps への移動を開始するには、まず、`./tables` ディレクトリに使用するテーブルの名前で ('.js' が付加された) ファイルを作成します。Mobile App テーブルの完全な例については、[GitHub](https://github.com/Azure/azure-mobile-apps-node/blob/master/samples/todo/tables/TodoItem.js) を参照してください。最も単純なバージョンは次のとおりです。
+モバイル サービスから Mobile Apps へのビジネス ロジックの移動を開始するには、まず、使用するテーブルの名前に ".js" を付加した名前のファイルを `./tables` ディレクトリに作成します。モバイル アプリ テーブルの完全な例については、[GitHub](https://github.com/Azure/azure-mobile-apps-node/blob/master/samples/todo/tables/TodoItem.js) を参照してください。最も単純なバージョンは次のとおりです。
 
     var azureMobileApps = require('azure-mobile-apps');
 
@@ -144,7 +150,10 @@ SDK には、作業を素早く簡単に開始できるようにするインメ�
 
 Mobile Service で、TodoItem テーブルと読み取り操作を使用して、ユーザー ID に基づいて項目をフィルター処理する場合は、以下のようになります。
 
-  function(query, user, request) { query.where({ userId: user.userId}); request.execute(); }
+    function(query, user, request) {
+        query.where({ userId: user.userId});
+        request.execute();
+    }
 
 Azure Mobile Apps テーブル コードに追加する関数は以下のようになります。
 
@@ -153,7 +162,22 @@ Azure Mobile Apps テーブル コードに追加する関数は以下のよう�
         return context.execute();
     });
 
-コードを調べれば、ほとんどの関数パラメーターを確認できます。
+クエリ、ユーザー、要求は、コンテキストに結合されます。コンテキスト オブジェクト内では、以下のフィールドを使用できます。
+
+| フィールド | 型 | 説明 |
+| :------ | :--------------------- | :---------- |
+| query | queryjs/Query | 解析された OData クエリ |
+| id | string または number | 要求に関連付けられた ID |
+| item | オブジェクト | 挿入または削除される項目 |
+| req | express.Request | 現在の express 要求オブジェクト |
+| res | express.Response | 現在の express 応答オブジェクト |
+| data | data | 構成されたデータ プロバイダー |
+| tables | function | 文字列テーブル名を受け取り、テーブル アクセス オブジェクトを返す関数 |
+| ユーザー | auth/user | 認証されたユーザー オブジェクト |
+| results | オブジェクト | 実行操作の結果 |
+| push | NotificationHubService | Notification Hubs Service (構成されている場合) |
+
+詳細については、[現在の API ドキュメント](http://azure.github.io/azure-mobile-apps-node)をご覧ください。
 
 ### CORS
 
@@ -207,14 +231,14 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 
 ### コントローラー アクションの認証とユーザー ID
 
-テーブルへのアクセスを制限する場合、テーブル レベルで `table.access = 'authenticated';` を使用して設定することができます。完全な例については、[GitHub](https://github.com/Azure/azure-mobile-apps-node/blob/master/samples/authentication/tables/TodoItem.js) を参照してください。
+テーブルへのアクセスを制限する場合、`table.access = 'authenticated';` を使用してテーブル レベルで設定することができます。完全な例については、[GitHub](https://github.com/Azure/azure-mobile-apps-node/blob/master/samples/authentication/tables/TodoItem.js) を参照してください。
 
 [ここ](http://azure.github.io/azure-mobile-apps-node/module-azure-mobile-apps_auth_user.html#~getIdentity)で説明されている `user.getIdentity` メソッドを使用すれば、ユーザー ID 情報にアクセスできます。
 
 ## <a name="updating-clients"></a>クライアントの更新
-Mobile App バックエンドを運用している場合は、それを利用する新しいバージョンのクライアント アプリケーションを使用できます。Mobile Apps には新しいバージョンのクライアント SDK も含まれ、上記のサーバー アップグレードと同様に、Mobile Apps バージョンをインストールする前に Mobile Services SDK へのすべての参照を削除する必要があります。
+モバイル アプリ バックエンドを運用している場合は、それを利用する新しいバージョンのクライアント アプリケーションを使用できます。Mobile Apps には新しいバージョンのクライアント SDK も含まれ、上記のサーバー アップグレードと同様に、Mobile Apps バージョンをインストールする前に Mobile Services SDK へのすべての参照を削除する必要があります。
 
-バージョン間での主な変更の 1 つは、コンストラクターでアプリケーション キーが不要になったことです。現在は、Mobile App の URL を渡すだけです。たとえば、.NET クライアントの場合、現在の `MobileServiceClient` コンストラクターは以下のようになります。
+バージョン間での主な変更の 1 つは、コンストラクターでアプリケーション キーが不要になったことです。現在は、モバイル アプリの URL を渡すだけです。たとえば、.NET クライアントの場合、現在の `MobileServiceClient` コンストラクターは以下のようになります。
 
         public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://contoso.azurewebsites.net", // URL of the Mobile App
@@ -227,7 +251,7 @@ Mobile App バックエンドを運用している場合は、それを利用す
 
 アプリケーションでプッシュ通知を使用する場合は、変更されている内容もあるため、プラットフォームごとに固有の登録手順をメモしてください。
 
-新しいクライアント バージョンの準備ができたら、アップグレードしたサーバー プロジェクトで試してみます。機能することを確認したら、新しいバージョンのアプリケーションを顧客にリリースできます。最後に、顧客がこれらの更新プログラムを受け取ったら、Mobile Services バージョンのアプリを削除できます。これで、最新の Mobile Apps サーバー SDK を使用する App Service Mobile App に完全にアップグレードできました。
+新しいクライアント バージョンの準備ができたら、アップグレードしたサーバー プロジェクトで試してみます。機能することを確認したら、新しいバージョンのアプリケーションを顧客にリリースできます。最後に、顧客がこれらの更新プログラムを受け取ったら、Mobile Services バージョンのアプリを削除できます。これで、最新の Mobile Apps サーバー SDK を使用する App Service モバイル アプリに完全にアップグレードできました。
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png
@@ -264,4 +288,4 @@ Mobile App バックエンドを運用している場合は、それを利用す
 [ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Publish-WebApplicationWebSite (Windows PowerShell スクリプト)"
+   pageTitle="Publish-WebApplicationWebSite (Windows PowerShell スクリプト) | Microsoft Azure"
    description="Web プロジェクトを Azure Web サイトに発行する方法について説明します。このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。"
    services="visual-studio-online"
    documentationCenter="na"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="08/13/2015"
+   ms.date="12/17/2015"
    ms.author="tarcher" />
 
 # Publish-WebApplicationWebSite (Windows PowerShell スクリプト)
@@ -129,4 +129,4 @@ JSON 構成ファイルは、デプロイ対象を変更するように編集で
 
 詳細については、「[Publish-WebApplicationVM (Windows PowerShell スクリプト)](vs-azure-tools-publish-webapplicationvm.md)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

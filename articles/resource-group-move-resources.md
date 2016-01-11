@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/19/2015" 
+	ms.date="12/18/2015" 
 	ms.author="tomfitz"/>
 
 # 新しいリソース グループまたはサブスクリプションへのリソースの移動
@@ -28,8 +28,8 @@
 
 1. リソースの場所を変更することはできません。リソースを移動しても、新しいリソース グループに移動されるだけです。新しいリソース グループは別の場所に存在する場合もありますが、リソース自体の場所は変更されません。
 2. 移動先のリソース グループには、移動するリソースと同じアプリケーション ライフサイクルを共有するリソースのみが含まれている必要があります。
-3. Azure PowerShell を使用している場合は、最新のバージョンを使用していることを確認します。**Move-AzureRmResource** コマンドは、頻繁に更新されます。使用しているバージョンを更新するには、Microsoft Web プラットフォーム インストーラーを実行し、新しいバージョンがあるかどうかを確認します。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」を参照してください。
-4. 移動操作は完了までに時間がかかることがあり、その間、PowerShell のプロンプトは、操作が完了するまで待機状態となります。
+3. Azure PowerShell または Azure CLI を使用している場合は、最新のバージョンを使用していることを確認します。使用しているバージョンを更新するには、Microsoft Web プラットフォーム インストーラーを実行し、新しいバージョンがあるかどうかを確認します。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」と「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
+4. 移動操作は完了までに時間がかかることがあります。その間、プロンプトは操作が完了するまで待機状態となります。
 5. リソースを移動する場合は、その操作の間、ソース グループとターゲット グループの両方がロックされます。これらのグループに対する書き込み操作および削除操作は、移動が完了するまでブロックされます。
 
 ## サポートされているサービス
@@ -44,7 +44,7 @@
 
 - Data Factory
 - DocumentDB
-- HDInsight clusters
+- HDInsight クラスター
 - Key Vault
 - Logic Apps
 - Mobile Engagement
@@ -90,6 +90,16 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 新しいサブスクリプションに移動する場合は、**DestinationSubscriptionId** パラメーターの値を含めます。
 
+## Azure CLI を使用したリソースの移動
+
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、**azure resource move** コマンドを使用します。次の例は、Redis Cache を新しいリソース グループに移動する方法を示しています。 **-I** パラメーターには、移動するリソース ID のコンマ区切りリストを指定します。
+
+    azure resource move -i "/subscriptions/{guid}/resourceGroups/OldRG/providers/Microsoft.Cache/Redis/examplecache" -d "NewRG"
+    info:    Executing command resource move
+    Move selected resources in OldRG to NewRG? [y/n] y
+    + Moving selected resources to NewRG
+    info:    resource move command OK
+
 ## REST API を使用したリソースの移動
 
 既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、次のコマンドを実行します。
@@ -101,7 +111,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 ## 次のステップ
 - [リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)
 - [リソース マネージャーでの Azure クロスプラットフォーム CLI の使用](./virtual-machines/xplat-cli-azure-resource-manager.md)
-- [Using the Azure Preview Portal to manage your Azure resources (Azure プレビュー ポータルを使用した Azure リソースの管理)](azure-portal/resource-group-portal.md)
+- [Using the Azure Preview Portal to manage your Azure resources (Azure ポータルを使用した Azure リソースの管理)](azure-portal/resource-group-portal.md)
 - [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1223_2015-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="11/20/2015"
+   ms.date="12/18/2015"
    ms.author="maroche"/>
 
 
@@ -41,6 +41,8 @@
 * HDFS のファイルとディレクトリ
 * Apache Hive テーブル
 * Teradata テーブルと Teradata ビュー
+* Azure Data Lake Store のファイルとディレクトリ
+* MySQL テーブルと MySQL ビュー
 
 > [AZURE.NOTE]SQL Server のサポートには Microsoft Azure SQL Database と Microsoft Azure SQL Data Warehouse も含まれます
 
@@ -86,7 +88,6 @@
 
 > [AZURE.NOTE]テキスト列と日付列には、該当するデータ プロファイル内の平均または標準偏差の統計情報は取り込まれません。
 
-
 ## 登録の更新
 
 データ ソースを登録すると、登録の間に抽出されるメタデータおよびオプションのプレビューを使用して、**Azure Data Catalog** でデータ ソースを検出できるようになります。Catalog のデータ ソースを更新する必要がある場合は (たとえば、オブジェクトのスキーマが変更された場合、もともと除外されていたテーブルを含める必要がある場合、ユーザーがプレビューに含まれるデータを更新したい場合など)、データ ソース登録ツールを再実行できます。
@@ -96,4 +97,4 @@
 ## 概要
 **Azure Data Catalog** でデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされることによって、データ ソースの検出と理解が容易になります。登録されたデータ ソースは、**Azure Data Catalog** ポータルを使用して注釈付け、管理、および検出することができます。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->

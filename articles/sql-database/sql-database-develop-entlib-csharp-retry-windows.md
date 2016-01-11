@@ -14,11 +14,17 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="10/16/2015" 
+	ms.date="12/17/2015" 
 	ms.author="genemi"/>
 
 
 # コード サンプル: Enterprise Library 6 で提供される SQL Database に接続するための C&#x23; の再試行ロジック
+
+
+> [AZURE.SELECTOR]
+- [PHP](sql-database-develop-php-retry-windows.md)
+- [C#](sql-database-develop-csharp-retry-windows.md)
+- [C# EntLib6](sql-database-develop-entlib-csharp-retry-windows.md)
 
 
 このトピックでは、Enterprise Library (EntLib) を使用した完全なサンプル コードについて説明します。EntLib は、Azure SQL Database などのクラウド サービスとやり取りするクライアント プログラムでの多くのタスクを容易にします。このサンプルでは、一時的な障害用の再試行ロジックを含める重要なタスクに重点を置いています。
@@ -29,7 +35,11 @@ EntLib クラスは、ランタイム エラーの次の 2 つのカテゴリを
 - 自動修正されないエラー (サーバー名のスペルミスなど)。
 - 一時的な障害 (Azure システムの負荷分散時の数秒間のサーバーの一時停止、またその新しい接続の承認など)。
 
+
 Enterprise Library 6 (EntLib60) は最新のバージョンで、2013 年 4 月にリリースされました。
+
+- マイクロソフトはソース コードを公開しました。
+- 今後、マイクロソフトはソース コードを維持する予定はありません。
 
 
 ## 前提条件
@@ -320,4 +330,4 @@ SELECT TOP 3
 
 - [SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1223_2015-->

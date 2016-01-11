@@ -1,33 +1,33 @@
-## Prepare for AKV Integration
-To use Azure Key Vault Integration to configure your SQL Server VM, there are several prerequisites: 
+## AKV 統合の準備
+Azure Key Vault 統合を使用し、SQL Server VM を構成するには、いくつかの前提条件があります。
 
-1.	[Install Azure Powershell](#install-azure-powershell)
-2.	[Create an Azure Active Directory](#create-an-azure-active-directory)
-3.	[Create a key vault](#create-a-key-vault)
+1.	[Azure PowerShell をインストールする](#install-azure-powershell)
+2.	[Azure Active Directory を作成する](#create-an-azure-active-directory)
+3.	[Key Vault を作成します](#create-a-key-vault)
 
-The following sections describe these prerequisites and the information you need to collect to later run the PowerShell cmdlets.
+次のセクションでは、これらの前提条件と、後に PowerShell コマンドレットを実行するために必要な情報について説明します。
 
-### Install Azure PowerShell
-Make sure you have installed the latest Azure PowerShell SDK. For more information, see [How to install and configure Azure PowerShell](../articles/powershell-install-configure.md).
+### Azure PowerShell をインストールするには
+最新の Azure PowerShell SDK がインストールされていることを確認します。詳細については、「[Azure PowerShell のインストールと構成の方法](../articles/powershell-install-configure.md)」を参照してください。
 
-### Create an Azure Active Directory
-First, you need to have an [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD) in your subscription. Among many benefits, this allows you to grant permission to your key vault for certain users and applications.
+### Azure Active Directory を作成する
+最初に、サブスクリプションに [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD) を追加する必要があります。特定のユーザーやアプリケーションが Key Vault にアクセスするための許可が与えられるなど、さまざまな利点があります。
 
-Next, register an application with AAD. This will give you a Service Principal account that has access to your key vault which your VM will need. In the Azure Key Vault article, you can find these steps in the [Register an application with Azure Active Directory](../articles/key-vault/key-vault-get-started.md#register) section, or you can see the steps with screen shots in the **Get an identity for the application section** of [this blog post](http://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx). Before completing these steps, note that you need to collect the following information during this registration that is needed later when you enable Azure Key Vault Integration on your SQL VM.
+次に、アプリケーションを AAD に登録します。これで VM に必要な Key Vault へのアクセス許可を持つサービス プリンシパル アカウントが与えられます。Azure Key Vault の記事の「[アプリケーションを Azure Active Directory に登録する](../articles/key-vault/key-vault-get-started.md#register)」セクションにこれらの手順があります。あるいは、[このブログ投稿](http://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx)の「**アプリケーションの ID を取得する**」セクションのスクリーンショットで手順を確認できます。これらの手順を完了する前に、後で SQL VM で Azure Key Vault 統合を有効にするときに必要になる次の情報をこの登録中に集める必要があります。
 
-- After the application is added, find the **CLIENT ID**  on the **CONFIGURE** tab. 
-	![Azure Active Directory Client ID](./media/virtual-machines-sql-server-akv-prepare/aad-client-id.png)
+- アプリケーションが追加されたら、**[構成]** タブで **[クライアント ID]** を探します。![Azure Active Directory クライアント ID](./media/virtual-machines-sql-server-akv-prepare/aad-client-id.png)
 	
-	The client ID is assigned later to the **$spName** (Service Principal name) parameter in the PowerShell script to enable Azure Key Vault Integration. 
-- Also, during these steps when you create your key, copy the secret for your key as is shown in the following screenshot. This key secret is assigned later to the **$spSecret** (Service Principal secret) parameter in the PowerShell script.  
-	![Azure Active Directory Secret](./media/virtual-machines-sql-server-akv-prepare/aad-sp-secret.png)
-- You must authorize this new client ID to have the following access permissions: **encrypt**, **decrypt**, **wrapKey**, **unwrapKey**, **sign**, and **verify**. This is done with the [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625.aspx) cmdlet. For more information see [Authorize the application to use the key or secret](../articles/key-vault/key-vault-get-started.md#authorize).
+	クライアント ID は後に PowerShell スクリプトの **$spName** (サービス プリンシパル名) パラメーターに割り当てられ、Azure Key Vault 統合を有効にします。 
+- また、これらの手順で、鍵を作成するとき、次のスクリーンショットのように、鍵のシークレットをコピーします。この鍵シークレットは後に PowerShell スクリプトの **$spSecret** (サービス プリンシパル シークレット) パラメーターに割り当てられます。![Azure Active Directory シークレット](./media/virtual-machines-sql-server-akv-prepare/aad-sp-secret.png)
+- この新しいクライアント ID に権限を与え、アクセス許可 (**encrypt**、**decrypt**、**wrapKey**、**unwrapKey**、**sign**、**verify**) を与える必要があります。これは [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625.aspx) コマンドレットで行われます。詳細については、「[キーまたはシークレットを使用してアプリケーションを承認する](../articles/key-vault/key-vault-get-started.md#authorize)」を参照してください。
 
-### Create a key vault
-In order to use Azure Key Vault to store the keys you will use for encryption in your VM, you need access to a key vault. If you have not already set up your key vault, create one by following the steps in the [Getting Started with Azure Key Vault](../articles/key-vault/key-vault-get-started.md) topic. Before completing these steps, note that there is some information you need to collect during this set up that is needed later when you enable Azure Key Vault Integration on your SQL VM.
+### Key Vault を作成します
+Azure Key Vault を使用して VM の暗号化に使用する鍵を保存するには、Key Vault へのアクセス許可が必要です。Key Vault をまだ設定していない場合、「[Azure Key Vault の概要](../articles/key-vault/key-vault-get-started.md)」トピックの手順で作成します。これらの手順を完了する前に、後で SQL VM で Azure Key Vault 統合を有効にするときに必要になるいくつかの情報をこの設定中に集める必要があります。
 
-When you get to the Create a key vault step, note the returned **vaultUri** property, which is the key vault URL. In the example provided in that step, shown below, the key vault name is ContosoKeyVault, therefore the key vault URL would be https://contosokeyvault.vault.azure.net/.
+「鍵の作成」手順に入ったら、返された **vaultUri** プロパティをメモします。これは Key Vault の URL です。この手順の例では、下のように、Key Vault の名前は「ContosoKeyVault」であり、Key Vault URL は https://contosokeyvault.vault.azure.net/ になります。
 
 	New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
 
-The key vault URL is assigned later to the **$akvURL** parameter in the PowerShell script to enable Azure Key Vault Integration.
+Key Vault ID は後に PowerShell スクリプトの **$akvURL** パラメーターに割り当てられ、Azure Key Vault 統合を有効にします。
+
+<!---HONumber=AcomDC_1223_2015-->

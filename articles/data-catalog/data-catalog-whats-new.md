@@ -13,12 +13,30 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="11/20/2015"
+   ms.date="12/18/2015"
    ms.author="maroche"/>
 
 # Azure Data Catalog の新機能
 
 定期的に **Azure Data Catalog** の更新がリリースされます。すべてのリリースにユーザー向けの新機能が含まれているわけではなく、一部のリリースはバックエンド サービス機能向けです。ここでは、**Azure Data Catalog** サービスに追加されたユーザー向けの新機能について説明します。
+
+## 2015 年 12 月 18 日の週のリリースの新機能
+
+2015 年 12 月 18 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+
+- Azure SQL Data Warehouse データ ソースに対するデータ プロファイルのサポート。Azure SQL Data Warehouse のテーブルとビューを登録するとき、ユーザーはデータ ソースから抽出されたメタデータと共にデータ プロファイル メトリックを含めることができます。
+- MySQL のオブジェクトおよびデータベースを登録して検出するためのサポート。ユーザーは **Azure Data Catalog** データ ソース登録ツールを使用して MySQL データ ソースを登録し、**Azure Data Catalog** ポータルを使用して登録済み MySQL データ ソースの注釈付けや検出を行うことができます。
+
+## 2015 年 12 月 4 日の週のリリースの新機能
+
+2015 年 12 月 4 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+
+- Teradata データ ソース用の SPNEGO および Windows 認証のサポート。Teradata のテーブルとビューの登録時に、LDAP および TD2 認証だけでなく、SPNEGO および Windows 認証を使用して Teradata に接続することを選択できます。
+- Azure Data Lake Store のデータ ソースのサポート。ユーザーは、Azure Data Catalog を使用して Azure Data Lake Store のデータ ソースを登録および検出できるようになりました。
+- Azure Data Catalog データ ソース登録ツールでのネットワーク プロキシ設定の手動指定のサポート。ユーザーはツールの [ようこそ] ページで [プロキシ設定を変更します] を選択し、ツールで使用されるプロキシ アドレスとポートを指定することができます。
+
+> [AZURE.NOTE] [Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。この機能を使用して問題やエラーが発生した場合は、[PowerBI.com](https://powerbi.com/) から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
+
 
 ## 2015 年 11 月 20 日の週のリリースの新機能
 
@@ -147,4 +165,4 @@
 - Standard Edition のみ: データ資産に所有者を追加するとき、**Azure Data Catalog** は所有者としてユーザー アカウントとセキュリティ グループの両方をサポートするようになりました。選択したデータ資産の所有者としてセキュリティ グループを追加する場合、グループの表示名またはグループの UPN 電子メール アドレス (ある場合) のいずれかを入力できます。
 - Azure BLOB Storage データ ソースのサポート。ユーザーは、Azure Storage の BLOB およびディレクトリを登録および検出できるようになりました。
 
-<!---HONumber=AcomDC_1125_2015--->
+<!-----HONumber=AcomDC_1223_2015-->

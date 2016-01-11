@@ -50,9 +50,13 @@
 
 	Notification Hubs を使用するテンプレートの詳細については、「[テンプレート](notification-hubs-templates.md)」を参照してください。
 
+4. サーバー プロジェクトを発行します。
+
 ### <a name="nodejs"></a>Node.js バックエンド プロジェクト
 
-1. todoitem.js ファイル内の既存のコードを次のコードに置き換えます。
+1. これをまだ行っていない場合は、[クイック スタート プロジェクトをダウンロードする](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)か、[Azure ポータルでオンライン エディター](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。
+
+2. todoitem.js ファイル内の既存のコードを次のコードに置き換えます。
 
 		var azureMobileApps = require('azure-mobile-apps'),
 	    promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -97,4 +101,4 @@
 
 2. ローカル コンピューターでファイルを編集するときは、サーバー プロジェクトを再発行します。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->

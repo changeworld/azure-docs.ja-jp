@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="11/30/2015"
+   ms.date="12/17/2015"
    ms.author="rajram"/>
 
 # BizTalk X12 API アプリの使用開始とロジック アプリへの追加
@@ -33,7 +33,7 @@ BizTalk X12 コネクタを使用するには、まず、BizTalk X12 コネク�
 ## BizTalk X12 コネクタを構成する
 取引先は、B2B (企業間) コミュニケーションに含まれるエンティティです。2 つのパートナーがある関係を確立した場合、この関係は "契約" と呼ばれます。契約は、2 つのパートナーが達成したいと考えているコミュニケーションに基づいて定義され、プロトコルまたはトランスポートに固有のものです。
 
-取引先契約の作成に必要な手順については、[こちら][2]を参照してください。
+[取引先契約の作成][2]に必要な手順をご確認ください。
 
 ## Logic Apps デザイナー画面で X12 コネクタを使用する
 トリガーまたはアクションとして、X12 コネクタを使用できます。
@@ -83,4 +83,4 @@ BizTalk X12 コネクタを使用するには、まず、BizTalk X12 コネク�
 [10]: ./media/app-service-logic-connector-x12/EncodeConfigured.PNG
 [11]: ./media/app-service-logic-connector-x12/TriggerSettings.PNG
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

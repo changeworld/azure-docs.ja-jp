@@ -5,14 +5,14 @@
    documentationCenter="na"
    authors="TomArcher"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags 
    ms.service="visual-studio-online"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="mobile"
-   ms.date="08/12/2015"
+   ms.date="12/16/2015"
    ms.author="tarcher" />
 
 # Visual Studio 接続済みサービスを使用した Mobile Services の追加
@@ -91,4 +91,4 @@ Visual Studio でプロジェクトを変更する方法はプロジェクトの
 
  - [azure.microsoft.com の Azure Mobile Services](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!----HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

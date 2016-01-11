@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="12/11/2015"
+	ms.date="12/16/2015"
 	ms.author="sdanie" />
 
 # Azure Redis Cache の構成方法
@@ -118,15 +118,16 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 
 >[AZURE.IMPORTANT]Redis のデータ永続化は、Premium Cache でのみ使用できます。詳細については、「[Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
 
+<a name="cluster-size"></a>
 ## Redis クラスター サイズ
 
-クラスタリングが有効になっている実行中の Premium キャッシュに対してシャードを追加または削除するには、**[(プレビュー) Redis クラスター サイズ]** をクリックします。
+クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、**[(プレビュー) Redis クラスター サイズ]** をクリックします。
 
 >[AZURE.NOTE]Azure Redis Cache の Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階であることに注意してください。
 
 ![Redis クラスター サイズ](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
-シャード数を変更するには、スライダーを使用するか、**[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、**[OK]** をクリックして保存します。
+クラスター サイズを変更するには、スライダーを使用するか、**[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、**[OK]** をクリックして保存します。
 
 >[AZURE.IMPORTANT]Redis クラスタリングは、Premium キャッシュでのみ使用できます。詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
 
@@ -147,7 +148,7 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 >
 >`StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >  
->**max-memory-policy** などの構成可能な値を、Azure ポータルを使用して構成できます。
+>**max-memory-policy** などの構成可能な値を、Azure ポータルまたはコマンド ライン管理ツール (Azure CLI、PowerShell など) を使用して構成できます。
 
 |設定|既定値|説明|
 |---|---|---|
@@ -177,7 +178,7 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 
 ## Azure Redis Cache でサポートされない Redis コマンド
 
->[AZURE.IMPORTANT]Azure Redis Cache インスタンスの構成と管理には Azure ポータルを使用する関係上、次のコマンドは無効です。これらのコマンドを呼び出そうとすると、`"(error) ERR unknown command"` のようなエラー メッセージを受け取ります。
+>[AZURE.IMPORTANT]Azure Redis Cache インスタンスの構成と管理はマイクロソフトによって管理されるため、次のコマンドは無効です。これらのコマンドを呼び出そうとすると、`"(error) ERR unknown command"` のようなエラー メッセージを受け取ります。
 >
 >-	BGREWRITEAOF
 >-	BGSAVE
@@ -212,4 +213,4 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

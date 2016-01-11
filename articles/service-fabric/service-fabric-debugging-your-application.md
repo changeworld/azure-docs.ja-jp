@@ -18,7 +18,7 @@
 
 # Visual Studio による Service Fabric アプリケーションのデバッグ
 
-ローカル コンピューターの開発クラスターで Service Fabric アプリケーションをデプロイしデバッグすることにより、時間と費用を節約できます。Visual Studio では、アプリケーションをローカル クラスターにデプロイして、アプリケーションのすべてのインスタンスにデバッガーを自動的に接続できます。
+ローカル コンピューターの開発クラスターで Azure Service Fabric アプリケーションをデプロイしデバッグすることにより、時間と費用を節約できます。Visual Studio では、アプリケーションをローカル クラスターにデプロイして、アプリケーションのすべてのインスタンスにデバッガーを自動的に接続できます。
 
 1. 「[Service Fabric 開発環境の設定](service-fabric-get-started.md)」にある手順に従って、ローカル開発クラスターを開始してください。
 
@@ -34,7 +34,7 @@
 
     ![リアルタイムに診断イベントを表示する][diagnosticevents]
 
-5. **[診断イベント]** ウィンドウは、サーバー エクスプローラーで開くこともできます。**[Azure]** の下で、**[Service Fabric クラスター]**、**[診断イベントの表示...]** の順に右クリックします。
+5. **[診断イベント]** ウィンドウは、サーバー エクスプローラーで開くこともできます。**[Azure]** の下で、**[Service Fabric クラスター]** を右クリックして **[診断イベントの表示...]** をクリックします。
 
     ![診断イベント ウィンドウを開く][viewdiagnosticevents]
 
@@ -48,7 +48,7 @@
 
     ![フィルター処理、一時停止と再開、またはリアルタイムのイベント検査][diagnosticeventsactions]
 
-8. サービスのデバッグは、その他のアプリケーションのデバッグと似ています。通常 Visual Studio で簡単なデバッグ用のブレークポイントを設定できます。信頼性の高いコレクションが複数のノードにレプリケートされている場合でも、IEnumerable は実装されているため、デバッグ中に Visual Studio の結果ビューを使用して内部保存されているものを確認できます。コードの任意の場所にブレークポイントを設定するだけです。
+8. サービスのデバッグは、その他のアプリケーションのデバッグと似ています。通常 Visual Studio で簡単なデバッグ用のブレークポイントを設定できます。Reliable Collections は複数のノード間で複製されますが、IEnumerable は実装されます。これは、デバッグ中に Visual Studio の結果ビューを使用して内部保存されているものを確認できることを意味します。コードの任意の場所にブレークポイントを設定するだけです。
 
     ![アプリケーションのデバッグを開始する][breakpoint]
 
@@ -65,4 +65,4 @@
 [diagnosticeventsactions]: ./media/service-fabric-debugging-your-application/diagnosticeventsactions.png
 [breakpoint]: ./media/service-fabric-debugging-your-application/breakpoint.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

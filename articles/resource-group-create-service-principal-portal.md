@@ -13,15 +13,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/01/2015"
+   ms.date="12/17/2015"
    ms.author="tomfitz"/>
 
 # ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する
 
 ## 概要
-自動化プロセスまたはアプリケーションでサブスクリプションのリソースにアクセスするか、リソースを変更する必要があるとき、ポータルを利用し、Active Directory アプリケーションを作成し、適切なアクセス許可を持つロールにそれを割り当てることができます。ポータルを使用して Active Directory アプリケーションを作成すると、実際、アプリケーションとサービス プリンシパルの両方が作成されます。アクセス許可を設定するとき、サービス プリンシパルを使用します。
+自動化プロセスまたはアプリケーションで、サブスクリプションのリソースにアクセスしたりリソースを変更したりする必要がある場合は、クラシック ポータルを利用して Active Directory アプリケーションを作成し、適切なアクセス許可を持つロールにそれを割り当てることができます。クラシック ポータルを使用して Active Directory アプリケーションを作成すると、実際にはアプリケーションとサービス プリンシパルの両方が作成されます。アクセス許可を設定するとき、サービス プリンシパルを使用します。
 
-このトピックでは、Azure ポータルを使用して、新しいアプリケーションとサービス プリンシパルを作成する方法について説明します。現時点では、新しい Active Directory アプリケーションを作成するには、Microsoft Azure ポータルを使用する必要があります。この機能は、今後のリリースで、Azure プレビュー ポータルに追加されます。プレビュー ポータルを使用し、アプリケーションをロールに割り当てることができます。これらの手順は、Azure Powershell または Azure CLI を介して実行することもできます。詳細については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
+このトピックでは、クラシック ポータルを使用して、新しいアプリケーションとサービス プリンシパルを作成する方法について説明します。現時点では、新しい Active Directory アプリケーションを作成するには、クラシック ポータルを使用する必要があります。この機能は、今後のリリースで、Azure ポータルに追加されます。ポータルを使用して、アプリケーションをロールに割り当てることができます。これらの手順は、Azure Powershell または Azure CLI を介して実行することもできます。サービス プリンシパルで PowerShell または CLI を使用する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
 
 ## 概念
 1. Azure Active Directory (AAD) - クラウド用に構築された ID およびアクセス管理サービス。詳しくは、「[Azure Active Directory とは](active-directory/active-directory-whatis.md)」を参照してください。
@@ -33,7 +33,7 @@
 
 ## アプリケーション オブジェクトとサービス プリンシパル オブジェクトを作成する
 
-1. [ポータル](https://manage.windowsazure.com/)から Azure アカウントにログインします。
+1. [従来のポータル](https://manage.windowsazure.com/)によって Azure アカウントにログインします。
 
 2. 左側のペインで **[Active Directory]** を選択します。
 
@@ -101,15 +101,31 @@
 
 ## ロールにアプリケーションを割り当てる
 
-アクションを実行するアクセス許可を付与するには、ロールにアプリケーションを割り当てる必要があります。[プレビュー ポータル](https://portal.azure.com)を使用し、ロールに Active Directory アプリケーションを正しいアクセス許可とともに割り当てることができます。
+アクションを実行するアクセス許可を付与するには、ロールにアプリケーションを割り当てる必要があります。アプリケーションをロールに割り当てるには、クラシック ポータルから [Azure ポータル](https://portal.azure.com)に切り替えます。アプリケーションをどのロールにどのようなスコープで追加するかを決める必要があります。利用可能なロールについては、「[RBAC: 組み込みのロール](./active-directory/role-based-access-built-in-roles.md)」を参照してください。スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。アクセス許可は、スコープの下位レベルに継承されます (たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションではリソース グループとそれに含まれているすべてのリソースを読み取ることができます)。
 
-プレビュー ポータルでアクセス制御を開始するには、**[アクセス]** アイコンを選択します。
+1. ポータルで、アプリケーションを割り当てるスコープのレベルに移動します。このトピックでは、リソース グループに移動し、リソース グループ ブレードで **[アクセス]** アイコンを選択します。
 
-![ユーザーの選択](./media/resource-group-create-service-principal-portal/select-users.png)
+     ![ユーザーの選択](./media/resource-group-create-service-principal-portal/select-users.png)
 
-アプリケーションを割り当てるロールを選択し、アプリケーションを選択します。
+2. **[追加]** を選択します。
 
-![ユーザーの選択](./media/resource-group-create-service-principal-portal/assign-to-role.png)
+     ![select add](./media/resource-group-create-service-principal-portal/select-add.png)
+
+3. **[閲覧者]** ロール (または、アプリケーションを割り当てる任意のロール) を選択します。
+
+     ![select role](./media/resource-group-create-service-principal-portal/select-role.png)
+
+4. ロールに追加できるユーザーの一覧が初めて表示される場合、アプリケーションは表示されません。グループとユーザーのみが表示されます。
+
+     ![show users](./media/resource-group-create-service-principal-portal/show-users.png)
+
+5. アプリケーションを見つけるには、検索する必要があります。アプリケーションの名前を入力し始めると、使用可能なオプションの一覧が変更されます。アプリケーションが一覧に表示されたら、選択します。
+
+     ![assign to role](./media/resource-group-create-service-principal-portal/assign-to-role.png)
+
+6. **[OK]** を選択して、ロールの割り当てを完了します。リソース グループのロールに割り当てられたユーザーの一覧にアプリケーションが表示されるようになりました。
+
+     ![show](./media/resource-group-create-service-principal-portal/show-app.png)
 
 ポータルを使用してユーザーやアプリケーションをロールに割り当てる方法の詳細については、「[Azure 管理ポータルを使用したアクセス権の管理](../role-based-access-control-configure/#manage-access-using-the-azure-management-portal)」を参照してください。
 
@@ -141,9 +157,9 @@
 
 ## 次のステップ
 
-- セキュリティ ポリシーの指定方法の詳細については、「[リソースへのアクセスの管理と監査](resource-group-rbac.md)」を参照してください。  
-- これらの手順のビデオ デモについては、「[Enabling Programmatic Management of an Azure Resource with Azure Active Directory (Azure Active Directory で Azure リソースのプログラムによる管理を有効にする)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory)」を参照してください。
-- Azure PowerShell または Azure CLI を利用し、Active Directory のアプリケーションとサービス プリンシパルを使用する方法については、認証時の証明書の利用方法も含め、「[Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)」を参照してください。
+- セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。  
+- これらの手順のビデオ デモについては、[Azure Active Directory を使用した Azure リソースのプログラムによる管理の有効化](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory)に関するビデオを参照してください。
+- 認証に証明書を利用する方法を含む、Azure PowerShell または Azure CLI で Active Directory のアプリケーションとサービス プリンシパルを操作する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)」を参照してください。
 - Azure リソース マネージャーを使用したセキュリティの実装のガイダンスについては、「[Azure Resource Manager のセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
 
 
@@ -162,4 +178,4 @@
 [12]: ./media/resource-group-create-service-principal-portal/add-icon.png
 [13]: ./media/resource-group-create-service-principal-portal/save-icon.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/09/2015" 
+	ms.date="12/17/2015" 
 	ms.author="josephd"/>
 
 # Azure での高可用な基幹業務アプリケーションのデプロイ
@@ -33,6 +33,41 @@
 ![](./media/virtual-machines-workload-high-availability-LOB-application-overview/workload-lobapp-phase4.png)
  
 ロールごとに最低 2 台のマシンを使用して、高可用性を保証します。すべての仮想マシンは、1 つの Azure の場所 (リージョンとも呼ばれます) に存在します。特定のロール用の仮想マシンの各グループは、専用の可用性セットに含まれます。
+
+## 部品表
+
+この基本的な構成には、次の一連の Azure サービスとコンポーネントが必要です。
+
+- 7 つの仮想マシン
+- 4 つの追加データ ディスク (ドメイン コント ローラーと、SQL サーバーを実行する仮想マシン用)
+- 3 つの可用性セット
+- 1 つのクロスプレミス仮想ネットワーク
+- 2 つのストレージ アカウント
+
+こちらが仮想マシンとそれぞれのこの構成に対する既定のサイズになります。
+
+項目 | 仮想マシンの説明 | ギャラリー イメージ | 既定サイズ 
+--- | --- | --- | --- 
+1\. | 最初のドメイン コントローラー | Windows Server 2012 R2 Datacenter | D1
+2\. | 2 番目のドメイン コントローラー | Windows Server 2012 R2 Datacenter | D1
+3\. | プライマリ データベース サーバー | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | D4
+4\. | セカンダリ データベース サーバー | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | D4
+5\. | クラスターのマジョリティ ノード | Windows Server 2012 R2 Datacenter | D1
+6\. | 最初の Web サーバー | Windows Server 2012 R2 Datacenter | D3
+7\. | 2 番目の Web サーバー | Windows Server 2012 R2 Datacenter | D3
+
+この構成の推定コストを計算するには、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を参照してください。
+
+1. **[モジュール]** で、**[コンピューティング]** をクリックし、**[仮想マシン]** を必要なだけクリックして 7 つの仮想マシンを作成してください。
+2. 各仮想マシンで次を選択してください。
+	- 目的のリージョン
+	- 種類には **Windows**
+	- 価格レベルには **Standard**
+	- **インスタンスのサイズ**には、上記の表での既定のサイズもしくは目的のサイズ
+
+> [AZURE.NOTE]Azure 料金計算ツールでは、SQL Server 2014 Enterprise を実行している 2 つの仮想マシンの SQL Server ライセンスの追加のコストは含まれません。詳細については、「[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」の SQL Server に関するセクションを参照してください。
+
+## デプロイのフェーズ
 
 この構成を次のフェーズでデプロイします。
 
@@ -58,14 +93,4 @@ Azure の IT ワークロードの設計に関する詳細については、「[
 
 このワークロードの構成を開始するには、「[フェーズ 1: Azure を構成する](virtual-machines-workload-high-availability-LOB-application-phase1.md)」に進んでください。
 
-## その他のリソース
-
-[基幹業務アプリケーションのアーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)
-
-[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
-
-[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
-
-[Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
-
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

@@ -1,9 +1,9 @@
 <properties
-   	pageTitle="Azure PowerShell を使用した HDInsight 用の Linux ベースの Hadoop、HBase、または Storm クラスターの作成 | Microsoft Azure"
-   	description="Azure PowerShell を使用して、HDInsight 用の Linux ベースの Hadoop、HBase、または Storm クラスターを作成する方法について説明します。"
+   	pageTitle="Azure CLI を使用した HDInsight 用の Linux ベースの Hadoop、HBase、Storm、または Spark クラスターの作成 | Microsoft Azure"
+   	description="Azure CLI を使用して、HDInsight 用の Linux ベースの Hadoop、HBase、Storm、または Spark クラスターを作成する方法について説明します。"
    	services="hdinsight"
    	documentationCenter=""
-   	authors="mumian"
+   	authors="nitinme"
    	manager="paulettm"
    	editor="cgronlun"
 	tags="azure-portal"/>
@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="11/16/2015"
+   	ms.date="12/08/2015"
    	ms.author="nitinme"/>
 
 #Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成
@@ -25,19 +25,18 @@ Azure PowerShell は、Azure のワークロードのデプロイと管理を制
 
 > [AZURE.NOTE]Azure PowerShell は、Windows クライアントだけで利用できます。Linux、Unix、または Mac OS X クライアントを使用している場合は、Azure CLI によるクラスターの作成について、「[Azure CLI を使用した Linux ベースの HDInsight クラスターの作成](hdinsight-hadoop-create-linux-cluster-azure-cli.md)」を参照してください。
 
-###前提条件
+##前提条件
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 - __Azure PowerShell__。ワークステーションを構成して HDInsight Windows Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../install-configure-powershell.md)」をご覧ください。HDInsight で Azure PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)」をご覧ください。HDInsight Windows PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn858087.aspx)」をご覧ください。
-
 
 ##クラスターを作成する
 
 Azure PowerShell を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
 
 - Azure リソース グループの作成
-- Azure のストレージ アカウントの作成
+- Azure Storage アカウントの作成
 - Azure BLOB コンテナーの作成
 - HDInsight クラスターの作成
 
@@ -101,7 +100,7 @@ Linux クラスターをプロビジョニングするために設定する必�
 
 **$clusterCredentials** に指定する値は、クラスターの Hadoop ユーザー アカウントの作成に使用されます。このアカウントを使用してクラスターに接続します。**$sshCredentials** に指定する値は、クラスターの SSH ユーザーの作成に使用されます。このアカウントを使用してクラスターでリモート SSH セッションを開始し、ジョブを実行します。
 
-> [AZURE.IMPORTANT]このスクリプトで、クラスターに存在するワーカー ノードの数を指定する必要があります。クラスター作成または作成後のスケーリングで 32 を超えるワーカー ノードの使用を計画している場合は、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードも指定する必要があります。
+> [AZURE.IMPORTANT]このスクリプトで、クラスターに存在する worker ノードの数を指定する必要があります。クラスター作成または作成後のスケーリングで 32 を超える worker ノードの使用を計画している場合は、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードも指定する必要があります。
 >
 > ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
@@ -128,4 +127,12 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+###Spark クラスター
+
+* [Scala を使用してスタンドアロン アプリケーションを作成する](hdinsight-apache-spark-create-standalone-application.md)
+* [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
+* [Spark と BI: HDInsight で BI ツールと Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
+* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
+
+<!---HONumber=AcomDC_1223_2015-->

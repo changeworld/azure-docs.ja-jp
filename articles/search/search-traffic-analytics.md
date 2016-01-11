@@ -14,19 +14,19 @@
 	ms.workload="na" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="12/11/2015" 
+	ms.date="12/17/2015" 
 	ms.author="betorres"
 />
 
 
-# 検索トラフィックの分析の有効化と使用 #
+# 検索トラフィックの分析の有効化と使用
 
 検索トラフィックの分析は、使用している検索サービスを表示し、ユーザーとその動作に関する洞察のロックを解除できる Azure Search の機能です。この機能を有効にすると、検索サービスのデータは選択しているストレージ アカウントにコピーされます。このデータには、検索サービスのログと集計された運用メトリックが含まれます。データがコピーされると、任意の方法で利用状況データを処理および操作することができます。
 
 
-## 検索トラフィックの分析を有効にする方法 ##
+## 検索トラフィックの分析を有効にする方法
 
-### 1\.ポータルの使用 ###
+### 1\.ポータルの使用
 [Azure ポータル](http://portal.azure.com)で Azure Search サービスを開きます。[設定] には、検索トラフィックの分析オプションが表示されます。
 
 ![][1]
@@ -40,7 +40,7 @@
 > 
 > このストレージ アカウントには標準料金が適用されます。
 
-### 2\.PowerShell の使用 ###
+### 2\.PowerShell の使用
 
 また、次の PowerShell コマンドレットを実行して、この機能を有効にすることもできます。
 
@@ -68,7 +68,7 @@ Classic: /subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/prov
     insights-metrics-pt1m: aggregated metrics
 
 
-## データの説明 ##
+## データの説明
 
 データは、JSON 形式で Azure Storage BLOB に格納されます。
 
@@ -76,13 +76,13 @@ Classic: /subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/prov
   
 例のパス: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2015/m=12/d=25/h=01/m=00/name=PT1H.json`
 
-### Logs (ログ) ###
+### Logs (ログ)
 
 ログ BLOB には、検索サービスのトラフィック ログが含まれています。
 
 各 BLOB には、ログ オブジェクトの配列を含む、**レコード** と呼ばれるルート オブジェクトが 1 つあります。
 
-####ログのスキーマ####
+####ログのスキーマ
 
 名前 |型 |例 |メモ 
 ------|-----|----|-----
@@ -96,7 +96,7 @@ resultSignature |int |200 |HTTP の結果コード
 durationMS |int |50 |操作時間 (ミリ秒) 
 プロパティ |オブジェクト |以下を参照 |操作固有データを含むオブジェクト
 
-####プロパティのスキーマ####
+####プロパティのスキーマ
 
 |名前 |型 |例 |メモ|
 |------|-----|----|-----|
@@ -105,7 +105,7 @@ durationMS |int |50 |操作時間 (ミリ秒)
 |ドキュメント |int |42 |処理されたドキュメント数|
 |IndexName |string |"testindex"|操作に関連付けられているインデックスの名前 |
 
-### メトリック ###
+### メトリック
 
 メトリック BLOB には、検索サービスの集計値が含まれます。各ファイルには、メトリック オブジェクトの配列を含む、**レコード** と呼ばれるルート オブジェクトが 1 つあります。
 
@@ -113,7 +113,7 @@ durationMS |int |50 |操作時間 (ミリ秒)
 
 - 待機時間
 
-####メトリックのスキーマ####
+####メトリックのスキーマ
 
 |名前 |型 |例 |メモ|
 |------|-----|----|-----|
@@ -127,7 +127,7 @@ durationMS |int |50 |操作時間 (ミリ秒)
 |count |int |4 |メトリックの生成に使用される生のサンプル数 |
 |timegrain |string |"PT1M" |ISO 8601 でのメトリックの時間グレイン|
 
-## データの分析 ##
+## データの分析
 
 データは使用しているストレージ アカウントにあり、自分の環境に最も適した方法で、このデータを検索することをお勧めします。
 
@@ -135,20 +135,20 @@ durationMS |int |50 |操作時間 (ミリ秒)
 
 Power BI Desktop で独自のレポートを作成する、次のサンプル クエリを確認します。
 
-### このサンプルについての指示 ###
+### このサンプルについての指示
 
 1. 新しい PowerBI Desktop レポートを開きます
 2. [データの取得]、[詳細] の順に選択します
 
 	![][3]
 
-3. Microsoft Azure BLOB ストレージを選択して接続します
+3. Microsoft Azure Blob Storage を選択して接続します
 
 	![][4]
 
 4. 使用しているストレージ アカウントの名前とアカウント キーを入力します
-5. insight-logs-operationlogs を右クリックし、[ロード] を選択します
-6. クエリ エディターが開きます。ここで、[表示]、[詳細エディター] の順に選択して、詳細エディターを開きます。
+5. "insight-logs-operationlogs" と "insights-metrics-pt1m" を選択して、[編集] をクリックします
+6. クエリ エディターが開き、左側で "insight-logs-operationlogs" が選択されていることを確認します。ここで、[表示]、[詳細エディター] の順に選択して、詳細エディターを開きます。
 
 	![][5]
 
@@ -156,7 +156,7 @@ Power BI Desktop で独自のレポートを作成する、次のサンプル �
 
 	>     #"insights-logs-operationlogs" = Source{[Name="insights-logs-operationlogs"]}[Data],
 	>     #"Sorted Rows" = Table.Sort(#"insights-logs-operationlogs",{{"Date modified", Order.Descending}}),
-	>     #"Kept First Rows" = Table.FirstN(#"Sorted Rows",288),
+	>     #"Kept First Rows" = Table.FirstN(#"Sorted Rows",744),
 	>     #"Removed Columns" = Table.RemoveColumns(#"Kept First Rows",{"Name", "Extension", "Date accessed", "Date modified", "Date created", "Attributes", "Folder Path"}),
 	>     #"Parsed JSON" = Table.TransformColumns(#"Removed Columns",{},Json.Document),
 	>     #"Expanded Content" = Table.ExpandRecordColumn(#"Parsed JSON", "Content", {"records"}, {"records"}),
@@ -181,11 +181,33 @@ Power BI Desktop で独自のレポートを作成する、次のサンプル �
 	>     in
 	>     #"Changed Type2"
 
-8. [完了] をクリックして、[ホーム] タブで [閉じて適用] を選択します。
+8. [完了] をクリックします
 
-9. これで、データを使用する準備ができました。今すぐ[視覚化](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-desktop-report-view/)を作成しましょう。
+9. ここで、クエリの左側にある "insights-metrics-pt1m" を選択し、再度 [詳細エディター] を開きます。最初の 2 つの行を保持し、残りの部分を次のクエリに置き換えます。
 
-## 次のステップ ##
+	>     #"insights-metrics-pt1m1" = Source{[Name="insights-metrics-pt1m"]}[Data],
+	>     #"Sorted Rows" = Table.Sort(#"insights-metrics-pt1m1",{{"Date modified", Order.Descending}}),
+	>     #"Kept First Rows" = Table.FirstN(#"Sorted Rows",744),
+    	#"Removed Columns" = Table.RemoveColumns(#"Kept First Rows",{"Name", "Extension", "Date accessed", "Date modified", "Date created", "Attributes", "Folder Path"}),
+	>     #"Parsed JSON" = Table.TransformColumns(#"Removed Columns",{},Json.Document),
+	>     #"Expanded Content" = Table.ExpandRecordColumn(#"Parsed JSON", "Content", {"records"}, {"records"}),
+	>     #"Expanded records" = Table.ExpandListColumn(#"Expanded Content", "records"),
+	>     #"Expanded records1" = Table.ExpandRecordColumn(#"Expanded records", "records", {"resourceId", "metricName", "time", "average", "minimum", "maximum", "total", "count", "timeGrain"}, {"resourceId", "metricName", "time", "average", "minimum", "maximum", "total", "count", "timeGrain"}),
+	>     #"Filtered Rows" = Table.SelectRows(#"Expanded records1", each ([metricName] = "Latency")),
+	>     #"Removed Columns1" = Table.RemoveColumns(#"Filtered Rows",{"timeGrain"}),
+	>     #"Renamed Columns" = Table.RenameColumns(#"Removed Columns1",{{"time", "Datetime"}, {"resourceId", "ResourceId"}, {"metricName", "MetricName"}, {"average", "Average"}, {"minimum", "Minimum"}, {"maximum", "Maximum"}, {"total", "Total"}, {"count", "Count"}}),
+	>     #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"ResourceId", type text}, {"MetricName", type text}, {"Datetime", type datetimezone}, {"Average", type number}, {"Minimum", Int64.Type}, {"Maximum", Int64.Type}, {"Total", Int64.Type}, {"Count", Int64.Type}}),
+	>         Rounding = Table.TransformColumns(#"Changed Type",{{"Average", each Number.Round(_, 2)}}),
+	>     #"Changed Type1" = Table.TransformColumnTypes(Rounding,{{"Average", type number}}),
+	>     #"Inserted Date" = Table.AddColumn(#"Changed Type1", "Date", each DateTime.Date([Datetime]), type date)
+	>     in
+    	#"Inserted Date"
+
+10. [完了] をクリックし、[ホーム] タブで [閉じて適用] を選択します。
+
+11. これで過去 30 日間のデータを使用する準備ができました。今すぐ[視覚エフェクト](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-desktop-report-view/)を作成しましょう。
+
+## 次のステップ
 
 検索構文とクエリ パラメーターについて詳細に学習します。詳細については、「[ドキュメントの検索 (Azure Search Service REST API)](https://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
 
@@ -199,4 +221,4 @@ Power BI Desktop で独自のレポートを作成する、次のサンプル �
 [4]: ./media/search-traffic-analytics/BlobStorage.png
 [5]: ./media/search-traffic-analytics/QueryEditor.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

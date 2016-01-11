@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/24/2015"
+   ms.date="12/18/2015"
    ms.author="tarcher" />
 
 # Visual Studio を使用したストレージ エミュレーターの構成と使用
@@ -43,4 +43,4 @@ Visual Studio で初めてサービスを実行またはデバッグすると、
 
 ストレージ エミュレーターをはじめとするストレージ アカウント内の BLOB とテーブルのデータについては、サーバー エクスプローラーの Azure の [ストレージ] ノードを使用してデータを表示したり設定を変更したりすることができます。詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照と管理](https://msdn.microsoft.com/library/azure/ff683677.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

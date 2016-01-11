@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/14/2015"
+	ms.date="12/18/2015"
 	ms.author="v-aabrol"/>
 
 
@@ -64,7 +64,7 @@ Azure AD への GaggleAMP の統合を構成するには、ギャラリーから
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに、「**GaggleAMP**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_01.png)<br>
-7. 結果ウィンドウで **[GaggleAMP]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。 <br><br>
+7. 結果ウィンドウで **[GaggleAMP]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。 <br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_02.png)<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、GaggleAMP で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -94,7 +94,7 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_04.png) <br>
 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが GaggleAMP アプリケーションへのサインオンに使用する URL を入力します。**“https://secure4.gaggleamp.com”**
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが GaggleAMP アプリケーションへのサインオンに使用する URL を入力します。**"https://secure4.gaggleamp.com"**
 
     > [AZURE.NOTE]アプリケーションの**サインオン URL** が必要な場合、[GaggleAMP 販売チーム](mailto:sales@gaggleamp.com)にお問い合わせください。
 
@@ -225,4 +225,4 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
 [204]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

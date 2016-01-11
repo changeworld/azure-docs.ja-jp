@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/11/2015" 
+	ms.date="12/16/2015" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Redis クラスタリングの構成方法
@@ -56,6 +56,8 @@ Azure では、Redis クラスターは、各シャードがプライマリ/レ�
 
 キャッシュを作成した後は、クラスター化されていないキャッシュと同じようにアクセスして使用でき、Redis はキャッシュのシャード全体にデータを分配します。診断が[有効](cache-how-to-monitor.md#enable-cache-diagnostics)になっている場合は、シャードごとにメトリックが個別にキャプチャされ、Redis Cache ブレードに[表示](cache-how-to-monitor.md)できます。
 
+StackExchange.Redis クライアントを使用したクラスタリングの操作でのサンプル コードについては、[Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルの [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分を参照してください。
+
 >[AZURE.IMPORTANT]StackExchange.Redis を使用して、クラスタリングが有効になっている Azure Redis Cache に接続すると、問題が発生し、`MOVE` 例外がスローされる場合があります。これは、StackExchange.Redis キャッシュ クライアントがキャッシュ クラスターのノードに関する情報を収集するのに若干時間がかかるためです。これらの例外は、キャッシュに初めて接続し、クライアントがこの情報の収集を終了する前に、すぐにキャッシュを呼び出した場合に発生する可能性があります。アプリケーションでこの問題を解決する最も簡単な方法として、キャッシュに接続した後、1 秒間待機してからキャッシュを呼び出します。これを行うには、次のサンプル コードに示すように、`Thread.Sleep(1000)` を追加します。`Thread.Sleep(1000)` が発生するのは、キャッシュへの最初の接続時だけであることに注意してください。詳細については、「[StackExchange.Redis.RedisServerException - MOVED #248](https://github.com/StackExchange/StackExchange.Redis/issues/248)」をご覧ください。この問題の修正プログラムの開発が進められており、更新プログラムをここに投稿する予定です。
 
 	private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -78,15 +80,16 @@ Azure では、Redis クラスターは、各シャードがプライマリ/レ�
 	    }
 	}
 
-## 実行中の Premium キャッシュに対してシャードを追加または削除する
+<a name="cluster-size"></a>
+## 実行中の Premium キャッシュのクラスター サイズを変更する
 
-クラスタリングが有効になっている実行中の Premium キャッシュに対してシャードを追加または削除するには、**[設定]** ブレードで **[(プレビュー) Redis クラスター サイズ]** をクリックします。
+クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、**[設定]** ブレードから **[(プレビュー) Redis クラスター サイズ]** をクリックします。
 
->[AZURE.NOTE]Azure Redis Cache の Premiumの Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階であることに注意してください。
+>[AZURE.NOTE]Azure Redis Cache の Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階であることに注意してください。
 
 ![Redis クラスター サイズ][redis-cache-redis-cluster-size]
 
-シャード数を変更するには、スライダーを使用するか、**[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、**[OK]** をクリックして保存します。
+クラスター サイズを変更するには、スライダーを使用するか、**[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、**[OK]** をクリックして保存します。
 
 ## クラスタリングの FAQ
 
@@ -98,7 +101,7 @@ Azure では、Redis クラスターは、各シャードがプライマリ/レ�
 -	[StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) を使用する場合は、1.0.481 以降を使用する必要があります。クラスタリングが有効になっていないキャッシュに接続するときに使用するものと同じ[エンドポイント、ポート、キー](cache-configure.md#properties)を使用して、キャッシュに接続します。唯一の違いは、すべての読み取りと書き込みをデータベース 0 に対して実行する必要があることです。
 	-	他のクライアントの要件は異なる場合があります。「[すべての Redis クライアントがクラスタリングをサポートしますか](#do-all-redis-clients-support-clustering)」を参照してください。
 -	アプリケーションで 1 つのコマンドにバッチ処理された複数のキー操作を使用する場合は、すべてのキーを同じシャードに配置する必要があります。このようにする場合は、「[クラスターにはキーはどのように配布されるのですか](#how-are-keys-distributed-in-a-cluster)」を参照してください。
--	Redis ASP.NET セッション状態プロバイダーを使用する場合は、2.0.0 以降を使用する必要があります。「[Redis ASP.NET セッション状態および出力キャッシュ プロバイダーでクラスタリングを使用できますか](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)」を参照してください。
+-	Redis ASP.NET セッション状態プロバイダーを使用する場合は、2.0.1 以降を使用する必要があります。「[Redis ASP.NET セッション状態および出力キャッシュ プロバイダーでクラスタリングを使用できますか](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)」を参照してください。
 
 ## クラスターにはキーはどのように配布されるのですか
 
@@ -110,6 +113,8 @@ Redis の[キー配布モデル](http://redis.io/topics/cluster-spec#keys-distri
 最高のパフォーマンスとスループットを得るために、キーを均等に配布することをお勧めします。ハッシュ タグのあるキーを使用する場合、キーが均等に配布されていることを確認するのはアプリケーションの責任です。
 
 詳細については、「[キー配布モデル](http://redis.io/topics/cluster-spec#keys-distribution-model)」、「[Redis クラスターのデータ シャーディング](http://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding)」および「[キーのハッシュ タグ](http://redis.io/topics/cluster-spec#keys-hash-tags)」を参照してください。
+
+StackExchange.Redis クライアントを使用した同じシャードでのクラスタリングおよびキーの検索の操作におけるサンプル コードについては、[Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルの [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分を参照してください。
 
 ## 作成できる最大キャッシュ サイズはどれくらいですか
 
@@ -141,7 +146,7 @@ SSL の場合は、`1300N` を `1500N` に置き換えます。
 
 ## 以前に作成したキャッシュのクラスタリングを構成できますか。
 
-現時点では、クラスタリングを有効にできるのは、キャッシュを作成するときだけです。キャッシュの作成後は、シャード数を変更することはできますが、Premium キャッシュに対するクラスタリングの追加または削除は実行できません。クラスタリングが有効になっている Premium キャッシュと、クラスタリングがない同じサイズの Premium キャッシュでシャードが 1 つだけ異なるものが可能です。
+現時点では、クラスタリングを有効にできるのは、キャッシュを作成するときだけです。キャッシュの作成後は、クラスター サイズを変更することはできますが、Premium キャッシュに対するクラスタリングの追加または削除は実行できません。クラスタリングが有効になっている Premium キャッシュと、クラスタリングがない同じサイズの Premium キャッシュでシャードが 1 つだけ異なるものが可能です。
 
 ## Basic または Standard キャッシュのクラスタリングを構成できますか。
 
@@ -150,7 +155,7 @@ SSL の場合は、`1300N` を `1500N` に置き換えます。
 ## Redis ASP.NET セッション状態および出力キャッシュ プロバイダーでクラスタリングを使用できますか
 
 -	**Redis 出力キャッシュ プロバイダー** - 変更する必要はありません。
--	**Redis セッション状態プロバイダー** - クラスタリングを使用するには、[RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.0 以降を使用する必要があります。そうしないと、例外がスローされます。これは重大な変更です。詳細については、「[v2.0.0 の重大な変更の詳細](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)」を参照してください。
+-	**Redis セッション状態プロバイダー** - クラスタリングを使用するには、[RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 以降を使用する必要があります。そうしないと、例外がスローされます。これは重大な変更です。詳細については、「[v2.0.0 の重大な変更の詳細](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)」を参照してください。
 
 ## 次のステップ
 Premium キャッシュ機能をさらに使用する方法を学習します。
@@ -178,4 +183,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

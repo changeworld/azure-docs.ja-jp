@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/14/2015"
+	ms.date="12/18/2015"
 	ms.author="jeedes"/>
 
 
@@ -64,7 +64,7 @@ Azure AD への AppBlade の統合を構成するには、ギャラリーから�
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. [検索] ボックスに、「**AppBlade**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_01.png)<br>
-7. 結果ウィンドウで **[AppBlade]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。 <br><br>
+7. 結果ウィンドウで **[AppBlade]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。 <br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_02.png)<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、AppBlade で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -94,7 +94,7 @@ AppBlade で Azure AD のシングル サインオンを構成してテストす
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_04.png) <br>
 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが AppBlade アプリケーションへのサインオンに使用する URL を入力します。**“https://companyname.appblade.com/saml/tenantid”**
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが AppBlade アプリケーションへのサインオンに使用する URL を入力します。**"https://companyname.appblade.com/saml/tenantid"**
 
     b.**[次へ]** をクリックします。
 
@@ -106,7 +106,7 @@ AppBlade で Azure AD のシングル サインオンを構成してテストす
     b.**[次へ]** をクリックします。
 
 
-5. お使いのアプリケーション用に構成された SSO を取得するために、ダウンロードしたメタデータ ファイルを電子メールに添付して、AppBlade のサポート チーム (**support@appblade.com**) に問い合わせます。また、**[SSO 発行元 URL]** を [****https://appblade.com/saml**] に設定するように要請してください。この設定は、シングル サインオンが動作するために必要です。
+5. お使いのアプリケーション用に構成された SSO を取得するために、ダウンロードしたメタデータ ファイルを電子メールに添付して、AppBlade のサポート チーム (****support@appblade.com**) に問い合わせます。また、**[SSO 発行元 URL]** を [****https://appblade.com/saml**] に設定するように要請してください。この設定は、シングル サインオンが動作するために必要です。
 
 
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD のシングル サインオン][10]<br>
@@ -217,4 +217,4 @@ AppBlade で Azure AD のシングル サインオンを構成してテストす
 [204]: ./media/active-directory-saas-appblade-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-appblade-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

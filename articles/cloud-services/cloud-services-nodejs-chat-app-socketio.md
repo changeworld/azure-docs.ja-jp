@@ -13,12 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
+	ms.date="12/18/2015" 
 	ms.author="tarcher"/>
-
-
-
-
 
 # Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
 
@@ -32,7 +28,7 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
 
 この記事の例を正常に完了するには、次の製品とバージョンがインストールされている必要があります。
 
-* [Visual Studio 2013](https://www.visualstudio.com/ja-jp/downloads/download-visual-studio-vs.aspx) のインストール
+* [Visual Studio 2013](https://www.visualstudio.com/ja-JP/downloads/download-visual-studio-vs.aspx) のインストール
 * [Node.js](https://nodejs.org/download/) のインストール
 * [Python version 2.7.10](https://www.python.org/) のインストール
 
@@ -174,4 +170,4 @@ Azure エミュレーターでアプリケーションをテストする前に�
   
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

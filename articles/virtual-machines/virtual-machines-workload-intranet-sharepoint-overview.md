@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/11/2015"
+	ms.date="12/17/2015"
 	ms.author="josephd"/>
 
 # Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ
@@ -34,6 +34,44 @@
 ![](./media/virtual-machines-workload-intranet-sharepoint-overview/workload-spsqlao_05.png)
 
 ロールごとに 2 台のマシンで高可用性を保証します。すべての仮想マシンは 1 つのリージョンに存在します。特定のロール用の仮想マシンの各グループは、専用の可用性セットに含まれます。
+
+## 部品表
+
+この基本的な構成には、次の一連の Azure サービスとコンポーネントが必要です。
+
+- 9 つの仮想マシン
+- 4 つの追加データ ディスク (ドメイン コント ローラーと、SQL サーバーを実行する仮想マシン用)
+- 4 つの可用性セット
+- 1 つのクロスプレミス仮想ネットワーク
+- 1 つのストレージ アカウント
+- 1 つの Azure サブスクリプション
+
+こちらが仮想マシンとそれぞれのこの構成に対する既定のサイズになります。
+
+項目 | 仮想マシンの説明 | ギャラリー イメージ | 既定サイズ
+--- | --- | --- | ---
+1\. | 最初のドメイン コントローラー | Windows Server 2012 R2 Datacenter | A2
+2\. | 2 番目のドメイン コントローラー | Windows Server 2012 R2 Datacenter | A2
+3\. | 最初のデータベース サーバー | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | A5
+4\. | 2 番目のデータベース サーバー | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | A5
+5\. | クラスターのマジョリティ ノード | Windows Server 2012 R2 Datacenter | A1
+6\. | 最初の SharePoint アプリケーション サーバー | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4
+7\. | 2 番目の SharePoint アプリケーション サーバー | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4
+8\. | 最初の SharePoint Web サーバー | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4
+9\. | 2 番目の SharePoint Web サーバー | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4
+
+この構成の推定コストを計算するには、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を参照してください。
+
+1. [**モジュール**] で、[**コンピューティング**] をクリックし、[**仮想マシン**] を必要なだけクリックして 9 つの仮想マシンを作成してください。
+2. 各仮想マシンで次を選択してください。
+	- 目的のリージョン
+	- 種類には **Windows**
+	- 価格レベルには **Standard**
+	- **インスタンスのサイズ**には、上記の表での既定のサイズもしくは目的のサイズ
+
+> [AZURE.NOTE]Azure 料金計算ツールでは、SQL Server 2014 Enterprise を実行している 2 つの仮想マシンの SQL Server ライセンスの追加のコストは含まれません。詳細については、「[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」の SQL Server に関するセクションを参照してください。
+
+## デプロイのフェーズ
 
 この構成を次のフェーズでデプロイします。
 
@@ -63,4 +101,4 @@ SharePoint と SQL Server AlwaysOn 可用性グループの追加情報につい
 
 - [フェーズ 1](virtual-machines-workload-intranet-sharepoint-phase1.md) を使用して、このワークロードの構成を開始します。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

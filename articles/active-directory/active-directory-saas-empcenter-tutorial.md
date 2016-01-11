@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と EmpCenter の統合 | Microsoft Azure" 
     description="Azure Active Directory で EmpCenter を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/01/2015" 
-    ms.author="markvi" />
+    ms.date="12/18/2015" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と EmpCenter の統合
   
@@ -37,7 +37,7 @@
 
 ###EmpCenter のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-empcenter-tutorial/IC700993.png "Active Directory")
 
@@ -70,22 +70,22 @@
 
 1.  Azure AD ポータルの **EmpCenter** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-empcenter-tutorial/IC802919.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-empcenter-tutorial/IC802919.png "シングル サインオンの構成")
 
 2.  **[ユーザーの EmpCenter へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-empcenter-tutorial/IC802920.png "シングル サインオンの構成")
+    ![シングル サインオンの構成](./media/active-directory-saas-empcenter-tutorial/IC802920.png "Configure Single Sign-On")
 
 3.  **[アプリケーション設定の構成]** ページで、次の手順を実行します。
 
-    ![アプリケーションの設定の構成](./media/active-directory-saas-empcenter-tutorial/IC802921.png "アプリケーションの設定の構成")
+    ![Configure App Settings](./media/active-directory-saas-empcenter-tutorial/IC802921.png "Configure App Settings")
 
     1.  **[サインオン URL]** ボックスに、ユーザーが EmpCenter アプリケーションへのサインオンに使用する URL (例: **https://partner-authenticati.empcenter.com/workforce/SSO.do*)) を入力します。
     2.  **[次へ]** をクリックします。
 
 4.  **[EmpCenter でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-empcenter-tutorial/IC802922.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-empcenter-tutorial/IC802922.png "シングル サインオンの構成")
 
 5.  ダウンロードしたメタデータ ファイルを EmpCenter サポート チームに送信します。
 
@@ -112,10 +112,10 @@ Azure AD ユーザーが EmpCenter にログインできるようにするには
 
     ![ユーザーの割り当て](./media/active-directory-saas-empcenter-tutorial/IC802924.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![あり](./media/active-directory-saas-empcenter-tutorial/IC767830.png "あり")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1223_2015-->

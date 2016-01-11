@@ -5,9 +5,7 @@ Azure DNS は、DNS ドメインのホスティング サービスであり、Mi
 
 | プロパティ | 説明 | 値の例 |
 |---|---|---|
-| DNS ゾーン | 特定ドメインの DNS レコードをホストするドメイン ゾーン情報です。 | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com",
-providers/Microsoft.Network/dnszones/contoso.com/A/www |
-| DNS ゾーン | 特定ドメインの DNS レコードをホストするドメイン ゾーン情報です。 | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com"
+| **DNSzones** | 特定ドメインの DNS レコードをホストするドメイン ゾーンの情報 | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com"| 
 
 
 ### DNS レコード セット
@@ -89,4 +87,4 @@ Json 形式での DNS ゾーンの例:
 
 詳細については、[DNS レコード セットの REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt130626.aspx)を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

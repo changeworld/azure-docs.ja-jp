@@ -39,7 +39,7 @@ Azure の仮想マシンでは、その他のコンピューターとまった�
 
 データ ディスクは仮想マシンに取り付けられる VHD であり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。各ディスクの最大容量は 1023 ギガバイトです。仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
 
-	For more details about virtual machines capacities, see [Sizes for virtual machines](virtual-machines-size-specs.md).
+>[AZURE.NOTE]仮想マシンの容量の詳細については、「[仮想マシンのサイズ](virtual-machines-size-specs.md)」をご覧ください。
 
 ユーザーがイメージから仮想マシンを作成するときに、Azure はオペレーティング システム ディスクを作成します。ユーザーがデータ ディスクを含むイメージを使用する場合、Azure は仮想マシンの作成時にデータ ディスクも作成します。(Azure、パートナー、またはユーザーが提供するイメージを使用することができます。) それ以外の場合は、仮想マシンを作成した後にデータ ディスクを追加してください。
 
@@ -74,4 +74,4 @@ Windows 仮想マシン
 -  [Windows 仮想マシンをキャプチャする](virtual-machines-capture-image-windows-server.md)
 -  [ディスクを取り外す](storage-windows-detach-disk.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

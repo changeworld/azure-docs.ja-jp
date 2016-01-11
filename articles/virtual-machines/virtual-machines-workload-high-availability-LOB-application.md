@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/09/2015" 
+	ms.date="12/17/2015" 
 	ms.author="josephd"/>
 
 # Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション
@@ -58,48 +58,13 @@ Azure での高可用な基幹業務アプリケーションの基本的で代�
 
 基幹業務アプリケーションの概要については、「[基幹業務アプリケーションのアーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)」を参照してください。
 
-### 部品表
-
-この基本的な構成には、次の一連の Azure サービスとコンポーネントが必要です。
-
-- 7 つの仮想マシン
-- 4 つの追加データ ディスク (ドメイン コント ローラーと、SQL サーバーを実行する仮想マシン用)
-- 3 つの可用性セット
-- 1 つのクロスプレミス仮想ネットワーク
-- 2 つのストレージ アカウント
-
-こちらが仮想マシンとそれぞれのこの構成に対する既定のサイズになります。
-
-項目 | 仮想マシンの説明 | ギャラリー イメージ | 既定サイズ 
---- | --- | --- | --- 
-1\. | 最初のドメイン コントローラー | Windows Server 2012 R2 Datacenter | D1
-2\. | 2 番目のドメイン コントローラー | Windows Server 2012 R2 Datacenter | D1
-3\. | プライマリ データベース サーバー | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | D4
-4\. | セカンダリ データベース サーバー | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | D4
-5\. | クラスターのマジョリティ ノード | Windows Server 2012 R2 Datacenter | D1
-6\. | 最初の Web サーバー | Windows Server 2012 R2 Datacenter | D3
-7\. | 2 番目の Web サーバー | Windows Server 2012 R2 Datacenter | D3
-
-この構成の推定コストを計算するには、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を参照してください。
-
-1. [**モジュール**] で、[**コンピューティング**] をクリックし、[**仮想マシン**] を必要なだけクリックして 7 つの仮想マシンを作成してください。
-2. 各仮想マシンで次を選択してください。
-	- 目的のリージョン
-	- 種類には **Windows**
-	- 価格レベルには**標準**
-	- **インスタンス サイズ**には、上記の表でのデフォルト サイズもしくは目的のサイズ
-
-> [AZURE.NOTE]Azure 料金計算ツールでは、SQL Server 2014 Enterprise を実行している 2 つの仮想マシンの SQL Server ライセンスの追加のコストは含まれません。詳細については、「[Virtual Machines Pricing-SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」を参照してください。
-
-### デプロイ フェーズ
-
 この構成をデプロイするには、次のプロセスを使用します。
 
 - フェーズ 1: Azure を構成する 
 
 	Azure PowerShell を使用して、ストレージ アカウント、可用性セット、およびクロスプレミス仮想ネットワークを作成します。詳細な構成手順については、「[フェーズ 1](virtual-machines-workload-high-availability-LOB-application-phase1.md)」を参照してください。
 
-- フェーズ2: ドメイン コントローラーを構成する
+- フェーズ 2: ドメイン コントローラーを構成する
 
 	仮想ネットワークの 2 つの Active Directory レプリカ ドメイン コントローラーと DNS 設定を構成します。詳細な構成手順については、「[フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md)」を参照してください。
 
@@ -117,16 +82,8 @@ Azure での高可用な基幹業務アプリケーションの基本的で代�
 
 構成が済むと、Web サーバー、または SQL Server を実行する仮想マシンをクラスターにさらに追加することで、この基幹業務アプリケーションを簡単に拡張できます。
 
-## その他のリソース
+## 次のステップ
 
-[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-workload-high-availability-LOB-application-overview.md)
+- 構成を開始する前に、実稼働ワークロードの[概要](virtual-machines-workload-high-availability-lob-application-overview.md)を入手します。
 
-[基幹業務アプリケーションのアーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)
-
-[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
-
-[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
-
-[Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
-
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

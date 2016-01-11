@@ -44,10 +44,6 @@
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-configure-push-apns](../../includes/app-service-mobile-dotnet-backend-configure-push-apns.md)]
 
-## <a name="publish-the-service"></a>サーバー プロジェクトを Azure にデプロイする
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service](../../includes/app-service-mobile-dotnet-backend-publish-service.md)]
-
 ## <a id="add-push"></a>プッシュ通知をアプリに追加する
 
 [AZURE.INCLUDE [app-service-mobile-add-push-notifications-to-ios-app.md](../../includes/app-service-mobile-add-push-notifications-to-ios-app.md)]
@@ -58,8 +54,8 @@
 
 ##<a id="more"></a>詳細
 
-* テンプレートを利用すれば、プラットフォーム間のプッシュやローカライズされたプッシュを柔軟に送信できます。テンプレートの登録方法は「[Azure Mobile Services 向け iOS クライアント ライブラリの使用方法](app-service-mobile-ios-how-to-use-client-library.md#templates)」にあります。
-* タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)」にあります。
+* テンプレートを利用すれば、プラットフォーム間のプッシュやローカライズされたプッシュを柔軟に送信できます。テンプレートの登録方法は「[Azure Mobile Services 向け iOS クライアント ライブラリの使用方法](app-service-mobile-ios-how-to-use-client-library.md#templates)」に記載されています。
+* タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)」に記載されています。
 
 <!-- Anchors.  -->
 [Generate iOS certificate signing request]: #certificates
@@ -77,4 +73,4 @@
 [iOS のクイック スタート]: app-service-mobile-ios-get-started.md
 [iOS クイック スタート]: app-service-mobile-ios-get-started.md
 
-<!---HONumber=AcomDC_1203_2015--->
+<!----HONumber=AcomDC_1223_2015-->

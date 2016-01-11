@@ -14,61 +14,115 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="12/22/2015" 
 	ms.author="nitinme"/>
 
 
-# Azure HDInsight での Apache Spark クラスターのリソースの管理
+# Azure HDInsight (Linux) での Apache Spark クラスターのリソースの管理
 
-リソース マネージャーは Spark クラスター ダッシュボードのコンポーネントであり、クラスターで実行される各アプリケーションによって使用されるコアや RAM などのリソースを管理できます。
+Azure HDInsight (Linux) の Spark には、クラスター リソースの管理とクラスターの正常性の監視を行うための Ambari Web UI が用意されています。クラスターで実行したアプリケーションを追跡するために、Spark History Server を使用することもできます。クラスターで現在実行されているアプリケーションを監視するには、YARN UI を使用することができます。この記事では、これらの UI にアクセスする手順と、これらのインターフェイスを使用して基本的なリソース管理タスクを実行する手順について説明します。
 
-## <a name="launchrm"></a>リソース マネージャーの起動方法
+**前提条件:**
 
-1. [Azure ポータル](https://ms.portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。 
+次のものが必要です。
+
+- Azure サブスクリプション。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- HDInsight Linux での Apache Spark クラスター。手順については、[Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
+
+## Ambari Web UI の起動方法
+
+1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。 
  
-2. Spark クラスター ブレードで、**[ダッシュ ボード]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。
+2. Spark クラスター ブレードで、**[ダッシュボード]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。
 
-	![リソース マネージャーを起動する](./media/hdinsight-apache-spark-resource-manager/HDI.Cluster.Launch.Dashboard.png "リソース マネージャーを開始する")
+	![Launch Ambari](./media/hdinsight-apache-spark-resource-manager/hdispark.cluster.launch.dashboard.png "リソース マネージャーを開始する")
 
-##<a name="scenariosrm"></a>リソース マネージャーを使用して問題を解決する方法
+3. これで、次の図のように、Ambari Web UI が起動されます。
 
-ここでは、Spark クラスターでよく発生することがある状況と、リソース マネージャーを使用してそれに対処する方法を説明します。
+	![Ambari Web UI](./media/hdinsight-apache-spark-resource-manager/ambari-web-ui.png "Ambari Web UI")
 
-### HDInsight の Spark クラスターが遅い
+## Spark History Server の起動方法
 
-HDInsight の Apache Spark クラスターはマルチテナント用に設計されているので、リソースは複数のコンポーネントに分割されます (Notebook、ジョブ サーバーなど)。これにより、コンポーネントが実行するためのリソースを取得できないことを心配することなくすべての Spark コンポーネントを同時に使用できますが、リソースがフラグメント化されるため各コンポーネントは遅くなります。これは、ニーズに基づいて調整できます。
+1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。
+
+2. クラスター ブレードの **[クイック リンク]** で、**[クラスター ダッシュボード]** をクリックします。**[クラスター ダッシュボード]** ブレードで **[Spark History Server]** をクリックします。
+
+	![Spark History Server](./media/hdinsight-apache-spark-resource-manager/launch-history-server.png "Spark History Server")
+
+	入力を求められたら、Spark クラスターの管理者資格情報を入力します。
 
 
-### Spark クラスターを含む Jupyter Notebook のみを使用します。どうすればすべてのリソースを割り当てることができますか。
+## Yarn UI の起動方法
 
-1. **[Spark ダッシュボード]** で **[Spark UI]** タブをクリックして、アプリケーションに割り当てることができる最大コア数と最大 RAM を調べます。
+Spark クラスターで現在実行されているアプリケーションを監視するには、YARN UI を使用することができます。YARN UI にアクセスするには、クラスターへの SSH トンネリングを有効にする必要があります。手順については、[SSH トンネリングを使用して Ambari Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)方法に関するページを参照してください。
 
-	![リソースの割り当て](./media/hdinsight-apache-spark-resource-manager/HDI.Spark.UI.Resource.png "Spark クラスターに割り当てられたリソースを検索します")
+1. 上のセクションの手順に従って、Ambari Web UI を起動します。
 
-	上の画面キャプチャでは、割り当て可能な最大コア数は 7 (合計 8 コアのうち 1 つは使用中) であり、割り当て可能な最大 RAM は 9 GB (合計 12 GB の RAM のうち、2 GB はシステム用、1 GB は他のアプリケーションで使用中) です。
+2. Ambari Web UI でページの左側にある一覧から [YARN] を選択します。
 
-	実行しているすべてのアプリケーションを考慮する必要もあります。実行中のアプリケーションは、**[Spark UI]** タブで確認できます。
+3. YARN サービスの情報が表示されたら、**[クイック リンク]** を選択します。クラスターのヘッド ノードの一覧が表示されます。ヘッド ノードのいずれかを選択し、**[ResourceManager UI]** を選択します。
 
-	![アプリケーションの実行](./media/hdinsight-apache-spark-resource-manager/HDI.Spark.UI.Running.Apps.png "クラスターで実行されているアプリケーション")
+	![Launch YARN UI](./media/hdinsight-apache-spark-resource-manager/launch-yarn-ui.png "Launch YARN UI")
+
+4. これで YARN UI が起動され、次のようなページが表示されます。
+
+	![YARN UI](./media/hdinsight-apache-spark-resource-manager/yarn-ui.png "YARN UI")
+
+##<a name="scenariosrm"></a>Ambari Web UI を使用してリソースを管理する方法
+
+ここでは、Spark クラスターでよく発生することがある状況と、Ambari Web UI を使用してそれに対処する方法を説明します。
+
+### Spark クラスターで BI は使用しません。リソースを取り戻すにはどうすればよいですか?
+
+1. 上の手順に従って、Ambari Web UI を起動します。左側のナビゲーション ウィンドウで、**[Spark]**、**[Configs]** の順にクリックします。
+
+2. 利用可能な構成の一覧で **[Custom spark-thrift-sparkconf]** を探し、**[spark.executor.memory]** および **[spark.drivers.core]** の値を **0** に変更します。
+
+	![Resources for BI](./media/hdinsight-apache-spark-resource-manager/spark-bi-resources.png "Resources for BI")
+
+3. **[保存]** をクリックします。行った変更の説明を入力し、もう一度 **[Save]** をクリックします。
+
+4. ページの上部に、Spark サービスの再起動を求めるメッセージが表示されます。変更内容を有効にするには、**[Restart]** をクリックします。
+
+
+### Jupyter Notebook が期待どおりに実行されていません。サービスを再起動するには、どうすればよいですか?
+
+1. 上の手順に従って、Ambari Web UI を起動します。左側のナビゲーション ウィンドウで、**[Jupyter]**、**[Service Actions]**、**[Restart All]** の順にクリックします。これで、すべてのヘッドノードで Jupyter サービスが開始されます。
+
+	![Restart Jupyter](./media/hdinsight-apache-spark-resource-manager/restart-jupyter.png "Restart Jupyter")
 
 	
-2. HDInsight Spark ダッシュ ボードで、**[リソース マネージャー]** タブをクリックし、**[既定のアプリケーション コア数]** および **[ワーカー ノードごとの既定の実行プログラム メモリ]** の値を指定します。他のプロパティは 0 に設定します。
 
-	![リソースの割り当て](./media/hdinsight-apache-spark-resource-manager/HDI.Spark.UI.Allocate.Resources.png "アプリケーションにリソースを割り当てます")
 
-### Spark クラスターで BI ツールを使用していません。どのようにしてリソースを取り戻せばいいですか。 
+## <a name="seealso"></a>関連項目
 
-Thrift サーバーのコア数と Thrift サーバーの実行プログラム メモリを 0 と指定します。コアやメモリを割り当てないと、Thrift サーバーは**待機**状態になります。
-
-![リソースの割り当て](./media/hdinsight-apache-spark-resource-manager/HDI.Spark.UI.No.Thrift.png "Thrift サーバーへのリソースがありません")
-
-##<a name="seealso"></a>関連項目
 
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
-* [HDInsight クラスターでの Spark のプロビジョニング](hdinsight-apache-spark-provision-clusters.md)
-* [HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
-* [Machine Learning アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
+
+### シナリオ
+
+* [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
+
+* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+
+* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+
+* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
+
+* [HDInsight での Spark を使用した Web サイト ログ分析](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+
+### アプリケーションの作成と実行
+
+* [Scala を使用してスタンドアロン アプリケーションを作成する](hdinsight-apache-spark-create-standalone-application.md)
+
+* [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
+
+### 拡張機能
+
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+
+* [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
+
 
 
 [hdinsight-versions]: ../hdinsight-component-versioning/
@@ -82,4 +136,4 @@ Thrift サーバーのコア数と Thrift サーバーの実行プログラム �
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

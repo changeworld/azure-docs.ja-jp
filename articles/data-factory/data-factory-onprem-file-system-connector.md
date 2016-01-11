@@ -479,7 +479,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 folderPath | フォルダーへのパス。例: myfolder<p>文字列内の特殊文字にはエスケープ文字 '\\' を使用します。例: folder\\subfolder の場合は folder\\\subfolder を指定し、d:\\samplefolder の場合は d:\\\samplefolder を指定します。</p><p>これを **partitionBy** と組み合わせて、スライス開始/終了の日時に基づいたフォルダーのパスを設定することができます。</p> | あり
 fileName | テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。このプロパティの値を指定しない場合、テーブルはフォルダー内のすべてのファイルを指定します。<p>出力データセットに fileName が指定されていない場合、生成されるファイル名は次の形式になります:</p><p>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p>) | いいえ
 partitionedBy | partitionedBy を利用して時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 | いいえ
-形式 | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。AvroFormat が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある形式のセクションを参照してください。 | いいえ
+形式 | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。AvroFormat が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある形式のセクションを参照してください。**Format プロパティは現在、オンプレミスのファイル システムには対応していません。ここで説明しているように、この対応は間もなく開始される予定です。** | いいえ
 fileFilter | すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<p>使用可能な値: * (複数の文字) および ? (単一の文字)。</p><p>例 1: "fileFilter": "*.log"</p>例 2: "fileFilter": 2014-1-?.txt"</p><p>**注**: fileFilter は入力の FileShare データセットに適用できます</p> | いいえ
 | compression | データの圧縮の種類とレベルを指定します。サポートされる種類: GZip、Deflate、および BZip2。サポートされるレベル: Optimal および Fastest。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
 
@@ -603,4 +603,4 @@ false | mergeFiles | <p>ソース フォルダ Folder1 が次のような構造�
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->

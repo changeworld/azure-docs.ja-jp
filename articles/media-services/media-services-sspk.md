@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Microsoft® Smooth Streaming Client Porting Kit のライセンス" 
+	pageTitle="Licensing Microsoft® Smooth Streaming Client Porting Kit" 
 	description="Microsoft® Smooth Streaming Client Porting Kit のライセンスを取得する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -16,7 +16,7 @@
 	ms.date="10/30/2015"  
 	ms.author="xpouyat"/>
 
-#Microsoft® Smooth Streaming Client Porting Kit のライセンス
+#Licensing Microsoft® Smooth Streaming Client Porting Kit
 
 ##概要
 
@@ -46,7 +46,7 @@ SSPK は、高い事業価値を提供する契約条件に基づいて使用許
   -	サンプル PAL 実装 (Linux)
   -	サンプル HAL 実装 (GStreamer)
 
-##ライセンスの選択肢
+##ライセンス オプション
 
 Microsoft Smooth Streaming Client Porting Kit は、2 種類のライセンス契約で使用許諾されます。スムーズ ストリーミング クライアントの中間製品を開発するための契約と、スムーズ ストリーミング クライアントの最終製品をエンド ユーザーに配布するための契約です。
  
@@ -99,6 +99,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - Fluendo SA
 - GIGABYTE Technology
 - Guangdong OPPO Mobile Telecommunications Corp., Ltd.
+- HANDAN BroadInfoCom Co., Ltd.
 - Infomir GMBH
 - Inside Secure
 - Irdeto USA Inc.
@@ -125,10 +126,9 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - Vestel Elektronik Sanayi ve Ticaret A.S.
 - VimpelCom (OJSC)
 - VisualOn, Inc.
-- WOOJEON & HANDAN Co., Ltd
 - ZTE Corporation
 
-##Microsoft Smooth Streaming Client Final Product Agreement Licensees
+##Microsoft Smooth Streaming Client 最終製品契約ライセンシー
 
 - Advanced Digital Broadcast SA
 - AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
@@ -150,6 +150,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - Fluendo SA
 - GIGABYTE Technology
 - Guangdong OPPO Mobile Telecommunications Corp., Ltd.
+- HANDAN BroadInfoCom Co., Ltd.
 - Hisense International Co., Ltd
 - Homecast Co.,Ltd
 - Hon Hai Precision Industry Co., Ltd.
@@ -181,7 +182,6 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - Virgin Media Limited
 - VIZIO, Inc.
 - Wistron Corporation
-- WOOJEON & HANDAN Co., Ltd
 - WOOX Innovations Limited
 - ZTE Corporation
 
@@ -193,4 +193,4 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

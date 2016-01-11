@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/19/2015"
+   ms.date="12/21/2015"
    ms.author="joaoma" />
 
 # SQL AlwaysOn のロード バランサーの構成
@@ -53,7 +53,7 @@ SQL Server AlwaysOn (リスナー) エンドポイントでは、ILB のサポ�
 
 上の例では、sqlsvc1 および sqlsvc2 という 2 つの VM がクラウド サービス "Sqlsvc" で実行されます。DirectServerReturn スイッチで ILB を作成したら、負荷分散されたエンドポイントを ILB に追加して、SQL が可用性グループのリスナーを構成できるようにします。
 
-SQL AlwaysOn の作成について詳しくは、「[チュートリアル: Azure AlwaysOn 可用性グループ](https://msdn.microsoft.com/library/dn249504.aspx)」または「[Using the Portal Gallery (ポータル ギャラリーの使用)](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)」を参照してください。
+SQL AlwaysOn の作成について詳しくは、[Azure リソース マネージャー テンプレートを使用した SQL AlwaysOn のデプロイ](virtual-machines-workload-template-sql-alwayson.md)、または[ポータル ギャラリーの使用](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関するページを参照してください。
 
 
 ## 関連項目
@@ -67,4 +67,4 @@ SQL AlwaysOn の作成について詳しくは、「[チュートリアル: Azur
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_1223_2015-->

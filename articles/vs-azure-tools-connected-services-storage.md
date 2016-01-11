@@ -5,14 +5,14 @@
    documentationCenter="na"
    authors="TomArcher"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags 
    ms.service="visual-studio-online"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="mobile"
-   ms.date="08/12/2015"
+   ms.date="12/16/2015"
    ms.author="tarcher" />
 
 # Visual Studio 接続済みサービスを使用した Azure ストレージの追加
@@ -42,17 +42,17 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
 1. Visual Studio でプロジェクトを開き、ソリューション エクスプローラーで **[参照]** ノードのコンテキスト メニューを開いて、**[接続済みサービスの追加]** を選択します。
 
-    ![接続済みサービスの追加](./media/vs-azure-tools-connected-services-storage/IC796702.png)
+    ![Adding a connected service](./media/vs-azure-tools-connected-services-storage/IC796702.png)
 
 1. **[接続済みサービスの追加]** ダイアログ ボックスで、**[Azure Storage]** を選択し、**[構成]** をクリックします。Azure にまだログインしていない場合は、ログインを促すメッセージが表示される場合があります。
 
-    ![[接続済みサービスの追加] ダイアログ ボックス - ストレージ](./media/vs-azure-tools-connected-services-storage/IC796703.png)
+    ![Add Connected Service dialog box - Storage](./media/vs-azure-tools-connected-services-storage/IC796703.png)
 
 1. **[Azure Storage]** ダイアログ ボックスで、既存のストレージ アカウントを選択し、**[追加]** をクリックします。
 
     新しいストレージ アカウントを作成する必要がある場合は、次の手順に進みます。必要ない場合は、手順 6 に進みます。
 
-    ![[Azure Storage] ダイアログ ボックス](./media/vs-azure-tools-connected-services-storage/IC796704.png)
+    ![Azure Storage dialog box](./media/vs-azure-tools-connected-services-storage/IC796704.png)
 
 1. 新しいストレージ アカウントを作成するには
 
@@ -60,7 +60,7 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
     1. **[ストレージ アカウントの作成** ] ダイアログ ボックスに入力し、**[作成]** ボタンをクリックします。
     
-        ![[Azure Storage] ダイアログ ボックス](./media/vs-azure-tools-connected-services-storage/create-storage-account.png)
+        ![Azure Storage dialog box](./media/vs-azure-tools-connected-services-storage/create-storage-account.png)
 
         **[Azure Storage]** ダイアログ ボックスに戻ると、新しいストレージが一覧に表示されます。
 
@@ -68,7 +68,7 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
 1. WebJob プロジェクトの [サービス参照] ノードの下に、ストレージの接続済みサービスが表示されます。
 
-    ![Web ジョブ プロジェクト内の Azure ストレージ](./media/vs-azure-tools-connected-services-storage/IC796705.png)
+    ![Azure storage in web jobs project](./media/vs-azure-tools-connected-services-storage/IC796705.png)
 
 1. 表示された作業の開始ページを確認し、プロジェクトがどのように変更されたかを確認します。作業の開始ページは、接続済みサービスを追加したかどうかに関係なく、ブラウザーに表示されます。推奨される次の手順とコード例を確認したり、[変更内容] ページに切り替えて、プロジェクトに追加された参照と、コードと構成ファイルがどのように変更されたかを確認したりすることができます。
 
@@ -94,4 +94,4 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
      - [Storage のドキュメント (azure.microsoft.com)](http://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

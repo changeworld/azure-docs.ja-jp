@@ -57,12 +57,12 @@ ASP.NET 5 プロジェクトでキューにアクセスするには、Azure キ�
 3. ストレージ アカウント内のキュー オブジェクトを参照する **CloudQueueClient** オブジェクトを取得します。
 
 	    // Create the table client.
-    	CloudQuecClient queueClient = storageAccount.CreateCloudTableClient();
+    	CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
 4. 特定のキューを参照する **CloudQueue** オブジェクトを取得します。
 
     	// Get a reference to a table named "messageQueue"
-	    CloudTable messageQueue = queueClient.GetQueueReference("messageQueue");
+	    CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
 
 **注:** 上記のコードはすべて、以下の例に示すコードの前に使用してください。
@@ -176,4 +176,4 @@ ASP.NET 5 プロジェクトでキューにアクセスするには、Azure キ�
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/12/2015"
+	ms.date="12/18/2015"
 	ms.author="billmath;andkjell"/>
 
 # Azure AD Connect でのデバイスの書き戻しの有効化
@@ -26,6 +26,9 @@ AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利�
 
 >[AZURE.NOTE]デバイスの書き戻しには、Azure AD Premium に対するサブスクリプションが必要です。
 
+.
+
+>[AZURE.IMPORTANT]デバイスは、ユーザーと同じフォレスト内にある必要があります。デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイはサポートされていません。
 
 ## パート 1: Azure AD Connect のインストール
 1. カスタム設定または簡単設定を使用して Azure AD Connect をインストールします。すべてのユーザーとグループの同期に成功してから、デバイスの書き戻しを有効にすることをお勧めします。
@@ -64,7 +67,7 @@ AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利�
 Azure AD Connect でデバイスの書き戻しを有効にするには、次の手順を使用します。
 
 1.	インストール ウィザードをもう一度実行します。[追加のタスク] ページで **[同期オプションのカスタマイズ]** を選択し、**[次へ]** をクリックします。![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback2.png)
-2.	[オプション機能] ページで、デバイスの書き戻しを変更できるようになります。Azure AD Connect の準備手順が完了していない場合は、[オプション機能] ページでデバイスの書き戻しの設定を変更できないことに注意してください。[デバイスの書き戻し] チェック ボックスをオンにして、**[次へ]** をクリックします。チェックボックスがまだオフの場合は、[トラブルシューティングのセクション](#the-writeback-checkbox-is-still-disabled)を参照してください。![デバイスの書き戻し](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback3.png)
+2.	[オプション機能] ページで、デバイスの書き戻しを変更できるようになります。Azure AD Connect の準備手順が完了していない場合は、[オプション機能] ページでデバイスの書き戻しの設定を変更できないことに注意してください。[デバイスの書き戻し] チェックボックスをオンにして、**[次へ]** をクリックします。チェックボックスがまだオフの場合は、[トラブルシューティングのセクション](#the-writeback-checkbox-is-still-disabled)を参照してください。![デバイスの書き戻し](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback3.png)
 3.	[書き戻し] ページでは、指定したドメインが既定の [デバイスの書き戻しフォレスト] として表示されます。 ![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback4.png)
 4.	その他の構成は変更しないで、ウィザードのインストールを完了します。必要に応じて、「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」をご覧ください。
 
@@ -126,4 +129,4 @@ Active Directory の構成を確認します。つまり、configuration 名前�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

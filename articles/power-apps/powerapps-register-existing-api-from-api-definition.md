@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="12/09/2015"
+   ms.date="12/17/2015"
    ms.author="guayan"/>
 
 # Swagger 2.0 API 定義からの API の登録  
@@ -40,7 +40,7 @@
 	- ``host`` プロパティでは、既存の API の実際のエンドポイントを参照する必要があります。スキームやサブ パスは使用しないでください。たとえば、「``api.contoso.com``」のように入力します。<br/><br/>
 	- 既存の API エンドポイントがある場合は、そのサブ パスを ``basePath`` プロパティで列記する必要があります。フォワードスラッシュ ``/`` で始めます。たとえば、「``/purchaseorderapi``」のように入力します。
 
-2. 既存の API に App Service 環境から安全にアクセスできることを確認します。 <br/><br/> a) インターネットを使用して API に問題なくアクセスできる場合は、App Service 環境と既存の API の間に HTTP 基本アクセス認証をセットアップできます。方法については、[こちら](powerapps-configure-apis.md)を参照してください。 <br/><br/> b) 組織のネットワーク内に API を置きたい場合は、App Service 環境に仮想ネットワークをセットアップして、組織のネットワークに安全にアクセスできます。方法については、[こちら](../app-service-app-service-environment-intro.md)を参照してください。
+2. 既存の API に App Service 環境から安全にアクセスできることを確認します。 <br/><br/> a) インターネットを使用して API に問題なくアクセスできる場合は、App Service 環境と既存の API の間に HTTP 基本アクセス認証をセットアップできます。方法については、「[既存 API とプロパティの更新](powerapps-configure-apis.md)」を参照してください。 <br/><br/> b) 組織のネットワーク内に API を置きたい場合は、App Service 環境に仮想ネットワークをセットアップして、組織のネットワークに安全にアクセスできます。「[App Service 環境の概要](../app-service-app-service-environment-intro.md)」を参照してください。
 
 3. [Azure ポータル](https://portal.azure.com/)で、**[PowerApps]** を選択して、**[API の管理]** を選択します。 ![][11]
 4. [API の管理] で、**[追加]** を選択します。 ![][12]
@@ -67,4 +67,4 @@
 [12]: ./media/powerapps-register-existing-api-from-api-definition/add-api-button.png
 [13]: ./media/powerapps-register-existing-api-from-api-definition/add-api-blade.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->

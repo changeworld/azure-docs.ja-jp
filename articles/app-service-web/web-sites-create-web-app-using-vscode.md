@@ -13,14 +13,18 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/14/2015" 
+	ms.date="12/17/2015" 
 	ms.author="erikre"/>
 
 # Visual Studio Code を使用した ASP.NET 5 Web アプリの作成
 
 ## 概要
 
-このチュートリアルでは、[Visual Studio コード (VS コード)](http://code.visualstudio.com//Docs/whyvscode) を使用して ASP.NET 5 Web アプリを作成したり、それを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイしたりする方法について説明します。ASP.NET 5 は、ASP.NET の刷新版です。ASP.NET 5 は、.NET を使用して最新のクラウドベースの Web アプリを構築するための、新しいオープン ソースのクロスプラットフォーム フレームワークです。詳細については、[ASP.NET 5 の概要](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)に関するページを参照してください。Azure App Service Web Apps については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
+このチュートリアルでは、[Visual Studio コード (VS コード)](http://code.visualstudio.com//Docs/whyvscode) を使用して ASP.NET 5 Web アプリを作成したり、それを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイしたりする方法について説明します。
+
+> [AZURE.NOTE]この記事は、Web アプリについて言及していますが、API アプリとモバイル アプリにも適用されます。
+
+ASP.NET 5 は、ASP.NET の刷新版です。ASP.NET 5 は、.NET を使用して最新のクラウドベースの Web アプリを構築するための、新しいオープン ソースのクロスプラットフォーム フレームワークです。詳細については、[ASP.NET 5 の概要](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)に関するページを参照してください。Azure App Service Web Apps については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
 
 [AZURE.INCLUDE [app-service-web-try-app-service.md](../../includes/app-service-web-try-app-service.md)]
 
@@ -119,7 +123,7 @@ Web アプリが作成され、アプリのすべての NuGet パッケージが
 
 	コマンド ウィンドウに、アプリケーションが起動したことが示されます。コマンド ウィンドウにこのメッセージが表示されない場合は、VS コードの左下隅にプロジェクトのエラーが示されていないかどうかを確認します。
 	
-	> [AZURE.NOTE]**コマンド パレット**からコマンドを発行するには、コマンド ラインの先頭に **>** 文字が必要です。*project.json* ファイル内の **web** コマンドに関する詳細を表示できます。
+	> [AZURE.NOTE]**コマンド パレット**からコマンドを発行するには、コマンド ラインの先頭に **>** 文字が必要です。**web** コマンドに関する詳細は *project.json* ファイルで確認できます。
 
 2. ブラウザーを開き、次の URL に移動します。
 
@@ -258,4 +262,4 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 ## 概要
 このチュートリアルでは、VS コードで、Web アプリを作成し、Azure にデプロイする方法を学習しました。VS コードの詳細については、[Visual Studio Code を使用する理由](https://code.visualstudio.com/Docs/)に関する記事をご覧ください。 App Service Web Apps の詳細については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

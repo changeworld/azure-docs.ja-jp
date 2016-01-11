@@ -30,33 +30,33 @@ Microsoft Azure SUSE Linux VM で SAP NetWeaver をテストする際に考慮�
 
 Azure での SAP のテストには、SLES 11SP4 と SLES 12 のみを使用します。Azure イメージ ギャラリーには、特殊な SUSE イメージ "SLES 11 SP3 for SAP CAL" がありますが、これは一般的な使用を目的としたものではありません。これは SAP "CAL" と呼ばれる SAP Cloud Appliance Library ソリューション用に予約されています (<https://cal.sap.com/>)。パブリック ネットワークからこのイメージを非表示にするオプションがないため、使用しないでください。
 
-Azure での新しいテストはすべて、Azure リソース マネージャーを使用して行う必要があります。Azure Powershell または CLI を使用して SUSE SLES イメージおよびバージョンを検索するには、次のコマンドを使用します。この出力は、新しい SUSE Linux VM をデプロイするために json テンプレートで OS イメージを定義することなどに使用できます。
+Azure での新しいテストはすべて、Azure リソース マネージャーを使用して行う必要があります。Azure Powershell または CLI を使用して SUSE SLES イメージおよびバージョンを検索するには、次のコマンドを使用します。この出力は、新しい SUSE Linux VM をデプロイするために json テンプレートで OS イメージを定義することなどに使用できます。以下の PS コマンドは、バージョン 1.0.1 以上の Azure Powershell に対して有効です。
 
 * SUSE を含む既存の発行元の検索:
 
    ```
-   PS  : Get-AzureVMImagePublisher -Location "West Europe"  | where-object { $_.publishername -like "*US*"  }
+   PS  : Get-AzureRmVMImagePublisher -Location "West Europe"  | where-object { $_.publishername -like "*US*"  }
    CLI : azure vm image list-publishers westeurope | grep "US"
    ```
 
 * SUSE からの既存の提供を検索:
       
    ```
-   PS  : Get-AzureVMImageOffer -Location "West Europe" -Publisher "SUSE"
+   PS  : Get-AzureRmVMImageOffer -Location "West Europe" -Publisher "SUSE"
    CLI : azure vm image list-offers westeurope SUSE
    ```
       
 * SUSE SLES の提供を検索:
       
    ```
-   PS  : Get-AzureVMImageSku -Location "West Europe" -Publisher "SUSE" -Offer "SLES"
+   PS  : Get-AzureRmVMImageSku -Location "West Europe" -Publisher "SUSE" -Offer "SLES"
    CLI : azure vm image list-skus westeurope SUSE SLES
    ```
       
 * SLES sku の特定のバージョンを検索:
       
    ```
-   PS  : Get-AzureVMImage -Location "West Europe" -Publisher "SUSE" -Offer "SLES" -skus "12"
+   PS  : Get-AzureRmVMImage -Location "West Europe" -Publisher "SUSE" -Offer "SLES" -skus "12"
    CLI : azure vm image list westeurope SUSE SLES 12
    ```
      
@@ -76,12 +76,16 @@ Azure での新しいテストはすべて、Azure リソース マネージャ�
 
 ## オンプレミスから Azure への SUSE VM のアップロード
 
-次のブログでは、この手順について説明しています。 <https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-vhd-suse/>
+次のブログでは、この手順について説明しています。
+
+<https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-vhd-suse/>
 
 最後にプロビジョニング解除手順を使用せずに VM をアップロードして、既存の SAP インストールやホスト名を保持する場合は、次の項目をチェックする必要があります。
 
 * デバイス ID ではなく、UUID を使用して OS ディスクがマウントされていることを確認します。OS ディスクには、/etc/fstab で UUID に変更するだけでは十分ではありません。OS ディスクが以前のブート ローダーを覚えていたり、YaST 経由や /boot/grub/menu.lst の編集によりそのブート ローダーを適用したりする場合があります。
-* SUSE OS ディスクに vhdx 形式を使用して、Azure にアップロードするために vhd に変換している場合、ネットワーク デバイスが eth0 から eth1 に変更される可能性が非常に高くなります。後で Azure で起動するときに、eth0 に戻さなければならない問題を回避する方法は、<https://dartron.wordpress.com/2013/09/27/fixing-eth1-in-cloned-sles-11-vmware/> を参照してください。
+* SUSE OS ディスクに vhdx 形式を使用して、Azure にアップロードするために vhd に変換している場合、ネットワーク デバイスが eth0 から eth1 に変更される可能性が非常に高くなります。後で Azure で起動するときに、eth0 に戻さなければならない問題を回避する方法は、こちらを参照してください。
+
+<https://dartron.wordpress.com/2013/09/27/fixing-eth1-in-cloned-sles-11-vmware/>
 
 この記事に記載されていることに加え、以下も削除することをお勧めします。
 
@@ -89,9 +93,33 @@ Azure での新しいテストはすべて、Azure リソース マネージャ�
 
 複数の NIC がある場合を除き、waagent をインストールして潜在的な問題を回避する必要もあります。
 
+## Azure に SUSE VM をデプロイする
+
+json のテンプレート ファイルを使用して、新しい Azure リソース マネージャー モデルに新しい VM を作成する必要があります。一度 json のテンプレート ファイルが作成されると、Powershell の代わりに次の CLI コマンドを使用して VM をデプロイできます。
+
+   ``` azure group deployment create "<deployment name>" -g "<resource group name>" --template-file "<../../filename.json>"
+   
+   ``` json のテンプレート ファイルの詳細については、こちらをご覧ください。
+
+<https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/>
+
+<https://azure.microsoft.com/documentation/templates/>
+
+CLI と Azure リソース マネージャーの詳細については、こちらをご覧ください。
+
+<https://azure.microsoft.com/documentation/articles/xplat-cli-azure-resource-manager/>
+
 ## SAP のライセンスとハードウェア キー
 
 正式な SAP-Windows-Azure 証明書のために、SAP ライセンスに使用される SAP ハードウェア キーを計算するための新しいメカニズムが導入されました。SAP カーネルはこれを利用するように適合させる必要がありました。Linux 向けの SAP カーネルの現在のバージョンには、このコード変更が含まれていません。そのため、特定の状況 (Azure VM のサイズ変更など) では、SAP ハードウェア キーが変更され、SAP のライセンスが有効でなくなる場合があります。
+
+## SUSE の sapconf パッケージ
+
+SUSE には、SAP 固有の設定のセットを処理する、"sapconf"と呼ばれるパッケージが用意されています。このパッケージの詳細 (機能とインストール方法) については、こちらをご覧ください。
+
+<https://www.suse.com/communities/blog/using-sapconf-to-prepare-suse-linux-enterprise-server-to-run-sap-systems/>
+
+<http://scn.sap.com/community/linux/blog/2014/03/31/what-is-sapconf-or-how-to-prepare-a-suse-linux-enterprise-server-for-running-sap-systems>
 
 ## 分散 SAP インストールでの NFS 共有
 
@@ -107,7 +135,7 @@ LVM は、Azure で完全に検証されていません。複数の Azure デー
 
 ## SUSE Azure リポジトリ
 
-標準の Azure SUSE リポジトリへのアクセスに問題がある場合に、それをリセットする単純なコマンドがあります。この問題は、プライベート OS イメージを Azure のリージョンに作成した後、このイメージを別のリージョン (このプライベート OS イメージに基づいて新しい仮想マシンをデプロイするリージョン) にコピーする際に発生することがあります。VM 内で次のコマンドを実行します。
+標準の Azure SUSE リポジトリへのアクセスに問題がある場合に、それをリセットする単純なコマンドがあります。この問題は、プライベート OS イメージを Azure リージョンに作成した後、このイメージを別のリージョン (このプライベート OS イメージに基づいて新しい仮想マシンをデプロイするリージョン) にコピーする際に発生することがあります。VM 内で次のコマンドを実行します。
 
    ```
    service guestregister restart
@@ -133,4 +161,4 @@ LVM は、Azure で完全に検証されていません。複数の Azure デー
  
 これは実際には Azure 固有のトピックではなく、全般的なものですが、理解しておくことが重要です。仮想化環境では、Linux 上の Oracle にはサポートの制約があります。つまり、Azure のようなパブリック クラウドでは、SUSE または RedHat 上の Oracle を SAP はサポートしないことを意味します。このトピックについては、お客様が直接 Oracle に問い合わせる必要があります。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

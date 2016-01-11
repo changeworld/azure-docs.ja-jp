@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/17/2015"
+	ms.date="12/18/2015"
 	ms.author="v-aabrol"/>
 
 
@@ -64,7 +64,8 @@ Azure AD への OpsGenie の統合を構成するには、ギャラリーから�
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに、「**OpsGenie**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_01.png)<br>
-7. 結果ウィンドウで **[OpsGenie]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>
+7. 結果ウィンドウで **[OpsGenie]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_02.png)<br>
+
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、OpsGenie で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -94,7 +95,7 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_04.png) <br>
 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが OpsGenie アプリケーションへのサインオンに使用する URL を入力します。**“https://app.opsgenie.com/auth/login”**
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが OpsGenie アプリケーションへのサインオンに使用する URL を入力します。**"https://app.opsgenie.com/auth/login"**
 
     > [AZURE.NOTE]サインオン URL が必要な場合、[OpsGenie サポート チーム](mailto:support@opsgenie.com)にお問い合わせください。
 
@@ -129,7 +130,7 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
     d.**[変更を保存]** をクリックします。
 
 
-6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD のシングル サインオン][10]<br>
+6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD のシングル サインオン][10]<br>
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD のシングル サインオン][11]
 
@@ -247,4 +248,4 @@ Britta にプロファイルの設定方法が記載されたメールが届き�
 [204]: ./media/active-directory-saas-opsgenie-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-opsgenie-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/30/2015" 
-	ms.author="szark"/>
+	ms.date="12/14/2015" 
+	ms.author="mingzhan"/>
 
 
 
@@ -80,6 +80,7 @@ Azure Linux エージェント (usr/sbin/waagent) は仮想マシンと Azure �
 * openSUSE 12.3+
 * SLES 11 SP2+
 * Oracle Linux 6.4+
+* Red Hat 6.7+
 
 サポートされるその他のシステム:
 
@@ -315,9 +316,9 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 
 - プロビジョニング中に Ubuntu Cloud Image にリソース ディスク マウント ポイントとスワップ領域を構成する際は、次のリソースを参照してください。
 
- - [Ubuntu Wiki: スワップ パーティションの構成](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)に関するページ
+ - [Ubuntu Wiki: スワップ パーティションの構成に関するページ](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
  - [Azure の仮想マシンにカスタム データを挿入する](virtual-machines-how-to-inject-custom-data.md)
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1223_2015-->
