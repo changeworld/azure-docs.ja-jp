@@ -61,7 +61,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、東京、ワシントン DC |
 |**China Telecom Global** | サポートされています | サポートされていません | 香港 |
 |**Cologix** | 近日対応予定 | サポートされていません | モントリオール+、トロント+ |
-| **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | サポートされています | サポートされています | アムステルダム、ロンドン |
+| **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | サポートされています | サポートされています | アムステルダム、ダブリン+、ロンドン |
 | **Comcast** | サポートされています | サポートされていません | シリコン バレー、ワシントン DC |
 | **CoreSite** | サポートされています | サポートされています | ロサンゼルス | 
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | サポートされています | アムステルダム、アトランタ、シカゴ、ダラス、香港、ロンドン、ロサンゼルス、メルボルン、ニューヨーク、大阪、サンパウロ、シアトル、シリコン バレー、シンガポール、シドニー、東京、トロント+、ワシントン DC |
@@ -74,7 +74,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **MTN** | サポートされています | サポートされています | ロンドン |
 | **NEXTDC** | サポートされています | サポートされています | メルボルン、シドニー |
 | **NTT Communications** | サポートされています | サポートされていません | ロンドン+、東京 |
-| **[Orange](http://www.orange-business.com/)** | サポートされています | サポートされていません | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、ワシントン DC |
+| **[Orange](http://www.orange-business.com/)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、ワシントン DC |
 | **PCCW Global Limited** | サポートされています | サポートされていません | 香港 |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | サポートされています | サポートされていません | シンガポール |
 | **ソフトバンク** | 近日対応予定 | サポートされていません | 大阪、東京 | 
@@ -139,4 +139,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

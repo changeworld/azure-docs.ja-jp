@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure PowerShell を使用した初めての Azure Data Factory パイプラインの作成"
-	description="このチュートリアルでは、Azure PowerShell を使用して、サンプルの Azure Data Factory パイプラインを作成します。"
+	pageTitle="Azure Data Factory を使ってみる (Azure リソース マネージャー テンプレート)"
+	description="このチュートリアルでは、Azure リソース マネージャー テンプレートを使用して、サンプルの Azure Data Factory パイプラインを作成します。"
 	services="data-factory"
 	documentationCenter=""
 	authors="spelluru"
@@ -25,27 +25,31 @@
 - [Using Resource Manager Template](data-factory-build-your-first-pipeline-using-arm.md)
 
 
-この記事では、Azure リソース マネージャー テンプレートを使用して最初のパイプラインを作成する方法を学習します。このチュートリアルの手順は次のとおりです。
+この記事では、Azure リソース マネージャー (ARM) テンプレートを使用して最初の Azure データ ファクトリを作成する方法を学習します。
 
-1.	データ ファクトリを作成する。
-2.	リンクされたサービス (データ ストア、計算) とデータセットを作成する。
-3.	パイプラインを作成する。
-
- 
 
 ## 前提条件
 チュートリアルの「概要」トピックに記載されている前提条件とは別に、次をインストールする必要があります。
 
-- **Azure PowerShell をインストールします**。「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。
-- この記事では、Azure Data Factory サービスの概念については説明しません。サービスの詳細については、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。 
+- 先に進む前に、「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」に目を通し、前提条件の手順を完了する**必要があります**。 
+- **Azure PowerShell をインストールします**。「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。
+- この記事では、Azure Data Factory サービスの概念については説明しません。サービスの詳細については、[Azure Data Factory の概要](data-factory-introduction.md)に関するページを参照してください。 
 - 「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」を参照して、Azure リソース マネージャー (ARM) テンプレートについて確認してください。 
  
 
 ## 手順 1: ARM テンプレートを作成する
 
-以下の内容を含む **ADFTutorialARM.json** という名前の JSON ファイルを **C:\\ADFGetStarted** フォルダーに作成します。
+以下の内容を含む **ADFTutorialARM.json** という名前の JSON ファイルを **C:\ADFGetStarted** フォルダーに作成します。
 
 > [AZURE.IMPORTANT]**storageAccountName** 変数と **storageAccountKey** 変数は、実際の値に変更してください。また、**dataFactoryName** も変更してください。この名前は一意であることが必要です。
+
+このテンプレートでは、次の Data Factory エンティティを作成できます。
+
+1. **TutorialDataFactoryARM** という名前の**データ ファクトリ**。データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。パイプラインには、1 つまたは複数のアクティビティを含めることができます。たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行し、入力データを変換して出力データを生成する HDInsight Hive アクティビティなどを含めることができます。 
+2. 2 つの**リンクされたサービス** (**StorageLinkedService** と **HDInsightOnDemandLinkedService**)。これらのリンクされたサービスでは、Azure ストレージ アカウントとオンデマンド Azure HDInsight クラスターをデータ ファクトリにリンクします。Azure ストレージ アカウントには、このサンプルのパイプラインの入力データと出力データが保持されます。HDInsight のリンクされたサービスは、このサンプルのパイプラインのアクティビティに指定された Hive スクリプトを実行するために使用されます。自分のシナリオで使用するデータ ストアやコンピューティング サービスを特定し、リンクされたサービスを作成して、それらのサービスをデータ ファクトリにリンクする必要があります。 
+3. 2 つの (入力/出力) **データセット** (**AzureBlobInput** と **AzureBlobOutput**)。これらのデータセットは、Hive 処理における入力データと出力データを表します。これらのデータセットは、このチュートリアルで前に作成した **StorageLinkedService** を参照します。このリンクされたサービスは Azure ストレージ アカウントを指し、データセットは入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。   
+
+**[Data Factory エディターを使用する]** タブをクリックすると、このテンプレートで使用する JSON プロパティの詳細に関する記事に切り替わります。
 
 	{
 	    "contentVersion": "1.0.0.0",
@@ -59,6 +63,7 @@
 	        "apiVersion": "2015-10-01",
 	        "storageLinkedServiceName": "StorageLinkedService",
 	        "hdInsightOnDemandLinkedServiceName": "HDInsightOnDemandLinkedService",
+	        "blobInputDataset": "AzureBlobInput",
 	        "blobOutputDataset": "AzureBlobOutput",
 	        "singleQuote": "'"
 	    },
@@ -105,70 +110,108 @@
 	                        "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'), '/linkedServices/', variables('storageLinkedServiceName'))]"
 	                    ],
 	                    "type": "datasets",
+	                    "name": "[variables('blobInputDataset')]",
+	                    "apiVersion": "[variables('apiVersion')]",
+						    "properties": {
+						        "type": "AzureBlob",
+						        "linkedServiceName": "StoraegLinkedService",
+						        "typeProperties": {
+						            "fileName": "input.log",
+						            "folderPath": "adfgetstarted/inputdata",
+						            "format": {
+						                "type": "TextFormat",
+						                "columnDelimiter": ","
+						            }
+						        },
+						        "availability": {
+						            "frequency": "Month",
+						            "interval": 1
+						        },
+						        "external": true,
+						        "policy": {}
+						    }
+	                    },
+	                {
+	                    "dependsOn": [
+	                        "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'))]",
+	                        "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'), '/linkedServices/', variables('storageLinkedServiceName'))]"
+	                    ],
+	                    "type": "datasets",
 	                    "name": "[variables('blobOutputDataset')]",
 	                    "apiVersion": "[variables('apiVersion')]",
-	                      "properties": {
-	                        "type": "AzureBlob",
-	                        "linkedServiceName": "StorageLinkedService",
-	                        "typeProperties": {
-	                          "folderPath": "data/partitioneddata",
-	                          "format": {
-	                            "type": "TextFormat",
-	                            "columnDelimiter": ","
-	                          }
-	                        },
-	                        "availability": {
-	                          "frequency": "Month",
-	                          "interval": 1
-	                        }
-	                      }
+						    "properties": {
+						        "published": false,
+						        "type": "AzureBlob",
+						        "linkedServiceName": "StorageLinkedService",
+						        "typeProperties": {
+						            "folderPath": "adfgetstarted/partitioneddata",
+						            "format": {
+						                "type": "TextFormat",
+						                "columnDelimiter": ","
+						            }
+						        },
+						        "availability": {
+						            "frequency": "Month",
+						            "interval": 1
+						        }
+						    }
 	                    },
 	                    {
 	                        "dependsOn": [
 	                            "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'))]",
 	                            "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'), '/linkedServices/', variables('storageLinkedServiceName'))]",
 	                            "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'), '/linkedServices/', variables('hdInsightOnDemandLinkedServiceName'))]",
+	                            "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'), '/datasets/', variables('blobInputDataset'))]",
 	                            "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'), '/datasets/', variables('blobOutputDataset'))]"
 	                        ],
 	                        "type": "datapipelines",
 	                        "name": "[variables('dataFactoryName')]",
 	                        "apiVersion": "[variables('apiVersion')]",
-	                        "properties": {
-	                            "description": "My first Azure Data Factory pipeline using ARM",
-	                            "activities": [
-	                              {
-	                                "type": "HDInsightHive",
-	                                "typeProperties": {
-	                                  "scriptPath": "script/partitionweblogs.hql",
-	                                  "scriptLinkedService": "StorageLinkedService",
-	                                  "defines": {
-                                        "partitionedtable": "[concat('wasb://data@', variables('storageAccountName'), '.blob.core.windows.net/partitioneddata')]"	                                  }
-	                                },
-	                                "outputs": [
-	                                  {
-	                                    "name": "[variables('blobOutputDataset')]"
-	                                  }
-	                                ],
-	                                "scheduler": {
-	                                    "frequency": "Month",
-	                                    "interval": 1
-	                                },
-	                                "policy": {
-	                                  "concurrency": 1,
-	                                  "retry": 3
-	                                },
-	                                "name": "RunSampleHiveActivity",
-	                                "linkedServiceName": "HDInsightOnDemandLinkedService"
-	                              }
-	                            ],
-	                            "start": "2014-01-01",
-	                            "end": "2014-01-02"
-	                        }
+						    "properties": {
+						        "description": "My first Azure Data Factory pipeline",
+						        "activities": [
+						            {
+						                "type": "HDInsightHive",
+						                "typeProperties": {
+						                    "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
+						                    "scriptLinkedService": "StorageLinkedService",
+						                    "defines": {
+		                        				"inputtable": "[concat('wasb://adfgetstarted@', variables('storageAccountName'), '.blob.core.windows.net/inputdata')]",
+		                        				"partitionedtable": "[concat('wasb://adfgetstarted@', variables('storageAccountName'), '.blob.core.windows.net/partitioneddata')]"
+						                    }
+						                },
+						                "inputs": [
+						                    {
+						                        "name": "AzureBlobInput"
+						                    }
+						                ],
+						                "outputs": [
+						                    {
+						                        "name": "AzureBlobOutput"
+						                    }
+						                ],
+						                "policy": {
+						                    "concurrency": 1,
+						                    "retry": 3
+						                },
+						                "scheduler": {
+						                    "frequency": "Month",
+						                    "interval": 1
+						                },
+						                "name": "RunSampleHiveActivity",
+						                "linkedServiceName": "HDInsightOnDemandLinkedService"
+						            }
+						        ],
+						        "start": "2014-02-01T00:00:00Z",
+						        "end": "2014-02-02T00:00:00Z",
+						        "isPaused": false
+						    }
 	                    }
 	            ]
 	        }
 	    ]
 	}
+
 
 
 ## 手順 2: ARM テンプレートを使用して Data Factory エンティティをデプロイする
@@ -183,19 +226,21 @@
 
 ## パイプラインの監視
  
-1.	[Azure ポータル](http://portal.azure.com/)にログインした後、**[参照]** をクリックして **[データ ファクトリ]** を選択します。 ![Browse->Data factories](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
+1.	[Azure ポータル](http://portal.azure.com/)にログインした後、**[参照]** をクリックして **[データ ファクトリ]** を選択します。 
+		![Browse->Data factories](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
 2.	**[データ ファクトリ]** ブレードで、作成したデータ ファクトリ (**TutorialFactoryARM**) をクリックします。	
-2.	該当するデータ ファクトリの **[データ ファクトリ]** ブレードで **[ダイアグラム]** をクリックします。 ![Diagram Tile](./media/data-factory-build-your-first-pipeline-using-arm/DiagramTile.png)
-4.	**ダイアグラム ビュー**に、パイプラインの概要と、このチュートリアルで使用されるデータセットが表示されます。
+2.	該当するデータ ファクトリの **[Data Factory]** ブレードで **[ダイアグラム]** をクリックします。 
+		![Diagram Tile](./media/data-factory-build-your-first-pipeline-using-arm/DiagramTile.png)
+4.	**ダイアグラム ビュー**に、パイプラインの概要と、このチュートリアルで使用するデータセットが表示されます。
 	
 	![Diagram View](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
 8. ダイアグラム ビューで、**AzureBlobOutput** データセットをダブルクリックします。現在処理中のスライスが表示されます。
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
-9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されますオンデマンド HDInsight クラスターの作成には通常しばらく時間がかかることに注意してください。 
+9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されますオンデマンド HDInsight クラスターの作成には通常しばらく時間がかかることに注意してください (約 20 分)。 
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)	
-10. スライスが**準備完了**状態になったら、Blob Storage の **data** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
+10. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->
