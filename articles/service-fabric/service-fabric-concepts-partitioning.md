@@ -284,7 +284,9 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     このコードを詳しく見ていきましょう。 Tこのコードは、クエリ文字列パラメーター `lastname` の最初の文字を char 型で読み取ります。 その後、姓の最初の文字の 16 進数値から `A` の 16 進数値を引くことで、この文字のパーティション キーが決まります。
 
     ```CSharp
-    string lastname = context.Request.QueryString["lastname"]; char firstLetterOfLastName = lastname.First(); int partitionKey = Char.ToUpper(firstLetterOfLastName) - 'A';
+    string lastname = context.Request.QueryString["lastname"];
+    char firstLetterOfLastName = lastname.First();
+    int partitionKey = Char.ToUpper(firstLetterOfLastName) - 'A';
     ```
 
     この例では、1 パーティションに 1 つのパーティション キーがある 26 個のパーティションを使用しています。次に、`servicePartitionResolver` オブジェクトに対して `ResolveAsync` メソッドを使用して、このキーのサービス パーティション `partition` を取得します。`servicePartitionResolver` は次のように定義されます。
@@ -322,8 +324,10 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
   </Parameters>
   ```
 
-16. デプロイが完了したら、Service Fabric Explorer でサービスとそのすべてのパーティションを確認できます。![サービス](./media/service-fabric-concepts-partitioning/alphabetservicerunning.png)
-17. ブラウザーで `http://localhost:8090/?lastname=somename` を入力してパーティション分割ロジックをテストできます。同じ文字で始まる各姓が同じパーティションに格納されていることがわかります。![[ブラウザー] ボタンを](./media/service-fabric-concepts-partitioning/alphabetinbrowser.png)
+16. デプロイが完了したら、Service Fabric Explorer でサービスとそのすべてのパーティションを確認できます。
+![サービス](./media/service-fabric-concepts-partitioning/alphabetservicerunning.png)
+17. ブラウザーで `http://localhost:8090/?lastname=somename` を入力してパーティション分割ロジックをテストできます。同じ文字で始まる各姓が同じパーティションに格納されていることがわかります。
+![[ブラウザー] ボタンを](./media/service-fabric-concepts-partitioning/alphabetinbrowser.png)
 
 サンプルの完全なソース コードについては、[Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions) を参照してください。
 

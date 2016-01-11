@@ -296,7 +296,7 @@ ApplicationInsights.config で:
       </TelemetryInitializers>
     </ApplicationInsights>
 
-*または、*Global.aspx.cs などのコード内で初期化子をインスタンス化することもできます。
+*または、* Global.aspx.cs などのコード内で初期化子をインスタンス化することもできます。
 
 
 ```C#
@@ -404,4 +404,4 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
