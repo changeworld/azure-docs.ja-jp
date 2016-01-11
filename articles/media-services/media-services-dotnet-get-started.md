@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="11/08/2015"
+	ms.date="12/17/2015"
 	ms.author="juliako"/>
 
 
@@ -22,29 +22,18 @@
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 
->[AZURE.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+>[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
+ 
+##概要 
 
 このチュートリアルでは、Azure Media Services (AMS) SDK for .NET を使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順について説明します。
 
 
 チュートリアルでは Media Services の基本的なワークフローや、Media Services 開発に必要となる一般的なプログラミング オブジェクトやタスクについて紹介します。このチュートリアルを完了すると、サンプル メディア ファイルをアップロード、エンコード、ダウンロードして、ストリーミングやプログレッシブ ダウンロードを実行できます。
 
+## 学習内容
 
-##サンプルのダウンロード
-
-[ここ](http://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)からサンプルを取得し、実行します。
-
-
-## 前提条件
-Media Services SDK for .NET で開発を行うには、次の前提条件を満たす必要があります。
-
-- オペレーティング システム: Windows 8 以降、Windows 2008 R2、Windows 7。
-- .NET Framework 4.5 か .NET Framework 4.0
-- Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 以降。
-
-
-このクイック スタートでは、次のタスクが表示されます。
+このチュートリアルでは、次のタスクの実行方法を示します。
 
 1.  Media Services アカウントの作成 (Azure クラシック ポータルを使用)
 2.  ストリーミング エンドポイントの構成 (ポータルを使用)
@@ -53,8 +42,23 @@ Media Services SDK for .NET で開発を行うには、次の前提条件を満�
 6.  新しい資産を作成し、ビデオ ファイルをアップロードします。
 7.  一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします。
 8.  資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得します。
-9.  コンテンツの再生
+9.  コンテンツを再生することでテストします。
 
+## 前提条件
+
+チュートリアルを完了するには次のものが必要です。
+
+- このチュートリアルを完了するには、Azure アカウントが必要です。 
+	
+	アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Azure App Service の Web Apps 機能など、無料の Azure サービスと機能を利用できます。
+- オペレーティング システム: Windows 8 以降、Windows 2008 R2、Windows 7。
+- .NET Framework 4.0 以降
+- Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 以降のバージョン。
+
+
+##サンプルのダウンロード
+
+[ここ](http://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)からサンプルを取得し、実行します。
 
 ##ポータルを使用した Media Services アカウントの作成
 
@@ -91,7 +95,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
 - mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードします (エンコーディングの手順は後述)。
-- コンテンツ配信元となる**ストリーミング エンドポイント**のストリーミング ユニットを少なくとも 1 つ取得します。
+- コンテンツ配信元となる**ストリーミング エンドポイント**のストリーミング ユニットを少なくとも 1 つ取得する。
 
 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
 
@@ -111,7 +115,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 >[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
 >
-> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、「[Azure の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、「[Media Services の料金詳細](http://go.microsoft.com/fwlink/?LinkId=275107)」をご覧ください。
 
 
 
@@ -146,7 +150,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 ##Media Services アカウントへの接続
 
-Media Services を .NET で使用するとき、Media Services に関連したプログラミング タスクの大半、たとえば、各種オブジェクト (資産、資産ファイル、ジョブ、アクセス ポリシー、ロケーターなど) の作成、更新、アクセス、削除の作業で、**CloudMediaContext** クラスが必要となります。
+Media Services を .NET で使用するとき、Media Services アカウントに関連したプログラミング タスクの大半、たとえば、各種オブジェクト (資産、資産ファイル、ジョブ、アクセス ポリシー、ロケーターなど) の作成、更新、アクセス、削除の作業で、**CloudMediaContext** クラスが必要となります。
 
 既定の Program クラスを次のコードで上書きします。このコードは、App.config ファイルから接続値を読み取り、**CloudMediaContext** オブジェクトを作成して Media Services に接続する方法を示しています。Media Services への接続の詳細については、「[Media Services SDK for .NET を使用した Media Services への接続](http://msdn.microsoft.com/library/azure/jj129571.aspx)」をご覧ください。
 
@@ -379,7 +383,7 @@ Media Services .NET SDK Extensions には、発行済みの資産の URL を正�
         Console.WriteLine("Output asset files available at '{0}'.", Path.GetFullPath(outputFolder));
     }
 
-##コンテンツの再生  
+##コンテンツを再生することでテストする  
 
 前のセクションで定義したプログラムを実行すると、コンソール ウィンドウに次のような URL が表示されます。
 
@@ -442,4 +446,4 @@ MPEG DASH
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
   [Portal]: http://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_1223_2015-->

@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="09/30/2015"
+   ms.date="12/22/2015"
    ms.author="shkurhek"/>
 
 # SQL Database とは SQL Database の概要、技術の詳細、DTU の説明
@@ -28,7 +28,7 @@ SQL Database は、ミッション クリティカルな機能を備えた、市
 
 
 ## ダウンタイムなしでのパフォーマンスの調整とスケール
-SQL Database は、Basic、Standard、Premium の *サービス階層* で使用できます。各サービス階層では、軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、[さまざまなレベルのパフォーマンスと機能](sql-database-service-tiers.md)を提供しています。最初のアプリケーションを月数ドルで小規模データベースにビルドし、やがてアプリケーションが世界中に急速に広まってきたら、アプリケーションやお客様にダウンタイムを発生させずに、いつでも手動またはプログラムで[サービス層を変更](sql-database-scale-up.md)することができます。
+SQL Database は、Basic、Standard、Premium の*サービス階層*で使用できます。各サービス階層では、軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、[さまざまなレベルのパフォーマンスと機能](sql-database-service-tiers.md)を提供しています。最初のアプリケーションを月数ドルで小規模データベースにビルドし、やがてアプリケーションが世界中に急速に広まってきたら、アプリケーションやお客様にダウンタイムを発生させずに、いつでも手動またはプログラムで[サービス層を変更](sql-database-scale-up.md)することができます。
 
 特に使用パターンが比較的予測可能である場合、多くのビジネスとアプリについては、データベースを作成し、要求に応じて単一のデータベースのパフォーマンスを調整する能力は十分です。しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。
 
@@ -61,4 +61,4 @@ SQL サーバーには、アクセスの制限、データの保護、および�
 
 - [最初のデータベースを作成する](sql-database-get-started.md)ことによって作業を開始します。[C#](sql-database-connect-query.md)、[Java](sql-database-develop-java-simple-windows.md)、[Node.js](sql-database-develop-nodejs-simple-windows.md)、[PHP](sql-database-develop-php-retry-windows.md)、[Python](sql-database-develop-python-simple-windows.md)、または [Ruby](sql-database-develop-ruby-simple-linux) で最初のアプリケーションをビルドします。
 
-<!----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_1223_2015-->

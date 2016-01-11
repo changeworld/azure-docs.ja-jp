@@ -1,6 +1,6 @@
 <properties
-			pageTitle="Windows で Azure File Storage を使用する方法 | Microsoft Azure"
-            description="クラウドにファイル共有を作成し、ファイルのコンテンツを管理します。Azure VM またはオンプレミスのアプリケーションからファイル共有をマウントします。"
+			pageTitle="Windows で Azure File を使用する方法 | Microsoft Azure"
+            description="この詳しい手順を示したチュートリアルでは、クラウドに Azure ファイル共有を作成します。Azure の仮想マシン (VM) またはオンプレミスのアプリケーションから、ファイル共有のコンテンツを管理し、ファイル共有をマウントします。"
             services="storage"
             documentationCenter=".net"
             authors="robinsh"
@@ -12,7 +12,7 @@
       ms.tgt_pltfrm="na"
       ms.devlang="dotnet"
       ms.topic="hero-article"
-      ms.date="12/04/2015"
+      ms.date="12/17/2015"
       ms.author="robinsh" />
 
 # Windows で Azure File Storage を使用する方法
@@ -21,17 +21,16 @@
 
 ## 概要
 
-Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。File Storage は現在一般に提供されており、SMB 2.1 と SMB 3.0 の両方をサポートしています。
+Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。Azure File を使用すると、ファイル サーバーを利用しているエンタープライズ アプリケーションを Azure に移行できます。Azure で実行されているアプリケーションでは、Azure の仮想マシンのファイル共有を簡単にマウントできます。また、File Storage の最新のリリースでは、SMB 3.0 をサポートしているオンプレミス アプリケーションからファイル共有をマウントできます。
 
 Azure のファイル共有は、 [Azure ポータル](portal.azure.com)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。また、ファイル共有は SMB 共有であるため、それらには標準の使い慣れたファイル システム API を使用してアクセスできます。
 
-Azure で実行されているアプリケーションでは、Azure の仮想マシンのファイル共有を簡単にマウントできます。また、File Storage の最新のリリースでは、SMB 3.0 をサポートしているオンプレミス アプリケーションからファイル共有をマウントできます。
+File Storage は、BLOB、Table、および Queue Storage と同じテクノロジをベースに構築されているため、可用性、持続性、スケーラビリティのほか、Azure Storage プラットフォームに組み込まれている geo 冗長性が提供されます。File Storage のパフォーマンスのターゲットと制限事項の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」を参照してください。
 
-File Storage は、Blob、Table、および Queue Storage と同じテクノロジ上に構築されているため、既存の可用性、持続性、スケーラビリティ、および Azure Storage プラットフォームに組み込まれている geo 冗長性を利用できます。
+File Storage は現在一般に提供されており、SMB 2.1 と SMB 3.0 の両方をサポートしています。File Storage の詳細については、「[ファイル サービスの REST API](https://msdn.microsoft.com/library/azure/dn167006.aspx)」を参照してください。
 
-Linux で File Storage を使用する方法の詳細については、「[Linux で Azure File Storage を使用する方法](storage-how-to-use-files-linux.md)」を参照してください。
+Linux で File Storage を使用する方法の詳細については、「[Linux で Azure File ストレージを使用する方法](storage-how-to-use-files-linux.md)」を参照してください。
 
-File Storage のスケーラビリティ ターゲットの詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md#scalability-targets-for-standard-storage-accounts)」を参照してください。
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -204,7 +203,7 @@ File Storage をプログラミングする場合、.NET と Java のストレ�
 
 Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage NuGet パッケージをインストールするには、次の手順を実行します。
 
-1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から \[コンソール アプリケーション\]**をクリックします。
+1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から [コンソール アプリケーション]**をクリックします。
 2. コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
 3. プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
@@ -475,7 +474,7 @@ Azure Storage 分析で File Storage のメトリックがサポートされる�
 
 1. **File Storage では、Active Directory ベースの認証はサポートされていますか。** 
 
-	現在、AD ベースの認証や、ACL はサポートしていませんが、今後サポートする可能性はあります。現時点では、ファイル共有の認証には、Azure Storage のアカウント キーを使用しています。REST API またはクライアント ライブラリを使用した Shared Access Signature (SAS) での回避策を提供しています。SAS を使用すると、指定した時間間隔の間に有効な特定のアクセス許可を持つトークンを生成できます。たとえば、特定のファイルへの読み取り専用のアクセス許可を持つトークンを生成できます。トークンを所有するすべてのユーザーは、そのファイルへの読み取り専用アクセスをその有効期間の間持ちます。
+	現在、AD ベースの認証や、ACL はサポートしていませんが、今後サポートする可能性はあります。現時点では、ファイル共有の認証には、Azure ストレージ アカウントのキーを使用しています。REST API またはクライアント ライブラリを使用した Shared Access Signature (SAS) での回避策を提供しています。SAS を使用すると、指定した時間間隔の間に有効な特定のアクセス許可を持つトークンを生成できます。たとえば、特定のファイルへの読み取り専用のアクセス許可を持つトークンを生成できます。トークンを所有するすべてのユーザーは、そのファイルへの読み取り専用アクセスをその有効期間の間持ちます。
 
 	SAS は、REST API またはクライアント ライブラリを使用してのみサポートされます。SMB プロトコルを使用してファイル共有をマウントした場合、SAS を使用してそのコンテンツへのアクセスを委任することはできません。
 
@@ -551,4 +550,4 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_1223_2015-->

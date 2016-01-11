@@ -21,12 +21,11 @@
 > [AZURE.SELECTOR]
 - [Overview](search-query-overview.md)
 - [Fiddler](search-fiddler.md)
-- [Postman](search-chrome-postman.md)
 - [.NET](search-query-dotnet.md)
 - [REST](search-query-rest-api.md)
 
 埋め込み検索エクスペリエンス用に Azure Search を使用するカスタム ソリューションには、検索クエリを作成して処理のために検索サービスに送るコードが含まれている必要があります。
 
-.NET SDK と REST API のどちらかを使用して、クエリを実行するためのメソッドを記述できます。事前のテストまたは探索では、Fiddler や Chrome Postman のようなツールを使用してクエリをサービスに送ることができます。
+.NET SDK と REST API のどちらかを使用して、クエリを実行するためのメソッドを記述できます。事前のテストまたは探索では、Fiddler のようなツールを使用してクエリをサービスに送ることができます。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

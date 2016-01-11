@@ -7,8 +7,8 @@
 	 
 		>[AZURE.IMPORTANT]既存のアプリ バックエンドを Node.js に切り替えると、すべてのサイト コンテンツが上書きされます。
 
-	+ **.NET バックエンド (C#)**: **[ダウンロード]** をクリックして、圧縮されたプロジェクト ファイルをローカル コンピューターに抽出します。Visual Studio でソリューションを開き、プロジェクトをビルドして NuGet パッケージを復元してから、プロジェクトを Azure にデプロイします。.NET バックエンド サーバー プロジェクトを Azure にデプロイする方法については、「[Azure App Service での ASP.NET Web アプリの作成](../articles/app-service-web/web-sites-dotnet-get-started.md#deploy-the-project-to-the-web-app)」の「 *Web アプリにプロジェクトをデプロイする* 」セクションを参照してください。App Service では、モバイル アプリは Web アプリと同じものです。
+	+ **.NET バックエンド (C#)**: **[ダウンロード]** をクリックして、圧縮されたプロジェクト ファイルをローカル コンピューターに抽出します。Visual Studio でソリューションを開き、プロジェクトをビルドして NuGet パッケージを復元してから、プロジェクトを Azure にデプロイします。.NET バックエンド サーバー プロジェクトを Azure にデプロイする方法については、.NET バックエンド SDK トピックの「[方法: サーバー プロジェクトを発行する](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#publish-server-project)」を参照してください。
 	 
 モバイル アプリ バックエンドがクライアント アプリで使用できる状態になります。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_1223_2015-->
