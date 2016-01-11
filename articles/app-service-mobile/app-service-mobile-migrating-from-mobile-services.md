@@ -273,7 +273,7 @@ Mobile Services では、プッシュ通信に Notification Hubs が使用され
 
 詳細については、[Notification Hubs] ドキュメントを確認してください。
 
-> [AZURE.TIP][Azure ポータル]の Notification Hubs 管理機能はまだプレビュー段階です。 [Azure クラシック ポータル]で引き続きすべての Notification Hubs を管理できます。
+> [AZURE.TIP] [Azure ポータル]の Notification Hubs 管理機能はまだプレビュー段階です。 [Azure クラシック ポータル]で引き続きすべての Notification Hubs を管理できます。
 
 ### <a name="app-settings"></a>その他のアプリ設定
 
@@ -385,4 +385,4 @@ _azure モバイル_ コマンドを利用して Azure Mobile Services サイト
 [VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_1223_2015--->

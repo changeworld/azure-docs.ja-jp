@@ -22,7 +22,8 @@ Visual Studio Team Services チーム プロジェクトを自動的にビルド
 
 このチュートリアルは、Visual Studio 2013 と Azure SDK がインストール済みであることを前提としています。Visual Studio 2013 がない場合は、**www.visualstudio.com** で[無料利用の開始](http://www.visualstudio.com)リンクをクリックしてダウンロードします。Azure SDK を[ここ](http://go.microsoft.com/fwlink/?LinkId=239540)からインストールしてください。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Visual Studio Team Services アカウントが必要です。[Visual Studio Team Services アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Visual Studio Team Services アカウントが必要です。
+> [Visual Studio Team Services アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
 
 Visual Studio Team Services を使用してクラウド サービスを自動的にビルドして Azure にデプロイするようにセットアップするには、次の手順に従います。
 
@@ -32,7 +33,11 @@ Visual Studio Team Services を使用してクラウド サービスを自動的
 
 ## 手順 2: プロジェクトをソース管理にチェックインする
 
-1. Visual Studio で、デプロイするソリューションを開くか、新しいソリューションを作成します。このチュートリアルの手順に従って、Web アプリまたはクラウド サービス (Azure アプリケーション) をデプロイできます。新しいソリューションを作成する場合は、新しい Azure クラウド サービス プロジェクト、または新しい ASP.NET MVC プロジェクトを作成します。プロジェクトが .NET Framework 4 または 4.5 をターゲットにしていることを確認し、クラウド サービス プロジェクトを作成している場合は、ASP.NET MVC の Web ロールおよび worker ロールのプロジェクトを追加して、Web ロールに対応するインターネット アプリケーションを選択します。確認メッセージが表示されたら、**[インターネット アプリケーション]** を選択します。Web アプリを作成する場合は、ASP.NET Web アプリケーション プロジェクトのテンプレートを選択し、次に MVC を選択します。「[Azure アプリ サービスでの ASP.NET Web アプリの作成](../web-sites-dotnet-get-started.md)」を参照してください。
+1. Visual Studio で、デプロイするソリューションを開くか、新しいソリューションを作成します。
+このチュートリアルの手順に従って、Web アプリまたはクラウド サービス (Azure アプリケーション) をデプロイできます。
+新しいソリューションを作成する場合は、新しい Azure クラウド サービス プロジェクト、または新しい ASP.NET MVC プロジェクトを作成します。
+プロジェクトが .NET Framework 4 または 4.5 をターゲットにしていることを確認し、クラウド サービス プロジェクトを作成している場合は、ASP.NET MVC の Web ロールおよび worker ロールのプロジェクトを追加して、Web ロールに対応するインターネット アプリケーションを選択します。確認メッセージが表示されたら、**[インターネット アプリケーション]** を選択します。
+Web アプリを作成する場合は、ASP.NET Web アプリケーション プロジェクトのテンプレートを選択し、次に MVC を選択します。[Azure App Service での ASP.NET Web アプリの作成](../web-sites-dotnet-get-started.md)に関するページを参照してください。
 
 	> [AZURE.NOTE]Visual Studio Team Services では、現在、Visual Studio Web アプリケーションの CI デプロイメントのみをサポートしています。Web サイト プロジェクトはサポート対象外です。
 

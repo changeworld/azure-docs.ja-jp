@@ -23,7 +23,8 @@
 
 Microsoft や信頼された第三者の発行元によってビルドされた仮想マシン (VM) の拡張機能を使って、VM の機能を拡張します。VM 拡張機能の概要については、「[Azure VM 拡張機能と機能](virtual-machines-extensions-features.md)」をご覧ください。
 
-リンク:[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-extensions-customscript%20-with%20template.md)。
+リンク:
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [リソース マネージャー モデル](virtual-machines-extensions-customscript%20-with%20template.md)。
 
 
 ## カスタム スクリプト拡張機能の概要

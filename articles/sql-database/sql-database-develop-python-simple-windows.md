@@ -49,7 +49,7 @@
 たとえば、64 ビット コンピューター上で Python 2.7 を使用している場合は、pymssql‑2.1.1‑cp27‑none‑win\_amd64.whl を選択します。.whl ファイルをダウンロードしたら、C:/Python27 フォルダーに配置します。
 
 これでコマンドライン .cd から pip を使用して、pymssql ドライバーを C:/Python27 にインストールし、次を実行します
-
+	
 	pip install pymssql‑2.1.1‑cp27‑none‑win_amd64.whl
 
 pip の使用を有効にする手順については、[ここ](http://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows)をご覧ください
@@ -109,11 +109,11 @@ pip の使用を有効にする手順については、[ここ](http://stackover
 このコード例は、以下のトランザクションの使用について示します。
 
 
-- トランザクションの開始
+-トランザクションの開始
 
-- データの挿入
+-データの挿入
 
-- トランザクションをロールバックして、挿入を元に戻す
+-トランザクションをロールバックして、挿入を元に戻す
 
 
 	import pymssql

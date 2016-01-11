@@ -449,7 +449,7 @@ AP4001
 
 - ASP.NET vNext アプリケーションでは、configuration.json を使用して接続文字列を保存します。
 
-web.config や app.config などの構成ファイルの使用方法については、「[ASP.NET Web 構成のガイドライン] (https://msdn.microsoft.com/library/vstudio/ff400235(v=vs.100).aspx))」をご覧ください。Azure の環境変数の機能については、「[Windows Azure Web Sites: How Application Strings and Connection Strings Work (Windows Azure Web サイト: アプリケーション文字列と接続文字列の機能)](http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)」をご覧ください。ソース管理での接続文字列の保存については、[ソース コード リポジトリに保存されているファイルに接続文字列などの機密情報を含めないようにする](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)ことに関する記事をご覧ください。
+web.config や app.config などの構成ファイルの使用方法については、「[ASP.NET Web 構成のガイドライン] (https://msdn.microsoft.com/library/vstudio/ff400235(v=vs.100).aspx))」をご覧ください。Azure の環境変数の機能については、「[Microsoft Azure Web Sites: How Application Strings and Connection Strings Work (Microsoft Azure Web サイト: アプリケーション文字列と接続文字列の機能)](http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)」をご覧ください。ソース管理での接続文字列の保存については、[ソース コード リポジトリに保存されているファイルに接続文字列などの機密情報を含めないようにする](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)ことに関する記事をご覧ください。
 
 ## 診断構成ファイルを使用する
 
@@ -532,4 +532,4 @@ public class BlogsController : Controller
 
 Azure アプリケーションの最適化とトラブルシューティングの詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_1223_2015--->

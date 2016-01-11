@@ -36,7 +36,8 @@ Azure ポータルとクラシック ポータルでサポートされている�
  | はい | あり | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | | [Microsoft.Batch](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Batch%22&type=Code) |
 | Dynamics Lifecycle Services | はい | | | | [Microsoft.DynamicsLcs](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DynamicsLcs%22&type=Code)
 | Service Fabric (プレビュー) | はい | | [Service Fabric Rest](https://msdn.microsoft.com/library/azure/dn707692.aspx) | | [Microsoft.ServiceFabric](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceFabric%22&type=Code) |
-| Virtual Machines (クラシック) | 限定的 | 部分的 (後述参照) | - | - | | Remote App | いいえ | - | - | - |
+| Virtual Machines (クラシック) | 限定的 | 部分的 (後述参照) | - | - |
+| Remote App | いいえ | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイメント モデルではなくクラシック デプロイメント モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイメント モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 
@@ -63,7 +64,8 @@ Virtual Machines (クラシック) リソースは、新しいリソース グ�
 | SQL Database | はい | あり | [データベースの作成](https://msdn.microsoft.com/library/azure/mt163685.aspx) | [2014-04-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01-preview/Microsoft.Sql.json) | [Microsoft.Sql](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Sql%22&type=Code) |
 | Search | はい | あり | [Search REST](https://msdn.microsoft.com/library/azure/dn798935.aspx) | | [Microsoft.Search](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Search%22&type=Code) |
 | SQL Data Warehouse | はい | | | |
-| StorSimple | いいえ | - | - | - | | Managed Cache | いいえ | - | - | - |
+| StorSimple | いいえ | - | - | - | 
+| Managed Cache | いいえ | - | - | - |
 
 ## Web とモバイル
 
@@ -89,7 +91,8 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | Stream Analytics | はい | | [Steam Analytics REST](https://msdn.microsoft.com/library/azure/dn835031.aspx) | | [Microsoft.StreamAnalytics](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.StreamAnalytics%22&type=Code) |
 | HDInsights | はい | あり | [クラスターの作成](https://msdn.microsoft.com/library/azure/mt622302.aspx) | | [Microsoft.HDInsight](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.HDInsight%22&type=Code) |
 | Data Factory | はい | あり | [Data Factory の作成](https://msdn.microsoft.com/library/azure/dn906717.aspx) | | [Microsoft.DataFactory](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DataFactory%22&type=Code) |
-| Machine Learning | いいえ | - | - | - | | Data Catalog | いいえ | - | - | - |
+| Machine Learning | いいえ | - | - | - | 
+| Data Catalog | いいえ | - | - | - |
 
 ## メディアと CDN
 
@@ -105,13 +108,16 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | ------- | ------- | -------------- | -------- | ------ | ------ |
 | BizTalk Services | はい | | | [2014-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.BizTalkServices.json) | [Microsoft.BizTalkServices](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.BizTalkServices%22&type=Code) |
 | Service Bus | はい | | [Service Bus REST](https://msdn.microsoft.com/library/azure/hh780717.aspx) | | [Microsoft.ServiceBus](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceBus%22&type=Code) |
-| Backup | いいえ | - | - | - | | Site Recovery | いいえ | - | - | - |
+| Backup | いいえ | - | - | - |
+| Site Recovery | いいえ | - | - | - |
 
 ## ID 管理とアクセス管理 
 
 | サービス | リソース マネージャーが有効 | リソースの移動 | REST API | スキーマ | クイック スタート テンプレート |
 | ------- | ------- | -------------- | -------- | ------ | ------ |
-| Azure Active Directory | いいえ | - | - | - | | Azure Actice Directory B2C | いいえ | - | - | - | | Multi-Factor Authentication | いいえ | - | - | - |
+| Azure Active Directory | いいえ | - | - | - |
+| Azure Actice Directory B2C | いいえ | - | - | - |
+| Multi-Factor Authentication | いいえ | - | - | - |
 
 ## 開発者サービス 
 

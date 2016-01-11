@@ -50,7 +50,7 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 
 2.  コマンド プロンプトで、ビルドする Azure プロジェクト ファイルが含まれているフォルダーに移動します。
 
-3.  次の例に示すように、/target:Publish オプションを指定して MSBuild を実行します。
+3.  次の例に示すように、/target:Publish オプションを指定して msbuild を実行します。
 
         MSBuild /target:Publish
 
