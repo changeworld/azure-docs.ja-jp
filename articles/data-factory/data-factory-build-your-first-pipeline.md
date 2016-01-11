@@ -193,7 +193,7 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 	
 			set path=%path%;C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
 
-	3. c:\\adfgetstarted フォルダーに移動し、次のコマンドを実行して **input.log** ファイルをストレージ アカウント (**adfgetstarted** コンテナーと **inputdata** フォルダー) にアップロードします。**StorageAccountName** はストレージ アカウントの名前に、**Storage Key** はストレージ アカウント キーに置き換えます。
+	3. c:\adfgetstarted フォルダーに移動し、次のコマンドを実行して **input.log** ファイルをストレージ アカウント (**adfgetstarted** コンテナーと **inputdata** フォルダー) にアップロードします。**StorageAccountName** はストレージ アカウントの名前に、**Storage Key** はストレージ アカウント キーに置き換えます。
 
 			AzCopy /Source:. /Dest:https://<storageaccountname>.blob.core.windows.net/adfgetstarted/inputdata /DestKey:<storagekey>  /Pattern:input.log
 

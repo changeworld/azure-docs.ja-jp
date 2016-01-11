@@ -73,7 +73,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 ### Azure Storage のリンクされたサービスを作成する
 この手順では、Azure ストレージ アカウントをデータ ファクトリにリンクします。このチュートリアルでは、同じ Azure ストレージ アカウントを使用して、入力/出力データと HQL スクリプト ファイルを格納します。
 
-1. 次の内容で C:\\ADFGetStarted フォルダーに StorageLinkedService.json という名前の JSON ファイルを作成します。ADFGetStarted フォルダーがない場合は作成します。
+1. 次の内容で C:\ADFGetStarted フォルダーに StorageLinkedService.json という名前の JSON ファイルを作成します。ADFGetStarted フォルダーがない場合は作成します。
 
 		{
 	    	"name": "StorageLinkedService",
@@ -106,7 +106,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 ### Azure HDInsight のリンクされたサービスを作成する
 この手順では、オンデマンド HDInsight クラスターをデータ ファクトリにリンクします。HDInsight クラスターは、実行時に自動的に作成されます。また、処理が終わり、アイドル状態が一定時間続くと削除されます。オンデマンド HDInsight クラスターの代わりに、独自の HDInsight クラスターを使用できます。詳細については、「[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md)」を参照してください。
 
-1. 次の内容で **C:\\ADFGetStarted** フォルダーに **HDInsightOnDemandLinkedService**.json という名前の JSON ファイルを作成します。
+1. 次の内容で **C:\ADFGetStarted** フォルダーに **HDInsightOnDemandLinkedService**.json という名前の JSON ファイルを作成します。
 
 		{
 		  "name": "HDInsightOnDemandLinkedService",
@@ -139,7 +139,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 この手順では、Hive 処理の入力データと出力データを表すデータセットを作成します。これらのデータセットは、このチュートリアルで前に作成した **StorageLinkedService** を参照します。このリンクされたサービスは Azure ストレージ アカウントを指し、データセットは入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。
 
 ### 入力データセットを作成する
-1. 以下の内容を記述した **InputTable.json** という名前の JSON ファイルを **C:\\ADFGetStarted** フォルダー内に作成します。
+1. 以下の内容を記述した **InputTable.json** という名前の JSON ファイルを **C:\ADFGetStarted** フォルダー内に作成します。
 
 		{
 			"name": "AzureBlobInput",
@@ -184,7 +184,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 ### 出力データセットを作成します。
 次に、Azure Blob Storage に格納される出力データを表す出力データセットを作成します。
 
-1. 以下の内容を記述した **OutputTable.json** という名前の JSON ファイルを **C:\\ADFGetStarted** フォルダー内に作成します。
+1. 以下の内容を記述した **OutputTable.json** という名前の JSON ファイルを **C:\ADFGetStarted** フォルダー内に作成します。
 
 		{
 		  "name": "AzureBlobOutput",
@@ -215,7 +215,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 この手順では、**HDInsightHive** アクティビティを含む最初のパイプラインを作成します。入力スライスは 1 か月ごと (frequency: Month、interval: 1) であり、出力スライスは 1 か月ごとに生成されるため、アクティビティの scheduler プロパティも 1 か月ごとに設定します (下記参照)。出力データセットとアクティビティの scheduler の設定は一致している必要があります。出力データセットによってスケジュールが開始されるため、アクティビティが出力を生成しない場合でも、この時点で、出力データセットを作成する必要があります。アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。次の JSON で使用されているプロパティについては、このセクションの最後で説明します。
 
 
-1. 以下の内容を記述した MyFirstPipelinePSH.json という名前の JSON ファイルを C:\\ADFGetStarted フォルダー内に作成します。
+1. 以下の内容を記述した MyFirstPipelinePSH.json という名前の JSON ファイルを C:\ADFGetStarted フォルダー内に作成します。
 
 	> [AZURE.IMPORTANT]**storageaccountname** は、JSON でのストレージ アカウントの名前に置き換えます。
 		

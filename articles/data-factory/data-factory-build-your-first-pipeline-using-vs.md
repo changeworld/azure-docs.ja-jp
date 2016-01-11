@@ -252,7 +252,7 @@
 ### 依存関係として partitionweblogs.hql と input.log を追加する 
 
 1. **[ソリューション エクスプローラー]** ウィンドウで **[依存関係]** を右クリックし、**[追加]** をポイントして **[既存の項目]** をクリックします。  
-2. **C:\\ADFGettingStarted** に移動し、**partitionweblogs.hql** ファイルと **input.log** ファイルを選択して、**[追加]** をクリックします。これら 2 つのファイルは、「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」の前提条件の一環として作成しています。
+2. **C:\ADFGettingStarted** に移動し、**partitionweblogs.hql** ファイルと **input.log** ファイルを選択して、**[追加]** をクリックします。これら 2 つのファイルは、「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」の前提条件の一環として作成しています。
 
 次の手順でソリューションを発行すると、**adfgetstarted** BLOB コンテナーの scripts フォルダーに **partitionweblogs.hql** ファイルがアップロードされます。
 
@@ -282,7 +282,8 @@
 ## 手順 4: パイプラインを監視する
 
 6. [Azure ポータル](http://portal.azure.com/)にログインし、次の操作を行います。
-	1. **[参照]** をクリックし、**[Data Factory]** を選択します。 ![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png) 
+	1. **[参照]** をクリックし、**[Data Factory]** を選択します。 
+		![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png) 
 	2. データ ファクトリの一覧から **[FirstDataFactoryUsingVS]** を選択します。 
 7. 該当するデータ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
   

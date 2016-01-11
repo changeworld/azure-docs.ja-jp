@@ -22,7 +22,8 @@
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
+>[AZURE.NOTE]
+>このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
  
 ##概要 
 
@@ -76,15 +77,15 @@
 
 6. フォームの下部にある **[簡易作成]** をクリックします。
 
-処理の状態はウィンドウの下部にあるメッセージ領域で監視できます。
+	処理の状態はウィンドウの下部にあるメッセージ領域で監視できます。
 
-アカウントが正常に作成されると、ステータスが **[アクティブ]** に変わります。
+	アカウントが正常に作成されると、ステータスが **[アクティブ]** に変わります。
 
-ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services アカウント名、プライマリ キー、セカンダリ キーがダイアログに表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。
+	ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services アカウント名、プライマリ キー、セカンダリ キーがダイアログに表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。
 
-![[Media Services] ページ](./media/media-services-dotnet-get-started/wams-mediaservices-page.png)
+	![[Media Services] ページ](./media/media-services-dotnet-get-started/wams-mediaservices-page.png)
 
-アカウント名をダブルクリックすると、既定で **[クイック スタート]** ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
+	アカウント名をダブルクリックすると、既定で **[クイック スタート]** ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
 
 ##ポータルを使用したストリーミング エンドポイントの構成
 
@@ -107,15 +108,15 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 3. ストリーミング ユニットの数を指定するには、[スケール] タブをクリックし、**[占有容量]** スライダーを動かします。
 
-![[スケール] ページ](./media/media-services-dotnet-get-started/media-services-origin-scale.png)
+	![[スケール] ページ](./media/media-services-dotnet-get-started/media-services-origin-scale.png)
 
 4. **[OK]** を押して変更を保存します。
 
-新しいユニットの割り当ては完了するまでに約 20 分かかります。
+	新しいユニットの割り当ては完了するまでに約 20 分かかります。
 
->[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
->
-> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、「[Media Services の料金詳細](http://go.microsoft.com/fwlink/?LinkId=275107)」をご覧ください。
+	>[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
+	>
+	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、「[Media Services の料金詳細](http://go.microsoft.com/fwlink/?LinkId=275107)」をご覧ください。
 
 
 
@@ -129,7 +130,12 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 4. App.config ファイルを開き (既定で追加されていない場合はファイルをプロジェクトに追加してください)、ファイルに *appSettings* セクションを追加します。Azure Media Services のアカウント名とアカウント キーの値を設定します。次の例をご覧ください。アカウント名とキー情報を取得するには、Azure クラシック ポータルを開いて Media Services のアカウントを選択し、**[キーの管理]** をクリックします。
 
-<configuration> ... <appSettings> <add key="MediaServicesAccountName" value="Media-Services-Account-Name" /> <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" /> </appSettings>
+<configuration>
+		...
+		  <appSettings>
+		    <add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
+		    <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
+		  </appSettings>
 		  
 		</configuration>
 
@@ -251,7 +257,8 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 
 以下のコードは、エンコーディング ジョブの送信方法を示したものです。このジョブには、**Azure Media Encoder** を使用して mezzanine ファイルを一連のアダプティブ ビットレート MP4 にトランスコードするよう指定するタスクが 1 つ存在します。このコードは、ジョブを送信してその完了を待機します。
 
-ジョブが完了したら、資産をストリーミングしたり、コード変換によって作成された MP4 ファイルをプログレッシブにダウンロードしたりできます。MP4 ファイルをプログレッシブにダウンロードするためにオンデマンド ストリーミング ユニットを取得する必要はありません。
+ジョブが完了したら、資産をストリーミングしたり、コード変換によって作成された MP4 ファイルをプログレッシブにダウンロードしたりできます。
+MP4 ファイルをプログレッシブにダウンロードするためにオンデマンド ストリーミング ユニットを取得する必要はありません。
 
 次のメソッドを Program クラスに追加します。
 

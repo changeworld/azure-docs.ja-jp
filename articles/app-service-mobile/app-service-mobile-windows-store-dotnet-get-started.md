@@ -18,7 +18,9 @@
 
 #Create a Windows app (Windows アプリの作成)
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
+&nbsp;
+[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ##概要
 
@@ -72,9 +74,11 @@
 
 ##次のステップ
 
-* [アプリへの認証の追加](app-service-mobile-windows-store-dotnet-get-started-users.md)<br/> ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
+* [アプリへの認証の追加](app-service-mobile-windows-store-dotnet-get-started-users.md)
+  <br/> ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [アプリケーションにプッシュ通知を追加する](app-service-mobile-windows-store-dotnet-get-started-push.md) <br/>アプリにごく基本的なプッシュ通知を送信する方法について説明します。
+* [アプリケーションにプッシュ通知を追加する](app-service-mobile-windows-store-dotnet-get-started-push.md)
+  <br/>アプリにごく基本的なプッシュ通知を送信する方法について説明します。
 
 <!-- Anchors. -->
 <!-- Images. -->

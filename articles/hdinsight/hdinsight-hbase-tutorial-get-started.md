@@ -299,10 +299,13 @@ Web UI を開くには、RDP を使用してクラスターに接続した後、
 
 詳細については、次を参照してください。
 
-- [HDInsight HBase の概要][hdinsight-hbase-overview]。HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
-- [Azure Virtual Network での HBase クラスターの作成][hdinsight-hbase-provision-vnet]。アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
+- [HDInsight HBase の概要][hdinsight-hbase-overview]。
+HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
+- [Azure Virtual Network での HBase クラスターの作成][hdinsight-hbase-provision-vnet]。
+アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
 - [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md)。2 つの Azure データ センター間に HBase レプリケーションを構成する方法について説明します。
-- [HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する][hbase-twitter-sentiment]。HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[センチメントを分析](http://en.wikipedia.org/wiki/Sentiment_analysis)する方法について学習します。
+- [HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する][hbase-twitter-sentiment]。
+HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[センチメントを分析](http://en.wikipedia.org/wiki/Sentiment_analysis)する方法について学習します。
 
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
