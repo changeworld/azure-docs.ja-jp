@@ -289,7 +289,7 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
     var families = client.CreateDocumentQuery("dbs/" + database.Id + "/colls/" + documentCollection.Id,
         "SELECT * " +
         "FROM Families f " +
-        "WHERE f.id = "AndersenFamily"");
+        "WHERE f.id = \"AndersenFamily\"");
 
     foreach (var family in families)
     {
@@ -376,7 +376,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 	  "_rid": "ybVlALUoqAEBAAAAAAAAAA==",
 	  "_ts": 1428372205,
 	  "_self": "dbs/ybVlAA==/colls/ybVlALUoqAE=/docs/ybVlALUoqAEBAAAAAAAAAA==/",
-	  "_etag": ""0000400c-0000-0000-0000-55233aed0000"",
+	  "_etag": "\"0000400c-0000-0000-0000-55233aed0000\"",
 	  "_attachments": "attachments/"
 	} from SQL
 	Read {
@@ -414,7 +414,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 	  "_rid": "ybVlALUoqAEBAAAAAAAAAA==",
 	  "_ts": 1428372205,
 	  "_self": "dbs/ybVlAA==/colls/ybVlALUoqAE=/docs/ybVlALUoqAEBAAAAAAAAAA==/",
-	  "_etag": ""0000400c-0000-0000-0000-55233aed0000"",
+	  "_etag": "\"0000400c-0000-0000-0000-55233aed0000\"",
 	  "_attachments": "attachments/"
 	} from LINQ
 	Read {
@@ -452,7 +452,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 	  "_rid": "ybVlALUoqAEBAAAAAAAAAA==",
 	  "_ts": 1428372205,
 	  "_self": "dbs/ybVlAA==/colls/ybVlALUoqAE=/docs/ybVlALUoqAEBAAAAAAAAAA==/",
-	  "_etag": ""0000400c-0000-0000-0000-55233aed0000"",
+	  "_etag": "\"0000400c-0000-0000-0000-55233aed0000\"",
 	  "_attachments": "attachments/"
 	} from LINQ query
 

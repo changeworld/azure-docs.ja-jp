@@ -39,7 +39,7 @@
 
 ## 手順 1: ARM テンプレートを作成する
 
-以下の内容を含む **ADFTutorialARM.json** という名前の JSON ファイルを **C:\\ADFGetStarted** フォルダーに作成します。
+以下の内容を含む **ADFTutorialARM.json** という名前の JSON ファイルを **C:\ADFGetStarted** フォルダーに作成します。
 
 > [AZURE.IMPORTANT]**storageAccountName** 変数と **storageAccountKey** 変数は、実際の値に変更してください。また、**dataFactoryName** も変更してください。この名前は一意であることが必要です。
 
@@ -226,9 +226,11 @@
 
 ## パイプラインの監視
  
-1.	[Azure ポータル](http://portal.azure.com/)にログインした後、**[参照]** をクリックして **[データ ファクトリ]** を選択します。 ![Browse->Data factories](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
+1.	[Azure ポータル](http://portal.azure.com/)にログインした後、**[参照]** をクリックして **[データ ファクトリ]** を選択します。 
+		![Browse->Data factories](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
 2.	**[データ ファクトリ]** ブレードで、作成したデータ ファクトリ (**TutorialFactoryARM**) をクリックします。	
-2.	該当するデータ ファクトリの **[Data Factory]** ブレードで **[ダイアグラム]** をクリックします。 ![Diagram Tile](./media/data-factory-build-your-first-pipeline-using-arm/DiagramTile.png)
+2.	該当するデータ ファクトリの **[Data Factory]** ブレードで **[ダイアグラム]** をクリックします。 
+		![Diagram Tile](./media/data-factory-build-your-first-pipeline-using-arm/DiagramTile.png)
 4.	**ダイアグラム ビュー**に、パイプラインの概要と、このチュートリアルで使用するデータセットが表示されます。
 	
 	![Diagram View](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 

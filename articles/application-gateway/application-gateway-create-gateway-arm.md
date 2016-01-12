@@ -200,7 +200,7 @@ Application Gateway のインスタンスのサイズを構成します。
 
 	$sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
->[AZURE.NOTE]*InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Standard\_Small、Standard\_Medium、Standard\_Large のいずれかを選択できます。
+>[AZURE.NOTE]*InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Standard_Small、Standard_Medium、Standard_Large のいずれかを選択できます。
 
 ## New-AzureRmApplicationGateway を使用した Application Gateway の作成
 

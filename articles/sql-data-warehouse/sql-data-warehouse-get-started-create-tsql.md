@@ -38,7 +38,7 @@
 
         sqlcmd -S <Server Name>.database.windows.net -I -U <User> -P <Password> -Q "CREATE DATABASE <Name> (EDITION='datawarehouse', SERVICE_OBJECTIVE = '<Compute Size - DW####>', MAXSIZE= <Storage Size - #### GB>)"
 
-これらの TSQL ステートメントを実行するときには、MAXSIZE パラメーターと SERVICE\_OBJECTIVE パラメーターに注意してください。これらは、Data Warehouse インスタンスに割り当てられる最初のストレージ サイズおよびコンピューティングを決定します。MAXSIZE には次のいずれかのサイズを指定できますが、将来の拡張を見越して、より大きなサイズを選択することをお勧めします。
+これらの TSQL ステートメントを実行するときには、MAXSIZE パラメーターと SERVICE_OBJECTIVE パラメーターに注意してください。これらは、Data Warehouse インスタンスに割り当てられる最初のストレージ サイズおよびコンピューティングを決定します。MAXSIZE には次のいずれかのサイズを指定できますが、将来の拡張を見越して、より大きなサイズを選択することをお勧めします。
 
 + 250 GB
 + 500 GB
@@ -51,7 +51,7 @@
 + 40,960 GB
 + 51,200 GB
 
-SERVICE\_OBJECTIVE は、インスタンスに最初に割り当てられる DWU の数を示し、次のいずれかの値を指定できます。
+SERVICE_OBJECTIVE は、インスタンスに最初に割り当てられる DWU の数を示し、次のいずれかの値を指定できます。
 
 + DW100
 + DW200

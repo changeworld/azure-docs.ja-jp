@@ -23,7 +23,7 @@
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
-> [AZURE.NOTE]SQL Data Warehouse で Microsoft Azure Powershell を使用するには、バージョン 0.9.4 以降が必要です。Powershell で (Get-Module Azure).Version を実行することで、バージョンを確認できます。
+>  [AZURE.NOTE]SQL Data Warehouse で Microsoft Azure Powershell を使用するには、バージョン 0.9.4 以降が必要です。Powershell で (Get-Module Azure).Version を実行することで、バージョンを確認できます。
 
 ## Azure PowerShell コマンドレットの取得と実行
 Powershell をまだセットアップしていない場合は、次のようにします。

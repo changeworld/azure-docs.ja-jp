@@ -79,7 +79,7 @@ Application Gateway を作成するには、次の手順を順番に実行する
 	Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
 
 
- *Description*、*InstanceCount*、および *GatewaySize* は省略可能なパラメーターです。
+ *Description* 、 *InstanceCount* 、 および *GatewaySize* は省略可能なパラメーターです。
 
 
 ゲートウェイが作成されたことを**確認する**には、`Get-AzureApplicationGateway` コマンドレットを使用します。
@@ -98,10 +98,10 @@ Application Gateway を作成するには、次の手順を順番に実行する
 	VirtualIPs    : {}
 	DnsName       :
 
->[AZURE.NOTE]*InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Small、Medium、Large から選択します。
+>[AZURE.NOTE]  *InstanceCount* の既定値は 2、最大値は 10 です。 *GatewaySize* の既定値は Medium です。Small、Medium、Large から選択します。
 
 
- ゲートウェイがまだ起動していないため、*Vip* と *DnsName* は空白のまま表示されます。これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
+ ゲートウェイがまだ起動していないため、 *Vip* と *DnsName* は空白のまま表示されます。これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
 
 ## Application Gateway の構成
 
@@ -206,6 +206,9 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 	        </HttpLoadBalancingRule>
 	    </HttpLoadBalancingRules>
 	</ApplicationGatewayConfiguration>
+
+
+
 
 
 ### 手順 2.
@@ -382,7 +385,7 @@ Application Gateway を削除するには、次の手順を実行します。
 	----       ----------------     ------------                             ----
 	Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 
-Application Gateway が Stopped 状態になったら、`Remove-AzureApplicationGateway` コマンドレットを使用してサービスを削除します。
+アプリケーション ゲートウェイが Stopped 状態になったら、`Remove-AzureApplicationGateway` コマンドレットを使用してサービスを削除します。
 
 
 	Remove-AzureApplicationGateway AppGwTest

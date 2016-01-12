@@ -204,7 +204,7 @@ Azure CLI を使用してダウンロードした ARM テンプレートをデ�
 
 		azure group create -n appgatewayRG -l eastus
 
-**-n (または --name)**。新しいリソース グループの名前です。このシナリオでは、*appgatewayRG*です。
+**-n (または --name)**。新しいリソース グループの名前です。このシナリオでは、*appgatewayRG* です。
 
 **-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。このシナリオでは、*Eastus* です。
 

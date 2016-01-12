@@ -84,7 +84,7 @@ Azure SQL Database との通信にサード パーティのミドルウェアを
 
 最初に再試行する前に、5 秒間待つことをお勧めします。5 秒未満で再試行すると、クラウド サービスに過度の負荷がかかるおそれがあります。再試行するたびに、待ち時間を比例して、最大 60 秒まで長くする必要があります。
 
-ADO.NET を使用するクライアントの*ブロック期間*については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
+ADO.NET を使用するクライアントの *ブロック期間* については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
 
 加えて、最大再試行回数を設定し、プログラムが自動的に終了するように配慮する必要があります。
 
@@ -108,25 +108,40 @@ ADO.NET を使用するクライアントの*ブロック期間*については�
 ### ネットワークから切断することによるテスト
 
 
-再試行ロジックをテストする手段として、プログラムの実行中にクライアント コンピューターをネットワークから切断する方法が挙げられます。この場合、次のエラーが発生します。- **SqlException.Number** = 11001 - メッセージ: "そのようなホストは不明です。"
+再試行ロジックをテストする手段として、プログラムの実行中にクライアント コンピューターをネットワークから切断する方法が挙げられます。この場合、次のエラーが発生します。
+- **SqlException.Number** = 11001
+- メッセージ: "そのようなホストは不明です。"
 
 
 最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
 
 
-具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。 1.エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。2.通常と同様に初回接続を試みます。3.エラーが捕捉された後、11001 をリストから削除します。4.コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。- それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。5.再度接続を試みます。
+具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。
+1. エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。
+2. 通常と同様に初回接続を試みます。
+3. エラーが捕捉された後、11001 をリストから削除します。
+4. コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。
+ - それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。
+5. 再度接続を試みます。
 
 
 ### 接続時に間違った綴りのデータベース名を使用することによるテスト
 
 
-意図的に間違ったユーザー名を使って初回接続を試みます。この場合、次のエラーが発生します。- **SqlException.Number** = 18456 - メッセージ: "ユーザー 'WRONG\_MyUserName' はログインできませんでした。"
+意図的に間違ったユーザー名を使って初回接続を試みます。この場合、次のエラーが発生します。
+- **SqlException.Number** = 18456
+- メッセージ: "ユーザー 'WRONG_MyUserName' はログインできませんでした。"
 
 
 最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
 
 
-具体的には、プログラムで実行時パラメーターを通じ、次の処理を行います。 1.エラーのリストに対して一時的に 18456 を追加し、一過性と見なします。2.意図的に 'WRONG\_' をユーザー名に追加します。3.エラーが捕捉された後、18456 をリストから削除します。4.ユーザー名から 'WRONG\_' を削除します。5.再度接続を試みます。
+具体的には、プログラムで実行時パラメーターを通じ、次の処理を行います。
+1. エラーのリストに対して一時的に 18456 を追加し、一過性と見なします。
+2. 意図的に 'WRONG_' をユーザー名に追加します。
+3. エラーが捕捉された後、18456 をリストから削除します。
+4. ユーザー名から 'WRONG_' を削除します。
+5. 再度接続を試みます。
 
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
@@ -234,7 +249,9 @@ Azure 仮想マシン (VM) でクライアント プログラムがホストさ�
 **System.Data.SqlClient.SqlConnection** などの ADO.NET クラスを使って Azure SQL Database に接続する場合は、.NET Framework Version 4.6.1 以降の使用をお勧めします。
 
 
-ADO.NET 4.6.1: - サポート対象プロトコルに TDS 7.4 が追加されています。4.0 の後に行われた接続の機能強化も含まれています。- 接続プーリングがサポートされます。加えて、プログラムに割り当てた接続オブジェクトが正常に動作しているかどうかを効率的に検証することが可能です。
+ADO.NET 4.6.1: 
+- サポート対象プロトコルに TDS 7.4 が追加されています。4.0 の後に行われた接続の機能強化も含まれています。
+- 接続プーリングがサポートされます。加えて、プログラムに割り当てた接続オブジェクトが正常に動作しているかどうかを効率的に検証することが可能です。
 
 
 接続プールから取得した接続オブジェクトを使用するとき、すぐに使用しないのであれば、プログラムで一時的に接続を閉じるようお勧めします。接続を再度開いたとしても、新しい接続の作成に伴う処理負荷はわずかです。
@@ -251,7 +268,9 @@ ADO.NET 4.0 以前のバージョンを使用している場合は、最新の A
 プログラムから Azure SQL Database に接続できないときの診断方法として 1 つ考えられるのは、ユーティリティ プログラムを使用して接続する方法です。診断対象のプログラムと同じライブラリを使用して接続するユーティリティがあれば理想的です。
 
 
-Windows コンピューターでは、次のユーティリティが利用できます。- SQL Server Management Studio (ssms.exe)。接続には ADO.NET が使用されます。- sqlcmd.exe。接続には [ODBC](http://msdn.microsoft.com/library/jj730308.aspx) が使用されます。
+Windows コンピューターでは、次のユーティリティが利用できます。
+- SQL Server Management Studio (ssms.exe)。接続には ADO.NET が使用されます。
+- sqlcmd.exe。接続には [ODBC](http://msdn.microsoft.com/library/jj730308.aspx) が使用されます。
 
 
 接続後、短い SQL SELECT クエリが正しく動作するかどうかをテストしてください。
@@ -265,14 +284,17 @@ Windows コンピューターでは、次のユーティリティが利用でき
 ポートの問題から接続に失敗している可能性があるとします。ポートの構成に関するレポート作成に対応したユーティリティをご使用のコンピューターから実行してください。
 
 
-Linux では、次のユーティリティが利用できます。 - `netstat -nap` - `nmap -sS -O 127.0.0.1` - (IP アドレスの部分は適宜置き換えてください)
+Linux では、次のユーティリティが利用できます。
+- `netstat -nap`
+- `nmap -sS -O 127.0.0.1`
+ - (IP アドレスの部分は適宜置き換えてください)
 
 
 Windows では [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。以下の例では、Azure SQL Database サーバー上のポートの状況と、ノート PC 上で動作しているポートとを照会しています。
 
 
 ```
-[C:\Users\johndoe]
+[C:\Users\johndoe\]
 >> portqry.exe -n johndoesvr9.database.windows.net -p tcp -e 1433
 
 Querying target system called:
@@ -284,7 +306,7 @@ Name resolved to 23.100.117.95
 querying...
 TCP port 1433 (ms-sql-s service): LISTENING
 
-[C:\Users\johndoe]
+[C:\Users\johndoe\]
 >>
 ```
 
@@ -300,7 +322,8 @@ TCP port 1433 (ms-sql-s service): LISTENING
 診断には、クライアントで発生したエラーのログが役立ちます。Azure SQL Database が内部的に記録するエラー データとそれらのログ エントリを相互に関連付けることも可能です。
 
 
-Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ クラスが用意されています。 - [Logging アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440731.aspx)に関するページ
+Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ クラスが用意されています。 
+- [Logging アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440731.aspx)に関するページ
 
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
@@ -313,8 +336,8 @@ Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ
 
 | ログのクエリ | 説明 |
 | :-- | :-- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、一過性の障害や接続エラーの原因となるおそれのあるイベントなど、個々のイベントに関する情報が表示されます。<br/><br/>クライアント プログラムでいつ問題が発生したかの情報に対し、**start\_time** や **end\_time** の値を相互に関連付けることをお勧めします。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` | [sys.database\_connection\_stats](http://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、一過性の障害や接続エラーの原因となるおそれのあるイベントなど、個々のイベントに関する情報が表示されます。<br/><br/>クライアント プログラムでいつ問題が発生したかの情報に対し、**start_time** や **end_time** の値を相互に関連付けることをお勧めします。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` | [sys.database_connection_stats](http://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
 
 
 ### 診断: SQL Database のログから問題のイベントを検索する
@@ -349,7 +372,7 @@ ORDER BY
 ```
 
 
-#### sys.fn\_xe\_telemetry\_blob\_target\_read\_file から返される行の例
+#### sys.fn_xe_telemetry_blob_target_read_file から返される行の例
 
 
 次に示したのは、クエリから返される行の例です。ここに示した行では null 値が表示されていますが、null 以外の場合も多くあります。
@@ -367,13 +390,16 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 ## Enterprise Library 6
 
 
-Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (Azure SQL Database サービスもその一つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。EntLib60 の利便性が発揮される個々の領域の説明については、まず以下のトピックにアクセスしてください。 - [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
+Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (Azure SQL Database サービスもその一つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。EntLib60 の利便性が発揮される個々の領域の説明については、まず以下のトピックにアクセスしてください。
+- [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
 
 
-EntLib60 を活かせる領域のひとつとして、一過性の障害を処理するための再試行ロジックがあります。 - [Transient Fault Handling アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
+EntLib60 を活かせる領域のひとつとして、一過性の障害を処理するための再試行ロジックがあります。
+- [Transient Fault Handling アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
 
 
-再試行ロジックに EntLib60 を使用した簡単な C# コード サンプルは、以下のページからダウンロードできます。 - [Enterprise Library 6 の再試行ロジックを使って SQL Database に接続するコード サンプル (C#)](sql-database-develop-entlib-csharp-retry-windows.md)
+再試行ロジックに EntLib60 を使用した簡単な C# コード サンプルは、以下のページからダウンロードできます。
+- [Enterprise Library 6 の再試行ロジックを使って SQL Database に接続するコード サンプル (C#)](sql-database-develop-entlib-csharp-retry-windows.md)
 
 
 > [AZURE.NOTE]EntLib60 のソース コードは、[ダウンロード サイト](http://go.microsoft.com/fwlink/p/?LinkID=290898)から入手できます。EntLib に対して機能の追加や保守目的での更新を行う予定はありません。
