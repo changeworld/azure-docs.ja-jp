@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="12/15/2015"
+	ms.date="01/05/2016"
 	ms.author="spelluru"/>
 
-# Azure PowerShell を使用した初めての Azure Data Factory パイプラインの作成
+# Azure リソース マネージャー テンプレートを使用した初めての Azure Data Factory パイプラインの作成
 > [AZURE.SELECTOR]
 - [Tutorial Overview](data-factory-build-your-first-pipeline.md)
 - [Using Data Factory Editor](data-factory-build-your-first-pipeline-using-editor.md)
@@ -32,7 +32,7 @@
 チュートリアルの「概要」トピックに記載されている前提条件とは別に、次をインストールする必要があります。
 
 - 先に進む前に、「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」に目を通し、前提条件の手順を完了する**必要があります**。 
-- **Azure PowerShell をインストールします**。「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。
+- **Azure PowerShell をインストールします**。「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。
 - この記事では、Azure Data Factory サービスの概念については説明しません。サービスの詳細については、[Azure Data Factory の概要](data-factory-introduction.md)に関するページを参照してください。 
 - 「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」を参照して、Azure リソース マネージャー (ARM) テンプレートについて確認してください。 
  
@@ -243,4 +243,4 @@
 10. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
  
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

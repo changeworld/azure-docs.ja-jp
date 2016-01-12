@@ -17,7 +17,10 @@
 
 # オンプレミスの StorSimple デバイスのデプロイ
 
-[AZURE.INCLUDE [storsimple-version-selector](../../includes/storsimple-version-selector.md)]
+> [AZURE.SELECTOR]
+- [Update 2](../articles/storsimple/storsimple-deployment-walkthrough-u2.md)
+- [Update 1](../articles/storsimple/storsimple-deployment-walkthrough-u1.md)
+- [GA Release](../articles/storsimple/storsimple-deployment-walkthrough.md)
 
 ## 概要
 
@@ -143,7 +146,7 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 | | | |
 | **NTP** | NTP サーバーを入力するとすぐに時刻の同期が開始されます。`time.windows.com` またはパブリック タイム サーバーを入力する場合は、UDP ポート 123 が開いていることを確認します。 | [このスクリプトをダウンロードして使用してください](https://gallery.technet.microsoft.com/scriptcenter/Get-Network-NTP-Time-with-07b216ca)。 |
 | | | |
-| **プロキシ (省略可能)** | 有効なプロキシ URI とポートかどうか。 </br>この認証モードが正しいかどうか。 | <code>wget http://bing.com | % {$\_.StatusCode}</code></br> このコマンドは、Web プロキシを構成した後すぐに実行する必要があります。状態コード 200 が返された場合は、接続が成功したことを示します。 |
+| **プロキシ (省略可能)** | 有効なプロキシ URI とポートかどうか。 </br>この認証モードが正しいかどうか。 | <code>wget http://bing.com &#124; % {$\_.StatusCode}</code></br> このコマンドは、Web プロキシを構成した後すぐに実行する必要があります。状態コード 200 が返された場合は、接続が成功したことを示します。 |
 | | トラフィックをプロキシ経由でルーティングできるかどうか。 | デバイスでプロキシを構成した後、DNS の検証、NTP チェック、または HTTP チェックを 1 回実行します。これによって、プロキシまたは他の場所でトラフィックがブロックされているかどうかが明確になります。 |
 | | | |
 | **登録** | 送信 TCP ポート 443、80、9354 が開いているかどうかを確認します。 | `Test-NetConnection -Port   443 -InformationLevel Detailed`</br>[Test-NetConnection コマンドレットの詳細についてはこちらをご覧ください。](https://technet.microsoft.com/library/dn372891.aspx) |
@@ -291,4 +294,4 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 - [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

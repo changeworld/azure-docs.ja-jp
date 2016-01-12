@@ -1,19 +1,20 @@
 <properties
-	pageTitle="Azure ポータルでの SQL Data Warehouse データベースの作成 | Microsoft Azure"
-	description="Azure ポータルで Azure SQL Data Warehouse を作成する方法を説明します。"
-	services="sql-data-warehouse"
-	documentationCenter="NA"
-	authors="barbkess"
-	manager="jhubbard"
-	editor=""
-	tags="azure-sql-data-warehouse"/>
+   pageTitle="Azure ポータルでの SQL Data Warehouse データベースの作成 | Microsoft Azure"
+   description="Azure ポータルで Azure SQL Data Warehouse を作成する方法を説明します。"
+   services="sql-data-warehouse"
+   documentationCenter="NA"
+   authors="barbkess"
+   manager="jhubbard"
+   editor=""
+   tags="azure-sql-data-warehouse"/>
+
 <tags
    ms.service="sql-data-warehouse"
    ms.devlang="NA"
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="12/15/2015"
+   ms.date="01/04/2016"
    ms.author="lodipalm;barbkess"/>
 
 # SQL Data Warehouse の作成
@@ -135,4 +136,4 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 
 SQL Data Warehouse のサンプル データベースの作成は以上で完了です。いつでもデータベースに[接続](./sql-data-warehouse-get-started-connect.md)することができます。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

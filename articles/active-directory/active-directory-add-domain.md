@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/01/2015"
+	ms.date="01/05/2016"
 	ms.author="curtand"/>
 
 # Azure Active Directory への独自のドメイン名の追加
@@ -49,7 +49,8 @@ onmicrosoft.com ドメインを他のサービスで使用できます。たと�
 
 クラウド サービスでシングル サインオンを使用する場合は、Microsoft 準備展開ツールを実行して Active Directory 環境を準備することをお勧めします。このツールは、Active Directory 環境を検査し、シングル サインオンをセットアップする準備ができているかどうかに関する情報が含まれたレポートを提供します。準備ができていない場合は、シングル サインオンの準備をするために行う必要がある変更が示されます。たとえば、ユーザーに UPN があるかどうか、また、それらの UPN が正しい形式であるかどうかが検査されます。このツールをダウンロードするには、[Microsoft 準備展開ツール](http://go.microsoft.com/fwlink/?linkid=235650)に関するページをご覧ください。
 
-> [AZURE.NOTE]Office 365 を使用している場合、 ドメインをセットアップしたら、カスタム ドメイン名を使用する電子メール アドレス、Lync Online アカウント、配布グループの作成を開始できます。また、SharePoint Online 上でホストされる一般向けの Web サイトにドメイン名を使用することもできます。
+> [AZURE.NOTE]
+> Office 365 を使用している場合、 ドメインをセットアップしたら、カスタム ドメイン名を使用する電子メール アドレス、Lync Online アカウント、配布グループの作成を開始できます。また、SharePoint Online 上でホストされる一般向けの Web サイトにドメイン名を使用することもできます。
 
 - [Azure クラシック ポータルを使用したドメインの追加と確認](#add-and-verify-a-domain-using-the-azure-management-portal)
 - [Cloud Services の DNS レコードの編集](#edit-dns-records-for-your-cloud-services)
@@ -69,11 +70,13 @@ onmicrosoft.com ドメインを他のサービスで使用できます。たと�
         1. **[このドメインを構成して、ローカル Active Directory にシングル サインオンします]** チェック ボックスを必ずオンにし、**[追加]** をクリックします。
         2. ドメインが Azure AD に正常に追加されたことを示すメッセージが表示されたら、矢印をクリックして次のページに移動し、そのページの指示に従って、追加したドメインをシングル サインオン用に構成します。
 
-> [AZURE.NOTE]ドメイン名を Azure AD に追加したら、新しい電子メール アドレスの既定のドメイン名を変更できます。詳細については、「[ユーザーのプライマリ ドメイン名を変更する方法](#how-can-i-change-the-primary-domain-name-for-users?)」をご覧ください。 既存のユーザー アカウントのプロファイルを編集して、(ユーザー ID でもある) 電子メール アドレスを更新し、onmicrosoft.com ドメインの代わりにカスタム ドメイン名を使用することもできます。
+> [AZURE.NOTE]
+> ドメイン名を Azure AD に追加したら、新しい電子メール アドレスの既定のドメイン名を変更できます。詳細については、「[ユーザーのプライマリ ドメイン名を変更する方法](#how-can-i-change-the-primary-domain-name-for-users?)」をご覧ください。 既存のユーザー アカウントのプロファイルを編集して、(ユーザー ID でもある) 電子メール アドレスを更新し、onmicrosoft.com ドメインの代わりにカスタム ドメイン名を使用することもできます。
 
 ### Cloud Services の DNS レコードの編集
 
-> [AZURE.NOTE]Microsoft Intune を使用している場合は、 Microsoft Intune クラウド サービスの DNS レコードを編集する必要はありません。
+> [AZURE.NOTE]
+> Microsoft Intune を使用している場合は、 Microsoft Intune クラウド サービスの DNS レコードを編集する必要はありません。
 
 カスタム ドメイン名を追加して確認したら、次に、ドメイン レジストラーまたは DNS ホスティング プロバイダーで、トラフィックがクラウド サービスに送信されるように DNS レコードを編集します。必要な DNS 情報は Azure AD が提供します。
 
@@ -208,8 +211,8 @@ TXT レコードまたは MX レコードを作成し、Web サイトからサ�
 ## 次の手順
 
 - [Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)
-- [StackOverflow](http://stackoverflow.com/questions/tagged/azure)
+- [Stackoverflow](http://stackoverflow.com/questions/tagged/azure)
 - [Azure への組織としてのサインアップ](sign-up-organization.md)
 - [Azure AD でのドメインの管理](https://msdn.microsoft.com/library/azure/dn919677.aspx)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

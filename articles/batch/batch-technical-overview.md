@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Batch サービスの基本 |Microsoft Azure"
-	description="大規模な並列ワークロードと HPC ワークロードに関する Azure Batch サービスの概念、ワークフロー、シナリオについて説明します。"
+	description="大規模な並列ワークロードと HPC ワークロードに関する Azure Batch サービスの使用方法について説明します。"
 	services="batch"
 	documentationCenter=""
 	authors="dlepow"
@@ -38,9 +38,9 @@ Batch は、本質的に並列である ("驚異的並列性" とも呼ばれま
 * 遺伝子配列の分析
 * ソフトウェアのテスト
 
-また、Batch で並列計算を実行すると、最終的により少ないステップで、より複雑な他の並列ワークロードを処理できます。
+また、Batch を使用すると、最終的により少ないステップで並列計算を実行できるほか、Message Passing Interface (MPI) アプリケーションなどのより複雑な HPC ワークロードを実行できます。
 
->[AZURE.NOTE] 現時点では、Batch は、Windows Server ベースの仮想マシンで実行されるワークロードのみをサポートしています。また、現時点では、Batch は Message Passing Interface (MPI) アプリケーションをサポートしていません。
+>[AZURE.NOTE]現時点では、Batch は、Windows Server ベースの仮想マシンで実行されるワークロードのみをサポートしています。
 
 Batch と Azure 内の他の HPC ソリューション オプションとの比較については、「[Batch と HPC ソリューション](batch-hpc-solutions.md)」を参照してください。
 
@@ -103,4 +103,4 @@ Batch API を使用する一般的なシナリオでは、数千個ものコン�
 [parallel]: ./media/batch-technical-overview/parallel.png
 [work_item_workflow]: ./media/batch-technical-overview/work_item_workflow.png
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

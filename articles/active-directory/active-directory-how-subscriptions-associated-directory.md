@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/01/2015"
+	ms.date="01/05/2016"
 	ms.author="curtand"/>
 
 # Azure サブスクリプションを Azure Active Directory に関連付ける方法
@@ -34,7 +34,8 @@ ID が作成されて Microsoft アカウント システムに格納されま�
 
 たとえば、Microsoft アカウントを使用するユーザーは Azure クラシック ポータルにサインインします。
 
-> [AZURE.NOTE]Azure クラシック ポータルにサインインするには、msmith@hotmail.com に Azure のサブスクリプションが必要です。アカウントは、サービス管理者またはサブスクリプションの共同管理者のいずれかである必要があります。
+> [AZURE.NOTE]
+> Azure クラシック ポータルにサインインするには、msmith@hotmail.com に Azure のサブスクリプションが必要です。アカウントは、サービス管理者またはサブスクリプションの共同管理者のいずれかである必要があります。
 
 ![][1]
 
@@ -104,7 +105,8 @@ Azure にサインアップする前に Office 365 にサインアップした�
 
 Azure クラシック ポータルで両方のディレクトリを管理するには、以下の手順を実行します。
 
-> [AZURE.NOTE]この手順は、ユーザーが Microsoft アカウントでサインインしているときにのみ実行できます。ユーザーが職場または学校アカウントでサインインしている場合は、ホーム ディレクトリ (つまり、職場または学校アカウントが格納されていて、職場または学校によって所有されているディレクトリ) によってのみアカウントを認証できるので、**[既存のディレクトリの使用]** オプションは使用できません。
+> [AZURE.NOTE]
+> この手順は、ユーザーが Microsoft アカウントでサインインしているときにのみ実行できます。ユーザーが職場または学校アカウントでサインインしている場合は、ホーム ディレクトリ (つまり、職場または学校アカウントが格納されていて、職場または学校によって所有されているディレクトリ) によってのみアカウントを認証できるので、**[既存のディレクトリの使用]** オプションは使用できません。
 
 1. Microsoft アカウントを使用して、Azure クラシック ポータルにサインインします。
 2. **[新規]**、**[App Services]**、**[Active Directory]**、**[ディレクトリ]**、**[カスタム作成]** の順にクリックします。
@@ -124,4 +126,4 @@ Azure クラシック ポータルで両方のディレクトリを管理する�
 [2]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_OrgAccountSubscription.png
 [3]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_SignInDisambiguation.PNG
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

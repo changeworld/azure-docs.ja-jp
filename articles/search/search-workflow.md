@@ -13,12 +13,12 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/04/2015"
+	ms.date="12/29/2015"
 	ms.author="heidist"/>
 
 # Azure Search 開発の一般的ワークフロー
 
-この記事は、カスタム アプリケーションに検索機能を与えるコンポーネントとして、ホステッド クラウド検索サービスである Azure Search を追加するためのロードマップです。予備調査するのか、すぐに始めるのかにもよりますが、Azure Search をカスタム開発プロジェクトに統合する方法に関する準備的ガイダンスが必要になります。
+この記事は、カスタム アプリケーションに検索機能を実装するためのコンポーネントとして、ホステッド クラウド検索サービスである Azure Search を追加するためのロードマップです。予備調査するのか、すぐに始めるのかにもよりますが、Azure Search をカスタム開発プロジェクトに統合する方法に関する準備的ガイダンスが必要になります。
 
 次のセクションでは、Azure Search がアプリケーションの検索要件を満たすかどうかを評価する際に役立つ、最初のプロトタイプの一般的なワークフローを紹介します。この記事の後半では、より重大なアプリケーション開発作業を考慮する、設計上の重要な決定について取り上げます。
 
@@ -73,7 +73,7 @@ Azure Search にインデックスを保存したら、次の手順として、�
 - [ドキュメントの追加、更新、削除 (REST API)](https://msdn.microsoft.com/library/dn798930.aspx)
 - [DocumentOperationsExtensions クラス](https://msdn.microsoft.com/library/microsoft.azure.search.documentoperationsextensions.aspx)
 
-非常に少ないデータセットで機能する 3 つ目の選択肢は [Fiddler](search-fiddler.md) または [Chrome Postman](search-chrome-postman.md) を使用してドキュメントをアップロードすることです。
+データセットが非常に少ない場合に役立つ 3 つ目の選択肢は、[Fiddler](search-fiddler.md) を使用してドキュメントをアップロードすることです。
 
 4 つ目の選択肢は、おそらく最も簡単な方法ですが、ソリューションの組み込みデータベース (.mdf) からドキュメントを読み込む [Adventure Works C# REST API のサンプル](https://azuresearchadventureworksdemo.codeplex.com/)とソリューションに含まれる JSON データ ファイルからデータを読み込む[スコアリング プロファイル C# REST API のサンプル](https://azuresearchscoringprofiles.codeplex.com/)からコードを借りることです。
 
@@ -83,7 +83,7 @@ Azure Search にインデックスを保存したら、次の手順として、�
 
 ドキュメントがインデックスに読み込まれたら、最初のクエリを記述できます。
 
-Search サービスから最初の検索結果を取得する最も速い方法は、[Fiddler](search-fiddler.md) または [Chrome Postman](search-chrome-postman.md) を使用して応答を表示することです。ただし、現実的には、読みやすい形式で結果を表示する簡単な UI コードを記述することになります。
+Search サービスから最初の検索結果を取得する最も速い方法は、[Fiddler](search-fiddler.md) を使用して応答を表示することです。ただし、現実的には、読みやすい形式で結果を表示する簡単な UI コードを記述することになります。
 
 検索操作のための API には次があります。
 
@@ -140,7 +140,8 @@ Azure Search は 2 つのプログラミング モデルを提供します。.NE
 
 現在のところ、.NET ライブラリには機能の少量のサブセットがありません。そのため、マネージ コードの記述を希望しても、場合によっては、必要な機能を得るためには REST API を使用しなければなりません。REST API でのみ利用できる機能は次のとおりです。
 
-- [Microsoft 自然言語プロセッサ - プレビューのみ](../search-api-2015-02-28-preview/)
+- [カスタム アナライザー - プレビューのみ](https://msdn.microsoft.com/library/azure/mt605304.aspx)
+- [Lucene クエリ アナライザー - プレビューのみ](https://msdn.microsoft.com/library/azure/mt589323.aspx)
 - [moreLikeThis 機能 - プレビューのみ](../search-api-2015-02-28-preview/)
 - [管理 API](https://msdn.microsoft.com/library/dn832684.aspx)
 
@@ -180,7 +181,7 @@ Azure Search は、検索操作で使用するインデックスおよびドキ�
 
 Azure Search の優れた機能の 1 つは、要求に応じてリソースを簡単にスケールアップ、またはスケールダウンできることです。この機能で容量計画の必要性がなくなるわけではありませんが、ほとんどのリスクを最小限に抑えます。検索の作業負荷を実行するために、追加のハードウェアや不適切なハードウェアで行き詰まることがありません。
 
-最後の手順として、レプリカとパーティションの両方の既存のリソース レベルを確認し、調整が必要かどうかを決定します。容量を調整する最も簡単な方法は [Azure ポータル](https://ms.portal.azure.com/)を利用することです。
+最後の手順として、レプリカとパーティションの両方の既存のリソース レベルを確認し、調整が必要かどうかを決定します。容量を調整する最も簡単な方法は [Azure クラシック ポータル](https://ms.portal.azure.com/)を利用することです。
 
 Standard 価格レベルのみをスケールアップまたはスケールダウンできることに注意してください。また、調整の程度によっては、サービスの追加クラスターをデプロイするために数分から数時間かかることがあります。
 
@@ -190,4 +191,4 @@ Standard 価格レベルのみをスケールアップまたはスケールダ�
 <!--Image references-->
 [1]: ./media/search-workflow/AzSearch-Workflow.png
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_0107_2016--->

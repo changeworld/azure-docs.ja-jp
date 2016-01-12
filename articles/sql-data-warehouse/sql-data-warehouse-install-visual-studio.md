@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/21/2015"
+   ms.date="01/04/2016"
    ms.author="twounder;barbkess"/>
 
 # SQL Data Warehouse 用に Visual Studio 2015 または SSDT をインストールする
@@ -49,4 +49,4 @@ Visual Studio がインストールされているかどうかに関係なく、
 
 <!--Image references-->
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0107_2016-->

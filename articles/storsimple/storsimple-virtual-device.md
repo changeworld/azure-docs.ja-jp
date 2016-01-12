@@ -17,7 +17,10 @@
 
 # Azure での StorSimple 仮想デバイスのデプロイと管理
 
-[AZURE.INCLUDE [storsimple-version-selector-sva](../../includes/storsimple-version-selector-sva.md)]
+> [AZURE.SELECTOR]
+- [Update 2](../articles/storsimple/storsimple-virtual-device-u2.md)
+- [Update 1](../articles/storsimple/storsimple-virtual-device-u1.md)
+- [GA Release](../articles/storsimple/storsimple-virtual-device.md)
 
 ## 概要
 
@@ -131,7 +134,8 @@ StorSimple 仮想デバイスを作成するには、次の手順を実行しま
 
 	4. **[仮想デバイスの作成に使用するストレージ アカウント]** – プロビジョニング中に仮想デバイスのイメージを保持する目的で使用されるストレージ アカウント。このストレージ アカウントは、仮想デバイスおよび仮想ネットワークと同じリージョンに存在する必要があります。物理デバイスまたは仮想デバイスのデータ保管にこのストレージ アカウントを使用することは避けてください。既定では、この目的に使用する新しいストレージ アカウントが作成されます。ただし、この用途に適したストレージ アカウントが既にあることがわかっている場合は、一覧からそのアカウントを選択してください。
 
-4. 仮想デバイスに格納するデータがマイクロソフトのデータセンターでホストされることに同意する旨のチェック ボックスをオンにします。これで仮想デバイスが作成されます。仮想デバイスの作成には最大で 45 分 ～ 1 時間かかる場合があります。![StorSimple 仮想デバイスの作成ステージ](./media/storsimple-virtual-device/StorSimple_VirtualDeviceCreating1M.png)
+4. 仮想デバイスに格納するデータがマイクロソフトのデータセンターでホストされることに同意する旨のチェック ボックスをオンにします。これで仮想デバイスが作成されます。仮想デバイスの作成には最大で 45 分 ～ 1 時間かかる場合があります。
+	![StorSimple 仮想デバイスの作成ステージ](./media/storsimple-virtual-device/StorSimple_VirtualDeviceCreating1M.png)
 
 物理デバイスのみを使用する場合は、暗号化キーがご利用のデバイスに保管されるため、マイクロソフトが暗号化を解除することはできません。仮想デバイスを使用する場合、暗号化キーと復号化キーの両方が Microsoft Azure に保管されます。詳細については、「[仮想デバイスを使用するためのセキュリティに関する考慮事項](#security-considerations-for-using-a-virtual-device)」を参照してください。
 
@@ -388,4 +392,4 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 仮想デバイスを管理するには、[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md#administer-storsimple-device-using-storsimple-manager-service)に関するページでワークフローの詳細な一覧を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -289,7 +289,7 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
     var families = client.CreateDocumentQuery("dbs/" + database.Id + "/colls/" + documentCollection.Id,
         "SELECT * " +
         "FROM Families f " +
-        "WHERE f.id = "AndersenFamily"");
+        "WHERE f.id = \"AndersenFamily\"");
 
     foreach (var family in families)
     {
@@ -376,7 +376,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 	  "_rid": "ybVlALUoqAEBAAAAAAAAAA==",
 	  "_ts": 1428372205,
 	  "_self": "dbs/ybVlAA==/colls/ybVlALUoqAE=/docs/ybVlALUoqAEBAAAAAAAAAA==/",
-	  "_etag": ""0000400c-0000-0000-0000-55233aed0000"",
+	  "_etag": "\"0000400c-0000-0000-0000-55233aed0000\"",
 	  "_attachments": "attachments/"
 	} from SQL
 	Read {
@@ -414,7 +414,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 	  "_rid": "ybVlALUoqAEBAAAAAAAAAA==",
 	  "_ts": 1428372205,
 	  "_self": "dbs/ybVlAA==/colls/ybVlALUoqAE=/docs/ybVlALUoqAEBAAAAAAAAAA==/",
-	  "_etag": ""0000400c-0000-0000-0000-55233aed0000"",
+	  "_etag": "\"0000400c-0000-0000-0000-55233aed0000\"",
 	  "_attachments": "attachments/"
 	} from LINQ
 	Read {
@@ -452,7 +452,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 	  "_rid": "ybVlALUoqAEBAAAAAAAAAA==",
 	  "_ts": 1428372205,
 	  "_self": "dbs/ybVlAA==/colls/ybVlALUoqAE=/docs/ybVlALUoqAEBAAAAAAAAAA==/",
-	  "_etag": ""0000400c-0000-0000-0000-55233aed0000"",
+	  "_etag": "\"0000400c-0000-0000-0000-55233aed0000\"",
 	  "_attachments": "attachments/"
 	} from LINQ query
 
@@ -471,13 +471,11 @@ Visual Studio で DocumentDB .NET SDK への参照を復元するには、ソリ
 -   さらに複雑な ASP.NET MVC NoSQL チュートリアルが必要ですか。 「[DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築](documentdb-dotnet-application.md)」を参照してください。
 -	[DocumentDB アカウントを監視する](documentdb-monitor-accounts.md)方法について学習します。
 -	[クエリのプレイ グラウンド](https://www.documentdb.com/sql/demo)でサンプル データセットに対してクエリを実行します。
--	プログラミング モデルの詳細については、[DocumentDB ドキュメント ページ](../../services/documentdb/)の「開発」セクションを参照してください。
+-	プログラミング モデルの詳細については、[DocumentDB のドキュメントに関するページ](https://azure.microsoft.com/documentation/services/documentdb/)の「開発」セクションを参照してください。
 
-[doc-landing-page]: ../../services/documentdb/
 [documentdb-create-account]: documentdb-create-account.md
 [documentdb-manage]: documentdb-manage.md
-
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

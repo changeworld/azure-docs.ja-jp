@@ -17,7 +17,7 @@
 
 # Application Gateway の作成、起動、または削除
 
-Application Gateway はロード バランサーの第 7 層です。クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。Application Gateway は、HTTP 負荷分散、クッキー ベースのセッション アフィニティ、SSL オフロードなどのアプリケーション配信機能を備えています。
+Application Gateway はレイヤー 7 のロード バランサーです。クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。Application Gateway は、HTTP 負荷分散、クッキー ベースのセッション アフィニティ、SSL オフロードなどのアプリケーション配信機能を備えています。
 
 > [AZURE.SELECTOR]
 - [Azure Classic PowerShell](application-gateway-create-gateway.md)
@@ -30,16 +30,10 @@ Application Gateway はロード バランサーの第 7 層です。クラウ�
 この記事では、Application Gateway を作成、構成、起動、および削除する手順について説明します。
 
 
->[AZURE.IMPORTANT]Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイ モデルと従来のデプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイ モデルとツール](azure-classic-rm.md)について理解しておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure クラシックのデプロイメントを使用した Application Gateway の作成について説明します。リソース マネージャー バージョンを使用するには、[リソース マネージャーを使用した Application Gateway のデプロイメントの作成](application-gateway-create-gateway-arm.md)に進んでください。
-
-
-
-
-
 ## 開始する前に
 
 1. Web Platform Installer を使用した、Azure PowerShell コマンドレットの最新バージョンのインストール。[ダウンロード ページ](http://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
-2. 有効なサブネットがある作業用の仮想ネットワークがあることを確認します。仮想マシンまたはクラウド デプロイメントでサブネットを使用していないことを確認します。Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
+2. 有効なサブネットがある作業用の仮想ネットワークがあることを確認します。仮想マシンまたはクラウドのデプロイでサブネットを使用していないことを確認します。Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
 3. Application Gateway を使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内、または割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
 
 ## Application Gateway の作成に必要な構成
@@ -66,14 +60,17 @@ Application Gateway を作成するには、次の手順を順番に実行する
 2. 構成 XML ファイルまたは構成オブジェクトを作成します。
 3. 新しく作成した Application Gateway のリソースに構成をコミットします。
 
+>[AZURE.NOTE]Application Gateway のカスタム プローブを構成する必要がある場合は、[カスタム プローブを使用する Application Gateway を PowerShell で作成する方法](application-gateway-create-probe-classic-ps.md)に関する記事を参照してください。詳細については、[カスタム プローブと正常性監視](application-gateway-probe-overview.md)に関するページを参照してください。
+
+
 ### Application Gateway のリソースの作成
 
 ゲートウェイを作成するには、`New-AzureApplicationGateway` コマンドレットを使用して、値を独自の値に置き換えて使用します。この時点ではゲートウェイの課金は開始されません。課金は後の手順でゲートウェイが正しく起動されたときに開始します。
 
-次の例では、"testvnet1" という仮想ネットワークと "subnet-1” というサブネットを使用して新しい Application Gateway を作成します。
+次の例では、"testvnet1" という仮想ネットワークと "subnet-1" というサブネットを使用して新しい Application Gateway を作成します。
 
 
-	PS C:\> New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
+	New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 
 	VERBOSE: 4:31:35 PM - Begin Operation: New-AzureApplicationGateway
 	VERBOSE: 4:32:37 PM - Completed Operation: New-AzureApplicationGateway
@@ -82,7 +79,7 @@ Application Gateway を作成するには、次の手順を順番に実行する
 	Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
 
 
- *Description*、 *InstanceCount*、 および *GatewaySize* は省略可能なパラメーターです。
+ *Description* 、 *InstanceCount* 、 および *GatewaySize* は省略可能なパラメーターです。
 
 
 ゲートウェイが作成されたことを**確認する**には、`Get-AzureApplicationGateway` コマンドレットを使用します。
@@ -90,7 +87,7 @@ Application Gateway を作成するには、次の手順を順番に実行する
 
 
 
-	PS C:\> Get-AzureApplicationGateway AppGwTest
+	Get-AzureApplicationGateway AppGwTest
 	Name          : AppGwTest
 	Description   :
 	VnetName      : testvnet1
@@ -216,10 +213,10 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 
 ### 手順 2.
 
-次に、Application Gateway を設定します。`Set-AzureApplicationGatewayConfig` コマンドレットと構成 XML ファイルを使用します。
+次に、Application Gateway を設定します。`Set-AzureApplicationGatewayConfig` コマンドレットと構成 XML ファイルを使用してください。
 
 
-	PS C:\> Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
+	Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
 
 	VERBOSE: 7:54:59 PM - Begin Operation: Set-AzureApplicationGatewayConfig
 	VERBOSE: 7:55:32 PM - Completed Operation: Set-AzureApplicationGatewayConfig
@@ -341,7 +338,7 @@ Application Gateway の構成オブジェクト ($appgwconfig) にすべての�
 
 
 
-	PS C:\> Start-AzureApplicationGateway AppGwTest
+	Start-AzureApplicationGateway AppGwTest
 
 	VERBOSE: 7:59:16 PM - Begin Operation: Start-AzureApplicationGateway
 	VERBOSE: 8:05:52 PM - Completed Operation: Start-AzureApplicationGateway
@@ -355,7 +352,7 @@ Application Gateway の構成オブジェクト ($appgwconfig) にすべての�
 
 次のサンプルは、起動に成功し、実行中で、`http://<generated-dns-name>.cloudapp.net` 方向のトラフィックを受け入れる準備が完了している Application Gateway を示します。
 
-	PS C:\> Get-AzureApplicationGateway AppGwTest
+	Get-AzureApplicationGateway AppGwTest
 
 	VERBOSE: 8:09:28 PM - Begin Operation: Get-AzureApplicationGateway
 	VERBOSE: 8:09:30 PM - Completed Operation: Get-AzureApplicationGateway
@@ -372,7 +369,7 @@ Application Gateway の構成オブジェクト ($appgwconfig) にすべての�
 
 ## Application Gateway の削除
 
-Application Gateway の削除
+Application Gateway を削除するには、次の手順を実行します。
 
 1. `Stop-AzureApplicationGateway` コマンドレットを使用してゲートウェイを停止します。
 2. `Remove-AzureApplicationGateway` コマンドレットを使用してゲートウェイを削除します。
@@ -380,7 +377,7 @@ Application Gateway の削除
 
 このサンプルの最初の行は `Stop-AzureApplicationGateway` コマンドレットを示し、その後に出力が続きます。
 
-	PS C:\> Stop-AzureApplicationGateway AppGwTest
+	Stop-AzureApplicationGateway AppGwTest
 
 	VERBOSE: 9:49:34 PM - Begin Operation: Stop-AzureApplicationGateway
 	VERBOSE: 10:10:06 PM - Completed Operation: Stop-AzureApplicationGateway
@@ -391,7 +388,7 @@ Application Gateway の削除
 アプリケーション ゲートウェイが Stopped 状態になったら、`Remove-AzureApplicationGateway` コマンドレットを使用してサービスを削除します。
 
 
-	PS C:\> Remove-AzureApplicationGateway AppGwTest
+	Remove-AzureApplicationGateway AppGwTest
 
 	VERBOSE: 10:49:34 PM - Begin Operation: Remove-AzureApplicationGateway
 	VERBOSE: 10:50:36 PM - Completed Operation: Remove-AzureApplicationGateway
@@ -402,7 +399,7 @@ Application Gateway の削除
 サービスが削除されていることを確認するには、`Get-AzureApplicationGateway` コマンドレットを使用します。この手順は必須ではありません。
 
 
-	PS C:\> Get-AzureApplicationGateway AppGwTest
+	Get-AzureApplicationGateway AppGwTest
 
 	VERBOSE: 10:52:46 PM - Begin Operation: Get-AzureApplicationGateway
 
@@ -420,4 +417,4 @@ ILB とともに使用するように Application Gateway を構成する場合�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0107_2016-->
