@@ -82,7 +82,7 @@ Azure リソース マネージャーでのロード バランサー コンポ�
 
 ## ロード バランサーの作成
 
-次の例のコマンドは、*米国東部*の Azure の場所の *NRPRG* リソース グループに *NRPlb* という名前のロード バランサーを作成します。
+次の例のコマンドは、 *米国東部* の Azure の場所の *NRPRG* リソース グループに *NRPlb* という名前のロード バランサーを作成します。
 
 	azure network lb create NRPRG NRPlb eastus
 
@@ -328,4 +328,4 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
