@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/20/2015"
+   ms.date="01/04/2016"
    ms.author="lodipalm"/>
 
 # Powershell を使用して SQL Data Warehouse を作成する
@@ -23,7 +23,7 @@
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
->  [AZURE.NOTE]SQL Data Warehouse で Microsoft Azure Powershell を使用するには、バージョン 0.9.4 以降が必要です。Powershell で (Get-Module Azure).Version を実行することで、バージョンを確認できます。
+> [AZURE.NOTE]SQL Data Warehouse で Microsoft Azure Powershell を使用するには、バージョン 0.9.4 以降が必要です。Powershell で (Get-Module Azure).Version を実行することで、バージョンを確認できます。
 
 ## Azure PowerShell コマンドレットの取得と実行
 Powershell をまだセットアップしていない場合は、次のようにします。
@@ -71,4 +71,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [firewall rules]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-database-configure-firewall-settings/
 [Azure PowerShell のインストールと構成の方法]: powershell-install-configure.md
 
-<!-----HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

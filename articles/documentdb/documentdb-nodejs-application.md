@@ -48,7 +48,7 @@
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-- アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](../../pricing/free-trial/)を参照してください。
+- アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 - [Node.js][] バージョン v0.10.29 以降
 - [Express ジェネレーター](http://www.expressjs.com/starter/generator.html) (`npm install express-generator -g` によってこれをインストールできます)
 - [Git][]
@@ -544,7 +544,7 @@
 
 ## <a name="_Toc395783182"></a>手順 7: Azure Websites へのアプリケーション開発プロジェクトのデプロイ
 
-1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。手順については、[こちら](../web-sites-publish-source-control-git.md#step4)で確認できます。
+1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。この方法の手順については、「[Azure App Service での GIT による継続的なデプロイ](../app-service-web/web-sites-publish-source-control.md)」を参照してください。
 
 2. Git リモートとして Azure Web サイトを追加します。
 
@@ -562,11 +562,11 @@
 
 アプリケーションの完全なソース コードを[GitHub][] からダウンロードできます。
 
-詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+詳細については、[Node.js デベロッパー センター](https://azure.microsoft.com/develop/nodejs/)を参照してください。
 
 [Node.js]: http://nodejs.org/
 [Git]: http://git-scm.com/
 [Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

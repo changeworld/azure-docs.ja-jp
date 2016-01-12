@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="python"
     ms.topic="hero-article"
-    ms.date="12/23/2015"
+    ms.date="01/05/2016"
     ms.author="ryancraw"/>
 
 # DocumentDB による Python Flask Web アプリケーション開発
@@ -43,6 +43,7 @@
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
+- アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 - [Visual Studio 2013](http://www.visualstudio.com/) 以降、またはその無償版の [Visual Studio Express]()。このチュートリアルの手順は、Visual Studio 2015 を想定して作成されています。 
 - Python Tools for Visual Studio ([GitHub](http://microsoft.github.io/PTVS/) から入手できます)。このチュートリアルでは、Python Tools for VS 2015 を使用します。 
 - Azure Python SDK for Visual Studio Version 2.4 以降 ([azure.com](https://azure.microsoft.com/downloads/) から入手できます)。ここでは、Microsoft Azure SDK for Python 2.7 を使用しました。
@@ -60,8 +61,7 @@
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-<br/>
- 次のセクションでは、新しい Python Flask Web アプリケーションをゼロから作成する方法について説明します。
+<br/> 次のセクションでは、新しい Python Flask Web アプリケーションをゼロから作成する方法について説明します。
 
 ## 手順 2: 新しい Python Flask Web アプリケーションを作成する
 
@@ -422,7 +422,7 @@ def vote():
 
 Web アプリケーションに機能を追加する場合は、[DocumentDB Python SDK](documentdb-sdk-python.md) から入手できる API を参考にしてください。
 
-Azure、Visual Studio、Python の詳細については、「[Python デベロッパー センター](/develop/python/)」を参照してください。
+Azure、Visual Studio、Python の詳細については、「[Python デベロッパー センター](https://azure.microsoft.com/develop/python/)」を参照してください。
 
 Python Flask の追加のチュートリアルについては、[Flask メガ チュートリアルのパート 1: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) というブログ記事を参照してください。
 
@@ -432,4 +432,4 @@ Python Flask の追加のチュートリアルについては、[Flask メガ �
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure portal]: http://portal.azure.com
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

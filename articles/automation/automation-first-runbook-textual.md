@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Automation での最初の PowerShell Workflow Runbook | Microsoft Azure"
-	description="PowerShell Workflow を使用して簡単なテキスト形式の Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。Azure リソースに対する認証、入力パラメーターなど、複数の概念について説明します。"
+	description="PowerShell Workflow を使用して簡単なテキスト形式の Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。"
 	services="automation"
 	documentationCenter=""
 	authors="bwren"
@@ -22,16 +22,17 @@
 > [AZURE.SELECTOR]
 - [Graphical](automation-first-runbook-graphical.md)
 - [PowerShell Workflow](automation-first-runbook-textual.md)
+- [PowerShell](automation-first-runbook-textual-PowerShell.md)
 
-このチュートリアルでは、Azure Automation で [PowerShell Workflow Runbook](automation-runbook-types.md#powerShell-workflow-runbooks) を作成します。簡単な Runbook を作成、テスト、発行しながら、Runbook ジョブの状態を追跡する方法を説明します。その後、実際に Azure リソースを管理するように Runbook を変更し、ここでは Azure Virtual Machine を開始します。そして、Runbook のパラメーターを追加することによって、Runbook をいっそう堅牢にします。
+このチュートリアルでは、Azure Automation で [PowerShell Workflow Runbook](automation-runbook-types.md#powerShell-workflow-runbooks) を作成します。簡単な Runbook を作成、テスト、発行しながら、Runbook ジョブの状態を追跡する方法を説明します。その後、実際に Azure リソースを管理するように Runbook を変更し、ここでは Azure 仮想マシンを開始します。そして、Runbook のパラメーターを追加することによって、Runbook をいっそう堅牢にします。
 
 ## 前提条件
 
 このチュートリアルを最後まで行うには、以下のものが必要です。
 
-- として機能します。まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-trial/" target="_blank">[無料試用版にサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。
+- Azure サブスクリプション。まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-trial/" target="_blank">[無料試用版にサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。
 - Runbook を保持するための [Automation アカウント](automation-configuring.md)。
-- Azure Virtual Machine。マシンを停止して起動するので、運用環境のものは使用しないでください。
+- Azure 仮想マシン。マシンを停止して起動するので、運用環境のものは使用しないでください。
 - Azure リソースに対する認証に使用する [Azure Active Directory のユーザーと Automation の資格情報資産](automation-configuring.md)。このユーザーには、仮想マシンを開始および停止するアクセス許可が必要です。
 
 ## 手順 1 - 新しい Runbook を作成する
@@ -57,7 +58,7 @@ Runbook に直接コードを入力するか、ライブラリ コントロー�
 
 Runbook を発行して運用環境で使用できるようにする前に、Runbook をテストして正常に動作することを確認します。Runbook をテストするときは、**ドラフト** バージョンを実行し、その出力を対話形式で表示します。
  
-2. **[テスト ウィンドウ]** をクリックして、テスト ウィンドウを開きます。<br> ![テスト ウィンドウ](media/automation-first-runbook-textual/runbook-edit-toolbar-test-pane.png)
+2. **[テスト ウィンドウ]** をクリックして、テスト ウィンドウを開きます。<br> ![Test pane](media/automation-first-runbook-textual/runbook-edit-toolbar-test-pane.png)
 2. **[開始]** をクリックしてテストを開始します。有効なオプションはこれだけです。
 3. [Runbook ジョブ](automation-runbook-execution)が作成され、その状態が表示されます。最初のジョブの状態は*キューに設定*であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  
 4. Runbook ジョブが完了すると、その出力が表示されます。この例では、*Hello World* と表示されます。<br>![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
@@ -84,7 +85,7 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 
 Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。ここでは、Runbook で Azure リソースを管理します。ただし、[前提条件](#prerequisites)で示されている資格情報を使用して認証を行わないと、これを実現することはできません。**Add-AzureAccount** コマンドレットでこれを行います。
 
-1.  MyFirstRunbook-Workflow ウィンドウで **[編集]** をクリックして、テキスト エディターを開きます。<br> ![Runbook の編集](media/automation-first-runbook-textual/runbook-toolbar-edit.png) 
+1.  MyFirstRunbook-Workflow ウィンドウで **[編集]** をクリックして、テキスト エディターを開きます。<br> ![Edit runbook](media/automation-first-runbook-textual/runbook-toolbar-edit.png) 
 2.  **Write-Output** の行は不要になったので削除します。
 3.  中かっこ内の空白行にカーソルを置きます。
 3.  ライブラリ コントロールで、**[資産]**、**[資格情報]** の順に展開します。
@@ -121,5 +122,6 @@ Runbook をテストして発行しましたが、これまでのところ役に
 ## 関連記事:
 
 - [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
+- [初めての PowerShell Runbook](automation-first-runbook-textual-PowerShell.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

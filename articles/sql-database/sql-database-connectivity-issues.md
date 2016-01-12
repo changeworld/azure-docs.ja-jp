@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/10/2015"
+	ms.date="01/06/2016"
 	ms.author="daleche"/>
 
 
@@ -84,7 +84,7 @@ Azure SQL Database との通信にサード パーティのミドルウェアを
 
 最初に再試行する前に、5 秒間待つことをお勧めします。5 秒未満で再試行すると、クラウド サービスに過度の負荷がかかるおそれがあります。再試行するたびに、待ち時間を比例して、最大 60 秒まで長くする必要があります。
 
-ADO.NET を使用するクライアントの *ブロック期間* については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
+ADO.NET を使用するクライアントの*ブロック期間*については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
 
 加えて、最大再試行回数を設定し、プログラムが自動的に終了するように配慮する必要があります。
 
@@ -108,40 +108,25 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 ### ネットワークから切断することによるテスト
 
 
-再試行ロジックをテストする手段として、プログラムの実行中にクライアント コンピューターをネットワークから切断する方法が挙げられます。この場合、次のエラーが発生します。
-- **SqlException.Number** = 11001
-- メッセージ: "そのようなホストは不明です。"
+再試行ロジックをテストする手段として、プログラムの実行中にクライアント コンピューターをネットワークから切断する方法が挙げられます。この場合、次のエラーが発生します。- **SqlException.Number** = 11001 - メッセージ: "そのようなホストは不明です。"
 
 
 最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
 
 
-具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。
-1.エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。
-2.通常と同様に初回接続を試みます。
-3.エラーが捕捉された後、11001 をリストから削除します。
-4.コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。
-- それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。
-5.再度接続を試みます。
+具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。 1.エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。2.通常と同様に初回接続を試みます。3.エラーが捕捉された後、11001 をリストから削除します。4.コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。- それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。5.再度接続を試みます。
 
 
 ### 接続時に間違った綴りのデータベース名を使用することによるテスト
 
 
-意図的に間違ったユーザー名を使って初回接続を試みます。この場合、次のエラーが発生します。
-- **SqlException.Number** = 18456
-- メッセージ: "ユーザー 'WRONG\_MyUserName' はログインできませんでした。"
+意図的に間違ったユーザー名を使って初回接続を試みます。この場合、次のエラーが発生します。- **SqlException.Number** = 18456 - メッセージ: "ユーザー 'WRONG\_MyUserName' はログインできませんでした。"
 
 
 最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
 
 
-具体的には、プログラムで実行時パラメーターを通じ、次の処理を行います。
-1.エラーのリストに対して一時的に 18456 を追加し、一過性と見なします。
-2.意図的に 'WRONG\_' をユーザー名に追加します。
-3.エラーが捕捉された後、18456 をリストから削除します。
-4.ユーザー名から 'WRONG\_' を削除します。
-5.再度接続を試みます。
+具体的には、プログラムで実行時パラメーターを通じ、次の処理を行います。 1.エラーのリストに対して一時的に 18456 を追加し、一過性と見なします。2.意図的に 'WRONG\_' をユーザー名に追加します。3.エラーが捕捉された後、18456 をリストから削除します。4.ユーザー名から 'WRONG\_' を削除します。5.再度接続を試みます。
 
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
@@ -159,7 +144,7 @@ Azure SQL Database に接続するために必要な接続文字列は、Microso
 ### 接続再試行用の .NET SqlConnection パラメーター
 
 
-.NET Framework クラス **System.Data.SqlClient.SqlConnection** を使用してクライアント プログラムから Azure SQL Database に接続する場合、接続再試行機能を活用できるように .NET 4.5.1 以降を使用してください。この機能の詳細については[こちら](http://go.microsoft.com/fwlink/?linkid=393996)を参照してください。
+.NET Framework クラス **System.Data.SqlClient.SqlConnection** を使用してクライアント プログラムから Azure SQL Database に接続する場合、接続再試行機能を活用できるように .NET 4.6.1 以降を使用してください。この機能の詳細については[こちら](http://go.microsoft.com/fwlink/?linkid=393996)を参照してください。
 
 
 <!--
@@ -243,21 +228,19 @@ Azure 仮想マシン (VM) でクライアント プログラムがホストさ�
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
-## 接続: ADO.NET 4.5
+## 接続: ADO.NET 4.6.1
 
 
-**System.Data.SqlClient.SqlConnection** などの ADO.NET クラスを使って Azure SQL Database に接続する場合、.NET Framework Version 4.5 以降の使用をお勧めします。
+**System.Data.SqlClient.SqlConnection** などの ADO.NET クラスを使って Azure SQL Database に接続する場合は、.NET Framework Version 4.6.1 以降の使用をお勧めします。
 
 
-ADO.NET 4.5:
-- サポート対象プロトコルに TDS 7.4 が追加されています。4.0 の後に行われた接続の機能強化も含まれています。
-- 接続プーリングがサポートされます。加えて、プログラムに割り当てた接続オブジェクトが正常に動作しているかどうかを効率的に検証することが可能です。
+ADO.NET 4.6.1: - サポート対象プロトコルに TDS 7.4 が追加されています。4.0 の後に行われた接続の機能強化も含まれています。- 接続プーリングがサポートされます。加えて、プログラムに割り当てた接続オブジェクトが正常に動作しているかどうかを効率的に検証することが可能です。
 
 
 接続プールから取得した接続オブジェクトを使用するとき、すぐに使用しないのであれば、プログラムで一時的に接続を閉じるようお勧めします。接続を再度開いたとしても、新しい接続の作成に伴う処理負荷はわずかです。
 
 
-ADO.NET 4.0 以前のバージョンを使用している場合、最新の ADO.NET. にアップグレードすることをお勧めします。2015 年 7 月時点では、[ADO.NET 4.6 をダウンロード](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx)してください。
+ADO.NET 4.0 以前のバージョンを使用している場合は、最新の ADO.NET. にアップグレードすることをお勧めします。2015 年 11 月時点では、[ADO.NET 4.6.1 をダウンロード](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx)できます。
 
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
@@ -268,9 +251,7 @@ ADO.NET 4.0 以前のバージョンを使用している場合、最新の ADO.
 プログラムから Azure SQL Database に接続できないときの診断方法として 1 つ考えられるのは、ユーティリティ プログラムを使用して接続する方法です。診断対象のプログラムと同じライブラリを使用して接続するユーティリティがあれば理想的です。
 
 
-Windows コンピューターでは、次のユーティリティが利用できます。
-- SQL Server Management Studio (ssms.exe)。接続には ADO.NET が使用されます。
-- sqlcmd.exe。接続には [ODBC](http://msdn.microsoft.com/library/jj730308.aspx) が使用されます。
+Windows コンピューターでは、次のユーティリティが利用できます。- SQL Server Management Studio (ssms.exe)。接続には ADO.NET が使用されます。- sqlcmd.exe。接続には [ODBC](http://msdn.microsoft.com/library/jj730308.aspx) が使用されます。
 
 
 接続後、短い SQL SELECT クエリが正しく動作するかどうかをテストしてください。
@@ -284,10 +265,7 @@ Windows コンピューターでは、次のユーティリティが利用でき
 ポートの問題から接続に失敗している可能性があるとします。ポートの構成に関するレポート作成に対応したユーティリティをご使用のコンピューターから実行してください。
 
 
-Linux では、次のユーティリティが利用できます。
-- `netstat -nap`
-- `nmap -sS -O 127.0.0.1`
-- (IP アドレスの部分は適宜置き換えてください)
+Linux では、次のユーティリティが利用できます。 - `netstat -nap` - `nmap -sS -O 127.0.0.1` - (IP アドレスの部分は適宜置き換えてください)
 
 
 Windows では [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。以下の例では、Azure SQL Database サーバー上のポートの状況と、ノート PC 上で動作しているポートとを照会しています。
@@ -389,16 +367,13 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 ## Enterprise Library 6
 
 
-Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (Azure SQL Database サービスもその一つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。EntLib60 の利便性が発揮される個々の領域の説明については、まず以下のトピックにアクセスしてください。
-- [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
+Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (Azure SQL Database サービスもその一つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。EntLib60 の利便性が発揮される個々の領域の説明については、まず以下のトピックにアクセスしてください。 - [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
 
 
-EntLib60 を活かせる領域のひとつとして、一過性の障害を処理するための再試行ロジックがあります。
-- [Transient Fault Handling アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
+EntLib60 を活かせる領域のひとつとして、一過性の障害を処理するための再試行ロジックがあります。 - [Transient Fault Handling アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
 
 
-再試行ロジックに EntLib60 を使用した簡単な C# コード サンプルは、以下のページからダウンロードできます。
-- [Enterprise Library 6 の再試行ロジックを使って SQL Database に接続するコード サンプル (C#)](sql-database-develop-entlib-csharp-retry-windows.md)
+再試行ロジックに EntLib60 を使用した簡単な C# コード サンプルは、以下のページからダウンロードできます。 - [Enterprise Library 6 の再試行ロジックを使って SQL Database に接続するコード サンプル (C#)](sql-database-develop-entlib-csharp-retry-windows.md)
 
 
 > [AZURE.NOTE]EntLib60 のソース コードは、[ダウンロード サイト](http://go.microsoft.com/fwlink/p/?LinkID=290898)から入手できます。EntLib に対して機能の追加や保守目的での更新を行う予定はありません。
@@ -539,4 +514,4 @@ public bool IsTransient(Exception ex)
 
 - [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

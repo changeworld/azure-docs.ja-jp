@@ -13,7 +13,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="windows"
 	ms.workload="na"
-	ms.date="09/16/2015"
+	ms.date="12/24/2015"
 	ms.author="cfowler"/>
 
 # Memcache プロトコルを経由して Azure App Service の Web アプリを Redis Cache に接続する
@@ -30,8 +30,8 @@ Web Apps の Memcache shim は、Memcache プロトコルを使用して通信�
 
 次の記事で説明されている手順に従います。
 
-* [Azure Redis Cache Service のインスタンスをプロビジョニングする][1]
-* [Azure でスケーラブルな WordPress サイトをデプロイする][0]
+* [Azure Redis Cache Service のインスタンスをプロビジョニングする][0]
+* [Azure でスケーラブルな WordPress サイトをデプロイする][1]
 
 スケーラブルな WordPress サイトをデプロイして、Redis Cache インスタンスをプロビジョニングしたら、Azure App Service Web Apps で Memcache shim を有効にできるようになります。
 
@@ -96,7 +96,7 @@ Web Apps で有効な PHP バージョンの 非スレッド セーフ (NTS) x86
 
 ## Memcache WordPress プラグインのインストール
 
-> [AZURE.NOTE] [Memcached Object Cache プラグイン](https://wordpress.org/plugins/memcached/)を WordPress.org からダウンロードすることもできます。
+> [AZURE.NOTE][Memcached Object Cache プラグイン](https://wordpress.org/plugins/memcached/)を WordPress.org からダウンロードすることもできます。
 
 WordPress プラグインのページで、**[新規追加]** をクリックします。
 
@@ -124,7 +124,7 @@ $memcached_servers = array(
 
 このコードが貼り付けられると、モナコではドキュメントを自動的に保存します。
 
-次のステップは、オブジェクト キャッシュのプラグインを有効にすることです。**object-cache.php** を **wp-content/memcached** フォルダから **wp-content** フォルダまでドラッグ アンド ドロップして、Memcache オブジェクト キャッシュ機能を有効にします。
+次のステップは、オブジェクト キャッシュのプラグインを有効にすることです。これを行うには、**object-cache.php** を **wp-content/plugins/memcached** フォルダーから **wp-content** フォルダーにドラッグ アンド ドロップして、Memcache オブジェクト キャッシュ機能を有効にします。
 
 ![memcache object-cache.php プラグインの場所を指定](./media/web-sites-connect-to-redis-using-memcache-protocol/13-locate-memcache-object-cache-plugin.png)
 
@@ -166,7 +166,7 @@ Azure ポータルで、この Web アプリ用に作成した Redis Cache イ�
 redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –p 6379
 ```
 
-**<hostname-for-redis-cache>** を実際の xxxxx.redis.cache.windows.net というホスト名に、**<primary-key-for-redis-cache>** をキャッシュ用のアクセス キーにそれぞれ置き換え、**Enter** キーを押します。CLI が Redis Cache インスタンスに接続されたら、任意の redis コマンドを発行します。次のスクリーンショットでは、キーの一覧表示を選択しています。
+**&lt;hostname-for-redis-cache&gt;** を実際の xxxxx.redis.cache.windows.net というホスト名に、**&lt;primary-key-for-redis-cache&gt;** をキャッシュ用のアクセス キーにそれぞれ置き換え、**Enter** キーを押します。CLI が Redis Cache インスタンスに接続されたら、任意の redis コマンドを発行します。次のスクリーンショットでは、キーの一覧表示を選択しています。
 
 ![Redis-CLI 端末から Azure Redis Cache に接続](./media/web-sites-connect-to-redis-using-memcache-protocol/19-redis-cli-terminal.png)
 
@@ -182,7 +182,7 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 
-[0]: http://bit.ly/1F0m3tw
+[0]: ../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache
 [1]: http://bit.ly/1t0KxBQ
 [2]: http://manage.windowsazure.com
 [3]: http://portal.azure.com
@@ -197,4 +197,4 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 [12]: /services/cache/
 [13]: http://memcached.org
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_0107_2016-->

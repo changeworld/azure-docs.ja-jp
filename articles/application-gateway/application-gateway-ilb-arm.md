@@ -22,20 +22,20 @@
 - [Azure classic steps](application-gateway-ilb.md)
 - [Resource Manager Powershell steps](application-gateway-ilb-arm.md)
 
-Application Gateway は、インターネットに接続する VIP のほか、内部ロード バランサー (ILB) エンドポイントとも呼ばれるインターネットに接続されていない内部エンドポイントを使用して構成できます。ILB を使用したゲートウェイの構成は、インターネットに接続されていない社内用ビジネス アプリケーションで便利です。また、セキュリティの境界でインターネットに接続されていない多階層アプリケーション内のサービスや階層でも便利ですが、ラウンド ロビンの負荷分散、セッションの持続性、または SSL 終了が必要です。この記事では、ILB を使用してアプリケーション ゲートウェイを構成する手順について説明します。
+Application Gateway は、インターネットに接続する VIP のほか、内部ロード バランサー (ILB) エンドポイントとも呼ばれるインターネットに接続されていない内部エンドポイントを使用して構成できます。ILB を使用したゲートウェイの構成は、インターネットに接続されていない社内用ビジネス アプリケーションで便利です。また、セキュリティの境界でインターネットに接続されていない多階層アプリケーション内のサービスや階層でも便利ですが、ラウンド ロビンの負荷分散、セッションの持続性、または SSL 終了が必要です。この記事では、ILB を使用して Application Gateway を構成する手順について説明します。
 
 ## 開始する前に
 
 1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。[ダウンロード ページ](http://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
-2. Application Gateway の仮想ネットワークとサブネットを作成します。仮想マシンまたはクラウド デプロイでサブネットをしていないことを確認します。アプリケーション ゲートウェイそのものが、仮想ネットワーク サブネットに含まれている必要があります。
-3. アプリケーション ゲートウェイを使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内、または割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
+2. Application Gateway の仮想ネットワークとサブネットを作成します。仮想マシンまたはクラウドのデプロイでサブネットを使用していないことを確認します。Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
+3. Application Gateway を使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内、または割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
 
 ## Application Gateway の作成に必要な構成
  
 
 - **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。 
 - **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-- **フロントエンド ポート:** このポートは、アプリケーション ゲートウェイで開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+- **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 - **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。 
 - **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。現在、*basic* ルールのみサポートされます。*basic* ルールは、ラウンド ロビンの負荷分散です。
 
@@ -51,7 +51,7 @@ Azure クラシックと Azure リソース マネージャーの使用方法の
 1. リソース マネージャーのリソース グループの作成
 2. Application Gateway の仮想ネットワーク、サブネットの作成
 3. Application Gateway 構成オブジェクトの作成
-4. Application Gateway のリソースを作成します。
+4. Application Gateway のリソースの作成
 
 
 ## リソース マネージャーのリソース グループの作成
@@ -62,7 +62,7 @@ ARM コマンドレットを使用するように PowerShell モードを切り�
 
 		PS C:\> Login-AzureRmAccount
 
-### 手順 2
+### 手順 2.
 
 アカウントのサブスクリプションを確認する
 
@@ -102,7 +102,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 	
 	$vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
 
-サブネット 10.0.0.0/24 とプレフィックス 10.0.0.0/16 を使用して、West US 地域のリソース グループ "appw-rg" に、"appgwvnet" という名前の仮想ネットワークを作成します。
+サブネット 10.0.0.0/24 とプレフィックス 10.0.0.0/16 を使用して、米国西部リージョンのリソース グループ "appgw-rg" に、"appgwvnet" という名前の仮想ネットワークを作成します。
 	
 ### 手順 3.
 
@@ -137,7 +137,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 ILB に対して、"frontendport01" という名前のフロントエンド IP ポートを構成します。
 
-### 手順 5
+### 手順 5.
 
 	$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
 
@@ -170,45 +170,9 @@ Application Gateway のインスタンスのサイズを構成します。
 上記の手順の構成項目をすべて使用して、Application Gateway を作成します。この例では、Application Gateway は "appgwtest" という名前です。
 
 
-
-## ゲートウェイの起動
-
-ゲートウェイを構成したら、`Start-AzureRmApplicationGateway` コマンドレットを使用してゲートウェイを起動します。アプリケーション ゲートウェイの課金は、ゲートウェイが正常に起動された後に開始します。
-
-
-**注:** `Start-AzureRmApplicationGateway` コマンドレットの実行には最大で 15 ～ 20 分かかる場合があります。
-
-次の例では、Application Gateway の名前は "appgwtest" で、リソース グループの名前は "appgw-rg" です。
-
-
-### 手順 1.
-
-Application Gateway オブジェクトを取得し、変数 "$getgw" に関連付けます。
- 
-	$getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
-
-### 手順 2.
-	 
-`Start-AzureRmApplicationGateway` を使用して、Application Gateway を起動します。
-
-	PS C:\> Start-AzureRmApplicationGateway -ApplicationGateway $getgw  
-
-	PS C:\> Start-AzureRmApplicationGateway AppGwTest 
-
-	VERBOSE: 7:59:16 PM - Begin Operation: Start-AzureApplicationGateway 
-	VERBOSE: 8:05:52 PM - Completed Operation: Start-AzureApplicationGateway
-	Name       HTTP Status Code     Operation ID                             Error 
-	----       ----------------     ------------                             ----
-	Successful OK                   fc592db8-4c58-2c8e-9a1d-1c97880f0b9b
-
-## Application Gateway の状態の確認
-
-`Get-AzureRmApplicationGateway` コマンドレットを使用してゲートウェイの状態を確認します。前の手順で *Start-AzureApplicationGateway* が成功した場合、State は *Running* になります。
-
-
 ## Application Gateway の削除
 
-アプリケーション ゲートウェイを削除するには、次の手順を順番に実行する必要があります。
+Application Gateway を削除するには、次の手順を順番に実行する必要があります。
 
 1. `Stop-AzureRmApplicationGateway` コマンドレットを使用してゲートウェイを停止します。 
 2. `Remove-AzureRmApplicationGateway` コマンドレットを使用してゲートウェイを削除します。
@@ -234,7 +198,7 @@ Application Gateway オブジェクトを取得し、変数 "$getgw" に関連�
 	----       ----------------     ------------                             ----
 	Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 
-アプリケーション ゲートウェイが Stopped 状態になったら、`Remove-AzureRmApplicationGateway` コマンドレットを使用してサービスを削除します。
+Application Gateway が Stopped 状態になったら、`Remove-AzureRmApplicationGateway` コマンドレットを使用してサービスを削除します。
 
 
 	PS C:\> Remove-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Force
@@ -246,7 +210,7 @@ Application Gateway オブジェクトを取得し、変数 "$getgw" に関連�
 	Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 
 >[AZURE.NOTE]"-force" スイッチを使用すると、削除の確認メッセージを表示しないように設定できます。
->
+
 
 サービスが削除されていることを確認するには、`Get-AzureRmApplicationGateway` コマンドレットを使用します。この手順は必須ではありません。
 
@@ -260,13 +224,13 @@ Application Gateway オブジェクトを取得し、変数 "$getgw" に関連�
 
 ## 次のステップ
 
-SSL オフロードを構成する場合は、「[SSL オフロードのアプリケーション ゲートウェイの構成](application-gateway-ssl.md)」を参照してください。
+SSL オフロードを構成する場合は、「[SSL オフロードの Application Gateway の構成](application-gateway-ssl.md)」を参照してください。
 
-ILB とともに使用するようにアプリケーション ゲートウェイを構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
+ILB とともに使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用した Application Gateway の作成](application-gateway-ilb.md)」を参照してください。
 
 負荷分散のオプション全般の詳細については、次を参照してください。
 
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

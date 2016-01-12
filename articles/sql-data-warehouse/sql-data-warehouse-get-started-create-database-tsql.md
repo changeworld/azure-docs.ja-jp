@@ -1,12 +1,12 @@
 <properties
-	pageTitle="TSQL で SQL Data Warehouse を作成する |Microsoft Azure"
-	description="TSQL で Azure SQL Data Warehouse を作成する方法を説明します。"
-	services="sql-data-warehouse"
-	documentationCenter="NA"
-	authors="lodipalm"
-	manager="barbkess"
-	editor=""
-	tags="azure-sql-data-warehouse"/>
+   pageTitle="TSQL で SQL Data Warehouse を作成する |Microsoft Azure"
+   description="TSQL で Azure SQL Data Warehouse を作成する方法を説明します。"
+   services="sql-data-warehouse"
+   documentationCenter="NA"
+   authors="lodipalm"
+   manager="barbkess"
+   editor=""
+   tags="azure-sql-data-warehouse"/>
 
 <tags
    ms.service="sql-data-warehouse"
@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/21/2015"
+   ms.date="01/04/2016"
    ms.author="lodipalm"/>
 
 # Transact-SQL (TSQL) を使用して SQL Data Warehouse データベースを作成する
@@ -61,4 +61,4 @@ SQL Data Warehouse のプロビジョニングが済めば、[サンプル デ�
 [サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-manually-load-samples.md
 [価格のページ]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

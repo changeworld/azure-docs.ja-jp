@@ -33,11 +33,6 @@ GitHub から既存の ARM テンプレートをダウンロードして変更�
 GitHub から直接 ARM テンプレートをデプロイするだけで、変更を加えない場合は、Github からのテンプレートのデプロイに進んでください。
 
 
->[AZURE.IMPORTANT]Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイ モデルと従来のデプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイ モデルとツール](azure-classic-rm.md)について理解しておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure リソース マネージャーを使用した Application Gateway の作成について説明します。クラシック バージョンを使用する場合は、[PowerShell を使用した Application Gateway のクラシック デプロイメントの作成](application-gateway-create-gateway.md)を参照してください。
-
-
-
-
 ## シナリオ
 
 このシナリオでは次のものを作成します。
@@ -122,19 +117,35 @@ Github から既存の ARM テンプレートをダウンロードして VNet �
 ## PowerShell を使用して ARM テンプレートをデプロイする
 
 1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
-2. 次に示すように、Azure PowerShell プロンプトで **Switch-AzureMode** コマンドレットを実行して、リソース マネージャー モードに切り替えます。
 
-		Switch-AzureMode AzureResourceManager
+### 手順 1.
+
+		Login-AzureRmAccount
+
+
+
+### 手順 2.
+
+アカウントのサブスクリプションを確認する
+
+		get-AzureRmSubscription 
+
+資格情報を使用して認証を行うように求めるメッセージが表示されます。<BR>
+
+### 手順 3. 
+
+使用する Azure サブスクリプションを選択します。<BR>
+
+
+		Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+
+
+### 手順 4.
+
 	
-予想される出力:
+必要であれば、`New-AzureResourceGroup` コマンドレットを使用して新しいリソース グループを作成します。以下の例では、米国東部に AppgatewayRG という名前のリソース グループを新しく作成します。
 
-		WARNING: The Switch-AzureMode cmdlet is deprecated and will be removed in a future release.
-
->[AZURE.WARNING]Switch-AzureMode コマンドレットは間もなく廃止予定です。これらが廃止された場合は、すべてのリソース マネージャー コマンドレットの名前が変更されます。
-	
-3. 必要であれば、`New-AzureResourceGroup` コマンドレットを使用して新しいリソース グループを作成します。以下の例では、米国東部に AppgatewayRG という名前のリソース グループを新しく作成します。
-
-		PS C:\> New-AzureResourceGroup -Name AppgatewayRG -Location "East US"
+	 New-AzureRmResourceGroup -Name AppgatewayRG -Location "East US"
 		VERBOSE: 5:38:49 PM - Created resource group 'AppgatewayRG' in location 'eastus'
 
 
@@ -149,9 +160,9 @@ Github から既存の ARM テンプレートをダウンロードして VNet �
 
 		ResourceId        : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/AppgatewayRG
 
-4. New-AzureResourceGroupDeployment コマンドレットを実行し、上記でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい VNet をデプロイします。
+4. New-AzureRmResourceGroupDeploymen コマンドレットを実行し、上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい VNet をデプロイします。
 
-		New-AzureResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
+		New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
  		   -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
 
 コマンド ラインで生成される出力は、次のようになります。
@@ -193,11 +204,11 @@ Azure CLI を使用してダウンロードした ARM テンプレートをデ�
 
 		azure group create -n appgatewayRG -l eastus
 
-**-n (または --name)**。新しいリソース グループの名前です。このシナリオでは、*appgatewayRG* です。
+**-n (または --name)**。新しいリソース グループの名前です。このシナリオでは、*appgatewayRG*です。
 
 **-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。このシナリオでは、*Eastus* です。
 
-4. **azure group deployment create** コマンドレットを実行し、上記でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい VNet をデプロイします。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
+4. **azure group deployment create** コマンドレットを実行し、上記でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい VNet をデプロイします。出力の後に表示されるリストは、使用されたパラメーターについての説明です。
 
 		azure group deployment create -g appgatewayRG -n TestAppgatewayDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
 
@@ -248,7 +259,7 @@ Azure CLI を使用してダウンロードした ARM テンプレートをデ�
 
 ### 手順 3.
 
-ポータルでのデプロイメント テンプレートのパラメーターを入力し、[OK] をクリックします。
+ポータルでのデプロイ テンプレートのパラメーターを入力し、[OK] をクリックします。
 
 ![arm-scenario](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
 
@@ -256,9 +267,9 @@ Azure CLI を使用してダウンロードした ARM テンプレートをデ�
 
 [使用条件] を選択し、[購入] をクリックします。
 
-### 手順 5
+### 手順 5.
 
-[カスタム デプロイメント] ブレードで、[作成] をクリックします。
+[カスタム デプロイ] ブレードで、[作成] をクリックします。
 
 
  
@@ -273,4 +284,4 @@ ILB とともに使用するように Application Gateway を構成する場合�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->
