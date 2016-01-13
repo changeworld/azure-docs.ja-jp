@@ -461,4 +461,4 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!----HONumber=AcomDC_0107_2016-->
+<!-----HONumber=AcomDC_0107_2016-->
