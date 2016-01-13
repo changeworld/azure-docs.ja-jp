@@ -18,7 +18,7 @@
 
 # Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する
 ## はじめに
-この記事では、[Service Fabric](http://azure.microsoft.com/documentation/services/service-fabric/) アプリケーションがアプリケーション トレース ステートレス、インデックス作成、および検索に **ElasticSearch** と **Kibana** を使用する方法について説明します。[ElasticSearch](https://www.elastic.co/guide/index.html) は、オープンソースの分散型でスケーラブルなリアルタイム検索および分析エンジンです。検索とおよび分析タスクに適しており、Microsoft Azure で実行される Windows または Linux 仮想マシンにインストールできます。ElasticSearch は、**Event Tracing for Windows (ETW)** などのテクノロジを使用して生成された*構造化*トレースを高い効率で処理できます。
+この記事では、[Service Fabric](http://azure.microsoft.com/documentation/services/service-fabric/) アプリケーションがアプリケーション トレース ステートレス、インデックス作成、および検索に **ElasticSearch** と **Kibana** を使用する方法について説明します。[ElasticSearch](https://www.elastic.co/guide/index.html) は、オープンソースの分散型でスケーラブルなリアルタイム検索および分析エンジンです。検索とおよび分析タスクに適しており、Microsoft Azure で実行される Windows または Linux 仮想マシンにインストールできます。ElasticSearch は、**Event Tracing for Windows (ETW)** などのテクノロジを使用して生成された *構造化* トレースを高い効率で処理できます。
 
 ETW は、Service Fabric ランタイムが診断情報 (トレース) をソースにするために使用します。Service Fabric アプリケーションも診断情報をソースにする場合に推奨される方法です。この方法ではランタイムで提供されたトレースとアプリケーションから提供されたトレースを関連付けることができるので、トラブルシューティングが簡単になります。Visual Studio の Service Fabric プロジェクト テンプレートには、(.NET **EventSource** クラスに基づいて) 既定で ETW トレースを出力するロギング API が含まれています。ETW を使用した Service Fabric アプリケーションのトレース処理の概要については、[こちらの記事](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)を参照してください。
 

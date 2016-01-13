@@ -35,7 +35,7 @@ SharePoint Online コネクタおよび SharePoint Server コネクタ ギャラ
 	名前 | 必須 | 説明
 --- | --- | ---
 サイトの URL | はい | SharePoint Web サイトの完全な URL を入力します。たとえば、「 *https://microsoft.sharepoint.com/teams/wabstest* 」のように入力します。
-ドキュメント ライブラリ / リストの相対 URL | はい | コネクタが変更を加えることが許可されているドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「*Lists/Task, Shared Documents*」のように入力します。
+ドキュメント ライブラリ / リストの相対 URL | はい | コネクタが変更を加えることが許可されているドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「 *Lists/Task, Shared Documents* 」のように入力します。
 
 5. 完了すると、パッケージの設定は次のようになります。  
 ![][1]
@@ -57,7 +57,7 @@ SharePoint Online コネクタおよび SharePoint Server コネクタ ギャラ
 認証モード | はい | SharePoint サイトへの接続に使用する認証モードを指定します。設定できるオプションは次のとおりです。<ul><li>既定</li><li>WindowsAuthentication</li><li>FormBasedAuthentication</li></ul><br/><br/>[既定] を選択した場合は、SharePoint コネクタを実行している資格情報が使用されます。ユーザー名/パスワードは必要ありません。その他の認証の種類では、ユーザー名とパスワードが必要です。<br/><br/>**注** 匿名認証はサポートされていません。
 ユーザー名 | いいえ | 認証モードが [既定] でない場合は、SharePoint サイトへの接続に使用する有効なユーザー名を入力します。
 パスワード | いいえ | 認証モードが [既定] でない場合は、SharePoint サイトへの接続に使用する有効なパスワードを入力します。
-ドキュメント ライブラリ / リストの相対 URL | はい | コネクタが変更を加えることが許可されるドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「*Lists/Task, Shared Documents*」のように入力します。
+ドキュメント ライブラリ / リストの相対 URL | はい | コネクタが変更を加えることが許可されるドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「 *Lists/Task, Shared Documents* 」のように入力します。
 Service Bus の接続文字列 | いいえ | オンプレミスに接続する場合は、Service Bus Relay の接続文字列を入力します。<br/><br/>[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)<br/>[Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)
 
 5. 完了すると、パッケージの設定は次のようになります。  
@@ -221,7 +221,7 @@ ItemId | ドキュメント ライブラリに追加されたドキュメント�
 
 名前 | 必須 | 説明
 --- | --- | ---
-ドキュメントの相対 URI | いいえ | ドキュメントの URL を "Shared Documents" の相対位置で入力します。たとえば、「*myspec1,myfolder/orders*」のように入力します。
+ドキュメントの相対 URI | いいえ | ドキュメントの URL を "Shared Documents" の相対位置で入力します。たとえば、「 *myspec1,myfolder/orders* 」のように入力します。
 
 #### 出力
 
@@ -245,7 +245,7 @@ Param2* | ドキュメント ライブラリ内のドキュメントの必須パ
 
 名前 | 必須 | 説明
 --- | --- | ---
-ドキュメントの相対 URI | いいえ | ドキュメントの URL を "Shared Documents" の相対位置で入力します。たとえば、「*myspec1,myfolder/orders*」のように入力します。
+ドキュメントの相対 URI | いいえ | ドキュメントの URL を "Shared Documents" の相対位置で入力します。たとえば、「 *myspec1,myfolder/orders* 」のように入力します。
 
 #### 出力
 
@@ -385,7 +385,7 @@ ContentTransferEncoding | はい | メッセージのコンテンツ転送エン
 
 名前 | 必須 | 説明
 --- | --- | ---
-ドキュメントの相対 URI | いいえ | ドキュメントの URL を "Shared Documents" の相対位置で入力します。たとえば、「*myspec1,myfolder/orders*」のように入力します。
+ドキュメントの相対 URI | いいえ | ドキュメントの URL を "Shared Documents" の相対位置で入力します。たとえば、「 *myspec1,myfolder/orders* 」のように入力します。
 ファイルの種類 | はい | ファイルがバイナリ ファイルであるかテキスト ファイルであるかを入力します。
 
 #### 出力
