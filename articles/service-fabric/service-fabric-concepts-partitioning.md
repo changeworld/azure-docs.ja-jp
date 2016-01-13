@@ -220,7 +220,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
       }
     ```
 
-    `ProcessInternalRequest` reads the values of the query string parameter used to call the partition and calls `AddUserAsync` to add the lastname to the reliable dictionary `m_name`.    
+    `ProcessInternalRequest`は、パーティションの呼び出しに使用するクエリ文字列パラメーターの値を読み取り、`AddUserAsync` を呼び出して、信頼性の高い辞書 `m_name` に姓を追加します。
 
 10. プロジェクトにステートレス サービスを追加して、特定のパーティションを呼び出す方法を見てみましょう。このサービスは、姓をクエリ文字列パラメーターとして受け取り、パーティション キーを決定し、Alphabet.Processing サービスに送信して処理するという、単純な Web インターフェイスとして機能します。
 11. **[サービスの作成]** ダイアログ ボックスで **[ステートレス サービス]** を選択し、次のように "Alphabet.WebApi" と名前を付けます。![ステートレス サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetstatelessnew.png)
@@ -290,10 +290,13 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
       }
       ```
 
-    Let's walk through it step by step. The code reads the first letter of the query string parameter `lastname` into a char. Then, it determines the partition key for this letter by subtracting the hexadecimal value of `A` from the hexadecimal value of the last names' first letter.
+    このコードを詳しく見ていきましょう。 Tこのコードは、クエリ文字列パラメーター `lastname` の最初の文字を char 型で読み取ります。 その後、姓の最初の文字の 16 進数値から `A` の 16 進数値を引くことで、この文字のパーティション キーが決まります。
 
     ```CSharp
-    string lastname = context.Request.QueryString["lastname"]; char firstLetterOfLastName = lastname.First(); int partitionKey = Char.ToUpper(firstLetterOfLastName) - 'A'; ```
+    string lastname = context.Request.QueryString["lastname"];
+    char firstLetterOfLastName = lastname.First();
+    int partitionKey = Char.ToUpper(firstLetterOfLastName) - 'A';
+    ```
 
     この例では、1 パーティションに 1 つのパーティション キーがある 26 個のパーティションを使用しています。次に、`servicePartitionResolver` オブジェクトに対して `ResolveAsync` メソッドを使用して、このキーのサービス パーティション `partition` を取得します。`servicePartitionResolver` は次のように定義されます。
 
@@ -347,4 +350,4 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!----HONumber=AcomDC_1223_2015-->

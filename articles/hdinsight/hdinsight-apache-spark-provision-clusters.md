@@ -189,7 +189,7 @@ HDInsight 上の Spark クラスターは、既定のファイル システム�
 	* **クラスター ダッシュボード**: クラスター ダッシュボード、Zeppelin Notebook、Jupyter Notebook を起動できる場所から [クラスター ダッシュボード] ブレードを起動します。
 
 
-##<a id="powershell">Azure PowerShell の使用</a>
+##<a id="powershell"></a>Azure PowerShell の使用
 
 「[HDInsight クラスターの作成](hdinsight-provision-clusters.md#create-using-azure-powershell)」を参照してください。
 
@@ -248,4 +248,4 @@ Spark クラスターの種類を指定します。
 
 [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!---HONumber=AcomDC_1223_2015-->
+<!----HONumber=AcomDC_1223_2015-->
