@@ -37,7 +37,7 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
 	* **[Name]**: **[App ID Description]** セクションの **[Name]** フィールドに、アプリのわかりやすい名前を入力します。
 	
-	* **[Bundle Identifier]**: **[Explicit App ID]** セクションに、[アプリ ディストリビューション ガイド](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)で説明したように `<Organization Identifier>.<Product Name>` の形式で**バンドル ID** を入力します。使用する *Organization Identifier* と *Product Name* は XCode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。次のスクリーンショットでは、組織 ID として*NotificationHubs*、製品名として *GetStarted* を使用しています。XCode プロジェクトで使用する値と一致していることを確認することで、XCode で正しい発行プロファイルが使用できるようになります。
+	* **[Bundle Identifier]**: **[Explicit App ID]** セクションに、[アプリ ディストリビューション ガイド](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)で説明したように `<Organization Identifier>.<Product Name>` の形式で**バンドル ID** を入力します。使用する *Organization Identifier* と *Product Name* は XCode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。次のスクリーンショットでは、組織 ID として*NotificationHubs* 、製品名として *GetStarted* を使用しています。XCode プロジェクトで使用する値と一致していることを確認することで、XCode で正しい発行プロファイルが使用できるようになります。
 	
 	* **[Push Notifications]**: **[App Services]** セクションの **[Push Notifications]** オプションをオンにします。
 

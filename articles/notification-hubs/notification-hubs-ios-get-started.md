@@ -92,7 +92,7 @@
 
    	![][10]
 
-5. **HubInfo.h** という名前の新しいヘッダー ファイルをプロジェクトに追加します。このファイルに通知ハブの定数が保存されます。次の定義を追加し、文字列リテラルのプレースホルダーを*ハブ名*と前に記載した *DefaultListenSharedAccessSignature* に置き換えます。
+5. **HubInfo.h** という名前の新しいヘッダー ファイルをプロジェクトに追加します。このファイルに通知ハブの定数が保存されます。次の定義を追加し、文字列リテラルのプレースホルダーを *ハブ名* と前に記載した *DefaultListenSharedAccessSignature* に置き換えます。
 
 		#ifndef HubInfo_h
 		#define HubInfo_h
