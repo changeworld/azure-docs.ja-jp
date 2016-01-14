@@ -57,14 +57,19 @@ Azure AD への Halogen Software の統合を構成するには、ギャラリ�
 
 **ギャラリーから Halogen Software を追加するには、次の手順に従います。**
 
-1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br> ![Active Directory][1]
+1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>
+![Active Directory][1]
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br> ![アプリケーション][2]
-4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]
-6. [検索] ボックスに、「**halogen software**」と入力します。<br> ![アプリケーション][5]
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br>
+![アプリケーション][2]
+4. ページの下部にある **[追加]** をクリックします。<br><br>
+![アプリケーション][3]
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br>
+![アプリケーション][4]
+6. [検索] ボックスに、「**halogen software**」と入力します。<br>
+![アプリケーション][5]
 7. 結果ウィンドウで **[Halogen Software]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br>
 
 
@@ -72,7 +77,8 @@ Azure AD への Halogen Software の統合を構成するには、ギャラリ�
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Halogen Software で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Halogen Software ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Halogen Software の関連ユーザーの間で、リンクの関係が確立されている必要があります。<br> このリンクの関係を確立するには、Azure AD の **[ユーザー名]** の値を、Halogen Software の **[Username]** の値として割り当てます。
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Halogen Software ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Halogen Software の関連ユーザーの間で、リンクの関係が確立されている必要があります。<br>
+このリンクの関係を確立するには、Azure AD の **[ユーザー名]** の値を、Halogen Software の **[Username]** の値として割り当てます。
  
 Halogen Software で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
 
@@ -88,13 +94,15 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
 **Halogen Software で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure AD ポータルの **[Halogen Software]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][8]
+1. Azure AD ポータルの **[Halogen Software]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br>
+![シングル サインオンの構成][8]
 
-2. **[ユーザーの Halogen Software へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD Single Sign-On][9]
+2. **[ユーザーの Halogen Software へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br>
+![Azure AD Single Sign-On][9]
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行します。<br><br>![アプリケーションの設定の構成][10]
  
-     3\.1. **[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Halogen Software アプリケーションへのサインオンに使用する URL を入力します: **https://global.hgncloud.com/fabrikam/welcome.jsp*。
+     3\.1. **[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Halogen Software アプリケーションへのサインオンに使用する URL を入力します: *https://global.hgncloud.com/fabrikam/welcome.jsp*。
 
      3\.2.**[次へ]** をクリックします。
  
@@ -111,7 +119,9 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
      8\.3.ダウンロードしたメタデータ ファイルをアップロードするには、**[Browse]** をクリックしてファイルを選択し、**[Upload File]** をクリックします。
 
-     8\.4.構成をテストするには、**[Run Test]** をクリックします。 > [AZURE.NOTE] "*The SAML test is complete.Please close this window*" というメッセージが表示されるまで待機する必要があります。次に、開いているブラウザー ウィンドウを閉じます。<br>**[Enable SAML]** チェック ボックスは、テストが完了した場合にのみ有効にします。
+     8\.4.構成をテストするには、**[Run Test]** をクリックします。 
+
+> [AZURE.NOTE] "*The SAML test is complete.Please close this window*" というメッセージが表示されるまで待機する必要があります。次に、開いているブラウザー ウィンドウを閉じます。<br>**[Enable SAML]** チェック ボックスは、テストが完了した場合にのみ有効にします。
 
      8\.5.**[Enable SAML]** を選択します。
     
@@ -129,22 +139,29 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br>![What is Azure AD Connect][100] 
+1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+<br><br>![What is Azure AD Connect][100] 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-3. ユーザーの一覧を表示するには、上部のメニューで **[ユーザー]** をクリックします。<br><br>![What is Azure AD Connect][101] 
-4. **[ユーザーの追加]** ダイアログを開くには、下部にあるツール バーで **[ユーザーの追加]** をクリックします。<br><br>![What is Azure AD Connect][102] 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。<br><br>![What is Azure AD Connect][103] 
+3. ユーザーの一覧を表示するには、上部のメニューで **[ユーザー]** をクリックします。
+<br><br>![What is Azure AD Connect][101] 
+4. **[ユーザーの追加]** ダイアログを開くには、下部にあるツール バーで **[ユーザーの追加]** をクリックします。
+<br><br>![What is Azure AD Connect][102] 
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+<br><br>![What is Azure AD Connect][103] 
   1. **[ユーザーの種類]** として **[組織内の新しいユーザー]** を選択します。
   2. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
   3. [次へ] をクリックします。
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。<br><br>![What is Azure AD Connect][104] 
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
+<br><br>![What is Azure AD Connect][104] 
   1. **[名]** ボックスに「**Britta**」と入力します。  
   2. **[姓]** ボックスに「**Simon**」と入力します。
   3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
   4. **[ロール]** 一覧で **[ユーザー]** を選択します。
   5. **[次へ]** をクリックします。
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。<br><br>![What is Azure AD Connect][105]  
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。<br><br>![What is Azure AD Connect][106]   
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
+<br><br>![What is Azure AD Connect][105]  
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
+<br><br>![What is Azure AD Connect][106]   
   1. **[新しいパスワード]** の値を書き留めます。
   2. **[完了]** をクリックします。   
   
@@ -156,8 +173,10 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 **Halogen Software で Britta Simon というユーザーを作成するには、次の手順に従います。**
 
 1. 管理者として **Halogen Software** アプリケーションにサインオンします。
-2. **[User Center]** タブをクリックし、**[Create User]** をクリックします。<br><br>![What is Azure AD Connect][300]  
-3. **[New User]** ダイアログ ページで、次の手順に従います。<br><br>![What is Azure AD Connect][301]
+2. **[User Center]** タブをクリックし、**[Create User]** をクリックします。
+<br><br>![What is Azure AD Connect][300]  
+3. **[New User]** ダイアログ ページで、次の手順に従います。
+<br><br>![What is Azure AD Connect][301]
   1. **[First Name]** ボックスに「**Britta**」と入力します。 
   2. **[Last Name]** ボックスに「**Simon**」と入力します。
   3. **[Username]** ボックスに **Azure AD ポータルでの Brita Simon のユーザー名**を入力します。
@@ -167,15 +186,21 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
 ### Azure AD テスト ユーザーの割り当て
 
-このセクションの目的は、Britta Simon に Halogen Software へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。<br><br>![What is Azure AD Connect][200]
+このセクションの目的は、Britta Simon に Halogen Software へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+<br><br>![What is Azure AD Connect][200]
 
 **Halogen Software に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure ポータルでアプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br> <br><br>![What is Azure AD Connect][201]
-2. アプリケーションの一覧で **[Halogen Software]** を選択します。<br><br>![What is Azure AD Connect][202]
-1. 上部のメニューで **[ユーザー]** をクリックします。<br> <br><br>![What is Azure AD Connect][203]
-1. ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![What is Azure AD Connect][204]
-2. 下部にあるツール バーで **[割り当て]** をクリックします。<br><br>![What is Azure AD Connect][205]
+1. Azure ポータルでアプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br>
+<br><br>![What is Azure AD Connect][201]
+2. アプリケーションの一覧で **[Halogen Software]** を選択します。
+<br><br>![What is Azure AD Connect][202]
+1. 上部のメニューで **[ユーザー]** をクリックします。<br>
+<br><br>![What is Azure AD Connect][203]
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
+<br><br>![What is Azure AD Connect][204]
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
+<br><br>![What is Azure AD Connect][205]
 
 
 
@@ -224,3 +249,4 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 [301]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_301.png
 
 <!---HONumber=AcomDC_1223_2015-->
+
