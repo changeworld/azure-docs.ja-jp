@@ -21,9 +21,7 @@
 
 > *Kate Baroni* 氏と *Ben Boatman* 氏は、マイクロソフトの Data Insights Center of Excellence のエンタープライズ ソリューション設計者です。この記事では、Azure Machine Learning を使用して、クラウド ベースのソリューションに既存の回帰分析スイートを移行する彼らの実験について説明します。
 
-
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
 
 ## 目標
 
@@ -159,4 +157,4 @@ Excel の回帰と Azure Machine Learning の実験を並行して実行する�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!-----HONumber=AcomDC_1210_2015-->
+<!------HONumber=AcomDC_1210_2015-->
