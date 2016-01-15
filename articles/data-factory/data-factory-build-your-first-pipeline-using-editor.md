@@ -291,7 +291,7 @@
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
 9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます
->[AZURE.IMPORTANT]オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。  
+	>[AZURE.IMPORTANT]オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。  
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)	
 	
