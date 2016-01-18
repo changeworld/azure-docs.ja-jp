@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/23/2015"
+	ms.date="12/24/2015"
 	ms.author="raynew"/>
 
 # オンプレミスの VMware 仮想マシンまたは物理サーバーと Azure 間の保護の設定
 
 この記事では、Site Recovery をデプロイして以下を実現する方法について説明します。
 
-- **VMware 仮想マシンを保護する** — Azure へのオンプレミス VMware 仮想マシンのレプリケーション、フェールオーバー、復旧を調整します
+- ** VMware 仮想マシンを保護する** — Azure へのオンプレミス VMware 仮想マシンのレプリケーション、フェールオーバー、復旧を調整します
 - **物理サーバーを保護する** — Azure Site Recovery サービスを使用した Azure へのオンプレミス Windows および Linux 物理サーバーのレプリケーション、フェールオーバー、および内復旧を調整します
 
 この記事では、概要、デプロイの前提条件、設定方法について説明します。この記事を読み終わると、VMware 仮想マシンまたは物理サーバーを Azure にレプリケートできるようになります。
@@ -140,7 +140,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 マスター ターゲット サーバーの容量計画は以下のことに依存します。
 
-- Azure ストレージのパフォーマンスと制限
+- Azure Storage のパフォーマンスと制限
 	- 使用率の高いディスクの最大数は、Standard レベルの VM では、1 つのストレージ アカウントで約 40 (ディスクあたり IOPS 20,000/500) です。詳細については、「[標準的なストレージ アカウントのスケーラビリティ ターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-standard-storage-accounts)」を参照してください。Premium Storage アカウントの詳細については、「[Premium Storage アカウントのスケーラビリティ ターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts)」を参照してください。
 -	1 日の変更率 
 -	保持ボリュームのストレージ
@@ -168,7 +168,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 **Azure Virtual Machines** | <p>保護する仮想マシンは、[Azure の前提条件](site-recovery-best-practices.md)に従う必要があります。</p><p>**ディスクの数** — 1 台の保護されたサーバーでサポートできるディスク数は最大 31 です。</p><p>**ディスク サイズ** — 個々のディスク容量は 1023 GB 未満である必要があります。</p><p>**クラスタリング** — クラスター化されたサーバーはサポートされません。</p><p>**ブート** — Unified Extensible Firmware Interface (UEFI) ブートまたは拡張ファームウェア インターフェイス (EFI) ブートはサポートされません。</p><p>**ボリューム** — Bitlocker 暗号化ボリュームはサポートされません。</p><p> **サーバー名** — 名前は 1 ～ 63 文字 (文字、数字、ハイフン) である必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンが保護された後で、Azure の名前を変更することができます。</p>
 **構成サーバー** | <p>Azure Site Recovery Windows Server 2012 R2 ギャラリー イメージに基づいた構成サーバー用の Standard A3 仮想マシンがサブスクリプションに作成されます。新しいクラウド サービスの最初のインスタンスとして作成されます。構成サーバーの接続の種類としてパブリック インターネットを選択した場合、予約されたパブリック IP アドレスでクラウド サービスが作成されます。</p><p>インストール パスには英字以外使わないでください。</p>
 **マスター ターゲット サーバー** | <p>Azure Virtual Machine、Standard A4、D14、または DS4。</p><p>インストール パスは英語文字のみで構成される必要があります。たとえば、Linux を実行するマスター ターゲット サーバーのパスは、**/usr/local/ASR** のようにする必要があります。</p></p>
-**プロセス サーバー** | <p>プロセス サーバーは、最新の更新プログラムがインストールされている Windows Server 2012 R2 を実行している物理マシンまたは仮想マシンにデプロイできます。C:/ にインストールします。</p><p>プロセス サーバーは、保護するマシンと同じネットワークおよびサブネット上に配置することをお勧めします。</p><p>VMware vSphere CLI 5.5.0 をプロセス サーバーにインストールします。vCenter サーバーによって管理される仮想マシンまたは ESXi ホストで実行する仮想マシンを検出するには、プロセス サーバー上に VMware vSphere CLI コンポーネントが必要です。</p><p>インストール パスは英語文字のみで構成される必要があります。</p><p>ReFS ファイル システムはサポートされていません。</p>
+**プロセス サーバー** | <p>プロセス サーバーは、最新の更新プログラムがインストールされている Windows Server 2012 R2 を実行している物理マシンまたは仮想マシンにデプロイできます。C:/ にインストールします。</p><p>プロセス サーバーは、保護するマシンと同じネットワークおよびサブネット上に配置することをお勧めします。</p><p>VMware vSphere CLI 5.5.0 をプロセス サーバーにインストールします。vCenter サーバーによって管理される仮想マシンまたは ESXi ホストで実行する仮想マシンを検出するには、プロセス サーバー上に VMware vSphere CLI コンポーネントが必要です。</p><p>インストール パスは英語文字のみで構成される必要があります。</p>
 **VMware** | <p>VMware vSphere ハイパーバイザーを管理する VMWare vCenter サーバー。最新の更新プログラムがインストールされた vCenter バージョン 5.1 または 5.5 を実行している必要があります。</p><p>保護する VMWare 仮想マシンを含む、1 つまたは複数の vSphere ハイパーバイザー。ハイパーバイザーは、最新の更新プログラムがインストールされた ESX/ESXi バージョン 5.1 または 5.5 を実行している必要があります。</p><p>VMware 仮想マシンは、VMware ツールがインストールされて稼働している必要があります。</p>
 **Windows マシン** | <p>Windows が稼動している物理サーバーまたは VMware 仮想マシンを保護するときは、いくつかの要件があります。</p><p>サポートされる 64 ビット オペレーティング システム: **Windows Server 2012 R2**、**Windows Server 2012**、**Windows Server 2008 R2 SP1 以上**。</p><p>ホスト名、マウント ポイント、デバイス名、Windows システム パス (例: C:\Windows) には英語のみ使用できます。</p><p>オペレーティング システムは C:\ ドライブにインストールする必要があります。</p><p>基本ディスクのみがサポートされます。ダイナミック ディスクはサポートされていません。</p><p><Firewall rules on protected machines should allow them to reach the configuration and master target servers in Azure.p><p>Windows サーバーにモビリティ サービスをプッシュ インストールするには、管理者アカウントを提供する必要があります (Windows マシン上のローカル管理者)。提供するアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。そのためには、LocalAccountTokenFilterPolicy DWORD レジストリ エントリ (値は 1) を HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System に追加します。CLI からレジストリ エントリを追加するには、cmd または powershell を開き、「**`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**」と入力します。アクセス制御についての[詳細](https://msdn.microsoft.com/library/aa826699.aspx)。</p><p>フェールオーバー後に、Azure の Windows 仮想マシンにリモート デスクトップを使用して接続する場合、オンプレミスのマシンでリモート デスクトップが有効になっていることを確認してください。VPN 経由で接続していない場合、ファイアウォール規則でインターネット経由のリモート デスクトップ接続を許可する必要があります。</p>
 **Linux マシン** | <p>サポートされている 64 ビット オペレーティング システム: **Centos 6.4、6.5、6.6**、**Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5**、**SUSE Linux Enterprise Server 11 SP3**。</p><p>保護されたマシンのファイアウォール規則は、保護されたマシンから構成サーバーおよび Azure のマスター ターゲット サーバーにアクセスできるように設定する必要があります。</p><p>保護対象マシン上の /etc/hosts ファイルには、ローカル ホスト名をすべての NIC と関連付けられた IP アドレスにマップするエントリが含まれる必要があります。</p><p>フェールオーバー後に、Linux を実行する Azure 仮想マシンに Secure Shell クライアント (ssh) を使用して接続する場合、保護されたマシンのシステム ブート時に Secure Shell サービスが自動的に起動し、ファイアウォールの規則で仮想マシンへの ssh 接続が許可されるように設定していることを確認してください。</p><p>ホスト名、マウント ポイント、デバイス名、および Linux システム パスとファイル名 (例: /etc/; /usr) には英語のみ使用できます。</p><p>オンプレミスのマシンに対する保護は、以下のストレージで有効にできます。<br>ファイル システム: EXT3、ETX4、ReiserFS、XFS<br>マルチパス ソフトウェア-デバイス マッパー (multipath)<br>ボリューム マネージャー: LVM2<br>HP CCISS コントローラー ストレージを使用する物理サーバーはサポートされていません。</p>
@@ -251,7 +251,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
     >[AZURE.WARNING]構成サーバーのデプロイ中に作成されたエンドポイントのパブリック ポート番号またはプライベート ポート番号は削除または変更しないでください。
 
-構成サーバーは、予約された IP アドレスで自動的に作成される Azure クラウド サービスにデプロイされます。予約されたアドレスは、クラウド サービスで仮想マシン (構成サーバーを含む) の再起動の間に構成サーバーのクラウド サービスの IP アドレスが変わらないために必要です。構成サーバーを使用停止するときは予約されたパブリック IP アドレスを手動で予約解除する必要があります。そうしないと、予約されたまま残ります。サブスクリプションごとに 20 個の予約されたパブリック IP アドレスの既定の制限があります。予約済み IP アドレスの詳細は、 [詳細を確認する](../virtual-network/virtual-networks-reserved-private-ip.md)を参照してください。
+構成サーバーは、予約された IP アドレスで自動的に作成される Azure クラウド サービスにデプロイされます。予約されたアドレスは、クラウド サービスで仮想マシン (構成サーバーを含む) の再起動の間に構成サーバーのクラウド サービスの IP アドレスが変わらないために必要です。構成サーバーを使用停止するときは予約されたパブリック IP アドレスを手動で予約解除する必要があります。そうしないと、予約されたまま残ります。サブスクリプションごとに 20 個の予約されたパブリック IP アドレスの既定の制限があります。予約済み IP アドレスの詳細は、[ここ](../virtual-network/virtual-networks-reserved-private-ip.md)を参照してください。
 
 ### 構成サーバーのコンテナーへの登録
 
@@ -380,9 +380,9 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 	![Windows のマスター ターゲット サーバー](./media/site-recovery-vmware-to-azure/ASRVMWare_TSRegister.png)
 
 8. Linux を実行している場合は以下のようにします。
-	1. マスター ターゲット サーバー ソフトウェアをインストールする前に、最新の Linux Integration Services (LIS) がインストールされていることを確認します。最新バージョンの LIS とインストール手順は、[ここ](https://www.microsoft.com/ja-jp/download/details.aspx?id=46842)で確認できます。LIS をインストールした後、コンピューターを再起動します。
+	1. マスター ターゲット サーバー ソフトウェアをインストールする前に、最新の Linux Integration Services (LIS) がインストールされていることを確認します。最新バージョンの LIS とインストール手順は、[ここ](https://www.microsoft.com/ja-JP/download/details.aspx?id=46842)で確認できます。LIS をインストールした後、コンピューターを再起動します。
 	2. **[ターゲット (Azure) リソースの準備]** で、**[追加ソフトウェアのダウンロードとインストール (Linux マスター ターゲット サーバーのみ)]** をクリックし、Linux マスター ターゲット サーバー パッケージをダウンロードします。ダウンロードした tar ファイルを、sftp クライアントを使用して仮想マシンにコピーします。または、デプロイ済みの Linux マスター ターゲット サーバーにログインし、*wget http://go.microsoft.com/fwlink/?LinkID=529757&clcid=0x409* を使用してファイルをダウンロードしてもかまいません。
-	2. Secure Shell クライアントを使用してサーバーにログインします。VPN 経由で Azure ネットワークに接続している場合は、内部 IP アドレスを使用します。それ以外の場合は、外部 IP アドレスと SSH パブリック エンドポイントを使用します。
+2. Secure Shell クライアントを使用してサーバーにログインします。VPN 経由で Azure ネットワークに接続している場合は、内部 IP アドレスを使用します。それ以外の場合は、外部 IP アドレスと SSH パブリック エンドポイントを使用します。
 	3. 次を実行して gzipped インストーラーからファイルを抽出します。**tar –xvzf Microsoft-ASR_UA_8.4.0.0_RHEL6-64***![Linux のマスター ターゲット サーバー](./media/site-recovery-vmware-to-azure/ASRVMWare_TSLinuxTar.png)
 	4. tar ファイルの内容を抽出したディレクトリで操作していることを確認します。
 	5. **echo *`<passphrase>`* >passphrase.txt** コマンドを使用して、構成サーバーのパスフレーズをローカル ファイルにコピーします。
@@ -777,4 +777,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!----HONumber=AcomDC_1210_2015--->
+<!---HONumber=AcomDC_0107_2016-->

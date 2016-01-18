@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="01/04/2016"
 	ms.author="markusvi"/>
 
 
@@ -1058,4 +1058,4 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

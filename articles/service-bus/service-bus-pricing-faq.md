@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/09/2015"
+   ms.date="12/28/2015"
    ms.author="sethm" />
 
 # Service Bus の価格に関する FAQ
@@ -111,9 +111,9 @@ Service Bus メッセージングの詳細については、次のトピック�
 - [Azure Service Bus Premium メッセージングの概要 (ブログの投稿)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 - [Azure Service Bus Premium メッセージングの概要(Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 - [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-- [Azure Service Bus アーキテクチャの概要](fundamentals-service-bus-hybrid-solutions.md)
+- [Azure Service Bus アーキテクチャの概要](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

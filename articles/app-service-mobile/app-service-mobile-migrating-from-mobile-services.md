@@ -45,7 +45,6 @@ Azure App Service の利点の詳細については、[Mobile Services と App S
   *  現在、忙しい時期にあり、現時点ではサイトを再起動する余裕がない。
   *  移行プロセスをテストする前に本稼動サイトを変更することを望まない。
   *  Free または Basic 価格レベルのサイトを複数所有しているとき、すべてのサイトを同時に移行することを望まない。
-  *  サイトを移行するジョブをオンデマンドとしてスケジュールしている。
 
 忙しい時期であれば、保守管理の予定期間中に移行を計画してください。移行プロセスの一環としてサイトが再起動します。一時的にサイトが利用できなくなる可能性があります。
 
@@ -146,6 +145,24 @@ Scheduler Jobs は移行後約 30 分経過するまで表示されません。�
 
 > [AZURE.TIP]Azure App Service を使用する利点の 1 つは、同じサイトで Web サイトとモバイル サービスを実行できることです。詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
 
+### <a name="download-publish-profile"></a>新しい発行プロファイルのダウンロード
+
+Azure App Service に移行すると、サイトの発行プロファイルが変更されます。Visual Studio 内からサイトを発行する場合、新しい発行プロファイルが必要になります。新しい発行プロファイルをダウンロードするには、次の手順に従います。
+
+  1.  [Azure ポータル]にログインします。
+  2.  **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
+  3.  **[発行プロファイルの取得]** をクリックします。
+
+PublishSettings ファイルがコンピューターにダウンロードされます。通常、ファイル名は _サイト名_.PublishSettings です。これで、発行設定を既存のプロジェクトにインポートできます。
+
+  1.  Visual Studio を開き、Azure Mobile Service プロジェクトを開きます。
+  2.  **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[発行...]** をクリックします。
+  3.  **[インポート]** をクリックします。
+  4.  **[参照]** をクリックし、ダウンロードした発行設定ファイルを選択します。**[OK]** をクリックします。
+  5.  **[接続の検証]** をクリックして、発行設定が機能していることを確認します。
+  6.  **[発行]** をクリックして、サイトを発行します。
+
+
 ## <a name="working-with-your-site"></a>サイトの移行後の操作
 
 まず、[Azure ポータル]の移行後で、新しい App Service を操作します。以下は、[Azure クラシック ポータル]で実行していた特定の操作とそれに対応する App Service 操作に関する注記です。
@@ -224,33 +241,24 @@ Mobile Services の _[API]_ タブは Azure ポータルでは _[API の簡単�
 
 移行した API はブレードに一覧表示されます。このブレードから新しい API を追加することもできます。特定の API を管理するには、API をクリックします。新しいブレードから、アクセス許可を調整したり、API のスクリプトを編集したりできます。
 
-### <a name="on-demand-jobs"></a>オンデマンドでスケジュールされたジョブ
+### <a name="on-demand-jobs"></a>スケジューラ ジョブ
 
-オンデマンドでスケジュールされたジョブは Web 要求でトリガーします。[Postman]、[Fiddler]、[curl] などの HTTP クライアントの利用が推奨されます。サイトの名前が「contoso」であれば、エンドポイント https://contoso.azure-mobile.net/jobs/_yourjobname_ が与えられるのでそれを利用してオンデマンド ジョブをトリガーできます。追加ヘッダーの **X-ZUMO-MASTER** をマスター キーと共に送信する必要があります。
-
-マスター キーは次のように取得できます。
+スケジューラ ジョブはすべて、[スケジューラ ジョブ コレクション] セクションから利用できます。スケジューラ ジョブにアクセスするには、次の手順に従います。
 
   1. [Azure ポータル]にログインします。
-  2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
-  3. 既定で [設定] ブレードが開きます。開かない場合は、**[設定]** をクリックします。
-  4. [全般] メニューで、**[アプリケーション設定]** をクリックします。
-  5. **MS\_MasterKey** アプリケーション設定を探します。
+  2. **[参照]** を選択し、_[フィルター]_ ボックスに「**Schedule**」と入力し、**[Scheduler コレクション]** を選択します。
+  3. サイトのジョブ コレクションを選択します。ジョブ コレクションには、_サイト名_-Jobs という名前が付けられています。
+  4. **[設定]** をクリックします。
+  5. [管理] の **[スケジューラ ジョブ]** をクリックします。
 
-マスター キーを切り取り、Postman セッションに貼り付けることができます。次は、移行したモバイル サービスでオンデマンド ジョブをトリガーする例です。
+スケジュールされたジョブは、移行前に指定した頻度で表示されます。オンデマンド ジョブは無効になります。オンデマンド ジョブを実行するには、次の手順に従います。
 
-  ![Postman でオンデマンド ジョブをトリガーする][2]
+  1. 実行するジョブを選択します。
+  2. 必要に応じて、**[有効にする]** をクリックしてジョブを有効にします。
+  3. **[設定]**、**[スケジュール]** の順にクリックします。
+  4. 定期的なアイテムとして **[1 回]** を選択し、**[保存]** をクリックします。
 
-次の設定を書き留めます。
-
-  * メソッド: **POST**
-  * URL: https://_yoursite_.azure-mobile.net/jobs/_yourjobname_
-  * ヘッダー: X-ZUMO-MASTER: _your-master-key_
-
-あるいは、[curl] を利用し、コマンド ラインでオンデマンド ジョブをトリガーできます。
-
-    curl -H 'X-ZUMO-MASTER: yourmasterkey' --data-ascii '' https://yoursite.azure-mobile.net/jobs/yourjob
-
-オンデマンド ジョブは `App_Data/config/scripts/scheduler post-migration` にあります。すべてのオンデマンド ジョブを [WebJobs] に変更することが推奨されます。
+オンデマンド ジョブは `App_Data/config/scripts/scheduler post-migration` にあります。すべてのオンデマンド ジョブを [WebJobs] に変更することが推奨されます。新しいスケジューラ ジョブは、[WebJobs] として作成してください。
 
 ### <a name="notification-hubs"></a>Notification Hubs
 
@@ -266,7 +274,7 @@ Mobile Services では、プッシュ通信に Notification Hubs が使用され
 通知ハブは [Azure ポータル]経由で管理されます。Notification Hub 名を書き留めます (アプリケーション設定で見つかります)。
 
   1. [Azure ポータル]にログインします。
-  2. **[参照]** > **Notification Hubs** の順に選択します。
+  2. **[参照]** > **[Notification Hubs]** の順に選択します。
   3. モバイル サービスに関連付けられている通知ハブの名前をクリックします。
 
 > [AZURE.NOTE]「Mixed」タイプの場合、通知ハブは表示されません。「Mixed」タイプの通知ハブでは、Notification Hubs と以前の Service Bus 機能の両方が利用されます。[Mixed 名前空間を変換する]必要があります。変換が完了すると、通知ハブが [Azure ポータル]に表示されます。
@@ -358,17 +366,17 @@ _azure モバイル_ コマンドを利用して Azure Mobile Services サイト
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[App Service 価格]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[App Service 価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [自動スケール]: ../app-service-web/web-sites-scale.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [Azure App Service のデプロイに関するドキュメント]: ../app-service-web/web-sites-deploy.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 [Azure ポータル]: https://portal.azure.com
-[Azure リージョン]: https://azure.microsoft.com/en-us/regions/
+[Azure リージョン]: https://azure.microsoft.com/ja-JP/regions/
 [Azure Scheduler プラン]: ../scheduler/scheduler-plans-billing.md
 [連続的にデプロイ]: ../app-service-web/web-sites-publish-source-control.md
-[Mixed 名前空間を変換する]: https://azure.microsoft.com/en-us/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
+[Mixed 名前空間を変換する]: https://azure.microsoft.com/ja-JP/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
 [custom domain names]: ../app-service-web/web-sites-custom-domain-name.md
 [Fiddler]: http://www.telerik.com/fiddler
@@ -385,5 +393,4 @@ _azure モバイル_ コマンドを利用して Azure Mobile Services サイト
 [VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 
-<!----HONumber=AcomDC_1223_2015--->
-
+<!---HONumber=AcomDC_0107_2016-->

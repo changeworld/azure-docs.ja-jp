@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="01/05/2015"
 	ms.author="markusvi"/>
 
 # Cloud App Discovery のセキュリティとプライバシーの考慮事項
@@ -90,6 +90,8 @@ HTTP 情報:
 
 > [AZURE.NOTE]上記の HTTP 情報は、暗号化されていないすべての接続について収集されます。TLS 接続では、ポータルで「詳細な検査」設定をオンにしているときにのみ、この情報がキャプチャされます。設定は、既定では「オン」です。詳細については、以下の説明と [Getting Started With Cloud App Discovery (Cloud App Discovery の概要)](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx) を参照してください。
 
+
+エージェントは、ネットワーク アクティビティに関するデータに加え、ソフトウェアとハードウェアの構成に関する匿名の情報、エラー報告、エージェントの使用方法に関する情報を収集します。
 
 <br><br>
 ### エージェントの動作
@@ -177,4 +179,4 @@ TLS によるインターセプションが、エンド ユーザー エクス�
 
 * [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

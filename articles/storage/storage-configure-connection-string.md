@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="01/05/2016" 
 	ms.author="tamram"/>
 
 # Azure Storage の接続文字列を構成する
@@ -122,4 +122,4 @@ Azure China、Azure Governance など、別のエンドポイント サフィッ
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

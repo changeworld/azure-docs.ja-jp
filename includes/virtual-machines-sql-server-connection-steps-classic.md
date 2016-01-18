@@ -1,23 +1,23 @@
-### Determine the DNS name of the virtual machine
+### 仮想マシンの DNS 名を特定する
 
-To connect to the SQL Server Database Engine from another computer, you must know the Domain Name System (DNS) name of the virtual machine. (This is the name the internet uses to identify the virtual machine. You can use the IP address, but the IP address might change when Azure moves resources for redundancy or maintenance. The DNS name will be stable because it can be redirected to a new IP address.)  
+別のコンピューターから SQL Server データベース エンジンに接続するには、仮想マシンのドメイン ネーム システム (DNS) 名が必要になります(これは、仮想マシンを識別するためにインターネットで使用される名前です。IP アドレスを使用することもできますが、Azure で冗長化またはメンテナンスのためにリソースが移動された場合、IP アドレスは変わる可能性があります。DNS 名は、新しい IP アドレスにリダイレクトできるため、安定しています)。
 
-1. In the Azure Management Portal (or from the previous step), select **VIRTUAL MACHINES**. 
+1. Azure 管理ポータルで (または前の手順から)、**[仮想マシン]** を選択します。 
 
-2. On the **VIRTUAL MACHINE INSTANCES** page, under the **Quick Glance** column, find and copy the DNS name for the virtual machine.
+2. **[仮想マシン インスタンス]** ページの **[概要]** 列で、仮想マシンの DNS 名を探してコピーします。
 
 	![DNS name](./media/virtual-machines-sql-server-connection-steps/sql-vm-dns-name.png)
 	
 
-### Connect to the Database Engine from another computer
+### 別のコンピューターからデータベース エンジンに接続する
  
-1. On a computer connected to the internet, open SQL Server Management Studio.
-2. In the **Connect to Server** or **Connect to Database Engine** dialog box, in the**Server name** box, enter the DNS name of the virtual machine (determined in the previous task) and a public endpoint port number in the format of *DNSName,portnumber* such as **tutorialtestVM.cloudapp.net,57500**.
-To get the port number, log in to the Azure Management Portal and find the Virtual Machine. On the Dashboard, click **ENDPOINTS** and use the **PUBLIC PORT** assigned to **MSSQL**.
-	![Public Port](./media/virtual-machines-sql-server-connection-steps/sql-vm-port-number.png)
-3. In the **Authentication** box, select **SQL Server Authentication**.
-5. In the **Login** box, type the name of a login that you created in an earlier task.
-6. In the **Password** box, type the password of the login that you create in an earlier task.
-7. Click **Connect**.
+1. インターネットに接続されたコンピューターで、SQL Server Management Studio を開きます。
+2. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、**[サーバー名]** ボックスに、前のタスクで特定した仮想マシンの DNS 名とパブリック エンドポイントのポート番号を *DNS 名,ポート番号* という形式で入力します (例: **tutorialtestVM.cloudapp.net,57500**)。ポート番号を取得するには、Azure 管理ポータルにログインし、仮想マシンを検索します。ダッシュボードで **[エンドポイント]** をクリックし、**MSSQL** に割り当てられた**パブリック ポート**を使用します。![パブリック ポート](./media/virtual-machines-sql-server-connection-steps/sql-vm-port-number.png)
+3. **[認証]** ボックスで、**[SQL Server 認証]** を選択します。
+5. **[ログイン]** ボックスに、前のタスクで作成したログインの名前を入力します。
+6. **[パスワード]** ボックスに、前のタスクで作成したログインのパスワードを入力します。
+7. **[接続]** をクリックします。
 
-	![Connect using SSMS](./media/virtual-machines-sql-server-connection-steps/33Connect-SSMS.png)
+	![SSMS を使用した接続](./media/virtual-machines-sql-server-connection-steps/33Connect-SSMS.png)
+
+<!---HONumber=AcomDC_0107_2016-->

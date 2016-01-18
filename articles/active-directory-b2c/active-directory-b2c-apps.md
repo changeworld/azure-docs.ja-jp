@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/28/2015"
+	ms.date="12/22/2015"
 	ms.author="dastrock"/>
 
 # Azure AD B2C プレビュー: アプリケーションの種類
@@ -23,7 +23,7 @@ Azure AD B2C は、さまざまなモダン アプリ アーキテクチャ向�
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
 ## 基本操作
-Azure AD B2C を使用するすべてのアプリは、[Azure プレビュー ポータル](https://portal.azure.com)を通して [B2C ディレクトリ](active-directory-b2c-get-started.md)に登録する必要があります。アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
+Azure AD B2C を使用するすべてのアプリは、[Azure ポータル](https://portal.azure.com)から [B2C ディレクトリ](active-directory-b2c-get-started.md)に登録する必要があります。アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
 - アプリを一意に識別する**アプリケーション ID**。
 - 応答をアプリにリダイレクトして戻すために使用できる**リダイレクト URI**。
@@ -128,4 +128,4 @@ Azure AD B2C によって保護された Web API から、同様に保護され�
 
 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 Jwt Bearer Credential Grant (On-Behalf-Of Flow) を使用してサポートできます。ただし、現時点では、Azure AD B2C プレビューに On-Behalf-Of Flow は実装されていません。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

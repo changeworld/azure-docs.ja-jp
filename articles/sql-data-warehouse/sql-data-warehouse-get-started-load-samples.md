@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/21/2015"
+   ms.date="01/04/2016"
    ms.author="lodipalm;barbkess"/>
 
 # SQL Data Warehouse へのサンプル データのロード
@@ -95,4 +95,4 @@ WHERE 句を使用して、ある日付以前の注文をフィルター処理�
 <!--Other Web references-->
 [Sample Data Scripts]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksPDW2012.zip/
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

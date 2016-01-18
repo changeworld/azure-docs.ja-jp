@@ -24,7 +24,7 @@
 
 この記事では、Azure App Service Mobile Apps で Node.js バックエンドを使用する方法についての詳細な情報と例を提供します。
 
-> [AZURE.NOTE]この SDK はプレビュー段階です。そのため、運用環境でこの SDK を使用することは推奨されません。このドキュメントの例では、[azure-mobile-apps] の v2.0.0-beta1 を使用しています。
+> [AZURE.NOTE]この SDK はプレビュー段階です。そのため、運用環境でこの SDK を使用することは推奨されません。このドキュメントの例では、[azure-mobile-apps] の v2.0.0-beta2 を使用しています。
 
 ## <a name="Introduction"></a>はじめに
 
@@ -91,7 +91,7 @@ Azure App Service Mobile Apps の Node.js バックエンドはすべて Express
 
 Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発するための拡張機能が必要です。最初に、[Node.js Tools 1.1 for Visual Studio] をダウンロードしてインストールします。Node.js Tools for Visual Studio をインストールしたら、Express 4.x アプリケーションを作成します。
 
-1. **[新しいプロジェクト]** ダイアログを開きます (**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします)。
+1. **[新しいプロジェクト]** ダイアログを開きます (**[ファイル]**、**[新規作成]**、**[プロジェクト...]** の順にクリック)。
 
 2. **[テンプレート]**、**[JavaScript]**、**[Node.js]** の順に展開します。
 
@@ -105,7 +105,7 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
 6. 最初の Node.js アプリケーションの作成時に、npm カタログを更新することが必要な場合があります。更新が必要な場合は、更新するよう求められるので、**[更新]** をクリックします。
 
-7. 検索ボックスに「_azure-mobile-apps_」と入力します。**azure-mobile-apps 2.0.0** パッケージをクリックし、**[パッケージのインストール]** をクリックします。
+7. 検索ボックスに「_azure-mobile-apps_」と入力します。**azure-mobile-apps 2.0.0** パッケージをクリックしてから、**[パッケージのインストール]** をクリックします。
 
 	![新しい npm パッケージのインストール][2]
 
@@ -297,7 +297,7 @@ TCP/IP 接続を介して、データベースにアクセスし、接続用の�
 
 ### <a name="howto-config-localdev"></a>方法: ローカル開発用のプロジェクトを構成する
 
-Azure Mobile Apps は、ローカル ファイルシステムから _azureMobile.js_ という JavaScript ファイルを読み取ります。運用環境で Azure Mobile Apps SDK を構成する場合は、このファイルを使用しないでください。代わりに、[Azure ポータル]内の [アプリ設定] を使用します。_azureMobile.js_ ファイルでは、構成オブジェクトをエクスポートする必要があります。最も一般的な設定は次のとおりです。
+Azure Mobile Apps は、ローカル ファイルシステムから _azureMobile.js_ という JavaScript ファイルを読み取ります。運用環境で Azure Mobile Apps SDK を構成する場合は、このファイルを使用しないでください。代わりに、[Azure ポータル]内の [アプリ設定] を使用します。_azureMobile.js_ ファイルでは構成オブジェクトをエクスポートする必要があります。最も一般的な設定は次のとおりです。
 
 - データベース設定
 - 診断ログ設定
@@ -386,7 +386,7 @@ Azure SQL Database をデータ ストアとして使用する方法は、Azure 
 
 <!--- END OF ALTERNATE INCLUDE -->
 
-データベースの作成には数分かかる場合があります。**[通知]** 領域を使用して、デプロイメントの進行状況を監視します。データベースのデプロイが正常に完了するまでは、先に進まないでください。正常にデプロイされると、モバイル バックエンドの [アプリ設定] で、SQL Database インスタンスの接続文字列が作成されます。このアプリ設定を確認するには、**[設定]**、**[アプリケーション設定]**、**[接続文字列]** を順に選択します。
+データベースの作成には数分かかる場合があります。**[通知]** 領域を使用して、デプロイの進行状況を監視します。データベースのデプロイが正常に完了するまでは、先に進まないでください。正常にデプロイされると、モバイル バックエンドの [アプリ設定] で、SQL Database インスタンスの接続文字列が作成されます。このアプリ設定を確認するには、**[設定]**、**[アプリケーション設定]**、**[接続文字列]** を順に選択します。
 
 ### <a name="howto-tables-auth"></a>方法: テーブルへのアクセスに認証を要求する
 
@@ -698,7 +698,7 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [Google 認証の構成方法]: app-service-mobile-how-to-configure-google-authentication.md
 [Microsoft 認証の構成方法]: app-service-mobile-how-to-configure-microsoft-authentication.md
 [Twitter 認証の構成方法]: app-service-mobile-how-to-configure-twitter-authentication.md
-[Azure App Service のデプロイ ガイド]: ../app-service-web/web-site-deploy.md
+[Azure App Service のデプロイ ガイド]: ../app-service-web/web-sites-deploy.md
 [Azure App Service の監視]: ../app-service-web/web-sites-monitor.md
 [Azure App Service での診断ログの有効化]: ../app-service-web/web-sites-enable-diagnostic-log.md
 [Visual Studio での Azure App Service のトラブルシューティング]: ../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md
@@ -722,4 +722,4 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

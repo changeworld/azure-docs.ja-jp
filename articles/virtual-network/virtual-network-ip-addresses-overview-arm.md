@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/14/2015"
+   ms.date="12/23/2015"
    ms.author="telmos" />
 
-# Azure リソース マネージャーの IP アドレス
+# Azure 内の IP アドレス
 Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。Azure で使用できる IP アドレスには、パブリックとプライベートの 2 種類があります。
 
 パブリック IP アドレスは、Azure の公開されたサービスを含め、インターネットとの通信に使用します。
@@ -24,6 +24,8 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 プライベート IP アドレスは、VPN ゲートウェイまたは ExpressRoute 回線を使用してネットワークを Azure に拡張するときに、Azure 仮想ネットワーク (VNet)、およびオンプレミス ネットワーク内での通信に使用します。
 
 [AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-network-ip-addresses-overview-classic.md)。
+
+クラシック デプロイメント モデルの知識がある場合は、「[differences in IP addressing between classic and Resource Manager (クラシック デプロイメントとリソース マネージャーでの IP アドレス指定の相違点)](virtual-network-ip-addresses-overview-classic.md#Differences-between-Resource-Manager-and-classic-deployments)」を確認してください。
 
 ## パブリック IP アドレス
 パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Redis Cache](https://azure.microsoft.com/services/cache)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs)、[SQL データベース](sql-database-technical-overview.md)、[Azure ストレージ](storage-introduction.md)など、Azure の公開されたサービスと通信できます。
@@ -46,7 +48,7 @@ IP アドレスを*パブリック IP リソース*に割り当てる方法に�
 
 - エンドユーザーが Azure リソースと通信するためのファイアウォール規則を更新する必要がある。
 - DNS 名の解決で、IP アドレスの変更によりレコードを更新する必要がある。
-- Azure のリソースが、IP ベースのセキュリティ モデルを使用する他の Web サービスと通信する。
+- Azure のリソースが、IP アドレス ベースのセキュリティ モデルを使用する他のアプリまたはサービスと通信する。
 - IP アドレスにリンクされている SSL 証明書を使用する。
 
 >[AZURE.NOTE]Azure リソースへのパブリック IP アドレス (動的/静的) の割り当てに使用する IP アドレス範囲のリストは、「[Azure データセンターの IP アドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)」で公開されています。
@@ -122,19 +124,30 @@ Azure で管理される DNS サーバーで構成されている VM は、そ�
 |内部ロード バランサーのフロント エンド|あり|あり|あり|
 |Application Gateway のフロント エンド|あり|あり|あり|
 
-## リソース マネージャーとクラシック デプロイメントの比較
-リソース マネージャーの IP アドレスとクラシック デプロイメント モデルとの比較を次に示します。
+## 制限
 
-||リソース|クラシック|リソース マネージャー|
-|---|---|---|---|
-|**パブリック IP アドレス**|VM|ILPIP と呼ばれる (動的のみ)|パブリック IP と呼ばれる (動的または静的)|
-|||IaaS VM または PaaS ロール インスタンスに割り当てられる|VM の NIC に関連付けられる|
-||インターネットに接続するロード バランサー|VIP (動的) または予約済み IP (静的) と呼ばれる|パブリック IP (動的または静的) と呼ばれる|
-|||クラウド サービスに割り当てられる|ロード バランサーのフロント エンド構成に関連付けられる|
-||||
-|**プライベート IP アドレス**|VM|DIP と呼ばれる|プライベート IP アドレスと呼ばれる|
-|||IaaS VM または PaaS ロール インスタンスに割り当てられる|VM の NIC に割り当てられる|
-||内部ロード バランサー (ILB)|ILB に割り当てられる (動的または静的)|ILB のフロント エンド構成に割り当てられる (動的または静的)|
+リージョンごと、サブスクリプションごとに Azure で IP アドレスを指定する際に課せられる IP の制限を下表に示します。ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、[サポートにお問い合わせ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+
+||既定の制限|上限| 
+|---|---|---| 
+|パブリック IP アドレス (動的)|60|サポートにお問い合わせ| |パブリック IP アドレス (静的)|20|サポートにお問い合わせ| 
+|ロード バランサーあたりのパブリック フロント エンド IP|5|サポートにお問い合わせ|ロード バランサーあたりのプライベート フロント エンド IP|1|サポートにお問い合わせ|
+
+Azure での[ネットワークの制限](azure-subscription-service-limits.md#networking-limits)に関する情報を必ずご確認ください。
+
+## 価格
+
+ほとんどの場合、パブリック IP アドレスは無料です。追加のパブリック IP アドレスまたは静的な IP アドレスを使用する場合は標準の料金が発生します。[パブリック IP の料金体系](https://azure.microsoft.com/pricing/details/ip-addresses/)を必ず把握してください。
+
+要約すると、パブリック IP リソースには次の料金体系が適用されます。
+
+- VPN ゲートウェイとアプリケーション ゲートウェイでは、無料の動的パブリック IP を 1 つだけ使用します。
+- VM ではパブリック IP を 1 つだけ使用します。これが動的 IP アドレスである限り料金はかかりません。VM で静的なパブリック IP を使用する場合、静的な (予約済みの) パブリック IP の使用量に達するまでカウントされます。
+- 各ロード バランサーは、複数のパブリック IP を使用できます。最初のパブリック IP は無料です。追加の IP は、$0.004/hr で課金されます。静的パブリック IP は、静的な (予約済みの) パブリック IP 使用量に達するまでカウントされます。
+- 静的な (予約済み) パブリック IP の使用: 
+	- 最初の 5 つ (使用中) は無料です。追加の静的 IP は、$0.004/hr で課金されます。 
+	- いずれのリソースにも割り当てられていない静的パブリック IP は、$0.004/hr で課金されます。
+	- 使用状況は、サブスクリプション内の静的パブリック IP アドレスの合計数に基づいて計算されます。
 
 ## 次のステップ
 - [Deploy a VM with a static public IP (静的パブリック IP で VM をデプロイする)](virtual-network-deploy-static-pip-arm-template.md)
@@ -145,4 +158,4 @@ Azure で管理される DNS サーバーで構成されている VM は、そ�
 - [Create a front end static private IP address for an internal load balancer by using PowerShell (PowerShell を使用して内部ロード バランサーのフロント エンドの静的プライベート IP アドレスを作成する)](load-balancer-get-started-ilb-arm-ps.md#create-front-end-ip-pool-and-backend-address-pool)
 - [Create a backend pool with static private IP addresses for an application gateway by using PowerShell (PowerShell を使用して Application Gateway の静的プライベート IP アドレスを含むバックエンド プールを作成する)](application-gateway-create-gateway-arm.md#create-an-application-gateway-configuration-object)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

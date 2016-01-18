@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="01/04/2016"
    ms.author="barbkess"/>
 
 # システム ビュー
@@ -270,4 +270,4 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

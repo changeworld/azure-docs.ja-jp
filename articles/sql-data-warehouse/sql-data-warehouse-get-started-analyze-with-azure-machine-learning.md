@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/21/2015"
+   ms.date="01/04/2016"
    ms.author="sahajs"/>
 
 # Azure Machine Learning を使用したデータの分析
@@ -82,7 +82,7 @@ AdventureWorksDW データベースの dbo.vTargetMail ビューからデータ�
 データを 80 対 20 に分割し、80% を機械学習モデルのトレーニングに、20% をモデルのテストに使用します。今回の二項分類の問題には "2 クラス" アルゴリズムを使用します。
 
 1. **[分割]** モジュールをキャンバスにドラッグします。
-2. [プロパティ] ウィンドウの [最初の出力データセットにおける列の割合] に「0.8」を入力します。![データをトレーニング セットとテスト セットに分割する][6]
+2. [プロパティ] ウィンドウの [最初の出力データセットにおける列の割合] に「0.8」と入力します。![データをトレーニング セットとテスト セットに分割する][6]
 3. **[2 クラス ブースト デシジョン ツリー]** モジュールをキャンバスにドラッグします。
 4. **[モデルのトレーニング]** モジュールをキャンバスにドラッグし、入力内容を指定します。次に、[プロパティ] ウィンドウで **[列セレクターの起動]** をクリックします。
       - 1 つ目の入力: ML アルゴリズム。
@@ -114,7 +114,7 @@ AdventureWorksDW データベースの dbo.vTargetMail ビューからデータ�
 
 [BikeBuyer] 列 (実際) をスコア付けラベル (予測) と比較すると、モデルのパフォーマンスがどの程度優れていたかを評価できます。次のステップとして、このモデルを使用して新規顧客の予測を行い、Web サービスとしてこのモデルを発行したり、SQL Data Warehouse に結果を書き戻したりできます。
 
-予測機械学習モデルの作成の詳細については、[Azure での機械学習の概要][]に関するページを参照してください。
+予測機械学習モデルの作成の詳細については、「[Microsoft Azure での Machine Learning の概要][]」を参照してください。
 
 
 
@@ -135,8 +135,8 @@ AdventureWorksDW データベースの dbo.vTargetMail ビューからデータ�
 
 <!--Article references-->
 [Azure Machine Learning studio]: https://studio.azureml.net/
-[Azure での機械学習の概要]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
+[Microsoft Azure での Machine Learning の概要]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
 [サンプル データを手動で読み込む]: sql-data-warehouse-get-started-manually-load-samples.md
 [SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0107_2016-->

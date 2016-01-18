@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="11/04/2015" 
+	ms.date="12/23/2015" 
 	ms.author="heidist"/>
 
 #Azure Search 関連の最新の更新履歴情報#
@@ -128,4 +128,4 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

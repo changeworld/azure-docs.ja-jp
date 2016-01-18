@@ -21,10 +21,7 @@
 # Mac OS 上で Python を使用して SQL Database に接続する
 
 
-> [AZURE.SELECTOR]
-- [Node.js](sql-database-develop-nodejs-simple-mac.md)
-- [Python](sql-database-develop-python-simple-mac-osx.md)
-- [Ruby](sql-database-develop-ruby-simple-mac-osx.md)
+[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
 このトピックでは Python で記述されたコード サンプルについて説明します。サンプルは Mac コンピューター上で実行されます。サンプルは、**pymssql** ドライバーを使用して、Azure SQL Database に接続されます。このドキュメントの補足として、[Mac で Python の使用を開始する](https://www.youtube.com/watch?v=OMpugPTwnTI) ビデオを視聴してください。
@@ -49,7 +46,7 @@
 **2) FreeTDS:** 端末から次のコマンドを実行します。コンピューターに FreeTDS がダウンロードされます。pymmsql を動かすには FreeTDS が必要です。
 
     brew install FreeTDS
-  
+
 **3) Pymmsql**: 端末から次のコマンドを実行します。これにより、コンピューターに pymmsql がインストールされます。
 
     sudo -H pip install pymssql
@@ -126,4 +123,4 @@
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/21/2015"
+	ms.date="01/05/2016"
 	ms.author="curtand"/>
 
 # Azure AD の詳細情報
@@ -37,4 +37,4 @@ Azure Active Directory サービスに関する使用上の制約およびその
 * [Azure への組織としてのサインアップ](sign-up-organization.md)
 * [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

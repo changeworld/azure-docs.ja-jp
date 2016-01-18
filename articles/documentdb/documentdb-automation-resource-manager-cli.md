@@ -59,7 +59,7 @@ Azure リソース管理テンプレートを使用するには、職場のア�
     Enter the code E1A2B3C4D to authenticate. If you're signing in as an Azure
     AD application, use the --username and --password parameters.
 
-> [AZURE.NOTE]Azure アカウントを持っていない場合、別の種類のアカウントが必要であることを示すエラー メッセージが表示されます。現在の Azure アカウントから作成する方法については、「[Azure Active Directory で職場または学校の ID を作成する](../resource-group-create-work-id-from-personal.md)」を参照してください。
+> [AZURE.NOTE]Azure アカウントを持っていない場合、別の種類のアカウントが必要であることを示すエラー メッセージが表示されます。現在の Azure アカウントから作成する方法については、「[Azure Active Directory で職場または学校の ID を作成する](../virtual-machines/resource-group-create-work-id-from-personal.md)」を参照してください。
 
 ブラウザーで [https://aka.ms/devicelogin](https://aka.ms/devicelogin) を開き、コマンド出力で生成されたコードを入力します。
 
@@ -326,7 +326,7 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
     	azure group log show new_res_group --last-deployment
 
-    追加情報については、「[Azure のリソース グループ デプロイのトラブルシューティング](../resource-group-deploy-debug.md)」を参照してください。
+    追加情報については、「[Azure のリソース グループ デプロイのトラブルシューティング](../virtual-machines/resource-group-deploy-debug.md)」を参照してください。
 
 - 次のスクリーンショットのように、エラー情報は Azure ポータルでも確認できます。エラー情報に移動するには: ジャンプバーで [リソース グループ] をクリックし、エラーが発生したリソース グループを選択します。次に、[リソース グループ] ブレードの [Essentials] 領域で [前回のデプロイ] の日付をクリックし、[デプロイ履歴] ブレードで失敗したデプロイを選択し、[デプロイ] ブレードで赤い感嘆符が付いた [操作の詳細] 詳細をクリックします。失敗したデプロイメントの状態メッセージが [操作の詳細] ブレードに表示されます。
 
@@ -351,4 +351,4 @@ DocumentDB の詳細については、以下の資料を参照してください
 
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」を参照してください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

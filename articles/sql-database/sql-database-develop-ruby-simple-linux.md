@@ -21,10 +21,7 @@
 # Ubuntu Linux 上の Ruby を使用した SQL Database への接続
 
 
-> [AZURE.SELECTOR]
-- [Python](sql-database-develop-python-simple-ubuntu-linux.md)
-- [Node.js](sql-database-develop-nodejs-simple-linux.md)
-- [Ruby](sql-database-develop-ruby-simple-linux.md)
+[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
 このトピックでは、Ubuntu Linux クライアント コンピューター上で実行される Ruby のコード サンプルを示し、Azure SQL Database のデータベースに接続する方法について説明します。
@@ -121,4 +118,4 @@ Microsoft SQL Server の [datetime](http://msdn.microsoft.com/library/ms187819.a
     puts row
     end
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

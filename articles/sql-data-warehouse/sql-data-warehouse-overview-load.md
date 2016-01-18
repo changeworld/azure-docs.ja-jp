@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="12/17/2015"
+   ms.date="01/04/2016"
    ms.author="lodipalm;barbkess"/>
 
 # SQL Data Warehouse へのデータのロード
@@ -202,4 +202,4 @@ create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
 [Azure Storage のドキュメント]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-create-storage-account/
 [ExpressRoute に関するドキュメント]: http://azure.microsoft.com/documentation/services/expressroute/
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

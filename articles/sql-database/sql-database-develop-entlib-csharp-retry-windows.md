@@ -1,4 +1,4 @@
-<properties 
+<properties
 	pageTitle="SQL Database に接続する EntLib の再試行ロジック | Microsoft Azure"
 	description="Enterprise Library はクラウド サービスのクライアント プログラムのための多くのタスクを容易にするよう設計されています。これには、一時的な障害用の再試行ロジックの統合も含まれています。"
 	services="sql-database"
@@ -8,23 +8,19 @@
 	editor="" />
 
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="12/17/2015" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="12/17/2015"
 	ms.author="genemi"/>
 
 
 # コード サンプル: Enterprise Library 6 で提供される SQL Database に接続するための C&#x23; の再試行ロジック
 
-
-> [AZURE.SELECTOR]
-- [PHP](sql-database-develop-php-retry-windows.md)
-- [C#](sql-database-develop-csharp-retry-windows.md)
-- [C# EntLib6](sql-database-develop-entlib-csharp-retry-windows.md)
+[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
 このトピックでは、Enterprise Library (EntLib) を使用した完全なサンプル コードについて説明します。EntLib は、Azure SQL Database などのクラウド サービスとやり取りするクライアント プログラムでの多くのタスクを容易にします。このサンプルでは、一時的な障害用の再試行ロジックを含める重要なタスクに重点を置いています。
@@ -330,4 +326,4 @@ SELECT TOP 3
 
 - [SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="swkrish"
 	manager="msmbaldwin"
-	editor="curtand"/>
+	editor="bryanla"/>
 
 <tags
 	ms.service="active-directory-b2c"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/08/2015"
+	ms.date="12/22/2015"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: ページのユーザー インターフェイス (UI) カスタマイズ機能を試すために使用するヘルパー ツール
@@ -36,7 +36,7 @@ B2C テナントに、ポリシーを実行するために使用できる[アプ
 
 - [ここに](active-directory-b2c-overview.md#getting-started)一覧表示された Azure AD B2C のクイック スタート アプリケーションのいずれかを構築します。
 - ビルド済みの [Azure AD B2C プレイグラウンド](https://aadb2cplayground.azurewebsites.net) アプリケーションを使用します。プレイグラウンドを使用する場合は、**リダイレクト URI** `https://aadb2cplayground.azurewebsites.net/` を使用して B2C テナントにアプリケーションを登録する必要があります。
-- [Azure プレビュー ポータル](https://portal.azure.com)でポリシーの **[今すぐ実行]** ボタンを使用します。
+- [Azure ポータル](https://portal.azure.com)で、ポリシーの **[今すぐ実行]** ボタンを使用します。
 
 ## ポリシーをカスタマイズする
 
@@ -44,7 +44,7 @@ B2C テナントに、ポリシーを実行するために使用できる[アプ
 
 このチュートリアルでは、既にいくつかのサンプル コンテンツを作成し、Azure BLOB ストレージでホストしてあります。サンプル コンテンツは、架空の会社 "Contoso B2C" のテーマでの非常に基本的なカスタマイズです。独自のポリシーで試してみるには、次の手順を実行します。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)でテナントにサインインし、B2C 機能ブレードに移動します。
+1. [Azure ポータル](https://portal.azure.com)でテナントにサインインし、B2C 機能ブレードに移動します。
 2. **[サインアップ ポリシー]** をクリックし、作成したサインアップ ポリシー ("b2c\_1\_sign\_up" など) をクリックします。
 3. **[ページの UI のカスタマイズ]**、**[ID プロバイダーの選択ページ]** の順にクリックします。
 4. **[カスタム テンプレートを使用する]** を **[はい]** に切り替えます。**[カスタム ページの URI]** フィールドに、「`https://contosob2c.blob.core.windows.net/static/Index.html`」と入力します。**[OK]** をクリックします。
@@ -59,7 +59,7 @@ Azure BLOB ストレージを使用してページのコンテンツをホスト
 
 #### ストレージ アカウントの作成
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. **[+ 新規]**、**[データ + ストレージ]**、**[ストレージ アカウント]** の順にクリックします。Azure BLOB ストレージ アカウントを作成するには、Azure サブスクリプションが必要です。[ここ](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップできます。
 3. ストレージ アカウントの **[名前]** を指定し ("contoso" など)、適切な **[価格レベル]**、**[リソース グループ]**、**[サブスクリプション]** を選択します。**[スタート画面にピン留めする]** がオンになっていることを確認します。**[作成]** をクリックします。
 4. スタート画面に戻り、作成したストレージ アカウントをクリックします。
@@ -90,4 +90,4 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
         
 これで、**[今すぐ実行]** ボタンまたは独自のアプリケーションを使用して、ポリシーを再度実行できるようになります。どちらの場合も同じサンプルの HTML と CSS を使用したので、結果はほぼ同じになるはずです。ただし今度は、ポリシーは Azure BLOB ストレージの独自のインスタンスを参照しているので、自由にファイルを編集して再アップロードできます。HTML および CSS のカスタマイズの詳細については、[UI のカスタマイズに関するメインの記事](active-directory-b2c-reference-ui-customization.md)をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="swkrish"
 	manager="msmbaldwin"
-	editor=""/>
+	editor="bryanla"/>
 
 <tags
 	ms.service="active-directory-b2c"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/28/2015"
+	ms.date="01/06/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: アプリケーションにコンシューマーをサインアップおよびサインインする
@@ -28,7 +28,7 @@ Azure Active Directory B2C はプレビュー状態です。プレビュー期�
 
 コンシューマーのサインアップおよびサインインを受け付けるアプリケーションを作成するには、最初にアプリケーションを Azure Active Directory B2C テナントに登録する必要があります。この[記事](active-directory-b2c-get-started.md)で説明されている手順を使用して、テナントを取得します。
 
-Azure Active Directory B2C サービス対応のアプリケーションを作成するには、プロトコル メッセージを直接送信する方法、[OAuth 2.0](active-directory-b2c-protocols.md#oauth2-authorization-code-flow) または [Open ID Connect](active-directory-b2c-protocols.md#openid-connect-sign-in-flow) を使用する方法、またはライブラリを使用する方法があります (次の表で好みのプラットフォームを選択してください)。
+Azure Active Directory B2C サービス対応のアプリケーションを作成するには、プロトコル メッセージを直接送信する方法、[OAuth 2.0](active-directory-b2c-reference-protocols.md#oauth2-authorization-code-flow) または [Open ID Connect](active-directory-b2c-reference-protocols.md#openid-connect-sign-in-flow) を使用する方法、またはライブラリを使用する方法があります (次の表で好みのプラットフォームを選択してください)。
 
 [AZURE.INCLUDE [active-directory-b2c-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
 
@@ -43,7 +43,7 @@ Azure Active Directory B2C サービス対応のアプリケーションを作�
 
 Azure Active Directory B2C プレビューの特定の機能を使用する方法を理解してください。
 
-- コンシューマー向けアプリケーションで使用するアカウント ([Facebook](active-directory-b2c-setup-fb-app.md)、[Google+](active-directory-b2c-setup-goog-app.md)、[Amazon](active-directory-b2c-setup-amzn-app.md)、[LinkedIn](active-directory-b2c-setup-li-app.md)) を構成する。
+- コンシューマー向けアプリケーションで使用するアカウント ([Facebook](active-directory-b2c-setup-fb-app.md)、[Google+](active-directory-b2c-setup-goog-app.md)、[Microsoft アカウント](active-directory-b2c-setup-msa-app.md)、[Amazon](active-directory-b2c-setup-amzn-app.md)、[LinkedIn](active-directory-b2c-setup-li-app.md)) を構成する。
 - [カスタム属性を使用してコンシューマーに関する情報を収集する](active-directory-b2c-reference-custom-attr.md)。
 - [コンシューマー向けアプリケーションで Multi-factor Authentication を有効にする](active-directory-b2c-reference-mfa.md)。
 - [コンシューマー向けにセルフ サービス パスワードのリセットをセットアップする](active-directory-b2c-reference-sspr.md)。
@@ -54,7 +54,7 @@ Azure Active Directory B2C プレビューの特定の機能を使用する方�
 
 以下のリンクは、サービスの詳細を調べるのに役立ちます。
 
-- 「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c)」を参照してください。
+- 「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c)」をご覧ください。
 - [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) または [adal](http://stackoverflow.com/questions/tagged/adal) タグを使用したスタック オーバーフローの対処法についてのヒントが得られます。
 - [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) を使用して、プレビューに関する感想をお寄せください。皆様からのご意見をお待ちしております。 識別しやすいように、投稿のタイトルに "AzureADB2C:" という言葉を入れてください。
 - Azure Active Directory B2C は、"App Model v2.0" と呼ばれるアプリケーション登録モデルを使用して、業界標準のプロトコル (OpenID Connect、OAuth 2.0) をサポートします。
@@ -63,4 +63,4 @@ Azure Active Directory B2C プレビューの特定の機能を使用する方�
 - [Azure Active Directory B2C の FAQ](active-directory-b2c-faqs.md)
 - [Azure Active Directory B2C に対するサポート要求の提出](active-directory-b2c-support.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0107_2016-->

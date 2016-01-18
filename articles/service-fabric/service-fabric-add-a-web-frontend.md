@@ -107,6 +107,10 @@ Service Fabric は、Reliable Services との通信方法において完全な�
 2. `StatefulService` を継承するクラスを探し (`MyStatefulService` など)、それを拡張して `ICounter` インターフェイスを実装します。
 
     ```c#
+    using MyStatefulService.Interfaces;
+
+    ...
+
     public class MyStatefulService : StatefulService, ICounter
     {        
           // ...
@@ -136,9 +140,13 @@ Service Fabric は、Reliable Services との通信方法において完全な�
 
 >[AZURE.NOTE]ステートレス サービスへの通信チャネルを開く同等のメソッドは、`CreateServiceInstanceListeners` という名前です。
 
-ここで提供する `ServiceRemotingListener` は、`ServiceProxy` を使用してクライアントから呼び出すことができる RPC エンドポイントを作成します。
+この場合、既存の `CreateServiceReplicaListeners` メソッドを置換し、`ServiceRemotingListener` を提供します。これは `ServiceProxy` を使用してクライアントから呼び出すことができる RPC エンドポイントを作成します。
 
 ```c#
+using Microsoft.ServiceFabric.Services.Remoting.Runtime;
+
+...
+
 protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
 {
     return new List<ServiceReplicaListener>()
@@ -162,6 +170,11 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 3. Controllers フォルダーで `ValuesController` クラスを開きます。現状では、`Get` メソッドはハード コーディングされた文字配列 "value1" と "value2" を返すだけであることに注意してください。これらは、先にブラウザーで見たものと一致します。この実装を次のコードに置き換えます。
 
     ```c#
+    using MyStatefulService.Interfaces;
+    using Microsoft.ServiceFabric.Services.Remoting.Client;
+
+    ...
+
     public async Task<IEnumerable<string>> Get()
     {
         ICounter counter =
@@ -194,7 +207,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 このチュートリアルではステートフル サービスと通信する Web フロントエンドの追加に注目しましたが、非常によく似たモデルに従ってアクターと対話できます。実際にはもう少し簡単です。
 
-アクター プロジェクトを作成すると、Visual Studio によってインターフェイス プロジェクトが自動的に生成されます。そのインターフェイスを使用して Web プロジェクトでアクター プロキシを生成し、アクターと通信できます。通信チャネルは自動的に提供されるので、このチュートリアルでステートフル サービスに関して行った `ServiceRemotingListener` の確立に相当するようなことは何も行う必要がありません。
+アクター プロジェクトを作成すると、Visual Studio によってインターフェイス プロジェクトが自動的に生成されます。そのインターフェイスを使用して Web プロジェクトでアクター プロキシを生成し、アクターと通信できます。通信チャネルは自動的に提供されるので、このチュートリアルでステートフル サービスに関して行ったような `ServiceRemotingListener` の確立に相当するようなことは何も行う必要がありません。
 
 ## ローカル クラスターでの Web サービスの実行
 
@@ -221,4 +234,4 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

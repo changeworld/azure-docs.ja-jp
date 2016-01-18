@@ -3,6 +3,7 @@
    description="リソース マネージャーのデプロイ モデルを使用して作成したリソースのデプロイ時の一般的な問題、およびこれらの問題を検出および修正する方法について説明します。"
    services="azure-resource-manager,virtual-machines"
    documentationCenter=""
+   tags="top-support-issue"
    authors="tfitzmac"
    manager="wpickett"
    editor=""/>
@@ -13,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-multiple"
    ms.workload="infrastructure"
-   ms.date="10/14/2015"
+   ms.date="01/06/2016"
    ms.author="tomfitz;rasquill"/>
 
 # Azure でのリソース グループのデプロイのトラブルシューティング
@@ -433,4 +434,4 @@ PowerShell には、同じ手順を実行するいくつかの基本的なコマ
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

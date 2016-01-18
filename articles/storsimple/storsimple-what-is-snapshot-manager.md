@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="10/12/2015"
+   ms.date="01/04/2016"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager について
@@ -25,6 +25,8 @@ StorSimple Snapshot Manager は、Microsoft Azure StorSimple 環境でのデー�
 
 StorSimple デバイス、StorSimple Manager サービス、StorSimple Snapshot Manager、SharePoint 用 StorSimple アダプターを含む Microsoft Azure StorSimple システム全体の概要については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」を参照してください。
  
+>[AZURE.NOTE]StorSimple Snapshot Manager を使用して、Microsoft Azure StorSimple Virtual Array (別名 StorSimple オンプレミス仮想デバイス) を管理することはできません。
+
 ## StorSimple Snapshot Manager の目的とアーキテクチャ
 
 StorSimple Snapshot Manager は、ローカルとクラウドのデータについて、特定の時点の整合性のあるバックアップ コピーを作成できる中央管理コンソールです。たとえば、このコンソールを使用して次の操作を実行できます。
@@ -150,4 +152,4 @@ StorSimple Snapshot Manager を使用して、今後予定されているバッ�
 
 - [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) をダウンロードする。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

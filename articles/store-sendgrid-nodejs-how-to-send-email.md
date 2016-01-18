@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="08/31/2015" 
+	ms.date="01/05/2016" 
 	ms.author="erikre"/>
 # SendGrid を使用して Node.js から電子メールを送信する方法
 
@@ -188,4 +188,4 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
   [クラウドベースの電子メール サービス]: https://sendgrid.com/email-solutions
   [トランザクション電子メール配信]: https://sendgrid.com/transactional-email
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

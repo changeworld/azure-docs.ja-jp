@@ -13,12 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="12/11/2015"
+   ms.date="01/05/2016"
    ms.author="nitinme"/>
 
 # Azure Storage BLOB から Data Lake Store へのデータのコピー
 
-Azure Data Lake Store には、[AdlCopy](http://aka.ms/downloadadlcopy) というコマンド ライン ツールがあります。このツールを使用すると、Azure Storage Blob のデータを Data Lake Store にコピーできます。ツールには 2 つの使用方法があります。
+Azure Data Lake Store には、[AdlCopy](http://aka.ms/downloadadlcopy) というコマンド ライン ツールがあります。このツールを使用すると、**Azure Storage BLOB のデータを Data Lake Store に**コピーできます。AdlCopy を使用して Data Lake Store のデータを Azure Storage BLOB にコピーすることはできません。
+
+AdlCopy ツールには 2 つの使用方法があります。
 
 * **スタンドアロン**。Data Lake Store リソースを使用してタスクを実行する方法です。
 * **Data Lake Analytics アカウントの使用**。Data Lake Analytics アカウントに割り当てられているユニットを使用して、コピー操作を実行する方法です。予測可能な方法でコピー操作を実行したい場合は、このオプションを利用できます。
@@ -68,9 +70,12 @@ AdlCopy ツールを操作するには、次の構文を使用します。
 		Initializing Copy.
 		Copy Started.
 		...............
-		The total progress of copy operation is 0.00%.
+		0.00% data copied.
 		. . .
-		The total progress of copy operation is 100.00%.
+		. . .
+		100% data copied.
+		Finishing copy.
+		....
 		Copy Completed.
 
 1. また、あるコンテナーのすべての BLOB を Data Lake Store アカウントにコピーするには、次のコマンドも使用できます。
@@ -103,10 +108,14 @@ Data Lake Analytics アカウントと AdlCopy を使用するには、ソース
 
 * Data Lake Analytics アカウントで AdlCopy ツールを使用する場合、標準の [Data Lake Analytics 料金](https://azure.microsoft.com/pricing/details/data-lake-analytics/)が適用されます。
 
+## AdlCopy の使用に関する注意点
+
+* AdlCopy では、1000 以上のファイルとフォルダーをまとめたソースからのデータのコピーをサポートしていません。別の方法として、異なるサブフォルダーにファイルやフォルダーを分散し、代わりにソースとしてこれらのサブフォルダーへのパスを使用します。
+
 ## 次のステップ
 
 - [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 - [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

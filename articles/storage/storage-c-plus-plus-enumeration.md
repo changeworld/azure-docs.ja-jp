@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="09/23/2015" 
+    ms.date="01/05/2016" 
     ms.author="zhimingyuan;tamram"/>
 
 # C++ での Azure Storage のリソース一覧の取得
@@ -184,4 +184,4 @@ Azure Storage および C++ 用クライアント ライブラリの詳細につ
 -	[Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 -	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

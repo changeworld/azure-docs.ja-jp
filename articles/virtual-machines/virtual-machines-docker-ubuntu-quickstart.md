@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure"
-	ms.date="10/04/2015"
+	ms.date="01/04/2016"
 	ms.author="rasquill"/>
 
 # Azure Marketplace で Docker をすばやく開始する方法
@@ -25,7 +25,7 @@
 
 すぐに SSH で VM を接続し、そのまま直接 Docker で作業を始められます。
 
-> [AZURE.NOTE]Azure Marketplace テンプレートで作成された VM は、リモートの Docker クライアントによる管理目的の Docker リモート API をホストしません。リモートでこの VM の Docker ホストの管理を有効にするには、[HTTPS による Docker の実行](https://docs.docker.com/articles/https/)に関するページを参照するか、「[Azure クラシック ポータルでの Docker VM 拡張機能の使用](virtual-machines-docker-with-portal.md)」または「[Azure CLI での Docker VM 拡張機能の使用](virtual-machines-docker-with-xplat-cli-install.md)」の手順に従ってください。<!-- --> Windows からの Azure Docker VM を自動化する場合は、[Docker ツールボックスをインストール](https://docs.docker.com/installation/windows/)するか、[Chocolatey から](https://chocolatey.org/packages/docker) Docker.exe を取得してください。
+> [AZURE.NOTE]Azure Marketplace テンプレートで作成された VM は、リモートの Docker クライアントによる管理目的の Docker リモート API をホストしません。リモートでこの VM の Docker ホストの管理を有効にするには、[HTTPS による Docker の実行](https://docs.docker.com/articles/https/)に関するページを参照するか、「[Azure クラシック ポータルでの Docker VM 拡張機能の使用](virtual-machines-docker-with-portal.md)」または「[Azure CLI での Docker VM 拡張機能の使用](virtual-machines-docker-with-xplat-cli.md)」の手順に従ってください。<!-- --> Windows からの Azure Docker VM を自動化する場合は、[Docker ツールボックスをインストール](https://docs.docker.com/installation/windows/)するか、[Chocolatey から](https://chocolatey.org/packages/docker) Docker.exe を取得してください。
 
 ## ポータルへのログオン
 
@@ -78,4 +78,4 @@ Docker コマンドの発行を開始しますが、この Azure VM では既定
 [MSOpenTech]: http://msopentech.com/
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

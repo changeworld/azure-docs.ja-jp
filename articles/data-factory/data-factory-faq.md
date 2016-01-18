@@ -74,7 +74,7 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 
 - **Azure ポータル**Azure ポータルの Data Factory ブレードは、データ ファクトリ、およびリンクされたサービスを作成するための優れたユーザー インターフェイスです。**Data Factory エディター**は、ポータルの一部でもあり、これらの成果物の JSON の定義を指定することによって、リンクされたサービス、テーブル、データ セット、パイプラインを簡単に作成できる機能です。エディターの概要については、[Data Factory エディター][data-factory-editor]に関するページを、データ ファクトリを作成してデプロイするためのポータルやエディターの使用例については、[Data Factory の使用][datafactory-getstarted]に関するページをご覧ください。   
 - **Azure PowerShell**PowerShell ユーザーがポータル UI ではなく PowerShell の使用を希望している場合は、Azure PowerShell の一部として出荷される Azure Data Factory コマンドレットを使用してデータ ファクトリを作成し、デプロイできます。単純な例については、[Azure PowerShell を使用した Azure データ ファクトリの作成と監視][create-data-factory-using-powershell]に関するページをご覧ください。PowerShell コマンドレットを使用してデータ ファクトリを作成してデプロイする高度な例については、[Data Factory を使用したログ ファイルの移動と処理][adf-tutorial]に関するチュートリアルをご覧ください。Data Factory コマンドレットの包括的なドキュメントについては、[MSDN ライブラリの Data Factory コマンドレット リファレンス][adf-powershell-reference]に関するコンテンツをご覧ください。  
-- **Visual Studio**。また、Visual Studio を使用して、プログラムによりデータ ファクトリを作成、監視、管理できます。詳細については、記事「[Data Factory .NET SDK を使用して Azure データ ファクトリを作成、監視、管理する](data-factory-create-data-factories-programmatically)」を参照してください。  
+- **Visual Studio**。また、Visual Studio を使用して、プログラムによりデータ ファクトリを作成、監視、管理できます。詳細については、記事「[Data Factory .NET SDK を使用して Azure データ ファクトリを作成、監視、管理する](data-factory-create-data-factories-programmatically.md)」を参照してください。  
 - **.NET クラス ライブラリ**。Data Factory .NET SDK を使用すると、プログラムでデータ ファクトリを作成できます。.NET SDK を使用したデータ ファクトリの作成のチュートリアルについては、[.NET SDK を使用したデータ ファクトリの作成、監視、管理][create-factory-using-dotnet-sdk]に関するページをご覧ください。Data Factory .NET SDK の包括的なドキュメントについては、[Data Factory クラス ライブラリ リファレンス][msdn-class-library-reference]に関するページをご覧ください。  
 - **REST API**。Azure Data Factory サービスで公開されている REST API を使用して、データ ファクトリを作成およびデプロイすることもできます。Data Factory REST API の包括的なドキュメントについては、[Data Factory REST API リファレンス][msdn-rest-api-reference]に関するページをご覧ください。 
 
@@ -153,8 +153,6 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 
 
 
-[image-rerun-slice]: ./media/data-factory-faq/rerun-slice.png
-
 [adfgetstarted]: data-factory-get-started.md
 [adf-introduction]: data-factory-introduction.md
 [adf-troubleshoot]: data-factory-troubleshoot.md
@@ -177,4 +175,4 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="12/03/2015"
+   ms.date="01/04/2015"
    ms.author="larryfr"/>
 
 #HDInsight での Hive View と Hadoop の使用
@@ -35,7 +35,7 @@ Azure ポータルから Ambari ビューを表示するには、HDInsight ク�
 
 ![quick links section](./media/hdinsight-hadoop-use-hive-ambari-view/quicklinks.png)
 
-また、Ambari に直接移動することもできます。そのためには、Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net (ここで、__CLUSTERNAME__ は HDInsight クラスターの名前) に移動し、ページ メニューの (ページの左側の __[Admin]__ リンク ボタンの横にある) 四角形のセットを選択して使用可能なビューの一覧を表示します。__[Hive View]__ を選択します。
+また、Ambari に直接移動することもできます。そのためには、Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net (ここで、__CLUSTERNAME__ は HDInsight クラスターの名前) に移動し、ページ メニューの (ページの左側の __[Admin]__ リンク ボタンの横にある) 四角形のセットを選択して使用可能なビューの一覧を表示します。__[Hive view]__ を選択します。
 
 ![Selecting ambari views](./media/hdinsight-hadoop-use-hive-ambari-view/selecthiveview.png)
 
@@ -117,7 +117,7 @@ Settings では、Hive の実行エンジンを Tez (既定値) から MapReduce
 
 ![icons](./media/hdinsight-hadoop-use-hive-ambari-view/visualexplainicon.png)
     
-これが、クエリの __[Visual Explain]__ ビューです。このビューは、複雑なクエリのフローを理解するうえで役に立ちます。クエリ エディターの __[Explain]__ ボタンを使用して、このビューに対応するテキストを表示できます。
+これは、クエリの __[Visual Explain]__ ビューです。このビューは、複雑なクエリのフローを理解する際に役立ちます。クエリ エディターの __[Explain]__ ボタンを使用して、このビューに対応するテキストを表示できます。
 
 ![visual explain image](./media/hdinsight-hadoop-use-hive-ambari-view/visualexplain.png)
 
@@ -199,4 +199,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

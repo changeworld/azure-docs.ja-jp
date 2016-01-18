@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="ロジック アプリの機能を使用する" 
+	pageTitle="Logic Apps の機能を使用する |Microsoft Azure" 
 	description="ロジック アプリの高度な機能の使用方法について説明します。" 
 	authors="stepsic-microsoft-com" 
 	manager="dwrede" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/15/2015"
+	ms.date="01/04/2016"
 	ms.author="stepsic"/>
 	
 # Logic Apps の機能を使用する
@@ -49,15 +49,15 @@
 
 3. 歯車アイコンをクリックし、**[リストに対して繰り返す]** を選択します。
  
-2. **[繰り返し]** ボックスの横にある `...` をクリックして、**[本文]** を選択します。次の内容が入力されます。
+2. **[繰り返し]** ボックスの横にある [`...`] をクリックし、**[本文]** を選択します。次のように入力されます。
 
     	@body('twitterconnector')
 
 	入力先はテキスト ボックスです。この関数はツイートの一覧を出力します。
 
-3. **[コンテンツ]** ボックスのテキストすべてを選択して削除します。次に、`...` をクリックして、**[ツイートのテキスト]** を選択します。これによって、一覧の各要素を返す **repeatItem()** 関数が挿入されます。
+3. **[コンテンツ]** ボックスのテキストすべてを選択して削除します。次に、`...` をクリックして、**[ツイートのテキスト]** を選択します。これにより、一覧の各要素を返す **repeatItem()** 関数が挿入されます。
 
-最後に、繰り返しのアクションの出力が特別である点に注意してください。たとえば、Dropbox 操作の結果を参照する場合、通常の `@actions('dropboxconnector').outputs.body` は実行*できません*。代わりに、`@actions('dropboxconnector').outputs.repeatItems` を実行します。これは、それぞれの出力と、操作を実行した時間をすべて一覧で返します。たとえば、`@first(actions('dropboxconnector').outputs.repeatItems).outputs.body.FilePath` はアップロードされた最初のファイルのパスを返します。
+最後に、繰り返しのアクションの出力が特別である点に注意してください。たとえば、Dropbox 操作の結果を参照する場合、通常の `@actions('dropboxconnector').outputs.body` は実行できません。代わりに、`@actions('dropboxconnector').outputs.repeatItems` を実行します。これは、それぞれの出力と、操作を実行した時間をすべて一覧で返します。たとえば、`@first(actions('dropboxconnector').outputs.repeatItems).outputs.body.FilePath` はアップロードされた最初のファイルのパスを返します。
 
 ### 条件付き
 このロジック アプリによって、Dropbox に大量のファイルもアップロードされます。次の手順では、ロジックを追加して、特定の回数リツイートされたツイートのみを受信するようにします。
@@ -143,4 +143,4 @@ Logic App 定義の詳細については、[「Author Logic App definitions (Log
 [新しいロジック アプリを作成する]: app-service-logic-create-a-logic-app.md
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0107_2016-->

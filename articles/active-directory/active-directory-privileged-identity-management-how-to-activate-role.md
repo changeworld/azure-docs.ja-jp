@@ -20,8 +20,8 @@
 
 ## ロールのアクティブ化または非アクティブ化
 
-1. [http://portal.azure.com](http://portal.azure.com) にログインします。
-2. 「[Getting Started with Azure Privileged Identity Management (Azure Privileged Identity Management の概要)](active-directory-privileged-identity-management-getting-started.md)」の手順に従って、Azure PIM をポータル ダッシュボードに配置します。
+1. [Azure ポータル](http://portal.azure.com)にログインします。
+2. 「[Azure Privileged Identity Management の使用](active-directory-privileged-identity-management-getting-started.md)」の手順に従って、Azure PIM を Azure ポータル ダッシュボードに配置します。
 3. セキュリティ ウィザードの手順が完了すると、Azure PIM のメイン メニューが表示されます。
 4. **[ロールのアクティブ化]** をクリックします。
 5. 割り当てられているロールの一覧が表示されます。
@@ -38,4 +38,4 @@
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

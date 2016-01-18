@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Privileged Identity Managment の各種操作の目次"
-   description="Azure Privileged Identity Management 拡張機能を使用して特権 IDを管理する方法について説明します。"
+   pageTitle="Azure Privileged Identity Management の各種操作の目次"
+   description="Azure Privileged Identity Management 拡張機能を使用して特権 ID を管理する方法について説明します。"
    services="active-directory"
    documentationCenter=""
    authors="IHenkel"
@@ -23,8 +23,8 @@
 1.  Azure Active Directory 内にディレクトリを作成します。
 2.  Azure Active Directory にユーザーを追加します。
 3.  ディレクトリ内に数名のグローバル管理者を作成します。
-4.  <http://portal.azure.com> にグローバル管理者アカウントでログインします。
-5.  ポータルの左上にある **[ユーザー名]** をクリックします。
+4.  グローバル管理者アカウントを使用して、[Azure ポータル](http://portal.azure.com)にログインします。
+5.  Azure ポータルの左上にある **[ユーザー名]** をクリックします。
 6.  先ほど作成した**ディレクトリ**を選択します。
 7.  左側のナビゲーションの **[新規]** アイコンをクリックします。
 8.  [作成] メニューから **[セキュリティ + ID]** 選択します。
@@ -35,4 +35,4 @@
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/07/2015" 
+	ms.date="01/05/2016" 
 	ms.author="tamram"/>
 
 # Microsoft Azure Storage の概要
@@ -64,17 +64,17 @@ Azure は、まず[無料試用版](http://azure.microsoft.com/pricing/free-tria
 Standard Storage アカウントでは、BLOB ストレージ、テーブル ストレージ、キュー ストレージ、およびファイル ストレージにアクセスできます。
 
 - **Blob Storage** には、ファイル データが格納されます。ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを BLOB として保存できます。Blob Storage は、オブジェクト ストレージとも呼ばれます。 
-- **テーブル ストレージ**には、構造型データセットが格納されます。テーブル ストレージは、NoSQL キー属性データ ストアであるため、開発が迅速化され、大量のデータにすばやくアクセスできます。
+- **Table Storage** には、構造型データセットが格納されます。テーブル ストレージは、NoSQL キー属性データ ストアであるため、開発が迅速化され、大量のデータにすばやくアクセスできます。
 - **Queue Storage** は、ワークフロー処理およびクラウド サービスのコンポーネント間通信のための、信頼性の高いメッセージング機能を提供します。
 - **File Storage** は、標準的な SMB プロトコルを使用して、レガシ アプリケーション用の共有ストレージを提供します。Azure の仮想マシンおよびクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。オンプレミスのアプリケーションでは、ファイル サービス REST API を介して、共有内のファイル データにアクセスできます。 
 
-各 Standard Storage アカウントには、最大 500 TB の BLOB (異なる種類のデータの組み合わせが可能)、キュー、テーブル、ファイルのデータを格納できます。Standard Storage アカウントの容量の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」をご覧ください。
+各 Standard Storage アカウントには、最大 500 TB の BLOB (異なる種類のデータの組み合わせが可能)、キュー、テーブル、ファイルのデータを格納できます。標準ストレージ アカウントの容量の詳細については、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」をご覧ください。
 
 以下の図は、Standard Storage アカウントにおける Azure Storage のリソース間の関係を示したものです。
 
 ![Azure Storage のリソース](./media/storage-introduction/storage-concepts.png)
 
-Standard Storage アカウントの作成方法の詳細については、[ストレージ アカウントの作成、管理、削除](storage-create-storage-account.md)に関するページをご覧ください。
+標準ストレージ アカウントの作成方法の詳細については、[ストレージ アカウントの作成、管理、削除](storage-create-storage-account.md)に関するページをご覧ください。
 
 ### Premium Storage アカウント
 
@@ -143,7 +143,7 @@ Azure File ストレージはクラウド ベースの SMB ファイル共有を
 
 最後に、コンテナーとそれに含まれるすべての BLOB、または特定の BLOB をパブリック アクセスで使用できるように指定できます。コンテナーまたは BLOB をパブリックとして指定すると、認証が不要になり、すべてのユーザーが匿名でリソースを読み取ることができます。パブリック コンテナーと BLOB は、Web サイトでホストされているメディアやドキュメントなどのリソースを公開する場合に便利です。グローバル ユーザーのネットワーク待ち時間を短縮するために、Web サイトで使用される BLOB データを Azure CDN によってキャッシュできます。
 
-ストレージ アカウントへのセキュリティで保護されたアクセスの詳細については、「[Microsoft Azure Storage リソースへのアクセスの管理](storage-manage-access-to-resources.md)」および「[Azure Storage サービスの認証](https://msdn.microsoft.com/library/azure/dd179428.aspx)」をご覧ください。
+ストレージ アカウントへのセキュリティで保護されたアクセスの詳細については、「[Microsoft Azure ストレージ リソースへのアクセスの管理](storage-manage-access-to-resources.md)」および「[Azure ストレージ サービスの認証](https://msdn.microsoft.com/library/azure/dd179428.aspx)」をご覧ください。
 
 ## レプリケーションによる持続性と高可用性
 
@@ -200,7 +200,7 @@ Azure Storage を導入するには、次のリソースを参照してくださ
 
 - [.NET クライアント ライブラリ リファレンス](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
 - [.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)
-- [.NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md)
+- [.NET から Table Storage を使用する方法](storage-dotnet-how-to-use-tables.md)
 - [.NET からキュー ストレージを使用する方法](storage-dotnet-how-to-use-queues.md)
 - [PowerShell と .NET で File ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
 
@@ -236,4 +236,4 @@ Azure Storage を導入するには、次のリソースを参照してくださ
 - [Python からキュー ストレージを使用する方法](storage-python-how-to-use-queue-storage.md)
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

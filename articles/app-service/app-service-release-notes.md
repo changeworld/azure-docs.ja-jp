@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="09/30/2015"
+   ms.date="01/03/2016"
    ms.author="juliako"/>
 
 
@@ -68,4 +68,4 @@ Azure SDK for .NET 2.5.1 の新機能と更新点を以下に示します。
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/15/2015"
+   ms.date="01/04/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用してボリュームを管理する (Update 2)
@@ -108,7 +108,7 @@ StorSimple ボリュームは、次のいずれかです。
 
 3. ページの下部にある **[追加]** をクリックします。ボリュームの追加ウィザードが起動されます。
 
-     ![ボリュームの追加ウィザードの基本設定](./media/storsimple-manage-volumes-u2/AddVolume1.png)
+     ![ボリュームの追加ウィザードの基本設定](./media/storsimple-manage-volumes-u2/TieredVolEx.png)
 
 4. ボリュームの追加ウィザードの **[基本設定]** で、次の操作を行います。
 
@@ -117,22 +117,19 @@ StorSimple ボリュームは、次のいずれかです。
   3. 手順 2. で **[階層化]** を選択した場合は、アーカイブ ボリュームを構成するために、**[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにすることができます。
   4. **[プロビジョニング容量]** に、ボリュームのプロビジョニング容量を GB または TB 単位で入力します。デバイスとボリュームの種類ごとの最大サイズについては、「[プロビジョニング容量](#provisioned-capacity)」を参照してください。デバイスで実際に使用できる記憶域の容量を判断するには、**[利用可能な容量]** を確認します。
 
-    ローカル固定ボリュームを構成している場合は、次のメッセージが表示されます。
+5. 矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png) をクリックします。ローカル固定ボリュームを構成している場合は、次のメッセージが表示されます。
 
-    ![ボリュームのメッセージ型の変更](./media/storsimple-manage-volumes-u2/LocalVolMessage.png)
-
-    次のページが表示されます。
+    ![ボリュームのメッセージ型の変更](./media/storsimple-manage-volumes-u2/LocalVolEx.png)
+   
+5. 矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png) を再びクリックして、**[追加設定]** ページに移動します。
 
     ![ボリュームの追加ウィザードの追加設定](./media/storsimple-manage-volumes-u2/AddVolume2.png)<br>
-   
-5. 矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png) をクリックして **[追加設定]** ページに移動します。
 
 6. **[追加設定]** で、新しいアクセス制御レコード (ACR) を追加します。
   
-  1. ドロップダウン リストで、アクセス制御レコード (ACR) を選択します。また、新しい ACR を追加することもできます。ACR は、ホストの IQN をレコードに記載されている IQN と照合することによって、ボリュームにアクセスできるホストを判定します。ACR を指定しない場合は、次のメッセージが表示されます。
+  1. ボックスの一覧で、アクセス制御レコード (ACR) を選択します。また、新しい ACR を追加することもできます。ACR は、ホストの IQN をレコードに記載されている IQN と照合することによって、ボリュームにアクセスできるホストを判定します。ACR を指定しない場合は、次のメッセージが表示されます。
 
         ![Specify ACR](./media/storsimple-manage-volumes-u2/SpecifyACR.png)
-
 
   2. **[このボリュームの既定のバックアップの有効化]** チェック ボックスをオンにすることをお勧めします。
   3. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-volumes-u2/HCS_CheckIcon.png) をクリックして、指定した設定でボリュームを作成します。
@@ -211,13 +208,11 @@ StorSimple ボリュームは、次のいずれかです。
     - 種類を **[ローカル固定]** に変更する場合は、十分な容量があるかどうかを StorSimple が確認します。
     - 種類を **[階層化]** に変更し、このボリュームをアーカイブ データ用に使用する場合は、**[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにします。
 
-    ![[アーカイブ] チェックボックス](./media/storsimple-manage-volumes-u2/ModifyVolume1.png)
+        ![[アーカイブ] チェックボックス](./media/storsimple-manage-volumes-u2/ModifyTieredVolEx.png)
 
-5. **[追加設定]** ページに移動するには、矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png) をクリックしてください。
+5. **[追加設定]** ページに移動するには、矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png) をクリックしてください。ローカル固定ボリュームを構成している場合は、次のメッセージが表示されます。
 
-    次のメッセージが表示されます。
-
-    ![ボリュームのメッセージ型の変更](./media/storsimple-manage-volumes-u2/TypeChangeMessage.png)
+    ![ボリュームのメッセージ型の変更](./media/storsimple-manage-volumes-u2/ModifyLocalVolEx.png)
 
 6. もう一度矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png) をクリックして続行します。
 
@@ -282,8 +277,6 @@ StorSimple ボリュームは、次のいずれかです。
 
 5. ボリュームの変更ウィザードの **[基本設定]** で、**[監視]** ボックスの一覧の **[有効]** または **[無効]** を選択します。
 
-    ![[アーカイブ] チェックボックス](./media/storsimple-manage-volumes-u2/ModifyVolume1.png)
-
 ## 次のステップ
 
 - [StorSimple ボリュームを複製する](storsimple-clone-volume.md)方法について説明します。
@@ -291,4 +284,4 @@ StorSimple ボリュームは、次のいずれかです。
 
  
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

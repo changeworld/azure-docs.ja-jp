@@ -21,13 +21,7 @@
 # Windows 上で JDBC を含む Java を使用して、SQL Database に接続する
 
 
-> [AZURE.SELECTOR]
-- [C#](sql-database-develop-dotnet-simple.md)
-- [PHP](sql-database-develop-php-simple-windows.md)
-- [Python](sql-database-develop-python-simple-windows.md)
-- [Ruby](sql-database-develop-ruby-simple-windows.md)
-- [Java](sql-database-develop-java-simple-windows.md)
-- [Node.js](sql-database-develop-nodejs-simple-windows.md)
+[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
 このトピックでは、Azure SQL Database への接続に使用できる Java コード サンプルについて説明します。Java サンプルは、Java Development Kit (JDK) バージョン 1.8 に依存します。サンプルは、JDBC ドライバーを使用して、Azure SQL Database に接続されます。
@@ -234,4 +228,4 @@ Java サンプル コードの全体について説明します。後続のセ�
 
 詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

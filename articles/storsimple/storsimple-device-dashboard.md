@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/15/2015"
+   ms.date="12/30/2015"
    ms.author="alkohli" />
 
 # StorSimple Manager デバイス ダッシュボードを使用する
@@ -21,7 +21,7 @@
 
 StorSimple Manager デバイス ダッシュボードでは、Microsoft Azure StorSimple ソリューションに含まれるすべてのデバイスの情報を確認できるサービス ダッシュボードとは対照的に、特定の StorSimple デバイスの概要情報を確認できます。
 
-![デバイス ダッシュボードのページ](./media/storsimple-device-dashboard/HCS_DeviceDashboardPage.png)
+![デバイス ダッシュボードのページ](./media/storsimple-device-dashboard/StorSimple_DeviceDashbaord1M.png)
 
 ダッシュボードには次の情報が含まれています。
 
@@ -100,4 +100,4 @@ StorSimple デバイスでチャレンジ ハンドシェイク認証プロト�
 - [StorSimple Manager サービスのダッシュボードの詳細](storsimple-service-dashboard.md)
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

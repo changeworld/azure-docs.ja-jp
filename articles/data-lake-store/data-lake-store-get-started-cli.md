@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="11/13/2015"
+   ms.date="01/04/2016"
    ms.author="nitinme"/>
 
 # Azure コマンド ラインを使用して Azure Data Lake Store の使用を開始する
@@ -91,7 +91,7 @@ Azure Data Lake Store アカウントにフォルダーを作成し、データ�
 
 データは、ルート レベルで直接 Data Lake Store に、またはアカウント内で作成したフォルダーにアップロードできます。以下のスニペットは、前のセクションで作成したフォルダー (**mynewfolder**) にいくつかのサンプル データをアップロードする方法を示します。
 
-アップロードするサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/AzureDataLake/tree/master/SQLIPSamples/SampleData/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。ファイルをダウンロードし、C:\\sampledata など、コンピューター上のローカル ディレクトリに格納します。
+アップロードするサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。ファイルをダウンロードし、C:\\sampledata など、コンピューター上のローカル ディレクトリに格納します。
 
 	azure datalake store filesystem import <dataLakeStoreAccountName> "<source path>" "<destination path>"
 
@@ -193,4 +193,4 @@ Data Lake Store アカウントを削除するには、次のコマンドを使�
 
 [azure-command-line-tools]: ../xplat-cli-install.md
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

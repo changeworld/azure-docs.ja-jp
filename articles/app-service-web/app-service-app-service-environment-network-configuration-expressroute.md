@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/23/2015" 
+	ms.date="01/05/2016" 
 	ms.author="stefsch"/>
 
 # ExpressRoute を使用した App Service 環境のネットワーク構成の詳細 
@@ -30,7 +30,7 @@ ExpressRoute に接続された仮想ネットワークでは最初は満たさ�
 
 
 -  世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続これには、App Service Environment と同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。  
--  App Service Environment と同じリージョンにある Sql DB エンドポイントに対する発信ネットワーク接続。SQL DB エンドポイントは、次のドメインで解決されます: *database.windows.net*。
+-  App Service Environment と同じリージョンにある Sql DB エンドポイントに対する発信ネットワーク接続。SQL DB エンドポイントは、*database.windows.net* ドメインで解決されます。
 -  Azure 管理プレーン エンドポイント (ASM エンドポイントと ARM エンドポイントの両方) に対する発信ネットワーク接続これには、*management.core.windows.net* と *management.azure.com* の両方に対する発信接続が含まれます。 
 -  *ocsp.msocsp.com* への送信ネットワーク接続これは、SSL 機能をサポートするために必要です。
 -  仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。これらのエンドポイントを解決できない場合、App Service Environment の作成処理に失敗し、既存の App Service Environment は異常とマークされます。
@@ -137,4 +137,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

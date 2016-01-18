@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="10/12/2015" 
+	ms.date="01/05/2016" 
 	ms.author="robmcm"/>
 
 # Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
@@ -177,4 +177,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   [ストレージ アカウントの作成方法]: http://go.microsoft.com/fwlink/?LinkId=279823
   [Meet Hudson (Hudson について)]: http://wiki.eclipse.org/Hudson-ci/Meet_Hudson
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

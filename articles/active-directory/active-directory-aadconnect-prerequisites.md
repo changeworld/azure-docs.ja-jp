@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure AD Connect: 前提条件とハードウェア |Microsoft Azure"
-   description="ランディング ページやほとんどの検索結果に表示されるアーティクルの説明"
+   description="このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。"
    services="active-directory"
    documentationCenter=""
    authors="andkjell"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="11/16/2015"
+   ms.date="12/28/2015"
    ms.author="andkjell;billmath"/>
 
 # Azure AD Connect の前提条件
@@ -22,34 +22,31 @@
 ## Azure AD Connect をインストールする前に
 Azure AD Connect をインストールする前に、いくつか必要な項目があります。
 
-**Azure AD**
-
+### Azure AD
 - Azure サブスクリプションまたは [Azure 試用版サブスクリプション](http://azure.microsoft.com/pricing/free-trial/)。Azure ポータルへのアクセスにのみ必要です。Azure AD Connect の使用には不要です。PowerShell または Office 365 を使用している場合は、Azure サブスクリプションがなくても Azure AD Connect を使用できます。Office 365 ライセンスを持っている場合は、Office 365 ポータルも使用できます。有料の Office 365 ライセンスを使用して、Office 365 ポータルから Azure ポータルにアクセスすることもできます。
 - Azure AD で使用する予定の[ドメインを追加して検証](active-directory-add-domain.md)します。たとえばユーザー向けに contoso.com を使用する予定の場合は、そのドメインが検証されていること、および使用しているのドメインが既定のドメインである contoso.onmicrosoft.com だけではないことを確認します。
 - Azure AD ディレクトリでは、既定で 50,000個のオブジェクトが許可されます。ドメインを検証すると、制限が 300,000 個のオブジェクトに増加します。Azure AD でさらに多くのオブジェクトが必要な場合は、制限をさらに増加させるサポート ケースを開く必要があります。500,000 個を超えるオブジェクトが必要な場合は、Office 365、Azure AD Basic、Azure AD Premium、または Enterprise Mobility Suite などのライセンスが必要です。
 
-**オンプレミスのサーバーと環境**
-
-- AD スキーマのバージョンとフォレストの機能レベルは、Windows Server 2003 以降である必要があります。ドメイン コント ローラーは、スキーマとフォレスト レベルの要件を満たしていれば、任意のバージョンを実行できます。
+### オンプレミスのサーバーと環境
+- AD スキーマのバージョンとフォレストの機能レベルは、Windows Server 2003 以降である必要があります。ドメイン コントローラーは、スキーマとフォレスト レベルの要件を満たしていれば、任意のバージョンを実行できます。
 - **パスワード ライトバック**機能を使用する場合、ドメイン コントローラーが (最新の SP が適用された) Windows Server 2008 以降にインストールされている必要があります。
 - Small Business Server または Windows Server Essentials には、Azure AD Connect をインストールできません。サーバーは Windows Server Standard 以上を使用する必要があります。
 - Azure AD Connect は、Windows Server 2008 以降にインストールする必要があります。このサーバーをドメイン コントローラーにすることができます。Express 設定を使用する場合はメンバー サーバーにすることもできます。カスタム設定を使用する場合、サーバーはスタンドアロンにすることもでき、ドメインに参加する必要はありません。
 - Azure AD Connect を Windows Server 2008 にインストールする場合は、Windows Update から最新の修正プログラムが適用されていることを確認してください。修正プログラムが適用されていないサーバーでインストールを開始することはできません。
 - **パスワード同期**機能を使用する場合、Azure AD Connect サーバーが Windows Server 2008 R2 SP1 以降にインストールされている必要があります。
-- Azure AD Connect サーバーに、[.Net 4.5.1](#component-prerequisites) 以降と [PowerShell 3.0](#component-prerequisites) 以降がインストールされている必要があります。
+- Azure AD Connect サーバーに、[.NET Framework 4.5.1](#component-prerequisites) 以降と [Microsoft PowerShell 3.0](#component-prerequisites) 以降がインストールされている必要があります。
 - Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。リモート インストールのために、これらのサーバーで [Windows リモート管理](#windows-remote-management)を有効にする必要があります。
 - Active Directory フェデレーション サービスがデプロイされている場合は、[SSL 証明書](#ssl-certificate-requirements)が必要です。
-- Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされ、サービスのサービス アカウントがローカル コンピューターに作成されます。SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール プロセスで別のバージョンの SQL Server を指定する必要があります。Azure AD Connect では、SQL Server 2008 (SP4) から SQL Server 2014 まで、すべてのエディションの Microsoft SQL Server がサポートされています。
+- Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされ、サービスのサービス アカウントがローカル コンピューターに作成されます。SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定する必要があります。Azure AD Connect では、SQL Server 2008 (SP4) から SQL Server 2014 まで、すべてのエディションの Microsoft SQL Server がサポートされています。
 
-**Accounts**
-
+### アカウント
 - 統合する Azure AD ディレクトリの Azure AD グローバル管理者アカウント。
 - Express 設定を使用する、または DirSync からアップグレードする場合は、ローカルの Active Directory のエンタープライズ管理者アカウント。
 - カスタム設定のインストール パスを使用する場合は、[Active Directory 内のアカウント](active-directory-aadconnect-accounts-permissions.md)。
 
-**接続**
-
-- 送信プロキシを使用してインターネットに接続する場合は、次の設定を **C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config** ファイルに追加して、インストール ウィザードと Azure AD Sync がインターネットと Azure AD に接続できるようにする必要があります。このテキストは、ファイルの末尾に入力する必要があります。このコードの &lt;PROXYADRESS&gt; は実際のプロキシ IP アドレスまたはホスト名を表します。
+### 接続
+- アクセスできる URL をプロキシが制限している場合は、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL をプロキシで開く必要があります。
+- 送信プロキシを使用してインターネットに接続する場合は、次の設定を **C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config** ファイルに追加して、インストール ウィザードと Azure AD Connect Sync がインターネットと Azure AD に接続できるようにする必要があります。このテキストは、ファイルの末尾に入力する必要があります。このコードの &lt;PROXYADRESS&gt; は実際のプロキシ IP アドレスまたはホスト名を表します。
 
 ```
     <system.net>
@@ -81,33 +78,30 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 
 [既定のプロキシ要素](https://msdn.microsoft.com/library/kd3cf2ex.aspx)の詳細については、MSDN を参照してください。
 
-- アクセスできる URL をプロキシが制限している場合は、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL をプロキシで開く必要があります。
-
-**その他**
-
+### その他
 - 省略可能: 同期を検証するテスト ユーザー アカウント。
 
 ## コンポーネントの前提条件
-
-Azure AD Connect は、PowerShell と .Net 4.5.1 に依存しています。Windows Server のバージョンに応じて、次の操作を行います。
+Azure AD Connect は、Microsoft PowerShell と .NET 4.5.1 に依存しています。Windows Server のバージョンに応じて、次の操作を行います。
 
 - Windows Server 2012R2
-  - PowerShell は既定でインストールされているため、操作は必要ありません。
-  - .Net 4.5.1 以降のリリースは、Windows Update によって提供されます。コントロール パネルで、Windows Server に最新の更新プログラムがインストールされていることを確認します。
+  - Microsoft PowerShell は既定でインストールされているため、操作は必要ありません。
+  - .NET Framework 4.5.1 以降のリリースは、Windows Update によって提供されます。コントロール パネルで、Windows Server に最新の更新プログラムがインストールされていることを確認します。
 - Windows Server 2008R2 と Windows Server 2012
-  - PowerShell の最新バージョンは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)の **Windows Management Framework 4.0** で入手できます。
-  - .Net 4.5.1 以降のリリースは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)で入手できます。
+  - Microsoft PowerShell の最新バージョンは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)の **Windows Management Framework 4.0** で入手できます。
+  - .NET Framework 4.5.1 以降のリリースは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)で入手できます。
 - Windows Server 2008
   - PowerShell の最新のサポート バージョンは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)の **Windows Management Framework 3.0** で入手できます。
- - .Net 4.5.1 以降のリリースは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)で入手できます。
+ - .NET Framework 4.5.1 以降のリリースは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)で入手できます。
 
-## Windows リモート管理
+## フェデレーションのインストールと構成の前提条件
 
- Azure AD Connect を使用して Active Directory フェデレーション サービスまたは Web アプリケーション プロキシをデプロイする場合、接続と構成が正常に完了するように、以下の要件を確認します。
+### Windows リモート管理
+Azure AD Connect を使用して Active Directory フェデレーション サービスまたは Web アプリケーション プロキシをデプロイする場合、接続と構成が正常に完了するように、以下の要件を確認します。
 
- - ターゲット サーバーがドメインに参加している場合は、Windows リモート管理が有効であることを確認します。
+- ターゲット サーバーがドメインに参加している場合は、Windows リモート管理が有効であることを確認します。
     - 管理者特権の PSH コマンド ウィンドウで、`Enable-PSRemoting –force` コマンドを使用します。
- - ターゲット サーバーが、ドメインに参加していない WAP コンピューターである場合は、いくつかの追加の要件があります。
+- ターゲット サーバーが、ドメインに参加していない WAP コンピューターである場合は、いくつかの追加の要件があります。
  	- ターゲット コンピューター (WAP コンピューター) での要件
          - サービス スナップインから winrm (Windows Remote Management / WS-Management) サービスが実行されていることを確認します。
          - 管理者特権の PSH コマンド ウィンドウで、`Enable-PSRemoting –force` コマンドを使用します。
@@ -118,8 +112,7 @@ Azure AD Connect は、PowerShell と .Net 4.5.1 に依存しています。Wind
  		     - サーバー マネージャーの [すべてのサーバー] タブで、 WAP サーバーを右クリックし、[管理に使用する資格情報] を選択し、WAP コンピューターのローカルの資格情報 (ドメインの資格情報ではない) を入力します。
  		     - リモートの PSH 接続を検証するには、サーバー マネージャーの [すべてのサーバー] タブで WAP サーバーを右クリックし、[Windows PowerShell] を選択します。リモート PSH セッションが開き、リモート PowerShell セッションを確立できます。
 
-## SSL 証明書の要件
-
+### SSL 証明書の要件
 **重要:** AD FS ファームのすべてのノードだけでなくすべての Web アプリケーション プロキシ サーバーで同じ SSL 証明書を使用することを強くお勧めします。
 
 - この証明書は x509 証明書である必要があります。
@@ -133,7 +126,6 @@ Azure AD Connect は、PowerShell と .Net 4.5.1 に依存しています。Wind
 - ワイルドカード証明書がサポートされます。
 
 ## Azure AD Connect でサポートされるコンポーネント
-
 Azure AD Connect によって Azure AD Connect のインストール先にインストールされるコンポーネントの一覧を次に示します。この一覧は、基本的な高速インストール用です。[同期サービスのインストール] ページで異なる SQL Server を使用することを選択した場合、SQL Express LocalDB はローカルにインストールされません。
 
 - Microsoft SQL Server 2012 のコマンド ライン ユーティリティ
@@ -142,7 +134,6 @@ Azure AD Connect によって Azure AD Connect のインストール先にイン
 - Windows PowerShell 用の Azure Active Directory モジュール
 - IT プロフェッショナル向け Microsoft Online Services サインイン アシスタント
 - Microsoft Visual C++ 2013 再配布パッケージ
-
 
 ## Azure AD Connect のハードウェア要件
 次の表は、Azure AD Connect Sync コンピューターの最小要件を示しています。
@@ -163,8 +154,7 @@ AD FS または Web アプリケーション サーバーを実行するコン�
 - メモリ: 2 GB 以上
 - Azure VM: A2 構成またはそれ以上
 
-
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

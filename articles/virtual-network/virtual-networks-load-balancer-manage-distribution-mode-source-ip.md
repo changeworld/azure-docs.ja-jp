@@ -1,10 +1,10 @@
-<properties 
+<properties
    pageTitle="管理: ロード バランサー分散モード (ソース IP アフィニティ)"
-   description="Azure ロード バランサー分散モードの管理機能" 
-   services="virtual-network" 
-   documentationCenter="" 
-   authors="telmosampaio" 
-   manager="carmonm" 
+   description="Azure ロード バランサー分散モードの管理機能"
+   services="virtual-network"
+   documentationCenter=""
+   authors="telmosampaio"
+   manager="carmonm"
    editor=""
    />
 
@@ -17,7 +17,7 @@
    ms.date="12/07/2015"
    ms.author="telmos"
    />
-   
+
 # 仮想ネットワークの管理: ロード バランサー分散モード (ソース IP アフィニティ)
 **ソース IP アフィニティ** (**セッション アフィニティ**や**クライアント IP アフィニティ**とも呼ばれます) は、Azure のロード バランサー分散モードであり、各クライアントの接続を異なる Azure ホスト サーバーに動的に分散するのではなく (既定のロード バランサーの動作)、クライアント 1 つと Azure にホストされたサーバー 1 つを結び付けます。
 
@@ -44,7 +44,7 @@
   * クライアントは同じ Azure でホストされた負荷分散パブリック IP アドレスに対して UDP セッションを初期化します。
   * Azure ロード バランサーは、TCP 接続として同じ DIP エンドポイントに要求を転送します。
   * クライアントは TCP を通じて制御チャンネルを維持して信頼性を確保しながら、より高い UDP のスループットでメディアをアップロードします。
-  
+
 ## 注意事項
 * 負荷分散セットが変更された場合 (仮想マシンを追加や削除した場合)、クライアント チャネルの分散は再計算されます。既存のクライアントからの新しい接続は、もともと使用されていたものとは異なるサーバーで処理される可能性があります。
 * ソース IP アフィニティを使用すると、複数の Azure ホスト サーバーにトラフィックが均等に分散されない可能性があります。
@@ -55,15 +55,15 @@
 
 ### Azure エンドポイントを仮想マシンに追加してロード バランサー分散モードを設定する
 
-    Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 â€“LoadBalancerDistribution â€œsourceIPâ€�| Update-AzureVM  
+    Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution “sourceIP”| Update-AzureVM  
 
-    Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 Ã¢â‚¬â€œLoadBalancerDistribution Ã¢â‚¬Å“sourceIPÃ¢â‚¬ï¿½| Update-AzureVM  
+    Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 -LoadBalancerDistribution "sourceIP"| Update-AzureVM  
 
 LoadBalancerDistribution は、2 組 (ソース IP と接続先 IP) の負荷分散の場合は sourceIP、3 組 (ソース IP、接続先 IP、プロトコル) の負荷分散の場合は sourceIPProtocol に設定できます。設定しない場合は、既定の動作 (5 組の負荷分散) を使用します。
 
 ### エンドポイント ロード バランサー分散モード構成を取得する
-    PS C:\> Get-AzureVM â€“ServiceName "mySvc" -Name "MyVM1" | Get-AzureEndpoint
-    
+    PS C:\> Get-AzureVM –ServiceName "mySvc" -Name "MyVM1" | Get-AzureEndpoint
+
     VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
     LBSetName : MyLoadBalancedSet
     LocalPort : 80
@@ -86,10 +86,10 @@ LoadBalancerDistribution 要素が存在しない場合、Azure ロード バラ
 
 ### 負荷分散エンドポイント セットで分散モードを設定する
 
+    Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution "sourceIP"
+
     Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 â€“LoadBalancerDistribution "sourceIP"
 
-    Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 Ã¢â‚¬â€œLoadBalancerDistribution "sourceIP"
-    
 エンドポイントが負荷分散エンドポイント セットの一部である場合、分散モードは負荷分散エンドポイント セットで設定される必要があります。
 
 ## クラウド サービスの例
@@ -115,7 +115,7 @@ Azure SDK for .NET を使用してクラウド サービスをアップデート
         </InstanceAddress>
       </AddressAssignments>
     </NetworkConfiguration>
-    
+
 ## API の例
 
 ロード バランサーの分散は、サービス管理 API を使って構成できます。x-ms-version ヘッダーが 2014-09-01 以降のバージョンで設定されていることをご確認ください。
@@ -124,41 +124,40 @@ Azure SDK for .NET を使用してクラウド サービスをアップデート
 
 #### 要求
 
-    POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet 
-    
-    x-ms-version: 2014-09-01 
-    
-    Content-Type: application/xml 
-    
-    <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"> 
-      <InputEndpoint> 
-        <LoadBalancedEndpointSetName> endpoint-set-name </LoadBalancedEndpointSetName> 
-        <LocalPort> local-port-number </LocalPort> 
-        <Port> external-port-number </Port> 
-        <LoadBalancerProbe> 
-          <Port> port-assigned-to-probe </Port> 
-          <Protocol> probe-protocol </Protocol> 
-          <IntervalInSeconds> interval-of-probe </IntervalInSeconds> 
-          <TimeoutInSeconds> timeout-for-probe </TimeoutInSeconds> 
-        </LoadBalancerProbe> 
-        <Protocol> endpoint-protocol </Protocol> 
-        <EnableDirectServerReturn> enable-direct-server-return </EnableDirectServerReturn> 
-        <IdleTimeoutInMinutes>idle-time-out</IdleTimeoutInMinutes> 
-        <LoadBalancerDistribution>sourceIP</LoadBalancerDistribution> 
-      </InputEndpoint> 
+    POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet
+
+    x-ms-version: 2014-09-01
+
+    Content-Type: application/xml
+
+    <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+      <InputEndpoint>
+        <LoadBalancedEndpointSetName> endpoint-set-name </LoadBalancedEndpointSetName>
+        <LocalPort> local-port-number </LocalPort>
+        <Port> external-port-number </Port>
+        <LoadBalancerProbe>
+          <Port> port-assigned-to-probe </Port>
+          <Protocol> probe-protocol </Protocol>
+          <IntervalInSeconds> interval-of-probe </IntervalInSeconds>
+          <TimeoutInSeconds> timeout-for-probe </TimeoutInSeconds>
+        </LoadBalancerProbe>
+        <Protocol> endpoint-protocol </Protocol>
+        <EnableDirectServerReturn> enable-direct-server-return </EnableDirectServerReturn>
+        <IdleTimeoutInMinutes>idle-time-out</IdleTimeoutInMinutes>
+        <LoadBalancerDistribution>sourceIP</LoadBalancerDistribution>
+      </InputEndpoint>
     </LoadBalancedEndpointList>
 
 LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 組のアフィニティの sourceIPProtocol、なし (アフィニティなし、つまり 5 組) で設定できます。
 
 #### Response
 
-    HTTP/1.1 202 Accepted 
-    Cache-Control: no-cache 
-    Content-Length: 0 
-    Server: 1.0.6198.146 (rd_rdfe_stable.141015-1306) Microsoft-HTTPAPI/2.0 
-    x-ms-servedbyregion: ussouth2 
-    x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af 
+    HTTP/1.1 202 Accepted
+    Cache-Control: no-cache
+    Content-Length: 0
+    Server: 1.0.6198.146 (rd_rdfe_stable.141015-1306) Microsoft-HTTPAPI/2.0
+    x-ms-servedbyregion: ussouth2
+    x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
     Date: Thu, 16 Oct 2014 22:49:21 GMT
- 
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

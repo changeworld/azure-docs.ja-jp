@@ -341,7 +341,7 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
     
   		カスタム アクティビティを作成し、これを Azure Data Factory パイプラインで使用する方法のチュートリアルは、「[Azure Data Factory パイプラインでカスタム アクティビティを使用する][adf-custom-activities]」を参照してください。
 
-[adf-azure-ml]: data-factory-create-predictive-pipelines.md
+[adf-azure-ml]: data-factory-azure-ml-batch-execution-activity.md
 [adf-custom-activities]: data-factory-use-custom-activities.md
 [adf-editor]: data-factory-editor.md
 
@@ -357,4 +357,4 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

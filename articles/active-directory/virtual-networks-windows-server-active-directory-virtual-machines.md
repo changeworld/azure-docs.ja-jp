@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="01/04/2016" 
 	ms.author="markusvi"/>
 
 
@@ -33,7 +33,7 @@
 ## 作業方法に関する記事
 
 - [Azure Virtual Network での Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)
-- [Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-networks-install-replica-active-directory-domain-controller.md) 
+- [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-networks-install-replica-active-directory-domain-controller.md) 
 - [テスト用のハイブリッド クラウド環境の設定](../virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
 
@@ -47,4 +47,4 @@
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/22/2015" 
+	ms.date="01/04/2016" 
 	ms.author="nitinme"/>
 
 
@@ -57,7 +57,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 
 1. [Azure プレビュー ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 
-2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュ ボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
+2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
 	> [AZURE.NOTE]ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
 	>
@@ -108,7 +108,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 		    sio.close()
 		    return value
 		
-		inspections = sc.textFile('wasb:///example/data/Food_Inspections1.csv')\
+		inspections = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
 		                .map(csvParse)
 
 
@@ -278,7 +278,7 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 次のスニペットでは、モデルによって生成された予測を含む、新しいデータフレーム **predictionsDf** を作成します。
 
 
-	testData = sc.textFile('wasb:///example/data/Food_Inspections2.csv')\
+	testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
 	             .map(csvParse) \
 	             .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
 	testDf = sqlContext.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
@@ -351,7 +351,7 @@ Spark を使用するロジスティック回帰の使用により、英語に�
 
 ## Notebook をシャットダウンする
 
-アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。そのためには、Notebook の [**ファイル**] メニューから、[**閉じて停止**] をクリックします。これにより、Notebook がシャットダウンされ、閉じられます。
+アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。そのためには、Notebook の **[ファイル]** メニューの **[閉じて停止]** をクリックします。これにより、Notebook がシャットダウンされ、閉じられます。
 
 
 ## <a name="seealso"></a>関連項目
@@ -371,18 +371,18 @@ Spark を使用するロジスティック回帰の使用により、英語に�
 
 ### アプリケーションの作成と実行
 
-* [Create a standalone application using Scala (Scala を使用してスタンドアロン アプリケーションを作成する)](hdinsight-apache-spark-create-standalone-application.md)
+* [Scala を使用してスタンドアロン アプリケーションを作成する](hdinsight-apache-spark-create-standalone-application.md)
 
-* [Run jobs remotely on a Spark cluster using Livy (Livy を使用して Spark クラスターでジョブをリモートで実行する)](hdinsight-apache-spark-livy-rest-interface.md)
+* [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### 拡張機能
 
-* [Use Zeppelin notebooks with a Spark cluster on HDInsight (HDInsight のSpark クラスターで Zeppelin notebook を使用する)](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
-* [Kernels available for Jupyter notebook in Spark cluster for HDInsight (HDInsight 用の Spark クラスターの Jupyter notebook で使用可能なカーネル)](hdinsight-apache-spark-jupyter-notebook-kernels.md)
+* [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 
 ### リソースの管理
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

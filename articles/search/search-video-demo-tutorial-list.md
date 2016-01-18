@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article" 
 	ms.tgt_pltfrm="na"
-	ms.date="11/04/2015"
+	ms.date="12/23/2015"
 	ms.author="heidist"/>
 
 #Azure Search: チュートリアル、ビデオ デモ、サンプル
@@ -67,32 +67,35 @@
 [スコアリング プロファイルのチュートリアル](search-get-started-scoring-profiles.md)|コンソール アプリケーションを使用してスコアリング プロファイルをテスト使用します。
 [Azure Search 管理 REST API チュートリアル](search-get-started-management-api.md)|管理 REST API を使用して、サービスをプロビジョニングし、管理またはクエリ API キーを管理する方法。
 
-##コード サンプル
+##サンプル コード サイト
 
-[****https://github.com/liamca/AzureSearchDemos**](https://github.com/liamca/AzureSearchDemos) は Liam Cavanagh が作成したコード サンプルを含む GitHub リポジトリです。このリポジトリには次のサンプルがあります。
+Azure Search のサンプル コードがある以下のサイトを参照してください。
 
-- [AdventureWorksWP8]() は Windows Phone アプリです。
-- [AzSearchAutoScaleWeb](https://github.com/liamca/AzureSearchDemos/tree/master/AzSearchAutoScaleWeb) 
-- [BabyNameJS](https://github.com/liamca/AzureSearchDemos/tree/master/BabyNamesJS) はチュートリアルでデータを提供する index.html ファイルです。
-- [DotNetSample](https://github.com/liamca/AzureSearchDemos/tree/master/DotNetSample)は Azure Search 用の ASP.NET MVC アプリケーションです。
-- [NYCJobs.NET](https://github.com/liamca/AzureSearchDemos/tree/master/NYCJobs.NET) は NYCJobs ライブ デモ サイト用のソース コードを提供します。
-- [推奨事項](https://github.com/liamca/AzureSearchDemos/tree/master/Recommendations)では、Active Data Factory、SQL Database、BLOB ストレージ、HDInsight を利用し、製品が同時に購入される頻度に基づき、製品推奨事項を実装します。
+- [https://github.com/Azure-Samples](https://github.com/Azure-Samples?utf8=%E2%9C%93&query=+only%3Asources+search)
+- [https://github.com/AzureSearch](https://github.com/AzureSearch) 
+- [https://github.com/liamca/AzureSearchDemos](https://github.com/liamca/AzureSearchDemos)
+- [https://github.com/MicrosoftLearning/AzureSearch-MVA](https://github.com/MicrosoftLearning/AzureSearch-MVA)
 
-[****https://github.com/AzureSearch**](https://github.com/AzureSearch) は Azure Search 開発チームが作成したコード サンプルを含む Azure Search のもう 1 つの GitHub リポジトリです。リボジトリを参照してその内容を確認できます。または、次のリンクをクリックして、特定のサンプルに直接移動できます。
+##サンプル コード一覧
 
-- [**JavaIndexerDemo**](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo)
-- [**NodeJSIndexerDemo**](https://github.com/AzureSearch/AzureSearchNodeJSIndexerDemo)
-- [**.NET-2015-02-28-Sample**](https://github.com/AzureSearch/.NET-2015-02-28-Sample) は、検索操作に .NET クライアント ライブラリを使用する ASP.NET MVC 5 アプリケーションです。
+- [**.NET-2015-02-28 クライアント ライブラリのコード サンプル**](https://github.com/AzureSearch/.NET-2015-02-28-Sample)は、検索操作に .NET クライアント ライブラリを使用する ASP.NET MVC 5 アプリケーションです。
+- [**「Java で Azure Search を使ってみる」チュートリアルのコード サンプル**](https://github.com/Azure-Samples/search-java-getting-started)
+- [**「Azure Search を使ってみる」チュートリアルのコード サンプル**](https://github.com/Azure-Samples/search-dotnet-getting-started)
+- [**Java インデクサー デモのコード サンプル**](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo)
+- [**NodeJS インデクサー デモのコード サンプル**](https://github.com/AzureSearch/AzureSearchNodeJSIndexerDemo)
+- [**ASP.NET MVC を利用した NYC ジョブ Web サイト サンプル**](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)では、NYC ジョブ データでライブ デモ Azure Search サイトが構築されます。
+- [**search-dotnet-management-api**](https://github.com/Azure-Samples/search-dotnet-management-api/) は、管理 REST API を使用する Windows コンソール アプリケーションです。
+- [**Cortana for Windows Phone を利用した音声認識サンプル**](https://github.com/Azure-Samples/search-dotnet-windows-phone-cortana-speech)は、Windows Phone の音声認識を利用し、Azure Search に対して検索する方法を示します。
+- [**「よく一緒に購入されている品目」推奨事項サンプル**](https://github.com/liamca/AzureSearchDemos/tree/master/Recommendations)では、Active Data Factory、SQL Database、BLOB ストレージ、HDInsight を利用し、製品が同時に購入される頻度に基づき、製品推奨事項を実装します。
+- [**AzSearchAutoScaleWeb**](https://github.com/liamca/AzureSearchDemos/tree/master/AzSearchAutoScaleWeb) は、Azure Search サービスを自動拡大/縮小する方法を示したサンプル コードです。
+- [**BabyNameJS**](https://github.com/liamca/AzureSearchDemos/tree/master/BabyNamesJS) はチュートリアルでデータを提供する index.html ファイルです。
 
-個別の GitHub リポジトリは、[**AzureSearch-Microsoft Virtual Academy のトレーニング資料**](https://github.com/MicrosoftLearning/AzureSearch-MVA)で使用されます。これには、7 部構成のコースで使用されるいくつかのサンプルが含まれます。
+CodePlex で、最新バージョンと関連のあるパブリック プレビュー期間中に公開された古いサンプルがいくつか記載されています。
 
-CodePlex で、最新バージョンと関連のあるパブリック プレビュー期間中に公開されたサンプルがいくつか記載されています。
-
-- [**管理 REST API デモ**](https://azuresearchmgmtapi.codeplex.com/)は、管理 REST API を使用する Windows コンソール アプリケーションです。
 - [**AdventureWorks デモ**](https://azuresearchadventureworksdemo.codeplex.com/)は、ASP.NET MVC 4 アプリケーションです。
 - [**提案デモ**](https://azsearchsuggestions.codeplex.com/SourceControl/latest)は、ASP.NET MVC 4 アプリケーションです。
 - [**GeoSearch サンプル**](https://azuresearchgeospatial.codeplex.com/)は、ASP.NET MVC 4 アプリケーションです。
 - [**SQL Server と Azure Search の同期サンプル**](http://sqlserver2azuresearch.codeplex.com/) は、埋め込み型のローカルのデータベースから SQL Server の行セットを読み込む Windows コンソール アプリケーションです。
 - [**スコアリング プロファイルのデモ**](https://azuresearchscoringprofiles.codeplex.com/) は、検索結果をチューニングするために必要なスコアリング プロファイルを定義し、実行し、更新する Windows コンソール アプリケーションです。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

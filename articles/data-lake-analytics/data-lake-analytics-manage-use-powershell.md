@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="12/01/2015"
+   ms.date="01/06/2016"
    ms.author="jgao"/>
 
 # Azure PowerShell を使用する Azure Data Lake Analytics の管理
@@ -35,46 +35,7 @@ Azure PowerShell を使用して、Azure Data Lake Analytics のアカウント�
 
 ##Azure PowerShell 1.0 以上をインストールする
 
-最初に 0.9x バージョンをアンインストールする必要があります。
-
-インストールされている PowerShell のバージョンを確認するには:
-
-	Get-Module *azure*
-	
-以前のバージョンをアンインストールするには、コントロール パネルで [プログラムと機能] を実行します。
-
-Azure PowerShell をインストールするための主な 2 つのオプションは次のとおりです。
-
-- [PowerShell ギャラリー](https://www.powershellgallery.com/)管理者特権の PowerShell ISE または管理者特権の Windows PowerShell コンソールから、次のコマンドを実行します。
-
-		# Install the Azure Resource Manager modules from PowerShell Gallery
-		Install-Module AzureRM
-		Install-AzureRM
-		
-		# Install the Azure Service Management module from PowerShell Gallery
-		Install-Module Azure
-		
-		# Import AzureRM modules for the given version manifest in the AzureRM module
-		Import-AzureRM
-		
-		# Import Azure Service Management module
-		Import-Module Azure
-
-	詳細については、「[PowerShell ギャラリー](https://www.powershellgallery.com/)」を参照してください。
-
-- [Microsoft Web プラットフォーム インストーラー (WebPI)](http://aka.ms/webpi-azps)。Azure PowerShell 0.9.x をインストールしている場合は、0.9.x のアンインストールを要求するメッセージが表示されますAzure PowerShell モジュールを PowerShell ギャラリーからインストールした場合、一貫した Azure PowerShell 環境を保つため、インストーラーにより、インストール前にモジュールを削除することが求められます。手順については、[WebPI を介した Azure PowerShell 1.0 のインストール](https://azure.microsoft.com/blog/azps-1-0/)に関するページを参照してください。
-
-WebPI は月次の更新プログラムを受け取ります。PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。PowerShell ギャラリーからのインストールを選んだ場合は、これが Azure PowerShell で最新および最良の点について情報を取得できる最初のチャネルになります。
-
-**コマンドレットをリストするには**:
-
-	Get-Command *Azure*DataLakeAnalytics*
-
-**Azure に接続するには、次のコマンドレットを使用します。**
-
-	Login-AzureRmAccount
-	Get-AzureRmSubscription  # for finding the Azure Subscription ID
-	Set-AzureRmContext -SubscriptionID <Azure Subscription ID>
+「[Azure リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager.md#prerequisites)」の「前提条件」セクションを参照してください。
 	
 ## アカウントの管理
 
@@ -205,7 +166,7 @@ Analytics アカウントを作成する際には、既定のストレージ ア
 	$AzureStorageAccountName = "<AzureStorageAccountName>"
 	$AzureStorageAccountKey = "<AzureStorageAccountKey>"
 	
-	Add-AzureRmDataLakeAnalyticsDataSource -ResourceGroupName $resourceGroupName -AccountName $dataLakeAnalyticName -AzureBlob $AzureStorageAccountName -AccessKey $AzureStorageAccountKey
+	Add-AzureRmDataLakeAnalyticsDataSource -ResourceGroupName $resourceGroupName -Account $dataLakeAnalyticName -AzureBlob $AzureStorageAccountName -AccessKey $AzureStorageAccountKey
 
 ### 他の Data Lake Store アカウントの追加
 
@@ -213,7 +174,7 @@ Analytics アカウントを作成する際には、既定のストレージ ア
 	$dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
 	$AzureDataLakeName = "<DataLakeStoreName>"
 	
-	Add-AzureRmDataLakeAnalyticsDataSource -ResourceGroupName $resourceGroupName -AccountName $dataLakeAnalyticName -DataLake $AzureDataLakeName 
+	Add-AzureRmDataLakeAnalyticsDataSource -ResourceGroupName $resourceGroupName -Account $dataLakeAnalyticName -DataLake $AzureDataLakeName 
 
 ### データ ソースの一覧表示:
 
@@ -235,49 +196,49 @@ Analytics アカウントを作成する際には、既定のストレージ ア
 
 	$dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
 	
-	Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticName
+	Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticName
 	
-	Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticName -State Running, Queued
+	Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticName -State Running, Queued
 	#States: Accepted, Compiling, Ended, New, Paused, Queued, Running, Scheduling, Starting
 	
-	Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticName -Result Cancelled
+	Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticName -Result Cancelled
 	#Results: Cancelled, Failed, None, Successed 
 	
-	Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticName -Name <Job Name>
-	Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticName -Submitter <Job submitter>
+	Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticName -Name <Job Name>
+	Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticName -Submitter <Job submitter>
 
 	# List all jobs submitted on January 1 (local time)
-	Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticName `
+	Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticName `
 		-SubmittedAfter "2015/01/01"
 		-SubmittedBefore "2015/01/02"	
 
 	# List all jobs that succeeded on January 1 after 2 pm (UTC time)
-	Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticName `
+	Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticName `
 		-State Ended
 		-Result Succeeded
 		-SubmittedAfter "2015/01/01 2:00 PM -0"
 		-SubmittedBefore "2015/01/02 -0"
 
 	# List all jobs submitted in the past hour
-	Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticName `
+	Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticName `
 		-SubmittedAfter (Get-Date).AddHours(-1)
 
 ### ジョブの詳細の取得
 
 	$dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
-	Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticName -JobID <Job ID>
+	Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticName -JobID <Job ID>
 	
 ### ジョブの送信
 
 	$dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
 
 	#Pass script via path
-	Submit-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticName `
+	Submit-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticName `
 		-Name $jobName `
 		-ScriptPath $scriptPath
 
 	#Pass script contents
-	Submit-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticName `
+	Submit-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticName `
 		-Name $jobName `
 		-Script $scriptContents
 
@@ -286,7 +247,7 @@ Analytics アカウントを作成する際には、既定のストレージ ア
 
 ### ジョブの取り消し
 
-	Stop-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticName `
+	Stop-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticName `
 		-JobID $jobID
 
 
@@ -298,14 +259,14 @@ U-SQL カタログを使用して、U-SQL スクリプトで共有できるよ�
 
 	#List databases
 	Get-AzureRmDataLakeAnalyticsCatalogItem `
-		-AccountName $adlAnalyticsAccountName `
+		-Account $adlAnalyticsAccountName `
 		-ItemType Database
 	
 	
 	
 	#List tables
 	Get-AzureRmDataLakeAnalyticsCatalogItem `
-		-AccountName $adlAnalyticsAccountName `
+		-Account $adlAnalyticsAccountName `
 		-ItemType Table `
 		-Path "master.dbo"
 
@@ -313,32 +274,32 @@ U-SQL カタログを使用して、U-SQL スクリプトで共有できるよ�
 
 	#Get a database
 	Get-AzureRmDataLakeAnalyticsCatalogItem `
-		-AccountName $adlAnalyticsAccountName `
+		-Account $adlAnalyticsAccountName `
 		-ItemType Database `
 		-Path "master"
 	
 	#Get a table
 	Get-AzureRmDataLakeAnalyticsCatalogItem `
-		-AccountName $adlAnalyticsAccountName `
+		-Account $adlAnalyticsAccountName `
 		-ItemType Table `
 		-Path "master.dbo.mytable"
 
 ###カタログ項目の存在のテスト
 
 	Test-AzureRmDataLakeAnalyticsCatalogItem  `
-		-AccountName $adlAnalyticsAccountName `
+		-Account $adlAnalyticsAccountName `
 		-ItemType Database `
 		-Path "master"
 
 ###カタログ シークレットの作成
 	New-AzureRmDataLakeAnalyticsCatalogSecret  `
-			-AccountName $adlAnalyticsAccountName `
+			-Account $adlAnalyticsAccountName `
 			-DatabaseName "master" `
 			-Secret (Get-Credential -UserName "username" -Message "Enter the password")
 
 ### カタログ シークレットの変更
 	Set-AzureRmDataLakeAnalyticsCatalogSecret  `
-			-AccountName $adlAnalyticsAccountName `
+			-Account $adlAnalyticsAccountName `
 			-DatabaseName "master" `
 			-Secret (Get-Credential -UserName "username" -Message "Enter the password")
 
@@ -346,7 +307,7 @@ U-SQL カタログを使用して、U-SQL スクリプトで共有できるよ�
 
 ###カタログ シークレットの削除
 	Remove-AzureRmDataLakeAnalyticsCatalogSecret  `
-			-AccountName $adlAnalyticsAccountName `
+			-Account $adlAnalyticsAccountName `
 			-DatabaseName "master"
 
 
@@ -431,4 +392,4 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 		}
 	}
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

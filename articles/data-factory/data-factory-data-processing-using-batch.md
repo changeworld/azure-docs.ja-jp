@@ -402,7 +402,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 ここでは、Execute メソッドのコードの詳細と注意事項について説明します。
 
-1.	入力コレクションを反復処理するメンバーは、[Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) 名前空間にあります。BLOB コレクションの反復処理では、**BlobContinuationToken** クラスを使用する必要があります。基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。詳細については、「[.NET から Blob Storage を使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。基本的なループを次に示します。
+1.	入力コレクションを反復処理するメンバーは、[Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) 名前空間にあります。BLOB コレクションの反復処理では、**BlobContinuationToken** クラスを使用する必要があります。基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。詳細については、「[.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。基本的なループを次に示します。
 
 		// Initialize the continuation token.
 		BlobContinuationToken continuationToken = null;
@@ -466,7 +466,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 		outputBlob.UploadText(output);
 
 
-### Data Factory の作成
+## Data Factory の作成
 
 「[カスタム アクティビティの作成](#create-the-custom-activity)」セクションでは、カスタム アクティビティを作成し、バイナリと PDB ファイルを含む zip ファイルを Azure Blob コンテナーにアップロードしました。ここでは、**カスタム アクティビティ**を使用した**パイプライン**で Azure **Data Factory** を作成します。
 
@@ -935,4 +935,4 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
     -   [Azure Batch ライブラリ .NET の概要](../batch/batch-dotnet-get-started.md)
 
-<!----HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="powershell"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/06/2015"
+	ms.date="01/04/2016"
 	ms.author="inhenk"/>
 
 # Windows PowerShell を使用した役割ベースのアクセス制御の管理 #
 
 > [AZURE.SELECTOR]
-- [Windows PowerShell](role-based-access-control-powershell.md)
-- [Azure CLI](role-based-access-control-xplat-cli-install.md)
-
+- [PowerShell](role-based-access-control-manage-access-powershell.md)
+- [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
+- [REST API](role-based-access-control-manage-access-rest.md)
 
 Azure ポータルと Azure リソース管理 API のロール ベースの Access Control (RBAC) を使用すると、サブスクリプションへのアクセスを詳細に管理できます。この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
 
@@ -119,7 +119,7 @@ AD テナント内の特定のユーザー (リソース グループ「group1�
     - A resource group, to get a list of resource groups, type `PS C:\> Get-AzureResourceGroup`
     - A resource, to get a list of resources, type `PS C:\> Get-AzureResource`
 
-次に、`New-AzureRoleAssignment`  を使ってロールの割り当てを作成します。次に例を示します。
+次に、`New-AzureRoleAssignment` を使ってロールの割り当てを作成します。次に例を示します。
 
 
 次を使用すると、ユーザーに閲覧者として現在のサブスクリプション レベルでの役割の割り当てが作成されます。
@@ -164,4 +164,4 @@ Windows PowerShell を使用した役割ベースのアクセス制御の管理�
 - [Azure CLI を使用したロール ベースの Access Control の構成](role-based-access-control-xplat-cli-install.md)
 - [ロール ベースの Access Control のトラブルシューティング](role-based-access-control-troubleshooting.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

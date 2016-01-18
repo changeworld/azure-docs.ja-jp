@@ -13,12 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="11/30/2015"
+   ms.date="01/04/2016"
    ms.author="jgao"/>
 
 # チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用
-
-U-SQL スクリプトの開発方法について説明します。
 
 U-SQL は、SQL のメリットと、任意の規模ですべてのデータを処理する独自のコードの表現力を融合した言語です。U-SQL のスケーラブルな分散クエリ機能を使用することで、ストアおよび Azure SQL Database などのリレーショナル ストアのデータを効率的に分析できます。読み取り時にスキーマを適用して非構造化データを処理し、カスタム ロジックと UDF を挿入できます。また、規模に応じて実行する方法を細かく制御できる拡張性もあります。U-SQL の背景にある設計理念の詳細については、この [Visual Studio ブログの投稿](http://blogs.msdn.com/b/visualstudio/archive/2015/09/28/introducing-u-sql.aspx)を参照してください。
 
@@ -26,107 +24,28 @@ ANSI SQL や T-SQL とは異なる点がいくつかあります。たとえば�
 
 select 句、where 述語などの型システムと式言語は C# です。これは、データ型が C# 型であり、そのデータ型で C# NULL セマンティクスを使用し、述語内の比較演算子が C# 構文に従うことを意味します (たとえば、a == "foo")。また、値が完全な .NET オブジェクトであるため、任意のメソッドを使用してオブジェクトを簡単に操作できることも意味します (たとえば、"f o o o".Split(' ') )。
 
-詳細については、「[U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=691348)」をご覧ください。
+詳細については、[U-SQL リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=691348)に関するページを参照してください。
 
-**前提条件**
+###前提条件
 
-- **Visual Studio 2015、Visual Studio 2013 update 4、または Visual Studio 2012 (Visual C++ インストール済み)**。 
-- **Microsoft Azure SDK for .NET バージョン 2.7 以上**。[Web Platform Installer](http://www.microsoft.com/web/downloads/platform.aspx) を使用してインストールします。
-- **[Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs)**。 
-	
-	Data Lake Tools for Visual Studio がインストールされると、Visual Studio に **[Data Lake]** メニューが表示されます。
-	
-	![U-SQL Visual Studio のメニュー](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-menu.png)
+先に「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を完了しておく必要があります。
 
-- **Data Lake Analytics と Data Lake Tools for Visual Studio の基本的な知識**。作業を開始するには、次のトピックをご覧ください。
- 
-	- [チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
-	- [チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
+このチュートリアルでは、次の U-SQL スクリプトを使用して Data Lake Analytics ジョブを実行しました。
 
-- **Data Lake Analytics アカウント**。[Azure Data Lake (ADL) Analytics アカウントの作成](data-lake-analytics-get-started-portal.md#create_adl_analytics_account)に関するページをご覧ください。
-- **Data Lake Analytics アカウントへのサンプル データのアップロード**。[既定の Data Lake ストレージ アカウントへの SearchLog.tsv のアップロード](data-lake-analytics-get-started-portal.md#update-data-to-the-default-adl-storage-account)に関する記述を参照してください。
-
-	Data Lake Tools では、Data Lake Analytics アカウントの作成はサポートされません。そのため、Azure ポータル、Azure PowerShell、.NET SDK、または Azure CLI を使用して作成する必要があります。Data Lake Analytics ジョブを実行するには、いくつかのデータが必要です。Data Lake Tools でデータのアップロードがサポートされていても、このチュートリアルに従いやすくするため、サンプル データのアップロードにはポータルを使用します。
-
-## Visual Studio からの Azure への接続
-
-U-SQL スクリプトをビルドしてテストするには、まず、Azure に接続する必要があります。
-
-**Data Lake Analytics に接続するには**
-
-1. Visual Studio を開きます。
-2. **[Data Lake]** メニューにある **[オプションと設定]** をクリックします。
-4. **[サインイン]** をクリックします。他のユーザーがサインインしている場合は、**[ユーザーの変更]** をクリックし、指示に従ってサインインします。
-5. **[OK]** をクリックして、[オプションと設定] ダイアログ ボックスを閉じます。
-
-**Data Lake Analytics アカウントを参照するには**
-
-1. Visual Studio で、**Ctrl + Alt + S** キーを押して、**サーバー エクスプローラー**を開きます。
-2. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]** の順に展開します。Data Lake Analytics アカウントが複数ある場合は、そのリストが表示されます。Studio で Data Lake Analytics アカウントを作成することはできません。アカウントを作成する場合は、「[チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」または「[チュートリアル: Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-get-started-powershell.md)」をご覧ください。
-
-
-## 最初の U-SQL スクリプトの開発 
-
-このセクションの主な目的は、Data Lake Tools for Visual Studio を使用して U-SQL アプリケーションを記述およびテストするプロセスを理解することです。他の Data Lake Analytics チュートリアルでは U-SQL ステートメントも使用されます。その場合、単にタブ区切り (tsv) ファイルを読み取り、そのファイルをコンマ区切り (csv) ファイルとして出力します。
- 
-**Data Lake Analytics ジョブを作成して送信するには**
-
-1. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
-2. プロジェクトの種類として、[U-SQL プロジェクト] を選択します。
-
-	![新しい U-SQL Visual Studio プロジェクト](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
-	
-3. **[OK]** をクリックします。Visual Studio で、Script.usql ファイルを使用してソリューションが作成されます。
-4. 次のスクリプトを Script.usql ファイルに入力します。
-
-        @searchlog =
-            EXTRACT UserId          int,
-                    Start           DateTime,
-                    Region          string,
-                    Query           string,
-                    Duration        int?,
-                    Urls            string,
-                    ClickedUrls     string
-            FROM "/Samples/Data/SearchLog.tsv"
-            USING Extractors.Tsv();
-        
-        OUTPUT @searchlog   
-            TO "/output/SearchLog-first-u-sql.csv"
-        USING Outputters.Csv();
-
-		The next section in this article will explain the script in details.  You just need to focus on understanding the development and testing process in this section.
-5. **[送信]** ボタンの横に、Analytics アカウントを指定します。
-5. **ソリューション エクスプローラー**で、**Script.usql** を右クリックし、**[スクリプトのビルド]** をクリックします。[出力] ペインで結果を確認します。スクリプトにエラーがある場合は、ここにエラー出力が示されます。 
-6. **ソリューション エクスプローラー**で、**Script.usql** を右クリックし、**[スクリプトの送信]** をクリックします。
-7. **[Analytics アカウント]** を確認してから、**[送信]** をクリックします。送信が完了すると、Data Lake Tools for Visual Studio の [結果] ウィンドウに送信結果とジョブのリンクが示されます。
-8. **[更新]** をクリックして、最新のジョブの状態を表示し、画面を更新することができます。ジョブが正常に完了するまで待機します。ジョブが失敗した場合、ソース ファイルがない可能性があります。ツールの "エラー" タブを使用して、サービスから返されるエラーを表示できます。このチュートリアルの「前提条件」を参照してください。トラブルシューティングの詳細については、[Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)に関する記述を参照してください。
-
-	
-**ジョブの出力を表示するには**
-
-1. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]**、ご使用の Data Lake Analytics アカウント、**[ストレージ アカウント]** の順に展開し、既定の Data Lake ストレージ アカウントを右クリックして **[エクスプローラー]** をクリックします。 
-2.  **[出力]** をダブルクリックしてフォルダーを開きます。
-3.  **SearchLog-frist-u-sql.csv** をダブルクリックします。
-4.  ジョブ グラフ ビューで出力ファイルをダブルクリックして、出力ファイルに直接移動することもできます。
-
-## 最初の U-SQL スクリプトの理解
-
-最後のセクションで作成した以下のスクリプトについて詳しく見てみましょう。
-
-        @searchlog =
-            EXTRACT UserId          int,
-                    Start           DateTime,
-                    Region          string,
-                    Query           string,
-                    Duration        int?,
-                    Urls            string,
-                    ClickedUrls     string
-            FROM "/Samples/Data/SearchLog.tsv"
-            USING Extractors.Tsv();
-        
-        OUTPUT @searchlog   
-            TO "/output/SearchLog-first-usql.csv"
-        USING Outputters.Csv();
+    @searchlog =
+        EXTRACT UserId          int,
+                Start           DateTime,
+                Region          string,
+                Query           string,
+                Duration        int?,
+                Urls            string,
+                ClickedUrls     string
+        FROM "/Samples/Data/SearchLog.tsv"
+        USING Extractors.Tsv();
+    
+    OUTPUT @searchlog   
+        TO "/output/SearchLog-first-u-sql.csv"
+    USING Outputters.Csv();
 
 このスクリプトに変換手順は含まれていません。**SearchLog.tsv** というソース ファイルから読み取り、体系化して、**SearchLog-from-adltools.csv** というファイルに行セットを出力し直します。
 
@@ -149,7 +68,7 @@ Duration フィールドのデータ型の横にある疑問符に注目して�
 
 ## スカラー変数の使用
 
-スカラー変数も使用して、スクリプトのメンテナンスを容易にすることができます。次のように、最初の U-SQL スクリプトを記述することもできます。
+スカラー変数も使用して、スクリプトのメンテナンスを容易にすることができます。次のように、前の U-SQL スクリプトを記述することもできます。
 
     DECLARE @in  string = "/Samples/Data/SearchLog.tsv";
     DECLARE @out string = "/output/SearchLog-scalar-variables.csv";
@@ -169,7 +88,7 @@ Duration フィールドのデータ型の横にある疑問符に注目して�
         TO @out
         USING Outputters.Csv();
       
-##行セットの変換
+## 行セットの変換
 
 以下のように、**SELECT** を使用して行セットを変換します。
 
@@ -224,7 +143,7 @@ WHERE 句では [C# ブール式](https://msdn.microsoft.com/library/6a71f45d.as
         
 2 番目のクエリは最初の行セットの結果で動作するため、結果は 2 つのフィルターを組み合わせたものになることに注意してださい。また、変数名を再利用することもできます。その場合、名前は字句単位でスコープされます。
 
-##行セットの集計
+## 行セットの集計
 
 U-SQL では、使い慣れた **ORDER BY**、**GROUP BY** および集計が提供されます。
 
@@ -296,7 +215,6 @@ U-SQL の ORDER BY 句は、SELECT 式では FETCH 句と組み合わせる必�
         TO "/output/Searchlog-having.csv"
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
-
 
 ## データの結合
 
@@ -501,4 +419,4 @@ U-SQL では、データベースおよびスキーマのコンテキストで�
 - [フォーラムでサポートを受ける](http://aka.ms/adlaforums)
 - [U-SQL に関するフィードバックの提供](http://aka.ms/usqldiscuss)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

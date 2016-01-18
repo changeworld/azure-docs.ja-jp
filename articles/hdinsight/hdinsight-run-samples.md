@@ -46,11 +46,11 @@ Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラ
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - **HDInsight クラスター**。クラスターを作成できるさまざまな方法については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md)」を参照してください。
-- **Azure PowerShell を実行できるワークステーション**。「[Install Azure PowerShell 1.0 and greater (Azure PowerShell 1.0 以上のインストール)](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」をご覧ください。
+- **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell 1.0 以上のインストール](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」を参照してください。
 
-## ワード カウント - Java 
+## <a name="hdinsight-sample-wordcount"></a>ワード カウント - Java 
 
-MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (****wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
+MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
 
 ソース コードは「[付録 A](#apendix-a---the-word-count-MapReduce-program-in-java)」にあります。
 
@@ -114,13 +114,13 @@ Java MapReduce プログラムの開発手順については、「[HDInsight で
 
 3. 最初の 3 つの変数を設定し、スクリプトを実行します。
 
-## ワード カウント - C# ストリーミング
+## <a name="hdinsight-sample-csharp-streaming"></a>ワード カウント - C# ストリーミング
 
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語 map 関数と reduce 関数を記述できます。
 
-> [AZURE.NOTE]このチュートリアルの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。Linux ベースの HDInsight クラスターのストリーミング例は、「[HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)」をご覧ください。
+> [AZURE.NOTE] このチュートリアルの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。Linux ベースの HDInsight クラスターのストリーミング例は、「[HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)」をご覧ください。
 
-この例では、mapper と reducer は、[stdin][stdin-stdout-stderr] から入力を (1 行ずつ) 読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
+この例では、mapper と reducer は、[stdin][stdin-stdout-stderr] (1 行ずつ) から入力を  読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
 
 **mapper** 用の実行可能ファイルが指定されると、各 mapper タスクは mapper 開始時に別のプロセスとしてその実行可能ファイルを起動します。mapper タスクは実行されると、入力を行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。
 
@@ -148,7 +148,7 @@ Hadoop ストリーミング インターフェイスの詳細については、
 	
 		example/data/StreamingOutput/wc.txt/part-00000		
 								
-## Pi 推定
+## <a name="hdinsight-sample-pi-estimator"></a>Pi 推定
 
 Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。単位正方形の内部にランダムに配置された点は、その正方形に内接する円の内部にも円の面積に等しい確率 (Pi/4) で配置されます。Pi の値は 4R という値で計算されます。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。サンプルの点の数が大きくなるほど、推定値の精度が上がります。
 
@@ -163,7 +163,7 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
 									-ClassName "pi" `
 									-Arguments "16", "10000000"
 
-## 10 GB GraySort
+## <a name="hdinsight-sample-10gb-graysort"></a>10 GB GraySort
 
 このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。使用する MapReduce アプリケーションは Owen O'Malley と Arun Murthy が開発したもので、2009 年にはテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。これも含めたソート ベンチマークの詳細については、[Sortbenchmark](http://sortbenchmark.org/) サイトを参照してください。
 
@@ -987,10 +987,10 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [hdinsight-get-started]: ../hdinsight-get-started.md
 
 [hdinsight-samples]: hdinsight-run-samples.md
-[hdinsight-sample-10gb-graysort]: hdinsight-sample-10gb-graysort.md
-[hdinsight-sample-csharp-streaming]: hdinsight-sample-csharp-streaming.md
-[hdinsight-sample-pi-estimator]: hdinsight-sample-pi-estimator.md
-[hdinsight-sample-wordcount]: hdinsight-sample-wordcount.md
+[hdinsight-sample-10gb-graysort]: #hdinsight-sample-10gb-graysort
+[hdinsight-sample-csharp-streaming]: #hdinsight-sample-csharp-streaming
+[hdinsight-sample-pi-estimator]: #hdinsight-sample-pi-estimator
+[hdinsight-sample-wordcount]: #hdinsight-sample-wordcount
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
@@ -998,4 +998,4 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

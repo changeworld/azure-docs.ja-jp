@@ -65,7 +65,7 @@ Azure のダウンロード ページから入手できる、最新の Azure Pow
 ### 手順 2.
 Azure アカウントにログインします。
 
-	PS C:\> Login-AzureRmAccopunt
+	PS C:\> Login-AzureRmAccount
 
 資格情報を使用して認証を行うように求めるメッセージが表示されます。
 
@@ -141,12 +141,13 @@ Traffic Manager プロファイルを変更して、エンドポイントを追�
 	PS C:\> $profile.Ttl = 300
 	PS C:\> Set-AzureTrafficManagerProfile –TrafficManagerProfile $profile
 
-## Traffic Manager エンドポイントの追加[](#adding-traffic-manager-endpoints)
+## Traffic Manager エンドポイントの追加
 Traffic Manager エンドポイントには、次の 3 種類があります。1.Azure エンドポイント: Azure でホストされるサービスを表します。2.外部エンドポイント: Azure の外部でホストされるサービスを表します。3.入れ子になったエンドポイント: Traffic Manager プロファイルの入れ子構造の階層を作成するために使用され、より複雑なアプリケーションの高度なトラフィック ルーティング構成を可能にします。これらは ARM API ではまだサポートされていません。
 
 これら 3 つのすべてのケースでは、エンドポイントの追加方法が 2 つあります。1. 「[Traffic Manager プロファイルの更新](#update-traffic-manager-profile)」で説明したような 3 つの手順から成るプロセスを使用します。このプロセスでは、Get-AzureRmTrafficManagerProfile を使用してプロファイル オブジェクトを取得し、Add-AzureRmTrafficManagerEndpointConfig を使用して、そのオブジェクトをオフラインで更新してエンドポイントを追加し、Set-AzureRmTrafficManagerProfile を使用して Azure Traffic Manager に変更をアップロードします。この方法の利点は、1 回の更新でエンドポイントの変更を複数行うことができる点です。2.New-AzureRmTrafficManagerEndpoint コマンドレットを使用します。これにより、1 回の操作で既存の Traffic Manager プロファイルにエンドポイントが追加されます。
 
 ### Azure エンドポイントの追加
+
 Azure エンドポイントは、Azure でホストされる他のサービスを参照します。現時点では、3 種類の Azure エンドポイントがサポートされています。1.Azure Web Apps。2."クラシック" クラウド サービス (PaaS サービスまたは IaaS 仮想マシンを含めることができます)。3.ARM Microsoft.Network/publicIpAddress リソース (ロード バランサーまたは仮想マシン NIC に接続できます)。publicIpAddress には、Traffic Manager で使用するために DNS 名を割り当てておく必要があることに注意してください。
 
 いずれの場合にも、次のことが当てはまります。- サービスは、Add-AzureRmTrafficManagerEndpointConfig または New-AzureRmTrafficManagerEndpoint の "targetResourceId" パラメーターを使用して指定されます。- "Target" と "EndpointLocation" は指定しないでください。これらは、上記で指定した TargetResourceId により暗黙的に指定されています。- "Weight" の指定は省略可能です。Weight が使用されるのは、プロファイルがトラフィック ルーティング方法として "Weighted" を使用するように構成されている場合のみです。それ以外の場合は、無視されます。指定する場合は、1 ～ 1,000 の値にする必要があります。既定値は "1" です。- "Priority" の指定は省略可能です。Priority が使用されるのは、プロファイルがトラフィック ルーティング方法として "Priority" を使用するように構成されている場合のみです。それ以外の場合は、無視されます。有効な値は 1 ～ 1,000 です (値が小さくなるほど、優先度が高くなります)。1 つのエンドポイントに指定した場合は、すべてのエンドポイントに指定する必要があります。省略した場合は、1、2、3 などから始まる既定値が、エンドポイントが指定される順に適用されます。
@@ -264,4 +265,4 @@ Traffic Manager プロファイルを削除するには、プロファイル名�
 [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0107_2016-->

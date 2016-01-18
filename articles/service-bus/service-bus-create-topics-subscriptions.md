@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/16/2015"
+   ms.date="12/28/2015"
    ms.author="sethm" />
 
 # Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する
@@ -148,6 +148,6 @@ namespaceManager.CreateSubscription("DataCollectionTopic", "Dashboard", dashboar
 
 ## 次のステップ
 
-「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」を参照し、POS 小売りシナリオでキューを使用する方法を学習してください。
+POS 小売シナリオでキューを使用する方法については、「[Service Bus キューを使用するアプリケーションを作成する](service-bus-create-queues.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

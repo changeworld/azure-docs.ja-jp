@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/06/2015"
+	ms.date="01/05/2016"
 	ms.author="stefsch"/>
 
 # App Service 環境の概要
@@ -104,4 +104,4 @@ ExpressRoute での App Service 環境の使用方法の詳細については、
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

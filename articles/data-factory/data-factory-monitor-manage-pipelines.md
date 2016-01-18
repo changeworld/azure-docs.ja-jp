@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="01/04/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory のパイプラインの監視と管理
@@ -206,9 +206,6 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 
 #### PowerShell を使用してエラーをデバッグする
 1.	**Azure PowerShell** を起動します。
-2.	Data Factory コマンドレットは **AzureResourceManager** モードでのみ使用できるので、このモードに切り替えます。
-
-		switch-azuremode AzureResourceManager
 3.	**Get-AzureDataFactorySlice** コマンドを実行してスライスとその状態を確認します。[状態] が **[Failed]** になっているスライスが表示されます。
 
 		Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-TableName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
@@ -322,7 +319,7 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 	                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource",
 	                        "operationName": "RunFinished",
 	                        "status": "Failed",
-	                            "subStatus": "FailedExecution"   
+	                        "subStatus": "FailedExecution"   
 	                    }
 	                },
 	                "action": 
@@ -354,9 +351,9 @@ OnDemandClusterDeleted | Succeeded
 上記の例で使用する JSON 要素の詳細については、「[アラート ルールの作成](https://msdn.microsoft.com/library/azure/dn510366.aspx)」を参照してください。
 
 #### アラートのデプロイ 
-アラートをデプロイするには、次の例に示すように Azure PowerShell コマンドレットの **New-AzureResourceGroupDeployment** を使用します。
+アラートをデプロイするには、次の例に示すように Azure PowerShell コマンドレットの **New-AzureRmResourceGroupDeployment** を使用します。
 
-	New-AzureResourceGroupDeployment -ResourceGroupName adf     -TemplateFile .\ADFAlertFailedSlice.json  
+	New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\ADFAlertFailedSlice.json  
 
 リソース グループのデプロイメントが正常に終了すると、次のメッセージが表示されます。
 
@@ -376,9 +373,9 @@ OnDemandClusterDeleted | Succeeded
 	Outputs           :
 
 #### Azure リソース グループのデプロイメント一覧の取得
-デプロイした Azure リソース グループのデプロイメント一覧を取得するには、次の例に示すように、**Get-AzureResourceGroupDeployment** コマンドレットを使用します。
+デプロイした Azure リソース グループのデプロイメント一覧を取得するには、次の例に示すように、**Get-AzureRmResourceGroupDeployment** コマンドレットを使用します。
 
-	Get-AzureResourceGroupDeployment -ResourceGroupName adf
+	Get-AzureRmResourceGroupDeployment -ResourceGroupName adf
 	
 	DeploymentName    : ADFAlertFailedSlice
 	ResourceGroupName : adf
@@ -546,9 +543,9 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 **アラートのデプロイ:**
 
-アラートをデプロイするには、次の例に示すように Azure PowerShell コマンドレットの **New-AzureResourceGroupDeployment** を使用します。
+アラートをデプロイするには、次の例に示すように Azure PowerShell コマンドレットの **New-AzureRmResourceGroupDeployment** を使用します。
 
-	New-AzureResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\FailedRunsGreaterThan5.json
+	New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\FailedRunsGreaterThan5.json
 
 デプロイが成功すると、次のメッセージが表示されます。
 
@@ -566,4 +563,7 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 	Parameters        :
 	Outputs           
 
-<!---HONumber=AcomDC_1217_2015-->
+
+**Add-AlertRule** コマンドレットを使用して、アラート ルールをデプロイすることもできます。詳細と例については、「[Add-AlertRule](https://msdn.microsoft.com/library/mt282468.aspx)」トピックを参照してください。
+
+<!---HONumber=AcomDC_0107_2016-->

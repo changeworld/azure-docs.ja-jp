@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/20/2015"
+   ms.date="01/04/2016"
    ms.author="lodipalm"/>
 
 
@@ -57,4 +57,4 @@ Data Warehouse 移行ユーティリティは、[ここ][]からダウンロー�
 [開発]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-develop/
 [ここ]: https://migrhoststorage.blob.core.windows.net/sqldwsample/DataWarehouseMigrationUtility.zip
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0107_2016-->

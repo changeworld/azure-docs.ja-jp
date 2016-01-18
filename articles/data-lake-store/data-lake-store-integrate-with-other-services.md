@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/28/2015"
+   ms.date="01/04/2016"
    ms.author="nitinme"/>
 
 # Data Lake Store と他の Azure サービスを統合する
@@ -43,6 +43,10 @@ Data Lake Store で Data Lake Analytics を使用する方法については、�
 
 Data Lake Store で Azure Data Factory を使用する方法については、「[Data Factory を使用し、Data Lake Store のデータを移動する](data-factory/data-factory-azure-datalake-connector.md)」を参照してください。
 
+## Azure Storage BLOB から Data Lake Store へのデータのコピー
+
+Azure Data Lake Store には、AdlCopy というコマンド ライン ツールがあります。このツールを使用すると、Azure Blob Storage のデータを Data Lake Store アカウントにコピーできます。詳細については、「[Azure Storage BLOB から Data Lake Store へのデータのコピー](data-lake-store-copy-data-azure-storage-blob.md)」を参照してください。
+
 
 ## 関連項目
 
@@ -50,4 +54,4 @@ Data Lake Store で Azure Data Factory を使用する方法については、�
 - [Azure プレビュー ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 - [Azure PowerShell で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

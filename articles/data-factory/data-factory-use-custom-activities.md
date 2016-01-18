@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/15/2015"
+	ms.date="01/05/2016"
 	ms.author="spelluru"/>
 
 # Azure Data Factory パイプラインでカスタム アクティビティを使用する
@@ -74,15 +74,15 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 1.	.NET クラス ライブラリ プロジェクトを作成します。
 	<ol type="a">
 	<li><b>Visual Studio 2012</b> または <b>Visual Studio 2013</b> を起動します。</li>
-	<li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li> 
-	<li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。このチュートリアルでは C# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。</li> 
+	<li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li>
+	<li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。このチュートリアルでは C# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。</li>
 	<li>右側にあるプロジェクトの種類の一覧から <b>[クラス ライブラリ]</b> を選択します。</li>
-	<li><b>[プロジェクト名]</b> に「<b>MyDotNetActivity</b>」と入力します。</li> 
+	<li><b>[プロジェクト名]</b> に「<b>MyDotNetActivity</b>」と入力します。</li>
 	<li><b>[場所]</b> で <b>[C:\ADFGetStarted]</b> を選択します。</li>
 	<li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
 </ol>
 2.  <b>[ツール]</b> をクリックし、<b>[NuGet パッケージ マネージャー]</b> をポイントして、<b>[パッケージ マネージャー コンソール]</b> をクリックします。
-3.	<b>[パッケージ マネージャー コンソール]</b> で、次のコマンドを実行して <b>Microsoft.Azure.Management.DataFactories</b> をインポートします。 
+3.	<b>[パッケージ マネージャー コンソール]</b> で、次のコマンドを実行して <b>Microsoft.Azure.Management.DataFactories</b> をインポートします。
 
 		Install-Package Microsoft.Azure.Management.DataFactories
 
@@ -102,7 +102,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 		using Microsoft.WindowsAzure.Storage;
 		using Microsoft.WindowsAzure.Storage.Blob;
-  
+
 6. **namespace** の名前を **MyDotNetActivityNS** に変更します。
 
 		namespace MyDotNetActivityNS
@@ -112,7 +112,6 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 		public class MyDotNetActivity : IDotNetActivity
 
 8. **IDotNetActivity** インターフェイスの **Execute** メソッドを **MyDotNetActivity** クラスに実装 (追加) し、次のサンプル コードをメソッドにコピーします。
-
 
 	次のサンプル コードでは、入力 BLOB 内の行数をカウントし、BLOB へのパス、BLOB 内の行数、アクティビティが実行されたコンピューター、現在の日時を出力 BLOB に生成します。
 
@@ -127,6 +126,18 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
             Activity activity,
             IActivityLogger logger)
         {
+			// to get extended properties (for example: SliceStart)
+			DotNetActivity dotNetActivity = (DotNetActivity)activity.TypeProperties;
+            string sliceStartString = dotNetActivity.ExtendedProperties["SliceStart"];
+
+			// to log all extended properties			
+			IDictionary<string, string> extendedProperties = dotNetActivity.ExtendedProperties;
+			logger.Write("Logging extended properties if any...");
+			foreach (KeyValuePair<string, string> entry in extendedProperties)
+			{
+				logger.Write("<key:{0}> <value:{1}>", entry.Key, entry.Value);
+			}
+		
 
             // declare types for input and output data stores
             AzureStorageLinkedService inputLinkedService;
@@ -141,8 +152,8 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
             foreach (LinkedService ls in linkedServices)
                 logger.Write("linkedService.Name {0}", ls.Name);
 
-			// using First method instead of Single since we are using the same 
-			// Azure Storage linked service for input and output. 
+            // using First method instead of Single since we are using the same 
+            // Azure Storage linked service for input and output. 
             inputLinkedService = linkedServices.First(
                 linkedService =>
                 linkedService.Name ==
@@ -286,7 +297,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 10. プロジェクトをコンパイルします。メニューの **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
 11. **Windows エクスプローラー**を起動し、ビルドの種類に応じて、**bin\\debug** フォルダーまたは **bin\\release** フォルダーに移動します。
-12. <project folder>\\bin\\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。エラー発生時の問題の原因となったソース コードの行番号など、追加情報を取得するために、**MyDotNetActivity.pdb** ファイルを含めることもできます。
+12. <project folder>\\bin\\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。エラー発生時の問題の原因となったソース コードの行番号など、追加情報を取得するために、MyDotNetActivity.pdb ファイルを含めることもできます。 
 
 	![バイナリ出力ファイル](./media/data-factory-use-custom-activities/Binaries.png)
 13. **MyDotNetActivity.zip** を BLOB として **customactvitycontainer** にアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内の **StorageLinkedService** リンク サービスが使用する Azure BLOB ストレージ内にあります。BLOB コンテナー **customactivitycontainer** が既に存在していなければ、作成します。
@@ -341,13 +352,13 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 			
 			return blobDataset.FolderPath;
 
-5.	コードで、ファイル名 (BLOB 名) を取得する **GetFileName** を呼び出します。このコードは、フォルダー パスを取得する上記のコードと似ています。
+5.	コードで、ファイル名 (BLOB 名) を取得する **GetFileName** メソッドを呼び出します。このコードは、フォルダー パスを取得する上記のコードと似ています。
 
 			AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
 
 			return blobDataset.FileName;
 
-6.	新しい URI オブジェクトを作成してファイル名が出力されます。URI コンストラクターは **BlobEndpoint** プロパティを使用してコンテナー名を返します。フォルダー パスとファイル名が追加され、出力 BLOB URI が構築されます。
+6.	新しい URI オブジェクトを作成してファイル名が出力されます。URI コンストラクターは **BlobEndpoint** プロパティを使用して、コンテナー名を返します。フォルダー パスとファイル名が追加され、出力 BLOB URI が構築されます。
 
 			// Write the name of the file. 
 			Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
@@ -389,7 +400,7 @@ mycontainer\\output フォルダーには、1 行または複数行 (入力フ�
 	1.	左側のメニューの **[新規]** をクリックします。
 	2.	**[新規]** ブレードの **[データ + 分析]** をクリックします。
 	3.	**[データ分析]** ブレードの **[Data Factory]** をクリックします。
-2.	**[新しい Data Factory]** ブレードで、[名前] フィールドに「**CustomActivityFactory**」と入力します。Azure Data Factory の名前はグローバルに一意にする必要があります。**""CustomActivityFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、データ ファクトリの名前を変更して (**yournameCustomActivityFactory** など) 作成し直してください。
+2.	**[新しい Data Factory]** ブレードで、[名前] フィールドに「**CustomActivityFactory**」と入力します。Azure Data Factory の名前はグローバルに一意にする必要があります。**""CustomActivityFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、Data Factory の名前を変更して (**yournameCustomActivityFactory** など) 作成し直してください。
 3.	**[リソース グループ名]** をクリックし、既存のリソース グループを選択するか、新しいリソース グループを作成します。 
 4.	作成する Data Factory に適した**サブスクリプション**と**リージョン**を使用していることを確認します。 
 5.	**[新しい Data Factory]** ブレードで **[作成]** をクリックします。
@@ -420,11 +431,11 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 1. **Azure ポータル**の Data Factory のホーム ページで、**[作成とデプロイ]** をクリックします。
 2. Data Factory エディターで、コマンド バーの **[新しいコンピューティング]** をクリックし、メニューから **[オンデマンド HDInsight クラスター]** を選択します。
-2. JSON スクリプトで、以下の手順を実行します。 
+2. JSON スクリプトで、以下の手順を実行します。
 	1. **clusterSize** プロパティには、HDInsight クラスターのサイズを指定します。
-	3. **timeToLive** プロパティには、顧客が削除されるまでの間にアイドル状態でいられる時間を指定します。 
+	3. **timeToLive** プロパティには、顧客が削除されるまでの間にアイドル状態でいられる時間を指定します。
 	4. **version** プロパティには、使用する HDInsight のバージョンを指定します。このプロパティを除外した場合は、最新バージョンが使用されます。  
-	5. **linkedServiceName** には、入門チュートリアルで作成した **StorageLinkedService** を指定します。 
+	5. **linkedServiceName** には、入門チュートリアルで作成した **StorageLinkedService** を指定します。
 
 			{
 			  "name": "HDInsightOnDemandLinkedService",
@@ -445,11 +456,11 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 1. **Azure ポータル**の Data Factory のホーム ページで、**[作成とデプロイ]** をクリックします。
 2. **Data Factory エディター**で、コマンド バーの **[新しいコンピューティング]** をクリックし、メニューから **[HDInsight クラスター]** を選択します。
-2. JSON スクリプトで、以下の手順を実行します。 
+2. JSON スクリプトで、以下の手順を実行します。
 	1. **clusterUri** プロパティには、HDInsight の URL を入力します。たとえば、https://<clustername>.azurehdinsight.net/ などです。     
 	2. **UserName** プロパティには、HDInsight クラスターにアクセスできるユーザー名を入力します。
-	3. **Password** プロパティには、ユーザーのパスワードを入力します。 
-	4. **LinkedServiceName** プロパティには、「**StorageLinkedService**」と入力します。これは、入門チュートリアルで作成したリンク サービスです。 
+	3. **Password** プロパティには、ユーザーのパスワードを入力します。
+	4. **LinkedServiceName** プロパティには、「**StorageLinkedService**」と入力します。これは、入門チュートリアルで作成したリンク サービスです。
 
 2. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
@@ -540,10 +551,10 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 
 ### カスタム アクティビティを使用するパイプラインの作成と実行
-   
-1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**... (省略記号)** をクリックすると表示されます。
-2. 右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。**HDInsightLinkedService** リンク サービスの作成手順を実行した場合、独自のクラスターを使用するには、次の JSON で **HDInsightOnDemandLinkedService** を **HDInsightLinkedService** に置き換えます。 
-		
+
+1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**... (省略記号)** をクリックすると表示されます。 
+2. 右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。**HDInsightLinkedService** リンク サービスの作成手順を実行した場合、独自のクラスターを使用するには、次の JSON で **HDInsightOnDemandLinkedService** を **HDInsightLinkedService** に置き換えます。
+
 		{
 		  "name": "ADFTutorialPipelineCustom",
 		  "properties": {
@@ -658,6 +669,37 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 ## カスタム アクティビティの更新
 カスタム アクティビティのコードを更新する場合は、カスタム アクティビティを構築し、新しいバイナリを含む zip ファイルを BLOB ストレージにアップロードします。
 
+## 拡張プロパティへのアクセス
+次に示すようにアクティビティ JSON の拡張プロパティを宣言できます。
+
+	"typeProperties": {
+	  "AssemblyName": "MyDotNetActivity.dll",
+	  "EntryPoint": "MyDotNetActivityNS.MyDotNetActivity",
+	  "PackageLinkedService": "StorageLinkedService",
+	  "PackageFile": "customactivitycontainer/MyDotNetActivity.zip",
+	  "extendedProperties": {
+	    "SliceStart": "$$Text.Format('{0:yyyyMMddHH-mm}', Time.AddMinutes(SliceStart, 0))",
+		"DataFactoryName": "CustomActivityFactory"
+	  }
+	},
+
+上記の例では、2 つの拡張プロパティ (**SliceStart** と **DataFactoryName**) があります。SliceStart の値は、SliceStart システム変数に基づいています。サポートされているシステム変数の一覧については、「[システム変数](data-factory-scheduling-and-execution.md#data-factory-system-variables)」を参照してください。DataFactoryName の値は、"CustomActivityFactory" にハードコーディングされます。
+
+**Execute** メソッドでこれらの拡張プロパティにアクセスするには、次のようなコードを使用します。
+
+	// to get extended properties (for example: SliceStart)
+	DotNetActivity dotNetActivity = (DotNetActivity)activity.TypeProperties;
+	string sliceStartString = dotNetActivity.ExtendedProperties["SliceStart"];
+
+	// to log all extended properties                               
+    IDictionary<string, string> extendedProperties = dotNetActivity.ExtendedProperties;
+    logger.Write("Logging extended properties if any...");
+    foreach (KeyValuePair<string, string> entry in extendedProperties)
+    {
+    	logger.Write("<key:{0}> <value:{1}>", entry.Key, entry.Value);
+	}
+
+
 ## <a name="AzureBatch"></a>Azure Batch のリンクされたサービスの使用
 > [AZURE.NOTE]Azure Batch サービスの概要については、「[Azure Batch の技術概要][batch-technical-overview]」をご覧ください。Azure Batch サービスの使用をスムーズに開始するには、「[.NET 向け Azure Batch ライブライの概要][batch-get-started]」を参照してください。
 
@@ -674,7 +716,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 1. [Azure ポータル](http://manage.windowsazure.com)を使用して、Azure Batch アカウントを作成します。手順については、「[Azure Batch アカウントの作成と管理][batch-create-account]」の記事を参照してください。Azure Batch のアカウント名とアカウント キーをメモしておきます。
 
-	[New-AzureBatchAccount][new-azure-batch-account] コマンドレットを使用して、Azure Batch アカウントを作成することもできます。このコマンドレットの使用方法の詳細については、「[Using Azure PowerShell to Manage Azure Batch Account (Azure PowerShell を使用した Azure Batch アカウントの管理)][azure-batch-blog]」をご覧ください。 
+	[New-AzureBatchAccount][new-azure-batch-account] コマンドレットを使用して、Azure Batch アカウントを作成することもできます。このコマンドレットの使用方法の詳細については、「[Using Azure PowerShell to Manage Azure Batch Account (Azure PowerShell を使用した Azure Batch アカウントの管理)][azure-batch-blog]」をご覧ください。
 2. Azure Batch プールの作成[Azure Batch Explorer ツール][batch-explorer]のソース コードをダウンロードし、コンパイルして使用することもできますが、[.NET 向け Azure Batch ライブラリ][batch-net-library]を使用して Azure Batch プールを作成することもできます。Azure Batch Explorer の使用手順については、[Azure Batch Explorer サンプル チュートリアル][batch-explorer-walkthrough]のページを参照してください。
 
 	[New-AzureRmBatchPool](https://msdn.microsoft.com/library/mt628690.aspx) コマンドレットを使用して、Azure Batch プールを作成することもできます。
@@ -709,13 +751,13 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 		}
 
 	> [AZURE.IMPORTANT]**[Azure Batch アカウント] ブレード**の **URL** は、accountname.region.batch.azure.com です。JSON の **batchUri** プロパティでは、この URL から **"accountname" を削除**し、**accountName** JSON プロパティの**accountname** を必要があります。
-	  
+
 	**poolName** プロパティでは、プール名の代わりにプール ID を指定することもできます。
 
 	これらのプロパティについては、[Azure Batch リンク サービスに関する MSDN のトピック](https://msdn.microsoft.com/library/mt163609.aspx)をご覧ください。
 
 2.  Data Factory エディターで、チュートリアルで作成したパイプラインの JSON 定義を開き、**HDInsightLinkedService** を **AzureBatchLinkedService** に置き換えます。
-3.  Azure Batch サービスを使用してシナリオをテストできるように、パイプラインの開始時刻と終了時刻を変更できます。 
+3.  Azure Batch サービスを使用してシナリオをテストできるように、パイプラインの開始時刻と終了時刻を変更できます。
 4.  次の図に示すように、Azure Batch Explorer でスライスの処理に関連する Azure Batch のタスクを確認できます。
 
 	![Azure Batch のタスク][image-data-factory-azure-batch-tasks]
@@ -761,4 +803,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

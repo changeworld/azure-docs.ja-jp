@@ -45,7 +45,7 @@
 ## パフォーマンス チューニングの手順
 コピー アクティビティを使用した Azure Data Factory ソリューションのパフォーマンスを調整する場合には、以下の一般的な手順を実行することをお勧めします。
 
-1.	**ベースラインの確立**。 開発フェーズでは、代表的なサンプル データに対してコピー アクティビティを使用してパイプラインをテストします。Azure Data Factory の[スライシング モデル](data-factory-scheduling-and-execution.md#time-series-datasets-and-data-slices)を使用することで、操作するデータの量を制限できます。
+1.	**ベースラインの確立。** 開発フェーズでは、代表的なサンプル データに対してコピー アクティビティを使用してパイプラインをテストします。Azure Data Factory の[スライシング モデル](data-factory-scheduling-and-execution.md#time-series-datasets-and-data-slices)を使用することで、操作するデータの量を制限できます。
 
 	Azure プレビュー ポータルで、出力データセットに関する [データ スライス] ブレードと [アクティビティの実行の詳細] ブレード (これらはコピー アクティビティの期間とコピーされたデータのサイズを表示) を調べて、実行時間とパフォーマンス特性を収集します。
 
@@ -218,10 +218,10 @@ Microsoft データ ストアの場合は、データ ストアに限定した[�
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報をいくつか示します。
 
 - Azure Storage (Azure BLOB、Azure Table など): [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md) と [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage//storage-performance-checklist.md)
-- Azure SQL Database: [パフォーマンスを監視](../sql-database/sql-database-service-tiers.md?rnd=1#monitoring-performance)し、データベース スループット ユニット (DTU) の割合を確認できます。
-- Azure SQL Data Warehouse: その機能は、Data Warehouse ユニット (DWU) で測定されます。「[SQL Data Warehouse を使用した弾力的なパフォーマンスとスケール](../sql-data-warehouse/sql-data-warehouse-performance-scale/)」を参照してください。
-- Azure DocumentDB: [Performance level in DocumentDB (DocumentDB のパフォーマンス レベル)](../documentdb/documentdb-performance-levels/)
+- Azure SQL Database: [パフォーマンスを監視](../sql-database/sql-database-service-tiers.md#monitoring-performance)し、データベース スループット ユニット (DTU) の割合を確認できます。
+- Azure SQL Data Warehouse: その機能は、Data Warehouse ユニット (DWU) で測定されます。「[SQL Data Warehouse を使用した弾力的なパフォーマンスとスケール](../sql-data-warehouse/sql-data-warehouse-performance-scale.md)」を参照してください。
+- Azure DocumentDB: [Performance level in DocumentDB (DocumentDB のパフォーマンス レベル)](../documentdb/documentdb-performance-levels.md)
 - オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)
 - オンプレミスのファイル サーバー: [Performance Tuning for File Servers (ファイル サーバーのパフォーマンス チューニング)](https://msdn.microsoft.com/library/dn567661.aspx)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

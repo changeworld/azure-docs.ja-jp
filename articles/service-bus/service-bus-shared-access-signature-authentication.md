@@ -25,7 +25,7 @@ Service Bus の SAS 認証サポートは、Azure SDK バージョン 2.0 以降
 
 Service Bus の SAS 認証には、Service Bus リソースに対する関連した権限を使用した暗号化キーの構成が伴います。クライアントは SAS トークンを渡して Service Bus のリソースへのアクセスを要求します。このトークンは、アクセスされるリソース URI と、構成されたキーで署名された有効期限で構成されます。
 
-Shared Access Signature の承認規則は、Service Bus の[リレー](service-bus-fundamentals-hybrid-solutions.md/#relays)、[キュー](service-bus-fundamentals-hybrid-solutions.md/#queues)、[トピック](service-bus-fundamentals-hybrid-solutions.md/#topics)、[Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) で構成できます。
+Shared Access Signature の承認規則は、Service Bus の[リレー](service-bus-fundamentals-hybrid-solutions.md#relays)、[キュー](service-bus-fundamentals-hybrid-solutions.md#queues)、[トピック](service-bus-fundamentals-hybrid-solutions.md#topics)、[Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) で構成できます。
 
 SAS 認証では、次の要素が使用されます。
 
@@ -258,4 +258,4 @@ Service Bus 認証の背景の詳細については、「[Service Bus の認証�
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="09/22/2015"
+   ms.date="01/04/2016"
    ms.author="rasquill"/>
 
 # Azure で docker マシンを使用する方法
@@ -201,7 +201,7 @@ Docker でコンテナーのポート 80 が VM のポート 49153 に割り当�
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
-[Docker のユーザーガイド](https://docs.docker.com/userguide/)をご確認いただき、Microsoft Azure でアプリケーションをいくつか作成してみましょう。または、Azure で [**Docker** と Swarm](https://github.com/docker/swarm) を使って(virtual-machines-docker-swarm) Docker と Azure での Swarm の使用方法をご確認ください。
+[Docker のユーザーガイド](https://docs.docker.com/userguide/)をご確認いただき、Microsoft Azure でアプリケーションをいくつか作成してみましょう。または、Azure で [**Docker** と Swarm](https://github.com/docker/swarm) を使って(virtual-machines-docker-swarm.md) Docker と Azure での Swarm の使用方法をご確認ください。
 
 <!--Image references-->
 [nginx]: ./media/virtual-machines-docker-machine/nginxondocker.png
@@ -214,4 +214,4 @@ Docker でコンテナーのポート 80 が VM のポート 49153 に割り当�
 [Link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

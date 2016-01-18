@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="01/04/2016"
    ms.author="nicw;JRJ@BigBangData.co.uk;mausher"/>
 
 # SQL Data Warehouse を使用した弾力的なパフォーマンスとスケール
@@ -93,4 +93,4 @@ PowerShell の使用の詳細については、「[Introduction to PowerShell cm
 
 [Azure クラシック ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/23/2015"
+   ms.date="12/31/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの式
@@ -408,7 +408,7 @@
 次の例は、リソース グループに基づいてストレージ アカウントの一意の名前を作成する方法を示しています。
 
     "resources": [{ 
-        "name": "[concat('ContosoStorage', uniqueString(resourceGroup().id))]", 
+        "name": "[concat('contosostorage', uniqueString(resourceGroup().id))]", 
         "type": "Microsoft.Storage/storageAccounts", 
         ...
 
@@ -769,4 +769,4 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 - 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 - 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

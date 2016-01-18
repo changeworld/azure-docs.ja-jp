@@ -1,5 +1,7 @@
-This setting allows you to specify the DNS server that you want to use for name resolution for this virtual network. It does not create a DNS server.
+この設定では、この仮想ネットワークの名前解決に使用する DNS サーバーを指定することができます。この設定で、DNS サーバーは作成されません。
 
-1. On the **Settings** page for your virtual network, navigate to **DNS Servers** and click to expand.
-2. On the **DNS Servers** page, under **DNS servers**, select **Custom DNS**.
-3. In the **Primary DNS server** field, enter the IP address of the DNS server that you want to use for name resolution.
+1. 仮想ネットワークの **[設定]** ページで、**[DNS サーバー]** に移動し、クリックして展開します。
+2. **[DNS サーバー]** ページの **[DNS サーバー]** で、**[カスタム DNS]** を選択します。
+3. **[プライマリ DNS サーバー]** フィールドで、名前解決に使用する DNS サーバー名の IP アドレスを入力します。
+
+<!---HONumber=AcomDC_0107_2016-->

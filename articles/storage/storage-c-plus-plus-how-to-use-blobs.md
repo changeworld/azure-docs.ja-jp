@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-	ms.date="09/23/2015" 
+    ms.date="01/05/2016" 
     ms.author="tamram"/>
 
 # C++ から BLOB ストレージを使用する方法  
@@ -242,4 +242,4 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
 
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

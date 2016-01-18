@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="11/02/2015"
+ms.date="01/05/2015"
 ms.author="larryfr"/>
 
 #SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする
@@ -144,11 +144,16 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 4. **[URL パターン]** タブを選択し、**[新しいパターンの追加]** を選択します。以下を使用してパターンを定義し、**[OK]** をクリックします。
 
-	* **パターン名** - **clusternodes** - パターンのフレンドリ名です。
+	* **[パターン名]** - **clusternodes** - パターンのフレンドリ名です。
 
 	* **URL パターン** - ***internal.cloudapp.net*** -クラスター ノードの内部の完全修飾ドメイン名と一致するパターンを定義します。
 
 	![foxyproxy のパターン](./media/hdinsight-linux-ambari-ssh-tunnel/foxypattern.png)
+    
+    HDInsight クラスターで Storm を使用している場合は、次の値でパターンを追加する必要もあります。
+    
+    * **[パターン名]** - **ワーカー ノード**
+    * **URL パターン** - *** 10.0.0*** - Storm UI が IP アドレスでワーカー ノードのデータにアクセスすることを許可します。
 
 4. **[OK]** をクリックしてプロキシを追加し、**[プロキシの設定]** を閉じます。
 
@@ -197,4 +202,4 @@ HDInsight での SSH の使用方法の詳細については、以下の記事�
 
 * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/01/2015" 
+	ms.date="01/05/2016" 
 	ms.author="awills"/>
  
 # Application Insights のリソース、ロール、アクセス制御
@@ -110,4 +110,4 @@ Reader | Can view but not change anything
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

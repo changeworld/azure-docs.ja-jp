@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/23/2015"
+   ms.date="01/04/2016"
    ms.author="sahajs"/>
 
 # SQL Data Warehouse でのデータベースのユーザー エラーからの復旧
@@ -136,4 +136,4 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -13,51 +13,55 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="12/02/2015"
+   ms.date="12/30/2015"
    ms.author="andkjell;billmath"/>
 
 # プレビュー段階の機能の詳細
 このトピックでは、現在プレビュー段階の機能を使用する方法について説明します。
 
-## ユーザーの書き戻し
-> [AZURE.IMPORTANT]ユーザーの書き戻しプレビュー機能は、AAD Connectの 8 月の更新時に一時的に削除されました。この機能を有効にしていた場合は、無効にする必要があります。
+## ディレクトリ拡張機能
+ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure AD のスキーマを拡張できます。独自に構築した LOB アプリで利用する属性を引き続きオンプレミスで管理することが可能です。これらの属性は、[Azure AD Graph ディレクトリ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)または [Microsoft Graph](https://graph.microsoft.io/) を通じて利用できます。それぞれ [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net) と [Microsoft Graph Explorer](https://graphexplorer2.azurewebsites.net/) を使用して、利用可能な属性を表示できます。
 
-ユーザーの書き戻しは初期プレビュー段階です。この機能を使用できるのは、Azure AD がすべてのユーザー オブジェクトのソースであり、この機能を有効にする前にオンプレミスの Active Directory が空である場合に限られます。
+現在のところ、これらの属性が使用される Office 365 ワークロードはありません。
 
-> [AZURE.IMPORTANT]この機能はテスト環境でのみテストします。本番環境で使用される Azure AD ディレクトリでは使用しないでください。
+これらの属性が利用できるアプリケーションは、Azure AD Connect のインストール中に登録されます。このアプリケーションは、Azure ポータルで確認できます。![Schema Extension App](./media/active-directory-aadconnect-feature-preview/extension3.png)
+
+今後は、これらの属性を Graph を通じて利用できます。![Graph](./media/active-directory-aadconnect-feature-preview/extension4.png)
+
+属性には、extension\_{AppClientId}\_ というプレフィックスが付きます。AppClientId の値は、ご使用の Azure AD ディレクトリに存在するすべての属性で共通となります。
+
+単一値の属性だけがサポートされます。属性の値は、250 文字以下である必要があります。
 
 ## グループの書き戻し
-オプション機能のグループの書き戻しのためのオプションでは、"Office 365 グループ" を Exchange がインストールされているフォレストに書き戻すことができます。これは、クラウドで常に管理される新しいグループの種類です。次のように outlook.office365.com や myapps.microsoft.com で確認することができます。
+オプション機能のグループの書き戻しのためのオプションでは、"Office 365 グループ" を Exchange がインストールされているフォレストに書き戻すことができます。これは、クラウドで常に管理されるグループです。オンプレミスの Exchange をご利用の場合、これらのグループをオンプレミスに書き戻すことができます。オンプレミスの Exchange メールボックスを所有するユーザーは、それらのグループから電子メールを送受信することができます。
 
+Office 365 グループの詳細とその使い方については、[こちら](http://aka.ms/O365g)をご覧ください。
 
-![フィルターの同期](./media/active-directory-aadconnect-feature-preview/office365.png)
+このグループは、オンプレミスの AD DS では配布グループとして表現されます。この新しいグループの種類が表示されるようにするには、オンプレミスの Exchange サーバーを Exchange 2013 累積更新プログラム 8 (2015 年 3 月リリース) または Exchange 2016 で更新する必要があります。
 
-![フィルターの同期](./media/active-directory-aadconnect-feature-preview/myapps.png)
+**プレビュー期間中の注意事項**
 
-このグループは、オンプレミスの AD DS では配布グループとして表現されます。この新しいグループの種類が表示されるようにするには、オンプレミスの Exchange サーバーを Exchange 2013 累積更新プログラム 8 (2015 年 3 月リリース) で更新する必要があります。
-
-**注**
-
-- 現在、プレビュー版ではアドレス帳の属性は設定されません。これを最も簡単に行うには、Exchange PowerShell コマンドレットの update-recipient を使用します。
+- 現在、プレビュー版ではアドレス帳の属性は設定されません。この属性がないと、GAL にグループが表示されません。この属性は、Exchange PowerShell コマンドレット `update-recipient` を使って設定するのが最も簡単です。
 - Exchange のスキーマを持つフォレストのみを、グループの有効なターゲットとすることができます。Exchange が見つからない場合は、グループの書き戻しを有効にすることはできません。
+- 現在サポートされているのは、単一フォレストから成る Exchange 組織のデプロイだけです。複数の Exchange 組織がオンプレミスに存在する場合、他のフォレストにグループを反映するには、オンプレミスの GALSync ソリューションが必要となります。
 - 現在、グループの書き戻し機能では、セキュリティ グループや配布グループは扱えません。
 
-Office 365 グループの詳細については、[こちら](http://aka.ms/O365g)をご覧ください。
+>[AZURE.NOTE]グループの書き戻しには、Azure AD Premium のサブスクリプションが必要です。
 
-## ディレクトリ拡張機能
-ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure AD のスキーマを拡張できます。
+## ユーザーの書き戻し
+> [AZURE.IMPORTANT]ユーザーの書き戻しプレビュー機能は、Azure AD Connect の 2015 年 8 月の更新時に一時的に削除されました。この機能を有効にしていた場合は、無効にする必要があります。
 
-単一値の属性だけがサポートされます。属性の値は、250 文字以下である必要があります。選択した属性を使用してメタバースと Azure AD のスキーマが拡張されます。Azure AD では、これらの属性を使用して新しいアプリケーションが追加されます。
+ユーザーの書き戻しは初期プレビュー段階です。この機能を使用できるのは、Azure AD がすべてのユーザー オブジェクトのソースであり、この機能を有効にする前にオンプレミスの Active Directory が空 (初期状態のデプロイ) である場合に限られます。
 
-![フィルターの同期](./media/active-directory-aadconnect-feature-preview/extension3.png)
+> [AZURE.WARNING]この機能の評価は必ずテスト環境で行ってください。本番環境で使用される Azure AD ディレクトリでは使用しないでください。
 
-これらの属性がグラフで使用可能になります。
+.
 
-![フィルターの同期](./media/active-directory-aadconnect-feature-preview/extension4.png)
+>[AZURE.NOTE]ユーザーの書き戻しには、Azure AD Premium のサブスクリプションが必要です。
 
 ## 次のステップ
 「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」に進んでください。
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

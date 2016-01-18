@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="クラシック デプロイメントを使用した SSL オフロード用の Application Gateway の構成 | Microsoft Azure"
-   description="この記事では、Azure クラシックのデプロイメント モデルを使用して、SSL オフロード用のアプリケーション ゲートウェイを作成する方法について説明します。"
+   pageTitle="クラシック デプロイを使用した SSL オフロード用のアプリケーション ゲートウェイの構成 | Microsoft Azure"
+   description="この記事では、Azure クラシックのデプロイ モデルを使用して、SSL オフロード用にアプリケーション ゲートウェイを作成する方法について説明します。"
    documentationCenter="na"
    services="application-gateway"
    authors="joaoma"
@@ -15,15 +15,14 @@
    ms.date="10/28/2015"
    ms.author="joaoma"/>
 
-# クラシック デプロイメント モデルを使用して SSL オフロード用の Application Gateway を構成する 
+# クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する 
 
 > [AZURE.SELECTOR]
 -[Azure Classic Powershell](application-gateway-ssl.md)
 -[Azure Resource Manager Powershell](application-gateway-ssl-arm.md)
 
-ゲートウェイでの SSL セッションを停止するように Application Gateway を構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
+ゲートウェイで SSL セッションを停止するように Application Gateway を構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
 
->[AZURE.IMPORTANT]Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイ モデルとクラシック デプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイ モデルとツール](azure-classic-rm.md)について理解しておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure クラシックのデプロイメント モデルを使用した Application Gateway の作成について説明します。Azure リソース マネージャー バージョンを使用するには、「[Azure リソース マネージャーを使用して Application Gateway SSL オフロードを構成する](application-gateway-ssl-arm.md)」に進んでください。
 
 
 ## 開始する前に
@@ -236,4 +235,4 @@ SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="PowerShell を使用して、Azure Data Lake Store を使用する HDInsight クラスターを構成する | Azure" 
-   description="Azure PowerShell を使用して、Azure Data Lake を使用する HDInsight Hadoop クラスターを構成および使用します。" 
+   pageTitle="PowerShell を使用して、Azure Data Lake Store を使用する HDInsight クラスターを作成する | Azure" 
+   description="Azure PowerShell を使用して、Azure Data Lake を使用する HDInsight Hadoop クラスターを作成および使用します。" 
    services="data-lake" 
    documentationCenter="" 
    authors="nitinme" 
@@ -13,17 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="12/04/2015"
+   ms.date="01/06/2016"
    ms.author="nitinme"/>
 
-# Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする
+# Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターを作成する
 
 > [AZURE.SELECTOR]
 - [Using Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Using PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 
-Azure PowerShell を使用して、Azure Data Lake Store を使用するように HDInsight クラスター (Hadoop、HBase、Storm) を構成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
+Azure PowerShell を使用して、Azure Data Lake Store にアクセスするように HDInsight クラスター (Hadoop、HBase、Storm) を構成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
 
 * **Hadoop クラスターと Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure ストレージ BLOB (WASB) のままです。
 
@@ -118,7 +118,7 @@ Data Lake Store を作成するには、次の手順に従います。
 
 	この出力は **True** になります。
 
-4. いくつかのサンプル データを Azure Data Lake にアップロードします。このサンプル データは、HDInsight クラスターからデータにアクセスできることを確認するために、この記事の後半で使用します。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/AzureDataLake/tree/master/SQLIPSamples/SampleData/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
+4. いくつかのサンプル データを Azure Data Lake にアップロードします。このサンプル データは、HDInsight クラスターからデータにアクセスできることを確認するために、この記事の後半で使用します。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
 
 		
 		$myrootdir = "/"
@@ -325,4 +325,4 @@ Data Lake Store を使用するように HDInsight クラスターを構成し�
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

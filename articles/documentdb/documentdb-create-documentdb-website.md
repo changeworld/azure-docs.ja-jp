@@ -32,8 +32,8 @@
 このチュートリアルの手順を実行する前に、次のものを備えておく必要があります。
 
 - Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](http://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- Azure ストレージ アカウント。詳細については、「[Azure ストレージ アカウントについて](../storage-whatis-account.md)」を参照してください
-- Azure PowerShell 0.9.8 を実行できるワークステーション。手順については、[Azure PowerShell のインストールおよび構成に関するページ](../install-configure-powershell.md)を参照してください。Azure PowerShell 1.0 プレビューについては、このチュートリアルはまだ更新されていません。 
+- Azure ストレージ アカウント。詳細については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください
+- Azure PowerShell 0.9.8 を実行できるワークステーション。手順については、[Azure PowerShell のインストールおよび構成に関するページ](../powershell-install-configure.md)を参照してください。Azure PowerShell 1.0 プレビューについては、このチュートリアルはまだ更新されていません。 
 
 ##<a id="CreateDB"></a>手順 1: サンプル ファイルのダウンロードと抽出 ##
 このチュートリアルで使用するサンプル ファイルをダウンロードすることから始めましょう。
@@ -210,4 +210,4 @@
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

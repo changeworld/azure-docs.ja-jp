@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/07/2015" 
+	ms.date="01/05/2016" 
 	ms.author="tamram"/>
 
 
@@ -152,7 +152,7 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 ### RequireEncryption モード
 
-すべてのアップロードとダウンロードを暗号化する必要がある場合、オプションで操作のモードを有効にすることができます。このモードでは、暗号化ポリシーを設定せずにデータをアップロードしようとしたり、サービスで暗号化されていないデータをダウンロードしようとしたりすると、クライアントで失敗します。要求オプション オブジェクトの **RequireEncryption** プロパティによって、この動作が制御されます。Azure Storage に保存されているすべてのオブジェクトがアプリケーションによって暗号化される場合、サービス クライアント オブジェクトの既定の要求オプションに **RequireEncryption** プロパティを設定できます。たとえば、**CloudBlobClient.DefaultRequestOptions.RequireEncryption** を **true** に設定して、そのクライアント オブジェクトを介して実行されるすべての BLOB 操作に対して暗号化を要求します。
+すべてのアップロードとダウンロードを暗号化する必要がある場合、オプションで操作のモードを有効にすることができます。このモードでは、暗号化ポリシーを設定せずにデータをアップロードしようとしたり、サービスで暗号化されていないデータをダウンロードしようとしたりすると、クライアントで失敗します。要求オプション オブジェクトの **RequireEncryption** プロパティによって、この動作が制御されます。Azure Storage に保存されているすべてのオブジェクトがアプリケーションによって暗号化される場合、サービス クライアント オブジェクトの既定の要求オプションに **requireEncryption** プロパティを設定できます。たとえば、**CloudBlobClient.DefaultRequestOptions.RequireEncryption** を **true** に設定して、そのクライアント オブジェクトを介して実行されるすべての BLOB 操作に対して暗号化を要求します。
 
 ### BLOB サービス暗号化
 
@@ -246,4 +246,4 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 [.NET 用 Azure Storage クライアント ライブラリ NuGet パッケージ](http://www.nuget.org/packages/WindowsAzure.Storage/5.0.0)をダウンロードする。GitHub から [.NET 用 Azure Storage クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-net)をダウンロードする。Azure Key Vault NuGet の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および[拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。[Azure Key Vault ドキュメント](../articles/key-vault-whatis.md)にアクセスする。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

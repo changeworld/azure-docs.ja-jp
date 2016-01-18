@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="12/10/2015"   
+   ms.date="12/30/2015"   
    ms.author="seanmck"/>
 
 # Service Fabric でのアプリケーションのモデル化
@@ -24,14 +24,16 @@
 
 アプリケーションは、特定のまたは複数の関数を実行する構成サービスのコレクションです。サービスは完全なスタンドアロンの機能を実行し (他のサービスから独立して開始、実行できる)、コード、構成、データで構成されます。各サービスに対して、コードは実行可能ファイルのバイナリで構成され、構成は実行時に読み込まれるサービス設定で構成され、データはサービスが消費する任意の静的データで構成されます。この階層的なアプリケーション モデル内の各コンポーネントは、個別にバージョン管理されてアップグレードされます。
 
-![][1]
+![Service Fabric のアプリケーション モデル][appmodel-diagram]
 
 
 アプリケーションの種類は、サービスの種類の集まりで構成されているアプリケーションの分類です。サービスの種類は、サービスを分類したものです。分類にはさまざまな設定と構成を含めることができますが、コア機能は変わりません。サービスのインスタンスは、同じサービスの種類の別のサービス構成のバリエーションです。
 
-アプリケーションのクラス (または "種類") とサービスは、アプリケーションをインスタンス化する対象となるテンプレートである XML ファイル (アプリケーション マニフェストとサービス マニフェスト) を使用して記述されます。別のアプリケーション インスタンスのコードは、同じ Service Fabric ノードでホストされている場合でも個別のプロセスとして実行されます。さらに、各アプリケーション インスタンスのライフサイクルを個別に管理できます (つまりアップグレード)。次の図では、コード、構成、パッケージで構成されるサービスの種類で、アプリケーションの種類がどのように構成されるかを示しています。
+アプリケーションのクラス (または "種類") とサービスは、アプリケーションをクラスターのイメージ ストアからインスタンス化する対象となるテンプレートである XML ファイル (アプリケーション マニフェストとサービス マニフェスト) を使用して記述されます。
 
-![Service Fabric アプリケーションの種類とサービスの種類][Image1]
+別のアプリケーション インスタンスのコードは、同じ Service Fabric ノードでホストされている場合でも個別のプロセスとして実行されます。さらに、各アプリケーション インスタンスのライフサイクルを個別に管理できます (つまりアップグレード)。次の図では、コード、構成、パッケージで構成されるサービスの種類で、アプリケーションの種類がどのように構成されるかを示しています。図を簡単にするために、`ServiceType4` のコード/構成/データ パッケージのみが表示されていますが、各サービス タイプにはそのようなパッケージ タイプの一部または全部が含まれます。
+
+![Service Fabric アプリケーションの種類とサービスの種類][cluster-imagestore-apptypes]
 
 2 つの異なるマニフェスト ファイル (サービス マニフェストとアプリケーション マニフェスト) はアプリケーションとサービスの記述に使用されます。サービス マニフェストとアプリケーション マニフェストについては次のセクションで詳しく説明します。
 
@@ -39,8 +41,10 @@
 
 次の図は、アプリケーションとサービス インスタンス、パーティション、レプリカ間のリレーションシップを示しています。
 
-![サービス内のパーティションとレプリカ][Image2]
+![サービス内のパーティションとレプリカ][cluster-application-instances]
 
+
+>[AZURE.TIP]http://&lt;yourclusteraddress&gt;:19080/Explorer で利用できる Service Fabric Explorer ツールを利用し、クラスターのアプリケーションのレイアウトを表示できます。詳細については、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」を参照してください。
 
 ## サービスを記述する
 
@@ -104,7 +108,9 @@ For more information about other features supported by service manifests, refer 
 ## アプリケーションを記述する
 
 
-アプリケーション マニフェストは、宣言によって、アプリケーションの種類とバージョンについて記述します。安定した名前、パーティション分割スキーム、インスタンス数とレプリケーション係数、セキュリティと分離ポリシー、配置に関する制約、構成の上書き、構成サービスの種類などのサービス構成のメタデータを指定します。アプリケーションが置かれる負荷分散のドメインについても記述します。そのため、アプリケーション マニフェストは、アプリケーション レベルで要素を記述し、1 つ以上のサービス マニフェストを参照してアプリケーションの種類を構成します。次に、アプリケーション マニフェストの単純な例を示します。
+アプリケーション マニフェストは、宣言によって、アプリケーションの種類とバージョンについて記述します。安定した名前、パーティション分割スキーム、インスタンス数とレプリケーション係数、セキュリティと分離ポリシー、配置に関する制約、構成の上書き、構成サービスの種類などのサービス構成のメタデータを指定します。アプリケーションが置かれる負荷分散のドメインについても記述します。
+
+そのため、アプリケーション マニフェストは、アプリケーション レベルで要素を記述し、1 つ以上のサービス マニフェストを参照してアプリケーションの種類を構成します。次に、アプリケーション マニフェストの単純な例を示します。
 
 ~~~
 <?xml version="1.0" encoding="utf-8" ?>
@@ -186,7 +192,7 @@ Visual Studio 2015 を使用して、アプリケーションを作成する場�
 
 パッケージを作成するには、次のように、ソリューション エクスプローラーでアプリケーション プロジェクトを右クリックして [パッケージ] コマンドを選択します。
 
-![][2]
+![Visual Studio でアプリケーションをパッケージングする][vs-package-command]
 
 パッケージ化が完了したら、[**出力**] ウィンドウにパッケージの場所が表示されます。アプリケーションを Visual Studio でデプロイまたはデバッグする場合、パッケージ化の手順は自動で行われることにご注意ください。
 
@@ -238,14 +244,14 @@ PS D:\temp>
 [RunAs: 異なるセキュリティ アクセス許可での Service Fabric アプリケーションの実行][12]
 
 <!--Image references-->
-[1]: ./media/service-fabric-application-model/application-model.jpg
-[2]: ./media/service-fabric-application-model/vs-package-command.png
-[Image1]: media/service-fabric-application-model/Service1.jpg
-[Image2]: media/service-fabric-application-model/Service2.jpg
+[appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
+[cluster-imagestore-apptypes]: ./media/service-fabric-application-model/cluster-imagestore-apptypes.png
+[cluster-application-instances]: media/service-fabric-application-model/cluster-application-instances.png
+[vs-package-command]: ./media/service-fabric-application-model/vs-package-command.png
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-deploy-remove-applications.md
 [11]: service-fabric-manage-multiple-environment-app-configuration.md
 [12]: service-fabric-application-runas-security.md
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/02/2015" 
+	ms.date="01/05/2015" 
 	ms.author="bradsev" />
 
 
@@ -106,7 +106,12 @@ XUF99EW9OIQOMV7Q7 | ファミリー サルーン
 3.	アプリケーション **CarEventGenerator.exe** を実行します。
 
 ### 参照
-[車両テレマティックス シミュレーター Visual Studio ソリューション](http://go.microsoft.com/fwlink/?LinkId=717075) [Azure Event Hubs](http://azure.microsoft.com/services/event-hubs/) [Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
+
+[Vehicle Telematics Simulator Visual Studio ソリューション](http://go.microsoft.com/fwlink/?LinkId=717075)
+
+[Azure Event Hub](http://azure.microsoft.com/services/event-hubs/)
+
+[Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
 
 
 ## データの取り込み
@@ -149,7 +154,12 @@ Stream Analytics ジョブは、イベント ハブからデータを取り込�
 *図 10 - PrepareSampleDataPipeline の出力*
 
 ### 参照
-[ストリーム取り込み用の Azure Event Hub SDK](event-hubs-csharp-ephcs-getstarted.md) [Azure Data Factory のデータ移動機能](data-factory-data-movement-activities.md) [Azure Data Factory の DotNet アクティビティ](data-factory-use-custom-activities.md) [サンプル データを準備するための Azure Data Factory DotNet アクティビティ Visual Studio ソリューション](http://go.microsoft.com/fwlink/?LinkId=717077)
+
+[ストリームの挿入に関する Azure Event Hub SDK](event-hubs-csharp-ephcs-getstarted.md)
+
+[Azure Data Factory のデータ移動機能](data-factory-data-movement-activities.md) [Azure Data Factory DotNet アクティビティ](data-factory-use-custom-activities.md)
+
+[サンプル データを準備するための Azure Data Factory DotNet アクティビティの Visual Studio ソリューション](http://go.microsoft.com/fwlink/?LinkId=717077)
 
 
 ## 準備
@@ -696,4 +706,4 @@ PowerBI レポートとダッシュボードを設定するための詳細な手
 
 このドキュメントには、車両テレメトリ分析ソリューションの詳細な説明が含まれています。これは、予測と行動によるリアルタイム分析と一括分析用のラムダ アーキテクチャ パターンを示しています。このパターンは、ホット パス (リアルタイム) 分析およびコールド パス (一括) 分析を必要とする幅広いユース ケースに適用されます。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

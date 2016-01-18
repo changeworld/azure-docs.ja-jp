@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="12/14/2015" 
 	ms.author="tdykstra"/>
 
 # Web ジョブ SDK で Azure BLOB ストレージを使用する方法
@@ -24,7 +24,7 @@
 
 BLOB を作成する方法を示すコード サンプルについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください
 		
-このガイドは、[Visual Studio でストレージ アカウントを指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md)を理解していることを前提としています。
+このガイドは、Visual Studio で[ストレージ アカウント](websites-dotnet-webjobs-sdk-get-started.md)または[複数のストレージ アカウント](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)を指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法を理解していることを前提としています。
 
 ## <a id="trigger"></a> BLOB が作成または更新されたときに、関数を開始する方法
 
@@ -89,9 +89,15 @@ BLOB を作成する方法を示すコード サンプルについては、「[W
 * `ICloudBlob`
 * `CloudBlockBlob`
 * `CloudPageBlob`
+* `CloudBlobContainer`
+* `CloudBlobDirectory`
+* `IEnumerable<CloudBlockBlob>`
+* `IEnumerable<CloudPageBlob>`
 * [ICloudBlobStreamBinder](#icbsb) によって逆シリアル化されるその他の種類 
 
 Azure のストレージ アカウントを直接操作する場合は、メソッド シグネチャに `CloudStorageAccount` パラメーターを追加することもできます。
+
+例については、[GitHub.com の azure-webjobs-sdk リポジトリにある BLOB バインド コード](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/BlobBindingEndToEndTests.cs)を参照してください。
 
 ## <a id="string"></a>文字列にバインドすることによってテキスト BLOB のコンテンツを取得する
 
@@ -232,4 +238,4 @@ BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテ�
 このガイドでは、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

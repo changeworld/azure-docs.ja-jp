@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/18/2015"
+   ms.date="12/28/2015"
    ms.author="sethm" />
 
 # Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
@@ -142,7 +142,7 @@ namespaceManager.CreateTopic(td);
 
 ## パーティション分割されたキューまたはトピックの使用
 
-内部的には、Service Bus は同じノードとメッセージング ストアを使用して、メッセージング エンティティ (キューまたはトピック) のすべてのメッセージを処理し、格納します。一方、パーティション分割されたキューまたはトピックは複数のノードとメッセージング ストアの間で分散されます。パーティション分割されたキューとトピックは通常のキューとトピックより高いスループットを生むだけでなく、可用性にも優れています。パーティション分割されたエンティティを作成するには、次の例のように、[EnablePartitioning][] プロパティを **true** に設定します。パーティション分割されたエンティティの詳細については、「[メッセージング エンティティのパーティション分割][]」を参照してください。
+内部的には、Service Bus は同じノードとメッセージング ストアを使用して、メッセージング エンティティ (キューまたはトピック) のすべてのメッセージを処理し、格納します。一方、パーティション分割されたキューまたはトピックは複数のノードとメッセージング ストアの間で分散されます。パーティション分割されたキューとトピックは通常のキューとトピックより高いスループットを生むだけでなく、可用性にも優れています。パーティション分割されたエンティティを作成するには、次の例のように、[EnablePartitioning][] プロパティを **true** に設定します。パーティション分割されたエンティティの詳細については、「[パーティション分割されたメッセージング エンティティ][]」を参照してください。
 
 ```
 // Create partitioned queue.
@@ -275,7 +275,7 @@ Service Bus によって、エンティティに最大 1000 件同時接続で�
 
 ## 次のステップ
 
-Service Bus のパフォーマンスの最適化の詳細については、「[メッセージング エンティティのパーティション分割][]」を参照してください。
+Service Bus のパフォーマンスの最適化の詳細については、「[パーティション分割されたメッセージング エンティティ][]」を参照してください。
 
   [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
   [MessageSender]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx
@@ -288,7 +288,7 @@ Service Bus のパフォーマンスの最適化の詳細については、「[�
   [SubscriptionClient.PrefetchCount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.prefetchcount.aspx
   [ForcePersistence]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.forcepersistence.aspx
   [EnablePartitioning]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.enablepartitioning.aspx
-  [メッセージング エンティティのパーティション分割]: service-bus-partitioning.md
+  [パーティション分割されたメッセージング エンティティ]: service-bus-partitioning.md
   
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

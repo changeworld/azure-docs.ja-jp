@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="12/04/2015"
+ ms.date="01/06/2015"
  ms.author="larryfr"/>
 
 # Power BI (プレビュー) を使用した Apache Storm トポロジのデータの視覚化
@@ -67,7 +67,7 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 ## サンプルの構成
 
-1. Visual Studio でサンプルを開きます。**ソリューション エクスプローラー**で **SCPHost.exe.config** ファイルを開き、**<OAuth .../>** 要素を見つけます。この要素の次のプロパティの値を入力します。
+1. Visual Studio でサンプルを開きます。**ソリューション エクスプローラー**で **App.config** ファイルを開き、**<OAuth .../>** 要素を見つけます。この要素の次のプロパティの値を入力します。
 
     * **Client**: 作成済みのアプリケーション登録のクライアント ID。
 
@@ -139,4 +139,4 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_1210_2015--->
+<!---HONumber=AcomDC_0107_2016--->

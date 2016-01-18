@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure App Service API アプリ トリガー" 
-	description="この記事では、API アプリにトリガーを実装する方法について説明します。" 
+	pageTitle="App Service API アプリ トリガー | Microsoft Azure" 
+	description="Azure App Service で API アプリにトリガーを実装する方法" 
 	services="app-service\logic" 
 	documentationCenter=".net" 
 	authors="guangyang"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/15/2015" 
+	ms.date="01/04/2016" 
 	ms.author="guayan"/>
 
 # Azure App Service API アプリ トリガー
@@ -341,4 +341,4 @@ API の定義で **x-ms-scheduler-recommendation** および **x-ms-visibility**
     }
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0107_2016-->

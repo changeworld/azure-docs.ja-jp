@@ -98,13 +98,13 @@ foreach (UserProfile activeUser in query)
 ## ハッシュ パーティション リゾルバー
 ハッシュ パーティション分割では、ハッシュ関数の値に基づいてパーティションが割り当てられるため、要求やデータを複数のパーティションに均等に分配できます。このアプローチは一般的に、多種多様なクライアントによって生成または消費されるデータのパーティション分割に使用され、ユーザー プロファイル、カタログ項目、IoT (Internet of Things: モノのインターネット) テレメトリ データなどを格納するのに役立ちます。
 
-**ハッシュ パーティション分割:** ![ハッシュ パーティション分割で要求が複数のパーティションに均等に分配されることを示す図](media/documentdb-sharding/partition-hash.png "ハッシュ パーティション分割")
+**ハッシュ パーティション分割:** ![ハッシュ パーティション分割で要求が複数のパーティションに均等に分配されることを示す図](media/documentdb-sharding/partition-hash.png)
 
 *N* 個のコレクションに対するシンプルなハッシュ パーティション スキームでは、ドキュメントに対し、*hash(d) mod N* を計算して配置するコレクションを決定します。このシンプルな手法には、コレクションの追加や削除ではうまく機能しないという問題点があります。これらの操作では、ほぼすべてのデータを再配置する必要が生じるためです。[コンシステント ハッシュ](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.23.3738)というよく知られたアルゴリズムでは、この問題への対処として、コレクションの追加や削除の実行中に必要となるデータ移動の量を最小限に抑えるハッシュ スキームが実装されています。
 
 [HashPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx) クラスには、[IHashGenerator](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.ihashgenerator.aspx) インターフェイスで指定されたハッシュ関数に対してコンシステント ハッシュ リングを構築するロジックが実装されています。HashPartitionResolver は既定で MD5 ハッシュ関数を使用しますが、独自のハッシュ実装に置き換えることができます。HashPartitionResolver の内部では、16 個のハッシュが "仮想ノード" のように各コレクションのハッシュ リング上に作成されます。これにより、複数のコレクションに対してドキュメントが均等に分配されます。ハッシュの個数を変更して、クライアント側の計算量とデータの偏りのバランスをとることもできます。
 
-**HashPartitionResolver を使用したコンシステント ハッシュ:** ![HashPartitionResolver によるハッシュ リング作成を示す図](media/documentdb-sharding/HashPartitionResolver.JPG "コンシステント ハッシュ")
+**HashPartitionResolver を使用したコンシステント ハッシュ:** ![HashPartitionResolver によるハッシュ リング作成を示す図](media/documentdb-sharding/HashPartitionResolver.JPG)
 
 ## 範囲パーティション リゾルバー
 
@@ -114,7 +114,7 @@ foreach (UserProfile activeUser in query)
 
 **範囲パーティション分割:**
 
-![範囲パーティション分割で要求が複数のパーティションに均等に分配されることを示す図](media/documentdb-sharding/partition-range.png "範囲パーティション分割")
+![範囲パーティション分割で要求が複数のパーティションに均等に分配されることを示す図](media/documentdb-sharding/partition-range.png)
 
 範囲パーティション分割の特殊なケースとして、範囲が単一の離散値のみの場合があります。このようなケースは "検索パーティション分割" とも呼ばれます。この手法は、リージョンごとのパーティション分割 (たとえば、ノルウェー、デンマーク、スウェーデンを含むスカンジナビア地域についてのパーティション) か、マルチ テナント アプリケーション内のテナントのパーティション分割に使用されるのが一般的です。
 
@@ -167,4 +167,4 @@ Microsoft では、.NET SDK のお客様からいただいたフィードバッ�
 * [パフォーマンスに関するヒントについての DocumentDB ブログ](http://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

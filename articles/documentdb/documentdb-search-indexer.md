@@ -20,7 +20,7 @@
 
 DocumentDB データの優れた検索機能を実装する場合は、DocumentDB の Azure Search インデクサーをご使用ください。 この記事では、インデックス作成のインフラストラクチャを保守するコードを記述することなく Azure DocumentDB と Azure Search を統合する方法を説明します。
 
-このセットアップを行うには、[Azure Search アカウントをセットアップ](../search-get-started.md#start-with-the-free-service)し (標準の検索のアップグレードは不要です)、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を呼び出して DocumentDB **データ ソース**とそのデータ ソースの**インデクサー**を作成する必要があります。
+このセットアップを行うには、[Azure Search アカウントをセットアップ](../search/search-get-started.md#start-with-the-free-service)し (標準の検索のアップグレードは不要です)、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を呼び出して DocumentDB **データ ソース**とそのデータ ソースの**インデクサー**を作成する必要があります。
 
 ##<a id="Concepts"></a>Azure Search インデクサーの概念
 
@@ -121,7 +121,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
 ##<a id="CreateIndex"></a>手順 2: インデックスを作成する
 
-ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[Azure クラシック ポータル UI](../search-get-started.md#test-service-operations) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。
+ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[Azure クラシック ポータル UI](../search/search-get-started.md#test-service-operations) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。
 
 	POST https://[Search service name].search.windows.net/indexes?api-version=[api-version]
 	Content-Type: application/json
@@ -265,9 +265,9 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
 
 ご利用ありがとうございます。 DocumentDB のインデクサーを使用して、Azure DocumentDB を Azure Search と統合する方法についての説明は以上で終了です。
 
- - Azure DocumentDB の詳細については、[ここ](/services/documentdb/)をクリックしてください。
+ - Azure DocumentDB の詳細については、「[DocumentDB サービス ページ](https://azure.microsoft.com/services/documentdb/)」を参照してください。
 
- - Azure Search の詳細については、[ここ](/services/search/)をクリックしてください。
+ - Azure Search の詳細については、「[Search サービス ページ](https://azure.microsoft.com/services/search/)」を参照してください。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016----->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/18/2015"
+	ms.date="01/06/2015"
 	ms.author="v-aabrol"/>
 
 
@@ -87,20 +87,20 @@ Fuse で Azure AD のシングル サインオンを構成してテストする�
 
 **Fuse で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **Fuse** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][6] <br>
+1. Azure クラシック ポータルの **Fuse** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6] <br>
 
-2. **[ユーザーの Fuse へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_03.png) <br>
+2. **[ユーザーの Fuse へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Configure Single Sign-On](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_03.png) <br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_04.png) <br>
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_04.png) <br>
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Fuse アプリケーションへのサインオンに使用する URL を入力します。**"https://azuresso.fusion-universal.com/ "**
+    a.ユーザーが Fuse アプリケーションへのサインオンに使用する URL を [サインオン URL] ボックスに **“https://<tenant name>.fusion-universal.com/ ”** の形式で入力します。
 
     > [AZURE.NOTE]サインインの URL がわからない場合は、[Fuse サポート チーム](mailto:support@fusion-universal.com)にお問い合わせください。
     
     b.**[次へ]** をクリックします。
 
 
-4. **[Fuse でのシングル サインオンの構成]** ページで、次の手順を実行します。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_05.png) <br>
+4. **[Fuse でのシングル サインオンの構成]** ページで、次の手順を実行します。 <br><br>![Configure Single Sign-On](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_05.png) <br>
 
     a.**[証明書のダウンロード]** をクリックし、コンピューターに保存します。
 
@@ -175,7 +175,7 @@ Fuse で Azure AD のシングル サインオンを構成してテストする�
 
 1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。 <br><br>![ユーザーの割り当て][201] <br>
 
-2. アプリケーションの一覧で **[Fuse]** を選択します。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_50.png) <br>
+2. アプリケーションの一覧で **[Fuse]** を選択します。 <br><br>![Configure Single Sign-On](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_50.png) <br>
 
 1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
 
@@ -214,4 +214,4 @@ Fuse で Azure AD のシングル サインオンを構成してテストする�
 [204]: ./media/active-directory-saas-fuse-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-fuse-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

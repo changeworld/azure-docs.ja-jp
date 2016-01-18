@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/28/2015"
+   ms.date="01/04/2016"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # SQL Data Warehouse のテーブル パーティション
@@ -333,4 +333,4 @@ SQL Data Warehouse にデータベース スキーマを正常に移行したら
 
 <!-- Other web references -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

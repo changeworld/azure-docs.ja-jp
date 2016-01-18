@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/26/2015" 
+	ms.date="01/05/2016" 
 	ms.author="tamram"/>
 
 # コンテナーと BLOB への匿名読み取りアクセスを管理する
@@ -155,4 +155,4 @@
 - [共有アクセス署名: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)
 - [Shared Access Signature を使用したアクセスの委任](https://msdn.microsoft.com/library/azure/ee395415.aspx) 
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="ポータルを使用して Azure Data Lake Store で HDInsight Hadoop クラスターをプロビジョニングする | Azure" 
-   description="Azure ポータルを使用して、Azure Data Lake Store で HDInsight Hadoop クラスターを構成し、使用します。" 
+   pageTitle="ポータルを使用して Azure Data Lake Store で HDInsight Hadoop クラスターを作成する | Azure" 
+   description="Azure ポータルを使用して、Azure Data Lake Store で HDInsight Hadoop クラスターを作成し、使用します。" 
    services="data-lake-store" 
    documentationCenter="" 
    authors="nitinme" 
@@ -13,17 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="11/13/2015"
+   ms.date="01/06/2016"
    ms.author="nitinme"/>
 
-# Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする
+# Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する
 
 > [AZURE.SELECTOR]
 - [Using Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Using PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 
-Azure ポータルを使用して、Azure Data Lake Store を使用するように HDInsight クラスター (Hadoop、HBase、または Storm) を構成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
+Azure ポータルを使用して、Azure Data Lake Store にアクセスするように HDInsight クラスター (Hadoop、HBase、または Storm) を作成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
 
 * **Hadoop クラスターと Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure ストレージ BLOB (WASB) のままです。
 
@@ -92,7 +92,7 @@ Azure ポータルを使用して、Azure Data Lake Store を使用するよう�
 	その Data Lake Store アカウントで、次のタスクを実行します。
 
 	* [Data Lake Store にフォルダーを作成する](data-lake-store-get-started-portal.md#createfolder)。
-	* [Data Lake Store にファイルをアップロードする](data-lake-store-get-started-portal.md#uploaddata)。アップロードするサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/AzureDataLake/tree/master/SQLIPSamples/SampleData/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
+	* [Data Lake Store にファイルをアップロードする](data-lake-store-get-started-portal.md#uploaddata)。アップロードするサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
 
 	アップロードされたファイルは、後で HDInsight クラスターで Data Lake Store アカウントをテストする際に使用します。
 
@@ -116,7 +116,7 @@ Azure ポータルを使用して、Azure Data Lake Store を使用するよう�
 
 	![グループにアクセス許可を割り当てる](./media/data-lake-store-hdinsight-hadoop-use-portal/adl.acl.4.png "グループにアクセス許可を割り当てる")
 
-8. **[カスタム アクセスの追加]** ブレードで **[OK]** をクリックします。新しく追加されたグループは、関連付けられたアクセス許可と共に **[アクセス]** ブレードに表示されるようになります。
+8. **[カスタム アクセスの追加]** ブレードで **[OK]** をクリックします。新しく追加されたグループは、関連付けられたアクセス許可と一緒に **[アクセス]** ブレードに一覧表示されます。
 
 	![グループにアクセス許可を割り当てる](./media/data-lake-store-hdinsight-hadoop-use-portal/adl.acl.5.png "グループにアクセス許可を割り当てる")
 
@@ -207,4 +207,4 @@ HBase クラスターでは、Data Lake Store アカウントを既定のスト�
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

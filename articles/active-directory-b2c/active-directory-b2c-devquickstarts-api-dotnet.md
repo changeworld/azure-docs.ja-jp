@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="12/22/2015"
 	ms.author="dastrock"/>
 	
 # Azure AD B2C プレビュー: .NET Web API を構築する
@@ -26,7 +26,7 @@ Azure AD B2C では、OAuth 2.0 アクセス トークンを使用して Web API
 
 ## 1\.Azure AD B2C ディレクトリの取得
 
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。ディレクトリをまだ用意していない場合、先に進む前に [B2C ディレクトリの作成](active-directory-b2c-get-started.md)に関するページを参照してください。
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリの作成](active-directory-b2c-get-started.md)に関するページを参照してください。
 
 ## 2\.アプリケーションの作成
 
@@ -155,7 +155,7 @@ public partial class Startup
 ```
 
 #### OAuth 2.0 認証を構成する
-`App_Start\Startup.Auth.cs` ファイルを開き、`ConfigureAuth(...)` メソッドを実装します。
+`App_Start\Startup.Auth.cs` ファイルを開いて、`ConfigureAuth(...)` メソッドを実装します。
 
 ```C#
 // App_Start\Startup.Auth.cs
@@ -219,8 +219,10 @@ public IEnumerable<Models.Task> Get()
 
 ## 8\.ポリシーの編集
 
-Azure AD B2C を使用して API をセキュリティで保護したので、アプリのポリシーでさまざまな設定を試し、その効果 (または不足部分) を API で確認することができます。<!--add **identity providers**
-to the policies, allowing you users to sign into the Task Client using social accounts.  You can also -->ポリシー内の**アプリケーション クレーム**を操作し、Web API で利用できるユーザー情報を変更することができます。その他のクレームを追加した場合、そのクレームは、前述のように .NET MVC Web API の `ClaimsPrincipal` オブジェクト内で利用できます。
+Azure AD B2C を使用して API をセキュリティで保護したので、アプリのポリシーでさまざまな設定を試し、その効果 (または不足部分) を API で確認することができます。
+<!--add **identity providers**
+to the policies, allowing you users to sign into the Task Client using social accounts.  You can also 
+-->ポリシー内の**アプリケーション クレーム**を操作し、Web API で利用できるユーザー情報を変更することができます。その他のクレームを追加した場合、そのクレームは、前述のように .NET MVC Web API の `ClaimsPrincipal` オブジェクト内で利用できます。
 
 <!--
 
@@ -234,4 +236,4 @@ You can now move onto more advanced B2C topics.  You may want to try:
 
 -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

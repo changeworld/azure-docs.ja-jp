@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/23/2015" 
+	ms.date="01/05/2016" 
 	ms.author="nitinme"/>
 
 
@@ -37,7 +37,17 @@ Spark クラスターに Zeppelin Notebook をインストールする方法と�
 
 ## クラスター作成の一部としての Zeppelin のインストール
 
->[AZURE.NOTE]ポータルを使用して Spark クラスターを作成した場合は、この手順をスキップします。この手順は、HDInsight .NET SDK または Azure PowerShell を使用して作成している場合にだけ必要です。
+Zeppelin は、スクリプト アクションを使用して Spark クラスターにインストールできます。スクリプト アクションは、既定で使用できないクラスターにコンポーネントをインストールするためにカスタム スクリプトを使用します。Zeppelin を Spark クラスターにインストールするカスタム スクリプトは * ***https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh** で入手できます。
+
+### Azure ポータルの使用
+
+Zeppelin をインストールするスクリプト アクションを実行するために HDInsight .NET SDK を使用する方法については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-from-the-azure-portal)」を参照してください。その記事の手順は、いくつか変更する必要があります。
+
+* Zeppelin をインストールするために、スクリプトを使用する必要があります。使用するスクリプトは、****https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh** です。
+
+* スクリプト アクションは、ヘッドノードでのみ実行する必要があります。
+
+* スクリプトにパラメーターは必要ありません。
 
 ### HDInsight .NET SDK の使用
 
@@ -291,7 +301,7 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-* [HDInsight での Spark を使用した Web サイト ログ分析](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### アプリケーションの作成と実行
 
@@ -318,4 +328,4 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

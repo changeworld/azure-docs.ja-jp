@@ -22,7 +22,7 @@
 ## はじめに 
 Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。この記事では、HDInsight MapReduce アクティビティを使用する方法について説明しています。
  
-HDInsight Pig および Hive アクティビティを使用して Azure Data Factory パイプラインから Windows/Linux ベースの HDInsight クラスターで Pig/Hive スクリプトを実行する方法の詳細については、[Pig](data-factory-pig-activity) と [Hive](data-factory-hive-activity.md) に関する記事を参照してください。
+HDInsight Pig および Hive アクティビティを使用して Azure Data Factory パイプラインから Windows/Linux ベースの HDInsight クラスターで Pig/Hive スクリプトを実行する方法の詳細については、[Pig](data-factory-pig-activity.md) と [Hive](data-factory-hive-activity.md) に関する記事を参照してください。
 
 ## HDInsight MapReduce アクティビティの JSON 
 
@@ -221,4 +221,4 @@ linkedServiceName | 前に作成した HDInsight のリンクされたサービ�
 [Azure Classic Portal]: http://portal.azure.com
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

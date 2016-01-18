@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="10/12/2015" 
+	ms.date="01/05/2016" 
 	ms.author="robmcm"/>
 
 # Jenkins 継続的インテグレーション ソリューションでの Azure Storage の使用
@@ -162,4 +162,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   [Meet Jenkins (Jenkins について)]: https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

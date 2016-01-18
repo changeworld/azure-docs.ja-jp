@@ -45,8 +45,8 @@ Microsoft Azure DocumentDB を使用するには、[DocumentDB アカウント](
 
 DocumentDB データベースの作成方法を学習したら、次の手順は[コレクションの作成](documentdb-create-collection.md)です。
 
-コレクションを作成できたら、ポータルのドキュメント エクスプローラーを使用して[ JSON ドキュメントを追加](../documentdb-view-json-document-explorer.md)したり、DocumentDB データ移行ツールを使用してコレクションに[ドキュメントをインポート](documentdb-import-data.md)したり、いずれかの [DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用して CRUD 操作を実行できるようになります。DocumentDB には、.NET、Java、Python、Node.js、および JavaScript API の SDK があります。ドキュメントを作成、削除、更新、および削除する方法を示している .NET コードのサンプルについては、GitHub.com の azure-documentdb-net リポジトリにある DocumentManagement プロジェクトの [Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/DocumentManagement/Program.cs) を参照してください。
+コレクションを作成できたら、ポータルのドキュメント エクスプローラーを使用して[ JSON ドキュメントを追加](documentdb-view-json-document-explorer.md)したり、DocumentDB データ移行ツールを使用してコレクションに[ドキュメントをインポート](documentdb-import-data.md)したり、いずれかの [DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用して CRUD 操作を実行できるようになります。DocumentDB には、.NET、Java、Python、Node.js、および JavaScript API の SDK があります。ドキュメントを作成、削除、更新、および削除する方法を示している .NET コードのサンプルについては、GitHub.com の azure-documentdb-net リポジトリにある DocumentManagement プロジェクトの [Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/DocumentManagement/Program.cs) を参照してください。
 
 コレクションにドキュメントを用意した後で、ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-queries)することができます。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

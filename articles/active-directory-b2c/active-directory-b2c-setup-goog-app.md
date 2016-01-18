@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="swkrish"
 	manager="msmbaldwin"
-	editor="curtand"/>
+	editor="bryanla"/>
 
 <tags
 	ms.service="active-directory-b2c"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/08/2015"
+	ms.date="01/06/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Google+ アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -25,13 +25,13 @@
 Azure Active Directory (AD) B2C で ID プロバイダーとして Google+ を使用するには、最初に Google+ アプリケーションを作成し、適切なパラメーターを提供する必要があります。そのためには Google+ アカウントが必要です。ない場合は、[https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) で取得できます。
 
 1. [Google Developers Console](https://console.developers.google.com/) に移動し、Google+ アカウントの資格情報でサインインします。
-2. **[プロジェクトを作成]** をクリックし、**[プロジェクト名]** を入力し、サービス規約に同意して、**[作成]** をクリックします。
+2. **[プロジェクトの作成]** をクリックし、**[プロジェクト名]** を入力して、**[作成]** をクリックします。
 
     ![G+ - 作業開始](./media/active-directory-b2c-setup-goog-app/google-get-started.png)
 
     ![G+ - 新しいプロジェクト](./media/active-directory-b2c-setup-goog-app/google-new-project.png)
 
-3. 左側のナビゲーションで、**[API と認証]** をクリックし、**[認証情報]** をクリックします。
+3. 左側のナビゲーションで、**[API マネージャー]** をクリックし、**[認証情報]** をクリックします。
 4. 上部の **[OAuth 同意画面]** タブをクリックします。
 
     ![G+ - 資格情報](./media/active-directory-b2c-setup-goog-app/google-add-cred.png)
@@ -48,21 +48,21 @@ Azure Active Directory (AD) B2C で ID プロバイダーとして Google+ を�
 
     ![G+ - OAuth 同意画面](./media/active-directory-b2c-setup-goog-app/google-web-app.png)
 
-8. アプリケーションの **[名前]** を指定し、**[承認済みのリダイレクト URI]** フィールドに [https://login.microsoftonline.com](https://login.microsoftonline.com)、**[承認済みのリダイレクト URI]** フィールドに [https://login.microsoftonline.com/te/{tenant}/oauth2/authresp](https://login.microsoftonline.com/te/{tenant}/oauth2/authresp) を入力します。**{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。**[作成]** をクリックします。
+8. アプリケーションの **[名前]** を指定し、**[承認済みの JavaScript 生成元]** フィールドに「[https://login.microsoftonline.com](https://login.microsoftonline.com)」、**[承認済みのリダイレクト URI]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」とそれぞれ入力します。**{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。**[作成]** をクリックします。
 
-    > [AZURE.NOTE]**{tenant}** の値は大文字小文字が区別されます。
+> [AZURE.NOTE]**{tenant}** の値は大文字小文字が区別されます。
 
-    ![G+ - クライアント ID の作成](./media/active-directory-b2c-setup-goog-app/google-create-client-id.png)
+    ![G+ - Create client ID](./media/active-directory-b2c-setup-goog-app/google-create-client-id.png)
 
 9. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。テナントで ID プロバイダーとして Google+ を構成するには、両方の値が必要です。
 
-    > [AZURE.NOTE]**[クライアント シークレット]** は、重要なセキュリティ資格情報です。
+> [AZURE.NOTE]**[Client secret]** は、重要なセキュリティ資格情報です。
 
-    ![G+ - クライアント シークレット](./media/active-directory-b2c-setup-goog-app/google-client-secret.png)
+    ![G+ - Client secret](./media/active-directory-b2c-setup-goog-app/google-client-secret.png)
 
 ## テナントで ID プロバイダーとして Google+ を構成する
 
-1. [Azure プレビュー ポータルで B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [この手順に従って、Azure ポータルで B2C 機能ブレードに移動します。](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)
 2. B2C 機能ブレードで、**[ID プロバイダー]** をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。たとえば、「G+」などと入力します。
@@ -70,4 +70,4 @@ Azure Active Directory (AD) B2C で ID プロバイダーとして Google+ を�
 6. **[この ID プロバイダーを設定する]** をクリックし、先に作成した Google+ アプリケーションの **[クライアント ID]** と **[クライアント シークレット]** を入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Google+ の構成を保存します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

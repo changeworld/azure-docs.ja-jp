@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="09/29/2015"
+   ms.date="01/05/2016"
    ms.author="tarcher" />
 
 # Visual Studio で Azure クラウド サービス プロジェクトを構成するには
@@ -61,4 +61,4 @@ Azure クラウド サービス プロジェクトは、そのプロジェクト
 
 Visual Studio で Azure のクラウド サービス プロジェクトを構成する方法の詳細については、「[複数のサービス構成を使用した Azure プロジェクトの構成](vs-azure-tools-multiple-services-project-configurations.md)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

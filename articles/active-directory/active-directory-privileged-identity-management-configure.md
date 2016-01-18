@@ -22,14 +22,14 @@ Azure AD Privileged Identity Management を使用すると、特権 ID と、Azu
 
 ユーザーが特権操作を実行できるよう、組織は多くのユーザーに Azure AD、Azure や Office 365 のリソース、他の SaaS アプリへの永続的な特権アクセスを付与することが必要になる場合がよくあります。多くの顧客にとって、これは、このようなユーザーが管理者特権で行っていることを十分に監視できないため、クラウドでホストされるリソースに対するセキュリティ リスクの増大になります。さらに、特権アクセス権を持つユーザー アカウントが侵害されると、全体的なクラウド セキュリティに影響を与える可能性があります。Azure AD Privileged Identity Management はこのリスクの解決に役立ちます。
 
-このプレビューの Azure AD Privileged Identity Management では次のことが可能です。
+Azure AD Privileged Identity Management では、次のことが可能です。
 
 - Azure AD の管理者であるユーザーを検出する
 - ディレクトリ リソースへのオンデマンド "ジャスト イン タイム" 管理アクセスを有効にする
 - 管理者のアクセス履歴および管理者の割り当ての変更に関するレポートを取得する
 - 特権ロールへのアクセスに関するアラートを受け取る
 
-このプレビューの Azure AD Privileged Identity Management では、次の組み込み Azure Active Directory 組織ロールを管理できます。
+Azure AD Privileged Identity Management では、次の組み込み Azure Active Directory 組織ロールを管理できます。
 
 - グローバル管理者
 - 課金管理者
@@ -43,15 +43,17 @@ Azure AD Privileged Identity Management を使用すると、特権 ID と、Azu
 
 ## ディレクトリの Privileged Identity Management の有効化
 
-[Microsoft Azure ポータル](https://portal.azure.com/)にアクセスすることで、Azure AD Privileged Identity Management の使用を開始できます。現在、Azure AD Privileged Identity Management は Microsoft Azure ポータルのみに表示されます。ディレクトリの Azure AD Privileged Identity Management の有効化は、グローバル管理者が行う必要があります。
+[Azure ポータル](https://portal.azure.com/)にアクセスすることで、Azure AD Privileged Identity Management の使用を開始できます。現在、Azure AD Privileged Identity Management は Azure ポータルのみに表示されます。クラシック ポータルには表示されません。ディレクトリの Azure AD Privileged Identity Management の有効化は、グローバル管理者が行う必要があります。
 
 ![][1]
 
-この拡張機能を初期化したユーザーは、自動的にディレクトリの最初の**セキュリティ管理者**になります。セキュリティ管理者だけが、この拡張機能にアクセスして他の管理者のアクセスを管理できます。初期化中に、Azure AD Privileged Identity Management のタイルが、Azure プレビュー ポータルのスタート画面に追加されます。
+この拡張機能を初期化したユーザーは、自動的にディレクトリの最初の**セキュリティ管理者**になります。セキュリティ管理者だけが、この拡張機能にアクセスして他の管理者のアクセスを管理できます。
+
+初期化中に、Azure AD Privileged Identity Management のタイルが Azure ポータルのスタート画面に追加されます。
 
 ## Privileged Identity Management ダッシュボード
 
-Azure AD Privileged Identity Management には、次のような重要な情報を提供するダッシュボードがあります。
+Azure AD Privileged Identity Manager には、次のような重要な情報を提供するダッシュボードがあります。
 
 - 各特権ロールに割り当てられているユーザーの数  
 - 一時的管理者および永続的管理者の数
@@ -79,7 +81,7 @@ Azure AD Privileged Identity Management では、各ロールに永続的また�
 
 ロールをアクティブ化するには、一時的管理者は、ロールに対する時間制限付き「アクティブ化」を要求する必要があります。アクティブ化の要求は、Azure AD Privileged Identity Management の **[ロールのアクティブ化]** オプションを使用して行うことができます。
 
-ロールのアクティブ化を要求する管理者は、Azure プレビュー ポータルで Azure AD Privileged Identity Management を初期化する必要があります。
+ロールのアクティブ化を要求する管理者は、Azure ポータルで Azure AD Privileged Identity Management を初期化する必要があります。
 
 任意の種類の管理者が、Azure AD Privileged Identity Management を使用して自分のロールをアクティブ化できます。
 
@@ -104,4 +106,4 @@ Azure AD Privileged Identity Management を使用すると、特権ロールの�
 [5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
 [6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

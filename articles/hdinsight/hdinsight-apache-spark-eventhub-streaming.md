@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/22/2015" 
+	ms.date="12/29/2015" 
 	ms.author="nitinme"/>
 
 
@@ -110,7 +110,7 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 	![プロジェクト ビュー](./media/hdinsight-apache-spark-eventhub-streaming/project-view.png)
 	
-2. Pom.xml を開き、Spark のバージョンが正しいことを確認します。<properties> ノードで、次のスニペットを検索し、Spark のバージョンを確認します。
+4. Pom.xml を開き、Spark のバージョンが正しいことを確認します。<properties> ノードで、次のスニペットを検索し、Spark のバージョンを確認します。
 
 		<scala.version>2.10.4</scala.version>
     	<scala.compat.version>2.10.4</scala.compat.version>
@@ -119,7 +119,7 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 	**spark.version** の値が **1.5.1** に設定されていることを確認します。
 
-3. アプリケーションでは、次の 2 つの依存関係 jar が必要です。
+5. アプリケーションでは、次の 2 つの依存関係 jar が必要です。
 
 	* **EventHub receiver jar**。Spark で Event Hub からメッセージを受信するために必要です。この jar は、Spark Linux クラスター (`/usr/hdp/current/spark-client/lib/spark-streaming-eventhubs-example-1.5.1.2.3.2.1-12-jar-with-dependencies.jar`) で入手できます。pscp を使用すると、jar をローカル コンピューターにコピーできます。
 
@@ -127,23 +127,24 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 		これにより、Spark クラスターからローカル コンピューターに jar ファイルがコピーされます。
 
-	* **JDBC driver jar**。Event Hub から受信したメッセージを Azure SQL データベースに書き込むために必要です。この jar ファイルの v4.1 以降を、[ここ](https://msdn.microsoft.com/en-us/sqlserver/aa937724.aspx)からダウンロードできます。
-
-	プロジェクト ライブラリ内のこれらの jar への参照を追加します。次の手順に従います。
-
-	1. アプリケーションが開かれている IntelliJ IDEA ウィンドウで、**[File (ファイル)]**、**[Project Structure (プロジェクトの構造)]**、**[Libraries (ライブラリ)]** の順にクリックします。 
-
-		![不足している依存関係の追加](./media/hdinsight-apache-spark-eventhub-streaming/add-missing-dependency-jars.png "不足している依存関係 jar の追加")
-
-		追加アイコン (![追加アイコン](./media/hdinsight-apache-spark-eventhub-streaming/add-icon.png)) をクリックし、**[Java]** をクリックして、EventHub receiver jar をダウンロードした場所に移動します。画面の指示に従って、Jar ファイルをプロジェクト ライブラリに追加します。
-
-	2. 前の手順を繰り返して、JDBC jar もプロジェクト ライブラリに追加します。
+	* **JDBC driver jar**。Event Hub から受信したメッセージを Azure SQL データベースに書き込むために必要です。この jar ファイルの v4.1 以降を、[ここ](https://msdn.microsoft.com/ja-JP/sqlserver/aa937724.aspx)からダウンロードできます。
 	
-		![不足している依存関係の追加](./media/hdinsight-apache-spark-eventhub-streaming/add-missing-dependency-jars.png "不足している依存関係 jar の追加")
 
-	3. **[Apply]** をクリックします。
+		プロジェクト ライブラリ内のこれらの jar への参照を追加します。次の手順に従います。
 
-4. 出力 jar ファイルを作成します。次の手順に従います。
+		1. アプリケーションが開かれている IntelliJ IDEA ウィンドウで、**[File (ファイル)]**、**[Project Structure (プロジェクトの構造)]**、**[Libraries (ライブラリ)]** の順にクリックします。 
+
+			![不足している依存関係の追加](./media/hdinsight-apache-spark-eventhub-streaming/add-missing-dependency-jars.png "不足している依存関係 jar の追加")
+
+			追加アイコン (![追加アイコン](./media/hdinsight-apache-spark-eventhub-streaming/add-icon.png)) をクリックし、**[Java]** をクリックして、EventHub receiver jar をダウンロードした場所に移動します。画面の指示に従って、Jar ファイルをプロジェクト ライブラリに追加します。
+
+		1. 前の手順を繰り返して、JDBC jar もプロジェクト ライブラリに追加します。
+	
+			![不足している依存関係の追加](./media/hdinsight-apache-spark-eventhub-streaming/add-missing-dependency-jars.png "不足している依存関係 jar の追加")
+
+		1. **[Apply]** をクリックします。
+
+6. 出力 jar ファイルを作成します。次の手順に従います。
 	1. **[Project Structure (プロジェクトの構造)]** ダイアログ ボックスで、**[Artifacts (アーティファクト)]** をクリックし、プラス記号をクリックします。ポップアップ ダイアログ ボックスで、**[JAR]** をクリックし、**[From modules with dependencie (依存関係を持つモジュールから)]** をクリックします。
 
 		![JAR の作成](./media/hdinsight-apache-spark-eventhub-streaming/create-jar-1.png)
@@ -336,7 +337,7 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 
 * [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
 
-* [Spark with Machine Learning: Use Spark in HDInsight for analyzing building temperature using HVAC data (Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する)](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 
 * [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 
@@ -344,15 +345,15 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 
 ### アプリケーションの作成と実行
 
-* [Create a standalone application using Scala (Scala を使用してスタンドアロン アプリケーションを作成する)](hdinsight-apache-spark-create-standalone-application.md)
+* [Scala を使用してスタンドアロン アプリケーションを作成する](hdinsight-apache-spark-create-standalone-application.md)
 
-* [Run jobs remotely on a Spark cluster using Livy (Livy を使用して Spark クラスターでジョブをリモートで実行する)](hdinsight-apache-spark-livy-rest-interface.md)
+* [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### 拡張機能
 
-* [Use Zeppelin notebooks with a Spark cluster on HDInsight (HDInsight のSpark クラスターで Zeppelin notebook を使用する)](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
-* [Kernels available for Jupyter notebook in Spark cluster for HDInsight (HDInsight 用の Spark クラスターの Jupyter notebook で使用可能なカーネル)](hdinsight-apache-spark-jupyter-notebook-kernels.md)
+* [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 
 ### リソースの管理
 
@@ -369,4 +370,4 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

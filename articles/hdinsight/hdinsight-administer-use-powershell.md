@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="01/04/2016"
 	ms.author="jgao"/>
 
 # Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理
@@ -43,7 +43,7 @@ Azure PowerShell は、Azure のワークロードのデプロイと管理を制
 
 Azure PowerShell をインストールするための主な 2 つのオプションは次のとおりです。
 
-- [PowerShell ギャラリー](https://www.powershellgallery.com/)。管理者特権の PowerShell ISE または管理者特権の Windows PowerShell コンソールから、次のコマンドを実行します。
+- [PowerShell ギャラリー](https://www.powershellgallery.com/)管理者特権の PowerShell ISE または管理者特権の Windows PowerShell コンソールから、次のコマンドを実行します。
 
 		# Install the Azure Resource Manager modules from PowerShell Gallery
 		Install-Module AzureRM
@@ -60,7 +60,7 @@ Azure PowerShell をインストールするための主な 2 つのオプショ
 
 	詳細については、「[PowerShell ギャラリー](https://www.powershellgallery.com/)」を参照してください。
 
-- [Microsoft Web プラットフォーム インストーラー (WebPI)](http://aka.ms/webpi-azps)。Azure PowerShell 0.9.x をインストールしている場合は、0.9.x のアンインストールを要求するメッセージが表示されますAzure PowerShell モジュールを PowerShell ギャラリーからインストールした場合、一貫した Azure PowerShell 環境を保つため、インストーラーにより、インストール前にモジュールを削除することが求められます。手順については、[WebPI を介した Azure PowerShell 1.0 のインストール](https://azure.microsoft.com/blog/azps-1-0/)に関するページを参照してください。
+- [Microsoft Web プラットフォーム インストーラー (WebPI)](http://aka.ms/webpi-azps)Azure PowerShell 0.9.x をインストールしている場合は、0.9.x のアンインストールを要求するメッセージが表示されますAzure PowerShell モジュールを PowerShell ギャラリーからインストールした場合、一貫した Azure PowerShell 環境を保つため、インストーラーにより、インストール前にモジュールを削除することが求められます。手順については、[WebPI を介した Azure PowerShell 1.0 のインストール](https://azure.microsoft.com/blog/azps-1-0/)に関するページを参照してください。
 
 WebPI は月次の更新プログラムを受け取ります。PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。PowerShell ギャラリーからのインストールを選んだ場合は、これが Azure PowerShell で最新および最良の点について情報を取得できる最初のチャネルになります。
 
@@ -232,7 +232,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 	# Credential option 1
 	$hadoopUserName = "admin"
-	$hadoopUserPassword = "Pass@word123"
+	$hadoopUserPassword = "<Enter the Password>"
 	$hadoopUserPW = ConvertTo-SecureString -String $hadoopUserPassword -AsPlainText -Force
 	$credential = New-Object System.Management.Automation.PSCredential($hadoopUserName,$hadoopUserPW)
 
@@ -332,4 +332,4 @@ ARM モードでは、各 HDInsight クラスターは Azure リソース グル
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

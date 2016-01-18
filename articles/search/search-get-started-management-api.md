@@ -34,7 +34,7 @@ Azure Search REST 管理 API は、ポータルでプログラムを使用して
 
 このチュートリアルは C# で記述された Windows のコンソール アプリケーションを基にしていて、Visual Studio 2012 または 2013 で実行することができます。
 
-クライアント アプリケーションは、Codeplex の [Azure Search Management API Demo](https://azuresearchmgmtapi.codeplex.com/) にあります。
+クライアント アプリケーションは、Codeplex の [Azure Search Management API Demo](https://github.com/Azure-Samples/search-dotnet-management-api/) にあります。
 
 
 ##アプリケーションの構成
@@ -58,7 +58,7 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
 ###Active Directory サービスの作成
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com) にサインインします。
+1. [Azure ポータル](https://manage.windowsazure.com)にサインインします。
 
 2. 左側のナビゲーション ウィンドウを下へスクロールし、**[Active Directory]** をクリックします。
 
@@ -119,7 +119,7 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
         private const string SubscriptionId = "<your subscription id>";
         private static readonly Uri RedirectUrl = new Uri("<your redirect url>");
 
-まだ [Codeplex からサンプル アプリケーションをダウンロード](https://azuresearchmgmtapi.codeplex.com/)していない場合は、この手順が必要になります。
+まだ [Github からサンプル アプリケーションをダウンロード](https://github.com/Azure-Samples/search-dotnet-management-api/)していない場合は、この手順が必要になります。
 
 1. Visual Studio で、**ManagementAPI.sln** を開きます。
 
@@ -204,4 +204,4 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
  
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_0107_2016--->

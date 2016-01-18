@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/08/2015"
+	ms.date="12/22/2015"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: アプリケーションを登録する方法
@@ -28,26 +28,28 @@
 
 ## B2C 機能ブレードに移動する
 
-次の 2 つの方法のどちらかで、B2C 機能ブレードに移動できます。
+Azure ポータルまたは Azure クラシック ポータルから B2C 機能ブレードに移動できます。
 
-### 1.Azure プレビュー ポータルで直接アクセスする
+### 1.Azure ポータルで直接アクセスする
 
-B2C 機能ブレードがスタート画面にピン留めされている場合、B2C テナントのグローバル管理者として [Azure プレビュー ポータル](https://portal.azure.com/)にサインインするとすぐに、B2C 機能ブレードが表示されます。
+B2C 機能ブレードがスタート画面にピン留めされている場合、B2C テナントのグローバル管理者として [Azure ポータル](https://portal.azure.com/)にサインインするとすぐに、B2C 機能ブレードが表示されます。
 
-[https://portal.azure.com/{tenant}.onmicrosoft.com/?Microsoft\_AAD\_B2CAdmin=true#blade/Microsoft\_AAD\_B2CAdmin/TenantManagementBlade/id/{tenant}.onmicrosoft.com](https://portal.azure.com/{tenant}.onmicrosoft.com/?Microsoft_AAD_B2CAdmin=true#blade/Microsoft_AAD_B2CAdmin/TenantManagementBlade/id/{tenant}.onmicrosoft.com) に移動して、B2C 機能ブレードに直接アクセスすることもできます。**{tenant}** をテナント作成時に使用した名前 (例: contosob2c) に置き換え、B2C テナントのグローバル管理者としてサインインします。後で参照できるように、このリンクをブックマークできます (下記の注をご覧ください)。
+また、**[参照]** をクリックし、[Azure ポータル](https://portal.azure.com/)の左側のナビゲーションで **[Azure AD B2C]** をクリックして、ブレードにアクセスすることもできます。
 
-    > [AZURE.IMPORTANT]
-    You need to be a Global Administrator of the B2C tenant to be able to access the B2C features blade. A Global Administrator from any other tenant or a User from any tenant cannot access it.
+[https://portal.azure.com/{tenant}.onmicrosoft.com/?#blade/Microsoft\_AAD\_B2CAdmin/TenantManagementBlade/id/](https://portal.azure.com/{tenant}.onmicrosoft.com/?#blade/Microsoft_AAD_B2CAdmin/TenantManagementBlade/id/) に移動して、B2C 機能ブレードに直接アクセスすることもできます。**{tenant}** をテナント作成時に使用した名前 (例: contosob2c) に置き換えます。今後も使用できるように、このリンクをブックマークできます。
 
-### 2\.Azure ポータルからアクセスする
+   >[AZURE.IMPORTANT]
+   B2C 機能ブレードにアクセスするには、B2Cテナントのグローバル管理者である必要があります。他のテナントのグローバル管理者やテナントのユーザーはアクセスできません。
 
-[Azure ポータル](https://manage.windowsazure.com/)にサブスクリプション管理者としてサインインします (これは、Azure へのサインアップに使用したものと同じ職場または学校アカウント、または同じ Microsoft アカウントです)。左側の Active Directory 拡張機能に移動し、B2C テナントをクリックします。**[クイック スタート]** タブ (表示される最初のタブ) で、**[管理]** の **[B2C 設定の管理]** をクリックします。新しいブラウザー ウィンドウまたはタブで、B2C 機能ブレードが開きます。
+### 2.Azure クラシック ポータルからアクセスする
+
+サブスクリプション管理者として、[Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします (これは、Azure へのサインアップに使用した職場または学校アカウント、あるいは Microsoft アカウントです)。左側の Active Directory 拡張機能に移動し、B2C テナントをクリックします。**[クイック スタート]** タブ (表示される最初のタブ) で、**[管理]** の **[B2C 設定の管理]** をクリックします。新しいブラウザー ウィンドウまたはタブで、B2C 機能ブレードが開きます。
 
 **[構成]** タブの **[B2C 管理]** セクションにも、**[B2C 設定の管理]** リンクがあります。
 
 ## アプリケーションを登録する
 
-1. Azure プレビュー ポータルの B2C 機能ブレードで、**[アプリケーション]** をクリックします。
+1. Azure ポータルの B2C 機能ブレードで、**[アプリケーション]** をクリックします。
 2. ブレードの上部にある **[+追加]** をクリックします。
 3. アプリケーションの **[名前]** には、コンシューマーがアプリケーションの機能を把握できるような名前を設定します。たとえば、"Contoso B2C app" などと入力します。
 4. Web ベースのアプリケーションを作成している場合は、**[Web アプリ/Web API を含める]** スイッチを **[はい]** に切り替えます。**[応答 URL]** は、アプリケーションが要求したトークンを Azure AD B2C が返すエンドポイントです。たとえば、「`https://localhost:44321/`」のように入力します。セキュリティで保護する必要があるサーバー側コンポーネント (API) がアプリケーションに含まれる場合は、**[キーの生成]** ボタンをクリックして **[アプリケーションのシークレット]** も作成 (およびコピー) できます。
@@ -65,4 +67,4 @@ B2C 機能ブレードがスタート画面にピン留めされている場合�
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

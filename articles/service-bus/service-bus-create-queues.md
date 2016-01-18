@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/16/2015"
+   ms.date="12/28/2015"
    ms.author="sethm" />
 
 # Service Bus キューを使用するアプリケーションを作成する
@@ -97,7 +97,7 @@ Service Bus のエンティティに対して実行時の操作を行う場合 (
  bm.Properties["MachineID"] = "POS_1";
 ```
 
-Service Bus キューに送信されたメッセージおよび Service Bus キューから受信したメッセージは、[BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) クラスのインスタンスになります。このクラスは、標準的なプロパティのセット ([Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)、[TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) などの)、アプリケーションのプロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体で構成されます。アプリケーションでは、任意のシリアル化可能なオブジェクトを渡すことによって本体を設定できます (次の例では、POS 端末からの売上データを表す **SalesData** オブジェクトを渡しています)。オブジェクトをシリアル化するには、[DataContractSerializer](https://msdn.microsoft.com/library/azure/system.runtime.serialization.datacontractserializer.aspx) を使用します。この方法に代わって、[Stream](https://msdn.microsoft.com/library/azure/system.io.stream.aspx) オブジェクトを提供することもできます。
+Service Bus キューに送信されたメッセージ (および Service Bus キューから受信したメッセージ) は、[BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) クラスのインスタンスになります。このクラスは、標準的なプロパティのセット ([Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)、[TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) などの)、アプリケーションのプロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体で構成されます。アプリケーションでは、任意のシリアル化可能なオブジェクトを渡すことによって本体を設定できます (次の例では、POS 端末からの売上データを表す **SalesData** オブジェクトを渡しています)。オブジェクトをシリアル化するには、[DataContractSerializer](https://msdn.microsoft.com/library/azure/system.runtime.serialization.datacontractserializer.aspx) を使用します。この方法に代わって、[Stream](https://msdn.microsoft.com/library/azure/system.io.stream.aspx) オブジェクトを提供することもできます。
 
 特定のキュー (この例では **DataCollectionQueue**) にメッセージを送信する最も簡単な方法は、[CreateMessageSender](https://msdn.microsoft.com/library/azure/hh322659.aspx) を使用して [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) インスタンスから [MessageSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx) オブジェクトを直接作成することです。
 
@@ -160,4 +160,4 @@ catch (Exception e)
 
 このトピックではキューの基本を説明しました。次に、「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」で Service Bus の仲介型メッセージングのパブリッシュ/サブスクライブ機能の使用を学習してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

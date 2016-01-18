@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="09/28/2015"
+   ms.date="01/05/2016"
    ms.author="tarcher" />
 
 # 現行バージョンの Azure Tools for Visual Studio にプロジェクトをアップグレードする方法
@@ -51,4 +51,4 @@
 
 1. プロジェクトをビルドし、API の変更に起因するエラーがあれば解決してください。新しいバージョンのコードを変更する方法については、特定の API に関するドキュメントを参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->
