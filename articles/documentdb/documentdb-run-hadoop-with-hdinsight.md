@@ -212,7 +212,12 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 		$clusterName = "<HDInsightClusterName>"
 
 2. 
-	<p>クエリ文字列の作成から始めましょう。作成する Hive クエリでは、DocumentDB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい DocumentDB コレクションに格納します。</p><p>まず、DocumentDB コレクションから Hive テーブルを作成します。次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。_ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが含まれていることを確認してください。</p>> [AZURE.NOTE]**DocumentDB.inputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。</br> '*DocumentDB.inputCollections*' = '*<DocumentDB Input Collection Name 1>*,*<DocumentDB Input Collection Name 2>*' </br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。
+	<p>クエリ文字列の作成から始めましょう。作成する Hive クエリでは、DocumentDB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい DocumentDB コレクションに格納します。</p>
+
+	<p>まず、DocumentDB コレクションから Hive テーブルを作成します。次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。_ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが含まれていることを確認してください。</p>
+
+    > [AZURE.NOTE]**DocumentDB.inputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。</br>
+    '*DocumentDB.inputCollections*' = '*<DocumentDB Input Collection Name 1>*,*<DocumentDB Input Collection Name 2>*' </br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。
 
 
 		# Create a Hive table using data from DocumentDB. Pass DocumentDB the query to filter transferred data to _rid and _ts.
@@ -304,7 +309,10 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
         $clusterName = "Azure HDInsight Cluster Name"
 
 2. <p>クエリ文字列の作成から始めましょう。作成する Pig クエリでは、DocumentDB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい DocumentDB コレクションに格納します。</p>
-    <p>まず、DocumentDB から HDInsight にドキュメントを読み込みます。次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。_ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが DocumentDB クエリに追加されていることを確認してください。</p>> [AZURE.NOTE]次のように、複数のコレクションを 1 つの入力として追加することができます。</br> '*<DocumentDB Input Collection Name 1>*,*<DocumentDB Input Collection Name 2>*'</br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。</b>
+    <p>まず、DocumentDB から HDInsight にドキュメントを読み込みます。次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。_ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが DocumentDB クエリに追加されていることを確認してください。</p>
+
+    > [AZURE.NOTE]次のように、複数のコレクションを 1 つの入力として追加することができます。</br>
+    '*<DocumentDB Input Collection Name 1>*,*<DocumentDB Input Collection Name 2>*'</br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。</b>
 
 	ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
@@ -324,7 +332,9 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 
 4. 最後に、その結果を新しい出力コレクションに格納します。
 
-    > [AZURE.NOTE]次のように、複数のコレクションを 1 つの入力として追加することができます。</br> '<DocumentDB Output Collection Name 1>,<DocumentDB Output Collection Name 2>'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br> ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+    > [AZURE.NOTE] 次のように、複数のコレクションを 1 つの入力として追加することができます。</br>
+    '<DocumentDB Output Collection Name 1>,<DocumentDB Output Collection Name 2>'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br>
+    ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
 		# Store output data to DocumentDB.
         $queryStringPart3 = "STORE by_minute_count INTO '<DocumentDB Endpoint>' " +

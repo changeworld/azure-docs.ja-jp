@@ -64,10 +64,10 @@ Azure サブスクリプションが既にある場合は、次の手順に進�
 
     ![B2C 機能ブレード](./media/active-directory-b2c-get-started/b2c-features-blade.png)
 
-    > [AZURE.NOTE][Azure クラシック ポータル](https://manage.windowsazure.com/)では、テナントのユーザーとグループ、セルフサービスによるパスワードのリセット構成、会社のブランド化機能を管理できます。
+    > [AZURE.NOTE] [Azure クラシック ポータル](https://manage.windowsazure.com/)では、テナントのユーザーとグループ、セルフサービスによるパスワードのリセット構成、会社のブランド化機能を管理できます。
 
 ## 次のステップ
 
 [Azure AD B2C へのアプリケーションの登録とクイック スタート アプリケーションの作成](active-directory-b2c-app-registration.md)に進みます。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0107_2016--->

@@ -74,9 +74,9 @@ Visual Studio で、次の手順を実行します。
 
 3. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックします。
 
-4. [新しい項目の追加] ウィンドウで、**[テキスト ファイル]** を選択し、名前に「*VirtualMachineTemplate.json*」と入力して、**[追加]** をクリックします。
+4.	[新しい項目の追加] ウィンドウで、**[テキスト ファイル]** を選択し、名前に「 *VirtualMachineTemplate.json* 」と入力して、**[追加]** をクリックします。
 
-5. VirtualMachineTemplate.json ファイルを開き、開始と終了の角かっこ、必要なスキーマ要素、および必要な contentVersion 要素を追加します。
+5.	VirtualMachineTemplate.json ファイルを開き、開始と終了の角かっこ、必要なスキーマ要素、および必要な contentVersion 要素を追加します。
 
 	```
 	{
@@ -148,7 +148,7 @@ Visual Studio で、次の手順を実行します。
 	}
 	```
 
-8. 次に、仮想マシン、仮想ネットワーク、ストレージ アカウントなどの[リソース](../resource-group-authoring-templates.md#resources)を定義します。
+8.	次に、仮想マシン、仮想ネットワーク、ストレージ アカウントなどの[リソース](../resource-group-authoring-templates.md#resources)を定義します。
 
     variables セクションの後に、resources セクションを追加します。
 
@@ -293,17 +293,17 @@ Visual Studio で、次の手順を実行します。
 		}
 		```
 
-9. 作成したテンプレート ファイルを保存します。
+9.	作成したテンプレート ファイルを保存します。
 
-### パラメーター ファイルの作成
+###パラメーター ファイルの作成
 
 テンプレートで定義されているリソース パラメーターの値を指定するには、値を含むパラメーター ファイルを作成し、テンプレートと共にリソース マネージャーに送信します。Visual Studio で、次の手順を実行します。
 
-1. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックします。
+1.	ソリューション エクスプローラーでプロジェクト名を右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックします。
 
-2. [新しい項目の追加] ウィンドウで、**[テキスト ファイル]** を選択し、名前に「*Parameters.json*」と入力して、**[追加]** をクリックします。
+2.	[新しい項目の追加] ウィンドウで、**[テキスト ファイル]** を選択し、名前に「 *Parameters.json* 」と入力して、**[追加]** をクリックします。
 
-3. Parameters.json ファイルを開き、次の JSON コンテンツを追加します。
+3.	Parameters.json ファイルを開き、次の JSON コンテンツを追加します。
 
 	```
 	{
@@ -321,27 +321,27 @@ Visual Studio で、次の手順を実行します。
     >[AZURE.NOTE]このチュートリアルでは、Windows Server オペレーティング システムのバージョンを実行する仮想マシンを作成します。他のイメージの選択の詳細については、「[Windows PowerShell と Azure CLI による Azure Virtual Machine イメージのナビゲーションと選択](resource-groups-vm-searching.md)」を参照してください。
 
 
-4. 作成したパラメーター ファイルを保存します。
+4.	作成したパラメーター ファイルを保存します。
 
 ### ファイルのアップロード
 
 テンプレート ファイルとパラメーター ファイルには、Azure ストレージ アカウントから Azure リソース マネージャーを使用してアクセスします。作成した最初のストレージにファイルを配置するには、以下の手順を実行します。
 
-1. サーバー エクスプローラーを開き、ファイルを配置するストレージ アカウント内のコンテナーに移動します。このチュートリアルでは、テンプレートを配置するコンテナーの名前は templates です。
+1.	サーバー エクスプローラーを開き、ファイルを配置するストレージ アカウント内のコンテナーに移動します。このチュートリアルでは、テンプレートを配置するコンテナーの名前は templates です。
 
-2. テンプレート コンテナー ウィンドウの右上隅にある BLOB アップロード アイコンをクリックし、作成した VirtualMachineTemplate.json ファイルを参照して、**[開く]** をクリックします。
+2.	テンプレート コンテナー ウィンドウの右上隅にある BLOB アップロード アイコンをクリックし、作成した VirtualMachineTemplate.json ファイルを参照して、**[開く]** をクリックします。
 
 3. BLOB アップロード アイコンを再びクリックし、作成した Parameters.json ファイルを参照して、**[開く]** をクリックします。
 
-## 手順 3: ライブラリをインストールする
+##手順 3: ライブラリをインストールする
 
 NuGet パッケージを使用すると、このチュートリアルを完了するために必要なライブラリを簡単にインストールできます。Azure リソース管理ライブラリと Azure Active Directory 認証ライブラリをインストールする必要があります。Visual Studio でこれらのライブラリを入手するには、次の手順に従います。
 
-1. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[NuGet パッケージの管理]** をクリックします。
+1.	ソリューション エクスプローラーでプロジェクト名を右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-2. 検索ボックスに「*Active Directory*」と入力し、Active Directory Authentication Library パッケージの **[インストール]** をクリックして、パッケージのインストール手順に従います。
+2.	検索ボックスに「 *Active Directory* 」と入力し、Active Directory Authentication Library パッケージの **[インストール]** をクリックして、パッケージのインストール手順に従います。
 
-3. ページの上部で、**[リリース前のパッケージを含める]** を選択します。検索ボックスに「*Microsoft.Azure.Management.Resources*」と入力し、Microsoft Azure リソース管理ライブラリの **[インストール]** をクリックして、パッケージのインストール手順に従います。
+3.	 ページの上部で、**[リリース前のパッケージを含める]** を選択します。検索ボックスに「*Microsoft.Azure.Management.Resources*」と入力し、Microsoft Azure リソース管理ライブラリの **[インストール]** をクリックして、パッケージのインストール手順に従います。
 
 これで、ライブラリを使用してアプリケーションの作成を開始する準備が整いました。
 
@@ -349,7 +349,7 @@ NuGet パッケージを使用すると、このチュートリアルを完了�
 
 Azure Active Directory アプリケーションを作成し、認証ライブラリをインストールしたので、次にアプリケーションの情報を使用して、Azure リソース マネージャーへの要求の認証に使用される資格情報を作成します。以下の手順を実行します。
 
-1. 作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭に追加します。
+1.	作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭に追加します。
 
 	```
 	using Microsoft.Azure;
@@ -380,21 +380,21 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 	{application-id} を前に記録したアプリケーション ID に、{password} を AD アプリケーション用に選択したパスワードに、{tenant-id} をサブスクリプションのテナント ID に、それぞれ置き換えます。テナント ID は Get-AzureSubscription を実行して確認できます。
 
-3. 資格情報を作成するには、Program.cs ファイルの Main メソッドに次のコードを追加します。
+3.	資格情報を作成するには、Program.cs ファイルの Main メソッドに次のコードを追加します。
 
 	```
 	var token = GetAuthorizationHeader();
 	var credential = new TokenCredentials(token);
 	```
 
-4. Program.cs ファイルを保存します。
+4.	Program.cs ファイルを保存します。
 
 
-## 手順 5: テンプレートをデプロイするためのコードを追加する
+##手順 5: テンプレートをデプロイするためのコードを追加する
 
 リソースは常にテンプレートからリソース グループにデプロイされます。リソースのデプロイ先のリソース グループを作成するには、[ResourceGroup](https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.models.resourcegroup.aspx) クラスと [ResourceManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.resourcemanagementclient.aspx) クラスを使用します。
 
-1. リソース グループを作成するために、次のメソッドを Program クラスに追加します。
+1.	リソース グループを作成するために、次のメソッドを Program クラスに追加します。
 
 	```
 	public static void CreateResourceGroup(
@@ -414,7 +414,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 	}
 	```
 
-2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
+2.	追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
 	```
 	CreateResourceGroup(
@@ -427,7 +427,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 	{group-name} を、リソース グループに使用する名前に置き換えます。{subscription-id} を、サブスクリプション識別子に置き換えます。サブスクリプション識別子を取得するには、Get-AzureSubscription を実行します。{location} をリソースを、作成するリージョン ("West US" など) に置き換えます。
 
-3. 定義したテンプレートを使用してリソースをリソース グループにデプロイするために、次のメソッドを Program クラスに追加します。
+3.	定義したテンプレートを使用してリソースをリソース グループにデプロイするために、次のメソッドを Program クラスに追加します。
 
 	```
 	public static void CreateTemplateDeployment(
@@ -463,7 +463,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 	{storage-name} を、前にファイルを配置したアカウントの名前に置き換えます。
 
-4. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
+4.	追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
 	```
 	CreateTemplateDeployment(

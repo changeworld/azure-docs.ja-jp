@@ -21,7 +21,7 @@
 
 ## SendGrid 電子メール サービスとは
 
-SendGrid は、信頼性の高い[トランザクション電子メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウドベースの電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。SendGrid の一般的な使用シナリオを次に示します。
+SendGrid は、信頼性の高い[トランザクション電子メール配信](https://sendgrid.com/email-solutions)、拡張性、およびリアルタイム分析の機能を備えた[クラウドベースの電子メール サービス](https://sendgrid.com/transactional-email)であり、柔軟な API を備えているためカスタム統合も容易です。SendGrid の一般的な使用シナリオを次に示します。
 
 -   顧客に受信通知を自動送信する
 -   顧客に広告メールを月 1 回送信するための配布リストを管理する
@@ -65,7 +65,7 @@ SendGrid モジュールを使って電子メール メッセージを作成す�
 
 text プロパティと html プロパティの両方を設定することで、HTML メッセージをサポートできないクライアントに対しては、テキスト コンテンツへの正常なフォールバックを提供できます。
 
-Email 機能でサポートされるすべてのプロパティの詳細については、[sendgrid-nodejs][] に関するページを参照してください。
+Email 機能でサポートされるすべてのプロパティの詳細については、[sendgrid-nodejs](https://github.com/sendgrid/sendgrid-nodejs) に関するページを参照してください。
 
 ## 方法: 電子メールを送信する
 
@@ -114,7 +114,7 @@ sendgrid.send({
 
 ## 方法: フィルターを使用してフッターと追跡を有効にする
 
-SendGrid では、*フィルター* を使用することでその他の電子メール機能も利用できます。その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。すべてのフィルターの一覧については、[フィルター設定][]に関するページを参照してください。
+SendGrid では、*フィルター* を使用することでその他の電子メール機能も利用できます。その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。すべてのフィルターの一覧については、[フィルター設定](https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html)に関するページを参照してください。
 
 フィルターは、**フィルター**のプロパティを使用してメッセージに適用できます。各フィルターは、フィルター固有の設定を格納したハッシュで指定します。次の例に、フッター フィルターとクリック追跡フィルターの使用方法を示します。
 
@@ -168,18 +168,24 @@ SendGrid では、*フィルター* を使用することでその他の電子�
     email.addFilter('footer', 'enable', 1);
     email.addFilter('footer', 'text/html', '<strong>boo</strong>');
 
-詳細については、[sendgrid-nodejs][] に関するページを参照してください。
+詳細については、[sendgrid-nodejs](https://github.com/sendgrid/sendgrid-nodejs) に関するページを参照してください。
 
 ## 方法: その他の SendGrid サービスを使用する
 
-SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。詳細については、[SendGrid API に関するドキュメント][]を参照してください。
+SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。詳細については、[SendGrid API に関するドキュメント](https://sendgrid.com/docs)を参照してください。
 
 ## 次のステップ
 
 これで、SendGrid 電子メール サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   SendGrid Node.js モジュールのリポジトリ: [sendgrid-nodejs][]
+-   SendGrid Node.js モジュールのリポジトリ: [sendgrid-nodejs](https://github.com/sendgrid/sendgrid-nodejs)
 -   SendGrid API に関するドキュメント: <https://sendgrid.com/docs>
--   Azure ユーザー向けの SendGrid 特別プラン: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html) [特別プラン]: https://sendgrid.com/windowsazure.html [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs [フィルターの設定]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html [SendGrid API に関するドキュメント]: https://sendgrid.com/docs [クラウドベースの電子メール サービス]: https://sendgrid.com/email-solutions [トランザクション電子メール配信] https://sendgrid.com/transactional-email
+-   Azure ユーザー向けの SendGrid 特別プラン: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
+  [特別プラン]: https://sendgrid.com/windowsazure.html
+  [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs
+  [フィルターの設定]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
+  [SendGrid API に関するドキュメント]: https://sendgrid.com/docs
+  [クラウドベースの電子メール サービス]: https://sendgrid.com/email-solutions
+  [トランザクション電子メール配信]: https://sendgrid.com/transactional-email
 
 <!---HONumber=AcomDC_0107_2016-->

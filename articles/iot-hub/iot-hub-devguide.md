@@ -254,7 +254,7 @@ SASL PLAIN では、**ユーザー名**を以下のように指定できます�
 
 どちらの場合も、[トークン形式](#tokenformat)に関するセクションで説明するように、パスワード フィールドにトークンが含まれています。
 
-> [AZURE.NOTE][Azure IoT Hub の SDK][lnk-apis-sdks] を使用すると、サービスに接続した時点で自動的にトークンが生成されます。場合によっては、SDK でサポートされないプロトコルや認証方法もあります。
+> [AZURE.NOTE] [Azure IoT Hub の SDK][lnk-apis-sdks] を使用すると、サービスに接続した時点で自動的にトークンが生成されます。場合によっては、SDK でサポートされないプロトコルや認証方法もあります。
 
 #### SASL PLAIN と CBS の比較
 
@@ -542,4 +542,4 @@ IoT Hub の開発の概要については以上です。詳細については、
 [lnk-tls]: https://tools.ietf.org/html/rfc5246
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0107_2016--->

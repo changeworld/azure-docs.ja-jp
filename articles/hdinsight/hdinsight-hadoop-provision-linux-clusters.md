@@ -45,7 +45,7 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
 
 各クラスターの種類にはクラスター内のノードの独自の用語と、ノードの種類ごとにノード数および既定の VM サイズがあります。
 
-> [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+> [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
 
 ![HDInsight Hadoop クラスター ノード](./media/hdinsight-provision-clusters/HDInsight.Hadoop.roles.png)
 
@@ -65,13 +65,13 @@ HDInsight 用 Storm クラスターには、Nimbus ノード (2 ノード)、Sup
 
 ![HDInsight Spark クラスター ノード](./media/hdinsight-provision-clusters/HDInsight.Spark.roles.png)
 
-HDInsight 用 Spark クラスターには、ヘッド ノード (2 ノード) - worker ノード (1 ノード以上) - Zookeeper ノード (3 ノード) (A1 Zookeeper VM サイズでは無料) という 3 種類のノードがあります。
+HDInsight 用 Spark クラスターには、ヘッド ノード (2 ノード)、worker ノード (1 ノード以上)、Zookeeper ノード (3 ノード) (A1 Zookeeper VM サイズでは無料) という 3 種類のノードがあります。
 
 ###HDInsight 用 Azure Storage
 
-各クラスターの種類には、クラスターに関連付けられている 1 つ以上の Azure Storage アカウントもあります。HDInsight は、クラスターのデータ ストアとして、これらのストレージ アカウントの Azure BLOB を使用します。データをクラスターから分離しておくことで、使用されていないクラスターを削除した場合でもデータを引き続き保持できます。したがって、さらに分析が必要な場合に、新しいクラスターでも同じストレージ アカウントを使用できます。詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)に関するページを参照してください。
+各クラスターの種類には、クラスターに関連付けられている 1 つ以上の Azure ストレージ アカウントもあります。HDInsight は、クラスターのデータ ストアとして、これらのストレージ アカウントの Azure BLOB を使用します。データをクラスターから分離しておくことで、使用されていないクラスターを削除した場合でもデータを引き続き保持できます。したがって、さらに分析が必要な場合に、新しいクラスターでも同じストレージ アカウントを使用できます。詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)に関するページを参照してください。
 
-## <a id="configuration">基本的な構成オプション</a>
+## <a id="configuration"></a>基本的な構成オプション
 
 次のセクションでは、HDInsight クラスターの作成時に使用できる必要な構成オプションについて説明します。
 

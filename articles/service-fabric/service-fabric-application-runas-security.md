@@ -99,14 +99,14 @@ echo System TestVariable set to > test.txt
 echo %TestVariable% >> test.txt
 
 REM To delete this system variable us
-REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v TestVariable /f
+REM REG delete "HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment" /v TestVariable /f
 ~~~
 
 次に、ソリューションをビルドして、開発用のローカル クラスターにデプロイします。サービスが開始した後、Service Fabric Explorer で示されるように、MySetup.bat が成功したことを 2 つの方法で確認できます。PowerShell コマンド プロンプトを起動し、次を入力します。
 
 ~~~
-PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
-MyValue
+PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine") MyValue
+
 ~~~
 
 サービスがデプロイされ、Service Fabric エクスプローラーで開始したノードの名前をメモします (たとえば、Node 1)。次に、アプリケーション インスタンスの作業フォルダーに移動し、**TestVariable** の値を示す out.txt ファイルを探します。たとえば、これが Node 2 にデプロイされた場合、**MyApplicationType** の次のパスに移動します。
@@ -121,7 +121,7 @@ C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 PowerShell ファイルを起動するための MySetup.bat。
 
 ~~~
-powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
+powershell.exe -ExecutionPolicy Bypass -Command ".\\MySetup.ps1"
 ~~~
 
 PowerShell ファイルで、システム環境変数を設定するために次を追加します。

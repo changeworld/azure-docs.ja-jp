@@ -135,10 +135,10 @@
 - 挿入と更新に成功した場合はトランザクションをコミット。そのどちらか一方に失敗した場合はトランザクションをロールバック
 
 
-	function Transactions()
-	{
-		try
+		function Transactions()
 		{
+			try
+			{
 			$conn = OpenConnection();
 
 			if (sqlsrv_begin_transaction($conn) == FALSE)
@@ -172,7 +172,7 @@
 		{
 			echo("Error!");
 		}
-	}
+		}
 
 
 ## 次のステップ

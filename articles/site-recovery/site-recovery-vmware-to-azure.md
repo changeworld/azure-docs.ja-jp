@@ -23,7 +23,8 @@
 - ** VMware 仮想マシンを保護する** — Azure へのオンプレミス VMware 仮想マシンのレプリケーション、フェールオーバー、復旧を調整します
 - **物理サーバーを保護する** — Azure Site Recovery サービスを使用した Azure へのオンプレミス Windows および Linux 物理サーバーのレプリケーション、フェールオーバー、および内復旧を調整します
 
-この記事では、概要、デプロイの前提条件、設定方法について説明します。この記事を読み終わると、VMware 仮想マシンまたは物理サーバーを Azure にレプリケートできるようになります。問題が発生した場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
+この記事では、概要、デプロイの前提条件、設定方法について説明します。この記事を読み終わると、VMware 仮想マシンまたは物理サーバーを Azure にレプリケートできるようになります。
+問題が発生した場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
 
 
 ## Azure Site Recovery とは
@@ -167,9 +168,9 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 **Azure Virtual Machines** | <p>保護する仮想マシンは、[Azure の前提条件](site-recovery-best-practices.md)に従う必要があります。</p><p>**ディスクの数** — 1 台の保護されたサーバーでサポートできるディスク数は最大 31 です。</p><p>**ディスク サイズ** — 個々のディスク容量は 1023 GB 未満である必要があります。</p><p>**クラスタリング** — クラスター化されたサーバーはサポートされません。</p><p>**ブート** — Unified Extensible Firmware Interface (UEFI) ブートまたは拡張ファームウェア インターフェイス (EFI) ブートはサポートされません。</p><p>**ボリューム** — Bitlocker 暗号化ボリュームはサポートされません。</p><p> **サーバー名** — 名前は 1 ～ 63 文字 (文字、数字、ハイフン) である必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンが保護された後で、Azure の名前を変更することができます。</p>
 **構成サーバー** | <p>Azure Site Recovery Windows Server 2012 R2 ギャラリー イメージに基づいた構成サーバー用の Standard A3 仮想マシンがサブスクリプションに作成されます。新しいクラウド サービスの最初のインスタンスとして作成されます。構成サーバーの接続の種類としてパブリック インターネットを選択した場合、予約されたパブリック IP アドレスでクラウド サービスが作成されます。</p><p>インストール パスには英字以外使わないでください。</p>
 **マスター ターゲット サーバー** | <p>Azure Virtual Machine、Standard A4、D14、または DS4。</p><p>インストール パスは英語文字のみで構成される必要があります。たとえば、Linux を実行するマスター ターゲット サーバーのパスは、**/usr/local/ASR** のようにする必要があります。</p></p>
-**プロセス サーバー** | <p>プロセス サーバーは、最新の更新プログラムがインストールされている Windows Server 2012 R2 を実行している物理マシンまたは仮想マシンにデプロイできます。C:/ にインストールします。</p><p>プロセス サーバーは、保護するマシンと同じネットワークおよびサブネット上に配置することをお勧めします。</p><p>VMware vSphere CLI 5.5.0 をプロセス サーバーにインストールします。vCenter サーバーによって管理される仮想マシンまたは ESXi ホストで実行する仮想マシンを検出するには、プロセス サーバー上に VMware vSphere CLI コンポーネントが必要です。</p><p>インストール パスは英語文字のみで構成される必要があります。</p><p>ReFS ファイル システムはサポートされていません。</p>
-**VMware** | <p>VMware vSphere ハイパーバイザーを管理する VMWare vCenter サーバー。最新の更新プログラムがインストールされた vCenter バージョン 5.1 または 5.5 を実行している必要があります。</p><p>保護する VMWare 仮想マシンを含む、1 つまたは複数の vSphere ハイパーバイザー。ハイパーバイザーは、最新の更新プログラムがインストールされた ESXi バージョン 5.1 または 5.5 を実行している必要があります。</p><p>VMware 仮想マシンは、VMware ツールがインストールされて稼動している必要があります。</p>  
-**Windows マシン** | <p>Windows が稼動している物理サーバーまたは VMware 仮想マシンを保護するときは、いくつかの要件があります。</p><p>サポートされる 64 ビット オペレーティング システム: **Windows Server 2012 R2**、**Windows Server 2012**、**Windows Server 2008 R2 SP1 以上**。</p><p>ホスト名、マウント ポイント、デバイス名、Windows システム パス (例: C:\\Windows) には英語のみ使用できます。</p><p>オペレーティング システムは C:\\ ドライブにインストールする必要があります。</p><p>基本ディスクのみがサポートされます。ダイナミック ディスクはサポートされていません。</p><p><Firewall rules on protected machines should allow them to reach the configuration and master target servers in Azure.p><p>Windows サーバーにモビリティ サービスをプッシュ インストールするには、管理者アカウントを提供する必要があります (Windows マシン上のローカル管理者)。提供するアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。そのためには、LocalAccountTokenFilterPolicy DWORD レジストリ エントリ (値は 1) を HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System に追加します。CLI からレジストリ エントリを追加するには、cmd または powershell を開き、「**`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**」と入力します。アクセス制御についての[詳細](https://msdn.microsoft.com/library/aa826699.aspx)。</p><p>フェールオーバー後に、Azure の Windows 仮想マシンにリモート デスクトップを使用して接続する場合、オンプレミスのマシンでリモート デスクトップが有効になっていることを確認してください。VPN 経由で接続していない場合、ファイアウォール規則でインターネット経由のリモート デスクトップ接続を許可する必要があります。</p>
+**プロセス サーバー** | <p>プロセス サーバーは、最新の更新プログラムがインストールされている Windows Server 2012 R2 を実行している物理マシンまたは仮想マシンにデプロイできます。C:/ にインストールします。</p><p>プロセス サーバーは、保護するマシンと同じネットワークおよびサブネット上に配置することをお勧めします。</p><p>VMware vSphere CLI 5.5.0 をプロセス サーバーにインストールします。vCenter サーバーによって管理される仮想マシンまたは ESXi ホストで実行する仮想マシンを検出するには、プロセス サーバー上に VMware vSphere CLI コンポーネントが必要です。</p><p>インストール パスは英語文字のみで構成される必要があります。</p>
+**VMware** | <p>VMware vSphere ハイパーバイザーを管理する VMWare vCenter サーバー。最新の更新プログラムがインストールされた vCenter バージョン 5.1 または 5.5 を実行している必要があります。</p><p>保護する VMWare 仮想マシンを含む、1 つまたは複数の vSphere ハイパーバイザー。ハイパーバイザーは、最新の更新プログラムがインストールされた ESX/ESXi バージョン 5.1 または 5.5 を実行している必要があります。</p><p>VMware 仮想マシンは、VMware ツールがインストールされて稼働している必要があります。</p>
+**Windows マシン** | <p>Windows が稼動している物理サーバーまたは VMware 仮想マシンを保護するときは、いくつかの要件があります。</p><p>サポートされる 64 ビット オペレーティング システム: **Windows Server 2012 R2**、**Windows Server 2012**、**Windows Server 2008 R2 SP1 以上**。</p><p>ホスト名、マウント ポイント、デバイス名、Windows システム パス (例: C:\Windows) には英語のみ使用できます。</p><p>オペレーティング システムは C:\ ドライブにインストールする必要があります。</p><p>基本ディスクのみがサポートされます。ダイナミック ディスクはサポートされていません。</p><p><Firewall rules on protected machines should allow them to reach the configuration and master target servers in Azure.p><p>Windows サーバーにモビリティ サービスをプッシュ インストールするには、管理者アカウントを提供する必要があります (Windows マシン上のローカル管理者)。提供するアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。そのためには、LocalAccountTokenFilterPolicy DWORD レジストリ エントリ (値は 1) を HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System に追加します。CLI からレジストリ エントリを追加するには、cmd または powershell を開き、「**`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**」と入力します。アクセス制御についての[詳細](https://msdn.microsoft.com/library/aa826699.aspx)。</p><p>フェールオーバー後に、Azure の Windows 仮想マシンにリモート デスクトップを使用して接続する場合、オンプレミスのマシンでリモート デスクトップが有効になっていることを確認してください。VPN 経由で接続していない場合、ファイアウォール規則でインターネット経由のリモート デスクトップ接続を許可する必要があります。</p>
 **Linux マシン** | <p>サポートされている 64 ビット オペレーティング システム: **Centos 6.4、6.5、6.6**、**Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5**、**SUSE Linux Enterprise Server 11 SP3**。</p><p>保護されたマシンのファイアウォール規則は、保護されたマシンから構成サーバーおよび Azure のマスター ターゲット サーバーにアクセスできるように設定する必要があります。</p><p>保護対象マシン上の /etc/hosts ファイルには、ローカル ホスト名をすべての NIC と関連付けられた IP アドレスにマップするエントリが含まれる必要があります。</p><p>フェールオーバー後に、Linux を実行する Azure 仮想マシンに Secure Shell クライアント (ssh) を使用して接続する場合、保護されたマシンのシステム ブート時に Secure Shell サービスが自動的に起動し、ファイアウォールの規則で仮想マシンへの ssh 接続が許可されるように設定していることを確認してください。</p><p>ホスト名、マウント ポイント、デバイス名、および Linux システム パスとファイル名 (例: /etc/; /usr) には英語のみ使用できます。</p><p>オンプレミスのマシンに対する保護は、以下のストレージで有効にできます。<br>ファイル システム: EXT3、ETX4、ReiserFS、XFS<br>マルチパス ソフトウェア-デバイス マッパー (multipath)<br>ボリューム マネージャー: LVM2<br>HP CCISS コントローラー ストレージを使用する物理サーバーはサポートされていません。</p>
 **サードパーティ** | このシナリオでは、正しく機能するためにサード パーティのソフトウェアに依存している、一部のデプロイ コンポーネントがあります。すべてを一覧表示するには、「[Third Party Software Notices and Information](#third-party)」を参照してください。
 
@@ -197,7 +198,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 1. [管理ポータル](https://portal.azure.com)にサインインします。
 
 
-2. **[Data Services]**、**[Recovery Services]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
+2. **[Data Services]**、**[復旧サービス]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
 
 
 3. **[新規作成]**、**[簡易作成]** の順にクリックします。
@@ -238,7 +239,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 	![進行状況の監視](./media/site-recovery-vmware-to-azure/ASRVMWare_MonitorConfigServer.png)
 
-6.  **この手順は、接続の種類がパブリック インターネットである場合にのみ当てはまります。** 構成サーバーがデプロイされたら、Azure ポータルの **[Virtual Machines]** ページで、構成サーバーに割り当てられたパブリック IP アドレスを書き留めます。さらに、**[エンドポイント]** タブで、プライベート ポート 443 にマップされたパブリック HTTPS ポートを書き留めます。この情報は、後で、マスター ターゲット サーバーとプロセス サーバーを構成サーバーに登録するときに必要になります。構成サーバーは、次のエンドポイントでデプロイされます。
+6.  **この手順は、接続の種類がパブリック インターネットである場合にのみ当てはまります。** 構成サーバーがデプロイされたら、Azure ポータルの **[仮想マシン]** ページで、構成サーバーに割り当てられたパブリック IP アドレスを書き留めます。さらに、**[エンドポイント]** タブで、プライベート ポート 443 にマップされたパブリック HTTPS ポートを書き留めます。この情報は、後で、マスター ターゲット サーバーとプロセス サーバーを構成サーバーに登録するときに必要になります。構成サーバーは、次のエンドポイントでデプロイされます。
 
 	- HTTPS: パブリック ポートは、インターネット経由でコンポーネント サーバーと Azure 間の通信を調整するために使用されます。プライベート ポート 443 は、VPN 経由のコンポーネント サーバーと Azure 間の通信を調整するために使用されます。
 	- カスタム: パブリック ポートは、インターネット経由のフェールバック ツールの通信に使用されます
@@ -255,7 +256,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 ### 構成サーバーのコンテナーへの登録
 
 1. **[クイック スタート]** ページで、**[ターゲット リソースの準備]**、**[登録キーのダウンロード]** の順にクリックします。キー ファイルが自動的に生成されます。キーは生成後 5 日間有効です。それを構成サーバーにコピーします。
-2. **[Virtual Machines]** で、仮想マシンの一覧から構成サーバーを選択します。**[ダッシュボード]** タブを開いて **[接続]** をクリックします。ダウンロードした RDP ファイルを**開き**、リモート デスクトップを使用して構成サーバーにログオンします。構成サーバーが VPN ネットワークにデプロイされている場合、構成サーバーの内部 IP アドレス (構成サーバーをデプロイする際に指定した IP アドレス。構成サーバーの仮想マシンのダッシュボード ページで確認することも可能) を使用して、オンプレミス ネットワークからリモート デスクトップでその構成サーバーに接続してください。初回ログオン時は、Azure Site Recovery 構成サーバー セットアップ ウィザードが自動的に実行されます。
+2. **[仮想マシン]** で、仮想マシンの一覧から構成サーバーを選択します。**[ダッシュボード]** タブを開いて **[接続]** をクリックします。ダウンロードした RDP ファイルを**開き**、リモート デスクトップを使用して構成サーバーにログオンします。構成サーバーが VPN ネットワークにデプロイされている場合、構成サーバーの内部 IP アドレス (構成サーバーをデプロイする際に指定した IP アドレス。構成サーバーの仮想マシンのダッシュボード ページで確認することも可能) を使用して、オンプレミス ネットワークからリモート デスクトップでその構成サーバーに接続してください。初回ログオン時は、Azure Site Recovery 構成サーバー セットアップ ウィザードが自動的に実行されます。
 
 	![登録](./media/site-recovery-vmware-to-azure/ASRVMWare_RegistrationSplashscreen.png)
 
@@ -273,12 +274,12 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 	- **[次へ]** をクリックすると、プロキシの接続を確認するテストが実行されます。
 	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合、アドレス、ポート、資格情報などの詳細を入力する必要があります。
 	- 次の URL にプロキシ経由でアクセスできる必要があります。
-		- **.hypervrecoverymanager.windowsazure.com
-- **.accesscontrol.windows.net
-- **.backup.windowsazure.com
-- **.blob.core.windows.net
-- **.store.core.windows.net
-- IP アドレス ベースのファイアウォール ルールがある場合は、構成サーバーから「[Azure Datacenter の IP 範囲](https://msdn.microsoft.com/library/azure/dn175718.aspx)」で説明されている IP アドレスへの通信および HTTPS (443) プロトコルを許可するようにルールが設定されていることを確認します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+		- *.hypervrecoverymanager.windowsazure.com
+		- *.accesscontrol.windows.net
+		- *.backup.windowsazure.com
+		- *.blob.core.windows.net
+		- *.store.core.windows.net
+	- IP アドレス ベースのファイアウォール ルールがある場合は、構成サーバーから「[Azure Datacenter の IP 範囲](https://msdn.microsoft.com/ja-jp/library/azure/dn175718.aspx)」で説明されている IP アドレスへの通信および HTTPS (443) プロトコルを許可するようにルールが設定されていることを確認します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
 	![プロキシの登録](./media/site-recovery-vmware-to-azure/ASRVMWare_RegistrationProxy.png)
 
@@ -346,7 +347,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 サブネットの最初の 4 つの IP アドレスは Azure 内部用に確保されていることに注意してください。その他の利用可能な IP アドレスを指定します。
 
->[AZURE.NOTE] [Premium Storage アカウント](../storage/storage-premium-storage-preview-portal.md)を使用して IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、Standard DS4 を選択します。
+>[AZURE.NOTE] [Premium Storage アカウント](../storage/storage-premium-storage-preview-portal.md)を使用して IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、Standard DS4 を選択します。
 
 
 3. Windows マスター ターゲット サーバーの仮想マシンは、以下のエンドポイントで作成されます (パブリック エンドポイントは、デプロイメントの種類がパブリック インターネットである場合にのみ作成されます)。
@@ -364,7 +365,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
     >[AZURE.WARNING]マスター ターゲット サーバーのデプロイ中に作成されたエンドポイントのパブリック ポート番号またはプライベート ポート番号は削除または変更しないでください。
 
-5. **[Virtual Machines]** で、仮想マシンが起動するまで待機します。
+5. **[仮想マシン]** で、仮想マシンが起動するまで待機します。
 
 	- サーバーを Windows で構成している場合は、リモート デスクトップの詳細情報をメモしておきます。
 	- Linux で構成しており、VPN 経由で接続している場合は、仮想マシンの内部 IP アドレスをメモしておきます。インターネット経由で接続している場合は、パブリック IP アドレスをメモしておきます。
@@ -382,7 +383,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 	1. マスター ターゲット サーバー ソフトウェアをインストールする前に、最新の Linux Integration Services (LIS) がインストールされていることを確認します。最新バージョンの LIS とインストール手順は、[ここ](https://www.microsoft.com/ja-JP/download/details.aspx?id=46842)で確認できます。LIS をインストールした後、コンピューターを再起動します。
 	2. **[ターゲット (Azure) リソースの準備]** で、**[追加ソフトウェアのダウンロードとインストール (Linux マスター ターゲット サーバーのみ)]** をクリックし、Linux マスター ターゲット サーバー パッケージをダウンロードします。ダウンロードした tar ファイルを、sftp クライアントを使用して仮想マシンにコピーします。または、デプロイ済みの Linux マスター ターゲット サーバーにログインし、*wget http://go.microsoft.com/fwlink/?LinkID=529757&clcid=0x409* を使用してファイルをダウンロードしてもかまいません。
 2. Secure Shell クライアントを使用してサーバーにログインします。VPN 経由で Azure ネットワークに接続している場合は、内部 IP アドレスを使用します。それ以外の場合は、外部 IP アドレスと SSH パブリック エンドポイントを使用します。
-	3. 次を実行して gzipped インストーラーからファイルを抽出します。**tar –xvzf Microsoft-ASR\_UA\_8.4.0.0\_RHEL6-64***![Linux のマスター ターゲット サーバー](./media/site-recovery-vmware-to-azure/ASRVMWare_TSLinuxTar.png)
+	3. 次を実行して gzipped インストーラーからファイルを抽出します。**tar –xvzf Microsoft-ASR_UA_8.4.0.0_RHEL6-64***![Linux のマスター ターゲット サーバー](./media/site-recovery-vmware-to-azure/ASRVMWare_TSLinuxTar.png)
 	4. tar ファイルの内容を抽出したディレクトリで操作していることを確認します。
 	5. **echo *`<passphrase>`* >passphrase.txt** コマンドを使用して、構成サーバーのパスフレーズをローカル ファイルにコピーします。
 	6. コマンド “**sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i *`<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt**” を実行します。
@@ -405,12 +406,12 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 2.  ダウンロードした zip ファイルを、プロセス サーバーのインストール先となるサーバーにコピーします。この zip ファイルには、次の 2 つのインストール ファイルが含まれています。
 
-	- Microsoft-ASR\_CX\_TP\_8.4.0.0\_Windows*
-	- Microsoft-ASR\_CX\_8.4.0.0\_Windows*
+	- Microsoft-ASR_CX_TP_8.4.0.0_Windows*
+	- Microsoft-ASR_CX_8.4.0.0_Windows*
 
 3. アーカイブを解凍し、インストール ファイルをサーバー上の場所にコピーします。
-4. インストール ファイルの **Microsoft-ASR\_CX\_TP\_8.4.0.0\_Windows*** を実行して、指示に従います。これでデプロイに必要なサード パーティのコンポーネントがインストールされます。
-5. 次に、**Microsoft-ASR\_CX\_8.4.0.0\_Windows*** を実行します。
+4. インストール ファイルの **Microsoft-ASR_CX_TP_8.4.0.0_Windows*** を実行して、指示に従います。これでデプロイに必要なサード パーティのコンポーネントがインストールされます。
+5. 次に、**Microsoft-ASR_CX_8.4.0.0_Windows*** を実行します。
 6. **[サーバー モード]** ページで、**[プロセス サーバー]** を選択します。
 
 	![サーバー選択モード](./media/site-recovery-vmware-to-azure/ASRVMWare_ProcessServerSelection.png)
@@ -455,7 +456,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 プロセス サーバーを登録したときにモビリティ サービスの署名の検証を無効にしなかった場合、以下のように実行すると後でも無効にできます。
 
-1. プロセス サーバーに管理者としてログオンし、編集のために C:\\pushinstallsvc\\pushinstaller.conf ファイルを開きます。**[PushInstaller.transport]** セクションに、**SignatureVerificationChecks=”0”** という行を追加します。ファイルを保存して閉じます。
+1. プロセス サーバーに管理者としてログオンし、編集のために C:\pushinstallsvc\pushinstaller.conf ファイルを開きます。**[PushInstaller.transport]** セクションに、**SignatureVerificationChecks=”0”** という行を追加します。ファイルを保存して閉じます。
 2. InMage PushInstall サービスを再起動します。
 
 
@@ -479,7 +480,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 	- [CentOS 6.4、6.5、6.6 (64 ビットのみ)](http://download.microsoft.com/download/7/E/D/7ED50614-1FE1-41F8-B4D2-25D73F623E9B/Microsoft-ASR_UA_8.4.0.0_RHEL6-64_GA_28Jul2015_release.tar.gz)
 	- [Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ)](http://download.microsoft.com/download/5/2/6/526AFE4B-7280-4DC6-B10B-BA3FD18B8091/Microsoft-ASR_UA_8.4.0.0_OL6-64_GA_28Jul2015_release.tar.gz)
 	- [SUSE Linux Enterprise Server SP3 (64 ビットのみ)](http://download.microsoft.com/download/B/4/2/B4229162-C25C-4DB2-AD40-D0AE90F92305/Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz)
-- または、プロセス サーバーを更新した後は、更新済みバージョンのモビリティ サービスをプロセス サーバーの C:\\pushinstallsvc\\repository フォルダーから入手できます。
+- または、プロセス サーバーを更新した後は、更新済みバージョンのモビリティ サービスをプロセス サーバーの C:\pushinstallsvc\repository フォルダーから入手できます。
 - 以前のバージョンのモビリティ サービスがインストールされた保護対象マシンが既に存在する場合、保護対象マシン上のモビリティ サービスを管理ポータルから自動的にアップグレードすることもできます。そのためには、マシンの従属先となる保護グループを選択し、保護対象マシンを強調表示して、一番下にある [モビリティ サービスの更新] ボタンをクリックします。[モビリティ サービスの更新] ボタンが有効になるのは、より新しいバージョンのモビリティ サービスが入手可能になった場合だけです。プロセス サーバーで最新バージョンのプロセス サーバー ソフトウェアが実行されていることを確認したうえで、モビリティ サービスを更新してください。モビリティ サービスの更新が機能するためには、保護対象サーバーが[自動プッシュ インストールの前提条件](#install-the-mobility-service-automatically)をすべて満たしている必要があります。
 
 ![vCenter サーバーの選択](./media/site-recovery-vmware-to-azure/ASRVmware_UpdateMobility1.png)
@@ -564,10 +565,10 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 4. ソース Linux サーバーの /etc/hosts ファイルに、ローカル ホスト名を、すべての NIC に関連付けられた IP アドレスにマップするエントリが含まれることを確認します。
 5. 保護するマシンに最新の openssh、openssh-server、openssl の各パッケージをインストールします。
 6. SSH がポート 22 で有効であり実行中であることを確認します。 
-7. 以下の手順で、sshd\_config ファイルで SFTP サブシステムとパスワード認証を有効にします。 
+7. 以下の手順で、sshd_config ファイルで SFTP サブシステムとパスワード認証を有効にします。 
 
 	- a) root としてログインします。
-	- b) /etc/ssh/sshd\_config ファイルで、**PasswordAuthentication** で始まる行を見つけます。
+	- b) /etc/ssh/sshd_config ファイルで、**PasswordAuthentication** で始まる行を見つけます。
 	- c) この行のコメントを解除し、値 "no" を "yes" に変更します。
 
 		![Linux のモビリティ](./media/site-recovery-vmware-to-azure/ASRVMWare_LinuxPushMobility1.png)
@@ -580,7 +581,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
  
 ### モビリティ サービスを手動でインストールする
 
-モビリティ サービスのインストールに使用するソフトウェア パッケージは、プロセス サーバーの C:\\pushinstallsvc\\repository にあります。プロセス サーバーにログオンし、次の表に基づいて適切なインストール パッケージをソース マシンにコピーします。
+モビリティ サービスのインストールに使用するソフトウェア パッケージは、プロセス サーバーの C:\pushinstallsvc\repository にあります。プロセス サーバーにログオンし、次の表に基づいて適切なインストール パッケージをソース マシンにコピーします。
 
 | ソース オペレーティング システム | プロセス サーバー上のモビリティ サービス パッケージ |
 |---------------------------------------------------	|------------------------------------------------------------------------------------------------------	|
@@ -592,7 +593,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 **Windows サーバーにモビリティ サービスを手動でインストールするには**、次のようにします。
 
-1. **Microsoft-ASR\_UA\_8.4.0.0\_Windows\_GA\_28Jul2015\_release.exe** パッケージを、前記の表のプロセス サーバーのディレクトリ パスからソース マシンにコピーします。
+1. **Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe** パッケージを、前記の表のプロセス サーバーのディレクトリ パスからソース マシンにコピーします。
 2. ソース マシンで実行可能ファイルを実行して、モビリティ サービスをインストールします。
 3. 次の手順のようにします。
 4. ロールとして **[モビリティ サービス]** を選択し、**[次へ]** をクリックします。
@@ -611,7 +612,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 **コマンド ラインから実行するには:**
 
-1. パスフレーズを CX からサーバーのファイル "C:\\connection.passphrase" にコピーして、このコマンドを実行します。この例では、CX は 104.40.75.37、HTTPS ポートは 62519です。
+1. パスフレーズを CX からサーバーのファイル "C:\connection.passphrase" にコピーして、このコマンドを実行します。この例では、CX は 104.40.75.37、HTTPS ポートは 62519です。
 
     `C:\Microsoft-ASR_UA_8.2.0.0_Windows_PREVIEW_20Mar2015_Release.exe" -ip 104.40.75.37 -port 62519 -mode UA /LOG="C:\stdout.txt" /DIR="C:\Program Files (x86)\Microsoft Azure Site Recovery" /VERYSILENT  /SUPPRESSMSGBOXES /norestart  -usesysvolumes  /CommunicationMode https /PassphrasePath "C:\connection.passphrase"`
 
@@ -677,7 +678,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 	![vCenter サーバーの追加](./media/site-recovery-vmware-to-azure/ASRVMWare_PGJobs2.png)
 
-7. また、**[保護された項目]**、保護グループ名、**[Virtual Machines]** の順にクリックすることで、保護のステータスを監視できます。初期レプリケーションが完了してマシンのデータが同期されると、状態 **[保護されています]** が表示されます。
+7. また、**[保護された項目]**、保護グループ名、**[仮想マシン]** の順にクリックすることで、保護のステータスを監視できます。初期レプリケーションが完了してマシンのデータが同期されると、状態 **[保護されています]** が表示されます。
 
 	![仮想マシンのジョブ](./media/site-recovery-vmware-to-azure/ASRVMWare_PGJobs.png)
 
@@ -696,7 +697,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 - VMware 仮想マシンまたは物理サーバー上のボリュームのサイズを変更する場合は、重大な状態になります。サイズの変更が必要な場合は、次のようにします。
 
 	- a) サイズの設定を変更します。
-	- b) **[Virtual Machines]** タブで、仮想マシンを選択して **[削除]** をクリックします。
+	- b) **[仮想マシン]** タブで、仮想マシンを選択して **[削除]** をクリックします。
 	- c) **[仮想マシンの削除]** で、オプション **[保護を無効にする (復旧ドリルとボリューム サイズ変更に使用)]** オプションを選択します。このオプションは、保護を無効にしますが、Azure の回復ポイントは維持します。
 
 		![仮想マシンのプロパティの設定](./media/site-recovery-vmware-to-azure/ASRVMWare_RemoveVM.png)
@@ -757,21 +758,23 @@ Azure で実行しているフェールオーバーされたマシンをオン�
 
 1. **[サーバー]** の **[構成サーバー]** ページに移動します。
 2. 構成サーバーの名前をクリックし、**[サーバーの詳細]** に移動します。
-3. **[プロセス サーバー]** ボックスの一覧で、変更するサーバーの **[プロセスのサーバーの変更]** をクリックします。![Change Process Server 1](./media/site-recovery-vmware-to-azure/ASRVMware_ChangePS1.png)
-4. **[プロセス サーバーの変更]** ダイアログの **[ターゲット プロセス サーバー]** で新しいサーバーを選択し、新しいサーバーにレプリケートする仮想マシンを選択します。サーバー名の隣の情報アイコンをクリックすると、空き容量や使用済みメモリなど、サーバーについての情報が表示されます。負荷の決定に役立つように、選択されている各仮想マシンを新しいプロセス サーバーにレプリケートするために必要な平均容量が表示されます。![Change Process Server 2](./media/site-recovery-vmware-to-azure/ASRVMware_ChangePS2.png)
+3. **[プロセス サーバー]** ボックスの一覧で、変更するサーバーの **[プロセスのサーバーの変更]** をクリックします。
+	![Change Process Server 1](./media/site-recovery-vmware-to-azure/ASRVMware_ChangePS1.png)
+4. **[プロセス サーバーの変更]** ダイアログの **[ターゲット プロセス サーバー]** で新しいサーバーを選択し、新しいサーバーにレプリケートする仮想マシンを選択します。サーバー名の隣の情報アイコンをクリックすると、空き容量や使用済みメモリなど、サーバーについての情報が表示されます。負荷の決定に役立つように、選択されている各仮想マシンを新しいプロセス サーバーにレプリケートするために必要な平均容量が表示されます。
+	![Change Process Server 2](./media/site-recovery-vmware-to-azure/ASRVMware_ChangePS2.png)
 5. チェック マークをクリックして、新しいプロセス サーバーへのレプリケーションを開始します。重要な状態になったプロセス サーバーからすべての仮想マシンを削除すると、重大な警告はダッシュボードに表示されなくなります。
 
 
-## Third-party software notices and information
+## サード パーティ製ソフトウェアに関する通知および情報
 
 Do Not Translate or Localize
 
-マイクロソフトの製品またはサービスで実行されるソフトウェアおよびファームウェアは、以下に記載されたプロジェクトの情報 (総称して " サード パーティのコード" と呼びます) に基づくか、その情報を組み込んでいます。Microsoft is the not original author of the Third Party Code.マイクロソフトは、サード パーティのコードの元の作成者ではありません。元の著作権情報と、マイクロソフトがサード パーティのコードなどを受け取った際に適用された使用許諾契約は、以下に記載されています。
+The software and firmware running in the Microsoft product or service is based on or incorporates material from the projects listed below (collectively, “Third Party Code”).Microsoft is the not original author of the Third Party Code.The original copyright notice and license, under which Microsoft received such Third Party Code, are set forth below.
 
-セクション A の情報は、以下に記載されたプロジェクトに含まれるサード パーティのコードのコンポーネントに関するものです。Such licenses and information are provided for informational purposes only.このサード パーティのコードは、マイクロソフトの製品またはサービスに対するマイクロソフトのソフトウェア使用許諾契約条件の下で、マイクロソフトからお客様に使用が再許諾されています。
+The information in Section A is regarding Third Party Code components from the projects listed below.Such licenses and information are provided for informational purposes only.This Third Party Code is being relicensed to you by Microsoft under Microsoft's software licensing terms for the Microsoft product or service.
 
-セクション B の情報は、マイクロソフトから当初の使用許諾契約条件の下でお客様に使用が許諾された、サード パーティのコードのコンポーネントに関するものです。
+The information in Section B is regarding Third Party Code components that are being made available to you by Microsoft under the original licensing terms.
 
-完全なファイルは、[Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=529428)から入手できる場合があります。マイクロソフトは、この契約の下で明示的には付与されないその他すべての権利を、黙示、禁反言、その他のいずれによるかを問わず留保します。
+The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
 <!---HONumber=AcomDC_0107_2016-->

@@ -83,7 +83,7 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 1. **ソリューション エクスプローラー**で **WordCount** プロジェクトを右クリックし、[**HDInsight の Storm に送信 (Submit to Storm on HDInsight)**] を選択します。[**Storm クラスター**] ドロップダウン ダイアログから HDInsight クラスターを選択します。
 
-    > [AZURE.NOTE][**Storm クラスター**] ドロップダウンにサーバー名が設定されるには数秒かかることがあります。
+    > [AZURE.NOTE] [**Storm クラスター**] ドロップダウンにサーバー名が設定されるには数秒かかることがあります。
     >
     > メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスターの Storm があるサブスクリプションにログインします。
 
@@ -139,4 +139,4 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0107_2016--->

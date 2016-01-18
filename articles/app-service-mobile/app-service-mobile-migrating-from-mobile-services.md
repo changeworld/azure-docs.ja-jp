@@ -86,7 +86,7 @@ Azure App Service の利点の詳細については、[Mobile Services と App S
 
 Free または Basic 価格レベルのモバイル サービスを移行すると、その価格レベルのすべてのモバイル サービスが同時に移行されます。移行の間、Standard に[モバイルサービスを格上げする](#opt-raise-service-tier)ことでこれを回避できます。
 
-利用状況モニターで移行の状態を監視できます。サイトは Azure クラシック ポータルに「*移行中*」として一覧表示されます。
+利用状況モニターで移行の状態を監視できます。サイトは Azure クラシック ポータルに「 *移行中* 」として一覧表示されます。
 
   ![移行アクティビティ モニター][1]
 
@@ -281,7 +281,7 @@ Mobile Services では、プッシュ通信に Notification Hubs が使用され
 
 詳細については、[Notification Hubs] ドキュメントを確認してください。
 
-> [AZURE.TIP][Azure ポータル]の Notification Hubs 管理機能はまだプレビュー段階です。 [Azure クラシック ポータル]で引き続きすべての Notification Hubs を管理できます。
+> [AZURE.TIP] "[Azure ポータル]"の Notification Hubs 管理機能はまだプレビュー段階です。 [Azure クラシック ポータル]で引き続きすべての Notification Hubs を管理できます。
 
 ### <a name="app-settings"></a>その他のアプリ設定
 

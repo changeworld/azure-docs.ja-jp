@@ -41,9 +41,11 @@ Service Bus キューで対話型メッセージの信頼性の高い処理を�
 
 2. ソリューション エクスプローラーで、**[ProcessDeviceToCloudMessages]** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。**[NuGet パッケージ マネージャー]** ダイアログ ボックスが表示されます。
 
-3. **WindowsAzure.ServiceBus** を検索し、**[インストール]** をクリックし、使用条件に同意します。これによって、[Azure Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
+3. **WindowsAzure.ServiceBus** を検索し、**[インストール]** をクリックし、使用条件に同意します
+。これによって、[Azure Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
 
-4. **Microsoft Azure Service Bus Event Hub - EventProcessorHost** を検索し、**[インストール]** をクリックして、使用条件に同意します。これによって、[Azure Service Bus Event Hub - EventProcessorHost NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost)への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
+4. **Microsoft Azure Service Bus Event Hub - EventProcessorHost** を検索し、**[インストール]** をクリックして、使用条件に同意します。
+これによって、[Azure Service Bus Event Hub - EventProcessorHost NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost)への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
 
 5. **[ProcessDeviceToCloudMessages]** プロジェクトを右クリックし、**[追加]** をクリックしてから **[クラス]** をクリックします。新しいクラスに **SimpleEventProcessor** という名前を付けてから、**[OK]** をクリックしてクラスを作成します。
 

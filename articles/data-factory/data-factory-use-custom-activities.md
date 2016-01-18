@@ -297,7 +297,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 10. プロジェクトをコンパイルします。メニューの **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
 11. **Windows エクスプローラー**を起動し、ビルドの種類に応じて、**bin\\debug** フォルダーまたは **bin\\release** フォルダーに移動します。
-12. <project folder>\\bin\\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。エラー発生時の問題の原因となったソース コードの行番号など、追加情報を取得するために、**MyDotNetActivity.pdb** ファイルを含めることもできます。
+12. <project folder>\\bin\\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。エラー発生時の問題の原因となったソース コードの行番号など、追加情報を取得するために、MyDotNetActivity.pdb ファイルを含めることもできます。 
 
 	![バイナリ出力ファイル](./media/data-factory-use-custom-activities/Binaries.png)
 13. **MyDotNetActivity.zip** を BLOB として **customactvitycontainer** にアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内の **StorageLinkedService** リンク サービスが使用する Azure BLOB ストレージ内にあります。BLOB コンテナー **customactivitycontainer** が既に存在していなければ、作成します。
@@ -552,7 +552,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 ### カスタム アクティビティを使用するパイプラインの作成と実行
 
-1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] (省略記号)** をクリックすると表示されます。
+1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**... (省略記号)** をクリックすると表示されます。 
 2. 右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。**HDInsightLinkedService** リンク サービスの作成手順を実行した場合、独自のクラスターを使用するには、次の JSON で **HDInsightOnDemandLinkedService** を **HDInsightLinkedService** に置き換えます。
 
 		{

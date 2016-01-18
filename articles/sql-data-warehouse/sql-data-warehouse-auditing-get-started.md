@@ -120,7 +120,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 ##<a id="subheading-6"></a>Automation
 Azure SQL Database で監査を構成する際、使用できる PowerShell コマンドレットがいくつかあります。auditing コマンドレットにアクセスにするには、Azure リソース マネージャー モードで PowerShell を実行する必要があります。
 
-> [AZURE.NOTE][Azure リソース マネージャー](https://msdn.microsoft.com/library/dn654592.aspx) モジュールは、現在プレビュー段階にあります。Azure モジュールと同じ管理機能を提供しないことがあります。
+> [AZURE.NOTE] [Azure リソース マネージャー](https://msdn.microsoft.com/library/dn654592.aspx) モジュールは、現在プレビュー段階にあります。Azure モジュールと同じ管理機能を提供しないことがあります。
 
 Azure リソース マネージャー モードを実行中に、`Get-Command *AzureSql*` を実行して、使用できるコマンドレットの一覧を表示します。
 
@@ -141,4 +141,4 @@ Azure リソース マネージャー モードを実行中に、`Get-Command *A
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0107_2016--->
