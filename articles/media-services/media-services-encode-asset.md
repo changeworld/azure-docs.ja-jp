@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/29/2015"  
+	ms.date="01/05/2015"  
 	ms.author="juliako"/>
 
 #Azure オンデマンド メディア エンコーダーの概要と比較
@@ -72,13 +72,17 @@ Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618
 
 エンコーダーの出力メタデータの説明は[ここ](http://msdn.microsoft.com/library/azure/dn783217.aspx)にあります。
 
-###サムネイル
+###サムネイルを生成する
 
-サムネイルを生成する方法については、「[Media Encoder Standard を使用してサムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md)」を参照してください。
+詳細については、「[Media Encoder Standard を使用してサムネイルを生成する方法](media-services-custom-mes-presets-with-dotnet.md#thumbnails)」を参照してください。
 
-###オーディオまたはビデオのオーバーレイ
+###動画をトリミングする (クリッピング)
 
-現在、サポートされていません。
+詳細については、「[Media Encoder Standard を使用して動画をトリミングする方法](media-services-custom-mes-presets-with-dotnet.md#trim_video)」を参照してください。
+
+###オーバーレイを作成する
+
+詳細については、「[Media Encoder Standard を使用してオーバーレイを作成する方法](media-services-custom-mes-presets-with-dotnet.md#overlay)」を参照してください。
 
 ###関連項目
 
@@ -154,9 +158,9 @@ Azure Media Encoder は、[ここ](https://msdn.microsoft.com/library/azure/dn61
 
 入力コンテナー/ファイル形式|メディア エンコーダー スタンダード|Azure Media Encoder|メディア エンコーダー プレミアム ワークフロー
 ---|---|---|---
-Adobe® Flash® F4V |あり|いいえ |あり
+Adobe® Flash® F4V |あり|なし |あり
 MXF/SMPTE 377M |あり|制限あり|あり
-GXF |あり|いいえ |あり
+GXF |あり|なし |あり
 MPEG-2 トランスポート ストリーム |あり|あり |あり
 MPEG-2 プログラム ストリーム |あり|あり |あり
 MPEG-4/MP4 |あり|あり |あり
@@ -173,9 +177,9 @@ QuickTime (.mov) |あり|なし|いいえ
 入力ビデオ コーデック|メディア エンコーダー スタンダード|Azure Media Encoder|メディア エンコーダー プレミアム ワークフロー
 ---|---|---|---
 AVC 8-bit/10-bit、最大 4:2:2 (AVCIntra を含む) |8 ビット 4:2:0 および 4:2:2|8 ビット 4:2:0 のみ|あり
-Avid DNxHD (MXF) |あり|いいえ|あり
-DVCPro/DVCProHD (MXF) |あり|いいえ|あり
-JPEG2000 |あり|いいえ|あり
+Avid DNxHD (MXF) |あり|なし|あり
+DVCPro/DVCProHD (MXF) |あり|なし|あり
+JPEG2000 |あり|なし|あり
 MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル)|最大 422 プロファイル|最大 422 プロファイル|あり
 MPEG-1 |あり|あり|あり
 Windows Media ビデオ/VC-1 |あり|あり|あり
@@ -216,7 +220,7 @@ MXF (OP1a、XDCAM および AS02)|いいえ|いいえ|あり
 DPP (AS11 を含む)|いいえ|いいえ|あり
 GXF|いいえ|いいえ|あり
 MPEG-4/MP4|あり|あり|あり
-MPEG TS|あり|いいえ|あり
+MPEG TS|あり|なし|あり
 Windows Media/ASF|いいえ|あり|あり
 AVI (非圧縮 8-bit/10-bit)|いいえ|いいえ|あり
 スムーズ ストリーミング ファイル形式 (PIFF 1.3)|いいえ|あり|あり
@@ -265,4 +269,4 @@ Windows Media オーディオ|いいえ|あり|あり
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

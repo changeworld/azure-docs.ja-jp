@@ -100,8 +100,7 @@ Web ジョブのデプロイメント機能は、[Visual Studio 2013 Update 3](h
 
 	同じソリューション内の Web プロジェクトがデプロイされたときに Web ジョブとして自動的にデプロイされるように構成して、プロジェクトを作成します。Web ジョブを、関連する Web アプリケーションが実行する Web アプリケーションと同じアプリケーションで実行する場合に、このオプションを使用します。
 
-SDK 2.4 リリースでは、Web ジョブの新しいプロジェクト テンプレートは、コンソール アプリケーション プロジェクトを作成して Web ジョブのデプロイメントを有効にする方法と比較して、それほど簡単ではありません。将来的には、Web ジョブの新しいプロジェクト テンプレートは、自動的に適切な Web ジョブ SDK NuGet パッケージをインストールするようになり、[Web ジョブ SDK](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs) 開発において今より使いやすくなります。それまでは、[Web ジョブ SDK のチュートリアル](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs)に示すように、手動でパッケージをインストールすることで Web ジョブ SDK を使用するようプロジェクトを構成できます。
-
+> [AZURE.NOTE]Web ジョブの new-project テンプレートは、NuGet パッケージを自動的にインストールし、[Web ジョブ SDK](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs) 用にコードを *Program.cs* に含めます。Web ジョブ SDK を使用しない場合や、継続的な Web ジョブではなくスケジュールされた Web ジョブを使用する場合は、*Program.cs* 内の `host.RunAndBlock` ステートメントを削除または変更します。
 
 ### <a id="createnolink"></a> 独立した Web ジョブ用に Web ジョブの新しいプロジェクト テンプレートを使用する
   
@@ -198,4 +197,4 @@ Web ジョブ プロジェクトがそれ自身でデプロイされるように
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

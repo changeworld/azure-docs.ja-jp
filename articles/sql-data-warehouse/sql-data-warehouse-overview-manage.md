@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="01/04/2016"
    ms.author="mausher;nicw;barbkess;JRJ@BigBangData.co.uk;"/>
 
 # SQL Data Warehouse の管理ツール
@@ -48,4 +48,4 @@ SQL Data Warehouse に対するサポートが含まれた [SQL Server Data Tool
 <!--Other web references-->
 [Azure クラシック ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

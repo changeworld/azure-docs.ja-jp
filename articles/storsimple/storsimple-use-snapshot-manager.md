@@ -12,22 +12,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/15/2015"
+   ms.date="12/28/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager のユーザー インターフェイス
 
 ## 概要
 
-StorSimple Snapshot Manager は、ボリューム グループのバックアップ コピー (ローカルに保存されたものとクラウドに保存されたものを含む) の管理に使用できる直感的なグラフィカル ユーザー インターフェイス (GUI) を備えています。このチュートリアルでは、インターフェイスの概要と各コンポーネントの使用方法について説明します (StorSimple Snapshot Manager の詳細については、「[StorSimple Snapshot Manager について](storsimple-what-is-snapshot-manager.md)」を参照してください)。
+StorSimple Snapshot Manager は、ボリューム グループのバックアップ コピー (ローカルに保存されたものとクラウドに保存されたものを含む) の管理に使用できる直感的なグラフィカル ユーザー インターフェイス (GUI) を備えています。このチュートリアルでは、インターフェイスの概要と各コンポーネントの使用方法について説明します。StorSimple Snapshot Manager の詳細については、「[StorSimple Snapshot Manager について](storsimple-what-is-snapshot-manager.md)」を参照してください。
 
 ### コンソールの説明
 
 ユーザー インターフェイスを表示するには、デスクトップの StorSimple Snapshot Manager アイコンをクリックします。次の図に示すコンソール ウィンドウが表示されます。
 
 ![StorSimple Snapshot Manager のウィンドウ](./media/storsimple-use-snapshot-manager/HCS_SSM_gui_panes.png)
-
-**図 1: StorSimple Snapshot Manager の UI**
 
 コンソール ウィンドウは、5 つの主要要素で構成されています。各要素の詳細については、該当するリンクをクリックしてください。
 
@@ -57,8 +55,6 @@ StorSimple Snapshot Manager のユーザー インターフェイスでは、Win
 
 ![[表示] メニューの選択](./media/storsimple-use-snapshot-manager/HCS_SSM_View_menu.png)
 
-**図 2: [表示] が選択された StorSimple Snapshot Manager のメニュー バー**
-
 ### [ファイル] メニュー
 
 **[ファイル]** メニューには、Microsoft 管理コンソール (MMC) の標準コマンドが表示されます。
@@ -68,8 +64,6 @@ StorSimple Snapshot Manager のユーザー インターフェイスでは、Win
 **[ファイル]** メニューを表示するには、メニュー バーの **[ファイル]** をクリックします。次のメニューが表示されます。
 
 ![StorSimple Snapshot Manager の [ファイル] メニュー](./media/storsimple-use-snapshot-manager/HCS_SSM_FileMenu.png)
-
-**図 3: StorSimple Snapshot Manager の [ファイル] メニュー**
 
 #### メニューの説明
 
@@ -102,13 +96,9 @@ StorSimple Snapshot Manager のユーザー インターフェイスでは、Win
  
 ![StorSimple Snapshot Manager の [操作] メニュー](./media/storsimple-use-snapshot-manager/HCS_SSM_Action_menu.png)
 
-**図 4: StorSimple Snapshot Manager の [操作] メニュー**
-
 **[操作]** ウィンドウ (コンソールの右側) には、**[操作]** メニューと同じ操作一覧が表示されます。また、**[操作]** ウィンドウには、**[表示]** メニュー オプションも表示されます。このオプションを使用して、**結果**ウィンドウのカスタム ビューを作成できます。
 
 ![[表示] メニューを開いた状態の [操作] ウィンドウ](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane_Results.png)
-
-**図 5: StorSimple Snapshot Manager の [操作] ウィンドウと [表示] メニュー**
 
 #### メニューの説明
 
@@ -153,8 +143,6 @@ StorSimple Snapshot Manager の操作を次の表に示します。
 
 ![StorSimple Snapshot Manager の[表示] メニュー](./media/storsimple-use-snapshot-manager/HCS_SSM_View_menu.png)
 
-**図 6: StorSimple Snapshot Manager の [表示] メニュー**
-
 #### メニューの説明
 
 **[表示]** メニューに表示される項目を次の表に示します。
@@ -174,8 +162,6 @@ StorSimple Snapshot Manager の操作を次の表に示します。
 
 ![StorSimple Snapshot Manager の [お気に入り] メニュー](./media/storsimple-use-snapshot-manager/HCS_SSM_FavoritesMenu.png)
 
-**図 7: StorSimple Snapshot Manager の [お気に入り] メニュー**
-
 #### メニューの説明
 
 **[お気に入り]** メニューに表示される項目を次の表に示します。
@@ -194,8 +180,6 @@ StorSimple Snapshot Manager コンソール ウィンドウを追加したり、
 **[ウィンドウ]** メニューには、メニュー バーからアクセスできます。
 
 ![StorSimple Snapshot Manager の [ウィンドウ] メニュー](./media/storsimple-use-snapshot-manager/HCS_SSM_WindowMenu.png)
-
-**図 8: StorSimple Snapshot Manager の [ウィンドウ] メニュー**
 
 メニューの下部に表示される番号付きリストは、現在開いているウィンドウを示しています。このリストのウィンドウをクリックすると、そのウィンドウが前面に表示されます。
 
@@ -217,8 +201,6 @@ StorSimple Snapshot Manager と MMC のオンライン ヘルプを表示する�
 **[ヘルプ]** メニューには、メニュー バーからアクセスできます。StorSimple Snapshot Manager のヘルプ トピックには、**[操作]** ウィンドウからアクセスすることもできます。
 
 ![StorSimple Snapshot Manager の [ヘルプ] メニュー](./media/storsimple-use-snapshot-manager/HCS_SSM_HelpMenu.png)
-
-**図 9: StorSimple Snapshot Manager の [ヘルプ] メニュー**
 
 #### メニューの説明
 
@@ -259,8 +241,6 @@ StorSimple Snapshot Manager と MMC のオンライン ヘルプを表示する�
 **スコープ** ウィンドウには、一連のクリック可能なオブジェクト (ノード) がツリー構造で表示されます。
 
 ![スコープ ウィンドウ](./media/storsimple-use-snapshot-manager/HCS_SSM_Scope_pane.png)
-
-**図 10: StorSimple Snapshot Manager のスコープ ウィンドウ**
 
 - ノードを展開したり折りたたんだりするには、ノード名の横の矢印アイコンをクリックします。
 
@@ -384,8 +364,6 @@ StorSimple Snapshot Manager と MMC のオンライン ヘルプを表示する�
 
 ![結果ウィンドウ](./media/storsimple-use-snapshot-manager/HCS_SSM_Results_pane.png)
 
-**図 11: StorSimple Snapshot Manager の結果ウィンドウ**
-
 **結果**ウィンドウに表示する詳細を構成するには、**スコープ** ウィンドウでノードを右クリックし、**[表示]** をクリックして、**[列の追加と削除]** をクリックします。
 
 ## [操作] ウィンドウ
@@ -398,13 +376,9 @@ StorSimple Snapshot Manager と MMC のオンライン ヘルプを表示する�
 
 ![[操作] ウィンドウのスケジュールされたジョブの例](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane.png)
 
-**図 12: StorSimple Snapshot Manager の [操作] ウィンドウ (スケジュールされたジョブ)**
-
 さらに多くのオプションを表示するには、**スコープ** ウィンドウで **[ジョブ]** ノードを展開して **[スケジュール済み]** をクリックし、**結果**ウィンドウでスケジュールされたジョブをクリックします。次の例に示すように、**[操作]** ウィンドウには、スケジュールされたジョブに使用できる操作が表示されます。
 
 ![[操作] ウィンドウのジョブの操作の例](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane_Results.png)
-
-**図 13: StorSimple Snapshot Manager の [操作] ウィンドウ (特定のジョブ)**
 
 ## キーボード ナビゲーションとショートカット
 
@@ -541,4 +515,4 @@ StorSimple Snapshot Manager のユーザー インターフェイス内の移動
 - [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
 - [StorSimple Snapshot Manager を使用して、デバイスを接続および管理する方法](storsimple-snapshot-manager-manage-devices.md)について説明します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -4,7 +4,7 @@
     services="sql-database"
     documentationCenter=""  
     manager="jeffreyg"
-    authors="sidneyh"/>
+    authors="torsteng"/>
 
 <tags
     ms.service="sql-database"
@@ -12,12 +12,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="10/15/2015"
+    ms.date="01/06/2016"
     ms.author="sidneyh;torsteng" />
 
 # シャーディング (行方向のパーティション分割) のためのエラスティック データベース クエリ
 
 このドキュメントでは、行方向のパーティション分割シナリオ用にエラスティック クエリを設定する方法と、クエリを実行する方法について説明します。行方向のパーティション分割シナリオの定義については、[エラスティック データベース クエリの概要 (プレビュー)](sql-database-elastic-query-overview.md) に関するページを参照してください。
+
+![シャード間のクエリ][1]
 
 この機能は、Azure SQL [Database Elastic Database 機能セット](sql-database-elastic-scale.md)の一部です。
  
@@ -236,6 +238,7 @@ sp\_execute\_fanout は、呼び出しパラメーターに入力されたシャ
 
 
 <!--Image references-->
+[1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png
 <!--anchors-->
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/13/2015"
+	ms.date="12/30/2015"
 	ms.author="nitinme"/>
 
-# Script Action を使用して HDInsight をカスタマイズする (Windows)
+# Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする
 
-[AZURE.INCLUDE [usescriptaction-selector](../../includes/hdinsight-selector-use-script-action.md)]
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-windows-cluster-selector.md)]
 
 **Script Action** を使用して、クラスターに追加のソフトウェアをインストールするクラスター作成プロセス中に[カスタム スクリプト](hdinsight-hadoop-script-actions.md)を起動できます。
 
@@ -90,7 +90,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 	
 	$hdinsightClusterName = $namePrefix + "spark"
 	$httpUserName = "admin"
-	$httpPassword = "Pass@word111"
+	$httpPassword = "<Enter a Password>"
 	
 	$defaultStorageAccountName = "$namePrefix" + "store"
 	$defaultBlobContainerName = $hdinsightClusterName
@@ -115,13 +115,23 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 	
 	# Create storage account
-	New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName -Location $location -Type Standard_LRS
-	$defaultStorageAccountKey = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName |  %{ $_.Key1 }
-	$defaultStorageAccountContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $storageAccountKey  
-	New-AzureStorageContainer -Name $defaultBlobContainerName -Context $defaultStorageAccountContext
+	New-AzureRmStorageAccount `
+        -ResourceGroupName $resourceGroupName `
+        -Name $defaultStorageAccountName `
+        -Location $location `
+        -Type Standard_GRS
+	$defaultStorageAccountKey = Get-AzureRmStorageAccountKey `
+                                    -ResourceGroupName $resourceGroupName `
+                                    -Name $defaultStorageAccountName |  %{ $_.Key1 }
+	$defaultStorageAccountContext = New-AzureStorageContext `
+                                    -StorageAccountName $defaultStorageAccountName `
+                                    -StorageAccountKey $storageAccountKey  
+	New-AzureStorageContainer `
+        -Name $defaultBlobContainerName `
+        -Context $defaultStorageAccountContext
 	
 	#############################################################
-	# Create cluster with Spark
+	# Create cluster with ApacheSpark
 	#############################################################
 	
 	# Specify the configuration options
@@ -306,4 +316,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "クラスター作成時の段階"
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -32,7 +32,7 @@
 
 その後で、この記事に戻ってください。この記事では、DocumentDB データに対して分析ジョブを実行する方法について詳しく説明します。
 
-> [AZURE.TIP] このチュートリアルは、これまでに Apache Hadoop、Hive、Pig の少なくとも 1 つを使用した経験があることを前提としています。Apache Hadoop、Hive、Pig の使用経験がない場合は、[Apache Hadoop のドキュメント][apache-hadoop-doc]を参照することをお勧めします。さらに、このチュートリアルでは、DocumentDB の使用経験があり、DocumentDB アカウントを持っていることを想定しています。DocumentDB を初めて扱う方や DocumentDB アカウントを持っていない方は、[使用の開始に関するページ][getting-started]を参照してください。
+> [AZURE.TIP]このチュートリアルは、これまでに Apache Hadoop、Hive、Pig の少なくとも 1 つを使用した経験があることを前提としています。Apache Hadoop、Hive、Pig の使用経験がない場合は、[Apache Hadoop のドキュメント][apache-hadoop-doc]を参照することをお勧めします。さらに、このチュートリアルでは、DocumentDB の使用経験があり、DocumentDB アカウントを持っていることを想定しています。DocumentDB を初めて扱う方や DocumentDB アカウントを持っていない方は、[使用の開始に関するページ][getting-started]を参照してください。
 
 チュートリアルを完了する時間がなく、Hive、Pig、および MapReduce の完全なサンプル PowerShell スクリプトが必要な場合は、 [こちら][documentdb-hdinsight-samples]をクリックすると入手できます。ダウンロードには、これらのサンプルの hql、pig、および java の各ファイルも含まれています。
 
@@ -66,11 +66,11 @@
 - Hive、Pig、または MapReduce のジョブから生成されたドキュメント用の容量。詳細については、「[DocumentDB の容量とパフォーマンスの管理][documentdb-manage-collections]」を参照してください。
 - *オプション*: 追加のコレクション用の容量。詳細については、「[プロビジョニング済みドキュメント ストレージとインデックス オーバーヘッド][documentdb-manage-document-storage]」を参照してください。
 	
-> [AZURE.WARNING] 何かのジョブの実行中に新しいコレクションが作成されることを避けるために、stdout に結果を書き出して出力を WASB コンテナーに格納するか、既存のコレクションを指定することができます。既存のコレクションを指定した場合、新しいドキュメントはコレクション内に作成され、*ID* に競合がない限り既存のドキュメントに影響は及びません。**ID の競合がある場合は、既存のドキュメントがコネクタによって自動的に上書きされます**。この機能を無効にするには、upsert オプションを false に設定します。upsert が false に設定された状態で競合が発生すると、Hadoop ジョブは失敗し、ID 競合エラーが報告されます。
+> [AZURE.WARNING]何かのジョブの実行中に新しいコレクションが作成されることを避けるために、stdout に結果を書き出して出力を WASB コンテナーに格納するか、既存のコレクションを指定することができます。既存のコレクションを指定した場合、新しいドキュメントはコレクション内に作成され、*ID* に競合がない限り既存のドキュメントに影響は及びません。**ID の競合がある場合は、既存のドキュメントがコネクタによって自動的に上書きされます**。この機能を無効にするには、upsert オプションを false に設定します。upsert が false に設定された状態で競合が発生すると、Hadoop ジョブは失敗し、ID 競合エラーが報告されます。
 
 ## <a name="CreateStorage"></a>手順 1: Azure のストレージ アカウントを作成する
 
-> [AZURE.IMPORTANT] **既に** Azure ストレージ アカウントを所有していて、そのアカウント内に BLOB コンテナーを新規作成する場合は、この手順を省略して「[手順 2: カスタマイズした HDInsight クラスターを作成する](#ProvisionHDInsight)」に進んでください。
+> [AZURE.IMPORTANT]**既に** Azure ストレージ アカウントを所有していて、そのアカウント内に BLOB コンテナーを新規作成する場合は、この手順を省略して「[手順 2: カスタマイズした HDInsight クラスターを作成する](#ProvisionHDInsight)」に進んでください。
 
 Azure HDInsight では、データの格納に Azure BLOB ストレージを使用します。これは *WASB* または *Azure ストレージ - BLOB* と呼ばれています。WASB は、HDFS を Azure BLOB ストレージ上で Microsoft が実装したものです。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 
@@ -82,14 +82,13 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 	
 	> [AZURE.NOTE]現在、Azure HDInsight は Azure クラシック ポータルでサポートされていますが、Azure DocumentDB は Microsoft Azure ポータルにしかありません。
 
-2. 左下隅にある **[+ 新規]** をクリックし、**[DATA SERVICES]**、**[STORAGE]**、**[簡易作成]** の順にクリックします。
-	![簡易作成を使用して新しいストレージ アカウントを設定できる Azure クラシック ポータル。][image-storageaccount-quickcreate]
+2. 左下隅にある **[+ 新規]** をクリックし、**[DATA SERVICES]**、**[STORAGE]**、**[簡易作成]** の順にクリックします。![簡易作成を使用して新しいストレージ アカウントを設定できる Azure クラシック ポータル。][image-storageaccount-quickcreate]
 
-3. **URL** を入力し、**[場所]** および** [レプリケーション]** に値を入力して、**[ストレージ アカウントの作成]** をクリックします。アフィニティ グループはサポートされていません。 
+3. **URL** を入力し、**[場所]** および** [レプリケーション]** に値を入力して、**[ストレージ アカウントの作成]** をクリックします。アフィニティ グループはサポートされていません。
 	
 	新しいストレージ アカウントがストレージ一覧に表示されます。
 
-	> [AZURE.IMPORTANT] 最適なパフォーマンスが得られるように、お使いのストレージ アカウント、HDInsight クラスター、および DocumentDB アカウントが同一の Azure リージョンに配置されていることを確認してください。3 つのサービスすべてをサポートしている Azure リージョンは、**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、および**米国西部**です。
+	> [AZURE.IMPORTANT]最適なパフォーマンスが得られるように、お使いのストレージ アカウント、HDInsight クラスター、および DocumentDB アカウントが同一の Azure リージョンに配置されていることを確認してください。3 つのサービスすべてをサポートしている Azure リージョンは、**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、および**米国西部**です。
 
 4. 新しいストレージ アカウントの **[状態]** 列が **[オンライン]** になるまで待ちます。
 
@@ -105,94 +104,84 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 	![Hadoop HDInsight の初期クラスターの詳細を提供][image-customprovision-page1]
 
 	<table border='1'>
-		<tr><th>プロパティ</th><th>値</th></tr>
-		<tr><td>クラスター名</td><td>クラスターの名前を指定します。<br/>
-			DNS 名の最初と最後の文字は英数字にする必要があります。それ以外ではダッシュ (-) を使用できます。<br/>
-			3 ～ 63 文字のクラスター名を入力できます。</td></tr>
-		<tr><td>サブスクリプション名</td>
-			<td>Azure サブスクリプションが複数ある場合は、<strong>手順 1</strong> で使用したストレージ アカウントに対応するサブスクリプションを選択します。</td></tr>
-		<tr><td>クラスターの種類</td>
-			<td>クラスターの種類には、<strong>[Hadoop]</strong> を選択します。</td></tr>
-		<tr><td>オペレーティング システム</td>
-			<td>[オペレーティング システム] で、<strong>[Windows Server 2012 R2 Datacenter]</strong> を選択します。</td></tr>
-		<tr><td>HDInsight のバージョン</td>
-			<td>バージョンを選択します。</br><Strong>[HDInsight version 3.1]</Strong> を選択します。</td></tr>
-		</table>
-
-	<p>表に示されている値を入力または選択し、右矢印をクリックします。</p>
+	<tr><th>プロパティ</th><th>値</th></tr>
+	<tr><td>クラスター名</td><td>クラスターの名前を指定します。<br/>
+		DNS 名の最初と最後の文字は英数字にする必要があります。それ以外ではダッシュ (-) を使用できます。<br/>
+		3 ～ 63 文字のクラスター名を入力できます。</td></tr>
+	<tr><td>サブスクリプション名</td>
+		<td>Azure サブスクリプションが複数ある場合は、<strong>手順 1</strong> で使用したストレージ アカウントに対応するサブスクリプションを選択します。</td></tr>
+	<tr><td>クラスターの種類</td>
+		<td>クラスターの種類には、<strong>[Hadoop]</strong> を選択します。</td></tr>
+	<tr><td>オペレーティング システム</td>
+		<td>[オペレーティング システム] で、<strong>[Windows Server 2012 R2 Datacenter]</strong> を選択します。</td></tr>
+	<tr><td>HDInsight のバージョン</td>
+		<td>バージョンを選択します。</br><Strong>[HDInsight version 3.1]</Strong> を選択します。</td></tr>
+	</table><p>表に示されている値を入力または選択し、右矢印をクリックします。</p>
 
 4. **[クラスターの構成]** ページで、次の値を入力または選択します。
 
 	<table border="1">
-	<tr><th>名前</th><th>値</th></tr>
-	<tr><td>データ ノード</td><td>デプロイするデータ ノードの数です。</br>HDInsight のデータ ノードはパフォーマンスと料金の両方に関連していることに注意してください。</td></tr>
-	<tr><td>リージョン/仮想ネットワーク</td><td>新たに作成した<strong>ストレージ アカウント</strong>およびお使いの <strong>DocumentDB アカウント</strong>と同じリージョンを選択します。</br> HDInsight は、同じリージョンに配置されたストレージ アカウントを必要とします。これ以後の構成作業では、ここで指定した地域と同じリージョンにあるストレージ アカウントしか選択できません。</td></tr>
-	</table>
-
-    右矢印をクリックします。
+<tr><th>名前</th><th>値</th></tr>
+<tr><td>データ ノード</td><td>デプロイするデータ ノードの数です。</br>HDInsight のデータ ノードはパフォーマンスと料金の両方に関連していることに注意してください。</td></tr>
+<tr><td>リージョン/仮想ネットワーク</td><td>新たに作成した<strong>ストレージ アカウント</strong>およびお使いの <strong>DocumentDB アカウント</strong>と同じリージョンを選択します。</br> HDInsight は、同じリージョンに配置されたストレージ アカウントを必要とします。これ以後の構成作業では、ここで指定した地域と同じリージョンにあるストレージ アカウントしか選択できません。</td></tr>
+</table>右矢印をクリックします。
 
 5. **[クラスター ユーザーの構成]** ページで、次の情報を指定します。
 
     <table border='1'>
-		<tr><th>プロパティ</th><th>値</th></tr>
-		<tr><td>ユーザー名</td>
-			<td>HDInsight クラスターのユーザー名を指定します。</td></tr>
-		<tr><td>パスワード/パスワードの確認</td>
-			<td>HDInsight クラスターのユーザー パスワードを指定します。</td></tr>
-	</table>
-
-    右矢印をクリックします。
+	<tr><th>プロパティ</th><th>値</th></tr>
+	<tr><td>ユーザー名</td>
+		<td>HDInsight クラスターのユーザー名を指定します。</td></tr>
+	<tr><td>パスワード/パスワードの確認</td>
+		<td>HDInsight クラスターのユーザー パスワードを指定します。</td></tr>
+</table>右矢印をクリックします。
     
 6. **[ストレージ アカウント]** ページで、次の値を指定します。
 
 	![HDInsight Hadoop クラスターに対してストレージ アカウントを指定][image-customprovision-page4]
 
 	<table border='1'>
-		<tr><th>プロパティ</th><th>値</th></tr>
-		<tr><td>ストレージ アカウント</td>
-			<td>HDInsight クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを指定します。3 つのオプション [既存のストレージを使用する]、[新しいストレージを作成する]、[別のサブスクリプションのストレージを使用する] のいずれかを選択できます。</br></br>
-			<strong>[既存のストレージを使用する]</strong> を選択します。
-			</td>
-			</td></tr>
-		<tr><td>アカウント名</td>
-			<td>
-			<strong>[アカウント名]</strong> で、<strong>手順 1</strong> で作成したアカウントを選択します。ボックスの一覧には、クラスターをプロビジョニングする対象として選択したデータ センターと同じデータ センター内の同じ Azure サブスクリプション下にあるストレージ アカウントのみが表示されます。
-			</td></tr>
-		<tr><td>既定のコンテナー</td>
-			<td>ストレージ アカウントの既定のコンテナーを指定します。既定のコンテナーは、HDInsight クラスターの既定のファイル システムとして使用されます。<strong>[ストレージ アカウント]</strong> で <strong>[既存のストレージを使用する]</strong> を選択したにもかかわらずそのアカウントに既存のコンテナーがない場合は、既定でクラスターと同じ名前のコンテナーが作成されます。クラスター名と同じ名前のコンテナーが既に存在する場合は、コンテナー名に連番が付加されます。
-	    </td></tr>
-		<tr><td>追加のストレージ アカウント</td>
-			<td>HDInsight は複数のストレージ アカウントをサポートします。クラスターで使用できる追加ストレージ アカウントの数に制限はありません。ただし、Azure クラシック ポータルを使用してクラスターを作成する場合は、UI の制約により 7 が上限になります。ここで指定した追加のストレージ アカウントのそれぞれに対する [ストレージ アカウント] ページがウィザードに追加され、そこでアカウント情報を指定できます。</td></tr>
-	</table>
-
-	右矢印をクリックします。
+	<tr><th>プロパティ</th><th>値</th></tr>
+	<tr><td>ストレージ アカウント</td>
+		<td>HDInsight クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを指定します。3 つのオプション [既存のストレージを使用する]、[新しいストレージを作成する]、[別のサブスクリプションのストレージを使用する] のいずれかを選択できます。</br></br>
+		<strong>[既存のストレージを使用する]</strong> を選択します。
+		</td>
+		</td></tr>
+	<tr><td>アカウント名</td>
+		<td>
+		<strong>[アカウント名]</strong> で、<strong>手順 1</strong> で作成したアカウントを選択します。ボックスの一覧には、クラスターをプロビジョニングする対象として選択したデータ センターと同じデータ センター内の同じ Azure サブスクリプション下にあるストレージ アカウントのみが表示されます。
+		</td></tr>
+	<tr><td>既定のコンテナー</td>
+		<td>ストレージ アカウントの既定のコンテナーを指定します。既定のコンテナーは、HDInsight クラスターの既定のファイル システムとして使用されます。<strong>[ストレージ アカウント]</strong> で <strong>[既存のストレージを使用する]</strong> を選択したにもかかわらずそのアカウントに既存のコンテナーがない場合は、既定でクラスターと同じ名前のコンテナーが作成されます。クラスター名と同じ名前のコンテナーが既に存在する場合は、コンテナー名に連番が付加されます。
+    </td></tr>
+	<tr><td>追加のストレージ アカウント</td>
+		<td>HDInsight は複数のストレージ アカウントをサポートします。クラスターで使用できる追加ストレージ アカウントの数に制限はありません。ただし、Azure クラシック ポータルを使用してクラスターを作成する場合は、UI の制約により 7 が上限になります。ここで指定した追加のストレージ アカウントのそれぞれに対する [ストレージ アカウント] ページがウィザードに追加され、そこでアカウント情報を指定できます。</td></tr>
+</table>右矢印をクリックします。
 
 7. **[スクリプト アクション]** ページで **[スクリプト アクションの追加]** をクリックし、クラスターが作成される際に、クラスターのカスタマイズを実行する PowerShell スクリプトに関する詳細を指定します。PowerShell スクリプトによって、クラスターの作成中に DocumentDB Hadoop コネクタが HDInsight クラスターにインストールされます。
 	
 	![HDInsight クラスターをカスタマイズするスクリプト操作を構成][image-customprovision-page5]
 
 	<table border='1'>
-		<tr><th>プロパティ</th><th>値</th></tr>
-		<tr><td>名前</td>
-			<td>スクリプト アクションの名前を指定します。</td></tr>
-		<tr><td>スクリプト URI</td>
-			<td>クラスターのカスタマイズのために呼び出されるスクリプトへの URI を指定します。</br></br>
-			次の値を入力してください。 </br> <strong>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v03.ps1</strong>.</td></tr>
-		<tr><td>ノードの種類</td>
-			<td>カスタマイズ スクリプトが実行されるノードを指定します。<b>[すべてのノード]</b>、<b>[ヘッド ノードのみ]</b>、<b>[ワーカー ノードのみ]</b> から選択できます。</br></br>
-			<strong>[すべてのノード]</strong> を選択してください。</td></tr>
-		<tr><td>パラメーター</td>
-			<td>スクリプトで必要な場合は、パラメーターを指定します。</br></br>
-			<strong>パラメーターは必要ありません</strong>。</td></tr>
-	</table>
-
-	チェック マークをクリックして、クラスターの作成を完了します。
+	<tr><th>プロパティ</th><th>値</th></tr>
+	<tr><td>名前</td>
+		<td>スクリプト アクションの名前を指定します。</td></tr>
+	<tr><td>スクリプト URI</td>
+		<td>クラスターのカスタマイズのために呼び出されるスクリプトへの URI を指定します。</br></br>
+		次の値を入力してください。 </br> <strong>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v03.ps1</strong>.</td></tr>
+	<tr><td>ノードの種類</td>
+		<td>カスタマイズ スクリプトが実行されるノードを指定します。<b>[すべてのノード]</b>、<b>[ヘッド ノードのみ]</b>、<b>[ワーカー ノードのみ]</b> から選択できます。</br></br>
+		<strong>[すべてのノード]</strong> を選択してください。</td></tr>
+	<tr><td>パラメーター</td>
+		<td>スクリプトで必要な場合は、パラメーターを指定します。</br></br>
+		<strong>パラメーターは必要ありません</strong>。</td></tr>
+</table>チェック マークをクリックして、クラスターの作成を完了します。
 
 ## <a name="InstallCmdlets"></a>手順 3: Azure PowerShell をインストールおよび構成する
 
 1. Azure PowerShell をインストールします。手順については、[このページ][powershell-install-configure]を参照してください。
 
-	> [AZURE.NOTE] または、Hive クエリに対して HDInsight のオンライン Hive エディターを使用できます。この場合は、[Azure クラシック ポータル][azure-classic-portal]にサインインし、左側のウィンドウで **[HDInsight]** をクリックすると、HDInsight クラスターの一覧が表示されます。Hive クエリを実行するクラスターをクリックし、**[クエリ コンソール]** をクリックします
+	> [AZURE.NOTE]または、Hive クエリに対して HDInsight のオンライン Hive エディターを使用できます。この場合は、[Azure クラシック ポータル][azure-classic-portal]にサインインし、左側のウィンドウで **[HDInsight]** をクリックすると、HDInsight クラスターの一覧が表示されます。Hive クエリを実行するクラスターをクリックし、**[クエリ コンソール]** をクリックします
 
 2. Azure PowerShell Integrated Scripting Environment を開きます。
 	- Windows 8 または Windows Server 2012 以降を実行しているコンピューターでは、組み込みの検索機能を使用できます。スタート画面で、「**powershell ise**」と入力し、**Enter** キーを押します。 
@@ -223,12 +212,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 		$clusterName = "<HDInsightClusterName>"
 
 2. 
-	<p>クエリ文字列の作成から始めましょう。作成する Hive クエリでは、DocumentDB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい DocumentDB コレクションに格納します。</p>
-
-	<p>まず、DocumentDB コレクションから Hive テーブルを作成します。次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。_ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが含まれていることを確認してください。</p>
-
-	> [AZURE.NOTE] **DocumentDB.inputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。</br>
-    '*DocumentDB.inputCollections*' = '*<DocumentDB Input Collection Name 1>*,*<DocumentDB Input Collection Name 2>*' </br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。
+	<p>クエリ文字列の作成から始めましょう。作成する Hive クエリでは、DocumentDB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい DocumentDB コレクションに格納します。</p><p>まず、DocumentDB コレクションから Hive テーブルを作成します。次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。_ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが含まれていることを確認してください。</p>> [AZURE.NOTE]**DocumentDB.inputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。</br> '*DocumentDB.inputCollections*' = '*<DocumentDB Input Collection Name 1>*,*<DocumentDB Input Collection Name 2>*' </br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。
 
 
 		# Create a Hive table using data from DocumentDB. Pass DocumentDB the query to filter transferred data to _rid and _ts.
@@ -244,9 +228,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
  
 3.  次に、出力コレクション用に Hive テーブルを作成します。出力ドキュメントのプロパティは、月、日、時間、分、および発生した合計回数です。
 
-	> [AZURE.NOTE]**ここでも、DocumentDB.outputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。</br>
-    '*DocumentDB.outputCollections*' = '*<DocumentDB Output Collection Name 1>*,*<DocumentDB Output Collection Name 2>*' </br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br></br>
-    ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+	> [AZURE.NOTE]**ここでも、DocumentDB.outputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。</br> '*DocumentDB.outputCollections*' = '*<DocumentDB Output Collection Name 1>*,*<DocumentDB Output Collection Name 2>*' </br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br></br> ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
 		# Create a Hive table for the output data to DocumentDB.
 	    $queryStringPart2 = "drop table DocumentDB_analytics; " +
@@ -311,7 +293,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 
 ## <a name="RunPig"></a>手順 5: DocumentDB と HDInsight を使用して Pig ジョブを実行する
 
-> [AZURE.IMPORTANT] < > で囲まれている変数はすべて、構成設定を使用して入力する必要があります。
+> [AZURE.IMPORTANT]< > で囲まれている変数はすべて、構成設定を使用して入力する必要があります。
 
 1. PowerShell スクリプト ウィンドウで次の変数を設定します。
 
@@ -322,10 +304,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
         $clusterName = "Azure HDInsight Cluster Name"
 
 2. <p>クエリ文字列の作成から始めましょう。作成する Pig クエリでは、DocumentDB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい DocumentDB コレクションに格納します。</p>
-    <p>まず、DocumentDB から HDInsight にドキュメントを読み込みます。次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。_ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが DocumentDB クエリに追加されていることを確認してください。</p>
-
-    > [AZURE.NOTE] 次のように、複数のコレクションを 1 つの入力として追加することができます。</br>
-    '*<DocumentDB Input Collection Name 1>*,*<DocumentDB Input Collection Name 2>*'</br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。</b>
+    <p>まず、DocumentDB から HDInsight にドキュメントを読み込みます。次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。_ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが DocumentDB クエリに追加されていることを確認してください。</p>> [AZURE.NOTE]次のように、複数のコレクションを 1 つの入力として追加することができます。</br> '*<DocumentDB Input Collection Name 1>*,*<DocumentDB Input Collection Name 2>*'</br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。</b>
 
 	ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
@@ -345,9 +324,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 
 4. 最後に、その結果を新しい出力コレクションに格納します。
 
-    > [AZURE.NOTE] 次のように、複数のコレクションを 1 つの入力として追加することができます。</br>
-    '<DocumentDB Output Collection Name 1>,<DocumentDB Output Collection Name 2>'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br>
-    ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+    > [AZURE.NOTE]次のように、複数のコレクションを 1 つの入力として追加することができます。</br> '<DocumentDB Output Collection Name 1>,<DocumentDB Output Collection Name 2>'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br> ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
 		# Store output data to DocumentDB.
         $queryStringPart3 = "STORE by_minute_count INTO '<DocumentDB Endpoint>' " +
@@ -408,7 +385,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 		# Define the MapReduce job.
 		$TallyPropertiesJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/TallyProperties-v01.jar" -ClassName "TallyProperties" -Arguments "<DocumentDB Endpoint>","<DocumentDB Primary Key>", "<DocumentDB Database Name>","<DocumentDB Input Collection Name>","<DocumentDB Output Collection Name>","<[Optional] DocumentDB Query>"
 
-	> [AZURE.NOTE] TallyProperties-v01.jar は、DocumentDB Hadoop コネクタのカスタム インストールに付属しています。
+	> [AZURE.NOTE]TallyProperties-v01.jar は、DocumentDB Hadoop コネクタのカスタム インストールに付属しています。
 
 3. 次のコマンドを追加して、MapReduce ジョブを送信します。
 
@@ -476,8 +453,8 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [hdinsight-custom-provision]: ../hdinsight/hdinsight-provision-clusters.md#powershell
 [hdinsight-develop-deploy-java-mapreduce]: ../hdinsight/hdinsight-develop-deploy-java-mapreduce.md
 [hdinsight-hadoop-customize-cluster]: ../hdinsight/hdinsight-hadoop-customize-cluster.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-get-started]: ../hdinsight/hdinsight-hadoop-tutorial-get-started-windows.md
+[hdinsight-storage]: ../hdinsight/hdinsight-hadoop-use-blob-storage.md
 [hdinsight-use-hive]: ../hdinsight/hdinsight-use-hive.md
 [hdinsight-use-mapreduce]: ../hdinsight/hdinsight-use-mapreduce.md
 [hdinsight-use-pig]: ../hdinsight/hdinsight-use-pig.md
@@ -490,7 +467,7 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [image-mapreduce-query-results]: ./media/documentdb-run-hadoop-with-hdinsight/mapreducequeryresults.PNG
 [image-pig-query-results]: ./media/documentdb-run-hadoop-with-hdinsight/pigqueryresults.PNG
 
-[powershell-install-configure]: ../install-configure-powershell.md
+[powershell-install-configure]: ../powershell-install-configure.md
  
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

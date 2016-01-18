@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/18/2015" 
+	ms.date="01/04/2016" 
 	ms.author="tomfitz"/>
 
 # 新しいリソース グループまたはサブスクリプションへのリソースの移動
@@ -51,25 +51,28 @@
 - Notification Hubs
 - Operational Insights
 - Redis Cache
-- 検索
-- SQL Database
+- Search
+- SQL Database サーバー (サーバーを移動すると、そのデータベースもすべて移動されます。データベースをサーバーから個別に移動することはできません)。
 - Web Apps (いくつかの [制限](app-service-web/app-service-move-resources.md)が適用されます)
 
 新しいリソース グループへの移動をサポートし、新しいサブスクリプションへの移動はサポートしないサービスは、次のとおりです。
 
 - Virtual Machines (クラシック)
 - Storage (クラシック)
+- Virtual Networks
+- Cloud Services
 
 現在リソースの移動をサポートしていないサービスは、次のとおりです。
 
 - Virtual Machines
-- Virtual Networks
 - Storage
 
 Web アプリを使用している場合、App Service プランのみを移動することはできません。Web アプリを移動するには、次のオプションがあります。
 
 - 移動先のリソース グループにまだ Microsoft.Web リソースがない場合は、すべてのリソースをあるリソース グループから別のリソース グループに移動します。
 - Web アプリは別のリソース グループに移動しますが、App Service プランは元のリソース グループで保持します。
+
+SQL データベースをそのサーバーから個別に移動することはできません。データベースとサーバーは、同じリソース グループ内に存在する必要があります。SQL Server を移動すると、そのデータベースもすべて移動されます。
 
 ## PowerShell を使用したリソースの移動
 
@@ -111,7 +114,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 ## 次のステップ
 - [リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)
 - [リソース マネージャーでの Azure クロスプラットフォーム CLI の使用](./virtual-machines/xplat-cli-azure-resource-manager.md)
-- [Using the Azure Preview Portal to manage your Azure resources (Azure ポータルを使用した Azure リソースの管理)](azure-portal/resource-group-portal.md)
+- [Azure ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)
 - [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

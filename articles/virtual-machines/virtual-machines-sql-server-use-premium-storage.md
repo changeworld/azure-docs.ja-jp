@@ -5,8 +5,8 @@
 	documentationCenter=""
 	authors="danielsollondon"
 	manager="jeffreyg"
-   editor="monicar"    
-   tags="azure-service-management"/>
+	editor="monicar"    
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="10/02/2015"
+	ms.date="01/06/2015"
 	ms.author="jroth"/>
 
 # 仮想マシン上での Azure Premium Storage と SQL Server の使用
@@ -1149,4 +1149,4 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 [25]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_15.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

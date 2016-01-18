@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/15/2015" 
+	ms.date="12/24/2015" 
 	ms.author="yochayk"/>
 
 
@@ -61,7 +61,7 @@ App Service では、[Websites](http://azure.microsoft.com/services/websites/)�
 <td align="left">Mobile Apps</td>
 <td align="left"><p><li>Mobile Services はスタンドアロン サービスとして引き続き利用でき、現在も完全なサポートが受けられます。</p>
 <p><li>Mobile Apps は App Service での新しいアプリの種類で、Mobile Services のすべての機能を含む、多数の機能を統合しています。Mobile Apps は現在パブリック プレビューの状態です。</p>
-<p><li><a href="http://azure.microsoft.com/documentation/articles/app-service-mobile-dotnet-backend-migrating-from-mobile-services-preview/">Mobile Services から Mobile Apps</a> への移行は簡単です。Mobile Apps はプレビュー状態のため、運用環境のアプリの実行にはまだお勧めできません。</p>
+<p><li>[Mobile Services から Mobile Apps への移行] は簡単です (../app-service-mobile/app-service-mobile-migrating-from-mobile-services.md)。Mobile Apps はプレビュー状態のため、運用環境のアプリの実行にはまだお勧めできません。</p>
 <p><li>App Service の一部として、Mobile Apps には、オンプレミス システムと SaaS システムとの統合、ステージング スロット、Web ジョブ、充実したスケール オプションなど、Mobile Services を超える新しい機能が追加されました。</p>
 <p><li><a href="http://azure.microsoft.com/services/app-service/mobile/">Mobile Apps の詳細についてはこちら</a>をご覧ください。</p>
 </tr>
@@ -93,4 +93,4 @@ App Service では、[Websites](http://azure.microsoft.com/services/websites/)�
 詳細については、「[App Service のドキュメント](http://azure.microsoft.com/documentation/services/app-service/)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/18/2015"
+   ms.date="12/28/2015"
    ms.author="sethm" />
 
 # パーティション分割されたメッセージング エンティティ
@@ -31,7 +31,7 @@ Service Bus 内部の詳細については、「[Service Bus アーキテクチ�
 
 ## パーティション分割の有効化
 
-Microsoft Azure Service Bus でパーティション分割されたキューとトピックを使用するには、Azure SDK Version 2.2 以降を使用するか、HTTP 要求で `api-version=2013-10` を指定します。
+Azure Service Bus でパーティション分割されたキューとトピックを使用するには、Azure SDK Version 2.2 以降を使用するか、HTTP 要求で `api-version=2013-10` を指定します。
 
 Service Bus のキューとトピックは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。パーティション分割が有効な場合、Service Bus は指定された GB 数に対して 1 GB ごとに 16 個のパーティションを作成します。そのため、サイズが 5 GB のキューを作成すると、パーティションが 16 個であるため、最大キュー サイズは 5 x 16 = 80 GB になります。パーティション分割したキューまたはトピックの最大サイズは、[Azure クラシック ポータル][]の各エントリで確認できます。
 
@@ -125,7 +125,7 @@ Azure Service Bus では、パーティション分割されたエンティテ�
 
 ## 次のステップ
 
-メッセージング エンティティのパーティション分割の詳細については、Service Bus のパーティション分割されたキューとトピックの AMQP 1.0 のサポートについての説明 (近日公開予定!) を参照してください。
+メッセージング エンティティのパーティション分割の詳細については、[Service Bus のパーティション分割されたキューとトピックの AMQP 1.0 のサポート][]についての説明を参照してください。
 
   [Service Bus アーキテクチャ]: service-bus-architecture.md
   [Azure クラシック ポータル]: http://manage.windowsazure.com
@@ -142,6 +142,6 @@ Azure Service Bus では、パーティション分割されたエンティテ�
   [MessagingFactorySettings.OperationTimeout]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx
   [OperationTimeout]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx
   [QueueDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx
-  [AMQP 1.0 support for Service Bus partitioned queues and topics]: service-bus-partitioned-entities-amqp-overview.md
+  [Service Bus のパーティション分割されたキューとトピックの AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

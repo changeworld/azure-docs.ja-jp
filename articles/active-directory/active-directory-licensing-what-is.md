@@ -14,7 +14,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="12/01/2015"
+    ms.date="01/05/2016"
     ms.author="curtand"/>
 
 # Microsoft Azure Active Directory ライセンスとは
@@ -132,4 +132,4 @@ Azure AD Premium の一部の機能を構成し、使用する準備ができま
 - [Azure Multi-Factor Authentication](multi-factor-authentication.md)
 - [Azure AD Premium ライセンスの直接購入](http://aka.ms/buyaadp)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

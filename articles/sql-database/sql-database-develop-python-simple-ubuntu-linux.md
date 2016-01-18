@@ -21,10 +21,7 @@
 # Ubuntu Linux 上で Python を使用して SQL Database に接続する
 
 
-> [AZURE.SELECTOR]
-- [Python](sql-database-develop-python-simple-ubuntu-linux.md)
-- [Node.js](sql-database-develop-nodejs-simple-linux.md)
-- [Ruby](sql-database-develop-ruby-simple-linux.md)
+[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
 このトピックでは、Azure SQL Database のデータベースに接続するために、Ubuntu Linux のクライアント コンピューター上で実行される Python のコード サンプルについて説明します。
@@ -102,11 +99,11 @@
 このコード例は、以下のトランザクションの使用について示します。
 
 
--トランザクションの開始
+- トランザクションの開始
 
--データの挿入
+- データの挿入
 
--トランザクションをロールバックして、挿入を元に戻す
+- トランザクションをロールバックして、挿入を元に戻す
 
 
 	import pymssql
@@ -120,4 +117,4 @@
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

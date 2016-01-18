@@ -18,7 +18,7 @@
 
 # DocumentDB のデータへのアクセスのセキュリティ保護 #
 
-この記事では、[Microsoft Azure DocumentDB](../../services/documentdb/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
+この記事では、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
 
 この概要を読み終えると、次の質問に答えられるようになります。
 
@@ -163,4 +163,4 @@ DocumentDB アクセス許可リソースは DocumentDB ユーザーに関連付
 - DocumentDB 認証トークンを作成する方法については、[ここ](https://msdn.microsoft.com/library/azure/dn783368.aspx)をクリックしてください。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

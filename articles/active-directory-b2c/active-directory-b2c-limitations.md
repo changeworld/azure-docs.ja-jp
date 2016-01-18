@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="swkrish"
 	manager="msmbaldwin"
-	editor="curtand"/>
+	editor="bryanla"/>
 
 <tags
 	ms.service="active-directory-b2c"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/28/2015"
+	ms.date="01/06/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: 制限事項および制約事項
@@ -22,13 +22,13 @@ Azure Active Directory (AD) B2C の機能の中には、プレビューではサ
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
-## Azure AD B2C ディレクトリの作成中の問題
+## Azure AD B2C テナントの作成中の問題
 
-[Azure AD B2C テナントの作成](active-directory-b2c-get-started)中に発生する可能性のある既知の問題があります。詳細については、この[記事](active-directory-b2c-support-create-directory.md)を確認してください。
+[Azure AD B2C テナントの作成](active-directory-b2c-get-started)中に問題が発生した場合、ガイダンスについてはこの[記事](active-directory-b2c-support-create-directory.md)をご覧ください。
 
-## 確認電子メール ページおよびセルフサービス パスワード リセット ページでのブランド表示の問題
+## 確認メールのブランドの問題
 
-既定の確認電子メール ページおよびセルフサービス パスワード リセット ページには、"Microsoft" や "Azure" などのブランド表示要素が含まれます。将来的にはこれらは削除されます。これらのページのブランド表示は、[会社ブランド化機能](./active-directory/active-directory-add-company-branding.md)を使用して変更できます。そうすれば、これらのブランド表示要素は表示されなくなります。
+既定の確認メールには、"Microsoft" ブランドが含まれています。これは将来削除される予定です。現時点では、[会社のブランド化機能](./active-directory/active-directory-add-company-branding.md)を使用して削除できます。
 
 ## 実稼働アプリケーションのサポート
 
@@ -36,7 +36,7 @@ Azure AD B2C と統合されたアプリケーションを実稼働レベルの�
 
 ## アプリケーションに関する制限事項
 
-Azure AD B2C プレビューでは現在、次のタイプのアプリケーションはサポートされていません。サポートされているアプリケーションのタイプについては、[こちらの記事](active-directory-b2c-apps)を参照してください。
+Azure AD B2C プレビューでは現在、次のタイプのアプリケーションはサポートされていません。サポートされているアプリケーションのタイプについては、[こちらの記事](active-directory-b2c-apps.md)を参照してください。
 
 ### シングル ページ アプリケーション (Javascript)
 
@@ -44,7 +44,7 @@ Azure AD B2C プレビューでは現在、次のタイプのアプリケーシ�
 
 ### デーモン/サーバー側のアプリケーション
 
-長時間実行されるプロセスを含んだアプリケーションや、ユーザーの介入なしで動作するアプリケーションも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。これらのアプリケーションは、[OAuth 2.0 クライアント資格情報フロー](active-directory-b2c-protocols.md#oauth2-client-credentials-grant-flow)を使用することで、(お客様の委任 ID ではなく) アプリケーションの ID を使って認証を行い、トークンを取得することができます。このフローは Azure AD B2C プレビューではまだ使用できません。つまり、アプリケーションは対話的なコンシューマー サインイン フローが発生した後にのみ、トークンを取得できます。
+長時間実行されるプロセスを含んだアプリケーションや、ユーザーの介入なしで動作するアプリケーションも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。これらのアプリケーションは、[OAuth 2.0 クライアント資格情報フロー](active-directory-b2c-reference-protocols.md#oauth2-client-credentials-grant-flow)を使用することで、(お客様の委任 ID ではなく) アプリケーションの ID を使って認証を行い、トークンを取得することができます。このフローは Azure AD B2C プレビューではまだ使用できません。つまり、アプリケーションは対話的なコンシューマー サインイン フローが発生した後にのみ、トークンを取得できます。
 
 ### スタンドアロン Web API
 
@@ -60,32 +60,40 @@ Azure AD B2C によって保護された Web API から、同様に保護され�
 
 Azure AD B2C のプレビュー版をサポートするライブラリが存在しない言語やプラットフォームも一部存在します。認証ライブラリ群は現在、.NET、iOS、Android、および NodeJS に限定されています。それぞれに対応するクイック スタート チュートリアルについては、「[使用の開始](active-directory-b2c-overview.md#getting-started)」をご覧ください。
 
-別の言語またはプラットフォームを使用して、アプリケーションを Azure AD B2C プレビューと統合する場合は、[OAuth 2.0 と OpenID Connect プロトコルのリファレンス](active-directory-b2c-protocols.md)をご覧ください。Azure AD B2C サービスと通信するために必要な HTTP メッセージを構築する方法が説明されています。
+別の言語またはプラットフォームを使用して、アプリケーションを Azure AD B2C プレビューと統合する場合は、[OAuth 2.0 と OpenID Connect プロトコルのリファレンス](active-directory-b2c-reference-protocols.md)をご覧ください。Azure AD B2C サービスと通信するために必要な HTTP メッセージを構築する方法が説明されています。
 
 ## プロトコルに関する制限事項
 
-Azure AD B2C プレビューでは、OpenID Connect と OAuth 2.0 がサポートされています。ただし、各プロトコルの一部の機能はまだ実装されていません。Azure AD B2C プレビューでサポートされているプロトコル機能の範囲について理解を深めるには、[OpenID Connect と OAuth 2.0 のプロトコル リファレンス](active-directory-b2c-protocols.md)をご覧ください。
+Azure AD B2C プレビューでは、OpenID Connect と OAuth 2.0 がサポートされています。ただし、各プロトコルの一部の機能はまだ実装されていません。Azure AD B2C プレビューでサポートされているプロトコル機能の範囲について理解を深めるには、[OpenID Connect と OAuth 2.0 のプロトコル リファレンス](active-directory-b2c-reference-protocols.md)をご覧ください。SAML および WS-Fed プロトコルのサポートは提供されていません。
 
 ## トークンに関する制限事項
 
 Azure AD B2C プレビューによって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。ただし、JWT に含まれているすべての情報 ("クレーム" と呼ばれる) で十分というわけではなく、欠落しているものもあります。たとえば、"sub" クレームや "preferred\_username" クレームなどです。ここに記載されている事柄は、プレビュー段階でかなり変更されることを想定しておく必要があります。Azure AD B2C サービスによって現在発行されているトークンについて理解を深めるには、[トークン リファレンス](active-directory-b2c-tokens.md)をご覧ください。
 
-## Azure ポータルでのユーザー管理に関する問題
+## Azure クラシック ポータルでのユーザー管理に関する問題
 
-B2C 機能には、Azure プレビュー ポータルからアクセスできます。ただし、Azure ポータルを使用して、ユーザー管理などのその他のテナント機能にアクセスできます。現在、Azure ポータルには、ユーザー管理 (**[ユーザー]** タブ) に関する既知の問題がいくつかあります。
+B2C 機能には、Azure ポータルからアクセスできます。ただし、Azure クラシック ポータルを使用して、ユーザー管理などの他のテナント機能にアクセスできます。現在、Azure クラシック ポータルには、ユーザー管理 (**[ユーザー]** タブ) に関する既知の問題がいくつかあります。
 
-- ローカル アカウント ユーザー (電子メール アドレスとパスワード、またはユーザー名とパスワードを使用してサインアップするコンシューマー) の場合、**[ユーザー名]** フィールドはサインアップ中に使用されるサインイン ID (電子メール アドレスまたはユーザー名) に対応していません。これは、Azure ポータルに表示されるフィールドが、実際には B2C シナリオでは使用されないユーザー プリンシパル名 (UPN) であるためです。ローカル アカウントのサインイン ID を確認するには、[Graph Explorer](https://graphexplorer.cloudapp.net/) でユーザー オブジェクトを見つけます。ソーシャル アカウント ユーザー (Facebook、Google+ などを使用してサインアップするコンシューマー) についても同じ問題がありますが、その場合、特にサインイン ID はありません。
+- ローカル アカウント ユーザー (電子メール アドレスとパスワード、またはユーザー名とパスワードを使用してサインアップするコンシューマー) の場合、**[ユーザー名]** フィールドはサインアップ中に使用されるサインイン ID (電子メール アドレスまたはユーザー名) に対応していません。これは、Azure クラシック ポータルに表示されるフィールドが、実際には B2C シナリオでは使用されないユーザー プリンシパル名 (UPN) であるためです。ローカル アカウントのサインイン ID を確認するには、[Graph Explorer](https://graphexplorer.cloudapp.net/) でユーザー オブジェクトを見つけます。ソーシャル アカウント ユーザー (Facebook、Google+ などを使用してサインアップするコンシューマー) についても同じ問題がありますが、その場合、特にサインイン ID はありません。
 
     ![ローカル アカウントの UPN](./media/active-directory-b2c-limitations/limitations-user-mgmt.png)
 
 - ローカル アカウント ユーザーの場合、**[プロファイル]** タブでフィールドを編集したり、変更を保存したりすることはできません。この点に関しては、まもなく修正される予定です。
 
-## Azure ポータルでの管理者によるパスワードのリセットに関する問題
+## Azure クラシック ポータルでの管理者によるパスワードのリセットに関する問題
 
-管理者が Azure ポータルでローカル アカウント ベースのコンシューマーのパスワードをリセットすると (**[ユーザー]** タブの **[パスワードのリセット]** コマンド)、そのコンシューマーは次回サインイン時に自分のパスワードを変更できなくなり、アプリケーションからロックアウトされます。Microsoft では、この問題の解決に取り組んでいます。回避策として、[Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) を使用してコンシューマーのパスワードをリセットします。
+管理者が Azure クラシック ポータルでローカル アカウント ベースのコンシューマーのパスワードをリセットすると (**[ユーザー]** タブの **[パスワードのリセット]** コマンド)、そのコンシューマーは次回サインイン時に自分のパスワードを変更できなくなり、アプリケーションからロックアウトされます。Microsoft では、この問題の解決に取り組んでいます。回避策として、[Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) を使用してコンシューマーのパスワードをリセットします。
 
-## Azure AD B2C ディレクトリの削除に関する制限事項
+## Azure AD B2C テナントの削除に関する制限事項
 
-Azure ポータルで Azure AD B2C テナントを削除することはできません。
+Azure クラシック ポータルで Azure AD B2C テナントを削除することはできません。
 
-<!---HONumber=Oct15_HO3-->
+## Azure クラシック ポータルでのドメインの確認に関する問題
+
+現在、[Azure クラシック ポータル](https://manage.windowsazure.com/)でドメインを正常に確認することはできません。Microsoft では、この問題の解決に取り組んでいます。
+
+## Azure ポータルの警告メッセージ
+
+Azure ポータルの B2C 設定ブレードにアクセスすると、(右上隅の) [通知] の下に、"<B2CTenantName> ディレクトリには使用できるサブスクリプションがありません。切り替えることができる他のディレクトリがあります。" という警告メッセージが表示されます (<B2CTenantName> は実際の B2C テナントの名前です)。このメッセージは無視しても問題ありません。B2C 機能には引き続きアクセスできます。現在、Azure ポータル チームと協力して、この問題の解決に取り組んでいます。
+
+<!---HONumber=AcomDC_0107_2016-->

@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/15/2015"
+   ms.date="12/28/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理
 
 ## 概要
 
-バックアップ ポリシーでは、ローカルまたはクラウドのボリューム データをバックアップするスケジュールを作成します。バックアップ ポリシーを作成する際に、アイテム保持ポリシーも指定できます (最大 64 個のスナップショットを保持できます)。 バックアップ ポリシーの詳細については、「[バックアップの種類とバックアップ ポリシー](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies)」をご覧ください。
+バックアップ ポリシーでは、ローカルまたはクラウドのボリューム データをバックアップするスケジュールを作成します。バックアップ ポリシーを作成する際に、アイテム保持ポリシーも指定できます (最大 64 個のスナップショットを保持できます)。 バックアップ ポリシーの詳細については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」の「[バックアップの種類](storsimple-what-is-snapshot-manager.md#backup-type)」をご覧ください。
 
 このチュートリアルでは、次の方法について説明します。
 
@@ -110,6 +110,7 @@
 2. **スコープ** ウィンドウで **[バックアップ ポリシー]** ノードをクリックします。**結果**ウィンドウにすべてのバックアップ ポリシーが表示されます。
 
 3. 削除するバックアップ ポリシーを右クリックし、**[削除]** をクリックします。
+
 4. 確認メッセージが表示されたら、**[はい]** をクリックします。
 
     ![バックアップ ポリシーの削除の確認](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
@@ -119,4 +120,4 @@
 - [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
 - [StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理方法](storsimple-snapshot-manager-manage-backup-jobs.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

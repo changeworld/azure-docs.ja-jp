@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="12/21/2015"
+   ms.date="01/07/2015"
    ms.author="jgao"/>
 
 # チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発
@@ -56,7 +56,7 @@ U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析す�
 
 ## ソース データ ファイルのアップロード
 
-チュートリアルの前の方の「**前提条件**」セクションで、一部のデータはアップロードしてあります。
+「**前提条件**」セクションでデータをアップロードしてあります。
 
 独自のデータを使用したい場合は、以下の手順を使用して Data Lake Tools からデータをアップロードします。
 
@@ -69,7 +69,7 @@ U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析す�
 
 	![U-SQL Visual Studio プロジェクト U-SQL](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-upload-files.png)
 
-**Azure Blob Storage アカウントにファイルをアップロードするには**
+**Azure BLOB ストレージ アカウントにファイルをアップロードするには**
 
 1. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]**、使用する Data Lake Analytics アカウント、**[ストレージ アカウント]** の順に展開します。既定の Data Lake ストレージ アカウント、リンクされている Data Lake ストレージ アカウント、リンクされている Azure ストレージ アカウントが表示されます。 
 2. Azure ストレージ アカウントを展開します。
@@ -79,7 +79,7 @@ U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析す�
 
 ## U-SQL スクリプトの開発 
 
-Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の詳細については、[U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)に関するページと [U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/?LinkId=691348)を参照してください。
+Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」と「[U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/?LinkId=691348)」に関する記述を参照してください。
 
 **Data Lake Analytics ジョブを作成して送信するには**
 
@@ -88,6 +88,8 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 
 	![新しい U-SQL Visual Studio プロジェクト](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
 
+	>[AZURE.NOTE]現時点では、Data Lake Tools は、ローカル実行で UNC プロジェクトパスをサポートしていません。
+	
 3. **[OK]** をクリックします。Visual Studio で、**Script.usql** ファイルを含むソリューションが作成されます。
 4. 次のスクリプトを **Script.usql** に入力します。
 
@@ -148,7 +150,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 
 	- **定義に移動してすべての参照を検索**
 	
-		行セット/パラメーター/列/UDO などの名前を右クリックし、[定義へ移動] \(F12) をクリックすると、その定義に移動できます。[すべての参照の検索] \(Shift + F12) をクリックすると、すべての参照が表示されます。
+		行セット/パラメーター/列/UDO などの名前を右クリックし、[定義へ移動] (F12) をクリックすると、その定義に移動できます。[すべての参照の検索] (Shift + F12) をクリックすると、すべての参照が表示されます。
 
 	- **Azure パスの挿入**
 		
@@ -219,6 +221,10 @@ Visual Studio で U-SQL をローカル実行し、次のことができます�
 - 特定のスクリプトの場合: 入力/出力パスで相対パスが参照される場合、DataRoot が検索されます (入力の場合は、スクリプトのパスも)。
 - アセンブリを登録し、相対パスを利用しようとすると、DataRoot フォルダーは参照されません (詳細については、「ローカル実行時にアセンブリを使用する」を参照してください)。
 
+次のビデオでは、U-SQL ローカル実行機能を説明しています。
+
+>[AZURE.VIDEO usql-localrun]
+
 ### 既知の問題と制限
 
 - U-SQL ローカル実行では、ファイルセットにローカルでクエリを実行できません。[U-SQL ファイルセット](https://msdn.microsoft.com/library/azure/mt621294.aspx)に関するページを参照してください。これは将来解決されます。
@@ -239,7 +245,7 @@ U-SQL スクリプトの開発方法については、「[U-SQL スクリプト�
 
 ![U-SQL Visual Studio プロジェクトのローカル送信](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-local-run.png)
 
-スクリプトを右クリックし、コンテキスト メニューで **[ローカル プラン実行]** をクリックするか、**Ctrl + F5** キーを押し、ローカル実行をトリガーします。
+スクリプトを右クリックし、コンテキスト メニューで **[ローカル プラン実行]** をクリックするか、**CTRL+F5** を押し、ローカル実行を開始します。
 
 ### ローカル実行でアセンブリを使用する
 
@@ -263,8 +269,6 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
         CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
 3.	C# コードにブレークポイントを設定します。
 4.	**F5** キーを押し、C# dll をローカルで参照してスクリプトをデバッグします。  
- 
-
 
 ##関連項目
 
@@ -353,4 +357,4 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

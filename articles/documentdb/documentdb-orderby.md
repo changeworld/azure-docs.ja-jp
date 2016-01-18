@@ -125,7 +125,7 @@ Title プロパティ (文字列) のみに対する Order By のインデック
         });
 
 ## サンプル
-この [Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.OrderBy)は、Order By を使用したインデックス作成ポリシーの作成やページングを含む、Order By の使用方法を示しています。サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。
+この [Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)は、Order By を使用したインデックス作成ポリシーの作成やページングを含む、Order By の使用方法を示しています。サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。
 
 ## 今後予定された機能
 
@@ -168,13 +168,13 @@ Order By を使用してクエリ結果を並べ替えるには、並べ替え�
 
 ## 次のステップ
 
-[Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.OrderBy)をフォークして、データの並べ替えを始めましょう。
+[Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)をフォークして、データの並べ替えを始めましょう。
 
 ## 参照
 * [DocumentDB クエリのリファレンス](documentdb-sql-query.md)
 * [DocumentDB インデックス作成ポリシー リファレンス](documentdb-indexing-policies.md)
 * [DocumentDB SQL リファレンス](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-* [DocumentDB Order By のサンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.OrderBy)
+* [DocumentDB Order By のサンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

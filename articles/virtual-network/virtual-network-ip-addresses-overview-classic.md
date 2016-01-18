@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/14/2015"
+   ms.date="12/23/2015"
    ms.author="telmos" />
 
 # Azure の IP アドレス (クラシック)
@@ -23,7 +23,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 
 プライベート IP アドレスは、Azure 仮想ネットワーク (VNet)、クラウド サービス、およびオンプレミス ネットワーク (VPN Gateway または ExpressRoute 回線を使用してネットワークを Azure に拡張する場合) 内での通信に使用します。
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [resource manager deployment model](virtual-network-ip-addresses-overview-arm.md)。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager deployment model](virtual-network-ip-addresses-overview-arm.md)。
 
 ## パブリック IP アドレス
 パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Redis Cache](https://azure.microsoft.com/services/cache)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs)、[SQL データベース](sql-database-technical-overview.md)、[Azure ストレージ](storage-introduction.md)など、Azure の公開されたサービスと通信できます。
@@ -34,10 +34,10 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 - IaaS Virtual Machines (VM)
 - PaaS ロール インスタンス
 - VPN ゲートウェイ
-- Application Gateway
+- アプリケーション ゲートウェイ
 
 ### 割り当て方法
-パブリック IP アドレスを Azure リソースに割り当てる必要がある場合は、リソースが作成された場所内の使用可能なパブリック IP アドレスのプールから*動的に*割り当てられます。この IP アドレスは、リソースが停止したときに解放されます。クラウド サービスの場合、この開放はすべてのロール インスタンスが停止したときに発生します。これは、*静的* (予約済み) IP アドレスを使用することで回避できます (下記の「クラウド サービス」を参照)。
+パブリック IP アドレスを Azure リソースに割り当てる必要がある場合は、リソースが作成された場所内の使用可能なパブリック IP アドレスのプールから*動的に*割り当てられます。この IP アドレスは、リソースが停止したときに解放されます。クラウド サービスの場合、この開放はすべてのロール インスタンスが停止したときに発生します。これは、*静的* (予約済み) IP アドレスを使用することで回避できます (「[Cloud Services](#Cloud-services)」を参照)。
 
 >[AZURE.NOTE]Azure リソースへのパブリック IP アドレスの割り当てに使用する IP アドレス範囲のリストは、「[Azure データセンターの IP アドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)」で公開されています。
 
@@ -80,7 +80,7 @@ Azure [Application Gateway](application-gateway-introduction.md) は、HTTP に�
 ## プライベート IP アドレス
 プライベート IP アドレスを使用すると、Azure リソースは、インターネットが到達可能な IP アドレスを使用せずに、クラウド サービス内の他のリソース、[仮想ネットワーク](virtual-networks-overview.md) (VNet)、あるいはオンプレミス ネットワーク (VPN Gateway または ExpressRoute 回線経由) と通信することができます。
 
-Azure クラシック デプロイメント モデルでは、プライベート IP アドレスは Azure のさまざまなリソースに割り当てられます。
+Azure クラシック デプロイメント モデルでは、プライベート IP アドレスを Azure の以下のリソースに割り当てることができます。
 
 - IaaS VM と PaaS ロール インスタンス
 - 内部ロード バランサー
@@ -101,7 +101,7 @@ Azure クラシック デプロイメント モデルでは、プライベート
 
 また、VNet 内のクラウド サービスの場合、プライベート IP アドレスは既定で (DHCP を使用して) *動的に*割り当てられます。これは、リソースが停止して開始されると変わる可能性があります。IP アドレスが変わらないようにするには、割り当て方法を*静的*に設定し、対応するアドレスの範囲内の有効な IP アドレスを指定する必要があります。
 
- 静的プライベート IP アドレスは、通常は次のものに使用されます。
+静的プライベート IP アドレスは、通常は次のものに使用されます。
 
  - ドメイン コントローラーまたは DNS サーバーとして機能する VM。
  - IP アドレスを使用するファイアウォール規則を必要とする VM。
@@ -128,6 +128,23 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 |内部ロード バランサーのフロント エンド|あり|あり|あり|
 |Application Gateway のフロント エンド|あり|あり|あり|
 
+## 制限
+
+サブスクリプションごとに Azure で IP アドレスを指定する際に課せられる IP の制限を下表に示します。ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、[サポートにお問い合わせ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+
+||既定の制限|上限| |---|---|---| |パブリック IP アドレス (動的)|5|サポートにお問い合わせ| |予約済みパブリック IP アドレス|20|サポートにお問い合わせ| |デプロイメントごとのパブリック VIP (クラウド サービス)|5|サポートにお問い合わせ| |デプロイメント (クラウド サービス) ごとのプライベート VIP (ILB)|1|1|
+
+Azure での[ネットワークの制限](azure-subscription-service-limits.md#networking-limits)に関する情報を必ずご確認ください。
+
+## 価格
+
+ほとんどの場合、パブリック IP アドレスは無料です。追加のパブリック IP アドレスまたは静的な IP アドレスを使用する場合は標準の料金が発生します。[パブリック IP の料金体系](https://azure.microsoft.com/pricing/details/ip-addresses/)を必ず把握してください。
+
+## リソース マネージャーとクラシック デプロイメントの相違点
+リソース マネージャーの IP アドレス指定機能とクラシック デプロイメント モデルとの比較を次に示します。
+
+||リソース|クラシック|リソース マネージャー| |---|---|---|---| |**パブリック IP アドレス**|VM|ILPIP と呼ばれる (動的のみ)|パブリック IP と呼ばれる (動的または静的)| |||IaaS VM または PaaS ロール インスタンスに割り当てられる|VM の NIC に関連付けられる| ||インターネットに接続するロード バランサー|VIP (動的) または予約済み IP (静的) と呼ばれる|パブリック IP (動的または静的) と呼ばれる| |||クラウド サービスに割り当てられる|ロード バランサーのフロント エンド構成に関連付けられる| |||| |**プライベート IP アドレス**|VM|DIP と呼ばれる|プライベート IP アドレスと呼ばれる| |||IaaS VM または PaaS ロール インスタンスに割り当てられる|VM の NIC に割り当てられる| ||内部ロード バランサー (ILB)|ILB に割り当てられる (動的または静的)|ILB のフロント エンド構成に割り当てられる (動的または静的)|
+
 ## 次のステップ
 - [Deploy a VM with a static public IP (静的パブリック IP で VM をデプロイする)](virtual-network-deploy-static-pip-classic-ps.md)
 - [Deploy a VM with a static private IP address (静的プライベート IP アドレスで VM をデプロイする)](virtual-networks-static-private-ip-classic-pportal.md)
@@ -136,4 +153,4 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 - [Create an application gateway using PowerShell (PowerShell を使用して Application Gateway を作成する)](application-gateway-create-gateway.md)
 - [Create an internal application gateway using PowerShell (PowerShell を使用して内部 Application Gateway を作成する)](application-gateway-ilb.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="12/04/2015"
+	ms.date="01/04/2016"
 	ms.author="inhenk"/>
 
 #RBAC: 組み込みのロール
@@ -133,9 +133,7 @@ ClearDB MySQL データベースを管理できます
 | **アクション** ||
 | ------- | ------ |
 | * | あらゆる種類のリソースの作成と管理 |
-| **Not Actions |  |
-| Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません |
-| Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |
+| ****Not Actions | | | Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません | | Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |
 
 ### Data Factory の共同作業者
 Data Factory を管理できます
@@ -381,8 +379,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 
 | **アクション** ||
 | ------- | ------ |
-| */read | 機密データを除くあらゆる種類のリソースの読み取り |
-| Microsoft.Authorization/* | 承認の読み取り |
+| */read | 機密データを除くあらゆる種類のリソースの読み取り | | Microsoft.Authorization/* | 承認の読み取り |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### 従来の仮想マシンの共同作業者
@@ -483,4 +480,4 @@ Web サイトを管理できますが、接続されている Web プランは�
 ## RBAC のトピック
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!----HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

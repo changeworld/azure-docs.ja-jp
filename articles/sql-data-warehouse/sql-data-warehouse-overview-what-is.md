@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="12/10/2015"
+   ms.date="01/04/2016"
    ms.author="lodipalm;barbkess;twounder;JRJ@BigBangData.co.uk;"/>
 
 
@@ -103,7 +103,7 @@ SQL Data Warehouse は、SQL Server の TSQL サーフェイス領域を採用�
 
 **従来の SQL Server ツール:** SQL Server Analysis Services、Integration Services、Reporting services との完全な統合が、SQL Data Warehouse で使用できます。
 
-**クラウド ベースのツール:** SQL Data Warehouse は、Azure の複数の新しいツールと共に使用できるほか、Azure Data Factory、Stream Analytics、Machine Learning、および Power BI と緊密に統合されています。
+**クラウド ベースのツール:** SQL Data Warehouse は、Azure の複数の新しいツールと共に使用できるほか、Azure's Data Factory、Stream Analytics、Machine Learning、および Power BI と緊密に統合されています。
 
 **サードパーティ製のツール:** 多数のサード パーティ ツール プロバイダーが自社のツールと SQL Data Warehouse との統合を認定しています。完全な一覧を参照してください。
 
@@ -138,4 +138,4 @@ SQL Data Warehouse の概要について学習しましたので、次は、使�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

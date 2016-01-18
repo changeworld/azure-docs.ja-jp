@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/28/2015"
+   ms.date="01/06/2016"
    ms.author="jgao"/>
 
 # Microsoft Azure Data Lake Analytics の概要
@@ -61,7 +61,7 @@ Azure Data Lake Analytics は、ビッグ データ分析を容易にするた�
 - U-SQL と開発
     - [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
     - [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)
-    - [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analtyics-u-sql-develop-user-defined-operators.md)
+    - [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)
     
 - 管理
     - [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
@@ -77,4 +77,4 @@ Azure Data Lake Analytics は、ビッグ データ分析を容易にするた�
     - [機能要求の送信](http://aka.ms/adlafeedback)
     - [フォーラムでサポートを受ける](http://aka.ms/adlaforums)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

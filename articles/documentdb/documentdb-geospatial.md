@@ -24,7 +24,7 @@
 - Azure DocumentDB 内の地理空間データを SQL や LINQ で照会する方法
 - DocumentDB の空間インデックスを有効または無効にする方法
 
-コード サンプルについては、こちらの [Github プロジェクト](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.Spatial)を参照してください。
+コード サンプルについては、こちらの [Github プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs)を参照してください。
 
 ## 空間データの概要
 
@@ -350,9 +350,9 @@ DocumentDB .NET SDK には、LINQ 式の中で使用するための、`Distance(
 ## 次のステップ
 DocumentDB の地理空間機能の基本的な使い方を身に付けたら、次に段階に進みましょう。
 
-- [Github の地理空間 .NET コード サンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.Spatial)を参考にして実際にコードを作成する
+- [Github の地理空間 .NET コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs)を参考にして実際にコードを作成する
 - [DocumentDB Query Playground](http://www.documentdb.com/sql/demo#geospatial) で地理空間クエリを実際に体験してみる
 - [DocumentDB クエリ](documentdb-sql-query.md)についてさらに理解を深める
 - [DocumentDB のインデックス作成ポリシー](documentdb-indexing-policies.md)についてさらに理解を深める
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

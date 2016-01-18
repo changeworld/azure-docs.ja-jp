@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="11/05/2015"
+   ms.date="01/04/2016"
    ms.author="twounder;JRJ@BigBangData.co.uk;barbkess"/>
 
 # SDL Data Warehouse での名前変更
@@ -42,7 +42,7 @@ ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 
 ## テーブル名の変更には排他的なテーブル ロックが必要
 
-使用中のテーブルの名前は変更できないことに注意してください。テーブルの名前の変更には、テーブル上での排他的なロックが必要です。テーブルを使用中である場合は、テーブルを使用しているセッションを終了することが必要な場合があります。セッションを終了するには、 [KILL](https://msdn.microsoft.com/library/ms173730.aspx) コマンドを使用する必要があります。```KILL``` を使用する場合は注意が必要です。いったん実行すると、セッションは終了し、コミット前の作業はロールバックされます。SQL Data Warehouse 内のセッションにはプレフィックスとして 'SID' が付けられます。KILL コマンドを呼び出す際には、このプレフィックスとセッション番号を指定する必要があります。たとえば、```KILL 'SID1234'``` のようになります。
+使用中のテーブルの名前は変更できないことに注意してください。テーブルの名前の変更には、テーブル上での排他的なロックが必要です。テーブルを使用中である場合は、テーブルを使用しているセッションを終了することが必要な場合があります。セッションを終了するには、 [KILL](https://msdn.microsoft.com/library/ms173730.aspx) コマンドを使用する必要があります。```KILL``` を使用する場合は注意が必要です。いったん実行すると、セッションは終了し、コミット前の作業はロールバックされます。SQL Data Warehouse 内のセッションにはプレフィックスとして 'SID' が付けられます。KILL コマンドを呼び出す際には、このプレフィックスとセッション番号を指定する必要があります。たとえば、```KILL 'SID1234'``` のように指定します。
 
 
 ## 次のステップ
@@ -53,4 +53,4 @@ ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 <!--Article references-->
 [開発の概要]: sql-data-warehouse-overview-develop.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="swkrish"
 	manager="msmbaldwin"
-	editor="curtand"/>
+	editor="bryanla"/>
 
 <tags
 	ms.service="active-directory-b2c"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/08/2015"
+	ms.date="12/28/2015"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: FAQ
@@ -22,13 +22,13 @@
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
-### 既存の従業員ベースの Azure AD テナントで Azure AD B2C を使用できますか。
+### 既存の従業員ベースの Azure AD テナントで Azure AD B2C 機能を使用できますか。
 
 現在のところ、既存の Azure AD テナントで Azure AD B2C 機能を有効にすることはできません。Azure AD B2C 機能を使用するための別個のテナントを作成し、お客様を管理することをお勧めします。
 
 ### Azure AD B2C を使用してソーシャル ログイン (Facebook および Google+) を Office 365 に提供することはできますか。
 
-Azure AD B2C は Office 365 と共に使用することはできません。一般に、SaaS アプリ (Salesforce、Workday など) に認証を提供するために使用することはできません。これは、消費者向けの Web およびモバイル アプリケーションの ID およびアクセス管理を提供するものであり、従業員やパートナー向けではありません。
+Azure AD B2C は Office 365 と共に使用することはできません。一般に、SaaS アプリ (O365、Salesforce、Workday など) に認証を提供するために使用することはできません。Azure AD B2C は、コンシューマー向けの Web およびモバイル アプリケーションの ID とアクセスの管理を提供するだけであり、従業員またはパートナーのシナリオには適用されません。
 
 ### Azure AD B2C の "ローカル アカウント" とは何ですか。 それらは、Azure AD の "職場または学校のアカウント" とはどのような点が異なるのですか。
 
@@ -38,7 +38,7 @@ Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意�
 
 ### 現在サポートされているソーシャル ID プロバイダーはどれですか。 将来サポートする予定のプロバイダーはどれですか。
 
-現在、Facebook、Google+、LinkedIn、および Amazon をサポートしています。お客様のご要望に基づいて、Microsoft アカウントやその他の人気のあるソーシャル ID プロバイダーのサポートを追加する予定です。
+現在、Facebook、Google+、LinkedIn、および Amazon をサポートしています。お客様のご要望に基づいて、他の人気のあるソーシャル ID プロバイダーのサポートを追加する予定です。
 
 ### さまざまなソーシャル ID プロバイダーからお客様に関する情報をさらに収集するために "スコープ" を構成できますか。
 
@@ -53,17 +53,21 @@ Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意�
 
 いいえ。アプリケーションは任意の場所でホストできます (クラウドまたはオンプレミス)。Azure AD B2C とやり取りするために必要なのは、パブリックにアクセス可能なエンドポイントで HTTP 要求を送受信する機能のみです。
 
-### 複数の Azure AD B2C ディレクトリがあります。Azure プレビュー ポータルでそれらを管理するにはどのようにすればいいですか。
+### 複数の Azure AD B2C テナントがあります。Azure ポータルでこれらのテナントを管理するにはどうすればよいですか。
 
-Azure プレビュー ポータルには、各 Azure AD B2C テナント独自の B2C 機能ブレードがあります。Azure プレビュー ポータルで特定のテナントの B2C 機能ブレードに移動する方法については、[ここ](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)をご覧ください。Azure プレビュー ポータルで Azure AD B2C ディレクトリを切り替えると、大部分のブラウザでは B2C 機能ブレードが開いたままになりません。
+Azure ポータルには、Azure AD B2C テナントごとに独自の B2C 機能ブレードがあります。Azure ポータルで特定のテナントの B2C 機能ブレードに移動する方法については、[こちら](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)をご覧ください。ほとんどのブラウザでは、Azure ポータルで Azure AD B2C ディレクトリを切り替えると、B2C 機能ブレードは開いたままにはなりません。
 
 ### Azure AD B2C によって送信される検証電子メールをカスタマイズするにはどうすればいいですか (コンテンツ、および送信者フィールド ("From:" フィールド))。
 
-詳細については、[UI のカスタマイズに関するこの記事](active-directory-b2c-reference-ui-customization.md)をご覧ください。
+検証電子メールの内容をカスタマイズするには、[会社のブランド化機能](./active-directory/active-directory-add-company-branding.md)を使用します。送信者フィールドは、サポートを通じて変更できます。
 
 ### 既存のユーザー名、パスワード、およびプロファイルを自分のデータベースから Azure AD B2C に移行するにはどのようにすればいいですか。
 
 Azure AD Graph API ([ここ](active-directory-b2c-devquickstarts-graph-dotnet.md)からサンプルを参照) を使用して、移行ツールを作成できます。将来、さまざまな移行オプションとツールをすぐに使用できる状態で提供する予定です。
+
+### Azure AD B2C のローカル アカウントに使用されるパスワード ポリシーはどのようなものですか。
+
+Azure AD B2C のローカル アカウントのパスワード ポリシーは Azure AD に基づいています。Azure AD B2C では、「強力な」パスワードを使用し、すべてのパスワードを無期限にします。詳細については、「[Azure AD でのパスワード ポリシー](https://msdn.microsoft.com/library/azure/jj943764.aspx)」をご覧ください。
 
 ### Azure AD Connect を使用して、自分のオンプレミス Active Directory に保存されているお客様の ID を Azure AD B2C に移行できますか。
 
@@ -87,7 +91,7 @@ Azure AD Graph API ([ここ](active-directory-b2c-devquickstarts-graph-dotnet.md
 
 ### Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を login.microsoftonline.com から login.contoso.com に変更できますか。
 
-現時点では変更できません。この機能は検討中です。また、Azure ポータルで、テナントの **[ドメイン]** タブのドメインを "確認" しても変更はされません。
+現時点では変更できません。この機能は検討中です。また、Azure クラシック ポータルでテナントの **[ドメイン]** タブのドメインを "確認" しても変更は行われません。
 
 ### Enterprise Mobility Suite (EMS) の一部として Azure AD B2C を取得できますか。
 
@@ -103,6 +107,6 @@ Azure AD B2C に関する[このサポート トピック](active-directory-b2c-
 
 ## 詳細情報
 
-現在の[プレビューの制限事項および制約事項](active-directory-b2c-limitations.md)も参照してください。
+現在の[プレビューの制限事項および制約事項](active-directory-b2c-limitations.md)を確認することもできます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

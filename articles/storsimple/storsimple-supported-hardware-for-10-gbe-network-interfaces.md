@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/27/2015"
+   ms.date="12/30/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア
@@ -112,4 +112,4 @@ Mellanox では、テストの結果、次の小型フォーム ファクター�
 
 [StorSimple ハードウェア コンポーネントと状態の詳細](storsimple-monitor-hardware-status.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

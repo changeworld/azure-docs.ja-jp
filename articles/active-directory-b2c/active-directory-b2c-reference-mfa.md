@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="swkrish"
 	manager="msmbaldwin"
-	editor="curtand"/>
+	editor="bryanla"/>
 
 <tags
 	ms.service="active-directory-b2c"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="01/04/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: コンシューマー向けアプリケーションで Multi-factor Authentication を有効にする
@@ -31,7 +31,7 @@ Azure Active Directory (AD) B2C は [Azure Multi-Factor Authentication](../multi
 
 ## サインアップ ポリシーを変更して Multi-factor Authentication を有効にする
 
-1. [Azure プレビュー ポータルで B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [この手順に従って、Azure ポータルで B2C 機能ブレードに移動します。](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)
 2. **[サインアップ ポリシー]** をクリックします。
 3. クリックしてサインアップ ポリシーを開きます (例: "B2C\_1\_SiUp")。
 4. **[Multi-Factor Authentication]** をクリックし、**[状態]** を **[オン]** にします。**[OK]** をクリックします。
@@ -43,7 +43,7 @@ Multi-Factor Authentication の手順が実行される前に、コンシュー�
 
 ## サインイン ポリシーを変更して Multi-factor Authentication を有効にする
 
-1. [Azure プレビュー ポータル](htts://portal.azure.com/)で B2C 機能ブレードに移動します。方法については、[こちら](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)をご覧ください。
+1. [この手順に従って、Azure ポータルで B2C 機能ブレードに移動します。](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)
 2. **[サインイン ポリシー]** をクリックします。
 3. クリックしてサインイン ポリシーを開きます (例: "B2C\_1\_SiIn")。ブレードの上部にある **[編集]** をクリックします。
 4. **[Multi-Factor Authentication]** をクリックし、**[状態]** を **[オン]** にします。**[OK]** をクリックします。
@@ -53,4 +53,4 @@ Multi-Factor Authentication の手順が実行される前に、コンシュー�
 
 コンシューマーがソーシャルまたはローカル アカウントを使用してサインインするとき、検証済みの電話番号がコンシューマー アカウントに関連付けられている場合は、コンシューマーはその確認を求められます。電話番号が関連付けられていない場合は、コンシューマーは電話番号を指定して確認するよう求められます。検証が成功した場合、後で使用できるように電話番号がコンシューマー アカウントに関連付けられます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

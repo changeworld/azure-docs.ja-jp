@@ -15,7 +15,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="12/14/2015" 
+	ms.date="12/30/2015" 
 	ms.author="jeffstok"
 />
 
@@ -79,7 +79,7 @@
 
 ![Stream Analytics Machine Learning チュートリアル: 分析データ](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-analysis-data.png)
 
-**Excel 2010 以前**のブックのリンクをクリックして、後で Stream Analytics ジョブを設定する際に必要になる API キーと URL を取得します (この手順は、別の Azure アカウントのワークスペースから Machine Learning モデルを利用する場合にのみ必要です。このチュートリアルでは、このシナリオに対応する場合を想定しています)。
+**Excel 2010 以前**のブックのリンクをクリックして、後で Stream Analytics ジョブを設定する際に必要になる API キーと URL を取得します(この手順は、別の Azure アカウントのワークスペースから Machine Learning モデルを利用する場合にのみ必要です。このチュートリアルでは、このシナリオに対応する場合を想定しています)。
 
 ![Stream Analytics Machine Learning チュートリアル: 分析実験](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-analysis-experiement.png)
 
@@ -142,7 +142,7 @@
 
 このチュートリアルでは、リアルタイムでストリーミング テキスト データを読み取り、そのデータに対してセンチメント分析を適用する Stream Analytics ジョブを作成しました。このすべての処理は、センチメント分析モデルを構築する場合の複雑な作業を心配することなく実行できます。これが Cortana Analytics スイートの利点の 1 つです。
 
-Azure Machine Language 関数に関連するメトリックも確認できます。**[監視]** タブをクリックします。関数に関連する 3 つのメトリックがあります。
+Azure Machine Learning 関数に関連するメトリックも確認できます。**[監視]** タブをクリックします。関数に関連する 3 つのメトリックがあります。
   
 - [関数要求] は、Machine Learning Web サービスに対する要求数を示します。  
 - [関数イベント] は、要求のイベント数を示します。既定では、ML Web サービスに対する各要求に最大 1,000 イベントが含まれます。  
@@ -150,4 +150,4 @@ Azure Machine Language 関数に関連するメトリックも確認できます
 
     ![Stream Analytics Machine Learning チュートリアル: ML 監視ビュー](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-ml-monitor-view.png)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

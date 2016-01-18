@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/07/2015" 
+	ms.date="01/05/2016" 
 	ms.author="tamram"/>
 
 
@@ -234,4 +234,4 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 ## 次のステップ  
 [Java 用 Azure Storage クライアント ライブラリ Maven パッケージ](<fix URL>) をダウンロードする。[GitHub から Java 用 Azure Storage クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-java)をダウンロードする。Azure Key Vault Maven の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および[拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。[Azure Key Vault ドキュメント](../articles/key-vault-whatis.md)にアクセスする。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="SQL Server の高可用性と障害復旧 | Microsoft Azure"
-	description="このチュートリアルでは、クラシック デプロイ モデルで作成されたリソースを使用して、Azure Virtual Machines で実行されている SQL Server の HADR 戦略のさまざまな種類について説明します。"
+	description="Azure Virtual Machines で実行されている SQL Server に対するさまざまな種類の HADR 戦略についての説明。"
 	services="virtual-machines"
 	documentationCenter="na"
 	authors="rothja"
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="11/13/2015"
+	ms.date="01/07/2015"
 	ms.author="jroth" />
 
 # Azure Virtual Machines における SQL Server の高可用性と障害復旧
@@ -39,6 +39,7 @@ Azure でサポートされている SQL Server HADR テクノロジは、次の
 - [データベース ミラーリング](https://technet.microsoft.com/library/ms189852.aspx)
 - [ログ配布](https://technet.microsoft.com/library/ms187103.aspx)
 - [Azure BLOB ストレージ サービスを使用したバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)
+- [AlwaysOn フェールオーバー クラスター インスタンス](https://technet.microsoft.com/library/ms189134.aspx) 
 
 高可用性と障害復旧の両方の機能を持つ SQL Server ソリューションを実装するために、テクノロジを組み合わせることができます。使用するテクノロジによっては、ハイブリッド デプロイで VPN トンネルと Azure Virtual Network が必要になる場合があります。以下の各セクションで、デプロイ アーキテクチャのいくつかの例を示します。
 
@@ -48,8 +49,9 @@ Azure 内の SQL Server データベースの高可用性ソリューション�
 
 |テクノロジ|サンプル アーキテクチャ|
 |---|---|
-|**AlwaysOn 可用性グループ**|すべての可用性レプリカが、同じリージョン内で、高可用性のために Azure VM で実行されます。Windows Server フェールオーバー クラスタリング (WSFC) には Active Directory ドメインが必要であるため、SQL Server の仮想マシンの他にドメイン コントローラーを構成する必要があります。<br/> ![AlwaysOn 可用性グループ](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_ha_always_on.gif)<br/>詳細については、「[Azure AlwaysOn 可用性グループの構成 (GUI)](virtual-machines-sql-server-alwayson-availability-groups-gui.md)」を参照してください。|
+|**AlwaysOn 可用性グループ**|すべての可用性レプリカが、同じリージョン内で、高可用性のために Azure VM で実行されます。Windows Server フェールオーバー クラスタリング (WSFC) には Active Directory ドメインが必要であるため、ドメイン コントローラー VM を構成する必要があります。<br/> ![AlwaysOn 可用性グループ](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_ha_always_on.gif)<br/>詳細については、「[Azure AlwaysOn 可用性グループの構成 (GUI)](virtual-machines-sql-server-alwayson-availability-groups-gui.md)」を参照してください。|
 |**データベース ミラーリング**|高可用性のために、プリンシパル、ミラー、および監視サーバーが同じ Azure データセンターで実行されます。ドメイン コント ローラーを使用してデプロイすることができます。<br/>![データベース ミラーリング](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_ha_dbmirroring1.gif)<br/>また、代わりにサーバー証明書を使用して、ドメイン コントローラーなしで同じデータベース ミラーリング構成をデプロイすることもできます。<br/>![データベース ミラーリング](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_ha_dbmirroring2.gif)|
+|**AlwaysOn フェールオーバー クラスター インスタンス**|共有記憶域を必要とするフェールオーバー クラスター インスタンス (FCI) は、2 つの異なる方法で作成できます。<br/><br/>1.サードパーティのクラスタリング ソリューションによってサポートされるストレージを使用する Azure VM で実行される 2 ノード WSFC 上の FCI。SIOS DataKeeper を使用する具体的な例については、「[High availability for a file share using WSFC and 3rd party software SIOS Datakeeper (WSFC とサードパーティ ソフトウェア SIOS Datakeeper を使用するファイル共有の高可用性)](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)」を参照してください。<br/><br/>2.ExpressRoute を介してリモート iSCSI ターゲット共有ブロック記憶域を使用する Azure VM で実行されている 2 ノード WSFC 上の FCI。たとえば、NetApp Private Storage (NPS) は ExpressRoute と Equinix を使用して iSCSI ターゲットを Azure VM に公開します。<br/><br/>サードパーティの共有記憶域とデータ レプリケーション ソリューションの場合は、フェールオーバーでのデータ アクセスに関する問題について、ベンダーに問い合わせてください。<br/><br/>[Azure File Storage](https://azure.microsoft.com/services/storage/files/) 上での FCI の使用は、このソリューションが Premium Storage を利用していないためにまだサポートされていないことに注意してください。近日中にサポートできるように作業中です。|
 
 ## Azure のみ: 障害復旧ソリューション
 
@@ -152,4 +154,4 @@ Azure VM での SQL Server の実行に関するその他のトピックにつ�
 - [Azure での新しい Active Directory フォレストのインストール](../active-directory/active-directory-new-forest-virtual-machine.md)
 - [Azure VM での AlwaysOn 可用性グループの WSFC クラスターの作成](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

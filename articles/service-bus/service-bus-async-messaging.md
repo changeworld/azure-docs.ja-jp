@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/18/2015"
+   ms.date="12/28/2015"
    ms.author="sethm" />
 
 # 非同期メッセージング パターンと高可用性
@@ -35,7 +35,7 @@
 
 ## Service Bus の信頼性
 
-メッセージとエンティティの問題を処理する方法は多数存在します。また、これらの緩和策の適切な使用に関するガイドラインがあります。このガイドラインを理解するには、最初に Service Bus で障害が発生する可能性がある状況について理解する必要があります。Azure システムの設計により、これらすべての問題は一時的である傾向があります。大まかに言って、使用不可能となる原因は次のとおりです。
+メッセージとエンティティの問題を処理する方法はいくつかあります。また、これらの緩和策の適切な使用に関するガイドラインがあります。このガイドラインを理解するには、最初に Service Bus で障害が発生する可能性がある状況について理解する必要があります。Azure システムの設計により、これらすべての問題は一時的である傾向があります。大まかに言って、使用不可能となる原因は次のとおりです。
 
 -   Service Bus が依存している外部システムからの調整。調整は、ストレージ リソースやコンピューティング リソースとのやり取りから発生します。
 
@@ -63,7 +63,7 @@ Azure 内の他のコンポーネントで、サービスの問題が発生す�
 
 どのアプリケーションでも、状況によっては Service Bus の内部コンポーネントに不整合が生じる場合があります。Service Bus がこれを検出すると、アプリケーションからデータを収集し、何が起こったかを診断する手助けとします。データが収集されると、アプリケーションは一貫性のある状態に戻すために再起動されます。このプロセスは比較的迅速に発生し、エンティティが使用できない状態は最大で数分続きます。ただし、通常のダウンタイムはこれよりもはるかに短くなります。
 
-このような状況では、クライアント アプリケーションは [System.TimeoutException][] または [MessagingException][] 例外を生成します。Service Bus .NET SDK には、自動化されたクライアント再試行ロジックという形で、この問題の軽減策が備わっています。再試行期間が終了してもメッセージが配信されない場合は、ペアの名前空間などの他の機能を試すことができます。ペアの名前空間には他にも問題がありますが、それについてはこのドキュメントの後半で説明します。
+このような状況では、クライアント アプリケーションは [System.TimeoutException][] または [MessagingException][] 例外を生成します。Service Bus .NET SDK には、自動化されたクライアント再試行ロジックという形で、この問題の軽減策が備わっています。再試行期間が終了してもメッセージが配信されない場合は、[ペアの名前空間][]などの他の機能を試すことができます。ペアの名前空間には他にも問題がありますが、それについてはこのドキュメントの後半で説明します。
 
 ### Azure データセンター内での Service Bus の障害。
 
@@ -72,11 +72,11 @@ Azure データセンターでの障害の理由として最も可能性が高�
 -   停電 (電源供給と発電源が失われた)。
 -   接続 (クライアントと Azure の間のインターネットの切断)。
 
-いずれの場合も、自然災害または人的災害によって問題が発生します。この問題に対処し、継続して確実にメッセージを送信できるようにするために、ペアの名前空間を使用して、プライマリの場所を再び正常にしている間は、メッセージを 2 番目の場所に送信するようにできます。詳細については、「[Service Bus の障害および災害に対する Service Bus アプリケーションの保護のベスト プラクティス][]」を参照してください。
+いずれの場合も、自然災害または人的災害によって問題が発生します。この問題に対処し、継続して確実にメッセージを送信できるようにするために、[ペアの名前空間][]を使用して、プライマリの場所を再び正常にしている間は、メッセージを 2 番目の場所に送信するようにできます。詳細については、「[Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス][]」を参照してください。
 
 ## ペアの名前空間
 
-ペアの名前空間機能は、データ センター内の Service Bus エンティティまたはデプロイが使用できなくなるシナリオをサポートします。このイベントの発生頻度は低いものの、分散システムは最悪のシナリオに対処できるように準備しておく必要があります。通常、このイベントが発生するのは、Service Bus が依存している一部の要素で、一時的な問題が発生したことが原因です。障害中にアプリケーションの可用性を維持するため、Service Bus のユーザーは 2 つの異なる名前空間を (できれば異なるデータ センターで) 使用して、メッセージング エンティティをホストできます。このセクションの残りの部分では、次の用語を使用します。
+[ペアの名前空間][]機能は、データ センター内の Service Bus エンティティまたはデプロイメントが使用できなくなるシナリオをサポートします。このイベントの発生頻度は低いものの、分散システムは最悪のシナリオに対処できるように準備しておく必要があります。通常、このイベントが発生するのは、Service Bus が依存している一部の要素で、一時的な問題が発生したことが原因です。障害中にアプリケーションの可用性を維持するため、Service Bus のユーザーは 2 つの異なる名前空間を (できれば異なるデータ センターで) 使用して、メッセージング エンティティをホストできます。このセクションの残りの部分では、次の用語を使用します。
 
 -   プライマリ名前空間: アプリケーションが送受信操作についてやり取りする名前空間。
 
@@ -84,13 +84,13 @@ Azure データセンターでの障害の理由として最も可能性が高�
 
 -   フェールオーバー間隔: アプリケーションがプライマリ名前空間からセカンダリ名前空間に切り替える前に、通常の障害を受け入れる時間。
 
-ペアの名前空間は送信の可用性をサポートします。送信の可用性では、メッセージの送信機能の保持が重視されます。送信の可用性を使用するには、アプリケーションは次の要件を満たす必要があります。
+ペアの名前空間は*送信の可用性*をサポートします。送信の可用性では、メッセージの送信機能が保持されます。送信の可用性を使用するには、アプリケーションは次の要件を満たす必要があります。
 
 1.  メッセージはプライマリ名前空間からのみ受信されます。
 
 2.  特定のキュー/トピックに送信されたメッセージは、順序を逸脱して配信されることがあります。
 
-3.  アプリケーションがセッションを使用する場合: セッション内のメッセージは順序を逸脱して配信されることがあります。これはセッションの通常の機能ではありません。つまり、アプリケーションはセッションを使用してメッセージを論理的にグループ分けしています。セッション状態はプライマリ名前空間でのみ維持されます。
+3.  アプリケーションがセッションを使用する場合、セッション内のメッセージは順序を逸脱して配信されることがあります。これはセッションの通常の機能ではありません。つまり、アプリケーションはセッションを使用してメッセージを論理的にグループ分けしています。セッション状態はプライマリ名前空間でのみ維持されます。
 
 4.  セッション内のメッセージは順序を逸脱して配信されることがあります。これはセッションの通常の機能ではありません。つまり、アプリケーションはセッションを使用してメッセージを論理的にグループ分けしています。
 
@@ -102,13 +102,13 @@ Azure データセンターでの障害の理由として最も可能性が高�
 
 ### MessagingFactory.PairNamespaceAsync API
 
-ペアの名前空間機能では、[Microsoft.ServiceBus.Messaging.MessagingFactory][] クラスに次の新しいメソッドが導入されます。
+ペアの名前空間機能では、[Microsoft.ServiceBus.Messaging.MessagingFactory][] クラスに [PairNamespaceAsync][] メソッドが導入されます。
 
 ```
 public Task PairNamespaceAsync(PairedNamespaceOptions options);
 ```
 
-タスクが完了すると名前空間のペアリングも完了し、[MessagingFactory][] で作成したすべての [MessageReceiver][]、[QueueClient][]、または [TopicClient][] に対してすぐに動作できるようになります。[Microsoft.ServiceBus.Messaging.PairedNamespaceOptions][] は、[MessagingFactory][] で利用できるさまざまな種類のペアリングのための基本クラスです。現在、唯一の派生クラスは [SendAvailabilityPairedNamespaceOptions][] という名前のクラスです。これは送信の可用性要件を満たします。[SendAvailabilityPairedNamespaceOptions][] には、すべてが相互に構築されたコンストラクターのセットがあります。ほとんどのパラメーターを持つコンストラクターを見ると、他のコンストラクターの動作を理解できます。
+タスクが完了すると名前空間のペアリングも完了し、[MessagingFactory][] インスタンスで作成したすべての [MessageReceiver][]、[QueueClient][]、または [TopicClient][] に対してすぐに動作できるようになります。[Microsoft.ServiceBus.Messaging.PairedNamespaceOptions][] は、[MessagingFactory][] オブジェクトで利用できるさまざまな種類のペアリングのための基本クラスです。現在、唯一の派生クラスは [SendAvailabilityPairedNamespaceOptions][] という名前のクラスです。これは送信の可用性要件を満たします。[SendAvailabilityPairedNamespaceOptions][] には、すべてが相互に構築されたコンストラクターのセットがあります。ほとんどのパラメーターを持つコンストラクターを見ると、他のコンストラクターの動作を理解できます。
 
 ```
 public SendAvailabilityPairedNamespaceOptions(
@@ -121,9 +121,9 @@ public SendAvailabilityPairedNamespaceOptions(
 
 これらのパラメーターの意味は次のとおりです。
 
--   *secondaryNamespaceManager*: セカンダリ名前空間を設定するために [PairNamespaceAsync][] メソッドが使用できる、セカンダリ名前空間の初期化された [NamespaceManager][] インスタンス。名前空間のキューの一覧を取得し、必要なバックログ キューが存在することを確認するために、マネージャーが使用されます。これらのキューが存在しない場合は作成されます。[NamespaceManager][] は、**Manage** 要求を使ってトークンを作成する機能を必要とします。
+-   *secondaryNamespaceManager*: セカンダリ名前空間を設定するために [PairNamespaceAsync][] メソッドが使用できる、セカンダリ名前空間の初期化された [NamespaceManager][] インスタンス。名前空間のキューの一覧を取得し、必要なバックログ キューが存在することを確認するために、名前空間マネージャーが使用されます。これらのキューが存在しない場合は作成されます。[NamespaceManager][] は、**Manage** 要求を使ってトークンを作成する機能を必要とします。
 
--   *messagingFactory*: セカンダリ名前空間用の [MessagingFactory][] インスタンス。[MessagingFactory][] は、バックログ キューにメッセージを送信するために使用されます。また、[EnableSyphon][] プロパティが **true** に設定されている場合は、バックログ キューからメッセージを受信するためにも使用されます。
+-   *messagingFactory*: セカンダリ名前空間用の [MessagingFactory][] インスタンス。[MessagingFactory][] オブジェクトは、バックログ キューにメッセージを送信するために使用されます。また、[EnableSyphon][] プロパティが **true** に設定されている場合は、バックログ キューからメッセージを受信するためにも使用されます。
 
 -   *backlogQueueCount*: 作成するバックログ キューの数。この値は 1 以上にする必要があります。バックログにメッセージを送信する場合、これらのキューの 1 つがランダムに選択されます。値を 1 に設定した場合、1 つのキューのみを使用できます。これが発生し、1 つのバックログ キューがエラーを生成した場合、クライアントは別のバックログ キューを試すことができず、メッセージの送信に失敗する可能性があります。この値を大きな値に設定し、既定値は 10 に設定することをお勧めします。1 日にアプリケーションが送信するデータの量に応じて、この値をより高い値または低い値に変更できます。各バックログ キューは最大 5 GB のメッセージを保持できます。
 
@@ -134,8 +134,7 @@ public SendAvailabilityPairedNamespaceOptions(
 コードを使用するには、プライマリ [MessagingFactory][] インスタンス、セカンダリ [MessagingFactory][] インスタンス、セカンダリ [NamespaceManager][] インスタンス、および [SendAvailabilityPairedNamespaceOptions][] インスタンスを作成します。呼び出しは、次のように単純にすることもできます。
 
 ```
-SendAvailabilityPairedNamespaceOptions sendAvailabilityOptions =
-    new SendAvailabilityPairedNamespaceOptions(secondaryNamespaceManager, secondary);
+SendAvailabilityPairedNamespaceOptions sendAvailabilityOptions = new SendAvailabilityPairedNamespaceOptions(secondaryNamespaceManager, secondary);
 primary.PairNamespaceAsync(sendAvailabilityOptions).Wait();
 ```
 
@@ -150,12 +149,12 @@ if (sendAvailabilityOptions.BacklogQueueCount < 1)
 
 ## 次のステップ
 
-Service Bus での非同期メッセージングの基本についての説明は以上です。詳細については、[ペアの名前空間と課金の影響]に関するページを参照してください。
+Service Bus での非同期メッセージングの基本についての説明は以上です。詳細については、[ペアの名前空間と課金の影響][]に関するページを参照してください。
 
   [ServerBusyException]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx
   [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx
   [MessagingException]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingexception.aspx
-  [Service Bus の障害および災害に対する Service Bus アプリケーションの保護のベスト プラクティス]: service-bus-outages-disasters.md
+  [Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス]: service-bus-outages-disasters.md
   [Microsoft.ServiceBus.Messaging.MessagingFactory]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx
   [MessageReceiver]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx
   [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
@@ -171,5 +170,6 @@ Service Bus での非同期メッセージングの基本についての説明�
   [UnauthorizedAccessException]: https://msdn.microsoft.com/library/azure/system.unauthorizedaccessexception.aspx
   [BacklogQueueCount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.backlogqueuecount.aspx
   [ペアの名前空間と課金の影響]: service-bus-paired-namespaces.md
+  [ペアの名前空間]: service-bus-paired-namespaces.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

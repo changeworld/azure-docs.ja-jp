@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="swkrish"
 	manager="msmbaldwin"
-	editor="curtand"/>
+	editor="bryanla"/>
 
 <tags
 	ms.service="active-directory-b2c"
@@ -13,20 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/24/2015"
+	ms.date="01/04/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Azure Active Directory B2C のサポート要求を提出する方法
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
-Azure プレビュー ポータルで Azure Active Directory (AD) B2C のサポート要求を提出するには、次のようにします。
+Azure ポータルで Azure Active Directory (AD) B2C のサポート要求を提出するには、次の手順に従います。
 
-1. [Azure プレビュー ポータルで B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [この手順に従って、Azure ポータルで B2C 機能ブレードに移動します。](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)
 2. B2C テナントを、Azure サブスクリプションが関連付けられている別のテナントに切り替えます。通常、移動先のテナントは、従業員のテナント、または Azure サブスクリプションにサインアップしたときに作成された既定のテナントです。Azure サブスクリプションと Azure AD ディレクトリの関係について詳しくは、[こちらの記事](active-directory-how-subscriptions-associated-directory.md#how-an-azure-subscription-is-related-to-azure-ad)をご覧ください。
 
-    > [AZURE.IMPORTANT]
-    この手順は必須です。この手順を行わないと、処理は失敗します。
+    > [AZURE.IMPORTANT]この手順は必須です。この手順を行わないと、処理は失敗します。
 
     ![サポート - ディレクトリの切り替え](./media/active-directory-b2c-support/support-switch-dir.png)
 
@@ -47,9 +46,8 @@ Azure プレビュー ポータルで Azure Active Directory (AD) B2C のサポ�
 
 上で説明した手順 2 を実行せず、自分の B2C テナントのコンテキストでサポート要求を作成しようとすると、次のエラーが表示されます。
 
-> [AZURE.IMPORTANT]
-> B2C テナントで新しい Azure サブスクリプションにサインアップしないでください。
+> [AZURE.IMPORTANT]B2C テナントで新しい Azure サブスクリプションにサインアップしないでください。
 
 ![サポート - サブスクリプションなし](./media/active-directory-b2c-support/support-no-sub.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

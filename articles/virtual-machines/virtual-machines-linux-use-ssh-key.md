@@ -256,15 +256,13 @@ VM の作成時に既定の SSH ポート 22 を使用しなかった場合、�
 
 ### 例: .pem 鍵と従来のデプロイメントを使用した SSH セッションの出力
 
-`~/.ssh/id_rsa` ファイルから作成した .pem ファイルを利用して VM を作成した場合、その VM に直接 ssh 接続できます。その場合、`~/.ssh/id_rsa` で証明書ハンドシェイクに秘密鍵が使用されることに注意してください。これは次の例のようになります。
+`~/.ssh/id_rsa` ファイルから作成した .pem ファイルを利用して VM を作成した場合、その VM に直接 ssh 接続できます。その場合、`~/.ssh/id_rsa` で証明書ハンドシェイクに秘密鍵が使用されることに注意してください(VM 作成プロセスでは、.pem から公開鍵が計算されて、その ssh-rsa 形式が `~/.ssh/authorized_users` に格納されます)。 接続は次の例のようになります。
 
 	ssh ops@testpemasm.cloudapp.net -p 22
 	The authenticity of host 'testpemasm.cloudapp.net (40.83.178.221)' can't be established.
 	RSA key fingerprint is dc:bb:e4:cc:59:db:b9:49:dc:71:a3:c8:37:36:fd:62.
 	Are you sure you want to continue connecting (yes/no)? yes
 	Warning: Permanently added 'testpemasm.cloudapp.net,40.83.178.221' (RSA) to the list of known hosts.
-	Saving password to keychain failed
-	Identity added: /Users/user/.ssh/id_rsa.pub (/Users/user/.ssh/id_rsa.pub)
 	Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.19.0-28-generic x86_64)
 
 	* Documentation:  https://help.ubuntu.com/
@@ -298,4 +296,4 @@ VM の作成時に既定の SSH ポート 22 を使用しなかった場合、�
  
 これで VM に接続できたので、選択したディストリビューションを必ず更新してから使用を続けます。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

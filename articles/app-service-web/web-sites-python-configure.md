@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="09/29/2015" 
-	ms.author="huguesv"/>
+	ms.date="12/16/2015" 
+	ms.author="huvalo"/>
 
 
 
@@ -40,7 +40,7 @@ Azure Marketplace には、Bottle、Django、Flask フレームワーク用の�
 
 このチュートリアルは、Azure サブスクリプションを既に所有しており、Azure ポータルにアクセスできることを前提としています。
 
-既存の Web アプリがない場合、[Azure ポータル](https://portal.azure.com)から自分で作成できます。画面左下にある [新規] ボタンをクリックし、次に **[Web + モバイル]**、**[Web アプリ]** の順にクリックします。
+既存の Web アプリがない場合、[Azure ポータル](https://portal.azure.com)から自分で作成できます。左上隅の [新規] ボタンをクリックし、**[Web + モバイル]**、**[Web アプリ]** の順にクリックします。
 
 ## Git 発行
 
@@ -385,4 +385,4 @@ Python 3.4 用の`web.config` の例:
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

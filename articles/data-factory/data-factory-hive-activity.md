@@ -18,7 +18,7 @@
 
 # Hive アクティビティ
 
-Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight Hive アクティビティでは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の Windows/Linux ベースのHDInsight クラスターで Hive クエリを実行します。この記事は、データ変換とサポートされる変換アクティビティの概要について説明する記事「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を基に作成されています。
+Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight Hive アクティビティでは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の Windows/Linux ベースの HDInsight クラスターで Hive クエリを実行します。この記事は、データ変換とサポートされる変換アクティビティの概要について説明する記事「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を基に作成されています。
 
 ## 構文
 
@@ -104,7 +104,7 @@ defines | 'hiveconf' を使用して Hive スクリプト内で参照するキ�
 Data Factory パイプラインでこの Hive スクリプトを実行するには、以下の手順を実行する必要があります。
 
 1. リンクされたサービスを作成し、[独自の HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に登録するか、または[オンデマンドの HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)を構成します。このリンクされたサービスを "HDInsightLinkedService" と呼ぶことにしましょう。
-2. [リンクされたサービス](data-factory-azure-storage-connector.md)を作成し、データをホストする Azure BLOB ストレージへの接続を構成します。このリンクされたサービスを "StorageLinkedService" と呼ぶことにしましょう。
+2. [リンクされたサービス](data-factory-azure-blob-connector.md)を作成し、データをホストする Azure BLOB ストレージへの接続を構成します。このリンクされたサービスを "StorageLinkedService" と呼ぶことにしましょう。
 3. 入力と出力のデータを指定する[データセット](data-factory-create-datasets.md)を作成します。入力データセットは "HiveSampleIn"、出力データセットは "HiveSampleOut" と呼ぶことにしましょう。
 4. 上記の手順 2. で構成した Azure BLOB Storage にファイルとして Hive クエリをコピーします。データをホストするリンクされたサービスがこのクエリ ファイルをホストするものと異なる場合には、別の Azure Storage のリンクされたサービスを作成し、アクティビティの構成でこのリンクされたサービスを参照します。**scriptPath** を使用して Hive クエリ ファイルへのパスを指定し、**scriptLinkedService** を使用して、このスクリプト ファイルを含む Azure Storage を指定します。
 
@@ -214,4 +214,4 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
 			SUM(Duration)
 		FROM HiveSampleIn Group by ProfileID
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

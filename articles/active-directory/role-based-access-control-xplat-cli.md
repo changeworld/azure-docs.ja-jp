@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/14/2015"
+	ms.date="01/04/2016"
 	ms.author="inhenk"/>
 
 # Azure コマンドライン インターフェイス (Azure CLI) によるロールベースのアクセス制御の管理 #
@@ -114,7 +114,7 @@ Azure AD ディレクトリ内の特定のユーザー (リソース グルー�
     - リソース グループ。リソース グループの一覧を入手するには、`azure group list` と入力します。
     - リソース。リソースの一覧を入手するには、`azure resource list` と入力します。
 
-次に、`azure role assignment create`  を使ってロールの割り当てを作成します。次に例を示します。
+次に、`azure role assignment create` を使ってロールの割り当てを作成します。次に例を示します。
 
  - ユーザーに関する現在のサブスクリプション レベルでの閲覧者の役割の割り当てが作成されます。
 
@@ -151,4 +151,4 @@ Azure CLI を使用したロールベースのアクセス制御の管理の詳�
 - [Windows PowerShell を使用したロールベースのアクセス制御の構成](role-based-access-control-powershell.md)
 - [ロール ベースの Access Control のトラブルシューティング](role-based-access-control-troubleshooting.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

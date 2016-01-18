@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="swkrish"
 	manager="msmbaldwin"
-	editor="curtand"/>
+	editor="bryanla"/>
 
 <tags
 	ms.service="active-directory-b2c"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/28/2015"
+	ms.date="01/06/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: 拡張可能なポリシー フレームワーク
@@ -62,11 +62,13 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ```
 
+ポリシー フレームワークの詳細については、この[ブログ記事](http://blogs.technet.com/b/ad/archive/2015/11/02/a-look-inside-azuread-b2c-with-kim-cameron.aspx)をご覧ください。
+
 ## サインアップのポリシーの作成方法
 
 アプリケーションにサインアップできるようにするには、サインアップ ポリシーを作成する必要があります。このポリシーは、サインアップ中のコンシューマーのエクスペリエンスと、サインアップが成功したときにアプリケーションが受け取るトークンのコンテンツを記述します。
 
-1. [Azure プレビュー ポータルで B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [この手順に従って、Azure ポータルで B2C 機能ブレードに移動します。](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)
 2. **[サインアップ ポリシー]** をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. **[名前]** によって、アプリケーションで使用されるサインアップ ポリシー名が決定されます。たとえば、「SiUp」を入力します。
@@ -86,7 +88,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 アプリケーションにサインインできるようにするには、サインイン ポリシーを作成する必要があります。このポリシーは、サインイン中のコンシューマーのエクスペリエンスと、サインインが成功したときにアプリケーションが受け取るトークンのコンテンツを記述します。
 
-1. [Azure プレビュー ポータルで B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [この手順に従って、Azure ポータルで B2C 機能ブレードに移動します。](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)
 2. **[サインイン ポリシー]** をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. **[名前]** によって、アプリケーションで使用されるサインイン ポリシー名が決定されます。たとえば、「SiIn」を入力します。
@@ -102,7 +104,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 アプリケーションでポリシーを編集できるようにするには、プロファイル編集ポリシーを作成する必要があります。このポリシーは、プロファイル編集中のコンシューマーのエクスペリエンスと、正常に完了したときにアプリケーションが受け取るトークンのコンテンツを記述します。
 
-1. [Azure プレビュー ポータルで B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [この手順に従って、Azure ポータルで B2C 機能ブレードに移動します。](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)
 2. **[プロファイル編集ポリシー]** をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. **[名前]** によって、アプリケーションで使用されるプロファイル編集ポリシー名が決定されます。たとえば、「SiPe」を入力します。
@@ -111,8 +113,8 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 7. **[アプリケーション クレーム]** をクリックします。ここで、プロファイル編集エクスペリエンスの成功後にアプリケーションに戻されるトークンで返されるクレームを選択します。たとえば、"表示名" および "郵便番号" などを選択します。
 8. **[作成]** をクリックします。作成したポリシーが**プロファイルの編集ポリシー** ブレードに "**B2C\_1\_SiPe**" と表示されます (**B2C\_1\_** フラグメントが自動的に先頭に追加されます)。
 9. **[B2C\_1\_SiPe]** をクリックしてポリシーを開きます。
-10. **[アプリケーション]** ボックスの一覧で "Contoso B2C app" を選択し、**[応答 URL/リダイレクト URI]** ボックスの一覧で `https://localhost:44321/` を選択します。**[今すぐ実行]** ボタンをクリックします。新しいブラウザー タブが開き、アプリケーションでプロファイル編集のコンシューマー エクスペリエンスを確認できます。
+10. **[アプリケーション]** ドロップダウンで "Contoso B2C app" を選択し、**[応答 URL/リダイレクト URI]** ドロップダウンで `https://localhost:44321/` を選択します。**[今すぐ実行]** ボタンをクリックします。新しいブラウザー タブが開き、アプリケーションでプロファイル編集のコンシューマー エクスペリエンスを確認できます。
 
     > [AZURE.NOTE]ポリシーの作成と更新が有効になるまで、最大で 1 分間かかります。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/03/2015"
+   ms.date="01/04/2016"
    ms.author="v-darmi"/>
 
 
@@ -264,4 +264,9 @@ API Management の主な機能には、バックエンド リソースの保護�
 ## まとめ
 Azure API Management サービスには、HTTP トラフィックに選択的に適用できる、バックエンド サービスの構成に使用できる、柔軟なポリシーがあります。警告機能、確認、検証機能で API ゲートウェイを拡張したい場合、または複数のバックエンド サービスを使用し新しい複合リソースを作成したい場合のために、`send-request` と関連ポリシーはさまざまな可能性を開きます。
 
-<!---HONumber=AcomDC_1210_2015-->
+## これらのポリシーの概要に関するビデオ
+この記事で説明した [send-one-way-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest)、[send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest)、[return-response](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) の各ポリシーの詳細については、次のビデオをご覧ください。
+
+> [AZURE.VIDEO send-request-and-return-response-policies]
+
+<!---HONumber=AcomDC_0107_2016-->

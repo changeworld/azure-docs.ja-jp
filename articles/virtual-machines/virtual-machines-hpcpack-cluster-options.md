@@ -99,4 +99,4 @@ Microsoft HPC Pack と、Azure のコンピューティングおよびインフ�
 
 <!-- * [Set up a Linux RDMA cluster to run MPI applications](virtual-machines-linux-hpcpack-cluster-rdma.md) -->
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/09/2015" 
+	ms.date="01/05/2016" 
 	ms.author="byvinyal"
 />
 	
@@ -170,7 +170,7 @@
 
 最大範囲は、**ワーカー プール**でホストされているすべての **App Service プラン**のすべての最大範囲の合計になります。
 
-スケールアップ ルールの増加数は、少なくとも 1X スケールアップの **App Service プランの増加率** に設定する必要があります。
+スケールアップ ルールの増加数は、少なくとも 1X スケールアップの **App Service プランの増加率**に設定する必要があります。
 
 減少数は、1/2X スケールダウンの **App Service プラン増加率**と 1X スケールダウンの App Service プラン増加率との間のいずれかの値に調整することができます。
 
@@ -227,4 +227,4 @@
 [Worker-Pool-Scale]: ./media/app-service-environment-auto-scale/wp-scale.png
 [Front-End-Scale]: ./media/app-service-environment-auto-scale/fe-scale.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

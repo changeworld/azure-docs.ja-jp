@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="01/04/2016"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # SQL Data Warehouse での動的 SQL
@@ -31,6 +31,7 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 
 文字列が短い場合は、通常どおり [sp\_executesql][] を使用することができます。
 
+> [AZURE.NOTE]動的 SQL として実行されるステートメントには、すべての TSQL 検証規則が適用されます。
 
 ## 次のステップ
 開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
@@ -45,4 +46,4 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0107_2016-->

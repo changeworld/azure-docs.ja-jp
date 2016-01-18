@@ -69,7 +69,7 @@ Azure CLI を使用すると、次のタスクを実行できます。
 	{
 	"username":"currentusername",
 	"password":"newpassword",
-	"expiration":"2016-01-01",
+	"expiration":"2016-01-01"
 	}
 
 手順 2. "vmname" を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
@@ -82,7 +82,7 @@ Azure CLI を使用すると、次のタスクを実行できます。
 
 	{
 	"username":"currentusername",
-	"ssh_key":"contentofsshkey",
+	"ssh_key":"contentofsshkey"
 	}
 
 手順 2. "vmname" を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
@@ -96,7 +96,7 @@ Azure CLI を使用すると、次のタスクを実行できます。
 	{
 	"username":"currentusername",
 	"ssh_key":"contentofsshkey",
-	"password":"newpassword",
+	"password":"newpassword"
 	}
 
 手順 2. "vmname" を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
@@ -122,7 +122,7 @@ SSH の構成が望ましい状態でない場合は、VM にアクセスでき�
 手順 1. 次の内容を含む PrivateConf.json という名前のファイルを作成します。
 
 	{
-	"reset_ssh":"True",
+	"reset_ssh":"True"
 	}
 
 手順 2. "vmname" を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
@@ -136,7 +136,7 @@ VM にログインせずに直接ユーザー アカウントを削除するに�
 手順 1. プレースホルダーの値を置き換えて、次の内容を含む PrivateConf.json という名前のファイルを作成します。
 
 	{
-	"remove_user":"usernametoremove",
+	"remove_user":"usernametoremove"
 	}
 
 手順 2. "vmname" を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
@@ -266,4 +266,4 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 [Azure VM 拡張機能とその機能]: virtual-machines-extensions-features.md
 [RDP または SSH を使用した Azure 仮想マシンへの接続]: http://msdn.microsoft.com/library/azure/dn535788.aspx
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

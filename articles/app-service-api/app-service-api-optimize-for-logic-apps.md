@@ -1,7 +1,7 @@
 
 <properties
-	pageTitle="Logic Apps 向けの API アプリの拡張"
-	description="この記事では、Logic Apps に API アプリを対応させるための方法について説明します"
+	pageTitle="Logic Apps 向けの API アプリの拡張 | Microsoft Azure"
+	description="Logic Apps に API アプリを対応させるための方法"
 	services="app-service\logic"
 	documentationCenter=".net"
 	authors="sameerch"
@@ -235,4 +235,4 @@ Logic Apps デザイナーでは、あふれる情報に対応するために、
 この記事では、Logic Apps デザイナーで使用したときの API アプリのエンド ユーザー エクスペリエンスを向上させる方法について説明しました。ベスト プラクティスとして、すべての操作 (アクション、トリガー)、パラメーター、プロパティに対して適切なフレンドリ名を付けることをお勧めします。また、基本的な操作については 5 個以下にすることをお勧めします。入力パラメーターについては基本的なプロパティの数を 4 個以下、プロパティについては 5 個以下にすることをお勧めします。残りの操作とプロパティについては、高度な操作とプロパティであることを示すマークを付ける必要があります。
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0107_2016-->

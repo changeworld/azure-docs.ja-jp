@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="12/04/2015"
+ ms.date="01/06/2015"
  ms.author="larryfr"/>
 
 # Power BI (プレビュー) を使用した Apache Storm トポロジのデータの視覚化
@@ -67,7 +67,7 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 ## サンプルの構成
 
-1. Visual Studio でサンプルを開きます。**ソリューション エクスプローラー**で **SCPHost.exe.config** ファイルを開き、**<OAuth .../>** 要素を見つけます。この要素の次のプロパティの値を入力します。
+1. Visual Studio でサンプルを開きます。**ソリューション エクスプローラー**で **App.config** ファイルを開き、**<OAuth .../>** 要素を見つけます。この要素の次のプロパティの値を入力します。
 
     * **Client**: 作成済みのアプリケーション登録のクライアント ID。
 
@@ -83,7 +83,7 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 1. **ソリューション エクスプローラー**で **WordCount** プロジェクトを右クリックし、[**HDInsight の Storm に送信 (Submit to Storm on HDInsight)**] を選択します。[**Storm クラスター**] ドロップダウン ダイアログから HDInsight クラスターを選択します。
 
-    > [AZURE.NOTE] [**Storm クラスター**] ドロップダウンにサーバー名が設定されるには数秒かかることがあります。
+    > [AZURE.NOTE][**Storm クラスター**] ドロップダウンにサーバー名が設定されるには数秒かかることがあります。
     >
     > メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスターの Storm があるサブスクリプションにログインします。
 
@@ -139,4 +139,4 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_1210_2015--->
+<!---HONumber=AcomDC_0107_2016-->

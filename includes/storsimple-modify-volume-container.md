@@ -8,7 +8,7 @@
 
 3. **[ボリューム コンテナーの変更]** ダイアログ ボックスで、次の操作を行います。
 
-    1. ボリューム コンテナーの名前と、関連付けられている帯域幅を変更し、クラウドにあるデータを暗号化する必要があるかどうかを指定します。
+    1. ボリューム コンテナーの名前を変更し、関連付けられている帯域幅の設定を変更します。 
 
         ![Modify Volume Container with Bandwidth Template 1](./media/storsimple-modify-volume-container/HCS_ModifyVCBT1-include.png)
 
@@ -26,4 +26,4 @@
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

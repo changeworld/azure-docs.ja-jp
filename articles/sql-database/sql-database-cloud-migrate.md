@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="12/17/2015"
+   ms.date="01/05/2016"
    ms.author="carlrab"/>
 
 # SQL Server データベースの Azure SQL Database への移行
@@ -55,7 +55,7 @@ SQL Database の互換性の問題があるかどうかを確認するには、�
 
 最小限のダウンタイムで移行するには、[SQL Server のトランザクション レプリケーションを使用します](sql-database-cloud-migrate-compatible-using-transactional-replication.md)。この場合、お使いのデータベースがトランザクション レプリケーションの要件を満たしている必要があります。ある程度のダウンタイムが許容される場合、または将来の移行に備えて運用データベースの移行をテストする場合には、次の 3 つの方法のいずれかを検討してください。
 
-- [SSMS 移行ウィザード](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md): 小規模から中規模のデータベースの場合、互換性のある SQL Server 2005 またはそれ以降のデータベースの移行は、SQL Server Management Studio の、[データベースの Microsoft Azure Database へのデプロイ ウィザード](sql-database-cloud-migrate-compatible-using-migration-wizard.md)を実行するのと同じくらい簡単です。 
+- [SSMS 移行ウィザード](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md): 小規模から中規模のデータベースの場合、互換性のある SQL Server 2005 またはそれ以降のデータベースの移行は、SQL Server Management Studio の、[データベースの Microsoft Azure Database へのデプロイ ウィザード](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)を実行するのと同じくらい簡単です。 
 - [BACPAC ファイルへのエクスポート](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)と [BACPAC ファイルからのインポート](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md): 接続に問題があり (接続がない、帯域幅が狭い、またはタイムアウトの問題が存在する)、データベースが中規模から大規模の場合には、[BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) ファイルを使用します。この方法では、スキーマとデータを BACPAC ファイルにエクスポートしたうえで、その BACPAC ファイルを SQL Database にインポートします。エクスポートとインポートには、SQL Server Management Studio のデータ層アプリケーションのエクスポート ウィザードか、[SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) コマンド プロンプト ユーティリティを使用します。
 - BACPAC と BCP の併用: より大規模なデータベースの場合、複雑にはなりますが、[BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) ファイルと [BCP](https://msdn.microsoft.com/library/ms162802.aspx) を使用することで、より高度な並列処理を実現し、パフォーマンスを向上させることができます。この方法では、スキーマとデータを別々に移行します。 
  - [スキーマのみを BACPAC ファイルにエクスポートします](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)。
@@ -64,4 +64,4 @@ SQL Database の互換性の問題があるかどうかを確認するには、�
 
 	 ![SSMS の移行ダイアグラム](./media/sql-database-cloud-migrate/01SSMSDiagram_new.png)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

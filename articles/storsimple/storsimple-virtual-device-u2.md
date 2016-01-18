@@ -32,7 +32,7 @@ StorSimple 仮想デバイスは、Microsoft Azure StorSimple ソリューショ
 StorSimple 仮想デバイスは、2 つのモデルで利用可能です。1 つは Standard 8010 で、もう 1 つは Premium 8020 です (Update 2 で導入)。2 つのモデルの比較を、次の表に示します。
 
 
-| デバイスのモデル | 8010<sup>1, 2</sup> | 8020<sup>3</sup> |
+| デバイスのモデル | 8010<sup>1</sup> | 8020 |
 |-----------------------|---------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | **最大容量** | 30 TB | 64 TB |
 | **Azure VM** | Standard\_A3 (4 コア、7 GB メモリ) | Standard\_DS3 (4 コア、14 GB メモリ) |
@@ -41,7 +41,7 @@ StorSimple 仮想デバイスは、2 つのモデルで利用可能です。1 �
 | **ストレージの種類** | Azure Standard Storage を使用する<br></br>[Standard Storage アカウントを作成する]()方法を確認してください | Azure Premium Storage を使用する<br></br>[Premium Storage アカウントを作成する](storage-premium-storage-preview-portal.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)方法を確認してください |
 | **ワークロードのガイダンス** | バックアップからファイルを項目レベルで取得 | クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード <br></br>障害復旧のためのセカンダリ デバイス |
  
-<sup>1</sup> *旧名称は 1100*、<sup>2</sup> *A は Azure フォーム ファクターの略*、<sup>3</sup> *AP は Azure Premium フォーム ファクターの略。*
+<sup>1</sup> *以前は 1100 と呼ばれていました*。
 
 
 この記事では、Azure で StorSimple 仮想デバイスをデプロイするための段階的なプロセスについて説明します。この記事を読むと、次のことができます。
@@ -259,4 +259,4 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
  
 - [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法について理解します。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

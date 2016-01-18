@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="01/06/2015"
 	ms.author="jeedes"/>
 
 
@@ -117,13 +117,13 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
     b.ダウンロードした Azure メタデータ ファイルをアップロードするには、**[参照]** をクリックし、目的のファイルに移動し、**[メタデータのアップロード]** をクリックします。
 
-    d.**[Email]** テキスト ボックスに「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
+    c.**[Email]** テキスト ボックスに「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
 
-    e.**[名]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
+    d.**[名]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
 
-    f.**[姓]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
+    e.**[姓]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
 
-    g.**[ 操作バー ]** で、**[保存]** をクリックします。
+    f.**[ 操作バー ]** で、**[保存]** をクリックします。
 
 
 
@@ -133,7 +133,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD Connect の概要][10]<br>
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD Connect の概要][11]
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![What is Azure AD Connect][11]
 
 
 
@@ -255,4 +255,4 @@ QuickHelp では、ジャストインタイム プロビジョニングがサポ
 [401]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_401.png
 [402]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_402.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

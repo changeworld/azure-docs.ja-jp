@@ -12,12 +12,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="11/09/2015"
+    ms.date="01/06/2016"
     ms.author="torsteng;sidneyh" />
 
 # データベース間クエリのためのエラスティック データベース クエリ (列方向のパーティション分割)
 
 このドキュメントでは、データベース間クエリ シナリオ用にエラスティック クエリ (列方向のパーティション分割) を設定する方法とクエリを実行する方法について説明します。列方向のパーティション分割シナリオの定義については、「[Azure SQL Database エラスティック データベース クエリの概要 (プレビュー)](sql-database-elastic-query-overview.md)」を参照してください。
+
+![異なるデータベースのテーブルにまたがるクエリ][1]
 
 ## データベース オブジェクトの作成
 
@@ -182,6 +184,9 @@ SCHEMA\_NAME 句と OBJECT\_NAME 句は、外部テーブル定義をリモー�
 
 
 <!--Image references-->
+[1]: ./media/sql-database-elastic-query-vertical-partitioning/verticalpartitioning.png
+
+
 <!--anchors-->
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

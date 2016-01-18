@@ -1,11 +1,13 @@
-When adding a VNet-to-VNet connection, verify that both of your virtual networks have a virtual network gateway and that your virtual networks do not have any overlapping address ranges.
+VNet 間接続を追加する場合は、双方の仮想ネットワークに仮想ネットワーク ゲートウェイがあること、さらに双方の仮想ネットワークのアドレス範囲が重複していないことを確認します。
 
-1. From the **Virtual networks** blade, locate your virtual network and click to open the blade. On the blade, you will see your gateway listed as a *Connected device*. You can also configure settings directly from your virtual network gateway without first expanding the VNet.
-2. From the virtual network gateway settings, click **Connections**, and then **Add**.
-3. **Name** your Connection. 
-4. For **Connection type**, select **VNet-to-VNet**
-5. For **Virtual network gateway**, the value is fixed because you are connecting from this gateway.
-6. For **Second virtual network gateway**, select the gateway you want to create a connection to from this gateway.
-8. The remaining values for **Subscription**, **Resource Group**, and **Location** are fixed.
-9. Click **OK** to create your connection. You'll see *Creating Connection* flash on the screen.
-10. When the connection is complete, you'll see it appear in the **Connections** blade for your Gateway.
+1. **[仮想ネットワーク]** ブレードから、仮想ネットワークを特定し、クリックして、ブレードを開きます。ブレードには、ゲートウェイが*接続されたデバイス*として表示されます。また、最初に VNet を展開しなくても、仮想ネットワーク ゲートウェイから設定を直接構成することができます。
+2. 仮想ネットワーク ゲートウェイ設定から、**[接続]** をクリックし、**[追加]** をクリックします。
+3. 接続に**名前**を付けます。 
+4. **[接続の種類]** では、**[VNet 間]** を選択します。
+5. **[仮想ネットワーク ゲートウェイ]** の値は固定です。このゲートウェイから接続しているためです。
+6. **[2 番目の仮想ネットワーク ゲートウェイ]** では、このゲートウェイとの接続を作成するゲートウェイを選択します。
+8. **[サブスクリプション]**、**[リソース グループ]**、および **[場所]** の残りの値は固定されています。
+9. **[OK]** をクリックして、接続を作成します。画面に *[接続を作成しています]* というメッセージが点滅表示されます。
+10. 接続が完了すると、接続がゲートウェイの **[接続]** ブレードに表示されます。
+
+<!---HONumber=AcomDC_0107_2016-->

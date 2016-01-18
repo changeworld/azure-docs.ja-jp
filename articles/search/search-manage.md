@@ -21,7 +21,7 @@
 
 Azure Search は、カスタムの検索アプリケーションで使用できる HTTP ベースの API を備えたクラウドベースのサービスです。この検索サービスでは、全文検索テキスト分析のためのエンジン、高度な検索機能、検索データ ストレージ、クエリ コマンド構文が用意されています。
 
-この記事では、[Azure クラシック ポータル](https://portal.azure.com)で検索サービスを管理する方法について説明します。
+この記事では、[Azure ポータル](https://portal.azure.com)で検索サービスを管理する方法について説明します。
 
 または、管理 REST API を使用することができます。詳細については、「[Azure Search 管理 REST API の使用](search-get-started-management-api.md)」と「[Azure Search 管理 REST API](http://msdn.microsoft.com/library/azure/dn832684.aspx)」をご覧ください。
 
@@ -193,4 +193,4 @@ Azure Search の観点から、ロールベースのアクセス制御は次の�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

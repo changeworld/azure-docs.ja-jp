@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/15/2015" 
+	ms.date="12/24/2015" 
 	ms.author="naziml"/>
 
 # App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する
@@ -66,7 +66,7 @@ Barracuda WAF は、管理ポータルによる構成で TCP ポート 8000 を�
 > 注: App Service 環境内でアプリケーションがどのように構成され、どのような機能が使用されているかに応じて、トラフィックを 80 と 443 以外の TCP ポートに転送する必要があります (例: Web アプリの IP SSL を設定している場合)。App Service 環境で使用されるネットワーク ポートの一覧については、[着信トラフィックの制御に関するドキュメント](app-service-app-service-environment-control-inbound-traffic.md)のネットワーク ポートのセクションを参照してください。
 
 ## Microsoft Azure Traffic Manager の構成 (省略可能) ##
-アプリケーションが複数のリージョンで使用できる場合は、[Azure Traffic Manager](traffic-manager.md) の背後でそれらの負荷を分散できます。これを行うには、次の図に示すように、[Microsoft Azure クラシック ポータル](https://manage.azure.com)で、WAF のクラウド サービス名を使用して、Traffic Manager プロファイルにエンドポイントを追加できます。
+アプリケーションが複数のリージョンで使用できる場合は、[Azure Traffic Manager](traffic-manager.md) の背後でそれらの負荷を分散できます。これを行うには、次の図に示すように、[Azure クラシック ポータル](https://manage.azure.com)で、WAF のクラウド サービス名を使用して、Traffic Manager プロファイルにエンドポイントを追加します。
 
 ![Traffic Manager のエンドポイント][TrafficManagerEndpoint]
 
@@ -99,4 +99,4 @@ SourceAddressPrefix を、WAF のクラウド サービスの仮想 IP アドレ
 [ConfigureTrafficManager]: ./media/app-service-app-service-environment-web-application-firewall/ConfigureTrafficManager.png
 [WebsiteTranslations]: ./media/app-service-app-service-environment-web-application-firewall/WebsiteTranslations.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

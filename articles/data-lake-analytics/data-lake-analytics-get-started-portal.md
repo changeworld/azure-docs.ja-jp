@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/22/2015"
+   ms.date="01/04/2016"
    ms.author="jgao"/>
 
 # チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する
@@ -33,7 +33,7 @@ Azure ポータルを使用して Azure Data Lake Analytics アカウントを�
 3. U-SQL スクリプトを開発します。
 4. ジョブ (U-SQL スクリプト) を Data Lake Analytics アカウントに送信します。ジョブはソース データから読み取り、U-SQL スクリプトで指示されたとおりにデータを処理して、Data Lake Store アカウントまたは BLOB ストレージ アカウントに出力を保存します。
 
-**前提条件**
+###前提条件
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
@@ -53,10 +53,10 @@ Azure ポータルを使用して Azure Data Lake Analytics アカウントを�
 
     ![Azure Data Lake Analytics ポータルのブレード](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-create-adla.png)
 
-	- **[名前]**: Analytics アカウントに名前を付けます。
-	- **[Data Lake Store]**: 各 Data Lake Analytics アカウントには、従属する Azure Data Lake Store アカウントがあります。Data Lake Analytics アカウントと従属する Data Lake Store アカウントは、同じ Azure データ センターに配置する必要があります。以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。
-	- **[サブスクリプション]**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
-	- **[リソース グループ]**: 既存の Azure リソース グループを選択するか、新しいグループを作成します。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内のリソースを 1 つのグループと見なして作業できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。 
+	- **名前**: Analytics アカウントに名前を付けます。
+	- **Data Lake Store**: 各 Data Lake Analytics アカウントには、従属する Data Lake Store アカウントがあります。Data Lake Analytics アカウントと従属する Data Lake Store アカウントは、同じ Azure データ センターに配置する必要があります。以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。
+	- **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
+	- **リソース グループ**。既存の Azure リソース グループを選択するか、新しいグループを作成します。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内のリソースを 1 つのグループと見なして作業できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。 
 	- **[場所]**: Data Lake Analytics アカウントの Azure データ センターを選択します。 
 7. **[スタート画面にピン留めする]** を選択します。このチュートリアルに従う場合はこれが必要です。
 8. **[作成]** をクリックします。ポータルのスタート画面が表示されます。新しいタイルがスタート画面に追加され、"Azure Data Lake Analytics のデプロイ" を示すラベルが付けられます。Data Lake Analytics アカウントの作成にはしばらく時間がかかります。アカウントが作成されると、ポータルの新しいブレードにアカウントが開きます。
@@ -157,9 +157,9 @@ Azure ポータルには、検索ログ ファイルを含むサンプル デー
 
 - より複雑なクエリを表示する場合は、「[チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
 - U-SQL アプリケーションの開発を開始する場合は、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」をご覧ください。
-- U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」をご覧ください。
+- U-SQL の詳細については、「[Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
 - 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」をご覧ください。
 - 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/02/2015"  
+	ms.date="12/21/2015"  
 	ms.author="juliako"/>
 
 
@@ -26,6 +26,8 @@
 中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後[動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する 必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
 
 出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。詳細については、「[資産配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)」をご覧ください。
+
+>[AZURE.NOTE]MES は、入力ファイル名の最初の 32 文字を含む名前で出力ファイルを生成します。この名前は、プリセット ファイルに指定されているものに基づきます。たとえば、"FileName": "{Basename}\_{Index}{Extension}" の場合、{Basename} が入力ファイル名の最初の 32 文字で置換されます。
 
 ###MES の形式
 
@@ -145,4 +147,4 @@ Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618
 
 [Media Encoder Standard と .NET を使用してサムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md) [Media Services でのエンコーディングの概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

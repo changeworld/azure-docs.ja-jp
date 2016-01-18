@@ -74,7 +74,7 @@ Azure ポータルで一貫性レベルを変更する手順については、�
 ## 次のステップ
 Azure ポータルでパフォーマンス レベルを監視する手順については、「[DocumentDB アカウントを監視する](documentdb-monitor-accounts.md)」を参照してください。
 
-コレクションのパフォーマンス レベルの選択の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels)」を参照してください。
+コレクションのパフォーマンス レベルの選択の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

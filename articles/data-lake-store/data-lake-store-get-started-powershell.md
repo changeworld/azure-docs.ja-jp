@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="12/04/2015"
+   ms.date="01/04/2016"
    ms.author="nitinme"/>
 
 # Azure PowerShell で Azure Data Lake Analytics の使用を開始する
@@ -37,34 +37,7 @@ Azure PowerShell を使用して、Azure Data Lake Store アカウントを作�
 
 ##Azure PowerShell 1.0 以上をインストールする
 
-最初に、バージョン 0.9x の Azure PowerShell をアンインストールする必要があります。インストールされている PowerShell のバージョンを確認するには、PowerShell ウィンドウから次のコマンドを実行します。
-
-	Get-Module *azure*
-	
-以前のバージョンをアンインストールするには、コントロール パネルで **[プログラムと機能]** を実行し、バージョンが PowerShell 1.0 より前の場合はインストールされているバージョンを削除します。
-
-Azure PowerShell をインストールするための主な 2 つのオプションは次のとおりです。
-
-- [PowerShell ギャラリー](https://www.powershellgallery.com/)管理者特権の PowerShell ISE または管理者特権の Windows PowerShell コンソールから、次のコマンドを実行します。
-
-		# Install the Azure Resource Manager modules from PowerShell Gallery
-		Install-Module AzureRM
-		Install-AzureRM
-		
-		# Install the Azure Service Management module from PowerShell Gallery
-		Install-Module Azure
-		
-		# Import AzureRM modules for the given version manifest in the AzureRM module
-		Import-AzureRM
-		
-		# Import Azure Service Management module
-		Import-Module Azure
-
-	詳細については、「[PowerShell ギャラリー](https://www.powershellgallery.com/)」を参照してください。
-
-- [Microsoft Web プラットフォーム インストーラー (WebPI)](http://aka.ms/webpi-azps)Azure PowerShell 0.9.x をインストールしている場合は、0.9.x のアンインストールを要求するメッセージが表示されますAzure PowerShell モジュールを PowerShell ギャラリーからインストールした場合、一貫した Azure PowerShell 環境を保つため、インストーラーにより、インストール前にモジュールを削除することが求められます。手順については、[WebPI を介した Azure PowerShell 1.0 のインストール](https://azure.microsoft.com/blog/azps-1-0/)に関するページを参照してください。
-
-WebPI は月次の更新プログラムを受け取ります。PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。PowerShell ギャラリーからのインストールを選んだ場合は、これが Azure PowerShell で最新および最良の点について情報を取得できる最初のチャネルになります。
+「[Azure リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager.md#prerequisites)」の「前提条件」セクションを参照してください。
 
 ## Azure Data Lake Store アカウントを作成する
 
@@ -128,7 +101,7 @@ Azure Data Lake Store アカウントにディレクトリを作成し、デー�
 
 データは、ルート レベルで直接 Data Lake Store に、またはアカウント内で作成したディレクトリにアップロードすることができます。以下のスニペットは、前のセクションで作成したディレクトリ (**mynewdirectory**) にいくつかのサンプル データをアップロードする方法を示します。
 
-アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/AzureDataLake/tree/master/SQLIPSamples/SampleData/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。ファイルをダウンロードし、C:\\sampledata など、コンピューター上のローカル ディレクトリに格納します。
+アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。ファイルをダウンロードし、C:\\sampledata など、コンピューター上のローカル ディレクトリに格納します。
 
 	Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path "C:\sampledata\vehicle1_09142014.csv" -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
 
@@ -173,4 +146,4 @@ Data Lake Store アカウントを削除するには、以下のコマンドを�
 - [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

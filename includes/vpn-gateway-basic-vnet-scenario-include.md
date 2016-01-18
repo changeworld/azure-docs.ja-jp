@@ -1,6 +1,8 @@
-In this scenario, you'll create a VNet named **TestVNet** with a reserved CIDR block of **192.168.0.0./16**. Your VNet will contain the following subnets:
+このシナリオでは、予約済み CIDR ブロック **192.168.0.0./16** を含む **TestVNet** という名前の VNet を作成します。この VNet には、次のサブネットが含まれます。
 
-- **FrontEnd**, using **192.168.1.0/24** as its CIDR block.
-- **BackEnd**, using **192.168.2.0/24** as its CIDR block.
+- CIDR ブロックとして **192.168.1.0/24** を使用する **FrontEnd**。
+- CIDR ブロックとして **192.168.2.0/24** を使用する **BackEnd**。
 
-![VNet scenario](./media/vpn-gateway-basic-vnet-scenario-include/vnet-scenario.png)
+![VNet のシナリオ](./media/vpn-gateway-basic-vnet-scenario-include/vnet-scenario.png)
+
+<!---HONumber=AcomDC_0107_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="12/01/2015"
+   ms.date="01/05/2016"
    ms.author="curtand"/>
 
 # 複数の Azure Active Directory ディレクトリの追加と管理
@@ -40,4 +40,4 @@ Azure クラシック ポータルで Azure AD ディレクトリを追加する
 
 Azure AD のライセンスに関する問題とベスト プラクティスの概要については、[Azure Active Directory ライセンス](active-directory-licensing-what-is.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

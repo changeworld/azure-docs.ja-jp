@@ -1,11 +1,13 @@
-To create a local network gateway, follow the steps below:
+ローカル ネットワーク ゲートウェイを作成するには、次の手順を実行します。
 
-1. Use **Browse** and fildter to locate the **Local network gateways** blade, then click **Add**.
-2. On the **Create local network gateways blade**, **Name** your local network gateway object. For this example, we'll name the local network gateway *GW1LocalNet*.
-3. Configure an **IP address** for your gateway. This is the IP address of the external VPN device that you want to connect to. It cannot be behind NAT and has to be reachable by Azure. This is the device IP address that your Azure gateway will connect to.
-4. **Address Space** refers to the address ranges on your local (typically on-premises) network. You can add multiple address space ranges. The ranges that you enter here cannot overlap any of the address space ranges that you are using for any of the virtual networks that will communicate through the gateway.  You will need to coordinate with your on-premises configuration as well as with your Azure virtual network address spaces. 
-5. For **Subscription**, verify that the correct subscription is showing.
-6. For **Resource Group**, select the resource group that you want to use. You can either create a new resource group, or select one that you have already created. To create a new resource group, type the name in the box. To select a resource group that you've already created, click **Resource Group** to open the **Resource group** blade, and then select the resource group that you want to use.
-7. For **Location**, verify that the location is the same as the virtual network gateway that you will associate this with.
-8. Leave "Pin to dashboard" selected if you want to find this local network gateway easily from the dashboard.
-9. Click **Create** to create the local network gateway. You'll see "Deploying Local network gateway" on your dashboard. This shouldn't take very long to create.
+1. **[参照]** を使用し、フィルターを適用して、**[ローカル ネットワーク ゲートウェイ]** ブレードを特定し、**[追加]** をクリックします。
+2. **[ローカル ネットワーク ゲートウェイの作成]** ブレードで、ローカル ネットワーク ゲートウェイのオブジェクトに**名前を付けます**。この例では、ローカル ネットワーク ゲートウェイに「*GW1LocalNet*」という名前を付けます。
+3. ゲートウェイの **IP アドレス**を構成します。これは接続する外部 VPN デバイスの IP アドレスです。これは NAT の内側とすることができず、Azure から到達可能でなければなりません。これは、Azure ゲートウェイが接続するデバイス IP アドレスです。
+4. **アドレス空間**とは、ローカル (通常はオンプレミスの) ネットワーク上のアドレス範囲を示します。複数のアドレス領域の範囲を追加することができます。ここに入力する範囲は、ゲートウェイ経由で通信する仮想ネットワークのいずれかで使用している、アドレス空間の範囲と重ねることはできません。オンプレミスの構成および Azure 仮想ネットワーク アドレス空間と合わせる必要があります。 
+5. **[サブスクリプション]** では、正しいサブスクリプションが表示されていることを確認します。
+6. **[リソース グループ]** では、使用するリソース グループを選択します。新しいリソース グループを作成することも、作成済みのリソース グループを選択することもできます。新しいリソース グループを作成するには、ボックスに名前を入力します。作成済みのリソース グループを選択するには、**[リソース グループ]** をクリックして **[リソース グループ]** ブレードを開くか、使用するリソース グループを選択します。
+7. **[場所]** では、場所が、それを関連付ける仮想ネットワーク ゲートウェイと同じであることを確認します。
+8. このローカル ネットワーク ゲートウェイをダッシュボードから簡単に検索できるようにする場合は、[ダッシュ ボードにピン留め] を選択されたままにします。
+9. [**作成**] をクリックして、ローカル ネットワーク ゲートウェイを作成します。ダッシュ ボードには、「ローカル ネットワーク ゲートウェイをデプロイしています」というメッセージが表示されます。作成にはそれほど時間はかかりません。
+
+<!---HONumber=AcomDC_0107_2016-->

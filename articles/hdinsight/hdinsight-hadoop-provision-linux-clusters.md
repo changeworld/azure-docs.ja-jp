@@ -18,7 +18,7 @@
    	ms.author="nitinme"/>
 
 
-#HDInsight での Linux ベース クラスターの作成
+#HDInsight での Linux ベースの Hadoop クラスターの作成
 
 [AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
@@ -69,9 +69,9 @@ HDInsight 用 Spark クラスターには、ヘッド ノード (2 ノード) - 
 
 ###HDInsight 用 Azure Storage
 
-各クラスターの種類には、クラスターに関連付けられている 1 つ以上の Azure Storage アカウントもあります。HDInsight は、クラスターのデータ ストアとして、これらのストレージ アカウントの Azure BLOB を使用します。データをクラスターから分離しておくことで、使用されていないクラスターを削除した場合でもデータを引き続き保持できます。したがって、さらに分析が必要な場合に、新しいクラスターでも同じストレージ アカウントを使用できます。詳細については、「[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)」を参照してください。
+各クラスターの種類には、クラスターに関連付けられている 1 つ以上の Azure Storage アカウントもあります。HDInsight は、クラスターのデータ ストアとして、これらのストレージ アカウントの Azure BLOB を使用します。データをクラスターから分離しておくことで、使用されていないクラスターを削除した場合でもデータを引き続き保持できます。したがって、さらに分析が必要な場合に、新しいクラスターでも同じストレージ アカウントを使用できます。詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)に関するページを参照してください。
 
-## <a id="configuration"></a>基本的な構成オプション
+## <a id="configuration">基本的な構成オプション</a>
 
 次のセクションでは、HDInsight クラスターの作成時に使用できる必要な構成オプションについて説明します。
 
@@ -282,4 +282,4 @@ Virtual Network の機能、利点の詳細については、「[Azure Virtual N
 
   [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!----HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

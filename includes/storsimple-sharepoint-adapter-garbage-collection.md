@@ -14,13 +14,13 @@
 
 1. Web フロントエンド サーバーで、SharePoint 2013 管理シェルを管理者として開きます。
 
-2. <boot drive>:\\Program Files\\Microsoft SQL Remote Blob Storage 10.50\\Maintainer フォルダーに移動します。
+2. *ブート ドライブ*:\\Program Files\\Microsoft SQL Remote Blob Storage 10.50\\Maintainer フォルダーに移動します。
 
 3. **Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config** の名前を **web.config** に変更します。
 
 4. `aspnet_regiis -pdf connectionStrings` を使用して、web.config ファイルの暗号化を解除します。
 
-5. 暗号化が解除された web.config ファイルで、**<connectionStrings>** ノードの下に、SQL Server インスタンスの接続文字列とコンテンツ データベース名を追加します。次の例を参照してください。
+5. 暗号化が解除された web.config ファイルで、`connectionStrings` ノードの下に、SQL Server インスタンスの接続文字列とコンテンツ データベース名を追加します。次の例を参照してください。
 
     `<add name=”RBSMaintainerConnectionWSSContent” connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=";Remote Blob Storage Maintainer for WSS_Content";" providerName="System.Data.SqlClient" />`
 
@@ -64,4 +64,4 @@
 
 2. Web フロントエンド サーバーの **[サーバーの全体管理]** で、目的のコンテンツ データベースの **[Web アプリケーションの全般設定]** を編集して、ごみ箱を再び有効にします。そのためには、**[サーバーの全体管理]**、**[アプリケーション管理]**、**[Web アプリケーション (Web アプリケーションの管理)]**、**[SharePoint - 80]**、**[アプリケーションの全般設定]** の順にクリックします。[ごみ箱の状態] を **[オン]** に設定します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

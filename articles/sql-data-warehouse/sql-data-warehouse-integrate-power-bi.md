@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/06/2015"
+   ms.date="01/04/2016"
    ms.author="lodipalm"/>
 
 # SQL Data Warehouse での Power BI の使用
@@ -63,4 +63,4 @@ Azure クラシック ポータルでは、サーバーの完全修飾名とデ�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

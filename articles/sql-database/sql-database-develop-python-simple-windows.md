@@ -21,13 +21,7 @@
 # Windows 上で Python を使用して SQL Database に接続する
 
 
-> [AZURE.SELECTOR]
-- [C#](sql-database-develop-dotnet-simple.md)
-- [PHP](sql-database-develop-php-simple-windows.md)
-- [Python](sql-database-develop-python-simple-windows.md)
-- [Ruby](sql-database-develop-ruby-simple-windows.md)
-- [Java](sql-database-develop-java-simple-windows.md)
-- [Node.js](sql-database-develop-nodejs-simple-windows.md)
+[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
 このトピックでは Python で記述されたコード サンプルについて説明します。サンプルは、Windows コンピューター上で実行されます。サンプルは、**pymssql** ドライバーを使用して、Azure SQL Database に接続されます。
@@ -49,7 +43,7 @@
 たとえば、64 ビット コンピューター上で Python 2.7 を使用している場合は、pymssql‑2.1.1‑cp27‑none‑win\_amd64.whl を選択します。.whl ファイルをダウンロードしたら、C:/Python27 フォルダーに配置します。
 
 これでコマンドライン .cd から pip を使用して、pymssql ドライバーを C:/Python27 にインストールし、次を実行します
-	
+
 	pip install pymssql‑2.1.1‑cp27‑none‑win_amd64.whl
 
 pip の使用を有効にする手順については、[ここ](http://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows)をご覧ください
@@ -109,11 +103,11 @@ pip の使用を有効にする手順については、[ここ](http://stackover
 このコード例は、以下のトランザクションの使用について示します。
 
 
--トランザクションの開始
+- トランザクションの開始
 
--データの挿入
+- データの挿入
 
--トランザクションをロールバックして、挿入を元に戻す
+- トランザクションをロールバックして、挿入を元に戻す
 
 
 	import pymssql
@@ -127,4 +121,4 @@ pip の使用を有効にする手順については、[ここ](http://stackover
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

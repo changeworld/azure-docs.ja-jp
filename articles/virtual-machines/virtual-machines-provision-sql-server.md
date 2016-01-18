@@ -1,28 +1,28 @@
-<properties 
-	pageTitle="SQL Server 仮想マシンのプロビジョニング | Microsoft Azure" 
-	description="このチュートリアルでは、Azure で SQL Server VM を作成および構成する方法を説明します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="rothja" 
-	manager="jeffreyg" 
+<properties
+	pageTitle="SQL Server 仮想マシンのプロビジョニング | Microsoft Azure"
+	description="このチュートリアルでは、Azure で SQL Server VM を作成および構成する方法を説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="rothja"
+	manager="jeffreyg"
 	editor="monicar"
-	tags="azure-service-management"
-	/>
+	tags="azure-service-management"	/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-windows-sql-server" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/26/2015" 
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="12/22/2015"
 	ms.author="jroth"/>
 
 # Azure での SQL Server 仮想マシンのプロビジョニング
 
 > [AZURE.SELECTOR]
-- [Azure classic portal](virtual-machines-provision-sql-server.md)
+- [Classic portal](virtual-machines-provision-sql-server.md)
 - [PowerShell](virtual-machines-sql-server-create-vm-with-powershell.md)
+- [Azure Resource Manager portal](virtual-machines-sql-server-provision-resource-manager.md)
 
 ## 概要
 
@@ -60,9 +60,9 @@ Azure でサポートされる SQL Server イメージの最新情報につい�
 	- **バージョンのリリース日**。複数のイメージが利用できる場合は、最新のイメージを選択します。
 	- 一意の**仮想マシン名**。
 	- **[新しいユーザー名]** ボックスに、コンピューターのローカル管理者アカウントの一意のユーザー名を入力します。
-	- **[新しいパスワード]** ボックスに、強力なパスワードを入力します。 
+	- **[新しいパスワード]** ボックスに、強力なパスワードを入力します。
 	- **[パスワードの確認]** ボックスに、パスワードを再度入力します。
-	- **[サイズ]** ドロップダウン リストで、適切なサイズを選択します。 
+	- **[サイズ]** ドロップダウン リストで、適切なサイズを選択します。
 
 	![VM 構成](./media/virtual-machines-provision-sql-server/4VM-Config.png)
 
@@ -75,13 +75,13 @@ Azure でサポートされる SQL Server イメージの最新情報につい�
 
 5. 2 回目の **[仮想マシンの構成]** ページで、ネットワーク、ストレージ、可用性に関するリソースを構成します。
 	- **[クラウド サービス]** ボックスで、**[新しいクラウド サービスの作成]** を選択します。
-	- **[クラウド サービス DNS 名]** ボックスに、目的の DNS 名の最初の部分を入力すると、**TESTNAME.cloudapp.net** という形式の完全な名前を指定できます。 
+	- **[クラウド サービス DNS 名]** ボックスに、目的の DNS 名の最初の部分を入力すると、**TESTNAME.cloudapp.net** という形式の完全な名前を指定できます。
 	- 複数のサブスクリプションがある場合は、**[サブスクリプション]** を選択します。この選択で、利用できる**ストレージ アカウントが決まります。
-	- **[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、この仮想イメージをホストするリージョンを選択します。
-	- **[ストレージ アカウント]** で、自動的にアカウントを生成するか、一覧から 1 つ選択します。**[サブスクリプション]** を変更して複数のアカウントを表示します。 
+- **[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、この仮想イメージをホストするリージョンを選択します。
+	- **[ストレージ アカウント]** で、自動的にアカウントを生成するか、一覧から 1 つ選択します。**[サブスクリプション]** を変更して複数のアカウントを表示します。
 	- **[可用性セット]** ボックスの一覧の **[(なし)]** を選択します。
 	- 法律条項を読み、同意します。
-	
+
 
 6. 矢印をクリックして次へ進みます。
 
@@ -95,7 +95,7 @@ Azure でサポートされる SQL Server イメージの最新情報につい�
 	- **開始中 (プロビジョニング)**
 	- **実行中 (プロビジョニング)**
 	- **実行中**
-	
+
 
 ##<a id="RemoteDesktop">リモート デスクトップを使用して VM を開き、設定を完了します。</a>
 
@@ -107,7 +107,7 @@ Azure でサポートされる SQL Server イメージの最新情報につい�
 
 3. **[Windows セキュリティ]** ダイアログ ボックスで、**[別のアカウントを使用]** をクリックします。
 
-	![[別のアカウントを使用] をクリックする](./media/virtual-machines-provision-sql-server/credentials.png)
+	![Click Use another account](./media/virtual-machines-provision-sql-server/credentials.png)
 
 4. `machinename\username` の形式で、ドメイン名に管理者名が付くマシンの名前を使用します。パスワードを入力し、マシンに接続します。
 
@@ -117,7 +117,27 @@ Windows リモート デスクトップで仮想マシンに接続したら、�
 
 ##<a id="SSMS">別のコンピューターで SSMS から SQL Server VM インスタンスに接続します。</a>
 
+次の手順で、SQL Server Management Studio (SSMS) を使用してインターネット経由で SQL Server インスタンスに接続する方法を説明します。ただし、同じ手順が、アプリケーションのアクセスが可能な SQL Server 仮想マシンを作成し、オンプレミスと Azure クラシック デプロイ モデルの両方で実行する際に適用されます。仮想マシンがリソース マネージャー モデルでデプロイされている場合は、「[Azure での SQL Server 仮想マシンへの接続 (リソース マネージャー)](virtual-machines-sql-server-connectivity-resource-manager.md)」をご覧ください。
+
+別の VM またはインターネットから SQL Server インスタンスに接続するには、次のタスクを完了している必要があります。詳細については、この後のセクションで説明します。
+
+- [仮想マシン用の TCP エンドポイントを作成する](#create-a-tcp-endpoint-for-the-virtual-machine)
+- [Windows ファイアウォールで TCP ポートを開く](#open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine)
+- [TCP プロトコルでリッスンするように SQL Server を構成する](#configure-sql-server-to-listen-on-the-tcp-protocol)
+- [混合モード認証用に SQL Server を構成する](#configure-sql-server-for-mixed-mode-authentication)
+- [SQL Server 認証ログインを作成する](#create-sql-server-authentication-logins)
+- [仮想マシンの DNS 名を特定する](#determine-the-dns-name-of-the-virtual-machine)
+- [別のコンピューターからデータベース エンジンに接続する](#connect-to-the-database-engine-from-another-computer)
+
+次の図は、接続パスの概要を示したものです。
+
+![SQL Server 仮想マシンに接続する](../../includes/media/virtual-machines-sql-server-connection-steps/SQLServerinVMConnectionMap.png)
+
+[AZURE.INCLUDE [VM クラシック TCP エンドポイントの SQL Server に接続する](../../includes/virtual-machines-sql-server-connection-steps-classic-tcp-endpoint.md)]
+
 [AZURE.INCLUDE [VM 内で SQL Server に接続する](../../includes/virtual-machines-sql-server-connection-steps.md)]
+
+[AZURE.INCLUDE [VM クラシック手順で SQL Server に接続する](../../includes/virtual-machines-sql-server-connection-steps-classic.md)]
 
 ## <a id="cdea">アプリケーションからデータベース エンジンに接続する</a>
 
@@ -155,4 +175,4 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-sql-server-application-patterns-and-development-strategies.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

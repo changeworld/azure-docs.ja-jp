@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SQL Server 仮想マシンに接続する | Microsoft Azure"
+	pageTitle="SQL Server 仮想マシンに接続する (クラシック) | Microsoft Azure"
 	description="このトピックでは、クラシック デプロイ モデルで作成されたリソースを使用し、Azure の仮想マシンで実行している SQL Server に接続する方法について説明します。シナリオは、ネットワーク構成とクライアントの場所によって異なります。"
 	services="virtual-machines"
 	documentationCenter="na"
@@ -13,10 +13,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="11/12/2015"
+	ms.date="12/18/2015"
 	ms.author="jroth" />
 
-# Azure での SQL Server 仮想マシンへの接続
+# Azure での SQL Server 仮想マシンへの接続 (クラシック デプロイメント)
+
+> [AZURE.SELECTOR]
+- [Resource Manager](virtual-machines-sql-server-connectivity-resource-manager.md)
+- [Classic](virtual-machines-sql-server-connectivity.md)
 
 ## 概要
 
@@ -74,7 +78,27 @@ DNS が構成済みであることを前提として、接続文字列で SQL Se
 
 ## Azure VM で SQL Server への接続を構成する手順
 
+次の手順で、SQL Server Management Studio (SSMS) を使用してインターネット経由で SQL Server インスタンスに接続する方法を説明します。ただし、同じ手順が、アプリケーションのアクセスが可能な SQL Server 仮想マシンを作成し、オンプレミスと Azure の両方で実行する際に適用されます。
+
+別の VM またはインターネットから SQL Server インスタンスに接続するには、次のタスクを完了している必要があります。詳細については、この後のセクションで説明します。
+
+- [仮想マシン用の TCP エンドポイントを作成する](#create-a-tcp-endpoint-for-the-virtual-machine)
+- [Windows ファイアウォールで TCP ポートを開く](#open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine)
+- [TCP プロトコルでリッスンするように SQL Server を構成する](#configure-sql-server-to-listen-on-the-tcp-protocol)
+- [混合モード認証用に SQL Server を構成する](#configure-sql-server-for-mixed-mode-authentication)
+- [SQL Server 認証ログインを作成する](#create-sql-server-authentication-logins)
+- [仮想マシンの DNS 名を特定する](#determine-the-dns-name-of-the-virtual-machine)
+- [別のコンピューターからデータベース エンジンに接続する](#connect-to-the-database-engine-from-another-computer)
+
+次の図は、接続パスの概要を示したものです。
+
+![SQL Server 仮想マシンに接続する](../../includes/media/virtual-machines-sql-server-connection-steps/SQLServerinVMConnectionMap.png)
+
+[AZURE.INCLUDE [VM クラシック TCP エンドポイントの SQL Server に接続する](../../includes/virtual-machines-sql-server-connection-steps-classic-tcp-endpoint.md)]
+
 [AZURE.INCLUDE [VM 内で SQL Server に接続する](../../includes/virtual-machines-sql-server-connection-steps.md)]
+
+[AZURE.INCLUDE [VM クラシック手順で SQL Server に接続する](../../includes/virtual-machines-sql-server-connection-steps-classic.md)]
 
 ## 次のステップ
 
@@ -86,4 +110,4 @@ Azure の仮想マシンで実行されている SQL Server のセキュリテ�
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/03/2015"
+	ms.date="01/05/2016"
 	ms.author="curtand"/>
 
 
@@ -55,9 +55,9 @@ Azure AD 認証システムにサインインする必要があるすべての�
 * [パスワード管理の概要](active-directory-passwords-getting-started.md)
 * [パスワード管理のカスタマイズ](active-directory-passwords-customize.md)
 * [パスワード管理のベスト プラクティス](active-directory-passwords-best-practices.md)
-* [パスワード管理レポートで Operational Insights を把握する方法](active-directory-passwords-get-insights.md)
+* [パスワード管理レポートで運用情報を把握する方法](active-directory-passwords-get-insights.md)
 * [パスワード管理に関する FAQ](active-directory-passwords-faq.md)
 * [パスワード管理のトラブルシューティング](active-directory-passwords-troubleshoot.md)
 * [詳細情報](active-directory-passwords-learn-more.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0107_2016-->

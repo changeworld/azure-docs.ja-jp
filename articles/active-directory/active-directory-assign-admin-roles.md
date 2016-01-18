@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="01/05/2016"
 	ms.author="curtand"/>
 
 # Azure Active Directory (Azure AD) の管理者ロールの割り当て
@@ -85,4 +85,4 @@
 - [パスワードの管理](active-directory-manage-passwords.md)
 - [グループの管理](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0107_2016-->

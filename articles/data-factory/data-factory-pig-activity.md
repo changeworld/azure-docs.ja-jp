@@ -96,7 +96,7 @@ defines | Pig スクリプト内で参照するキーと値のペアとしてパ
 Data Factory パイプラインでこの Pig スクリプトを実行するには、以下の手順を実行する必要があります。
 
 1. リンクされたサービスを作成し、[独自の HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に登録するか、または[オンデマンドの HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)を構成します。このリンクされたサービスを "HDInsightLinkedService" と呼ぶことにしましょう。
-2.	[リンクされたサービス](data-factory-azure-storage-connector.md)を作成し、データをホストする Azure BLOB ストレージへの接続を構成します。このリンクされたサービスを "StorageLinkedService" と呼ぶことにしましょう。
+2.	[リンクされたサービス](data-factory-azure-blob-connector.md)を作成し、データをホストする Azure BLOB ストレージへの接続を構成します。このリンクされたサービスを "StorageLinkedService" と呼ぶことにしましょう。
 3.	入力と出力のデータを指定する[データセット](data-factory-create-datasets.md)を作成します。入力データセットは "PigSampleIn"、出力データセットは "PigSampleOut" と呼ぶことにしましょう。
 4.	上記の手順 2. で構成した Azure BLOB ストレージのファイルに Pig クエリをコピーします。データをホストするリンクされたサービスがこのクエリ ファイルをホストするものと異なる場合には、別の Azure Storage のリンクされたサービスを作成し、アクティビティの構成でこのリンクされたサービスを参照します。**scriptPath** を使用して pig スクリプト ファイルへのパスを指定し、**scriptLinkedService** を使用して、このスクリプト ファイルを含む Azure Storage を指定します。
 	
@@ -186,4 +186,4 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
 		PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);		
 		Store PigSampleOut into '$Output' USING PigStorage (','); 
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

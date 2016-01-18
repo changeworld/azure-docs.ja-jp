@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/28/2015"
+   ms.date="01/04/2016"
    ms.author="masashin"/>
 
 # 自動スケール ガイダンス
@@ -57,8 +57,8 @@ Microsoft Azure など、大部分のクラウド ベース環境では、一般
 ## Azure ソリューションでの自動スケール
 Azure ソリューションでは自動スケールを構成するためのオプションがいくつかあります。
 
-- **Azure 自動スケール**。この機能は、スケジュールに基づいた最も一般的なスケーリング シナリオをサポートします。またオプションで、ランタイム メトリクス (プロセッサ使用率、キューの長さ、または組み込みのカスタム カウンターなど) に基づいてトリガーされたスケーリング操作をサポートします。Microsoft Azure 管理ポータルを使用して、ソリューションの簡単な自動スケール ポリシーをすばやく簡単に構成できます。また、Azure Monitoring Services 管理ライブラリを使用してより詳細な制御レベルで自動スケール ルールを構成できます。詳細については、「[Azure Monitoring Services 管理ライブラリ](#the-azure-monitoring-services-management-library)」のセクションを参照してください。
-- Asure の診断、監視、およびサービス管理機能に基づく**カスタム ソリューション**。たとえば、Azure の診断、カスタム コード、または [System Center Management Pack for Azure](http://www.microsoft.com/download/details.aspx?id=38414) を使用して、アプリケーションのパフォーマンスを継続的に監視できます。また、[Azure サービス管理 REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx)、[Microsoft Azure Management Libraries](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Libraries)、または [オートスケーリング アプリケーション ブロック](http://msdn.microsoft.com/library/hh680892%28v=pandp.50%29.aspx)を使用して、スケールアウトおよびスケールインを行うこともできます。スケーリング操作をトリガーするためのメトリックには、組み込みまたはカスタムのカウンター、あるいはアプリケーション内に実装するその他のツールを使用できます。ただし、カスタム ソリューションの実装は容易ではないため、前述の手法では要件を完全に満たすことができない場合にのみ検討してください。オートスケーリング アプリケーション ブロックは、オープン ソースのフレームワークであり、Microsoft が直接サポートしているものではありません。
+- **Azure 自動スケール**。この機能は、スケジュールに基づいた最も一般的なスケーリング シナリオをサポートします。またオプションで、ランタイム メトリクス (プロセッサ使用率、キューの長さ、または組み込みのカスタム カウンターなど) に基づいてトリガーされたスケーリング操作をサポートします。ソリューション用の単純な自動スケール ポリシーは、Azure 管理ポータルを使用してすばやく簡単に構成できます。より粒度の細かい制御が必要な場合は、[Azure Service Management REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) または [Azure リソース マネージャー REST API](https://msdn.microsoft.com//library/azure/dn790568.aspx) をご利用ください。[Azure Monitoring Service 管理ライブラリ](http://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring)と [Microsoft Insights ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Insights/) (プレビュー) は SDK です。REST API を利用して、さまざまなリソースからメトリックを収集し、自動スケールを実行することができます。Azure リソース マネージャーにリソースが対応していない場合や、Cloud Services を使用している場合は、Service Management REST API を自動スケールに使用できます。それ以外のケースはすべて、Azure リソース マネージャー (ARM) を使って自動スケールを行うようお勧めします。
+- 独自のインストルメンテーションをアプリケーションの基盤とした**カスタム ソリューション**と Azure の管理機能。たとえば、Azure 診断などのインストルメンテーション手法をアプリケーションで使用すると共に、カスタム コードでそのアプリケーションのメトリックを絶えず監視してエクスポートすることができます。これらのメトリックに基づくカスタム規則を作成すれば、サービス管理またはリソース マネージャーの REST API を利用して自動スケールをトリガーすることが可能です。スケーリング操作をトリガーするためのメトリックには、組み込みまたはカスタムのカウンター、あるいはアプリケーション内に実装するその他のツールを使用できます。ただし、カスタム ソリューションの実装は容易ではないため、前述の手法では要件を完全に満たすことができない場合にのみ検討してください。[Autoscaling Application Block](http://msdn.microsoft.com/library/hh680892%28v=pandp.50%29.aspx) には、この手法が用いられています。
 - [Paraleap AzureWatch](http://www.paraleap.com/AzureWatch) などの**サード パーティ サービス**を使用して、スケジュール、サービス負荷とシステム パフォーマンス インジケーター、カスタム ルール、およびさまざまなタイプのルールの組み合わせに基づいてソリューションをスケールできます。
 
 採用する自動スケール ソリューションを選択する場合は、以下の点を考慮してください。
@@ -78,8 +78,8 @@ Azure 自動スケールを使用するときは、次の点を考慮してく�
 - 自動スケール戦略では、スケジュールされたスケーリングとメトリックベース スケーリングの両方が組み合わされます。サービスに対して両方のタイプのルールを指定し、アプリケーションがスケジュールと、負荷の変化に対する反応という 2 つの側面でスケールするように設定できます。
 - Azure 自動スケール ルールを構成し、長期間、アプリケーションのパフォーマンスを監視する必要があります。この監視結果を使用して、必要に応じてシステムをスケールする方法を調整します。ただし、自動スケールは即時に結果を得られるプロセスではありません。指定したしきい値を超過 (または下回る) 平均 CPU 使用率など、何らかのメトリックに反応するには一定の時間を要します。
 - 測定されたトリガー属性 (CPU 使用率やキューの長さなど) に基づく検出メカニズムを使用する自動スケール ルールでは、瞬間的な値ではなく、長期にわたって集計された値を使用して自動スケール アクションがトリガーされます。既定では、集計は値の平均になります。これにより、システムの反応が早すぎたり、急激な変動が生じたりすることが回避されます。また、自動的に開始された新しいインスタンスが実行モードになるまでの時間を確保し、新しいインスタンスの開始中に追加の自動スケール アクションが実行されないようにすることもできます。Cloud Services や Virtual Machines については、集計の規定期間は 45 分間であるため、需要の急増に反応して自動スケールをトリガーするメトリックに、この長さまでの時間を設定できます。SDK を使用してこの集計期間を変更できますが、25 分未満に設定すると予期しない結果を招く可能性があります (詳細については、「[Auto Scaling Cloud Services on CPU Percentage with the Azure Monitoring Services Management Library (Azure Monitoring Services 管理ライブラリを使用した CPU 使用率に基づく Cloud Services の自動スケール)](http://rickrainey.com/2013/12/15/auto-scaling-cloud-services-on-cpu-percentage-with-the-windows-azure-monitoring-services-management-library/)」を参照)。Azure Web サイトでは、平均の期間はかなり短く、平均のトリガー測定への変更後、約 5 分間で新しいインスタンスを使用できるようになります。
-- この Web ポータルではなく、SDK を使用して自動スケールを構成する場合は、ルールが有効になる条件を定めた、より詳細なスケジュールを指定できます。独自のメトリックを作成し、自動スケール ルールで既存のメトリックと共に使用したり、単独で使用したりすることもできます。たとえば、1 秒間当たりの要求数や使用可能なメモリ平均量などの代替カウンターを使用することも、特定のビジネス プロセスを測定するカスタム カウンターを使用することもできます。詳細については、「[Azure Monitoring Services 管理ライブラリ](#the-azure-monitoring-services-management-library)」を参照してください。
-- Azure Virtual Machines を自動スケールするときは、自動スケールの開始を許可する最大数と同じ数の仮想マシンのインスタンスを多数デプロイする必要があります。これらのインスタンスは、同じ可用性セットの一部にする必要があります。Virtual Machines の自動スケール メカニズムでは、仮想マシンのインスタンスの作成または削除は行われません。代わりに、構成する自動スケール ルールによって、適切な数のインスランスが開始および停止されます。詳細については、「[Web ロール、ワーカー ロール、または仮想マシンを実行しているアプリケーションの規模の自動設定](cloud-services-how-to-scale.md#autoscale)」を参照してください。
+- この Web ポータルではなく、SDK を使用して自動スケールを構成する場合は、ルールが有効になる条件を定めた、より詳細なスケジュールを指定できます。独自のメトリックを作成し、自動スケール ルールで既存のメトリックと共に使用したり、単独で使用したりすることもできます。たとえば、1 秒間当たりの要求数や使用可能なメモリ平均量などの代替カウンターを使用することも、特定のビジネス プロセスを測定するカスタム カウンターを使用することもできます。
+- Azure Virtual Machines を自動スケールするときは、自動スケールの開始を許可する最大数と同じ数の仮想マシンのインスタンスを多数デプロイする必要があります。これらのインスタンスは、同じ可用性セットの一部にする必要があります。Virtual Machines の自動スケール メカニズムでは、仮想マシンのインスタンスの作成または削除は行われません。代わりに、構成する自動スケール ルールによって、適切な数のインスランスが開始および停止されます。詳細については、「[Web ロール、worker ロール、または仮想マシンを実行しているアプリケーションの規模の自動設定](cloud-services-how-to-scale.md)」を参照してください。
 - サブスクリプションの最大値に達したか (Virtual Machines サービスを使用している間にコアの最大数に到達したなど)、起動中にエラーが発生したため新しいインスタンスを起動できない場合、ポータルによって自動スケール操作が成功したと示されることがあります。ただし、ポータルに後で表示される **ChangeDeploymentConfiguration** イベントには、サービスの開始が要求されたことのみが表示され、それが正常に完了されたことを示すイベントは表示されません。
 - Azure の自動スケールでは、Web ポータルの UI を使用して、SQL Database インスタンスやキューなどのリソースをコンピューティング サービス インスタンスにリンクできます。これにより、リンクされたリソースごとに、より簡単に別個の手動および自動スケーリング構成オプションにアクセスできます。詳細については、「クラウド サービスの管理方法」ページの「[方法: クラウド サービスに対するリソースのリンク](cloud-services-how-to-manage.md#linkresources)」と、「[アプリケーションの規模の設定方法](cloud-services-how-to-scale.md)」ページを参照してください。
 - 複数のポリシーとルールを構成するときは、それらが互いに競合する可能性があります。Azure 自動スケールでは次の競合ソリューション ルールに従って、常に十分な数のインスタンスが実行されます。
@@ -89,33 +89,8 @@ Azure 自動スケールを使用するときは、次の点を考慮してく�
 
 <a name="the-azure-monitoring-services-management-library"></a>
 
-### Azure Monitoring Services 管理ライブラリ
-Service Management API を使用して、より詳細な制御レベルで Azure 自動スケールを構成し、Web ポータル経由では使用できない機能にアクセスできます。この API には REST Web API として直接アクセスすることも、Azure Monitoring Services 管理ライブラリを介してアクセスすることもできます。
 
-Azure 自動スケールは、Cloud Services ロール、Virtual Machines 可用性セット、Azure Web サイト (Web スペースのサーバー ファームとして)、または Azure Mobile Services の自動スケール プロファイルを指定することで構成されます。最大 20 個のターゲットを含めることができる各プロファイルでは、次を示します。
-
-- 適用されるタイミング (繰り返しまたは固定の日数間隔を使用)
-- 許可されるインスタンス数 (最小、最大、および既定の数)
-- 有効になっている自動スケール ルール
-
-Web ポータルでは、CPU 使用率またはキューの長さに基づく単一のスケール ルール ペアを使用して、基本的に昼と夜、および平日と週末のプロファイルを識別することで固定されたプロファイル セットを構成できるようにします。代わりに Service Management API を使用して、プロファイルに対してより詳細に適用可能な日付を設定し、Azure Monitoring Service に使用可能なすべてのメトリックに基づいたトリガーを使用するルールを最大 10 個指定できます。
-
-自動スケール ルールは、ルールが適用されるタイミングを示すトリガーと、ターゲットの構成で実行される変更を示すスケール アクションで構成されています。本書を作成している時点でサポートされているアクションは、インスタンス数の増減のみです。
-
-自動スケール ルールのトリガーは、使用可能なメトリックに基づいています。構成されているメトリックの値が、自動スケールの構成で定義されている適切なソースから定期的にサンプリングされます。アクティブなプロファイルの各ルールが評価され、トリガーに指定されたメトリックの値が時間内にインスタンス全体にわたって集計されます (該当する場合)。この集計はしきい値と比較され、ルールが適用されるかどうかが示されます。特定の期間の有効な集計は、平均値 (規定)、最小値、最大値、最終値、合計値、およびカウント値です。インスタンスに対する有効な集計は、平均値 (既定)、最大値、および最小値です。
-
-トリガーに使用できるメトリックは Azure Storage と Service Bus のキューの長さ、Azure Diagnostics によって発行される標準パフォーマンス カウンター、および各ロールまたは仮想マシンによって発行されるカスタム パフォーマンス カウンターです。Cloud Services ソリューションでは、規定で使用可能なパフォーマンス カウンター以外を使用して処理する場合、UI でサービスの監視レベル設定を [最小] から [詳細] に変更する必要があります。
-
-詳細については、次を参照してください。
-
-- SDK [クラス ライブラリ](http://msdn.microsoft.com/library/azure/dn510414.aspx)の監視
-- [パフォーマンス カウンターを構成する方法](http://msdn.microsoft.com/library/azure/dn535595.aspx)
-- [自動スケーリングに対する操作](http://msdn.microsoft.com/library/azure/dn510374.aspx)
-- [Add Autoscale Settings](http://msdn.microsoft.com/library/azure/dn510372.aspx)
-- [Auto Scaling Cloud Services on CPU Percentage with the Azure Monitoring Services Management Library (Azure Monitoring Services 管理ライブラリを使用した CPU 使用率に基づく Cloud Services の自動スケール)](http://rickrainey.com/2013/12/15/auto-scaling-cloud-services-on-cpu-percentage-with-the-windows-azure-monitoring-services-management-library/)
-- [How to use Azure Monitoring Services Management Library to create an Autoscale Rule (Azure Monitoring Services 管理ライブラリを使用した自動スケール ルールの作成方法)](http://blogs.msdn.com/b/cie/archive/2014/02/20/how-to-use-windows-azure-monitoring-services-management-library-to-create-an-autoscale-rule.aspx)
-
-## 関連するパターンとガイダンス
+## 関連のあるパターンとガイダンス
 自動スケールを実装する場合、次のパターンとガイダンスも関連する可能性があります。
 
 - [調整パターン](http://msdn.microsoft.com/library/dn589798.aspx)。このパターンは、需要の増加によってリソースに極端な負荷が掛けられた場合に、アプリケーションがどのようにして継続的に機能し、サービス レベル アグリーメントに準拠できるかを示します。自動スケールとともに調整を使用して、システムがスケールアウトしている間にシステムに過剰な負荷が掛からないようにすることができます。
@@ -124,13 +99,14 @@ Web ポータルでは、CPU 使用率またはキューの長さに基づく単
 
 ## 詳細
 - [アプリケーションの規模の設定方法](cloud-services-how-to-scale.md)
-- [Web ロール、ワーカー ロール、または仮想マシンを実行しているアプリケーションの規模の自動設定](cloud-services-how-to-manage.md#linkresources)
+- [Web ロール、worker ロール、または仮想マシンを実行しているアプリケーションの規模の自動設定](cloud-services-how-to-manage.md#linkresources)
 - [方法: クラウド サービスに対するリソースのリンク](cloud-services-how-to-manage.md#linkresources)
 - [リンク済みリソースの規模の設定](cloud-services-how-to-scale.md#scalelink)
 - [Microsoft Azure Monitoring Services... 4.1.0](http://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring)
 - [サービス管理 REST API リファレンス](http://msdn.microsoft.com/library/azure/ee460799.aspx)
-- [自動スケーリングに対する操作](http://msdn.microsoft.com/library/azure/dn510374.aspx)
+- [Azure リソース マネージャー REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx)
+- [Microsoft Insights ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Insights/)
+- [自動スケールに対する操作](http://msdn.microsoft.com/library/azure/dn510374.aspx)
 - [Microsoft.WindowsAzure.Management.Monitoring.Autoscale 名前空間](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.management.monitoring.autoscale.aspx)
-- MSDN の「[Autoscaling Application Block (オートスケーリング アプリケーション ブロック)](http://msdn.microsoft.com/library/hh680892%28v=pandp.50%29.aspx)」ドキュメントと主なシナリオ。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

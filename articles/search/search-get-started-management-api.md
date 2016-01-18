@@ -34,7 +34,7 @@ Azure Search REST 管理 API は、ポータルでプログラムを使用して
 
 このチュートリアルは C# で記述された Windows のコンソール アプリケーションを基にしていて、Visual Studio 2012 または 2013 で実行することができます。
 
-クライアント アプリケーションは、Codeplex の [Azure Search Management API Demo](https://azuresearchmgmtapi.codeplex.com/) にあります。
+クライアント アプリケーションは、Codeplex の [Azure Search Management API Demo](https://github.com/Azure-Samples/search-dotnet-management-api/) にあります。
 
 
 ##アプリケーションの構成
@@ -54,11 +54,11 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 1. ダウンロードしたサンプル クライアント アプリケーションの詳細を登録することによる、AD アプリケーションの構成
 1. 要求の認証を取得するための値を使用したサンプル クライアント アプリケーションのロード
 
-> [AZURE.NOTE] [Azure リソース マネージャー](http://msdn.microsoft.com/library/azure/dn790568.aspx)に関するページ、「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」、および [Azure Active Directory](http://msdn.microsoft.com/library/azure/jj673460.aspx) に関するページでは、Azure Active Directory を使用して、リソース マネージャーへのクライアント要求を認証するための背景知識を提供します。
+> [AZURE.NOTE][Azure リソース マネージャー](http://msdn.microsoft.com/library/azure/dn790568.aspx)に関するページ、「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」、および [Azure Active Directory](http://msdn.microsoft.com/library/azure/jj673460.aspx) に関するページでは、Azure Active Directory を使用して、リソース マネージャーへのクライアント要求を認証するための背景知識を提供します。
 
 ###Active Directory サービスの作成
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com) にサインインします。
+1. [Azure ポータル](https://manage.windowsazure.com)にサインインします。
 
 2. 左側のナビゲーション ウィンドウを下へスクロールし、**[Active Directory]** をクリックします。
 
@@ -119,7 +119,7 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
         private const string SubscriptionId = "<your subscription id>";
         private static readonly Uri RedirectUrl = new Uri("<your redirect url>");
 
-まだ [Codeplex からサンプル アプリケーションをダウンロード](https://azuresearchmgmtapi.codeplex.com/)していない場合は、この手順が必要になります。
+まだ [Github からサンプル アプリケーションをダウンロード](https://github.com/Azure-Samples/search-dotnet-management-api/)していない場合は、この手順が必要になります。
 
 1. Visual Studio で、**ManagementAPI.sln** を開きます。
 
@@ -204,4 +204,4 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
  
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_0107_2016-->

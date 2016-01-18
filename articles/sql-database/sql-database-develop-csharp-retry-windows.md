@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="SQL Database に接続する C# の再試行ロジック | Microsoft Azure" 
-	description="C# のサンプルには、信頼性の高い方法で Azure SQL Database を操作する再試行ロジックが含まれています。" 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="MightyPen" 
-	manager="jeffreyg" 
+<properties
+	pageTitle="SQL Database に接続する C# の再試行ロジック | Microsoft Azure"
+	description="C# のサンプルには、信頼性の高い方法で Azure SQL Database を操作する再試行ロジックが含まれています。"
+	services="sql-database"
+	documentationCenter=""
+	authors="MightyPen"
+	manager="jeffreyg"
 	editor=""/>
 
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="12/17/2015" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="12/17/2015"
 	ms.author="genemi"/>
 
 
@@ -22,10 +22,7 @@
 
 
 
-> [AZURE.SELECTOR]
-- [PHP](sql-database-develop-php-retry-windows.md)
-- [C#](sql-database-develop-csharp-retry-windows.md)
-- [C# EntLib6](sql-database-develop-entlib-csharp-retry-windows.md)
+[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
 
@@ -289,4 +286,4 @@ filetable_updates_2105058535    2105058535
 
 - [SQL Database を試す: C# を使用して SQL Database Library for .NET で SQL Database を作成する](sql-database-get-started-csharp.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -3,7 +3,7 @@
 	description="Azure Active Directory と SciQuest Spend Director の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="jeevansd"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
-	ms.author="markusvi"/>
+	ms.date="01/05/2016"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と SciQuest Spend Director の統合
@@ -195,4 +195,4 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 [204]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_19.png
 [205]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_20.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/05/2015" 
+	ms.date="01/05/2016" 
 	ms.author="awills"/>
 
 #  Application Insights: コード サンプルとチュートリアル
@@ -42,7 +42,9 @@
 
 ## タスクの自動化
 
+* [PowerShell を使用した Application Insights への Azure 診断の送信](app-insights-powershell.md)
 * [新しい Application Insights リソースを作成するスクリプト](app-insights-powershell-script-create-resource.md)
+* [PowerShell を使用した Application Insights への Azure 診断の送信](app-insights-powershell-azure-diagnostics.md)
 
 
 
@@ -53,4 +55,4 @@
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

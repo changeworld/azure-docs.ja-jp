@@ -74,12 +74,12 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、プ
 - [SaaS アプリケーションのチュートリアルの一覧の統合](active-directory-saas-tutorial-list.md)
 
 ## アプリケーションへのアクセスの管理
-次の記事では、Azure ポータルで Azure AD コネクタと Azure AD を使用して Azure AD と統合した後でアプリケーションへのアクセスを管理する方法について説明します。
+次の記事では、Azure AD コネクタと Azure AD を使用して Azure AD と統合した後でアプリケーションへのアクセスを管理する方法について説明します。
 
 - [Azure AD を使用したアプリへのアクセスの管理](active-directory-managing-access-to-apps.md)
 - [Azure AD コネクタを使用した自動化](active-directory-saas-app-provisioning.md)
-- [Azure ポータルを使用したアプリケーションへのユーザーの割り当て](active-directory-applications-guiding-developers-assigning-users.md)
-- [Azure ポータルを使用したアプリケーションへのグループの割り当て](active-directory-applications-guiding-developers-assigning-groups.md)
+- [アプリケーションへのユーザーの割り当て](active-directory-applications-guiding-developers-assigning-users.md)
+- [アプリケーションへのグループの割り当て](active-directory-applications-guiding-developers-assigning-groups.md)
 - [アカウントの共有](active-directory-sharing-accounts.md)
 
 ## カスタム アプリケーションの統合
@@ -87,4 +87,4 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、プ
 
 カスタム アプリケーションを Azure アプリケーション ギャラリーに追加する場合は、[Azure AD のセルフ サービス SAML 構成を使用した "ユーザー独自のアプリケーションの持ち込み"](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx) に関するページを参照してください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0107_2016-->

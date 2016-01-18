@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="11/13/2015"
+   ms.date="01/04/2016"
    ms.author="nitinme"/>
 
 # .NET SDK で Data Lake Store の使用を開始する
@@ -53,20 +53,23 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 
 	1. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[NuGet パッケージの管理]** をクリックします。
 	2. **[Nuget パッケージの管理]** タブで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含む]** チェック ボックスがオンになっていることを確認します。
-	3. 以下のパッケージを検索してインストールします。
+	3. 以下の Data Lake Store パッケージを検索してインストールします。
 	
-		* Microsoft.Azure.Common.Authentication
 		* Microsoft.Azure.Management.DataLake.Store
 		* Microsoft.Azure.Management.DataLake.StoreFileSystem
 		* Microsoft.Azure.Management.DataLake.StoreUploader
 
 		![Nuget ソースの追加](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "新しい Azure Data Lake アカウントの作成")
 
+	4. **Microsoft.Azure.Common.Authentication** パッケージもインストールする必要があります。これはプレリリース パッケージでもあり、Azure Data Lake Store での認証に必要です。
+
+		![Nuget ソースの追加](./media/data-lake-store-get-started-net-sdk/adl.install.azure.auth.png "新しい Azure Data Lake アカウントの作成")
+
 	4. **NuGet パッケージ マネージャー**を閉じます。
 
 7. **Program.cs** を開き、既存のコード ブロックを次のコードに置き換えます。また、コード スニペットでパラメーターの値を指定します。
 
-	このコードでは、Data Lake Store の作成、ストアでのフォルダーの作成、ファイルのアップロード、ファイルのダウンロード、最後にアカウントの削除のプロセスを行います。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/AzureDataLake/tree/master/SQLIPSamples/SampleData/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
+	このコードでは、Data Lake Store の作成、ストアでのフォルダーの作成、ファイルのアップロード、ファイルのダウンロード、最後にアカウントの削除のプロセスを行います。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
 	
 		using System;
 		using System.Collections.Generic;
@@ -224,4 +227,4 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 - [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0107_2016-->

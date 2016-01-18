@@ -1,29 +1,31 @@
-To create a VNet based on the scenario above by using the Azure portal, follow the steps below.
+Azure ポータルを使用して、上記のシナリオに基づいた VNet を作成するには、次の手順に従います。
 
-1. From a browser, navigate to http://portal.azure.com and, if necessary, sign in with your Azure account.
+1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
 
-2. Click **NEW** > **Networking** > **Virtual network**, then click **Resource Manager** from the **Select a deployment model** list, and then click **Create**.
+2. [**新規**] > [**ネットワーク**] > [**仮想ネットワーク**] の順にクリックしてから、[**デプロイメント モデルの選択**] の一覧にある [**リソース マネージャー**]、[**作成**] の順にクリックします。
 
-3. On the **Create virtual network** blade, configure the VNet settings as shown in the figure below.
+3. [**仮想ネットワークの作成**] ブレードで、次の図に示すように、VNet の設定を構成します。
 
-	![Create virtual network blade](./media/vpn-gateway-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure2.png)
+	![仮想ネットワーク ブレードの作成](./media/vpn-gateway-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure2.png)
 
-4. Click **Resource group** and select a resource group to add the VNet to, or click **Create new** to add the VNet to a new resource group. The figure below shows the resource group settings for a new resource group called **TestRG**. For more information about resource groups, visit [Azure Resource Manager Overview](resource-group-overview.md/#resource-groups).
+4. [**リソース グループ**] をクリックし、VNet を追加するリソース グループを選択してから [**新規作成**] をクリックして VNet を新しいリソース グループに追加します。次の図は、**TestRG** という新しいリソース グループのリソース グループ設定を示しています。リソース グループの詳細については、[Azure リソース マネージャーの概要](resource-group-overview.md/#resource-groups)を参照してください。
 
-	![Resource group](./media/vpn-gateway-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure3.png)
+	![リソース グループ](./media/vpn-gateway-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure3.png)
 
-5. If necessary, change the **Subscription** and **Location** settings for your VNet. 
+5. 必要に応じて、VNet の [**サブスクリプション**] と [**場所**] の設定を変更してください。
 
-6. Click **Create** and notice the tile named **Creating Virtual network** as shown in the figure below.
+6. [**作成**] をクリックすると、次の図に示すような [**仮想ネットワークの作成**] という名前のタイルが表示されます。
 
-	![Creating virtual network tile](./media/vpn-gateway-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure4.png)
+	![仮想ネットワーク タイルの作成](./media/vpn-gateway-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure4.png)
 
-7. Wait for the VNet to be created, then in the **Virtual network** blade, click **All settings** > **Subnets** > **Add**.
+7. VNet が作成されるのを待ってから、[**仮想ネットワーク**] ブレードで、[**すべての設定**] > [**サブネット**] > [**追加**] の順にクリックします。
 
-8. Specify the subnet settings for the *BackEnd* subnet, as shown below, and then click **OK**. 
+8. 次に示すように、*BackEnd* サブネットのサブネット設定を指定し、[**OK**] をクリックします。
 
-	![Subnet settings](./media/vpn-gateway-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure6.png)
+	![サブネット設定](./media/vpn-gateway-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure6.png)
 
-9. View the list of subnets.
+9. サブネットの一覧の表示
 
-	![List of subnets in VNet](./media/vpn-gateway-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure7.png)
+	![VNet 内のサブネットの一覧](./media/vpn-gateway-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure7.png)
+
+<!---HONumber=AcomDC_0107_2016-->

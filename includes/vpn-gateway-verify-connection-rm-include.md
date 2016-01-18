@@ -1,14 +1,14 @@
-### To verify your connection using the Azure portal
+### Azure ポータルを使用して接続を確認するには
 
-You can verify a VPN connection in the Azure Portal by navigating to **Virtual network gateways** -> ***click your gateway name*** -> **Settings** -> **Connections**. By selecting the name of the connection, you can view more information in the **Connection** blade.  
+Azure ポータルで VPN 接続を確認するには、**[仮想ネットワーク ゲートウェイ]** に移動し、***ゲートウェイ名をクリックし***、**[設定]**、**[接続]** の順にクリックします。接続の名前を選択することにより、**[接続]** ブレードに詳細な情報を表示することができます。
 
-### To verify your connection using PowerShell
+### PowerShell を使用して接続を確認するには
 
-It is also possible to verify that your connection succeeded by using *Get-AzureRmVirtualNetworkGatewayConnection –Debug*. In the future, we'll have a cmdlet for this. You can use the following cmdlet example, configuring the values to match your own. When prompted, select *A* in order to run All.
+しかし、*Get-AzureRmVirtualNetworkGatewayConnection –Debug* を使用して、接続が成功したことを検証することもできます。今後、このためのコマンドレットを用意します。次のコマンドレット サンプルを使用して、実際に使用する値と同じ値を構成できます。プロンプトが表示されたら、*A* を選択してすべてを実行します。
 
 	Get-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg -Debug
 
- After the cmdlet has finished, scroll through to view the values. In the example below, the connection status shows as *Connected* and you can see ingress and egress bytes.
+ コマンドレットが完了したら、スクロールして値を表示します。以下の例では、接続状態は "*Connected*" と表示され、受信バイトと送信バイトを確認できます。
 
 	Body:
 	{
@@ -36,3 +36,5 @@ It is also possible to verify that your connection succeeded by using *Get-Azure
 	    "ingressBytesTransferred": 33509044,
 	    "egressBytesTransferred": 4142431
 	  }
+
+<!---HONumber=AcomDC_0107_2016-->

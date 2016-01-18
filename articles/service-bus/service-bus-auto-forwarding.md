@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/18/2015"
+   ms.date="12/28/2015"
    ms.author="sethm" />
 
 # 自動転送を使用した Service Bus エンティティのチェーン
@@ -59,7 +59,7 @@ Service Bus では、メッセージの転送ごとに 1 操作を請求しま�
 - [QueueDescription][]
 - [SubscriptionDescription][]
 
-Service Bus のパフォーマンスの向上の詳細については、「[メッセージング エンティティのパーティション分割][]」を参照してください。
+Service Bus のパフォーマンスの向上の詳細については、「[パーティション分割されたメッセージング エンティティ][]」を参照してください。
 
   [QueueDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx
   [SubscriptionDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptiondescription.forwardto.aspx
@@ -67,6 +67,6 @@ Service Bus のパフォーマンスの向上の詳細については、「[メ�
   [SubscriptionDescription]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptiondescription.aspx
   [0]: ./media/service-bus-auto-forwarding/IC628631.gif
   [1]: ./media/service-bus-auto-forwarding/IC628632.gif
-  [メッセージング エンティティのパーティション分割]: service-bus-partitioning.md
+  [パーティション分割されたメッセージング エンティティ]: service-bus-partitioning.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->
