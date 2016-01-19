@@ -28,7 +28,7 @@ Azure クラシック ポータルで作成することで、Azure Search のイ
 
 このタスクを完了するには、すぐに使用できる Azure Search サービスを備えていることを確認してください。セットアップのサポートが必要な場合は、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
-1. [Azure クラシック ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
 2. Azure Search サービスのサービス ダッシュボードを開きます。ダッシュボードを見つけるには、次のいくつかの方法があります。
 	- ジャンプバーで、[**ホーム**] をクリックします。ホーム ページには、サブスクリプションのすべてのサービスのタイルが表示されます。タイルをクリックして、サービス ダッシュボードを開きます。
@@ -105,4 +105,4 @@ Azure Search では、既定で searchable、 facetable、filterable などの�
 [4]: ./media/search-create-index-portal/AzureSearch-PortalIndex-4.PNG
 [5]: ./media/search-create-index-portal/AzureSearch-PortalIndex-5.PNG
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

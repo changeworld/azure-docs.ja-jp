@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="11/30/2015"
+	ms.date="01/08/2016"
 	ms.author="tdykstra"/>
 
 # Azure App Service の API Apps でのユーザー認証
@@ -119,7 +119,7 @@ ContactsList.Angular.AAD プロジェクト内のコードは、単純な Contac
 
 3. **[認証/承認]** ブレードで、**[オン]** をクリックします。
 
-4. **[要求が認証されていない場合のアクション]** ボックスの一覧の **[Azure Active Directory でログイン]** を選択します。
+4. **[要求が認証されていない場合のアクション]** ドロップダウン リストで、**[Azure Active Directory でログイン]** を選択します。
 
 5. **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。
 
@@ -133,7 +133,7 @@ ContactsList.Angular.AAD プロジェクト内のコードは、単純な Contac
 
 7. **[OK]** をクリックします。
 
-10. **[認証/承認]** ブレードで、**[保存]** をクリックします。
+10. **認証/承認**ブレードで、**[保存]** をクリックします。
 
 8. API アプリが保護されたことを確認するには、Swagger UI を使用する最初のチュートリアルで実行したように、API アプリの URL + `/swagger` に移動します。
 
@@ -163,7 +163,7 @@ ContactsList.Angular.AAD プロジェクト内のコードは、単純な Contac
 
 15. ページ下部で **[マニフェストの管理]、[マニフェストのダウンロード]** をクリックし、編集できる場所にファイルを保存します。
 
-16. ダウンロードしたマニフェスト ファイル内で、`oauth2AllowImplicitFlow` プロパティを検索します。このプロパティの値を `false` から `true` に変更し、ファイルを保存します。
+16. ダウンロードしたマニフェスト ファイル内で、 `oauth2AllowImplicitFlow` プロパティを検索します。このプロパティの値を `false` から `true` に変更し、ファイルを保存します。
 
 	この設定は、JavaScript のシングル ページ アプリケーションからのアクセスに必要です。これにより、Oauth 2.0 ベアラー トークンが URL フラグメントで返されるようになります。
 
@@ -238,7 +238,7 @@ ContactsList.Angular.AAD プロジェクト内のコードは、単純な Contac
 
 12. **[OK]** をクリックします。
 
-12. **Web の発行**ウィザードで **[接続]** タブをクリックし、**[ターゲット URL]** ボックスで `http://` を `https://` に変更します。
+12. **Web の発行**ウィザードで **[接続]** タブをクリックし、**[宛先 URL]** ボックスで `http://` を `https://` に変更します。
 
 	![](./media/app-service-api-dotnet-user-principal-auth/httpsinconntab.png)
 
@@ -258,7 +258,7 @@ ContactsList.Angular.AAD プロジェクト内のコードは、単純な Contac
 
 9. AAD テナントのユーザー資格情報でログインします。
 
-10. **[Contacts]** ページが表示されます。
+10. **[連絡先]** ページが表示されます。
 
 	![](./media/app-service-api-dotnet-user-principal-auth/contactspageazure.png)
 
@@ -268,4 +268,4 @@ ContactsList.Angular.AAD プロジェクト内のコードは、単純な Contac
 
 このチュートリアルでは、App Service の認証および承認を使用して、認証されたユーザーのみが呼び出すことができるよう、API アプリへのアクセスを制限しました。このシリーズの次のチュートリアルでは、[サービス間シナリオで API アプリへのアクセスを制限する](app-service-api-dotnet-service-principal-auth.md)方法を学習します。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

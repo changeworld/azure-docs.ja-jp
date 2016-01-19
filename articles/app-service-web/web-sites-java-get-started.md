@@ -5,14 +5,14 @@
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="jimbe"/>
+	editor=""/>
 <tags
 	ms.service="app-service-web"
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="hero-article"
-	ms.date="10/20/2015"
+	ms.date="01/09/2016"
 	ms.author="robmcm"/>
 
 # Azure App Service での Java Web アプリの作成
@@ -68,7 +68,7 @@
 
 	左へスクロールして **[Marketplace]** ブレードを表示すると、**[Web + モバイル]** を選択できます。
 
-4. 検索テキスト ボックスに、**Apache Tomcat** や **Jetty** などの Java アプリケーション サーバーの名前を入力して、Enter キーを押します。
+4. 検索テキスト ボックスに、**Apache Tomcat** や **Jetty** など、Java アプリケーション サーバーの名前を入力して、Enter キーを押します。
 
 5. 検索結果で、Java アプリケーション サーバーをクリックします。
 
@@ -176,4 +176,4 @@ Azure での Java アプリケーションの開発の詳細については、[J
 
 [Azure App Service アプリケーションの作成]: http://go.microsoft.com/fwlink/?LinkId=523751
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

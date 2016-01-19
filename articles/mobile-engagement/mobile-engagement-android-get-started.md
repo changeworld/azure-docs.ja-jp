@@ -2,7 +2,7 @@
 	pageTitle="Azure Mobile Engagement の使用"
 	description="Azure Mobile Engagement を使用して、Android アプリの分析やプッシュ通知を送信する方法について説明します。"
 	services="mobile-engagement"
-	documentationCenter="mobile"
+	documentationCenter="android"
 	authors="piyushjo"
 	manager="dwrede"
 	editor="" />
@@ -35,7 +35,7 @@
 
 > [AZURE.IMPORTANT]このチュートリアルを完了することは Android アプリ用の他のすべての Mobile Engagement のチュートリアルを実行するための前提条件であり、これを完了するにはアクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
-##<a id="setup-azme"></a>Android アプリ用の Mobile Engagement の設定
+##<a id="setup-azme"></a>Android アプリ用のモバイル エンゲージメントの設定
 
 [AZURE.INCLUDE [ポータルで Mobile Engagement アプリを作成する](../../includes/mobile-engagement-create-app-in-portal.md)]
 
@@ -339,4 +339,4 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
 [22]: ./media/mobile-engagement-android-get-started/campaign-content.png
 [24]: ./media/mobile-engagement-android-get-started/campaign-activate.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

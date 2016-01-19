@@ -2,7 +2,7 @@
 	pageTitle="Swift で IOS の Azure モバイル エンゲージメントを開始する"
 	description="iOS アプリ の分析やプッシュ通知で Azure モバイル エンゲージメントを使用する方法を説明します。"
 	services="mobile-engagement"
-	documentationCenter="Mobile"
+	documentationCenter="ios"
 	authors="piyushjo"
 	manager="dwrede"
 	editor="" />
@@ -210,4 +210,4 @@
 [5]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
 [6]: ./media/mobile-engagement-ios-swift-get-started/add-bridging-header.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

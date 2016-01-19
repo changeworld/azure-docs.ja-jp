@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/04/2015"
+	ms.date="01/05/2016"
 	ms.author="tdykstra"/>
 
 # CORS を使用して JavaScript から API アプリを使用する
@@ -36,7 +36,9 @@ Azure App Service には、API アプリの呼び出しを許可するドメイ�
 
 ## このチュートリアルの使い方
 
-このチュートリアルは、[このシリーズの ASP.NET 版 (1 つ目のチュートリアル)](app-service-api-dotnet-get-started.md) で、作成する API アプリの利用側としてダウンロードするサンプル アプリケーションを使います。Java または Node.js を使用する場合は、以降の [CORS の構成セクション](#corsconfig)で、すべての API アプリに該当する全般的な手順を参照してください。
+このチュートリアルは、[このシリーズの ASP.NET 版 (1 つ目のチュートリアル)](app-service-api-dotnet-get-started.md) で、作成する API アプリの利用側としてダウンロードするサンプル アプリケーションを使います。
+
+Java または Node.JS の入門用のチュートリアルに従っている場合、すべての API アプリに適用される一般的な手順については、[CORS 構成セクション](#corsconfig)に直接移動してください。
 
 ## ContactsList.Angular サンプル プロジェクト
 
@@ -75,6 +77,8 @@ API を呼び出す AngularJS の JavaScript コードは、ContactsList.Angular
 ## AngularJS プロジェクトをローカルで実行する
 
 このセクションでは、クライアントをローカルで実行でき、API もローカルで実行されている間にはこれを呼び出すことができることを確認します。
+
+**注:** これらのブラウザーでは、`http://localhost` の URL に対してクロス オリジン JavaScript の呼び出しを許可するため、これらの手順を Internet Explorer と Edge ブラウザーに使用できます。Chrome を使用している場合は、`--disable-web-security` スイッチでブラウザーを起動します。Firefox を使用している場合は、このセクションをスキップします。
 
 1. ContactsList.API の開始時、ContactsList.Angular の前に、ContactsList.API および ContactsList.Angular プロジェクトをスタートアップ プロジェクトとして設定します。 
 
@@ -123,7 +127,7 @@ AngularJS プロジェクトをデプロイする新しい Web アプリも作�
 
 10. **[発行]** をクリックします。
 
-	Visual Studio によって、ContactsList.Angular プロジェクトが Web アプリにデプロイされ、Web アプリの URL がブラウザーで開きます。ブラウザーにはローカルでの実行時に表示されたのと同じ AngularJS の UI が表示されます。ただし、今はフロントエンドがバックエンドとは異なるドメイン (Web アプリの URL) で実行されているため、失敗します。
+	Visual Studio を使うと、ContactsList.Angular プロジェクトが Web アプリにデプロイされ、Web アプリの URL がブラウザーで開きます。ブラウザーにはローカルでの実行時に表示されたのと同じ AngularJS の UI が表示されます。ただし、今はフロントエンドがバックエンドとは異なるドメイン (Web アプリの URL) で実行されているため、失敗します。
 
 	![](./media/app-service-api-cors-consume-javascript/corserror.png)
 
@@ -163,14 +167,19 @@ API アプリの CORS は、Azure リソース マネージャーのツール (A
 		    ]
 		}
 
-### App Service の CORS と Web API の CORS
+## Web API コードでの CORS サポート
 
-以降のセクションで取り上げるように、ASP.NET Web API プロジェクトでは、CORS をコードの中で簡単に構成することができます。ただし、App Service の CORS と Web API の CORS の両方を一緒に使っている場合、App Service の CORS が優先され、Web API の CORS は無効となります。たとえば、App Service で元のドメインを 1 つ有効にして、Web API コードですべての元のドメインを有効にした場合、Azure API アプリは Azure で指定したドメインからの呼び出しのみを受け付けます。
+Web API プロジェクトでは、API が JavaScript の呼び出しを受け入れるドメインをコードに指定できる [Microsoft.AspNet.WebApi.Cors](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Cors/) の NuGet パッケージをインストールすることができます。
+ 
+Web API の CORS サポートは、App Service の CORS サポートよりも柔軟です。たとえば、コード内の異なるアクション メソッドにさまざまな承認済みのオリジンを指定することができます。一方、App Service CORS の場合、すべての API アプリのメソッドに承認済みのオリジンを 1 セット指定します。
 
+### App Service CORS が Web API CORS に優先する
 
-## Web API コードで CORS を構成する方法
+1 つの API アプリ内で、Web API CORS と App Service CORS の両方を使用しないでください。App Service CORS が優先され、Web API CORS は効果がありません。たとえば、App Service で元のドメインを 1 つ有効にして、Web API コードですべての元のドメインを有効にした場合、Azure API アプリは Azure で指定したドメインからの呼び出しのみを受け付けます。
 
-Web API プロジェクトでは、API が JavaScript の呼び出しを受け入れるドメインをコードに指定できる [Microsoft.AspNet.WebApi.Cors](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Cors/) の NuGet パッケージをインストールすることができます。このプロセスの詳細は「[ASP.NET Web API 2 でクロス オリジン要求を有効にする](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)」に記載されています。ASP.NET Web API を使用してビルドされた API アプリの場合、プロセスはまったく同じですが、以下に簡単にまとめています。
+### Web API コードで CORS を有効にする方法
+
+次の手順では、Web API の CORS サポートを有効にするためのプロセスを概説します。詳細については、「[ASP.NET Web API 2 でのクロス オリジン要求の有効化](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)」を参照してください。
 
 1. Web API プロジェクトで **WebApiConfig** の **Register** メソッドに `config.EnableCors()` というコード行を追加します。その例を次に示します。 
 
@@ -208,4 +217,4 @@ Web API プロジェクトでは、API が JavaScript の呼び出しを受け�
 
 このチュートリアルでは、クライアントの JavaScript コードが、別のドメイン内の API を呼び出すための App Service の CORS サポートを有効にする方法を説明しました。引き続き API Apps の入門シリーズの記事で、[App Service の API アプリにおける認証](app-service-api-authentication.md)について説明します。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

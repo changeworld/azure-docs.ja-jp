@@ -1,19 +1,19 @@
 <properties
 	pageTitle="Azure IoT Hub の使用 | Microsoft Azure"
-	description="このチュートリアルに従って、C# で Azure IoT Hub を使用します。"
+	description="このチュートリアルに従って、Java で Azure IoT Hub を使用します。"
 	services="iot-hub"
-	documentationCenter=".net"
+	documentationCenter="java"
 	authors="dominicbetts"
 	manager="timlt"
 	editor=""/>
 
 <tags
      ms.service="iot-hub"
-     ms.devlang="dotnet"
+     ms.devlang="java"
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="12/14/2015"
+     ms.date="12/21/2015"
      ms.author="dobett"/>
 
 # チュートリアル: Azure IoT Hub の使用
@@ -32,19 +32,21 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 
 - Azure ポータルを使用して IoT Hub を作成する。
 - IoT Hub におけるデバイス ID を作成する。
-- クラウド バックエンドへのテレメトリの送信と、クラウド バックエンドからのコマンドの受信のシミュレーション対象デバイスを作成する。
+- クラウド バックエンドに製品利用統計情報を送信するシミュレーションされたデバイスを作成します。
 
-このチュートリアルの最後には、次の 3 つの Windows コンソール アプリケーションが作成されています。
+このチュートリアルの最後には、次の 3 つの Java コンソール アプリケーションが作成されています。
 
-* **CreateDeviceIdentity**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイスを接続します。
-* **ReadDeviceToCloudMessages**。シミュレーション対象デバイスから送信されたテレメトリを表示します。
-* **SimulatedDevice**。以前に作成したデバイス ID で IoT ハブに接続して、1 秒ごとにテレメトリ メッセージを送信します。
+* **create-device-identity**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイスを接続します。
+* **read-d2c-messages**。シミュレーション対象デバイスから送信された製品利用統計情報を表示します。
+* **simulated-device**。以前に作成したデバイス ID で IoT ハブに接続して、1 秒ごとにテレメトリ メッセージを送信します。
 
 > [AZURE.NOTE]デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの作成に利用できる各種 SDK に関する情報は、「[IoT Hub SDK][lnk-hub-sdks]」の記事で取り上げています。
 
 このチュートリアルで行う作業には次のものが必要となります。
 
-+ Microsoft Visual Studio 2015
++ Java SE 8。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」には、このチュートリアルのために Java をインストールする方法があります。Windows と Linux の両方が対象となっています。
+
++ Maven 3。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」には、このチュートリアルのために Maven をインストールする方法があります。Windows と Linux の両方が対象となっています。
 
 + アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
 
@@ -79,24 +81,36 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 
     ![][5]
 
-IoT Hub の作成は以上です。以降の作業に必要なホスト名と接続文字列が得られました。
+7. IoT Hub ブレードの [**設定**] をクリックし、[**設定**] ブレードの [**メッセージング**] をクリックします。[**メッセージング**] ブレードで、**Event Hub 対応名**と **Event Hub 対応エンドポイント**をメモします。この値は **read-d2c-messages** アプリケーションを作成するときに必要になります。
 
-[AZURE.INCLUDE [iot-hub-get-started-cloud-csharp](../../includes/iot-hub-get-started-cloud-csharp.md)]
+    ![][6]
+
+これで IoT Hub が作成され、このチュートリアルの残りを完了するために必要な IoT Hub ホスト名、IoT Hub 接続文字列、Event Hub 対応名、Event Hub 対応エンドポイントが与えられました。
+
+[AZURE.INCLUDE [iot-hub-get-started-cloud-java](../../includes/iot-hub-get-started-cloud-java.md)]
 
 
-[AZURE.INCLUDE [iot-hub-get-started-device-csharp](../../includes/iot-hub-get-started-device-csharp.md)]
+[AZURE.INCLUDE [iot-hub-get-started-device-java](../../includes/iot-hub-get-started-device-java.md)]
 
 ## アプリケーションの実行
 
 これで、アプリケーションを実行する準備が整いました。
 
-1.	Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** をクリックします。**[マルチ スタートアップ プロジェクト]** を選択し、**ReadDeviceToCloudMessages** プロジェクトと **SimulatedDevice** プロジェクトの **[アクション]** としてどちらも **[開始]** を選択します。
+1. read-d2c フォルダーで、コマンド プロンプトで次のコマンドを実行し、IoT Hub の監視を開始します。
 
-   	![][41]
+    ```
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
+    ```
 
-2.	**F5** キーを押して両方のアプリケーションを実行します。**SimulatedDevice** アプリケーションからのコンソール出力には、シミュレーション対象デバイスから IoT Hub に送られたメッセージが表示されます。また、**ReadDeviceToCloudMessages** アプリケーションからのコンソール出力には、IoT Hub で受信されたメッセージが表示されます。
+    ![][7]
 
-   	![][42]
+2. simulated-device フォルダーで、コマンド プロンプトで次のコマンドを実行し、IoT Hub への製品利用統計情報データの送信を開始します。
+
+    ```
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
+    ```
+
+    ![][8]
 
 ## 次のステップ
 
@@ -115,15 +129,17 @@ IoT Hub の詳細については、次の記事を参照してください。
 * [Azure IoT デベロッパー センター][lnk-dev-center]
 
 <!-- Images. -->
-[1]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub1.png
-[2]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub2.png
-[3]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub3.png
-[4]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub4.png
-[5]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub5.png
-[41]: ./media/iot-hub-csharp-csharp-getstarted/run-apps1.png
-[42]: ./media/iot-hub-csharp-csharp-getstarted/run-apps2.png
+[1]: ./media/iot-hub-java-java-getstarted/create-iot-hub1.png
+[2]: ./media/iot-hub-java-java-getstarted/create-iot-hub2.png
+[3]: ./media/iot-hub-java-java-getstarted/create-iot-hub3.png
+[4]: ./media/iot-hub-java-java-getstarted/create-iot-hub4.png
+[5]: ./media/iot-hub-java-java-getstarted/create-iot-hub5.png
+[6]: ./media/iot-hub-java-java-getstarted/create-iot-hub6.png
+[7]: ./media/iot-hub-java-java-getstarted/runapp1.png
+[8]: ./media/iot-hub-java-java-getstarted/runapp2.png
 
 <!-- Links -->
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/java/device/doc/devbox_setup.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-upload-tutorial]: iot-hub-csharp-csharp-file-upload.md

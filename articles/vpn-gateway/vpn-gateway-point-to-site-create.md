@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Virtual Network へのポイント対サイト VPN 接続の構成 | Microsoft Azure"
-   description="ポイント対サイト VPN 接続を作成することで、Azure Virtual Network に安全に接続します。Service Management (クラシック) のデプロイ モデルを使用して作成された VNet を対象とする手順です。"
+   description="ポイント対サイト VPN 接続を作成することで、Azure Virtual Network に安全に接続します。Service Management (クラシック) のデプロイメント モデルを使用して作成された VNet を対象とする手順です。"
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -14,17 +14,21 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/16/2015"
+   ms.date="01/11/2016"
    ms.author="cherylmc"/>
 
 # VNet へのポイント対サイト VPN 接続の構成
 
+> [AZURE.SELECTOR]
+- [PowerShell - Resource Manager](vpn-gateway-howto-point-to-site-rm-ps.md)
+- [PowerShell - Classic](vpn-gateway-point-to-site-create.md)
 
-この記事は、クラシック デプロイ モデル (サービス管理) を使用して作成された仮想ネットワークのポイント対サイト VPN Gateway 接続を対象としています。Azure リソース マネージャー デプロイ モデルを使用して作成された仮想ネットワークのポイント対サイト接続は、REST API と PowerShell を使用して利用できるようになりました。現在、PowerShell を使用する手順の紹介記事を作成しています。その記事が準備できたら、このページを更新し、リンクを追加します。現時点では、1 月上旬を予定しています。
+ポイント対サイト構成では、クライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を個別に作成することができます。VPN 接続を確立するには、クライアント コンピューターからの接続を開始します。これは、自宅や会議室など、リモートの場所から VNet に接続する場合、または仮想ネットワークに接続する必要があるクライアントの数が少ない場合などに適しています。ポイント対サイト接続を機能させるために、VPN デバイスや公開 IP アドレスは必要ありません。ポイント対サイト接続の詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md#point-to-site-connections)」と[クロスプレミス接続](vpn-gateway-cross-premises-options.md)に関するページを参照してください。
 
-**Azure のデプロイ モデルについて**
+この記事は、**クラシック デプロイメント モデル** (サービス管理) を使用して作成された仮想ネットワークのポイント対サイト VPN Gateway 接続を対象としています。リソース マネージャーを使用して作成された VNet 用にポイント対サイト接続を構成する場合は、[この記事](vpn-gateway-howto-point-to-site-rm-ps.md)を参照してください。
 
-[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[AZURE.INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
 
 ## ポイント対サイト接続の作成について
  
@@ -42,7 +46,7 @@
 
 ### 仮想ネットワークの作成
 
-1. **Azure クラシック ポータル**にログインします (Azure ポータルではありません)。
+1. **Azure クラシック ポータル** (Azure ポータルではありません) にログインします。
 1. 画面の左下隅で **[新規]** をクリックします。ナビゲーション ウィンドウで **[Network Services]** をクリックし、**[Virtual Network]** をクリックします。**[カスタム作成]** をクリックして、構成ウィザードを開始します。
 1. **[仮想ネットワークの詳細]** ページで、次の情報を入力し、右下にある次へ進む矢印をクリックします。
 	- **[名前]**: 仮想ネットワークの名前を指定します。たとえば、「VNetEast」と指定します。これは、この VNet に VM と PaaS インスタンスをデプロイするときに参照する名前です。
@@ -59,7 +63,7 @@
  - **[アドレス空間]**: 開始 IP や数など、この仮想ネットワークで使用する内部 IP アドレスの範囲を追加します。オンプレミス ネットワークに使用されている範囲と重複しない範囲を選択することが重要です。仮想ネットワークに使用するオンプレミス ネットワークのアドレス空間から、ネットワーク管理者が IP アドレスの範囲を分割しなければならない可能性があるため、ネットワーク管理者と調整する必要があります。
  - **[サブネットの追加]**: 追加サブネットは必須ではありませんが、VM 用に静的 DIP を持つ別のサブネットを作成することをお勧めします。または、他のロール インスタンスとは分離したサブネットに VM を配置することができます。
  - **[ゲートウェイ サブネットの追加]**: ゲートウェイ サブネットはポイント対サイト VPN に必須です。クリックして、ゲートウェイ サブネットを追加します。ゲートウェイ サブネットは仮想ネットワーク ゲートウェイにのみ使用されます。
-1. 仮想ネットワークが作成されると、Azure クラシック ポータルの [Networks] ページの **[状態]** に **[作成済み]** と表示されます。仮想ネットワークが作成されると、動的ルーティング ゲートウェイを作成できます。
+1. 仮想ネットワークが作成されると、Azure クラシック ポータルのネットワーク ページの **[状態]** に **[作成済み]** と表示されます。仮想ネットワークが作成されると、動的ルーティング ゲートウェイを作成できます。
 
 ### 動的ルーティング ゲートウェイの作成
 
@@ -86,9 +90,10 @@
 
 ### ルート証明書の識別または生成
 
-エンタープライズ証明書ソリューションを使用していない場合は、自己署名ルート証明書を生成する必要があります。以下の手順は Windows 8 向けのものです。現在、Windows 10 向けの新しい手順を盛り込むために更新している最中です。
+エンタープライズ証明書ソリューションを使用していない場合は、自己署名ルート証明書を生成する必要があります。以下の手順は Windows 8 向けのものです。Windows 10 向けの新しい手順については現在準備中です。
 
-1. X.509 証明書を作成する方法の 1 つは、証明書作成ツール (makecert.exe) を使用することです。makecert を使用するには、[Microsoft Visual Studio Express](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) (無料) をダウンロードしてインストールします。
+X.509 証明書を作成する方法の 1 つは、証明書作成ツール (makecert.exe) を使用することです。makecert を使用するには、[Microsoft Visual Studio Express](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) (無料) をダウンロードしてインストールします。
+
 2. Visual Studio Tools フォルダーに移動して、管理者としてコマンド プロンプトを起動します。
 3. 下の例のコマンドを使用すると、ルート証明書が作成され、コンピューターの個人用証明書ストアにインストールされます。また、対応する *.cer* ファイルも作成されます。このファイルは、後で Azure クラシック ポータルにアップロードします。
 4. .cer ファイルを格納するディレクトリに移動して、下のコマンドを実行します。*RootCertificateName* は、証明書に使用する名前です。何も変更せずに次の例を実行した場合、ルート証明書と、対応する *RootCertificateName.cer* ファイルが作成されます。
@@ -113,7 +118,7 @@
 2. クライアント証明書ファイルを保存するディレクトリに移動します。*RootCertificateName* は、生成した自己署名ルート証明書を指します。下の例 (RootCertificateName を自分のルート証明書の名前に変更します) を実行すると、個人用証明書ストアに "ClientCertificateName" という名前のクライアント証明書が作成されます。
 3. 次のコマンドを入力します。
 
-    makecert.exe -n "CN=ClientCertificateName" -pe -sky exchange -m 96 -ss My -in "RootCertificateName" -is my -a sha1
+    	makecert.exe -n "CN=ClientCertificateName" -pe -sky exchange -m 96 -ss My -in "RootCertificateName" -is my -a sha1
 
 4. すべての証明書は、コンピューター上の個人用証明書ストアに格納されます。*certmgr* で確認します。この手順に基づいて、必要な数のクライアント証明書を生成することができます。仮想ネットワークに接続する各コンピューターに、一意のクライアント証明書を作成することをお勧めします。
 
@@ -191,4 +196,4 @@ VPN クライアントを構成するには、次の手順に順番に従いま�
 
 Virtual Network の詳細については、[Virtual Network のドキュメント](https://azure.microsoft.com/documentation/services/virtual-network/)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0114_2016-->

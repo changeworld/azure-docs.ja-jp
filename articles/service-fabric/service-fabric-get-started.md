@@ -17,21 +17,21 @@
    ms.author="seanmck"/>
 
 # 開発環境を準備する
- 開発コンピューターで [Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、ツールをインストールし、ローカル クラスターをセットアップする必要があります。
+ 開発コンピューターで [Azure Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、ツールをインストールする必要があります。また、ローカル クラスターを設定する必要があります。
 
 ## 前提条件
 ### サポートされるオペレーティング システムのバージョン
 次のオペレーティング システムのバージョンがサポートされます。
 
-- Windows 8/8.1
+- Windows 8/Windows 8.1
 - Windows Server 2012 R2
 - Windows 10
 
 ### Visual Studio 2015
 
-Service Fabric のツールは Visual Studio 2015 に依存しています。Visual Studio 2015 は、[ここ][2]から入手できます。
+Service Fabric のツールは Visual Studio 2015 に依存しています。Visual Studio 2015 は、[Visual Studio の Web サイト][2]から入手できます。
 
-> [AZURE.NOTE]サポートされる OS のバージョンを実行していないか、PC に Visual Studio 2015 をインストールしたくない場合は、Azure 仮想マシン ギャラリーからのイメージを使用して Windows Server 2012 R2 と Visual Studio 2015 がプレインストールされている Azure 仮想マシンを設定できます。
+> [AZURE.NOTE]サポートされる OS のバージョンを実行していないか、コンピューターに Visual Studio 2015 をインストールしたくない場合は、Windows Server 2012 R2 と Visual Studio 2015 がプレインストールされている Azure 仮想マシンを設定できます。この操作は、Azure 仮想マシン ギャラリーからのイメージを使用して実行できます。
 
 ## ランタイム、SDK、およびツールのインストール
 
@@ -59,11 +59,11 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 - [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
 - [ローカル クラスター上でアプリケーションをデプロイし管理する方法](service-fabric-get-started-with-a-local-cluster.md)
 - [プログラミング モデルについての詳細: Reliable Actors および Reliable Services](service-fabric-choose-framework.md)
-- [GitHub での Service Fabric サンプルの確認](https://aka.ms/servicefabricsamples)
+- [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
 - [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
 [1]: http://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric キャンペーン ページ"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
 [3]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0114_2016-->

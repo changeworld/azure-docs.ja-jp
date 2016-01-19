@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="12/03/2015"
+   	ms.date="01/13/2016"
    	ms.author="nitinme"/>
 
 # Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する
@@ -44,7 +44,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 1. [Azure ポータル](https://ms.portal.azure.com/)にサインインします。
 2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
 
-    ![Creating a new cluster in the Azure Portal](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.1.png "Creating a new cluster in the Azure Portal")
+    ![Creating a new cluster in the Azure Portal](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.1.png "Azure ポータルでの新しいクラスターの作成")
 
 3. **[クラスター名]** を入力し、**[クラスターの種類]** で **[Hadoop]** を選択し、**[クラスターのオペレーティング システム]** ボックスの一覧から **[Ubuntu]** を選択します。クラスターを使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
 
@@ -52,7 +52,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 4. 複数のサブスクリプションがある場合は、**[サブスクリプション]** エントリをクリックし、クラスターで使用する Azure サブスクリプションを選択します。
 
-5. **[リソース グループ]** をクリックして既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択します。または、**[新規作成]** をクリックし、新しいリソース グループの名前を入力できます。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
+5. **[リソース グループ]** をクリックして既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択します。または、**[新規作成]** をクリックし、新しいリソース グループの名前を入力します。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
 
 	> [AZURE.NOTE]このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
 
@@ -90,9 +90,9 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 	![[ノード価格レベル] ブレード](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.5.png "クラスター ノード数の指定")
     
-    > [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+    > [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
     >
-    > ノードのサイズと関連コストの詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+    > ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 	**[選択]** をクリックして、ノードの価格構成を保存します。
 
@@ -112,15 +112,15 @@ Ambari のビューでは、1 つの Web ページを介して複数のユーテ
 
 > [AZURE.NOTE]Ambari は、Linux ベースの HDInsight クラスターに付属する管理および監視ユーティリティです。Ambari には多数の機能がありますが、このドキュメントではそれらについて説明しません。詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
-Azure ポータルから Ambari のビューを表示するには、HDInsight クラスターを選択し、__[クイック リンク]__ セクションの __[Ambari のビュー]__ を選択します。
+Azure ポータルから Ambari ビューを表示するには、HDInsight クラスターを選択し、__[クイック リンク]__ セクションの __[Ambari ビュー]__ を選択します。
 
 ![quick links section](./media/hdinsight-hadoop-linux-tutorial-get-started/quicklinks.png)
 
-また、Ambari に直接移動することもできます。これには、Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net (この場合、__CLUSTERNAME__ は HDInsight クラスターの名前) に移動し、ページ メニューにある四角形のセット (__[Admin]__ リンクとページの左側のボタンの横) を選択して、使用可能なビューの一覧を表示します。__[Hive view]__ を選択します。
+また、Ambari に直接移動することもできます。そのためには、Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net (ここで、__CLUSTERNAME__ は HDInsight クラスターの名前) に移動し、ページ メニューの (ページの左側の __[Admin]__ リンク ボタンの横にある) 四角形のセットを選択して使用可能なビューの一覧を表示します。__[Hive view]__ を選択します。
 
 ![Selecting ambari views](./media/hdinsight-hadoop-linux-tutorial-get-started/selecthiveview.png)
 
-> [AZURE.NOTE]Ambari にアクセスすると、サイトに対する認証が求められます。クラスターの作成時に使用した管理者アカウント名 (既定値は `admin`) とパスワードを入力します。
+> [AZURE.NOTE]Ambari にアクセスすると、サイトに対する認証が求められます。クラスターを作成するときに使用した管理者アカウント名 (既定値は `admin`) とパスワードを入力します。
 
 次のようなページが表示されます。
 
@@ -130,7 +130,7 @@ Azure ポータルから Ambari のビューを表示するには、HDInsight �
 
 クラスターに含まれるデータに対して Hive クエリを実行するには、Hive ビューで次の手順に従います。
 
-1. ページの __[クエリ エディター]__ セクションで、次の HiveQL ステートメントをワークシートに貼り付けます。
+1. ページの __[Query Editor]__ セクションで、次の HiveQL ステートメントをワークシートに貼り付けます。
 
 		DROP TABLE log4jLogs;
 		CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -146,13 +146,13 @@ Azure ポータルから Ambari のビューを表示するには、HDInsight �
 	- **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
 	- **SELECT** - t4 列の値が [ERROR] であるすべての行の数を指定します。
 
-	>[AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。外部テーブルを削除しても、データは削除 *されません* 。テーブル定義のみが削除されます。
+	>[AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。外部テーブルを削除しても、データは削除*されません*。テーブル定義のみが削除されます。
 
 2. クエリ エディターの下部にある __[Execute]__ ボタンを使用してクエリを開始します。ボタンの色がオレンジ色に変わり、テキストが __[Stop execution]__ に変わります。クエリ エディターの下に __[Query Process Results]__ セクションが表示され、ジョブに関する情報が表示されます。
 
-    > [AZURE.IMPORTANT]ブラウザーによっては、ログまたは結果の情報が正しく更新されない場合があります。ジョブを実行したときに、ログの更新または結果の表示が行われずにいつまでもジョブが実行される可能性がある場合は、代わりに Mozilla FireFox または Google Chrome を使用してみてください。
+    > [AZURE.IMPORTANT]ブラウザーによっては、ログまたは結果の情報が正しく更新されない場合があります。ジョブを実行したときに、ジョブの実行が続いているにもかかわらずログが更新されたり結果が返されたりしない場合は、Mozilla FireFox または Google Chrome を代わりに使用してください。
     
-3. クエリが完了すると、__[Query Process Results]__ セクションに操作の結果が表示されます。さらに、__[Stop execution]__ ボタンが緑色の __[Execute]__ ボタンに戻ります。__[Results]__ タブには次の情報が含まれます。
+3. クエリが完了すると、__[Query Process Results]__ セクションに操作の結果が表示されます。__[Stop execution]__ ボタンも緑色の __[Execute]__ ボタンに戻ります。__[Results]__ タブには次の情報が表示されます。
 
         sev       cnt
         [ERROR]   3
@@ -161,9 +161,9 @@ Azure ポータルから Ambari のビューを表示するには、HDInsight �
     
     > [AZURE.TIP]__[Query Process Results]__ セクションの左上にある __[Save results]__ ボックスに注意してください。これを使用すると、結果をダウンロードすることも、CSV ファイルとして HDInsight のストレージに保存することもできます。
 
-3. このクエリの最初の 4 行を選択し、__[Execute]__ を選択します。ジョブが完了したときには結果が表示されないことに注意してください。これは、クエリの一部が選択されているときに __[Execute]__ ボタンを使用すると、選択したステートメントのみが実行されるためです。この場合は、テーブルから行を取得する最終的なステートメントが選択範囲に含まれていませんでした。その行だけを選択して __[Execute]__ を使用すると、予想される結果が表示されます。
+3. このクエリの最初の 4 行を選択し、__[Execute]__ を選択します。ジョブが完了したときに結果は生成されません。これは、クエリの一部が選択されているときに __[Execute]__ ボタンを使用すると、選択したステートメントのみが実行されるためです。この場合は、テーブルの行を取得する最後のステートメントが選択範囲に含まれていませんでした。その行のみを選択して __[Execute]__ を使用すると、予想どおりの結果が表示されます。
 
-3. __クエリ エディター__の下部にある __[New Worksheet]__ ボタンを使用して新しいワークシートを作成します。新しいワークシートで、次の HiveQL ステートメントを入力します。
+3. __クエリ エディター__の下部にある __[New Worksheet]__ ボタンを使用して新しいワークシートを作成します。新しいワークシートに、次の HiveQL ステートメントを入力します。
 
 		CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
 		INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
@@ -180,21 +180,21 @@ Azure ポータルから Ambari のビューを表示するには、HDInsight �
 
     ![icons](./media/hdinsight-hadoop-linux-tutorial-get-started/icons.png)
     
-    これは、クエリの __[Visual Explain]__ ビューです。このビューは、複雑なクエリのフローを理解する際に役立ちます。クエリ エディターの __[Explain]__ ボタンを使用すると、このビューに対応するテキストを表示できます。
+    これは、クエリの __[Visual Explain]__ ビューです。このビューは、複雑なクエリのフローを理解する際に役立ちます。クエリ エディターの __[Explain]__ ボタンを使用して、このビューに対応するテキストを表示できます。
     
     ![visual explain image](./media/hdinsight-hadoop-linux-tutorial-get-started/visualexplain.png)
     
     その他のアイコンは次のとおりです。
     
-        * Settings: The gear icon allows you to change Hive settings, such as setting `hive.execution.engine` or Tez parameters.
-        * Tez: Displays the Directed Acyclic Graph (DAG) that Tez used to perform the query. If you want to view the DAG for queries you've ran in the past, use the __Tez View__ instead.
-        * Notifications: Displays notifications, such as "Query has been submitted" or if an error occurs when running a query.
+	* 設定: ギア アイコンでは、設定 `hive.execution.engine` や Tez パラメーターなどの Hive
+	* Tez: クエリーを実行するために Tez が使う有向非巡回グラフ (DAG)過去に実行したクエリの DAG を表示する場合は、__[Tez View]__ を使用します。
+	* 通知: 「クエリーは送信されました」 などや、クエリーの実行時にエラ
 
 5. __[SQL]__ アイコンを選択してクエリ エディターに戻り、新しいワークシートを作成して次のクエリを入力します。
 
         SELECT * from errorLogs;
     
-    エディターの下部にある __[Save as]__ ボタンを使用します。このクエリに __Errorlogs__ という名前を付けて、__[OK]__ を選択します。ワークシートの名前が __Errorlogs__ に変わります。
+    エディターの下部にある __[Save as]__ ボタンを使用します。このクエリに __Errorlogs__ という名前を付け、__[OK]__ を選択します。ワークシートの名前が __Errorlogs__ に変わります。
     
     保存済みのクエリは、ページの上部にある __[Saved Queries]__ タブにも表示されます。このタブを選択すると、__Errorlogs__ が表示されていることがわかります。その名前を選択すると、クエリ エディターにクエリが表示されます。
 
@@ -260,4 +260,4 @@ HDInsight クラスターの作成または管理の詳細については、以�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

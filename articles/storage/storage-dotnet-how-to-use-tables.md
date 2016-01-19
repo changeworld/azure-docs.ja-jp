@@ -1,11 +1,11 @@
 <properties
 	pageTitle=".NET から テーブル ストレージを使用する方法 | Microsoft Azure"
-	description="Microsoft Azure Table ストレージを使用してテーブルを作成および削除する方法、さらにテーブル内のエンティティを挿入および照会する方法について説明します。"
+	description="スキーマなしの非構造化データの格納には、テーブル ストレージを使用します。テーブル ストレージは NoSQL キー/属性ストアです。.NET 用ストレージ クライアント ライブラリでは、テーブルの作成と削除、およびデータの挿入、更新、削除とクエリを行うための API が提供されます。"
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
-	manager="adinah"
-	editor=""/>
+	manager="carmonm"
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="08/04/2015"
+	ms.date="01/07/2016"
 	ms.author="tamram"/>
 
 
@@ -440,4 +440,4 @@
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

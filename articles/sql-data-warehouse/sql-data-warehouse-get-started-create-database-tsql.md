@@ -14,8 +14,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="lodipalm"/>
+   ms.date="01/07/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>
 
 # Transact-SQL (TSQL) を使用して SQL Data Warehouse データベースを作成する
 
@@ -46,9 +46,9 @@
 
         sqlcmd -S <Server Name>.database.windows.net -I -U <User> -P <Password> -Q "CREATE DATABASE <Name> (EDITION='datawarehouse', SERVICE_OBJECTIVE = '<Compute Size - DW####>', MAXSIZE= <Storage Size - #### GB>)"
 
-これらの TSQL ステートメントを実行するときには、MAXSIZE パラメーターと SERVICE_OBJECTIVE パラメーターに注意してください。これらは、Data Warehouse インスタンスに割り当てられる最初のストレージ サイズおよびコンピューティングを決定します。MAXSIZE には 250 GB、500 GB、750 GB、1,024 GB、5,120 GB、10,240 GB、20,480 GB、30,720 GB、40,960 GB、51,200 GB のいずれかのサイズを指定できますが、将来の拡張を見越して、より大きなサイズを選択することをお勧めします。
+これらの TSQL ステートメントを実行するときには、MAXSIZE パラメーターと SERVICE\_OBJECTIVE パラメーターに注意してください。これらは、Data Warehouse インスタンスに割り当てられる最初のストレージ サイズおよびコンピューティングを決定します。MAXSIZE には 250 GB、500 GB、750 GB、1,024 GB、5,120 GB、10,240 GB、20,480 GB、30,720 GB、40,960 GB、51,200 GB のいずれかのサイズを指定できますが、将来の拡張を見越して、より大きなサイズを選択することをお勧めします。
 
-SERVICE_OBJECTIVE は、インスタンスに最初に割り当てられる DWU の数を示し、DW100、DW200、DW300、DW400、DW500、DW600、DW1000、DW1200、DW1500、DW2000 のいずれかの値を指定できます。これらのパラメーターと課金の関係については、[価格のページ][]を参照してください。
+SERVICE\_OBJECTIVE は、インスタンスに最初に割り当てられる DWU の数を示し、DW100、DW200、DW300、DW400、DW500、DW600、DW1000、DW1200、DW1500、DW2000 のいずれかの値を指定できます。これらのパラメーターと課金の関係については、[価格のページ][]を参照してください。
 
 ## 次のステップ
 SQL Data Warehouse のプロビジョニングが済めば、[サンプル データを読み込んだり][]、[開発][]、[読み込み][]、[移行][]の方法を調べたりできます。
@@ -61,4 +61,4 @@ SQL Data Warehouse のプロビジョニングが済めば、[サンプル デ�
 [サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-manually-load-samples.md
 [価格のページ]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->
