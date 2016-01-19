@@ -76,7 +76,7 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 
 次に、空のオブジェクトを作成して ```config``` という名前を付け、プロパティの ```config.endpoint``` と ```config.authKey``` に実際の DocumentDB エンドポイントと承認キーを設定します。これらの構成はどちらも [Azure ポータル](https://portal.azure.com)にあります。
 
-![Screen shot of the Azure Portal, showing a DocumentDB account, with the ACTIVE hub highlighted, the KEYS button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade][keys]
+![DocumentDB アカウントを示す、アクティブなハブ、[DocumentDB アカウント] ブレードの [キー] ボタン、[キー] ブレードの URI の値、プライマリ キーの値、およびセカンダリ キーの値が強調表示されている Azure プレビュー ポータルのスクリーン ショット][keys]
 
     var config = {}
 

@@ -59,12 +59,12 @@ File ストレージは、すべてのストレージ アカウントでサポ�
 
 ## ファイル共有を管理するための Azure ポータルの使用
 
-[Azure ポータル](portal.azure.com)には、顧客が File Storage を管理するためのユーザー インターフェイスが用意されています。このプレビュー ポータルでは、次の操作を実行できます。
+[Azure ポータル](portal.azure.com)には、顧客が File ストレージ を管理するためのユーザー インターフェイスが用意されています。このプレビュー ポータルでは、次の操作を実行できます。
 
 - ファイル共有からのファイルのアップロードおよびダウンロード
 - 各ファイル共有の実際の使用状況の監視
 - 共有のサイズ クォータの調整
-- Windows クライアントからファイル共有をマウントするために使用する `net use` コマンドの取得
+- Windows クライアントからファイル共有をマウントするために使用する `net use` コマンドの取得 
 
 ## PowerShell を使用したファイル共有の管理
 
@@ -129,13 +129,13 @@ Azure PowerShell のバージョン 0.9.7 以降では、ファイルを別の�
     # copy a blob to a file directory
     Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -DestShareName hello -DestFilePath hellodir/hello2copy.txt -DestContext $ctx -Context $ctx
 
-## ファイル共有のマウント
+## ファイル共有のマウント 
 
 SMB 3.0 のサポートにより、File ストレージでは、SMB 3.0 クライアントから暗号化と永続的ハンドルをサポートするようになりました。暗号化のサポートは、SMB 3.0 クライアントが、次を含む任意の場所からファイル共有をマウントできることを意味します。
 
 - 同じリージョン内の Azure の仮想マシン (SMB 2.1 でもサポート)
 - 別のリージョンの Azure の仮想マシン (SMB 3.0 のみ)
-- オンプレミスのクライアント アプリケーション (SMB 3.0 のみ)
+- オンプレミスのクライアント アプリケーション (SMB 3.0 のみ) 
 
 クライアントが File ストレージにアクセスするときに使用する SMB バージョンは、オペレーティング システムでサポートされている SMB バージョンによって異なります。次の表に、Windows クライアントでのサポートの概要を示します。詳細については、「< Which version of the SMB protocol blog post>」を参照してください。
 
@@ -168,7 +168,7 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 ### 適用された資格情報を使用したファイル共有のマウント
 
-仮想マシンにリモート接続した後で、`net use` コマンドを実行してファイル共有をマウントできます。その場合は次の構文を使用します。`<storage-account-name>` を実際のストレージ アカウントの名前に置き換え、`<share-name>` を実際の File Storage 共有に置き換えてください。
+仮想マシンにリモート接続した後で、`net use` コマンドを実行してファイル共有をマウントできます。その場合は次の構文を使用します。`<storage-account-name>` を実際のストレージ アカウントの名前に置き換え、`<share-name>` を実際の File ストレージ共有に置き換えてください。
 
     net use <drive-letter>: \<storage-account-name>.file.core.windows.net<share-name>
 
@@ -186,12 +186,12 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 さらに、ロールにリモート接続することで、Azure クラウド サービスで実行されるロールからファイル共有をマウントすることもできます。
 
-### Windows を実行するオンプレミスのクライアントからのファイル共有のマウント
+### Windows を実行するオンプレミスのクライアントからのファイル共有のマウント 
 
 オンプレミスのクライアントからファイル共有をマウントするには、まず次の手順を実行する必要があります。
 
-- SMB 3.0 をサポートする Windows バージョンをインストールします。Windows では、オンプレミスのクライアントと、クラウドの Azure のファイル共有間でデータを安全に転送するために SMB 3.0 の暗号化を利用しています。
-- インターネット アクセス用に SMB プロトコルで必要とされるポート 445 (TCP 送信) をローカル ネットワークで開きます。
+- SMB 3.0 をサポートする Windows バージョンをインストールします。Windows では、オンプレミスのクライアントと、クラウドの Azure のファイル共有間でデータを安全に転送するために SMB 3.0 の暗号化を利用しています。 
+- インターネット アクセス用に SMB プロトコルで必要とされるポート 445 (TCP 送信) をローカル ネットワークで開きます。 
 
 > [AZURE.NOTE]一部のインターネット サービス プロバイダーは、ポート 445 をブロックしている場合があるため、サービス プロバイダーに確認する必要がある場合があります。
 
@@ -468,11 +468,11 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降で
 
 Azure ストレージ分析で File ストレージのメトリックがサポートされるようになりました。メトリック データを使用すると、要求のトレースや問題の診断ができます。
 
-[Azure ポータル](portal.azure.com)から File Storage のメトリックを有効にすることができます。REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの 1 つを使用して、プログラムでメトリックを有効にすることも可能です。
+[Azure ポータル](portal.azure.com)から File ストレージ のメトリックを有効にすることができます。REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの 1 つを使用して、プログラムでメトリックを有効にすることも可能です。
 
 ## File ストレージのよく寄せられる質問
 
-1. **File Storage では、Active Directory ベースの認証はサポートされていますか。**
+1. **File ストレージでは、Active Directory ベースの認証はサポートされていますか。** 
 
 	現在、AD ベースの認証や、ACL はサポートしていませんが、今後サポートする可能性はあります。現時点では、ファイル共有の認証には、Azure Storage のアカウント キーを使用しています。REST API またはクライアント ライブラリを使用した共有アクセス署名 (SAS) での回避策を提供しています。SAS を使用すると、指定した時間間隔の間に有効な特定のアクセス許可を持つトークンを生成できます。たとえば、特定のファイルへの読み取り専用のアクセス許可を持つトークンを生成できます。トークンを所有するすべてのユーザーは、そのファイルへの読み取り専用アクセスをその有効期間の間持ちます。
 
@@ -490,11 +490,11 @@ Azure ストレージ分析で File ストレージのメトリックがサポ�
 
 	はい。同じリージョン内のトラフィックは無料です。
 
-5. **オンプレミスの仮想マシンから Azure File Storage への接続は、Azure ExpressRoute に依存していますか。**
+5. **オンプレミスの仮想マシンから Azure File ストレージへの接続は、Azure ExpressRoute に依存していますか。**
 
 	いいえ。ExpressRoute がない場合も、インターネット アクセス用にポート 445 (TCP 送信) が開いている場合は、オンプレミスからファイル共有にアクセスできます。ただし、必要であれば File ストレージで ExpressRoute を使用できます。
 
-6. **Azure File Storage の 1 つの用途は、フェールオーバー クラスターの "ファイル共有監視" ですか。**
+6. **Azure File ストレージの 1 つの用途は、フェールオーバー クラスターの "ファイル共有監視" ですか。**
 
 	現在これはサポートされていません。
 
@@ -502,7 +502,7 @@ Azure ストレージ分析で File ストレージのメトリックがサポ�
 
 	RA-GRS もサポート予定ですが、まだ予定は公表できません。
 
-8. **いつ Azure File Storage に既存のストレージ アカウントを使用できるようになりますか。**
+8. **いつ Azure File ストレージに既存のストレージ アカウントを使用できるようになりますか。**
 
 	現在 Azure File ストレージですべてのストレージ アカウントが有効です。
 
@@ -518,7 +518,7 @@ Azure ストレージ分析で File ストレージのメトリックがサポ�
 
 	SMB を使用してファイル共有をマウントした場合、このレベルでアクセス許可を制御することはできません。ただし、REST API またはクライアント ライブラリを使用して Shared Access Signature (SAS) を作成することでこれを実現することができます。
 
-12. **File Storage にファイルを解凍する際にパフォーマンスが低かった場合は、どうすればよいですか。**
+12. **File ストレージ にファイルを解凍する際にパフォーマンスが低かった場合は、どうすればよいですか。**
 
 	File ストレージに大量のファイルを転送する場合、ネットワーク転送に最適化されている AzCopy、Azure Powershell (Windows)、または Azure CLI (Linux または Unix) を使用することをお勧めします。
 
@@ -532,7 +532,7 @@ Azure File ストレージの詳細については、次のリンクを参照し
 - [Linux で Azure File Storage を使用する方法](storage-how-to-use-files-linux.md)
 - [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
-### File Storage 用のツールのサポート
+### File ストレージ用のツールのサポート
 
 - [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)
 - [Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md)
@@ -545,8 +545,8 @@ Azure File ストレージの詳細については、次のリンクを参照し
 
 ### ブログ記事
 
-- [Azure File Storage の一般提供開始](http://go.microsoft.com/fwlink/?LinkID=626728&clcid=0x409)
-- [Azure File ストレージの詳細情報](http://go.microsoft.com/fwlink/?LinkID=626729&clcid=0x409)
+- [Azure File ストレージの一般提供開始](http://go.microsoft.com/fwlink/?LinkID=626728&clcid=0x409)
+- [Azure File ストレージの詳細情報](http://go.microsoft.com/fwlink/?LinkID=626729&clcid=0x409) 
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 

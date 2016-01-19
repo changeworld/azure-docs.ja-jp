@@ -206,7 +206,7 @@ Azure CLI を使用してダウンロードした Azure リソース マネー�
 
 **-n (または --name)**。新しいリソース グループの名前です。このシナリオでは、*appgatewayRG* です。
 
-**-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。このシナリオでは、*eastus* です。
+**-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。このシナリオでは、*Eastus* です。
 
 4. **azure group deployment create** コマンドレットを実行し、上記でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。出力の後に表示されるリストは、使用されたパラメーターについての説明です。
 
@@ -229,7 +229,7 @@ Azure CLI を使用してダウンロードした Azure リソース マネー�
 		data:    -----------------  ------  --------------
 		data:    location           String  East US
 		data:    addressPrefix      String  10.0.0.0/16
-		data:    subnetPrefix       String  10.0.0.0/24
+		data:    subnetPrefix       String  10.0.0.0/24	
 		data:    skuName            String  Standard_Small
 		data:    capacity           Int     2
 		data:    backendIpAddress1  String  10.0.1.10
