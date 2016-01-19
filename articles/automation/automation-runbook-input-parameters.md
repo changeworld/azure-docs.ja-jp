@@ -49,7 +49,7 @@ PowerShell ワークフロー Runbook のパラメーター定義には次の一
      ) 
 ```
 
->[AZURE.NOTE]パラメーターを定義するとき、**Mandatory** 属性を指定しない場合、既定でパラメーターは任意と見なされます。また、PowerShell ワークフロー Runbook のパラメーターに既定値を設定した場合、**Mandatory** 属性値に関係なく、PowerShell は任意のパラメーターとして扱います。
+>[AZURE.NOTE] パラメーターを定義するとき、**Mandatory** 属性を指定しない場合、既定でパラメーターは任意と見なされます。また、PowerShell ワークフロー Runbook のパラメーターに既定値を設定した場合、**Mandatory** 属性値に関係なく、PowerShell は任意のパラメーターとして扱います。
 
 例として、PowerShell ワークフロー Runbook に仮想マシン (1 台の VM またはサービス内の全 VM) の詳細を出力する入力パラメーターを構成します。下のスクリーンショットでわかるように、この Runbook には 2 つのパラメーターがあります。仮想マシンの名前とサービスの名前です。
 
@@ -97,9 +97,17 @@ Runbook に object 型の入力パラメーターが含まれている場合、�
 
 4. **Get-AzureVM** アクティビティで使用される 2 つのパラメーターを次のプロパティで作成します。
 
-    * **Parameter1:** 名前 – VMName、型 – String、必須 – いいえ
+    * **Parameter1:** 
+    名前 – VMName、
+    型 – String、
+    必須 – いいえ
 	
-    * **Parameter2:** 名前 – ServiceName、型 – String、必須 – いいえ、既定値 – カスタム、カスタム既定値 – <仮想マシンを含む既定サービスの名前>
+    * **Parameter2:** 
+    名前 – ServiceName、
+    型 – String、
+    必須 – いいえ、
+    既定値 – カスタム、
+    カスタム既定値 – \<仮想マシンを含む既定サービスの名前>
 
 5. パラメーターを追加したら、**[OK]** をクリックします。パラメーターが **[入力と出力]** ブレードに表示されます。**[OK]** をもう一度クリックし、Runbook を**保存**し、**公開**します。
 
@@ -122,7 +130,7 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
 ![ヘルプ バルーン](media/automation-runbook-input-parameters/automation_05_HelpBaloon.png)
 
 
->[AZURE.NOTE]文字列型のパラメーターの場合、文字列値に**空**を指定できます。入力パラメーター テキストボックスに **[EmptyString]** を入力すると、空の文字列がパラメーターに渡されます。また、文字列型パラメーターでは **Null** 値を渡すことができません。文字列パラメーターに何の値も渡さないと、PowerShell はそれを Null として解釈します。
+>[AZURE.NOTE] 文字列型のパラメーターの場合、文字列値に**空**を指定できます。入力パラメーター テキストボックスに **[EmptyString]** を入力すると、空の文字列がパラメーターに渡されます。また、文字列型パラメーターでは **Null** 値を渡すことができません。文字列パラメーターに何の値も渡さないと、PowerShell はそれを Null として解釈します。
 
 * **PowerShell コマンドレットを利用して公開済み Runbook を起動し、パラメーターを割り当てる**
 
@@ -130,7 +138,8 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
 
     **例:**
 
-      ``` $params = @{“VMName”=”WSVMClassic”; ”ServiceName”=”WSVMClassicSG”}
+      ```
+        $params = @{“VMName”=”WSVMClassic”; ”ServiceName”=”WSVMClassicSG”}
 
         Start-AzureAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” -Parameters $params
       ```
@@ -140,12 +149,13 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
 
     **例:**
 
-      ``` $params = @{“VMName”=”WSVMClassic”;”ServiceName”=”WSVMClassicSG”}
+      ```
+        $params = @{“VMName”=”WSVMClassic”;”ServiceName”=”WSVMClassicSG”}
 
         Start-AzureRMAutomationRunbook -AutomationAccountName “TestAutomationRG” -Name “Get-AzureVMGraphical” –ResourceGroupName “RG1” -Parameters $params
       ```
 
->[AZURE.NOTE]渡した入力パラメーターと共に、PowerShell コマンドレットで Runbook を起動すると、値 **PowerShell** で既定のパラメーター **MicrosoftApplicationManagementStartedBy** が作成されます。このパラメーターは [ジョブの詳細] ブレードに表示されます。
+>[AZURE.NOTE] 渡した入力パラメーターと共に、PowerShell コマンドレットで Runbook を起動すると、値 **PowerShell** で既定のパラメーター **MicrosoftApplicationManagementStartedBy** が作成されます。このパラメーターは [ジョブの詳細] ブレードに表示されます。
 
 * **SDK で Runbook を起動し、パラメーターを割り当てる**
 
