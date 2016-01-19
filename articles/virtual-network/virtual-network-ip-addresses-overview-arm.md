@@ -130,8 +130,10 @@ Azure で管理される DNS サーバーで構成されている VM は、そ�
 
 ||既定の制限|上限| 
 |---|---|---| 
-|パブリック IP アドレス (動的)|60|サポートにお問い合わせ| |パブリック IP アドレス (静的)|20|サポートにお問い合わせ| 
-|ロード バランサーあたりのパブリック フロント エンド IP|5|サポートにお問い合わせ|ロード バランサーあたりのプライベート フロント エンド IP|1|サポートにお問い合わせ|
+|パブリック IP アドレス (動的)|60|サポートにお問い合わせ|
+|パブリック IP アドレス (静的)|20|サポートにお問い合わせ| 
+|ロード バランサーあたりのパブリック フロント エンド IP|5|サポートにお問い合わせ|
+|ロード バランサーあたりのプライベート フロント エンド IP|1|サポートにお問い合わせ|
 
 Azure での[ネットワークの制限](azure-subscription-service-limits.md#networking-limits)に関する情報を必ずご確認ください。
 
@@ -159,3 +161,4 @@ Azure での[ネットワークの制限](azure-subscription-service-limits.md#n
 - [Create a backend pool with static private IP addresses for an application gateway by using PowerShell (PowerShell を使用して Application Gateway の静的プライベート IP アドレスを含むバックエンド プールを作成する)](application-gateway-create-gateway-arm.md#create-an-application-gateway-configuration-object)
 
 <!---HONumber=AcomDC_0107_2016-->
+<!---Line 131 to 136-->
