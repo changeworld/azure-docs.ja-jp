@@ -18,6 +18,8 @@
 
 # チュートリアル: Azure IoT Hub の使用
 
+[AZURE.INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
+
 ## はじめに
 
 Azure IoT Hub は、何百万もの IoT デバイスとソリューション バック エンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。IoT プロジェクトが直面する最も大きな課題の 1 つは、ソリューション バックエンドにデバイスを確実かつ安全に接続する方法です。この課題に対応するために、IoT Hub は次の機能を備えています。
@@ -30,7 +32,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 
 - Azure ポータルを使用して IoT Hub を作成する。
 - IoT Hub におけるデバイス ID を作成する。
-- クラウド バックエンドへのテレメトリの送信とクラウド バックエンドからのコマンドの受信をシミュレーション対象デバイスを作成する。
+- クラウド バックエンドへのテレメトリの送信と、クラウド バックエンドからのコマンドの受信のシミュレーション対象デバイスを作成する。
 
 このチュートリアルの最後には、次の 3 つの Windows コンソール アプリケーションが作成されています。
 
@@ -54,30 +56,28 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 
 2. ジャンプバーで、**[新規]**、**[モノのインターネット]**、**[Azure IoT Hub]** の順にクリックします。
 
-   	![][1]
+    ![][1]
 
 3. **[IoT Hub]** ブレードで、IoT Hub の構成を選択します。
 
-   	![][2]
+    ![][2]
 
     * **[名前]** ボックスに IoT Hub の名前を入力します。その**名前**が有効で利用できる場合、**[名前]** ボックスに緑色のチェック マークが表示されます。
     * **[価格とスケール レベル]** を選択します。このチュートリアルでは特定のレベルは必要ありません。
     * **[リソース グループ]** で、新しいリソース グループを作成するか、既存のリソース グループを選択します。詳細については、[リソース グループを使用した Azure リソースの管理][lnk-resource-groups]に関するページを参照してください。
     * **[場所]** で、IoT Hub をホストする場所を選択します。  
 
-
 4. 必要な IoT Hub 構成オプションを選択したら、**[作成]** をクリックします。Azure が IoT Hub を作成するまでに数分かかる場合があります。状態を確認するには、スタート画面または通知パネルで進行状況を監視してください。
 
     ![][3]
 
-
 5. IoT Hub が正常に作成されたら、新しい IoT Hub のブレードを開き、**[ホスト名]** を書き留めて**鍵**のアイコンをクリックします。
 
-   	![][4]
+    ![][4]
 
 6. **[iothubowner]** ポリシーをクリックし、**[iothubowner]** ブレードで接続文字列をコピーして書き留めます。
 
-   	![][5]
+    ![][5]
 
 IoT Hub の作成は以上です。以降の作業に必要なホスト名と接続文字列が得られました。
 
@@ -120,7 +120,6 @@ IoT Hub の詳細については、次の記事を参照してください。
 [3]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub3.png
 [4]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub4.png
 [5]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub5.png
-
 [41]: ./media/iot-hub-csharp-csharp-getstarted/run-apps1.png
 [42]: ./media/iot-hub-csharp-csharp-getstarted/run-apps2.png
 
@@ -139,4 +138,4 @@ IoT Hub の詳細については、次の記事を参照してください。
 [lnk-resource-groups]: resource-group-portal.md
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/21/2015"
+	ms.date="01/12/2016"
 	ms.author="stepsic"/>
 
 # SaaS サービスを接続する新しいロジック アプリを作成します。
@@ -22,11 +22,11 @@
 | --------------- |
 | [Logic Apps の定義言語](https://msdn.microsoft.com/library/azure/dn948512.aspx?f=255&MSPPError=-2147217396) |
 | [Logic Apps コネクターのドキュメント](https://azure.microsoft.com/documentation/articles/app-service-logic-connectors-list/) |
-| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurelogicapps) |
+| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) |
 
 このトピックでは、初めての方に向けて [App Service Logic Apps](app-service-logic-what-are-logic-apps.md) の使い方を簡単に説明します。今回は、興味を持ったツイートを Dropbox フォルダーに保存できるようにするまでの流れを見ていきます。
 
-このシナリオでは、以下のものが必要になります。
+このシナリオを使用するには、以下が必要です。
 
 - Azure サブスクリプション
 - Twitter アカウント
@@ -152,7 +152,7 @@
 
 4. **[コンテンツ]** フィールドは、`...` ボタン、**[ツイートのテキスト]** オプションの順にクリックします。
 
-	これによって、値 `@first(body('twitterconnector')).TweetText` がテキスト ボックスに入力されます。この値の各部の意味は、以下のとおりです。
+	この操作を行うと、`@first(body('twitterconnector')).TweetText` の値がテキスト ボックスに入力されます。この値の各部の意味は、以下のとおりです。
 
 	部分 | 説明
 	------------------------------------------ | ------------
@@ -181,11 +181,11 @@
 
 5. アプリを無効にするには、コマンド バーで **[無効化]** をクリックします。
 
-クラウド上で実行できる簡単なロジック アプリを 5 分もしないうちに作成できました。Logic Apps の機能の使用について詳しくは、「[ロジック アプリの機能を使用する]」をご覧ください。ロジック アプリの定義自体の詳細については、「[ロジック アプリの定義を作成する](app-service-logic-author-definitions.md)」を参照してください。
+クラウド上で実行できる簡単なロジック アプリを 5 分もしないうちに作成できました。Logic Apps 機能の使用に関する詳細については、「[ロジック アプリの機能を使用する]」を参照してください。ロジック アプリの定義自体の詳細については、「[ロジック アプリの定義を作成する](app-service-logic-author-definitions.md)」を参照してください。
 
 <!-- Shared links -->
 [Azure portal]: https://portal.azure.com
 [Use logic app features]: app-service-logic-use-logic-app-features.md
 [ロジック アプリの機能を使用する]: app-service-logic-use-logic-app-features.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

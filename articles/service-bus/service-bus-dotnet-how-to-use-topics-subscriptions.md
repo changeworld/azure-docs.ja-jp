@@ -283,7 +283,7 @@ Client.OnMessage((message) =>
 }, options);
 ```
 
-この例では、[OnMessageOptions](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.aspx) オブジェクトを使用して、[OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx) コールバックを構成します。[AutoComplete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autocomplete.aspx) は **false** に設定され、受信したメッセージで [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) を呼び出すタイミングを手動で制御できるようになります。[AutoRenewTimeout](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout.aspx) は 1 分に設定され、クライアントは呼び出しがタイムアウトになるまで最大で 1 分間メッセージを待ち、新しい呼び出しを行ってメッセージを確認します。このプロパティ値により、メッセージを取得しない課金対象呼び出しをクライアントが行う回数が減ります。
+この例では、[OnMessageOptions](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.aspx) オブジェクトを使用して、[OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx) コールバックを構成します。[AutoComplete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autocomplete.aspx) は **false** に設定され、受信したメッセージで [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) を呼び出すタイミングを手動で制御できるようになります。[AutoRenewTimeout](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout.aspx) は 1 分に設定され、クライアントは自動更新機能が終了するまで最大で 1 分間待機し、新しい呼び出しを行ってメッセージを確認します。このプロパティ値により、メッセージを取得しない課金対象呼び出しをクライアントが行う回数が減ります。
 
 ## アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
 
@@ -327,4 +327,4 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
   [Service Bus のブローカー メッセージングに関する .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_0114_2016--->

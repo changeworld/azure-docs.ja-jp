@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/02/2015"
+	ms.date="01/08/2016"
 	ms.author="andkjell;billmath"/>
 
 # オンプレミス ID と Azure Active Directory の統合
@@ -26,7 +26,7 @@ Azure AD Connect は、Windows Server Active Directory などのオンプレミ�
 
 - ユーザーは、単一の ID を使ってオンプレミスのアプリケーションとクラウド サービス (Office 365 など) にアクセスできます。
 
-- 単一のツールにより、同期とサインインのための容易なデプロイを実現できます。
+- 単一のツールにより、同期とサインインのための容易なデプロイメントを実現できます。
 
 - それぞれのシナリオに適した最新の機能が手に入ります。Azure AD Connect は、DirSync や Azure AD Sync など、旧バージョンの ID 統合ツールの後継ツールです。詳細については、「[ディレクトリ統合ツールの比較](active-directory-aadconnect-get-started-tools-comparison.md)」を参照してください。
 
@@ -38,7 +38,7 @@ Azure Active Directory Connect は 3 つの主要な部分で構成されます�
 <center>![Azure AD Connect スタック](./media/active-directory-aadconnect-how-it-works/AADConnectStack2.png) </center>
 
 - 同期 - この部分は、以前 [Dirsync および Azure AD Sync](active-directory-aadconnect-get-started-tools-comparison.md) としてリリースされたコンポーネントと機能で構成されます。これは、ユーザーとグループの作成を担当している部分です。オンプレミス環境のユーザーとグループに関する情報とクラウド内の情報が一致することも保証します。
-- AD FS - これは Azure AD Connect のオプションの部分であり、オンプレミスの AD FS インフラストラクチャを使用して、ハイブリッド環境をセットアップするために使用できます。この部分は、ドメイン参加 SSO、AD のログインのポリシーの適用、スマート カードやサード パーティの MFA などを含む複雑なデプロイに対応するために、組織で使用できます。
+- AD FS - これは Azure AD Connect のオプションの部分であり、オンプレミスの AD FS インフラストラクチャを使用して、ハイブリッド環境をセットアップするために使用できます。この部分は、ドメイン参加 SSO、AD のログインのポリシーの適用、スマート カードやサード パーティの MFA などを含む複雑なデプロイメントに対応するために、組織で使用できます。
 - 正常性の監視 - Azure AD Connect Health により、AD FS サーバーを強力に監視し、このアクティビティを Azure ポータルで一元的に表示できます。詳細については、「[Azure Active Directory Connect Health](active-directory-aadconnect-health.md)」を参照してください。
 
 ## Azure AD Connect のインストール
@@ -120,7 +120,7 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 | ユーザーと連絡先について | [Azure AD Connect Sync: ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md) |
 | 宣言型のプロビジョニング | [Azure AD Connect Sync: 宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
 | 宣言型のプロビジョニングの関数リファレンス | [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md) |
-| ベスト プラクティス | [既定の構成の変更するためのベスト プラクティス](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) |
+| 既定の構成の変更 | [既定の構成の変更するためのベスト プラクティス](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) |
 
 ## 詳細情報とリファレンス
 
@@ -140,4 +140,4 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 
 [AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

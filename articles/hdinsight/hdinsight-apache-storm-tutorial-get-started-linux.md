@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/05/2015"
+   ms.date="01/12/2016"
    ms.author="larryfr"/>
 
 
@@ -102,7 +102,7 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
     
 	__[選択]__ ボタンを使用して、__[ノード価格レベル]__ 情報がを保存します。
 
-8. __[オプションの構成]__ を選択します。このブレードでは、クラスターを__仮想ネットワーク__に参加させたり、__[スクリプト操作]__ を使用してクラスターをカスタマイズしたりできるほか、__カスタム メタストア__を使用して Hive と Oozie 用のデータを保持したりできます。
+8. __[オプションの構成]__ を選択します。このブレードでは、クラスターを__Virtual Network__に参加させたり、__[スクリプト操作]__ を使用してクラスターをカスタマイズしたりできるほか、__カスタム メタストア__を使用して Hive と Oozie 用のデータを保持したりできます。
 
 	![[オプションの構成] ブレード](./media/hdinsight-apache-storm-tutorial-get-started-linux/optionalconfiguration.png)
     
@@ -148,25 +148,13 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
 
 Storm UI には、トポロジの実行を操作する Web インターフェイスがあり、HDInsight クラスターに含まれています。
 
-> [AZURE.IMPORTANT]Storm UI は、インターネットでパブリックに使用できません。SSH トンネルを使用して HDInsight クラスター ヘッド ノードにアクセスする必要があります。詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
+次の手順により、Storm UI を使用してトポロジを監視します。
 
-次の手順で Storm UI を表示します。
+1. Web ブラウザーを開き、https://CLUSTERNAME.azurehdinsight.net/stormui に移動します。__CLUSTERNAME__ はクラスターの名前です。Storm UI が表示されます。
 
-1. クラスターに対する SSH トンネルを作成したら、Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net を開きます。この __CLUSTERNAME__ にはクラスター名を指定します。Ambari Web UI が開きます。
+	> [AZURE.NOTE]ユーザー名とパスワードの入力が求められたら、クラスターの作成時に使用したクラスター管理者名 (admin) とパスワードを入力します。
 
-	> [AZURE.NOTE]ユーザー名とパスワードの入力が求められたら、クラスターの作成時に使用したクラスター管理者名 (admin) とパスワードを入力します。ブラウザーと Ambari Web UI からそれぞれ認証を求められることがあります。この場合は、両方に同じ資格情報を使用します。
-
-2. ページの左側のサービスの一覧で、__[Storm]__ を選択します。__[クイック リンク]__ で __[Storm UI]__ を選択します。
-
-    ![クイックリンクの Storm UI エントリ](./media/hdinsight-apache-storm-tutorial-get-started-linux/ambari-storm.png)
-
-    これにより、Storm UI が表示されます。
-
-    ![Storm UI](./media/hdinsight-apache-storm-tutorial-get-started-linux/stormui.png)
-	
-	> [AZURE.NOTE]サーバーが見つからないというエラーを受信する場合は、クラスターに対する SSH トンネルが確立していない可能性があります。詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
-
-4. **[Topology summary]** で、**[名前]** 列の **[wordcount]** エントリを選択します。これにより、トポロジの詳細が表示されます。
+2. **[Topology summary]** で、**[名前]** 列の **[wordcount]** エントリを選択します。これにより、トポロジの詳細が表示されます。
 
 	![Storm Starter WordCount トポロジの情報が含まれている Storm ダッシュボード。](./media/hdinsight-apache-storm-tutorial-get-started-linux/topology-summary.png)
 
@@ -192,7 +180,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
 	* **強制終了** - 指定したタイムアウト後に Storm トポロジを停止します。
 
-5. このページで、**[スパウト]** または **[ボルト]** セクションからエントリを選択します。選択したコンポーネントに関する情報が表示されます。
+3. このページで、**[スパウト]** または **[ボルト]** セクションからエントリを選択します。選択したコンポーネントに関する情報が表示されます。
 
 	![選択したコンポーネントに関する情報が含まれている Storm ダッシュボード。](./media/hdinsight-apache-storm-tutorial-get-started-linux/component-summary.png)
 
@@ -210,7 +198,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
 	* **エラー** - このコンポーネントで生成されたエラー。
 
-5. スパウトかボルトに関する詳細を表示した状態で、**[エグゼキュータ]** セクションの **[ポート]** 列でエントリを選択 し、コンポーネントの特定のインスタンスの詳細を表示します。
+4. スパウトかボルトに関する詳細を表示した状態で、**[エグゼキュータ]** セクションの **[ポート]** 列でエントリを選択 し、コンポーネントの特定のインスタンスの詳細を表示します。
 
 		2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["with"]
 		2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["nature"]
@@ -245,4 +233,4 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

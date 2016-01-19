@@ -1,20 +1,20 @@
 <properties
-	pageTitle="Azure Data Factory を使用してデータを読み込む | Microsoft Azure"
-	description="Azure Data Factory を使用してデータを読み込む方法"
-	services="sql-data-warehouse"
-	documentationCenter="NA"
-	authors="lodipalm"
-	manager="barbkess"
-	editor=""
-	tags="azure-sql-data-warehouse"/>
+   pageTitle="Azure Data Factory を使用してデータを読み込む | Microsoft Azure"
+   description="Azure Data Factory を使用してデータを読み込む方法"
+   services="sql-data-warehouse"
+   documentationCenter="NA"
+   authors="lodipalm"
+   manager="barbkess"
+   editor=""
+   tags="azure-sql-data-warehouse"/>
 <tags
    ms.service="sql-data-warehouse"
    ms.devlang="NA"
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="lodipalm"/>
+   ms.date="01/07/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>
 
 # Azure Data Factory を使用してデータを読み込む
 
@@ -49,7 +49,7 @@
 
 1. 最初に、[サンプル データをダウンロード](https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv)します。このデータは、ご利用のサンプル データに既に含まれているサンプル データと共に使用することで、さらに 3 年分の売上データを提供します。
 
-2. ダウンロードしたデータは、AZCopy で次のスクリプトを実行して Blob Storage に移動できます。
+2. ダウンロードしたデータは、AZCopy で次のスクリプトを実行して BLOB ストレージに移動できます。
 
         AzCopy /Source:<Sample Data Location>  /Dest:https://<storage account>.blob.core.windows.net/<container name> /DestKey:<storage key> /Pattern:FactInternetSales.csv
 
@@ -88,7 +88,7 @@
 
 1. データ ファクトリの [作成とデプロイ] セクションに移動し、このプロセスを開始します。
 
-2. [新しいデータセット]、[Azure BLOB ストレージ] の順にクリックし、ストレージをデータ ファクトリにリンクします。次のスクリプトを使用して、Azure Blob Storage のデータを定義することができます。
+2. [新しいデータセット]、[Azure BLOB ストレージ] の順にクリックし、ストレージをデータ ファクトリにリンクします。次のスクリプトを使用して、Azure BLOB ストレージのデータを定義することができます。
 
 		{
 			"name": "<Dataset Name>",
@@ -206,4 +206,4 @@
 	}
 	
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

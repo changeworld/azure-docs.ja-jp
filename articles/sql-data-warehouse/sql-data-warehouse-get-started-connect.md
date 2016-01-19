@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="twounder;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="mausher;barbkess;sonyama"/>
 
 # Visual Studio で SQL Data Warehouse に接続する
 
@@ -108,4 +108,4 @@
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

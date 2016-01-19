@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="robinsh"
 	manager="carmonm"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/04/2015" 
+	ms.date="12/04/2015"
 	ms.author="robinsh"/>
 
 
@@ -27,8 +27,8 @@ Azure ストレージ アカウントを使用すると、Azure Storage の Azur
 
 ストレージ アカウントには、次の 2 種類があります。
 
-- Standard Storage アカウント。Blob、Table、Queue、File Storage が含まれています。 
-- Premium Storage アカウント。現在、Azure 仮想マシン ディスクでのみサポートされています。Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)」をご覧ください。
+- Standard ストレージ アカウント。Blob、Table、Queue、File Storage が含まれています。
+- Premium ストレージ アカウント。現在、Azure 仮想マシン ディスクでのみサポートされています。Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)」をご覧ください。
 
 ## ストレージ アカウントの課金
 
@@ -39,7 +39,7 @@ Azure Storage は、ストレージ アカウントに基づいた使用量に�
 - トランザクションには、Azure Storage に対するすべての読み取り操作と書き込み操作が含まれます。
 - 送信データ転送とは、Azure リージョンから転送されたデータを意味します。他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合、そのアプリケーションがクラウド サービスか、その他の種類のアプリケーションかに関係なく、送信データ転送として課金されます(Azure サービスでは、同じデータ センター内のデータとサービスをグループ化して、送信データ転送処理とそれに伴う料金を削減または不要にする手順が用意されています)。  
 
-ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Azure の価格](http://azure.microsoft.com/pricing/details/#storage)」ページをご覧ください。送信データ転送の価格の詳細については、[データ転送の価格詳細](http://azure.microsoft.com/pricing/details/data-transfers/)に関するページをご覧ください。
+ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Azure の価格](http://azure.microsoft.com/pricing/details/#storage)」ページをご覧ください。送信データ転送の料金の詳細については、[データ転送の料金詳細](http://azure.microsoft.com/pricing/details/data-transfers/)に関するページをご覧ください。
 
 ストレージ アカウントの容量とパフォーマンスのターゲットの詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/library/azure/dn249410.aspx)」をご覧ください。
 
@@ -173,4 +173,4 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

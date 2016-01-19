@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="10/08/2015"
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Azure App Service での ASP.NET API アプリの作成
@@ -56,4 +56,4 @@ API アプリのユーザーの認証については、「[Azure App Service で
 
 API アプリの機能については、「[API Apps とは](app-service-api-apps-why-best-platform.md)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

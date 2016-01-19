@@ -20,19 +20,15 @@
 # Windows を実行する仮想マシンを Azure ポータルで作成する#
 
 > [AZURE.SELECTOR]
-- [Azure Portal - Windows](virtual-machines-windows-tutorial.md)
-- [Azure PowerShell](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
-- [Azure PowerShell - Template](virtual-machines-create-windows-powershell-resource-manager-template.md)
-- [Azure Portal - Linux](virtual-machines-linux-tutorial-portal-rm.md)
-- [Azure CLI](virtual-machines-linux-tutorial.md)
-
-<br>
-
-
+- [Portal - Windows](virtual-machines-windows-tutorial.md)
+- [PowerShell](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
+- [PowerShell - Template](virtual-machines-create-windows-powershell-resource-manager-template.md)
+- [Portal - Linux](virtual-machines-linux-tutorial-portal-rm.md)
+- [CLI](virtual-machines-linux-tutorial.md)
 
 このチュートリアルでは、Azure ポータルで Azure 仮想マシンをわずか数分で簡単に作成する方法を示します。仮想マシンを作成するための例として、Windows Server 2012 R2 Datacenter イメージを使用しますが、これは Azure によって提供される多くのイメージの 1 つにすぎません。イメージの選択肢は、サブスクリプションによって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイメント モデル。
 
 リソース マネージャーのテンプレートまたは自動化ツールと共に、独自のイメージを使用して仮想マシンを作成することもできます。さまざまな方法の詳細については、「[Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)」を参照してください。
 
@@ -54,9 +50,9 @@
 
 	>[AZURE.TIP]その他のイメージを見つけるには、**[Marketplace]** をクリックし、使用可能な項目を検索するか、フィルターで抽出します。
 
-3. **[Windows Server 2012 R2 Datacenter]** ページの **[デプロイ モデルの選択]** で、**[リソース マネージャー]** を選択します。**[作成]** をクリックします。
+3. **[Windows Server 2012 R2 Datacenter]** ページの **[デプロイメント モデルの選択]** で、**[リソース マネージャー]** を選択します。**[作成]** をクリックします。
 
-	![Azure VM で選択するデプロイを示すスクリーンショット](./media/virtual-machines-windows-tutorial/marketplace_search_select.png)
+	![Azure VM で選択するデプロイメントを示すスクリーンショット](./media/virtual-machines-windows-tutorial/marketplace_search_select.png)
 
 ## 仮想マシンの作成
 
@@ -64,7 +60,7 @@
 
 1. **[仮想マシンの作成]** ブレードで **[基本]** をクリックします。
 
-2. **[名前]** に、仮想マシンの名前を自由に入力します。名前には、特殊文字を含めることはできません。
+2. 仮想マシンの任意の**名前**を入力します。名前には、特殊文字を含めることはできません。
 
 3. 管理用の**ユーザー名**と強力な**パスワード**を入力します。パスワードは、8 ～ 123 文字で指定する必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字のうち、少なくとも 3 つを含める必要があります。**仮想マシンにログオンする際に、このユーザー名とパスワードが必要になります。**
 
@@ -87,7 +83,7 @@
 
 	![Azure VM で選択できる構成の概要を示すスクリーンショット](./media/virtual-machines-windows-tutorial/create_vm_summary.PNG)
 
-8. Azure が仮想マシンを作成している間の進捗状況は、ハブ メニューの **[Virtual Machines]** で確認できます。
+8. Azure が仮想マシンを作成している間、ハブ メニューの **[Virtual Machines]** で進捗状況を追跡できます。
 
 ## 仮想マシンへのログオン
 
@@ -116,6 +112,6 @@
 ## 次のステップ
 
 * Azure PowerShell と Azure CLI を使用して、[仮想マシンのイメージの検索と選択](resource-groups-vm-searching.md)を行います。
-* [Azure リソース マネージャー](virtual-machines-how-to-automate-azure-resource-manager.md)と [Azure リソース マネージャー テンプレート](http://azure.microsoft.com/documentation/templates/)を使用して、仮想マシンとワークロードのデプロイと管理を自動化します。
+* [Azure リソース マネージャー テンプレート](http://azure.microsoft.com/documentation/templates/)を使用して、仮想マシンとワークロードのデプロイメントと管理を自動化します。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

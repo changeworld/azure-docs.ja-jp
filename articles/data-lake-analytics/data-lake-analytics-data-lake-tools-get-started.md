@@ -10,7 +10,7 @@
 <tags
    ms.service="data-lake-analytics"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
    ms.date="01/07/2015"
@@ -69,11 +69,11 @@ U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析す�
 
 	![U-SQL Visual Studio プロジェクト U-SQL](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-upload-files.png)
 
-**Azure BLOB ストレージ アカウントにファイルをアップロードするには**
+**リンクされている Azure BLOB ストレージ アカウントにファイルをアップロードするには**
 
 1. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]**、使用する Data Lake Analytics アカウント、**[ストレージ アカウント]** の順に展開します。既定の Data Lake ストレージ アカウント、リンクされている Data Lake ストレージ アカウント、リンクされている Azure ストレージ アカウントが表示されます。 
 2. Azure ストレージ アカウントを展開します。
-3. ファイルをアップロードするコンテナーを右クリックして、**[エクスプローラー]** をクリックします。
+3. ファイルをアップロードするコンテナーを右クリックして、**[エクスプローラー]** をクリックします。コンテナーがない場合、Azure ポータル、Azure PowerShell、その他のツールを使用して最初にコンテナーを作成する必要があります。
 4. ファイルをアップロードするフォルダーを参照します。 
 5. 空白部分を右クリックし、**[アップロード]** をクリックします。 
 
@@ -88,8 +88,6 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 
 	![新しい U-SQL Visual Studio プロジェクト](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
 
-	>[AZURE.NOTE]現時点では、Data Lake Tools は、ローカル実行で UNC プロジェクトパスをサポートしていません。
-	
 3. **[OK]** をクリックします。Visual Studio で、**Script.usql** ファイルを含むソリューションが作成されます。
 4. 次のスクリプトを **Script.usql** に入力します。
 
@@ -241,7 +239,7 @@ Visual Studio で U-SQL をローカル実行し、次のことができます�
     Data Lake サービスで実行されたスクリプトの場合、既定のストレージ アカウントがルート フォルダーとして使用され、適宜検索されます。
 
 ### U-SQL スクリプトのローカル テスト
-U-SQL スクリプトの開発方法については、「[U-SQL スクリプトの開発](#develop-and-test-u-sql-scripts)」を参照してください。U-SQL スクリプトをローカルで作成し、実行するには、クラスター ドロップダウン リストで **[(ローカル)]** を選択し、**[送信]** をクリックします。正しいデータを参照していることを確認してください。絶対パスを参照するか、DataRoot フォルダーの下にデータを配置します。
+U-SQL スクリプトの開発方法については、「[U-SQL スクリプトの開発](#develop-and-test-u-sql-scripts)」を参照してください。U-SQL スクリプトをローカルで作成し、実行するには、クラスター ドロップダウン リストで **[ローカル]** を選択し、**[送信]** をクリックします。正しいデータを参照していることを確認してください。絶対パスを参照するか、DataRoot フォルダーの下にデータを配置します。
 
 ![U-SQL Visual Studio プロジェクトのローカル送信](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-local-run.png)
 
@@ -357,4 +355,4 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

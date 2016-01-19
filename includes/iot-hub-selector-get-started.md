@@ -1,5 +1,5 @@
-> [AZURE.SELECTOR-LIST (Device | Cloud )]
-- [(C# | C#)](../articles/iot-hub-csharp-csharp-getstarted.md)
-- [(Java | C#)](../articles/iot-hub-java-csharp-getstarted.md)
+> [AZURE.SELECTOR]
+- [C#](../articles/iot-hub-csharp-csharp-getstarted.md)
+- [Java](../articles/iot-hub-java-java-getstarted.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

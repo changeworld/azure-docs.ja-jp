@@ -324,7 +324,7 @@
 		}
 
 
-8. Ctrl キーを押しながら **[Send Notification]** ボタンを ViewController.m にドラッグし、**Touch Down** に対するアクション **SendNotificationMessage** を追加します。REST API を使用して通知を送信するように次のコードでメソッドを更新します。
+8. Ctrl キーを押しながら **[Send Notification]** ボタンを ViewController.m にドラッグし、**Touch Down** イベントに対するアクション **SendNotificationMessage** を追加します。REST API を使用して通知を送信するように次のコードでメソッドを更新します。
 
 		- (IBAction)SendNotificationMessage:(id)sender
 		{
@@ -507,4 +507,4 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

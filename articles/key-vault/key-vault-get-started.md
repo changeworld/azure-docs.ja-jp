@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="11/10/2015"
+	ms.date="01/08/2016"
 	ms.author="cabailey"/>
 
 # Azure Key Vault の概要 #
@@ -233,9 +233,11 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 Web アプリケーションでの Azure Key Vault の使用方法に関するフォローアップ チュートリアルについては、「[Web アプリケーションからの Azure Key Vault の使用](key-vault-use-from-web-application.md)」をご覧ください。
 
+Key Vault の使用方法については、「[Azure Key Vault のログ記録](key-vault-logging.md)」を参照してください。
+
 Azure Key Vault の Azure PowerShell 1.0 のコマンドレットの一覧については、[Azure Key Vault コマンドレット](https://msdn.microsoft.com/library/azure/dn868052.aspx)に関するページを参照してください。
  
 
 プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-<!----HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

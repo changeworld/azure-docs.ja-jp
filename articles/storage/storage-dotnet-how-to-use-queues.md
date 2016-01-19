@@ -1,20 +1,20 @@
 <properties
 	pageTitle=".NET からキュー ストレージを使用する方法 | Microsoft Azure"
-	description="Microsoft Azure Queue ストレージを使用して、キューの作成と削除のほか、キュー メッセージの挿入、ピーク、取得、および削除を行う方法について説明します。"
+	description="Queue ストレージを使用して、キューの作成と削除のほか、キュー メッセージの挿入、ピーク、取得、および削除を行う方法について説明します。"
 	services="storage"
 	documentationCenter=".net"
 	authors="robinsh"
 	manager="carmonm"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
 	ms.workload="storage"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="hero-article" 
+	ms.topic="hero-article"
 	ms.date="12/04/2015"
-	ms.author="robinsh"/>
+	ms.author="gusapost"/>
 
 # .NET から Queue ストレージを使用する方法
 
@@ -246,7 +246,7 @@
     - [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
 - Azure Storage で作業するために記述したコードを簡略化する方法については、「[Azure WebJobs SDK とは](../websites-dotnet-webjobs-sdk/)」をご覧ください。
 - Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
-    - 構造化データの格納には、[テーブル ストレージ](storage-dotnet-how-to-use-tables.md)を使用します。 
+    - 構造化データの格納には、[テーブル ストレージ](storage-dotnet-how-to-use-tables.md)を使用します。
     - 非構造化データの格納には、[BLOB ストレージ](storage-dotnet-how-to-use-blobs.md)を使用します。
     - リレーショナル データの格納には、[SQL Database](sql-database-dotnet-how-to-use.md) を使用します。
 
@@ -259,6 +259,5 @@
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
- 
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -34,8 +34,8 @@ Site Recovery は、オンプレミスのセカンダリ データセンター�
 
 **REPLICATE** | **レプリケート元** | **レプリケート先** | **記事**
 ---|---|---|---
-VMware 仮想マシン | オンプレミスの VMware サーバー | Azure Storage | [デプロイする](site-recovery-vmware-to-azure.md)
-Windows または Linux の物理サーバー | オンプレミスの物理サーバー | Azure Storage | [デプロイする](site-recovery-vmware-to-azure.md)
+VMware 仮想マシン | オンプレミスの VMware サーバー | Azure Storage | [デプロイする](site-recovery-vmware-to-azure-classic.md)
+Windows または Linux の物理サーバー | オンプレミスの物理サーバー | Azure Storage | [デプロイする](site-recovery-vmware-to-azure-classic.md)
 Hyper-V 仮想マシン | VMM クラウド内のオンプレミスの Hyper-V ホスト サーバー | Azure Storage | [デプロイする](site-recovery-vmm-to-azure.md)
 Hyper-V 仮想マシン | オンプレミスの Hyper-V サイト (1 つ以上の Hyper-V ホスト サーバー) | Azure Storage | [デプロイする](site-recovery-hyper-v-site-to-azure.md)
 オンプレミスの Hyper-V 仮想マシン| VMM クラウド内のオンプレミスの Hyper-V ホスト サーバー | セカンダリ データセンターの VMM クラウド内のオンプレミス Hyper-V ホスト サーバー | [デプロイする](site-recovery-vmm-to-vmm.md)
@@ -68,4 +68,4 @@ Site Recovery は、アプライアンス対応のビジネス継続性に貢献
 この概要の確認が終わったら、Site Recovery のアーキテクチャの[詳細](site-recovery-components.md)を確認してください。
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

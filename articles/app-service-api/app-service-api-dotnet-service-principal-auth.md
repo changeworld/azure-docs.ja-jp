@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="11/28/2015"
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Azure App Service での API Apps のサービス プリンシパル認証
@@ -179,7 +179,7 @@ ContactsList.API プロジェクトには既に生成済みのクライアント
 
 3. **[認証/承認]** ブレードで、**[オン]** をクリックします。
 
-4. **[要求が認証されていない場合のアクション]** ボックスの一覧の **[Azure Active Directory でログイン]** を選択します。
+4. **[要求が認証されていない場合のアクション]** ドロップダウン リストで、**[Azure Active Directory でログイン]** を選択します。
 
 5. **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。
 
@@ -189,7 +189,7 @@ ContactsList.API プロジェクトには既に生成済みのクライアント
 
 7. **[OK]** をクリックします。
 
-10. **[認証/承認]** ブレードで、**[保存]** をクリックします。
+10. **認証/承認**ブレードで、**[保存]** をクリックします。
  
 11. [Azure クラシック ポータル](https://manage.windowsazure.com/)で **[Azure Active Directory]** に移動します。
 
@@ -304,4 +304,4 @@ ContactsList.API プロジェクトには既に生成済みのクライアント
 	* [Azure App Service のカスタム ドメイン名の構成](web-sites-custom-domain-name.md)
 	* [Azure の Web サイトでの HTTPS の有効化](web-sites-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -14,8 +14,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="lodipalm;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>
 
 # SQL Data Warehouse の作成
 
@@ -131,9 +131,8 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 
 ファイアウォールの構成が完了したので、デスクトップから、作成した SQL Data Warehouse データベースへの接続を作成できます。
 
-
 ## 次のステップ
 
 SQL Data Warehouse のサンプル データベースの作成は以上で完了です。いつでもデータベースに[接続](./sql-data-warehouse-get-started-connect.md)することができます。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

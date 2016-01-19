@@ -2,7 +2,7 @@
 	pageTitle="Objective C で IOS の Azure Mobile Engagement を開始する"
 	description="iOS アプリの分析やプッシュ通知で Azure Mobile Engagement を使用する方法を説明します。"
 	services="mobile-engagement"
-	documentationCenter="Mobile"
+	documentationCenter="ios"
 	authors="piyushjo"
 	manager="dwrede"
 	editor="" />
@@ -185,4 +185,4 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 [3]: ./media/mobile-engagement-ios-get-started/xcode-build-phases.png
 [4]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

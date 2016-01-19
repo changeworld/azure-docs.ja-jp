@@ -1,12 +1,12 @@
 <properties
-	pageTitle="TSQL で SQL Data Warehouse を作成する |Microsoft Azure"
-	description="TSQL で Azure SQL Data Warehouse を作成する方法を説明します。"
-	services="sql-data-warehouse"
-	documentationCenter="NA"
-	authors="lodipalm"
-	manager="barbkess"
-	editor=""
-	tags="azure-sql-data-warehouse"/>
+   pageTitle="TSQL で SQL Data Warehouse を作成する |Microsoft Azure"
+   description="TSQL で Azure SQL Data Warehouse を作成する方法を説明します。"
+   services="sql-data-warehouse"
+   documentationCenter="NA"
+   authors="lodipalm"
+   manager="barbkess"
+   editor=""
+   tags="azure-sql-data-warehouse"/>
 
 <tags
    ms.service="sql-data-warehouse"
@@ -14,8 +14,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="lodipalm"/>
+   ms.date="01/07/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>
 
 #TSQL で SQL Data Warehouse を作成する 
 
@@ -38,7 +38,7 @@
 
         sqlcmd -S <Server Name>.database.windows.net -I -U <User> -P <Password> -Q "CREATE DATABASE <Name> (EDITION='datawarehouse', SERVICE_OBJECTIVE = '<Compute Size - DW####>', MAXSIZE= <Storage Size - #### GB>)"
 
-これらの TSQL ステートメントを実行するときには、MAXSIZE パラメーターと SERVICE_OBJECTIVE パラメーターに注意してください。これらは、Data Warehouse インスタンスに割り当てられる最初のストレージ サイズおよびコンピューティングを決定します。MAXSIZE には次のいずれかのサイズを指定できますが、将来の拡張を見越して、より大きなサイズを選択することをお勧めします。
+これらの TSQL ステートメントを実行するときには、MAXSIZE パラメーターと SERVICE\_OBJECTIVE パラメーターに注意してください。これらは、Data Warehouse インスタンスに割り当てられる最初のストレージ サイズおよびコンピューティングを決定します。MAXSIZE には次のいずれかのサイズを指定できますが、将来の拡張を見越して、より大きなサイズを選択することをお勧めします。
 
 + 250 GB
 + 500 GB
@@ -51,7 +51,7 @@
 + 40,960 GB
 + 51,200 GB
 
-SERVICE_OBJECTIVE は、インスタンスに最初に割り当てられる DWU の数を示し、次のいずれかの値を指定できます。
+SERVICE\_OBJECTIVE は、インスタンスに最初に割り当てられる DWU の数を示し、次のいずれかの値を指定できます。
 
 + DW100
 + DW200
@@ -76,4 +76,4 @@ SQL Data Warehouse のプロビジョニングが済めば、[サンプル デ�
 [サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-manually-load-samples.md
 [価格のページ]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

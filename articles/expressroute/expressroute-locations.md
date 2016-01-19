@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/02/2015"
+   ms.date="01/08/2015"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
@@ -133,10 +133,12 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |---|---|
 |**[Nimbo](http://www.nimbo.com/)**|米国||
 |**[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)**|ヨーロッパ・中東・アフリカ|
+|**[プロジェクト リーダー](http://www.projectleadership.net/azure)** | 米国 |
+|**[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | 米国 |
 
 ## 次のステップ
 
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0114_2016-->
