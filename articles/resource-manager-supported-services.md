@@ -67,7 +67,7 @@ Virtual Network は、新しいリソース グループには移動できます
 | Search | はい | あり | [Search REST](https://msdn.microsoft.com/library/azure/dn798935.aspx) | | [Microsoft.Search](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Search%22&type=Code) |
 | SQL Data Warehouse | はい | | | |
 | StorSimple | いいえ | - | - | - |
- | Managed Cache | いいえ | - | - | - |
+| Managed Cache | いいえ | - | - | - |
 
 ## Web とモバイル
 
@@ -280,4 +280,3 @@ Web アプリを使用している場合、App Service プランのみを移動�
 - リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
 <!---HONumber=AcomDC_0107_2016-->
-<!---Line 35, delete "under break"-->
