@@ -117,7 +117,7 @@ Azure App Service に移行した後は、価格設定がより自由になり�
 
 自分のアプリケーションに適した価格レベルを自由に選択できます。App Service の価格に関する詳細については、「[App Service 価格]」を参照してください。
 
-> [AZURE.TIP]App Service Standard 層では、[ステージング スロット]、自動バックアップ、自動スケールなど、さまざまな機能にアクセスできます。この機会に新しい機能をお試しください。
+> [AZURE.TIP] App Service Standard 層では、[ステージング スロット]、自動バックアップ、自動スケールなど、さまざまな機能にアクセスできます。この機会に新しい機能をお試しください。
 
 ### <a name="review-migration-scheduler-jobs"></a>移行された Scheduler Jobs の確認
 
@@ -143,7 +143,7 @@ Scheduler Jobs は移行後約 30 分経過するまで表示されません。�
 
 この作業は任意ですが、管理しやすくなります。
 
-> [AZURE.TIP]Azure App Service を使用する利点の 1 つは、同じサイトで Web サイトとモバイル サービスを実行できることです。詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
+> [AZURE.TIP] Azure App Service を使用する利点の 1 つは、同じサイトで Web サイトとモバイル サービスを実行できることです。詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
 
 ### <a name="download-publish-profile"></a>新しい発行プロファイルのダウンロード
 
@@ -192,7 +192,7 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 
 複数のアプリ設定を同時に更新できます。
 
-> [AZURE.TIP]同じ値を含むアプリケーション設定が 2 つあります。たとえば、_ApplicationKey_ と _MS\_ApplicationKey_ の 2 つがあります。**MS\_** という接頭辞の付いたアプリ設定だけを変更します。ただし、両方のアプリ設定を同時に更新するのはよい考えです。
+> [AZURE.TIP] 同じ値を含むアプリケーション設定が 2 つあります。たとえば、_ApplicationKey_ と _MS\_ApplicationKey_ の 2 つがあります。**MS\_** という接頭辞の付いたアプリ設定だけを変更します。ただし、両方のアプリ設定を同時に更新するのはよい考えです。
 
 ### <a name="authentication"></a>認証
 
@@ -208,7 +208,7 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 
 注: **MS\_AadTenants** はテナント ドメインのコンマ区切りリストとして格納されています (Mobile Services ポータルの [許可されているテナント] フィールド)。
 
-> [AZURE.WARNING]**[設定] メニューの認証メカニズムは使用しないでください。**
+> [AZURE.WARNING] **[設定] メニューの認証メカニズムは使用しないでください。**
 >
 > Azure App Service の _[認証/承認]_ 設定メニューに別個の「コードなし」認証/承認システムがあり、[設定] メニューに (廃止) _[モバイル認証]_ オプションがあります。これらのオプションと移行した Azure モバイル サービスとの間には互換性がありません。サイトをアップグレードし、Azure App Service 認証を最大限に活用できます。
 
@@ -274,10 +274,10 @@ Mobile Services では、プッシュ通信に Notification Hubs が使用され
 通知ハブは [Azure ポータル]経由で管理されます。Notification Hub 名を書き留めます (アプリケーション設定で見つかります)。
 
   1. [Azure ポータル]にログインします。
-  2. **[参照]** > [Notification Hubs] の順に選択します。
+  2. **[参照]** > \[Notification Hubs] の順に選択します。
   3. モバイル サービスに関連付けられている通知ハブの名前をクリックします。
 
-> [AZURE.NOTE]「Mixed」タイプの場合、通知ハブは表示されません。「Mixed」タイプの通知ハブでは、Notification Hubs と以前の Service Bus 機能の両方が利用されます。[Mixed 名前空間を変換する]必要があります。変換が完了すると、通知ハブが [Azure ポータル]に表示されます。
+> [AZURE.NOTE] 「Mixed」タイプの場合、通知ハブは表示されません。「Mixed」タイプの通知ハブでは、Notification Hubs と以前の Service Bus 機能の両方が利用されます。[Mixed 名前空間を変換する]必要があります。変換が完了すると、通知ハブが [Azure ポータル]に表示されます。
 
 詳細については、[Notification Hubs] ドキュメントを確認してください。
 
@@ -394,4 +394,3 @@ _azure モバイル_ コマンドを利用して Azure Mobile Services サイト
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 
 <!---HONumber=AcomDC_0107_2016-->
-<!---Line 277, add "hyperlink"-->
