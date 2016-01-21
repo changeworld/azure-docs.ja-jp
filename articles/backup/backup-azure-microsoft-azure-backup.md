@@ -28,8 +28,7 @@ Azure Backup サーバーを準備して実行するための最初の手順は�
 | Location (場所) | 最小要件 | 追加説明 |
 | -------- | -------------------- | ----------------------- |
 | Azure | Azure IaaS 仮想マシン<br><br>A2 標準: 2 コア、3.5 GB RAM | 手始めに、Windows Server 2012 R2 Datacenter の単純なギャラリー イメージを使用することができます。[Azure Backup サーバー (DPM) を使用した IaaS ワークロードの保護](https://technet.microsoft.com/library/jj852163.aspx)には、数多くの注意点があります。マシンのデプロイ前に、必ずこの記事によく目を通してください。 |
-| オンプレミスの  
- | HYPER-V VM、<br> VMWare VM、<br>または物理ホスト<br><br>2 コア、4 GB RAM | Windows Server の重複除去を使用して DPM ストレージの重複を除去することができます。Hyper-V VM にデプロイ時する場合は、[DPM と重複除去](https://technet.microsoft.com/library/dn891438.aspx)の連携について理解してください。 |
+| オンプレミスの | HYPER-V VM、<br> VMWare VM、<br>または物理ホスト<br><br>2 コア、4 GB RAM | Windows Server の重複除去を使用して DPM ストレージの重複を除去することができます。Hyper-V VM にデプロイ時する場合は、[DPM と重複除去](https://technet.microsoft.com/library/dn891438.aspx)の連携について理解してください。 |
 
 > [AZURE.NOTE]Azure Backup サーバーは、Windows Server 2012 R2 Datacenter を設定済みのマシンにインストールすることをお勧めします。前提条件の多くは、最新バージョンの Windows オペレーティング システムを使用すると自動的に満たされます。
 
@@ -204,4 +203,4 @@ Microsoft Azure Backup サーバーがセットアップ段階 (またはバッ�
 - [SharePoint サーバーのバックアップ](backup-azure-backup-sharepoint.md)
 - [代替サーバーのバックアップ](backup-azure-alternate-dpm-server.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!----HONumber=AcomDC_0107_2016-->

@@ -132,7 +132,12 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 
 サブスクリプションごとに Azure で IP アドレスを指定する際に課せられる IP の制限を下表に示します。ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、[サポートにお問い合わせ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-||既定の制限|上限| |---|---|---| |パブリック IP アドレス (動的)|5|サポートにお問い合わせ| |予約済みパブリック IP アドレス|20|サポートにお問い合わせ| |デプロイメントごとのパブリック VIP (クラウド サービス)|5|サポートにお問い合わせ| |デプロイメント (クラウド サービス) ごとのプライベート VIP (ILB)|1|1|
+||既定の制限|上限|
+|---|---|---|
+|パブリック IP アドレス (動的)|5|サポートにお問い合わせ|
+|予約済みパブリック IP アドレス|20|サポートにお問い合わせ|
+|デプロイメントごとのパブリック VIP (クラウド サービス)|5|サポートにお問い合わせ|
+|デプロイメント (クラウド サービス) ごとのプライベート VIP (ILB)|1|1|
 
 Azure での[ネットワークの制限](azure-subscription-service-limits.md#networking-limits)に関する情報を必ずご確認ください。
 
@@ -143,7 +148,16 @@ Azure での[ネットワークの制限](azure-subscription-service-limits.md#n
 ## リソース マネージャーとクラシック デプロイメントの相違点
 リソース マネージャーの IP アドレス指定機能とクラシック デプロイメント モデルとの比較を次に示します。
 
-||リソース|クラシック|リソース マネージャー| |---|---|---|---| |**パブリック IP アドレス**|VM|ILPIP と呼ばれる (動的のみ)|パブリック IP と呼ばれる (動的または静的)| |||IaaS VM または PaaS ロール インスタンスに割り当てられる|VM の NIC に関連付けられる| ||インターネットに接続するロード バランサー|VIP (動的) または予約済み IP (静的) と呼ばれる|パブリック IP (動的または静的) と呼ばれる| |||クラウド サービスに割り当てられる|ロード バランサーのフロント エンド構成に関連付けられる| |||| |**プライベート IP アドレス**|VM|DIP と呼ばれる|プライベート IP アドレスと呼ばれる| |||IaaS VM または PaaS ロール インスタンスに割り当てられる|VM の NIC に割り当てられる| ||内部ロード バランサー (ILB)|ILB に割り当てられる (動的または静的)|ILB のフロント エンド構成に割り当てられる (動的または静的)|
+||リソース|クラシック|リソース マネージャー|
+|---|---|---|---|
+|**パブリック IP アドレス**|VM|ILPIP と呼ばれる (動的のみ)|パブリック IP と呼ばれる (動的または静的)|
+|||IaaS VM または PaaS ロール インスタンスに割り当てられる|VM の NIC に関連付けられる|
+||インターネットに接続するロード バランサー|VIP (動的) または予約済み IP (静的) と呼ばれる|パブリック IP (動的または静的) と呼ばれる|
+|||クラウド サービスに割り当てられる|ロード バランサーのフロント エンド構成に関連付けられる|
+||||
+|**プライベート IP アドレス**|VM|DIP と呼ばれる|プライベート IP アドレスと呼ばれる|
+|||IaaS VM または PaaS ロール インスタンスに割り当てられる|VM の NIC に割り当てられる|
+||内部ロード バランサー (ILB)|ILB に割り当てられる (動的または静的)|ILB のフロント エンド構成に割り当てられる (動的または静的)|
 
 ## 次のステップ
 - [Deploy a VM with a static public IP (静的パブリック IP で VM をデプロイする)](virtual-network-deploy-static-pip-classic-ps.md)
@@ -153,4 +167,4 @@ Azure での[ネットワークの制限](azure-subscription-service-limits.md#n
 - [Create an application gateway using PowerShell (PowerShell を使用して Application Gateway を作成する)](application-gateway-create-gateway.md)
 - [Create an internal application gateway using PowerShell (PowerShell を使用して内部 Application Gateway を作成する)](application-gateway-ilb.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!----HONumber=AcomDC_0107_2016-->

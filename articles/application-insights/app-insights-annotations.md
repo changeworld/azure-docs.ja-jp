@@ -42,7 +42,7 @@
 
 Visual Studio Team Services のデプロイを管理するリリース テンプレートを開きます (または作成します)。
 
-タスクを追加し、メニューから [Application Insights Release Annotation] (Application Insights リリース注釈) タスクを選択します。
+タスクを追加し、メニューから [Application Insights Release Annotation] \(Application Insights リリース注釈) タスクを選択します。
 
 ![Team Service Web ページの右上で Marketplace を開くアカウントで Application Insights 注釈を検索してインストール](./media/app-insights-annotations/40.png)
 
@@ -64,4 +64,4 @@ Application Insights で詳細を確認する間、Team Services のウィンド
 
 これで、このリリース テンプレートを使用して新しいリリースをデプロイするたびに、注釈が Application Insights に送信されるようになりました。注釈は、メトリックス エクスプローラーのグラフに表示されます。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!----HONumber=AcomDC_0107_2016-->

@@ -130,7 +130,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
  
     - *** 列の展開**
 
-        * の右側をクリックすると、* の下に青い線が表示されます。青い下線にマウス カーソルをポイントし、下矢印をクリックします。![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
+        の右側をクリックすると、* の下に青い線が表示されます。青い下線にマウス カーソルをポイントし、下矢印をクリックします。![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
         **[列の展開]** をクリックすると、* が列名に置き換えられます。
     
@@ -355,4 +355,4 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
 
-<!---HONumber=AcomDC_0114_2016-->
+<!----HONumber=AcomDC_0114_2016-->
