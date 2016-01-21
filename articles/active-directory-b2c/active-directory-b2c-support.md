@@ -30,6 +30,7 @@ Azure ポータルで Azure Active Directory (AD) B2C のサポート要求を�
 
     ![サポート - ディレクトリの切り替え](./media/active-directory-b2c-support/support-switch-dir.png)
 
+    
 3. ディレクトリを切り替えた後、**[ヘルプとサポート]** をクリックします。
 
     ![サポート - サポート](./media/active-directory-b2c-support/support-support.png)

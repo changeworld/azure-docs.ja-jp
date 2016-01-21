@@ -126,7 +126,8 @@ StorSimple 仮想デバイスを作成するには、次の手順を実行しま
 
 この手順を開始する前に、サービス データ暗号化キーのコピーがあることを確認してください。サービス データ暗号化キーは、最初の StorSimple デバイスの構成時に作成され、安全な場所に保存するように指示されます。サービス データ暗号化キーのコピーがない場合は、Microsoft サポートに支援を依頼する必要があります。
 
-StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。[AZURE.INCLUDE [仮想デバイスの構成と登録](../../includes/storsimple-configure-register-virtual-device.md)]
+StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。
+[AZURE.INCLUDE [仮想デバイスの構成と登録](../../includes/storsimple-configure-register-virtual-device.md)]
 
 ### 手順 3. (オプション) デバイスの構成設定の変更
 
@@ -144,7 +145,7 @@ StorSimple 仮想デバイスを構成して登録するには、次の手順を
 
 StorSimple Snapshot Manager ソフトウェアは Windows ホスト上に常駐し、管理者が、ローカル スナップショットとクラウド スナップショットの形式で StorSimple デバイスのバックアップを管理することを可能にします。
 
->[AZURE.NOTE]仮想デバイスの場合、Windows ホストは Azure 仮想マシンです。
+>[AZURE.NOTE] 仮想デバイスの場合、Windows ホストは Azure 仮想マシンです。
 
 StorSimple Snapshot Manager でデバイスを構成するとき、ストレージ デバイスを認証するためのパスワードと StorSimple デバイスの IP アドレスを入力するように求められます。詳細な手順については、[StorSimple Snapshot Manager のパスワードの構成](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password)に関するページを参照してください。
 
@@ -167,7 +168,7 @@ StorSimple 仮想デバイスのリモート管理を構成するには、次の
 
 StorSimple デバイスの構成ページでリモート管理を有効にしたら、Windows PowerShell リモート処理を使って、同じ仮想ネットワーク内の別の仮想マシンから仮想デバイスに接続することができます。たとえば、iSCSI に接続するために構成して使用しているホスト VM から接続することができます。ほとんどのデプロイでは、仮想デバイスへのアクセスに使用できるホスト VM にアクセスするパブリック エンドポイントは既に開かれています。
 
->[AZURE.WARNING]**セキュリティ強化のため、エンドポイントに接続する場合は HTTPS を使用して、PowerShell リモート セッション完了後にエンドポイントを削除することを強くお勧めします。**
+>[AZURE.WARNING] **セキュリティ強化のため、エンドポイントに接続する場合は HTTPS を使用して、PowerShell リモート セッション完了後にエンドポイントを削除することを強くお勧めします。**
 
 「[StorSimple デバイスにリモート接続する](storsimple-remote-connect.md)」の手順に従って、仮想デバイスのリモート処理をセットアップしてください。
 
