@@ -4,7 +4,7 @@
 
 ![イメージの説明](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
 
-内部ロード バランサーは、仮想ネットワークで構成されます 
+内部ロード バランサーは、仮想ネットワークで構成されます  
 - DB1 および DB2 と呼ばれる 2 つの仮想マシン<BR> 
 - エンドポイント <BR> 
 - 内部ロード バランサー<BR>
