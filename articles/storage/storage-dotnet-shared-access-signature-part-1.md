@@ -1,24 +1,24 @@
-<properties 
-	pageTitle="Shared Access Signature: SAS モデルについて | Microsoft Azure" 
-	description="Shared Access Signature (SAS) を使用して、BLOB、キュー、テーブル、ファイルを含む Azure Storage のリソースへのアクセスを委任する方法について説明します。Shared Access Signature を使用すると、ストレージ アカウント キーを保護しながら、アカウント内のリソースへのアクセスを他のユーザーに与えることができます。付与するアクセス許可と、SAS の有効期間を制御できます。また、ストアド アクセス ポリシーを確立すると、万が一アカウントのセキュリティが侵害される恐れがある場合に SAS を無効にできます。" 
-	services="storage" 
-	documentationCenter="" 
-	authors="tamram" 
-	manager="adinah" 
-	editor=""/>
+<properties
+	pageTitle="Shared Access Signature: SAS モデルについて | Microsoft Azure"
+	description="Shared Access Signature (SAS) を使用して、BLOB、キュー、テーブル、ファイルを含む Azure Storage のリソースへのアクセスを委任する方法について説明します。Shared Access Signature を使用すると、ストレージ アカウント キーを保護しながら、アカウント内のリソースへのアクセス権を他のユーザーに付与できます。付与するアクセス許可と、SAS の有効期間を制御できます。また、ストアド アクセス ポリシーを確立すると、万が一アカウントのセキュリティが侵害される恐れがある場合に SAS を無効にできます。"
+	services="storage"
+	documentationCenter=""
+	authors="tamram"
+	manager="carmonm"
+	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="11/16/2015" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="11/16/2015"
 	ms.author="tamram"/>
 
 
 
-# Shared Access Signature、第 1 部 : SAS モデルについて
+# Shared Access Signature、第 1 部: SAS モデルについて
 
 ## 概要
 
@@ -51,9 +51,7 @@ SAS が役立つ一般的なシナリオは、ストレージ アカウント内
 - ファイルを別のストレージ アカウント内にある他のファイルにコピーする場合、コピー元ファイルの認証には SAS を使用する必要があります。バージョン 2015-04-05 では、コピー先ファイルの認証に任意で SAS も使用できます。
 - BLOB をファイルにコピーしたり、ファイルを BLOB にコピーしたりする場合、同じストレージ アカウント内にコピー先とコピー元のオブジェクトがある場合でも、SAS を使用してソース オブジェクトを認証する必要があります。
 
->[AZURE.NOTE]現在、アカウント SAS は BLOB サービスと File サービスでのみサポートされています。近い将来、Table サービスと Queue サービスでもサポートされる予定です。
-
-## Shared Access Signature の種類
+## 共有アクセス署名の種類
 
 バージョン 2015-04-05 の Azure Storage には、アカウント SAS という新しい種類の Shared Access Signature が導入されています。次のいずれかの種類の Shared Access Signature を作成できるようになりました。
 
@@ -69,12 +67,12 @@ Shared Access Signature とは、特殊なクエリ パラメーターのセッ�
 
 ### アカウント SAS とサービス SAS のトークンに共通するパラメーター
 
-- **API のバージョン。**要求の実行に使用するストレージ サービスのバージョンを指定する省略可能なパラメーターです。 
+- **API のバージョン。**要求の実行に使用するストレージ サービスのバージョンを指定する省略可能なパラメーターです。
 - **サービスのバージョン。**要求の認証に使用するストレージ サービスのバージョンを指定する必須パラメーターです。
-- **開始時刻。** この時刻に SAS が有効になります。Shared Access Signature の開始時刻は省略可能です。省略した場合は、SAS がすぐに有効になります。 
+- **開始時刻。** この時刻に SAS が有効になります。Shared Access Signature の開始時刻は省略可能です。省略した場合は、SAS がすぐに有効になります。
 - **有効期限。** この時刻の後、SAS が有効ではなくなります。ベスト プラクティスでは、SAS の有効期限を指定するか、保存されているアクセス ポリシーに SAS を関連付けることを推奨しています (以下を参照)。
 - **アクセス許可。** SAS に指定されたアクセス許可は、クライアントが SAS を使用して、ストレージ リソースに対して実行できる操作を示します。使用可能なアクセス許可は、アカウント SAS とサービス SAS で異なります。
-- **IP。** 要求の送信元である Azure 外部の IP アドレスまたは IP アドレスの範囲を指定する省略可能なパラメーター (Express Route については、「[ルーティング セッション構成の状態](../expressroute/expressroute-workflows.md#routing-session-configuration-state)」を参照してください)。 
+- **IP。** 要求の送信元である Azure 外部の IP アドレスまたは IP アドレスの範囲を指定する省略可能なパラメーター (Express Route については、「[ルーティング セッション構成の状態](../expressroute/expressroute-workflows.md#routing-session-configuration-state)」を参照してください)。
 - **プロトコル。** 要求に許可されているプロトコルを指定する省略可能なパラメーターです。指定できる値は、既定値の HTTPS と HTTP (https,http) か、HTTPS のみ (https) です。HTTP のみの値は許可されていないことに注意してください。
 - **署名。** 署名は、トークンの一部として指定されたその他のパラメーターから構成され、その後に暗号化されます。これは、SAS の認証に使用されます。
 
@@ -129,7 +127,7 @@ IP 範囲|sip=168.1.5.60-168.1.5.70|要求が受け入れられる IP アドレ�
 
 Shared Access Signature の形式は、次の 2 つのいずれかです。
 
-- **アドホック SAS:** アドホック SAS を作成すると、開始時刻、有効期限、および SAS へのアクセス許可がすべて、SAS URI で指定されます (または、開始時刻を省略した場合は、暗黙で指定されます)。この種類の SAS はアカウント SAS またはサービス SAS として作成できます。 
+- **アドホック SAS:** アドホック SAS を作成すると、開始時刻、有効期限、および SAS へのアクセス許可がすべて、SAS URI で指定されます (または、開始時刻を省略した場合は、暗黙で指定されます)。この種類の SAS はアカウント SAS またはサービス SAS として作成できます。
 
 - **保存されているアクセス ポリシーのある SAS**: 保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナー、テーブル、キュー、ファイル共有) で定義されており、これを使用して、1 つ以上の Shared Access Signature のコンテナーを管理できます。保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。
 
@@ -151,7 +149,7 @@ Shared Access Signature の形式は、次の 2 つのいずれかです。
 これらの例を実行するには、次のパッケージをダウンロードし、参照する必要があります。
 
 - [.NET 用 Azure Storage クライアント ライブラリ](http://www.nuget.org/packages/WindowsAzure.Storage)、バージョン 6.x 以降 (アカウント SAS を使用)。
-- [Azure Configuration Manager](http://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) 
+- [Azure Configuration Manager](http://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
 
 ### 例: アカウント SAS
 
@@ -230,23 +228,23 @@ BLOB サービス用にサービスレベルの API にアクセスするため�
     // Parse the connection string for the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
-    
+
     // Create the storage account with the connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
-       
+
     // Create the blob client object.
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-    
+
     // Get a reference to the container for which shared access signature will be created.
     CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
     container.CreateIfNotExists();
-    
+
     // Get the current permissions for the blob container.
     BlobContainerPermissions blobPermissions = container.GetPermissions();
 
     // Clear the container's shared access policies to avoid naming conflicts.
     blobPermissions.SharedAccessPolicies.Clear();
-    
+
     // The new shared access policy provides read/write access to the container for 24 hours.
     blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy()
     {
@@ -255,14 +253,14 @@ BLOB サービス用にサービスレベルの API にアクセスするため�
        SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
        Permissions = SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Create | SharedAccessBlobPermissions.Add
     });
-    
-    // The public access setting explicitly specifies that 
+
+    // The public access setting explicitly specifies that
     // the container is private, so that it can't be accessed anonymously.
     blobPermissions.PublicAccess = BlobContainerPublicAccessType.Off;
-    
+
     // Set the new stored access policy on the container.
     container.SetPermissions(blobPermissions);
-    
+
     // Get the shared access signature token to share with users.
     string sasToken =
        container.GetSharedAccessSignature(new SharedAccessBlobPolicy(), "mypolicy");
@@ -270,15 +268,15 @@ BLOB サービス用にサービスレベルの API にアクセスするため�
 このサービス SAS を所有するクライアントは、コンテナー内の BLOB に対する読み取りまたは書き込み要求をコードから認証できるようになります。たとえば、次のコードは SAS トークンを使用し、コンテナー内に新しいブロック BLOB を作成します。独自のアカウント名を使用するようにコードを変更します。
 
     Uri blobUri = new Uri("https://<myaccount>.blob.core.windows.net/mycontainer/myblob.txt");
-    
+
     // Create credentials with the SAS token. The SAS token was created in previous example.
     StorageCredentials credentials = new StorageCredentials(sasToken);
-    
+
     // Create a new blob.
     CloudBlockBlob blob = new CloudBlockBlob(blobUri, credentials);
-    
-    // Upload the blob. 
-    // If the blob does not yet exist, it will be created. 
+
+    // Upload the blob.
+    // If the blob does not yet exist, it will be created.
     // If the blob does exist, its existing content will be overwritten.
     using (var fileStream = System.IO.File.OpenRead(@"c:\Temp\myblob.txt"))
     {
@@ -312,15 +310,10 @@ Shared Access Signature は、アカウント キーを知らせずに、スト�
 
 ## 次のステップ ##
 
-- [Shared Access Signature、第 2 部: BLOB サービスによる SAS の作成および使用](storage-dotnet-shared-access-signature-part-2.md)
+- [Shared Access Signature、第 2 部: BLOB ストレージでの SAS の作成と使用](storage-dotnet-shared-access-signature-part-2.md)
 - [Windows で Azure File ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
 - [Azure Storage リソースへのアクセスの管理](storage-manage-access-to-resources.md)
 - [Shared Access Signature を使用したアクセスの委任](http://msdn.microsoft.com/library/azure/ee395415.aspx)
-- [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
-[sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
-[sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
+- [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx) [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
-
- 
-
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0114_2016-->

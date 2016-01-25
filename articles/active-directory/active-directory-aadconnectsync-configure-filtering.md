@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/30/2015"
+	ms.date="01/08/2016"
 	ms.author="andkjell;markusvi"/>
 
 
@@ -53,9 +53,9 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 ### スケジュールされたタスクを無効にする
 同期サイクルを 3 時間おきにトリガーする、スケジュールされたタスクを無効にするには、以下の手順に従います。
 
-- [スタート] メニューから **[タスク スケジューラ]** を起動します。
-- **[タスク スケジューラ ライブラリ]** の直下から **"Azure AD Sync Scheduler"** というタスクを探して右クリックし、**[無効]** を選択します。![Task Scheduler](./media/active-directory-aadconnectsync-configure-filtering/taskscheduler.png)
-- 以上の作業が済んだら構成の変更を行い、**Synchronization Service Manager** コンソールから同期エンジンを手動で実行できます。
+1. [スタート] メニューから **[タスク スケジューラ]** を起動します。
+2. **[タスク スケジューラ ライブラリ]** の直下から **"Azure AD Sync Scheduler"** というタスクを探して右クリックし、**[無効]** を選択します。![タスク スケジューラ](./media/active-directory-aadconnectsync-configure-filtering/taskscheduler.png)  
+3. 以上の作業が済んだら構成の変更を行い、**Synchronization Service Manager** コンソールから同期エンジンを手動で実行できます。
 
 フィルター処理の変更がすべて完了したら、忘れずにタスクの状態を **[有効]** に戻してください。
 
@@ -84,18 +84,18 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 ### 同期するドメインの選択
 **ドメイン フィルターを設定するには、次の手順を実行します。**
 
-- **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
-- [スタート] メニューから **[同期サービス]** を起動します。
-- **[コネクタ]** を選択し、**[コネクタ]** の一覧から、種類が "**Active Directory ドメイン サービス**" であるコネクタを選択します。**[アクション]** の **[プロパティ]** を選択します。![Connector properties](./media/active-directory-aadconnectsync-configure-filtering/connectorproperties.png)
--  **[ディレクトリ パーティションの構成]** をクリックします。
-- **[ディレクトリ パーティションの選択]** の一覧で、必要に応じてドメインを選択 (または選択を解除) します。同期するパーティションのみが選択されていることを確認します。![パーティション](./media/active-directory-aadconnectsync-configure-filtering/connectorpartitions.png) オンプレミスの AD インフラストラクチャに変更を加え、フォレストのドメインを追加または削除した場合は、**[更新]** ボタンをクリックして一覧を最新の情報に更新します。最新の情報に更新しようとすると資格情報を求められます。オンプレミスの Active Directory に対する読み取りアクセス権を持った資格情報を指定してください。ダイアログ ボックスにあらかじめ設定されているユーザーでなくてもかまいません。![Refresh needed](./media/active-directory-aadconnectsync-configure-filtering/refreshneeded.png)
-- 完了したら、**[OK]** をクリックして **[プロパティ]** ダイアログを閉じます。フォレストからドメインを削除した場合、ドメインが削除されたことを示すメッセージが表示され、その構成がクリーンアップされます。
-- 続けて[実行プロファイル](#update-run-profiles)を調整します。
+1. **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
+2. [スタート] メニューから **[同期サービス]** を起動します。
+3. **[コネクタ]** を選択し、**[コネクタ]** の一覧から、種類が "**Active Directory ドメイン サービス**" であるコネクタを選択します。**[アクション]** の **[プロパティ]** を選択します。![コネクタのプロパティ](./media/active-directory-aadconnectsync-configure-filtering/connectorproperties.png)  
+4. **[ディレクトリ パーティションの構成]** をクリックします。
+5. **[ディレクトリ パーティションの選択]** の一覧で、必要に応じてドメインを選択 (または選択を解除) します。同期するパーティションのみが選択されていることを確認します。![パーティション](./media/active-directory-aadconnectsync-configure-filtering/connectorpartitions.png) オンプレミスの AD インフラストラクチャに変更を加え、フォレストのドメインを追加または削除した場合は、**[更新]** ボタンをクリックして一覧を最新の情報に更新します。最新の情報に更新しようとすると資格情報を求められます。オンプレミスの Active Directory に対する読み取りアクセス権を持った資格情報を指定してください。ダイアログ ボックスにあらかじめ設定されているユーザーでなくてもかまいません。![更新が必要](./media/active-directory-aadconnectsync-configure-filtering/refreshneeded.png)  
+6. 完了したら、**[OK]** をクリックして **[プロパティ]** ダイアログを閉じます。フォレストからドメインを削除した場合、ドメインが削除されたことを示すメッセージが表示され、その構成がクリーンアップされます。
+7. 続けて[実行プロファイル](#update-run-profiles)を調整します。
 
 ### 実行プロファイルの更新
 ドメイン フィルターを更新した場合、実行プロファイルも更新する必要があります。
 
-- 前の手順で変更したコネクタが、**[コネクタ]** の一覧で選択されていることを確認します。**[アクション]** から **[実行プロファイルの構成]** を選択します。![Connector Run Profiles](./media/active-directory-aadconnectsync-configure-filtering/connectorrunprofiles1.png)
+1. 前の手順で変更したコネクタが、**[コネクタ]** の一覧で選択されていることを確認します。**[アクション]** から **[実行プロファイルの構成]** を選択します。![コネクタ実行プロファイル](./media/active-directory-aadconnectsync-configure-filtering/connectorrunprofiles1.png)  
 
 次のプロファイルを調整する必要があります。
 
@@ -107,15 +107,15 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 
 5 つのプロファイルのそれぞれについて、**追加対象**のドメインごとに次の手順を実行します。
 
-- 実行プロファイルを選択し、**[新しいステップ]** をクリックします。
-- **[ステップの構成]** ページの **[タイプ]** ボックスの一覧から、構成するプロファイルと同じ名前の付いたステップの種類を選択します。その後、**[次へ]** をクリックします。![Connector Run Profiles](./media/active-directory-aadconnectsync-configure-filtering/runprofilesnewstep1.png)
-- **[コネクタの構成]** ページで、**[パーティション]** ボックスの一覧から、ドメイン フィルターに追加したドメインの名前を選択します。![Connector Run Profiles](./media/active-directory-aadconnectsync-configure-filtering/runprofilesnewstep2.png)
-- **[実行プロファイルの構成]** ダイアログ ボックスを閉じるには、**[完了]** をクリックします。
+1. 実行プロファイルを選択し、**[新しいステップ]** をクリックします。
+2. **[ステップの構成]** ページの **[タイプ]** ボックスの一覧から、構成するプロファイルと同じ名前の付いたステップの種類を選択します。その後、**[次へ]** をクリックします。![コネクタ実行プロファイル](./media/active-directory-aadconnectsync-configure-filtering/runprofilesnewstep1.png)  
+3. **[コネクタの構成]** ページで、**[パーティション]** ボックスの一覧から、ドメイン フィルターに追加したドメインの名前を選択します。![コネクタ実行プロファイル](./media/active-directory-aadconnectsync-configure-filtering/runprofilesnewstep2.png)  
+4. **[実行プロファイルの構成]** ダイアログ ボックスを閉じるには、**[完了]** をクリックします。
 
 5 つのプロファイルのそれぞれについて、**削除対象**のドメインごとに次の手順を実行します。
 
-- 実行プロファイルを選択します。
-- **[パーティション]** 属性の **[値]** が GUID である場合は、実行ステップを選択し、**[ステップの削除]** をクリックします。![Connector Run Profiles](./media/active-directory-aadconnectsync-configure-filtering/runprofilesdeletestep.png)
+1. 実行プロファイルを選択します。
+2. **[パーティション]** 属性の **[値]** が GUID である場合は、実行ステップを選択し、**[ステップの削除]** をクリックします。![コネクタ実行プロファイル](./media/active-directory-aadconnectsync-configure-filtering/runprofilesdeletestep.png)  
 
 最終的に、同期の対象となるすべてのドメインが各実行プロファイルにステップとして表示されている必要があります。
 
@@ -126,18 +126,18 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 ## 組織単位ベースのフィルター処理
 **組織単位ベースのフィルター処理を構成するには、次の手順を実行します。**
 
-- **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
-- [スタート] メニューから **[同期サービス]** を起動します。
-- **[コネクタ]** を選択し、**[コネクタ]** の一覧から、種類が "**Active Directory ドメイン サービス**" であるコネクタを選択します。**[アクション]** の **[プロパティ]** を選択します。![Connector properties](./media/active-directory-aadconnectsync-configure-filtering/connectorproperties.png)
--  **[ディレクトリ パーティションの構成]** をクリックし、構成するドメインを選択して、**[コンテナー]** をクリックします。
-- 資格情報を求められたら、オンプレミスの Active Directory に対する読み取りアクセス権を持った資格情報を指定します。ダイアログ ボックスにあらかじめ設定されているユーザーでなくてもかまいません。
-- **[コンテナーの選択]** ダイアログ ボックスで、クラウド ディレクトリと同期しない OU の選択を解除し、**[OK]** をクリックします。![OU](./media/active-directory-aadconnectsync-configure-filtering/ou.png)
-	- Windows 10 コンピューターを Azure AD と正しく同期させるには、**[コンピューター]** コンテナーを選択する必要があります。ドメインに参加しているコンピューターが他の OU に置かれている場合、それらが選択されていることを確認してください。
-	- 信頼関係のある複数のフォレストが存在する場合、**[ForeignSecurityPrincipals]** コンテナーを選択する必要があります。そうすることで、フォレスト間のセキュリティ グループのメンバーシップが解決されます。
-	- デバイスの書き戻し機能を有効にした場合は、**[RegisteredDevices]** の OU を選択する必要があります。別の書き戻し機能 (グループの書き戻しなど) を使用する場合は、それらの場所が選択されていることを確認してください。
-	- Users、iNetOrgPersons、Groups、Contacts、Computers の置かれている OU が他にあれば選択します。上の図では、いずれも ManagedObjects OU に存在します。
-- 完了したら、**[OK]** をクリックして **[プロパティ]** ダイアログを閉じます。
-- 構成を完了するには、[変更を適用して検証](#apply-and-verify-changes)します。
+1. **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
+2. [スタート] メニューから **[同期サービス]** を起動します。
+3. **[コネクタ]** を選択し、**[コネクタ]** の一覧から、種類が "**Active Directory ドメイン サービス**" であるコネクタを選択します。**[アクション]** の **[プロパティ]** を選択します。![コネクタのプロパティ](./media/active-directory-aadconnectsync-configure-filtering/connectorproperties.png)  
+4. **[ディレクトリ パーティションの構成]** をクリックし、構成するドメインを選択して、**[コンテナー]** をクリックします。
+5. 資格情報を求められたら、オンプレミスの Active Directory に対する読み取りアクセス権を持った資格情報を指定します。ダイアログ ボックスにあらかじめ設定されているユーザーでなくてもかまいません。
+6. **[コンテナーの選択]** ダイアログ ボックスで、クラウド ディレクトリと同期しない OU の選択を解除し、**[OK]** をクリックします。![OU](./media/active-directory-aadconnectsync-configure-filtering/ou.png)  
+  - Windows 10 コンピューターを Azure AD と正しく同期させるには、**[コンピューター]** コンテナーを選択する必要があります。ドメインに参加しているコンピューターが他の OU に置かれている場合、それらが選択されていることを確認してください。
+  - 信頼関係のある複数のフォレストが存在する場合、**[ForeignSecurityPrincipals]** コンテナーを選択する必要があります。そうすることで、フォレスト間のセキュリティ グループのメンバーシップが解決されます。
+  - デバイスの書き戻し機能を有効にした場合は、**[RegisteredDevices]** の OU を選択する必要があります。別の書き戻し機能 (グループの書き戻しなど) を使用する場合は、それらの場所が選択されていることを確認してください。
+  - Users、iNetOrgPersons、Groups、Contacts、Computers の置かれている OU が他にあれば選択します。上の図では、いずれも ManagedObjects OU に存在します。
+7. 完了したら、**[OK]** をクリックして **[プロパティ]** ダイアログを閉じます。
+8. 構成を完了するには、[変更を適用して検証](#apply-and-verify-changes)します。
 
 ## 属性ベースのフィルター処理
 以下の手順は、November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#1091250)) 以降のビルドを想定しています。
@@ -151,7 +151,7 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 
 受信のフィルター処理では、同期の対象となるオブジェクトと対象外となるオブジェクトが**スコープ**の作用によって決定されます。この点は、組織ごとに実際の要件に合わせて調整することになります。スコープ モジュールには、同期規則の作用対象を判断する**グループ**と**句**があります。**グループ**は、1 つまたは複数の**句**を含みます。複数の句は論理積で組み合わされ、複数のグループは論理和で組み合わされます。
 
-たとえば、次のようなフィルターがあるとします。![Scope](./media/active-directory-aadconnectsync-configure-filtering/scope.png) これは、**(department = IT) OR (department = Sales AND c = US)** という意味になります。
+たとえば、次のようなフィルターがあるとします。![スコープ](./media/active-directory-aadconnectsync-configure-filtering/scope.png) これは、**(department = IT) OR (department = Sales AND c = US)** という意味になります。
 
 以降のサンプルとステップは、ユーザー オブジェクトが例として使用されていますが、実際にはオブジェクトの種類に関係なく利用できます。
 
@@ -160,14 +160,14 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 #### 否定のフィルター処理 (同期対象外の指定)
 以下の例では、**extensionAttribute15** の値が **NoSync** であるすべてのユーザーをフィルターで除外 (同期対象外に) します。
 
-- **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
-- [スタート] メニューから、**同期規則エディター**を起動します。
-- **[受信]** が選択されていることを確認し、**[新しい規則の追加]** をクリックします。
-- わかりやすい名前を規則に付けます ("*In from AD – User DoNotSyncFilter*" など)。適切なフォレストを選択し、**[接続されているシステム オブジェクトのタイプ]** として **[ユーザー]** を、**[メタバース オブジェクトの種類]** として **[人]** を選択します。**[リンクの種類]** として **[結合]** を選択し、[優先順位] に、他の同期規則で現在使われていない値 (500 など) を入力して、**[次へ]** をクリックします。![Inbound 1 description](./media/active-directory-aadconnectsync-configure-filtering/inbound1.png)
-- **[スコープ フィルター]** で、**[グループの追加]** をクリックし、**[句の追加]** をクリックして、属性で **[ExtensionAttribute15]** を選択します。演算子を **EQUAL** に設定し、[値] ボックスに「**NoSync**」という値を入力します。**[次へ]** をクリックします。![Inbound 2 scope](./media/active-directory-aadconnectsync-configure-filtering/inbound2.png)
-- **[参加]** 規則は空のままにして、**[次へ]** をクリックします。
-- **[変換の追加]** をクリックして、**[FlowType]** を **[Constant]** に設定し、[ターゲット属性] で **cloudFiltered** を選択して、[ソース] ボックスに「**True**」と入力します。**[追加]** をクリックして規則を保存します。![Inbound 3 transformation](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)
-- 構成を完了するには、[変更を適用して検証](#apply-and-verify-changes)します。
+1. **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
+2. [スタート] メニューから、**同期規則エディター**を起動します。
+3. **[受信]** が選択されていることを確認し、**[新しい規則の追加]** をクリックします。
+4. わかりやすい名前を規則に付けます (「*AD からの受信 – 同期しないユーザーのフィルター*」など)。適切なフォレストを選択し、**[接続されているシステム オブジェクトのタイプ]** として **[ユーザー]** を、**[メタバース オブジェクトの種類]** として **[人]** を選択します。**[リンクの種類]** で **[結合]** を選択し、[優先順位] に、別の同期規則で現在使用さていない値 (500 など) を入力して、**[次へ]** をクリックします。![Inbound 1 の説明](./media/active-directory-aadconnectsync-configure-filtering/inbound1.png)  
+5. **[スコープ フィルター]** で、**[グループの追加]** をクリックし、**[句の追加]** をクリックして、属性で **[ExtensionAttribute15]** を選択します。演算子を **EQUAL** に設定し、[値] ボックスに「**NoSync**」という値を入力します。**[次へ]** をクリックします。![Inbound 2 のスコープ](./media/active-directory-aadconnectsync-configure-filtering/inbound2.png)  
+6. **[参加]** 規則は空のままにして、**[次へ]** をクリックします。
+7. **[変換の追加]** をクリックして、**[FlowType]** を **[Constant]** に設定し、[ターゲット属性] で **cloudFiltered** を選択して、[ソース] ボックスに「**True**」と入力します。**[追加]** をクリックして規則を保存します。![Inbound 3 の変換](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)
+8. 構成を完了するには、[変更を適用して検証](#apply-and-verify-changes)します。
 
 #### 肯定のフィルター処理 (同期対象の指定)
 肯定のフィルター処理を式で表すことは、否定の場合と比べて難易度が上がります。同期の対象とするかどうかが不明確なオブジェクト (会議室など) も考慮しなければならないためです。
@@ -176,21 +176,21 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 
 以下の例では、department 属性の値が **Sales** であるユーザー オブジェクトだけを同期対象としています。
 
-- **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
-- [スタート] メニューから、**同期規則エディター**を起動します。
-- **[受信]** が選択されていることを確認し、**[新しい規則の追加]** をクリックします。
-- わかりやすい名前を規則に付けます ("*In from AD – User Sales sync*" など)。適切なフォレストを選択し、**[接続されているシステム オブジェクトのタイプ]** として **[ユーザー]** を、**[メタバース オブジェクトの種類]** として **[人]** を選択します。**[リンクの種類]** で **[結合]** を選択し、[優先順位] に、別の同期規則で現在使用さていない値 (501 など) を入力して、**[次へ]** をクリックします。![Inbound 4 description](./media/active-directory-aadconnectsync-configure-filtering/inbound4.png)
-- **[スコープ フィルター]** で、**[グループの追加]** をクリックし、**[句の追加]** をクリックして、属性で **[department]** を選択します。演算子を **EQUAL** に設定し、[値] ボックスに「**Sales**」という値を入力します。**[次へ]** をクリックします。![Inbound 5 scope](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)
-- **[参加]** 規則は空のままにして、**[次へ]** をクリックします。
-- **[変換の追加]** をクリックして、**[FlowType]** を **[Constant]** に設定し、[ターゲット属性] で **cloudFiltered** を選択して、[ソース] ボックスに「**False**」と入力します。**[追加]** をクリックして規則を保存します。![Inbound 6 transformation](./media/active-directory-aadconnectsync-configure-filtering/inbound6.png) これは特殊なケースですが、cloudFiltered を明示的に False に設定します。
+1. **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
+2. [スタート] メニューから、**同期規則エディター**を起動します。
+3. **[受信]** が選択されていることを確認し、**[新しい規則の追加]** をクリックします。
+4. わかりやすい名前を規則に付けます (「*AD からの受信 – 営業部のユーザーの同期*」など)。適切なフォレストを選択し、**[接続されているシステム オブジェクトのタイプ]** として **[ユーザー]** を、**[メタバース オブジェクトの種類]** として **[人]** を選択します。**[リンクの種類]** で **[結合]** を選択し、[優先順位] に、別の同期規則で現在使用さていない値 (501 など) を入力して、**[次へ]** をクリックします。![Inbound 4 の説明](./media/active-directory-aadconnectsync-configure-filtering/inbound4.png)  
+5. **[スコープ フィルター]** で、**[グループの追加]** をクリックし、**[句の追加]** をクリックして、属性で **[department]** を選択します。演算子を **EQUAL** に設定し、[値] ボックスに「**Sales**」という値を入力します。**[次へ]** をクリックします。![Inbound 5 のスコープ](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)  
+6. **[参加]** 規則は空のままにして、**[次へ]** をクリックします。
+7. **[変換の追加]** をクリックして、**[FlowType]** を **[Constant]** に設定し、[ターゲット属性] で **[cloudFiltered]** を選択して、[ソース] ボックスに「**False**」と入力します。**[追加]** をクリックして規則を保存します。![Inbound 6 の変換](./media/active-directory-aadconnectsync-configure-filtering/inbound6.png) これは特殊なケースですが、cloudFiltered を明示的に False に設定します。
 
-次に、包括的な同期規則を作成する必要があります。
+	次に、包括的な同期規則を作成する必要があります。
 
-- わかりやすい名前を規則に付けます ("*In from AD – User Catch-all filter*" など)。適切なフォレストを選択し、**[接続されているシステム オブジェクトのタイプ]** として **[ユーザー]** を、**[メタバース オブジェクトの種類]** として **[人]** を選択します。**[リンクの種類]** で **[結合]** を選択し、[優先順位] に、別の同期規則で現在使用されていない値 (600 など) を入力します。優先順位の値は、先ほどの同期規則よりも大きく (優先順位を低く) しました。後で別の部門を同期する必要が生じることも考えられるので、値の間隔は、フィルター処理の同期規則を追加できるよう、ある程度を余裕を持たせています。**[次へ]** をクリックします。![Inbound 7 description](./media/active-directory-aadconnectsync-configure-filtering/inbound7.png)
-- **[スコープ フィルター]** は空のままにして、**[次へ]** をクリックします。フィルターを空にした場合、すべてのオブジェクトに規則が適用されます。
-- **[参加]** 規則は空のままにして、**[次へ]** をクリックします。
-- **[変換の追加]** をクリックして、**[FlowType]** を **[Constant]** に設定し、[ターゲット属性] で **cloudFiltered** を選択して、[ソース] ボックスに「**True**」と入力します。**[追加]** をクリックして規則を保存します。![Inbound 3 transformation](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)
-- 構成を完了するには、[変更を適用して検証](#apply-and-verify-changes)します。
+8. わかりやすい名前を規則に付けます ("*In from AD – User Catch-all filter*" など)。適切なフォレストを選択し、**[接続されているシステム オブジェクトのタイプ]** として **[ユーザー]** を、**[メタバース オブジェクトの種類]** として **[人]** を選択します。**[リンクの種類]** で **[結合]** を選択し、[優先順位] に、別の同期規則で現在使用されていない値 (600 など) を入力します。優先順位の値は、先ほどの同期規則よりも大きく (優先順位を低く) しました。後で別の部門を同期する必要が生じることも考えられるので、値の間隔は、フィルター処理の同期規則を追加できるよう、ある程度を余裕を持たせています。**[次へ]** をクリックします。![Inbound 7 の説明](./media/active-directory-aadconnectsync-configure-filtering/inbound7.png)
+9. **[スコープ フィルター]** は空のままにして、**[次へ]** をクリックします。フィルターを空にした場合、すべてのオブジェクトに規則が適用されます。
+10. **[参加]** 規則は空のままにして、**[次へ]** をクリックします。
+11. **[変換の追加]** をクリックして、**[FlowType]** を **[Constant]** に設定し、[ターゲット属性] で **cloudFiltered** を選択して、[ソース] ボックスに「**True**」と入力します。**[追加]** をクリックして規則を保存します。![Inbound 3 の変換](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)  
+12. 構成を完了するには、[変更を適用して検証](#apply-and-verify-changes)します。
 
 必要であれば、1 つ目のタイプの規則をさらに作成し、同期対象のオブジェクトを増やすこともできます。
 
@@ -199,15 +199,15 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 
 この例では、フィルター処理を変更するので、mail と userPrincipalName の両方の末尾が @contoso.com であるユーザーのみが同期されます。
 
-- **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
-- [スタート] メニューから、**同期規則エディター**を起動します。
-- [規則の種類] の **[送信]** をクリックします。
-- **[Out to AAD – User Join SOAInAD]** という規則を探します。**[編集]** をクリックします。
-- ポップアップで **[はい]** を選択して規則のコピーを作成します。
-- **[説明]** ページの優先順位の値を、まだ使用していない値 (50 など) に設定します。
-- 左側のナビゲーションの **[スコープ フィルター]** をクリックします。**[句の追加]** をクリックし、[属性] で **[mail]** を選択して、[演算子] で **[ENDSWITH]** を選択し、[値] に「**@contoso.com**」と入力します。**[句の追加]** をクリックし、[属性] で **[userPrincipalName]** を選択して、[演算子] で **[ENDSWITH]** を選択し、[値] に「**@contoso.com**」と入力します。
-- **[保存]** をクリックします。
-- 構成を完了するには、[変更を適用して検証](#apply-and-verify-changes)します。
+1. **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
+2. [スタート] メニューから、**同期規則エディター**を起動します。
+3. [規則の種類] の **[送信]** をクリックします。
+4. **[Out to AAD – User Join SOAInAD]** という規則を探します。**[編集]** をクリックします。
+5. ポップアップで **[はい]** を選択して規則のコピーを作成します。
+6. **[説明]** ページの優先順位の値を、まだ使用していない値 (50 など) に設定します。
+7. 左側のナビゲーションの **[スコープ フィルター]** をクリックします。**[句の追加]** をクリックし、[属性] で **[mail]** を選択して、[演算子] で **[ENDSWITH]** を選択し、[値] に「**@contoso.com**」と入力します。**[句の追加]** をクリックし、[属性] で **[userPrincipalName]** を選択して、[演算子] で **[ENDSWITH]** を選択し、[値] に「**@contoso.com**」と入力します。
+8. **[保存]** をクリックします。
+9. 構成を完了するには、[変更を適用して検証](#apply-and-verify-changes)します。
 
 ## 変更の適用と検証
 構成を変更したら、それらの変更をシステム内の既存のオブジェクトに適用する必要があります。まだ同期エンジンに存在しないオブジェクトを処理し、ソース システムをもう一度読み取ってその内容を検証しなければならないケースも考えられます。
@@ -218,32 +218,32 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 
 次の手順を実行します。
 
-- [スタート] メニューから **[同期サービス]** を起動します。
-- **[コネクタ]** を選択し、**[コネクタ]** の一覧から、構成変更済みのコネクタを選択します。**[アクション]** から **[実行]** を選択します。 ![Connector run](./media/active-directory-aadconnectsync-configure-filtering/connectorrun.png)
-- **[実行プロファイル]** から、前のセクションで触れた操作を選択します。2 つのアクションを実行する必要がある場合は、1 つ目のアクションが完了 (選択したコネクタの **[状態]** 列が **[アイドル]** に変化) するのを待って 2 つ目のアクションを実行してください。
+1. [スタート] メニューから **[同期サービス]** を起動します。
+2. **[コネクタ]** を選択し、**[コネクタ]** の一覧から、構成変更済みのコネクタを選択します。**[アクション]** から **[実行]** を選択します。 ![コネクタの実行](./media/active-directory-aadconnectsync-configure-filtering/connectorrun.png)  
+3. **[実行プロファイル]** から、前のセクションで触れた操作を選択します。2 つのアクションを実行する必要がある場合は、1 つ目のアクションが完了 (選択したコネクタの **[状態]** 列が **[アイドル]** に変化) するのを待って 2 つ目のアクションを実行してください。
 
 同期後、すべての変更がエクスポートの対象としてステージングされます。実際に Azure AD に変更を加える前に、それらの変更がすべて正しいことを検証する必要があります。
 
-- コマンド プロンプトを起動し、`%Program Files%\Microsoft Azure AD Sync\bin` に移動します。
-- 次のコマンドを実行します: `csexport "Name of Connector" %temp%\export.xml /f:x` 同期サービスにコネクタの名前があることを確認できます。Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
-- 次のコマンドを実行します: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`
-- %temp% に export.csv という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。このファイルには、エクスポートの対象となるすべての変更が含まれています。
-- データまたは構成に必要な変更を加え、エクスポートの対象となる変更が希望どおりになるまで、(インポート、同期、検証の) 手順を実行します。
+1. コマンド プロンプトを起動し、`%Program Files%\Microsoft Azure AD Sync\bin` に移動します。
+2. 次のコマンドを実行します: `csexport "Name of Connector" %temp%\export.xml /f:x` 同期サービスにコネクタの名前があることを確認できます。Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
+3. 次のコマンドを実行します: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`
+4. %temp% に export.csv という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。このファイルには、エクスポートの対象となるすべての変更が含まれています。
+5. データまたは構成に必要な変更を加え、エクスポートの対象となる変更が希望どおりになるまで、(インポート、同期、検証の) 手順を実行します。
 
 問題がなければ、変更を Azure AD にエクスポートします。
 
-- **[コネクタ]** を選択し、**[コネクタ]** の一覧から Azure AD コネクタを選択します。**[アクション]** から **[実行]** を選択します。
-- **[実行プロファイル]** で **[エクスポート]** を選択します。
-- 構成の変更によって削除されるオブジェクトが多数存在し、その数が、構成されているしきい値 (既定では 500 個) を超えた場合、エクスポート時にエラーが表示されます。エラーが表示された場合は、[誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)機能を一時的に無効にする必要があります。
+1. **[コネクタ]** を選択し、**[コネクタ]** の一覧から Azure AD コネクタを選択します。**[アクション]** から **[実行]** を選択します。
+2. **[実行プロファイル]** で **[エクスポート]** を選択します。
+3. 構成の変更によって削除されるオブジェクトが多数存在し、その数が、構成されているしきい値 (既定では 500 個) を超えた場合、エクスポート時にエラーが表示されます。エラーが表示された場合は、[誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)機能を一時的に無効にする必要があります。
 
 この時点でスケジューラをもう一度有効にします。
 
-- [スタート] メニューから **[タスク スケジューラ]** を起動します。
-- **[タスク スケジューラ ライブラリ]** の直下から **"Azure AD Sync Scheduler"** というタスクを探して右クリックし、**[有効]** を選択します。
+1. [スタート] メニューから **[タスク スケジューラ]** を起動します。
+2. **[タスク スケジューラ ライブラリ]** の直下から **"Azure AD Sync Scheduler"** というタスクを探して右クリックし、**[有効]** を選択します。
 
 ## 次のステップ
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

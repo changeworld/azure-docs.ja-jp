@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="12/28/2015"
+   ms.date="01/08/2016"
    ms.author="andkjell;billmath"/>
 
 # Azure AD Connect の前提条件
@@ -37,10 +37,10 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 - Azure AD Connect サーバーに、[.NET Framework 4.5.1](#component-prerequisites) 以降と [Microsoft PowerShell 3.0](#component-prerequisites) 以降がインストールされている必要があります。
 - Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。リモート インストールのために、これらのサーバーで [Windows リモート管理](#windows-remote-management)を有効にする必要があります。
 - Active Directory フェデレーション サービスがデプロイされている場合は、[SSL 証明書](#ssl-certificate-requirements)が必要です。
-- Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされ、サービスのサービス アカウントがローカル コンピューターに作成されます。SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定する必要があります。Azure AD Connect では、SQL Server 2008 (SP4) から SQL Server 2014 まで、すべてのエディションの Microsoft SQL Server がサポートされています。
+- Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされ、サービスのサービス アカウントがローカル コンピューターに作成されます。SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定する必要があります。Azure AD Connect では、SQL Server 2008 (SP4) から SQL Server 2014 まで、すべてのエディションの Microsoft SQL Server がサポートされています。Microsoft Azure SQL Database は、データベースとして**サポートされていません**。
 
 ### アカウント
-- 統合する Azure AD ディレクトリの Azure AD グローバル管理者アカウント。
+- 統合する Azure AD ディレクトリの Azure AD グローバル管理者アカウント。これは、**学校または組織アカウント**にする必要があります。**Microsoft アカウント**にすることはできません。
 - Express 設定を使用する、または DirSync からアップグレードする場合は、ローカルの Active Directory のエンタープライズ管理者アカウント。
 - カスタム設定のインストール パスを使用する場合は、[Active Directory 内のアカウント](active-directory-aadconnect-accounts-permissions.md)。
 
@@ -157,4 +157,4 @@ AD FS または Web アプリケーション サーバーを実行するコン�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

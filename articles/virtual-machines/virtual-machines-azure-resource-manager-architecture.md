@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="01/07/2016"
 	ms.author="davidmu"/>
 
 # Azure リソース マネージャーのアーキテクチャ
@@ -73,14 +73,6 @@ Azure リソース マネージャーでは、リソース プロバイダーは
 
 ## 次のステップ
 
-[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-deploy-rmtemplates-azure-cli.md)
+「[Azure リソース マネージャーにおける Compute、Network、Strage プロバイダー](virtual-machines-azurerm-versus-azuresm.md)」で、リソース マネージャー デプロイ モデルを使用してデプロイできるリソースの詳細を確認します。
 
-[リソース マネージャー テンプレートと PowerShell を使用した Azure Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
-
-## その他のリソース
-
-[Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
-
-[Azure リソース マネージャーの概要](resource-group-overview.md)
-
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

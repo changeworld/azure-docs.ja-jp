@@ -130,13 +130,13 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 
 - [Microsoft.Azure.Mobile.Server.Entity](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) Entity Framework で SQL Database のデータにアクセスできるようにします。構成に追加するには、**AddTablesWithEntityFramework** 拡張メソッドを呼び出します。
 
-- [Microsoft.Azure.Mobile.Server.Authentication] 認証を有効にし、トークンの検証に使用する OWIN ミドルウェアを設定します。構成に追加するには、**AddAppServiceAuthentication** 拡張メソッドと **IAppBuilder**.**UseMobileAppAuthentication** 拡張メソッドを呼び出します。
+- [Microsoft.Azure.Mobile.Server.Authentication] 認証を有効にし、トークンの検証に使用する OWIN ミドルウェアを設定します。構成に追加するには、**AddAppServiceAuthentication** 拡張メソッドと **IAppBuilder**.**UseAppServiceAuthentication** 拡張メソッドを呼び出します。
 
 - [Microsoft.Azure.Mobile.Server.Notifications] プッシュ通知を有効にし、プッシュ登録エンドポイントを定義します。構成に追加するには、**AddPushNotifications** 拡張メソッドを呼び出します。
 
 - [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) モバイル アプリから従来の Web ブラウザーにデータを提供するコントローラーを作成します。構成に追加するには、**MapLegacyCrossDomainController** 拡張メソッドを呼び出します。
 
-- [Microsoft.Azure.Mobile.Server.Login] MobileAppLoginHandler.CreateToken() メソッドを使用したカスタム認証のプレビュー サポートを提供します。これは静的メソッドであり、この構成で有効にする必要はありません。
+- [Microsoft.Azure.Mobile.Server.Login] AppServiceLoginHandler.CreateToken() メソッドを使用したカスタム認証のプレビュー サポートを提供します。これは静的メソッドであり、この構成で有効にする必要はありません。
 
 ## <a name="publish-server-project"></a>方法: サーバー プロジェクトを発行する
 
@@ -184,7 +184,7 @@ Azure SQL Database のデータへのアクセスに Entity Framework を使用�
 
 ## 方法: カスタム API コントローラーを定義する
 
-カスタム API コントローラーは、エンドポイントを公開して、モバイル アプリのバックエンドに最も基本的な機能を提供します。`MobileAppControllerAttribute` 属性を使用して、モバイル固有の API コントローラーを登録できます。この属性は、ルートを登録し、Mobile Apps JSON シリアライザーも設定します。
+カスタム API コントローラーは、エンドポイントを公開して、モバイル アプリのバックエンドに最も基本的な機能を提供します。`MobileAppControllerAttribute` 属性を使用して、モバイル固有の API コント ローラーを登録できます。この属性は、ルートを登録し、Mobile Apps JSON シリアライザーも設定します。
 
 1. Visual Studio で、Controllers フォルダーを右クリックして、**[追加]**、**[コントローラー]** の順にクリックし、**[Web API 2 コントローラー - 空]** を選択して **[追加]** をクリックします。
 
@@ -228,7 +228,7 @@ Mobile Apps は、アプリの認証を有効化する処理を簡単にする�
 
 2. Startup.cs プロジェクト ファイルで、**Configuration** メソッドの先頭に次のコード行を追加します。
 
-		app.UseMobileAppAuthentication(config);
+		app.UseAppServiceAuthentication(config);
 
 	これにより、関連付けられた App Service ゲートウェイで発行されたトークンを Azure モバイル アプリが検証できるようにする、OWIN ミドルウェア コンポーネントが追加されます。
 
@@ -242,20 +242,20 @@ App Service Authentication/Authorization プロバイダーの中に使用した
 
 ユーザーをサインインするかどうかを判断するための独自のロジックを提供する必要があります。たとえば、データベース内のソルトを使用してハッシュ化されたパスワードと照合することができます。次の例では、`isValidAssertion()` メソッドがこれらの照合を実行します。このメソッドは他の場所で定義されています。
 
-カスタム認証を公開するには、ApiController を新規作成し、以下のような登録とログインのアクションを公開します。クライアントは、ユーザーから関連情報を収集し、本文にユーザー情報を含めた HTTPS POST を API に送信することでログインを試行できます。情報が検証されたら、`MobileAppLoginHandler.CreateToken()` メソッドを使用してトークンを発行できます。
+カスタム認証を公開するには、ApiController を新規作成し、以下のような登録とログインのアクションを公開します。クライアントは、ユーザーから関連情報を収集し、本文にユーザー情報を含めた HTTPS POST を API に送信することでログインを試行できます。サーバーでアサーションを確認したら、`AppServiceLoginHandler.CreateToken()` を使用してトークンを発行できます。
 
 ログイン アクションの例は次のようになります。
 
-		public HttpResponseMessage Post([FromBody] JObject assertion)
+		public IHttpActionResult Post([FromBody] JObject assertion)
 		{
 			if (isValidAssertion(assertion)) // user-defined function, checks against a database
 			{
-				JwtSecurityToken token = MobileAppLoginHandler.CreateToken(new Claim[] { new Claim(JwtRegisteredClaimNames.Sub, assertion["username"]) },
+				JwtSecurityToken token = AppServiceLoginHandler.CreateToken(new Claim[] { new Claim(JwtRegisteredClaimNames.Sub, assertion["username"]) },
 					mySigningKey,
 					myAppURL,
 					myAppURL,
 					TimeSpan.FromHours(24) );
-				return this.Request.CreateResponse(HttpStatusCode.OK, new LoginResult()
+				return Ok(new LoginResult()
 				{
 					AuthenticationToken = token.RawData,
 					User = new LoginResultUser() { UserId = userName.ToString() }
@@ -276,9 +276,17 @@ App Service Authentication/Authorization プロバイダーの中に使用した
 			}
 		}
 
-`MobileAppLoginHandler.CreateToken()` メソッドには、_audience_ パラメーターと _issuer_ パラメーターが含まれています。どちらも通常は、HTTPS スキームを使用して、アプリケーション ルートの URL に設定します。同様に、_secretKey_ をアプリケーションの署名キーの値に設定する必要があります。これは機密性の高い値なので、共有したりクライアントに保存したりしないでください。この値を取得するには、App Service でホストされているときに _WEBSITE\_AUTH\_SIGNING\_KEY_ 環境変数を参照します。ローカル デバッグのコンテキストで必要な場合は、「[認証に関するローカル デバッグ](#local-debug)」セクションの手順に従ってキーを取得し、アプリケーション設定として保存します。
+`MobileAppLoginHAppServiceLoginHandlerandler.CreateToken()` メソッドには、_audience_ パラメーターと _issuer_ パラメーターが含まれています。どちらも通常は、HTTPS スキームを使用して、アプリケーション ルートの URL に設定します。同様に、_secretKey_ をアプリケーションの署名キーの値に設定する必要があります。これは機密性の高い値なので、共有したりクライアントに保存したりしないでください。この値を取得するには、App Service でホストされているときに _WEBSITE\_AUTH\_SIGNING\_KEY_ 環境変数を参照します。ローカル デバッグの実行で必要な場合は、「[認証に関するローカル デバッグ](#local-debug)」セクションの手順に従ってキーを取得し、アプリケーション設定として保存します。
 
 また、発行されたトークンの有効期間と、含めたい要求を指定する必要があります。サンプル コードに示すとおり、サブジェクトの要求を指定する必要があります。
+
+また、手動の HTTP POST の代わりに `loginAsync()` メソッド (プラットフォームによって名前が変わる可能性があります) を使用するようにクライアント コードを簡略化できます。POST するアサーション オブジェクトに関連付けられている、追加のトークン パラメーターを受け取るオーバーロードを使用します。この場合、プロバイダーは独自のカスタム名にする必要があります。その後、ログイン アクションはサーバー上のこのカスタム名が含まれる _/.auth/login/{customProviderName}_ パスにある必要があります。このパスにコントローラーを配置するには、MobileAppConfiguration を適用する前に、HttpConfiguration にルートを追加します。
+
+		config.Routes.MapHttpRoute("CustomAuth", ".auth/login/CustomAuth", new { controller = "CustomAuth" }); 
+		
+上の文字列 "CustomAuth" をログイン操作をホストしているコント ローラーの名前で置き換えます。
+
+>[AZURE.TIP]loginAsync() アプローチを使用することで、サービスの後続の呼び出しごとに認証トークンが添付されます。
 
 ###<a name="user-info"></a>方法: 認証されたユーザー情報を取得する
 
@@ -361,7 +369,7 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 
 ##<a name="tags"></a>方法: タグへのプッシュを有効にするために、タグをデバイス インストールに追加する
 
-上記の「**方法: カスタム API コントローラーを定義する**」の後、バックエンドにカスタム API を設定し、Notification Hubs と連動させて、タグを特定のデバイス インストールに追加します。クライアント ローカル ストレージに保存されているインストール ID と追加するタグ (タグはバックエンドで直接指定できるため、これは任意) を指定します。Notification Hubs と連動させ、タグをデバイス インストール ID に追加するために、次のスニペットをコントローラーに追加してください。
+上記の「**方法: カスタム API コントローラーを定義する**」の手順を実行したら、バックエンドにカスタム API を設定し、Notification Hubs と連動させて、タグを特定のデバイス インストールに追加します。クライアント ローカル ストレージに保存されているインストール ID と追加するタグ (タグはバックエンドで直接指定できるため、これは任意) を指定します。Notification Hubs と連動させ、タグをデバイス インストール ID に追加するために、次のスニペットをコントローラーに追加してください。
 
 [Azure Notification Hubs NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) の使用 ([リファレンス](https://msdn.microsoft.com/library/azure/mt414893.aspx)):
 
@@ -426,7 +434,7 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 			TokenHandler = config.GetMobileAppTokenHandler()
 		});
 
-上記の例では、Web.config ファイル内のアプリケーション設定 _authAudience_ と _authIssuer_ を、HTTPS スキームを使用して、それぞれアプリケーション ルートの URL に構成する必要があります。同様に、_authSigningKey_ をアプリケーションの署名キーの値に設定する必要があります。これは機密性の高い値なので、共有したりクライアントに保存したりしないでください。この値を取得するには、[Azure ポータル]でアプリに移動し、**[ツール]** をクリックします。**[Kudu]** を選択し、**[移動]** をクリックします。この操作により、サイトの Kudu 管理エンドポイントに移動します。**[環境]** をクリックし、_WEBSITE\_AUTH\_SIGNING\_KEY_ の値を確認します。これがローカル アプリ構成の _authSigningKey_ で使用する必要がある値です。
+上記の例では、Web.config ファイル内のアプリケーション設定 _authAudience_ と _authIssuer_ を、HTTPS スキームを使用して、それぞれアプリケーション ルートの URL に構成する必要があります。同様に、_authSigningKey_ をアプリケーションの署名キーの値に設定する必要があります。これは機密性の高い値なので、共有したりクライアントに保存したりしないでください。この値を取得するには、[Azure ポータル]でアプリに移動し、**[ツール]** をクリックします。**[Kudu]** を選択し、**[移動]** をクリックします。この操作により、サイトの Kudu 管理エンドポイントに移動します。**[環境]** をクリックし、_WEBSITE\_AUTH\_SIGNING\_KEY_ で値を確認します。これがローカル アプリ構成の _authSigningKey_ で使用する必要がある値です。
 
 ローカルで実行されているサーバーで、クライアントがクラウド ベースのエンドポイントから取得するトークンを検証できるようになりました。
 
@@ -438,4 +446,4 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0114_2016-->

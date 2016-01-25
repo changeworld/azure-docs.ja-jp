@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="12/04/2015"
-	ms.author="robinsh;selcint"/>
+	ms.author="robinsh;prkhad"/>
 
 
 # Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ
@@ -72,7 +72,7 @@ Premium Storage のメリットを活用するには、アカウントの種類�
 - ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。たとえば、STANDARD\_DS1 VM では、Premium Storage ディスク トラフィック専用の帯域幅は 32 MB/秒です。つまり、この VM にアタッチされている Premium Storage ディスクが P10 の場合も、32 MB/秒が上限となり、P10 ディスクのスループットの上限である 100 MB に達することはありません。同様に、STANDARD\_DS13 VM 1 つあたりの全ディスクの帯域幅は最大 256 MB/秒です。現時点では、DS シリーズ最大の VM は STANDARD\_DS14 であり、この VM の全ディスクの帯域幅は最大 512 MB/秒です。現時点では、DS シリーズ最大の VM は STANDARD\_GS5 であり、この VM の全ディスクの帯域幅は最大 2000 MB/秒です。
 
 	これらの制限は、ディスク トラフィックのみを対象としており、キャッシュ ヒットとネットワーク トラフィックは対象外となります。VM のネットワーク トラフィックの帯域幅は別に用意されており、Premium Storage ディスク専用の帯域幅とは区別されています。
-	
+
 	DS シリーズと GS シリーズの VM の最大 IOPS、およびスループット (帯域幅) の最新の情報は次を参照してください。[仮想マシンと Azure のクラウド サービス サイズ](../virtual-machines/virtual-machines-size-specs.md)Premium Storage のディスクそれぞれの IOPS とスループット上限については、この記事の「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whja-JPing-premium-storage)」のセクションにある表を参照してください。
 
 > [AZURE.NOTE]キャッシュ ヒットには、ディスクの割り当て済みの IOPS とスループットによる制限はありません。つまり、DS シリーズ VM または GS シリーズ VM でキャッシュを読み取り専用に設定したデータ ディスクを使用する場合、そのキャッシュからの読み取りは、Premium Storage のディスク制限の対象にはなりません。そのため、ワークロードの大部分が読み取りの場合、ディスクから非常に高いスループットが得られます。キャッシュには、VM サイズに基づいて、VM レベルで IOPS とスループットの個別の制限が適用されます。DS シリーズ VM は、IOPS が約 4000 で、キャッシュとローカル SSD の IO がコアあたり 33 MB/秒です。
@@ -335,6 +335,5 @@ azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 - [Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
 
 [Image1]: ./media/storage-premium-storage-preview-portal/Azure_pricing_tier.png
- 
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0114_2016-->

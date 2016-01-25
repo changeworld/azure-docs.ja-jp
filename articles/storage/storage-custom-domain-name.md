@@ -1,27 +1,27 @@
-<properties 
-	pageTitle="ストレージ アカウントの BLOB データのカスタム ドメイン名の構成 | Microsoft Azure" 
-	description="Azure ストレージ アカウントの BLOB データにアクセスするためにカスタム ドメインを構成する方法について学習します。" 
-	services="storage" 
-	documentationCenter="" 
-	authors="tamram" 
-	manager="adinah" 
-	editor=""/>
+<properties
+	pageTitle="BLOB ストレージ エンドポイントのドメイン名の構成 | Microsoft Azure"
+	description="カスタム ユーザー ドメインを、Azure Storage アカウントの BLOB ストレージ エンドポイントにマッピングする方法について説明します。"
+	services="storage"
+	documentationCenter=""
+	authors="tamram"
+	manager="carmonm"
+	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/03/2015" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="01/07/2015"
 	ms.author="tamram"/>
 
 
-# Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成
+# BLOB ストレージ エンドポイントのカスタム ドメイン名の構成
 
 ## 概要
 
-Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメインを構成できます。BLOB サービスの既定のエンドポイントは https://<*mystorageaccount*>.blob.core.windows.net です。**www.contoso.com** などのカスタム ドメインおよびサブドメインをストレージ アカウントの BLOB エンドポイントにマッピングしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。
+Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメインを構成できます。BLOB ストレージの既定のエンドポイントは、https://<*mystorageaccount*>.blob.core.windows.net です。**www.contoso.com** などのカスタム ドメインおよびサブドメインをストレージ アカウントの BLOB エンドポイントにマッピングしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。
 
 
 > [AZURE.NOTE]このタスクの手順は、Azure ストレージ アカウントに適用されます。クラウド サービスの場合は「<a href = "/develop/net/common-tasks/custom-dns/">Azure クラウド サービスのカスタム ドメイン名の構成</a>」を、Web サイトの場合は「<a href="/develop/net/common-tasks/custom-dns-web-site/">Azure の Web サイトのカスタム ドメイン名の構成</a>」を参照してください。
@@ -44,7 +44,7 @@ BLOB|**既定の URL:** http://mystorageaccount.blob.core.windows.net/mycontaine
 
 カスタム ドメインが現在、ダウンタイムの発生が許容されないアプリケーションをサポートしている場合は、「<a href="#register-asverify">中間 asverify サブドメインを使用したストレージ アカウントのカスタム ドメインの登録</a>」で説明している手順に従ってください。
 
-カスタム ドメイン名を構成するには、ドメイン レジストラーで新しい CNAME レコードを作成する必要があります。CNAME レコードによって、ドメイン名のエイリアスが指定されます。この場合、カスタム ドメインのアドレスが、ストレージ アカウントの BLOB サービス エンドポイントにマッピングされます。
+カスタム ドメイン名を構成するには、ドメイン レジストラーで新しい CNAME レコードを作成する必要があります。CNAME レコードによって、ドメイン名のエイリアスが指定されます。この場合、カスタム ドメインのアドレスが、ストレージ アカウントの BLOB ストレージ エンドポイントにマッピングされます。
 
 それぞれのレジストラーでは CNAME レコードを指定するための同様の (多少異なる) 手段が用意されていますが、その概念は同じです。多くの基本ドメイン登録パッケージには DNS 構成が用意されていないため、CNAME レコードを作成するには、事前にドメイン登録パッケージのアップグレードが必要である可能性があります。
 
@@ -115,6 +115,5 @@ asverify サブドメインは、Azure で認識される特殊なサブドメ�
 ## その他のリソース
 
 -   <a href="http://msdn.microsoft.com/library/azure/gg680307.aspx">CDN コンテンツをカスタム ドメインにマッピングする方法</a>
- 
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -1,10 +1,12 @@
-1. In the portal, go to **New**, then **Browse**. Select **Virtual network gateways** from the list.
-2. Click **Add**.
-3. Name your gateway. This is not the same as naming a gateway subnet. This is the name of the gateway object. 
-4. In **Virtual network**, select the VNet that you want to connect to this gateway.
-5. In the settings for the VNet, for the **Public IP address** value, create a name your public IP address. Note that this is not asking for an IP address. The IP address will be assigned dynamically. Rather, this is the name of the IP address object that the address will be assigned to. 
-6. For **VPN type**, the choices are policy-based and route-based. Be sure to select the VPN gateway type that is both supported by the configuration scenario, and, if required for your configuration, supported by the VPN gateway device you plan to use.
-7. For **Resource Group**, choose **select existing** and choose the resource group that your VNet resides in, unless your configuration requires a different choice.
-8. For **Location**, make sure it's showing the location that both your Resource Group and VNet exist in.
-9. Click **Create**. You'll see the *Deploying Virtual network gateway* tile on the dashboard. Creating a gateway takes some time. There is a lot going on in the background. Plan for 15 minutes or more. You may need to refresh your portal page in order to see the completed status.
-10. After the gateway is created, you can view the IP address that has been assigned to it by looking at the Virtual Network in the portal. The gateway will appear as a connected device. You can view the name and the IP address assigned to the gateway.
+1. ポータルで、**[新規]**、**[参照]** の順に移動します。リストから **[仮想ネットワーク ゲートウェイ]** を選択します。
+2. **[追加]** をクリックします。
+3. ゲートウェイに名前を付けます。これは、ゲートウェイ サブネットの名前付けと同じではありません。これはゲートウェイ オブジェクトの名前です。 
+4. **[仮想ネットワーク]** で、このゲートウェイに接続する VNet を選択します。
+5. VNet 用の設定の **[パブリック IP アドレス]** 値では、パブリック IP アドレスの名前を作成します。これは IP アドレスではないことに注意してください。IP アドレスは動的に割り当てられます。これはアドレスが割り当てられる IP アドレス オブジェクトの名前です。 
+6. **[VPN の種類]** では、ポリシー ベースまたはルート ベースを選択できます。VPN ゲートウェイ タイプには、構成シナリオをサポートし、構成で必要な場合は使用する予定の VPN ゲートウェイ デバイスもサポートするタイプを選択してください。
+7. **[リソース グループ]** では、**[既存の選択]** を選択し、VNet が存在するリソース グループを選択します。構成上必要な場合はそれ以外のグループを選択できます。
+8. **[場所]** では、リソース グループと VNet の両方が存在する場所が表示されていることを確認します。
+9. **[作成]** をクリックします。ダッシュボードに *[仮想ネットワーク ゲートウェイのデプロイ]* タイルが表示されます。ゲートウェイの作成には、少し時間がかかります。バックグラウンドで実行されることがたくさんあります。15 分以上かかると思ってください。完了状態を確認するために、ポータル ページの更新が必要な場合があります。
+10. ゲートウェイの作成後は、ポータルの Virtual Network を調べることで、ゲートウェイに割り当てられている IP アドレスを確認できます。ゲートウェイは、接続されたデバイスとして表示されます。ゲートウェイに割り当てられた名前と IP アドレスを確認できます。
+
+<!---HONumber=AcomDC_0114_2016-->

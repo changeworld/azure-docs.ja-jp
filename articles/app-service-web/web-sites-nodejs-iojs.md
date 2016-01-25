@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="11/20/2015"
+	ms.date="01/09/2016"
 	ms.author="robmcm" />
 
 # Azure App Service Web Apps で io.js を使用する方法
@@ -50,9 +50,9 @@ Node.js アプリケーションをデプロイすると、App Service Web Apps 
 > [AZURE.NOTE]io.js は開発途上のもので、Node.js に比べて、より頻繁に更新されます。多くの Node.js モジュールが io.js で動作しない可能性があります。トラブルシューティングについては、[GitHub の io.js] に関するページを参照してください。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 [io.js]: https://iojs.org
 [io.js の配布]: https://iojs.org/dist/
@@ -60,4 +60,4 @@ Node.js アプリケーションをデプロイすると、App Service Web Apps 
 [io.js Deployment Script]: https://github.com/felixrieseberg/iojs-azure
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

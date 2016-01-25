@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/17/2015"
+   ms.date="01/08/2016"
    ms.author="mbaldwin"/>
 
 
@@ -28,7 +28,7 @@ Microsoft は次の 2 種類のユーザー アカウントを管理していま
 
 - **個人アカウント** (以前の Windows Live ID): このアカウントは、"個々の" ユーザーと Microsoft の関係を表し、コンシューマー向けデバイスや Microsoft のサービスにアクセスする際に使用されます。このアカウントは個人的に使用するためのものです。
 
-- **職場または学校アカウント**: このアカウントは、Azure Active Directory を使用する組織に代わって Microsoft が管理しています。このアカウントは、Office 365 や Microsoft の他のビジネス サービスにサインインする際に使用されます。
+- **職場または学校アカウント: ** このアカウントは、Azure Active Directory を使用する組織に代わって Microsoft が管理しています。このアカウントは、Office 365 や Microsoft の他のビジネス サービスにサインインする際に使用されます。
 
 通常、Microsoft の職場または学校アカウントは、組織 (企業、学校、政府機関) がエンド ユーザー (従業員、学生、公務員) に割り当てます。このアカウントは、クラウドの Azure AD プラットフォームで直接管理されるか、Windows Server Active Directory などのオンプレミス ディレクトリから Azure AD に同期されます。職場または学校アカウントの "管理人" は Microsoft ですが、アカウントは組織が所有し、管理しています。
 
@@ -94,4 +94,4 @@ Azure または Active Directory のブランドをエンド ユーザーに表�
 
 アプリケーションが Azure AD と Microsoft アカウントの両方をサポートしている場合、アプリケーションに 2 つのサインイン ボタンを用意する必要があります。Microsoft は、1 回の統合で Microsoft の個人アカウントと職場アカウントの両方をサポートできるようにするための更新プログラムに積極的に取り組んでいます。これが利用可能になれば、アプリケーションに 1 つの "Microsoft によるサインイン" ボタンを表示できるようになります。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

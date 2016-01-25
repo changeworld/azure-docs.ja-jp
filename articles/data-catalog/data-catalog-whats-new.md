@@ -13,12 +13,21 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="12/18/2015"
+   ms.date="01/08/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog の新機能
 
 定期的に **Azure Data Catalog** の更新がリリースされます。すべてのリリースにユーザー向けの新機能が含まれているわけではなく、一部のリリースはバックエンド サービス機能向けです。ここでは、**Azure Data Catalog** サービスに追加されたユーザー向けの新機能について説明します。
+
+## 2016 年 1 月 8 日の週のリリースの新機能
+
+2016 年 1 月 8 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+
+- **Azure Data Catalog** ポータルでデータ資産をピン留め/ピン留め解除する機能。ユーザーはデータ資産のピン留めを選択することで、再検出/再利用しやすくなります。
+- **Azure Data Catalog** ポータルの新たに再設計されたホーム ページ。新しいホーム ページには、最近公開またはピン留めされた資産、保存された検索など、現在のユーザーのアクティビティに関する詳細な情報のほか、カタログ全体でのアクティビティに関する詳細な情報も含まれています。
+- **Azure Data Catalog** ポータルでの固定のユーザー設定のサポート。ユーザー エクスペリエンスの設定 (グリッドまたはタイル ビュー、ページあたりの結果の数、検索結果の強調表示のオンまたはオフなど) はユーザー セッション間で永続化されます。
+- **Azure Data Catalog** が、2 つの新しい Azure リージョンで利用できるようになりました。顧客は **Azure Data Catalog** を、米国東部、米国西部、西ヨーロッパ、オーストラリア東部に加え、北ヨーロッパおよび東南アジア リージョンでもプロビジョニングできます。詳細については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」を参照してください。
 
 ## 2015 年 12 月 18 日の週のリリースの新機能
 
@@ -35,7 +44,7 @@
 - Azure Data Lake Store のデータ ソースのサポート。ユーザーは、Azure Data Catalog を使用して Azure Data Lake Store のデータ ソースを登録および検出できるようになりました。
 - Azure Data Catalog データ ソース登録ツールでのネットワーク プロキシ設定の手動指定のサポート。ユーザーはツールの [ようこそ] ページで [プロキシ設定を変更します] を選択し、ツールで使用されるプロキシ アドレスとポートを指定することができます。
 
-> [AZURE.NOTE] [Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。この機能を使用して問題やエラーが発生した場合は、[PowerBI.com](https://powerbi.com/) から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
+> [AZURE.NOTE][Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。この機能を使用して問題やエラーが発生した場合は、[PowerBI.com](https://powerbi.com/) から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
 
 
 ## 2015 年 11 月 20 日の週のリリースの新機能
@@ -46,7 +55,7 @@
 - Teradata のテーブルとビューの登録時にデータ プロファイルを含めることのサポート。
 - SQL Server (Azure SQL DB と Azure SQL Data Warehouse を含む)、Server Analysis Services、Azure Storage、および HDFS ソースに対する [Power BI Desktop で開く] のサポート。  
 
-> [AZURE.NOTE] [Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。この機能を使用して問題やエラーが発生した場合は、[PowerBI.com](https://powerbi.com) から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
+> [AZURE.NOTE][Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。この機能を使用して問題やエラーが発生した場合は、[PowerBI.com](https://powerbi.com) から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
 
 ## 2015 年 11 月 13 日の週のリリースの新機能
 
@@ -62,7 +71,7 @@
 
 - Teradata データ ソースのプレビューのサポート。Teradata のテーブルとビューを登録するとき、ユーザーはデータ ソースから抽出されたメタデータのスナップショット レコードを含めることができます。
 - Azure SQL Data Warehouse データ ソースに対する [Excel で開く] のサポート。
-- 手動で登録されたデータ資産に対する列レベルのスキーマの定義と編集のサポート。**Azure Data Catalog** ポータルを使用してデータ資産を手動で作成した後、データ資産プロパティに列定義を追加できます。
+- 手動で登録されたデータ資産に対する列レベルのスキーマの定義と編集のサポート。**Azure Data Catalog** ポータルを使用してデータ資産を手動で作成した後、ユーザーはデータ資産のプロパティで列定義を追加できます。
 - **Azure Data Catalog** を検索するときの "has" クエリのサポート。これにより、特定のメタデータを持つ登録済みデータ資産を検索できます。**Azure Data Catalog** のクエリ構文には次のものが含まれるようになりました。
 
 | クエリ構文 | 目的 |
@@ -165,4 +174,4 @@
 - Standard Edition のみ: データ資産に所有者を追加するとき、**Azure Data Catalog** は所有者としてユーザー アカウントとセキュリティ グループの両方をサポートするようになりました。選択したデータ資産の所有者としてセキュリティ グループを追加する場合、グループの表示名またはグループの UPN 電子メール アドレス (ある場合) のいずれかを入力できます。
 - Azure BLOB Storage データ ソースのサポート。ユーザーは、Azure Storage の BLOB およびディレクトリを登録および検出できるようになりました。
 
-<!-----HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0114_2016-->

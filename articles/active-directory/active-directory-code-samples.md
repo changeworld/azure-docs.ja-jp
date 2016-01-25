@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/17/2015"
+   ms.date="01/08/2016"
    ms.author="mbaldwin"/>
 
 # Azure Active Directory のコード例
@@ -151,4 +151,4 @@ PHP | [Azure AD Graph API 用の PHP サンプル アプリ](http://code.msdn.mi
 
 [Developing Modern Applications using OAuth and Active Directory Federation Services](http://msdn.microsoft.com/library/dn633593.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

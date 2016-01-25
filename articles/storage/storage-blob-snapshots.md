@@ -1,19 +1,19 @@
 <properties
-	pageTitle="BLOB のスナップショットの作成 | Microsoft Azure"
-	description="Azure Storage BLOB のスナップショットを作成するためのガイド"
+	pageTitle="BLOB の読み取り専用スナップショットの作成 | Microsoft Azure"
+	description="BLOB のスナップショットを作成して、特定の時点での BLOB データをバックアップする方法について説明します。スナップショットの課金方法と、スナップショットを使用して容量使用料金を最小限に抑える方法を理解します。"
 	services="storage"
 	documentationCenter=""
 	authors="tamram"
-	manager="adinah"
-	editor=""/>
+	manager="carmonm"
+	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/01/2015" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="01/07/2016"
 	ms.author="tamram"/>
 
 # BLOB のスナップショットの作成
@@ -125,4 +125,4 @@ Premium Storage でスナップショットを使うには次のルールに従�
 
 ![Azure Storage のリソース](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

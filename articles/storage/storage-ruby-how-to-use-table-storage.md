@@ -5,7 +5,7 @@
 	documentationCenter="ruby"
 	authors="tfitzmac"
 	manager="wpickett"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -157,4 +157,4 @@ azure モジュールは、Azure Storage アカウントに接続するために
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0114_2016-->

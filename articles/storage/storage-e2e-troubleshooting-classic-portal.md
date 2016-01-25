@@ -4,7 +4,7 @@
 	services="storage" 
 	documentationCenter="dotnet" 
 	authors="tamram" 
-	manager="adinah"/>
+	manager="carmonm"/>
 
 <tags 
 	ms.service="storage" 
@@ -60,7 +60,7 @@ Azure Storage の操作では、その通常の機能の一部として 299 を�
 
 以下の一覧は不完全であるという点に注意してください。通常の Azure Storage エラーおよび各ストレージ サービスに特有のエラーの詳細については、MSDN の「[状態コードとエラー コード](http://msdn.microsoft.com/library/azure/dd179382.aspx)」を参照してください。
 
-**状態コード 404 (Not Found) の例**
+**ステータス コード 404 (Not Found) の例**
 
 BLOB またはコンテナーが見つからないことが原因で、それらに対する読み取り操作が失敗した場合に発生します。
 
@@ -294,7 +294,7 @@ Azure Storage カラー ルールを使用するだけでなく、独自のカ�
 
 クライアント ログに **StatusCode** 列が含まれていないため、このフィルターを適用した後は、クライアント ログの行が除外されていることがわかります。まず、サーバーおよびネットワーク トレース ログを確認して 404 エラーを見つけてから、クライアント ログに戻ってそのエラーを引き起こしたクライアント操作を調べます。
 
->[AZURE.NOTE]状態コードが null であるログ エントリを含むフィルターに式を追加すると、**[StatusCode]** 列によるフィルターを適用しつつ、クライアント ログを含む 3 つのログすべてのデータを表示することができます。このフィルター式を作成するには、以下を使用します:
+>[AZURE.NOTE]ステータス コードが null であるログ エントリを含むフィルターに式を追加すると、**[StatusCode]** 列によるフィルターを適用しつつ、クライアント ログを含む 3 つのログすべてのデータを表示することができます。このフィルター式を作成するには、以下を使用します:
 >
 > <code>&#42;StatusCode >= 400 or !&#42;StatusCode</code>
 >
@@ -347,27 +347,16 @@ Message Analyzer を使用したログ データの分析に慣れてきたと�
 | 調査目的… | 使用するフィルター式… | 式を適用するログ (クライアント、サーバー、ネットワーク、すべて) |
 |------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | キューのメッセージ配信での予期しない遅延 | AzureStorageClientDotNetV4.Description に "失敗した操作の再試行" が含まれている。 | クライアント |
-| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 &#124;&#124; HTTP.Response.StatusCode == 503 | ネットワーク |
+| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 || HTTP.Response.StatusCode == 503 | ネットワーク |
 | PercentTimeoutError の増加 | HTTP.Response.StatusCode == 500 | ネットワーク |
-| PercentTimeoutError の増加 (すべて) |    *StatusCode == 500 | すべて |
-| PercentNetworkError の増加 | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | クライアント |
-| HTTP 403 (Forbidden) メッセージ | HTTP.Response.StatusCode == 403 | ネットワーク |
-| HTTP 404 (Not found) メッセージ | HTTP.Response.StatusCode == 404 | ネットワーク |
-| 404 (すべて) | *StatusCode == 404 | すべて |
-| Shared Access Signature (SAS) 認証の問題 | AzureStorageLog.RequestStatus == "SASAuthorizationError" | ネットワーク |
-| HTTP 409 (Conflict) メッセージ | HTTP.Response.StatusCode == 409 | ネットワーク |
-| 409 (すべて) | *StatusCode == 409 | すべて |
-| PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある | AzureStorageLog.RequestStatus == "ClientOtherError" | サーバー |
-| Nagle 警告 | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | サーバー |
-| サーバーとネットワーク ログの時間範囲 | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | サーバー、ネットワーク |
-| サーバー ログの時間範囲 | AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 | サーバー |
+| PercentTimeoutError の増加 (すべて) |    **StatusCode == 500 | すべて | | PercentNetworkError の増加 | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | クライアント | | HTTP 403 (Forbidden) メッセージ | HTTP.Response.StatusCode == 403 | ネットワーク | | HTTP 404 (Not found) メッセージ | HTTP.Response.StatusCode == 404 | ネットワーク | | 404 (すべて) | *StatusCode == 404 | すべて | | Shared Access Signature (SAS) 認証の問題 | AzureStorageLog.RequestStatus == "SASAuthorizationError" | ネットワーク | | HTTP 409 (Conflict) メッセージ | HTTP.Response.StatusCode == 409 | ネットワーク | | 409 (すべて) | *StatusCode == 409 | すべて | | PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある | AzureStorageLog.RequestStatus == "ClientOtherError" | サーバー | | Nagle 警告 | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | サーバー | | サーバーとネットワーク ログの時間範囲 | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | サーバー、ネットワーク | | サーバー ログの時間範囲 | AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 | サーバー |
 
 
 ## 次のステップ
 
 Azure Storage におけるエンド ツー エンド シナリオのトラブルシューティングの詳細については、次のリソースを参照してください。
 
-- [Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)
+- [ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)
 - [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx)
 - [ストレージ アカウントの監視方法](storage-monitor-storage-account.md)
 - [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
@@ -375,4 +364,4 @@ Azure Storage におけるエンド ツー エンド シナリオのトラブル
  
  
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

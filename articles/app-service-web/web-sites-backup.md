@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/10/2015" 
+	ms.date="01/07/2015" 
 	ms.author="cephalin"/>
 
 # Azure App Service での Web アプリのバックアップ
@@ -126,8 +126,7 @@ Web アプリのすべてをバックアップしたくない場合がありま�
 
 今後まったく変更されることがない過去のログ ファイルや静止画像を含む Web アプリがあるとします。古い画像を含む Web アプリの完全バックアップは既に存在します。今後、Web アプリのバックアップを毎日実行しますが、変更されることがないログ ファイルや静止画像ファイルはバックアップしないようにするとします。
 
-![Logs フォルダー][LogsFolder]	
-![images フォルダー][ImagesFolder]
+![Logs フォルダー][LogsFolder] ![images フォルダー][ImagesFolder]
 	
 次の手順は、これらのファイルをバックアップから除外する方法を示しています。
 
@@ -143,7 +142,7 @@ Web アプリのすべてをバックアップしたくない場合がありま�
 
 2. `_backup.filter` という名前のファイルを作成し、上のリストをこのファイルに配置します。ただし `D:\home` は削除します。1 つのディレクトリまたはファイルを 1 行に配置します。したがって、ファイルの内容は次のようになります。
 
-    \site\wwwroot\Logs \LogFiles \site\wwwroot\Images\2013 \site\wwwroot\Images\2014 \site\wwwroot\Images\brand.png
+    \\site\\wwwroot\\Logs \\LogFiles \\site\\wwwroot\\Images\\2013 \\site\\wwwroot\\Images\\2014 \\site\\wwwroot\\Images\\brand.png
 
 3. このファイルを、[ftp](web-sites-deploy.md#ftp)やその他の方法を使用して、サイトの `D:\home\site\wwwroot` ディレクトリにアップロードします。ファイルを `http://{yourapp}.scm.azurewebsites.net/DebugConsole` 内に直接作成し、そこにコンテンツを挿入することもできます。
 
@@ -167,7 +166,7 @@ Web アプリのデータベースのバックアップは、.zip ファイル�
 
 <a name="nextsteps"></a>
 ## 次のステップ
-Web アプリをバックアップから復元する方法については、「[Azure App Service での Web アプリの復元](web-sites-restore.md)」をご覧ください。
+Web アプリをバックアップから復元する方法については、「[Azure App Service での Web アプリの復元](web-sites-restore.md)」をご覧ください。REST API を使用して、App Service アプリのバックアップと復元を実行することもできます (「[REST を使用して App Service アプリのバックアップと復元を実行する](websites-csm-backup.md)」をご覧ください)。
 
 Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイト](/pricing/free-trial/)」を参照してください。
 
@@ -190,4 +189,4 @@ Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイ
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

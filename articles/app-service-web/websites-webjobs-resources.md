@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/14/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Azure WebJobs のドキュメント リソース
@@ -139,4 +139,4 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 * [Twitter](http://twitter.com/)。ハッシュタグ #AzureWebJobs を使用してください。
 * [Web ジョブのバグまたは問題を報告する](https://github.com/projectkudu/kudu/wiki/Reporting-WebJobs-issues)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

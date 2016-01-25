@@ -1,6 +1,6 @@
 <properties 
     pageTitle="チュートリアル: Azure Active Directory と RunMyProcess の統合 | Microsoft Azure" 
-    description="Azure Active Directory で RunMyProcess を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" 
+    description="Azure Active Directory で RunMyProcess を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="markusvi"  
     documentationCenter="na" 
@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と RunMyProcess の統合
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   RunMyProcess テナント
   
-このチュートリアルを完了すると、RunMyProcess に割り当てた Azure AD ユーザーは、RunMyProcess 企業サイト (サービス プロバイダーが開始したサインオン) または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、RunMyProcess に割り当てた Azure AD ユーザーは、RunMyProcess 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -49,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-runmyprocess-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-runmyprocess-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -70,11 +70,11 @@
 
 1.  Azure AD ポータルの **RunMyProcess** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-runmyprocess-tutorial/IC789617.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-runmyprocess-tutorial/IC789617.png "Configure Single Sign-On")
 
 2.  **[ユーザーの RunMyProcess へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-runmyprocess-tutorial/IC789622.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-runmyprocess-tutorial/IC789622.png "Configure Single Sign-On")
 
 3.  **[アプリ URL の構成]** ページで、**[RunMyProcess サインオン URL]** テキストボックスに、"**http://company.runmyprocess.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
@@ -96,18 +96,18 @@
 
     ![SSO](./media/active-directory-saas-runmyprocess-tutorial/IC789626.png "SSO")
 
-    1.  **[方法]** として **[SSO with Samlv2]** を選択します。
+    1.  **[方法]** として、**[SSO with Samlv2]** を選択します。
     2.  Azure ポータルで、**[RunMyProcess でのシングル サインオンの構成]** ダイアログ ページの **[SAML SSO URL]** の値をコピーし、**[SSO リダイレクト]** テキストボックスに貼り付けます。
     3.  Azure ポータルで、**[RunMyProcess でのシングル サインオンの構成]** ダイアログ ページの **[シングル サインアウト サービス URL]** の値をコピーし、**[ログアウト リダイレクト]** テキストボックスに貼り付けます。
     4.  **[名前 ID 形式]** テキストボックスに「**urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**」と入力します。
     5.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
-        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」を参照してください。
+        >[AZURE.TIP]詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
     6.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[証明書]** テキストボックスに貼り付けます。
     7.  **[保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-runmyprocess-tutorial/IC789627.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -126,9 +126,9 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
 
     ![プロファイル](./media/active-directory-saas-runmyprocess-tutorial/IC789632.png "プロファイル")
 
-    1.  関連するテキストボックスに、プロビジョニングする有効な AAD アカウントの **[名前]** と **[電子メール] ** を入力します。
+    1.  関連するテキストボックスに、プロビジョニングする有効な AAD アカウントの **[名前]** と **[電子メール] **を入力します。
     2.  **[IDE 言語]**、**[言語]**、**[プロファイル]** を選択します。
-    3.  **[Send account creation e-mail to me]** を選択します。
+    3.  **[アカウント作成の電子メールを自分に送信]** を選択します。
     4.  **[保存]** をクリックします。
 
 >[AZURE.NOTE]他の RunMyProcess ユーザー アカウントの作成ツールまたは RunMyProcess から提供されている API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
@@ -141,14 +141,14 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  **RunMyProcess ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  RunMyProcess アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-runmyprocess-tutorial/IC789633.png "ユーザーの割り当て")
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-runmyprocess-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-runmyprocess-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

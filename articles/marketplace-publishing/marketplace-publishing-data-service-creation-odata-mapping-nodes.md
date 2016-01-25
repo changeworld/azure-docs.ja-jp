@@ -8,12 +8,12 @@
    editor=""/>
 
    <tags
-      ms.service="marketplace-publishing"
+      ms.service="marketplace"
       ms.devlang="na"
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="11/30/2015"
+      ms.date="01/04/2016"
       ms.author="hascipio; avikova" />
 
 # CSDL を使用して既存の Web サービスを OData にマップするためのノード スキーマについて
@@ -162,9 +162,8 @@ CSDL の仕様に追加された属性を次に示します。
 |----|----|
 | **d:Regex** *(省略可能)* | パラメーターの入力値を検証するために使用する正規表現の式。入力値が式と一致しない場合、値は拒否されます。これを利用して、入力可能な値のセットとして、たとえば ^[0-9]+?$ を指定して数字のみに制限することもできます。**例:** `<Parameter Name="name" Mode="In" Type="String" d:Nullable="false" d:Regex="^[a-zA-Z]*$" d:Description="A name that cannot contain any spaces or non-alpha non-English characters" d:SampleValues="George|John|Thomas|James"/>` |
 | **d:Enum** *(省略可能)* | パラメーターに有効な値のパイプ区切り一覧。値の型は、パラメーターの定義済みの型に一致する必要があります。例: `english|metric|raw`.列挙型は、UI (サービス エクスプローラー) に、パラメーターの選択可能なドロップダウン リストとして表示されます。**例:** `<Parameter Name="Duration" Type="String" Mode="In" Nullable="true" d:Enum="1year|5years|10years"/>` |
-| **d:Nullable** *(省略可能)* | パラメーターを null に指定できるかどうかを定義できます。既定値は true です。ただし、URI テンプレートでパスの一部として公開されているパラメーターを null に指定することはできません。これらのパラメーターでこの属性が false に設定されている場合、ユーザーの入力は上書きされます。パラメーターを null に指定できるかどうかを定義できます。既定値は true です。ただし、URI テンプレートでパスの一部として公開されているパラメーターを null に指定することはできません。これらのパラメーターでこの属性が false に設定されている場合、ユーザーの入力は上書きされます。**例:** `<Parameter Name="BikeType" Type="String" Mode="In" Nullable="false"/>` |
-| **d:SampleValue** *(省略可能)* | UI でクライアントにメモとして表示するサンプル値。複数の値をパイプで区切って追加できます。|」をご覧ください。**例:** `<Parameter Name="BikeOwner" Type="String" Mode="In" d:SampleValues="George|John|Thomas|James"/>` |
-| **d:UriTemplate** | |
+| **d:Nullable** *(省略可能)* | パラメーターを null に指定できるかどうかを定義できます。既定値は true です。ただし、URI テンプレートでパスの一部として公開されているパラメーターを null に指定することはできません。これらのパラメーターでこの属性が false に設定されている場合、ユーザーの入力は上書きされます。**例:** `<Parameter Name="BikeType" Type="String" Mode="In" Nullable="false"/>` |
+| **d:SampleValue** *(省略可能)* | UI でクライアントにメモとして表示するサンプル値。パイプで区切られたリストを使用して、複数の値を追加できます。`a|b|c` **例:** `<Parameter Name="BikeOwner" Type="String" Mode="In" d:SampleValues="George|John|Thomas|James"/>` |
 
 ## EntityType ノード
 
@@ -273,4 +272,4 @@ CSDL の仕様に追加されたその他の属性を次に示します。
 - 例を確認したい場合は、[データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関するページでサンプル コードを参照し、コード構文とコンテキストを学習してください。
 - データ サービスを Azure Marketplace に発行するために指定のパスに戻る場合は、こちらの[データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

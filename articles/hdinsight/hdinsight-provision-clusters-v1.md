@@ -69,23 +69,23 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 
 	特定のクラスターの種類には、各種ノードのさまざまなロールがあります。これにより、ワークロードの詳細に適した特定のロールでノードのサイズを設定できます。たとえば、Hadoop クラスターで実行する分析がメモリ消費型である場合、大量のメモリを備えた worker ノードをプロビジョニングできます。
 
-	![HDInsight Hadoop cluster roles](./media/hdinsight-provision-clusters-v1/HDInsight.Hadoop.roles.png)
+	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters-v1/HDInsight.Hadoop.roles.png)
 
 	HDInsight の Hadoop クラスターは 2 つのロールでデプロイされます。
 
 	- ヘッド ノード (2 ノード)
 	- データ ノード (1 つ以上のノード)
 
-	![HDInsight Hadoop cluster roles](./media/hdinsight-provision-clusters-v1/HDInsight.HBase.roles.png)
+	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters-v1/HDInsight.HBase.roles.png)
 
 	HDInsight 用 HBase クラスターは 3 つのロールでデプロイされます。- ヘッド サーバー (2 ノード) - リージョン サーバー (1 ノード以上) - Master/Zookeeper ノード (3 ノード)
 	
-	![HDInsight Hadoop cluster roles](./media/hdinsight-provision-clusters-v1/HDInsight.Storm.roles.png)
+	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters-v1/HDInsight.Storm.roles.png)
 
 	HDInsight 用 Storm クラスターは 3 つのロールでデプロイされます。Nimbus ノード (2 ノード) - Supervisor サーバー (1 ノード以上) - Zookeeper ノード (3 ノード)
 	
 
-	![HDInsight Hadoop cluster roles](./media/hdinsight-provision-clusters-v1/HDInsight.Spark.roles.png)
+	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters-v1/HDInsight.Spark.roles.png)
 
 	HDInsight 用 Spark クラスターは 3 つのロールでデプロイされます。ヘッド ノード (2 ノード) - worker ノード (1 ノード以上) - Zookeeper ノード (3 ノード) (A1 Zookeeper は無料)
 
@@ -96,13 +96,13 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 	
 - **リージョン/仮想ネットワーク (場所)**
 
-	![Azure regions](./media/hdinsight-provision-clusters-v1/Azure.regions.png)
+	![Azure Azure リージョン](./media/hdinsight-provision-clusters-v1/Azure.regions.png)
 
 	サポートされているリージョンの一覧については、「[HDInsight 価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」の **[リージョン]** ボックスの一覧をクリックしてください。
 
 - **ノード サイズ**
 
-	![hdinsight vm node sizes](./media/hdinsight-provision-clusters-v1/hdinsight.node.sizes.png)
+	![HDInsight VM ノードのサイズ](./media/hdinsight-provision-clusters-v1/hdinsight.node.sizes.png)
 
 	ノードの VM サイズを選択します。詳細については、「[クラウド サービスのサイズ](cloud-services-sizes-specs.md)」をご覧ください。
 
@@ -126,11 +126,11 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 	
 	構成時に、Azure ストレージ アカウントと、その Azure ストレージ アカウントの Azure BLOB ストレージ コンテナーを指定する必要があります。一部のプロビジョニング プロセスには、事前に作成された Azure ストレージ アカウントと BLOB ストレージ コンテナーが必要です。BLOB ストレージ コンテナーは、既定の保存先としてクラスターで使用されます。必要に応じて、クラスターがアクセス可能なその他の Azure Storage アカウント (リンクされたストレージ) を指定できます。また、クラスターは、完全なパブリック読み取りアクセスまたは BLOB だけを対象とするパブリック読み取りアクセスで構成された BLOB コンテナーにアクセスすることもできます。アクセスの制限の詳細については、「[Microsoft Azure ストレージ リソースへのアクセスの管理](storage-manage-access-to-resources.md)」をご覧ください。
 
-	![HDInsight storage](./media/hdinsight-provision-clusters-v1/HDInsight.storage.png)
+	![HDInsight ストレージ](./media/hdinsight-provision-clusters-v1/HDInsight.storage.png)
 	
 	>[AZURE.NOTE]次の図に示すように、BLOB ストレージ コンテナーには、一連の BLOB がまとめられています。
 	
-	![Azure blob storage](./media/hdinsight-provision-clusters-v1/Azure.blob.storage.jpg)
+	![Azure BLOB ストレージ](./media/hdinsight-provision-clusters-v1/Azure.blob.storage.jpg)
 	  
 	
 	>[AZURE.WARNING]1 つの Blob ストレージ コンテナーを複数のクラスターで共有しないでください。これはサポートされていません。
@@ -214,22 +214,13 @@ Hive 構成をカスタマイズする Azure PowerShell スクリプトの例を
 
 	サイト間構成では、ハードウェア VPN を使用するか、ルーティングとリモート アクセス サービスを使用して、データセンターから複数のリソースを Azure 仮想ネットワークに接続できます。
 
-	![diagram of site-to-site configuration](./media/hdinsight-provision-clusters-v1/hdinsight-vnet-site-to-site.png)
+	![サイト間構成の図](./media/hdinsight-provision-clusters-v1/hdinsight-vnet-site-to-site.png)
 
 	ポイント対サイト構成では、ソフトウェア VPN を使用して、特定のリソースを Azure 仮想ネットワークに接続できます。
 
 	![ポイント対サイト構成の図](./media/hdinsight-provision-clusters-v1/hdinsight-vnet-point-to-site.png)
 
-Virtual Network の機能、利点の詳細については、「[Azure 仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
-
-> [AZURE.NOTE]HDInsight クラスターをプロビジョニングする前に、Azure 仮想ネットワークを作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](../services/virtual-machines/)」を参照してください。
->
-> Azure HDInsight は場所ベースの Virtual Network のみをサポートし、アフィニティ グループ ベースの Virtual Network は現在取り扱っていません。既存の Azure Virtual Network が場所ベースかどうかを確認するには、Azure PowerShell コマンドレットの Get-AzureVNetConfig を使用します。Virtual Network が場所ベースでない場合、次のオプションがあります。
->
-> - 既存の Virtual Network 構成をエクスポートし、新しい Virtual Network を作成します。新しい Virtual Network はすべて、既定で場所ベースになります。
-> - 場所ベースの Virtual Network に移行します。「[Migrating Existing Services to Regional Scope](http://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)」 (リージョン スコープへの既存のサービスの移行) をご覧ください。
->
-> 1 つのクラスターには単一のサブネットを指定することを強くお勧めします。
+Virtual Network の具体的な構成要件など、Virtual Network で HDInsight を使用する方法については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
 
 ## プロビジョニング ツール
 
@@ -810,4 +801,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

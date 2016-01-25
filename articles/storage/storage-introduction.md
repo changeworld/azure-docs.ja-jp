@@ -4,8 +4,8 @@
 	services="storage" 
 	documentationCenter="" 
 	authors="tamram" 
-	manager="adinah" 
-	editor=""/>
+	manager="carmonm" 
+	editor="tysonn"/>
 
 <tags 
 	ms.service="storage" 
@@ -236,4 +236,4 @@ Azure Storage を導入するには、次のリソースを参照してくださ
 - [Python からキュー ストレージを使用する方法](storage-python-how-to-use-queue-storage.md)
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

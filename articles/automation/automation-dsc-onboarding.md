@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="TBD" 
-   ms.date="11/23/2015"
+   ms.date="01/11/2016"
    ms.author="coreyp"/>
 
 # Azure Automation DSC による管理のためのマシンのオンボード
@@ -28,6 +28,8 @@
 *    Azure Virtual Machines
 *    オンプレミス、または Azure 以外のクラウド内の物理/仮想 Windows マシン
 *    オンプレミス、Azure、または Azure 以外のクラウド内の物理/仮想 Linux マシン
+
+さらに、**DSC metaconfiguration** を生成して上記のマシンのあらゆる組み合わせを包括的に Azure Automation DSC にオンボードできます。
 
 次のセクションでは、各種類のマシンを Azure Automation DSC にオンボードできる方法の概要を示します。
 
@@ -114,7 +116,7 @@ Azure Automation DSC では、Azure ポータル、Azure リソース マネー�
 
 ### Azure ポータル
 
-[Azure プレビュー ポータル](http://portal.azure.com/)で、仮想マシンをオンボードする Azure Automation アカウントに移動します。Automation アカウントのダッシュ ボードで、**[DSC ノード]**、**[Azure VM の追加]** の順にクリックします。
+[Azure プレビュー ポータル](http://portal.azure.com/)で、仮想マシンをオンボードする Azure Automation アカウントに移動します。Automation アカウントのダッシュボードで、**[DSC ノード]**、**[Azure VM の追加]** の順にクリックします。
 
 **[オンボードする仮想マシンの選択]** で、オンボードする 1 つ以上の Azure Virtual Machines を選択します。
 
@@ -139,24 +141,13 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
 オンプレミスの Windows マシンと (Amazon Web Services などの) Azure 以外のクラウド内の Windows マシンも、インターネットへの発信アクセスが可能な限り、いくつかの簡単な手順で Azure Automation DSC にオンボードすることができます。
 
 1. Azure Automation DSC にオンボードするマシンに最新バージョンの [WMF 5](http://www.microsoft.com/ja-JP/download/details.aspx?id=48729) がインストールされていることを確認します。
-
-2. ローカル環境のマシンで、管理者として PowerShell コンソールまたは PowerShell ISE を開きます。このマシンにも最新バージョンの WMF 5 がインストールされている必要があります。
-
-3. Azure PowerShell モジュール `Login-AzureRmAccount` を使用して、Azure リソース マネージャーに接続します。
-
-4. 以下を使用して、ノードをオンボードする Automation アカウントから、オンボードするマシンの PowerShell DSC メタ構成をダウンロードします。
-
-	`Get-AzureRmAutomationDscOnboardingMetaconfig -ResourceGroupName MyResourceGroup -AutomationAccountName      		MyAutomationAccount -ComputerName MyServer1, MyServer2 -OutputFolder C:\Users\joe\Desktop`
-
-5. 既定の設定がユース ケースに適していない場合は、必要に応じて、出力フォルダーのメタ構成を表示し、更新して、必要な [PowerShell DSC Local Configuration Manager のフィールドおよび値](https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396)と一致するようにします。
-
-6. 以下を使用して、オンボードするマシンに PowerShell DSC メタ構成をリモートで適用します。
+2. 以下の「[**DSC メタ構成の生成**](#generating-dsc-metaconfigurations)」のセクションの指示に従って、必要な DSC メタ構成が含まれるフォルダーを生成します。
+3. 以下を使用して、オンボードするマシンに PowerShell DSC メタ構成をリモートで適用します。**このコマンドを実行するマシンには最新バージョンの [WMF 5](http://www.microsoft.com/ja-JP/download/details.aspx?id=48729) がインストールされている必要があります。**
 
 	`Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2`
 
-7. PowerShell DSC メタ構成をリモートで適用できない場合は、手順 4. の出力フォルダーをオンボードする各マシンにコピーします。次に、オンボードする各マシンで Set-DscLocalConfigurationManager をローカルで呼び出します。
-
-8. Azure ポータルまたはコマンドレットを使用して、オンボードするマシンがこの時点で Azure Automation アカウントに登録されている DSC ノードとして示されていることを確認します。
+4. PowerShell DSC のメタ構成をリモートで適用できない場合は、手順 2 の出力フォルダーをオンボードする各マシンにコピーします。次に、オンボードする各マシンで **Set-DscLocalConfigurationManager** をローカルで呼び出します。
+5. Azure ポータルまたはコマンドレットを使用して、オンボードするマシンがこの時点で Azure Automation アカウントに登録されている DSC ノードとして示されていることを確認します。
 
 ## オンプレミス、Azure、または Azure 以外のクラウド内の物理/仮想 Linux マシン
 
@@ -164,7 +155,7 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
 
 1. Azure Automation DSC にオンボードするマシンに最新バージョンの [DSC Linux エージェント](http://www.microsoft.com/ja-JP/download/details.aspx?id=49150)がインストールされていることを確認します。
 
-2. [PowerShell DSC Local Configuration Manager の既定値](https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396)がユース ケースに適していない場合は、以下のようにします。
+2. [PowerShell DSC Local Configuration Manager の既定値](hhttps://msdn.microsoft.com/powershell/dsc/metaconfig4)がユース ケースに適しており、**両方とも** Azure Automation DSC とデータをやり取りするマシンをオンボードするには、次のようにします。
 
 	*    Azure Automation DSC にオンボードする各 Linux マシンで、Register.py で PowerShell DSC Local Configuration Manager の既定値を使用してオンボードします。
 
@@ -172,21 +163,10 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
 
 	*    Automation アカウントの登録キーと登録 URL を見つける場合は、後述の「[**セキュリティで保護された登録**](#secure-registration)」を参照してください。
 
-	PowerShell DSC Local Configuration Manager の既定値がユース ケースに適して**い****ない**場合は、手順 3. から 手順 9. に従います。それ以外の場合は、手順 9. に直接進みます。
+	PowerShell DSC Local Configuration Manager の既定値がユース ケースに**適して****いない**、または Azure Automation DSC にのみデータを送信するマシンをオンボードするものの、Azure Automation DSC から構成および PowerShell のモジュールを取得しない場合は、手順 3 ～ 6 に従います。それ以外の場合は、手順 6 に直接進みます。
 
-3. ローカル環境の Windows マシンで、管理者として PowerShell コンソールまたは PowerShell ISE を開きます。このマシンにも最新バージョンの [WMF 5](http://www.microsoft.com/ja-JP/download/details.aspx?id=48729) がインストールされている必要があります。
-
-4. 以下の Azure PowerShell モジュールを使用して、Azure リソース マネージャーに接続します。
-
-	`Login-AzureRmAccount`
-
-5.  以下を使用して、ノードをオンボードする Automation アカウントから、オンボードするマシンの PowerShell DSC メタ構成をダウンロードします。
-	
-	`Get-AzureRmAutomationDscOnboardingMetaconfig -ResourceGroupName MyResourceGroup -AutomationAccountName MyAutomationAccount -ComputerName MyServer1, MyServer2 -OutputFolder C:\Users\joe\Desktop_`
-
-6.  既定の設定がユース ケースに適していない場合は、必要に応じて、出力フォルダーのメタ構成を表示し、更新して、必要な [PowerShell DSC Local Configuration Manager のフィールドおよび値](http://https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396)と一致するようにします。
-
-7.  以下を使用して、オンボードするマシンに PowerShell DSC メタ構成をリモートで適用します。
+3.	以下の「[**DSC メタ構成の生成**](#generating-dsc-metaconfigurations)」セクションの指示に従って、必要な DSC メタ構成が含まれるフォルダーを生成します。
+4.  以下を使用して、オンボードするマシンに PowerShell DSC メタ構成をリモートで適用します。
     	
     	$SecurePass = ConvertTo-SecureString -string "<root password>" -AsPlainText -Force
         $Cred = New-Object System.Management.Automation.PSCredential "root", $SecurPass
@@ -197,12 +177,146 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
         $Session = New-CimSession -Credential:$Cred -ComputerName:<your Linux machine> -Port:5986 -Authentication:basic -SessionOption:$Opt
     	
     	Set-DscLocalConfigurationManager -CimSession $Session –Path C:\Users\joe\Desktop\DscMetaConfigs
+	
+このコマンドを実行するマシンには最新バージョンの [WMF 5](http://www.microsoft.com/ja-JP/download/details.aspx?id=48729) がインストールされている必要があります。
 
-8.  PowerShell DSC メタ構成をリモートで適用できない場合は、オンボードする各 Linux マシンについて、手順 5. のフォルダーからそのマシンに対応するメタ構成を Linux マシンにコピーします。次に、以下を使用して、Azure Automation DSC にオンボードする各 Linux マシンで `SetDscLocalConfigurationManager.py` をローカルで呼び出します。
+5.  PowerShell DSC メタ構成をリモートで適用できない場合は、オンボードする各 Linux マシンについて、手順 5. のフォルダーからそのマシンに対応するメタ構成を Linux マシンにコピーします。次に、以下を使用して、Azure Automation DSC にオンボードする各 Linux マシンで `SetDscLocalConfigurationManager.py` をローカルで呼び出します。
 
 	`/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py –configurationmof <path to metaconfiguration file>`
 
-9.  Azure ポータルまたはコマンドレットを使用して、オンボードするマシンがこの時点で Azure Automation アカウントに登録されている DSC ノードとして示されていることを確認します。
+6.  Azure ポータルまたはコマンドレットを使用して、オンボードするマシンがこの時点で Azure Automation アカウントに登録されている DSC ノードとして示されていることを確認します。
+
+##DSC メタ構成の生成
+マシンを包括的に Azure Automation DSC にオンボードするために、DSC メタ構成を生成できます。これを適用すると、Azure Automation DSC とデータをやり取りするようにマシン上の DSC エージェントに指示します。Azure Automation DSC の DSC メタ構成は、PowerShell DSC 構成または Azure Automation PowerShell コマンドレットのいずれかを使用して生成できます。
+
+**注:** DSC メタ構成には Automation アカウントにマシンをオンボードするために必要な管理用の秘密が含まれています。作成した DSC メタ構成は適切に保護し、使用後は削除してください。
+
+###DSC 構成の使用
+1.	ローカル環境のマシンで、管理者として PowerShell ISE を開きます。マシンには最新バージョンの [WMF 5](http://www.microsoft.com/ja-JP/download/details.aspx?id=48729) がインストールされている必要があります。
+
+2.	次のスクリプトをローカルにコピーします。このスクリプトには、メタ構成を作成するための PowerShell DSC 構成と、メタ構成の作成を開始するためのコマンドが含まれています。
+    
+        # The DSC configuration that will generate metaconfigurations
+        [DscLocalConfigurationManager()]
+        Configuration DscMetaConfigs 
+        { 
+            param 
+            ( 
+                [Parameter(Mandatory=$True)] 
+                $RegistrationUrl,
+         
+                [Parameter(Mandatory=$True)] 
+                [String]$RegistrationKey,
+
+                [Parameter(Mandatory=$True)] 
+                [String[]]$ComputerName,
+
+                [Int]$RefreshFrequencyMins = 30, 
+            
+                [Int]$ConfigurationModeFrequencyMins = 15, 
+            
+                [String]$ConfigurationMode = "ApplyAndMonitor", 
+            
+                [String]$NodeConfigurationName,
+
+                [Boolean]$RebootNodeIfNeeded= $False,
+
+                [String]$ActionAfterReboot = "ContinueConfiguration",
+
+                [Boolean]$AllowModuleOverwrite = $False,
+
+                [Boolean]$ReportOnly
+            )
+
+    
+            if(!$NodeConfigurationName -or $NodeConfigurationName -eq "") 
+            { 
+                $ConfigurationNames = $null 
+            } 
+            else 
+            { 
+                $ConfigurationNames = @($NodeConfigurationName) 
+            }
+
+            if($ReportOnly)
+            {
+               $RefreshMode = "PUSH"
+            }
+            else
+            {
+               $RefreshMode = "PULL"
+            }
+
+            Node $ComputerName
+            {
+
+                Settings 
+                { 
+                    RefreshFrequencyMins = $RefreshFrequencyMins 
+                    RefreshMode = $RefreshMode 
+                    ConfigurationMode = $ConfigurationMode 
+                    AllowModuleOverwrite  = $AllowModuleOverwrite 
+                    RebootNodeIfNeeded = $RebootNodeIfNeeded 
+                    ActionAfterReboot = $ActionAfterReboot 
+                    ConfigurationModeFrequencyMins = $ConfigurationModeFrequencyMins 
+                }
+
+                if(!$ReportOnly)
+                {
+                   ConfigurationRepositoryWeb AzureAutomationDSC 
+                    { 
+                        ServerUrl = $RegistrationUrl 
+                        RegistrationKey = $RegistrationKey 
+                        ConfigurationNames = $ConfigurationNames 
+                    }
+
+                    ResourceRepositoryWeb AzureAutomationDSC 
+                    { 
+                       ServerUrl = $RegistrationUrl 
+                       RegistrationKey = $RegistrationKey 
+                    }
+                }
+
+                ReportServerWeb AzureAutomationDSC 
+                { 
+                ServerUrl = $RegistrationUrl 
+                RegistrationKey = $RegistrationKey 
+                }
+            } 
+        }
+        # Create the metaconfigurations
+        # TODO: edit the below as needed for your use case
+        DscMetaConfigs `
+            -RegistrationUrl "<fill me in>" `
+            -RegistrationKey "<fill me in>" `
+            -ComputerName "<some VM to onboard>", "<some other VM to onboard>" `
+            -NodeConfigurationName "SimpleConfig.webserver" `
+            -RefreshFrequencyMins 30 `
+            -ConfigurationModeFrequencyMins 15 `
+            -RebootNodeIfNeeded $False `
+            -AllowModuleOverwrite $False `
+            -ConfigurationMode "ApplyAndMonitor" `
+            -ActionAfterReboot "ContinueConfiguration" `
+            -ReportOnly $False # Set to $True to have machines only report to AA DSC but not pull from it
+
+3.	お使いの Automation アカウントの登録キーと URL のほか、オンボードするマシンの名前を入力します。その他のパラメーターはすべて省略可能です。Automation アカウントの登録キーと登録 URL を見つける場合は、後述の「[**セキュリティで保護された登録**](#secure-registration)」を参照してください。
+
+4.	マシンが Azure Automation DSC に DSC のステータス情報を送信する一方で、構成や PowerShell モジュールを取得しないようにするには、**ReportOnly** パラメーターを true に設定します。
+
+5.	スクリプトを実行します。作業ディレクトリに、マシンをオンボードするための PowerShell DSC メタ構成が含まれる **DscMetaConfigs** という名前のフォルダーが作成されます。
+
+###Azure Automation コマンドレットの使用
+PowerShell DSC Local Configuration Manager の既定値がユース ケースに適しており、Azure Automation DSC とデータをやり取りするマシンをオンボードする場合、Azure Automation コマンドレットが必要な DSC メタ構成を生成するための簡略化された手法を提供します。
+
+1.	ローカル環境のマシンで、管理者として PowerShell コンソールまたは PowerShell ISE を開きます。
+
+2.	**Add-AzureRmAccount** を使用して Azure リソース マネージャーに接続する
+
+3.	ノードをオンボードする Automation アカウントから、オンボードするマシンの PowerShell DSC メタ構成をダウンロードします。
+
+        Get-AzureRmAutomationDscOnboardingMetaconfig -ResourceGroupName MyResourceGroup -AutomationAccountName MyAutomationAccount -ComputerName MyServer1, MyServer2 -OutputFolder C:\Users\joe\Desktop
+
+作業ディレクトリに、マシンをオンボードするための PowerShell DSC メタ構成が含まれる ***DscMetaConfigs*** という名前のフォルダーが作成されます。
 
 ##セキュリティで保護された登録
 
@@ -217,7 +331,7 @@ DSC 登録プロトコルに必要な情報は、Azure プレビュー ポータ
 
 セキュリティ強化のため、Automation アカウントのプライマリおよびセカンダリ アクセス キーを (**[キーの管理]** ブレードで) いつでも再生成して、以前のキーを使用して今後ノードが登録されないようにすることができます。
 
-##Azure Virtual Machine のオンボードに関するトラブルシューティング
+##Azure 仮想マシンのオンボードに関するトラブルシューティング
 
 Azure Automation DSC を使用すると、構成管理のための Azure Windows VM を簡単にオンボードできます。内部で、Azure VM Desired State Configuration 拡張機能を使用して、VM を Azure Automation DSC に登録します。Azure VM Desired State Configuration 拡張機能は非同期に実行されるため、その進行状況の追跡とその実行に関するトラブルシューティングが重要な場合があります。
 
@@ -236,4 +350,4 @@ Azure Automation DSC を使用すると、構成管理のための Azure Windows
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](http://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

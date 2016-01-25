@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Visual Studio を使用した Azure App Service のトラブルシューティング
@@ -156,7 +156,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 6. Visual Studio 2012 Update 4 以降の場合:<a id="vs2012"></a>
 
-	* Microsoft Azure 管理ポータルで、Web アプリケの **[設定] > [アプリケーション設定]** に移動し、下へスクロールして **[デバッグ]** セクションを表示します。
+	* Azure クラシック ポータルで、Web アプリの **[設定] > [アプリケーション設定]** に移動し、下へスクロールして **[デバッグ]** セクションを表示します。
 
 	* **[リモート デバッグ]** を **[オン]** に設定し、**[リモート デバッグに使用する Visual Studio のバージョン]** を **[2012]** に設定します。
 
@@ -567,8 +567,7 @@ Visual Studio で Web サーバーのログを初めて有効にしたとき、�
 
 1. Visual Studio の **[Azure Web アプリ]** ウィンドウで、**[ログ]** タブをクリックし、**[管理ポータルでのログの構成]** をクリックします。
 
-    <!-- todo:screenshot of new portal if the VS page link goes to new portal -->
-	![ログの構成](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png)
+    <!-- todo:screenshot of new portal if the VS page link goes to new portal -->![ログの構成](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png)
 
 	これにより、クラシック ポータルで Web アプリの **[構成]** タブが開きます。
 
@@ -762,4 +761,4 @@ Web アプリではなく Azure Cloud Services をデバッグする場合は、
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
  
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

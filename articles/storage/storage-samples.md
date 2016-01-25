@@ -1,24 +1,28 @@
 <properties
    pageTitle="Azure Storage のサンプル | Microsoft Azure"
-   description="Azure Storage のサンプルを表示、ダウンロード、実行できます。.NET、Java、Node.js、C++ のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。"
+   description="Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。.NET、Java、Node.js、C++ のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。"
    services="storage"
    documentationCenter="na"
    authors="tamram"
    manager="na"
-   editor="na" />
+   editor="tysonn" />
 <tags
    ms.service="storage"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="storage"
-   ms.date="09/01/2015"
+   ms.date="01/06/2016"
    ms.author="tamram" />
 
 # Azure Storage のサンプル
 
 ## 概要
 実用的な Azure Storage のサンプルを表示してダウンロードするには、以下のリンクを使用します。
+
+## Azure のコード サンプル ライブラリ
+
+[Azure のコード サンプル ライブラリ](https://azure.microsoft.com/documentation/samples/?service=storage)には、ダウンロードしてローカルで実行できる Azure Storage のサンプルが用意されています。コード サンプル ライブラリでは、サンプル コードが .zip 形式で提供されます。また、各サンプルの GitHub リポジトリを参照して複製することもできます。
 
 ## .NET のサンプル
 
@@ -81,4 +85,4 @@ C++ のサンプルを調べるには、NuGet から [C++ ストレージ クラ
 - [C++ ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-cpp)
 - [C++ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

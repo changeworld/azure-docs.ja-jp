@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/22/2015" 
+	ms.date="01/13/2016" 
 	ms.author="jgao"/>
 
 # Azure HDInsight (Linux) の Apache Spark の既知の問題
 
-このドキュメントでは、Spark パブリック プレビューのすべての既知の問題を追跡します。
+このドキュメントでは、HDInsight Spark パブリック プレビューのすべての既知の問題を追跡します。
 
 ##Livy が対話型セッションをリークする
  
@@ -139,4 +139,4 @@ hdiuser が spark-submit でジョブを送信すると、java.io.FileNotFoundEx
 - [概要: Azure HDInsight (Linux) での Apache Spark](hdinsight-apache-spark-overview.md)
 - [概要: Azure HDInsight (Linux) の Apache Spark のプロビジョニングと Spark SQL を使用した対話型クエリの実行](hdinsight-apache-spark-jupyter-spark-sql.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0114_2016-->

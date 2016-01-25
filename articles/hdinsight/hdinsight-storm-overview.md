@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="11/06/2015"
+   ms.date="01/08/2016"
    ms.author="larryfr"/>
 
 #HDInsight での Apache Storm の概要: Hadoop のリアルタイム分析
@@ -53,7 +53,7 @@ Storm の使用方法については、「[HDInsight での Storm の使用][get
 
 HDInsight クラスター上に新しい Storm を数分でプロビジョニングできます。クラスター名、サイズ、管理者アカウント、ストレージ アカウントを指定します。Azure は、トポロジのサンプルや Web 管理ダッシュボードを含む、クラスターを作成します。
 
-> [AZURE.NOTE] [Azure CLI](../xplat-cli-install.md) または [Azure PowerShell](../powershell-install-configure.md) を使用して、Storm クラスターをプロビジョニングすることもできます。
+> [AZURE.NOTE][Azure CLI](../xplat-cli-install.md) または [Azure PowerShell](../powershell-install-configure.md) を使用して、Storm クラスターをプロビジョニングすることもできます。
 
 要求を送信すると、15 分以内には、新しい Storm クラスターが実行され、最初のリアルタイム分析のパイプラインの準備が完了します。
 
@@ -220,4 +220,4 @@ HDInsight で Apache Storm を使用したリアルタイム分析ソリュー�
 [apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
 [gettingstarted]: hdinsight-apache-storm-tutorial-get-started-linux.md
 
-<!----HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

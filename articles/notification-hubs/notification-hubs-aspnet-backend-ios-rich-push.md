@@ -96,7 +96,7 @@
             }
         }
 
-> [AZURE.NOTE](optional): プロジェクト リソースの追加と取得方法の詳細については、「[How to embed and access resources by using Visual C# (Visual C# を使用してリソースの埋め込みとアクセスを行う方法)](http://support.microsoft.com/kb/319292)」を参照してください。
+	>[AZURE.NOTE](optional): プロジェクト リソースの追加と取得方法の詳細については、「[How to embed and access resources by using Visual C# (Visual C# を使用してリソースの埋め込みとアクセスを行う方法)](http://support.microsoft.com/kb/319292)」を参照してください。
 
 7. **NotificationsController.cs** で次のスニペットを使用して **NotificationsController** を再定義します。これによりデバイスに最初のリッチなサイレント通知の ID が送信され、クライアント側で画像の取得が可能になります。
 
@@ -381,4 +381,4 @@
 [IOS3]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-3.png
 [IOS4]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-4.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

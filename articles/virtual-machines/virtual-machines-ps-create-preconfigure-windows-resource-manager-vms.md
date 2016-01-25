@@ -20,11 +20,11 @@
 # リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、構成する
 
 > [AZURE.SELECTOR]
-- [Azure Portal - Windows](virtual-machines-windows-tutorial.md)
-- [Azure PowerShell](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
-- [Azure PowerShell - Template](virtual-machines-create-windows-powershell-resource-manager-template.md)
-- [Azure Portal - Linux](virtual-machines-linux-tutorial-portal-rm.md)
-- [Azure CLI](virtual-machines-linux-tutorial.md)
+- [Portal - Windows](virtual-machines-windows-tutorial.md)
+- [PowerShell](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
+- [PowerShell - Template](virtual-machines-create-windows-powershell-resource-manager-template.md)
+- [Portal - Linux](virtual-machines-linux-tutorial-portal-rm.md)
+- [CLI](virtual-machines-linux-tutorial.md)
 
 <br>
 
@@ -395,4 +395,4 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

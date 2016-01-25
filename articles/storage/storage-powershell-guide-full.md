@@ -455,7 +455,7 @@ Azure Table ストレージ サービスは NoSQL データストアであり、
     Add-Entity -Table $table -PartitionKey Partition1 -RowKey Row1 -Name Chris -Id 1
     Add-Entity -Table $table -PartitionKey Partition1 -RowKey Row2 -Name Jessie -Id 2
     Add-Entity -Table $table -PartitionKey Partition2 -RowKey Row1 -Name Christine -Id 3
-    Add-Entity -Table $table -PartitionKey Partition1 -RowKey Row2 -Name Steven -Id 4
+    Add-Entity -Table $table -PartitionKey Partition2 -RowKey Row2 -Name Steven -Id 4
 
 #### テーブル エンティティを照会する方法
 テーブルを照会するには、[Microsoft.WindowsAzure.Storage.Table.TableQuery](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tablequery.aspx) クラスを使用します。次の例では、このガイドのエンティティの追加方法に関するセクションで指定されたスクリプトを実行済みであると想定しています。この例では、まず、ストレージ コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。次に、[Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) コマンドレットを使用して、作成済みの Employees テーブルの取得を試みます。Microsoft.WindowsAzure.Storage.Table.TableQuery クラスで [New-Object](http://technet.microsoft.com/library/hh849885.aspx) コマンドレットを呼び出すと、新しいクエリ オブジェクトが作成されます。そして、文字列フィルターで指定されたとおりの 1 を値とする "ID" 列があるエンティティを見つけます。詳細については、「[テーブルおよびエンティティのクエリ](http://msdn.microsoft.com/library/azure/dd894031.aspx)」を参照してください。このクエリを実行すると、フィルター条件に一致するすべてのエンティティが返されます。
@@ -730,4 +730,4 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 [Next Steps]: #next
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

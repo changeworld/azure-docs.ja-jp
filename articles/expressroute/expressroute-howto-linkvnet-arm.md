@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/09/2015"
+   ms.date="01/07/2015"
    ms.author="ganesr" />
 
 # ExpressRoute 回線への仮想ネットワークのリンク
@@ -23,7 +23,7 @@
 - [PowerShell - Resource Manager] (expressroute-howto-linkvnet-arm.md)
 - [Template - Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)
 
-この記事では、ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要を示します。仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。この記事は、クラシック デプロイメント モデルを使用してデプロイされた VNet に適用されます。Azure リソース マネージャーのデプロイメント方法を使用してデプロイされた仮想ネットワークをリンクする場合は、テンプレートを使用して行うことができます。テンプレートに移動する場合は、上のタブを参照してください。
+この記事では、ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要を示します。仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。この記事は、リソース マネージャー デプロイ モデルを使用してデプロイされた VNet に適用されます。クラシック デプロイ モデルを使用してデプロイされた仮想ネットワークをリンクする場合は、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-classic.md)」をご覧ください。
 
 [AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
@@ -137,4 +137,4 @@ ExpressRoute 回線を仮想ネットワークにリンクしている接続を�
 
 ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

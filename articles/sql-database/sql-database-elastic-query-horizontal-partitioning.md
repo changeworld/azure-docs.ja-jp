@@ -21,7 +21,7 @@
 
 ![シャード間のクエリ][1]
 
-この機能は、Azure SQL [Database Elastic Database 機能セット](sql-database-elastic-scale.md)の一部です。
+この機能は、Azure SQL [Database Elastic Database 機能セット](sql-database-elastic-scale-introduction.md)の一部です。
  
 ## データベース オブジェクトの作成
 
@@ -241,4 +241,4 @@ sp\_execute\_fanout は、呼び出しパラメーターに入力されたシャ
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

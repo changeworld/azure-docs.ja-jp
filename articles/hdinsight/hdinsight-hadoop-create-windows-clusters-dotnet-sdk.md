@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/05/2016"
+   ms.date="01/13/2016"
    ms.author="jgao"/>
 
 # .NET SDK を使用した HDInsight での Windows ベースの Hadoop クラスターの作成
@@ -104,24 +104,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
                     System.Console.ReadLine();
                     
 				}
-				private static void CreateCluster()
-				{
-					var parameters = new ClusterCreateParameters
-					{
-						ClusterSizeInNodes = NewClusterNumNodes,
-						UserName = NewClusterUsername,
-						Password = NewClusterPassword,
-						Location = NewClusterLocation,
-						DefaultStorageAccountName = ExistingStorageName,
-						DefaultStorageAccountKey = ExistingStorageKey,
-						DefaultStorageContainer = ExistingBlobContainer,
-						ClusterType = NewClusterType,
-						OSType = NewClusterOsType
-					};
-		
-					_hdiManagementClient.Clusters.Create(ExistingResourceGroupName, NewClusterName, parameters);
-				}
-		
+
 				public static TokenCloudCredentials GetTokenCloudCredentials(string username = null, SecureString password = null)
 				{
 					var authFactory = new AuthenticationFactory();
@@ -237,4 +220,4 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
     Write-host "Default Storage Account Key: $defaultStorageAccountKey"
     Write-host "Default Blob Container Name: $defaultBlobContainerName"
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

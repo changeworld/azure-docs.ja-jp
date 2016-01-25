@@ -87,7 +87,7 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 
 	- __[既定のコンテナーの選択]__: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
 
-	- __[場所]__: ストレージ アカウントが存在する、または作成される地理的なリージョンです。
+	- __[場所]__: ストレージ アカウントが存在するリージョン、またはストレージ アカウントの作成先のリージョンです。
 
 		> [AZURE.IMPORTANT]既定のデータ ソースの場所を選択すると、HDInsight クラスターの場所も設定されます。クラスターと既定のデータ ソースは、同じリージョンに存在する必要があります。
 
@@ -109,15 +109,9 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 
 	* __[外部メタストア]__: Oozie と Hive の構成情報を格納するために使用する SQL Database を選択できます。これにより、クラスターを削除して再作成するときに構成を再利用できるので、Hive と Oozie の構成をその都度作成し直す必要がなくなります。
 
-	* __[仮想ネットワーク]__: SQL Database や Azure 仮想マシンなど、その他のリソースと同じ仮想ネットワークに HDInsight クラスターを配置できます。仮想ネットワークにリソースを配置することにより、インターネットからの受信トラフィックを処理するパブリック ゲートウェイをバイパスして、リソースが相互に直接通信できるようになります。Azure の仮想ネットワークが HDInsight にもたらす利点の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」を参照してください。
-
-		> [AZURE.IMPORTANT]HDInsight 構成から新しいネットワークを作成することはできないため、HDInsight クラスターを作成する前に Azure Virtual Network を作成する必要があります。
-		>
-		> 現時点 (2015 年 8 月 25 日) では、Azure Virtual Network 上に存在できる Linux ベースの HDInsight クラスターは 1 つだけという制限があります。
-        >
-        > Linux ベースの HDInsight で v1 (クラシック) Azure Virtual Network を使用することはできません。Azure ポータルでの HDInsight クラスターの作成プロセスで Virtual Network をオプションとして表示したり、Azure CLI または Azure PowerShell からクラスターを作成するときに Virtual Network を使用できるようにしたりするには、Virtual Network が v2 (Azure リソース マネージャー) である必要があります。
-        >
-        > v1 ネットワーク上にリソースがあり、HDInsight から仮想ネットワークを介してそれらのリソースに直接アクセスできるようにする場合、v2 Virtual Network を v1 Virtual Network に接続する方法については、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」をご覧ください。この接続が確立されたら、v2 Virtual Network で HDInsight クラスターを作成できます。
+	* __[仮想ネットワーク]__: SQL Database や Azure 仮想マシンなど、その他のリソースと同じ仮想ネットワークに HDInsight クラスターを配置できます。仮想ネットワークにリソースを配置することにより、インターネットからの受信トラフィックを処理するパブリック ゲートウェイをバイパスして、リソースが相互に直接通信できるようになります。
+    
+        Virtual Network の具体的な構成要件など、Virtual Network で HDInsight を使用する方法については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
 
 	* __[スクリプト アクション]__: HDInsight クラスターをプロビジョニング中にカスタマイズする Bash スクリプトを指定できます。スクリプトには、(Hadoop を操作するグラフィカル クライアントである) [Hue をインストールするスクリプト](hdinsight-hadoop-hue-linux.md)などがあります。 スクリプト アクションの詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
 
@@ -193,4 +187,4 @@ HDInsight クラスター ブレードの __[使用状況]__ セクションに�
 
 [preview-portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と Zscaler Beta の統合
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Zscaler Beta でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを完了すると、Zscaler Beta に割り当てた Azure AD ユーザーは、Zscaler Beta 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Zscaler Beta に割り当てた Azure AD ユーザーは、Zscaler Beta 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -39,7 +39,7 @@
 
 ###Zscaler Beta のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-zscaler-beta-tutorial/IC700993.png "Active Directory")
 
@@ -51,7 +51,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-zscaler-beta-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-zscaler-beta-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -67,17 +67,17 @@
 
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Zscaler Beta に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書を Zscaler Beta テナントにアップロードする必要があります。この手順に慣れていない場合は、「[バイナリ証明書をテキスト ファイルに変換する方法](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Zscaler Beta に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書を Zscaler Beta テナントにアップロードする必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Zscaler Beta** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure AD ポータルの **Zscaler Beta** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-zscaler-beta-tutorial/IC800225.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-zscaler-beta-tutorial/IC800225.png "Configure Single Sign-On")
 
 2.  **[ユーザーの Zscaler Beta へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-zscaler-beta-tutorial/IC800226.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-zscaler-beta-tutorial/IC800226.png "Configure Single Sign-On")
 
 3.  **[アプリの URL を構成する]** ページの **[Zscaler Beta サインオン URL]** テキスト ボックスに、ユーザーが ZScaler Beta アプリケーションのサインオンに使用する URL を入力して、**[次へ]** をクリックします。
 
@@ -147,8 +147,8 @@
     ![プロキシ サーバー](./media/active-directory-saas-zscaler-beta-tutorial/IC769494.png "プロキシ サーバー")
 
     1.  [LAN にプロキシ サーバーを使用する] をオンにします。
-    2.  [アドレス] テキスト ボックスに「**gateway.zscalerBeta.net**」と入力します。
-    3.  [ポート] テキスト ボックスに「**80**」と入力します。
+    2.  [アドレス] ボックスに「**gateway.zscalerBeta.net**」と入力します。
+    3.  [ポート] ボックスに「**80**」と入力します。
     4.  **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
     5.  **[OK]** をクリックして **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログを閉じます。
 
@@ -195,10 +195,10 @@ Azure AD ユーザーが ZScaler Beta にログインできるようにするに
 
     ![ユーザーの割り当て](./media/active-directory-saas-zscaler-beta-tutorial/IC800230.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-zscaler-beta-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-zscaler-beta-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

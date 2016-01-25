@@ -20,11 +20,11 @@
 # Linux を実行する仮想マシンを Azure ポータルを使用して作成する
 
 > [AZURE.SELECTOR]
-- [Azure Portal - Windows](virtual-machines-windows-tutorial.md)
-- [Azure PowerShell](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
-- [Azure PowerShell - Template](virtual-machines-create-windows-powershell-resource-manager-template.md)
-- [Azure Portal - Linux](virtual-machines-linux-tutorial-portal-rm.md)
-- [Azure CLI](virtual-machines-linux-tutorial.md)
+- [Portal - Windows](virtual-machines-windows-tutorial.md)
+- [PowerShell](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
+- [PowerShell - Template](virtual-machines-create-windows-powershell-resource-manager-template.md)
+- [Portal - Linux](virtual-machines-linux-tutorial-portal-rm.md)
+- [CLI](virtual-machines-linux-tutorial.md)
 
 <br>
 
@@ -34,8 +34,6 @@
 Linux を実行する Azure 仮想マシン (VM) は簡単に作成できます。このチュートリアルでは、Azure ポータルを使用して仮想マシンを簡単に作成する方法について説明し、`~/.ssh/id_rsa.pub` 公開キー ファイルを使用して、VM への **SSH** 接続をセキュリティで保護します。また、[独自のイメージをテンプレートとして](virtual-machines-linux-create-upload-vhd.md)使用して、Linux VM を作成することもできます。
 
 > [AZURE.NOTE]このチュートリアルでは、Azure リソース グループ API で管理される Azure 仮想マシンを作成します。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
-
-</br>
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
@@ -138,4 +136,4 @@ Azure 上の Linux の詳細については、次の内容を参照してくだ�
 
 - [Azure の Linux 用 Docker 仮想マシン拡張機能](virtual-machines-docker-vm-extension.md)
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

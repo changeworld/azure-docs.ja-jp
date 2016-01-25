@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Azure App Service での ASP.NET API アプリから SaaS プラットフォームへの接続
@@ -378,12 +378,7 @@ API アプリから Dropbox API を呼び出すことができるようにする
 
 		browser.Navigate(string.Format(@"{0}/login/aad", GATEWAY_URL));
 
-	他のプロバイダーで使用する値を次に示します:
-	* "microsoftaccount"
-	* "facebook"
-	* "twitter"
-	* "google"
-<br/><br/>
+	他のプロバイダーで使用する値を次に示します: * "microsoftaccount" * "facebook" * "twitter" * "google"<br/><br/>
 
 * `GetConsentLinkAsync()` メソッドの 2 番目のパラメーターは、ユーザーが Dropbox にログインしてユーザー アカウントへのアクセスに同意した後に、同意サーバーによりリダイレクトされるコールバック URL です。
 
@@ -454,4 +449,4 @@ SaaS プラットフォームに接続する API アプリのコード記述と�
 [Azure preview portal]: https://portal.azure.com/
 [Azure portal]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

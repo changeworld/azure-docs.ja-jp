@@ -12,8 +12,8 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article" 
-	ms.date="09/18/2015"
+	ms.topic="article"
+	ms.date="01/08/2016"
 	ms.author="cabailey"/>
 #Azure Key Vault の HSM 保護キーを生成し、転送する方法
 
@@ -194,7 +194,7 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 			python verifykeypackage.py -k BYOK-KEK-pkg-AUS-1 -w BYOK-SecurityWorld-pkg-AUS-1
 
 	>[AZURE.TIP]Thales ソフトウェアの %NFAST\_HOME%\\python\\bin に Python が含まれています。
-	
+
 2.	次の表示を確認します。これは検証の成功を示します: **Result: SUCCESS**
 
 このスクリプトは Thales ルート キーまで署名者のチェーンを検証します。このルート キーのハッシュがスクリプトに埋め込まれており、その値は **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** になります。[Thales Web サイト](http://www.thalesesec.com/)にアクセスすると、この値を個別に確認できます。
@@ -301,7 +301,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 完了すると、**Result: SUCCESS** と表示され、"TransferPackage-*ContosoFirstHSMkey*.byok" という名前の新しいファイルが現在のフォルダーに表示されます。
 
-###手順 4.4: キー転送パッケージをインターネット接続ワークステーションにコピーします。 
+###手順 4.4: キー転送パッケージをインターネット接続ワークステーションにコピーします。
 
 USB ドライブまたはその他のポータブル ストレージを使用し、前の手順の出力ファイル (KeyTransferPackage-ContosoFirstHSMkey.byok) をインターネット接続ワークステーションにコピーします。
 
@@ -317,4 +317,4 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 これでこの HSM 保護キーを Key Vault で使用できます。詳細については、[Azure Key Vault の概要](key-vault-get-started.md)のチュートリアルの「**ハードウェア セキュリティ モジュール (HSM) を使用する場合**」セクションを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

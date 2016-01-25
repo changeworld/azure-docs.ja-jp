@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/10/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # API アプリとしての Web API プロジェクトの構成
@@ -85,4 +85,4 @@ API アプリの詳細については、「[API Apps とは](app-service-api-app
 これで API アプリをデプロイする準備ができました。[API アプリのデプロイ](app-service-dotnet-deploy-api-app.md)に関するチュートリアルの手順に従って実際にデプロイできます。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="10/05/2015"
+	ms.date="01/13/2016"
 	ms.author="glenga"/>
 
 # 認証されたユーザーへのプッシュ通知の送信
@@ -67,4 +67,4 @@
 [Get started with push notifications]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md
 [プッシュ通知の使用]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

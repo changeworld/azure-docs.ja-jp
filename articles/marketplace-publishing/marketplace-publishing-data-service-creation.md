@@ -8,12 +8,12 @@
    editor=""/>
 
    <tags
-      ms.service="marketplace-publishing"
+      ms.service="marketplace"
       ms.devlang="na"
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="12/03/2015"
+      ms.date="01/04/2016"
       ms.author="hascipio; avikova" />
 
 # Azure Marketplace のデータ サービスの発行ガイド
@@ -41,7 +41,7 @@
 
 **[チュートリアル]** タブをクリックし、Azure Marketplace に適切にデータ サービスを発行するために必要なすべての手順を確認します。
 
-> [AZURE.TIP] [チュートリアル] ページのリンクと、左側のデータ サービス オファーのサブメニューのタブはいつでも使用できます。
+> [AZURE.TIP][チュートリアル] ページのリンクと、左側のデータ サービス オファーのサブメニューのタブはいつでも使用できます。
 
 ## 5\.新しいオファーを作成します。
 
@@ -146,4 +146,4 @@ Web サービスの場合
 [link-acct-creation]: marketplace-publishing-microsoft-accounts-creation-registration.md
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=AcomDC_1210_2015--->
+<!---HONumber=AcomDC_0114_2016-->

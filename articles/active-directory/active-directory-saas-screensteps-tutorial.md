@@ -1,6 +1,6 @@
 <properties 
     pageTitle="チュートリアル: Azure Active Directory と ScreenSteps の統合 | Microsoft Azure" 
-    description="ScreenSteps と Azure Active Directory を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" 
+    description="Azure Active Directory で ScreenSteps を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="markusvi"  
     documentationCenter="na" manager="stevenpo"/>
@@ -10,7 +10,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と ScreenSteps の統合
@@ -36,7 +36,7 @@
 
 ###ScreenSteps のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-screensteps-tutorial/IC700993.png "Active Directory")
 
@@ -48,7 +48,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-screensteps-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-screensteps-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -67,7 +67,7 @@
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **ScreenSteps** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure AD ポータルの **ScreenSteps** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-screensteps-tutorial/IC778519.png "シングル サインオンの構成")
 
@@ -114,7 +114,7 @@
     3.  **[Choose a file]** をクリックし、ダウンロードした証明書をアップロードします。
     4.  **[Update]** をクリックします。
 
-11. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+11. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、[**完了**] をクリックして [**シングル サインオンの構成**] ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-screensteps-tutorial/IC778542.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
@@ -139,7 +139,7 @@ Azure AD ユーザーが **ScreenSteps** にログインできるようにする
 
 5.  **[User Role]** の一覧からユーザーのロールを選択します。
 
-6.  [User Role] セクションで、プロビジョニングする有効な AAD アカウントの**姓**、名、**電子メール**、**ログイン**、**パスワード**、および **パスワードの確認**を該当するテキスト ボックスに入力します。
+6.  [User Roleル] セクションで、プロビジョニングする有効な AAD アカウントの**姓**、**名**、**電子メール**、**ログイン**、**パスワード**、および **パスワードの確認**を該当するテキスト ボックスに入力します。
 
     ![新しいユーザー](./media/active-directory-saas-screensteps-tutorial/IC778546.png "新しいユーザー")
 
@@ -157,14 +157,14 @@ Azure AD ユーザーが **ScreenSteps** にログインできるようにする
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  ScreenSteps アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **ScreenSteps ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-screensteps-tutorial/IC773094.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![ユーザーの割り当て](./media/active-directory-saas-screensteps-tutorial/IC778548.png "ユーザーの割り当て")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="11/30/2015"
+	ms.date="01/11/2015"
 	ms.author="wesmc"/>
 
 # Azure モバイル アプリでのオフライン データ同期
@@ -36,10 +36,11 @@
 
 以下のチュートリアルで、Azure モバイル アプリ を使用してモバイル アプリにオフライン同期を追加する方法について説明しています。
 
+* [Android: オフライン同期を有効にする]
 * [iOS: オフライン同期を有効にする]			
 * [Xamarin iOS: オフライン同期を有効にする]	
 * [Xamarin Android: オフライン同期を有効にする]
-* [Windows 8.1: オフライン同期を有効にする]	
+* [Windows 8.1: オフライン同期を有効にする]
 
 ## 同期テーブルについて
 
@@ -121,9 +122,10 @@ The sync table uses the [System Properties](https://msdn.microsoft.com/library/a
 
 <!-- Links -->
 
+[Android: オフライン同期を有効にする]: ../app-service-mobile-android-get-started-offline-data.md
 [iOS: オフライン同期を有効にする]: ../app-service-mobile-ios-get-started-offline-data.md
 [Xamarin iOS: オフライン同期を有効にする]: ../app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Xamarin Android: オフライン同期を有効にする]: ../app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Windows 8.1: オフライン同期を有効にする]: ../app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

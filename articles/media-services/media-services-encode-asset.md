@@ -104,7 +104,7 @@ Azure Media Encoder は Media Services がサポートするエンコーダー�
 
 ###プリセット
 
-Azure Media Encoder は、[ここ](https://msdn.microsoft.com/library/azure/dn619392.aspx)で説明されているエンコーダーのプリセットのいずれかを使用して構成されています。実際の Azure メディア エンコーダーのプリセット ファイルは、[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)で入手できます。
+Azure Media Encoder は、[ここ](https://msdn.microsoft.com/library/azure/dn619392.aspx)で説明されているエンコーダーのプリセットのいずれかを使用して構成されています。実際の Azure Media Encoder のプリセット ファイルは、[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)で入手できます。
 
 ###入力メタデータと出力メタデータ
 
@@ -168,9 +168,9 @@ Windows Media/ASF |あり|あり |あり
 AVI (非圧縮 8-bit/10-bit)|あり|あり |あり
 3GPP/3GPP2 |あり|はい |いいえ
 スムーズ ストリーミング ファイル形式 (PIFF 1.3)|あり|はい|いいえ
-[Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|あり|なし|いいえ
-Matroska/WebM |あり|なし|いいえ
-QuickTime (.mov) |あり|なし|いいえ
+[Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|あり|いいえ|いいえ
+Matroska/WebM |あり|いいえ|いいえ
+QuickTime (.mov) |あり|いいえ|いいえ
 
 ###入力ビデオ コーデック
 
@@ -184,14 +184,14 @@ MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プ
 MPEG-1 |あり|あり|あり
 Windows Media ビデオ/VC-1 |あり|あり|あり
 Canopus HQ/HQX |いいえ|あり|いいえ
-MPEG-4 Part 2 |あり|なし|いいえ
-[Theora](https://en.wikipedia.org/wiki/Theora) |あり|なし|いいえ
-Apple ProRes 422 |あり|なし|いいえ
-Apple ProRes 422 LT |あり|なし|いいえ
-Apple ProRes 422 HQ |あり|なし|いいえ
-Apple ProRes プロキシ|あり|なし|いいえ
-Apple ProRes 4444 |あり|なし|いいえ
-Apple ProRes 4444 XQ |あり|なし|いいえ
+MPEG-4 Part 2 |あり|いいえ|いいえ
+[Theora](https://en.wikipedia.org/wiki/Theora) |あり|いいえ|いいえ
+Apple ProRes 422 |あり|いいえ|いいえ
+Apple ProRes 422 LT |あり|いいえ|いいえ
+Apple ProRes 422 HQ |あり|いいえ|いいえ
+Apple ProRes プロキシ|あり|いいえ|いいえ
+Apple ProRes 4444 |あり|いいえ|いいえ
+Apple ProRes 4444 XQ |あり|いいえ|いいえ
 
 ###入力オーディオ コーデック
 
@@ -206,9 +206,9 @@ MPEG Layer 2|あり|あり|あり
 MP3 (MPEG-1 Audio Layer 3)|あり|あり|あり
 Windows Media オーディオ|あり|あり|あり
 WAV/PCM|あり|あり|あり
-[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|あり|なし|いいえ
-[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |あり|なし|いいえ
-[Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|あり|なし|いいえ
+[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|あり|いいえ|いいえ
+[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |あり|いいえ|いいえ
+[Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|あり|いいえ|いいえ
 
 
 ###出力コンテナー/ファイル形式
@@ -250,6 +250,26 @@ MP3 (MPEG-1 Audio Layer 3)|いいえ|いいえ|あり
 Windows Media オーディオ|いいえ|あり|あり
 
 
+##エラー コード  
+
+次の表は、エンコード タスクの実行中にエラーが発生した場合に返される可能性があるエラー コードの一覧です。エラーの詳細を取得するには、.NET コードの場合は [ErrorDetails](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) クラスを、REST コードの場合は [ErrorDetails](https://msdn.microsoft.com/library/jj853026.aspx) REST API を使用します。
+
+ErrorDetail.Code|考えられる原因
+-----|-----------------------
+Unknown| タスクの実行中に発生する不明なエラー
+ErrorDownloadingInputAssetMalformedContent|無効なファイル名、サイズ 0 のファイル、不正なファイル形式など、入力資産のダウンロード中に発生するエラーのカテゴリ
+ErrorDownloadingInputAssetServiceFailure|ダウンロード中のネットワーク エラーやストレージ エラーなど、サービス側での問題に関するエラーのカテゴリ
+ErrorParsingConfiguration|構成が有効なシステム プリセットでない、構成に無効な XML が含まれているなど、タスク <see cref="MediaTask.PrivateData"/> (構成) が有効でない場合に発生するエラーのカテゴリ
+ErrorExecutingTaskMalformedContent|入力メディア ファイル内の問題が障害の原因となり、タスクの実行中に発生するエラーのカテゴリ
+ErrorExecutingTaskUnsupportedFormat|メディア形式がサポートされていない、または構成と一致しないなど、提供されたファイルをメディア プロセッサが処理できない場合に発生するエラーのカテゴリ(映像のみの資産から音声のみの出力を生成しようとした場合など)
+ErrorProcessingTask|コンテンツとは無関係に、メディア プロセッサでタスクの処理中に発生するその他のエラーのカテゴリ
+ErrorUploadingOutputAsset|出力資産のアップロード中に発生するエラーのカテゴリ
+ErrorCancelingTask|タスクをキャンセルしようとして失敗したときに発生するエラーのカテゴリ
+TransientError|一時的な問題に関するエラーのカテゴリ (Azure Storage の一時的なネットワークの問題など)
+
+
+**Media Services** チームのサポートを受けるには、[サポート チケット](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を開いてください。
+
 
 
 ##Media Services のラーニング パス
@@ -263,10 +283,11 @@ Windows Media オーディオ|いいえ|あり|あり
 
 ##関連記事:
 
+- [Media Encoder Standard のプリセットをカスタマイズし、高度なエンコード タスクを実行する](media-services-custom-mes-presets-with-dotnet.md)
 - [クォータと制限](media-services-quotas-and-limitations.md)
 
  
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

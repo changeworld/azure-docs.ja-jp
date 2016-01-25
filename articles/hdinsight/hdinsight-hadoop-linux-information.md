@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/06/2015"
+   ms.date="01/12/2016"
    ms.author="larryfr"/>
 
 # Linux での HDInsight の使用方法
@@ -88,7 +88,7 @@ HDInsight の既定の保管場所であるため、通常は何もしなくて�
 
 	hadoop fs -ls /example/data
 
-一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして **WASB://** を付けることができます。
+一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして ****WASB://** を付けることができます。
 
 HDInsight では、クラスターに複数の BLOB ストレージ アカウントを関連付けることもできます。既定以外の BLOB ストレージ アカウントのデータにアクセスするには、**WASB://&lt;container-name>@<account-name>.blob.core.windows.net/** という形式を使用できます。たとえば、次のコマンドは、指定したコンテナーと BLOB ストレージ アカウントについて、**/example/data** ディレクトリの内容を表示します。
 
@@ -196,16 +196,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 	* __Storm UI__: 次の手順により、Storm UI を使用してトポロジを再調整します。
 
-		1. [クラスターへの SSH トンネルを作成し、Ambari Web UI を開きます](hdinsight-linux-ambari-ssh-tunnel.md)。
-
-		2. ページの左側のサービスの一覧で、__[Storm]__ を選択します。__[クイック リンク]__ で __[Storm UI]__ を選択します。
-
-
-			![クイック リンクの Storm UI エントリ](./media/hdinsight-hadoop-linux-information/ambari-storm.png)
-
-			これにより、Storm UI が表示されます。
-
-			![Storm UI](./media/hdinsight-hadoop-linux-information/storm-ui.png)
+		1. Web ブラウザーで __https://CLUSTERNAME.azurehdinsight.net/stormui__ に移動します。CLUSTERNAME は実際の Storm クラスターの名前に置き換えます。メッセージが表示されたら、HDInsight クラスター管理者 (admin) の名前と、クラスターの作成時に指定したパスワードを入力します。
 
 		3. 再調整するトポロジを選択し、__[再調整]__ ボタンをクリックします。再調整の操作が実行されるまでの待ち時間を入力します。
 
@@ -256,4 +247,4 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

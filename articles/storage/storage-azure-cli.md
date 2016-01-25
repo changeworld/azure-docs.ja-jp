@@ -1,19 +1,19 @@
 <properties
     pageTitle="Azure Storage での Azure CLI の使用 | Microsoft Azure"
-    description="Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。"
+    description="Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。Azure CLI はクロスプラットフォーム ツールです"
     services="storage"
     documentationCenter="na"
     authors="tamram"
-    manager="jdial"/>
+    manager="carmonm"/>
 
 <tags
     ms.service="storage"
     ms.workload="storage"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
-    ms.topic="article" 
+    ms.topic="article"
     ms.date="01/05/2016"
-    ms.author="chungli;jiyang;yaxia;tamram"/>
+    ms.author="micurd"/>
 
 # Azure Storage での Azure CLI の使用
 
@@ -206,7 +206,7 @@ Azure File 共有は、Azure 内の SMB ファイル共有です。ディレク�
 Azure CLI のバージョン 0.9.8 以降では、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。次に、CLI コマンドを使用してこれらのコピー操作を実行する方法を示します。ファイルを新しいディレクトリにコピーするには、次の操作を実行します。
 
 	azure storage file copy start --source-share srcshare --source-path srcdir/hello.txt --dest-share destshare --dest-path destdir/hellocopy.txt --connection-string $srcConnectionString --dest-connection-string $destConnectionString
-	
+
 BLOB をファイル ディレクトリにコピーするには、次の操作を実行します。
 
 	azure storage file copy start --source-container srcctn --source-blob hello2.txt --dest-share hello --dest-path hellodir/hello2copy.txt --connection-string $srcConnectionString --dest-connection-string $destConnectionString
@@ -220,6 +220,5 @@ Azure Storage の詳細についての関連記事とリソースがあります
 
 
 [Image1]: ./media/storage-azure-cli/azure_command.png
- 
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

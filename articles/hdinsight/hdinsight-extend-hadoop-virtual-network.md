@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="11/18/2015"
+   ms.date="01/13/2015"
    ms.author="larryfr"/>
 
 
@@ -44,7 +44,7 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 
 	サイト間構成では、ハードウェア VPN を使用するか、ルーティングとリモート アクセス サービスを使用して、データセンターから複数のリソースを Azure 仮想ネットワークに接続できます。
 
-	![diagram of site-to-site configuration](media/hdinsight-extend-hadoop-virtual-network/site-to-site.png)
+	![サイト間構成の図](media/hdinsight-extend-hadoop-virtual-network/site-to-site.png)
 
 	ポイント対サイト構成では、ソフトウェア VPN を使用して、特定のリソースを Azure の仮想ネットワークに接続できます。
 
@@ -59,14 +59,29 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 Virtual Network の機能、利点の詳細については、「[Azure 仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
 > [AZURE.NOTE]HDInsight クラスターをプロビジョニングする前に、Azure Virtual Network を作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](http://azure.microsoft.com/documentation/services/virtual-network/)」を参照してください。
->
-> Azure HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在取り扱っていません。
->
-> 各クラスターには単一のサブネットを指定することを強くお勧めします。
->
-> Windows ベースのクラスターでは、v1 (クラシック) Virtual Network が必要で、Linux ベースのクラスターでは、v2 (Azure リソース マネージャー) Virtual Network が必要です。ネットワークの種類が正しくない場合、クラスターの作成には使用できません。
->
-> 作成を計画しているクラスターでは使用できない Virtual Network 上にリソースがある場合、クラスターで使用できる新しい Virtual Network を作成し、それを互換性のない Virtual Network に接続できます。その後、必要なネットワーク バージョンでクラスターを作成し、2 つは結合されているので別のネットワークのリソースにアクセスが可能となります。従来の Virtual Network と新しい Virtual Network を接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+
+## Virtual Network に関する要件
+
+> [AZURE.IMPORTANT]Virtual Network で HDInsight クラスターを作成するには、このセクションで説明する、特定の Virtual Network 構成が必要です。
+
+* Azure HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在取り扱っていません。 
+
+* 各 HDInsight クラスターには単一のサブネットを作成することを強くお勧めします。
+
+* Windows ベースのクラスターでは、v1 (クラシック) Virtual Network が必要で、Linux ベースのクラスターでは、v2 (Azure リソース マネージャー) Virtual Network が必要です。ネットワークの種類が正しくない場合、クラスターの作成には使用できません。
+
+    作成を計画しているクラスターでは使用できない Virtual Network 上にリソースがある場合、クラスターで使用できる新しい Virtual Network を作成し、それを互換性のない Virtual Network に接続できます。その後、必要なネットワーク バージョンでクラスターを作成し、2 つは結合されているので別のネットワークのリソースにアクセスが可能となります。従来の Virtual Network と新しい Virtual Network を接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+
+* インターネットへのアクセスやインターネットからのアクセスを明示的に制限する Azure Virtual Networks では HDInsight はサポートされません。たとえば、ネットワーク セキュリティ グループまたは ExpressRoute を使用して、Virtual Network 内のリソースへのインターネット トラフィックをブロックします。HDInsight サービスは管理されたサービスです。また、クラスターの正常性を監視したり、クラスター リソースのフェールオーバーなど、自動化された管理タスクを開始したりするために、プロビジョニング中や実行中にインターネット アクセスが必要です。
+
+    インターネット トラフィックをブロックする Virtual Network 上の HDInsight を使用するには、以下の操作を実行できます。
+
+    1.	Virtual Network 内に新しいサブネットを作成します。このサブネットは、HDInsight によって使用されます。
+
+    2.	ルーティング テーブルを定義し、着信と発信両方のインターネット接続を許可するサブネットにユーザー定義ルート (UDR) を作成します。これを行うには、* ルートを使用します。これにより、サブネット上にあるリソースに対してのみインターネット接続が有効になります。UDR の操作方法について詳しくは、「https://azure.microsoft.com/ja-JP/documentation/articles/virtual-networks-udr-overview/」および「https://azure.microsoft.com/ja-JP/documentation/articles/virtual-networks-udr-how-to/」を参照してください。
+    
+    3.	HDInsight クラスターを作成する際に、手順 1. で作成したサブネットを選択します。これにより、クラスターはインターネットにアクセスできるサブネットにデプロイされます。
+
 
 仮想ネットワークでの HDInsight クラスターのプロビジョニングの詳細については、[HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)に関するページを参照してください。
 
@@ -176,4 +191,4 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 
 Azure のかそうネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

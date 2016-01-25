@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="11/19/2015" 
+    ms.date="01/09/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/dn268600.aspx -->
@@ -47,19 +47,19 @@ Azure サービス エンドポイントは、アプリケーションがどこ�
 
 [Azure Toolkit for Eclipse のインストール][]
 
-[Azure の Hello World アプリケーションを Eclipse で作成する][]
+[Azure 向け Hello World アプリケーションを Eclipse で作成する][]
 
-Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][]を参照してください。
+Java での Azure の使用方法の詳細については、「[Azure Java Developer Center][]」を参照してください。
 
 <!-- URL List -->
 
-[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure の Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Azure 向け Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
 [Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 
 [ic719493]: ./media/azure-toolkit-for-eclipse-azure-service-endpoints/ic719493.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

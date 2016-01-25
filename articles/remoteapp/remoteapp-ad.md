@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="09/28/2015" 
+    ms.date="01/07/2016" 
     ms.author="elizapo" />
 
 
@@ -45,4 +45,4 @@ Azure AD に UPN ドメインのサフィックスをセットアップしたら
 
 RemoteApp コレクションを作成するときは、これらのオブジェクトが両方とも必要であるため、これらの手順を最初に行ってください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

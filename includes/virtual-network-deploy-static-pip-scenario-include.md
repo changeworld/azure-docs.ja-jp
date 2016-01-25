@@ -1,9 +1,11 @@
-## Scenario
+## シナリオ
 
-This document will walk through a deployment that uses a static public IP address allocated to a virtual machine (VM). In this scenario, you have a single VM with its own static public IP address. The VM is part of a subnet named **FrontEnd** and also has a static private IP address (**192.168.1.101**) in that subnet.
+このドキュメントでは、仮想マシン (VM) に割り当てられた静的パブリック IP アドレスを使用したデプロイについて説明します。このシナリオでは、独自の静的パブリック IP アドレスを持つ単一の VM を使用します。この VM は、**FrontEnd** という名前のサブネットに属しており、そのサブネットに静的プライベート IP アドレス (**192.168.1.101**) も持っています。
 
-You may need a static IP address for web servers that require SSL connections in which the SSL certificate is linked to an IP address. 
+静的 IP アドレスは、SSL 証明書が IP アドレスにリンクされている SSL 接続を必要とする Web サーバーで必要になる場合があります。
 
-![IMAGE DESCRIPTION](./media/virtual-network-deploy-static-pip-scenario-include/figure1.png)
+![イメージの説明](./media/virtual-network-deploy-static-pip-scenario-include/figure1.png)
 
-You can follow the steps below to deploy the environment shown in the figure above.
+以下の手順に従って、上の図に示す環境をデプロイできます。
+
+<!---HONumber=AcomDC_0114_2016-->

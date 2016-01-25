@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/11/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Azure SDK for .NET とは
@@ -186,4 +186,4 @@ Azure SDK for .NET (クライアント ライブラリを含む) のソース �
 
 Azure のクライアント ライブラリのリファレンス ドキュメントについては、[Azure .NET のリファレンス ページ](/documentation/api/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

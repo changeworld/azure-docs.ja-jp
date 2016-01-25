@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/23/2015"
+   ms.date="01/12/2015"
    ms.author="telmos" />
 
 # Azure 内の IP アドレス
@@ -23,7 +23,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 
 プライベート IP アドレスは、VPN ゲートウェイまたは ExpressRoute 回線を使用してネットワークを Azure に拡張するときに、Azure 仮想ネットワーク (VNet)、およびオンプレミス ネットワーク内での通信に使用します。
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [クラシック デプロイメント モデル](virtual-network-ip-addresses-overview-classic.md)。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-network-ip-addresses-overview-classic.md)。
 
 クラシック デプロイメント モデルの知識がある場合は、「[differences in IP addressing between classic and Resource Manager (クラシック デプロイメントとリソース マネージャーでの IP アドレス指定の相違点)](virtual-network-ip-addresses-overview-classic.md#Differences-between-Resource-Manager-and-classic-deployments)」を確認してください。
 
@@ -38,11 +38,11 @@ Azure リソース マネージャーで、[パブリック IP](resource-groups-
 - アプリケーション ゲートウェイ
 
 ### 割り当て方法
-IP アドレスを *パブリック IP リソース* に割り当てる方法には、 *動的* と *静的* の 2 種類があります。既定の割り当て方法は *動的* で、IP アドレスの作成時に割り当ては**行われません**。代わりに、関連付けられたリソース (VM やロード バランサーなど) を開始 (または作成) するときに、パブリック IP アドレスが割り当てられます。IP アドレスは、リソースを停止 (または削除) すると解放されます。これにより、リソースの停止および開始の際に IP アドレスが変更されます。
+IP アドレスを*パブリック IP リソース*に割り当てる方法には、*動的*と*静的*の 2 種類があります。既定の割り当て方法は*動的*で、IP アドレスの作成時に割り当ては**行われません**。代わりに、関連付けられたリソース (VM やロード バランサーなど) を開始 (または作成) するときに、パブリック IP アドレスが割り当てられます。IP アドレスは、リソースを停止 (または削除) すると解放されます。これにより、リソースの停止および開始の際に IP アドレスが変更されます。
 
-関連付けられたリソースの IP アドレスが変わらないようにするため、割り当て方法を明示的に *静的* に設定できます。この場合、IP アドレスが即座に割り当てられます。IP アドレスはリソースを削除するか、その割り当て方法を *動的* に変更した場合にのみ解放されます。
+関連付けられたリソースの IP アドレスが変わらないようにするため、割り当て方法を明示的に*静的*に設定できます。この場合、IP アドレスが即座に割り当てられます。IP アドレスはリソースを削除するか、その割り当て方法を*動的*に変更した場合にのみ解放されます。
 
->[AZURE.NOTE]割り当て方法を *静的* に設定しても、 *パブリック IP リソース* に割り当てられた実際の IP アドレスは指定できません。代わりに、リソースが作成される Azure の location に使用可能な IP アドレスのプールから割り当てられます。
+>[AZURE.NOTE]割り当て方法を*静的*に設定しても、*パブリック IP リソース*に割り当てられた実際の IP アドレスは指定できません。代わりに、リソースが作成される Azure の location に使用可能な IP アドレスのプールから割り当てられます。
 
 次のようなシナリオでは、静的なパブリック IP アドレスが一般的に使用されます。
 
@@ -68,7 +68,7 @@ IP アドレスを *パブリック IP リソース* に割り当てる方法に
 [Azure VPN Gateway](vpn-gateway-about-vpngateways.md) は、Azure 仮想ネットワーク (VNet) を他の Azure VNet またはオンプレミス ネットワークに接続するために使用されます。リモート ネットワークとの通信を有効にするには、パブリック IP アドレスをその **IP 構成**に割り当てる必要があります。現時点で VPN ゲートウェイに割り当てることができるのは、動的パブリック IP アドレスのみです。
 
 ### アプリケーション ゲートウェイ
-パブリック IP アドレスをゲートウェイの**フロント エンド**構成に割り当てることで、Azure [Application Gateway](application-gateway-introduction.md) に関連付けることができます。このパブリック IP アドレスは、負荷分散された VIP として機能します。現時点で Application Gateway のフロント エンド構成に割り当てることができるのは、 *動的* パブリック IP アドレスのみです。複数のパブリック IP アドレスを割り当てて、マルチ VIP シナリオを有効にすることもできます。
+パブリック IP アドレスをゲートウェイの**フロント エンド**構成に割り当てることで、Azure [Application Gateway](application-gateway-introduction.md) に関連付けることができます。このパブリック IP アドレスは、負荷分散された VIP として機能します。現時点で Application Gateway のフロント エンド構成に割り当てることができるのは、*動的*パブリック IP アドレスのみです。複数のパブリック IP アドレスを割り当てて、マルチ VIP シナリオを有効にすることもできます。
 
 ### 早見表
 次の表は、各リソースの種類と、可能な割り当て方法 (動的または静的) および複数のパブリック IP アドレスの割り当てが可能かどうかを示しています。
@@ -77,8 +77,8 @@ IP アドレスを *パブリック IP リソース* に割り当てる方法に
 |---|---|---|---|
 |(VM の) ネットワーク インターフェイス カード (NIC)|あり|はい|いいえ|
 |Load Balancer のフロント エンド|あり|あり|あり|
-|VPN Gateway|あり|なし|いいえ|
-|Application Gateway のフロント エンド|あり|なし|いいえ|
+|VPN Gateway|あり|いいえ|いいえ|
+|Application Gateway のフロント エンド|あり|いいえ|いいえ|
 
 ## プライベート IP アドレス
 プライベート IP アドレスを使用すると、Azure リソースは、インターネットが到達可能な IP アドレスを使用せずに、[仮想ネットワーク](virtual-networks-overview.md) (VNet) の他のリソース、あるいはオンプレミス ネットワーク (VPN ゲートウェイまたは ExpressRoute 回線経由) と通信することができます。
@@ -92,9 +92,9 @@ Azure リソース マネージャーのデプロイメント モデルでは、
 ### 割り当て方法
 プライベート IP アドレスは、リソースが関連付けられているサブネットのアドレス範囲から割り当てられます。サブネット自体のアドレス範囲は、VNet のアドレス範囲に含まれます。
 
-プライベート IP アドレスを割り当てる方法には、 *動的* と *静的* の 2 種類があります。既定の割り当て方法は *動的* です。IP アドレスは (DHCP を使用して) リソースのサブネットから自動的に割り当てられます。リソースを停止して起動すると、この IP アドレスが変更される場合があります。
+プライベート IP アドレスを割り当てる方法には、*動的*と*静的*の 2 種類があります。既定の割り当て方法は*動的*です。IP アドレスは (DHCP を使用して) リソースのサブネットから自動的に割り当てられます。リソースを停止して起動すると、この IP アドレスが変更される場合があります。
 
-IP アドレスが変わらないようにするため、割り当て方法を *静的* に設定することができます。この場合、リソースのサブネットの一部として有効な IP アドレスも指定する必要があります。
+IP アドレスが変わらないようにするため、割り当て方法を*静的*に設定することができます。この場合、リソースのサブネットの一部として有効な IP アドレスも指定する必要があります。
 
 静的プライベート IP アドレスは、通常は次のものに使用されます。
 
@@ -128,12 +128,7 @@ Azure で管理される DNS サーバーで構成されている VM は、そ�
 
 リージョンごと、サブスクリプションごとに Azure で IP アドレスを指定する際に課せられる IP の制限を下表に示します。ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、[サポートにお問い合わせ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-||既定の制限|上限|
-|---|---|---|
-|パブリック IP アドレス (動的)|60|サポートにお問い合わせ|
-|パブリック IP アドレス (静的)|20|サポートにお問い合わせ|
-|ロード バランサーあたりのパブリック フロント エンド IP|5|サポートにお問い合わせ|
-|ロード バランサーあたりのプライベート フロント エンド IP|1|サポートにお問い合わせ|
+||既定の制限|上限| |---|---|---| |パブリック IP アドレス (動的)|60|サポートにお問い合わせ| |パブリック IP アドレス (静的)|20|サポートにお問い合わせ| |ロード バランサーあたりのパブリック フロント エンド IP|5|サポートにお問い合わせ|ロード バランサーあたりのプライベート フロント エンド IP|1|サポートにお問い合わせ|
 
 Azure での[ネットワークの制限](azure-subscription-service-limits.md#networking-limits)に関する情報を必ずご確認ください。
 
@@ -152,12 +147,8 @@ Azure での[ネットワークの制限](azure-subscription-service-limits.md#n
 	- 使用状況は、サブスクリプション内の静的パブリック IP アドレスの合計数に基づいて計算されます。
 
 ## 次のステップ
-- [Deploy a VM with a static public IP (静的パブリック IP で VM をデプロイする)](virtual-network-deploy-static-pip-arm-template.md)
-- [Create a public IP address for an Internet facing load balancer by using the Azure CLI (Azure CLI を使用してインターネットに接続するロード バランサーのパブリック IP アドレスを作成する)](load-balancer-get-started-internet-arm-cli.md#create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool)
-- [Create a public IP address for an application gateway by using PowerShell (PowerShell を使用して Application Gateway のパブリック IP アドレスを作成する)](application-gateway-create-gateway-arm.md#create-public-ip-address-for-front-end-configuration)
-- [Create a public IP address for a VPN gateway by using PowerShell (PowerShell を使用して VPN ゲートウェイのパブリック IP アドレスを作成する)](vpn-gateway-create-site-to-site-rm-powershell.md#4-request-a-public-ip-address-for-the-gateway)
-- [Deploy a VM with a static private IP address (静的プライベート IP アドレスで VM をデプロイする)](virtual-networks-static-private-ip-arm-pportal.md)
-- [Create a front end static private IP address for an internal load balancer by using PowerShell (PowerShell を使用して内部ロード バランサーのフロント エンドの静的プライベート IP アドレスを作成する)](load-balancer-get-started-ilb-arm-ps.md#create-front-end-ip-pool-and-backend-address-pool)
-- [Create a backend pool with static private IP addresses for an application gateway by using PowerShell (PowerShell を使用して Application Gateway の静的プライベート IP アドレスを含むバックエンド プールを作成する)](application-gateway-create-gateway-arm.md#create-an-application-gateway-configuration-object)
+- Azure ポータルを使用して、[静的パブリック IP を持つ VM をデプロイ](virtual-network-deploy-static-pip-arm-portal.md)します。
+- [テンプレートを使用して、静的パブリック IP を持つ VM をデプロイする](virtual-network-deploy-static-pip-arm-template.md)方法を学びます。
+- Azure ポータルを使用して、[静的プライベート IP アドレスを持つ VM をデプロイ](virtual-networks-static-private-ip-arm-pportal.md)します。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

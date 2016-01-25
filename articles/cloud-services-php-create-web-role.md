@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.date="01/08/2016"
 	ms.author="tomfitz"/>
 
 #PHP Web ロールと worker ロールを作成する方法
@@ -196,7 +196,7 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 
 ## アプリケーションの発行
 
-アプリケーションを発行するには、まず、**Import-PublishSettingsFile** コマンドレットを使用して発行設定をインポートする必要があります。次に [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) コマンドレットを使用して、アプリケーションを発行できます。サインインの詳細については、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
+アプリケーションを発行するには、まず、[Import-AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) コマンドレットを使用して発行設定をインポートする必要があります。次に [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) コマンドレットを使用して、アプリケーションを発行できます。サインインの詳細については、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
 ## 次のステップ
 
@@ -211,4 +211,4 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 [sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64 インストーラー]: http://go.microsoft.com/fwlink/?LinkID=239648
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

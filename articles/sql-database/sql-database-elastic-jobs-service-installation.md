@@ -17,6 +17,7 @@
 	ms.author="ddove;sidneyh"/>
 
 # Elastic Database ジョブのインストールの概要
+
 [**Elastic Database ジョブ**](sql-database-elastic-jobs-overview.md)のインストールには PowerShell または Azure クラシック ポータルを使用できます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。
 
 既存の**Elastic Database プール**から、ポータルを使用して**Elastic Database ジョブ**を既にインストールしている場合、最新の PowerShell プレビューには、既存のインストールをアップグレードするスクリプトが含まれています。PowerShell API 経由で公開されている新しい機能を活用するために、最新の**Elastic Database ジョブ** コンポーネントにアップグレードすることを強くお勧めします。
@@ -29,7 +30,7 @@
 ## Elastic Database ジョブ PowerShell パッケージをダウンロードしてインストールする
 1. Microsoft Azure PowerShell コマンド ウィンドウを開き、NuGet Command-line Utility (nuget.exe) をダウンロードしたディレクトリに移動します。
 
-2. 次のコマンドを使用して、**Elastic Database ジョブ** パッケージを現在のディレクトリにダウンロードしてインポートします。
+2. 次のコマンドを使用して、**エラスティック データベース ジョブ** パッケージを現在のディレクトリにダウンロードしてインポートします。
 
 		PS C:\>.\nuget install Microsoft.Azure.SqlDatabase.Jobs -prerelease
 
@@ -178,13 +179,13 @@
 
 ## 次のステップ
 
-スクリプトを実行できる適切な権限を持つ資格情報をグループ内の各データベースに作成します。詳細については、「[エラスティック データベース プールにユーザーを追加する方法](sql-database-elastic-jobs-add-logins-to-dbs.md)」を参照してください。概要については、「[エラスティック データベース ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」を参照してください。
+スクリプトを実行できる適切な権限を持つ資格情報がグループ内の各データベースに作成されていることを確認します。詳細については、「[SQL Database の保護](sql-database-security.md)」をご覧ください。概要については、「[エラスティック データベース ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」を参照してください。
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-jobs-service-installation/screen-1.png
 [2]: ./media/sql-database-elastic-jobs-service-installation/credentials.png
 [3]: ./media/sql-database-elastic-jobs-service-installation/start-board.png
-[4]: ./media/sql-database-elastic-jobs-service-installation/incomplete.png
+[4]: ./media/sql-database-elastic-jobs-service-installation/not-done.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

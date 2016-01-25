@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 
@@ -67,7 +67,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-workday-inbound-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-workday-inbound-tutorial/IC749321.png "アプリケーションの追加")
 
   
 5. 検索ボックスに、「**Workday**」と入力します。
@@ -209,7 +209,7 @@
 3. **[接続テスト]** ページで、**[テスト開始]** をクリックして接続を確認し、**[次へ]** をクリックします。<br><br> ![接続テスト](./media/active-directory-saas-workday-inbound-tutorial/IC750996.png "接続テスト")  
  
 
-4. **[プロビジョニング オプション]** ページで、**[次へ]** をクリックします。<br><br> ![プロビジョニングのオプション](./media/active-directory-saas-workday-inbound-tutorial/IC750997.png "プロビジョニングのオプション")
+4. **[プロビジョニング]** オプション ページで、**[次へ]** をクリックします。<br><br> ![プロビジョニングのオプション](./media/active-directory-saas-workday-inbound-tutorial/IC750997.png "プロビジョニングのオプション")
 
 
 5. **[プロビジョニングの開始]** ダイアログで、**[完了]** をクリックします。<br><br> ![プロビジョニングの開始](./media/active-directory-saas-workday-inbound-tutorial/IC750998.png "プロビジョニングの開始")
@@ -224,4 +224,4 @@
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure Automation Webhook"
+   pageTitle="Azure Automation Webhook | Microsoft Azure"
    description="HTTP 呼び出しから Azure Automation の Runbook を開始することをクライアントに許可する Webhook。この記事では、Webhook を作成する方法と、Webhook を呼び出して Runbook を開始する方法について説明します。"
    services="automation"
    documentationCenter=""
@@ -125,8 +125,10 @@ Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要
 	$uri = "https://s1events.azure-automation.net/webhooks?token=8ud0dSrSo%2fvHWpYbklW%3c8s0GrOKJZ9Nr7zqcS%2bIQr4c%3d"
 	$headers = @{"From"="user@contoso.com";"Date"="05/28/2015 15:47:00"}
     
-    $vms  = @([pscustomobject]@{Name="vm01";ServiceName="vm01"})
-    $vms += @([pscustomobject]@{Name="vm02";ServiceName="vm02"})
+    $vms  = @(
+    			@{ Name="vm01";ServiceName="vm01"},
+    			@{ Name="vm02";ServiceName="vm02"}
+    		)
 	$body = ConvertTo-Json -InputObject $vms 
 
 	$response = Invoke-RestMethod -Method Post -Uri $uri -Headers $headers -Body $body
@@ -266,10 +268,10 @@ Azure アラートを通知システムとして使用するだけでなく、�
 
  
 
-## 関連記事:
+## 次のステップ
 
-- [Runbook の開始](automation-starting-a-runbook.md)
-- [Runbook ジョブの状態の表示](automation-viewing-the-status-of-a-runbook-job.md)
+- Runbook のさまざまな起動方法の詳細については、「[Runbook の開始方法](automation-starting-a-runbook.md)」をご覧ください。
+- Runbook ジョブの状態の表示については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」をご覧ください。
 - [Using Azure Automation to take actions on Azure Alerts (Azure Automation を使用した Azure アラートに対するアクションの実行)](https://azure.microsoft.com/blog/using-azure-automation-to-take-actions-on-azure-alerts/)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

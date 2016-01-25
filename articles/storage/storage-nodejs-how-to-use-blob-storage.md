@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Node.js から BLOB ストレージを使用する方法 | Microsoft Azure"
-	description="Azure BLOB サービスを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法について説明します。サンプルは Node.js で記述されています。"
+	description="BLOB ストレージを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、削除する方法について説明します。サンプルは Node.js で記述されています。"
 	services="storage"
 	documentationCenter="nodejs"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -14,7 +14,7 @@
 	ms.devlang="nodejs"
 	ms.topic="article"
 	ms.date="12/01/2015"
-	ms.author="robmcm"/>
+	ms.author="micurd"/>
 
 
 
@@ -24,7 +24,7 @@
 
 ## 概要
 
-この記事では、Azure BLOB サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Node.js API を使用して記述されています。紹介するシナリオには、アップロード、一覧表示、ダウンロード、および blob を削除する方法が含まれます。
+この記事では、BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。サンプルは Node.js API を使用して記述されています。紹介するシナリオには、アップロード、一覧表示、ダウンロード、および blob を削除する方法が含まれます。
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
@@ -377,4 +377,4 @@ ACL を設定したら、ポリシーの ID に基づいて共有アクセス署
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

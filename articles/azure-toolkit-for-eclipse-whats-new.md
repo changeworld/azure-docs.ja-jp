@@ -1,20 +1,20 @@
 <properties
-    pageTitle="Azure Toolkit for Eclipse の新機能"
-    description="Azure Toolkit for Eclipse の最新の機能について説明します。"
-    services=""
-    documentationCenter="java"
-    authors="rmcmurray"
-    manager="wpickett"
-    editor=""/>
+	pageTitle="Azure Toolkit for Eclipse の新機能"
+	description="Azure Toolkit for Eclipse の最新の機能について説明します。"
+	services=""
+	documentationCenter="java"
+	authors="rmcmurray"
+	manager="wpickett"
+	editor=""/>
 
 <tags
-    ms.service="multiple"
-    ms.workload="na"
-    ms.tgt_pltfrm="multiple"
-    ms.devlang="Java"
-    ms.topic="article"
-    ms.date="11/19/2015" 
-    ms.author="robmcm"/>
+	ms.service="multiple"
+	ms.workload="na"
+	ms.tgt_pltfrm="multiple"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="01/09/2016" 
+	ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694270.aspx -->
 
@@ -23,6 +23,14 @@
 ## Azure Toolkit for Eclipse のリリース ##
 
 この記事では、Azure Toolkit for Eclipse の各種リリースと最新情報について記載しています。
+
+### 2015 年 1 月 4 日 ###
+
+Azure Toolkit for Eclipse - January 2016 リリースでは、次の点が強化されています。
+
+* **Zulu OpenJDK 更新をサポート**。詳細については、[Azul Systems の Zulu OpenJDK に関する Web ページ][]を参照してください。
+* **Tomcat と Jetty ディストリビューションを更新**。Microsoft Azure で Azure Toolkit for Eclipse から利用できる Jetty ディストリビューションと Tomcat ディストリビューションが更新されました。
+* **Azure の Eclipse ツールキットと IntelliJ ツールキットの機能の類似性**。Azure Toolkit for Eclipse と [Azure Toolkit for IntelliJ][] は、同じ機能セットをサポートするようになりました。
 
 ### 2015 年 9 月 1 日 ###
 
@@ -96,7 +104,7 @@ Azure Toolkit for Eclipse - October 2014 リリースでは、次の点が強化
 
 Azure Toolkit for Eclipse - August 2014 リリースでは、次の点が強化されています。
 
-* **Azure SDK 2.4 のサポート**。 以前のバージョンの Eclipse Toolkit で、この新しくリリースされた SDK を使用することはできません。
+* **Azure SDK 2.4 のサポート。** 以前のバージョンの Eclipse Toolkit で、この新しくリリースされた SDK を使用することはできません。
 * **新しいバージョンの Zulu OpenJDK v1.6、v1.7、v1.8 パッケージ。** 詳細については、[Azul Systems の Zulu OpenJDK に関する Web ページ][]を参照してください。
 * **Package for Azure Libraries for Java クライアント API ライブラリのバージョンを更新。** 詳細については、[Microsoft Azure クライアント API][] に関するページを参照してください。
 * **最新の発行設定ファイルの形式をサポート。** 新たにバージョン 2.0 形式の発行設定ファイルがサポートされます。
@@ -279,15 +287,16 @@ Azure Plugin for Eclipse - December 2011 CTP がリリースされました。�
 
 [Azure 向け Hello World アプリケーションを Eclipse で作成する][]
 
-Java での Azure の使用方法の詳細については、[Azure Java デベロッパー センター][]を参照してください。
+Java での Azure の使用方法の詳細については、「[Azure Java Developer Center][]」を参照してください。
 
 <!-- URL List -->
 
 [Azul Systems の Zulu OpenJDK に関する Web ページ]: http://go.microsoft.com/fwlink/?LinkId=402457
-[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure のサービス エンドポイント]: http://go.microsoft.com/fwlink/?LinkID=699526
 [Azure ストレージ アカウントの一覧]: http://go.microsoft.com/fwlink/?LinkID=699528
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
+[Azure Toolkit for IntelliJ]: https://plugins.jetbrains.com/plugin/8053
 [コンポーネントのプロパティ]: http://go.microsoft.com/fwlink/?LinkID=699525#components_properties
 [Azure 向け Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
 [Eclipse での Azure アプリケーションのデバッグ]: http://go.microsoft.com/fwlink/?LinkID=699535
@@ -317,4 +326,4 @@ Java での Azure の使用方法の詳細については、[Azure Java デベ�
 [ic710882]: ./media/azure-toolkit-for-eclipse-whats-new/ic710882.png
 [ic710883]: ./media/azure-toolkit-for-eclipse-whats-new/ic710883.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

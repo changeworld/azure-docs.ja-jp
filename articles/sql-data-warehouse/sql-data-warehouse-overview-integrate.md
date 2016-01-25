@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="lodipalm"/>
+   ms.date="01/07/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>
 
 #SQL Data Warehouse と他のサービスの併用
 SQL Data Warehouse では、コア機能に加えて Azure 内の他のサービスの多くを並行して活用できます。具体的には、現在のところ、次のサービスと密接に統合するための措置を講じています。
@@ -71,4 +71,4 @@ Azure Stream Analytics は、Azure Event Hub で生成されたイベント デ�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

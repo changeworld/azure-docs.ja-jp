@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="10/10/2015"
+    ms.date="01/07/2016"
     ms.author="elizapo" />
 
 
@@ -207,4 +207,4 @@ Windows Phone 8.1 ストアから、Microsoft リモート デスクトップ �
 	![Azure RemoteApp のデモ フィード](./media/remoteapp-clients/WinPhone8.png)
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0114_2016-->

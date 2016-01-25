@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/05/2015"
+	ms.date="01/12/2016"
 	ms.author="josephd"/>
 
 # 基本構成テスト環境
@@ -51,9 +51,9 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 3.	APP1 を構成する。
 4.	CLIENT1 を構成する。
 
-まだ Azure アカウントがない場合は、「[1 か月間の無料試用版](http://azure.microsoft.com/pricing/free-trial/)」から無料試用版にサインアップしてください。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+まだ Azure アカウントがない場合は、「[1 か月間の無料試用版](http://azure.microsoft.com/pricing/free-trial/)」から無料試用版にサインアップしてください。MSDN Platforms サブスクリプションをお持ちの場合は、[MSDN Platforms サブスクライバー向けの Azure の特典](https://azure.microsoft.com/offers/ms-azr-0062p/)をご覧ください。
 
-> [AZURE.NOTE]Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure Virtual Machines を実行するコストの詳細については、[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 価格計算ツール](http://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
+> [AZURE.NOTE]Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。このコストは、無料試用版、MSDN Platforms サブスクリプション、または有料サブスクリプションに対して課金されます。Azure Virtual Machines を実行するコストの詳細については、[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 価格計算ツール](http://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
 
 ## フェーズ 1: 仮想ネットワークを作成する
 
@@ -250,15 +250,11 @@ CLIENT1 は、Contoso イントラネット上の標準的なノート PC、タ�
 
 ![](./media/virtual-machines-base-configuration-test-environment/BC_TLG04.png)
 
-Azure の基本構成の準備が整いました。アプリケーションの開発やテスト、さらに、[ハイブリッド クラウド環境のシミュレーション](../virtual-network/virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)など、各種テスト環境に使用することができます。
+Azure の基本構成の準備が整いました。アプリケーションの開発やテスト、および追加のテスト環境に使用できます。
 
-## その他のリソース
+## 次のステップ
 
-[Azure のテスト ラボ](http://social.technet.microsoft.com/wiki/contents/articles/24092.azure-test-lab.aspx)
-
-[ハイブリッド クラウド テスト環境](../virtual-network/virtual-networks-setup-hybrid-cloud-environment-testing.md)
-
-[Azure リソース マネージャーでの基本構成テスト環境](virtual-machines-base-configuration-test-environment-resource-manager.md)
+- [シミュレートされたハイブリッド クラウド環境](../virtual-network/virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)をセットアップして、ハイブリッド構成をテストします。
 
 ## <a id="costs"></a>Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法
 
@@ -288,4 +284,4 @@ Azure PowerShell で順に仮想マシンを起動するには、クラウド �
 	Start-AzureVM -ServiceName $serviceName -Name "APP1"
 	Start-AzureVM -ServiceName $serviceName -Name "CLIENT1"
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

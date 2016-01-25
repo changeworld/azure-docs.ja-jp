@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="lodipalm;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>
 
 # SQL Data Warehouse へのデータのロード
 SQL Data Warehouse には、データをロードするために以下のような多数のオプションが用意されています。
@@ -202,4 +202,4 @@ create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
 [Azure Storage のドキュメント]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-create-storage-account/
 [ExpressRoute に関するドキュメント]: http://azure.microsoft.com/documentation/services/expressroute/
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

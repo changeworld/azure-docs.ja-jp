@@ -94,6 +94,8 @@ HBase クラスターをプロビジョニングする前に、Azure 仮想ネ�
 	- **場所**: 場所は作成する HBase クラスターと同じである必要があります。
     
         > [AZURE.NOTE]Azure HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在取り扱っていません。
+        
+    Virtual Network の具体的な構成要件など、Virtual Network で HDInsight を使用する方法については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
 
 5. **[作成]** をクリックします。
 
@@ -389,4 +391,4 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 
 [azure-preview-portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

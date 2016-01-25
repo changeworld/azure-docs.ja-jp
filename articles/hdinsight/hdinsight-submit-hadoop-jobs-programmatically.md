@@ -212,7 +212,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 						return null;
 					}
 		
-					return string.Join("&define=", defines.Select(x => x.Key + "%3D" + x.Value).ToArray());
+					return "&define=" + string.Join("&define=", defines.Select(x => x.Key + "%3D" + x.Value).ToArray());
 				}
 				private static string ConvertArgsToString(List<string> args)
 				{
@@ -266,4 +266,4 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリと Pig ス
 
 [apache-hive]: http://hive.apache.org/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

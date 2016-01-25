@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/19/2015" 
+	ms.date="01/11/2016" 
 	ms.author="billmath"/>
 
 #Azure Multi-Factor Authentication のしくみ
@@ -54,8 +54,7 @@ Azure Multi-Factor Authentication は、次の 3 種類のバージョンが使�
 ------------- | ------------- |
 Office 365 の多要素認証 | このバージョンは、Office 365 アプリケーション専用に動作し、Office 365 ポータルから管理されます。これにより、管理者は多要素認証を使用して Office 365 リソースを保護できるようになります。このバージョンには、Office 365 サブスクリプションが付属しています。
 Azure 管理者用の多要素認証 | すべての Azure 管理者には、Office 365 向けと同じ多要素認証機能が追加費用なしでご利用いただけます。Azure サブスクリプションのすべての管理者アカウントは、この主要な多要素認証機能を有効にすることによって、追加の保護を実現できるようになりました。したがって、Azure ポータルにアクセスして、VM と Web サイトの作成、ストレージの管理、モバイル サービスの使用など、Azure のさまざまなサービスを利用する必要のある管理者は、各自の管理者アカウントに多要素認証を追加することができます。
-Azure Multi-Factor Authentication | Azure Multi-Factor Authentication は、豊富な機能を備えています。Azure 管理ポータルを介した追加の構成オプション、高度なレポート、および一連のオンプレミスおよびクラウド アプリケーションのサポートを提供します。Azure Multi-Factor Authentication は、Azure Active Directory Premium の一部として提供されます。
-
+Azure Multi-Factor Authentication | Azure Multi-Factor Authentication は、豊富な機能を備えています。<br><br>Azure 管理ポータルを介した追加の構成オプション、高度なレポート、さまざまなオンプレミスおよびクラウド アプリケーションのサポートを提供します。Azure Multi-Factor Authentication は、スタンドアロン ライセンスとして購入することができ、Azure Active Directory Premium および Enterprise Mobility Suite にバンドルされています。<br><br>また、Azure サブスクリプションで Azure Multi-Factor Authentication プロバイダーを作成して使用量ベースで購入することもできます。
 ##バージョンごとの機能の比較
 下の表は、さまざまなバージョンの Azure Multi-Factor Authentication で使用できる機能の一覧を提供しています。
 
@@ -83,23 +82,24 @@ MFA サーバーによる、オンプレミス アプリケーション用の MF
 
 ##Azure Multi-Factor Authentication の入手方法
 
-Azure Multi-Factor Authentication は、Azure Active Directory Premium および Enterprise Mobility Suite の一部として提供されます。これらが既にある場合は、Azure Multi-Factor Authentication も入手済みです。
+Office 365 ユーザーと Azure 管理者に提供される機能だけでなく、Azure Multi-Factor Authentication で提供されるすべての機能を希望する場合は、次のようなオプションがあります。
 
-現在、Office 365 ユーザーまたは Azure サブスクライバーであり、Azure Multi-Factor Authentication が提供する追加機能の利用を希望する場合は、引き続きお読みください。
+1.	Azure Multi-Factor Authentication のライセンスを購入し、ユーザーに割り当てる。
+2.	Azure Active Directory Premium や Enterprise Mobility Suite など、Azure Multi-Factor Authentication がバンドルされたライセンスを購入し、ユーザーに割り当てる。
+3.	Azure サブスクリプション内で Azure Multi-Factor Authentication プロバイダーを作成する。Azure サブスクリプションがまだない場合は、Azure 試用版サブスクリプションにサインアップできます。試用版サブスクリプションは、試用版の有効期限が切れる前に、通常のサブスクリプションに変換する必要があります。
 
-上記のいずれも入手していない場合、Azure Multi-Factor Authentication を使用するには、まず Azure サブスクリプションまたは [Azure 試用サブスクリプション](http://azure.microsoft.com/pricing/free-trial/)が必要です。
+Azure Multi-Factor Authentication プロバイダーには次の 2 つの使用モデルがあり、どちらも Azure サブスクリプションを通じて請求されます。
 
-Azure Multi-Factor Authentication を使用する際は、次の 2 種類の課金オプションが使用可能です。
 
 - **ユーザーごと**。通常は、定期的に認証が必要な固定数の従業員用に Multi-Factor Authentication を有効にすることを望む企業向けです。
 - **認証ごと**。通常は、認証を必要とする頻度が低い外部ユーザーの大規模グループ用に Multi-Factor Authentication を有効にすることを望む企業向けです。
 
 料金の詳細については、[「Azure MFA の料金」](http://azure.microsoft.com/pricing/details/multi-factor-authentication/)を参照してください。
 
-お客様の組織にとって最適なモデルを選択してください。作業を開始するには、[「使用の開始」](multi-factor-authentication-get-started.md)を参照してください。
+組織に最適なシートごとまたは使用量ベースのモデルを選択してください。作業を開始するには、[「使用の開始」](multi-factor-authentication-get-started.md)を参照してください。
 
 
 
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="na"
-   ms.date="10/14/2015"
+   ms.date="01/13/2015"
    ms.author="cawa"/>
 
 # Azure PowerShell コマンドを使用して空のクラウド サービス コンテナーを作成する方法
-1. [Azure PowerShell のダウンロード ページ](http://go.microsoft.com/?linkid=9811175&clcid=0x409)から Microsoft Azure PowerShell コマンドレットをインストールします。Azure PowerShell コマンドレットをインストールして、Azure サブスクリプションに接続する手順の詳細については、「[Azure PowerShell をインストールして構成する方法](../powershell-install-configure.md)」を参照してください。
+1. [Azure PowerShell のダウンロード ページ](http://aka.ms/webpi-azps)から Microsoft Azure PowerShell コマンドレットをインストールします。PowerShell コマンド プロンプトを開きます。[Add-AzureAccount](https://msdn.microsoft.com/library/dn495128.aspx) を使用してサインインします。
+
+> [AZURE.NOTE]Azure PowerShell コマンドレットをインストールして、Azure サブスクリプションに接続する手順の詳細については、「[Azure PowerShell をインストールして構成する方法](../powershell-install-configure.md)」を参照してください。
 
 2. **New-AzureService** は、空のクラウド サービス コンテナーを作成するためのコマンドレットです。
 
@@ -41,4 +43,4 @@ Get-help New-AzureService
     - Azure にクラウド サービス プロジェクトを発行する方法については、「[Azure でのクラウド サービスの継続的な配信](cloud-services-dotnet-continuous-delivery.md)」の **PublishCloudService.ps1** コード サンプルを参照してください。
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0114_2016-->

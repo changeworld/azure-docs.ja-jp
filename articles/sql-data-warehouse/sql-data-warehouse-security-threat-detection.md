@@ -4,8 +4,8 @@
    services="sql-data-warehouse"
    documentationCenter=""
    authors="lodipalm"
-   manager="mausher"
-   editor="barbkess"/>
+   manager="barbkess"
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="lodipalm"/>
+   ms.date="01/07/2016"
+   ms.author="lodipalm;sonyama;barbkess"/>
 
 
 # SQL Data Warehouse の脅威の検出の概要
@@ -89,4 +89,4 @@
 [8]: ./media/sql-data-warehouse-security-threat-detection/8_td_excel_fast_combine.png
 [9]: ./media/sql-data-warehouse-security-threat-detection/9_td_excel_parameters.png
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

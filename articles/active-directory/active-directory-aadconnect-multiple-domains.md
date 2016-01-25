@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/02/2015"
+	ms.date="01/11/2016"
 	ms.author="billmath"/>
 
 #複数ドメインのサポート
@@ -26,7 +26,7 @@
 ## 複数の最上位レベルのドメイン
 fabrikam.com をという名前のドメインを追加する contoso.com という組織の設定例を取り上げます。
 
-オンプレミスのシステムに、フェデレーション サービス名 fs.jenfield.com の AD FS 構成があるとします。
+オンプレミスのシステムで、fs.contoso100.com というフェデレーション サービス名で AD FS を構成しているとします。
 
 Office 365 または Azure AD に最初にサインアップした際、最初にサインオンするドメインとして contoso.com を構成しました。これは、New-MsolFederatedDomain を使用して Azure AD Connect または Azure AD Powershell で実行できます。
 
@@ -34,8 +34,8 @@ Office 365 または Azure AD に最初にサインアップした際、最初�
 
 | プロパティ名 | 値 | 説明|
 | ----- | ----- | -----|
-|IssuerURI | http://fs.jenfield.com/adfs/services/trust| これは URL のようですが、このプロパティは単にオンプレミスの認証システムの名前であり、パスは解決される必要はありません。Azure AD は既定で、これを自分のオンプレミスの AD FS 構成のフェデレーション サービスの ID の値に設定します。
-|PassiveClientSignInUrl|https://fs.jenfield.com/adfs/ls/|This は、パッシブ サインイン要求が送信される場所で、実際の AD FS システムに解決されます。実際にはいくつか "* Url" プロパティがありますが、このプロパティと、IssuerURI などの URI の違いについては、1 つ例を見ればご理解いただけます。
+|IssuerURI | http://fs.contoso100.com/adfs/services/trust| これは URL のようですが、このプロパティは単にオンプレミスの認証システムの名前であり、パスは解決される必要はありません。Azure AD は既定で、これを自分のオンプレミスの AD FS 構成のフェデレーション サービスの ID の値に設定します。
+|PassiveClientSignInUrl|https://fs.contoso100.com/adfs/ls/|This は、パッシブ サインイン要求が送信される場所で、実際の AD FS システムに解決されます。実際にはいくつか "* Url" プロパティがありますが、このプロパティと、IssuerURI などの URI の違いについては、1 つ例を見ればご理解いただけます。
 
 ここで、2 番目のドメイン fabrikam.com を追加したと想像してください。ここでも再度 Azure AD Connect ウィザードを実行するか、または PowerShell を使用してこれを実行します。
 
@@ -51,9 +51,9 @@ Azure AD の構成は次のようになります。
 
 - DomainName: fabrikam.com
 - IssuerURI: http://fabrikam.com/adfs/services/trust 
-- PassiveClientSignInUrl: https://fs.jenfield.com/adfs/ls/ 
+- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/ 
 
-IssuerURI は自分のドメインが使用された値に設定され一意ですが、エンドポイント URL の値は、元の contoso.com ドメインのときと同様に、fs.jenfield.com 上のフェデレーション サービスをまだポイントしていることに注意してください。つまり、すべてのドメインはまだ同じ AD FS システムをポイントし続けています。
+IssuerURI は自分のドメインに基づく値に設定されているため一意ですが、エンドポイント URL の値は、元の contoso.com ドメインのときと同様に、まだ、fs.contoso100.com 上のフェデレーション サービスをポイントするように構成されていることに注意してください。つまり、すべてのドメインはまだ同じ AD FS システムをポイントし続けています。
 
 SupportMultipleDomain では、AD FS システムの Azure AD 用に発行されたトークンに適切な Issuer 値が含まれることも保証します。これは、ユーザーの upn のドメイン部分を取得し、これを issuerURI 内でドメインとして設定して行います (つまり、https://{upn suffix}/adfs/services/trust)。したがって、Azure AD または Office 365に対する認証の際、ユーザー トークンの Issuer 要素は Azure AD のドメインを検出するために使用されます。一致が見つからない場合、認証は失敗します。
 
@@ -75,10 +75,10 @@ PowerShell では、手動で SupportMultipleDomain スイッチを指定する�
 
 - DomainName: contoso.com
 - IssuerURI: http://contoso.com/adfs/services/trust 
-- PassiveClientSignInUrl: https://fs.jenfield.com/adfs/ls/ 
+- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/ 
 - DomainName: fabrikam.com
 - IssuerURI: http://fabrikam.com/adfs/services/trust 
-- PassiveClientSignInUrl: https://fs.jenfield.com/adfs/ls/ 
+- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/ 
 
 これで、contoso.com と fabrikam.com ドメインのユーザーのフェデレーション サインオンが機能するようになりました。ここで、サブドメインのユーザーのサインインの問題が 1 つ残ります。
 
@@ -91,4 +91,4 @@ Azure AD では、発行者を http://sub.contoso.com/adfs/services/trust とす
 
 要約すると、完全に異なる名前の複数のドメインとサブドメインを、すべて同じ AD FS サーバーにフェデレーション構成できました。すべてのユーザーの Issuer 値を正しく設定するには、いくつかの手順を追加で行います。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

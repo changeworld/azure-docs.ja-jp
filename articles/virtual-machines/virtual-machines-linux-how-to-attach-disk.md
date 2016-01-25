@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/11/2015"
+	ms.date="01/07/2016"
 	ms.author="dkshir"/>
 
 # データ ディスクを Linux 仮想マシンに接続する方法
@@ -22,13 +22,15 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 
-空のディスクと、データが含まれているディスクのどちらも接続できます。どちらの場合も、ディスクは、実際には、Azure ストレージ アカウントに配置されている .vhd ファイルです。また、ディスクを接続した後に、初期化して、使用できる状態にする必要があります。この記事では、クラシック デプロイ モデルを使用して作成した仮想マシンを参照します。
+空のディスクと、データが含まれているディスクのどちらも接続できます。どちらの場合も、ディスクは、実際には、Azure ストレージ アカウントに配置されている .vhd ファイルです。また、ディスクを接続した後に、初期化して、使用できる状態にする必要があります。
 
 > [AZURE.NOTE]仮想マシンのデータを格納するには、1 つ以上の個別のディスクを使用することをお勧めします。Azure の仮想マシンを作成するとき、オペレーティング システム ディスクと一時ディスクが表示されます。**データの格納に一時ディスクを使用しないでください。** 名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。一時ディスクは通常、Azure Linux Agent によって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt** )に自動的にマウントされます。一方で、データ ディスクには Linux カーネルによって `/dev/sdc` のような名前が付けられる場合があります。その場合、このリソースをパーティション分割し、フォーマットしてからマウントする必要があります。詳細については、「[Azure Linux エージェント ユーザー ガイド][Agent]」を参照してください。
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-linux.md)]
 
 ## 方法: Linux での新しいデータ ディスクの初期化
+
+下記のように適切なデバイス ID を使用して、同じ手順で複数のデータ ディスクを初期化できます。
 
 1. 仮想マシンへの接続詳細については、[Linux を実行する仮想マシンにログオンする方法][Logon]に関するページを参照してください。
 
@@ -84,12 +86,12 @@
 4. 表示されるプロンプトで「**n**」と入力すると、新しいパーティションが作成されます。
 
 
-	![新しいデバイスの作成](./media/virtual-machines-linux-how-to-attach-disk/DiskPartition.png)
+	![Create new device](./media/virtual-machines-linux-how-to-attach-disk/DiskPartition.png)
 
-5. 表示されるプロンプトで、パーティションをプライマリ パーティションにするには「**p**」を、最初のパーティションにするには「**1**」を、シリンダーの既定値をそのまま使用するには Enter キーを押します。
+5. 表示されるプロンプトで、パーティションをプライマリ パーティションにするには「**p**」を、最初のパーティションにするには「**1**」を、シリンダーの既定値をそのまま使用するには Enter キーを押します。システムによっては、シリンダーではなく、最初と最後のセクターの既定値が表示される場合があります。これらの既定値をそのまま使用することもできます。
 
 
-	![パーティションの作成](./media/virtual-machines-linux-how-to-attach-disk/DiskCylinder.png)
+	![Create partition](./media/virtual-machines-linux-how-to-attach-disk/DiskCylinder.png)
 
 
 
@@ -103,13 +105,13 @@
 7. 「**w**」と入力すると、ディスクの設定が書き込まれます。
 
 
-	![ディスクの変更の書き込み](./media/virtual-machines-linux-how-to-attach-disk/DiskWrite.png)
+	![Write the disk changes](./media/virtual-machines-linux-how-to-attach-disk/DiskWrite.png)
 
-8. 新しいパーティションにファイル システムを作成します。たとえば、次のコマンドを入力し、アカウントのパスワードを入力します。
+8. 新しいパーティションにファイル システムを作成します。デバイス ID にパーティション番号 (1) を追加します。たとえば、次のコマンドを入力し、アカウントのパスワードを入力します。
 
 		# sudo mkfs -t ext4 /dev/sdc1
 
-	![ファイル システムの作成](./media/virtual-machines-linux-how-to-attach-disk/DiskFileSystem.png)
+	![Create file system](./media/virtual-machines-linux-how-to-attach-disk/DiskFileSystem.png)
 
 	>[AZURE.NOTE]SUSE Linux Enterprise 11 では、ext4 ファイル システムへのアクセスは読み取り専用のみサポートされていることに注意してください。これらのシステムには ext4 ではなく ext3 として新しいファイル システムの書式設定することをお勧めします。
 
@@ -160,7 +162,9 @@
 
 	`mount` コマンドでエラーが発生した場合、/etc/fstab ファイルの構文が正しいかどうかを確認してください。追加のデータ ドライブやパーティションを作成する場合、それらも /etc/fstab に個別に入力する必要があります。
 
-	次のコマンドを使用して、ドライブを書き込み可能にする必要があります。 # cd /datadrive # sudo chmod go+w /datadrive
+	次のコマンドを使用して、ドライブを書き込み可能にする必要があります。
+
+		# sudo chmod go+w /datadrive
 
 >[AZURE.NOTE]この後、fstab を編集せずにデータ ディスクを削除すると VM は起動できません。これが頻繁に発生する場合、大部分のディストリビューションでは `nofail` または `nobootwait` fstab オプションが提供されます。これによって、起動時にディスクのマウントが失敗してもシステムを起動することができます。これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
 
@@ -175,4 +179,4 @@
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-how-to-log-on.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

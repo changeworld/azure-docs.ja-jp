@@ -21,7 +21,7 @@
 
 仮想マシン スケール セットは、同一の VM のセットをデプロイおよび管理するために使用できる Azure コンピューティング リソースです。すべての VM が同じ構成になっており、VM を事前にプロビジョニングする必要がない、真の自動スケールをサポートするように設計されています。そのため、ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードなどを対象にした大規模サービスを簡単に構築できます。
 
-[AZURE.INCLUDE [virtual-machines-vmss-preview](../../includes/virtual-machines-vmss-preview-include.md)]
+[AZURE.INCLUDE [virtual-machines-vmss-preview](../../includes/virtual-machines-vmss-preview-ps-include.md)]
 
 コンピューティング リソースをスケール アウトしたりスケール インしたりする必要のあるアプリケーションでは、複数の障害ドメインと更新ドメインに対してスケール操作が暗黙的にバランシングされます。VM スケール セットの概要については、最近の [Azure ブログでの発表](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview)を参照してください。
 
@@ -153,4 +153,4 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 **A.** はい。VM スケール セットは、3 つの FD と 5 つの UD を持つ、暗黙的な可用性セットです。virtualMachineProfile の下のものは、何も構成する必要はありません。今後のリリースでは、VM スケール セットが複数のテナントにまたがる可能性がありますが、現時点では 1 つの可用性セットです。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

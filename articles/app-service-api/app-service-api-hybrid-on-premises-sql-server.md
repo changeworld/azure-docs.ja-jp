@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # ハイブリッド接続を使用して Azure App Service の API アプリからオンプレミスの SQL Server に接続する
@@ -66,7 +66,7 @@
 	</tr>
 </table>
 
-- 内部設置型のリソースの *hostname*:*portnumber* に到達できること 
+- オンプレミス リソースの *hostname*:*portnumber* に到達できること 
 
 この記事の手順では、オンプレミスのハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
 
@@ -432,4 +432,4 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

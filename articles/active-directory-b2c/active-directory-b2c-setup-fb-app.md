@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="01/12/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Facebook アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -46,11 +46,9 @@ Azure Active Directory (AD) B2C で ID プロバイダーとして Facebook を�
     ![FB - 設定](./media/active-directory-b2c-setup-fb-app/fb-website.png)
 
 7. **[Site URL]** フィールドに「[https://login.microsoftonline.com/](https://login.microsoftonline.com/)」と入力し、**[Save Changes]** をクリックします。
-8. **[App ID]** の値をコピーします。**[Show]** をクリックし、**[App Secret]** の値をコピーします。テナントで ID プロバイダーとして Facebook を構成するには、両方の値が必要です。
+8. **[App ID]** の値をコピーします。**[Show]** をクリックし、**[App Secret]** の値をコピーします。テナントで ID プロバイダーとして Facebook を構成するには、両方の値が必要です。注: **アプリケーション シークレット**は、重要なセキュリティ資格情報です。
 
-> [AZURE.NOTE]**[App Secret]** は、重要なセキュリティ資格情報です。
-
-    ![FB - Site URL](./media/active-directory-b2c-setup-fb-app/fb-site-url.png)
+    ![FB - サイト URL](./media/active-directory-b2c-setup-fb-app/fb-site-url.png)
 
 9. 上部の **[Advanced]** タブをクリックし、**[Security]** セクションの **[Valid OAuth redirect URIs]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。**{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。ページの下部にある **[Save Changes]** をクリックします。
 
@@ -72,4 +70,4 @@ Azure Active Directory (AD) B2C で ID プロバイダーとして Facebook を�
 6. **[この ID プロバイダーを設定する]** をクリックし、先に作成した Facebook アプリケーションの **[アプリ ID]** と **[アプリ シークレット]** を **[クライアント ID]** および **[クライアント シークレット]** フィールドに入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Facebook の構成を保存します。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

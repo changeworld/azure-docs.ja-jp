@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="10/22/2015"
+   ms.date="01/12/2016"
    ms.author="sameerch"/>
 
 
 # HDInsight コネクタの使用開始とロジック アプリへの追加
-HDInsight コネクタでは、Azure 上で Hadoop クラスターを作成し、Hive、Pig、MapReduce、ストリーミング MapReduce ジョブなど、さまざまな Hadoop ジョブを作成して送信できます。Azure HDInsight サービスは、Apache Hadoop クラスターをクラウドにデプロイしてプロビジョニングするためのサービスです。ビッグ データの管理、分析、レポート生成を支援するソフトウェア フレームワークとなります。Hadoop コアには、データ ストレージの信頼性を高める Hadoop 分散ファイル システム (HDFS) と、この分散システムに格納されているデータの処理と分析を同時に行うシンプルな MapReduce プログラミング モデルが用意されています。HDInsight コネクタを使用して、クラスターの作成または削除、ジョブの送信、ジョブの完了待機を実行できます。
+HDInsight コネクタでは、Azure 上で Hadoop クラスターを作成し、Hive ジョブ、Pig ジョブ、MapReduce ジョブ、ストリーミング MapReduce ジョブなど、さまざまな Hadoop ジョブを送信できます。Azure HDInsight サービスは、Apache Hadoop クラスターをクラウドにデプロイしてプロビジョニングするためのサービスです。ビッグ データの管理、分析、レポート生成を支援するソフトウェア フレームワークとなります。Hadoop コアには、データ ストレージの信頼性を高める Hadoop 分散ファイル システム (HDFS) と、この分散システムに格納されているデータの処理と分析を同時に行うシンプルな MapReduce プログラミング モデルが用意されています。HDInsight コネクタを使用して、クラスターの作成または削除、ジョブの送信、ジョブの完了待機を実行できます。
 
 コネクタをロジック アプリで使用すると、フローの一部として、データをフェッチ、処理、またはプッシュ転送できます。この HDInsight コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
@@ -95,16 +95,16 @@ HDInsight コネクタは、ロジック アプリでアクションとしての
 
 
 <!--Image references-->
-[1]: ./media/app-service-logic-connector-hdinsight/Create.jpg
-[2]: ./media/app-service-logic-connector-hdinsight/CertNotConfigured.jpg
-[3]: ./media/app-service-logic-connector-hdinsight/CertConfigured.jpg
-[5]: ./media/app-service-logic-connector-hdinsight/LogicApp1.jpg
-[6]: ./media/app-service-logic-connector-hdinsight/LogicApp2.jpg
-[7]: ./media/app-service-logic-connector-hdinsight/LogicApp3.jpg
-[8]: ./media/app-service-logic-connector-hdinsight/LogicApp4.jpg
-[9]: ./media/app-service-logic-connector-hdinsight/LogicApp5.jpg
-[10]: ./media/app-service-logic-connector-hdinsight/LogicApp6.jpg
-[11]: ./media/app-service-logic-connector-hdinsight/LogicApp7.jpg
+[1]: ./media/app-service-logic-connector-hdinsight/Create.png
+[2]: ./media/app-service-logic-connector-hdinsight/CertNotConfigured.png
+[3]: ./media/app-service-logic-connector-hdinsight/CertConfigured.png
+[5]: ./media/app-service-logic-connector-hdinsight/LogicApp1.png
+[6]: ./media/app-service-logic-connector-hdinsight/LogicApp2.png
+[7]: ./media/app-service-logic-connector-hdinsight/LogicApp3.png
+[8]: ./media/app-service-logic-connector-hdinsight/LogicApp4.png
+[9]: ./media/app-service-logic-connector-hdinsight/LogicApp5.png
+[10]: ./media/app-service-logic-connector-hdinsight/LogicApp6.png
+[11]: ./media/app-service-logic-connector-hdinsight/LogicApp7.png
 [12]: ./media/app-service-logic-connector-hdinsight/LogicApp8.PNG
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

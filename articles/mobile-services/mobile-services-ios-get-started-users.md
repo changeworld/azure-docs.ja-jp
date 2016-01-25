@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="10/01/2015"
+	ms.date="01/12/2016"
 	ms.author="krisragh"/>
 
 # 既存の Azure Mobile Services アプリに認証を追加する
@@ -90,4 +90,4 @@
 
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

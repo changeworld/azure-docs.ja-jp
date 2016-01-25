@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と Samanage の統合
@@ -64,13 +64,11 @@
     ![Samanage](./media/active-directory-saas-samanage-tutorial/IC771708.png "Samanage")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Samanage に対する認証を行えるようにする方法について説明します。  
-この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
-この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Samanage に対する認証を行えるようにする方法について説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (バイナリ証明書をテキスト ファイルに変換する方法)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Samanage** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **Samanage** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-samanage-tutorial/IC771709.png "シングル サインオンの構成")
 
@@ -78,44 +76,41 @@
 
     ![Microsoft Azure AD シングル サインオン](./media/active-directory-saas-samanage-tutorial/IC771710.png "Microsoft Azure AD シングル サインオン")
 
-3.  **[アプリケーション URL の構成]** ページで、**[Samanage サインイン URL]** ボックスに、"*https://\<テナント名>.samanage.com*" のパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリ URL の構成]** ページで、**[Samanage サインイン URL]** テキストボックスに、"*https://\<tenant-name>.Samanage.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
     ![アプリ URL の構成](./media/active-directory-saas-samanage-tutorial/IC771711.png "アプリケーション URL の構成")
 
 4.  **[Samanage でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-samanage-tutorial/IC777613.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-samanage-tutorial/IC777613.png "Configure Single Sign-On")
 
 5.  別の Web ブラウザーのウィンドウで、Samanage 企業サイトに管理者としてログインします。
 
-6.  **[Dashboard]** をクリックし、左側のナビゲーション ウィンドウで **[Setup]** を選択します。
+6.  **[Dashboard]** をクリックして、左のナビゲーション ウィンドウで **[Setup]** を選択します。
 
     ![ダッシュボード](./media/active-directory-saas-samanage-tutorial/IC771712.png "ダッシュボード")
 
-7.  **[Single Sign-On]** をクリックします。
+7.  **[シングル サインオン]** をクリックします。
 
     ![シングル サインオン](./media/active-directory-saas-samanage-tutorial/IC771713.png "シングル サインオン")
 
-8.  **[Login using SAML]** ダイアログ ページで、次の手順を実行し、**[Save Changes]** をクリックします。
+8.  **[Login using SAML]** ダイアログ ページで、次の手順に従ってから、**[Save Changes]** をクリックします。
 
-    1.  **[Enable Single Sign-On with SAML]** をクリックします。
-        ![SAML を使用してログイン](./media/active-directory-saas-samanage-tutorial/IC771719.png "SAML を使用してログイン")
-    2.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの ID]** 値をコピーして、[ID プロバイダーの URL]
-        ![Configure Single Sign-On](./media/active-directory-saas-samanage-tutorial/IC771720.png "Configure Single Sign-On") テキストボックスに貼り付けます。
-    3.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーして、**[ログイン URL]** テキストボックスに貼り付けます。
+    1.  **[Enable Single Sign-On with SAML]** をクリックします。![SAML を使用してログイン](./media/active-directory-saas-samanage-tutorial/IC771719.png "SAML を使用してログイン")
+    2.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの ID]** 値をコピーして、[ID プロバイダーの URL]![Configure Single Sign-On](./media/active-directory-saas-samanage-tutorial/IC771720.png "Configure Single Sign-On") テキストボックスに貼り付けます。
+3.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーして、**[ログイン URL]** テキストボックスに貼り付けます。
     4.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログアウト URL]** の値をコピーして、**[ログアウト URL]** テキストボックスに貼り付けます。
     5.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
-        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」を参照してください。
+        >[AZURE.TIP]詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
     6.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 証明書]** テキストボックスに貼り付けます。
-    7.  **[Samanage に存在しない場合にユーザーを作成する]** をクリックします。
-        ![更新](./media/active-directory-saas-samanage-tutorial/IC771722.png "更新")
+    7.  **[Samanage に存在しない場合にユーザーを作成する]** をクリックします。![更新](./media/active-directory-saas-samanage-tutorial/IC771722.png "更新")
     8.  **[更新]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、[**完了**] をクリックして [**シングル サインオンの構成**] ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-samanage-tutorial/IC771723.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-samanage-tutorial/IC771723.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
   
 Azure AD ユーザーが Samanage にログインできるようにするには、そのユーザーを Samanage にプロビジョニングする必要があります。Samanage の場合、プロビジョニングは手動で行います。
@@ -124,19 +119,19 @@ Azure AD ユーザーが Samanage にログインできるようにするには�
 
 1.  **Samanage** テナントにログインします。
 
-2.  **[Dashboard] > [Setup]** に移動します。
+2.  **[ダッシュボード] > [セットアップ]** に移動します。
 
     ![セットアップ](./media/active-directory-saas-samanage-tutorial/IC771724.png "セットアップ")
 
-3.  **[Users]** タブをクリックします。
+3.  **[ユーザー]** タブをクリックします。
 
     ![ユーザー](./media/active-directory-saas-samanage-tutorial/IC771725.png "ユーザー")
 
-4.  **[New User]** をクリックします。
+4.  **[新しいユーザー]** をクリックします。
 
     ![新しいユーザー](./media/active-directory-saas-samanage-tutorial/IC771726.png "新しいユーザー")
 
-5.  プロビジョニングする Azure AD アカウントの**電子メール アドレス**と**名前**を入力し、**[Create user]** をクリックします。
+5.  プロビジョニングする Azure AD アカウントの** [電子メール]** と **[名前]** を入力し、**[ユーザーの作成]** をクリックします。
 
     >[AZURE.NOTE]AAD アカウント所有者がメールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。
 
@@ -152,14 +147,14 @@ Azure AD ユーザーが Samanage にログインできるようにするには�
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  **Samanage** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  Samanage アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-samanage-tutorial/IC771728.png "ユーザーの割り当て")
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-samanage-tutorial/IC767830.png "あり")
+    ![あり](./media/active-directory-saas-samanage-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

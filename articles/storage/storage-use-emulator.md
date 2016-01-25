@@ -4,8 +4,8 @@
 	services="storage" 
 	documentationCenter="" 
 	authors="tamram" 
-	manager="adinah" 
-	editor=""/>
+	manager="carmonm" 
+	editor="tysonn"/>
 <tags 
 	ms.service="storage" 
 	ms.workload="storage" 
@@ -232,4 +232,4 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
 - Azure ストレージ サービスのバージョン 2013-08-15 が、完全にサポートされるようになりました。(以前は、このバージョンはストレージ エミュレーター バージョン 2.2.1 プレビューだけでサポートされていました。)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

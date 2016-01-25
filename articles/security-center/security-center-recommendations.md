@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/10/2015"
+   ms.date="01/05/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティ センターでのセキュリティに関する推奨事項の管理
@@ -32,7 +32,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 
 ### 推奨事項の設定
 
-「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」に、以下の説明があります。
+「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」では、次のことを学習します。
 
 - セキュリティ ポリシーの構成
 - データ取集の有効化
@@ -70,7 +70,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 
 | 推奨 | 説明 |
 |----- |-----|
-| サブスクリプションまたは仮想マシンのデータ収集の有効化 | 選択した VM に対し、セキュリティ ポリシーでデータ収集を有効にすることをお勧めします。 |
+| サブスクリプションまたは仮想マシンのデータ収集の有効化 | 各サブスクリプションまたは選択した VM に対して、セキュリティ ポリシーでデータ収集を有効にすることをお勧めします。 |
 | 基準ルールの不一致の解決 | たとえばパスワードの保存を許可しないなど、OS の構成を推奨される基準と一致させることをお勧めします。 |
 | システムの更新の適用 | 不足しているシステムの更新を VM (Windows VM のみ) にデプロイすることをお勧めします。 |
 | エンドポイントへの ACL の構成 | VM (クラシック VM のみ) への着信アクセスを制限するアクセス制御リストを構成することをお勧めします。 |
@@ -120,7 +120,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 
 - 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 – セキュリティ ポリシーの設定方法についての説明
 - 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」 – Azure リソースのヘルスを監視する方法についての説明
-- 「[Azure セキュリティ センターでのセキュリティのアラートの管理と対応](security-center-managing-and-responding-alerts.md)」 -セキュリティの警告の管理および対応について
+- 「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -セキュリティの警告の管理および応答の方法について
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
 
@@ -135,4 +135,4 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 [9]: ./media/security-center-recommendations/finalize-waf.png
 [10]: ./media/security-center-recommendations/restrict-traffic.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -3,7 +3,7 @@
 	description="3 台のサーバーから成る SharePoint ファームの Azure リソース マネージャーのテンプレートの構造に関する段階的な説明です。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="JoeDavies-MSFT"
+	authors="davidmu1"
 	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/28/2015"
-	ms.author="josephd"/>
+	ms.author="davidmu"/>
 
 # 3 台のサーバーから成る SharePoint ファーム リソース マネージャーのテンプレート
 
@@ -366,14 +366,8 @@ JSON ファイルの **"resources"** セクションのサブセクションの�
 1.	デプロイに必要な Azure インフラストラクチャの各種要素を作成します。これには、共通の要素 (ストレージ アカウント、仮想ネットワーク)、階層に固有の要素 (可用性セット)、仮想マシン固有の要素 (パブリック IP アドレス、可用性セット、ネットワーク インターフェイス、ロード バランサー インスタンス) があります。
 2.	アプリケーションの階層 (認証、データベース、Web など) ごとにサーバーを作成および構成します。このとき、共通の要素 (ストレージ アカウント、仮想ネットワーク)、階層に固有の要素 (可用性セット)、仮想マシン固有の要素 (パブリック IP アドレス、ネットワーク インターフェイス、ロード バランサー インスタンス) を使用します。
 
-詳細については、「[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)」を参照してください。
+## 次のステップ
 
-## その他のリソース
+- [Azure リソース マネージャーのテンプレート言語](../resource-group-authoring-templates.md)について学び、独自のテンプレートを作成します。
 
-[Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md) [Azure リソース マネージャーの概要](../resource-group-overview.md)
-
-[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
-
-[Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
-
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0114_2016-->

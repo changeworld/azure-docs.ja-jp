@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="09/11/2015"
+    ms.date="01/07/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp の仮想ネットワークを計画する方法
@@ -55,4 +55,4 @@ Azure RemoteApp をデプロイする仮想ネットワーク内の送受信ト�
 
 [強制トンネリング](vpn-gateway-about-forced-tunneling.md)が、すべての新しい Azure RemoteApp コレクションでサポートされるようになりました。現在、既存のコレクションを移行して、強制トンネリングをサポートすることはできません。コレクションで強制トンネリングを有効にするには、Azure RemoteApp にリンクしている VNET を使用する既存のコレクションをすべて削除し、新しいコレクションを作成する必要があります。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0114_2016-->

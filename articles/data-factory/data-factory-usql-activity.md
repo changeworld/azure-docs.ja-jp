@@ -19,9 +19,9 @@
 # Azure Data Factory から Azure Data Lake Analytics で U-SQL スクリプトを実行する 
 Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。この記事では、**Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ**について説明します。
 
-> [AZURE.NOTE]Data Lake Analytics U-SQL アクティビティでパイプラインを作成する前に、Azure Data Lake Analytics アカウントを作成する必要があります。Azure Data Lake Analytics の詳細については、[Azure Data Lake Analytics の概要](../data-lake-analytics/data-lake-analytics-get-started-portal.md)に関するページを参照してください。
+> [AZURE.NOTE]Data Lake Analytics U-SQL アクティビティでパイプラインを作成する前に、Azure Data Lake Analytics アカウントを作成する必要があります。Azure Data Lake Analytics の詳細については、「[チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)」をご覧ください。
 >  
-> Data Factory、リンクされたサービス、データセット、およびパイプラインを作成する詳細な手順については、[最初のパイプラインをビルドするチュートリアル](data-factory-build-your-first-pipeline.md)に関するページを確認してください。Data Factory エディターまたは Visual Studio か Azure PowerShell と JSON のスニペットを使用して、Data Factory エンティティを作成できます。
+> Data Factory、リンクされたサービス、データセット、およびパイプラインを作成する詳細な手順については、[最初のパイプラインを作成するチュートリアル](data-factory-build-your-first-pipeline.md)に関するページを確認してください。Data Factory エディター、Visual Studio、または Azure PowerShell と JSON のスニペットを使用して、Data Factory エンティティを作成できます。
 
 ## Azure Data Lake Analytics リンク サービス
 **Azure Data Lake Analytics** リンク サービスを作成して、Azure Data Lake Analytics コンピューティング サービスを Azure Data Factory にリンクしてから、パイプラインで Data Lake Analytics U-SQL アクティビティを使用します。
@@ -48,13 +48,13 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-型 | type プロパティを **AzureDataLakeAnalytics** に設定する必要があります。 | あり
+型 | type プロパティは **AzureDataLakeAnalytics** に設定する必要があります。 | あり
 accountName | Azure Data Lake Analytics アカウント名。 | あり
 dataLakeAnalyticsUri | Azure Data Lake Analytics URI。 | いいえ 
 authorization | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | あり 
 subscriptionId | Azure サブスクリプション ID | いいえ (指定されていない場合は Data Factory のサブスクリプションが使用されます)。 
 resourceGroupName | Azure リソース グループ名 | いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。
-sessionId | OAuth 承認セッションのセッション ID です。各セッション ID は一意であり、使用されるのが 1 回のみの場合があります。セッション ID は、Data Factory Editor で自動生成されます。 | はい
+sessionId | OAuth 承認セッションのセッション ID です。各セッション ID は一意であり、1 回のみ使用できます。セッション ID は、Data Factory Editor で自動生成されます。 | あり
 
    
  
@@ -117,14 +117,15 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 
 プロパティ | 説明 | 必須
 :-------- | :----------- | :--------
-type | type プロパティは、**DataLakeAnalyticsU-SQL** に設定する必要があります。 | はい
+type | type プロパティは、**DataLakeAnalyticsU-SQL** に設定する必要があります。 | あり
 scriptPath | U-SQL スクリプトを含むフォルダーのパス。 | いいえ (スクリプトを使用する場合)
 scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | いいえ (スクリプトを使用する場合)
 script (スクリプト) | scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。例: "script" : "CREATE DATABASE test". | いいえ (scriptPath と scriptLinkedService を使用する場合)
 degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | いいえ
-priority | キューされているすべてのジョブのうち、先に実行するジョブを決定します。数値が低いほど、優先度は高くなります。 | いいえ 
+priority | キューされているすべてのジョブのうち、先に実行するジョブを決定します。数値が小さいほど、優先度は高くなります。 | いいえ 
 parameters | U-SQL スクリプトのパラメーター | いいえ 
 
+スクリプト定義については、[SearchLogProcessing.txt のスクリプト定義](#script-definition)をご覧ください。
 
 ### 入力データセットと出力データセットの例
 
@@ -187,4 +188,35 @@ parameters | U-SQL スクリプトのパラメーター | いいえ
 
 上記の Azure Data Lake Store リンク サービスとデータ セット JSON スニペットの JSON プロパティについては、[Azure Data Lake Store のデータの入出力](data-factory-azure-datalake-connector.md)に関するページを参照してください。
 
-<!---HONumber=Nov15_HO2-->
+### スクリプト定義
+
+	@searchlog =
+	    EXTRACT UserId          int,
+	            Start           DateTime,
+	            Region          string,
+	            Query           string,
+	            Duration        int?,
+	            Urls            string,
+	            ClickedUrls     string
+	    FROM @in
+	    USING Extractors.Tsv(nullEscape:"#NULL#");
+	
+	@rs1 =
+	    SELECT Start, Region, Duration
+	    FROM @searchlog
+	WHERE Region == "en-gb";
+	
+	@rs1 =
+	    SELECT Start, Region, Duration
+	    FROM @rs1
+	    WHERE Start <= DateTime.Parse("2012/02/19");
+	
+	OUTPUT @rs1   
+	    TO @out
+	      USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
+
+上記の U-SQL スクリプトの **@in** パラメーターと **@out** パラメーターの値は、"parameters" セクションを使用して ADF によって動的に渡されます。前述のパイプライン定義の "parameters" セクションを参照してください。
+
+Azure Data Lake Analytics サービスで実行されるジョブのパイプライン定義で、他のプロパティ (degreeOfParallelism や優先度など) も指定できます。
+
+<!---HONumber=AcomDC_0114_2016-->

@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="11/23/2015"
+	ms.date="01/11/2016"
 	ms.author="jeffstok"/>
 
 
@@ -150,6 +150,8 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 	StreamAnalyticsManagementClient client = new StreamAnalyticsManagementClient(aadTokenCredentials);
 
 **resourceGroupName** 変数の値は、前の手順で作成または選択したリソース グループの名前と同じである必要があります。
+
+ジョブの作成で資格情報の提示部分を自動化する場合は、「[Azure リソース マネージャーでのサービス プリンシパルの認証](./articles/resource-group-authenticate-service-principal.md)」をご覧ください。
 
 この記事の以降のセクションでは、このコードが **Main** メソッドの先頭にあることを前提としています。
 
@@ -364,4 +366,4 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

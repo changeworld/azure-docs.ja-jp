@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と Zscaler の統合
@@ -49,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-zscaler-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-zscaler-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -77,7 +77,7 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-zscaler-tutorial/IC769230.png "シングル サインオンの構成")
 
-3.  **[アプリ URL の構成]** ページで、**[Zscaler サインイン URL]** ボックスに、Zscaler のテナント サインイン URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリの URL の構成]** ページの **[Zscaler サインイン URL]** ボックスに、Zscaler のテナント サインイン URL を入力し、**[次へ]** をクリックします。
 
     >[AZURE.NOTE]サインインの URL がわからない場合は、Zscaler サポート チームに問い合わせてください。
 
@@ -116,12 +116,12 @@
     3.  **[SSL パブリック証明書のアップロード]** フィールドで、Azure ポータルからダウンロードした証明書をアップロードします。
     4.  **[SAML 自動プロビジョニングを有効にする]** を選択します。
 
-10. **[ユーザー認証の構成]** ダイアログ ページで、次の手順を実行します。
+10. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
     ![ユーザー認証の構成](./media/active-directory-saas-zscaler-tutorial/IC769490.png "ユーザー認証の構成")
 
     1.  **[保存]** をクリックします。
-    2.  **[今すぐアクティブ化]** をクリックします。
+    2.  **[今すぐ認証する]** をクリックします。
 
 11. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -179,7 +179,7 @@ Azure AD ユーザーが Zscaler にログインできるようにするには�
 
     ![ユーザーの追加](./media/active-directory-saas-zscaler-tutorial/IC781038.png "ユーザーの追加")
 
-    1.  プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** を入力し、**[グループ]** と **[部署]** を選択します。
+    1.  プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。
     2.  **[保存]** をクリックします。
 
 >[AZURE.NOTE]Zscaler から提供されている他の Zscaler ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
@@ -198,8 +198,8 @@ Azure AD ユーザーが Zscaler にログインできるようにするには�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-zscaler-tutorial/IC767830.png "あり")
+    ![あり](./media/active-directory-saas-zscaler-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

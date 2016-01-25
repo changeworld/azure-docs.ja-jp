@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/05/2015"    
+	ms.date="01/10/2015"    
 	ms.author="juliako"/>
 
 
@@ -29,7 +29,7 @@
 - [動画をトリミングする (クリッピング)](media-services-custom-mes-presets-with-dotnet.md#trim_video)
 - [オーバーレイを作成する](media-services-custom-mes-presets-with-dotnet.md#overlay)
 - [音声が入力されない場合、無音オーディオ トラックを挿入する](media-services-custom-mes-presets-with-dotnet.md#silent_audio)
-
+- [自動インターレース解除を無効にする](media-services-custom-mes-presets-with-dotnet.md#deinterlacing)
 
 ##<a id="encoding_with_dotnet"></a>Media Services .NET SDK でエンコードする
 
@@ -420,14 +420,20 @@
 
 ##<a id="trim_video"></a>動画をトリミングする (クリッピング)
 
-このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。エンコーダーは、ライブ ストリームからキャプチャまたはアーカイブされたアセットをクリッピングまたはトリミングする場合にも利用できます。それに関する詳細は[このブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)にあります。
+このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。エンコーダーは、ライブ ストリームからキャプチャまたはアーカイブされた資産をクリッピングまたはトリミングする場合にも利用できます。それに関する詳細は[このブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)にあります。
 
-動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に保存されている MES プリセットを利用し、**ソース**要素を変更します (下記参照)。
+動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に保存されている MES プリセットを利用し、**Sources** 要素を変更します (下記参照)。なお、**Sources** 要素はスキーマの先頭に配置する必要があります。
 
 ###<a id="json"></a>JSON プリセット
 	
 	{
 	  "Version": 1.0,
+	  "Sources": [
+	    {
+	      "StartTime": "00:00:04",
+	      "Duration": "00:00:16"
+	    }
+	  ],
 	  "Codecs": [
 	    {
 	      "KeyFrameInterval": "00:00:02",
@@ -535,24 +541,136 @@
 	        "Type": "MP4Format"
 	      }
 	    }
-	  ],
-	  "Sources": [
-	    {
-	      "StartTime": "00:00:04",
-	      "Duration": "00:00:16"
-	    }
 	  ]
 	} 
 
+###XML プリセット
+	
+動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に保存されている MES プリセットを利用し、**Sources** 要素を変更します (下記参照)。
 
+	<?xml version="1.0" encoding="utf-16"?>
+	<Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+	  <Sources>
+	    <Source StartTime="PT4S" Duration="PT14S"/>
+	  </Sources>
+	  <Encoding>
+	    <H264Video>
+	      <KeyFrameInterval>00:00:02</KeyFrameInterval>
+	      <H264Layers>
+	        <H264Layer>
+	          <Bitrate>3400</Bitrate>
+	          <Width>1280</Width>
+	          <Height>720</Height>
+	          <FrameRate>0/1</FrameRate>
+	          <Profile>Auto</Profile>
+	          <Level>auto</Level>
+	          <BFrames>3</BFrames>
+	          <ReferenceFrames>3</ReferenceFrames>
+	          <Slices>0</Slices>
+	          <AdaptiveBFrame>true</AdaptiveBFrame>
+	          <EntropyMode>Cabac</EntropyMode>
+	          <BufferWindow>00:00:05</BufferWindow>
+	          <MaxBitrate>3400</MaxBitrate>
+	        </H264Layer>
+	        <H264Layer>
+	          <Bitrate>2250</Bitrate>
+	          <Width>960</Width>
+	          <Height>540</Height>
+	          <FrameRate>0/1</FrameRate>
+	          <Profile>Auto</Profile>
+	          <Level>auto</Level>
+	          <BFrames>3</BFrames>
+	          <ReferenceFrames>3</ReferenceFrames>
+	          <Slices>0</Slices>
+	          <AdaptiveBFrame>true</AdaptiveBFrame>
+	          <EntropyMode>Cabac</EntropyMode>
+	          <BufferWindow>00:00:05</BufferWindow>
+	          <MaxBitrate>2250</MaxBitrate>
+	        </H264Layer>
+	        <H264Layer>
+	          <Bitrate>1500</Bitrate>
+	          <Width>960</Width>
+	          <Height>540</Height>
+	          <FrameRate>0/1</FrameRate>
+	          <Profile>Auto</Profile>
+	          <Level>auto</Level>
+	          <BFrames>3</BFrames>
+	          <ReferenceFrames>3</ReferenceFrames>
+	          <Slices>0</Slices>
+	          <AdaptiveBFrame>true</AdaptiveBFrame>
+	          <EntropyMode>Cabac</EntropyMode>
+	          <BufferWindow>00:00:05</BufferWindow>
+	          <MaxBitrate>1500</MaxBitrate>
+	        </H264Layer>
+	        <H264Layer>
+	          <Bitrate>1000</Bitrate>
+	          <Width>640</Width>
+	          <Height>360</Height>
+	          <FrameRate>0/1</FrameRate>
+	          <Profile>Auto</Profile>
+	          <Level>auto</Level>
+	          <BFrames>3</BFrames>
+	          <ReferenceFrames>3</ReferenceFrames>
+	          <Slices>0</Slices>
+	          <AdaptiveBFrame>true</AdaptiveBFrame>
+	          <EntropyMode>Cabac</EntropyMode>
+	          <BufferWindow>00:00:05</BufferWindow>
+	          <MaxBitrate>1000</MaxBitrate>
+	        </H264Layer>
+	        <H264Layer>
+	          <Bitrate>650</Bitrate>
+	          <Width>640</Width>
+	          <Height>360</Height>
+	          <FrameRate>0/1</FrameRate>
+	          <Profile>Auto</Profile>
+	          <Level>auto</Level>
+	          <BFrames>3</BFrames>
+	          <ReferenceFrames>3</ReferenceFrames>
+	          <Slices>0</Slices>
+	          <AdaptiveBFrame>true</AdaptiveBFrame>
+	          <EntropyMode>Cabac</EntropyMode>
+	          <BufferWindow>00:00:05</BufferWindow>
+	          <MaxBitrate>650</MaxBitrate>
+	        </H264Layer>
+	        <H264Layer>
+	          <Bitrate>400</Bitrate>
+	          <Width>320</Width>
+	          <Height>180</Height>
+	          <FrameRate>0/1</FrameRate>
+	          <Profile>Auto</Profile>
+	          <Level>auto</Level>
+	          <BFrames>3</BFrames>
+	          <ReferenceFrames>3</ReferenceFrames>
+	          <Slices>0</Slices>
+	          <AdaptiveBFrame>true</AdaptiveBFrame>
+	          <EntropyMode>Cabac</EntropyMode>
+	          <BufferWindow>00:00:05</BufferWindow>
+	          <MaxBitrate>400</MaxBitrate>
+	        </H264Layer>
+	      </H264Layers>
+	      <Chapters />
+	    </H264Video>
+	    <AACAudio>
+	      <Profile>AACLC</Profile>
+	      <Channels>2</Channels>
+	      <SamplingRate>48000</SamplingRate>
+	      <Bitrate>128</Bitrate>
+	    </AACAudio>
+	  </Encoding>
+	  <Outputs>
+	    <Output FileName="{Basename}_{Width}x{Height}_{VideoBitrate}.mp4">
+	      <MP4Format />
+	    </Output>
+	  </Outputs>
+	</Preset>
 
 ##<a id="overlay"></a>オーバーレイを作成する
 
-Media Encoder Standard では、画像 (jpg や gif など) を既存の動画に重ね合わせることができます。下に定義されているプリセットはビデオ オーバーレイの基本例です。
+Media Encoder Standard では、画像を既存の動画に重ね合わせることができます。現在サポートされている形式は png、jpg、gif、bmp です。下に定義されているプリセットはビデオ オーバーレイの基本例です。
 
 >[AZURE.NOTE]現在のところ、オーバーレイの不透明設定には対応していません。
 
-プリセット ファイルの定義に加え、オーバーレイ画像の入っているアセットと画像を重ね合わせるソース動画の入っているアセットを Media Services に認識させる必要もあります。上に定義されている **EncodeWithOverlay** メソッドの .NET 例を参照してください。
+プリセット ファイルの定義に加え、オーバーレイ画像の入っている資産と画像を重ね合わせるソース動画の入っている資産を Media Services に認識させる必要もあります。上に定義されている .NET の **EncodeWithOverlay** メソッドの例を参照してください。
 
 ###JSON プリセット
 	
@@ -697,11 +815,11 @@ Media Encoder Standard では、画像 (jpg や gif など) を既存の動画�
 	  </Outputs>
 	</Preset>
 
-##<a id="silent_audio"></a>音声が入力されない場合、無音オーディオ トラックを挿入する
+##<a id="silent_audio"></a>音声が入力されない場合に無音オーディオ トラックを挿入する
 
-既定では、映像のみで音声の入っていないエンコーダーに入力を送信すると、映像データのみが含まれるファイルが出力アセットに含まれます。プレーヤーによっては、このような出力ストリームを処理できないことがあります。そのような場合、この設定を利用すれば、無音のオーディオ トラックを出力に追加するようにエンコーダーに強制できます。
+既定では、映像のみで音声の入っていないエンコーダーに入力を送信すると、映像データのみが含まれるファイルが出力資産に含まれます。プレーヤーによっては、このような出力ストリームを処理できないことがあります。そのような場合、この設定を利用すれば、無音のオーディオ トラックを出力に追加するようにエンコーダーに強制できます。
 
-入力に音声が入っていないとき、無音オーディオ トラックが含まれるアセットを生成するようにエンコーダーに強制するには、"InsertSilenceIfNoAudio" 値を指定します。
+入力に音声が入っていないとき、無音オーディオ トラックが含まれる資産を生成するようにエンコーダーに強制するには、"InsertSilenceIfNoAudio" 値を指定します。
 
 [ここ](https://msdn.microsoft.com/library/mt269960.aspx)に保存されている MES プリセットを利用し、次のように変更します。
 
@@ -723,6 +841,39 @@ Media Encoder Standard では、画像 (jpg や gif など) を既存の動画�
       <Bitrate>96</Bitrate>
     </AACAudio>
 
+##<a id="deinterlacing"></a>自動インターレース解除を無効にする
+
+コンテンツのインターレース解除を自動的に行う場合は、何もする必要はありません。自動インターレース解除がオンになっていれば (既定値)、MES がインターレース フレームを自動で検出し、解除処理を行います (インターレースとしてマークされているフレームのみが処理されます)。
+
+自動インターレース解除はオフにすることもできますが、この設定は変更しないことをお勧めします。
+
+###JSON プリセット
+	
+	"Sources": [
+	{
+	 "Filters": {
+	    "Deinterlace": {
+	      "Mode": "Off"
+	    }
+	  },
+	}
+	]
+
+###XML プリセット
+	
+	<Sources>
+	<Source>
+	  <Filters>
+	    <Deinterlace>
+	      <Mode>Off</Mode>
+	    </Deinterlace>
+	  </Filters>
+	</Source>
+	</Sources>
+
+
+
+
 ##Media Services のラーニング パス
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -735,4 +886,4 @@ Media Encoder Standard では、画像 (jpg や gif など) を既存の動画�
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

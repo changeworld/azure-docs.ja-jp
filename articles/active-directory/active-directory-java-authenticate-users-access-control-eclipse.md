@@ -5,7 +5,7 @@
     documentationCenter="java"
     authors="rmcmurray"
     manager="wpickett"
-    editor="jimbe" />
+    editor="" />
 
 <tags
     ms.service="active-directory"
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="10/12/2015" 
+    ms.date="01/09/2016" 
     ms.author="robmcm" />
 
 # Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法
@@ -310,4 +310,4 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

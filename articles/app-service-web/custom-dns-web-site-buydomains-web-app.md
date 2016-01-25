@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/20/2015"
+	ms.date="01/09/2016"
 	ms.author="robmcm"/>
 
 # Azure App Service でのカスタム ドメイン名の購入と構成
@@ -98,4 +98,4 @@ Web アプリのドメイン名を持っていない場合は、[Azure ポータ
 この時点でブラウザーにカスタム ドメイン名を入力して、対象の Web アプリに正常にアクセスできることを確認できます。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

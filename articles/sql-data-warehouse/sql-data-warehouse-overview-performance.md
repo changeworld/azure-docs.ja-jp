@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="barbkess;JRJ@BigBangData.co.uk;mausher;nicw"/>
+   ms.date="01/08/2016"
+   ms.author="mausher;barbkess;jrj;nicw;sonyama"/>
 
 # パフォーマンスとスケールの概要
 データ ウェアハウスをクラウドに置くことにより、低レベルのハードウェア問題に対処する必要はなくなりました。データ ウェアハウスで優れたパフォーマンスを実現するために必要なストレージのタイプ、メモリ量、およびプロセッサのタイプを調査する必要があったのは遠い過去のことになりました。その代わりに、SQL Data Warehouse ではデータをどの程度高速に分析する必要があるかということが検討事項になります。
@@ -69,7 +69,7 @@ SQL Data Warehouse ソリューションの作成に関するガイダンスに�
 [パフォーマンスとスケール]: sql-data-warehouse-performance-scale.md
 [同時実行モデル]: sql-data-warehouse-develop-concurrency.md
 [テーブルの設計]: sql-data-warehouse-develop-table-design.md
-[テーブルのハッシュ分散キーの選択]: sql-data-warehouse-develop-hash-distribution-key
+[テーブルのハッシュ分散キーの選択]: sql-data-warehouse-develop-hash-distribution-key.md
 [パフォーマンスを向上させる統計]: sql-data-warehouse-develop-statistics.md
 [開発の概要]: sql-data-warehouse-overview-develop.md
 
@@ -77,4 +77,4 @@ SQL Data Warehouse ソリューションの作成に関するガイダンスに�
 
 <!--Other web references-->
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

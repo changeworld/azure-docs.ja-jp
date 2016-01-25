@@ -94,13 +94,11 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 
 ## アーキテクチャの設計図
 
-* [大規模なコンピューティング - 金融サービス](http://go.microsoft.com/fwlink/?LinkId=536378) (PDF) では、リスク管理、レポート、シミュレーション用のクラウドで大規模なコンピューター処理とデータ分析を運用し、調整する方法を示しています。
+* Microsoft Azure Batch and Azure Data Factory: Architecture for large-scale data processing (Microsoft Azure Batch と Azure Data Factory: 大規模なデータ処理のアーキテクチャ) ([PDF](http://go.microsoft.com/fwlink/?linkid=717686) と[記事](../data-factory/data-factory-data-processing-using-batch.md)) では、Data Factory によってデータの移動と処理が調整されるしくみと、Azure Batch によってデータが並列処理されるしくみを示します。
 
 ## サンプルとデモ
 
 * [Azure Batch のコード サンプル](https://github.com/Azure/azure-batch-samples)
-
-* [Batch Apps Blender のサンプル](https://github.com/Azure/azure-batch-apps-blender)と[ブログの投稿](http://azure.microsoft.com/blog/2015/01/26/blender-on-azure-batch/)
 
 ## 関連する Azure サービス
 
@@ -123,4 +121,4 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](http://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](http://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](http://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

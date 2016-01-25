@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/04/2016"
+	ms.date="01/13/2016"
 	ms.author="nitinme"/>
 
 
@@ -23,8 +23,6 @@
 HDInsight で Apache Spark クラスターを作成し、Spark クラスターで [Jupyter](https://jupyter.org) Notebook を使用して Spark SQL の対話型クエリを実行する方法について説明します。
 
    ![HDInsight で Apache Spark を使用します](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.getstartedflow.png "HDInsight チュートリアルで Apache Spark を使用します手順: ストレージ アカウントを作成し、クラスターを作成して、Spark SQL ステートメントを実行します")
-
->[AZURE.NOTE]既知の問題と現在のリリースでの制限事項の一覧については、「[Azure HDInsight (Linux) の Apache Spark の既知の問題](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
 
 **前提条件:**
 
@@ -235,6 +233,10 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
+### 既知の問題
+
+* [Azure HDInsight (Linux) の Apache Spark の既知の問題](hdinsight-apache-spark-known-issues.md)
+
 
 [hdinsight-versions]: ../hdinsight-component-versioning/
 [hdinsight-upload-data]: ../hdinsight-upload-data/
@@ -246,4 +248,4 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

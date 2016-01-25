@@ -1,11 +1,11 @@
 <properties
-	pageTitle="Hudson で Azure BLOB サービスを使用する方法 | Microsoft Azure"
+	pageTitle="Hudson と BLOB ストレージを使用する方法 | Microsoft Azure"
 	description="Hudson で Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。"
 	services="storage"
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="jimbe"/>
+	editor=""/>
 
 <tags
 	ms.service="storage"
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="01/05/2016" 
+	ms.date="01/09/2016" 
 	ms.author="robmcm"/>
 
 # Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 
 ## 概要
 
-ここでは、Hudson 継続的インテグレーション (CI) ソリューションで作成されるビルド アーティファクトのリポジトリとして、または、ビルド プロセスで使用されるダウンロード可能なファイルのソースとして Azure BLOB サービスを使用する方法について説明します。この方法が有用になるシナリオの 1 つが、アジャイル開発環境で (Java などの言語を使って) コーディングをしており、継続的インテグレーションに基づいてビルドを実行するとき、ビルド アーティファクト用のリポジトリが必要な場合です。このリポジトリがあれば、ビルド アーティファクトを他の組織のメンバーや顧客と共有したり、そのアーカイブを保存したりできます。もう 1 つのシナリオとしては、ビルド ジョブ自体にその他のファイルが必要になる場合、たとえば、ビルドの入力で依存関係のダウンロードが必要になる場合などが考えられます。
+ここでは、Hudson 継続的インテグレーション (CI) ソリューションで作成されるビルド アーティファクトのリポジトリとして、またはビルド プロセスで使用されるダウンロード可能なファイルのソースとして BLOB ストレージを使用する方法について説明します。この方法が有用になるシナリオの 1 つが、アジャイル開発環境で (Java などの言語を使って) コーディングをしており、継続的インテグレーションに基づいてビルドを実行するとき、ビルド アーティファクト用のリポジトリが必要な場合です。このリポジトリがあれば、ビルド アーティファクトを他の組織のメンバーや顧客と共有したり、そのアーカイブを保存したりできます。もう 1 つのシナリオとしては、ビルド ジョブ自体にその他のファイルが必要になる場合、たとえば、ビルドの入力で依存関係のダウンロードが必要になる場合などが考えられます。
 
 このチュートリアルでは、Microsoft が公開している Hudson CI 用の Azure Storage プラグインを使用します。
 
@@ -177,4 +177,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   [ストレージ アカウントの作成方法]: http://go.microsoft.com/fwlink/?LinkId=279823
   [Meet Hudson (Hudson について)]: http://wiki.eclipse.org/Hudson-ci/Meet_Hudson
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

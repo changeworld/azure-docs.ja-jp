@@ -72,7 +72,7 @@ Batch アカウント URL は、**[Essentials]** に表示されます。`https:
 
 * 1 つの Batch アカウントで複数の Batch ワークロードを実行したり、異なる Azure リージョンの複数の Batch アカウントにワークロードを分散したりすることができます。
 
-* いくつかの大規模な Batch ワークロードを実行する場合は、Azure サブスクリプションと各 Batch アカウントに適用する [Batch サービス クォータと制限](batch-quota-limit.md)について気を付けてください。Batch アカウントの現在のクォータは、アカウント プロパティのプレビュー ポータルに表示されます。
+* いくつかの大規模な Batch ワークロードを実行する場合は、Azure サブスクリプションと各 Batch アカウントに適用する [Batch サービス クォータと制限](batch-quota-limit.md)について気を付けてください。Batch アカウントの現在のクォータは、アカウント プロパティのポータルに表示されます。
 
 ## 次のステップ
 
@@ -84,4 +84,4 @@ Batch アカウント URL は、**[Essentials]** に表示されます。`https:
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
 [account_keys]: ./media/batch-account-create-portal/account_keys.PNG
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

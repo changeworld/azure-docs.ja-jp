@@ -5,7 +5,7 @@
 	documentationCenter=".net" 
 	authors="tamram" 
 	manager="carmonm" 
-	editor=""/>
+	editor="tysonn"/>
 
 <tags 
 	ms.service="storage" 
@@ -109,4 +109,4 @@ Azure Storage の詳細については、次のリソースをご覧ください
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
  
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0114_2016-->

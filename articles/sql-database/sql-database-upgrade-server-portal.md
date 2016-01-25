@@ -111,7 +111,8 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 
 ## SQL Database V12 へのアップグレード後のデータベースの監視
 
-
+>[AZURE.IMPORTANT]新しい V12 の機能を利用するには、最新バージョンの SQL Server Management Studio (SSMS) にアップグレードします。[SQL Server Management Studio をダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)します。
+	
 アップグレードした後は、アプリケーションが希望のパフォーマンスで実行されていることを確認し、必要に応じて最適化できるように、データベースを積極的に監視することをお勧めします。
 
 個々のデータベースを監視するだけではなく、[ポータルを使用して](sql-database-elastic-pool-portal.md#monitor-and-manage-an-elastic-database-pool)、または [PowerShell](sql-database-elastic-pool-powershell.md#monitoring-elastic-databases-and-elastic-database-pools) を使用してエラスティック データベース プールを監視することもできます。
@@ -168,4 +169,4 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 [6]: ./media/sql-database-upgrade-server-portal/recommendations.png
 [7]: ./media/sql-database-upgrade-server-portal/new-elastic-pool.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

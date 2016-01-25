@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/04/2015" 
+	ms.date="01/08/2016" 
 	ms.author="erikre"/>
 
 # Visual Studio Code を使用した ASP.NET 5 API アプリの作成
@@ -136,28 +136,28 @@ namespace ContactsList.Models
 3. **Controllers** フォルダーを右クリックし、*ContactsController.cs* ファイルを追加します。次のような内容になります。
 
 	<pre class="prettyprint">
-	using System.Collections.Generic;
-	using Microsoft.AspNet.Mvc;
-	using ContactsList.Models;
-	
-	namespace ContactsList.Controllers
-	{
-	    [Route("api/[controller]")]
-	    public class ContactsController : Controller
-	    {
-	        // GET: api/Contacts
-	        [HttpGet]
-	        public IEnumerable&lt;Contact&gt; Get()
-	        {
-	            return new Contact[]{
-	                new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
-	                new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
-	                new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
-	            };
-	        }
-	    }
-	}
-	</pre>
+using System.Collections.Generic;
+using Microsoft.AspNet.Mvc;
+using ContactsList.Models;
+
+namespace ContactsList.Controllers
+{
+    [Route("api/[controller]")]
+    public class ContactsController : Controller
+    {
+        // GET: api/Contacts
+        [HttpGet]
+        public IEnumerable&lt;Contact> Get()
+        {
+            return new Contact[]{
+                new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
+                new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
+                new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
+            };
+        {
+    {
+{
+</pre>
 
 4. **[ファイル]**、**[すべてを保存]** の順に選択して、すべてのファイルを保存します。
 5. **コマンド パレット**で、次のコマンドを入力してアプリをローカルで実行します。
@@ -444,4 +444,4 @@ Azure プレビュー ポータルで、目的の API アプリの **[API アプ
 このチュートリアルでは、Visual Studio Code を使用して API アプリを作成する方法について説明しました。Visual Studio Code の詳細については、[Visual Studio Code](https://code.visualstudio.com/Docs/) に関するページをご覧ください。API アプリの詳細については、[API Apps の概要](app-service-api-apps-why-best-platform.md)に関するページをご覧ください。
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -3,7 +3,7 @@
 	description="Express を使用する Web アプリケーションのチュートリアルを基に、Azure Storage サービスと Azure モジュールを追加するチュートリアル。" 
 	services="cloud-services, storage" 
 	documentationCenter="nodejs" 
-	authors="TomArcher" 
+	authors="rmcmurray" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -13,13 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
-	ms.author="tarcher"/>
-
-
-
-
-
+	ms.date="01/09/2016" 
+	ms.author="robmcm"/>
 
 # ストレージを使用する Node.js Web アプリケーション
 
@@ -408,4 +403,4 @@ Azure では、消費されたサーバー時間の 1 時間単位の料金が W
  
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

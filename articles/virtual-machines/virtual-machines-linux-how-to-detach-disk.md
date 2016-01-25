@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/11/2015"
+	ms.date="01/07/2016"
 	ms.author="dkshir"/>
 
 # Linux 仮想マシンからディスクを切断する方法
@@ -30,4 +30,4 @@
 
 [サービス管理 API での Azure CLI の使用](virtual-machines-command-line-tools.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

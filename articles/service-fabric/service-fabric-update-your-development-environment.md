@@ -18,7 +18,7 @@
 
 # Service Fabric 開発環境の更新
 
- Service Fabric は定期的に、ローカルでの開発に使用するランタイム、SDK、ツールの新しいリリースを提供します。これらのリリースでローカル開発環境を常に更新しておくと、アプリケーションをローカルで構築してテストする際に、いつでも最新の機能とバグの修正を利用し、パフォーマンスを高めることができます。
+ Azure Service Fabric では、ローカルでの開発に使用するランタイム、SDK、ツールの新しいリリースを定期的に提供しています。これらのリリースを使用してローカル開発環境を最新の状態にしておくことで、アプリケーションをローカルで構築してテストする際に、常に最新の機能とバグの修正を利用し、パフォーマンスを高めることができます。
 
 ## ローカル クラスターのクリーンアップ
 
@@ -29,9 +29,9 @@
  次のように、ローカル クラスターをクリーンアップできます。
 
 
- 1. その他のすべての PowerShell ウィンドウを閉じて、管理者として新しいウィンドウを起動します。
+ 1. すべての PowerShell ウィンドウを閉じ、管理者として新しいウィンドウを開きます。
 
- 2. `cd "$env:ProgramW6432\Microsoft SDKs\Service Fabric\ClusterSetup"` を使用してクラスター セットアップ ディレクトリに移動します。
+ 2. `cd "$env:ProgramW6432\Microsoft SDKs\Service Fabric\ClusterSetup"` を使用して、クラスター セットアップ ディレクトリに移動します。
 
  3. `.\CleanCluster.ps1` を実行します。
 
@@ -43,14 +43,14 @@
 
  1. Web Platform Installer を起動して、[新しいリリースに更新][1]します。
 
- 2. 完了したら、管理者として新しい PowerShell ウィンドウを起動し、`cd "$ENV:ProgramFiles\Microsoft SDKs\ServiceFabric\ClusterSetup"` で、クラスターのセットアップ ディレクトリに移動します。
+ 2. 完了したら、管理者として新しい PowerShell ウィンドウを開き、`cd "$ENV:ProgramFiles\Microsoft SDKs\ServiceFabric\ClusterSetup"` を使用して、クラスター セットアップ ディレクトリに移動します。
 
  3. `.\DevClusterSetup.ps1` を実行し、ローカル クラスターをセットアップします。
 
 これで完了です。 Visual Studio を起動し、Service Fabric アプリケーションの構築を続行できます。
 
->[AZURE.NOTE]既定のプロジェクトの構造は、このリリースで変更されました。既存のプロジェクトは、Visual Studio で開いて実行することができます。ただし、アプリケーションのビルド、配置、またはデバッグに問題が発生した場合は、新しいプロジェクトを作成して、コードを移行することを検討してください。
+>[AZURE.NOTE]既定のプロジェクトの構造は、このリリースで変更されました。既存のプロジェクトは、Visual Studio で開いて実行することができます。ただし、アプリケーションのビルド、デプロイ、またはデバッグで問題が発生した場合は、新しいプロジェクトを作成し、コードを移行することを検討してください。
 
  [1]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0114_2016-->

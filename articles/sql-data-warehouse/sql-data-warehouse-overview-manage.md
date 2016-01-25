@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="mausher;nicw;barbkess;JRJ@BigBangData.co.uk;"/>
+   ms.date="01/07/2016"
+   ms.author="mausher;nicw;barbkess;jrj;sonyama;"/>
 
 # SQL Data Warehouse の管理ツール
 このトピックでは、SQL Data Warehouse を管理するためのツールやオプションを説明して比較し、ニーズに合ったツールを選択できるようにします。適切なツールを選択するには、管理対象のデータベースの数、タスク、タスクの実行頻度を考慮します。
@@ -48,4 +48,4 @@ SQL Data Warehouse に対するサポートが含まれた [SQL Server Data Tool
 <!--Other web references-->
 [Azure クラシック ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->
