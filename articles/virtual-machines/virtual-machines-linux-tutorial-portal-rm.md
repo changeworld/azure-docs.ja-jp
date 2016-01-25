@@ -35,6 +35,8 @@ Linux を実行する Azure 仮想マシン (VM) は簡単に作成できます�
 
 > [AZURE.NOTE]このチュートリアルでは、Azure リソース グループ API で管理される Azure 仮想マシンを作成します。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
 
+</br>
+
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
 ## イメージの選択

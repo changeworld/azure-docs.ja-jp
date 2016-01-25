@@ -107,7 +107,7 @@ Web Apps では、次の情報をバックアップできます。
 
 * バックアップと復元の機能にデータベースを含めることができるように、Web アプリの **[設定]** 内の **[Web アプリ設定]** ブレードで、各データベースの接続文字列を適切に設定していることを確認します。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 <a name="partialbackups"></a>
 ## Web アプリの一部のみをバックアップする
@@ -126,7 +126,8 @@ Web アプリのすべてをバックアップしたくない場合がありま�
 
 今後まったく変更されることがない過去のログ ファイルや静止画像を含む Web アプリがあるとします。古い画像を含む Web アプリの完全バックアップは既に存在します。今後、Web アプリのバックアップを毎日実行しますが、変更されることがないログ ファイルや静止画像ファイルはバックアップしないようにするとします。
 
-![Logs フォルダー][LogsFolder] ![images フォルダー][ImagesFolder]
+![Logs フォルダー][LogsFolder] 
+![images フォルダー][ImagesFolder]
 	
 次の手順は、これらのファイルをバックアップから除外する方法を示しています。
 
@@ -142,7 +143,7 @@ Web アプリのすべてをバックアップしたくない場合がありま�
 
 2. `_backup.filter` という名前のファイルを作成し、上のリストをこのファイルに配置します。ただし `D:\home` は削除します。1 つのディレクトリまたはファイルを 1 行に配置します。したがって、ファイルの内容は次のようになります。
 
-    \\site\\wwwroot\\Logs \\LogFiles \\site\\wwwroot\\Images\\2013 \\site\\wwwroot\\Images\\2014 \\site\\wwwroot\\Images\\brand.png
+    \site\wwwroot\Logs \LogFiles \site\wwwroot\Images\2013 \site\wwwroot\Images\2014 \site\wwwroot\Images\brand.png
 
 3. このファイルを、[ftp](web-sites-deploy.md#ftp)やその他の方法を使用して、サイトの `D:\home\site\wwwroot` ディレクトリにアップロードします。ファイルを `http://{yourapp}.scm.azurewebsites.net/DebugConsole` 内に直接作成し、そこにコンテンツを挿入することもできます。
 
@@ -150,7 +151,7 @@ Web アプリのすべてをバックアップしたくない場合がありま�
 
 これで、`_backup.filter` 内に指定されたファイルとフォルダーはバックアップから除外されます。この例では、ログ ファイル、2013 年と 2014 年の画像ファイル、および brand.png がバックアップされなくなります。
 
->[AZURE.NOTE] [定期的なバックアップからの復元](web-sites-restore.md)と同様の手順で、サイトを部分バックアップから復元することもできます。復元プロセスは正常に実行されます。
+>[AZURE.NOTE] [定期的なバックアップからの復元](web-sites-restore.md)と同様の手順で、サイトを部分バックアップから復元することもできます。復元プロセスは正常に実行されます。
 >
 >完全バックアップが復元されると、サイト上のすべてのコンテンツは、バックアップの中身に置き換えられます。サイト上に存在したファイルも、バックアップに存在しなければ削除されます。ただし、部分バックアップが復元されるとき、ブラック リスト化されたディレクトリまたはファイルのいずれかに配置されているコンテンツは放置されます。
 
@@ -189,4 +190,4 @@ Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイ
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0114_2016--->

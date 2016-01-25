@@ -55,26 +55,26 @@ Azure Search では、[インデクサー](https://msdn.microsoft.com/library/az
 
 ## 動作のしくみ
 
-### 1\.サービスのプロビジョニング
+### 1.サービスのプロビジョニング
 [Azure ポータル](https://portal.azure.com/)または [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn832684.aspx) を使用して、Azure Search サービスを高速化できます。
 
 サービスの構成方法に応じて、他の Azure Search サブスクライバーと共有する Free レベル、またはリソースをサービス専用にする Standard [価格レベル](https://azure.microsoft.com/pricing/details/search/)を利用します。サービスをプロビジョニングするときに、サービスをホストするデータ センターのリージョンも選択します。
 
 標準レベルで Azure Search を使用している場合、2 次元でサービスを拡大できます。1) 重いクエリの負荷を処理するために、レプリカを追加して、容量を増やし、2) ドキュメントの増加に備えて、パーティションを追加して、記憶域を追加します。ドキュメントの記憶域とクエリのスループットを別々に処理することによって、特定のニーズに応じて検索サービスをカスタマイズできます。
 
-### 2\.インデックスの作成
+### 2.インデックスの作成
 コンテンツを Azure Search サービスにアップロードする前に、まず Azure Search インデックスを定義する必要があります。インデックスは、データを保持し、検索クエリを受け付けることができるデータベース テーブルに似ています。データベースのフィールドに似た、検索するドキュメントの構造にマップするインデックス スキーマを定義します。
 
 このようなインデックスのスキーマは Azure ポータルで作成するか、[.NET SDK](search-howto-dotnet-sdk.md) または [REST API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して、プログラムによって作成できます。インデックスが定義されたら、データを Azure Search サービスにアップロードできます。データには順番にインデックスが付けられます。
 
-### 3\.データのインデックス付け
+### 3.データのインデックス付け
 フィールドとインデックスの属性を定義した後は、コンテンツをインデックスにアップロードする準備ができます。インデックスにデータをアップロードするには、プッシュ モデルまたはプル モデルを使用できます。
 
 プル モデルは、オンデマンドまたは定期的な更新用に構成可能なインデクサーによって提供され (「[インデクサー操作 (Azure Search Service REST API)](https://msdn.microsoft.com/library/azure/dn946891.aspx)」を参照)、Azure DocumentDB、Azure SQL Database、Azure Blob Storage、または Azure VM でホストされている SQL Server から簡単にデータとデータ変更を取り込むことができます。
 
 プッシュ モデルは SDK または REST API によって提供され、更新したドキュメントをインデックスに送信するために使用されます。JSON 形式を使用して、事実上すべてのデータセットからデータをプッシュできます。データの読み込み方法については、「[ドキュメントの追加、更新、削除](https://msdn.microsoft.com/library/azure/dn798930.aspx)」または「[.NET SDK の使用方法](search-howto-dotnet-sdk.md)」を参照してください。
 
-### 4\.検索
+### 4.検索
 Azure Search インデックスを入力したら、REST API または .NET SDK によって簡単な HTTP 要求を使用して、サービス エンドポイントに[検索クエリを発行](https://msdn.microsoft.com/library/azure/dn798927.aspx)できます。
 
 ## 今すぐお試しください (無料)

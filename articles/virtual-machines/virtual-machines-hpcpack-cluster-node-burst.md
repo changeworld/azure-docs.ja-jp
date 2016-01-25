@@ -1,19 +1,19 @@
 <properties
- pageTitle="HPC Pack クラスターへのバースト ノードの追加 |Microsoft Azure"
- description="クラウド サービスで実行されている worker ロール インスタンスを必要に応じてコンピューティング リソースとして Azure の HPC Pack ヘッド ノードに追加する方法について説明します。"
- services="virtual-machines"
- documentationCenter=""
- authors="dlepow"
- manager="timlt"
- editor=""
- tags="azure-service-management,hpc-pack"/>
+ 	pageTitle="HPC Pack クラスターへのバースト ノードの追加 |Microsoft Azure"
+ 	description="クラウド サービスで実行されている worker ロール インスタンスを必要に応じてコンピューティング リソースとして Azure の HPC Pack ヘッド ノードに追加する方法について説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+ 	authors="dlepow"
+ 	manager="timlt"
+ 	editor=""
+ 	tags="azure-service-management,hpc-pack"/>
 <tags
 ms.service="virtual-machines"
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="big-compute"
- ms.date="01/08/2016"
+ 	ms.date="01/08/2016"
  ms.author="danlep"/>
 
 # オンデマンド「バースト」ノード (worker ロール インスタンス) をコンピューティング リソースとして Azure の HPC Pack クラスターに追加する
@@ -69,7 +69,7 @@ Azure ノードをコンピューティング リソースとして追加する�
 
 
 
-このシナリオで Azure ノードを追加し、起動する手順は、おおむね、オンプレミス ヘッド ノードで使用される手順と同じです。詳しくは、「[Microsoft HPC Pack で Azure ノードをデプロイするための手順](https://technet.microsoft.com/library/gg481758.aspx)」の次のセクションを参照してください。
+このシナリオで Azure ノードを追加し、起動する手順は、おおむね、オンプレミス ヘッド ノードで使用される手順と同じです。詳しくは、[Microsoft HPC Pack で Azure ノードをデプロイするための手順](https://technet.microsoft.com/library/gg481758(v=ws.10).aspx)) の次のセクションを参照してください。
 
 * Azure ノード テンプレートを作成する
 
@@ -79,7 +79,7 @@ Azure ノードをコンピューティング リソースとして追加する�
 
 ノードを追加し、起動したら、ノードを利用してクラスター ジョブを実行できます。
 
-Azure ノードのデプロイで問題が発生した場合、[Microsoft HPC Pack で Azure ノードをデプロイするときのトラブルシューティング] を参照してください (http://technet.microsoft.com/library/jj159097(v=ws.10).aspx))。
+Azure ノードのデプロイで問題が発生した場合、[Microsoft HPC Pack で Azure ノードをデプロイするときのトラブルシューティング](http://technet.microsoft.com/library/jj159097(v=ws.10).aspx)) を参照してください 。
 
 ## 次のステップ
 

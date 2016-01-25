@@ -24,7 +24,7 @@
 
 この記事では、Azure CLI がインストールされていることと、基本的なタスクの実行方法を理解していることを前提としています。CLI の概要については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
 
-> [AZURE.NOTE][Azure サブスクリプションへの接続](../xplat-cli-connect.md)手順では、職場または学校のアカウントを使用してログインする方法と、*.publishsettings* ファイルをダウンロードする方法の 2 点を説明しています。API アプリでは、*.publishsettings* ファイルの認証方法は機能しません。これは、API アプリを操作するにはリソースの管理モード (次のセクションで説明します) を使用する必要があり、*.publishsettings* ファイルの認証方法はリソース マネージャーでは機能しないからです。
+> [AZURE.NOTE] [Azure サブスクリプションへの接続](../xplat-cli-connect.md)手順では、職場または学校のアカウントを使用してログインする方法と、*.publishsettings* ファイルをダウンロードする方法の 2 点を説明しています。API アプリでは、*.publishsettings* ファイルの認証方法は機能しません。これは、API アプリを操作するにはリソースの管理モード (次のセクションで説明します) を使用する必要があり、*.publishsettings* ファイルの認証方法はリソース マネージャーでは機能しないからです。
 
 ## リソース管理モードを有効にする
 
@@ -288,4 +288,4 @@ Azure リソース マネージャーで Azure コマンド ライン ユーテ�
 * [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0114_2016--->

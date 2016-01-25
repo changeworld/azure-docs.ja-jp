@@ -25,15 +25,15 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 この記事では、Azure Stream Analytics ジョブの出力として Power BI を使用して独自のカスタム ビジネス インテリジェンス ツールを作成し、リアルタイム ダッシュボードを活用する方法について説明します。
 
-> [AZURE.NOTE]Power BI 出力は Azure Stream Analytics のプレビュー機能です。現時点では、Power BI 出力の作成および構成は Azure プレビュー ポータルでサポートされていません。
+> [AZURE.NOTE] Power BI 出力は Azure Stream Analytics のプレビュー機能です。現時点では、Power BI 出力の作成および構成は Azure プレビュー ポータルでサポートされていません。
 
-## 前提条件
+## 前提条件 ##
 
 * Microsoft Azure アカウント
 * ストリーミング データの使用元となる Stream Analytics ジョブの入力。Stream Analytics は、Azure Event Hubs または Azure BLOB ストレージストアからの入力を受け入れます。  
 * Power BI 用の会社または学校のアカウント
 
-## Azure Stream Analytics ジョブの作成
+## Azure Stream Analytics ジョブの作成 ##
 
 [Azure ポータル](https://manage.windowsazure.com)で、**[新規]、[データ サービス]、[Stream Analytics]、[簡易作成]** の順にクリックします。
 
@@ -49,7 +49,7 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 
 > [AZURE.TIP]新しいジョブは、**[未開始]** の状態で表示されます。ページの下部にある **[開始]** ボタンが無効になっていることがわかります。ジョブを開始する前に、ジョブの入力、出力、クエリなどを構成する必要があるため、これは予期された動作です。
 
-## ジョブの入力の指定
+## ジョブの入力の指定 ##
 
 このチュートリアルでは、JSON シリアル化と UTF-8 エンコードによる入力としてイベント ハブを使用することを前提としています。
 
@@ -74,7 +74,7 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
   *	**[エンコード]** - UTF8
 *	チェック ボタンをクリックしてこのソースを追加し、Stream Analytics からイベント ハブに正常に接続できることを確認します。
 
-## Power BI 出力の追加
+## Power BI 出力の追加 ##
 
 1.  ページの上部にある **[出力]** をクリックしてから、**[出力の追加]** をクリックします。Power BI が出力オプションとして表示されます。
 
@@ -99,14 +99,14 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 * **[データセット名]** - Power BI 出力に設定するデータセット名を入力します。たとえば、"pbidemo" を使用します。
 *	**[テーブル名]** - Power BI 出力のデータセットの下にテーブル名を入力します。たとえば、"pbidemo" という名前にします。現在、Stream Analytics ジョブからの Power BI 出力では、1 つのデータセット内に 1 つのテーブルのみを保持できます。
 
->	[AZURE.NOTE] You should not explicitly create this dataset and table in your Power BI account. They will be automatically created when you start your Stream Analytics job and the job starts pumping output into Power BI. If your job query doesn’t return any results, the dataset and table will not be created.
+>	[AZURE.NOTE] お使いの Power BI アカウントでこのデータセットとテーブルを明示的に作成しないでください。これらは、Stream Analytics ジョブを開始し、そのジョブによって出力が Power BI に流し込まれるときに自動的に作成されます。ジョブ クエリから結果が返されない場合、データセットとテーブルは作成されません。
 
 *	**[OK]**、**[接続のテスト]** の順にクリックします。これで、出力の構成は完了です。
 
->	[AZURE.WARNING] Also be aware that if Power BI already had a dataset and table with the same name as the one you provided in this Stream Analytics job, the existing data will be overwritten.
+>	[AZURE.WARNING] また、この Stream Analytics ジョブで提供したものと同じ名前のデータセットとテーブルが Power BI に既に存在する場合は、既存のデータが上書きされますので注意してください。
 
 
-## クエリの記述
+## クエリの記述 ##
 
 ジョブの **[クエリ]** タブに移動します。Power BI で目的の出力を得るためのクエリを記述します。たとえば、次の SQL クエリのようなクエリを記述します。
 
@@ -127,7 +127,7 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
     
 ジョブを開始します。イベント ハブがイベントを受け取り、クエリによって予期された結果が生成されることを確認します。クエリによって行が出力されない場合、Power BI データセットとテーブルは自動的に作成されません。
 
-## Power BI でのダッシュボードの作成
+## Power BI でのダッシュボードの作成 ##
 
 [Powerbi.com](https://powerbi.com) にアクセスして、会社または学校の ID でログインします。Stream Analytics ジョブ クエリで結果が出力された場合は、データセットが既に作成されていることがわかります。
 
@@ -163,7 +163,7 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 
 Power BI 出力の構成と Power BI グループの利用の詳細については、「[Stream Analytics 出力について](stream-analytics-define-outputs.md "Stream Analytics 出力について")」の「[Power BI](stream-analytics-define-outputs.md#power-bi)」セクションを参照してください。Power BI を使用したダッシュボードの作成の詳細については、その他の役立つリソースとして、[Power BI プレビューのダッシュボード](http://support.powerbi.com/knowledgebase/articles/424868-dashboards-in-power-bi-preview)に関する記事をご覧ください。
 
-## 制限事項とベスト プラクティス
+## 制限事項とベスト プラクティス ##
 
 Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing "Power BI の価格") で説明するように、同時実行性とスループットの制約の両方を採用しています。
 
@@ -196,7 +196,7 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 
 これを実現するには、PowerBI で Q & A を利用して、「タイムスタンプが今日の一時的な最大値」などの質問をし、そのタイルをダッシュボードにピン留めします。
 
-### 承認の更新
+## 承認の更新
 
 Power BI 出力のあるすべてのジョブについて、90 日おきに認証トークンを手動で更新する必要があるという一時的な制限事項があります。また、ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要もあります。この問題の症状として、ジョブ出力が返されなかったり、操作ログで "ユーザーの認証エラー" が発生することが挙げられます。
 
@@ -206,10 +206,10 @@ Power BI 出力のあるすべてのジョブについて、90 日おきに認�
 
 ![図 13][graphic13]
 
-## 問い合わせ
+## 問い合わせ ##
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
-## 次のステップ
+## 次のステップ ##
 
 - [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 - [Azure Stream Analytics の使用](stream-analytics-get-started.md)

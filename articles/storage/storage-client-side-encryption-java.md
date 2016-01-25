@@ -33,7 +33,8 @@
 
 2.	ユーザー データは、この CEK を使用して暗号化されます。
 
-3.	CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。ストレージ クライアント ライブラリ自体が KEK にアクセスすることはありません。ライブラリは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。ユーザーは、必要な場合は、キー ラップ/ラップ解除にカスタム プロバイダーを使用できます。
+3.	CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。
+ストレージ クライアント ライブラリ自体が KEK にアクセスすることはありません。ライブラリは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。ユーザーは、必要な場合は、キー ラップ/ラップ解除にカスタム プロバイダーを使用できます。
 
 4.	暗号化されたデータは、Azure Storage サービスにアップロードされます。ラップされたキーは追加の暗号化メタデータと共にメタデータとして (BLOB に) 格納されるか、暗号化されたデータ (キュー メッセージやテーブル エンティティ) によって補間されます。
 
@@ -76,7 +77,8 @@
 ### テーブル  
 クライアント ライブラリでは、挿入および置換操作のエンティティ プロパティの暗号化がサポートされます。
 
->**注:** 現在、マージはサポートされていません。別のキーを使用してプロパティのサブセットが以前に暗号化されている場合、新しいプロパティをマージしたり、メタデータを更新したりするとデータ損失が発生します。マージでは、追加のサービス呼び出しをして既存のエンティティをサービスから読み込むか、プロパティごとに新しいキーを使用する必要があります。いずれの方法も、パフォーマンス上の理由でお勧めできません。
+>**注:**  
+>現在、マージはサポートされていません。別のキーを使用してプロパティのサブセットが以前に暗号化されている場合、新しいプロパティをマージしたり、メタデータを更新したりするとデータ損失が発生します。マージでは、追加のサービス呼び出しをして既存のエンティティをサービスから読み込むか、プロパティごとに新しいキーを使用する必要があります。いずれの方法も、パフォーマンス上の理由でお勧めできません。
 
 テーブル データの暗号化は、次のように機能します。
 
@@ -104,7 +106,8 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 ストレージ クライアント ライブラリは Key Vault のコア ライブラリを使用して、Azure 全体でのキー管理用の一般的なフレームワークを提供します。Key Vault 拡張機能ライブラリを使用すると追加のメリットも得られます。拡張機能ライブラリには、シンプルかつシームレスな対称/RSA ローカルおよびクラウドのキー プロバイダーに関する便利な機能や、集計またはキャッシュに関する機能が用意されています。
 
 ### インターフェイスと依存関係  
-次の 3 種類の Key Vault パッケージがあります。azure-keyVault-core には IKey と IKeyResolver が含まれています。これは、依存関係のない小型パッケージです。Java 用ストレージ クライアント ライブラリでは、依存関係としてそれを定義します。
+次の 3 種類の Key Vault パッケージがあります。  
+- azure-keyVault-core には IKey と IKeyResolver が含まれています。これは、依存関係のない小型パッケージです。Java 用ストレージ クライアント ライブラリでは、依存関係としてそれを定義します。  
 
 - azure-keyVault には Key Vault REST クライアントが含まれています。  
 
@@ -114,14 +117,16 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 
 1.	シークレットをオフラインで作成し、Key Vault にアップロードします。  
 
-2.	シークレットのベース識別子をパラメーターとして使用して、シークレットの現在のバージョンを暗号化用に解決し、この情報をローカルでキャッシュします。キャッシュ用の CachingKeyResolver の使用: ユーザーが自身のキャッシュ ロジックを実装することは想定されていません。
+2.	シークレットのベース識別子をパラメーターとして使用して、シークレットの現在のバージョンを暗号化用に解決し、この情報をローカルでキャッシュします。
+キャッシュ用の CachingKeyResolver の使用: ユーザーが自身のキャッシュ ロジックを実装することは想定されていません。
 
 3.	暗号化ポリシーの作成時に、入力としてキャッシュ リゾルバーを使用します。Key Vault の使用方法について詳しくは、暗号化コードのサンプルを参照してください。<fix URL>
 
 ## ベスト プラクティス  
 暗号化のサポートは、Java 用のストレージ クライアント ライブラリでのみ使用できます。
 
->**重要:** クライアント側の暗号化を使用する場合は、次の重要な点に注意してください。
+>**重要:**  
+>クライアント側の暗号化を使用する場合は、次の重要な点に注意してください。
 >  
 >- 暗号化された BLOB を読み書きするときは、完全 BLOB アップロード コマンドと範囲/完全 BLOB ダウンロード コマンドを使用してください。Put Block、Put Block List、Write Pages、Clear Pages、または Append Block などのプロトコル操作で暗号化された BLOB に書き込まないでください。暗号化された BLOB が壊れたり、読み取り不可能になったりすることがあります。  
 >
@@ -132,7 +137,11 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 >- 暗号化されたデータのみを処理する必要のあるユーザーについては、既定の要求オプションで、**requireEncryption** フラグを有効にします。詳細については、以下をご覧ください。
 
 ## クライアント API / インターフェイス  
-EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実装)、リゾルバーのみ (IKeyResolver の実装)、またはその両方を指定できます。IKey は基本的なキーの種類で、キー識別子を使用して識別され、ラップ/ラップ解除のロジックを指定します。IKeyResolver は復号化プロセス中のキーの解決に使用します。これは、IKey で指定されたキー識別子を返す ResolveKey メソッドを定義します。これは、複数の場所で管理されている複数のキーの中から選択するための機能を提供します。- 暗号化では、キーは常に使用され、キーがないとエラーが発生します。- 暗号化の場合: - キーを取得するよう指定した場合にキー リゾルバーが起動します。リゾルバーが指定されていても、キー識別子のマッピングがない場合、エラーがスローされます。- リゾルバーが指定されていない場合にキーが指定されると、そのキーの識別子が必須キー識別子と一致すると、そのキーが使用されます。識別子が一致しなければ、エラーがスローされます。
+EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実装)、リゾルバーのみ (IKeyResolver の実装)、またはその両方を指定できます。IKey は基本的なキーの種類で、キー識別子を使用して識別され、ラップ/ラップ解除のロジックを指定します。IKeyResolver は復号化プロセス中のキーの解決に使用します。これは、IKey で指定されたキー識別子を返す ResolveKey メソッドを定義します。これは、複数の場所で管理されている複数のキーの中から選択するための機能を提供します。  
+- 暗号化では、キーは常に使用され、キーがないとエラーが発生します。  
+- 暗号化の場合:  
+	- キーを取得するよう指定した場合にキー リゾルバーが起動します。リゾルバーが指定されていても、キー識別子のマッピングがない場合、エラーがスローされます。  
+	- リゾルバーが指定されていない場合にキーが指定されると、そのキーの識別子が必須キー識別子と一致すると、そのキーが使用されます。識別子が一致しなければ、エラーがスローされます。  
 
 	  The [encryption samples](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) <fix URL>demonstrate a more detailed end-to-end scenario for blobs, queues and tables, along with Key Vault integration.
 
@@ -158,8 +167,8 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 	blob.upload(stream, size, null, options, null);
 
 	// Download and decrypt the encrypted contents from the blob.
-	ByteArrayOutputStream outputStream = new ByteArrayOutputStream(); 
-	blob.download(outputStream, null, options, null);
+	ByteArrayOutputStream outputStream = new ByteArrayOutputStream(); blob.DownloadToStream(outputStream, null, options, null);
+
 
 ### Queue サービス暗号化  
 **QueueEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定します)。その他の操作はすべて、クライアント ライブラリが内部的に処理します。
@@ -232,7 +241,10 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 ストレージ データを暗号化すると、パフォーマンスのオーバーヘッドが増えることに注意してください。コンテンツ キーと IV を生成する必要があり、コンテンツ自体を暗号化する必要があります。また、追加のメタデータをフォーマットおよびアップロードする必要もあります。このオーバーヘッドは、暗号化されるデータの量によって異なります。開発中に、アプリケーションのパフォーマンスを常にテストすることをお勧めします。
 
 ## 次のステップ  
-[Java 用 Azure Storage クライアント ライブラリの Maven パッケージ](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.0.0)をダウンロードする。[GitHub から Java 用 Azure Storage クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-java)をダウンロードする。Azure Key Vault Maven の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および[拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。
+[Java 用 Azure Storage クライアント ライブラリの Maven パッケージ](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.0.0)をダウンロードする。
+[GitHub から Java 用 Azure Storage クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-java)をダウンロードする。Azure Key Vault Maven の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、
+[クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および
+[拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。
 
 [Azure Key Vault ドキュメント](../articles/key-vault-whatis.md)を参照する。
 

@@ -41,7 +41,7 @@
 
 **[チュートリアル]** タブをクリックし、Azure Marketplace に適切にデータ サービスを発行するために必要なすべての手順を確認します。
 
-> [AZURE.TIP][チュートリアル] ページのリンクと、左側のデータ サービス オファーのサブメニューのタブはいつでも使用できます。
+> [AZURE.TIP] [チュートリアル] ページのリンクと、左側のデータ サービス オファーのサブメニューのタブはいつでも使用できます。
 
 ## 5\.新しいオファーを作成します。
 
@@ -146,4 +146,4 @@ Web サービスの場合
 [link-acct-creation]: marketplace-publishing-microsoft-accounts-creation-registration.md
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0114_2016--->

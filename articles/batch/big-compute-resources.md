@@ -90,11 +90,11 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/virtual-machines-linux-cluster-rdma.md)
 
-* [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](../virtual-machines/virtual-machines-windows-hpcpack-cluster-rdma.md)
+* [A8 および A9 インスタンス: HPC Pack 使用クイック スタート](https://msdn.microsoft.com/library/azure/dn594431.aspx)
 
 ## アーキテクチャの設計図
 
-* Microsoft Azure Batch and Azure Data Factory: Architecture for large-scale data processing (Microsoft Azure Batch と Azure Data Factory: 大規模なデータ処理のアーキテクチャ) ([PDF](http://go.microsoft.com/fwlink/?linkid=717686) と[記事](../data-factory/data-factory-data-processing-using-batch.md)) では、Data Factory によってデータの移動と処理が調整されるしくみと、Azure Batch によってデータが並列処理されるしくみを示します。
+* [大規模なコンピューティング - 金融サービス](http://go.microsoft.com/fwlink/?LinkId=536378) (PDF) では、リスク管理、レポート、シミュレーション用のクラウドで大規模なコンピューター処理とデータ分析を運用し、調整する方法を示しています。
 
 ## サンプルとデモ
 
@@ -108,7 +108,7 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 
 * [HDInsight](http://azure.microsoft.com/documentation/services/hdinsight/)
 
-* [Virtual Machines](http://azure.microsoft.com/documentation/services/virtual-machines/)
+* [仮想マシン](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
 * [Cloud Services](http://azure.microsoft.com/documentation/services/cloud-services/)
 

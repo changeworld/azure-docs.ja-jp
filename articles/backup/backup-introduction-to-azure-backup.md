@@ -61,8 +61,8 @@ Azure Backup はハイブリッド バックアップ ソリューションな�
 | Microsoft SQL Server | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md)、</p><p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md)</p> |
 | Microsoft SharePoint | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md)、</p><p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md)</p> |
 | Microsoft Exchange | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md)、</p><p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md)</p> |
-| Azure IaaS VM (Windows)| - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) | | Azure IaaS VM (Linux) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
-
+| Azure IaaS VM (Windows)| - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
+| Azure IaaS VM (Linux) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
 ## 機能
 以下の表では、各コンポーネントにおける Azure Backup の機能の処理方法をまとめます。
 

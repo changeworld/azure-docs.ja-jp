@@ -543,7 +543,7 @@ Visual Studio で Web サーバーのログを初めて有効にしたとき、�
 
 多くの場合、ストレージ アカウント形式はファイル システム形式と比較して、ログに対してより多くのストレージと、より長い期間にわたる保持を実現します。アプリケーション トレース ログをストレージに送る別の利点は、ファイル システムのログでは得ることのできない詳しい情報をそれぞれのログと共に入手できることです。
 
-5. Azure ノードの **[Storage]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。
+5. Azure ノードの **[ストレージ]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。
 
 ![ストレージ アカウントの作成](./media/web-sites-dotnet-troubleshoot-visual-studio/createstor.png)
 
@@ -678,7 +678,7 @@ Azure の Web アプリケーションで作成されたログは Visual Studio 
 * ASP.NET アプリケーションでのトレース
 * Web サーバーのログの分析
 * 失敗した要求トレース ログの分析
-* Cloud Services のデバッグ
+* クラウド サービスのデバッグ
 
 ### Azure の Web アプリケーションのトラブルシューティング
 
@@ -749,9 +749,9 @@ Web サーバーのログの分析の詳細については、次のリソース�
 
 失敗した要求トレース ログの活用方法については、Microsoft TechNet Web サイトの「[Using Failed Request Tracing (失敗した要求トレースの使用)](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing)」セクションなどが参考になります。ただし、このドキュメントで扱う内容は、失敗した要求トレースを IIS で構成する作業が主体です。この作業を Azure Web Apps で行うことはできません。
 
-### Cloud Services のデバッグ
+### クラウド サービスのデバッグ
 
-Web アプリではなく Azure Cloud Services をデバッグする場合は、「[Cloud Services のデバッグ](http://msdn.microsoft.com/library/windowsazure/ee405479.aspx)」を参照してください。
+Web アプリではなく Azure Cloud Services をデバッグする場合は、「[クラウド サービスのデバッグ](http://msdn.microsoft.com/library/windowsazure/ee405479.aspx)」を参照してください。
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。

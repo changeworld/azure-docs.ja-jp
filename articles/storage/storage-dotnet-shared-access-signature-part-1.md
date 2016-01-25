@@ -18,17 +18,17 @@
 
 
 
-# Shared Access Signature、第 1 部: SAS モデルについて
+# 共有アクセス署名、第 1 部 : SAS モデルについて
 
 ## 概要
 
-Shared Access Signature (SAS) の使用は、アカウント キーを知らせずに、自分のストレージ アカウントのオブジェクトへの制限付きアクセスを他のクライアントに許可するための優れた方法です。Shared Access Signature についてのこのチュートリアルの第 1 部では、SAS モデルの概要と SAS のベスト プラクティスについて説明します。チュートリアルの[パート 2](storage-dotnet-shared-access-signature-part-2.md) では、BLOB サービスで Shared Access Signature を作成するプロセスを詳しく説明します。
+共有アクセス署名 (SAS) の使用は、アカウント キーを知らせずに、自分のストレージ アカウントのオブジェクトへの制限付きアクセスを他のクライアントに許可するための優れた方法です。共有アクセス署名についてのこのチュートリアルの第 1 部では、SAS モデルの概要と SAS のベスト プラクティスについて説明します。チュートリアルの[パート 2](storage-dotnet-shared-access-signature-part-2.md) では、BLOB サービスで共有アクセス署名を作成するプロセスを詳しく説明します。
 
-## Shared Access Signature とは
+## 共有アクセス署名とは
 
-Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。
+共有アクセス署名を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。
 
-## Shared Access Signature を使用するタイミング
+## 共有アクセス署名を使用するタイミング
 
 SAS は、自分のアカウント キーを知らせたくないクライアントに、自分のストレージ アカウント内のリソースへのアクセスを許可する場合に使用できます。ストレージ アカウント キーには、プライマリ キーとセカンダリ キーの両方が含まれており、これらによって、アカウントとそのすべてのリソースへの管理アクセスが付与されます。これらのアカウント キーのいずれかを知らせると、悪意で、または誤ってアカウントが使用される可能性が生じます。Shared Access Signature は、アカウント キーが不要で安全な代替方法です。この方法で、他のクライアントは、付与されたアクセス許可に従ってストレージ アカウント内のデータの読み取り、書き込み、削除を実行できます。
 
@@ -125,7 +125,7 @@ IP 範囲|sip=168.1.5.60-168.1.5.70|要求が受け入れられる IP アドレ�
 
 ## 保存されているアクセス ポリシーを使用した SAS の制御 ##
 
-Shared Access Signature の形式は、次の 2 つのいずれかです。
+共有アクセス署名の形式は、次の 2 つのいずれかです。
 
 - **アドホック SAS:** アドホック SAS を作成すると、開始時刻、有効期限、および SAS へのアクセス許可がすべて、SAS URI で指定されます (または、開始時刻を省略した場合は、暗黙で指定されます)。この種類の SAS はアカウント SAS またはサービス SAS として作成できます。
 
@@ -140,7 +140,7 @@ Shared Access Signature の形式は、次の 2 つのいずれかです。
 3.	SAS の参照先である保存されているアクセス ポリシーが削除されている。これは、SAS を失効させる、もう 1 つの方法です。保存されているアクセス ポリシーを、完全に同じ名前で再作成すると、そのアクセス ポリシーに関連付けられたアクセス許可に従って、すべての既存の SAS トークンが再び有効になります (SAS の有効期限が過ぎていないことが前提です)。SAS を失効させるつもりで、将来の時間を有効期限に指定してアクセス ポリシーを再作成する場合は必ず、異なる名前を使用してください。
 4.	SAS の作成に使用したアカウント キーが再度生成された。これを行うと、そのアカウント キーを使用するすべてのアプリケーション コンポーネントが、別の有効なアカウント キー、または新しく再生成されたアカウント キーを使用するよう更新されるまで、認証に失敗します。
 
->[AZURE.IMPORTANT]Shared Access Signature URI は、署名の作成に使用されたアカウント キーと、保存済みのアクセス ポリシー (存在する場合) に関連付けられます。保存済みのアクセス ポリシーが指定されていない場合、Shared Access Signature を取り消すにはアカウント キーを変更する以外に方法はありません。
+>[AZURE.IMPORTANT] Shared Access Signature URI は、署名の作成に使用されたアカウント キーと、保存済みのアクセス ポリシー (存在する場合) に関連付けられます。保存済みのアクセス ポリシーが指定されていない場合、Shared Access Signature を取り消すにはアカウント キーを変更する以外に方法はありません。
 
 ## 例: 共有アクセス署名を作成して使用する
 
@@ -251,7 +251,10 @@ BLOB サービス用にサービスレベルの API にアクセスするため�
        // To ensure SAS is valid immediately, don’t set the start time.
        // This way, you can avoid failures caused by small clock differences.
        SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
-       Permissions = SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Create | SharedAccessBlobPermissions.Add
+       Permissions = SharedAccessBlobPermissions.Write | 
+       SharedAccessBlobPermissions.Read | 
+       SharedAccessBlobPermissions.Create | 
+       SharedAccessBlobPermissions.Add
     });
 
     // The public access setting explicitly specifies that
@@ -284,14 +287,14 @@ BLOB サービス用にサービスレベルの API にアクセスするため�
     }
 
 
-## Shared Access Signature の使用のベスト プラクティス
+## 共有アクセス署名の使用のベスト プラクティス
 
-アプリケーションで Shared Access Signature を使用する場合は、次の 2 つの潜在的なリスクに注意する必要があります。
+アプリケーションで共有アクセス署名を使用する場合は、次の 2 つの潜在的なリスクに注意する必要があります。
 
 - SAS が漏えいすると、取得した人はだれでも使用できるため、ストレージ アカウントの安全性が損なわれるおそれがあります。
 - クライアント アプリケーションに提供された SAS が期限切れになり、アプリケーションがサービスから新しい SAS を取得できない場合は、アプリケーションの機能が損なわれる可能性があります。  
 
-Shared Access Signature の使用に関する次の推奨事項に従うと、これらのリスクが軽減されます。
+共有アクセス署名の使用に関する次の推奨事項に従うと、これらのリスクが軽減されます。
 
 1. **常に HTTPS を使用**して SAS を作成または配布します。SAS が HTTP で渡され、傍受された場合、中間者攻撃を実行している攻撃者は、SAS を読み取って、宛先のユーザーと同様に使用することができます。このため、機密データの安全性が損なわれたり、悪意のあるユーザーによるデータ破損が発生したりする可能性があります。
 2. **可能な場合は、保存されているアクセス ポリシーを参照します。** 保存されているアクセス ポリシーを使用すると、ストレージ アカウント キーを再生成せずに、アクセス許可を失効させることが可能になります。これらの有効期限を非常に長い期間 (または無期限) に設定し、それがさらに将来へ移動するように、定期的に更新されるようにします。
@@ -306,14 +309,14 @@ Shared Access Signature の使用に関する次の推奨事項に従うと、�
 
 ## まとめ ##
 
-Shared Access Signature は、アカウント キーを知らせずに、ストレージ アカウントへの制限付きアクセス許可をクライアントに付与する場合に便利です。したがって、Azure Storage を使用するあらゆるアプリケーションのセキュリティ モデルの重要な部分となります。ここに示すベスト プラクティスに従うと、アプリケーションのセキュリティを損なうことなく、SAS を使用して、ストレージ アカウントのリソースへのアクセスの柔軟性を高めることができます。
+共有アクセス署名は、アカウント キーを知らせずに、ストレージ アカウントへの制限付きアクセス許可をクライアントに付与する場合に便利です。したがって、Azure Storage を使用するあらゆるアプリケーションのセキュリティ モデルの重要な部分となります。ここに示すベスト プラクティスに従うと、アプリケーションのセキュリティを損なうことなく、SAS を使用して、ストレージ アカウントのリソースへのアクセスの柔軟性を高めることができます。
 
 ## 次のステップ ##
 
-- [Shared Access Signature、第 2 部: BLOB ストレージでの SAS の作成と使用](storage-dotnet-shared-access-signature-part-2.md)
+- [共有アクセス署名、第 2 部: BLOB ストレージでの SAS の作成と使用](storage-dotnet-shared-access-signature-part-2.md)
 - [Windows で Azure File ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
 - [Azure Storage リソースへのアクセスの管理](storage-manage-access-to-resources.md)
-- [Shared Access Signature を使用したアクセスの委任](http://msdn.microsoft.com/library/azure/ee395415.aspx)
+- [共有アクセス署名を使用したアクセスの委任](http://msdn.microsoft.com/library/azure/ee395415.aspx)
 - [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx) [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
 <!---HONumber=AcomDC_0114_2016-->

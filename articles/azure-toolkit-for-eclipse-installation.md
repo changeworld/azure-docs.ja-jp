@@ -63,7 +63,7 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure の Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
 [Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
-[Web Platform Installer (WebPI)]: http://go.microsoft.com/fwlink/?LinkID=252838
+[Web プラットフォーム インストーラー (WebPI)]: http://go.microsoft.com/fwlink/?LinkID=252838
 [Azure Toolkit for Eclipse の新機能]: http://go.microsoft.com/fwlink/?LinkID=699552
 
 <!-- IMG List -->

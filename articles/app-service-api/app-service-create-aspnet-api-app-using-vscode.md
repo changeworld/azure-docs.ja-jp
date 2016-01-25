@@ -136,28 +136,28 @@ namespace ContactsList.Models
 3. **Controllers** フォルダーを右クリックし、*ContactsController.cs* ファイルを追加します。次のような内容になります。
 
 	<pre class="prettyprint">
-using System.Collections.Generic;
-using Microsoft.AspNet.Mvc;
-using ContactsList.Models;
-
-namespace ContactsList.Controllers
-{
-    [Route("api/[controller]")]
-    public class ContactsController : Controller
-    {
-        // GET: api/Contacts
-        [HttpGet]
-        public IEnumerable&lt;Contact> Get()
-        {
-            return new Contact[]{
-                new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
-                new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
-                new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
-            };
-        {
-    {
-{
-</pre>
+	using System.Collections.Generic;
+	using Microsoft.AspNet.Mvc;
+	using ContactsList.Models;
+	
+	namespace ContactsList.Controllers
+	{
+	    [Route("api/[controller]")]
+	    public class ContactsController : Controller
+	    {
+	        // GET: api/Contacts
+	        [HttpGet]
+	        public IEnumerable&lt;Contact&gt; Get()
+	        {
+	            return new Contact[]{
+	                new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
+	                new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
+	                new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
+	            };
+	        }
+	    }
+	}
+	</pre>
 
 4. **[ファイル]**、**[すべてを保存]** の順に選択して、すべてのファイルを保存します。
 5. **コマンド パレット**で、次のコマンドを入力してアプリをローカルで実行します。
