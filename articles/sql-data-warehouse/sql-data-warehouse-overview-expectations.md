@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="lvargas"
-   manager="tonypet"
+   manager="barbkess"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="lvargas;twounder;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="lvargas;mausher;barbkess"/>
 
 # SQL Data Warehouse プレビューで予期される内容
 
@@ -72,4 +72,4 @@ SQL Data Warehouse では、複数のコンピューティング ノードにわ
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

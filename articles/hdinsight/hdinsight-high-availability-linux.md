@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="11/03/2015"
+	ms.date="01/08/2016"
 	ms.author="larryfr"/>
 
 #HDInsight における Hadoop クラスターの可用性と信頼性
@@ -136,7 +136,7 @@ Ambari Web UI から、ログを表示するサービス (例: YARN) を選択�
 
 ## ヘッド ノードのサイズの構成方法 ##
 
-ヘッド ノードのサイズは、クラスターの作成中にのみ選択できます。ヘッド ノードの既定のサイズは **A3** であり、これは 4 コア、7 GB のメモリ、285 GB のローカル ストレージを提供します。「[HDInsight の料金](http://azure.microsoft.com/pricing/details/hdinsight/)」ページで、HDInsight で使用できる、コア、メモリ、ローカル ストレージを含むさまざまな VM サイズの一覧を確認できます。
+ヘッド ノードのサイズは、クラスターの作成中にのみ選択できます。「[HDInsight の料金](http://azure.microsoft.com/pricing/details/hdinsight/)」ページで、HDInsight で使用できる、コア、メモリ、ローカル ストレージを含むさまざまな VM サイズの一覧を確認できます。
 
 新しいクラスターを作成するときに、ノードのサイズを指定できます。この後、[Azure ポータル][preview-portal]、[Azure PowerShell][azure-powershell]、[Azure CLI][azure-cli] を使用してサイズを指定する方法についての情報を示します。
 
@@ -166,4 +166,4 @@ Ambari Web UI から、ログを表示するサービス (例: YARN) を選択�
 [azure-powershell]: ../powershell-install-configure.md
 [azure-cli]: ../xplat-cli-install.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

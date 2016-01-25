@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="01/12/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Amazon アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -34,17 +34,13 @@ Azure Active Directory (AD) B2C で ID プロバイダーとして Amazon を使
 
     ![Amazon - アプリの登録](./media/active-directory-b2c-setup-amzn-app/amzn-register-app.png)
 
-5. **[Web Settings]** セクションで、**[Client ID]** および **[Client secret]** の値をコピーします (これを表示するには **[Show Secret]** ボタンをクリックする必要があります)。テナントで ID プロバイダーとして Amazon を構成するには、両方の値が必要です。セクションの下部にある **[Edit]** をクリックします。
+5. **[Web Settings]** セクションで、**[Client ID]** および **[Client secret]** の値をコピーします (これを表示するには **[Show Secret]** ボタンをクリックする必要があります)。テナントで ID プロバイダーとして Amazon を構成するには、両方の値が必要です。セクションの下部にある **[Edit]** をクリックします。注: **クライアント シークレット**は、重要なセキュリティ資格情報です。
 
-> [AZURE.NOTE]**[Client secret]** は、重要なセキュリティ資格情報です。
+    ![Amazon - クライアント シークレット](./media/active-directory-b2c-setup-amzn-app/amzn-client-secret.png)
 
-    ![Amazon - Client secret](./media/active-directory-b2c-setup-amzn-app/amzn-client-secret.png)
+6. **[Allowed JavaScript origins]** フィールドに「[https://login.microsoftonline.com](https://login.microsoftonline.com)」と入力し、**[Allowed Return URLs]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。**{tenant}** は、実際のテナントの名前 (例: contoso.onmicrosoft.com) に置き換えます。**[保存]** をクリックします。注: **{tenant}** の値は大文字小文字が区別されます。
 
-6. **[Allowed JavaScript origins]** フィールドに「[https://login.microsoftonline.com](https://login.microsoftonline.com)」と入力し、**[Allowed Return URLs]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。**{tenant}** は、実際のテナントの名前 (例: contoso.onmicrosoft.com) に置き換えます。**[保存]** をクリックします。
-
-> [AZURE.NOTE]**{tenant}** の値は大文字小文字が区別されます。
-
-    ![Amazon - URLs](./media/active-directory-b2c-setup-amzn-app/amzn-urls.png)
+    ![Amazon - URL](./media/active-directory-b2c-setup-amzn-app/amzn-urls.png)
 
 ## テナントで ID プロバイダーとして Amazon を構成する
 
@@ -56,4 +52,4 @@ Azure Active Directory (AD) B2C で ID プロバイダーとして Amazon を使
 6. **[この ID プロバイダーを設定する]** をクリックし、先に作成した Amazon アプリケーションの **[クライアント ID]** と **[クライアント シークレット]** を入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Amazon の構成を保存します。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

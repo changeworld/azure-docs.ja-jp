@@ -1,19 +1,19 @@
-<properties 
-    pageTitle="C++ 用 Microsoft Azure Storage クライアント ライブラリを使用した Azure Storage のリソース一覧の取得 | Microsoft Azure" 
-    description="C++ 用 Microsoft Azure Storage クライアント ライブラリの一覧取得 API を使用して、コンテナー、BLOB、キュー、テーブル、エンティティを列挙する方法について説明します。" 
-    documentationCenter=".net" 
+<properties
+    pageTitle="C++ 用 Microsoft Azure Storage クライアント ライブラリを使用した Azure Storage のリソース一覧の取得 | Microsoft Azure"
+    description="C++ 用 Microsoft Azure Storage クライアント ライブラリの一覧取得 API を使用して、コンテナー、BLOB、キュー、テーブル、エンティティを列挙する方法について説明します。"
+    documentationCenter=".net"
     services="storage"
-    authors="tamram" 
-    manager="carolz" 
-    editor=""/>
-<tags 
-    ms.service="storage" 
-    ms.workload="storage" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="01/05/2016" 
-    ms.author="zhimingyuan;tamram"/>
+    authors="tamram"
+    manager="carmonm"
+    editor="tysonn"/>
+<tags
+    ms.service="storage"
+    ms.workload="storage"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="01/05/2016"
+    ms.author="dineshm"/>
 
 # C++ での Azure Storage のリソース一覧の取得
 
@@ -54,7 +54,7 @@ C++ 用ストレージ クライアント ライブラリは [C++ REST ライブ
 
 セグメント化された一覧取得操作に対する応答は次のとおりです。
 
--	<i>\_segment</i>: 一覧取得 API に対する 1 回の呼び出しで返された結果のセットが含まれます。 
+-	<i>\_segment</i>: 一覧取得 API に対する 1 回の呼び出しで返された結果のセットが含まれます。
 -	*continuation\_token*: 結果の次のページを取得するために、次の呼び出しに渡されます。返される結果がそれ以上無い場合、継続トークンは null になります。
 
 たとえば、コンテナー内のすべての BLOB を一覧表示する一般的な呼び出しは、次のコード スニペットのようになります。コードは、「[サンプル](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)」にあります。
@@ -75,15 +75,15 @@ C++ 用ストレージ クライアント ライブラリは [C++ REST ライブ
 	        process_diretory(it->as_directory());
 	    }
 	}
-	
+
 	    token = segment.continuation_token();
 	}
 	while (!token.empty());
 
 1 ページで返される結果の数は、各 API のオーバーロードのパラメーター *max\_results* を使用して制御できることに注意してください。次に例を示します。
-	
-	list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing, 
-		blob_listing_details::values includes, int max_results, const continuation_token& token, 
+
+	list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing,
+		blob_listing_details::values includes, int max_results, const continuation_token& token,
 		const blob_request_options& options, operation_context context)
 
 *max\_results* パラメーターを指定しない場合、1 ページでは、既定の上限値である 5000 個までの結果が返されます。
@@ -124,7 +124,7 @@ SDK のこのようにどん欲な一覧取得 API は、C#、Java、JavaScript 
 	    {
 	        process_entity(*it);
 	    }
-	
+
 	    token = segment.continuation_token();
 	} while (!token.empty());
 
@@ -184,4 +184,4 @@ Azure Storage および C++ 用クライアント ライブラリの詳細につ
 -	[Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 -	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/31/2015"
+   ms.date="01/05/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスのマルチパス IO の構成
@@ -43,7 +43,7 @@ Windows Server ホストにこの機能をインストールするには、次�
 
 #### ホストに MPIO をインストールするには
 
-1. Windows Server ホストでサーバー マネージャーを開きます。既定では、Windows Server 2012 R2 または Windows Server 2012 を実行しているコンピューターに Administrators グループのメンバーがログオンすると、サーバー マネージャーが起動します。サーバー マネージャーが開いていない場合は、**[スタート]** をクリックし、[サーバー マネージャー] をクリックします。![サーバー マネージャー](./media/storsimple-configure-mpio-windows-server/IC740997.png)
+1. Windows Server ホストでサーバー マネージャーを開きます。既定では、Windows Server 2012 R2 または Windows Server 2012 を実行しているコンピューターに Administrators グループのメンバーがログオンすると、サーバー マネージャーが起動します。サーバー マネージャーがまだ開いていない場合は、**[スタート]** をクリックし、[サーバー マネージャー] をクリックします。![サーバー マネージャー](./media/storsimple-configure-mpio-windows-server/IC740997.png)
 2. **[サーバー マネージャー]、[ダッシュボード]、[役割と機能の追加]** の順にクリックします。**役割と機能の追加**ウィザードが起動します。![役割と機能の追加ウィザード 1](./media/storsimple-configure-mpio-windows-server/IC740998.png)
 3. **役割と機能の追加**ウィザードで、次の手順を実行します。
 
@@ -113,7 +113,7 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 14. **[ディスクの管理]** で、**[ディスク]** を右クリックし、**[プロパティ]** を選択します。
 15. StorSimple モデル #### の **[マルチパス ディスクのデバイス プロパティ]** ダイアログ ボックスで、**[MPIO]** タブをクリックします。![StorSimple 8100 マルチパス ディスクのデバイス プロパティ](./media/storsimple-configure-mpio-windows-server/IC741009.png)
 
-16. **[DSM 名]** セクションで、**[詳細]** をクリックし、パラメーターに既定のパラメーターが設定されていることを確認します。既定のパラメーターは次のとおりです。
+16. **[DSM 名]** セクションで、**[詳細]** をクリックし、パラメーターが既定のパラメーターに設定されていることを確認します。既定のパラメーターは次のとおりです。
 
 	- パス確認期間 = 30
 	- 再試行回数 = 3
@@ -173,4 +173,4 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 [StorSimple Manager サービスを使用した StorSimple デバイス構成の変更](storsimple-modify-device-config.md)の詳細を確認する。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

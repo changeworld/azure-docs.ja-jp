@@ -5,7 +5,7 @@
    documentationCenter=""
    authors="adhurwit"
    manager=""
-   editor=""/>
+   editor="tysonn"/>
 
 <tags
    ms.service="storage"
@@ -13,20 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="06/17/2015"
-   ms.author="adhurwit"/>
+   ms.date="01/06/2016"
+   ms.author="lakasa"/>
 
 # Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化
 
 ## はじめに
- 
+
 このチュートリアルでは、Azure Key Vault でクライアント側ストレージ暗号化を利用する方法について説明します。これらのテクノロジを使用して、コンソール アプリケーションで BLOB を暗号化および復号化する手順を説明します。
 
 **推定所要時間:** 20 分
 
-Azure Key Vault の概要については、「[What is Azure Key Vault? (Azure Key Vault とは)](key-vault/key-vault-whatis.md)」をご覧ください。
+Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault/key-vault-whatis.md)」をご覧ください。
 
-Azure Storage のクライアント側暗号化の概要については、「[Microsoft Azure Storage のクライアント側暗号化の概要](storage-client-side-encryption.md)」を参照してください。
+Azure Storage のクライアント側の暗号化の概要については、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](storage-client-side-encryption.md)」をご覧ください。
 
 
 ## 前提条件
@@ -35,7 +35,7 @@ Azure Storage のクライアント側暗号化の概要については、「[Mi
 
 - Azure ストレージ アカウント
 - Visual Studio 2013 以降
-- Azure PowerShell 
+- Azure PowerShell
 
 
 ## クライアント側暗号化の概要
@@ -69,13 +69,13 @@ Visual Studio で、新しいコンソール アプリケーションを作成�
 
 パッケージ マネージャー コンソールで、必要な nuget パッケージを追加します。
 
-	Install-Package WindowsAzure.Storage 
+	Install-Package WindowsAzure.Storage
 
 	// This is the latest stable release for ADAL.
 	Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
 
-	Install-Package Microsoft.Azure.KeyVault 
-	Install-Package Microsoft.Azure.KeyVault.Extensions 
+	Install-Package Microsoft.Azure.KeyVault
+	Install-Package Microsoft.Azure.KeyVault.Extensions
 
 
 App.Config に AppSettings を追加します。
@@ -108,13 +108,13 @@ App.Config に AppSettings を追加します。
 	{
 	    var authContext = new AuthenticationContext(authority);
 	    ClientCredential clientCred = new ClientCredential(
-	        ConfigurationManager.AppSettings["clientId"], 
+	        ConfigurationManager.AppSettings["clientId"],
 	        ConfigurationManager.AppSettings["clientSecret"]);
 		AuthenticationResult result = await authContext.AcquireTokenAsync(resource, clientCred);
-	
+
 	    if (result == null)
 	        throw new InvalidOperationException("Failed to obtain the JWT token");
-	
+
 	    return result.AccessToken;
 	}
 
@@ -148,14 +148,14 @@ Main 関数に次のコードを追加します。
 ## BLOB の暗号化とアップロード
 次のコードを追加して BLOB を暗号化し、Azure ストレージ アカウントにアップロードします。**ResolveKeyAsync** メソッドは IKey を返します。
 
-	
+
 	// Retrieve the key that you created previously.
 	// The IKey that is returned here is an RsaKey.
 	// Remember that we used the names contosokeyvault and testrsakey1.
     var rsa = cloudResolver.ResolveKeyAsync("https://contosokeyvault.vault.azure.net/keys/TestRSAKey1", CancellationToken.None).GetAwaiter().GetResult();
 
 
-	// Now you simply use the RSA key to encrypt by setting it in the BlobEncryptionPolicy. 
+	// Now you simply use the RSA key to encrypt by setting it in the BlobEncryptionPolicy.
 	BlobEncryptionPolicy policy = new BlobEncryptionPolicy(rsa, null);
 	BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
 
@@ -202,9 +202,9 @@ RSA キーの秘密キーは Key Vault に残っているので、復号化を�
 - SymmetricKey のキーは Base64 でエンコードされている必要があります。
 - SymmetricKey として使用される Key Vault シークレットは、Key Vault でのコンテンツ タイプが "application/octet-stream" でなければなりません。
 
-SymmetricKey として使用できるシークレットを Key Vault に作成する PowerShell の例を次に示します。
+SymmetricKey として使用できるシークレットを Key Vault に作成する PowerShell の例を次に示します。メモ: ハードコーディングされた値 $key は、デモのみを目的としています。独自のコードでこのキーを生成できます。
 
-	// Here we are making a 128-bit key so we have 16 characters. 
+	// Here we are making a 128-bit key so we have 16 characters.
 	// 	The characters are in the ASCII range of UTF8 so they are
 	//	each 1 byte. 16 x 8 = 128.
 	$key = "qwertyuiopasdfgh"
@@ -218,7 +218,7 @@ SymmetricKey として使用できるシークレットを Key Vault に作成�
 コンソール アプリケーションでは、前と同じ呼び出しを使用して、このシークレットを SymmetricKey として取得できます。
 
 	SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
-    	"https://contosokeyvault.vault.azure.net/secrets/TestSecret2/", 
+    	"https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
         CancellationToken.None).GetAwaiter().GetResult();
 
 これで終了です。機能を有効にご活用ください。
@@ -235,4 +235,4 @@ Microsoft Azure Storage の最新情報については、[Microsoft Azure Storag
 <!--Image references-->
 [1]: ./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

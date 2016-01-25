@@ -482,6 +482,25 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQ
 | storedProcedureParameters | ストアド プロシージャのパラメーター。 | 名前と値のペア。パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ | 
 | sqlWriterTableType | 上記のストアド プロシージャで使用するテーブル型のユーザー指定の名前。コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 | テーブルの種類の名前。 | いいえ |
 
+## 接続の問題のトラブルシューティング
+
+1. リモート接続を許可するよう、SQL Server を構成します。**SQL Server Management Studio** を起動し、**サーバー**を右クリックして、**[プロパティ]** をクリックします。一覧から **[接続]** を選択し、**[このサーバーへのリモート接続を許可する]** をオンにします。
+	
+	![リモート接続を有効にする](.\media\data-factory-sqlserver-connector\AllowRemoteConnections.png)
+
+	詳細な手順については、「[remote access サーバー構成オプションの構成](https://msdn.microsoft.com/library/ms191464.aspx)」を参照してください。 
+2. **SQL Server 構成マネージャー**を起動します。目的のインスタンスの **SQL Server ネットワーク構成**を展開し、**[MSSQLSERVER のプロトコル]** を選択します。右側のウィンドウにプロトコルが表示されます。**[TCP/IP]** を右クリックし、**[有効化]** をクリックして TCP/TP を有効にします。
+
+	![TCP/IP を有効にする](.\media\data-factory-sqlserver-connector\EnableTCPProptocol.png)
+
+	詳細について、また TCP/IP プロトコルを有効にする別の方法については、「[サーバー ネットワーク プロトコルの有効化または無効化](https://msdn.microsoft.com/library/ms191294.aspx)」を参照してください。 
+3. 同じウィンドウで、**[TCP/IP]** をダブルクリックして、**[TCP/IP プロパティ]** ウィンドウを起動します。
+4. **[IP アドレス]** タブに切り替えます。下にスクロールして **IPAll** セクションを表示します。**TCP ポート** をメモしておきます (既定は **1433**)。
+5. コンピューターに **Windows Firewall のルール**を作成し、このポート経由の受信トラフィックを許可します。  
+6. **接続の確認**: 別のコンピューターからSQL Server Management Studio を使用して、完全修飾名を使って SQL Server に接続します。<machine>.<domain>.corp.<company>.com,1433 などです。
+
+	> [AZURE.IMPORTANT]詳細については、「[ポートとセキュリティに関する考慮事項](data-factory-move-data-between-onprem-and-cloud.md#port-and-security-considerations)」を参照してください。
+
 [AZURE.INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
 
@@ -543,4 +562,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -1,24 +1,24 @@
 <properties 
-	pageTitle="Microsoft Azure Storage での同時実行制御の管理" 
-	description="BLOB、キュー、テーブル、およびファイル サービスの同時実行制御を管理する方法" 
-	services="storage" 
-	documentationCenter="" 
-	authors="jasonnewyork" 
-	manager="tadb" 
-	editor=""/>
+	pageTitle="Microsoft Azure Storage での同時実行制御の管理"
+	description="BLOB、キュー、テーブル、およびファイル サービスの同時実行制御を管理する方法"
+	services="storage"
+	documentationCenter=""
+	authors="jasonnewyork"
+	manager="tadb"
+	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="09/03/2015" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="09/03/2015"
 	ms.author="jahogg"/>
 
 # Microsoft Azure Storage での同時実行制御の管理
 
-## 概要 
+## 概要
 
 最新のインターネットを基盤とするアプリケーションでは、複数のユーザーが同時にデータを表示し、更新することが一般的です。このような場合、アプリケーション開発者は予測可能なエクスペリエンスをエンド ユーザーに提供する方法を注意深く検討する必要があり、特に複数のユーザーが同じデータを更新できる場合はこれが重要になります。開発者は、データの同時実行制御の主な戦略として、次の 3 つの方法を検討する場合が一般的です。
 
@@ -34,7 +34,7 @@ Azure ストレージ サービスでは、上記 3 つの戦略をすべてサ�
 
 また、開発者は、適切な同時実行制御の戦略を選択する以外にも、特に複数のトランザクションで同一のオブジェクトを変更する場合に、ストレージ プラットフォームで変更がどのように分離されるかについて把握しておく必要があります。Azure Storage サービスではスナップショット分離の手法を使用して、同一パーティション内での読み取り処理と書き込み処理が同時に発生できるようにしています。他の分離レベルとは異なり、スナップショット分離では、更新の処理中でもすべての読み込み処理に対してデータのスナップショットを提供することにより整合性を確保します。これは基本的に、更新トランザクションの処理中に最後にコミットされた値を返すことで実現しています。
 
-## BLOB サービスでの同時実行制御の管理
+## BLOB ストレージ内での同時実行の管理
 BLOB サービスでの BLOB およびコンテナーへのアクセスを管理する場合、オプティミスティック同時実行制御とペシミスティック同時実行制御のいずれかのモデルを使用できます。明示的に戦略を指定しない場合は、最終書き込み者優先が既定となります。
 
 ### BLOB およびコンテナーでのオプティミスティック同時実行制御  
@@ -52,18 +52,18 @@ Storage サービスでは、格納されているすべてのオブジェクト
 次に示す C# スニペット (Client Storage Library 4.2.0 を使用) は、事前に取得または挿入された BLOB のプロパティからアクセスされる ETag の値に基づいて **If-Match AccessCondition** を構築する簡単な例です。BLOB を更新するときには **AccessCondition** オブジェクトを使用します。**AccessCondition** オブジェクトは **If-Match** ヘッダーを要求に追加します。別のプロセスが BLOB を更新した場合、BLOB のサービスによって HTTP 412 (Precondition Failed) のステータス メッセージが返されます。完全なサンプルは[こちら](http://code.msdn.microsoft.com/windowsazure/Managing-Concurrency-using-56018114)からダウンロードできます。
 
 	// Retrieve the ETag from the newly created blob
-	// Etag is already populated as UploadText should cause a PUT Blob call 
+	// Etag is already populated as UploadText should cause a PUT Blob call
 	// to storage blob service which returns the etag in response.
 	string orignalETag = blockBlob.Properties.ETag;
-	 
+
 	// This code simulates an update by a third party.
 	string helloText = "Blob updated by a third party.";
-	 
+
 	// No etag, provided so orignal blob is overwritten (thus generating a new etag)
 	blockBlob.UploadText(helloText);
-	Console.WriteLine("Blob updated. Updated ETag = {0}", 
+	Console.WriteLine("Blob updated. Updated ETag = {0}",
 	blockBlob.Properties.ETag);
-	 
+
 	// Now try to update the blob using the orignal ETag provided when the blob was created
 	try
 	{
@@ -121,13 +121,13 @@ BLOB をロックして排他的に使用する場合は、[リース](http://ms
 	// Acquire lease for 15 seconds
 	string lease = blockBlob.AcquireLease(TimeSpan.FromSeconds(15), null);
 	Console.WriteLine("Blob lease acquired. Lease = {0}", lease);
-	 
+
 	// Update blob using lease. This operation will succeed
 	const string helloText = "Blob updated";
 	var accessCondition = AccessCondition.GenerateLeaseCondition(lease);
 	blockBlob.UploadText(helloText, accessCondition: accessCondition);
 	Console.WriteLine("Blob updated using an exclusive lease");
-	 
+
 	//Simulate third party update to blob without lease
 	try
 	{
@@ -182,7 +182,7 @@ BLOB をロックして排他的に使用する場合は、[リース](http://ms
 
 - [BLOB サービス操作の条件ヘッダーの指定](http://msdn.microsoft.com/library/azure/dd179371.aspx)
 - [Lease Container](http://msdn.microsoft.com/library/azure/jj159103.aspx)
-- [Lease Blob ](http://msdn.microsoft.com/library/azure/ee691972.aspx) 
+- [Lease Blob ](http://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## Table サービスでの同時実行制御の管理
 エンティティを扱っている場合、Table サービスではオプティミスティック同時実行制御の確認が既定の動作として使用されます。一方、BLOB サービスの場合は、オプティミスティック同時実行制御の確認を実行するように明示的に選択する必要があります。これ以外の相違点としては、Table サービスではエンティティの同時実行制御しか管理できませんが、BLOB サービスではコンテナーと BLOB の両方の同時実行制御を管理できる点があります。
@@ -211,7 +211,7 @@ BLOB サービスとは異なり、Table サービスではクライアントが
 	    if (ex.RequestInformation.HttpStatusCode == 412)
 	        Console.WriteLine("Optimistic concurrency violation – entity has changed since it was retrieved.");
 	    else
-	        throw; 
+	        throw;
 	}  
 
 同時実行制御の確認を明示的に無効にするには、置換操作を実行する前に、**employee** オブジェクトの **ETag** プロパティを "*" に設定する必要があります。
@@ -228,7 +228,7 @@ customer.ETag = "*";
 エンティティの統合|	あり|	あり|
 エンティティの削除|	いいえ|	あり|
 エンティティの挿入または置換|	あり|	いいえ|
-エンティティの挿入または統合|	あり|	いいえ 
+エンティティの挿入または統合|	あり|	いいえ
 
 **Insert or Replace Entity** および **Insert or Merge Entity** の各操作では、ETag の値は Table サービスに送信されないため、同時実行制御の確認は*行われません*。
 
@@ -271,6 +271,4 @@ Azure Storage の詳細については、以下を参照してください。
 - Storage Getting Started for [Blob](storage-dotnet-how-to-use-blobs.md), [Table](storage-dotnet-how-to-use-tables.md) and [Queues](storage-dotnet-how-to-use-queues.md) (Storage の入門ガイド: .NET から BLOB ストレージを使用する方法、.NET から BLOB ストレージを使用する方法、.NET からキュー ストレージを使用する方法)
 - Storage のアーキテクチャ – [Microsoft Azure Storage チーム ブログ: Microsoft Azure Storage : A Highly Available Cloud Storage Service with Strong Consistency (Microsoft Azure Storage: 高い整合性を持つ高可用クラウド ストレージ サービス)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
- 
-
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0114_2016-->

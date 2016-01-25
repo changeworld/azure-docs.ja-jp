@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="12/16/2015"
+   ms.date="01/14/2015"
    ms.author="andkjell"/>
 
 # Generic LDAP コネクタに関するテクニカル リファレンス
@@ -49,13 +49,13 @@ IETF RFC では、特定の操作やスキーマ要素 (たとえば、差分イ
 
 - Microsoft Active Directory ライトウェイト ディレクトリ サービス (AD LDS)
     - 差分インポートのすべての操作をサポート
-    - パスワードの設定とパスワードの変更をサポート
+    - パスワードの設定をサポート
 - Microsoft Active Directory グローバル カタログ (AD GC)
     - 差分インポートのすべての操作をサポート
-    - パスワードの設定とパスワードの変更をサポート
+    - パスワードの設定をサポート
 - 389 Directory Server
     - 差分インポートのすべての操作をサポート
-    - パスワードの設定をサポート
+    - パスワードの設定とパスワードの変更をサポート
 - Apache Directory Server
     - このディレクトリには永続的な変更ログがないため差分インポートはサポートしていません。
     - パスワードの設定をサポート
@@ -71,10 +71,10 @@ IETF RFC では、特定の操作やスキーマ要素 (たとえば、差分イ
     - パスワードの設定とパスワードの変更をサポート
 - Open DJ
     - 差分インポートのすべての操作をサポート
-    - パスワードの設定をサポート
+    - パスワードの設定とパスワードの変更をサポート
 - Open DS
     - 差分インポートのすべての操作をサポート
-    - パスワードの設定をサポート
+    - パスワードの設定とパスワードの変更をサポート
 - Open LDAP (openldap.org)
     - 差分インポートのすべての操作をサポート
     - パスワードの設定をサポート
@@ -211,13 +211,13 @@ RFC4522 構文を使用してスキーマに属性を定義する場合は、**[
 | Apache Directory Server | 使用できません。 |
 | Directory 389 | 変更ログ。使用する既定値: **cn=changelog** |
 | IBM Tivoli DS | 変更ログ。使用する既定値: **cn=changelog** |
-| Isode Directory | 変更ログ。使用する既定値: **cn=ChangeLog**
+| Isode Directory | 変更ログ。使用する既定値: **cn=changelog**
 | Novell/NetIQ eDirectory | 使用できません。タイムスタンプ。コネクタは、前回の更新の日時を使用して、追加されたレコードおよび更新されたレコードを取得します。 |
-| Open DJ/DS | 変更ログ。使用する既定値: **cn=Changelog** |
+| Open DJ/DS | 変更ログ。使用する既定値: **cn=changelog** |
 | Open LDAP | アクセス ログ。使用する既定値: **cn=accesslog** |
 | Oracle DSEE | 変更ログ。使用する既定値: **cn=changelog** |
 | RadiantOne VDS | 仮想ディレクトリ。VDS に接続されているディレクトリに依存します。 |
-| Sun One Directory Server | 変更ログ。使用する既定値: **cn=Changelog** |
+| Sun One Directory Server | 変更ログ。使用する既定値: **cn=changelog** |
 
 パスワード属性は、パスワード変更およびパスワード設定の操作でパスワードを設定する場合に、コネクタで使用する必要がある属性の名前です。この名前は既定で **userPassword** に設定されますが、特定のLDAP システムについては必要に応じて変更することができます。
 
@@ -279,4 +279,4 @@ Novell eDirectory の場合、差分インポートでオブジェクトの削�
 
 -	コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「[How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

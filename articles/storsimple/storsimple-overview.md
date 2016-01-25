@@ -101,7 +101,7 @@ StorSimple を使用すると、物理ハイブリッド ストレージ デバ�
 
 Update 2 以降では、StorSimple 仮想デバイスは 8010 デバイス (旧称: 1100 モデル) と 8020 デバイスの 2 つのモデルで利用できます。8010 デバイスの最大容量は 30 TB です。Azure Premium Storage を利用する 8020 デバイスの最大容量は 64 TB です。(Azure Premium Storage はデータを SSD に格納するのに対し、Standard Storage はデータを HDD に格納します。) Premium Storage を使用するには、Azure Premium Storage アカウントが必要であることに注意してください。Premium Storage の詳細については、「[Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)」を参照してください。
 
-StorSimple 仮想デバイスの詳細については、「[Azure での StorSimple 仮想デバイスのデプロイと管理](storsimple-virtual-device-u1)」を参照してください。
+StorSimple 仮想デバイスの詳細については、「[Azure での StorSimple 仮想デバイスのデプロイと管理](storsimple-virtual-device-u1.md)」を参照してください。
 
 ## StorSimple Manager サービス
 
@@ -278,4 +278,4 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -16,7 +16,12 @@
    ms.date="12/14/2015"
    ms.author="ruturajd@microsoft.com"/>
 
-# Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure から VMware にフェールバックする
+# Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure から VMware にフェールバックする (レガシ)
+
+> [AZURE.SELECTOR]
+- [Enhanced](site-recovery-failback-azure-to-vmware-classic.md)
+- [Legacy](site-recovery-failback-azure-to-vmware-classic-legacy.md)
+
 
 ## 概要
 
@@ -36,14 +41,12 @@ vContinuum サーバーをオンプレミスにインストールし、構成サ
 
 1.  [vContinuum をダウンロードします](http://go.microsoft.com/fwlink/?linkid=526305)。 
 2.  ダウンロードしたら、更新された [vContinuum 更新](http://go.microsoft.com/fwlink/?LinkID=533813)バージョンをダウンロードします。
-3.  vContinuum をインストールするには、最新バージョンのセットアップを実行します。**[ようこそ]** ページで **[次へ]** をクリックします。
-	![](./media/site-recovery-failback-azure-to-vmware/image2.png)
+3.  vContinuum をインストールするには、最新バージョンのセットアップを実行します。**[ようこそ]** ページで **[次へ]** をクリックします。![](./media/site-recovery-failback-azure-to-vmware/image2.png)
 4.  ウィザードの最初のページで CX サーバーの IP アドレスとポートを指定します。**[HTTPS の使用]** を選択します。
 
 	![](./media/site-recovery-failback-azure-to-vmware/image3.png)
 
-5.  Azure の構成サーバー VM の **[ダッシュボード]** タブで、構成サーバーの ID アドレスを探します。
-	![](./media/site-recovery-failback-azure-to-vmware/image4.png)
+5.  Azure の構成サーバー VM の **[ダッシュボード]** タブで、構成サーバーの ID アドレスを探します。![](./media/site-recovery-failback-azure-to-vmware/image4.png)
 
 6.  Azure の構成サーバー VM の **[エンドポイント]** タブで、構成サーバーの HTTPS パブリック ポートを探します。
 
@@ -57,8 +60,7 @@ vContinuum サーバーをオンプレミスにインストールし、構成サ
 
 	![](./media/site-recovery-failback-azure-to-vmware/image7.png)
 
-9. インストールが完了したら、vContinuum を起動することができます。
-	![](./media/site-recovery-failback-azure-to-vmware/image8.png)
+9. インストールが完了したら、vContinuum を起動することができます。![](./media/site-recovery-failback-azure-to-vmware/image8.png)
 
 
 ## 手順 2: Azure にプロセス サーバーをインストールする 
@@ -125,7 +127,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの SCSI ID を取得す�
 
 	![](./media/site-recovery-failback-azure-to-vmware/image14.png)
 
-4. **[disk.EnableUUID]** と表示される行が存在するかどうかが確認されます。そのような行が存在し、値が **[False]** の場合は、**[True]** (大文字と小文字の区別なし) に設定します。そのような行が存在し、値が [True] の場合は、**[Cancel]** をクリックし、ゲスト オペレーティング システムが起動した後に、その OS 内で SCSI コマンドをテストします。そのような行が存在しない場合、**[Add Row]** をクリックします。
+4. **[disk.EnableUUID]** と表示される行が存在するかどうかが確認されます。そのような行が存在し、値が **[False]** の場合は、[True] (大文字と小文字の区別なし) に設定します。そのような行が存在し、値が [True] の場合は、**[Cancel]** をクリックし、ゲスト オペレーティング システムが起動した後に、その OS 内で SCSI コマンドをテストします。そのような行が存在しない場合、**[Add Row]** をクリックします。
 5. **[Name]** 列に disk.EnableUUID を追加します。その値を TRUE に設定します。前述の値を追加する際には、二重引用符で囲まないでください。
 
 	![](./media/site-recovery-failback-azure-to-vmware/image15.png)
@@ -155,7 +157,7 @@ perl-5.10.1-136.el6\_6.1.x86\_64.rpm
 perl-Module-Pluggable-3.90-136.el6\_6.1.x86\_64.rpm
 
 perl-Pod-Escapes-1.04-136.el6\_6.1.x86\_64.rpm
-
+	
 perl-Pod-Simple-3.13-136.el6\_6.1.x86\_64.rpm
 
 perl-libs-5.10.1-136.el6\_6.1.x86\_64.rpm
@@ -172,17 +174,13 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 
 \# cd /usr/local
 
-\# wget
-<http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
+\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
 
-\# wget
-<http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
+\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
 
-\# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm
-reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
+\# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
-\# wget
-<http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
+\# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
 
 \# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
 
@@ -408,8 +406,8 @@ VM は Azure にフェールオーバーするときに、ページ ファイル
  
 ## 次のステップ
 
-VMware 仮想マシンを Azure にレプリケートする方法について[ご確認ください](site-recovery-vmware-to-azure.md)
+VMware 仮想マシンを Azure にレプリケートする方法について[ご確認ください](site-recovery-vmware-to-azure-classic-legacy.md)
 
  
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016--->

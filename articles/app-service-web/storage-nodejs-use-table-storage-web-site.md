@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="11/20/2015"
+	ms.date="01/09/2016"
 	ms.author="robmcm"/>
 
 
@@ -501,7 +501,6 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 	このコマンドにより、ブラウザーが起動し、ダウンロード ページに移動します。ログインを求められた場合は、Azure サブスクリプションに関連付けられたアカウントを使用してログインします。
 
 	<!-- ![The download page][download-publishing-settings] -->
-
 	ファイルのダウンロードが自動的に開始されます。ダウンロードが開始されない場合は、ページの先頭にあるリンクをクリックして、手動でファイルをダウンロードできます。ファイルを保存し、ファイル パスを書き留めます。
 
 2. 次のコマンドを入力して設定をインポートします。
@@ -642,4 +641,4 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 [Create and deploy a Node.js application to an Azure Web Site]: web-sites-nodejs-develop-deploy-mac.md
  
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

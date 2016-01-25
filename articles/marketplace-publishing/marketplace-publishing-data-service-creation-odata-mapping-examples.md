@@ -8,12 +8,12 @@
    editor=""/>
 
    <tags
-      ms.service="marketplace-publishing"
+      ms.service="marketplace"
       ms.devlang="na"
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="11/24/2015"
+      ms.date="01/04/2016"
       ms.author="hascipio; avikova" />
 
 # CSDL を使用した既存の Web サービスの OData へのマッピングの例
@@ -155,4 +155,4 @@ GET で取得したデータの RESTful なページングを実装します。�
 - 特定のノードとそのパラメーターについて知りたい場合は、定義と説明、例、ユース ケースのコンテキストなどが記載された、この[データ サービスの OData マッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)に関する記事をご覧ください。
 - データ サービスを Azure Marketplace に発行するための指定のパスに戻る場合は、この[データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

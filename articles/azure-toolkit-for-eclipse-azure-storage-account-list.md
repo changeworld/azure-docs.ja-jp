@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="11/19/2015" 
+    ms.date="01/09/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/dn205108.aspx -->
@@ -82,7 +82,7 @@ Azure ストレージ アカウントは、JDK、アプリケーション サー
 
 [Azure Toolkit for Eclipse のインストール][]
 
-[Creating a Hello World Application for Azure in Eclipse (Eclipse での Azure 用 Hello World アプリケーションの作成)][]
+[Azure 向け Hello World アプリケーションを Eclipse で作成する][]
 
 Java での Azure の使用方法の詳細については、「[Azure Java Developer Center][]」を参照してください。
 
@@ -91,7 +91,7 @@ Java での Azure の使用方法の詳細については、「[Azure Java Devel
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
 [Microsoft Azure 管理ポータル]: http://go.microsoft.com/fwlink/?LinkID=512959
-[Creating a Hello World Application for Azure in Eclipse (Eclipse での Azure 用 Hello World アプリケーションの作成)]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Azure 向け Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
 [Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
 [What's New in the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699552
 
@@ -100,4 +100,4 @@ Java での Azure の使用方法の詳細については、「[Azure Java Devel
 [ic719496]: ./media/azure-toolkit-for-eclipse-azure-storage-account-list/ic719496.png
 [ic719497]: ./media/azure-toolkit-for-eclipse-azure-storage-account-list/ic719497.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

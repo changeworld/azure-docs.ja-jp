@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/06/2016"
+   ms.date="01/12/2016"
    ms.author="tomfitz"/>
 
 # リソース マネージャーのプロバイダー、リージョン、API のバージョン、およびスキーマ
@@ -35,11 +35,13 @@ Azure ポータルとクラシック ポータルでサポートされている�
 | Batch  | はい | あり | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | | [Microsoft.Batch](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Batch%22&type=Code) |
 | Dynamics Lifecycle Services | はい | | | | [Microsoft.DynamicsLcs](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DynamicsLcs%22&type=Code)
 | Service Fabric (プレビュー) | はい | | [Service Fabric Rest](https://msdn.microsoft.com/library/azure/dn707692.aspx) | | [Microsoft.ServiceFabric](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceFabric%22&type=Code) |
-| Virtual Machines (クラシック) | 限定的 | 部分的 (後述参照) | - | - | 
-| Remote App | いいえ | - | - | - | 
-| Cloud Services (クラシック) | いいえ | 部分的 (後述参照) | - | - | - |
+| Virtual Machines (クラシック) | 限定的 | 部分的 (後述参照) | - | - |
+| Remote App | いいえ | - | - | - |
+| Cloud Services (クラシック) | はい (後述参照) | 部分的 (後述参照) | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイ モデルではなくクラシック デプロイ モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイ モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
+
+リソース マネージャーは、他のクラシック リソースで使用できるように Cloud Services で有効になっています。ただし、クラシック リソースは、リソース マネージャーのすべての機能を利用するわけではないため、将来のソリューションに適したオプションではありません。代わりに、アプリケーション インフラストラクチャを変更して、Microsoft.Compute、Microsoft.Storage、Microsoft.Network の各名前空間のリソースを使用することを検討してください。
 
 Virtual Machines (クラシック) と Cloud Services は、新しいリソース グループには移動できますが、新しいサブスクリプションには移動できません。
 
@@ -65,9 +67,8 @@ Virtual Network は、新しいリソース グループには移動できます
 | Redis Cache | はい | あり | | [2014-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Cache.json) | [Microsoft.Cache](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Cache%22&type=Code) |
 | SQL Database | はい | あり | [SQL Database REST](https://msdn.microsoft.com/library/azure/mt163571.aspx) | [2014-04-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01-preview/Microsoft.Sql.json) | [Microsoft.Sql](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Sql%22&type=Code) |
 | Search | はい | あり | [Search REST](https://msdn.microsoft.com/library/azure/dn798935.aspx) | | [Microsoft.Search](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Search%22&type=Code) |
-| SQL Data Warehouse | はい | | | |
+| SQL Data Warehouse | あり | | | |
 | StorSimple | いいえ | - | - | - |
-| Managed Cache | いいえ | - | - | - |
 
 ## Web とモバイル
 
@@ -76,6 +77,7 @@ Virtual Network は、新しいリソース グループには移動できます
 | API Management | はい | あり | [API Management REST](https://msdn.microsoft.com/library/azure/dn776326.aspx) | | [Microsoft.ApiManagement](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ApiManagement%22&type=Code) | 
 | API Apps | はい | | | [2015-03-01-preview](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-03-01-preview/Microsoft.AppService.json) | [API Apps](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22kind%22%3A+%22apiApp%22&type=Code) |
 | Web Apps | はい | あり、制限あり (後述参照) | | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Web.json) | [Microsoft.Web](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Web%22&type=Code) |
+| Mobile Apps | あり | | | | |
 | Notification Hubs | はい | あり | [Notification Hubs REST](https://msdn.microsoft.com/library/azure/dn495827.aspx) | [2015-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-04-01/Microsoft.NotificationHubs.json) | [Microsoft.NotificationHubs](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.NotificationHubs%22&type=Code) |
 | Logic Apps | はい | あり | | | [Microsoft.Logic](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Logic%22&type=Code) |
 | Mobile Engagement | はい | あり | | | [Microsoft.MobileEngagements](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.MobileEngagement%22&type=Code) |
@@ -93,7 +95,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | Stream Analytics | はい | | [Steam Analytics REST](https://msdn.microsoft.com/library/azure/dn835031.aspx) | | [Microsoft.StreamAnalytics](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.StreamAnalytics%22&type=Code) |
 | HDInsights | はい | あり | [HDInsights REST](https://msdn.microsoft.com/library/azure/mt622197.aspx) | | [Microsoft.HDInsight](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.HDInsight%22&type=Code) |
 | Data Factory | はい | あり | [Data Factory REST](https://msdn.microsoft.com/library/azure/dn906738.aspx) | | [Microsoft.DataFactory](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DataFactory%22&type=Code) |
-| Machine Learning | いいえ | - | - | - | 
+| Machine Learning | いいえ | - | - | - |
 | Data Catalog | いいえ | - | - | - |
 
 ## メディアと CDN
@@ -109,17 +111,14 @@ Web アプリを使用している場合、App Service プランのみを移動�
 | サービス | リソース マネージャーが有効 | リソースの移動 | REST API | スキーマ | クイック スタート テンプレート |
 | ------- | ------- | -------------- | -------- | ------ | ------ |
 | BizTalk Services | はい | | | [2014-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.BizTalkServices.json) | [Microsoft.BizTalkServices](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.BizTalkServices%22&type=Code) |
-| Service Bus | はい | | [Service Bus REST](https://msdn.microsoft.com/library/azure/hh780717.aspx) | | [Microsoft.ServiceBus](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceBus%22&type=Code) |
-| Backup | いいえ | - | - | - | 
+| Service Bus | あり | | | | [Microsoft.ServiceBus](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceBus%22&type=Code) |
+| Backup | いいえ | - | - | - |
 | Site Recovery | いいえ | - | - | - |
+
 
 ## ID 管理とアクセス管理 
 
-| サービス | リソース マネージャーが有効 | リソースの移動 | REST API | スキーマ | クイック スタート テンプレート |
-| ------- | ------- | -------------- | -------- | ------ | ------ |
-| Azure Active Directory | いいえ | - | - | - | 
-| Azure Actice Directory B2C | いいえ | - | - | - | 
-| Multi-Factor Authentication | いいえ | - | - | - |
+Azure Active Directory はリソース マネージャーと連携して、サブスクリプションのロールベースのアクセス制御を可能にします。ロールベースのアクセス制御と Active Directory の使用方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」をご覧ください。
 
 ## 開発者サービス 
 
@@ -155,7 +154,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 ### REST API
 
-使用可能なすべてのリソース プロバイダーとその種類、場所、API バージョン、登録ステータスを取得するには、[すべてのリソース プロバイダーのリスト](https://msdn.microsoft.com/library/azure/dn790524.aspx)操作を使用します。
+使用可能なすべてのリソース プロバイダーとその種類、場所、API バージョン、登録状態を取得するには、[すべてのリソース プロバイダーの表示](https://msdn.microsoft.com/library/azure/dn790524.aspx)操作を使用します。
 
 ### PowerShell
 
@@ -279,4 +278,4 @@ Web アプリを使用している場合、App Service プランのみを移動�
 - リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 - リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

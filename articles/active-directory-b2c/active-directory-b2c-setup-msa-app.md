@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="01/12/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Microsoft アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -41,11 +41,9 @@ Azure Active Directory (AD) B2C で ID プロバイダーとして Microsoft ア
 
     ![MSA - リダイレクト URL](./media/active-directory-b2c-setup-msa-app/msa-redirect-url.png)
 
-6. 左側のナビゲーションで **[アプリケーション設定]** をクリックします。**[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。テナントで ID プロバイダーとして Microsoft アカウントを構成するには、両方の値が必要です。
+6. 左側のナビゲーションで **[アプリケーション設定]** をクリックします。**[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。テナントで ID プロバイダーとして Microsoft アカウントを構成するには、両方の値が必要です。注: **クライアント シークレット**は、重要なセキュリティ資格情報です。
 
-> [AZURE.NOTE]**[Client secret]** は、重要なセキュリティ資格情報です。
-
-    ![MSA - Client secret](./media/active-directory-b2c-setup-msa-app/msa-client-secret.png)
+    ![MSA - クライアント シークレット](./media/active-directory-b2c-setup-msa-app/msa-client-secret.png)
 
 ## テナントで ID プロバイダーとして Microsoft アカウントを構成する
 
@@ -57,4 +55,4 @@ Azure Active Directory (AD) B2C で ID プロバイダーとして Microsoft ア
 6. **[この ID プロバイダーを設定する]** をクリックし、前に作成した Microsoft アカウント アプリケーションの**クライアント ID** と**クライアント シークレット**を入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Microsoft アカウントの構成を保存します。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

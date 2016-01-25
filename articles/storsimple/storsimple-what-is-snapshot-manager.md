@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/04/2016"
+   ms.date="01/07/2016"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager について
@@ -25,7 +25,11 @@ StorSimple Snapshot Manager は、Microsoft Azure StorSimple 環境でのデー�
 
 StorSimple デバイス、StorSimple Manager サービス、StorSimple Snapshot Manager、SharePoint 用 StorSimple アダプターを含む Microsoft Azure StorSimple システム全体の概要については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」を参照してください。
  
->[AZURE.NOTE]StorSimple Snapshot Manager を使用して、Microsoft Azure StorSimple Virtual Array (別名 StorSimple オンプレミス仮想デバイス) を管理することはできません。
+>[AZURE.NOTE]
+>
+>- StorSimple Snapshot Manager を使用して、Microsoft Azure StorSimple Virtual Array (別名 StorSimple オンプレミス仮想デバイス) を管理することはできません。
+>
+>- StorSimple デバイスに StorSimple Update 2 をインストールする場合は、**StorSimple Update 2 をインストールする前に**、最新バージョンの StorSimple Snapshot Manager をダウンロードしてインストールする必要があります。最新バージョンの StorSimple Snapshot Manager には下位互換性があり、製品版のすべての Microsoft Azure StorSimple で動作します。以前のバージョンの StorSimple Snapshot Manager を使用している場合は更新する必要があります (新しいバージョンをインストールする前に、以前のバージョンをアンインストールする必要はありません)。
 
 ## StorSimple Snapshot Manager の目的とアーキテクチャ
 
@@ -42,7 +46,7 @@ StorSimple Snapshot Manager のバックアップの形式は増分スナップ�
 
 ![StorSimple Snapshot Manager のアーキテクチャ](./media/storsimple-what-is-snapshot-manager/HCS_SSM_Overview.png)
 
-**図 1: StorSimple Snapshot Manager のアーキテクチャ**
+**StorSimple Snapshot Manager のアーキテクチャ**
 
 ## 各種ボリュームのサポート
 
@@ -103,7 +107,7 @@ StorSimple Snapshot Manager における VSS の実装は、SQL Server および
 
 ![VSS のプロセス](./media/storsimple-what-is-snapshot-manager/HCS_SSM_VSS_process.png)
 
-**図 2: Windows ボリューム シャドウ コピー サービスのプロセス**
+**Windows ボリューム シャドウ コピー サービスのプロセス**
 
 ## バックアップの種類とバックアップ ポリシー
 
@@ -152,4 +156,4 @@ StorSimple Snapshot Manager を使用して、今後予定されているバッ�
 
 - [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) をダウンロードする。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

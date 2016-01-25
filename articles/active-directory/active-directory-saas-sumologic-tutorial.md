@@ -1,6 +1,6 @@
 <properties 
     pageTitle="チュートリアル: Azure Active Directory と SumoLogic の統合 | Microsoft Azure" 
-    description="SumoLogic と Azure Active Directory を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法を説明します。" 
+    description="Azure Active Directory で SumoLogic を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法を説明します。" 
     services="active-directory" 
     authors="MarkusVi"  
     documentationCenter="na" 
@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と SumoLogic の統合
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   SumoLogic テナント
   
-このチュートリアルを完了すると、SumoLogic に割り当てた Azure AD ユーザーは、SumoLogic 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、SumoLogic に割り当てた Azure AD ユーザーは、SumoLogic 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -38,7 +38,7 @@
 
 ###SumoLogic のアプリ統合を有効にするには、次の手順に従います。
 
-1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-sumologic-tutorial/IC700993.png "Active Directory")
 
@@ -50,7 +50,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-sumologic-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-sumologic-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -66,11 +66,11 @@
 
 ##シングル サインオンの構成
   
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、SumoLogic で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書を SumoLogic テナントにアップロードする必要があります。この手順に慣れていない場合は、「[バイナリ証明書をテキスト ファイルに変換する方法](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、SumoLogic で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書を SumoLogic テナントにアップロードする必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **SumoLogic** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure AD ポータルの **SumoLogic** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-sumologic-tutorial/IC778552.png "シングル サインオンの構成")
 
@@ -108,9 +108,9 @@
     2.  **[Debug Mode]** を選択します。
     3.  Azure ポータルの **[SumoLogic でのシングル サインオンの構成]** ダイアログ ページで **[発行者 URL]** の値をコピーし、それを **[Issuer]** テキスト ボックスに貼り付けます。
     4.  Azure ポータルの **[SumoLogic でのシングル サインオンの構成]** ダイアログ ページで **[認証要求 URL]** の値をコピーし、それを **[Authn Request URL]** テキスト ボックスに貼り付けます。
-    5.  ダウンロードした証明書から **Base-64 でエンコードされた**ファイルを作成します。  
+    5.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
-        >[AZURE.TIP]詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
+        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
     6.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
     7.  **[Email Attribute]** として、**[Use SAML subject]** を選択します。
@@ -130,7 +130,7 @@ Azure AD ユーザーが SumoLogic にログインできるようにするには
 
 1.  **SumoLogic** テナントにログインします。
 
-2.  **[管理]、[ユーザー]** の順にクリックします。
+2.  **[Manage Users]** に移動します。
 
     ![ユーザー](./media/active-directory-saas-sumologic-tutorial/IC778561.png "ユーザー")
 
@@ -161,10 +161,10 @@ Azure AD ユーザーが SumoLogic にログインできるようにするには
 
     ![ユーザーの割り当て](./media/active-directory-saas-sumologic-tutorial/IC778564.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-sumologic-tutorial/IC767830.png "あり")
+    ![あり](./media/active-directory-saas-sumologic-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

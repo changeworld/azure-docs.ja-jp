@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="JavaScript" 
 	ms.topic="article" 
-	ms.date="10/30/2015" 
+	ms.date="01/08/2016" 
 	ms.author="bradygaster"/>
 
 # HTML および JavaScript を使用した Azure API アプリの実行
@@ -34,7 +34,7 @@
 
 ## CORS の有効化
 
-通常、CORS (クロス オリジン リソース共有) は、API 自体ではなく別のホストから提供される HTML アプリケーションで必要となります。API Apps には、CORS を有効にするためのオプションが 2 つ以上あります。このセクションでは、これらのオプションの概要を説明します。
+通常、CORS (クロス オリジン リソース共有) は、API 自体ではなく別のホストから提供される HTML アプリケーションで必要となります。API アプリには、CORS を有効にするためのオプションが 2 つ以上あります。このセクションでは、これらのオプションの概要を説明します。
 
 ### API アプリ ゲートウェイの CORS の有効化
 
@@ -72,7 +72,7 @@ API アプリ ゲートウェイは、Azure プレビュー ポータルを使�
 
 ### Web API コードでの CORS の有効化
 
-Web API で CORS を有効にするプロセスについては、[ASP.NET Web API 2 でのクロスオリジン要求の有効化](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)に関する ASP.NET の記事で詳しく説明されています。ASP.NET Web API を使用してビルドされた API Apps の場合、プロセスはまったく同じですが、以下に簡単にまとめています。API アプリは既に正しく設定されているため、CORS が有効になっている場合は、このセクションをスキップしてください。
+Web API で CORS を有効にするプロセスについては、[ASP.NET Web API 2 でのクロスオリジン要求の有効化](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)に関する ASP.NET の記事で詳しく説明されています。ASP.NET Web API を使用してビルドされた API アプリの場合、プロセスはまったく同じですが、以下に簡単にまとめています。API アプリは既に正しく設定されているため、CORS が有効になっている場合は、このセクションをスキップしてください。
 
 1. CORS 機能は、[Microsoft.AspNet.WebApi.Cors](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Cors/) NuGet パッケージによって提供されています。これをインストールするには、**Package Manager Console** を開いて、次の PowerShell スクリプトを実行します。 
 
@@ -373,4 +373,4 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 この例は、API アプリへの認証されていないアクセスを示します。App Service での認証については、[API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

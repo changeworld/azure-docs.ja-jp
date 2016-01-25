@@ -1,11 +1,11 @@
 <properties 
-	pageTitle="Azure 上の Linux での Cassandra の実行 | Microsoft Azure"
-	description="Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法"
-	services="virtual-machines"
-	documentationCenter="nodejs"
-	authors="rmcmurray"
-	manager="wpickett"
-	editor=""
+	pageTitle="Azure 上の Linux での Cassandra の実行 | Microsoft Azure" 
+	description="Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法" 
+	services="virtual-machines" 
+	documentationCenter="nodejs" 
+	authors="rmcmurray" 
+	manager="wpickett" 
+	editor="" 
 	azure-service-management"/>
 
 <tags 
@@ -14,9 +14,8 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/20/2015" 
+	ms.date="01/09/2016" 
 	ms.author="robmcm"/>
-
 
 # Azure 上の Linux で Cassandra を実行して Node.js からアクセス 
 
@@ -40,7 +39,6 @@ Microsoft Azure のネットワークでは、ネットワークのセキュリ�
 - 各 Cassandra ノードには、固定の内部 IP アドレスが必要である
 
 Cassandra は、単一の Azure リージョンにデプロイすることも、ワークロードを分散するために複数のリージョンにデプロイすることもできます。複数リージョンのデプロイメント モデルは、エンド ユーザーから地理的により近い場所で、同一の Cassandra インフラストラクチャを介してサービスを提供するために利用されています。Cassandra 組み込みのノード レプリケーション機能は、複数のデータ センターからのマルチマスターの同期書き込みを処理し、アプリケーションに一貫性のあるデータのビューを提供します。複数リージョン デプロイメントは、Azure サービスの広範なシステム停止のリスクの軽減にも役立ちます。Cassandra の一貫性制御の自由度の高さとレプリケーション トポロジは、アプリケーションの多様な RPO ニーズに対応します。
-
 
 ### 単一リージョン デプロイメント
 まず単一リージョン デプロイメントから学習し、その後、複数リージョン モデルを作成します。Azure の仮想ネットワークは、上記で説明したネットワーク セキュリティ要件を実現するための分離サブネットの作成に使用されます。ここでは、Ubuntu 14.04 LTS と Cassandra 2.08 を使用する場合の単一リージョン デプロイメントの作成のプロセスについて説明しますが、このプロセスは、Linux の他のバリエーションにも簡単に応用できます。単一リージョン デプロイメントのシステムの特徴を次に示します。
@@ -325,7 +323,7 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
 
 データと Web のサブネットは、ネットワーク セキュリティ グループを使用して保護できます。ただし、ネットワーク セキュリティ グループについては、この記事では取り扱っていません。
 
-**手順 2. Virtual Machines のプロビジョニング**先ほど作成したイメージを使用して、クラウド サーバー "hk-c-svc-west" に次の Virtual Machines を作成し、次に示すように、対応する各サブネットにバインドします。
+**手順 2. 仮想マシンのプロビジョニング**先ほど作成したイメージを使用して、クラウド サーバー "hk-c-svc-west" に次の仮想マシンを作成し、次に示すように、対応する各サブネットにバインドします。
 
 <table>
 <tr><th>コンピューター名    </th><th>サブネット	</th><th>IP アドレス	</th><th>可用性セット</th><th>DC/ラック</th><th>シード?</th></tr>
@@ -405,7 +403,7 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
 		    Write-Host "created $vmName"     
 		}
 
-**手順 3. 各 VM で Cassandra を構成**
+**手順 3: 各 VM での Cassandra の構成**
 
 VM にログインし、次の処理を行います。
 
@@ -463,7 +461,7 @@ VM にログインし、次の処理を行います。
 
 手順 4. で作成したキースペースで、replication\_factor を 3 にして SimpleStrategy が 使用されることに注意してください。単一データ センター デプロイメントには SimpleStrategy の使用が、複数データ センター デプロイメントには NetworkTopologyStrategy の使用が推奨されています。replication\_factor を 3 にすると、ノード障害へのフォールト トレランスを確保できます。
 
-##<a id="tworegion"> </a>複数リージョン デプロイメント プロセス
+##<a id="tworegion"> </a>複数リージョン デプロイ プロセス
 完了した単一リージョン デプロイメントを利用して、同じ処理を繰り返し、2 番目のリージョンをインストールします。単一リージョン デプロイメントと複数リージョン デプロイメントの主な違いは、リージョン間通信のための VPN トンネルのセットアップです。ここでは、最初にネットワーク インストールを実行してから、VM をプロビジョニングし、Cassandra を構成します。
 
 ###手順 1. 2 つ目のリージョンでの Virtual Network の作成
@@ -507,6 +505,7 @@ Azure クラシック ポータルから、各 VNET を選択し、[構成] を�
 
 ###手順 4. VNET1 と VNET2 にゲートウェイを作成
 両方の仮想ネットワークのダッシュボードで、[ゲートウェイの作成] をクリックして、VPN Gateway のプロビジョニング プロセスをトリガーします。数分後に、各仮想ネットワークのダッシュボードに、実際のゲートウェイ アドレスが表示されます。
+
 ###手順 5. それぞれのゲートウェイ アドレスで "ローカル" ネットワークを更新###
 両方のローカル ネットワークを編集して、プレースホルダー ゲートウェイ IP アドレスを先ほどプロビジョニングしたゲートウェイの実際の IP アドレスに置き換えます。次のマッピングを使用します。
 
@@ -519,10 +518,10 @@ Azure クラシック ポータルから、各 VNET を選択し、[構成] を�
 ###手順 6. 共有キーの更新
 次の Powershell スクリプトを使用して、各 VPN Gateway の IPSec キーを更新します [両方のゲートウェイの安全キーを使用します]: Set-AzureVNetGatewayKey -VNetName hk-vnet-east-us -LocalNetworkSiteName hk-lnet-map-to-west-us -SharedKey D9E76BKK Set-AzureVNetGatewayKey -VNetName hk-vnet-west-us -LocalNetworkSiteName hk-lnet-map-to-east-us -SharedKey D9E76BKK
 
-###手順 6. VNET 間接続の確立
+###手順 7: VNET 間接続の確立
 Azure クラシック ポータルで、両方の仮想ネットワークの [ダッシュボード] メニューを使用して、ゲートウェイ間接続を確立します。下部のツールバーで、[接続] メニュー項目を使用します。数分後に、ダッシュボードに、接続の詳細情報がグラフィックで表示されます。
 
-###手順 7. リージョン 2 への仮想マシンの作成 
+###手順 8: リージョン 2 での仮想マシンの作成 
 リージョン 1 のデプロイメントで説明された手順と同じ方法で Ubuntu イメージを作成、または、イメージ VHD ファイルをリージョン 2 にある Azure ストレージ アカウントにコピーしてイメージを作成します。このイメージを使用して、新しいクラウド サービス hk-c-svc-east-us に、次のリストの仮想マシンを作成します。
 
 
@@ -540,16 +539,19 @@ Azure クラシック ポータルで、両方の仮想ネットワークの [�
 
 
 リージョン 1 と同じ手順に従います。ただし、アドレス空間は 10.2.xxx.xxx を使用します。
-###手順 8. 各 VM で Cassandra を構成
+
+###手順 9: 各 VM での Cassandra の構成
 VM にログインし、次の処理を行います。
 
 1. $CASS\_HOME/conf/cassandra-rackdc.properties を編集して、次の形式でデータ センターとラックのプロパティを指定します。dc =EASTUS rack =rack1
 2. cassandra.yaml を編集して、シード ノードを構成します。Seeds: "10.1.2.4,10.1.2.6,10.1.2.8,10.1.2.10,10.2.2.4,10.2.2.6,10.2.2.8,10.2.2.10"
-###手順 9. Cassandra の開始
+
+###手順 10: Cassandra の開始
 各 VM にログインし、次のコマンドを実行して、バック グラウンドで Cassandra を開始します。$CASS\_HOME/bin/cassandra
 
 ## 複数リージョン クラスターのテスト
 ここまでで Cassandra が、各 Azure リージョンに 8 ノードの計 16 ノードにデプロイされました。これらのノードは共通のクラスター名とシード ノード構成により、同じクラスター内に存在します。次のプロセスを使用して、クラスターをテストします。
+
 ###手順 1. PowerShell を使用して両方のリージョンの内部ロード バランサーの IP アドレスを取得
 - Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-west-us"
 - Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-east-us"  
@@ -698,6 +700,4 @@ Microsoft Azure は、この演習でもわかるように、オープン ソー
 - [http://www.datastax.com](http://www.datastax.com) 
 - [http://www.nodejs.org](http://www.nodejs.org) 
 
- 
-
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

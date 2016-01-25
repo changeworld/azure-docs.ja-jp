@@ -18,27 +18,27 @@
 
 # Visual Studio から Service Fabric クラスターにセキュリティ保護された接続を構成する
 
-アクセス制御ポリシーが構成されている Service Fabric クラスターに Visual Studio を使用して安全にアクセスする方法について説明します。
+アクセス制御ポリシーが構成されている Azure Service Fabric クラスターに Visual Studio を使用して安全にアクセスする方法について説明します。
 
 ## クラスターの接続の種類
 
 Azure Service Fabric クラスターでサポートされている接続には、**セキュリティ保護されていない**接続と **x509 証明書に基づいて**セキュリティ保護された接続の 2 つの種類があります (Service Fabric クラスターがオンプレミスでホストされている場合は、**Windows** 認証と **dSTS** 認証もサポートされます)。 クラスターの作成中に、クラスターの接続の種類を構成する必要があります。作成した接続の種類を後で変更することはできません。
 
-Visual Studio Service Fabric Tools は、発行のためのクラスターへの接続向けにすべての認証の種類をサポートしています。セキュリティ保護された Service Fabric クラスターをセットアップする方法については、[Azure ポータルから Service Fabric クラスターを設定する方法](service-fabric-cluster-creation-via-portal.md)に関するページを参照してください。
+Visual Studio Service Fabric Tools は、クラスターに接続して発行するために必要なすべての種類の認証をサポートしています。セキュリティ保護された Service Fabric クラスターをセットアップする方法については、「[Azure ポータルからの Service Fabric クラスターのセットアップ](service-fabric-cluster-creation-via-portal.md)」を参照してください。
 
 ## 発行プロファイルにクラスター接続を構成する
 
-Visual Studio から Service Fabric プロジェクトを発行するには、**[発行]** ダイアログ ボックスで、**[接続エンドポイント]** セクションの **[選択]** をクリックして Azure Service Fabric クラスターを選択します。Azure アカウントにサインインし、サブスクリプションで利用可能な既存のクラスターを選択できます。
+Visual Studio から Service Fabric プロジェクトを発行するには、**[Service Fabric アプリケーションの発行]** ダイアログ ボックスで、**[接続エンドポイント]** セクションの **[選択]** をクリックして Azure Service Fabric クラスターを選択します。Azure アカウントにサインインし、サブスクリプションで利用可能な既存のクラスターを選択できます。
 
-![the publish dialog allows users to configure Service Fabric connection][publishdialog]
+![**[Service Fabric アプリケーションの発行]** ダイアログ ボックスを使用して Service Fabric 接続を構成します。][publishdialog]
 
 **[Service Fabric クラスターの選択]** ダイアログ ボックスによって自動的にクラスターの接続が検証されます。検証に成功した場合、システムに正しい証明書がインストールされていてクラスターに安全に接続できるか、クラスターがセキュリティ保護されていないことを意味しています。検証に失敗した場合は、ネットワークに問題が発生しているか、システムが正しく構成されていないためにセキュリティ保護されたクラスターに接続できない可能性があります。
 
-![the Select Service Fabric cluster dialog allows users to configure connection by choosing an existing or creating a new service fabric cluster connection][selectsfcluster]
+![**[Service Fabric クラスターの選択]** ダイアログ ボックスで、既存の Service Fabric クラスター接続を構成するか、新しいクラスター接続を作成して構成することができます。][selectsfcluster]
 
 ### セキュリティ保護されたクラスターに接続するには
 
-1.	接続先のクラスターによって信頼されているクライアント証明書のいずれかにアクセスできることを確認します。証明書は通常、Personal Information Exchange (.pfx) ファイルとして共有されています。クライアントへのアクセスを許可するようにサーバーを構成する方法については、[Azure ポータルから Service Fabric クラスターをセットアップする方法](service-fabric-cluster-creation-via-portal.md)に関するページを参照してください。
+1.	接続先のクラスターによって信頼されているクライアント証明書のいずれかにアクセスできることを確認します。証明書は通常、Personal Information Exchange (.pfx) ファイルとして共有されています。クライアントへのアクセスを許可するようにサーバーを構成する方法については、「[Azure ポータルからの Service Fabric クラスターのセットアップ](service-fabric-cluster-creation-via-portal.md)」を参照してください。
 
 2.	信頼された証明書をインストールします。そのためには、.pfx ファイルをダブルクリックするか、PowerShell スクリプト Import-PfxCertificate を使用して証明書をインポートします。証明書を **Cert:\\LocalMachine\\My** にインストールします。証明書のインポート時、すべての既定設定をそのまま使用して問題ありません。
 
@@ -76,4 +76,4 @@ Service Fabric クラスターにアクセスする方法の詳細について�
 [publishdialog]: ./media/service-fabric-visualstudio-configure-secure-connections/publishdialog.png
 [selectsfcluster]: ./media/service-fabric-visualstudio-configure-secure-connections/selectsfcluster.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

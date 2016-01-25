@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="09/28/2015" 
+    ms.date="01/07/2016" 
     ms.author="elizapo" />
 
 
@@ -58,11 +58,11 @@ Azure RemoteApp は、Microsoft アカウントと Azure Active Directory アカ
 
 | アカウントの種類 | | クラウド | クラウド + VNET | ハイブリッド |
 |-----------------------------------|-------------------------------------------------------------|-------|--------------|-------|
-| Microsoft アカウント | | あり | あり | いいえ |
+| Microsoft アカウント | | あり | はい | いいえ |
 | Azure Active Directory (Azure AD) | | | | |
-| | Azure AD のみ | あり | あり | いいえ |
+| | Azure AD のみ | あり | はい | いいえ |
 | | パスワード同期がある AD Connect | あり | あり | あり |
-| | パスワード同期がない AD Connect | あり | あり | いいえ |
+| | パスワード同期がない AD Connect | あり | はい | いいえ |
 | | AD FS がある AD Connect | あり | あり | あり |
 | | サード パーティの Azure サポート ID プロバイダー (Ping など) | あり | あり | あり |
 | Multi-Factor Authentication | | あり | あり | あり |
@@ -91,4 +91,4 @@ Azure AD および Active Directory の構成に必要な手順については�
 
 「[クラウドのコレクションを作成する](remoteapp-create-cloud-deployment.md)」または「[ハイブリッドのコレクションを作成する](remoteapp-create-hybrid-deployment.md)」で作成してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

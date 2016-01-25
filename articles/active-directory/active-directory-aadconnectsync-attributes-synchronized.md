@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/24/2015"
+	ms.date="01/08/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -417,7 +417,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 
 | 属性名| ユーザー| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
-| msDS-ExternalDirectoryObject| ○| | | Azure AD の cloudAnchor から派生します。|
+| msDS ExternalDirectoryObjectID| ○| | | Azure AD の cloudAnchor から派生します。これは Exchange 2016 で新たに追加されました。|
 | msExchArchiveStatus| ○| | | オンライン アーカイブ: 顧客によるメールのアーカイブを有効にします。|
 | msExchBlockedSendersHash| ○| | | フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。|
 | msExchSafeRecipientsHash| ○| | | フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。|
@@ -435,4 +435,4 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

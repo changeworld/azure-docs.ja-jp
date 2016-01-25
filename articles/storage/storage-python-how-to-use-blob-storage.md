@@ -5,7 +5,7 @@
 	documentationCenter="python"
 	authors="emgerner-msft"
 	manager="wpickett"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -115,4 +115,4 @@ BLOB からデータをダウンロードするには、**get\_blob\_to\_path**�
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
 [Python Azure Storage パッケージ]: https://pypi.python.org/pypi/azure-storage
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

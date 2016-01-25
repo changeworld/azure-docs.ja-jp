@@ -1,6 +1,6 @@
 <properties
-   pageTitle="高信頼アクターの再入"
-   description="Service Fabric 高信頼アクターの再入の概要"
+   pageTitle="Reliable Actors の再入 | Microsoft Azure"
+   description="Service Fabric Reliable Actors の再入の概要"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -17,8 +17,8 @@
    ms.author="amanbha"/>
 
 
-# 高信頼アクターの再入
-Fabric アクターは、既定で、論理呼び出しコンテキスト ベースの再入を使用できます。これにより、アクターは、同じ呼び出しコンテキストのチェーンにある場合は再入可能になります。たとえば、アクター A がアクター C にメッセージを送信するアクター B にメッセージを送信する場合です。アクター C がアクター A を呼び出す場合は、メッセージ処理の一環として、メッセージが許可されるように再入可能です。処理が完了するまで、アクター A では異なる呼び出しコンテキストの一部である他のメッセージがブロックされます。
+# Reliable Actors の再入
+既定では、Fabric Actors ランタイムは、論理呼び出しコンテキスト ベースの再入を許可します。これにより、アクターは、同じ呼び出しコンテキストのチェーンにある場合は再入可能になります。たとえば、アクター A がアクター C にメッセージを送信するアクター B にメッセージを送信するとします。メッセージ処理の一環として、アクター C がアクター A を呼び出した場合、メッセージは再入可能であるため、再入が許可されます。処理が完了するまで、アクター A では別の呼び出しコンテキストの一部である他のメッセージがブロックされます。
 
 論理呼び出しコンテキスト ベースの再入を許可しないようにするアクターは、アクター クラスを `ReentrantAttribute(ReentrancyMode.Disallowed)` で装飾することで無効にできます。
 
@@ -30,7 +30,7 @@ public enum ReentrancyMode
 }
 ```
 
-次のコードは再入モードを `ReentrancyMode.Disallowed` に設定するアクター クラスを示します。ここでは、アクターが別のアクターに再入メッセージを送信する場合、`FabricException` の型の例外がスローされます。
+次のコードは、再入モードを `ReentrancyMode.Disallowed` に設定したアクター クラスを示しています。この場合、アクターが別のアクターに再入メッセージを送信すると、`FabricException` 型の例外がスローされます。
 
 ```csharp
 [Reentrant(ReentrancyMode.Disallowed)]
@@ -40,4 +40,4 @@ class VoicemailBoxActor : StatefulActor<VoicemailBox>, IVoicemailBoxActor
 }
 ```
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse での統計の管理
  SQL Data Warehouse では、統計を使用して分散クエリのさまざまな実行方法のコストを評価します。統計が正確であれば、クエリ オプティマイザーはクエリのパフォーマンスを向上させる高品質のクエリ プランを生成できます。
@@ -459,4 +459,4 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW\_STATISTICS() が�
 [sys.table\_types]: https://msdn.microsoft.com/library/bb510623.aspx
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
 
-<!---HONumber=AcomDC_0107_2016--->
+<!---HONumber=AcomDC_0114_2016--->

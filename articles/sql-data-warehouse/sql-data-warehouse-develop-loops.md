@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SDL Data Warehouse でのループ
 SQL Data Warehouse は、ステートメント ブロックを繰り返し実行するための [WHILE][] ループをサポートします。これは、指定された条件が true の場合に限り、またはコードが `BREAK` キーワードを使用してループを終了するまで実行されます。ループは、SQL コードで定義されているカーソルを置き換えるために特に便利です。また、SQL コードで記述されているほとんどすべてのカーソルは、高速順方向、読み取り専用など豊富です。そのため、カーソルを置き換える必要がある場合、[WHILE] ループは多くの選択肢があります。
@@ -82,4 +82,4 @@ DROP TABLE #tbl;
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

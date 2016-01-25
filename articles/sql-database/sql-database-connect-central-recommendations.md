@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/13/2015" 
+	ms.date="01/07/2016" 
 	ms.author="genemi"/>
 
 
@@ -128,7 +128,9 @@ Azure システムには、SQL Database サービス内で負荷の大きいワ�
 ADO.NET を使用するクライアントの*ブロック期間*については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
 
 
-再試行ロジックについて示すコード サンプルについては、「[SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)」をご覧ください。
+再試行ロジックを示すコード サンプルについては、次の記事をご覧ください。
+
+- [SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
 
 
 ### 一時障害のエラー番号
@@ -142,7 +144,13 @@ SQL Database でエラーが発生した場合、[SqlException](http://msdn.micr
  - たとえば、「<br/>*サーバー 'theserver' 上のデータベース 'mydatabase' は現在使用できません。*」などのような番号 40613 のエラーが発生した場合、再試行されます。
 
 
-詳細については、次を参照してください「[Azure SQL Database 開発: 操作方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)」、「[Azure SQL Database への接続に関する問題のトラブルシューティング](http://support.microsoft.com/kb/2980233/)」
+詳細については、以下を参照してください。
+
+- [Azure SQL Database 開発作業の方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)
+
+<!--  (per Penny Lee, 2016/01/07.  MightyPen==GeneMi)
+- [Troubleshoot connection problems to Azure SQL Database](http://support.microsoft.com/kb/2980233/)
+-->
 
 
 <a id="e-technologies" name="e-technologies"></a>
@@ -169,4 +177,4 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 
 - [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0114_2016-->

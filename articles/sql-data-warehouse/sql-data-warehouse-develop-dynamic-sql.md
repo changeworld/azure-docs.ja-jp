@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse での動的 SQL
 SQL Data Warehouse のアプリケーション コードを開発する際に、柔軟性が高く汎用的なモジュール ソリューションを提供するための動的 SQL を使用する必要のある場合があります。現時点では、SQL Data Warehouse は BLOB データ型をサポートしていません。これにより、blob 型には varchar (max) と nvarchar (max) の両方の型が含まれるので、文字列のサイズが制限される場合があります。大量の文字列を構築するときにアプリケーション コードでこれらの型を使用した場合、コードをチャンクに分割し、代わりに EXEC ステートメントを使用する必要があります。
@@ -46,4 +46,4 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

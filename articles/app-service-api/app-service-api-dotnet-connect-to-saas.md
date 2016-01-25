@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Azure App Service での ASP.NET API アプリから SaaS プラットフォームへの接続
@@ -427,7 +427,7 @@ API アプリから Dropbox API を呼び出すことができるようにする
 
 ![](./media/app-service-api-dotnet-connect-to-saas/http405.png)
 
-メソッドが許可されていないことを示す 405 エラーが表示されるのは、クライアントが非 SSL の HTTP POST 要求を試みたところ、ゲートウェイにより **https://* にリダイレクトされ、その結果 GET 要求が返されることが原因です。同意のリンクを取得するための URL で受け取ることができるのは、POST 要求のみです。
+メソッドが許可されていないことを示す 405 エラーが表示されるのは、クライアントが非 SSL の HTTP POST 要求を試みたところ、ゲートウェイにより *https://* にリダイレクトされ、その結果 GET 要求が返されることが原因です。同意のリンクを取得するための URL で受け取ることができるのは、POST 要求のみです。
 
 ### <a id="400"></a>Dropbox ログイン ページの代わりに表示される HTTP エラー 400
 
@@ -451,7 +451,7 @@ Dropbox ログイン後のリダイレクト URL は、次の例のようにな�
 
 SaaS プラットフォームに接続する API アプリのコード記述と構成の方法について説明しました。API アプリでの認証を処理する方法に関するその他のチュートリアルへのリンクについては、[API Apps と Mobile Apps の認証に関するページの「次のステップ」](../app-service/app-service-authentication-overview.md#next-steps)を参照してください。
 
-[Azure preview portal]: https://portal.azure.com/
-[Azure portal]: https://manage.windowsazure.com/
+[Azure プレビュー ポータル]: https://portal.azure.com/
+[Azure ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="11/06/2015"
+ms.date="01/08/2016"
 ms.author="larryfr"/>
 
 #HDInsight の Pig で DataFu を使用する
@@ -36,7 +36,7 @@ DataFu は、Maven リポジトリからダウンロードしてインストー�
 
 1. SSH を使用して、Linux ベースの HDInsight クラスターに接続します。HDInsight での SSH の使用方法の詳細については、次のいずれかのドキュメントをご覧ください。
 
-    * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
     * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
     
 2. 次のコマンドを使用して wget ユーティリティで DataFu jar ファイルをダウンロードするか、またはリンクをコピーしてブラウザーに貼り付けてダウンロードを開始します。
@@ -51,7 +51,7 @@ DataFu は、Maven リポジトリからダウンロードしてインストー�
 
 ##Pig で DataFu を使用する
 
-読者は HDInsight での Pig の使用に慣れていることが前提なので、このセクションの手順では Pig Latin ステートメントのみを示し、クラスターでそれを使用する方法の手順は示しません。HDInsight で Pig を使用する方法の詳細については、「[HDInsight での Pig の使用](hdinsight-use-pig.md)」を参照してください。
+読者は HDInsight での Pig の使用に慣れていることが前提なので、このセクションの手順では Pig Latin ステートメントのみを示し、クラスターでそれを使用する方法の手順は示しません。HDInsight で Pig を使用する方法の詳細については、「[HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)」をご覧ください。
 
 > [AZURE.IMPORTANT]Linux ベースの HDInsight クラスター上の Pig から DataFu を使用する場合は、最初に、次の Pig Latin ステートメントを使用して jar ファイルを登録する必要があります。
 >
@@ -105,6 +105,6 @@ DataFu または Pig の詳細については、次のドキュメントを参�
 
 * [Apache DataFu Pig ガイド](http://datafu.incubator.apache.org/docs/datafu/guide.html)。
 
-* [HDInsight での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

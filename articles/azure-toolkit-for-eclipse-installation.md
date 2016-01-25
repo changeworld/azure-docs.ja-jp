@@ -1,20 +1,20 @@
 <properties
-    pageTitle="Azure Toolkit for Eclipse のインストール"
-    description="Azure Toolkit for Eclipse をインストールする方法について説明します。"
-    services=""
-    documentationCenter="java"
-    authors="rmcmurray"
-    manager="wpickett"
-    editor=""/>
+	pageTitle="Azure Toolkit for Eclipse のインストール"
+	description="Azure Toolkit for Eclipse をインストールする方法について説明します。"
+	services=""
+	documentationCenter="java"
+	authors="rmcmurray"
+	manager="wpickett"
+	editor=""/>
 
 <tags
-    ms.service="multiple"
-    ms.workload="na"
-    ms.tgt_pltfrm="multiple"
-    ms.devlang="Java"
-    ms.topic="article"
-    ms.date="11/19/2015" 
-    ms.author="robmcm"/>
+	ms.service="multiple"
+	ms.workload="na"
+	ms.tgt_pltfrm="multiple"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="01/09/2016" 
+	ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690946.aspx -->
 
@@ -26,30 +26,14 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 
 次の手順は、Azure Toolkit for Eclipse をインストールする方法を示しています。
 
-## 前提条件 ##
-
-* Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。
-* Java Developer Kit (JDK) v1.7 以降。 
-* オペレーティング システム - Azure Toolkit for Eclipse は、次のオペレーティング システムでテストされています。
-    * Windows 10
-    * Windows 8 および Windows 8.1
-    * Windows 7
-    * Windows Server 2012
-    * Windows Server 2008
-
-> [AZURE.IMPORTANT]Windows で Azure Toolkit for Eclipse を使用する場合は、Azure SDK 2.7 以降をインストールする必要があります。Azure SDK をインストールするためのオプションは 2 つあります。
-> 
-> * [Web プラットフォーム インストーラー (WebPI)][] を使用して、Azure SDK をダウンロードしてインストールできます。
-> * 最初の Azure デプロイ プロジェクトを作成するときに Azure SDK がインストールされていない場合は、必要なバージョンの Azure SDK が自動的にダウンロードされインストールされることを示すメッセージが表示されます。
-> 
-> Azure SDK は Windows でのみ必要です。
+[AZURE.INCLUDE [azure-toolkit-for-eclipse-prerequisites](../includes/azure-toolkit-for-eclipse-prerequisites.md)]
 
 ## Azure Toolkit for Eclipse をインストールするには ##
 
 1. Eclipse を起動します。
 2. Eclipse の中で、次の図に示すように、<strong>[Help]</strong> メニューをクリックし、<strong>[Install New Software]</strong> をクリックします。![][ic590123]
 3. <strong>[Available Software]</strong> ダイアログで、<strong>[Work with]</strong> ボックスに「<strong>http://dl.msopentech.com/eclipse</strong>」と入力し、<strong>Enter</strong> キーを押します。
-4. <strong>[Name]</strong> ウィンドウで、<strong>[ Azure Toolkit for Eclipse ]</strong> をオンにし、<strong>[Contact all update sites during install to find required software]</strong> をオフにします。画面は次のようになります。![][ic719482]
+4. <strong>[Name]</strong> ウィンドウで、<strong>[Azure Toolkit for Eclipse]</strong> をオンにし、<strong>[Contact all update sites during install to find required software]</strong> をオフにします。画面は次のようになります。![][ic719482]
 5. <strong>Azure Toolkit for Eclipse</strong> を展開すると、次の項目が表示されます。
     * **Azure Access Control Services Filter**: このコンポーネントは、Azure ACS でのアプリケーション ユーザーの認証をサポートします。
     * **Azure Common Plugin**: このコンポーネントには、他のコンポーネントが依存する共有機能が含まれています。
@@ -87,4 +71,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic590123]: ./media/azure-toolkit-for-eclipse-installation/ic590123.png
 [ic719482]: ./media/azure-toolkit-for-eclipse-installation/ic719482.png
 
-<!---------HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

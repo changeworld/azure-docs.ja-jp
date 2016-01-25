@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="index-page"
-	ms.date="09/16/2015"
+	ms.date="01/12/2016"
 	ms.author="josephd"/>
 
 # Azure ハイブリッド クラウド テスト環境
@@ -49,14 +49,8 @@
 [シミュレートされたハイブリッド テスト環境](../virtual-network/virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)は、インターネットへの直接接続やパブリック IP アドレスが容易に利用できない組織や個人のために、個別の Azure Virtual Network に簡略化されたオンプレミス ネットワークを構築して、VNet 間の VPN 通信に 2 つの仮想ネットワークを接続します。
 
 
-## その他のリソース
+## 次のステップ
 
-[Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
+- Azure インフラストラクチャ サービスでカスタムの開発/テスト デプロイメントまたは運用環境デプロイメントを設計するための[実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)を確認します。
 
-[Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-LOB-application.md)
-
-[Microsoft Azure での Office 365 ディレクトリ同期 (DirSync) のデプロイ](https://technet.microsoft.com/library/dn635310.aspx)
-
-[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

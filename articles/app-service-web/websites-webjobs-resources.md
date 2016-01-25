@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/14/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Azure WebJobs のドキュメント リソース
@@ -38,8 +38,8 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 * [Microsoft Azure Web ジョブ SDK の 1.1.0 RTM の発表](/blog/azure-webjobs-sdk-1-1-0-rtm/)
 * [Azure Web ジョブ SDK の使用](websites-dotnet-webjobs-sdk-get-started.md)
 * [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
-* [Web ジョブ SDK で Azure Blob Storage を使用する方法](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
-* [Web ジョブ SDK を使用して Azure Table Storage を使用する方法](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)
+* [Web ジョブ SDK で Azure BLOB ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
+* [Web ジョブ SDK を使用して Azure テーブル ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)
 * [Web ジョブ SDK で Azure Service Bus を使用する方法](websites-dotnet-webjobs-sdk-service-bus.md)
 * [Web ジョブ SDK で WebHook を使用する方法と、GitHub、IFTTT、HTTP の例](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/WebHooks-Walkthrough)
 * [Azure Web ジョブ SDK クイック リファレンス (PDF ダウンロード)](http://go.microsoft.com/fwlink/?LinkID=524028&clcid=0x409)
@@ -139,4 +139,4 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 * [Twitter](http://twitter.com/)。ハッシュタグ #AzureWebJobs を使用してください。
 * [Web ジョブのバグまたは問題を報告する](https://github.com/projectkudu/kudu/wiki/Reporting-WebJobs-issues)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

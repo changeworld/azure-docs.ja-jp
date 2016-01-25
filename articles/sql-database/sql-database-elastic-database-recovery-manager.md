@@ -21,7 +21,7 @@
 
 GSM と LSM はシャード化環境内の各データベースのマッピングを追跡します。GSM と LSM の間には中断が発生することがあります。そのような場合に、RecoveryManager クラスを使用して、中断を検出し、修復します。
 
-RecoveryManager クラスは、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library)に含まれています。
+RecoveryManager クラスは、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)に含まれています。
 
 
 ![シャード マップ][1]
@@ -157,4 +157,4 @@ geo フェールオーバーと復旧は一般的に、アプリケーション�
 [1]: ./media/sql-database-elastic-database-recovery-manager/recovery-manager.png
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

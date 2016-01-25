@@ -1,22 +1,22 @@
 <properties
     pageTitle="Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法"
     description="Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法について説明します。"
-	services="storage" 
-	documentationCenter="java" 
-	authors="rmcmurray" 
-	manager="wpickett" 
+	services="storage"
+	documentationCenter="java"
+	authors="rmcmurray"
+	manager="wpickett"
 	editor="jimbe" />
 
 <tags
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="11/19/2015" 
-	ms.author="v-dedomi"/>
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="01/11/2016"
+	ms.author="robmcm"/>
 
-#Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法
+# Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法
 
 Hudson 用の Azure スレーブ プラグインを使用して、分散されたビルドを実行するときにスレーブ ノードを Azure にプロビジョニングできます。
 
@@ -27,7 +27,7 @@ Hudson 用の Azure スレーブ プラグインを使用して、分散され�
 4. **[Search]** をクリックし、**[Azure]** と入力して、一覧を関連するプラグインに制限します。
 
 	使用可能なプラグインの一覧をスクロールする場合、Azure スレーブ プラグインは **[Others]** タブの **[Cluster Management and Distributed Build]** セクションで見つかります。
-	 
+
 5. **[Azure Slave Plugin]** チェックボックスをオンにします。
 6. **[インストール]** をクリックします。
 7. Hudson を再起動します。
@@ -81,7 +81,7 @@ Hudson 用の Azure スレーブ プラグインを使用して、分散され�
 5. サブスクリプション プロファイルからサブスクリプションID と管理証明書をコピーし、適切なフィールドに貼り付けます。
 
 	サブスクリプション ID と管理証明書をコピーするときは、値を囲む引用符は含めないでください。
-	
+
 6. **[Verify configuration]** をクリックします。
 7. 構成が正しいことが確認されたら、**[Save]** をクリックします。
 
@@ -100,7 +100,7 @@ Hudson 用の Azure スレーブ プラグインを使用して、分散され�
 
 5. **[Name]** フィールドにクラウド サービスの名前を指定します。指定した名前が既存のクラウド サービスを指す場合、VM はそのサービス内にプロビジョニングされます。それ以外の場合、Azure は新しいものを作成します。
 6. **[Description]** フィールドに、作成するテンプレートを説明するテキストを入力します。この情報は説明用としてのみ使用され、VM のプロビジョニングでは使用されません。
-7. **[Labels]** フィールドに、「**linux**」と入力します。このラベルは作成中のテンプレートを識別するために使用され、以降は Hudson ジョブを作成するときにテンプレートを参照するために使用されます。 
+7. **[Labels]** フィールドに、「**linux**」と入力します。このラベルは作成中のテンプレートを識別するために使用され、以降は Hudson ジョブを作成するときにテンプレートを参照するために使用されます。
 8. VM が作成されるリージョンを選択します。
 9. 適切な VM サイズを選択します。
 10. VM が作成されるストレージ アカウントを指定します。使用するクラウド サービスと同じリージョン内にあることを確認します。新しいストレージを作成する場合は、このフィールドを空白のままにすることができます。
@@ -118,11 +118,11 @@ Hudson 用の Azure スレーブ プラグインを使用して、分散され�
 	イメージ ファミリの一覧から選択する場合は、イメージ ファミリ名の最初の文字を (大文字と小文字を区別して) 入力します。たとえば、「**U**」と入力すると、Ubuntu Server ファミリの一覧が表示されます。一覧から選択すると、Jenkins は VM をプロビジョニングするときにそのファミリの最新バージョンのシステム イメージを使用します。
 
 	![OS ファミリの一覧](./media/azure-slave-plugin-for-hudson/hudson-oslist.png)
-	
+
 	代わりに使用するカスタム イメージがある場合は、そのカスタム イメージの名前を入力します。カスタム イメージの名前は一覧には表示されないため、名前が正しく入力されていることを確認する必要があります。
 
 	このチュートリアルでは、「**U**」と入力して Ubuntu イメージの一覧を表示し、**[Ubuntu Server 14.04 LTS]** を選択します。
- 
+
 14. **[Launch method]** で、**[SSH]** を選択します。
 15. 次のスクリプトをコピーして **[Init script]** フィールドに貼り付けます。
 
@@ -152,7 +152,7 @@ Hudson 用の Azure スレーブ プラグインを使用して、分散され�
 		sudo apt-get install -y ant
 
 	**Init スクリプト**は、VM が作成された後で実行されます。この例では、スクリプトは、Java、git、および ant をインストールします。
-	
+
 16. **[Username]** フィールドと **[Password]** フィールドに、VM に作成される管理者アカウント用の優先値を入力します。
 17. **[Verify Template]** をクリックして、指定したパラメーターが有効であることを確認します。
 18. **[Save]** をクリックします。
@@ -162,12 +162,12 @@ Hudson 用の Azure スレーブ プラグインを使用して、分散され�
 
 このセクションでは、Azure のスレーブ ノードで実行される Hudson タスクを作成します。
 
-1. Hudson ダッシュボードで、**[New Job]** をクリックします。 
+1. Hudson ダッシュボードで、**[New Job]** をクリックします。
 2. 作成するジョブの名前を入力します。
 3. ジョブの種類として、**[Build a free-style software job]** を選択します。
 4. **[OK]** をクリックします。
 5. ジョブを構成するページで、**[Restrict where this project can be run]** を選択します。
-6. **[Node and label menu]** を選択し、**[linux]** を選択します (このラベルは、前のセクションで仮想マシンテンプレートを作成するときに指定したものです)。 
+6. **[Node and label menu]** を選択し、**[linux]** を選択します (このラベルは、前のセクションで仮想マシンテンプレートを作成するときに指定したものです)。
 
 7. **[Build]** セクションで、**[Add build step]** をクリックし、**[Execute shell]** を選択します。
 8. 次のスクリプトを編集します。**(your github account name)**、**(your project name)**、および **(your project directory)** を適切な値に置き換え、編集後のスクリプトを次に表示されるテキスト領域に貼り付けます。
@@ -188,7 +188,7 @@ Hudson 用の Azure スレーブ プラグインを使用して、分散され�
   			git clone https://github.com/(your github account name)/(your project name).git
 
 		fi
-		
+
 		# change directory to project
 
 		cd $currentDir/(your project directory)
@@ -198,19 +198,10 @@ Hudson 用の Azure スレーブ プラグインを使用して、分散され�
 		#Execute build task
 
 		ant
-		
+
 9. **[Save]** をクリックします。
-10. Hudson ダッシュボードで、作成したばかりのジョフ゛を探し、**[Schedule a build]** アイコンをクリックします。 
+10. Hudson ダッシュボードで、作成したばかりのジョフ゛を探し、**[Schedule a build]** アイコンをクリックします。
 
 Hudson は、前のセクションで作成したテンプレートを使用してスレーブ ノードを作成し、このタスク用のビルド手順に指定されたスクリプトを実行します。
 
-
-
-
-
-
-  
-
-  
-
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0114_2016-->

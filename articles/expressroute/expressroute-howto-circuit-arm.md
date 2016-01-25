@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/04/2015"
+   ms.date="01/12/2016"
    ms.author="cherylmc"/>
 
 # Azure リソース マネージャーと PowerShell を使用して ExpressRoute 回線を作成および変更する
@@ -63,7 +63,7 @@
 
 	ExpressRoute 回線を作成する前に、接続プロバイダー、サポートされている場所、帯域幅オプションのリストが必要になります。PowerShell コマンドレット *Get-AzureRmExpressRouteServiceProvider* を実行すると、この情報が返されます。この情報は後の手順で使用します。
 
-		PS C:\> Get-AzureRmExpressRouteServiceProvider
+		Get-AzureRmExpressRouteServiceProvider
 
 	接続プロバイダーがそこにリストされているかどうかを確認します。回線を作成する際に必要になるため、以下の項目を書き留めておいてください。
 	
@@ -93,13 +93,13 @@
 
 	応答にはサービス キーが含まれます。以下を実行することで、すべてのパラメーターの詳細な説明を取得できます。
 
-		get-help New-AzureRmExpressRouteCircuit -detailed 
+		Get-Help New-AzureRmExpressRouteCircuit -detailed 
 
 4. **すべての ExpressRoute 回線の一覧を表示します。**
 
 	*Get-AzureRmExpressRouteCircuit* コマンドを実行することで、作成したすべての ExpressRoute 回線の一覧を取得できます。
 
-		#Getting service key
+		
 		Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
 	応答は、以下の例のようになります。
@@ -159,7 +159,7 @@
 
 	以下を実行することで、すべてのパラメーターの詳細な説明を取得できます。
 
-		get-help Get-AzureRmExpressRouteCircuit -detailed 
+		Get-Help Get-AzureRmExpressRouteCircuit -detailed 
 
 5. **プロビジョニングのためにサービス キーを接続プロバイダーに送信します。**
 
@@ -215,17 +215,22 @@
 
 6. **ルーティング構成を作成します。**
 	
-	詳しい手順については、[ExpressRoute 回線のルーティング構成 (回線ピアリングの作成と変更)](expressroute-howto-routing-arm.md) に関するページを参照してください。
+	手順については、「[Azure リソース マネージャーと PowerShell を使用した ExpressRoute 回線のルーティングの作成および変更](expressroute-howto-routing-arm.md)」をご覧ください。
 
-7. **ExpressRoute 回線への VNet のリンク**
+>[AZURE.IMPORTANT]次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IPVPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。そのような場合は、ユーザーがピアリングを作成したり、管理したりすることはできません。
 
-	次に、ExpressRoute 回線に VNet をリンクします。Azure リソース マネージャーのデプロイメント モードを使用している場合は、[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)を使用できます。PowerShell の手順は現在作成中です。
+
+7. **ExpressRoute 回線への VNet のリンク** 
+
+	次に、ExpressRoute 回線に VNet をリンクします。手順については、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」をご覧ください。
 
 ##  ExpressRoute 回線の状態を取得するには
 
 この情報は、*Get-AzureRmExpressRouteCircuit* コマンドレットを使用していつでも取得できます。パラメーターを指定せずに呼び出しを実行すると、すべての回線が一覧表示されます。
 
 		Get-AzureRmExpressRouteCircuit
+
+応答は次の例のようになります。
 
 		Name                             : ExpressRouteARMCircuit
 		ResourceGroupName                : ExpressRouteResourceGroup
@@ -253,7 +258,8 @@
 
 		Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
-	The response will be something similar to the example below:
+
+応答は、以下の例のようになります。
 
 		Name                             : ExpressRouteARMCircuit
 		ResourceGroupName                : ExpressRouteResourceGroup
@@ -279,7 +285,7 @@
 
 以下を実行することで、すべてのパラメーターの詳細な説明を取得できます。
 
-		get-help get-azurededicatedcircuit -detailed 
+		Get-Help Get-azurededicatedcircuit -detailed 
 
 ## ExpressRoute 回線を変更するには
 
@@ -357,4 +363,4 @@ ExpressRoute 回線サービス プロバイダーのプロビジョニング状
 
 - [ルーティングの構成](expressroute-howto-routing-arm.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

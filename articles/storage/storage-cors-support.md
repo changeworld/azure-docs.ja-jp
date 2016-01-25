@@ -1,24 +1,24 @@
-<properties 
-	pageTitle="クロス オリジン リソース共有 (CORS) のサポート | Microsoft Azure" 
-	description="Microsoft Azure ストレージ サービスでの CORS のサポートを有効にする方法について説明します。" 
-	services="storage" 
-	documentationCenter=".net" 
-	authors="tamram" 
-	manager="carolz" 
-	editor=""/>
+<properties
+	pageTitle="クロス オリジン リソース共有 (CORS) のサポート | Microsoft Azure"
+	description="Microsoft Azure ストレージ サービスでの CORS のサポートを有効にする方法について説明します。"
+	services="storage"
+	documentationCenter=".net"
+	authors="tamram"
+	manager="carmonm"
+	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="09/03/2015" 
-	ms.author="tamram;andtyler"/>
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="01/07/2016"
+	ms.author="tamram"/>
 
 # Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート
 
-バージョン 2013-08-15 以降の Azure ストレージ サービスでは、BLOB、Table、Queue の各サービスでクロス オリジン リソース共有 (CORS) をサポートしています。CORS は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。Web ブラウザーには、Web ページで別のドメインの API を呼び出すことができないようにする[同一呼び出し元ポリシー](http://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。CORS を使用すると、あるドメイン (元のドメイン) から別のドメインの API を安全に呼び出すことができます。CORS の詳細については、[CORS の仕様](http://www.w3.org/TR/cors/)をご覧ください。
+バージョン 2013-08-15 以降の Azure Storage サービスでは、BLOB、Table、Queue、File の各サービスでクロス オリジン リソース共有 (CORS) をサポートしています。CORS は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。Web ブラウザーには、Web ページで別のドメインの API を呼び出すことができないようにする[同一呼び出し元ポリシー](http://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。CORS を使用すると、あるドメイン (元のドメイン) から別のドメインの API を安全に呼び出すことができます。CORS の詳細については、[CORS の仕様](http://www.w3.org/TR/cors/)をご覧ください。
 
 CORS ルールは、[Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)、[Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx) を呼び出すことによって、各ストレージ サービスに対して個別に設定できます。サービスに対して CORS ルールを設定した場合、別のドメインからサービスに対して行われた要求が正しく認証されると、指定したルールに従ってその要求を許可するかどうかが評価されます。
 
@@ -172,11 +172,11 @@ GET/HEAD 以外のメソッドに対する応答はユーザー エージェン�
 **要求に Origin ヘッダーが存在する** | **このサービスに CORS ルールが指定されている** | **すべての元のドメインを許可する照合ルール (*) が存在する** | **元のドメインと完全に一致する照合ルールが存在する** | **Origin に設定された Vary にヘッダーが応答に含まれている** | **Access-Control-Allowed-Origin が応答に含まれている: "*"** | **Access-Control-Exposed-Headers が応答に含まれている**
 いいえ|いいえ|いいえ|いいえ|いいえ|いいえ|いいえ
 いいえ|あり|いいえ|いいえ|あり|いいえ|いいえ
-いいえ|あり|あり|いいえ|いいえ|あり|あり
-あり|いいえ|いいえ|いいえ|いいえ|いいえ|いいえ
-あり|あり|いいえ|あり|あり|いいえ|あり
-あり|あり|いいえ|いいえ|あり|いいえ|いいえ
-あり|あり|あり|いいえ|いいえ|あり|あり
+いいえ|あり|はい|いいえ|いいえ|あり|あり
+はい|いいえ|いいえ|いいえ|いいえ|いいえ|いいえ
+あり|はい|なし|あり|はい|なし|あり
+あり|はい|いいえ|いいえ|あり|いいえ|いいえ
+あり|あり|はい|いいえ|いいえ|あり|あり
 
 
 ## CORS 要求への課金
@@ -194,6 +194,5 @@ GET/HEAD 以外のメソッドに対する応答はユーザー エージェン�
 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)
 
 [W3C のクロス オリジン リソース共有の仕様](http://www.w3.org/TR/cors/)
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/21/2015"
+	ms.date="01/12/2016"
 	ms.author="cephalin"/>
 
 # Azure App Service の Web アプリのステージング環境を設定する
@@ -45,7 +45,7 @@
 複数のデプロイ スロットを有効にするには、Web アプリが **Standard** または **Premium** モードで実行されている必要があります。
 
 1. [Azure ポータル](https://portal.azure.com/)の Web アプリのブレードを開きます。
-2. **[デプロイ スロット]** をクリックします。次に、**[デプロイ スロット]** ブレードで **[スロットの追加]** をクリックします。
+2. **[設定]** をクリックし、**[デプロイメント スロット]** をクリックします。次に、**[デプロイ スロット]** ブレードで **[スロットの追加]** をクリックします。
 
 	![新しいデプロイ スロットの追加][QGAddNewDeploymentSlot]
 
@@ -65,7 +65,7 @@
 
 	![デプロイ スロットのタイトル][StagingTitle]
 
-5. スロットのブレードで、アプリの URL をクリックします。デプロイ スロットが独自のホスト名を持つライブ アプリであることに注意してください。デプロイ スロットへのパブリック アクセスを制限する方法については、「[App Service Web App - 運用環境以外のデプロイ スロットへの Web アクセスの禁止](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)」を参照してください。
+5. スロットのブレードで、アプリの URL をクリックします。デプロイメント スロットが独自のホスト名を持つライブ アプリであることに注意してください。デプロイ スロットへのパブリック アクセスを制限する方法については、「[App Service Web App - 運用環境以外のデプロイ スロットへの Web アクセスの禁止](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)」を参照してください。
 
 デプロイ スロットを作成した直後は、コンテンツはありません。スロットには、異なるリポジトリ分岐、またはまったく異なるリポジトリからデプロイできます。またスロットの構成を変更することもできます。コンテンツの更新には、デプロイ スロットに関連付けられた発行プロファイルまたはデプロイ資格情報を使用してください。たとえば、[Git を使用してこのスロットに発行する](web-sites-publish-source-control.md)ことができます。
 
@@ -259,4 +259,4 @@ Azure CLI には、Web アプリ デプロイ スロットの管理のサポー�
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

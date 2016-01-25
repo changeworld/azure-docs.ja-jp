@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse への接続 
 SQL Data Warehouse に接続するには、認証のためのセキュリティ資格情報を渡す必要があります。接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されているのがわかります。
@@ -158,4 +158,4 @@ WHERE   s.[session_id] <> SESSION_ID()
 
 <!--Other references-->
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

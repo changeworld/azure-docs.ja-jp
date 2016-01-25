@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="11/16/2015"
+   ms.date="01/12/2016"
    ms.author="larryfr"/>
 
 # Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理
@@ -94,23 +94,10 @@ Storm トポロジが開始されると、停止されるまで実行が継続�
 
 ##Storm UI を使用して監視および管理する
 
-Storm UI には、トポロジの実行を操作する Web インターフェイスがあり、HDInsight クラスターに含まれています。
+Storm UI には、トポロジの実行を操作する Web インターフェイスがあり、HDInsight クラスターに含まれています。Storm UI を表示するには、Web ブラウザーで __https://CLUSTERNAME.azurehdinsight.net/stormui__ に移動します。__CLUSTERNAME__ は、実際のクラスターの名前に置き換えます。
 
-> [AZURE.IMPORTANT]Storm UI は、インターネットでパブリックに使用できません。SSH トンネルを使用して HDInsight クラスター ヘッド ノードにアクセスする必要があります。SSH トンネルの作成と使用については、[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)方法に関するページを参照してください。
+> [AZURE.NOTE]ユーザー名とパスワードの入力が求められたら、クラスターの作成時に使用したクラスター管理者名 (admin) とパスワードを入力します。
 
-次の手順で Storm UI を表示します。
-
-1. ブラウザーで HDInsight クラスターの Ambari Web を開きます。Ambari Web の URL は https://CLUSTERNAME.azurehdinsight.netです。この __CLUSTERNAME__ にはクラスター名を指定します。
-
-2. ページの左側のサービスの一覧で、__[Storm]__ を選択します。__[クイック リンク]__ で __[Storm UI]__ を選択します。
-
-    ![クイックリンクの Storm UI エントリ](./media/hdinsight-storm-deploy-monitor-topology-linux/ambari-storm.png)
-
-    これにより、Storm UI が表示されます。
-
-    ![Storm UI](./media/hdinsight-storm-deploy-monitor-topology-linux/storm-ui.png)
-
-> [AZURE.NOTE]Storm UI を使用する場合、一部のバージョンの Internet Explorer で最初にアクセスした後に UI が正しく更新されないことがあります。たとえば、送信した新しいトポロジが表示されない場合や、以前に非アクティブ化したトポロジがアクティブと表示される場合があります。Microsoft はこの問題を確認しており、解決に取り組んでいます。
 
 ### メイン ページ
 
@@ -168,4 +155,4 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 
 その他の Storm トポロジ例は、「[HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -70,11 +70,11 @@
 ## 関連項目
 [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)
 
-[弾力性データベース プールにユーザーを追加する方法](sql-database-elastic-jobs-add-logins-to-dbs.md)
+[SQL Database の保護](sql-database-security.md)
 
 [Elastic Database ジョブの概要](sql-database-elastic-jobs-getting-started.md)
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0114_2016-->

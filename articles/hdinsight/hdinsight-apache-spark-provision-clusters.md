@@ -32,7 +32,7 @@
 
 ##<a id="configuration"></a>さまざまな構成オプション
 
-###その他のストレージ
+### その他のストレージ
 
 構成中に、Azure BLOB ストレージ アカウントと既定のコンテナーを指定する必要があります。このコンテナーは、既定の保存先としてクラスターで使用されます。必要に応じて、クラスターに関連付ける追加の Azure Storage アカウントBLOB も指定できます。
 
@@ -40,7 +40,7 @@
 
 従属的な BLOB ストアの使用の詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)」をご覧ください。
 
-###メタストア
+### メタストア
 
 Spark では、生データに対してスキーマおよび Hive テーブルを定義できます。これらのスキーマおよびテーブル メタデータは外部のメタストアに保存できます。メタストアを使用すると Hive メタデータを保持できるため、新しいクラスターを作成するときに、Hive テーブルを再作成する必要はありません。既定では、Hive は組み込みデータベースを使用してこの情報を格納します。組み込みデータベースは、クラスターが削除されるとメタデータを保持できません。
 
@@ -51,7 +51,7 @@ Azure での SQL データベースの作成方法について詳しくは、「
 追加コンポーネントをインストールするか、作成中にスクリプトを使用してクラスターの構成をカスタマイズできます。このようなスクリプトは、**スクリプト操作**を使用して実行します。これは Azure ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。詳細については、「[Script Action を使って HDInsight をカスタマイズする][hdinsight-customize-cluster]」をご覧ください。
 
 
-###仮想ネットワーク
+### 仮想ネットワーク
 
 [Azure Virtual Network](http://azure.microsoft.com/documentation/services/virtual-network/) では、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
 
@@ -69,13 +69,7 @@ Azure での SQL データベースの作成方法について詳しくは、「
 
 	![ポイント対サイト構成の図](./media/hdinsight-apache-spark-provision-clusters/hdinsight-vnet-point-to-site.png)
 
-Virtual Network の機能、利点の詳細については、「[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
-
-> [AZURE.NOTE]クラスターを作成する前に、Azure Virtual Network を作成する必要があります。詳細については、「[Virtual Network の作成方法](virtual-networks-create-vnet.md)」をご覧ください
->
-> Azure HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在取り扱っていません。
->
-> 1 つのクラスターには単一のサブネットを指定することを強くお勧めします。
+Virtual Network の具体的な構成要件など、Virtual Network で HDInsight を使用する方法については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
 
 ##<a id="portal"></a>Azure プレビュー ポータルの使用
 
@@ -106,7 +100,7 @@ HDInsight 上の Spark クラスターは、既定のファイル システム�
 
 	![[データ ソース] ブレード](./media/hdinsight-apache-spark-provision-clusters/hdispark.createcluster.4.png "データ ソース構成の指定")
 
-	現在、HDInsight クラスターのデータ ソースとして Azure Storage アカウントを選択できます。次の説明を参照して、**[データ ソース]** ブレードのエントリを理解してください。
+	現在、HDInsight クラスターのデータ ソースとして Azure ストレージ アカウントを選択できます。次の説明を参照して、**[データ ソース]** ブレードのエントリを理解してください。
 
 	- **選択方法**: すべてのサブスクリプションのストレージ アカウントを参照できるようにする場合は、**[すべてのサブスクリプションから]** を設定します。既存のストレージ アカウントの **[ストレージ名]** と **[アクセス キー]** を入力する場合は、**[アクセス キー]** を設定します。
 
@@ -120,7 +114,7 @@ HDInsight 上の Spark クラスターは、既定のファイル システム�
 
 	**[選択]** をクリックしてデータ ソースの構成を保存します。
 
-8. **[ノード価格レベル]** をクリックして、このクラスターのために作成されるノードに関する情報を表示します。クラスターで必要な worker ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
+8. **[ノード価格レベル]** をクリックして、このクラスターのために作成されるノードに関する情報を表示します。クラスターで必要なワーカー ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
 
 	![[ノード価格レベル] ブレード](./media/hdinsight-apache-spark-provision-clusters/hdispark.createcluster.5.png "クラスター ノード数の指定")
 
@@ -248,4 +242,4 @@ Spark クラスターの種類を指定します。
 
 [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!----HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0114_2016-->

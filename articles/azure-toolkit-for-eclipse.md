@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="11/20/2015" 
+    ms.date="01/09/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694271.aspx -->
@@ -93,4 +93,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [JSP で Azure サービス ランタイム ライブラリを使用する方法]: http://go.microsoft.com/fwlink/?LinkID=699551
 [Azure Toolkit for Eclipse の新機能]: http://go.microsoft.com/fwlink/?LinkID=699552
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

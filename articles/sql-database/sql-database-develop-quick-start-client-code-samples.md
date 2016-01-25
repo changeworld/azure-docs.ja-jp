@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/29/2015" 
+	ms.date="01/10/2016" 
 	ms.author="genemi"/>
 
 
@@ -25,7 +25,7 @@
 
 
 - 短いサンプルで接続し、クエリを実行します。
-- 接続とクエリの実行を再試行するサンプル。発生したエラーが[*一時的なエラー*](sql-database-develop-error-messages.md#bkmk_connection_errors) (接続タイムアウトなど) に分類された場合、自動的に再試行します。
+- サンプルの接続とクエリを再試行しますが、発生したエラーが[一時的なエラー](sql-database-develop-error-messages.md#bkmk_connection_errors) (接続タイムアウトなど) に分類された場合、自動的に再試行します。
 
 
 サンプルは、次のような内容です。
@@ -51,7 +51,7 @@
 | 言語 | 短いサンプル | 再試行のサンプル | オブジェクトにリレーショナル |
 | :-- | :-- | :-- | :-- |
 | Node.js | [Tedious](sql-database-develop-nodejs-simple-linux.md) | . | . |
-| Python | [FreeTDS、pymssql](sql-database-develop-python-simple-unbutu-linux.md) | . | . |
+| Python | [FreeTDS、pymssql](sql-database-develop-python-simple-ubuntu-linux.md) | . | . |
 | Ruby | [FreeTDS、TinyTDS](sql-database-develop-ruby-simple-linux.md) | . | . |
 
 
@@ -77,7 +77,7 @@
 | :-- | :-- | :-- | :-- |
 | C# | [ADO.NET](sql-database-develop-dotnet-simple.md) | [ADO.NET (カスタム)](sql-database-develop-csharp-retry-windows.md)<br/><br/>[Enterprise Library](sql-database-develop-entlib-csharp-retry-windows.md) | (Entity Framework) |
 | C++ | [ODBC ドライバー](http://msdn.microsoft.com/library/azure/hh974312.aspx) | . | . |
-| Java | [Java。JDK、JDBC。Insert、Transaction、Select。](sql-database-develop-java-simple-windows.md) | ()。 | . |
+| Java | [Java。JDK、JDBC。Insert、Transaction、Select。](sql-database-develop-java-simple-windows.md) | . | . |
 | Node.js | [msnodesql](sql-database-develop-nodejs-simple-windows.md) | . | . |
 | PHP | [ODBC](sql-database-develop-php-simple-windows.md) | [ODBC (カスタム)](sql-database-develop-php-retry-windows.md) | . |
 | Python | [pymssql](sql-database-develop-python-simple-windows.md) | . | . |
@@ -94,4 +94,4 @@
 - [Create your first Azure SQL Database (最初の Azure SQL Database を作成する)](sql-database-get-started.md)
 - [Entity Framework 6 here, EF 7 on GitHub (Entity Framework 6、GitHub における EF7)](http://entityframework.codeplex.com/)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -5,7 +5,7 @@
    documentationCenter="na"
    authors="jasonnewyork" 
    manager="tadb"
-   editor=""/>
+   editor="tysonn"/>
 
 <tags
    ms.service="storage"
@@ -442,7 +442,7 @@ Table サービスは **PartitionKey** と **RowKey** 値を使用して自動�
 次の 2 つのフィルター条件 (従業員 ID で検索するフィルター条件と電子メール アドレスで検索するフィルター条件) ではどちらもポイント クエリを指定しています。
 
 -	$filter = (PartitionKey eq 'Sales') と (RowKey eq 'empid\_000223')  
--	$filter = (PartitionKey eq 'Sales') と (RowKey eq 'empid\_000223')  
+-	$filter = (PartitionKey eq 'Sales') と (RowKey eq 'email_jonesj@contoso.com')  
 
 一連の複数の従業員エンティティの範囲をクエリする場合は、従業員 ID の順に並べ替えられた範囲を指定するか、適切なプレフィックスを持つエンティティのクエリを実行して、**RowKey** で電子メール アドレスの順序で格納されている範囲を指定できます。
 
@@ -1585,4 +1585,4 @@ Azure チームの功績の次のメンバーに感謝いたします。 Dominic
 [29]: ./media/storage-table-design-guide/storage-table-design-IMAGE29.png
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

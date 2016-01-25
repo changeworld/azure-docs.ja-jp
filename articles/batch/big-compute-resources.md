@@ -90,7 +90,7 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/virtual-machines-linux-cluster-rdma.md)
 
-* [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](../virtual-machines/virtual-machines-windows-hpcpack-cluster-rdma.md)
+* [A8 および A9 インスタンス: HPC Pack 使用クイック スタート](https://msdn.microsoft.com/library/azure/dn594431.aspx)
 
 ## アーキテクチャの設計図
 
@@ -100,8 +100,6 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 
 * [Azure Batch のコード サンプル](https://github.com/Azure/azure-batch-samples)
 
-* [Batch Apps Blender のサンプル](https://github.com/Azure/azure-batch-apps-blender)と[ブログの投稿](http://azure.microsoft.com/blog/2015/01/26/blender-on-azure-batch/)
-
 ## 関連する Azure サービス
 
 * [Data Factory](http://azure.microsoft.com/documentation/services/data-factory/)
@@ -110,7 +108,7 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 
 * [HDInsight](http://azure.microsoft.com/documentation/services/hdinsight/)
 
-* [Virtual Machines](http://azure.microsoft.com/documentation/services/virtual-machines/)
+* [仮想マシン](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
 * [Cloud Services](http://azure.microsoft.com/documentation/services/cloud-services/)
 
@@ -123,4 +121,4 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](http://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](http://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](http://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

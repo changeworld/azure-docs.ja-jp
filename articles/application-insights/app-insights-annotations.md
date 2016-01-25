@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="01/12/2016"
     ms.author="awills"/>
 
 # Application Insights のリリース注釈
@@ -34,34 +34,43 @@
 
 この操作は、Visual Studio Team Services アカウントごとに 1 回行うだけですみます。これで、リリース注釈をアカウントのプロジェクトに対して構成できるようになりました。
 
-
-
-## リリース テンプレートへの注釈タスクの追加
+## Application Insights から API キーを取得する
 
 この作業は、リリース注釈を作成するリリース テンプレートごとに行う必要があります。
 
-Visual Studio Team Services のデプロイを管理するリリース テンプレートを開きます (または作成します)。
-
-タスクを追加し、メニューから [Application Insights Release Annotation] \(Application Insights リリース注釈) タスクを選択します。
-
-![Team Service Web ページの右上で Marketplace を開くアカウントで Application Insights 注釈を検索してインストール](./media/app-insights-annotations/40.png)
-
-この手順を完了するには、アプリケーションの監視に使用する Application Insights リソースの詳細が必要になります。
-
-Application Insights で詳細を確認する間、Team Services のウィンドウは開いたままにします。
-
-## Application Insights からの API キーのコピー
-
-ブラウザーの別のウィンドウで、以下の操作を行います。
 
 1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインし、アプリケーションを監視する Application Insights リソースを開きます (まだリソースを作成していない場合は、[この時点で作成します](app-insights-overview.md))。
-2. **[要点]** ドロップダウンを開き、リリース注釈タスクにリソースのサブスクリプション ID、リソース グループ、名前をコピーします。![](./media/app-insights-annotations/50.png)
-2. **[設定]**、**[API キー]** の順に開いて、新しいキーを作成します。作成したキーをコピーします。![](./media/app-insights-annotations/30.png)
+2. **[設定]**、**[API アクセス]** の順に開き、**Application Insights ID** をコピーします。
 
-最後に、リリースの定義を**保存**します。
+    ![portal.azure.com で、Application Insights リソースを開き、[設定] を選択します。[API アクセス] を開きます。ファイル](./media/app-insights-annotations/20.png)
 
-## デプロイ マーカー
+2. 別のブラウザー ウィンドウで、Visual Studio Team Services のデプロイを管理するリリース テンプレートを開きます (または作成します)。
+
+    タスクを追加し、メニューから [Application Insights Release Annotation] (Application Insights リリース注釈) タスクを選択します。
+
+    [API アクセス] ブレードからコピーした **Application Insights ID** を貼り付けます。
+
+    ![Visual Studio Team Services で [リリース] を開き、リリース定義を選択して [編集] を選択します。[タスクの追加] をクリックし、[Application Insights Release Annotation] (Application Insights リリース注釈) を選択します。Application Insights ID を貼り付けます。](./media/app-insights-annotations/30.png)
+
+3. **[APIKey]** フィールドを変数 `$(ApiKey)` に設定します。
+
+4. [API アクセス] ブレードに戻り、新しい API キーを作成し、それをコピーします。
+
+    ![[Azure] ウィンドウの [API アクセス] ブレードで、[API キーの作成] をクリックします。コメントを指定し、[書き込み] 注釈にチェックを入れ、[キーの生成] をクリックします。新しいキーをコピーします。](./media/app-insights-annotations/40.png)
+
+4. リリース テンプレートの [構成] タブを開きます。
+
+    `ApiKey` の変数の定義を作成します。
+
+    ApiKey の変数の定義に API キーを貼り付けます。
+
+    ![[Team Services] ウィンドウで、[構成] タブを選択し、[変数の追加] をクリックします。ApiKey の名前を設定し、[値] に生成したキーを貼り付けます。](./media/app-insights-annotations/50.png)
+
+
+5. 最後に、リリースの定義を**保存**します。
+
+## デプロイの注釈
 
 これで、このリリース テンプレートを使用して新しいリリースをデプロイするたびに、注釈が Application Insights に送信されるようになりました。注釈は、メトリックス エクスプローラーのグラフに表示されます。
 
-<!----HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

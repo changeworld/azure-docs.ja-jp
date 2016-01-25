@@ -5,7 +5,7 @@
     documentationCenter="na"
     authors="ms-prkhad"
     manager=""
-    editor=""/>
+    editor="tysonn"/>
 
 <tags
     ms.service="storage"
@@ -14,7 +14,7 @@
     ms.devlang="na"
     ms.topic="article"
     ms.date="12/04/2015"
-    ms.author="robinsh"/>
+    ms.author="prkhad"/>
 
 # Azure Premium Storage: 高パフォーマンスのための設計
 
@@ -301,7 +301,7 @@ SQL Server の[並列処理の次数](https://technet.microsoft.com/library/ms18
 
 たとえば、SQL Server でクエリの MAXDOP 値を "4" に設定すると、クエリの実行に最大 4 つのコアを使用できることが SQL Server に通知されます。SQL Server は、クエリの実行に最適なキューの深さの値とコア数を決定します。
 
-*最適なキューの深さ* キューの深さの値が非常に大きい場合、欠点もあります。キューの深さの値が大きすぎると、アプリケーションは IOPS を大幅に引き上げようとします。IOPS が十分にプロビジョニングされた永続ディスクをアプリケーションが使用できる場合を除き、これはアプリケーションの待機時間に悪影響を及ぼす可能性があります。次の式は、IOPS、待機時間、キューの深さの関係を示しています。![](media/storage-premium-storage-performance/image6.png)
+最適なキューの深さ キューの深さの値が非常に大きい場合、欠点もあります。キューの深さの値が大きすぎると、アプリケーションは IOPS を大幅に引き上げようとします。IOPS が十分にプロビジョニングされた永続ディスクをアプリケーションが使用できる場合を除き、これはアプリケーションの待機時間に悪影響を及ぼす可能性があります。次の式は、IOPS、待機時間、キューの深さの関係を示しています。![](media/storage-premium-storage-performance/image6.png)
 
 キューの深さを大きな値に構成するのではなく、待機時間に影響を及ぼさずにアプリケーションに十分な IOPS を提供できる最適な値に構成します。たとえば、アプリケーションの待機時間を 1 ミリ秒にする必要がある場合、5,000 IOPS を実現するために必要なキューの深さは、QD = 5000 x 0.001 = 5 になります。
 
@@ -422,7 +422,7 @@ directory=/mnt/nocache
 これまでのセクションで説明した設計ガイドラインに沿った次の重要事項に注意してください。IOPS を最大限に高めるために、これらの仕様が不可欠となります。- 256 の大きなキューの深さ。- 8KB の小さなブロック サイズ。- ランダム書き込みを実行する複数のスレッド。
 
 次のコマンドを実行して、FIO テストを 30 秒間実行します。
-				
+
 	sudo fio --runtime 30 fiowrite.ini
 
 テストの実行中、VM と Premium ディスクが提供している書き込み IOPS の数を確認できます。次のサンプルに示すように、DS14 VM は書き込み IOPS の上限である 50,000 IOPS を実現しています。![](media/storage-premium-storage-performance/image11.png)
@@ -516,7 +516,7 @@ rate_iops=12500
 
 テストの実行中、VM と Premium ディスクが提供している読み取りと書き込みの合計 IOPS を確認できます。次のサンプルに示すように、DS14 VM は 100,000 を超える読み取りと書き込みの合計 IOPS を実現しています。これは、ディスクとキャッシュのパフォーマンスの合計です。![](media/storage-premium-storage-performance/image13.png)
 
-*最大合計スループット* 読み取りと書き込みの最大合計スループットを得るには、大きなブロック サイズ、大きなキューの深さ、読み取り/書き込みを実行する複数のスレッドを使用します。ブロック サイズとして 64KB、キューの深さとして 128 を使用します。
+最大合計スループット 読み取りと書き込みの最大合計スループットを得るには、大きなブロック サイズ、大きなキューの深さ、読み取り/書き込みを実行する複数のスレッドを使用します。ブロック サイズとして 64KB、キューの深さとして 128 を使用します。
 
 ## 次のステップ  
 
@@ -526,8 +526,8 @@ Azure Premium Storage の詳細については、次の記事をご覧くださ�
 
 SQL Server ユーザーは、SQL Server のパフォーマンスのベスト プラクティスに関する次の記事をご覧ください。
 
-- [Azure Virtual Machine における 
-- SQL Server のパフォーマンスに関するベスト プラクティス (https://msdn.microsoft.com/library/azure/dn133149.aspx) 
+- [Azure Virtual Machine における
+- SQL Server のパフォーマンスに関するベスト プラクティス (https://msdn.microsoft.com/library/azure/dn133149.aspx)
 - [Azure Premium Storage provides highest performance for SQL Server in Azure VM (Azure VM で SQL Server の最高レベルのパフォーマンスを実現する Azure Premium Storage)](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

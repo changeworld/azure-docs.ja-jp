@@ -1,6 +1,6 @@
 <properties 
     pageTitle="チュートリアル: Azure Active Directory と TalentLMS の統合 | Microsoft Azure" 
-    description="TalentLMS と Azure Active Directory を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    description="Azure Active Directory で TalentLMS を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="markusvi"  
     documentationCenter="na" 
@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と TalentLMS の統合
@@ -38,7 +38,7 @@
 
 ###TalentLMS のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-talentlms-tutorial/IC700993.png "Active Directory")
 
@@ -50,7 +50,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-talentlms-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-talentlms-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -66,11 +66,11 @@
 
 ##シングル サインオンの構成
   
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで TalentLMS に対する認証を行うことができるようにする方法を説明します。TalentLMS のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、[証明書の拇印の値を取得する方法](http://youtu.be/YKQF266SAxI)についてのビデオをご覧ください。
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで TalentLMS に対する認証を行うことができるようにする方法を説明します。TalentLMS のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書のサムプリント値を取得する方法)](http://youtu.be/YKQF266SAxI)」を参照してください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **TalentLMS** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure AD ポータルの **TalentLMS** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-talentlms-tutorial/IC777292.png "シングル サインオンの構成")
 
@@ -78,7 +78,7 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-talentlms-tutorial/IC777293.png "シングル サインオンの構成")
 
-3.  **[アプリケーション URL の構成]** ページで、**[TalentLMS サインイン URL]** テキスト ボックスに、"*https://\<テナント名>.TalentLMSapp.com*" というパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページで、**[TalentLMS サインイン URL]** テキスト ボックスに、"*https://\<テナント名>.TalentLMS.com*" というパターンで URL を入力し、**[次へ]** をクリックします。
 
     ![サインオン URL](./media/active-directory-saas-talentlms-tutorial/IC777294.png "サインオン URL")
 
@@ -88,31 +88,31 @@
 
 5.  別の Web ブラウザー ウィンドウで、TalentLMS 企業サイトに管理者としてログインします。
 
-6.  **[アカウントと設定]** セクションで、**[ユーザー]** タブをクリックします。
+6.  **[Account & Settings]** セクションで、**[Users]** タブをクリックします。
 
     ![アカウントと設定](./media/active-directory-saas-talentlms-tutorial/IC777296.png "アカウントと設定")
 
-7.  **[シングル サインオン (SSO)]** をクリックします。
+7.  **[Single Sign-On (SSO)]** をクリックします。
 
 8.  [Single Sign-On] セクションで、次の手順に従います。
 
     ![シングル サインオン](./media/active-directory-saas-talentlms-tutorial/IC777297.png "シングル サインオン")
 
-    1.  **[SSO 統合の種類]** ボックスの一覧から **[SAML 2.0]** を選択します。
-    2.  Azure ポータルの **[TalentLMS でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの ID]** 値をコピーして、**[ID プロバイダー (IdP)]** テキスト ボックスに貼り付けます。
-    3.  エクスポートした証明書から **[サムプリント]** の値をコピーし、**[証明書フィンガープリント]** ボックスに貼り付けます。
+    1.  **[SSO integration type]** ボックスの一覧から **[SAML 2.0]** を選択します。
+    2.  Azure ポータルの **[TalentLMS でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの ID]** 値をコピーして、**[Identity provider (IdP)]** テキスト ボックスに貼り付けます。
+    3.  エクスポートした証明書から **[サムプリント]** 値をコピーし、**[証明書フィンガープリント]** テキストボックスに貼り付けます。
 
-        >[AZURE.TIP]詳細については、[証明書のサムプリント値を取得する方法](http://youtu.be/YKQF266SAxI)についてのビデオをご覧ください。
+        >[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value (証明書のサムプリント値を取得する方法)](http://youtu.be/YKQF266SAxI)」を参照してください。
 
-    4.  Azure ポータルの **[TalentLMS でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーし、**[リモート サインイン URL]** テキスト ボックスに貼り付けます。
-    5.  Azure ポータルの **[TalentLMS でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログアウト URL]** の値をコピーし、**[リモート サインアウト URL]** テキスト ボックスに貼り付けます。
-    6.  **[TargetedID]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name**」と入力します。
-7.  [**名**] テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
-8.  [**姓**] テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
-9.  **[電子メール]** テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
+    4.  Azure ポータルの **[TalentLMS でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーし、**[Remote sign-in URL]** テキスト ボックスに貼り付けます。
+    5.  Azure ポータルの **[TalentLMS でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログアウト URL]** の値をコピーし、**[Remote sign-out URL]** テキスト ボックスに貼り付けます。
+    6.  **[TargetedID]** テキスト ボックスに、**「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name**」と入力します。
+7.  **[First name]** テキスト ボックスに、**「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
+8.  **[Last name]** テキスト ボックスに、**「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
+9.  **[Email]** テキスト ボックスに、**「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
 10. **[保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-talentlms-tutorial/IC777298.png "Configure Single Sign-On")
 
@@ -124,14 +124,14 @@ Azure AD ユーザーが TalentLMS にログインできるようにするには
 
 1.  **TalentLMS** テナントにログインします。
 
-2.  **[ユーザー]** をクリックし、**[ユーザーの追加]** をクリックします。
+2.  **[Users]** をクリックし、**[Add User]** をクリックします。
 
-3.  **[ユーザーの追加]** ダイアログ ページで、次の手順に従います。
+3.  **[Add user]** ダイアログ ページで、次の手順に従います。
 
     ![ユーザーの追加](./media/active-directory-saas-talentlms-tutorial/IC777299.png "ユーザーの追加")
 
-    1.  Azure AD のユーザー アカウントに関連する属性の値を次のテキスト ボックスに入力します。**[名]**、**[姓]**、**[電子メール アドレス]**。
-    2.  **[ユーザーの追加]** をクリックします。
+    1.  Azure AD のユーザー アカウントに関連する属性の値を次のテキスト ボックスに入力します。**[First name]**、**[Last name]**、**[Email address]**。
+    2.  **[Add User]** をクリックします。
 
 >[AZURE.NOTE]TalentLMS から提供されている他の TalentLMS ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -143,14 +143,14 @@ Azure AD ユーザーが TalentLMS にログインできるようにするには
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  TalentLMS アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **TalentLMS **アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-talentlms-tutorial/IC777300.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-talentlms-tutorial/IC767830.png "あり")
+    ![あり](./media/active-directory-saas-talentlms-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

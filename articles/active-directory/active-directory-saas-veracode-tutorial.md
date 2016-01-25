@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と Veracode の統合
@@ -72,61 +72,61 @@
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **Veracode** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **[Veracode]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-veracode-tutorial/IC802907.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802907.png "Configure Single Sign-On")
 
 2.  **[ユーザーの Veracode へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-veracode-tutorial/IC802908.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802908.png "Configure Single Sign-On")
 
-3.  **[アプリケーション設定の構成]** ページで、**[次へ]** をクリックします。
+3.  **[アプリ設定の構成]** ページで、**[次へ]** をクリックします。
 
-    ![アプリケーション設定の構成](./media/active-directory-saas-veracode-tutorial/IC802909.png "アプリケーション設定の構成")
+    ![Configure App Settings](./media/active-directory-saas-veracode-tutorial/IC802909.png "Configure App Settings")
 
-4.  **[Veracode でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターのローカルに保存します。
+4.  **[Veracode でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、コンピューターで証明書ファイルをローカルに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-veracode-tutorial/IC802910.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802910.png "Configure Single Sign-On")
 
 5.  別の Web ブラウザーのウィンドウで、Veracode 企業サイトに管理者としてログインします。
 
-6.  上部のメニューで、**[Settings]**、**[Admin]** の順にクリックします。
+6.  上部のメニューで、**[設定]**、**[管理者]** の順にクリックします。
 
     ![管理](./media/active-directory-saas-veracode-tutorial/IC802911.png "管理")
 
 7.  **[SAML]** タブをクリックします。
 
-8.  **[Organization SAML Settings]** セクションで、次の手順を実行します。
+8.  **[組織の SAML 設定]** セクションで、次の手順に従います。
 
     ![管理](./media/active-directory-saas-veracode-tutorial/IC802912.png "管理")
 
-    1.  Azure ポータルの **[Veracode でのシングル サインオンの構成]** ダイアログ ページで **[発行者の URL]** の値をコピーし、**[Issuer]** ボックスに貼り付けます。
-    2.  ダウンロードした証明書をアップロードするには、**[Choose File]** をクリックします。
-    3.  **[Enable Self Registration]** を選択します。
+    1.  Azure ポータルの **[Veracode でのシングル サインオンの構成]** ダイアログ ページで **[発行者の URL]** の値をコピーし、それを **[発行者]** テキストボックスに貼り付けます。
+    2.  ダウンロードした証明書をアップロードするには、**[ファイルの選択]** をクリックします。
+    3.  **[自己登録を有効にする]** を選択します。
 
-9.  **[Self Registration Settings]** セクションで次の手順を実行し、**[Save]** をクリックします。
+9.  **[自己登録の設定]** セクションで次の手順を実行し、**[保存]** をクリックします。
 
     ![管理](./media/active-directory-saas-veracode-tutorial/IC802913.png "管理")
 
-    1.  **[新しいユーザーのアクティブ化]** で **[アクティブ化不要]** を選択します。
-    2.  **[ユーザー データの更新]** で **[優先 Veracode ユーザー データ]** を選択します。
-    3.  **[SAML Attribute Details]** では、以下を選択します。
-        -   **User Roles**
-        -   **Policy Administrator**
-        -   **Reviewer**
-        -   **Security Lead**
-        -   **Executive**
-        -   **Submitter**
-        -   **Creator**
-        -   **All Scan Types**
-        -   **Team Memberships**
-        -   **Default Team**
+    1.  **[新しいユーザーのアクティブ化]** として **[アクティブ化不要]** を選択します。
+    2.  **[ユーザー データの更新]** として **[優先 Veracode ユーザー データ]** を選択します。
+    3.  **[SAML 属性の詳細]** では、以下を選択します。
+        -   **ユーザー ロール**
+        -   **ポリシー管理者**
+        -   **レビュー担当者**
+        -   **セキュリティ リーダー**
+        -   **役員**
+        -   **申請者**
+        -   **作成者**
+        -   **すべてのスキャンの種類**
+        -   **チームのメンバーシップ**
+        -   **既定のチーム**
 
-10. Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-veracode-tutorial/IC802914.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802914.png "Configure Single Sign-On")
 
-11. 上部のメニューで **[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
+11. 上部のメニューで、**[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
 
     ![属性](./media/active-directory-saas-veracode-tutorial/IC795920.png "属性")
 
@@ -140,7 +140,7 @@
 	| lastname | User.surname |
 	| email | User.mail |
 
-    1.  上記の表の各データ行で、**[ユーザー属性の追加]** をクリックします。
+    1.  上記のテーブルの各データ行で、**[ユーザー属性の追加]** をクリックします。
     
 	2.  **[属性名]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -170,10 +170,10 @@ Azure AD ユーザーが Veracode にログインできるようにするには�
 
     ![ユーザーの割り当て](./media/active-directory-saas-veracode-tutorial/IC802915.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]**の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-veracode-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-veracode-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

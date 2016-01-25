@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/08/2015"
+	ms.date="01/07/2016"
 	ms.author="davidmu"/>
 
 # Azure リソース マネージャーのテンプレートを使用した Ubuntu への WordPress サーバーのデプロイ
@@ -92,18 +92,4 @@
 
 テンプレートの実行が完了すると、Ubuntu 上で実行する WordPress サーバーが新しいリソース グループに作成されます。
 
-## その他のリソース
-
-[Azure リソース マネージャー テンプレートと Azure PowerShell を使用した Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
-
-[Azure リソース マネージャーにおける Azure Compute、Network、Storage プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
-
-[Azure リソース マネージャーの概要](../resource-group-overview.md)
-
-[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-azure-cli.md)
-
-[Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
-
-[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
-
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

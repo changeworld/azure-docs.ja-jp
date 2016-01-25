@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/31/2015"
+   ms.date="01/08/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用して StorSimple ボリューム コンテナーを管理する
@@ -43,7 +43,7 @@ Microsoft Azure StorSimple デバイスのボリューム コンテナーには�
 
 ## ボリューム コンテナーを追加する
 
-ボリューム コンテナーを作成するには、次の手順を実行します。
+ボリューム コンテナーを追加するには、次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-add-volume-container](../../includes/storsimple-add-volume-container.md)]
 
@@ -66,4 +66,4 @@ Microsoft Azure StorSimple デバイスのボリューム コンテナーには�
 - [StorSimple ボリュームの管理の詳細](storsimple-manage-volumes.md) 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

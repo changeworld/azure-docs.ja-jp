@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/15/2015"
+	ms.date="01/12/2016"
 	ms.author="juliako"/>
 
 #Azure Media Services の概要と一般的なシナリオ
@@ -29,7 +29,7 @@ Media Services を使いこなして、エンド ツー エンドのワークフ
 Media Services ソリューションを構築するために、以下を使用できます。
 
 - [Media Services REST API](https://msdn.microsoft.com/library/azure/hh973617.aspx)
-- 次の使用可能なクライアント SDK のうちのいずれか: [Azure Media Services SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、[Azure Media Services for Node.js](https://github.com/fritzy/node-azure-media)、[Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
+- 次の使用可能なクライアント SDK のうちのいずれか: [Azure Media Services SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、[Azure Media Services for Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js)、[Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
 - 既存のツール: [Azure クラシック ポータル](http://manage.windowsazure.com/) または [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer)。
 
 
@@ -197,7 +197,7 @@ Media Services では、Azure CDN との統合をサポートしています。A
 
 **Media Services** は、アカウントのプロビジョニングに使用する **[ストリーミング占有ユニット]** と **[エンコード占有ユニット]** の数を指定することで規模を設定できます。
 
-ストレージ アカウントを追加して、Media Services アカウントの規模を設定することもできます。各ストレージ アカウントの上限は 500 TB です。既定の上限を超えるストレージ容量を設定するために、複数のストレージ アカウントを単一の Media Services アカウントにアタッチすることを選択できます。
+ストレージ アカウントを追加して、Media Services アカウントの規模を設定することもできます。各ストレージ アカウントの上限は 500 TB (テラバイト) です。既定の上限を超えるストレージ容量を設定するために、複数のストレージ アカウントを単一の Media Services アカウントにアタッチすることを選択できます。
 
 [この](media-services-how-to-scale.md)トピックは、関連するトピックにリンクしています。
 
@@ -231,4 +231,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

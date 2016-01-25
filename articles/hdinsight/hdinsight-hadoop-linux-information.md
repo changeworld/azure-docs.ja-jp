@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/06/2015"
+   ms.date="01/12/2016"
    ms.author="larryfr"/>
 
 # Linux での HDInsight の使用方法
@@ -102,7 +102,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
         curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
     
-    > [AZURE.NOTE]このコードは、この情報が含まれるサーバーに適用される最初の構成を返します (`service_config_version=1`)。クラスターの作成後に変更された値を取得する場合は、構成のバージョンを一覧表示した後で最新の構成を取得することが必要になる場合があります。
+    > [AZURE.NOTE] このコードは、この情報が含まれるサーバーに適用される最初の構成を返します (`service_config_version=1`)。クラスターの作成後に変更された値を取得する場合は、構成のバージョンを一覧表示した後で最新の構成を取得することが必要になる場合があります。
 
     このコードは、次のような値を返します。ここで、__CONTAINER__ は既定のコンテナー、__ACCOUNTNAME__ は Azure ストレージ アカウント名です。
 
@@ -114,7 +114,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
     
     アカウントのリソース グループ名が返されます。
     
-    > [AZURE.NOTE]このコマンドから何も返されない場合は、Azure CLI を Azure リソース マネージャー モードに変更し、コマンドを再度実行することが必要になる場合があります。Azure リソース マネージャー モードに切り替えて、次のコマンドを実行します。
+    > [AZURE.NOTE] このコマンドから何も返されない場合は、Azure CLI を Azure リソース マネージャー モードに変更し、コマンドを再度実行することが必要になる場合があります。Azure リソース マネージャー モードに切り替えて、次のコマンドを実行します。
     >
     > `azure config mode arm`
     
@@ -196,16 +196,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 	* __Storm UI__: 次の手順により、Storm UI を使用してトポロジを再調整します。
 
-		1. [クラスターへの SSH トンネルを作成し、Ambari Web UI を開きます](hdinsight-linux-ambari-ssh-tunnel.md)。
-
-		2. ページの左側のサービスの一覧で、__[Storm]__ を選択します。__[クイック リンク]__ で __[Storm UI]__ を選択します。
-
-
-			![クイック リンクの Storm UI エントリ](./media/hdinsight-hadoop-linux-information/ambari-storm.png)
-
-			これにより、Storm UI が表示されます。
-
-			![Storm UI](./media/hdinsight-hadoop-linux-information/storm-ui.png)
+		1. Web ブラウザーで __https://CLUSTERNAME.azurehdinsight.net/stormui__ に移動します。CLUSTERNAME は実際の Storm クラスターの名前に置き換えます。メッセージが表示されたら、HDInsight クラスター管理者 (admin) の名前と、クラスターの作成時に指定したパスワードを入力します。
 
 		3. 再調整するトポロジを選択し、__[再調整]__ ボタンをクリックします。再調整の操作が実行されるまでの待ち時間を入力します。
 
@@ -256,4 +247,4 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

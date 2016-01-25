@@ -150,9 +150,6 @@ Azure テーブルは、**CreateIfNotExistsAsync()** への呼び出しを追加
         }
     } while (token != null);
 
-    return View();
-
-
 ## 単一のエンティティを取得する
 単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、**TableOperation** オブジェクトを使用して、"Ben Smith" という名前のユーザーを指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、**TableResult.Result** の戻り値は **CustomerEntity** オブジェクトです。クエリでパーティション キーと行キーの両方を指定することが、**テーブル** サービスから単一のエンティティを取得するための最速の方法です。
 
@@ -202,4 +199,4 @@ Azure テーブルは、**CreateIfNotExistsAsync()** への呼び出しを追加
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

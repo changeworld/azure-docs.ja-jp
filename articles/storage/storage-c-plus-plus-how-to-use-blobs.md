@@ -1,20 +1,20 @@
-<properties 
-    pageTitle="BLOB ストレージを使用する方法 (C++) | Microsoft Azure" 
-    description="Azure で BLOB ストレージ サービスを使用する方法について説明します。サンプルは C++ で記述されています。" 
-    services="storage" 
-    documentationCenter=".net" 
-    authors="tamram" 
-    manager="adinah" 
-    editor=""/>
+<properties
+    pageTitle="BLOB ストレージを使用する方法 (C++) | Microsoft Azure"
+    description="Azure で BLOB ストレージ サービスを使用する方法について説明します。サンプルは C++ で記述されています。"
+    services="storage"
+    documentationCenter=".net"
+    authors="tamram"
+    manager="carmonm"
+    editor="tysonn"/>
 
-<tags 
-    ms.service="storage" 
-    ms.workload="storage" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="01/05/2016" 
-    ms.author="tamram"/>
+<tags
+    ms.service="storage"
+    ms.workload="storage"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="01/05/2016"
+    ms.author="dineshm"/>
 
 # C++ から BLOB ストレージを使用する方法  
 
@@ -78,7 +78,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 
 この例は、コンテナーがない場合に、コンテナーを作成する方法を示しています。
 
-	try 
+	try
 	{
 		// Retrieve storage account from connection string.
 		azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -189,7 +189,7 @@ BLOB をダウンロードするには、まず BLOB の参照を取得し、次
 
 	std::ofstream outfile("DownloadBlobFile.txt", std::ofstream::binary);
 	std::vector<unsigned char>& data = buffer.collection();
-		
+
 	outfile.write((char *)&data[0], buffer.size());
 	outfile.close();  
 
@@ -238,8 +238,4 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
 -	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
 - [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
-
-
- 
-
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

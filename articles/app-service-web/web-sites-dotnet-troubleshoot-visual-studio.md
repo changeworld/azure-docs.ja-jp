@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Visual Studio を使用した Azure App Service のトラブルシューティング
@@ -156,7 +156,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 6. Visual Studio 2012 Update 4 以降の場合:<a id="vs2012"></a>
 
-	* Microsoft Azure 管理ポータルで、Web アプリケの **[設定] > [アプリケーション設定]** に移動し、下へスクロールして **[デバッグ]** セクションを表示します。
+	* Azure クラシック ポータルで、Web アプリの **[設定] > [アプリケーション設定]** に移動し、下へスクロールして **[デバッグ]** セクションを表示します。
 
 	* **[リモート デバッグ]** を **[オン]** に設定し、**[リモート デバッグに使用する Visual Studio のバージョン]** を **[2012]** に設定します。
 
@@ -543,7 +543,7 @@ Visual Studio で Web サーバーのログを初めて有効にしたとき、�
 
 多くの場合、ストレージ アカウント形式はファイル システム形式と比較して、ログに対してより多くのストレージと、より長い期間にわたる保持を実現します。アプリケーション トレース ログをストレージに送る別の利点は、ファイル システムのログでは得ることのできない詳しい情報をそれぞれのログと共に入手できることです。
 
-5. Azure ノードの **[Storage]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。
+5. Azure ノードの **[ストレージ]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。
 
 ![ストレージ アカウントの作成](./media/web-sites-dotnet-troubleshoot-visual-studio/createstor.png)
 
@@ -567,8 +567,7 @@ Visual Studio で Web サーバーのログを初めて有効にしたとき、�
 
 1. Visual Studio の **[Azure Web アプリ]** ウィンドウで、**[ログ]** タブをクリックし、**[管理ポータルでのログの構成]** をクリックします。
 
-    <!-- todo:screenshot of new portal if the VS page link goes to new portal -->
-	![ログの構成](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png)
+    <!-- todo:screenshot of new portal if the VS page link goes to new portal -->![ログの構成](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png)
 
 	これにより、クラシック ポータルで Web アプリの **[構成]** タブが開きます。
 
@@ -679,7 +678,7 @@ Azure の Web アプリケーションで作成されたログは Visual Studio 
 * ASP.NET アプリケーションでのトレース
 * Web サーバーのログの分析
 * 失敗した要求トレース ログの分析
-* Cloud Services のデバッグ
+* クラウド サービスのデバッグ
 
 ### Azure の Web アプリケーションのトラブルシューティング
 
@@ -750,9 +749,9 @@ Web サーバーのログの分析の詳細については、次のリソース�
 
 失敗した要求トレース ログの活用方法については、Microsoft TechNet Web サイトの「[Using Failed Request Tracing (失敗した要求トレースの使用)](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing)」セクションなどが参考になります。ただし、このドキュメントで扱う内容は、失敗した要求トレースを IIS で構成する作業が主体です。この作業を Azure Web Apps で行うことはできません。
 
-### Cloud Services のデバッグ
+### クラウド サービスのデバッグ
 
-Web アプリではなく Azure Cloud Services をデバッグする場合は、「[Cloud Services のデバッグ](http://msdn.microsoft.com/library/windowsazure/ee405479.aspx)」を参照してください。
+Web アプリではなく Azure Cloud Services をデバッグする場合は、「[クラウド サービスのデバッグ](http://msdn.microsoft.com/library/windowsazure/ee405479.aspx)」を参照してください。
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
@@ -762,4 +761,4 @@ Web アプリではなく Azure Cloud Services をデバッグする場合は、
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
  
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

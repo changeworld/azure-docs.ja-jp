@@ -13,14 +13,14 @@ ms.devlang="java"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="11/06/2015"
+ms.date="01/08/2016"
 ms.author="larryfr"/>
 
 #HDInsight 上の Apache Storm を使用した Azure Event Hubs からの車両センサー データの処理
 
 HDInsight 上の Apache Storm を使用して Azure Event Hubs からの車両センサー データを処理する方法について説明します。この例では Azure Event Hubs からセンサー データを読み取り、Azure DocumentDB に格納されたデータを参照してデータを強化し、最後に Hadoop ファイル システム (HDFS) を使用して Azure Storage にデータを格納します。
 
-![HDInsight とモノのインターネット (IoT) のアーキテクチャの図表](./media/hdinsight-storm-iot-eventhub-documentdb/iot.png)
+![HDInsight and the Internet of Things (IoT) architecture diagram](./media/hdinsight-storm-iot-eventhub-documentdb/iot.png)
 
 ##概要
 
@@ -58,4 +58,4 @@ Storm トポロジでは、次のコンポーネントが使用されます。
 
 Storm トポロジ例をさらにご覧になる場合、「[HDInsight での Storm トポロジの例](hdinsight-storm-example-topology.md)」を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

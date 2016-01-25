@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/04/2016"
-   ms.author="lodipalm"/>
+   ms.date="01/07/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>
 
 # SQL Data Warehouse での Azure Data Factory の使用
 
@@ -51,4 +51,4 @@ Azure Data Factory により、オンプレミス ソースとさまざまな Az
 [Azure Data Factory のドキュメント]: https://azure.microsoft.com/documentation/services/data-factory/
 [Copy data with Azure Data Factory]: https://azure.microsoft.com/ja-JP/documentation/articles/data-factory-data-movement-activities/
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

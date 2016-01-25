@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/03/2015"
+   ms.date="01/11/2016"
    ms.author="chackdan"/>
 
 # 仮想マシン (VM) の追加または削除による Service Fabric クラスターのスケールアップとスケールダウン
@@ -25,51 +25,96 @@
 
 ## Service Fabric クラスターの手動でのスケーリング
 
-### スケーリングするノードの種類の選択
+クラスターに複数のノードの種類がある場合は、特定のノードの種類に対して VM を追加または削除する必要があります。同じデプロイ内で、あるノードの種類に VM を追加し、別のノードの種類から VM を削除することができます。
 
-クラスターに複数のノードの種類がある場合は、特定のノードの種類に対して VM を追加または削除する必要があります。
+### ポータルを使用してデプロイしたクラスターのアップグレード
 
-1. Azure ポータル ([http://aka.ms/servicefabricportal](http://aka.ms/servicefabricportal)) にログオンします。
+このプロセスは複雑なため、Microsoft が Git リポジトリにアップロードした PowerShell モジュールを使用してください。
 
-2. [Service Fabric クラスター] に移動します。![BrowseServiceFabricClusterResource][BrowseServiceFabricClusterResource]
+**手順 1**. [Git リポジトリ](https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers)からこのフォルダーをコンピューターにコピーします。
 
-3. スケールアップまたはスケールダウンするクラスターを選択します。
+**手順 2**. Azure SDK 1.0 以降がコンピューターにインストールされていることを確認します。
 
-4. クラスター ダッシュボードの設定ブレードに移動します。設定ブレードが表示されていない場合は、クラスター ダッシュボードの主要部分にある [すべての設定] をクリックします。
+**手順 3**. PowerShell ウィンドウを開き、ServiceFabricRPHelpers.psm をインポートします。
 
-5. [NodeTypes] をクリックして、NodeTypes リスト ブレードを開きます。
+```
+Remove-Module ServiceFabricRPHelpers
+```
 
-7. スケールアップまたはスケールダウンするノードの種類をクリックして、ノードの種類の詳細ブレードを開きます。
+コピーした Poweshell モジュールをインポートします。次のコマンドをコピーし、.psm1 のパスを、ご使用のコンピューターのパスに変更するだけです。
 
-### ノードの追加によるスケールアップ
+```
+Import-Module "C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
+```
 
-VM の数を必要な数に調整し、保存します。デプロイメントが完了すると、ノード/VM が追加されます。
+ **手順 4**. Azure アカウントにログインします。
 
-### ノードの削除によるスケールダウン
+```
+Login-AzureRmAccount
+```
 
-ノードの削除は 2 段階のプロセスです。
+Invoke-ServiceFabricRPClusterScaleUpgrade コマンドを実行し、リソース グループ名とサブスクリプションが正しいことを確認します。
 
-1. VM の数を目的の数に調整し、保存します。スライダーの下限は、その NodeType の VM の最小要件を示します。
+```
+Invoke-ServiceFabricRPClusterScaleUpgrade -ResourceGroupName <string> -SubscriptionId <string>
+```
 
-  >[AZURE.NOTE]主要なノードの種類では、最低 5 つの VM を維持する必要があります。
+同じ PS コマンドに入力した例は次のとおりです。
 
-	Once that deployment is complete, you will get notified of the VM names that can now be deleted. You now need to navigate to the VM resource and delete it.
+```
+Invoke-ServiceFabricRPClusterScaleUpgrade -ResourceGroupName chackod02 -SubscriptionId 18ad2z84-84fa-4798-ad71-e70c07af879f
+```
 
-2. クラスター ダッシュボードに戻り、[リソース グループ] をクリックします。[リソース グループ] ブレードが開きます。
+  **手順 5**. このコマンドで、クラスター情報を取得して、ノードの種類すべてを調べます。これにより、最初に該当ノードの種類の現在の VM またはノードの数が示された後、新しい VM またはノードの数を指定するように求められます。
 
-3. [概要] を確認するか、[...] をクリックしてリソースの一覧を表示します。
+ **このノードの種類をスケールアップするには**、現在の VM 数より大きい数値を指定します。
 
-4. 削除する VM の名前をクリックします (削除可能な VM の名前が表示されています)。
+**このノードの種類をスケールダウンするには**、現在の VM 数より小さい数を指定します。
 
-5. [削除] アイコンをクリックして、VM を削除します。
+これらのプロンプトでは、ノードの種類すべてに対してループ処理します。クラスターのノードの種類が 1 つだけの場合、プロンプトが表示されるのは 1 回のみです。
+ 
+  **手順 6**. 新しい VM を追加する場合は、追加する VM のリモート デスクトップ ユーザー ID とパスワードを入力するように求めるメッセージが表示されます。
+ 
+**手順 7**. 出力ウィンドウに、デプロイの進行状況を通知するメッセージが表示されます。デプロイが完了すると、クラスターには、手順 5. で指定した数のノードが存在します。
+
+
+![ScaleupDownPSOut][ScaleupDownPSOut]
+
+
+**手順 8**. これがスケールダウンの要求だった場合は、VM を削除する手順がもう 1 つあります。スクリプトは、削除するように要求したすべての VM を非アクティブ化します。つまり、これらのノードまたは VM に、アプリケーションまたはシステムのレプリカはありません。これらの VM を安全に削除できるようになりました。
+
+**注**: 非アクティブ化されたノードは、今後は SF クラスターによって使用されなくなりますが、課金されることがないように、非アクティブ化された仮想マシンを削除する必要があります。
+
+**手順 8.1**. Azure ポータル ([http://aka.ms/servicefabricportal](http://aka.ms/servicefabricportal)) にログオンします。
+
+**手順 8.2**. [要点] Web パーツで [すべての設定] をクリックして、スケールダウンしたクラスター リソースを参照します。
+
+**手順 8.3**. [ノードの種類] をクリックすると、非アクティブ化されたノードの一覧が表示されます。この図にある chackodnt15、chackodnt24、chackodnt25、chackodnt26 は、現時点で削除する必要がある VM です。
+
+![DeactivatedNodeList][DeactivatedNodeList]
+
+**ステップ 8.4**. PS またはポータルを使用してこれらの VM を削除します。VM が削除されると、クラスターのスケールダウンが完了します。
+
+```
+Remove-AzureRmResource -ResourceName <Deactivated Node name without the understore> -ResourceType Microsoft.Compute/virtualMachines -ResourceGroupName <Resource Group name> -ApiVersion <Api version>
+```
+そのコマンドの入力例は次のとおりです。
+
+```
+Remove-AzureRmResource -ResourceName chackodnt26 -ResourceType Microsoft.Compute/virtualMachines -ResourceGroupName chackod02 -ApiVersion 2015-05-01-preview
+```
+
+### ARM PowerShell または CLI を使用してデプロイしたクラスターのアップグレード
+
+ARM テンプレートを使用してクラスターを最初にデプロイした場合は、特定のノードの種類の VM の数と VM をサポートしているすべてのリソースを変更する必要があります。プライマリ ノードの種類に許可された VM の最小数は 5 (非テスト クラスター用)、テスト クラスターの最小値は 3 です。
+
+新しいテンプレートを作成したら、アップグレードするクラスターと同じリソース グループを使用して、そのテンプレートを ARM にデプロイできます。
+
 
 ## Service Fabric クラスターの自動スケーリング
 
 現時点では、Service Fabric クラスターは自動スケールをサポートしていません。近い将来、クラスターは仮想マシン スケール セット (VMSS) の上に構築されるようになります。その時点で自動スケールが可能になり、Cloud Services での自動スケーリングと同様に動作するようになります。
 
-## PowerShell または CLI を使用したスケーリング
-
-この記事では、ポータルを使用したクラスターのスケーリングを取り上げましたが、クラスター リソースで ARM コマンドを使用して、コマンド ラインから同じ操作を実行することもできます。ClusterResource の GET 応答では、無効になっているノードのリストが返されます。
 
 ## 次のステップ
 
@@ -78,6 +123,7 @@ VM の数を必要な数に調整し、保存します。デプロイメント�
 
 
 <!--Image references-->
-[BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png
+[ScaleupDownPSOut]: ./media/service-fabric-cluster-scale-up-down/ScaleupDownPSOut.png
+[DeactivatedNodeList]: ./media/service-fabric-cluster-scale-up-down/DeactivatedNodeList.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0114_2016-->

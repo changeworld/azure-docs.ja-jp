@@ -4,8 +4,8 @@
 	documentationCenter="php"
 	services="storage"
 	authors="tfitzmac"
-	manager="adinah"
-	editor=""/>
+	manager="carmonm"
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -383,4 +383,4 @@ Azure キュー ストレージ クライアントをインスタンス化する
 [require_once]: http://www.php.net/manual/en/function.require-once.php
 [Azure Portal]: portal.azure.com
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0114_2016-->

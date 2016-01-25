@@ -1,5 +1,5 @@
 <properties
-	pageTitle="VM の可用性セットを構成する | Microsoft Azure"
+	pageTitle="クラシック VM の可用性セットの構成 | Microsoft Azure"
 	description="Azure クラシック ポータルと Azure PowerShell を使用して新規または既存の仮想マシンに対する可用性セットをクラシック デプロイ モデルで構成します。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -14,24 +14,24 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/10/2015"
+	ms.date="01/07/2016"
 	ms.author="cynthn"/>
 
 # クラシック デプロイ モデルに仮想マシンの可用性セットを構成する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。リソース マネージャー デプロイメントで可用性セットを構成することもできます。
 
 
 可用性セットは、メンテナンス時などのシステム停止時に仮想マシンを利用するのに役立ちます。同じように構成された 2 つ以上の仮想マシンを同じ可用性セットに割り当てることによって、仮想マシンが実行するアプリケーションやサービスの可用性を維持するために必要な冗長性が実現されます。この機能の詳細については、「[仮想マシンの可用性管理][]」を参照してください。
 
 アプリケーションをいつでも利用できるようにするだけでなく、効率的に実行できるようにするためには、可用性セットと負荷分散エンドポイントの両方を使用することをお勧めします。負荷分散されたエンドポイントの詳細については、「[Azure インフラストラクチャ サービスの負荷分散][]」を参照してください。
 
-仮想マシンを可用性セットに割り当てるには、2 つの方法があります。
+クラシック デプロイ モデルでは、次の 2 つの方法のいずれかを使用して、仮想マシンを可用性セットに割り当てることができます。
 
 - [オプション 1: 仮想マシンと可用性セットを同時に作成する][]。この後で、新しい仮想マシンを作成する場合には、ここで作成した可用性セットに追加します。
 - [オプション 2: 既存の仮想マシンを可用性セットに追加する][]。
 
->[AZURE.NOTE]複数の仮想マシンを同じ可用性セットに割り当てる場合には同じクラウド サービスに属している必要があります。
+>[AZURE.NOTE]クラシック モデルで複数の仮想マシンを同じ可用性セットに割り当てる場合は、それらの仮想マシンが同じクラウド サービスに属している必要があります。
 
 ## <a id="createset"> </a>オプション 1: 仮想マシンと可用性セットを同時に作成する##
 
@@ -112,4 +112,4 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 [Virtual Network の概要]: virtual-networks-overview.md
 [サービス管理での仮想マシンの操作に関する記事]: virtual-machines-service-management-articles.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

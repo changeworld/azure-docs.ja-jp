@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/27/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # API アプリの保護: Azure Active Directory またはソーシャル プロバイダーの認証の追加
@@ -274,4 +274,4 @@ Visual Studio でリソース グループが作成されたときに、*ゲー�
 [Azure ポータル]: https://manage.windowsazure.com/
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

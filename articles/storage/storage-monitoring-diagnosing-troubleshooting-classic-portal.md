@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="jasonnewyork"
 	manager="tadb"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -26,7 +26,7 @@
 
 このようなアプリケーションを適切に管理するためには、アプリケーションをプロアクティブに監視し、アプリケーションおよびアプリケーションが依存する技術をあらゆる側面から診断およびトラブルシューティングする方法を理解する必要があります。Azure Storage サービスのユーザーは、(応答時間が通常より長いなどの) 予期しない動作変化を捉えるために、アプリケーションで使用している Storage サービスを継続して監視し、ログを使用して詳細なデータを収集し、問題を徹底的に分析する必要があります。監視とログの両方から得られた診断情報を基に、アプリケーションで発生した問題の根本原因を特定できます。そして、問題をトラブルシューティングし、問題を解決するための適切な手順を決定できます。Azure Storage は Azure の中核サービスであり、顧客が Azure インフラストラクチャにデプロイするソリューションのほとんどでは、Azure Storage が重要な役割を担っています。Azure Storage には、クラウド ベース アプリケーションのストレージの問題を簡単に監視、診断、およびトラブルシューティングできる機能が組み込まれています。
 
-Azure Storage アプリケーションにおけるエンド ツー エンドのトラブルシューティングするための実践的なガイドについては、「[Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング](../storage-e2e-troubleshooting/)」を参照してください。
+Azure のストレージ アプリケーションにおけるエンド ツー エンドのトラブルシューティングするための実践的なガイドについては、「[Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング](../storage-e2e-troubleshooting/)」を参照してください。
 
 + [はじめに]
 	+ [本書の構成]
@@ -246,7 +246,7 @@ Storage Client Library for .NET では、アプリケーションで実行され
 
 - ストレージ クライアント ライブラリが作成するクライアント側のログの場合、クライアント要求 ID は、その要求に関連したすべてのログ エントリの [**クライアント要求 ID**] フィールドに表示されます。
 - Fiddler などによってキャプチャされたネットワーク トレースの場合、クライアント要求 ID は、要求メッセージの **x-ms-client-request-id** HTTP ヘッダー値として表示されます。
-- サーバー側の Storage Logging ログの場合、クライアント要求 ID は クライアント要求 ID 列に表示されます。
+- サーバー側の Storage Logging ログの場合、クライアント要求 ID は [クライアント要求 ID] 列に表示されます。
 
 > [AZURE.NOTE]複数の要求が同じクライアント要求 ID を共有する可能性があります。クライアントがこの値を割り当てることができるからです (一方、ストレージ クライアント ライブラリは新しい値を自動的に割り当てます)。クライアントから再試行する場合には、必ず同じクライアント要求 ID を共有します。クライアントからの送信されるバッチの場合、バッチのクライアント要求 ID は 1 つだけです。
 
@@ -494,7 +494,7 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 クライアント アプリケーションが HTTP 404 (未検出) メッセージをサーバーから受け取った場合は、クライアントが使用しようとしていたオブジェクト (エンティティ、テーブル、BLOB、コンテナー、キューなど) が Storage サービス内に存在しないことを意味します。これには以下のようなさまざまな理由が考えられます。
 
 - [クライアントまたは別のプロセスがそのオブジェクトを以前に削除した]
-- [Shared Access Signature (SAS) 認証の問題]
+- [共有アクセス署名 (SAS) 認証の問題]
 - [クライアント側の JavaScript コードにオブジェクトへのアクセス許可がない]
 - [ネットワーク エラー]
 
@@ -882,7 +882,7 @@ Blob Storage からダウンロードしたストレージ ログ データを E
 [クライアントが HTTP 403 (許可されていません) のメッセージを受け取る]: #the-client-is-receiving-403-messages
 [クライアントが HTTP 404 (見つからない) のメッセージを受け取る]: #the-client-is-receiving-404-messages
 [クライアントまたは別のプロセスがそのオブジェクトを以前に削除した]: #client-previously-deleted-the-object
-[Shared Access Signature (SAS) 認証の問題]: #SAS-authorization-issue
+[共有アクセス署名 (SAS) 認証の問題]: #SAS-authorization-issue
 [クライアント側の JavaScript コードにオブジェクトへのアクセス許可がない]: #JavaScript-code-does-not-have-permission
 [ネットワーク エラー]: #network-failure
 [クライアントが HTTP 409 (競合) のメッセージを受け取る]: #the-client-is-receiving-409-messages
@@ -916,4 +916,4 @@ Blob Storage からダウンロードしたストレージ ログ データを E
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-2.png
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0114_2016-->

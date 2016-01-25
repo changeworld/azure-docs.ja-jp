@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/19/2015"
+	ms.date="01/06/2016"
 	ms.author="kgremban"/>
 
 # Azure AD アプリケーション プロキシ コネクタをサイレント インストールする方法
+
+> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 複数の Windows サーバーまたはユーザー インターフェイスが有効になっていない Windows サーバーにインストール スクリプトを送信できます。このトピックでは、無人インストールを有効にし、Azure AD アプリケーション プロキシ コネクタをインストールして登録する Windows PowerShell スクリプトを作成する方法について説明します。
 
@@ -44,7 +46,7 @@
 ### Windows PowerShell 資格情報オブジェクトを使用してコネクタを登録する
 
 
-1. 次のスクリプトを実行して、Windows PowerShell 資格情報オブジェクトを作成します。"username" と "password" をディレクトリのユーザー名とパスワードに置き換えます。
+1. 次のスクリプトを実行して、Windows PowerShell 資格情報オブジェクトを作成します。"<username>" と "<password>" をディレクトリのユーザー名とパスワードに置き換えます。
 
         $User = "<username>"
         $PlainPassword = '<password>'
@@ -142,4 +144,4 @@
 * [Azure への組織としてのサインアップ](sign-up-organization.md)
 * [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/06/2015"
+	ms.date="01/08/2016"
 	ms.author="larryfr"/>
 
 #HDInsight で Apache Mahout と Linux ベースの Hadoop を使用した映画のリコメンデーションの生成 (プレビュー)
@@ -55,7 +55,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 [GroupLens Research][movielens] では利便性を高めるために、Mahout と互換性のある形式で映画の評価データを提供します。次の手順を使用してデータをダウンロードし、クラスターの既定のストレージに読み込みます。
 
-1. SSH を使用して、Linux ベースの HDInsight クラスターに接続します。接続するときに使用するアドレスは `CLUSTERNAME-ssh.azurehdinsight.net` で、ポートは `22`です。
+1. SSH を使用して、Linux ベースの HDInsight クラスターに接続します。接続するときに使用するアドレスは `CLUSTERNAME-ssh.azurehdinsight.net` で、ポートは `22` です。
 
 	SSH を使用して HDInsight に接続する方法の詳細については、次のドキュメントを参照してください。
 
@@ -123,55 +123,55 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 	エディターが開いたら、ファイルの内容として次のコードを使用します。
 
-		#!/usr/bin/env python
-
-		import sys
-
-		if len(sys.argv) != 5:
-		        print "Arguments: userId userDataFilename movieFilename recommendationFilename"
-		        sys.exit(1)
-
-		userId, userDataFilename, movieFilename, recommendationFilename = sys.argv[1:]
-
-		print "Reading Movies Descriptions"
-		movieFile = open(movieFilename)
-		movieById = {}
-		for line in movieFile:
-		        tokens = line.split("|")
-		        movieById[tokens[0]] = tokens[1:]
-		movieFile.close()
-
-		print "Reading Rated Movies"
-		userDataFile = open(userDataFilename)
-		ratedMovieIds = []
-		for line in userDataFile:
-		        tokens = line.split("\t")
-		        if tokens[0] == userId:
-		                ratedMovieIds.append((tokens[1],tokens[2]))
-		userDataFile.close()
-
-		print "Reading Recommendations"
-		recommendationFile = open(recommendationFilename)
-		recommendations = []
-		for line in recommendationFile:
-		        tokens = line.split("\t")
-		        if tokens[0] == userId:
-		                movieIdAndScores = tokens[1].strip("[]\n").split(",")
-		                recommendations = [ movieIdAndScore.split(":") for movieIdAndScore in movieIdAndScores ]
-		                break
-		recommendationFile.close()
-
-		print "Rated Movies"
-		print "------------------------"
-		for movieId, rating in ratedMovieIds:
-		        print "%s, rating=%s" % (movieById[movieId][0], rating)
-		print "------------------------"
-
-		print "Recommended Movies"
-		print "------------------------"
-		for movieId, score in recommendations:
-		        print "%s, score=%s" % (movieById[movieId][0], score)
-		print "------------------------"
+        #!/usr/bin/env python
+        
+        import sys
+        
+        if len(sys.argv) != 5:
+                print "Arguments: userId userDataFilename movieFilename recommendationFilename"
+                sys.exit(1)
+        
+        userId, userDataFilename, movieFilename, recommendationFilename = sys.argv[1:]
+        
+        print "Reading Movies Descriptions"
+        movieFile = open(movieFilename)
+        movieById = {}
+        for line in movieFile:
+                tokens = line.split("|")
+                movieById[tokens[0]] = tokens[1:]
+        movieFile.close()
+        
+        print "Reading Rated Movies"
+        userDataFile = open(userDataFilename)
+        ratedMovieIds = []
+        for line in userDataFile:
+                tokens = line.split("\t")
+                if tokens[0] == userId:
+                        ratedMovieIds.append((tokens[1],tokens[2]))
+        userDataFile.close()
+        
+        print "Reading Recommendations"
+        recommendationFile = open(recommendationFilename)
+        recommendations = []
+        for line in recommendationFile:
+                tokens = line.split("\t")
+                if tokens[0] == userId:
+                        movieIdAndScores = tokens[1].strip("[]\n").split(",")
+                        recommendations = [ movieIdAndScore.split(":") for movieIdAndScore in movieIdAndScores ]
+                        break
+        recommendationFile.close()
+        
+        print "Rated Movies"
+        print "------------------------"
+        for movieId, rating in ratedMovieIds:
+                print "%s, rating=%s" % (movieById[movieId][0], rating)
+        print "------------------------"
+        
+        print "Recommended Movies"
+        print "------------------------"
+        for movieId, score in recommendations:
+                print "%s, score=%s" % (movieById[movieId][0], score)
+        print "------------------------"
 
 	**Ctrl-X**、**Y**、**Enter** の順に押して、データを保存します。
 
@@ -241,7 +241,7 @@ Mahout ジョブは、ジョブの処理中に作成された一時データを�
 
 	hdfs dfs -rm -f -r /temp/mahouttemp
 
-> [AZURE.WARNING]コマンドを再実行する場合、出力ディレクトリも削除する必要があります。このディレクトリを削除するには、次を使用します。
+> [AZURE.WARNING] コマンドを再実行する場合、出力ディレクトリも削除する必要があります。このディレクトリを削除するには、次を使用します。
 >
 > ```hdfs dfs -rm -f -r /example/data/mahoutout```
 
@@ -267,4 +267,4 @@ Mahout ジョブは、ジョブの処理中に作成された一時データを�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0114_2016-->

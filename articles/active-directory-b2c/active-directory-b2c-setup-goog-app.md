@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="01/12/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Google+ アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -48,17 +48,13 @@ Azure Active Directory (AD) B2C で ID プロバイダーとして Google+ を�
 
     ![G+ - OAuth 同意画面](./media/active-directory-b2c-setup-goog-app/google-web-app.png)
 
-8. アプリケーションの **[名前]** を指定し、**[承認済みの JavaScript 生成元]** フィールドに「[https://login.microsoftonline.com](https://login.microsoftonline.com)」、**[承認済みのリダイレクト URI]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」とそれぞれ入力します。**{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。**[作成]** をクリックします。
+8. アプリケーションの **[名前]** を指定し、**[承認済みの JavaScript 生成元]** フィールドに「[https://login.microsoftonline.com](https://login.microsoftonline.com)」、**[承認済みのリダイレクト URI]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」とそれぞれ入力します。**{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。**[作成]** をクリックします。注: **{tenant}** の値は大文字小文字が区別されます。
 
-> [AZURE.NOTE]**{tenant}** の値は大文字小文字が区別されます。
+    ![G+ - クライアント ID の作成](./media/active-directory-b2c-setup-goog-app/google-create-client-id.png)
 
-    ![G+ - Create client ID](./media/active-directory-b2c-setup-goog-app/google-create-client-id.png)
+9. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。テナントで ID プロバイダーとして Google+ を構成するには、両方の値が必要です。注: **クライアント シークレット**は、重要なセキュリティ資格情報です。
 
-9. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。テナントで ID プロバイダーとして Google+ を構成するには、両方の値が必要です。
-
-> [AZURE.NOTE]**[Client secret]** は、重要なセキュリティ資格情報です。
-
-    ![G+ - Client secret](./media/active-directory-b2c-setup-goog-app/google-client-secret.png)
+    ![G+ - クライアント シークレット](./media/active-directory-b2c-setup-goog-app/google-client-secret.png)
 
 ## テナントで ID プロバイダーとして Google+ を構成する
 
@@ -70,4 +66,4 @@ Azure Active Directory (AD) B2C で ID プロバイダーとして Google+ を�
 6. **[この ID プロバイダーを設定する]** をクリックし、先に作成した Google+ アプリケーションの **[クライアント ID]** と **[クライアント シークレット]** を入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Google+ の構成を保存します。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

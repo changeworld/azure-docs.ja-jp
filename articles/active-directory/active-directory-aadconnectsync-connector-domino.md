@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="12/28/2015"
+   ms.date="01/14/2016"
    ms.author="andkjell"/>
 
 # Lotus Domino Connector のテクニカル リファレンス
@@ -344,7 +344,7 @@ Resource Reservation データベースには、3 種類のドキュメントが
 - リソース
 - 予約
 
-Resource Reservation データベースの設定方法の詳細については、「[Resource Reservation データベースを設定する](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_USING_GROUPS_OVER.html)」を参照してください。
+Resource Reservation データベースの設定方法の詳細については、「[Resource Reservation データベースを設定する](https://www-01.ibm.com/support/knowledgecenter/SSKTMJ_8.0.1/com.ibm.help.domino.admin.doc/DOC/H_SETTING_UP_THE_RESOURCE_RESERVATIONS_DATABASE.html)」を参照してください。
 
 **リソースの作成、更新、および削除**
 
@@ -477,15 +477,15 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
 
 **方法 1: Lotus Domino スキーマの拡張**
 
-1. [これらの手順](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html)に従い Domino Directory テンプレート <PUBNAMES.NTF> のコピーを作成します (既定の IBM Lotus Domino ディレクトリ テンプレートはカスタマイズしないでください)。
-2. Domino Designer で作成したばかりの Domino Directory テンプレート <CONTOSO.NTF> テンプレートのコピーを開き、次の手順に従います。
+1. [これらの手順](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html)に従い Domino Directory テンプレート {PUBNAMES.NTF} のコピーを作成します (既定の IBM Lotus Domino ディレクトリ テンプレートはカスタマイズしないでください)。
+2. Domino Designer で作成したばかりの Domino Directory テンプレート {CONTOSO.NTF} テンプレートのコピーを開き、次の手順に従います。
     - [Shared Elements] をクリックし、[Subforms] を展開します。
-    - $[ObjectName]InheritableSchema サブフォームをダブルクリックします (ここで [ObjectName] は既定の構造上のオブジェクト クラス名です。例: Person)。
-    - スキーマ [MyPersonAtrribute] に追加する属性に名前を付け、[Create] メニューを選択し、次いでメニューから [Field] を選択し、それに対応するフィールドを作成します。
+    - ${ObjectName}InheritableSchema サブフォームをダブルクリックします (ここで {ObjectName} は既定の構造上のオブジェクト クラス名です。例: Person)。
+    - スキーマ {MyPersonAtrribute} に追加する属性に名前を付け、[Create] メニューを選択し、次いでメニューから [Field] を選択し、それに対応するフィールドを作成します。
     - 追加したフィールドの [Properties] ウィンドウで、その種類、スタイル、サイズ、フォントおよびその他の関連パラメーターを選択して、そのプロパティを設定します。
     - 属性の既定値は、その属性の名前と同じにします (例: 属性名が MyPersonAttribute の場合は、既定値は同じ名前にします)。
-    - 更新値での $[ObjectName]InheritableSchema サブフォームの保存
-3. Domino Directory テンプレート <PUBNAMES.NTF> を、[これらの手順に従い](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_ABOUT_RULES_FOR_CUSTOMIZING_THE_PUBLIC_ADDRESS_BOOK.html)、新しいカスタム テンプレート [CONTOSO.NTF] に置き換えます。
+    - 更新値での ${ObjectName}InheritableSchema サブフォームの保存
+3. Domino Directory テンプレート {PUBNAMES.NTF} を、[これらの手順に従い](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_ABOUT_RULES_FOR_CUSTOMIZING_THE_PUBLIC_ADDRESS_BOOK.html)、新しいカスタム テンプレート {CONTOSO.NTF} に置き換えます。
 4. Domino Admin を閉じ、Domino コンソールを開いて LDAP サービスを再起動して、LDAP スキーマを再度読み込みます。
     - Domino コンソールの **[Domino Command]** テキストフィールドの下に [Restart Task LDAP](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_STARTING_AND_STOPPING_THE_LDAP_SERVER_OVER.html) コマンドを入力し、LDAP サービスを再起動します。
     - LDAP スキーマを再度読み込むために Tell LDAP コマンドの Tell LDAP ReloadSchema を使用します。
@@ -494,8 +494,8 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
 
 **方法 2: は、カスタム属性を使用し auxClass を作成し、オブジェクト クラスと関連付ける**
 
-1. [これらの手順]()http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html に従い Domino Directory テンプレート [PUBNAMES.NTF] のコピーを作成します (既定の IBM Lotus Domino ディレクトリ テンプレートはカスタマイズしないでください)。
-2. 作成したばかりの Domino ディレクトリ テンプレート [CONTOSO.NTF] テンプレートのコピーを Domino Designer で開きます。
+1. [これらの手順](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html) に従い Domino Directory テンプレート {PUBNAMES.NTF} のコピーを作成します (既定の IBM Lotus Domino ディレクトリ テンプレートはカスタマイズしないでください)。
+2. 作成したばかりの Domino ディレクトリ テンプレート {CONTOSO.NTF} テンプレートのコピーを Domino Designer で開きます。
 3. 左のウィンドウから [Shared Code]、[Subforms] の順に選択します。
 4. [New Subform] をクリックします。
 5. 次を実行し、新しいサブフォームのプロパティを指定します。
@@ -508,16 +508,16 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
 6. 次を実行し、補助オブジェクト クラスを定義するフィールドを追加します。
     - 作成したばかりのサブフォームを開きます。
     - [Create]、[Field] の順に選択します。
-    - [Field] ダイアログ ボックスの [Basics] タブで [Name] の横に、[MyPersonTestAttribute] などの任意の名前を指定します。
+    - [Field] ダイアログ ボックスの [Basics] タブで [Name] の横に、{MyPersonTestAttribute} などの任意の名前を指定します。
     - 追加したフィールドの種類、スタイル、サイズ、フォントおよびその他の関連パラメーターを選択して、そのプロパティを設定します。
     - 属性の既定値は、その属性の名前と同じにします (例: 属性名が MyPersonTestAttribute の場合は、既定値は同じ名前にします)。
     - 更新された値でサブフォームを保存し、次を実行します。
         - 左のウィンドウから [Shared Code]、[Subforms] の順に選択します。
         - 新しいサブフォームを選択し、[Design - Design Properties] を選択します。
         - 左から 3 番目のタブをクリックし、**[Propagate this prohibition of design change]** を選択します。
-7. $[ObjectName]ExtensibleSchema サブフォームを開きます (ここで [ObjectName] は、Person などの既定の構造オブジェクト クラスです)。
-8. リソースを挿入し、サブフォーム (TestSubform など作成したばかりのもの) を選択し、$[ObjectName]ExtensibleSchema サブフォームを保存します。
-9. Domino Directory テンプレート [PUBNAMES.NTF] を、[これらの手順に従い](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_ABOUT_RULES_FOR_CUSTOMIZING_THE_PUBLIC_ADDRESS_BOOK.html)、新しいカスタム テンプレート [CONTOSO.NTF] に置き換えます。
+7. ${ObjectName}ExtensibleSchema サブフォームを開きます (ここで {ObjectName} は、Person などの既定の構造オブジェクト クラスです)。
+8. リソースを挿入し、サブフォーム (TestSubform など作成したばかりのもの) を選択し、${ObjectName}ExtensibleSchema サブフォームを保存します。
+9. Domino Directory テンプレート {PUBNAMES.NTF} を、[これらの手順に従い](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_ABOUT_RULES_FOR_CUSTOMIZING_THE_PUBLIC_ADDRESS_BOOK.html)、新しいカスタム テンプレート {CONTOSO.NTF} に置き換えます。
 10. Domino Admin を閉じ、Domino コンソールを開いて LDAP サービスを再起動して、LDAP スキーマを再度読み込みます。
     - Domino コンソールの **[Domino Command]** テキストフィールドの下に [Restart Task LDAP](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_STARTING_AND_STOPPING_THE_LDAP_SERVER_OVER.html) コマンドを入力し、LDAP サービスを再起動します。
     - LDAP スキーマを再度読み込むために Tell LDAP コマンドの Tell LDAP ReloadSchema を使用します。
@@ -526,10 +526,10 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
 
 **方法 3: ExtensibleObject クラスへのカスタム属性の追加**
 
-1. ルート ディレクトリにある [Schema.nsf] ファイルを開きます。
+1. ルート ディレクトリにある {Schema.nsf} ファイルを開きます。
 2. 左のメニューの **[All Schema Documents]** の下の [Select LDAP Object Classes] を選択し、**[Add Object class]** ボタンをクリックします。
-3. [###ExtensibleSchema] の形式で、スキーマを拡張するオブジェクトへの参照と共に LDAP 名を指定します (ここで ### は Person などの既定の構造オブジェクトの名前です)。たとえば、Person オブジェクト クラスのスキーマを拡張するには、LDAP 名 [PersonExtensibleSchema] を提供します。
-4. スキーマを拡張する上位のオブジェクト クラス名を入力します。たとえば、Person オブジェクト クラスのスキーマを拡張するには、上位オブジェクト クラス名 [dominoPerson] を入力します。
+3. {zzzExtensibleSchema} の形式で、スキーマを拡張するオブジェクトへの参照と共に LDAP 名を指定します (ここで zzz は Person などの既定の構造オブジェクトの名前です)。たとえば、Person オブジェクト クラスのスキーマを拡張するには、LDAP 名 {PersonExtensibleSchema} を提供します。
+4. スキーマを拡張する上位のオブジェクト クラス名を入力します。たとえば、Person オブジェクト クラスのスキーマを拡張するには、上位オブジェクト クラス名 {dominoPerson} を入力します。
 5. オブジェクト クラスに対応する有効な OID を入力します。
 6. 必要に応じて、[Mandatory Attribute Types] または [Optional Attribute Types] フィールドの下で [Extended attributes] または [custom attributes] を選択します。
 7. 必要なオブジェクトを ExtensibleObjectClass に追加した後、**[Save & Close]** ボタンをクリックします。
@@ -539,4 +539,4 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
 
 -	コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「[How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->

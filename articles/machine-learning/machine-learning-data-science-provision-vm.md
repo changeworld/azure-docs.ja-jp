@@ -23,7 +23,7 @@
 
 Microsoft データ サイエンス用仮想マシンは、プレインストールの Azure 仮想マシン (VM) イメージです。データ分析と機械学習用に一般的に使用されているいくつかのツールで構成されています。含まれているツールは、次のとおりです。
 
-- Revolution R Open
+- Microsoft R Server Developer エディション
 - Anaconda Python ディストリビューション
 - Visual Studio Community エディション
 - Power BI Desktop
@@ -51,7 +51,7 @@ Microsoft データ サイエンス仮想マシンを作成する前に、次を
 
 Microsoft データ サイエンス仮想マシンのインスタンスを作成する手順を以下に示します。
 
-1.	[Azure クラシック ポータル](https://portal.azure.com/#gallery/microsoft-ads.standard-data-science-vmstandard-data-science-vm)に一覧表示されている仮想マシンに移動します。
+1.	[Azure ポータル](https://portal.azure.com/#gallery/microsoft-ads.standard-data-science-vmstandard-data-science-vm)に一覧表示されている仮想マシンに移動します。
 2.	 下部にある **[作成]** ボタンをクリックして、ウィザードを起動します。![configure-data-science-vm](./media/machine-learning-data-science-provision-vm/configure-data-science-virtual-machine.png)
 3.	 以下のセクションでは、Microsoft データ サイエンス仮想マシンを作成するために使用されるウィザードの **5 つのステップ** (上の図の右に列挙してあります) の各ステップでの**入力**について説明します。以下は、これらの各ステップを構成するために必要な入力項目です。
 
@@ -83,23 +83,23 @@ Microsoft データ サイエンス仮想マシンのインスタンスを作成
    - プロビジョニングを開始するには、**[購入]** をクリックします。取引条件へのリンクが用意されています。**[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 
 
 
-プロビジョニングには、10 ～ 20 分くらいかかります。プロビジョニングの状態は、Azure クラシック ポータルに表示されます。
+プロビジョニングには、10 ～ 20 分くらいかかります。プロビジョニングの状態は、Azure ポータルに表示されます。
 
 ## Microsoft データ サイエンス仮想マシンにアクセスする方法
 
 VM を作成した後は、リモート デスクトップを使用して、手順 4. の [基本] セクションで作成した管理者アカウントの資格情報でログインできます。
 
-VM が作成され、プロビジョニングされた後は、VM にインストールされて構成されたツールを使い始めることができます。多くのツールには、デスクトップ アイコンとスタート メニュー タイルがあります。
+VM が作成され、プロビジョニングされた後は、VM にインストールされて構成されたツールを使い始めることができます。多くのツールには、スタート メニュー タイルとデスクトップ アイコンがあります。
 
-## データ サイエンス仮想マシンで強力なパスワードを作成する方法
+## Jupyter ノートブック サーバーに強力なパスワードを作成する方法 
 
-データ サイエンス仮想マシン用の強力なパスワードを作成するには、マシンのコマンド プロンプトで次のコマンドを実行します。
+コンピューターにインストールされた Jupyter ノートブック サーバーに強力なパスワードを作成するには、データ サイエンス仮想マシンのコマンド プロンプトで次のコマンドを実行します。
 
 	c:\anaconda\python.exe -c "import IPython;print IPython.lib.passwd()"
 
-パスワードを求められたら、入力します。
+メッセージが表示されたら、強力なパスワードを選択します。
 
-"sha1:xxxxxx" 形式のパスワード ハッシュが出力されます。このパスワード ハッシュをコピーし、Notebook 構成ファイル (**C:\\Aaqs.ipython\\profile\_nbserver\\ipython\_notebook\_config.py**) 内の既存のハッシュを ***c.NotebookApp.password*** パラメーターで置き換えます。
+"sha1:xxxxxx" 形式のパスワード ハッシュが出力されます。このパスワード ハッシュをコピーし、ノートブックの構成ファイル (**C:\\ProgramData\\jupyter\\jupyter\_notebook\_config.py**) 内の既存のハッシュを ***c.NotebookApp.password*** パラメーターで置き換えます。
 
 引用符内にある既存のハッシュ値のみを置き換える必要があります。引用符とパラメーター値の ***sha1:*** プレフィックスを保持する必要があります。
 
@@ -107,25 +107,25 @@ VM が作成され、プロビジョニングされた後は、VM にインス�
 
 ## Microsoft データ サイエンス仮想マシンにインストールされているツール
 
-### R
-分析に R を使用する場合のために、VM には Revolution R Open (RRO) がインストールされています。これは、R のオープン ソース ディストリビューションであり、CRAN-R との完全な互換性があります。最新のオープン ソース R エンジンと、Intel Math Kernel Library が含まれています。VM には、"RRO RGui" と呼ばれる IDE もパッケージ化されています。[RStudio](http://www.rstudio.com) のような他の IDE をダウンロードして使用することもできます。
+### Microsoft R Server Developer エディション
+分析に R を使用できるように、VM に Microsoft R Server Developer エディションがインストールされています。Microsoft R Server は、サポート対象のスケーラブルで安全な R に基づく、広範にデプロイできるエンタープライズ クラスの分析プラットフォームです。さまざまなビッグ データ統計、予測モデリング、および機械学習の機能をサポートする R Server は、幅広い分析機能 (探索、分析、視覚化、モデリングなど) をサポートしています。オープン ソース R を使用、拡張することで、Microsoft R Server は R スクリプト、関数、CRAN パッケージと完全に互換性のある形式で、エンタープライズ規模でデータを分析します。また、Microsoft R Server でデータの並列処理やチャンク処理を追加することにより、オープン ソース R のメモリ内の制限に対処します。これにより、ユーザーはメイン メモリーに収まる容量よりはるかに大きいデータに対し分析を実行できます。さらに、IDE for R が VM にパッケージングされており、[スタート] メニューまたはデスクトップ上のアイコン "Revolution R Enterprise 8.0" をクリックしてアクセスできます。[RStudio](http://www.rstudio.com) のような他の IDE をダウンロードして使用することもできます。
 
 ### Python
-Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 がインストールされています。このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。Visual Studio 2015 Community 版でインストールされている、または IDLE や Spyder など、Anaconda でバンドルされている IDE の 1 つである Python Tools for Visual Studio (PTVS) を利用できます。検索バーで検索して (**Win** + **S** キー)、いずれかの IDE を起動できまます。
+Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。Visual Studio 2015 Community 版でインストールされている、または IDLE や Spyder など、Anaconda でバンドルされている IDE の 1 つである Python Tools for Visual Studio (PTVS) を利用できます。検索バーで検索して (**Win** + **S** キー)、いずれかの IDE を起動できまます。
 
-### IPython Notebook
-Anaconda ディストリビューションは、コードと分析を共有するための環境である IPython Notebook にも付属しています。IPython Notebook サーバーは、あらかじめ構成されています。Notebook サーバーにアクセスするためのブラウザーを起動するデスクトップ アイコンがあります。リモート デスクトップを通じて VM を利用している場合は、IPython Notebook サーバーにアクセスするために、[https://localhost:9999/](https://localhost:9999/) を使用することもできます (注: 証明書の警告が表示されても続行します)。
+### Jupyter Notebook
+Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter ノートブックにも付属しています。Jupyter ノートブック サーバーは、Python 2、Python 3、R カーネルがあらかじめ構成されています。Notebook サーバーにアクセスするためのブラウザーを起動する Jupyter Notebook という名前のデスクトップ アイコンがあります。リモート デスクトップを通じて VM を利用している場合は、Jupyter ノートブック サーバーにアクセスするために、[https://localhost:9999/](https://localhost:9999/) を使用することもできます (注: 証明書の警告が表示されても続行します)。サンプルのノートブックがパッケージングされています (Python と R にそれぞれ 1 つずつ)。前の手順で作成したパスワードを使用して Jupyter ノートブックを認証すると、ノートブックのホーム ページにサンプルへのリンクを表示できます。
 
 ### Visual Studio 2015 Community エディション
 Visual Studio Community エディションが VM にインストールされています。これは、Microsoft の人気のある IDE の無料版で、評価用または非常に小規模なチーム用に使用できます。ライセンス条項は、[ここ](https://www.visualstudio.com/support/legal/mt171547)で確認することができます。Visual Studio を開くには、デスクトップ アイコンをダブルクリックするか、**[スタート]** メニューを使用します。**Win** + **S** キーを押し、「Visual Studio」と入力することで、プログラムを検索することもできます。
 
-注: 評価期間が終了したことを示すメッセージが表示される場合があります。Visual Studio Community Edition にアクセスするには、Microsoft アカウント資格情報を入力するか、Microsoft アカウント資格情報を作成して、それを入力します。C#、Python などの言語でプロジェクトを作成できます。
+注: 評価期間が終了したことを示すメッセージが表示される場合があります。Visual Studio Community エディションにアクセスするには、Microsoft アカウント資格情報を入力するか、Microsoft アカウント資格情報を作成して、それを入力します。C#、Python などの言語でプロジェクトを作成できます。また、インストールされたプラグインにより、Azure Data Catalog、Azure HDInsight (Hadoop、Spark)、Azure Data Lake などの Azure サービスを簡単に操作できるようになります。
 
 ### SQL Server Express
 SQL Server の制限付きバージョンも、Visual Studio Community エディションにパッケージ化されています。SQL サーバーにアクセスするには、**SQL Server Management Studio** を起動します。VM の名前は、サーバー名として設定されます。Windows の管理者としてログインする場合は、Windows 認証を使用します。SQL Server Management Studio にアクセスできたら、他のユーザーの作成、データベースの作成、データのインポート、SQL クエリの実行などを行うことができます。
 
 ### Azure 
-いくつかの Azure ツールが、VM にインストールされています。- Azure SDK ドキュメントにアクセスするためのデスクトップ ショートカットがあります。- **AzCopy** は、Microsoft Azure Storage アカウントとの間でデータを移動するために使用されます。- **Azure スStorage エクスプローラー**は、Azure Storage アカウントに格納されているオブジェクトを参照するために使用されます。- **Microsoft Azure Powershell**。- スクリプト言語で Azure リソースを管理するために使用されるスクリプト言語も、VM にインストールされています。
+いくつかの Azure ツールが、VM にインストールされています。- Azure SDK ドキュメントにアクセスするためのデスクトップ ショートカットがあります。- **AzCopy** は、Microsoft Azure Storage アカウントとの間でデータを移動するために使用されます。- **Azure ストレージ エクスプローラー**は、Azure Storage アカウントに格納されているオブジェクトを参照するために使用されます。- **Microsoft Azure Powershell**。- スクリプト言語で Azure リソースを管理するために使用されるスクリプト言語も、VM にインストールされています。
 
 ###Power BI
 
@@ -136,4 +136,12 @@ SQL Server の制限付きバージョンも、Visual Studio Community エディ
 ## その他の Microsoft 開発ツール
 [**Microsoft Web Platform Installer**](https://www.microsoft.com/web/downloads/platform.aspx) は、他の Microsoft 開発ツールを検出し、ダウンロードするために使用できます。Microsoft データ サイエンス仮想マシンのデスクトップにはツールのショートカットもあります。
 
-<!---HONumber=AcomDC_1223_2015-->
+## 次のステップ
+引き続き学習や調査に役立つ手順をいくつか紹介します。
+
+* [スタート] メニューをクリックし、メニューに一覧表示されたツールを確認して、データ サイエンス VM 上のさまざまなデータ サイエンス ツールを検討できます。
+* **C:\\Program Files\\Microsoft\\MRO-for-RRE\\8.0\\R-3.2.2\\library\\RevoScaleR\\demoScripts** に移動し、エンタープライス規模でのデータ分析をサポートする R で RevoScaleR ライブラリを使用して、サンプルを入手します。  
+* [データ サイエンス プロセス](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を体系的に使用して、エンド ツー エンドの分析ソリューションを構築する方法を確認します。
+* [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) では、Cortana Analytics Suite を使用して機械学習やデータ分析のサンプルを入手できます。アクセスしやすいように、[スタート] メニューや仮想マシンのデスクトップにもアイコンが用意されています。 
+
+<!---HONumber=AcomDC_0114_2016-->

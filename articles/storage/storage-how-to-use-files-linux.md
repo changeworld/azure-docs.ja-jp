@@ -5,7 +5,7 @@
         documentationCenter="na"
         authors="jasontang501"
         manager="jahogg"
-        editor="" />
+        editor="tysonn" />
 
 <tags ms.service="storage"
       ms.workload="storage"
@@ -13,10 +13,10 @@
       ms.devlang="na"
       ms.topic="article"
       ms.date="12/17/2015"
-      ms.author="jutang;tamram" />
+      ms.author="jutang" />
 
 
-# Linux で Azure File Storage を使用する方法 
+# Linux で Azure File Storage を使用する方法
 
 ## 概要
 
@@ -40,10 +40,10 @@ File Storage は現在一般に提供されており、SMB 2.1 と SMB 3.0 の�
 
 Azure で Linux 仮想マシンを作成するときに、Azure イメージ ギャラリーの SMB 2.1 以降をサポートする Linux イメージを指定できます。推奨される Linux イメージの一覧を次に示します。
 
-- Ubuntu Server 14.04	
-- Ubuntu Server 15.04	
-- CentOS 7.1	
-- Open SUSE 13.2	
+- Ubuntu Server 14.04
+- Ubuntu Server 15.04
+- CentOS 7.1
+- Open SUSE 13.2
 - SUSE Linux Enterprise Server 12
 - SUSE Linux Enterprise Server 12 (Premium Image)
 
@@ -60,7 +60,7 @@ Azure で Linux 仮想マシンを作成するときに、Azure イメージ ギ
 共有は、/etc/fstab に設定を追加することでマウントすることもできます。
 
 ここでの 0777 は、すべてのユーザーに実行/読み取り/書き込みアクセス許可を与えるディレクトリ/ファイルのアクセス許可を表します。Linux ファイルのアクセス許可に関するドキュメントに従って、他のファイル アクセス許可コードに置き換えることができます。
- 
+
 再起動後にマウントされているファイル共有を保持するために、次のような設定を /etc/fstab に追加できます。
 
     //myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username= myaccountname,password= StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
@@ -98,7 +98,7 @@ Open SUSE 13.2 を使用する場合は、次に示すようにファイルを�
 - ファイル共有からのファイルのアップロードおよびダウンロード
 - 各ファイル共有の実際の使用状況の監視
 - ファイル共有のサイズ クォータの調整
-- Windows クライアントからファイル共有をマウントするために使用する `net use` コマンドのコピー 
+- Windows クライアントからファイル共有をマウントするために使用する `net use` コマンドのコピー
 
 また、Linux から Azure のクロスプラットフォームのコマンドライン インターフェイス (Azure CLI) を使用してファイル共有を管理することもできます。Azure CLI には、File Storage など、Azure Storage を処理できるオープン ソースのクロスプラットフォーム コマンド セットが用意されています。豊富なデータ アクセス機能だけでなく、Azure ポータルにあるものと同じ機能の多くを使用できます。たとえば、「[Azure Storage での Azure CLI の使用](storage-azure-cli.md)」をご覧ください。
 
@@ -135,9 +135,9 @@ Azure File ストレージの詳細については、次のリンクを参照し
 
 ### ブログ記事
 
-- [Azure File ストレージの一般提供開始](http://go.microsoft.com/fwlink/?LinkID=626728&clcid=0x409)
-- [Azure File ストレージの詳細情報](http://go.microsoft.com/fwlink/?LinkID=626729&clcid=0x409) 
+- [Azure File Storage の一般提供開始](http://go.microsoft.com/fwlink/?LinkID=626728&clcid=0x409)
+- [Azure File ストレージの詳細情報](http://go.microsoft.com/fwlink/?LinkID=626729&clcid=0x409)
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.date="01/12/2016" 
 	ms.author="cephalin;riande"/>
 
 
@@ -62,37 +62,45 @@ Azure SDK for .NET 2.5.1 以降をインストールして、開発環境を設�
 
 1.	会議一覧アプリケーションの[スタート プロジェクト][StarterProject]をダウンロードします。
 
-2. 	Windows エクスプローラーで MvcMobileStarterBeta.zip ファイルを右クリックし、*[プロパティ]* をクリックします。
+2. 	Windows エクスプローラーで、ダウンロードした ZIP ファイルを右クリックし、*[プロパティ]* をクリックします。
 
-3. 	**[Mvc5Mobile.zip のプロパティ]** ダイアログ ボックスで、**[ブロックの解除]** をクリックします (ブロックを解除すると、Web からダウンロードした *.zip* ファイルを使おうとしたときに表示されるセキュリティに関する警告を回避できます)。
+3. 	**[プロパティ]** ダイアログ ボックスで、**[ブロックの解除]** をクリックします (ブロックを解除すると、Web からダウンロードした *.zip* ファイルを使おうとしたときに表示されるセキュリティに関する警告を回避できます)。
 
-4.	*Mvc5Mobile.zip* ファイルを右クリックし、**[すべて展開]** をクリックしてファイルを解凍します。
+4.	ZIP ファイルを右クリックし、**[すべて展開]** をクリックしてファイルを解凍します。
 
-5. 	Visual Studio で *Mvc5Mobile.sln* ファイルを開きます。
+5. 	Visual Studio で *C#\\Mvc5Mobile.sln* ファイルを開きます。
 
 6.  ソリューション エクスプローラで目的のプロジェクトを右クリックし、**[発行]** をクリックします。
 
 	![][DeployClickPublish]
 
-7.	[Web の発行] で、**[Microsoft Azure Web アプリケーション]** をクリックします。
+7.	[Web の発行] で、**[Microsoft Azure App Service]** をクリックします。
 
 	![][DeployClickWebSites]
 
-8.	**[サインイン]** をクリックします。
+8.	Azure にまだログインしていない場合は、**[アカウントの追加]** をクリックします。
 
 	![][DeploySignIn]
 
 9.	プロンプトに従って Azure アカウントにログインします。
 
-11. サインインが完了すると、[既存の Web アプリケーションを選択] ダイアログ ボックスが表示されます。**[新規]** をクリックします。
+11. サインインが完了すると、[App Service] ダイアログが表示されます。**[新規]** をクリックします。
 
 	![][DeployNewWebsite]
 
-12. **[Web アプリ名]** フィールドで、一意のアプリ名のプレフィックスを指定します。完全修飾 Web アプリ名は、*&lt;プレフィックス>*.azurewebsites.net となります。また、**[App Service プラン]**、**[リソース グループ]**、**[リージョン]** の各フィールドを構成します。**[作成]** をクリックします。
+12. **[Web アプリ名]** フィールドで、一意のアプリ名のプレフィックスを指定します。完全修飾 Web アプリ名は、*&lt;プレフィックス>*.azurewebsites.net となります。**[リソース グループ]** でリソース グループを選択するか、新しいリソース グループ名を指定します。**[新規]** をクリックして、新しい App Service プランを作成します。
 
 	![][DeploySiteSettings]
 
-13.	[Web の発行] ダイアログに、新しい Web アプリケーションの設定が入力されます。**[発行]** をクリックします。
+13. 新しい App Service プランを構成し、**[OK]** をクリックします。
+
+    ![](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/deploy-to-azure-website-7a.png)
+
+13. [App Service の作成] ダイアログに戻り、**[作成]** をクリックします。
+
+    ![](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/deploy-to-azure-website-7b.png)
+
+13.	Azure リソースが作成されると、[Web の発行] ダイアログに新しいアプリの設定が入力されます。**[発行]** をクリックします。
 
 	![][DeployPublishSite]
 
@@ -102,7 +110,7 @@ Azure SDK for .NET 2.5.1 以降をインストールして、開発環境を設�
 
 	![][AllTags]
 
->[AZURE.NOTE]Visual Studio の中からでも MVC 5 アプリケーションをデバッグできますが、Web アプリケーションを Microsoft Azure に再度発行すると、モバイル ブラウザーまたはブラウザー エミュレーターからライブ Web アプリケーションを直接確認できます。
+>[AZURE.TIP] Visual Studio の中からでも MVC 5 アプリケーションをデバッグできますが、Web アプリケーションを Microsoft Azure に再度発行すると、モバイル ブラウザーまたはブラウザー エミュレーターからライブ Web アプリケーションを直接確認できます。
 
 モバイル デバイス上でも読みやすい表示になっています。ブートストラップ CSS フレームワークによって適用された視覚効果も一部表示されています。**[ASP.NET]** リンクをクリックします。
 
@@ -163,7 +171,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllTagsMobile_LayoutMobile]
 
-対照的に、デスクトップでの表示は変更されていません (*\_Layout.cshtml* と *AllTags.cshtml* のタイトル)。
+これに対して、デスクトップでの表示は変更されていません (*\_Layout.cshtml* と *AllTags.cshtml* のタイトル)。
 
 ![][AllTagsMobile_LayoutMobileDesktop]
 
@@ -616,4 +624,4 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 [SessionByCodeFixed3-644]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionByCode-Fixed-3-644.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0114_2016-->

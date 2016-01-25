@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Azure コマンド ライン インターフェイス (CLI) と API アプリ
@@ -288,4 +288,4 @@ Azure リソース マネージャーで Azure コマンド ライン ユーテ�
 * [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
  
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016--->

@@ -1,20 +1,20 @@
-<properties 
-	pageTitle=".NET による Microsoft Azure Storage のクライアント側の暗号化 | Microsoft Azure" 
-	description=".NET 用 Azure Storage クライアント ライブラリはクライアント側の暗号化と Azure Key Vault との統合を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。" 
-	services="storage" 
-	documentationCenter=".net" 
-	authors="tamram" 
-	manager="carolz" 
-	editor=""/>
+<properties
+	pageTitle=".NET による Microsoft Azure Storage のクライアント側の暗号化 | Microsoft Azure"
+	description=".NET 用 Azure Storage クライアント ライブラリはクライアント側の暗号化と Azure Key Vault との統合を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。"
+	services="storage"
+	documentationCenter=".net"
+	authors="tamram"
+	manager="carmonm"
+	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="01/05/2016" 
-	ms.author="tamram"/>
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="01/05/2016"
+	ms.author="lakasa"/>
 
 
 # Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
@@ -37,8 +37,8 @@ Java によるクライアント側の暗号化については、「[Java によ
 
 1. Azure ストレージ クライアント ライブラリは、1 回使用の対称キーであるコンテンツ暗号化キー (CEK) を生成します。
 2. ユーザー データは、この CEK を使用して暗号化されます。
-3. CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。 
-	
+3. CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。
+
 	ストレージ クライアント ライブラリ自体が KEK にアクセスすることはありません。ライブラリは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。ユーザーは、必要な場合は、キー ラップ/ラップ解除にカスタム プロバイダーを使用できます。
 
 4. 暗号化されたデータは、Azure Storage サービスにアップロードされます。ラップされたキーは追加の暗号化メタデータと共にメタデータとして (BLOB に) 格納されるか、暗号化されたデータ (キュー メッセージやテーブル エンティティ) によって補間されます。
@@ -160,16 +160,16 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 	// Create the IKey used for encryption.
  	RsaKey key = new RsaKey("private:key1" /* key identifier */);
-  
+
  	// Create the encryption policy to be used for upload and download.
  	BlobEncryptionPolicy policy = new BlobEncryptionPolicy(key, null);
-  
+
  	// Set the encryption policy on the request options.
  	BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
-  
+
  	// Upload the encrypted contents to the blob.
  	blob.UploadFromStream(stream, size, null, options, null);
-  
+
  	// Download and decrypt the encrypted contents from the blob.
  	MemoryStream outputStream = new MemoryStream();
  	blob.DownloadToStream(outputStream, null, options, null);
@@ -181,14 +181,14 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 	// Create the IKey used for encryption.
  	RsaKey key = new RsaKey("private:key1" /* key identifier */);
-  
+
  	// Create the encryption policy to be used for upload and download.
  	QueueEncryptionPolicy policy = new QueueEncryptionPolicy(key, null);
-  
+
  	// Add message
  	QueueRequestOptions options = new QueueRequestOptions() { EncryptionPolicy = policy };
  	queue.AddMessage(message, null, null, options, null);
-  
+
  	// Retrieve message
  	CloudQueueMessage retrMessage = queue.GetMessage(null, options, null);
 
@@ -201,12 +201,12 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 	// Create the IKey used for encryption.
  	RsaKey key = new RsaKey("private:key1" /* key identifier */);
-  
+
  	// Create the encryption policy to be used for upload and download.
  	TableEncryptionPolicy policy = new TableEncryptionPolicy(key, null);
-  
- 	TableRequestOptions options = new TableRequestOptions() 
- 	{ 
+
+ 	TableRequestOptions options = new TableRequestOptions()
+ 	{
     	EncryptionResolver = (pk, rk, propName) =>
      	{
         	if (propName == "foo")
@@ -217,17 +217,17 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
      	},
      	EncryptionPolicy = policy
  	};
-  
+
  	// Insert Entity
  	currentTable.Execute(TableOperation.Insert(ent), options, null);
-  
+
  	// Retrieve Entity
  	// No need to specify an encryption resolver for retrieve
- 	TableRequestOptions retrieveOptions = new TableRequestOptions() 
+ 	TableRequestOptions retrieveOptions = new TableRequestOptions()
  	{
     	EncryptionPolicy = policy
  	};
-  
+
  	TableOperation operation = TableOperation.Retrieve(ent.PartitionKey, ent.RowKey);
  	TableResult result = currentTable.Execute(operation, retrieveOptions, null);
 
@@ -246,4 +246,4 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 [.NET 用 Azure Storage クライアント ライブラリ NuGet パッケージ](http://www.nuget.org/packages/WindowsAzure.Storage/5.0.0)をダウンロードする。GitHub から [.NET 用 Azure Storage クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-net)をダウンロードする。Azure Key Vault NuGet の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および[拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。[Azure Key Vault ドキュメント](../articles/key-vault-whatis.md)にアクセスする。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0114_2016-->
