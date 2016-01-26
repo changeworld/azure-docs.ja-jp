@@ -14,7 +14,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="12/01/2015"
+    ms.date="01/20/2016"
     ms.author="sstein"/>
 
 # 新しい SQL Database を作成し、PowerShell コマンドレットで一般的なデータベース設定タスクを実行します。 
@@ -135,11 +135,11 @@ SQL Database は Azure SQL Database サーバーの内部で作成されます�
 ## 次のステップ
 新しい SQL Database を作成し、基本的なデータベース設定タスクを実行したら、次の手順を実行します。
 
-- [SQL Server Management Studio (SSMS) での接続](sql-database-connect-to-database.md)
+- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
 
 
 ## その他のリソース
 
 - [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0121_2016-->

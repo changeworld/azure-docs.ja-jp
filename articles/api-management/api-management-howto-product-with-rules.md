@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure API Management で API を保護する | Microsoft Azure"
-	description="クォータと調整 (レート制限) ポリシーを使用して、API を保護する方法について説明します。"
+	description="クォータとスロットル (レート制限) ポリシーを使用して、API を保護する方法について説明します。"
 	services="api-management"
 	documentationCenter=""
 	authors="steved0x"
@@ -13,20 +13,22 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/07/2015"
+	ms.date="01/15/2016"
 	ms.author="sdanie"/>
 
 # Azure API Management でレート制限を使用して API を保護する
 
 このガイドでは、Azure API Management でレート制限やクォータ ポリシーを構成することによって、いかに簡単にバックエンド API の保護を追加できるかを示します。
 
-このチュートリアルでは、開発者が毎分最大 10 回、1 週間に最大 200 回まで呼び出すことができる "無料試用版" の API 成果物を作成します。次に、API を発行し、レート制限ポリシーをテストします。
+このチュートリアルでは、開発者が毎分最大 10 回、1 週間に最大 200 回まで呼び出すことができる "無料試用版" の API 成果物を作成します。その際に、[サブスクリプション別の呼び出しレート制限](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate)と[サブスクリプション別の使用量クォータの設定](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota)を使用します。次に、API を発行し、レート制限ポリシーをテストします。
 
->[AZURE.NOTE]既に成果物を構成済みで、このチュートリアルで使用する場合は、「[呼び出しレート制限ポリシーとクォータ ポリシーの構成][]」に進み、無料試用版の成果物の代わりに独自の成果物を使用して、そこで説明されているチュートリアルに従ってください。
+[rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) と [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) ポリシーを使用したより高度なスロットルのシナリオについては、「[Azure API Management を使用した高度な要求スロットル](api-management-sample-flexible-throttling.md)」を参照してください。
 
 ## <a name="create-product"> </a>成果物を作成するには
 
 この手順では、サブスクリプションの承認が不要な無料試用版の成果物を作成します。
+
+>[AZURE.NOTE]既に成果物を構成済みで、このチュートリアルで使用する場合は、「[呼び出しレート制限ポリシーとクォータ ポリシーの構成][]」に進み、無料試用版の成果物の代わりに独自の成果物を使用して、そこで説明されているチュートリアルに従ってください。
 
 最初に、ご利用の API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
@@ -96,11 +98,11 @@ API Management の成果物は、保護することも開くこともできま�
 
 ![ポリシー エディター][api-management-policy-editor-inbound]
 
-このチュートリアルでは、[呼び出しレート制限][] と [使用量クォータの設定][] という 2 つのポリシーを追加します。
+このチュートリアルでは、[[呼び出しレート制限]][] と [[使用量クォータの設定]][] という 2 つのポリシーを追加します。
 
 ![ポリシー ステートメント][api-management-limit-policies]
 
-**inbound** ポリシー要素にカーソルを置いたら、**呼び出しレート制限** の横の矢印をクリックしてそのポリシー テンプレートを挿入します。
+**inbound** ポリシー要素にカーソルを置いたら、**[呼び出しレート制限]** の横の矢印をクリックしてそのポリシー テンプレートを挿入します。
 
 	<rate-limit calls="number" renewal-period="seconds">
 	<api name="name" calls="number">
@@ -108,7 +110,7 @@ API Management の成果物は、保護することも開くこともできま�
 	</api>
 	</rate-limit>
 
-**呼び出しレート制限** は、成果物レベルのほか、API レベルや個々の操作名レベルで使用することもできます。このチュートリアルで使用するのは、成果物レベルのポリシーだけです。そのため、**api** 要素と **operation** 要素は **rate-limit** 要素から削除してください。次の例に示すとおり、外部の **rate-limit** 要素だけが残ります。
+**[呼び出しレート制限]** は、成果物レベルのほか、API レベルや個々の操作名レベルで使用することもできます。このチュートリアルで使用するのは、成果物レベルのポリシーだけです。そのため、**api** 要素と **operation** 要素は **rate-limit** 要素から削除してください。次の例に示すとおり、外部の **rate-limit** 要素だけが残ります。
 
 	<rate-limit calls="number" renewal-period="seconds">
 	</rate-limit>
@@ -118,7 +120,7 @@ API Management の成果物は、保護することも開くこともできま�
 	<rate-limit calls="10" renewal-period="60">
 	</rate-limit>
 
-**使用量クォータの設定** ポリシーを構成するには、**inbound** 要素内に新しく追加した **rate-limit** 要素のすぐ下にカーソルを置き、**使用量クォータの設定** の左側の矢印をクリックします。
+**[使用量クォータの設定]** ポリシーを構成するには、**inbound** 要素内に新しく追加した **rate-limit** 要素のすぐ下にカーソルを置き、**[使用量クォータの設定]** の左側の矢印をクリックします。
 
 	<quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
 	<api name="name" calls="number" bandwidth="kilobytes">
@@ -211,7 +213,7 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 
 ![開発者ポータル][api-management-developer-portal-api-menu]
 
-**[GET リソース]** をクリックし、**[コンソールを開く]** をクリックします。
+**[GET リソース]** をクリックし、**[試用版]** をクリックします。
 
 ![コンソールを開く][api-management-open-console]
 
@@ -221,17 +223,17 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 
 >[AZURE.NOTE]複数のサブスクリプションがある場合は、必ず、**[無料試用版]** のキーを選択してください。そうしないと、これまでの手順で構成したポリシーが有効になりません。
 
-**[HTTP GET]** をクリックして応答を確認します。**[応答のステータス]** が "**200 OK**" と表示されることに注目してください。
+**[送信]** をクリックして応答を確認します。**[応答のステータス]** が "**200 OK**" と表示されることに注目してください。
 
 ![操作の結果][api-management-http-get-results]
 
-呼び出しレート制限ポリシー (1 分間に 10 回) を超える頻度で **[HTTP Get]** をクリックします。レート制限ポリシーを超えると、応答ステータスとして "**429 要求が多すぎます**" が返されます。
+呼び出しレート制限ポリシー (1 分間に 10 回) を超える頻度で **[送信]** をクリックします。レート制限ポリシーを超えると、応答ステータスとして "**429 要求が多すぎます**" が返されます。
 
 ![操作の結果][api-management-http-get-429]
 
-**[応答ヘッダー]** 領域と **[応答の内容]** 領域は、再試行が成功するまでの残り時間を示します。
+**[応答コンテンツ]** は、再試行が成功するまでの残り時間を示します。
 
-1 分間に 10 回という呼び出しレート制限ポリシーが有効な場合、レート制限超過となった連続 10 回の呼び出しの 1 回目から 60 秒が経過するまで、その成果物に対する以降の呼び出しはエラーになります。この例の場合、残り時間は 43 秒です。
+1 分間に 10 回という呼び出しレート制限ポリシーが有効な場合、レート制限超過となった連続 10 回の呼び出しの 1 回目から 60 秒が経過するまで、その成果物に対する以降の呼び出しはエラーになります。この例の場合、残り時間は 54 秒です。
 
 ## <a name="next-steps"> </a>次のステップ
 
@@ -289,7 +291,7 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 [Call an operation and test the rate limit]: #test-rate-limit
 [Azure API Management の詳細な構成について]: api-management-get-started-advanced.md
 
-[呼び出しレート制限]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
-[使用量クォータの設定]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
+[[呼び出しレート制限]]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
+[[使用量クォータの設定]]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
-<!----HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0121_2016-->

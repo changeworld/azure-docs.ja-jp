@@ -27,7 +27,7 @@
 
 ### サービス名前空間を作成し、SAS キーを取得するには
 
-1. 「[方法: Service Bus Service 名前空間を作成または変更する](https://msdn.microsoft.com/library/hh690931.aspx)」の手順に従い、[Azure クラシック ポータル][]で名前空間を作成します。
+1. サービス名前空間を作成するには、[Azure クラシック ポータル][]にアクセスします。左側にある **[Service Bus]** をクリックし、**[作成]** をクリックします。名前空間の名前を入力して、チェック マークをクリックします。
 
 2. ポータルのメイン ウィンドウで、前の手順で作成したサービス名前空間の名前をクリックします。
 
@@ -584,4 +584,4 @@ namespace Microsoft.ServiceBus.Samples
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

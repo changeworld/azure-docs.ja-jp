@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="powershell"
    ms.workload="data-management" 
-   ms.date="12/01/2015"
+   ms.date="01/20/2016"
    ms.author="sstein"/>
 
 # SQL Database を試す: C&#x23; を使用して SQL Database Library for .NET で SQL Database を作成する 
@@ -221,7 +221,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 
 
 
-他の Azure サービスによるサーバーへのアクセスを許可するには、ファイアウォール規則を追加し、StartIpAddress と EndIpAddress を 0.0.0.0 に設定します。これにより、 *任意* の Azure サブスクリプションからの Azure トラフィックがサーバーへアクセスできるようになる点に注意してください。
+他の Azure サービスによるサーバーへのアクセスを許可するには、ファイアウォール規則を追加し、StartIpAddress と EndIpAddress を 0.0.0.0 に設定します。これにより、*任意*の Azure サブスクリプションからの Azure トラフィックがサーバーへアクセスできるようになる点に注意してください。
 
 
 ## C&#x23; を使用して Basic SQL Database を作成する
@@ -414,8 +414,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 ## 次のステップ
 ここでは、SQL Database を試し、C# でデータベースを設定しました。次は以下の記事を参照してください。
 
-- [C# を使用して SQL Database に接続し、照会する](sql-database-connect-query.md)
-- [SQL Server Management Studio (SSMS) での接続](sql-database-connect-to-database.md)
+- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
 
 ## その他のリソース
 
@@ -436,4 +435,4 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

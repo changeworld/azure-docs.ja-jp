@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/01/2015"
+   ms.date="01/14/2016"
    ms.author="alkohli" />
 
 # オンプレミスの StorSimple デバイスのデプロイ
@@ -146,7 +146,7 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 | | | |
 | **NTP** | NTP サーバーを入力するとすぐに時刻の同期が開始されます。`time.windows.com` またはパブリック タイム サーバーを入力する場合は、UDP ポート 123 が開いていることを確認します。 | [このスクリプトをダウンロードして使用してください](https://gallery.technet.microsoft.com/scriptcenter/Get-Network-NTP-Time-with-07b216ca)。 |
 | | | |
-| **プロキシ (省略可能)** | 有効なプロキシ URI とポートかどうか。 </br>この認証モードが正しいかどうか。 | <code>wget http://bing.com &#124; % {$\_.StatusCode}</code></br> このコマンドは、Web プロキシを構成した後すぐに実行する必要があります。状態コード 200 が返された場合は、接続が成功したことを示します。 |
+| **プロキシ (省略可能)** | 有効なプロキシ URI とポートかどうか。 </br>この認証モードが正しいかどうか。 | <code>wget http://bing.com | % {$\_.StatusCode}</code></br> このコマンドは、Web プロキシを構成した後すぐに実行する必要があります。状態コード 200 が返された場合は、接続が成功したことを示します。 |
 | | トラフィックをプロキシ経由でルーティングできるかどうか。 | デバイスでプロキシを構成した後、DNS の検証、NTP チェック、または HTTP チェックを 1 回実行します。これによって、プロキシまたは他の場所でトラフィックがブロックされているかどうかが明確になります。 |
 | | | |
 | **登録** | 送信 TCP ポート 443、80、9354 が開いているかどうかを確認します。 | `Test-NetConnection -Port   443 -InformationLevel Detailed`</br>[Test-NetConnection コマンドレットの詳細についてはこちらをご覧ください。](https://technet.microsoft.com/library/dn372891.aspx) |
@@ -167,8 +167,7 @@ StorSimple Manager サービスの新しいインスタンスを作成するに�
 
 > [AZURE.IMPORTANT]サービスでストレージ アカウントの自動作成を有効にしていない場合は、サービスの作成が完了してから、1 つ以上のストレージ アカウントを作成する必要があります。このストレージ アカウントは、ボリューム コンテナーを作成するときに使用します。
 >
-> ストレージ アカウントを自動的に作成していない場合は、「[サービスの新しいストレージ アカウントを構成する](#configure-a-new-storage-account-for-the-service)」に移動して詳細な手順をご確認ください。
-> ストレージ アカウントの自動作成を有効にしている場合は、「[手順 2. サービス登録キーを取得する](#step-2:-get-the-service-registration-key)」に進みます。
+> ストレージ アカウントを自動的に作成していない場合は、「[サービスの新しいストレージ アカウントを構成する](#configure-a-new-storage-account-for-the-service)」に移動して詳細な手順をご確認ください。ストレージ アカウントの自動作成を有効にしている場合は、「[手順 2. サービス登録キーを取得する](#step-2:-get-the-service-registration-key)」に進みます。
 
 ## 手順 2. サービス登録キーを取得する
 
@@ -294,4 +293,4 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 - [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->

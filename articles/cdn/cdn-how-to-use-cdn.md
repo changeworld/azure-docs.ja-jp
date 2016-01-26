@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="12/02/2015" 
+	ms.date="01/20/2016" 
 	ms.author="casoper"/>
 
 
@@ -35,7 +35,7 @@ CDN を使用して Azure データをキャッシュすることには、次の
 
 	CDN プロファイルは、CDN エンドポイントのコレクションです。各プロファイルには、1 つ以上の CDN エンドポイントが含まれます。CDN プロファイルを作成すると、選択した配信元を使用して、新しい CDN エンドポイントを作成できます。
 	
-	>[AZURE.NOTE]1 つの Azure サブスクリプションは、4 つの CDN プロファイルに限定されます。各 CDN プロファイルは、4 つの CDN エンドポイントに制限されます。
+	>[AZURE.NOTE]既定では、1 つの Azure サブスクリプションは 4 つの CDN プロファイルに限定されます。各 CDN プロファイルは 10 個の CDN エンドポイントに制限されます。
 	>
 	> CDN の価格は、CDN プロファイル レベルで適用されます。Standard と Premium の CDN 機能を組み合わせて使用する場合は、複数の CDN プロファイルが必要になります。
 	
@@ -147,4 +147,4 @@ Microsoft Azure CDN は、[CDN リソース プロバイダーの REST API](http
 - [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 - [CDN リソース プロバイダーの REST API](https://msdn.microsoft.com/library/mt634456.aspx)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0121_2016-->

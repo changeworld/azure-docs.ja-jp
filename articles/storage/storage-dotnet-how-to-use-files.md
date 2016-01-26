@@ -1,42 +1,43 @@
 <properties
 			pageTitle="Windows で Azure File を使用する方法 | Microsoft Azure"
-            description="この詳しい手順を示したチュートリアルでは、クラウドに Azure ファイル共有を作成します。Azure の仮想マシン (VM) またはオンプレミスのアプリケーションから、ファイル共有のコンテンツを管理し、ファイル共有をマウントします。"
+    		description="この詳しい手順を示したチュートリアルでは、クラウドに Azure ファイル共有を作成します。Azure の仮想マシン (VM) またはオンプレミスのアプリケーションから、ファイル共有のコンテンツを管理し、ファイル共有をマウントします。"
             services="storage"
             documentationCenter=".net"
             authors="robinsh"
             manager="carmonm"
-            editor="tysonn" />
+            editor="" />
 
 <tags ms.service="storage"
       ms.workload="storage"
       ms.tgt_pltfrm="na"
       ms.devlang="dotnet"
       ms.topic="hero-article"
-      ms.date="12/17/2015"
-      ms.author="jutang" />
+      ms.date="01/12/2015"
+      ms.author="robinsh" />
 
-# Windows で Azure File ストレージを使用する方法
+# Windows で Azure File Storage を使用する方法
 
 [AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
 ## 概要
 
-Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。Azure File を使用すると、ファイル サーバーを利用しているエンタープライズ アプリケーションを Azure に移行できます。Azure で実行されているアプリケーションでは、Azure の仮想マシンのファイル共有を簡単にマウントできます。また、File Storage の最新のリリースでは、SMB 3.0 をサポートしているオンプレミス アプリケーションからファイル共有をマウントできます。
+Azure File Storage は、標準の[サーバー メッセージ ブロック (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を使用したクラウドでのファイル共有を提供します。現在、一般公開されており、SMB 2.1 と SMB 3.0 の両方をサポートしています。
 
-Azure のファイル共有は、 [Azure ポータル](portal.azure.com)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。また、ファイル共有は SMB 共有であるため、それらには標準の使い慣れたファイル システム API を使用してアクセスできます。
+Azure のファイル共有は、[Azure ポータル](portal.azure.com)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。また、これらのファイル共有は SMB 共有であるため、それらには標準の使い慣れたファイル システム API を使用してアクセスできます。
 
-File Storage は、BLOB、Table、および Queue Storage と同じテクノロジをベースに構築されているため、可用性、持続性、スケーラビリティのほか、Azure Storage プラットフォームに組み込まれている geo 冗長性が提供されます。File Storage のパフォーマンスのターゲットと制限事項の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」を参照してください。
+Azure で実行されているアプリケーションでは、Azure の仮想マシンのファイル共有を簡単にマウントできます。また、一般公開された File Storage を使用すると、SMB 3.0 をサポートしているオンプレミス クライアント (たとえば、ローカルのノート PC、デスクトップ、サーバー) からファイル共有にマウントすることもできます。
 
-File Storage は現在一般に提供されており、SMB 2.1 と SMB 3.0 の両方をサポートしています。File Storage の詳細については、「[ファイル サービスの REST API](https://msdn.microsoft.com/library/azure/dn167006.aspx)」を参照してください。
+File Storage は、Blob Storage、Table Storage、および Queue Storage と同じテクノロジに基づいて構築されているため、既存の可用性、持続性、スケーラビリティ、および Azure Storage プラットフォームに組み込まれている geo 冗長性を利用できます。
 
-Linux で File Storage を使用する方法の詳細については、「[Linux で Azure File ストレージを使用する方法](storage-how-to-use-files-linux.md)」を参照してください。
+Linux で File Storage を使用する方法の詳細については、「[Linux で Azure File Storage を使用する方法](storage-how-to-use-files-linux.md)」を参照してください。
 
+File Storage のスケーラビリティおよびパフォーマンスのターゲットの詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md#scalability-targets-for-standard-storage-accounts)」を参照してください。
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
 [AZURE.INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
 
-## ビデオ: Windows で Azure File ストレージを使用する方法
+## ビデオ: Windows で Azure File Storage を使用する方法
 
 このビデオでは、Windows で Azure のファイル共有を作成して使用する方法について説明しています。
 
@@ -44,31 +45,90 @@ Linux で File Storage を使用する方法の詳細については、「[Linux
 
 ## このチュートリアルについて
 
-この概要チュートリアルでは、Microsoft Azure File ストレージの基本的な使用方法を説明します。このチュートリアルでは、次のことを行います。
+この概要チュートリアルでは、Microsoft Azure File Storage の基本的な使用方法を説明します。このチュートリアルでは、次のことを行います。
 
-- Azure PowerShell を使用して、新しい Azure File 共有の作成、ディレクトリの追加、共有へのローカル ファイルのアップロード、ディレクトリ内のファイルの一覧表示の方法を示します。
-- Azure の仮想マシンのファイル共有を、SMB 共有をマウントする場合と同じようにマウントします。
+- Azure ポータルまたは PowerShell を使用して、新しい Azure File 共有の作成、ディレクトリの追加、共有へのローカル ファイルのアップロード、ディレクトリ内のファイルの一覧表示を実行します。
+- SMB 共有をマウントする場合と同じように、ファイル共有をマウントします。
 - .NET 用 Azure Storage クライアント ライブラリを使用して、オンプレミスのアプリケーションからファイル共有にアクセスします。コンソール アプリケーションを作成し、ファイル共有で次の操作を実行します。
 	- 共有内のファイルの内容をコンソール ウィンドウに書き込む
 	- ファイル共有のクォータ (最大サイズ) を設定する
 	- 共有で定義されている共有アクセス ポリシーを使用するファイルの Shared Access Signature を作成する
 	- ファイルを、同じストレージ アカウント内の別のファイルにコピーする
 	- ファイルを、同じストレージ アカウント内の BLOB にコピーする
+- トラブルシューティングに Azure Storage メトリックを使用します。
 
-File ストレージは、すべてのストレージ アカウントでサポートされているため、既存のストレージ アカウントを使用することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントの作成方法の詳細については、「[ストレージ アカウントの作成、管理および削除方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+File Storage は、すべてのストレージ アカウントでサポートされているため、既存のストレージ アカウントを使用することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントの作成方法の詳細については、「[ストレージ アカウントの作成、管理および削除方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 
 ## ファイル共有を管理するための Azure ポータルの使用
 
-[Azure ポータル](portal.azure.com)には、顧客が File ストレージ を管理するためのユーザー インターフェイスが用意されています。このプレビュー ポータルでは、次の操作を実行できます。
+[Azure ポータル](portal.azure.com)には、顧客がファイル共有を管理するためのユーザー インターフェイスが用意されています。ポータルでは、次の操作を実行できます。
 
+- ファイル共有の作成
 - ファイル共有からのファイルのアップロードおよびダウンロード
 - 各ファイル共有の実際の使用状況の監視
 - 共有のサイズ クォータの調整
 - Windows クライアントからファイル共有をマウントするために使用する `net use` コマンドの取得 
 
+### ファイル共有の作成
+
+1. Azure ポータルにサインインします。
+
+2. ナビゲーション メニューで、**[ストレージ アカウント]** または **[ストレージ アカウント (クラシック)]** をクリックします。
+
+	![Screenshot that shows how to create file share in the portal](./media/storage-dotnet-how-to-use-files/files-create-share-0.png)
+
+3. ストレージ アカウントを選択します。
+
+	![Screenshot that shows how to create file share in the portal](./media/storage-dotnet-how-to-use-files/files-create-share-1.png)
+
+4. [Files] サービスを選択します。
+
+	![Screenshot that shows how to create file share in the portal](./media/storage-dotnet-how-to-use-files/files-create-share-2.png)
+
+5. [ファイル共有] をクリックし、リンクをクリックして最初のファイル共有を作成します。
+
+	![Screenshot that shows how to create file share in the portal](./media/storage-dotnet-how-to-use-files/files-create-share-3.png)
+
+6. 最初のファイル共有を作成するには、ファイル共有名とファイル共有のサイズ (最大 5120 GB) を入力します。作成されたファイル共有は、SMB 2.1 または SMB 3.0 をサポートしている任意のファイル システムからマウントできます。
+
+	![Screenshot that shows how to create file share in the portal](./media/storage-dotnet-how-to-use-files/files-create-share-4.png)
+
+### ファイルのアップロードとダウンロード
+
+1. 既に作成した 1 つのファイル共有を選択します。
+
+	![Screenshot that shows how to upload and download files from the portal](./media/storage-dotnet-how-to-use-files/files-upload-download-1.png)
+
+2. **[アップロード]** をクリックして、ファイルをアップロードするためのユーザー インターフェイスを開きます。
+
+	![Screenshot that shows how to upload files from the portal](./media/storage-dotnet-how-to-use-files/files-upload-download-2.png)
+
+3. 1 つのファイルを右クリックし、**[ダウンロード]** を選択してローカルにダウンロードします。
+
+	![Screenshot that shows how to download file from the portal](./media/storage-dotnet-how-to-use-files/files-upload-download-3.png)
+
+### ファイル共有の管理
+
+1. **[クォータ]** をクリックして、ファイル共有のサイズを変更します (最大 5120 GB)。
+
+	![Screenshot that shows how to configure the quota of the file share](./media/storage-dotnet-how-to-use-files/files-manage-1.png)
+
+2. **[接続]** をクリックし、Windows からファイル共有にマウントするためのコマンド ラインを取得します。
+
+	![Screenshot that shows how to mount the file share](./media/storage-dotnet-how-to-use-files/files-manage-2.png)
+
+	![Screenshot that shows how to mount the file share](./media/storage-dotnet-how-to-use-files/files-manage-3.png)
+
+	>[AZURE.TIP]マウント用のストレージ アカウント アクセス キーを調べるには、ストレージ アカウントの **[設定]** をクリックし、**[アクセス キー]** をクリックします。
+
+	![Screenshot that shows how to find the storage account access key](./media/storage-dotnet-how-to-use-files/files-manage-4.png)
+
+	![Screenshot that shows how to find the storage account access key](./media/storage-dotnet-how-to-use-files/files-manage-5.png)
+
+
 ## PowerShell を使用したファイル共有の管理
 
-次に、Azure PowerShell を使用して、ファイル共有を作成します。作成されたファイル共有は、SMB 2.1 または SMB 3.0 をサポートしている任意のファイル システムからマウントできます。
+Azure PowerShell を使用して、ファイル共有を作成および管理することもできます。
 
 ### Azure Storage 用の PowerShell コマンドレットのインストール
 
@@ -94,7 +154,7 @@ PowerShell の使用を準備するために、Azure PowerShell コマンドレ�
 	# create a new share
 	$s = New-AzureStorageShare logs -Context $ctx
 
-これで、File ストレージにファイル共有が作成されました。次に、ディレクトリとファイルを追加します。
+これで、File Storage にファイル共有が作成されました。次に、ディレクトリとファイルを追加します。
 
 > [AZURE.IMPORTANT]ファイル共有の名前はすべて小文字にする必要があります。ファイル共有とファイルの名前付けの詳細については、「[共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照](https://msdn.microsoft.com/library/azure/dn167011.aspx)」を参照してください。
 
@@ -131,13 +191,13 @@ Azure PowerShell のバージョン 0.9.7 以降では、ファイルを別の�
 
 ## ファイル共有のマウント 
 
-SMB 3.0 のサポートにより、File ストレージでは、SMB 3.0 クライアントから暗号化と永続的ハンドルをサポートするようになりました。暗号化のサポートは、SMB 3.0 クライアントが、次を含む任意の場所からファイル共有をマウントできることを意味します。
+SMB 3.0 のサポートにより、File Storage では、SMB 3.0 クライアントから暗号化と永続的ハンドルをサポートするようになりました。暗号化のサポートは、SMB 3.0 クライアントが、次を含む任意の場所からファイル共有をマウントできることを意味します。
 
 - 同じリージョン内の Azure の仮想マシン (SMB 2.1 でもサポート)
 - 別のリージョンの Azure の仮想マシン (SMB 3.0 のみ)
 - オンプレミスのクライアント アプリケーション (SMB 3.0 のみ) 
 
-クライアントが File ストレージにアクセスするときに使用する SMB バージョンは、オペレーティング システムでサポートされている SMB バージョンによって異なります。次の表に、Windows クライアントでのサポートの概要を示します。詳細については、「< Which version of the SMB protocol blog post>」を参照してください。
+クライアントが File Storage にアクセスするときに使用する SMB バージョンは、オペレーティング システムでサポートされている SMB バージョンによって異なります。次の表に、Windows クライアントでのサポートの概要を示します。SMB バージョンの詳細については、[こちらのブログ](http://blogs.technet.com/b/josebda/archive/2013/10/02/windows-server-2012-r2-which-version-of-the-smb-protocol-smb-1-0-smb-2-0-smb-2-1-smb-3-0-or-smb-3-02-you-are-using.aspx)を参照してください。
 
 | Windows クライアント | サポートしている SMB バージョン |
 |------------------------|----------------------|
@@ -168,7 +228,7 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 ### 適用された資格情報を使用したファイル共有のマウント
 
-仮想マシンにリモート接続した後で、`net use` コマンドを実行してファイル共有をマウントできます。その場合は次の構文を使用します。`<storage-account-name>` を実際のストレージ アカウントの名前に置き換え、`<share-name>` を実際の File ストレージ共有に置き換えてください。
+仮想マシンにリモート接続した後で、`net use` コマンドを実行してファイル共有をマウントできます。その場合は次の構文を使用します。`<storage-account-name>` を実際のストレージ アカウントの名前に置き換え、`<share-name>` を実際の File Storage 共有に置き換えてください。
 
     net use <drive-letter>: \<storage-account-name>.file.core.windows.net<share-name>
 
@@ -182,7 +242,7 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 	example :
 	net use z: \\samples.file.core.windows.net\logs /u:samples <storage-account-key>
 
-これで、他のドライブの場合と同じように仮想マシンから File ストレージ共有を利用できるようになります。コマンド プロンプトから標準のファイル コマンドを発行したり、マウントした共有とその内容をエクスプローラーで表示したりできます。.NET Framework の [System.IO 名前空間](http://msdn.microsoft.com/library/gg145019.aspx)の API など、標準の Windows ファイル I/O API を使用してファイル共有にアクセスするコードを仮想マシン内で実行することもできます。
+これで、他のドライブの場合と同じように仮想マシンから File Storage 共有を利用できるようになります。コマンド プロンプトから標準のファイル コマンドを発行したり、マウントした共有とその内容をエクスプローラーで表示したりできます。.NET Framework の [System.IO 名前空間](http://msdn.microsoft.com/library/gg145019.aspx)の API など、標準の Windows ファイル I/O API を使用してファイル共有にアクセスするコードを仮想マシン内で実行することもできます。
 
 さらに、ロールにリモート接続することで、Azure クラウド サービスで実行されるロールからファイル共有をマウントすることもできます。
 
@@ -195,9 +255,9 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 > [AZURE.NOTE]一部のインターネット サービス プロバイダーは、ポート 445 をブロックしている場合があるため、サービス プロバイダーに確認する必要がある場合があります。
 
-## File ストレージを使用した開発
+## File Storage を使用した開発
 
-File ストレージをプログラミングする場合、.NET と Java のストレージ クライアント ライブラリまたは Azure Storage の REST API を使用できます。このセクションの例では、デスクトップで実行する単純なコンソール アプリケーションから、[Azure .NET ストレージ クライアント ライブラリ](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)を使用してファイル共有を操作する方法を示します。
+File Storage をプログラミングする場合、.NET と Java のストレージ クライアント ライブラリまたは Azure Storage の REST API を使用できます。このセクションの例では、デスクトップで実行する単純なコンソール アプリケーションから、[Azure .NET ストレージ クライアント ライブラリ](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)を使用してファイル共有を操作する方法を示します。
 
 ### コンソール アプリケーションの作成とアセンブリの取得
 
@@ -221,7 +281,7 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
 	    </appSettings>
 	</configuration>
 
-> [AZURE.NOTE]最新バージョンの Azure ストレージ エミュレーターでは、File ストレージがサポートされません。File ストレージを使用するには、接続文字列は、クラウド内の Azure ストレージ アカウントを対象とする必要があります。
+> [AZURE.NOTE]最新バージョンの Azure ストレージ エミュレーターでは、File Storage がサポートされません。File Storage を使用するには、接続文字列は、クラウド内の Azure ストレージ アカウントを対象とする必要があります。
 
 ### 名前空間宣言の追加
 
@@ -239,7 +299,7 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
 この例では、`CloudConfigurationManager` クラスを使用して資格情報を取得し、それを `CloudStorageAccount` クラスによってカプセル化する方法を示します。program.cs の `Main()` メソッドに、次のコードを追加します。
 
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-    	CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    	CloudConfigurationManager.GetSetting("StorageConnectionString")); 
 
 ### プログラムによるファイル共有へのアクセス
 
@@ -315,7 +375,7 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降で
 
 ### ファイルまたはファイル共有の Shared Access Signature の生成
 
-Azure ストレージ クライアント ライブラリのバージョン 5.x 以降、ファイル共有または個々のファイルの Shared Access Signature (SAS) を生成できます。また、ファイル共有に共有アクセス ポリシーを作成して、共有アクセス署名を管理することもできます。共有アクセス ポリシーを作成することをお勧めします。これにより、侵害されそうな場合に SAS を取り消すことができます。
+Azure Storage クライアント ライブラリのバージョン 5.x 以降、ファイル共有または個々のファイルの Shared Access Signature (SAS) を生成できます。また、ファイル共有に共有アクセス ポリシーを作成して、共有アクセス署名を管理することもできます。共有アクセス ポリシーを作成することをお勧めします。これにより、侵害されそうな場合に SAS を取り消すことができます。
 
 次の例では、共有上に共有アクセス ポリシーを作成し、そのポリシーを使用して共有上のファイルの SAS に制約を指定します。
 
@@ -464,47 +524,47 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降で
 
 同じ方法で、ファイルに BLOB をコピーできます。ソース オブジェクトが BLOB である場合、SAS を作成して、コピー操作中にその BLOB へのアクセスを認証します。
 
-## メトリックを使用した File ストレージのトラブルシューティング
+## メトリックを使用した File Storage のトラブルシューティング
 
-Azure ストレージ分析で File ストレージのメトリックがサポートされるようになりました。メトリック データを使用すると、要求のトレースや問題の診断ができます。
+Azure ストレージ分析で File Storage のメトリックがサポートされるようになりました。メトリック データを使用すると、要求のトレースや問題の診断ができます。
 
-[Azure ポータル](portal.azure.com)から File ストレージ のメトリックを有効にすることができます。REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの 1 つを使用して、プログラムでメトリックを有効にすることも可能です。
+[Azure ポータル](portal.azure.com)から File Storage のメトリックを有効にすることができます。REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの 1 つを使用して、プログラムでメトリックを有効にすることも可能です。
 
-## File ストレージのよく寄せられる質問
+## File Storage のよく寄せられる質問
 
-1. **File ストレージでは、Active Directory ベースの認証はサポートされていますか。** 
+1. **File Storage では、Active Directory ベースの認証はサポートされていますか。** 
 
 	現在、AD ベースの認証や、ACL はサポートしていませんが、今後サポートする可能性はあります。現時点では、ファイル共有の認証には、Azure Storage のアカウント キーを使用しています。REST API またはクライアント ライブラリを使用した共有アクセス署名 (SAS) での回避策を提供しています。SAS を使用すると、指定した時間間隔の間に有効な特定のアクセス許可を持つトークンを生成できます。たとえば、特定のファイルへの読み取り専用のアクセス許可を持つトークンを生成できます。トークンを所有するすべてのユーザーは、そのファイルへの読み取り専用アクセスをその有効期間の間持ちます。
 
 	SAS は、REST API またはクライアント ライブラリを使用してのみサポートされます。SMB プロトコルを使用してファイル共有をマウントした場合、SAS を使用してそのコンテンツへのアクセスを委任することはできません。
 
 2. **Azure のファイル共有はインターネット経由で確認できますか。または Azure からのみアクセスできるでのしょうか。**
-
+ 
 	ポート 445 (TCP 送信) が開いており、(Windows 8 または Windows Server 2012 *など*の) クライアントが SMB 3.0 プロトコルをサポートしている場合は、ファイル共有はインターネット経由で使用できます。
 
 3. **Azure の仮想マシンとファイル共有間のネットワーク トラフィックは、サブスクリプションに課金される外部帯域幅としてカウントされますか。**
 
 	ファイル共有と仮想マシンのリージョンが別の場合、これらの間のトラフィックは外部帯域幅として課金されます。
-
+ 
 4. **同じリージョン内の仮想マシンとファイル共有間で発生するネットワーク トラフィックは、無料ですか。**
 
 	はい。同じリージョン内のトラフィックは無料です。
 
-5. **オンプレミスの仮想マシンから Azure File ストレージへの接続は、Azure ExpressRoute に依存していますか。**
+5. **オンプレミスの仮想マシンから Azure File Storage への接続は、Azure ExpressRoute に依存していますか。**
 
-	いいえ。ExpressRoute がない場合も、インターネット アクセス用にポート 445 (TCP 送信) が開いている場合は、オンプレミスからファイル共有にアクセスできます。ただし、必要であれば File ストレージで ExpressRoute を使用できます。
+	いいえ。ExpressRoute がない場合も、インターネット アクセス用にポート 445 (TCP 送信) が開いている場合は、オンプレミスからファイル共有にアクセスできます。ただし、必要であれば File Storage で ExpressRoute を使用できます。
 
-6. **Azure File ストレージの 1 つの用途は、フェールオーバー クラスターの "ファイル共有監視" ですか。**
+6. **Azure File Storage の 1 つの用途は、フェールオーバー クラスターの "ファイル共有監視" ですか。**
 
 	現在これはサポートされていません。
-
-7. **現在 File ストレージのレプリケーションは、LRS または GRS を介してのみ実行できるのですか。**
+ 
+7. **現在 File Storage のレプリケーションは、LRS または GRS を介してのみ実行できるのですか。**
 
 	RA-GRS もサポート予定ですが、まだ予定は公表できません。
 
-8. **いつ Azure File ストレージに既存のストレージ アカウントを使用できるようになりますか。**
+8. **いつ Azure File Storage に既存のストレージ アカウントを使用できるようになりますか。**
 
-	現在 Azure File ストレージですべてのストレージ アカウントが有効です。
+	現在 Azure File Storage ですべてのストレージ アカウントが有効です。
 
 9. **REST API に名前変更操作も追加されますか。**
 
@@ -518,13 +578,13 @@ Azure ストレージ分析で File ストレージのメトリックがサポ�
 
 	SMB を使用してファイル共有をマウントした場合、このレベルでアクセス許可を制御することはできません。ただし、REST API またはクライアント ライブラリを使用して Shared Access Signature (SAS) を作成することでこれを実現することができます。
 
-12. **File ストレージ にファイルを解凍する際にパフォーマンスが低かった場合は、どうすればよいですか。**
+12. **File Storage にファイルを解凍する際にパフォーマンスが低かった場合は、どうすればよいですか。**
 
-	File ストレージに大量のファイルを転送する場合、ネットワーク転送に最適化されている AzCopy、Azure Powershell (Windows)、または Azure CLI (Linux または Unix) を使用することをお勧めします。
+	File Storage に大量のファイルを転送する場合、ネットワーク転送に最適化されている AzCopy、Azure Powershell (Windows)、または Azure CLI (Linux または Unix) を使用することをお勧めします。
 
 ## 次のステップ
 
-Azure File ストレージの詳細については、次のリンクを参照してください。
+Azure File Storage の詳細については、次のリンクを参照してください。
 
 ### 概念に関する記事とビデオ
 
@@ -532,7 +592,7 @@ Azure File ストレージの詳細については、次のリンクを参照し
 - [Linux で Azure File Storage を使用する方法](storage-how-to-use-files-linux.md)
 - [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
-### File ストレージ用のツールのサポート
+### File Storage 用のツールのサポート
 
 - [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)
 - [Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md)
@@ -545,9 +605,10 @@ Azure File ストレージの詳細については、次のリンクを参照し
 
 ### ブログ記事
 
-- [Azure File ストレージの一般提供開始](http://go.microsoft.com/fwlink/?LinkID=626728&clcid=0x409)
-- [Azure File ストレージの詳細情報](http://go.microsoft.com/fwlink/?LinkID=626729&clcid=0x409) 
+- [Azure File Storage の一般提供開始](http://go.microsoft.com/fwlink/?LinkID=626728&clcid=0x409)
+- [Azure File Storage の詳細情報](http://go.microsoft.com/fwlink/?LinkID=626729&clcid=0x409) 
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->
