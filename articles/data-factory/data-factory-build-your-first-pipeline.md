@@ -193,7 +193,7 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 	
 			set path=%path%;C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
 
-	3. c:\adfgetstarted フォルダーに移動し、次のコマンドを実行して **input.log** ファイルをストレージ アカウント (**adfgetstarted** コンテナーと **inputdata** フォルダー) にアップロードします。**StorageAccountName** はストレージ アカウントの名前に、**Storage Key** はストレージ アカウント キーに置き換えます。
+	3. c:\\adfgetstarted フォルダーに移動し、次のコマンドを実行して **input.log** ファイルをストレージ アカウント (**adfgetstarted** コンテナーと **inputdata** フォルダー) にアップロードします。**StorageAccountName** はストレージ アカウントの名前に、**Storage Key** はストレージ アカウント キーに置き換えます。
 
 			AzCopy /Source:. /Dest:https://<storageaccountname>.blob.core.windows.net/adfgetstarted/inputdata /DestKey:<storagekey>  /Pattern:input.log
 
@@ -209,7 +209,7 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 			Transfer skipped:        0
 			Transfer failed:         0
 			Elapsed time:            00.00:00:01
-	1. 前の 2 つの手順を繰り返して、partitionweblogs.hql ファイルを adfgetstarted コンテナーの script フォルダーにアップロードします。次にコマンドを示します。 
+	1. 次のコマンドを実行して、**partitionweblogs.hql** ファイルを **adfgetstarted** コンテナーの **script** フォルダーにアップロードします。次にコマンドを示します。 
 	
 			AzCopy /Source:. /Dest:https://<storageaccountname>.blob.core.windows.net/adfgetstarted/script /DestKey:<storagekey>  /Pattern:partitionweblogs.hql
 
@@ -222,4 +222,4 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 - Visual Studio
 - Azure リソース マネージャーのテンプレート 
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0121_2016-->

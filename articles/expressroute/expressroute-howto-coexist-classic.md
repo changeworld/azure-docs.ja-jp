@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/02/2015"
+   ms.date="01/16/2016"
    ms.author="cherylmc"/>
 
 # VNet の共存する ExpressRoute 接続とサイト間 VPN 接続の構成
@@ -211,4 +211,4 @@ ExpressRoute 接続またはサイト間 VPN 接続経由で接続されてい�
 
 ExpressRoute の詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/21/2015"
+   ms.date="01/14/2016"
    ms.author="edmaca"/>
 
 # チュートリアル: .NET SDK で Azure Data Lake Analytics の使用を開始する
@@ -30,9 +30,9 @@ Azure .NET SDK を使用して、Azure Data Lake Analytics アカウントを作
 ![Azure Data Lake Analytics プロセスのフロー図](./media/data-lake-analytics-get-started-portal/data-lake-analytics-process.png)
 
 1. Data Lake Analytics アカウントを作成します。
-2. ソース データを準備します。Data Lake Analytic ジョブでは、Azure Data Lake Store アカウントまたは Azure BLOB ストレージ アカウントからデータを読み取ることができます。   
+2. ソース データを準備します。Data Lake Analytic ジョブでは、Azure Data Lake Store アカウントまたは Azure Blob Storage アカウントからデータを読み取ることができます。   
 3. U-SQL スクリプトを開発します。
-4. ジョブ (U-SQL スクリプト) を Data Lake Analytics アカウントに送信します。ジョブはソース データから読み取り、U-SQL スクリプトで指示されたとおりにデータを処理して、Data Lake Store アカウントまたは BLOB ストレージ アカウントに出力を保存します。
+4. ジョブ (U-SQL スクリプト) を Data Lake Analytics アカウントに送信します。ジョブはソース データから読み取り、U-SQL スクリプトで指示されたとおりにデータを処理して、Data Lake Store アカウントまたは Blob Storage アカウントに出力を保存します。
 
 ##前提条件
 
@@ -47,7 +47,7 @@ Azure .NET SDK を使用して、Azure Data Lake Analytics アカウントを作
 
 ##コンソール アプリケーションの作成
 
-このチュートリアルでは、いくつかの検索ログを処理します。検索ログは、Data Lake Store または Azure BLOB ストレージに格納できます。
+このチュートリアルでは、いくつかの検索ログを処理します。検索ログは、Data Lake Store または Azure Blob Storage に格納できます。
 
 サンプルの検索ログは、パブリック Azure Blob コンテナーにコピーされました。アプリケーションでは、ファイルをワークステーションにダウンロードしてから、そのファイルを既定の Data Lake Store アカウントにアップロードします。
 
@@ -251,8 +251,8 @@ Azure .NET SDK を使用して、Azure Data Lake Analytics アカウントを作
 - 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
 - より複雑なクエリを表示する場合は、「[チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」を参照してください。
 - U-SQL アプリケーションの開発を開始する場合は、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
-- U-SQL の詳細については、「[Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
+- U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」および「[U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/?LinkId=691348)」をご覧ください。
 - 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

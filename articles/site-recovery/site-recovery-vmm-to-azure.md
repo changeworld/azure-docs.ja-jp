@@ -34,7 +34,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 ### Azure の前提条件
 
 - [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。お持ちでない場合は、[無料試用版](http://aka.ms/try-azure)で作業を開始してください。また、[Azure Site Recovery Manager の価格](http://go.microsoft.com/fwlink/?LinkId=378268)に関するページも参照してください。
-- Azure にレプリケートしたデータを格納するために Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Azure ストレージのセットアップの詳細については、「[Microsoft Azure Storageの概要](http://go.microsoft.com/fwlink/?LinkId=398704)」を参照してください。
+- Azure にレプリケートしたデータを格納するために Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Azure Storage のセットアップの詳細については、「[Microsoft Azure Storage の概要](http://go.microsoft.com/fwlink/?LinkId=398704)」を参照してください。
 - 保護する仮想マシンが Azure 要件に準拠していることを確認する必要があります。詳細については、[仮想マシンのサポートに関するページ](https://msdn.microsoft.com/library/azure/dn469078.aspx#BKMK_E2A)を参照してください。
 
 ### VMM の前提条件
@@ -81,10 +81,9 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 1. 登録する VMM サーバーから[管理ポータル](https://portal.azure.com)にサインインします。
 
 
-2. を展開し
-3. *[Data Services]* をクリックし、*[Recovery Services]* を展開し、*[Site Recovery コンテナー]* クリックします。
-*
-3. *[新規作成]* 、*[簡易作成]* の順にクリックします。
+2. [
+3. *[Data Services]* をクリックし、*[Recovery Services]* を展開し、*[Site Recovery コンテナー]*クリックします。*
+3. *[新規作成]*、*[簡易作成]* の順にクリックします。
 
 
 4. *[名前]* ボックスに、コンテナーを識別する表示名を入力します。
@@ -214,6 +213,13 @@ Azure ストレージ アカウントがない場合は、**[Azure ストレー�
 	![Recovery Services エージェントの前提条件](./media/site-recovery-vmm-to-azure/ASRE2AVMM_AgentPrereqs.png)
 
 4. **[インストール設定]** ページでエージェントのインストール先を指定し、バックアップのメタデータがインストールされるキャッシュの場所を選択します。その後、 <b>[インストール]</b> をクリックします。
+5. インストールが完了したら、**[閉じる]** ボタンをクリックしてインストールを完了します。
+	
+	![Register MARS Agent](./media/site-recovery-vmm-to-azure/MarsAgentRegister.png)
+
+>[AZURE.NOTE]Microsoft Azure Recovery Services エージェントは、コマンド ラインで次のコマンドを使用してインストールできます。
+>
+	marsagentinstaller.exe /q /nu
 
 ## ステップ 6: クラウドの保護設定を構成する
 
@@ -374,4 +380,4 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 <LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI>
 </UL>
 
-<!----HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0121_2016-->

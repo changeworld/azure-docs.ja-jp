@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="01/10/2016" 
+	ms.date="01/20/2016" 
 	ms.author="juliako"/>
 
 
@@ -627,8 +627,10 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 ##関連項目
 
+[CENC とマルチ DRM およびアクセス制御](media-services-cenc-with-multidrm-access-control.md)
+
 [Configure Widevine packaging with AMS (AMS を使用して Widevine パッケージを構成する)](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
 
 [Announcing Google Widevine license delivery services public preview in Azure Media Services (Azure Media Services での Google Widevine ライセンス配信サービス パブリック プレビューのお知らせ)](http://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->
