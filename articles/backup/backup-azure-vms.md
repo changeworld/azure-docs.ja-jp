@@ -38,9 +38,10 @@ Azure 仮想マシンのバックアップには、次の 3 つの主要な手�
 
 2. ドロップダウン メニューから **[Azure 仮想マシン]** を選択します。
 
-    ![Select workload](./media/backup-azure-vms/discovery-select-workload.png)
+    ![ワークロードの選択](./media/backup-azure-vms/discovery-select-workload.png)
 
-3. ページの下部にある **[検出]** をクリックします。![Discover button](./media/backup-azure-vms/discover-button-only.png)
+3. ページの下部にある **[検出]** をクリックします。
+    ![[検出] ボタン](./media/backup-azure-vms/discover-button-only.png)
 
     仮想マシンが集計されるまで、この検出プロセスに数分かかる場合があります。プロセスが実行中であることを知らせる通知が画面の下部に表示されます。
 
@@ -57,9 +58,10 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 
 2. ドロップダウン メニューから **[Azure 仮想マシン]** を選択します。
 
-    ![Select workload](./media/backup-azure-vms/discovery-select-workload.png)
+    ![ワークロードの選択](./media/backup-azure-vms/discovery-select-workload.png)
 
-3. ページの下部にある **[登録]** をクリックします。![Register button](./media/backup-azure-vms/register-button-only.png)
+3. ページの下部にある **[登録]** をクリックします。
+    ![[登録] ボタン](./media/backup-azure-vms/register-button-only.png)
 
 4. **[項目の登録]** ショートカット メニューで、登録する仮想マシンを選択します。同じ名前の仮想マシンが 2 つ以上ある場合は、クラウド サービスを使用して仮想マシンを区別します。
 
@@ -69,7 +71,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 
 5. 通知内の **[ジョブの表示]** をクリックして **[ジョブ]** ページに移動します。
 
-    ![Register job](./media/backup-azure-vms/register-create-job.png)
+    ![登録ジョブ](./media/backup-azure-vms/register-create-job.png)
 
     仮想マシンが登録済みの項目の一覧にも、登録操作の状態と共に表示されます。
 
@@ -129,7 +131,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
     ![保護の構成ジョブ](./media/backup-azure-vms/protect-configureprotection.png)
 
 ## 初回バックアップ
-ポリシーを使用して保護した仮想マシンは、**[保護された項目]** タブに表示され、保護の状態は *[保護済み (初回バックアップは完了していません)]* と表示されます。既定では、スケジュールされた最初のバックアップが*初回バックアップ*となります。
+ポリシーを使用して保護した仮想マシンは、**[保護された項目]** タブに表示され、保護の状態は *[保護済み (初回バックアップは完了していません)]* と表示されます。既定では、スケジュールされた最初のバックアップが *初回バックアップ* となります。
 
 保護を構成した直後に初回バックアップをトリガーするには:
 

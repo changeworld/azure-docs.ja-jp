@@ -24,7 +24,7 @@ Azure Key Vault は、ほとんどのリージョンで使用できます。詳�
 
 *推定所要時間:** 20 分
 
->[AZURE.NOTE]このチュートリアルでは、Key Vault でキーやシークレットを使用するようにアプリケーションを承認する手順の中で、Azure アプリケーションを作成する方法については説明していません。
+>[AZURE.NOTE] このチュートリアルでは、Key Vault でキーやシークレットを使用するようにアプリケーションを承認する手順の中で、Azure アプリケーションを作成する方法については説明していません。
 >
 >現時点では、Azure ポータルで Azure Key Vault を構成できません。代わりに、Azure PowerShell 命令を使用します。また、クロスプラットフォーム コマンドライン インターフェイスの手順については、[対応するチュートリアル](key-vault-manage-with-cli.md)をご覧ください。
 
@@ -113,7 +113,7 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -KeyFilePath 'c:\softkey.pfx' -KeyFilePassword $securepfxpwd
 
 
-作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。常に現在のバージョンを取得するには ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、この特定のバージョンを取得するには ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** を使用します。
+作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、この特定のバージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** を使用します。
 
 このキーの URI を表示するには、次のように入力します。
 
@@ -127,7 +127,7 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
 
 	$secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword' -SecretValue $secretvalue
 
-Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。常に現在のバージョンを取得するには ****https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用し、この特定のバージョンを取得するには ****https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用します。
+Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用し、この特定のバージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用します。
 
 このシークレットの URI を表示するには、次のように入力します。
 
@@ -145,7 +145,7 @@ Key Vault とキーやシークレットは、アプリケーションを使用�
 この手順は通常、開発者が別のコンピューター上で行います。これは Azure Key Vault に固有のものではありませんが、完全を期すために説明します。
 
 
->[AZURE.IMPORTANT]チュートリアルを完了するには、この手順で登録するアカウント、資格情報コンテナー、アプリケーションがすべて同じ Azure ディレクトリに格納されている必要があります。
+>[AZURE.IMPORTANT] チュートリアルを完了するには、この手順で登録するアカウント、資格情報コンテナー、アプリケーションがすべて同じ Azure ディレクトリに格納されている必要があります。
 
 Key Vault を使用するアプリケーションは、Azure Active Directory から取得したトークンを使用して認証する必要があります。これを行うには、アプリケーションの所有者は、まず Azure Active Directory でアプリケーションを登録する必要があります。登録の最後に、アプリケーションの所有者は次の値を取得します。
 
