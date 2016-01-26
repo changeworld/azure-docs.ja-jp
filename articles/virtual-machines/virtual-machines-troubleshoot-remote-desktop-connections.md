@@ -20,7 +20,7 @@
 
 # Windows を実行する Azure Virtual Machines への Remote Desktop 接続に関するトラブルシューティング
 
-Windows Azure 仮想マシンに対するリモート デスクトップ (RDP) 接続は、さまざまな理由で失敗する可能性があります。VM 上のリモート デスクトップ サービス、ネットワーク接続、またはホスト コンピューター上のリモート デスクトップ クライアントに問題がある可能性があります。この記事は、原因を特定して修正するために役立ちます。
+Windows ベースの Azure 仮想マシンに対するリモート デスクトップ (RDP) 接続は、さまざまな理由で失敗する可能性があります。VM 上のリモート デスクトップ サービス、ネットワーク接続、またはホスト コンピューター上のリモート デスクトップ クライアントに問題がある可能性があります。この記事は、原因を特定して修正するために役立ちます。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -172,4 +172,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=AcomDC_0114_2016--->
+<!---HONumber=AcomDC_0114_2016---->
