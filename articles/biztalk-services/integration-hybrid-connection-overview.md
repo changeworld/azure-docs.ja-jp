@@ -74,7 +74,7 @@
 
 「[Create and Manage Hybrid Connections (ハイブリッド接続の作成と管理)](integration-hybrid-connection-create-manage.md)」を参照してください。
 
-*アプリケーションの承認は、ハイブリッド接続とは独立しています*。適切であればどのような種類の承認方法でも使用できます。承認方法は、Azure クラウドとオンプレミスのコンポーネントとの間でサポートされているエンド ツー エンドの承認方法によって異なります。たとえば、Azure アプリケーションはオンプレミスの SQL Server にアクセスします。このシナリオでは、SQL 承認を、サポートされるエンド ツー エンドの承認方法として使用できます。
+アプリケーションの承認は、ハイブリッド接続とは独立しています。適切であればどのような種類の承認方法でも使用できます。承認方法は、Azure クラウドとオンプレミスのコンポーネントとの間でサポートされているエンド ツー エンドの承認方法によって異なります。たとえば、Azure アプリケーションはオンプレミスの SQL Server にアクセスします。このシナリオでは、SQL 承認を、サポートされるエンド ツー エンドの承認方法として使用できます。
 
 #### TCP ポート
 ハイブリッド接続では、プライベート ネットワークからの送信 TCP 接続または送信 HTTP 接続のみが必要です。ネットワークへの受信接続を許可するために、ファイアウォール ポートを開いたり、ネットワーク境界の構成を変更したりする必要はありません。
@@ -103,4 +103,4 @@
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->

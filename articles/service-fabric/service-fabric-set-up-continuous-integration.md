@@ -196,7 +196,7 @@ Azure PowerShell をインストールするには、前のセクション「**A
 ### ビルド エージェントを登録する
 
 1.	agent.zip をダウンロードします。これを行うには、次の手順を実行します。
-    1.	* **https://[your-Team-Services-account-name].visualstudio.com** などのチーム プロジェクトにサインインします。
+    1.	**https://[your-VSTS-account-name].visualstudio.com** などのチーム プロジェクトにログオンします。
     1.	画面の右上隅にある '歯車' アイコンを選択します。
     1.	コントロール パネルで、**[エージェント プール]** タブを選択します。
     1.	**[ダウンロード エージェント]** を選択し、agent.zip ファイルをダウンロードします。
@@ -348,4 +348,4 @@ Service Fabric アプリケーションの継続的インテグレーション�
 - [ビルド エージェントのデプロイ](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)
 - [ビルド定義の作成と構成](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!-----HONumber=AcomDC_0114_2016-->
