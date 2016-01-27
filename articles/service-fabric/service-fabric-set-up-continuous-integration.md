@@ -164,7 +164,7 @@ Azure PowerShell をインストールするには、前のセクション「**A
 2. ノード `HKEY_Users\.Default\Environment` で右クリックし、**[新規]、[展開可能な文字列値]** の順に選択します。
 3. 名前として `PSModulePath` を入力し、値として `%PROGRAMFILES%\WindowsPowerShell\Modules` を入力します。
 
->[AZURE.NOTE]この操作は、ビルド エージェントを起動する*前に*行います。そうしないと、新しい環境変数が取得されません。
+>[AZURE.NOTE]この操作は、ビルド エージェントを起動する前に行います。そうしないと、新しい環境変数が取得されません。
 
 ### Automation の証明書をインポートする
 
