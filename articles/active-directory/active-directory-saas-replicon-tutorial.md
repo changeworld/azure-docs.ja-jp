@@ -81,7 +81,7 @@
     ![アプリケーション URL の構成](./media/active-directory-saas-replicon-tutorial/IC777803.png "アプリケーション URL の構成")
 
     1.  **[Replicon サインオン URL]** テキストボックスに、Replicon テナント URL を入力します (例: **https://na2.replicon.com/company/saml2/sp-sso/post*)。
-2.  **[Replicon 応答 URL]** ボックスに、Replicon **AssertionConsumerService** URL を入力します (例: **https://global.replicon.com/!/saml2/company/sso/post*)。
+    2.  **[Replicon 応答 URL]** ボックスに、Replicon **AssertionConsumerService** URL を入力します (例: **https://global.replicon.com/!/saml2/company/sso/post*)。
 
         >[AZURE.NOTE]**https://global.replicon.com/!/saml2/\<YourCompanyKey>** で、Replicon メタデータから URL を取得できます。
 
@@ -151,4 +151,4 @@ Azure AD ユーザーが Replicon にログインできるようにするには�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!----HONumber=AcomDC_0114_2016-->
