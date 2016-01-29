@@ -41,7 +41,7 @@
 ||[VM イメージの発行ガイド][link-single-vm] | [開発者向けサービスの発行ガイド](marketplace-publishing-dev-service-creation.md) | [データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md) | [ソリューション テンプレートの発行ガイド](marketplace-publishing-solution-template-creation.md) |
 || [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] |
 | **手順 3: ステージングにプランをプッシュする** | [VM のプランをステージングでテストする](marketplace-publishing-vm-image-test-in-staging.md) | [開発者向けサービスのプランをステージングでテストする](marketplace-publishing-dev-service-test-in-staging.md) | [データ サービスのプランをステージングでテストする](marketplace-publishing-data-service-test-in-staging.md) | [ソリューション テンプレートをステージングでテストする](marketplace-publishing-solution-template-test-in-staging.md) |
-| **手順 4: プランを Marketplace にデプロイする** | [プランを Marketplace にデプロイする | プランを Marketplace にデプロイする][link-pushprod] | [プランを Marketplace にデプロイする][link-pushprod] | [プランを Marketplace にデプロイする][link-pushprod] | [プランを Marketplace にデプロイする][link-pushprod] |
+| **手順 4: プランを Marketplace にデプロイする** | [プランを Marketplace にデプロイする](link-pushprod) |[プランを Marketplace にデプロイする](link-pushprod) | [プランを Marketplace にデプロイする][link-pushprod] | [プランを Marketplace にデプロイする][link-pushprod] | [プランを Marketplace にデプロイする][link-pushprod] |
 
 ## サポート
 - [Get support as a publisher (発行元としてサポートを受ける)][suppt-general]
@@ -81,4 +81,4 @@
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 [link-pushprod]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!-----HONumber=AcomDC_0114_2016-->
