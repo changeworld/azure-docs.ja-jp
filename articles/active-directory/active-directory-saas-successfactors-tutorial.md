@@ -16,7 +16,8 @@
 
 #チュートリアル: Azure Active Directory と SuccessFactors の統合
   
-このチュートリアルでは、Azure と SuccessFactors を **サービス プロバイダー (SP) によって開始されたシングル サインオン モード**で統合する方法について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と SuccessFactors を **サービス プロバイダー (SP) によって開始されたシングル サインオン モード**で統合する方法について説明します。  
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   SP によって開始されたモードで SuccessFactors でのシングル サインオンが有効なサブスクリプション
@@ -87,7 +88,10 @@
     1.  **[サインオン URL]** テキスト ボックスに、ユーザーが SuccessFactors アプリにサインオンするために使用する URL を入力します (例: "*https://performancemanager4.successfactors.com/sf/home?company=CompanyName&loginMethod=SSO*")。
     2.  **[SuccessFactors 応答 URL]** テキスト ボックスに、「**https://performancemanager4.successfactors.com/saml2/SAMLAssertionConsumer?company=CompanyName**」と入力します。
 
-        >[AZURE.NOTE]この値は一時的なプレースホルダーです。実際の値は、SuccessFactors サポート チームから取得します。このチュートリアルの中に、SuccessFactors サポート チームに連絡することを指示する手順があります。サポート チームから、実際の SuccessFactors 応答 URL を取得できます。
+        >[AZURE.NOTE]この値は一時的なプレースホルダーです。  
+        >実際の値は、SuccessFactors サポート チームから取得します。  
+        >このチュートリアルの中に、SuccessFactors サポート チームに連絡することを指示する手順があります。  
+        >サポート チームから、実際の SuccessFactors 応答 URL を取得できます。
 
 4.  **[SuccessFactors でのシングル サインオンの構成]** ページで、証明書をダウンロードするために **[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
@@ -109,7 +113,8 @@
 
 ##ユーザー プロビジョニングの構成
   
-Azure AD ユーザーが SuccessFactors にログインできるようにするには、ユーザーを SuccessFactors にプロビジョニングする必要があります。SuccessFactors の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが SuccessFactors にログインできるようにするには、ユーザーを SuccessFactors にプロビジョニングする必要があります。  
+SuccessFactors の場合、プロビジョニングは手動で行います。
   
 SuccessFactors でユーザーを作成するには、SuccessFactors のサポート チームに連絡する必要があります。
 
