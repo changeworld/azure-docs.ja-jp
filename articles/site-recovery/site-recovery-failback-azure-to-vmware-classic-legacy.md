@@ -127,7 +127,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの SCSI ID を取得す�
 
 	![](./media/site-recovery-failback-azure-to-vmware/image14.png)
 
-4. **[disk.EnableUUID]** と表示される行が存在するかどうかが確認されます。そのような行が存在し、値が **[False]** の場合は、[True] (大文字と小文字の区別なし) に設定します。そのような行が存在し、値が [True] の場合は、**[Cancel]** をクリックし、ゲスト オペレーティング システムが起動した後に、その OS 内で SCSI コマンドをテストします。そのような行が存在しない場合、**[Add Row]** をクリックします。
+4. **[disk.EnableUUID]** と表示される行が存在するかどうかが確認されます。そのような行が存在し、値が **[False]** の場合は、[True] \(大文字と小文字の区別なし) に設定します。そのような行が存在し、値が [True] の場合は、**[Cancel]** をクリックし、ゲスト オペレーティング システムが起動した後に、その OS 内で SCSI コマンドをテストします。そのような行が存在しない場合、**[Add Row]** をクリックします。
 5. **[Name]** 列に disk.EnableUUID を追加します。その値を TRUE に設定します。前述の値を追加する際には、二重引用符で囲まないでください。
 
 	![](./media/site-recovery-failback-azure-to-vmware/image15.png)
@@ -410,4 +410,4 @@ VMware 仮想マシンを Azure にレプリケートする方法について[�
 
  
 
-<!---HONumber=AcomDC_0114_2016--->
+<!----HONumber=AcomDC_0114_2016--->
