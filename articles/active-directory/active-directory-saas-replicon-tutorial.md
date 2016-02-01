@@ -80,8 +80,8 @@
 
     ![アプリケーション URL の構成](./media/active-directory-saas-replicon-tutorial/IC777803.png "アプリケーション URL の構成")
 
-    1.  **[Replicon サインオン URL]** テキストボックスに、Replicon テナント URL を入力します (例: **https://na2.replicon.com/company/saml2/sp-sso/post*)。
-    2.  **[Replicon 応答 URL]** ボックスに、Replicon **AssertionConsumerService** URL を入力します (例: **https://global.replicon.com/!/saml2/company/sso/post*)。
+    1.  **[Replicon サインオン URL]** テキストボックスに、Replicon テナント URL を入力します (例: *https://na2.replicon.com/company/saml2/sp-sso/post*)。
+    2.  **[Replicon 応答 URL]** ボックスに、Replicon **AssertionConsumerService** URL を入力します (例: *https://global.replicon.com/!/saml2/company/sso/post*)。
 
         >[AZURE.NOTE]**https://global.replicon.com/!/saml2/\<YourCompanyKey>** で、Replicon メタデータから URL を取得できます。
 
