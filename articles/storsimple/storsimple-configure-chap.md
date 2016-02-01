@@ -189,6 +189,7 @@ CHAP の構成が正しくない場合、**"認証エラー"** というエラ�
 ## 次のステップ
 
 - [StorSimple のセキュリティの詳細](storsimple-security.md)
+
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

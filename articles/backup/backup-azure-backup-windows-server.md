@@ -3,12 +3,19 @@
    description="この簡単な手順で Windows Server または Windows クライアントを Azure にバックアップします。数回の簡単なステップで Windows のファイルとフォルダーをクラウドにバックアップできます。"
    services="backup"
    documentationCenter=""
-   authors="aashishr"
+   authors="Jim-Parker"
    manager="jwhit"
    editor=""
    keywords="Windows Server バックアップ、Windows Server をバックアップする"/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/17/2015" ms.author="jimpark"; "aashishr"/>
+<tags
+   ms.service="backup"
+   ms.workload="storage-backup-recovery"
+	 ms.tgt_pltfrm="na"
+	 ms.devlang="na"
+	 ms.topic="article"
+	 ms.date="01/19/2016"
+	 ms.author="jimpark;"/>
 
 # Windows Server または Windows クライアントのファイルとフォルダーを Azure にバックアップする
 この簡単な手順で Windows のファイルとフォルダーを Azure にバックアップできます。まだ実行していない場合は、[前提条件](backup-configure-vault.md#before-you-start)を完了して、Windows コンピューターをバックアップする環境を準備してから、操作を続行します。
@@ -45,4 +52,4 @@
 - [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0121_2016-->

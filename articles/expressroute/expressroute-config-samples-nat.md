@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/12/2015"
+   ms.date="01/16/2016"
    ms.author="cherylmc"/>
 
 # NAT をセットアップして管理するためのルーター構成のサンプル
@@ -21,7 +21,7 @@
 
 >[AZURE.IMPORTANT]このページのサンプルは、ガイダンスとしてのみ使用することを目的としています。ベンダーの販売/技術チームおよび自社のネットワーク チームと協力して、ニーズに対応する適切な構成を考える必要があります。Microsoft では、このページに示す構成に関連する問題には対応できません。サポートの問題については、デバイス ベンダーに問い合わせる必要があります。
 
-次のルーター構成のサンプルは、Azure パブリック ピアリングと Microsoft ピアリングに適用されます。Azure プライベート ピアリングの NAT は構成しないでください。詳細については、「[ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」および「[ExpressRoute NAT の要件](expressroute-nat.md)」をご覧ください。
+次のルーター構成のサンプルは、Azure パブリック ピアリングと Microsoft ピアリングに適用されます。Azure プライベート ピアリングの NAT は構成しないでください。詳細については、「[ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」および「[ExpressRoute NAT の要件](expressroute-nat.md)」を参照してください。
 
 **注:** インターネットと ExpressRoute への接続には個別の NAT IP プールを使用する必要があります。インターネットと ExpressRoute で同じ NAT IP プールを使用すると、非対称ルーティングになり、接続が失われます。
 
@@ -217,7 +217,7 @@ NAT コマンド:
 
 ### 5\.各方向でプレフィックスを選択してアドバタイズする BGP の構成
 
-「[ルーター構成のサンプル](expressroute-config-samples-routing.md)」ページのサンプルをご覧ください。
+[ルーティング構成のサンプル](expressroute-config-samples-routing.md)に関するページのサンプルを参照してください。
 
 ### 6\.ポリシーの作成
 
@@ -319,4 +319,4 @@ NAT コマンド:
 
 詳細については、[ExpressRoute の FAQ](expressroute-faqs.md) を参照してください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

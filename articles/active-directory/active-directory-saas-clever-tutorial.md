@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Clever の統合 | Microsoft Azure" 
     description="Azure Active Directory で Clever を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Clever の統合
 
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Clever テナント
 
-このチュートリアルを完了すると、Clever に割り当てた Azure AD ユーザーは、Clever 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Clever に割り当てた Azure AD ユーザーは、Clever 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -64,31 +64,31 @@
     ![Clever](./media/active-directory-saas-clever-tutorial/IC798979.png "Clever")
 ##シングル サインオンの構成
 
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Clever に対する認証を行えるようにする方法を説明します。Clever アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性**の構成に追加する必要があります。次のスクリーンショットにこの例を示します。
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Clever に対する認証を行えるようにする方法を説明します。Clever アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性**の構成に追加する必要があります。次のスクリーンショットはその例です。
 
 ![属性](./media/active-directory-saas-clever-tutorial/IC798980.png "属性")
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **Clever** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **Clever** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-clever-tutorial/IC784682.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-clever-tutorial/IC784682.png "Configure Single Sign-On")
 
 2.  **[ユーザーの Clever へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-clever-tutorial/IC798981.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-clever-tutorial/IC798981.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[Clever サインオン URL]** ボックスに、ユーザーが Clever アプリケーションへのサインオンに使用する URL (例: **https://clever.com/in/azsandbox*)) を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Clever のサインオン URL]** ボックスに、ユーザーが Clever アプリケーションにサインオンするときに使用する URL (例: **https://clever.com/in/azsandbox*)) を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-clever-tutorial/IC798982.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-clever-tutorial/IC798982.png "Configure App URL")
 
-4.  **[Clever でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、メタデータ ファイルをコンピューターのローカルに保存します。
+4.  **[Clever でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターでメタデータ ファイルをローカルに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-clever-tutorial/IC798983.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-clever-tutorial/IC798983.png "Configure Single Sign-On")
 
 5.  別の Web ブラウザー ウィンドウで、Clever 企業サイトに管理者としてログインします。
 
-6.  ツール バーで、**[インスタント ログイン]** をクリックします。
+6.  ツールバーで、**[インスタント ログイン]** をクリックします。
 
     ![インスタント ログイン](./media/active-directory-saas-clever-tutorial/IC798984.png "インスタント ログイン")
 
@@ -103,11 +103,11 @@
     2.  **[ID システム]** として、**[ADFS]** を選択します。
     3.  **[保存]** をクリックします。
 
-8.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+8.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-clever-tutorial/IC798986.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-clever-tutorial/IC798986.png "Configure Single Sign-On")
 
-9.  上部のメニューで **[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
+9.  上部のメニューで、**[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
 
     ![属性](./media/active-directory-saas-clever-tutorial/IC795920.png "属性")
 
@@ -146,8 +146,8 @@ Azure AD ユーザーが Clever にログインできるようにするには、
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-clever-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-clever-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

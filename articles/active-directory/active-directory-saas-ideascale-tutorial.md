@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と IdeaScale の統合 | Microsoft Azure" 
     description="Azure Active Directory で IdeaScale を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と IdeaScale の統合
   
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   IdeaScale でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを完了すると、IdeaScale に割り当てた Azure AD ユーザーは、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、IdeaScale に割り当てた Azure AD ユーザーは、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -55,7 +55,7 @@
 
     ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-ideascale-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  **検索ボックス**に、「**IdeaScale**」と入力します。
+6.  **検索ボックス**に「**IdeaScale**」と入力します。
 
     ![アプリケーション ギャラリー](./media/active-directory-saas-ideascale-tutorial/IC790841.png "アプリケーション ギャラリー")
 
@@ -68,21 +68,21 @@
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **IdeaScale** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **[IdeaScale]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-ideascale-tutorial/IC790843.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-ideascale-tutorial/IC790843.png "Configure Single Sign-On")
 
 2.  **[ユーザーの IdeaScale へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-ideascale-tutorial/IC790844.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-ideascale-tutorial/IC790844.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[IdeaScale サインオン URL]** ボックスに、ユーザーが IdeaScale アプリケーションのサインオンに使用する URL (例: **https://company.IdeaScale.com*")) を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[IdeaScale のサインオン URL]** テキストボックスに、ユーザーが IdeaScale アプリケーションにサインオンするときに使用する URL (例: **https://company.IdeaScale.com*")) を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-ideascale-tutorial/IC790845.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-ideascale-tutorial/IC790845.png "Configure App URL")
 
-4.  **[IdeaScale でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、メタデータ ファイルをコンピューターのローカルに保存します。
+4.  **[IdeaScale でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックし、コンピューターでメタデータ ファイルをローカルに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-ideascale-tutorial/IC790846.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-ideascale-tutorial/IC790846.png "Configure Single Sign-On")
 
 5.  別の Web ブラウザーのウィンドウで、IdeaScale 企業サイトに管理者としてログインします。
 
@@ -90,7 +90,7 @@
 
     ![コミュニティの設定](./media/active-directory-saas-ideascale-tutorial/IC790847.png "コミュニティの設定")
 
-7.  **[セキュリティ] > [シングル サインオン設定]** をクリックします。
+7.  **[セキュリティ]、[シングル サインオン設定]** の順にクリックします。
 
     ![シングル サインオンの設定](./media/active-directory-saas-ideascale-tutorial/IC790848.png "シングル サインオンの設定")
 
@@ -102,14 +102,14 @@
 
     ![シングル サインオンの設定](./media/active-directory-saas-ideascale-tutorial/IC790850.png "シングル サインオンの設定")
 
-    1.  Azure ポータルの **[IdeaScale でのシングル サインオンの構成]** ダイアログ ページで **[エンティティ ID]** の値をコピーし、**[SAML IdP エンティティ ID]** ボックスに貼り付けます。
-    2.  ダウンロードしたメタデータ ファイルの内容をコピーし、**[SAML IdP メタデータ]** ボックスに貼り付けます。
-    3.  Azure ポータルの **[IdeaScale でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログアウト URL]** の値をコピーし、**[ログアウト成功 URL]** ボックスに貼り付けます。
+    1.  Azure ポータルで、**[IdeaScale でのシングル サインオンの構成]** ダイアログ ページの **[エンティティ ID]** の値をコピーし、**[SAML IdP エンティティ ID]** テキストボックスに貼り付けます。
+    2.  ダウンロードしたメタデータ ファイルの内容をコピーし、**[SAML IdP メタデータ]** テキストボックスに貼り付けます。
+    3.  Azure ポータルで、**[IdeaScale でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[ログアウト成功 URL]** テキストボックスに貼り付けます。
     4.  **[変更を保存]** をクリックします。
 
-10. Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-ideascale-tutorial/IC790851.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-ideascale-tutorial/IC790851.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
   
 Azure AD ユーザーが IdeaScale にログインできるようにするには、そのユーザーを IdeaScale にプロビジョニングする必要があります。IdeaScale の場合、プロビジョニングは手動で行います。
@@ -122,7 +122,7 @@ Azure AD ユーザーが IdeaScale にログインできるようにするには
 
     ![コミュニティの設定](./media/active-directory-saas-ideascale-tutorial/IC790847.png "コミュニティの設定")
 
-3.  **[基本設定] > [メンバー管理]** に移動します。
+3.  **[基本設定]、[メンバ管理]** の順にクリックします。
 
 4.  **[メンバーの追加]** をクリックします。
 
@@ -132,7 +132,7 @@ Azure AD ユーザーが IdeaScale にログインできるようにするには
 
     ![新しいメンバーの追加](./media/active-directory-saas-ideascale-tutorial/IC790853.png "新しいメンバーの追加")
 
-    1.  **[電子メール アドレス]** ボックスに、プロビジョニングする有効な AAD アカウントの電子メール アドレスを入力します。
+    1.  **[電子メール アドレス]** テキストボックスに、プロビジョニングする有効な AAD アカウントの電子メール アドレスを入力します。
     2.  **[変更を保存]** をクリックします。
 
     >[AZURE.NOTE]Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
@@ -151,10 +151,10 @@ Azure AD ユーザーが IdeaScale にログインできるようにするには
 
     ![ユーザーの割り当て](./media/active-directory-saas-ideascale-tutorial/IC790854.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-ideascale-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-ideascale-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

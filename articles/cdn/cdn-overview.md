@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/02/2015" 
+	ms.date="01/20/2016" 
 	ms.author="casoper"/>
 
 # Azure Content Delivery Network (CDN) の概要
@@ -49,6 +49,7 @@ Standard CDN レベルには、以下の機能が含まれます。
 - 負荷分散
 - DDOS 保護
 - [高速消去](cdn-purge-endpoint.md)
+- [資産の事前読み込み](cdn-preload-endpoint.md)
 - [REST API を介した管理](https://msdn.microsoft.com/library/mt634456.aspx)
 
 
@@ -58,6 +59,6 @@ Premium CDN レベルには Standard レベルのすべての機能に加え、�
 
 - [カスタマイズ可能なルール ベースのコンテンツ配信エンジン](cdn-rules-engine.md)
 - [詳細な HTTP レポート](cdn-advanced-http-reports.md)
-- [リアルタイム統計](cdn-read-time-stats.md)
+- [リアルタイム統計](cdn-real-time-stats.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0121_2016-->

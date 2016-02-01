@@ -1,8 +1,8 @@
 <properties 
     pageTitle="チュートリアル: Azure Active Directory と New Relic の統合 | Microsoft Azure" 
-    description="Azure Active Directory で New Relic を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" 
+    description="Azure Active Directory で New Relic を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と New Relic の統合
   
@@ -49,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-new-relic-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-new-relic-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -68,9 +68,9 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **New Relic** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **[New Relic]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-new-relic-tutorial/IC769534.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-new-relic-tutorial/IC769534.png "Configure Single Sign-On")
 
 2.  **[ユーザーの New Relic へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選び、**[次へ]** をクリックします。
 
@@ -80,9 +80,9 @@
 
     アプリの URL は、New Relic のテナント URL です (例: **https://rpm.newrelic.com*):
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-new-relic-tutorial/IC797034.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-new-relic-tutorial/IC797034.png "Configure App URL")
 
-4.  **[New Relic でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターでローカルに保存します。
+4.  **[New Relic でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
     ![Configure Single Sign-On](./media/active-directory-saas-new-relic-tutorial/IC797035.png "Configure Single Sign-On")
 
@@ -90,7 +90,7 @@
 
 6.  上部のメニューで **[アカウント設定]** をクリックします。
 
-    ![アカウント設定](./media/active-directory-saas-new-relic-tutorial/IC797036.png "アカウントの設定")
+    ![Account Settings](./media/active-directory-saas-new-relic-tutorial/IC797036.png "Account Settings")
 
 7.  **[セキュリティと認証]** タブをクリックし、**[シングル サインオン]** タブをクリックします。
 
@@ -118,11 +118,11 @@ Azure Active Directory ユーザーが New Relic にログインできるよう�
 
 2.  上部のメニューで **[アカウント設定]** をクリックします。
 
-    ![アカウント設定](./media/active-directory-saas-new-relic-tutorial/IC797040.png "アカウントの設定")
+    ![Account Settings](./media/active-directory-saas-new-relic-tutorial/IC797040.png "Account Settings")
 
 3.  **[アカウント]** ペインの左側にある **[概要]** をクリックし、次に **[ユーザーの追加]** をクリックします。
 
-    ![アカウントの設定](./media/active-directory-saas-new-relic-tutorial/IC797041.png "アカウントの設定")
+    ![Account Settings](./media/active-directory-saas-new-relic-tutorial/IC797041.png "Account Settings")
 
 4.  **[アクティブ ユーザー]** ダイアログで、次の手順に従います。
 
@@ -134,7 +134,7 @@ Azure Active Directory ユーザーが New Relic にログインできるよう�
 
 >[AZURE.NOTE]他の New Relic ユーザー アカウントの作成ツールまたは New Relic から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##ユーザーを割り当てる
+##ユーザーの割り当て
   
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
@@ -148,8 +148,8 @@ Azure Active Directory ユーザーが New Relic にログインできるよう�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-new-relic-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-new-relic-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

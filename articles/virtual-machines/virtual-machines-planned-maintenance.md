@@ -3,7 +3,7 @@
 	description="Azure の計画的なメンテナンスの概要と、それが Azure で実行されている仮想マシンに及ぼす影響について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="kenazk"
+	authors="drewm"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management,azure-resource-manager"/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/23/2015"
-	ms.author="kenazk"/>
+	ms.date="01/05/2016"
+	ms.author="drewm"/>
 
 
 # Azure Virtual Machines に対する計画的なメンテナンス
@@ -72,6 +72,11 @@ SLA の詳細については、「[サービス レベル アグリーメント]
 <!--Image reference-->
 ![][image2]
 
+ビューアーを使用して、Azure ポータル、Azure PowerShell、または Azure CLI を使ってマルチインスタンス構成で構成されている仮想マシンを確認します。たとえば、マルチインスタンス構成の仮想マシンを確認するには、仮想マシン参照ダイアログに追加された [可用性セット] 列を含む仮想マシンの一覧を参照します。次の例では、仮想マシン Example-VM1 と Example-VM2 がマルチインスタンス構成です。
+
+<!--Image reference-->
+![][image4]
+
 ## 単一インスタンス構成の更新
 
 マルチインスタンス構成の更新完了後に、Azure は単一インスタンス構成の更新を実行します。この更新によって、可用性セットで実行していない仮想マシンも再起動されます。
@@ -114,10 +119,11 @@ Azure では、一連のリージョン ペアとしてリージョンがまと�
 [image1]: ./media/virtual-machines-planned-maintenance/vmplanned1.png
 [image2]: ./media/virtual-machines-planned-maintenance/EventViewerPostReboot.png
 [image3]: ./media/virtual-machines-planned-maintenance/RegionPairs.PNG
+[image4]: ./media/virtual-machines-planned-maintenance/AvailabilitySetExample.png
 
 
 <!--Link references-->
 [Virtual Machines Manage Availability]: virtual-machines-windows-tutorial.md
 [Understand planned versus unplanned maintenance]: virtual-machines-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0121_2016-->

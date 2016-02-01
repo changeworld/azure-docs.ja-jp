@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="01/19/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse へのスキーマの移行#
@@ -42,13 +42,13 @@ SQL Data Warehouse では、次の一般的なビジネス データ型がサポ
 
 - bigint
 - binary
-- ビット
+- bit
 - char
 - date
 - datetime
 - datetime2
 - datetimeoffset
-- 小数点
+- decimal
 - float
 - int
 - money
@@ -115,7 +115,7 @@ OR  y.[is_user_defined] = 1
 - **table**: 一時テーブルに変換します。
 - **timestamp**: datetime2 と `CURRENT_TIMESTAMP` 関数を使用するようにコードを再作成します。current\_timestamp を既定の制約として指定することはできません。また、値は自動的には更新されません。timestamp で型指定された列から rowversion 値を移行する必要がある場合は、行バージョンの値 NOT NULL または NULL に binary(8) または varbinary(8) を使用します。
 - **varchar(max)**: パフォーマンスを向上させるために、varchar(8000) 以下を使用します。
-- **uniqueidentifier**: varbinary(8) を使用します。
+- **uniqueidentifier**: 値の入力形式 (バイナリまたは文字) に応じて、varbinary(16) または varchar(36) を使用します。入力形式が文字ベースの場合は最適化が可能です。文字形式からバイナリ形式に変換することで、列のストレージを50% 以上減らすことができます。非常に大きなテーブルでは、この最適化は有益である可能性があります。
 - **ユーザー定義型**: 可能な限り、ネイティブ型に変換します。
 - **xml**: パフォーマンスを向上させるために、varchar(8000) 以下を使用します。必要に応じて、列全体を分割します。
 
@@ -145,4 +145,4 @@ SQLDW にデータベース スキーマを正常に移行した後、次の記�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

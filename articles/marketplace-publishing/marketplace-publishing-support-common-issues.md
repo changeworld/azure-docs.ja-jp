@@ -14,7 +14,7 @@
       ms.tgt_pltfrm="na"
       ms.workload="na"
       ms.date="12/06/2015"
-      ms.author="v-jeana; hascipio"/>
+      ms.author="v-jeana; hascipio; v-dabosl"/>
 
 # Azure Marketplace Publisher に関する一般的な問題をトラブルシューティングする方法
 この記事では、いくつかの一般的な Marketplace のシナリオのサポートを得たり、これに関する問題を解決したりする方法を説明します。
@@ -65,7 +65,7 @@
 
 発行者プロファイルを更新するには、Microsoft デベロッパー センターを使用して以下を実行します。
 
-**1.Microsoft デベロッパー センターにサインインします。**
+**1.Windows デベロッパー センターにサインインします**。
 
 - 新しい Chrome Incognito または Internet Explorer InPrivate ブラウズ セッションを開き、個人用アカウントにサインインしていないことを確認します。
 - [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) に移動します。
@@ -82,7 +82,7 @@
 
 ![protectacct][6]
 
-**4.[アカウントの詳細] と [会社の詳細] に移動します**。
+**4.[アカウントの詳細] と [連絡先情報] に移動します**。
 
 ![acctdetails][7]
 
@@ -120,4 +120,4 @@
 [7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
 [8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0121_2016-->

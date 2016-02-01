@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/02/2015"
+   ms.date="01/14/2016"
    ms.author="alkohli" />
 
 # Microsoft サポートに問い合わせる
@@ -30,7 +30,7 @@ Microsoft Azure StorSimple ソリューションで問題が発生した場合�
 
 #### サポート要求を作成するには
 
-1. サポート要求は、[Azure クラシック ポータル](http://manage.windowsazure.com/)を使って作成できます。[ポータル](http://manage.windowsazure.com/)で、**アカウント名**をクリックし、**[Microsoft サポートに問い合わせる]** をクリックします。
+1. サポート要求は、[Azure クラシック ポータル](https://manage.windowsazure.com/)を使って作成できます。[クラシック ポータル](https://manage.windowsazure.com/)で、**アカウント名**をクリックし、**[Microsoft サポートに問い合わせる]** をクリックします。
 
 	![クラシック ポータルでの MS サポートへの問い合わせ](./media/storsimple-contact-microsoft-support/IC777286.png)
 
@@ -76,4 +76,4 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 
 > [AZURE.IMPORTANT]サポートへのアクセスは、`Disable-HcsSupportAccess` を実行して無効にできます。また、StorSimple デバイスでは、セッションの開始後 8 時間が経過すると、サポートへのアクセスが無効になります。サポート セッションを開始した後、StorSimple デバイスの資格情報を変更することをお勧めします。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure SQL Database のコピー"
+	pageTitle="Azure SQL Database のコピーの作成 | Microsoft Azure"
 	description="Azure SQL Database のコピーの作成"
 	services="sql-database"
 	documentationCenter=""
@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="10/16/2015"
+	ms.date="01/20/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -70,7 +70,7 @@ SQL Database をコピーするには、以下が必要です。
     ![通知][3]
 
  
-    ![monitor][4]
+    ![監視][4]
 
 
 
@@ -84,7 +84,7 @@ SQL Database をコピーするには、以下が必要です。
 
 ## 次のステップ
 
-- [SQL Server Management Studio (SSMS) での接続](sql-database-connect-to-database.md)
+- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
 - [データベースを BACPAC にエクスポートする](sql-database-export.md)
 
 
@@ -101,4 +101,4 @@ SQL Database をコピーするには、以下が必要です。
 [3]: ./media/sql-database-copy/copy-notification.png
 [4]: ./media/sql-database-copy/monitor-copy.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -137,7 +137,7 @@ Export-HcsSupportPackage コマンドレットで使用できるさまざまな�
  
 	`Import-module <Path to the folder that contains the Windows PowerShell script>`
 
-4. サポート パッケージ フォルダーを開きます。すべてのファイルが圧縮および暗号化された *.aes* ファイルであることに注意してください。ファイルを開きます。ファイルを開くには、次のコマンドを入力します。
+4. サポート パッケージ フォルダーを開きます。すべてのファイルが圧縮および暗号化された .aes ファイルであることに注意してください。ファイルを開きます。ファイルを開くには、次のコマンドを入力します。
 
 	`Open-HcsSupportPackage <Path to the folder that contains support package files>`
 
@@ -196,7 +196,8 @@ Export-HcsSupportPackage コマンドレットで使用できるさまざまな�
 
 ## 次のステップ
 
-- [サポート パッケージとデバイスのログを使用してデバイスのデプロイをトラブルシューティングする方法](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting) 
+- [サポート パッケージとデバイスのログを使用してデバイスのデプロイをトラブルシューティングする方法](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)
+
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

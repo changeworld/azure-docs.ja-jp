@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と FM:Systems の統合 | Microsoft Azure" 
     description="Azure Active Directory で FM: Systems を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と FM: Systems の統合
   
@@ -70,15 +70,15 @@
 
 1.  Azure AD ポータルの **FM:Systems** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-fm-systems-tutorial/IC790810.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-fm-systems-tutorial/IC790810.png "Configure Single Sign-On")
 
 2.  **[ユーザーの FM:Systems へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-fm-systems-tutorial/IC795901.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-fm-systems-tutorial/IC795901.png "Configure Single Sign-On")
 
 3.  **[アプリケーション URL の構成]** ページで、次の手順を実行します。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-fm-systems-tutorial/IC795902.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-fm-systems-tutorial/IC795902.png "Configure App URL")
 
     1.  **[FM:Systems サインオン URL]** ボックスに、FM:Systems の**応答 URL** (例: **https://dpr.fmshosted.com/fminteract/ConsumerService2.aspx*)) を入力します。
 
@@ -86,17 +86,17 @@
 
     2.  **[次へ]** をクリックします。
 
-4.  **[FM: Systems でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックしてメタデータをコンピューターに保存します。
+4.  **[FM: Systems でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、メタデータをコンピューターに保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-fm-systems-tutorial/IC795903.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-fm-systems-tutorial/IC795903.png "Configure Single Sign-On")
 
 5.  ダウンロードしたメタデータ ファイルを FM: Systems サポート チームに送信します。
 
     >[AZURE.NOTE]FM: Systems サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
 
-6.  Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-fm-systems-tutorial/IC795904.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-fm-systems-tutorial/IC795904.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
   
 Azure AD ユーザーが FM:Systems にログインできるようにするには、そのユーザーを FM:Systems にプロビジョニングする必要があります。FM:Systems の場合、プロビジョニングは手動で行います。
@@ -105,7 +105,7 @@ Azure AD ユーザーが FM:Systems にログインできるようにするに�
 
 1.  Web ブラウザー ウィンドウで、FM:Systems 企業サイトに管理者としてログインします。
 
-2.  **[System Administration]、[Manage Security]、[Users]、[User list]** の順にクリックします。
+2.  **[システム管理]、[セキュリティの管理]、[ユーザー]、[ユーザー一覧]** の順にクリックします。
 
     ![システム管理](./media/active-directory-saas-fm-systems-tutorial/IC795905.png "システム管理")
 
@@ -115,7 +115,7 @@ Azure AD ユーザーが FM:Systems にログインできるようにするに�
 
 4.  **[Create User]** セクションで、次の手順に従います。
 
-    ![ユーザーの作成](./media/active-directory-saas-fm-systems-tutorial/IC795907.png "Create User")
+    ![Create User](./media/active-directory-saas-fm-systems-tutorial/IC795907.png "Create User")
 
     1.  関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントのユーザー名、パスワード、確認パスワード、電子メール アドレス、および従業員 ID を入力します。
     2.  **[次へ]** をクリックします。
@@ -134,10 +134,10 @@ Azure AD ユーザーが FM:Systems にログインできるようにするに�
 
     ![ユーザーの割り当て](./media/active-directory-saas-fm-systems-tutorial/IC795908.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-fm-systems-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-fm-systems-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

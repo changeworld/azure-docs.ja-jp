@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/02/2015"
+   ms.date="01/15/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスの DATA 0 ネットワーク インターフェイスの設定の変更
@@ -35,7 +35,6 @@ DATA 0 ネットワーク設定を再構成するには、StorSimple デバイ�
 1. シリアル コンソール メニューで、オプション 1 を選択し、**フル アクセスでログイン**します。画面の指示に従って、**デバイス管理者のパスワード**を入力します。既定のパスワードは `Password1` です。
 
 2. コマンド プロンプトに、次のコマンドを入力します。
-
 
 	`Invoke-HcsSetupWizard`
 
@@ -70,6 +69,7 @@ DATA 0 ネットワーク インターフェイスを再構成するためのも
 ## 次のステップ
 
 - DATA 0 以外のネットワーク インターフェイスを構成するには、[Azure クラシック ポータルで [構成] ページ](storsimple-modify-device-config.md)を使用できます。 
+
 - ネットワーク インターフェイスを構成するときに問題が発生した場合は、[デプロイに関する問題のトラブルシューティング](storsimple-troubleshoot-deployment.md)のページを参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/08/2015" 
+	ms.date="01/16/2016" 
 	ms.author="nitinme"/>
 
 
 # HDInsight (Linux) の Spark クラスターで Livy を使用して Spark ジョブをリモートで送信する
 
-Azure HDInight の Apache Spark クラスターには、Livy が含まれています。これは、任意の場所から Spark クラスターにリモートでジョブを送信するための REST インターフェイスです。詳細なドキュメントについては、[Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server) に関するページを参照してください。
+Azure HDInsight の Apache Spark クラスターには、Livy が含まれています。これは、任意の場所から Spark クラスターにリモートでジョブを送信するための REST インターフェイスです。詳細なドキュメントについては、[Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server) に関するページを参照してください。
 
 Livy を使用すると、対話型の Spark シェルを実行したり、Spark で実行されるバッチ ジョブを送信したりすることができます。この記事では、Livy を使用してバッチ ジョブを送信する方法について説明します。以下の構文では、Curl を使用して、Livy エンドポイントへの REST 呼び出しを行います。
 
@@ -41,7 +41,7 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 
 * Jar ファイルがクラスター ストレージ (WASB) にある場合
 
-		curl -k --user "admin:mypassword1!" -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://mystorageaccount@mycontainer.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches"
+		curl -k --user "admin:mypassword1!" -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches"
 
 * 入力ファイル (この例では input.txt) の一部として、jar ファイル名とクラス名を渡す場合
 		
@@ -171,7 +171,7 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-* [HDInsight での Spark を使用した Web サイト ログ分析](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### アプリケーションの作成と実行
 
@@ -187,4 +187,4 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0121_2016-->

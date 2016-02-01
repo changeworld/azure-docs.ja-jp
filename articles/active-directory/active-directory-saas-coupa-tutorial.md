@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Coupa の統合 | Microsoft Azure" 
     description="Azure Active Directory で Coupa を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Coupa の統合
 
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Coupa でのシングル サインオンが有効なサブスクリプション
 
-このチュートリアルを完了すると、Coupa に割り当てた Azure AD ユーザーは、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Coupa に割り当てた Azure AD ユーザーは、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -70,7 +70,7 @@
 
 1.  Coupa 企業サイトに管理者としてサインオンします。
 
-2.  **[設定] > [セキュリティ コントロール]** に移動します。
+2.  **[Setup]、[Security Control]** の順に移動します。
 
     ![セキュリティ コントロール](./media/active-directory-saas-coupa-tutorial/IC791900.png "セキュリティ コントロール")
 
@@ -80,28 +80,28 @@
 
 4.  別のブラウザー ウィンドウで、Azure Active Directory ポータルにサインオンします。
 
-5.  **Coupa** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+5.  **Coupa** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-coupa-tutorial/IC791902.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-coupa-tutorial/IC791902.png "Configure Single Sign-On")
 
 6.  **[ユーザーの Coupa へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-coupa-tutorial/IC791903.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-coupa-tutorial/IC791903.png "Configure Single Sign-On")
 
 7.  **[アプリケーション URL の構成]** ページで、次の手順を実行します。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-coupa-tutorial/IC791904.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-coupa-tutorial/IC791904.png "Configure App URL")
 
-    1.  **[サインオン URL]** ボックスに、ユーザーが Coupa アプリケーションのサインオンに使用する URL (例: "*http://company.Coupa.com*”)") を入力します。
+    1.  **[サインオン URL]** ボックスに、ユーザーが Coupa アプリケーションへのサインオンに使用する URL (例: "*http://company.Coupa.com*”)") を入力します。
     2.  ダウンロードした Coupa メタデータ ファイルを開き、**AssertionConsumerService index/URL** をコピーします。
-    3.  **[Coupa 応答 URL]** ボックスに、**AssertionConsumerService index/URL** 値を貼り付けます。
+    3.  **[Coupa 応答 URL**] ボックスに、**AssertionConsumerService index/URL** 値を貼り付けます。
     4.  **[次へ]** をクリックします。
 
-8.  **[Coupa でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータ ファイルをダウンロードし、ファイルをコンピューターのローカルに保存します。
+8.  **[Coupa でのシングル サインオンの構成]** ページで、メタデータ ファイルをダウンロードするには、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターにローカルに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-coupa-tutorial/IC791905.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-coupa-tutorial/IC791905.png "Configure Single Sign-On")
 
-9.  Coupa 企業サイトで、**[設定] > [セキュリティ コントロール]** をクリックします。
+9.  Coupa 企業サイトで、**[設定]、[セキュリティ コントロール]** の順にクリックします。
 
     ![セキュリティ コントロール](./media/active-directory-saas-coupa-tutorial/IC791900.png "セキュリティ コントロール")
 
@@ -115,7 +115,7 @@
 
 11. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-coupa-tutorial/IC791907.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-coupa-tutorial/IC791907.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
 
 Azure AD ユーザーが Coupa にログインできるようにするには、そのユーザーを Coupa にプロビジョニングする必要があります。Coupa の場合、プロビジョニングは手動で行います。
@@ -126,7 +126,7 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
 
 2.  上部のメニューで、**[設定]**、**[ユーザー]** の順にクリックします。
 
-    ![ユーザー](./media/active-directory-saas-coupa-tutorial/IC791908.png "ユーザー")
+    ![Users](./media/active-directory-saas-coupa-tutorial/IC791908.png "Users")
 
 3.  **[作成]** をクリックします。
 
@@ -136,7 +136,7 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
 
     ![ユーザーの詳細](./media/active-directory-saas-coupa-tutorial/IC791910.png "ユーザーの詳細")
 
-    1.  対応するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの属性として、**ログイン**、**名**、**姓**、**シングル サインオン ID**、**電子メール**を入力します。
+    1.  関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの属性として、**ログイン**、**名**、**姓**、**シングル サインオン ID**、**電子メール**を入力します。
     2.  **[作成]** をクリックします。
 
     >[AZURE.NOTE]Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
@@ -155,10 +155,10 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
 
     ![ユーザーの割り当て](./media/active-directory-saas-coupa-tutorial/IC791911.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-coupa-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-coupa-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

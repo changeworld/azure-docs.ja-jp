@@ -17,7 +17,7 @@
 	ms.date="12/04/2015" 
 	ms.author="jeffstok"/>
 
-#ログイン資格情報の交換
+#Stream Analytics ジョブでの入力と出力のログイン資格情報の交換
 
 ##要約
 現在、Azure Stream Analytics では、ジョブの実行中に入力/出力の資格情報を置き換えることができません。
@@ -196,4 +196,4 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0121_2016-->

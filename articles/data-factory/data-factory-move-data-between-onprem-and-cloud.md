@@ -165,7 +165,7 @@ Data Management Gateway は、[Microsoft ダウンロード センター](https:
 	> 
 	> Chrome を使用する場合は、[Chrome Web ストア](https://chrome.google.com/webstore/)に移動し、ClickOnce キーワードで検索して、ClickOnce 拡張子のいずれかを選択してインストールします。
 	>  
-	> Firefox についても、同じ操作を実行する必要があります (アドインをインストール)。たとえば、[ここ](https://addons.mozilla.org/firefox/addon/fxclickonce/)からインストールできます。
+	> Firefox についても、同じ操作を実行する必要があります (アドインをインストール)。ツールバーの **[メニューを開く]** ボタン (右上隅にある **3 本の横線**) をクリックして、**[アドオン]** をクリックし、"ClickOnce" キーワードを使用して検索し、ClickOnce の拡張機能のいずれかを選択してインストールします。
 
 	![Gateway - [構成] ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
@@ -424,7 +424,7 @@ Data Management Gateway は、[Microsoft ダウンロード センター](https:
 	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
 	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink** を指定します。
-	- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
+- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
 
 	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
@@ -554,10 +554,10 @@ SQL Server リンク サービスを作成するには、Data Factory エディ�
 8.	**[資格情報の設定]** ダイアログ ボックスで、次の手順を実行します。
 
 	![[資格情報の設定] ダイアログ](./media/data-factory-move-data-between-onprem-and-cloud/setting-credentials-dialog.png) 
-	1.	Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。
-	2.	**[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。
-	3.	**[パスワード]** の設定に、ユーザーのパスワードを入力します。
-	4.	**[OK]** をクリックしてダイアログ ボックスを閉じます。 
+	1.Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。
+	2.**[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。
+	3.**[パスワード]** の設定に、ユーザーのパスワードを入力します。
+	4.**[OK]** をクリックしてダイアログ ボックスを閉じます。 
 4. **[OK]** をクリックして **[資格情報]** ブレードを閉じます。 
 5. **[新しいデータ ストア]** ブレードで、**[OK]** をクリックします。 	
 6. [リンクされたサービス] ブレードで **SqlServerLinkedService** のステータスが [オンライン] に設定されていることを確認します。
@@ -643,4 +643,4 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 5.	ゲートウェイは、同じ証明書で資格情報を復号化し、適切な認証の種類を使用してオンプレミスのデータ ストアに接続します。
 6.	ゲートウェイは、データ パイプラインでのコピー アクティビティの構成方法に応じて、オンプレミスのストアからクラウドのストレージに、またはクラウドのストレージからオンプレミスのデータ ストアに、データをコピーします。注: この手順では、ゲートウェイは、セキュリティで保護された (HTTPS) チャネルを使用して、クラウド ベースのストレージ サービス (例: Azure BLOB、Azure SQL など) と直接通信します。
 
-<!----HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

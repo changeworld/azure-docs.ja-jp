@@ -1,6 +1,6 @@
 <properties
    pageTitle="分散計算パターン | Microsoft Azure"
-   description="Service Fabric 高信頼アクターは並列非同期メッセージングに最適であり、分散状態の管理や並列計算が容易になります。"
+   description="Service Fabric Reliable Actors は並列非同期メッセージングに最適であり、分散状態の管理や並列計算が容易になります。"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -16,26 +16,26 @@
    ms.date="11/14/2015"
    ms.author="vturecek"/>
 
-# 高信頼アクターの設計パターン: 分散計算
-これは、Service Fabric 高信頼アクターで実際の顧客が驚くほど短時間で安易に金融計算を行う状況を監視する (つまり、リスク計算のためにモンテカルロ シミュレーションを行う) ためにも必要です。
+# Reliable Actors の設計パターン: 分散計算
+実際のユーザーが Azure Service Fabric Reliable Actors で会計計算を短時間で作成する場合に、監視処理の一部で、この計算を利用しています。これは、リスク計算向けのモンテカルロ シミュレーションでした。
 
-最初は、特にドメインの特定の知識のないユーザーには、Map/Reduce や MPI などのより一般的な手法と比べて、Azure Service Fabric のこの種のワークロード処理はわかりにくいかもしれません。
+ドメイン固有の情報がない場合、従来のアプローチ (MapReduce や Message Passing Interface など) ではなく Service Fabric でこのようなワークロードを処理する利点は、すぐにはわからない可能性があります。
 
-しかし、次の図に示すように、Azure Service Fabric は並列非同期メッセージングに最適であり、分散状態の管理や並列計算が簡単にできることがわかります。
+ただし次の図に示すように、Service Fabric は並列非同期メッセージングに最適であり、分散状態の管理や並列計算が簡単にできることがわかります。
 
-![][1]
+![Service Fabric の並列非同期メッセージング、分散状態、並列計算][1]
 
-次の例では、モンテカルロ シミュレーションを使用して、単に Pi を計算します。使用するアクターは以下のとおりです。
+次の例では、モンテカルロ シミュレーションを使用して、単に円周率を計算します。ここでは、次のアクターを採用します。
 
-* PoolTask アクターを使用して Pi を計算する必要があるプロセッサ。
+* プール済みタスク アクターを使用して円周率を計算する必要があるプロセッサ
 
-* モンテカルロ シミュレーションを行い、結果をアグリゲーターに送信する必要がある PoolTask。
+* モンテカルロ シミュレーションを行い、結果をアグリゲーターに送信する必要があるプール済みタスク。
 
 * 適切に結果を集計し、ファイナライザーに送信する必要があるアグリゲーター。
 
 * 最終結果を計算して、画面に表示する必要があるファイナライザー。
 
-## 分散計算のコード サンプル – モンテカルロ シミュレーション
+## 分散計算のコード サンプル -- モンテカルロ シミュレーション
 
 ```csharp
 public interface IProcessor : IActor
@@ -91,9 +91,11 @@ public class PooledTask : StatelessActor, IPooledTask
 }
 ```
 
-Azure Service Fabric での結果集計の一般的な方法は、タイマーを使用することです。ここでは、2 つの主な理由によりステートレス アクターを使用しています。1 つは、ランタイムが動的に必要なアグリゲーターの数を決定するため、必要に応じてスケールが示されるためです。もう 1 つは、これらのアクターが「ローカルで」(つまり、呼び出し元アクターの同じサイロで) インスタンス化され、ネットワーク ホップが減るためです。アグリゲーターとファイナライザーは次のようになります。
+Service Fabric での結果集計の一般的な方法は、タイマーを使用することです。ステートレス アクターを使用する 2 つの主な理由は、動的に必要なアグリゲーター数をランタイムで決定して必要に応じて拡大/縮小できるようにするためと、ステートレス アクターを "ローカル" でインスタンス化するためです。 つまり、呼び出し元アクターと同じサイロで発生するので、ネットワーク ホップ数を抑えられます。
 
-## 分散計算のコード サンプル – アグリゲーター
+アグリゲーターとファイナライザーは次のようになります。
+
+## 分散計算のコード サンプル -- アグリゲーター
 
 ```csharp
 public interface IAggregator : IActor
@@ -183,9 +185,9 @@ public class Finaliser : StatefulActor<FinalizerState>, IFinaliser
 }
 ```
 
-この時点で、スケールやパフォーマンスに応じて、アグリゲーターでランキング例がどのように拡張される可能性があるかがわかるはずです。
+この時点で、スケールやパフォーマンスに応じて、アグリゲーターでランキング例がどのように拡張できるかがわかるはずです。
 
-決して、Azure Service Fabric がビッグ データ フレームワークやハイ パフォーマンス コンピューティングの他の分散計算に一時的に代用されることを断言しているわけではありません。ただ処理において他のものより優れている点がいくつかあるというだけです。ただし、Azure Service Fabric ではワークフローと分散並列計算をモデル化できるため、やはり操作が簡単になるという利点があります。
+Azure Service Fabric がビッグ データ フレームワークやハイ パフォーマンス コンピューティングの他の分散計算に一時的に代用されることを断言しているわけではありませんが、Azure Service Fabric は他の方法よりも一部の処理に適切に対応できるように構築されています。ただし、Service Fabric ではワークフローと分散並列計算をモデル化できるため、やはり操作が簡単になるという利点があります。
 
 ## 次のステップ
 [パターン: スマート キャッシュ](service-fabric-reliable-actors-pattern-smart-cache.md)
@@ -198,12 +200,12 @@ public class Finaliser : StatefulActor<FinalizerState>, IFinaliser
 
 [パターン: モノのインターネット](service-fabric-reliable-actors-pattern-internet-of-things.md)
 
-[いくつかのアンチ パターン](service-fabric-reliable-actors-anti-patterns.md)
+[いくつかのアンチパターン](service-fabric-reliable-actors-anti-patterns.md)
 
-[Service Fabric アクターの概要](service-fabric-reliable-actors-introduction.md)
+[Service Fabric Reliable Actors の概要](service-fabric-reliable-actors-introduction.md)
 
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-pattern-distributed-computation/distributed-computation-1.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0121_2016-->

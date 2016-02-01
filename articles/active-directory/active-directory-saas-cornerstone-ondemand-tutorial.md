@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Cornerstone OnDemand の統合 | Microsoft Azure" 
     description="Azure Active Directory で Cornerstone OnDemand を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Cornerstone OnDemand の統合
 
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Cornerstone OnDemand テナント
 
-このチュートリアルを完了すると、Cornerstone OnDemand に割り当てた Azure AD ユーザーは、Cornerstone OnDemand 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Cornerstone OnDemand に割り当てた Azure AD ユーザーは、Cornerstone OnDemand 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -49,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -70,7 +70,7 @@
 
 1.  Azure AD ポータルの **Cornerstone OnDemand** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンを有効にする](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781596.png "シングル サインオンを有効にする")
+    ![Enable Single Sign-On](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781596.png "Enable Single Sign-On")
 
 2.  **[ユーザーの Cornerstone OnDemand へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
@@ -78,11 +78,11 @@
 
 3.  **[アプリケーション URL の構成]** ページの **[Cornerstone OnDemand サインイン URL]** ボックスに、"**http://company.csod.com*"" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781598.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781598.png "Configure App URL")
 
 4.  **[Cornerstone OnDemand でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをローカルでコンピューターに保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781599.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781599.png "Configure Single Sign-On")
 
 5.  次のアイテムを Cornerstone OnDemand サポート チームに送信します。
 
@@ -92,9 +92,9 @@
 
     >[AZURE.NOTE]シングル サインオンは、Cornerstone OnDemand サポート チームが構成する必要があります。構成が完了すると、サポート チームから通知が届きます。
 
-6.  シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  [シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781600.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781600.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
 
 Azure AD ユーザーが Cornerstone OnDemand にログインできるようにするには、そのユーザーを Cornerstone OnDemand にプロビジョニングする必要があります。Cornerstone OnDemand の場合、プロビジョニングは手動で行います。
@@ -117,10 +117,10 @@ Azure AD ユーザーが Cornerstone OnDemand にログインできるように�
 
     ![ユーザーの割り当て](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC775564.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![ユーザーの割り当て](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781601.png "ユーザーの割り当て")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

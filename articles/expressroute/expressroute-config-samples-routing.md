@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/07/2015"
+   ms.date="01/16/2016"
    ms.author="cherylmc"/>
 
 # ルーティングをセットアップして管理するためのルーター構成のサンプル
@@ -210,4 +210,4 @@
 
 詳細については、[ExpressRoute の FAQ](expressroute-faqs.md) を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0121_2016-->

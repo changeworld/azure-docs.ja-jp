@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="11/04/2015"
+    ms.date="01/13/2016"
     ms.author="elizapo" />
 
 
@@ -29,12 +29,7 @@
 ## イメージが無効です ##
 Azure がコレクションにプロビジョニングするのを待っているとき、「GoldImageInvalid」のようなメッセージが表示された場合、テンプレート イメージが[定義されているイメージ要件](remoteapp-imagereqs.md)に一致していません。その場合、[要件](remoteapp-imagereqs.md)を読み、イメージを修正し、コレクションをもう一度作成します。
 
-## VNET で強制トンネリングを使用していますか。 ##
-現在のところ、RemoteApp は強制トンネリングを有効にした VNET に対応していません。この機能を使用する必要がある場合は、[RemoteApp チーム](mailto:remoteappforum@microsoft.com)にサポートを要求してください。
 
-要求が承認されたら、Azure RemoteApp に選択したサブネットとサブネットの VM で次のポートが開いていることを確認します。サブネットの VM はネットワーク セキュリティ グループに関するセクションで説明した URL にもアクセスできなければなりません。
-
-送信: TCP: 443、TCP: 10101-10175
 
 ## VNET にはネットワーク セキュリティ グループが定義されていますか。 ##
 コレクションに使用しているサブネットでネットワーク セキュリティ グループを定義している場合、サブネット内から次の URL にアクセスできることを確認します。
@@ -84,4 +79,4 @@ Azure がコレクションにプロビジョニングするのを待ってい�
 
 作成または追加したドメイン名は (Azure AD ドメイン名ではなく) 内部ドメイン名であり、解決可能な DNS 形式 (contoso.local) になっている必要があります。たとえば、Active Directory 内部名 (contoso.local) と Active Directory UPN (contoso.com) が与えられている場合、コレクションの作成時にその内部名を使用する必要があります。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0121_2016-->

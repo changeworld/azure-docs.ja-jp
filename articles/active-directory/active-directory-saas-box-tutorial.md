@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Box の統合 | Microsoft Azure" 
     description="Azure Active Directory で Box を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 
 
@@ -26,7 +26,7 @@
 -   有効な Azure サブスクリプション
 -   Box のテスト テナント
   
-このチュートリアルを完了すると、Box に割り当てた Azure AD ユーザーは、Box 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Box に割り当てた Azure AD ユーザーは、Box 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -63,7 +63,7 @@
 
     ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-box-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  **検索ボックス**に、「**Box**」と入力します。
+6.  **検索**ボックスに、「**Box**」と入力します。
 
     ![アプリケーション ギャラリー](./media/active-directory-saas-box-tutorial/IC701023.png "アプリケーション ギャラリー")
 
@@ -81,25 +81,25 @@
 
 1.  Azure AD ポータルの **Box** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-box-tutorial/IC769538.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-box-tutorial/IC769538.png "Configure single sign-on")
 
-2.  **[ユーザーの Box へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  **[ユーザーの Box へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-box-tutorial/IC769539.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-box-tutorial/IC769539.png "Configure single sign-on")
 
 3.  **[アプリケーション URL の構成]** ページで、**[Box テナント URL]** ボックスに、Box テナント URL (例: https://<mydomainname>.box.com) を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-box-tutorial/IC669826.png "アプリケーション URL の構成")
+    ![Configure app URL](./media/active-directory-saas-box-tutorial/IC669826.png "Configure app URL")
 
-4.  **[Box でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、データ ファイルをコンピューターのローカルに保存します。
+4.  **[Box でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックし、データ ファイルをコンピューターのローカルに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-box-tutorial/IC669824.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-box-tutorial/IC669824.png "Configure single sign-on")
 
 5.  メタデータ ファイルを Box サポート チームに転送します。サポート チームは、シングル サインオンを構成する必要があります。
 
 6.  [シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-box-tutorial/IC769540.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-box-tutorial/IC769540.png "Configure single sign-on")
 ##ユーザー プロビジョニングの構成
   
 このセクションでは、Box への Active Directory ユーザー アカウントのプロビジョニングを有効にする方法を説明します。
@@ -113,7 +113,7 @@
 3. **[Box へのアクセスを許可するにはログインしてください]** ページで、必要な資格情報を入力し、**[認証する]** をクリックします。<br><br> ![自動ユーザー プロビジョニングの有効化](./media/active-directory-saas-box-tutorial/IC769546.png "自動ユーザー プロビジョニングの有効化")
 
 
-4. **[Box のアクセス許可]** をクリックしてこの操作を承認し、Microsoft Azure 管理ポータルに戻ります。<br><br> ![自動ユーザー プロビジョニングの有効化](./media/active-directory-saas-box-tutorial/IC769549.png "自動ユーザー プロビジョニングの有効化")
+4. **[Box のアクセス許可]** をクリックしてこの操作を承認し、Azure 管理ポータルに戻ります。<br><br> ![自動ユーザー プロビジョニングの有効化](./media/active-directory-saas-box-tutorial/IC769549.png "自動ユーザー プロビジョニングの有効化")
 
 5. 構成を終了するには、[完了] をクリックします。<br><br> ![自動ユーザー プロビジョニングの有効化](./media/active-directory-saas-box-tutorial/IC769551.png "自動ユーザー プロビジョニングの有効化")
 
@@ -129,7 +129,7 @@
 
 2. **Box** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。<br><br> ![ユーザーの割り当て](./media/active-directory-saas-box-tutorial/IC769552.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。<br><br>![あり](./media/active-directory-saas-box-tutorial/IC767830.png "あり")
+3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確認します。<br><br> ![Yes](./media/active-directory-saas-box-tutorial/IC767830.png "Yes")
   
 
 10 分間待機し、アカウントが Box に同期されたことを確認します。
@@ -153,4 +153,4 @@ Box テナントでは、同期済みのユーザーは、**[管理コンソー�
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

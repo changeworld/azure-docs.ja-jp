@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Stream Analytics にデータ入力を追加する方法 | Microsoft Azure " 
+	pageTitle="Stream Analytics へのデータ入力の追加 | Microsoft Azure " 
 	description="Stream Analytics ジョブへの入力の追加 | ラーニング パス セグメント。"
 	keywords="データ入力、ストリーミング データ"
 	documentationCenter=""
@@ -20,7 +20,7 @@
 />
 
 
-# Stream Analytics ジョブにストリーミング データ入力を追加する方法
+# Stream Analytics ジョブへのストリーミング データ入力の追加
 
 Azure Stream Analytics ジョブを 1 つ以上のデータ入力に接続できます。各データ入力では、既存のデータ ソースへの接続が定義されています。データがそのデータ ソースに送信されると、Stream Analytics ジョブによって使用され、リアルタイムでストリーミング データとして処理されます。Stream Analytics は、ジョブ サブスクリプションの内部および外部で [Azure Event Hubs](http://azure.microsoft.com/services/event-hubs/) および [Azure BLOB](./storage/storage-dotnet-how-to-use-blobs.md) ストレージとの最上位の統合が行われます。Stream Analytics には、データ ストリームと参照データという 2 種類の入力があります。
 
@@ -80,4 +80,4 @@ Stream Analytics ジョブに入力を追加するには:
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0121_2016-->

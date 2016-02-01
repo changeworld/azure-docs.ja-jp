@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/02/2015"
+   ms.date="01/15/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイス コントローラーを管理する
@@ -79,7 +79,7 @@ Azure クラシック ポータルからデバイス コントローラーを管
 		![StorSimple デバイス パッシブ コントローラーを再起動する](./media/storsimple-manage-device-controller/IC766020.png)
  
 
-	- チェック マーク アイコン ![Check Icon](./media/storsimple-manage-device-controller/IC740895.png) をクリックします。
+	- チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-device-controller/IC740895.png) をクリックします。
 
 これでコントローラーが再起動またはシャットダウンされます。以下の表は、**[コントローラー設定の変更]** ダイアログ ボックスで選択した操作の内容とその結果をまとめたものです。
 													
@@ -221,4 +221,4 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 - StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

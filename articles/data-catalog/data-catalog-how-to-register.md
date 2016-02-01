@@ -29,28 +29,7 @@
 データ ソースが登録されると、Catalog はその場所を追跡し、メタデータのインデックスを作成して、ユーザーがデータ ソースを検索、参照、検出し、その場所を使用して任意のアプリケーションまたはツールで接続できるようにします。
 
 ## サポートされているソース
-現在のプレビューでは、**Azure Data Catalog** は以下のデータ ソースとオブジェクトの種類の登録をサポートしています。
-
-* SQL Server Database Engine のテーブルとビュー
-* Oracle データベースのテーブルとビュー
-* SQL Server Analysis Services Multidimensional Dimension、Measure、KPI
-* SQL Server Analysis Services 表形式テーブル
-* SQL Server Reporting Services レポート
-* Azure Storage BLOB およびディレクトリ
-* Azure Data Lake Store
-* HDFS のファイルとディレクトリ
-* Apache Hive テーブル
-* Teradata テーブルと Teradata ビュー
-* Azure Data Lake Store のファイルとディレクトリ
-* MySQL テーブルと MySQL ビュー
-
-> [AZURE.NOTE]SQL Server のサポートには Microsoft Azure SQL Database と Microsoft Azure SQL Data Warehouse も含まれます
-
-<br/>
-
-> [AZURE.NOTE]SQL Server Reporting Services のサポートはネイティブ モードのサーバーのみであり、SharePoint モードはまだサポートされていません
-
-<br/>
+現在サポートされているデータ ソースの一覧については、「[データ カタログ DSR](data-catalog-dsr.md)」を参照してください。<br/>
 
 
 ## 構造メタデータ
@@ -97,4 +76,4 @@
 ## 概要
 **Azure Data Catalog** でデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされることによって、データ ソースの検出と理解が容易になります。登録されたデータ ソースは、**Azure Data Catalog** ポータルを使用して注釈付け、管理、および検出することができます。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0121_2016-->

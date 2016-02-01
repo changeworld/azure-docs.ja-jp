@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/11/2016" 
+	ms.date="01/21/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication の構成
@@ -151,7 +151,7 @@ Azure Multi-Factor Auth プロバイダーを介して MFA 管理ポータルに
 
 ## Azure Multi-Factor Authentication でのキャッシュ
 
-キャッシュは、以降の認証の試みが自動的に成功する特定の期間を設定できるようにします。これは主に、VPN などのオンプレミス システムによって複数の検証要求が送信され、最初の要求がまだ処理中である場合に使用されます。これで、処理中の検証にユーザーが成功した後で、後続の要求が自動的に処理されるようになります。キャッシュはサインインのために使用されるものではない点に注意してください。
+キャッシュは、以降の認証の試みが自動的に成功する特定の期間を設定できるようにします。これは主に、VPN などのオンプレミス システムによって複数の検証要求が送信され、最初の要求がまだ処理中である場合に使用されます。これで、処理中の検証にユーザーが成功した後で、後続の要求が自動的に処理されるようになります。キャッシュは Azure AD へのサインインに使用するためのものではない点に注意してください。
 
 
 ### Azure Multi-Factor Authentication でキャッシュを設定するには
@@ -351,4 +351,4 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 <li>[サービスの設定] ページで、[ユーザーのデバイス設定の管理] の下の [デバイスを記憶させることで多要素認証を一時停止することをユーザーに許可する] をオン/オフします。</li>
 ![デバイスの一時停止](./media/multi-factor-authentication-manage-users-and-devices/suspend.png) <li>一時停止を許可する日数を設定します。既定値は 14 日です。</li> <li>[保存] をクリックします。</li> 。<li>[閉じる] をクリックします。</li>
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/23/2015"
+   ms.date="01/20/2015"
    ms.author="oanapl"/>
 
 # システム正常性レポートを使用したトラブルシューティング
@@ -24,7 +24,7 @@ Azure Service Fabric コンポーネントは、追加の設定なしでクラ�
 
 システム正常性レポートは、クラスターとアプリケーションの動作状況を可視化し、正常性の問題を警告します。システム正常性レポートは、アプリケーションとサービスを対象に、エンティティが実装されて正しく動作していることを Service Fabric の観点から確認します。レポートは、サービスのビジネス ロジックの正常性モニタリングやハングしたプロセスの検出を提供するものではありません。ユーザー サービスでロジックに固有の情報を追加して正常性データを強化できます。
 
-> [AZURE.NOTE]ウォッチドッグ正常性レポートは、システム コンポーネントでエンティティが作成された*後*にのみ表示できます。エンティティが削除されると、正常性ストアは関連付けられているすべての正常性レポートを自動的に削除します。エンティティの新しいインスタンスが作成される (たとえば、新しいサービス レプリカのインスタンスが作成される) 場合も同じことが当てはまります。古いインスタンスに関連付けられているすべてのレポートが削除され、ストアからクリーンアップされます。
+> [AZURE.NOTE]ウォッチドッグ正常性レポートは、システム コンポーネントでエンティティが作成された後にのみ表示できます。エンティティが削除されると、正常性ストアは関連付けられているすべての正常性レポートを自動的に削除します。エンティティの新しいインスタンスが作成される (たとえば、新しいサービス レプリカのインスタンスが作成される) 場合も同じことが当てはまります。古いインスタンスに関連付けられているすべてのレポートが削除され、ストアからクリーンアップされます。
 
 システム コンポーネント レポートはソース別に識別され、"**System.**" プレフィックスで始まります。ウォッチドッグのソースに同じプレフィックスを使用することはできません (無効なパラメーターを持つレポートが拒否されるため)。いくつかのシステム レポートを確認し、何がレポートのトリガーになっているか、レポートに表示された問題を修正する方法を理解しましょう。
 
@@ -97,7 +97,7 @@ System.CM は、アプリケーションが作成または更新されたとき�
 
 - **SourceId**: System.CM
 - **プロパティ**: State
-- **次のステップ**: アプリケーションが作成されたら、Cluster Manager 正常性レポートを含める必要があります。作成されなかった場合は、クエリを発行してアプリケーションの状態を確認します (例: Powershell コマンドレット **Get-ServiceFabricApplication -ApplicationName *applicationName***)。
+- **次のステップ**: アプリケーションが作成されたら、Cluster Manager 正常性レポートを含める必要があります。作成されなかった場合は、クエリを発行してアプリケーションの状態を確認します (例: Powershell コマンドレット **Get-ServiceFabricApplication -ApplicationName applicationName**)。
 
 **fabric:/WordCount** アプリケーションの State イベントを次に示します。
 
@@ -443,7 +443,7 @@ HealthEvents                       :
 **System.Hosting** は、アプリケーション パッケージのダウンロードが失敗した場合、エラーを報告します。
 
 - **SourceId**: System.Hosting
-- **プロパティ**: **Download:*RolloutVersion***
+- **プロパティ**: **Download:RolloutVersion**
 - **次のステップ**: ノードでのダウンロードが失敗した原因を調査します。
 
 ## DeployedServicePackage システム正常性レポート
@@ -460,7 +460,7 @@ System.Hosting は、ノードでのサービス パッケージのアクティ�
 **System.Hosting** は、各コード パッケージのアクティブ化が成功すると、OK を報告します。アクティブ化に失敗した場合は、構成されているとおりに警告を報告します。**CodePackage** がアクティブ化に失敗したか、構成されている **CodePackageHealthErrorThreshold** より大きいエラーで終了した場合、Hosting はエラーを報告します。サービス パッケージに複数のコード パッケージが含まれている場合、コード パッケージごとにアクティブ化レポートが生成されます。
 
 - **SourceId**: System.Hosting
-- **プロパティ**: プレフィックス **CodePackageActivation** を使用し、**CodePackageActivation:*CodePackageName*:*SetupEntryPoint/EntryPoint*** として、コード パッケージの名前とエントリ ポイントを含みます (**CodePackageActivation:Code:SetupEntryPoint** など)
+- **プロパティ**: プレフィックス **CodePackageActivation** を使用し、**CodePackageActivation:CodePackageName:SetupEntryPoint/EntryPoint** として、コード パッケージの名前とエントリ ポイントを含みます (**CodePackageActivation:Code:SetupEntryPoint** など)
 
 ### サービスの種類の登録
 **System.Hosting** は、サービスの種類が正常に登録されていると、OK を報告します。(**ServiceTypeRegistrationTimeout** を使用して構成されている) 時間内に登録が行われなかった場合は、エラーを報告します。ランタイムが閉じられたために、サービスの種類がノードから登録解除された場合には、Hosting は警告を報告します。
@@ -520,7 +520,7 @@ HealthEvents          :
 **System.Hosting** は、サービス パッケージのダウンロードが失敗すると、エラーを報告します。
 
 - **SourceId**: System.Hosting
-- **プロパティ**: **Download:*RolloutVersion***
+- **プロパティ**: **Download:RolloutVersion**
 - **次のステップ**: ノードでのダウンロードが失敗した原因を調査します。
 
 ### アップグレードの検証
@@ -537,4 +537,4 @@ HealthEvents          :
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->

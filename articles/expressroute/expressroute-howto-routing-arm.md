@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/12/2015"
+   ms.date="01/16/2016"
    ms.author="cherylmc"/>
 
 # Azure リソース マネージャーと PowerShell を使用した ExpressRoute 回線のルーティングの作成および変更
@@ -44,7 +44,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 1. **ExpressRoute 用の PowerShell モジュールをインポートします。**
 	
- 	[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートしてから ExpressRoute コマンドレットの使用を開始する必要があります。管理者として PowerShell を実行する必要があります。
+ 	ExpressRoute コマンドレットを使用するには、[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートする必要があります。管理者として PowerShell を実行する必要があります。
 
 	    Install-Module AzureRM
 
@@ -164,7 +164,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 1. **ExpressRoute 用の PowerShell モジュールをインポートします。**
 	
- 	[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートしてから ExpressRoute コマンドレットの使用を開始する必要があります。管理者として PowerShell を実行する必要があります。
+ 	ExpressRoute コマンドレットを使用するには、[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートする必要があります。管理者として PowerShell を実行する必要があります。
 
 	    Install-Module AzureRM
 
@@ -281,7 +281,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 1. **ExpressRoute 用の PowerShell モジュールをインポートします。**
 	
- 	[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートしてから ExpressRoute コマンドレットの使用を開始する必要があります。管理者として PowerShell を実行する必要があります。
+ 	ExpressRoute コマンドレットを使用するには、[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートする必要があります。管理者として PowerShell を実行する必要があります。
 
 	    Install-Module AzureRM
 
@@ -395,4 +395,4 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 -  仮想ネットワークの詳細については、「[仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0121_2016-->

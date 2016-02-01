@@ -25,18 +25,18 @@ Runbook の入力パラメーターを利用すれば、開始時に Runbook に
 
 ## PowerShell と PowerShell Workflow の Runbook で入力パラメーターを構成する
 
-Azure Automation の PowerShell Runbook と [PowerShell ワークフロー Runbook](automation-first-runbook-textual.md) では、次の属性で定義されている入力パラメーターを利用できます。
+Azure Automation の PowerShell Runbook と [PowerShell Workflow Runbook](automation-first-runbook-textual.md) では、次の属性で定義されている入力パラメーターを利用できます。
 
 | **プロパティ** | **説明** |
 |:--- |:---|
-| 型 | 必須。パラメーター値に必要なデータ型。.Net 型はすべて有効です。 |
+| 型 | 必須。パラメーター値に必要なデータ型。.NET 型はすべて有効です。 |
 | 名前 | 必須。パラメーターの名前。これは Runbook 内で一意にする必要があります。文字、数字、アンダースコアのみで作成する必要があります。先頭は文字でなければなりません。 |
 | 必須 | 省略可能。パラメーターの値を指定する必要があるかどうかを示します。これを **$true** に設定した場合、Runbook の起動時に値を指定する必要があります。これを **$false** に設定した場合、値は任意になります。 |
 | 既定値 | 省略可能。Runbook の起動時に値が渡されない場合にパラメーターに使用する値を指定します。既定値はすべてのパラメーターに設定可能であり、必須設定に関係なく、自動的にパラメーターを任意にします。 |
 
  Windows PowerShell では、検証、エイリアス、パラメーター セットなど、ここに記載されているものより多くの入力パラメーター属性がサポートされています。しかし、Azure Automation では、現在のところ、上記の入力パラメーターだけがサポートされています。
 
-PowerShell ワークフロー Runbook のパラメーター定義には次の一般形式があります。複数のパラメーターはコンマで分けられます。
+PowerShell Workflow Runbook のパラメーター定義には次の一般形式があります。複数のパラメーターはコンマで分けられます。
 
 ```
      Param
@@ -51,7 +51,7 @@ PowerShell ワークフロー Runbook のパラメーター定義には次の一
 
 >[AZURE.NOTE] パラメーターを定義するとき、**Mandatory** 属性を指定しない場合、既定でパラメーターは任意と見なされます。また、PowerShell ワークフロー Runbook のパラメーターに既定値を設定した場合、**Mandatory** 属性値に関係なく、PowerShell は任意のパラメーターとして扱います。
 
-例として、PowerShell ワークフロー Runbook に仮想マシン (1 台の VM またはサービス内の全 VM) の詳細を出力する入力パラメーターを構成します。下のスクリーンショットでわかるように、この Runbook には 2 つのパラメーターがあります。仮想マシンの名前とサービスの名前です。
+例として、PowerShell Workflow Runbook に仮想マシン (1 台の VM またはサービス内の全 VM) の詳細を出力する入力パラメーターを構成します。下のスクリーンショットでわかるように、この Runbook には 2 つのパラメーターがあります。仮想マシンの名前とサービスの名前です。
 
 ![Automation PowerShell ワークフロー](media/automation-runbook-input-parameters/automation_01_PowerShellWorkflow.png)
 
@@ -81,7 +81,7 @@ Azure で認証する [**Add-AzureAccount**](https://msdn.microsoft.com/library/
 
 2. **[編集]** ブレードで **[入力と出力]** をクリックし、**[入力と出力]** ブレードを開きます。
 
-    ![Automation グラフィカル Runbook](media/automation-runbook-input-parameters/automation_02_GraphicalRunbook.png)
+    ![Automation graphical runbook](media/automation-runbook-input-parameters/automation_02_GraphicalRunbook.png)
 
 
 3. **[入力と出力]** ブレードには、Runbook に定義されている入力パラメーターの一覧が表示されます。このブレードで、新しい入力パラメーターを追加したり、既存の入力パラメーターの構成を編集したりすることができます。Runbook に新しいパラメーターを追加するには、**[入力の追加]** をクリックし、**[Runbook 入力パラメーター]** ブレードを開きます。このブレードで、次のパラメーターを構成できます。
@@ -94,7 +94,7 @@ Azure で認証する [**Add-AzureAccount**](https://msdn.microsoft.com/library/
     | 必須 | 省略可能。パラメーターの値を指定する必要があるかどうかを示します。**[はい]** を選択した場合、Runbook の起動時に値を指定する必要があります。**[いいえ]** を選択した場合、Runbook の起動時に値は必要ありません。既定値を設定できます。 |
     | 既定値 | 省略可能。Runbook の起動時に値が渡されない場合にパラメーターに使用する値を指定します。必須ではないパラメーターに既定値を設定できます。既定値を設定するには、**[カスタム]** を選択します。Runbook の起動時に別の値を指定しない限り、この値が使用されます。既定値を指定しない場合、**[なし]** を選択します。 |  
 
-    ![AddNewInput](media/automation-runbook-input-parameters/automation_03_AddNewInput.png)
+    ![Add new input](media/automation-runbook-input-parameters/automation_03_AddNewInput.png)
 
 4. **Get-AzureVM** アクティビティで使用される 2 つのパラメーターを次のプロパティで作成します。
 
@@ -102,7 +102,7 @@ Azure で認証する [**Add-AzureAccount**](https://msdn.microsoft.com/library/
     名前 – VMName、
     型 – String、
     必須 – いいえ
-	
+
     * **Parameter2:** 
     名前 – ServiceName、
     型 – String、
@@ -122,7 +122,7 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
 
 - **Azure ポータルを使用して公開済み Runbook を起動し、パラメーターを割り当てる**
 
-[Runbook を起動する](automation-starting-a-runbook#starting-a-runbook-with-the-azure-portal.md)と、**[Runbook の開始]** ブレードが開きます。ここで、作成したパラメーターの値を構成できます。
+[Runbook を起動する](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal)と、**[Runbook の開始]** ブレードが開きます。ここで、作成したパラメーターの値を構成できます。
 
 ![ポータルによる起動](media/automation-runbook-input-parameters/automation_04_StartRunbookUsingPortal.png)
 
@@ -269,7 +269,7 @@ Runbook の [Webhook](automation-webhooks.md) を作成し、Runbook 入力パ�
 
 Webhook を利用して Runbook を実行すると、定義した入力パラメーターと共に **[Webhookdata](automation-webhooks.md#details-of-a-webhook)** が送信されます。**WebhookData** パラメーターの詳細を展開するには、このパラメーターをクリックします。
 
-![WebhookData パラメーター](media/automation-runbook-input-parameters/automation_09_WebhookDataParameter.png)
+![WebhookData parameter](media/automation-runbook-input-parameters/automation_09_WebhookDataParameter.png)
 
 
 ## 次のステップ
@@ -279,4 +279,4 @@ Webhook を利用して Runbook を実行すると、定義した入力パラメ
 - テキスト Runbook を編集する方法については、[テキスト Runbook の編集](automation-edit-textual-runbook.md)に関するページを参照してください。
 - グラフィカル Runbook を編集する方法については、[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

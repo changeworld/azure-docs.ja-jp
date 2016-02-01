@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="12/14/2015"
+   ms.date="01/15/2016"
    ms.author="rick.byham@microsoft.com"/>
 
 # Azure SQL Database の Transact-SQL の相違点
@@ -58,7 +58,6 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 - データベース ダイアグラム
 - データベース メール
 - DATABASEPROPERTY (代わりに DATABASEPROPERTYEX を使用)
-- 分散トランザクション
 - EXECUTE AS ログイン
 - 暗号化: 拡張可能キー管理
 - イベント: イベント、イベント通知、クエリ通知
@@ -107,4 +106,4 @@ TRANSACT-SQL リファレンスには、SQL Server 2008 以降のバージョン
 
 場合によっては、トピックの一般的な項目を製品で使用できますが、製品の間には若干の違いがあります。相違点は、必要に応じてトピックの中で指示されます。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0121_2016-->

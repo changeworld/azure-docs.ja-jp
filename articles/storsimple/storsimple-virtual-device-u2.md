@@ -25,7 +25,6 @@
 ##概要
 StorSimple 仮想デバイスは、Microsoft Azure StorSimple ソリューションに付属する追加的な機能です。StorSimple 仮想デバイスは Microsoft Azure の仮想ネットワーク内の仮想マシン上で動作します。この仮想マシンを使用して、ホストからデータをバックアップしたり、複製したりできます。
 
- 
 
 #### 仮想デバイス モデルの比較
 
@@ -41,7 +40,7 @@ StorSimple 仮想デバイスは、2 つのモデルで利用可能です。1 �
 | **ストレージの種類** | Azure Standard Storage を使用する<br></br>[Standard Storage アカウントを作成する]()方法を確認してください | Azure Premium Storage を使用する<br></br>[Premium Storage アカウントを作成する](storage-premium-storage-preview-portal.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)方法を確認してください |
 | **ワークロードのガイダンス** | バックアップからファイルを項目レベルで取得 | クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード <br></br>障害復旧のためのセカンダリ デバイス |
  
-<sup>1</sup> *以前は 1100 と呼ばれていました*。
+<sup>1</sup> 以前は 1100 と呼ばれていました。
 
 
 この記事では、Azure で StorSimple 仮想デバイスをデプロイするための段階的なプロセスについて説明します。この記事を読むと、次のことができます。
@@ -80,7 +79,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 
 仮想デバイスをプロビジョニングする前に、Azure 環境で次の準備作業が必要となります。
 
-- 仮想デバイスに対し、[Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet.md)します。Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。現在 Premium Storage をサポートしているリージョンの詳細については、[こちら](https://azure.microsoft.com/regions/#services)をご覧ください。
+- 仮想デバイスに対し、[Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)します。Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。現在 Premium Storage をサポートしているリージョンの詳細については、[こちら](https://azure.microsoft.com/regions/#services)をご覧ください。
 - 独自の DNS サーバー名を指定する代わりに、Azure に用意されている既定の DNS サーバーを使用することをお勧めします。DNS サーバー名が有効でない場合または DNS サーバーが IP アドレスを正しく解決できない場合、仮想デバイスの作成は失敗します。
 - ポイント対サイトおよびサイト間を必要に応じて選ぶことができますが、必須ではありません。必要に応じてこれらのオプションを構成することで、より高度なシナリオを実現することができます。 
 - 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-about.md) (ホスト サーバー) を仮想ネットワークに作成できます。これらのサーバーは次の要件を満たしている必要があります。 							
@@ -104,7 +103,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 
 作業を開始する前に、次の情報を確認してください。
 
-- Azure ポータル アカウントとアクセス資格情報。
+- アクセス資格情報のある Azure クラシック ポータル アカウント。
 
 - 物理デバイスから取得したサービス データ暗号化キーのコピー。
 
@@ -145,7 +144,7 @@ StorSimple 仮想デバイスを構成して登録するには、次の手順を
 
 StorSimple Snapshot Manager ソフトウェアは Windows ホスト上に常駐し、管理者が、ローカル スナップショットとクラウド スナップショットの形式で StorSimple デバイスのバックアップを管理することを可能にします。
 
->[AZURE.NOTE] 仮想デバイスの場合、Windows ホストは Azure 仮想マシンです。
+>[AZURE.NOTE]仮想デバイスの場合、Windows ホストは Azure 仮想マシンです。
 
 StorSimple Snapshot Manager でデバイスを構成するとき、ストレージ デバイスを認証するためのパスワードと StorSimple デバイスの IP アドレスを入力するように求められます。詳細な手順については、[StorSimple Snapshot Manager のパスワードの構成](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password)に関するページを参照してください。
 
@@ -168,7 +167,7 @@ StorSimple 仮想デバイスのリモート管理を構成するには、次の
 
 StorSimple デバイスの構成ページでリモート管理を有効にしたら、Windows PowerShell リモート処理を使って、同じ仮想ネットワーク内の別の仮想マシンから仮想デバイスに接続することができます。たとえば、iSCSI に接続するために構成して使用しているホスト VM から接続することができます。ほとんどのデプロイでは、仮想デバイスへのアクセスに使用できるホスト VM にアクセスするパブリック エンドポイントは既に開かれています。
 
->[AZURE.WARNING] **セキュリティ強化のため、エンドポイントに接続する場合は HTTPS を使用して、PowerShell リモート セッション完了後にエンドポイントを削除することを強くお勧めします。**
+>[AZURE.WARNING]**セキュリティ強化のため、エンドポイントに接続する場合は HTTPS を使用して、PowerShell リモート セッション完了後にエンドポイントを削除することを強くお勧めします。**
 
 「[StorSimple デバイスにリモート接続する](storsimple-remote-connect.md)」の手順に従って、仮想デバイスのリモート処理をセットアップしてください。
 
@@ -192,7 +191,7 @@ StorSimple 仮想デバイスの作成と構成が終了したので、操作を
 
 仮想デバイスはソフトウェア専用デバイスであるため、物理的なデバイスと比べて、メンテナンスは最小限で済みます。次のオプションがあります。
 
-- **[ソフトウェアの更新]** – ソフトウェアが最後に更新された日時と更新状態メッセージが表示されます。新しい更新プログラムがないかどうかを確認する場合は、ページの下部にある **[更新プログラムのスキャン]** ボタンを使って、手動スキャンを実行できます。更新プログラムが利用できる場合は、**[更新プログラムのインストール]** をクリックしてインストールします。仮想デバイスには単一のインターフェイスしかないため、更新プログラムの適用時、サービスの中断はわずかで済みます。仮想デバイスがシャットダウンして (必要に応じて) 再起動し、リリースされた更新プログラムが適用されます。詳細な手順については、[デバイスの更新](storsimple-update-device.md#install-regular-updates-via-the-management-portal)に関するページを参照してください。
+- **[ソフトウェアの更新]** – ソフトウェアが最後に更新された日時と更新状態メッセージが表示されます。新しい更新プログラムがないかどうかを確認する場合は、ページの下部にある **[更新プログラムのスキャン]** ボタンを使って、手動スキャンを実行できます。更新プログラムが利用できる場合は、**[更新プログラムのインストール]** をクリックしてインストールします。仮想デバイスには単一のインターフェイスしかないため、更新プログラムの適用時、サービスの中断はわずかで済みます。仮想デバイスがシャットダウンして (必要に応じて) 再起動し、リリースされた更新プログラムが適用されます。詳細な手順については、[デバイスの更新](storsimple-update-device.md#install-regular-updates-via-the-azure-classic-portal)に関するページを参照してください。
 - **[サポート パッケージ]** – ご利用の仮想デバイスに関する問題を Microsoft サポートがトラブルシューティングできるようにするため、サポート パッケージを作成してアップロードできます。詳細な手順については、[サポート パッケージの作成および管理](storsimple-create-manage-support-package.md)に関するページを参照してください。
 
 ### 仮想デバイスのストレージ アカウント
@@ -215,7 +214,7 @@ StorSimple 仮想デバイスの作成と構成が終了したので、操作を
 
 - 仮想デバイス用に作成されたクラウド スナップショットは保持されます。
 
-詳細な手順については、[デバイスの非アクティブ化](storsimple-deactivate-and-delete-device.md#deactivate-a-device)に関するページを参照してください。
+詳しい手順については、「[StorSimple デバイスの非アクティブ化と削除](storsimple-deactivate-and-delete-device.md)」をご覧ください。
 
 仮想デバイスは、StorSimple Manager サービス ページで非アクティブとして表示されたらすぐに、**[デバイス]** ページのデバイス一覧から削除できます。
 
@@ -248,7 +247,7 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
 
 以前構成して使っていた StorSimple 仮想デバイスのコンピューティング料金の発生を止めるには、仮想デバイスをシャットダウンします。仮想デバイスをシャットダウンしても、ストレージ内のオペレーティング システムやデータ ディスクは削除されません。この操作によって、サブスクリプションの料金は発生しなくなりますが、OS とデータ ディスクのストレージの料金は継続して発生します。
 
-仮想デバイスを削除またはシャットダウンすると、StorSimple Manager サービスの [デバイス] ページには **[オフライン]** として表示されます。仮想デバイスによって作成されたバックアップも一緒に削除する場合は、デバイスを非アクティブにするか、削除するかを選択できます。詳細については、[デバイスの非アクティブ化](storsimple-deactivate-and-delete-device.md#deactivate-a-device)に関するページを参照してください。
+仮想デバイスを削除またはシャットダウンすると、StorSimple Manager サービスの [デバイス] ページには **[オフライン]** として表示されます。仮想デバイスによって作成されたバックアップも一緒に削除する場合は、デバイスを非アクティブにするか、削除するかを選択できます。詳細については、「[StorSimple デバイスの非アクティブ化と削除](storsimple-deactivate-and-delete-device.md)」をご覧ください。
 
 [AZURE.INCLUDE [仮想デバイスのシャットダウン](../../includes/storsimple-shutdown-virtual-device.md)]
 
@@ -260,4 +259,4 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
  
 - [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法について理解します。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->

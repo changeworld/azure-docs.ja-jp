@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/27/2015"
+	ms.date="01/19/2016"
 	ms.author="jhubbard"/>
 
 
@@ -22,7 +22,7 @@
 
 このチュートリアルは、SQL Server および Azure SQL Database を使用した経験がほとんどない読者を対象に作成されています。このチュートリアルでは、ハイブリッド (SQL Server および SQL Database インスタンス) 同期グループを作成し、全面的に構成して、設定したスケジュールに従って同期します。
 
-> [AZURE.NOTE]これまで MSDN に置かれていた Azure SQL データ同期の完全な技術ドキュメント セットは、現在は 1 つの .pdf になり、[こちら](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)でダウンロードできます。
+> [AZURE.NOTE]これまで MSDN に置かれていた Azure SQL データ同期の完全な技術ドキュメント セットは、現在は PDF として[こちら](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)でダウンロードできます。
 
 ## 手順 1: Azure SQL Database への接続
 
@@ -91,7 +91,7 @@
 ### ステップ 4a. 新しい同期グループ ウィザードの開始
 
 1.	[クラシック ポータル](http://manage.windowsazure.com)に戻ります。
-2.	**[SQL DATABASE]** をクリックします。
+2.	**[SQL データベース]** をクリックします。
 3.	ページの下部にある **[同期の追加]** をクリックして、ドロワから [新しい同期グループ] を選択します。
 
 	![Image2](./media/sql-database-get-started-sql-data-sync/NewSyncGroup-Figure2.png)
@@ -202,4 +202,4 @@ SQL Database と SQL データ同期の詳細については、以下を参照�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/11/2016"
+    ms.date="01/19/2016"
     ms.author="elizapo" />
 
 
@@ -43,7 +43,7 @@
 -  https://www.remoteapp.windowsazure.com 
 -  https://**.remoteapp.windowsazure.com  
 -  https://*.core.windows.net  
--  送信: TCP: 443、TCP: 10101-10175 
+-  送信: TCP: 443  
 -  オプション - UDP: 10201-10275
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

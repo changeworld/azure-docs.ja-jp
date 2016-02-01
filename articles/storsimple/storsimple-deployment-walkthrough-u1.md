@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/05/2016"
+   ms.date="01/14/2016"
    ms.author="alkohli" />
 
 # オンプレミスの StorSimple デバイス (Update 1) のデプロイ
@@ -285,9 +285,9 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 
 ## 次のステップ
 
-[仮想デバイス](storsimple-virtual-device.md)を構成します。
+- [仮想デバイス](storsimple-virtual-device.md)を構成します。
 
-[StorSimple Manager サービス](storsimple-manager-service-administration.md)を使用して StorSimple デバイスを管理します。
+- [StorSimple Manager サービス](storsimple-manager-service-administration.md)を使用して StorSimple デバイスを管理します。
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->

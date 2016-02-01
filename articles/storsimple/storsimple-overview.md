@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="12/14/2015"
+   ms.date="01/15/2016"
    ms.author="v-sharos@microsoft.com"/>
 
 # StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
@@ -24,9 +24,9 @@ Microsoft Azure StorSimple へようこそ。StorSimple は、オンプレミス
 
 StorSimple では、[ストレージ階層化](#automatic-storage-tiering)を使用し、さまざまなストレージ メディアに格納されているデータを管理します。現在作業中のセットはオンプレミスのソリッド ステート ドライブ (SSD) へ、あまり頻繁に使用しないデータはハード ディスク ドライブ (HDD) へ格納され、アーカイブ化したデータはクラウドへプッシュされます。また、StorSimple 圧縮を使用して、データが消費するストレージの量を削減します。詳細については、「[重複除去と圧縮](#deduplication-and-compression)」を参照してください。StorSimple 8000 シリーズの文書で使用されている他の用語と概念の定義については、本記事の終わりに収録されている「[StorSimple 用語集](#storsimple-terminology)」を参照してください。
 
-StorSimple Update 2 では、適切なボリュームを*ローカル固定*として識別し、プライマリ データをデバイスのローカルに保持されたままにして、クラウドに階層化しないようにすることができます。これにより、ローカル固定ボリューム上で、SQL および仮想マシンのワークロードなど、クラウドの待機時間に影響を受けやすいワークロードを実行しながら、引き続きクラウドをバックアップに使用できます。ローカル固定ボリュームの詳細については、「[StorSimple Manager サービスを使用してボリュームを管理する](storsimple-manage-volumes-u2.md)」を参照してください。
+StorSimple Update 2 では、適切なボリュームをローカル固定として識別し、プライマリ データをデバイスのローカルに保持されたままにして、クラウドに階層化しないようにすることができます。これにより、ローカル固定ボリューム上で、SQL および仮想マシンのワークロードなど、クラウドの待機時間に影響を受けやすいワークロードを実行しながら、引き続きクラウドをバックアップに使用できます。ローカル固定ボリュームの詳細については、「[StorSimple Manager サービスを使用してボリュームを管理する](storsimple-manage-volumes-u2.md)」を参照してください。
 
-また、Update 2 では、Azure Premium Storage で提供される短い待機時間と高いパフォーマンスを活用した StorSimple 仮想デバイスを作成することもできます。StorSimple Premium 仮想デバイスの詳細については、「[Azure での StorSimple 仮想デバイスのデプロイと管理](storsimple-virtual-device-u1.md)」を参照してください。Azure Premium Storage の詳細については、「[Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)」を参照してください。
+また、Update 2 では、Azure Premium Storage で提供される短い待機時間と高いパフォーマンスを活用した StorSimple 仮想デバイスを作成することもできます。StorSimple Premium 仮想デバイスの詳細については、「[Azure での StorSimple 仮想デバイスのデプロイと管理](storsimple-virtual-device-u1.md)」を参照してください。Azure Premium Storage の詳細については、「[Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage-preview-portal.md)」を参照してください。
 
 ストレージ管理に加えて、StorSimple データ保護機能を使用すると、オンデマンド バックアップやスケジュールされたバックアップを作成して、ローカルやクラウドに格納できるようになります。バックアップは増分スナップショットの形式で実行されます。これは短時間で作成し、復元できることを意味しています。クラウド スナップショットはセカンダリ ストレージ システム (テープ バックアップなど) を置き換え、データセンターにデータを復元したり、必要に応じてサイトを交代できるため、非常に重要になります。
 
@@ -64,7 +64,7 @@ Microsoft Azure StorSimple ソリューションには、次のコンポーネ�
 - **StorSimple 用 Windows PowerShell** - StorSimple デバイスの管理に使用するコマンドライン インターフェイスです。StorSimple 用 Windows PowerShell の機能を使って、StorSimple デバイスの登録、デバイスのネットワーク インターフェイスの構成、特定の種類の更新プログラムのインストール、サポート セッションへのアクセスによるデバイスのトラブルシューティング、デバイスの状態の変更などを行うことができます。StorSimple 用 Windows PowerShell には、シリアル コンソールに接続するか、Windows PowerShell リモート処理を使用してアクセスできます。
 - **StorSimple 用 Azure PowerShell コマンドレット** – コマンドラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。StorSimple 用の Azure PowerShell コマンドレットの詳細については、「[コマンドレット リファレンス](https://msdn.microsoft.com/library/dn920427.aspx)」を参照してください。
 - **StorSimple Snapshot Manager** - ボリューム グループと Windows ボリューム シャドウ コピー サービスを使用してアプリケーション整合性のあるバックアップを生成する MMC スナップインです。また、StorSimple Snapshot Manager を使用して、バックアップ スケジュールを作成したり、ボリュームを複製または復元したりすることもできます。 
-- **SharePoint 用 StorSimple アダプター** - Microsoft Azure StorSimple のストレージとデータ保護を SharePoint サーバー ファームにまで透過的に拡張すると共に、SharePoint 管理ポータルで Azure StorSimple ストレージを表示して管理できるようにするツールです。
+- **SharePoint 用 StorSimple アダプター** - Microsoft Azure StorSimple のストレージとデータ保護を SharePoint サーバー ファームにまで透過的に拡張すると共に、SharePoint サーバーの全体管理ポータルで Azure StorSimple ストレージを表示して管理できるようにするツールです。
 
 次の図は、Microsoft Azure StorSimple のアーキテクチャとコンポーネントの全体像を示したものです。
 
@@ -99,7 +99,7 @@ StorSimple を使用すると、物理ハイブリッド ストレージ デバ�
 - クラウドに仮想デバイスを無限に作成し、必要に応じてオン/オフを切り替えることができます。 
 - 障害復旧、開発、テストなどのシナリオでオンプレミスの環境をシミュレーションし、アイテムレベルでバックアップから復旧できます。 
 
-Update 2 以降では、StorSimple 仮想デバイスは 8010 デバイス (旧称: 1100 モデル) と 8020 デバイスの 2 つのモデルで利用できます。8010 デバイスの最大容量は 30 TB です。Azure Premium Storage を利用する 8020 デバイスの最大容量は 64 TB です。(Azure Premium Storage はデータを SSD に格納するのに対し、Standard Storage はデータを HDD に格納します。) Premium Storage を使用するには、Azure Premium Storage アカウントが必要であることに注意してください。Premium Storage の詳細については、「[Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)」を参照してください。
+Update 2 以降では、StorSimple 仮想デバイスは 8010 デバイス (旧称: 1100 モデル) と 8020 デバイスの 2 つのモデルで利用できます。8010 デバイスの最大容量は 30 TB です。Azure Premium Storage を利用する 8020 デバイスの最大容量は 64 TB です。(Azure Premium Storage はデータを SSD に格納するのに対し、Standard Storage はデータを HDD に格納します。) Premium Storage を使用するには、Azure Premium Storage アカウントが必要であることに注意してください。Premium Storage の詳細については、「[Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage-preview-portal.md)」を参照してください。
 
 StorSimple 仮想デバイスの詳細については、「[Azure での StorSimple 仮想デバイスのデプロイと管理](storsimple-virtual-device-u1.md)」を参照してください。
 
@@ -234,7 +234,7 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 | ダイナミック ディスク ミラーリング | ダイナミック ディスクへの論理ディスク ボリュームのレプリケーション。|
 | ダイナミック ディスク | 論理ディスク マネージャー (LDM) を使用して複数の物理ディスクにデータを格納して管理するディスク ボリューム形式。より多くの空き領域を提供するようにダイナミック ディスクを拡張できます。|
 | Extended Bunch of Disks (EBOD) エンクロージャ | 追加ストレージのための予備ハード ドライブ ディスクを格納する Microsoft Azure StorSimple デバイスのセカンダリ エンクロージャ。|
-| ファット プロビジョニング | 予想されるニーズ (通常は現在のニーズより多い) に基づいてストレージ容量が割り当てられる従来型のストレージ プロビジョニング。「*シン プロビジョニング*」もご覧ください。|
+| ファット プロビジョニング | 予想されるニーズ (通常は現在のニーズより多い) に基づいてストレージ容量が割り当てられる従来型のストレージ プロビジョニング。「シン プロビジョニング」もご覧ください。|
 | ハード ディスク ドライブ (HDD) | 回転するプラッターを使用してデータを格納するドライブ。|
 | ハイブリッド クラウド ストレージ | ローカル リソースとクラウド ストレージを含むオフサイト リソースの両方を使用するストレージ アーキテクチャ。|
 | Internet Small Computer System Interface (iSCSI) | データ ストレージ装置や設備をリンクするためのインターネット プロトコル (IP) ベースのストレージ ネットワーク標準。|
@@ -258,7 +258,7 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 | StorSimple Manager サービス | Azure StorSimple のオンプレミスのデバイスおよび仮想デバイスを管理できるようにする Azure クラシック ポータルの拡張機能。|
 | StorSimple Snapshot Manager | Microsoft Azure StorSimple でのバックアップおよび復元操作を管理するための Microsoft 管理コンソール (MMC) スナップイン。|
 | バックアップの作成 | ユーザーがボリュームの対話型バックアップを作成できるようにする機能。定義済みポリシーによる自動バックアップ作成に対して、手動でボリュームのバックアップを作成する代替手段です。|
-| 仮想プロビジョニング | 使用可能なストレージ スペースをストレージ システムで使用する効率を最適化する方法。仮想プロビジョニングでは、ストレージは任意の時点で各ユーザーが必要な最小容量に基づいて複数のユーザーに割り当てられます。「*ファット プロビジョニング*」もご覧ください。|
+| 仮想プロビジョニング | 使用可能なストレージ スペースをストレージ システムで使用する効率を最適化する方法。仮想プロビジョニングでは、ストレージは任意の時点で各ユーザーが必要な最小容量に基づいて複数のユーザーに割り当てられます。「ファット プロビジョニング」もご覧ください。|
 | 階層化 | 現在の使用率、経過時間、他のデータとの関係に基づき、論理グループにデータを分けます。StorSimple により、階層内のデータが自動的に配列されます。 |
 | ボリューム | ドライブの形式で提供される論理ストレージ領域。StorSimple ボリュームは、iSCSI と StorSimple デバイスを使用して検出されるものなど、ホストによってマウントされるボリュームに対応します。|
  | ボリューム コンテナー | ボリュームのグループ化とそれらに適用される設定。StorSimple デバイスのすべてのボリュームは、ボリューム コンテナーにグループ化されます。ボリューム コンテナーの設定には、ストレージ アカウント、関連付けられている暗号化キーでクラウドに送信されるデータの暗号化設定、クラウド関連操作で消費される帯域幅が含まれます。|
@@ -278,4 +278,4 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

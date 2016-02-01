@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="チュートリアル: Azure Stream Analytics と Azure Machine Learning の統合 | Microsoft Azure" 
+	pageTitle="チュートリアル: Azure Stream Analytics と Azure Machine Learning を使用したセンチメント分析 | Microsoft Azure" 
 	description="Stream Analytics ジョブで UDF と Machine Learning を利用する方法"
 	keywords=""
 	documentationCenter=""
@@ -19,7 +19,7 @@
 	ms.author="jeffstok"
 />
 
-# チュートリアル: Stream Analytics と Machine Learning の統合の概要 #
+# チュートリアル: Stream Analytics と Machine Learning を使用したセンチメント分析の実行 #
 
 このチュートリアルは、単純な Stream Analytics ジョブを Machine Learning とすばやく統合できるように設計されています。ここでは、Cortana Analytics ギャラリーのセンチメント分析 Machine Learning モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。ストリーミング Twitter データに関するリアルタイムのセンチメント分析、サポート スタッフによるユーザー チャット レコード分析、フォーラム/ブログ/ビデオに対するコメントなどのリアルタイムの予測スコアリング シナリオを理解するには、このチュートリアルがお勧めです。
   
@@ -150,4 +150,4 @@ Azure Machine Learning 関数に関連するメトリックも確認できます
 
     ![Stream Analytics Machine Learning チュートリアル: ML 監視ビュー](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-ml-monitor-view.png)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->

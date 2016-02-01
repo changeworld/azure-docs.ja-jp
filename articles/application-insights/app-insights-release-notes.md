@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/23/2015" 
+	ms.date="01/19/2016" 
 	ms.author="awills"/>
  
 # SDK リリース ノート - Application Insights
@@ -29,8 +29,9 @@
 * [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/commits/master)
 * [Windows Phone とストア C# | VB](app-insights-release-notes-windows.md)
 * [Windows Phone とストア C++](https://github.com/Microsoft/ApplicationInsights-CPP/releases)
+* [Visual Studio ツール](app-insights-release-notes-vsix.md)
 * [その他のプラットフォーム](https://github.com/Microsoft/ApplicationInsights-Home)
 
 Application Insights サービス全体の主要な機能強化をまとめた「[サービスの更新情報](http://azure.microsoft.com/updates/?service=application-insights)」ページもご覧ください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->

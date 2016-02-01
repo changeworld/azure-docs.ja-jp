@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/03/2015" 
+	ms.date="01/20/2016" 
 	ms.author="casoper"/>
 	
 # Azure CDN エンドポイントの消去
@@ -44,7 +44,7 @@ Azure CDN エッジ ノードは、アセットの Time-to-Live (TTL) が期限�
 	
 	> [AZURE.NOTE] [消去] ブレードを開くには、CDN エンドポイント ブレードの **[消去]** ボタンをクリックします。この例では、そのエンドポイントのサービス アドレスが既定値として **[URL]** フィールドに表示されるようになります。
 	
-4. エッジ ノードから消去する資産を選択します。すべての資産を消去する場合は、**[すべて消去]** チェックボックスをクリックします。それ以外の場合は、消去する各資産の完全パスを **[パス]** テキストボックスに入力します (*/pictures/kitten.png* など)。
+4. エッジ ノードから消去する資産を選択します。すべての資産を消去する場合は、**[すべて消去]** チェックボックスをクリックします。それ以外の場合は、消去する各資産の完全パスを **[パス]** テキストボックスに入力します (/pictures/kitten.png など)。
 
 	> [AZURE.TIP]テキストを入力すると、**[パス]** テキストボックスが追加され、複数の資産の一覧を作成できます。一覧から資産を削除するには、省略記号 (...) ボタンをクリックします。
 	>
@@ -56,6 +56,7 @@ Azure CDN エッジ ノードは、アセットの Time-to-Live (TTL) が期限�
 	
 
 ## 関連項目
-[Azure CDN REST API リファレンス - エンドポイントの消去または事前読み込み](https://msdn.microsoft.com/library/mt634451.aspx)
+- [Azure CDN エンドポイント上のアセットを事前に読み込む](cdn-preload-endpoint.md)
+- [Azure CDN REST API リファレンス - エンドポイントの消去または事前読み込み](https://msdn.microsoft.com/library/mt634451.aspx)
 
-<!---HONumber=AcomDC_0107_2016--->
+<!---HONumber=AcomDC_0121_2016--->

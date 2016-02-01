@@ -1,39 +1,33 @@
-<properties 
-    pageTitle="Azure Data Factory と Azure Batch を使用した大規模なデータ処理" 
-    description="Azure Batch の並列処理機能を使用して、Azure Data Factory パイプラインで膨大な量のデータを処理する方法について説明します。" 
-    services="data-factory" 
-    documentationCenter="" 
-    authors="spelluru" 
-    manager="jhubbard" 
+<properties
+    pageTitle="Azure Batch と Data Factory を使用した HPC とデータのオーケストレーション"
+    description="Azure Batch の並列処理機能を使用して、Azure Data Factory パイプラインで膨大な量のデータを処理する方法について説明します。"
+    services="data-factory"
+    documentationCenter=""
+    authors="spelluru"
+    manager="jhubbard"
     editor="monicar"/>
 
-<tags 
-    ms.service="data-factory" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="12/16/2015" 
+<tags
+    ms.service="data-factory"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="01/20/2016"
     ms.author="spelluru"/>
-# Azure Data Factory と Azure Batch を使用した大規模なデータ処理
+# Azure Batch と Data Factory を使用した HPC とデータのオーケストレーション
 
-この単純なアーキテクチャ ソリューションでは、**Microsoft** **Azure Data Factory** と **Azure** **Batch** を使用して、クラウド内で効率的に大規模なデータセットを移動および処理する方法を示しています。このアーキテクチャは、大規模なデータ処理を必要とする多くのシナリオに関連します。これには、金融サービス組織によるレポートとリスクのモデリング、画像処理とレンダリング、およびゲノム分析が含まれます。
+ハイ パフォーマンス コンピューティング (HPC) はこれまでオンプレミスのデータ センターのドメイン (データを処理するスーパー コンピューター) でしたが、使用可能な物理マシンの数によって制限されます。Azure Batch サービスは、HPC をサービスとして提供することでこれを変革します。マシンを必要な数だけ構成することができます。また Batch は、作業のスケジューリングと調整を処理して、実行するアルゴリズムに集中できるようにします。Azure Data Factory は Batch を完全に補完するもので、データ移動のオーケストレーションを簡素化します。Data Factory を使用すると、ETL のデータの定期的な移動を指定し、データを処理した後、結果を永続記憶域に移動することができます。たとえば、センサーから収集されたデータは、(Data Factory によって) 一時的な場所に移動されます。ここで Batch が (Data Factory の制御下で) データを処理して新しい結果セットを生成します。その後、Data Factory によって結果が最終的なリポジトリに移動されます。これら 2 つのサービスを連動させることで、HPC を効率的に使用して定期的なスケジュールで大量のデータを処理することができます。
 
-設計者および IT 意思決定者は、ダイアグラムと基本的な手順から概要を取得します。開発者は、独自の実装の出発点として、コードを使用できます。この記事には、ソリューション全体が含まれています。
+ここでは、大規模なデータセットを自動的に移動して処理するエンド ツー エンドのソリューション例を提供します。このアーキテクチャは、金融サービスによるリスク モデリング、画像処理とレンダリング、およびゲノムの分析などの多くのシナリオに関係します。設計者および IT 意思決定者は、ダイアグラムと基本的な手順から概要を取得します。開発者は、独自の実装の出発点として、コードを使用できます。この記事には、ソリューション全体が含まれています。
 
-## Data Factory と Batch
-
-**Azure Data Factory** は、クラウド ベースのデータ統合サービスです。これは生データの移動を調整および自動化し、生データをすぐに使用できる情報に変換します。このサービスを導入するには、「[Azure Data Factory の概要](data-factory-introduction.md)」と「[最初のパイプラインの作成](data-factory-build-your-first-pipeline.md)」を参照してください。
-
-アクティビティの論理的なグループであるパイプラインは、データを移動および処理します。Data Factory は、**コピー アクティビティ**と **HDInsight Hive アクティビティ**などの組み込みアクティビティをサポートします。完全な一覧については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」と「[データ変換アクティビティ](data-factory-data-transformation-activities.md)」を参照してください。また、ソリューションで紹介するように、自分の処理ロジックに基づいて、**カスタム アクティビティ**を作成することもできます。
-
-**Azure Batch** を使用すると、大規模な並列コンピューティングやハイ パフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行できます。Azure Batch は、コンピューティング集約型作業を仮想マシン (コンピューティング ノード) の管理されたコレクション上で実行するように、スケジュール設定するためのプラットフォーム サービスです。ジョブのニーズに合わせてコンピューティング リソースをスケールすることができます。詳細については、「[Azure Batch の基礎](../batch/batch-technical-overview.md)」と「[Azure Batch 機能の概要](../batch/batch-api-basics.md)」を参照してください。
+これらのサービスに精通していない場合は、以下のサンプル ソリューションの前に、「[Azure Batch](../batch/batch-api-basics.md)」と「[Data Factory](data-factory-introduction.md)」を参照してください。
 
 ## アーキテクチャ ダイアグラム
 
-このダイアグラムでは、1) Data Factory がデータの移動と処理を調整する方法、および 2) Azure Batch が並列的にデータを処理する方法を示します。後で参照できるように、このダイアグラム (11 x 17 インチまたは A3 サイズ) をダウンロードして印刷します。[Microsoft Azure Batch と Azure Data Factory: 大規模なデータ処理のアーキテクチャ](http://go.microsoft.com/fwlink/?LinkId=717686)
+このダイアグラムでは、1) Data Factory がデータの移動と処理を調整する方法、および 2) Azure Batch が並列的にデータを処理する方法を示します。簡単に参照できるように、図をダウンロードして印刷 (11 x 17 インチまたは A3 サイズ): [Azure Batch と Data Factory を使用した HPC とデータのオーケストレーション](http://go.microsoft.com/fwlink/?LinkId=717686)
 
-![](./media/data-factory-data-processing-using-batch/image1.png)
+![サービスとしての HPC 図](./media/data-factory-data-processing-using-batch/image1.png)
 
 処理の基本的な手順を次に示します。ソリューションには、エンド ツー エンド ソリューションをビルドするためのコードと説明が含まれています。
 
@@ -70,17 +64,17 @@
 4.  2 個以上のコンピューティング ノードで **Azure Batch プール** を作成します。
 
 	 [Azure Batch Explorer ツール](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer)のソース コードをダウンロードし、コンパイルして使用し、プールを作成することもできますが (**このサンプル ソリューションには強くお勧めします**)、[.NET 向け Azure Batch ライブラリ](../batch/batch-dotnet-get-started.md)を使用して、プールを作成することもできます。Azure Batch Explorer の使用手順については、[Azure Batch Explorer サンプル チュートリアル](http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx)のページを参照してください。[New-AzureRmBatchPool](https://msdn.microsoft.com/library/mt628690.aspx) コマンドレットを使用して、Azure Batch プールを作成することもできます。
-	
+
 	 Batch Explorer を使用して、次の設定でプールを作成します。
 
 	-   プールの ID を入力します (**プール ID**)。**プールの ID** は、Data Factory ソリューションを作成するときに必要になります。
-	
+
 	-   **オペレーティング システム ファミリ**設定には、**Windows Server 2012 R2** を指定します。
-	
+
 	-   **コンピューティング ノードごとの最大タスク**の設定値には、**2** を指定します。
-	
+
 	-   **ターゲットの専用数**の設定値には、**2** を指定します。
-	
+
 	 ![](./media/data-factory-data-processing-using-batch/image2.png)
 
 5.  [Azure Storage エクスプローラー 6 (ツール)](https://azurestorageexplorer.codeplex.com/) または [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) (ClumsyLeaf ソフトウェアから)。これらは、クラウドでホストされるアプリケーションのログを含む、Azure Storage プロジェクト内のデータを調べたり、変更したりするための GUI ツールです。
@@ -92,7 +86,7 @@
  		![](./media/data-factory-data-processing-using-batch/image3.png)
 
 		 **Inputfolder** と **outputfolder** は、**mycontainer** のトップ レベル フォルダーにあり、**inputfolder** には日付タイム スタンプ (YYYY-MM-DD-HH) を含むサブフォルダーがあります。
-		
+
 		 **Azure Storage エクスプローラー**使用している場合は、次の手順で、以下の名前を持つファイルをアップロードする必要があります。inputfolder/2015-11-16-00/file.txt、inputfolder/2015-11-16-01/file.txt など。この操作では、フォルダーを自動的に作成します。
 
 	3.  テキスト ファイル **file.txt** を、キーワード **Microsoft** を含めた内容でコンピューターに作成します。例: “test custom activity Microsoft test custom activity Microsoft”。
@@ -150,10 +144,10 @@ Data Factory のカスタム アクティビティは、このサンプル ソ�
 Azure Data Factory パイプラインで使用できる .NET カスタム アクティビティを作成するには、**IDotNetActivity** インターフェイスを実装したクラスを含む **.NET Class Library** プロジェクトを作成する必要があります。このインターフェイスには、**Execute** という 1 つのメソッドのみが含まれます。このメソッドのシグネチャを次に示します。
 
 	public IDictionary<string, string> Execute(
-	            IEnumerable<LinkedService> linkedServices, 
-	            IEnumerable<Dataset> datasets, 
-	            Activity activity, 
-	            IActivityLogger logger)        
+	            IEnumerable<LinkedService> linkedServices,
+	            IEnumerable<Dataset> datasets,
+	            Activity activity,
+	            IActivityLogger logger)
 
 このメソッドには、理解しておく必要がある重要な要素がいくつかあります。
 
@@ -169,7 +163,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 -   メソッドから、カスタム アクティビティの連結に使用できるディクショナリが返されます。このサンプル ソリューションでは、この機能を使用しません。
 
-### 手順: カスタム アクティビティの作成 
+### 手順: カスタム アクティビティの作成
 
 1.  Visual Studio で .NET クラス ライブラリ プロジェクトを作成します。
 
@@ -203,10 +197,10 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 		using System.Globalization;
 		using System.Diagnostics;
 		using System.Linq;
-		
+
 		using Microsoft.Azure.Management.DataFactories.Models;
 		using Microsoft.Azure.Management.DataFactories.Runtime;
-		
+
 		using Microsoft.WindowsAzure.Storage;
 		using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -221,7 +215,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 8.  **IDotNetActivity** インターフェイスの **Execute** メソッドを **MyDotNetActivity** クラスに実装 (追加) し、次のサンプル コードをメソッドにコピーします。このメソッドで使用されるロジックのための説明については、「[メソッドの実行](#execute-method)」セクションを参照してください。
 
 		/// <summary>
-        /// Execute method is the only method of IDotNetActivity interface you must implement. 
+        /// Execute method is the only method of IDotNetActivity interface you must implement.
         /// In this sample, the method invokes the Calculate method to perform the core logic.  
 		/// </summary>
         public IDictionary<string, string> Execute(
@@ -244,8 +238,8 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
             foreach (LinkedService ls in linkedServices)
                 logger.Write("linkedService.Name {0}", ls.Name);
 
-            // using First method instead of Single since we are using the same 
-            // Azure Storage linked service for input and output. 
+            // using First method instead of Single since we are using the same
+            // Azure Storage linked service for input and output.
             inputLinkedService = linkedServices.First(
                 linkedService =>
                 linkedService.Name ==
@@ -271,12 +265,12 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
                                          continuationToken,
                                          null,
                                          null);
-                
-                // Calculate method returns the number of occurrences of 
+
+                // Calculate method returns the number of occurrences of
                 // the search term (“Microsoft”) in each blob associated
-        		// with the data slice. 
-        		// 
-        	    // definition of the method is shown in the next step. 
+        		// with the data slice.
+        		//
+        	    // definition of the method is shown in the next step.
                 output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
 
             } while (continuationToken != null);
@@ -292,7 +286,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
             // create a storage object for the output blob.
             CloudStorageAccount outputStorageAccount = CloudStorageAccount.Parse(connectionString);
-            // write the name of the file. 
+            // write the name of the file.
             Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
 
             logger.Write("output blob URI: {0}", outputBlobUri.ToString());
@@ -309,7 +303,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 9.  次のヘルパー メソッドをクラスに追加します。これらのメソッドは、**Execute** メソッドによって呼び出されます。最も重要な点は、**Calculate** メソッドは、各 BLOB で反復処理されるコードを分離することです。
 
         /// <summary>
-        /// Gets the folderPath value from the input/output dataset.   
+        /// Gets the folderPath value from the input/output dataset.
 		/// </summary>
 		private static string GetFolderPath(Dataset dataArtifact)
 		{
@@ -317,41 +311,41 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 		    {
 		        return null;
 		    }
-		
+
 		    AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
 		    if (blobDataset == null)
 		    {
 		        return null;
 		    }
-		
+
 		    return blobDataset.FolderPath;
 		}
-		
+
 		/// <summary>
-		/// Gets the fileName value from the input/output dataset.   
+		/// Gets the fileName value from the input/output dataset.
 		/// </summary>
-		
+
 		private static string GetFileName(Dataset dataArtifact)
 		{
 		    if (dataArtifact == null || dataArtifact.Properties == null)
 		    {
 		        return null;
 		    }
-		
+
 		    AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
 		    if (blobDataset == null)
 		    {
 		        return null;
 		    }
-		
+
 		    return blobDataset.FileName;
 		}
-		
+
 		/// <summary>
-		/// Iterates through each blob (file) in the folder, counts the number of instances of search term in the file, 
-		/// and prepares the output text that will be written to the output blob. 
+		/// Iterates through each blob (file) in the folder, counts the number of instances of search term in the file,
+		/// and prepares the output text that will be written to the output blob.
 		/// </summary>
-		
+
 		public static string Calculate(BlobResultSegment Bresult, IActivityLogger logger, string folderPath, ref BlobContinuationToken token, string searchTerm)
 		{
 		    string output = string.Empty;
@@ -402,12 +396,12 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 ここでは、Execute メソッドのコードの詳細と注意事項について説明します。
 
-1.	入力コレクションを反復処理するメンバーは、[Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) 名前空間にあります。BLOB コレクションの反復処理では、**BlobContinuationToken** クラスを使用する必要があります。基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。詳細については、「[.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。基本的なループを次に示します。
+1.	入力コレクションを反復処理するメンバーは、[Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) 名前空間にあります。BLOB コレクションの反復処理では、**BlobContinuationToken** クラスを使用する必要があります。基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。詳細については、「[.NET から Blob Storage を使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。基本的なループを次に示します。
 
 		// Initialize the continuation token.
 		BlobContinuationToken continuationToken = null;
 		do
-		{   
+		{
 		// Get the list of input blobs from the input storage client object.
 		BlobResultSegment blobList = inputClient.ListBlobsSegmented(folderPath,
 		    					true,
@@ -418,7 +412,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 		                                  null);
 		// Return a string derived from parsing each blob.
 		    output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
-		
+
 		} while (continuationToken != null);
 
 	詳細については、[ListBlobsSegmented](https://msdn.microsoft.com/library/jj717596.aspx) メソッドのドキュメントを参照してください。
@@ -433,29 +427,29 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 		// Get the output dataset using the name of the dataset matched to a name in the Activity output collection.
 		Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
-		
+
 		// Convert to blob location object.
 		outputLocation = outputDataset.Properties.TypeProperties as AzureBlobDataset;
 
 4.	また、このコードは、**GetFolderPath** というヘルパー メソッドも呼び出して、フォルダー パス (ストレージ コンテナー名) を取得します。
 
 		folderPath = GetFolderPath(outputDataset);
-		
+
 	**GetFolderPath** は、FolderPath というプロパティがある AzureBlobDataSet に DataSet オブジェクトをキャストします。
 
 		AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
-		
+
 		return blobDataset.FolderPath;
 
 5.	コードで、ファイル名 (BLOB 名) を取得する **GetFileName** メソッドを呼び出します。このコードは、フォルダー パスを取得する上記のコードと似ています。
 
 		AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
-		
+
 		return blobDataset.FileName;
 
 6.	新しい URI オブジェクトを作成してファイル名が出力されます。URI コンストラクターは **BlobEndpoint** プロパティを使用して、コンテナー名を返します。フォルダー パスとファイル名が追加され、出力 BLOB URI が構築されます。
 
-		// Write the name of the file. 
+		// Write the name of the file.
 		Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
 
 7.	ファイル名が出力されるので、**Calculate** メソッドから出力文字列を新しい BLOB に出力できるようになります。
@@ -630,15 +624,15 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 		        "external": true,
 		        "policy": {}
 		    }
-		} 
+		}
 
-	
+
 	 このチュートリアルで後半では、開始時刻 2015-11-16T00:00:00Z、終了時刻 2015-11-16T05:00:00Z のパイプラインを作成します。データを**毎時**生成するようにスケジュールしているので、5 個の入出力スライスがあります (**00**:00:00 ～ **05**:00:00 の間)。
-	
+
 	 入力データセットの **frequency** と **interval** はそれぞれ **Hour** と **1** に設定されています。つまり、1 時間に 1 つの入力スライスを利用できます。
-	
+
 	 次に各スライスの開始時刻を示します。この開始時刻は上記の JSON スニペットの **SliceStart** システム変数で表されます。
-	
+
 	| **スライス** | **開始時刻** |
 	|-----------|-------------------------|
 	| 1 | 2015-11-16T**00**:00:00 |
@@ -646,9 +640,9 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 	| 3 | 2015-11-16T**02**:00:00 |
 	| 4 | 2015-11-16T**03**:00:00 |
 	| 5 | 2015-11-16T**04**:00:00 |
-	
+
 	 **folderPath** は、スライス開始時間 (**SliceStart**) の年、月、日、時間の部分を使用して計算されます。そのため、入力フォルダーをスライスにマップする方法を示します。
-	
+
 	| **スライス** | **開始時刻** | **入力フォルダー** |
 	|-----------|-------------------------|-------------------|
 	| 1 | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
@@ -704,7 +698,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 	| 3 | 2015-11-16T**02**:00:00 | 2015-11-16-**02.txt** |
 	| 4 | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
 	| 5 | 2015-11-16T**04**:00:00 | 2015-11-16-**04.txt** |
-	
+
 	 入力フォルダー (例: 2015-11-16-00) 内のすべてのファイルは、開始時刻が 2015-11-16-00 であるスライスの一部です。このスライスを処理すると、カスタム アクティビティは各ファイルをスキャンし、出力ファイルに、検索語句 (“Microsoft”) の出現回数が記述された 1 行を生成します。2015-11-16-00 フォルダーに 3 つのファイルがある場合は、出力ファイル (2015-11-16-00.txt) に 3 行が出力されます。
 
 3.  ツール バーの **[デプロイ]** をクリックし、**OutputDataset** を作成してデプロイします。
@@ -935,4 +929,4 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
     -   [Azure Batch ライブラリ .NET の概要](../batch/batch-dotnet-get-started.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->

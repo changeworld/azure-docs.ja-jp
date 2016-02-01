@@ -17,7 +17,7 @@
 
 # Service Bus リレー型メッセージングのチュートリアル
 
-このチュートリアルでは、Service Bus の "リレー" 機能を使用して、単純な Service Bus クライアント アプリケーションとサービスを構築する方法について説明します。Service Bus の "仲介型" つまり非同期メッセージング機能を使用するアプリケーションを構築する方法を説明する該当のチュートリアルについては、「[Service Bus 仲介型メッセージング .NET チュートリアル](https://msdn.microsoft.com/library/hh367512.aspx)」を参照してください。Service Bus [仲介型メッセージング](service-bus-messaging-overview.md/#Brokered-messaging)を使用する類似のチュートリアルについては、「[Service Bus 仲介型メッセージング .NET チュートリアル](https://msdn.microsoft.com/library/hh367512.aspx)」を参照してください。
+このチュートリアルでは、Service Bus の "リレー" 機能を使用して、単純な Service Bus クライアント アプリケーションとサービスを構築する方法について説明します。Service Bus [仲介型メッセージング](service-bus-messaging-overview.md#Brokered-messaging)の使用に対応したチュートリアルについては、「[Service Bus 仲介型メッセージング .NET チュートリアル](service-bus-brokered-tutorial-dotnet.md)」を参照してください。
 
 このチュートリアルを利用すると、Service Bus のクライアント アプリケーションとサービス アプリケーションを作成するために必要な手順を理解できます。WCF の該当するサービスと同様に、サービスは 1 つ以上のエンドポイントを公開するコンストラクトで、各エンドポイントは 1 つ以上のサービス操作を公開します。サービスのエンドポイントでは、サービスが見つかるアドレス、クライアントがサービスとやり取りする必要がある情報を含むバインド、サービスがそのクライアントに提供する機能を定義するコントラクトを指定します。WCF と Service Bus サービスの主な違いは、エンドポイントがコンピューターのローカルではなくクラウドで公開される点です。
 
@@ -31,9 +31,9 @@
 
 最初の手順では、Service Bus サービス名前空間を作成し、Shared Access Signature (SAS) キーを取得します。サービス名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証するための資格情報になります。
 
-名前空間を作成するには、「[方法: Service Bus Service 名前空間を作成または変更する](https://msdn.microsoft.com/library/hh690931.aspx)」で説明されている手順に従います。
+1. サービス名前空間を作成するには、[Azure クラシック ポータル][]にアクセスします。左側にある **[Service Bus]** をクリックし、**[作成]** をクリックします。名前空間の名前を入力して、チェック マークをクリックします。
 
->[AZURE.NOTE]クライアント アプリケーションとサービス アプリケーションの両方に同じ名前空間を使用する必要はありません。
+	>[AZURE.NOTE]クライアント アプリケーションとサービス アプリケーションの両方に同じ名前空間を使用する必要はありません。
 
 1. [Azure クラシック ポータル][]のメイン ウィンドウで、前の手順で作成したサービス名前空間の名前をクリックします。
 
@@ -833,7 +833,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ## 次のステップ
 
-このチュートリアルでは、Service Bus の "リレー" 機能を使用して、Service Bus クライアント アプリケーションとサービスを構築する方法を紹介しました。Service Bus [仲介型メッセージング](service-bus-messaging-overview.md/#Brokered-messaging)を使用する類似のチュートリアルについては、「[Service Bus 仲介型メッセージング .NET チュートリアル](https://msdn.microsoft.com/library/hh367512.aspx)」を参照してください。
+このチュートリアルでは、Service Bus の "リレー" 機能を使用して、Service Bus クライアント アプリケーションとサービスを構築する方法を紹介しました。Service Bus [仲介型メッセージング](service-bus-messaging-overview.md#Brokered-messaging)を使用する類似のチュートリアルについては、「[Service Bus 仲介型メッセージング .NET チュートリアル](service-bus-brokered-tutorial-dotnet.md)」を参照してください。
 
 Service Bus の詳細については、次のトピックを参照してください。
 
@@ -843,4 +843,4 @@ Service Bus の詳細については、次のトピックを参照してくだ�
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

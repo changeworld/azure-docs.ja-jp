@@ -16,7 +16,7 @@
 	ms.date="01/13/2015" 
 	ms.author="jeffstok"/>
 
-#Microsoft Stream Analytics リリース ノート
+#Stream Analytics のリリース ノート
 
 ## Stream Analytics の 2015 年 12 月 10 日付けリリースに関するノート ##
 
@@ -133,4 +133,4 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 - [Stream Analytics 管理 REST API 参照](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

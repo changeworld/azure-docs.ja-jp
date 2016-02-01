@@ -1,19 +1,19 @@
-<properties 
+<properties
    pageTitle="クラウド サービス ロールがリサイクルされる一般的な原因 | Microsoft Azure"
    description="クラウド サービス ロールが突然リサイクルされることで、重大なダウンタイムが生じることがあります。ロールのリサイクルを引き起こす一般的な問題とダウンタイムの防止策を取り上げました。"
    services="cloud-services"
    documentationCenter=""
    authors="dalechen"
-   manager="msmets"
+   manager="felixwu"
    editor=""
    tags="top-support-issue"/>
-<tags 
+<tags
    ms.service="cloud-services"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="10/14/2015"
+   ms.date="01/20/2016"
    ms.author="daleche" />
 
 # ロールのリサイクルを引き起こす一般的な問題
@@ -36,7 +36,7 @@
 - Visual studio を使用している場合、Azure SDK や .NET Framework に含まれていない、プロジェクトのすべての参照アセンブリの **[ローカル コピー]** プロパティが **[True]** に設定されていること。
 
 - **web.config** ファイルの **compilation** 要素が、未使用のアセンブリを参照していないこと。
- 
+
 - すべての .cshtml ファイルの **[ビルド アクション]** が **[コンテンツ]** に設定されていること。この設定によって当該ファイルが正しくパッケージに追加され、他の参照ファイルをパッケージに追加することができます。
 
 
@@ -66,8 +66,8 @@ Azure は 64 ビット環境です。そのため、32 ビット ターゲット
 アプリケーション パッケージを Azure にデプロイする前に `DiagnosticsConnectionString` が正しく設定されていることを確かめるために、次の点を確認してください。
 
 - Azure 内の有効なストレージ アカウントが `DiagnosticsConnectionString` の設定に指定されていること。既定では、エミュレートされたストレージ アカウントが指定されているため、アプリケーション パッケージをデプロイする前に、この設定を明示的に変更する必要があります。この設定を変更しなかった場合、ロール インスタンスが診断モニターを起動しようとしたときに例外がスローされます。ロール インスタンスが無限にリサイクルされる原因となる場合があります。
-  
-- 接続文字列は次の[形式](storage-configure-connection-string.md)で指定します (プロトコルは HTTPS として指定する)。*MyAccountName* には該当するストレージ アカウントの名前を、*MyAccountKey* には該当するアクセス キーを指定してください。
+
+- 接続文字列は次の[形式](../storage/storage-configure-connection-string.md)で指定します (プロトコルは HTTPS として指定する)。MyAccountName には該当するストレージ アカウントの名前を、MyAccountKey には該当するアクセス キーを指定してください。
 
         DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 
@@ -77,13 +77,15 @@ Azure は 64 ビット環境です。そのため、32 ビット ターゲット
 
 ## エクスポートした証明書に秘密キーが含まれていない
 
-Web ロールを SSL で実行する場合は、エクスポートした管理証明書に秘密キーが含まれていることを確認してください。*Windows 証明書マネージャー*を使用して証明書をエクスポートする場合は必ず、*[はい、秘密キーをエクスポートします]* オプションを選択してください。証明書は PFX 形式でエクスポートする必要があります。現在サポートされている形式はこれだけです。
+Web ロールを SSL で実行する場合は、エクスポートした管理証明書に秘密キーが含まれていることを確認してください。Windows 証明書マネージャーを使用して証明書をエクスポートする場合は必ず、[はい、秘密キーをエクスポートします] オプションを選択してください。証明書は PFX 形式でエクスポートする必要があります。現在サポートされている形式はこれだけです。
 
 
 
 ## 次のステップ
 
 クラウド サービスの他の[トラブルシューティングに関する記事](..\?tag=top-support-issue&service=cloud-services)を参照します。
+
+さらなるロール リサイクル シナリオを確認するには、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)を参照してください。
 
 
 
@@ -93,4 +95,4 @@ Web ロールを SSL で実行する場合は、エクスポートした管理�
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [Run]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0121_2016-->

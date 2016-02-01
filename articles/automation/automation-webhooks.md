@@ -17,9 +17,7 @@
 
 # Azure Automation Webhook
 
-*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。これにより、Visual Studio Team Services、GitHub などの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。
-
-![Webhook](media/automation-webhooks/webhooks-overview.png)
+Webhook を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。これにより、Visual Studio Team Services、GitHub などの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。![Webhook](media/automation-webhooks/webhooks-overview.png)
 
 [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)で、Webhook と、Runbook を開始する他のメソッドを比較できます
 
@@ -36,7 +34,7 @@
 
 
 ### パラメーター
-Webhook は、Runbook がその Webhook によって開始されたときに使用される Runbook のパラメーターの値を定義できます。Webhook には、Runbook の任意の必須パラメーターの値を含める必要があり、省略可能なパラメーターの値を含めることもできます。1 つの Runbook にリンクされている複数の Webhook は、それぞれ異なるパラメーター値を使用することができます。
+Webhook は、Runbook がその Webhook によって開始されたときに使用される Runbook のパラメーターの値を定義できます。Webhook には、Runbook の任意の必須パラメーターの値を含める必要があり、省略可能なパラメーターの値を含めることもできます。Webhook に対して構成されているパラメーター値は、Webhook の作成後であっても変更できます。1 つの Runbook にリンクされている複数の Webhook は、それぞれ異なるパラメーター値を使用することができます。
 
 Webhook を使用して Runbook を開始した場合、クライアントは Webhook で定義されているパラメーターの値を上書きできません。クライアントからのデータを受け取るために、Runbook は、[object] 型の **$WebhookData** という 1 つのパラメーターを取ることができます。クライアントが POST 要求に含めたデータは、このパラメーターに入れられます。
 
@@ -61,9 +59,9 @@ Webhook の作成時に $WebhookData の値を指定した場合、クライア�
 
 上記の Runbook で、WebhookData パラメーターに次のプロパティがあるとします。
 
-1. WebhookName: *MyWebhook*
-2. RequestHeader: *From=Test User*
-3. RequestBody: *[“VM1”, “VM2”]*
+1. WebhookName: MyWebhook
+2. RequestHeader: From=Test User
+3. RequestBody: [“VM1”, “VM2”]
 
 この場合は、次の JSON 値を WebhookData パラメーター用の UI に渡します。
 
@@ -188,7 +186,7 @@ Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要
 
 ## Azure アラートに応じて Runbook を開始する
 
-Webhook 対応の Runbook を使用して、[Azure アラート](Azure-portal/insights-receive-alert-notifications.md)に対応することができます。Azure 内のリソースは、Azure アラートを活用してパフォーマンス、可用性、および利用状況などの統計を収集することで監視できます。Azure リソースの監視メトリックまたはイベントに基づいて通知を受け取ることができます。現在、Automation アカウントではメトリックしかサポートしていません。指定したメトリックの値が割り当て済みのしきい値を超えた場合、または構成済みのイベントがトリガーされた場合に、アラートの解決を担当するサービス管理者または共同管理者に通知が送信されます。メトリックとイベントの詳細については、[Azure アラート](Azure-portal/insights-receive-alert-notifications.md)に関する記事を参照してください。
+Webhook 対応の Runbook を使用して、[Azure アラート](../azure-portal/insights-receive-alert-notifications.md)に対応することができます。Azure 内のリソースは、Azure アラートを活用してパフォーマンス、可用性、および利用状況などの統計を収集することで監視できます。Azure リソースの監視メトリックまたはイベントに基づいて通知を受け取ることができます。現在、Automation アカウントではメトリックしかサポートしていません。指定したメトリックの値が割り当て済みのしきい値を超えた場合、または構成済みのイベントがトリガーされた場合に、アラートの解決を担当するサービス管理者または共同管理者に通知が送信されます。メトリックとイベントの詳細については、[Azure アラート](../azure-portal/insights-receive-alert-notifications.md)に関する記事を参照してください。
 
 Azure アラートを通知システムとして使用するだけでなく、アラートに応じて Runbook を開始することもできます。Azure Automation には、Azure アラートを使用して Webhook 対応の Runbook を開始する機能があります。メトリックが構成済みのしきい値を超えると、アラート ルールがアクティブになって Automation Webhook がトリガーされ、この Webhook により Runbook が実行されます。
 
@@ -198,12 +196,12 @@ Azure アラートを通知システムとして使用するだけでなく、�
 
 仮想マシンなどの Azure リソースを例に取ると、このマシンの CPU 使用率は重要なパフォーマンス メトリックの 1 つです。長期間にわたり CPU 使用率が 100% になるか特定の値を超えた場合、仮想マシンを再起動して問題を解決する必要があります。この問題は、CPU 使用率をメトリックとするアラート ルールを仮想マシンに構成することで解決できます。ここで、CPU 使用率はほんの一例であり、Azure リソースに構成できるメトリックは他にも多数あります。また、この問題を解決するために行うアクションは仮想マシンの再起動ですが、他のアクションを実行するように Runbook を構成することもできます。
 
-このアラート ルールがアクティブになって Webhook 対応の Runbook をトリガーするときに、ルールから Runbook にアラート コンテキストが送信されます。[アラート コンテキスト](Azure-portal/insights-receive-alert-notifications.md)には、**SubscriptionID**、**ResourceGroupName**、**ResourceName**、**ResourceType**、**ResourceId**、および **Timestamp** など、Runbook がアクション対象のリソースを特定するために必要になる詳細が含まれています。アラート コンテキストは Runbook に送信される **WebhookData** オブジェクトの本文部に埋め込まれており、**Webhook.RequestBody** プロパティを使用して評価することができます。
+このアラート ルールがアクティブになって Webhook 対応の Runbook をトリガーするときに、ルールから Runbook にアラート コンテキストが送信されます。[アラート コンテキスト](../azure-portal/insights-receive-alert-notifications.md)には、**SubscriptionID**、**ResourceGroupName**、**ResourceName**、**ResourceType**、**ResourceId**、および **Timestamp** など、Runbook がアクション対象のリソースを特定するために必要になる詳細が含まれています。アラート コンテキストは Runbook に送信される **WebhookData** オブジェクトの本文部に埋め込まれており、**Webhook.RequestBody** プロパティを使用して評価することができます。
 
 
 ### 例
 
-サブスクリプション内に Azure 仮想マシンを作成し、[CPU パーセンテージ メトリックを監視するアラート](Azure-portal/insights-receive-alert-notifications.md)に関連付けます。アラートの作成時には、[Webhook] フィールドに、Webhook の作成中に生成された Webhook の URL を必ず入力してください。
+サブスクリプション内に Azure 仮想マシンを作成し、[CPU パーセンテージ メトリックを監視するアラート](../azure-portal/insights-receive-alert-notifications.md)に関連付けます。アラートの作成時には、[Webhook] フィールドに、Webhook の作成中に生成された Webhook の URL を必ず入力してください。
 
 次のサンプル Runbook は、アラート ルールがアクティブになるとトリガーされ、アクション対象のリソースを特定するために Runbook が必要とするアラート コンテキストのパラメーターを収集します。
 
@@ -270,8 +268,8 @@ Azure アラートを通知システムとして使用するだけでなく、�
 
 ## 次のステップ
 
-- Runbook のさまざまな起動方法の詳細については、「[Runbook の開始方法](automation-starting-a-runbook.md)」をご覧ください。
-- Runbook ジョブの状態の表示については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」をご覧ください。
+- Runbook を開始するさまざまな方法については、「[Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)」を参照してください。
+- Runbook ジョブの状態の表示については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」を参照してください。
 - [Using Azure Automation to take actions on Azure Alerts (Azure Automation を使用した Azure アラートに対するアクションの実行)](https://azure.microsoft.com/blog/using-azure-automation-to-take-actions-on-azure-alerts/)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

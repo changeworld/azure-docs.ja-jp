@@ -1,8 +1,8 @@
 <properties 
     pageTitle="チュートリアル: Azure Active Directory と Aha! の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Aha! を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" 
+    description="Azure Active Directory で Aha! を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Aha! の統合
 
@@ -49,17 +49,17 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-aha-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-aha-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
     ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-aha-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  **検索ボックス**に、「**Aha!**」と入力します。
+6.  [**検索**] ボックスに、「**Aha!**」と入力します。
 
     ![アプリケーション ギャラリー](./media/active-directory-saas-aha-tutorial/IC798945.png "アプリケーション ギャラリー")
 
-7.  結果ウィンドウで **[Aha!]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  結果ウィンドウで [**Aha!**] を選択し、[**完了**] をクリックしてアプリケーションを追加します。
 
     ![Aha!](./media/active-directory-saas-aha-tutorial/IC802746.png "Aha!")
 ##シングル サインオンの構成
@@ -68,50 +68,50 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Aha!** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure AD ポータルの **Aha!** アプリケーション統合ページで [**シングル サインオンの構成**] をクリックし、[シングル サインオンの構成] ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-aha-tutorial/IC798946.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-aha-tutorial/IC798946.png "Configure Single Sign-On")
 
-2.  **[ユーザーの Aha! へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  [**ユーザーの Aha! へのアクセスを設定してください**] ページで、[**Microsoft Azure AD のシングル サインオン**] を選択し、[**次へ**] をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-aha-tutorial/IC798947.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-aha-tutorial/IC798947.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[ Aha! サインオン URL**] テキスト ボックスに、Aha! アプリケーションへのサインオンにユーザーが使用する URL (例:"*https://company.aha.io/session/new*")) を入力してから、**[次へ]** をクリックします。
+3.  [**アプリケーション URL の構成**] ページの [** Aha! サインオン URL**] テキスト ボックスに、Aha! アプリケーションへのサインオンにユーザーが使用する URL (例:"*https://company.aha.io/session/new*")) を入力してから、[**次へ**] をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-aha-tutorial/IC798948.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-aha-tutorial/IC798948.png "Configure App URL")
 
-4.  **[Aha! でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、コンピューターでメタデータ ファイルをローカルに保存します。
+4.  [**Aha! でのシングル サインオンの構成**] ページで、メタデータをダウンロードするには、[**メタデータのダウンロード**] をクリックし、コンピューターでメタデータ ファイルをローカルに保存します。
 
     ![Configure Single Sign-On](./media/active-directory-saas-aha-tutorial/IC798949.png "Configure Single Sign-On")
 
 5.  別の Web ブラウザーのウィンドウで、管理者として Aha! 企業サイトにログインします。
 
-6.  上部のメニューで **[設定]** をクリックします。
+6.  上部のメニューで [**設定**] をクリックします。
 
-    ![設定](./media/active-directory-saas-aha-tutorial/IC798950.png "設定")
+    ![Settings](./media/active-directory-saas-aha-tutorial/IC798950.png "Settings")
 
-7.  **[アカウント]** をクリックします。
+7.  [**アカウント**] クリックします。
 
     ![プロファイル](./media/active-directory-saas-aha-tutorial/IC798951.png "プロファイル")
 
-8.  **[セキュリティとシングル サインオン]** をクリックします。
+8.  [**セキュリティとシングル サインオン**] クリックします。
 
     ![セキュリティとシングル サインオン](./media/active-directory-saas-aha-tutorial/IC798952.png "セキュリティとシングル サインオン")
 
-9.  **[シングル サインオン]** セクションで、**[ID プロバイダー]** として **[SAML2.0]** を選択します。
+9.  [**シングル サインオン**] セクションで、[**ID プロバイダー**] として [**SAML2.0**] を選択します。
 
     ![セキュリティとシングル サインオン](./media/active-directory-saas-aha-tutorial/IC798953.png "セキュリティとシングル サインオン")
 
-10. **[シングル サインオン]** 構成ページで、次の手順を実行します。
+10. [**シングル サインオン**] 構成ページで、次の手順を実行します。
 
     ![シングル サインオン](./media/active-directory-saas-aha-tutorial/IC798954.png "シングル サインオン")
 
-    1.  **[Name]** テキスト ボックスに、構成の名前を入力します。
-    2.  **[Configure using]** には **[Metadata File]** を選択します。
-    3.  ダウンロードしたメタデータ ファイルをアップロードするには、**[Browse]** をクリックします。
-    4.  **[Update]** をクリックします。
+    1.  [**名前**] テキスト ボックスに、構成の名前を入力します。
+    2.  [**Configure using**] には [**メタデータ ファイル**] を選択します。
+    3.  ダウンロードしたメタデータ ファイルをアップロードするには、[**参照**] をクリックします。
+    4.  [**更新**] をクリックします。
 
-11. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+11. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、[**完了**] をクリックして [**シングル サインオンの構成**] ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-aha-tutorial/IC798955.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -130,14 +130,14 @@ Azure AD ユーザーが Aha! にログインできるようにするには、�
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  **Aha!** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  Aha! アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-aha-tutorial/IC798956.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-aha-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-aha-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

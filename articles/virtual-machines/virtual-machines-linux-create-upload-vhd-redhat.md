@@ -20,7 +20,19 @@
 # Azure 用の Red Hat ベースの仮想マシンの準備
 この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。この記事で取り上げる RHEL のバージョンは 6.7、7.1、および 7.2 です。準備対象のハイパーバイザーは、Hyper-V、KVM、および VMWare です。Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](http://www.redhat.com/en/technologies/cloud-computing/cloud-access)および[ Azure での RHEL の実行に関するページ](https://access.redhat.com/articles/1989673)を参照してください。
 
+[Hyper-V マネージャーからの RHEL 6.7 仮想マシンの準備](#rhel67hyperv)
 
+[Hyper-V マネージャーからの RHEL 7.1/7.2 仮想マシンの準備](#rhel7xhyperv)
+
+[KVM からの RHEL 6.7 仮想マシンの準備](#rhel67kvm)
+
+[KVM からの RHEL 7.1/7.2 仮想マシンの準備](#rhel7xkvm)
+
+[VMWare からの RHEL 6.7 仮想マシンの準備](#rhel67vmware)
+
+[VMWare からの RHEL 7.1/7.2 仮想マシンの準備](#rhel7xvmware)
+
+[kickstart ファイルからの RHEL 7.1/7.2 仮想マシンの準備](#rhel7xkickstart)
 
 
 ##Hyper-V マネージャーからのイメージの準備 
@@ -39,8 +51,8 @@
 
 - qemu-img を使用してディスク イメージを VHD 形式に変換する場合、qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。この問題は、qemu-img の今後のリリースで修正される予定です。現時点では、qemu-img のバージョン 2.2.0 以前を使用することをお勧めします。
 
+### <a id="rhel67hyperv"></a>Hyper-V マネージャーからの RHEL 6.7 仮想マシンの準備###
 
-###RHEL 6.7
 
 1.	Hyper-V マネージャーで仮想マシンを選択します。
 
@@ -134,7 +146,7 @@
 
 16.	Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-###RHEL 7.1/7.2
+### <a id="rhel7xhyperv"></a>Hyper-V マネージャーからの RHEL 7.1/7.2 仮想マシンの準備###
 
 1.  Hyper-V マネージャーで仮想マシンを選択します。
 
@@ -214,7 +226,9 @@
 
 
 ##KVM からのイメージの準備 
-###RHEL 6.7
+
+### <a id="rhel67kvm"></a>KVM からの RHEL 6.7 仮想マシンの準備###
+
 
 1.	Red Hat の Web サイトからは、RHEL 6.7 の KVM イメージをダウンロードします。
 
@@ -335,7 +349,8 @@
          # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.7.raw rhel-6.7.vhd
 
 
-###RHEL 7.1/7.2
+### <a id="rhel7xkvm"></a>KVM からの RHEL 7.1/7.2 仮想マシンの準備###
+
 
 1.	Red Hat の Web サイトから RHEL 7.1 (または 7.2) の KVM イメージをダウンロードします。次の例では RHEL 7.1 を使用します。
 
@@ -479,7 +494,7 @@
 
 ##VMWare からのイメージの準備
 ###前提条件
-このセクションでは、VMWare に RHEL の仮想マシンが既にインストールされていると仮定します。VMWare にオペレーティング システムをインストールする方法の詳細については、「[VMWare ゲスト オペレーティング システムのインストール ガイド](http://partnerweb.vmware.com/GOSIG/home.html)」を参照してください。
+このセクションでは、VMWare に RHEL の仮想マシンが既にインストールされていると仮定します。VMWare にオペレーティング システムをインストールする方法の詳細については、[VMWare のゲスト オペレーティング システムのインストール ガイド](http://partnerweb.vmware.com/GOSIG/home.html)を参照してください。
  
 - Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、LVM または RAID をデータ ディスク上で使用できます。
 
@@ -487,7 +502,10 @@
 
 - 仮想ハード ディスクを作成する場合は、**[仮想ディスクを 1 つのファイルとして格納する]** を選択します。
 
-###RHEL 6.7
+
+
+### <a id="rhel67vmware"></a>VMWare からの RHEL 6.7 仮想マシンの準備###
+
 1.	次のコマンドを実行して NetworkManager をアンインストールします。
 
          # sudo rpm -e --nodeps NetworkManager
@@ -588,7 +606,8 @@
 
         # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.7.raw rhel-6.7.vhd
 
-###RHEL 7.1/7.2
+
+### <a id="rhel7xvmware"></a>VMWare からの RHEL 7.1/7.2 仮想マシンの準備###
 
 1.	/etc/sysconfig/ ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
 
@@ -625,7 +644,7 @@
 
     クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。必要に応じて crashkernel オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
 
-6.	上記のとおりに `/etc/default/grub` を編集したら、次のコマンドを実行して GRUB 構成をリビルドします。
+6.	上記のとおりに `/etc/default/grub` の編集を終了したら、次のコマンドを実行して GRUB 構成をリビルドします。
 
          # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
@@ -692,7 +711,10 @@
 
 
 ##kickstart ファイルを使用して ISO から自動的に準備する
-###RHEL 7.1/7.2
+
+
+### <a id="rhel7xkickstart"></a>kickstart ファイルからの RHEL 7.1/7.2 仮想マシンの準備###
+
 
 1.	以下のコンテンツを含む kickstart ファイルを作成し、ファイルを保存します。kickstart のインストールの詳細については、「[kickstart インストール ガイド](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html)」を参照してください。
 
@@ -842,6 +864,8 @@ HYPER-V と Azure で RHEL 7.1 を使用する場合に既知の問題があり�
 
 
 ## 次のステップ
-これで、Red Hat Enterprise Linux .vhd を使用して、Azure に新しい Azure Virtual Machines を作成する準備が整いました。Red Hat Enterprise Linux の実行が認定されているハイパーバイザーの詳細については、[Red Hat の Web サイト](https://access.redhat.com/certified-hypervisors)を参照してください。
+これで、Red Hat Enterprise Linux .vhd を使用して、Azure に新しい Azure Virtual Machines を作成する準備が整いました。Azure を使用し、.vhd ファイルを Azure にアップロードするのは今回が初めての場合は、[このガイダンス](virtual-machines-linux-create-upload-vhd.md)の手順 2 と 3 に従ってください。
+ 
+Red Hat Enterprise Linux の実行が認定されているハイパーバイザーの詳細については、[Red Hat の Web サイト](https://access.redhat.com/certified-hypervisors)を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0121_2016-->

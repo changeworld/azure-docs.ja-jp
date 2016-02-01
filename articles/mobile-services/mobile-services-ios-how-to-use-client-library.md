@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="10/01/2015"
+	ms.date="01/12/2016"
 	ms.author="krisragh"/>
 
 # Azure Mobile Services 向け iOS クライアント ライブラリの使用方法
@@ -253,7 +253,7 @@ Azure Mobile Services は、次の 2 つの認証ワークフローをサポー�
 
 - **サーバーによって管理されるログイン**: Azure Mobile Services がアプリケーションに代わってログオン プロセスを管理します。Azure Mobile Services は、プロバイダー固有のログイン ページを表示し、選択したプロバイダーで認証されます。
 
-- **クライアントによって管理されるログイン**: _アプリケーション_は ID プロバイダーにトークンを要求し、認証のためにこのトークンを Azure Mobile Services に示します。
+- **クライアントによって管理されるログイン**: アプリケーションは ID プロバイダーにトークンを要求し、認証のためにこのトークンを Azure Mobile Services に示します。
 
 認証が成功すると、ユーザー ID の値と認証トークンを含むユーザー オブジェクトが返されます。このユーザー ID を使用してユーザーを承認するには、「[サービス側の承認]」を参照してください。認証されたユーザーのみにテーブルへのアクセスを制限するには、「[権限]」を参照してください。
 
@@ -334,4 +334,4 @@ Azure Mobile Services は、次の 2 つの認証ワークフローをサポー�
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [競合ハンドラー]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

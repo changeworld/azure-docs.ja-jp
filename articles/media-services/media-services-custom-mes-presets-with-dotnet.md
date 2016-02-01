@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/10/2015"    
+	ms.date="01/14/2016"    
 	ms.author="juliako"/>
 
 
@@ -218,6 +218,9 @@
 
 このセクションでは、サムネイルを生成するプリセットをカスタマイズする方法を紹介します。下に定義されているプリセットには、ファイルとサムネイルの生成に必要な情報をエンコードする方法に関する情報が含まれています。[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に保存されている MES プリセットを利用し、サムネイルを生成するコードを追加できます。
 
+>[AZURE.NOTE]単一ビットレートのビデオにエンコードする場合、次のプリセットの設定 **SceneChangeDetection** は true にのみ設定できます。マルチビットレートのビデオにエンコードする場合、**SceneChangeDetection** を true に設定すると、エンコーダーはエラーを返します。
+
+
 スキーマの詳細については、[この](https://msdn.microsoft.com/library/mt269962.aspx)トピックを参照してください。
 
 必ず「[考慮事項](media-services-custom-mes-presets-with-dotnet.md#considerations)」セクションを確認してください。
@@ -230,7 +233,7 @@
 	  "Codecs": [
 	    {
 	      "KeyFrameInterval": "00:00:02",
-		  "SceneChangeDetection": "true",
+	      "SceneChangeDetection": "true",
 	      "H264Layers": [
 	        {
 	          "Profile": "Auto",
@@ -815,7 +818,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 	  </Outputs>
 	</Preset>
 
-##<a id="silent_audio"></a>音声が入力されない場合に無音オーディオ トラックを挿入する
+##<a id="silent_audio"></a>音声が入力されない場合、無音オーディオ トラックを挿入する
 
 既定では、映像のみで音声の入っていないエンコーダーに入力を送信すると、映像データのみが含まれるファイルが出力資産に含まれます。プレーヤーによっては、このような出力ストリームを処理できないことがあります。そのような場合、この設定を利用すれば、無音のオーディオ トラックを出力に追加するようにエンコーダーに強制できます。
 
@@ -886,4 +889,4 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

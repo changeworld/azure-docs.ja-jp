@@ -71,7 +71,7 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 - 圧縮されたストリーム: サポートされていません。スキップされます。
 - スパース ストリーム: サポートされていません。スキップされます。
 
-**Q13.キャッシュ フォルダーの最小サイズ要件は何ですか?** <br/> A13.キャッシュ フォルダーのサイズは、バックアップするデータ量によって決まります。一般に、キャッシュ フォルダーには、データ ストレージに必要とされる領域の 10 ～ 15% を割り当てる必要があると想定してください。
+**Q13.キャッシュ フォルダーの最小サイズ要件は何ですか?** <br/> A13.キャッシュ フォルダーのサイズは、バックアップするデータ量によって決まります。一般に、キャッシュ フォルダーには、データ ストレージに必要とされる領域の 5% を割り当てる必要があると想定してください。
 
 **Q14.組織内の他のサーバーによって復元されることを防止するために、特定のサーバーのデータを分離するにはどうすればよいですか?**<br/> A14.同じ資格情報コンテナーを使用して登録されたサーバーは、同じパスフレーズを使用する他のサーバーによってバックアップされたデータを復元できます。サーバーの復元を組織内の特定のサーバーでのみ実行できるようにするには、それらのサーバーのみを指定した個別のパスフレーズを使用する必要があります。たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで 2 番目、ストレージ サーバーで 3 番目の暗号化パスフレーズを使用することができます。
 
@@ -166,8 +166,8 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 	| レジストリ パス | レジストリ キー | 値 |
 	| ------ | ------- | ------ |
-	| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Azure Backup\Config` | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
-	| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Azure Backup\Config\CloudBackupProvider` | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
+	| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
+	| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
 
 
 + 管理者特権のコマンド プロンプトで次のコマンドを実行して OBEngine を開始します。
@@ -176,4 +176,4 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 バックアップが新しいキャッシュ場所で正常に動作したら、元のキャッシュ フォルダーを削除できます。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0121_2016-->

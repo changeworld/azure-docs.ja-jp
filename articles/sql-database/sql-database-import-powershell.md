@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="PowerShell で BACPAC ファイルをインポートして新しい Azure SQL Database を作成する" 
+    pageTitle="PowerShell で BACPAC ファイルをインポートして新しい Azure SQL Database を作成する | Microsoft Azure" 
     description="PowerShell で BACPAC ファイルをインポートして新しい Azure SQL Database を作成する" 
     services="sql-database" 
     documentationCenter="" 
@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="12/17/2015"
+    ms.date="01/20/2016"
     ms.author="sstein"/>
 
 # PowerShell で BACPAC ファイルをインポートして新しい Azure SQL Database を作成する
@@ -38,10 +38,10 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 SQL Database をインポートするには、以下が必要です。
 
 - Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
-- 復元するデータベースの .bacpac ファイル (BACPAC)。BACPAC は、[Azure ストレージ アカウント (クラシック)](storage-create-storage-account.md) の BLOB コンテナー内にある必要があります。
+- 復元するデータベースの .bacpac ファイル (BACPAC)。BACPAC は、[Azure Storage アカウント (クラシック)](storage-create-storage-account.md) の BLOB コンテナー内にある必要があります。
 
 
-> [AZURE.IMPORTANT]この記事には、バージョン 1.0 *未満*の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。
+> [AZURE.IMPORTANT]この記事には、バージョン 1.0 未満の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。
 
 
 
@@ -142,7 +142,7 @@ BLOB 名は、データベースの作成元の、既存の .bacpac ファイル
 
 ## 次のステップ
 
-- [SQL Server Management Studio (SSMS) での接続](sql-database-connect-to-database.md)
+- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
 
 
 
@@ -150,7 +150,7 @@ BLOB 名は、データベースの作成元の、既存の .bacpac ファイル
 ## その他のリソース
 
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [災害復旧訓練](sql-database-disaster-recovery-drills.md)
+- [障害復旧訓練](sql-database-disaster-recovery-drills.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0121_2016-->

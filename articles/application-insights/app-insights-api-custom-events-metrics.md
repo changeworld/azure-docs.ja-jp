@@ -17,7 +17,7 @@
 
 # カスタムのイベントとメトリックのための Application Insights API 
 
-*Application Insights はプレビュー段階です。*
+Application Insights はプレビュー段階です。
 
 アプリケーションに数行のコードを挿入して、ユーザーの行動を調べたり、問題の診断に役立つ情報を取得したりすることができます。デバイスとデスクトップ アプリケーション、Web クライアント、Web サーバーからテレメトリを送信できます。
 
@@ -52,25 +52,25 @@ Application Insights でデータを集めるとき、この API を使用すれ
 
 * デバイスまたは Web サーバー コードに次を追加します。
 
-    *C#:* `using Microsoft.ApplicationInsights;`
+    C#: `using Microsoft.ApplicationInsights;`
 
-    *VB:* `Imports Microsoft.ApplicationInsights`
+    VB: `Imports Microsoft.ApplicationInsights`
 
-    *Java:* `import com.microsoft.applicationinsights.TelemetryClient;`
+    Java: `import com.microsoft.applicationinsights.TelemetryClient;`
 
 ## TelemetryClient を作成する
 
 TelemetryClient のインスタンスの作成 (Web ページの JavaScript を除く):
 
-*C#:*
+C#:
 
     private TelemetryClient telemetry = new TelemetryClient();
 
-*VB:*
+VB:
 
     Private Dim telemetry As New TelemetryClient
 
-*Java*
+Java
 
     private TelemetryClient telemetry = new TelemetryClient();
 
@@ -81,26 +81,26 @@ TelemetryClient はスレッド セーフです。
 
 ## イベントを追跡する
 
-Application Insights では、*カスタム イベント*はデータ ポイントであり、[メトリックス エクスプローラー][metrics]に集計カウントとして表示することも、[診断検索][diagnostic]で個々の出現として表示することもできます (これは MVC にも他のフレームワークの "イベント" にも関連していません)。
+Application Insights では、カスタム イベントはデータ ポイントであり、[メトリックス エクスプローラー][metrics]に集計カウントとして表示することも、[診断検索][diagnostic]で個々の出現として表示することもできます (これは MVC にも他のフレームワークの "イベント" にも関連していません)。
 
 ユーザーが特定の機能を使用する頻度、特定の目標を達成する頻度、または特定の種類の間違いを起こす頻度を数えるには、TrackEvent をコードに挿入します。
 
 たとえば、ゲーム アプリで、ユーザーが勝利したときにイベントを送信します。
 
-*JavaScript*
+JavaScript
 
     appInsights.trackEvent("WinGame");
 
-*C#*
+C#
     
     telemetry.TrackEvent("WinGame");
 
-*VB*
+VB
 
 
     telemetry.TrackEvent("WinGame")
 
-*Java*
+Java
 
     telemetry.trackEvent("WinGame");
 
@@ -134,25 +134,25 @@ TrackMetric を使用し、特定のイベントに関連付けられていな�
 メトリック値を正しく表示するには、0 以上にする必要があります。
 
 
-*JavaScript*
+JavaScript
 
     appInsights.trackMetric("Queue", queue.Length);
 
-*C#*
+C#
 
     telemetry.TrackMetric("Queue", queue.Length);
 
-*VB*
+VB
 
     telemetry.TrackMetric("Queue", queue.Length)
 
-*Java*
+Java
 
     telemetry.trackMetric("Queue", queue.Length);
 
 実際には、バックグラウンド スレッドでこれを行うことがあります。
 
-*C#*
+C#
 
     private void Run() {
      var appInsights = new TelemetryClient();
@@ -179,15 +179,15 @@ TrackMetric を使用し、特定のイベントに関連付けられていな�
 
 #### カスタム ページ ビュー
 
-*JavaScript*
+JavaScript
 
     appInsights.trackPageView("tab1");
 
-*C#*
+C#
 
     telemetry.TrackPageView("GameReviewPage");
 
-*VB*
+VB
 
     telemetry.TrackPageView("GameReviewPage")
 
@@ -204,7 +204,7 @@ HTTP 要求を記録するために、サーバー SDK によって使用され�
 
 Web サービス モジュールが実行されていない状況で要求をシミュレーションする場合に、これを自分で呼び出すこともできます。
 
-*C#*
+C#
 
     // At start of processing this request:
 
@@ -228,7 +228,7 @@ Web サービス モジュールが実行されていない状況で要求をシ
 
 例外を Application Insights に送信して[数え][metrics]、問題の発生頻度を示し、[個々の問題を調べます][diagnostic]。レポートにはスタック トレースが含まれます。
 
-*C#*
+C#
 
     try
     {
@@ -239,7 +239,7 @@ Web サービス モジュールが実行されていない状況で要求をシ
        telemetry.TrackException(ex);
     }
 
-*JavaScript*
+JavaScript
 
     try
     {
@@ -274,7 +274,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
 [ログ アダプター][trace]はこの API を使用し、ポータルにサード パーティのログを送信します。
 
 
-*C#*
+C#
 
     telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
 
@@ -310,7 +310,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
 
 通常、SDK は、ユーザーへの影響を最小限に抑えるために選択した時間帯に、データを送信します。ただし、場合によっては、バッファーをフラッシュする必要が生じることがあります (たとえば、終了するアプリケーションで SDK を使用している場合)。
 
-*C#*
+C#
 
     telemetry.Flush();
 
@@ -326,7 +326,7 @@ Web アプリでは、ユーザーは既定で Cookie により識別されま�
 
 ただし、ユーザーがアプリにサインインしていれば、ブラウザーのコードに認証されたユーザーの ID を設定して、より正確な数値を取得できます。
 
-*JavaScript*
+JavaScript
 
 ```JS
     // Called when my app has identified the user.
@@ -339,7 +339,7 @@ Web アプリでは、ユーザーは既定で Cookie により識別されま�
 
 ASP.NET Web MVC アプリケーションでの例:
 
-*Razor*
+Razor
 
         @if (Request.IsAuthenticated)
         {
@@ -377,7 +377,7 @@ ASP.NET Web MVC アプリケーションでの例:
 使用できる[プロパティ、プロパティ値、およびメトリックの数には制限](#limits)があります。
 
 
-*JavaScript*
+JavaScript
 
     appInsights.trackEvent
       ("WinGame",
@@ -396,7 +396,7 @@ ASP.NET Web MVC アプリケーションでの例:
          );
           
 
-*C#*
+C#
 
     // Set up some properties and metrics:
     var properties = new Dictionary <string, string> 
@@ -408,7 +408,7 @@ ASP.NET Web MVC アプリケーションでの例:
     telemetry.TrackEvent("WinGame", properties, metrics);
 
 
-*VB*
+VB
 
     ' Set up some properties:
     Dim properties = New Dictionary (Of String, String)
@@ -423,7 +423,7 @@ ASP.NET Web MVC アプリケーションでの例:
     telemetry.TrackEvent("WinGame", properties, metrics)
 
 
-*Java*
+Java
     
     Map<String, String> properties = new HashMap<String, String>();
     properties.put("game", currentGame.getName());
@@ -442,7 +442,7 @@ ASP.NET Web MVC アプリケーションでの例:
 
 ![メトリック エクスプローラーを開き、グラフを選択し、メトリックを選択する](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
 
-*メトリックが表示されない場合、またはカスタムの見出しがない場合は、選択ブレードを閉じて後でやり直してください。パイプラインを介したメトリックの集計が終了するまで 1 時間かかる場合があります。*
+メトリックが表示されない場合、またはカスタムの見出しがない場合は、選択ブレードを閉じて後でやり直してください。パイプラインを介したメトリックの集計が終了するまで 1 時間かかる場合があります。
 
 **プロパティとメトリックを使用した場合**、プロパティ別にメトリックを分割します。
 
@@ -479,14 +479,14 @@ ASP.NET Web MVC アプリケーションでの例:
 
     telemetry.TrackEvent(event);
 
-
+> [AZURE.WARNING]Track*() を複数回呼び出すために、同じテレメトリ項目インスタンス (この例では `event`) を再利用しないでください。再利用すると、正しくない構成でテレメトリが送信される場合があります。
 
 #### <a name="timed"></a> タイミング イベント
 
 何らかのアクションを実行するためにかかる時間をグラフに示す必要が生じることがあります。たとえば、ユーザーがゲームで選択肢について考える時間について調べることができます。これは、測定のパラメーターの使用に役立つ例です。
 
 
-*C#*
+C#
 
     var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
@@ -510,7 +510,7 @@ ASP.NET Web MVC アプリケーションでの例:
 
 記述するカスタム イベントにいくつかに既定のプロパティ値を設定する場合、TelemetryClient でそれを設定できます。既定値はそのクライアントから送信されたすべてのテレメトリ アイテムに追加されます。
 
-*C#*
+C#
 
     using Microsoft.ApplicationInsights.DataContracts;
 
@@ -519,14 +519,14 @@ ASP.NET Web MVC アプリケーションでの例:
     // Now all telemetry will automatically be sent with the context property:
     gameTelemetry.TrackEvent("WinGame");
     
-*VB*
+VB
 
     Dim gameTelemetry = New TelemetryClient()
     gameTelemetry.Context.Properties("Game") = currentGame.Name
     ' Now all telemetry will automatically be sent with the context property:
     gameTelemetry.TrackEvent("WinGame")
 
-*Java*
+Java
 
     import com.microsoft.applicationinsights.TelemetryClient;
     import com.microsoft.applicationinsights.TelemetryContext;
@@ -563,7 +563,7 @@ SDK からテレメトリを送信する前に、テレメトリを処理する�
 
 テレメトリの収集と送信を**動的に停止および開始**するには
 
-*C#*
+C#
 
 ```C#
 
@@ -579,18 +579,18 @@ SDK からテレメトリを送信する前に、テレメトリを処理する�
 デバッグ中、結果をすぐに確認できるように、テレメトリをパイプラインから送信すると便利です。テレメトリで問題を追跡する際に役立つ付加的なメッセージも取得できます。アプリケーションを遅くする可能性があるため、本稼働ではオフにします。
 
 
-*C#*
+C#
     
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 
-*VB*
+VB
 
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 
 ## <a name="ikey"></a> 選択したカスタム テレメトリにインストルメンテーション キーを設定する
 
-*C#*
+C#
     
     var telemetry = new TelemetryClient();
     telemetry.Context.InstrumentationKey = "---my key---";
@@ -603,7 +603,7 @@ SDK からテレメトリを送信する前に、テレメトリを処理する�
 
 インストルメンテーション キーは構成ファイルから取得する代わりにコードで設定できます。ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
-*C#*
+C#
 
     protected void Application_Start()
     {
@@ -613,7 +613,7 @@ SDK からテレメトリを送信する前に、テレメトリを処理する�
           WebConfigurationManager.Settings["ikey"];
       ...
 
-*JavaScript*
+JavaScript
 
     appInsights.config.instrumentationKey = myKey; 
 
@@ -621,7 +621,7 @@ SDK からテレメトリを送信する前に、テレメトリを処理する�
 
 Web ページで、スクリプトに一語一語コーディングするのではなく、Web サーバーの状態から設定します。たとえば、ASP.NET アプリケーションで生成された Web ページで
 
-*Razor の JavaScript*
+Razor の JavaScript
 
     <script type="text/javascript">
     // Standard Application Insights web page script:
@@ -649,7 +649,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 * Web アプリケーションで **Operation** は、現在の HTTP 要求を示します。他の種類のアプリケーションでは、イベントをグループ化するために、これを設定できます。
  * **Id**: [診断検索] でイベントを調べるときに「関連項目」を見つけることができるように、さまざまなイベントを関連付けるために生成される値
  * **名前**: 識別子。通常は HTTP 要求の URL。 
- * **SyntheticSource**: null 値または空ではない場合、この文字列は、要求元がロボットまたは Web テストとして識別されたことを示します。既定で、これはメトリックス エクスプ ローラーでの計算から除外されます。
+ * **SyntheticSource**: null 値または空ではない場合、この文字列は、要求元がロボットまたは Web テストとして識別されたことを示します。既定で、これはメトリックス エクスプローラーでの計算から除外されます。
 * **Properties**: すべてのテレメトリ データとともに送信されるプロパティ。個々 の Track* 呼び出しでオーバーライドできます。
 * **Session** は、ユーザーのセッションを識別します。Id は、生成される値に設定されます。これは、ユーザーがしばらくの間アクティブ化されていない場合に、変更されます。
 * **ユーザー** ユーザー情報。 
@@ -661,19 +661,19 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 アプリケーションごと (インストルメンテーション キーごと) のメトリックとイベントの数には制限があります。
 
 1. インストルメンテーション キーごとに個別に適用される 1 秒あたりの最大レート。上限を超えると、一部のデータが破棄されます。
- * TrackTrace 呼び出しとキャプチャされたログ データの場合、1 秒あたり最大 500 データ ポイント (無料の価格レベルの場合、1 秒あたり 100 データ ポイント)。
+ * TrackTrace 呼び出しとキャプチャされたログ データの場合、1 秒あたり最大 500 データ ポイント (Free 価格レベルの場合、1 秒あたり 100 データ ポイント)。
  * モジュールまたは TrackException 呼び出しによってキャプチャされた例外の場合、1 秒あたり最大 50 データ ポイント。 
- * SDK モジュールによって送信される標準テレメトリと、コードによって送信されるカスタム イベント、メトリックなどのテレメトリの両方を含む、他のすべてのデータの場合、1 秒あたり最大 500 データ ポイント (無料の価格レベルの場合、1 秒あたり 100 データ ポイント)。
+ * SDK モジュールによって送信される標準テレメトリと、コードによって送信されるカスタム イベント、メトリックなどのテレメトリの両方を含む、他のすべてのデータの場合、1 秒あたり最大 500 データ ポイント (Free 価格レベルの場合、1 秒あたり 100 データ ポイント)。
 1. [価格レベル](app-insights-pricing.md)に応じた 1 か月あたりのデータ総量。
 1.	アプリケーションに対して最大 200 の一意のメトリックの名前と 200 の一意のプロパティの名前。メトリックには、TrackMetric を通じて送信されるデータと、イベントなどの他のデータ型の測定値が含まれます。メトリックとプロパティの名前は、データ型にスコープが制限されず、インストルメンテーション キーごとにグローバルです。
 2.	各プロパティに対する一意の値は 100 未満であり、プロパティは、フィルタリングとグループ化のみに使用できます。一意の値が 100 を超えた後も、プロパティは検索に使用できますが、フィルター処理には使用できなくなります。
 3.	要求名やページの URL などの標準プロパティは、1 週間あたりの 1000 の一意な値に制限されます。1000 の一意の値を超えると、追加の値は「その他の値」としてマークされます。元の値は、全文テキスト検索とフィルタリングに引き続き使用できます。
 
-*データ速度の上限に達するのを回避する方法*
+データ速度の上限に達するのを回避する方法
 
 * 最新の SDK をインストールして、[サンプリング](app-insights-sampling.md)を使用します。
 
-*データが保持される期間*
+データが保持される期間
 
 * [データの保持とプライバシー][data]に関するページを参照してください。
 
@@ -699,13 +699,13 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
 ## 疑問がある場合
 
-* *Track\_() の呼び出しでは、どのような例外がスローされることがありますか。*
+* Track\_() の呼び出しでは、どのような例外がスローされることがありますか。
     
     ありません。try catch 句で例外をラップする必要はありません。SDK で問題が発生すると、デバッグ コンソール出力に表示されるメッセージが記録されます。メッセージがスルーされる場合は、診断検索にも記録されます。
 
 
 
-* *ポータルからデータを取得する REST API はありますか。*
+* ポータルからデータを取得する REST API はありますか。
 
     はい、近日対応予定です。それまでの間は、[連続エクスポート](app-insights-export-telemetry.md)を使用してください。
 
@@ -736,4 +736,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->

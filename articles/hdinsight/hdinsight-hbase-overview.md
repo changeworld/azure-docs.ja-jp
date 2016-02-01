@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/17/2015"
+	ms.date="01/14/2016"
 	ms.author="jgao"/>
 
 
@@ -94,4 +94,4 @@ BigTable が開発され、さらにその機能を拡張する形で HBase が�
 
 [apache-hadoop]: http://hadoop.apache.org/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0121_2016-->

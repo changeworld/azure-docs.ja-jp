@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/09/2015"
+   ms.date="01/15/2016"
    ms.author="v-sharos" />
 
 # Government Portal でのオンプレミスの StorSimple デバイスのデプロイ
@@ -203,7 +203,7 @@ Windows Server ホスト上で次の手順を実行します。
 
 > - Windows Server ホストでの MPIO と iSCSI のインストールと構成の手順については、「[StorSimple デバイスの MPIO の構成](storsimple-configure-mpio-windows-server.md)」をご覧ください。このページには、StorSimple ボリュームのマウント、初期化、フォーマットを実行する手順も記載されています。
 
-> - Linux ホストでの MPIO と iSCSI のインストールと構成の手順については、「[StorSimple Linux ホストの MPIO の構成](storsimple-configure-mpio-linux.md)」をご覧ください。
+> - Linux ホストでの MPIO と iSCSI のインストールと構成の手順については、「[StorSimple Linux ホストの MPIO の構成](storsimple-configure-mpio-on-linux.md)」をご覧ください。
 
 MPIO を構成しない場合は、次の手順に従い、Windows Server ホストに StorSimple ボリュームをマウント、初期化、フォーマットします。
 
@@ -268,15 +268,15 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 マルチパス I/O (MPIO) はオプションの機能であり、Windows サーバーに既定ではインストールされていません。サーバー マネージャーを使用して、機能としてインストールする必要があります。MPIO のインストール手順については、[StorSimple デバイスの MPIO の構成](storsimple-configure-mpio-windows-server.md)に関するページを参照してください。
 
-Linux ホストに接続されている StorSimple デバイスの MPIO のインストール手順については、「[Linux ホストの MPIO の構成](storsimple-configure-mpio-linux.md)」をご覧ください。
+Linux ホストに接続されている StorSimple デバイスの MPIO のインストール手順については、「[Linux ホストの MPIO の構成](storsimple-configure-mpio-on-linux.md)」をご覧ください。
 
 > [AZURE.NOTE]StorSimple 仮想デバイスでは、MPIO がサポートされていません。
 
 ## 次のステップ
 
-[仮想デバイス](storsimple-virtual-device.md)を構成します。
+- [仮想デバイス](storsimple-virtual-device.md)を構成します。
 
-[StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
+- [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -40,7 +40,9 @@ Ubuntu の場合は、次のように入力するだけでかまいません。
 
     #sudo yum install waagent
 
-Oracle Linux の場合は、`/etc/yum.repo.d/public-yum-ol6.repo` または `/etc/yum.repo.d/public-yum-ol7.repo` ファイルでアドオンのリポジトリが有効になっていることを確認してください。
+Oracle Linux の場合、`Addons` リポジトリが有効になっていることを確認します。`/etc/yum.repo.d/public-yum-ol6.repo` ファイル (Oracle Linux 6) または `/etc/yum.repo.d/public-yum-ol7.repo` ファイル (Oracle Linux ) を編集し、このファイルの **[ol6\_addons]** または **[ol7\_addons]** の下の行 `enabled=0` を `enabled=1` に変更します。
+
+次に、最新バージョンの Azure Linux エージェントをインストールし、次のように入力します。
 
     #sudo yum install WALinuxAgent
 
@@ -130,4 +132,4 @@ CoreOS では、上記のコマンドが機能しない場合があります。
 
 Azure Linux エージェントの詳細については、[Azure Linux エージェントの README](https://github.com/Azure/WALinuxAgent) を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0121_2016-->

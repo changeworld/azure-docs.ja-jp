@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="01/06/2016"
+   ms.date="01/20/2016"
    ms.author="nitinme"/>
 
 # Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する
@@ -25,7 +25,9 @@
 
 Azure ポータルを使用して、Azure Data Lake Store にアクセスするように HDInsight クラスター (Hadoop、HBase、または Storm) を作成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
 
-* **Hadoop クラスターと Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure ストレージ BLOB (WASB) のままです。
+* **Hadoop クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure ストレージ BLOB (WASB) のままです。
+
+* **Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、Storm トポロジからデータを書き込むために使用できます。Data Lake Store は、Storm トポロジから読み取ることができる、参照データを格納するために使用することもできます。
 
 * **HBase クラスター (Windows および Linux) の場合**、Data Lake Store を既定のストレージまたは追加ストレージとして使用できます。
 
@@ -128,6 +130,47 @@ Azure ポータルを使用して、Azure Data Lake Store にアクセスする�
 
 HDInsight クラスターを構成したら、クラスターでテスト ジョブを実行して、HDInsight クラスターが Azure Data Lake Store のデータにアクセス可能であるかどうかをテストできます。そのためには、Data Lake Store を対象とするいくつかの Hive クエリを実行します。
 
+### Linux クラスターの場合
+
+1. プロビジョニングしたクラスターのクラスター ブレードを開き、**[ダッシュボード]** をクリックします。これにより、Linux クラスターの Ambari が開きます。Ambari にアクセスすると、サイトに対する認証が求められます。クラスターを作成するときに使用した管理者アカウント名 (既定値は admin) とパスワードを入力します。
+
+	![クラスター ダッシュボードの起動](./media/data-lake-store-hdinsight-hadoop-use-portal/hdiadlcluster1.png "クラスター ダッシュボードの起動")
+
+	Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスして Ambari に直接移動することもできます (ここで **CLUSTERNAME** は HDInsight クラスターの名前です)。
+
+2. Hive ビューを開きます。ページ メニュー (ページの右側の **Admin** リンク ボタンの横) から四角形のセットを選択して使用可能なビューを一覧表示します。**Hive** ビューを選択します。
+
+	![Selecting ambari views](./media/data-lake-store-hdinsight-hadoop-use-portal/selecthiveview.png)
+
+3. 次のようなページが表示されます。
+
+	![Image of the hive view page, containing a query editor section](./media/data-lake-store-hdinsight-hadoop-use-portal/hiveview.png)
+
+4. ページの **[Query Editor]** セクションで、次の HiveQL ステートメントをワークシートに貼り付けます。
+
+		CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder'
+
+5. **クエリ エディター**の下部にある **[Execute]** ボタンをクリックしてクエリを開始します。**クエリ エディター**の下に **[Query Process Results]** セクションが表示され、ジョブに関する情報が表示されます。
+
+6. クエリが完了すると、**[Query Process Results]** セクションに操作の結果が表示されます。**[Results]** タブには次の情報が表示されます。
+
+7. 次のクエリを実行して、テーブルが作成されたことを確認します。
+
+		SHOW TABLES;
+
+	**[Results]** タブには以下が表示されます。
+
+		hivesampletable
+		vehicles
+
+	**vehicles** は、前に作成したテーブルです。**hivesampletable** は、既定ですべての HDInsight クラスターで使用できるサンプル テーブルです。
+
+8. **vehicles** テーブルからデータを取得するクエリを実行することもできます。
+
+		SELECT * FROM vehicles LIMIT 5;
+
+### Windows クラスターの場合
+
 1. プロビジョニングしたクラスターのクラスター ブレードを開き、**[ダッシュボード]** をクリックします。
 
 	![クラスター ダッシュボードの起動](./media/data-lake-store-hdinsight-hadoop-use-portal/hdiadlcluster1.png "クラスター ダッシュボードの起動")
@@ -152,20 +195,42 @@ HDInsight クラスターを構成したら、クラスターでテスト ジョ
 
 		SHOW TABLES;
 
-	このクエリに対応する [詳細の表示] をクリックすると、出力が次のように表示されます。
+	このクエリに対応する **[詳細の表示]** をクリックすると、出力が次のように表示されます。
 
 		hivesampletable
 		vehicles
 
 	**vehicles** は、前に作成したテーブルです。**hivesampletable** は、既定ですべての HDInsight クラスターで使用できるサンプル テーブルです。
 
-5. **vehicles** からデータを取得するクエリを実行することもできます。
+5. **vehicles** テーブルからデータを取得するクエリを実行することもできます。
 
 		SELECT * FROM vehicles LIMIT 5;
+
 
 ## HDFS コマンドを使用して Data Lake Store にアクセスする
 
 Data Lake Store を使用するように HDInsight クラスターを構成したら、HDFS シェル コマンドを使用してストアにアクセスできます。
+
+### Linux クラスターの場合
+
+このセクションでは、SSH をクラスターに入れて、HDFS コマンドを実行します。Windows ではビルトイン SSH クライアントは提供されません。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
+
+PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+
+接続されたら、次の HDFS ファイル システム コマンドを使用して、Data Lake Store 内のファイルを一覧表示します。
+
+	hdfs dfs -ls adl://<Data Lake Store account name>.azuredatalakestore.net:443/
+
+これにより、以前に Data Lake Store にアップロードしたファイルが一覧表示されます。
+
+	15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
+	Found 1 items
+	-rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder
+
+`hdfs dfs -put` コマンドを使用して Data Lake Store にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
+
+
+### Windows クラスターの場合
 
 1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
 
@@ -198,7 +263,9 @@ HBase クラスターでは、Data Lake Store アカウントを既定のスト�
 
 サービス プリンシパルを Data Lake Store ファイル システムに追加する方法については、「[Data Lake Store ファイル システムにアクセスするようにサービス プリンシパルを構成する](#acl)」を参照してください。
 
+## Storm トポロジで Data Lake Store を使用する
 
+Data Lake Store を使用して、Storm トポロジからデータを書き込むことができます。このシナリオを実現する方法については、「[HDInsight で Apache Storm によって Azure Data Lake Store を使用する](../hdinsight/hdinsight-storm-write-data-lake-store.md)」を参照してください。
 
 ## 関連項目
 
@@ -207,4 +274,4 @@ HBase クラスターでは、Data Lake Store アカウントを既定のスト�
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->

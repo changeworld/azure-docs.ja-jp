@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="12/08/2015"
+   ms.date="01/07/2016"
    ms.author="hascipio"/>
 
 # マーケティング コンテンツを使用したプラン作成の実行
@@ -32,7 +32,7 @@
 
   ![図](media/marketplace-publishing-push-to-staging/pubportal-02.png)
 
-  *プランのタイトル、説明、およびロゴ*
+  プランのタイトル、説明、およびロゴ
 
 ### リンク
 左のバーの **[リンク]** タブで、お客様に役立つ情報があればそのリンクを入力します。各リンクの名前と URL を入力します。
@@ -106,9 +106,9 @@
 ## 手順 3.: サポート情報を入力する
 ここでの情報の一部は認定ステップでも完了できます。以下の手順により、情報を追加または編集することもできます。連絡先の詳細は、パートナーとマイクロソフト間の内部コミュニケーションにのみに使用されます。サポートURL は、エンド ユーザーに提供されます。
 
-1.	発行ポータルの左側にある** [サポート]**に移動します。
-2.	**[エンジニアリング連絡先]**に情報を入力します。
-3.	**[カスタマー サポート]**に情報を入力します。電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
+1.	発行ポータルの左側にある** [サポート] **に移動します。
+2.	**[エンジニアリング連絡先] **に情報を入力します。
+3.	**[カスタマー サポート] **に情報を入力します。電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
 4.	サポート URL を入力します。
 
 ## 手順 4.: Azure Marketplace カテゴリを選択する
@@ -122,31 +122,31 @@
 
 ![図](media/marketplace-publishing-push-to-staging/acom-catalog-02.png)
 
-*Azure Marketplace Web サイト上のプランの一覧*
+Azure Marketplace Web サイト上のプランの一覧
 
 ![図](media/marketplace-publishing-push-to-staging/acom-listing-details-01.png)
 
-*Azure Marketplace Web サイト上のプランの説明の詳細*
+Azure Marketplace Web サイト上のプランの説明の詳細
 
 ![図](media/marketplace-publishing-push-to-staging/acom-listing-details-02.png)
 
-*Azure Marketplace Web サイト上のプランの説明の価格詳細*
+Azure Marketplace Web サイト上のプランの説明の価格詳細
 
 ### Azure プレビュー ポータル
 ![図](media/marketplace-publishing-push-to-staging/portal-catalog-01.png)
 
-*Azure プレビュー ポータルのプランの一覧*
+Azure プレビュー ポータルのプランの一覧
 
 ![図](media/marketplace-publishing-push-to-staging/portal-listing-details-01.png)
 
-*Azure プレビュー ポータルのプランの説明の詳細*
+Azure プレビュー ポータルのプランの説明の詳細
 
 ## 次のステップ
 Marketplace コンテンツが読み込まれたので、プランのステージングでのテストに進みましょう。ただし、手順はプランの種類によって異なるため、以下の一覧から適切なプランの種類を選択する必要があります。
 
 ||仮想マシン イメージ |開発者サービス | データ サービス | ソリューション テンプレート |
 |----|----|----|----|----|
-| **手順 3.プランをステージングにプッシュする** | [VM のプランをステージングでテストする](marketplace-publishing-vm-image-test-in-staging.md) | [開発者向けサービスのプランをステージングでテストする](marketplace-publishing-dev-service-test-in-staging.md) | [データ サービスのプランをステージングでテストする](marketplace-publishing-data-service-test-in-staging.md) | [ソリューション テンプレートをステージングでテストする](marketplace-publishing-solution-template-test-in-staging.md) |
+| **ステップ 3: ステージングへのプランのプッシュ** | [ステージング環境での VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md) | ステージング環境での開発者サービス プランのテスト | [ステージング環境でのデータ サービス プランのテスト](marketplace-publishing-data-service-test-in-staging.md) | [ステージング環境でのソリューション テンプレートのテスト](marketplace-publishing-solution-template-test-in-staging.md) |
 
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
@@ -160,4 +160,4 @@ Marketplace コンテンツが読み込まれたので、プランのステー�
 [link-pubportal]: https://publish.windowsazure.com
 [link-push-to-production]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

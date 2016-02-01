@@ -25,7 +25,7 @@
 
 ### 名前空間を作成し、共有シークレット キーを取得する
 
-1. サービス名前空間を作成する方法について詳しくは、「[Service Bus Service 名前空間の管理](https://msdn.microsoft.com/library/azure/hh690928.aspx)」セクションの「[方法: Service Bus Service 名前空間を作成または変更する](https://msdn.microsoft.com/library/azure/hh690931.aspx)」トピックをご覧ください。
+1. サービス名前空間を作成するには、[Azure クラシック ポータル][]にアクセスします。左側にある **[Service Bus]** をクリックし、**[作成]** をクリックします。名前空間の名前を入力して、チェック マークをクリックします。
 
 1. [Azure クラシック ポータル][]のメイン ウィンドウで、前の手順で作成した名前空間の名前をクリックします。
 
@@ -628,9 +628,9 @@ namespace Microsoft.ServiceBus.Samples
 詳細については、次の記事を参照してください。
 
 - [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-- [Service Bus の基礎](fundamentals-service-bus-hybrid-solutions.md)
+- [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus リレー型メッセージングの REST チュートリアル](service-bus-relay-rest-tutorial.md)
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0121_2016-->

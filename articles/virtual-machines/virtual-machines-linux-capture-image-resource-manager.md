@@ -31,7 +31,7 @@
 
 - [Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-deploy-rmtemplates-azure-cli.md)
 
-たとえば、*MyResourceGroup* という名前のリソース グループを米国中部リージョンで作成するとします。次のような **azure vm quick-create** コマンドを使用して、Ubuntu 14.04 LTS VM をリソース グループにデプロイします。
+たとえば、MyResourceGroup という名前のリソース グループを米国中部リージョンで作成するとします。次のような **azure vm quick-create** コマンドを使用して、Ubuntu 14.04 LTS VM をリソース グループにデプロイします。
 
  	azure vm quick-create -g MyResourceGroup -n <your-virtual-machine-name> "centralus" -y Linux -Q canonical:ubuntuserver:14.04.2-LTS:14.04.201507060 -u <your-user-name> -p <your-password>
 
@@ -180,7 +180,7 @@ VM をプロビジョニングし実行したら、データ ディスクを接�
 
 ## azure vm create コマンドを使用する
 
-一般には、リソース マネージャー テンプレートを使用して、イメージから VM を作成します。ただし、**azure vm create** コマンドと **--os-disk-vhd** (**-d**) パラメーターを組み合わせて使用して VM を_強制的に_作成することができます。
+一般には、リソース マネージャー テンプレートを使用して、イメージから VM を作成します。ただし、**azure vm create** コマンドと **--os-disk-vhd** (**-d**) パラメーターを組み合わせて使用して VM を強制的に作成することができます。
 
 イメージで **azure vm create** を実行する前に次の操作を行います。
 
@@ -193,11 +193,11 @@ VM をプロビジョニングし実行したら、データ ディスクを接�
 次のようなコマンドを実行します。
 
 	azure vm create -g <your-resource-group-name> -n <your-new-vm-name> -l eastus -y Linux -o <your-storage-account-name> -d "https://yourstorage.blob.core.windows.net/vhds/your-prefix-OsDisk.vhd" -z Standard_A1 -u <your-admin-name> -p <your-admin-password> -f <your-nic-name>
-	
+
 追加のコマンド オプションについては、`azure help vm create` を実行してください。
 
 ## 次のステップ
 
 CLI を使用して VM を管理するには、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-deploy-rmtemplates-azure-cli.md)」に記載のタスクを参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

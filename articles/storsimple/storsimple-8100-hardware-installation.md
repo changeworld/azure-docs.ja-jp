@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/01/2015"
+   ms.date="01/15/2016"
    ms.author="alkohli" />
 
 # StorSimple 8100 デバイスの開梱、ラック取り付け、ケーブル接続
@@ -248,7 +248,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 デバイスのケーブルを配線するときは、最低限の構成が必要です。
 
 
-- クラウド アクセス用と iSCSI 用に各コントローラーに接続された少なくとも 2 つのネットワーク インターフェイス。DATA 0 ポートは自動的に有効になり、デバイスのシリアル コンソールによって構成されます。DATA 0 とは別のデータ ポートも Azure クラシック ポータルを使用して構成する必要があります。この場合、プライマリ LAN (インターネット アクセスのあるネットワーク) に DATA 0 ポートを接続します。目的の役割に応じて、他のデータ ポートをネットワークの SAN/iSCSI LAN (VLAN) セグメントに接続できます。
+- クラウド アクセス用と iSCSI 用に各コントローラーに接続された少なくとも 2 つのネットワーク インターフェイス。DATA 0 ポートは自動的に有効になり、デバイスのシリアル コンソールによって構成されます。DATA 0 とは別のデータ ポートも Azure クラシック ポータルを使用して構成する必要があります。この場合、プライマリ LAN (インターネット アクセスのあるネットワーク) に DATA 0 ポートを接続します。目的のロールに応じて、他のデータ ポートをネットワークの SAN/iSCSI LAN (VLAN) セグメントに接続できます。
 
 - コントローラーのフェールオーバーが発生した場合に可用性を確保するために、同じネットワークに接続された各コントローラーの同一のインターフェイス。たとえば、コントローラーのいずれかで DATA 0 と DATA 3 を接続するよう選択した場合、他のコントローラーで対応する DATA 0 と DATA 3 を接続する必要があります。
 	
@@ -259,9 +259,9 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
 - 可能であれば、スイッチ障害の場合の可用性を確保するため、各コントローラーからのネットワーク インターフェイスを 2 つの異なるスイッチに接続します。図では、各コントローラーからの 2 つの 10 GbE ネットワーク インターフェイス DATA 2 と DATA 3 が、2 つの異なるスイッチに接続されています。
 
-詳細については、「[StorSimple の高可用性の要件](storsimple-system-requirements/#high-availability-requirements-for-storsimple.md)」の「**ネットワーク インターフェイス**」を参照してください。
+詳細については、「[StorSimple の高可用性の要件](storsimple-system-requirements.md#high-availability-requirements-for-storsimple)」の「**ネットワーク インターフェイス**」を参照してください。
 
->[AZURE.NOTE]10 GbE ネットワーク インターフェイスで SFP+ トランシーバーを使用する場合は、提供されている QSFP-SFP+ アダプターを使用します。詳細については、「[StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)」を参照してください。
+>[AZURE.NOTE]10 GbE ネットワーク インターフェイスで SFP+ トランシーバーを使用している場合は、提供されている QSFP-SFP+ アダプターを使用します。詳細については、「[StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)」を参照してください。
     
 
    
@@ -289,6 +289,6 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
 ## 次のステップ
 
-[オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-deployment-walkthrough.md)方法を学習してください。
+[オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-deployment-walkthrough.md)方法を説明します。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

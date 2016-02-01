@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/09/2015"
+   ms.date="01/15/2016"
    ms.author="v-sharos" />
 
 # Government Portal でのオンプレミスの StorSimple デバイスのデプロイ (Update 2)
@@ -44,7 +44,7 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 | [デプロイメントの前提条件](#deployment-prerequsites) | これらの前提条件を使用して、デプロイに対する環境の準備が完了していることを確認します。 |
 | | |
 | **デプロイの手順** | 運用環境に StorSimple デバイスをデプロイするには、次の手順を実行します。 |
-| [手順 1. 新しいサービスを作成する](#step-1-create-a-new-service) | StorSimple デバイス用にクラウド管理とストレージを設定します。*既に他の StorSimple デバイス用のサービスがある場合は、この手順をスキップしてください。* |
+| [手順 1. 新しいサービスを作成する](#step-1-create-a-new-service) | StorSimple デバイス用にクラウド管理とストレージを設定します。既に他の StorSimple デバイス用のサービスがある場合は、この手順をスキップしてください。 |
 | [手順 2. サービス登録キーを取得する](#step-2-get-the-service-registration-key) | このキーを使用して、StorSimple デバイスを管理サービスに登録し、接続します。 |
 | [手順 3. Windows PowerShell for StorSimple を使用してデバイスを構成して登録する](step 3-configure-and-register-the-device-through-windows-powershell-for-storsimple) | 管理サービスを使用して、デバイスをネットワークに接続して Azure に登録し、セットアップを完了します。 |
 | [手順 4. デバイスの最小セットアップを完了する](#step-4-complete-the-minimum-device-setup) </br>省略可能: StorSimple デバイスを更新する | 管理サービスを使用して、デバイスのセットアップを完了し、ストレージを提供できるようにします。 |
@@ -232,15 +232,15 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 マルチパス I/O (MPIO) はオプションの機能であり、Windows サーバーに既定ではインストールされていません。サーバー マネージャーを使用して、機能としてインストールする必要があります。MPIO のインストール手順については、[StorSimple デバイスの MPIO の構成](storsimple-configure-mpio-windows-server.md)に関するページを参照してください。
 
-Linux ホストに接続されている StorSimple デバイスの MPIO のインストール手順については、「[Linux ホストの MPIO の構成](storsimple-configure-mpio-linux.md)」をご覧ください。
+Linux ホストに接続されている StorSimple デバイスの MPIO のインストール手順については、「[Linux ホストの MPIO の構成](storsimple-configure-mpio-on-linux.md)」をご覧ください。
 
 > [AZURE.NOTE]StorSimple 仮想デバイスでは、MPIO がサポートされていません。
 
 ## 次のステップ
 
-[仮想デバイス](storsimple-virtual-device.md)を構成します。
+- [仮想デバイス](storsimple-virtual-device.md)を構成します。
 
-[StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
+- [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
  
 
-<!----HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0121_2016-->

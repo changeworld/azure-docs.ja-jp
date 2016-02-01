@@ -1,8 +1,8 @@
 <properties 
     pageTitle="チュートリアル: Azure Active Directory と OverDrive Books の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Overdrive Books を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" 
+    description="Azure Active Directory で Overdrive Books を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と OverDrive Books の統合
   
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   OverDrive でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを終了すると、OverDrive に割り当てた Azure AD ユーザーは、OverDrive 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、OverDrive に割り当てた Azure AD ユーザーは、OverDrive 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -49,13 +49,13 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-overdrive-books-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-overdrive-books-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
     ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-overdrive-books-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  **検索ボックス** に、「**OverDrive**」と入力します。
+6.  **[検索ボックス]** に、「**OverDrive**」と入力します。
 
     ![アプリケーション ギャラリー](./media/active-directory-saas-overdrive-books-tutorial/IC784463.png "アプリケーション ギャラリー")
 
@@ -70,32 +70,32 @@
 
 1.  Azure AD ポータルの **OverDrive** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの有効化](./media/active-directory-saas-overdrive-books-tutorial/IC784465.png "シングル サインオンの有効化")
+    ![Enable single sign-on](./media/active-directory-saas-overdrive-books-tutorial/IC784465.png "Enable single sign-on")
 
 2.  **[ユーザーの OverDrive へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選び、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-overdrive-books-tutorial/IC784466.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-overdrive-books-tutorial/IC784466.png "Configure single sign-on")
 
 3.  **[アプリ URL の構成]** ページの **[OverDrive サインイン URL]** テキストボックスに、"**http://mslibrarytest.libraryreserve.com*" というパターンの URL を入力して、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-overdrive-books-tutorial/IC784467.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-overdrive-books-tutorial/IC784467.png "Configure App URL")
 
 4.  **[OverDrive でのシングル サインオン構成]** ページで、メタデータ ファイルをダウンロードし、OverDrive サポート チームに送信します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-overdrive-books-tutorial/IC784468.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-overdrive-books-tutorial/IC784468.png "Configure single sign-on")
 
     >[AZURE.NOTE]OverDrive サポート チームはシングル サインオンを構成し、構成の完了時に通知を送信します。
 
 5.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-overdrive-books-tutorial/IC784469.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-overdrive-books-tutorial/IC784469.png "Configure single sign-on")
 ##ユーザー プロビジョニングの構成
   
 OverDrive へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当てられているユーザーが OverDrive にログインしようとすると、必要に応じて OverDrive アカウントが自動的に作成されます。
 
 >[AZURE.NOTE]OverDrive から提供されている他の OverDrive ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##ユーザーを割り当てる
+##ユーザーの割り当て
   
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
@@ -107,10 +107,10 @@ OverDrive へのユーザー プロビジョニングの構成にあたって必
 
     ![ユーザーの割り当て](./media/active-directory-saas-overdrive-books-tutorial/IC784470.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-overdrive-books-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-overdrive-books-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

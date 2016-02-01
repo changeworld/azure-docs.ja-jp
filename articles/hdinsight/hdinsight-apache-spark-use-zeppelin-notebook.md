@@ -13,13 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/05/2016" 
+	ms.date="01/15/2016" 
 	ms.author="nitinme"/>
 
 
 # HDInsight (Linux) の Spark クラスターで Zeppelin Notebook を使用する
 
 Spark クラスターに Zeppelin Notebook をインストールする方法と、Zeppelin Notebook を使用する方法について説明します。
+
+> [AZURE.IMPORTANT]HDInsight の Spark クラスター向けの Zeppelin Notebook では、Azure HDInsight の Spark 環境で Zeppelin を使用する方法を紹介しています。HDInsight の Spark と連携して Notebook を使用する場合は、代わりに Jupyter Notebook を使用することをお勧めします。また、Jupyter Notebook では、Scala などの別のカーネル オプションも提供し、継続して機能が向上されます。HDInsight の Spark で Jupyter Notebook を使用する方法の詳細については、「[Jupyter Notebook を使用して Spark SQL クエリを実行する](hdinsight-apache-spark-jupyter-spark-sql.md#jupyter)」を参照してください。
 
 **前提条件:**
 
@@ -37,7 +39,7 @@ Spark クラスターに Zeppelin Notebook をインストールする方法と�
 
 ## クラスター作成の一部としての Zeppelin のインストール
 
-Zeppelin は、スクリプト アクションを使用して Spark クラスターにインストールできます。スクリプト アクションは、既定で使用できないクラスターにコンポーネントをインストールするためにカスタム スクリプトを使用します。Zeppelin を Spark クラスターにインストールするカスタム スクリプトは * ***https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh** で入手できます。
+Zeppelin は、スクリプト アクションを使用して Spark クラスターにインストールできます。スクリプト アクションは、既定で使用できないクラスターにコンポーネントをインストールするためにカスタム スクリプトを使用します。Spark クラスターに Zeppelin をインストールするカスタム スクリプトは、****https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh** で入手できます。
 
 ### Azure ポータルの使用
 
@@ -189,7 +191,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	* **[パターン名]** - **zeppelinnotebook** - パターンのフレンドリ名です。
 
-	* **URL パターン** - ***hn0*** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン **hn0** を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
+	* **URL パターン** - **hn0** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン **hn0** を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
 
 		![foxyproxy のパターン](./media/hdinsight-apache-spark-use-zeppelin-notebook/foxypattern.png)
 
@@ -328,4 +330,4 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->
