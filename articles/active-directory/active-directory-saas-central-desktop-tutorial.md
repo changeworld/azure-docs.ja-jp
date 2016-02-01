@@ -62,7 +62,9 @@
     ![Central Desktop](./media/active-directory-saas-central-desktop-tutorial/IC769560.png "Central Desktop")
 ##シングル サインオンの構成
 
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Central Desktop に対する認証を行えるようにする方法を説明します。この手順の途中で、Base-64 でエンコードされた証明書を Central Desktop テナントにアップロードする必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Central Desktop に対する認証を行えるようにする方法を説明します。
+この手順の途中で、Base-64 でエンコードされた証明書を Central Desktop テナントにアップロードする必要があります。
+この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 
 
@@ -70,57 +72,57 @@
 
 1.  Azure AD ポータルの **Central Desktop** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure single sign-on](./media/active-directory-saas-central-desktop-tutorial/IC749323.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-central-desktop-tutorial/IC749323.png "シングル サインオンの構成")
 
 2.  **[ユーザーの Central Desktop へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure single sign-on](./media/active-directory-saas-central-desktop-tutorial/IC777628.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-central-desktop-tutorial/IC777628.png "シングル サインオンの構成")
 
 3.  **[アプリケーション URL の構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
 
-    -   **[Central Desktop サインイン URL]** ボックスに、Central Desktop テナント の URL を入力します (例: **http://contoso.centraldesktop.com*)。
--   [Central Desktop 応答 URL] ボックスに、Central Desktop AssertionConsumerService URL を入力します (例: https://contoso.centraldesktop.com/saml2-assertion.php)。
+    -   **[Central Desktop サインイン URL]** ボックスに、Central Desktop テナント の URL を入力します (例: *http://contoso.centraldesktop.com*)。
+    -   [Central Desktop 応答 URL] ボックスに、Central Desktop AssertionConsumerService URL を入力します (例: *https://contoso.centraldesktop.com/saml2-assertion.php*)。
 
-    >[AZURE.NOTE]この値は、Central Desktop のメタデータから取得できます (例: **http://contoso.centraldesktop.com*)。
+    >[AZURE.NOTE]この値は、Central Desktop のメタデータから取得できます (例: *http://contoso.centraldesktop.com*)。
 
-    ![Configure app URL](./media/active-directory-saas-central-desktop-tutorial/IC769561.png "Configure app URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-central-desktop-tutorial/IC769561.png "アプリケーション URL の構成")
 
 4.  **[Central Desktop でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
-    ![Configure single sign-on](./media/active-directory-saas-central-desktop-tutorial/IC769562.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-central-desktop-tutorial/IC769562.png "シングル サインオンの構成")
 
 5.  **Central Desktop** テナントにログインします。
 
-6.  **[Settings]** に移動し、**[Advanced]** をクリックして、**[Single Sign On]** をクリックします。
+6.  **[設定]** に移動し、**[詳細]** をクリックして、**[シングル サインオン]** をクリックします。
 
     ![設定 - 詳細設定](./media/active-directory-saas-central-desktop-tutorial/IC769563.png "設定 - 詳細設定")
 
-7.  **[Single Sign On Settings]** ページで、次の手順を実行します。
+7.  **[シングル サインオン設定]** ページで、次の手順を実行します。
 
     ![シングル サインオン設定](./media/active-directory-saas-central-desktop-tutorial/IC769564.png "シングル サインオン設定")
 
-    1.  **[Enable SAML v2 Single Sign On]** チェック ボックスをオンにします。
+    1.  **[SAMLv2 シングル サインオンを有効にする]** チェック ボックスをオンにします。
     2.  Azure AD ポータルの **[Central Desktop でのシングル サインオンの構成]** ページにある **[発行者の URL]** の値をコピーし、**[SSO URL]** ボックスに貼り付けます。
-    3.  Azure AD ポータルの **[Central Desktop でのシングル サインオンの構成]** ページにある **[リモート ログイン URL]** の値をコピーし、**[SSO Login URL]** ボックスに貼り付けます。
-    4.  Azure AD ポータルの **[Central Desktop でのシングル サインオンの構成]** ページにある **[シングル サインアウト サービス URL]** の値をコピーし、**[SSO Logout URL]** ボックスに貼り付けます。
+    3.  Azure AD ポータルの **[Central Desktop でのシングル サインオンの構成]** ページにある **[リモート ログイン URL]** の値をコピーし、**[SSO ログイン URL]** ボックスに貼り付けます。
+    4.  Azure AD ポータルの **[Central Desktop でのシングル サインオンの構成]** ページにある **[シングル サインアウト サービス URL]** の値をコピーし、**[SSO ログアウト URL]** ボックスに貼り付けます。
 
-8.  **[Message Signature Verification Method]** セクションで、次の手順を実行します。
+8.  **[メッセージの署名の確認方法]** セクションで、次の手順を実行します。
 
     ![メッセージの署名の確認方法](./media/active-directory-saas-central-desktop-tutorial/IC769565.png "メッセージの署名の確認方法")
 
-    1.  **[Certificate]** を選択します。
-    2.  **[SSO Certificate]** ボックスの一覧で、**[RSH SHA256]** を選択します。
-    3.  ダウンロードした証明書からテキスト ファイルを作成し、そのテキスト ファイルの内容をコピーして **[SSO Certificate]** フィールドに貼り付けます。  
+    1.  **[証明書]** を選択します。
+    2.  **[SSO 証明書]** ボックスの一覧で、**[RSH SHA256]** を選択します。
+    3.  ダウンロードした証明書からテキスト ファイルを作成し、テキスト ファイルの内容をコピーして、**[SSO 証明書]** フィールドに貼り付けます。  
 
         >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-    4.  **[Display a link to your SAMLv2 login page]** チェック ボックスをオンにします。
+    4.  **[SAMLv2 ログイン ページへのリンクを表示する]** チェック ボックスをオンにします。
 
-9.  **[Update]** をクリックします。
+9.  **[更新]** をクリックします。
 
 10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![Configure single sign-on](./media/active-directory-saas-central-desktop-tutorial/IC769566.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-central-desktop-tutorial/IC769566.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
 
 AAD ユーザーがサインインできるようにするには、ユーザーを Central Desktop アプリケーションにプロビジョニングする必要があります。このセクションでは、Central Desktop で AAD ユーザー アカウントを作成する方法について説明します。
@@ -129,17 +131,17 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
 
 1.  Central Desktop テナントにログインします。
 
-2.  **[People]、[Internal Members]** の順にクリックします。
+2.  **[ユーザー]、[内部メンバー]** の順にクリックします。
 
-3.  **[Add Internal Members]** をクリックします。
+3.  **[内部メンバーの追加]** をクリックします。
 
-    ![People](./media/active-directory-saas-central-desktop-tutorial/IC781051.png "People")
+    ![ユーザー](./media/active-directory-saas-central-desktop-tutorial/IC781051.png "ユーザー")
 
-4.  **[Email Address of New Members]** ボックスに、プロビジョニングする AAD アカウントを入力し、**[Next]** をクリックします。
+4.  **[新しいメンバーの電子メール アドレス]** ボックスに、プロビジョニングする AAD アカウントを入力し、**[次へ]** をクリックします。
 
     ![新しいメンバーの電子メール アドレス](./media/active-directory-saas-central-desktop-tutorial/IC781052.png "新しいメンバーの電子メール アドレス")
 
-5.  **[Add Internal member(s)]** をクリックします。
+5.  **[内部メンバーの追加]** をクリックします。
 
     ![内部メンバーの追加](./media/active-directory-saas-central-desktop-tutorial/IC781053.png "内部メンバーの追加")
 
@@ -161,7 +163,7 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-central-desktop-tutorial/IC767830.png "Yes")
+    ![あり](./media/active-directory-saas-central-desktop-tutorial/IC767830.png "あり")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 

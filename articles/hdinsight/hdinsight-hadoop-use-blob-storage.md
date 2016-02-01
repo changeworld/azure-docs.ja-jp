@@ -27,7 +27,7 @@ Azure BLOB ストレージは、堅牢な汎用ストレージ ソリューシ�
 
 BLOB ストレージにデータを格納した場合、計算で使用する HDInsight クラスターを削除してもユーザー データは失われません。
 
-> [AZURE.NOTE]HDInsight バージョン 3.0 クラスターでは、**asv://* 構文はサポートされません。つまり、**asv://* 構文を明示的に使用するジョブを HDInsight バージョン 3.0 クラスターに送信すると、そのジョブは失敗します。**wasb://* 構文を代わりに使用する必要があります。また、既存のメタストアにより、asv:// 構文を使用してリソースへの明示的な参照を含むジョブを作成し、HDInsight バージョン 3.0 クラスターに送信すると、そのジョブは失敗します。これらのメタストアは、wasb:// 構文を使用してリソースをアドレス指定するように再作成する必要があります。
+> [AZURE.NOTE]HDInsight バージョン 3.0 クラスターでは、**asv://* 構文はサポートされません。つまり、**asv:// 構文を明示的に使用するジョブを HDInsight バージョン 3.0 クラスターに送信すると、そのジョブは失敗します。wasb:// 構文を代わりに使用する必要があります。また、既存のメタストアにより、asv:// 構文を使用してリソースへの明示的な参照を含むジョブを作成し、HDInsight バージョン 3.0 クラスターに送信すると、そのジョブは失敗します。これらのメタストアは、wasb:// 構文を使用してリソースをアドレス指定するように再作成する必要があります。
 
 > HDInsight では現在、ブロック blob のみがサポートされています。
 
@@ -150,7 +150,7 @@ HDInsight から BLOB ストレージ内のファイルにアクセスするた�
 	wasb[s]://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
 
 
-> [AZURE.NOTE](HDInsight のエミュレーター上で実行されている) ストレージ エミュレーター上にあるファイルを指定するための構文は、<i>wasb://&lt;ContainerName&gt;@storageemulator</i> です。
+> [AZURE.NOTE] \(HDInsight のエミュレーター上で実行されている) ストレージ エミュレーター上にあるファイルを指定するための構文は、<i>wasb://&lt;ContainerName&gt;@storageemulator</i> です。
 
 
 
@@ -167,7 +167,7 @@ HDInsight から BLOB ストレージ内のファイルにアクセスするた�
 > [AZURE.NOTE]HDInsight バージョン 2.1 クラスターと 1.6 クラスターでは、ファイル名は <i>hadoop-examples.jar</i> です。
 
 
-&lt;path&gt; は、ファイルまたはディレクトリの HDFS パス名です。Azure BLOB ストレージのコンテナーにはキーと値のペアが格納されるだけであるため、階層ファイル システムは存在しません。ただし、BLOB キー内でスラッシュ (/) を使用すると、ディレクトリの区切りと見なされます。たとえば、hadoop-mapreduce-examples.jar に対応する BLOB 名は、次のとおりです。
+&lt;path&gt; は、ファイルまたはディレクトリの HDFS パス名です。Azure BLOB ストレージのコンテナーにはキーと値のペアが格納されるだけであるため、階層ファイル システムは存在しません。ただし、BLOB キー内でスラッシュ (/) を使用すると、ディレクトリの区切りと見なされます。たとえば、*hadoop-mapreduce-examples.jar* に対応する BLOB 名は、次のとおりです。
 
 	example/jars/hadoop-mapreduce-examples.jar
 

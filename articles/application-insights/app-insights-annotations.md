@@ -30,7 +30,7 @@
 1. [Visual Studio Team Services](https://www.visualstudio.com/ja-JP/get-started/setup/sign-up-for-visual-studio-online) プロジェクトにサインインします。
 2. Visual Studio Marketplace で[リリース注釈拡張機能を取得](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)して、Team Services アカウントに追加します。
 
-![Team Service Web ページの右上で Marketplace を開くSelect Visual Team Services and then under Build and Release, choose See More.](./media/app-insights-annotations/10.png)
+![Team Service Web ページの右上で Marketplace を開くアカウントで Application Insights 注釈を検索してインストール](./media/app-insights-annotations/10.png)
 
 この操作は、Visual Studio Team Services アカウントごとに 1 回行うだけですみます。これで、リリース注釈をアカウントのプロジェクトに対して構成できるようになりました。
 
@@ -46,7 +46,7 @@
 
 2. 別のブラウザー ウィンドウで、Visual Studio Team Services のデプロイを管理するリリース テンプレートを開きます (または作成します)。
 
-    タスクを追加し、メニューから [Application Insights Release Annotation] (Application Insights リリース注釈) タスクを選択します。
+    タスクを追加し、メニューから \[Application Insights Release Annotation] (Application Insights リリース注釈) タスクを選択します。
 
     [API アクセス] ブレードからコピーした **Application ID** を貼り付けます。
 

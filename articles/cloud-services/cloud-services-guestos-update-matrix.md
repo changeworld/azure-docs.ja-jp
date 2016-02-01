@@ -24,7 +24,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 <!-- -->
 <br />
 
-> [AZURE.TIP][ゲスト OS 更新 RSS フィード][rss]をサブスクライブして、ゲスト OS のすべての変更に関する通知をタイムリーに受信してください。フィードに記載される変更は、ほぼ毎週このページに統合されます。
+> [AZURE.TIP] [ゲスト OS 更新 RSS フィード][rss]をサブスクライブして、ゲスト OS のすべての変更に関する通知をタイムリーに受信してください。フィードに記載される変更は、ほぼ毎週このページに統合されます。
 
 
 
@@ -414,4 +414,4 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 [fam1retire]: cloud-services-guestos-family1-retirement.md
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0121_2016--->

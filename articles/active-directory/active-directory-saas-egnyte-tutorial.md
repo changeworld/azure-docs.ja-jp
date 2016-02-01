@@ -64,7 +64,9 @@
     ![Egnyte](./media/active-directory-saas-egnyte-tutorial/IC787814.png "Egnyte")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Egnyte に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Egnyte に対する認証を行うことができるようにする方法を説明します。
+この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。
+この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
@@ -78,7 +80,7 @@
 
 3.  **[アプリケーション URL の構成]** ページの **[Egnyte サインイン URL]** ボックスに、"**https://company.egnyte.com*"" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-egnyte-tutorial/IC787817.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-egnyte-tutorial/IC787817.png "アプリケーション URL の構成")
 
 4.  **[Egnyte でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
@@ -88,15 +90,15 @@
 
 6.  **[設定]** をクリックします
 
-    ![Settings](./media/active-directory-saas-egnyte-tutorial/IC787819.png "Settings")
+    ![設定](./media/active-directory-saas-egnyte-tutorial/IC787819.png "設定")
 
 7.  メニューで **[設定]** をクリックします。
 
-    ![Settings](./media/active-directory-saas-egnyte-tutorial/IC787820.png "Settings")
+    ![設定](./media/active-directory-saas-egnyte-tutorial/IC787820.png "設定")
 
 8.  **[構成]** タブをクリックし、**[セキュリティ]** をクリックします。
 
-    ![Security](./media/active-directory-saas-egnyte-tutorial/IC787821.png "Security")
+    ![セキュリティ](./media/active-directory-saas-egnyte-tutorial/IC787821.png "セキュリティ")
 
 9.  **[シングル サインオン認証]** セクションで、次の手順を実行します。
 
@@ -130,7 +132,7 @@ Azure AD ユーザーが Egnyte にログインできるようにするには、
 
 3.  **[新しいユーザーの追加]** をクリックし、追加するユーザーの種類を選択します。
 
-    ![Users](./media/active-directory-saas-egnyte-tutorial/IC787824.png "Users")
+    ![ユーザー](./media/active-directory-saas-egnyte-tutorial/IC787824.png "ユーザー")
 
 4.  **[新しい標準ユーザー]** セクションで、次の手順を実行します。
 
@@ -157,7 +159,7 @@ Azure AD ユーザーが Egnyte にログインできるようにするには、
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-egnyte-tutorial/IC767830.png "Yes")
+    ![あり](./media/active-directory-saas-egnyte-tutorial/IC767830.png "あり")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 

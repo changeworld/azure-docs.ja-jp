@@ -169,8 +169,8 @@ Azure AD Connect が DirSync からの引き継ぎの準備を完了している
 
 ### DirSync (古いサーバー) をアンインストールする
 
-- **[プログラムと機能]** で **[Windows Azure Active Directory 同期ツール]** を見つけます。
-- **[Windows Azure Active Directory 同期ツール]** をアンインストールします。
+- **[プログラムと機能]** で **[Microsoft Azure Active Directory 同期ツール]** を見つけます。
+- **[Microsoft Azure Active Directory 同期ツール]** をアンインストールします。
 - アンインストールが完了するまで 15 分ほどかかる場合があります。
 
 DirSync がアンインストールされていると、アクティブなサーバーが Azure AD にエクスポートされません。オンプレミスの Active Directory のすべての変更が引き続き Azure AD に同期されるには、次の手順を完了する必要があります。
@@ -197,4 +197,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!----HONumber=AcomDC_0121_2016--->

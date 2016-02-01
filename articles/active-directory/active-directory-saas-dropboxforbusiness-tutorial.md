@@ -75,48 +75,48 @@
 
 1.  Azure AD ポータルの **Dropbox for Business** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure single sign-on](./media/active-directory-saas-dropboxforbusiness-tutorial/IC749323.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/IC749323.png "シングル サインオンの構成")
 
 2.  **[Dropbox for Business へのサインオン方法を選択してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure single sign-on](./media/active-directory-saas-dropboxforbusiness-tutorial/IC749327.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/IC749327.png "シングル サインオンの構成")
 
 3.  **[アプリケーション URL の構成]** ページで、次の手順を実行します。
 
-     3\.1.Dropbox for Business テナントにサインオンします。<br><br> ![Configure single sign-on](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769509.png "Configure single sign-on")
+     3.1.Dropbox for Business テナントにサインオンします。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769509.png "シングル サインオンの構成")
 
-     3\.2.左側のナビゲーション ウィンドウで、**[管理コンソール]** をクリックします。<br><br> ![Configure single sign-on](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769510.png "Configure single sign-on")
+     3.2.左側のナビゲーション ウィンドウで、**[管理コンソール]** をクリックします。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769510.png "シングル サインオンの構成")
 
-     3\.3**[管理コンソール]** の左側のナビゲーション ウィンドウで、**[認証]** をクリックします。<br><br> ![Configure single sign-on](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769511.png "Configure single sign-on")
+     3.3**[管理コンソール]** の左側のナビゲーション ウィンドウで、**[認証]** をクリックします。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769511.png "シングル サインオンの構成")
 
-     3\.4.**[シングル サインオン]** セクションで **[シングル サインオンを有効にする]** を選択し、**[詳細]** をクリックしてこのセクションを展開します。<br><br> ![Configure single sign-on](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769512.png "Configure single sign-on")
+     3.4.**[シングル サインオン]** セクションで **[シングル サインオンを有効にする]** を選択し、**[詳細]** をクリックしてこのセクションを展開します。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769512.png "シングル サインオンの構成")
 
-     3\.5.**[ユーザーは電子メール アドレスを入力してサインインすることも、次の URL に直接移動することもできます]** の横の URL をコピーします。<br><br> ![Configure single sign-on](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769513.png "Configure single sign-on")
+     3.5.**[ユーザーは電子メール アドレスを入力してサインインすることも、次の URL に直接移動することもできます]** の横の URL をコピーします。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769513.png "シングル サインオンの構成")
 
-     3\.6.Azure ポータルで、**[DropBox for Business サインイン URL]** ボックスに URL を貼り付けます。<br><br> ![Configure single sign-on](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769514.png "Configure single sign-on")
-
-
-
-4. **[Dropbox for Business でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。<br><br> ![Configure single sign-on](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769515.png "Configure single sign-on")
+     3.6.Azure ポータルで、**[DropBox for Business サインイン URL]** ボックスに URL を貼り付けます。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769514.png "シングル サインオンの構成")
 
 
-5. Dropbox for Business テナントの **[認証]** ページの **[シングル サインオン]** セクションで、次の手順を実行します。<br><br> ![Configure single sign-on](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769516.png "Configure single sign-on")
 
-     5\.1.**[必須項目です]** をクリックします。
-
-     5\.2.Azure ポータルで、**[Dropbox for Business でのシングル サインオンの構成]** ダイアログ ページの **[サインイン ページ URL]** の値をコピーし、**[サインイン URL]** ボックスに貼り付けます。
+4. **[Dropbox for Business でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769515.png "シングル サインオンの構成")
 
 
-     5\.3.ダウンロードした証明書から **Base-64 でエンコードされた**ファイルを作成します。[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+5. Dropbox for Business テナントの **[認証]** ページの **[シングル サインオン]** セクションで、次の手順を実行します。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769516.png "シングル サインオンの構成")
+
+     5.1.**[必須項目です]** をクリックします。
+
+     5.2.Azure ポータルで、**[Dropbox for Business でのシングル サインオンの構成]** ダイアログ ページの **[サインイン ページ URL]** の値をコピーし、**[サインイン URL]** ボックスに貼り付けます。
 
 
-     5\.4.**[証明書の選択]** をクリックし、**Base-64 でエンコードされた証明書ファイル**を参照します。
+     5.3.ダウンロードした証明書から **Base-64 でエンコードされた**ファイルを作成します。 > [AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 
-     5\.5.**[変更の保存]** をクリックして、DropBox for Business テナントでの構成を完了します。
+     5.4.**[証明書の選択]** をクリックし、**Base-64 でエンコードされた証明書ファイル**を参照します。
 
 
-6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。<br><br> ![Configure single sign-on](./media/active-directory-saas-dropboxforbusiness-tutorial/IC749329.png "Configure single sign-on")
+     5.5.**[変更の保存]** をクリックして、DropBox for Business テナントでの構成を完了します。
+
+
+6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/IC749329.png "シングル サインオンの構成")
 
 
 
@@ -160,7 +160,7 @@
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-dropboxforbusiness-tutorial/IC767830.png "Yes")
+    ![あり](./media/active-directory-saas-dropboxforbusiness-tutorial/IC767830.png "あり")
   
 
 

@@ -64,7 +64,9 @@
     ![Jobscience](./media/active-directory-saas-jobscience-tutorial/IC784357.png "Jobscience")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Jobscience に対する認証を行えるようにする方法を説明します。Jobscience のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Jobscience に対する認証を行えるようにする方法を説明します。
+Jobscience のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。
+この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
@@ -94,7 +96,7 @@
 
 8.  **[アプリ URL の構成]** ページの **[Jobscience サインイン URL]** ボックスに、"**http://company.my.salesforce.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-jobscience-tutorial/IC784362.png "Configure App URL")
+    ![アプリ URL の構成](./media/active-directory-saas-jobscience-tutorial/IC784362.png "アプリ URL の構成")
 
 9.  **[Jobscience でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターのローカルに保存します。
 
@@ -108,7 +110,7 @@
 
     ![シングル サインオンの設定](./media/active-directory-saas-jobscience-tutorial/IC781026.png "シングル サインオンの設定")
 
-    1.  **[SAML Enabled]** を選択します。
+    1.  **[SAML を有効化]** を選択します。
     2.  **[新規]** をクリックします。
 
 12. **[SAML シングル サインオン設定の編集]** ページで、次の手順に従います。
@@ -160,7 +162,7 @@ Azure AD ユーザーが Jobscience にログインできるようにするに�
 
 3.  **[ユーザーの管理] の [ユーザー]** に移動します。
 
-    ![Users](./media/active-directory-saas-jobscience-tutorial/IC784369.png "Users")
+    ![ユーザー](./media/active-directory-saas-jobscience-tutorial/IC784369.png "ユーザー")
 
 4.  **[新しいユーザー]** をクリックします。
 
@@ -191,7 +193,7 @@ Azure AD ユーザーが Jobscience にログインできるようにするに�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-jobscience-tutorial/IC767830.png "Yes")
+    ![あり](./media/active-directory-saas-jobscience-tutorial/IC767830.png "あり")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 

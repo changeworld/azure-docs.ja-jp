@@ -78,7 +78,7 @@
 
 3.  [**アプリケーション URL の構成**] ページの [**AirWatch サインオン URL**] テキスト ボックスに、AirWatch アプリケーションへのサインインにユーザーが使用する URL (例: "https:// companycode.awmdm.com/AirWatch/Login?gid=companycode") を入力し、[**次へ**] をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-airwatch-tutorial/IC791918.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-airwatch-tutorial/IC791918.png "アプリケーション URL の構成")
 
 4.  [**AirWatch でのシングル サインオン構成**] ページで、[**証明書のダウンロード**] をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -177,7 +177,7 @@ Azure AD ユーザーが AirWatch にログインできるようにするには�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-airwatch-tutorial/IC767830.png "Yes")
+    ![あり](./media/active-directory-saas-airwatch-tutorial/IC767830.png "あり")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 

@@ -37,7 +37,7 @@ ExpressRoute 回線では、Azure パブリック、Azure プライベート、�
 
 ## ExpressRoute のルーティング ドメイン
 
-ExpressRoute 回線には、複数のルーティング ドメイン (Azure パブリック、Azure プライベート、Microsoft) が関連付けられます。各ルーティング ドメインは、高可用性を実現するために、ルーターのペアに同じ方法 (アクティブ/アクティブ構成または負荷分散構成) で構成されます。Azure サービスは Azure パブリックおよび Azure プライベートとして分類され、IP アドレス指定スキームを表します。
+ExpressRoute 回線には、複数のルーティング ドメイン (Azure パブリック、Azure プライベート、Microsoft) が関連付けられます。各ルーティング ドメインは、高可用性を実現するために、ルーターのペアに同じ方法 (アクティブ/アクティブ構成または負荷分散構成) で構成されます。Azure サービスは Azure パブリックおよびAzure プライベートとして分類され、IP アドレス指定スキームを表します。
 
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)

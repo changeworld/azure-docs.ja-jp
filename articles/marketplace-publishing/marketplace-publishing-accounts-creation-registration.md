@@ -19,7 +19,7 @@
 # Microsoft 開発者アカウントの作成
 この記事では、Azure Marketplace の承認済みの Microsoft 開発者になるために必要なアカウントの作成と登録のプロセスについて説明します。
 
-## 1\.Microsoft アカウントの作成
+## 1.Microsoft アカウントの作成
 > [AZURE.WARNING]発行プロセスを開始するには、まず Microsoft アカウントを作成する必要があります。このアカウントは、**Microsoft デベロッパー センター**と **Azure 発行ポータル**の両方に対する登録とサインインに使用します。複数の Azure Marketplace サービスに対して 1 つの Microsoft アカウントを使用してください。各サービスおよびプランに対し、個別のアカウントを作成する必要はありません。
 
 ユーザー名が含まれたアドレスは、貴社のドメインか IT チームで管理する必要があります (publishing@example.com) など)。支払いや税金に関する情報、またレポートは、このアカウントを通じて配信されます。
@@ -147,7 +147,11 @@ Azure 発行ポータルは、プランの発行と管理に使用されます�
 
   >[AZURE.TIP]参加ポリシーについては、[Azure Web サイト](http://azure.microsoft.com/support/legal/marketplace/participation-policies/)を参照してください。
 
-  > デベロッパー センターの登録で問題が発生した場合は、次の手順でサポート チケットを記録してください。1. [サポート](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&supportregion=ja-JP&pesid=15635&ccsid=635847950577064286)に問い合わせる。2.**[デベロッパー センター]** を選択する。3.**[プロファイル]** を選択する。4.連絡方法を選択する。
+  > デベロッパー センターの登録で問題が発生した場合は、次の手順でサポート チケットを記録してください。
+  1. [サポート](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&supportregion=ja-JP&pesid=15635&ccsid=635847950577064286)に問い合わせる。
+  2.**[デベロッパー センター]** を選択する。
+  3.**[プロファイル]** を選択する。
+  4.連絡方法を選択する。
 
 
 
