@@ -29,7 +29,7 @@
 	    "interval": 1
 	},  
     
-![Scheduler の例](./media/data-factory-scheduling-and-execution/scheduler-example.png)
+![スケジューラの例](./media/data-factory-scheduling-and-execution/scheduler-example.png)
 
 上のように、毎時のスケジュールを指定すると、一連のタンブリング ウィンドウに対応するアクティビティ実行が作成されます。タンブリング ウィンドウとは、一連の固定サイズで重複しない連続する時間間隔です。
  
@@ -475,7 +475,7 @@ Hive アクティビティは 2 つの入力を使用して、出力スライス
 	          },
 	          {
 	            "name": "AzureBlobInputWeekly",
-	            "startTime": "Date.AddDays(SliceStart,  -7 - Date.DayOfWeek(SliceStart))",
+	            "startTime": "Date.AddDays(SliceStart, - Date.DayOfWeek(SliceStart))",
 	            "endTime": "Date.AddDays(SliceEnd,  -Date.DayOfWeek(SliceEnd))"  
 	          }
 	        ],
@@ -678,4 +678,4 @@ Data Factory で生成されるデータセットと同様に、外部データ�
 
   
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

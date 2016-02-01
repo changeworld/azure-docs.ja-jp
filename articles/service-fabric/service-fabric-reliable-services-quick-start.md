@@ -16,33 +16,33 @@
    ms.date="11/15/2015"
    ms.author="vturecek"/>
 
-# Microsoft Azure Service Fabric の Reliable Service の概要
+# Service Fabric の Reliable Services の概要
 
-Service Fabric アプリケーションには、コードを実行する 1 つ以上のサービスが含まれています。ここでは、[Reliable Services](service-fabric-reliable-services-introduction.md) を使用してステートレスとステートフル両方の Service Fabric アプリケーションを作成する方法を説明します。
+Azure Service Fabric アプリケーションには、コードを実行する 1 つ以上のサービスが含まれています。このガイドでは、[Reliable Services](service-fabric-reliable-services-introduction.md) を使用してステートレスとステートフル両方の Service Fabric アプリケーションを作成する方法を説明します。
 
 ## ステートレス サービスの作成
 
-ステートレス サービスは、現在ほとんどのクラウド アプリケーションに含まれるサービスの種類です。確実に格納しなければならいデータや可用性を高めなければならないデータがサービス自体に含まれない場合、サービスはステートレスだと考えられます。つまり、ステートレス サービスのインスタンスがシャットダウンした場合、その内部状態はすべて失われてしまうということです。これらの種類のサービスで、状態の高可用性と高い信頼性を実現するには、Azure テーブルや SQL データベースなどの外部ストアに状態を格納する必要があります。
+ステートレス サービスは、クラウド アプリケーションで現在基準となっている種類のサービスです。ステートレスと見なされるのは、確実に格納する必要があるデータや高可用性を実現する必要があるデータが、サービス自体には含まれていないためです。ステートレス サービスのインスタンスが終了すると、すべての内部状態が失われます。この種類のサービスで、状態の高可用性と高い信頼性を実現するには、Azure テーブルや SQL データベースなどの外部ストアに状態を格納する必要があります。
 
-Visual Studio 2015 RC を**管理者**として起動し、*HelloWorld* という名前の新しい **Service Fabric アプリケーション** プロジェクトを作成します。
+Visual Studio 2015 RC を管理者として起動し、HelloWorld という名前の新しい Service Fabric アプリケーション プロジェクトを作成します。
 
-![[新しいプロジェクト] ダイアログを使用して、新しい Service Fabric アプリケーションを作成します。](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
+![[新しいプロジェクト] ダイアログを使用して新しい Service Fabric アプリケーションを作成する](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
-次に、*HelloWorldStateless* という名前の**ステートレス サービス** プロジェクトを作成します。
+次に、HelloWorldStateless という名前のステートレス サービス プロジェクトを作成します。
 
-![2 番目のダイアログ ボックスでは、ステートレス サービスを作成します。](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
+![2 番目のダイアログ ボックスでステートレス サービス プロジェクトを作成する](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
 これで、ソリューションには、次の 2 つのプロジェクトが含まれています。
 
- + **HelloWorld**: これは*サービス*を含む*アプリケーション* プロジェクトです。また、アプリケーションを説明するアプリケーション マニフェストと、アプリケーションをデプロイするのに役立つ多くの PowerShell スクリプトも含まれます。
- + **HelloWorldStateless**: これはサービス プロジェクトで、ステートレス サービスの実装が含まれています。
+ - HelloWorld。これはサービスを含むアプリケーション プロジェクトです。また、アプリケーションを説明するアプリケーション マニフェストと、アプリケーションをデプロイするのに役立つ多くの PowerShell スクリプトも含まれます。
+ - HelloWorldStateless。これはサービス プロジェクトです。ステートレス サービスの実装が含まれています。
 
 
 ## サービスの実装
 
 サービス プロジェクト内にある **HelloWorldStateless.cs** ファイルを開きます。Service Fabric では、どのようなビジネス ロジックもサービスで実行できます。サービス API には、コードのエントリ ポイントが 2 つあります。
 
- - *RunAsync* と呼ばれる変更可能なエントリ ポイント メソッドでは、実行時間の長いコンピューティング ワークロードなどの任意のワークロードを実行開始できます。
+ - ワークロードの実行を開始できる、RunAsync と呼ばれる変更可能なエントリ ポイント メソッド。ワークロードには、実行時間の長いコンピューティング ワークロードも含まれます。
 
 ```C#
 protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -51,7 +51,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
- - Web API などの任意の通信スタックをプラグインできる通信エントリ ポイントでは、ユーザーまたはその他のサービスからの要求の受信を開始できます。
+ - 選択した通信スタック (ASP.NET Web API など) をプラグインできる通信エントリ ポイント。これは、ユーザーおよびその他のサービスからの要求の受信を開始できる場所です。
 
 ```C#
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -60,9 +60,9 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-このチュートリアルでは、コードをすぐに実行開始できる `RunAsync()` エントリ ポイント メソッドを取り上げます。プロジェクト テンプレートには、ローリング カウントをインクリメントする `RunAsync()` の実装例が含まれます。
+このチュートリアルでは、`RunAsync()` エントリ ポイント メソッドを取り上げます。これは、コードの実行をすぐに開始できる場所です。プロジェクト テンプレートには、ローリング カウントをインクリメントする `RunAsync()` の実装例が含まれます。
 
-> [AZURE.NOTE]通信スタックの操作に関する詳細については、「[OWIN 自己ホストによる Microsoft Azure Service Fabric の Web API サービスの概要](service-fabric-reliable-services-communication-webapi.md)」を参照してください。
+> [AZURE.NOTE]通信スタックを使用する方法の詳細については、「[OWIN 自己ホストによる Microsoft Azure Service Fabric Web API の概要](service-fabric-reliable-services-communication-webapi.md)」を参照してください。
 
 
 ### RunAsync
@@ -86,36 +86,36 @@ protected override async Task RunAsync(CancellationToken cancelServiceInstance)
 }
 ```
 
-プラットフォームでは、サービスのインスタンスが配置され実行準備ができたときに、このメソッドが呼び出されます。ステートレス サービスの場合、これは単にサービス インスタンスが開始したことになります。サービス インスタンスを終了する必要がある場合のために、キャンセル トークンが提供されています。Service Fabric でサービス インスタンスの開始から終了のサイクルは、次のようなさまざまな理由で、サービスのライフタイムで何度も発生する可能性があります。
+プラットフォームは、サービスのインスタンスが配置され実行準備ができたときに、このメソッドを呼び出します。ステートレス サービスの場合、これは単にサービス インスタンスが開いたことを意味します。サービス インスタンスを終了する必要がある場合のために、キャンセル トークンが提供されています。Service Fabric では、サービス インスタンスの開始から終了のサイクルは、サービスのライフタイムで何度も発生する可能性があります。これは、さまざまな理由で発生する可能性があります。
 
-- リソース分散のために、サービス インスタンスが切り替わっている場合。
-- コード内でエラーが発生した場合。
-- アプリケーションまたはシステムのアップグレード中。
-- 基礎となるハードウェアで障害が発生した場合。
+- システムがリソース分散のためにサービス インスタンスを移動している。
+- コードでエラーが発生している。
+- アプリケーションまたはシステムがアップグレードされている。
+- 基礎となるハードウェアで障害が発生している。
 
-このオーケストレーションは、サービスの可用性を高めて適切なバランスを取るために、システムによって管理されます。
+この調整は、サービスの可用性を高めて適切なバランスを取るために、システムによって管理されます。
 
-`RunAsync()` は独自**タスク**内で実行されます。ここで使用しているコード スニペットでは、**while** ループをすぐに開始しているため、ワークロードのために別のタスクをスケジュール設定する必要はありません。ワークロードの取り消しは、提供されたキャンセル トークンを使用して協調的に調整されます。システムはタスクが完了 (正常に完了、キャンセル、または失敗) するまで待機してから、次に進みます。**重要**: システムからキャンセルが要求された場合、キャンセル トークンを利用し、すべての作業を完了してから、できるだけ早く `RunAsync()` を終了します。
+`RunAsync()` は独自タスク内で実行されます。上記のコード スニペットでは、while ループがすぐに開始されることに注意してください。ワークロード用の別のタスクをスケジュール設定する必要はありません。ワークロードの取り消しは、提供されたキャンセル トークンを使用して協調的に調整されます。システムはタスクが完了 (正常に完了、キャンセル、または失敗) するまで待機してから、次に進みます。システムからキャンセルが要求された場合は、キャンセル トークンを利用して作業を完了し、できるだけ早く `RunAsync()` を終了することが重要です。
 
-このステートレス サービスの例では、カウントはローカル変数に格納されます。これはステートレス サービスであるため、保存される値は、その値を含むサービス インスタンスの現在のライフサイクルのみで保持されます。このサービスを移動または再起動すると、値は失われます。
+このステートレス サービスの例では、カウントはローカル変数に格納されます。これはステートレス サービスであるため、保存される値は、サービス インスタンスの現在のライフサイクルのみで保持されます。このサービスを移動または再起動すると、値は失われます。
 
 ## ステートフル サービスの作成
 
-Service Fabric では、新しい種類のステートフル サービスが導入されました。それは、サービス内で状態を確実に維持でき、サービスで使用されているコードと併置されているサービスです。Service Fabric によって状態の可用性が高まるため、外部ストアに状態を維持する必要がなくなります。
+Service Fabric には、新しい種類のステートフルなサービスが導入されています。ステートフル サービスは、サービス内に状態を確実に維持でき、それを使用するコードと同じ場所に配置できます。Service Fabric によって状態の可用性が高まるため、外部ストアに状態を維持する必要がなくなります。
 
-サービスを切り替えたり、再起動したりした場合でも、カウンター値をステートレスから高可用と永続性に変換するには、ステートフル サービスが必要です。
+サービスが移動または再起動した場合でも、カウンター値をステートレスから高可用と永続性に変換するには、ステートフル サービスが必要です。
 
-先ほどと同じ **HelloWorld** アプリケーションで、アプリケーション プロジェクトを右クリックして **[新しい Fabric Service]** を選択し、新しいサービスを追加します。
+先ほどと同じ HelloWorld アプリケーションで、アプリケーション プロジェクトを右クリックして **[新しい Fabric Service]** を選択することで、新しいサービスを追加できます。
 
 ![Service Fabric アプリケーションにサービスを追加します。](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-[**Service Fabric のステートフル サービス**] を選択し、「HelloWorldStateful」という名前を付けます。**[追加]** をクリックします。
+**[ステートフル サービス]** を選択し、HelloWorldStateful という名前を付けます。**[OK]** をクリックします。
 
-![[新しいプロジェクト] ダイアログを使用して、新しい Service Fabric ステートフル サービスを作成します。](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
+![[新しいプロジェクト] ダイアログを使用して新しい Service Fabric のステートフル サービスを作成する](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
-アプリケーションには、ステートレス サービス* HelloWorld* とステートフル サービス *HelloWorldStateful* という 2 つのサービスが表示されています。
+アプリケーションには、ステートレス サービス HelloWorld とステートフル サービス HelloWorldStateful という 2 つのサービスが表示されています。
 
-*HelloWorldStateful* で、次の `RunAsync` メソッドを含む **HelloWorldStateful.cs** を開きます。
+HelloWorldStateful で、次の RunAsync メソッドを含む **HelloWorldStateful.cs** を開きます。
 
 ```C#
 protected override async Task RunAsync(CancellationToken cancelServicePartitionReplica)
@@ -150,7 +150,7 @@ protected override async Task RunAsync(CancellationToken cancelServicePartitionR
             await tx.CommitAsync();
         }
 
-        // Pause for 1 second before continue processing.
+        // Pause for one second before continuing processing.
         await Task.Delay(TimeSpan.FromSeconds(1), cancelServicePartitionReplica);
     }
 }
@@ -158,27 +158,27 @@ protected override async Task RunAsync(CancellationToken cancelServicePartitionR
 
 ### RunAsync
 
-ステートフル サービスのエントリ ポイントは、ステートレス サービスと同じです。主な違いは、*Reliable Collection* と *State Manager* の可用性です。ステートフル サービスの `RunAsync()` はステートレス サービスにおいてと同様に機能しますが、ステートフル サービスでは `RunAsync()` の実行前に、*State Manager* と *Reliable Collection* の使用準備ができているかを確認するなどの追加作業を、ユーザーではなくプラットフォームが行う点が異なります。
+ステートフル サービスのエントリ ポイントは、ステートレス サービスと同じです。主な違いは、Reliable Collection と状態マネージャーの可用性です。`RunAsync()` は、ステートフル サービスとステートレス サービスで同じように動作します。ただし、ステートフル サービスでは、プラットフォームは、`RunAsync()` を実行する前に、ユーザーのために追加の作業を行います。この作業には、状態マネージャーと Reliable Collection が使用できる状態にあることの確認が含まれる可能性があります。
 
-### Reliable Collection および Reliable State Manager
+### Reliable Collection と状態マネージャー
 
 ```C#
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-**IReliableDictionary** は、サービスに状態を信頼性の高い方法で格納できるディクショナリの実装です。これは、Service Fabric の組み込みの [Reliable Collection](service-fabric-reliable-services-reliable-collections.md) に含まれています。Service Fabric と Reliable Collection を使用すると、データをサービスに直接格納することができます。外部の永続ストアは不要なので、データを高可用にする必要はありません。これを達成するために、Service Fabric では、サービスの複数*レプリカ*が作成および管理される一方で、これらのレプリカとその状態遷移の管理上の複雑さを抽象化する API が提供されています。
+IReliableDictionary は、サービスに状態を確実に格納するために使用できるディクショナリの実装です。これは、Service Fabric に組み込まれている [Reliable Collection](service-fabric-reliable-services-reliable-collections.md) の一部です。Service Fabric と Reliable Collection を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。この方法によって、データの可用性が高まります。Service Fabric では、サービスの複数のレプリカを作成して管理することでこれを実現します。また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
 
 Reliable Collection にはカスタム型を含むすべての .NET 型を格納できます。ただし次の点にご注意ください。
 
- 1. Service Fabric では、ノード全体で状態を*レプリケート*してローカル ディスクに格納することで、状態が高可用性になります。これはつまり、Reliable Collection に格納されているすべてのデータは*シリアル化*する必要があるということです。既定では、Reliable Collection は [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) を使用してシリアル化します。そのため、既定のシリアライザーを使用する場合は、使用する型が[データ コントラクト シリアライザーでサポートされている](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx)ことを確認することは重要です 。
+ - Service Fabric では、ノード全体で状態をレプリケートしてローカル ディスクに格納することで、状態の可用性を高めます。これは、Reliable Collection に格納されるすべてのデータはシリアル化可能である必要があることを意味します。既定では、Reliable Collection は [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) を使用してシリアル化します。そのため、既定のシリアライザーを使用する場合は、使用する型が[データ コントラクト シリアライザーでサポートされている](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx)ことを確認することが重要です。
 
- 2. Reliable Collection でトランザクションをコミットすると、オブジェクトはレプリケートされて可用性が高まります。Reliable Collection に格納されているオブジェクトはサービスのローカル メモリに保持されるため、オブジェクトへのローカル参照が存在することになります。
+ - Reliable Collection でトランザクションをコミットすると、可用性が高めるためにオブジェクトがレプリケートされます。Reliable Collection に格納されるオブジェクトは、サービスのローカル メモリに保持されます。これは、オブジェクトへのローカルな参照があることを意味します。
 
     トランザクションの Reliable Collection を更新せずに、これらのオブジェクトのローカル インスタンスを変更しないようにしてください。これらの変更は自動的にレプリケートされないためです。
 
-Reliable Collection は *StateManager* によって管理されます。サービス内のどこからでも Reliable Collection の名前を指定して StateManager に要求すれば、いつでも必ず参照を取得できます。参照を Reliable Collection インスタンスのクラス メンバーの変数やプロパティに保存することはお勧めしません。サービスのライフサイクルでは常に参照がインスタンスに設定されているように特に注意が必要だからです。この作業は StateManager によって実行され、繰り返されるアクセスに最適化されています。
+Reliable Collection の管理は状態マネージャーが行います。サービス内のどの時点のどの場所でも、名前によって Reliable Collection の情報を状態マネージャーに問い合わせることができます。状態マネージャーは参照が取得されることを保証します。Reliable Collection インスタンスへの参照をクラス メンバー変数やプロパティに保存することはお勧めしません。サービスのライフサイクル中、参照が常にインスタンスに設定されていることを保証するために特に注意を払う必要があります。この作業は状態マネージャーによって処理され、繰り返されるアクセスのために最適化されます。
 
-### トランザクションおよび非同期
+### トランザクション処理と非同期処理
 
 ```C#
 using (ITransaction tx = this.StateManager.CreateTransaction())
@@ -191,26 +191,26 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-Reliable Collection には、LINQ など、`System.Collections.Generic` および `System.Collections.Concurrent` の操作と同じ操作が多くあります。ただし、Reliable Collection に対する操作は非同期です。これは Reliable Collection での書き込み操作が*レプリケート*されるためです (操作を別のノード上にあるサービスのレプリカに送信することで高可用性を実現しているということです)。
+Reliable Collection には、LINQ を含めて、`System.Collections.Generic` と `System.Collections.Concurrent` が実行する操作と同じ操作が多数あります。ただし、Reliable Collection に対する操作は非同期です。これは Reliable Collection での書き込み操作はレプリケートされるためです。高可用性のため、これらの操作は、別のノード上の他のサービスのレプリカに送信されます。
 
-*トランザクション*操作もサポートされているため、複数の Reliable Collection 間で状態の整合性を保つことができます。たとえば、1 つのトランザクション内で Reliable Queue から作業項目をデキューし、その項目の操作を実行してから、結果を Reliable Dictionary に保存するとします。これはアトミック操作として処理されるため、すべての操作が成功するかしないかのいずれかになることが決まっています。そのため、項目をデキューした後で、結果を保存する前にエラーが発生した場合は、トランザクション全体がロールバックされ、その項目はキューに残って処理を待ちます。
+トランザクション操作もサポートされているため、複数の Reliable Collection 間で状態の整合性を保つことができます。たとえば、1 つのトランザクション内で Reliable Queue から作業項目をデキューし、その項目の操作を実行してから、結果を Reliable Dictionary に保存するとします。これはアトミック操作として扱われ、操作全体が成功するかまったく成功しないことが保証されます。項目をデキューしたが、結果を保存する前にエラーが発生した場合は、トランザクション全体がロールバックされ、項目は処理のためにキューに残ります。
 
 ## アプリケーションの実行
 
-*HelloWorld* アプリケーションに戻ります。ここからサービスを構築してデプロイできます。**F5** キーを押すと、アプリケーションが構築され、ローカル クラスターにデプロイされます。
+HelloWorld アプリケーションに戻ります。ここからサービスを構築してデプロイできます。**F5** キーを押すと、アプリケーションが構築され、ローカル クラスターにデプロイされます。
 
-サービスが実行されると、生成された ETW イベントが [**診断イベント**] ウィンドウに表示されます。アプリケーションには、ステートレス サービスとステートフル サービスの両方のイベントが表示されるのでご注意ください。[*一時停止*] ボタンをクリックするとストリームが一時停止するので、メッセージを展開して詳細内容を確認できます。
+サービスが実行を開始した後は、生成された Event Tracing for Windows (ETW) イベントを **[診断イベント]** ウィンドウで確認できます。アプリケーションのステートレス サービスとステートフル サービスの両方のイベントが表示されるのでご注意ください。**[一時停止]** ボタンをクリックして、ストリームを一時停止できます。その後、メッセージを展開して、メッセージの詳細を調べることができます。
 
->[AZURE.NOTE]アプリケーションを実行する前に、ローカルの開発クラスターが実行されていることを確認します。ローカル環境を設定するには、「[ファースト ステップ ガイド](service-fabric-get-started.md)」を参照してください。
+>[AZURE.NOTE]アプリケーションを実行する前に、ローカル開発クラスターが実行されていることを確認します。ローカル環境の設定に関する情報は、「[ファースト ステップ ガイド](service-fabric-get-started.md)」を参照してください。
 
-![Visual Studio での診断イベントの表示](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
+![Visual Studio で診断イベントを表示する](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
 
 
 ## 次のステップ
 
 [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 
-[OWIN 自己ホストによる Microsoft Azure Service Fabric Web API サービスの概要](service-fabric-reliable-services-communication-webapi.md)
+[はじめに: OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)
 
 [Reliable Collection の詳細](service-fabric-reliable-services-reliable-collections.md)
 
@@ -218,6 +218,6 @@ Reliable Collection には、LINQ など、`System.Collections.Generic` およ�
 
 [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-[Reliable Service の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
+[Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0121_2016-->

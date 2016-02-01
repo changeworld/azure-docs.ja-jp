@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="11/18/2015"
+   ms.date="01/19/2016"
    ms.author="juliako"/>
 
 
@@ -59,7 +59,7 @@ Azure SDK 2.7 に含まれているサインインの機能強化は、Visual St
 ####重大な変更
 
 - このバージョンのツールを使用する場合は、以前の **Storm** プロジェクトをアップグレードする必要があります。詳細については、[このブログ](http://go.microsoft.com/fwlink/?LinkId=619108)をご覧ください。
-- Visual Studio Web Express はサポートされなくなりました。詳細については、[この投稿](http://go.microsoft.com/fwlink/?LinkId=619108)をご覧ください。
+- Visual Studio Web Express はサポートされなくなりました。詳細については、[このブログ](http://go.microsoft.com/fwlink/?LinkId=619108)をご覧ください。
 
 ###Azure App Service ツール
 
@@ -97,7 +97,7 @@ Azure リソース マネージャー ツールは、ロール ベースの Acce
 SDK 2.7 を使用して以前のバージョンの SDK から Azure リソース グループのプロジェクトを使用している場合は、従来のストレージの代わりに新しいストレージ アカウントを使用してデプロイするために、新しいデプロイメント スクリプトが必要です。プロジェクトに変更を加えて新しいスクリプトを追加する前に、プロンプトが表示されます。古いスクリプトは名前が変更されます。新しいスクリプトに手動で変更を加える必要があります。
  
  
-###Storage エクスプローラー ツール 
+###ストレージ エクスプローラー ツール 
 
 - 追加の BLOB を表示するためのサポート。詳細については、[このブログの投稿](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/04/13/introducing-azure-storage-append-blob.aspx)をご覧ください。 
 - サーバー エクスプローラーから Premium Storage アカウントを表示するためのサポート。サーバー エクスプローラーには、Premium Storage アカウントをサポートする唯一の種類である、Premium Storage アカウントのページ BLOB のみが表示されます。
@@ -111,7 +111,7 @@ Visual Studio 用の **Azure Data Factory ツール**が導入されています
 - **作成時の視覚的相互作用のためのダイアグラム ビューとの統合**: ダイアグラム ビューの補助を使用してパイプラインとデータセットを視覚的に作成します。 
 - **デプロイ済みのエンティティの参照と相互作用のためのサーバー エクスプローラーとの統合**: サーバー エクスプローラーを利用して、デプロイ済みの Data Factory と対応するエンティティを参照します。デプロイ済みの Data Factory や任意のエンティティ (パイプライン、リンクされたサービス、データセット) をプロジェクトにインポートします。 
 - **スキーマ検証と豊富な Intellisense による JSON 編集**: 豊富な Intellisense とスキーマ検証を使用して Data Factory エンティティの JSON ドキュメントを効率的に構成し、編集します。 
-- **マルチ環境の公開**: 開発環境、テスト環境、運用環境に対して、環境ごとに個別の構成ファイルを作成し、作成したパイプラインを公開します。
+- **マルチ環境の公開**: 開発環境、テスト環境、運用環境に対して、環境ごとに個別の構成ファイルを作成し、作成したパイプラインを発行します。
 - **Pig、Hive、.Net ベースのデータ処理のサポート**: Data Factory プロジェクトにおける Pig スクリプトと Hive スクリプトをサポートします。.Net アクティビティを管理するための C# プロジェクトの参照をサポートします。
 
 ##Azure SDK for .NET 2.7.1
@@ -159,4 +159,4 @@ LightSwitch プロジェクトはこのリリースと互換性がありませ�
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="Azure"
   ms.workload="na"
-  ms.date="12/08/2015"
+  ms.date="01/07/2016"
   ms.author="hascipio; v-divte"/>
 
 # Azure Marketplace 向けプラン作成の一般的な前提条件
@@ -45,9 +45,9 @@ Microsoft で販売者アカウントを登録する方法の詳細な手順に�
 
 | 仮想マシン イメージ | 開発者サービス | データ サービス | ソリューション テンプレート |
 |-----|-----|-----|-----|
-| [VM の技術的な前提条件](marketplace-publishing-vm-image-creation-prerequisites.md) | [開発者サービスの技術的な前提条件](marketplace-publishing-dev-service-creation-prerequisites.md) | [データ サービスの技術的な前提条件](marketplace-publishing-data-service-creation-prerequisites.md) | [ソリューション テンプレートの技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md) |
+| [VM の技術的な前提条件](marketplace-publishing-vm-image-creation-prerequisites.md) | 開発者サービスの技術的な前提条件 | [データ サービスの技術的な前提条件](marketplace-publishing-data-service-creation-prerequisites.md) | [ソリューション テンプレートの技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md) |
 
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

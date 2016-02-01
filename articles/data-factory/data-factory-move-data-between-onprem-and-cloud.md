@@ -152,7 +152,7 @@ Data Management Gateway は、[Microsoft ダウンロード センター](https:
 5. **[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
 
 	![タイルの作成とデプロイ](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png) 
-6.	Data Factory エディターのツールバーの **\[...] (省略記号)** をクリックし、**[新しいデータ ゲートウェイ]** をクリックします。 
+6.	Data Factory エディターのツールバーの **[...] (省略記号)** をクリックし、**[新しいデータ ゲートウェイ]** をクリックします。 
 
 	![ツールバーでのデータ ゲートウェイの新規作成](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
 2. **[作成]** ブレードで、**名前**に「**adftutorialgateway**」と入力し、**[OK]** をクリックします。 	
@@ -165,7 +165,7 @@ Data Management Gateway は、[Microsoft ダウンロード センター](https:
 	> 
 	> Chrome を使用する場合は、[Chrome Web ストア](https://chrome.google.com/webstore/)に移動し、ClickOnce キーワードで検索して、ClickOnce 拡張子のいずれかを選択してインストールします。
 	>  
-	> Firefox についても、同じ操作を実行する必要があります (アドインをインストール)。たとえば、[ここ](https://addons.mozilla.org/firefox/addon/fxclickonce/)からインストールできます。
+	> Firefox についても、同じ操作を実行する必要があります (アドインをインストール)。ツールバーの **[メニューを開く]** ボタン (右上隅にある **3 本の横線**) をクリックして、**[アドオン]** をクリックし、"ClickOnce" キーワードを使用して検索し、ClickOnce の拡張機能のいずれかを選択してインストールします。
 
 	![Gateway - [構成] ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
@@ -372,7 +372,7 @@ Data Management Gateway は、[Microsoft ダウンロード センター](https:
 1.	**[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
 
 	![タイルの作成とデプロイ](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png) 
-2.	コマンド バーの **[新しいパイプライン]** をクリックします。このボタンが表示されない場合は、**\[...] (省略記号)** をクリックしてコマンド バーを展開します。
+2.	コマンド バーの **[新しいパイプライン]** をクリックします。このボタンが表示されない場合は、**[...] (省略記号)** をクリックしてコマンド バーを展開します。
 2.	右側のウィンドウの JSON を次のテキストに置き換えます。   
 
 
@@ -424,7 +424,7 @@ Data Management Gateway は、[Microsoft ダウンロード センター](https:
 	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
 	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink** を指定します。
-	- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
+- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
 
 	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
@@ -473,7 +473,7 @@ Data Management Gateway は、[Microsoft ダウンロード センター](https:
 	-  **Set-AzureRmDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 	-  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
  
-	一覧のタイトルをクリックするか、**[...] \(省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
+	一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
 	
 	代わりに、スライスの開始時刻と終了時刻で並べ替えられたデータ スライスを表示するには、**[データ スライス (スライスの時刻別)]** タイルをクリックします。
 
@@ -553,15 +553,10 @@ SQL Server リンク サービスを作成するには、Data Factory エディ�
 7.	**[資格情報]** ブレードで、**[ここをクリックして資格情報を設定する]** をクリックします。
 8.	**[資格情報の設定]** ダイアログ ボックスで、次の手順を実行します。
 
-	![[資格情報の設定] ダイアログ](./media/data-factory-move-data-between-onprem-and-cloud/setting-credentials-dialog.png) 
-	1.	Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。
-	2.	**[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。
-	3.	**[パスワード]** の設定に、ユーザーのパスワードを入力します。
-	4.	**[OK]** をクリックしてダイアログ ボックスを閉じます。 
+	![[資格情報の設定] ダイアログ](./media/data-factory-move-data-between-onprem-and-cloud/setting-credentials-dialog.png) 1.Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。2.**[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。3.**[パスワード]** の設定に、ユーザーのパスワードを入力します。4.**[OK]** をクリックしてダイアログ ボックスを閉じます。 
 4. **[OK]** をクリックして **[資格情報]** ブレードを閉じます。 
 5. **[新しいデータ ストア]** ブレードで、**[OK]** をクリックします。 	
-6. [リンクされたサービス] ブレードで **SqlServerLinkedService** のステータスが [オンライン] に設定されていることを確認します。
-	![SQL Server のリンクされているサービスの状態](./media/data-factory-move-data-between-onprem-and-cloud/sql-server-linked-service-status.png)
+6. [リンクされたサービス] ブレードで **SqlServerLinkedService** のステータスが [オンライン] に設定されていることを確認します。![SQL Server のリンクされているサービスの状態](./media/data-factory-move-data-between-onprem-and-cloud/sql-server-linked-service-status.png)
 
 ゲートウェイ コンピューターとは異なるコンピューターからポータルにアクセスする場合は、資格情報マネージャー アプリケーションがゲートウェイ コンピューターに接続できることを確認する必要があります。アプリケーションがゲートウェイ コンピューターにアクセスできない場合、データ ソースの資格情報を設定したり、データ ソースへの接続をテストしたりすることはできません。
 
@@ -633,8 +628,7 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 ## Data Management Gateway を使用したコピーのデータ フロー
 データ パイプラインでコピー アクティビティを使用してオンプレミスのデータを処理のためにクラウドに取り込むとき、またはクラウドの結果データをオンプレミスのデータ ストアにエクスポートして戻すときは、コピー アクティビティは内部的にゲートウェイを使用してオンプレミスのデータ ソースからクラウドに、またはその逆に、データを転送します。
 
-データ ゲートウェイでのコピーのデータ フローと手順の概要を次に示します。
-![ゲートウェイを使用したデータ フロー](./media/data-factory-move-data-between-onprem-and-cloud/data-flow-using-gateway.png)
+データ ゲートウェイでのコピーのデータ フローと手順の概要を次に示します。![ゲートウェイを使用したデータ フロー](./media/data-factory-move-data-between-onprem-and-cloud/data-flow-using-gateway.png)
 
 1.	データの開発者は、[Azure ポータル](http://portal.azure.com)または [PowerShell コマンドレット](https://msdn.microsoft.com/library/dn820234.aspx)を使用して Azure Data Factory 用の新しいゲートウェイを作成します。 
 2.	データ開発者は、[リンクされたサービス] パネルを使用して、オンプレミスのデータ ストアとゲートウェイのための新しいリンクされたサービスを定義します。リンクされたサービスの設定の一部として、データ開発者は、手順で示したように資格情報の設定アプリケーションを使用して認証の種類と資格情報を指定します。資格情報の設定アプリケーションのダイアログは、データ ストアと通信して接続をテストし、ゲートウェイと通信して資格情報を保存します。
@@ -643,4 +637,4 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 5.	ゲートウェイは、同じ証明書で資格情報を復号化し、適切な認証の種類を使用してオンプレミスのデータ ストアに接続します。
 6.	ゲートウェイは、データ パイプラインでのコピー アクティビティの構成方法に応じて、オンプレミスのストアからクラウドのストレージに、またはクラウドのストレージからオンプレミスのデータ ストアに、データをコピーします。注: この手順では、ゲートウェイは、セキュリティで保護された (HTTPS) チャネルを使用して、クラウド ベースのストレージ サービス (例: Azure BLOB、Azure SQL など) と直接通信します。
 
-<!----HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

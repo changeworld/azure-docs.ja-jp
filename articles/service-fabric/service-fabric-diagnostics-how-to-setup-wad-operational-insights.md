@@ -55,6 +55,7 @@ Operational Insights は、格納されているストレージ テーブルの�
 また、このデプロイメント コマンドを呼び出す前に、必要に応じて、Azure アカウントの追加 (`Add-AzureAccount`)、サブスクリプションの選択 (`Select-AzureSubscription`)、リソース マネージャー モードへの切り替え (`Switch-AzureMode AzureResourceManager`)、まだリソース グループがない場合には作成 (`New-AzureResourceGroup`) などの設定を実行します。
 
 ```powershell
+
 New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $deploymentName -TemplateFile $pathToARMConfigJsonFile -TemplateParameterFile $pathToParameterFile –Verbose
 ```
 
@@ -62,7 +63,9 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
 まだ診断がデプロイされていない既存のクラスターがある場合、次の手順で診断を追加できます。次の JSON で WadConfigUpdate.json と WadConfigUpdateParams.json という 2 つのファイルを作成します。
 
 ##### WadConfigUpdate.json
+
 ```json
+
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -141,7 +144,10 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
 ```
 
 ##### WadConfigUpdateParams.json
-vmNamePrefix を、クラスターの作成時に VM 名として選択したプレフィックスに置き換えます。次に、vmStorageAccountName を編集して、VM からログをアップロードするストレージ アカウントを指定します。```json
+vmNamePrefix を、クラスターの作成時に VM 名として選択したプレフィックスに置き換えます。次に、vmStorageAccountName を編集して、VM からログをアップロードするストレージ アカウントを指定します。
+
+```json
+
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
@@ -161,7 +167,10 @@ vmNamePrefix を、クラスターの作成時に VM 名として選択したプ
 
 上記のように JSON ファイルを作成したら、実際の環境に合わせて変更します。次のコマンドを呼び出し、Service Fabric クラスターのリソース グループ名を渡します。このコマンドの実行に成功すると、診断はすべての VM にデプロイされ、指定した Azure ストレージ アカウントのテーブルに、クラスターのログがアップロードされるようになります。
 
-また、このデプロイメント コマンドを呼び出す前に、必要に応じて、Azure アカウントの追加 (`Add-AzureAccount`)、適切なサブスクリプションの選択 (`Select-AzureSubscription`)、リソース マネージャー モードへの切り替え (`Switch-AzureMode AzureResourceManager`) などの設定を実行します。```powershell
+また、このデプロイメント コマンドを呼び出す前に、必要に応じて、Azure アカウントの追加 (`Add-AzureAccount`)、適切なサブスクリプションの選択 (`Select-AzureSubscription`)、リソース マネージャー モードへの切り替え (`Switch-AzureMode AzureResourceManager`) などの設定を実行します。
+
+```ps
+
 New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $deploymentName -TemplateFile $pathToWADConfigJsonFile -TemplateParameterFile $pathToParameterFile –Verbose
 ```
 
@@ -174,7 +183,12 @@ Operational Insights ワークスペースの作成手順については、以�
 [Operational Insights の運用](https://technet.microsoft.com/library/mt484118.aspx)
 
 ### クラスター ログを表示するように Operational Insights ワークスペースを構成する
-前述のように Operational Insights ワークスペースを作成したら、次に、診断拡張機能によってクラスターからアップロードされる Azure Storage テーブルのログを取得するようにワークスペースを構成します。現在、この構成は、Operational Insights ポータルでは使用できません。PowerShell コマンドを使用する必要があります。次の PowerShell スクリプトを実行します。```powershell <# このスクリプトは、Azure ストレージ アカウントから診断を読み取るように Operations Management Suite ワークスペース (別名 Operational Insights ワークスペース) を構成します。
+前述のように Operational Insights ワークスペースを作成したら、次に、診断拡張機能によってクラスターからアップロードされる Azure Storage テーブルのログを取得するようにワークスペースを構成します。現在、この構成は、Operational Insights ポータルでは使用できません。PowerShell コマンドを使用する必要があります。次の PowerShell スクリプトを実行します。
+
+```powershell
+
+    <#
+    This script will configure an Operations Management Suite workspace (aka Operational Insights workspace) to read Diagnostics from an Azure Storage account.
 
     It will enable all supported data types (currently Windows Event Logs, Syslog, Service Fabric Events, ETW Events and IIS Logs).
 
@@ -183,7 +197,7 @@ Operational Insights ワークスペースの作成手順については、以�
     If you have more than one OMS workspace you will be prompted for the workspace to configure.
 
     If you have more than one storage account you will be prompted for which storage account to configure.
-#>
+    #>
 
 Add-AzureAccount
 
@@ -241,17 +255,38 @@ function Select-StorageAccount {
     return $storage
 }
 
-$workspace = Select-Workspace $storageAccount = Select-StorageAccount
+$workspace = Select-Workspace
+$storageAccount = Select-StorageAccount
 
 $insightsName = $storageAccount.Name + $workspace.Name
 
 $existingConfig = ""
 
-try { $existingConfig = Get-AzureOperationalInsightsStorageInsight -Workspace $workspace -Name $insightsName -ErrorAction Stop } catch [Hyak.Common.CloudException] { # ストレージ インサイトが存在しない場合、HTTP Not Found が返されます }
+try
+{
+    $existingConfig = Get-AzureOperationalInsightsStorageInsight -Workspace $workspace -Name $insightsName -ErrorAction Stop
+}
+catch [Hyak.Common.CloudException]
+{
+    # HTTP Not Found is returned if the storage insight doesn't exist
+}
 
-if ($existingConfig) { Set-AzureOperationalInsightsStorageInsight -Workspace $workspace -Name $insightsName -Tables $validTables -Containers $validContainers
+if ($existingConfig) {
+    Set-AzureOperationalInsightsStorageInsight -Workspace $workspace -Name $insightsName -Tables $validTables -Containers $validContainers
 
-} else { if ($storageAccount.ResourceType -eq "Microsoft.ClassicStorage/storageAccounts") { Switch-AzureMode -Name AzureServiceManagement $key = (Get-AzureStorageKey -StorageAccountName $storageAccount.Name).Primary Switch-AzureMode -Name AzureResourceManager } else { $key = (Get-AzureStorageAccountKey -ResourceGroupName $storageAccount.ResourceGroupName -Name $storageAccount.Name).Key1 } New-AzureOperationalInsightsStorageInsight -Workspace $workspace -Name $insightsName -StorageAccountResourceId $storageAccount.ResourceId -StorageAccountKey $key -Tables $validTables -Containers $validContainers } ``` ストレージ アカウントで Azure テーブルから読み取るように Operational Insights ワークスペースを構成したら、ポータルにログインし、Operational Insights リソースの **[Storage]** タブを開きます。次のような画面が表示されます。![Azure ポータルの Operational Insights ストレージの構成](./media/service-fabric-diagnostics-how-to-setup-wad-operational-insights/oi-connected-tables-list.png)
+} else {
+    if ($storageAccount.ResourceType -eq "Microsoft.ClassicStorage/storageAccounts") {
+        Switch-AzureMode -Name AzureServiceManagement
+        $key = (Get-AzureStorageKey -StorageAccountName $storageAccount.Name).Primary
+        Switch-AzureMode -Name AzureResourceManager
+    } else {
+        $key = (Get-AzureStorageAccountKey -ResourceGroupName $storageAccount.ResourceGroupName -Name $storageAccount.Name).Key1
+    }
+    New-AzureOperationalInsightsStorageInsight -Workspace $workspace -Name $insightsName -StorageAccountResourceId $storageAccount.ResourceId -StorageAccountKey $key -Tables $validTables -Containers $validContainers
+}
+```
+
+ストレージ アカウントで Azure テーブルから読み取る Operational Insights ワークスペースを構成したら、ポータルにログインし、Operational Insights リソースの **[Storage]** タブを開きます。次のような画面が表示されます。![Azure ポータルの Operational Insights ストレージの構成](./media/service-fabric-diagnostics-how-to-setup-wad-operational-insights/oi-connected-tables-list.png)
 
 ### Operational Insights のログの検索と表示
 指定したストレージ アカウントからログを読み取るように Operational Insights ワークスペースを構成してから、Operational Insights UI にログが表示されるまでに、最大で 10 分かかることがあります。新しいログが生成されていることを確認するには、Service Fabric プラットフォームから運用イベントが生成されるように、Service Fabric アプリケーションをクラスターにデプロイすることをお勧めします。
@@ -290,4 +325,4 @@ WadConfigUpdate.json の EtwEventSourceProviderConfiguration セクションを�
 ## 次のステップ
 問題を解決する際に確認する必要があるイベントの詳細については、[Reliable Actors](service-fabric-reliable-actors-diagnostics.md) と [Reliable Services](service-fabric-reliable-services-diagnostics.md) で生成される診断イベントを参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0121_2016-->

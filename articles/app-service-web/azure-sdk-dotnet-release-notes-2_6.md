@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="12/02/2015"
+   ms.date="01/19/2016"
    ms.author="juliako"/>
 
 
@@ -108,4 +108,4 @@ Azure SDK 2.6 において、Azure コンピューティング エミュレー�
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0121_2016-->

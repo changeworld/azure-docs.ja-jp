@@ -263,4 +263,4 @@ StorSimple device に障害が発生し、スタンバイ (フェールオーバ
 - [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
 - [StorSimple Snapshot Manager を使用したボリュームの表示と管理方法](storsimple-snapshot-manager-manage-volumes.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -18,7 +18,7 @@
 # Application Insights での依存関係に関する問題の診断
 
 
-*依存関係*は、アプリによって呼び出される外部コンポーネントです。一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。Visual Studio Application Insights では、アプリケーションが依存関係を待機する期間や、依存関係の呼び出しが失敗する頻度を簡単に確認できます。
+依存関係は、アプリによって呼び出される外部コンポーネントです。一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。Visual Studio Application Insights では、アプリケーションが依存関係を待機する期間や、依存関係の呼び出しが失敗する頻度を簡単に確認できます。
 
 ## 使用できる場所
 
@@ -35,9 +35,11 @@
  * SQL データベース
  * HTTP ベースのバインドを使用する ASP.NET Web および WCF サービス
  * ローカルまたはリモートの HTTP 呼び出し
- * Azure DocumentDb、テーブル、BLOB ストレージ、およびキュー
+ * Azure DocumentDb、テーブル、Blob Storage、およびキュー
 * Java
  * MySQL、SQL Server、PostgreSQL、SQLite などの [JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/) ドライバーを使用したデータベースの呼び出し
+* Web ページ
+ * AJAX 呼び出し
 
 この場合も、他の依存関係を監視するための独自の SDK 呼び出しを作成できます。
 
@@ -129,4 +131,4 @@ IIS サーバー用の Status Monitor では、Application Insights SDK を使�
 
 <!--Link references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0121_2016-->

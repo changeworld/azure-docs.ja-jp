@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2015"
+	ms.date="01/05/2016"
 	ms.author="genli"/>
 
 # Azure 管理者ロールを追加または変更する方法
@@ -64,6 +64,6 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 
 ## アカウント管理者の変更方法
 
-Azure アカウントの所有権を別のアカウントに譲渡するには、「[Azure サブスクリプションの譲渡](../billing-subscription-transfer.md)」を参照してください。
+Azure アカウントの所有権を別のアカウントに譲渡するには、「[Azure サブスクリプションの譲渡](billing-subscription-transfer.md)」を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->

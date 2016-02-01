@@ -57,10 +57,10 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 |ランディング ページ|サービス レベルのページ|デバイス レベルのページ|デバイス レベルのページ|
 |---|---|---|---|
 |StorSimple Manager サービス|サービスのダッシュボード|デバイス ダッシュボード||
-||デバイス →|監視| 
+||デバイス →|監視|
 ||バックアップ カタログ|ボリューム コンテナー →|ボリューム|
 ||構成 (サービス)|バックアップ ポリシー||
-||ジョブ|構成 (デバイス)| 
+||ジョブ|構成 (デバイス)|
 ||アラート|メンテナンス|
 
 ![ビデオ](./media/storsimple-manager-service-administration/Video_icon.png) **ビデオ**
@@ -103,7 +103,7 @@ StorSimple Manager サービスのユーザー インターフェイスのチュ
 |デバイス コントローラーを停止する</br>デバイス コントローラーを再起動する</br>デバイス コントローラーをシャットダウンする</br>デバイスを工場出荷時の設定にリセットする</br>(これらはオンプレミスのデバイスのみに適用されます)|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[StorSimple デバイス コントローラーを管理する](storsimple-manage-device-controller.md)|
 |StorSimple のハードウェア コンポーネントについて学習する</br>ハードウェアの状態を監視する</br>(これらはオンプレミスのデバイスのみに適用されます)|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[ハードウェア コンポーネントを監視する](storsimple-monitor-hardware-status.md)|
 |サポート パッケージを作成する|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[サポート パッケージを作成および管理する](storsimple-create-manage-support-package.md)|
-|Install software updates|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[デバイスを更新する](storsimple-update-device.md)|
+|ソフトウェアの更新プログラムをインストールする|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[デバイスを更新する](storsimple-update-device.md)|
 
 
 ##次のステップ
@@ -112,8 +112,6 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 - [運用デバイスのトラブルシューティング](storsimple-troubleshoot-operational-device.md)
 - [StorSimple 監視インジケーター LED の使用](storsimple-monitoring-indicators.md)
 
-問題を解決できず、サービス要求の作成が必要な場合は、次のトピックを参照してください。
+問題を解決できず、サービス要求の作成が必要な場合は、｢[Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)」を参照してください。
 
--  [Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)
-
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

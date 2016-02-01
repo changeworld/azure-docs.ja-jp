@@ -50,7 +50,7 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 
 	![ポイント対サイト構成の図](media/hdinsight-extend-hadoop-virtual-network/point-to-site.png)
 
-	Virtual Network を使用してクラウドとデータ センターをリンクすることで、クラウドのみの構成と同様のシナリオを実現できます。ただし、クラウド内のリソースの操作に制限されるのではなく、データ センターのリソースも使用できます。
+	Virtual Network を使用してクラウドとデータ センターをリンクすると、クラウドのみの構成と同様のシナリオを実現できます。ただし、クラウド内のリソースの操作に制限されるのではなく、データ センターのリソースも使用できます。
 
 	* HDInsight とデータ センター間で**データを直接転送する**。たとえば、Sqoop を使用して SQL Server に、または SQL Server からデータを転送したり、基幹業務 (LOB) アプリケーションで生成されたデータを読み取ったりします。
 
@@ -74,14 +74,22 @@ Virtual Network の機能、利点の詳細については、「[Azure 仮想ネ
 
 * インターネットへのアクセスやインターネットからのアクセスを明示的に制限する Azure Virtual Networks では HDInsight はサポートされません。たとえば、ネットワーク セキュリティ グループまたは ExpressRoute を使用して、Virtual Network 内のリソースへのインターネット トラフィックをブロックします。HDInsight サービスは管理されたサービスです。また、クラスターの正常性を監視したり、クラスター リソースのフェールオーバーなど、自動化された管理タスクを開始したりするために、プロビジョニング中や実行中にインターネット アクセスが必要です。
 
-    インターネット トラフィックをブロックする Virtual Network 上の HDInsight を使用するには、以下の操作を実行できます。
+    インターネット トラフィックをブロックする Virtual Network で HDInsight を使用するには、以下の手順を使用することができます。
 
-    1.	Virtual Network 内に新しいサブネットを作成します。このサブネットは、HDInsight によって使用されます。
-
-    2.	ルーティング テーブルを定義し、着信と発信両方のインターネット接続を許可するサブネットにユーザー定義ルート (UDR) を作成します。これを行うには、* ルートを使用します。これにより、サブネット上にあるリソースに対してのみインターネット接続が有効になります。UDR の操作方法について詳しくは、「https://azure.microsoft.com/ja-JP/documentation/articles/virtual-networks-udr-overview/」および「https://azure.microsoft.com/ja-JP/documentation/articles/virtual-networks-udr-how-to/」を参照してください。
+    1. Virtual Network 内に新しいサブネットを作成します。既定では、新しいサブネットは、インターネットと通信することができます。これにより、このサブネットに HDInsight をインストールできます。この新しいサブネットはセキュリティで保護されたサブネットと同じ仮想ネットワーク内にあるため、そこにインストールされたリソースとも通信することができます。
     
-    3.	HDInsight クラスターを作成する際に、手順 1. で作成したサブネットを選択します。これにより、クラスターはインターネットにアクセスできるサブネットにデプロイされます。
+    2. 次の PowerShell ステートメントを使用して、特定のネットワーク セキュリティ グループやサブネットにアタッチされたルート テーブルがないことを確認できます。__VIRTUALNETWORKNAME__ を仮想ネットワーク名に、__GROUPNAME__ を仮想ネットワークを含むリソース グループの名前に、__SUBNET__ をサブネットの名前に置き換えます。
+        
+            $vnet = Get-AzureRmVirtualNetwork -Name VIRTUALNETWORKNAME -ResourceGroupName GROUPNAME
+            $vnet.Subnets | Where-Object Name -eq "SUBNET"
+            
+        結果の中で、__NetworkSecurityGroup__ と __RouteTable__ が両方とも `null` になることに注意してください。
+    
+    2. HDInsight クラスターを作成します。クラスターの Virtual Network 設定を構成する場合、手順 1 で作成したサブネットを選択します。
 
+    > [AZURE.NOTE]上記の手順は、 Virtual Network の IP アドレス範囲内の IP アドレスへの通信を制限していないことを前提としています。制限している場合は、新しいサブネットと通信できるように制限を変更する必要がある可能性があります。
+
+    ネットワーク セキュリティ グループの詳細については、「[ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md)」を参照してください。Azure Virtual Network でルーティングを制御する方法については、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」を参照してください。
 
 仮想ネットワークでの HDInsight クラスターのプロビジョニングの詳細については、[HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)に関するページを参照してください。
 
@@ -191,4 +199,4 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 
 Azure のかそうネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

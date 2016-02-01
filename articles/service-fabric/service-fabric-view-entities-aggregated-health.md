@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/23/2015"
+   ms.date="01/20/2015"
    ms.author="oanapl"/>
 
 # Service Fabric の正常性レポートの確認
@@ -57,7 +57,7 @@ Service Fabric Explorer を使用したクラスターのビュー
 [1]: ./media/service-fabric-view-entities-aggregated-health/servicefabric-explorer-cluster-health.png
 
 
-> [AZURE.NOTE] [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) の詳細をご覧ください。
+> [AZURE.NOTE][Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) の詳細をご覧ください。
 
 ## 正常性クエリ
 Service Fabric では、サポート対象の各[エンティティ型](service-fabric-health-introduction.md#health-entities-and-hierarchy)について正常性クエリが公開されています。API (**FabricClient.HealthManager** にあるメソッド)、PowerShell コマンドレット、および REST を使用してアクセスできます。これらのクエリは、正常性状態の集計、エンティティに報告された正常性イベント、子の正常性状態 (該当する場合)、エンティティが正常でない場合の異常性の評価、といったエンティティの正常性についての完全な情報を返します。
@@ -768,9 +768,9 @@ HealthState            : Warning
 ## クラスターとアプリケーションのアップグレード
 Service Fabric はクラスターとアプリケーションのアップグレードを監視して正常性を確認し、正常な状態の維持に努めます。構成された正常性ポリシーを使用して評価したときにエンティティに異常が見つかった場合、アップグレードではアップグレード固有のポリシーを適用して次のアクションが決定されます。ユーザーが操作 (エラー状態の修正やポリシーの変更など) できるようにアップグレードが一時停止されるか、前の正常なバージョンに自動的にロールバックされる場合があります。
 
-*クラスター*のアップグレード中には、クラスターのアップグレード ステータスを取得できます。これには、クラスターの異常を示す異常性の評価が含まれます。正常性の問題によりアップグレードがロールバックされると、アップグレード ステータスに最後に問題が発生した理由が保持されます。これにより、管理者が失敗の原因を調査するのに役立つ情報が保持されます。
+クラスターのアップグレード中には、クラスターのアップグレード ステータスを取得できます。これには、クラスターの異常を示す異常性の評価が含まれます。正常性の問題によりアップグレードがロールバックされると、アップグレード ステータスに最後に問題が発生した理由が保持されます。これにより、管理者が失敗の原因を調査するのに役立つ情報が保持されます。
 
-同様に、*アプリケーション*のアップグレード中には、アプリケーションのアップグレード ステータスに異常性の評価が記録されます。
+同様に、アプリケーションのアップグレード中には、アプリケーションのアップグレード ステータスに異常性の評価が記録されます。
 
 次のコードは、修正された fabric:/WordCount アプリケーションのアップグレード ステータスを示します。ウォッチドッグによってレプリカの 1 つでエラーが報告されています。正常性チェックは考慮されないため、アップグレードはロールバックされます。
 
@@ -839,4 +839,4 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0114_2016--->
+<!---HONumber=AcomDC_0121_2016-->

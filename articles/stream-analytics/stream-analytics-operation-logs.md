@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Stream Analytics の操作ログとサービス ログの利用 | Microsoft Azure" 
+	pageTitle="Stream Analytics の操作ログとサービス ログを使用したデバッグ | Microsoft Azure" 
 	description="Stream Analytics 操作ログの使用方法" 
 	keywords="サービス ログ"
 	services="stream-analytics" 
@@ -17,7 +17,7 @@
 	ms.date="12/04/2015" 
 	ms.author="jeffstok"/>
 
-# Stream Analytics サービスと操作ログの概要
+# サービス ログと操作ログを使用した Stream Analytics ジョブのデバッグ
 
 すべての Azure サービスでは、管理操作に関連する詳細を記録するために操作ログ メッセージがユーザーに提供されます。Azure Stream Analytics では、ジョブの状態、ジョブの進行状況、エラー メッセージを表示して入力から、処理、出力までのジョブの進行を追跡するなど、この情報をデバッグ目的に使用できます。
 
@@ -96,4 +96,4 @@ Azure プレビュー ポータルで、メッセージのレベルでフィル�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/12/2016"
+	ms.date="01/14/2016"
 	ms.author="juliako"/>
 
 #Azure Media Services の概要と一般的なシナリオ
@@ -29,7 +29,10 @@ Media Services を使いこなして、エンド ツー エンドのワークフ
 Media Services ソリューションを構築するために、以下を使用できます。
 
 - [Media Services REST API](https://msdn.microsoft.com/library/azure/hh973617.aspx)
-- 次の使用可能なクライアント SDK のうちのいずれか: [Azure Media Services SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、[Azure Media Services for Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js)、[Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
+- 使用可能な次のいずれかの SDK: 
+	- [Azure Media Services SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services) 
+	- [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、[Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) 
+	- [Azure Media Services for Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (これは、Node.js SDK の非 Microsoft バージョンです。コミュニティによって管理されており、現在 AMS API を 100% カバーしてはいません。) 
 - 既存のツール: [Azure クラシック ポータル](http://manage.windowsazure.com/) または [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer)。
 
 
@@ -231,4 +234,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

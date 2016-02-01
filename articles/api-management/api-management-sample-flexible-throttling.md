@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="12/16/2015"
+	ms.date="01/15/2016"
 	ms.author="v-darmi"/>
 
 
@@ -68,4 +68,9 @@ Azure API Management では、レートとクォータのスロットルを通�
 ## 次のステップ
 ご意見ご感想をこのトピックの Disqus スレッドでお寄せください。上記以外で、お客様のシナリオに適した選択肢となりそうなキーの値がありましたら、ぜひお聞かせください。
 
-<!---HONumber=AcomDC_1217_2015-->
+## これらのポリシーの概要に関するビデオ
+この記事で説明した [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) ポリシーと [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) ポリシーの詳細については、次のビデオをご覧ください。
+
+> [AZURE.VIDEO advanced-request-throttling-with-azure-api-management]
+
+<!---HONumber=AcomDC_0121_2016-->

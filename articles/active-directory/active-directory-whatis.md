@@ -1,20 +1,20 @@
 <properties
-                pageTitle="Azure Active Directory とは"
-                description="Azure Active Directory を使用すると、既存のオンプレミス ID をクラウドに拡張したり、Azure AD 統合アプリケーションを開発したりすることができます。"
-                services="active-directory"
-                documentationCenter=""
-                authors="markusvi"
-                manager="stevenpo"
-                editor=""/>
+    pageTitle="Azure Active Directory とは"
+    description="Azure Active Directory を使用すると、既存のオンプレミス ID をクラウドに拡張したり、Azure AD 統合アプリケーションを開発したりすることができます。"
+    services="active-directory"
+    documentationCenter=""
+    authors="markusvi"
+    manager="stevenpo"
+    editor=""/>
 
 <tags
-                ms.service="active-directory"
-                ms.workload="identity"
-                ms.tgt_pltfrm="na"
-                ms.devlang="na"
-                ms.topic="article"
-                ms.date="10/30/2015"
-                ms.author="markusvi"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="01/14/2016"
+    ms.author="markusvi"/>
 
 
 # Azure Active Directory とは
@@ -25,7 +25,7 @@
 
 Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。
 
-IT 管理者には、Azure AD は Office365、Salesforce.com、DropBox、Concur など、[さまざまなクラウド型 SaaS アプリケーション](http://blogs.technet.com/b/ad/archive/2014/09/03/50-saas-apps-now-support-federation-with-azure-ad.aspx)へのシングル サインオン (SSO) アクセスを従業員やビジネス パートナーに提供する使いやすいソリューションを手軽な価格で提供します。
+IT 管理者は、Azure AD により、Office365、Salesforce.com、DropBox、Concur など、[さまざまなクラウド型 SaaS アプリケーション](http://blogs.technet.com/b/ad/archive/2014/09/03/50-saas-apps-now-support-federation-with-azure-ad.aspx)へのシングル サインオン (SSO) アクセスを従業員やビジネス パートナーに提供する使いやすいソリューションを手軽な価格で手に入れることができます。
 
 また Azure AD は、世界中の数多くの組織が使用する卓越した ID 管理ソリューションとすばやく簡単に統合できるため、アプリケーション開発者がアプリケーションの構築に集中することを可能にします。
 
@@ -69,7 +69,7 @@ Azure AD はマルチテナント型で地理的に分散した高可用性の�
 
 ## 利用を始めるには?
 -	IT 管理者の方:
- - [実際に使ってみる](https://azure.microsoft.com/trial/get-started-active-directory/) - 30 日の無料試用版に今すぐサインアップすると、このリンクを使用して、初めてのクラウド ソリューションも 5 分以内にデプロイできます。
+ - [実際に使ってみる](https://azure.microsoft.com/trial/get-started-active-directory/) - このリンクを使用して 30 日の無料試用版にサインアップしましょう。初めてのクラウド ソリューションも 5 分以内にデプロイできます。
  - Azure AD の概要に関するページで、Azure AD テナントをすばやく稼働させるためのヒントとテクニックをお読みください。
 -	開発者の場合:
  - 「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。 
@@ -104,4 +104,4 @@ Azure AD について理解を深めていただけるよう、豊富なオン�
 
 - [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0121_2016-->

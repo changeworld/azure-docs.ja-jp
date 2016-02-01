@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/22/2015"
+	ms.date="01/15/2016"
 	ms.author="adegeo"/>
 
 
@@ -22,8 +22,8 @@
 # Cloud Services の構成方法
 
 > [AZURE.SELECTOR]
-- [Azure classic portal](cloud-services-how-to-configure.md)
 - [Azure portal](cloud-services-how-to-configure-portal.md)
+- [Azure classic portal](cloud-services-how-to-configure.md)
 
 クラウド サービスで最もよく使用される設定は Azure クラシックポータルで構成できます。また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
 
@@ -43,7 +43,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 
 3. サービス ロールについては (ロールによりグループ分け)、次の設定を更新できます。
     
-    >**[設定]** - サービス構成ファイル (.cscfg) の *ConfigurationSettings* 要素で指定された各種構成設定値を変更します。
+    >**[設定]** - サービス構成ファイル (.cscfg) の ConfigurationSettings 要素で指定された各種構成設定値を変更します。
     >
     >**[証明書]** - ロールの SSL 暗号化で使用されている証明書の拇印を変更します。証明書を変更するには、まず、**[証明書]** ページで新しい証明書をアップロードする必要があります。次に、ロール設定に表示される証明書文字列のサムプリントを更新します。
 
@@ -86,4 +86,4 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 * [Enable Remote Desktop Connection for a Role in Azure Cloud Services (Azure Cloud Services でのロールに対するリモート デスクトップ接続を有効にする)](cloud-services-role-enable-remote-desktop.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

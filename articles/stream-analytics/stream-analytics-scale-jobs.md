@@ -17,9 +17,9 @@
 	ms.date="12/16/2015"
 	ms.author="jeffstok"/>
 
-# ストリーム データ処理スループット向上のための Azure Stream Analytics ジョブのスケーリング #
+# データ処理スループット向上のための Stream Analytics ジョブのスケーリング #
 
-Stream Analytics の分析ジョブをチューニングし、*ストリーミング ユニット*を計算する方法と、Stream Analytics ジョブをスケールするために入力パーティションの構成、分析クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。
+Stream Analytics の分析ジョブをチューニングし、ストリーミング ユニットを計算する方法と、Stream Analytics ジョブをスケールするために入力パーティションの構成、分析クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。
 
 ## Stream Analytics ジョブの構成について教えてください。 ##
 Stream Analytics のジョブ定義は、入力、クエリ、および出力で構成されます。入力は、ジョブがデータ ストリームを読み取る場所です。クエリは、データ入力ストリームを変換するために使用します。出力は、ジョブがジョブ結果を送信する宛先です。
@@ -265,4 +265,4 @@ Azure プレビュー ポータルの [設定] からスケールの設定にア
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0121_2016-->

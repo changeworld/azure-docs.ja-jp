@@ -79,10 +79,7 @@
 
      `Get-HcsSystem`
 
-    次のバージョンが表示されます。
-    - HcsSoftwareVersion: 6.3.9600.17491
-    - CisAgentVersion: 1.0.9037.0
-    - MdsAgentVersion: 26.0.4696.1433
+    次のバージョンが表示されます。- HcsSoftwareVersion: 6.3.9600.17491 - CisAgentVersion: 1.0.9037.0 - MdsAgentVersion: 26.0.4696.1433
  
 9. 次のコマンドレットを実行して、ファームウェアの更新が正しく適用されたことを確認します。
 
@@ -110,19 +107,17 @@
 
 	<br/>![StorSimple によるデバイスの登録 5](./media/storsimple-configure-and-register-device-gov/HCS_RegisterYourDevice5_gov-include.png)
 
-14. セットアップ ウィザードの最後の手順では、お使いのデバイスを StorSimple Manager サービスに登録します。そのためには、[手順 2. (サービス登録キーの取得)](storsimple-get-service-registration-key-gov.md) で取得したサービス登録キーが必要です。登録キーを指定したら、デバイスが登録されるまでに 2 ～ 3 分かかる場合があります。
+14. セットアップ ウィザードの最後の手順では、お使いのデバイスを StorSimple Manager サービスに登録します。そのためには、[手順 2. (サービス登録キーの取得)](#step-2-get-the-service-registration-key) で取得したサービス登録キーが必要です。登録キーを指定したら、デバイスが登録されるまでに 2 ～ 3 分かかる場合があります。
 
       >[AZURE.NOTE]Ctrl キーを押しながら C キーを押すことで、いつでもセットアップ ウィザードを終了できます。すべてのネットワーク設定 (Data 0、サブネット マスク、およびゲートウェイの IP アドレス) を入力した場合、エントリは保持されます。
 
 	![StorSimple 登録進行状況](./media/storsimple-configure-and-register-device-gov/HCS_RegistrationProgress-gov-include.png)
 
-15. デバイスが登録されると、サービス データ暗号化キーが表示されます。このキーをコピーし、安全な場所に保存しておきます。**このキーは、StorSimple Manager サービスに追加のデバイスを登録するために、サービス登録キーと共に必要になります。** このキーの詳細については、「[StorSimple のセキュリティ](../articles/storsimple/storsimple-security.md)」を参照してください。
+15. デバイスが登録されると、サービス データ暗号化キーが表示されます。このキーをコピーし、安全な場所に保存しておきます。**このキーは、StorSimple Manager サービスに追加のデバイスを登録するために、サービス登録キーと共に必要になります。** このキーの詳細については、「[StorSimple のセキュリティ](storsimple-security.md)」を参照してください。
 	
 	![StorSimple によるデバイスの登録 7](./media/storsimple-configure-and-register-device-gov/HCS_RegisterYourDevice7_gov-include.png)
 
-      >[AZURE.IMPORTANT]シリアル コンソール ウィンドウからテキストをコピーするには、単にテキストを選択します。その状態で、クリップボードまたは任意のテキスト エディターに貼り付けることができます。
-      > 
-      > サービス データ暗号化キーをコピーするときには、Ctrl キーを押しながら C キーを押さないでください。Ctrl キーを押しながら C キーを押すと、セットアップ ウィザードが終了します。その場合、デバイスの管理者パスワードは変更されず、デバイスは既定のパスワードに戻ります。
+      >[AZURE.IMPORTANT]シリアル コンソール ウィンドウからテキストをコピーするには、単にテキストを選択します。その状態で、クリップボードまたは任意のテキスト エディターに貼り付けることができます。> >サービス データ暗号化キーをコピーするときには、Ctrl キーを押しながら C キーを押さないでください。Ctrl キーを押しながら C キーを押すと、セットアップ ウィザードが終了します。その場合、デバイスの管理者パスワードは変更されず、デバイスは既定のパスワードに戻ります。
 
 16. シリアル コンソールを終了します。
 
@@ -133,10 +128,10 @@
    
     	![StorSimple Devices page](./media/storsimple-configure-and-register-device-gov/HCS_DeviceOnline-gov-include.png) 
   
-        デバイスの状態が **オフライン** の場合は、デバイスがオンラインになるまで数分待ちます。 
+        If the device status is **Offline**, wait for a couple of minutes for the device to come online. 
       
-        数分たってもデバイスがまだオフラインの場合、ファイアウォールのネットワークが [StorSimple デバイスのネットワーク要件](https://msdn.microsoft.com/library/dn772371.aspx) で記述されているとおりに構成されているかを確認する必要があります。HTTP 1.1 がサポートされていない場合、ポート 9354 が、送信の通信に対してオープンになっていることを確認します。このポートは、StorSimple Manager サービスおよび StorSimple デバイス間での通信に使用されます。
+        If the device is still offline after a few minutes, then you need to make sure that your firewall network was configured as described in the [network requirements for your StorSimple device](https://msdn.microsoft.com/library/dn772371.aspx). If you do not have HTTP 1.1 support, check port 9354 to make sure that it is open for outbound communication. This port is used for communication between the StorSimple Manager service and your StorSimple device.
      
         
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

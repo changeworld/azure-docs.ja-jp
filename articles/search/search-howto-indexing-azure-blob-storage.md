@@ -17,9 +17,7 @@ ms.author="eugenesh" />
 
 # Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
 
-以前から Azure Search には、広く普及しているデータ ソースについて、[Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md) と [Azure DocumentDB](../documentdb/documentdb-search-indexer.md) のインデクサーを使って "自動的に" インデックスを作成する機能が導入されています。
-
-現在は、Azure Blob Storage に格納されているドキュメントについてもインデックスを作成できるように、その機能を強化しているところです。PDF、Office ドキュメント、HTML ページなど、BLOB に格納されているドキュメントのインデックスをもっと簡単に作成できるようにしてほしいという要望が多くのお客様から寄せられました。これまで、そのようなことを実現するためには、独自にテキストを抽出して Azure Search インデックスにドキュメントを追加するコードを記述する必要がありました。
+この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Office ファイルなど) のインデックスを作成する方法を説明します。Azure Search の新しい BLOB インデクサーを使用すると、迅速かつシームレスに作成できます。
 
 > [AZURE.IMPORTANT]現在この機能はプレビュー版です。バージョン **2015-02-28-Preview** を使用した REST API でのみ利用できます。プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
 
@@ -203,9 +201,10 @@ BLOB のインデックス作成とドキュメント抽出プロセスは、メ
 プロパティ名 | プロパティ値 | 説明
 --------------|----------------|------------
 AzureSearch\_Skip | "true" | BLOB を完全にスキップするようそのインデクサーに指示するプロパティです。メタデータもコンテンツも、一切抽出されません。特定のコンテンツ タイプをスキップする必要があるときに利用できます。また、特定の BLOB で何度もエラーが発生し、インデックス作成プロセスが中断されるときにも利用できます。
+AzureSearch\_SkipContent | "true" | メタデータのインデックス作成のみを行い、BLOB のコンテンツの抽出はスキップするように、BLOB インデクサーに指示します。これは、BLOB のコンテンツは重要ではないが、BLOB に関連付けられているメタデータのインデックス作成は必要である場合に便利です。
 
 ## Azure Search の品質向上にご協力ください
 
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search)にぜひお寄せください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0121_2016-->

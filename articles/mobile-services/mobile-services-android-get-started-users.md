@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="10/05/2015"
+	ms.date="01/20/2016"
 	ms.author="ricksal"/>
 
 # Mobile Services Android アプリへの認証の追加 (JavaScript バックエンド)
@@ -49,7 +49,7 @@
 
 2. **[Run]** メニューの **[Run app]** をクリックし、アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
 
-	 この問題は、認証されないユーザーとしてアプリケーションが Mobile Services にアクセスしようとしても、_TodoItem_ テーブルでは認証が要求されるために発生します。
+	 この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、TodoItem テーブルでは認証が要求されるために発生します。
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
@@ -106,4 +106,4 @@
 [Mobile Services の使用]: mobile-services-android-get-started.md
 [スクリプトを使用したユーザーの認証]: mobile-services-javascript-backend-service-side-authorization.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0121_2016-->

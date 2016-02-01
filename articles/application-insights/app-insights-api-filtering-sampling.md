@@ -17,7 +17,7 @@
 
 # Application Insights SDK におけるテレメトリのサンプリング、フィルター処理、および前処理
 
-*Application Insights はプレビュー段階です。*
+Application Insights はプレビュー段階です。
 
 Application Insights SDK のプラグインを作成および構成して、Application Insights サービスに送信される前のテレメトリのキャプチャと処理の方法をカスタマイズできます。
 
@@ -32,13 +32,13 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 開始する前に次の操作を実行してください。
 
-* [アプリに Application Insights SDK](app-insights-asp-net.md) をインストールする。NuGet パッケージを手動でインストールし、最新の*プレリリース* バージョンを選択します。
+* [アプリに Application Insights SDK](app-insights-asp-net.md) をインストールする。NuGet パッケージを手動でインストールし、最新のプレリリース バージョンを選択します。
 * [Application Insights API](app-insights-api-custom-events-metrics.md) を試用する。 
 
 
 ## サンプリング
 
-*この機能はベータ版です。*
+この機能はベータ版です。
 
 [サンプリング](app-insights-sampling.md)は、正確な統計情報を保持したままでトラフィックを削減するお勧めの方法です。フィルターを使用すると、関連のある項目が選択されるため、診断内の項目間を移動しやすくなります。フィルター処理された項目を補正するために、メトリックス エクスプローラーでイベントの数が調整されます。
 
@@ -47,7 +47,7 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 ### サンプリングを有効にするには
 
-**プロジェクトの NuGet** パッケージを Application Insights の最新の*プレリリース* バージョンに更新します。ソリューション エクスプ ローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択し、**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。
+**プロジェクトの NuGet** パッケージを Application Insights の最新のプレリリース バージョンに更新します。ソリューション エクスプ ローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択し、**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。
 
 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) では、アダプティブ アルゴリズムが目標とするテレメトリの最大レートを調整できます。
 
@@ -57,7 +57,7 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 Web ページからのデータに対して固定レートのサンプリングを行うには、(通常は、\_Layout.cshtml などのマスター ページに) 挿入した [Application Insights のスニペット](app-insights-javascript.md)に追加の行を配置します。
 
-*JavaScript*
+JavaScript
 
 ```JavaScript
 
@@ -161,7 +161,7 @@ Web ページからのデータに対して固定レートのサンプリング�
 
 ```C#
 
-    var builder = TelemetryConfiguration.Active.GetTelemetryProcessorChainBuilder();
+    var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
     builder.Use((next) => new SuccessfulDependencyFilter(next));
 
     // If you have more processors:
@@ -245,7 +245,7 @@ public void Process(ITelemetry item)
 
 **初期化子を定義する**
 
-*C#*
+C#
 
 ```C#
 
@@ -296,7 +296,7 @@ ApplicationInsights.config で:
       </TelemetryInitializers>
     </ApplicationInsights>
 
-*または* 、 Global.aspx.cs などのコード内で初期化子をインスタンス化することもできます。
+または、Global.aspx.cs などのコード内で初期化子をインスタンス化することもできます。
 
 
 ```C#
@@ -314,7 +314,7 @@ ApplicationInsights.config で:
 <a name="js-initializer"></a>
 ### JavaScript テレメトリ初期化子
 
-*JavaScript*
+JavaScript
 
 ポータルから取得した初期化コードの直後にテレメトリ初期化子を挿入します。
 
@@ -404,4 +404,4 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 
  
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

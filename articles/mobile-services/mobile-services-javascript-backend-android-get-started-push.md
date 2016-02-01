@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="10/06/2015"
+	ms.date="01/20/2016"
 	ms.author="ricksal"/>
 
 
@@ -86,7 +86,7 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 1. **[実行]** メニュー アイテムの **[Run app (アプリを実行)]** をクリックして、アプリケーションを開始します。
 
-2. アプリケーションで、意味のあるテキスト (たとえば、「_新しいモバイル サービス タスク_」) を入力し、**[Add]** をクリックします。
+2. アプリケーションで、意味のあるテキスト (たとえば、「新しいモバイル サービス タスク」) を入力し、**[Add]** をクリックします。
 
   	![](./media/mobile-services-javascript-backend-android-get-started-push/mobile-quickstart-push1-android.png)
 
@@ -156,4 +156,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Send broadcast notifications to subscribers]: ../notification-hubs-android-send-breaking-news.md
 [Send template-based notifications to subscribers]: ../notification-hubs-android-send-localized-breaking-news.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

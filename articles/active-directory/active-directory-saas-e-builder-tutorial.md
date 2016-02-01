@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と e-Builder の統合 | Microsoft Azure" 
     description="Azure Active Directory で e-Builder を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と e-Builder の統合
   
@@ -70,25 +70,25 @@
 
 1.  Azure AD ポータルの **e-Builder** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-e-builder-tutorial/IC777381.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-e-builder-tutorial/IC777381.png "Configure single sign-on")
 
 2.  **[ユーザーの e-Builder へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-e-builder-tutorial/IC777382.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-e-builder-tutorial/IC777382.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページの **[e-Builder サインイン URL]** ボックスに、"*https://\<テナント名>.e-Builder.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[e-Builder サインイン URL]** ボックスに、"https://\<テナント名>.e-Builder.com" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-e-builder-tutorial/IC777383.png "アプリケーション URL の構成")
+    ![Configure app URL](./media/active-directory-saas-e-builder-tutorial/IC777383.png "Configure app URL")
 
-4.  **[e-Builder でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックし、データ ファイルを **c:\\E-BuilderMetaData.xml** としてローカルに保存します。
+4.  **[e-Builder でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、データ ファイルを **c:\\E-BuilderMetaData.xml** としてローカルに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-e-builder-tutorial/IC777384.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-e-builder-tutorial/IC777384.png "Configure single sign-on")
 
 5.  メタデータ ファイルを e-Builder サポート チームに転送します。サポート チームは、シングル サインオンを構成する必要があります。
 
-6.  シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  [シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-e-builder-tutorial/IC777385.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-e-builder-tutorial/IC777385.png "Configure single sign-on")
 ##ユーザー プロビジョニングの構成
   
 e-Builder へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当てられたユーザーがアクセス パネルを使用して e-Builder にログインしようとすると、そのユーザーが存在するかどうかが e-Builder によって確認されます。使用可能なユーザー アカウントがない場合、ユーザー アカウントは自動的に作成されます。
@@ -104,10 +104,10 @@ e-Builder へのユーザー プロビジョニングの構成にあたって必
 
     ![ユーザーの割り当て](./media/active-directory-saas-e-builder-tutorial/IC777386.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-e-builder-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-e-builder-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/01/2015"
+   ms.date="01/15/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでリソースの複数のインスタンスを作成する
@@ -157,17 +157,25 @@ copy 操作では、増分するインデックス値に基づいた一意の名
 
 たとえば、通常は Data Factory 内の入れ子になったリソースとしてデータセットを定義する場合、
 
+    "parameters": {
+        "dataFactoryName": {
+            "type": "string"
+         },
+         "dataSetName": {
+            "type": "string"
+         }
+    },
     "resources": [
     {
         "type": "Microsoft.DataFactory/datafactories",
-        "name": "[variables('dataFactoryName')]",
+        "name": "[parameters('dataFactoryName')]",
         ...
         "resources": [
         {
             "type": "datasets",
-            "name": "[variables('dataSetName')]",
+            "name": "[parameters('dataSetName')]",
             "dependsOn": [
-                "[variables('dataFactoryName')]"
+                "[parameters('dataFactoryName')]"
             ],
             ...
         }
@@ -175,21 +183,29 @@ copy 操作では、増分するインデックス値に基づいた一意の名
     
 データセットの複数のインスタンスを作成するには、次のように、テンプレートを変更する必要があります。完全修飾のタイプと名前にデータ ファクトリ名が含まれていることに注目してください。
 
+    "parameters": {
+        "dataFactoryName": {
+            "type": "string"
+         },
+         "dataSetName": {
+            "type": "array"
+         }
+    },
     "resources": [
     {
         "type": "Microsoft.DataFactory/datafactories",
-        "name": "[variables('dataFactoryName')]",
+        "name": "[parameters('dataFactoryName')]",
         ...
     },
     {
         "type": "Microsoft.DataFactory/datafactories/datasets",
-        "name": "[concat(variables('dataFactoryName'), '/', variables('dataSetName'), copyIndex())]",
+        "name": "[concat(parameters('dataFactoryName'), '/', parameters('dataSetName')[copyIndex()])]",
         "dependsOn": [
-            "[variables('dataFactoryName')]"
+            "[parameters('dataFactoryName')]"
         ],
         "copy": { 
             "name": "datasetcopy", 
-            "count": "[parameters('count')]" 
+            "count": "[length(parameters('dataSetName'))]" 
         } 
         ...
     }]
@@ -199,4 +215,4 @@ copy 操作では、増分するインデックス値に基づいた一意の名
 - テンプレートで使用できるすべての関数については、「[Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)」を参照してください。
 - テンプレートをデプロイする方法については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と ClickTime の統合 | Microsoft Azure" 
     description="Azure Active Directory で ClickTime を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と ClickTime の統合
 
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   ClickTime テナント
 
-このチュートリアルを完了すると、ClickTime に割り当てた Azure AD ユーザーは、ClickTime 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、ClickTime に割り当てた Azure AD ユーザーは、ClickTime 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -70,38 +70,38 @@
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **ClickTime** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **ClickTime** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの有効化](./media/active-directory-saas-clicktime-tutorial/IC777277.png "シングル サインオンの有効化")
+    ![Enable single sign-on](./media/active-directory-saas-clicktime-tutorial/IC777277.png "Enable single sign-on")
 
 2.  **[ユーザーの ClickTime へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-clicktime-tutorial/IC777278.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-clicktime-tutorial/IC777278.png "Configure single sign-on")
 
 3.  **[ClickTime でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-clicktime-tutorial/IC777279.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-clicktime-tutorial/IC777279.png "Configure single sign-on")
 
 4.  別の Web ブラウザー ウィンドウで、ClickTime 企業サイトに管理者としてログインします。
 
-5.  上部のツール バーで **[Preferences]**、**[Security Settings]** の順にクリックします。
+5.  上部にあるツールバーで **[Preferences]**、**[Security Settings]** の順にクリックします。
 
 6.  **[Single Sign-On Preferences]** 構成セクションで、次の手順を実行します。
 
     ![セキュリティ設定](./media/active-directory-saas-clicktime-tutorial/IC777280.png "セキュリティ設定")
 
-    1.  **[OneLogin]** を指定し、シングル サインオン (SSO) を使用したサインインの **[Allow]** を選択します。
-    2.  Azure ポータルの **[ClickTime でのシングル サインオンの構成]** ダイアログ ページで **[シングル サインオン サービス URL]** の値をコピーし、**[Identity Provider Endpoint]** ボックスに貼り付けます。
+    1.  **[OneLogin]** を指定し、シングル サインオン (SSO) を使用したサインインの **[許可]** を選択します。
+    2.  Azure ポータルの **[ClickTime でのシングル サインオンの構成]** ダイアログ ページで、**シングル サインオン サービス URL** の値をコピーし、**[ID プロバイダー エンドポイント]** テキストボックスに貼り付けます。
     3.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
         >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-    4.  base-64 でエンコードされた証明書を**メモ帳**で開き、その内容をコピーして、**[X.509 証明書]** ボックスに貼り付けます。
+    4.  base-64 でエンコードされた証明書を**メモ帳**で開き、その内容をコピーして、**[X.509 証明書]** テキストボックスに貼り付けます。
     5.  **[保存]** をクリックします。
 
 7.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-clicktime-tutorial/IC777281.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-clicktime-tutorial/IC777281.png "Configure single sign-on")
 ##ユーザー プロビジョニングの構成
 
 Azure AD ユーザーが ClickTime にログインできるようにするには、そのユーザーを ClickTime にプロビジョニングする必要があります。ClickTime の場合、プロビジョニングは手動で行います。
@@ -110,7 +110,7 @@ Azure AD ユーザーが ClickTime にログインできるようにするには
 
 1.  **ClickTime** テナントにログインします。
 
-2.  上部のツール バーで、**[Company]** をクリックし、**[People]** をクリックします。
+2.  上部のツールバーで、**[Company]** をクリックし、**[People]** をクリックします。
 
     ![People](./media/active-directory-saas-clicktime-tutorial/IC777282.png "People")
 
@@ -122,8 +122,8 @@ Azure AD ユーザーが ClickTime にログインできるようにするには
 
     ![People](./media/active-directory-saas-clicktime-tutorial/IC777284.png "People")
 
-    1.  **[email address]** ボックスに、Azure AD アカウントの電子メール アドレスを入力します。
-    2.  **[full name]** ボックスに、Azure AD アカウントの名前を入力します。  
+    1.  **[email address]** テキストボックスに Azure AD アカウントの電子メール アドレスを入力します。
+    2.  **[full name]** テキストボックスに、Azure AD アカウントの名前を入力します。  
 
         >[AZURE.NOTE]必要に応じて、新しいユーザー オブジェクトの追加プロパティを設定できます。
 
@@ -143,10 +143,10 @@ Azure AD ユーザーが ClickTime にログインできるようにするには
 
     ![ユーザーの割り当て](./media/active-directory-saas-clicktime-tutorial/IC777285.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-clicktime-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-clicktime-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

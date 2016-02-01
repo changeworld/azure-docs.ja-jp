@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Table サービスを使用する Node.js Web アプリ"
-	description="Azure Table サービスを使用して、Azure App Service Web Apps でホストされる Node.js アプリケーションのデータを格納する方法を説明するチュートリアル。"
+	description="このチュートリアルでは、Azure Table サービスを使用して、Azure App Service Web Apps でホストされる Node.js アプリケーションのデータを格納する方法を説明します。"
 	tags="azure-portal"
 	services="app-service\web, storage"
 	documentationCenter="nodejs"
@@ -14,10 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="01/09/2016"
+	ms.date="01/20/2016"
 	ms.author="robmcm"/>
-
-
 
 # Azure Table サービスを使用する Node.js Web アプリ
 
@@ -41,7 +39,6 @@
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-
 ## 前提条件
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
@@ -49,7 +46,6 @@
 * [node] Version 0.10.24 以上
 
 * [Git]
-
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
@@ -59,7 +55,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 1.  [Azure ポータル](https://portal.azure.com)にログインします。
 
-2. ポータルの左下にある **[新規]** アイコンをクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソースグループ](../resource-group-overview.md)を作成します
+2. ポータルの左下にある **[新規]** アイコンをクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソース グループ](../resource-group-overview.md)を作成します
 
   	![New ボタン](./media/storage-nodejs-use-table-storage-web-site/configure-storage.png)
 
@@ -179,7 +175,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 - category (文字列)
 - completed (ブール値)
 
-**PartitionKey** と **RowKey** は、Table サービスでテーブル キーとして使用されます。詳細については、「[テーブル サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
+**PartitionKey** と **RowKey** は、Table サービスでテーブル キーとして使用されます。詳細については、「[Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
 
 
 1. **tasklist** ディレクトリ内に、**models** という名前の新しいディレクトリを作成します。
@@ -262,7 +258,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 ### コントローラーの作成
 
-*コント ローラー*は、HTTP 要求を処理し、HTML 応答を表示します。
+コント ローラーは、HTTP 要求を処理し、HTML 応答を表示します。
 
 1. **tasklist/routes** ディレクトリに **tasklist.js** という名前の新しいファイルを作成し、テキスト エディターで開きます。
 
@@ -293,7 +289,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 		  },
 
 		  addTask: function(req,res) {
-		    var self = this
+		    var self = this;
 		    var item = req.body.item;
 		    self.task.addItem(item, function itemAdded(error) {
 		      if(error) {
@@ -500,8 +496,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 	このコマンドにより、ブラウザーが起動し、ダウンロード ページに移動します。ログインを求められた場合は、Azure サブスクリプションに関連付けられたアカウントを使用してログインします。
 
-	<!-- ![The download page][download-publishing-settings] -->
-	ファイルのダウンロードが自動的に開始されます。ダウンロードが開始されない場合は、ページの先頭にあるリンクをクリックして、手動でファイルをダウンロードできます。ファイルを保存し、ファイル パスを書き留めます。
+	<!-- ![The download page][download-publishing-settings] -->ファイルのダウンロードが自動的に開始されます。ダウンロードが開始されない場合は、ページの先頭にあるリンクをクリックして、手動でファイルをダウンロードできます。ファイルを保存し、ファイル パスを書き留めます。
 
 2. 次のコマンドを入力して設定をインポートします。
 
@@ -519,7 +514,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 		azure site create --git
 
-	Web アプリの名前と場所の入力を求められます。一意の名前を指定し、Azure Storage アカウントと同じ地理的な場所を選択します。
+	Web アプリの名前と場所の入力を求められます。一意の名前を指定し、Azure ストレージ アカウントと同じ地理的な場所を選択します。
 
 	`--git` パラメーターにより、Azure にこの Web アプリの Git リポジトリが作成されます。何も存在しない場合は、現在のディレクトリで Git リポジトリが初期化され、アプリケーションを Azure に発行する際に使用する "azure" という名前の [Git リモート]が追加されます。最後に、**web.config** ファイルが作成されます。このファイルには、ノード アプリケーションをホストするために Azure で使用される設定が含まれます。`--git` パラメーターを省略した場合でも、ディレクトリに Git リポジトリが含まれていれば、"azure" リモートが作成されます。
 
@@ -592,7 +587,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 ## 次のステップ
 
-この記事の手順では、テーブル サービスを使用して情報を格納する方法を説明しましたが、MongoDB を使用することもできます。詳細については、[MongoDB を使用する Node.js Web アプリ]に関するページをご覧ください。
+この記事の手順では、Table サービスを使用して情報を格納する方法を説明しましたが、MongoDB を使用することもできます。詳細については、[MongoDB を使用する Node.js Web アプリ]に関するページをご覧ください。
 
 ## その他のリソース
 
@@ -601,10 +596,11 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
+<!-- URLs -->
+
 [Azure App Service での Node.js Web アプリの構築とデプロイ]: web-sites-nodejs-develop-deploy-mac.md
 [Continuous deployment using GIT in Azure App Service]: web-sites-publish-source-control.md
 [Azure Developer Center]: /develop/nodejs/
-
 
 [node]: http://nodejs.org
 [ノード]: http://nodejs.org
@@ -624,6 +620,9 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 [Azure Portal]: https://portal.azure.com
 
+[Create and deploy a Node.js application to an Azure Web Site]: web-sites-nodejs-develop-deploy-mac.md
+ 
+<!-- Image References -->
 
 [node-table-finished]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_empty.png
 [node-table-list-items]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_list.png
@@ -632,13 +631,9 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 [portal-storage-account]: ./media/storage-nodejs-use-table-storage-web-site/new-storage.png
 [portal-quick-create-storage]: ./media/storage-nodejs-use-table-storage-web-site/quick-storage.png
 [portal-storage-access-keys]: ./media/storage-nodejs-use-table-storage-web-site/manage-access-keys.png
-
 [go-to-dashboard]: ./media/storage-nodejs-use-table-storage-web-site/go_to_dashboard.png
 [web-configure]: ./media/storage-nodejs-use-table-storage-web-site/sql-task-configure.png
 [app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
 [app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
 
-[Create and deploy a Node.js application to an Azure Web Site]: web-sites-nodejs-develop-deploy-mac.md
- 
-
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

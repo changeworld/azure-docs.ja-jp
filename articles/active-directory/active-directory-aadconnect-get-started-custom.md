@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/08/2016"
+	ms.date="01/11/2016"
 	ms.author="billmath;andkjell"/>
 
 # Azure AD Connect のカスタム インストール
@@ -22,7 +22,7 @@
 次のドキュメントは、Azure AD Connect のカスタム インストール オプションの使用について説明します。このオプションは、追加の構成オプションがある場合や、高速インストールでは設定されないオプションの機能が必要な場合に設定します。
 
 ## 関連ドキュメント
-[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関するドキュメントをまだお読みでない方のために、次の表に関連トピックへのリンクを示します。インストールを開始する前に、太字で表示した最初の 3 つのトピックをお読みいただく必要があります。
+[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関するドキュメントをまだお読みでない方のために、次の表に関連トピックへのリンクを示します。インストールを開始する前に、太字で表示した最初の 3 つのトピックをお読みいただく必要があります。
 
 | トピック | |
 | --------- | --------- |
@@ -70,6 +70,7 @@ AD FS とのフェデレーション|ユーザーは、オンプレミスのネ�
 
 ![ユーザーのサインイン](./media/active-directory-aadconnect-get-started-custom/connectaad.png)
 
+接続の問題によってエラーが発生する場合は、「[Azure AD Connect での接続に関する問題のトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)」を参照してください。
 
 ## [同期] セクションのページ
 
@@ -105,11 +106,11 @@ sAMAccountName および MailNickName|このオプションは、ユーザーを
 ### グループに基づく同期フィルタリング
 グループのフィルタリングでは、Azure AD と Office 365 でオブジェクトの小さなサブセットのみを作成する小規模なパイロットを実行することができます。この機能を使用するには、Active Directory でグループを作成して、ダイレクト メンバーとして Azure AD と同期するユーザーやグループを追加します。このグループには後でユーザーを追加したりユーザーを削除したりして、Azure AD に表示するオブジェクトの一覧を管理することができます。同期するオブジェクトはすべて、グループの直接のメンバーである必要があります。これには、ユーザー、グループ、連絡先、およびコンピューター/デバイスが含まれます。入れ子になったグループのメンバーシップは解決されません。グループ メンバーにはグループ自体は含まれますが、そのメンバーは含まれません。
 
-この機能を使用するには、カスタマイズされたパスで、次のようなページを表示します。![フィルターの同期](./media/active-directory-aadconnect-get-started-custom/filter2.png)
+この機能を使用する場合、カスタム インストールの途中で次のようなページが表示されます。![フィルターの同期](./media/active-directory-aadconnect-get-started-custom/filter2.png)
 
 >[AZURE.WARNING]この機能は、パイロット デプロイメントのサポートのみを目的としているので、本格的な運用環境のデプロイメントでは使用しないでください。
 
-本格的な運用環境では、単一のグループを維持してすべてのオブジェクトを同期するのは困難です。その代わり、[構成フィルター](active-directory-aadconnectsync-configure-filtering.md)内のいずれかのメソッドを使用する必要があります。
+本格的な運用環境では、単一のグループを維持してすべてのオブジェクトを同期するのは困難です。代わりに、「[フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md)」で説明されている手法のいずれかを使用してください。
 
 ### オプション機能
 
@@ -121,7 +122,7 @@ sAMAccountName および MailNickName|このオプションは、ユーザーを
 
 オプション機能 | 説明
 -------------------    | ------------- |
-Exchange ハイブリッドのデプロイメント |Exchange ハイブリッドのデプロイメント機能によって、オンプレミスと Azure の両方で、Exchange メールボックスの共存が可能となります。そのためには、Azure AD から特定の[属性](active-directory-aadconnectsync-attributes-synchronzied.md#exchange-hybrid-writeback)のセットを、オンプレミスのディレクトリと同期します。
+Exchange ハイブリッドのデプロイメント |Exchange ハイブリッドのデプロイメント機能によって、オンプレミスと Azure の両方で、Exchange メールボックスの共存が可能となります。そのためには、Azure AD から特定の[属性](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)のセットを、オンプレミスのディレクトリと同期します。
 Azure AD アプリと属性フィルター|Azure AD アプリと属性フィルターを有効にして、ウィザードの後続のページで、同期する属性のセットを特定のセットに合わせることができます。このことを行うと、ウィザードで 2 つの追加の構成ページが開きます。  
 パスワードの同期 | サインイン リューションとしてフェデレーションを選択した場合は、このオプションを有効にすることができます。バックアップ オプションとして、パスワード同期を使用できます。詳細については、「[パスワードの同期](active-directory-aadconnectsync-implement-password-synchronization.md)」を参照してください。
 パスワード ライトバック|パスワード ライトバックを有効にすると、Azure AD で発信されるパスワードの変更が、オンプレミスのディレクトリに書き戻されます。詳細については、「[パスワード管理の概要](active-directory-passwords-getting-started.md)」を参照してください。
@@ -250,4 +251,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/04/2016"
+   ms.date="01/14/2016"
    ms.author="v-sharos" />
 
 # SharePoint 用 StorSimple アダプターをインストールして構成する
@@ -197,7 +197,7 @@ SharePoint 用 StorSimple アダプターをインストールしたら、次の
 
 SharePoint サイトからオブジェクトを削除しても、RBS ストア ボリュームからは自動的に削除されません。その代わり、非同期のバックグラウンド メンテナンス プログラムにより、孤立した BLOB がファイル ストアから削除されます。システム管理者はこのプロセスをスケジュールして定期的に実行するか、必要に応じていつでも開始できます。
 
-このメンテナンス プログラム (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) は、RBS を有効にするとすべての SharePoint WFE サーバーとアプリケーション サーバーに自動的にインストールされます。このプログラムは次の場所にインストールされます。*ブート ドライブ*:\\Program Files\\Microsoft SQL Remote Blob Storage 10.50\\Maintainer\\
+このメンテナンス プログラム (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) は、RBS を有効にするとすべての SharePoint WFE サーバーとアプリケーション サーバーに自動的にインストールされます。このプログラムは次の場所にインストールされます。ブート ドライブ:\\Program Files\\Microsoft SQL Remote Blob Storage 10.50\\Maintainer\\
 
 メンテナンス プログラムの構成と使用の詳細については、「[SharePoint Server 2013 で RBS のメンテナンスを行う][8]」を参照してください。
 
@@ -308,4 +308,4 @@ BLOB を SQL Server コンテンツ データベースに戻したら、次の�
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
 [8]: https://technet.microsoft.com/ja-JP/library/ff943565.aspx
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->

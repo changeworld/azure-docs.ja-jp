@@ -31,7 +31,7 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 
 > [AZURE.NOTE]Azure Site Recovery PowerShell コマンドレットを使用すると、現在、VMM サイト対 VMM サイト、VMM サイト対 Azure、Hyper-V サイト対 Azure のシナリオを構成できます。その他の ASR シナリオについても近々サポートされる予定です。
 
-この記事の内容を使用するには PowerShell の専門家である必要はありませんが、モジュール、コマンドレット、セッションなどの基本的な概念を理解していることを前提としています。Windows PowerShell の詳細については、「[Windows PowerShell の概要](http://technet.microsoft.com/library/hh857337.aspx)」と「[Azure リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager.md)」をご覧ください。
+この記事の内容を使用するには PowerShell の専門家である必要はありませんが、モジュール、コマンドレット、セッションなどの基本的な概念を理解していることを前提としています。Windows PowerShell の詳細については、「[Windows PowerShell の概要](http://technet.microsoft.com/library/hh857337.aspx)」と「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
 
 
 ## 主要な機能
@@ -43,7 +43,7 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 
 次の前提条件を満たしていることを確認してください。
 
-- [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。[Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。また、「[Azure Site Recovery Manager の価格](http://azure.microsoft.com/pricing/details/site-recovery/)」も参照してください。
+- [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。また、「[Azure Site Recovery Manager の料金](http://azure.microsoft.com/pricing/details/site-recovery/)」も参照してください。
 - Azure PowerShell 1.0 が必要です。このリリースとそのインストール方法については、[Azure PowerShell 1.0](http://azure.microsoft.com/) に関するページを参照してください。
 - [AzureRM.SiteRecovery](https://www.powershellgallery.com/packages/AzureRM.SiteRecovery/) モジュールと [AzureRM.RecoveryServices](https://www.powershellgallery.com/packages/AzureRM.RecoveryServices/) モジュールをインストールしておく必要があります。最新版のモジュールを [PowerShell ギャラリー](https://www.powershellgallery.com/)から入手できます。
 
@@ -261,4 +261,4 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 
     	$TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0121_2016-->

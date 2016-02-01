@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="12/02/2015"
+   ms.date="01/20/2015"
    ms.author="derrickv"/>
 
 
@@ -26,8 +26,12 @@ GitHub に以下のサンプルがあります。
 
   Data Catalog REST API を使用してデータ資産を登録、検索、および削除するために Azure AD で認証を行う方法を示すサンプルです。
 
-- [Azure Data Catalog - 一括登録および注釈付け](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/)
+- [一括登録および注釈付け](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/)
 
   Data Catalog REST API と Open XML を使用して、Excel ブックからデータ資産を一括で登録する方法を示すサンプルです。
 
-<!---HONumber=AcomDC_1203_2015-->
+- [Import/Export ツール](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-import-export/)
+
+  Data Catalog REST API を使用して Azure Data Catalog からアセットを取得し、ファイルにシリアル化する方法を示すサンプルです。また、json としてシリアル化されたアセットのセットを取得して、それらをカタログにプッシュする方法も示します。検索クエリを使用したカタログのサブセットのエクスポートをサポートします。
+
+<!---HONumber=AcomDC_0121_2016-->

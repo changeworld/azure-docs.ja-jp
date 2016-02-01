@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/07/2015"
+	ms.date="01/15/2016"
 	ms.author="adegeo"/>
 
 
@@ -22,8 +22,8 @@
 # クラウド サービスを作成してデプロイする方法
 
 > [AZURE.SELECTOR]
-- [Azure classic portal](cloud-services-how-to-create-deploy.md)
 - [Azure portal](cloud-services-how-to-create-deploy-portal.md)
+- [Azure classic portal](cloud-services-how-to-create-deploy.md)
 
 Azure クラシック ポータルには、クラウド サービスを作成してデプロイする方法として、**[簡易作成]** と **[カスタム作成]** の 2 つの方法が用意されています。
 
@@ -51,7 +51,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 - ロール インスタンスに対するリモート デスクトップ接続を構成する場合は、リモート デスクトップ用に[ロールを構成](cloud-services-role-enable-remote-desktop.md)します。
 
-- クラウド サービスの詳細監視を構成する場合は、クラウド サービスの Azure 診断を有効にします。*最小監視* (既定の監視レベル) では、ロール インスタンス (仮想マシン) のホスト オペレーティング システムから収集したパフォーマンス カウンターが使用されます。詳細監視は、ロール インスタンス内のパフォーマンス データに基づいて追加のメトリックを収集して、アプリケーション処理時に発生する問題を詳しく分析できます。Azure 診断を有効にする方法については、「[Enabling Diagnostics in Azure (Azure における診断の有効化)](cloud-services-dotnet-diagnostics.md)」を参照してください。
+- クラウド サービスの詳細監視を構成する場合は、クラウド サービスの Azure 診断を有効にします。最小監視 (既定の監視レベル) では、ロール インスタンス (仮想マシン) のホスト オペレーティング システムから収集したパフォーマンス カウンターが使用されます。詳細監視は、ロール インスタンス内のパフォーマンス データに基づいて追加のメトリックを収集して、アプリケーション処理時に発生する問題を詳しく分析できます。Azure 診断を有効にする方法については、「[Enabling Diagnostics in Azure (Azure における診断の有効化)](cloud-services-dotnet-diagnostics.md)」を参照してください。
 
 Web ロールまたは worker ロールのデプロイを伴うクラウド サービスを作成するには、[サービス パッケージを作成する](cloud-services-model-and-package.md#servicepackagecspkg)必要があります。
 
@@ -150,4 +150,4 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 * [クラウド サービスを管理する](cloud-services-how-to-manage.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0121_2016-->

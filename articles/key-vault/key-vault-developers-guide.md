@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="11/06/2015"
+   ms.date="1/19/2016"
    ms.author="bruceper" />
 
 # Azure Key Vault 開発者ガイド
@@ -25,7 +25,7 @@
 
 - 暗号化キーを、[作成](https://msdn.microsoft.com/library/azure/dn903634.aspx)、[インポート](https://msdn.microsoft.com/library/azure/dn903626.aspx)、[更新](https://msdn.microsoft.com/library/azure/dn903616.aspx)、[削除](https://msdn.microsoft.com/library/azure/dn903611.aspx)などの操作を使用して管理する
 
-- シークレットを、[取得](https://msdn.microsoft.com/library/azure/dn903633.aspx)、[更新](https://msdn.microsoft.com/library/azure/dn986818.aspx)  [削除] などの操作を使用して管理する
+- シークレットを、[取得](https://msdn.microsoft.com/library/azure/dn903633.aspx)、[更新](https://msdn.microsoft.com/library/azure/dn986818.aspx)、[削除](https://msdn.microsoft.com/library/azure/dn903613.aspx)などの操作を使用して管理する
 
 - 暗号化キーを、[署名](https://msdn.microsoft.com/library/azure/dn878096.aspx)/[確認](https://msdn.microsoft.com/library/azure/dn878082.aspx)、[WrapKey](https://msdn.microsoft.com/library/azure/dn878066.aspx)/[UnwrapKey](https://msdn.microsoft.com/library/azure/dn878079.aspx)、[暗号化](https://msdn.microsoft.com/library/azure/dn878060.aspx)/[暗号化解除](https://msdn.microsoft.com/library/azure/dn878097.aspx)操作で使用する
 
@@ -37,7 +37,8 @@ Key Vault に対する操作は、Azure Active Directory によって認証さ�
 
 |[![.NET](./media/key-vault-developers-guide/net.png)](https://msdn.microsoft.com/library/azure/dn903301.aspx)|[![Node.js](./media/key-vault-developers-guide/nodejs.png)](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
 |:--:|:--:|
-|[.NET](https://msdn.microsoft.com/library/azure/dn903301.aspx)|[Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
+|[.NET SDK ドキュメント](https://msdn.microsoft.com/library/azure/dn903301.aspx)|[Node.js SDK ドキュメント](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)|
+|[.NET SDK パッケージ](https://azure.microsoft.com/ja-JP/documentation/api/)|[Node.js SDK パッケージ](https://www.npmjs.com/package/azure-keyvault)|
 
 ## Key Vault の管理
 
@@ -65,4 +66,4 @@ Azure Key Vault コンテナー (資格情報コンテナー) は、次の記事
 
 - [Microsoft Azure Key Vault Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/1.0.0): Azure Key Vault の拡張機能を提供します。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Directions on Microsoft の統合 | Microsoft Azure" 
     description="Azure Active Directory で Directions on Microsoft を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Directions on Microsoft の統合
 
@@ -72,7 +72,7 @@
 
 1.  Azure AD ポータルの **Directions on Microsoft** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンを有効にする](./media/active-directory-saas-directions-microsoft-tutorial/IC786879.png "シングル サインオンを有効にする")
+    ![Enable Single Sign-On](./media/active-directory-saas-directions-microsoft-tutorial/IC786879.png "Enable Single Sign-On")
 
 2.  **[ユーザーの Directions on Microsoft へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
@@ -80,19 +80,19 @@
 
 3.  **[アプリケーション URL の構成]** ページの [サインオン URL] ボックスに「****https://www.directionsonmicrosoft.com/user/login**」と入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-directions-microsoft-tutorial/IC786881.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-directions-microsoft-tutorial/IC786881.png "Configure App URL")
 
 4.  **[Directions on Microsoft でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターにローカルに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-directions-microsoft-tutorial/IC786882.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-directions-microsoft-tutorial/IC786882.png "Configure Single Sign-On")
 
 5.  メタデータ ファイルを Directions on Microsoft サポート チーム (**service@DirectionsOnMicrosoft.com*)) に送信します。Directions on Microsoft サポート チームがフェデレーション サイトのメンバーシップを見つけられるように、電子メールには会社の情報を含めます。
 
     >[AZURE.NOTE]Directions on Microsoft のシングル サインオンは、Directions on Microsoft サポート チームが有効にする必要があります。シングル サインオンが有効になると通知が届きます。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-directions-microsoft-tutorial/IC786883.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-directions-microsoft-tutorial/IC786883.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
 
 Directions on Microsoft へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当てられたユーザーがアクセス パネルを使用して Directions on Microsoft にログインしようとすると、そのユーザーが存在するかどうかが Directions on Microsoft によって確認されます。使用可能なユーザー アカウントがない場合、ユーザー アカウントは自動的に作成されます。
@@ -108,8 +108,8 @@ Directions on Microsoft へのユーザー プロビジョニングの構成に�
 
     ![ユーザーの割り当て](./media/active-directory-saas-directions-microsoft-tutorial/IC786884.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-directions-microsoft-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-directions-microsoft-tutorial/IC767830.png "Yes")
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

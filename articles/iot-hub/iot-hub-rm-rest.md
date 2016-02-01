@@ -24,6 +24,8 @@
 
 [IoT Hub Resource Provider REST API][lnk-rest-api] を使って、Azure IoT Hub をプログラムを使用して作成、管理できます。このチュートリアルでは、Resource Provider REST API を使用して C# プログラムから IoT Hub を作成する方法を説明します。
 
+> [AZURE.NOTE]Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[リソース マネージャー デプロイ モデルとクラシック デプロイ モデル](../resource-manager-deployment-model.md)です。この記事では、リソース マネージャーのデプロイメント モデルの使用について説明します。
+
 このチュートリアルを完了するには、以下が必要になります。
 
 - Microsoft Visual Studio 2015
@@ -192,4 +194,4 @@ IoT Hub Resource Provider REST API を使用して、リソース グループ�
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
 [lnk-azure-rm-overview]: https://azure.microsoft.com/documentation/articles/resource-group-overview/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

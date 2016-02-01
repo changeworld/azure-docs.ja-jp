@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="01/11/2016"
 	ms.author="billmath;andkjell"/>
 
 # 簡単設定を使用した Azure AD Connect の開始
@@ -43,7 +43,7 @@
 2. AzureADConnect.msi を検索し、ダブルクリックします。
 3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、**[続行]** をクリックします。
 4. [簡単設定] 画面で、**[簡単設定を使う]** をクリックします。![Azure AD Connect へようこそ](./media/active-directory-aadconnect-get-started/express.png)
-5. [Azure AD に接続] 画面で、Azure AD の Azure グローバル管理者のユーザー名とパスワードを入力します。**[次へ]** をクリックします。
+5. [Azure AD に接続] 画面で、Azure AD の Azure グローバル管理者のユーザー名とパスワードを入力します。**[次へ]** をクリックします。接続の問題によってエラーが発生する場合は、「[Azure AD Connect での接続に関する問題のトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)」を参照してください。
 6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。**[次へ]** をクリックします。![Azure AD Connect へようこそ](./media/active-directory-aadconnect-get-started/install4.png)
 7. [構成の準備完了] 画面で、**[インストール]** をクリックします。
 	- 必要に応じて、[構成の準備完了] 画面の **[構成が完了したらすぐに同期プロセスを開始する]** チェック ボックスをオフにします。このチェック ボックスをオフにすると、ウィザードでは、同期が構成されますが、タスクは無効のままになります。そのため、タスクは、タスク スケジューラで手動で有効にするまで実行されません。タスクを有効にすると、同期は 3 時間ごとに実行されます。
@@ -63,4 +63,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

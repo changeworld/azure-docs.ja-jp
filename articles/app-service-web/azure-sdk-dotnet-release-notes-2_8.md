@@ -14,14 +14,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="11/30/2015"
+   ms.date="01/19/2016"
    ms.author="juliako"/>
 
-# Azure SDK for .NET 2.8 と Azure SDK for .NET 2.8.1
+# Azure SDK for .NET 2.8、2.8.1、2.8.2
 
 ##概要
  
-この記事には、Azure SDK for .NET 2.8 リリースと Azure SDK for .NET 2.8.1 リリースの (既知の問題と重大な変更が含まれた) リリース ノートが記載されています。
+この記事には、Azure SDK for .NET 2.8、2.8.1、2.8.2 リリースのリリース ノート (既知の問題と重大な変更を含む) が記載されています。
 
 このリリースの新機能とこのリリースで行われた更新の一覧については、[Visual Studio 2013 および Visual Studio 2015 用 Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/) の発表に関するブログ記事をご覧ください。
 
@@ -37,7 +37,7 @@
 
 ####既知の問題
 
-Azure .NET SDK 2.8 では、.NET 4.5.2 Cloud Service パッケージを作成できます。ただし、.NET 4.5.2 フレームワークは、2016 年 1 月のゲスト OS のリリースまで既定のゲスト OS イメージにはインストールされません。それまでは、.NET 4.5.2 フレームワークは別のゲスト OS リリース バージョン (November 2015-02) で利用できます。イメージのリリース日を追跡した「[Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services-guestos-update-matrix.md)」ページをご覧ください。November 2015-02 イメージがリリースされたら、Cloud Service 構成ファイル (.cscfg) を更新することでこのイメージを使用できます。このサービス構成ファイルで、ServiceConfiguration 要素の osVersion 属性を "WA-GUEST-OS-4.26\_201511-02" という文字列に設定します。このイメージを使用するようにした場合、ゲスト OS に対する自動更新プログラムを取得できなくなります。自動更新プログラムを取得するには、osVersion を "*" に設定する必要があります。.NET 4.5.2 は 2016 年 1 月の自動更新プログラムによってのみ利用できるようになります。
+Azure .NET SDK 2.8 では、.NET 4.5.2 クラウド サービス パッケージを作成できます。ただし、.NET 4.5.2 フレームワークは、2016 年 1 月のゲスト OS のリリースまで既定のゲスト OS イメージにはインストールされません。それまでは、.NET 4.5.2 フレームワークは別のゲスト OS リリース バージョン (November 2015-02) で利用できます。イメージのリリース日を追跡した「[Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services/cloud-services-guestos-update-matrix.md)」ページをご覧ください。November 2015-02 イメージがリリースされたら、クラウド サービス構成ファイル (.cscfg) を更新することでこのイメージを使用できます。このサービス構成ファイルで、ServiceConfiguration 要素の osVersion 属性を "WA-GUEST-OS-4.26\_201511-02" という文字列に設定します。このイメージを使用するようにした場合、ゲスト OS に対する自動更新プログラムを取得できなくなります。自動更新プログラムを取得するには、osVersion を "*" に設定する必要があります。.NET 4.5.2 は 2016 年 1 月の自動更新プログラムによってのみ利用できるようになります。
 
 ###Azure Data Factory
 
@@ -56,7 +56,7 @@ Azure .NET SDK 2.8 では、.NET 4.5.2 Cloud Service パッケージを作成で
 
 2\.8 SDK を使用している場合、以前のバージョンの SDK で作成されたプロジェクトのスクリプトは、Visual Studio 内から実行できません。すべてのスクリプトは、適切なバージョンの Azure PowerShell コマンドレットを使用して、Visual Studio の外部で引き続き動作します。
 
-2\.8 SDK には、Azure PowerShell コマンドレットのバージョン 1.0 が必要です。他のすべてのバージョンの SDK には、Azure PowerShell コマンドレットのバージョン 0.9.8 が必要です。詳細については、[この投稿](http://go.microsoft.com/fwlink/?LinkID=623011)を参照してください。
+2\.8 SDK には、Azure PowerShell コマンドレットのバージョン 1.0 が必要です。他のすべてのバージョンの SDK には、Azure PowerShell コマンドレットのバージョン 0.9.8 が必要です。詳細については、[このブログ](http://go.microsoft.com/fwlink/?LinkID=623011)をご覧ください。
 
 ###Web ツールの拡張機能
 
@@ -82,12 +82,18 @@ Azure .NET SDK 2.8 では、.NET 4.5.2 Cloud Service パッケージを作成で
  
 1. スロットへの WebJob 発行がトリガーされると、エラーが発生し、スケジュールは設定されませんが、WebJob が Azure にプッシュされます。スケジュールされたジョブを必要としているお客様は、Azure ポータルを使用して WebJob のスケジュールを設定できます。 
 2. Python のお客様には、デバッガーの問題が発生することがあります。サービス チームがこの修正プログラムのロールアウトを進めていますが、影響を受けたお客様は、フォーラム、またはお知らせブログかリリース ノートのコメント セクションでマイクロソフトにお知らせください。 
-3. 一部のリージョン (インド南部など) のお客様には、App Service のプロビジョニング エラーが発生します。これはポータルと一致しており、この問題が発生したお客様は、Azure ポータルを使用してこれらの地理的リージョンに発行するためのアクセスを要求できます。これらのリージョンへのアクセスを要求したら、Azure ポータルのプロビジョニングが機能するようになります。 
+3. 一部のリージョン (インド南部など) のお客様には、App Service のプロビジョニング エラーが発生します。これはポータルと一致しており、この問題が発生したお客様は、Azure ポータルを使用してこれらの geo リージョンに発行するためのアクセスを要求できます。これらのリージョンへのアクセスを要求したら、Azure ポータルのプロビジョニングが機能するようになります。 
 
+##Azure SDK for .NET 2.8.2
 
+2\.8.2 のツールのインストール後、次のような問題が発生する場合があります。
+
+- Windows 10 を使用していて、Internet Explorer をインストールしていない場合は、"Internet Explorer が見つかりませんでした" というエラーが表示されます。この問題を解決するには、[Windows コンポーネントの追加と削除] ダイアログを使用して Internet Explorer をインストールしてください。
+
+この問題が解決されない場合は、"気に入った機能の報告" 機能を使用して問題を報告してください。
 ##他の更新プログラム
 
-他の更新プログラムについては、[Azure SDK 2.8 の発表に関するブログ記事](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)をご覧ください。
+他の更新プログラムについては、「[Azure SDK 2.8 アナウンスの投稿](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)」を参照してください。
 
 ##関連トピック
 
@@ -95,4 +101,4 @@ Azure .NET SDK 2.8 では、.NET 4.5.2 Cloud Service パッケージを作成で
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

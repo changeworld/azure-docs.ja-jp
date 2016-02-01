@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/11/2015"
+	ms.date="01/14/2016"
 	ms.author="josephd"/>
 
 # Azure リソース マネージャーでの基本構成テスト環境
@@ -158,6 +158,8 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 	Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 	Install-ADDSForest -DomainName corp.contoso.com -DatabasePath "F:\NTDS" -SysvolPath "F:\SYSVOL" -LogPath "F:\Logs"
 
+これらのコマンドが完了するまで数分かかる場合があります。
+
 DC1 を再起動した後、DC1 の仮想マシンに再接続します。
 
 1.	Azure ポータルで、**[仮想マシン]**、**DC1** 仮想マシンの順にクリックします。
@@ -169,12 +171,15 @@ DC1 を再起動した後、DC1 の仮想マシンに再接続します。
 - パスワード: [ローカル管理者アカウントのパスワード]
 6.	証明書に関するリモート デスクトップ接続のメッセージ ボックスが表示されたら、**[はい]** をクリックします。
 
-次に、CORP ドメインのメンバー コンピューターにログインする際に使用するユーザー アカウントを Active Directory に作成します。管理者レベルの Windows PowerShell コマンド プロンプトで以下のコマンドを 1 つずつ実行します。
+次に、CORP ドメインのメンバー コンピューターにログインする際に使用するユーザー アカウントを Active Directory に作成します。管理者レベルの Windows PowerShell コマンド プロンプトで次のコマンドを実行します。
 
 	New-ADUser -SamAccountName User1 -AccountPassword (read-host "Set user password" -assecurestring) -name "User1" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false
-	Add-ADPrincipalGroupMembership -Identity "CN=User1,CN=Users,DC=corp,DC=contoso,DC=com" -MemberOf "CN=Enterprise Admins,CN=Users,DC=corp,DC=contoso,DC=com","CN=Domain Admins,CN=Users,DC=corp,DC=contoso,DC=com"
 
-1 つ目のコマンドを実行すると、User1 アカウントのパスワードを入力するよう求められます。このアカウントは、CORP ドメインに属しているすべてのコンピューターのリモート デスクトップ接続に使用されるため、強力なパスワードを選んでください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。User1 アカウントのパスワードをメモし、安全な場所に保管してください。
+このコマンドでは、User1 アカウントのパスワードの入力を求められます。このアカウントは、CORP ドメインに属しているすべてのメンバー コンピューターのリモート デスクトップ接続に使用されるため、強力なパスワードを選択してください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。User1 アカウントのパスワードをメモし、安全な場所に保管してください。
+
+次に、新しい User1 アカウントをエンタープライズ管理者として構成します。管理者レベルの Windows PowerShell コマンド プロンプトで次のコマンドを実行します。
+
+	Add-ADPrincipalGroupMembership -Identity "CN=User1,CN=Users,DC=corp,DC=contoso,DC=com" -MemberOf "CN=Enterprise Admins,CN=Users,DC=corp,DC=contoso,DC=com","CN=Domain Admins,CN=Users,DC=corp,DC=contoso,DC=com"
 
 DC1 とのリモート デスクトップ セッションを閉じ、CORP\\User1 アカウントを使用して再接続します。
 
@@ -291,7 +296,7 @@ Azure の基本構成の準備が整いました。アプリケーションの�
 
 ## 次のステップ
 
-- この構成を基にして、[シミュレートされたハイブリッド クラウド テスト環境](../virtual-network/virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)を構築します。
+- Corpnet サブネットに[新しい仮想マシンを追加](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)します (Microsoft SQL Server を実行している仮想マシンなど)。
 
 
 ## <a id="costs"></a>Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法
@@ -321,4 +326,4 @@ Azure PowerShell で仮想マシンを順番に起動するには、リソース
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0121_2016-->

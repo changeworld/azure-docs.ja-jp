@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="article"
-	ms.date="01/12/2016"
+	ms.date="01/19/2016"
     ms.author="awills"/>
 
 # Application Insights のリリース注釈
@@ -28,9 +28,9 @@
 リリース注釈を作成できるようにするには、Visual Studio Marketplace で入手可能な Team Services 拡張機能のいずれかをインストールする必要があります。
 
 1. [Visual Studio Team Services](https://www.visualstudio.com/ja-JP/get-started/setup/sign-up-for-visual-studio-online) プロジェクトにサインインします。
-2. Visual Studio Marketplace を開き、Application Insights Annotations 拡張機能を検索して、Team Services アカウントに追加します。
+2. Visual Studio Marketplace で[リリース注釈拡張機能を取得](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)して、Team Services アカウントに追加します。
 
-![Team Service Web ページの右上で Marketplace を開くアカウントで Application Insights 注釈を検索してインストール](./media/app-insights-annotations/10.png)
+![Team Service Web ページの右上で Marketplace を開くSelect Visual Team Services and then under Build and Release, choose See More.](./media/app-insights-annotations/10.png)
 
 この操作は、Visual Studio Team Services アカウントごとに 1 回行うだけですみます。これで、リリース注釈をアカウントのプロジェクトに対して構成できるようになりました。
 
@@ -46,13 +46,13 @@
 
 2. 別のブラウザー ウィンドウで、Visual Studio Team Services のデプロイを管理するリリース テンプレートを開きます (または作成します)。
 
-    タスクを追加し、メニューから \[Application Insights Release Annotation] (Application Insights リリース注釈) タスクを選択します。
+    タスクを追加し、メニューから [Application Insights Release Annotation] (Application Insights リリース注釈) タスクを選択します。
 
-    [API アクセス] ブレードからコピーした **Application Insights ID** を貼り付けます。
+    [API アクセス] ブレードからコピーした **Application ID** を貼り付けます。
 
     ![Visual Studio Team Services で [リリース] を開き、リリース定義を選択して [編集] を選択します。[タスクの追加] をクリックし、[Application Insights Release Annotation] (Application Insights リリース注釈) を選択します。Application Insights ID を貼り付けます。](./media/app-insights-annotations/30.png)
 
-3. **[APIKey]** フィールドを変数 `$(ApiKey)` に設定します。
+3. **[APIKey]** フィールドを `$(ApiKey)` 変数に設定します。
 
 4. [API アクセス] ブレードに戻り、新しい API キーを作成し、それをコピーします。
 
@@ -73,4 +73,4 @@
 
 これで、このリリース テンプレートを使用して新しいリリースをデプロイするたびに、注釈が Application Insights に送信されるようになりました。注釈は、メトリックス エクスプローラーのグラフに表示されます。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

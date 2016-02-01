@@ -1,5 +1,5 @@
 <properties
-	pageTitle="BACPAC ファイルをインポートして新しい Azure SQL Database を作成する"
+	pageTitle="BACPAC ファイルをインポートして新しい Azure SQL Database を作成する | Microsoft Azure"
 	description="既存の BACPAC ファイルをインポートして新しい Azure SQL Database を作成する"
 	services="sql-database"
 	documentationCenter=""
@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="12/17/2015"
+	ms.date="01/20/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -42,7 +42,7 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 
 - Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
 - Azure SQL Database V12 サーバー。V12 サーバーがない場合は、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
-- [Azure ストレージ アカウント (クラシック)](storage-create-storage-account.md) の BLOB コンテナーにインポートするデータベースの .bacpac ファイル。
+- [Azure Storage アカウント (クラシック)](storage-create-storage-account.md) の BLOB コンテナーにインポートするデータベースの .bacpac ファイル。
 
 
 ## データベースを含めるサーバーの選択
@@ -69,7 +69,7 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 2.  データベースをインポートする Azure SQL Server の **[サーバー管理ログイン]** と **[パスワード]** を入力します。
 1.  **[作成]** をクリックして、BACPAC からデータベースを作成します。
 
-    ![create database][4]
+    ![データベースの作成][4]
 
 **[作成]** をクリックすると、サービスにデータベースのインポート要求が送信されます。データベースのサイズに応じて、インポート操作の完了に時間がかかる場合があります。
 
@@ -95,7 +95,7 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 
 ## 次のステップ
 
-- [SQL Server Management Studio (SSMS) での接続](sql-database-connect-to-database.md)
+- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
 
 
 
@@ -112,4 +112,4 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0121_2016-->

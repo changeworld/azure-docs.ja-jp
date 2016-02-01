@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="クラウド サービス向けの SSL の構成 | Microsoft Azure" 
+	pageTitle="クラウド サービス (クラシック) 向けの SSL の構成 | Microsoft Azure" 
 	description="Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。" 
 	services="cloud-services" 
 	documentationCenter=".net" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/22/2015"
+	ms.date="01/15/2016"
 	ms.author="adegeo"/>
 
 
@@ -22,14 +22,14 @@
 # Azure でアプリケーションの SSL を構成する
 
 > [AZURE.SELECTOR]
-- [Azure classic portal](cloud-services-configure-ssl-certificate.md)
 - [Azure portal](cloud-services-configure-ssl-certificate-portal.md)
+- [Azure classic portal](cloud-services-configure-ssl-certificate.md)
 
 Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
-> [AZURE.NOTE]このタスクの手順は、Azure Cloud Services に適用されます。Websites については、「[Azure Web サイトの SSL 証明書の構成](../web-sites-configure-ssl-certificate.md)」を参照してください。
+> [AZURE.NOTE]このタスクの手順は、Azure Cloud Services に適用されます。App Services については、[こちら](../app-service-web/web-sites-configure-ssl-certificate.md)をご覧ください。
 
-このタスクでは、運用環境のデプロイを使用します。ステージング環境のデプロイを使用する場合に関する情報については、このトピックの最後で紹介します。
+このタスクでは、運用環境のデプロイメントを使用します。ステージング環境のデプロイメントを使用する場合に関する情報については、このトピックの最後で紹介します。
 
 クラウド サービスを作成していない場合は、まず[こちら](cloud-services-how-to-create-deploy.md)を参照してください。
 
@@ -67,7 +67,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
         ...
         </WebRole>
 
-    **Certificates** セクションでは、証明書の名前、場所、およびこの証明書があるストアの名前を定義します。CA (証明機関) ストアにこの証明書を保存することを選択しましたが、その他のオプションを選択することもできます。詳細については、「[サービスと証明書の関連付け][]」を参照してください。
+    **Certificates** セクションでは、証明書の名前、場所、およびこの証明書があるストアの名前を定義します。
 
 2.  サービス定義ファイルで、**Endpoints** セクション内に **InputEndpoint** 要素を追加し、HTTPS を有効にします。
 
@@ -110,11 +110,11 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 (上記の例では、拇印アルゴリズムに **sha1** を使用しています。証明書の拇印アルゴリズムに適切な値を指定してください。)
 
-サービス定義ファイルとサービス構成ファイルが更新されたので、Azure にアップロードするためにデプロイをパッケージ化します。**cspack** を使用している場合は、**/generateConfigurationFile** フラグを使用しないようにしてください。このフラグによって、先ほど挿入した証明書情報が上書きされるためです。
+サービス定義ファイルとサービス構成ファイルが更新されたので、Azure にアップロードするためにデプロイメントをパッケージ化します。**cspack** を使用している場合は、**/generateConfigurationFile** フラグを使用しないようにしてください。このフラグによって、先ほど挿入した証明書情報が上書きされるためです。
 
 ## ステップ 3: 証明書のアップロード
 
-デプロイ パッケージがこの証明書を使用するように更新され、HTTPS エンドポイントが追加されました。これで、Azure クラシック ポータルを使用して Azure にパッケージと証明書をアップロードできるようになりました。
+デプロイメント パッケージがこの証明書を使用するように更新され、HTTPS エンドポイントが追加されました。これで、Azure クラシック ポータルを使用して Azure にパッケージと証明書をアップロードできるようになりました。
 
 1. [Azure クラシック ポータル][]にログインします。 
 2. 左側のナビゲーション ウィンドウで、**[Cloud Services]** をクリックします。
@@ -131,9 +131,9 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 ## ステップ 4: HTTPS を使用してロール インスタンスに接続する
 
-Azure でデプロイを実行できるようになったため、HTTPS を使用して接続できます。
+Azure でデプロイメントを実行できるようになったため、HTTPS を使用して接続できます。
 
-1.  Azure クラシック ポータルでデプロイを選択し、**[サイトの URL]** の下にあるリンクをクリックします。
+1.  Azure クラシック ポータルでデプロイメントを選択し、**[サイトの URL]** の下にあるリンクをクリックします。
 
     ![サイトの URL の確認][2]
 
@@ -143,7 +143,7 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
 
     ![SSL のサンプル Web サイト][3]
 
-運用環境のデプロイではなくステージング環境のデプロイに SSL を使用する場合は、最初に、ステージング環境のデプロイに使用されている URL を確認する必要があります。証明書または証明書情報を含めずに、ステージング環境にクラウド サービスをデプロイしてください。展開すると、Azure クラシック ポータルの **[サイトの URL]** に表示される、GUID ベースの URL を確認できます。GUID ベースの URL (**32818777-6e77-4ced-a8fc-57609d404462.cloudapp.net** など) と同じ共通名 (CN) で証明書を作成し、その証明書をステージングされたクラウド サービスに Azure クラシック ポータルを使用して追加します。CSDEF ファイルと CSCFG ファイルに証明書情報を追加し、アプリケーションの再パッケージ化を実行して、新しいパッケージと CSCFG ファイルを使用するようステージング デプロイを更新します。
+運用環境のデプロイではなくステージング環境のデプロイメントに SSL を使用する場合は、最初に、ステージング環境のデプロイメントに使用されている URL を確認する必要があります。証明書または証明書情報を含めずに、ステージング環境にクラウド サービスをデプロイしてください。展開すると、Azure クラシック ポータルの **[サイトの URL]** に表示される、GUID ベースの URL を確認できます。GUID ベースの URL (**32818777-6e77-4ced-a8fc-57609d404462.cloudapp.net** など) と同じ共通名 (CN) で証明書を作成し、その証明書をステージングされたクラウド サービスに Azure クラシック ポータルを使用して追加します。CSDEF ファイルと CSCFG ファイルに証明書情報を追加し、アプリケーションの再パッケージ化を実行して、新しいパッケージと CSCFG ファイルを使用するようステージング デプロイメントを更新します。
 
 ## 次のステップ
 
@@ -160,4 +160,4 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
   [3]: ./media/cloud-services-configure-ssl-certificate/SSLCloudService.png
   [4]: ./media/cloud-services-configure-ssl-certificate/AddCertificateComplete.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

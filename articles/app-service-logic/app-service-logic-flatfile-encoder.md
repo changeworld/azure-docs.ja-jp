@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="BizTalk Flat File Encoder" 
-   description="BizTalk Flat File Encoder" 
+   pageTitle="ロジック アプリでの BizTalk Flat File Encoder の使用 | Microsoft Azure" 
+   description="BizTalk Flat File Encoder API アプリまたはコネクタ" 
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
    authors="rajram" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="10/29/2015"
+   ms.date="01/19/2016"
    ms.author="rajram"/>
 
 # BizTalk Flat File Encoder
@@ -69,4 +69,4 @@ Azure のスタート ページから API アプリを起動するには、API �
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0121_2016-->

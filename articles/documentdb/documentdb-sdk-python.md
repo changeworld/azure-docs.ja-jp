@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="11/16/2015" 
+	ms.date="01/19/2016" 
 	ms.author="ryancraw"/>
 
 # DocumentDB SDK
@@ -29,6 +29,9 @@
 <table> <tr><td>**ダウンロード**</td><td>[PyPI](https://pypi.python.org/pypi/pydocumentdb)</td></tr> <tr><td>**投稿**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr> <tr><td>**ドキュメント**</td><td>[Python SDK Reference Documentation](http://azure.github.io/azure-documentdb-python/)</td></tr> <tr><td>**使用**</td><td>[Python SDK の使用](documentdb-python-application.md)</td></tr> <tr><td>**現在サポートされているプラットフォーム**</td><td>[Python 2.7](https://www.python.org/download/releases/2.7/)</td></tr> </table></br>
 
 ## リリース ノート
+
+### <a name="1.5.0"/>[1\.5.0](https://pypi.python.org/pypi/pydocumentdb/1.5.0)
+- ハッシュおよび範囲パーティション リゾルバーを追加して、複数のパーティションにわたってシャーディング アプリケーションを支援します。
 
 ### <a name="1.4.2"/>[1\.4.2](https://pypi.python.org/pypi/pydocumentdb/1.4.2)
 - Upsert を実装します。Upsert 機能をサポートするために新しい UpsertXXX メソッドが追加されました。
@@ -61,17 +64,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
-| [1\.4.2](#1.4.2) | 2015 年 10 月 06 日 |---
-| [1\.4.1](#1.4.1) | 2015 年 10 月 06 日 |---
-| [1\.2.0](#1.2.0) | 2015 年 8 月 06 日 |---
-| [1\.1.0](#1.1.0) | 2015 年 7 月 09 日 |---
-| [1\.0.1](#1.0.1) | 2015 年 5 月 25 日 |---
-| [1\.0.0](#1.0.0) | 2015 年 4 月 07 日 |---
-| 0.9.4-prelease | 2015 年 1 月 14 日 | 2016 年 2 月 29 日
-| 0.9.3-prelease | 2014 年 12 月 09 日 | 2016 年 2 月 29 日
-| 0.9.2-prelease | 2014 年 11 月 25 日 | 2016 年 2 月 29 日
-| 0.9.1-prelease | 2014 年 9 月 23 日 | 2016 年 2 月 29 日
-| 0.9.0-prelease | 2014 年 8月 21 日 | 2016 年 2 月 29 日
+| [1\.5.0](#1.5.0) | 2016 年 1 月 03 日 |--- | [1\.4.2](#1.4.2) | 2015 年 10 月 06 日 |--- | [1\.4.1](#1.4.1) | 2015 年 10 月 06 日 |--- | [1\.2.0](#1.2.0) | 2015 年 8 月 06 日 |--- | [1\.1.0](#1.1.0) | 2015 年 7 月 09 日 |--- | [1\.0.1](#1.0.1) | 2015 年 5 月 25 日 |--- | [1\.0.0](#1.0.0) | 2015 年 4 月 07 日 |--- | 0.9.4-prelease | 2015 年 1 月 14 日 | 2016 年 2 月 29 日 | 0.9.3-prelease | 2014 年 12 月 09 日 | 2016 年 2 月 29 日 | 0.9.2-prelease | 2014 年 11 月 25 日 | 2016 年 2 月 29 日6 | 0.9.1-prelease | 2014 年 9 月 23 日 | 2016 年 2 月 29 日 | 0.9.0-prelease | 2014 年 8月 21 日 | 2016 年 2 月 29 日
 
 ## FAQ
 [AZURE.INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -80,4 +73,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/17/2015"
-	ms.author="trinadhk; aashishr; jimpark; markgal"/>
+	ms.date="01/19/2016"
+	ms.author="trinadhk; jimpark; markgal;"/>
 
 # Azure 仮想マシンをバックアップする環境の準備
 Azure 仮想マシン (VM) をバックアップする環境を準備するには、次の前提条件を満たす必要があります。前提条件を満たしている場合は、[VM をバックアップ](backup-azure-vms.md)できます。満たしていない場合は、次の手順で環境を準備してください。
@@ -81,7 +81,7 @@ VM をバックアップする際、HTTPS API を使用してスナップショ�
 
 >[AZURE.NOTE]使用するプロキシ ソフトウェアについて推奨事項はありません。以降の構成手順と互換性があるプロキシを選択してください。
 
-次の例では、パブリック インターネットに送信されるすべての HTTP トラフィックにプロキシ VM を使用するようにアプリ VM を構成する必要があります。プロキシ VM は、仮想ネットワーク内の VM からの着信トラフィックを許可するように構成する必要があります。最後に、NSG (*NSG-lockdown*) には、プロキシ VM からの発信インターネット トラフィックを許可する新しいセキュリティ規則が必要です。
+次の例では、パブリック インターネットに送信されるすべての HTTP トラフィックにプロキシ VM を使用するようにアプリ VM を構成する必要があります。プロキシ VM は、仮想ネットワーク内の VM からの着信トラフィックを許可するように構成する必要があります。最後に、NSG (NSG-lockdown) には、プロキシ VM からの発信インターネット トラフィックを許可する新しいセキュリティ規則が必要です。
 
 ![HTTP プロキシ デプロイメントを使用した NSG の図](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
 
@@ -140,7 +140,7 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 
 このコマンドでは、NSG に例外を追加します。これにより、10.0.0.5 の任意のポートから、ポート 80 (HTTP) または 443 (HTTPS) 上の任意のインターネット アドレスに TCP トラフィックを送信できます。パブリック インターネット上の特定のポートを対象にする必要がある場合は、そのポートも ```-DestinationPortRange``` に追加します。
 
-*例で使用されている名前は、デプロイメントに適した詳細情報に置き換えてください。*
+例で使用されている名前は、デプロイメントに適した詳細情報に置き換えてください。
 
 ## 3\.VM エージェント
 
@@ -156,7 +156,7 @@ VM エージェントは、Azure ギャラリーから作成された仮想マ�
 | --- | --- | --- |
 | VM エージェントのインストール | <li>[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。インストールを実行するには、管理者特権が必要です。<li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。 | <li>GitHub から最新の [Linux エージェント](https://github.com/Azure/WALinuxAgent)をインストールします。インストールを実行するには、管理者特権が必要です。<li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。 |
 | VM エージェントの更新 | VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。<br><br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 | [Linux VM エージェントの更新](../virtual-machines-linux-update-agent.md)に関する手順に従ってください。<br><br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
-| VM エージェントのインストールの検証 | <li>Azure VM で *C:\\WindowsAzure\\Packages* フォルダーに移動します。<li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして、**[プロパティ]** をクリックした後、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。 | - |
+| VM エージェントのインストールの検証 | <li>Azure VM で C:\\WindowsAzure\\Packages フォルダーに移動します。<li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして、**[プロパティ]** をクリックした後、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。 | - |
 
 
 詳細については、[VM エージェント](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)および[インストール方法](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)に関するページをご覧ください。
@@ -165,7 +165,7 @@ VM エージェントは、Azure ギャラリーから作成された仮想マ�
 
 仮想マシンをバックアップするために、Azure Backup サービスは VM エージェントの拡張機能をインストールします。Azure Backup サービスは、バックアップ拡張機能のアップグレードと修正プログラムの適用をシームレスに自動実行します。
 
-VM が実行されている場合、バックアップ拡張機能がインストールされます。また、VM が実行されている場合は、アプリケーション整合性復旧ポイントを取得できる可能性が最も高くなります。Azure Backup サービスは、VM がオフであり、拡張機能をインストールできない場合 (オフライン VM の場合) でも、VM のバックアップを続行します。この場合、復旧ポイントは、前述した*クラッシュ整合性*復旧ポイントになります。
+VM が実行されている場合、バックアップ拡張機能がインストールされます。また、VM が実行されている場合は、アプリケーション整合性復旧ポイントを取得できる可能性が最も高くなります。Azure Backup サービスは、VM がオフであり、拡張機能をインストールできない場合 (オフライン VM の場合) でも、VM のバックアップを続行します。この場合、復旧ポイントは、前述したクラッシュ整合性復旧ポイントになります。
 
 
 ## 制限事項
@@ -178,7 +178,7 @@ VM が実行されている場合、バックアップ拡張機能がインス�
 - リージョン間のバックアップと復元はサポートされません。
 - Azure Backup サービスを使用した仮想マシンのバックアップは、Azure のすべてのパブリック リージョンでサポートされます (サポートされているリージョンの[チェックリスト](http://azure.microsoft.com/regions/#services)を参照)。目的のリージョンが現在サポートされていない場合は、資格情報コンテナーの作成時にドロップダウン リストに表示されません。
 - オペレーティング システムのバージョンの選択でサポートされるのは、Azure Backup サービスを使用した仮想マシンのバックアップのみです。
-  - **Linux**: [Azure で動作保証済みのディストリビューションの一覧](../virtual-machines-linux-endorsed-distributions.md)をご確認ください。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作する限り使用できます。
+  - **Linux**: [Azure で動作保証済みのディストリビューションの一覧](../virtual-machines/virtual-machines-linux-endorsed-distributions.md)をご確認ください。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作する限り使用できます。
   - **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
 - マルチ DC 構成の一部であるドメイン コントローラー (DC) VM の復元は、PowerShell を通じてのみサポートされます。[マルチ DC ドメイン コントローラーの復元](backup-azure-restore-vms.md#restoring-domain-controller-vms)の詳細をご覧ください。
 - 次のような特殊なネットワーク構成を持つ仮想マシンの復元は、PowerShell でのみサポートされています。UI の復元ワークフローを使用して作成する VM には、復元操作の完了後、これらのネットワーク構成は含まれません。詳細については、「[特別なネットワーク構成を持つ VM の復元](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations)」を参照してください。
@@ -195,4 +195,4 @@ VM が実行されている場合、バックアップ拡張機能がインス�
 - [仮想マシンのバックアップ](backup-azure-vms.md)
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -13,17 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/08/2016"
+	ms.date="01/19/2016"
 	ms.author="cabailey"/>
 #Azure Key Vault の HSM 保護キーを生成し、転送する方法
 
 ##はじめに
 
-Azure Key Vault の使用時にさらに安心感を高める場合、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。このシナリオは、多くの場合、*Bring Your Own Key* または BYOK と呼ばれています。HSM は、FIPS 140-2 レベル 2 で検証済みです。Azure Key Vault は HSM の Thales nShield ファミリを使用してキーを保護します。
+Azure Key Vault の使用時にさらに安心感を高める場合、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。このシナリオは、多くの場合、Bring Your Own Key または BYOK と呼ばれています。HSM は、FIPS 140-2 レベル 2 で検証済みです。Azure Key Vault は HSM の Thales nShield ファミリを使用してキーを保護します。
 
 このトピックの情報は Azure Key Vault と共に使用する独自の HSM 保護キーを計画、生成、転送する際に役立ちます。
 
->[AZURE.NOTE]Azure Key Vault の詳細については、「[What is Azure Key Vault? (Azure Key Vault とは)](key-vault-whatis.md)」をご覧ください。
+この機能は Azure China では使用できません。
+
+>[AZURE.NOTE]Azure Key Vault の詳細については、「[What is Azure Key Vault? (Azure Key Vault とは)](key-vault-whatis.md)」を参照してください。
 >
 >HSM 保護キーの Key Vault 作成を含む入門チュートリアルについては、「[Azure Key Vault の概要](key-vault-get-started.md)」を参照してください。
 
@@ -58,8 +60,8 @@ Azure Key Vault の Bring Your Own Key (BYOK) の前提条件の一覧につい�
 
 |要件|詳細情報|
 |---|---|
-|Azure のサブスクリプション|Azure Key Vault を作成するには、Azure サブスクリプションが必要です: [無料試用版に登録する](http://azure.microsoft.com/pricing/free-trial/)|
-|HSM をサポートする Azure Key Vault|Azure Key Vault のサービス層と機能に関する詳細については、[Azure Key Vault 価格](http://azure.microsoft.com/pricing/details/key-vault/) Web サイトを参照してください。|
+|Azure のサブスクリプション|Azure Key Vault を作成するには、Azure サブスクリプションが必要です: [無料試用版に登録する](../../../../pricing/free-trial)|
+|HSM をサポートする Azure Key Vault|Azure Key Vault のサービス層と機能に関する詳細については、[Azure Key Vault 価格](../../../../pricing/details/key-vault/) Web サイトを参照してください。|
 |Thales HSM、スマート カード、サポート ソフトウェア|Thales ハードウェア セキュリティ モジュールにアクセスできることと Thales HSM の基本操作知識が必要です。互換性のあるモデルの一覧については、あるいは所有していない場合に HSM を購入する方法については、「[Thales ハードウェア セキュリティ モジュール](https://www.thales-esecurity.com/msrms/buy)」を参照してください。|
 |次のハードウェアとソフトウェア: <ol><li>Windows 7 以降の Windows OS とバージョン 11.50 以降の Thales nShield ソフトウェアをインストールしているオフライン x64 ワークステーション。<br/><br/>このワークステーションで Windows 7 を実行する場合、[Microsoft .NET Framework 4.5](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe) をインストールする必要があります。</li><li>Windows 7 以降の Windows OS をインストールし、インターネットに接続されているワークステーション。</li><li>空き容量が 16 MB 以上の USB ドライブまたはその他のポータブル ストレージ デバイス。</li></ol>|セキュリティ上の理由から、最初のワークステーションをネットワークに接続しないことをお勧めします。ただし、これはプログラミングでは適用されません<br/><br/>次の手順では、このワークステーションを「未接続ワークステーション」と呼んでいることに注意してください。</p></blockquote><br/>また、テナント キーは本稼動ネットワーク用の場合、2 つ目の別個のワークステーションを利用してツールセットをダウンロードし、テナント キーをアップロードすることをお勧めします。ただし、テスト目的で、1 つ目のワークステーションとして同じワークステーションを使用できます。<br/><br/>次の手順では、この 2 つ目のワークステーションを「ネットワーク接続ワークステーション」と呼んでいることに注意してください。</p></blockquote><br/>|
 
@@ -97,9 +99,9 @@ Azure PowerShell ウィンドウを閉じないでください。
 
 ###手順 1.3: Azure Key Vault の BYOK ツールセットをダウンロードする
 
-Microsoft ダウンロード センターにアクセスし、ご自分のリージョンの [Azure Key Vault BYOK ツールセットをダウンロード](http://www.microsoft.com/download/details.aspx?id=45345)します。
+Microsoft ダウンロード センターにアクセスし、自分の地域リージョンまたは Azure のインスタンスの [Azure Key Vault BYOK ツールセットをダウンロード](http://www.microsoft.com/download/details.aspx?id=45345)します。
 
-|リージョン|パッケージ名|SHA-256 パッケージ ハッシュ|
+|地域リージョンまたは Azure のインスタンス|パッケージ名|SHA-256 パッケージ ハッシュ|
 |---|---|---|
 |北米|KeyVault-BYOK-Tools-UnitedStates.zip|D9FDA9F5A34E1388CD6C9138E5B75B7051FB7D6B11F087AFE0553DC85CCF0E36|
 |ヨーロッパ|KeyVault-BYOK-Tools-Europe.zip|881DCA798305B8408C06BAE7B3EFBC1E9EA6113A8D6EC443464F3744896F32C3|
@@ -107,6 +109,7 @@ Microsoft ダウンロード センターにアクセスし、ご自分のリー
 |ラテン アメリカ|KeyVault-BYOK-Tools-LatinAmerica.zip|B38015990D4D1E522B8367FF78E78E0234BF9592663470426088C44C3CAAAF48|
 |日本|KeyVault-BYOK-Tools-Japan.zip|DB512CD9472FDE2FD610522847DF05E4D7CD49A296EE4A2DD74D43626624A113|
 |オーストラリア|KeyVault-BYOK-Tools-Australia.zip|8EBC69E58E809A67C036B50BB4F1130411AD87A7464E0D61A9E993C797915967|
+|[Azure Government](../../../../features/gov/)|KeyVault-BYOK-Tools-USGovCloud.zip|4DE9B33990099E4197ED67D786316F628E5218FC1EB0C24DCAD8A1851FD345B8|
 
 ダウンロードした BYOK ツールセットの整合性を検証するには、Azure PowerShell セッションから、[Get FileHash](https://technet.microsoft.com/library/dn520872.aspx) コマンドレットを使用します。
 
@@ -173,7 +176,7 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 
 ダウンロードしたパッケージを検証するには:
 
-1.	リージョンによっては、次のいずれかを関連付け、verifykeypackage.py スクリプトを実行します。
+1.	地域リージョンまたは Azure のインスタンスによっては、次のいずれかを入力して、verifykeypackage.py スクリプトを実行します。
 	- 北米:
 
 			python verifykeypackage.py -k BYOK-KEK-pkg-NA-1 -w BYOK-SecurityWorld-pkg-NA-1
@@ -192,6 +195,9 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 	- オーストラリア:
 
 			python verifykeypackage.py -k BYOK-KEK-pkg-AUS-1 -w BYOK-SecurityWorld-pkg-AUS-1
+	- [Azure 政府機関向け](../../../../features/gov/)の場合、Azure の米国政府インスタンスを使用します。
+
+			python verifykeypackage.py -k BYOK-KEK-pkg-USGOV-1 -w BYOK-SecurityWorld-pkg-USGOV-1
 
 	>[AZURE.TIP]Thales ソフトウェアの %NFAST\_HOME%\\python\\bin に Python が含まれています。
 
@@ -211,7 +217,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 このコマンドを実行するとき、次の指示に従います。
 
-- **ident** と **plainname** の *contosokey* の値を文字列値に置換します。管理費を最小限に抑え、エラーを犯す可能性を減らすために、両方に同じ値を使用することをお勧めします。**Ident** 値には数字、ダッシュ、小文字のみを使用できます。
+- **ident** と **plainname** の contosokey の値を文字列値に置換します。管理費を最小限に抑え、エラーを犯す可能性を減らすために、両方に同じ値を使用することをお勧めします。**Ident** 値には数字、ダッシュ、小文字のみを使用できます。
 
 - pubexp はこの例では空白のまま (既定) ですが、特定の値を指定できます。詳細については、Thales の文書を参照してください。
 
@@ -229,7 +235,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 ###手順 4.1: アクセス権が制限されたキーのコピーを作成します。
 
-キーのアクセス権を制限するには、コマンド プロンプトから、ご自分のリージョンに基づいて次のいずれかを実行します。
+キーのアクセス権を制限するには、地域リージョンまたは Azure のインスタンスによって、コマンド プロンプトから次のいずれかを実行します。
 
 - 北米:
 
@@ -249,8 +255,11 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 - オーストラリア:
 
 		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1
+- [Azure 政府機関向け](../../../../features/gov/)の場合、Azure の米国政府インスタンスを使用します。
 
-このコマンドを実行するとき、*contosokey* を[キーの生成](#step-3-generate-your-key)手順の「**手順 3.3: 新しいキーを作成する**」で指定した同じ値で置換します。
+		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1
+
+このコマンドを実行するとき、contosokey を[キーの生成](#step-3-generate-your-key)手順の「**手順 3.3: 新しいキーを作成する**」で指定した同じ値で置換します。
 
 セキュリティ ワールドの管理者カードを差し込むように求められます。
 
@@ -270,7 +279,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 ###手順 4.3: Microsoft の Key Exchange Key を使用してキーを暗号化する
 
-ご自分のリージョンに基づいて次のコマンドのいずれかを実行します。
+地域リージョンまたは Azure のインスタンスによって、次のいずれかのコマンドを実行します。
 
 - 北米:
 
@@ -290,16 +299,19 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 - オーストラリア:
 
 		KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+- [Azure 政府機関向け](../../../../features/gov/)の場合、Azure の米国政府インスタンスを使用します。
+
+		KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 
 このコマンドを実行するとき、次の指示に従います。
 
-- *contosokey* を[キーの生成](#step-3-generate-your-key)手順の「**手順 3.3: 新しいキーを作成する**」でキーの生成に使用した ID で置換します。
+- contosokey を[キーの生成](#step-3-generate-your-key)手順の「**手順 3.3: 新しいキーを作成する**」でキーの生成に使用した ID で置換します。
 
-- *SubscriptionID* を Key Vault が含まれる Azure サブスクリプションの ID で置換します。この値は先に、[インターネット接続ワークステーションの準備](#step-1-prepare-your-internet-connected-workstation)手順の「**手順 1.2: Azure サブスクリプション ID を取得する**」で取得しました。
+- SubscriptionID を Key Vault が含まれる Azure サブスクリプションの ID で置換します。この値は先に、[インターネット接続ワークステーションの準備](#step-1-prepare-your-internet-connected-workstation)手順の「**手順 1.2: Azure サブスクリプション ID を取得する**」で取得しました。
 
-- *ContosoFirstHSMKey* を出力ファイル名に使用するラベルで置換します。
+- ContosoFirstHSMKey を出力ファイル名に使用するラベルで置換します。
 
-完了すると、**Result: SUCCESS** と表示され、"TransferPackage-*ContosoFirstHSMkey*.byok" という名前の新しいファイルが現在のフォルダーに表示されます。
+完了すると、**Result: SUCCESS** と表示され、"TransferPackage-ContosoFirstHSMkey.byok" という名前の新しいファイルが現在のフォルダーに表示されます。
 
 ###手順 4.4: キー転送パッケージをインターネット接続ワークステーションにコピーします。
 
@@ -313,8 +325,9 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 アップロードされると、追加したキーのプロパティが表示されます。
 
+
 ##次のステップ
 
 これでこの HSM 保護キーを Key Vault で使用できます。詳細については、[Azure Key Vault の概要](key-vault-get-started.md)のチュートリアルの「**ハードウェア セキュリティ モジュール (HSM) を使用する場合**」セクションを参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

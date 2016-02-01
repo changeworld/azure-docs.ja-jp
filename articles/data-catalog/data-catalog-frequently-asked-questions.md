@@ -54,32 +54,7 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 
 ## Q: サポートされているデータ ソースと資産の種類は何ですか。
 
-プレビュー期間中、**Azure Data Catalog** では現在、SQL Server リレーショナル (Azure SQL DB を含む) および SQL Server Analysis Services (多次元および表形式) データベースのほか、SQL Server Reporting Services (ネイティブ モードのみ) および Oracle Database をサポートしています。
-
-プレビュー期間中、**Azure Data Catalog** は、次の資産の種類の登録および検出をサポートしています。
-
-- SQL Server テーブル
-- SQL Server ビュー
-- SQL Server Analysis Services ディメンション
-- SQL Server Analysis Services メジャー
-- SQL Server Analysis Services KPI
-- SQL Server Analysis Services テーブル
-- SQL Server Reporting Services レポート  
-- Oracle Database テーブル
-- Oracle Database ビュー
-- Azure Storage BLOB
-- Azure Storage ディレクトリ
-- HDFS ファイル
-- HDFS ディレクトリ
-- Teradata テーブル
-- Teradata ビュー
-
-**Azure Data Catalog** では、上に一覧した資産に加えて、次のデータ資産コンテナーも検出することができます。
-
-- SQL Server Database
-- Oracle Database
-- HDFS クラスター
-- Teradata データベース
+現在サポートされているデータ ソースの一覧については、「[データ カタログ DSR](data-catalog-dsr.md)」を参照してください。
 
 
 ## Q: 別のデータ ソースのサポートを要求するにはどうすればよいですか。
@@ -172,4 +147,4 @@ A: カタログに既に登録されているデータ資産のメタデータ�
 
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。そこで寄せられている質問に、ここでの方法が見つかります。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0121_2016-->

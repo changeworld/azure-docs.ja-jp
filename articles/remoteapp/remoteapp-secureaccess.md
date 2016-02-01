@@ -61,7 +61,9 @@ Azure RemoteApp 管理者は、Azure AD Premium で使用可能な機能を用�
 	1. **[作業中でない場合、アクセスをブロック]** を選択し、指定したネットワーク環境外からのユーザーによる Azure RemoteApp へのアクセスを完全に防ぎます。
 	2. 下にあるオプションをクリックし、"信頼されたネットワーク" を構成する IP アドレス範囲を定義します。それ以外のものはすべて拒否されます。
 
-5.	指定した範囲外の IP アドレスから Azure RemoteApp クライアントを起動して、構成をテストします。Azure AD の資格情報でサインインした後、次のようなメッセージが表示されます。 ![Azure RemoteApp へのアクセス拒否](./media/remoteapp-secureaccess/ra-accessdenied.png)
+5.	指定した範囲外の IP アドレスから Azure RemoteApp クライアントを起動して、構成をテストします。Azure AD の資格情報でサインインした後、次のようなメッセージが表示されます。
+
+![Azure RemoteApp へのアクセス拒否](./media/remoteapp-secureaccess/ra-accessdenied.png)
  
 
 ### 将来の条件付きアクセスの機能 
@@ -108,4 +110,4 @@ Azure RemoteApp では、最初に VNet を構成してから、コレクショ�
 ## 完全なソリューション
 以下の図は、エンド ユーザーからバックエンド リソースへの Azure RemoteApp (ARA) 経由のセキュリティで保護されたアクセス チャネルが構築された完全なソリューションを示しています。![セキュリティで保護された Azure RemoteApp](./media/remoteapp-secureaccess/ra-secureoverview.png) ステージ 1 では、ユーザーを選択し、ARA へのアクセス方法を制御するアクセス規則を作成しました。この例では、企業ネットワークから作業を行っているユーザーに対してのみアクセスを許可しています。非準拠ユーザーは、ARA 環境にはまったくアクセスすることはできません。"ステージ 2" では、制御下の VNet/VPN 構成でのみバックエンド リソースを公開しました。Azure RemoteApp は同じ VNet 内に配置されています。最終的に、リソースは ARA 環境を介してのみアクセスできます。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0121_2016-->

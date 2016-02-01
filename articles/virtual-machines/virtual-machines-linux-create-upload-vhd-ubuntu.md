@@ -59,7 +59,7 @@
 		# sudo sed -i "s/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g" /etc/apt/sources.list
 		# sudo apt-get update
 
-4. Ubuntu Azure イメージは、*HardWare Enablement* (HWE) カーネルに従うようになりました。次のコマンドを実行してオペレーティング システムを最新のカーネルに更新します。
+4. Ubuntu Azure イメージは、HardWare Enablement (HWE) カーネルに従うようになりました。次のコマンドを実行してオペレーティング システムを最新のカーネルに更新します。
 
 	Ubuntu 12.04:
 
@@ -112,6 +112,9 @@
 
 11. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
+## 次のステップ
+これで、Ubuntu Linux .vhd を使用して、Azure に新しい Azure Virtual Machines を作成する準備が整いました。Azure を使用し、.vhd ファイルを Azure にアップロードするのは今回が初めての場合は、[このガイダンス](virtual-machines-linux-create-upload-vhd.md)の手順 2 と 3 に従ってください。
+
 ## 参照 ##
 
 Ubuntu HardWare Enablement (HWE) カーネル
@@ -119,4 +122,4 @@ Ubuntu HardWare Enablement (HWE) カーネル
 - [http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html](http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html)
 - [http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html](http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

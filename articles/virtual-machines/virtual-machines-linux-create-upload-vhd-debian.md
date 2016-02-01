@@ -78,6 +78,6 @@ Credativ の Web サイトには、Debian VHD を自動的にビルドするの�
 
 ## 次のステップ
 
-これで、Debian .vhd を使用して新しい Azure 仮想マシンを作成する準備が整いました。
+これで、Debian .vhd を使用して新しい Azure 仮想マシンを作成する準備が整いました。Azure を使用し、.vhd ファイルを Azure にアップロードするのは今回が初めての場合は、[このガイダンス](virtual-machines-linux-create-upload-vhd.md)の手順 2 と 3 に従ってください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

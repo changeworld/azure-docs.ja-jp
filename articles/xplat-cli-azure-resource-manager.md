@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/26/2015"
+	ms.date="01/19/2016"
 	ms.author="danlep"/>
 
 # Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用
@@ -31,13 +31,13 @@
 
 ## Azure リソース
 
-Azure リソース マネージャーを使用すると、複数の_リソース_ (仮想マシン、データベース サーバー、データベース、Web サイトなどのユーザー管理のエンティティ) を_リソース グループ_と呼ばれる 1 つの論理単位にまとめて作成し、管理できます。
+Azure リソース マネージャーを使用すると、複数のリソース (仮想マシン、データベース サーバー、データベース、Web サイトなどのユーザー管理のエンティティ) をリソース グループと呼ばれる 1 つの論理単位にまとめて作成し、管理できます。
 
-Azure リソース マネージャーの長所を 1 つは、JSON *テンプレート*にリソースのデプロイ可能なグループの構造とリレーションシップを記述するという_宣言型_の方法で Azure のリソースを作成できることです。テンプレートはパラメーターを特定します。そのパラメーターに値をコマンドの実行時にインラインで入力するか、別の JSON azuredeploy-parameters.json ファイルに保存できます。これにより、同じテンプレートに異なるパラメーターを設定して、新しいリソースを簡単に作成できます。たとえば、Web サイトを作成するテンプレートには、サイト名や Web サイトを配置するリージョンなどの共通的な設定を用意できます。
+Azure リソース マネージャーの長所を 1 つは、JSON テンプレートにリソースのデプロイ可能なグループの構造とリレーションシップを記述するという宣言型の方法で Azure のリソースを作成できることです。テンプレートはパラメーターを特定します。そのパラメーターに値をコマンドの実行時にインラインで入力するか、別の JSON azuredeploy-parameters.json ファイルに保存できます。これにより、同じテンプレートに異なるパラメーターを設定して、新しいリソースを簡単に作成できます。たとえば、Web サイトを作成するテンプレートには、サイト名や Web サイトを配置するリージョンなどの共通的な設定を用意できます。
 
-テンプレートを使用してグループを変更または作成すると、_デプロイ_が作成されてグループに適用されます。Azure リソース マネージャーの詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」をご覧ください。
+テンプレートを使用してグループを変更または作成すると、デプロイが作成されてグループに適用されます。Azure リソース マネージャーの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」をご覧ください。
 
-デプロイを作成すると、従来の (サービス管理) デプロイ モデルと同様に、個々のリソースをコマンド ラインで強制的に管理できます。たとえば、Azure リソース マネージャー CLI コマンドを使用し、[Azure リソース マネージャー仮想マシン](../virtual-machines/virtual-machines-deploy-rmtemplates-azure-cli.md)などのリソースを開始、停止、削除します。
+デプロイを作成すると、従来の (サービス管理) デプロイ モデルと同様に、個々のリソースをコマンド ラインで強制的に管理できます。たとえば、Azure リソース マネージャー CLI コマンドを使用し、[Azure リソース マネージャー仮想マシン](virtual-machines/virtual-machines-deploy-rmtemplates-azure-cli.md)などのリソースを開始、停止、削除します。
 
 ## 認証
 
@@ -65,7 +65,7 @@ Azure リソース マネージャー モードは既定で無効になってい
 
 ## リソース グループの作成
 
-リソース グループは、ネットワーク、ストレージ、その他のリソースの論理グループです。Azure リソース マネージャー モードのほとんどすべてのコマンドにはリソース グループが必要です。次のコマンドを使用して、たとえば _testRG_ という名前のリソース グループを作成することができます。
+リソース グループは、ネットワーク、ストレージ、その他のリソースの論理グループです。Azure リソース マネージャー モードのほとんどすべてのコマンドにはリソース グループが必要です。次のコマンドを使用して、たとえば testRG という名前のリソース グループを作成することができます。
 
 	azure group create -n "testRG" -l "West US"
 
@@ -78,20 +78,19 @@ Azure リソース マネージャー モードは既定で無効になってい
 
 テンプレートを使用する場合、[独自のテンプレートを作成する](resource-group-authoring-templates.md)か、[GitHub](https://github.com/Azure/azure-quickstart-templates) でも取得できる[テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)のテンプレートを使用します。
 
-新しいテンプレートの作成はこの記事では扱いません。そのため、[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-linux-vm) から取得できる _101-simple-vm-from-image_ テンプレートを利用しましょう。既定では、これにより新しい仮想ネットワークで Ubuntu 14.04.2-LTS 仮想マシンが 1 つ作成されます。リージョンは米国西部でサブネットが 1 つです。次のパラメーターをいくつか指定すれば、このテンプレートを使用できます。
+新しいテンプレートの作成はこの記事では扱いません。そのため、まず、[テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/101-vm-simple-linux/)で入手できる 101-simple-vm-from-image テンプレートを利用しましょう。既定では、これにより新しい仮想ネットワークで Ubuntu 14.04.2-LTS 仮想マシンが 1 つ作成されます。リージョンは米国西部でサブネットが 1 つです。次のパラメーターをいくつか指定すれば、このテンプレートを使用できます。
 
 * VM の管理者ユーザー名 = `adminUsername`
 * パスワード = `adminPassword`
 * VM のドメイン名 = `dnsLabelPrefix`
 
->[AZURE.TIP]以下の手順では、Azure CLI で VM テンプレートを使用する方法を 1 つだけ紹介します。他の例については、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](../virtual-machines/virtual-machines-deploy-rmtemplates-azure-cli.md)」を参照してください。
+>[AZURE.TIP]以下の手順では、Azure CLI で VM テンプレートを使用する方法を 1 つだけ紹介します。他の例については、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines/virtual-machines-deploy-rmtemplates-azure-cli.md)」を参照してください。
 
-1. [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux) からローカル コンピューターの作業フォルダーに azuredeploy.json ファイルと azuredeploy.parameters.json ファイルをダウンロードします。
+1. "GitHub でさらに詳しく" リンクをたどり、GitHub からローカル コンピューターの作業フォルダーに azuredeploy.json ファイルと azuredeploy.parameters.json ファイルをダウンロードします(いずれのファイルも、GitHub 内にある未加工の形式を選択してください)。
 
 2. テキスト エディターで azuredeploy.parameters.json ファイルを開き、お使いの環境に適したパラメーター値を入力します (**ubuntuOSVersion** 値は変更しないでください)。
 
-
-```
+	```
 			{
 			  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
 			  "contentVersion": "1.0.0.0",
@@ -111,19 +110,22 @@ Azure リソース マネージャー モードは既定で無効になってい
 			  }
 			}
 
-```
-
+	```
 3.  デプロイ パラメーターを変更したら、先ほど作成したリソース グループに Ubuntu VM をデプロイします。デプロイの名前を選択し、次のコマンドを使用して実行します。
 
-		azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json testRG testRGdeploy
+	```
+	azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json testRG testRGdeploy
+	```
 
-	この例では、_testRGDeploy_ という名前のデプロイを作成し、リソース グループ _testRG_ にデプロイします。`-e` オプションにより、前の手順で変更した azuredeploy.parameters.json ファイルが指定されます。`-f` オプションは、azuredeploy.json テンプレート ファイルを指定します。
+	この例では、testRGDeploy という名前のデプロイを作成し、リソース グループ testRG にデプロイします。`-e` オプションにより、前の手順で変更した azuredeploy.parameters.json ファイルが指定されます。`-f` オプションにより、azuredeploy.json テンプレート ファイルが指定されます。
 
 	このコマンドでは、デプロイがアップロードされると OK と表示されますが、その時点ではまだグループのリソースにデプロイが適用されていません。
 
 4. デプロイの状態を確認するには、次のコマンドを使用します。
 
-		azure group deployment show "testRG" "testRGDeploy"
+	```
+	azure group deployment show "testRG" "testRGDeploy"
+	```
 
 	**ProvisioningState** に、デプロイの状態が表示されます。
 
@@ -161,12 +163,12 @@ Azure リソース マネージャー モードは既定で無効になってい
 
 	このコマンドにより、グループ内のリソースに関する情報が返されます。複数のグループがある場合は、`azure group list` コマンドでグループ名の一覧を表示した後、`azure group show` コマンドを使用して特定のグループの詳細を表示します。
 
-テンプレートをコンピューターにダウンロードせず、[GitHub](https://github.com/Azure/azure-quickstart-templates) から直接使用することもできます。その場合、コマンドに **--template-url** オプションを指定し、テンプレートの azuredeploy.json ファイルに URL を渡します。URL を取得するには、GitHub で _raw_ モードで azuredeploy.json を開き、ブラウザーのアドレス バーに表示される URL をコピーします。次のようにコマンドを使用し、この URL を使用してデプロイを直接作成できます。
+テンプレートをコンピューターにダウンロードせず、[GitHub](https://github.com/Azure/azure-quickstart-templates) から直接使用することもできます。その場合、コマンドに **--template-url** オプションを指定し、テンプレートの azuredeploy.json ファイルに URL を渡します。URL を取得するには、GitHub で raw モードで azuredeploy.json を開き、ブラウザーのアドレス バーに表示される URL をコピーします。次のようにコマンドを使用し、この URL を使用してデプロイを直接作成できます。
 
-	azure group deployment create "testDeploy" -g "testResourceGroup" --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-linux-vm/azuredeploy.json
+	azure group deployment create "testDeploy" testResourceGroup --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json
 必要なテンプレート パラメーターを入力するように求められます。
 
-> [AZURE.NOTE]_raw_ モードで JSON テンプレートを開くことが重要です。ブラウザーのアドレス バーに表示される URL は、通常モードで表示される URL とは異なります。GitHub でファイルを表示するときに_未加工_モードでファイルを開くには、右上にある **[未加工]** をクリックします。
+> [AZURE.NOTE]raw モードで JSON テンプレートを開くことが重要です。ブラウザーのアドレス バーに表示される URL は、通常モードで表示される URL とは異なります。GitHub でファイルを表示するときに未加工モードでファイルを開くには、右上にある **[未加工]** をクリックします。
 
 ## リソースの操作
 
@@ -200,17 +202,17 @@ Azure リソース マネージャー モードは既定で無効になってい
 
 ## ログの記録
 
-グループに実行された操作に関してログに記録された情報を表示するには、`azure group log show` コマンドを使用します。既定では、グループに対して実行された直前の操作が表示されます。すべての操作を表示するには、任意指定の `--all` パラメーターを使用します。最後のデプロイについて表示するには、`--last-deployment` を使用します。特定のデプロイについて表示するには、`--deployment` とデプロイ名を指定します。次の例では、*MyGroup* グループで実行されたすべての操作のログが表示されます。
+グループに実行された操作に関してログに記録された情報を表示するには、`azure group log show` コマンドを使用します。既定では、グループに対して実行された直前の操作が表示されます。すべての操作を表示するには、任意指定の `--all` パラメーターを使用します。最後のデプロイについて表示するには、`--last-deployment` を使用します。特定のデプロイについて表示するには、`--deployment` とデプロイ名を指定します。次の例では、MyGroup グループで実行されたすべての操作のログが表示されます。
 
 	azure group log show MyGroup --all
 
 ## 次のステップ
 
-* Azure リソース マネージャーで Azure PowerShell を使用する方法の詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+* Azure リソース マネージャーで Azure PowerShell を使用する方法の詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。
 * Azure ポータルから Azure リソース マネージャーを使用する方法の詳細については、「[リソース グループを使用した Azure リソースの管理][psrm]」を参照してください。
 
 [signuporg]: http://www.windowsazure.com/documentation/articles/sign-up-organization/
 [adtenant]: http://technet.microsoft.com/library/jj573650#createAzureTenant
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0121_2016-->

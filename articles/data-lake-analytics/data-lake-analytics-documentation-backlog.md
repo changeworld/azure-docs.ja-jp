@@ -39,6 +39,7 @@ U-SQL | 文法のレールロード ダイアグラム | 1 | 進行中 ([これ]
 サービス | Data Factory を使用する SQL Data Warehouse へのジョブ出力の移動 |1 | 進行中 | [@mumian](https://github.com/mumian) | 
 ツール | 診断ツールの使用 | 1 | Pending | [@mumian](https://github.com/mumian) | 
 U-SQL | 範囲基準の結合を行うための手法を説明します。 | 1 | Pending | [@MikeRys](https://github.com/mikerys) |[@saveenr](https://github.com/saveenr) 
+U-SQL | ADLS 認証オプション | 1 | Pending | [@ArindamC](https://github.com/mikerys) |[@saveenr](https://github.com/saveenr) 
 
 
 
@@ -56,4 +57,4 @@ U-SQL | 範囲基準の結合を行うための手法を説明します。 | 1 |
 * [Azure コンテンツ リポジトリ](https://github.com/Azure/azure-content/blob/master/articles/data-lake-analytics/data-lake-analytics-documentation-backlog.md)でこのドキュメントに関するプル要求を送信する。
 * [adlafeedback at microsoft.com](mailto:adlafeedback@microsoft.com?subject=DocBacklog) に電子メールを送信する。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0121_2016-->

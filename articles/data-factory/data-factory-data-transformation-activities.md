@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/04/2015" 
+	ms.date="01/19/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した変換と分析
@@ -24,12 +24,8 @@ Azure Data Factory の変換アクティビティにより、未加工のデー�
 
 変換アクティビティ | Compute 環境 
 :----------------------- | :--------------------
-[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop]
-[Pig](data-factory-pig-activity.md) | HDInsight [Hadoop]
-[MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop]
-[Hadoop Streaming](data-factory-hadoop-streaming-activity.md) | HDInsight [Hadoop]
-[Machine Learning アクティビティ: バッチ実行と更新のリソース](data-factory-azure-ml-batch-execution-activity.md) | Azure VM 
-[ストアド プロシージャ](data-factory-stored-proc-activity.md) | Azure SQL |
+[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop] [Pig](data-factory-pig-activity.md) | HDInsight [Hadoop] [MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop] [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) | HDInsight [Hadoop] [Machine Learning アクティビティ: バッチ実行と更新のリソース](data-factory-azure-ml-batch-execution-activity.md) | Azure VM 
+[ストアド プロシージャ](data-factory-stored-proc-activity.md) | Azure SQL、Azure SQL Data Warehouse、または SQL Server |
 [Data Lake Analytics U-SQL](data-factory-usql-activity.md) | Azure Data Lake Analytics 
 [DotNet](data-factory-use-custom-activities.md) | HDInsight [Hadoop] または Azure Batch
    
@@ -41,4 +37,4 @@ Azure Data Factory の変換アクティビティにより、未加工のデー�
 
 Data Factory でサポートされている Compute がリンクされたサービスについては、[Compute がリンクされたサービス](data-factory-compute-linked-services.md)に関する記事を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0121_2016-->

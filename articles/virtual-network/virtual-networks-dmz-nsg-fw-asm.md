@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/16/2015"
+   ms.date="01/20/2016"
    ms.author="jonor;sivae"/>
 
 # 例 2 - ファイアウォールと NSG から成る DMZ を構築してアプリケーションを保護する
@@ -553,7 +553,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 	</NetworkConfiguration>
 
 #### サンプル アプリケーション スクリプト
-ここで使用されているサンプル アプリケーションと DMZ に関するその他の例は、[サンプル アプリケーション スクリプト][SampleApp]をダウンロードしてインストールしていただけます。
+これに対応するサンプル アプリケーション、およびその他の DMZ の例をインストールしたい場合は、[サンプル アプリケーション スクリプト][SampleApp]をご利用ください。
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "Inbound DMZ with NSG"
@@ -566,4 +566,4 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 [SampleApp]: ./virtual-networks-sample-app.md
 [Example1]: ./virtual-networks-dmz-nsg-asm.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0121_2016-->
