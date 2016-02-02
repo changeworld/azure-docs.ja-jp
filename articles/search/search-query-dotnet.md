@@ -20,6 +20,7 @@
 #.NET を使用して Azure Search のクエリを作成する
 > [AZURE.SELECTOR]
 - [Overview](search-query-overview.md)
+- [Search Explorer](search-explorer.md)
 - [Fiddler](search-fiddler.md)
 - [.NET](search-query-dotnet.md)
 - [REST](search-query-rest-api.md)
@@ -62,4 +63,4 @@
 
 2 番目の呼び出しでは、OData の $filter 式、category eq 'Luxury' を使用しています。この式は、カテゴリ フィールドが文字列 "Luxury" に完全に一致するドキュメントのみ検索によって返されるように制限します。OData の構文の詳細については、[Azure Search の OData 式の構文](https://msdn.microsoft.com/library/azure/dn798921.aspx)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

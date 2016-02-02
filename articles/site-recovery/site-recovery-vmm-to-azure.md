@@ -33,7 +33,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 次の前提条件を満たしていることを確認してください。
 ### Azure の前提条件
 
-- [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。お持ちでない場合は、[無料試用版](http://aka.ms/try-azure)で作業を開始してください。また、[Azure Site Recovery Manager の価格](http://go.microsoft.com/fwlink/?LinkId=378268)に関するページも参照してください。
+- [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。お持ちでない場合は、[無料試用版](http://aka.ms/try-azure)で作業を開始してください。また、[Azure Site Recovery Manager の価格](http://go.microsoft.com/fwlink/?LinkId=378268)に関するページも参照してください。
 - Azure にレプリケートしたデータを格納するために Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Azure Storage のセットアップの詳細については、「[Microsoft Azure Storage の概要](http://go.microsoft.com/fwlink/?LinkId=398704)」を参照してください。
 - 保護する仮想マシンが Azure 要件に準拠していることを確認する必要があります。詳細については、[仮想マシンのサポートに関するページ](https://msdn.microsoft.com/library/azure/dn469078.aspx#BKMK_E2A)を参照してください。
 
@@ -81,8 +81,9 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 1. 登録する VMM サーバーから[管理ポータル](https://portal.azure.com)にサインインします。
 
 
-2. [
-3. *[Data Services]* をクリックし、*[Recovery Services]* を展開し、*[Site Recovery コンテナー]*クリックします。*
+2. を展開し
+3. *[Data Services]* をクリックし、*[Recovery Services]* を展開し、*[Site Recovery コンテナー]*クリックします。
+*
 3. *[新規作成]*、*[簡易作成]* の順にクリックします。
 
 
@@ -129,19 +130,19 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 
 1. プロバイダーのインストール後は、[登録] ボタンをクリックしてサーバーをコンテナーに登録します。
-	![InstallComplete](./media/site-recovery-vmm-to-azure/VMMASRInstallComplete.png)
+![InstallComplete](./media/site-recovery-vmm-to-azure/VMMASRInstallComplete.png)
 
 5. **[インターネット接続]** で、VMM サーバーで実行中のプロバイダーがインターネットに接続する方法を指定します。*[既定のシステム プロキシ設定を使用]* を選択して、サーバー上に構成されている既定のインターネット接続設定を使用します。
 
-	![インターネット設定](./media/site-recovery-vmm-to-azure/VMMASRRegisterProxyDetailsScreen.png)
+	![インターネット設定](./media/site-recovery-vmm-to-azure/VMMASRRegisterProxyDetailsScreen.png) 
 	- カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシの設定を構成すると、プロキシの接続を確認するためのテストが実行されます。
 	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合は、プロキシのアドレスやポートなど、プロキシの詳細を入力する必要があります。
-	- 次の URL は、VMM サーバーと、Hyper-V ホストからアクセスできる必要があります。
-		- *.hypervrecoverymanager.windowsazure.com
-		- *.accesscontrol.windows.net
-		- *.backup.windowsazure.com
-		- *.blob.core.windows.net
-		- *.store.core.windows.net
+	- 次の URL は、VMM サーバーと、Hyper-V ホストからアクセスできる必要があります。 
+		- *.hypervrecoverymanager.windowsazure.com 
+		- *.accesscontrol.windows.net 
+		- *.backup.windowsazure.com 
+		- *.blob.core.windows.net 
+		- *.store.core.windows.net 
 	- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」および HTTPS (443) プロトコルで説明されている IP アドレスを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、[設定] ワークスペースを開いて [セキュリティ] を展開し、[実行アカウント] をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
@@ -164,7 +165,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 8. *[次へ]* をクリックしてプロセスを完了します。登録後に、VMM サーバーからのメタデータが、Azure Site Recovery によって取得されます。サーバーは、コンテナーの **[サーバー]** ページの *[VMM サーバー]* タブに表示されます。
 
->[AZURE.NOTE]Azure Site Recovery プロバイダーは、次のコマンド ラインを使用してインストールすることもできます。このメソッドを使用すると、Windows Server 2012 R2 の Server CORE にプロバイダーをインストールできます。
+>[AZURE.NOTE] Azure Site Recovery プロバイダーは、次のコマンド ラインを使用してインストールすることもできます。このメソッドを使用すると、Windows Server 2012 R2 の Server CORE にプロバイダーをインストールできます。
 
 1. プロバイダーのインストール ファイルと登録キーを C:\\ASR などのフォルダーにダウンロードします。
 1. System Center Virtual Machine Manager サービスを停止します。
@@ -217,7 +218,7 @@ Azure ストレージ アカウントがない場合は、**[Azure ストレー�
 	
 	![Register MARS Agent](./media/site-recovery-vmm-to-azure/MarsAgentRegister.png)
 
->[AZURE.NOTE]Microsoft Azure Recovery Services エージェントは、コマンド ラインで次のコマンドを使用してインストールできます。
+>[AZURE.NOTE] Microsoft Azure Recovery Services エージェントは、コマンド ラインで次のコマンドを使用してインストールできます。
 >
 	marsagentinstaller.exe /q /nu
 
@@ -307,7 +308,7 @@ VMM サーバーが登録されると、クラウドの保護設定を構成す�
 
 		![ネットワークのプロパティの変更](./media/site-recovery-vmm-to-azure/MultiNic.png)
 
->[AZURE.NOTE]静的 IP アドレスを使用する Linux 仮想マシンはサポートされていません。
+>[AZURE.NOTE] 静的 IP アドレスを使用する Linux 仮想マシンはサポートされていません。
 
 ## デプロイのテスト
 デプロイをテストするために、1 台の仮想マシンに対するテスト フェールオーバーを実行することや、複数の仮想マシンで構成される復旧計画を作成して、その計画のテスト フェールオーバーを実行することができます。テスト フェールオーバーは、孤立したネットワークでフェールオーバーと復旧のシミュレーションを実行します。以下の点に注意してください。
@@ -364,11 +365,11 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 	- **[メモ]** をクリックして、テスト フェールオーバーに関連する監察結果をすべて記録し、保存します。
 
 ## <a id="runtest" name="runtest" href="#runtest"></a>アクティビティを監視する
-<p> *[ジョブ]* タブと *[ダッシュボード]* を使用して、Azure Site Recovery コンテナーで実行されるメイン ジョブを表示して監視できます。これには、クラウドに対する保護の構成、仮想マシンに対する保護の有効化と無効化、フェールオーバー (計画済み、計画外、またはテスト) の実行、計画されていないフェールオーバーのコミットが含まれます。</p>
+<p>*[ジョブ]* タブと *[ダッシュボード]* を使用して、Azure Site Recovery コンテナーで実行されるメイン ジョブを表示して監視できます。これには、クラウドに対する保護の構成、仮想マシンに対する保護の有効化と無効化、フェールオーバー (計画済み、計画外、またはテスト) の実行、計画されていないフェールオーバーのコミットが含まれます。</p>
 
-<p> *[ジョブ]* タブからは、ジョブの表示、ジョブの詳細とエラーの表示、特定の条件に一致するジョブを取得するジョブ クエリの実行、ジョブの Excel へのエクスポート、失敗したジョブの再開を行うことができます。</p>
+<p>*[ジョブ]* タブからは、ジョブの表示、ジョブの詳細とエラーの表示、特定の条件に一致するジョブを取得するジョブ クエリの実行、ジョブの Excel へのエクスポート、失敗したジョブの再開を行うことができます。</p>
 
-<p> *[ダッシュボード]* からは、最新バージョンのプロバイダーとエージェントのインストール ファイルのダウンロード、コンテナーの構成情報の取得、コンテナーによって管理されている保護対象の仮想マシンの数の確認、最近のジョブの確認、コンテナー証明書の管理、仮想マシンの再同期を行うことができます。</p>
+<p>*[ダッシュボード]* からは、最新バージョンのプロバイダーとエージェントのインストール ファイルのダウンロード、コンテナーの構成情報の取得、コンテナーによって管理されている保護対象の仮想マシンの数の確認、最近のジョブの確認、コンテナー証明書の管理、仮想マシンの再同期を行うことができます。</p>
 
 <p>ジョブの操作とダッシュボードの詳細については、「<a href="http://go.microsoft.com/fwlink/?LinkId=398534">Operations and Monitoring Guide (運用と監視ガイド)</a>」を参照してください。</p>
 
@@ -377,7 +378,7 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 <LI>完全な運用環境で Azure Site Recovery の計画とデプロイを実行するには、「<a href="http://go.microsoft.com/fwlink/?LinkId=321294">Azure Site Recovery 計画ガイド</a>」と「<a href="http://go.microsoft.com/fwlink/?LinkId=321295">Azure Site Recovery デプロイ ガイド</a>」を参照してください。</LI>
 
 
-<LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI>
+<LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI> 
 </UL>
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

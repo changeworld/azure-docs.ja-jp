@@ -32,7 +32,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 ## 開始する前に
 
-1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。[ダウンロード ページ](http://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
+1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。[ダウンロード ページ](https://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
 2. 有効なサブネットがある作業用の仮想ネットワークがあることを確認します。仮想マシンまたはクラウドのデプロイメントでサブネットを使用していないことを確認します。Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
 3. Application Gateway を使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内、または割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
 
@@ -45,7 +45,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 値は次のとおりです。
 
 - **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。
-- **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
+- **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
 - **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 - **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。
 - **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。現在、*basic* ルールのみサポートされます。*basic* ルールは、ラウンド ロビンの負荷分散です。
@@ -60,7 +60,7 @@ Application Gateway を作成するには:
 2. 構成 XML ファイルまたは構成オブジェクトを作成します。
 3. 新しく作成した Application Gateway のリソースに構成をコミットします。
 
->[AZURE.NOTE]Application Gateway のカスタム プローブを構成する必要がある場合は、「[Create an application gateway with custom probes by using PowerShell (PowerShell を使用してカスタム プローブで Application Gateway を作成する)](application-gateway-create-probe-classic-ps.md)」を参照してください。詳細については、[カスタム プローブと正常性監視](application-gateway-probe-overview.md)に関するページを参照してください。
+>[AZURE.NOTE] Application Gateway のカスタム プローブを構成する必要がある場合は、「[Create an application gateway with custom probes by using PowerShell (PowerShell を使用してカスタム プローブで Application Gateway を作成する)](application-gateway-create-probe-classic-ps.md)」を参照してください。詳細については、[カスタム プローブと正常性監視](application-gateway-probe-overview.md)に関するページを参照してください。
 
 
 ### Application Gateway リソースの作成
@@ -79,7 +79,7 @@ Application Gateway を作成するには:
 	Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
 
 
- *Description* 、 *InstanceCount* 、 および *GatewaySize* は省略可能なパラメーターです。
+ *Description*、*InstanceCount*、および *GatewaySize* は省略可能なパラメーターです。
 
 
 ゲートウェイが作成されたことを確認するには、**Get-AzureApplicationGateway** コマンドレットを使用します。
@@ -98,7 +98,7 @@ Application Gateway を作成するには:
 	VirtualIPs    : {}
 	DnsName       :
 
->[AZURE.NOTE]  *InstanceCount* の既定値は 2、最大値は 10 です。 *GatewaySize* の既定値は Medium です。Small、Medium、Large から選択します。
+>[AZURE.NOTE]  *InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Small、Medium、Large から選択します。
 
 
  ゲートウェイがまだ起動していないため、*VirtualIPs* と *DnsName* は空白のまま表示されます。これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
@@ -160,9 +160,9 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 
 構成項目のかっこに囲まれた値を編集します。拡張子 .xml のファイルに保存します。
 
->[AZURE.IMPORTANT]プロトコル項目 Http または Https は、大文字小文字を区別します。
+>[AZURE.IMPORTANT] プロトコル項目 Http または Https は、大文字小文字を区別します。
 
-次の例では、パブリック ポート 80 で Http トラフィックを負荷分散する Application Gateway を設定し、2 つの IP アドレスのバックエンド ポート 80 にネットワーク トラフィックを送信する構成ファイルを使用する方法を示します。
+次の例では、パブリック ポート 80 で HTTP トラフィックを負荷分散する Application Gateway を設定し、2 つの IP アドレスのバックエンド ポート 80 にネットワーク トラフィックを送信する構成ファイルを使用する方法を示します。
 
 	<?xml version="1.0" encoding="utf-8"?>
 	<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
@@ -225,20 +225,20 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 
 次の例では、構成オブジェクトを使用して Application Gateway を構成する方法を示します。すべての構成項目は個別に構成した後に、Application Gateway の構成オブジェクトに追加する必要があります。構成オブジェクトを作成したら、**Set-AzureApplicationGateway** コマンドを使用して、前の手順で作成した Application Gateway のリソースに構成をコミットします。
 
->[AZURE.NOTE]各構成オブジェクトに値を割り当てる前に、PowerShell でストレージとして使用するオブジェクトの種類を宣言する必要があります。個別の項目を作成する最初の行では、Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model (オブジェクト名) を使用する項目を定義します。
+>[AZURE.NOTE] 各構成オブジェクトに値を割り当てる前に、PowerShell でストレージとして使用するオブジェクトの種類を宣言する必要があります。個別の項目を作成する最初の行では、Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model (オブジェクト名) を使用する項目を定義します。
 
 ### 手順 1.
 
 すべての個別の構成項目を作成します。
 
-次の例で示すように、フロント エンド IP を作成します。
+次の例で示すように、フロントエンド IP を作成します。
 
 	PS C:\> $fip = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration
 	PS C:\> $fip.Name = "fip1"
 	PS C:\> $fip.Type = "Private"
 	PS C:\> $fip.StaticIPAddress = "10.0.0.5"
 
-次の例で示すように、フロント エンド ポートを作成します。
+次の例で示すように、フロントエンド ポートを作成します。
 
 	PS C:\> $fep = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort
 	PS C:\> $fep.Name = "fep1"
@@ -295,7 +295,7 @@ Application Gateway の構成オブジェクト ($appgwconfig) にすべての�
 	PS C:\> $appgwconfig.FrontendIPConfigurations = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration]"
 	PS C:\> $appgwconfig.FrontendIPConfigurations.Add($fip)
 
-フロントエンド ポート を構成に追加します。
+フロントエンド ポートを構成に追加します。
 
 	PS C:\> $appgwconfig.FrontendPorts = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort]"
 	PS C:\> $appgwconfig.FrontendPorts.Add($fep)
@@ -331,7 +331,7 @@ Application Gateway の構成オブジェクト ($appgwconfig) にすべての�
 ゲートウェイを構成したら、**Start-AzureApplicationGateway** コマンドレットを使用してゲートウェイを起動します。Application Gateway の課金は、ゲートウェイが正常に起動された後に開始します。
 
 
-> [AZURE.NOTE]**Start-AzureApplicationGateway** コマンドレットは終了までに最大で 15 ～ 20 分かかる場合があります。
+> [AZURE.NOTE] **Start-AzureApplicationGateway** コマンドレットは終了までに最大で 15 ～ 20 分かかる場合があります。
 
 
 
@@ -414,4 +414,4 @@ SSL オフロードを構成する場合は、「[SSL オフロードの Applica
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

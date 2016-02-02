@@ -13,14 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/30/2015"
+	ms.date="01/26/2016"
 	ms.author="markvi"/>
 
 # Azure Active Directory Premium の概要
 
 Azure Active Directory には、Free、Basic、Premium という 3 つのエディションがあります。Free エディションは、Azure または Office 365 のサブスクリプションに含まれます。Basic および Premium エディションは、[Microsoft Enterprise Agreement](https://www.microsoft.com/ja-JP/licensing/licensing-programs/enterprise.aspx) または[オープン ボリューム ライセンス](https://www.microsoft.com/ja-JP/licensing/licensing-programs/open-license.aspx) プログラムで利用できます。Azure および Office 365 のサブスクリプション会員も、Active Directory Premium をオンラインで購入できます。購入するには、[こちらでサインイン](https://portal.office.com/Commerce/Catalog.aspx)してください。
 
-> [AZURE.NOTE]Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory Premium および Basic エディションを使用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)からお問い合わせください。
+> [AZURE.NOTE]
+Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory Premium および Basic エディションを使用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
 
 Azure Active Directory Premium は、**Enterprise Mobility Suite** にも含まれます。Enterprise Mobility Suite は、Microsoft Intune、Azure Rights Management、および Active Directory Premium のサービスを 1 つのライセンス プランでまとめて使用できるコスト効果の高い方法です。詳細については、[Enterprise Mobility Suite](https://www.microsoft.com/ja-JP/server-cloud/enterprise-mobility/overview.aspx) の Web サイトをご覧ください。
 
@@ -121,4 +122,4 @@ Microsoft クラウド サービスで利用できるサービスと機能は、
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

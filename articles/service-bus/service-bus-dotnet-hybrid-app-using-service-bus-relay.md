@@ -89,7 +89,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
 5.  入力した名前空間の名前が利用できることを確認できたら、名前空間をホストする国またはリージョンを選択します (コンピューティング リソースを展開する国またはリージョンと同じ国またはリージョンを必ず使用してください)。
 
-    > [AZURE.IMPORTANT]アプリケーションをデプロイする予定の国またはリージョンと*同じ国/リージョン*を選択してください。そうすることで、パフォーマンスが最高になります。
+    > [AZURE.IMPORTANT] アプリケーションをデプロイする予定の国またはリージョンと*同じ国/リージョン*を選択してください。そうすることで、パフォーマンスが最高になります。
 
 6.	ダイアログ ボックスの他のフィールドは、既定値 (**[メッセージング]** と **[Standard]** レベル) のままにして、チェック マークをクリックします。これで、システムによってサービス名前空間が作成され、有効になります。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
 
@@ -402,7 +402,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
 ## アプリケーションを AZURE にデプロイする準備を完了する
 
-アプリケーションは、Azure クラウド サービスまたは Azure の Web サイトにデプロイできます。Web サイトとクラウド サービスの違いについては、「[Azure Execution Models (Azure 実行モデル)][executionmodels]」を参照してください。Azure の Web サイトにアプリケーションをデプロイする方法については、「[Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)](http://azure.microsoft.com/develop/net/tutorials/get-started/)」を参照してください。このセクションには、アプリケーションを Azure クラウド サービスにデプロイする詳細な手順が記載されています。
+アプリケーションは、Azure クラウド サービスまたは Azure の Web サイトにデプロイできます。Web サイトとクラウド サービスの違いについては、「[Azure Execution Models (Azure 実行モデル)][executionmodels]」を参照してください。Azure の Web サイトにアプリケーションをデプロイする方法については、「[Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)](https://azure.microsoft.com/develop/net/tutorials/get-started/)」を参照してください。このセクションには、アプリケーションを Azure クラウド サービスにデプロイする詳細な手順が記載されています。
 
 アプリケーションをクラウド サービスにデプロイするには、クラウド サービス プロジェクトのデプロイメント プロジェクトをソリューションに追加します。このデプロイメント プロジェクトには、アプリケーションをクラウドで適切に実行するために必要な構成情報が含まれています。
 
@@ -610,4 +610,4 @@ Service Bus の詳細については、次のリソースを参照してくだ�
   [sbwacomqhowto]: service-bus-dotnet-how-to-use-queues.md
   [executionmodels]: ../cloud-services/fundamentals-application-models.md
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

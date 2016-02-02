@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="11/29/2015"
+	ms.date="01/13/2016"
 	ms.author="mohisri"/>
 
 # App Service API Apps - 変更内容
@@ -21,7 +21,7 @@
 2015 年 11 月の Connect() イベントで、Azure App Service に対する複数の機能強化の内容が[発表](https://azure.microsoft.com/blog/azure-app-service-updates-november-2015/)されました。この機能強化では、Mobile および Web Apps との適合性の向上、コンセプト カウントの抑制、デプロイおよび実行時のパフォーマンスの向上を実現するために基礎となる変更が API Apps に加えられました。2015 年 11 月 30 日以降、Microsoft Azure 管理ポータルまたは最新のツールを使用して作成する新しい API アプリでは、これらの変更が反映されます。この記事では、これらの変更内容について説明するほか、既存のアプリを再デプロイして、強化された機能を利用する方法を説明します。
 
 
-> [AZURE.NOTE]API Apps の初期プレビューでは、主に次の 2 つのシナリオがサポートされていました。1) Logic Apps または独自のクライアントで使用するカスタム API。2) Logic Apps で使用する Marketplace API (多くの場合は SaaS コネクタ)。この資料では、1 番目のシナリオ「カスタム API」を取り上げます。Marketplace API の場合、機能強化された Logic Apps デザイナー エクスペリエンスと基になる接続基盤は 2016 年の早い時期に導入されます。既存の Marketplace APIs は引き続き Logic Apps デザイナーで使用できます。
+> [AZURE.NOTE] API Apps の初期プレビューでは、主に次の 2 つのシナリオがサポートされていました。1) Logic Apps または独自のクライアントで使用するカスタム API。2) Logic Apps で使用する Marketplace API (多くの場合は SaaS コネクタ)。この資料では、1 番目のシナリオ「カスタム API」を取り上げます。Marketplace API の場合、機能強化された Logic Apps デザイナー エクスペリエンスと基になる接続基盤は 2016 年の早い時期に導入されます。既存の Marketplace APIs は引き続き Logic Apps デザイナーで使用できます。
 
 ## 機能の変更
 API Apps の主な機能である認証、CORS、および API メタデータは、App Service に直接移されました。この変更により、それらの機能はすべて Web、Mobile、および API Apps にわたって使用できます。実際のところ、これら 3 つはすべて、リソース マネージャーで同じ **Microsoft.Web/site** リソース タイプを共有します。API Apps ゲートウェイはもはや必要なくなり、API Apps では提供されません。これにより、API Management ゲートウェイが 1 つのみになるので、Azure API Management も使いやすくなります。
@@ -30,7 +30,7 @@ API Apps の主な機能である認証、CORS、および API メタデータ�
 
 この API Apps 更新における重要な設計原則は、お客様が、API を現状のまま、使用する言語に取り入れることができるようにすることです。API が既に Web アプリまたはモバイル アプリ* としてデプロイされている場合は、アプリを再デプロイしなくても新しい機能は利用できます。
 
-> [AZURE.NOTE]*現在 API Apps のプレビューを使用している場合は、以下に示す移行のガイドラインを参照してください。
+> [AZURE.NOTE] *現在 API Apps のプレビューを使用している場合は、以下に示す移行のガイドラインを参照してください。
 
 ### 認証
 API Apps、Mobile Services/Apps、および Web Apps の既存の設定不要の認証機能は統合され、管理ポータルの Azure App Service 認証ブレード 1 つで利用できるようになりました。App Service での認証サービスの概要については、「[App Service 認証/承認の展開](https://azure.microsoft.com/blog/announcing-app-service-authentication-authorization/)」を参照してください。
@@ -91,7 +91,7 @@ SDK 2.8.1 の詳細については、発表に関する[ブログ投稿](https:/
 ### ホスティングと再デプロイ
 再デプロイの手順は、既存の Web API を App Service にデプロイする場合と同じです。手順:
 
-1. 空の API アプリを作成します。そのためには、ポータルで [新規]、[API アプリ] の順に操作するか、Visual Studio の発行を使用するか、または Resource Manager ツールを使用します。リソース マネージャーのツールまたはテンプレートを使用する場合は、**Microsoft.Web/sites** リソース タイプで **kind** 値を **api** に設定し、管理ポータル内のクイック スタートおよび設定を API シナリオ向けにします。
+1. 空の API アプリを作成します。そのためには、ポータルで [新規]、[API アプリ] の順に操作するか、Visual Studio の発行を使用するか、または Resource Manager ツールを使用します。リソース マネージャーのツールまたはテンプレートを使用する場合は、**Microsoft.Web/sites** リソース タイプで **kind** 値を **api** に設定し、管理ポータル内のクイックスタートおよび設定を API シナリオ向けにします。
 2. App Service でサポートされている任意のデプロイ メカニズムを使用して、接続し、プロジェクトを空の API アプリにデプロイします。詳細については、「[Azure App Service のデプロイに関するドキュメント](../app-service-web/web-sites-deploy.md)」を参照してください。 
   
 ### 認証
@@ -122,7 +122,7 @@ App Service のアルファ版 SDK については、次の SDK が廃止にな�
 Logic Apps デザイナーでは、2016 年の早い時期に新しい API Apps モデルとのシームレスな統合が特別に追加されます。そのため、Logic Apps に組み込まれた HTTP コネクタは、任意の HTTP エンドポイントを呼び出すことができるほか、サービス プリンシパル認証をサポートします。この認証は、App Service 認証サービスでもネイティブにサポートされています。App Service でホストされた API を Logic Apps で利用する方法については、「[App Service でホストされたカスタム API の Logic Apps での使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」を参照してください。
 
 ### <a id="documentation"></a> 以前の API Apps モデルに関するドキュメント
-従来の API Apps モデルについて執筆された [azure.microsoft.com](https://azure.microsoft.com) にあるいくつかの記事は、新しいモデルには当てはまらないため、将来的に同サイトから削除される予定です。該当する URL は、新しいモデルに基づく最も近いページにリダイレクトされます。ただし、[azure.microsoft.com の GitHub ドキュメント リポジトリ](https://github.com/Azure/azure-content)で引き続き以前の記事を参照することができます。必要な記事の大半は [articles/app-service-api](https://github.com/Azure/azure-content/tree/master/articles/app-service-api) フォルダーにあります。以前の API アプリをサポートしたり、Marketplace から新しいコネクタ API アプリを作成したりする場合に参考となる可能性の高いページを以下に示します。
+従来の API Apps モデルについて執筆された [azure.microsoft.com](https://azure.microsoft.com/) にあるいくつかの記事は、新しいモデルには当てはまらないため、将来的に同サイトから削除される予定です。該当する URL は、新しいモデルに基づく最も近いページにリダイレクトされます。ただし、[azure.microsoft.com の GitHub ドキュメント リポジトリ](https://github.com/Azure/azure-content)で引き続き以前の記事を参照することができます。必要な記事の大半は [articles/app-service-api](https://github.com/Azure/azure-content/tree/master/articles/app-service-api) フォルダーにあります。以前の API アプリをサポートしたり、Marketplace から新しいコネクタ API アプリを作成したりする場合に参考となる可能性の高いページを以下に示します。
 
 * [認証の概要](https://github.com/Azure/azure-content/tree/master/articles/app-service/app-service-authentication-overview.md)
 * [API アプリの保護](https://github.com/Azure/azure-content/tree/master/articles/app-service-api/app-service-api-dotnet-add-authentication.md)
@@ -141,4 +141,4 @@ Logic Apps デザイナーでは、2016 年の早い時期に新しい API Apps 
 - [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureAPIApps)
 - [スタック オーバーフロー](http://stackoverflow.com/questions/tagged/azure-api-apps)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

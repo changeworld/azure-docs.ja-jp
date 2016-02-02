@@ -1,7 +1,8 @@
 <properties 
 	pageTitle="Azure Multi-Factor Authentication Server の概要" 
 	description="Azure MFA Server を開始する方法について説明する Azure Multi-Factor Authentication のページです。" 
-	services="multi-factor-authentication" 
+	services="multi-factor-authentication"
+	keywords="認証 サーバー, azure 多要素認証アプリ アクティブ化ページ, 認証サーバーのダウンロード" 
 	documentationCenter="" 
 	authors="billmath" 
 	manager="stevenpo" 
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="01/11/2016" 
+	ms.date="01/25/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication Server の概要
@@ -174,7 +175,7 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で Multi
 
 メソッド|説明
 :------------- | :------------- | 
-[ユーザー ポータル](multi-factor-authentication-get-started-portal.md)| デプロイやユーザーのセルフサービスなど、ユーザー ポータルのセットアップと構成に関する情報です。
+[ユーザー ポータル](multi-factor-authentication-get-started-portal.md)| デプロイメントやユーザーのセルフサービスなど、ユーザー ポータルのセットアップと構成に関する情報です。
 [Active Directory フェデレーション サービス](multi-factor-authentication-get-started-adfs.md)|AD FS による Azure Multi-Factor Authentication の設定に関する情報です。
 [RADIUS 認証](multi-factor-authentication-get-started-server-radius.md)| RADUIS による Azure MFA Server のセットアップと構成に関する情報です。
 [IIS 認証](multi-factor-authentication-get-started-server-iis.md)|IIS を使用した Azure MFA Server のセットアップと構成に関する情報です。
@@ -184,4 +185,4 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で Multi
 [Windows Server Active Directory との同期](multi-factor-authentication-get-started-server-dirint.md)|Active Directory と Azure MFA Server 間の同期のセットアップと構成に関する情報です。
 [Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](multi-factor-authentication-get-started-server-webservice.md)|Azure MFA Server Web サービスのセットアップと構成に関する情報です。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -30,7 +30,7 @@
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [アクティブな Azure アカウント](http://azure.microsoft.com/pricing/free-trial/)
+* [アクティブな Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
 
 * [Visual Studio Community 2013] 以降のバージョンがインストールされた PC
 
@@ -69,4 +69,4 @@
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_0128_2016--->

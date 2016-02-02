@@ -42,9 +42,8 @@
 
 [Azure Command-Line Interface (Azure CLI) を使用して、Linux を実行するカスタム VM を作成する](virtual-machines-linux-create-custom.md)
 
-[Azure CLI を使用して複数の VM のデプロイを作成する](virtual-machines-create-multi-vm-deployment-xplat-cli-install.md)
 
-## 計画
+## プラン
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
@@ -152,4 +151,4 @@
 
 [サービス管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/ee460799.aspx)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

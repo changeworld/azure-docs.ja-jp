@@ -28,7 +28,7 @@ SQL Database は、ミッション クリティカルな機能を備えた、市
 
 
 ## ダウンタイムなしでのパフォーマンスの調整とスケール
-SQL Database は、Basic、Standard、Premium の *サービス階層* で使用できます。各サービス階層では、軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、[さまざまなレベルのパフォーマンスと機能](sql-database-service-tiers.md)を提供しています。最初のアプリケーションを月数ドルで小規模データベースにビルドし、やがてアプリケーションが世界中に急速に広まってきたら、アプリケーションやお客様にダウンタイムを発生させずに、いつでも手動またはプログラムで[サービス層を変更](sql-database-scale-up.md)することができます。
+SQL Database は、Basic、Standard、Premium の*サービス階層*で使用できます。各サービス階層では、軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、[さまざまなレベルのパフォーマンスと機能](sql-database-service-tiers.md)を提供しています。最初のアプリケーションを月数ドルで小規模データベースにビルドし、やがてアプリケーションが世界中に急速に広まってきたら、アプリケーションやお客様にダウンタイムを発生させずに、いつでも手動またはプログラムで[サービス層を変更](sql-database-scale-up.md)することができます。
 
 特に使用パターンが比較的予測可能である場合、多くのビジネスとアプリについては、データベースを作成し、要求に応じて単一のデータベースのパフォーマンスを調整する能力は十分です。しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。
 
@@ -52,13 +52,13 @@ Microsoft が管理するデータ センターのグローバル ネットワ�
 それぞれのサービス階層で使用できるさまざまなビジネス継続性機能の詳細については、「[ビジネス継続性](sql-database-business-continuity.md)」をご覧ください。
 
 ## データのセキュリティ保護
-SQL サーバーには、アクセスの制限、データの保護、および監視アクティビティの支援を行う機能を備えた SQL Database によって維持される従来の信頼性の高いデータ セキュリティがあります。SQL Database で提供されているセキュリティ オプションの迅速なランダウンについては、「[SQL Database のセキュリティ保護](sql-database-security.md)」をご覧ください。セキュリティ機能をより包括的に把握したい場合は、「[SQL Server データベース エンジンと SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)」をご覧ください。Azure のプラットフォーム セキュリティについては、「[Azure セキュリティ センター](http://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
+SQL サーバーには、アクセスの制限、データの保護、および監視アクティビティの支援を行う機能を備えた SQL Database によって維持される従来の信頼性の高いデータ セキュリティがあります。SQL Database で提供されているセキュリティ オプションの迅速なランダウンについては、「[SQL Database のセキュリティ保護](sql-database-security.md)」をご覧ください。セキュリティ機能をより包括的に把握したい場合は、「[SQL Server データベース エンジンと SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)」をご覧ください。Azure のプラットフォーム セキュリティについては、「[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
 
 ## 次のステップ
 ここでは、SQL Database を紹介し、「SQL Database とは」という問いに対する答えを示しました、次のステップは以下のとおりです。
 
-- 単一のデータベースとエラスティック データベースの価格と算出方法については、「[価格に関するページ](http://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+- 単一のデータベースとエラスティック データベースの価格と算出方法については、「[価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
 - [最初のデータベースを作成する](sql-database-get-started.md)ことによって作業を開始します。[C#](sql-database-connect-query.md)、[Java](sql-database-develop-java-simple-windows.md)、[Node.js](sql-database-develop-nodejs-simple-windows.md)、[PHP](sql-database-develop-php-retry-windows.md)、[Python](sql-database-develop-python-simple-windows.md)、または [Ruby](sql-database-develop-ruby-simple-linux) で最初のアプリケーションをビルドします。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

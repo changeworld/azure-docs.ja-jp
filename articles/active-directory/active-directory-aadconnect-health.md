@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/16/2015"
+	ms.date="01/21/2016"
 	ms.author="billmath"/>
 
 # クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視
@@ -92,7 +92,7 @@ Azure AD Connect Health ポータルを使用すると、アラート、パフ�
 | 要件 | 説明|
 | ----------- | ---------- |
 |Azure AD Premium| Azure AD Connect Health は Azure AD Premium の機能です。使用するためには Azure AD Premium が必要となります。</br></br>詳細については、[Azure AD Premium の概要](active-directory-get-started-premium.md)に関するページを参照してください。</br></br>30 日間の無料試用版を開始するには、[試用版の開始](https://azure.microsoft.com/trial/get-started-active-directory/)に関するページを参照してください。|.
-|Azure AD Connect Health を有効にする (作成する) には、Azure AD のグローバル管理者であること|既定では、Azure AD Connect Health を有効化 (作成) し、Azure AD Connect Health 内のすべてのすべての情報にアクセスしたり、すべての操作を実行したりできるのは、グローバル管理者のみです。詳細については、[Azure AD ディレクトリの管理](active-directory-administer.md)に関するページを参照してください。<br><br> ロールベースのアクセス制御を使用して、Azure AD Connect Health へのアクセスを組織の他のユーザーに許可できます。詳細については、[Azure AD Connect Health のロール ベースのアクセス制御](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control)に関するセクションを参照してください。</br></br>**重要:** エージェントのインストール時に使用するアカウントは、職場または組織アカウントである必要があります。Microsoft アカウントを使用することはできません。詳細については、「[Azure への組織としてのサインアップ](sign-up-organization.md)」を参照してください。|
+|Azure AD Connect Health を有効にする (作成する) には、Azure AD のグローバル管理者であること|既定では、Azure AD Connect Health を有効化 (作成) し、Azure AD Connect Health 内のすべてのすべての情報にアクセスしたり、すべての操作を実行したりできるのは、グローバル管理者のみです。詳細については、[Azure AD ディレクトリの管理](active-directory-administer.md)に関するページを参照してください。<br><br> ロールベースのアクセス制御を使用して、Azure AD Connect Health へのアクセスを組織の他のユーザーに許可できます。詳細については、「[Role Based Access Control for Azure AD Connect Health (Azure AD Connect Health のロール ベースのアクセス制御)](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control)」を参照してください。</br></br>**重要:** エージェントのインストール時に使用するアカウントは、職場または学校アカウント <!--school account--> である必要があります。Microsoft アカウントを使用することはできません。詳細については、「[Azure への組織としてのサインアップ](sign-up-organization.md)」を参照してください。|
 |AD FS で利用状況分析機能を使用する場合、AD FS 監査が有効になっていること| AD FS で利用状況分析機能を使用する予定がある場合は、AD FS の監査を有効にする必要があります。</br></br>「[Azure AD Connect Health for AD FS エージェントのインストール](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)」を参照してください。
 |Azure AD Connect Health エージェントの要件を満たしていること|エージェント固有の要件については、次の表を参照してください。
 
@@ -123,4 +123,4 @@ Azure AD Connect Health ポータルを使用すると、アラート、パフ�
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

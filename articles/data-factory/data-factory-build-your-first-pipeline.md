@@ -26,7 +26,7 @@
 
 この記事では、Azure Data Factory を初めて構築する方法について説明します。
 
-> [AZURE.NOTE]この記事では、Azure Data Factory サービスの概念については説明しません。サービスの詳細については、[Azure Data Factory の概要](data-factory-introduction.md)に関するページを参照してください。
+> [AZURE.NOTE] この記事では、Azure Data Factory サービスの概念については説明しません。サービスの詳細については、[Azure Data Factory の概要](data-factory-introduction.md)に関するページを参照してください。
 
 ## チュートリアルの概要
 このチュートリアルでは、初めてデータ ファクトリを稼働させるために必要な手順を示します。入力データを変換または処理して出力データを生成するデータ ファクトリのパイプラインを作成します。
@@ -34,7 +34,7 @@
 ## 前提条件
 このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
 
-1.	**Azure サブスクリプション** - Azure サブスクリプションがない場合は、無料試用版アカウントを数分で作成することができます。無料試用版アカウントの取得方法については、「[無料試用版](http://azure.microsoft.com/pricing/free-trial/)」を参照してください。
+1.	**Azure サブスクリプション** - Azure サブスクリプションがない場合は、無料試用版アカウントを数分で作成することができます。無料試用版アカウントの取得方法については、「[無料試用版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
 2.	**Azure Storage** – このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
 
@@ -77,7 +77,7 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 
 ### HQL スクリプト ファイルを作成する 
 
-1. **メモ帳**を起動し、次の HQL スクリプトを貼り付けます。この Hive スクリプトは、2 つの外部テーブル **WebLogsRaw** と **WebLogsPartitioned** を作成します。メニューの **[ファイル]** をクリックし、**[名前を付けて保存]** を選択します。ハード ドライブの **C:\\adfgetstarted** フォルダーを参照します。**[ファイルの種類]** フィールドで **[すべてのファイル (*.*)]** を選択します。**[ファイル名]** に「**partitionweblogs.hql**」と入力します。ダイアログ ボックスの下部にある **[エンコード]** フィールドが **[ANSI]** に設定されていることを確認します。そうでない場合は、**[ANSI]** に設定します。  
+1. **メモ帳**を起動し、次の HQL スクリプトを貼り付けます。この Hive スクリプトは、2 つの外部テーブル **WebLogsRaw** と **WebLogsPartitioned** を作成します。メニューの **[ファイル]** をクリックし、**[名前を付けて保存]** を選択します。ハード ドライブの **C:\\adfgetstarted** フォルダーを参照します。**[ファイルの種類]** フィールドで **[すべてのファイル (*.*)]** を選択します。**[ファイル名]** に「**partitionweblogs.hql**」と入力します。ダイアログ ボックスの下部にある **[Encoding]** フィールドが **[ANSI]** に設定されていることを確認します。そうでない場合は、**[ANSI]** に設定します。  
 	
 		set hive.exec.dynamic.partition.mode=nonstrict;
 		
@@ -185,7 +185,7 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 
 ### 入力ファイルと HQL ファイルを Azure Blob Storage にアップロードする
 
-好みのツール (Azure ストレージ エクスプローラーや ClumsyLeaf Software の CloudXPlorer など) を使用して、このタスクを実行できます。このセクションでは、AzCopy ツールを使用する手順を説明します。
+好みのツール ([Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)や ClumsyLeaf Software の CloudXPlorer など) を使用して、このタスクを実行できます。このセクションでは、AzCopy ツールを使用する手順を説明します。
 	 
 2. チュートリアル用に Azure Storage を準備するには:
 	1. [最新バージョンの **AzCopy**](http://aka.ms/downloadazcopy) または[最新のプレビュー バージョン](http://aka.ms/downloadazcopypr)をダウンロードします。ユーティリティを使用する手順については、[AzCopy を使用する方法](../storage/storage-use-azcopy.md)に関するページを参照してください。
@@ -197,7 +197,7 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 
 			AzCopy /Source:. /Dest:https://<storageaccountname>.blob.core.windows.net/adfgetstarted/inputdata /DestKey:<storagekey>  /Pattern:input.log
 
-		> [AZURE.NOTE]上記のコマンドは **adfgetstarted** という名前のコンテナーを Azure Blob Storage 内に作成し、**partitionweblogs.hql** ファイルをローカル ドライブからコンテナーの **inputdata** フォルダーにコピーします。
+		> [AZURE.NOTE] 上記のコマンドは **adfgetstarted** という名前のコンテナーを Azure Blob Storage 内に作成し、**partitionweblogs.hql** ファイルをローカル ドライブからコンテナーの **inputdata** フォルダーにコピーします。
 	
 	5. ファイルが正常にアップロードされると、AzCopy から次のような出力が表示されます。
 	
@@ -222,4 +222,4 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 - Visual Studio
 - Azure リソース マネージャーのテンプレート 
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

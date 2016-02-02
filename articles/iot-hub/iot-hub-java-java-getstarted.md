@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure IoT Hub の使用 | Microsoft Azure"
+	pageTitle="Azure IoT Hub for Java の使用 | Microsoft Azure"
 	description="このチュートリアルに従って、Java で Azure IoT Hub を使用します。"
 	services="iot-hub"
 	documentationCenter="java"
@@ -16,7 +16,7 @@
      ms.date="12/21/2015"
      ms.author="dobett"/>
 
-# チュートリアル: Azure IoT Hub の使用
+# Azure IoT Hub for Java の使用
 
 [AZURE.INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
@@ -40,7 +40,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 * **read-d2c-messages**。シミュレーション対象デバイスから送信された製品利用統計情報を表示します。
 * **simulated-device**。以前に作成したデバイス ID で IoT ハブに接続して、1 秒ごとにテレメトリ メッセージを送信します。
 
-> [AZURE.NOTE]デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの作成に利用できる各種 SDK に関する情報は、「[IoT Hub SDK][lnk-hub-sdks]」の記事で取り上げています。
+> [AZURE.NOTE] デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの作成に利用できる各種 SDK に関する情報は、「[IoT Hub SDK][lnk-hub-sdks]」の記事で取り上げています。
 
 このチュートリアルで行う作業には次のものが必要となります。
 
@@ -120,14 +120,6 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 - 「[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]」には、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
 - 「[デバイスからのファイルのアップロード][lnk-upload-tutorial]」では、デバイスからのファイル アップロードを容易にするためにクラウドからデバイスへのメッセージを活用したパターンについて説明しています。
 
-IoT Hub の詳細については、次の記事を参照してください。
-
-* [IoT Hub の概要][lnk-hub-overview]
-* [Azure IoT Hub 開発者ガイド][lnk-hub-dev-guide]
-* [IoT Hub ソリューションの設計][lnk-hub-guidance]
-* [サポートされているデバイスのプラットフォームおよび言語][lnk-supported-devices]
-* [Azure IoT デベロッパー センター][lnk-dev-center]
-
 <!-- Images. -->
 [1]: ./media/iot-hub-java-java-getstarted/create-iot-hub1.png
 [2]: ./media/iot-hub-java-java-getstarted/create-iot-hub2.png
@@ -144,14 +136,9 @@ IoT Hub の詳細については、次の記事を参照してください。
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-upload-tutorial]: iot-hub-csharp-csharp-file-upload.md
 
-[lnk-hub-overview]: iot-hub-what-is-iot-hub.md
-[lnk-hub-guidance]: iot-hub-guidance.md
-[lnk-hub-dev-guide]: iot-hub-devguide.md
-[lnk-supported-devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
-[lnk-dev-center]: http://www.azure.com/develop/iot
 [lnk-hub-sdks]: iot-hub-sdks-summary.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-resource-groups]: resource-group-portal.md
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

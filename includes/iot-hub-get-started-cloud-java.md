@@ -16,7 +16,7 @@
     <dependency>
       <groupId>com.microsoft.azure.iothub-java-client</groupId>
       <artifactId>iothub-java-service-client</artifactId>
-      <version>1.0.0-preview.8</version>
+      <version>1.0.0-preview.9</version>
     </dependency>
     ```
     
@@ -84,11 +84,11 @@
 
 13. **デバイス ID** と**デバイス キー**をメモします。後でデバイスとして IoT Hub に接続するアプリケーションを作成するときに必要になります。
 
-> [AZURE.NOTE]IoT Hub の ID レジストリには、ハブに対するアクセスの安全性を確保するためのデバイス ID だけが格納されます。セキュリティ資格情報として使用するキーとデバイス ID、そして個々のデバイスについてアクセスを無効にすることのできる有効/無効フラグが格納されます。その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。詳細については、「[IoT Hub 開発者ガイド][lnk-devguide-identity]」を参照してください。
+> [AZURE.NOTE] IoT Hub の ID レジストリには、ハブに対するアクセスの安全性を確保するためのデバイス ID だけが格納されます。セキュリティ資格情報として使用するキーとデバイス ID、そして個々のデバイスについてアクセスを無効にすることのできる有効/無効フラグが格納されます。その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。詳細については、「[IoT Hub 開発者ガイド][lnk-devguide-identity]」を参照してください。
 
 ## デバイスからクラウドへのメッセージの受信
 
-このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Java コンソール アプリケーションを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るための、[Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイには適していません。「[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-processd2c-tutorial]」チュートリアルでは、「デバイスからクラウドへの」メッセージを処理する方法を紹介しています。「[Event Hubs の使用][lnk-eventhubs-tutorial]」チュートリアルでは、 Event Hubs からのメッセージを処理する方法について詳しい説明があります。これは IoT Hub Event Hub 対応のエンドポイントに適用されます。
+このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Java コンソール アプリケーションを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るための、[Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。「[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-processd2c-tutorial]」チュートリアルでは、「デバイスからクラウドへの」メッセージを処理する方法を紹介しています。「[Event Hubs の使用][lnk-eventhubs-tutorial]」チュートリアルでは、 Event Hubs からのメッセージを処理する方法について詳しい説明があります。これは IoT Hub Event Hub 対応のエンドポイントに適用されます。
 
 1. コマンド プロンプトで次のコマンドを実行し、「*デバイス ID の作成*」セクションで作成した「iot-java-get-started」フォルダーで「**read-d2c-messages**」という名前の Maven プロジェクトを新規作成します。これは 1 つの長いコマンドです。
 
@@ -173,7 +173,7 @@
     }
     ```
 
-    > [AZURE.NOTE]受信側が実行開始後、IoT Hub に送信されたメッセージのみを読み込むように、このメソッドは受信側の構築時にフィルターを称します。現在の一連のメッセージを確認できるので、テスト環境ではこれは便利ですが、本稼働環境の場合、コードですべてのメッセージが処理されることを確認する必要があります。詳細については、「[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-processd2c-tutorial]」チュートリアルを参照してください。
+    > [AZURE.NOTE] 受信側が実行開始後、IoT Hub に送信されたメッセージのみを読み込むように、このメソッドは受信側の構築時にフィルターを称します。現在の一連のメッセージを確認できるので、テスト環境ではこれは便利ですが、本稼働環境の場合、コードですべてのメッセージが処理されることを確認する必要があります。詳細については、「[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-processd2c-tutorial]」チュートリアルを参照してください。
 
 11. **main** メソッドのシグネチャを変更し、下の例外を追加します。
 
@@ -181,7 +181,7 @@
     public static void main( String[] args ) throws IOException
     ```
 
-12. **App** クラスの **main** メソッドに次のコードを追加します。IoT Hub で Event Hub 対応エンドポイントに接続する **EventHubClient** インスタンスがこのコードにより作成されます。それから、2 つのパーティションから読み取る 2 つのスレッドが作成されます。**{youriothubkey}**、**{youreventhubcompatiblenamespace}**、**{youreventhubcompatiblename}** を先にメモした値で置換します。
+12. **App** クラスの **main** メソッドに次のコードを追加します。IoT Hub で Event Hub 対応エンドポイントに接続する **EventHubClient** インスタンスがこのコードにより作成されます。それから、2 つのパーティションから読み取る 2 つのスレッドが作成されます。**{youriothubkey}**、**{youreventhubcompatiblenamespace}**、**{youreventhubcompatiblename}** を先にメモした値で置換します。**{youreventhubcompatiblenamespace}** プレース ホルダーの値は、**イベント ハブと互換性のあるエンドポイント**から取得され、**xxxxnamespace.servicebus.windows.net** の形式になります。
 
     ```
     String policyName = "iothubowner";
@@ -209,7 +209,7 @@
     client.close();
     ```
 
-    > [AZURE.NOTE]このコードでは、無料の IoT Hub を作成したと仮定されます。無料の IoT Hub は、2 つのパーティションがあります。名前は「0」と「1」です。他の価格レベルを利用して IoT Hub を作成した場合、コードを調整し、パーティションごとに **MessageReceiver** を作成してください。
+    > [AZURE.NOTE] このコードでは、F1 (free) レベルで IoT hub を作成したと想定しています。無料の IoT Hub は、2 つのパーティションがあります。名前は「0」と「1」です。他の価格レベルを利用して IoT Hub を作成した場合、コードを調整し、パーティションごとに **MessageReceiver** を作成してください。
 
 13. App.java ファイルを保存して閉じます。
 
@@ -228,4 +228,4 @@
 [lnk-event-hubs-overview]: event-hubs-overview.md
 [lnk-processd2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

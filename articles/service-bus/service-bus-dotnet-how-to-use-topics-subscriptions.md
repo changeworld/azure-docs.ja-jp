@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="get-started-article"
-    ms.date="10/15/2015"
+    ms.date="01/26/2016"
     ms.author="sethm"/>
 
 # Service Bus のトピックとサブスクリプションの使用方法
@@ -32,7 +32,7 @@ Service Bus を使用するアプリケーションを作成するときには�
 
 ## Service Bus NuGet パッケージの取得
 
-Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。
+[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。
 
 アプリケーションに NuGet パッケージをインストールするには、次のステップを行います。
 
@@ -83,7 +83,7 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
 </ServiceConfiguration>
 ```
 
-前のセクションで説明したように、Azure クラシック ポータルから取得した Shared Access Signature (SAS) のキー名とキー値を使用します。
+前のセクションで説明したように、ポータルから取得した Shared Access Signature (SAS) のキー名とキー値を使用します。
 
 ### Azure Websites サイトまたは Azure Virtual Machines を使用する場合の接続文字列の構成
 
@@ -98,13 +98,13 @@ Websites または Virtual Machines を使用する場合には、.NET 構成シ
 </configuration>
 ```
 
-前のセクションで説明したように、Azure クラシック ポータルから取得した SAS 名とキー値を使用します。
+前のセクションで説明したように、[Azure クラシック ポータル][]から取得した SAS 名とキー値を使用します。
 
 ## トピックを作成する
 
 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスによって Service Bus のトピックとサブスクリプションに対する管理操作を実行できます。このクラスにはトピックの作成、列挙、削除のためのメソッドが用意されています。
 
-次の例では、Azure の `CloudConfigurationManager` クラスと接続文字列を使用して `NamespaceManager` オブジェクトを作成します。この接続文字列は、Service Bus サービス名前空間のベース アドレスと、それを管理する権限を備えた適切な SAS 資格情報で構成されます。この接続文字列は、次のようになっています。
+次の例では、Azure の `CloudConfigurationManager` クラスと接続文字列を使用して `NamespaceManager` オブジェクトを作成します。この接続文字列は、Service Bus 名前空間のベース アドレスと、それを管理する権限を備えた適切な SAS 資格情報で構成されます。この接続文字列は、次のようになっています。
 
 ```
 Endpoint=sb://<yourServiceNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey
@@ -236,11 +236,11 @@ for (int i=0; i<5; i++)
 }
 ```
 
-Service Bus トピックでは、[最大 256 KB のメッセージ](service-bus-quotas.md)がサポートされます (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。トピックで保持されるメッセージ数には上限がありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。パーティション分割が有効な場合、上限が高くなります。詳細については、「[メッセージング エンティティのパーティション分割](https://msdn.microsoft.com/library/azure/dn520246.aspx)」を参照してください。
+Service Bus トピックでは、[最大 256 KB のメッセージ](service-bus-quotas.md)がサポートされます (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。トピックで保持されるメッセージ数には上限がありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。パーティション分割が有効な場合、上限が高くなります。詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」を参照してください。
 
 ## サブスクリプションからメッセージを受信する方法
 
-サブスクリプションからメッセージを受信する推奨の方法は、[SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) オブジェクトの使用です。[SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) オブジェクトを使用する方法です。オブジェクトには、2 つの異なる動作モードがあります。[ReceiveAndDelete と PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) です。
+サブスクリプションからメッセージを受信する推奨の方法は、[SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) オブジェクトの使用です。[SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) オブジェクトを使用する方法です。オブジェクトには、2 つの異なる動作モードがあります。[*ReceiveAndDelete* と *PeekLock*](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) です。
 
 **ReceiveAndDelete** モードを使用する場合、受信が 1 回ずつの動作になります。つまり、Service Bus はサブスクリプション内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。**ReceiveAndDelete** モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
@@ -312,7 +312,7 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 
 これで、Service Bus のトピックとサブスクリプションの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   [キュー、トピック、およびサブスクリプション][]に関するページをご覧ください。
+-   [キュー、トピック、およびサブスクリプション][]
 -   [SqlFilter][] の API のリファレンス
 -   Service Bus キューとの間でメッセージを送受信する実用アプリケーションの作成: [Service Bus のブローカー メッセージングに関する .NET チュートリアル][]。
 -   Service Bus のサンプル: [Azure のサンプル][]からダウンロードするか、「[概要](service-bus-samples.md)」を参照してください。
@@ -327,4 +327,4 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
   [Service Bus のブローカー メッセージングに関する .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!---HONumber=AcomDC_0114_2016--->
+<!---HONumber=AcomDC_0128_2016-->

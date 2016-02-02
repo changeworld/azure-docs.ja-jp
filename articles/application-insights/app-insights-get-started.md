@@ -19,7 +19,7 @@
 
 *Application Insights はプレビュー段階です。*
 
-問題を検出し、問題を解決し、アプリケーションの継続的に改善します。実際のアプリケーションの問題を今すぐ診断する。ユーザーが自分のアプリで何をしているかを知ることができます。
+問題を検出し、問題を解決し、アプリケーションの継続的に改善します。実際のアプリケーションの問題を今すぐ診断する。ユーザーがそれで何を行っているかを理解します。
 
 構成は非常に簡単であり、数分以内で結果を確認できます。
 
@@ -29,7 +29,7 @@
 
 次の図に示すエントリ ポイントを、任意の順序で自由に組み合わせて開始します。適切なパスを選択します。
 
-Application Insights は SDK をアプリに追加することで動作し、テレメトリを [Azure ポータル](http://portal.azure.com)に送信します。サポートされているプラットフォーム、言語、IDE の多様な組み合わせに対応してさまざまな SDK が用意されています。
+Application Insights は SDK をアプリに追加することで動作し、テレメトリを [Azure ポータル](https://portal.azure.com)に送信します。サポートされているプラットフォーム、言語、IDE の多様な組み合わせに対応してさまざまな SDK が用意されています。
 
 [Microsoft Azure](http://azure.com) のアカウントが必要になります。既にお持ちの組織のグループ アカウントにアクセスすることも、従量課金アカウントを取得することもできます。Application Insights には Free レベルが用意されているため、アプリの人気が出るまでお支払いいただく必要はありません。「[料金のページ](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
@@ -74,4 +74,4 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
 [qna]: app-insights-troubleshoot-faq.md
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

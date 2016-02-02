@@ -2,13 +2,14 @@
 	pageTitle="構成済みソリューションの使用 | Microsoft Azure"
 	description="このチュートリアルに従って、Azure IoT Suite 事前構成済みソリューションのデプロイ方法について学習します。"
 	services=""
+    suite="iot-suite"
 	documentationCenter=""
 	authors="dominicbetts"
 	manager="timlt"
 	editor=""/>
 
 <tags
-     ms.service="na"
+     ms.service="iot-suite"
      ms.devlang="na"
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
@@ -26,7 +27,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 このチュートリアルを完了するには、アクティブな Azure サブスクリプションが必要です。
 
-> [AZURE.NOTE]アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk_free_trial]を参照してください。
+> [AZURE.NOTE]  アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk_free_trial]を参照してください。
 
 ## リモート監視の事前構成済みソリューションのプロビジョニング
 
@@ -159,4 +160,4 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 [lnk-predictive]: iot-suite-predictive-overview.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

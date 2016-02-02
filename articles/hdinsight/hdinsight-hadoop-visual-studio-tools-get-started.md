@@ -15,7 +15,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="11/30/2015"
+	ms.date="01/27/2016"
 	ms.author="jgao"/>
 
 # HDInsight Tools for Visual Studio を使用して Hive クエリを実行する
@@ -38,7 +38,7 @@ HDInsight Tools for Visual Studio を使用して HDInsight クラスターに�
 		- Visual Studio 2013 Community/Professional/Premium/Ultimate の[アップデート 4](https://www.microsoft.com/download/details.aspx?id=44921)
 		- Visual Studio 2015 (Community/Enterprise)
 
-	>[AZURE.NOTE]現時点では HDInsight Tools for Visual Studio は英語版のみになります。
+	>[AZURE.NOTE] 現時点では HDInsight Tools for Visual Studio は英語版のみになります。
 
 
 ## HDInsight Tools for Visual Studio をインストールする
@@ -55,9 +55,7 @@ HDInsight Tools for Visual Studio と Microsoft Hive ODBC ドライバーは、M
 ## Azure サブスクリプションに接続する
 HDInsight Tools for Visual Studio を使用して、HDInsight クラスターへの接続、いくつかの基本的な管理操作の実行、Hive クエリの実行が可能です。
 
->[AZURE.NOTE]HDInsight Emulator の使用法については、「[HDInsight Emulator の概要](../hdinsight-get-started-emulator.md/#vstools)」をご覧ください。
-
->[AZURE.NOTE]汎用の Hadoop クラスター (プレビュー) に接続する方法の詳細については、「[Visual Studio を使用した Hive クエリの書き込みと送信 (ブログの投稿)](http://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)」をご覧ください。
+>[AZURE.NOTE] 汎用の Hadoop クラスター (プレビュー) に接続する方法の詳細については、「[Visual Studio を使用した Hive クエリの書き込みと送信 (ブログの投稿)](http://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)」をご覧ください。
 
 
 **Azure サブスクリプションに接続するには**
@@ -140,7 +138,7 @@ Hive クエリを作成して実行するには次の 2 つの方法がありま
 
 	![Hadoop ツール: HDInsight Visual Studio Tools Intellisense][14]
 
-	> [AZURE.NOTE]クラスターのメタデータのうち、HDInsight のツール バーで選択したものだけが推奨として表示されます。
+	> [AZURE.NOTE] クラスターのメタデータのうち、HDInsight のツール バーで選択したものだけが推奨として表示されます。
 4. (任意) **[Validate Script]** をクリックして、スクリプトの構文エラーを確認します。
 
 	![Hadoop ツール: HDinsight Tools for Visual Studio ローカル検証][10]
@@ -182,15 +180,15 @@ Hive ジョブのジョブ クエリ、ジョブ出力、ジョブのログ、Ya
 
 ### HiveServer2 による Hive 実行の高速化
 
->[AZURE.NOTE]この機能は、HDInsight クラスター バージョン 3.2 以降のみで動作します。
+>[AZURE.NOTE] この機能は、HDInsight クラスター バージョン 3.2 以降のみで動作します。
 
-HDInsight Tools は、WebHCat (Templeton とも呼ばれます) を使用して Hive ジョブを送信するために使用され、ジョブの詳細やエラー情報を返すのに長い時間がかかります。このようなパフォーマンスの問題を解決するために、HDInsight Tools では、HiveServer2 を使用して直接クラスターで Hive ジョブを実行するため、RDP/SSH は経由されません。パフォーマンスが向上するだけでなく、ユーザーは、Hive on Tez のグラフやタスクの詳細を表示することもできます。
+HDInsight Tools は以前、WebHCat (Templeton とも呼ばれます) を介して Hive ジョブを送信していました。そのためジョブの詳細やエラー情報を返すのに長い時間がかかっていました。このようなパフォーマンスの問題を解決するために、HDInsight Tools では、HiveServer2 を通して直接クラスターで Hive ジョブを実行することにより RDP/SSH をバイパスすることができるようになりました。パフォーマンスが向上するだけでなく、ユーザーは、Hive on Tez のグラフやタスクの詳細を表示することもできます。
 
 HDInsight クラスター バージョン 3.2 以降では、**[HiveServer2 から実行]** ボタンが表示されます。
 
 ![hdinsight visual studio tools execute via hiveserver2](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.execute.via.hiveserver2.png)
 
-ログがリアルタイムでストリーミングされていることを確認できます。また、Hive クエリが Tez で実行されている場合はジョブ グラフも確認できます。
+ログがリアルタイムでストリームバックしていることを確認できます。また、Hive クエリが Tez で実行されている場合はジョブ グラフも確認できます。
  
 ![hdinsight visual studio tools fast path hive execution](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.fast.path.hive.execution.png)
 
@@ -210,7 +208,7 @@ HiveServer2 を使用してクエリを実行した場合、パフォーマン�
 
 HDInsight Tools for Visual Studio は Tez 実行エンジンで実行された Hive ジョブのパフォーマンス グラフの表示をサポートしています。Tez を有効にする方法については、[HDInsight での Hive の使用][hdinsight.hive]に関するページを参照してください。Visual Studio で Hive ジョブを送信した後、ジョブが完了すると、Visual Studio にグラフが表示されます。最新のジョブの状態を取得するには、**[更新]**ボタンをクリックする必要があります。
 
-> [AZURE.NOTE]この機能はバージョン 3.2.4.593 以上の HDInsight クラスターでのみ使用でき、完了したジョブでのみ有効です。これは、Windows ベースと Linux ベースの両方のクラスターで機能します。
+> [AZURE.NOTE] この機能はバージョン 3.2.4.593 以上の HDInsight クラスターでのみ使用でき、完了したジョブでのみ有効です。これは、Windows ベースと Linux ベースの両方のクラスターで機能します。
 
 ![hadoop hive tez パフォーマンス グラフ](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.hive.tez.performance.graph.png)
 
@@ -218,7 +216,7 @@ Hive クエリを理解しやすくするために、今回のリリースでツ
 
 ### Hive on Tez ジョブのタスク実行ビュー
 
-Hive on Tez ジョブのタスク実行ビューは、Hive ジョブの構造化および視覚化された情報の取得と、ジョブの詳細を取得に使用できます。パフォーマンスの問題が存在する場合は、このビューを使用して、さらなる詳細を確認することができます。たとえば、各タスクの動作や各タスクの詳細 (読み取られた/書き込まれたデータ、スケジュール時刻/開始時刻/終了時刻など) を確認できるため、視覚化された情報に基づいて、ジョブ構成やシステム アーキテクチャを調整できます。
+Hive on Tez ジョブのタスク実行ビューは、Hive ジョブの構造化および視覚化された情報の取得と、ジョブの詳細の取得に使用できます。パフォーマンスの問題が存在する場合は、このビューを使用して、さらなる詳細を確認することができます。たとえば、各タスクの動作や各タスクの詳細 (読み取られた/書き込まれたデータ、スケジュール時刻/開始時刻/終了時刻など) を確認できるため、視覚化された情報に基づいて、ジョブ構成やシステム アーキテクチャを調整できます。
 
 ![hdinsight visual studio tools task execution view](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png)
 
@@ -269,4 +267,4 @@ HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

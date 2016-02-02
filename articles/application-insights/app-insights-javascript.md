@@ -33,7 +33,7 @@ Azure サブスクリプションがなく、Web ページ上で Application Ins
 
 Application Insights リソースは、ページのパフォーマンスと使用状況に関するデータが表示される場所です。(Web サーバーからデータを集めるなどの目的で、既にリソースを作成している場合、この手順を省略します。)
 
-[Azure ポータル](http://portal.azure.com)にサインインします。
+[Azure ポータル](https://portal.azure.com)にサインインします。
 
 アプリのサーバー側の監視を既に設定している場合は、既にリソースがあります。
 
@@ -89,7 +89,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ![](./media/app-insights-javascript/08-client-split.png)
 
-通常、 *ネットワーク接続* 時間は予想より短くなることに注意してください。これは、ブラウザーからサーバーに送信されるすべての要求の平均であるためです。個別の要求の多くは接続時間が 0 です。サーバーへの接続が既にアクティブになっているためです。
+通常、*ネットワーク接続*時間は予想より短くなることに注意してください。これは、ブラウザーからサーバーに送信されるすべての要求の平均であるためです。個別の要求の多くは接続時間が 0 です。サーバーへの接続が既にアクティブになっているためです。
 
 
 ### ページ別のパフォーマンス
@@ -125,7 +125,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ![](./media/app-insights-javascript/appinsights-63usermetrics.png)
 
-> [AZURE.NOTE]メトリックは、いくつかの組み合わせでしか表示できないことがあります。メトリックを選択すると、互換性のないメトリックは無効になります。
+> [AZURE.NOTE] メトリックは、いくつかの組み合わせでしか表示できないことがあります。メトリックを選択すると、互換性のないメトリックは無効になります。
 
 
 
@@ -187,4 +187,4 @@ Web アプリが Application Insights に送信している利用統計情報を
 * [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
 * [ビルド - 測定 - 学習](app-insights-overview-usage.md)
 
-<!------HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0128_2016-->

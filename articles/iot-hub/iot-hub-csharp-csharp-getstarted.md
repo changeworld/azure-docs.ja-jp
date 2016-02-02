@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure IoT Hub の使用 | Microsoft Azure"
+	pageTitle="Azure IoT Hub for C# の使用 | Microsoft Azure"
 	description="このチュートリアルに従って、C# で Azure IoT Hub を使用します。"
 	services="iot-hub"
 	documentationCenter=".net"
@@ -16,7 +16,7 @@
      ms.date="12/14/2015"
      ms.author="dobett"/>
 
-# チュートリアル: Azure IoT Hub の使用
+# Azure IoT Hub for .NET の使用
 
 [AZURE.INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
@@ -40,19 +40,19 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 * **ReadDeviceToCloudMessages**。シミュレーション対象デバイスから送信されたテレメトリを表示します。
 * **SimulatedDevice**。以前に作成したデバイス ID で IoT ハブに接続して、1 秒ごとにテレメトリ メッセージを送信します。
 
-> [AZURE.NOTE]デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの作成に利用できる各種 SDK に関する情報は、「[IoT Hub SDK][lnk-hub-sdks]」の記事で取り上げています。
+> [AZURE.NOTE] デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの作成に利用できる各種 SDK に関する情報は、「[IoT Hub SDK](lnk-hub-sdks)」の記事で取り上げています。
 
 このチュートリアルで行う作業には次のものが必要となります。
 
 + Microsoft Visual Studio 2015
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](lnk-free-trial)を参照してください。
 
 ## IoT Hub の作成
 
 シミュレーション対象デバイスの接続先となる IoT Hub を作成する必要があります。次の手順では、この作業を Azure ポータルで行う方法を示しています。
 
-1. [Azure ポータル][lnk-portal]にサインインします。
+1. [Azure ポータル](lnk-portal)にサインインします。
 
 2. ジャンプバーで、**[新規]**、**[モノのインターネット]**、**[Azure IoT Hub]** の順にクリックします。
 
@@ -64,7 +64,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 
     * **[名前]** ボックスに IoT Hub の名前を入力します。その**名前**が有効で利用できる場合、**[名前]** ボックスに緑色のチェック マークが表示されます。
     * **[価格とスケール レベル]** を選択します。このチュートリアルでは特定のレベルは必要ありません。
-    * **[リソース グループ]** で、新しいリソース グループを作成するか、既存のリソース グループを選択します。詳細については、[リソース グループを使用した Azure リソースの管理][lnk-resource-groups]に関するページを参照してください。
+    * **[リソース グループ]** で、新しいリソース グループを作成するか、既存のリソース グループを選択します。詳細については、[リソース グループを使用した Azure リソースの管理](lnk-resource-groups)に関するページを参照してください。
     * **[場所]** で、IoT Hub をホストする場所を選択します。  
 
 4. 必要な IoT Hub 構成オプションを選択したら、**[作成]** をクリックします。Azure が IoT Hub を作成するまでに数分かかる場合があります。状態を確認するには、スタート画面または通知パネルで進行状況を監視してください。
@@ -102,17 +102,9 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 
 このチュートリアルでは、ポータルで新しい IoT Hub を構成し、ハブの ID レジストリにデバイス ID を作成しました。デバイスからクラウドへのメッセージをハブに送信するシミュレーション対象デバイスでこのデバイス ID を使用しました。また、それとは別に、ハブで受け取ったメッセージを表示するアプリケーションを作成しました。IoT Hub の機能や、他の IoT のシナリオを次のチュートリアルでさらに詳しく説明しています。
 
-- 「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信][lnk-c2d-tutorial]」には、デバイスにメッセージを送信し、IoT Hub によって生成される配信フィードバックを処理する方法が示されています。
-- 「[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]」には、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
-- 「[デバイスからのファイルのアップロード][lnk-upload-tutorial]」では、デバイスからのファイル アップロードを容易にするためにクラウドからデバイスへのメッセージを活用したパターンについて説明しています。
-
-IoT Hub の詳細については、次の記事を参照してください。
-
-* [IoT Hub の概要][lnk-hub-overview]
-* [Azure IoT Hub 開発者ガイド][lnk-hub-dev-guide]
-* [IoT Hub ソリューションの設計][lnk-hub-guidance]
-* [サポートされているデバイスのプラットフォームおよび言語][lnk-supported-devices]
-* [Azure IoT デベロッパー センター][lnk-dev-center]
+- 「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信](lnk-c2d-tutorial)」には、デバイスにメッセージを送信し、IoT Hub によって生成される配信フィードバックを処理する方法が示されています。
+- 「[デバイスからクラウドへのメッセージの処理](lnk-process-d2c-tutorial)」には、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
+- 「[デバイスからのファイルのアップロード](lnk-upload-tutorial)」では、デバイスからのファイル アップロードを容易にするためにクラウドからデバイスへのメッセージを活用したパターンについて説明しています。
 
 <!-- Images. -->
 [1]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub1.png
@@ -125,17 +117,13 @@ IoT Hub の詳細については、次の記事を参照してください。
 
 <!-- Links -->
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
+[Process Device-to-Cloud messages (デバイスからクラウドへのメッセージの処理)]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-upload-tutorial]: iot-hub-csharp-csharp-file-upload.md
 
-[lnk-hub-overview]: iot-hub-what-is-iot-hub.md
-[lnk-hub-guidance]: iot-hub-guidance.md
-[lnk-hub-dev-guide]: iot-hub-devguide.md
-[lnk-supported-devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
-[lnk-dev-center]: http://www.azure.com/develop/iot
 [lnk-hub-sdks]: iot-hub-sdks-summary.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-resource-groups]: resource-group-portal.md
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0114_2016-->
+<!----HONumber=AcomDC_0128_2016-->

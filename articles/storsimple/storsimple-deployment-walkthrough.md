@@ -34,7 +34,7 @@ Microsoft Azure StorSimple デバイスのデプロイへようこそ。これ�
 
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。開始する前に、構成チェック リストを確認することをお勧めします。デプロイと構成のプロセスは、完了するまでに時間がかかることがあります。
 
-> [AZURE.NOTE]Microsoft Azure の Web サイトで発行されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。7000 シリーズ デバイスの詳細については、[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) を参照してください。7000 シリーズのデプロイについては、『[StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。
+> [AZURE.NOTE] Microsoft Azure の Web サイトで発行されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。7000 シリーズ デバイスの詳細については、[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) を参照してください。7000 シリーズのデプロイについては、『[StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。
 
 ## デプロイの手順
 
@@ -112,11 +112,11 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 
 開始する前に次の点を確認します。
 
-- アクセスの資格情報を持つ Microsoft アカウントがある。
+- アクセスの資格情報を持つ Microsoft アカウントがあること。
 
 - アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがある。
 
-- StorSimple Manager サービスの Microsoft Azure サブスクリプションが有効である。サブスクリプションは [Enterprise Agreement](http://azure.microsoft.com/pricing/enterprise-agreement/) から購入する必要があります。
+- StorSimple Manager サービスの Microsoft Azure サブスクリプションが有効である。サブスクリプションは [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) から購入する必要があります。
 
 - PuTTY などのターミナル エミュレーション ソフトウェアにアクセスできる。
 
@@ -159,13 +159,13 @@ StorSimple デバイスをデータセンター内にデプロイするには、
 
 StorSimple Manager サービスでは、複数の StorSimple デバイスを管理できます。StorSimple デバイスを初めてデプロイする場合は、新しい StorSimple Manager サービスを作成する必要があります。
 
-> [AZURE.IMPORTANT]既に StorSimple Manager サービスがあり、そのサービスを使用して StorSimple デバイスをデプロイする場合は、この手順をスキップしてください。
+> [AZURE.IMPORTANT] 既に StorSimple Manager サービスがあり、そのサービスを使用して StorSimple デバイスをデプロイする場合は、この手順をスキップしてください。
 
 StorSimple Manager サービスの新しいインスタンスを作成するには、次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-create-new-service](../../includes/storsimple-create-new-service.md)]
 
-> [AZURE.IMPORTANT]サービスでストレージ アカウントの自動作成を有効にしていない場合は、サービスの作成が完了してから、1 つ以上のストレージ アカウントを作成する必要があります。このストレージ アカウントは、ボリューム コンテナーを作成するときに使用します。
+> [AZURE.IMPORTANT] サービスでストレージ アカウントの自動作成を有効にしていない場合は、サービスの作成が完了してから、1 つ以上のストレージ アカウントを作成する必要があります。このストレージ アカウントは、ボリューム コンテナーを作成するときに使用します。
 >
 > ストレージ アカウントを自動的に作成していない場合は、「[サービスの新しいストレージ アカウントを構成する](#configure-a-new-storage-account-for-the-service)」に移動して詳細な手順をご確認ください。
 > ストレージ アカウントの自動作成を有効にしている場合は、「[手順 2. サービス登録キーを取得する](#step-2:-get-the-service-registration-key)」に進みます。
@@ -181,7 +181,7 @@ Azure クラシック ポータルで、次の手順を実行します。
 
 ## 手順 3. StorSimple 用 Windows PowerShell を使用してデバイスを構成し登録する
 
-> [AZURE.IMPORTANT]この構成を実行する前に、両方 (アクティブおよびパッシブ) のコントローラーで、DATA 0 以外のすべてのネットワーク インターフェイスの接続を解除してください。
+> [AZURE.IMPORTANT] この構成を実行する前に、両方 (アクティブおよびパッシブ) のコントローラーで、DATA 0 以外のすべてのネットワーク インターフェイスの接続を解除してください。
 
 次の手順の説明に従い、StorSimple 用 Windows PowerShell を使用して StorSimple デバイスの初期セットアップを完了します。この手順を完了するには、ターミナル エミュレーション ソフトウェアを使用する必要があります。詳細については、「[PuTTY を使用してデバイスのシリアル コンソールに接続する](#use-putty-to-connect-to-the-device-serial-console)」を参照してください。
 
@@ -214,7 +214,7 @@ StorSimple デバイスの最小構成を完了するには、次の手順を実
 
 ボリューム コンテナーを作成したら、サーバーの StorSimple デバイスでストレージ ボリュームをプロビジョニングできます。ボリュームを作成するには、Azure クラシック ポータルで次の手順を実行します。
 
-> [AZURE.IMPORTANT]StorSimple Manager は、仮想プロビジョニングされたボリュームのみを作成できます。完全にプロビジョニングされたボリュームまたは部分的にプロビジョニングされたボリュームを作成することはできません。
+> [AZURE.IMPORTANT] StorSimple Manager は、仮想プロビジョニングされたボリュームのみを作成できます。完全にプロビジョニングされたボリュームまたは部分的にプロビジョニングされたボリュームを作成することはできません。
 
 [AZURE.INCLUDE [storsimple-create-volume](../../includes/storsimple-create-volume.md)]
 
@@ -261,14 +261,14 @@ StorSimple 用 Windows PowerShell に接続するには、PuTTY などのター�
 
 デバイスの更新には、1 ～ 4 時間かかることがあります。次の手順を実行して、更新プログラムをスキャンしてデバイスに適用します。
 
-> [AZURE.NOTE]ゲートウェイを DATA 0 以外のネットワーク インターフェイスで構成している場合は、更新プログラムをインストールする前に、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にする必要があります。**[デバイス]、[構成]** の順に移動し、DATA 2 と DATA 3 のインターフェイスを無効にします。デバイスの更新後に、これらのインターフェイスをもう一度有効にする必要があります。
+> [AZURE.NOTE] ゲートウェイを DATA 0 以外のネットワーク インターフェイスで構成している場合は、更新プログラムをインストールする前に、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にする必要があります。**[デバイス]、[構成]** の順に移動し、DATA 2 と DATA 3 のインターフェイスを無効にします。デバイスの更新後に、これらのインターフェイスをもう一度有効にする必要があります。
 
 #### デバイスを更新するには
 1.	デバイスの **[クイック スタート]** ページで、**[デバイス]** をクリックします。物理デバイスを選択し、**[メンテナンス]**、**[更新プログラムのスキャン]** を順にクリックします。  
 2.	利用可能な更新プログラムをスキャンするジョブが作成されます。更新プログラムが利用できる場合、**[更新プログラムのスキャン]** が **[更新プログラムのインストール]** に変わります。**[更新プログラムのインストール]** をクリックします。更新プログラムをインストールする前に、DATA 2 および DATA 3 を無効にするように要求されることがあります。これらのネットワーク インターフェイスを無効にしないと、更新プログラムのインストールが失敗する場合があります。
 3.	更新ジョブが作成されます。**[ジョブ]** に移動して、更新の状態を監視します。
 
-	> [AZURE.NOTE]更新ジョブが開始されるとすぐ、状態は 50% として表示されます。その後は、更新ジョブが完了した後で、状態が 100% に変わります。更新プログラムのプロセスでは、リアルタイムの状態は表示されません。
+	> [AZURE.NOTE] 更新ジョブが開始されるとすぐ、状態は 50% として表示されます。その後は、更新ジョブが完了した後で、状態が 100% に変わります。更新プログラムのプロセスでは、リアルタイムの状態は表示されません。
 
 4.	デバイスが正常に更新された後、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にしていた場合は有効にします。
 
@@ -294,4 +294,4 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 - [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

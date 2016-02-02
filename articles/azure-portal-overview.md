@@ -24,7 +24,7 @@ Azure リソースのプロビジョニングと管理は、Microsoft Azure ポ�
 
 ## 開始する前に
 
-このチュートリアルを使用するには、有効な Azure サブスクリプションが必要です。お持ちでない場合は、今すぐ[無料試用版にサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。サブスクリプションの取得後すぐに、[https://portal.azure.com] にアクセスできるようになります。
+このチュートリアルを使用するには、有効な Azure サブスクリプションが必要です。お持ちでない場合は、今すぐ[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/)してください。サブスクリプションの取得後すぐに、[https://portal.azure.com] にアクセスできるようになります。
 
 ## リソースの作成方法
 
@@ -70,7 +70,7 @@ Azure ではリソースに応じてブレードが事前設定されますが�
 
 ## ヘルプを表示する方法
 
-問題が発生した場合は、心配は要りません。ポータルは、操作を支援するヘルプとサポート ページを備えています。また、[サポート プラン](http://azure.microsoft.com/support/plans/)によっては、ポータルで直接サポート チケットを作成できます。サポート チケットを作成したら、ポータル内からチケットのライフサイクルを管理できます。ヘルプとサポート ページにアクセスするには、[参照]、[ヘルプ] または [サポート] の順に移動します。
+問題が発生した場合は、心配は要りません。ポータルは、操作を支援するヘルプとサポート ページを備えています。また、[サポート プラン](https://azure.microsoft.com/support/plans/)によっては、ポータルで直接サポート チケットを作成できます。サポート チケットを作成したら、ポータル内からチケットのライフサイクルを管理できます。ヘルプとサポート ページにアクセスするには、[参照]、[ヘルプ] または [サポート] の順に移動します。
 
 ![ヘルプとサポート][HelpSupport]
 
@@ -78,7 +78,7 @@ Azure ではリソースに応じてブレードが事前設定されますが�
 
 このチュートリアルでは、以下のことを学習しました。- サインアップ方法、サブスクリプションの取得方法、およびポータルの参照方法 - ポータル UI の詳細と、リソースを作成および参照する方法、 - 構造または管理ブレードの詳細と、各種リソースを一貫して管理する方法 - 必要な情報が前面の中央に表示されるようにポータルをカスタマイズする方法 - ロール ベース アクセス (RBAC) を使用してリソースへのアクセスを制御する方法 - ヘルプとサポートを利用する方法
 
-Microsoft Azure ポータルならクラウドでのアプリケーションの構築や管理を大幅に簡素化できます。最新の状態を保つために[管理ブログ](http://azure.microsoft.com/blog/topics/management/)をご覧ください。定期的に[フィードバックを確認](http://feedback.azure.com/forums/223579-azure-preview-portal)し、改善を行っています。[ScottGu のブログ](http://weblogs.asp.net/scottgu)も Azure の更新情報を確認する場合に最適です。
+Microsoft Azure ポータルならクラウドでのアプリケーションの構築や管理を大幅に簡素化できます。最新の状態を保つために[管理ブログ](https://azure.microsoft.com/blog/topics/management/)をご覧ください。定期的に[フィードバックを確認](https://feedback.azure.com/forums/223579-azure-preview-portal/)し、改善を行っています。[ScottGu のブログ](http://weblogs.asp.net/scottgu)も Azure の更新情報を確認する場合に最適です。
 
 [UIOrientation]: ./media/azure-portal-how-to-use/azure_portal_1.png
 [PortalCategories]: ./media/azure-portal-how-to-use/azure_portal_2.png
@@ -87,4 +87,4 @@ Microsoft Azure ポータルならクラウドでのアプリケーションの�
 [CustomizeBlades]: ./media/azure-portal-how-to-use/azure_portal_5.png
 [HelpSupport]: ./media/azure-portal-how-to-use/azure_portal_6.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

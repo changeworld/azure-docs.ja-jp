@@ -1,6 +1,6 @@
 <properties
-	pageTitle=".NET から Blob Storage を使用する方法 | Microsoft Azure"
-	description="Azure Blob Storage の概要、コンテナーの作成方法、BLOB コンテンツのアップロード、ダウンロード、一覧表示、および削除を行う方法について説明します。"
+	pageTitle=".NET を使用して Azure Blob Storage を使用する | Microsoft Azure"
+	description="Azure Blob (オブジェクト) Storage を使用してクラウドにファイル データを格納します。コンテナーの作成、Blob コンテンツのアップロード、ダウンロード、一覧表示、削除など、単純な Blob Storage 操作を開始します。"
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
@@ -13,17 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="12/01/2015"
+	ms.date="01/22/2016"
 	ms.author="tamram"/>
 
 
-# .NET から Blob Storage を使用する方法
+# .NET を使用して Azure Blob Storage を使用する
 
 [AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 ## 概要
 
-このガイドでは、Azure Blob Storage サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C# で記述され、.NET 用 Azure ストレージ クライアント ライブラリを使用しています。ストレージ クライアント ライブラリは、Blob Storage REST API の操作を簡略化する SDK です。このガイドで紹介するシナリオでは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、**削除**について説明します。所要時間はおよそ 1 時間です。概要のビデオは、[5 分間で Azure Storage の概要を紹介するビデオ](https://azure.microsoft.com/documentation/videos/azure-storage-5-minute-overview/)のページで視聴できます。「[Azure Storage を 5 分で使い始める](storage-getting-started-guide.md)」も参考にしてください。
+Azure Blob Storage は、クラウドにファイル データを格納するサービスです。Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。Blob Storage は、オブジェクト ストレージとも呼ばれます。
+
+このチュートリアルでは、Azure Blob Storage を使用していくつかの一般的なシナリオの .NET コードを記述する方法を示します。紹介するシナリオは、BLOB のアップロード、一覧表示、ダウンロード、および削除です。このチュートリアルの所要時間は 1 時間以内です。
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -38,6 +40,7 @@
 [AZURE.INCLUDE [storage-dotnet-obtain-assembly](../../includes/storage-dotnet-obtain-assembly.md)]
 
 ### 名前空間宣言
+
 プログラムを使用して Azure Storage にアクセスするすべての C# ファイルの冒頭部分に、次の名前空間宣言を追加します。
 
     using Microsoft.WindowsAzure;
@@ -365,4 +368,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

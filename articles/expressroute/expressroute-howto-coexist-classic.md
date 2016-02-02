@@ -20,7 +20,7 @@
 
 サイト間 VPN と ExpressRoute が構成可能な場合、いくつかの利点があります。ExressRoute 用にセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成したり、サイト間 VPN を使用して、ネットワークの一部ではないものの、ExpressRoute 経由で接続されているサイトに接続したりすることができます。この記事では、両方のシナリオを構成する手順について説明します。この記事は、クラシック デプロイ モードを使用して作成された接続を対象としています。
 
->[AZURE.IMPORTANT]Azure は現在、2 つのデプロイ モデル (リソース マネージャーおよびクラシック) で使用できることを理解しておくことが重要です。構成を開始する前に、デプロイ モデルとツールについて理解しておくようにしてください。デプロイ モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
+>[AZURE.IMPORTANT] Azure は現在、2 つのデプロイ モデル (リソース マネージャーおよびクラシック) で使用できることを理解しておくことが重要です。構成を開始する前に、デプロイ モデルとツールについて理解しておくようにしてください。デプロイ モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
 
 
 ExpressRoute 回線を事前に構成してから、以下の手順に従ってください。以下の手順に従う前に、必ず、[ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)と[ルーティングの構成](expressroute-howto-routing-classic.md)に関するガイドに従ってください。
@@ -46,7 +46,7 @@ ExpressRoute 用にバックアップとしてサイト間 VPN 接続を構成�
 
 ![共存](media/expressroute-howto-coexist-classic/scenario2.jpg)
 
->[AZURE.NOTE]トランジット ルーターとして仮想ネットワークを構成することはできません。
+>[AZURE.NOTE] トランジット ルーターとして仮想ネットワークを構成することはできません。
 
 ## 作成と構成
 
@@ -67,7 +67,7 @@ ExpressRoute 用にバックアップとしてサイト間 VPN 接続を構成�
 
 この手順では、VNet を作成し、共存するサイト間接続と ExpressRoute 接続を作成します。
 
-1. 最新バージョンの PowerShell コマンドレットを使用していることを確認します。[ダウンロード](http://azure.microsoft.com/downloads/) ページの PowerShell セクションから、最新の PowerShell コマンドレットをダウンロードしてインストールできます。
+1. 最新バージョンの PowerShell コマンドレットを使用していることを確認します。[ダウンロード](https://azure.microsoft.com/downloads/) ページの PowerShell セクションから、最新の PowerShell コマンドレットをダウンロードしてインストールできます。
 
 2. 仮想ネットワークのスキーマを作成します。ネットワーク構成ファイルの使用の詳細については、「[ネットワーク構成ファイルを使用した仮想ネットワークの構成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)」を参照してください。構成スキーマの詳細については、「[Azure Virtual Network の構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」を参照してください。
 
@@ -142,13 +142,13 @@ ExpressRoute 用にバックアップとしてサイト間 VPN 接続を構成�
 
 7. ローカル サイト VPN ゲートウェイのエンティティを作成します。このコマンドは、オンプレミスの VPN ゲートウェイを構成しません。代わりに、パブリック IP やオンプレミスのアドレス空間などのローカル ゲートウェイ設定を指定できるため、Azure VPN ゲートウェイがこれに接続できます。
 
-	> [AZURE.IMPORTANT]サイト間 VPN のローカル サイトは、netcfg で定義されていません。代わりに、このコマンドレットを使用してローカル サイトのパラメーターを指定する必要があります。Azure クラシック ポータルまたは netcfg ファイルを使用して、これを定義することはできません。
+	> [AZURE.IMPORTANT] サイト間 VPN のローカル サイトは、netcfg で定義されていません。代わりに、このコマンドレットを使用してローカル サイトのパラメーターを指定する必要があります。Azure クラシック ポータルまたは netcfg ファイルを使用して、これを定義することはできません。
 
 	次のサンプルを使用して、自身の値に置き換えます。
 
 	`New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>`
 
-	> [AZURE.NOTE]ローカル ネットワークに複数のルートがある場合は、それらすべてを配列として渡すことができます。$MyLocalNetworkAddress = @("10.1.2.0/24","10.1.3.0/24","10.2.1.0/24")
+	> [AZURE.NOTE] ローカル ネットワークに複数のルートがある場合は、それらすべてを配列として渡すことができます。$MyLocalNetworkAddress = @("10.1.2.0/24","10.1.3.0/24","10.2.1.0/24")
 
 
 	ゲートウェイ ID とパブリック IP を含む仮想ネットワーク ゲートウェイ設定を取得するには、`Get-AzureVirtualNetworkGateway` コマンドレットを使用します。次の例を参照してください。
@@ -179,7 +179,7 @@ ExpressRoute 接続またはサイト間 VPN 接続経由で接続されてい�
 
 **構成を開始する前に:** ゲートウェイ サブネットのサイズを増やせるように、仮想ネットワーク内に十分な IP アドレスが残っていることを確認します。
 
-1. 最新バージョンの PowerShell コマンドレットをダウンロードします。[ダウンロード](http://azure.microsoft.com/downloads/) ページの PowerShell セクションから、最新の PowerShell コマンドレットをダウンロードしてインストールできます。
+1. 最新バージョンの PowerShell コマンドレットをダウンロードします。[ダウンロード](https://azure.microsoft.com/downloads/) ページの PowerShell セクションから、最新の PowerShell コマンドレットをダウンロードしてインストールできます。
 
 2. 既存のサイト間 VPN ゲートウェイを削除します。次のコマンドレットを使用して、自身の値に置き換えます。
 
@@ -211,4 +211,4 @@ ExpressRoute 接続またはサイト間 VPN 接続経由で接続されてい�
 
 ExpressRoute の詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

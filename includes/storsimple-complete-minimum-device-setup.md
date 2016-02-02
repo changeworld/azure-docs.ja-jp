@@ -23,7 +23,7 @@
 4. **[ネットワーク インターフェイス]** ページで、コントローラー 0 とコントローラー 1 の固定 IP アドレスを指定します。DATA 0 インターフェイスが IPv4 に対して構成されている場合、固定 IP アドレスは IPv4 形式で指定する必要があります。IPv6 構成でプレフィックスを指定した場合、これらのフィールドには固定 IP アドレスが自動的に入力されます。
 
 
-	> [AZURE.NOTE]
+	> [AZURE.NOTE] 
  	> 
  	> - コントローラーの固定 IP アドレスは、デバイス の IP アドレスによってアクセス可能なサブネット内で空き IP となっている必要があります。
  	> - コントローラーの固定 IP アドレスはデバイスに更新プログラムを提供するために使用されるため、ルーティング可能でインターネットに接続可能である必要があります。
@@ -32,10 +32,10 @@
 
 5. チェック マーク アイコン ![StorSimple のチェック マーク アイコン](./media/storsimple-complete-minimum-device-setup/HCS_CheckIcon-include.png) をクリックします。デバイスの **[クイック スタート]** ページが再び表示されます。
 
- >[AZURE.NOTE]**[構成]** ページにアクセスすれば、その他すべてのデバイス設定をいつでも変更できます。
+ >[AZURE.NOTE] **[構成]** ページにアクセスすれば、その他すべてのデバイス設定をいつでも変更できます。
 
 ![ビデオ](./media/storsimple-complete-minimum-device-setup/Video_icon.png) **ビデオ**
 
-最小限のデバイス設定を完了する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/minimum-storsimple-device-setup/)を参照してください。
+最小限のデバイス設定を完了する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/minimum-storsimple-device-setup/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -25,7 +25,7 @@
 ## 前提条件
 
 1. [Java Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (以降)
-1. [Microsoft Azure](https://azure.microsoft.com) の有料または[無料試用版](https://azure.microsoft.com/pricing/free-trial/)サブスクリプション
+1. [Microsoft Azure](https://azure.microsoft.com/) の有料または[無料試用版](https://azure.microsoft.com/pricing/free-trial/)サブスクリプション
 1. 開発用コンピューターにインストールされた [Maven](https://maven.apache.org/)
 1. 開発用コンピューターにインストールされた Git 
 
@@ -254,7 +254,7 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 ## 出力を Azure App Service に発行する
 このセクションでは、Azure ポータルを使用して新しい API アプリを作成する方法、Java アプリケーションをホストするためにこの API アプリを準備する方法、新しく作成した WAR ファイルを Azure App Service にデプロイして新しい API アプリを実行する方法について説明します。
 
-1. [Azure ポータル](http://portal.azure.com)で **[新規]、[Web + モバイル]、[API アプリ]** の順にクリックして、新しい API アプリを作成します。
+1. [Azure ポータル](https://portal.azure.com/)で **[新規]、[Web + モバイル]、[API アプリ]** の順にクリックして、新しい API アプリを作成します。
 	
 	![Create a new API App](media/app-service-api-java-api-app/create-api-app.png)
 
@@ -262,19 +262,19 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 
 	![Set up Java in the API App blade](media/app-service-api-java-api-app/set-up-java.png)
 
-1. **[デプロイ資格情報]** 設定メニュー項目をクリックし、API アプリへのファイル発行に使用するユーザー名とパスワードを指定します。
+1. **[デプロイメント資格情報]** 設定メニュー項目をクリックし、API アプリへのファイル発行に使用するユーザー名とパスワードを指定します。
 
 	![デプロイメント資格情報の設定](media/app-service-api-java-api-app/deployment-credentials.png)
 
 1. **[継続的なデプロイ]** 設定メニュー項目をクリックします。**[ソースの選択]** をクリックし、**[ローカル Git リポジトリ]** を選択します。これにより、Azure で実行される、API アプリに関連付けられた Git リポジトリが作成されます。Git リポジトリの*マスター*分岐に対してコードをコミットするたびに、コードは実行中の API アプリ インスタンスに発行されます。
 
-	![Set up a new local Git repository](media/app-service-api-java-api-app/select-git-repo.png)
+	![新しいローカル Git リポジトリの設定](media/app-service-api-java-api-app/select-git-repo.png)
 
 1. 新しい Git リポジトリの URL をクリップボードにコピーします。後で重要になるため、これを保存します。
 
-	![Set up a new Git reposutory for your app](media/app-service-api-java-api-app/copy-git-repo-url.png)
+	![アプリ用の新しい Git リポジトリの設定](media/app-service-api-java-api-app/copy-git-repo-url.png)
 
-1. Git は WAR ファイルをオンラインのリポジトリにプッシュします。そのためには、前に作成した **deploy** フォルダーに移動して、App Service で実行されているリポジトリに簡単にコードをコミットできるようにします。コンソール ウィンドウから webapps フォルダーのあるフォルダーに移動したら、次の Git コマンドを発行してプロセスを起動し、デプロイします。
+1. Git は WAR ファイルをオンラインのリポジトリにプッシュします。そのためには、前に作成した **deploy** フォルダーに移動して、App Service で実行されているリポジトリに簡単にコードをコミットできるようにします。コンソール ウィンドウから webapps フォルダーのあるフォルダーに移動したら、次の Git コマンドを発行してプロセスを起動し、デプロイメントを実行します。
 
 		git init
 		git add .
@@ -282,7 +282,7 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 		git remote add azure [YOUR GIT URL]		
 		git push azure master
 		
-	**プッシュ**要求を発行すると、前にデプロイ資格情報用に作成したパスワードの入力を求められます。パスワードを入力すると、更新されてデプロイされたポータルが表示されます。
+	**プッシュ**要求を発行すると、前にデプロイメント資格情報用に作成したパスワードの入力を求められます。パスワードを入力すると、更新されてデプロイされたポータルが表示されます。
 		
 1. 再度 Postman を使用して Azure App Service で動作している新しくデプロイされた API アプリにヒットすると、一貫した動作であること、期待どおりの連絡先データが返されていること、Swagger.io でスキャフォールディングされた Java コードへの単純なコード変更が使用されていることを確認できます。
 
@@ -295,4 +295,4 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 
 Azure での Java の使用に関する詳細については、「[Java デベロッパー センター](/develop/java/)」を参照してください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -32,11 +32,11 @@
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 * [Visual Studio Community 2013] 以降のバージョン。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appServiceName=mobile)」にアクセスしてください。有効期間が短いスターター モバイル アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appServiceName=mobile)」にアクセスしてください。有効期間が短いスターター モバイル アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##新しい Azure Mobile App バックエンドの作成
 
@@ -74,11 +74,9 @@
 
 ##次のステップ
 
-* [アプリへの認証の追加](app-service-mobile-windows-store-dotnet-get-started-users.md)
-  <br/> ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
+* [アプリへの認証の追加](app-service-mobile-windows-store-dotnet-get-started-users.md)<br/> ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [アプリケーションにプッシュ通知を追加する](app-service-mobile-windows-store-dotnet-get-started-push.md)
-  <br/>アプリにごく基本的なプッシュ通知を送信する方法について説明します。
+* [アプリケーションにプッシュ通知を追加する](app-service-mobile-windows-store-dotnet-get-started-push.md) <br/>アプリにごく基本的なプッシュ通知を送信する方法について説明します。
 
 <!-- Anchors. -->
 <!-- Images. -->
@@ -87,4 +85,4 @@
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

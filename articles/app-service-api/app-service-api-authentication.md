@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="01/07/2016"
+	ms.date="01/21/2016"
 	ms.author="tdykstra"/>
 
 # Azure App Service での API Apps の認証と承認
@@ -74,6 +74,8 @@ App Service は、API アプリに対する匿名 HTTP 要求の到達を禁止�
 1 つ目と 2 つ目の選択肢については、**[App Service 認証]** をオンにし、**[要求が認証されなかったときに実行する処理]** ドロップダウン リストの **[ログイン]** または **[要求を許可 (何もしない)]** を選択します。**[ログイン]** を選択した場合は、認証プロバイダーを選んで、その構成を行う必要があります。
 
 ![](./media/app-service-api-authentication/actiontotake.png)
+
+認証を構成する方法の詳細については、「[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)」を参照してください。この記事は API アプリだけでなくモバイル アプリにも適用され、他の認証プロバイダーに関する他の記事へのリンクが記載されています。
  
 ## <a id="internal"></a> サービス アカウントの認証
 
@@ -89,9 +91,12 @@ App Service ロジック アプリから API アプリへのサービス アカ�
 
 モバイル クライアントから認証を処理する方法の詳細については、「[モバイル アプリの認証に関するドキュメント](../app-service-mobile/app-service-mobile-ios-get-started-users.md)」を参照してください。App Service 認証は、モバイル アプリと API アプリと同じ方法で処理されます。
   
-## 詳細
+## 詳細情報
 
-Azure App Service での認証と承認の詳細については、「[App Service 認証/承認の展開](/blog/announcing-app-service-authentication-authorization/)」を参照してください。
+Azure App Service での認証と承認の詳細については、以下のリソースを参照してください。
+
+* [Expanding App Service authentication / authorization (App Service の認証/承認の展開)](/blog/announcing-app-service-authentication-authorization/)
+* [Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md) (ページの先頭に、他の認証プロバイダーのリンクがあります) 
 
 OAuth 2.0、OpenID Connect、JSON Web トークン (JWT) の詳細については、次のリソースを参照してください。
 
@@ -109,8 +114,8 @@ Azure Active Directory を使用する認証の詳細については、次のリ
 
 この記事では、API アプリに使用できる App Service の認証と承認の機能について説明しました。
 
-ASP.NET と API Apps を使った一連のチュートリアルに従っている場合は、[App Service API Apps でのユーザー認証](app-service-api-dotnet-user-principal-auth.md)に関するページを参照してください。
+引き続き ASP.NET と API Apps を使った一連のチュートリアルをご覧になる場合は、[App Service API Apps でのユーザー認証](app-service-api-dotnet-user-principal-auth.md)に関するページを参照してください。
 
 Azure App Service における Node と Java の使用について詳しくは、[Node.js デベロッパー センター](/develop/nodejs/)と [Java デベロッパー センター](/develop/java/)を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

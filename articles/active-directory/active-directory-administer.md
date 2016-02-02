@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure AD ディレクトリの管理 | Microsoft Azure"
-	description="Azure AD テナントの概要と、Azure AD ディレクトリを管理する方法を説明するトピック。"
+	description="Azure AD テナントの概要、および Azure Active Directory で Azure を管理する方法を説明します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/01/2015"
+	ms.date="01/25/2016"
 	ms.author="markvi"/>
 
 # Azure AD ディレクトリの管理
@@ -27,7 +27,7 @@
 
 各 Azure AD ディレクトリは、他の Azure AD ディレクトリと区別され分離されています。会社のオフィス ビルが組織に固有のセキュリティで保護された資産であるのと同様に、Azure AD ディレクトリも特定の組織だけが使用するセキュリティで保護された資産として設計されています。Azure AD アーキテクチャは、顧客のデータや ID 情報が混合しないよう分離します。これは、Azure AD ディレクトリのユーザーや管理者が、別のディレクトリのデータに誤ってまたは悪意をもってアクセスすることはできないことを意味します。
 
-![][1]
+![Azure Active Directory の管理][1]
 
 ## Azure AD ディレクトリを取得する方法
 
@@ -40,7 +40,8 @@ Azure AD は、ほとんどの Microsoft クラウド サービスの背後に�
 
 これらの Microsoft クラウド サービスのいずれかにサインアップすると、Azure AD ディレクトリが提供されます。必要に応じて、追加のディレクトリを作成できます。たとえば、最初のディレクトリを運用ディレクトリとして保持し、テストまたはステージング用に別のディレクトリを作成できます。
 
-> [AZURE.NOTE]最初のサービスにサインアップした後は、他の Microsoft クラウド サービスにサインアップするときに、組織に関連付けられている同じ管理者アカウントを使用することをお勧めします。
+> [AZURE.NOTE]
+最初のサービスにサインアップした後は、他の Microsoft クラウド サービスにサインアップするときに、組織に関連付けられている同じ管理者アカウントを使用することをお勧めします。
 
 Microsoft クラウド サービスに初めてサインアップするときには、組織と組織のインターネット ドメイン名登録の詳細情報を提供するよう求められます。その後、この情報を使用して、組織の新しい Azure AD ディレクトリ インスタンスが作成されます。複数の Microsoft クラウド サービスにサブスクライブしている場合でも、サインイン試行の認証にその同じディレクトリが使用されます。
 
@@ -52,7 +53,7 @@ Microsoft クラウド サービスに初めてサインアップするときに
 
 ### Azure AD ディレクトリを新しい Azure サブスクリプションに関連付ける
 
-新しい Azure サブスクリプションは、既存の Office 365 または Microsoft Intune サブスクリプションへのサインインを認証する同じディレクトリに関連付けることができます。職場または学校アカウントを使用して、Azure 管理ポータルにサインインします。管理ポータルに、そのアカウントのサブスクリプションが見つからなかったことを示すメッセージが表示されます。**[Azure にサインアップ]** を選択すると、ディレクトリをポータル内での管理に使用できるようになります。詳細については、「[Azure での Office 365 サブスクリプションのディレクトリの管理](active-directory-how-subscriptions-associated-directory.md#manage-the-directory-for-your-office-365-subscription-in-azure)」をご覧ください。
+新しい Azure サブスクリプションは、既存の Office 365 または Microsoft Intune サブスクリプションへのサインインを認証する同じディレクトリに関連付けることができます。職場または学校アカウントを使用して、Microsoft Azure 管理ポータルにサインインします。管理ポータルに、そのアカウントのサブスクリプションが見つからなかったことを示すメッセージが表示されます。**[Azure にサインアップ]** を選択すると、ディレクトリをポータル内での管理に使用できるようになります。詳細については、「[Azure での Office 365 サブスクリプションのディレクトリの管理](active-directory-how-subscriptions-associated-directory.md#manage-the-directory-for-your-office-365-subscription-in-azure)」をご覧ください。
 
 Azure AD の使用方法に関するよくある質問のビデオについては、「[Azure Active Directory - Common Sign-up, sign-in and usage questions (Azure Active Directory - サインアップ、サインイン、使用方法に関するよくある質問)](http://channel9.msdn.com/Series/Windows-Azure-Active-Directory/WAADCommonSignupsigninquestions)」をご覧ください。
 
@@ -76,7 +77,7 @@ Azure AD を使用するのにコストは一切かかりません。ディレ�
 
 ## ディレクトリ データを管理する方法
 
-1 つ以上の Microsoft クラウド サービス サブスクリプションの管理者は、Azure 管理ポータル、Microsoft Intune アカウント ポータル、または Office 365 管理センターを使用して、組織のディレクトリ データを管理できます。また、[Windows PowerShell 用 Microsoft Azure Active Directory モジュール](https://msdn.microsoft.com/library/azure/jj151815.aspx)のコマンドレットをダウンロードして実行することで、Azure AD に格納されているデータを管理することもできます。
+1 つ以上の Microsoft クラウド サービス サブスクリプションの管理者は、Microsoft Azure 管理ポータル、Microsoft Intune アカウント ポータル、または Office 365 管理センターを使用して、組織のディレクトリ データを管理できます。また、[Windows PowerShell 用 Microsoft Azure Active Directory モジュール](https://msdn.microsoft.com/library/azure/jj151815.aspx)のコマンドレットをダウンロードして実行することで、Azure AD に格納されているデータを管理することもできます。
 
 これらのポータル (またはコマンドレット) から、次の操作が可能です。
 
@@ -84,7 +85,7 @@ Azure AD を使用するのにコストは一切かかりません。ディレ�
 - 組織がサブスクライブしている関連クラウド サービスを管理する
 - ディレクトリ サービスとのオンプレミス統合をセットアップする
 
-次の図に示すように、Azure 管理ポータル、Office 365 管理センター、Microsoft Intune アカウント ポータル、Azure AD コマンドレットはすべて、組織のディレクトリに関連付けられている Azure AD の 1 つの共有インスタンスとの間で読み取りと書き込みを行います。このようにして、ポータル (またはコマンドレット) はディレクトリ データを取得または変更するフロントエンド インターフェイスとして機能します。
+次の図に示すように、Microsoft Azure 管理ポータル、Office 365 管理センター、Microsoft Intune アカウント ポータル、Azure AD コマンドレットはすべて、組織のディレクトリに関連付けられている Azure AD の 1 つの共有インスタンスとの間で読み取りと書き込みを行います。このようにして、ポータル (またはコマンドレット) はディレクトリ データを取得または変更するフロントエンド インターフェイスとして機能します。
 
 ![][2]
 
@@ -94,7 +95,7 @@ Azure AD を使用するのにコストは一切かかりません。ディレ�
 
 ## 複数のディレクトリを追加および管理する方法
 
-Azure AD ディレクトリは、Azure 管理ポータルで追加できます。左側で **[Active Directory]** 拡張機能を選択し、**[追加]** をクリックします。
+Azure AD ディレクトリは、Microsoft Azure 管理ポータルで追加できます。左側で **[Active Directory]** 拡張機能を選択し、**[追加]** をクリックします。
 
 各ディレクトリは、完全に独立したリソースとして管理できます。つまり、各ディレクトリは対等であり、フル機能を備え、管理対象の他のディレクトリから論理的に独立しています。ディレクトリ間に親子関係はありません。このディレクトリ間の独立には、リソースの独立、管理上の独立、同期の独立があります。
 
@@ -115,7 +116,8 @@ Azure AD ディレクトリは、Azure 管理ポータルで追加できます�
 ## Azure AD ディレクトリを削除する方法
 グローバル管理者は、ポータルから Azure AD ディレクトリを削除できます。ディレクトリを削除すると、そのディレクトリに含まれるリソースもすべて削除されます。そのため、ディレクトリを削除する前に、そのディレクトリが不要であることを確認する必要があります。
 
-> [AZURE.NOTE]ユーザーが職場または学校アカウントを使用してサインインしている場合、そのユーザーは自分のホーム ディレクトリを削除することはできません。たとえば、ユーザーが joe@contoso.onmicrosoft.com としてサインインしている場合、そのユーザーは既定のドメインが contoso.onmicrosoft.com であるディレクトリを削除することはできません。
+> [AZURE.NOTE]
+ユーザーが職場または学校アカウントを使用してサインインしている場合、そのユーザーは自分のホーム ディレクトリを削除することはできません。たとえば、ユーザーが joe@contoso.onmicrosoft.com としてサインインしている場合、そのユーザーは既定のドメインが contoso.onmicrosoft.com であるディレクトリを削除することはできません。
 
 ### Azure AD ディレクトリを削除するために満たす必要がある条件
 
@@ -125,9 +127,10 @@ Azure AD でディレクトリを削除するには、特定の条件を満た�
 
 - ディレクトリ内のユーザーは、ディレクトリを削除するグローバル管理者に限られます。ディレクトリを削除するには、他のすべてのユーザーを削除しておく必要があります。ユーザーがオンプレミスから同期されている場合は、同期を無効にする必要があります。また、管理ポータルまたは Windows PowerShell 用 Azure モジュールを使用して、クラウド ディレクトリでユーザーを削除する必要があります。グループまたは連絡先 (Office 365 管理センターから追加された連絡先など) を削除する要件はありません。
 - ディレクトリ内にアプリケーションが存在してはいけません。ディレクトリを削除するには、すべてのアプリケーションを削除しておく必要があります。
-- ディレクトリに関連付けられている、Microsoft Azure、Office 365、Azure AD Premium などの Microsoft Online Services のサブスクリプションが存在してはいけません。たとえば、Azure で既定のディレクトリが作成されている場合、Azure サブスクリプションが認証にこのディレクトリを引き続き使用していれば、このディレクトリを削除することはできません。同様に、別のユーザーがディレクトリにサブスクリプションを関連付けている場合、そのディレクトリを削除することはできません。サブスクリプションを別のディレクトリに関連付けるには、Azure 管理ポータルにサインインし、左側のナビゲーションで **[設定]** をクリックします。次に、**[サブスクリプション]** ページの下部にある **[ディレクトリの編集]** をクリックします。Azure サブスクリプションの詳細については、「[How Azure subscriptions are associated with Azure AD (Azure サブスクリプションを Azure AD に関連付ける方法)](active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
+- ディレクトリに関連付けられている、Microsoft Azure、Office 365、Azure AD Premium などの Microsoft Online Services のサブスクリプションが存在してはいけません。たとえば、Azure で既定のディレクトリが作成されている場合、Azure サブスクリプションが認証にこのディレクトリを引き続き使用していれば、このディレクトリを削除することはできません。同様に、別のユーザーがディレクトリにサブスクリプションを関連付けている場合、そのディレクトリを削除することはできません。サブスクリプションを別のディレクトリに関連付けるには、Microsoft Azure 管理ポータルにサインインし、左側のナビゲーションで **[設定]** をクリックします。次に、**[サブスクリプション]** ページの下部にある **[ディレクトリの編集]** をクリックします。Azure サブスクリプションの詳細については、「[How Azure subscriptions are associated with Azure AD (Azure サブスクリプションを Azure AD に関連付ける方法)](active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
 
-    > [AZURE.NOTE]ユーザーが職場または学校アカウントを使用してサインインしている場合、そのユーザーは自分のホーム ディレクトリを削除することはできません。たとえば、ユーザーが joe@contoso.onmicrosoft.com としてサインインしている場合、そのユーザーは既定のドメインが contoso.onmicrosoft.com であるディレクトリを削除することはできません。
+    > [AZURE.NOTE]
+    ユーザーが職場または学校アカウントを使用してサインインしている場合、そのユーザーは自分のホーム ディレクトリを削除することはできません。たとえば、ユーザーが joe@contoso.onmicrosoft.com としてサインインしている場合、そのユーザーは既定のドメインが contoso.onmicrosoft.com であるディレクトリを削除することはできません。
 
 - Multi-Factor Authentication プロバイダーをディレクトリにリンクすることはできません。
 
@@ -145,4 +148,4 @@ Azure AD でディレクトリを削除するには、特定の条件を満た�
 [1]: ./media/active-directory-administer/aad_portals.png
 [2]: ./media/active-directory-administer/azure_tenants.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

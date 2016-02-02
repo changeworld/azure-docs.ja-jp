@@ -23,7 +23,7 @@
 &nbsp;  
 <!--- [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]-->
 
->[AZURE.IMPORTANT]HTML/JavaScript アプリのクイック スタートは Azure ポータルから一時的に削除されているため、現在このトピックは Mobile Apps には適用されません。まもなく、再びサポートされるようになる予定です。もうしばらくお待ちください。
+>[AZURE.IMPORTANT] HTML/JavaScript アプリのクイック スタートは Azure ポータルから一時的に削除されているため、現在このトピックは Mobile Apps には適用されません。まもなく、再びサポートされるようになる予定です。もうしばらくお待ちください。
 
 ##概要
 
@@ -39,11 +39,11 @@ HTML アプリの他のすべての Mobile Apps チュートリアルを行う�
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウント。アカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* アクティブな Azure アカウント。アカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 * [Visual Studio Community 2013] 以降のバージョン。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](https://tryappservice.azure.com/?appServiceName=mobile)に関するページにアクセスしてください。App Service で、有効期限付きのスターター モバイル アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](https://tryappservice.azure.com/?appServiceName=mobile)に関するページにアクセスしてください。App Service で、有効期限付きのスターター モバイル アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##新しいモバイル アプリ バックエンドの作成
 
@@ -103,7 +103,7 @@ HTML アプリの他のすべての Mobile Apps チュートリアルを行う�
 	+ **launch-mac.command** (Mac OS X コンピューター)
 	+ **launch-linux.sh** (Linux コンピューター)
 
-	> [AZURE.NOTE]Windows コンピューターでは、PowerShell からスクリプトの実行の確認を求められた場合は、「`R`」と入力します。Web ブラウザーでは、インターネットからダウンロードしたスクリプトであるため、実行しないよう警告されることがあります。その場合は、ブラウザーがスクリプトの読み込みを開始するよう要求する必要があります。
+	> [AZURE.NOTE] Windows コンピューターでは、PowerShell からスクリプトの実行の確認を求められた場合は、「`R`」と入力します。Web ブラウザーでは、インターネットからダウンロードしたスクリプトであるため、実行しないよう警告されることがあります。その場合は、ブラウザーがスクリプトの読み込みを開始するよう要求する必要があります。
 
 	これにより、新しいアプリケーションをホストする Web サーバーがローカル コンピューター上で起動します。
 
@@ -115,7 +115,7 @@ HTML アプリの他のすべての Mobile Apps チュートリアルを行う�
 
    	これで、Azure でホストされている新しいモバイル アプリ バックエンドに POST 要求が送信されます。要求のデータは、モバイル アプリ スキーマの TodoItem テーブルに挿入されます。テーブルに格納された項目はサービスによって返され、データはアプリケーションの 2 番目の列に表示されます。
 
-	> [AZURE.TIP]モバイル サービスにアクセスして app.js ファイルにあるデータを照会および挿入するコードを確認できます。
+	> [AZURE.TIP] モバイル サービスにアクセスして app.js ファイルにあるデータを照会および挿入するコードを確認できます。
 
 <!-- Anchors. -->
 <!-- Images. -->
@@ -127,4 +127,4 @@ HTML アプリの他のすべての Mobile Apps チュートリアルを行う�
 [Visual Studio Community 2013]: https://www.visualstudio.com/downloads
  
 
-<!---HONumber=AcomDC_1203_2015--->
+<!----HONumber=AcomDC_0128_2016-->

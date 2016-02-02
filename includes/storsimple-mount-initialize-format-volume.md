@@ -30,9 +30,9 @@
 
 ![ビデオ](./media/storsimple-mount-initialize-format-volume/Video_icon.png) **ビデオ**
 
-StorSimple ボリュームのマウント、初期化、およびフォーマットの方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/mount-initialize-and-format-a-storsimple-volume/)を参照してください。
+StorSimple ボリュームのマウント、初期化、およびフォーマットの方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/mount-initialize-and-format-a-storsimple-volume/)を参照してください。
 
 <!--Link references-->
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

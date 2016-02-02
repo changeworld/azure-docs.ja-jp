@@ -229,7 +229,7 @@ Azure Scheduler は、いくつかの条件に基づいてクォータを実装�
 
  [Azure Scheduler で複雑なスケジュールと高度な定期実行を構築する方法](scheduler-advanced-complexity.md)
 
- [Scheduler REST API リファレンス](https://msdn.microsoft.com/library/dn528946)
+ [Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
 
  [Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)](scheduler-powershell-reference.md)
 
@@ -257,4 +257,4 @@ Azure Scheduler は、いくつかの条件に基づいてクォータを実装�
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

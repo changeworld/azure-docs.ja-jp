@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="10/26/2015"
+	ms.date="01/28/2015"
 	ms.author="anhoh"/>
 
 # DocumentDB Document Explorer を使用した JSON ドキュメントの表示、編集、作成、およびアップロード #
 
-この記事では、[Microsoft Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) Document Explorer の概要を説明します。これは、DocumentDB を使用して JSON ドキュメントを表示、編集、作成、およびアップロードする Azure ポータル ツールです。
+この記事では、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) Document Explorer の概要を説明します。これは、DocumentDB を使用して JSON ドキュメントを表示、編集、作成、およびアップロードする Azure ポータル ツールです。
 
 このチュートリアルを完了すると、次の質問に回答できるようになります。
 
@@ -56,7 +56,7 @@ Document Explorer では、ドキュメントを簡単に作成、編集、お�
 
 	![Document Explorer の [保存] コマンドのスクリーンショット](./media/documentdb-view-JSON-document-explorer/savedocument1.png)
 
-	> [AZURE.NOTE]"ID" プロパティを指定していない場合は、Document Explorer によって自動的に ID プロパティが追加され、ID 値として GUID が生成されます。
+	> [AZURE.NOTE] "ID" プロパティを指定していない場合は、Document Explorer によって自動的に ID プロパティが追加され、ID 値として GUID が生成されます。
 
 - JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure Table Storage、Amazon DynamoDB、HBase、またはその他の DocumentDB コレクションのデータが既にある場合は、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用して、データをすばやくインポートできます。
 
@@ -84,7 +84,7 @@ Document Explorer では、ドキュメントを簡単に作成、編集、お�
 
 	![Document Explorer のドキュメントのプロパティ ビューのスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentproperties.png)
 
-	> [AZURE.NOTE]タイムスタンプ (\_ts) プロパティは内部ではエポック時間として表現されますが、Document Explorer では、人間が読むことができる GMT 形式で値が表示されます。
+	> [AZURE.NOTE] タイムスタンプ (\_ts) プロパティは内部ではエポック時間として表現されますが、Document Explorer では、人間が読むことができる GMT 形式で値が表示されます。
 
 ##<a id="Navigate"></a>Document Explorer のナビゲーション オプションと高度な設定##
 
@@ -99,7 +99,7 @@ Document Explorer はさまざまなナビゲーション オプションと高�
 
 	![Document Explorer 設定ブレードのスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentexplorersettings2.png)
 
-	> [AZURE.NOTE]Document Explorer 設定を変更したら、**[最新の除法に更新]** コマンドをクリックして、新しい設定を適用する必要があります。設定は、現在のブラウザー セッションでのみ維持されます。
+	> [AZURE.NOTE] Document Explorer 設定を変更したら、**[最新の除法に更新]** コマンドをクリックして、新しい設定を適用する必要があります。設定は、現在のブラウザー セッションでのみ維持されます。
 	
 3. **[データベース]** ボックスと **[コレクション]** ボックスを使用すると、Document Explorer を閉じて再度起動することなく、現在表示されているドキュメントが含まれるコレクションを簡単に変更できます。
 
@@ -112,7 +112,7 @@ Document Explorer はさまざまなナビゲーション オプションと高�
 	![フィルターの結果が表示された Document Explorer のスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentexplorerfilterresults.png)
 
 
-	> [AZURE.IMPORTANT]Document Explorer のフィルター機能では、現在読み込まれているドキュメントのみがフィルター処理されます。現在選択されているコレクションに対してクエリが実行されることはありません。
+	> [AZURE.IMPORTANT] Document Explorer のフィルター機能では、現在読み込まれているドキュメントのみがフィルター処理されます。現在選択されているコレクションに対してクエリが実行されることはありません。
 
 5. Document Explorer に読み込まれたドキュメントの一覧を更新するには、ブレードの上部にある **[更新]** をクリックするだけです。
 
@@ -130,7 +130,7 @@ Document Explorer では、1 つまたは複数の既存の JSON ドキュメン
 
 	![Document Explorer の一括取り込みプロセスのスクリーンショット](./media/documentdb-view-JSON-document-explorer/adddocument2.png)
 
-	> [AZURE.NOTE]Document Explorer では、現在、アップロード処理ごとに最大 100 個の JSON ドキュメントをサポートしています。
+	> [AZURE.NOTE] Document Explorer では、現在、アップロード処理ごとに最大 100 個の JSON ドキュメントをサポートしています。
 
 3. 選択したら、**[アップロード]** をクリックします。ドキュメントが自動的に Document Explorer グリッドに追加されます。操作の進捗状況に合わせてアップロード結果が表示されます。インポートが失敗すると、ファイルごとに報告されます。
 
@@ -145,4 +145,4 @@ Document Explorer では、1 つまたは複数の既存の JSON ドキュメン
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -30,13 +30,13 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 + Microsoft Visual Studio 2013、Microsoft Visual Studio Express 2013 for Windows。
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F target=”\_blank”) を参照してください。
++ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F target="\_blank") を参照してください。
 
 ## Event Hub を作成する
 
 1. [Azure クラシック ポータル][]にログオンし、画面の下部にある **[新規]** をクリックします。
 
-2. **[App Services]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。
+2. **[アプリケーション サービス]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。
 
    	![][1]
 
@@ -48,7 +48,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
    	![][3]
 
-5. ページ上部にある、**[Event Hubs]** タブをクリックし、先ほど作成したイベント ハブをクリックします。
+5. ページ上部にある、**[Event Hubs]]** タブをクリックし、先ほど作成したイベント ハブをクリックします。
 
    	![][4]
 
@@ -83,7 +83,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 Event Hub を作成し、データを送受信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。
 
-- [Event Hubs を使用する完全なサンプル アプリケーション][]
+- [Event Hub を使用する完全なサンプル アプリケーション][]
 - [Event Hubs でイベント処理の拡張][]サンプル
 - Service Bus キューを使用する[キューに格納されたメッセージング ソリューション][]
 - [Event Hubs の概要][]
@@ -103,9 +103,9 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: event-hubs-overview.md
-[Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Event Hubs でイベント処理の拡張]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [キューに格納されたメッセージング ソリューション]: ../service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

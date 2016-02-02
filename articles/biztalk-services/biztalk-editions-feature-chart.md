@@ -79,7 +79,7 @@ Standard エディションのすべての機能が含まれており、ハイ�
 <td>あり (1 Premium ユニットずつ増加)</td>
 </tr>
 <tr>
-<td><strong>許容される最大スケールアウト</strong></td>
+<td><strong>許容される最大スケール アウト</strong></td>
 <td>該当なし</td>
 <td>該当なし</td>
 <td>最大 8 ユニット</td>
@@ -201,7 +201,7 @@ NRR (Non-repudiation of Receipt) と追跡されたメッセージのダウン�
 </tr>
 </table>
 
-> [AZURE.NOTE]ハードウェアの障害に対する復元性の場合、高可用性は 1 つの BizTalk ユニット内に複数の VM を備えていることを意味します。
+> [AZURE.NOTE] ハードウェアの障害に対する復元性の場合、高可用性は 1 つの BizTalk ユニット内に複数の VM を備えていることを意味します。
 
 
 ## FAQ
@@ -225,7 +225,7 @@ BizTalk Adapter サービスは、Azure BizTalk サービスで使用されま�
 
 #### 「ユニットあたりのハイブリッド接続データ転送量 (GB)」とはどのような意味ですか。 単位は分/時間/日/週/月のいずれですか。 制限に達するとどうなりますか。
 
-ユニットあたりのハイブリッド接続コストは、BizTalk Services のエディションによって異なります。つまり、コストは転送するデータの量で決まります。たとえば、毎日 10 GB のデータを転送する方が、毎日 100 GB を転送するより低コストです。具体的なコストを調べるには、BizTalk Services 用の[料金計算ツール](http://azure.microsoft.com/pricing/calculator/?scenario=full)を使用してください。通常、制限は 1 日単位で適用されます。制限を超えた場合、超過分には GB あたり $1 の料金がかかります。
+ユニットあたりのハイブリッド接続コストは、BizTalk Services のエディションによって異なります。つまり、コストは転送するデータの量で決まります。たとえば、毎日 10 GB のデータを転送する方が、毎日 100 GB を転送するより低コストです。具体的なコストを調べるには、BizTalk Services 用の[料金計算ツール](https://azure.microsoft.com/pricing/calculator/?scenario=full)を使用してください。通常、制限は 1 日単位で適用されます。制限を超えた場合、超過分には GB あたり $1 の料金がかかります。
 
 #### BizTalk Services で契約を作成すると、ブリッジの数が 1 つではなく 2 つ増えるのはなぜですか。
 
@@ -256,7 +256,7 @@ Azure BizTalk Services を Azure ポータルで作成するには、[BizTalk Se
 - [BizTalk Services : [ダッシュボード]、[監視]、および [スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 - [BizTalk Services: バックアップと復元](biztalk-backup-restore.md)<br/>
 - [BizTalk Services: 調整](biztalk-throttling-thresholds.md)<br/>
-- [BizTalk Services: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
+- [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
 - [BizTalk Services SDK 使用開始](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

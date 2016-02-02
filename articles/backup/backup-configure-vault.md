@@ -1,11 +1,12 @@
 <properties
-	pageTitle="Azure Backup サービスを Windows Server のバックアップ用に構成する | Microsoft Azure"
-	description="このチュートリアルでは、Microsoft の Azure クラウド ソリューションの Backup サービスを使って、Windows Server をクラウドにバックアップする方法について学習します。"
+	pageTitle="Windows Server または Windows クライアントをバックアップするための環境の準備 | Microsoft Azure"
+	description="バックアップ資格情報コンテナーを作成し、資格情報をダウンロードして、バックアップ エージェントをインストールすることにより、Windows をバックアップするための環境を準備します。"
 	services="backup"
 	documentationCenter=""
 	authors="Jim-Parker"
 	manager="jwhit"
-	editor=""/>
+	editor=""
+	keywords="バックアップ資格情報コンテナー; バックアップ エージェント; Windows のバックアップ;"/>
 
 <tags
 	ms.service="backup"
@@ -13,14 +14,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="11/26/2015"
-	ms.author="jimpark"; "aashishr"/>
+	ms.date="01/22/2016"
+	ms.author="trinadhk; jimpark; markgal"/>
+
 
 # Windows コンピューターをバックアップする環境の準備
+この記事では、Windows Server または Windows クライアントを Azure にバックアップするための準備について説明します。そのためには、Azure アカウントが必要です。アカウントがない場合は、無料試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-この記事では、Windows サーバーで Azure Backup を使用するための準備手順について説明します。Windows サーバーまたは Windows クライアントを Azure にバックアップするには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+前提条件を満たしている場合は、[Windows コンピューターのバックアップ](backup-azure-backup-windows-server.md)を開始できます。満たしていない場合は、次の手順で環境を準備してください。
 
->[AZURE.NOTE]以前は、バックアップ サーバーを登録するために、X.509 v3 証明書の作成や取得が必要でした。証明書は現在でもサポートされていますが、サーバーへの Azure 資格情報コンテナーの登録を容易にするために、[クイック スタート] ページから資格情報コンテナーの資格情報を作成できます。
+>[AZURE.NOTE] 以前は、バックアップ サーバーを登録するために、X.509 v3 証明書の作成や取得が必要でした。証明書は現在でもサポートされていますが、サーバーへの Azure 資格情報コンテナーの登録を容易にするために、[クイック スタート] ページから資格情報コンテナーの資格情報を作成できます。
 
 ## 開始する前に
 ファイルやデータを Windows Server から Azure にバックアップするには、まず次のことを行う必要があります。
@@ -42,4 +45,4 @@
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 - [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->
