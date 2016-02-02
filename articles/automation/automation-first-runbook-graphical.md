@@ -39,7 +39,8 @@
 
 最初に、*Hello World* というテキストを出力する簡単な Runbook を作成します。
 
-1. Azure プレビュー ポータルで、Automation アカウントを開きます。Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。既に資産がいくつかあります。これらのほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。[前提条件](#prerequisites)で説明されている資格情報資産も必要です。
+1. Azure プレビュー ポータルで、Automation アカウントを開きます。
+Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。既に資産がいくつかあります。これらのほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。[前提条件](#prerequisites)で説明されている資格情報資産も必要です。
 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。<br> ![Runbook の制御](media/automation-first-runbook-graphical/runbooks-control.png)
 2. **[Runbook の追加]** ボタンをクリックし、次に **[新しい Runbook の作成]** をクリックして、新しい Runbook を作成します
 3. Runbook の名前を *MyFirstRunbook-Graphical* に設定します。
@@ -54,7 +55,8 @@
 2.   一覧の一番下までスクロールします。**[Write-Output]** を右クリックし、**[キャンバスに追加]** をクリックします。
 4.   キャンバスで **[Write-Output]** アクティビティをクリックします。構成コントロールが開き、アクティビティを構成できます。
 5.   **[ラベル]** の既定値はコマンドレットの名前ですが、もっとわかりやすい名前に変更できます。「*Write Hello World to output*」に変更します。
-6.   **[パラメーター]** をクリックし、コマンドレットのパラメーターの値を指定します。一部のコマンドレットには複数のパラメーター セットがあり、使用するものを選択する必要があります。この場合、**[Write-Output]** のパラメーター セットは 1 つだけなので、選択する必要はありません。<br> ![Write-Output のプロパティ](media/automation-first-runbook-graphical/write-output-properties.png)
+6.   **[パラメーター]** をクリックし、コマンドレットのパラメーターの値を指定します。
+一部のコマンドレットには複数のパラメーター セットがあり、使用するものを選択する必要があります。この場合、**[Write-Output]** のパラメーター セットは 1 つだけなので、選択する必要はありません。<br> ![Write-Output のプロパティ](media/automation-first-runbook-graphical/write-output-properties.png)
 7.   **[InputObject]** パラメーターを選択します。このパラメーターでは、出力ストリームに送信するテキストを指定します。
 9.   **[データ ソース]** ドロップダウンで、**[PowerShell 式]** を選択します。**[データ ソース]** ドロップダウンでは、パラメーター値の設定に使用するさまざまなソースが提供されます。別のアクティビティ、Automation の資産、PowerShell 式などのソースからの出力を使用できます。この場合は、*Hello World* というテキストを出力するだけです。PowerShell 式を使用して文字列を指定すればそれが可能です。
 10.   **[式]** ボックスに「*"Hello World"*」と入力し、**[OK]** を 2 回クリックしてキャンバスに戻ります。<br> ![PowerShell 式](media/automation-first-runbook-graphical/expression-hello-world.png)
@@ -64,9 +66,10 @@
 
 Runbook を発行して運用環境で使用できるようにする前に、Runbook をテストして正常に動作することを確認します。Runbook をテストするときは、**ドラフト** バージョンを実行し、その出力を対話形式で表示します。
  
-2. **[テスト ウィンドウ]** をクリックして、テスト ウィンドウを開きます。<br> ![Test pane](media/automation-first-runbook-graphical/runbook-edit-toolbar-test-pane.png)
+2. **[テスト ウィンドウ]** をクリックして、テスト ウィンドウを開きます。<br> ![テスト ウィンドウ](media/automation-first-runbook-graphical/runbook-edit-toolbar-test-pane.png)
 2. **[開始]** をクリックしてテストを開始します。有効なオプションはこれだけです。
-3. [Runbook ジョブ](automation-runbook-execution)が作成され、その状態がペインに表示されます。最初のジョブの状態は*キューに設定*であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  
+3. [Runbook ジョブ](automation-runbook-execution)が作成され、その状態がペインに表示されます。
+最初のジョブの状態は*キューに設定*であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  
 4. Runbook ジョブが完了すると、その出力が表示されます。この例では、*Hello World* と表示されます。<br>![Hello World](media/automation-first-runbook-graphical/test-output-hello-world.png)
 5. テスト ウィンドウを閉じてキャンバスに戻ります。
 
@@ -77,7 +80,8 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 
 1. **[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。<br> ![Publish](media/automation-first-runbook-graphical/runbook-edit-toolbar-publish.png)
 2. **[Runbook]** ウィンドウで左にスクロールして Runbook を表示すると、**[作成状態]** は **[発行済]** になっています。
-3. 右にスクロールして戻り、**MyFirstRunbook** のウィンドウを表示します。上部のオプションを使用すると、Runbook の開始、将来の開始スケジュールの設定、または HTTP 呼び出しで開始できるようにする [Webhook](automation-webhooks.md) の作成を行うことができます。 
+3. 右にスクロールして戻り、**MyFirstRunbook** のウィンドウを表示します。
+上部のオプションを使用すると、Runbook の開始、将来の開始スケジュールの設定、または HTTP 呼び出しで開始できるようにする [Webhook](automation-webhooks.md) の作成を行うことができます。 
 4. ここでは単純に Runbook を開始するので、**[開始]** をクリックし、確認を求められたら **[はい]** をクリックします。<br> ![Runbook の開始](media/automation-first-runbook-graphical/runbook-toolbar-start.png)
 5. 作成した Runbook ジョブのジョブ ウィンドウが開かれます。このウィンドウは閉じてもかまいませんが、ここではジョブの進行状況を確認できるように開いたままにします。
 6.  ジョブの状態が **[ジョブの概要]** に表示され、Runbook をテストしたときに確認した状態と一致しています。<br> ![ジョブの概要](media/automation-first-runbook-graphical/job-pane-summary.png)
@@ -92,7 +96,7 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 
 Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。ここでは、Runbook で Azure リソースを管理します。ただし、[前提条件](#prerequisites)で示されている資格情報を使用して認証を行わないと、これを実現することはできません。**Set-AzureAccount** コマンドレットでこれを行います。
 
-1.  MyFirstRunbook ウィンドウで **[編集]** をクリックして、グラフィカル エディターを開きます。<br> ![Edit runbook](media/automation-first-runbook-graphical/runbook-toolbar-edit.png) 
+1.  MyFirstRunbook ウィンドウで **[編集]** をクリックして、グラフィカル エディターを開きます。<br> ![Runbook の編集](media/automation-first-runbook-graphical/runbook-toolbar-edit.png) 
 2.  **Write Hello World to output** はもう必要ないので、右クリックして **[削除]** を選択します。
 8.  ライブラリ コントロールで、**[コマンドレット]**、**[Azure]** の順に展開します。 
 9.  **Add-AzureAccount** をキャンバスに追加します。<br> ![Add-AzureAccount](media/automation-first-runbook-graphical/add-azureaccount.png) 

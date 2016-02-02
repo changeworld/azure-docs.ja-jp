@@ -44,7 +44,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 1. [Azure ポータル](https://ms.portal.azure.com/)にサインインします。
 2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
 
-    ![Creating a new cluster in the Azure Portal](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.1.png "Azure ポータルでの新しいクラスターの作成")
+    ![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.1.png "Azure プレビュー ポータルでの新しいクラスターの作成")
 
 3. **[クラスター名]** を入力し、**[クラスターの種類]** で **[Hadoop]** を選択し、**[クラスターのオペレーティング システム]** ボックスの一覧から **[Ubuntu]** を選択します。クラスターを使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
 
@@ -141,7 +141,7 @@ Azure ポータルから Ambari ビューを表示するには、HDInsight ク�
 	これらのステートメントは次のアクションを実行します。
 
 	- **DROP TABLE** - テーブルが既存の場合にテーブルとデータ ファイルを削除します。
-	- **CREATE EXTERNAL TABLE** - Hive に新しく "外部" テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
+	- **CREATE EXTERNAL TABLE** - Hive に新しく ”外部” テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
 	- **ROW FORMAT** - Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
 	- **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
 	- **SELECT** - t4 列の値が [ERROR] であるすべての行の数を指定します。
