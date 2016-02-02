@@ -37,7 +37,7 @@
 
 -  VPN デバイスの外部接続用パブリック IP アドレス。この IP アドレスを NAT の内側に割り当てることはできません。
 
-- Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+- Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
 
 ## Virtual Network の作成
@@ -100,4 +100,4 @@
 
 従来の仮想ネットワークと Azure リソース マネージャー モードを使用して作成された仮想ネットワーク間の接続を構成する場合は、[従来の VNet と Azure リソース マネージャーの VNet の接続](../virtual-network/virtual-networks-arm-asm-s2s-howto.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

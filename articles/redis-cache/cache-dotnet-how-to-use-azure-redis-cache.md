@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="dotnet" 
 	ms.topic="hero-article" 
-	ms.date="12/03/2015" 
+	ms.date="01/21/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の使用方法
@@ -49,15 +49,21 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 
 キャッシュを作成するには、まず [Azure ポータル][]にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
 
+>[AZURE.NOTE] キャッシュは、Azure ポータルだけでなく、ARM テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。
+>
+>-	ARM テンプレートを使用してキャッシュを作成する方法については、「[テンプレートを使用して Redis Cache を作成する](cache-redis-cache-arm-provision.md)」をご覧ください。
+>-	Azure PowerShell を使用してキャッシュを作成する方法については、「[Azure PowerShell を使用した Azure Redis Cache の管理](cache-howto-manage-redis-cache-powershell.md)」をご覧ください。
+>-	Azure CLI を使用してキャッシュを作成する方法については、「[Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法](cache-manage-cli.md)」を参照してください。
+
 ![新しいキャッシュ][NewCacheMenu]
 
->[AZURE.NOTE]Azure アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][]を参照してください。
+>[AZURE.NOTE] Azure アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][]を参照してください。
 
 **[Redis Cache の新規作成]** ブレードで、必要なキャッシュ構成を指定します。
 
 ![キャッシュの作成][CacheCreate]
 
--	キャッシュ エンドポイントに使用するサブドメイン名を **[DNS 名]** に入力します。エンドポイントは、数字と小文字のみを含む、先頭が文字の 6 ～ 12 文字の文字列にしてください。
+-	キャッシュ エンドポイントに使用するキャッシュ名を **[DNS 名]** に入力します。キャッシュ名は 1 ～ 63 文字の文字列で、数字、英字、`-` 文字だけを使用できます。キャッシュ名では、先頭と末尾の `-` 文字および連続する `-` 文字は無効です。
 -	**[サブスクリプション]** で、キャッシュに使用する Azure サブスクリプションを選択します。アカウントにサブスクリプションが 1 つしかない場合は自動的に選択されるため、**[サブスクリプション]** ドロップダウン リストは表示されません。
 -	**[リソース グループ]** で、キャッシュのリソース グループを選択または作成します。詳細については、[リソース グループを使用した Azure リソースの管理][]に関するページを参照してください。 
 -	**[場所]** を使用して、キャッシュのホストの地理的位置を指定します。パフォーマンスを最大限に引き出すために、キャッシュは、キャッシュ クライアント アプリケーションと同じリージョンに作成することを強くお勧めします。
@@ -84,7 +90,7 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 
 Azure Redis Cache を使用して構成されたキャッシュは、あらゆる Azure アプリケーションからアクセスできます。Visual Studio で開発した .NET アプリケーションであれば、**StackExchange.Redis** キャッシュ クライアントを使用できます。NuGet パッケージを使用すると、このキャッシュ クライアント アプリケーションを簡単に構成できます。
 
->[AZURE.NOTE]詳細については、GitHub の [StackExchange.Redis に関するページ][]と [StackExchange.Redis キャッシュ クライアントのドキュメント][]を参照してください。
+>[AZURE.NOTE] 詳細については、GitHub の [StackExchange.Redis に関するページ][]と [StackExchange.Redis キャッシュ クライアントのドキュメント][]を参照してください。
 
 Visual Studio で StackExchange.Redis NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
@@ -92,7 +98,7 @@ Visual Studio で StackExchange.Redis NuGet パッケージを使用してクラ
 
 **[オンライン検索]** ボックスに「**StackExchange.Redis**」または「**StackExchange.Redis.StrongName**」と入力し、結果の中から必要なバージョンを選択して、**[インストール]** をクリックします。
 
->[AZURE.NOTE]厳密な名前を持つバージョンの **StackExchange.Redis** クライアント ライブラリを希望する場合は、**[StackExchange.Redis.StrongName]** を選択してください。それ以外の場合は、**\[StackExchange.Redis\]** を選択します。
+>[AZURE.NOTE] 厳密な名前を持つバージョンの **StackExchange.Redis** クライアント ライブラリを希望する場合は、**[StackExchange.Redis.StrongName]** を選択してください。それ以外の場合は、**[StackExchange.Redis]** を選択します。
 
 ![StackExchange.Redis NuGet package][StackExchangeNuget]
 
@@ -116,7 +122,7 @@ Visual Studio で StackExchange.Redis NuGet パッケージを使用してクラ
 
     using StackExchange.Redis;
 
->[AZURE.NOTE]StackExchange.Redis クライアントには、.NET Framework 4 以降が必要です。
+>[AZURE.NOTE] StackExchange.Redis クライアントには、.NET Framework 4 以降が必要です。
 
 Azure Redis Cache への接続には、`ConnectionMultiplexer` クラスを使用します。このクラスはクライアント アプリケーションの開始から終了まで共有、再利用する前提で設計されており、操作単位で作成する必要はありません。
 
@@ -124,11 +130,11 @@ Azure Redis Cache に接続して、接続済みの `ConnectionMultiplexer` イ�
 
 	ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
 
->[AZURE.IMPORTANT]警告: ソース コード内に資格情報を保存することは絶対に避けてください。このサンプルでは、単純化するためにあえてソース コード内に記述しています。資格情報を保存する方法については、「[How Application Strings and Connection Strings Work (アプリケーション文字列と接続文字列の動作)][]」を参照してください。
+>[AZURE.IMPORTANT] 警告: ソース コード内に資格情報を保存することは絶対に避けてください。このサンプルでは、単純化するためにあえてソース コード内に記述しています。資格情報を保存する方法については、「[How Application Strings and Connection Strings Work (アプリケーション文字列と接続文字列の動作)][]」を参照してください。
 
 SSL を使用しない場合は、`ssl=false` を設定するか、`ssl` パラメーターを省略します。
 
->[AZURE.NOTE]既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。非 SSL ポートを有効にする手順については、「[アクセス ポート](cache-configure.md#access-ports)」を参照してください。
+>[AZURE.NOTE] 既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。非 SSL ポートを有効にする手順については、「[アクセス ポート](cache-configure.md#access-ports)」を参照してください。
 
 アプリケーション内の `ConnectionMultiplexer` インスタンスを共有する方法の 1 つは、次の例のように、接続されたインスタンスを返す静的プロパティの設定です。これにより、接続された `ConnectionMultiplexer` インスタンス 1 つのみがスレッド セーフな方法で初期化されます。これらの例では、`abortConnect` が false に設定されており、Azure Redis Cache への接続が確立されていない場合でも呼び出しが成功します。`ConnectionMultiplexer` の主な機能の 1 つは、ネットワーク問題などの原因が解決されると、キャッシュへの接続が自動的に復元されることです。
 
@@ -330,4 +336,4 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 
 [Azure の無料試用版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="vm-windows-sharepoint"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="10/20/2015"
+	ms.date="01/21/2016"
 	ms.author="josephd"/>
 
 # Azure リソース マネージャーのテンプレートを使用した SharePoint ファームのデプロイ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。このリソースは、クラシック デプロイ モデルを使用して作成することはできません。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイメント モデル。このリソースは、クラシック デプロイメント モデルを使用して作成することはできません。
 
 この記事の手順では、リソース マネージャーのテンプレートを使用して、3 台または 9 台のサーバーで構成される新しい SharePoint Server 2013 ファームをデプロイします。
 
@@ -31,7 +31,7 @@
 
 テンプレートは、Azure ポータル、Azure PowerShell、または Azure CLI を使用して実行できます。
 
-> [AZURE.NOTE]また、この構成は、Azure ポータルの Azure Marketplace で [SharePoint 2013 の高可能性ファーム以外のファーム](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-nonha/)のアイテムを使用して作成することもできます。
+> [AZURE.NOTE] また、この構成は、Azure ポータルの Azure Marketplace で [SharePoint 2013 の高可能性ファーム以外のファーム](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-nonha/)のアイテムを使用して作成することもできます。
 
 ### Azure ポータル
 
@@ -50,9 +50,9 @@
 
 ### Azure PowerShell
 
-> [AZURE.NOTE]この記事では、Azure PowerShell プレビュー 1.0 のコマンドを使用しています。Azure PowerShell 0.9.8 以前のバージョンでこれらのコマンドを実行するには、**New-AzureRMResourceGroup** を **New-AzureResourceGroup** に、**New-AzureRMResourceGroupDeployment** を **New-AzureResourceGroupDeployment** に置き換え、**New-AzureResourceGroup** コマンドの前に **Switch-AzureMode AzureResourceManager** コマンドを追加します。詳細については、[Azure PowerShell 1.0 プレビュー](https://azure.microsoft.com/blog/azps-1-0-pre/)に関するページを参照してください。
+> [AZURE.NOTE] 次のコマンド セットは、Azure PowerShell 1.0 以降を使用します。詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
 
-次のコマンド セットに、Azure のデプロイ名、新しいリソース グループ名、Azure データ センターの場所を入力します。引用符内のすべての文字 (< and > を含む) を削除します。
+次のコマンド セットに、Azure のデプロイメント名、新しいリソース グループ名、Azure データ センターの場所を入力します。引用符内のすべての文字 (< and > を含む) を削除します。
 
 	$deployName="<deployment name>"
 	$RGName="<resource group name>"
@@ -84,7 +84,7 @@
 
 	azure group create <group name> <location>
 
-次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイの名前を指定します。
+次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイメントの名前を指定します。
 
 	azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sharepoint-three-vm/azuredeploy.json <group name> <deployment name>
 
@@ -103,7 +103,7 @@
 
 ![](./media/virtual-machines-workload-template-sharepoint/nine-server-sharepoint-farm.png)
 
-> [AZURE.NOTE]この構成は、Azure ポータルの Azure Marketplace で [SharePoint 2013 の高可用性ファーム](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-ha/)のアイテムを使用して作成することもできます。
+> [AZURE.NOTE] この構成は、Azure ポータルの Azure Marketplace で [SharePoint 2013 の高可用性ファーム](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-ha/)のアイテムを使用して作成することもできます。
 
 ### Azure ポータル
 
@@ -122,9 +122,9 @@
 
 ### Azure PowerShell
 
-> [AZURE.NOTE]この記事では、Azure PowerShell プレビュー 1.0 のコマンドを使用しています。Azure PowerShell 0.9.8 以前のバージョンでこれらのコマンドを実行するには、**New-AzureRMResourceGroup** を **New-AzureResourceGroup** に、**New-AzureRMResourceGroupDeployment** を **New-AzureResourceGroupDeployment** に置き換え、**New-AzureResourceGroup** コマンドの前に **Switch-AzureMode AzureResourceManager** コマンドを追加します。詳細については、[Azure PowerShell 1.0 プレビュー](https://azure.microsoft.com/blog/azps-1-0-pre/)に関するページを参照してください。
+> [AZURE.NOTE] 次のコマンド セットは、Azure PowerShell 1.0 以降を使用します。詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
 
-次のコマンド セットに、Azure のデプロイ名、新しいリソース グループ名、Azure データ センターの場所を入力します。引用符内のすべての文字 (< and > を含む) を削除します。
+次のコマンド セットに、Azure のデプロイメント名、新しいリソース グループ名、Azure データ センターの場所を入力します。引用符内のすべての文字 (< and > を含む) を削除します。
 
 	$deployName="<deployment name>"
 	$RGName="<resource group name>"
@@ -156,7 +156,7 @@
 
 	azure group create <group name> <location>
 
-次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイの名前を指定します。
+次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイメントの名前を指定します。
 
 	azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sharepoint-server-farm-ha/azuredeploy.json <group name> <deployment name>
 
@@ -170,20 +170,8 @@
 テンプレートの実行が完了すると、新しい 9 サーバーの SharePoint Server 2013 ファームが、新しいリソース グループに作成されます。
 
 
-## その他のリソース
+## 次のステップ
 
-[Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
+- Azure インフラストラクチャ サービスでの追加の [SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) 構成を検出します。
 
-[Azure リソース マネージャー テンプレートと Azure PowerShell を使用した Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
-
-[Azure リソース マネージャーにおける Azure Compute、Network、Storage プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
-
-[Azure リソース マネージャーの概要](../resource-group-overview.md)
-
-[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-azure-cli.md)
-
-[Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
-
-[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
-
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

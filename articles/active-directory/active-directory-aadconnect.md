@@ -1,6 +1,7 @@
 <properties
 	pageTitle="Azure AD Connect: オンプレミス ID と Azure Active Directory の統合 | Microsoft Azure"
-	description="これは、Azure AD Connect の内容と使用する理由を説明するページです。"
+	description="Azure AD Connect は、Windows Server Active Directory などのオンプレミス ID システムを Azure Active Directory と統合し、ユーザーを Office 365、Azure、数千の SaaS アプリケーションに接続するツールです。このトピックでは、Azure AD Connect の機能について説明し、Azure AD Connect の動作、インストール方法、構成、カスタマイズに関する情報を提供します。"
+    keywords="Azure AD Connect の紹介, Azure AD Connect の概要, Azure AD Connect とは, Active Directory のインストール"
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
@@ -13,13 +14,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/08/2016"
+	ms.date="01/25/2016"
 	ms.author="andkjell;billmath"/>
 
 # オンプレミス ID と Azure Active Directory の統合
 Azure AD Connect は、Windows Server Active Directory などのオンプレミス ID システムを Azure Active Directory と統合し、ユーザーを Office 365、Azure、数千の Saas アプリケーションに接続するツールです。このトピックでは、エンド ユーザーが既存の会社アプリへのアクセスに使っているのと同じ ID でクラウド サービスにアクセスできるようにするうえで必要なコンポーネントを準備およびデプロイする方法を包括的に示します。
 
-![What is Azure AD Connect](./media/active-directory-aadconnect/arch.png)
+![Azure AD Connect とは](./media/active-directory-aadconnect/arch.png)
 
 ## Azure AD Connect を使用する理由
 オンプレミスのディレクトリと Azure AD を統合すると、クラウドとオンプレミス両方のリソースにアクセスするための共通の ID が提供されるため、ユーザーの生産性が向上します。この統合によって、ユーザーや組織には次の利点があります。
@@ -140,4 +141,4 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 
 [AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -26,7 +26,7 @@
 
 HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Apache Hive を使用してテーブルを照会する方法について説明します。HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関するページを参照してください。
 
-> [AZURE.NOTE]このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。Linux ベースのクラスターを使用する方法については、「[HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する (Linux)](hdinsight-hbase-tutorial-get-started-linux.md)」を参照してください。
+> [AZURE.NOTE] このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。Linux ベースのクラスターを使用する方法については、「[HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する (Linux)](hdinsight-hbase-tutorial-get-started-linux.md)」を参照してください。
 >
 > Linux ベースの HDInsight クラスター上の HBase (バージョン 0.98.0) は、(Apache Hadoop と YARN 2.4.0 を基盤とする) HDInsight 3.1 クラスターでのみ使用できます。バージョン情報については、「[What's new in the Hadoop cluster versions provided by HDInsight? (HDInsight で提供される Hadoop クラスター バージョンの新機能)][hdinsight-versions]」を参照してください。
 
@@ -34,7 +34,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 この HBase のチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Microsoft Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Microsoft Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - Visual Studio 2013 以降がインストールされている**ワークステーション**: 手順については、「[Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)」を参照してください。
 
 ## HBase クラスターの作成
@@ -57,7 +57,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 	- **データ ソース** - クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを新しく作成するか、既存の Azure ストレージ アカウントを選択します。既定のストレージ アカウントの場所によってクラスターの場所が決まります。既定のストレージ アカウントとクラスターは、同じデータ センター内に配置されている必要があります。
 	- **ノード価格レベル**: HBase クラスター用のリージョン サーバーの数を選択します。
 
-		> [AZURE.WARNING]HBase サービスの高可用性を実現するには、最低 **3 つ**のノードを含むクラスターを作成する必要があります。これで 1 つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
+		> [AZURE.WARNING] HBase サービスの高可用性を実現するには、最低 **3 つ**のノードを含むクラスターを作成する必要があります。これで 1 つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
 
 		> 学習目的で HBase を使用する場合は、コスト削減のため、クラスター サイズには必ず 1 を選択し、クラスターの使用後にクラスターを削除してください。
 
@@ -65,7 +65,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 4. **[作成]** をクリックします。
 
->[AZURE.NOTE]HBase クラスターを削除したら、同じ既定のストレージ アカウントと既定の BLOB コンテナーを使用して、別の HBase クラスターを作成できます。新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。
+>[AZURE.NOTE] HBase クラスターを削除したら、同じ既定のストレージ アカウントと既定の BLOB コンテナーを使用して、別の HBase クラスターを作成できます。新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。
 
 ## HBase シェルの使用
 現在、2 つの方法で HBase にアクセスできます。このセクションでは、HBase シェルを使用する方法について説明します。次のセクションでは、.NET SDK を使用する方法について説明します。
@@ -136,7 +136,7 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
 必要に応じて、自分でテキスト ファイルを作成し、そのファイルを自分のストレージ アカウントにアップロードできます。手順については、「[HDInsight での Hadoop ジョブ用データのアップロード][hdinsight-upload-data]」をご覧ください。
 
-> [AZURE.NOTE]この手順では、前回の手順で作成した Contacts HBase テーブルを使用します。
+> [AZURE.NOTE] この手順では、前回の手順で作成した Contacts HBase テーブルを使用します。
 
 1. RDP セッション内で、デスクトップにある **[Hadoop コマンド ライン]** ショートカットをクリックします。
 2. ディレクトリを変更します。
@@ -299,13 +299,10 @@ Web UI を開くには、RDP を使用してクラスターに接続した後、
 
 詳細については、次を参照してください。
 
-- [HDInsight HBase の概要][hdinsight-hbase-overview]。
-HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
-- [Azure Virtual Network での HBase クラスターの作成][hdinsight-hbase-provision-vnet]。
-アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
+- [HDInsight HBase の概要][hdinsight-hbase-overview]。HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
+- [Azure Virtual Network での HBase クラスターの作成][hdinsight-hbase-provision-vnet]。アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
 - [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md)。2 つの Azure データ センター間に HBase レプリケーションを構成する方法について説明します。
-- [HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する][hbase-twitter-sentiment]。
-HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[センチメントを分析](http://en.wikipedia.org/wiki/Sentiment_analysis)する方法について学習します。
+- [HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する][hbase-twitter-sentiment]。HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[センチメントを分析](http://en.wikipedia.org/wiki/Sentiment_analysis)する方法について学習します。
 
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
@@ -334,4 +331,4 @@ HDInsight の Hadoop クラスターで HBase を使用してリアルタイム�
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

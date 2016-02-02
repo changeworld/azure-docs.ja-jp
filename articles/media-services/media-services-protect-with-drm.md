@@ -30,7 +30,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
 Media Services .NET SDK バージョン 3.5.2 以降、Media Services を使用すると Widevine ライセンス テンプレートを構成し、Widevine ライセンスを取得することもできます。
 
->[AZURE.NOTE]Azure Media Sevices によって提供される Widevine ライセンス配信サービスはプレビュー期間中です。詳細については、[この投稿](http://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)を参照してください。
+>[AZURE.NOTE]Azure Media Sevices によって提供される Widevine ライセンス配信サービスはプレビュー期間中です。詳細については、[この投稿](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)を参照してください。
 
 [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) の各 AMS パートナーを使用して、Widevine ライセンスを提供することもできます。詳細については、[Axinom](media-services-axinom-integration.md) および [castLabs](media-services-castlabs-integration.md) との統合を参照してください。
 
@@ -631,6 +631,6 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 [Configure Widevine packaging with AMS (AMS を使用して Widevine パッケージを構成する)](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
 
-[Announcing Google Widevine license delivery services public preview in Azure Media Services (Azure Media Services での Google Widevine ライセンス配信サービス パブリック プレビューのお知らせ)](http://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)
+[Announcing Google Widevine license delivery services public preview in Azure Media Services (Azure Media Services での Google Widevine ライセンス配信サービス パブリック プレビューのお知らせ)](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

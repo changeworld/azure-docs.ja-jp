@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/11/2016"
+   ms.date="01/25/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Powershell を使用して SQL Data Warehouse を作成する
@@ -23,31 +23,46 @@
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
-> [AZURE.NOTE]SQL Data Warehouse で Microsoft Azure Powershell を使用するには、バージョン 1.0 以降が必要です。PowerShell で (Get-Module Azure).Version を実行することで、バージョンを確認できます。
-
 ## Azure PowerShell コマンドレットの取得と実行
+
+> [AZURE.NOTE]  Microsoft Azure PowerShell を SQL Data Warehouse と共に使用するには、ARM コマンドレットを使用して Azure PowerShell の最新バージョンをダウンロードしてインストールする必要があります。`Get-Module -ListAvailable -Name Azure` を実行することで、ご使用のバージョンを確認できます。この記事は、Microsoft Azure PowerShell バージョン 1.0.3 に基づいています。
+
 PowerShell をまだセットアップしていない場合は、ダウンロードして構成する必要があります。
 
 1. Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行します。
 2. モジュールを実行するには、スタート ウィンドウに「**Microsoft Azure PowerShell**」と入力します。
-3. コンピューターにアカウントをまだ追加していない場合は、次のコマンドレットを実行します (詳細については、「[Azure PowerShell のインストールと構成の方法][]」を参照してください)。
+3. このコマンドレットを実行して、Azure リソース マネージャーにログインします。詳細については、「[Azure PowerShell のインストールと構成の方法][]」を参照してください。
 
-```
-Add-AzureAccount
-```
+	```
+	Login-AzureRmAccount
+	```
 
-4. 使用するサブスクリプションを選択します。この例では、サブスクリプション名の一覧を取得します。次に、サブスクリプション名を "MySubscription" に設定します。 
+4. 現在のセッションに使用するサブスクリプションを選択します。
 
-```
-Get-AzureRmSubscription
-Select-AzureRmSubscription -SubscriptionName "MySubscription"
-```
+	```
+	Get-AzureRmSubscription	-SubscriptionName "MySubscription" | Select-AzureRmSubscription
+	```
    
-## SQL Data Warehouse の作成
-PowerShell が自分のアカウント用に構成されたら、以下のコマンドレットを実行して、SQL Data Warehouse で新しいデータベースをデプロイできます。
+## SQL Data Warehouse データベースを作成する
+SQL Data Warehouse をデプロイするには、New-AzureRmSQLDatabase コマンドレットを使用します。コマンドを実行する前に、次の前提条件を満たしていることを確認してください。
+
+### 前提条件
+
+- データベースをホストする V12 Azure SQL Server
+- SQL Server のリソース グループ名を確認します。
+
+### デプロイメント コマンド
+
+このコマンドは、SQL Data Warehouse に新しいデータベースをデプロイします。
 
 ```
-New-AzureSqlDatabase -RequestedServiceObjectiveName "<Service Objective>" -DatabaseName "<Data Warehouse Name>" -ServerName "<Server Name>" -ResourceGroupName "<ResourceGroupName>" -Edition "DataWarehouse"
+New-AzureRmSqlDatabase -RequestedServiceObjectiveName "<Service Objective>" -DatabaseName "<Data Warehouse Name>" -ServerName "<Server Name>" -ResourceGroupName "<ResourceGroupName>" -Edition "DataWarehouse"
+```
+
+この例では、サービス目標レベル "DW400" で "mynewsqldw1" という名前の新しいデータベースを、"mywesteuroperesgp1" という名前のリソース グループ内の "sqldwserver1" という名前のサーバーにデプロイします。
+
+```
+New-AzureRmSqlDatabase -RequestedServiceObjectiveName "DW400" -DatabaseName "mynewsqldw1" -ServerName "sqldwserver1" -ResourceGroupName "mywesteuroperesgp1" -Edition "DataWarehouse"
 ```
 
 このコマンドレットに必要なパラメーターは次のとおりです。
@@ -58,7 +73,7 @@ New-AzureSqlDatabase -RequestedServiceObjectiveName "<Service Objective>" -Datab
  + **ResourceGroupName**: 使用するリソース グループ。サブスクリプションで使用可能なリソース グループを調べるには Get-AzureResource を使用します。
  + **Edition**: SQL Data Warehouse を作成するには、エディションを "DataWarehouse" に設定する必要があります。 
 
-コマンド リファレンスについては、「[New-azuresqldatabase](https://msdn.microsoft.com/library/mt619339.aspx)」を参照してください。
+コマンド リファレンスについては、「[New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt619339.aspx)」を参照してください。
 
 パラメーターのオプションについては、「[Create Database (Azure SQL Data Warehouse)](https://msdn.microsoft.com/library/mt204021.aspx)」を参照してください。
 
@@ -81,4 +96,4 @@ SQL Data Warehouse のプロビジョニングが完了したら、[サンプル
 [firewall rules]: ../sql-database/sql-database-configure-firewall-settings.md
 [Azure PowerShell のインストールと構成の方法]: ./powershell-install-configure.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

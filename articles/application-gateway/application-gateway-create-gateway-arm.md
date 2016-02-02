@@ -4,7 +4,7 @@
    documentationCenter="na"
    services="application-gateway"
    authors="joaoma"
-   manager="jdial"
+   manager="carmonm"
    editor="tysonn"/>
 <tags
    ms.service="application-gateway"
@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/24/2015"
+   ms.date="01/21/2016"
    ms.author="joaoma"/>
 
 
@@ -33,13 +33,13 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 この記事では、Application Gateway を作成、構成、起動、および削除する手順について説明します。
 
 
->[AZURE.IMPORTANT]Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイメント モデルと従来のデプロイメント モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイメント モデルとツール](azure-classic-rm.md)について理解しておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure リソース マネージャーを使用した Application Gateway の作成について説明します。クラシック バージョンを使用する場合は、「[PowerShell を使用した Application Gateway のクラシック デプロイメントの作成](application-gateway-create-gateway.md)」を参照してください。
+>[AZURE.IMPORTANT] Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイメント モデルと従来のデプロイメント モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイメント モデルとツール](azure-classic-rm.md)について理解しておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure リソース マネージャーを使用した Application Gateway の作成について説明します。クラシック バージョンを使用する場合は、「[PowerShell を使用した Application Gateway のクラシック デプロイメントの作成](application-gateway-create-gateway.md)」を参照してください。
 
 
 
 ## 開始する前に
 
-1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。[ダウンロード ページ](http://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
+1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。[ダウンロード ページ](https://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
 2. Application Gateway の仮想ネットワークとサブネットを作成します。仮想マシンまたはクラウドのデプロイメントでサブネットを使用していないことを確認します。Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
 3. Application Gateway を使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内、または割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
 
@@ -54,7 +54,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 
 
-## 新しい Application Gateway の作成
+## 新しいアプリケーション ゲートウェイの作成
 
 Azure クラシックと Azure リソース マネージャーの使用方法の違いは、設定が必要な Application Gateway と項目を作成する順番にあります。
 
@@ -106,7 +106,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 上記の例では、"appgw-RG" という名前のリソース グループと "West US" という名前の場所を作成しました。
 
 
->[AZURE.NOTE]Application Gateway のカスタム プローブを構成する必要がある場合は、「[Create an application gateway with custom probes by using PowerShell (PowerShell を使用してカスタム プローブで Application Gateway を作成する)](application-gateway-create-probe-ps.md)」を参照してください。詳細については、[カスタム プローブと正常性監視](application-gateway-probe-overview.md)に関するページを参照してください。
+>[AZURE.NOTE] Application Gateway のカスタム プローブを構成する必要がある場合は、「[Create an application gateway with custom probes by using PowerShell (PowerShell を使用してカスタム プローブで Application Gateway を作成する)](application-gateway-create-probe-ps.md)」を参照してください。詳細については、[カスタム プローブと正常性監視](application-gateway-probe-overview.md)に関するページを参照してください。
 
 
 
@@ -200,7 +200,7 @@ Application Gateway のインスタンスのサイズを構成します。
 
 	$sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
->[AZURE.NOTE]*InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Standard\_Small、Standard\_Medium、Standard\_Large のいずれかを選択できます。
+>[AZURE.NOTE]  *InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Standard\_Small、Standard\_Medium、Standard\_Large のいずれかを選択できます。
 
 ## New-AzureRmApplicationGateway を使用した Application Gateway の作成
 
@@ -237,13 +237,13 @@ Application Gateway が停止状態になったら、**Remove-AzureRmApplication
 
 
 
->[AZURE.NOTE]**-force** スイッチを使用すると、削除の確認メッセージを表示しないように設定できます。
+>[AZURE.NOTE] **-force** スイッチを使用すると、削除の確認メッセージを表示しないように設定できます。
 
 
 サービスが削除されたことを確認するには、**Get-AzureRmApplicationGateway** コマンドレットを使用します。この手順は必須ではありません。
 
 
-	Get-AzureRmApplicationGateway -Name appgwtest-ResourceGroupName appgw-rg
+	Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
 
 ## 次のステップ
@@ -257,4 +257,4 @@ SSL オフロードを構成する場合は、「[SSL オフロードの Applica
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -1,7 +1,7 @@
 <properties
 	pageTitle="SQL Database のパフォーマンスとオプション: サービス階層 | Microsoft Azure"
 	description="サービス階層の SQL Database のパフォーマンスとビジネス継続性機能を比較して、実際の規模に合わせてコストと互換性のバランスを取ります。"
-	keywords="データベース オプション、データベース パフォーマンス、eDTU"
+	keywords="データベース オプション, データベース パフォーマンス"
 	services="sql-database"
 	documentationCenter=""
 	authors="rothja"
@@ -18,7 +18,7 @@
 	ms.author="jroth"/>
 
 # SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します
- 
+
 
 [Azure SQL Database](sql-database-technical-overview.md) では、さまざまな種類のワークロードを処理する複数のサービス階層を提供します。定義済みの特徴と価格を指定して [1 つのデータベースを作成](sql-database-get-started.md)できます。または、[エラスティック データベース プールを作成して](sql-database-elastic-pool-portal.md)複数のデータベースを管理できます。いずれの場合も、階層には **Basic**、**Standard**、および **Premium** があります。ただし、これらの階層のデータベース オプションは、個別のデータベースを作成するのか、それともエラスティック データベース プール内にデータベースを作成するのかで、異なります。この記事では、両方のケースでのサービス階層について概要を示します。
 
@@ -31,7 +31,7 @@ Basic、Standard、および Premium のサービス階層は、いずれも稼�
 | **Standard** | ほとんどのクラウド アプリケーションに適しています。同時に複数のクエリをサポートしています。たとえば、ワークグループや Web アプリケーションなどです。 |
 | **Premium** | トランザクション量が多く、多数の同時ユーザーをサポートし、高度なビジネス継続性機能を必要とする場合に合わせて設計されています。たとえば、ミッション クリティカルなアプリケーションをサポートするデータベースなどです。 |
 
->[AZURE.NOTE]Web および Business エディションは廃止される予定です。[Web および Business エディションのアップグレード](sql-database-upgrade-new-service-tiers.md)方法に関するドキュメントを参照してください。Web エディションと Business エディションの使用を続行する場合は、[終了に関する FAQ](http://azure.microsoft.com/pricing/details/sql-database/web-business/) のページをお読みください。
+>[AZURE.NOTE] Web および Business エディションは廃止される予定です。[Web および Business エディションのアップグレード](sql-database-upgrade-new-service-tiers.md)方法に関するドキュメントを参照してください。Web エディションと Business エディションの使用を続行する場合は、[終了に関する FAQ](https://azure.microsoft.com/pricing/details/sql-database/web-business/) のページをお読みください。
 
 ### Single Database サービス階層とパフォーマンス レベル
 単一のデータベースの場合、各サービス階層内に複数のパフォーマンス レベルがあるため、ワークロードのニーズに最も合ったレベルを柔軟に選択できます。スケールアップまたはスケールダウンする必要がある場合は、Azure クラシック ポータルでデータベースの階層を簡単に変更することができます。このときアプリケーションのダウンタイムはありません。詳細については、「[データベースのサービス階層とパフォーマンス レベルの変更](sql-database-scale-up.md)」を参照してください。
@@ -43,7 +43,7 @@ Basic、Standard、および Premium のサービス階層は、いずれも稼�
 
 DTU について理解を深めるためには、このトピックの[「DTU」セクション](#understanding-dtus)を参照してください。
 
->[AZURE.NOTE]このサービス層テーブルのその他すべての行の詳細については、「[サービス層の機能と制限](sql-database-performance-guidance.md#service-tier-capabilities-and-limits)」を参照してください。
+>[AZURE.NOTE] このサービス層テーブルのその他すべての行の詳細については、「[サービス層の機能と制限](sql-database-performance-guidance.md#service-tier-capabilities-and-limits)」を参照してください。
 
 ### エラスティック データベース プール サービス階層と eDTU のパフォーマンス
 単一のデータベースを作成したり、スケーリングしたりするだけでなく、[エラスティック データベース プール](sql-database-elastic-pool.md)で複数のデータベースを管理することもできます。エラスティック データベース プール内のデータベースはすべて、共通のリソース セットを共有します。パフォーマンス特性は、*エラスティック データベース トランザクション ユニット* (eDTU) で測定されます。単一のデータベースの場合と同様に、エラスティック データベース プールにも **Basic**、**Standard**、**Premium** という 3 つのサービス階層があります。エラスティック データベースの場合もやはり、この 3 つのサービス階層によってパフォーマンス全体に関する制限事項といくつかの機能が定義されます。
@@ -74,7 +74,7 @@ SQL Database のパフォーマンスの監視は、選択したデータベー�
 - データ IO の割合
 - Storage の割合
 
-これらのメトリックを追加すると、**[メトリック]** ウインドウに示される詳細と共に、**[監視]** グラフでこれらを継続的に確認できます。4 つのメトリックはいずれも、データベースの **DTU** を基準とする平均使用率を示しています。
+これらのメトリックを追加すると、**[メトリック]** ウィンドウの **[監視]** グラフで、追加したメトリックのより詳細な情報を継続的に確認することができます。4 つのメトリックはいずれも、データベースの **DTU** を基準とする平均使用率を示しています。
 
 ![データベース パフォーマンスのサービス階層の監視](./media/sql-database-service-tiers/sqldb_service_tier_monitoring.png)
 
@@ -89,11 +89,10 @@ SQL Database のパフォーマンスの監視は、選択したデータベー�
 エラスティック データベース プールでは、このセクションで説明した手法を使用して、プール内の個々のデータベースを監視することができます。ただし、プールを全体として監視することもできます。詳細については、「[エラスティック データベース プールの監視と管理](sql-database-elastic-pool-portal.md#monitor-and-manage-an-elastic-database-pool)」を参照してください。
 
 ## 次のステップ
-これらの階層の価格の詳細については、「[SQL Database 価格](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
+これらの階層の価格の詳細については、「[SQL Database 価格](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 
 複数のデータベースをグループとして管理する必要がある場合は、[エラスティック データベース プール](sql-database-elastic-pool-guidance.md)と、これに関連する[エラスティック データベース プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)を検討してください。
 
-SQL Database の階層については、これで理解できました。では、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)で実際に試してみましょう。また、[初めて SQL Database を作成する方法](sql-database-get-started.md)について詳しく学びましょう。
- 
+SQL Database の階層については、これで理解できました。では、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)で実際に試してみましょう。また、[初めて SQL Database を作成する方法](sql-database-get-started.md)について詳しく学びましょう。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

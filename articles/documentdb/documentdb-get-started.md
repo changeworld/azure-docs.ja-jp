@@ -17,7 +17,7 @@
 	ms.date="11/18/2015"
 	ms.author="anhoh"/>
 
-# NoSQL チュートリアル: DocumentDB C# コンソール アプリケーション 
+# NoSQL チュートリアル: DocumentDB C# コンソール アプリケーションの作成 
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-get-started.md)
@@ -45,7 +45,7 @@ DocumentDB .NET SDK の NoSQL チュートリアルへようこそ。 このチ�
 
 以下のものがそろっていることを確認してください。
 
-- アクティブな Azure アカウント。サブスクリプションがない場合でも、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+- アクティブな Azure アカウント。サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 - [Visual Studio 2013/Visual Studio 2015](http://www.visualstudio.com/)。
 
 ## 手順 1: DocumentDB アカウントを作成する
@@ -76,11 +76,11 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
     using Microsoft.Azure.Documents.Linq;
     using Newtonsoft.Json;
 
-> [AZURE.IMPORTANT]この NoSQL チュートリアルを完成させるには、上記の依存関係を追加します。
+> [AZURE.IMPORTANT] この NoSQL チュートリアルを完成させるには、上記の依存関係を追加します。
 
 次に、DocumentDB アカウント エンドポイントと、プライマリまたはセカンダリ アクセス キーを保存します。これは、[Azure ポータル](https://portal.azure.com)にあります。
 
-![Screen shot of the Azure Portal, showing a DocumentDB account, with the ACTIVE hub highlighted, the KEYS button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade][keys]
+![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure ポータルのスクリーン ショット。アクティブなハブが強調表示され、[DocumentDB アカウント] ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている DocumentDB アカウントを示します][keys]
 
     private const string EndpointUrl = "<your endpoint URI>";
     private const string AuthorizationKey = "<your key>";
@@ -108,7 +108,7 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 		}
 	}
 
-> [AZURE.WARNING]ソース コード内に資格情報を保存することは絶対に避けてください。このサンプルでは、単純化するために資格情報をあえてソース コード内に記述しています。運用環境で資格情報を格納する方法の詳細については、「[Azure Web Sites: How Application Strings and Connection Strings Work (Azure Web Sites: アプリケーション文字列と接続文字列の動作)](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)」を参照してください。ソース コードの外部に資格情報を格納する例については、[GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) のサンプル アプリケーションをご覧ください。
+> [AZURE.WARNING] ソース コード内に資格情報を保存することは絶対に避けてください。このサンプルでは、単純化するために資格情報をあえてソース コード内に記述しています。運用環境で資格情報を格納する方法の詳細については、「[Azure Web Sites: How Application Strings and Connection Strings Work (Azure Web Sites: アプリケーション文字列と接続文字列の動作)](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)」を参照してください。ソース コードの外部に資格情報を格納する例については、[GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) のサンプル アプリケーションをご覧ください。
 
 これで、DocumentDB アカウントへの接続方法および **DocumentClient** クラスのインスタンスの作成方法がわかりました。次に、DocumentDB リソースの使用方法について説明します。
 
@@ -136,7 +136,7 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 
 ##<a id="CreateColl"></a>手順 5: コレクションを作成する  
 
-> [AZURE.WARNING]**CreateDocumentCollectionAsync** は新しい S1 コレクションを作成します。これによって価格に影響があります。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
+> [AZURE.WARNING] **CreateDocumentCollectionAsync** は新しい S1 コレクションを作成します。これによって価格に影響があります。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
 
 [コレクション](documentdb-resources.md#collections)は、**DocumentClient** クラスの [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) メソッドを使用して作成できます。コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。新しく作成されたコレクションは、[S1 パフォーマンス レベル](documentdb-performance-levels.md)にマップされます。**GetStartedDemo** メソッドでデータベースを作成してから、**FamilyCollection** という名前の新しいコレクションを作成します。
 
@@ -279,7 +279,7 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 
 DocumentDB アカウントで、次のデータベース、コレクション、およびドキュメントを作成しました。
 
-![アカウント、データベース、コレクション、およびドキュメントの間の階層関係を示す図](./media/documentdb-get-started/nosql-tutorial-account-database.png)
+![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用されるアカウント、オンライン データベース、コレクション、およびドキュメントの間の階層関係を示す図](./media/documentdb-get-started/nosql-tutorial-account-database.png)
 
 ##<a id="Query"></a>手順 7: DocumentDB リソースをクエリする
 
@@ -289,7 +289,7 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
     var families = client.CreateDocumentQuery("dbs/" + database.Id + "/colls/" + documentCollection.Id,
         "SELECT * " +
         "FROM Families f " +
-        "WHERE f.id = \"AndersenFamily\"");
+        "WHERE f.id = "AndersenFamily"");
 
     foreach (var family in families)
     {
@@ -319,11 +319,11 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
 
 次の図では、作成したコレクションに対して DocumentDB SQL クエリ構文がどのように呼び出されるか、および同じロジックが LINQ クエリにも適用されることを示します。
 
-![クエリのスコープおよび意味を示す図](./media/documentdb-get-started/nosql-tutorial-collection-documents.png)
+![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用されるクエリの範囲と意味を示す図](./media/documentdb-get-started/nosql-tutorial-collection-documents.png)
 
 DocumentDB クエリのスコープは既に 1 つのコレクションに設定されているので、クエリでは [FROM](documentdb-sql-query.md#from-clause) キーワードを省略できます。したがって、"FROM Families f" は "FROM root r" または他の任意の変数名に置き換えることができます。DocumentDB は、Families、root、または任意の変数名が、既定で現在のコレクションを参照しているものと推測します。
 
-##<a id="DeleteDatabase"></a>手順 8: データベースを削除する
+##<a id="DeleteDatabase"></a>手順 8: オンライン データベースを削除する
 
 作成したデータベースを削除すると、データベースとすべての子リソース (コレクション、ドキュメントなど) が削除されます。**GetStartedDemo** 非同期メソッドの末尾に次のコード スニペットを追加することで、データベースとドキュメント クライアントを削除できます。
 
@@ -376,7 +376,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 	  "_rid": "ybVlALUoqAEBAAAAAAAAAA==",
 	  "_ts": 1428372205,
 	  "_self": "dbs/ybVlAA==/colls/ybVlALUoqAE=/docs/ybVlALUoqAEBAAAAAAAAAA==/",
-	  "_etag": "\"0000400c-0000-0000-0000-55233aed0000\"",
+	  "_etag": ""0000400c-0000-0000-0000-55233aed0000"",
 	  "_attachments": "attachments/"
 	} from SQL
 	Read {
@@ -414,7 +414,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 	  "_rid": "ybVlALUoqAEBAAAAAAAAAA==",
 	  "_ts": 1428372205,
 	  "_self": "dbs/ybVlAA==/colls/ybVlALUoqAE=/docs/ybVlALUoqAEBAAAAAAAAAA==/",
-	  "_etag": "\"0000400c-0000-0000-0000-55233aed0000\"",
+	  "_etag": ""0000400c-0000-0000-0000-55233aed0000"",
 	  "_attachments": "attachments/"
 	} from LINQ
 	Read {
@@ -452,13 +452,13 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 	  "_rid": "ybVlALUoqAEBAAAAAAAAAA==",
 	  "_ts": 1428372205,
 	  "_self": "dbs/ybVlAA==/colls/ybVlALUoqAE=/docs/ybVlALUoqAEBAAAAAAAAAA==/",
-	  "_etag": "\"0000400c-0000-0000-0000-55233aed0000\"",
+	  "_etag": ""0000400c-0000-0000-0000-55233aed0000"",
 	  "_attachments": "attachments/"
 	} from LINQ query
 
-ご利用ありがとうございます。 この NoSQL チュートリアルは完了しました。
+ご利用ありがとうございます。 この NoSQL チュートリアルを完了し、実用的な C# コンソール アプリケーションを入手しました。
 
-##<a id="GetSolution"></a>完全なソリューションを取得する
+##<a id="GetSolution"></a> 完全な NoSQL チュートリアル ソリューションを入手する
 この記事のすべてのサンプルを含む GetStarted ソリューションをビルドするには、以下が必要です。
 
 -   [DocumentDB アカウント][documentdb-create-account]。
@@ -478,4 +478,4 @@ Visual Studio で DocumentDB .NET SDK への参照を復元するには、ソリ
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

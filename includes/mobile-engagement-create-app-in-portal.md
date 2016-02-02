@@ -1,4 +1,4 @@
-1. Microsoft Azure 管理ポータルにログオンし、画面の下部にある **[+新規]** をクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にログオンし、画面の下部にある **[+新規]** をクリックします。
 
 2. **[App Services]**、**[Mobile Engagement]**、**[作成]** の順にクリックします。
 
@@ -23,4 +23,4 @@
 
    	![](./media/mobile-engagement-create-app-in-portal/app-connection-info-page.png)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

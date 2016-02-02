@@ -94,12 +94,12 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ### Azure Cloud Services プロジェクトの場合
 
-[スクリプトを Web ロールと worker ロールに追加](app-insights-cloudservices.md)します。
+[スクリプトを Web ロールとworker ロールに追加](app-insights-cloudservices.md)します。
 
 
 ## パフォーマンス テレメトリの表示
 
-[Azure ポータル](http://portal.azure.com)にサインインし、Application Insights を参照して、作成したリソースを開きます。
+[Azure ポータル](https://portal.azure.com)にサインインし、Application Insights を参照して、作成したリソースを開きます。
 
 ![[参照]、[Application Insights] の順に選択し、アプリを選択します。](./media/app-insights-monitor-performance-live-website-now/appinsights-08openApp.png)
 
@@ -114,7 +114,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ## 依存関係
 
-依存関係の期間のグラフには、アプリからの外部コンポーネント (データベース、REST API、Azure Blob Storage など) の呼び出しに要した時間が示されます。
+依存関係の期間のグラフには、アプリからの外部コンポーネント (データベース、REST API、Azure BLOB ストレージなど) の呼び出しに要した時間が示されます。
 
 さまざまな依存関係の呼び出しでグラフをセグメント化するには、グラフを選択し、[グループ化] を有効にして、[依存関係]、[依存関係の種類]、または [依存関係のパフォーマンス] を選択します。
 
@@ -136,7 +136,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ## サンプリング
 
-アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、一定の割合のテレメトリのみが送信される可能性があります。[サンプリングの詳細についてはこちらを参照してください](app-insights-sampling.md)。
+アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細についてはこちらを参照してください。](app-insights-sampling.md)
 
 
 ## トラブルシューティング
@@ -220,4 +220,4 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_0128_2016-->

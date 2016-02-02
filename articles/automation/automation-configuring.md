@@ -25,7 +25,7 @@ Azure Automation を初めて開始するときに、少なくとも 1 つの Au
 
 各 Automation アカウントの Automation リソースは単一の Azure リージョンと関連付けられていますが、Automation アカウントではあらゆるリージョンの Azure サービスを管理することができます。異なるリージョンで Automation アカウントを作成する主な理由としては、特定のリージョンに分離しなければならないデータやリソースを必要とするポリシーがある場合が挙げられます。
 
->[AZURE.NOTE]Azure プレビュー ポータルで作成した Automation アカウントおよび各アカウントに含まれるリソースは、 Azure ポータルと関連付けることはできません。これらのアカウントとリソースを Windows PowerShell で管理するには、[Azure リソース マネージャー] モジュールを使用する必要があります。
+>[AZURE.NOTE] Azure プレビュー ポータルで作成した Automation アカウントおよび各アカウントに含まれるリソースは、 Azure ポータルと関連付けることはできません。これらのアカウントとリソースを Windows PowerShell で管理するには、[Azure リソース マネージャー] モジュールを使用する必要があります。
 >
 >Azure ポータルで作成した Automation アカウントは、どちらのポータルでも、また、どちらのセットのコマンド レットでも管理できます。アカウントを作成してしまえば、そのアカウントのリソースの作り方や管理方法に違いはありません。引き続き Azure ポータルを使用する場合、Automation アカウントの作成には Azure プレビュー ポータルではなく、Azure ポータルを使用することをお勧めします。
 
@@ -37,7 +37,7 @@ Azure Automation を初めて開始するときに、少なくとも 1 つの Au
 
 [Azure コマンドレット](http://msdn.microsoft.com/library/azure/jj554330.aspx)を使用して Azure リソースにアクセスするときは、Azure サブスクリプションに認証を提供する必要があります。Azure Automation では、これは、サブスクリプションの管理者が構成する Azure Active Directory の組織アカウントで行います。その後、このユーザー アカウントに対する[資格情報](http://msdn.microsoft.com/library/dn940015.aspx)を作成し、Runbook の [Add-AzureAccount](http://msdn.microsoft.com/library/azure/dn722528.aspx) でそれを使用できます。
 
->[AZURE.NOTE]Microsoft アカウント (旧称 LiveID) を Azure Automation で使用することはできません。
+>[AZURE.NOTE] Microsoft アカウント (旧称 LiveID) を Azure Automation で使用することはできません。
 
 ## Azure サブスクリプションを管理するための新しい Azure Active Directory ユーザーの作成
 
@@ -62,7 +62,7 @@ Automation アカウントは、Azure Automation リソースのコンテナー�
 
 3. **[Automation アカウントの追加]** ブレードで、Automation アカウントの詳細を構成します。
 
->[AZURE.NOTE]Azure プレビュー ポータルを使用して Automation アカウントを作成すると、アカウントおよびそれに関連付けられているすべてのリソースは従来の管理ポータルには戻りません。
+>[AZURE.NOTE] Azure プレビュー ポータルを使用して Automation アカウントを作成すると、アカウントおよびそれに関連付けられているすべてのリソースは従来の管理ポータルには戻りません。
 
 構成するパラメーターを次に示します。
 
@@ -76,7 +76,7 @@ Automation アカウントは、Azure Automation リソースのコンテナー�
 
 ![アカウントの作成](media/automation-configuration/automation-01-create-automation-account.png)
 
->[AZURE.NOTE]従来の管理ポータルを使用して作成された Automation アカウントを、Azure プレビュー ポータルを使用して[異なるリソース グループに移動](../resource-group-move-resources.md)すると、その Automation アカウントは従来の Azure ポータルで使用できなくなります。これは、従来の管理ポータルでは Azure リソース マネージャー アカウントがサポートされていないためです。
+>[AZURE.NOTE] 従来の管理ポータルを使用して作成された Automation アカウントを、Azure プレビュー ポータルを使用して[異なるリソース グループに移動](../resource-group-move-resources.md)すると、その Automation アカウントは従来の Azure ポータルで使用できなくなります。これは、従来の管理ポータルでは Azure リソース マネージャー アカウントがサポートされていないためです。
 
 
 
@@ -91,7 +91,7 @@ Automation アカウントは、Azure Automation リソースのコンテナー�
 Runbook のすべての[チェックポイント](http://technet.microsoft.com/library/dn469257.aspx#bk_Checkpoints)の後で、これらの行を繰り返す必要があります。Runbook が中断された後、別のワーカーで再開した場合は、もう一度認証を実行する必要があります。
 
 ## 関連記事:
-- [Azure Automation: Azure Active Directory を使用して Azure を認証する](http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/)
+- [Azure Automation: Azure Active Directory を使用して Azure を認証する](https://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/)
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0128_2016-->

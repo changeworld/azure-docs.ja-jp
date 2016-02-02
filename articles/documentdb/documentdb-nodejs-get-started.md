@@ -41,11 +41,11 @@ Node.js チュートリアルを完了した後で、このページの上部ま
 
 それでは始めましょう。
 
-## 前提条件
+## Node.js チュートリアルの前提条件
 
 以下のものがそろっていることを確認してください。
 
-- アクティブな Azure アカウント。これがない場合は、[Azure の無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+- アクティブな Azure アカウント。これがない場合は、[Azure の無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 - [Node.js](https://nodejs.org/) バージョン v0.10.29 以降
 
 ## 手順 1: DocumentDB アカウントを作成する
@@ -76,7 +76,7 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 
 次に、空のオブジェクトを作成して ```config``` という名前を付け、プロパティの ```config.endpoint``` と ```config.authKey``` に実際の DocumentDB エンドポイントと承認キーを設定します。これらの構成はどちらも [Azure ポータル](https://portal.azure.com)にあります。
 
-![DocumentDB アカウントを示す、アクティブなハブ、[DocumentDB アカウント] ブレードの [キー] ボタン、[キー] ブレードの URI の値、プライマリ キーの値、およびセカンダリ キーの値が強調表示されている Azure プレビュー ポータルのスクリーン ショット][keys]
+![Node.js チュートリアル - DocumentDB アカウントを示す Azure ポータルのスクリーン ショット。アクティブなハブが強調表示され、[DocumentDB アカウント] ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている - ノード データベース][keys]
 
     var config = {}
 
@@ -212,7 +212,7 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 
 ##<a id="CreateColl"></a>手順 6: コレクションを作成する  
 
-> [AZURE.WARNING]**CreateDocumentCollectionAsync** は新しい S1 コレクションを作成します。これによって価格に影響があります。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
+> [AZURE.WARNING] **CreateDocumentCollectionAsync** は新しい S1 コレクションを作成します。これによって価格に影響があります。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
 
 [コレクション](documentdb-resources.md#collections)は、**DocumentClient** クラスの [createCollection](https://azure.github.io/azure-documentdb-node/DocumentClient.html) 関数を使用して作成できます。コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。新しく作成されたコレクションは、[S1 パフォーマンス レベル](documentdb-performance-levels.md)にマップされます。app.js ファイルに新しいコレクションを作成するための関数を追加し、```config``` オブジェクトで ```id``` を指定します。ここでも、同じ ID を持つ ```FamilyCollection``` が存在しないことが確認されます。存在する場合は、新しいコレクションを作成する代わりに、そのコレクションが返されます。
 
@@ -276,7 +276,7 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 
 ご利用ありがとうございます。 DocumentDB でデータベース、コレクション、およびドキュメントを作成するための関数ができました。
 
-![アカウント、データベース、コレクション、およびドキュメントの間の階層関係を示す図](./media/documentdb-nodejs-get-started/node-js-tutorial-account-database.png)
+![Node.js チュートリアル - アカウント、データベース、コレクション、およびドキュメントの間の階層関係を示す図 - ノード データベース](./media/documentdb-nodejs-get-started/node-js-tutorial-account-database.png)
 
 ##<a id="Query"></a>手順 8: DocumentDB リソースをクエリする
 
@@ -302,7 +302,7 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
 
 次の図は、作成したコレクションに対して DocumentDB SQL クエリ構文がどのように呼び出されるかを示しています。
 
-![クエリのスコープおよび意味を示す図](./media/documentdb-nodejs-get-started/node-js-tutorial-collection-documents.png)
+![Node.js チュートリアル - クエリのスコープおよび意味を示す図 - ノード データベース](./media/documentdb-nodejs-get-started/node-js-tutorial-collection-documents.png)
 
 DocumentDB クエリのスコープは既に 1 つのコレクションに設定されているので、クエリでは [FROM](documentdb-sql-query.md/#from-clause) キーワードを省略できます。したがって、"FROM Families f" は "FROM root r" または他の任意の変数名に置き換えることができます。DocumentDB は、Families、root、または任意の変数名が、既定で現在のコレクションを参照しているものと推測します。
 
@@ -419,7 +419,7 @@ DocumentDB クエリのスコープは既に 1 つのコレクションに設定
 
 ご利用ありがとうございます。 以上で Node.js チュートリアルが完了し、初めての DocumentDB コンソール アプリケーションが完成しました。
 
-##<a id="GetSolution"></a>完全なソリューションを取得する
+##<a id="GetSolution"></a> 完全な Node.js チュートリアル ソリューションを入手する
 この記事のすべてのサンプルを含む GetStarted ソリューションをビルドするには、以下が必要です。
 
 -   [DocumentDB アカウント][documentdb-create-account]。
@@ -442,4 +442,4 @@ npm で **documentdb** モジュールをインストールします。次のコ
 
 [keys]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

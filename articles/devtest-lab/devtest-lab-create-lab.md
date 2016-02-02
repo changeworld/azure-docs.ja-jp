@@ -22,13 +22,13 @@
 
 DevTest ラボを作成するには、次のものが必要です。
 
-- Azure サブスクリプション。Azure 購入オプションの詳細は、「[Azure の購入方法](http://azure.microsoft.com/pricing/purchase-options/)」または「[1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。ラボを作成するには、サブスクリプションの所有者である必要があります。
+- Azure サブスクリプション。Azure 購入オプションの詳細は、「[Azure の購入方法](https://azure.microsoft.com/pricing/purchase-options/)」または「[1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。ラボを作成するには、サブスクリプションの所有者である必要があります。
 - ラボ用の Azure リソース グループ。「[Azure リソース マネージャーの概要](resource-group-overview.md)」と「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
 
 
 ## ラボを作成する
 
-1. [Azure プレビュー ポータル](http://portal.azure.com)にサインインします。
+1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
 
 1. **[参照]** をタップします。
 
@@ -61,4 +61,4 @@ DevTest ラボを作成するには、次のものが必要です。
 
 - [アーティファクトを含む VM を Azure DevTest ラボに追加します](devtest-lab-add-vm-with-artifacts.md)。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

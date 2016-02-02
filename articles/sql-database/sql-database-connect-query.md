@@ -2,7 +2,7 @@
 	pageTitle="C# クエリによる SQL Database への接続 | Microsoft Azure"
 	description="SQL データベースへのクエリおよび接続を実行するプログラムを C# で作成します。IP アドレス、接続文字列、セキュリティで保護されたログイン、および無料版の Visual Studio に関する情報。"
 	services="sql-database"
-	keywords="C# データベース クエリ、C# クエリ、データベースへの接続"
+	keywords="C# データベース クエリ, C# クエリ, データベースへの接続, SQL C#"
 	documentationCenter=""
 	authors="MightyPen"
 	manager="jeffreyg"
@@ -36,7 +36,7 @@
 C# クエリ コード サンプルを実行するには、以下のものが必要です。
 
 
-- Azure アカウントとサブスクリプション。[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+- Azure アカウントとサブスクリプション。[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
 
 - Azure SQL Database サービス上の **AdventureWorksLT** デモンストレーション データベース。
@@ -46,7 +46,7 @@ C# クエリ コード サンプルを実行するには、以下のものが必
 - Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を*無料*で提供しています。
  - [Visual Studio Community のダウンロード](http://www.visualstudio.com/products/visual-studio-community-vs)
  - [その他の無料版 Visual Studio の選択肢](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
- - または、このトピックで後述する[手順](#InstallVSForFree)に従い、[Azure ポータル](http://portal.azure.com/)のガイドを利用して Visual Studio をインストールすることができます。
+ - または、このトピックで後述する[手順](#InstallVSForFree)に従い、[Azure ポータル](https://portal.azure.com/)のガイドを利用して Visual Studio をインストールすることができます。
 
 
 <a name="InstallVSForFree" id="InstallVSForFree"></a>
@@ -59,13 +59,13 @@ C# クエリ コード サンプルを実行するには、以下のものが必
 Visual Studio のインストールが必要な場合、以下の方法でインストールできます。
 
 - 無料ダウンロードやその他の選択肢が提供されている Visual Studio 製品ページにブラウザーでアクセスして、無料版の Visual Studio Community をインストールする。または
-- 次の説明に従い、[Azure ポータル](http://portal.azure.com/)のガイドを利用してダウンロード ページにアクセスする。
+- 次の説明に従い、[Azure ポータル](https://portal.azure.com/)のガイドを利用してダウンロード ページにアクセスする。
 
 
 ### Azure ポータルから Visual Studio へ
 
 
-1. [Azure ポータル](http://portal.azure.com/) (http://portal.azure.com/) からログインします。
+1. [Azure ポータル](https://portal.azure.com/) (http://portal.azure.com/) からログインします。
 
 2. **[すべて参照]**、**[SQL データベース]** の順にクリックします。データベースを検索するためのブレードが開きます。
 
@@ -127,7 +127,7 @@ C# のサンプルでは .NET Framework アセンブリの **System.Configuratio
 ## 手順 4. 接続文字列を取得する
 
 
-[Azure ポータル](http://portal.azure.com/)を使用して、SQL データベースへの接続で必要な接続文字列をコピーします。
+[Azure ポータル](https://portal.azure.com/)を使用して、SQL データベースへの接続で必要な接続文字列をコピーします。
 
 最初は、Visual Studio を Azure SQL Database の **AdventureWorksLT** データベースに接続するために使用します。
 
@@ -305,7 +305,7 @@ namespace ConnectAndQuery_Example
 C# サンプルのコードは常に短く記述するようにしています。しかし、ユーザーの皆様からのご要望を尊重して、このサンプルには構成ファイルを読み取るためのコードを追加しました。ご要望のとおり、実稼働品質のプログラムでは、.exe にハードコーディングしたリテラルではなく、構成ファイルを使用することが必要です。
 
 
-> [AZURE.WARNING]コードの簡潔さを優先するため、この学習用サンプルには、例外処理と再試行ロジックのためのコードが含まれていません。ただし、クラウド データベースとやり取りをする実稼働プログラムには、両方のコードを加える必要があります。
+> [AZURE.WARNING] コードの簡潔さを優先するため、この学習用サンプルには、例外処理と再試行ロジックのためのコードが含まれていません。ただし、クラウド データベースとやり取りをする実稼働プログラムには、両方のコードを加える必要があります。
 >
 > [こちら](sql-database-develop-csharp-retry-windows.md)のリンクから、再試行ロジックを備えたコード サンプルが確認できます。
 
@@ -316,7 +316,7 @@ C# サンプルのコードは常に短く記述するようにしています�
 クライアント コンピューターの IP アドレスを SQL Database のファイアウォールに追加しない限り、クライアントの C# プログラムが SQL Database に接続することはできません。プログラムを実行しても失敗します。実行に失敗すると、必要な IP アドレスが記載された簡単なエラー メッセージが表示されます。
 
 
-IP アドレスは、[Azure ポータル](http://portal.azure.com/)から追加できます。
+IP アドレスは、[Azure ポータル](https://portal.azure.com/)から追加できます。
 
 
 
@@ -324,8 +324,7 @@ IP アドレスは、[Azure ポータル](http://portal.azure.com/)から追加�
 
 
 
-詳細については、<br/>
-「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+詳細については、<br/>「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 
 
@@ -359,4 +358,4 @@ IP アドレスは、[Azure ポータル](http://portal.azure.com/)から追加�
 
 [50-VSCopyToOutputDirectoryProperty]: ./media/sql-database-connect-query/connqry-vs-appconfig-copytoputputdir-h.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

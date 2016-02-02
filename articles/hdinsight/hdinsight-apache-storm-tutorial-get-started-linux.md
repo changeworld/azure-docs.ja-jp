@@ -22,13 +22,13 @@
 
 Apache Storm は、データ ストリームの処理を目的とし、スケーラビリティとフォールト トレランスに優れた、分散型のリアルタイム計算システムです。Azure HDInsight の Storm を使用して、Storm でリアルタイムで ビッグ データ分析を実行するクラウドベースの Storm クラスターを作成できます。
 
-> [AZURE.NOTE]この記事の手順では、Linux ベースの HDInsight クラスターを作成します。HDInsight クラスターで Windows ベースの Storm を作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-apache-storm-tutorial-get-started.md)」を参照してください。
+> [AZURE.NOTE] この記事の手順では、Linux ベースの HDInsight クラスターを作成します。HDInsight クラスターで Windows ベースの Storm を作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-apache-storm-tutorial-get-started.md)」を参照してください。
 
 ## 開始する前に
 
 Apache Storm チュートリアルを正常に完了するには、次の条件を満たす必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 - **SSH と SCP を熟知していること**。HDInsight での SSH と SCP の使用方法の詳細については、次の記事をご覧ください。
 
@@ -52,13 +52,13 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
 
 	__[Ubuntu]__ を選択して Linux ベースの HDInsight クラスターを作成します。
     
-    > [AZURE.NOTE]このドキュメントの手順では、__[バージョン]__ フィールドを既定値のままにしておいてください。
+    > [AZURE.NOTE] このドキュメントの手順では、__[バージョン]__ フィールドを既定値のままにしておいてください。
 	
 4. 複数のサブスクリプションがある場合は、__[サブスクリプション]__ エントリを選択し、クラスターで使用する Azure サブスクリプションを選択します。
 
 5. __[リソース グループ]__ では、エントリを選択して既存のリソース グループの一覧を表示し、クラスターを作成するグループを選択できます。または、__[新規作成]__ をクリックし、新しいリソース グループの名前を入力できます。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
 
-	> [AZURE.NOTE]このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
+	> [AZURE.NOTE] このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
 
 6. __[資格情報]__ を選択し、__[クラスターのログイン ユーザー名]__ に対応する __[クラスターのログイン パスワード]__ を入力します。さらに、SSH ユーザーを認証するために使用される __[SSH ユーザー名]__ と、__[パスワード]__ または __[公開キー]__ のどちらかを入力する必要があります。最後に、__[選択]__ ボタンをクリックして資格情報を設定します。
 
@@ -86,11 +86,11 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
 	
 	- __[場所]__: ストレージ アカウントが存在するリージョン、またはストレージ アカウントの作成先のリージョンです。
 	
-		> [AZURE.IMPORTANT]既定のデータ ソースの場所を選択すると、HDInsight クラスターの場所も設定されます。クラスターと既定のデータ ソースは、同じリージョンに存在する必要があります。
+		> [AZURE.IMPORTANT] 既定のデータ ソースの場所を選択すると、HDInsight クラスターの場所も設定されます。クラスターと既定のデータ ソースは、同じリージョンに存在する必要があります。
     
     - __[クラスター AAD ID]__: これを使用して、クラスターが Azure Data Lake Store へのアクセスに使用する Azure Active Directory ID を選択します。
     
-        > [AZURE.NOTE]これはこのドキュメントでは使用しないため、既定の設定のままでかまいません。HDInsight でのこのエントリと Azure Data Lake Store の使用については、「[Create an HDInsight cluster with Data Lake Store using Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
+        > [AZURE.NOTE] これはこのドキュメントでは使用しないため、既定の設定のままでかまいません。HDInsight でのこのエントリと Azure Data Lake Store の使用については、「[Create an HDInsight cluster with Data Lake Store using Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
 		
 	- __[選択]__: これを使用してデータ ソースの構成を保存します。
 	
@@ -114,7 +114,7 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
 	| ------------------ | --------------------- |
 	| ![スタート画面のプロビジョニング中インジケーター](./media/hdinsight-apache-storm-tutorial-get-started-linux/provisioning.png) | ![プロビジョニングされたクラスターのタイル](./media/hdinsight-apache-storm-tutorial-get-started-linux/provisioned.png) |
 
-	> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の __[通知]__ エントリを使用します。
+	> [AZURE.NOTE] クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の __[通知]__ エントリを使用します。
 
 ##HDInsight での Storm Starter サンプルの実行
 
@@ -136,11 +136,11 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
 
         storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-0.9.3.2.2.4.9-1.jar storm.starter.WordCountTopology wordcount
 		
-	> [AZURE.NOTE]HDinsight が新しいバージョンの Storm で更新されると、ファイル名の `0.9.3.2.2.4.9-1` の部分は変わる可能性があります。
+	> [AZURE.NOTE] HDinsight が新しいバージョンの Storm で更新されると、ファイル名の `0.9.3.2.2.4.9-1` の部分は変わる可能性があります。
 
     クラスター上で、’wordcount’ というフレンドリ名の WordCount トポロジの例が開始されます。文はランダムに生成され、文中の各単語の出現回数がカウントされます。
 
-    > [AZURE.NOTE]トポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。この場合、ファイルが保存されているクライアントから `scp` コマンドを実行します。たとえば、`scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` のように指定します。
+    > [AZURE.NOTE] トポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。この場合、ファイルが保存されているクライアントから `scp` コマンドを実行します。たとえば、`scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` のように指定します。
     >
     > WordCount の例と他の Storm スターターの例は、`/usr/hdp/current/storm-client/contrib/storm-starter/`のクラスターに既に含まれています。
 
@@ -152,7 +152,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
 1. Web ブラウザーを開き、https://CLUSTERNAME.azurehdinsight.net/stormui に移動します。__CLUSTERNAME__ はクラスターの名前です。Storm UI が表示されます。
 
-	> [AZURE.NOTE]ユーザー名とパスワードの入力が求められたら、クラスターの作成時に使用したクラスター管理者名 (admin) とパスワードを入力します。
+	> [AZURE.NOTE] ユーザー名とパスワードの入力が求められたら、クラスターの作成時に使用したクラスター管理者名 (admin) とパスワードを入力します。
 
 2. **[Topology summary]** で、**[名前]** 列の **[wordcount]** エントリを選択します。これにより、トポロジの詳細が表示されます。
 
@@ -162,7 +162,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
 	* **トポロジの統計** - 時間枠で整理された、トポロジのパフォーマンスに関する基本的な情報。
 
-		> [AZURE.NOTE]特定の時間枠を選択すると、ページの他のセクションに表示される情報の時間枠に変更されます。
+		> [AZURE.NOTE] 特定の時間枠を選択すると、ページの他のセクションに表示される情報の時間枠に変更されます。
 
 	* **スパウト** - 各スパウトによって返された最後のエラーを含む、スパウト関する基本的な情報。
 
@@ -188,7 +188,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
 	* **スパウト / ボルトの統計** - 時間枠で整理された、コンポーネントのパフォーマンスに関する基本的な情報。
 
-		> [AZURE.NOTE]特定の時間枠を選択すると、ページの他のセクションに表示される情報の時間枠に変更されます。
+		> [AZURE.NOTE] 特定の時間枠を選択すると、ページの他のセクションに表示される情報の時間枠に変更されます。
 
 	* **入力の統計** (ボルトのみ) - ボルトによって使用されるデータを生成するコンポーネントに関する情報。
 
@@ -233,4 +233,4 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

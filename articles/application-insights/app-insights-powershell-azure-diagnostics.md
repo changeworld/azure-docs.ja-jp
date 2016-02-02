@@ -111,9 +111,10 @@ Role パラメーターを指定しないで `Set-AzureServiceDiagnosticsExtensi
 ```
 
 
-## 関連トピック
+## 関連項目
 
 * [Application Insights で Azure Cloud Services アプリを監視する](app-insights-cloudservices.md)
 * [Azure 診断を Application Insights に送信する](app-insights-azure-diagnostics.md)
+* [アラートの構成を自動化する](app-insights-powershell-alerts.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0128_2016-->

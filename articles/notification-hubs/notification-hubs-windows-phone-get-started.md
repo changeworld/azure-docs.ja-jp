@@ -36,7 +36,7 @@
 
 このチュートリアルを完了することは、Windows Phone 8 アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。
 
-> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-phone-get-started%2F)を参照してください。
+> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-phone-get-started%2F)を参照してください。
 
 ##通知ハブを作成する
 
@@ -51,7 +51,7 @@
 
 これでハブが作成され、Windows Phone に向けて非認証通知を送信するように構成されました。
 
-> [AZURE.NOTE]このチュートリアルでは、非認証モードで MPNS を使用します。MPNS 非認証モードでは、各チャネルに送信できる通知に制限があります。Notification Hubs では、証明書のアップロードを可能にすることで、[MPNS 認証モード](http://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx) をサポートします。
+> [AZURE.NOTE] このチュートリアルでは、非認証モードで MPNS を使用します。MPNS 非認証モードでは、各チャネルに送信できる通知に制限があります。Notification Hubs では、証明書のアップロードを可能にすることで、[MPNS 認証モード](http://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx) をサポートします。
 
 ##Notification Hub にアプリを接続する
 
@@ -99,10 +99,9 @@
             });
         });
 
-    必ず、ハブの名前と、前のセクションで取得した **DefaultListenSharedAccessSignature** という接続文字列を挿入してください。
-    このコードにより、MPNS からアプリケーションのチャネル URI が取得され、そのチャネル URI が通知ハブに登録されます。これにより、アプリケーションが起動するたびに必ずチャネル URI も通知ハブに登録されます。
+    必ず、ハブの名前と、前のセクションで取得した **DefaultListenSharedAccessSignature** という接続文字列を挿入してください。このコードにより、MPNS からアプリケーションのチャネル URI が取得され、そのチャネル URI が通知ハブに登録されます。これにより、アプリケーションが起動するたびに必ずチャネル URI も通知ハブに登録されます。
 
-	>[AZURE.NOTE] このチュートリアルでは、トースト通知がデバイスに送信されます。タイル通知を送信する場合は、チャネルの **BindToShellTile** メソッドを呼び出す必要があります。トースト通知とタイル通知の両方をサポートするには、**BindToShellTile** と **BindToShellToast** の両方を呼び出します。
+	>[AZURE.NOTE]このチュートリアルでは、トースト通知がデバイスに送信されます。タイル通知を送信する場合は、チャネルの **BindToShellTile** メソッドを呼び出す必要があります。トースト通知とタイル通知の両方をサポートするには、**BindToShellTile** と **BindToShellToast** の両方を呼び出します。
 
 6. ソリューション エクスプローラーで **[プロパティ]** を展開して WMAppManifest.xml ファイルを開き、**[機能]** タブで **ID\_CAP\_PUSH\_NOTIFICATION** 機能がオンであることを確認します。
 
@@ -119,7 +118,7 @@
 
 ##バックエンドから通知を送信する
 
-通知は、<a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を介してどのバックエンドからも Notification Hubs を使用して送信できます。このチュートリアルでは、.NET コンソール アプリケーションを使用して通知を送信します。Notification Hubs と統合した Azure Mobile Services Backend からの通知の送信例については、「Mobile Services でのプッシュ通知の使用」([.NET バックエンド](../mobile-services-javascript-backend-windows-phone-get-started-push.md) | [JavaScript バックエンド](../mobile-services-javascript-backend-windows-phone-get-started-push.md)) を参照してください。REST API を使用した通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md)) を参照してください。
+通知は、<a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を介してどのバックエンドからも Notification Hubs を使用して送信できます。このチュートリアルでは、.NET コンソール アプリケーションを使用して通知を送信します。Notification Hubs と統合した Azure Mobile Services バックエンドからの通知の送信例については、「Mobile Services でのプッシュ通知の使用」([.NET バックエンド](../mobile-services-javascript-backend-windows-phone-get-started-push.md) | [JavaScript バックエンド](../mobile-services-javascript-backend-windows-phone-get-started-push.md)) を参照してください。REST API を使用した通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md)) を参照してください。
 
 1. ソリューションを右クリックして **[追加]**、**[新しいプロジェクト]** の順に選択し、**[Visual C#]** で **[Windows]**、**[コンソール アプリケーション]** の順にクリックして、**[OK]** をクリックします。
 
@@ -158,7 +157,7 @@
 
 	"hub name" プレースホルダーは、ポータルの **[通知ハブ]** タブに表示される通知ハブの名前に置き換えてください。また、接続文字列プレースホルダーを、「通知ハブを構成する」で取得した **DefaultFullSharedAccessSignature** という接続文字列に置き換えます。
 
-	>[AZURE.NOTE] **リッスン** アクセスではなく**フル** アクセスを持つ接続文字列を使用してください。リッスン アクセス文字列には通知を送信するアクセス許可はありません。
+	>[AZURE.NOTE]**リッスン** アクセスではなく**フル** アクセスを持つ接続文字列を使用してください。リッスン アクセス文字列には通知を送信するアクセス許可はありません。
 
 4. 次に、**Main** メソッド内に次の行を追加します。
 
@@ -173,7 +172,7 @@ MSDN の[トースト カタログ]および[タイル カタログ]に関する
 
 ##次のステップ
 
-この簡単な例では、すべての Windows Phone 8 デバイスに通知をブロードキャストしました。特定のユーザーをターゲットとするには、[Notification Hubs を使用したユーザーへのプッシュ通知](notification-hubs-aspnet-backend-windows-dotnet-notify-users.md)のチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、[Notification Hubs を使用したニュース速報の送信](notification-hubs-windows-phone-send-breaking-news.md)を参照してください。Notification Hubs の使用方法の詳細については、[Notification Hubs の概要](http://msdn.microsoft.com/library/jj927170.aspx)を参照してください。
+この簡単な例では、すべての Windows Phone 8 デバイスに通知をブロードキャストしました。特定のユーザーをターゲットとするには、「[Notification Hubs を使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。Notification Hubs の使用方法の詳細については、「[Notification Hubs の概要]」を参照してください。
 
 
 
@@ -206,4 +205,4 @@ MSDN の[トースト カタログ]および[タイル カタログ]に関する
 [タイル カタログ]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
 [Notification Hub - WP Silverlight tutorial]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

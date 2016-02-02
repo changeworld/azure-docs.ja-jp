@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="01/13/2016"
+   	ms.date="01/21/2016"
    	ms.author="nitinme"/>
 
 # Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する
@@ -25,19 +25,19 @@
 
 このドキュメントでは、Linux ベースの Hadoop クラスターを作成する方法、Ambari Web UI を開く方法、Ambari Hive ビューを使用して Hive クエリを実行する方法を紹介することで、Linux 上の Azure HDInsight の基本な使用方法について説明します。
 
-> [AZURE.NOTE]Hadoop とビッグ データを初めて扱う場合は、[Apache Hadoop](http://go.microsoft.com/fwlink/?LinkId=510084)、[MapReduce](http://go.microsoft.com/fwlink/?LinkId=510086)、[Hadoop Distributed File System (HDFS)](http://go.microsoft.com/fwlink/?LinkId=510087)、[Hive](http://go.microsoft.com/fwlink/?LinkId=510085) に関するトピックを参照してください。HDInsight によって Azure でどのように Hadoop を利用できるかについては、「[Introduction to Hadoop in HDInsight (HDInsight の Hadoop 入門)](hdinsight-hadoop-introduction.md)」を参照してください。
+> [AZURE.NOTE] Hadoop とビッグ データを初めて扱う場合は、[Apache Hadoop](http://go.microsoft.com/fwlink/?LinkId=510084)、[MapReduce](http://go.microsoft.com/fwlink/?LinkId=510086)、[Hadoop Distributed File System (HDFS)](http://go.microsoft.com/fwlink/?LinkId=510087)、[Hive](http://go.microsoft.com/fwlink/?LinkId=510085) に関するトピックを参照してください。HDInsight によって Azure でどのように Hadoop を利用できるかについては、「[Introduction to Hadoop in HDInsight (HDInsight の Hadoop 入門)](hdinsight-hadoop-introduction.md)」を参照してください。
 
 ## 前提条件
 
 Linux でこの Hadoop チュートリアルを開始する前に、以下の条件を満たしている必要があります。
 
-- **Azure サブスクリプション**: [Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページをご覧ください。
+- **Azure サブスクリプション**: [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページをご覧ください。
 
 ## <a name="provision"></a>Linux での HDInsight クラスターのプロビジョニング
 
 クラスターをプロビジョニングするときに、Hadoop サービスとリソースを含む Azure コンピューティング リソースを作成します。このセクションでは、Hadoop バージョン 2.2 を含む HDInsight バージョン 3.2 クラスターをプロビジョニングします。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。HDInsight クラスターの詳細な作成方法については、[カスタム オプションを使用した HDInsight クラスターのプロビジョニング][hdinsight-provision]のページを参照してください。
 
->[AZURE.NOTE]Windows Server オペレーティング システムを実行する Hadoop クラスターを作成することもできます。手順については、「[Windows で HDInsight を使用する](hdinsight-hadoop-tutorial-get-started-windows.md)」を参照してください。
+>[AZURE.NOTE]  Windows Server オペレーティング システムを実行する Hadoop クラスターを作成することもできます。手順については、「[Windows で HDInsight を使用する](hdinsight-hadoop-tutorial-get-started-windows.md)」を参照してください。
 
 新しいクラスターを作成するには、次の手順に従います。
 
@@ -54,13 +54,13 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 5. **[リソース グループ]** をクリックして既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択します。または、**[新規作成]** をクリックし、新しいリソース グループの名前を入力します。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
 
-	> [AZURE.NOTE]このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
+	> [AZURE.NOTE] このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
 
 6. **[資格情報]** をクリックし、管理ユーザーのパスワードを入力します。**[SSH ユーザー名]** も入力する必要があります。**[SSH 認証の種類]** については、**[パスワード]** をクリックし、SSH ユーザーのパスワードを指定します。下部にある **[選択]** をクリックして資格情報の構成を保存します。
 
 	![クラスターの資格情報の指定](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.3.png "クラスターの資格情報の指定")
 
-    > [AZURE.NOTE]SSH はコマンドラインで HDInsight クラスターにリモート アクセスするために使用されます。ここで使用するユーザー名とパスワードは、SSH でクラスターに接続するときに使用されます。
+    > [AZURE.NOTE] SSH はコマンドラインで HDInsight クラスターにリモート アクセスするために使用されます。ここで使用するユーザー名とパスワードは、SSH でクラスターに接続するときに使用されます。
 
 	HDInsight での SSH の使用方法の詳細については、次のいずれかのドキュメントをご覧ください。
 
@@ -82,7 +82,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 	- **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。
 
-		> [AZURE.IMPORTANT]既定のデータ ソースの場所を選択すると、HDInsight クラスターの場所も設定されます。クラスターと既定のデータ ソースは、同じリージョンに存在する必要があります。
+		> [AZURE.IMPORTANT] 既定のデータ ソースの場所を選択すると、HDInsight クラスターの場所も設定されます。クラスターと既定のデータ ソースは、同じリージョンに存在する必要があります。
 
 	**[選択]** をクリックしてデータ ソースの構成を保存します。
 
@@ -90,7 +90,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 	![[ノード価格レベル] ブレード](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.5.png "クラスター ノード数の指定")
     
-    > [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+    > [AZURE.IMPORTANT] クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
     >
     > ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
@@ -102,7 +102,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 ------------------|---------------------
 	![スタート画面のプロビジョニング中インジケーター](./media/hdinsight-hadoop-linux-tutorial-get-started/provisioning.png)|![プロビジョニングされたクラスターのタイル](./media/hdinsight-hadoop-linux-tutorial-get-started/provisioned.png)
 
-> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
+> [AZURE.NOTE] クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
 
 プロビジョニングが完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。
 
@@ -110,7 +110,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 Ambari のビューでは、1 つの Web ページを介して複数のユーティリティを提供しています。以降のセクションでは、Hive ビューを使用して、HDInsight クラスターに対して Hive クエリを実行します。
 
-> [AZURE.NOTE]Ambari は、Linux ベースの HDInsight クラスターに付属する管理および監視ユーティリティです。Ambari には多数の機能がありますが、このドキュメントではそれらについて説明しません。詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
+> [AZURE.NOTE] Ambari は、Linux ベースの HDInsight クラスターに付属する管理および監視ユーティリティです。Ambari には多数の機能がありますが、このドキュメントではそれらについて説明しません。詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
 Azure ポータルから Ambari ビューを表示するには、HDInsight クラスターを選択し、__[クイック リンク]__ セクションの __[Ambari ビュー]__ を選択します。
 
@@ -120,7 +120,7 @@ Azure ポータルから Ambari ビューを表示するには、HDInsight ク�
 
 ![Selecting ambari views](./media/hdinsight-hadoop-linux-tutorial-get-started/selecthiveview.png)
 
-> [AZURE.NOTE]Ambari にアクセスすると、サイトに対する認証が求められます。クラスターを作成するときに使用した管理者アカウント名 (既定値は `admin`) とパスワードを入力します。
+> [AZURE.NOTE] Ambari にアクセスすると、サイトに対する認証が求められます。クラスターを作成するときに使用した管理者アカウント名 (既定値は `admin`) とパスワードを入力します。
 
 次のようなページが表示されます。
 
@@ -146,11 +146,11 @@ Azure ポータルから Ambari ビューを表示するには、HDInsight ク�
 	- **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
 	- **SELECT** - t4 列の値が [ERROR] であるすべての行の数を指定します。
 
-	>[AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。外部テーブルを削除しても、データは削除*されません*。テーブル定義のみが削除されます。
+	>[AZURE.NOTE] 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。外部テーブルを削除しても、データは削除*されません*。テーブル定義のみが削除されます。
 
 2. クエリ エディターの下部にある __[Execute]__ ボタンを使用してクエリを開始します。ボタンの色がオレンジ色に変わり、テキストが __[Stop execution]__ に変わります。クエリ エディターの下に __[Query Process Results]__ セクションが表示され、ジョブに関する情報が表示されます。
 
-    > [AZURE.IMPORTANT]ブラウザーによっては、ログまたは結果の情報が正しく更新されない場合があります。ジョブを実行したときに、ジョブの実行が続いているにもかかわらずログが更新されたり結果が返されたりしない場合は、Mozilla FireFox または Google Chrome を代わりに使用してください。
+    > [AZURE.IMPORTANT] ブラウザーによっては、ログまたは結果の情報が正しく更新されない場合があります。ジョブを実行したときに、ジョブの実行が続いているにもかかわらずログが更新されたり結果が返されたりしない場合は、Mozilla FireFox または Google Chrome を代わりに使用してください。
     
 3. クエリが完了すると、__[Query Process Results]__ セクションに操作の結果が表示されます。__[Stop execution]__ ボタンも緑色の __[Execute]__ ボタンに戻ります。__[Results]__ タブには次の情報が表示されます。
 
@@ -159,7 +159,7 @@ Azure ポータルから Ambari ビューを表示するには、HDInsight ク�
 
     __[Logs]__ タブを使用すると、ジョブによって作成されたログ情報を表示できます。このログ情報は、クエリに問題が発生した場合のトラブルシューティングに使用できます。
     
-    > [AZURE.TIP]__[Query Process Results]__ セクションの左上にある __[Save results]__ ボックスに注意してください。これを使用すると、結果をダウンロードすることも、CSV ファイルとして HDInsight のストレージに保存することもできます。
+    > [AZURE.TIP] __[Query Process Results]__ セクションの左上にある __[Save results]__ ボックスに注意してください。これを使用すると、結果をダウンロードすることも、CSV ファイルとして HDInsight のストレージに保存することもできます。
 
 3. このクエリの最初の 4 行を選択し、__[Execute]__ を選択します。ジョブが完了したときに結果は生成されません。これは、クエリの一部が選択されているときに __[Execute]__ ボタンを使用すると、選択したステートメントのみが実行されるためです。この場合は、テーブルの行を取得する最後のステートメントが選択範囲に含まれていませんでした。その行のみを選択して __[Execute]__ を使用すると、予想どおりの結果が表示されます。
 
@@ -186,9 +186,9 @@ Azure ポータルから Ambari ビューを表示するには、HDInsight ク�
     
     その他のアイコンは次のとおりです。
     
-	* 設定: ギア アイコンでは、設定 `hive.execution.engine` や Tez パラメーターなどの Hive
-	* Tez: クエリーを実行するために Tez が使う有向非巡回グラフ (DAG)過去に実行したクエリの DAG を表示する場合は、__[Tez View]__ を使用します。
-	* 通知: 「クエリーは送信されました」 などや、クエリーの実行時にエラ
+    * **設定**: ギア アイコンでは、設定 `hive.execution.engine` や Tez パラメーターなどの Hive
+    * **Tez**: クエリを実行するために Tez が使う有向非巡回グラフ (DAG)過去に実行したクエリの DAG を表示する場合は、__[Tez View]__ を使用します。
+    * **通知**: 「クエリは送信されました」 などや、クエリの実行時にエラーが発生した場合に通知が表示されます。
 
 5. __[SQL]__ アイコンを選択してクエリ エディターに戻り、新しいワークシートを作成して次のクエリを入力します。
 
@@ -260,4 +260,4 @@ HDInsight クラスターの作成または管理の詳細については、以�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

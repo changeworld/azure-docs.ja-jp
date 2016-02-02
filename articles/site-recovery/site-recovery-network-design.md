@@ -158,7 +158,7 @@ Woodgrove がレプリケーションをデプロイし、IP アドレスを維�
 
 ### オプション 2: 変更される IP アドレス
 
-この方法が最も一般的なようです。この場合は、フェールオーバーするすべての VM の IP アドレスが変更されます。この方法の主な短所は、ネットワーク インフラストラクチャが、IP アドレスが変更されたことを認識する必要があると共に、通常、DNS エントリをネットワーク全体で変更またはフラッシュする必要があること (同様に、ネットワーク テーブル内のキャッシュされたエントリを変更またはフラッシュする必要があること) を認識する必要があるということです。このため、DNS インフラストラクチャのセットアップ方法によってはダウンタイムが発生する可能性があります。これらの問題は、イントラネット アプリケーションの場合は低 TTL 値を使用し、インターネット ベースのアプリケーションの場合は [Azure Traffic Manager と Site Recovery](http://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/) を使用して軽減することができます。
+この方法が最も一般的なようです。この場合は、フェールオーバーするすべての VM の IP アドレスが変更されます。この方法の主な短所は、ネットワーク インフラストラクチャが、IP アドレスが変更されたことを認識する必要があると共に、通常、DNS エントリをネットワーク全体で変更またはフラッシュする必要があること (同様に、ネットワーク テーブル内のキャッシュされたエントリを変更またはフラッシュする必要があること) を認識する必要があるということです。このため、DNS インフラストラクチャのセットアップ方法によってはダウンタイムが発生する可能性があります。これらの問題は、イントラネット アプリケーションの場合は低 TTL 値を使用し、インターネット ベースのアプリケーションの場合は [Azure Traffic Manager と Site Recovery](https://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/) を使用して軽減することができます。
 
 #### 例: 変更される IP アドレス
 
@@ -177,17 +177,17 @@ Woodgrove がレプリケーションをデプロイし、IP アドレスを維�
 - 仮想マシンは起動後に使用されている DNS サーバーを更新します。DNS エントリは、通常、ネットワーク全体で変更またはフラッシュする必要あります。ネットワーク テーブル内のキャッシュされたエントリも更新またはフラッシュする必要があります。したがって、これらの状態が変更が発生している間、ダウンタイムが発生するのは珍しいことではありません。これは以下の方法で軽減できます。
 
 	- イントラネット アプリケーションに低 TTL 値を使用する。
-	- イントラネット ベースのアプリケーションに対して [Azure Traffic Manger と Site Recovery]http://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/ を使用する。
+	- イントラネット ベースのアプリケーションに対して [Azure Traffic Manger と Site Recovery]https://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/ を使用する。
 	- タイムリーな更新を可能にするために、復旧計画で次のスクリプトを使用して DNS サーバーを更新する (動的 DNS 登録が構成されている場合、このスクリプトは必要ありません)。
 
     [string]$Zone, [string]$name, [string]$IP ) $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name $newrecord = $record.clone() $newrecord.RecordData[0].IPv4Address = $IP Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
 
 #### 例: Azure へのフェールオーバー
 
-「障害復旧サイトとして Azure 用にセットアップされたネットワーク インフラストラクチャ」[ブログ投稿](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)では、IP アドレスを維持することが要件になっていない場合に、必要な Azure ネットワーク インフラストラクチャをセットアップする方法について説明します。アプリケーションを説明することから始め、オンプレミスおよび Azure でネットワークを設定する方法についても説明します。これには、最後に、テスト フェールオーバーおよび計画されたフェールオーバーを実行するための手順が示されています。
+「障害復旧サイトとして Azure 用にセットアップされたネットワーク インフラストラクチャ」[ブログ投稿](https://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)では、IP アドレスを維持することが要件になっていない場合に、必要な Azure ネットワーク インフラストラクチャをセットアップする方法について説明します。アプリケーションを説明することから始め、オンプレミスおよび Azure でネットワークを設定する方法についても説明します。これには、最後に、テスト フェールオーバーおよび計画されたフェールオーバーを実行するための手順が示されています。
 
 ## 次のステップ
 
 [学習内容](site-recovery-network-mapping.md): Site Recovery がソースおよびターゲット ネットワークをマップする方法。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

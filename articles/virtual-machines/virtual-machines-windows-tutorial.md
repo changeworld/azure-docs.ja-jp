@@ -1,7 +1,7 @@
 <properties
-	pageTitle="Windows を実行する仮想マシンを Azure ポータルで作成する | Microsoft Azure"
-	description="Azure ポータルで Azure Marketplace を使用して Windows を実行する Azure VM (仮想コンピューター) を作成する方法について説明します。"
-	keywords="azure vm、仮想マシンの作成、仮想コンピューター、仮想マシンの設定"
+	pageTitle="Azure ポータルで Windows 仮想マシンを作成する | Microsoft Azure"
+	description="Azure ポータルで Azure Marketplace を使用して Windows 仮想マシンまたは仮想コンピューターを作成する方法について説明します。"
+	keywords="Windows 仮想マシン, 仮想マシンの作成, 仮想コンピューター, 仮想マシンの設定"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -17,7 +17,7 @@
 	ms.date="01/07/2016"
 	ms.author="cynthn"/>
 
-# Windows を実行する仮想マシンを Azure ポータルで作成する#
+# Azure ポータルで Windows 仮想マシンを作成する#
 
 > [AZURE.SELECTOR]
 - [Portal - Windows](virtual-machines-windows-tutorial.md)
@@ -26,13 +26,13 @@
 - [Portal - Linux](virtual-machines-linux-tutorial-portal-rm.md)
 - [CLI](virtual-machines-linux-tutorial.md)
 
-このチュートリアルでは、Azure ポータルで Azure 仮想マシンをわずか数分で簡単に作成する方法を示します。仮想マシンを作成するための例として、Windows Server 2012 R2 Datacenter イメージを使用しますが、これは Azure によって提供される多くのイメージの 1 つにすぎません。イメージの選択肢は、サブスクリプションによって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
+このチュートリアルでは、Azure ポータルで Windows 仮想マシンをわずか数分で簡単に作成する方法を示します。仮想マシンを作成するための例として、Windows Server 2012 R2 Datacenter イメージを使用しますが、これは Azure によって提供される多くのイメージの 1 つにすぎません。イメージの選択肢は、サブスクリプションによって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイメント モデル。
 
 <br>
 
->[AZURE.TIP]ポータルを使用しているときに、VM を可用性セットに含める場合は、可用性セットの最初の VM の作成前または作成中にその可用性セットを作成する必要があります。可用性セットの作成と使用の詳細については、「[仮想マシンの可用性管理](virtual-machines-manage-availability.md)」を参照してください。
+>[AZURE.TIP] ポータルを使用しているときに、VM を可用性セットに含める場合は、可用性セットの最初の VM の作成前または作成中にその可用性セットを作成する必要があります。可用性セットの作成と使用の詳細については、「[仮想マシンの可用性管理](virtual-machines-manage-availability.md)」を参照してください。
 
 リソース マネージャーのテンプレートまたは自動化ツールと共に、独自のイメージを使用して仮想マシンを作成することもできます。さまざまな方法の詳細については、「[Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)」を参照してください。
 
@@ -44,7 +44,7 @@
 
 [AZURE.VIDEO create-a-virtual-machine-running-windows-in-the-azure-preview-portal]
 
-## 仮想マシンイメージを選択する
+## Windows 仮想マシン イメージを選択する
 
 1. Azure ポータルにサインインします。
 
@@ -52,13 +52,13 @@
 
 	![プレビュー ポータルで使用できる Azure VM イメージを示すスクリーンショット](./media/virtual-machines-windows-tutorial/marketplace_new.png)
 
-	>[AZURE.TIP]その他のイメージを見つけるには、**[Marketplace]** をクリックし、使用可能な項目を検索するか、フィルターで抽出します。
+	>[AZURE.TIP] その他のイメージを見つけるには、**[Marketplace]** をクリックし、使用可能な項目を検索するか、フィルターで抽出します。
 
-3. **[Windows Server 2012 R2 Datacenter]** ページの **[デプロイ モデルの選択]** で、**[リソース マネージャー]** を選択します。**[作成]** をクリックします。
+3. **[Windows Server 2012 R2 Datacenter]** ページの **[デプロイメント モデルの選択]** で、**[リソース マネージャー]** を選択します。**[作成]** をクリックします。
 
-	![Azure VM で選択するデプロイを示すスクリーンショット](./media/virtual-machines-windows-tutorial/marketplace_search_select.png)
+	![Azure VM で選択するデプロイメントを示すスクリーンショット](./media/virtual-machines-windows-tutorial/marketplace_search_select.png)
 
-## 仮想マシンの作成
+## Windows 仮想マシンの作成
 
 イメージを作成したら、ほとんどの構成で Azure の既定の設定を使用できるため、迅速に仮想マシンを作成できます。
 
@@ -77,7 +77,7 @@
 
 	![選択できる Azure VM サイズを示すスクリーンショット](./media/virtual-machines-windows-tutorial/create_vm_size.PNG)
 
-	>[AZURE.NOTE]Premium Storage は、特定のリージョンの DS シリーズの仮想マシンで使用できます。Premium Storage は、データベースなどの高負荷のワークロードに最適なストレージ オプションです。詳細については、[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)に関するページを参照してください。
+	>[AZURE.NOTE] Premium Storage は、特定のリージョンの DS シリーズの仮想マシンで使用できます。Premium Storage は、データベースなどの高負荷のワークロードに最適なストレージ オプションです。詳細については、[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)に関するページを参照してください。
 
 3. **[設定]** をクリックして、新しい仮想マシンのストレージとネットワークの設定を表示します。最初の仮想マシンについては、通常、既定の設定をそのまま使用します。Premium Storage がサポートされる仮想マシンのサイズを選択した場合は、**[ディスクの種類]** の **[Premium (SSD)]** を選択することで、Premium Storage をお試しいただくことができます。
 
@@ -89,11 +89,11 @@
 
 8. Azure が仮想マシンを作成している間、ハブ メニューの **[Virtual Machines]** で進捗状況を追跡できます。
 
-## 仮想マシンへのログオン
+## Windows 仮想マシンへのログオン
 
 仮想マシンを作成したら、その仮想マシンにログオンして、その設定や、そこで実行するアプリケーションを管理できます。
 
->[AZURE.NOTE]要件やトラブルシューティングのヒントについては、「[RDP または SSH で Azure 仮想マシンに接続する](https://msdn.microsoft.com/library/azure/dn535788.aspx)」を参照してください。
+>[AZURE.NOTE] 要件やトラブルシューティングのヒントについては、「[RDP または SSH で Azure 仮想マシンに接続する](https://msdn.microsoft.com/library/azure/dn535788.aspx)」を参照してください。
 
 1. まだサインインしていない場合は、Azure ポータルにサインインします。
 
@@ -116,6 +116,6 @@
 ## 次のステップ
 
 * Azure PowerShell と Azure CLI を使用して、[仮想マシンのイメージの検索と選択](resource-groups-vm-searching.md)を行います。
-* [Azure リソース マネージャー テンプレート](http://azure.microsoft.com/documentation/templates/)を使用して、仮想マシンとワークロードのデプロイと管理を自動化します。
+* [Azure リソース マネージャー テンプレート](https://azure.microsoft.com/documentation/templates/)を使用して、仮想マシンとワークロードのデプロイメントと管理を自動化します。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

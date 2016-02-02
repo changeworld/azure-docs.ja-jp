@@ -22,7 +22,7 @@
 | --------------- |
 | [Logic Apps の定義言語](https://msdn.microsoft.com/library/azure/dn948512.aspx?f=255&MSPPError=-2147217396) |
 | [Logic Apps コネクターのドキュメント](https://azure.microsoft.com/documentation/articles/app-service-logic-connectors-list/) |
-| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) |
+| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurelogicapps) |
 
 このトピックでは、初めての方に向けて [App Service Logic Apps](app-service-logic-what-are-logic-apps.md) の使い方を簡単に説明します。今回は、興味を持ったツイートを Dropbox フォルダーに保存できるようにするまでの流れを見ていきます。
 
@@ -40,7 +40,7 @@
 
 1. Azure ポータルにサインインします。
 
-2. ホーム画面の [[Marketplace]](https://portal.azure.com/#blade/HubsExtension/GalleryFeaturedMenuItemBlade/selectedMenuItemId/apiapps) をクリックし、Twitter を検索します (または、[ここをクリックします](https://portal.azure.com/#create/microsoft_com.TwitterConnector.0.2.2))。
+2. ホーム画面の [[Marketplace]](https://portal.azure.com/#blade/HubsExtension/GalleryFeaturedMenuItemBlade/selectedMenuItemId/apiapps/) をクリックし、Twitter を検索します (または、[ここをクリックします](https://portal.azure.com/#create/microsoft_com.TwitterConnector.0.2.2/))。
 
 3. **[Twitter Connector]** を選択し、**[作成]** をクリックします。すべての設定が表示されます。名前は **Twitter Connector** のままでかまいません。
 4. **[パッケージの設定]** を選択します。ここに、Twitter アプリケーションからの情報を入力する必要があります。次の手順で、無料のアプリケーションを設定できます。
@@ -70,7 +70,7 @@
 
 10. **[作成]** をクリックします。1 ～ 2 分でプロビジョニングが始まります。
 
-11. [Dropbox](https://portal.azure.com/#create/microsoft_com.DropboxConnector.0.2.2) についても、同じ手順を繰り返します。
+11. [Dropbox](https://portal.azure.com/#create/microsoft_com.DropboxConnector.0.2.2/) についても、同じ手順を繰り返します。
 
 ## ロジック アプリを起動する
 
@@ -122,7 +122,7 @@
 
 	![アクション](./media/app-service-logic-create-a-logic-app/actions.png)
 
-	> [AZURE.NOTE]**[承認]** ボタンは、OAUTH セキュリティを使用して、Twitter などの SaaS サービスに接続します。OAUTH の詳細については、[OAUTH のセキュリティ](app-service-logic-oauth-security.md)に関するページを参照してください。
+	> [AZURE.NOTE] **[承認]** ボタンは、OAUTH セキュリティを使用して、Twitter などの SaaS サービスに接続します。OAUTH の詳細については、[OAUTH のセキュリティ](app-service-logic-oauth-security.md)に関するページを参照してください。
 
 3. **[ツイートの検索]** をクリックし、**[クエリの指定]** に「`#MicrosoftAzure`」などの文字を入力して、緑色のチェック マークをクリックします。
 
@@ -188,4 +188,4 @@
 [Use logic app features]: app-service-logic-use-logic-app-features.md
 [ロジック アプリの機能を使用する]: app-service-logic-use-logic-app-features.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

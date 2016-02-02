@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="08/14/2015" 
+	ms.date="01/21/2016" 
 	ms.author="billmath"/>
 
 # AD FS での Azure AD Connect Health の使用 
@@ -32,7 +32,7 @@ Azure AD Connect Health アラート セクションには、アクティブな�
 ## AD FS の利用状況分析
 Azure AD Connect Health 利用状況分析では、フェデレーション サーバーの認証トラフィックを分析できます。[利用状況分析] ボックスを選択すると、[利用状況分析] ブレードが開き、メトリックとグループ分けが表示されます。
 
->[AZURE.NOTE]AD FS で利用状況分析を使用するためには、AD FS 監査が有効になっている必要があります。詳細については、「[AD FS の監査の有効化](active-directory-aadconnect-health-operations.md#enable-auditing-for-ad-fs)」を参照してください。
+>[AZURE.NOTE] AD FS で利用状況分析を使用するためには、AD FS 監査が有効になっている必要があります。詳細については、「[AD FS の監査の有効化](active-directory-aadconnect-health-operations.md#enable-auditing-for-ad-fs)」を参照してください。
 
 ![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/report1.png)
 
@@ -74,4 +74,4 @@ Azure AD Connect Health のパフォーマンスの監視は、メトリック�
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

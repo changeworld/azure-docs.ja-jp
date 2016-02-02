@@ -16,10 +16,10 @@
 
 5. チェック マーク アイコン ![StorSimple のチェック マーク アイコン](./media/storsimple-get-service-registration-key/HCS_CheckIcon-include.png) をクリックしてこのダイアログ ボックスを閉じ、**[クイック スタート]** ページに戻ります。
 
-> [AZURE.NOTE]StorSimple Manager サービスに登録する必要があるすべてのデバイスの登録に、サービス登録キーを使用します。
+> [AZURE.NOTE] StorSimple Manager サービスに登録する必要があるすべてのデバイスの登録に、サービス登録キーを使用します。
 
 ![ビデオ](./media/storsimple-get-service-registration-key/Video_icon.png) **ビデオ**
 
-サービス登録キーの取得方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/get-the-service-registration-key/)を参照してください。
+サービス登録キーの取得方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/get-the-service-registration-key/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

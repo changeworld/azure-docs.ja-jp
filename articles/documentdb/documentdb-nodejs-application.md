@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="hero-article" 
-	ms.date="10/20/2015" 
+	ms.date="01/26/2015" 
 	ms.author="ryancraw"/>
 
 # <a name="_Toc395783175"></a>DocumentDB を使用した Node.js Web アプリケーションの作成
@@ -44,7 +44,7 @@
 
 ## <a name="_Toc395783176"></a>前提条件
 
-> [AZURE.TIP]このs Node.js チュートリアルは、Node.js と Azure Websites の使用経験がある読者を対象としています。
+> [AZURE.TIP] このs Node.js チュートリアルは、Node.js と Azure Websites の使用経験がある読者を対象としています。
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
@@ -183,7 +183,7 @@
 				
 		module.exports = DocDBUtils;
 
-> [AZURE.TIP]createCollection が受け取る省略可能な requestOptions パラメーターを使用すると、コレクションのプランの種類を指定できます。requestOptions.offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。DocumentDB のプランの種類の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
+> [AZURE.TIP] createCollection が受け取る省略可能な requestOptions パラメーターを使用すると、コレクションのプランの種類を指定できます。requestOptions.offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。DocumentDB のプランの種類の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
 		
 3. **docdbUtils.js** ファイルを保存して閉じます。
 
@@ -396,7 +396,7 @@
 		
 		module.exports = config;
 
-3. [Microsoft Azure ポータル](http://portal.azure.com)の DocumentDB アカウントの [キー] ブレードにある値を使用して、**config.js** ファイルの HOST および AUTH\_KEY の値を更新します。
+3. [Microsoft Azure ポータル](https://portal.azure.com)の DocumentDB アカウントの [キー] ブレードにある値を使用して、**config.js** ファイルの HOST および AUTH\_KEY の値を更新します。
 
 4. **config.js** ファイルを保存して閉じます。
  
@@ -505,7 +505,7 @@
 	
 	アプリケーションが動作するために必要なコードはこれですべてです。
 
-5. **public\stylesheets** ディレクトリ内の **style.css** ファイルを開き、そのコードを次のコードに置き換えます。
+5. **public\\stylesheets** ディレクトリ内の **style.css** ファイルを開き、そのコードを次のコードに置き換えます。
 
 		body {
 		  padding: 50px;
@@ -569,4 +569,4 @@
 [Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

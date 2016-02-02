@@ -1,5 +1,6 @@
 > [AZURE.SELECTOR]
 - [C#](../articles/iot-hub-csharp-csharp-getstarted.md)
 - [Java](../articles/iot-hub-java-java-getstarted.md)
+- [Node.js](../articles/iot-hub-node-node-getstarted.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

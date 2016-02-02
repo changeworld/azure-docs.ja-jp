@@ -30,12 +30,12 @@
    - プライマリ DNS サーバーの IP アドレス
    - プライマリ NTP サーバーの IP アドレス
    
-      >[AZURE.NOTE]サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。"デバイスの準備ができていません" というエラー メッセージが表示された場合は、アクティブ コントローラーの DATA 0 ネットワーク インターフェイス上の物理ネットワーク接続を確認します。
+      >[AZURE.NOTE] サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。"デバイスの準備ができていません" というエラー メッセージが表示された場合は、アクティブ コントローラーの DATA 0 ネットワーク インターフェイス上の物理ネットワーク接続を確認します。
 
 8. (省略可能) Web プロキシ サーバーを構成します。Web プロキシの構成は省略可能ですが、**Web プロキシを使用する場合は、ここでのみ構成できることに注意してください**。詳細については、「[デバイスの Web プロキシの構成](storsimple-configure-web-proxy.md)」を参照してください。この手順で問題が発生した場合、トラブルシューティング ガイダンスの「[Web プロキシ構成中のエラー](storsimple-troubleshoot-deployment.md#errors-during-the-optional-web-proxy-settings)」を参照してください。
  
 
-      >[AZURE.NOTE]Ctrl キーを押しながら C キーを押すことで、いつでもセットアップ ウィザードを終了できます。このコマンドを発行する前に適用されたすべての設定は保持されます。
+      >[AZURE.NOTE] Ctrl キーを押しながら C キーを押すことで、いつでもセットアップ ウィザードを終了できます。このコマンドを発行する前に適用されたすべての設定は保持されます。
 
 9. セキュリティ上の理由で、デバイス管理者のパスワードは最初のセッション後に期限が切れるため、以降のセッションでは変更する必要があります。画面の指示に従って、デバイスの管理者パスワードを入力します。デバイス管理者の有効なパスワードの長さは、8 ～ 15 文字です。大文字、小文字、数字、および特殊文字を組み合わせたパスワードを使用してください。
 
@@ -53,7 +53,7 @@
 
 12. デバイスが登録されると、サービス データ暗号化キーが表示されます。このキーをコピーし、安全な場所に保存しておきます。
 	
-	> [AZURE.WARNING]このキーは、StorSimple Manager サービスに追加のデバイスを登録するために、サービス登録キーと共に必要になります。このキーの詳細については、「[StorSimple のセキュリティ](../articles/storsimple/storsimple-security.md)」を参照してください。
+	> [AZURE.WARNING] このキーは、StorSimple Manager サービスに追加のデバイスを登録するために、サービス登録キーと共に必要になります。このキーの詳細については、「[StorSimple のセキュリティ](../articles/storsimple/storsimple-security.md)」を参照してください。
 
      ![StorSimple によるデバイスの登録 6](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice6-include.png)
 
@@ -68,12 +68,12 @@
    
     ![StorSimple デバイス ページ](./media/storsimple-configure-and-register-device/HCS_DevicesPageM-include.png)
   
-      >[AZURE.IMPORTANT]デバイスがオンラインになったら、この手順の最初で取り外したネットワーク ケーブルを取り付けます。
+      >[AZURE.IMPORTANT] デバイスがオンラインになったら、この手順の最初で取り外したネットワーク ケーブルを取り付けます。
 
 デバイスを登録したが、オンラインにならない場合、`Test-HcsmConnection -Verbose` を実行し、ネットワーク接続の正常な状態を確認できます。このコマンドレットの詳しい利用については、「[Test-HcsmConnection のコマンドレット リファレンス](https://technet.microsoft.com/library/dn715782.aspx)」を参照してください。
 
 ![ビデオ](./media/storsimple-configure-and-register-device/Video_icon.png) **ビデオ**
 
-StorSimple 用 Windows PowerShell でデバイスを構成および登録する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/)を参照してください。
+StorSimple 用 Windows PowerShell でデバイスを構成および登録する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/)を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -22,7 +22,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 
 ## ユース ケース
 
-Batch は、 *バッチ処理* または *バッチ コンピューティング* のための管理されたサービスで、期待した結果が得られるように類似のタスクを大量に実行します。バッチ コンピューティングは、スケジュールに従って、またはオンデマンドで大量のデータの処理、変換、および分析を行う組織にとっては一般的なアプローチで、金融サービスからエンジニアリングまで各種分野で実践されています。
+Batch は、*バッチ処理*または*バッチ コンピューティング*のための管理されたサービスで、期待した結果が得られるように類似のタスクを大量に実行します。バッチ コンピューティングは、スケジュールに従って、またはオンデマンドで大量のデータの処理、変換、および分析を行う組織にとっては一般的なアプローチで、金融サービスからエンジニアリングまで各種分野で実践されています。
 
 Batch は、本質的に並列である ("驚異的並列性" とも呼ばれます) アプリケーションやワークロードに対応するため、複数のコンピューターで並列タスクを実行するのに役立ちます。図 1 を参照してください。
 
@@ -52,7 +52,7 @@ Baｔｃｈ の概念について詳しくは、「[Azure Batch の API の基�
 
 ### 必要となるアカウント
 
-+ **Azure アカウントとサブスクリプション** - アカウントを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
++ **Azure アカウントとサブスクリプション** - アカウントを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
 + **Batch アカウント** - Batch の API 呼び出しを行う際に、Batch アカウントの名前と URL、およびアクセス キーを資格情報として使用します。コンピューティング ノード、プール、ジョブ、タスクなどの Batch リソースはすべて Batch アカウントに関連付けられています。Batch アカウントを作成してそのアカウントのアクセス キーを管理する 1 つの方法として、[Azure ポータル](batch-account-create-portal.md)を使用します。
 
@@ -103,4 +103,4 @@ Batch API を使用する一般的なシナリオでは、数千個ものコン�
 [parallel]: ./media/batch-technical-overview/parallel.png
 [work_item_workflow]: ./media/batch-technical-overview/work_item_workflow.png
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

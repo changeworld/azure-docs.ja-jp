@@ -43,7 +43,7 @@ Azure の HDInsight を一般に利用可能にすると共に、Microsoft は H
 
 このチュートリアルを開始する前に、以下の条件を満たしている必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone、または Office 2010 Professional Plus がインストールされた**ワークステーション**。
 
 ##Hadoop クラスターを作成する
@@ -81,7 +81,7 @@ Azure の HDInsight を一般に利用可能にすると共に、Microsoft は H
 	| ------------------ | --------------------- |
 	| ![Creating indicator on startboard](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioning.png) | ![Created cluster tile](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioned.png) |
 
-	> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。作成プロセスをチェックするには、スタート画面のタイル、またはページの左側にある **[通知]** エントリを使用してください。
+	> [AZURE.NOTE] クラスターが作成されるまで、通常は約 15 分かかります。作成プロセスをチェックするには、スタート画面のタイル、またはページの左側にある **[通知]** エントリを使用してください。
 
 10. 作成が完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。
 
@@ -89,7 +89,7 @@ Azure の HDInsight を一般に利用可能にすると共に、Microsoft は H
 ## ポータルから Hive クエリを実行する
 HDInsight クラスターが作成されたら、サンプルの Hive テーブルを照会する Hive ジョブを実行します。HDInsight クラスターに付属する *hivesampletable* を使用します。このテーブルには、モバイル デバイスの製造元、プラットフォーム、モデルに関するデータが格納されています。このテーブルの Hive クエリは、特定の製造元のモバイル デバイスのデータを取得します。
 
-> [AZURE.NOTE]HDInsight Tools for Visual Studio は、Azure SDK for .NET バージョン 2.5 以降に付属しています。Visual Studio からこのツールを使用すると、HDInsight クラスターに接続し、Hive テーブルを作成し、Hive クエリを実行できます。詳細については、「[HDInsight Hadoop Tools for Visual Studio の使用開始][1]」をご覧ください。
+> [AZURE.NOTE] HDInsight Tools for Visual Studio は、Azure SDK for .NET バージョン 2.5 以降に付属しています。Visual Studio からこのツールを使用すると、HDInsight クラスターに接続し、Hive テーブルを作成し、Hive クエリを実行できます。詳細については、「[HDInsight Hadoop Tools for Visual Studio の使用開始][1]」をご覧ください。
 
 **クラスター ダッシュボードから Hive ジョブを実行するには**
 
@@ -103,7 +103,7 @@ HDInsight クラスターが作成されたら、サンプルの Hive テーブ�
 
 	ページの上部にいくつかのタブがあります。既定のタブは **[Hive エディター]** です。これ以外に、**[ジョブ履歴]** タブと **[ファイル ブラウザー]** タブがあります。ダッシュボードでは、Hive クエリの送信、Hadoop ジョブ ログの確認、ストレージ内のファイルの参照などの操作を実行できます。
 
-	> [AZURE.NOTE]Web ページの URL は *&lt;ClusterName&gt;.azurehdinsight.net* です。ポータルからダッシュボードを開く代わりに、URL を使用して Web ブラウザーからダッシュボードを開くこともできます。
+	> [AZURE.NOTE] Web ページの URL は *&lt;ClusterName&gt;.azurehdinsight.net* です。ポータルからダッシュボードを開く代わりに、URL を使用して Web ブラウザーからダッシュボードを開くこともできます。
 
 6. **[Hive エディター]** タブで、**[クエリ名]** に「**HTC20**」と入力します。クエリ名は、ジョブのタイトルです。クエリ ウィンドウで、次の図に示すように、Hive クエリを入力します。
 
@@ -111,7 +111,7 @@ HDInsight クラスターが作成されたら、サンプルの Hive テーブ�
 
 4. **[Submit]** をクリックします。結果が返されるまでしばらく時間がかかります。画面は 30 秒ごとに更新されます。**[最新の情報に更新]** をクリックして画面を更新することもできます。
 
-    ![Results from a Hive query in listed at the bottom of the cluster dashboard.][img-hdi-dashboard-query-select-result]
+    ![クラスターのダッシュボードの下部に表示される Hive クエリの結果。][img-hdi-dashboard-query-select-result]
 
 5. 状態にジョブの完了が表示されたら、画面のクエリ名をクリックして出力を表示します。**[ジョブの開始時刻 (UTC)]** の値をメモしておきます。この情報は後で必要になります。
 
@@ -147,7 +147,7 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 
 	![Excel PowerQuery Import menu open for Azure HDInsight.][image-hdi-gettingstarted-powerquery-importdata]
 
-3. クラスターに関連付けられた Azure Blob Storage アカウントの名前を **[アカウント名]** ボックスに入力し、**[OK]** をクリックします。(これは、このチュートリアルで作成済みのストレージ アカウントです。)
+3. クラスターに関連付けられた Azure BLOB ストレージ アカウントの名前を **[アカウント名]** ボックスに入力し、**[OK]** をクリックします。(これは、このチュートリアルで作成済みのストレージ アカウントです。)
 4. Azure Blob Storage アカウントのアカウント キーを **[アカウント キー]** ボックスに入力し、**[保存]** をクリックします。
 5. 右側のウィンドウで、BLOB 名をダブルクリックします。既定で、BLOB名はクラスター名と同じです。
 
@@ -184,7 +184,7 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 
 - [HDInsight Hadoop Tools for Visual Studio の使用開始][1]
 - [HDInsight Emulator の概要][hdinsight-emulator]
-- [HDInsight での Azure Blob Storage の使用][hdinsight-storage]
+- [HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]
 - [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 - [HDInsight へのデータのアップロード][hdinsight-upload-data]
 - [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
@@ -251,4 +251,4 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

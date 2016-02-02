@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="DocumentDB の ASP.NET MVC チュートリアル: Web アプリケーションの開発 | Microsoft Azure" 
-	description="この ASP.NET MVC チュートリアルでは、DocumentDB を使用して MVC Web アプリケーションを作成します。JSON を格納し、Azure Websites でホストされている ToDo アプリからデータにアクセスします。" 
+	description="ASP.NET MVC チュートリアルでは、DocumentDB を使用して MVC Web アプリケーションを作成します。JSON を格納し、Azure Websites でホストされている ToDo アプリからデータにアクセスします - ASP.NET MVC チュートリアル ステップ バイ ステップ" 
 	keywords="ASP.NET MVC チュートリアル, Web アプリケーションの開発, MVC Web アプリケーション, ASP.NET MVC チュートリアル ステップ バイ ステップ"
 	services="documentdb" 
 	documentationCenter=".net" 
@@ -18,7 +18,7 @@
 	ms.date="11/18/2015" 
 	ms.author="ryancraw"/>
 
-#<a name="_Toc395809351"></a>DocumentDB を使用した ASP.NET MVC Web アプリケーションの開発
+#<a name="_Toc395809351"></a>ASP.NET MVC のチュートリアル: DocumentDB を使用した Web アプリケーションの開発
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-dotnet-application.md)
@@ -32,7 +32,7 @@
 
 このチュートリアルでは、Azure で提供される DocumentDB サービスを使用して、Azure にホストされている ASP.NET MVC Web アプリケーションからデータを保存したりデータにアクセスしたりする方法を説明します。
 
-> [AZURE.TIP]このチュートリアルでは、ASP.NET MVC と Azure Websites の使用経験がある読者を想定しています。ASP.NET や[前提条件となるツール](#_Toc395637760)を初めて扱う方は、完全なサンプル プロジェクトを [GitHub][] からダウンロードして、この例の指示に従うことをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
+> [AZURE.TIP] このチュートリアルでは、ASP.NET MVC と Azure Websites の使用経験がある読者を想定しています。ASP.NET や[前提条件となるツール](#_Toc395637760)を初めて扱う方は、完全なサンプル プロジェクトを [GitHub][] からダウンロードして、この例の指示に従うことをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
 
 ## <a name="_Toc395637760"></a>このデータベース チュートリアルの前提条件
 
@@ -52,8 +52,7 @@
 
 [AZURE.INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
-<br/>
-次のセクションで、新しい ASP.NET MVC アプリケーションをゼロから作成する方法について説明します。
+<br/>次のセクションで、新しい ASP.NET MVC アプリケーションをゼロから作成する方法について説明します。
 
 ## <a name="_Toc395637762"></a>手順 2: 新しい ASP.NET MVC アプリケーションを作成する
 
@@ -210,7 +209,7 @@
 	- **[テンプレート]** ボックスで、***[一覧]*** を選択します。
 	- **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
 	- **[データ コンテキスト クラス]** ボックスは空のままにします。 
-	- レイアウト ページ ボックスに、「***~/Views/Shared/_Layout.cshtml***」と入力します。
+	- レイアウト ページ ボックスに、「***~/Views/Shared/\_Layout.cshtml***」と入力します。
 	
 	![[ビューの追加] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image18.png)
 
@@ -398,7 +397,7 @@ MVC の標準的な構成要素を準備できたので、次に DocumentDB 用�
     	    }
     	}
 
-	> [AZURE.TIP]新しい DocumentCollection を作成するときに、OfferType の省略可能なパラメーター RequestOptions を指定して、新しいコレクションのパフォーマンス レベルを指定できます。このパラメーターを指定しないと、既定のプランの種類が使用されます。DocumentDB のプランの種類の詳細については、「[DocumentDB Performance Levels (DocumentDB パフォーマンス レベル)](documentdb-performance-levels.md)」を参照してください。
+	> [AZURE.TIP] 新しい DocumentCollection を作成するときに、OfferType の省略可能なパラメーター RequestOptions を指定して、新しいコレクションのパフォーマンス レベルを指定できます。このパラメーターを指定しないと、既定のプランの種類が使用されます。DocumentDB のプランの種類の詳細については、「[DocumentDB Performance Levels (DocumentDB パフォーマンス レベル)](documentdb-performance-levels.md)」を参照してください。
 
 3. 構成からいくつかの値を読み取るので、アプリケーションの **Web.config** ファイルを開き、以下の行を `<AppSettings>` セクションの下に追加します。
 	
@@ -449,13 +448,13 @@ MVC の標準的な構成要素を準備できたので、次に DocumentDB 用�
 
 ここで仮にアプリケーションを実行した場合は、**HomeController** とそのコントローラーの **Index** ビューが表示されます。これは、作業の開始時に選択した MVC テンプレート プロジェクトの既定の動作であって、期待していた動作ではありません。 この MVC アプリケーションのルーティングに手を加えて、この動作を変更しましょう。
 
-***App\_Start\RouteConfig.cs*** を開いて、"defaults:" で始まる行を見つけ、以下と同様にその行を変更します。
+***App\_Start\\RouteConfig.cs*** を開いて、"defaults:" で始まる行を見つけ、以下と同様にその行を変更します。
 
     	defaults: new { controller = "Item", action = "Index", id = UrlParameter.Optional }
 
 ここでは、ルーティングの動作を制御するための値を URL に指定していない場合、**Home** の代わりに **Item** をコント ローラーとしてユーザー **インデックス**をビューとして使用するように ASP.NET MVC に指示しています。
 
-ここでアプリケーションを実行したとすると、**ItemController** が呼び出され、さらにリポジトリ クラスが呼び出されて、GetItems メソッドを使用して **Views**\\**Item**\\**Index** ビューに対するすべての不完全な項目が返されます。
+ここでアプリケーションを実行したとすると、**ItemController** が呼び出され、さらにリポジトリ クラスが呼び出されて、GetItems メソッドを使用して **Views**\**Item**\**Index** ビューに対するすべての不完全な項目が返されます。
 
 このプロジェクトをビルドして実行すると、次のように表示されます。
 
@@ -634,4 +633,4 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 [ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

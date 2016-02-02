@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="11/24/2015"
+	ms.date="01/24/2016"
 	ms.author="awills"/>
 
 # Java Web プロジェクトで Application Insights を使う
@@ -30,7 +30,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 必要なものは次のとおりです。
 
 * Oracle JRE 1.6 以降、または Zulu JRE 1.6 以降
-* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料試用版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
+* [Microsoft Azure](https://azure.microsoft.com/) のサブスクリプション([無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
 
 *既にライブの Web アプリがある場合、代替手順に従って [Web サーバーで実行時に SDK を追加](app-insights-java-live.md)することができます。これによってコードのリビルドを回避できますが、ユーザーの利用状況を追跡するためにコードを記述することができなくなります。*
 
@@ -117,14 +117,14 @@ SDK を手動で追加する:
  * `applicationinsights-web` HTTP 要求数と応答時間を追跡するメトリックを提供します。このテレメトリを自動的に収集しない場合、これは省略できます。たとえば、独自に記述する場合です。
 
 * *変更が発行されたときに SDK を更新するには*
- * 最新の [Application Insights SDK for Java](http://dl.windowsazure.com/lib/applicationinsights/javabin/sdk.zip) をダウンロードして、古いものと置き換えます。
+ * 最新の [Application Insights SDK for Java](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.zip) をダウンロードして、古いものと置き換えます。
  * 変更は [SDK リリース ノート](app-insights-release-notes-java.md)に記載されます。
 
 
 
 ## 3\.Application Insights の xml ファイルを追加する
 
-ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイ クラス パスに追加されていることを確認します。次の XML をファイルにコピーします。
+ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されていることを確認します。次の XML をファイルにコピーします。
 
 インストルメンテーション キーについては、Azure ポータルで入手したキーを使用してください。
 
@@ -364,7 +364,7 @@ SDK をインストールすると、API を使用して独自のテレメトリ
 
 ## 可用性 Web テスト
 
-Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。[設定するには][availability]、下へスクロールして [可用性] をクリックします。
+Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。[設定するには][availability]、下にスクロールして [可用性] をクリックします。
 
 ![Scroll down, click Availability, then Add Web test](./media/app-insights-java-get-started/31-config-web-test.png)
 
@@ -398,4 +398,4 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

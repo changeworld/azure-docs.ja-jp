@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="10/26/2015"
+	ms.date="01/14/2016"
 	ms.author="ccompy"/>
 
 # App Service 環境で Web アプリを作成する
@@ -22,7 +22,7 @@
 
 このチュートリアルでは、[App Service 環境](app-service-app-service-environment-intro.md) (ASE) で Web アプリと App Service プランを作成する方法について説明します。
 
-> [AZURE.NOTE]Web アプリを作成する方法を知りたいが、App Service 環境で行う必要はない場合は、「[.NET web アプリを作成する](web-sites-dotnet-get-started.md)」か、その他の言語やフレームワーク向けの関連するチュートリアルを参照してください。
+> [AZURE.NOTE] Web アプリを作成する方法を知りたいが、App Service 環境で行う必要はない場合は、「[.NET web アプリを作成する](web-sites-dotnet-get-started.md)」か、その他の言語やフレームワーク向けの関連するチュートリアルを参照してください。
 
 ## 前提条件
 
@@ -118,4 +118,4 @@ Web アプリと App Service プランを作成した後は、これをスケー
 [ResourceGroups]: http://azure.microsoft.com/documentation/articles/resource-group-portal/
 [AzurePowershell]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

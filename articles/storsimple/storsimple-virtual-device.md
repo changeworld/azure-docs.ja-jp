@@ -75,7 +75,7 @@ StorSimple 仮想デバイスを使用する場合、セキュリティに関す
 - 独自の DNS サーバー名を指定する代わりに、Azure に用意されている既定の DNS サーバーを使用することをお勧めします。DNS サーバー名が有効でない場合、仮想デバイスの作成は失敗します。
 - ポイント対サイトおよびサイト間を必要に応じて選ぶことができますが、必須ではありません。必要に応じてこれらのオプションを構成することで、より高度なシナリオを実現することができます。
 
->[AZURE.IMPORTANT]**仮想デバイスで使用する予定のクラウド ストレージ アカウントと同じリージョンに仮想ネットワークが存在することを確認してください。**
+>[AZURE.IMPORTANT] **仮想デバイスで使用する予定のクラウド ストレージ アカウントと同じリージョンに仮想ネットワークが存在することを確認してください。**
 
 - 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-about.md) (ホスト サーバー) を仮想ネットワークに作成できます。これらのサーバーは次の要件を満たしている必要があります。
 	- Windows または Linux の VM が実行され、iSCSI イニシエーター ソフトウェアがインストールされていること。
@@ -180,7 +180,7 @@ StorSimple 仮想デバイスを構成して登録するには、次の手順を
 
 StorSimple Snapshot Manager ソフトウェアは Windows ホスト上に常駐し、管理者が、ローカル スナップショットとクラウド スナップショットの形式で StorSimple デバイスのバックアップを管理することを可能にします。
 
->[AZURE.NOTE]仮想デバイスの場合、Windows ホストは Azure VM です。
+>[AZURE.NOTE] 仮想デバイスの場合、Windows ホストは Azure VM です。
 
 StorSimple Snapshot Manager でデバイスを構成するとき、ストレージ デバイスを認証するためのパスワードと StorSimple デバイスの IP アドレスを入力するように求められます。このパスワードは、Windows PowerShell のインターフェイスを使用して最初に構成されます。
 
@@ -234,7 +234,7 @@ StorSimple 仮想デバイスのリモート管理を構成するには、次の
 
 ![ビデオ](./media/storsimple-virtual-device/Video_icon.png) **ビデオ**
 
-クラウドに仮想 StorSimple デバイスを作成する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/create-a-storsimple-virtual-device/)を参照してください。
+クラウドに仮想 StorSimple デバイスを作成する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/create-a-storsimple-virtual-device/)を参照してください。
 
 ## StorSimple 仮想デバイスの作業
 
@@ -280,7 +280,7 @@ StorSimple Manager サービス ページで非アクティブとして表示さ
 
 StorSimple デバイスの構成ページで Windows PowerShell リモート処理を有効にしたら、それを使って、同じ仮想ネットワーク内の別の仮想マシンから仮想デバイスに接続することができます。たとえば、iSCSI に接続するために構成して使用しているホスト VM から接続することができます。ほとんどのデプロイでは、仮想デバイスへのアクセスに使用できるホスト VM にアクセスするパブリック エンドポイントは既に開かれています。
 
->[AZURE.WARNING]セキュリティ強化のため、エンドポイントに接続する場合は HTTPS を使用して、PowerShell リモート セッション完了後にエンドポイントを削除することを強くお勧めします。
+>[AZURE.WARNING] セキュリティ強化のため、エンドポイントに接続する場合は HTTPS を使用して、PowerShell リモート セッション完了後にエンドポイントを削除することを強くお勧めします。
 
 「[StorSimple デバイスにリモート接続する](storsimple-remote-connect.md)」の手順に従って、仮想デバイスのリモート処理をセットアップしてください。
 
@@ -358,11 +358,11 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 フェールオーバー プロセスが開始されます。フェールオーバーが完了したら、**[デバイス]** ページに進み、フェールオーバー プロセスのターゲットとして使用した仮想デバイスを選択します。[ボリューム コンテナー] ページに移動します。すべてのボリューム コンテナーと古いデバイスのボリュームが表示されます。
 
->[AZURE.NOTE]仮想デバイスでサポートされるストレージの量は 30 TB (テラバイト) です。
+>[AZURE.NOTE] 仮想デバイスでサポートされるストレージの量は 30 TB (テラバイト) です。
 
 ![ビデオ](./media/storsimple-virtual-device/Video_icon.png) **ビデオ**
 
-フェールオーバーした物理デバイスをクラウドの仮想デバイスに復元する方法について説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-and-disaster-recovery/)を参照してください。
+フェールオーバーした物理デバイスをクラウドの仮想デバイスに復元する方法について説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/storsimple-and-disaster-recovery/)を参照してください。
 
 ## 仮想デバイスのシャットダウンまたは削除
 
@@ -391,4 +391,4 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 仮想デバイスを管理するには、[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md#administer-storsimple-device-using-storsimple-manager-service)に関するページでワークフローの詳細な一覧を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

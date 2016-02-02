@@ -17,8 +17,6 @@
 
 # Application Insights: 言語、プラットフォーム、統合
 
-[AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
-
 以下は、これまでに把握している実装です (サード パーティによるものも含む)。
 
 ## 言語
@@ -85,4 +83,4 @@
 
 使用する言語やプラットフォーム用の SDK がない場合は、自分で作成するという方法があります。 [GitHub の Application Insights SDK プロジェクト](https://github.com/Microsoft/AppInsights-Home)に示されている既存の SDK のコードをご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->
