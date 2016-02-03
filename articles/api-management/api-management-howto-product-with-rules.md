@@ -102,7 +102,7 @@ API Management の成果物は、保護することも開くこともできま�
 
 ![ポリシー ステートメント][api-management-limit-policies]
 
-**inbound** ポリシー要素にカーソルを置いたら、**[呼び出しレート制限]** の横の矢印をクリックしてそのポリシー テンプレートを挿入します。
+**inbound** ポリシー要素にカーソルを置いたら、**呼び出しレート制限** の横の矢印をクリックしてそのポリシー テンプレートを挿入します。
 
 	<rate-limit calls="number" renewal-period="seconds">
 	<api name="name" calls="number">
@@ -294,4 +294,4 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 [呼び出しレート制限]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [使用量クォータの設定]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
-<!---HONumber=AcomDC_0128_2016-->
+<!----HONumber=AcomDC_0128_2016-->
