@@ -97,7 +97,7 @@
     ![SSO](./media/active-directory-saas-kudos-tutorial/IC787807.png "SSO")
 
     1.  Azure ポータルの **[Kudos でのシングル サインオンの構成]** ダイアログ ページで、**シングル サインオン サービス URL** の値をコピーし、** [シングル サインオン サービス URL]** テキストボックスに貼り付けます。
-2.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
+	2.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
         >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
@@ -154,4 +154,4 @@ Azure AD ユーザーが Kudos にログインできるようにするには、�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!----HONumber=AcomDC_0121_2016-->
