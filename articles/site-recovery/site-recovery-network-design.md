@@ -177,10 +177,16 @@ Woodgrove がレプリケーションをデプロイし、IP アドレスを維�
 - 仮想マシンは起動後に使用されている DNS サーバーを更新します。DNS エントリは、通常、ネットワーク全体で変更またはフラッシュする必要あります。ネットワーク テーブル内のキャッシュされたエントリも更新またはフラッシュする必要があります。したがって、これらの状態が変更が発生している間、ダウンタイムが発生するのは珍しいことではありません。これは以下の方法で軽減できます。
 
 	- イントラネット アプリケーションに低 TTL 値を使用する。
-	- イントラネット ベースのアプリケーションに対して [Azure Traffic Manger と Site Recovery]https://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/ を使用する。
+	- イントラネット ベースのアプリケーションに対して [Azure Traffic Manger と Site Recovery](https://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/ for internet based applications/) を使用する。
 	- タイムリーな更新を可能にするために、復旧計画で次のスクリプトを使用して DNS サーバーを更新する (動的 DNS 登録が構成されている場合、このスクリプトは必要ありません)。
 
-    [string]$Zone, [string]$name, [string]$IP ) $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name $newrecord = $record.clone() $newrecord.RecordData[0].IPv4Address = $IP Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
+    [string]$Zone,
+    [string]$name, 
+    [string]$IP
+    ) $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
+    $newrecord = $record.clone()
+    $newrecord.RecordData[0].IPv4Address = $IP
+    Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
 
 #### 例: Azure へのフェールオーバー
 
@@ -190,4 +196,4 @@ Woodgrove がレプリケーションをデプロイし、IP アドレスを維�
 
 [学習内容](site-recovery-network-mapping.md): Site Recovery がソースおよびターゲット ネットワークをマップする方法。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!-----HONumber=AcomDC_0128_2016-->
