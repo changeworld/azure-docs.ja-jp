@@ -16,7 +16,8 @@
 
 #チュートリアル: Azure Active Directory と Dropbox for Business の統合
   
-このチュートリアルでは、Azure と Dropbox for Business の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と Dropbox for Business の統合について説明します。  
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Dropbox for Business のテスト テナント
@@ -107,7 +108,9 @@
      5.2.Azure ポータルで、**[Dropbox for Business でのシングル サインオンの構成]** ダイアログ ページの **[サインイン ページ URL]** の値をコピーし、**[サインイン URL]** ボックスに貼り付けます。
 
 
-     5.3.ダウンロードした証明書から **Base-64 でエンコードされた**ファイルを作成します。 > [AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+     5.3.ダウンロードした証明書から **Base-64 でエンコードされた**ファイルを作成します。  
+
+     >[AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 
      5.4.**[証明書の選択]** をクリックし、**Base-64 でエンコードされた証明書ファイル**を参照します。
@@ -176,7 +179,8 @@
 <br><br> ![ユーザーの割り当て](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769523.png "ユーザーの割り当て")
 
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。
+アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
 
 

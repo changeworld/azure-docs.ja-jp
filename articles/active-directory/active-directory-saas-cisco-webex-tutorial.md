@@ -16,7 +16,8 @@
 
 #チュートリアル: Azure Active Directory と Cisco Webex の統合
 
-このチュートリアルでは、Azure と Cisco Webex の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と Cisco Webex の統合について説明します。  
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Cisco Webex テナント
@@ -82,8 +83,8 @@
 
     ![アプリケーション URL の構成](./media/active-directory-saas-cisco-webex-tutorial/IC777619.png "アプリケーション URL の構成")
 
-    1.  **[サインオン URL]** ボックスに、Cisco Webex テナント URL を入力します (例: **http://contoso.webex.com*)。
-2.  **[Cisco Webex 応答 URL]** ボックスに、**Cisco Webex AssertionConsumerService URL** を入力します (例: **https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company*)。
+    1.  **[サインオン URL]** ボックスに、Cisco Webex テナント URL を入力します (例: *http://contoso.webex.com*)。
+	2.  **[Cisco Webex 応答 URL]** ボックスに、**Cisco Webex AssertionConsumerService URL** を入力します (例: *https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company*)。
 
 4.  **[Cisco Webex でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
