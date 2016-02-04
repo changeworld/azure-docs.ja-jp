@@ -260,11 +260,12 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 
 6. 管理サーバーからこれらの URL にアクセスできるようにします。
 
-	- **.hypervrecoverymanager.windowsazure.com
-- **.accesscontrol.windows.net
-- **.backup.windowsazure.com
-- **.blob.core.windows.net
-- **.store.core.windows.net。サーバーに IP アドレスベースのファイアウォール規則がある場合、規則で Azure との通信を許可していることを確認します。[Azure Datacenter の IP の範囲](https://msdn.microsoft.com/library/azure/dn175718.aspx)と HTTPS (433) プロトコルを許可する必要があります。また、サブスクリプションの Azure リージョンと米国西部の IP アドレスの範囲をホワイト リストに追加する必要があります。さらに、MySQL ダウンロードの URL (http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi) もホワイト リストに追加します。
+	- *.hypervrecoverymanager.windowsazure.com
+	- *.accesscontrol.windows.net
+	- *.backup.windowsazure.com
+	- *.blob.core.windows.net
+	- *.store.core.windows.net
+	サーバーに IP アドレスベースのファイアウォール規則がある場合、規則で Azure との通信を許可していることを確認します。[Azure Datacenter の IP の範囲](https://msdn.microsoft.com/library/azure/dn175718.aspx)と HTTPS (433) プロトコルを許可する必要があります。また、サブスクリプションの Azure リージョンと米国西部の IP アドレスの範囲をホワイト リストに追加する必要があります。さらに、MySQL ダウンロードの URL (http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi) もホワイト リストに追加します。
 
 
 7. **[前提条件の確認]** セットアップで、サーバーの前提条件の確認を実行します。

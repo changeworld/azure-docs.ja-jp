@@ -16,7 +16,8 @@
 
 #チュートリアル: Azure Active Directory と Egnyte の統合
   
-このチュートリアルでは、Azure と Egnyte の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と Egnyte の統合について説明します。  
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Egnyte でのシングル サインオンが有効なサブスクリプション
@@ -64,8 +65,8 @@
     ![Egnyte](./media/active-directory-saas-egnyte-tutorial/IC787814.png "Egnyte")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Egnyte に対する認証を行うことができるようにする方法を説明します。
-この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Egnyte に対する認証を行うことができるようにする方法を説明します。  
+この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
 この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順を実行します。
@@ -78,7 +79,7 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-egnyte-tutorial/IC787816.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[Egnyte サインイン URL]** ボックスに、"**https://company.egnyte.com*"" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Egnyte サインイン URL]** ボックスに、"*https://company.egnyte.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-egnyte-tutorial/IC787817.png "アプリケーション URL の構成")
 
@@ -107,7 +108,7 @@
     1.  **[シングル サインオン認証]** として **[SAML 2.0]** を選択します。
     2.  **[ID プロバイダー]** として **[AzureAD]** を選択します。
     3.  Azure ポータルで、**[Egnyte でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[ID プロバイダー ログイン URL]** ボックスに貼り付けます。
-4.  Azure ポータルで、**[Egnyte でのシングル サインオンの構成]** ダイアログ ページの **[エンティティ ID]** の値をコピーし、**[ID プロバイダー エンティティ ID]** ボックスに貼り付けます。
+    4.  Azure ポータルで、**[Egnyte でのシングル サインオンの構成]** ダイアログ ページの **[エンティティ ID]** の値をコピーし、**[ID プロバイダー エンティティ ID]** ボックスに貼り付けます。
     5.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
         >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
@@ -122,7 +123,8 @@
     ![Configure Single Sign-On](./media/active-directory-saas-egnyte-tutorial/IC787823.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
   
-Azure AD ユーザーが Egnyte にログインできるようにするには、そのユーザーを Egnyte にプロビジョニングする必要があります。Egnyte の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが Egnyte にログインできるようにするには、そのユーザーを Egnyte にプロビジョニングする必要があります。  
+Egnyte の場合、プロビジョニングは手動で行います。
 
 ###ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
 
