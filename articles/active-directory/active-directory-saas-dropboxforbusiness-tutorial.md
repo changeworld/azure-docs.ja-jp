@@ -108,7 +108,8 @@
      5.2.Azure ポータルで、**[Dropbox for Business でのシングル サインオンの構成]** ダイアログ ページの **[サインイン ページ URL]** の値をコピーし、**[サインイン URL]** ボックスに貼り付けます。
 
 
-     5.3.ダウンロードした証明書から **Base-64 でエンコードされた**ファイルを作成します。
+     5.3.ダウンロードした証明書から **Base-64 でエンコードされた**ファイルを作成します。  
+
      >[AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 
