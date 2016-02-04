@@ -37,7 +37,9 @@ Azure AD Connect は、2 種類の構成方法によって Azure AD に接続し
 | URL | ポート | 説明 |
 | ---- | ---- | ---- |
 | mscrl.microsoft.com | HTTP/80 | CRL リストのダウンロードに使用します。 |
-| **.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。 | | *.windows.net | HTTPS/443 | Azure AD へのログインに使用します。 | | *.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリの構成およびデータのインポートとエクスポートに使用します。 |
+| *.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。 |
+| *.windows.net | HTTPS/443 | Azure AD へのログインに使用します。 |
+| *.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリの構成およびデータのインポートとエクスポートに使用します。 |
 
 ## ウィザードでのエラー
 インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。**[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用します。**[構成]** ページでは、使用するセキュリティ コンテキストを[同期エンジンのサービスを実行しているアカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に変更します。ここで行うプロキシ構成はコンピューターに対してグローバルになるため、構成になんらかの問題があると、ほとんどの場合はすぐにウィザードの **[Azure AD に接続]** ページに反映されることになります。
@@ -124,4 +126,4 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 1/11/2016 8:49 | connect://*bba900-anchor*.microsoftonline.com:443
 1/11/2016 8:49 | connect://*bba800-anchor*.microsoftonline.com:443
 
-<!---HONumber=AcomDC_0121_2016-->
+<!----HONumber=AcomDC_0121_2016-->

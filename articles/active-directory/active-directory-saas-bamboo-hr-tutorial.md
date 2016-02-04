@@ -152,4 +152,4 @@ BambooHR の場合、プロビジョニングは手動で行います。
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!----HONumber=AcomDC_0121_2016-->
+<!-----HONumber=AcomDC_0121_2016-->

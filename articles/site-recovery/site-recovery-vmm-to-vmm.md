@@ -111,7 +111,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 		- *.backup.windowsazure.com
 		- *.blob.core.windows.net
 		- *.store.core.windows.net
-- 「[Azure Datacenter の IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+	- 「[Azure Datacenter の IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、**[設定]** ワークスペースを開いて **[セキュリティ]** を展開し、**[実行アカウント]** をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
 
 8. **[登録キー]** で、Azure Site Recovery からダウンロードして VMM サーバーにコピーした登録キーを選択します。
@@ -375,4 +375,4 @@ VMM サーバー上のプロバイダーは、本サービスからイベント�
 
 - **選択肢**: これは、本サービスに必要不可欠であり、無効にすることはできません。この情報を本サービスに送信することを希望しない場合は、本サービスを使用しないでください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!----HONumber=AcomDC_0121_2016-->
