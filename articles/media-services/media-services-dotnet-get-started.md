@@ -83,7 +83,7 @@
 
 ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services アカウント名、プライマリ キー、セカンダリ キーがダイアログに表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。
 
-	![[メディア サービス] ページ](./media/media-services-dotnet-get-started/wams-mediaservices-page.png)
+![[メディア サービス] ページ](./media/media-services-dotnet-get-started/wams-mediaservices-page.png)
 
 アカウント名をダブルクリックすると、既定で **[クイック スタート]** ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
 
@@ -448,4 +448,4 @@ MPEG DASH
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
   [管理ポータル]: http://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!----HONumber=AcomDC_0128_2016-->

@@ -112,7 +112,7 @@
 
     1.  **[ユーザー ID]** ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name**」と入力します。
     2.  **[電子メール]** ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name**」と入力します。
-3.  **[変更を保存]** をクリックします。
+    3.  **[変更を保存]** をクリックします。
 
 10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -158,4 +158,4 @@ Azure AD ユーザーが BlueJeans にログインできるようにするには
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!----HONumber=AcomDC_0121_2016-->
