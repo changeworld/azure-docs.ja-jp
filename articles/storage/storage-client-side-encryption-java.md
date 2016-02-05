@@ -241,11 +241,12 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 ストレージ データを暗号化すると、パフォーマンスのオーバーヘッドが増えることに注意してください。コンテンツ キーと IV を生成する必要があり、コンテンツ自体を暗号化する必要があります。また、追加のメタデータをフォーマットおよびアップロードする必要もあります。このオーバーヘッドは、暗号化されるデータの量によって異なります。開発中に、アプリケーションのパフォーマンスを常にテストすることをお勧めします。
 
 ## 次のステップ  
-[Java 用 Azure Storage クライアント ライブラリの Maven パッケージ](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.0.0)をダウンロードする。
+[Java 用 Azure Storage クライアント ライブラリの Maven パッケージ](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.0.0)をダウンロードする。  
+
 [GitHub から Java 用 Azure Storage クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-java)をダウンロードする。Azure Key Vault Maven の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、
 [クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および
 [拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。
 
 [Azure Key Vault ドキュメント](../articles/key-vault-whatis.md)を参照する。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!----HONumber=AcomDC_0114_2016-->
