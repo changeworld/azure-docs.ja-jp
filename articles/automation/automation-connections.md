@@ -12,16 +12,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/23/2015"
+   ms.date="01/27/2016"
    ms.author="bwren" />
 
 # Azure Automation での接続資産
 
-Automation の接続資産には、Runbook または DSC 構成から外部サービスまたはアプリケーションに接続するために必要な情報が含まれます。これには、URL やポートなどの接続情報に加えて、ユーザー名とパスワードなど認証に必要な情報も含まれる場合があります。接続の値は、複数の変数を作成する場合とは対照的に、1 つの資産内の特定のアプリケーションに接続するためのプロパティをすべて保持します。ユーザーは、1 つの場所で接続のための値を編集でき、1 つのパラメーターで Runbook または DSC 構成に接続の名前を渡すことができます。Runbook または DSC 構成では、**Get-AutomationConnection** アクティビティで接続のプロパティにアクセスできます。
+Automation の接続資産には、Runbook または DSC 構成から外部サービスまたはアプリケーションに接続するために必要な情報が含まれます。This may include information required for authentication such as a username and password in addition to connection information such as a URL or a port.接続の値は、複数の変数を作成する場合とは対照的に、1 つの資産内の特定のアプリケーションに接続するためのプロパティをすべて保持します。ユーザーは、1 つの場所で接続のための値を編集でき、1 つのパラメーターで Runbook または DSC 構成に接続の名前を渡すことができます。Runbook または DSC 構成では、**Get-AutomationConnection** アクティビティで接続のプロパティにアクセスできます。
 
 接続を作成するときは、*接続の種類*を指定する必要があります。接続の種類は、一連のプロパティを定義しているテンプレートです。接続では、その接続の種類で定義されている各プロパティの値を定義します。接続の種類は、統合モジュールで Azure Automation に追加されるか、または [Azure Automation API](http://msdn.microsoft.com/library/azure/mt163818.aspx) で作成されます。接続を作成するときに使用できる接続の種類は、オートメーション アカウントにインストールされているものだけです。
 
->[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。これらの資産は暗号化され、各オートメーション アカウント用に生成された一意のキーを使用して Azure Automation に保存されます。このキーはマスター証明書によって暗号化され、Azure Automation に保存されます。セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
+>[AZURE.NOTE] Secure assets in Azure Automation include credentials, certificates, connections, and encrypted variables.これらの資産は、各 Automation アカウント用に生成された一意のキーを使用して暗号化され、Azure Automation に保存されます。This key is encrypted by a master certificate and stored in Azure Automation.セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
 
 ## Windows PowerShell コマンドレット
 
@@ -38,11 +38,11 @@ Automation の接続資産には、Runbook または DSC 構成から外部サ�
 
 次の表のアクティビティは、Runbook または DSC 構成で接続にアクセスするために使用されます。
 
-|アクティビティ|説明|
+|アクティビティ|Description|
 |---|---|
 |Get-AutomationConnection|使用する接続を取得します。接続のプロパティのハッシュ テーブルを返します。|
 
->[AZURE.NOTE]**Get-AutomationConnection** の –Name パラメーターを使用すると、設計時に Runbook または DSC と接続資産の間の依存関係の検出が複雑になる可能性があるため、使用しないようにする必要があります。
+>[AZURE.NOTE] **Get-AutomationConnection** の –Name パラメーターには変数を使用しないでください。変数を使用すると、設計時に Runbook または DSC と接続資産間の依存関係の検出が複雑になる可能性があります。
 
 ## 新しい接続の作成
 
@@ -81,10 +81,10 @@ Windows PowerShell の [New-AzureAutomationConnection](http://msdn.microsoft.com
 
 ## Runbook または DSC 構成での接続の使用
 
-**Get-AutomationConnection** コマンドレットを使用して、Runbook または DSC 構成で接続を取得します。このアクティビティは、接続の異なるフィールドの値を取得し、それらを[ハッシュ テーブル](http://go.microsoft.com/fwlink/?LinkID=324844)として返します。このハッシュ テーブルを Runbook または DSC 構成の適切なコマンドで使用できます。
+**Get-AutomationConnection** コマンドレットを使用して、Runbook または DSC 構成の接続を取得します。このアクティビティは、接続のさまざまなフィールド値を取得し、その値を[ハッシュ テーブル](http://go.microsoft.com/fwlink/?LinkID=324844)として返します。このハッシュ テーブルは、Runbook または DSC 構成の適切なコマンドで使用できます。
 
 ### テキストの Runbook のサンプル
-次のサンプル コマンドでは、前の例の Twilio 接続を使用して Runbook からテキスト メッセージを送信する方法を示します。ここで使用する Send-TwilioSMS アクティビティには、2 つのパラメーター セットがあります。これらはそれぞれ異なる方法で Twilio サービスへの認証を行います。一方は接続オブジェクトを使用し、もう一方はアカウント SID と認証トークンに別々のパラメーターを使用します。このサンプルでは両方の方法を示します。
+次のサンプル コマンドでは、前の例の Twilio 接続を使用して Runbook からテキスト メッセージを送信する方法を示します。ここで使用する Send-TwilioSMS アクティビティには 2 つのパラメーター セットがあり、それぞれ異なる方法で Twilio サービスに対する認証を行います。One uses a connection object and another uses individual parameters for the Account SID and Authorization Token.このサンプルでは両方の方法を示します。
 
 	$Con = Get-AutomationConnection -Name "TwilioConnection"
 	$NumTo = "14255551212"
@@ -120,4 +120,4 @@ Windows PowerShell の [New-AzureAutomationConnection](http://msdn.microsoft.com
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0128_2016-->

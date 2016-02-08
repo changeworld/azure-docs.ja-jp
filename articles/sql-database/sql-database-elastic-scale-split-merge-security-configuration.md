@@ -453,7 +453,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 ## 証明書のアップロード
 
-[Azure クラシック ポータル](http://portal.azure.com/)で
+[Azure クラシック ポータル](https://portal.azure.com/)で
 
 1. **[クラウド サービス]** を選択します。
 2. クラウド サービスを選択します。
@@ -473,4 +473,4 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

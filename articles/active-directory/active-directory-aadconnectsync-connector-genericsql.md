@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect sync: Generic SQL コネクタ"
+   pageTitle="Azure AD Connect sync: Generic SQL Connector | Microsoft Azure"
    description="この記事では、Microsoft の Generic SQL コネクタを構成する方法について説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="12/11/2015"
+   ms.date="01/21/2016"
    ms.author="andkjell"/>
 
 # Generic SQL コネクタに関するテクニカル リファレンス
@@ -295,4 +295,4 @@ Generic SQL コネクタでは、次に示す 4 つのサポートされた方�
 
 -	コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「[How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

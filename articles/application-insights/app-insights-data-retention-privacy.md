@@ -92,7 +92,7 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 
 ## データはどれだけの期間保持されますか。 
 
-これは、[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)によって異なります。
+これは、[料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)によって異なります。
 
 生データ ポイント (つまり、診断検索で調べることができる項目) は、7 ～ 30 日です。
 
@@ -264,4 +264,4 @@ SDK diagnostics | トレース メッセージまたは例外
 
  
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

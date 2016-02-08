@@ -28,7 +28,7 @@ Azure PowerShell を使用して HDInsight クラスターを作成する方法�
 
 この記事の手順を開始する前に、次の項目を用意する必要があります。
 
-- として機能します。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- として機能します。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - Azure PowerShell。「[Azure PowerShell 1.0 をインストールする](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」を参照してください。
 
 
@@ -155,4 +155,4 @@ Azure PowerShell を使用して、HDInsight クラスターを作成する ARM 
 [ssisclustercreate]: http://msdn.microsoft.com/library/mt146774(v=sql.120).aspx
 [ssisclusterdelete]: http://msdn.microsoft.com/library/mt146778(v=sql.120).aspx
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

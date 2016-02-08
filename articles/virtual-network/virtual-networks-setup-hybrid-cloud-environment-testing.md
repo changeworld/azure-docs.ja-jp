@@ -46,9 +46,9 @@
 4.	サイト間 VPN 接続を作成する。
 5.	DC2 を構成する。 
 
-Azure サブスクリプションをまだ取得していない場合は、[Azure の無料試用版のページ](http://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+Azure サブスクリプションをまだ取得していない場合は、[Azure の無料試用版のページ](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
->[AZURE.NOTE]Azure の仮想マシンと仮想ネットワーク ゲートウェイは、稼働していると継続的に費用が発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。このテスト環境を使用していない場合に稼働費用を削減する方法の詳細については、このトピックの「[この環境の継続的な費用を最小限に抑える](#costs)」を参照してください。
+>[AZURE.NOTE] Azure の仮想マシンと仮想ネットワーク ゲートウェイは、稼働していると継続的に費用が発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。このテスト環境を使用していない場合に稼働費用を削減する方法の詳細については、このトピックの「[この環境の継続的な費用を最小限に抑える](#costs)」を参照してください。
 
 この構成では、パブリック IP アドレスを使用してインターネットに直接接続された最大 4 台のコンピューターのテスト サブネットが必要です。これらのリソースがない場合は、[テスト用のシミュレートされたハイブリッド クラウド環境を設定する](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)こともできます。シミュレートされたハイブリッド クラウド テスト環境に必要なのは Azure サブスクリプションのみです。
 
@@ -109,7 +109,7 @@ RRAS1 で管理者レベルの Windows PowerShell コマンド プロンプト�
 
 ## フェーズ 3: クロスプレミスの Azure Virtual Network を作成する
 
-まず、Azure サブスクリプションの資格情報を使用して [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)にログオンし、TestVNET という名前の仮想ネットワークを作成します。
+まず、Azure サブスクリプションの資格情報を使用して [Azure 管理ポータル](https://manage.windowsazure.com/)にログオンし、TestVNET という名前の仮想ネットワークを作成します。
 
 1.	Microsoft Azure 管理ポータルのタスク バーで、**[新規]、[Network Services]、[Virtual Network]、[カスタム作成]** の順にクリックします。
 2.	[Virtual Network の詳細] ページで、**[名前]** に「**TestVNET**」と入力します。
@@ -309,7 +309,7 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに Test\_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンできます。詳細については、[Azure Automation の使用](../automation-create-runbook-from-samples.md)に関するページを参照してください。
 
-Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実装されており、継続的な費用が発生します。詳細については、[Virtual Network の価格](http://azure.microsoft.com/pricing/details/virtual-network/)に関するページを参照してください。VPN Gateway の費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行うか、次の手順でゲートウェイを削除します。
+Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実装されており、継続的な費用が発生します。詳細については、[Virtual Network 料金](https://azure.microsoft.com/pricing/details/virtual-network/)に関するページを参照してください。VPN Gateway の費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行うか、次の手順でゲートウェイを削除します。
 
 1.	ローカル コンピューターで Microsoft Azure 管理ポータルから左側のウィンドウの **[ネットワーク]**、**[TestVNET]**、**[ダッシュボード]** の順にクリックします。
 2.	タスク バーで **[ゲートウェイの削除]** をクリックします。確認を求めるメッセージが表示されたら、**[はい]** をクリックします。ゲートウェイが削除され、ゲートウェイの状態が **[ゲートウェイは作成されませんでした]** に変わるまで待ちます。
@@ -329,4 +329,4 @@ Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実�
 次に、ローカル コンピューターで Microsoft Azure 管理ポータルにアクセスし、TestVNET 仮想ネットワークの状態が [接続中] と表示されるまで待ちます。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

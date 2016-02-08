@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure Automation での Runbook を開始する"
+   pageTitle="Azure Automation での Runbook の開始 | Microsoft Azure"
    description="Azure Automation の Runbook を開始するために使用できる各種方法についてまとめ、Azure ポータルと Windows PowerShell の両方の詳細な使用方法について説明します。"
    services="automation"
    documentationCenter=""
@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/13/2015"
+   ms.date="01/19/2016"
    ms.author="bwren;sngun"/>
 
-# Azure Automation での Runbook を開始する
+# Azure Automation での Runbook の開始
 
 次の表は、特定のシナリオに最も適している、Azure Automation の Runbook を開始する方法を決定するときに役立ちます。この記事には、Azure ポータルと Windows PowerShell を使用して Runbook を開始する詳細情報が含まれます。他の方法の詳細情報については、以下のリンクからアクセスできる他のドキュメントに記されています。
 
@@ -106,8 +106,11 @@
 <br>
 
 
+次の図は、Runbook のライフサイクルのプロセスをステップごとに詳細に示しています。この図には、Azure Automation で Runbook を開始するさまざまな方法、オンプレミス コンピューターが Azure Automation Runbook を実行するために必要なコンポーネント、さまざまなコンポーネント間のやり取りが含まれています。自社のデータセンターで Automation Runbook を実行する方法については、「[Azure Automation の Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)」を参照してください。
 
-## Azure ポータルで Runbook を開始する
+![Runbook のアーキテクチャ](media/automation-starting-runbook/runbooks-architecture.png)
+
+## Azure ポータルでの Runbook の開始
 
 1. Azure ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
 1. **[Runbook]** タブを選択します。
@@ -115,7 +118,7 @@
 1. Runbook にパラメーターがある場合は、各パラメーターのテキスト ボックスに値を指定するように求めるプロンプトが表示されます。パラメーターについて詳しくは、「[Runbook のパラメーター](#Runbook-parameters)」をご覧ください。
 1. **[開始]** Runbook メッセージの隣にある **[ジョブの表示]** を選択するか、Runbook の **[ジョブ]** タブを選択してその Runbook ジョブの状態を表示します。
 
-## Azure プレビュー ポータルで Runbook を開始する
+## Azure プレビュー ポータルでの Runbook の開始
 
 1. Automation アカウントから、**[Runbook]** 部分をクリックして **[Runbook]** ブレードを開きます。
 1. Runbook をクリックすると、その **[Runbook]** ブレードが開きます。
@@ -124,7 +127,7 @@
 3. **[ジョブ]** ブレードが開くので、ジョブの状態を追跡できます。
 
 
-## Windows PowerShell で Runbook を開始する
+## Windows PowerShell での Runbook の開始
 
 [Start-AzureAutomationRunbook](http://msdn.microsoft.com/library/azure/dn690259.aspx) を使用して、Windows PowerShell で Runbook を開始できます。次のサンプル コードは、Test-Runbook という Runbook を開始します。
 
@@ -236,8 +239,8 @@ credential というパラメーターを受け入れる次のテスト Runbook 
 
 	jsmith
 
-## 関連記事:
+## 次のステップ
 
-- [Azure Automation での子 Runbook](automation-child-runbooks.md) 
+- この記事の Runbook アーキテクチャでは、ハイブリッド Runbook の概要について説明します。詳細については、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」を参照してください。 
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

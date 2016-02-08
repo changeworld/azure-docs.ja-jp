@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="CENC とマルチ DRM およびアクセス制御: Azure および Azure Media Services での参照設計と実装" 
+	pageTitle="CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装" 
 	description="Microsoft® Smooth Streaming Client Porting Kit のライセンスを取得する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,14 +13,40 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/19/2016"  
+	ms.date="01/27/2016"  
 	ms.author="willzhan;kilroyh;yanmf;juliako"/>
 
-#CENC とマルチ DRM およびアクセス制御: Azure および Azure Media Services での参照設計と実装
+#CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装
 
 ##キーワード
  
 Azure Active Directory、Azure Media Services、Azure Media Player、動的暗号化、ライセンス配信、PlayReady、Widevine、FairPlay、共通暗号化 (CENC)、マルチ DRM、Axinom、DASH、EME、MSE、JSON Web Token (JWT)、要求、モダン ブラウザー、キーのロールオーバー、対称キー、非対称キー、OpenID Connect、X509 証明書。
+
+##この記事の内容
+
+この記事では、次のトピックについて説明します。
+
+- [はじめに](media-services-cenc-with-multidrm-access-control.md#introduction)
+	- [この記事の概要](media-services-cenc-with-multidrm-access-control.md#overview-of-this-article)
+- [参照設計](media-services-cenc-with-multidrm-access-control.md#a-reference-design)
+- [実装テクノロジへの設計のマッピング](media-services-cenc-with-multidrm-access-control.md#mapping-design-to-technology-for-implementation)
+- [実装](media-services-cenc-with-multidrm-access-control.md#implementation)
+	- [実装手順](media-services-cenc-with-multidrm-access-control.md#implementation-procedures)
+	- [実装に関する注意事項](media-services-cenc-with-multidrm-access-control.md#some-gotchas-in-implementation)
+- [実装に関する他のトピック](media-services-cenc-with-multidrm-access-control.md#additional-topics-for-implementation)
+	- [HTTP か HTTPS か](media-services-cenc-with-multidrm-access-control.md#http-or-https)
+	- [Azure Active Directory の署名キーのロールオーバー](media-services-cenc-with-multidrm-access-control.md#azure-active-directory-signing-key-rollover)
+	- [アクセス トークンの場所](media-services-cenc-with-multidrm-access-control.md#where-is-the-access-token)
+	- [ライブ ストリーミングの場合](media-services-cenc-with-multidrm-access-control.md#what-about-live-streaming)
+	- [Azure Media Services の外部にあるライセンス サーバーの場合](media-services-cenc-with-multidrm-access-control.md#what-about-license-servers-outside-of-azure-media-services)
+	- [カスタム STS を使用する場合](media-services-cenc-with-multidrm-access-control.md#what-if-i-want-to-use-a-custom-sts)
+	- [テクニカル ノート](media-services-cenc-with-multidrm-access-control.md#tech-note)
+- [完成したシステムとテスト](media-services-cenc-with-multidrm-access-control.md#the-completed-system-and-test)
+	- [ユーザー ログイン](media-services-cenc-with-multidrm-access-control.md#user-login)
+	- [PlayReady に対する Encrypted Media Extensions の使用](media-services-cenc-with-multidrm-access-control.md#using-encrypted-media-extensipons-for-playready)
+	- [Widevine に対する EME の使用](media-services-cenc-with-multidrm-access-control.md#using-eme-for-widevine)
+	- [権利のないユーザー](media-services-cenc-with-multidrm-access-control.md#not-entitled-users)
+	- [カスタム セキュリティ トークン サービスの実行](media-services-cenc-with-multidrm-access-control.md#running-custom-secure-token-service)
 
 ##はじめに
 
@@ -28,7 +54,7 @@ OTT またはオンライン ストリーミング ソリューション用の D
 
 このドキュメントの対象読者は、OTT またはオンライン ストリーミング/マルチスクリーン ソリューションの DRM サブシステムに関する作業を行っているエンジニア、または DRM サブシステムに興味のあるすべての読者です。前提として、読者は、PlayReady、Widevine、FairPlay、Adobe Access など、市販されている DRM テクノロジの少なくとも 1 つには精通している必要があります。
 
-DRM には、マルチ DRM での CENC (共通暗号化) も含まれます。オンライン ストリーミングおよび OTT 業界での大きなトレンドは、従来のさまざまなクライアント プラットフォームに単一の DRM とそのクライアント SDK を使用する方法から、さまざまなクライアント プラットフォームで CENC とマルチ ネイティブ DRM を使用する方法に変化しています。マルチ ネイティブ DRM で CENC を使用すると、PlayReady と Widevine はいずれも[共通暗号化 (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271) 仕様に従って暗号化されます。
+DRM には、マルチ DRM での CENC (共通暗号化) も含まれます。オンライン ストリーミングおよび OTT 業界での大きなトレンドは、従来のさまざまなクライアント プラットフォームに単一の DRM とそのクライアント SDK を使用する方法から、さまざまなクライアント プラットフォームで CENC とマルチ ネイティブ DRM を使用する方法に変化しています。マルチ ネイティブ DRM で CENC を使用すると、PlayReady と Widevine はいずれも[共通暗号化 (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) 仕様に従って暗号化されます。
 
 マルチ DRM での CENC の利点は次のとおりです。
 
@@ -36,9 +62,15 @@ DRM には、マルチ DRM での CENC (共通暗号化) も含まれます。�
 1. 必要な暗号化資産のコピーが 1 つだけで済むので、暗号化資産の管理コストが減ります。
 1. ネイティブ DRM クライアントはネイティブ プラットフォームでは通常無料なので、DRM クライアント ライセンスのコストがかかりません。
 
-Microsoft は、他の主要企業と共に DASH および CENC を積極的にプロモートしてきました。Microsoft Azure Media Services は、DASH と CENC をサポートしています。最近の発表については、Mingfei のブログ「[Announcing Google Widevine license delivery services public preview in Azure Media Services (Azure Media Services での Google Widevine ライセンス配信サービス パブリック プレビューのご案内)](http://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)」および「[Azure Media Services adds Google Widevine packaging for delivering multi-DRM stream (Azure Media Services によるマルチ DRM ストリーム配信用 Google Widevine パッケージの追加)](http://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)」をご覧ください。
+Microsoft は、他の主要企業と共に DASH および CENC を積極的にプロモートしてきました。Microsoft Azure Media Services は、DASH と CENC をサポートしています。最近の発表については、Mingfei のブログ「[Announcing Google Widevine license delivery services public preview in Azure Media Services (Azure Media Services での Google Widevine ライセンス配信サービス パブリック プレビューのご案内)](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)」および「[Azure Media Services adds Google Widevine packaging for delivering multi-DRM stream (Azure Media Services によるマルチ DRM ストリーム配信用 Google Widevine パッケージの追加)](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)」をご覧ください。
 
-###この記事の概要
+### この記事の概要
+
+この記事の目的は次のとおりです。
+
+1. マルチ DRM で CENC を使用する DRM サブシステムの参照設計を提供します。
+1. Microsoft Azure/Azure Media Services プラットフォームでの参照実装を提供します。
+1. 設計と実装に関するいくつかのトピックについて説明します。
 
 この記事の「マルチ DRM」には次のものが含まれます。
 
@@ -48,19 +80,31 @@ Microsoft は、他の主要企業と共に DASH および CENC を積極的に�
 
 次の表は、各 DRM でサポートされるネイティブ プラットフォーム/ネイティブ アプリおよびブラウザーをまとめたものです。
 
-**DRM**|**ネイティブ OS/ネイティブ アプリ**|**サポートされるデスクトップ ブラウザー**|**サポートされるモバイル ブラウザー**|**サポートされるストリーミング形式**
-----|------|----|-----|----
-**PlayReady**|Windows、Windows Phone、Xbox|Windows 8.1 以降での IE11、Microsoft Edge|Windows Phone 8.1 以降|DASH、Smooth Streaming
-**Widevine**|Android|すべての PC と Mac での Chrome 34 以降|Android 4.3 以降|DASH
-**FairPlay**|Mac OS、iOS|Safari||HLS
+**クライアント プラットフォーム**|**ネイティブ DRM のサポート**|**ブラウザー/アプリ**|**ストリーミング形式**
+----|------|----|----
+**スマート TV、オペレーター STB、OTT STB**|PlayReady (プライマリ)、Widevine、その他|Linux、Opera、WebKit、その他|各種形式
+**Windows 10 デバイス (Windows PC、Windows タブレット、Windows Phone、Xbox)**|PlayReady|MS Edge/IE11/EME<br/><br/><br/>UWP|DASH (HLS の場合 PlayReady は非対応)<br/><br/>DASH、Smooth Streaming (HLS の場合 PlayReady は非対応) 
+**Android デバイス (電話、タブレット、TV)**|Widevine|Chrome/EME|DASH
+**iOS (iPhone、iPad)、OS X クライアント、Apple TV**|FairPlay|Safari 8+/EME|HLS
+**プラグイン: Adobe Primetime**|Primetime Access|ブラウザー プラグイン|HDS、HLS
 
-この記事の目的は次のとおりです。
+各 DRM の現在のデプロイ状態を考慮すると、サービスでは通常 2 ～ 3 種類の DRM を実装し、すべての種類のエンドポイントに最適な方法で対応できるようにする必要があります。
 
-1. マルチ DRM で CENC を使用する DRM サブシステムの参照設計を提供します。
-1. Microsoft Azure/Azure Media Services プラットフォームでの参照実装を提供します。
-1. 設計と実装に関するいくつかのトピックについて説明します。
+さまざまなクライアントで一定レベルのユーザー エクスペリエンスを実現するには、サービス ロジックの複雑さとクライアント側での複雑さの間にトレードオフが発生します。
 
-##参照設計
+選択の際には、次の点に注意してください。
+
+- PlayReady はすべての Windows デバイスと一部の Android デバイスにネイティブ実装され、事実上すべてのプラットフォームでソフトウェア SDK を介して利用できます。
+- Widevine はすべての Android デバイス、Chrome、その他の一部のデバイスにネイティブ実装されます。
+- FairPlay は iOS と Mac OS クライアント、または iTunes を介してのみ使用できます。
+
+そのため、一般的なマルチ DRM は次のようになります。
+
+- オプション 1: PlayReady、Widevine
+- オプション 2: PlayReady、Widevine、FairPlay
+
+
+## 参照設計
 
 このセクションでは、実装に使用されるテクノロジに依存しない参照設計を示します。
 
@@ -104,7 +148,7 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 1 – 1|最も簡単なケースです。最も細かい制御を提供します。ただし、一般に、ライセンス配信コストは最も高くなります。保護された資産ごとに少なくとも 1 つのライセンス要求が必要です。
 1 – 多|複数の資産に対して同じコンテンツ キーを使用できます。たとえば、ジャンルやジャンルのサブセット (つまり Movie Gene) などの論理グループのすべての資産が、1 つのコンテンツ キーを使用します。
 多 – 1|各資産に複数のコンテンツ キーが必要です。<br/><br/>たとえば、マルチ DRM の動的 CENC 保護を MPEG-DASH に対して適用し、動的 AES-128 暗号化を HLS に対して適用する必要がある場合、それぞれが固有の ContentKeyType を持つ異なる 2 つのコンテンツ キーが必要です(動的 CENC 保護に使用されるコンテンツ キーには ContentKeyType.CommonEncryption を使用する必要があり、動的 AES-128 暗号化に使用されるコンテンツ キーには ContentKeyType.EnvelopeEncryption を使用する必要があります)。<br/><br/>もう 1 つの例として、DASH コンテンツの CENC 保護では、理論上は、あるコンテンツ キーを使用してビデオ ストリームを保護し、別のコンテンツ キーでオーディオ ストリームを保護できます。 
-多 – 多|上記の 2 つのシナリオの組み合わせです。コンテンツ キーの 1 つのセットが、同じアセット 「グループ」の複数の資産のそれぞれに使用されます。
+多 – 多|上記の 2 つのシナリオの組み合わせです。コンテンツ キーの 1 つのセットが、同じ資産 「グループ」の複数の資産のそれぞれに使用されます。
 
 
 考慮すべきもう 1 つの重要な要素は、永続的ライセンスと非永続的ライセンスの使用です。
@@ -125,7 +169,7 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 
 簡単にわかるように、ライセンス配信サービスが Azure Media Services などのパブリック クラウドで提供される場合、これら 2 種類の設計でのライセンス要求パターン、したがってライセンス配信コストは、大きく異なるものになります。
 
-##実装テクノロジへの設計のマッピング
+## 実装テクノロジへの設計のマッピング
 
 次に、各構成要素に対して使用するテクノロジを指定することにより、汎用的な設計を、Microsoft Azure/Azure Media Services プラットフォームでのテクノロジにマップします。
 
@@ -133,7 +177,7 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 
 **構成要素**|**テクノロジ**
 ------|-------
-**プレーヤー**|[Azure Media Player](http://azure.microsoft.com/services/media-services/media-player/)
+**プレーヤー**|[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/)
 **ID プロバイダー (IDP)**|Azure Active Directory
 **Secure Token Service (STS)**|Azure Active Directory
 **DRM 保護ワークフロー**|Azure Media Services の動的保護
@@ -171,7 +215,6 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 
 1. プレーヤーは、サポートされている DRM/ブラウザーに基づいてライセンス取得要求を作成します。ライセンス取得要求では、キー ID と JWT トークンも送信されます。ライセンス配信サービスは、含まれる JWT トークンと要求を確認した後、必要なライセンスを発行します。
 
-
 ##実装
 
 ###実装手順
@@ -201,18 +244,16 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 
 ASP.NET MVC プレーヤー アプリ用に Azure Active Directory を設定する詳細な手順については、「[Azure Media Services OWIN MVC ベースのアプリを Azure Active Directory と統合し、JWT クレームに基づいてコンテンツ キーの配信を制限する](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)」を参照してください。
 
-また、「[JWT token Authentication in Azure Media Services and Dynamic Encryption (Azure Media Services と動的暗号化における JWT トークン認証)](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)」および[Azure AD と Azure Media Services キー配信の統合のサンプル](https://github.com/AzureMediaServicesSamples/Key-delivery-with-AAD-integration)も参照してください。
+また、「[JWT token Authentication in Azure Media Services and Dynamic Encryption (Azure Media Services と動的暗号化における JWT トークン認証)](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)」および[Azure AD と Azure Media Services キー配信の統合のサンプル](https://github.com/AzureMediaServicesSamples/Key-delivery-with-AAD-integration/)も参照してください。
 
 Azure Active Directory については以下を参照してください。
 
 - 「[Azure Active Directory 開発者ガイド](../active-directory/active-directory-developers-guide.md)」: 開発者向けの情報。
 - 「[Azure AD ディレクトリの管理](../active-directory/active-directory-administer.md)」: 管理者向けの情報。
 
-###実装に関する注意事項
+### 実装に関する注意事項
 
 実装には「注意事項」がいくつかあります。問題が発生した場合は、以下の「注意事項」をトラブルシューティングの参考にしてください。
-
-
 
 1. **issuer** URL の末尾には **"/"** が必要です。  
 
@@ -251,8 +292,7 @@ Azure Active Directory については以下を参照してください。
 
 	SWT (ACS) に加えて JWT (AAD) のサポートを追加するので、既定の TokenType は TokenType.JWT です。SWT/ACS を使用する場合は、TokenType.SWT に設定する必要があります。
 
-##設計と実装に関する他のトピック
-
+## 実装に関する他のトピック
 次に、設計と実装に関する他のトピックについて説明します。
 
 ###HTTP か HTTPS か
@@ -261,7 +301,7 @@ Azure Active Directory については以下を参照してください。
 
 1. HTTPS を使用する必要がある、Azure AD によるユーザー認証
 1. HTTPS を使用する必要がある、クライアントと Azure AD 間での JWT トークンの交換
-1. HTTPS を使用する必要がある、クライアントによる DRM ライセンスの取得
+1. クライアントによる DRM ライセンスの取得。ライセンス配信が Azure Media Services によって提供される場合は HTTPS の使用が必須です。PlayReady 製品スイートではライセンス配信に HTTPS を必要としません。PlayReady ライセンス サーバーが Azure Media Services の外部にある場合は、HTTP か HTTPS のいずれかを使用できます。
 
 したがって、ASP.NET のプレーヤー アプリケーションは、ベスト プラクティスとして HTTPS を使用します。つまり、Azure Media Player は HTTPS 下のページで提供されます。ただし、ストリーミングの場合は HTTP が望ましいので、混合コンテンツの問題を考慮する必要があります。
 
@@ -271,15 +311,15 @@ Azure Active Directory については以下を参照してください。
 
 参照実装では、DRM で保護されたコンテンツに対し、アプリケーションとストリーミングのどちらも HTTTPS を使用します。オープン コンテンツの場合、プレーヤーは認証またはライセンスを必要としないので、HTTP でも HTTPS でも自由に使用できます。
 
-###Azure Active Directory の署名キーのロールオーバー
+### Azure Active Directory の署名キーのロールオーバー
 
 これは、実装で考慮する必要のある重要なポイントです。実装でこれを考慮しないと、完成したシステムは最大 6 週間以内に完全に動作を停止します。
 
 Azure AD は、業界標準を使用して、それ自体と Azure AD を使用するアプリケーションの間の信頼を確立します。具体的には、Azure AD は公開キーと秘密キーのペアで構成される署名キーを使用します。Azure AD がユーザーに関する情報を含むセキュリティ トークンを作成するとき、このトークンは、アプリケーションに送信される前に、秘密キーを使用して Azure AD によって署名されます。トークンが有効であり、実際に Azure AD から発行されたことを確認するには、アプリケーションは、テナントのフェデレーション メタデータ ドキュメントに含まれる Azure AD によって公開された公開キーを使用して、トークンの署名を検証する必要があります。この公開キーとその派生元である署名キーは、Azure AD のすべてのテナントに対して同じものが使用されます。
 
-Azure AD でのキーのロールオーバーに関する詳細については、「[Azure AD での署名キーのロールオーバーに関する重要な情報](http://msdn.microsoft.com/library/azure/dn641920.aspx)」を参照してください。
+Azure AD でのキーのロールオーバーに関する詳細については、「[Azure AD での署名キーのロールオーバーに関する重要な情報](http://msdn.microsoft.com/library/azure/dn641920.aspx/)」を参照してください。
 
-[公開/秘密キーのペア](https://login.windows.net/common/discovery/keys)は次のように使用されます。
+[公開/秘密キーのペア](https://login.windows.net/common/discovery/keys/)は次のように使用されます。
 
 - 秘密キーは、JWT トークンを生成するために Azure Active Directory によって使用されます。
 - 公開キーは、JWT トークンを検証するために、AMS の DRM ライセンス配信サービスなどのアプリケーションによって使用されます。
@@ -301,8 +341,7 @@ AAD が JWT トークンを生成した後、プレイヤーが検証のため�
 
 キーはいつでもロールオーバーされる可能性があるため、フェデレーション メタデータ ドキュメントでは常に複数の有効な公開キーを使用できます。Azure Media Services ライセンス配信は、ドキュメントで指定されているどのキーでも使用できます。あるキーがすぐにロールオーバーしても、別のキーを代わりに使用できます。
 
-
-###アクセス トークンの場所
+### アクセス トークンの場所
 
 Web アプリが API アプリを呼び出す場合の認証フローは次のようになります (「[アプリケーション ID と OAuth 2.0 クライアント資格情報付与](active-directory-authentication-scenarios.md#web-application-to-web-api)」を参照)。
 
@@ -312,7 +351,7 @@ Web アプリが API アプリを呼び出す場合の認証フローは次の�
 4.	Azure AD がアプリケーションを認証し、Web API の呼び出しに使用する JWT アクセス トークンを返します。
 5.	Web アプリケーションは、返された JWT アクセス トークンを HTTPS 経由で使用して、Web API への要求の承認ヘッダーに、"Bearer" を指定した JWT 文字列を追加します。その後、Web API が JWT を検証します。検証が正常に行われると、目的のリソースが返されます。
 
-この「アプリケーション ID」フローでは、Web API は Web アプリケーションがユーザーを認証済みであることを信頼します。そのため、このパターンは信頼されたサブシステムと呼ばれます。[このページの図](http://msdn.microsoft.com/library/azure/dn645542.aspx)では、承認コード付与フローがどのように動作するかが説明されています。
+この「アプリケーション ID」フローでは、Web API は Web アプリケーションがユーザーを認証済みであることを信頼します。そのため、このパターンは信頼されたサブシステムと呼ばれます。[このページの図](http://msdn.microsoft.com/library/azure/dn645542.aspx/)では、承認コード付与フローがどのように動作するかが説明されています。
 
 トークン制限のあるライセンス取得でも、同じ信頼されたサブシステムのパターンに従っています。Azure Media Services のライセンス配信サービスは、Web アプリケーションがアクセスする必要のある Web API リソース (バックエンド リソース) です。それでは、アクセス トークンはどこにあるのでしょうか。
 
@@ -321,7 +360,6 @@ Web アプリが API アプリを呼び出す場合の認証フローは次の�
 次の手順に従って、Azure AD で「ポインター」アプリを登録して構成する必要があります。
 
 1.	Azure AD テナントで
-
 
 	- サインオン URL を含むアプリケーション (リソース) を追加します。 
 
@@ -336,7 +374,7 @@ Web アプリが API アプリを呼び出す場合の認証フローは次の�
 	
 したがって、Azure AD によって発行される JWT トークンは、実際にはこの「ポインター」リソースにアクセスするためのアクセス トークンです。
 
-###ライブ ストリーミングの場合
+### ライブ ストリーミングの場合
 
 これまではオンデマンド資産について説明しました。ライブ ストリーミングではどうでしょうか。
 
@@ -344,14 +382,14 @@ Web アプリが API アプリを呼び出す場合の認証フローは次の�
 
 具体的には、Azure Media Services でライブ ストリーミングを行うには、チャネルを作成した後、チャネルの下にプログラムを作成する必要があることはよく知られています。プログラムを作成するには、プログラムのライブ アーカイブを含む資産を作成する必要があります。CENC にライブ コンテンツのマルチ DRM 保護を提供するには、プログラムを開始する前に、「VOD 資産」の場合と同じセットアップ/処理を資産に適用する必要があります。
 
-###Azure Media Services の外部にあるライセンス サーバーの場合
+### Azure Media Services の外部にあるライセンス サーバーの場合
 
 多くの場合、ユーザーは自前のデータ センター内にある、または DRM サービス プロバイダーによってホストされている、ライセンス サーバー ファームを使用します。幸い、Azure Media Services Content Protection を使用すると、ハイブリッド モードで運用できます。つまり、コンテンツは Azure Media Services でホストして動的に保護しながら、Azure Media Services の外部のサーバーで DRM ライセンスを配信できます。この場合、次の変更を考慮する必要があります。
 
 1. Secure Token Service は、ライセンス サーバー ファームによって許容可能で検証できるトークンを発行する必要があります。たとえば、Axinom によって提供される Widevine ライセンス サーバーには、"権利メッセージ" を含む特定の JWT トークンが必要です。そのため、STS でそのような JWT トークンを発行する必要があります。そのような実装の詳細については、[Azure ドキュメント センター](https://azure.microsoft.com/documentation/)の「[Axinom を使用して Azure Media Services に Widevine ライセンスを配信する](media-services-axinom-integration.md)」を参照してください。 
 1. Azure Media Services でライセンス配信サービス (ContentKeyAuthorizationPolicy) を構成する必要はもうありません。必要なのは、マルチ DRM を使用する CENC の設定で AssetDeliveryPolicy を構成するときに、ライセンス取得 URL を (PlayReady、Widevine、FairPlay に) 提供することです。
  
-###カスタム STS を使用する場合
+### カスタム STS を使用する場合
 
 JWT トークンを提供するためにユーザーがカスタム STS (Secure Token Service) の使用を選択するにはいくつかの理由が考えられます。次に示すのはその一部です。
 
@@ -368,13 +406,13 @@ JWT トークンを提供するためにユーザーがカスタム STS (Secure 
 1.	対称キー: JWT トークンの生成と検証の両方に同じキーが使用されます。
 2.	非対称キー: X509 証明書の公開/秘密キー ペアの秘密キーが JWT トークンの暗号化/生成に使用され、公開キーがトークンの検証に使用されます。
 
-####テクニカル ノート:
+###テクニカル ノート
 
 開発プラットフォームとして .NET Framework/C# を使用する場合、非対称セキュリティ キーに使用される X509 証明書のキーの長さは 2048 ビット以上でなければなりません。これは、.NET Framework の System.IdentityModel.Tokens.X509AsymmetricSecurityKey クラスの要件です。そうでない場合は、次の例外がスローされます。
 
 IDX10630: 署名の 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' は '2048' ビット以上でなければなりません。
 
-##完成したシステムとテスト
+## 完成したシステムとテスト
 
 読者がログイン アカウントを取得する前にシステムの基本的な動作を理解できるように、完成したエンド ツー エンド システムのいくつかのシナリオを説明します。
 
@@ -384,7 +422,7 @@ IDX10630: 署名の 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' は 
 
 エンド ツー エンドの統合シナリオが必要な場合: ビデオ資産が Azure Media Services による動的な DRM 保護下にあり、トークン認証と、Azure AD によって生成される JWT トークンを使用する場合は、ログインが必要です。
 
-###ユーザー ログイン
+### ユーザー ログイン
 
 エンド ツー エンドの統合 DRM システムをテストするには、「アカウント」を作成または追加する必要があります。
 
@@ -416,9 +454,9 @@ Azure AD は Microsoft アカウント (MSA) ドメインを信頼するので�
 
 ![カスタム Azure AD テナント ドメイン アカウント](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain3.png)
 
-###PlayReady に対する Encrypted Media Extensions (EME) の使用
+### PlayReady に対する Encrypted Media Extensions の使用
 
-Windows 8.1 での IE 11 以上や、Windows 10 での Microsoft Edge ブラウザーなど、EME/PlayReady をサポートする最新のブラウザーでは、PlayReady が EME の基になる DRM です。
+Windows 8.1 での IE 11 以上や、Windows 10 での Microsoft Edge ブラウザーなど、Encrypted Media Extensions (EME)/PlayReady をサポートする最新のブラウザーでは、PlayReady が EME の基になる DRM です。
 
 ![PlayReady に対する EME の使用](./media/media-services-cenc-with-multidrm-access-control/media-services-eme-for-playready1.png)
 
@@ -428,7 +466,12 @@ Windows 8.1 での IE 11 以上や、Windows 10 での Microsoft Edge ブラウ�
 
 ![PlayReady に対する EME の使用](./media/media-services-cenc-with-multidrm-access-control/media-services-eme-for-playready2.png)
 
-####Widevine に対する EME の使用
+Windows 10 の Microsoft Edge や IE 11 の EME は、[PlayReady SL3000](https://www.microsoft.com/playready/features/EnhancedContentProtection.aspx/) を対応する Windows 10 デバイス上で呼び出すことができます。PlayReady SL3000 により、拡張プレミアム コンテンツ (4 K や HDR など) の配信や新しいコンテンツ配信モデル (拡張コンテンツ向けのアーリー ウィンドウ) の利用が可能になります。
+
+Windows デバイスにフォーカス: PlayReady は、Windows デバイスで利用可能なハードウェアベースの唯一の DRM です (PlayReady SL3000)。ストリーミング サービスは EME または UWP アプリケーションを介して PlayReady を使用でき、PlayReady SL3000 を使って他の DRM よりも高い画質を提供することができます。通常、(サービスの設定や実装に応じて) 2 K コンテンツは Chrome または Firefox へ、4 K コンテンツは Microsoft Edge/IE11 または同じデバイス上の UWP アプリケーションへ配信されます。
+
+
+#### Widevine に対する EME の使用
 
 Windows 10、Windows 8.1、Mac OSX Yosemite の Chrome 41 以降や、Android 4.4.4 の Chrome など、EME/Widevine をサポートする最新のブラウザーでは、Google Widevine が EME の背後にある DRM です。
 
@@ -438,15 +481,15 @@ Widevine では保護されたビデオのスクリーン キャプチャが防�
 
 ![Widevine に対する EME の使用](./media/media-services-cenc-with-multidrm-access-control/media-services-eme-for-widevine2.png)
 
-###権利のないユーザー
+### 権利のないユーザー
 
 ユーザーが “Entitled Users” グループのメンバーではない場合、ユーザーは「権利チェック」をパスできず、次に示すように、マルチ DRM ライセンス サービスは要求されたライセンスの発行を拒否します。詳細な説明は「ライセンスを取得できませんでした」であり、これは設計どおりです。
 
-![権利のないユーザー](./media/media-services-cenc-with-multidrm-access-control/media-services-unentitledusers.png.png)
+![権利のないユーザー](./media/media-services-cenc-with-multidrm-access-control/media-services-unentitledusers.png)
 
-###カスタム セキュリティ トークン サービス (STS) の実行
+### カスタム セキュリティ トークン サービスの実行
 
-カスタム STS を実行するシナリオでは、JWT トークンは対称キーまたは非対称キーを使用してカスタム STS によって発行されます。
+カスタム セキュリティ トークン サービス (STS) を実行するシナリオでは、JWT トークンは対称キーまたは非対称キーを使用してカスタム STS によって発行されます。
 
 対象キーを使用する場合 (Chrome を使用):
 
@@ -458,7 +501,7 @@ X509 証明書で非対称キーを使用する場合 (Microsoft の最新のブ
 
 どちらの場合も、ユーザー認証は変わらず、Azure AD によって行われます。唯一の違いは、JWT トークンが Azure AD ではなくカスタム STS によって発行されることです。もちろん、動的 CENC 保護を構成するときは、ライセンス配信サービスの制限で JWT トークンの種類として対称キーまたは非対称キーが指定されます。
 
-##まとめ
+## まとめ
 
 このドキュメントでは、トークン認証によるマルチ ネイティブ DRM およびアクセス制御を使用する CENC、Azure を使用したその設計と実装、Azure Media Services、Azure Media Player について説明しました。
 
@@ -477,6 +520,6 @@ X509 証明書で非対称キーを使用する場合 (Microsoft の最新のブ
 
 ###謝辞 
 
-William Zhang、Mingfei Yan、Kilroy Hughes、Julia Kornich
+William Zhang、Mingfei Yan、Kilroy Hughes、Roland Le Franc、Julia Kornich
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -35,7 +35,7 @@ Azure インフラストラクチャ サービスでイントラネット ShareP
 
 次の手順は、Azure でホストされている開発/テスト イントラネット SharePoint ファームのセットアップです。
 
-> [AZURE.NOTE]Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview とその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[SharePoint Server 2016 IT Preview を Azure でテストする](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」を参照してください。
+> [AZURE.NOTE] Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview とその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[SharePoint Server 2016 IT Preview を Azure でテストする](https://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」を参照してください。
 
 ## Azure でホストされている開発/テスト イントラネット SharePoint ファームを作成する
 
@@ -44,7 +44,7 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 - クラウド専用仮想ネットワーク
 - クロスプレミス仮想ネットワーク
 
-[Visual Studio サブスクリプション](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/)または [Azure 試用サブスクリプション](http://azure.microsoft.com/pricing/free-trial/)を持っている場合、このような開発/テスト環境を無料で作成できます。
+[Visual Studio サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)または [Azure 試用サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)を持っている場合、このような開発/テスト環境を無料で作成できます。
 
 ### クラウド専用仮想ネットワーク
 
@@ -102,4 +102,4 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 
 - 構成を開始する前に、実稼働ワークロードの[概要](virtual-machines-workload-intranet-sharepoint-overview.md)を入手します。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

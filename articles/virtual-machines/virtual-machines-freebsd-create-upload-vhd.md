@@ -27,13 +27,13 @@
 ##前提条件##
 この記事では、次の項目があることを前提としています。
 
-- **Azure サブスクリプション** - お持ちでない場合でも、数分でアカウントを作成できます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。それ以外の場合は、[無料試用版のアカウントの作成](http://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。  
+- **Azure サブスクリプション** - お持ちでない場合でも、数分でアカウントを作成できます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。それ以外の場合は、[無料試用版のアカウントの作成](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。  
 
-- **Azure PowerShell ツール** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。このモジュールをダウンロードするには、[Azure のダウンロード ページ](http://azure.microsoft.com/downloads/)にアクセスしてください。モジュールのインストールと構成のチュートリアルはこちらで入手できます。[Azure のダウンロード](http://azure.microsoft.com/downloads/)のコマンドレットを使用して VHD をアップロードします。
+- **Azure PowerShell ツール** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。このモジュールをダウンロードするには、[Azure のダウンロード ページ](https://azure.microsoft.com/downloads/)にアクセスしてください。モジュールのインストールと構成のチュートリアルはこちらで入手できます。[Azure のダウンロード](https://azure.microsoft.com/downloads/)のコマンドレットを使用して VHD をアップロードします。
 
 - **.vhd ファイルにインストールされている FreeBSD オペレーティング システム** - サポートされている FreeBSD オペレーティング システムを仮想ハード ディスクにインストールしておきます。.vhd ファイルを作成するツールは複数あります。たとえば、Hyper-V などの仮想化ソリューションにより、.vhd ファイルを作成し、オペレーティング システムをインストールできます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
-> [AZURE.NOTE]新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは [convert-vhd](https://technet.microsoft.com/library/hh848454.aspx) コマンドレットを使用して、ディスクを VHD 形式に変換できます。
+> [AZURE.NOTE] 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは [convert-vhd](https://technet.microsoft.com/library/hh848454.aspx) コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
 このタスクの手順は次のとおり 5 つあります。
 
@@ -141,7 +141,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 	![コンテナー名](./media/virtual-machines-freebsd-create-upload-vhd/storageaccount_containervalues.png)
 
-    > [AZURE.NOTE]既定では、コンテナーはプライベートであり、アカウント所有者のみがアクセスできます。コンテナー内の BLOB にはパブリック読み取りアクセスを許可し、コンテナーのプロパティやメタデータにはアクセスを許可しない場合は、[パブリック BLOB] オプションを使用します。コンテナーと BLOB に完全パブリック読み取りアクセスを許可するには、[パブリック コンテナー] オプションを使用します。
+    > [AZURE.NOTE] 既定では、コンテナーはプライベートであり、アカウント所有者のみがアクセスできます。コンテナー内の BLOB にはパブリック読み取りアクセスを許可し、コンテナーのプロパティやメタデータにはアクセスを許可しない場合は、[パブリック BLOB] オプションを使用します。コンテナーと BLOB に完全パブリック読み取りアクセスを許可するには、[パブリック コンテナー] オプションを使用します。
 
 ## 手順 3. Microsoft Azure への接続を準備する ##
 
@@ -209,4 +209,4 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 	![Azure での FreeBSD イメージ](./media/virtual-machines-freebsd-create-upload-vhd/freebsdimageinazure.png)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

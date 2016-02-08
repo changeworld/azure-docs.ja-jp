@@ -9,11 +9,11 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.workload="tbd" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="10/06/2015" 
+	ms.date="01/26/2016" 
 	ms.author="sethm"/>
 
 # クラウドと社内にまたがったハイブリッド アプリケーションの有効化
@@ -35,16 +35,16 @@
  
 ## 基本
 
-- [Service Bus の価格情報](http://azure.microsoft.com/pricing/details/service-bus/)
+- [Service Bus の価格情報](https://azure.microsoft.com/pricing/details/service-bus/)
 - [Service Bus の価格に関する FAQ](service-bus-pricing-faq.md)
 - [Service Bus REST API リファレンス](http://msdn.microsoft.com/library/azure/hh780717.aspx)
-- [Azure 無料試用版へのサインアップ](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)
+- [Azure 無料試用版へのサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)
  
 ## 関連サービス
 
-- [BizTalk Services](http://azure.microsoft.com/services/biztalk-services/)
-- [Mobile Services](http://azure.microsoft.com/services/mobile-services/)
-- [Cloud Services](http://azure.microsoft.com/services/cloud-services/) 
+- [BizTalk Services](https://azure.microsoft.com/services/biztalk-services/)
+- [Mobile Services](https://azure.microsoft.com/services/mobile-services/)
+- [Cloud Services](https://azure.microsoft.com/services/cloud-services/) 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

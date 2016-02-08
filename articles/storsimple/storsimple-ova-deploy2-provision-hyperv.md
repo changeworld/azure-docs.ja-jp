@@ -32,7 +32,7 @@
 
 ## プロビジョニングの前提条件
 
-ここでは、Hyper-V 2008 R2、Hyper-V 2012、および 2012 R2 を実行しているホスト システム上に仮想デバイスをプロビジョニングするための前提条件について説明します。
+ここでは、Hyper-V 2008 R2、Hyper-V 2012、または Hyper-V 2012 R2 を実行しているホスト システム上に仮想デバイスをプロビジョニングするための前提条件について説明します。
 
 ### StorSimple Manager サービスの場合
 
@@ -212,7 +212,7 @@
 
 	![](./media/storsimple-ova-deploy2-provision-hyperv/image22.png)
 
-1.  デバイスの準備ができるまでに 5 ～ 10 分かかる場合があります。進行状況を示すステータス メッセージがコンソールに表示されます。デバイスの準備ができたら **[アクション]** に移動します。`Ctrl + Alt + Delete` キーを押して仮想デバイスにログインします。既定のユーザーは StorSimpleAdmin で、既定のパスワードは Password1 です。
+1.  デバイスの準備ができるまでに 5 ～ 10 分かかる場合があります。進行状況を示すステータス メッセージがコンソールに表示されます。デバイスの準備ができたら **[アクション]** に移動します。`Ctrl + Alt + Delete` キーを押して仮想デバイスにログインします。既定のユーザーは *StorSimpleAdmin* で、既定のパスワードは *Password1* です。
 
 	![](./media/storsimple-ova-deploy2-provision-hyperv/image23.png)
 
@@ -274,4 +274,4 @@ Hyper-V で StorSimple Virtual Array をプロビジョニングする方法を�
 
 -   [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-ova-deploy3-iscsi-setup.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

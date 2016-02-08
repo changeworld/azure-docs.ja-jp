@@ -18,7 +18,8 @@
 
 # アプリ モデル v2.0 プレビュー: .NET Web アプリから Web API を呼び出す
 
-> [AZURE.NOTE]この情報は、v2.0 エンドポイントのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
+> [AZURE.NOTE]
+	この情報は、v2.0 エンドポイントのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
 
 v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/学校アカウントの両方に対応した Web アプリと Web API に認証をすばやく追加できます。ここでは、次のような機能を備えた MVC Web アプリを構築します。
 
@@ -92,7 +93,7 @@ public void ConfigureAuth(IAppBuilder app)
 
 					ClientId = clientId,
 					Authority = String.Format(CultureInfo.InvariantCulture, aadInstance, "common", "/v2.0"),
-					Scope = "openid offline_access",
+					Scope = "openid email profile offline_access",
 					RedirectUri = redirectUri,
 					PostLogoutRedirectUri = redirectUri,
 					TokenValidationParameters = new TokenValidationParameters
@@ -118,9 +119,7 @@ public void ConfigureAuth(IAppBuilder app)
 
 - まず、ADAL のプレビュー バージョンをインストールします。
 
-```PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoList-WebApp -IncludePrerelease```
-- 別の `using` ステートメントを ADAL の `App_Start\Startup.Auth.cs` ファイルに追加します。
-- 次に、新しいメソッドとして `OnAuthorizationCodeReceived` イベント ハンドラーを追加します。このハンドラーは、ADAL を使用して To Do List API へのアクセス トークンを取得し、後で使用できるように ADAL のトークン キャッシュに格納します。
+```PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoList-WebApp -IncludePrerelease``` - 別の `using` ステートメントを ADAL の `App_Start\Startup.Auth.cs` ファイルに追加します。- 次に、新しいメソッドとして `OnAuthorizationCodeReceived` イベント ハンドラーを追加します。このハンドラーは、ADAL を使用して To Do List API へのアクセス トークンを取得し、後で使用できるように ADAL のトークン キャッシュに格納します。
 
 ```C#
 private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
@@ -204,4 +203,4 @@ catch (AdalException ee)
 
 その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

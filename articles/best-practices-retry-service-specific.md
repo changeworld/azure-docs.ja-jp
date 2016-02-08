@@ -41,7 +41,7 @@
 | **[Active Directory](#azure-active-directory-retry-guidelines)** | Topaz* (カスタム検出戦略を実装) | 宣言型およびプログラムによる | コードのブロック | カスタム |
 **Topaz: <a href="http://msdn.microsoft.com/library/dn440719.aspx">エンタープライズ ライブラリ 6.0</a> に含まれる一時的エラー処理アプリケーション ブロックの表示名。このガイダンスで説明されているとおり、ほとんどの種類のサービスに対して、カスタム検出戦略を Topaz と一緒に使用できます。Topaz の既定の戦略は、このガイダンスの末尾にある「[一時的エラー処理アプリケーション ブロック (Topaz) の戦略](#transient-fault-handling-application-block-topaz-strategies)」のセクションに示しています。このブロック (Topaz) は、現在のところオープン ソース フレームワークであり、Microsoft により直接サポートされていないことに注意してください。
 
-> [AZURE.NOTE]Azure の組み込み再試行メカニズムのほとんどには、再試行ポリシーに組み込まれている機能以外に、さまざまな種類のエラーや例外に対して異なる再試行ポリシーを適用する方法は現在のところありません。したがって、この記事の執筆時点で選択できる最良のガイダンスは、最適な平均的パフォーマンスと可用性を提供するポリシーを構成することです。ポリシーを微調整する 1 つの方法は、ログ ファイルを分析して、発生する一時的エラーの種類を判別することです。たとえば、エラーの多くがネットワーク接続問題に関連している場合、最初の再試行を長時間待つのではなく、すぐに再試行することができます。
+> [AZURE.NOTE] Azure の組み込み再試行メカニズムのほとんどには、再試行ポリシーに組み込まれている機能以外に、さまざまな種類のエラーや例外に対して異なる再試行ポリシーを適用する方法は現在のところありません。したがって、この記事の執筆時点で選択できる最良のガイダンスは、最適な平均的パフォーマンスと可用性を提供するポリシーを構成することです。ポリシーを微調整する 1 つの方法は、ログ ファイルを分析して、発生する一時的エラーの種類を判別することです。たとえば、エラーの多くがネットワーク接続問題に関連している場合、最初の再試行を長時間待つのではなく、すぐに再試行することができます。
 
 ## Microsoft Azure Storage の再試行ガイドライン
 
@@ -212,7 +212,7 @@ namespace RetryCodeSamples
 
 ## 詳細
 
-- [Azure Storage Client Library Retry Policy Recommendations (Microsoft Azure Storage クライアント ライブラリの再試行ポリシーに対する推奨事項)](http://azure.microsoft.com/blog/2014/05/22/azure-storage-client-library-retry-policy-recommendations/)
+- [Azure Storage Client Library Retry Policy Recommendations (Microsoft Azure Storage クライアント ライブラリの再試行ポリシーに対する推奨事項)](https://azure.microsoft.com/blog/2014/05/22/azure-storage-client-library-retry-policy-recommendations/)
 - [Storage Client Library 2.0 – Implementing Retry Policies (Storage Client Library 2.0 – 再試行ポリシーの実装)](http://gauravmantri.com/2012/12/30/storage-client-library-2-0-implementing-retry-policies/)
 
 ## Entity Framework 6 を使用して SQL Database にアクセスする場合の再試行ガイドライン
@@ -302,7 +302,7 @@ EF6 を使用して SQL Database にアクセスする場合は、次のガイ�
 | 対話型、UI、<br />またはフォアグラウンド | 2 秒 | Exponential | MaxRetryCount<br />MaxDelay | 3<br />750 ミリ秒 | 試行 1 - 0 秒の遅延<br />試行 2 - 750 ミリ秒の遅延<br />試行 3 - 750 ミリ秒の遅延 |
 | バック グラウンド<br />またはバッチ | 30 秒 | Exponential | MaxRetryCount<br />MaxDelay | 5<br />12 秒 | 試行 1 - 0 秒の遅延<br />試行 2 - 最大 1 秒の遅延<br />試行 3 - 最大 3 秒の遅延<br />試行 4 - 最大 7 秒の遅延<br />試行 5 - 12 秒の遅延 |
 
-> [AZURE.NOTE]エンドツーエンド待機時間のターゲットには、サービスへの接続用の既定のタイムアウトが想定されます。接続タイムアウトにより長い時間を指定する場合、エンドツーエンド待機時間は、すべての再試行についてこの追加時間分だけ延長されます。
+> [AZURE.NOTE] エンドツーエンド待機時間のターゲットには、サービスへの接続用の既定のタイムアウトが想定されます。接続タイムアウトにより長い時間を指定する場合、エンドツーエンド待機時間は、すべての再試行についてこの追加時間分だけ延長されます。
 
 ## 例 (Entity Framework 6 による SQL Database アクセス)
 
@@ -429,7 +429,7 @@ ADO.NET を使用して SQL Database にアクセスする場合は、次のガ�
 | 対話型、UI、<br />またはフォアグラウンド | 2 秒 | FixedInterval | 再試行回数<br />再試行間隔<br />最初の高速再試行 | 3<br />500 ミリ秒<br />true | 試行 1 - 0 秒の遅延<br />試行 2 - 500 ミリ秒の遅延<br />試行 3 - 500 ミリ秒の遅延 |
 | バックグラウンド<br />またはバッチ | 30 秒 | ExponentialBackoff | 再試行の回数<br />最小バックオフ<br />最大バックオフ<br />デルタ バックオフ<br />最初の高速再試行 | 5<br />0 秒<br />60 秒<br />2 秒<br />false | 試行 1 - 0 秒の遅延<br />試行 2 - 最大 2 秒の遅延<br />試行 3 - 最大 6 秒の遅延<br />試行 4 - 最大 14 秒の遅延<br />試行 5 - 最大 30 秒の遅延 |
 
-> [AZURE.NOTE]エンドツーエンド待機時間のターゲットには、サービスへの接続用の既定のタイムアウトが想定されます。接続タイムアウトにより長い時間を指定する場合、エンドツーエンド待機時間は、すべての再試行についてこの追加時間分だけ延長されます。
+> [AZURE.NOTE] エンドツーエンド待機時間のターゲットには、サービスへの接続用の既定のタイムアウトが想定されます。接続タイムアウトにより長い時間を指定する場合、エンドツーエンド待機時間は、すべての再試行についてこの追加時間分だけ延長されます。
 
 ### 例 (ADO.NET による SQL Database アクセス)
 
@@ -437,7 +437,7 @@ ADO.NET を使用して SQL Database にアクセスする場合は、次のガ�
 
 ただし、一時的エラー処理アプリケーション ブロックの現在のバージョンでは、これらの方法は SQL Database に対する非同期操作をネイティブにサポートしていません。推奨される手法では、SQL Database などの Azure サービスにアクセスするには、非同期技法のみを使用することが求められます。このため、一時的エラー処理アプリケーション ブロックを SQL Database と一緒に使用するには、次の技法について考慮する必要があります。
 
-バージョン 5 の C# 言語では、簡略化された非同期サポートを使用して、ブロック (Topaz) により提供される非同期バージョンのメソッドを作成することができます。たとえば、次のコードは、非同期バージョンの **ExecuteReaderWithRetry** 拡張メソッドをどのように作成できるかを示しています。元のコードへの変更や追加が強調表示されます。Topaz のソース コードは、GitHub の「[Transient Fault Handling Application Block ("Topaz") (一時的エラー処理アプリケーション ブロック ("Topaz"))](http://topaz.codeplex.com/SourceControl/latest)」から入手できます。
+バージョン 5 の C# 言語では、簡略化された非同期サポートを使用して、ブロック (Topaz) により提供される非同期バージョンのメソッドを作成することができます。たとえば、次のコードは、非同期バージョンの **ExecuteReaderWithRetry** 拡張メソッドをどのように作成できるかを示しています。元のコードへの変更や追加が強調表示されます。Topaz のソース コードは、Codeplex の「[Transient Fault Handling Application Block ("Topaz") (一時的エラー処理アプリケーション ブロック ("Topaz"))](http://topaz.codeplex.com/SourceControl/latest)」から入手できます。
 
 ```csharp
 public async static Task<SqlDataReader> ExecuteReaderWithRetryAsync(this SqlCommand command, RetryPolicy cmdRetryPolicy,
@@ -713,7 +713,7 @@ var conn = ConnectionMultiplexer.Connect("redis0:6380,redis1:6380,connectRetry=3
 |----------------------|-----------------------------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 構成オプション | ConnectRetry<br /><br />ConnectTimeout<br /><br />SyncTimeout | 3<br /><br />最大 5,000 ミリ秒に SyncTimeout を加算<br />1,000 | 最初の接続操作中に接続試行を繰り返す回数。<br />接続操作のタイムアウト (ミリ秒)。再試行間の遅延ではありません。<br />同期操作に用いることができる時間 (ミリ秒)。 |
 
-> [AZURE.NOTE]SyncTimeout は、操作のエンドツーエンド待機時間に影響を与えます。ただし、一般に、同期操作の使用は推奨されません。詳細については、「[Pipelines and Multiplexers (パイプラインとマルチプレクサー)](http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/PipelinesMultiplexers.md)」を参照してください。
+> [AZURE.NOTE] SyncTimeout は、操作のエンドツーエンド待機時間に影響を与えます。ただし、一般に、同期操作の使用は推奨されません。詳細については、「[Pipelines and Multiplexers (パイプラインとマルチプレクサー)](http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/PipelinesMultiplexers.md)」を参照してください。
 
 ## 再試行使用のガイダンス
 
@@ -1107,4 +1107,4 @@ Azure またはサード パーティ提供のサービスにアクセスする�
 | **Linear (固定間隔)** | retryCount<br />retryInterval<br />fastFirstRetry<br /> | 10<br />1 秒<br />true | 再試行の回数。<br />再試行間の遅延。<br />最初の再試行をすぐに行うかどうかを示します。 |
 一時的エラー処理アプリケーション ブロックの使用例については、このガイダンスで前述されている、ADO.NET と Azure Active Directory を使用する Azure SQL Database についての「例」のセクションを参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

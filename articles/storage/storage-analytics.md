@@ -22,7 +22,7 @@
 
 Azure Storage Analytics では、ログが記録され、ストレージ アカウントのメトリック データを得ることができます。このデータを使用して、要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断を行うことができます。
 
-Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。これは、[Azure ポータル](portal.azure.com)から有効にできます。詳細については、「[ストレージ アカウントの監視方法](http://www.azure.com/manage/services/storage/how-to-monitor-a-storage-account/)」を参照してください。また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。各サービスで Storage Analytics を有効にするには、[Get Blob Service Properties](https://msdn.microsoft.com/library/hh452239.aspx)、[Get Queue Service Properties](https://msdn.microsoft.com/library/hh452243.aspx)、[Get Table Service Properties](https://msdn.microsoft.com/library/hh452238.aspx) の各操作を使用します。
+Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。これは、[Azure ポータル](https://portal.azure.com)から有効にできます。詳細については、「[ストレージ アカウントの監視方法](http://www.azure.com/manage/services/storage/how-to-monitor-a-storage-account/)」を参照してください。また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。各サービスで Storage Analytics を有効にするには、[Get Blob Service Properties](https://msdn.microsoft.com/library/hh452239.aspx)、[Get Queue Service Properties](https://msdn.microsoft.com/library/hh452243.aspx)、[Get Table Service Properties](https://msdn.microsoft.com/library/hh452238.aspx) の各操作を使用します。
 
 集計データは、既知の BLOB (ログの場合) と既知のテーブル (メトリックの場合) に格納されます。集計データには、BLOB サービスとテーブル サービスの API を使用してアクセスできます。
 
@@ -62,12 +62,12 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 
 - エラー コード 304 (Not Modified) で失敗した GET 要求
 
-その他の失敗した匿名要求は一切記録されません。ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)」および「[Storage Analytics のログの形式](https://msdn.microsoft.com/library/hh343259.aspx) をご覧ください。
+その他の失敗した匿名要求は一切記録されません。ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)」および「[Storage Analytics のログの形式]」(https://msdn.microsoft.com/library/hh343259.aspx)) をご覧ください。
 
 ### ログの保存方法
 すべてのログは、Storage Analytics をストレージ アカウントに対して有効にしたときに自動的に作成される $logs という名前のコンテナー内のブロック BLOB に格納されます。$logs コンテナーは、ストレージ アカウントの BLOB 名前空間にあります (例: `http://<accountname>.blob.core.windows.net/$logs`)。Storage Analytics を有効にした後は、このコンテナーを削除することはできません。ただし、コンテナーの内容を削除することはできます。
 
->[Azure.NOTE]コンテナーの一覧作成操作 ([ListContainers](https://msdn.microsoft.com/library/ee758348.aspx) メソッドなど) を実行しても、$logs コンテナーは表示されません。直接アクセスする必要があります。たとえば、[ListBlobs](https://msdn.microsoft.com/library/ee772878.aspx) メソッドを使用して、`$logs` コンテナー内の BLOB にアクセスできます。要求がログに記録されると、Storage Analytics は、中間結果をブロックとしてアップロードします。これらのブロックを定期的にコミットし、BLOB として利用できるようにします。
+>[Azure.NOTE] コンテナーの一覧作成操作 ([ListContainers](https://msdn.microsoft.com/library/ee758348.aspx) メソッドなど) を実行しても、$logs コンテナーは表示されません。直接アクセスする必要があります。たとえば、[ListBlobs](https://msdn.microsoft.com/library/ee772878.aspx) メソッドを使用して、`$logs` コンテナー内の BLOB にアクセスできます。要求がログに記録されると、Storage Analytics は、中間結果をブロックとしてアップロードします。これらのブロックを定期的にコミットし、BLOB として利用できるようにします。
 
 同じ時間内に作成されたログについて、重複するレコードが存在する場合があります。レコードが重複しているかどうかは、**RequestId** と **Operation** の数をチェックすることによって確認できます。
 
@@ -126,7 +126,7 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 
 Storage Analytics では、ストレージ サービスに対する要求に関する集計されたトランザクション統計情報と容量データを含むメトリックを格納できます。トランザクションに関しては、API 操作レベルとストレージ サービス レベルの両方でレポートされます。容量に関しては、ストレージ サービス レベルでレポートされます。メトリック データは、ストレージ サービスの使用状況の分析、ストレージ サービスに対する要求に関する問題の診断、サービスを使用するアプリケーションのパフォーマンスの向上に利用できます。
 
-Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。これは、[Azure ポータル](portal.azure.com)から有効にできます。詳細については、「[ストレージ アカウントの監視方法](../how-to-monitor-a-storage-account.md)」を参照してください。また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。各サービスで Storage Analytics を有効にするには、[Get Blob Service Properties、Get Queue Service Properties](https://msdn.microsoft.com/library/hh452239.aspx)、[Get Table Service Properties](https://msdn.microsoft.com/library/hh452238.aspx) の各操作を使用します。
+Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。これは、[Azure ポータル](https://portal.azure.com)から有効にできます。詳細については、「[ストレージ アカウントの監視方法](../how-to-monitor-a-storage-account.md)」を参照してください。また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。各サービスで Storage Analytics を有効にするには、[Get Blob Service Properties、Get Queue Service Properties](https://msdn.microsoft.com/library/hh452239.aspx)、[Get Table Service Properties](https://msdn.microsoft.com/library/hh452238.aspx) の各操作を使用します。
 
 ### トランザクション メトリック
 
@@ -140,7 +140,7 @@ Storage Analytics を使用するには、監視するサービスごとに Stor
 
 ### 容量メトリック
 
->[AZURE.NOTE]現在、容量メトリックは、BLOB サービスに対してのみ利用できます。Table サービスと Queue サービスに関する容量メトリックは、Storage Analytics の将来のバージョンでの提供を予定しています。
+>[AZURE.NOTE] 現在、容量メトリックは、BLOB サービスに対してのみ利用できます。Table サービスと Queue サービスに関する容量メトリックは、Storage Analytics の将来のバージョンでの提供を予定しています。
 
 容量データはストレージ アカウントの BLOB サービスに対して毎日記録され、2 つのテーブル エンティティが書き込まれます。一方のエンティティは、ユーザー データの統計情報です。もう一方のエンティティは、Storage Analytics によって使用される `$logs` BLOB コンテナーに関する統計情報です。`$MetricsCapacityBlob` テーブルには、次の統計情報が含まれています。
 
@@ -206,4 +206,4 @@ Storage Analytics のデータで課金対象の要求を調べるときには�
 - [Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/hh343264.aspx)
 - [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

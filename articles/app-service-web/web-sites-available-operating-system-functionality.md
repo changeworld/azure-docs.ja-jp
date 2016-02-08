@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/08/2015" 
+	ms.date="01/26/2016" 
 	ms.author="cephalin"/>
 
 # Azure App Service におけるオペレーティング システムの機能 #
@@ -105,10 +105,10 @@ App Service の各アプリは、"アプリケーション プール ID" と呼�
 
 レジストリへの書き込みアクセスはブロックされます。ユーザーごとのレジストリ キーにも一切アクセスできません。Azure 環境の場合、アプリが他の仮想マシンへ移行される可能性があるので、レジストリへの書き込みアクセスを前提にしてコードを開発しないでください。アプリで利用できる唯一の書き込み可能な永続ストレージは、App Service の UNC 共有に格納されるアプリ別のコンテンツ ディレクトリ構造です。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
  
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

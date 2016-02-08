@@ -37,7 +37,7 @@
 - 名前: **TestVNet**。アドレス空間として **192.168.0.0/16** と **10.254.0.0/16** を使用します。1 つの VNet に複数のアドレス空間を使用できます。
 - サブネット名: **FrontEnd**。**192.168.1.0/24** を使用します。
 - サブネット名: **BackEnd**。**10.254.1.0/24** を使用します。
-- サブネット名: **GatewaySubnet**。**192.168.200.0/24** を使用します。ゲートウェイが機能するには、サブネット名 GatewaySubnet が必須となります。 
+- サブネット名: **GatewaySubnet**。**192.168.200.0/24** を使用します。ゲートウェイが機能するには、サブネット名 *GatewaySubnet* が必須となります。 
 - VPN クライアント アドレス プール: **172.16.201.0/24**。このポイント対サイト接続を利用して VNet に接続する VPN クライアントはこのプールから IP アドレスを受け取ります。
 - サブスクリプション: サブスクリプションが複数ある場合は、適切なサブスクリプションを使用していることを確認します。
 - リソース グループ: **TestRG**。
@@ -50,7 +50,7 @@
 
 ## 作業を開始する前に
 
-Azure サブスクリプションがあり、この構成に必要な Azure PowerShell コマンドレットがインストールされていることを確認します (1.0.2 以降)。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+Azure サブスクリプションがあり、この構成に必要な Azure PowerShell コマンドレットがインストールされていることを確認します (1.0.2 以降)。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 	
 **PowerShell コマンドレット モジュールのインストールについて**
 
@@ -94,7 +94,7 @@ Azure サブスクリプションがあり、この構成に必要な Azure Powe
 
 		New-AzureRmResourceGroup -Name $RG -Location $Location
 
-6. 仮想ネットワークのサブネット構成を作成し、「FrontEnd」、「BackEnd」、「GatewaySubnet」という名前を付けます。これらのプレフィックスは、上で宣言された VNet アドレス空間に含まれる必要があります。
+6. 仮想ネットワークのサブネット構成を作成し、「*FrontEnd*」、「*BackEnd*」、「*GatewaySubnet*」という名前を付けます。これらのプレフィックスは、上で宣言された VNet アドレス空間に含まれる必要があります。
 
 		$fesub = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
 		$besub = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName -AddressPrefix $BESubPrefix
@@ -114,7 +114,7 @@ Azure サブスクリプションがあり、この構成に必要な Azure Powe
 		$pip = New-AzureRmPublicIpAddress -Name $GWIPName -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
 		$ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
 		
-10. Azure にルート証明書 .cer ファイルをアップロードします。会社の証明書環境のルート証明書を使用するか、自己署名のルート証明書を使用できます。最大 20 個のルート証明書をアップロードすることができます。makecert を使用して自己署名ルート証明書を作成する手順については、「[ポイント対サイト構成の自己署名ルート証明書の操作](vpn-gateway-certificates-point-to-site.md)」をご覧ください。.cer ファイルにはルート証明書の秘密キーを含めないでください。
+10. Azure にルート証明書 .cer ファイルをアップロードします。会社の証明書環境のルート証明書を使用するか、自己署名のルート証明書を使用できます。最大 20 個のルート証明書をアップロードすることができます。*makecert* を使用して自己署名ルート証明書を作成する手順については、「[ポイント対サイト構成の自己署名ルート証明書の操作](vpn-gateway-certificates-point-to-site.md)」をご覧ください。.cer ファイルにはルート証明書の秘密キーを含めないでください。
 	
 	以下はサンプルです。公的な証明書データをアップロードする際の問題は、文字列全体をスペースなしでコピーし、貼り付けなければならないということです。そのようにコピーしないと、アップロードは機能しません。この手順では、独自の証明書 .cer ファイルを使用する必要があります。下のサンプルからはコピーしないでください。
 
@@ -147,7 +147,7 @@ Azure サブスクリプションがあり、この構成に必要な Azure Powe
 
 ## 接続を確認する
 
-1. VPN 接続がアクティブであることを確認するには、管理者特権でのコマンド プロンプトを開いて、ipconfig/all を実行します。
+1. VPN 接続がアクティブであることを確認するには、管理者特権でのコマンド プロンプトを開いて、*ipconfig/all* を実行します。
 
 2. 結果を表示します。受信した IP アドレスが、構成に指定したポイント対サイト VPN クライアント アドレス プール内のアドレスのいずれかであることに注意してください。結果は、次のようになります。
     
@@ -231,4 +231,4 @@ Azure サブスクリプションがあり、この構成に必要な Azure Powe
 
 仮想ネットワークに仮想マシンを追加できます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -268,11 +268,11 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 ## その他のリソース
 
-[Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
+[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
-[Azure 仮想マシンに関する FAQ](http://msdn.microsoft.com/library/azure/dn683781.aspx)
+[Azure Virtual Machines に関する FAQ](http://msdn.microsoft.com/library/azure/dn683781.aspx)
 
-[Azure Virtual Machines の概要](http://msdn.microsoft.com/library/azure/jj156143.aspx)
+[Azure の仮想マシンの概要](http://msdn.microsoft.com/library/azure/jj156143.aspx)
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
@@ -280,4 +280,4 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

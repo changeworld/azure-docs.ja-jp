@@ -32,9 +32,9 @@
 
 * **クライアント コンピューター** - Azure PowerShell のクラスター デプロイ スクリプト (このデプロイ方法を選択する場合) を実行したり、Excel および SOA のサンプル ジョブをクラスターに送信したりするには、Windows ベースのクライアント コンピューターが必要です。
 
-* **Azure サブスクリプション** - アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* **Azure サブスクリプション** - アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-* **コア クォータ** - 場合によっては、コアのクォータを増やす必要があります。特に、マルチコア VM サイズのクラスター ノードをいくつかデプロイする場合に必要となる可能性があります。Azure クイックスタート テンプレートを使用する場合、リソース マネージャーのコア クォータは Azure リージョンごとであることに注意してください。特定のリージョンのクォータを増やす必要がある可能性があります。「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。クォータを増やすには、[オンライン カスタマー サポートに申請](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) できます。
+* **コア クォータ** - 場合によっては、コアのクォータを増やす必要があります。特に、マルチコア VM サイズのクラスター ノードをいくつかデプロイする場合に必要となる可能性があります。Azure クイックスタート テンプレートを使用する場合、リソース マネージャーのコア クォータは Azure リージョンごとであることに注意してください。特定のリージョンのクォータを増やす必要がある可能性があります。「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。クォータを増やすには、[オンライン カスタマー サポートに申請](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) できます。
 
 
 ## 手順 1.Azure で HPC Pack クラスターをセットアップする
@@ -61,7 +61,7 @@ Azure クイックスタート テンプレートを使用すると、Azure ポ�
 
     ![パラメーターを入力する][parameters]
 
-    >[AZURE.NOTE]ヘッド ノードの VM は、Windows Server 2012 R2 上の HPC Pack 2012 R2 の[最新の Marketplace イメージ](http://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)から自動的に作成されます。現時点では、イメージは HPC Pack 2012 R2 Update 3 に基づいています。
+    >[AZURE.NOTE]ヘッド ノードの VM は、Windows Server 2012 R2 上の HPC Pack 2012 R2 の[最新の Marketplace イメージ](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)から自動的に作成されます。現時点では、イメージは HPC Pack 2012 R2 Update 3 に基づいています。
     >
     >コンピューティング ノードの VM は、選択したコンピューティング ノード ファミリの最新のイメージから作成されます。汎用の最新の HPC Pack 2012 R2 Update 3 コンピューティング イメージの **ComputeNode** オプションを選択します。Microsoft Excel Professional Plus 2013 の評価版を含む最新の HPC Pack コンピューティング ノード イメージの **ComputeNodeWithExcel** オプションを選択します。一般的な SOA セッション用または Excel UDF オフロード用にクラスターをデプロイする場合は、**ComputeNode** オプションを選択します (Excel はインストールされません)。
     >
@@ -264,7 +264,7 @@ You have enabled REST API or web portal on HPC Pack head node. Please import the
 
 Excel の UDF を実行するには、前記の手順 1 ～ 3 に従ってクライアント コンピューターを設定します。Excel UDF の場合、Excel アプリケーションがコンピューティング ノードにインストールされている必要はないので、手順 1 では、Excel を含むコンピューティング ノード イメージではなく、通常のコンピューティング ノード イメージを選択できます。
 
->[AZURE.NOTE]Excel 2010 および 2013 クラスター コネクタのダイアログ ボックスには 34 文字の制限があります。完全なクラスター名が長い場合は (例: hpcexcelhn01.southeastasia.cloudapp.azure.com)、ダイアログ ボックスに収まりません。回避策は、長いクラスター名の値に *CCP\_IAASHN* などのマシン全体の変数を設定し、*%CCP\_IAASHN%* をダイアログ ボックスにクラスター ヘッドのノード名として入力します。Update 2 クラスターの場合、この回避策のサポートとして、クライアント マシンの SOA Session API に Update 2 QFE KB3085833 ([ここ](http://www.microsoft.com/ja-JP/download/details.aspx?id=48725)よりダウンロード) が必要であることに注意してください。
+>[AZURE.NOTE] Excel 2010 および 2013 クラスター コネクタのダイアログ ボックスには 34 文字の制限があります。完全なクラスター名が長い場合は (例: hpcexcelhn01.southeastasia.cloudapp.azure.com)、ダイアログ ボックスに収まりません。回避策は、長いクラスター名の値に *CCP\_IAASHN* などのマシン全体の変数を設定し、*%CCP\_IAASHN%* をダイアログ ボックスにクラスター ヘッドのノード名として入力します。Update 2 クラスターの場合、この回避策のサポートとして、クライアント マシンの SOA Session API に Update 2 QFE KB3085833 ([ここ](http://www.microsoft.com/ja-JP/download/details.aspx?id=48725)よりダウンロード) が必要であることに注意してください。
 
 クラスターが正常にデプロイされた後、引き続き以下の手順に従って、サンプルの組み込み Excel UDF を実行します。Excel UDF をカスタマイズした場合は、[リソース](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx)を参考にして、XLL を作成し、IaaS クラスターにそれをデプロイしてください。
 
@@ -381,4 +381,4 @@ SOA クライアント アプリケーションでは、IaaS クラスターの�
 [endpoint]: ./media/virtual-machines-excel-cluster-hpcpack/endpoint.png
 [udf]: ./media/virtual-machines-excel-cluster-hpcpack/udf.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

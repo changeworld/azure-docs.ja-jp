@@ -20,7 +20,7 @@
 
 Azure Search サービスはホスト型のクラウド検索サービスであり、これを利用すれば、優れた検索機能を簡単に提供できます。検索を可能にするには、先に Azure Search インデックスにデータを入力する必要があります。データが Azure SQL Database に存在する場合は、Azure Search の新しい **Azure SQL Database 用 Azure Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。これは、記述するコードと対処するインフラストラクチャが減ることを意味します。
 
-現時点では、インデクサーが動作するのは Azure SQL Database、Azure VM 上の SQL Server、および [Azure DocumentDB](../documentdb/documentdb-search-indexer.md) だけです。この記事では、Azure SQL Database で動作するインデクサーについて説明します。その他のデータ ソースについてのサポートを希望する場合は、[Azure Search フィードバック フォーラム](http://feedback.azure.com/forums/263029-azure-search)でフィードバックを提供してください。
+現時点では、インデクサーが動作するのは Azure SQL Database、Azure VM 上の SQL Server、および [Azure DocumentDB](../documentdb/documentdb-search-indexer.md) だけです。この記事では、Azure SQL Database で動作するインデクサーについて説明します。その他のデータ ソースについてのサポートを希望する場合は、[Azure Search フィードバック フォーラム](https://feedback.azure.com/forums/263029-azure-search/)でフィードバックを提供してください。
 
 この記事ではインデクサーを使用するしくみについて説明しますが、SQL Database のみで使用できる機能と動作の詳細にも触れます (統合された変更追跡など)。
 
@@ -279,4 +279,4 @@ A: はい。インデクサーは検索サービス内のノードの 1 つで�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

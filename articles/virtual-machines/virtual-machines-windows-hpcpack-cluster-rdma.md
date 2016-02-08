@@ -39,10 +39,10 @@ Microsoft HPC Pack は、Azure で Windows Server ベースの HPC クラスタ�
 * コンピューティング集中型インスタンスに関する**[背景情報および考慮事項](virtual-machines-a8-a9-a10-a11-specs.md)を確認**します。
 
 
-* **Azure サブスクリプション** - アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* **Azure サブスクリプション** - アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 
-* **コア クォータ** - A8 または A9 VM のクラスターをデプロイするために、コア クォータを増やすことが必要な場合があります。たとえば、HPC Pack と共に 8 個の A9 インスタンスをデプロイする場合は、少なくとも 128 コアが必要です。クォータを増やすには、[オンライン カスタマー サポートに申請](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
+* **コア クォータ** - A8 または A9 VM のクラスターをデプロイするために、コア クォータを増やすことが必要な場合があります。たとえば、HPC Pack と共に 8 個の A9 インスタンスをデプロイする場合は、少なくとも 128 コアが必要です。クォータを増やすには、[オンライン カスタマー サポートに申請](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
 
 ## シナリオ 1. コンピューティング集中型 worker ロール インスタンスをデプロイする (PaaS)
 
@@ -51,7 +51,7 @@ Microsoft HPC Pack は、Azure で Windows Server ベースの HPC クラスタ�
 
 既存の (通常はオンプレミスの) クラスターから A8 または A9 Azure インスタンスにバーストする際の考慮事項とバーストの手順を以下に示します。Azure VM にデプロイされた HPC Pack ヘッド ノードに worker ロール インスタンスを追加する場合も、同様の手順を実行します。
 
->[AZURE.NOTE]HPC Pack を使用した Azure へのバーストのチュートリアルについては、[HPC Pack を使用したハイブリッド クラスターのセットアップ](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)に関するページを参照してください。次の手順の考慮事項は、特に A8 および A9 サイズの Azure ノードに適用されます。
+>[AZURE.NOTE] HPC Pack を使用した Azure へのバーストのチュートリアルについては、[HPC Pack を使用したハイブリッド クラスターのセットアップ](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)に関するページを参照してください。次の手順の考慮事項は、特に A8 および A9 サイズの Azure ノードに適用されます。
 
 ![Burst to Azure][burst]
 
@@ -181,7 +181,7 @@ Microsoft HPC Pack は、Azure で Windows Server ベースの HPC クラスタ�
     task view <JobID>.1
     ```
 
-    ここで、&lt;JobID&gt; には、送信されたジョブの ID を指定します。
+    ここで、&lt;*JobID*&gt; には、送信されたジョブの ID を指定します。
 
     出力には、次のように待機時間の結果が含まれます。
 
@@ -226,7 +226,7 @@ Azure インスタンスで MPI アプリケーションを実行する場合の
 
 * Azure インスタンスで MPI アプリケーションを実行するには、**hpcfwutil** コマンドを実行して、各 MPI アプリケーションをインスタンスの Windows ファイアウォールに登録します。これにより、ファイアウォールによって動的に割り当てられたポートで MPI 通信が実行されます。
 
-    >[AZURE.NOTE]Azure デプロイへのバースト用には、ファイアウォールの例外コマンドを、クラスターに追加されたすべての新しい Azure ノードで自動的に実行されるように構成することもできます。**hpcfwutil** コマンドを実行してアプリケーションが動作することを確認した後、Azure ノードのスタートアップ スクリプトに次のコマンドを追加します。詳細については、「[Use a Startup Script for Azure Nodes](https://technet.microsoft.com/library/jj899632.aspx)」をご覧ください。
+    >[AZURE.NOTE] Azure デプロイへのバースト用には、ファイアウォールの例外コマンドを、クラスターに追加されたすべての新しい Azure ノードで自動的に実行されるように構成することもできます。**hpcfwutil** コマンドを実行してアプリケーションが動作することを確認した後、Azure ノードのスタートアップ スクリプトに次のコマンドを追加します。詳細については、「[Use a Startup Script for Azure Nodes](https://technet.microsoft.com/library/jj899632.aspx)」をご覧ください。
 
 
 
@@ -249,4 +249,4 @@ Azure インスタンスで MPI アプリケーションを実行する場合の
 [pingpong1]: ./media/virtual-machines-windows-hpcpack-cluster-rdma/pingpong1.png
 [pingpong2]: ./media/virtual-machines-windows-hpcpack-cluster-rdma/pingpong2.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

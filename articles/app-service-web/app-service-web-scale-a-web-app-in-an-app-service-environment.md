@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/26/2015" 
+	ms.date="01/14/2016" 
 	ms.author="ccompy"/>
 
 # App Service 環境内でのアプリのスケーリング #
@@ -58,7 +58,7 @@ ASE の ASP 用の自動スケール ルールは、通常と同じように機�
 
 ワーカー プール間で ASP を移動する場合は、ASP のための容量が十分に確保されているか事前に確認することが重要です。ワーカー プールの一覧には、ワーカー プールの名前だけでなく、そのワーカー プールで使用可能なワーカーの数も表示されます。App Service プランを格納するための十分なインスタンスがあることを確認します。移動先のワーカー プールにより多くのコンピューティング リソースが必要な場合は、ASE 管理者に依頼してコンピューティング リソースを追加してもらう必要があります。
 
-> [AZURE.NOTE]ASP を 1 つのワーカー プールから移動すると、その ASP のアプリが再起動されます。そのため、アプリが再起動に要する時間に応じて、アプリで短時間のダウンタイムが発生する可能性があります。
+> [AZURE.NOTE] ASP を 1 つのワーカー プールから移動すると、その ASP のアプリが再起動されます。そのため、アプリが再起動に要する時間に応じて、アプリで短時間のダウンタイムが発生する可能性があります。
 
 ## 使用の開始
 
@@ -83,4 +83,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 [AppScale]: http://azure.microsoft.com/documentation/articles/web-sites-scale/
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0128_2016-->

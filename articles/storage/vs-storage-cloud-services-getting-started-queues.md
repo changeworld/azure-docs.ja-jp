@@ -28,7 +28,7 @@
 
  - プログラムを使用してキューを操作する方法の詳細については、「[.NET から Queue ストレージを使用する方法](storage-dotnet-how-to-use-queues.md)」をご覧ください。
  - Azure Storage の一般情報については、「[ストレージのドキュメント](https://azure.microsoft.com/documentation/services/storage/)」をご覧ください。
- - Azure Cloud Services の一般情報については、「[Cloud Services のドキュメント](http://azure.microsoft.com/documentation/services/cloud-services/)」をご覧ください。
+ - Azure Cloud Services の一般情報については、「[Cloud Services のドキュメント](https://azure.microsoft.com/documentation/services/cloud-services/)」をご覧ください。
  - ASP.NET アプリケーションのプログラミングについての詳細は、「[ASP.NET](http://www.asp.net)」をご覧ください。
 
 
@@ -192,4 +192,4 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

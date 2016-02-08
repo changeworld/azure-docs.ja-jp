@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/21/2015"
+   ms.date="01/19/2016"
    ms.author="seanmck"/>
 
 
@@ -42,7 +42,7 @@ ASP.NET 5 は軽量のクロスプラットフォーム Web 開発フレーム�
 
     作成した Web API プロジェクトでは、2 つのサービスがアプリケーションに含まれます。アプリケーションの作成を続けながら、まったく同じ方法でさらにサービスを追加することができます。それぞれを個別にバージョン管理およびアップグレードできます。
 
->[AZURE.NOTE]Service Fabric の 11 月のパブリック プレビュー リリースでは、ASP.NET プロジェクトを処理する際にパスが長いと既知の問題が生じることがわかりました。このようなプロジェクトを作成する際は、問題を回避するために、コードと構成パッケージ名だけでなく、アプリケーションとサービスの種類にも短い名前を選ぶことをお勧めします。
+>[AZURE.NOTE] Service Fabric の 11 月のパブリック プレビュー リリースでは、ASP.NET プロジェクトを処理する際にパスが長いと既知の問題が生じることがわかりました。このようなプロジェクトを作成する際は、問題を回避するために、コードと構成パッケージ名だけでなく、アプリケーションとサービスの種類にも短い名前を選ぶことをお勧めします。
 
 ## アプリケーションの実行
 
@@ -139,7 +139,7 @@ Service Fabric は、Reliable Services との通信方法において完全な�
 
 `ICounter` インターフェイスを実装した後、ステートフル サービスを他のサービスから呼び出すことができるようにする最後の手順は、通信チャネルを開くことです。ステートフル サービスのために、Service Fabric には、`CreateServiceReplicaListeners` と呼ばれるオーバーライド可能なメソッドが用意されています。このメソッドを使用すると、サービスに対して有効にする通信の種類に基づき、1 つ以上の通信リスナーを指定できます。
 
->[AZURE.NOTE]ステートレス サービスへの通信チャネルを開く同等のメソッドは、`CreateServiceInstanceListeners` という名前です。
+>[AZURE.NOTE] ステートレス サービスへの通信チャネルを開く同等のメソッドは、`CreateServiceInstanceListeners` という名前です。
 
 この場合、既存の `CreateServiceReplicaListeners` メソッドを置換し、`ServiceRemotingListener` のインスタンスを指定します。これにより、`ServiceProxy` を介してクライアントから呼び出すことができる RPC エンドポイントが作成されます。
 
@@ -189,7 +189,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
     コードの最初の行が重要です。ステートフル サービスへの ICounter プロキシを作成するには、パーティション ID とサービス名の 2 つの情報を提供する必要があります。
 
-    パーティション分割を使用すると、顧客 ID や郵便番号などの定義したキーに基づいて異なるバケットにステートを分割することにより、ステートフル サービスを拡張できます。この単純なアプリケーションではステートフル サービスはパーティションを 1 つしか持たないので、キーは重要ではありません。どのキーを指定しても同じパーティションになります。サービスのパーティション分割の詳細については、「[Service Fabric Reliable Services をパーティション分割する方法](service-fabric-concepts-partitioning)」を参照してください。
+    パーティション分割を使用すると、顧客 ID や郵便番号などの定義したキーに基づいて異なるバケットにステートを分割することにより、ステートフル サービスを拡張できます。この単純なアプリケーションではステートフル サービスはパーティションを 1 つしか持たないので、キーは重要ではありません。どのキーを指定しても同じパーティションになります。サービスのパーティション分割の詳細については、「[Service Fabric Reliable Services をパーティション分割する方法](service-fabric-concepts-partitioning.md)」を参照してください。
 
     サービス名は、fabric:/&lt;アプリケーション名&gt;/&lt;サービス名&gt; の形式の URI です。
 
@@ -237,4 +237,4 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

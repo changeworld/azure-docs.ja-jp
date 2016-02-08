@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/04/2015" 
+	ms.date="01/27/2016" 
 	ms.author="ddove;sidneyh"/>
 
 # Elastic Database ツールを使用してシャードを追加する
@@ -25,7 +25,7 @@
 キー値の新しい範囲が既に既存のマッピングの一部になっていない場合は、新しいシャードの追加と、そのシャードへの新しいキーまたは範囲の関連付けはとてもシンプルな作業です。
 
 ### 例: シャードとその範囲を既存のシャード マップに追加する
-次の例では、範囲 [300, 400) を保持する、**sample\_shard\_2** という名前のデータベースと、その中の必要なすべてのスキーマ オブジェクトが作成されています。
+このサンプルでは、[TryGetShard](https://msdn.microsoft.com/library/azure/dn823929.aspx)、[CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx)、[CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn807221.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeShardMap`1.CreateRangeMapping(Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeMappingCreationInfo{`0})) の各メソッドを使用して、[ShardLocation](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.) クラスのインスタンスを作成します。次の例では、範囲 [300, 400) を保持する、**sample\_shard\_2** という名前のデータベースと、その中の必要なすべてのスキーマ オブジェクトが作成されています。
 
     // sm is a RangeShardMap object.
     // Add a new shard to hold the range being added. 
@@ -79,4 +79,4 @@
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

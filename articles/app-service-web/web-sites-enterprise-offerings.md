@@ -49,7 +49,7 @@ App Service Web Apps は、拡張性と信頼性に優れ、管理やパッチ�
 
 - [App Service Environment](../app-service-app-service-environment-intro.md) - App Service Environment (ASE) は、Microsoft Azure App Service に最近追加された新しい Premium 機能です。ASE が提供する完全に分離された専用の環境により、Azure App Service アプリを高スケールで安全に実行しつつ、分離およびセキュリティで保護されたネットワーク アクセスを実現できます。   
 - [ハイブリッド接続](../integration-hybrid-connection-overview.md) – ハイブリッド接続は Microsoft Azure BizTalk Services の機能で、Web Apps が、たとえば SQL Server、MySQL、Web API、カスタム Web サービスなど、オンプレミスのリソースに安全に接続できるようにします。 
-- [Virtual Network Integration](http://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) – Web Apps と Azure Virtual Network の統合によって、Web アプリを Azure Virtual Network に接続できます。同様に Azure Virtual Network を、サイト間 VPN 経由でオンプレミスのインフラストラクチャに接続することも可能です。 
+- [Virtual Network Integration](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) – Web Apps と Azure Virtual Network の統合によって、Web アプリを Azure Virtual Network に接続できます。同様に Azure Virtual Network を、サイト間 VPN 経由でオンプレミスのインフラストラクチャに接続することも可能です。 
 
 次の図は、オンプレミスのリソースに対する接続オプションを備えた高度なソリューションの例を示しています。最初の例は、このソリューションを実現するために Azure App Service の標準の機能を使用する方法を示しており、2 番目の例は、同じソリューションを実現するために Premium サービスの App Service Environment を使用する方法を示しています。
 
@@ -159,4 +159,4 @@ Azure App Service Web Apps サービスの詳細については、[http://aka.ms
  
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

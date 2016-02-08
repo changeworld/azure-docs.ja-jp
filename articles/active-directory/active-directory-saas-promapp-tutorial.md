@@ -3,7 +3,7 @@
 	description="Azure Active Directory と Promapp の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="jeevansd"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/03/2015"
-	ms.author="markusvi"/>
+	ms.date="01/26/2016"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と Promapp の統合
@@ -23,7 +23,7 @@
 
 - Promapp にアクセスする Azure AD ユーザーを制御できます。 
 - ユーザーが自分の Azure AD アカウントで自動的に Promapp にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Active Directory ポータル) でアカウントを管理できます。
+- 1 つの中央サイト (Azure Active Directory クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
@@ -35,7 +35,7 @@ Promapp と Azure AD の統合を構成するには、次のものが必要で�
 - Promapp でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -56,14 +56,14 @@ Azure AD への Promapp の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Promapp を追加するには、次の手順を実行します。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br> ![Active Directory][1]<br>
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br> ![Active Directory][1]<br>
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. アプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br>![アプリケーション][2]<br>
-4. ページの下部にある **[追加]** をクリックします。<br><br>![アプリケーション][3]<br>
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br>![アプリケーション][4]<br>
-6. 検索ボックスに「**Promapp**」と入力します。<br><br>![アプリケーション][5]<br>
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br> ![アプリケーション][2]<br>
+4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
+6. 検索ボックスに「**Promapp**」と入力します。<br><br> ![アプリケーション][5]<br>
 7. 結果ウィンドウで **[Promapp]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>![アプリケーション][500]<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
@@ -81,22 +81,22 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
 ### Azure AD シングル サインオンの構成
 
-このセクションの目的は、Azure AD ポータルで Azure AD のシングル サインオンを有効にすることと、Promapp アプリケーションでシングル サインオンを構成することです。<br>
+このセクションの目的は、Azure AD クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Promapp アプリケーションでシングル サインオンを構成することです。<br>
 
 **Promapp で Azure AD シングル サインオンを構成するには、次の手順を実行します。**
 
-1. Azure AD ポータルの **Promapp** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][6] <br>
+1. Azure AD クラシック ポータルの **Promapp** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][6] <br>
 
-2. **[ユーザーの Promapp へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br>![Azure AD のシングル サインオン][7]<br>
+2. **[ユーザーの Promapp へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD のシングル サインオン][7] <br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行します。<br><br>![Azure AD のシングル サインオン][8]<br>
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のシングル サインオン][8] <br>
  
      a.**[サインオン URL]** ボックスに、ユーザーが Promapp サイトへのサインオンに使用する URL を入力します (例: **https://companyname.promapp.com/instancename*))。
 
 
      b.**[次へ]** をクリックします。
  
-4. **[Promapp でのシングル サインオンの構成]** ページで、次の手順を実行します。<br><br>![Azure AD のシングル サインオン][9]<br>
+4. **[Promapp でのシングル サインオンの構成]** ページで、次の手順を実行します。<br><br>![Azure AD のシングル サインオン][9] <br>
 
     a.[証明書のダウンロード] をクリックし、コンピューターにファイルを保存します。
 
@@ -105,15 +105,15 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
 6. Promapp 企業サイトに管理者としてサインオンします。
 
-6. 上部のメニューで **[Admin]** をクリックします。<br><br>![Azure AD のシングル サインオン][12]<br>
+6. 上部のメニューで **[管理者]** をクリックします。<br><br>![Azure AD のシングル サインオン][12]<br>
 
 6. **[Configure]** をクリックします。<br><br>![Azure AD のシングル サインオン][13]<br>
 
 
 
-4. **[Security]** ダイアログで、次の手順を実行します。<br><br>![Azure AD のシングル サインオン][14]<br>
+4. **[Security]** ダイアログで、次の手順を実行します。<br><br>![Azure AD のシングル サインオン][14] <br>
 
-    a.Azure AD ポータルの **[Promapp でのシングル サインオンの構成]** ダイアログで、**[リモート ログイン URL]** 値をコピーして、**[SSO-Login URL]** ボックスに貼り付け、**[Save]** をクリックします。
+    a.Azure クラシック ポータルの **[Promapp でのシングル サインオンの構成]** ダイアログで、**[リモート ログイン URL]** 値をコピーして、**[SSO-Login URL]** ボックスに貼り付け、**[Save]** をクリックします。
 
     b.**[SSO - Single Sign-on Mode]** として **[Optional]** を選択し、**[Save]** をクリックします。
 
@@ -122,7 +122,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD のシングル サインオン][10]<br>
+6. Azure AD クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD のシングル サインオン][10]<br>
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
@@ -132,19 +132,19 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
 
 ### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_09.png) <br> 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_09.png) <br> 
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. ユーザーの一覧を表示するために、上部のメニューの **[ユーザー]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_03.png)<br>
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_03.png) <br>
  
-4. **[ユーザーの追加]** ダイアログを開くために、下部にあるツール バーの **[ユーザーの追加]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_04.png)<br>
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_04.png) <br>
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_05.png)<br>
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_05.png) <br>
 
     a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
@@ -152,7 +152,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_06.png)<br>
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_06.png) <br>
  
     a.**[名]** ボックスに「**Britta**」と入力します。
 
@@ -162,9 +162,9 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
     d.**[ロール]** 一覧で **[ユーザー]** を選択します。e.**[次へ]** をクリックします。
 
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_07.png)<br>
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_07.png) <br>
  
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順を実行します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_08.png)<br>
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_08.png) <br>
   
     a.**[新しいパスワード]** の値を書き留めます。
 
@@ -183,12 +183,12 @@ Promapp アプリケーションでは、ジャストインタイム プロビ�
 
 **Promapp に Britta Simon を割り当てるには、次の手順を実行します。**
 
-1. Azure ポータルで、アプリケーション ビューを開くために、ディレクトリ ビューで、トップ メニューの **[アプリケーション]** をクリックします。<br> <br>![ユーザーの割り当て][201]<br>
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。 <br><br>![ユーザーの割り当て][201] <br>
 2. アプリケーションの一覧で **[Promapp]** を選択します。<br><br>![ユーザーの割り当て][202] <br>
-1. 上部のメニューの **[ユーザー]** をクリックします。<br> <br>![ユーザーの割り当て][203]<br>
+1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
 1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-2. 下部にあるツール バーの **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][205]
+2. 下部にあるツール バーで **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][205]
 
 
 
@@ -237,4 +237,4 @@ Promapp アプリケーションでは、ジャストインタイム プロビ�
 [401]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_401.png
 [402]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_402.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

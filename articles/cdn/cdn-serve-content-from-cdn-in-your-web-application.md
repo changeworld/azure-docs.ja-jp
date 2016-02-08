@@ -18,6 +18,8 @@
 
 # Web アプリケーションで Azure CDN からコンテンツを配信する #
 
+> [AZURE.NOTE] このチュートリアルは、従来の CDN サービスに適用されます。CDN の現在のバージョンを更新するための作業が進んでいます。
+
 このチュートリアルでは、Azure CDN の利点を活用して Web アプリケーションの適用範囲を拡大し、パフォーマンスを向上させる方法について説明します。Azure CDN を使用すると、以下の場合に Web アプリケーションのパフォーマンスが向上します。
 
 - ページに静的または半静的コンテンツへの多数のリンクがある
@@ -43,7 +45,7 @@
 -	Visual Studio 2013 と BLOB 管理 GUI 用 [Azure SDK](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
 -	[Azure PowerShell](http://go.microsoft.com/?linkid=9811175&clcid=0x409) (「[ASP.NET アプリケーションから CDN エンドポイントへのコンテンツのアップロードを自動化する](#upload)」で使用)
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。+ [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。+ [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 
 <a name="static"></a>
 ## Azure CDN エンドポイントから静的コンテンツを配信する ##
@@ -63,13 +65,13 @@
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-1.PNG)
 
-	>[AZURE.NOTE]後で CDN をテストするときに北米から十分な距離の場所が必要であるため、リージョンに東アジアを使用していることに注意してください。
+	>[AZURE.NOTE] 後で CDN をテストするときに北米から十分な距離の場所が必要であるため、リージョンに東アジアを使用していることに注意してください。
 
 2. 新しいストレージ アカウントのステータスが **[オンライン]** になった後で、作成したストレージ アカウントに関連付けられた新しい CDN エンドポイントを作成します。**[新規]、[アプリケーション サービス]、[CDN]、[簡易作成]** の順にクリックします。作成したストレージ アカウントを選択して **[作成]** をクリックします。
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-2.PNG)
 
-	>[AZURE.NOTE]CDN が作成されると、その URL および関連付けられた元のドメインが Azure ポータルに表示されます。ただし、CDN エンドポイントの構成がすべてのノードの場所に完全に反映されるまで少し時間がかかる場合があります。
+	>[AZURE.NOTE] CDN が作成されると、その URL および関連付けられた元のドメインが Azure ポータルに表示されます。ただし、CDN エンドポイントの構成がすべてのノードの場所に完全に反映されるまで少し時間がかかる場合があります。
 
 3. ping を使用して CDN エンドポイントをテストし、オンラインであることを確認します。CDN エンドポイントがすべてのノードへの反映を完了していない場合は、次のようなメッセージが表示されます。
 
@@ -93,7 +95,7 @@
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-2-enablequeryb.PNG)
 
-	>[AZURE.NOTE]チュートリアルのこの部分でのクエリ文字列の有効化は必須ではありませんが、ここでの変更が残りのノードに反映されるまで時間がかかるため、できる限り早めに有効にしておくと便利です。また、クエリ文字列非対応コンテンツで CDN キャッシュが停滞するのを防ぐためでもあります (CDN コンテンツの更新については後で説明します)。これを活用する方法については、「[クエリ文字列を使用して即座に最新コンテンツを配信する](#query)」を参照してください。
+	>[AZURE.NOTE] チュートリアルのこの部分でのクエリ文字列の有効化は必須ではありませんが、ここでの変更が残りのノードに反映されるまで時間がかかるため、できる限り早めに有効にしておくと便利です。また、クエリ文字列非対応コンテンツで CDN キャッシュが停滞するのを防ぐためでもあります (CDN コンテンツの更新については後で説明します)。これを活用する方法については、「[クエリ文字列を使用して即座に最新コンテンツを配信する](#query)」を参照してください。
 
 6. Visual Studio 2013 のサーバー エクスプローラーで、[**Microsoft Azure への接続**] をクリックします。
 
@@ -126,7 +128,7 @@
 
 13.	ブラウザーで BLOB が適切にレンダリングされることを確認できたら、この URL を `http://<yourStorageAccountName>.blob.core.windows.net` から自分の Azure CDN の URL に変更します。この例では、CDN エンドポイントで最初の画像をテストするために `http://az623979.vo.msecnd.net/cdn/cephas_lin.png` を使用します。
 
-	>[AZURE.NOTE]CDN エンドポイントの URL は、Azure 管理ポータルの [CDN] タブで見つけることができます。
+	>[AZURE.NOTE] CDN エンドポイントの URL は、Azure 管理ポータルの [CDN] タブで見つけることができます。
 
 	BLOB への直接的なアクセスと CDN アクセスのパフォーマンスを比較すると、Azure CDN の使用によりパフォーマンスが向上することが確認できます。画像の BLOB URL アクセスに関する Internet Explorer 11 F12 開発者ツールのスクリーンショットを次に示します。
 
@@ -155,7 +157,7 @@ ASP.NET Web アプリケーション内にあるすべての静的コンテン�
 
 		Import-AzurePublishSettingsFile "<yourDownloadedFilePath>"
 
-	>[AZURE.NOTE]発行設定ファイルをインポートすると、これがすべての Azure PowerShell セッションに対して既定の Azure アカウントになります。つまり、この手順は一度だけ実行する必要があります。
+	>[AZURE.NOTE] 発行設定ファイルをインポートすると、これがすべての Azure PowerShell セッションに対して既定の Azure アカウントになります。つまり、この手順は一度だけ実行する必要があります。
 	
 1. スクリプトを[ダウンロード ページ](http://gallery.technet.microsoft.com/scriptcenter/Upload-Content-Files-from-41c2142a)からダウンロードします。それを ASP.NET アプリケーションのプロジェクト フォルダーに保存します。
 2. ダウンロードしたスクリプトを右クリックし、**[プロパティ]** をクリックします。
@@ -267,8 +269,8 @@ Azure App Service Web Apps または Azure Cloud Services と統合しなくて�
 - [Azure Content Delivery Network (CDN) の概要](cdn-overview.md)
 - [Azure App Service で Azure CDN を使用する](../cdn-websites-with-cdn.md)
 - [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
-- [カスタム ドメインにコンテンツ配信ネットワーク (CDN) コンテンツをマップする方法](http://msdn.microsoft.com/library/azure/gg680307.aspx)
+- [カスタム ドメインに Content Delivery Network (CDN) コンテンツをマップする方法](http://msdn.microsoft.com/library/azure/gg680307.aspx)
 - [Azure 用 CDN の使用](cdn-how-to-use-cdn.md)
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -18,12 +18,12 @@
 	
 # Visual Studio からのデプロイ
 
-[Azure ポータル](https://portal.azure.com)にはロジック アプリを設計および管理するための優れた方法が用意されていますが、代わりに Visual Studio からロジック アプリをデプロイすることもできます。これには主に 2 つの機能があります。
+[Azure ポータル](https://portal.azure.com/)にはロジック アプリを設計および管理するための優れた方法が用意されていますが、代わりに Visual Studio からロジック アプリをデプロイすることもできます。これには主に 2 つの機能があります。
 
 - アプリケーションのすべての側面を含めることができるように、ソリューションに他のアセットと共にロジック アプリを保存する
 - TFS や Git を使用して変更履歴を追跡できるように、ロジック アプリ定義をソース管理にチェックインしたままにする 
 
-次の手順を実行するには、Azure SDK 2.7 以上をインストールしておく必要があります。最新の SDK for VS は、[こちら](http://azure.microsoft.com/downloads/)で探してください。
+次の手順を実行するには、Azure SDK 2.7 以上をインストールしておく必要があります。最新の SDK for VS は、[こちら](https://azure.microsoft.com/downloads/)で探してください。
 
 ## プロジェクトの作成
 
@@ -65,4 +65,4 @@
 
 Visual Studio は使用しないが、ソース管理からロジック アプリをデプロイするツールを使用する場合は、[API](https://msdn.microsoft.com/library/azure/dn948510.aspx) または [PowerShell](../powershell-azure-resource-manager.md) を直接使用してデプロイを自動化できます。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

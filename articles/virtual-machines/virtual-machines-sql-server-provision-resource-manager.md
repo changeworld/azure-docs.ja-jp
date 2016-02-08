@@ -45,11 +45,11 @@ Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含�
 
 - [次のステップ](#Next)
 
-このチュートリアルでは、Azure アカウントを既に取得していることを前提としています。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
+このチュートリアルでは、Azure アカウントを既に取得していることを前提としています。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
 ## <a id="Provision">リソース マネージャーのデプロイ モデルでギャラリーから SQL VM イメージをプロビジョニングする
 
-1. アカウントを使用して [Azure ポータル](http://portal.azure.com)にログインします。
+1. アカウントを使用して [Azure ポータル](https://portal.azure.com)にログインします。
 1. Azure ポータルで **[+新規]** をクリックします。ポータルで **[新規]** ブレードが開きます。SQL Server VM テンプレートは、Marketplace の **[Compute]** グループにあります。
 
 1. **[新規]** ブレードで **[Compute]** をクリックします。
@@ -87,7 +87,7 @@ Azure ポータルには、SQL Server 仮想マシンを構成するための 5 
 
 - **[Storage]** で、ディスクの種類を指定します。運用環境のワークロードには Premium Storage をお勧めします。
 
->[AZURE.NOTE]既定では、Premium Storage が有効になります。Premium Storage をサポートするサイズに、コンピューターのサイズが自動的に変更されます。Premium Storage を無効にした場合は、以前のマシン サイズの選択が使用されます。
+>[AZURE.NOTE] 既定では、Premium Storage が有効になります。Premium Storage をサポートするサイズに、コンピューターのサイズが自動的に変更されます。Premium Storage を無効にした場合は、以前のマシン サイズの選択が使用されます。
 
 - **[ストレージ アカウント]** では、自動的にプロビジョニングされたストレージ アカウント名を受け入れるか、または **[ストレージ アカウント]** をクリックして既存のアカウントを選択し、ストレージ アカウントの種類を構成します。既定では、ローカル冗長ストレージで新しいストレージ アカウントが作成されます。
 
@@ -129,7 +129,7 @@ SQL Server 認証が必要な場合は、**[SQL 認証]** の **[有効]** を�
 
 SQL Server 認証を有効にする場合は、**[ログイン名]** と **[パスワード]** を指定します。このユーザー名が、SQL Server 認証ログインおよび sysadmin 固定サーバー ロールのメンバーになります。認証モードの詳細については、「[認証モードの選択](http://msdn.microsoft.com/library/ms144284.aspx)」を参照してください。既定では、SQL Server 認証は有効になりません。その場合、仮想マシンのローカル管理者は SQL Server インスタンスに接続できます。
 
->[AZURE.NOTE]インターネット経由で SQL Server にアクセスする場合 (つまりパブリック接続オプション)、ここで SQL 認証を有効にする必要があります。SQL Server へのパブリック アクセスでは、SQL 認証を使う必要があります。
+>[AZURE.NOTE] インターネット経由で SQL Server にアクセスする場合 (つまりパブリック接続オプション)、ここで SQL 認証を有効にする必要があります。SQL Server へのパブリック アクセスでは、SQL 認証を使う必要があります。
 
 ### ストレージの最適化
 ストレージの要件を指定するには、**[ストレージの構成]** をクリックします。1 秒間の入力/出力操作数 (IOP)、スループット (MB/秒)、およびストレージの合計サイズで、要件を指定できます。スライド スケールを使用してこれらを構成します。これらの要件に基づいて、ディスクの数が自動的に計算されます。
@@ -142,7 +142,7 @@ SQL Server 認証を有効にする場合は、**[ログイン名]** と **[パ�
 
 次の図は、[ストレージの構成] ブレードです。 <br/>![SQL ARM のストレージ](./media/virtual-machines-sql-server-provision-resource-manager/azure-sql-arm-storage.png) <br/>
 
->[AZURE.NOTE]ストレージ構成の制限は、仮想マシンのサイズによって異なります。詳細については、「[Virtual Machines のサイズ](virtual-machines-size-specs.md)」を参照してください。
+>[AZURE.NOTE] ストレージ構成の制限は、仮想マシンのサイズによって異なります。詳細については、「[Virtual Machines のサイズ](virtual-machines-size-specs.md)」を参照してください。
 
 ### Patching
 **[SQL 自動修正]** は、既定で有効になります。自動修正を有効にすると、Azure は SQL Server とオペレーティング システムに修正プログラムを自動的に適用します。メンテナンス ウィンドウの曜日、時刻、および期間を指定します。Azure は、修正プログラムの適用をメンテナンス ウィンドウで実行します。メンテナンス ウィンドウのスケジュールでは、VM のロケールが時刻に使用されます。SQL Server とオペレーティング システムを自動的に修正しない場合は、**[無効]** をクリックします。
@@ -197,7 +197,7 @@ SQL Server 仮想マシンに接続した後は、SQL Server Management Studio �
 
 ポータルでリソース マネージャーを使用して SQL Server 仮想マシン イメージをプロビジョニングする場合、SQL 接続オプションで **[パブリック]** を選ぶと、これらの手順が自動的に実行されて、SQL Server 認証が有効になりました。ただし、インターネット経由で SQL Server インスタンスにアクセスするには、他にいくつかの手順を完了する必要があります。
 
->[AZURE.NOTE]プロビジョニングの間に [パブリック] を選択しなかった場合、インターネット経由で SQL Server インスタンスにアクセスするには、追加の手順が必要です。詳細については、「[SQL Server 仮想マシンへの接続 (リソース マネージャー) | Microsoft Azure](virtual-machines-sql-server-connectivity-resource-manager.md)」を参照してください。
+>[AZURE.NOTE] プロビジョニングの間に [パブリック] を選択しなかった場合、インターネット経由で SQL Server インスタンスにアクセスするには、追加の手順が必要です。詳細については、「[SQL Server 仮想マシンへの接続 (リソース マネージャー) | Microsoft Azure](virtual-machines-sql-server-connectivity-resource-manager.md)」を参照してください。
 
 ローカルにのみ、または Virtual Network 内からのみ、仮想マシンにアクセスする場合は、次の手順は必要ありません。
 
@@ -206,4 +206,4 @@ SQL Server 仮想マシンに接続した後は、SQL Server Management Studio �
 ##<a id="Next"> 次のステップ
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

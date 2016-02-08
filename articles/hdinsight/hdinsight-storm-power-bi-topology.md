@@ -25,7 +25,7 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 ## 前提条件
 
-- Azure サブスクリプション。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 * [Power BI](https://powerbi.com) アクセス権を持つ Azure Active Directory ユーザー
 
@@ -49,7 +49,7 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 * **Data.cs**: Power BI に送信されるデータのオブジェクト/行について記述します。
 
-> [AZURE.WARNING]Power BI が、同じ名前を持つ複数のデータセットの作成を許可しているように見える場合があります。これは、データセットが存在しない場合に、トポロジで Power BI ボルトの複数のインスタンスを作成すると生じる可能性があります。これを回避するには、(この例の場合のように) ボルトの並列処理ヒントを 1 に設定するか、トポロジをデプロイする前にデータセットを作成します。
+> [AZURE.WARNING] Power BI が、同じ名前を持つ複数のデータセットの作成を許可しているように見える場合があります。これは、データセットが存在しない場合に、トポロジで Power BI ボルトの複数のインスタンスを作成すると生じる可能性があります。これを回避するには、(この例の場合のように) ボルトの並列処理ヒントを 1 に設定するか、トポロジをデプロイする前にデータセットを作成します。
 >
 > このソリューションに含まれている **CreateDataset** コンソール アプリケーションは、トポロジ外部でデータセットを作成する方法の例となっています。
 
@@ -59,7 +59,7 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 2. 「[アプリの登録](https://msdn.microsoft.com/library/dn877542.aspx)」に示されている手順に従って、アプリケーションの登録を行います。登録情報は、Power BI REST API にアクセスするときに使用します。
 
-    > [AZURE.IMPORTANT]アプリケーション登録に**クライアント ID** を保存します。
+    > [AZURE.IMPORTANT] アプリケーション登録に**クライアント ID** を保存します。
 
 ## 例のダウンロード
 
@@ -91,7 +91,7 @@ Power BI プレビューを使用すると、データをレポートとして�
 
     ![WordCount トポロジが選択されているトポロジ](./media/hdinsight-storm-power-bi-topology/topologysummary.png)
 
-    > [AZURE.NOTE]また、サーバー エクスプローラーから Storm トポロジを表示することもできます。その場合、[Azure]、[HDInsight] の順に展開して、HDInsight クラスターの Storm を右クリックして [Storm トポロジの表示 (View Storm Topologies)] を選択します。
+    > [AZURE.NOTE] また、サーバー エクスプローラーから Storm トポロジを表示することもできます。その場合、[Azure]、[HDInsight] の順に展開して、HDInsight クラスターの Storm を右クリックして [Storm トポロジの表示 (View Storm Topologies)] を選択します。
 
 3. [**トポロジの概要**] を表示した状態で、[**ボルト (Bolts)**] セクションが表示されるまでスクロールします。このセクションで、**PowerBI** ボルトの [**実行済み (Executed)**] 列に注目します。ページ上部にある [更新] ボタンを使用して、値が 0 以外の値を変更するまで更新を実行します。この数値が増えると、対象項目が Power BI に書き込まれていることを示します。
 
@@ -139,4 +139,4 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0114_2016--->
+<!---HONumber=AcomDC_0128_2016-->

@@ -30,6 +30,8 @@ Data Factory は、他のデータ ストアから Teradata へのデータの�
 
 Data Management Gateway で Teradata データベースに接続するには、[Teradata の .NET データ プロバイダー](http://go.microsoft.com/fwlink/?LinkId=278886)を Data Management Gateway と同じシステムにインストールする必要があります。
 
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+
 ### サンプル: Teradata から Azure BLOB にデータをコピーする
 
 下のサンプルで確認できる要素:
@@ -222,14 +224,14 @@ Data Management Gateway で Teradata データベースに接続するには、[
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-type | type プロパティを **OnPremisesTeradata** に設定する必要があります | あり
-server | Teradata のサーバーの名前です。 | あり
-database | Teradata のデータベースの名前です。 | あり 
+type | type プロパティを **OnPremisesTeradata** に設定する必要があります | はい
+server | Teradata のサーバーの名前です。 | はい
+database | Teradata のデータベースの名前です。 | はい 
 schema | データベース内のスキーマの名前です。 | いいえ
-authenticationType | Teradata データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | あり
+authenticationType | Teradata データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | はい
 username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ 
 パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ 
-gatewayName | Data Factory サービスが、オンプレミスの Teradata データベースへの接続に使用するゲートウェイの名前です。 | あり
+gatewayName | Data Factory サービスが、オンプレミスの Teradata データベースへの接続に使用するゲートウェイの名前です。 | はい
 
 オンプレミスの Teradata データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
@@ -278,15 +280,15 @@ Byte | Byte
 VarByte | Byte
 BigInt | Int64
 ByteInt | Int16
-小数点 | 小数点
+Decimal | Decimal
 Double | Double
-整数 | Int32
+Integer | Int32
 Number | Double
 SmallInt | Int16
-日付 | DateTime
-時刻 | TimeSpan
+Date | DateTime
+Time | TimeSpan
 Time With Time Zone | String
-タイムスタンプ | DateTime
+Timestamp | DateTime
 Timestamp With Time Zone | DateTimeOffset
 Interval Day | TimeSpan
 Interval Day To Hour | TimeSpan
@@ -312,4 +314,4 @@ Xml | String
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

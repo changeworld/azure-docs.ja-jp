@@ -68,14 +68,17 @@ Azure AD Connect により、オンプレミスのコンピューターをクラ
 
     Initialize-ADSyncDomainJoinedComputerSync –AdConnectorAccount [connector account name] -AzureADCredentials $aadAdminCred;
 
->[AZURE.NOTE] [*connector account name*] を、AD Connector アカウントとして使用したドメイン アカウントに置き換えます。
+>[AZURE.NOTE]
+ [*connector account name*] を、AD Connector アカウントとして使用したドメイン アカウントに置き換えます。
 
->[AZURE.NOTE]Get-Credential というポップアップが表示されたときに入力する資格情報のユーザー名は、*user@example.com* 形式にする必要があります。
+>[AZURE.NOTE]
+Get-Credential というポップアップが表示されたときに入力する資格情報のユーザー名は、**user@example.com* 形式にする必要があります。
 
 ### AD FS の要求規則を構成する
 これにより、AD FS 経由での Kerberos/NTLM を使用した認証がコンピューターに許可されるため、Azure DRS には即座にコンピューターを登録できます。この手順を実行しないと、コンピューターは Azure AD への到達が遅くなります (Azure AD Connect の同期時間の影響を受けます)。
 
->[AZURE.NOTE]オンプレミスのフェデレーション サーバーとして AD FS を使用していない場合は、ベンダーの指示に従って要求規則を作成してください。
+>[AZURE.NOTE]
+オンプレミスのフェデレーション サーバーとして AD FS を使用していない場合は、ベンダーの指示に従って要求規則を作成してください。
 
 AD FS サーバー (または AD FS サーバーに接続されているセッション) で、次の PowerShell コマンドを実行します。
 
@@ -109,7 +112,8 @@ AD FS サーバー (または AD FS サーバーに接続されているセッ�
  
     Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:MicrosoftOnline -IssuanceTransformRules $crSet.ClaimRulesString 
 
->[AZURE.NOTE]Windows 10 コンピューターでは、Windows 統合認証を使用して、AD FS でホストされているアクティブな WS-Trust エンドポイントに対する認証を実行します。このエンドポイントが有効になっていることを確認する必要があります。Web 認証プロキシを使用している場合は、このエンドポイントがプロキシ経由で公開されていることも確認する必要があります。これを行うには、AD FS 管理コンソールの [サービス] の [エンドポイント] で、adfs/services/trust/13/windowstransport が有効と表示されていることを確認します。
+>[AZURE.NOTE]
+Windows 10 コンピューターでは、Windows 統合認証を使用して、AD FS でホストされているアクティブな WS-Trust エンドポイントに対する認証を実行します。このエンドポイントが有効になっていることを確認する必要があります。Web 認証プロキシを使用している場合は、このエンドポイントがプロキシ経由で公開されていることも確認する必要があります。これを行うには、AD FS 管理コンソールの [サービス] の [エンドポイント] で、adfs/services/trust/13/windowstransport が有効と表示されていることを確認します。
 
 
 ## 手順 2: Active Directory のグループ ポリシーを使用してデバイスの自動登録を構成する
@@ -127,7 +131,8 @@ Active Directory グループ ポリシーを使用すると、自動的に Azur
  - Windows 10 ドメイン参加済みコンピューターを配置する AD の 特定の組織単位 (OU)。
  - Azure AD に自動登録される Windows 10 ドメイン参加済みコンピューターを含む特定のセキュリティ グループ。
  
->[AZURE.NOTE]このグループ ポリシー テンプレートの名前は、Windows 10 で変更されました。Windows 10 コンピューターからグループ ポリシー ツールを実行している場合、ポリシーは "**ドメインに参加しているコンピューターをデバイスとして登録する**" と表示されます。<br>また、このポリシーは次の場所にあります。<br>***コンピューターの構成/ポリシー/管理用テンプレート/Windows コンポーネント/デバイスの登録***
+>[AZURE.NOTE]
+このグループ ポリシー テンプレートの名前は、Windows 10 で変更されました。Windows 10 コンピューターからグループ ポリシー ツールを実行している場合、ポリシーは "**ドメインに参加しているコンピューターをデバイスとして登録する**" と表示されます。<br>また、このポリシーは次の場所にあります。<br>***コンピューターの構成/ポリシー/管理用テンプレート/Windows コンポーネント/デバイスの登録***
 
  
 ## 追加情報
@@ -137,4 +142,4 @@ Active Directory グループ ポリシーを使用すると、自動的に Azur
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

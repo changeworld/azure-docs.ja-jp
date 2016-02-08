@@ -37,7 +37,7 @@
 
 ![空のタスク一覧が表示されている Web ページ][node-table-finished]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 前提条件
 
@@ -53,7 +53,7 @@
 
 Azure ストレージ アカウントを作成します。アプリでは、このアカウントを使用して To Do リストの項目を保存します。
 
-1.  [Azure ポータル](https://portal.azure.com)にログインします。
+1.  [Azure ポータル](https://portal.azure.com/)にログインします。
 
 2. ポータルの左下にある **[新規]** アイコンをクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソース グループ](../resource-group-overview.md)を作成します
 
@@ -88,7 +88,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 		├── mkdirp@0.3.5
 		└── commander@1.3.2 (keypress@0.1.0)
 
-	> [AZURE.NOTE]"-g" パラメーターにより、モジュールがグローバルにインストールされます。これにより、追加のパス情報を入力しなくても、**express** を使用して Web アプリのスキャフォールディングを生成できます。
+	> [AZURE.NOTE] "-g" パラメーターにより、モジュールがグローバルにインストールされます。これにより、追加のパス情報を入力しなくても、**express** を使用して Web アプリのスキャフォールディングを生成できます。
 
 4. アプリケーションのスキャフォールディングを作成するには、**express** コマンドを入力します。
 
@@ -258,7 +258,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 ### コントローラーの作成
 
-コント ローラーは、HTTP 要求を処理し、HTML 応答を表示します。
+*コント ローラー*は、HTTP 要求を処理し、HTML 応答を表示します。
 
 1. **tasklist/routes** ディレクトリに **tasklist.js** という名前の新しいファイルを作成し、テキスト エディターで開きます。
 
@@ -336,7 +336,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 		var accountName = nconf.get("STORAGE_NAME");
 		var accountKey = nconf.get("STORAGE_KEY");
 
-	> [AZURE.NOTE]nconf は、環境変数または後で作成する **config.json** ファイルから構成値を読み込みます。
+	> [AZURE.NOTE] nconf は、環境変数または後で作成する **config.json** ファイルから構成値を読み込みます。
 
 3. app.js ファイル内で、次の行が表示されるまで下へスクロールします。
 
@@ -478,7 +478,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 このセクションの手順では、Azure コマンド ライン ツールを使用して App Service で新しい Web アプリを作成し、Git を使用してアプリケーションをデプロイします。これらの手順を実行するには、Azure サブスクリプションが必要です。
 
-> [AZURE.NOTE]これらの手順は、[Azure ポータル](https://portal.azure.com)を使用して実行することもできます。「[Azure App Service での Node.js Web アプリの構築とデプロイ]」をご覧ください。
+> [AZURE.NOTE] これらの手順は、[Azure ポータル](https://portal.azure.com/)を使用して実行することもできます。「[Azure App Service での Node.js Web アプリの構築とデプロイ]」をご覧ください。
 >
 > これが初めて作成した Web アプリの場合、Azure ポータルを使用してこのアプリケーションをデプロイする必要があります。
 
@@ -496,8 +496,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 	このコマンドにより、ブラウザーが起動し、ダウンロード ページに移動します。ログインを求められた場合は、Azure サブスクリプションに関連付けられたアカウントを使用してログインします。
 
-	<!-- ![The download page][download-publishing-settings] -->
-	ファイルのダウンロードが自動的に開始されます。ダウンロードが開始されない場合は、ページの先頭にあるリンクをクリックして、手動でファイルをダウンロードできます。ファイルを保存し、ファイル パスを書き留めます。
+	<!-- ![The download page][download-publishing-settings] -->ファイルのダウンロードが自動的に開始されます。ダウンロードが開始されない場合は、ページの先頭にあるリンクをクリックして、手動でファイルをダウンロードできます。ファイルを保存し、ファイル パスを書き留めます。
 
 2. 次のコマンドを入力して設定をインポートします。
 
@@ -534,7 +533,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 		info:   Executing `git remote add azure https://username@tabletasklist.azurewebsites.net/TableTasklist.git`
 		info:   site create command OK
 
-	> [AZURE.NOTE]これがサブスクリプションの最初の App Service Web アプリである場合、Azure ポータルを使用して Web アプリを作成するよう指示するメッセージが表示されます。詳細は、「[Azure App Service での Node.js Web アプリの構築とデプロイ]」を参照してください。
+	> [AZURE.NOTE] これがサブスクリプションの最初の App Service Web アプリである場合、Azure ポータルを使用して Web アプリを作成するよう指示するメッセージが表示されます。詳細は、「[Azure App Service での Node.js Web アプリの構築とデプロイ]」を参照してください。
 
 ### 環境変数の設定
 
@@ -546,7 +545,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 **<storage account name>** を以前に作成したストレージ アカウントの名前に置き換え、**<storage access key>** をストレージ アカウントのプライマリ アクセス キーに置き換えます (以前に作成した config.json ファイルと同じ値を使用します)。
 
-環境変数は、[Azure ポータル](https://portal.azure.com)で設定することもできます。
+環境変数は、[Azure ポータル](https://portal.azure.com/)で設定することもできます。
 
 1.  **[参照]**、**[Web Apps]**、Web アプリ名の順にクリックして、Web アプリのブレードを開きます。
 
@@ -621,7 +620,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 [Azure Portal]: https://portal.azure.com
 
-[Node.js アプリケーションの作成と Azure の Web サイトへの展開]: web-sites-nodejs-develop-deploy-mac.md
+[Create and deploy a Node.js application to an Azure Web Site]: web-sites-nodejs-develop-deploy-mac.md
  
 <!-- Image References -->
 
@@ -637,4 +636,4 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 [app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
 [app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

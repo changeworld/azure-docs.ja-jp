@@ -31,7 +31,7 @@
 git clone --branch skeleton https://github.com/AzureADQuickStarst/AppModelv2-SinglePageApp-AngularJS-DotNet.git
 ```
 
-スケルトン アプリには、簡単な AngularJS アプリ用の定型コードがすべて含まれていますが、ID に関連する要素は一切含まれていません。この作業を進める代わりに、完成したサンプルを複製または[ダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-DotNet/archive/complete.zip)することもできます。
+スケルトン アプリには、簡単な AngularJS アプリ用の定型コードがすべて含まれていますが、ID に関連する要素は一切含まれていません。代わりに、完全なサンプルを複製または[ダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-DotNet/archive/complete.zip)することもできます。
 
 ```
 git clone https://github.com/AzureADSamples/SinglePageApp-AngularJS-DotNet.git
@@ -39,7 +39,7 @@ git clone https://github.com/AzureADSamples/SinglePageApp-AngularJS-DotNet.git
 
 ## アプリを登録します
 
-最初に、[アプリケーション登録ポータル](https://apps.dev.microsoft.com)でアプリを作成するか、こちらのページに記載されている[詳しい手順](active-directory-v2-app-registration.md)を実行します。次のことを確認します。
+最初に、[アプリ登録ポータル](https://apps.dev.microsoft.com)でアプリを作成するか、または[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
 - アプリの **Web** プラットフォームを追加します。
 - 適切な**リダイレクト URI** を入力します。このサンプルの既定値は `https://localhost:44326/` です。
@@ -48,7 +48,7 @@ git clone https://github.com/AzureADSamples/SinglePageApp-AngularJS-DotNet.git
 アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
 
 ## adal.js をインストールする
-まず、ダウンロードしたプロジェクトに移動し、adal.js をインストールします。[bower](http://bower.io/) をインストール済みの場合は、次のコマンドを実行するだけで済みます。依存関係のバージョンの不一致がある場合は、高い方のバージョンを選択します。 ```
+まず、ダウンロードしたプロジェクトに移動し、adal.js をインストールします。[bower](http://bower.io/) をインストールしてある場合は、次のコマンドを実行するだけで済みます。依存関係のバージョンの不一致がある場合は、高い方のバージョンを選択します。 ```
 bower install adal-angular#experimental
 ```
 
@@ -83,7 +83,7 @@ Visual Studio でプロジェクトを開き、メイン ページ本文の最�
 ...
 ```
 
-ここでは、REST API のしくみについて詳しく説明しません。このコードでいろいろと試してみてください。Azure AD による Web API の保護の詳細については、[こちらの記事](active-directory-v2-devquickstarts-dotnet-api.md)を参照してください。
+ここでは、REST API のしくみについて詳しく説明しません。自由にコードをいろいろ調べてください。ただし、Azure AD による Web API の保護をもっと詳しく知りたい場合は、[こちらの記事](active-directory-v2-devquickstarts-dotnet-api.md)を参照してください。
 
 ## ユーザーをサインインする
 次に、ID コードを作成します。既にお気付きかもしれませんが、adal.js に含まれる AngularJS プロバイダーが Angular のルーティング メカニズムを適切に処理します。最初に、adal モジュールをアプリケーションに追加します。
@@ -172,7 +172,7 @@ angular.module('todoApp')
 .controller('userDataCtrl', ['$scope', 'adalAuthenticationService', function ($scope, adalService) {}]);
 ```
 
-追加後、ビューで `userInfo` オブジェクトを直接アドレス指定できます。
+こうすると、ビューで `userInfo` オブジェクトを直接アドレス指定できます。
 
 ```html
 <!--app/views/UserData.html-->
@@ -187,7 +187,7 @@ angular.module('todoApp')
 ...
 ```
 
-また、`userInfo` オブジェクトを使用して、ユーザーがサインインしているかどうかも判定できます。
+また、`userInfo` オブジェクトを使用してユーザーがサインインしているかどうかも判定できます。
 
 ```html
 <!--index.html-->
@@ -205,7 +205,7 @@ angular.module('todoApp')
 ## REST API を呼び出す
 最後に、いくつかのトークンを取得し、タスクを作成、読み取り、更新、削除する REST API を呼び出します。ただし、 開発者は*何も*行う必要がありません。トークンの取得、キャッシュ、更新は adal.js が自動的に行います。また、REST API に送信される AJAX 要求へのトークンの添付も行われます。
 
-そのしくみは すべて [AngularJS インターセプター](https://docs.angularjs.org/api/ng/service/$http)によって実現されています。AngularJS インターセプターを通じて、adal.js は送受信する HTTP メッセージを変換できます。さらに、adal.js は、ウィンドウと同じドメインに送信される要求が AngularJS アプリと同じアプリケーション ID 用のトークンを使用するものと想定します。そのために、Angular アプリと NodeJS REST API の両方で同じアプリケーション ID を使用しました。もちろん、必要に応じてこの動作をオーバーライドし、他の REST API 用のトークンを取得するよう adal.js に指示できますが、このシナリオではシンプルに既定のままにします。
+そのしくみは すべては [AngularJS インターセプター](https://docs.angularjs.org/api/ng/service/$http)のおかげです。AngularJS インターセプターにより、adal.js は送信および受信する http メッセージを変換できます。さらに、adal.js は、ウィンドウと同じドメインに送信される要求が AngularJS アプリと同じアプリケーション ID 用のトークンを使用するものと想定します。そのために、Angular アプリと NodeJS REST API の両方で同じアプリケーション ID を使用しました。もちろん、必要に応じてこの動作をオーバーライドし、他の REST API 用のトークンを取得するよう adal.js に指示できますが、このシナリオではシンプルに既定のままにします。
 
 次のスニペットは、Azure AD からベアラー トークンを含む要求を簡単に送信できることを示しています。
 
@@ -217,12 +217,12 @@ return $http.get('/api/tasks');
 ...
 ```
 
-ご利用ありがとうございます。 Azure AD に統合されたシングル ページ アプリが完成しました。アプリは、ユーザーの認証を行い、OpenID Connect を使用してバックエンドの REST API を安全に呼び出し、ユーザーについての基本情報を取得できます。個人の Microsoft アカウントまたは Azure AD の職場/学校アカウントを持つユーザーが既定でサポートされます。アプリを実行し、ブラウザーで `https://localhost:44326/` に移動して、個人の Microsoft アカウントまたは職場/学校アカウントを使用してサインインしてください。ユーザーの To-Do List にタスクを追加し、サインアウトした後で、他の種類のアカウントを使用してサインインしてみてください。職場/学校ユーザーを作成するために Azure AD テナントが必要な場合は、[こちらで取得方法を確認できます](active-directory-howto-tenant.md) (無料です)。
+ご利用ありがとうございます。 Azure AD に統合されたシングル ページ アプリが完成しました。アプリは、ユーザーの認証を行い、OpenID Connect を使用してバックエンドの REST API を安全に呼び出し、ユーザーについての基本情報を取得できます。個人の Microsoft アカウントまたは Azure AD の職場/学校アカウントを持つユーザーが既定でサポートされます。アプリを実行し、ブラウザーで `https://localhost:44326/` に移動して、個人の Microsoft アカウントまたは職場/学校アカウントを使用してサインインしてください。ユーザーの To-Do List にタスクを追加し、サインアウトした後で、他の種類のアカウントを使用してサインインしてみてください。職場/学校ユーザーを作成するために Azure AD テナントが必要な場合は、[こちらで取得方法がわかります](active-directory-howto-tenant.md) (無料です)。
 
 アプリ モデル v2.0 プレビューについての学習を続けるには、[v2.0 開発者ガイド](active-directory-appmodel-v2-overview.md)に戻ってください。その他のリソースについては、以下を参照してください。
 
 - [GitHub の Azure 用サンプル >>](https://github.com/Azure-Samples)
-- [Stack Overflow の Azure AD 情報 >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
-- [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
+- [Stack Overflow の Azure AD >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+- [Azure.com](https://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

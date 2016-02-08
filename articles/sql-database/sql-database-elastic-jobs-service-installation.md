@@ -23,7 +23,7 @@
 既存の**Elastic Database プール**から、ポータルを使用して**Elastic Database ジョブ**を既にインストールしている場合、最新の PowerShell プレビューには、既存のインストールをアップグレードするスクリプトが含まれています。PowerShell API 経由で公開されている新しい機能を活用するために、最新の**Elastic Database ジョブ** コンポーネントにアップグレードすることを強くお勧めします。
 
 ## 前提条件
-* Azure サブスクリプション。無料評価版については、「[無料評価版](http://azure.microsoft.com/pricing/free-trial/)」を参照してください。
+* Azure サブスクリプション。無料評価版については、「[無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 * Azure PowerShell Version 0.8.16 以降。[Web Platform インストーラー](http://go.microsoft.com/fwlink/p/?linkid=320376)を使用して最新バージョン (0.9.5) をインストールします。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」をご覧ください。
 * [NuGet Command-line Utility](https://nuget.org/nuget.exe) を使用して、Elastic Database ジョブ パッケージをインストールします。詳細については、http://docs.nuget.org/docs/start-here/installing-nuget を参照してください。
 
@@ -188,4 +188,4 @@
 [4]: ./media/sql-database-elastic-jobs-service-installation/not-done.png
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -23,13 +23,13 @@
 
 Azure REST API を使用すると、Azure プラットフォームでホストされたサービスで、Linux ベースの HDInsight クラスターなど新しいリソースの作成を含む管理操作を実行できます。このドキュメントでは、Azure リソース マネージャー テンプレートを作成し、HDInsight クラスターと関連するストレージを構成してから、cURL を使用してテンプレートを Azure REST API にデプロイして新しい HDInsight クラスターを作成する方法を学びます。
 
-> [AZURE.IMPORTANT]この文書の手順では、HDInsight クラスターにワーカー ノードの既定数 (4) を使用します。クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+> [AZURE.IMPORTANT] この文書の手順では、HDInsight クラスターにワーカー ノードの既定数 (4) を使用します。クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
 >
 > ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 ###前提条件
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 - __Azure CLI__。Azure CLI を使用してサービス プリンシパルを作成し、Azure REST API に対する要求用の認証トークンを生成します。
 
@@ -37,7 +37,7 @@ Azure REST API を使用すると、Azure プラットフォームでホスト�
 
 - __cURL__。このユーティリティは、パッケージ管理システムを通じてまたは [http://curl.haxx.se/](http://curl.haxx.se/) からダウンロードして使用できます。
 
-    > [AZURE.NOTE]このドキュメントのコマンドを実行するのに PowerShell を使用する場合は、既定で作成される `curl` エイリアスをまず削除する必要があります。PowerShell プロンプトの `curl` コマンドを使用した場合、このエイリアスは cURL ではなく PowerShell コマンドレット Invoke-WebRequest を使用して、このドキュメントで使用する多くのコマンドのエラーを返します。
+    > [AZURE.NOTE] このドキュメントのコマンドを実行するのに PowerShell を使用する場合は、既定で作成される `curl` エイリアスをまず削除する必要があります。PowerShell プロンプトの `curl` コマンドを使用した場合、このエイリアスは cURL ではなく PowerShell コマンドレット Invoke-WebRequest を使用して、このドキュメントで使用する多くのコマンドのエラーを返します。
     > 
     > このエイリアスを削除するには、PowerShell プロンプトから以下を使用します。
     >
@@ -263,7 +263,7 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 
 ##サービス プリンシパルの作成
 
-> [AZURE.IMPORTANT]以下にリンクされた記事の手順に従う場合、次の変更を行う必要があります。
+> [AZURE.IMPORTANT] 以下にリンクされた記事の手順に従う場合、次の変更を行う必要があります。
 > 
 > * __reader__ の値を使用する手順では、代わりに __owner__ を使用します。これにより、サブスクリプションのサービスに変更を追加できるサービス プリンシパルが作成されます。これは、HDInsight クラスターの作成に必要です。
 >
@@ -290,7 +290,7 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 
 この要求が成功したら、200 シリーズの応答が届きます。応答本文に JSON ドキュメントが含まれています。
 
-> [AZURE.IMPORTANT]この要求によって返される JSON ドキュメントには __access\_token__ という名前の要素が含まれます。この要素の値はアクセス トークンで、これは本ドキュメントの次のセクションで使用される要求の認証に使用する必要があります。
+> [AZURE.IMPORTANT] この要求によって返される JSON ドキュメントには __access\_token__ という名前の要素が含まれます。この要素の値はアクセス トークンで、これは本ドキュメントの次のセクションで使用される要求の認証に使用する必要があります。
 
 ##リソース グループの作成
 
@@ -315,13 +315,13 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 
     curl -X "PUT" "https://management.azure.com/subscriptions/SUBSCRIPTIONID/resourcegroups/GROUPNAME/providers/microsoft.resources/deployments/DEPLOYMENTNAME?api-version=2015-01-01" \\ -H "Authorization: Bearer ACCESSTOKEN" \\ -H "Content-Type: application/json" \\ -d "{本文の文字列をテンプレートとパラメーターに設定}"
 
-> [AZURE.NOTE]テンプレートとパラメーターを含む JSON ドキュメントをファイルに保存した場合、`-d "{テンプレートとパラメーター}"' の代わりに以下を使用できます。
+> [AZURE.NOTE] テンプレートとパラメーターを含む JSON ドキュメントをファイルに保存した場合、`-d "{テンプレートとパラメーター}"' の代わりに以下を使用できます。
 >
 > ```--data-binary "@/path/to/file.json"```
 
 この要求が成功したら、200 シリーズの応答が届きます。応答本文に含まれる JSON ドキュメントにデプロイ操作に関する情報が含まれています。
 
-> [AZURE.IMPORTANT]デプロイは送信済みですが、この時点では完了していないことに注意してください。デプロイを完了するには時間がかかる場合があります (通常約 15 分)。
+> [AZURE.IMPORTANT] デプロイは送信済みですが、この時点では完了していないことに注意してください。デプロイを完了するには時間がかかる場合があります (通常約 15 分)。
 
 ##デプロイの状態の確認
 
@@ -355,4 +355,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

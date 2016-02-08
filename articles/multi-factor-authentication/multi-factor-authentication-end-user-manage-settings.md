@@ -1,7 +1,8 @@
 <properties 
 	pageTitle="Azure Multi-Factor Authentication での問題 | Microsoft Azure" 
 	description="このドキュメントでは、Azure Multi-factor Authentication で問題が発生した場合の処置に関する情報をユーザーに提供します。" 
-	services="multi-factor-authentication" 
+	services="multi-factor-authentication"
+	keywords = "多要素認証のクライアント, 認証の問題, 関連付け ID"
 	documentationCenter="" 
 	authors="billmath" 
 	manager="stevenpo" 
@@ -13,11 +14,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/10/2015" 
+	ms.date="01/25/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication での問題
->[AZURE.IMPORTANT]このページの改善にご協力ください。このページで回答が見つからない場合、マイクロソフトが追加できるように詳しいフィードバックをご提供ください。
+>[AZURE.IMPORTANT]
+このページの改善にご協力ください。このページで回答が見つからない場合、マイクロソフトが追加できるように詳しいフィードバックをご提供ください。
 
 ここでは、ユーザーが遭遇することがある一般的な問題に対処するときに役立つ情報を紹介します。
 
@@ -63,7 +65,8 @@
 
 ![Alternate phone](./media/multi-factor-authentication-end-user-manage/altphone2.png)
 
->[AZURE.IMPORTANT]2 つ目の認証用電話番号を構成することは重要です。1 つ目の電話番号の携帯電話にモバイル アプリがインストールされている場合が多いため、電話の紛失や盗難が起きた場合にアカウントに再度サインインできる唯一の手段は、2 つ目の電話番号を使用する方法になります。
+>[AZURE.IMPORTANT]
+2 つ目の認証用電話番号を構成することは重要です。1 つ目の電話番号の携帯電話にモバイル アプリがインストールされている場合が多いため、電話の紛失や盗難が起きた場合にアカウントに再度サインインできる唯一の手段は、2 つ目の電話番号を使用する方法になります。
 
 2 つ目の認証用電話番号を構成していなかった場合は、管理者に連絡して設定のクリアを依頼する必要があります。これによって、次回サインインしたときに再度[多要素認証をセットアップする](multi-factor-authentication-manage-users-and-devices.md#require-selected-users-to-provide-contact-methods-again)ようにメッセージが表示されます。
 
@@ -129,7 +132,8 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 
 ![Alternate phone](./media/multi-factor-authentication-end-user-manage/altphone2.png)
 
->[AZURE.IMPORTANT]2 つ目の認証用電話番号を構成することは重要です。1 つ目の電話番号の携帯電話にモバイル アプリがインストールされている場合が多いため、電話の紛失や盗難が起きた場合にアカウントに再度サインインできる唯一の手段は、2 つ目の電話番号を使用する方法になります。
+>[AZURE.IMPORTANT]
+2 つ目の認証用電話番号を構成することは重要です。1 つ目の電話番号の携帯電話にモバイル アプリがインストールされている場合が多いため、電話の紛失や盗難が起きた場合にアカウントに再度サインインできる唯一の手段は、2 つ目の電話番号を使用する方法になります。
 
 2 つ目の方法は、管理者または代わりに mfa を設定した人に連絡することです。これは、2 つ目の認証電話番号を構成していない場合にのみ必要となります。そうでなければ、管理者または mfa を設定した人に連絡して設定のクリアを依頼する必要があります。それによって、次回サインインしたときに再度[多要素認証をセットアップする](multi-factor-authentication-manage-users-and-devices.md#require-selected-users-to-provide-contact-methods-again)ようにメッセージが表示されます。
 
@@ -168,4 +172,4 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 
 最後に、このページに関する詳しいフィードバックを残してください。それにより、このページを更新し、情報を追加して継続的に改善できます。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -71,7 +71,7 @@ Azure Redis Cache のキャッシュは、[Azure ポータル](https://portal.az
 -	Azure PowerShell を使用してキャッシュを作成する方法については、「[Azure PowerShell を使用した Azure Redis Cache の管理](cache-howto-manage-redis-cache-powershell.md)」をご覧ください。
 -	Azure CLI を使用してキャッシュを作成する方法については、「[Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法](cache-manage-cli.md)」を参照してください。
 
->[AZURE.NOTE]Azure Redis Cache を使用するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成できます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)を参照してください。
+>[AZURE.NOTE] Azure Redis Cache を使用するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)を参照してください。
 
 ## キャッシュ クライアントを構成する
 
@@ -143,7 +143,7 @@ Managed Cache Service では、キャッシュへの接続は `DataCacheFactory`
 								
 この名前空間が解決しない場合は、「[キャッシュ クライアントの構成](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)」で説明されているように StackExchange.Redis NuGet パッケージを追加したことを確認してください。
 
->[AZURE.NOTE]StackExchange.Redis クライアントでは .NET Framework 4 以降が必要であることに注意してください。
+>[AZURE.NOTE] StackExchange.Redis クライアントでは .NET Framework 4 以降が必要であることに注意してください。
 
 Azure Redis Cache インスタンスに接続するには、静的メソッド `ConnectionMultiplexer.Connect` を呼び出して、エンドポイントとキーを渡します。アプリケーション内の `ConnectionMultiplexer` インスタンスを共有する方法の 1 つに、次の例のように、接続されたインスタンスを返す静的プロパティを設定する方法があります。これにより、接続された 1 つの `ConnectionMultiplexer` インスタンスだけがスレッドセーフな方法で初期化されます。この例では、`abortConnect` が false に設定されており、キャッシュへの接続が確立されていない場合でも呼び出しが成功します。`ConnectionMultiplexer` の主な機能の 1 つは、ネットワーク問題などの原因が解決されると、キャッシュへの接続が自動的に復元されることです。
 
@@ -195,4 +195,4 @@ Azure Redis Cache には、ASP.NET セッション状態とページ出力キャ
 
 [Azure Redis Cache ドキュメント](https://azure.microsoft.com/documentation/services/cache/)のチュートリアル、サンプル、ビデオ、その他をご覧ください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

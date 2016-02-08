@@ -22,7 +22,8 @@
 ##概要
 このチュートリアルでは、SQL Database と連動するセキュリティ保護された ASP.NET 4.5 Web フォーム Web アプリケーションを開発する方法と、このアプリケーションを Azure にデプロイする方法について説明します。
 
->[AZURE.NOTE]このチュートリアルの MVC バージョンについては、「[認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」を参照してください。
+>[AZURE.NOTE] 
+このチュートリアルの MVC バージョンについては、「[認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」を参照してください。
 
 Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Azure 向けのアプリケーションを無料で開発できます。
 
@@ -41,7 +42,8 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 ![連絡先 - 編集ページ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms00.png)
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントを持っていない場合は、<a href="/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">Visual Studio サブスクライバーの特典を有効にする</a>か、<a href="/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料試用版にサインアップ</a>してください。アカウントにサインアップする前に Azure を実際に使ってみるには、「[App Service を試す](https://tryappservice.azure.com/)」にアクセスしてください。Azure で、有効期限付きの ASP.NET スターター サイトを無償ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] 
+このチュートリアルを完了するには、Azure アカウントが必要です。アカウントを持っていない場合は、<a href="/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">Visual Studio サブスクライバーの特典を有効にする</a>か、<a href="/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料試用版にサインアップ</a>してください。アカウントにサインアップする前に Azure を実際に使ってみるには、「[App Service を試す](https://tryappservice.azure.com/)」にアクセスしてください。Azure で、有効期限付きの ASP.NET スターター サイトを無償ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##開発環境を設定する 
 最初に、Visual Studio 2013 と Azure SDK for .NET をインストールして開発環境を設定します。
@@ -56,7 +58,8 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 5. **Visual Studio Update 2** をインストールしていない場合は、**[Visual Studio 2013 Update 2](http://www.microsoft.com/download/details.aspx?id=42666)** 以降をダウンロードしてインストールします。
 
-	>[AZURE.NOTE]Goggle OAuth 2.0 を使用するには、また、警告を表示させずに SSL をローカルで使用するには、Visual Studio 2013 Update 2 以降をインストールする必要があります。また、Web フォームのスキャフォールディングを使用するには Update 2 が必要です。
+	>[AZURE.NOTE]  
+	Goggle OAuth 2.0 を使用するには、また、警告を表示させずに SSL をローカルで使用するには、Visual Studio 2013 Update 2 以降をインストールする必要があります。また、Web フォームのスキャフォールディングを使用するには Update 2 が必要です。
 
 インストールが完了すると、開発に必要なツールがすべて揃います。
 
@@ -209,7 +212,8 @@ ASP.NET Web フォームでは、マスター ページを使うことで、ア�
 
 これで、作成したアプリケーションはクラウドで実行されています。このアプリケーションを次に Visual Studio からデプロイするときは、変更したファイル (または新しいファイル) のみがデプロイされます。![ブラウザーでのアプリ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms10.png)
 
->[AZURE.NOTE]既に存在する Web アプリへの発行でエラーが発生した場合、その発行先を消去してから新しいファイルを追加します。その後、アプリケーションをもう一度発行しますが、**[Web の発行]** ダイアログ ボックスで **[設定]** タブを選択します。次に構成に **[デバッグ]** を設定して、**[発行先のその他のファイルを削除]** オプションを選択し、**[発行]** をクリックして、アプリケーションをもう一度デプロイします。![[Web の発行] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms11.png)
+>[AZURE.NOTE] 
+既に存在する Web アプリへの発行でエラーが発生した場合、その発行先を消去してから新しいファイルを追加します。その後、アプリケーションをもう一度発行しますが、**[Web の発行]** ダイアログ ボックスで **[設定]** タブを選択します。次に構成に **[デバッグ]** を設定して、**[発行先のその他のファイルを削除]** オプションを選択し、**[発行]** をクリックして、アプリケーションをもう一度デプロイします。![[Web の発行] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms11.png)
 
 ##アプリケーションにデータベースを追加する 
 次に、Web フォーム アプリケーションを更新して、連絡先を表示および更新して既定のデータベースにデータを保存する機能を追加します。Web フォーム プロジェクトを作成した際にデータベースも既定で作成されています。アプリケーションは Entity Framework を使用してこのデータベースにアクセスし、データベース内のデータを更新します。
@@ -644,12 +648,12 @@ Web アプリケーションが完成したら、Azure に発行することが�
 6. **[設定]** タブをクリックします。![既存の Web サイト選択ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms26.png)  
 7. **[構成]** ドロップダウン ボックスを **[デバッグ]** に設定します。
 8. **[ApplicationDbContext]** の**下向き矢印**アイコンをクリックして、**ContactDB** に設定します。
-9. **[Code First Migrations を実行]** チェック ボックスをオンにします。  
-	この例では、アプリケーションを最初に発行する際にのみ、このチェック ボックスをオンにします。これによって、*Configuration.cs* ファイルの *Seed* メソッドが 1 回だけ呼び出されます。  
+9. **[Code First Migrations を実行]** チェック ボックスをオンにします。この例では、アプリケーションを最初に発行する際にのみ、このチェック ボックスをオンにします。これによって、*Configuration.cs* ファイルの *Seed* メソッドが 1 回だけ呼び出されます。  
 
 10. **[発行]** をクリックします。アプリケーションが Azure に発行されます。
 
->[AZURE.NOTE]発行プロファイルの作成後、Visual Studio を再起動した場合、接続文字列がドロップダウン リストに表示されない場合があります。その場合は、先ほど作成した発行プロファイルを編集する代わりに、先ほどと同じ方法で新しい発行プロファイルを作成し、以降の **[設定]** タブの手順に従ってください。)
+>[AZURE.NOTE]  
+発行プロファイルの作成後、Visual Studio を再起動した場合、接続文字列がドロップダウン リストに表示されない場合があります。その場合は、先ほど作成した発行プロファイルを編集する代わりに、先ほどと同じ方法で新しい発行プロファイルを作成し、以降の **[設定]** タブの手順に従ってください。)
 
 ###Azure のアプリケーションを確認する 
 1. ブラウザーで **[Contact Demo]** リンクをクリックします。[Contacts List] が表示されます。![ブラウザーでの連絡先一覧](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms27.png)  
@@ -691,10 +695,11 @@ Web アプリケーションが完成したら、Azure に発行することが�
 3. **dbo.AspNetUsers** テーブルで、ロールを割り当てるユーザーを特定し、ユーザーの *ID* をコピーします。
 4. コピーした *ID* を、**AspNetUserRoles** テーブルの新しい行の **[UserId]** フィールドに追加します。  
 
->[AZURE.NOTE]もっと簡単にユーザーとロールを管理できるように現在ツールを作成しています。
+>[AZURE.NOTE]  
+もっと簡単にユーザーとロールを管理できるように現在ツールを作成しています。
 
 ##次のステップ
-ASP.NET Web フォームの詳細については、ASP.NET Web アプリの「[Learn About ASP.NET Web Forms (ASP.NET Web フォームについて学習する)](http://www.asp.net/web-forms)」や、[Microsoft Azure のチュートリアルとガイド](http://azure.microsoft.com/documentation/services/web-sites/#net)を参照してください。
+ASP.NET Web フォームの詳細については、ASP.NET Web アプリの「[Learn About ASP.NET Web Forms (ASP.NET Web フォームについて学習する)](http://www.asp.net/web-forms)」や、[Microsoft Azure のチュートリアルとガイド](https://azure.microsoft.com/documentation/services/web-sites/#net)を参照してください。
 
 このチュートリアルは、Rick Anderson (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) が Tom Dykstra と Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart)) の協力を得て執筆した MVC チュートリアル「[認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」の内容に基づいています。
 
@@ -702,4 +707,4 @@ ASP.NET Web フォームの詳細については、ASP.NET Web アプリの「[L
 
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

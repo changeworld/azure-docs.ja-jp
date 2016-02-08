@@ -35,7 +35,7 @@ ms.author="bbenz" />
 
 ### 静的内部 IP はありません
 
-Azure は各仮想マシンに内部 IP アドレスを割り当てます。仮想マシンが仮想ネットワークに含まれていない限り、その仮想マシンの IP アドレスは動的であり、仮想マシンを再起動した後に変更される可能性があります。Oracle データベースは静的な IP アドレスを要求するため、問題が生じることがあります。こういった問題を避けるために、仮想マシンを Azure Virtual Network へ追加することを検討してください。詳細については、「[仮想ネットワーク](http://azure.microsoft.com/documentation/services/virtual-network/)」と「[Azure で仮想ネットワークを作成する](create-virtual-network.md)」をご覧ください。
+Azure は各仮想マシンに内部 IP アドレスを割り当てます。仮想マシンが仮想ネットワークに含まれていない限り、その仮想マシンの IP アドレスは動的であり、仮想マシンを再起動した後に変更される可能性があります。Oracle データベースは静的な IP アドレスを要求するため、問題が生じることがあります。こういった問題を避けるために、仮想マシンを Azure Virtual Network へ追加することを検討してください。詳細については、「[仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)」と「[Azure で仮想ネットワークを作成する](create-virtual-network.md)」をご覧ください。
 
 ### 接続ディスクの設定オプション
 
@@ -53,13 +53,13 @@ Azure は各仮想マシンに内部 IP アドレスを割り当てます。仮�
 
 	![](media/virtual-machines-miscellaneous-considerations-oracle-virtual-machine-images/image3.png)
 
->[AZURE.IMPORTANT]書き込み性能と読み取り性能のトレードオフは個別で評価します。これらの方法を使用すると、実際の結果が変わる可能性があります。
+>[AZURE.IMPORTANT] 書き込み性能と読み取り性能のトレードオフは個別で評価します。これらの方法を使用すると、実際の結果が変わる可能性があります。
 
 ### 高可用性と障害復旧に関する考慮
 
 Azure 仮想マシンで Oracle データベースを使用する場合、いかなるダウンタイムも回避するために高可用性と障害復旧ソリューションを実装する責任があります。また、ご自身のデータやアプリケーションをバックアップする責任も負うことになります。
 
-Azure の Oracle Database Enterprise Edition (RAC なし) では、[Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) または [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) と 2 つの異なる仮想マシンの 2 つのデータベースを使用することで高可用性と障害復旧を実現できます。両方の仮想マシンを同じ[クラウド サービス](cloud-services-connect-virtual-machine.md)と同じ[仮想ネットワーク](http://azure.microsoft.com/documentation/services/virtual-network/)に置き、プライベートの固定 IP アドレスで互いにアクセスできるようにする必要があります。さらに、Azure が仮想マシンを個別のフォールト ドメインやアップグレード ドメインに配置できるように、仮想マシンを同じ[可用性セット](manage-availability-virtual-machines.md)に配置することを推奨します。同じクラウド サービス上にある仮想マシンのみを、同じ可用性セットに含めることができます。それぞれの仮想マシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。
+Azure の Oracle Database Enterprise Edition (RAC なし) では、[Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) または [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) と 2 つの異なる仮想マシンの 2 つのデータベースを使用することで高可用性と障害復旧を実現できます。両方の仮想マシンを同じ[クラウド サービス](cloud-services-connect-virtual-machine.md)と同じ[仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)に置き、プライベートの固定 IP アドレスで互いにアクセスできるようにする必要があります。さらに、Azure が仮想マシンを個別のフォールト ドメインやアップグレード ドメインに配置できるように、仮想マシンを同じ[可用性セット](manage-availability-virtual-machines.md)に配置することを推奨します。同じクラウド サービス上にある仮想マシンのみを、同じ可用性セットに含めることができます。それぞれの仮想マシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。
 
 Oracle Data Guard では、1 つの仮想マシンにプライマリ データベース、別の仮想マシンにセカンダリ データベース (待機)、そしてその間に一方向のレプリケーションセットを配置することで高可用性を実現できます。データベースのコピーへのアクセスを結果として読み込みます。Oracle GoldenGate では、2 つのデータベース間に双方向レプリケーションを構成することができます。これらのツールを使用してデータベース用に高可用性ソリューションを設定する方法については、Oracle の Web サイトにある [Active Data Guard](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) および [GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html) 文書を参照してください。データベースのコピーに読み込み/書き込みアクセスをする必要がある場合は、[Oracle Active Data Guard](http://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html) もご利用いただけます。
 
@@ -108,4 +108,4 @@ Oracle Data Guard では、1 つの仮想マシンにプライマリ データ�
 ##その他のリソース
 [Azure の Oracle 仮想マシン イメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

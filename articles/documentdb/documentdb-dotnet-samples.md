@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="DocumentDB 用の github の .NET サンプル |Microsoft Azure" 
-	description="NoSQL データベースでの JSON ドキュメントに対する CRUD 操作など、DocumentDB の一般的なタスクに対する github の C# .NET サンプルを検索します。" 
+	pageTitle="DocumentDB 向け .NET NoSQL のサンプル | Microsoft Azure" 
+	description="NoSQL データベースの JSON ドキュメントに対する CRUD 操作など、DocumentDB の一般的なタスクの C# .NET サンプルを github で検索します。" 
+	keywords="NoSQL のサンプル"
 	services="documentdb" 
 	authors="mimig1" 
 	manager="jhubbard" 
@@ -17,26 +18,27 @@
 	ms.author="mimig"/>
 
 
-# DocumentDB の .NET サンプル
+# DocumentDB .NET のサンプル
 
 > [AZURE.SELECTOR]
-- [.NET Samples](documentdb-dotnet-samples.md)
-- [Node.js Samples](documentdb-nodejs-samples.md)
+- [.NET Examples](documentdb-dotnet-samples.md)
+- [Node.js Examples](documentdb-nodejs-samples.md)
 - [Azure Code Sample Gallery](https://azure.microsoft.com/documentation/samples/?service=documentdb)
 
-DocumentDB のリソースで CRUD 操作などの一般的な操作を実行するサンプル ソリューションは、[azure-documentdb-net](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) GitHub リポジトリに含まれています。この記事では、次の内容について説明します。
+DocumentDB リソースに対する CRUD 操作などの一般的な操作を実行するサンプル ソリューションは、[azure-documentdb-net](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) GitHub リポジトリに含まれています。この記事では、次の内容について説明します。
 
 - 各サンプル C# プロジェクト ファイルのタスクへのリンク。 
 - 関連する API リファレンス コンテンツへのリンク。
 
 **前提条件**
 
-1. これらのサンプルを使用するには Azure アカウントが必要です。
+1. これらの NoSQL サンプルを使用するには Azure アカウントが必要です。
     - [無料で Azure アカウントを開く](https://azure.microsoft.com/pricing/free-trial/)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。
    - [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)こともできます。Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 2. [Microsoft.Azure.DocumentDB NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)も必要です。 
 
-> [AZURE.NOTE]各サンプルは自己完結型であり、自身をセットアップし、自身をクリーンアップします。そのため、サンプルでは、CreateDocumentCollectionAsync() への複数の呼び出しを発行します。これが行われるたびに、作成中のコレクションのパフォーマンス階層ごとに 1 時間の使用量に対するサブスクリプションが課金されます。
+> [AZURE.NOTE]
+各サンプルは自己完結型であり、自身をセットアップし、自身をクリーンアップします。そのため、サンプルでは、CreateDocumentCollectionAsync() への複数の呼び出しを発行します。これが行われるたびに、作成中のコレクションのパフォーマンス階層ごとに 1 時間の使用量に対するサブスクリプションが課金されます。
 
 ## データベースのサンプル
 
@@ -101,7 +103,7 @@ DatabaseManagement プロジェクトのサンプルの [RunDatabaseDemo](https:
 タスク | API リファレンス
 --- | ---
 [HashPartitionResolver の使用](https://github.com/Azure/azure-documentdb-dotnet/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/Partitioning/Program.cs#L144-L160) | [HashPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx)
-[RangePartitionResolver の使用](https://github.com/Azure/azure-documentdb-dotnet/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/Partitioning/Program.cs#L162-L186) | [Range](https://msdn.microsoft.com/library/azure/mt126048.aspx) と<br>[RangePartitionResolver](https://msdn.microsoft.com/library/azure/mt126047.aspx)
+[RangePartitionResolver の使用](https://github.com/Azure/azure-documentdb-dotnet/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/Partitioning/Program.cs#L162-L186) | [Range](https://msdn.microsoft.com/library/azure/mt126048.aspx) と <br>[RangePartitionResolver](https://msdn.microsoft.com/library/azure/mt126047.aspx)
 [カスタム パーティションの競合回避モジュールの実装](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/Partitioning/Program.cs#L285) | [IPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.aspx)
 [単純なルックアップ テーブルの実装](https://github.com/Azure/azure-documentdb-dotnet/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/Partitioning/Program.cs#L115-L119) (<br>[LookupPartitionResolver.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Partitioning/Partitioners/LookupPartitionResolver.cs) を使用) | [RangePartitionResolver](https://msdn.microsoft.com/library/azure/mt126047.aspx)
 [コレクションを作成または複製する競合回避モジュールの実装](https://github.com/Azure/azure-documentdb-dotnet/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/Partitioning/Program.cs#L121-L126) (<br>[ManagedHashPartitionResolver.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Partitioning/Partitioners/ManagedHashPartitionResolver.cs) を使用) | [IPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.aspx)
@@ -129,7 +131,7 @@ DatabaseManagement プロジェクトのサンプルの [RunDatabaseDemo](https:
  
 ## クエリのサンプル
 
-クエリのドキュメント ファイル [azure-documentdb-net/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/Queries/Program.cs) は、 SQL クエリ文法、クエリを使用したLINQ プロバイダー、およびラムダを使用して、次のタスクを実行する方法を示しています。
+クエリ ドキュメント ファイル [azure-documentdb-net/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/Queries/Program.cs) は、 SQL クエリ文法、クエリを使用したLINQ プロバイダー、およびラムダを使用して次のタスクを実行する方法を示しています。
 
 タスク | API リファレンス
 --- | ---
@@ -162,11 +164,11 @@ DatabaseManagement プロジェクトのサンプルの [RunDatabaseDemo](https:
 [ポストトリガーの作成](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L329) | [DocumentClient.CreateTriggerAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createtriggerasync.aspx)
 [ユーザー定義関数 (UDF) の作成](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L389) | [DocumentClient.CreateUserDefinedFunctionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createuserdefinedfunctionasync.aspx) 
 
-サーバー側プログラミングの詳細については、 「[DocumentDB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md)」を参照してください。
+サーバー側プログラミングの詳細については、「[DocumentDB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md)」を参照してください。
 
 ## ユーザー管理のサンプル
 
-ユーザー管理のファイル [azure-documentdb-net/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/UserManagement/Program.cs) は、次のタスクを実行する方法を示しています。
+ユーザー管理ファイル [azure-documentdb-net/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/UserManagement/Program.cs) は、次のタスクを実行する方法を示しています。
 
 タスク | API リファレンス
 --- | ---
@@ -174,4 +176,4 @@ DatabaseManagement プロジェクトのサンプルの [RunDatabaseDemo](https:
 [コレクションまたはドキュメントのアクセス許可の設定](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/UserManagement/Program.cs#L85) | [DocumentClient.CreatePermissionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createpermissionasync.aspx)
 [ユーザーのアクセス許可の一覧の取得](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/UserManagement/Program.cs#L218) | [DocumentClient.ReadUserAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readuserasync.aspx)<br>[DocumentClient.ReadPermissionFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpermissionfeedasync.aspx)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

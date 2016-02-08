@@ -57,7 +57,7 @@
 
 ![ビデオ](./media/storsimple-manage-backup-policies/Video_icon.png) **ビデオ**
 
-ローカルまたはクラウドのバックアップ ポリシーを作成する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/create-storsimple-backup-policies/)を参照してください。
+ローカルまたはクラウドのバックアップ ポリシーを作成する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/create-storsimple-backup-policies/)を参照してください。
 
 
 ## スケジュールの追加または変更
@@ -90,4 +90,4 @@ StorSimple デバイスからバックアップ ポリシーを削除するに�
 
 [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

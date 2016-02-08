@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure App Service で PHP-MySQL Web アプリを作成して FTP でデプロイする" 
-	description="MySQL にデータを保存する PHP Web アプリを作成し、Azure への FTP デプロイメントを使用する方法を説明するチュートリアル。" 
+	description="MySQL にデータを保存する PHP Web アプリを作成し、Azure への FTP デプロイを使用する方法を説明するチュートリアル。" 
 	services="app-service\web" 
 	documentationCenter="php" 
 	authors="tfitzmac" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="10/01/2015" 
+	ms.date="01/12/2016" 
 	ms.author="tomfitz"/>
 
 
@@ -38,7 +38,7 @@
 
 ![Azure PHP Web Site][running-app]
 
->[AZURE.NOTE]アカウントにサインアップする前に Azure App Service を使用を開始するには、[「App Service を試す」](http://go.microsoft.com/fwlink/?LinkId=523751)にアクセスしてください。App Service で、有効期限付きのスターター Web アプリケーションをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] アカウントにサインアップする前に Azure App Service を使用を開始するには、[「App Service を試す」](http://go.microsoft.com/fwlink/?LinkId=523751)にアクセスしてください。App Service で、有効期限付きのスターター Web アプリケーションをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 
 ##Web アプリの作成と FTP 発行の設定
@@ -46,33 +46,29 @@
 Web アプリと MySQL データベースを作成するには、次のステップに従います。
 
 1. [Azure ポータル][management-portal]にログインします。
-2. Azure ポータルの左下にある** [+ 新規]**アイコンをクリックします。
+2. Azure ポータルの左上にある **[+ 新規]** アイコンをクリックします。
 
 	![新しい Azure の Web サイトの作成][new-website]
 
-3. **[Web + モバイル]** をクリックし、**[Web アプリ + MySQL]** をクリックします。
+3. 検索に「**Web アプリ + MySQL**」と入力し、**[Web アプリ + MySQL]** をクリックします。
 
 	![Custom Create a new Web Site][custom-create]
 
-4. リソース グループの有効な名前を入力します。
+4. **[作成]** をクリックします。一意のアプリ サービス名、リソース グループの有効な名前と新しいサービス プランを入力します。
 
     ![リソース グループ名の設定][resource-group]
 
-5. 新しい Web アプリについての値を入力します。
-
-     ![Web アプリの作成][new-web-app]
 
 6. 法律条項への同意も含めて、新しいデータベースについての値を入力します。
 
-	![Create new MySQL database][new-mysql-db]
+	![新しい MySQL データベースの作成][new-mysql-db]
 	
-7. Web アプリが作成されると、新しいリソース グループが表示されます。設定を構成する Web アプリの名前をクリックします。
+7. Web アプリが作成されると、新しいアプリ サービスのブレードが表示されます。
 
-	![Web アプリを開く][go-to-webapp]
 
-6. 下にスクロールすると、**[デプロイメント資格情報の設定]** という項目があります。
+6. **[設定]**、**[デプロイ資格情報]** の順にクリックします。
 
-	![デプロイメント資格情報の設定][set-deployment-credentials]
+	![デプロイ資格情報の設定][set-deployment-credentials]
 
 7. FTP 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。資格情報を保存します。作成したユーザー名とパスワードはメモしておいてください。
 
@@ -118,7 +114,8 @@ Registration アプリケーションは、名前と電子メール アドレス
 		echo "<h3>Table created.</h3>";
 		?>
 
-	> [AZURE.NOTE]<code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
+	> [AZURE.NOTE] 
+	<code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
 
 4. Web ブラウザーを開いて、[http://localhost/registration/createtable.php][localhost-createtable] にアクセスします。このコードは、データベースに `registration_tbl` テーブルを作成するために使用します。
 
@@ -171,7 +168,8 @@ Registration アプリケーションは、名前と電子メール アドレス
 			die(var_dump($e));
 		}
 
-	> [AZURE.NOTE]ここでも、<code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
+	> [AZURE.NOTE]
+	ここでも、<code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
 
 7. データベース接続コードの次に、登録情報をデータベースに挿入するためのコードを追加します。
 
@@ -222,11 +220,15 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 Web Apps で実行されている MySQL データベースに接続するには、接続情報が必要になります。MySQL の接続情報を取得するには、次の手順に従います。
 
+1. App Service Web アプリのブレードで、次のリソース グループのリンクをクリックします。
+
+	![リソース グループの選択][select-resourcegroup]
+
 1. リソース グループで、データベースをクリックします。
 
 	![データベースの選択][select-database]
 
-2. データベースのサマリで、**[プロパティ]** を選択します。
+2. データベース サマリーから、**[設定]**、**[プロパティ]** の順に選択します。
 
     ![プロパティの選択][select-properties]
 	
@@ -292,6 +294,7 @@ Web Apps で実行されている MySQL データベースに接続するには�
 [resource-group]: ./media/web-sites-php-mysql-deploy-use-ftp/set_group.png
 [new-web-app]: ./media/web-sites-php-mysql-deploy-use-ftp/create_wa.png
 [select-database]: ./media/web-sites-php-mysql-deploy-use-ftp/select_database.png
+[select-resourcegroup]: ./media/web-sites-php-mysql-deploy-use-ftp/select_resourcegroup.png
 [select-properties]: ./media/web-sites-php-mysql-deploy-use-ftp/select_properties.png
 [note-properties]: ./media/web-sites-php-mysql-deploy-use-ftp/note-properties.png
 
@@ -300,4 +303,4 @@ Web Apps で実行されている MySQL データベースに接続するには�
 [download-publish-profile]: ./media/web-sites-php-mysql-deploy-use-ftp/download_publish_profile_3.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

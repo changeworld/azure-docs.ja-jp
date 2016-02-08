@@ -13,14 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="01/21/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Azure AD B2C ユーザー インターフェイス (UI) をカスタマイズする方法
 
 コンシューマー向けのアプリケーションでは、ユーザー エクスペリエンスが最も重要です。ユーザー エクスペリエンスは、単に悪くないだけのアプリケーションと優れたアプリケーションを分けるものであると同時に、コンシューマーがアクティブ ユーザーにとどまるか、それともコンシューマーから真のエンゲージメントを獲得できるかを分けるものでもあるからです。Azure Active Directory (AD) B2C では、コンシューマーのサインアップ ページ、サインイン ページ (*下記の注参照*)、およびプロファイルの編集ページをピクセル単位で正確に制御してカスタマイズすることができます。
 
-> [AZURE.NOTE]ローカル アカウントのサインイン ページ、電子メールの確認およびセルフサービスのパスワード リセットのページは現在、[会社のブランド化機能](./active-directory/active-directory-add-company-branding.md)を使用してのみカスタマイズできます。この記事で説明するメカニズムは使用できません。
+> [AZURE.NOTE]
+ローカル アカウントのサインイン ページ、電子メールの確認およびセルフサービスのパスワード リセットのページは現在、[会社のブランド化機能](./active-directory/active-directory-add-company-branding.md)を使用してのみカスタマイズできます。この記事で説明するメカニズムは使用できません。
 
 この記事では、次のことについて説明します。
 
@@ -43,9 +44,10 @@ Azure BLOB ストレージでホストされるサンプルの HTML と CSS の�
 
 ## ページの種類ごとの基本的な UI 要素
 
-以降のセクションで、Azure AD B2C がコンテンツ内に配置された <div id="api"></div> 要素にマージする HTML5 フラグメントの例を (ページの種類ごとに) 示します。これらの UI 要素は独自のスタイル シートを使用してカスタマイズできます。これらのスタイル シートによって、<head> フラグメントの各ページに追加された既定のスタイル シートを上書きする必要があります。
+以降のセクションで、Azure AD B2C がコンテンツ内に配置された <div id="api"></div> 要素にマージする HTML5 フラグメントを (ページの種類ごとに) 示します。これらの UI 要素は独自のスタイル シートを使用してカスタマイズできます。これらのスタイル シートによって、<head> フラグメントの各ページに追加された既定のスタイル シートを上書きする必要があります。
 
-> [AZURE.IMPORTANT]プレビューの間は、ユーザーのフィードバックに基づいて改善が施されるため、実際の UI 要素は変更になる可能性があります。常に最新の更新プログラムの既定のページのソース コードを調べてください。実際に考えられる最初の変更は、既定のスタイル シートの削除です。これは、コンテンツ内の UI 要素のための独自のスタイル シートを常に用意する必要があることを意味します。
+> [AZURE.IMPORTANT]
+	プレビューの間は、ユーザーのフィードバックに基づいて改善が施されるため、実際の UI 要素は変更になる可能性があります。常に最新の更新プログラムの既定のページのソース コードを調べてください。実際に考えられる最初の変更は、既定のスタイル シートの削除です。これは、コンテンツ内の UI 要素のための独自のスタイル シートを常に用意する必要があることを意味します。
 
 ## ID プロバイダーの選択ページ
 
@@ -57,7 +59,7 @@ Azure BLOB ストレージでホストされるサンプルの HTML と CSS の�
 	<div class="intro">
          <p>Sign up</p>
 	</div>
-	
+
 	<div>
 		<ul>
 			<li>
@@ -81,21 +83,21 @@ Azure BLOB ストレージでホストされるサンプルの HTML と CSS の�
 
 ```HTML
 
-<div id="api" data-name="SelfAsserted"> 
-	<div class="intro"> 
+<div id="api" data-name="SelfAsserted">
+	<div class="intro">
 		<p>Create your account by providing the following details</p>
 	</div>
-	
-	<div id="attributeVerification"> 
+
+	<div id="attributeVerification">
 		<div class="errorText" id="passwordEntryMismatch" style="display: none;">The password entry fields do not match. Please enter the same password in both fields and try again.</div>
 		<div class="errorText" id="requiredFieldMissing" style="display: none;">A required field is missing. Please fill out all required fields and try again.</div>
 		<div class="errorText" id="fieldIncorrect" style="display: none;">One or more fields are filled out incorrectly. Please check your entries and try again.</div>
 		<div class="errorText" id="claimVerificationServerError" style="display: none;"></div>
-		<div class="attr" id="attributeList"> 
+		<div class="attr" id="attributeList">
 			<ul>
-				<li> 
+				<li>
 					<div class="attrEntry validate">
-						<div> 
+						<div>
 							<div class="verificationInfoText" id="email_intro" style="display: inline;">Verification is necessary. Please click Send button.</div>
 							<div class="verificationInfoText" id="email_info" style="display:none">Verification code has been sent to your inbox. Please copy it to the input box below.</div>
 							<div class="verificationSuccessText" id="email_success" style="display:none">E-mail address verified. You can now continue.</div>
@@ -109,40 +111,40 @@ Azure BLOB ストレージでホストされるサンプルの HTML と CSS の�
 						<label>Email</label>
 						<input id="email" class="textInput" type="text" placeholder="Email" required="" autofocus=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Email address that can be used to contact you.');" class="tiny">What is this?</a>
 
-					<div class="buttons verify" claim_id="email"> 
+					<div class="buttons verify" claim_id="email">
 						<div id="email_ver_wait" class="working" style="display: none;"></div>
-							<label id="email_ver_input_label" for="email_ver_input" style="display: none;">Verification code</label> 
+							<label id="email_ver_input_label" for="email_ver_input" style="display: none;">Verification code</label>
 							<input id="email_ver_input" type="text" placeholder="Verification code" style="display:none">
 							<button id="email_ver_but_send" class="sendButton" type="button" style="display: inline;">Send verification code</button>
 							<button id="email_ver_but_verify" class="verifyButton" type="button" style="display:none">Verify code</button>
 							<button id="email_ver_but_resend" class="sendButton" type="button" style="display:none">Send new code</button>
 							<button id="email_ver_but_edit" class="editButton" type="button" style="display:none">Change e-mail</button>
-							<button id="email_ver_but_default" class="defaultButton" type="button" style="display:none">Default</button> 
+							<button id="email_ver_but_default" class="defaultButton" type="button" style="display:none">Default</button>
 						</div>
 					</div>
 				</li>
-				<li> 
+				<li>
 					<div class="attrEntry">
 						<div class="helpText">8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .This information is required</div>
 						<label>Enter password</label>
 						<input id="password" class="textInput" type="password" placeholder="Enter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*-_+=[]{}|\\:',?/`~";();!]|\.(?!@)){8,16}$" title="8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ "; ( ) ; ." required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Enter password');" class="tiny">What is this?</a>
 					</div>
 				</li>
-				<li> 
+				<li>
 					<div class="attrEntry">
 						<div class="helpText"> This information is required</div>
 						<label>Reenter password</label>
 						<input id="reenterPassword" class="textInput" type="password" placeholder="Reenter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*-_+=[]{}|\\:',?/`~";();!]|\.(?!@)){8,16}$" title=" " required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Reenter password');" class="tiny">What is this?</a>
 					</div>
 				</li>
-				<li> 
+				<li>
 					<div class="attrEntry">
 						<div class="helpText">This information is required</div>
 						<label>Name</label>
 						<input id="displayName" class="textInput" type="text" placeholder="Name" required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Your display name.');" class="tiny">What is this?</a>
 					</div>
 				</li>
-				<li> 
+				<li>
 					<div class="attrEntry">
 						<div class="helpText"></div>
 						<label>Gender</label>
@@ -153,14 +155,14 @@ Azure BLOB ストレージでホストされるサンプルの HTML と CSS の�
 						<a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('');" class="tiny">What is this?</a>
 					</div>
 				</li>
-				<li> 
+				<li>
 					<div class="attrEntry">
 						<div class="helpText"></div>
 						<label>Loyalty number</label>
 						<input id="extension_MemNum" class="textInput" type="text" placeholder="Loyalty number"><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Membership number');" class="tiny">What is this?</a>
 					</div>
 				</li>
-				<li> 
+				<li>
 					<div class="attrEntry">
 						<div class="helpText"></div>
 						<label>State</label>
@@ -173,18 +175,18 @@ Azure BLOB ストレージでホストされるサンプルの HTML と CSS の�
 						<a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Your residential state or province.');" class="tiny">What is this?</a>
 					</div>
 				</li>
-				<li> 
+				<li>
 					<div class="attrEntry">
 						<div class="helpText">This information is required</div>
 						<label>Zip code</label>
 						<input id="postalCode" class="textInput" type="text" placeholder="Zip code" required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('The postal code of your address.');" class="tiny">What is this?</a>
 					</div>
 				</li>
-			</ul> 
+			</ul>
 		</div>
 		<div class="buttons"> <button id="continue" disabled="">Create</button> <button id="cancel">Cancel</button></div>
 	</div>
-	<div class="verifying-modal"> 
+	<div class="verifying-modal">
 		<div class="preloader"> <img src="https://login.microsoftonline.com/static/img/win8loader.gif" alt="Please wait"></div>
 		<div id="verifying_blurb"></div>
 	</div>
@@ -265,7 +267,7 @@ Azure BLOB ストレージでホストされるサンプルの HTML と CSS の�
 ページの UI カスタマイズ機能を使用する場合には、以下のベスト プラクティスを確認してください。
 
 - Azure AD B2C の既定のテンプレートをコピーしたり、変更したりしないでください。HTML5 コンテンツは最初から構築し、既定のテンプレートはあくまで参考としての利用にとどめることをお勧めします。
-- セキュリティ上の理由から、コンテンツに JavaScript を含めることはできません。必要なものの多くは既に用意されているはずです。必要なものがない場合には、[ユーザーの声](http://feedback.azure.com/forums/169401-azure-active-directory)を使用して新しい機能を要求してください。
+- セキュリティ上の理由から、コンテンツに JavaScript を含めることはできません。必要なものの多くは既に用意されているはずです。必要なものがない場合には、[ユーザーの声](https://feedback.azure.com/forums/169401-azure-active-directory/)を使用して新しい機能を要求してください。
 - サポートされているブラウザーのバージョン:
 	- Internet Explorer 11
 	- Internet Explorer 10
@@ -276,4 +278,4 @@ Azure BLOB ストレージでホストされるサンプルの HTML と CSS の�
 	- Mozilla Firefox 38.0
 	- Mozilla Firefox 37.0
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -25,14 +25,14 @@ Azure の大規模なコンピューティング オプションについて説�
 
 * [Batch と HPC ソリューション](batch-hpc-solutions.md)
 
-* [ビデオ: Azure と HPC を使用したクラウドでの大規模なコンピューティング](http://azure.microsoft.com/documentation/videos/teched-europe-2014-big-compute-in-the-cloud-with-high-performance-computing-on-azure/)
+* [ビデオ: Azure と HPC を使用したクラウドでの大規模なコンピューティング](https://azure.microsoft.com/documentation/videos/teched-europe-2014-big-compute-in-the-cloud-with-high-performance-computing-on-azure/)
 
 
 ## Azure Batch
 
-[Batch](http://azure.microsoft.com/services/batch/) は、アプリケーションを簡単にクラウド対応にすることができ、クラスターやジョブ スケジューラーをセットアップして管理しなくてもジョブを実行できるプラットフォーム サービスです。SDK を使用して、さまざまな言語を介してクライアント アプリケーションを Azure Batch と統合し、Azure にデータをステージングし、ジョブの実行パイプラインをビルドします。
+[Batch](https://azure.microsoft.com/services/batch/) は、アプリケーションを簡単にクラウド対応にすることができ、クラスターやジョブ スケジューラーをセットアップして管理しなくてもジョブを実行できるプラットフォーム サービスです。SDK を使用して、さまざまな言語を介してクライアント アプリケーションを Azure Batch と統合し、Azure にデータをステージングし、ジョブの実行パイプラインをビルドします。
 
-* [ドキュメント](http://azure.microsoft.com/documentation/services/batch/)
+* [ドキュメント](https://azure.microsoft.com/documentation/services/batch/)
 
 * [API リファレンス](https://msdn.microsoft.com/library/azure/dn820177.aspx)
 
@@ -68,9 +68,9 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 
 これらの Azure クイック スタート テンプレートを使用して、オープン ソース ツールを備えた Linux HPC クラスターをデプロイします。
 
-* [SLURM クラスターの起動](http://azure.microsoft.com/documentation/templates/slurm/)と[ブログの投稿](http://blogs.technet.com/b/windowshpc/archive/2015/06/06/deploy-a-slurm-cluster-on-azure.aspx)
+* [SLURM クラスターの起動](https://azure.microsoft.com/documentation/templates/slurm/)と[ブログの投稿](http://blogs.technet.com/b/windowshpc/archive/2015/06/06/deploy-a-slurm-cluster-on-azure.aspx)
 
-* [トルク クラスターの起動](http://azure.microsoft.com/documentation/templates/torque-cluster/)
+* [トルク クラスターの起動](https://azure.microsoft.com/documentation/templates/torque-cluster/)
 
 ## Microsoft MPI
 
@@ -90,11 +90,11 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/virtual-machines-linux-cluster-rdma.md)
 
-* [A8 および A9 インスタンス: HPC Pack 使用クイック スタート](https://msdn.microsoft.com/library/azure/dn594431.aspx)
+* [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](../virtual-machines/virtual-machines-windows-hpcpack-cluster-rdma.md)
 
 ## アーキテクチャの設計図
 
-* [大規模なコンピューティング - 金融サービス](http://go.microsoft.com/fwlink/?LinkId=536378) (PDF) では、リスク管理、レポート、シミュレーション用のクラウドで大規模なコンピューター処理とデータ分析を運用し、調整する方法を示しています。
+* Microsoft Azure Batch and Azure Data Factory: Architecture for large-scale data processing (Microsoft Azure Batch と Azure Data Factory: 大規模なデータ処理のアーキテクチャ) ([PDF](http://go.microsoft.com/fwlink/?linkid=717686) と[記事](../data-factory/data-factory-data-processing-using-batch.md)) では、Data Factory によってデータの移動と処理が調整されるしくみと、Azure Batch によってデータが並列処理されるしくみを示します。
 
 ## サンプルとデモ
 
@@ -102,23 +102,23 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 
 ## 関連する Azure サービス
 
-* [Data Factory](http://azure.microsoft.com/documentation/services/data-factory/)
+* [Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
-* [Machine Learning](http://azure.microsoft.com/documentation/services/machine-learning/)
+* [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)
 
-* [HDInsight](http://azure.microsoft.com/documentation/services/hdinsight/)
+* [HDInsight](https://azure.microsoft.com/documentation/services/hdinsight/)
 
-* [仮想マシン](http://azure.microsoft.com/documentation/services/virtual-machines/)
+* [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
-* [Cloud Services](http://azure.microsoft.com/documentation/services/cloud-services/)
+* [Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/)
 
-* [Media Services](http://azure.microsoft.com/documentation/services/media-services/)
+* [Media Services](https://azure.microsoft.com/documentation/services/media-services/)
 
 
 
 ## 次のステップ
 
-* 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](http://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
-* また、「[Batch の新機能](http://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](http://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
+* 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
+* また、「[Batch の新機能](https://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](https://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

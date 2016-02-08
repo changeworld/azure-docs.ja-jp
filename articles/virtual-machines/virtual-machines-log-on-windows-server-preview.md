@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/15/2015"
+	ms.date="01/21/2016"
 	ms.author="cynthn"/>
 
 # Windows Server が実行されている仮想マシンにログオンする方法 
@@ -27,15 +27,11 @@ Azure ポータルの **[接続]** ボタンを使用して、リモート デ�
 
 1. まだサインインしていない場合は、[Azure ポータル](https://portal.azure.com/)にサインインします。
 
-2.	ハブ メニューの **[参照]** をクリックします。
+2.	ハブ メニューで **[仮想マシン]** をクリックします。
 
-3.	検索ブレードを下へスクロールし、**[仮想マシン]** をクリックします。
+3.	一覧から仮想マシンを選択します。
 
-	![仮想マシンのサイズ](./media/virtual-machines-log-on-windows-server-preview/search-blade-preview-portal.png)
-
-4.	一覧から仮想マシンを選択します。
-
-5. 仮想マシンのブレードで、**[接続]** をクリックします。
+4. 仮想マシンのブレードで、**[接続]** をクリックします。
 
 	![仮想マシンへの接続](./media/virtual-machines-log-on-windows-server-preview/preview-portal-connect.png)
 
@@ -47,4 +43,4 @@ Azure ポータルの **[接続]** ボタンを使用して、リモート デ�
 
 ログオンのヒントで解決できない場合、または必要な情報が掲載されていない場合は、[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続のトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)に関するページを参照してください。この記事では、一般的な問題の診断と解決の手順について説明します。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

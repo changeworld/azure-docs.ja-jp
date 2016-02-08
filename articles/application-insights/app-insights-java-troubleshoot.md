@@ -44,7 +44,7 @@
 #### データが表示されていたのに停止しました。
 
 * [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
-* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
+* データ ポイントの月間クォータに達していませんか? Open Settings/Quota and Pricing to find out.上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
 
 
@@ -89,7 +89,7 @@ XML メソッドを使用するうえで、値を変更した場合はアプリ�
 
 ## Azure のスタート画面
 
-*[Azure ポータル](http://portal.azure.com)を表示しています。このマップから、自分のアプリについて何か情報が得られるのでしょうか?*
+*[Azure ポータル](https://portal.azure.com)を表示しています。このマップから、自分のアプリについて何か情報が得られるのでしょうか?*
 
 いいえ、そのマップは世界中の Azure サーバーの正常性を表しています。
 
@@ -138,4 +138,4 @@ XML メソッドを使用するうえで、値を変更した場合はアプリ�
 
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="01/20/2016"
 	ms.author="davidmu"/>
 
 # Compute、Network、および Storage .NET ライブラリを使用した Azure リソースのデプロイ
@@ -28,7 +28,7 @@
 このチュートリアルを完了するには、以下に示すものも必要です。
 
 - [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
-- [Azure ストレージ アカウント](../storage-create-storage-account.md)
+- [Azure ストレージ アカウント](../storage/storage-create-storage-account.md)
 - [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)
 
 [AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
@@ -47,7 +47,7 @@ Azure AD を使用して Azure リソース マネージャーへの要求を認
 
 			New-AzureRmADApplication -DisplayName "My AD Application 1" -HomePage "https://myapp1.com" -IdentifierUris "https://myapp1.com"  -Password "{password}"
 
-	>[AZURE.NOTE]アプリケーションが作成された後で、返されたアプリケーション ID をメモしてください。これは次の手順で必要になります。アプリケーション ID は、Azure ポータルの Active Directory セクションにあるアプリケーションのクライアント ID フィールドでも確認できます。
+	>[AZURE.NOTE] アプリケーションが作成された後で、返されたアプリケーション ID をメモしてください。これは次の手順で必要になります。アプリケーション ID は、Azure ポータルの Active Directory セクションにあるアプリケーションのクライアント ID フィールドでも確認できます。
 
 3. {application-id} を記録しておいた ID に置き換えてから、次のようにアプリケーションのサービス プリンシパルを作成します。
 
@@ -73,7 +73,7 @@ NuGet パッケージを使用すると、このチュートリアルを完了�
 
 6. 検索ボックスに「*Microsoft.Azure.Management.Network*」と入力し、Network .NET ライブラリの**[インストール]** をクリックして、パッケージのインストール手順に従います。
 
-7. 検索ボックスに「*Microsoft.Azure.Management.Storage*」と入力し、Storage .NET ライブラリの**[インストール]** をクリックして、パッケージのインストール手順に従います。
+7. 検索ボックスに「*Microsoft.Azure.Management.Storage*」と入力し、Storage .NET ライブラリの **[インストール]** をクリックして、パッケージのインストール手順に従います。
 
 8. 検索ボックスに「*Microsoft.Azure.Management.Resources*」と入力し、Resource Management ライブラリの **[インストール]** をクリックします。
 
@@ -279,7 +279,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 ### 仮想ネットワークの作成
 
-リソース マネージャーのデプロイメント モデルで作成された仮想マシンは、仮想ネットワーク内に存在する必要があります。
+リソース マネージャーのデプロイ モデルで作成された仮想マシンは、仮想ネットワーク内に存在する必要があります。
 
 1. 次のメソッドを Program クラスに追加して、サブネットと仮想ネットワークを作成します。
 
@@ -489,7 +489,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 	}
 	```
 
-	>[AZURE.NOTE]このチュートリアルでは、Windows Server オペレーティング システムのバージョンを実行する仮想マシンを作成します。他のイメージの選択の詳細については、「[Windows PowerShell と Azure CLI による Azure Virtual Machine イメージのナビゲーションと選択](resource-groups-vm-searching.md)」を参照してください。
+	>[AZURE.NOTE] このチュートリアルでは、Windows Server オペレーティング システムのバージョンを実行する仮想マシンを作成します。他のイメージの選択の詳細については、「[Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](resource-groups-vm-searching.md)」を参照してください。
 
 2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
@@ -548,4 +548,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/virtual-machines-arm-deployment/crpportal.png)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

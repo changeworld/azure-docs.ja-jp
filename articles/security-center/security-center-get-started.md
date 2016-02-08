@@ -20,16 +20,16 @@
 
 このドキュメントでは、Azure セキュリティ センターのセキュリティ監視およびポリシー管理コンポーネントの概要と、次のステップへの展開について説明します。
 
-> [AZURE.NOTE]このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。これは、サンプルのデプロイメントを使用してサービスを紹介するもので、ステップ バイ ステップ ガイドではありません。
+> [AZURE.NOTE] このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。これは、サンプルのデプロイメントを使用してサービスを紹介するもので、ステップ バイ ステップ ガイドではありません。
 
 ## Azure セキュリティ センターとは
 Azure セキュリティ センターは、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。これにより、サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 ## 前提条件
 
-Azure セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。Azure セキュリティ センターは、サブスクリプションがある場合に有効です。サブスクリプションがない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
+Azure セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。Azure セキュリティ センターは、サブスクリプションがある場合に有効です。サブスクリプションがない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
-Azure セキュリティ センターは [Azure ポータル](http://azure.microsoft.com/features/azure-portal/)からアクセスします。詳細は、[ポータルのドキュメント](https://azure.microsoft.com/documentation/services/azure-portal/)を参照してください。
+Azure セキュリティ センターは [Azure ポータル](https://azure.microsoft.com/features/azure-portal/)からアクセスします。詳細は、[ポータルのドキュメント](https://azure.microsoft.com/documentation/services/azure-portal/)を参照してください。
 
 
 ## Azure セキュリティ センターへのアクセス
@@ -90,7 +90,7 @@ Azure セキュリティ センターにアクセスするには、ポータル�
 - 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 – セキュリティ ポリシーの設定方法についての説明
 - 「[Azure セキュリティ センターのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 – 推奨事項に従って Azure リソースを保護する方法についての説明
 - 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」 – Azure リソースのヘルスを監視する方法についての説明
-- 「[Azure セキュリティ センターでのセキュリティのアラートの管理と対応](security-center-managing-and-responding-alerts.md)」 -セキュリティの警告の管理および対応について
+- 「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -セキュリティの警告の管理および応答の方法について
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) – Azure のセキュリティの最新のニュースと情報を取得
 
@@ -103,4 +103,4 @@ Azure セキュリティ センターにアクセスするには、ポータル�
 [6]: ./media/security-center-get-started/security-alert.png
 [7]: ./media/security-center-get-started/security-alert-detail.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

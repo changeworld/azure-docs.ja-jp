@@ -24,7 +24,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 ## 前提条件
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * **HDInsight クラスターの Windows ベースまたは Linux ベースの Hadoop**詳細については、[HDInsight での Linux ベースの Hadoop のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)または [HDInsight での Windows ベースの Hadoop のプロビジョニング](hdinsight-provision-clusters.md)を参照してください。
 
 * **[Maven](http://maven.apache.org/)**
@@ -185,7 +185,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 ## Linux ベースのクラスターでのジョブの実行
 
-> [AZURE.NOTE]次の手順では、SSH および Hadoop コマンドを使用します。MapReduce ジョブを実行する他の方法については、「[HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)」を参照してください。
+> [AZURE.NOTE] 次の手順では、SSH および Hadoop コマンドを使用します。MapReduce ジョブを実行する他の方法については、「[HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)」を参照してください。
 
 1. 次のコマンドを使用して、HDInsight クラスターにパッケージをアップロードします。
 
@@ -193,13 +193,13 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
     これにより、ファイルがローカル システムからヘッド ノードにコピーされます。
 
-    > [AZURE.NOTE]SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。たとえば、`scp -i /path/to/private/key target/scaldingwordcount-1.0-SNAPSHOT.jar username@clustername-ssh.azurehdinsight.net:.` のように指定します。
+    > [AZURE.NOTE] SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。たとえば、`scp -i /path/to/private/key target/scaldingwordcount-1.0-SNAPSHOT.jar username@clustername-ssh.azurehdinsight.net:.` のように指定します。
 
 2. 次のコマンドを使用して、クラスターのヘッド ノードに接続します。
 
         ssh username@clustername-ssh.azurehdinsight.net
 
-    > [AZURE.NOTE]SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。たとえば、`ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net` のように指定します。
+    > [AZURE.NOTE] SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。たとえば、`ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net` のように指定します。
 
 3. ヘッド ノードに接続した後、次のコマンドを使用してワード カウント ジョブを実行します。
 
@@ -229,7 +229,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 ## Windows ベースのクラスターでのジョブの実行
 
-> [AZURE.NOTE]次の手順では、Windows PowerShell を使用します。MapReduce ジョブを実行する他の方法については、「[HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)」を参照してください。
+> [AZURE.NOTE] 次の手順では、Windows PowerShell を使用します。MapReduce ジョブを実行する他の方法については、「[HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)」を参照してください。
 
 1. [Azure PowerShell をインストールして構成します](../powershell-install-configure.md)。
 
@@ -245,7 +245,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 		Select-AzureRMSubscription -SubscriptionID <YourSubscriptionId>
 
-    > [AZURE.NOTE]`Get-AzureRMSubscription` を使用して、アカウントに関連付けられているすべてのサブスクリプションのリストを取得することができます。これには、各サブスクリプション ID が含まれます。
+    > [AZURE.NOTE] `Get-AzureRMSubscription` を使用して、アカウントに関連付けられているすべてのサブスクリプションのリストを取得することができます。これには、各サブスクリプション ID が含まれます。
 
 4. WordCount ジョブをアップロードして実行するには、次のスクリプトを使用します。`CLUSTERNAME` は HDInsight クラスターの名前に置き換え、`$fileToUpload` が __scaldingwordcount-1.0-SNAPSHOT.jar__ ファイルへの正しいパスであることを確認します。
 
@@ -344,4 +344,4 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

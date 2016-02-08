@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect sync: Generic LDAP Connector"
+   pageTitle="Azure AD Connect sync: Generic LDAP Connector | Microsoft Azure"
    description="この記事では、Microsoft の Generic LDAP コネクタを構成する方法について説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="01/14/2015"
+   ms.date="01/21/2016"
    ms.author="andkjell"/>
 
 # Generic LDAP コネクタに関するテクニカル リファレンス
@@ -279,4 +279,4 @@ Novell eDirectory の場合、差分インポートでオブジェクトの削�
 
 -	コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「[How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

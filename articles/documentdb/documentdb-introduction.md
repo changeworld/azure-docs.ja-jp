@@ -23,8 +23,8 @@ DocumentDB とは、簡単に拡大縮小でき、高い可用性を必要とす
 
 この JSON データベースを簡単に理解して動作を確認するには、次の 3 つの手順に従います。
 
-1. [DocumentDB について説明する 2 分間のビデオ](http://azure.microsoft.com/documentation/videos/what-is-azure-documentdb/)を視聴します。このビデオでは、DocumentDB を使用する利点が紹介されています。
-2. [Azure での DocumentDB の作成に関する 3 分間のビデオ](http://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/)を視聴します。このビデオでは、Azure ポータルを使用して DocumentDB の使用を開始する方法が紹介されています。
+1. [DocumentDB について説明する 2 分間のビデオ](https://azure.microsoft.com/documentation/videos/what-is-azure-documentdb/)を視聴します。このビデオでは、DocumentDB を使用する利点が紹介されています。
+2. [Azure での DocumentDB の作成に関する 3 分間のビデオ](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/)を視聴します。このビデオでは、Azure ポータルを使用して DocumentDB の使用を開始する方法が紹介されています。
 3. [クエリのプレイ グラウンド](http://www.documentdb.com/sql/demo)にアクセスします。このページでは、DocumentDB で利用できる豊富なクエリ機能について理解するためのさまざまな手順を確認できます。次に [サンドボックス] タブに移動して、独自のカスタム SQL クエリを実行し、DocumentDB を試してみます。
 
 その後でこの記事に戻ると、より詳しく調べることができ、次の質問の答えを見つけることができます。
@@ -103,12 +103,12 @@ DocumentDB における JavaScript は、Transact-SQL の後継として、リ�
 Azure アカウントをお持ちでない場合は、
 
 - [Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。これは 30 日間使用でき、すべての Azure サービスを試すには 200 ドルかかります。 
-- MSDN サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。 
+- MSDN サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。 
 
-詳細を確認する準備ができたら、[ラーニング パス](http://azure.microsoft.com/documentation/learning-paths/documentdb/)のページにアクセスして、使用できるすべてのラーニング リソースを移動しながら確認します。
+詳細を確認する準備ができたら、[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)のページにアクセスして、使用できるすべてのラーニング リソースを移動しながら確認します。
 
 
 [1]: ./media/documentdb-introduction/json-database-resources1.png
  
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

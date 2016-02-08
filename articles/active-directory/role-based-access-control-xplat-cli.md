@@ -3,7 +3,7 @@
 	description="Azure コマンドライン インターフェイスによるロールベースのアクセス制御の管理"
 	services="active-directory"
 	documentationCenter="na"
-	authors="IHenkel"
+	authors="kgremban"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/04/2016"
-	ms.author="inhenk"/>
+	ms.date="01/25/2016"
+	ms.author="kgremban"/>
 
 # Azure コマンドライン インターフェイス (Azure CLI) によるロールベースのアクセス制御の管理 #
 
@@ -24,7 +24,7 @@
 
 Azure ポータルと Azure リソース マネージャー API のロールベースのアクセス制御 (RBAC) を使用すると、サブスクリプションとリソースへのアクセスを詳細に管理できます。この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
 
-このチュートリアルでは、Azure CLI を使用してロールベースのアクセス制御を管理する方法について学習します。役割の割り当てを作成して確認するプロセスについて説明します。
+このチュートリアルでは、Azure CLI を使用して RBAC を管理する方法について学習します。役割の割り当てを作成して確認するプロセスについて説明します。
 
 **推定所要時間:** 15 分
 
@@ -45,7 +45,7 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
 
 ## <a id="connect"></a>サブスクリプションへの接続 ##
 
-RBAC は Azure リソース マネージャーのみと協働するので、最初に Azure リソース マネージャー モードに切り替えます。型:
+RBAC は Azure リソース マネージャーのみと協働するので、最初に Azure リソース マネージャー モードに切り替えます。次のコマンドを入力します。
 
     azure config mode arm
 
@@ -55,7 +55,7 @@ RBAC は Azure リソース マネージャーのみと協働するので、最�
 
     azure login -u <username>
 
-コマンド ライン プロンプトで、Azure アカウントのパスワードを入力します (組織アカウントのみ使用してください)。Azure CLI は、このアカウントのご使用のサブスクリプションをすべて入手し、最初のサブスクリプションを既定として使うように自己構成します。役割ベースのアクセス制御の使用時には、共同管理者であるか役割が割り当てられていることによってアクセス許可があるサブスクリプションのみを入手できることに注意してください。
+コマンド ライン プロンプトで、Azure アカウントのパスワードを入力します (組織アカウントのみ使用してください)。Azure CLI は、このアカウントのご使用のサブスクリプションをすべて入手し、最初のサブスクリプションを既定として使うように自己構成します。ロールベースのアクセス制御の使用時には、共同管理者であるかロールが割り当てられていることによってアクセス許可があるサブスクリプションのみを入手できることに注意してください。
 
 サブスクリプションが複数ある場合に、別のサブスクリプションに切り替えるには、以下のように入力します。
 
@@ -116,16 +116,13 @@ Azure AD ディレクトリ内の特定のユーザー (リソース グルー�
 
 次に、`azure role assignment create` を使ってロールの割り当てを作成します。次に例を示します。
 
- - ユーザーに関する現在のサブスクリプション レベルでの閲覧者の役割の割り当てが作成されます。
-
+ 	#This will create a role assignment at the current subscription level for a user as a reader:
     `azure role assignment create --upn <user's email> -o Reader`
 
-- 次を使用すると、リソース グループ レベルでの役割の割り当てが作成されます。
-
+	#This will create a role assignment at a resource group level:
     `PS C:\> azure role assignment create --upn <user's email> -o Contributor -g group1`
 
-- 次を使用すると、リソース レベルでの役割の割り当てが作成されます。
-
+	#This will create a role assignment at a resource level:
     `azure role assignment create --upn <user's email> -o Owner -g group1 -r Microsoft.Web/sites -u site1`
 
 ## <a id="verify"></a>アクセス許可の確認 ##
@@ -151,4 +148,4 @@ Azure CLI を使用したロールベースのアクセス制御の管理の詳�
 - [Windows PowerShell を使用したロールベースのアクセス制御の構成](role-based-access-control-powershell.md)
 - [ロール ベースの Access Control のトラブルシューティング](role-based-access-control-troubleshooting.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

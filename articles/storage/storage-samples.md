@@ -26,7 +26,7 @@
 
 ## .NET のサンプル
 
-.NET のサンプルを調べるには、NuGet から [.NET ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)をダウンロードします。.NET ストレージ クライアント ライブラリは、[Azure SDK for .NET のページ](http://azure.microsoft.com/downloads/)にも用意されています。
+.NET のサンプルを調べるには、NuGet から [.NET ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)をダウンロードします。.NET ストレージ クライアント ライブラリは、[Azure SDK for .NET のページ](https://azure.microsoft.com/downloads/)にも用意されています。
 
 * [5 分で始める、Azure の BLOB、テーブル、キューの使用](storage-getting-started-guide.md)
 * [Azure Storage での同時実行制御の管理 - サンプル アプリケーション](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)
@@ -85,4 +85,4 @@ C++ のサンプルを調べるには、NuGet から [C++ ストレージ クラ
 - [C++ ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-cpp)
 - [C++ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp/)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -129,17 +129,17 @@ Azure エミュレーターでアプリケーションをテストする前に�
 
         PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch
 
-	> [AZURE.IMPORTANT]必ず一意の名前を使用してください。一意でない場合は発行処理が失敗します。デプロイが完了すると、ブラウザーが開き、デプロイされたサービスに移動します。
+	> [AZURE.IMPORTANT] 必ず一意の名前を使用してください。一意でない場合は発行処理が失敗します。デプロイが完了すると、ブラウザーが開き、デプロイされたサービスに移動します。
 	> 
-	> 指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「**Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ**」の「[Azure へのアプリケーションのデプロイ](https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/)」を参照してください。
+	> 指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「**Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ**」の「[Azure へのアプリケーションのデプロイ](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)」を参照してください。
 
     ![Azure でホストされるサービスを表示しているブラウザー ウィンドウ][completed-app]
 
-	> [AZURE.NOTE]指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「**Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ**」の「[Azure へのアプリケーションのデプロイ](https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/)」を参照してください。
+	> [AZURE.NOTE] 指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「**Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ**」の「[Azure へのアプリケーションのデプロイ](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)」を参照してください。
 
 これで、アプリケーションは Azure で実行されるようになり、Socket.IO を使用する複数のクライアント間でチャット メッセージを中継できます。
 
-> [AZURE.NOTE]わかりやすくするために、このサンプルは同じインスタンスに接続したユーザー間でのチャットに制限されています。つまり、クラウド サービスによって 2 つの worker ロール インスタンスが作成された場合、ユーザーは同じ worker ロール インスタンスに接続された他のユーザーとのみチャットすることができます。複数のロール インスタンスで機能するようにこのアプリケーションを拡張するには、Service Bus などのテクノロジを使用して、インスタンス間で Socket.IO ストアの状態を共有します。たとえば、[Azure SDK for Node.js GitHub リポジトリ](https://github.com/WindowsAzure/azure-sdk-for-node)にある Service Bus キューおよびトピックの使用例を参照してください。
+> [AZURE.NOTE] わかりやすくするために、このサンプルは同じインスタンスに接続したユーザー間でのチャットに制限されています。つまり、クラウド サービスによって 2 つの worker ロール インスタンスが作成された場合、ユーザーは同じ worker ロール インスタンスに接続された他のユーザーとのみチャットすることができます。複数のロール インスタンスで機能するようにこのアプリケーションを拡張するには、Service Bus などのテクノロジを使用して、インスタンス間で Socket.IO ストアの状態を共有します。たとえば、[Azure SDK for Node.js GitHub リポジトリ](https://github.com/WindowsAzure/azure-sdk-for-node)にある Service Bus キューおよびトピックの使用例を参照してください。
 
 ##次のステップ
 
@@ -170,4 +170,4 @@ Azure エミュレーターでアプリケーションをテストする前に�
   
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -25,11 +25,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 この記事では、Windows Server 2012 R2 を実行する Hyper-V ホストが System Center Virtual Machine Manager (VMM) クラウドで管理されていないときに、Site Recovery をデプロイし、Hyper-V 仮想マシンを複製する方法について説明します。
 
-
-
-この記事は、デプロイの前提条件をまとめたものです。レプリケーションの設定を構成して仮想マシンの保護を有効にするのに役立ちます。すべてが正しく動作していることを確認するために、最後にフェールオーバーをテストします。
-
-問題が発生した場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
+この記事は、デプロイの前提条件をまとめたものです。レプリケーションの設定を構成して仮想マシンの保護を有効にするのに役立ちます。すべてが正しく動作していることを確認するために、最後にフェールオーバーをテストします。問題が発生した場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
 
 
 ## 開始する前に
@@ -38,7 +34,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 ### Azure の前提条件
 
-- [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
+- [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
 - レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。[Azure Storage についてはこちらを参照してください。](../storage/storage-introduction.md)
 - プライマリ サイトからフェールオーバーするとき、Azure 仮想マシンがネットワークに接続されるように、Azure 仮想ネットワークが必要になります。
 
@@ -60,12 +56,12 @@ Azure Site Recovery のデプロイの一部として、各 Hyper-V サーバー
 - 常に最新バージョンのプロバイダーとエージェントを実行することが推奨されます。これらは Site Recovery ポータルで入手できます。
 - コンテナー内のすべての Hyper-V サーバーで、プロバイダーとエージェントが同じバージョンである必要があります。
 - サーバーで実行されているプロバイダーは、インターネットで Site Recovery に接続します。このことは、プロキシを使用せずに、現在 Hyper-V サーバーで構成されているプロキシ設定を使用して、またはプロバイダーのインストール中に構成するカスタム プロキシ設定を使用して行えます。使用するプロキシ サーバーがこれらの URL にアクセスし、Azure に接続できることを確認する必要があります。
-	- *.hypervrecoverymanager.windowsazure.com
-	- *.accesscontrol.windows.net
-	- *.backup.windowsazure.com		
-	- *.blob.core.windows.net
-	- *.store.core.windows.net
- 
+	- **.hypervrecoverymanager.windowsazure.com
+- **.accesscontrol.windows.net
+- **.backup.windowsazure.com
+- **.blob.core.windows.net
+- **.store.core.windows.net
+	
 - また、「[Azure Datacenter の IP 範囲](https://www.microsoft.com/ja-JP/download/details.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
 
@@ -212,7 +208,7 @@ Hyper-V クラスターをインストールする場合は、フェールオー
 
 仮想マシンを保護グループに追加し、保護を有効にします。
 
->[AZURE.NOTE]静的 IP アドレスを持ち、Linux を実行している VM は保護できません。
+>[AZURE.NOTE] 静的 IP アドレスを持ち、Linux を実行している VM は保護できません。
 
 1. 保護グループの **[仮想マシン]** タブで、**[仮想マシンを保護グループに追加して保護を有効にする]** をクリックします。
 2. **[仮想マシンの保護の有効化]** ページで、保護する仮想マシンを選択します。
@@ -228,7 +224,7 @@ Hyper-V クラスターをインストールする場合は、フェールオー
 		- **サイズ**: フェールオーバーする仮想マシンのターゲット サイズ。
 
 		![仮想マシンのプロパティの構成](./media/site-recovery-hyper-v-site-to-azure/VMProperties.png)
-	- **[保護された項目]** > **[保護グループ]** > *保護グループ名* > **[Virtual Machines]** *仮想マシン名* > **[構成]** の順に移動し、次に示す追加の仮想マシンの設定を構成します。
+	- *[保護された項目]* > **[保護グループ]** > *保護グループ名* > **[Virtual Machines]** *仮想マシン名* > **[構成]** の順に移動し、次に示す追加の仮想マシンの設定を構成します。
 
 		- **ネットワーク アダプター**: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。仮想マシンのサイズでサポートされている NIC の数については、「[仮想マシン サイズの仕様](../virtual-machines/virtual-machines-size-specs.md#size-tables)」を参照してください。
 
@@ -296,4 +292,4 @@ Azure ネットワークを指定せずにテスト フェールオーバーを�
 
 デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、[こちら](site-recovery-failover.md)を参照してください。
 
-<!----HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

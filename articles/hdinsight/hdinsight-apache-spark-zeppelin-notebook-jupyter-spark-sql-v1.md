@@ -30,7 +30,7 @@
 
 **前提条件:**
 
-このチュートリアルを開始する前に、Azure サブスクリプションが必要です。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+このチュートリアルを開始する前に、Azure サブスクリプションが必要です。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 ##<a name="storage"></a>Azure Storage アカウントの作成
 
@@ -44,7 +44,7 @@ HDInsight で HDInsight クラスターを作成するときに、Azure Storage 
 
 	![簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.storageaccount.quickcreate.png "簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル")
 
->[AZURE.NOTE]ストレージ アカウントは、クラスターでサポートされる場所
+>[AZURE.NOTE]  ストレージ アカウントは、クラスターでサポートされる場所
 
 一覧の新しいストレージ アカウントを選択し、ページの下部の **[アクセス キーの管理]** をクリックします。**[プライマリ アクセス キー]** (または **[セカンダリ アクセス キー]** 動作しているいずれかのキー) の値を書き留めます。この情報は後で必要になります。詳細については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」をご覧ください。
 	
@@ -52,7 +52,7 @@ HDInsight で HDInsight クラスターを作成するときに、Azure Storage 
 
 このセクションでは、Spark バージョン 1.3.1 に基づいて HDInsight バージョン 3.2 クラスターを作成します。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。
 
->[AZURE.NOTE]この記事の手順では、基本の構成設定を使用して HDInsight に Apache Spark クラスターを作成します。その他のクラスター構成設定 (追加ストレージ、Azure 仮想ネットワーク、Hive 用のメタストアの使用など) については、[カスタム オプションを使用した HDInsight クラスターの作成](hdinsight-apache-spark-provision-clusters.md)に関するページを参照してください。
+>[AZURE.NOTE] この記事の手順では、基本の構成設定を使用して HDInsight に Apache Spark クラスターを作成します。その他のクラスター構成設定 (追加ストレージ、Azure 仮想ネットワーク、Hive 用のメタストアの使用など) については、[カスタム オプションを使用した HDInsight クラスターの作成](hdinsight-apache-spark-provision-clusters.md)に関するページを参照してください。
 
 
 **Spark クラスターを作成するには**
@@ -68,11 +68,11 @@ HDInsight で HDInsight クラスターを作成するときに、Azure Storage 
 
 クラスターを作成した後、Web ベースの Zeppelin Notebook を使用して、Spark HDInsight クラスターに対して Spark SQL の対話型クエリを実行できます。このセクションでは、クラスターにおいて既定で使用できるサンプル データ ファイル (hvac.csv) を使用していくつかの対話型 Spark SQL クエリを実行します。
 
->[AZURE.NOTE]以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Zeppelin を起動した後、**Zeppelin HVAC tutorial** という名前でこの Notebook を検索します。
+>[AZURE.NOTE] 以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Zeppelin を起動した後、**Zeppelin HVAC tutorial** という名前でこの Notebook を検索します。
 
 1. [Azure ポータル][azure-management-portal]の左側のウィンドウで **[HDInsight]** をクリックし、作成した Spark クラスターをクリックします。Spark クラスター ページの下部ウィンドウで **[Zeppelin Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
-	> [AZURE.NOTE]ブラウザーで次の URL を開き、クラスターの Zeppelin Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
+	> [AZURE.NOTE] ブラウザーで次の URL を開き、クラスターの Zeppelin Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
@@ -152,11 +152,11 @@ HDInsight で HDInsight クラスターを作成するときに、Azure Storage 
 
 このセクションでは、Jupyter Notebook を使用して、Spark クラスターに対して Spark SQL クエリを実行します。
 
->[AZURE.NOTE]以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Jupyter を起動した後、**HVACTutorial.ipynb** という名前でこの Notebook を検索します。
+>[AZURE.NOTE] 以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Jupyter を起動した後、**HVACTutorial.ipynb** という名前でこの Notebook を検索します。
 
 1. [Azure ポータル][azure-management-portal]の左側のウィンドウで **[HDInsight]** をクリックし、作成した Spark クラスターをクリックします。Spark クラスター ページの下部ウィンドウで **[Zeppelin Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
-	> [AZURE.NOTE]ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
+	> [AZURE.NOTE] ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
@@ -256,4 +256,4 @@ HDInsight で HDInsight クラスターを作成するときに、Azure Storage 
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

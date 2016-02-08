@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/08/2015"
+   ms.date="01/08/2016"
    ms.author="telmos" />
 
 # Azure ポータルを使用して静的パブリック IP を持つ VM をデプロイする
@@ -31,9 +31,9 @@
 
 Azure ポータルで静的パブリック IP アドレスを持つ VM を作成するには、次の手順に従います。
 
-1. ブラウザーから [Azure ポータル](http://portal.azure.com)に移動します。必要であれば Azure アカウントでサインインします。
+1. ブラウザーから [Azure ポータル](https://portal.azure.com)に移動します。必要であれば Azure アカウントでサインインします。
 2. ポータルの左上隅で、**[新規]**、**[コンピューティング]**、**[Windows Server 2012 R2 Datacenter]** の順にクリックします。
-3. **[デプロイメント モデルの選択]** の一覧から **[リソース マネージャー]** を選択し、**[作成]** をクリックします。
+3. **[デプロイ モデルの選択]** の一覧から **[リソース マネージャー]** を選択し、**[作成]** をクリックします。
 4. **[基本]** ブレードで、次に示す VM 情報を入力し、**[OK]** をクリックします。
 
 	![Azure ポータル - 基本](./media/virtual-network-deploy-static-pip-arm-portal/figure1.png)
@@ -59,4 +59,4 @@ Azure ポータルで静的パブリック IP アドレスを持つ VM を作成
 
 	![Azure ポータル - パブリック IP アドレスの作成](./media/virtual-network-deploy-static-pip-arm-portal/figure6.png)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

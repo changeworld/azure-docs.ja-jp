@@ -26,7 +26,7 @@ DevTest ラボでは、ラボとその VM を使用する方法を制御する�
 
 ラボのポリシーを表示 (および変更) するには、次の手順に従います。
 
-1. [Azure プレビュー ポータル](http://portal.azure.com)にサインインします。
+1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
 
 1. **[参照]** をタップし、一覧の **[DevTest ラボ]** をタップします。
 
@@ -34,11 +34,11 @@ DevTest ラボでは、ラボとその VM を使用する方法を制御する�
 
 1. **[設定]** をタップします。
 
-	![設定](./media/devtest-lab-set-lab-policy/lab-blade-settings.png)
+	![[設定]](./media/devtest-lab-set-lab-policy/lab-blade-settings.png)
 
 1. **[設定]** ブレードには、**[ポリシー]** という設定グループがあります。
 
-	![設定](./media/devtest-lab-set-lab-policy/policies.png)
+	![Settings](./media/devtest-lab-set-lab-policy/policies.png)
 
 	一覧で目的のポリシーをタップすると、そのポリシーの設定の詳細を確認できます。
 
@@ -56,7 +56,7 @@ DevTest ラボでは、ラボとその VM を使用する方法を制御する�
 
 1. ラボの **[設定]** ブレードで、**[ポリシー]** の **[許可される VM サイズ]** をタップします。
 
-	![設定](./media/devtest-lab-set-lab-policy/allowed-vm-sizes-policy.png)
+	![Settings](./media/devtest-lab-set-lab-policy/allowed-vm-sizes-policy.png)
  
 1. このポリシーを有効にするには **[オン]** をタップし、無効にするには **[オフ]** をタップします。
 
@@ -70,7 +70,7 @@ VM の最大数のポリシーでは、現在のラボで作成できる VM の�
 
 1. ラボの **[設定]** ブレードで、**[ポリシー]** の **[VM の最大数]** をタップします。
 
-	![設定](./media/devtest-lab-set-lab-policy/max-vms-policies.png)
+	![Settings](./media/devtest-lab-set-lab-policy/max-vms-policies.png)
 
 1. **[ユーザーごとのポリシー]** セクションで、次の操作を行います。
  
@@ -100,4 +100,4 @@ VM の最大数のポリシーでは、現在のラボで作成できる VM の�
 
 1. **[保存]** をタップします。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="アプリ モデル v2 のトークン リファレンス | Microsoft Azure"
+	pageTitle="Azure AD v2.0 のトークン リファレンス | Microsoft Azure"
 	description="v2.0 エンドポイントによって出力されるトークンと要求の種類"
 	services="active-directory"
 	documentationCenter=""
@@ -13,14 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/09/2015"
+	ms.date="01/11/2016"
 	ms.author="dastrock"/>
 
-# アプリ モデル v2.0 プレビュー: トークン リファレンス
+# v2.0 トークンのリファレンス
 
 v2.0 エンドポイントは、各[認証フロー](active-directory-v2-flows.md)の処理において複数の種類のセキュリティ トークンを出力します。このドキュメントでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。
 
-> [AZURE.NOTE]この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
+> [AZURE.NOTE]
+	この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
 
 ## トークンの種類
 
@@ -28,62 +29,48 @@ v2.0 エンドポイントは [OAuth 2.0 承認プロトコル](active-directory
 
 ベアラー トークンは、保護されたリソースへの "ベアラー" アクセスを許可する簡易セキュリティ トークンです。この意味で、"ベアラー" はトークンを提示できる任意の利用者を表します。利用者がベアラー トークンを受信するには、まず Azure AD による認証が必要となりますが、転送中や保存時にトークンを保護するために必要な対策を講じていない場合、意図しない利用者によって傍受され、使用されるおそれがあります。一部のセキュリティ トークンには、許可されていない利用者がトークンを使用できないようにするための組み込みメカニズムがありますが、ベアラー トークンにはこのメカニズムがないため、トランスポート層セキュリティ (HTTPS) などのセキュリティで保護されたチャネルで転送する必要があります。ベアラー トークンが暗号化されずに転送された場合、悪意のある利用者が中間者攻撃によってトークンを取得し、保護されたリソースへの未承認のアクセスに使用する可能性があります。後で使用するためにベアラー トークンを保存またはキャッシュするときにも、同じセキュリティ原則が適用されます。アプリケーションでは、常に安全な方法でベアラー トークンを転送および保存してください。ベアラー トークンのセキュリティに関する考慮事項の詳細については、[RFC 6750 セクション 5](http://tools.ietf.org/html/rfc6750) をご覧ください。
 
-v2.0 エンドポイントによって発行されるトークンの多くは、Json Web トークン (JWT) として実装されます。JWT は、2 つのパーティ間で情報を転送する、コンパクトで URL の安全な手段です。JWT に含まれる情報は「要求」と呼ばれ、トークンのベアラーとサブジェクトに関する情報のアサーションです。JWT の要求は、伝送用にエンコードおよびシリアル化された JSON オブジェクトです。v2.0 エンドポイントによって発行される JWT は署名されますが、暗号化されないため、デバッグの目的で JWT の内容を簡単に検査できます。そのためには、[calebb.net](https://calebb.net) などの複数のツールを利用できます。JWT の詳細については、[JWT の仕様](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)を参照してください。
+v2.0 エンドポイントによって発行されるトークンの多くは、Json Web トークン (JWT) として実装されます。JWT は、2 つのパーティ間で情報を転送する、コンパクトで URL の安全な手段です。JWT に含まれる情報は「要求」と呼ばれ、トークンのベアラーとサブジェクトに関する情報のアサーションです。JWT の要求は、伝送用にエンコードおよびシリアル化された JSON オブジェクトです。v2.0 エンドポイントによって発行される JWT は署名されますが、暗号化されないため、デバッグの目的で JWT の内容を簡単に検査できます。そのためには、[calebb.net](http://jwt.calebb.net) などの複数のツールを利用できます。JWT の詳細については、[JWT の仕様](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)を参照してください。
 
-## id\_token
+## Id\_tokens
 
 id\_token は、アプリが [OpenID Connect](active-directory-v2-protocols.md#openid-connect-sign-in-flow) を使用して認証を実行すると受け取るサインイン セキュリティ トークンの形式です。[JWT](#types-of-tokens) として表され、ユーザーがアプリに署名するために使用できる要求が含まれます。必要に応じて id\_token で要求を使用できます。一般には、アカウント情報の表示や、アプリ内でのアクセス制御の決定に使用されます。v2.0 エンドポイントは 1 種類の id\_token のみを発行し、それに含まれる要求のセットはサインインしているユーザーの種類に関係なく同じです。つまり、id\_token の形式と内容は、個人 Microsoft アカウント ユーザーであっても職場または学校アカウントであっても同じです。
 
 id\_token は署名されますが、この時点では暗号化されません。アプリは、id\_token を受け取ったら、[署名を検証](#validating-tokens)してトークンの信頼性を確認し、要求を検証してトークンの有効性を確認する必要があります。アプリで検証する要求はシナリオの要件によって異なりますが、すべてのシナリオでアプリが実行する必要がある[共通の要求検証](#validating-tokens)がいくつかあります。
 
-以下では、id\_token のクレームの詳細および id\_token のサンプルを示します。id\_token 内のクレームは特定の順序では返されないことに注意してください。さらに、随時、新しいクレームが id\_token に導入される可能性があります。アプリは、新しいクレームが導入されても問題ないようにする必要があります。次の一覧のクレームは、この記事の執筆時点で、アプリで解釈できることが保証されているものです。実際には、[calebb.net](https://calebb.net) に貼り付けることによって、サンプル id\_token 内の要求を調べてみてください。必要な場合は、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)でさらに詳細な情報を参照できます。
+以下では、id\_token のクレームの詳細および id\_token のサンプルを示します。id\_token 内のクレームは特定の順序では返されないことに注意してください。さらに、随時、新しいクレームが id\_token に導入される可能性があります。アプリは、新しいクレームが導入されても問題ないようにする必要があります。次の一覧のクレームは、この記事の執筆時点で、アプリで解釈できることが保証されているものです。必要な場合は、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)でさらに詳細な情報を参照できます。
 
 #### id\_token のサンプル
-```
-// Line breaks for display purposes only
 
-eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ
-19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiI0OTIxMDI1My0wYmExLTRhOWEtYTQyNC02MTY5OTlmYWI2MjAiL
-CJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vYjk0MTAzMTgtMDlhZi00OWMyLWIwYzMtNjUzYWRjMW
-YzNzZlL3YyLjAvIiwiaWF0IjoxNDM4NTM1NTQzLCJuYmYiOjE0Mzg1MzU1NDMsImV4cCI6MTQzODUzOTQ0MywidmVyIjoiMi4
-wIiwidGlkIjoiYjk0MTAzMTgtMDlhZi00OWMyLWIwYzMtNjUzYWRjMWYzNzZlIiwib2lkIjoiYTFlYmRkZTgtZTRmOS00NTcx
-LWFkOTMtMzA1OWUzNzUwZDIzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoic2FtcGxlLmFkbWluQHN0cm9ja2lzZGV2Lm9ubWljc
-m9zb2Z0LmNvbSIsInN1YiI6IjJvMmQ5SVBGVzI5MGo0RVkySXg0RUdoaEtlWnVGaC1LcFhHS2tuZkNxRWMiLCJuYW1lIjoiU2
-FtcGxlIEFkbWluIiwibm9uY2UiOiIxMjM0NSIsImNfaGFzaCI6IngxeU92VTZRaXE0Y1lVcVIxeDBvM2cifQ.Qk9exyv04I6a
-P6Sju2xNG9O2sj8dG-aEoJeS5dmnjdLo8k1ZzgZd7w-6yCrKXgPh4FJ1YY-08DZnHNmP3oxm3zmEv3RUIBEyTmo3598PRYLWl
-vttis1KD5PoNgAyKfHqiOCL5q_Owd0m9oAKDagbJhRVZOS89phllA0AQnaI6hJOKvMsbOYJt-w00y6TXf1Nkzp_Yey8EmRiwN
-7gqvudL1UfZ7_UbST2DBjPIyZsv0gT8gpApz6CecCOyX1NNWpUg8ZRkNnOjGL-IMhq4okPCTTfYriOo93z9Y9v6NmaJxV5bBN
-V-DIguXSzLVKnnflfSLyvhinsjLKCnu9L3oXHxw
 ```
+eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiI2NzMxZGU3Ni0xNGE2LTQ5YWUtOTdiYy02ZWJhNjkxNDM5MWUiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vYjk0MTk4MTgtMDlhZi00OWMyLWIwYzMtNjUzYWRjMWYzNzZlL3YyLjAiLCJpYXQiOjE0NTIyODUzMzEsIm5iZiI6MTQ1MjI4NTMzMSwiZXhwIjoxNDUyMjg5MjMxLCJuYW1lIjoiQmFiZSBSdXRoIiwibm9uY2UiOiIxMjM0NSIsIm9pZCI6ImExZGJkZGU4LWU0ZjktNDU3MS1hZDkzLTMwNTllMzc1MGQyMyIsInByZWZlcnJlZF91c2VybmFtZSI6InRoZWdyZWF0YmFtYmlub0BueXkub25taWNyb3NvZnQuY29tIiwic3ViIjoiTUY0Zi1nZ1dNRWppMTJLeW5KVU5RWnBoYVVUdkxjUXVnNWpkRjJubDAxUSIsInRpZCI6ImI5NDE5ODE4LTA5YWYtNDljMi1iMGMzLTY1M2FkYzFmMzc2ZSIsInZlciI6IjIuMCJ9.p_rYdrtJ1oCmgDBggNHB9O38KTnLCMGbMDODdirdmZbmJcTHiZDdtTc-hguu3krhbtOsoYM2HJeZM3Wsbp_YcfSKDY--X_NobMNsxbT7bqZHxDnA2jTMyrmt5v2EKUnEeVtSiJXyO3JWUq9R0dO-m4o9_8jGP6zHtR62zLaotTBYHmgeKpZgTFB9WtUq8DVdyMn_HSvQEfz-LWqckbcTwM_9RNKoGRVk38KChVJo4z5LkksYRarDo8QgQ7xEKmYmPvRr_I7gvM2bmlZQds2OeqWLB1NSNbFZqyFOCgYn3bAQ-nEQSKwBaA36jYGPOVG2r2Qv1uKcpSOxzxaQybzYpQ
+```
+
+> [AZURE.TIP] 実際には、[calebb.net](https://calebb.net) に貼り付けることによって、サンプル id\_token 内の要求を調べてみてください。
 
 #### id\_token 内の要求
 | 名前 | クレーム | 値の例 | 説明 |
 | ----------------------- | ------------------------------- | ------------ | --------------------------------- |
-| 対象となる読者 | `aud` | `49210253-0ba1-4a9a-a424-616999fab620` | トークンの受信者を示します。id\_token では、受信者はアプリ登録ポータルでアプリに割り当てられるアプリのアプリケーション ID です。アプリでは、この値を検証し、一致しない場合はトークンを拒否する必要があります。 |
-| Issuer | `iss` | `https://login.microsoftonline.com/b9410318-09af-49c2-b0c3-653adc1f376e/v2.0/` | トークンを作成して返したセキュリティ トークン サービス (STS)、およびユーザーが認証された Azure AD テナントを示します。アプリでは、発行者要求を検証し、トークンが v2.0 エンドポイントからのものであることを確認する必要があります。また、要求の guid 部分を使用して、アプリにサインインできるテナントのセットを制限できます。 |
-| 発行時刻 | `iat` | `1438535543` | トークンが発行された日時です。エポック時間で表されます。 |
-| 期限切れ日時 | `exp` | `1438539443` | トークンが無効になる日時です。エポック時間で表されます。アプリでは、この要求を使用してトークンの有効期間の有効性を確認する必要があります。 |
+| 対象となる読者 | `aud` | `6731de76-14a6-49ae-97bc-6eba6914391e` | トークンの受信者を示します。id\_token では、受信者はアプリ登録ポータルでアプリに割り当てられるアプリのアプリケーション ID です。アプリでは、この値を検証し、一致しない場合はトークンを拒否する必要があります。 |
+| Issuer | `iss` | `https://login.microsoftonline.com/b9419818-09af-49c2-b0c3-653adc1f376e/v2.0` | トークンを作成して返したセキュリティ トークン サービス (STS)、およびユーザーが認証された Azure AD テナントを示します。アプリでは、発行者要求を検証し、トークンが v2.0 エンドポイントからのものであることを確認する必要があります。また、要求の guid 部分を使用して、アプリにサインインできるテナントのセットを制限できます。 |
+| 発行時刻 | `iat` | `1452285331` | トークンが発行された日時です。エポック時間で表されます。 |
+| 期限切れ日時 | `exp` | `1452289231` | トークンが無効になる日時です。エポック時間で表されます。アプリでは、このクレームを使用してトークンの有効期間の有効性を確認する必要があります。 |
+| 期間の開始時刻 | `nbf` | `1452285331` | トークンが有効になる日時です。エポック時間で表されます。これは通常、発行日時と同じです。アプリでは、このクレームを使用してトークンの有効期間の有効性を確認する必要があります。 |
 | バージョン | `ver` | `2.0` | id\_token のバージョンです。Azure AD で定義されています。アプリ モデル v2.0 の場合、この値は `2.0` です。 |
-| テナント ID | `tid` | `b9410318-09af-49c2-b0c3-653adc1f376e` | ユーザーが属している Azure AD テナントを表す guid です。職場または学校アカウントの場合、guid はユーザーが属している組織の不変のテナント ID になります。個人アカウントでは、値は `9188040d-6c67-4c5b-b112-36a304b66dad` になります。 |
+| テナント ID | `tid` | `b9419818-09af-49c2-b0c3-653adc1f376e` | ユーザーが属している Azure AD テナントを表す guid です。職場または学校アカウントの場合、guid はユーザーが属している組織の不変のテナント ID になります。個人アカウントでは、値は `9188040d-6c67-4c5b-b112-36a304b66dad` になります。この要求を受け取るには、`profile` スコープが必要です。 |
 | コード ハッシュ | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | コード ハッシュは、id\_token が OAuth 2.0 認証コードと共に発行される場合にのみ、id\_token に含まれます。これを使用して、認証コードの信頼性を検証できます。この検証の実行の詳細については、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)を参照してください。 |
 | アクセス トークン ハッシュ | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | アクセス トークン ハッシュは、id\_token が OAuth 2.0 アクセス トークンと共に発行される場合にのみ、id\_token に含まれます。これを使用して、アクセス トークンの信頼性を検証できます。この検証の実行の詳細については、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)を参照してください。 |
 | nonce | `nonce` | `12345` | nonce は、トークンのリプレイ攻撃を緩和するための戦略です。アプリでは、`nonce` クエリ パラメーターを使用して、承認要求で nonce を指定できます。要求で指定した値は、id\_token の `nonce` 要求で変更されずに出力されます。これにより、アプリではこの値を要求で指定した値と比較して検証できます。この値は、アプリのセッションと特定の id\_token を関連付けます。アプリでは、id\_token 検証プロセスの間にこの検証を実行する必要があります。 |
-| 名前 | `name` | `Leonardo DaVinci` | 名前要求は、トークンのサブジェクトを識別する、人が認識できる値を示します。この値は、一意であるとは限らず、変更可能であり、表示目的でのみ使用されます。 |
-| 推奨ユーザー名 | `preferred_username` | `leo@outlook.com` | v2.0 のエンドポイントでユーザーを表すために使用されるプライマリ ユーザー名です。電子メール アドレス、電話番号、または指定された書式のない一般的なユーザー名を指定できます。この値は変更可能であり、同じユーザーでも時間が経つと変わることがあります。 |
-| [件名] | `sub` | `AAAAAAAAAAAAAAAAAAAAAOUtxUJsxQtHuMcFCIA1NC0` | トークンが情報をアサートするプリンシパルです (アプリのユーザーなど)。この値は変更不可で、再割り当ても再利用もできません。したがってこの値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。サブジェクトは、Azure AD が発行するトークン内に常に存在するため、汎用性のある承認システムでこの値を使用することをお勧めします。 |
-| オブジェクト ID | `oid` | `27cb5cec-7c0c-40b4-a69a-22500b6ea853` | Azure AD システムでの職場または学校アカウントのオブジェクト ID です。この要求は、個人 Microsoft アカウントには発行されません。 |
-
-<!---
-| Not Before | `nbf` | `1438535543` |  The time at which the token becomes valid, represented in epoch time. It is usually the same as the issuance time.  Your app should use this claim to verify the validity of the token lifetime.  |
--->
+| 名前 | `name` | `Babe Ruth` | 名前要求は、トークンのサブジェクトを識別する、人が認識できる値を示します。この値は、一意であるとは限らず、変更可能であり、表示目的でのみ使用されます。この要求を受け取るには、`profile` スコープが必要です。 |
+| 電子メール | `email` | `thegreatbambino@nyy.onmicrosoft.com` | 存在する場合、ユーザー アカウントに関連付けられているプライマリ電子メール アドレスです。この値は変更可能であり、同じユーザーでも時間が経つと変わることがあります。この要求を受け取るには、`email` スコープが必要です。 |
+| 推奨ユーザー名 | `preferred_username` | `thegreatbambino@nyy.onmicrosoft.com` | v2.0 のエンドポイントでユーザーを表すために使用されるプライマリ ユーザー名です。電子メール アドレス、電話番号、または指定された書式のない一般的なユーザー名を指定できます。この値は変更可能であり、同じユーザーでも時間が経つと変わることがあります。この要求を受け取るには、`profile` スコープが必要です。 |
+| [件名] | `sub` | `MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | トークンが情報をアサートするプリンシパルです (アプリのユーザーなど)。この値は変更不可で、再割り当ても再利用もできません。したがってこの値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。サブジェクトは、Azure AD が発行するトークン内に常に存在するため、汎用性のある承認システムでこの値を使用することをお勧めします。 |
+| オブジェクト ID | `oid` | `a1dbdde8-e4f9-4571-ad93-3059e3750d23` | Azure AD システムでの職場または学校アカウントのオブジェクト ID です。この要求は、個人 Microsoft アカウントには発行されません。この要求を受け取るには、`profile` スコープが必要です。 |
 
 
 
 ## アクセス トークン
 
-v2.0 エンドポイントによって発行されるアクセス トークンには、2 つの異なる形式があります。職場または学校アカウントの代わりに発行されるアクセス トークンは JWT であり、id\_token に似ています。個人 Microsoft アカウントの代わりに発行されるアクセス トークンは、「コンパクト チケット」と呼ばれる形式です。このため、開発時には v2.0 エンドポイントによって発行されるアクセス トークンの文字列形式が異なることに気付く場合があります。時間の経過と共に、アクセス トークンのこの違いは、v2.0 エンドポイントから除去されます。
-
-ただし、v2.0 エンドポイントによって発行されるアクセス トークンを使用するのは、現時点では Microsoft サービスだけです。現在サポートされているどのシナリオにおいても、アプリでアクセス トークンの検証または検査を実行する必要はありません。アクセス トークンは完全に非透過的に扱うことができます。アプリが HTTP 要求で Microsoft に渡すことができる単なる文字です。
+v2.0 エンドポイントによって発行されるアクセス トークンは、現時点では Microsoft サービスのみが使用できます。現在サポートされているどのシナリオにおいても、アプリでアクセス トークンの検証または検査を実行する必要はありません。アクセス トークンは完全に非透過的に扱うことができます。アプリが HTTP 要求で Microsoft に渡すことができる単なる文字です。
 
 近い将来、v2.0 エンドポイントにはアプリが他のクライアントからアクセス トークンを受信できる機能が導入されます。その時点で、この情報は、アプリがアクセス トークンの検証およびその他の同様のタスクを実行するために必要な情報に更新されます。
 
@@ -101,6 +88,7 @@ v2.0 エンドポイントにアクセス トークンを要求すると、v2.0 
 
 新しいアクセス トークンに対して更新トークンを利用すると (そして、アプリが `offline_access` スコープを許可されている場合は)、トークン応答で新しい更新トークンを受け取ります。新しく発行された更新トークンを保存し、要求で使用したものと置き換える必要があります。これにより、可能な限り長く更新トークンが有効であることが保証されます。
 
+
 ## トークンの検証
 
 現時点で、アプリにおいて実行する必要があるトークンの検証は、id\_token の検証だけです。id\_token を検証するには、アプリは id\_token の署名と id\_token 内のクレームの両方を検証する必要があります。
@@ -115,35 +103,40 @@ id\_token は、RSA 256 などの業界標準の非対称暗号アルゴリズ�
 
 ```
 {
-		typ: "JWT",
-		alg: "RS256",
-		x5t: "GvnPApfWMdLRi8PDmisFn7bprKg"
+  "typ": "JWT",
+  "alg": "RS256",
+  "kid": "MnC_VZcATfM5pOYiJHMba9goEKY"
 }
 ```
 
-`alg` 要求はトークンの署名に使用されたアルゴリズムを示し、`kid` または `x5t` 要求はトークンの署名に使用された特定の公開キーを示します。
+`alg` 要求はトークンの署名に使用されたアルゴリズムを示し、`kid` 要求はトークンの署名に使用された特定の公開キーを示します。
 
 いつでも、v2.0 エンドポイントは公開/秘密キー ペアの特定セットのいずれかを使用して、id\_token に署名できます。v2.0 エンドポイントは定期的に使用可能なキー セットをローテーションするので、このキー変更を自動的に処理するようにアプリを作成する必要があります。v2.0 エンドポイントによって使用される公開キーの更新を確認する適切な頻度は、約 24 時間です。
 
 署名の検証に必要な署名キー データは、次の場所にある OpenID Connect メタデータのドキュメントを使用して入手できます。
 
-`https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`
+```
+https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
+```
 
-このメタデータ ドキュメントは、OpenID Connect 認証の実行に必要なさまざまなエンドポイントの場所など、役に立つ情報を含む JSON オブジェクトです。また、トークンの署名に使用される公開キーのセットの場所を示す `jwks_uri` も含まれます。次に示すのがその場所ですが、メタデータ ドキュメントを使用して `jwks_uri` を解析することにより動的にその場所をフェッチするのが最善の方法です。
+> [AZURE.TIP] ブラウザーでこの URL をお試してみてください!
 
-`https://login.microsoftonline.com/common/discovery/v2.0/keys`
+このメタデータ ドキュメントは、OpenID Connect 認証の実行に必要なさまざまなエンドポイントの場所など、役に立つ情報を含む JSON オブジェクトです。
 
-この URL に存在する JSON ドキュメントには、特定の時点で使用されているすべての公開キー情報が含まれます。アプリでは、`kid` または `x5t` 要求を JWT ヘッダーで使用して、特定のトークンの署名に使用されたこのドキュメント内の公開キーを選択できます。その後、正しい公開キーと指定されたアルゴリズムを使用して、署名の検証を実行できます。
+また、トークンの署名に使用される公開キーのセットの場所を示す `jwks_uri` も含まれます。`jwks_uri` にある JSON ドキュメントには、特定の時点で使用されているすべての公開キー情報が含まれます。アプリでは、`kid` 要求を JWT ヘッダーで使用して、特定のトークンの署名に使用されたこのドキュメント内の公開キーを選択できます。その後、正しい公開キーと指定されたアルゴリズムを使用して、署名の検証を実行できます。
 
 署名の検証の実行は、このドキュメントの対象範囲外です。必要な場合は、役に立つオープン ソース ライブラリが数多く提供されています。
 
-#### 要求の検証
-アプリは、ユーザーのサインイン時に id\_token を受け取ったら、id\_token 内の要求に対していくつかのチェックを実行する必要があります。学習した内容は次のとおりです。
+#### 要求を検証する
+アプリは、ユーザーのサインイン時に id\_token を受け取ったら、id\_token 内の要求に対していくつかのチェックを実行する必要があります。これらには次が含まれますが、これらに限定されるものではありません。
 
 - **受信者**要求 - id\_token がそのアプリに対するものであることを検証します。
-- **発行時刻**および**期限切れ日時**要求 - id\_token が期限切れでないことを検証します。
+- **期間の開始時刻**および**期限切れ日時**クレーム - id\_token が期限切れでないことを検証します。
 - **発行者**要求 - トークンが v2.0 エンドポイントによってそのアプリに対して発行されたことを検証します。
 - **Nonce** - トークン リプレイ攻撃を緩和するために検証します。
+- その他にも用途はあります。
+
+アプリで実行する必要のある要求の検証の完全な一覧については、「[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation)」を参照してください。
 
 これらの要求に対して予期される値の詳細については、前記の [id\_token セクション](#id_tokens)を参照してください。
 
@@ -163,4 +156,4 @@ id\_token は、RSA 256 などの業界標準の非対称暗号アルゴリズ�
 | 承認コード (職場または学校アカウント) | 10 分 | 承認コードは有効期間が意図的に短くされており、受け取ったらすぐにアクセス トークンまたは更新トークンに利用する必要があります。 |
 | 承認コード (個人アカウント) | 5 分 | 承認コードは有効期間が意図的に短くされており、受け取ったらすぐにアクセス トークンまたは更新トークンに利用する必要があります。また、個人アカウントの代わりに発行された承認コードを使用できるのは 1 回限りです。 |
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

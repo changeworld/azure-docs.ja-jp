@@ -23,7 +23,7 @@
 Azure Active Directory (Azure AD) は、包括的な ID およびアクセス管理ソリューションであり、信頼性の高い機能セットを備えています。この機能セットにより、Office 365 のような Microsoft オンライン サービスや Microsoft 以外の数多くの SaaS アプリケーションを含む、クラウドおよびオンプレミスのアプリケーションやリソースに対するアクセスが管理できます。
 
 
-> [AZURE.NOTE]Azure Active Directory を使用するには、Azure のアカウントが必要です。アカウントを持っていない場合は、[無料の Azure アカウントにサインアップ](http://azure.microsoft.com/pricing/free-trial/)できます。
+> [AZURE.NOTE] Azure Active Directory を使用するには、Azure のアカウントが必要です。アカウントを持っていない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/pricing/free-trial/)できます。
 
 
 Azure Active Directory の主な機能の 1 つが、リソースへのアクセスを管理する機能です。こういったリソースは、ディレクトリ内のロールによってオブジェクトを管理するアクセス許可のケースのように、ディレクトリに含まれる場合と、SaaS アプリケーション、Azure サービス、SharePoint サイト、オンプレミスのリソースなどのように、ディレクトリの外部のリソースという場合があります。ユーザーにリソースへのアクセス権を割り当てる方法は 4 つあります。
@@ -98,4 +98,4 @@ Azure Active Directory のアクセス管理ソリューションの核となる
 
 * [グループ用の Graph API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

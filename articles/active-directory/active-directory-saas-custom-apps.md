@@ -21,7 +21,7 @@
 
 * SAML 2.0 ID プロバイダーをサポートする任意のアプリケーションのセルフサービス接続
 * パスワード ベースの SSO を使用する HTML ベースのサインイン ページがある任意の Web アプリケーションのセルフサービス接続
-* [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)または [Azure AD アクセス パネル](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/#deploying-azure-ad-integrated-applications-to-users)での任意のアプリケーションへのリンクの追加機能
+* [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)または [Azure AD アクセス パネル](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/#deploying-azure-ad-integrated-applications-to-users/)での任意のアプリケーションへのリンクの追加機能
 * ユーザー プロビジョニング用の SCIM プロトコルを使用するアプリケーションのセルフサービス接続 ([ここで説明](active-directory-scim-provisioning))
 
 これには、使用するが Azure AD アプリケーション ギャラリーにはまだ追加されていない SaaS アプリケーションだけでなく、組織がクラウドまたはオンプレミスで制御対象のサーバーにデプロイしたサードパーティの Web アプリケーションも含まれる場合があります。
@@ -105,7 +105,7 @@ HTML サインイン ページがある Web アプリケーションの[パス�
 
 組織の Azure AD アクセス パネルまたは Office 365 ポータルにアプリケーションへのリンクを追加するには、このオプションを選択します。これを使用して、認証用に Azure AD の代わりに現在 Azure Active Directory フェデレーション サービス (または他のフェデレーション サービス) を使用しているカスタム Web アプリへのリンクを追加することができます。または、ユーザーのアクセス パネルに表示するだけの特定の SharePoint ページまたは他の Web ページにディープ リンクを追加することもできます。
 
-**[次へ]** を選択すると、リンクするアプリケーションの URL を入力するように求められます。入力したら、ユーザーとグループをアプリケーションに割り当てることができ、これにより、アプリケーションが [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)またはユーザーの [Azure AD アクセス パネル](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/#deploying-azure-ad-integrated-applications-to-users)に表示されるようになります。
+**[次へ]** を選択すると、リンクするアプリケーションの URL を入力するように求められます。入力したら、ユーザーとグループをアプリケーションに割り当てることができ、これにより、アプリケーションが [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)またはユーザーの [Azure AD アクセス パネル](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/#deploying-azure-ad-integrated-applications-to-users/)に表示されるようになります。
 
 注: アプリケーションの **[構成]** タブにある **[ロゴのアップロード]** ボタンを使用して、アプリケーションのタイル ロゴをアップロードできます。
 
@@ -118,4 +118,4 @@ HTML サインイン ページがある Web アプリケーションの[パス�
 [6]: ./media/active-directory-saas-custom-apps/customapp6.png
 [7]: ./media/active-directory-saas-custom-apps/customapp7.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

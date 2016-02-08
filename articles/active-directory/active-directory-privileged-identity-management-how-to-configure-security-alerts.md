@@ -3,7 +3,7 @@
    description="Azure Privileged Identity Management 拡張機能のセキュリティ通知の構成方法を説明します。"
    services="active-directory"
    documentationCenter=""
-   authors="IHenkel"
+   authors="kgremban"
    manager="stevenpo"
    editor=""/>
 
@@ -13,12 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/21/2015"
+   ms.date="01/21/2016"
    ms.author="inhenk"/>
 
 # Azure Privileged Identity Management: セキュリティ通知の構成方法
+
 ## セキュリティ通知の概要
-Azure Privileged Identity Management では以下の通知が提供されており、これらは構成できます。セキュリティ通知は、PIM ダッシュボードの [アラート] セクションで見ることができます。
+Azure Privileged Identity Management (PIM) では以下の通知が提供されており、これらは構成できます。セキュリティ通知は、PIM ダッシュボードの [アラート] セクションで見ることができます。
 
 | アラート: | トリガー |
 | ------------- | ------------- |
@@ -52,9 +53,10 @@ Azure Privileged Identity Management では以下の通知が提供されてお�
 2. **[設定]** をクリックします。
 3. スライダーを調整するか、テキスト フィールドに値を入力して、**[グローバル管理者の最小数]** を設定します。
 4. スライダーを調整するか、テキスト フィールドに値を入力して、**[グローバル管理者の割合]** を設定します。
+5. **[保存]** をクリックします。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -28,7 +28,7 @@ Azure BLOB ストレージは、大量の非構造化データを格納して HT
 
 - プログラムを使用して BLOB を操作する方法の詳細については、[.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)に関するページを参照してください。
 - Azure Storage の全般的な情報については、「[Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)」を参照してください。
-- Azure Cloud Services の全般的な情報については、「[Cloud Services のドキュメント](http://azure.microsoft.com/documentation/services/cloud-services/)」を参照してください。
+- Azure Cloud Services の全般的な情報については、「[Cloud Services のドキュメント](https://azure.microsoft.com/documentation/services/cloud-services/)」を参照してください。
 - ASP.NET アプリケーションのプログラミングの詳細については、[ASP.NET](http://www.asp.net) の Web サイトを参照してください。
 
 ## コードで BLOB コンテナーにアクセスする
@@ -58,11 +58,11 @@ Azure BLOB ストレージは、大量の非構造化データを格納して HT
         // Get a reference to a container named “mycontainer.”
         CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-> [AZURE.NOTE]前の手順で示されているコードはすべて、以下のセクションで示されているコードの前に使用してください。
+> [AZURE.NOTE] 前の手順で示されているコードはすべて、以下のセクションで示されているコードの前に使用してください。
 
 ## コードでコンテナーを作成する
 
-> [AZURE.NOTE]ASP.NET で Azure Storage への呼び出しを実行する API の一部は非同期です。詳細については、「[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)」を参照してください。次の例のコードでは、非同期のプログラミング方法を使用していることを前提としています。
+> [AZURE.NOTE] ASP.NET で Azure Storage への呼び出しを実行する API の一部は非同期です。詳細については、「[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)」を参照してください。次の例のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 
 ストレージ アカウント内にコンテナーを作成するために必要な作業は、次のコードのように、**CreateIfNotExistsAsync** へ呼び出しを追加することだけです。
 
@@ -257,4 +257,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次に **Dele
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

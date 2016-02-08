@@ -12,18 +12,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/23/2015"
+   ms.date="01/27/2016"
    ms.author="bwren" />
 
 # Azure Automation の証明書資産
 
-証明書を Azure Automation に安全に保存し、**Get-AutomationCertificate** アクティビティを使用して Runbook または DSC 構成でアクセスできます。これにより、認証に証明書を使用する Runbook または DSC 構成を作成したり、それらを Azure またはサードパーティのリソースに追加したりできます。
+証明書を Azure Automation に安全に保存し、**Get-AutomationCertificate** アクティビティを使用して Runbook または DSC 構成でアクセスできます。そのため、認証に証明書を使用する Runbook または DSC 構成を作成したり、それらを Azure またはサードパーティのリソースに追加したりすることができます。
 
->[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。これらの資産は暗号化され、各オートメーション アカウント用に生成された一意のキーを使用して Azure Automation に保存されます。このキーはマスター証明書によって暗号化され、Azure Automation に保存されます。セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
+>[AZURE.NOTE] Secure assets in Azure Automation include credentials, certificates, connections, and encrypted variables.これらの資産は、各 Automation アカウント用に生成された一意のキーを使用して暗号化され、Azure Automation に保存されます。This key is encrypted by a master certificate and stored in Azure Automation.セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
 
 ## Windows PowerShell コマンドレット
 
-Windows PowerShell でオートメーション証明書資産を作成および管理するには、次の表のコマンドレットを使用します。これらは、Automation Runbook および DSC 構成で使用できる [Azure PowerShell モジュール](../powershell-install-configure.md)に付属しています。
+Windows PowerShell でオートメーション証明書資産を作成および管理するには、次の表のコマンドレットを使用します。これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [Azure PowerShell モジュール](../powershell-install-configure.md)に付属しています。
 
 |コマンドレット|説明|
 |:---|:---|
@@ -34,17 +34,17 @@ Windows PowerShell でオートメーション証明書資産を作成および�
 
 ## 証明書にアクセスするアクティビティ
 
-次の表のアクティビティは、Runbook または DSC 構成で証明書にアクセスするために使用されます。
+Runbook または DSC 構成で証明書にアクセスするために、次の表のアクティビティが使用されます。
 
-|アクティビティ|説明|
+|アクティビティ|Description|
 |:---|:---|
 |Get-AutomationCertificate|Runbook または DSC 構成で使用する証明書を取得します。|
 
->[AZURE.NOTE]GetAutomationCertificate の –Name パラメーターを使用すると、設計時に Runbook または DSC 構成と証明書資産の間の依存関係の検出が複雑になる可能性があるため、使用しないようにする必要があります。
+>[AZURE.NOTE] GetAutomationCertificate の –Name パラメーターには変数を使用しないでください。変数を使用すると、設計時に、Runbook または DSC 構成と証明書資産間の依存関係の検出が複雑になる可能性があります。
 
 ## 新しい証明書の作成
 
-新しい証明書を作成するときは、cer または pfx ファイルを Azure Automation にアップロードします。証明書をエクスポート可能とマークした場合は、Azure Automation の証明書ストアから転送できます。エクスポート可能ではない場合は、Runbook または DSC 構成内での署名にのみ使用できます。
+新しい証明書を作成するときは、cer または pfx ファイルを Azure Automation にアップロードします。証明書をエクスポート可能とマークすると、Azure Automation の証明書ストアから転送できます。エクスポート可能ではない場合は、Runbook または DSC 構成内での署名にのみ使用できます。
 
 ### Azure ポータルで新しい証明書を作成するには
 
@@ -107,4 +107,4 @@ Windows PowerShell でオートメーション証明書資産を作成および�
 
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow) 
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0128_2016-->

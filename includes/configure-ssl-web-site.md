@@ -1,7 +1,7 @@
 
-この記事では、Azure App Service で Web アプリに対する HTTPS を構成する方法について説明します。ここでは、クライアント証明書の認証については扱っていません。「[Web Apps の TLS 相互認証を構成する方法](../articles/app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。
+この記事では、Azure App Service で Web アプリ用に HTTPS を構成する方法について説明します。ここでは、クライアント証明書の認証については説明しません。これについては、「[Web アプリの TLS 相互認証を構成する方法](../articles/app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。
 
-Azure の既定では、*.azurewebsites.net ドメインのワイルドカード証明書を使用するアプリに対して、HTTP を利用できます。カスタム ドメインを構成する予定がない場合は、既定の HTTPS 証明書を利用できます。ただし、[他のワイルドカード ドメイン](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)と同様に、カスタム ドメインに独自の証明書を使用する場合ほど安全ではありません。
+Azure の既定では、*.azurewebsites.net ドメインのワイルドカード証明書を使用するアプリに対して、HTTPS を利用できます。カスタム ドメインを構成する予定がない場合は、既定の HTTPS 証明書を利用できます。ただし、[他のワイルドカード ドメイン](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)と同様に、カスタム ドメインに独自の証明書を使用する場合ほど安全ではありません。
 
 このドキュメントの残りの部分では、カスタム ドメイン (**contoso.com**、**www.contoso.com**、***.contoso.com** など) の HTTPS を有効にする方法について詳しく説明します。
 
@@ -11,11 +11,11 @@ Azure の既定では、*.azurewebsites.net ドメインのワイルドカード
 **contoso.com** などのカスタム ドメインに対して HTTPS を有効にするには、まず [Azure App Service でカスタム ドメイン名を構成する](../articles/app-service-web/web-sites-custom-domain-name.md)必要があります。次に、以下の手順を実行します。
 
 1. [SSL 証明書を取得する](#bkmk_getcert)
-2. [Standard 価格レベルを構成する](#bkmk_standardmode)
+2. [Standard または Premium 価格レベルを構成する](#bkmk_standardmode)
 2. [アプリで SSL を構成する](#bkmk_configuressl)
 3. [アプリに SSL を適用する](#bkmk_enforce) (省略可能)
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
 
 <a name="bkmk_getcert"></a>
 ## 1\.SSL 証明書を取得する
@@ -28,7 +28,7 @@ App Service で使用される SSL 証明書は、[証明機関](http://en.wikip
 
 * 証明書は秘密キーを含む必要があります。
 * 証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
-* 証明書のサブジェクト名はアプリへのアクセスに使用されるドメインと一致する必要があります。この証明書で複数のドメインを扱う場合は、前に説明したように、ワイルドカードの値を使用するか、subjectAltName の値を指定する必要があります。
+* 証明書のサブジェクト名は、アプリへのアクセスに使用されるドメインと一致する必要があります。この証明書で複数のドメインを扱う場合は、前に説明したように、ワイルドカードの値を使用するか、subjectAltName の値を指定する必要があります。
 * 証明書では、2,048 ビット以上の暗号化を使用する必要があります。
 * プライベート CA サーバーから発行された証明書は、Azure App Service ではサポートされません。
 
@@ -40,7 +40,7 @@ Azure App Service で使用する SSL 証明書を取得するには、証明書
 - [OpenSSL を使用した SubjectAltName 証明書の取得](#bkmk_subjectaltname)
 - [自己署名証明書の生成 (テスト目的専用)](#bkmk_selfsigned)
 
-> [AZURE.NOTE]手順の途中で、`www.contoso.com` などの**共通名**の入力が必要になります。ワイルドカード証明書の場合、この値は *.domainname (*.contoso.com など) にする必要があります。ワイルドカード名 (*.contoso.com など) とルート ドメイン名 (contoso.com など) の両方をサポートする必要がある場合、ワイルドカードの subjectAltName 証明書を使用できます。
+> [AZURE.NOTE] 手順の途中で、`www.contoso.com` などの**共通名**の入力が必要になります。ワイルドカード証明書の場合、この値は *.domainname (*.contoso.com など) にする必要があります。ワイルドカード名 (*.contoso.com など) とルート ドメイン名 (contoso.com など) の両方をサポートする必要がある場合、ワイルドカードの subjectAltName 証明書を使用できます。
 >
 > Azure App Service は楕円曲線暗号 (ECC) 証明書をサポートしています。ただし、この証明書は比較的新しいため、正しい手順で CSR を作成するには証明機関の協力が必要です。
 
@@ -51,7 +51,7 @@ CA が**[中間証明書](http://en.wikipedia.org/wiki/Intermediate_certificate_
 
 Certreq.exe は、証明書の要求を作成するための Windows ユーティリティです。Windows XP または Windows Server 2000 以降の Windows 基本インストールの一部であり、最近の Windows システムで使用できます。Certreq.exe を使用して SSL 証明書を取得するには、次のステップを使用します。
 
-1. **メモ帳**を開き、次の内容を含む新しい文書を作成します。Subject 行の **mysite.com** を、アプリのカスタム ドメイン名で置き換えます。たとえば、Subject = "CN=www.contoso.com" と記述します。
+1. **メモ帳**を開き、次の内容を含む新しい文書を作成します。Subject 行の **mysite.com** を、アプリのカスタム ドメイン名に置き換えます。たとえば、Subject = "CN=www.contoso.com" と記述します。
 
 		[NewRequest]
 		Subject = "CN=mysite.com"
@@ -112,7 +112,7 @@ Certreq.exe は、証明書の要求を作成するための Windows ユーテ�
 
 	![ファイル パスを指定する][certwiz4]
 
-これで、Azure App Service で、エクスポートした PFX ファイルをアプリにアップロードできるようになります。
+これで、エクスポートした PFX ファイルを Azure App Service のアプリにアップロードできるようになります。
 
 <a name="bkmk_openssl"></a>
 ### OpenSSL を使用した証明書の取得
@@ -169,7 +169,7 @@ Certreq.exe は、証明書の要求を作成するための Windows ユーテ�
 
 	メッセージが表示されたら、パスワードを入力して .pfx ファイルをセキュリティ保護します。
 
-	> [AZURE.NOTE]CA が中間証明書を使用する場合、次のステップで証明書をエクスポートする前に、それらの中間証明書をインストールする必要があります。通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じていくつかの形式で提供されています。PEM ファイル (ファイル拡張子は .pem) の形で提供されているバージョンを選択します。
+	> [AZURE.NOTE] CA が中間証明書を使用する場合、次のステップで証明書をエクスポートする前に、それらの中間証明書をインストールする必要があります。通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じていくつかの形式で提供されています。PEM ファイル (ファイル拡張子は .pem) の形で提供されているバージョンを選択します。
 	>
 	> 次のコマンドは、**intermediate-cets.pem** ファイルに格納されている中間証明書を含む .pfx ファイルを作成する方法を示しています。
 	>
@@ -197,9 +197,9 @@ IIS マネージャーに慣れている場合は、IIS マネージャーを使
 
 4. IIS マネージャから証明書をエクスポートします。証明書のエクスポートの詳細については、「[サーバー証明書をエクスポートする (IIS 7)][exportcertiis]」を参照してください。エクスポートしたファイルは、アプリで使用するために、後の手順で Azure にアップロードする場合に使用されます。
 
-	> [AZURE.NOTE]エクスポート プロセスでは、<strong>[はい、秘密キーをエクスポートします]</strong> オプションを必ず選択してください。これにより、エクスポートされる証明書に秘密キーが含まれます。
+	> [AZURE.NOTE] エクスポート プロセスでは、<strong>[はい、秘密キーをエクスポートします]</strong> オプションを必ず選択してください。これにより、エクスポートされる証明書に秘密キーが含まれます。
 
-	> [AZURE.NOTE]エクスポート プロセスでは、**[証明のパスにあるすべての証明書を含める]** オプション と **[すべての拡張プロパティをエクスポートする]** オプションを必ず選択してください。これにより、エクスポートされる証明書にすべての中間証明書が含まれます。
+	> [AZURE.NOTE] エクスポート プロセスでは、**[証明のパスにあるすべての証明書を含める]** オプション と **[すべての拡張プロパティをエクスポートする]** オプションを必ず選択してください。これにより、エクスポートされる証明書にすべての中間証明書が含まれます。
 
 <a name="bkmk_subjectaltname"></a>
 ### OpenSSL を使用した SubjectAltName 証明書の取得
@@ -289,7 +289,7 @@ OpenSSL を使用して、1 つの証明書で複数のドメイン名をサポ�
 
 	メッセージが表示されたら、パスワードを入力して .pfx ファイルをセキュリティ保護します。
 
-	> [AZURE.NOTE]CA が中間証明書を使用する場合、次のステップで証明書をエクスポートする前に、それらの中間証明書をインストールする必要があります。通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じていくつかの形式で提供されています。PEM ファイル (ファイル拡張子は .pem) の形で提供されているバージョンを選択します。
+	> [AZURE.NOTE] CA が中間証明書を使用する場合、次のステップで証明書をエクスポートする前に、それらの中間証明書をインストールする必要があります。通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じていくつかの形式で提供されています。PEM ファイル (ファイル拡張子は .pem) の形で提供されているバージョンを選択します。
 	>
 	> 次のコマンドは、**intermediate-cets.pem** ファイルに格納されている中間証明書を含む .pfx ファイルを作成する方法を示しています。
 	>
@@ -303,7 +303,7 @@ OpenSSL を使用して、1 つの証明書で複数のドメイン名をサポ�
 <a name="bkmk_selfsigned"></a>
 ### 自己署名証明書を生成する (テスト目的専用)
 
-テスト用の証明書を取得し、信頼された CA からの証明書の実際の購入は、運用開始時に行いたい場合もあります。この場合、自己署名証明書が有効です。自己署名証明書では、自身が証明機関 (CA) となり、証明書を作成および署名できます。この証明書はアプリのセキュリティ保護として使用できますが、証明書に信頼された CA の署名がないため、ほとんどのブラウザーはアプリへのアクセス時にエラーを返します。ブラウザーによっては、アプリの表示を拒否することもあります。
+テスト用の証明書を取得し、信頼された CA からの証明書の実際の購入は、運用開始時に行いたい場合もあります。この場合、自己署名証明書が有効です。自己署名証明書では、自身が証明機関 (CA) となり、証明書を作成および署名できます。この証明書はアプリのセキュリティ保護に使用できますが、信頼された CA の署名が証明書にないため、ほとんどのブラウザーはアプリへのアクセス時にエラーを返します。ブラウザーによっては、アプリの表示を拒否することもあります。
 
 - [makecert を使用した自己署名証明書の生成](#bkmk_ssmakecert)
 - [OpenSSL を使用した自己署名証明書の生成](#bkmk_ssopenssl)
@@ -386,11 +386,11 @@ Visual Studio がインストールされている Windows システムからテ
 	このコマンドによって作成された **myserver.pfx** は、アプリをテスト目的でセキュリティ保護するために使用できます。
 
 <a name="bkmk_standardmode"></a>
-## 2\.Standard 価格レベルを構成する
+## 2\.Standard または Premium 価格レベルを構成する
 
-カスタム ドメインに対して HTTPS を有効にできるのは、Azure App Service で **Standard** レベルを使用している場合のみです。App Service プランを **Standard** レベルに切り替えるには、次の手順を実行します。
+カスタム ドメインに対して HTTPS を有効にできるのは、Azure App Service の価格レベルが **Standard** と **Premium** の場合のみです。App Service プランを **Standard** レベルに切り替えるには、次の手順を実行します。
 
-> [AZURE.NOTE]アプリを **Free** レベルから **Standard** レベルに切り替える前に、サブスクリプションに設定されている使用制限を解除する必要があります。そうしないと、請求期間が終了する前に制限に到達した場合に、アプリが使用できなくなるおそれがあります。Shared レベルと **Standard** レベルの料金の詳細については、[料金の詳細][pricing]に関するページを参照してください。
+> [AZURE.NOTE] アプリを **Free** レベルから **Standard** レベルに切り替える前に、サブスクリプションに設定されている使用制限を解除する必要があります。そうしないと、請求期間が終了する前に制限に到達した場合に、アプリが使用できなくなるおそれがあります。Shared レベルと **Standard** レベルの料金の詳細については、「[価格の詳細][pricing]」を参照してください。
 
 1.	ブラウザーで、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を開きます。
 2.	ページの左側にある **[参照]** オプションをクリックします。
@@ -400,7 +400,7 @@ Visual Studio がインストールされている Windows システムからテ
 6.	**[スケール]** をクリックします。![[スケール] タブ][scale]
 7.	**[スケール]** セクションで、**[選択]** をクリックして、App Service プランのモードを設定します。![The Pricing tier][sslreserved]
 
-	> [AZURE.NOTE]"Web アプリ '&lt;アプリ名&gt;' のスケールの構成に失敗しました" というエラーが発生する場合は、詳細ボタンを使用して詳細情報を表示できます。"この要求を満たす、利用可能な標準インスタンス サーバーが足りません。" というエラーが発生する場合があります。このエラーが発生した場合は、[Azure のサポート オプション](/support/options/)にお問い合わせください。
+	> [AZURE.NOTE] "Web アプリ '&lt;アプリ名&gt;' のスケールの構成に失敗しました" というエラーが発生する場合は、詳細ボタンを使用して詳細情報を表示できます。"この要求を満たす、利用可能な標準インスタンス サーバーが足りません。" というエラーが発生する場合があります。このエラーが発生した場合は、[Azure のサポート オプション](/support/options/)にお問い合わせください。
 
 <a name="bkmk_configuressl"></a>
 ## 3\.アプリで SSL を構成する
@@ -425,7 +425,7 @@ Visual Studio がインストールされている Windows システムからテ
 
 10. 変更を保存して SSL を有効にするには、**[保存]** をクリックします。
 
-> [AZURE.NOTE]**[IP ベースの SSL]** を選択し、カスタム ドメインが A レコードを使用して構成されている場合は、次の追加手順を実行する必要があります。
+> [AZURE.NOTE] **[IP ベースの SSL]** を選択し、カスタム ドメインが A レコードを使用して構成されている場合は、次の追加手順を実行する必要があります。
 >
 > 1. IP ベースの SSL バインドを構成すると、専用の IP アドレスがアプリに割り当てられます。この IP アドレスは、アプリの **[ダッシュボード]** ページの **[概要]** セクションで確認できます。このアドレスは、**仮想 IP アドレス**として示されます。
 >    
@@ -436,14 +436,14 @@ Visual Studio がインストールされている Windows システムからテ
 > 2. ドメイン名レジストラーから提供されるツールを使用して、前の手順の IP アドレスを指定するようにカスタム ドメイン名用の A レコードを変更します。
 
 
-ここで、証明書が正しく構成されていることを確認するために、`HTTP://` ではなく `HTTPS://` を使用してアプリを参照できる必要があります。
+ここで、証明書が正しく構成されていることを確認するために、`HTTP://` ではなく `HTTPS://` を使用してアプリを参照できます。
 
 <a name="bkmk_enforce"></a>
 ## 4\.アプリに HTTPS を適用する
 
-Azure App Service は HTTPS を適用*しません*。訪問者は引き続き HTTP を使用してアプリにアクセスできるので、アプリのセキュリティが損なわれる可能性があります。アプリで HTTPS を適用する場合は、**URL 書き換え**モジュールを使用できます。URL 書き換えモジュールは Azure App Service に組み込まれており、それを使用して、受信した要求をアプリケーションに渡す前に要求に適用されるルールを定義できます。**このモジュールは、Azure がサポートするプログラミング言語で記述されたアプリケーションで使用できます。**
+Azure App Service は HTTPS を適用*しません*。訪問者は引き続き HTTP を使用してアプリにアクセスできるため、アプリのセキュリティが損なわれる可能性があります。アプリに HTTPS を適用する場合は、**URL 書き換え**モジュールを使用できます。URL 書き換えモジュールは Azure App Service に組み込まれており、それを使用して、受信した要求をアプリケーションに渡す前に要求に適用されるルールを定義できます。**このモジュールは、Azure がサポートするプログラミング言語で記述されたアプリケーションで使用できます。**
 
-> [AZURE.NOTE].NET MVC アプリケーションでは、URL 書き換えの代わりに [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) フィルターを使用する必要があります。RequireHttps の使用方法の詳細については、[セキュリティで保護された ASP.NET MVC 5 アプリを Web アプリにデプロイする](../articles/app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)方法に関するページを参照してください。
+> [AZURE.NOTE] .NET MVC アプリケーションでは、URL 書き換えの代わりに [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) フィルターを使用する必要があります。RequireHttps の使用方法の詳細については、[セキュリティで保護された ASP.NET MVC 5 アプリを Web アプリにデプロイする](../articles/app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)方法に関するページを参照してください。
 >
 > 他のプログラミング言語とフレームワークを使用して要求をプログラム的にリダイレクトする方法の詳細については、該当するテクノロジのドキュメントを参照してください。
 
@@ -470,7 +470,7 @@ URL 書き換えルールは、アプリケーションのルートに格納さ�
 
 このルールは、ユーザーが HTTP を使用してページを要求したときに HTTP 状態コード 301 (永続的なリダイレクト) を返すことで動作します。301 は、訪問者が要求した URL と同じ URL へ要求をリダイレクトしますが、要求の HTTP 部分は HTTPS で置き換えられます。たとえば、HTTP://contoso.com は HTTPS://contoso.com にリダイレクトされます。
 
-> [AZURE.NOTE]アプリケーションが **Node.js**、**PHP**、**Python Django**、または **Java** で記述されている場合は、web.config ファイルが含まれていない可能性があります。ただし、**Node.js**、**Python Django**、**Java** はすべて、実際には、Azure App Service 上でホストされた場合に web.config を使用します。このファイルは、デプロイ時に自動的に作成されるため、目にすることはありません。アプリケーションの一部としてこのファイルを含めると、Azure が自動的に生成したファイルは上書きされます。
+> [AZURE.NOTE] アプリケーションが **Node.js**、**PHP**、**Python Django**、または **Java** で記述されている場合は、web.config ファイルが含まれていない可能性があります。ただし、**Node.js**、**Python Django**、**Java** はすべて、実際には、Azure App Service 上でホストされた場合に web.config を使用します。このファイルは、デプロイ時に自動的に作成されるため、目にすることはありません。アプリケーションの一部としてこのファイルを含めると、Azure が自動的に生成したファイルは上書きされます。
 
 ###.NET
 
@@ -480,13 +480,13 @@ web.config ファイルに **&lt;rewrite>** セクションが既に含まれて
 
 ###PHP
 
-PHP アプリケーションの場合は、[例](#example)を web.config ファイルとしてアプリケーションのルートに保存し、アプリケーションをアプリに再度デプロイするだけです。
+PHP アプリケーションの場合は、[例](#example)を web.config ファイルとしてアプリケーションのルートに保存し、このアプリケーションをアプリに再度デプロイするだけです。
 
 ###Node.js、Python Django、および Java
 
 Node.js、Python Django、および Java アプリケーションの場合、web.config ファイルがまだ提供されていない場合は自動的に作成されますが、デプロイ時に作成されるため、サーバー上にのみ存在します。自動生成されたファイルには、Azure にアプリケーションのホスト方法を伝える設定が含まれます。
 
-自動生成されたファイルをアプリから取得して変更するには、次の手順を使用します。
+自動生成されたファイルをアプリから取得して変更するには、次の手順を実行します。
 
 1. FTP を使用してファイルをダウンロードします (「[Uploading/downloading files over FTP and collecting diagnostics logs (FTP を介したファイルのアップロード/ダウンロードおよび診断ログの収集)](http://blogs.msdn.com/b/avkashchauhan/archive/2012/06/19/windows-azure-website-uploading-downloading-files-over-ftp-and-collecting-diagnostics-logs.aspx)」を参照)。
 
@@ -496,7 +496,7 @@ Node.js、Python Django、および Java アプリケーションの場合、web
 
 	* **Node.js と Python Django**
 
-		Node.js および Python Django アプリケーション用に生成された web.config ファイルには、既に **&lt;rewrite>** セクションがあり、アプリが適切に機能するために必要な **&lt;rule>** エントリが含まれています。アプリに HTTPS の使用を強制するには、例の **&lt;rule>** を **&lt;rules>** セクションの最初のエントリとして追加します。これにより、その他のルールは未変更のままで、HTTPS が強制的に使用されます。
+		Node.js および Python Django アプリケーション用に生成された web.config ファイルには、既に **&lt;rewrite>** セクションがあり、アプリが適切に機能するために必要な **&lt;rule>** エントリが含まれています。アプリで強制的に HTTPS を使用するには、例の **&lt;rule>** を **&lt;rules>** セクションの最初のエントリとして追加します。これにより、その他のルールは未変更のままで、HTTPS が強制的に使用されます。
 
 	* **Java**
 
@@ -509,13 +509,13 @@ HTTPS を強制的に使用する書き換えルールを伴う web.config を�
 IIS URL 書き換えモジュールの詳細については、[URL 書き換え](http://www.iis.net/downloads/microsoft/url-rewrite)のドキュメントを参照してください。
 
 ## その他のリソース ##
-- [Microsoft Azure のトラスト センター](/support/trust-center/security/)
+- [Microsoft Azure セキュリティ センター](/support/trust-center/security/)
 - [Azure Web Sites でロックを解除された構成オプション](/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)
 - [診断ログの有効化](../articles/app-service-web/web-sites-enable-diagnostic-log.md)
 - [Azure App Service での Web アプリの構成](../articles/app-service-web/web-sites-configure.md)
 - [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
@@ -545,4 +545,4 @@ IIS URL 書き換えモジュールの詳細については、[URL 書き換え]
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0128_2016-->

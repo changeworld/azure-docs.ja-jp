@@ -32,11 +32,11 @@
 
 ##リリース ノート
 
-###3\.1.0 (11/20/2015)
-*MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.2.0** の一部
+###3\.2.0 (01/22/2016)
+*MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.3.0** の一部
 
--   初期化直後にデバイス ID を要求すると発生するクラッシュを修正しました。
--   コンソールのログを改善しました。
+-   アクション url で カスタム スキームと ms appx および ms appdata を使用できるようになりました。
+-   安定性が向上しました。
 
 以前のバージョンについては、「[完全リリース ノート](mobile-engagement-windows-phone-release-notes.md)」をご覧ください。
 
@@ -55,4 +55,4 @@ SDK の一部のバージョンが不足している場合、いくつかの手�
 [アップグレード手順](mobile-engagement-windows-phone-upgrade-procedure/)をご覧ください
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0128_2016-->

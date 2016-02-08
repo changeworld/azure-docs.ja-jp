@@ -5,7 +5,7 @@
    documentationCenter=""
    authors="ronitr"
    manager="jeffreyg"
-   editor="v-romcal"/>
+   editor="jeffreyg"/>
 
 <tags
    ms.service="sql-database"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/20/2015"
+   ms.date="12/01/2015"
    ms.author="ronitr; ronmat; v-romcal; sstein"/>
 
 # SQL Database 動的データ マスクの使用 (Azure クラシック ポータル)
@@ -34,7 +34,7 @@ SQL Database 動的データ マスクは、特権のないユーザーに対し
 Azure クラシック ポータルの [監視とセキュリティ] タブでデータベース用の動的データ マスク ポリシーを設定します。
 
 
-> [AZURE.NOTE]Azure ポータルで動的データ マスクを設定する方法について詳しくは、「[SQL Database 動的データ マスク (Azure ポータル)](sql-database-dynamic-data-masking-get-started.md)」を参照してください。
+> [AZURE.NOTE] Azure ポータルで動的データ マスクを設定する方法について詳しくは、「[SQL Database 動的データ マスク (Azure ポータル)](sql-database-dynamic-data-masking-get-started.md)」を参照してください。
 
 
 ### 動的データ マスクのアクセス許可
@@ -71,7 +71,7 @@ Azure クラシック ポータルの [監視とセキュリティ] タブでデ
 
 4. マスクから除外し、マスクされていない機密データへのアクセスを与える SQL ユーザーまたは AAD の ID を入力します。ユーザーをセミコロンで区切った一覧にします。管理者特権を持つユーザーは常にマスクされていない元のデータにアクセスできることに注意してください。
 
-	>[AZURE.TIP]アプリケーションの特権を持つユーザーに対してアプリケーション レイヤーがデリケートなデータを表示できるようにするには、アプリケーションストアでデータベースの照会に使用される SQL ユーザーまたは AAD の ID を追加します。デリケートなデータの公開を最小限に抑えるには、この一覧に含める特権ユーザーの数を最小限にすることを強くお勧めします。
+	>[AZURE.TIP] アプリケーションの特権を持つユーザーに対してアプリケーション レイヤーがデリケートなデータを表示できるようにするには、アプリケーションストアでデータベースの照会に使用される SQL ユーザーまたは AAD の ID を追加します。デリケートなデータの公開を最小限に抑えるには、この一覧に含める特権ユーザーの数を最小限にすることを強くお勧めします。
 
 	![ナビゲーション ウィンドウ](./media/sql-database-dynamic-data-masking-get-started-portal/4_ddm_policy_classic_portal.png)
 
@@ -96,4 +96,4 @@ Azure クラシック ポータルの [監視とセキュリティ] タブでデ
 
 「[Azure SQL Database の操作](https://msdn.microsoft.com/library/dn505719.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

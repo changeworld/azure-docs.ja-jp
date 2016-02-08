@@ -132,13 +132,13 @@ Azure Media Encoder は、[ここ](https://msdn.microsoft.com/library/azure/dn61
 
 ###概要
 
-[Azure Media Services の Premium Encoding の紹介 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+[Azure Media Services の Premium Encoding の紹介 (ブログの投稿)](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
 
 ###使用方法
 
 メディア エンコーダー プレミアム ワークフロー は複雑なワークフローを使用して構成されています。Workflow ファイルは、[Workflow Designer](media-services-workflow-designer.md) ツールを使用して作成して更新できます。
 
-[Azure Media Services で Premium Encoding を使用する方法 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+[Azure Media Services で Premium Encoding を使用する方法 (ブログの投稿)](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
 
 ##<a id="compare_encoders"></a>エンコーダーの比較
 
@@ -161,11 +161,11 @@ Azure Media Encoder は、[ここ](https://msdn.microsoft.com/library/azure/dn61
 Adobe® Flash® F4V |あり|なし |あり
 MXF/SMPTE 377M |あり|制限あり|あり
 GXF |あり|なし |あり
-MPEG-2 トランスポート ストリーム |あり|あり |あり
-MPEG-2 プログラム ストリーム |あり|あり |あり
-MPEG-4/MP4 |あり|あり |あり
-Windows Media/ASF |あり|あり |あり
-AVI (非圧縮 8-bit/10-bit)|あり|あり |あり
+MPEG-2 トランスポート ストリーム |あり|Yes |あり
+MPEG-2 プログラム ストリーム |あり|Yes |あり
+MPEG-4/MP4 |あり|Yes |あり
+Windows Media/ASF |あり|Yes |あり
+AVI (非圧縮 8-bit/10-bit)|あり|Yes |あり
 3GPP/3GPP2 |あり|はい |いいえ
 スムーズ ストリーミング ファイル形式 (PIFF 1.3)|あり|はい|いいえ
 [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|あり|いいえ|いいえ
@@ -181,8 +181,8 @@ Avid DNxHD (MXF) |あり|なし|あり
 DVCPro/DVCProHD (MXF) |あり|なし|あり
 JPEG2000 |あり|なし|あり
 MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル)|最大 422 プロファイル|最大 422 プロファイル|あり
-MPEG-1 |あり|あり|あり
-Windows Media ビデオ/VC-1 |あり|あり|あり
+MPEG-1 |あり|Yes|あり
+Windows Media ビデオ/VC-1 |あり|Yes|あり
 Canopus HQ/HQX |いいえ|あり|いいえ
 MPEG-4 Part 2 |あり|いいえ|いいえ
 [Theora](https://en.wikipedia.org/wiki/Theora) |あり|いいえ|いいえ
@@ -201,11 +201,11 @@ AES (SMPTE 331M および 302M、AES3-2003) |いいえ|いいえ|あり
 Dolby® E |いいえ|いいえ|あり
 Dolby® Digital (AC3) |いいえ|あり|あり
 Dolby® Digital Plus (E-AC3) |いいえ|いいえ|あり
-AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|あり|あり|あり
-MPEG Layer 2|あり|あり|あり
-MP3 (MPEG-1 Audio Layer 3)|あり|あり|あり
-Windows Media オーディオ|あり|あり|あり
-WAV/PCM|あり|あり|あり
+AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|あり|Yes|あり
+MPEG Layer 2|あり|Yes|あり
+MP3 (MPEG-1 Audio Layer 3)|あり|Yes|あり
+Windows Media オーディオ|あり|Yes|あり
+WAV/PCM|あり|Yes|あり
 [FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|あり|いいえ|いいえ
 [Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |あり|いいえ|いいえ
 [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|あり|いいえ|いいえ
@@ -219,7 +219,7 @@ Adobe® Flash® F4V|いいえ|いいえ|あり
 MXF (OP1a、XDCAM および AS02)|いいえ|いいえ|あり
 DPP (AS11 を含む)|いいえ|いいえ|あり
 GXF|いいえ|いいえ|あり
-MPEG-4/MP4|あり|あり|あり
+MPEG-4/MP4|あり|Yes|あり
 MPEG TS|あり|なし|あり
 Windows Media/ASF|いいえ|あり|あり
 AVI (非圧縮 8-bit/10-bit)|いいえ|いいえ|あり
@@ -244,7 +244,7 @@ JPEG サムネール作成|いいえ|あり|あり
 AES (SMPTE 331M および 302M、AES3-2003)|いいえ|いいえ|あり
 Dolby® Digital (AC3)|いいえ|あり|あり
 Dolby® Digital Plus (E-AC3) 最大 7.1|いいえ|最大 5.1|あり
-AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|あり|あり|あり
+AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|あり|Yes|あり
 MPEG Layer 2|いいえ|いいえ|あり
 MP3 (MPEG-1 Audio Layer 3)|いいえ|いいえ|あり
 Windows Media オーディオ|いいえ|あり|あり
@@ -290,4 +290,4 @@ TransientError|一時的な問題に関するエラーのカテゴリ (Azure Sto
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

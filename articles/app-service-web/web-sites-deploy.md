@@ -35,7 +35,7 @@ Web サーバーやアプリケーション フレームワークを気にする
 
 一般的な Web 開発ツールでは、これらのデプロイメント プロセスを 1 つ以上サポートします。選択したツールによって利用できるデプロイメント プロセスが決まりますが、自由に使える実際の DevOps 機能は、デプロイメント プロセスと選択したツールの組み合わせによって異なります。たとえば、[Visual Studio と Azure SDK](#vspros) から Web Deploy を実行する場合、Kudu の自動化機能を利用できなくても、Visual Studio でパッケージの復元と MSBuild による自動化が提供されます。Azure SDK には、必要な Azure リソースを Visual Studio インターフェイス内で直接作成できる使いやすいウィザードも用意されています。
 
->[AZURE.NOTE]これらのデプロイメント プロセスでは、実際には、App Service プラン、App Service アプリ、SQL Database など、アプリで必要な [Azure リソースがプロビジョニング](resource-group-portal)されるわけではありません。ただし、リンクされている手順に関する記事のほとんどは、アプリをプロビジョニングし、コードをエンド ツー エンドでデプロイする方法を示しています。また、「[コマンド ライン ツールを使用したデプロイの自動化](#automate)」では、Azure リソースをプロビジョニングするための追加オプションを紹介しています。
+>[AZURE.NOTE] これらのデプロイメント プロセスでは、実際には、App Service プラン、App Service アプリ、SQL Database など、アプリで必要な [Azure リソースがプロビジョニング](resource-group-portal)されるわけではありません。ただし、リンクされている手順に関する記事のほとんどは、アプリをプロビジョニングし、コードをエンド ツー エンドでデプロイする方法を示しています。また、「[コマンド ライン ツールを使用したデプロイの自動化](#automate)」では、Azure リソースをプロビジョニングするための追加オプションを紹介しています。
 
 ## <a name="ftp"></a>Azure へのファイルの手動コピーによるデプロイ
 Web コンテンツを Web ホスト側に手動でコピーする(PHP 開発者向けの一般的なワークフロー) ことに慣れている場合は、エクスプローラーや [FileZilla](https://filezilla-project.org/) などの [FTP](http://en.wikipedia.org/wiki/File_Transfer_Protocol) ユーティリティを使用してファイルをコピーできます。
@@ -201,8 +201,8 @@ Visual Studio Team Services を使用したデプロイのその他の利点は�
 ###<a name="cloudgitmercurial"></a>クラウド ベースの Git または Mercurial リポジトリからデプロイする方法
 
 - [Git を使用したソース管理から Web アプリへの発行](web-sites-publish-source-control.md)。GitHub、CodePlex、または BitBucket からのリポジトリの継続的なデプロイを有効にする方法。このチュートリアルでは、Git リポジトリを発行する方法を示していますが、CodePlex または BitBucket でホストされている Mercurial リポジトリに関するプロセスは類似しています。
-- [Deploying to Web Apps with GitHub using Kudu (Kudu を使用した GitHub による Web アプリへのデプロイ)](http://azure.microsoft.com/documentation/videos/deploying-to-azure-from-github/)。Scott Hanselman と David Ebbo によるビデオ。GitHub から App Service に直接 Web アプリをデプロイする方法を示します。
-- [Web アプリに対する Azure ボタンのデプロイ](http://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/)。Git リポジトリからのデプロイをトリガーする方法に関するブログです。
+- [Deploying to Web Apps with GitHub using Kudu (Kudu を使用した GitHub による Web アプリへのデプロイ)](https://azure.microsoft.com/documentation/videos/deploying-to-azure-from-github/)。Scott Hanselman と David Ebbo によるビデオ。GitHub から App Service に直接 Web アプリをデプロイする方法を示します。
+- [Web アプリに対する Azure ボタンのデプロイ](https://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/)。Git リポジトリからのデプロイをトリガーする方法に関するブログです。
 - [Git、Mercurial、Dropbox に関する Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azuregit)。
 
 詳細については、次のリソースを参照してください。
@@ -264,7 +264,7 @@ Windows、Mac、Linux マシンでコマンド ラインを使用し、FTP を�
 
 詳細については、次のリソースを参照してください。
 
-* [シンプルな Web アプリ: デプロイ](http://azure.microsoft.com/blog/2014/07/28/simple-azure-websites-deployment/)。Web デプロイの使用を簡単にするために作成したツールに関する David Ebbo のブログ
+* [シンプルな Web アプリ: デプロイ](https://azure.microsoft.com/blog/2014/07/28/simple-azure-websites-deployment/)。Web デプロイの使用を簡単にするために作成したツールに関する David Ebbo のブログ
 * [Web デプロイ ツール](http://technet.microsoft.com/library/dd568996)。Microsoft TechNet サイトの公式ドキュメント。作成以来期間が経過していますが、現在も有効な出発点として使用できます。
 * [Web Deploy の使用](http://www.iis.net/learn/publish/using-web-deploy)。Microsoft IIS.NET サイトの公式ドキュメント。同じく作成以来期間が経過していますが、現在も有効な出発点として使用できます。
 * [StackOverflow](http://www.stackoverflow.com)。コマンドラインから Web Deploy を使用する方法に関する最新の情報を掲載した、出発点として最適な場所です。
@@ -276,7 +276,7 @@ Windows、Mac、Linux マシンでコマンド ラインを使用し、FTP を�
 
 バックアップと復元計画を策定することは、デプロイ ワークフローの重要な部分です。Web Apps のバックアップと復元の機能については、[Web Apps のバックアップ](web-sites-backup.md)に関するページをご覧ください。
 
-Azure のロール ベースの Access Control を使用して、Web Apps のデプロイへのアクセスを管理する方法については、[RBAC と Web Apps の公開](http://azure.microsoft.com/blog/2015/01/05/rbac-and-azure-websites-publishing)に関するブログをご覧ください。
+Azure のロール ベースの Access Control を使用して、Web Apps のデプロイへのアクセスを管理する方法については、[RBAC と Web Apps の公開](https://azure.microsoft.com/blog/2015/01/05/rbac-and-azure-websites-publishing/)に関するブログをご覧ください。
 
 その他のデプロイのトピックについては、[Web アプリに関するドキュメント](/documentation/services/web-sites/)の「デプロイ」セクションをご覧ください。
 
@@ -284,4 +284,4 @@ Azure のロール ベースの Access Control を使用して、Web Apps のデ
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

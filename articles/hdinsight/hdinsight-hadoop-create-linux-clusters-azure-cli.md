@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="11/17/2015"
+   	ms.date="01/22/2016"
    	ms.author="larryfr"/>
 
 #Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成
@@ -27,13 +27,13 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 
 このドキュメントの手順では、Azure CLI とテンプレートを使用して新しい HDInsight クラスターを作成するプロセスを示します。
 
-> [AZURE.IMPORTANT]この文書の手順では、HDInsight クラスターにワーカー ノードの既定数 (4) を使用します。クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+> [AZURE.IMPORTANT] この文書の手順では、HDInsight クラスターにワーカー ノードの既定数 (4) を使用します。クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
 >
 > ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 ##前提条件
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 - __Azure CLI__。CLI のインストール方法については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
 
@@ -84,7 +84,7 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
 
         azure group create RESOURCEGROUPNAME LOCATION
     
-    > [AZURE.NOTE]場所の名前にスペースが含まれる場合は、名前を引用符で囲みます。たとえば、"South Central US" のようになります。
+    > [AZURE.NOTE] 場所の名前にスペースが含まれる場合は、名前を引用符で囲みます。たとえば、"South Central US" のようになります。
 
 6. 次のコマンドを利用し、このリソース グループの最初のデプロイメントを作成します。__PATHTOTEMPLATE__ を __azuredeploy.json__ テンプレート ファイルのパスに置き換えます。__PATHTOPARAMETERSFILE__ を __azuredeploy.parameters.json__ ファイルのパスに置き換えます。__RESOURCEGROUPNAME__ を前の手順で作成したグループの名前に置き換えます。
 
@@ -121,4 +121,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

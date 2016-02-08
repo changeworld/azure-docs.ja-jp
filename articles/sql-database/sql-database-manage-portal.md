@@ -1,23 +1,23 @@
-<properties 
-	pageTitle="Azure クラシック ポータルを使用した Azure SQL Database の管理" 
-	description="Azure クラシック ポータルを使用して、クラウド内のリレーショナル データベースを管理する方法について説明します。" 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="stevestein" 
-	manager="jeffreyg" 
+<properties
+	pageTitle="Azure クラシック ポータルを使用した Azure SQL Database の管理"
+	description="Azure クラシック ポータルを使用して、クラウド内のリレーショナル データベースを管理する方法について説明します。"
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jeffreyg"
 	editor=""/>
 
-<tags 
-	ms.service="sql-database" 
-	ms.devlang="NA" 
-	ms.workload="data-management" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="NA" 
-	ms.date="09/11/2015" 
+<tags
+	ms.service="sql-database"
+	ms.devlang="NA"
+	ms.workload="data-management"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.date="01/22/2016"
 	ms.author="sstein"/>
 
 
-# Azure クラシック ポータルを使用した Azure SQL Database の管理
+# Azure ポータルを使用した Azure SQL データベースの管理
 
 
 > [AZURE.SELECTOR]
@@ -25,16 +25,14 @@
 - [SSMS](sql-database-manage-azure-ssms.md)
 - [PowerShell](sql-database-command-line-tools.md)
 
-[Azure クラシック ポータル][Classic Portal]を使用すると、Azure SQL Database とサーバーの作成、監視、管理を実行できます。この記事では、クラシック ポータルを使用して実行できるデータベース操作について重点的に説明します。
-
->[AZURE.NOTE]Azure クラシック ポータルに慣れていない場合は、その全般的な機能と概念について、この[ビデオ ツアーで簡単な概要をご覧ください][Azure Classic Portal Tour]。
+[Azure ポータル](https://portal.azure.com/)を使用すると、Azure SQL データベースと論理サーバーを作成、監視、管理できます。この記事では、いくつかの一般的なタスクについて説明します。
 
 ![Database Overview](./media/sql-database-manage-portal/sqldatabase_annotated.png)
 
 ## 1\.データベースの管理操作
 ![Db management actions](./media/sql-database-manage-portal/sqldatabase_actions.png)
 
-Azure クラシック ポータルには、データベースのブレードの上部からアクセスできる、一般的なデータベース操作が用意されています。データベースは、以前の状態に復元したり、Visual Studio で開いたり、新しいサーバーにコピーしたり、Azure ストレージ アカウントにエクスポートしたりできます。
+Azure ポータルには、データベースのブレードの上部からアクセスできる、一般的なデータベース操作が用意されています。データベースは、以前の状態に復元したり、Visual Studio で開いたり、新しいサーバーにコピーしたり、Azure ストレージ アカウントにエクスポートしたりできます。
 
 - [SQL Database を復元する](sql-database-point-in-time-restore-tutorial-management-portal.md)
 - [Visual Studio で SQL Database を開く](sql-database-connect-query.md)
@@ -54,7 +52,7 @@ Azure SQL Database は、すべてのデータベース イベントを追跡し
 
 - [SQL Database の監査](sql-database-auditing-get-started.md)
 
-また、Azure SQL Database は、権限を持たないユーザーに対して機密データをマスクするように構成することもできます。
+また、Azure SQL データベースは、権限を持たないユーザーに対して機密データをマスクするように構成することもできます。
 
 - [動的データ マスク](sql-database-dynamic-data-masking-get-started.md)
 
@@ -62,7 +60,7 @@ Azure SQL Database は、すべてのデータベース イベントを追跡し
 ## 4\.geo レプリケーション
 ![geo レプリケーション](./media/sql-database-manage-portal/sqldatabase_georeplication.png)
 
-Azure SQL Database は、コミットされたトランザクションをセカンダリ データベースに非同期にレプリケートするように構成できます。クラシック ポータルの geo レプリケーション パートでは、セカンダリ データベースを配置する Azure リージョンを選択できます。
+Azure SQL Database は、コミットされたトランザクションをセカンダリ データベースに非同期にレプリケートするように構成できます。ポータルの geo レプリケーション パートでは、セカンダリ データベースを配置する Azure リージョンを選択できます。
 
 - [geo レプリケーション](https://msdn.microsoft.com/library/azure/dn783447.aspx)
 
@@ -74,7 +72,7 @@ Azure SQL Database は、コミットされたトランザクションをセカ�
 * [SQL Database](sql-database-technical-overview.md)   
 * [動的管理ビューを使用した SQL Database の監視][]   
 * [Transact-SQL リファレンス (SQL Database)][]
-  
+
   [Azure Classic Portal Tour]: https://go.microsoft.com/fwlink/?LinkID=522341
   [Classic Portal]: https://portal.azure.com
   [Azure part monitoring]: ../documentdb-monitor-accounts.md
@@ -87,7 +85,4 @@ Azure SQL Database は、コミットされたトランザクションをセカ�
   [AzureDb Auditing]: http://azure.microsoft.com/documentation/articles/sql-database-auditing-get-started/
   [AzureDb datamasking]: http://azure.microsoft.com/documentation/articles/sql-database-dynamic-data-masking-get-started/
 
- 
- 
-
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

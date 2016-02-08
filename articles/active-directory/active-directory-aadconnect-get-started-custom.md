@@ -1,7 +1,8 @@
 <properties
 	pageTitle="Azure AD Connect: カスタム インストール | Microsoft Azure"
-	description="このドキュメントでは、Azure AD Connect のカスタム インストール オプションについて説明します。"
+	description="このドキュメントでは、Azure AD Connect のカスタム インストール オプションについて説明します。この手順を使用すると、Azure AD Connect から Active Directory をインストールできます。"
 	services="active-directory"
+    keywords="Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント"
 	documentationCenter=""
 	authors="billmath"
 	manager="stevenpo"
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/11/2016"
+	ms.date="01/25/2016"
 	ms.author="billmath;andkjell"/>
 
 # Azure AD Connect のカスタム インストール
@@ -22,7 +23,7 @@
 次のドキュメントは、Azure AD Connect のカスタム インストール オプションの使用について説明します。このオプションは、追加の構成オプションがある場合や、高速インストールでは設定されないオプションの機能が必要な場合に設定します。
 
 ## 関連ドキュメント
-[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関するドキュメントをまだお読みでない方のために、次の表に関連トピックへのリンクを示します。インストールを開始する前に、太字で表示した最初の 3 つのトピックをお読みいただく必要があります。
+[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関するドキュメントをまだお読みでない方のために、次の表に関連トピックへのリンクを示します。インストールを開始する前に、太字で表示した最初の 3 つのトピックをお読みいただく必要があります。
 
 | トピック | |
 | --------- | --------- |
@@ -99,7 +100,7 @@ sAMAccountName および MailNickName|このオプションは、ユーザーを
 
 - **UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にログインするときに使用する属性です。使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。既定の userPrincipalName 属性のままにしておくことを強くお勧めします。この属性がルーティング不可能で検証できない場合は、ログイン ID を保持する属性として、電子メールなどの別の属性を選択することができます。これを**代替 ID** といいます。代替 ID の属性値は、RFC822 標準に従う必要があります。代替 ID は、サインイン ソリューションとして、パスワード シングル サインオン (SSO) とフェデレーション SSO の両方で使用できます。
 
->[AZURE.WARNING]代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。詳細については、[代替ログイン ID の構成](https://technet.microsoft.com/library/dn659436.aspx)に関するページを参照してください。
+>[AZURE.WARNING] 代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。詳細については、[代替ログイン ID の構成](https://technet.microsoft.com/library/dn659436.aspx)に関するページを参照してください。
 
 
 
@@ -108,7 +109,7 @@ sAMAccountName および MailNickName|このオプションは、ユーザーを
 
 この機能を使用する場合、カスタム インストールの途中で次のようなページが表示されます。![フィルターの同期](./media/active-directory-aadconnect-get-started-custom/filter2.png)
 
->[AZURE.WARNING]この機能は、パイロット デプロイメントのサポートのみを目的としているので、本格的な運用環境のデプロイメントでは使用しないでください。
+>[AZURE.WARNING] この機能は、パイロット デプロイメントのサポートのみを目的としているので、本格的な運用環境のデプロイメントでは使用しないでください。
 
 本格的な運用環境では、単一のグループを維持してすべてのオブジェクトを同期するのは困難です。代わりに、「[フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md)」で説明されている手法のいずれかを使用してください。
 
@@ -118,7 +119,7 @@ sAMAccountName および MailNickName|このオプションは、ユーザーを
 
 ![オプション機能](./media/active-directory-aadconnect-get-started-custom/optional.png)
 
-> [AZURE.WARNING]現時点で DirSync または Azure AD Sync がアクティブになっている場合は、Azure AD Connect の書き戻し機能をアクティブにしないでください。
+> [AZURE.WARNING] 現時点で DirSync または Azure AD Sync がアクティブになっている場合は、Azure AD Connect の書き戻し機能をアクティブにしないでください。
 
 オプション機能 | 説明
 -------------------    | ------------- |
@@ -165,7 +166,7 @@ Azure AD Connect との AD FS の構成は、わずか数クリックで簡単�
 ここでは、AD FS をインストールする特定のサーバーを入力します。容量計画のニーズに基づいて 1 つまたは複数のサーバーを追加することができます。追加するすべてのサーバーは、この構成を実行する前に、Active Directory ドメインに参加させる必要があります。テスト デプロイとパイロット デプロイでは AD FS サーバーを 1 つインストールし、スケーリングのニーズに合わせて追加のサーバーをデプロイすることをお勧めします。追加のサーバーをデプロイするには、Azure AD Connect を開き、AD FS を追加のサーバーにデプロイします。
 
 
-> [AZURE.NOTE]この構成を実行する前に、すべてのサーバーを 1 つの AD ドメインに参加させてください。　
+> [AZURE.NOTE] この構成を実行する前に、すべてのサーバーを 1 つの AD ドメインに参加させてください。　
 
 ![AD FS サーバー](./media/active-directory-aadconnect-get-started-custom/adfs2.png)
 
@@ -175,7 +176,8 @@ Azure AD Connect との AD FS の構成は、わずか数クリックで簡単�
 ここでは、Web アプリケーション プロキシ サーバーとする、特定のサーバーを入力します。Web アプリケーション プロキシ サーバーは DMZ (エクストラネット接続) にデプロイされ、エクストラネットからの認証要求をサポートします。容量計画のニーズに基づいて 1 つまたは複数のサーバーを追加することができます。テスト デプロイとパイロット デプロイでは Web アプリケーション プロキシ サーバーを 1 つインストールし、その後、追加のサーバーをデプロイすることをお勧めします。追加のサーバーをデプロイするには、Azure AD Connect を開き、Web アプリケーション プロキシを追加のサーバーにデプロイします。通常は、イントラネットからの認証を処理するために同数のプロキシ サーバーを設定することをお勧めします。
 
 
-> [AZURE.NOTE]- Azure AD Connect のインストールに使用しているアカウントが AD FS サーバーのローカル管理者ではない場合は、十分なアクセス許可を持つアカウントの資格情報を求められます。- この手順を構成する前に、Azure AD Connect サーバーと Web アプリケーション プロキシ サーバーの間の HTTP/HTTPS 接続が設定されていることを確認します。- さらに、認証要求の通過を許可するために、Web アプリケーション サーバーと AD FS サーバーの間の HTTP/HTTPS 接続が設定されていることを確認します。
+> [AZURE.NOTE]
+- Azure AD Connect のインストールに使用しているアカウントが AD FS サーバーのローカル管理者ではない場合は、十分なアクセス許可を持つアカウントの資格情報を求められます。- この手順を構成する前に、Azure AD Connect サーバーと Web アプリケーション プロキシ サーバーの間の HTTP/HTTPS 接続が設定されていることを確認します。- さらに、認証要求の通過を許可するために、Web アプリケーション サーバーと AD FS サーバーの間の HTTP/HTTPS 接続が設定されていることを確認します。
 
 
 ![Web アプリ](./media/active-directory-aadconnect-get-started-custom/adfs3.png)
@@ -251,4 +253,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

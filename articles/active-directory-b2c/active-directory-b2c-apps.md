@@ -23,7 +23,7 @@ Azure AD B2C は、さまざまなモダン アプリ アーキテクチャ向�
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
 ## 基本操作
-Azure AD B2C を使用するすべてのアプリは、[Azure ポータル](https://portal.azure.com)から [B2C ディレクトリ](active-directory-b2c-get-started.md)に登録する必要があります。アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
+Azure AD B2C を使用するすべてのアプリは、[Azure ポータル](https://portal.azure.com/)から [B2C ディレクトリ](active-directory-b2c-get-started.md)に登録する必要があります。アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
 - アプリを一意に識別する**アプリケーション ID**。
 - 応答をアプリにリダイレクトして戻すために使用できる**リダイレクト URI**。
@@ -93,7 +93,8 @@ Accept: application/json
 
 Web API はトークンを使用して API の呼び出し元の ID を検証し、トークン内にエンコードされているクレームから呼び出し元に関する情報を抽出します。アプリで利用できるすべての種類のトークンとクレームについては、「[Azure AD B2C プレビュー: トークン リファレンス](active-directory-b2c-reference-tokens.md)」を参照してください。
 
-> [AZURE.NOTE]Azure AD B2C プレビューは、現時点では、Web API の既知のクライアントによってアクセスされる Web API のみサポートします。たとえば、完成したアプリには、iOS アプリ、Android アプリ、Web API を含めることができます。このアーキテクチャは完全にサポートされます。現時点でサポートされていないのは、別の iOS アプリなどのサード パーティ クライアントが同じ Web API にアクセスできるようにすることです。実際には、完成したアプリの各コンポーネントは、1 つのアプリケーション ID を共有する必要があります。
+> [AZURE.NOTE]
+	Azure AD B2C プレビューは、現時点では、Web API の既知のクライアントによってアクセスされる Web API のみサポートします。たとえば、完成したアプリには、iOS アプリ、Android アプリ、Web API を含めることができます。このアーキテクチャは完全にサポートされます。現時点でサポートされていないのは、別の iOS アプリなどのサード パーティ クライアントが同じ Web API にアクセスできるようにすることです。実際には、完成したアプリの各コンポーネントは、1 つのアプリケーション ID を共有する必要があります。
 
 Web API は、Web アプリ、デスクトップ アプリ、モバイル アプリ、シングル ページ アプリ、サーバー サイド デーモン、それ以外の Web API など、あらゆる種類のクライアントからトークンを受信できます。例として、Web API を呼び出す Web アプリのフロー全体を見てみましょう。
 
@@ -108,7 +109,8 @@ Azure AD B2C で Web API をセキュリティで保護する方法の詳細に�
 
 このフローでは、アプリが[ポリシー](active-directory-b2c-reference-policies.md)を実行し、ユーザーがポリシーを完了した後、Azure AD から authorization\_code を受信します。authorization\_code は、現在サインインしているユーザーに代わってバックエンド サービスを呼び出すためのアプリのアクセス許可を表します。その後、アプリは、authoriztion\_code をバックグラウンドで id\_token と refresh\_token と交換できます。アプリは id\_token を使用して HTTP 要求で Web API に対する認証を実行でき、id\_token の有効期限が切れた場合は、refresh\_token を使用して新しい id\_token を取得できます。
 
-> [AZURE.NOTE]Azure AD B2C プレビューは、現時点では、アプリ独自のバックエンド Web サービスにアクセスするために使用される id\_token の取得のみをサポートします。たとえば、完成したアプリには、iOS アプリ、Android アプリ、Web API を含めることができます。このアーキテクチャは完全にサポートされます。現時点でサポートされていないのは、iOS アプリが OAuth 2.0 access\_token を使用してサード パーティ の Web API にアクセスできるようにすることです。実際には、完成したアプリの各コンポーネントは、1 つのアプリケーション ID を共有する必要があります。
+> [AZURE.NOTE]
+	Azure AD B2C プレビューは、現時点では、アプリ独自のバックエンド Web サービスにアクセスするために使用される id\_token の取得のみをサポートします。たとえば、完成したアプリには、iOS アプリ、Android アプリ、Web API を含めることができます。このアーキテクチャは完全にサポートされます。現時点でサポートされていないのは、iOS アプリが OAuth 2.0 access\_token を使用してサード パーティ の Web API にアクセスできるようにすることです。実際には、完成したアプリの各コンポーネントは、1 つのアプリケーション ID を共有する必要があります。
 
 ![ネイティブ アプリのスイムレーン イメージ](./media/active-directory-b2c-apps/native.png)
 
@@ -128,4 +130,4 @@ Azure AD B2C によって保護された Web API から、同様に保護され�
 
 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 Jwt Bearer Credential Grant (On-Behalf-Of Flow) を使用してサポートできます。ただし、現時点では、Azure AD B2C プレビューに On-Behalf-Of Flow は実装されていません。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

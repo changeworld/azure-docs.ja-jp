@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/05/2015"
+	ms.date="01/26/2016"
 	ms.author="sethm"/>
 
 # Azure Event Hubs とは
@@ -38,11 +38,11 @@ Event Hubs の詳細については、次のトピックを参照してくださ
 
 - [Event Hubs の概要](event-hubs-overview.md)
 - [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
-- [イベント ハブの可用性とサポートに関する FAQ](event-hubs-availability-and-support-faq.md)
+- [Event Hubs の可用性とサポートに関する FAQ](event-hubs-availability-and-support-faq.md)
 - [Event Hubs の使用][]
 - [Event Hub を使用する完全なサンプル アプリケーション][]
 
 [Event Hubs の使用]: event-hubs-csharp-ephcs-getstarted.md
 [Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

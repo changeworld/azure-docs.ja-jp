@@ -2,13 +2,14 @@
 	pageTitle="Microsoft Azure IoT Suite の概要 | Microsoft Azure"
 	description="パッケージ化と構成済みのソリューションを含む、Azure IoT Suite の概要を説明します。"
 	services=""
+    suite="iot-suite"
 	documentationCenter=""
 	authors="dominicbetts"
 	manager="timlt"
 	editor=""/>
 
 <tags
-     ms.service="na"
+     ms.service="iot-suite"
      ms.devlang="na"
      ms.topic="article"
      ms.tgt_pltfrm="na"
@@ -69,4 +70,4 @@ Azure IoT Hub サービスについては、「[IoT Hub のドキュメント][l
 [lnk-preconfig-start]: iot-suite-getstarted-preconfigured-solutions/
 [lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

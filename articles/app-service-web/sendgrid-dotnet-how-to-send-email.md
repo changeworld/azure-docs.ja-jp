@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="10/12/2015" 
+	ms.date="01/14/2016" 
 	ms.author="team-pi@sendgrid.com"/>
 
 
@@ -48,7 +48,7 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 [SendGrid NuGet パッケージ](https://www.nuget.org/packages/Sendgrid)は、SendGrid API を取得し、すべての依存関係を備えたアプリケーションを構成する最も簡単な方法です。NuGet は Microsoft Visual Studio 2015 に含まれる Visual Studio 拡張機能であり、これを使用してライブラリおよびツールのインストールと更新を簡単に行うことができます。
 
-> [AZURE.NOTE]Visual Studio 2015 よりも前のバージョンの Visual Studio を利用している場合、NuGet をインストールするには、[http://www.nuget.org](http://www.nuget.org) にアクセスして、**[Install NuGet]** ボタンをクリックしてください。
+> [AZURE.NOTE] Visual Studio 2015 よりも前のバージョンの Visual Studio を利用している場合、NuGet をインストールするには、[http://www.nuget.org](http://www.nuget.org) にアクセスして、**[Install NuGet]** ボタンをクリックしてください。
 
 アプリケーションに SendGrid NuGet パッケージをインストールするには、次のステップを行います。
 
@@ -262,4 +262,4 @@ SendGrid の Web ベース API と webhook を使用して、Azure アプリケ�
   [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

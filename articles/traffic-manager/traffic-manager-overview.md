@@ -61,7 +61,7 @@ Traffic Manager プロファイルを構成する際に各種設定を指定す�
    - **Traffic Manager プロファイルの作成** - Azure クラシック ポータルで簡易作成を使用してプロファイルを作成するには、「[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)」を参照してください。
    - **トラフィック ルーティング方法の設定の構成** – [簡易作成] で、プロファイルのトラフィック ルーティング方法を選択する必要があります。この設定は、簡易作成の手順を完了した後も、いつでも変更できます。構成手順は、トラフィック ルーティング方法に対応する次のトピックをご覧ください: 「[パフォーマンスによるトラフィック ルーティング方法の構成](traffic-manager-configure-performance-load-balancing.md)」、「[フェールオーバーによるトラフィック ルーティング 方法の構成](traffic-manager-configure-failover-load-balancing.md)」、「[ラウンド ロビンによるトラフィック ルーティング方法の構成](traffic-manager-configure-round-robin-load-balancing.md)」
    
-   >[AZURE.NOTE]ラウンド ロビンによるトラフィック ルーティング方法で、ネットワーク トラフィックの重み付け分布がサポートされるようになりました。ただし、現時点では、REST API と Windows PowerShell のいずれかを使用して重みを構成する必要があります。詳細と構成例については、Azure ブログの [Azure Traffic Manager の外部エンドポイントと PowerShell による重み付けラウンド ロビン](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)に関する記事を参照してください。
+   >[AZURE.NOTE] ラウンド ロビンによるトラフィック ルーティング方法で、ネットワーク トラフィックの重み付け分布がサポートされるようになりました。ただし、現時点では、REST API と Windows PowerShell のいずれかを使用して重みを構成する必要があります。詳細と構成例については、Azure ブログの [Azure Traffic Manager の外部エンドポイントと PowerShell による重み付けラウンド ロビン](https://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)に関する記事を参照してください。
 
    - **エンドポイントの構成** – エンドポイントは、簡易作成では構成しません。プロファイルを作成し、トラフィック ルーティング方法を指定した後で、Traffic Manager に対してエンドポイントを指定する必要があります。エンドポイントを構成する手順については、「[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)」を参照してください。
 
@@ -79,7 +79,7 @@ REST API の各要素は Azure クラシック ポータルには表示されま
 
 Traffic Manager 用の Windows PowerShell コマンドレットの詳細については、「[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)」を参照してください。
 
->[AZURE.NOTE]現時点では、Azure クラシック ポータルで外部エンドポイント (タイプ = "Any")、ラウンド ロビンによるトラフィック ルーティング方法の重み、入れ子になったプロファイルを構成することはできません。REST (「[Create Definition](http://go.microsoft.com/fwlink/p/?LinkId=400772)」を参照) と Windows PowerShell (「[Add-AzureTrafficManagerEndpoint](https://msdn.microsoft.com/library/azure/dn690257.aspx)」を参照) のどちらかを使用する必要があります。
+>[AZURE.NOTE] 現時点では、Azure クラシック ポータルで外部エンドポイント (タイプ = "Any")、ラウンド ロビンによるトラフィック ルーティング方法の重み、入れ子になったプロファイルを構成することはできません。REST (「[Create Definition](http://go.microsoft.com/fwlink/p/?LinkId=400772)」を参照) と Windows PowerShell (「[Add-AzureTrafficManagerEndpoint](https://msdn.microsoft.com/library/azure/dn690257.aspx)」を参照) のどちらかを使用する必要があります。
 
 ### Azure クラシック ポータルでの設定の構成
 
@@ -172,4 +172,4 @@ Traffic Manager に関する独自のプレゼンテーション用の PowerPoin
 
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

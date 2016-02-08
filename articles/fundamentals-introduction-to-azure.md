@@ -31,7 +31,7 @@ Azure のサービスは常に増え続けているため、そのすべてを�
 
 ## Azure のコンポーネント
 
-Azure では、管理ポータル内や、[Microsoft Azure のインフォグラフィック](http://azure.microsoft.com/documentation/infographics/azure/)などのさまざまな視覚的な説明の中で、サービスをいくつかのカテゴリに分類しています。管理ポータルは、Azure 内の大半のサービス (すべてではない) を管理するために使用するものです。
+Azure では、管理ポータル内や、[Microsoft Azure のインフォグラフィック](https://azure.microsoft.com/documentation/infographics/azure/)などのさまざまな視覚的な説明の中で、サービスをいくつかのカテゴリに分類しています。管理ポータルは、Azure 内の大半のサービス (すべてではない) を管理するために使用するものです。
 
 このホワイトペーパーでは、**さまざまな組織**を取り上げて、類似の機能に基づくサービスについて説明し、より大規模なサービスの一部である重要なサブサービスを取り上げます。
 
@@ -246,7 +246,7 @@ Azure には、開発者と IT プロフェッショナルがクラウド内で�
 ### Azure SDK
 2008 年、最初に発表されたプレリリース版の Azure では .NET 開発のみがサポートされていました。しかし、現在ではかなり多くの言語で Azure アプリケーションを作成できます。マイクロソフトでは現在、.NET、Java、PHP、Node.js、Ruby、Python 向けの言語固有の SDK を提供しています。C++ など、任意の言語の基本的なサポートを提供する汎用 Azure SDK も用意されています。
 
-これらの SDK では、Azure アプリケーションを構築、デプロイ、および管理できます。[www.microsoftazure.com](http://azure.microsoft.com/downloads/) または GitHub から入手でき、Visual Studio や Eclipse と共に使用できます。Azure には、Linux システムおよび Macintosh システムから Azure にアプリケーションをデプロイするためのツールなど、開発者がエディターや開発環境で使用できるコマンド ライン ツールも用意されています。
+これらの SDK では、Azure アプリケーションを構築、デプロイ、および管理できます。[www.microsoftazure.com](https://azure.microsoft.com/downloads/) または GitHub から入手でき、Visual Studio や Eclipse と共に使用できます。Azure には、Linux システムおよび Macintosh システムから Azure にアプリケーションをデプロイするためのツールなど、開発者がエディターや開発環境で使用できるコマンド ライン ツールも用意されています。
 
 これらの SDK は、Azure アプリケーションの構築に役立つだけではありません。Azure サービスを使用するソフトウェアの作成に役立つクライアント ライブラリも用意されています。たとえば、Azure BLOB の読み取りと書き込みを行うアプリケーションを構築したり、Azure 管理インターフェイスを通じて Azure アプリケーションをデプロイするツールを作成したりすることができます。
 
@@ -611,4 +611,4 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

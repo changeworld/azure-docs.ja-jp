@@ -32,7 +32,7 @@
 
   ![図](media/marketplace-publishing-push-to-staging/pubportal-02.png)
 
-  プランのタイトル、説明、およびロゴ
+  *プランのタイトル、説明、およびロゴ*
 
 ### リンク
 左のバーの **[リンク]** タブで、お客様に役立つ情報があればそのリンクを入力します。各リンクの名前と URL を入力します。
@@ -40,7 +40,7 @@
 ![図](media/marketplace-publishing-push-to-staging/pubportal-02.png)
 
 ### サンプル イメージ (省略可能)
-> [AZURE.NOTE]サンプル イメージを含めるステップは、省略可能です。ステージングにプッシュするための要件を満たすために、他のマーケティング コンテンツを実行することもできます。
+> [AZURE.NOTE] サンプル イメージを含めるステップは、省略可能です。ステージングにプッシュするための要件を満たすために、他のマーケティング コンテンツを実行することもできます。
 
 左側のメニューの **[サンプル イメージ]** タブで、**[新しいイメージのアップロード]** をクリックして新しいイメージをアップロードします。既存のイメージがある場合、それを置き換えるには、**[イメージの置換]** をクリックします。
 
@@ -52,7 +52,7 @@
 ### 法的情報
 **[法的情報]** タブで、ポリシー/利用条件へのリンクを指定します。大きい **[利用条件]** ボックスに利用条件を入力するか、貼り付けます。
 
-> [AZURE.IMPORTANT]ステージングにプッシュするために、イメージを含め、すべてのフィールドが入力されている必要があります。
+> [AZURE.IMPORTANT] ステージングにプッシュするために、イメージを含め、すべてのフィールドが入力されている必要があります。
 
 
 ## 手順 2.: 価格を設定する
@@ -67,28 +67,28 @@
 
 **使用できる価格モデル (プランの種類別)**
 
-> [AZURE.IMPORTANT]特定の価格モデルを使用できるかどうかは、プランの種類によって異なります。次の表を参照してください。
+> [AZURE.IMPORTANT] 特定の価格モデルを使用できるかどうかは、プランの種類によって異なります。次の表を参照してください。
 
 | | 基本のみ | 消費量のみ | 基本 + 消費量 |
 |---|---|---|---|
 | 仮想マシン イメージ | いいえ | あり | いいえ|
-| 開発者サービス | あり | あり | あり |
+| 開発者サービス | あり | Yes | あり |
 | データ サービス | あり | いいえ | なし |
 
 ### 2\.1.VM 料金を設定する
-> [AZURE.NOTE]BYOL は、仮想マシンでのみサポートされています。
+> [AZURE.NOTE] BYOL は、仮想マシンでのみサポートされています。
 
 1.	**[料金]** タブに、サポートされたすべての市場が表示されます。適切なものを 1 つ選択し、価格フィールドに移ります。
 2.	発行ポータルで提供されるリンクに、SKU の価格を決めるのに役立つ価格情報が表示されます。
 3.	SKU が BYOL の場合、"外部でライセンスされた (BYOL)" SKU の可用性のチェックボックスをオンにします。
 4.	SKU が時間単位の場合、ソフトウェアの価格を入力します。価格設定なしの SKU は購入または使用できません。
 
-  >[AZURE.NOTE]BYOL だけでなく時間あたりの SKU もある場合は、両方の前提条件が満たされていることを確認します (BYOL チェックボックスと時間あたりの価格の値)。
+  >[AZURE.NOTE] BYOL だけでなく時間あたりの SKU もある場合は、両方の前提条件が満たされていることを確認します (BYOL チェックボックスと時間あたりの価格の値)。
 
 5.	価格ウィザードが開きます。これにより、その他の国の価格設定 (指定した市場以外からの購入を許可するように選択した場合) を含む、価格設定を完了できます。
 6.	一部の国は ISV レミット対象です。ISV レミット対象の国で販売を行うには、SKU に税金を課し、徴収できる必要があります。また、その国の政府に対する税金を計算および支払いできる必要があります。マイクロソフトでは、法的ガイダンスや税金に関するガイダンスを提供していません。販売先の国の詳細については、このドキュメントの概要の「プランの販売先の国」に関するセクションを参照してください。
 
-### 2.2.開発者向けサービスの価格を設定する
+### 2\.2.開発者向けサービスの価格を設定する
 基本と使用量を組み合わせたプランにすることができます。ここで、"基本料金" は月額、"超過料金" は従量課金になります。(詳細については、以下を参照してください。)
 
 **例**: Contoso 開発者サービスのプラン
@@ -115,36 +115,36 @@
 **[カテゴリ]** タブには、一連の選択項目が表示されます。該当するカテゴリを最大 5 つまで選択できます。
 
 ## マーケティングの表示例
-[Azure Marketplace Web サイト](http://azure.microsoft.com/marketplace)と [Azure プレビュー ポータル](https://ms.portal.azure.com)における、プラン マーケティング情報の使用方法についての詳細なビューを次に示します。
+[Azure Marketplace Web サイト](https://azure.microsoft.com/marketplace/)と [Azure プレビュー ポータル](https://ms.portal.azure.com)における、プラン マーケティング情報の使用方法についての詳細なビューを次に示します。
 
 ### Azure Marketplace Web サイト
 ![図](media/marketplace-publishing-push-to-staging/acom-catalog-01.png)
 
 ![図](media/marketplace-publishing-push-to-staging/acom-catalog-02.png)
 
-Azure Marketplace Web サイト上のプランの一覧
+*Azure Marketplace Web サイト上のプランの一覧*
 
 ![図](media/marketplace-publishing-push-to-staging/acom-listing-details-01.png)
 
-Azure Marketplace Web サイト上のプランの説明の詳細
+*Azure Marketplace Web サイト上のプランの説明の詳細*
 
 ![図](media/marketplace-publishing-push-to-staging/acom-listing-details-02.png)
 
-Azure Marketplace Web サイト上のプランの説明の価格詳細
+*Azure Marketplace Web サイト上のプランの説明の価格詳細*
 
 ### Azure プレビュー ポータル
 ![図](media/marketplace-publishing-push-to-staging/portal-catalog-01.png)
 
-Azure プレビュー ポータルのプランの一覧
+*Azure プレビュー ポータルのプランの一覧*
 
 ![図](media/marketplace-publishing-push-to-staging/portal-listing-details-01.png)
 
-Azure プレビュー ポータルのプランの説明の詳細
+*Azure プレビュー ポータルのプランの説明の詳細*
 
 ## 次のステップ
 Marketplace コンテンツが読み込まれたので、プランのステージングでのテストに進みましょう。ただし、手順はプランの種類によって異なるため、以下の一覧から適切なプランの種類を選択する必要があります。
 
-||仮想マシン イメージ |開発者サービス | データ サービス | ソリューション テンプレート |
+|仮想マシン イメージ |開発者サービス | データ サービス | ソリューション テンプレート |
 |----|----|----|----|----|
 | **ステップ 3: ステージングへのプランのプッシュ** | [ステージング環境での VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md) | ステージング環境での開発者サービス プランのテスト | [ステージング環境でのデータ サービス プランのテスト](marketplace-publishing-data-service-test-in-staging.md) | [ステージング環境でのソリューション テンプレートのテスト](marketplace-publishing-solution-template-test-in-staging.md) |
 
@@ -160,4 +160,4 @@ Marketplace コンテンツが読み込まれたので、プランのステー�
 [link-pubportal]: https://publish.windowsazure.com
 [link-push-to-production]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

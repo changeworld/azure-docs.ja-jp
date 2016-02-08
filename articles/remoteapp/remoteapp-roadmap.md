@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="NA"
     ms.devlang="NA"
     ms.topic="article"
-    ms.date="01/14/2016"
+    ms.date="01/19/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp で予定される新機能
@@ -21,10 +21,10 @@
 
 |機能|2016 年 1 月 - 3 月|2016 年 4 月 - 6 月|
 |-----------|-------|-------|
-|[Azure クラシック ポータル](http://manage.windowsazure.com)と [Azure ポータル](http://portal.azure.com)で Azure Remote App が利用可能 |○ | |
-|Azure RemoteApp プレビュー用 Windows 10 ユニバーサル アプリケーション|○| |
-|個々のアプリケーションを特定のユーザーに発行する機能 - **プライベート プレビュー** ([フィードバック](http://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec))|○ | |
-|Windows クライアントの再配布可能 MSI パッケージ ([フィードバック](http://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo))| ○| |
+|[Azure クラシック ポータル](http://manage.windowsazure.com)と [Azure ポータル](https://portal.azure.com)で Azure Remote App が利用可能 |○ | |
+|Azure RemoteApp 用 Windows 10 Universal Application with Continuum - プレビュー|○| |
+|個々のアプリケーションを特定のユーザーに発行する機能 - **プライベート プレビュー** ([フィードバック](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec/))|○ | |
+|Windows クライアントの再配布可能 MSI パッケージ ([フィードバック](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo/))| ○| |
 |Azure RemoteApp の HTML5 ベースのクライアント|○ ||
 |Azure リソース マネージャー (ARM) のサポート||○|
 |Cloud Solution Provider (CSP)||○|
@@ -46,4 +46,4 @@
 - オーストラリア データ センターでの可用性
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

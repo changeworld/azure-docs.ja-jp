@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/14/2015"
+	ms.date="01/22/2016"
 	ms.author="dkshir"/>
 
 
@@ -29,9 +29,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 
 ## 開始する前に
 
-これらの手順は、すでにクラシック デプロイ モデルを使用して Azure 仮想マシンを作成し、データ ディスクの接続を含め、オペレーティング システムの構成が完了していることを前提としています。まだ完了していない場合は、下記の手順を確認してください。
-
-- [How to Create a Virtual Machine Running Linux (Linux を実行する仮想マシンの作成方法)][]
+これらの手順は、すでにクラシック デプロイ モデルを使用して Azure 仮想マシンを作成し、データ ディスクの接続を含め、オペレーティング システムの構成が完了していることを前提としています。この操作をまだ行っていない場合は、「[カスタム Linux VM を作成する方法][]」をお読みください。
 
 
 ## 仮想マシンをキャプチャする
@@ -51,7 +49,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 	- ホスト名を localhost.localdomain にリセット
 	- (/var/lib/waagent から取得した) 前回プロビジョニングされたユーザー アカウント**および関連データ**の削除
 
-	>[AZURE.NOTE]プロビジョニング解除では、イメージを "一般化" する目的でファイルとデータが削除されます。このコマンドは、必ず新しいイメージ テンプレートとしてキャプチャする仮想マシン上で実行してください。プロビジョニング解除により、イメージからすべての機密情報が削除されることや、イメージが第三者への再配布に適した状態になることが保証されるわけではありません。
+	>[AZURE.NOTE] プロビジョニング解除では、イメージを "一般化" する目的でファイルとデータが削除されます。このコマンドは、必ず新しいイメージ テンプレートとしてキャプチャする仮想マシン上で実行してください。プロビジョニング解除により、イメージからすべての機密情報が削除されることや、イメージが第三者への再配布に適した状態になることが保証されるわけではありません。
 
 
 3. 「**y**」と入力して続行します。`-force` パラメーターを追加すると、この確認手順を省略できます。
@@ -59,7 +57,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 4. 「**Exit**」と入力して、SSH クライアントを閉じます。
 
 
-	>[AZURE.NOTE]次の手順は、クライアント コンピューターに既に [Azure CLI がインストールされている](../xplat-cli-install.md)ことを前提としています。次の手順はすべて、[Azure クラシック ポータル][]でも実行できます。
+	>[AZURE.NOTE] 次の手順は、クライアント コンピューターに既に [Azure CLI がインストールされている](../xplat-cli-install.md)ことを前提としています。次の手順はすべて、[Azure クラシック ポータル][]でも実行できます。
 
 5. クライアント コンピューターから Azure CLI を開き、Azure サブスクリプションにログインします。詳細については、「[Connect to an Azure subscription from the Azure CLI (Azure CLI から Azure サブスクリプションへの接続)](../xplat-cli-connect.md)」を参照してください。
 
@@ -71,7 +69,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 
 	`azure vm shutdown <your-virtual-machine-name>`
 
-	>[AZURE.NOTE]`azure vm list` を使用することによって、サブスクリプションで作成されたすべての仮想マシンを確認できます。
+	>[AZURE.NOTE] `azure vm list` を使用することによって、サブスクリプションで作成されたすべての仮想マシンを確認できます。
 
 8. 仮想マシンが停止したら、次のコマンドを実行してイメージをキャプチャします。
 
@@ -98,6 +96,6 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 [Azure の仮想マシン イメージについて]: virtual-machines-images.md
 [カスタム仮想マシンの作成方法]: virtual-machines-linux-create-custom.md
 [How to Attach a Data Disk to a Virtual Machine]: storage-windows-attach-disk.md
-[How to Create a Virtual Machine Running Linux (Linux を実行する仮想マシンの作成方法)]: virtual-machines-linux-tutorial.md
+[カスタム Linux VM を作成する方法]: virtual-machines-linux-create-custom.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

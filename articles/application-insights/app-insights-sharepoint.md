@@ -26,7 +26,7 @@ Visual Studio Application Insights を使うと、アプリの可用性、パフ
 ## Application Insights リソースの作成
 
 
-[Azure ポータル](http://portal.azure.com)で、Application Insights の新しいリソースを作成します。アプリケーションの種類として ASP.NET を選択します。
+[Azure ポータル](https://portal.azure.com)で、Application Insights の新しいリソースを作成します。アプリケーションの種類として ASP.NET を選択します。
 
 ![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-sharepoint/01-new.png)
 
@@ -75,7 +75,7 @@ Web パーツを挿入し、コード スニペットをそれに埋め込みま
 
 アプリケーションを再デプロイします。
 
-[Azure ポータル](http://portal.azure.com)で、アプリケーションのブレードに戻ります。
+[Azure ポータル](https://portal.azure.com)で、アプリケーションのブレードに戻ります。
 
 検索に最初のイベントが表示されます。
 
@@ -108,4 +108,4 @@ Web パーツを挿入し、コード スニペットをそれに埋め込みま
 
 <!--Link references-->
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

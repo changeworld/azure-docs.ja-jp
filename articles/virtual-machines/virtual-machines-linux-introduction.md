@@ -68,7 +68,7 @@ Azure Linux エージェントには、この名前の変更を自動的に検�
 **Ubuntu** イメージと **CoreOS** イメージでは、仮想マシンをブートストラップするための追加機能を提供する Azure の cloud-init を使用します。
 
  - [カスタム データを挿入する方法](virtual-machines-how-to-inject-custom-data.md)
- - [Microsoft Azure のカスタム データと Cloud-Init](http://azure.microsoft.com/blog/2014/04/21/custom-data-and-cloud-init-on-windows-azure/)
+ - [Microsoft Azure のカスタム データと Cloud-Init](https://azure.microsoft.com/blog/2014/04/21/custom-data-and-cloud-init-on-windows-azure/)
  - [Cloud-Init を使用した Azure スワップ パーティションの作成](https://wiki.ubuntu.com/AzureSwapPartitions)
  - [Azure で CoreOS を使用する方法 ](virtual-machines-linux-coreos-how-to.md)
 
@@ -93,10 +93,10 @@ Azure には、既存の仮想マシンの状態をイメージにキャプチ�
 Linux では通常、リソース ディスクは Azure Linux エージェントによって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt**) に自動的にマウントされます。
 
 
->[AZURE.NOTE]リソース ディスクは **一時ディスク**であるため、仮想マシンが再起動されると削除され再フォーマットされることに注意してください。
+>[AZURE.NOTE] リソース ディスクは **一時ディスク**であるため、仮想マシンが再起動されると削除され再フォーマットされることに注意してください。
 
 Linux では、データ ディスクはカーネルによって `/dev/sdc` という名前が付けられる場合があり、ユーザーはこのリソースをパーティション分割し、フォーマットした上で、マウントする必要があります。ディスクの接続については、チュートリアル「[データ ディスクを Linux 仮想マシンに接続する方法](virtual-machines-linux-how-to-attach-disk.md)」で詳しく説明しています。
 
  - **関連項目:** [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

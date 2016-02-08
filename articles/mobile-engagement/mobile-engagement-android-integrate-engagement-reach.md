@@ -18,7 +18,7 @@
 
 #Engagement Reach を Android に統合する方法
 
-> [AZURE.IMPORTANT]このガイドの手順を実行する前に、「Engagement を Android に統合する方法」のドキュメントの統合手順を実行する必要があります。
+> [AZURE.IMPORTANT] このガイドの手順を実行する前に、「Engagement を Android に統合する方法」のドキュメントの統合手順を実行する必要があります。
 
 ##標準統合
 
@@ -87,7 +87,7 @@ Eclipse を使用しない場合は、[こちら]の手順をご覧ください�
 
 			<meta-data android:name="engagement:reach:notification:icon" android:value="<name_of_icon_WITHOUT_file_extension_and_WITHOUT_'@drawable/'>" />
 
-> [AZURE.IMPORTANT]このセクションは、Reach キャンペーンの作成時にシステム通知を使用する場合に**必須**です。Android では、アイコンのないシステム通知は表示されません。そのため、このセクションを省略すると、エンド ユーザーは通知を受け取ることができません。
+> [AZURE.IMPORTANT] このセクションは、Reach キャンペーンの作成時にシステム通知を使用する場合に**必須**です。Android では、アイコンのないシステム通知は表示されません。そのため、このセクションを省略すると、エンド ユーザーは通知を受け取ることができません。
 
 -   大きな画像を使用するシステム通知のキャンペーンを作成する場合、次のアクセス許可 (`</application>` タグの後) を追加する必要があります。
 
@@ -193,7 +193,7 @@ Amazon と Google Play の両方のデバイスを対象とするコードは、
 
 通知オーバーレイの見た目を修正するには、`engagement_notification_area.xml` ファイルをニーズに合わせて修正します。
 
-> [AZURE.NOTE]`engagement_notification_overlay.xml` ファイルは通知オーバーレイの作成に使用され、`engagement_notification_area.xml` ファイルが含まれます。また、ニーズに合わせて変更できます (オーバーレイ内部の通知領域の配置など)。
+> [AZURE.NOTE] `engagement_notification_overlay.xml` ファイルは通知オーバーレイの作成に使用され、`engagement_notification_area.xml` ファイルが含まれます。また、ニーズに合わせて変更できます (オーバーレイ内部の通知領域の配置など)。
 
 ##### 通知レイアウトをアクティビティ レイアウトの一部に含める
 
@@ -201,7 +201,7 @@ Amazon と Google Play の両方のデバイスを対象とするコードは、
 
 Android の **include** ステートメントにより、既存のレイアウトに通知レイアウトを含めることができます。次の例は、`ListView` のみが含まれる修正後の `ListActivity` レイアウトを示します。
 
-**Engagement 統合前**:
+**Engagement 統合前:**
 
 			<?xml version="1.0" encoding="utf-8"?>
 			<ListView
@@ -210,7 +210,7 @@ Android の **include** ステートメントにより、既存のレイアウ�
 			  android:layout_width="fill_parent"
 			  android:layout_height="fill_parent" />
 
-**Engagement 統合後**:
+**Engagement 統合後:**
 
 			<?xml version="1.0" encoding="utf-8"?>
 			<LinearLayout
@@ -233,7 +233,7 @@ Android の **include** ステートメントにより、既存のレイアウ�
 
 Engagement Reach SDK では、このアクティビティに通知レイアウトが含まれていることが自動的に検知されるため、このアクティビティに対してオーバーレイを追加しません。
 
-> [AZURE.TIP]アプリケーションで ListActivity を使用すると、表示される Reach オーバーレイによってリスト ビュー内のクリックされたアイテムに応答できなくなります。これは既知の問題です。この問題を解決するには、前述のサンプルのように独自のリスト アクティビティ レイアウトに通知レイアウトを組み込むことをお勧めします。
+> [AZURE.TIP] アプリケーションで ListActivity を使用すると、表示される Reach オーバーレイによってリスト ビュー内のクリックされたアイテムに応答できなくなります。これは既知の問題です。この問題を解決するには、前述のサンプルのように独自のリスト アクティビティ レイアウトに通知レイアウトを組み込むことをお勧めします。
 
 ##### アクティビティごとにアプリケーション通知を無効にする
 
@@ -249,7 +249,7 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 
 通知のカテゴリ ハンドラーを登録するには、アプリケーションが初期化される際に呼び出しを追加する必要があります。
 
-> [AZURE.IMPORTANT]先に進む前に、「Engagement を Android に統合する方法」トピックで、android:process 属性 <android-sdk-engagement-process> に関する警告を確認してください。
+> [AZURE.IMPORTANT] 先に進む前に、「Engagement を Android に統合する方法」トピックで、android:process 属性 <android-sdk-engagement-process> に関する警告を確認してください。
 
 次の例では、前述の警告について把握しており、`EngagementApplication` のサブクラスを使用していることを前提としています。
 
@@ -499,7 +499,7 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 -   システム通知で、`onNotificationPrepared` をオーバーライドして `Notification` オブジェクトで `contentIntent` または `deleteIntent` を修正した。
 -   アプリ内通知で、`prepareInAppArea` をオーバーライドしてユーザー インターフェイス コントロールの 1 つに少なくとも `actionNotification` がマッピングされるようにした。
 
-> [AZURE.NOTE]`handleNotification` で例外がスローされると、コンテンツが削除され `dropContent` が呼び出されます。これは作成される統計情報のレポートに掲載され、次のキャンペーンが処理できるようになります。
+> [AZURE.NOTE] `handleNotification` で例外がスローされると、コンテンツが削除され `dropContent` が呼び出されます。これは作成される統計情報のレポートに掲載され、次のキャンペーンが処理できるようになります。
 
 ### お知らせとポーリング
 
@@ -640,13 +640,9 @@ Web サイトのキャンペーンを作成する際に指定したフィール�
 
 `actionContent(this)` を呼び出してアクティビティを完了すると、`exitContent(this)` が安全に呼び出されることがわかります。
 
-##テスト
-
-「Android での Engagement の統合をテストする方法」を読んで、統合を検証してください。
-
 [こちら]: http://developer.android.com/tools/extras/support-library.html#Downloading
 [Google Cloud Messaging]: http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]: https://developer.amazon.com/sdk/adm.html
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

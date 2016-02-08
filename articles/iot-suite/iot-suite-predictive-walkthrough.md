@@ -2,13 +2,14 @@
  pageTitle="予測的なメンテナンスのチュートリアル | Microsoft Azure"
  description="Azure IoT の予測的なメンテナンスの構成済みソリューションのチュートリアルです。"
  services=""
+ suite="iot-suite"
  documentationCenter=""
  authors="aguilaaj"
  manager="timlt"
  editor=""/>
 
 <tags
- ms.service="na"
+ ms.service="iot-suite"
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="na"
@@ -123,4 +124,4 @@ RUL が (デモンストレーション用に選択した任意のしきい値�
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

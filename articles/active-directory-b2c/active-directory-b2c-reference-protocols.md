@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="01/21/2016"
 	ms.author="dastrock"/>
 
 # Azure AD B2C プレビュー: 認証プロトコル
@@ -23,9 +23,9 @@ Azure AD B2C では、業界標準のプロトコルである OpenID Connect と
 <!-- TODO: Need link to libraries above -->
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
-	
+
 ## 基本操作
-Azure AD B2C を使用するすべてのアプリは、[Azure ポータル](https://portal.azure.com)で B2C ディレクトリに登録する必要があります。アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
+Azure AD B2C を使用するすべてのアプリは、[Azure ポータル](https://portal.azure.com/)で B2C ディレクトリに登録する必要があります。アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
 - アプリを一意に識別する**アプリケーション ID**。
 - **リダイレクト URI** または**パッケージ識別子** (アプリに戻す応答をリダイレクトする際に使用)。
@@ -70,4 +70,4 @@ Azure AD B2C で使われている各種トークンの詳細については、[
 
 <!-- [Call the Azure AD Graph API using the OAuth 2.0 Client Credentials Flow](active-directory-reference-graph.md) -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

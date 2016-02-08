@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/08/2016"
+	ms.date="01/21/2016"
 	ms.author="andkjell;markusvi"/>
 
 
@@ -246,4 +246,4 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="01/15/2016"
+   ms.date="01/26/2016"
    ms.author="jgao"/>
 
 # Azure PowerShell を使用する Azure Data Lake Analytics の管理
@@ -26,7 +26,7 @@ Azure PowerShell を使用して、Azure Data Lake Analytics のアカウント�
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得に関するページ]https://azure.microsoft.com/ja-JP/pricing/free-trial/) を参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 
 <!-- ################################ -->
@@ -150,7 +150,7 @@ Data Lake Analytics では現在、以下のデータ ソースがサポート�
 - [Azure Data Lake Storage](data-lake-storage-overview.md)
 - [Azure Storage](storage-introduction.md)
 
-Analytics アカウントを作成する際には、既定のストレージ アカウントとして Azure Data Lake ストレージ アカウントを指定する必要があります。既定の Data Lake Store アカウントは、ジョブ メタデータとジョブ監査ログの格納に使用されます。Analytics アカウントを作成したら、さらに Data Lake ストレージ アカウントや Azure ストレージ アカウントを追加することができます。
+Analytics アカウントを作成する際には、既定のストレージ アカウントとして Azure Data Lake ストレージ アカウントを指定する必要があります。既定の Data Lake Store アカウントは、ジョブ メタデータとジョブ監査ログの格納に使用されます。Analytics アカウントを作成したら、さらに Data Lake ストレージ アカウントや Azure Storage アカウントを追加することができます。
 
 ### 既定の Data Lake Store アカウントの検索
 
@@ -242,7 +242,7 @@ Analytics アカウントを作成する際には、既定のストレージ ア
 		-Name $jobName `
 		-Script $scriptContents
 
-> [AZURE.NOTE]ジョブの既定の優先度は 1000 で、ジョブの並列処理の既定の次数は 1 です。
+> [AZURE.NOTE] ジョブの既定の優先度は 1000 で、ジョブの並列処理の既定の次数は 1 です。
 
 
 ### ジョブの取り消し
@@ -392,4 +392,4 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 	  }
 	}
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

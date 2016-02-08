@@ -198,7 +198,7 @@ VNet 間の構成を作成する場合は、VNet が互いをローカル ネッ
 
 ## 手順 7 - VPN ゲートウェイを接続する
 
-以上の手順がすべて完了したら、IPsec/IKE 事前共有キーが同じ値になるように設定します。そのためには、REST API または PowerShell コマンドレットを使用します。PowerShell を使用する場合は、Microsoft Azure PowerShell コマンドレットが[最新バージョン](http://azure.microsoft.com/downloads/)であることを確認してください。次の例では、PowerShell コマンドレットを使用してキーの値を A1b2C3D4 に設定します。両方とも同じキー値を使用します。次の例は、実際の値に合わせて編集してください。
+以上の手順がすべて完了したら、IPsec/IKE 事前共有キーが同じ値になるように設定します。そのためには、REST API または PowerShell コマンドレットを使用します。PowerShell を使用する場合は、Microsoft Azure PowerShell コマンドレットが[最新バージョン](https://azure.microsoft.com/downloads/)であることを確認してください。次の例では、PowerShell コマンドレットを使用してキーの値を A1b2C3D4 に設定します。両方とも同じキー値を使用します。次の例は、実際の値に合わせて編集してください。
 
 VNet1 の場合
 
@@ -223,4 +223,4 @@ VNet2 の場合
 [2]: http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Configure-the-VPN-connectivity-between-two-Azure-virtual-networks
  
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

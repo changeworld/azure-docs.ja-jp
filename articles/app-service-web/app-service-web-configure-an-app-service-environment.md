@@ -39,7 +39,7 @@ App Service 環境 (ASE) の機能に慣れていない場合は、[App Service 
 
 データベースには、環境を定義する情報だけでなく、環境内で実行されているアプリに関する詳細情報が格納されています。このような情報も、Azure に保持されているサブスクリプションの一部であり、顧客が直接操作できる情報ではありません。
 
-ASE に使用される仮想ネットワークは、ASE の作成時、または事前に作成したネットワークを使用できます。ASE を、ASE に使用されたものとは異なるリソース グループにする場合は、ASE 作成フローから別に VNET を作成する必要があります。ASE の作成時に、サブネットの作成と同時に使用するサブネットを作成して、ASE が VNET と同じリソース グループになるようにすることをお勧めします。現在、V1 の "クラシック" VNET のみがサポートされています。
+ASE に使用される仮想ネットワークは、ASE の作成時、または事前に作成したネットワークを使用できます。VNET を、ASE に使用されたものとは異なるリソース グループにする場合は、ASE 作成フローから別に VNET を作成する必要があります。ASE の作成時に、サブネットの作成と同時に使用するサブネットを作成して、ASE が VNET と同じリソース グループになるようにすることをお勧めします。現在、V1 の "クラシック" VNET のみがサポートされています。
 
 App Service Environment を管理および監視する UI は、Azure ポータルから使用できます。ASE があれば、ほとんどの場合、サイドバーに App Service 記号が表示されます。この記号は、Azure ポータルに App Service Environment があることを示すために使用されます。
 
@@ -200,4 +200,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 [ExpressRoute]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-configuration-expressroute/
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

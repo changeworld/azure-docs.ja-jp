@@ -108,7 +108,7 @@ Azure Load Balancer には、さまざまなサーバー インスタンスの�
 Azure Load Balancer の構成では、UDP の Full cone NAT がサポートされています。Full cone NAT は、ポートが (送信要求に応答して) 任意の外部ホストからの着信接続を許可する NAT の一種です。
 
 
->[AZURE.NOTE]VM によって開始された新しい送信接続ごとに、送信ポートも Azure Load Balancer によって割り当てられます。外部ホストは、トラフィックを仮想 IP (VIP) の割り当てポートからの着信として認識します。大量の送信接続が必要なシナリオの場合は、VM が SNAT 用の専用送信 IP アドレスを持てるように、インスタンスレベル パブリック IP アドレスを使用することをお勧めします。これにより、ポートの枯渇のリスクが減少します。
+>[AZURE.NOTE] VM によって開始された新しい送信接続ごとに、送信ポートも Azure Load Balancer によって割り当てられます。外部ホストは、トラフィックを仮想 IP (VIP) の割り当てポートからの着信として認識します。大量の送信接続が必要なシナリオの場合は、VM が SNAT 用の専用送信 IP アドレスを持てるように、インスタンスレベル パブリック IP アドレスを使用することをお勧めします。これにより、ポートの枯渇のリスクが減少します。
 >
 >VIP またはインスタンスレベル パブリック IP (PIP) で使用できるポートの最大数は、64,000 です。これは TCP の標準的な限度です。
 
@@ -119,7 +119,7 @@ Azure Load Balancer の構成では、UDP の Full cone NAT がサポートさ�
 
 **Azure リソース マネージャーによるテンプレートベースのデプロイ**
 
-Azure リソース マネージャーは、Azure のサービスの新しい管理フレームワークです。リソース マネージャー ベースの API とツールを使用して、Azure Load Balancer を管理できるようになりました。リソース マネージャーの詳細については、[Azure リソース マネージャーでさらに簡単になった IaaS](http://azure.microsoft.com/blog/2015/04/29/iaas-just-got-easier-again/) に関するページを参照してください。
+Azure リソース マネージャーは、Azure のサービスの新しい管理フレームワークです。リソース マネージャー ベースの API とツールを使用して、Azure Load Balancer を管理できるようになりました。リソース マネージャーの詳細については、[Azure リソース マネージャーでさらに簡単になった IaaS](https://azure.microsoft.com/blog/2015/04/29/iaas-just-got-easier-again/) に関するページを参照してください。
 
 
 ## 次のステップ
@@ -130,4 +130,4 @@ Azure リソース マネージャーは、Azure のサービスの新しい管�
 
 [インターネットに接続するロード バランサーの作成の開始](load-balancer-internet-getstarted.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

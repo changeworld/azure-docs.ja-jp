@@ -3,7 +3,7 @@
 	description="REST API を使用したロールベースのアクセス制御の管理"
 	services="active-directory"
 	documentationCenter="na"
-	authors="IHenkel"
+	authors="kgremban"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="rest-api"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/04/2016"
-	ms.author="inhenk"/>
+	ms.date="01/25/2016"
+	ms.author="kgremban"/>
 
 # REST API を使用したロールベースのアクセス制御の管理
 
@@ -27,33 +27,38 @@
 
 指定されたスコープとサブスコープにあるロールの割り当てをすべて一覧表示します。
 
-ロールの割り当てを一覧表示するには、*指定されたスコープ*における `Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。この操作のアクセス権はすべての組み込みロールに付与されています。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
+ロールの割り当てを一覧表示するには、指定されたスコープにおける `Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。この操作のアクセス権はすべての組み込みロールに付与されています。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### 要求
+### Request
 
-| **メソッド** | **要求 URI** |
-|--------|-------------|
-| GET | `https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&filter={filter}` |
+次の URI で **GET** メソッドを使用します。
+
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&filter={filter}
+
+URI 内の次の項目を置換して要求をカスタマイズします。
+
+*{scope}* は、ロールの割り当てを一覧表示する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
+
+| Level | *{Scope}* |
+|-------|-----------|
+| [サブスクリプション] | /subscriptions/{subscription-id} |
+| リソース グループ | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
+| リソース | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
 
 *{api-version}* は 2015-07-01 に置き換えます。
 
 *{filter}* には、ロールの割り当て一覧をフィルター処理するために適用する条件を指定します。次の条件がサポートされます。
 
-| | Filter |
-|-----------------------------------------------------------------------------------------------------------------|--------|
-| (サブスコープのロールの割り当ては含めずに) 指定したスコープのみを対象にロールの割り当てを一覧表示する。 | `atScope()` <br/>次に例を示します。<br/> `&filter=atScope()` |
-| 特定のユーザー、グループ、またはアプリケーションのみを対象にロールの割り当てを一覧表示する。 | `principalId%20eq%20'{objectId}'` <br/>*{objectId}* は、対象となるユーザー、グループ、またはサービス プリンシパルの Azure AD objectId に置き換えます。<br/>次に例を示します。<br/> `&filter=principalId%20eq%20'3a477f6a-6739-4b93-84aa-3be3f8c8e7c2'` |
-| 特定のユーザーのみを対象にロールの割り当て (そのユーザーが属しているグループに割り当てられているものも含む) を一覧表示する。 | `assignedTo('{objectId}')` <br/>*{objectId}* は、対象となるユーザーの Azure AD objectId に置き換えます。<br/>次に例を示します。<br/> `&filter=assignedTo('3a477f6a-6739-4b93-84aa-3be3f8c8e7c2')` |
 
-*{scope}* は、ロールの割り当てを一覧表示する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
+| 条件 | *{Filter}* | *Views\\\Home\\\AllDates.cshtml* |
+|-----------|------------|---------|
+| (サブスコープのロールの割り当ては含めずに) 指定したスコープのみを対象にロールの割り当てを一覧表示する。 | `atScope()` | |
+| 特定のユーザー、グループ、またはアプリケーションのみを対象にロールの割り当てを一覧表示する。 | `principalId%20eq%20'{objectId}'` | *{objectId}* は、対象となるユーザー、グループ、またはサービス プリンシパルの Azure AD objectId に置き換えます。例: `&filter=principalId%20eq%20'3a477f6a-6739-4b93-84aa-3be3f8c8e7c2'` |
+| 特定のユーザーのみを対象にロールの割り当て (そのユーザーが属しているグループに割り当てられているものも含む) を一覧表示する。 | `assignedTo('{objectId}')` | *{objectId}* は、対象となるユーザーの Azure AD objectId に置き換えます。例: `&filter=assignedTo('3a477f6a-6739-4b93-84aa-3be3f8c8e7c2')` |
 
-| | **スコープ** |
-|----------------|-------|
-| [サブスクリプション] | /subscriptions/{subscription-id} |
-| リソース グループ | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
-| リソース | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
 
-### 応答
+
+### Response
 
 状態コード: 200
 
@@ -86,25 +91,27 @@
 
 ロールの割り当てに関する情報を取得するには、`Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。この操作のアクセス権はすべての組み込みロールに付与されています。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### 要求
+### Request
 
-| **メソッド** | **要求 URI** |
-|--------|-------------|
-| GET | `https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}` |
+次の URI で **GET** メソッドを使用します。
 
-*{api-version}* は 2015-07-01 に置き換えます。
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-*{role-assignment-id}* は、ロールの割り当ての GUID 識別子に置き換えます。
+URI 内の次の項目を置換して要求をカスタマイズします。
 
 *{scope}* は、ロールの割り当てを一覧表示する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-| | **スコープ** |
-|----------------|-------|
+| Level | *{Scope}* |
+|-------|-----------|
 | [サブスクリプション] | /subscriptions/{subscription-id} |
 | リソース グループ | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
 | リソース | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
 
-### 応答
+*{role-assignment-id}* は、ロールの割り当ての GUID 識別子に置き換えます。
+
+*{api-version}* は 2015-07-01 に置き換えます。
+
+### Response
 
 状態コード: 200
 
@@ -130,27 +137,27 @@
 
 対象となるプリンシパルとスコープを指定してロールの割り当てを作成し、指定したロールを付与します。
 
-ロールの割り当てを作成するには、`Microsoft.Authorization/roleAssignments/write` 操作のアクセス権が必要です。組み込みロールのうち、*この操作のアクセス権が付与されているのは Owner と User Access Administrator だけです*。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
+ロールの割り当てを作成するには、`Microsoft.Authorization/roleAssignments/write` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### 要求
+### Request
 
-| **メソッド** | **要求 URI** |
-|--------|-------------|
-| PUT | `https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}` |
+次の URI で **PUT** メソッドを使用します。
 
-*{api-version}* は 2015-07-01 に置き換えます。
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-*{role-assignment-id}* は、新しい GUID に置き換えます。これが新しいロールの割り当ての GUID 識別子として使用されます。
+URI 内の次の項目を置換して要求をカスタマイズします。
 
-*{scope}* は、ロールの割り当てを作成する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
+*{scope}* は、ロールの割り当てを作成する対象のスコープに置き換えます。親スコープでロールの割り当てを作成すると、同じロールの割り当てが、すべての子スコープに継承されます。各種レベルのスコープを指定する例を次に示します。
 
-| | **スコープ** |
-|----------------|-------|
+| Level | *{Scope}* |
+|-------|-----------|
 | [サブスクリプション] | /subscriptions/{subscription-id} |
 | リソース グループ | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
 | リソース | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
 
-親スコープでロールの割り当てを作成すると、同じロールの割り当てが、すべての子スコープに継承されます。
+*{role-assignment-id}* は、新しい GUID に置き換えます。これが新しいロールの割り当ての GUID 識別子として使用されます。
+
+*{api-version}* は 2015-07-01 に置き換えます。
 
 要求本文には、次の形式で値を指定します。
 
@@ -165,8 +172,8 @@
 ```
 
 | 要素名 | 必須 | 型 | 説明 |
-|------------------|----------|--------|-------------------------------------------------------------------------------------------------------------|
-| roleDefinitionId | はい | String | 割り当てるロールの識別子。識別子の形式: <br/> `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+|------------------|----------|--------|-------------|
+| roleDefinitionId | はい | String | 割り当てるロールの識別子。識別子の形式: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
 | principalId | はい | String | ロールの割り当て先となる Azure AD プリンシパル (ユーザー、グループ、またはサービス プリンシパル) の objectId。 |
 
 ### 応答
@@ -195,27 +202,29 @@
 
 指定したスコープにおけるロールの割り当てを削除します。
 
-ロールの割り当てを削除するには、`Microsoft.Authorization/roleAssignments/delete` 操作のアクセス権が必要です。組み込みロールのうち、*この操作のアクセス権が付与されているのは Owner と User Access Administrator だけです*。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
+ロールの割り当てを削除するには、`Microsoft.Authorization/roleAssignments/delete` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### 要求
+### Request
 
-| **メソッド** | **要求 URI** |
-|--------|-------------|
-| 削除 | `https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}` |
+次の URI で **DELETE** メソッドを使用します。
 
-*{api-version}* は 2015-07-01 に置き換えます。
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-*{role-assignment-id}* は、ロール割り当て ID (GUID) に置き換えます。
+URI 内の次の項目を置換して要求をカスタマイズします。
 
 *{scope}* は、ロールの割り当てを作成する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-| | **スコープ** |
-|----------------|-------|
+| Level | *{Scope}* |
+|-------|-----------|
 | [サブスクリプション] | /subscriptions/{subscription-id} |
 | リソース グループ | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
 | リソース | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
 
-### 応答
+*{role-assignment-id}* は、ロール割り当て ID (GUID) に置き換えます。
+
+*{api-version}* は 2015-07-01 に置き換えます。
+
+### Response
 
 状態コード: 200
 
@@ -243,30 +252,34 @@
 
 ロールを一覧表示するには、指定されたスコープにおける `Microsoft.Authorization/roleDefinitions/read` 操作のアクセス権が必要です。この操作のアクセス権はすべての組み込みロールに付与されています。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### 要求
+### Request
 
-| **メソッド** | **要求 URI** |
-|--------|-------------|
-| GET | `https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&filter={filter}` |
+次の URI で **GET** メソッドを使用します。
+
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&filter={filter}
+
+URI 内の次の項目を置換して要求をカスタマイズします。
+
+*{scope}* は、ロールを一覧表示する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
+
+| Level | *{Scope}* |
+|-------|-----------|
+| [サブスクリプション] | /subscriptions/{subscription-id} |
+| リソース グループ | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
+| リソース | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
 
 *{api-version}* は 2015-07-01 に置き換えます。
 
 *{filter}* は、ロールの一覧をフィルター処理するために適用する条件を指定します。次の条件がサポートされます。
 
-| | Filter |
-|--------------------------------------------------------------------------------------------|--------|
-| 指定したスコープとそのすべての子スコープでの割り当てに使用できるロールを一覧表示する。 | `atScopeAndBelow()` <br/>次に例を示します。<br/> `&filter=atScopeAndBelow()` |
-| 完全な表示名を使用してロールを検索する。 | `roleName%20eq%20'{role-display-name}'` <br/> *{role-display-name}* には、ロールの完全な表示名を URL エンコード形式で指定します。<br/>次に例を示します。<br/> `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
+| 条件 | *{Filter}* | *Views\\\Home\\\AllDates.cshtml* |
+|-----------|------------|---------|
+| 指定したスコープとそのすべての子スコープでの割り当てに使用できるロールを一覧表示する。 | `atScopeAndBelow()` | |
+| 完全な表示名を使用してロールを検索する。 | `roleName%20eq%20'{role-display-name}'` | *{role-display-name}* には、ロールの完全な表示名を URL エンコード形式で指定します。例: `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
-*{scope}* は、ロールを一覧表示する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-| | **スコープ** |
-|----------------|-------|
-| [サブスクリプション] | /subscriptions/{subscription-id} |
-| リソース グループ | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
-| リソース | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
 
-### 応答
+### Response
 
 状態コード: 200
 
@@ -327,31 +340,31 @@
 
 ```
 
-### ロールに関する情報を取得する
+## ロールに関する情報を取得する
 
 ロール定義識別子によって指定された単一のロールに関する情報を取得します。単一のロールに関する情報をその表示名を使って取得する方法については、すべてのロールを一覧表示する方法と roleName フィルターに関する説明を参照してください。
 
 ロールに関する情報を取得するには、`Microsoft.Authorization/roleDefinitions/read` 操作のアクセス権が必要です。この操作のアクセス権はすべての組み込みロールに付与されています。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### 要求
+### Request
 
-| **メソッド** | **要求 URI** |
-|--------|-------------|
-| GET | `https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}` |
+次の URI で **GET** メソッドを使用します。
 
-*{api-version}* は 2015-07-01 に置き換えます。
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-*{role-definition-id}* は、ロールの定義の GUID 識別子に置き換えます。
+URI 内の次の項目を置換して要求をカスタマイズします。
 
 *{scope}* は、ロールの割り当てを一覧表示する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-| | **スコープ** |
-|----------------|-------|
+| Level | *{Scope}* |
+|-------|-----------|
 | [サブスクリプション] | /subscriptions/{subscription-id} |
 | リソース グループ | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
 | リソース | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
 
-### 応答
+*{role-definition-id}* は、ロールの定義の GUID 識別子に置き換えます。*{api-version}* は 2015-07-01 に置き換えます。
+
+### Response
 
 状態コード: 200
 
@@ -415,25 +428,27 @@
 ## カスタム ロールの作成
 カスタム ロールを作成します。
 
-カスタム ロールを作成するには、対応するすべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/write` 操作のアクセス権が必要です。組み込みロールのうち、*この操作のアクセス権が付与されているのは Owner と User Access Administrator だけです*。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
+カスタム ロールを作成するには、対応するすべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/write` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### 要求
+### Request
 
-| **メソッド** | **要求 URI** |
-|--------|-------------|
-| PUT | `https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}` |
+次の URI で **PUT** メソッドを使用します。
 
-*{api-version}* は 2015-07-01 に置き換えます。
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-*{role-definition-id}* は、新しい GUID に置き換えます。これが新しいカスタム ロールの GUID 識別子として使用されます。
+URI 内の次の項目を置換して要求をカスタマイズします。
 
 *{scope}* は、カスタム ロールの 1 つ目の *AssignableScope* に置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-| | **スコープ** |
-|----------------|-------|
+| Level | *{Scope}* |
+|-------|-----------|
 | [サブスクリプション] | /subscriptions/{subscription-id} |
 | リソース グループ | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
 | リソース | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
+
+*{role-definition-id}* は、新しい GUID に置き換えます。これが新しいカスタム ロールの GUID 識別子として使用されます。
+
+*{api-version}* は 2015-07-01 に置き換えます。
 
 要求本文には、次の形式で値を指定します。
 
@@ -469,7 +484,7 @@
 ```
 
 | 要素名 | 必須 | 型 | 説明 |
-|-----------------------------------|----------|----------|------------------------------------------------------------------------------------------------------------------------------------------|
+|--------------|----------|------|-------------|
 | name | はい | String | カスタム ロールの GUID 識別子。 |
 | properties.roleName | はい | String | カスタム ロールの表示名。最大 128 文字です。 |
 | properties.description | いいえ | String | カスタム ロールの説明。最大 1,024 文字です。 |
@@ -523,25 +538,27 @@
 
 カスタム ロールに変更を加えます。
 
-カスタム ロールに変更を加えるには、対応するすべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/write` 操作のアクセス権が必要です。組み込みロールのうち、*この操作のアクセス権が付与されているのは Owner と User Access Administrator だけです*。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
+カスタム ロールに変更を加えるには、対応するすべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/write` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### 要求
+### Request
 
-| **メソッド** | **要求 URI** |
-|--------|-------------|
-| PUT | `https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}` |
+次の URI で **PUT** メソッドを使用します。
 
-*{api-version}* は 2015-07-01 に置き換えます。
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-*{role-definition-id}* は、更新対象となるカスタム ロールの GUID 識別子に置き換えます。
+URI 内の次の項目を置換して要求をカスタマイズします。
 
 *{scope}* は、カスタム ロールの 1 つ目の *AssignableScope* に置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-| | **スコープ** |
-|----------------|-------|
+| Level | *{Scope}* |
+|-------|-----------|
 | [サブスクリプション] | /subscriptions/{subscription-id} |
 | リソース グループ | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
 | リソース | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
+
+*{role-definition-id}* は、更新対象となるカスタム ロールの GUID 識別子に置き換えます。
+
+*{api-version}* は 2015-07-01 に置き換えます。
 
 要求本文には、次の形式で値を指定します。
 
@@ -577,7 +594,7 @@
 ```
 
 | 要素名 | 必須 | 型 | 説明 |
-|-----------------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+|--------------|----------|------|-------------|
 | name | はい | String | 更新するカスタム ロールの GUID 識別子。 |
 | properties.roleName | はい | String | 更新するカスタム ロールの表示名。 |
 | properties.description | いいえ | String | 更新するカスタム ロールの説明。 |
@@ -631,27 +648,29 @@
 
 カスタム ロールを削除します。
 
-カスタム ロールを削除するには、対応するすべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/delete` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは Owner と User Access Administrator だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
+カスタム ロールを削除するには、対応するすべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/delete` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### 要求
+### Request
 
-| **メソッド** | **要求 URI** |
-|--------|-------------|
-| 削除 | `https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}` |
+次の URI で **DELETE** メソッドを使用します。
 
-*{api-version}* は 2015-07-01 に置き換えます。
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-*{role-definition-id}* は、削除対象となるカスタム ロールの GUID (ロール定義 ID) に置き換えます。
+URI 内の次の項目を置換して要求をカスタマイズします。
 
 *{scope}* は、ロールの定義を削除する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-| | **スコープ** |
-|----------------|-------|
+| Level | *{Scope}* |
+|-------|-----------|
 | [サブスクリプション] | /subscriptions/{subscription-id} |
 | リソース グループ | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
 | リソース | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
 
-### 応答
+*{role-definition-id}* は、削除対象となるカスタム ロールの GUID (ロール定義 ID) に置き換えます。
+
+*{api-version}* は 2015-07-01 に置き換えます。
+
+### Response
 
 状態コード: 200
 
@@ -692,4 +711,4 @@
 
 ```
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

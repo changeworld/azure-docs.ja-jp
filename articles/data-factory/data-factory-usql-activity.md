@@ -19,7 +19,8 @@
 # Azure Data Factory から Azure Data Lake Analytics で U-SQL スクリプトを実行する 
 Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。この記事では、**Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ**について説明します。
 
-> [AZURE.NOTE]Data Lake Analytics U-SQL アクティビティでパイプラインを作成する前に、Azure Data Lake Analytics アカウントを作成する必要があります。Azure Data Lake Analytics の詳細については、「[チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)」をご覧ください。
+> [AZURE.NOTE] 
+Data Lake Analytics U-SQL アクティビティでパイプラインを作成する前に、Azure Data Lake Analytics アカウントを作成する必要があります。Azure Data Lake Analytics の詳細については、「[チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)」をご覧ください。
 >  
 > Data Factory、リンクされたサービス、データセット、およびパイプラインを作成する詳細な手順については、[最初のパイプラインを作成するチュートリアル](data-factory-build-your-first-pipeline.md)に関するページを確認してください。Data Factory エディター、Visual Studio、または Azure PowerShell と JSON のスニペットを使用して、Data Factory エンティティを作成できます。
 
@@ -48,13 +49,13 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-型 | type プロパティは **AzureDataLakeAnalytics** に設定する必要があります。 | あり
-accountName | Azure Data Lake Analytics アカウント名。 | あり
+型 | type プロパティは **AzureDataLakeAnalytics** に設定する必要があります。 | はい
+accountName | Azure Data Lake Analytics アカウント名。 | はい
 dataLakeAnalyticsUri | Azure Data Lake Analytics URI。 | いいえ 
-authorization | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | あり 
+authorization | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | はい 
 subscriptionId | Azure サブスクリプション ID | いいえ (指定されていない場合は Data Factory のサブスクリプションが使用されます)。 
 resourceGroupName | Azure リソース グループ名 | いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。
-sessionId | OAuth 承認セッションのセッション ID です。各セッション ID は一意であり、1 回のみ使用できます。セッション ID は、Data Factory Editor で自動生成されます。 | あり
+sessionId | OAuth 承認セッションのセッション ID です。各セッション ID は一意であり、1 回のみ使用できます。セッション ID は、Data Factory Editor で自動生成されます。 | はい
 
 **[認証]** ボタンを使用して生成した認証コードは、いずれ有効期限が切れます。さまざまな種類のユーザー アカウントの有効期限については、次の表を参照してください。認証**トークンの有効期限が切れる**と、次のエラー メッセージが表示される場合があります: "資格情報の操作エラー: invalid\_grant - AADSTS70002: 資格情報の検証中にエラーが発生しました。AADSTS70008: 指定されたアクセス権の付与は期限が切れているか、失効しています。トレース ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相関 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 タイムスタンプ: 2015-12-15 21:09:31Z"
 
@@ -62,8 +63,8 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 | ユーザー タイプ | 有効期限 |
 | :-------- | :----------- | 
 | 非 AAD ユーザー (@hotmail.com、@live.com など) | 12 時間 |
-| AAD ユーザーと OAuth ベースのソースがユーザーの Data Factory のテナントとは異なる[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)にあります。 | 12 時間 |
-| AAD ユーザーと OAuth ベースのソースがユーザーの Data Factory のテナントと同じテナントにあります。 | <p> ユーザーが自身の OAuth ベースのリンクされたサービスのソースに基づいて、少なくとも 14 日間に 1 回スライスを実行する場合、最大値は 90 日です。</p><p>予定されている 90 日の間に、ユーザーが 14 日間、そのソースに基づいてスライスを実行しない場合、最後のスライスから 14 日後に資格情報の有効期限が切れます。</p> | 
+| AAD ユーザーと OAuth ベースのソースがData Factory のテナントとは異なる[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)にある。 | 12 時間 |
+| AAD ユーザーと OAuth ベースのソースがData Factory のテナントと同じテナントにある。 | 14 日 |
 
 このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[認証]** ボタンを使用して再認証し、リンクされたサービスを再デプロイする必要があります。次のセクションのコードを使用して、**sessionId** と **authorization** プロパティの値をプログラムで生成することもできます。
 
@@ -155,7 +156,7 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 
 プロパティ | 説明 | 必須
 :-------- | :----------- | :--------
-type | type プロパティは、**DataLakeAnalyticsU-SQL** に設定する必要があります。 | あり
+type | type プロパティは、**DataLakeAnalyticsU-SQL** に設定する必要があります。 | はい
 scriptPath | U-SQL スクリプトを含むフォルダーのパス。 | いいえ (スクリプトを使用する場合)
 scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | いいえ (スクリプトを使用する場合)
 script (スクリプト) | scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。例: "script" : "CREATE DATABASE test". | いいえ (scriptPath と scriptLinkedService を使用する場合)
@@ -257,4 +258,4 @@ parameters | U-SQL スクリプトのパラメーター | いいえ
 
 Azure Data Lake Analytics サービスで実行されるジョブのパイプライン定義で、他のプロパティ (degreeOfParallelism や優先度など) も指定できます。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

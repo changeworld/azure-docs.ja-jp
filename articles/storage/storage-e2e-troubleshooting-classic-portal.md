@@ -36,7 +36,7 @@ Microsoft Azure Storage を使用してクライアント アプリケーショ�
 
 	- **ストレージ ログ**は、Azure Storage サービスへの各要求をサーバー側のログに記録します。このログは、実行された操作、操作のステータス、遅延情報などを含む各要求の詳細データを追跡します。Storage Analytics がログに書き込む要求および応答データの詳細については、「[Storage Analytics のログの形式](http://msdn.microsoft.com/library/azure/hh343259.aspx)」を参照してください。
 
-- **Azure クラシック ポータル**。[Azure クラシック ポータル](manage.windowsazure.com)では、ストレージ アカウントのメトリックとログを構成することができます。アプリケーションの経時的な動作を表すチャートやグラフを表示できるほか、指定したメトリックに関してアプリケーションが予期しない動作をした場合に通知するよう、アラートを構成することもできます。
+- **Azure クラシック ポータル**。[Azure クラシック ポータル](https://manage.windowsazure.com)では、ストレージ アカウントのメトリックとログを構成することができます。アプリケーションの経時的な動作を表すチャートやグラフを表示できるほか、指定したメトリックに関してアプリケーションが予期しない動作をした場合に通知するよう、アラートを構成することもできます。
 	
 	Azure クラシック ポータルでの監視の構成の詳細については、[ストレージ アカウントの監視方法](storage-monitor-storage-account.md)に関するページを参照してください。
 
@@ -88,13 +88,13 @@ BLOB またはコンテナーが見つからないことが原因で、それら
 
 ### サーバー側のログとメトリックを構成する
 
-まず、クライアント アプリケーションから分析用データを取得できるよう、Azure Storage のログとメトリックを構成する必要があります。[Azure クラシック ポータル](manage.windowsazure.com)や PowerShell を使用する方法、プログラミングによって構成する方法など、さまざまな方法でログとメトリックを構成することができます。ログとメトリックの構成の詳細については、MSDN の「[ストレージ メトリックの有効化とメトリック データの表示](http://msdn.microsoft.com/library/azure/dn782843.aspx)」および「[ストレージ ログの有効化とログ データへのアクセス](http://msdn.microsoft.com/library/azure/dn782840.aspx)」を参照してください。
+まず、クライアント アプリケーションから分析用データを取得できるよう、Azure Storage のログとメトリックを構成する必要があります。[Azure クラシック ポータル](https://manage.windowsazure.com)や PowerShell を使用する方法、プログラミングによって構成する方法など、さまざまな方法でログとメトリックを構成することができます。ログとメトリックの構成の詳細については、MSDN の「[ストレージ メトリックの有効化とメトリック データの表示](http://msdn.microsoft.com/library/azure/dn782843.aspx)」および「[ストレージ ログの有効化とログ データへのアクセス](http://msdn.microsoft.com/library/azure/dn782840.aspx)」を参照してください。
 
 **Azure クラシック ポータルの使用**
 
 ポータルを使用してストレージ アカウントのログとメトリックを構成するには、[ストレージ アカウントの監視方法](storage-monitor-storage-account.md)に関するページの手順に従ってください。
 
-> [AZURE.NOTE]Azure クラシック ポータルを使用して分単位メトリックを設定することはできません。ただし、このチュートリアルのため、さらにアプリケーションが抱えるパフォーマンスの問題を調査するためにも、これを設定することをお勧めします。分単位メトリックは、PowerShell (以下を参照)、プログラム、Azure クラシック ポータルのいずれかを使用して設定できます。
+> [AZURE.NOTE] Azure クラシック ポータルを使用して分単位メトリックを設定することはできません。ただし、このチュートリアルのため、さらにアプリケーションが抱えるパフォーマンスの問題を調査するためにも、これを設定することをお勧めします。分単位メトリックは、PowerShell (以下を参照)、プログラム、Azure クラシック ポータルのいずれかを使用して設定できます。
 >
 > Azure クラシック ポータルで表示できるのは時間単位メトリックのみであり、分単位メトリックは表示できない点に注意してください。
 
@@ -164,7 +164,7 @@ Message Analyzer を使用して、クライアント アプリケーション�
 
 7. ダイアログを終了し、**[Restart]** をクリックして、ホスト名フィルターを配置した状態でトレースの収集を開始します。これで、Azure Storage ネットワーク トラフィックのみがトレースに含まれるようになります。
 
->[AZURE.NOTE]ネットワーク トレースの収集が完了したら、Fiddler で変更した HTTPS トラフィックを復号化する設定を元に戻すことを強くお勧めします。[Fiddler Options] ダイアログで、**[Capture HTTPS CONNECTs]** および **[Decrypt HTTPS Traffic]** チェックボックスをオフにします。
+>[AZURE.NOTE] ネットワーク トレースの収集が完了したら、Fiddler で変更した HTTPS トラフィックを復号化する設定を元に戻すことを強くお勧めします。[Fiddler Options] ダイアログで、**[Capture HTTPS CONNECTs]** および **[Decrypt HTTPS Traffic]** チェックボックスをオフにします。
 
 詳細については、Technet の[ネットワーク トレース機能の使用](http://technet.microsoft.com/library/jj674819.aspx)に関するページを参照してください。
 
@@ -172,7 +172,7 @@ Message Analyzer を使用して、クライアント アプリケーション�
 
 アプリケーションが動作を開始してから一定の時間が経過すると、Azure クラシック ポータルに表示されるメトリック チャートを確認し、サービスがどのように動作しているかを観察することができます。まずは、**[成功のパーセンテージ]** メトリックを監視ページに追加します。
 
-1. [Azure クラシック ポータル](manage.windowsazure.com)で、ストレージ アカウントのダッシュボードに移動し、**[監視]** を選択して監視ページを表示します。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)で、ストレージ アカウントのダッシュボードに移動し、**[監視]** を選択して監視ページを表示します。
 2. **[メトリックの追加]** をクリックして **[メトリックの選択]** ダイアログを表示します。
 3. **[成功のパーセンテージ]** グループが見つかるまで下へスクロールし、それを展開して、以下の画像のように **[集計する]** を選択します。このメトリックは、すべての BLOB 操作から成功率を集計します。
 
@@ -184,7 +184,7 @@ Azure クラシック ポータルの監視チャート内には、他の追加�
 
 監視ページへのメトリックの追加の詳細については、「[方法: メトリック テーブルへのメトリックの追加](storage-monitor-storage-account.md#addmonitoringmetrics)」を参照してください。
 
-> [AZURE.NOTE]ストレージ メトリックを有効にした後、Azure クラシック ポータルにメトリック データが表示されるまでには少し時間がかかる場合があります。これは、1 つ前の時間単位メトリックが、現在の単位時間が経過するまでは Azure クラシック ポータルに表示されないためです。また、分単位メトリックについては Azure クラシック ポータルには表示されません。つまり、メトリックを有効にしたタイミングによっては、メトリック データが表示されるまでに最大で 2 時間を要する可能性があります。
+> [AZURE.NOTE] ストレージ メトリックを有効にした後、Azure クラシック ポータルにメトリック データが表示されるまでには少し時間がかかる場合があります。これは、1 つ前の時間単位メトリックが、現在の単位時間が経過するまでは Azure クラシック ポータルに表示されないためです。また、分単位メトリックについては Azure クラシック ポータルには表示されません。つまり、メトリックを有効にしたタイミングによっては、メトリック データが表示されるまでに最大で 2 時間を要する可能性があります。
 
 ## AzCopy を使用してサーバー ログをローカル ディレクトリにコピーする
 
@@ -194,7 +194,7 @@ AzCopy コマンドライン ツールを使用して、これらのサーバー
 
 	AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
 
-AzCopy は、[Azure ダウンロード](http://azure.microsoft.com/downloads/)のページからダウンロードできます。AzCopy の使用方法の詳細については、[Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md)に関するページを参照してください。
+AzCopy は、[Azure ダウンロード](https://azure.microsoft.com/downloads/)のページからダウンロードできます。AzCopy の使用方法の詳細については、[Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md)に関するページを参照してください。
 
 サーバー側のログのダウンロードの詳細については、「[ストレージ ログの有効化とログ データへのアクセス](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata)」を参照してください。
 
@@ -219,7 +219,7 @@ Message Analyzer には、サーバー、クライアント、およびネット
 
 ![Message Analyzer の [Start] ページ](./media/storage-e2e-troubleshooting-classic-portal/mma-start-page-1.png)
 
-> [AZURE.NOTE]このチュートリアルのために、表示された Azure Storage アセットはすべてインストールしてください。
+> [AZURE.NOTE] このチュートリアルのために、表示された Azure Storage アセットはすべてインストールしてください。
 
 ### ログ ファイルを Message Analyzer にインポートする
 
@@ -263,7 +263,7 @@ Message Analyzer 向けの Storage アセットには Azure Storage View Layouts
 
 ![Azure Storage View Layout](./media/storage-e2e-troubleshooting-classic-portal/view-layout-client-request-id-module.png)
 
->[AZURE.NOTE]ログ ファイルの種類によって含まれる列は異なるため、Analysis Grid に複数のログ ファイルのデータが表示された場合、いくつかの列は任意の行に何のデータも含まれていない場合があります。たとえば前の図では、**[Timestamp]**、**[TimeElapsed]**、**[Source]**、**[Destination]** の各列について、クライアント ログの行には何のデータも表示されていませんが、この原因は、クライアント ログにはこれらの列が存在せず、ネットワーク トレースには存在するためです。同様に、**[Timestamp]** 列にはサーバー ログのタイムスタンプ データが表示されていますが、サーバー ログには含まれていない **[TimeElapsed]**、**[Source]**、**[Destination]** の各列には何も表示されていません。
+>[AZURE.NOTE] ログ ファイルの種類によって含まれる列は異なるため、Analysis Grid に複数のログ ファイルのデータが表示された場合、いくつかの列は任意の行に何のデータも含まれていない場合があります。たとえば前の図では、**[Timestamp]**、**[TimeElapsed]**、**[Source]**、**[Destination]** の各列について、クライアント ログの行には何のデータも表示されていませんが、この原因は、クライアント ログにはこれらの列が存在せず、ネットワーク トレースには存在するためです。同様に、**[Timestamp]** 列にはサーバー ログのタイムスタンプ データが表示されていますが、サーバー ログには含まれていない **[TimeElapsed]**、**[Source]**、**[Destination]** の各列には何も表示されていません。
 
 Azure Storage ビュー レイアウトを使用するだけでなく、独自のビュー レイアウトを定義して保存することもできます。データのグループ化に必要なその他のフィールドを選択し、そのグループをカスタム レイアウトの一部として保存することができます。
 
@@ -347,20 +347,9 @@ Message Analyzer を使用したログ データの分析に慣れてきたと�
 | 調査目的… | 使用するフィルター式… | 式を適用するログ (クライアント、サーバー、ネットワーク、すべて) |
 |------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | キューのメッセージ配信での予期しない遅延 | AzureStorageClientDotNetV4.Description に "失敗した操作の再試行" が含まれている。 | クライアント |
-| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 &#124;&#124; HTTP.Response.StatusCode == 503 | ネットワーク |
+| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 || HTTP.Response.StatusCode == 503 | ネットワーク |
 | PercentTimeoutError の増加 | HTTP.Response.StatusCode == 500 | ネットワーク |
-| PercentTimeoutError の増加 (すべて) |    *StatusCode == 500 | すべて |
-| PercentNetworkError の増加 | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | クライアント |
-| HTTP 403 (Forbidden) メッセージ | HTTP.Response.StatusCode == 403 | ネットワーク |
-| HTTP 404 (Not found) メッセージ | HTTP.Response.StatusCode == 404 | ネットワーク |
-| 404 (すべて) | *StatusCode == 404 | すべて |
-| Shared Access Signature (SAS) 認証の問題 | AzureStorageLog.RequestStatus == "SASAuthorizationError" | ネットワーク |
-| HTTP 409 (Conflict) メッセージ | HTTP.Response.StatusCode == 409 | ネットワーク |
-| 409 (すべて) | *StatusCode == 409 | すべて |
-| PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある | AzureStorageLog.RequestStatus == "ClientOtherError" | サーバー |
-| Nagle 警告 | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | サーバー |
-| サーバーとネットワーク ログの時間範囲 | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | サーバー、ネットワーク |
-| サーバー ログの時間範囲 | AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 | サーバー |
+| PercentTimeoutError の増加 (すべて) |    **StatusCode == 500 | すべて | | PercentNetworkError の増加 | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | クライアント | | HTTP 403 (Forbidden) メッセージ | HTTP.Response.StatusCode == 403 | ネットワーク | | HTTP 404 (Not found) メッセージ | HTTP.Response.StatusCode == 404 | ネットワーク | | 404 (すべて) | *StatusCode == 404 | すべて | | Shared Access Signature (SAS) 認証の問題 | AzureStorageLog.RequestStatus == "SASAuthorizationError" | ネットワーク | | HTTP 409 (Conflict) メッセージ | HTTP.Response.StatusCode == 409 | ネットワーク | | 409 (すべて) | *StatusCode == 409 | すべて | | PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある | AzureStorageLog.RequestStatus == "ClientOtherError" | サーバー | | Nagle 警告 | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | サーバー | | サーバーとネットワーク ログの時間範囲 | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | サーバー、ネットワーク | | サーバー ログの時間範囲 | AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 | サーバー |
 
 
 ## 次のステップ
@@ -375,4 +364,4 @@ Azure Storage におけるエンド ツー エンド シナリオのトラブル
  
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

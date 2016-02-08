@@ -346,7 +346,7 @@ Azure AD テナントのテナント ID は、Azure PowerShell で `Get-AzureAcc
 
  [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
 
- [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/dn528946)
+ [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
 
  [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
 
@@ -360,4 +360,4 @@ Azure AD テナントのテナント ID は、Azure PowerShell で `Get-AzureAcc
  
   
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

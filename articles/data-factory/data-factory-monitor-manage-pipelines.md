@@ -25,7 +25,7 @@ Data Factory サービスでは、データの保存、処理、移動の各サ�
 Azure ポータルを使用すると、Data Factory のダイアグラム、パイプラインのアクティビティ、入力と出力のデータセットなどを表示できます。このセクションでは、スライスの状態がどのように移行するかについても説明します。
 
 ### Data Factory に移動する
-1.	[Azure ポータル](http://portal.azure.com)にサインインします。
+1.	[Azure ポータル](https://portal.azure.com)にサインインします。
 2.	**[すべて参照]** をクリックし、**[Data Factory]** を選択します。
 	
 	![[すべて参照] -> [Data Factory]](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -96,6 +96,7 @@ Data Factory のデータセット スライスは、次のいずれかの状態
 <td>ValidationRetry</td><td>検証の再試行を待機しています。</td>
 </tr>
 <tr>
+&lt; tr
 <td rowspan="2">InProgress</td><td>Validating</td><td>検証を実行中です。</td>
 </tr>
 <td></td>
@@ -566,4 +567,4 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 **Add-AlertRule** コマンドレットを使用して、アラート ルールをデプロイすることもできます。詳細と例については、「[Add-AlertRule](https://msdn.microsoft.com/library/mt282468.aspx)」トピックを参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

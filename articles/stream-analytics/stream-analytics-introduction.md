@@ -32,7 +32,7 @@ Stream Analytics で活用されている、時間が重要となる処理向け
 ## 主要な機能と利点
 -   **使いやすさ:** Stream Analytics は、変換を記述するための単純な宣言型のクエリ モデルをサポートします。使いやすさを最大限に高めるために、Stream Analytics は SQL に似た言語を使用しているため、お客様がストリーム処理システムの技術的な複雑さに対処する必要がなくなります。ブラウザー内クエリ エディターで [Stream Analytics クエリ言語](https://msdn.microsoft.com/library/azure/dn834998.aspx)を使用することで、Intellisense オートコンプリートを使用して、結合、集計、射影、フィルターなどの一般的な操作はもちろん、時間ベース結合、ウィンドウ表示の集計関数、および時間的フィルターの時系列クエリも短時間で簡単に実装できます。さらに、サンプル データ ファイルに対してブラウザー内のクエリをテストできるため、迅速な反復的開発が可能になります。  
 
--   **拡張性:** Stream Analytics は、最大 1 GB/秒の高いイベント スループットの処理をサポートしています。[Azure Event Hubs](http://azure.microsoft.com/services/event-hubs/) と統合することで、接続されたデバイス、クリックストリーム、およびログ ファイルから 1 秒間に数百万ものイベントを取り込むことができます。これを実現するために、Stream Analytics では Event Hubs のパーティション分割機能を使用しています。この機能により、パーティションごとに 1 MB/秒の処理が可能になります。ユーザーは、計算処理をクエリ定義内の複数の論理的なステップにパーティション分割し、各ステップをさらに分割して、スケーラビリティを向上できます。
+-   **拡張性:** Stream Analytics は、最大 1 GB/秒の高いイベント スループットの処理をサポートしています。[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) と統合することで、接続されたデバイス、クリックストリーム、およびログ ファイルから 1 秒間に数百万ものイベントを取り込むことができます。これを実現するために、Stream Analytics では Event Hubs のパーティション分割機能を使用しています。この機能により、パーティションごとに 1 MB/秒の処理が可能になります。ユーザーは、計算処理をクエリ定義内の複数の論理的なステップにパーティション分割し、各ステップをさらに分割して、スケーラビリティを向上できます。
 
 -   **高い信頼性、反復可能性、および迅速な回復:** クラウド内で管理されるサービス、Stream Analytics は、データ損失を防止するのに役立ち、障害が生じた場合でも組み込みの回復機能を通じてビジネス継続性を提供します。また、内部に状態を保持できる特性を通じて、繰り返し可能な処理結果を提供できます。これを利用して、イベントをアーカイブしておき、後で処理に再適用して常に同じ結果を取得することができます。お客様は、根本原因の分析や what if 分析などを実行するときに、これを使用して時間をさかのぼり、計算処理を調査できます。
 
@@ -40,7 +40,7 @@ Stream Analytics で活用されている、時間が重要となる処理向け
 
 -   **参照データ:** Stream Analytics では、参照データを指定して使用することができます。参照データには、履歴データか、時間の経過に伴う変化が頻繁にはない単純にストリーミングでないデータを指定できます。参照データは、システムにより、他の受信イベント ストリームと同様に扱われ、リアルタイムで取り込まれる他のイベント ストリームと結合されて変換が実行されるので、簡単に使用できます。
 
--   **接続:** Stream Analytics は、Azure Event Hubs に直接接続してストリームを取り込み、Azure BLOB サービスに直接接続して履歴データを取り込みます。結果は、Stream Analytics から Azure Storage Blobs または Tables、Azure SQL DB、Event Hubs、Azure Service Bus Topics または Queues、Power BI に書き込まれます。そこで、視覚化、ワークフローによる処理、[Azure HDInsight](http://azure.microsoft.com/services/hdinsight/) を介したバッチ分析での使用、一連のイベントとしての再処理を実行することができます。Event Hubs を使用すると、計算処理のストリーミングの性質を失うことなく、複数の Stream Analytics を他のデータ ソースや処理エンジンとまとめて構成できます。
+-   **接続:** Stream Analytics は、Azure Event Hubs に直接接続してストリームを取り込み、Azure BLOB サービスに直接接続して履歴データを取り込みます。結果は、Stream Analytics から Azure Storage Blobs または Tables、Azure SQL DB、Event Hubs、Azure Service Bus Topics または Queues、Power BI に書き込まれます。そこで、視覚化、ワークフローによる処理、[Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) を介したバッチ分析での使用、一連のイベントとしての再処理を実行することができます。Event Hubs を使用すると、計算処理のストリーミングの性質を失うことなく、複数の Stream Analytics を他のデータ ソースや処理エンジンとまとめて構成できます。
 
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
@@ -53,4 +53,4 @@ Stream Analytics で活用されている、時間が重要となる処理向け
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

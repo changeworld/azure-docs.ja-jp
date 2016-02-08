@@ -34,7 +34,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 地域の通信会社と地上イーサネット接続を選択して、Exchange プロバイダーの所在地のいずれかに接続します。その後、このプロバイダーの所在地で Microsoft とピアリングできます。「[ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」の最後のセクションで、サービス プロバイダーが Exchange の提供地域のいずれかに存在するかどうかを確認してください。存在すれば、サービス プロバイダーを通じて ExpressRoute 回線を Azure に接続するように依頼できます。
 
 ### ExpressRoute の料金はいくらですか。
-料金情報については、「[ExpressRoute 料金](http://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
+料金情報については、「[ExpressRoute 料金](https://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
 
 ### 特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、ネットワーク サービス プロバイダーから同じ速度の VPN 接続を購入する必要がありますか。
 いいえ。サービス プロバイダーから任意の速度の VPN 接続を購入できます。ただし、Azure への接続は、購入した ExpressRoute 回線の帯域幅に制限されます。
@@ -46,7 +46,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 はい。ExpressRoute 回線のセットアップが完了すると、1 本の回線で Virtual Network 内のサービスや他の Azure サービスに同時にアクセスできるようになります。Virtual Network にはプライベート ピアリング パス経由で接続し、他のサービスにはパブリック ピアリング パス経由で接続します。
 
 ### ExpressRoute ではサービス レベル アグリーメント (SLA) は提供されますか。
-詳細については、[ExpressRoute SLA](http://azure.microsoft.com/support/legal/sla/) に関するページを参照してください。
+詳細については、[ExpressRoute SLA](https://azure.microsoft.com/support/legal/sla/) に関するページを参照してください。
 
 ## サポートされているサービス
 ほとんどの Azure サービスが、ExpressRoute でサポートされます。
@@ -65,7 +65,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 ## データおよび接続
 
 ### ExpressRoute を使用して転送できるデータの量に制限はありますか。
-データ転送量に対する制限はありません。帯域幅ごとの料金については、「[ExpressRoute の価格](http://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
+データ転送量に対する制限はありません。帯域幅ごとの料金については、「[ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
 
 ### ExpressRoute でサポートされる接続速度はどれくらいですか。
 サポートされる帯域幅:
@@ -208,7 +208,7 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 いいえ。必要な機能のみを選択することはできません。ExpressRoute Premium を有効にすると、すべての機能が有効になります。
 
 ### ExpressRoute Premium の料金はいくらですか。
-料金については、「[ExpressRoute の価格](http://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
+料金については、「[ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
 
 ### ExpressRoute Premium の料金は、標準の ExpressRoute 料金に追加して支払うのですか。
 はい。ExpressRoute Premium 料金は、ExpressRoute 回線の料金と接続プロバイダーに必要な料金に追加する形で適用されます。
@@ -249,7 +249,7 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 これらのサービスにはインターネット経由で接続できます。
 
 ### ExpressRoute for Office 365 の料金はいくらですか。
-ExpressRoute 経由で Office 365 に接続するのに追加コストはかかりません。ExpressRoute の料金の詳細については、[料金の詳細](http://azure.microsoft.com/pricing/details/expressroute/)に関するページを参照してください。
+ExpressRoute 経由で Office 365 に接続するのに追加コストはかかりません。ExpressRoute の料金の詳細については、[料金の詳細](https://azure.microsoft.com/pricing/details/expressroute/)に関するページを参照してください。
 
 ### ExpressRoute for Office 365 はどのリージョンでサポートされていますか。
 ExpressRoute がサポートされているパートナーと地域の一覧については、[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページを参照してください。
@@ -258,4 +258,4 @@ ExpressRoute がサポートされているパートナーと地域の一覧に�
 はい。自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

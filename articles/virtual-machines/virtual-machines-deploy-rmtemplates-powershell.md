@@ -193,7 +193,7 @@ Azure PowerShell とリソース マネージャー テンプレートを使用�
 
 	Remove-AzureRmVM -ResourceGroupName "resource group name" –Name "VM name"
 
-> [AZURE.NOTE]**-Force** パラメーターを使用して確認プロンプトをスキップできます。
+> [AZURE.NOTE] **-Force** パラメーターを使用して確認プロンプトをスキップできます。
 
 -Force パラメーターを使用していない場合は、次のように確認が求められます。
 
@@ -216,4 +216,4 @@ Azure PowerShell とリソース マネージャー テンプレートを使用�
 
 [AZURE.VIDEO start-stop-restart-and-delete-vms-in-microsoft-azure-with-powershell]
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

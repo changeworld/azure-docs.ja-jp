@@ -1,9 +1,9 @@
 <properties
    pageTitle="Visual Studio の Azure リソース グループ プロジェクトの作成とデプロイ | Microsoft Azure"
    description="Visual Studio を使用して、Azure リソース グループ プロジェクトを作成し、リソースを Azure にデプロイします。"
-   services="visual-studio-online"
+   services="azure-resource-manager"
    documentationCenter="na"
-   authors="TomArcher"
+   authors="tfitzmac"
    manager="douge"
    editor="" />
 <tags
@@ -13,13 +13,13 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="11/13/2015"
-   ms.author="tarcher" />
+   ms.author="tomfitz" />
 
 # Visual Studio での Azure リソース グループの作成とデプロイ
 
-**Azure リソース グループ** デプロイ プロジェクト テンプレートは、Azure SDK 2.6 がインストールされている場合に Visual Studio で使用できます。Azure リソース グループ プロジェクトを使用すると、関連する複数の Azure リソースをグループ化し、1 回のデプロイ操作で発行することができます。Azure リソース グループ プロジェクトでは、**Azure リソース マネージャー**と呼ばれるテクノロジを使用して作業を行います。**Azure リソース マネージャー**は、Azure リソース グループを定義できる REST API サービスです。Azure リソース グループには、通常は一緒に使用され、同じようなライフサイクルを持つ複数の Azure リソースが含まれます。リソース グループを使用すると、個々のリソースごとに異なる関数を呼び出すのではなく、単一の関数呼び出しでグループ内のすべてのリソースを操作できます。Azure リソース グループの詳細については、[Azure プレビュー ポータルを使用した Azure リソースの管理](resource-group-portal.md)に関するページを参照してください。Azure リソース グループ デプロイメントのエンド ツー エンドの詳しいシナリオについては、[Visual Studio 用 Azure リソース グループ](https://azure.microsoft.com/blog/azure-resource-manager-2-5-for-visual-studio/)に関するページを参照してください。
+**Azure リソース グループ** デプロイ プロジェクト テンプレートは、Azure SDK 2.6 がインストールされている場合に Visual Studio で使用できます。Azure リソース グループ プロジェクトを使用すると、関連する複数の Azure リソースをグループ化し、1 回のデプロイ操作で発行することができます。Azure リソース グループ プロジェクトでは、**Azure リソース マネージャー**と呼ばれるテクノロジを使用して作業を行います。**Azure リソース マネージャー**は、Azure リソース グループを定義できる REST API サービスです。Azure リソース グループには、通常は一緒に使用され、同じようなライフサイクルを持つ複数の Azure リソースが含まれます。リソース グループを使用すると、個々のリソースごとに異なる関数を呼び出すのではなく、単一の関数呼び出しでグループ内のすべてのリソースを操作できます。Azure リソース グループの詳細については、[Azure プレビュー ポータルを使用した Azure リソースの管理](resource-group-portal.md)に関するページを参照してください。Azure リソース グループ デプロイのエンド ツー エンドの詳しいシナリオについては、[Visual Studio 用 Azure リソース グループ](https://azure.microsoft.com/blog/azure-resource-manager-2-5-for-visual-studio/)に関するページを参照してください。
 
-Azure リソース グループ プロジェクトには、リソース グループにデプロイされる要素を定義する Azure リソース マネージャー JSON テンプレートが含まれています。詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。
+Azure リソース グループ プロジェクトには、リソース グループにデプロイされる要素を定義する Azure リソース マネージャー JSON テンプレートが含まれています。詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
 Azure リソース マネージャーには、使用可能なさまざまなリソース プロバイダーが用意されています。これらを使用すると、Ubuntu Server や Windows Server 2012 R2 などのリソースをデプロイすることができます。このトピックでは、**Web Apps** リソースを使用します。これにより、基本的な空の Web サイトが Azure にデプロイされます。
 
@@ -39,7 +39,7 @@ Azure リソース マネージャーには、使用可能なさまざまなリ�
 
     リソースは、後でリソース グループにさらに追加することもできます。
 
-    >[AZURE.NOTE]使用可能なテンプレートの一覧はオンラインで取得されるため、変更される可能性があります。
+    >[AZURE.NOTE] 使用可能なテンプレートの一覧はオンラインで取得されるため、変更される可能性があります。
 
     Visual Studio では、Web アプリ用の Azure リソース グループ デプロイ プロジェクトが作成されます。
 
@@ -52,13 +52,13 @@ Azure リソース マネージャーには、使用可能なさまざまなリ�
     |Deploy-AzureResourceGroup.ps1|Azure リソース マネージャーにデプロイするための PowerShell コマンドを呼び出す PowerShell スクリプト。<br />**注** この PowerShell スクリプトは、テンプレートをデプロイするために Visual Studio によって使用されます。このスクリプトに変更を加えると Visual Studio でのデプロイにも影響するため、注意が必要です。|
     !WebSite.json|Azure にデプロイするインフラストラクチャを定義するテンプレート。|
     |WebSite.param.dev.json|構成ファイルで必要な特定の値を含むパラメーター ファイル。|
-    |AzCopy.exe|ローカル ストレージのドロップ パスからファイルをストレージ アカウントのコンテナーにコピーする PowerShell スクリプトで使用されるツール。このツールは、テンプレートと共にコードをデプロイするようデプロイメント プロジェクトを構成する場合にのみ使用します。|
+    |AzCopy.exe|ローカル ストレージのドロップ パスからファイルをストレージ アカウントのコンテナーにコピーする PowerShell スクリプトで使用されるツール。このツールは、テンプレートと共にコードをデプロイするようデプロイ プロジェクトを構成する場合にのみ使用します。|
 
     すべての Azure リソース グループ デプロイ プロジェクトには、上記の 4 つの基本的なファイルが含まれます。他のプロジェクトには、他の機能をサポートするために追加のファイルが含まれることがあります。
 
 ## Azure リソース グループ プロジェクトのカスタマイズ
 
-デプロイする Azure リソースが記述されている JSON テンプレート ファイルを変更することで、デプロイ プロジェクトをカスタマイズできます。JSON とは JavaScript Object Notation の略であり、操作が簡単なシリアル化されたデータ形式です。
+デプロイする Azure リソースが記述されている JSON テンプレート ファイルを変更すると、デプロイ プロジェクトをカスタマイズできます。JSON とは JavaScript Object Notation の略であり、操作が簡単なシリアル化されたデータ形式です。
 
 Azure リソース グループ プロジェクトでは、ソリューション エクスプローラーの **Templates** ノードの下に、Azure リソース マネージャー テンプレート ファイルとパラメーター ファイルという、変更可能な 2 つのテンプレート ファイルがあります。
 
@@ -92,7 +92,7 @@ Azure リソース グループ プロジェクトをデプロイする場合は
 
     ![[リソース グループの作成] ダイアログ ボックス](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/IC796674.png)
 
-    >[AZURE.NOTE]通常、新しいデプロイ プロジェクトを開始する場合は、デプロイ先の新しいリソース グループを作成します。
+    >[AZURE.NOTE] 通常、新しいデプロイ プロジェクトを開始する場合は、デプロイ先の新しいリソース グループを作成します。
 
 1. リソース グループの名前と場所を入力し、**[作成]** をクリックします。
 
@@ -108,15 +108,15 @@ Azure リソース グループ プロジェクトをデプロイする場合は
 
     - *siteName* パラメーターは、Web ページの URL の最初の部分です。たとえば、mywebsitename.azurewebsites.net という URL の場合、サイト名は **mywebsitename** になります。
 
-    - *hostingPlanName* パラメーターは、ホスティング プランを指定します。この例では、"Free" を使用できます。ホスティング プランの詳細については、「[Azure App Service プランの詳細な概要](http://azure.microsoft.com/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/)」を参照してください。
+    - *hostingPlanName* パラメーターは、ホスティング プランを指定します。この例では、"Free" を使用できます。ホスティング プランの詳細については、「[Azure App Service プランの詳細な概要](https://azure.microsoft.com/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/)」を参照してください。
 
-    - *siteLocation* パラメーターは、"米国西部" など、サイトがホストされる Azure リージョンを表します。使用可能なリージョンの一覧については、「[Azure のリージョン](http://azure.microsoft.com/regions/)」を参照してください。
+    - *siteLocation* パラメーターは、"米国西部" など、サイトがホストされる Azure リージョンを表します。使用可能なリージョンの一覧については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」を参照してください。
 
 1. **[デプロイ]** をクリックして、プロジェクトを Azure にデプロイします。
 
     デプロイの進行状況は、**出力**ウィンドウで確認できます。デプロイは、構成に応じて、完了までに数分かかる場合があります。
 
-    >[AZURE.NOTE]Microsoft Azure PowerShell コマンドレットのインストールを求められる場合があります。これらのコマンドレットは、Azure リソース グループをデプロイするために必要であるため、インストールする必要があります。
+    >[AZURE.NOTE] Microsoft Azure PowerShell コマンドレットのインストールを求められる場合があります。これらのコマンドレットは、Azure リソース グループをデプロイするために必要であるため、インストールする必要があります。
 
 1. ブラウザーで、[Azure プレビュー ポータル](https://portal.azure.com/)を開きます。これは新しい変更であるため、新しい通知メッセージが **[通知]** タブに表示されます。通知メッセージを選択すると、新しい Azure リソース グループの詳細が表示されます。使用可能なすべてのリソース グループの一覧を表示するには、**[参照]** タブをクリックし、**[リソース グループ]** を選択します。
 
@@ -196,4 +196,4 @@ Azure SDK 2.5 で作成されたクラウド デプロイ プロジェクトを�
 
 Visual Studio で Azure リソース グループにリソースを追加する方法については、「[Visual Studio でのリソース マネージャー テンプレートの編集](vs-azure-tools-resource-group-adding-resources.md)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

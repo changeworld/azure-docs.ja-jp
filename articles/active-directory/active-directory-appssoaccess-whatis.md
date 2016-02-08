@@ -106,13 +106,13 @@ Azure AD 内でユーザーを削除するかまたはユーザー情報を変�
 
 ###Azure AD アプリケーション ギャラリーの使用
 
-[Azure Active Directory アプリケーション ギャラリー](http://azure.microsoft.com/marketplace/active-directory/all/)には、Azure Active Directory によるシングル サインオンの形式をサポートすることがわかっているアプリケーションの一覧が表示されます。
+[Azure Active Directory アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)には、Azure Active Directory によるシングル サインオンの形式をサポートすることがわかっているアプリケーションの一覧が表示されます。
 
 ![][1]
 
 サポートされている機能によってアプリを検索するためのヒントを次に示します。
 
-*	Azure AD は、[Azure Active Directory アプリケーション ギャラリー](http://azure.microsoft.com/marketplace/active-directory/all/)のすべての "おすすめ" アプリについて、自動プロビジョニングおよびプロビジョニング解除をサポートしています。
+*	Azure AD は、[Azure Active Directory アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)のすべての "おすすめ" アプリについて、自動プロビジョニングおよびプロビジョニング解除をサポートしています。
 
 *	SAML、WS-Federation、OpenID Connect などのプロトコルを使用してフェデレーション シングル サインオンをサポートするフェデレーション アプリケーションの一覧については、[このページ](http://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx)を参照してください。
 
@@ -131,7 +131,7 @@ Azure AD 内でユーザーを削除するかまたはユーザー情報を変�
   * [https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore)
 
-*	**アプリケーションの統合を要求する** - [Azure AD のフィードバック フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)で必要なアプリケーションのサポートを要請します。
+*	**アプリケーションの統合を要求する** - [Azure AD のフィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)で必要なアプリケーションのサポートを要請します。
 
 ###Azure 管理ポータルの使用
 
@@ -168,7 +168,7 @@ Azure AD では、カスタマイズ可能ないくつかの方法で組織内�
 
 ###Azure AD アクセス パネル
 
-アクセス パネル (https://myapps.microsoft.com) は Web ベースのポータルで、Azure Active Directory ディレクトリの組織アカウントを持つエンド ユーザーが、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。[Azure Active Directory Premium](http://azure.microsoft.com/pricing/details/active-directory/) のエンド ユーザーの場合、アクセス パネルを介してセルフサービスのグループ管理機能を利用することもできます。
+アクセス パネル (https://myapps.microsoft.com) は Web ベースのポータルで、Azure Active Directory ディレクトリの組織アカウントを持つエンド ユーザーが、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。[Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) のエンド ユーザーの場合、アクセス パネルを介してセルフサービスのグループ管理機能を利用することもできます。
 
 ![][3]
 
@@ -220,4 +220,4 @@ Azure AD では、パスワードベースのシングル サインオン、既�
 [5]: ./media/active-directory-appssoaccess-whatis/workdaymobile.png
 [6]: ./media/active-directory-appssoaccess-whatis/deeplink.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

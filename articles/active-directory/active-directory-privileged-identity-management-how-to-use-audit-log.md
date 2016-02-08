@@ -3,7 +3,7 @@
    description="Azure Privileged Identity Management 拡張機能で監査ログを使用する方法について説明します。"
    services="active-directory"
    documentationCenter=""
-   authors="IHenkel"
+   authors="kgremban"
    manager="stevenpo"
    editor=""/>
 
@@ -13,16 +13,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/21/2015"
-   ms.author="inhenk"/>
+   ms.date="01/21/2016"
+   ms.author="kgremban"/>
 
 # Azure Privileged Identity Management: 監査ログを使用する方法
 
-## 監査ログの使用
-Privileged Identity Management の監査ログを使用すると、特定の期間におけるすべてのユーザー割り当てとアクティブ化を確認できます。
+Privileged Identity Management (PIM) の監査ログを使用すると、特定の期間におけるすべてのユーザー割り当てとアクティブ化を確認できます。
 
 ## 監査ログへの移動
-PIM ダッシュボードで監査履歴をクリックして、監査ログにアクセスできます。
+PIM ダッシュボードで**監査履歴**をクリックして、監査ログにアクセスできます。
 
 ## 監査ログのグラフ
 監査ログを使用すると、合計アクティブ化数、1 日あたりの最大アクティブ化数、1 日あたりの平均アクティブ化数を折れ線グラフで表示できます。監査履歴に複数のロールがある場合は、ロールによってデータをフィルターすることもできます。
@@ -51,10 +50,10 @@ PIM ダッシュボードで監査履歴をクリックして、監査ログに�
 
 ログにロールを含めたり除外したりするには、各ロールの横にある **[ロール]** チェック ボックスをオンまたはオフにします。
 
-監査ログのすべてのフィルターを設定したら、[更新] をクリックしてログ内のデータをフィルターします。データがすぐに表示されない場合は、**[更新]** ボタンをクリックします。
+監査ログのすべてのフィルターを設定したら、[更新] をクリックしてログ内のデータをフィルターします。データがすぐに表示されない場合は、ページを更新してください。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

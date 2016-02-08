@@ -41,13 +41,13 @@
 
 構成を開始する前に、次の前提があることを確認してください。
 
-- Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+- Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
 - 各オンプレミスのロケーションと互換性のある VPN ハードウェア「[Virtual Network に使用する VPN デバイスについて](http://go.microsoft.com/fwlink/p/?linkid=615099)」を参照して、使用するデバイスが互換性のあるものであることを確認してください。
 
 - 各 VPN デバイスの外部接続用パブリック IPv4 IP アドレス。IP アドレスを NAT の内側に割り当てることはできません。これが要件です。
 
-- 最新バージョンの Azure PowerShell コマンドレット。[ダウンロード ページ](http://azure.microsoft.com/downloads/)の Windows PowerShell セクションから最新バージョンをダウンロードしてインストールできます。
+- 最新バージョンの Azure PowerShell コマンドレット。[ダウンロード ページ](https://azure.microsoft.com/downloads/)の Windows PowerShell セクションから最新バージョンをダウンロードしてインストールできます。
 
 - VPN ハードウェアの構成に詳しい作業者VPN デバイスを構成する際に、Azure クラシック ポータルから自動生成の VPN スクリプトを使用することはできません。そのため、VPN デバイスの構成に精通している必要があり、そうでなければ精通している人と一緒に作業を行ってください。
 
@@ -177,4 +177,4 @@
 
 VPN Gateway について詳しくは、「[VPN Gateway について](../vpn-gateway/vpn-gateway-about-vpngateways.md)」を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

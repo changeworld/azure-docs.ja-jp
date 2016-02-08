@@ -22,13 +22,13 @@
 
 Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。Azure Files を使用すると、ファイル サーバーを利用しているエンタープライズ アプリケーションを Azure に移行できます。Azure で実行されているアプリケーションでは、Linux を実行している Azure の仮想マシンからファイル共有を簡単にマウントできます。また、File ストレージの最新のリリースでは、SMB 3.0 をサポートしているオンプレミス アプリケーションからファイル共有をマウントできます。
 
-Azure のファイル共有は、 [Azure ポータル](portal.azure.com)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。また、ファイル共有は SMB 共有であるため、それらには標準のファイル システム API を使用してアクセスできます。
+Azure のファイル共有は、 [Azure ポータル](https://portal.azure.com)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。また、ファイル共有は SMB 共有であるため、それらには標準のファイル システム API を使用してアクセスできます。
 
 File Storage は、BLOB、Table、および Queue Storage と同じテクノロジ上に構築されているため、可用性、持続性、スケーラビリティ、および Azure Storage プラットフォームに組み込まれている geo 冗長性を利用できます。File Storage のパフォーマンスのターゲットと制限事項の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」を参照してください。
 
 File Storage は現在一般に提供されており、SMB 2.1 と SMB 3.0 の両方をサポートしています。File Storage の詳細については、「[ファイル サービスの REST API](https://msdn.microsoft.com/library/azure/dn167006.aspx)」を参照してください。
 
->[AZURE.NOTE]Linux の SMB クライアントでは暗号化はまだサポートされていないため、Linux からファイル共有をマウントするには、クライアントがファイル共有と同じ Azure リージョンに存在する必要があります。ただし、Linux での暗号化のサポートは、SMB 機能を担当している Linux 開発者によって実装される予定です。今後の暗号化をサポートする Linux ディストリビューションによって、任意の場所から Azure File 共有をマウントできるようになります。
+>[AZURE.NOTE] Linux の SMB クライアントでは暗号化はまだサポートされていないため、Linux からファイル共有をマウントするには、クライアントがファイル共有と同じ Azure リージョンに存在する必要があります。ただし、Linux での暗号化のサポートは、SMB 機能を担当している Linux 開発者によって実装される予定です。今後の暗号化をサポートする Linux ディストリビューションによって、任意の場所から Azure File 共有をマウントできるようになります。
 
 ## ビデオ: Linux で Azure File ストレージを使用する方法
 
@@ -93,7 +93,7 @@ Open SUSE 13.2 を使用する場合は、次に示すようにファイルを�
 
 ## ファイル共有の管理 ##
 
-[Azure ポータル](portal.azure.com)では、Azure File Storage を管理するためのユーザー インターフェイスを使用できます。Web ブラウザーから、次の操作を実行できます。
+[Azure ポータル](https://portal.azure.com)では、Azure File Storage を管理するためのユーザー インターフェイスを使用できます。Web ブラウザーから、次の操作を実行できます。
 
 - ファイル共有からのファイルのアップロードおよびダウンロード
 - 各ファイル共有の実際の使用状況の監視
@@ -116,7 +116,7 @@ Azure File storage for Linux ユーザーのグループによって、File ス�
 
 ## 次のステップ
 
-Azure File ストレージの詳細については、次のリンクを参照してください。
+Azure File Storage の詳細については、次のリンクを参照してください。
 
 ### 概念に関する記事とビデオ
 
@@ -140,4 +140,4 @@ Azure File ストレージの詳細については、次のリンクを参照し
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

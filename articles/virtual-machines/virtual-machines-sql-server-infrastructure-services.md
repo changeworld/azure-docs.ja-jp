@@ -20,17 +20,17 @@
 # Azure Virtual Machines における SQL Server の概要
 
 ## 使用の開始
-AlwaysOn 可用性グループと Azure Virtual Network を使用すると、1 つのデータベース サーバーや複数のコンピューターなど、さまざまな構成で、[Azure Virtual Machines に SQL Server](http://azure.microsoft.com/services/virtual-machines/sql-server/) をホストすることができます。
+AlwaysOn 可用性グループと Azure Virtual Network を使用すると、1 つのデータベース サーバーや複数のコンピューターなど、さまざまな構成で、[Azure Virtual Machines に SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) をホストすることができます。
 
->[AZURE.NOTE]Azure VM で SQL Server を実行することは、リレーショナル データを Azure に格納するための 1 つのオプションです。Azure SQL Database サービスを使用することもできます。詳細については、「[Azure SQL Database と Azure VM 内の SQL Server について](../sql-database/data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。
+>[AZURE.NOTE] Azure VM で SQL Server を実行することは、リレーショナル データを Azure に格納するための 1 つのオプションです。Azure SQL Database サービスを使用することもできます。詳細については、「[Azure SQL Database と Azure VM 内の SQL Server について](../sql-database/data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。
 
-Azure で SQL Server 仮想マシンを作成するには、最初に Azure プラットフォーム サブスクリプションを入手する必要があります。Azure サブスクリプションは、複数の[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)で購入できます。無料で試用するには、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
+Azure で SQL Server 仮想マシンを作成するには、最初に Azure プラットフォーム サブスクリプションを入手する必要があります。Azure サブスクリプションは、複数の[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)で購入できます。無料で試用するには、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
 ### 1 つの VM での SQL Server インスタンスのデプロイ
 
 サブスクリプションにサインアップした後、Azure で SQL Server 仮想マシンをデプロイする最も簡単な方法は、[Azure クラシック ポータルで SQL Server マシンのギャラリー イメージをプロビジョニングする](virtual-machines-provision-sql-server.md)方法です。それらのイメージには、VM の価格での SQL Server のライセンスが含まれます。
 
->[AZURE.NOTE]Azure ポータルを使用して、SQL Server Virtual Machines をプロビジョニングおよび管理します。これにより、既定で Premium Storage が使用されるように設定され、自動修正、自動バックアップ、および AlwaysOn 構成が提供されます。
+>[AZURE.NOTE] Azure ポータルを使用して、SQL Server Virtual Machines をプロビジョニングおよび管理します。これにより、既定で Premium Storage が使用されるように設定され、自動修正、自動バックアップ、および AlwaysOn 構成が提供されます。
 
 次の表には、仮想マシン ギャラリーで使用可能な SQL Server イメージのマトリックスが示されています。
 
@@ -44,9 +44,9 @@ Azure で SQL Server 仮想マシンを作成するには、最初に Azure プ�
 |SQL Server 2014 SP1|Windows Server 2012 R2|Enterprise、Standard、Web|
 |SQL Server 2016 CTP|Windows Server 2012 R2|評価|
 
->[AZURE.NOTE]データ ウェアハウスおよびトランザクション ワークロード用の仮想マシンのギャラリー イメージ (前に記載のない) は間もなく廃止され、ギャラリーから削除される予定です。前の表の標準イメージを使用し、特定のワークロードのパフォーマンスを最適化してください。
+>[AZURE.NOTE] データ ウェアハウスおよびトランザクション ワークロード用の仮想マシンのギャラリー イメージ (前に記載のない) は間もなく廃止され、ギャラリーから削除される予定です。前の表の標準イメージを使用し、特定のワークロードのパフォーマンスを最適化してください。
 
-これらの事前構成されたイメージのほかに、SQL Server がプレインストールされていない状態で [Azure 仮想マシンを作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」の説明に従って、Azure 仮想マシンで SQL Server を実行するために、Azure にライセンスを移行します。このシナリオでは、仮想マシンに関連付けられた Azure Compute および Storage [コスト](http://azure.microsoft.com/pricing/details/virtual-machines)のみを支払います。
+これらの事前構成されたイメージのほかに、SQL Server がプレインストールされていない状態で [Azure 仮想マシンを作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」の説明に従って、Azure 仮想マシンで SQL Server を実行するために、Azure にライセンスを移行します。このシナリオでは、仮想マシンに関連付けられた Azure Compute および Storage [コスト](https://azure.microsoft.com/pricing/details/virtual-machines/)のみを支払います。
 
 SQL Server イメージに最適な仮想マシン構成の設定を決定するには、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」を確認してください。実稼働ワークロードでは、SQL Server Enterprise Edition の最小推奨仮想マシン サイズは **DS3** であり、Standard edition の最小推奨仮想マシン サイズは **DS2** です。
 
@@ -138,7 +138,7 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 
 プラットフォームによって提供される SQL Server イメージを使用して仮想マシンを作成する場合、仮想マシンの **C:\\SqlServer\_SQLMajorVersion.SQLMinorVersion\_Full** ディレクトリに保存されている SQL Server セットアップ メディアを使用できます。ディスク スペースに空きがある場合には、このディレクトリからセットアップを実行して、機能の追加や削除、新しいインスタンスの追加、またはインスタンスの修復などのセットアップ アクションを実行できます。
 
->[AZURE.NOTE]Azure では、複数のバージョンの SQL Server イメージを提供しています。SQL Server プラットフォームによって提供されるイメージのバージョン リリース日が 2014 年 5 月 15 日以降の場合、既定でプロダクト キーが含まれています。この日よりも前にパブリッシュされる、プラットフォームによって提供される SQL Server イメージを使用して仮想マシンをプロビジョニングする場合、VM にプロダクト キーは含まれません。ベスト プラクティスとして、新しい VM をプロビジョニングするときは常に、最新のバージョンのイメージを選択することをお勧めします。
+>[AZURE.NOTE] Azure では、複数のバージョンの SQL Server イメージを提供しています。SQL Server プラットフォームによって提供されるイメージのバージョン リリース日が 2014 年 5 月 15 日以降の場合、既定でプロダクト キーが含まれています。この日よりも前にパブリッシュされる、プラットフォームによって提供される SQL Server イメージを使用して仮想マシンをプロビジョニングする場合、VM にプロダクト キーは含まれません。ベスト プラクティスとして、新しい VM をプロビジョニングするときは常に、最新のバージョンのイメージを選択することをお勧めします。
 
 ## リソース
 
@@ -148,4 +148,4 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-sql-server-application-patterns-and-development-strategies.md)
 - [Azure Virtual Machines](virtual-machines-about.md) 
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

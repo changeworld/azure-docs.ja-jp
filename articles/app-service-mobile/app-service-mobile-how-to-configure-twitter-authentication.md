@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="10/29/2015"
+	ms.date="01/13/2016"
 	ms.author="mahender"/>
 
 # Twitter ログインを使用するように App Service アプリケーションを構成する方法
@@ -27,7 +27,8 @@
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Twitter アカウントが必要になります。新しい Twitter アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a> にアクセスしてください。
 
 
-> [AZURE.NOTE]このトピックでは、App Service 認証/承認の使用例を示します。ほとんどのアプリケーションで、これが App Service ゲートウェイに取って代わっています。ゲートウェイを使用する場合との相違点は、トピック全体を通してメモに記載しています。
+> [AZURE.NOTE]
+このトピックでは、App Service 認証/承認の使用例を示します。ほとんどのアプリケーションで、これが App Service ゲートウェイに取って代わっています。ゲートウェイを使用する場合との相違点は、トピック全体を通してメモに記載しています。
 
 
 ## <a name="register"> </a>Twitter にアプリケーションを登録する
@@ -39,11 +40,12 @@
 
 3. 新しいアプリの **[名前]** と **[説明]** を入力します。**[Web サイト]** 値にアプリケーションの **URL** を貼り付けます。次に、**[コールバック URL]** に先ほどコピーした **[コールバック URL]** を貼り付けます。この URL は、モバイル アプリ ゲートウェイの後にパス _/.auth/login/twitter/callback_ を追加したフォーマットです。たとえば、「`https://contoso.azurewebsites.net/.auth/login/twitter/callback`」のように入力します。HTTPS スキームを使用していることを確認します。
 
-	> [AZURE.NOTE]App Service の認証/承認機能ではなく、App Service ゲートウェイを使用している場合、リダイレクト URL では、ゲートウェイ URL とパス _/signin-twitter_ を使用します。
+	> [AZURE.NOTE]
+	App Service の認証/承認機能ではなく、App Service ゲートウェイを使用している場合、リダイレクト URL では、ゲートウェイ URL とパス _/signin-twitter_ を使用します。
 
 3.  ページの下部で、条項を読み、同意します。**[Create your Twitter application]** をクリックします。これでアプリケーションが登録され、アプリケーションの詳細が表示されます。
 
-4. **[設定]** タブをクリックし、**[Allow this application to be used to sign in with Twitter]** チェック ボックスをオンにして、**[Update Settings]** をクリックします。
+4. **[Settings]** タブをクリックし、**[Allow this application to be used to sign in with Twitter]** チェック ボックスをオンにして、**[Update Settings]** をクリックします。
 
 5. **[Keys and Access Tokens]** タブをクリックします。**[Consumer Key (API Key)]** と **[Consumer secret (API Secret)]** の値を書き留めます。
 
@@ -52,7 +54,8 @@
 
 ## <a name="secrets"> </a>アプリケーションに Twitter 情報を追加する
 
-> [AZURE.NOTE]App Service ゲートウェイを使用する場合は、このセクションの内容は無視し、ポータル内で目的のゲートウェイに移動します。**[設定]**、**[ID]**、**[Twitter]** の順に選択します。先に取得した値を貼り付けて、**[保存]** をクリックします。
+> [AZURE.NOTE]
+App Service ゲートウェイを使用する場合は、このセクションの内容は無視し、ポータル内で目的のゲートウェイに移動します。**[設定]**、**[ID]**、**[Twitter]** の順に選択します。先に取得した値を貼り付けて、**[保存]** をクリックします。
 
 
 13. [Azure ポータル]に戻り、アプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックします。
@@ -88,4 +91,4 @@
 [Azure ポータル]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

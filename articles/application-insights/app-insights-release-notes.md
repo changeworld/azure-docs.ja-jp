@@ -32,6 +32,6 @@
 * [Visual Studio ツール](app-insights-release-notes-vsix.md)
 * [その他のプラットフォーム](https://github.com/Microsoft/ApplicationInsights-Home)
 
-Application Insights サービス全体の主要な機能強化をまとめた「[サービスの更新情報](http://azure.microsoft.com/updates/?service=application-insights)」ページもご覧ください。
+Application Insights サービス全体の主要な機能強化をまとめた「[サービスの更新情報](https://azure.microsoft.com/updates/?service=application-insights)」ページもご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

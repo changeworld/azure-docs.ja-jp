@@ -31,11 +31,11 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 Alcumus Info Exchange と Azure AD の統合を構成するには、次のものが必要です。
 
-- [Azure AD](http://azure.microsoft.com/) サブスクリプション
+- [Azure AD](https://azure.microsoft.com/) サブスクリプション
 - [Alcumus Info Exchange](http://www.alcumusgroup.com/) でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -99,7 +99,7 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成し�
  
      3\.1. **[応答 URL]** テキスト ボックスに、Alcumus Info Exchange サポート チームによってセットアップされたコンシューマー URL を入力します。
 
-     >[AZURE.NOTE]適切な値がわからない場合は、Alcumus Info Exchange サポート チーム ([helpdesk@alcumusgroup.com](mailto:helpdesk@alcumusgroup.com)) にお問い合わせください。
+     >[AZURE.NOTE] 適切な値がわからない場合は、Alcumus Info Exchange サポート チーム ([helpdesk@alcumusgroup.com](mailto:helpdesk@alcumusgroup.com)) にお問い合わせください。
 
      3\.2.**[次へ]** をクリックします。
  
@@ -110,7 +110,7 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成し�
 
 6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![What is Azure AD Connect][10]
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD Connect の概要][11]
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![What is Azure AD Connect][11]
 
 
 
@@ -204,4 +204,4 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成し�
 [205]: ./media/active-directory-saas-alcumus-info-tutorial/tutorial_general_205.png
 [400]: ./media/active-directory-saas-alcumus-info-tutorial/tutorial_alcumus_402.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

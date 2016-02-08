@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="09/17/2015" 
+ms.date="01/19/2016" 
 ms.author="saurabh"/>
 
 # PowerShell を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
@@ -20,12 +20,12 @@ ms.author="saurabh"/>
 >[AZURE.SELECTOR]
 - [Azure classic portal](cloud-services-role-enable-remote-desktop.md)
 - [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
-- [Visual Studio](https://msdn.microsoft.com/library/gg443832.aspx)
+- [Visual Studio](../vs-azure-tools-remote-desktop-roles.md)
 
 
 リモート デスクトップを使用して、Azure で実行されているロールのデスクトップにアクセスできます。リモート デスクトップ接続を使用すると、アプリケーションの実行中にそのアプリケーションの問題のトラブルシューティングや診断を行うことができます。
 
-この記事では、PowerShell を使用して、クラウド サービスのロールでリモート デスクトップを有効にする方法について説明します。この記事で求められる前提条件については、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)に関するページを参照してください。PowerShell では、リモート デスクトップ拡張機能による方法を使用するため、アプリケーションのデプロイ後もリモート デスクトップを有効化できます。
+この記事では、PowerShell を使用して、クラウド サービスのロールでリモート デスクトップを有効にする方法について説明します。この記事で求められる前提条件については、[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)に関するページを参照してください。PowerShell では、リモート デスクトップ拡張機能による方法を使用するため、アプリケーションのデプロイ後もリモート デスクトップを有効化できます。
 
 
 ## PowerShell からリモート デスクトップを構成する
@@ -50,7 +50,7 @@ PowerShell は自動化のシナリオで使用されることが多いため、
 
 パスワード ファイル (password.txt) が作成されると、このファイルのみを使用するようになるので、プレーンテキストでパスワードを指定する必要がなくなります。パスワードの更新が必要な場合は、新しいパスワードを使用して上記の PowerShell を再度実行することで、新しい password.txt ファイルを生成できます。
 
->[AZURE.IMPORTANT]パスワードを設定するときは、[複雑さの要件](https://technet.microsoft.com/library/cc786468.aspx)を満たしていることを確認してください。
+>[AZURE.IMPORTANT] パスワードを設定するときは、[複雑さの要件](https://technet.microsoft.com/library/cc786468.aspx)を満たしていることを確認してください。
 
 セキュリティで保護されたパスワード ファイルから資格情報オブジェクトを作成するには、ファイルの内容を読み取り、[ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx) を使用して、セキュリティで保護された文字列にもう一度変換する必要があります。[Set-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.com/library/azure/dn495117.aspx) コマンドレットは、資格情報だけでなく、ユーザー アカウントの期限が切れる日時を指定する *Expiration* パラメーターも受け入れます。静的な日時を指定することでこれを設定するか、または単に現在の日付から数日後にアカウントの期限が切れるように設定することもできます。
 
@@ -94,7 +94,7 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 
 ```  
 
->[AZURE.NOTE]*UninstallConfiguration* パラメーターを使用すると、サービスに適用されていた拡張機能の構成がアンインストールされます。拡張機能のすべての構成は、デプロイによって拡張機能をアクティブ化するためにサービス構成に関連付けられており、デプロイはその拡張機能の構成に関連付けられている必要があります。*UninstallConfiguration* を使用せずに Remove コマンドレットを呼び出すと、拡張機能の構成からデプロイとの関連付けが解除されるため、実質的にはデプロイから拡張機能が削除されることになります。ただし、拡張機能の構成は、サービスに関連付けられたままになります。拡張機能の構成を完全に削除するには、*UninstallConfiguration* パラメーターを使用して Remove コマンドレットを呼び出す必要があります。
+>[AZURE.NOTE] *UninstallConfiguration* パラメーターを使用すると、サービスに適用されていた拡張機能の構成がアンインストールされます。拡張機能のすべての構成は、デプロイによって拡張機能をアクティブ化するためにサービス構成に関連付けられており、デプロイはその拡張機能の構成に関連付けられている必要があります。*UninstallConfiguration* を使用せずに Remove コマンドレットを呼び出すと、拡張機能の構成からデプロイとの関連付けが解除されるため、実質的にはデプロイから拡張機能が削除されることになります。ただし、拡張機能の構成は、サービスに関連付けられたままになります。拡張機能の構成を完全に削除するには、*UninstallConfiguration* パラメーターを使用して Remove コマンドレットを呼び出す必要があります。
 
 
 
@@ -102,4 +102,4 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 
 [Cloud Services の構成方法](cloud-services-how-to-configure.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

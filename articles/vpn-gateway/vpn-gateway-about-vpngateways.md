@@ -33,7 +33,7 @@ VPN Gateway は、仮想ネットワークとオンプレミスの場所の間�
 - Standard
 - 高性能
 
-次の表は、ゲートウェイの種類、および予測される合計スループットを示したものです。料金はゲートウェイの SKU によって異なります。料金については、[VPN Gateway の料金](http://azure.microsoft.com/pricing/details/vpn-gateway/)のページをご確認ください。
+次の表は、ゲートウェイの種類、および予測される合計スループットを示したものです。料金はゲートウェイの SKU によって異なります。料金については、[VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway/)のページをご確認ください。
 
 | SKU | VPN Gateway と ExpressRoute の共存 | ExpressRoute ゲートウェイのスループット | VPN Gateway のスループット | VPN Gateway の IPsec トンネルの最大数 |
 |-------------|-----------------------------------|---------------------------------|------------------------|-------------------------------|
@@ -83,4 +83,4 @@ VPN デバイスの構成を選択します。「[VPN デバイスについて](
 
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/13/2015"
+   ms.date="01/13/2016"
    ms.author="larryfr"/>
 
 
@@ -21,12 +21,12 @@
 
 Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL Server などのオンプレミスのリソースに組み込むことや、クラウドのリソース間にセキュリティで保護されたプライベート ネットワークを作成することができます。
 
-> [AZURE.NOTE]HDInsight ではアフィニティ ベースの Azure の仮想ネットワークはサポートされていません。HDInsight を使用するときは、場所ベースの仮想ネットワークを使用する必要があります。
+> [AZURE.NOTE] HDInsight ではアフィニティ ベースの Azure の仮想ネットワークはサポートされていません。HDInsight を使用するときは、場所ベースの仮想ネットワークを使用する必要があります。
 
 
 ##<a id="whatis"></a>Azure Virtual Network とは
 
-[Azure Virtual Network](http://azure.microsoft.com/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
+[Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
 
 * プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
 
@@ -58,11 +58,11 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 
 Virtual Network の機能、利点の詳細については、「[Azure 仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
-> [AZURE.NOTE]HDInsight クラスターをプロビジョニングする前に、Azure Virtual Network を作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](http://azure.microsoft.com/documentation/services/virtual-network/)」を参照してください。
+> [AZURE.NOTE] HDInsight クラスターをプロビジョニングする前に、Azure Virtual Network を作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](https://azure.microsoft.com/documentation/services/virtual-network/)」を参照してください。
 
 ## Virtual Network に関する要件
 
-> [AZURE.IMPORTANT]Virtual Network で HDInsight クラスターを作成するには、このセクションで説明する、特定の Virtual Network 構成が必要です。
+> [AZURE.IMPORTANT] Virtual Network で HDInsight クラスターを作成するには、このセクションで説明する、特定の Virtual Network 構成が必要です。
 
 * Azure HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在取り扱っていません。 
 
@@ -87,7 +87,7 @@ Virtual Network の機能、利点の詳細については、「[Azure 仮想ネ
     
     2. HDInsight クラスターを作成します。クラスターの Virtual Network 設定を構成する場合、手順 1 で作成したサブネットを選択します。
 
-    > [AZURE.NOTE]上記の手順は、 Virtual Network の IP アドレス範囲内の IP アドレスへの通信を制限していないことを前提としています。制限している場合は、新しいサブネットと通信できるように制限を変更する必要がある可能性があります。
+    > [AZURE.NOTE] 上記の手順は、_ Virtual Network の IP アドレス範囲内_の IP アドレスへの通信を制限していないことを前提としています。制限している場合は、新しいサブネットと通信できるように制限を変更する必要がある可能性があります。
 
     ネットワーク セキュリティ グループの詳細については、「[ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md)」を参照してください。Azure Virtual Network でルーティングを制御する方法については、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」を参照してください。
 
@@ -103,11 +103,11 @@ HDInsight クラスターには、Virtual Network インターフェイスを表
 
 	https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/<servicename>/components/<componentname>
 
-> [AZURE.NOTE]HDInsight での Ambari の使用の詳細については、「[Ambari API を使用した HDInsight の Hadoop クラスターの監視](hdinsight-monitor-use-ambari-api.md)」を参照してください。
+> [AZURE.NOTE] HDInsight での Ambari の使用の詳細については、「[Ambari API を使用した HDInsight の Hadoop クラスターの監視](hdinsight-monitor-use-ambari-api.md)」を参照してください。
 
 クラスター名およびクラスターで実行するサービスとコンポーネント (YARN リソース マネージャーなど) を指定する必要があります。
 
-> [AZURE.NOTE]返されるデータは、コンポーネントに関する多くの情報を含む JavaScript Object Notation (JSON) ドキュメントです。FQDN のみを抽出するには、JSON のパーサーを使用して、`host_components[0].HostRoles.host_name` の値を取得する必要があります。
+> [AZURE.NOTE] 返されるデータは、コンポーネントに関する多くの情報を含む JavaScript Object Notation (JSON) ドキュメントです。FQDN のみを抽出するには、JSON のパーサーを使用して、`host_components[0].HostRoles.host_name` の値を取得する必要があります。
 
 たとえば、HDInsight Hadoop クラスターから FQDN を取得するには、次のいずれかのメソッドを使用して、YARN リソース マネージャーのデータを取得します。
 
@@ -158,7 +158,7 @@ ZooKeeper クォーラム アドレスを取得するには、次のいずれか
 
 		curl -G -u <username>:<password> "https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/configurations?type=hbase-site&tag=default&fields=items/properties/hbase.zookeeper.quorum" | jq .items[0].properties[]
 
-> [AZURE.NOTE]HDInsight での Ambari の使用の詳細については、「[Ambari API を使用した HDInsight の Hadoop クラスターの監視](hdinsight-monitor-use-ambari-api.md)」を参照してください。
+> [AZURE.NOTE] HDInsight での Ambari の使用の詳細については、「[Ambari API を使用した HDInsight の Hadoop クラスターの監視](hdinsight-monitor-use-ambari-api.md)」を参照してください。
 
 クォーラムの情報を取得したら、それをクライアント アプリケーションで使用します。
 
@@ -199,4 +199,4 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 
 Azure のかそうネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

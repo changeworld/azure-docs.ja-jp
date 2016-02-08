@@ -25,7 +25,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 このチュートリアルでは、以下があることを前提としています。
 
-- 有効な Azure サブスクリプション[無料試用版](http://azure.microsoft.com/pricing/free-trial)にサインアップできます。
+- 有効な Azure サブスクリプション[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
 - 既存のオンプレミスの AlwaysOn 可用性グループ。可用性グループの詳細については、「[AlwaysOn 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)」を参照してください。
 
@@ -91,7 +91,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 1. プロビジョニング プロセスが開始されます。ウィザードが正常に完了したら、**[閉じる]** をクリックして、ウィザードを終了します。
 
->[AZURE.NOTE]Azure レプリカの追加ウィザードでは、<Users><ユーザー名>\\AppData\\Local\\SQL Server\\AddReplicaWizard にログ ファイルが作成されます。このログ ファイルは、障害が発生した Azure レプリカのデプロイのトラブルシューティングに使用できます。ウィザードで操作の実行に失敗すると、プロビジョニングされた VM が削除されるなど、前のすべての操作がロールバックされます。
+>[AZURE.NOTE] Azure レプリカの追加ウィザードでは、<Users><ユーザー名>\\AppData\\Local\\SQL Server\\AddReplicaWizard にログ ファイルが作成されます。このログ ファイルは、障害が発生した Azure レプリカのデプロイのトラブルシューティングに使用できます。ウィザードで操作の実行に失敗すると、プロビジョニングされた VM が削除されるなど、前のすべての操作がロールバックされます。
 
 ## 可用性グループ リスナーの作成
 
@@ -103,4 +103,4 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

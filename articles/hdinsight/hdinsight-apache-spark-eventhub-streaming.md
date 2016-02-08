@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/29/2015" 
+	ms.date="01/27/2016" 
 	ms.author="nitinme"/>
 
 
@@ -24,13 +24,13 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 このチュートリアルでは、Azure Event Hubs を作成する方法、Java のコンソール アプリケーションを使用して Event Hubs にメッセージを取り込む方法、および Scala で記述された Spark アプリケーションを使用してメッセージを並列に取得する方法について説明します。このアプリケーションでは、Event Hubs を通してストリーミングされたデータを処理し、さまざまな出力 (Azure Storage BLOB、Hive テーブル、および SQL テーブル) にルーティングします。
 
-> [AZURE.NOTE]この記事の手順に従うには、両方のバージョンの Azure ポータルを使用する必要があります。イベント ハブを作成するには、[Azure ポータル](https://manage.windowsazure.com)を使用します。HDInsight Spark クラスターを操作するには、[Azure プレビュー ポータル](https://ms.portal.azure.com/)を使用します。
+> [AZURE.NOTE] この記事の手順に従うには、両方のバージョンの Azure ポータルを使用する必要があります。イベント ハブを作成するには、[Azure ポータル](https://manage.windowsazure.com)を使用します。HDInsight Spark クラスターを操作するには、[Azure プレビュー ポータル](https://ms.portal.azure.com/)を使用します。
 
 **前提条件:**
 
 次のものが必要です。
 
-- Azure サブスクリプション。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - Apache Spark クラスター。手順については、「[Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
 - Oracle Java Development kit。[ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からインストールできます。
 - Java IDE。この記事では、IntelliJ IDEA 15.0.1 を使用します。[ここ](https://www.jetbrains.com/idea/download/)からインストールできます。
@@ -55,7 +55,7 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 	![ウィザード ページ 1](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.create.event.hub.png "Azure Event Hub を作成します")
 
-	> [AZURE.NOTE]待機時間とコストを削減するために、HDInsight の Apache Spark クラスターと同じ **[場所]** を選択する必要があります。
+	> [AZURE.NOTE] 待機時間とコストを削減するために、HDInsight の Apache Spark クラスターと同じ **[場所]** を選択する必要があります。
 
 3. **[Event Hub の構成]** 画面で、**[パーティション数]** と **[メッセージのリテンション期間]** の値を入力して、チェック マークをクリックします。この例では、パーティション カウントに 10 を、メッセージ保持に 1 を使用します。パーティション数を書き留めておきます。この値は後で必要になります。
 
@@ -88,7 +88,7 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 	
 2. プロジェクトをビルドします。**[Build (ビルド)]** メニューの **[Make Project (プロジェクトの作成)]** をクリックします。出力 jar が **\\out\\artifacts** の下に作成されます。
 
->[AZURE.TIP]IntelliJ IDEA で提供されているオプションを使用して、GitHub リポジトリからプロジェクトを直接作成することもできます。その方法については、ガイダンスの次のセクションに記載された手順を参照してください。そのセクションで記載されている手順の多くは、この手順で作成する Scala アプリケーションには適用されないので注意してください。次に例を示します。
+>[AZURE.TIP] IntelliJ IDEA で提供されているオプションを使用して、GitHub リポジトリからプロジェクトを直接作成することもできます。その方法については、ガイダンスの次のセクションに記載された手順を参照してください。そのセクションで記載されている手順の多くは、この手順で作成する Scala アプリケーションには適用されないので注意してください。次に例を示します。
 
 > * Spark バージョンを取り込むときに POM を更新する必要はありません。それは、このアプリケーションを作成するための依存関係が Spark に存在しないからです。
 > * プロジェクト ライブラリにいくつかの依存関係 jar を追加する必要はありません。このプロジェクトで、それらの jar は必要ないからです。
@@ -121,9 +121,9 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 5. アプリケーションでは、次の 2 つの依存関係 jar が必要です。
 
-	* **EventHub receiver jar**。Spark で Event Hub からメッセージを受信するために必要です。この jar は、Spark Linux クラスター (`/usr/hdp/current/spark-client/lib/spark-streaming-eventhubs-example-1.5.1.2.3.2.1-12-jar-with-dependencies.jar`) で入手できます。pscp を使用すると、jar をローカル コンピューターにコピーできます。
+	* **EventHub receiver jar**。Spark で Event Hub からメッセージを受信するために必要です。この jar は、Spark Linux クラスター (`/usr/hdp/current/spark-client/lib/spark-streaming-eventhubs-example-1.5.2.2.3.3.1-7-jar-with-dependencies.jar`) で入手できます。pscp を使用すると、jar をローカル コンピューターにコピーできます。
 
-			pscp sshuser@mysparkcluster-ssh.azurehdinsight.net/usr/hdp/current/spark-client/lib/spark-streaming-eventhubs-example-1.5.1.2.3.2.1-12-jar-with-dependencies.jar C:/eventhubjar
+			pscp sshuser@mysparkcluster-ssh.azurehdinsight.net:/usr/hdp/current/spark-client/lib/spark-streaming-eventhubs-example-1.5.2.2.3.3.1-7-jar-with-dependencies.jar C:/eventhubjar
 
 		これにより、Spark クラスターからローカル コンピューターに jar ファイルがコピーされます。
 
@@ -209,7 +209,7 @@ Livy を使用して Spark クラスターでストリーミング アプリケ�
 * **numExecutors** は、ストリーミング アプリケーションを実行するときに Spark が使用するコアの数です。これは常に Event Hub パーティションの数の少なくとも 2 倍になる必要があります。
 * **executorMemory**、**executorCores**、**driverMemory** は、必要なリソースをストリーミング アプリケーションに割り当てるために使用するパラメーターです。
 
->[AZURE.NOTE]パラメーターとして使用される出力フォルダー (EventCheckpoint、EventCount/EventCount10) を作成する必要はありません。ストリーミング アプリケーションによって自動的に作成されます。
+>[AZURE.NOTE] パラメーターとして使用される出力フォルダー (EventCheckpoint、EventCount/EventCount10) を作成する必要はありません。ストリーミング アプリケーションによって自動的に作成されます。
 	
 コマンドを実行したとき、出力が次のようになることを確認します。
 
@@ -370,4 +370,4 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

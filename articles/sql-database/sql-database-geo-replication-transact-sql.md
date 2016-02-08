@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management"
-    ms.date="11/10/2015"
+    ms.date="01/25/2015"
     ms.author="carlrab"/>
 
 # Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する
@@ -46,10 +46,9 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 ## セカンダリ データベースの追加
 
-**ALTER DATABASE** ステートメントを使用して、geo レプリケートされたセカンダリ データベースをパートナー サーバー上に作成できます。このステートメントは、レプリケートされるデータベースが含まれているサーバーの master データベースに対して実行します。geo レプリケートされたデータベース ("プライマリ データベース") は、レプリケートされているデータベースと同じ名前になります。また、既定では、サービス レベルがプライマリ データベースと同じになります。セカンダリ データベースは、読み取り可能または読み取り不可とすることができるほか、単一データベースまたはエラスティック データベースとすることができます。詳細については、[ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](https://azure.microsoft.com/documentation/articles/sql-database-service-tiers/)に関するページを参照してください。
-セカンダリ データベースが作成され、シード処理が行われると、データはプライマリ データベースから非同期にレプリケートを開始します。以下の手順では、Management Studio を使用して geo レプリケーションを構成する方法について説明します。単一データベースまたはエラスティック データベースとして、読み取り不可のセカンダリと読み取り可能なセカンダリを作成する手順について説明します。
+**ALTER DATABASE** ステートメントを使用して、geo レプリケートされたセカンダリ データベースをパートナー サーバー上に作成できます。このステートメントは、レプリケートされるデータベースが含まれているサーバーの master データベースに対して実行します。geo レプリケートされたデータベース ("プライマリ データベース") は、レプリケートされているデータベースと同じ名前になります。また、既定では、サービス レベルがプライマリ データベースと同じになります。セカンダリ データベースは、読み取り可能または読み取り不可とすることができるほか、単一データベースまたはエラスティック データベースとすることができます。詳細については、[ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](sql-database-service-tiers.md)に関するページを参照してください。セカンダリ データベースが作成され、シード処理が行われると、データはプライマリ データベースから非同期にレプリケートを開始します。以下の手順では、Management Studio を使用して geo レプリケーションを構成する方法について説明します。単一データベースまたはエラスティック データベースとして、読み取り不可のセカンダリと読み取り可能なセカンダリを作成する手順について説明します。
 
-> [AZURE.NOTE]\(たとえば、geo レプリケーション リレーションシップが現在存在しているか、以前に存在していたことが原因で) 指定したパートナー サーバー上にセカンダリ データベースが存在する場合、コマンドは失敗します。
+> [AZURE.NOTE] (たとえば、geo レプリケーション リレーションシップが現在存在しているか、以前に存在していたことが原因で) 指定したパートナー サーバー上にセカンダリ データベースが存在する場合、コマンドは失敗します。
 
 
 ### 読み取り不可のセカンダリ (単一データベース) の追加
@@ -58,12 +57,12 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 1. バージョン 13.0.600.65 以降の SQL Server Management Studio を使用します。
 
- 	 >[AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。常に最新バージョンの Management Studio を使用して、Azure ポータルの更新プログラムとの同期を維持することをお勧めします。
+ 	 >[AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。常に最新バージョンの Management Studio を使用して、Azure ポータルの更新プログラムとの同期を維持することをお勧めします。
 
 
 2. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[master]** を右クリックして、**[新しいクエリ]** をクリックします。
 
-3. 次の **ALTER DATABASE** ステートメントを使用して、ローカル データベースを、<MySecondaryServer1> 上に読み取り不可のセカンダリ データベースを備えた geo レプリケーション プライマリに変更します。
+3. 次の **ALTER DATABASE** ステートメントを使用して、ローカル データベースを、MySecondaryServer1 上に読み取り不可のセカンダリ データベースを持つ geo レプリケーション プライマリにします (MySecondaryServer1 は、サーバーのフレンドリ名です)。
 
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer1> WITH (ALLOW_CONNECTIONS = NO);
@@ -97,8 +96,8 @@ geo レプリケーションを構成するには、次のものが必要です�
 3. 次の **ALTER DATABASE** ステートメントを使用して、ローカル データベースを、エラスティック プール内のセカンダリ サーバー上に読み取り不可のセカンダリ データベースを持つ geo レプリケーション プライマリにします。
 
         ALTER DATABASE <MyDB>
-           ADD SECONDARY ON SERVER <MySecondaryServer3> WITH (ALLOW_CONNECTIONS = NO)
-           , ELASTIC_POOL (name = MyElasticPool1);
+           ADD SECONDARY ON SERVER <MySecondaryServer3> WITH (ALLOW_CONNECTIONS = NO
+           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool1));
 
 4. **[実行]** をクリックしてクエリを実行します。
 
@@ -114,8 +113,8 @@ geo レプリケーションを構成するには、次のものが必要です�
 3. 次の **ALTER DATABASE** ステートメントを使用して、ローカル データベースを、エラスティック プール内のセカンダリ サーバー上に読み取り可能なセカンダリ データベースを持つ geo レプリケーション プライマリにします。
 
         ALTER DATABASE <MyDB>
-           ADD SECONDARY ON SERVER <MySecondaryServer4> WITH (ALLOW_CONNECTIONS = NO)
-           , ELASTIC_POOL (name = MyElasticPool2);
+           ADD SECONDARY ON SERVER <MySecondaryServer4> WITH (ALLOW_CONNECTIONS = ALL
+           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool2));
 
 4. **[実行]** をクリックしてクエリを実行します。
 
@@ -123,7 +122,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 ## セカンダリ データベースを削除する
 
-**ALTER DATABASE** を使用して、セカンダリ データベースとそのプライマリの間のレプリケーション パートナーシップを完全に終了させることができます。このステートメントは、プライマリ データベースが存在する master データベースに対して実行されます。リレーションシップの終了後、セカンダリ データベースは通常の読み取り/書き込みデータベースになります。セカンダリ データベースへの接続が切断された場合、コマンドは成功します。ただし、接続が復元されると、セカンダリ データベースは読み取り/書き込みデータベースになります。詳細については、[ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](https://azure.microsoft.com/documentation/articles/sql-database-service-tiers/)に関するページを参照してください。
+**ALTER DATABASE** を使用して、セカンダリ データベースとそのプライマリの間のレプリケーション パートナーシップを完全に終了させることができます。このステートメントは、プライマリ データベースが存在する master データベースに対して実行されます。リレーションシップの終了後、セカンダリ データベースは通常の読み取り/書き込みデータベースになります。セカンダリ データベースへの接続が切断された場合、コマンドは成功します。ただし、接続が復元されると、セカンダリ データベースは読み取り/書き込みデータベースになります。詳細については、[ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](sql-database-service-tiers.md)に関するページを参照してください。
 
 geo レプリケートされたセカンダリを geo レプリケーション パートナーシップから削除するには、次の手順に従います。
 
@@ -149,10 +148,10 @@ geo レプリケートされたセカンダリを geo レプリケーション �
 
 2. geo レプリケーション パートナーシップにおける 2 つのデータベースのロールを切り替えます。
 
-このシーケンスによってデータが失われることはありません。ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。通常の状況では、操作全体が完了するのに 1 分かかりません。詳細については、[ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](https://azure.microsoft.com/documentation/articles/sql-database-service-tiers/)に関するページを参照してください。
+このシーケンスによってデータが失われることはありません。ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。通常の状況では、操作全体が完了するのに 1 分かかりません。詳細については、[ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](sql-database-service-tiers.md)に関するページを参照してください。
 
 
-> [AZURE.NOTE]コマンド発行時にプライマリ データベースが使用できない場合、コマンドは失敗し、プライマリ サーバーが使用できないことを示すエラー メッセージが表示されます。まれに、操作が完了しないで、スタックしたような状態になる場合があります。この場合、ユーザーは強制フェールオーバー コマンドを実行できますが、データが失われることを容認する必要があります。
+> [AZURE.NOTE] コマンド発行時にプライマリ データベースが使用できない場合、コマンドは失敗し、プライマリ サーバーが使用できないことを示すエラー メッセージが表示されます。まれに、操作が完了しないで、スタックしたような状態になる場合があります。この場合、ユーザーは強制フェールオーバー コマンドを実行できますが、データが失われることを容認する必要があります。
 
 計画されたフェールオーバーを開始するには、次の手順に従います。
 
@@ -176,7 +175,7 @@ geo レプリケートされたセカンダリを geo レプリケーション �
 
 ただし、セカンダリ データベースではポイントインタイム リストアがサポートされていません。そのため、古いプライマリ データベースにコミットされたデータのうち、強制フェールオーバーが発生する前に新しいプライマリ データベースにレプリケートされなかったデータを復元しようとする場合、ユーザーは、この失われたデータを復元するようサポートに問い合わせる必要があります。
 
-> [AZURE.NOTE]プライマリとセカンダリの両方がオンラインのときにコマンドを発行すると、古いプライマリは新しいセカンダリになりますが、データの同期は行われません。そのため、一部のデータは失われる可能性があります。
+> [AZURE.NOTE] プライマリとセカンダリの両方がオンラインのときにコマンドを発行すると、古いプライマリは新しいセカンダリになりますが、データの同期は行われません。そのため、一部のデータは失われる可能性があります。
 
 
 プライマリ データベースに複数のセカンダリ データベースがある場合、コマンドは、そのコマンドが実行されたセカンダリ サーバーでのみ成功します。ただし、その他のセカンダリ データベースは、強制フェールオーバーが発生したことを認識しません。ユーザーは、"セカンダリを削除する" API を使用してこの構成を手動で修復した後、これら残りのセカンダリ データベースで geo レプリケーションを再構成する必要があります。
@@ -229,9 +228,9 @@ geo レプリケーション パートナーシップを監視するには、次
 
 ## その他のリソース
 
-- [新しい geo レプリケーション機能に関するスポットライト](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication)
+- [新しい geo レプリケーション機能に関するスポットライト](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 - [geo レプリケーションを使用したビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
+- [SQL Database のドキュメント](sql-database.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

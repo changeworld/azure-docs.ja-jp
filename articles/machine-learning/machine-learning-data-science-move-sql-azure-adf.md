@@ -29,7 +29,7 @@ Azure Data Factory は、データの移動や変換を調整し自動化する�
 
 ADF を使用すると、既存のデータ処理サービスを、可用性が高く、クラウドで管理されるデータ パイプラインに組み込むことができます。これらのデータ パイプラインは、データの取り込み、準備、変換、分析、および発行のためのスケジュールが設定できます。ADF が複雑なデータと処理の依存関係をすべて管理して調整します。増加するオンプレミスのデータ ソースとクラウドのデータ ソースを接続するソリューションをクラウド内で迅速に構築してデプロイすることができます。
 
-オンプレミスとクラウドの両方のリソースにアクセスするハイブリッド シナリオで、継続的にデータを移行する必要がある場合、および移行の過程で、データを処理する場合や、データに変更を加えたりビジネス ロジックを付加したりする必要がある場合には、ADF の使用を検討してください。ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。ADF には他にも、複雑な操作のサポートなどの機能があります。詳細については、[Azure Data Factory (ADF)](http://azure.microsoft.com/services/data-factory/) にあるドキュメントを参照してください。
+オンプレミスとクラウドの両方のリソースにアクセスするハイブリッド シナリオで、継続的にデータを移行する必要がある場合、および移行の過程で、データを処理する場合や、データに変更を加えたりビジネス ロジックを付加したりする必要がある場合には、ADF の使用を検討してください。ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。ADF には他にも、複雑な操作のサポートなどの機能があります。詳細については、[Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/) にあるドキュメントを参照してください。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -49,7 +49,7 @@ ADF を使用すると、既存のデータ処理サービスを、可用性が�
 * **Azure SQL Database** へのアクセス権。Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、「[最初の Azure SQL データベースを作成する](sql-database-get-started.md)」をご覧ください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。手順については、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
-> [AZURE.NOTE]この手順では、[Azure ポータル](https://ms.portal.azure.com/)を使用します。
+> [AZURE.NOTE] この手順では、[Azure ポータル](https://ms.portal.azure.com/)を使用します。
 
 ##<a name="upload-data"></a>オンプレミスの SQL Server にデータをアップロードする
 
@@ -94,7 +94,7 @@ Azure SQL Database 用にリンクされたサービスを作成するには、A
 
 以下のスクリプトベースの手順に従って、データセットの構造、場所、可用性を指定するテーブルを作成します。テーブルを定義するには、JSON ファイルを使用します。これらのファイルの構造の詳細については、「[データセット](data-factory-create-datasets.md)」を参照してください。
 
-> [AZURE.NOTE]`Add-AzureAccount` コマンドレットを実行してから [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) コマンドレットを実行して、コマンドの実行に正しい Azure サブスクリプションが選択されていることを確認する必要があります。このコマンドレットの説明については、「[Add-AzureAccount](https://msdn.microsoft.com/library/azure/dn790372.aspx)」を参照してください。
+> [AZURE.NOTE]  `Add-AzureAccount` コマンドレットを実行してから [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) コマンドレットを実行して、コマンドの実行に正しい Azure サブスクリプションが選択されていることを確認する必要があります。このコマンドレットの説明については、「[Add-AzureAccount](https://msdn.microsoft.com/library/azure/dn790372.aspx)」を参照してください。
 
 テーブル内の JSON ベースの定義では、次の名前が使用されます。
 
@@ -107,7 +107,7 @@ Azure SQL Database 用にリンクされたサービスを作成するには、A
 2. [BLOB テーブル](#adf-table-blob-store)
 3. [SQL Azure テーブル](#adf-table-azure-sql)
 
-> [AZURE.NOTE]次の手順では、Azure PowerShell を使用して ADF アクティビティの定義と作成を行います。これらのタスクは、Azure ポータルを使用しても行えます。詳細については、「[入力データセットと出力データセットを作成する](data-factory-use-onpremises-datasources.md#step-3-create-input-and-output-datasets)」を参照してください。
+> [AZURE.NOTE]  次の手順では、Azure PowerShell を使用して ADF アクティビティの定義と作成を行います。これらのタスクは、Azure ポータルを使用しても行えます。詳細については、「[入力データセットと出力データセットを作成する](data-factory-use-onpremises-datasources.md#step-3-create-input-and-output-datasets)」を参照してください。
 
 ###<a name="adf-table-onprem-sql"></a>オンプレミスの SQL テーブル
 
@@ -211,7 +211,7 @@ Azure SQL Database 用にリンクされたサービスを作成するには、A
 * このスクリプトでは、**パイプライン名**を *AMLDSProcessPipeline* としています。
 * また、既定の実行時間 (12 am UTC) を使用して、ジョブが毎日実行されるようにパイプラインの周期性を設定していることにも注目してください。
 
-> [AZURE.NOTE]次の手順では、Azure PowerShell を使用して ADF パイプラインの定義と作成を行います。このタスクは、Azure ポータルを使用しても行えます。詳細については、「[パイプラインを作成して実行する](data-factory-use-onpremises-datasources.md#step-4-create-and-run-a-pipeline)」を参照してください。
+> [AZURE.NOTE]  次の手順では、Azure PowerShell を使用して ADF パイプラインの定義と作成を行います。このタスクは、Azure ポータルを使用しても行えます。詳細については、「[パイプラインを作成して実行する](data-factory-use-onpremises-datasources.md#step-4-create-and-run-a-pipeline)」を参照してください。
 
 上記のテーブル定義を使用して、ADF のパイプライン定義を次のように指定します。
 
@@ -299,6 +299,6 @@ Azure クラシック ポータルで (図をクリックすると) ADF 上に�
 
 パイプラインを実行すると、BLOB に選択したコンテナー内に表示されるデータを確認することができます (1 日につき 1 ファイル)。
 
-ADF が提供するデータを段階的にパイプ処理する機能をまだ活用していないことに注意してください。これを行う方法と ADF が提供するその他の機能の詳細については、[ADF のドキュメント](http://azure.microsoft.com/services/data-factory/)を参照してください。
+ADF が提供するデータを段階的にパイプ処理する機能をまだ活用していないことに注意してください。これを行う方法と ADF が提供するその他の機能の詳細については、[ADF のドキュメント](https://azure.microsoft.com/services/data-factory/)を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

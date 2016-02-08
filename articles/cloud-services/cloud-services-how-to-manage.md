@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="クラウド サービスの管理方法 | Microsoft Azure" 
+	pageTitle="一般的なクラウド サービス管理タスク (クラシック) |Microsoft Azure" 
 	description="Azure クラシック ポータルでクラウド サービスを管理する方法について説明します。" 
 	services="cloud-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/22/2015"
+	ms.date="01/20/2016"
 	ms.author="adegeo"/>
 
 
@@ -154,7 +154,8 @@ Azure クラシック ポータルの **[Cloud Services]** 領域では、サー
 
 5. クラウド サービスを削除するには、**[クラウド サービスの削除]** をクリックします。次に、確認ダイアログで **[はい]** をクリックします。
 
-> [AZURE.NOTE]Azure でクラウド サービスに詳細監視が構成されている場合、クラウド サービスを削除しても、ストレージ アカウントから監視データは削除されません。データは手作業で削除する必要があります。メトリック テーブルのある場所については、「[クラウド サービスの監視方法](cloud-services-how-to-monitor.md)」の「方法: Azure クラシック ポータル外で詳細監視データにアクセス」を参照してください。
+> [AZURE.NOTE]
+Azure でクラウド サービスに詳細監視が構成されている場合、クラウド サービスを削除しても、ストレージ アカウントから監視データは削除されません。データは手作業で削除する必要があります。メトリック テーブルのある場所については、「[クラウド サービスの監視方法](cloud-services-how-to-monitor.md)」の「方法: Azure クラシック ポータル外で詳細監視データにアクセス」を参照してください。
 
 ## 次のステップ
 
@@ -163,4 +164,4 @@ Azure クラシック ポータルの **[Cloud Services]** 領域では、サー
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -19,7 +19,7 @@
 
 # Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示
 
-Azure Active Directory でのシングル サインオンをサポートするアプリケーション一覧を [Azure AD ギャラリー](http://azure.microsoft.com/marketplace/active-directory/all/)に表示するには、まず次の統合モードのいずれかをアプリケーションに実装する必要があります。
+Azure Active Directory でのシングル サインオンをサポートするアプリケーション一覧を [Azure AD ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)に表示するには、まず次の統合モードのいずれかをアプリケーションに実装する必要があります。
 
 * **OpenID Connect** - 認証には OpenID Connect を使用し、構成には Azure AD Consent API を使用して Azure AD と直接統合します。統合を始めたばかりで、アプリケーションが SAML をサポートしていない場合、このモードが推奨されます。
 
@@ -33,7 +33,7 @@ Azure Active Directory でのシングル サインオンをサポートする�
 
 * Azure AD チームが統合のテストに使用できるアプリケーションのテスト テナントまたはアカウントの資格情報を記載してください。  
 
-* [Azure AD Consent フレームワーク](https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/#overview-of-the-consent-framework)を使用して Azure AD チームがサインインし、Azure AD のインスタンスをアプリケーションに接続する手順を説明してください。
+* [Azure AD Consent フレームワーク](https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/#overview-of-the-consent-framework/)を使用して Azure AD チームがサインインし、Azure AD のインスタンスをアプリケーションに接続する手順を説明してください。
 
 * Azure AD チームがアプリケーションでシングル サインオンをテストするために必要な詳細な手順があれば、説明してください。
 
@@ -97,4 +97,4 @@ SAML 2.0 をサポートするすべてのアプリケーションは、[この�
 > 
 > アプリケーションのロゴ (PNG ファイル、150 x 122px、透明の背景色) を添付してください:
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0128_2016-->

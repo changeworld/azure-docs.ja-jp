@@ -30,7 +30,7 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 
 - プログラムを使用してキューを操作する方法の詳細については、[.NET からキュー ストレージを使用する方法](storage-dotnet-how-to-use-queues.md)に関するページをご覧ください。
 - Azure Storage の一般情報については、「[ストレージのドキュメント](https://azure.microsoft.com/documentation/services/storage/)」をご覧ください。
-- Azure Cloud Services の一般情報については、「[Cloud Services のドキュメント](http://azure.microsoft.com/documentation/services/cloud-services/)」をご覧ください。
+- Azure Cloud Services の一般情報については、「[Cloud Services のドキュメント](https://azure.microsoft.com/documentation/services/cloud-services/)」をご覧ください。
 - ASP.NET アプリケーションのプログラミングについての詳細は、「[ASP.NET](http://www.asp.net)」をご覧ください。
 
 
@@ -176,4 +176,4 @@ ASP.NET 5 プロジェクトでキューにアクセスするには、Azure キ�
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

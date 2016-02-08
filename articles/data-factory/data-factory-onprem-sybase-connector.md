@@ -30,6 +30,8 @@ Data Factory は、他のデータ ストアから Sybase へのデータの移�
 
 Data Management Gateway で Sybase データベースに接続するには、[Sybase のデータ プロバイダー](http://go.microsoft.com/fwlink/?linkid=324846)を Data Management Gateway と同じシステムにインストールする必要があります。
 
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+
 ## サンプル: Sybase から Azure BLOB にデータをコピーする
 
 下のサンプルで確認できる要素:
@@ -217,13 +219,13 @@ Data Management Gateway で Sybase データベースに接続するには、[Sy
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 type | type プロパティを **OnPremisesSybase** に設定する必要があります | はい
-server | Sybase サーバーの名前です。 | あり
-database | Sybase データベースの名前です。 | あり 
+server | Sybase サーバーの名前です。 | はい
+database | Sybase データベースの名前です。 | はい 
 schema | データベース内のスキーマの名前です。 | いいえ
-authenticationType | Sybase データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | あり
+authenticationType | Sybase データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | はい
 username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ
 パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ
-gatewayName | Data Factory サービスが、オンプレミスの Sybase データベースへの接続に使用するゲートウェイの名前です。 | あり 
+gatewayName | Data Factory サービスが、オンプレミスの Sybase データベースへの接続に使用するゲートウェイの名前です。 | はい 
 
 オンプレミスの Sybase データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
@@ -264,4 +266,4 @@ Sybase では、T-SQL と T-SQL 型をサポートします。sql 型から .NET
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

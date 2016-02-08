@@ -23,11 +23,11 @@
 
 この記事では、Windows ベースの Azure 仮想マシンの複雑なリモート デスクトップのエラーを診断して修正するための詳細なトラブルシューティング手順を説明します。
 
-> [AZURE.IMPORTANT]先に進む前に、リモート デスクトップのより一般的なエラーを解消するために、必ず[リモート デスクトップの基本的なトラブルシューティングの記事](virtual-machines-troubleshoot-remote-desktop-connections.md)をお読みください。
+> [AZURE.IMPORTANT] 先に進む前に、リモート デスクトップのより一般的なエラーを解消するために、必ず[リモート デスクトップの基本的なトラブルシューティングの記事](virtual-machines-troubleshoot-remote-desktop-connections.md)をお読みください。
 
 [基本的なリモート デスクトップのトラブルシューティング ガイド](virtual-machines-troubleshoot-remote-desktop-connections.md)で説明されているどのエラー メッセージとも似ていないリモート デスクトップ エラー メッセージが表示される場合は、以下の手順に従って、リモート デスクトップ ([RDP](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol)) クライアントが Azure VM 上の RDP サービスに接続できない理由を調べてみることができます。
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](http://azure.microsoft.com/support/faq/)」を参照してください。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 
 ## リモート デスクトップ接続のコンポーネント
@@ -100,7 +100,7 @@
 
 ![](./media/virtual-machines-rdp-detailed-troubleshoot/tshootrdp_3.png)
 
-> [AZURE.NOTE]リソース マネージャーで作成された仮想マシンについては、「[ソース 4: ネットワーク セキュリティ グループ](#nsgs)」はスキップしてください。
+> [AZURE.NOTE] リソース マネージャーで作成された仮想マシンについては、「[ソース 4: ネットワーク セキュリティ グループ](#nsgs)」はスキップしてください。
 
 同じクラウド サービスまたは仮想ネットワーク内に別の仮想マシンがない場合は、「[Azure 上で Windows を実行する仮想マシンの作成](virtual-machines-windows-tutorial.md)」の手順を使用して、新しい仮想マシンを作成できます。テストが完了した後は、余分な仮想マシンを削除します。
 
@@ -195,4 +195,4 @@ Azure VM のリモート デスクトップのエンドポイントでも、内�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

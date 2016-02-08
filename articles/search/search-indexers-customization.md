@@ -24,8 +24,8 @@ Azure Search インデクサーに慣れていない場合は、まず次の記�
 
 - [インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 - [インデクサーを使用した DocumentDB と Azure Search の接続](../documentdb/documentdb-search-indexer.md)
-- [インデクサーのサポートを含む .NET SDK)](https://msdn.microsoft.com/library/dn951165.aspx) または 
-- [インデクサー操作 (Azure Search サービス REST API)](https://msdn.microsoft.com/library/azure/dn946891.aspx)
+- [インデクサーのサポートを含む .NET SDK](https://msdn.microsoft.com/library/dn951165.aspx) または 
+- [インデクサーの操作 (Azure Search サービスの REST API)](https://msdn.microsoft.com/library/azure/dn946891.aspx)
 
 ##データソースとターゲット インデックス間のフィールド名を変更する##
 
@@ -114,7 +114,7 @@ Azure Search ではユーザーがキーを使用してドキュメントを参�
 
 いくつかのエラーを許容する場合でも、失敗したドキュメントについての情報が [Get Indexer Status API](https://msdn.microsoft.com/library/azure/dn946884.aspx) によって返されます。
 
-以上です。今後のコンテンツについてアイデアやご意見をお持ちの場合、内容をハッシュタグ #AzureSearch を付けてツイートするか、[UserVoice ページ](http://feedback.azure.com/forums/263029-azure-search)で送信できます。
+以上です。今後のコンテンツについてアイデアやご意見をお持ちの場合、内容をハッシュタグ #AzureSearch を付けてツイートするか、[UserVoice ページ](https://feedback.azure.com/forums/263029-azure-search/)で送信できます。
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

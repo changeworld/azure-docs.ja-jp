@@ -2,13 +2,14 @@
  pageTitle="リモート監視の事前構成済みソリューションのチュートリアル | Microsoft Azure"
  description="Azure IoT リモート監視の事前構成済みソリューションとそのアーキテクチャの説明です。"
  services=""
+ suite="iot-suite"
  documentationCenter=""
  authors="stevehob"
  manager="timlt"
  editor=""/>
 
 <tags
- ms.service="na"
+ ms.service="iot-suite"
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="na"
@@ -144,4 +145,4 @@ Web アプリのこのページでは、PowerBI JavaScript コントロール ([
 
 ![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_08.png)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

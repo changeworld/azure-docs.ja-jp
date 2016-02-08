@@ -17,7 +17,7 @@
 
 # Windows デスクトップ アプリ、サービス、worker ロールに対する Application Insights
 
-Application Insights はプレビュー段階です。
+*Application Insights はプレビュー段階です。*
 
 [AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
@@ -52,7 +52,7 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
 
     !["Application Insights" の検索](./media/app-insights-windows-desktop/04-ai-nuget.png)
 
-    他のパッケージを使用することができますか。
+    *他のパッケージを使用することができますか。*
 
     はい。独自のテレメトリを送信するためだけに API を使用する場合は、コア API (Microsoft.ApplicationInsights) を選択してください。Windows Server パッケージには、コア API に加え、他にも多くのパッケージ (パフォーマンス カウンターや依存関係の監視など) が自動的に含まれます。
 
@@ -62,7 +62,7 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
 
     * コア API パッケージ Microsoft.ApplicationInsights のみをインストールする場合は、コードにキーを設定する必要があります。たとえば、main() で次のように設定します。 
 
-    `TelemetryConfiguration.Active.InstrumentationKey = "` 自分のキー `";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "` *自分のキー* `";`
 
     その他のパッケージの 1 つをインストールした場合は、コードを使用してキーを設定するか、ApplicationInsights.config 内でキーを設定します。
  
@@ -183,7 +183,7 @@ TrackMetric、または TrackEvent の測定値パラメーターを使用した
 
 ### 永続化チャネルを使用するには
 
-1. NuGet パッケージ [Microsoft.ApplicationInsights.PersistenceChannel](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PersistenceChannel) をインポートします。
+1. NuGet パッケージ [Microsoft.ApplicationInsights.PersistenceChannel](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PersistenceChannel/1.2.3) をインポートします。
 2. アプリの適切な初期化の場所に、このコードを含めます。
  
     ```C# 
@@ -274,7 +274,7 @@ namespace ConsoleApplication1
 ```
 
 
-永続化チャネルのコードは、[github](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/master/src/TelemetryChannels/PersistenceChannel) にあります。
+永続化チャネルのコードは、[github](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/v1.2.3/src/TelemetryChannels/PersistenceChannel) にあります。
 
 
 ## <a name="usage"></a>次のステップ
@@ -299,4 +299,4 @@ namespace ConsoleApplication1
 [CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

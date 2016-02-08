@@ -86,7 +86,7 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
 1. 使用を開始するには、[Microsoft Azure](http://azure.com) のサブスクリプションが必要です。サインアップは無料で、Application Insights の無料の[価格レベル](https://azure.microsoft.com/pricing/details/application-insights/)を選択できます。
 
-2. [Azure ポータル](http://portal.azure.com)にサインインします。
+2. [Azure ポータル](https://portal.azure.com)にサインインします。
 3. Application Insights リソースを作成します。アプリのデータはここに表示されます。
 
     ![[追加]、[開発者向けサービス]、[Application Insights]](./media/app-insights-overview/11-new.png)
@@ -151,4 +151,4 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

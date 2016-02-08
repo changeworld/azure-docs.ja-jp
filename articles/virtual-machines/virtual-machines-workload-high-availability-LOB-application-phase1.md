@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="01/21/2016" 
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーションのワークロード フェーズ 1: Azure を構成する
@@ -62,7 +62,7 @@ IT 部門と相談して、仮想ネットワーク アドレス空間からこ�
 
 **表 S: 仮想ネットワークのサブネット**
 
-> [AZURE.NOTE]この定義済みアーキテクチャでは、わかりやすくするため単一のサブネットを使用します。一連のトラフィック フィルターをオーバーレイしてサブネットの分離をエミュレートする場合は、Azure の[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)を使用できます。
+> [AZURE.NOTE] この定義済みアーキテクチャでは、わかりやすくするため単一のサブネットを使用します。一連のトラフィック フィルターをオーバーレイしてサブネットの分離をエミュレートする場合は、Azure の[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)を使用できます。
 
 仮想ネットワーク内にドメイン コント ローラーを最初にセットアップするときに使用する 2 つのオンプレミス DNS サーバーについて、表 D に記入します。各 DNS サーバーの表示名および単一の IP アドレスを指定します。この表示名は、DNS サーバーのホスト名またはコンピューター名と一致している必要はありません。記入欄は 2 つですが、さらに追加してもかまいません。IT 部門と相談してこのリストを決定します。
 
@@ -87,7 +87,7 @@ IT 部門と相談して、仮想ネットワーク アドレス空間からこ�
 
 まず Azure PowerShell プロンプトを開始します。
 
-> [AZURE.NOTE]次のコマンド セットは、Azure PowerShell 1.0 以降を使用します。詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
+> [AZURE.NOTE] 次のコマンド セットは、Azure PowerShell 1.0 以降を使用します。詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
 
 まず、Azure PowerShell プロンプトを起動し、お使いのアカウントにログインします。
 
@@ -184,7 +184,7 @@ Azure サブスクリプションを設定します。引用符内のすべて�
 
 オンプレミスの VPN デバイスを構成するには、次のものが必要です。
 
-- **Get-AzureRMPublicIpAddress -Name $publicGatewayVipName -ResourceGroupName $rgName** コマンドで表示される、仮想ネットワーク用の Azure VPN Gateway のパブリック IPv4 アドレス
+- 仮想ネットワーク用の Azure VPN Gateway のパブリック IPv4 アドレス (**Get-AzureRMPublicIpAddress -Name $publicGatewayVipName -ResourceGroupName $rgName** コマンドで表示)
 - サイト間 VPN 接続用の IPsec 事前共有キー (表 V - 項目 8 - "値" 列)
 
 次に、仮想ネットワークのアドレス空間がオンプレミス ネットワークから到達できることを確認します。これは、通常、仮想ネットワークのアドレス空間に対応するルートを VPN デバイスに追加した後、組織ネットワークのルーティング インフラストラクチャの他の部分にそのルートをアドバタイズすることによって行います。IT 部門と相談してこの方法を決定します。
@@ -220,4 +220,4 @@ Azure サブスクリプションを設定します。引用符内のすべて�
 
 - [フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) を使用して、このワークロードを引き続き構成します。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

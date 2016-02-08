@@ -22,7 +22,7 @@ Azure サブスクリプションの新しいストレージ アカウントを�
 
 ストレージ アカウントを作成するには、関連付けられているサブスクリプションのサービス管理者または共同管理者である必要があります。
 
-> [AZURE.NOTE]Azure サービス管理 API を使用してこの操作を実行する方法については、[ストレージ アカウントの作成](http://msdn.microsoft.com/library/windowsazure/hh264518.aspx)に関するリファレンス トピックを参照してください。
+> [AZURE.NOTE] Azure サービス管理 API を使用してこの操作を実行する方法については、[ストレージ アカウントの作成](http://msdn.microsoft.com/library/windowsazure/hh264518.aspx)に関するリファレンス トピックを参照してください。
 
 **Azure サブスクリプションのストレージ アカウントを作成するには**
 
@@ -70,7 +70,7 @@ Azure サブスクリプションの新しいストレージ アカウントを�
 	元のドメインは、CDN がコンテンツをキャッシュする場所です。元のドメインは、ストレージ アカウントまたはクラウド サービスのどちらかになります。この例では、ストレージ アカウントが使用されます。ストレージ コンテンツは、指定したキャッシュ制御の設定またはキャッシュ ネットワークの既定のヒューリスティックに従って末端サーバーにキャッシュされます。
 
 
-    > [AZURE.NOTE]エンドポイントのために作成された構成は、すぐには使用できません。CDN ネットワークを通じて伝播する登録などのために最大 60 分かかります。CDN ドメイン名を直ちに使用しようとするユーザーは、CDN を経由してコンテンツを取得できるようになるまでは状態コード 400 (正しくない要求) を受け取る場合があります。
+    > [AZURE.NOTE] エンドポイントのために作成された構成は、すぐには使用できません。CDN ネットワークを通じて伝播する登録などのために最大 60 分かかります。CDN ドメイン名を直ちに使用しようとするユーザーは、CDN を経由してコンテンツを取得できるようになるまでは状態コード 400 (正しくない要求) を受け取る場合があります。
 
 <a id="Step3"> </a> <h2>手順 3. CDN コンテンツにアクセスする</h2>
 
@@ -83,13 +83,13 @@ http://<*CDNNamespace*>.vo.msecnd.net/<*myPublicContainer*>/<*BlobName*>
 Azure Content Delivery Network (CDN) にオブジェクトをキャッシュする必要がなくなった場合は、次のいずれかの手順を実行できます。
 
 -   Azure BLOB の場合は、パブリック コンテナーから BLOB を削除できます。
--   コンテナーをパブリックではなくプライベートに設定できます。詳細については、[コンテナーと BLOB へのアクセスの制限](http://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/#restrict-access-to-containers-and-blobs)を参照してください。
+-   コンテナーをパブリックではなくプライベートに設定できます。詳細については、[コンテナーと BLOB へのアクセスの制限](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/#restrict-access-to-containers-and-blobs)を参照してください。
 -   管理ポータルを使用して CDN エンドポイントを無効にしたり削除したりできます。
--   オブジェクトの要求に応答しなくなるようにホステッド サービスを変更できます。
+-   オブジェクトの要求に応答しなくなるようにホストされるサービスを変更できます。
 
 CDN に既にキャッシュされているオブジェクトは、オブジェクトの有効期限が切れるまでキャッシュに残ったままとなります。有効期限が切れると、CDN エンドポイントがまだ有効で、オブジェクトがまだ匿名アクセス可能かどうかが CDN によって確認されます。CDN エンドポイントが無効になり、オブジェクトに匿名でアクセスできなくなった場合、オブジェクトはキャッシュされなくなります。
 
-コンテンツを即座に消去する機能は、Azure 管理ポータルで現在サポートされていません。コンテンツを即座に消去する必要がある場合は、[Azure サポート](http://azure.microsoft.com/support/options/)にお問い合わせください。
+コンテンツを即座に消去する機能は、Azure 管理ポータルで現在サポートされていません。コンテンツを即座に消去する必要がある場合は、[Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
 ## その他のリソース
 
@@ -111,4 +111,4 @@ CDN に既にキャッシュされているオブジェクトは、オブジェ�
 [create-new-storage-account]: ./media/cdn/CDN_CreateNewStorageAcct.png
 [Previous Management Portal]: ../../Shared/Media/previous-portal.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

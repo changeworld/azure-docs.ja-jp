@@ -22,7 +22,7 @@
 
 これまで、開発したアプリケーションにコンシューマーがサインアップおよびサインインすることを望むアプリケーション開発者は、独自のコードを記述していました。開発者は、オンプレミスのデータベースまたはシステムを使用して、ユーザー名とパスワードを保存していました。Azure Active Directory B2C では、セキュリティ保護された標準ベースのプラットフォームと機能豊富で拡張可能なポリシーのセットを使用して、より簡単にコンシューマーの ID 管理をアプリケーションに統合できます。Azure Active Directory B2C を使用すると、コンシューマーは、既存のソーシャル アカウント (Facebook、Google、Amazon、LinkedIn) を使用するか、または新しい資格情報 (電子メール アドレスとパスワードまたはユーザー名とパスワード) を作成することによって、アプリケーションにサインアップできます。後者は「ローカル アカウント」と呼ばれます。
 
-Azure Active Directory B2C はプレビュー状態です。プレビュー期間中、Azure Active Directory B2C を使ってみてフィードバックやご意見をお送りください。フィードバックに基づいて、サービス向上のために、大幅な変更を加える場合があります。この期間中は、プレビューを使用して運用アプリケーションをリリースしないようにしてください。[ユーザーの声](http://feedback.azure.com/forums/169401-azure-active-directory)を使用してご意見をお送りください。
+Azure Active Directory B2C はプレビュー状態です。プレビュー期間中、Azure Active Directory B2C を使ってみてフィードバックやご意見をお送りください。フィードバックに基づいて、サービス向上のために、大幅な変更を加える場合があります。この期間中は、プレビューを使用して運用アプリケーションをリリースしないようにしてください。[User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/) を使用してご意見をお送りください。
 
 ## 使用の開始
 
@@ -54,13 +54,13 @@ Azure Active Directory B2C プレビューの特定の機能を使用する方�
 
 以下のリンクは、サービスの詳細を調べるのに役立ちます。
 
-- 「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c)」をご覧ください。
+- 「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」をご覧ください。
 - [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) または [adal](http://stackoverflow.com/questions/tagged/adal) タグを使用したスタック オーバーフローの対処法についてのヒントが得られます。
-- [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) を使用して、プレビューに関する感想をお寄せください。皆様からのご意見をお待ちしております。 識別しやすいように、投稿のタイトルに "AzureADB2C:" という言葉を入れてください。
+- [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/) を使用して、プレビューに関する感想をお寄せください。皆様からのご意見をお待ちしております。 識別しやすいように、投稿のタイトルに "AzureADB2C:" という言葉を入れてください。
 - Azure Active Directory B2C は、"App Model v2.0" と呼ばれるアプリケーション登録モデルを使用して、業界標準のプロトコル (OpenID Connect、OAuth 2.0) をサポートします。
   - [アプリ モデル v2.0 プロトコルのリファレンス](active-directory-b2c-reference-protocols.md)
   - [アプリ モデル v2.0 トークンの参照](active-directory-b2c-reference-tokens.md)
 - [Azure Active Directory B2C の FAQ](active-directory-b2c-faqs.md)
 - [Azure Active Directory B2C に対するサポート要求の提出](active-directory-b2c-support.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

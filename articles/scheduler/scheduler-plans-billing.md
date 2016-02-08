@@ -64,7 +64,7 @@ Premium 課金単位には、最大 10,000 個の Premium ジョブ コレクシ
 
 ## 料金
 
-料金の詳細については、「[Scheduler 料金](http://azure.microsoft.com/pricing/details/scheduler/)」を参照してください。
+料金の詳細については、「[Scheduler 料金](https://azure.microsoft.com/pricing/details/scheduler/)」を参照してください。
 
 ## 関連項目
  
@@ -75,7 +75,7 @@ Premium 課金単位には、最大 10,000 個の Premium ジョブ コレクシ
 
  [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
 
- [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/dn528946)
+ [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
 
  [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
 
@@ -89,4 +89,4 @@ Premium 課金単位には、最大 10,000 個の Premium ジョブ コレクシ
 
   
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

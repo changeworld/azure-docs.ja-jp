@@ -19,7 +19,7 @@
 
 テレメトリに対してカスタマイズした分析を行う必要がありますか。 それとも、特定のプロパティを持つイベントに対して電子メール アラートを送信する必要がありますか。 そのようなケースには、連続エクスポートが最適です。Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。
 
-連続エクスポートは、無料の評価期間、および [Standard 料金プランと Premium 料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)で使用できます。
+連続エクスポートは、無料の評価期間、および [Standard 料金プランと Premium 料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)で使用できます。
 
 (メトリックや検索ブレードでの表示内容を、[1 回だけエクスポートする](app-insights-metrics-explorer.md#export-to-excel)場合には、ブレードの上部で [エクスポート] をクリックします。また、Power BI でデータを参照する場合、[アダプター](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)を利用してください。このアダプターでは、連続エクスポートは使用*されません*。)
 
@@ -75,7 +75,7 @@ BLOB でデータが表示されるまで、約 1 時間の遅延が発生する
 
 データには、セットアップ済みのすべての[利用可能な Web テスト](app-insights-monitor-web-app-availability.md)の結果も含まれます。
 
-> [AZURE.NOTE]**サンプリング。** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
+> [AZURE.NOTE] **サンプリング。** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
 
 ## <a name="get"></a> データの確認
 
@@ -152,7 +152,7 @@ BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナ�
  * これは Power BI の標準的な利用方法ではないことに注意してください。連続エクスポートを必要としない[アダプター](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)があります。
 
 
-大規模な処理の場合は、[HDInsight](http://azure.microsoft.com/services/hdinsight/) (クラウドの Hadoop クラスター) を検討してください。HDInsight は、ビッグ データを管理および分析するためのさまざまなテクノロジを提供します。
+大規模な処理の場合は、[HDInsight](https://azure.microsoft.com/services/hdinsight/) (クラウドの Hadoop クラスター) を検討してください。HDInsight は、ビッグ データを管理および分析するためのさまざまなテクノロジを提供します。
 
 
 
@@ -210,4 +210,4 @@ BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナ�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

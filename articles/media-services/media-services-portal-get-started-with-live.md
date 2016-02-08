@@ -37,7 +37,7 @@
 ## 前提条件
 チュートリアルを完了するには次のものが必要です。
 
-- このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](azure.microsoft.com)を参照してください。
+- このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](azure.microsoft.com)を参照してください。
 - Media Services アカウント。Media Services アカウントを作成するには、「[アカウントの作成](media-services-create-account.md)」を参照してください。
 - マルチ ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
 
@@ -64,7 +64,7 @@
 
 新しいユニットの割り当ては完了するまでに約 20 分かかります。
 
->[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
+>[AZURE.NOTE] 現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
 >
 > コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Media Services の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 
@@ -92,11 +92,11 @@ Azure クラシック ポータルで、**[チャネル]** ページを選択し
 
 ## ライブ エンコーダーの構成、およびライブ ストリームの取り込み
 
->[AZURE.NOTE]この手順には、前の手順に記載されているチャネルの取り込み URL が必要です。
+>[AZURE.NOTE] この手順には、前の手順に記載されているチャネルの取り込み URL が必要です。
 
-Wirecast の構成方法、およびストリームの取り込み開始方法に関する詳細は、「[Wirecast の構成](http://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)」を参照してください。
+Wirecast の構成方法、およびストリームの取り込み開始方法に関する詳細は、「[Wirecast の構成](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)」を参照してください。
 
->[AZURE.NOTE]何らかの理由でエンコーダーを停止してから再起動する必要がある場合、最初に Azure クラシック ポータルの **[リセット]** コマンドをクリックしてチャネルをリセットする必要があります。
+>[AZURE.NOTE] 何らかの理由でエンコーダーを停止してから再起動する必要がある場合、最初に Azure クラシック ポータルの **[リセット]** コマンドをクリックしてチャネルをリセットする必要があります。
 
 
 ## プログラムの作成と管理
@@ -205,11 +205,11 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 
 ## その他のリソース
-- [Microsoft Azure クラシック ポータルを使用したライブ ストリーミングの開始](http://azure.microsoft.com/blog/getting-started-with-live-streaming-using-the-azure-management-portal/)
+- [Microsoft Azure クラシック ポータルを使用したライブ ストリーミングの開始](https://azure.microsoft.com/blog/getting-started-with-live-streaming-using-the-azure-management-portal/)
 
 <!-- URLs. -->
 [Azure Classic Portal]: http://manage.windowsazure.com/
 
 <!-- Images -->
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

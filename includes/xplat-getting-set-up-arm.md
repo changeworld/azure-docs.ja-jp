@@ -11,9 +11,9 @@
 
 ## Azure リソース マネージャー (ARM) での Azure CLI の使用
 
-リソース マネージャーのコマンドとテンプレートで Azure CLI を使用して、リソース グループを使用する Azure リソースとワークロードをデプロイできるようにするには、(当然のことですが) Azure のアカウントが必要です。アカウントがない場合、[ここから無料の Azure 試用版](http://azure.microsoft.com/pricing/free-trial/)を入手できます。
+リソース マネージャーのコマンドとテンプレートで Azure CLI を使用して、リソース グループを使用する Azure リソースとワークロードをデプロイできるようにするには、(当然のことですが) Azure のアカウントが必要です。アカウントがない場合、[ここから無料の Azure 試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
-> [AZURE.NOTE]Azure アカウントはまだ取得しておらず、MSDN サブスクリプションのサブスクリプションのみがある場合は、[ここから MSDN サブスクリプション会員の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をアクティブ化して無料の Azure クレジットを取得するか、無料のアカウントを使用できます。どちらを使用しても Azure にアクセスできます。
+> [AZURE.NOTE] Azure アカウントはまだ取得しておらず、MSDN サブスクリプションのサブスクリプションのみがある場合は、[ここから MSDN サブスクリプション会員の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をアクティブ化して無料の Azure クレジットを取得するか、無料のアカウントを使用できます。どちらを使用しても Azure にアクセスできます。
 
 ### 手順 1. Azure CLI のバージョンを確認する
 
@@ -62,6 +62,6 @@ Azure リソース管理 (ARM) モードで Azure CLI を使用するには、�
     $ azure config mode arm
     info:    New mode is arm
 
-> [AZURE.NOTE]「`azure config mode asm`」と入力すると、Azure サービス管理モードに戻してそのコマンドを再度使用できます。
+> [AZURE.NOTE] 「`azure config mode asm`」と入力すると、Azure サービス管理モードに戻してそのコマンドを再度使用できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

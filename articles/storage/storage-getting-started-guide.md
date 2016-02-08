@@ -30,7 +30,7 @@ Azure Storage を使用した開発は簡単です。このチュートリアル
 
 1. アプリケーションをコンパイルし、ビルドするには、コンピューターに [Visual Studio](https://www.visualstudio.com/) をインストールしておく必要があります。 
 
-2. 最新バージョンの [Azure SDK for .NET](http://azure.microsoft.com/downloads/) をインストールします。SDK には、Azure QuickStart サンプル プロジェクト、Azure ストレージ エミュレーター、および [Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx) が含まれます。
+2. 最新バージョンの [Azure SDK for .NET](https://azure.microsoft.com/downloads/) をインストールします。SDK には、Azure QuickStart サンプル プロジェクト、Azure ストレージ エミュレーター、および [Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx) が含まれます。
 
 3. [.NET Framework 4.5](http://www.microsoft.com/download/details.aspx?id=30653) がコンピューターにインストールされていることを確認します。このチュートリアルで使用する Azure QuickStart サンプル プロジェクトで必要です。
 
@@ -38,7 +38,7 @@ Azure Storage を使用した開発は簡単です。このチュートリアル
 
 4. Azure サブスクリプションと Azure ストレージ アカウントが必要になります。
 
-    - Azure サブスクリプションを入手するには、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/) (MSDN、Microsoft Partner Network、BizSpark、その他の Microsoft プログラムのメンバーの場合) の各ページをご覧ください。
+    - Azure サブスクリプションを入手するには、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](https://azure.microsoft.com/pricing/member-offers/) (MSDN、Microsoft Partner Network、BizSpark、その他の Microsoft プログラムのメンバーの場合) の各ページをご覧ください。
     - Azure でストレージ アカウントを作成するには、「[ストレージ アカウントを作成、管理、または削除する方法](storage-create-storage-account.md)」をご覧ください
 
 ## クラウドの Azure Storage で最初の Azure Storage アプリケーションを実行する
@@ -102,11 +102,11 @@ Azure Storage の詳細については、次のリソースをご覧ください
 * [.NET から Table Storage を使用する方法](storage-dotnet-how-to-use-tables.md)
 * [.NET から Queue Storage を使用する方法](storage-dotnet-how-to-use-queues.md)
 * [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
-* [Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
+* [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Storage Client Library](https://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
 * [Azure Storage REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

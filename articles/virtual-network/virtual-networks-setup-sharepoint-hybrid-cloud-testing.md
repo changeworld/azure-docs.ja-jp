@@ -44,7 +44,7 @@
 2.	SQL Server コンピューター (SQL1) を構成する。
 3.	SharePoint サーバー (SP1) を構成する。
 
-Azure サブスクリプションを持っていない場合は、[Azure の無料試用版のページ](http://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+Azure サブスクリプションを持っていない場合は、[Azure の無料試用版のページ](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
 ## フェーズ 1: ハイブリッド クラウド環境を設定する
 
@@ -54,7 +54,7 @@ Azure サブスクリプションを持っていない場合は、[Azure の無�
 
 ![](./media/virtual-networks-setup-sharepoint-hybrid-cloud-testing/CreateSPFarmHybridCloud_1.png)
 
-> [AZURE.NOTE]フェーズ 1 では、シミュレートされたハイブリッド クラウド テスト環境を設定することもできます。方法については、「[テスト用のシミュレートされたハイブリッド クラウド環境の設定](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)」をご覧ください。
+> [AZURE.NOTE] フェーズ 1 では、シミュレートされたハイブリッド クラウド テスト環境を設定することもできます。方法については、「[テスト用のシミュレートされたハイブリッド クラウド環境の設定](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)」をご覧ください。
  
 ## フェーズ 2: SQL Server コンピューター (SQL1) を構成する
 
@@ -85,12 +85,12 @@ SPFarmAdmin アカウント パスワードを指定するよう求められた�
 
 次に、*ローカル管理者アカウントを使用して*新しい SQL1 仮想マシンに接続します。
 
-1.	Microsoft Azure 管理ポータルの左側のウィンドウで **[仮想マシン]** をクリックし、SQL1 の [状態] 列で **[実行中]** をクリックします。
+1.	Microsoft Azure 管理ポータルの左側のウィンドウで **[Virtual Machines]** をクリックし、SQL1 の [状態] 列で **[実行中]** をクリックします。
 2.	タスク バーで、**[接続]** をクリックします。 
 3.	SQL1.rdp を開くよう求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
 5.	資格情報の入力を求められたら、次の情報を使用します。
-	- 名前: **SQL1**[ローカル管理者アカウントの名前]
+	- 名前: **SQL1\**[ローカル管理者アカウントの名前]
 	- パスワード: [ローカル管理者アカウントのパスワード]
 6.	証明書に関するリモート デスクトップ接続のメッセージ ボックスが表示されたら、**[はい]** をクリックします。
 
@@ -113,7 +113,7 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 7.	[ドライブ文字またはフォルダーへの割り当て] ページで、**[次へ]** をクリックします。
 8.	[ファイル システム形式の選択] ページで、**[次へ]** をクリックします。
 9.	[選択内容の確認] ページで、**[作成]** をクリックします。
-10.	完了したら、**[閉じる]** をクリックします。
+10.	作成されたら、**[閉じる]** をクリックします。
 
 SQL1 の Windows PowerShell コマンド プロンプトで、次のコマンドを実行します。
 
@@ -128,17 +128,17 @@ SQL1 の Windows PowerShell コマンド プロンプトで、次のコマンド
 3.	[オブジェクト エクスプローラー] ツリー ウィンドウで、**[SQL1]** を右クリックし、**[プロパティ]** をクリックします。
 4.	**[サーバーのプロパティ]** ウィンドウで、**[データベースの設定]** をクリックします。
 5.	**[データベースの既定の場所]** で、次の値を設定します。 
-	- **[データ]** に、パス「**f:\Data**」を入力します。
-	- **[ログ]** に、パス「**f:\Log**」を入力します。
-	- **[バックアップ]** に、パス「**f:\Backup**」を入力します。
+	- **[データ]** に、パス「**f:\\Data**」を入力します。
+	- **[ログ]** に、パス「**f:\\Log**」を入力します。
+	- **[バックアップ]** に、パス「**f:\\Backup**」を入力します。
 	- 新しいデータベースでのみ、これらの場所が使用されます。
 6.	**[OK]** をクリックして、ウィンドウを閉じます。
 7.	**[オブジェクト エクスプローラー]** ツリー ウィンドウで、**[セキュリティ]** を開きます。
 8.	**[ログイン]** を右クリックし、**[新しいログイン]** をクリックします。
-9.	**[ログイン名]** に「**CORP\User1**」と入力します。
+9.	**[ログイン名]** に「**CORP\\User1**」と入力します。
 10.	**[サーバーの役割]** ページで、**[sysadmin]** をクリックし、**[OK]** をクリックします。
 11.	**[オブジェクト エクスプローラー]** ツリー ウィンドウで、**[ログイン]** を右クリックし、**[新しいログイン]** をクリックします。
-12.	**[全般]** ページの **[ログイン名]** に、「**CORP\SPFarmAdmin**」と入力します。
+12.	**[全般]** ページの **[ログイン名]** に、「**CORP\\SPFarmAdmin**」と入力します。
 13.	**[サーバーの役割]** ページで、**[dbcreator]** を選択し、**[OK]** をクリックします。
 14.	Microsoft SQL Server Management Studio を閉じます。
 
@@ -160,7 +160,7 @@ SQL1 の Windows PowerShell コマンド プロンプトで、次のコマンド
 	$vm1 | Set-AzureSubnet -SubnetNames TestSubnet
 	New-AzureVM -ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
 
-次に、CORP\User1 の資格情報を使用して、SP1 仮想マシンに接続します。
+次に、CORP\\User1 の資格情報を使用して、SP1 仮想マシンに接続します。
 
 続いて、基本的な接続テストを行うためのトラフィックを許可するよう Windows ファイアウォール規則を構成します。SP1 で管理者レベルの Windows PowerShell プロンプトから、次のコマンドを実行します。
 
@@ -184,10 +184,10 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 11.	**[SharePoint ファームの構成方法を指定してください。]** で **[ウィザードの開始]** をクリックします。
 12.	[SharePoint ファームの構成] ページの **[サービス アカウント]** で、**[既存の管理アカウントを使用する]** をクリックします。
 13.	**[サービス]** で、**[State Service]** の横にあるチェック ボックス以外のすべてのチェック ボックスをオフにし、**[次へ]** をクリックします。完了するまで、[ただいま処理中です] ページがしばらく表示されることがあります。
-14.	[サイト コレクションの作成] ページの **[タイトルと説明]** で、**[タイトル]** に「**Contoso Corporation**」と入力し、URL「**http://sp1**/」を指定して、**[OK]** をクリックします。完了するまで、[ただいま処理中です] ページがしばらく表示されることがあります。これにより、URL http://sp1 にチーム サイトが作成されます。
+14.	[サイト コレクションの作成] ページの **[タイトルと説明]** で、**[タイトル]** に「**Contoso Corporation**」と入力し、URL「****http://sp1**/」を指定して、**[OK]** をクリックします。完了するまで、[ただいま処理中です] ページがしばらく表示されることがあります。これにより、URL http://sp1 にチーム サイトが作成されます。
 15.	[これでファーム構成ウィザードは完了です。] ページで、**[完了]** をクリックします。Internet Explorer のタブに SharePoint 2013 サーバーの全体管理サイトが表示されます。
-16.	CORP\User1 アカウントの資格情報を使用して CLIENT1 コンピューターにログオンし、Internet Explorer を起動します。
-17.	アドレス バーに「**http://sp1/**」と入力し、Enter キーを押します。Contoso Corporation の SharePoint チーム サイトが表示されます。サイトが表示されるまで時間がかかることがあります。  
+16.	CORP\\User1 アカウントの資格情報を使用して CLIENT1 コンピューターにログオンし、Internet Explorer を起動します。
+17.	アドレス バーに「****http://sp1/**」と入力し、Enter キーを押します。Contoso Corporation の SharePoint チーム サイトが表示されます。サイトが表示されるまで時間がかかることがあります。
 
 現在の構成は次のようになります。
 
@@ -199,7 +199,7 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 
 [Azure インフラストラクチャ サービスでの SharePoint](http://msdn.microsoft.com/library/azure/dn275955.aspx)
 
-[SharePoint Server Farm](../virtual-machines/virtual-machines-sharepoint-farm-azure-preview.md)
+[SharePoint サーバー ファーム](../virtual-machines/virtual-machines-sharepoint-farm-azure-preview.md)
 
 [テスト用のハイブリッド クラウド環境の設定](virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
@@ -214,4 +214,4 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 [Azure インフラストラクチャ サービス実装ガイドライン](../virtual-machines/virtual-machines-infrastructure-services-implementation-guidelines.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

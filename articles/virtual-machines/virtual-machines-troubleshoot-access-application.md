@@ -24,7 +24,7 @@
 
 この記事では、Azure 仮想マシンで実行されているアプリケーションにアクセスできない場合にその原因を特定し、問題を解決するための系統的アプローチについて説明します。
 
-> [AZURE.NOTE]Azure 仮想マシンへの接続に関する詳細は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)」または「[Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-troubleshoot-ssh-connections.md)」参照してください。
+> [AZURE.NOTE]  Azure 仮想マシンへの接続に関する詳細は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)」または「[Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-troubleshoot-ssh-connections.md)」参照してください。
 
 Azure 仮想マシンで実行されているアプリケーションへのアクセスに問題がある場合は、次の 4 つの主要領域からトラブルシューティングを行います。
 
@@ -110,14 +110,14 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 - 仮想マシンのサイズを変更する
 - 仮想マシンを再作成する
 
-詳細については、「[Troubleshooting Endpoint Connectivity (RDP/SSH/HTTP, etc. failures) (エンドポイントの接続のトラブルシューティング (RDP/SSH/HTTP などの障害))](https://social.msdn.microsoft.com/Forums/azure/zh-CN/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows)」を参照してください。
+詳細については、「[Troubleshooting Endpoint Connectivity (RDP/SSH/HTTP, etc. failures) (エンドポイントの接続のトラブルシューティング (RDP/SSH/HTTP などの障害))](https://social.msdn.microsoft.com/Forums/azure/ja-JP/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows)」を参照してください。
 
 ## 次のステップ
 
 上の手順を実行したうえで、問題解決のためにさらなる支援が必要な場合は、次のことが可能です。
 
-- 全世界の Azure エキスパートに支援を要請する。MSDN の Azure フォーラムまたはスタック オーバーフロー フォーラムに問題を投稿してください。詳細については、「[Microsoft Azure フォーラム](http://azure.microsoft.com/support/forums/)」参照してください。
-- Azure サポート インシデントを送信する。[Azure サポート サイト](http://azure.microsoft.com/support/options/) にアクセスし、**[テクニカル/課金サポート]** の **[サポートの要求]** をクリックしてください。
+- 全世界の Azure エキスパートに支援を要請する。MSDN の Azure フォーラムまたはスタック オーバーフロー フォーラムに問題を投稿してください。詳細については、「[Microsoft Azure フォーラム](https://azure.microsoft.com/support/forums/)」参照してください。
+- Azure サポート インシデントを送信する。[Azure サポート サイト](https://azure.microsoft.com/support/options/) にアクセスし、**[テクニカル/課金サポート]** の **[サポートの要求]** をクリックしてください。
 
 ## その他のリソース
 
@@ -125,4 +125,4 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-troubleshoot-ssh-connections.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -44,9 +44,9 @@
 3.	VNet 間 VPN 接続を作成する。
 4.	DC2 を構成する。 
 
-Azure サブスクリプションをまだ取得していない場合は、[Azure の無料試用版のページ](http://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+Azure サブスクリプションをまだ取得していない場合は、[Azure の無料試用版のページ](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
->[AZURE.NOTE]Azure の仮想マシンと仮想ネットワーク ゲートウェイは、稼働していると継続的に費用が発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。このテスト環境を使用していないときに稼働費用を削減する方法の詳細については、この記事の「[この環境の継続的な費用を最小限に抑える](#costs)」をご覧ください。
+>[AZURE.NOTE] Azure の仮想マシンと仮想ネットワーク ゲートウェイは、稼働していると継続的に費用が発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。このテスト環境を使用していないときに稼働費用を削減する方法の詳細については、この記事の「[この環境の継続的な費用を最小限に抑える](#costs)」をご覧ください。
 
 
 ## フェーズ 1: TestLab 仮想ネットワークを構成する
@@ -81,7 +81,7 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 
 次に、「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」に記載されている手順に従って、ローカル コンピューターに Azure PowerShell をインストールします
 
-次に、TestVNET 仮想ネットワークの新しいクラウド サービスを作成します。一意の名前を選ぶ必要があります。たとえば、**TestVNET-**UniqueSequence という名前を付けることができます。UniqueSequence は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに **TestVNET-Tailspin** という名前を付けることができます。
+次に、TestVNET 仮想ネットワークの新しいクラウド サービスを作成します。一意の名前を選ぶ必要があります。たとえば、**TestVNET-***UniqueSequence* という名前を付けることができます。*UniqueSequence* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに **TestVNET-Tailspin** という名前を付けることができます。
 
 名前が一意かどうかは、ローカル コンピューターで次の Azure PowerShell コマンドを使用することで確認できます。
 
@@ -231,7 +231,7 @@ TestVNET 仮想ネットワークで次のワークロードを設定します�
 
 この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに TestLab と Test\_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンすることができます。詳細については、[Azure Automation の使用](../automation-create-runbook-from-samples.md)に関するページを参照してください。企業ネットワーク サブネット上の仮想マシンを再度起動する場合は、最初に DC1 を起動します。
 
-Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実装されており、継続的な費用が発生します。詳細については、[Virtual Network 料金](http://azure.microsoft.com/pricing/details/virtual-network/)に関するページを参照してください。2 つの VPN Gateway (それぞれ TestLab 用と TestVNET 用) の費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行うか、次の手順でゲートウェイを削除します。
+Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実装されており、継続的な費用が発生します。詳細については、[Virtual Network 料金](https://azure.microsoft.com/pricing/details/virtual-network/)に関するページを参照してください。2 つの VPN Gateway (それぞれ TestLab 用と TestVNET 用) の費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行うか、次の手順でゲートウェイを削除します。
  
 1.	ローカル コンピューターで Microsoft Azure 管理ポータルから左側のウィンドウの **[ネットワーク]** をクリックし、**[TestLab]**、**[ダッシュボード]** の順にクリックします。
 2.	タスク バーで **[ゲートウェイの削除]** をクリックします。確認を求めるメッセージが表示されたら、**[はい]** をクリックします。ゲートウェイが削除され、ゲートウェイの状態が **[ゲートウェイは作成されませんでした]** に変わるまで待ちます。
@@ -266,4 +266,4 @@ Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実�
 次に、Azure の管理ポータルの [ネットワーク] ページで、**TestLab** 仮想ネットワークをクリックし、タスク バーの **[接続]** をクリックします。TestLab 仮想ネットワークが TestVNET ローカル ネットワークに接続された状態になるまで待ちます。
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

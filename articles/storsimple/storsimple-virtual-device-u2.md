@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="12/14/2015"
+   ms.date="01/22/2016"
    ms.author="alkohli" />
 
 # Azure での StorSimple 仮想デバイスのデプロイと管理 (Update 2)
@@ -40,7 +40,7 @@ StorSimple 仮想デバイスは、2 つのモデルで利用可能です。1 �
 | **ストレージの種類** | Azure Standard Storage を使用する<br></br>[Standard Storage アカウントを作成する]()方法を確認してください | Azure Premium Storage を使用する<br></br>[Premium Storage アカウントを作成する](storage-premium-storage-preview-portal.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)方法を確認してください |
 | **ワークロードのガイダンス** | バックアップからファイルを項目レベルで取得 | クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード <br></br>障害復旧のためのセカンダリ デバイス |
  
-<sup>1</sup> 以前は 1100 と呼ばれていました。
+<sup>1</sup> *以前は 1100 と呼ばれていました*。
 
 
 この記事では、Azure で StorSimple 仮想デバイスをデプロイするための段階的なプロセスについて説明します。この記事を読むと、次のことができます。
@@ -125,8 +125,7 @@ StorSimple 仮想デバイスを作成するには、次の手順を実行しま
 
 この手順を開始する前に、サービス データ暗号化キーのコピーがあることを確認してください。サービス データ暗号化キーは、最初の StorSimple デバイスの構成時に作成され、安全な場所に保存するように指示されます。サービス データ暗号化キーのコピーがない場合は、Microsoft サポートに支援を依頼する必要があります。
 
-StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。
-[AZURE.INCLUDE [仮想デバイスの構成と登録](../../includes/storsimple-configure-register-virtual-device.md)]
+StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。[AZURE.INCLUDE [仮想デバイスの構成と登録](../../includes/storsimple-configure-register-virtual-device.md)]
 
 ### 手順 3. (オプション) デバイスの構成設定の変更
 
@@ -144,7 +143,7 @@ StorSimple 仮想デバイスを構成して登録するには、次の手順を
 
 StorSimple Snapshot Manager ソフトウェアは Windows ホスト上に常駐し、管理者が、ローカル スナップショットとクラウド スナップショットの形式で StorSimple デバイスのバックアップを管理することを可能にします。
 
->[AZURE.NOTE]仮想デバイスの場合、Windows ホストは Azure 仮想マシンです。
+>[AZURE.NOTE] 仮想デバイスの場合、Windows ホストは Azure 仮想マシンです。
 
 StorSimple Snapshot Manager でデバイスを構成するとき、ストレージ デバイスを認証するためのパスワードと StorSimple デバイスの IP アドレスを入力するように求められます。詳細な手順については、[StorSimple Snapshot Manager のパスワードの構成](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password)に関するページを参照してください。
 
@@ -167,7 +166,7 @@ StorSimple 仮想デバイスのリモート管理を構成するには、次の
 
 StorSimple デバイスの構成ページでリモート管理を有効にしたら、Windows PowerShell リモート処理を使って、同じ仮想ネットワーク内の別の仮想マシンから仮想デバイスに接続することができます。たとえば、iSCSI に接続するために構成して使用しているホスト VM から接続することができます。ほとんどのデプロイでは、仮想デバイスへのアクセスに使用できるホスト VM にアクセスするパブリック エンドポイントは既に開かれています。
 
->[AZURE.WARNING]**セキュリティ強化のため、エンドポイントに接続する場合は HTTPS を使用して、PowerShell リモート セッション完了後にエンドポイントを削除することを強くお勧めします。**
+>[AZURE.WARNING] **セキュリティ強化のため、エンドポイントに接続する場合は HTTPS を使用して、PowerShell リモート セッション完了後にエンドポイントを削除することを強くお勧めします。**
 
 「[StorSimple デバイスにリモート接続する](storsimple-remote-connect.md)」の手順に従って、仮想デバイスのリモート処理をセットアップしてください。
 
@@ -235,7 +234,7 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
 
 障害復旧 (DR) は、StorSimple 仮想デバイスの設計目的であった主要シナリオの 1 つです。このシナリオでは、物理 StorSimple デバイスまたはデータセンター全体が使用できなくなる可能性があります。さいわいなことに、仮想デバイスを使って、別の場所に運用を復元することができます。DR 中に、ソース デバイスのボリューム コンテナーの所有権が変更され、それらのコンテナーは仮想デバイスに転送されます。DR の前提条件として、仮想デバイスが作成され、構成されていることと、ボリューム コンテナー内のすべてのボリュームがオフラインになっていること、さらに、ボリューム コンテナーにクラウド スナップショットが関連付けられていることが挙げられます。
 
->[AZURE.NOTE]
+>[AZURE.NOTE] 
 >
 > - 仮想デバイスを DR のセカンダリ デバイスとして使用する場合は、8010 には 30 TB の Standard Storage があり、8020 には 64 TB の Premium Storage があることに注意してください。より容量が多い 8020 仮想デバイスは、DR シナリオにより適しています。
 > - Update 2 を実行するデバイスから、Update 1 より前のソフトウェアを実行するデバイスへはフェールオーバーも複製もできません。ただし、Update 2 を実行しているデバイスを Update 1 (1.1 または 1.2) を実行するデバイスにフェールオーバーすることはできます。
@@ -259,4 +258,4 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
  
 - [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法について理解します。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

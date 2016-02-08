@@ -17,7 +17,7 @@
 	ms.author="spelluru"/>
 
 # Data Factory から MapReduce プログラムを起動する
-この記事では、**HDInsight の MapReduce アクティビティ**を使用して、Azure Data Factory パイプラインから **MapReduce** プログラムを起動する方法について説明しています。
+Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight MapReduce アクティビティは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)の、または[オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の Windows/Linux ベースの HDInsight クラスターで MapReduce プログラムを実行します。この記事は、データ変換とサポートされる変換アクティビティの概要について説明する記事「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を基に作成されています。
 
 ## はじめに 
 Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。この記事では、HDInsight MapReduce アクティビティを使用する方法について説明しています。
@@ -131,7 +131,6 @@ HDInsight MapReduce アクティビティを使用して、HDInsight クラス�
 	    }
 	}
 
-
 ### データセット
 
 #### 出力データセット
@@ -221,4 +220,4 @@ linkedServiceName | 前に作成した HDInsight のリンクされたサービ�
 [Azure Classic Portal]: http://portal.azure.com
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -27,7 +27,7 @@ Application Insights SDK は、利用状況とパフォーマンスを分析で�
 必要なものは次のとおりです。
 
 * Oracle JRE 1.6 以降。
-* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料試用版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
+* [Microsoft Azure](https://azure.microsoft.com/) のサブスクリプション([無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
 * [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/) Indigo 以降。
 * Windows 7 以降または Windows Server 2008 以降。
 
@@ -51,7 +51,7 @@ Java プロジェクトごとに、残りの手順に従います。
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. 
 
-## Add Application Insights to your project
+## アプリケーションの正常性と利用状況の監視
 
 1. Web プロジェクトのコンテキスト メニューから Application Insights を追加します。
 
@@ -260,4 +260,4 @@ Java Web アプリケーションに数行のコードを挿入して、ユー�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

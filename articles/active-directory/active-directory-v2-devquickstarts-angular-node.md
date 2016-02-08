@@ -144,7 +144,7 @@ adalProvider.init({
 ...
 ```
 
-ユーザーは `TodoList` リンクをクリックすると、必要に応じて、サインインを処理するために、adal.js により Azure AD に自動的にリダイレクトされます。また、コントローラーで adal.js を呼び出すことによって、サインインおよびサインアウト要求を明示的に送信することもできます。
+ユーザーが `TodoList` リンクをクリックしたとき、サインインの処理が必要な場合は、adal.js によって Azure AD に自動的にリダイレクトされます。また、コントローラーで adal.js を呼び出すことによって、サインインおよびサインアウト要求を明示的に送信することもできます。
 
 ```js
 // app/scripts/homeCtrl.js
@@ -233,8 +233,8 @@ node server.js
 
 アプリ モデル v2.0 プレビューについての学習を続けるには、[v2.0 開発者ガイド](active-directory-appmodel-v2-overview.md)に戻ってください。その他のリソースについては、以下を参照してください。
 
-- [GitHub の Azure サンプル >>](https://github.com/Azure-Samples)
+- [GitHub の Azure 用サンプル >>](https://github.com/Azure-Samples)
 - [Stack Overflow の Azure AD >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
-- [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
+- [Azure.com](https://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

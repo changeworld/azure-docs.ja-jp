@@ -46,7 +46,7 @@ API アプリが Web アプリをベースにしているという事実は、AS
 
 前のチュートリアルで Swagger UI を有効にしたので、その Swagger UI を使用して、API アプリが Azure で実行されていることを確認できます。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)で、先ほどデプロイしたAPI アプリの **API アプリ** ブレードに移動します。
+1. [Azure プレビュー ポータル](https://portal.azure.com/)で、先ほどデプロイしたAPI アプリの **API アプリ** ブレードに移動します。
 
 2. API アプリの URL をクリックします。
 
@@ -62,7 +62,7 @@ API アプリが Web アプリをベースにしているという事実は、AS
 
 ## ポータルでの API 定義の表示
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)で、先ほどデプロイした API アプリの **API アプリ** ブレードに戻ります。
+1. [Azure プレビュー ポータル](https://portal.azure.com/)で、先ほどデプロイした API アプリの **API アプリ** ブレードに戻ります。
 
 4. **[API の定義]** をクリックします。
  
@@ -129,4 +129,4 @@ API アプリは、API をホストするための特別な機能を持つ Web �
 
 API アプリの機能については、「[API Apps とは](app-service-api-apps-why-best-platform.md)」を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -23,9 +23,9 @@
 
 Microsoft Azure では **Azure キュー**と **Service Bus キュー**の 2 種類のキュー メカニズムをサポートしています。
 
-**Azure キュー**は、[Azure Storage](http://azure.microsoft.com/services/storage/) インフラストラクチャの一部であり、単純な REST ベースの Get/Put/Peek インターフェイスを使用して、サービス内およびサービス間で信頼性の高い永続的なメッセージングを提供します。
+**Azure キュー**は、[Azure Storage](https://azure.microsoft.com/services/storage/) インフラストラクチャの一部であり、単純な REST ベースの Get/Put/Peek インターフェイスを使用して、サービス内およびサービス間で信頼性の高い永続的なメッセージングを提供します。
 
-**Service Bus キュー**は、より大きな [Azure メッセージング](http://azure.microsoft.com/services/service-bus/) インフラストラクチャの一部です。このインフラストラクチャでは、キュー処理だけでなく、発行/サブスクライブ、Web サービスのリモート処理、統合のパターンがサポートされています。Service Bus キュー、トピック/サブスクリプション、リレーの詳細情報は、「[Service Bus メッセージングの概要](service-bus-messaging-overview.md)」をご覧ください。
+**Service Bus キュー**は、より大きな [Azure メッセージング](https://azure.microsoft.com/services/service-bus/) インフラストラクチャの一部です。このインフラストラクチャでは、キュー処理だけでなく、発行/サブスクライブ、Web サービスのリモート処理、統合のパターンがサポートされています。Service Bus キュー、トピック/サブスクリプション、リレーの詳細情報は、「[Service Bus メッセージングの概要](service-bus-messaging-overview.md)」をご覧ください。
 
 この 2 つのキュー テクノロジは共存していますが、最初に Azure キューが、Azure ストレージ サービス上に構築された専用のキュー ストレージ メカニズムとして導入されました。Service Bus キューは、より大きな「ブローカー メッセージング」インフラストラクチャ上に構築されています。このインフラストラクチャは、複数の通信プロトコル、データ コントラクト、信用ドメイン、ネットワーク環境などにまたがるアプリケーションやアプリケーション コンポーネントの統合を目的としています。
 
@@ -204,8 +204,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 |比較条件|Azure キュー|Service Bus キュー|
 |---|---|---|
 |管理プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**|
-|ランタイム プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**<br/><br/>**AMQP 1.0 Standard (TCP と TLS)**|
-|.NET マネージ API|**はい**<br/><br/>(.NET 管理対象 Storage クライアント API)|**はい**<br/><br/>(.NET のブローカー メッセージング API)|
+|ランタイム プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**<br/><br/>**AMQP 1.0 Standard (TCP と TLS)**| |.NET マネージ API|**はい**<br/><br/>(.NET 管理対象 Storage クライアント API)|**はい**<br/><br/>(.NET の仲介型メッセージング API)|
 |ネイティブ C++|**はい**|**いいえ**|
 |Java API|**はい**|**はい**|
 |PHP API|**はい**|**はい**|
@@ -289,7 +288,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 - Service Bus キューでは長いポーリングがサポートされているため、待機時間の短い配信が必要な状況でこのキューを使用すると、コスト効率が向上する可能性があります。
 
->[AZURE.NOTE]すべてのコストは、変更されることがあります。上記の表は、このドキュメントの作成時点の価格を反映しています。ここには、現在利用できるキャンペーン プランは含まれていません。Azure の最新の料金情報については、「[Azure の料金](http://azure.microsoft.com/pricing/)」ページをご覧ください。Service Bus の料金の詳細については、「[Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
+>[AZURE.NOTE] すべてのコストは、変更されることがあります。上記の表は、このドキュメントの作成時点の価格を反映しています。ここには、現在利用できるキャンペーン プランは含まれていません。Azure の最新の料金情報については、「[Azure の料金](https://azure.microsoft.com/pricing/)」ページをご覧ください。Service Bus の料金の詳細については、「[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
 
 ## まとめ
 
@@ -315,4 +314,4 @@ Service Bus キューには高度な機能が数多く用意されているた�
 [Azure クラシック ポータル]: http://manage.windowsazure.com
  
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

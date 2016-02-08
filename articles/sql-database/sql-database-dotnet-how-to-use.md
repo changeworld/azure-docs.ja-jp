@@ -32,7 +32,7 @@ SQL Database は、Azure 用のリレーショナル データベース管理シ
 
 SQL Database は、Azure におけるリレーショナル データのストレージ サービス、アクセス サービス、および管理サービスを提供します。これを使用するには、Azure サブスクリプションが必要です。
 
-1. Web ブラウザーを開いて、[http://azure.microsoft.com/](http://azure.microsoft.com) にアクセスします。無料アカウントを取得するには、右上にある [無料評価版] をクリックして、表示される手順に従います。
+1. Web ブラウザーを開いて、[http://azure.microsoft.com/](https://azure.microsoft.com/) にアクセスします。無料アカウントを取得するには、右上にある [無料評価版] をクリックして、表示される手順に従います。
 
 2. アカウントが作成されました。これで使用開始する準備が整いました。
 
@@ -211,4 +211,4 @@ Entity Framework を使用することで、開発者は、リレーショナル
 これで、SQL Database への接続の基本を学習できました。「[Azure SQL データベース開発:操作方法に関するトピック](http://msdn.microsoft.com/library/windowsazure/ee621787.aspx)」をご覧ください。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

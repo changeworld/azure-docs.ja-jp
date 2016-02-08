@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/02/2015"
+   ms.date="01/22/2016"
    ms.author="tomfitz"/>
 
 # リソース マネージャー デプロイと従来のデプロイを理解する
@@ -22,19 +22,17 @@
 
 従来のデプロイ モデルはサービス管理モデルとしても知られています。
 
-このトピックでは、2 つのモデルの違いと、従来のモデルからリソース マネージャーに移行するときに遭遇する問題について説明します。モデルの概要は説明しますが、個々のサービスの細かな違いについては取り上げません。Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
+このトピックでは、2 つのモデルの違いと、従来のモデルからリソース マネージャーに移行するときに遭遇する問題について説明します。モデルの概要は説明しますが、個々のサービスの細かな違いについては取り上げません。
 
 多くのリソースは従来のモデルとリソース マネージャーの両方で問題なく動作します。これらのリソースは、従来のモデルで作成された場合でも、リソース マネージャーに完全対応します。何の心配もなく、特別な労力も必要とせず、リソース マネージャーに移行できます。
 
 ただし、いくつかのリソース プロバイダーはモデル間の構造の違いに起因して 2 つのバージョンのリソースを提供します (従来のモデルに 1 つ、リソース マネージャーに 1 つ)。2 つのモデルを区別するリソース プロバイダー:
 
-- Compute
-- Storage
-- Network
+- **Compute** - 仮想マシンとオプションの可用性セットのインスタンスをサポートします。
+- **Storage** - 必要とされるオペレーティング システム ディスクと追加のデータ ディスク、仮想マシンの VHD を保存するストレージ アカウントをサポートします。
+- **Network** - 必要とされる NIC、仮想マシンの IP アドレス、および仮想ネットワークとオプションのロード バランサー内のサブネット、Load Balancer の IP アドレスとネットワークのセキュリティ グループをサポートします。
 
-これらの書類のリソースの場合、サポートされる操作が異なるため、使用しているバージョンに注意してください。
-
-2 つのモデルの構造の違いを理解には、「[Azure リソース マネージャー アーキテクチャ](virtual-machines/virtual-machines-azure-resource-manager-architecture.md)」を参照してください。
+これらの書類のリソースの場合、サポートされる操作が異なるため、使用しているバージョンに注意してください。Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
 
 ## リソース マネージャーの特性
 
@@ -46,7 +44,7 @@
 
         ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        Compute、Storage、ネットワークのリソースについては、リソース マネージャーと従来のデプロイのどちらかを使用できます。 **[リソース マネージャー]** を選択します。
+        For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -67,7 +65,25 @@
 
     ![Web アプリ](./media/resource-manager-deployment-model/resource-manager-type.png)
 
+次の図のアプリケーションは、リソース マネージャーでデプロイしたリソースを 1 つのリソース グループに含める方法を示しています。
+
+  ![](./media/virtual-machines-azure-resource-manager-architecture/arm_arch3.png)
+
+さらに、リソース プロバイダー内にはリソース間の関係があります。
+
+- 仮想マシンは BLOB ストレージにそのディスクを保存するための SRP で定義されている特定のストレージ アカウントに依存します。
+- 仮想マシンは、NRP (必須) と、CRP で定義されている可用性セット (オプション) で定義されている、特定の NIC を参照します。
+- NIC は、仮想マシンに割り当てられた IP アドレス (必須)、仮想ネットワークのサブネット(必須)、ネットワークのセキュリティ グループ (オプション) を参照します。
+- 仮想ネットワーク内のサブネットは、ネットワークセキュリティ グループ (オプション) を参照します。
+- Load Balancer のインスタンスは仮想マシンの NIC を含め(オプション)、Load Balancer パブリックまたはプライベート IP アドレス (オプション) を参照している IP アドレスのバックエンドプールを参照します。
+
 ## 従来のデプロイの特性
+
+Azure サービス管理では、仮想マシンをホストするためのコンピューティング、ストレージ、またはネットワークは次によって提供されています:
+
+- 仮想マシンをホストするためのコンテナーとして機能する必須のクラウド サービス (コンピューティング) 仮想マシンにはネットワーク インターフェイス カード (NIC) が自動的に提供され、IP アドレスは Azure によって割り当てられます。さらに、クラウド サービスには、外部のロード バランサーのインスタンス、パブリック IP アドレス、および Windows ベースのバーチャル マシンのリモート デスクトップとリモート PowerShell トラフィックと Linux ベースのバーチャル マシン用の Secure Shell (SSH) トラフィックを許可する既定のエンドポイントが含まれています。
+- オペレーティング システム、一時、および追加のデータ ディスク (ストレージ) を含む、仮想マシンの VHD を格納するのに必要なストレージ アカウント。
+- サブネット化された構造を作成できる、また仮想マシンが配置されているサブネットを指定することができる、追加のコンテナーとして機能する、省略可能な仮想ネットワーク (ネットワーク)。
 
 従来のデプロイで作成されたリソースには次の特性があります。
 
@@ -77,7 +93,7 @@
 
         ![Classic portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-        または、プレビュー ポータルを使い、**クラシック** デプロイを指定 (Compute、Storage、ネットワーク).
+        Or, the portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
 
         ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
@@ -97,15 +113,19 @@
 
 ポータルを利用し、従来のデプロイで作成されたリソースを引き続き管理できます。
 
+コンポーネントと Azure サービス管理のための関係を示します。
+
+  ![](./media/virtual-machines-azure-resource-manager-architecture/arm_arch1.png)
+
 ## リソース マネージャーとリソース グループを使用する利点
 
 リソース マネージャーはリソース グループの概念を加えます。リソース マネージャーで作成したリソースはすべてリソース グループ内に存在します。リソース マネージャーのデプロイ モデルにはいくつかの利点があります。
 
 - ソリューションのサービスを個別に処理するのではなく、すべてのサービスをデプロイ、管理、監視できます。
 - アプリケーションをアプリのライフサイクルを通して繰り返しデプロイできます。常にリソースが一貫した状態でデプロイされます。
-- 宣言型のテンプレートを利用し、デプロイを定義できます。 
+- 宣言型のテンプレートを利用し、デプロイを定義できます。
 - 正しい順序でデプロイされるようにリソース間の依存性を定義できます。
-- ロールベースのアクセス制御 (RBAC) が管理プラットフォームにネイティブ統合されるため、リソース グループのすべてのサービスにアクセス制御を適用できます。
+- ロールベースの Access Control (RBAC) が管理プラットフォームにネイティブ統合されるため、リソース グループのすべてのサービスにアクセス制御を適用できます。
 - タグをリソースに適用し、サブスクリプションのすべてのリソースを論理的に整理できます。
 
 
@@ -168,4 +188,4 @@ Compute、Storage、Networking のリソースの移行に関する詳細につ�
 - 宣言型デプロイ テンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイするためのコマンドについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -40,13 +40,13 @@ Media Services ソリューションを構築するために、以下を使用�
 
 AMS のラーニング パスについては、以下を参照してください。
 
-- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+- [AMS のライブ ストリーミング ワークフロー](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
 ##ポスター
 
 
-[ここ](http://azure.microsoft.com/documentation/infographics/media-services/)で、メディアの作成から使用までの Azure Media Services のワークフローを示す AMS ポスターを確認できます。
+[ここ](https://azure.microsoft.com/documentation/infographics/media-services/)で、メディアの作成から使用までの Azure Media Services のワークフローを示す AMS ポスターを確認できます。
 
 ##前提条件
 
@@ -206,7 +206,7 @@ Media Services では、Azure CDN との統合をサポートしています。A
 
 ##サポート
 
-[Azure サポート](http://azure.microsoft.com/support/options/)では、Media Services を含む Azure のオプションについてサポートを提供しています。
+[Azure サポート](https://azure.microsoft.com/support/options/)では、Media Services を含む Azure のオプションについてサポートを提供しています。
 
 ##パターンとプラクティスのガイダンス
 
@@ -225,7 +225,7 @@ Media Services では、Azure CDN との統合をサポートしています。A
 - Content Protection では、99.9% 以上の時間においてキー要求が適切に処理されることが保証されます。
 - インデクサーでは、エンコード予約ユニットの 99.9% の時間においてインデクサー タスクの要求が適切に処理されます。
 
-	詳細については、「[サービス レベル アグリーメント](http://azure.microsoft.com/support/legal/sla/)」参照してください。
+	詳細については、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」参照してください。
 
 <!-- Images -->
 [overview]: ./media/media-services-overview/media-services-overview.png
@@ -234,4 +234,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

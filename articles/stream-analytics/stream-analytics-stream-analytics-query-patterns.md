@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="12/04/2015"
+	ms.date="01/25/2016"
 	ms.author="jeffstok"/>
 
 
@@ -22,7 +22,7 @@
 
 ## はじめに ##
 
-Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表されます。この言語については、[こちら](https://msdn.microsoft.com/library/azure/dn834998.aspx)をご覧ください。このドキュメントでは、実際のシナリオに基づいて、いくつかの一般的なクエリ パターンの対処方法について説明します。このドキュメントは作成中であり、継続的に新しいパターンで更新されます。
+Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表されます。この言語については、[Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)をご覧ください。この記事では、実際のシナリオに基づいて、いくつかの一般的なクエリ パターンの対処方法について説明します。このドキュメントは作成中であり、継続的に新しいパターンで更新されます。
 
 ## クエリ例: データ型の変換 ##
 **説明**: 入力ストリームのプロパティの型を定義します。例: 車の重量は入力ストリームでは文字列ですが、合計を計算するために INT に変換する必要があります。
@@ -117,7 +117,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 **説明**: CASE 句を使用すると、条件に基づいて異なる計算を適用できます (この例では、集計ウィンドウでの車の台数)。
 
 ## クエリ例: 複数の出力にデータを送信する ##
-**説明**: 単一のジョブから複数の出力ターゲットにデータを送信します。例: しきい値ベースのアラートに対してデータを分析し、すべてのイベントを BLOB ストレージにアーカイブします。
+**説明**: 単一のジョブから複数の出力ターゲットにデータを送信します。例: しきい値ベースのアラートに対してデータを分析し、すべてのイベントを Blob Storage にアーカイブします。
 
 **入力**:
 
@@ -384,6 +384,35 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 
 **説明**: LAG を使用して入力ストリームで 1 つ前のイベントを調べて、Make の値を取得します。次にそれを現在のイベントの Make と比較して、それらが同じ場合はイベントを出力し、LAG を使用して前の自動車についてのデータを取得します。
 
+## クエリ例: イベントの間隔を検出する
+**説明**: 特定のイベントの間隔を検出します。たとえば、Web クリック ストリームから、特定の機能に費やされた時間を調べます。
+
+**入力**:
+  
+| User | 機能 | イベント | 時刻 |
+| --- | --- | --- | --- |
+| user@location.com | RightMenu | 開始 | 2015-01-01T00:00:01.0000000Z |
+| user@location.com | RightMenu | End | 2015-01-01T00:00:08.0000000Z |
+  
+**出力**:
+  
+| User | 機能 | 時間 |
+| --- | --- | --- |
+| user@location.com | RightMenu | 7 |
+  
+
+**ソリューション**
+
+````
+    SELECT
+    	[user], feature, DATEDIFF(second, LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'), Time) as duration
+    FROM input TIMESTAMP BY Time
+    WHERE
+    	Event = 'end'
+````
+
+**説明**: LAST 関数を使用して、イベントの種類が "Start" であった最後の Time 値を取得します。LAST 関数に PARTITION BY [user] が使用されていることに注目してください。この指定によって、一意のユーザーごとに結果が計算されます。このクエリでは、"Start" イベントと "Stop" イベントの時間差の最大しきい値を 1 時間としていますが、必要に応じて構成可能です (LIMIT DURATION(hour, 1))。
+
 ## クエリ例: 条件の期間を検出する ##
 **説明**: 条件が発生していた時間の長さを調べます。例: すべての自動車が正しくない (20,000 ポンド超) 結果になるバグがありました。バグの期間を計算します。
 
@@ -413,32 +442,17 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 
 **解決策**:
 
-	SELECT
-	    PrevGood.Time AS StartFault,
-	    ThisGood.Time AS Endfault,
-	    DATEDIFF(second, PrevGood.Time, ThisGood.Time) AS FaultDuraitonSeconds
-	FROM
-	    Input AS ThisGood TIMESTAMP BY Time
-	    INNER JOIN Input AS PrevGood TIMESTAMP BY Time
-	    ON DATEDIFF(second, PrevGood, ThisGood) BETWEEN 1 AND 3600
-	    AND PrevGood.Weight < 20000
-	    INNER JOIN Input AS Bad TIMESTAMP BY Time
-	    ON DATEDIFF(second, PrevGood, Bad) BETWEEN 1 AND 3600
-	    AND DATEDIFF(second, Bad, ThisGood) BETWEEN 1 AND 3600
-	    AND Bad.Weight >= 20000
-	    LEFT JOIN Input AS MidGood TIMESTAMP BY Time
-	    ON DATEDIFF(second, PrevGood, MidGood) BETWEEN 1 AND 3600
-	    AND DATEDIFF(second, MidGood, ThisGood) BETWEEN 1 AND 3600
-	    AND MidGood.Weight < 20000
-	WHERE
-	    ThisGood.Weight < 20000
-	    AND MidGood.Weight IS NULL
+````
+SELECT 
+    LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN weight < 20000 ) [StartFault],
+    [time] [EndFault]
+FROM input
+WHERE
+    [weight] < 20000
+    AND LAG(weight) OVER (LIMIT DURATION(hour, 24)) > 20000
+````
 
-**説明**: 間に含まれるのが異常なイベントだけで正常なイベントは含まれない 2 つの正常なイベントを探します。これらは、少なくとも 1 つの異常イベントの前のイベントと後のイベントです。間に 1 つの異常イベントがある 2 つの正常イベントを取得するには、2 つの JOIN を使用し、重みを調べてタイムスタンプを比較することによって正常 -> 異常 -> 正常を確認します。
-
-「NULL が含まれる、またはイベントを含まない左外部結合」で学習したことを使用して、選択した 2 つの正常イベントの間で正常イベントが発生していないことを確認する方法を知ります。
-
-これらを組み合わせて、間に他の正常イベントがない正常 -> 異常 -> 正常を取得します。開始正常イベントと終了正常イベントの間の期間を計算して、バグの期間が得られます。
+**説明**: LAG を使用して 24 時間の入力ストリームに着目し、重量の上限を 20000 として、その境界を StartFault と StopFault とし、該当する項目を探しています。
 
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
@@ -452,4 +466,4 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

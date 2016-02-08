@@ -36,7 +36,7 @@ Virtual Machines を実行しているアプリケーションの規模を増減
 
 - クラウド サービスにリンクされたリソースの規模を設定できます。リソースのリンクの詳細については、「[方法: クラウド サービスに対するリソースのリンク](cloud-services-how-to-manage.md#how-to-link-a-resource-to-a-cloud-service)」を参照してください。
 
-- アプリケーションの高可用性を可能にするには、アプリケーションを 2 つ以上のロール インスタンスまたは Virtual Machines と共にデプロイする必要があります。詳細については、「[サービス レベル アグリーメント](http://azure.microsoft.com/support/legal/sla/)」を参照してください。
+- アプリケーションの高可用性を可能にするには、アプリケーションを 2 つ以上のロール インスタンスまたは Virtual Machines と共にデプロイする必要があります。詳細については、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
 
 ## Web ロールまたは worker ロールを実行しているアプリケーションの規模の手動設定
@@ -69,7 +69,7 @@ Virtual Machines を実行しているアプリケーションの規模を増減
 
 [スケール] ページで、アプリケーションで使用するインスタンスまたは Virtual Machines の数を自動的に増減するようにクラウド サービスを構成できます。以下のパラメーターに基づいて、規模の設定を構成できます。
 
-- [平均 CPU 使用率](#averagecpu) - 平均 CPU 使用率 (%) が指定されたしきい値を上回った場合、または下回った場合に、ロール インスタンスが作成または削除されるか、可用性セットで Virtual Machines がオンまたはオフになります。
+- [平均 CPU 使用率](#averagecpu) - 平均 CPU 使用率 (%) が指定されたしきい値を上回った場合、または下回った場合に、ロール インスタンスが作成または削除されるか、可用性セットで仮想マシンがオンまたはオフになります。
 - [キュー メッセージ](#queuemessages) – キュー内のメッセージの数が指定されたしきい値を上回った場合、または下回った場合に、ロール インスタンスが作成または削除されるか、可用性セットで Virtual Machines がオンまたはオフになります。
 
 ## 平均 CPU 使用率
@@ -227,4 +227,4 @@ Virtual Machines を実行しているアプリケーションの規模を増減
 [scale_schedule]: ./media/cloud-services-how-to-scale/CloudServices_SetUpSchedule.png
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

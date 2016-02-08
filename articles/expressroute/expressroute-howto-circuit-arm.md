@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/12/2016"
+   ms.date="01/26/2016"
    ms.author="cherylmc"/>
 
 # Azure リソース マネージャーと PowerShell を使用して ExpressRoute 回線を作成および変更する
@@ -183,7 +183,7 @@
 
 
 
-5. **回線キーのステータスと状態を定期的に確認します。**
+6. **回線キーのステータスと状態を定期的に確認します。**
 
 	これにより、プロバイダーがいつ回線を有効にしたのかが分かります。回線が構成されると、以下の例に示すように、*ServiceProviderProvisioningState* が *Provisioned* と表示されます。
 
@@ -213,16 +213,12 @@
 		ServiceKey                       : **************************************
 		Peerings                         : []
 
-6. **ルーティング構成を作成します。**
-	
-	手順については、「[Azure リソース マネージャーと PowerShell を使用した ExpressRoute 回線のルーティングの作成および変更](expressroute-howto-routing-arm.md)」をご覧ください。
+7. **ルーティングを構成して VNet にリンクする**
 
->[AZURE.IMPORTANT]次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IPVPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。そのような場合は、ユーザーがピアリングを作成したり、管理したりすることはできません。
+	a.**ルーティング構成を作成します。** 詳細な手順については、「[PowerShell を使用した ExpressRoute 回線のルーティングの作成と変更](expressroute-howto-routing-arm.md)」をご覧ください。
 
-
-7. **ExpressRoute 回線への VNet のリンク** 
-
-	次に、ExpressRoute 回線に VNet をリンクします。手順については、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」をご覧ください。
+		>[AZURE.NOTE] The instructions for routing only apply for circuits created with service providers offering Layer 2 connectivity services. If you are using a service provider offering managed Layer 3 services (typically an IPVPN, like MPLS), your connectivity provider will configure and manage routing for you. You will not be able to create or manage peerings in such cases. 
+	b.**VNet を ExpressRoute 回線にリンクします。** ルーティングが構成されていることを確認した後、VNet を ExpressRoute 回線にリンクする必要があります。詳細な手順については、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」をご覧ください。
 
 ##  ExpressRoute 回線の状態を取得するには
 
@@ -289,14 +285,14 @@
 
 ## ExpressRoute 回線を変更するには
 
-ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。
+ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。制限および制約事項の詳細は、「[ExpressRoute の FAQ](expressroute-faqs.md)」ページを参照してください。
 
-以下の操作を行うことができます。
+次の設定は、ダウンタイムを発生させずに変更できます。
 
 - ダウンタイムを発生させることなく、ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にする。
 - ダウンタイムを発生させることなく、ExpressRoute 回線の帯域幅を増やす。
 
-制限および制約事項の詳細は、「[ExpressRoute の FAQ](expressroute-faqs.md)」ページを参照してください。
+
 
 ### ExpressRoute Premium アドオンを有効にする方法
 
@@ -304,7 +300,7 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 		$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
-		$ckt.Sku.Name = "Premium"
+		$ckt.Sku.Tier = "Premium"
 		$ckt.sku.Name = "Premium_MeteredData"
 
 		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
@@ -314,7 +310,13 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 ### ExpressRoute Premium アドオンを無効にする方法
 
-次の PowerShell コマンドレットを使用して、既存の回線の ExpressRoute Premium アドオンを無効にできます。
+既存の回線の ExpressRoute Premium アドオンを無効にできます。ExpressRoute Premium アドオンを無効にする場合は、次の考慮事項に注意してください。
+
+- Premium から標準にダウングレードする前に、回線にリンクされている仮想ネットワークの数が 10 未満であることを確認する必要があります。これに該当しない場合、更新要求は失敗し、Premium 料金が課金されます。
+- 他の地理的リージョンではすべての仮想ネットワークのリンクを解除する必要があります。そうしないと、更新要求は失敗し、Premium 料金が課金されます。
+- プライベート ピアリングの場合、ルート テーブルのサイズを 4000 ルート未満にする必要があります。ルート テーブルのサイズが 4000 ルートを超える場合、BGP セッションがドロップし、アドバタイズされたプレフィックスの数が 4000 未満になるまで再度有効になりません。
+
+Premium アドオンを無効にするには、次の PowerShell コマンドレットの例を使用します。標準回線で許可されるリソースより多くのリソースを使用する場合、この操作は失敗することがあります。
 	
 		$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 		
@@ -323,19 +325,13 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 		
 		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-
-これで回線の Premium アドオンが無効になります。
-
-標準回線で許可されるリソースより多くのリソースを使用していると、この操作は失敗する可能性があることに注意してください。
-
-- Premium から標準にダウングレードする前に、回線にリンクされている仮想ネットワークの数が 10 未満であることを確認する必要があります。そうしないと、更新要求は失敗し、Premium 料金が課金されます。
-- 他の地理的リージョンではすべての仮想ネットワークのリンクを解除する必要があります。そうしないと、更新要求は失敗し、Premium 料金が課金されます。
-- プライベート ピアリングの場合、ルート テーブルのサイズを 4000 ルート未満にする必要があります。ルート テーブルのサイズが 4000 ルートを超える場合、BGP セッションがドロップし、アドバタイズされたプレフィックスの数が 4000 未満になるまで再度有効になりません。
-
-
 ### ExpressRoute 回線の帯域幅を更新する方法
 
-プロバイダーでサポートされている帯域幅のオプションについては、「[ExpressRoute の FAQ](expressroute-faqs.md)」ページを確認してください。既存の回線のサイズを超えるサイズを選択することができます。必要なサイズを決定した後、次のコマンドを使用して、回線のサイズを変更することができます。
+プロバイダーでサポートされている帯域幅のオプションについては、「[ExpressRoute の FAQ](expressroute-faqs.md)」ページを確認してください。既存の回線のサイズを**超える**サイズを選択できます。これによりダウンタイムが発生することはありません。
+
+>[AZURE.IMPORTANT] 中断せずに ExpressRoute 回線の帯域幅を減らすことはできません。帯域幅をダウングレードするには、ExpressRoute 回線のプロビジョニングを解除してから、新しい ExpressRoute 回線を再度プロビジョニングする必要があります。
+
+必要なサイズを決定した後、次のサンプルを使用して、回線のサイズを変更することができます。このコマンドレットを実行すると、Microsoft 側で回線のサイズが増やされます。接続プロバイダーに連絡し、この変更に合わせて接続プロバイダー側の構成を更新するよう求める必要があります。更新された帯域幅のオプションの課金は、この時点から開始されます。
 
 		$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
@@ -343,24 +339,25 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-回線のサイズは、Microsoft 側で増やされます。接続プロバイダーに連絡し、この変更に合わせて接続プロバイダー側の構成を更新するよう求める必要があります。更新された帯域幅のオプションの課金は、この時点から開始されます。
-
->[AZURE.IMPORTANT]中断せずに ExpressRoute 回線の帯域幅を減らすことはできません。帯域幅をダウングレードするには、ExpressRoute 回線のプロビジョニングを解除してから、新しい ExpressRoute 回線を再度プロビジョニングする必要があります。
-
 ## ExpressRoute 回線を削除してプロビジョニング解除するには
 
-ExpressRoute 回線は、次のコマンドを実行して削除できます。
+ExpressRoute 回線を削除できます。ExpressRoute 回線を削除するときは、次の考慮事項に注意してください。
+
+- この操作を正常に行うには、ExpressRoute からすべての仮想ネットワークのリンクを解除する必要があります。この操作が失敗した場合は、回線にリンクされている仮想ネットワークがないか確認してください。
+
+- ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が有効の場合、状態は有効状態から*無効化中*に移ります。サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金は続行されます。
+
+- コマンドレットを実行する前にサービス プロバイダーが回路のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が*未プロビジョニング*に設定されている) の場合、回線のプロビジョニングが解除され、課金が停止します。
+
+ExpressRoute 回線を削除するには、次の PowerShell コマンドレットの例を使用します。
 
 		Remove-AzureRmExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
 
-この操作を正常に行うには、ExpressRoute からすべての仮想ネットワークのリンクを解除する必要があることに注意してください。この操作が失敗した場合は、回線にリンクされている仮想ネットワークがないか確認してください。
-
-ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が有効の場合、状態は有効状態から*無効化中*に移ります。サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金は続行されます。
-
-ユーザーが上記のコマンドレットを実行する前にサービス プロバイダーが回路のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が*未プロビジョニング*に設定されている) の場合、回線のプロビジョニングが解除され、課金が停止します。
-
 ## 次のステップ
 
-- [ルーティングの構成](expressroute-howto-routing-arm.md)
+回線を作成したら、次の操作を必ず実行します。
 
-<!---HONumber=AcomDC_0114_2016-->
+1.  [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-arm.md)
+2.  [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)
+
+<!---HONumber=AcomDC_0128_2016-->

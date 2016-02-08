@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/07/2015"
+   ms.date="01/26/2016"
    ms.author="sethm" />
 
 # Azure Linux VM に Apache Qpid Proton-C をインストールする
@@ -104,7 +104,7 @@ Python および PHP アプリの場合、この例では Apache の Proton ク�
 
 さらに詳しい情報については、 次のリンク先を参照してください。
 
-- [Service Bus AMQP の概要]
+- [Service Bus AMQP の概要][]
 
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [0]: ./media/service-bus-amqp-apache/amqp-apache-1.png
@@ -114,4 +114,4 @@ Python および PHP アプリの場合、この例では Apache の Proton ク�
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

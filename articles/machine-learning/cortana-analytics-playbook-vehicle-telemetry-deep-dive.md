@@ -109,7 +109,7 @@ XUF99EW9OIQOMV7Q7 | ファミリー サルーン
 
 [Vehicle Telematics Simulator Visual Studio ソリューション](http://go.microsoft.com/fwlink/?LinkId=717075)
 
-[Azure Event Hub](http://azure.microsoft.com/services/event-hubs/)
+[Azure Event Hub](https://azure.microsoft.com/services/event-hubs/)
 
 [Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
 
@@ -163,7 +163,7 @@ Stream Analytics ジョブは、イベント ハブからデータを取り込�
 
 
 ## 準備
->[AZURE.ALERT]ソリューションのこの手順は、一括処理の場合にだけ行います。
+>[AZURE.ALERT] ソリューションのこの手順は、一括処理の場合にだけ行います。
 
 生の半構造化された車両信号と診断データセットは、データの準備の手順で、YEAR/MONTH 形式に分割されます。これは、クエリを効率化し、拡張性の高い長期保持を可能にするためです (つまり、1 つの BLOB アカウントがいっぱいになったら、次のアカウントにフェールオーバーできます)。*PartitionedCarEventsTable* というラベルの出力データは、お客様の "Data Lake" 内に、基本的な "最も加工されていない" 形式のデータとして、長期間保持する必要があります。このパイプラインへの入力データは、出力データが入力に対して完全に忠実であれば、通常は破棄されます。後で使用する場合にだけ、格納 (および分割) されます。
 
@@ -396,7 +396,7 @@ Azure Stream Analytics のすべての "ウィンドウ化" 機能の詳細に�
 
 *図 19 – RealtimeDashboardApp: PowerBI へのサインイン*
 
->[AZURE.NOTE]注: PowerBI データセットをフラッシュする場合は、次のように、flushdata パラメーターを指定して RealtimeDashboardApp を実行します。
+>[AZURE.NOTE] 注: PowerBI データセットをフラッシュする場合は、次のように、flushdata パラメーターを指定して RealtimeDashboardApp を実行します。
 
 	RealtimeDashboardApp.exe -flushdata
 
@@ -706,4 +706,4 @@ PowerBI レポートとダッシュボードを設定するための詳細な手
 
 このドキュメントには、車両テレメトリ分析ソリューションの詳細な説明が含まれています。これは、予測と行動によるリアルタイム分析と一括分析用のラムダ アーキテクチャ パターンを示しています。このパターンは、ホット パス (リアルタイム) 分析およびコールド パス (一括) 分析を必要とする幅広いユース ケースに適用されます。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

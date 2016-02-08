@@ -26,17 +26,17 @@
 
 ##Azure API Management とは
 
-Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。[ここ](http://azure.microsoft.com/services/api-management/)をクリックして、Azure API Management の詳細についてご覧ください。[ここ](api-management/api-management-get-started.md)をクリックして、Azure API Management を使用する方法についてのガイドをご覧ください。このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
+Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。[ここ](https://azure.microsoft.com/services/api-management/)をクリックして、Azure API Management の詳細についてご覧ください。[ここ](api-management/api-management-get-started.md)をクリックして、Azure API Management を使用する方法についてのガイドをご覧ください。このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
 
 ##Azure ML とは
 
-AzureML は、高度な分析ソリューションを簡単に構築、デプロイ、共有できる、機械学習用の Azure サービスです。[ここ](http://azure.microsoft.com/services/machine-learning/)をクリックして、AzureML の詳細についてご覧ください。
+AzureML は、高度な分析ソリューションを簡単に構築、デプロイ、共有できる、機械学習用の Azure サービスです。[ここ](https://azure.microsoft.com/services/machine-learning/)をクリックして、AzureML の詳細についてご覧ください。
 
 ##前提条件
 
 このガイドを完了するには、以下が必要です。
 
-* Azure アカウント。Azure アカウントを持っていない場合は、[ここ](http://azure.microsoft.com/pricing/free-trial/)をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
+* Azure アカウント。Azure アカウントを持っていない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
 * AzureML アカウント。AzureML アカウントを持っていない場合は、[ここ](https://studio.azureml.net/)をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
 * Web サービスとしてデプロイされる AzureML 実験用のワークスペース、サービス、api\_key。[ここ](machine-learning/machine-learning-create-experiment.md)をクリックして、AzureML 実験の作成方法の詳細についてご覧ください。[ここ](machine-learning/machine-learning-publish-a-machine-learning-web-service.md)をクリックして、Web サービスとして AzureML 実験をデプロイする方法の詳細についてご覧ください。また、シンプルな AzureML 実験を作成してテストし、Web サービスとしてデプロイする方法については付録 A をご覧ください。
 
@@ -384,4 +384,4 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 	return
 	invokeBatchExecutionService()
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

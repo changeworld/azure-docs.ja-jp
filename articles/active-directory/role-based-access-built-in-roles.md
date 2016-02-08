@@ -3,7 +3,7 @@
 	description="このトピックでは、ロール ベースのアクセス制御 (RBAC) の組み込みのロールについて説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="IHenkel"
+	authors="kgremban"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,16 +13,16 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="01/04/2016"
-	ms.author="inhenk"/>
+	ms.date="01/21/2016"
+	ms.author="kgremban"/>
 
 #RBAC: 組み込みのロール
 
 ## 組み込みのロール
 
-Azure のロールベースのアクセス制御では、ユーザー、グループ、サービスに割り当てられる次の組み込みのロールが提供されています。組み込みのロールの定義は変更できません。Azure RBAC の今後のリリースでは、Azure リソースに対して実行できるアクションのリストからアクションのセットを構成して、カスタムのロールを定義できるようになります。
+Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、グループ、サービスに割り当てられる次の組み込みのロールが用意されています。組み込みのロールの定義は変更できません。Azure RBAC の今後のリリースでは、Azure リソースに対して実行できるアクションのリストからアクションのセットを構成して、カスタムのロールを定義できるようになります。
 
-対応するリンクをクリックし、ロール定義の **actions** と **not actions** プロパティを確認します。**actions** プロパティは、Azure リソースに対して許可するアクションを指定します。アクションの文字列にワイルドカード文字を使用できます。ロール定義の **not actions** プロパティは、許可されているアクションから除外しなければならないアクションを指定します。
+以下のリンクをクリックし、ロール定義の **actions** と **not actions** プロパティを確認してください。**actions** プロパティは、Azure リソースに対して許可するアクションを指定します。アクションの文字列にワイルドカード文字を使用できます。ロール定義の **not actions** プロパティは、許可されているアクションから除外しなければならないアクションを指定します。
 
 
 | ロール名 | 説明 |
@@ -34,13 +34,13 @@ Azure のロールベースのアクセス制御では、ユーザー、グル�
 | [ClearDB MySQL DB の共同作業者](#cleardb-mysql-db-contributor) | ClearDB MySQL データベースを管理できます |
 | [共同作成者](#contributor) | アクセス権以外のすべてを管理できます。 |
 | [Data Factory の共同作業者](#data-factory-contributor) | Data Factory を管理できます |
-| [DevTest Lab ユーザー](#devtest-lab-user) | すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます。 |
+| [DevTest Lab ユーザー](#devtest-lab-user) | すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます |
 | [Document DB アカウントの共同作業者](#document-db-account-contributor) | Document DB アカウントを管理できます |
 | [Intelligent Systems アカウントの共同作業者](#intelligent-systems-account-contributor) | Intelligent Systems アカウントを管理できます |
 | [ネットワークの共同作業者](#network-contributor) | すべてのネットワーク リソースを管理できます |
 | [NewRelic APM アカウントの共同作業者](#newrelic-apm-account-contributor) | NewRelic Application Performance Management アカウントおよびアプリケーションを管理できます |
-| [所有者](#owner) | 所有者は、アクセス権を含めすべてを管理できます。 |
-| [閲覧者](#reader) | 閲覧者はすべてを閲覧できますが、変更を加えることはできません。 |
+| [所有者](#owner) | アクセス権を含めすべてを管理できます |
+| [閲覧者](#reader) | すべてを閲覧できますが、変更を加えることはできません |
 | [Redis Cache の共同作業者](#redis-cache-contributor]) | Redis キャッシュを管理できます |
 | [Scheduler Job Collection の共同作業者](#scheduler-job-collections-contributor) | Scheduler Job Collection を管理できます |
 | [Search サービスの共同作業者](#search-service-contributor) | Search サービスを管理できます |
@@ -85,7 +85,7 @@ Application Insights コンポーネントを管理できます
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### オートメーション オペレーター
-オートメーション オペレーターは、ジョブを開始、停止、中断、および再開できます
+ジョブを開始、停止、中断、および再開できます
 
 | **アクション** ||
 | ------- | ------ |
@@ -127,13 +127,15 @@ ClearDB MySQL データベースを管理できます
 | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
-### 共同作業者
-共同作業者は、アクセス権以外のすべてを管理できます
+### 共同作成者
+アクセス権以外のすべてを管理できます。
 
 | **アクション** ||
 | ------- | ------ |
 | * | あらゆる種類のリソースの作成と管理 |
-| **Not Actions |  |
+
+| **not actions** | |
+| ------- | ------ |
 | Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません |
 | Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |
 
@@ -301,7 +303,9 @@ SQL データベースを管理できますが、そのセキュリティ関連�
 | Microsoft.Resources/subscriptions/resourceGroups/deployments/* | リソース グループ デプロイの作成と管理 |
 | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
+
 | **not actions** | |
+| ------- | ------ |
 | Microsoft.Sql/servers/databases/auditingPolicies/* | 監査ポリシーを編集することはできません |
 | Microsoft.Sql/servers/databases/connectionPolicies/* | 接続ポリシーを編集することはできません |
 | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | データ マスク ポリシーを編集することはできません |
@@ -341,7 +345,9 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Resources/subscriptions/resourceGroups/deployments/* | サブスクリプション リソース グループのデプロイの作成と管理 |
 | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
+
 | **not actions** | |
+| ------- | ------ |
 | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーは編集できません |
 | Microsoft.Sql/servers/databases/auditingPolicies/* | SQL サーバー データベース監査ポリシーは編集できません |
 | Microsoft.Sql/servers/databases/connectionPolicies/* | SQL サーバー データベース接続ポリシーは編集できません |
@@ -381,8 +387,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 
 | **アクション** ||
 | ------- | ------ |
-| */read | 機密データを除くあらゆる種類のリソースの読み取り |
-| Microsoft.Authorization/* | 承認の読み取り |
+| */read | 機密データを除くあらゆる種類のリソースの読み取り | | Microsoft.Authorization/* | 承認の読み取り |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### 従来の仮想マシンの共同作業者
@@ -483,4 +488,4 @@ Web サイトを管理できますが、接続されている Web プランは�
 ## RBAC のトピック
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

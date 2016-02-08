@@ -16,7 +16,7 @@
 
 # Java 向けの Application Insights SDK のリリース ノート
 
-[Application Insights SDK for Java](app-insights-java-get-started.md) では、実行中のアプリに関するテレメトリを [Application Insights](http://azure.microsoft.com/services/application-insights/) に送信し、その使用状況とパフォーマンスを分析できます。
+[Application Insights SDK for Java](app-insights-java-get-started.md) では、実行中のアプリに関するテレメトリを [Application Insights](https://azure.microsoft.com/services/application-insights/) に送信し、その使用状況とパフォーマンスを分析できます。
 
 #### アプリケーションに SDK をインストールするには
 
@@ -46,7 +46,7 @@
 ## バージョン 1.0.1
 - [Java エージェント](app-insights-java-agent.md)は、次の項目に関する依存関係情報を収集します。
 	- HttpClient、OkHttp、RestTemplate (Spring) 経由で行われた HTTP 呼び出し。
-	- クライアント経由で行われた Radius への呼び出し。構成可能なしきい値が渡されると、SDK は、呼び出し引数もフェッチします。
+	- Calls to Redis made via the Jedis client.構成可能なしきい値が渡されると、SDK は、呼び出し引数もフェッチします。
 	- Oracle DB クライアントと Apache Derby DB クライアントを使用して行われた JDBC 呼び出し。
 	- 準備されたステートメントに対する ‘executeBatch’ クエリ タイプのサポート。SDK はステートメントをバッチ番号付きで表示します。
 	- JDBC クライアントをサポートするクエリ プランの提供 (MySql、PostgreSql)。クエリ プランは構成できるしきい値が交差した場合のみフェッチされます。
@@ -58,14 +58,14 @@
 
 ## バージョン 0.9.6
 - Java SDK が servlet v2.5 および HttpClient pre-v4.3 に対応するようになりました。
-- Java EE インターセプターのサポートを追加しました。
+- Adding support for Java EE interceptors.
 - Logback アペンダーから重複する依存関係を削除しました。
 
 ## バージョン 0.9.5  
 
 - Cookie の解析エラーによりカスタム イベントがユーザーやセッションに関連付けられなくなる問題を修正しました。  
-- ApplicationInsights.xml 構成ファイルの場所を解決するためのロジックが改善されました。
-- 匿名ユーザーとセッションの Cookie は、サーバー側では生成されません。Web アプリのユーザーおよびセッションの追跡を実装するために JavaScript SDK によるインストルメンテーションが必要になりました。JavaScript SDK の Cookie は引き続き適用されます。この変更により、ユーザー数とセッション数の大幅な再計算が発生する場合があることに注意してください。これは、ユーザーが開始したセッションのみがカウントされるようになったためです。
+- Improved logic for resolving the location of the ApplicationInsights.xml configuration file.
+- Anonymous User and Session cookies will not be generated on the server side.Web アプリのユーザーおよびセッションの追跡を実装するために JavaScript SDK によるインストルメンテーションが必要になりました。JavaScript SDK の Cookie は引き続き適用されます。この変更により、ユーザー数とセッション数の大幅な再計算が発生する場合があることに注意してください。これは、ユーザーが開始したセッションのみがカウントされるようになったためです。
 
 ## バージョン 0.9.4
 
@@ -73,4 +73,4 @@
 - 新しい ```trackDependency``` API メソッドを利用し、依存関係を手動で追跡できます。
 - 報告された項目に ```SyntheticSource``` プロパティを追加し、利用統計情報項目に合成のタグを付けることができます。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

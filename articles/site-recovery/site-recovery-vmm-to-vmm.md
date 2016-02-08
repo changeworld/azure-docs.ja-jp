@@ -40,7 +40,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 **前提条件** | **詳細** 
 --- | ---
-**Azure**| [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の料金については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)を参照してください。 
+**Azure**| [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の料金については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)を参照してください。 
 **VMM** | 少なくとも 1 台の VMM サーバーが必要です。<br/><br/>VMM サーバーは、最新の累積更新プログラムが適用された System Center 2012 SP1 を実行する必要があります。<br/><br/>1 台の VMM で保護を設定する場合は、そのサーバーに少なくとも2 つのクラウドを構成する必要があります。<br/><br/> 2 台のVMMサーバーで保護をデプロイする場合は、保護するプライマリ VMM サーバーに少なくとも 1 つのクラウドが構成され、保護と回復用に使用するセカンダリ VMM サーバーに １ つのクラウドが構成される必要があります。<br/><br/>すべての VMM クラウドに Hyper-V キャパシティ プロファイルを設定する必要があります。<br/><br/>保護するソースクラウドには、1つ以上の VMM ホスト グループが含まれている必要があります。<br/><br/>VMM クラウドの設定の詳細については、[VMM クラウドのファブリックの構成](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)に関するページと、[チュートリアル: System Center 2012 SP1 VMM を使用したプライベート クラウドの作成](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)に関するページを参照してください。
 **Hyper-V** | プライマリとセカンダリの VMM ホスト グループに 1 つ以上の Hyper-V ホスト サーバーが必要であり、各 Hyper-V ホストサーバーに 1 台以上の仮想マシンが必要です。<br/><br/>ホストとターゲットの Hyper-V サーバーは、少なくとも Hyper-V ロールが割り当てられ、最新の更新プログラムがインストールされた Windows Server 2012 を実行中である必要があります。<br/><br/>保護する VM を含む Hyper-V サーバーは VMM クラウドに配置されている必要があります。<br/><br/>Hyper-V をクラスターで実行する場合、静的 IP アドレス ベースのクラスターがあると、クラスター ブローカーは自動的に作成されないことに注意してください。クラスター ブローカーを手動で構成する必要があります。詳細については、[こちら](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)を参照してください。
 **ネットワーク マッピング** | フェールオーバー後に、レプリケートされた仮想マシンがセカンダリ Hyper-V ホスト サーバーに最適に配置され、適切な VM ネットワークに接続できるように、ネットワーク マッピングを構成できます。ネットワーク マッピングを構成しない場合、フェールオーバー後にレプリカ VM はどのネットワークにも接続されません。<br/><br/>デプロイ中にネットワーク マッピングを設定するには、ソース Hyper-V ホスト サーバー上の仮想マシンが VMM VM ネットワークに接続されることを確認します。そのネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。<br/<br/>回復に使用するセカンダリ VMM サーバーのターゲット クラウドには対応する VM ネットワークが構成されており、そのネットワークが、ターゲット クラウドに関連付けられている対応する論理ネットワークにリンクされている必要があります。<br/><br/>ネットワーク マッピングについては[こちら](site-recovery-network-mapping.md)を参照してください。
@@ -80,7 +80,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 ## ステップ 3: Azure Site Recovery プロバイダーをインストールする
 
-4. [クイック スタート] ページの **[VMM サーバーの準備]** で、*[VMM サーバーへのインストール用の Microsoft Azure Site Recovery プロバイダーのダウンロード]* をクリックして、最新バージョンのプロバイダー インストール ファイルを取得します。
+4. **[クイック スタート]** ページの **[VMM サーバーの準備]** で、**[VMM サーバーへのインストール用の Microsoft Azure Site Recovery プロバイダーのダウンロード]** をクリックして、最新バージョンのプロバイダー インストール ファイルを取得します。
 
 2. ソース VMM サーバーでこのファイルを実行します。プロバイダーを初めてインストールするときに、VMM がクラスターにデプロイされている場合は、プロバイダーをアクティブなノードにインストールします。インストールが終了したら、VMM サーバーをコンテナーに登録します。次に、プロバイダーを他のノードにインストールします。プロバイダーをアップグレードする場合は、すべてのノードでアップグレードする必要があります。これは、すべてのノードで同じバージョンのプロバイダーを実行する必要があるためです。
 
@@ -106,16 +106,16 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 	- カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシ設定を構成すると、プロキシの接続を確認するためのテストが実施されます。
 	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合、プロキシのアドレスやポートなどの詳細を入力する必要があります。
 	- VMM サーバーと Hyper-V ホストから次の URL にアクセスできる必要があります。
-		- *.hypervrecoverymanager.windowsazure.com
-		- *.accesscontrol.windows.net
-		- *.backup.windowsazure.com
-		- *.blob.core.windows.net
-		- *.store.core.windows.net
-	- 「[Azure Datacenter の IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+		- **.hypervrecoverymanager.windowsazure.com
+- **.accesscontrol.windows.net
+- **.backup.windowsazure.com
+- **.blob.core.windows.net
+- **.store.core.windows.net
+- 「[Azure Datacenter の IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、**[設定]** ワークスペースを開いて **[セキュリティ]** を展開し、**[実行アカウント]** をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
 
 8. **[登録キー]** で、Azure Site Recovery からダウンロードして VMM サーバーにコピーした登録キーを選択します。
-9. **[コンテナー名]** で、サーバーが登録されるコンテナーの名前を確認します。[次へ] をクリックします。
+9. **[コンテナー名]** で、サーバーが登録されるコンテナーの名前を確認します。*[次へ]* をクリックします。
 
 	![サーバー登録](./media/site-recovery-vmm-to-vmm/vault-creds.png)
 
@@ -235,7 +235,7 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 
 1. ソースとターゲットの両方の VMM サーバーでストレージ分類を定義します。[詳細情報](https://technet.microsoft.com/library/gg610685.aspx)。分類は、ソースおよびターゲットのクラウド内の Hyper-V ホスト サーバーで使用できる必要があります。分類のストレージの種類は同じでなくてもかまいません。たとえば、SMB 共有が含まれているソース分類を CSV が含まれているターゲット分類に割り当てることができます。
 2. 分類を定義したら、マッピングを作成できます。 **[クイック スタート]** ページで、**[ストレージのマップ]** をクリックします。
-1. **[ストレージ]** タブで、**[ストレージ分類のマップ]** をクリックします。
+3. **[Storage]** タブで、**[ストレージ分類のマップ]** をクリックします。
 4. **[ストレージ分類のマップ]** タブで、ソースとターゲットの VMM サーバーの分類を選択します。設定を保存します。
 
 	![ターゲット ネットワークの選択](./media/site-recovery-vmm-to-vmm/storage-mapping.png)
@@ -244,7 +244,7 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 ## ステップ 7: 仮想マシンの保護を有効化する
 サーバー、クラウド、およびネットワークを正しく構成した後で、クラウド内の仮想マシンの保護を有効にすることができます。
 
-1. 仮想マシンが配置されているクラウドの **[Virtual Machines]** タブで、**[保護を有効にする]**、**[仮想マシンの追加]** の順にクリックします。 
+1. Virtual Machines が配置されているクラウドの **[Virtual Machines]** タブで、**[保護を有効にする]**、**[仮想マシンの追加]** の順にクリックします。
 2. クラウド内の仮想マシンのリストから、保護する仮想マシンを選択します。
 
 	![仮想マシンの保護の有効化](./media/site-recovery-vmm-to-vmm/enable-protection.png)
@@ -253,7 +253,7 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 
 	![仮想マシン保護ジョブ](./media/site-recovery-vmm-to-vmm/vm-jobs.png)
 	
->[AZURE.NOTE]VMM コンソールでも仮想マシンの保護を有効にできます。仮想マシンのプロパティの **[Azure Site Recovery]** タブで、ツール バーにある **[保護を有効にする]** をクリックします。
+>[AZURE.NOTE] VMM コンソールでも仮想マシンの保護を有効にできます。仮想マシンのプロパティの **[Azure Site Recovery]** タブで、ツール バーにある **[保護を有効にする]** をクリックします。
 
 ### 既存の仮想マシンの追加
 
@@ -375,4 +375,4 @@ VMM サーバー上のプロバイダーは、本サービスからイベント�
 
 - **選択肢**: これは、本サービスに必要不可欠であり、無効にすることはできません。この情報を本サービスに送信することを希望しない場合は、本サービスを使用しないでください。
 
-<!----HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

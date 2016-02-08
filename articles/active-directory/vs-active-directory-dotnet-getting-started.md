@@ -75,6 +75,6 @@
     &lt;/html>
 </pre>
 
-[Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
+[Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

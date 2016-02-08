@@ -28,7 +28,7 @@ Azure App Services は、API Apps を介した拡張性と共通の接続性の�
 
 Azure App Service では、さまざまなサービス レベルを提供しています。どのレベルにもすべてのコネクタと API アプリが含まれ、その全機能を使用できます。
 
-[App Service の料金](http://azure.microsoft.com/pricing/details/app-service/)に関するページでは、これらのサービス レベルについて説明し、各レベルに含まれる機能を表にして示しています。次のセクションでは、BizTalk API アプリとコネクタのさまざまなカテゴリについて説明します。
+[App Service の料金](https://azure.microsoft.com/pricing/details/app-service/)に関するページでは、これらのサービス レベルについて説明し、各レベルに含まれる機能を表にして示しています。次のセクションでは、BizTalk API アプリとコネクタのさまざまなカテゴリについて説明します。
 
 
 ## Standard コネクタ
@@ -48,4 +48,4 @@ Premium コネクタによって、企業と SAP、Oracle、DB2、Informix、Web
 Standard コネクタ、BizTalk EAI、Premium コネクタなどの各カテゴリに含まれるコネクタと API Apps の完全な一覧については、[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)を参照してください。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

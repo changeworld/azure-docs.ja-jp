@@ -16,7 +16,7 @@
  
 # .NET のログ記録アダプターに関するリリース ノート
 
-log4net、NLog、System.Diagnostics.Trace などのログ記録フレームワークを既に使用している場合、これらのログをキャプチャして [Application Insights](http://azure.microsoft.com/services/application-insights/) に送信し、ユーザーの操作や例外などのイベントとログ トレースを関連付けることができます。
+log4net、NLog、System.Diagnostics.Trace などのログ記録フレームワークを既に使用している場合、これらのログをキャプチャして [Application Insights](https://azure.microsoft.com/services/application-insights/) に送信し、ユーザーの操作や例外などのイベントとログ トレースを関連付けることができます。
 
 
 #### 作業を開始するには:
@@ -32,4 +32,4 @@ log4net、NLog、System.Diagnostics.Trace などのログ記録フレームワ�
 ## バージョン 1.2.5
 - 最初のオープン ソース バージョン: バージョン 1.2.3 以降の Application Insights API を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

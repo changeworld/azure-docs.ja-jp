@@ -27,7 +27,7 @@ Azure リソース マネージャー (ARM) テンプレートを使用して HD
 
 この記事の手順を開始する前に、次の項目を用意する必要があります。
 
-- [Azure サブスクリプション](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+- [Azure サブスクリプション](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 - [Azure PowerShell](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater) / [Azure CLI](xplat-cli-install.md)。 
 
 ## ARM テンプレート
@@ -444,4 +444,4 @@ Visual Studio では、リソース グループ プロジェクトを作成し�
 	  }
 	}
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

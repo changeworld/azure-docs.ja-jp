@@ -187,7 +187,7 @@ _schedule_ の要素を次の表に示します。
 
  [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
 
- [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/dn528946)
+ [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
 
  [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
 
@@ -199,4 +199,4 @@ _schedule_ の要素を次の表に示します。
  
   
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

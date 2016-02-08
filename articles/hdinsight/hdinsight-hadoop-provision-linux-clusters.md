@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="12/08/2015"
+   	ms.date="01/28/2016"
    	ms.author="nitinme"/>
 
 
@@ -24,7 +24,7 @@
 
 このドキュメントでは、クラスターで使用できるオプションの構成に加え、Azure で Linux ベースの HDInsight クラスターを作成するさまざまな方法を学習します。HDInsight は、Azure クラウド プラットフォーム上のサービスとして Apache Hadoop、Apache Storm、および Apache HBase を提供します。
 
-> [AZURE.NOTE]このドキュメントでは、クラスターを作成するさまざまな手順を示します。クラスターをすばやく作成する方法を調べる場合は、[Azure HDInsight (Linux) の概要](../hdinsight-hadoop-linux-get-started.md)に関する記述を参照してください。
+> [AZURE.NOTE] このドキュメントでは、クラスターを作成するさまざまな手順を示します。クラスターをすばやく作成する方法を調べる場合は、[Azure HDInsight (Linux) の概要](../hdinsight-hadoop-linux-get-started.md)に関する記述を参照してください。
 
 ## HDInsight クラスターについて
 
@@ -45,7 +45,7 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
 
 各クラスターの種類にはクラスター内のノードの独自の用語と、ノードの種類ごとにノード数および既定の VM サイズがあります。
 
-> [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+> [AZURE.IMPORTANT] クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
 
 ![HDInsight Hadoop クラスター ノード](./media/hdinsight-provision-clusters/HDInsight.Hadoop.roles.png)
 
@@ -71,7 +71,7 @@ HDInsight 用 Spark クラスターには、ヘッド ノード (2 ノード) - 
 
 各クラスターの種類には、クラスターに関連付けられている 1 つ以上の Azure Storage アカウントもあります。HDInsight は、クラスターのデータ ストアとして、これらのストレージ アカウントの Azure BLOB を使用します。データをクラスターから分離しておくことで、使用されていないクラスターを削除した場合でもデータを引き続き保持できます。したがって、さらに分析が必要な場合に、新しいクラスターでも同じストレージ アカウントを使用できます。詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)に関するページを参照してください。
 
-## <a id="configuration"></a>基本的な構成オプション
+## <a id="configuration">基本的な構成オプション</a>
 
 次のセクションでは、HDInsight クラスターの作成時に使用できる必要な構成オプションについて説明します。
 
@@ -105,7 +105,7 @@ HDInsight 用 Spark クラスターには、ヘッド ノード (2 ノード) - 
 
 - **Linux 上の HDInsight (Ubuntu 12.04 LTS for Linux)**: Linux または Unix に詳しい場合、既存の Linux ベースの Hadoop ソリューションから移行する場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、このオプションを選択します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-get-started.md)」をご覧ください。
 
-> [AZURE.NOTE]このドキュメントの情報は、Linux ベースの HDInsight クラスターを使用することを前提としています。Windows ベースのクラスターに固有の情報については、[HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-provision-clusters.md)に関する記述を参照してください。
+> [AZURE.NOTE] このドキュメントの情報は、Linux ベースの HDInsight クラスターを使用することを前提としています。Windows ベースのクラスターに固有の情報については、[HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-provision-clusters.md)に関する記述を参照してください。
 
 ###サブスクリプション名
 
@@ -134,11 +134,11 @@ SSH キーの作成および使用方法を含む、HDInsight での SSH の使�
 
 ###データ ソース
 
-HDInsight では、クラスターの基になるストレージとして Azure BLOB Storage を使用します。内部的には、クラスター上の Hadoop と他のソフトウェアは、このストレージを Hadoop 分散ファイル システム (HDFS) と互換性のあるシステムと見なします。
+HDInsight では、クラスターの基になるストレージとして Azure Blob Storage を使用します。内部的には、クラスター上の Hadoop と他のソフトウェアは、このストレージを Hadoop 分散ファイル システム (HDFS) と互換性のあるシステムと見なします。
 
 新しいクラスターを作成する場合は、新しい Azure Storage アカウントを作成するか、既存のものを使用する必要があります。
 
-> [AZURE.IMPORTANT]クラスターは既定のストレージ アカウントと同じデータ センター内にある必要があるため、ストレージ アカウントに対して選択する地理的な場所によって HDInsight クラスターの場所が決まります。
+> [AZURE.IMPORTANT] クラスターは既定のストレージ アカウントと同じデータ センター内にある必要があるため、ストレージ アカウントに対して選択する地理的な場所によって HDInsight クラスターの場所が決まります。
 >
 > サポートされているリージョンのリストについては、「[HDInsight の価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」の **[リージョン]** ドロップダウン リストをクリックしてください。
 
@@ -146,21 +146,23 @@ HDInsight では、クラスターの基になるストレージとして Azure 
 
 HDInsight は、ストレージ アカウントで_既定のストレージ コンテナー_も作成します。これが、HDInsight クラスターの既定のストレージです。
 
-既定では、このコンテナーの名前はクラスター名と同じです。HDInsight で Azure BLOB Storage を使用する方法の詳細については、「[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。
+既定では、このコンテナーの名前はクラスター名と同じです。HDInsight で Azure Blog Storage を使用する方法の詳細については、「[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。
 
->[AZURE.WARNING]1 つのコンテナーを複数のクラスターで共有しないでください。これはサポートされていません。
+>[AZURE.WARNING] 1 つのコンテナーを複数のクラスターで共有しないでください。これはサポートされていません。
 
 ###ノード サイズ
 
 クラスターで使用されるコンピューティング リソースのサイズを選択できます。たとえば、大量のメモリを必要とする操作を実行することがわかっている場合は、より多くのメモリを持つコンピューティング リソースを選択できます。
 
+>[AZURE.NOTE] クラスターによって使用されるノードは Virtual Machines としてカウントされません。これは、ノードで使用される Virtual Machines イメージは、HDInsight サービスの実装の詳細であるためです。ただし、ノードによって使用されるコンピューティング コアは、サブスクリプションで利用できるコンピューティング コアとしてカウントされ、その合計数に含まれます。クラスターによって使用されるコアの数と利用可能なコアの数は、HDInsight クラスターを作成するときに、[ノード価格レベル] ブレードの [概要] セクションで確認できます。
+
 クラスターの種類によって、ノードの種類、ノードの数およびノードのサイズは異なります。たとえば、Hadoop クラスターの種類には 2 つの_ヘッド ノード_と 4 つの_データ ノード_ (既定) がありますが、Storm クラスターの種類には 2 つの _Nimbus ノード_、3 つの _Zookeeper ノード_と 4 つの_Supervisor ノード_ (既定) があります。
 
-> [AZURE.IMPORTANT]クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+> [AZURE.IMPORTANT] クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
 
 Azure プレビュー ポータルを使用してクラスターを構成する場合、ノード サイズは __[ノード価格レベル]__ ブレードを介して公開され、別のノード サイズに関連付けられているコストも表示されます。
 
-> [AZURE.IMPORTANT]クラスターが作成されると課金が開始され、クラスターが削除された場合にのみ停止します。価格の詳細については、[HDInsight の価格詳細](https://azure.microsoft.com/pricing/details/hdinsight/)に関する記述を参照してください。
+> [AZURE.IMPORTANT] クラスターが作成されると課金が開始され、クラスターが削除された場合にのみ停止します。価格の詳細については、[HDInsight の価格詳細](https://azure.microsoft.com/pricing/details/hdinsight/)に関する記述を参照してください。
 
 ##<a id="optionalconfiguration"></a>オプションの構成
 
@@ -172,7 +174,7 @@ Azure プレビュー ポータルを使用してクラスターを構成する�
 
 ### Azure Virtual Network の使用
 
-[Azure Virtual Network](http://azure.microsoft.com/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
+[Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
 
 * プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
 
@@ -192,13 +194,13 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 
 メタストアの構成オプションを使用すると、SQL Database を使用して外部のメタストアを指定することができます。これにより、クラスターを削除するときに、データベースに外付けで格納されているメタデータ情報を保持できます。Azure での SQL データベースの作成方法について詳しくは、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」をご覧ください。
 
-> [AZURE.NOTE]HBase のクラスターの種類では、メタストア構成は使用できません。
+> [AZURE.NOTE] HBase のクラスターの種類では、メタストア構成は使用できません。
 
 ###<a id="scriptaction"></a>スクリプト アクション
 
 追加コンポーネントをインストールしたり、クラスターのプロビジョニング中にスクリプトを使用してクラスター構成をカスタマイズしたりできます。このようなスクリプトは**スクリプト アクション**経由で呼び出されます。詳細については、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
 
-> [AZURE.IMPORTANT]クラスターの作成後にコンポーネントを追加することはできません。そのようなコンポーネントはクラスター ノードの再イメージ化後に利用できないためです。スクリプト アクション経由でインストールされたコンポーネントは再イメージ化プロセスで再度インストールされます。
+> [AZURE.IMPORTANT] クラスターの作成後にコンポーネントを追加することはできません。そのようなコンポーネントはクラスター ノードの再イメージ化後に利用できないためです。スクリプト アクション経由でインストールされたコンポーネントは再イメージ化プロセスで再度インストールされます。
 
 ### その他のストレージ
 
@@ -215,9 +217,8 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 | [Azure プレビュー ポータル](hdinsight-hadoop-create-linux-clusters-portal.md) | ✔ | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ |
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | &nbsp; | ✔ |
-| [cURL](hdinsight-hadoop-create-linux-clusters-curl.md) | &nbsp; | ✔ | ✔ | &nbsp; | ✔ | ✔ |
-| [.NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
-
+| [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) | &nbsp; | ✔ | ✔ | &nbsp; | ✔ | ✔ |
+| [.NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
 
 
 [hdinsight-use-mapreduce]: ../hdinsight-use-mapreduce/
@@ -267,4 +268,4 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 
   [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

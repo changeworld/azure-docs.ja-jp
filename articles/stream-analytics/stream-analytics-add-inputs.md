@@ -22,7 +22,7 @@
 
 # Stream Analytics ジョブへのストリーミング データ入力の追加
 
-Azure Stream Analytics ジョブを 1 つ以上のデータ入力に接続できます。各データ入力では、既存のデータ ソースへの接続が定義されています。データがそのデータ ソースに送信されると、Stream Analytics ジョブによって使用され、リアルタイムでストリーミング データとして処理されます。Stream Analytics は、ジョブ サブスクリプションの内部および外部で [Azure Event Hubs](http://azure.microsoft.com/services/event-hubs/) および [Azure BLOB](./storage/storage-dotnet-how-to-use-blobs.md) ストレージとの最上位の統合が行われます。Stream Analytics には、データ ストリームと参照データという 2 種類の入力があります。
+Azure Stream Analytics ジョブを 1 つ以上のデータ入力に接続できます。各データ入力では、既存のデータ ソースへの接続が定義されています。データがそのデータ ソースに送信されると、Stream Analytics ジョブによって使用され、リアルタイムでストリーミング データとして処理されます。Stream Analytics は、ジョブ サブスクリプションの内部および外部で [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) および [Azure BLOB](./storage/storage-dotnet-how-to-use-blobs.md) ストレージとの最上位の統合が行われます。Stream Analytics には、データ ストリームと参照データという 2 種類の入力があります。
 
 - **データ ストリーム**: Stream Analytics のジョブには、ジョブで使用および変換される少なくとも 1 つのデータ ストリームの入力を含める必要があります。Azure BLOB ストレージと Azure Event Hubs は、データ ストリーム入力ソースとしてサポートされます。Azure Event Hubs は、接続されているデバイス、サービス、アプリケーションからイベント ストリームを収集するために使用されます。ストリームとしてバルク データを取り込むための入力ソースとして、Azure BLOB ストレージを使用できます。  
 - **参照データ**: Stream Analytics は、参照データと呼ばれる第 2 の種類の補助入力をサポートしています。このデータは、動的なものではなく、静的またはあまり変更されないものです。通常は、高度なデータ セットを作成するための検索およびデータ ストリームとの関連付けを実行するために使用されます。現在、Azure BLOB ストレージは参照データをサポートする唯一の入力ソースです。  
@@ -80,4 +80,4 @@ Stream Analytics ジョブに入力を追加するには:
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

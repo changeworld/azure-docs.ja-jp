@@ -19,19 +19,19 @@
 
 ## 概要
 
-Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。豊富なデータ アクセス機能だけでなく、[Azure ポータル](portal.azure.com)にあるものと同じ機能の多くを使用できます。
+Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。豊富なデータ アクセス機能だけでなく、[Azure ポータル](https://portal.azure.com)にあるものと同じ機能の多くを使用できます。
 
 このガイドでは、[Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli-install.md) を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。このガイドを使用する前に、最新の Azure CLI をダウンロードしてインストールするか、最新の Azure CLI にアップグレードすることをお勧めします。
 
 このガイドでは、Azure Storage の基本概念を理解していることを前提としています。また、Azure CLI と Azure Storage を使用する方法を示すための多くのスクリプトを用意しています。各スクリプトの実行前に、使用する構成に基づいてスクリプト変数を更新してください。
 
-> [AZURE.NOTE]このガイドで紹介する Azure CLI のコマンドとスクリプトの例は、Azure サービス管理 (ASM) モードで実行されています。Azure リソース管理 (ARM) モードのストレージの Azure CLI コマンドについては、[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](../azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)に関するページを参照してください。
+> [AZURE.NOTE] このガイドで紹介する Azure CLI のコマンドとスクリプトの例は、Azure サービス管理 (ASM) モードで実行されています。Azure リソース管理 (ARM) モードのストレージの Azure CLI コマンドについては、[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](../azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)に関するページを参照してください。
 
 ## 5 分で始める Azure Storage と Azure CLI の使用
 
 このガイドの例では Ubuntu を使用しますが、他の OS プラットフォームでも同様に動作します。
 
-**Azure を初めて使用する場合:** Microsoft Azure サブスクリプションと、そのサブスクリプションに関連付けられた Microsoft アカウントを入手してください。Azure の購入オプションの詳細については、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)に関するページ、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)に関するページ、[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/) (MSDN、Microsoft Partner Network、BizSpark、その他の Microsoft プログラムのメンバー向け) に関するページをご覧ください。
+**Azure を初めて使用する場合:** Microsoft Azure サブスクリプションと、そのサブスクリプションに関連付けられた Microsoft アカウントを入手してください。Azure の購入オプションの詳細については、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページ、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)に関するページ、[メンバー プラン](https://azure.microsoft.com/pricing/member-offers/) (MSDN、Microsoft Partner Network、BizSpark、その他の Microsoft プログラムのメンバー向け) に関するページをご覧ください。
 
 Azure サブスクリプションの詳細については、「[アカウント、サブスクリプション、管理ロールの管理](https://msdn.microsoft.com/library/azure/hh531793.aspx)」を参照してください。
 
@@ -129,7 +129,7 @@ Azure Storage のすべての BLOB はコンテナーに格納する必要があ
 
         azure storage container create mycontainer
 
-> [AZURE.NOTE]**Off**、**BLOB**、**Container** という 3 つのレベルの匿名読み取りアクセスがあります。BLOB に対する匿名アクセスを許可しない場合は、Permission パラメーターを **Off** に設定します。既定では、新しいコンテナーはプライベートであり、アカウント所有者のみがアクセスできます。BLOB リソースに対する匿名パブリック読み取りアクセスを許可するが、コンテナー メタデータまたはコンテナー内の BLOB の一覧に対するアクセスは許可しない場合は、Permission パラメーターを **BLOB** に設定します。BLOB リソース、コンテナー メタデータ、コンテナー内の BLOB の一覧に対する完全パブリック読み取りアクセスを許可する場合は、Permission パラメーターを **Container** に設定します。詳細については、[Azure Storage リソースへのアクセスの管理](storage-manage-access-to-resources.md)に関するページを参照してください。
+> [AZURE.NOTE] **Off**、**BLOB**、**Container** という 3 つのレベルの匿名読み取りアクセスがあります。BLOB に対する匿名アクセスを許可しない場合は、Permission パラメーターを **Off** に設定します。既定では、新しいコンテナーはプライベートであり、アカウント所有者のみがアクセスできます。BLOB リソースに対する匿名パブリック読み取りアクセスを許可するが、コンテナー メタデータまたはコンテナー内の BLOB の一覧に対するアクセスは許可しない場合は、Permission パラメーターを **BLOB** に設定します。BLOB リソース、コンテナー メタデータ、コンテナー内の BLOB の一覧に対する完全パブリック読み取りアクセスを許可する場合は、Permission パラメーターを **Container** に設定します。詳細については、[Azure Storage リソースへのアクセスの管理](storage-manage-access-to-resources.md)に関するページを参照してください。
 
 ### コンテナーに BLOB をアップロードする
 
@@ -215,10 +215,10 @@ BLOB をファイル ディレクトリにコピーするには、次の操作�
 
 Azure Storage の詳細についての関連記事とリソースがあります。
 
-- [Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
+- [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 - [Azure Storage REST API リファレンス](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 
 
 [Image1]: ./media/storage-azure-cli/azure_command.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

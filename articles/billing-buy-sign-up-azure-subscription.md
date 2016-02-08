@@ -24,7 +24,7 @@
 
 Azure 無料試用版のサブスクリプションにサインアップするには、電話番号、クレジット カード、および Microsoft アカウントを指定する必要があります。Microsoft アカウントとは、Windows Live プログラムまたはサービス (Outlook、Hotmail、OneDrive など) にサインインするために使用する電子メール アドレスとパスワードのことです。Microsoft アカウントを設定するには、会社の電子メールなど、所有する任意の電子メール アドレスを使用します。詳細については、「[Microsoft アカウントのよくある質問](https://www.microsoft.com/ja-JP/account/faq.aspx)」を参照してください。
 
->[AZURE.NOTE]電話番号とクレジット カードの詳細は、ID を確認する目的のみで使用されます。クレジット カードには課金されませんが、カードが有効であることを確認するために最小限の金額が信用照会として請求されます。これは、金融機関のポリシーに基づいて 3 ～ 5 日内に取り消されます。
+>[AZURE.NOTE] 電話番号とクレジット カードの詳細は、ID を確認する目的のみで使用されます。クレジット カードには課金されませんが、カードが有効であることを確認するために最小限の金額が信用照会として請求されます。これは、金融機関のポリシーに基づいて 3 ～ 5 日内に取り消されます。
 
 1. [Azure 無料試用版のページ](https://azure.microsoft.com/pricing/free-trial/)を開き、**[今すぐ試す]** を選択します。
 2. Microsoft アカウントまたは学校か職場のアカウントでサインインします。
@@ -50,7 +50,7 @@ Azure 無料試用版のサブスクリプションにサインアップする�
 
 ## Azure 無料試用版サブスクリプションを従量課金制サブスクリプションにアップグレードする
 
-1. 無料試用版にサインアップするために使用した Microsoft アカウントまたは学校や職場のアカウントを使用して、[Azure アカウント ポータル](https://account.windowsazure.com/subscriptions)にログオンします。
+1. 無料評価版にサインアップするために使用した Microsoft アカウントまたは学校や職場のアカウントを使用して、[Azure アカウント ポータル](https://account.windowsazure.com/subscriptions)にログオンします。
 2. サブスクリプションを選択し、**[アップグレード]** を選択します。</br>![billpage](./media/billing-buy-sign-up-azure-subscription/billpage.png)
 3. **[はい]** を選択し、**[今すぐアップグレード]** をクリックします。</br>![upgrade](./media/billing-buy-sign-up-azure-subscription/Upgrade.png)
 
@@ -62,7 +62,7 @@ Azure イン オープン プランのクレジットを販売店から購入し
 
 1. azure.com の[サブスクリプションの概要ページ](https://account.windowsazure.com/subscriptions)に移動します。
 
-2. **[Azure イン オープン プラン]** を選択します。[[Azure イン オープン プラン ライセンス キー]](http://azure.microsoft.com/offers/ms-azr-0111p/) ページで、**新しいサブスクリプションまたは既存のサブスクリプションのアクティブ化**を選択します。
+2. **[Azure イン オープン プラン]** を選択します。[[Azure イン オープン プラン ライセンス キー]](https://azure.microsoft.com/offers/ms-azr-0111p/) ページで、**新しいサブスクリプションまたは既存のサブスクリプションのアクティブ化**を選択します。
 
 3. プロダクト キーを入力し、契約オプションを確認します。
 
@@ -92,4 +92,4 @@ Azure イン オープン プランのクレジットを販売店から購入し
 
 - [Microsoft BizSpark Plus ポータル](http://www.microsoft.com/bizspark/plus/default.aspx)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

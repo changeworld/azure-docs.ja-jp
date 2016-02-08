@@ -29,7 +29,7 @@ Azure VM の一般的な制限事項については、「[Azure サブスクリ�
 
 標準のサイズは、複数のシリーズ (A、D、DS、G、および GS) で構成されます。これらのサイズに関する考慮事項は次のとおりです。
 
-*   D シリーズ VM は、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。詳細については、Azure ブログの投稿「[新しい D シリーズ仮想マシンのサイズ](http://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)」をご覧ください。
+*   D シリーズ VM は、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。詳細については、Azure ブログの投稿「[新しい D シリーズ仮想マシンのサイズ](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)」をご覧ください。
 
 *   オリジナルの D シリーズに続く Dv2 シリーズには、より強力な CPU が備わっています。Dv2 シリーズの CPU は D シリーズの CPU よりも、およそ 35% 高速です。これは最新世代の 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサに基づいており、Intel Turbo Boost Technology 2.0 を使用することで、最大 3.2 GHz まで実現できます。Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
 
@@ -37,7 +37,7 @@ Azure VM の一般的な制限事項については、「[Azure サブスクリ�
 
 *   DS シリーズと GS シリーズの VM では、Premium Storage を使用できます。これは、高負荷の I/O ワークロードのための、高パフォーマンスで待機時間の少ない記憶域を提供します。これらの VM では、仮想マシンのディスクをホストするためのソリッド ステート ドライブ (SSD) が使用されており、ローカル SSD ディスク キャッシュも提供されます。Premium Storage は特定のリージョンで使用できます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage-premium-storage-preview-portal.md)」を参照してください。
 
-仮想マシンのサイズは価格に影響します。また、サイズは仮想マシンの処理、メモリ、記憶容量にも影響します。Storage のコストは、ストレージ アカウントで使用されるページに基づいて個別に計算されます。詳細については、[Virtual Machines 料金の詳細](http://azure.microsoft.com/pricing/details/virtual-machines/)に関するページと「[Azure Storage 料金](http://azure.microsoft.com/pricing/details/storage/)」を参照してください。VM のストレージの詳細については、「[仮想マシン用のディスクと VHD について](virtual-machines-disks-vhds.md)」を参照してください。
+仮想マシンのサイズは価格に影響します。また、サイズは仮想マシンの処理、メモリ、記憶容量にも影響します。Storage のコストは、ストレージ アカウントで使用されるページに基づいて個別に計算されます。詳細については、[Virtual Machines 料金の詳細](https://azure.microsoft.com/pricing/details/virtual-machines/)に関するページと「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。VM のストレージの詳細については、「[仮想マシン用のディスクと VHD について](virtual-machines-disks-vhds.md)」を参照してください。
 
 サイズを決定する際に役立つ考慮事項は次のとおりです。
 
@@ -54,7 +54,7 @@ Azure VM の一般的な制限事項については、「[Azure サブスクリ�
 
 Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供するため、Azure Compute Unit (ACU) の概念が作成されています。これは、パフォーマンス ニーズを満たす可能性が最も高い SKU を簡単に見つけるのに役立ちます。現在、ACU は小さい (Standard\_A1) VM を 100 として標準化されており、他のすべての SKU についてはその SKU が標準ベンチマークをそれよりどれくらい速く実行できるかが表されます。
 
->[AZURE.IMPORTANT]ACU はガイドラインに過ぎません。ワークロードの結果は異なる場合があります。
+>[AZURE.IMPORTANT] ACU はガイドラインに過ぎません。ワークロードの結果は異なる場合があります。
 
 <br>
 
@@ -63,12 +63,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |[Standard\_A0 (極小)](#standard-tier-a-series) |50 |
 |[Standard\_A1 ～ 4 (小～大)](#standard-tier-a-series) |100 |
 |[Standard\_A5 ～ 7](#standard-tier-a-series) |100 |
-|[A8 ～ A11](#standard-tier-a-series) |225 *|
-|[D1 ～ 14](#standard-tier-d-series) |160 |
-|[D1 ～ 14v2](#standard-tier-dv2-series) |210 ～ 250 *|
-|[DS1 ～ 14](#standard-tier-ds-series) |160 |
-|[G1 ～ 5](#standard-tier-g-series) |180 ～ 240 *|
-|[GS1 ～ 5](#standard-tier-gs-series) |180 ～ 240 *|
+|[A8 ～ A11](#standard-tier-a-series) |225 *| |[D1 ～ 14](#standard-tier-d-series) |160 | |[D1 ～ 14v2](#standard-tier-dv2-series) |210 ～ 250 *| |[DS1 ～ 14](#standard-tier-ds-series) |160 | |[G1 ～ 5](#standard-tier-g-series) |180 ～ 240 *| |[GS1 ～ 5](#standard-tier-gs-series) |180 ～ 240 *|
 
 
 * が付いている ACU は、Intel® Turbo テクノロジを使用して CPU 周波数を上げ、パフォーマンスを増強します。増強量は、VM のサイズ、ワークロード、および同じホストで実行されている他のワークロードによって変化します。
@@ -79,7 +74,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 
 次の表に、サイズとそのサイズで提供される容量を示します。
 
->[AZURE.NOTE]Storage の容量は、GB の測定単位として 1024^3 バイトを使用して表されます。これはギガバイト、または 2 進数定義とも呼ばれます。使用する進法が異なるサイズを比較する場合、2 進数のサイズが 10 進数よりも小さく見える場合でも、1024^3 は 1000^3 より大きいため、特定のサイズ (1 GB など) では、2 進法の方が 10 進法よりも提供される容量が大きいことに注意してください。
+>[AZURE.NOTE] Storage の容量は、GB の測定単位として 1024^3 バイトを使用して表されます。これはギガバイト、または 2 進数定義とも呼ばれます。使用する進法が異なるサイズを比較する場合、2 進数のサイズが 10 進数よりも小さく見える場合でも、1024^3 は 1000^3 より大きいため、特定のサイズ (1 GB など) では、2 進法の方が 10 進法よりも提供される容量が大きいことに注意してください。
 
 <br>
 
@@ -189,4 +184,4 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 
 [A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-a8-a9-a10-a11-specs.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -20,7 +20,7 @@
 
 # Azure サブスクリプションの支払いに使用するクレジット カードを変更する方法
 
-クレジット カードまたはデビット カードを使用して支払うか、請求書による支払いを申し込むことができます。請求書による支払いの詳細については、「[Azure の請求処理](http://azure.microsoft.com/pricing/invoicing/)」を参照してください。
+クレジット カードまたはデビット カードを使用して支払うか、請求書による支払いを申し込むことができます。請求書による支払いの詳細については、「[Azure の請求処理](https://azure.microsoft.com/ja-JP/pricing/invoicing/)」を参照してください。
 
 ## 既存のクレジット カードの支払い情報を編集する
 1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にログオンします。
@@ -44,4 +44,4 @@
 3. ページの右側にある **[支払方法の変更]** を選択します。
 4. **[支払方法の選択]** ページで、クレジット カードの横にあるドロップダウン矢印を選択し、使用するクレジット カードを選択します。次に、![checkbutton](./media/billing-how-to-change-credit-card/checkbutton.png) を選択してウィンドウを閉じます。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

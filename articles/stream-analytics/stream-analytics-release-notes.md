@@ -54,8 +54,8 @@ Added OFFSET for Tumbling and Hopping windows (タンブリング ウィンド�
 タイトル | 説明
 ---|---
 Azure IoT Suite のパブリック プレビュー | Stream Analytics は、Azure IoT Suite のパブリック プレビューに含まれています。
-Azure プレビュー ポータルの統合 | Microsoft Azure 管理ポータルで引き続き使用されている Stream Analytics が、[Azure プレビュー ポータル](http://azure.microsoft.com/overview/preview-portal/)にも統合されました。現在、プレビュー ポータルの Stream Analytics 機能は Microsoft Azure 管理ポータルで提供されている機能のサブセットであり、ブラウザ内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。
-DocumentDB 出力のサポート | Stream Analytics のジョブを [DocumentDB](http://azure.microsoft.com/services/documentdb/) に出力できるようになりました。
+Azure プレビュー ポータルの統合 | Microsoft Azure 管理ポータルで引き続き使用されている Stream Analytics が、[Azure プレビュー ポータル](https://azure.microsoft.com/overview/preview-portal/)にも統合されました。現在、プレビュー ポータルの Stream Analytics 機能は Microsoft Azure 管理ポータルで提供されている機能のサブセットであり、ブラウザ内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。
+DocumentDB 出力のサポート | Stream Analytics のジョブを [DocumentDB](https://azure.microsoft.com/services/documentdb/) に出力できるようになりました。
 IoT Hub 入力に対するサポート | Stream Analytics ジョブで、IoT Hub からデータを取り込めるようになりました。
 多様なイベントに対する TIMESTAMP BY | 単一のデータ ストリームに、異なるフィールドにタイムスタンプを持つ複数のイベント タイプが含まれている場合、式と共に [TIMESTAMP BY](http://msdn.microsoft.com/library/mt573293.aspx) を使用してケースごとに異なるタイムスタンプ フィールドを指定できるようになりました。
 
@@ -133,4 +133,4 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 - [Stream Analytics 管理 REST API 参照](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

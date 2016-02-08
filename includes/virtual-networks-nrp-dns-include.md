@@ -85,6 +85,6 @@ Json 形式での DNS ゾーンの例:
 
 詳細については、[DNS ゾーンの REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt130626.aspx)を参照してください。
 
-詳細については、[DNS レコード セットの REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt130626.aspx)を参照してください。
+詳細については、[DNS レコード セットの REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt130627.aspx)を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

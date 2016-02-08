@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="01/26/2016" 
 	ms.author="spelluru"/>
 
 # 使用事例 - 製品に関する推奨事項 
@@ -36,7 +36,7 @@ Azure Data Factory は、ソリューション アクセラレータの Cortana 
 
 ## ソリューションの概要
 
-この使用事例は、実在の Azure ユーザーが解決および実装したものです。このユーザーは、Azure Data Factory と他の Cortana Analytics コンポーネント サービス ([HDInsight](http://azure.microsoft.com/services/hdinsight/)、[Power BI](https://powerbi.microsoft.com/) など) を使用して、データの取り込み、準備、変換、分析を行い、最終データを発行しています。
+この使用事例は、実在の Azure ユーザーが解決および実装したものです。このユーザーは、Azure Data Factory と他の Cortana Analytics コンポーネント サービス ([HDInsight](https://azure.microsoft.com/services/hdinsight/)、[Power BI](https://powerbi.microsoft.com/) など) を使用して、データの取り込み、準備、変換、分析を行い、最終データを発行しています。
 
 このオンライン小売業者は、ワークフロー全体のデータ ストレージ オプションとして、Azure BLOB ストア、オンプレミスの SQL サーバー、Azure SQL DB、およびリレーショナル データ マートを使用しています。BLOB ストアには、顧客情報、顧客行動データ、および製品情報データが含まれています。製品情報データには、オンプレミスの SQL データ ウェアハウスに格納された製品ブランド情報と製品カタログが含まれています。
 
@@ -44,9 +44,9 @@ Azure Data Factory は、ソリューション アクセラレータの Cortana 
 
 ![使用事例の図](./media/data-factory-product-reco-usecase/diagram-1.png)
 
-オンライン小売業者の Web では、毎日 GB 単位の未加工の Web ログ ファイルが半構造ファイルとして生成されます。未加工の Web ログ ファイルと、顧客および製品のカタログ情報は、Data Factory のグローバルにデプロイされたサービスとしてのデータ移動機能を使用して、Azure BLOB ストレージ アカウントに定期的に取り込まれます。長期保存のために、1 日の未加工のログ ファイルは (年月別に) 分割され、BLOB ストレージに保存されます。[Azure HDInsight](http://azure.microsoft.com/services/hdinsight/) (サービスとしての Hadoop) は、未加工のログ ファイルを分割し (管理の容易さ、可用性、パフォーマンスのため)、BLOB ストレージに保存し、取り込んだログを Hive および Pig スクリプトを使用して処理するために使用されます。
+オンライン小売業者の Web では、毎日 GB 単位の未加工の Web ログ ファイルが半構造ファイルとして生成されます。未加工の Web ログ ファイルと、顧客および製品のカタログ情報は、Data Factory のグローバルにデプロイされたサービスとしてのデータ移動機能を使用して、Azure BLOB ストレージ アカウントに定期的に取り込まれます。長期保存のために、1 日の未加工のログ ファイルは (年月別に) 分割され、BLOB ストレージに保存されます。[Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) (サービスとしての Hadoop) は、未加工のログ ファイルを分割し (管理の容易さ、可用性、パフォーマンスのため)、BLOB ストレージに保存し、取り込んだログを Hive および Pig スクリプトを使用して処理するために使用されます。
 
-この例の機械学習に使用されている推奨システムは、[Apache Mahout](http://mahout.apache.org/) 製のオープン ソースの機械学習推奨プラットフォームです。[Azure Machine Learning](http://azure.microsoft.com/services/machine-learning/) またはカスタム モデルは適用できません。Mahout モデルは、全体的な使用パターンに基づいて小売業者 Web サイトのアイテム間の類似性を推測し、個々のユーザーに基づいて個人用に設定された推奨を生成するために使用されます。
+この例の機械学習に使用されている推奨システムは、[Apache Mahout](http://mahout.apache.org/) 製のオープン ソースの機械学習推奨プラットフォームです。[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) またはカスタム モデルは適用できません。Mahout モデルは、全体的な使用パターンに基づいて小売業者 Web サイトのアイテム間の類似性を推測し、個々のユーザーに基づいて個人用に設定された推奨を生成するために使用されます。
 
 最後に、個人用に設定された製品の推奨事項の結果セットは、リレーショナル データ マートに移動され、小売業者の Web サイトに使用されます。また、別のアプリケーションで BLOB ストレージから結果セットに直接アクセスしたり、別の消費者と使用事例のために他のストアに結果セットを移動したりすることもできます。
 
@@ -60,4 +60,4 @@ Azure Data Factory は、ソリューション アクセラレータの Cortana 
 
   
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

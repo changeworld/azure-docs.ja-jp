@@ -55,7 +55,7 @@ JavaScript at client
          {Score: currentGame.score, Opponents: currentGame.opponentCount}
          );
 
-C# at server
+サーバー側の C#
 
     // Set up some properties:
     var properties = new Dictionary <string, string> 
@@ -294,7 +294,7 @@ Application Insights をインストールしないでログ アダプターの 
 
 [availability]: app-insights-monitor-web-app-availability.md
 [diagnostic]: app-insights-diagnostic-search.md
-[exceptions]: app-insights-web-failures-exceptions.md
+[exceptions]: app-insights-asp-net-exceptions.md
 [greenbrown]: app-insights-asp-net.md
 [metrics]: app-insights-metrics-explorer.md
 [qna]: app-insights-troubleshoot-faq.md
@@ -305,4 +305,4 @@ Application Insights をインストールしないでログ アダプターの 
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

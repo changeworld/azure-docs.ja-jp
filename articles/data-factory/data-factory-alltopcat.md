@@ -136,7 +136,6 @@
 
 | タイトル | 説明 |
 | :-- | :-- |
-| [Azure Data Factory エディター](data-factory-editor.md) | 軽量の Web ベース UI を使用して、リンクされたサービス、テーブル、パイプラインの JSON 定義を作成、編集、デプロイできる、Azure Data Factory エディターについて説明します。 |
 | [Azure Data Factory - よく寄せられる質問](data-factory-faq.md) | Azure データ ファクトリについてよく寄せられる質問です。 |
 | [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) | Data Factory エンティティの名前付け規則について説明します。 |
 | [Azure Data Factory リリース ノート](data-factory-release-notes.md) | Data Factory - リリース ノート |
@@ -145,10 +144,10 @@
 
 #### 追加
 
-- [Azure Data Factory のラーニング パス](http://azure.microsoft.com/documentation/learning-paths/data-factory/)
-- [Microsoft Azure ドキュメントの新しい検索エクスペリエンス](http://azure.microsoft.com/search/documentation/)
-- [Microsoft Azure ドキュメントの以前の検索エクスペリエンス](http://azure.microsoft.com/searchresults/?query=)
-- [Data factory サービスの更新情報](http://azure.microsoft.com/updates/?service=data-factory)
-- [Microsoft Azure サービスのラーニング パス グラフィック](http://azure.microsoft.com/documentation/learning-paths/)
+- [Azure Data Factory のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
+- [Microsoft Azure ドキュメントの新しい検索エクスペリエンス](https://azure.microsoft.com/search/documentation/)
+- [Microsoft Azure ドキュメントの以前の検索エクスペリエンス](https://azure.microsoft.com/searchresults/?query=)
+- [Data factory サービスの更新情報](https://azure.microsoft.com/updates/?service=data-factory)
+- [Microsoft Azure サービスのラーニング パス グラフィック](https://azure.microsoft.com/documentation/learning-paths/)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

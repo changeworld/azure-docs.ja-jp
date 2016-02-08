@@ -2,13 +2,14 @@
  pageTitle="モノのインターネット用の Azure ソリューション | Microsoft Azure"
  description="サンプル ソリューション アーキテクチャや、それが Azure IoT Suite および構成済みソリューションとどのように関連するかなど、Azure での IoT の概要。"
  services=""
+ suite="iot-suite"
  documentationCenter=""
  authors="dominicbetts"
  manager="timlt"
  editor=""/>
 
 <tags
- ms.service="na"
+ ms.service="iot-suite"
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="na"
@@ -46,4 +47,4 @@ Azure の IoT の詳細については、以下のリソースを参照してく
 [Azure Machine Learning]: https://azure.microsoft.com/ja-JP/services/machine-learning/
 [Azure storage]: https://azure.microsoft.com/ja-JP/services/storage/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

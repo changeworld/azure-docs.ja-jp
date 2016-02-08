@@ -257,11 +257,21 @@ Azure リソース マネージャーの使用方法の詳細については、�
             },
             "webSiteLocation": {
                 "value": "West US"
+            },
+            "adminPassword": {
+                "reference": {
+                   "keyVault": {
+                      "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
+                   }, 
+                   "secretName": "sqlAdminPassword" 
+                }   
             }
        }
     }
 
 パラメーター ファイルのサイズは、64 KB 以下である必要があります。
+
+テンプレートのパラメーターを定義する方法については、[認証テンプレート](resource-group-authoring-templates.md/#parameters)のページを参照してください。セキュリティで保護された値を渡す KeyVault 参照の詳細については、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
 
 ## 次のステップ
 - .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](arm-template-deployment.md)」を参照してください。
@@ -272,4 +282,4 @@ Azure リソース マネージャーの使用方法の詳細については、�
 
  
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

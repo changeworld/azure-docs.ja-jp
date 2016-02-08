@@ -20,17 +20,17 @@
 
 ビッグ データの多くはソーシャル Website からもたらされます。Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。このチュートリアルでは、Twitter streaming API を使用して複数のツイートを取得します。さらに、Azure HDInsight の Apache Hive を使用して、特定の単語を含むツイートを多く送信した Twitter ユーザーの一覧を取得します。
 
-> [AZURE.NOTE]このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。Linux ベースのクラスターに固有の手順については、「[HDInsight での Hive を使用した Twitter データの分析 (Linux)](hdinsight-analyze-twitter-data-linux.md)」を参照してください。
+> [AZURE.NOTE] このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。Linux ベースのクラスターに固有の手順については、「[HDInsight での Hive を使用した Twitter データの分析 (Linux)](hdinsight-analyze-twitter-data-linux.md)」を参照してください。
 
 
 
-> [AZURE.TIP]同様のサンプルは、HDInsight のサンプル ギャラリーにあります。<a href="http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Analyze-Twitter-trend-using-Apache-Hive-in-HDInsight" target="_blank">HDInsight の Apache Hive を使用した Twitter の傾向の分析</a>に関する Channel 9 のビデオをご覧ください。
+> [AZURE.TIP] 同様のサンプルは、HDInsight のサンプル ギャラリーにあります。<a href="http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Analyze-Twitter-trend-using-Apache-Hive-in-HDInsight" target="_blank">HDInsight の Apache Hive を使用した Twitter の傾向の分析</a>に関する Channel 9 のビデオをご覧ください。
 
 ###前提条件
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **コンピューター**。Azure PowerShell がインストールされ構成されている必要があります。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。Windows PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「[Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)][powershell-script]」を参照してください。
+- **コンピューター**。Azure PowerShell がインストールされ構成されている必要があります。[Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。Windows PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「[Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)][powershell-script]」を参照してください。
 
 	Windows PowerShell スクリプトを実行する前に、次のコマンドレットを使用して Azure サブスクリプションに接続されていることを確認します。
 
@@ -57,7 +57,7 @@ tutorials/twitter/twitter.hql|HiveQL スクリプト ファイルです。
 
 このチュートリアルでは、[Twitter streaming API][twitter-streaming-api] を使用します。使用する特定の Twitter streaming API は [statuses/filter][twitter-statuses-filter] です。
 
->[AZURE.NOTE]10,000 のツイートを含むファイルと Hive スクリプト ファイルは (次のセクションで説明) は、パブリック BLOB コンテナーにアップロードされています。このセクションは、アップロードしたファイルを使用する場合は省略できます。
+>[AZURE.NOTE] 10,000 のツイートを含むファイルと Hive スクリプト ファイルは (次のセクションで説明) は、パブリック BLOB コンテナーにアップロードされています。このセクションは、アップロードしたファイルを使用する場合は省略できます。
 
 [ツイート データ](https://dev.twitter.com/docs/platform-objects/tweets)は、複雑なネスト構造の JavaScript Object Notation (JSON) 形式で格納されます。従来のプログラミング言語を使用して多数のコード行を記述する代わりに、このネスト構造を Hive テーブルに変換し、構造化照会言語 (SQL) によく似た HiveQL という言語で照会するようにできます。
 
@@ -86,7 +86,7 @@ Web サイト|http://www.myhdinsightapp.com
 
 このチュートリアルでは、Windows PowerShell を使用して Web サービスを呼び出します。.NET の c# サンプルについては、[HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する方法][hdinsight-hbase-twitter-sentiment]に関するページを参照してください。Web サービスを呼び出すその他の一般的なツールは [*Curl*][curl] です。Curl は[ここ][curl-download]からダウンロードできます。
 
->[AZURE.NOTE]Windows で curl コマンドを使用する場合、オプション値には一重引用符の代わりに二重引用符を使用します。
+>[AZURE.NOTE] Windows で curl コマンドを使用する場合、オプション値には一重引用符の代わりに二重引用符を使用します。
 
 **ツイートを取得するには**
 
@@ -243,7 +243,7 @@ $lineMax|この値によってスクリプトが読み取るツイートの数�
 
 Azure PowerShell を使用して、複数の HiveQL ステートメントを一度に実行することも、HiveQL ステートメントをスクリプト ファイルにまとめることもできます。このチュートリアルでは、HiveQL スクリプトを作成します。スクリプト ファイルは、Azure Blob ストレージにアップロードする必要があります。次のセクションでは、Azure PowerShell を使用してスクリプト ファイルを実行します。
 
->[AZURE.NOTE]Hive スクリプト ファイルと 10,000 のツイートが含まれているファイルは、パブリック BLOB コンテナーにアップロードされています。このセクションは、アップロードしたファイルを使用する場合は省略できます。
+>[AZURE.NOTE] Hive スクリプト ファイルと 10,000 のツイートが含まれているファイルは、パブリック BLOB コンテナーにアップロードされています。このセクションは、アップロードしたファイルを使用する場合は省略できます。
 
 HiveQL スクリプトは、次の作業を実行します。
 
@@ -454,7 +454,7 @@ $hqlScriptFile|HiveQL スクリプト ファイルの場所とファイル名で
 
 次の Windows PowerShell スクリプトを使用して Hive スクリプトを実行します。最初の変数を設定する必要があります。
 
->[AZURE.NOTE]最後の 2 つのセクションでアップロードしたツイートと HiveQL スクリプトを使用するには、$hqlScriptFile を "/tutorials/twitter/twitter.hql" に設定します。パブリック BLOB にアップロードしたツイートと HiveQL スクリプトを使用するには、$hqlScriptFile を "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql" に設定します。
+>[AZURE.NOTE] 最後の 2 つのセクションでアップロードしたツイートと HiveQL スクリプトを使用するには、$hqlScriptFile を "/tutorials/twitter/twitter.hql" に設定します。パブリック BLOB にアップロードしたツイートと HiveQL スクリプトを使用するには、$hqlScriptFile を "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql" に設定します。
 
 	#region variables and constants
 	$clusterName = "<Existing Azure HDInsight Cluster Name>"
@@ -527,7 +527,7 @@ $hqlScriptFile|HiveQL スクリプト ファイルの場所とファイル名で
 	Write-Host "==================================" -ForegroundColor Green
 	#end region
 
-> [AZURE.NOTE]Hive テーブルでは \\001 をフィールド区切り記号として使用します。区切り記号は出力には表示されません。
+> [AZURE.NOTE] Hive テーブルでは \\001 をフィールド区切り記号として使用します。区切り記号は出力には表示されません。
 
 分析結果が Azure BLOB ストレージに配置されると、Azure SQL Database/SQL Server へのデータのエクスポート、Power Query を使用してのデータの Excel へのエクスポート、または Hive ODBC ドライバーを使用してのアプリケーションのデータへの接続ができます。詳細については、「[HDInsight での Sqoop の使用][hdinsight-use-sqoop]」、「[HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-delay-data]」、「[Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]」、および「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-hive-odbc]」を参照してください。
 
@@ -565,4 +565,4 @@ $hqlScriptFile|HiveQL スクリプト ファイルの場所とファイル名で
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
 [hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

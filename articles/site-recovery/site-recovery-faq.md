@@ -88,7 +88,7 @@ Azure にレプリケートする仮想マシンは、[Azure 要件](site-recove
 
 ### Hyper-V 第 2 世代仮想マシンを Azure にレプリケートできますか。
 
-はい。Site Recovery は、フェールオーバー中に第 2 世代から第 1 世代への変換を行います。フェールバック時に、マシンは第 2 世代に変換し直されます。詳細については、[こちら](http://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)を参照してください。
+はい。Site Recovery は、フェールオーバー中に第 2 世代から第 1 世代への変換を行います。フェールバック時に、マシンは第 2 世代に変換し直されます。詳細については、[こちら](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)を参照してください。
 
 ### Azure にレプリケートした場合、Azure VM の支払いはどうなりますか。 
 
@@ -129,28 +129,28 @@ Site Recovery は ISO 27001:2005 の認証を受けており、HIPAA、DPA、お
 
 [標準の地理冗長ストレージ](../storage/storage-redundancy.md/#geo-redundant-storage)を持つストレージ アカウントが必要になります。[Premium Storage アカウント](../storage/storage-premium-storage-preview-portal/)は、VMware 仮想マシンまたは Windows/Linux 物理サーバーを Azure にレプリケートする場合にのみサポートされます。
 
-標準のローカル冗長ストレージのサポートはバックログにあります。「[フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/7204469-local-redundant-type-azure-storage-support)」でこの機能に関するフィードバックを送信してください。
+標準のローカル冗長ストレージのサポートはバックログにあります。「[フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/7204469-local-redundant-type-azure-storage-support/)」でこの機能に関するフィードバックを送信してください。
 
 ### どのくらいの頻度でデータをレプリケートできますか。
 - **Hyper-V:** Hyper-V VM は 30 秒、5 分、または 15 分ごとにレプリケートできます。SAN レプリケーションを設定した場合は、レプリケーションと同期します。
 - **VMware と物理サーバー:** レプリケーションの頻度はここでは関係ありません。レプリケーションは継続的に行われます。 
 
 ### 既存の復旧サイトから第 3 のサイトにレプリケーションを拡張することができますか。
-拡張またはチェーン レプリケーションはサポートされていません。「[フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication)」でこの機能に関するフィードバックを送信してください。
+拡張またはチェーン レプリケーションはサポートされていません。「[フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication/)」でこの機能に関するフィードバックを送信してください。
 
 
 ### Azure に初めてレプリケートする際に、オフライン レプリケーションを行うことができますか。 
 
-これはサポートされていません。「[フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)」でこの機能に関するフィードバックを送信してください。
+これはサポートされていません。「[フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from/)」でこの機能に関するフィードバックを送信してください。
 
 
 ### レプリケーションから特定のディスクを除外することはできますか。
 
-これはサポートされていません。「[フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6418801-exclude-disks-from-replication)」でこの機能に関するフィードバックを送信してください。
+これはサポートされていません。「[フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6418801-exclude-disks-from-replication/)」でこの機能に関するフィードバックを送信してください。
 
 ### ダイナミック ディスクを持つ仮想マシンをレプリケートできますか。
 
-ダイナミック ディスクは Hyper-V 仮想マシンのレプリケート時にサポートされますが、VMware 仮想マシンまたは物理サーバーをレプリケートする際にはサポートされません。「[フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery)」でこの機能に関するフィードバックを送信してください。
+ダイナミック ディスクは Hyper-V 仮想マシンのレプリケート時にサポートされますが、VMware 仮想マシンまたは物理サーバーをレプリケートする際にはサポートされません。「[フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/)」でこの機能に関するフィードバックを送信してください。
 
 ### Azure にフェールオーバーする場合、フェールオーバー後に Azure の仮想マシンにどうしたらアクセスできますか。 
 
@@ -223,4 +223,4 @@ Azure パック、クラウド プラットフォーム システム、および
 
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

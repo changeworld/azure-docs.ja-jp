@@ -25,7 +25,7 @@
 使い始める準備はできていますか。 Azure Active Directory でリリースされたすばらしい機能をお試しください。これらの機能を使用すると、組織の ID とアクセスの管理の価値が高まります。これらの機能の構成方法については、ドキュメントを参照してください。最初の手順に進み、管理者とユーザーに評価版のライセンスを割り当てると、これらの機能のテストを開始する方法が表示されます。
 
 
-> [AZURE.NOTE]Azure AD は誰でも無料で使用できます。今すぐ Azure 評価版サブスクリプションにサインアップして、ディレクトリを使用できます。購入するかどうかにかかわらず、ディレクトリはお客様のものです。[今すぐ Azure AD をお試しください](http://azure.microsoft.com/trial/get-started-active-directory/)
+> [AZURE.NOTE] Azure AD は誰でも無料で使用できます。今すぐ Azure 評価版サブスクリプションにサインアップして、ディレクトリを使用できます。購入するかどうかにかかわらず、ディレクトリはお客様のものです。[今すぐ Azure AD をお試しください](https://azure.microsoft.com/trial/get-started-active-directory/)
 
 ##組織のアクセスのセキュリティ保護
 Multi-Factor Authentication を使用してクラウド内の組織の ID データを保護し、ローカルとリモートのアクセスの安全性を高めます。[Multi-Factor Authentication の詳細を確認してください。](../multi-factor-authentication.md)
@@ -44,4 +44,4 @@ Azure AD には、管理者用に多くのレポートがあります。Azure AD
 * [Azure への組織としてのサインアップ](sign-up-organization.md)
 * [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -24,7 +24,7 @@ Microsoft Azure サブスクリプションの課金額は、料金プランに�
 
 前の請求期間の潜在的使用時間のうち、最大 24 時間が現在の請求期間として報告される場合があることにご注意ください。
 
-消費量と料金プランの詳細については、「[Microsoft Azure の購入オプション」](http://azure.microsoft.com/pricing/purchase-options/)ページを参照してください。
+消費量と料金プランの詳細については、「[Microsoft Azure の購入オプション](https://azure.microsoft.com/pricing/purchase-options/)」ページを参照してください。
 
 次のリンクは、Microsoft Azure サービスの完全な一覧を示します。
 
@@ -220,9 +220,9 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 消費量 | 消費量 | その日に消費されたリソースの量が表示されます。
 サブ リージョン | リソースの場所 | リソースが実行されているデータ センターを特定します。
 サービス | 使用サービス | この列を使用して、[名前] 列だけでは詳しく識別できない、個々の Azure Platform サービスを追跡します。この列が表示されサービス固有のサービスの使用法に関するものです。
-該当なし | リソース グループ | _**新しい列の追加。**_ デプロイされたリソースが実行されるリソース グループ。「http://azure.microsoft.com/documentation/articles/resource-group-overview/」を参照してください。
+該当なし | リソース グループ | _**新しい列の追加。**_ デプロイされたリソースが実行されるリソース グループ。http://azure.microsoft.com/documentation/articles/resource-group-overview/ を参照してください。
 コンポーネント | インスタンス ID | 実行中のリソースの識別子です。識別子には、リソースの作成時に指定した名前が含まれています。
-該当なし | タグ | _**新しい列の追加。**_ Azure の新しいリソースの種類では、リソースにタグを付けることができます。「http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/」を参照してください。
+該当なし | タグ | _**新しい列の追加。**_ Azure の新しいリソースの種類では、リソースにタグを付けることができます。http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/ を参照してください。
 追加情報 | 追加情報 | サービスに関連する追加のメタデータ。
 サービス情報 1 | サービス情報 1 | この列は、サブスクリプションでサービスが属しているプロジェクトの名前を特定します。
 サービス情報 2 | サービス情報 2 | これは、サービス固有の省略可能なメタデータをキャプチャする、以前から使用されているフィールドです。
@@ -238,7 +238,7 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 ![additionalinfo\_csv2](./media/billing-understand-your-bill/AdditionaInfo_csv2.png)
 
 - **タグ**: この列には、ユーザーが指定したリソース タグが含まれます。タグは、課金記録のグループ化に使用できます。たとえば、タグを使用して、サービスを使用する部門ごとにコストを配分することができます。タグの使用方法については、[Azure リソースの整理](./resource-group-using-tags.md)を参照してください。タグの生成をサポートするサービスは、次のとおりです。  
-    - Virtual Machines
+    - 仮想マシン
     - 記憶域
     - [Azure リソース マネージャー API を使用してプロビジョニングされたネットワーク サービス。](https://msdn.microsoft.com/library/azure/dn790567.aspx)
 
@@ -262,4 +262,4 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 
 <!--Image references-->
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0128_2016-->

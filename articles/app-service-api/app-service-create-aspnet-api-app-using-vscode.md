@@ -24,7 +24,7 @@
 
 このチュートリアルでは、[Visual Studio Code](http://code.visualstudio.com//Docs/whyvscode) を使用して ASP.NET 5 API アプリを作成する方法について説明します。ASP.NET 5 は、ASP.NET の刷新版です。ASP.NET 5 は、.NET を使用して最新のクラウドベースの Web アプリケーションを構築するための、新しいオープン ソースのクロスプラットフォーム フレームワークです。詳細については、[ASP.NET 5 の概要](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)に関するページをご覧ください。API アプリの詳細については、[API Apps の概要](app-service-api-apps-why-best-platform.md)に関するページをご覧ください。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[無料評価版にサインアップする](/pricing/free-trial/)か、[MSDN サブスクライバーの特典を有効に](/pricing/member-offers/msdn-benefits-details/)してください。無料評価版の [App Service アプリのサンプル](http://tryappservice.azure.com)を試すこともできます。
+> [AZURE.NOTE] このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[無料評価版にサインアップする](/pricing/free-trial/)か、[MSDN サブスクライバーの特典を有効に](/pricing/member-offers/msdn-benefits-details/)してください。無料評価版の [App Service アプリのサンプル](http://tryappservice.azure.com)を試すこともできます。
 
 ## 前提条件  
 
@@ -34,7 +34,7 @@
 ## ASP.NET 5 と DNX のインストール
 ASP.NET 5 と DNX は、OS X、Linux、Windows 上で動作する最新のクラウドや Web アプリを構築するための、効率の優れた .NET スタックです。ASP.NET 5 および DNX は、一から設計し直され、クラウドにデプロイされるアプリまたはオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
 
-> [AZURE.NOTE]OS X と Linux の ASP.NET 5 と DNX (.NET Execution Environment) は、初期のベータかプレビュー状態にあります。
+> [AZURE.NOTE] OS X と Linux の ASP.NET 5 と DNX (.NET Execution Environment) は、初期のベータかプレビュー状態にあります。
 
 このチュートリアルでは、最新の開発バージョンの ASP.NET 5 と DNX を使用してアプリケーションの構築を開始する方法について説明します。より安定したリリース版のエクスペリエンスが必要な場合は、[http://www.asp.net/vnext](http://www.asp.net/vnext) をご覧ください。次の手順は、Windows に固有の手順です。OS X、Linux、Windows 用の詳細なインストール手順については、[ASP.NET 5 と DNX のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページをご覧ください。
 
@@ -136,28 +136,28 @@ namespace ContactsList.Models
 3. **Controllers** フォルダーを右クリックし、*ContactsController.cs* ファイルを追加します。次のような内容になります。
 
 	<pre class="prettyprint">
-	using System.Collections.Generic;
-	using Microsoft.AspNet.Mvc;
-	using ContactsList.Models;
-	
-	namespace ContactsList.Controllers
-	{
-	    [Route("api/[controller]")]
-	    public class ContactsController : Controller
-	    {
-	        // GET: api/Contacts
-	        [HttpGet]
-	        public IEnumerable&lt;Contact&gt; Get()
-	        {
-	            return new Contact[]{
-	                new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
-	                new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
-	                new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
-	            };
-	        }
-	    }
-	}
-	</pre>
+using System.Collections.Generic;
+using Microsoft.AspNet.Mvc;
+using ContactsList.Models;
+
+namespace ContactsList.Controllers
+{
+    [Route("api/[controller]")]
+    public class ContactsController : Controller
+    {
+        // GET: api/Contacts
+        [HttpGet]
+        public IEnumerable&lt;Contact> Get()
+        {
+            return new Contact[]{
+                new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
+                new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
+                new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
+            };
+        {
+    {
+{
+</pre>
 
 4. **[ファイル]**、**[すべてを保存]** の順に選択して、すべてのファイルを保存します。
 5. **コマンド パレット**で、次のコマンドを入力してアプリをローカルで実行します。
@@ -310,9 +310,9 @@ ASP.NET API プロジェクトを API アプリとしてデプロイできるよ
 
 ## Azure プレビュー ポータルでの API アプリの作成
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[無料評価版にサインアップする](/pricing/free-trial/)か、[MSDN サブスクライバーの特典を有効に](/pricing/member-offers/msdn-benefits-details/)してください。無料評価版の [App Service アプリのサンプル](http://tryappservice.azure.com)を試すこともできます。
+> [AZURE.NOTE] このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[無料評価版にサインアップする](/pricing/free-trial/)か、[MSDN サブスクライバーの特典を有効に](/pricing/member-offers/msdn-benefits-details/)してください。無料評価版の [App Service アプリのサンプル](http://tryappservice.azure.com)を試すこともできます。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にログインします。
+1. [Azure プレビュー ポータル](https://portal.azure.com/)にログインします。
 
 2. ポータルの左下にある **[新規]** をクリックします。
 
@@ -426,7 +426,7 @@ To https://user@testsite.scm.azurewebsites.net/testsite.git
 [new branch]      master -> master
 </pre>
 
-> [AZURE.NOTE]アプリを変更した場合は再パブリッシュできます。そのためには、VSCode で **[すべてコミット]** チェック マークを選択して、**GitBash** で **git push azure master** コマンドを入力します。
+> [AZURE.NOTE] アプリを変更した場合は再パブリッシュできます。そのためには、VSCode で **[すべてコミット]** チェック マークを選択して、**GitBash** で **git push azure master** コマンドを入力します。
 
 ## Azure プレビュー ポータルでの API 定義の表示
 API を API アプリにデプロイしたので、Azure プレビュー ポータルで API 定義を確認できるようになりました。最初にゲートウェイを再起動します。これによって、API アプリの API 定義が変更されたことを Azure で認識できるようになります。ゲートウェイは、API の管理とリソース グループ内の API アプリの承認を処理する Web アプリです。
@@ -444,4 +444,4 @@ Azure プレビュー ポータルで、目的の API アプリの **[API アプ
 このチュートリアルでは、Visual Studio Code を使用して API アプリを作成する方法について説明しました。Visual Studio Code の詳細については、[Visual Studio Code](https://code.visualstudio.com/Docs/) に関するページをご覧ください。API アプリの詳細については、[API Apps の概要](app-service-api-apps-why-best-platform.md)に関するページをご覧ください。
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

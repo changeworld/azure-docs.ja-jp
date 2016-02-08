@@ -56,7 +56,7 @@ Login-AzureRmAccount を使用して認証を行います。
 
     New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 
-Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。アプリケーション ゲートウェイを作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
+Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。Application Gateway を作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
 
 上記の例では、"appgw-RG" という名前のリソース グループと "米国西部" という名前の場所を作成しました。
 
@@ -80,7 +80,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 ### 手順 3.
 
-アプリケーション ゲートウェイを作成する次の手順のために、サブネットの変数を割り当てます。
+Application Gateway を作成する次の手順のために、サブネット変数を割り当てます。
 
 	$subnet=$vnet.Subnets[0]
 
@@ -94,12 +94,12 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 ## カスタム プローブを設定したアプリケーション ゲートウェイ構成オブジェクトの作成
 
-アプリケーション ゲートウェイを作成する前に、すべての構成項目を設定する必要があります。次の手順では、アプリケーション ゲートウェイのリソースに必要な構成項目を作成します。
+アプリケーション ゲートウェイを作成する前に、すべての構成項目を設定する必要があります。次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
 
 
 ### 手順 1.
 
-"gatewayIP01" という名前のアプリケーション ゲートウェイの IP 構成を作成します。Application Gateway が起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。各インスタンスは、1 つの IP アドレスを取得することに注意してください。
+"gatewayIP01" という名前の Application Gateway の IP 構成を作成します。Application Gateway が起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。各インスタンスは、1 つの IP アドレスを取得することに注意してください。
 
 	$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
@@ -124,7 +124,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 - **-Hostname と -path** - インスタンスの状態を判断するために Application Gateway により呼び出される完全な URL パス。たとえば、"http://contoso.com/" という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするためには、カスタム プローブを "http://contoso.com/path/custompath.htm" に対して構成します。
 - **-UnhealthyThreshold** - バックエンド インスタンスを*異常*とフラグするために必要な HTTP 応答の失敗数。
 
-
+<BR>
 
 	$probe = New-AzureRmApplicationGatewayProbeConfig -Name probe01 -Protocol Http -HostName "contoso.com" -Path "/path/path.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
 
@@ -168,11 +168,11 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 	$sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
 
->[AZURE.NOTE]*InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Standard\_Small、Standard\_Medium、Standard\_Large のいずれかを選択できます。
+>[AZURE.NOTE]  *InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Standard\_Small、Standard\_Medium、Standard\_Large のいずれかを選択できます。
 
-## New-AzureRmApplicationGateway を使用したアプリケーション ゲートウェイの作成
+## New-AzureRmApplicationGateway を使用した Application Gateway の作成
 
-前の手順の構成項目をすべて使用して、アプリケーション ゲートウェイを作成します。この例では、アプリケーション ゲートウェイは "appgwtest" という名前です。
+前の手順の構成項目をすべて使用して、Application Gateway を作成します。この例では、アプリケーション ゲートウェイは "appgwtest" という名前です。
 
 	$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -Probes $probe -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 
@@ -238,4 +238,4 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 	Set-AzureRmApplicationGateway -ApplicationGateway $getgw -verbose
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

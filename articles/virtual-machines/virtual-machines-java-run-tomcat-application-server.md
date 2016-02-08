@@ -96,7 +96,7 @@ Tomcat が実行されていることを外部コンピューターから確認�
 5. **[追加]** をクリックします。
 6. **[エンドポイントの追加]** ダイアログ ボックスで、**[スタンドアロン エンドポイントの追加]** チェック ボックスがオンになっていることを確認し、**[次へ]** をクリックします。
 7. **[エンドポイントの詳細を指定します]** ダイアログ ボックスで、次の操作を行います。
-    1. エンドポイントの [名前] \(**HttpIn** など) を指定します。
+    1. エンドポイントの [名前] (**HttpIn** など) を指定します。
     2. プロトコルに **TCP** を指定します。
     3. [パブリック ポート] に **80** を指定します。
     4. [プライベート ポート] に **8080** を指定します。
@@ -125,7 +125,7 @@ Tomcat が実行されていることを外部コンピューターから確認�
     自動的に開始する設定の利点は、仮想マシンが再起動された場合 (再起動を伴うソフトウェア更新プログラムのインストール後など) に、Tomcat を開始できる点です。
 
 ## 次のステップ
-Java アプリケーションに含めることができる他のサービス (Azure Storage、Service Bus、SQL Database など) については、[Java デベロッパー センター](http://azure.microsoft.com/develop/java/)を参照してください。
+Java アプリケーションに含めることができる他のサービス (Azure Storage、Service Bus、SQL Database など) については、[Java デベロッパー センター](https://azure.microsoft.com/develop/java/)を参照してください。
 
 [virtual_machine_tomcat]: ./media/virtual-machines-java-run-tomcat-application-server/WA_VirtualMachineRunningApacheTomcat.png
 
@@ -146,4 +146,4 @@ Java アプリケーションに含めることができる他のサービス (A
 [NewRuleName]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleName.png
 [NewRuleProfile]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleProfile.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

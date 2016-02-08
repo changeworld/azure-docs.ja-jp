@@ -34,7 +34,7 @@ StorSimple Manager サービスは Microsoft Azure で実行され、複数の S
 
 #### サービスに接続するには
 
-1. [http://azure.microsoft.com/](http://azure.microsoft.com/) にアクセスします。
+1. [http://azure.microsoft.com/](https://azure.microsoft.com/) にアクセスします。
 
 1. Microsoft アカウントの資格情報を使用して、ウィンドウの右上にある Microsoft Azure クラシック ポータルにログオンします。
 
@@ -57,15 +57,15 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 |ランディング ページ|サービス レベルのページ|デバイス レベルのページ|デバイス レベルのページ|
 |---|---|---|---|
 |StorSimple Manager サービス|サービスのダッシュボード|デバイス ダッシュボード||
-||デバイス →|監視|
-||バックアップ カタログ|ボリューム コンテナー →|ボリューム|
-||構成 (サービス)|バックアップ ポリシー||
-||ジョブ|構成 (デバイス)|
-||アラート|メンテナンス|
+|デバイス →|監視|
+|バックアップ カタログ|ボリューム コンテナー →|ボリューム|
+|構成 (サービス)|バックアップ ポリシー||
+|ジョブ|構成 (デバイス)|
+|アラート|メンテナンス|
 
 ![ビデオ](./media/storsimple-manager-service-administration/Video_icon.png) **ビデオ**
 
-StorSimple Manager サービスのユーザー インターフェイスのチュートリアル ビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-manager-service-overview/)を参照してください。
+StorSimple Manager サービスのユーザー インターフェイスのチュートリアル ビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/storsimple-manager-service-overview/)を参照してください。
 
 ## StorSimple Manager サービスを使用した StorSimple デバイスの管理
 
@@ -114,4 +114,4 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 
 問題を解決できず、サービス要求の作成が必要な場合は、｢[Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)」を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

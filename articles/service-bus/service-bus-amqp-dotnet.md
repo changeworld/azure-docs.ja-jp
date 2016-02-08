@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/15/2015"
+   ms.date="01/26/2016"
    ms.author="sethm" />
 
 # AMQP 1.0 で .NET から Service Bus を使用する
@@ -21,7 +21,7 @@
 
 ## Service Bus SDK のダウンロード
 
-AMQP 1.0 は、Service Bus SDK Version 2.1 以降でサポートされています。最新の SDK は、[NuGet][] からダウンロードできます。
+AMQP 1.0 は、Service Bus SDK Version 2.1 以降でサポートされています。最新の Service Bus ビットは、[NuGet][] からダウンロードできます。
 
 ## AMQP 1.0 を使用するように .NET アプリケーションを構成する
 
@@ -198,10 +198,9 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
   [Microsoft.ServiceBus.Messaging.BrokeredMessage.RenewLock]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.renewlock.aspx
   [OperationTimeout]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx
 [NuGet]: http://nuget.org/packages/WindowsAzure.ServiceBus/
-
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

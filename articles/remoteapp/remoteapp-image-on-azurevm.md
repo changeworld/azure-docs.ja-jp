@@ -1,18 +1,18 @@
-<properties 
+<properties
     pageTitle="Azure VM に基づく Azure RemoteApp イメージの作成 | Microsoft Azure"
-    description="Azure 仮想マシンを使用することで Azure RemoteApp のイメージを作成する方法について説明します。" 
-    services="remoteapp" 
-    documentationCenter="" 
-    authors="lizap" 
+    description="Azure 仮想マシンを使用することで Azure RemoteApp のイメージを作成する方法について説明します。"
+    services="remoteapp"
+    documentationCenter=""
+    authors="lizap"
     manager="mbaldwin" />
 
-<tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/02/2015" 
+<tags
+    ms.service="remoteapp"
+    ms.workload="compute"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="01/21/2016" 
     ms.author="elizapo" />
 
 
@@ -27,7 +27,7 @@ Azure VM に基づく独自のイメージを作成するには、イメージ�
 
 次の手順を使用して、Azure VM に基づくイメージを作成します。
 
-1. Azure 仮想マシンを作成します。Azure 仮想マシン イメージ ギャラリーの “Windows Server Remote Desktop Session Host” イメージまたは "Windows Server Remote Desktop Session Host with Microsoft Office 365 ProPlus" イメージを使用できます。このイメージは、Azure RemoteApp テンプレート イメージのすべての要件を満たしています。 
+1. Azure 仮想マシンを作成します。Azure 仮想マシン イメージ ギャラリーの “Windows Server Remote Desktop Session Host” イメージまたは "Windows Server Remote Desktop Session Host with Microsoft Office 365 ProPlus" イメージを使用できます。このイメージは、Azure RemoteApp テンプレート イメージのすべての要件を満たしています。
 
 	詳細については、[Windows を実行する VM の作成](virtual-machines-windows-tutorial.md)に関するページを参照してください。
 
@@ -39,14 +39,14 @@ Azure VM に基づく独自のイメージを作成するには、イメージ�
 
 4. SYSPREP は、イメージを一般化してキャプチャします。手順については、[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法](../virtual-machines-capture-image-windows-server.md)に関するページを参照してください。
 
- 
+
 
 ## Azure RemoteApp イメージ ライブラリへのイメージのインポート
 
 次の手順を使用して、新しいイメージを Azure RemoteApp にインポートします。
 
 1. **[テンプレート イメージ]** タブで次の操作を実行します。
-	- 既存のイメージがない場合は、**[テンプレート イメージのアップロードまたはインポート]** をクリックします。 
+	- 既存のイメージがない場合は、**[テンプレート イメージのアップロードまたはインポート]** をクリックします。
 	- 既に 1 つ以上のイメージがある場合は、**[+]** をクリックして新しいイメージを追加します。
 
 2. **[Virtual Machines ライブラリからイメージをインポートします]** を選択し、**[次へ]** をクリックします。
@@ -54,9 +54,8 @@ Azure VM に基づく独自のイメージを作成するには、イメージ�
 3. 次のページで、一覧からカスタム イメージを選択し、イメージを作成したときに表示された手順に従っていることを確認します。**[次へ]** をクリックします。
 4. 新しい RemoteApp イメージの名前を入力して場所を選択したら、インポート プロセスを開始するチェックマークをクリックします。
 
-> [AZURE.NOTE]Azure Virtual Machines でサポートされている Azure の任意の場所から、Azure RemoteApp でサポートされている Azure の任意の場所に、イメージをインポートできます。インポート時間は場所によって異なり、最大 25 分かかります。
+> [AZURE.NOTE] Azure Virtual Machines でサポートされている Azure の任意の場所から、Azure RemoteApp でサポートされている Azure の任意の場所に、イメージをインポートできます。インポート時間は場所によって異なり、最大 25 分かかります。
 
 これで、ニーズに応じて新しいコレクション ([クラウド](remoteapp-create-cloud-deployment.md) コレクションか[ハイブリッド](remoteapp-create-hybrid-deployment.md) コレクションのいずれか) を作成する準備ができました。
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

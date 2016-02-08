@@ -120,6 +120,6 @@ StrongAuthenticationRequirement | このユーザーに対して、Multi-Factor 
 StrongAuthenticationUserDetails | Multi-Factor Authentication およびパスワード リセットの検証に使用されるユーザーの電話番号、代替電話番号、電子メール アドレスです。
 TelephoneNumber | ユーザーの電話番号です。
 
-監査レコードは、多くの法令遵守に必要な管理です。Azure Active Directory 監査レポートを使用してコンプライアンス規制に対応するお客様の場合、お客様がエクスポートした監査レポートのコピーにこのヘルプ トピックのコピーを添えて提出し、レポートの詳細な説明に役立てることをお勧めします。Azure が現在を満たしているコンプライアンス規制についての情報を監査担当者が必要としている場合は、監査担当者に Microsoft Azure セキュリティ センターの[コンプライアンス ページ](http://azure.microsoft.com/support/trust-center/compliance/)を紹介してください。
+監査レコードは、多くの法令遵守に必要な管理です。Azure Active Directory 監査レポートを使用してコンプライアンス規制に対応するお客様の場合、お客様がエクスポートした監査レポートのコピーにこのヘルプ トピックのコピーを添えて提出し、レポートの詳細な説明に役立てることをお勧めします。Azure が現在を満たしているコンプライアンス規制についての情報を監査担当者が必要としている場合は、監査担当者に Microsoft Azure セキュリティ センターの[コンプライアンス ページ](https://azure.microsoft.com/support/trust-center/compliance/)を紹介してください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

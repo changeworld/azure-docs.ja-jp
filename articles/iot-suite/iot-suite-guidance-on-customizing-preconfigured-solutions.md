@@ -2,13 +2,14 @@
 	pageTitle="構成済みソリューションのカスタマイズ | Microsoft Azure"
 	description="Azure IoT Suite の構成済みソリューションのカスタマイズ方法に関するガイダンスを提供します。"
 	services=""
+    suite="iot-suite"
 	documentationCenter=".net"
 	authors="stevehob"
 	manager="timlt"
 	editor=""/>
 
 <tags
-     ms.service="na"
+     ms.service="iot-suite"
      ms.devlang="dotnet"
      ms.topic="article"
      ms.tgt_pltfrm="na"
@@ -30,7 +31,7 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 
 ## 構成済みルールの変更
 
-リモート監視ソリューションには、ダッシュボードに表示されるテレメトリおよびアラーム ロジックを実装するための 2 つの [Azure Stream Analytics](http://azure.microsoft.com/services/stream-analytics) ジョブが含まれます。
+リモート監視ソリューションには、ダッシュボードに表示されるテレメトリおよびアラーム ロジックを実装するための 2 つの [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブが含まれます。
 
 最初のジョブでは、テレメトリの受信ストリームからのすべてのデータを選択し、2 つの異なる出力を作成します。このジョブには「**[ソリューション名]-テレメトリ**」という名前が付けられます。
 
@@ -41,7 +42,7 @@ Stream Analytics ユーザー インターフェイスを使用すれば、こ�
 
 2 番目のジョブでは、ソリューションの **[ルール]** ページで作成した [デバイスからしきい値] の値を操作します。このジョブは、参照データとして、デバイスごとに設定されるしきい値の値を使用します。そのしきい値の値を比較し、実際の値より大きい (`>`) かどうかを確認します。このジョブを修正し、たとえば、比較演算子を変更できます。
 
-> [AZURE.NOTE]リモート監視ダッシュボードは特定のデータによって異なるため、ジョブを変更するとダッシュボードで障害が発生する可能性があります。
+> [AZURE.NOTE] リモート監視ダッシュボードは特定のデータによって異なるため、ジョブを変更するとダッシュボードで障害が発生する可能性があります。
 
 ## 独自のルールの追加
 
@@ -65,8 +66,8 @@ Stream Analytics ユーザー インターフェイスを使用すれば、こ�
 
 ## 次のステップ
 
-IoT デバイスの詳細については、[Azure IoT 開発者向けサイト](http://azure.microsoft.com/develop/iot)でリンクとドキュメントを検索してください。
+IoT デバイスの詳細については、[Azure IoT 開発者向けサイト](https://azure.microsoft.com/develop/iot/)でリンクとドキュメントを検索してください。
 
 [IoT デバイス SDK]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

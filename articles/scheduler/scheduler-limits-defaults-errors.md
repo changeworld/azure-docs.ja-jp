@@ -49,13 +49,7 @@ Azure Scheduler REST API は、標準の HTTP 状態コードに加えて、拡�
 |ConflictError|競合 (409)|操作の完了を妨げる競合が発生しました。|
 |TemporaryRedirect|一時リダイレクト (307)|指定したオブジェクトが見つかりません。オブジェクトの新しい場所の一時的 URI は応答の Location フィールドから取得できます。この新しい URI で元の要求を繰り返すことができます。|
 
-API 操作は、管理サービスで定義されている追加のエラー情報も返す可能性があります。この追加のエラー情報は、応答本文で返されます。エラー応答の本文は、次に示す基本形式に従います。
-
-		<?xml version="1.0" encoding="utf-8"?>  
-		<Error>  
-			<Code>string-code</Code>  
-			<Message>detailed-error-message</Message>  
-		</Error>  
+API 操作は、管理サービスで定義されている追加のエラー情報も返す可能性があります。この追加のエラー情報は、応答本文で返されます。
 
 ## 関連項目
 
@@ -68,7 +62,7 @@ API 操作は、管理サービスで定義されている追加のエラー情�
 
  [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
 
- [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/dn528946)
+ [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
 
  [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
 
@@ -78,4 +72,4 @@ API 操作は、管理サービスで定義されている追加のエラー情�
  
   
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

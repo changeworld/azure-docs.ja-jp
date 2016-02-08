@@ -50,7 +50,7 @@ Azure ストレージ API を使用するには、ストレージ サービス�
 	    "AccountName=your_storage_account_name;" +
 	    "AccountKey=your_storage_account_key";
 
-> [AZURE.NOTE]your\_storage\_account\_name と your\_storage\_account\_key を自分のストレージ アカウントの実際の値に換えます。
+> [AZURE.NOTE] your\_storage\_account\_name と your\_storage\_account\_key を自分のストレージ アカウントの実際の値に換えます。
 
 ## Azure ストレージ アカウントに接続する
 
@@ -221,4 +221,4 @@ CloudFileShare オブジェクトで **deleteIfExists** メソッドを呼び出
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

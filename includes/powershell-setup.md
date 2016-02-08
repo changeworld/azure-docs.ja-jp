@@ -48,7 +48,7 @@ Windows PowerShell を使用するには、Windows PowerShell Version 3.0 か 4.
 
 ### Azure アカウントとサブスクリプションを設定する
 
-Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
 Azure PowerShell コマンド プロンプトを開き、次のコマンドで Azure にログオンします。
 
@@ -78,4 +78,4 @@ Azure PowerShell コマンド プロンプトで次のコマンドを実行し�
 
 Azure サブスクリプションとアカウントの詳細については、[サブスクリプションへの接続方法](powershell-install-configure.md#Connect)に関するトピックを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

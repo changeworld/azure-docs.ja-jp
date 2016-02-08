@@ -27,7 +27,7 @@
 
 Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
-> [AZURE.NOTE]このタスクの手順は、Azure Cloud Services に適用されます。App Services については、[こちら](../app-service-web/web-sites-configure-ssl-certificate.md)をご覧ください。
+> [AZURE.NOTE] このタスクの手順は、Azure Cloud Services に適用されます。App Services については、[こちら](../app-service-web/web-sites-configure-ssl-certificate.md)をご覧ください。
 
 このタスクでは、運用環境のデプロイメントを使用します。ステージング環境のデプロイメントを使用する場合に関する情報については、このトピックの最後で紹介します。
 
@@ -62,12 +62,20 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
             <Certificates>
                 <Certificate name="SampleCertificate" 
 							 storeLocation="LocalMachine" 
-                    		 storeName="CA" />
+                    		 storeName="CA"
+                             permissionLevel="limitedOrElevated" />
             </Certificates>
         ...
         </WebRole>
 
     **Certificates** セクションでは、証明書の名前、場所、およびこの証明書があるストアの名前を定義します。
+    
+    アクセス許可 (`permisionLevel`属性) は、次のいずれかに設定できます。
+
+    | アクセス許可の値 | 説明 |
+    | ----------------  | ----------- |
+    | limitedOrElevated | **(既定)** すべてのロール プロセスが秘密キーにアクセスできます。 |
+    | elevated | 引き上げられたプロセスだけが秘密キーにアクセスできます。|
 
 2.  サービス定義ファイルで、**Endpoints** セクション内に **InputEndpoint** 要素を追加し、HTTPS を有効にします。
 
@@ -133,7 +141,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 Azure でデプロイメントを実行できるようになったため、HTTPS を使用して接続できます。
 
-1.  Azure クラシック ポータルでデプロイメントを選択し、**[サイトの URL]** の下にあるリンクをクリックします。
+1.  Azure クラシック ポータルでデプロイを選択し、**[サイトの URL]** の下にあるリンクをクリックします。
 
     ![サイトの URL の確認][2]
 
@@ -143,7 +151,7 @@ Azure でデプロイメントを実行できるようになったため、HTTPS
 
     ![SSL のサンプル Web サイト][3]
 
-運用環境のデプロイではなくステージング環境のデプロイメントに SSL を使用する場合は、最初に、ステージング環境のデプロイメントに使用されている URL を確認する必要があります。証明書または証明書情報を含めずに、ステージング環境にクラウド サービスをデプロイしてください。展開すると、Azure クラシック ポータルの **[サイトの URL]** に表示される、GUID ベースの URL を確認できます。GUID ベースの URL (**32818777-6e77-4ced-a8fc-57609d404462.cloudapp.net** など) と同じ共通名 (CN) で証明書を作成し、その証明書をステージングされたクラウド サービスに Azure クラシック ポータルを使用して追加します。CSDEF ファイルと CSCFG ファイルに証明書情報を追加し、アプリケーションの再パッケージ化を実行して、新しいパッケージと CSCFG ファイルを使用するようステージング デプロイメントを更新します。
+運用環境のデプロイではなくステージング環境のデプロイメントに SSL を使用する場合は、最初に、ステージング環境のデプロイメントに使用されている URL を確認する必要があります。証明書または証明書情報を含めずに、ステージング環境にクラウド サービスをデプロイしてください。展開すると、Azure クラシック ポータルの **[サイトの URL]** に表示される、GUID ベースの URL を確認できます。GUID ベースの URL (**32818777-6e77-4ced-a8fc-57609d404462.cloudapp.net** など) と同じ共通名 (CN) で証明書を作成し、その証明書をステージングされたクラウド サービスに Azure クラシック ポータルを使用して追加します。CSDEF ファイルと CSCFG ファイルに証明書情報を追加し、アプリケーションの再パッケージ化を実行して、新しいパッケージと CSCFG ファイルを使用するようステージング デプロイを更新します。
 
 ## 次のステップ
 
@@ -160,4 +168,4 @@ Azure でデプロイメントを実行できるようになったため、HTTPS
   [3]: ./media/cloud-services-configure-ssl-certificate/SSLCloudService.png
   [4]: ./media/cloud-services-configure-ssl-certificate/AddCertificateComplete.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

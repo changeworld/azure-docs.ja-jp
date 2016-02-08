@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/04/2016"
+   ms.date="01/21/2016"
    ms.author="tomfitz"/>
 
 # リソース ロック テンプレート スキーマ
@@ -46,15 +46,13 @@
 | ---- | ---- | -------- | ---------------- | ----------- |
 | type | enum | はい | リソース: <br />{名前空間}/{型}/providers/locks/<br /><br />リソース グループ:<br />Microsoft.Authorization/locks | 作成するリソースの種類。 |
 | apiVersion | enum | はい | **2015-01-01** | リソースの作成に使用する API バージョン。 |  
-| name | string | はい | リソース:<br /> {リソース}/Microsoft.Authorization/{ロックの名前}**<br /><br />リソース グループ:<br />**{ロックの名前}**<br /><br />最大 64 文字<br /><、>、%、&、? などの制御文字を含めることはできません。| ロックするリソースおよびロックの名前の両方を指定する値。|
-|dependsOn | 配列 | いいえ | リソース名またはリソースの一意識別子のコンマ区切りリスト。| このロックが依存するリソースのコレクション。ロックしているリソースが同じテンプレートにデプロイされている場合、そのリソース名をこの要素に含めることでリソースが最初にデプロイされるようにします。|
-| プロパティ | オブジェクト | はい | (下記参照) | ロックの種類を識別するオブジェクト、およびロックに関するメモ。| 
+| name | string | はい | リソース:<br /> {リソース}/Microsoft.Authorization/{ロックの名前}**<br /><br />リソース グループ:<br />**{ロックの名前}**<br /><br />最大 64 文字<br /><、>、%、&、? などの制御文字を含めることはできません。| ロックするリソースおよびロックの名前の両方を指定する値。| |dependsOn | 配列 | いいえ | リソース名またはリソースの一意識別子のコンマ区切りリスト。| このロックが依存するリソースのコレクション。ロックしているリソースが同じテンプレートにデプロイされている場合、そのリソース名をこの要素に含めることでリソースが最初にデプロイされるようにします。| | プロパティ | オブジェクト | はい | (下記参照) | ロックの種類を識別するオブジェクト、およびロックに関するメモ。| 
 
 ### プロパティ オブジェクト
 
 | 名前 | 型 | 必須 | 使用できる値 | 説明 |
 | ------- | ---- | ---------------- | -------- | ----------- |
-| level | enum | はい | **CannotDelete** <br /> **ReadOnly** | スコープに適用するロックの種類。CanNotDelete は変更はできますが削除はできません。ReadOnly は変更も削除もできません。 |
+| level | enum | あり | **CannotDelete** | スコープに適用するロックの種類。CanNotDelete を指定すると、変更はできますが、削除できなくなります。 |
 | notes | string | いいえ | 512 文字 | ロックの説明。 |
 
 
@@ -64,13 +62,13 @@
 
 管理ロックを作成または削除するには、**Microsoft.Authorization/*** または **Microsoft.Authorization/locks/*** アクションにアクセスできる必要があります。組み込みのロールのうち、**所有者**と**ユーザー アクセスの管理者**にのみこれらのアクションが許可されています。ロールベースのアクセス制御については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
 
-ロックは、指定されたリソースとすべての子リソースに適用されます。1 つのリソースに複数のロックを適用すると、最も制限の厳しいロックが優先されます。たとえば、親レベル (リソース グループなど) に ReadOnly を適用し、そのグループ内のリソースに CanNotDelete を適用すると、親のより制限の厳しいロック (ReadOnly) が優先されます。
+ロックは、指定されたリソースとすべての子リソースに適用されます。
 
 ロックは PowerShell コマンド **Remove-AzureRmResourceLock** または REST API の [削除操作](https://msdn.microsoft.com/library/azure/mt204562.aspx)で削除することができます。
 
 ## 例
 
-次の例では、Web アプリに読み取り専用のロックが適用されます。
+次の例では、Web アプリに削除不可のロックが適用されます。
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -100,7 +98,7 @@
                 "dependsOn": [ "[variables('siteName')]" ],
                 "properties":
                 {
-                    "level": "ReadOnly",
+                    "level": "CannotDelete",
                     "notes": "my notes"
                 }
              }
@@ -108,7 +106,7 @@
         "outputs": {}
     }
 
-次の例では、リソース グループに読み取り専用のロックが適用されます。
+次の例では、リソース グループに削除不可のロックが適用されます。
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -122,7 +120,7 @@
                 "name": "MyGroupLock",
                 "properties":
                 {
-                    "level": "ReadOnly",
+                    "level": "CannotDelete",
                     "notes": "my notes"
                 }
             }
@@ -135,4 +133,4 @@
 - テンプレートの構造の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - ロックの詳細については、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

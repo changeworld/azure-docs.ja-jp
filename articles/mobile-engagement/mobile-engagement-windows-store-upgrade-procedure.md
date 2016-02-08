@@ -22,6 +22,11 @@
 
 SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
 
+##3\.2.0 から 3.3.0 に移行
+
+### リソース
+この手順では、カスタマイズされたリソースが問題になります。SDK 提供のリソース (html、画像、オーバーレイ) をカスタマイズしている場合、アップグレード前にそのリソースをバックアップし、アップグレードしたリソースにカスタマイズを再適用する必要があります。
+
 ##3\.1.0 から 3.2.0 に移行
 
 ### リソース
@@ -151,7 +156,7 @@ XAML の page ():
 
 Azure Mobile Engagement を使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。
 
-> [Azure.IMPORTANT]Capptain と Mobile Engagement は、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーから Mobile Engagement のサーバーに移行されません。
+> [Azure.IMPORTANT] Capptain と Mobile Engagement は、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーから Mobile Engagement のサーバーに移行されません。
 
 以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 1.1.1 に移行し、次の手順を適用してください。
 
@@ -227,7 +232,7 @@ Capptain リソースをカスタマイズした場合、古いファイルの�
 		</engagement:EngagementPage>
 
 4. オーバーレイ ページの変更
-	> [AZURE.IMPORTANT]オーバーレイも変更します。その新しい名前空間は `Microsoft.Azure.Engagement.Overlay` です。xaml と cs ファイルの両方で使用する必要があります。さらに、`CapptainGrid` は `EngagementGrid` と名前が付けられ、`capptain_notification_content` と `capptain_announcement_content` は `engagement_notification_content` と `engagement_announcement_content` と名前が付けられます。
+	> [AZURE.IMPORTANT] オーバーレイも変更します。その新しい名前空間は `Microsoft.Azure.Engagement.Overlay` です。xaml と cs ファイルの両方で使用する必要があります。さらに、`CapptainGrid` は `EngagementGrid` と名前が付けられ、`capptain_notification_content` と `capptain_announcement_content` は `engagement_notification_content` と `engagement_announcement_content` と名前が付けられます。
 	
 	オーバーレイについて:
 	
@@ -289,4 +294,4 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

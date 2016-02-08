@@ -104,10 +104,10 @@ CustomScript 拡張機能を実行すると、参照用に作成した PHP ペ�
 
 次に、Azure CLI、Linux、およびカスタム スクリプト拡張機能のその他のリソースをリストします。
 
-[Linux VM カスタム タスクをカスタム スクリプト拡張機能を使って自動化する](http://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/)
+[Linux VM カスタム タスクをカスタム スクリプト拡張機能を使って自動化する](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/)
 
 [Azure Linux 拡張機能 (GitHub)](https://github.com/Azure/azure-linux-extensions)
 
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

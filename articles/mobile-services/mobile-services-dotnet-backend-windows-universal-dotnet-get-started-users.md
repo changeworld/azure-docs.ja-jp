@@ -30,7 +30,7 @@
 
 このチュートリアルは、Mobile Services のクイック スタートに基づいています。チュートリアルの [Mobile Services の使用]または[既存のアプリケーションへの Mobile Services の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md)のいずれかを完了しておくことも必要です。
 
->[AZURE.NOTE]このチュートリアルでは、Windows ストア アプリおよび Windows Phone ストア 8.1 アプリで、ユーザー主導の認証によってユーザー認証する方法について説明します。クライアント主導の認証の詳細については、[Logging in with Google, Microsoft and Facebook SDKs to Azure Mobile Services (Google、、Microsoft、Facebook の SDK を使用して Azure Mobile Services にログインする)](http://azure.microsoft.com/blog/2014/10/27/logging-in-with-google-microsoft-and-facebook-sdks-to-azure-mobile-services/) を参照してください。
+>[AZURE.NOTE]このチュートリアルでは、Windows ストア アプリおよび Windows Phone ストア 8.1 アプリで、ユーザー主導の認証によってユーザー認証する方法について説明します。クライアント主導の認証の詳細については、[Logging in with Google, Microsoft and Facebook SDKs to Azure Mobile Services (Google、、Microsoft、Facebook の SDK を使用して Azure Mobile Services にログインする)](https://azure.microsoft.com/blog/2014/10/27/logging-in-with-google-microsoft-and-facebook-sdks-to-azure-mobile-services/) を参照してください。
 
 ##<a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する
 
@@ -75,7 +75,7 @@
 
 ##関連項目
 
-+ [強化されたユーザー機能](http://azure.microsoft.com/blog/2014/10/02/custom-login-scopes-single-sign-on-new-asp-net-web-api-updates-to-the-azure-mobile-services-net-backend/)<br/> .NET バックエンドで **ServiceUser.GetIdentitiesAsync()** メソッドを呼び出すことによって、モバイル サービス内で ID プロバイダーが管理するユーザー データを追加取得できます。
++ [強化されたユーザー機能](https://azure.microsoft.com/blog/2014/10/02/custom-login-scopes-single-sign-on-new-asp-net-web-api-updates-to-the-azure-mobile-services-net-backend/)<br/> .NET バックエンドで **ServiceUser.GetIdentitiesAsync()** メソッドを呼び出すことによって、モバイル サービス内で ID プロバイダーが管理するユーザー データを追加取得できます。
 
 + [Mobile Servicesでの .NET の使用方法に関する概念リファレンス]<br/>Mobile Services で .NET クライアントを使用する方法について説明します。
 
@@ -103,4 +103,4 @@
 [Mobile Servicesでの .NET の使用方法に関する概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -104,8 +104,8 @@ CnE セットのようにアーキテクチャ ダイアグラム向けに最適
 
 ##アーキテクチャのインフォグラフィック
 
-Microsoft は、ポスター/インフォグラフィックに関連するいくつかのアーキテクチャを公開しています。[実際のクラウド アプリケーションの作成](http://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)と[クラウド サービスへの対応](http://azure.microsoft.com/documentation/infographics/cloud-services/)が含まれています。
+Microsoft は、ポスター/インフォグラフィックに関連するいくつかのアーキテクチャを公開しています。[実際のクラウド アプリケーションの作成](https://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)と[クラウド サービスへの対応](https://azure.microsoft.com/documentation/infographics/cloud-services/)が含まれています。
 
-![Azure アーキテクチャのインフォグラフィック](./media/architecture-overview/AzureArchInfographicThumb.jpg)
+![Azure Architecture Infographics](./media/architecture-overview/AzureArchInfographicThumb.jpg)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -55,7 +55,7 @@ Azure AD では、アプリケーションに対するあらゆる種類のパ�
 - [アプリケーションの使用状況に関するダッシュ ボード/レポート](active-directory-passwords-get-insights.md)
 - エンド ユーザー アクセス ポータル
 - [アプリケーション プロキシ](active-directory-application-proxy-get-started.md)
-- [Active Directory マーケットプレース](http://azure.microsoft.com/marketplace/active-directory/all/)
+- [Active Directory マーケットプレース](https://azure.microsoft.com/marketplace/active-directory/all/)
 
 ## アカウントの共有
 Azure AD を使用してアカウントを共有するには、次の操作が必要です。
@@ -72,4 +72,4 @@ Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 
 - [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access.md)
 - [セルフサービス グループの管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

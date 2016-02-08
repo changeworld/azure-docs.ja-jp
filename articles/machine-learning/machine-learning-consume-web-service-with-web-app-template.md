@@ -17,7 +17,7 @@
 	ms.date="10/26/2015"
 	ms.author="garye;raymondl"/>
 
-# Web アプリ テンプレートによる Azure Machine Learning Web サービスの使用
+# Web アプリケーション テンプレートによる Azure Machine Learning Web サービスの使用
 
 予測モデルを開発し、Machine Learning Studio を使用するか、R または Python などのツールを使用してそれを Azure Web サービスとしてデプロイしたら、REST API を使用して運用可能モデルにアクセスできます。
 
@@ -36,13 +36,13 @@ Azure Marketplace で入手できる Web アプリ テンプレートを使用�
 - [Azure ML Request-Response Service Web App Template](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
 - [Azure ML Batch Execution Service Web App Template](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
 
-各テンプレートは、Web サービスの API URI とキーを使用してサンプル ASP.NET アプリケーションを作成し、Web サイトとして Azure にデプロイします。Request-Response Service (RRS) テンプレートは、1 つの結果を取得するために Web サービスに 1 行のデータを送信できる Web アプリを作成します。Batch Execution Service (BES) テンプレートは、複数の結果を取得するために多くの行のデータを送信できる Web アプリを作成します。
+各テンプレートは、Web サービスの API URI とキーを使用してサンプル ASP.NET アプリケーションを作成し、Web サイトとして Azure にデプロイします。Request-Response Service (RRS) テンプレートは、1 つの結果を取得するために Web サービスに 1 行のデータを送信できる Web アプリケーションを作成します。Batch Execution Service (BES) テンプレートは、複数の結果を取得するために多くの行のデータを送信できる Web アプリケーションを作成します。
 
 これらのテンプレートは、コードを記述せずに使用できます。API URI とキーだけを指定すれば、テンプレートによってアプリケーションが構築されます。
 
 ## Request-Response Service (RRS) テンプレートの使用方法
 
-Web サービスをデプロイした後は、次の図のように、以下の手順に従って RRS Web アプリ テンプレートを使用します。
+Web サービスをデプロイした後は、次の図のように、以下の手順に従って RRS Web アプリケーション テンプレートを使用します。
 
 ![RRS Web テンプレートを使用する手順][image1]
 
@@ -56,9 +56,9 @@ Web サービスをデプロイした後は、次の図のように、以下の�
 
 	![要求 URI][image4]
 
-3. [Azure ML Request-Response Service Web App](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) に移動して、**[Web アプリを作成]** をクリックします。テンプレートから、新しい Web アプリが作成された Microsoft Azure クラシック ポータルにアクセスできます。
+3. [Azure ポータル](https://portal.azure.com)に移動して**ログイン**し、**[新規]** をクリックします。**[Azure ML Request-Response Service Web App]** を探して選択し、**[作成]** をクリックします。
 
-	- Web アプリに一意の名前を付けます。Web アプリの URL は、この名前の後に `.azurewebsites.net.` を付けたものです。たとえば、`http://carprediction.azurewebsites.net.` のようになります。
+	- Web アプリケーションに一意の名前を付けます。Web アプリケーションの URL は、この名前の後に `.azurewebsites.net.` を付けたものです。たとえば、`http://carprediction.azurewebsites.net.` のようになります。
 
 	- 実行している Web サービスの Azure サブスクリプションとサービスを選択します。
 
@@ -66,9 +66,9 @@ Web サービスをデプロイした後は、次の図のように、以下の�
 
 	![Web アプリの作成][image5]
 
-4. Azure による Web アプリのデプロイが完了したら、Azure で Web アプリ設定ページの **[URL]** をクリックするか、Web ブラウザーで URL を入力します。たとえば、`http://carprediction.azurewebsites.net.` のように指定します。
+4. Azure による Web アプリケーションのデプロイが完了したら、Azure で Web アプリケーション設定ページの **[URL]** をクリックするか、Web ブラウザーで URL を入力します。たとえば、`http://carprediction.azurewebsites.net.` のように指定します。
 
-5. 初めて Web アプリを実行すると、**API ポスト URL** と **API キー**を指定するように求められます。前に保存しておいた値を入力します。
+5. 初めて Web アプリケーションを実行すると、**API ポスト URL** と **API キー**を指定するように求められます。前に保存しておいた値を入力します。
 	- **API ポスト URL** には、API ヘルプ ページの**要求 URI**
 	- **API キー**には Web サービス ダッシュボードの **API キー**
 
@@ -76,9 +76,9 @@ Web サービスをデプロイした後は、次の図のように、以下の�
 
 	![ポスト URI と API キーの入力][image6]
 
-6. **Web アプリの構成**ページに、現在の Web サービス設定が表示されます。ここで、Web アプリで使用される設定を変更できます。
+6. **Web アプリケーションの構成**ページに、現在の Web サービス設定が表示されます。ここで、Web アプリで使用される設定を変更できます。
 
-	> [AZURE.NOTE]ここでの設定の変更は、この Web アプリだけに適用されます。Web サービスの既定の設定は変更されません。たとえば、ここで**説明**を変更した場合、Machine Learning Studio の Web サービス ダッシュボードに表示される説明は変更されません。
+	> [AZURE.NOTE] ここでの設定の変更は、この Web アプリだけに適用されます。Web サービスの既定の設定は変更されません。たとえば、ここで**説明**を変更した場合、Machine Learning Studio の Web サービス ダッシュボードに表示される説明は変更されません。
 
 	設定し終わったら、**[変更を保存]** をクリックし、**[ホーム ページに移動]** をクリックします。
 
@@ -125,4 +125,4 @@ BES Web アプリ テンプレートは、RRS テンプレートと同じよう�
 [image6]: media\machine-learning-consume-web-service-with-web-app-template\web-service-info.png
 [image7]: media\machine-learning-consume-web-service-with-web-app-template\storage.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

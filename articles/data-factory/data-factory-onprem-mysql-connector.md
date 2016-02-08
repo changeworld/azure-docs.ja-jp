@@ -29,6 +29,8 @@ Data Factory のサービスでは、Data Management Gateway を使用したオ�
 ## インストール 
 Data Management Gateway で MySQL Databases に接続するには、[MySQL コネクタ/Net 6.6.5 for Microsoft Windows](http://go.microsoft.com/fwlink/?LinkId=278885) を Data Management Gateway と同じシステムにインストールする必要があります。
 
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+
 ## サンプル: MySQLから Azure BLOB にデータをコピーする
 
 下のサンプルで確認できる要素:
@@ -61,7 +63,7 @@ Data Management Gateway で MySQL Databases に接続するには、[MySQL コ�
 	  }
 	}
 
-**Azure ストレージのリンクされたサービス**
+**Azure Storage のリンクされたサービス**
 
 	{
 	  "name": "AzureStorageLinkedService",
@@ -219,14 +221,14 @@ Data Management Gateway で MySQL Databases に接続するには、[MySQL コ�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- | 
-| type | type プロパティを **OnPremisesMySql** に設定する必要があります | あり |
-| server | MySQL サーバーの名前です。 | あり |
+| type | type プロパティを **OnPremisesMySql** に設定する必要があります | はい |
+| server | MySQL サーバーの名前です。 | はい |
 | database | MySQL データベースの名前です。 | はい | 
 | schema | データベース内のスキーマの名前です。 | いいえ | 
-| authenticationType | MySQL データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | あり | 
+| authenticationType | MySQL データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | はい | 
 | username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ | 
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ | 
-| gatewayName | Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 | あり |
+| gatewayName | Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 | はい |
 
 オンプレミスの MySQL データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
@@ -265,15 +267,15 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 
 | MySQL Databases 型 | .NET Framework 型 |
 | ------------------- | ------------------- | 
-| 符号なしの bigint | 小数点 |
+| 符号なしの bigint | Decimal |
 | bigint | Int64 |
-| ビット | 小数点 |
+| bit | Decimal |
 | BLOB | Byte |
 | bool | Boolean | 
 | char | String |
 | date | Datetime |
 | datetime | Datetime |
-| 小数点 | 小数点 |
+| Decimal | Decimal |
 | double precision | Double |
 | double | Double |
 | enum | String |
@@ -290,12 +292,12 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 | 符号なしの mediumint | Int64 |
 | mediumint | Int32 | 
 | mediumtext | String |
-| 数値 | 小数点 |
+| numeric | Decimal |
 | real | Double |
 | set | String |
 | 符号なしの smallint | Int32 |
 | smallint | Int16 |
-| テキスト | String |
+| text | String |
 | time | TimeSpan |
 | timestamp | Datetime |
 | tinyblob | Byte |
@@ -310,4 +312,4 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

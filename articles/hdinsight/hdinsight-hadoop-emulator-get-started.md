@@ -24,12 +24,12 @@
 
 エミュレーターがインストールされたら、ワード カウントの MapReduce のチュートリアルに従い、サンプルを実行します。
 
-> [AZURE.NOTE]HDInsight Emulator には Hadoop クラスターのみが含まれます。HBase や Storm は含まれません。
+> [AZURE.NOTE] HDInsight Emulator には Hadoop クラスターのみが含まれます。HBase や Storm は含まれません。
 
 
 HDInsight Emulator は、Hadoop サンドボックスによく似たローカル開発環境を提供します。Hadoop に慣れている場合は、Hadoop 分散ファイル システム (HDFS) を使用して HDInsight Emulator を使い始めることができます。HDInsight では、既定のファイル システムが Azure BLOB ストレージです。そのため、最終的には Azure BLOB ストレージを使用してジョブを開発することになります。Azure BLOB ストレージを HDInsight Emulator で使用するには、エミュレーターの構成を変更する必要があります。
 
-> [AZURE.NOTE]HDInsight Emulator では 1 つのノードでのデプロイのみが使用できます。
+> [AZURE.NOTE] HDInsight Emulator では 1 つのノードでのデプロイのみが使用できます。
 
 
 ## 前提条件
@@ -41,14 +41,14 @@ HDInsight Emulator は、Hadoop サンドボックスによく似たローカル
 	- Windows 8
 	- Windows Server 2012
 
-- **Azure PowerShell**[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+- **Azure PowerShell**[Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
 
 
 ##<a name="install"></a>HDInsight Emulator のインストール
 
 Microsoft HDInsight Emulator は、Microsoft Web Platform Installer を使用してインストールします。
 
-> [AZURE.NOTE]現時点で HDInsight Emulator がサポートしているのは英語版 OS のみです。エミュレーターの以前のバージョンがインストールされている場合は、エミュレーターの最新バージョンをインストールする前に、次の 2 つのコンポーネントをコントロール パネルの [プログラムと機能] からアンインストールする必要があります。<ul> <li>Microsoft HDInsight Emulator for Azure または HDInsight 開発者プレビュー (インストールされているどちらかのコンポーネント)</li> <li>Hortonworks Data Platform</li> </ul>
+> [AZURE.NOTE] 現時点で HDInsight Emulator がサポートしているのは英語版 OS のみです。エミュレーターの以前のバージョンがインストールされている場合は、エミュレーターの最新バージョンをインストールする前に、次の 2 つのコンポーネントをコントロール パネルの [プログラムと機能] からアンインストールする必要があります。<ul> <li>Microsoft HDInsight Emulator for Azure または HDInsight 開発者プレビュー (インストールされているどちらかのコンポーネント)</li> <li>Hortonworks Data Platform</li> </ul>
 
 
 **HDInsight Emulator をインストールするには**
@@ -294,7 +294,7 @@ Hive クエリ エンジンは、構造化照会言語 (SQL) の達人であれ�
 
 5. 次のコマンドを実行して、**w3ccreate.hql** スクリプト ファイルを実行します。このスクリプトは Hive テーブルを作成し、データを Hive テーブルに読み込みます。
 
-	> [AZURE.NOTE]この段階で、HDInsight Visual Studio ツールを使用して Hive クエリを実行することもできます。Visual Studio を開いて新しいプロジェクトを作成し、HDInsight テンプレートから **[Hive アプリケーション]** を選択します。プロジェクトが開いたら、クエリを新しいアイテムとして追加します。クエリは **C:/hdp/GettingStarted/Hive/w3c** にあります。クエリがプロジェクトに追加されたら、**${hiveconf:input}** を **/w3c/hive/input** に置き換え、**[送信]** を押します。
+	> [AZURE.NOTE] この段階で、HDInsight Visual Studio ツールを使用して Hive クエリを実行することもできます。Visual Studio を開いて新しいプロジェクトを作成し、HDInsight テンプレートから **[Hive アプリケーション]** を選択します。プロジェクトが開いたら、クエリを新しいアイテムとして追加します。クエリは **C:/hdp/GettingStarted/Hive/w3c** にあります。クエリがプロジェクトに追加されたら、**${hiveconf:input}** を **/w3c/hive/input** に置き換え、**[送信]** を押します。
 
 		C:\hdp\hive-0.13.0.2.1.3.0-1981\bin\hive.cmd -f ./Hive/w3c/w3ccreate.hql -hiveconf "input=/w3c/hive/input/data_w3c_small.txt"
 
@@ -313,7 +313,7 @@ Hive クエリ エンジンは、構造化照会言語 (SQL) の達人であれ�
 
 6. 次のコマンドを実行して、**w3ctotalhitsbypage.hql** HiveQL スクリプト ファイルを実行します。
 
-	> [AZURE.NOTE]前に説明したように、HDInsight Visual Studio ツールを使用してこのクエリを実行することもできます。
+	> [AZURE.NOTE] 前に説明したように、HDInsight Visual Studio ツールを使用してこのクエリを実行することもできます。
 
         C:\hdp\hive-0.13.0.2.1.3.0-1981\bin\hive.cmd -f ./Hive/w3c/w3ctotalhitsbypage.hql
 
@@ -390,7 +390,7 @@ The samples currently contain all the required binaries, so building is not requ
 ##<a name="blobstorage"></a>Azure BLOB ストレージへの接続
 HDInsight Emulator は、既定のファイル システムとして HDFS を使用します。ただし、Azure HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。ローカル ストレージの代わりに Azure BLOB ストレージを使用するように HDInsight Emulator を構成できます。次の手順に従って Azure にストレージ コンテナーを作成し、それを HDInsight Emulator に接続します。
 
->[AZURE.NOTE]HDInsight で Azure BLOB ストレージを使用する方法の詳細については、[「HDInsight での Azure BLOB ストレージの使用」](../hdinsight-use-blob-storage.md)に関するページをご覧ください。
+>[AZURE.NOTE] HDInsight で Azure BLOB ストレージを使用する方法の詳細については、[「HDInsight での Azure BLOB ストレージの使用」](../hdinsight-use-blob-storage.md)に関するページをご覧ください。
 
 次の手順を開始する前に、ストレージ アカウントを作成している必要があります。詳しい手順については、「[ストレージ アカウントの作成方法](../storage-create-storage-account.md)」を参照してください。
 
@@ -497,4 +497,4 @@ Emulator をインストールしたコンピューターでコントロール �
 [image-hdi-emulator-services]: ./media/hdinsight-hadoop-emulator-get-started/HDI.Emulator.Services.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

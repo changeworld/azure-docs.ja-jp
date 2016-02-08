@@ -55,7 +55,7 @@
 
 ### Service Bus のアカウントとサブスクリプションにサインアップします。
 
-Service Bus の使用を開始するには、Azure アカウントが必要です。アカウントがまだない場合は、[こちら](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)で無料試用版にサインアップできます。
+Service Bus の使用を開始するには、Azure アカウントが必要です。アカウントがまだない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)で無料試用版にサインアップできます。
 
 ### サービス名前空間の作成
 
@@ -63,7 +63,7 @@ Service Bus の使用を開始するには、Azure アカウントが必要で�
 
 ### NuGet パッケージのインストール
 
-Service Bus サービス名前空間を使用するには、アプリケーションは Service Bus アセンブリ (具体的には Microsoft.ServiceBus.dll) を参照する必要があります。このアセンブリは Microsoft Azure SDK に含まれ、[Azure SDK のダウンロード ページ](http://azure.microsoft.com/downloads/)からダウンロードできます。ただし、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法は、Service Bus NuGet パッケージです。NuGet や Service Bus パッケージの使用方法の詳細については、「[NuGet Service Bus パッケージの使用](https://msdn.microsoft.com/library/dn741354.aspx)」を参照してください。
+Service Bus サービス名前空間を使用するには、アプリケーションは Service Bus アセンブリ (具体的には Microsoft.ServiceBus.dll) を参照する必要があります。このアセンブリは Microsoft Azure SDK に含まれ、[Azure SDK のダウンロード ページ](https://azure.microsoft.com/downloads/)からダウンロードできます。ただし、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法は、Service Bus NuGet パッケージです。NuGet や Service Bus パッケージの使用方法の詳細については、「[NuGet Service Bus パッケージの使用](https://msdn.microsoft.com/library/dn741354.aspx)」を参照してください。
 
 ### キューの作成
 
@@ -160,4 +160,4 @@ catch (Exception e)
 
 このトピックではキューの基本を説明しました。次に、「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」で Service Bus の仲介型メッセージングのパブリッシュ/サブスクライブ機能の使用を学習してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="01/21/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスの電源冷却モジュールを交換する
@@ -26,7 +26,7 @@ Microsoft Azure StorSimple デバイスの電源冷却モジュール (PCM) は�
 - PCM を取り外す
 - 交換用 PCM を取り付ける
 
->[AZURE.IMPORTANT]PCM を取り外して交換する前に、「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の安全に関する情報を再確認してください。
+>[AZURE.IMPORTANT] PCM を取り外して交換する前に、「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の安全に関する情報を再確認してください。
 
 ## PCM を交換する前に
 
@@ -40,11 +40,14 @@ PCM を交換する前に、次の重要な問題に注意してください。
 
 - PCM モジュールの交換は数分で完了できますが、過熱状態を防ぐために障害が発生した PCM の取り外しは 10 分以内に完了する必要があります。
 
+- 工場から出荷された交換用 764 W PCM モジュールには、バックアップ バッテリ モジュールが含まれていません。障害が発生している PCM からバッテリを取り外し、交換用モジュールにそのバッテリを装着してから、交換を行う必要があります。詳細については、[バックアップ バッテリ モジュールを取り外して装着する](storsimple-battery-replacement.md)方法を参照してください。
+
+
 ## PCM を取り外す
 
 電源冷却モジュール (PCM) を Microsoft Azure StorSimple デバイスから取り外す準備ができたら、次の手順に従います。
 
->[AZURE.NOTE]PCM を取り外す前に、適切な交換用 PCM (主エンクロージャでは 764 W、EBOD エンクロージャでは 580 W) を用意していることを確認します。
+>[AZURE.NOTE] PCM を取り外す前に、適切な交換用 PCM (主エンクロージャでは 764 W、EBOD エンクロージャでは 580 W) を用意していることを確認します。
 
 #### PCM を取り外すには
 
@@ -114,7 +117,7 @@ PCM を交換する前に、次の重要な問題に注意してください。
 
 ## 交換用 PCM を取り付ける
 
-StorSimple デバイスに PCM を取り付けるには次の手順に従います。
+StorSimple デバイスに PCM を取り付けるには次の手順に従います。交換用 PCM (764 W PCM のみが該当) を取り付ける前に、バックアップ バッテリ モジュールを装着したことを確認します。詳細については、[バックアップ バッテリ モジュールを取り外して装着する](storsimple-battery-replacement.md)方法を参照してください。
 
 #### PCM を取り付けるには
 
@@ -126,7 +129,7 @@ StorSimple デバイスに PCM を取り付けるには次の手順に従いま�
 
 2. エンクロージャが破損していないことを確認します。特にコネクタに注意します。
 										
-    >[AZURE.NOTE]**コネクタ ピンが曲がっている場合は、モジュールを取り付けないでください。**
+    >[AZURE.NOTE] **コネクタ ピンが曲がっている場合は、モジュールを取り付けないでください。**
 
 3. PCM ハンドルが開いた状態で、モジュールをエンクロージャに押し込みます。
 
@@ -136,7 +139,7 @@ StorSimple デバイスに PCM を取り付けるには次の手順に従いま�
 
 4. PCM ハンドルを手動で閉じます。ハンドルのラッチがかかると、カチッと音がします。
 										
-    >[AZURE.NOTE]コネクタ ピンがかみ合ったことを確認するために、ラッチを解放せずにハンドルをゆっくりと引くことができます。PCM が引き出されたら、コネクタがかみ合う前にラッチを閉じたことを意味します。
+    >[AZURE.NOTE] コネクタ ピンがかみ合ったことを確認するために、ラッチを解放せずにハンドルをゆっくりと引くことができます。PCM が引き出されたら、コネクタがかみ合う前にラッチを閉じたことを意味します。
 
 5. 電源ケーブルを電源と PCM に接続します。
 
@@ -146,10 +149,10 @@ StorSimple デバイスに PCM を取り付けるには次の手順に従いま�
 
 8. 交換が正常に完了したことを確認します。StorSimple Manager サービスの Azure クラシック ポータルで、**[デバイス]**、**[メンテナンス]**、**[ハードウェアの状態]** の順に選択します。**[共有コンポーネント]** で、PCM の状態が緑色になっているはずです。
 										
-    >[AZURE.NOTE]置換用 PCM が完全に初期化されるまで数分かかる場合があります。
+    >[AZURE.NOTE] 置換用 PCM が完全に初期化されるまで数分かかる場合があります。
 
 ## 次のステップ
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

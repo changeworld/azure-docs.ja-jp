@@ -34,7 +34,7 @@ Oracle GoldenGate に含まれる主なコンポーネントには、抽出、�
 
 - [Oracle ダウンロード](http://www.oracle.com/us/downloads/index.html) Web サイトから Oracle GoldenGate ソフトウェアを既にダウンロードしている。製品パックとして、Oracle Fusion Middleware – Data Integration を選択している。その後、Oracle 11g データベース用の Oracle GoldenGate on Oracle v11.2.1 Media Pack for Microsoft Windows x64 (64-bit) を選択している。次に、Oracle GoldenGate V11.2.1.0.3 for Oracle 11g 64bit on Windows 2008 (64bit) をダウンロードします。
 
-- プラットフォームで提供される Windows Server 上の Oracle Enterprise Edition のイメージを使用して、Azure に 2 つの Virtual Machines (VM) を作成している。詳細については、「[Azure での Oracle Database 12c Virtual Machines の作成)](#z3dc8d3c097cf414e9048f7a89c026f80)」と「[Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)」をご覧ください。Virtual Machines が永続的なプライベート IP アドレスを介して相互にアクセスできるように、[同じクラウド サービス](virtual-machines-load-balance.md)にあり、同じ [Virtual Network](http://azure.microsoft.com/documentation/services/virtual-network/) にあることを確認します。
+- プラットフォームで提供される Windows Server 上の Oracle Enterprise Edition のイメージを使用して、Azure に 2 つの Virtual Machines (VM) を作成している。詳細については、「[Creating an Oracle Database 12c Virtual Machine in Azure (Azure での Oracle Database 12c 仮想マシンの作成)](#z3dc8d3c097cf414e9048f7a89c026f80)」と「[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)」をご覧ください。Virtual Machines が永続的なプライベート IP アドレスを介して相互にアクセスできるように、[同じクラウド サービス](virtual-machines-load-balance.md)にあり、同じ [Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) にあることを確認します。
 
 - Azure クラシック ポータルで、サイト A に "MachineGG1"、サイト B に "MachineGG2" という仮想マシン名を設定している。
 
@@ -80,7 +80,7 @@ Oracle GoldenGate に含まれる主なコンポーネントには、抽出、�
 
 6. 双方向のレプリケーション プロセスを確認する
 
->[AZURE.IMPORTANT]このチュートリアルは、次のソフトウェア構成に対してセットアップ、テストされています。
+>[AZURE.IMPORTANT] このチュートリアルは、次のソフトウェア構成に対してセットアップ、テストされています。
 >
 >| | **サイト A のデータベース** | **サイト B のデータベース** |
 >|------------------------|----------------------------------|----------------------------------|
@@ -602,4 +602,4 @@ Oracle GoldenGate 構成を確認するには、サイト A でデータベー�
 ##その他のリソース
 [Azure の Oracle 仮想マシン イメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

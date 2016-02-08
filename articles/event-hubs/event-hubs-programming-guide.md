@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="09/30/2015"
+   ms.date="01/26/2016"
    ms.author="sethm" />
 
 # Event Hubs のプログラミング ガイド
@@ -23,13 +23,13 @@
 
 イベントは Event Hub に HTTP POST と AMQP 1.0 接続のいずれかを利用して送信されます。何をいつ利用するかは、対処される特定のシナリオによって決まります。AMQP 1.0 接続は Service Bus の仲介型接続として課金され、メッセージ量が常に多く、待ち時間要件の低いシナリオに適しています。固定のメッセージング チャンネルが提供されるためです。
 
-Event Hubs は [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスで作成され、管理されます。.NET 管理 API を使用するとき、Event Hubs にデータを発行するためのプライマリ コンストラクトは [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) クラスと [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスになります。[EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) クラスは、イベントが Event Hub に送信される AMQP 通信チャンネルを提供します。[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスはイベントを表し、Event Hub にメッセージを発行するために使用されます。このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。その他のプロパティは [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) オブジェクトに追加され、Event Hub に渡されます。
+Event Hubs は [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスで作成され、管理されます。.NET 管理 API を使用するとき、Event Hubs にデータを発行するためのプライマリ コンストラクトは [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) クラスと [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスになります。[EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) は、イベントが Event Hub に送信される AMQP 通信チャンネルを提供します。[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスはイベントを表し、Event Hub にメッセージを発行するために使用されます。このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。その他のプロパティは [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) オブジェクトに追加され、Event Hub に渡されます。
 
 ## 作業開始
 
-Event Hubs をサポートする .NET クラスは Microsoft.ServiceBus.dll アセンブリの一部です。Service Bus API を参照し、すべての Service Bus 依存関係を備えたアプリケーションを構成する最も簡単な方法は Service Bus NuGet パッケージをダウンロードすることです。詳細については、「[NuGet Service Bus パッケージを使用する](https://msdn.microsoft.com/library/azure/dn741354.aspx)」を参照してください。あるいは、Visual Studio の [パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) を利用できます。これを行うには、[パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)のウィンドウに次のコマンドを入力します。
+Event Hubs をサポートする .NET クラスが Microsoft.ServiceBus.dll アセンブリに用意されています。Service Bus API を参照し、すべての Service Bus 依存関係を備えたアプリケーションを構成する最も簡単な方法は [Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)をダウンロードすることです。あるいは、Visual Studio の [パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) を利用できます。これを行うには、[パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)のウィンドウに次のコマンドを入力します。
 
-```powershell
+```
 Install-Package WindowsAzure.ServiceBus
 ```
 
@@ -37,7 +37,7 @@ Install-Package WindowsAzure.ServiceBus
 
 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスを使用し、Event Hubs を作成できます。次に例を示します。
 
-```c
+```
 var manager = new Microsoft.ServiceBus.NamespaceManager("mynamespace.servicebus.windows.net");
 var description = manager.CreateEventHub("MyEventHub");
 ```
@@ -50,7 +50,7 @@ var description = manager.CreateEventHubIfNotExists("MyEventHub");
 
 [CreateEventHubIfNotExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createeventhubifnotexists.aspx) など、すべての Event Hub 作成操作で、該当する名前空間の**管理**アクセス許可が必要になります。発行元またはコンシューマー アプリケーションのアクセス許可を制限する場合、アクセス許可を制限して資格情報を利用するとき、運用コードでこれらの作成操作呼び出しを回避できます。
 
-[EventHubDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubdescription.aspx) クラスには、承認規則、メッセージの保有期間、パーティション ID、状態、パスなど、Event Hub の詳細が含まれています。このクラスを使用し、Event Hub でメタデータを更新できます。
+[EventHubDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubdescription.aspx) クラスには、承認規則、メッセージのリテンション期間、パーティション ID、状態、パスなど、Event Hub の詳細が含まれています。このクラスを使用して、Event Hub でメタデータを更新できます。
 
 ## Event Hub クライアントの作成
 
@@ -89,7 +89,7 @@ var client = factory.CreateEventHubClient("MyEventHub");
 
 ## イベントのシリアル化
 
-[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスには [オーバーロードされたコンストラクターが 4 つ](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx)あります。これらのコンストラクターは、オブジェクト、シリアライザー、バイト配列、ストリームなど、さまざまパラメーターを受け取ります。[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスをインスタンス化し、その後、本文のストリームを設定することもできます。JSON と共に [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) を使用するとき、**Encoding.UTF8.GetBytes()** を使用し、JSON でエンコードされた文字列のバイト配列を取得できます。
+[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスには [オーバーロードされたコンストラクターが 4 つ](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.eventdata.aspx)あります。これらのコンストラクターは、オブジェクト、シリアライザー、バイト配列、ストリームなど、さまざまパラメーターを受け取ります。[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスをインスタンス化し、その後、本文のストリームを設定することもできます。JSON と共に [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) を使用するとき、**Encoding.UTF8.GetBytes()** を使用し、JSON でエンコードされた文字列のバイト配列を取得できます。
 
 ## パーティション キー
 
@@ -103,7 +103,7 @@ var client = factory.CreateEventHubClient("MyEventHub");
 public void SendBatch(IEnumerable<EventData> eventDataList);
 ```
 
-これは重要なことですが、1 回のバッチがイベントの 256 KB 制限を超えてはならないことに注意してください。また、バッチの各メッセージで同じ発行元 ID が使用されます。バッチが最大イベント サイズを超えないようにすることは送信者側の責任となります。超えた場合、クライアントの**送信**エラーが生成されます。
+1 回のバッチがイベントの 256 KB 制限を超えてはならないことに注意してください。また、バッチの各メッセージで同じ発行元 ID が使用されます。バッチが最大イベント サイズを超えないようにすることは送信者側の責任となります。超えた場合、クライアントの**送信**エラーが生成されます。
 
 ## 非同期送信と大規模送信
 
@@ -117,7 +117,7 @@ Event Hub にイベントを非同期送信することもできます。非同�
 var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[0]);
 ```
 
-[CreatePartitionedSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.createpartitionedsender.aspx) は [EventHubSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubsender.aspx) オブジェクトを返します。このオブジェクトを使用し、特定の Event Hub パーティションにイベントを発行できます。
+[CreatePartitionedSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.createpartitionedsender.aspx) は [EventHubSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubsender.aspx) オブジェクトを返します。このオブジェクトを使用して、特定の Event Hub パーティションにイベントを発行できます。
 
 ## イベント コンシューマー
 
@@ -148,7 +148,7 @@ while(receive)
 
 特定のパーティションについては、メッセージはそれが Event Hub に送信された順序で受信されます。オフセットはパーティションのメッセージ識別に使用される文字列トークンです。
 
-これは重要なことですが、いかなるタイミングでも、コンシューマー グループ内の 1 つのパーティションに 5 つ以上のリーダーを同時接続することはできません。リーダーが接続または切断されると、そのセッションは数分間アクティブの状態を維持し、それから切断がサービスにより認識されることがあります。その間にパーティションに再接続すると、失敗することがあります。Event Hubs のダイレクト レシーバーの完全な記述例については、「[Service Bus Event Hubs Direct Receivers](https://code.msdn.microsoft.com/Event-Hub-Direct-Receivers-13fa95c6)」サンプルを参照してください。
+いかなるタイミングでも、コンシューマー グループ内の 1 つのパーティションに 5 つ以上のリーダーを同時接続することはできないことに注意してください。リーダーが接続または切断されると、そのセッションは数分間アクティブの状態を維持し、それから切断がサービスにより認識されることがあります。その間にパーティションに再接続すると、失敗することがあります。Event Hubs のダイレクト レシーバーの完全な記述例については、「[Service Bus Event Hubs Direct Receivers](https://code.msdn.microsoft.com/Event-Hub-Direct-Receivers-13fa95c6)」サンプルを参照してください。
 
 ### イベント プロセッサ ホスト
 
@@ -185,4 +185,4 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 - [Event Hubs コード サンプル](http://code.msdn.microsoft.com/site/search?query=event hub&f[0].Value=event hub&f[0].Type=SearchText&ac=5)
 - [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

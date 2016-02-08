@@ -93,7 +93,7 @@ Web パフォーマンス テストをパラメーター化するには、コー
 
 4. **[実行設定]** セクションで、ロード テストの時間を指定します。
 
-    >[AZURE.NOTE]**[テスト イテレーション]** オプションは、Visual Studio を使用してローカルでロード テストを実行する場合にのみ使用できます。
+    >[AZURE.NOTE] **[テスト イテレーション]** オプションは、Visual Studio を使用してローカルでロード テストを実行する場合にのみ使用できます。
 
 5. **[実行設定]** の **[場所]** で、ロード テストの要求が生成される場所を指定します。ウィザードで、Team Services アカウントにログインするよう要求される場合があります。地理的な場所を選択してログインします。完了したら、**[完了]** をクリックします。
 
@@ -141,4 +141,4 @@ Visual Studio Team Services のロード テストで提供されている API �
 [8]: ./media/service-fabric-vso-load-test/RunTest2.png
 [9]: ./media/service-fabric-vso-load-test/Graph.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

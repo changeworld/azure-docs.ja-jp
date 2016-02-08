@@ -13,15 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/13/2016"
+	ms.date="01/24/2016"
 	ms.author="dineshm"/>
+
 
 # Java による Microsoft Azure Storage のクライアント側の暗号化   
 
 [AZURE.INCLUDE [storage-selector-client-side-encryption-include](../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## 概要  
-[Java 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)は、Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは [Azure Key Vault](http://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
+[Java 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)は、Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
 
 ## エンベロープ手法による暗号化と復号化    
 暗号化と復号化のプロセスは、エンベロープ手法に倣います。
@@ -33,8 +34,7 @@
 
 2.	ユーザー データは、この CEK を使用して暗号化されます。
 
-3.	CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。
-ストレージ クライアント ライブラリ自体が KEK にアクセスすることはありません。ライブラリは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。ユーザーは、必要な場合は、キー ラップ/ラップ解除にカスタム プロバイダーを使用できます。
+3.	CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。ストレージ クライアント ライブラリ自体が KEK にアクセスすることはありません。ライブラリは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。ユーザーは、必要な場合は、キー ラップ/ラップ解除にカスタム プロバイダーを使用できます。
 
 4.	暗号化されたデータは、Azure Storage サービスにアップロードされます。ラップされたキーは追加の暗号化メタデータと共にメタデータとして (BLOB に) 格納されるか、暗号化されたデータ (キュー メッセージやテーブル エンティティ) によって補間されます。
 
@@ -57,7 +57,7 @@
 
 暗号化中、クライアント ライブラリは 16 バイトのランダムな初期化ベクトル (IV) と 32 バイトのランダムなコンテンツ暗号化キー (CEK) を生成し、この情報を使用して BLOB データのエンベロープ暗号化を実行します。ラップされた CEK と一部の追加暗号化メタデータが、サービスの暗号化された BLOB と共に、BLOB メタデータとして格納されます。
 
->**警告:** BLOB のメタデータを編集またはアップロードする場合は、このメタデータを保持している必要があります。このメタデータなしで新しいメタデータをアップロードした場合、ラップされた CEK、IV、およびその他のメタデータは失われ、BLOB コンテンツが再度取得可能になることはありません。
+>[AZURE.WARNING] BLOB のメタデータを編集またはアップロードする場合は、このメタデータを保持している必要があります。このメタデータなしで新しいメタデータをアップロードした場合、ラップされた CEK、IV、およびその他のメタデータは失われ、BLOB コンテンツが再度取得可能になることはありません。
 
 暗号化された BLOB のダウンロードには、便利なメソッド **download*/openInputStream** を使用した BLOB 全体のコンテンツの取得も含まれます。ラップされた CEK はラップ解除され、復号化されたデータをユーザーに返すために IV (この場合 BLOB メタデータとして格納された) と共に使用されます。
 
@@ -77,8 +77,7 @@
 ### テーブル  
 クライアント ライブラリでは、挿入および置換操作のエンティティ プロパティの暗号化がサポートされます。
 
->**注:**  
->現在、マージはサポートされていません。別のキーを使用してプロパティのサブセットが以前に暗号化されている場合、新しいプロパティをマージしたり、メタデータを更新したりするとデータ損失が発生します。マージでは、追加のサービス呼び出しをして既存のエンティティをサービスから読み込むか、プロパティごとに新しいキーを使用する必要があります。いずれの方法も、パフォーマンス上の理由でお勧めできません。
+>[AZURE.NOTE] 現在、マージはサポートされていません。別のキーを使用してプロパティのサブセットが以前に暗号化されている場合、新しいプロパティをマージしたり、メタデータを更新したりするとデータ損失が発生します。マージでは、追加のサービス呼び出しをして既存のエンティティをサービスから読み込むか、プロパティごとに新しいキーを使用する必要があります。いずれの方法も、パフォーマンス上の理由でお勧めできません。
 
 テーブル データの暗号化は、次のように機能します。
 
@@ -101,34 +100,31 @@
 クエリ操作を実行するには、結果セット内のすべてのキーを解決できる Key Resolver を指定する必要があります。クエリの結果に含まれたエンティティをプロバイダーに解決できない場合、クライアント ライブラリでエラーがスローされます。クエリでサーバー側のプロジェクションが実行される場合、クライアント ライブラリは既定で、特別な暗号化メタデータ プロパティ (\_ClientEncryptionMetadata1 および \_ClientEncryptionMetadata2) を選択した列に追加します。
 
 ## Azure Key Vault  
-Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。Azure Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。詳細については、「[Azure Key Vault とは](../articles/key-vault-whatis.md)」を参照してください。
+Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。Azure Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。詳細については、「[Azure Key Vault とは](../key-vault/key-vault-whatis.md)」を参照してください。
 
 ストレージ クライアント ライブラリは Key Vault のコア ライブラリを使用して、Azure 全体でのキー管理用の一般的なフレームワークを提供します。Key Vault 拡張機能ライブラリを使用すると追加のメリットも得られます。拡張機能ライブラリには、シンプルかつシームレスな対称/RSA ローカルおよびクラウドのキー プロバイダーに関する便利な機能や、集計またはキャッシュに関する機能が用意されています。
 
 ### インターフェイスと依存関係  
-次の 3 種類の Key Vault パッケージがあります。  
-- azure-keyVault-core には IKey と IKeyResolver が含まれています。これは、依存関係のない小型パッケージです。Java 用ストレージ クライアント ライブラリでは、依存関係としてそれを定義します。  
+次の 3 種類の Key Vault パッケージがあります。
 
+- azure-keyvault-core には、IKey と IKeyResolver が含まれています。これは、依存関係のない小型パッケージです。Java 用ストレージ クライアント ライブラリでは、依存関係としてそれを定義します。
 - azure-keyVault には Key Vault REST クライアントが含まれています。  
-
-- azure-keyvault-extensions には、暗号化アルゴリズム、RSAKey、および SymmetricKey の実装を含む拡張機能コードが含まれています。これは、コアおよび KeyVault 名前空間に依存し、集計リゾルバー (複数のキー プロバイダーを使用する必要がある場合) およびキャッシュ キー リゾルバーを定義する機能を提供します。ストレージ クライアント ライブラリはこのパッケージに直接依存しませんが、Azure Key Vault を使用してキーを格納するか、Key Vault 拡張機能を使用してローカルおよびクラウドの暗号化プロバイダーを使用する必要がある場合はこのパッケージが必要です。
+- azure-keyvault-extensions には、暗号化アルゴリズム、RSAKey、および SymmetricKey の実装を含む拡張機能コードが含まれています。これは、コアおよび KeyVault 名前空間に依存し、集計リゾルバー (複数のキー プロバイダーを使用する必要がある場合) およびキャッシュ キー リゾルバーを定義する機能を提供します。ストレージ クライアント ライブラリはこのパッケージに直接依存しませんが、Azure Key Vault を使用してキーを格納するか、Key Vault 拡張機能を使用してローカルおよびクラウドの暗号化プロバイダーを使用する必要がある場合はこのパッケージが必要です。  
 
   Key Vault は値の高いマスター キー向けで、Key Vault ごとのスロットルの上限はこれを念頭に設計されています。Key Vault を使用してクライアント側の暗号化を実行するときに推奨されるモデルは、Key Vault 内のシークレットやローカルにキャッシュされたシークレットとして格納された対象マスター キーを使用することです。次の操作を実行する必要があります。
 
 1.	シークレットをオフラインで作成し、Key Vault にアップロードします。  
 
-2.	シークレットのベース識別子をパラメーターとして使用して、シークレットの現在のバージョンを暗号化用に解決し、この情報をローカルでキャッシュします。
-キャッシュ用の CachingKeyResolver の使用: ユーザーが自身のキャッシュ ロジックを実装することは想定されていません。
+2.	シークレットのベース識別子をパラメーターとして使用して、シークレットの現在のバージョンを暗号化用に解決し、この情報をローカルでキャッシュします。キャッシュ用の CachingKeyResolver の使用: ユーザーが自身のキャッシュ ロジックを実装することは想定されていません。
 
 3.	暗号化ポリシーの作成時に、入力としてキャッシュ リゾルバーを使用します。Key Vault の使用方法について詳しくは、暗号化コードのサンプルを参照してください。<fix URL>
 
 ## ベスト プラクティス  
 暗号化のサポートは、Java 用のストレージ クライアント ライブラリでのみ使用できます。
 
->**重要:**  
->クライアント側の暗号化を使用する場合は、次の重要な点に注意してください。
+>[AZURE.IMPORTANT] クライアント側の暗号化を使用する場合は、次の重要な点に注意してください。
 >  
->- 暗号化された BLOB を読み書きするときは、完全 BLOB アップロード コマンドと範囲/完全 BLOB ダウンロード コマンドを使用してください。Put Block、Put Block List、Write Pages、Clear Pages、または Append Block などのプロトコル操作で暗号化された BLOB に書き込まないでください。暗号化された BLOB が壊れたり、読み取り不可能になったりすることがあります。  
+>- 暗号化された BLOB を読み書きするときは、完全 BLOB アップロード コマンドと範囲/完全 BLOB ダウンロード コマンドを使用してください。Put Block、Put Block List、Write Pages、Clear Pages、または Append Block などのプロトコル操作で暗号化された BLOB に書き込まないでください。暗号化された BLOB が壊れたり、読み取り不可能になったりすることがあります。
 >
 >- テーブルの場合、同様の制約があります。暗号化メタデータを更新せずに暗号化されたプロパティを更新する行為は避けてください。
 >
@@ -137,13 +133,14 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 >- 暗号化されたデータのみを処理する必要のあるユーザーについては、既定の要求オプションで、**requireEncryption** フラグを有効にします。詳細については、以下をご覧ください。
 
 ## クライアント API / インターフェイス  
-EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実装)、リゾルバーのみ (IKeyResolver の実装)、またはその両方を指定できます。IKey は基本的なキーの種類で、キー識別子を使用して識別され、ラップ/ラップ解除のロジックを指定します。IKeyResolver は復号化プロセス中のキーの解決に使用します。これは、IKey で指定されたキー識別子を返す ResolveKey メソッドを定義します。これは、複数の場所で管理されている複数のキーの中から選択するための機能を提供します。  
+EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実装)、リゾルバーのみ (IKeyResolver の実装)、またはその両方を指定できます。IKey は基本的なキーの種類で、キー識別子を使用して識別され、ラップ/ラップ解除のロジックを指定します。IKeyResolver は復号化プロセス中のキーの解決に使用します。これは、IKey で指定されたキー識別子を返す ResolveKey メソッドを定義します。これは、複数の場所で管理されている複数のキーの中から選択するための機能を提供します。
+
 - 暗号化では、キーは常に使用され、キーがないとエラーが発生します。  
-- 暗号化の場合:  
+- 復号化の場合:  
 	- キーを取得するよう指定した場合にキー リゾルバーが起動します。リゾルバーが指定されていても、キー識別子のマッピングがない場合、エラーがスローされます。  
 	- リゾルバーが指定されていない場合にキーが指定されると、そのキーの識別子が必須キー識別子と一致すると、そのキーが使用されます。識別子が一致しなければ、エラーがスローされます。  
 
-	  The [encryption samples](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) <fix URL>demonstrate a more detailed end-to-end scenario for blobs, queues and tables, along with Key Vault integration.
+	  BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエンド ツー エンド シナリオについては、[暗号化のサンプル](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)<fix URL>のページを参照してください。
 
 ### RequireEncryption モード  
 すべてのアップロードとダウンロードを暗号化する必要がある場合、オプションで操作のモードを有効にすることができます。このモードでは、暗号化ポリシーを設定せずにデータをアップロードしようとしたり、サービスで暗号化されていないデータをダウンロードしようとしたりすると、クライアントで失敗します。要求オプション オブジェクトの **requireEncryption** フラグによって、この動作が制御されます。Azure Storage に保存されているすべてのオブジェクトがアプリケーションによって暗号化される場合、サービス クライアント オブジェクトの既定の要求オプションに **requireEncryption** プロパティを設定できます。
@@ -167,8 +164,8 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 	blob.upload(stream, size, null, options, null);
 
 	// Download and decrypt the encrypted contents from the blob.
-	ByteArrayOutputStream outputStream = new ByteArrayOutputStream(); blob.DownloadToStream(outputStream, null, options, null);
-
+	ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+	blob.download(outputStream, null, options, null);
 
 ### Queue サービス暗号化  
 **QueueEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定します)。その他の操作はすべて、クライアント ライブラリが内部的に処理します。
@@ -241,12 +238,10 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 ストレージ データを暗号化すると、パフォーマンスのオーバーヘッドが増えることに注意してください。コンテンツ キーと IV を生成する必要があり、コンテンツ自体を暗号化する必要があります。また、追加のメタデータをフォーマットおよびアップロードする必要もあります。このオーバーヘッドは、暗号化されるデータの量によって異なります。開発中に、アプリケーションのパフォーマンスを常にテストすることをお勧めします。
 
 ## 次のステップ  
-[Java 用 Azure Storage クライアント ライブラリの Maven パッケージ](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.0.0)をダウンロードする。  
 
-[GitHub から Java 用 Azure Storage クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-java)をダウンロードする。Azure Key Vault Maven の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、
-[クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および
-[拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。
+- [Azure Storage Client Library for Java の Maven パッケージ](https://github.com/Azure/azure-storage-java) をダウンロードする  
+- GitHub から [Azure Storage Client Library for Java のソースコード](https://github.com/Azure/azure-storage-java) をダウンロードする   
+- Azure Key Vault Maven [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、[Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) の 3 つのパッケージをダウンロードする
+- [Azure Key Vault ドキュメント](../key-vault/key-vault-whatis.md)を参照する  
 
-[Azure Key Vault ドキュメント](../articles/key-vault-whatis.md)を参照する。
-
-<!----HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

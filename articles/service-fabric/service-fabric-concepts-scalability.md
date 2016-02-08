@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/26/2015"
+   ms.date="01/20/2016"
    ms.author="aprameyr"/>
 
 # Service Fabric アプリケーションのスケーリング
@@ -60,4 +60,4 @@ Service Fabric の概念の詳細については、次を参照してくださ�
 
 - [状態の定義と管理](service-fabric-concepts-state.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

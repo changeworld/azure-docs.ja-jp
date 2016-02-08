@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/16/2015"
+	ms.date="01/13/2016"
 	ms.author="cephalin"/>
 
 # Web アプリの運用環境におけるテストの基本
@@ -39,9 +39,9 @@
 
 基本的に運用環境でのテストはどれも、あらかじめ決めた割合のライブ トラフィックを非運用環境のデプロイ スロットにルーティングすることになります。これを行うには、次の手順に従います。
 
->[AZURE.NOTE]ここに記載した手順は、[非運用環境のデプロイ スロット](web-sites-staged-publishing.md)が既に存在し、適切な Web アプリのコンテンツが既に[デプロイ](web-sites-publish-source-control.md)されていることを前提としています。
+>[AZURE.NOTE] ここに記載した手順は、[非運用環境のデプロイ スロット](web-sites-staged-publishing.md)が既に存在し、適切な Web アプリのコンテンツが既に[デプロイ](web-sites-publish-source-control.md)されていることを前提としています。
 
-1. [Azure ポータル](https://portal.azure.com)にログインします。
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. Web アプリのブレードで、**[設定]**、**[トラフィック ルーティング]** の順にクリックします。![](./media/app-service-web-test-in-production/01-traffic-routing.png)
 3. トラフィックのルーティング先となるスロットと、必要なトラフィックの全体に対するパーセンテージとを選択し、**[保存]** をクリックします。
 
@@ -86,4 +86,4 @@ App Service は自動トラフィック ルーティングだけでなく、特�
 -   [Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)
 -	[Web アプリに対して DevOps 環境を効果的に使用する](app-service-web-staged-publishing-realworld-scenarios.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

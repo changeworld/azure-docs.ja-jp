@@ -116,19 +116,25 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 コードを作成する前に、パーティションとパーティション キーについて考える必要があります。アルファベットの各文字に 1 つ、合計 26 個のパーティションが必要ですが、最低値と最高値のキーはどうなるでしょうか。 文字どおり、1 文字につき 1 つのパーティションを作成し、各文字に独自のキーがあるので、最低値キーには 0、最高値キーには 25 を使用します。
 
 
->[AZURE.NOTE]実際には分散は不均等なので、このシナリオは単純化しています。文字 "S" または "M" から始まる姓は、"X" や "Y" から始まる姓よりも一般的です。
+>[AZURE.NOTE] 実際には分散は不均等なので、このシナリオは単純化しています。文字 "S" または "M" から始まる姓は、"X" や "Y" から始まる姓よりも一般的です。
 
 
 1. **Visual Studio** を開き、**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします。
 2. **[新しいプロジェクト]** ダイアログ ボックスで、Service Fabric アプリケーションを選択します
 3. プロジェクトに "AlphabetPartitions" と名前を付けます
-4. **[サービスの作成]** ダイアログ ボックスで **[ステートフル サービス]** を選択し、下図のように "Alphabet.Processing" と名前を付けます。![ステートフル サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetstatefulnew.png)
+4. **[サービスの作成]** ダイアログ ボックスで **[ステートフル サービス]** を選択し、下図のように "Alphabet.Processing" と名前を付けます。
+
+    ![ステートフル サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetstatefulnew.png)
+
 5. パーティション数を設定します。AlphabetPartitions プロジェクトの ApplicationManifest.xml ファイルを開き、下図のようにパラメーター Processing\_PartitionCount を 26 に更新します。
 
     ```xml
     <Parameter Name="Processing_PartitionCount" DefaultValue="26" />
     ```
-    また、次のように StatefulService 要素の LowKey と HighKey プロパティも更新する必要があります。```xml
+    
+    また、次のように StatefulService 要素の LowKey と HighKey プロパティも更新する必要があります。
+    
+    ```xml
     <Service Name="Processing">
       <StatefulService ServiceTypeName="ProcessingType" TargetReplicaSetSize="[Processing_TargetReplicaSetSize]" MinReplicaSetSize="[Processing_MinReplicaSetSize]">
         <UniformInt64Partition PartitionCount="[Processing_PartitionCount]" LowKey="0" HighKey="25" />
@@ -146,84 +152,93 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 
 7. 次に、Processing クラスの `CreateServiceReplicaListeners()` メソッドをオーバーライドする必要があります。
 
-    >[AZURE.NOTE]この例では、単純な HttpCommunicationListener を使用しているという想定です。Reliable Service 通信の詳細については、「[Reliable Service 通信モデル](service-fabric-reliable-services-communication.md)」を参照してください。
+    >[AZURE.NOTE] この例では、単純な HttpCommunicationListener を使用しているという想定です。Reliable Service 通信の詳細については、「[Reliable Service 通信モデル](service-fabric-reliable-services-communication.md)」を参照してください。
 
 8. レプリカがリッスンする URL の推奨されるパターンの形式は `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}` です。そのため、正しいエンドポイントでこのパターンでリッスンするように、通信リスナーを構成する必要があります。
 
-このサービスの複数のレプリカは同じコンピューターでホストされる可能性があるので、レプリカに対するこのアドレスを一意にする必要があります。そのため、パーティション ID + レプリカ ID を URL に含めています。URL プレフィックスが一意であれば、HttpListener は同じポートでも複数のドレスをリッスンできます。
+    このサービスの複数のレプリカは同じコンピューターでホストされる可能性があるので、レプリカに対するこのアドレスを一意にする必要があります。そのため、パーティション ID + レプリカ ID を URL に含めています。URL プレフィックスが一意であれば、HttpListener は同じポートでも複数のドレスをリッスンできます。
 
-セカンダリ レプリカも読み取り専用要求をリッスンするような高度な場合に備えて、追加の GUID があります。この場合、プライマリからセカンダリに移行するときに新しい一意のアドレスを使用して、クライアントがアドレスを強制的に再解決するようにします。レプリカがすべての使用可能なホスト (IP、FQDM、localhost など) をリッスンするように、このアドレスとして ’+’ を使用します。 コード例を次に示します。
+    セカンダリ レプリカも読み取り専用要求をリッスンするような高度な場合に備えて、追加の GUID があります。この場合、プライマリからセカンダリに移行するときに新しい一意のアドレスを使用して、クライアントがアドレスを強制的に再解決するようにします。レプリカがすべての使用可能なホスト (IP、FQDM、localhost など) をリッスンするように、このアドレスとして ’+’ を使用します。 コード例を次に示します。
 
     ```CSharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
     {
-            return new[] { new ServiceReplicaListener(CreateInternalListener, "Internal", false) };
+        return new[] { new ServiceReplicaListener(CreateInternalListener, "Internal", false) };
     }
     private ICommunicationListener CreateInternalListener(StatefulServiceInitializationParameters args)
     {
         EndpointResourceDescription internalEndpoint = args.CodePackageActivationContext.GetEndpoint("ProcessingServiceEndpoint");
 
         string uriPrefix = String.Format(
-                "{0}://+:{1}/{2}/{3}-{4}/",
-                internalEndpoint.Protocol,
-                internalEndpoint.Port,
-                this.ServiceInitializationParameters.PartitionId,
-                this.ServiceInitializationParameters.ReplicaId,
-                Guid.NewGuid());
+            "{0}://+:{1}/{2}/{3}-{4}/",
+            internalEndpoint.Protocol,
+            internalEndpoint.Port,
+            this.ServiceInitializationParameters.PartitionId,
+            this.ServiceInitializationParameters.ReplicaId,
+            Guid.NewGuid());
 
         string nodeIP = FabricRuntime.GetNodeContext().IPAddressOrFQDN;
         string uriPublished = uriPrefix.Replace("+", nodeIP);
         return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInternalRequest);
     }
     ```
-また、公開される URL が、リッスンする URL プレフィックスと一部が異なる点に注目してください。リッスンする URL は HttpListener に渡されます。公開される URL は、Service Fabric Naming Service に公開される URL です。サービスの検出に使用されます。クライアントは検出サービスを介してこのアドレスを要求します。接続するには、クライアントが取得するアドレスにノードの実際の IP または FQDN が含まれる必要があります。そのため、上のように '+' をノードの IP または FQDN に置き換える必要があります。9.最後の手順は、次のように処理ロジックをサービスに追加する処理です。
+
+    また、公開される URL が、リッスンする URL プレフィックスと一部が異なる点に注目してください。リッスンする URL は HttpListener に渡されます。公開される URL は、Service Fabric Naming Service に公開される URL です。サービスの検出に使用されます。クライアントは検出サービスを介してこのアドレスを要求します。接続するには、クライアントが取得するアドレスにノードの実際の IP または FQDN が含まれる必要があります。そのため、上のように '+' をノードの IP または FQDN に置き換える必要があります。
+    
+9. 最後の手順は、次のように処理ロジックをサービスに追加する処理です。
 
     ```CSharp
     private async Task ProcessInternalRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
-          string output = null;
-          string user = context.Request.QueryString["lastname"].ToString();
+        string output = null;
+        string user = context.Request.QueryString["lastname"].ToString();
 
-          try
-          {
-              output = await this.AddUserAsync(user);
-          }
-          catch (Exception ex)
-          {
-              output = ex.Message;
-          }
+        try
+        {
+            output = await this.AddUserAsync(user);
+        }
+        catch (Exception ex)
+        {
+            output = ex.Message;
+        }
 
-          using (HttpListenerResponse response = context.Response)
-          {
-              if (output != null)
-              {
-                  byte[] outBytes = Encoding.UTF8.GetBytes(output);
-                  response.OutputStream.Write(outBytes, 0, outBytes.Length);
-              }
-          }
-      }
-      private async Task<string> AddUserAsync(string user)
-      {
-          IReliableDictionary<String, String> dictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<String, String>>("dictionary");
+        using (HttpListenerResponse response = context.Response)
+        {
+            if (output != null)
+            {
+                byte[] outBytes = Encoding.UTF8.GetBytes(output);
+                response.OutputStream.Write(outBytes, 0, outBytes.Length);
+            }
+        }
+    }
+    private async Task<string> AddUserAsync(string user)
+    {
+        IReliableDictionary<String, String> dictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<String, String>>("dictionary");
 
-          using (ITransaction tx = this.StateManager.CreateTransaction())
-          {
-              bool addResult = await dictionary.TryAddAsync(tx, user.ToUpperInvariant(), user);
+        using (ITransaction tx = this.StateManager.CreateTransaction())
+        {
+            bool addResult = await dictionary.TryAddAsync(tx, user.ToUpperInvariant(), user);
 
-              await tx.CommitAsync();
+            await tx.CommitAsync();
 
-              return String.Format(
-                  "User {0} {1}",
-                  user,
-                  addResult ? "sucessfully added" : "already exists");
-          }
-      }
+            return String.Format(
+                "User {0} {1}",
+                user,
+                addResult ? "sucessfully added" : "already exists");
+        }
+    }
     ```
+        
+    `ProcessInternalRequest`は、パーティションの呼び出しに使用するクエリ文字列パラメーターの値を読み取り、`AddUserAsync` を呼び出して、信頼性の高い辞書 `dictionary` に姓を追加します。
+    
+10. プロジェクトにステートレス サービスを追加して、特定のパーティションを呼び出す方法を見てみましょう。
 
-    `ProcessInternalRequest`は、パーティションの呼び出しに使用するクエリ文字列パラメーターの値を読み取り、`AddUserAsync` を呼び出して、信頼性の高い辞書 `m_name` に姓を追加します。
-
-10. プロジェクトにステートレス サービスを追加して、特定のパーティションを呼び出す方法を見てみましょう。このサービスは、姓をクエリ文字列パラメーターとして受け取り、パーティション キーを決定し、Alphabet.Processing サービスに送信して処理するという、単純な Web インターフェイスとして機能します。
-11. **[サービスの作成]** ダイアログ ボックスで **[ステートレス サービス]** を選択し、次のように "Alphabet.WebApi" と名前を付けます。![ステートレス サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetstatelessnew.png)
+    このサービスは、姓をクエリ文字列パラメーターとして受け取り、パーティション キーを決定し、Alphabet.Processing サービスに送信して処理するという、単純な Web インターフェイスとして機能します。
+    
+11. **[サービスの作成]** ダイアログ ボックスで **[ステートレス サービス]** を選択し、次のように "Alphabet.WebApi" と名前を付けます。
+    
+    ![ステートレス サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetstatelessnew.png)
+    
 12. Alphabet.WebApi サービスの ServiceManifest.xml のエンドポイント情報を更新し、次のようにポートを開きます。
 
     ```xml
@@ -235,62 +250,64 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     ```CSharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
-           return new[] {new ServiceInstanceListener(this.CreateInputListener, "Input")};
+        return new[] {new ServiceInstanceListener(this.CreateInputListener, "Input")};
     }
     private ICommunicationListener CreateInputListener(StatelessServiceInitializationParameters args)
     {
-           // Service instance's URL is the node's IP & desired port
-           EndpointResourceDescription inputEndpoint = args.CodePackageActivationContext.GetEndpoint("WebApiServiceEndpoint")
-           string uriPrefix = String.Format("{0}://+:{1}/alphabetpartitions/", inputEndpoint.Protocol, inputEndpoint.Port);
-           var uriPublished = uriPrefix.Replace("+", m_nodeIP);
-           return new HttpCommunicationListener(uriPrefix, uriPublished, ProcessInputRequest);
-     }
-     ```
+        // Service instance's URL is the node's IP & desired port
+        EndpointResourceDescription inputEndpoint = args.CodePackageActivationContext.GetEndpoint("WebApiServiceEndpoint")
+        string uriPrefix = String.Format("{0}://+:{1}/alphabetpartitions/", inputEndpoint.Protocol, inputEndpoint.Port);
+        var uriPublished = uriPrefix.Replace("+", m_nodeIP);
+        return new HttpCommunicationListener(uriPrefix, uriPublished, ProcessInputRequest);
+    }
+    ```
+     
 14. 次に、処理ロジックを実装する必要があります。HttpCommunicationListener は要求を受信すると `ProcessInputRequest` を呼び出します。次のコードを追加してみましょう。
 
     ```CSharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
-           String output = null;
-           try
-           {
-               string lastname = context.Request.QueryString["lastname"];
-               char firstLetterOfLastName = lastname.First();
-               int partitionKey = Char.ToUpper(firstLetterOfLastName) - 'A';
+        String output = null;
+        try
+        {
+            string lastname = context.Request.QueryString["lastname"];
+            char firstLetterOfLastName = lastname.First();
+            int partitionKey = Char.ToUpper(firstLetterOfLastName) - 'A';
 
-               ResolvedServicePartition partition = await this.servicePartitionResolver.ResolveAsync(alphabetServiceUri, partitionKey, cancelRequest);
-               ResolvedServiceEndpoint ep = partition.GetEndpoint();
-               JObject addresses = JObject.Parse(ep.Address);
-               string primaryReplicaAddress = addresses["Endpoints"].First()["Value"].Value<string>();
+            ResolvedServicePartition partition = await this.servicePartitionResolver.ResolveAsync(alphabetServiceUri, partitionKey, cancelRequest);
+            ResolvedServiceEndpoint ep = partition.GetEndpoint();
+            JObject addresses = JObject.Parse(ep.Address);
+            string primaryReplicaAddress = addresses["Endpoints"].First()["Value"].Value<string>();
 
-               UriBuilder primaryReplicaUriBuilder = new UriBuilder(primaryReplicaAddress);
-               primaryReplicaUriBuilder.Query = "lastname=" + lastname;
+            UriBuilder primaryReplicaUriBuilder = new UriBuilder(primaryReplicaAddress);
+            primaryReplicaUriBuilder.Query = "lastname=" + lastname;
 
-               string result = await this.httpClient.GetStringAsync(primaryReplicaUriBuilder.Uri);
+            string result = await this.httpClient.GetStringAsync(primaryReplicaUriBuilder.Uri);
 
-               output = String.Format(
-               "Result: {0}. Partition key: '{1}' generated from the first letter '{2}' of input value '{3}'. Processing service partition ID: {4}. Processing service replica address: {5}",
-               result,
-               partitionKey,
-               firstLetterOfLastName,
-               lastname,
-               partition.Info.Id,
-               primaryReplicaAddress);
+            output = String.Format(
+                    "Result: {0}. Partition key: '{1}' generated from the first letter '{2}' of input value '{3}'. Processing service partition ID: {4}. Processing service replica address: {5}",
+                    result,
+                    partitionKey,
+                    firstLetterOfLastName,
+                    lastname,
+                    partition.Info.Id,
+                    primaryReplicaAddress);
+        }
+        catch (Exception ex) { output = ex.Message; }
+        
+        using (var response = context.Response)
+        {
+            if (output != null)
+            {
+                output = output + "added to Partition: " + primaryReplicaAddress;
+                byte[] outBytes = Encoding.UTF8.GetBytes(output);
+                response.OutputStream.Write(outBytes, 0, outBytes.Length);
+            }
+        }
     }
-    catch (Exception ex) { output = ex.Message; }
-    using (var response = context.Response)
-    {
-               if (output != null)
-               {
-                   output = output + "added to Partition: " + primaryReplicaAddress;
-                   byte[] outBytes = Encoding.UTF8.GetBytes(output);
-                   response.OutputStream.Write(outBytes, 0, outBytes.Length);
-               }
-           }
-      }
-      ```
+    ```
 
-    このコードを詳しく見ていきましょう。 Tこのコードは、クエリ文字列パラメーター `lastname` の最初の文字を char 型で読み取ります。 その後、姓の最初の文字の 16 進数値から `A` の 16 進数値を引くことで、この文字のパーティション キーが決まります。
+    このコードを詳しく見ていきましょう。このコードは、クエリ文字列パラメーター `lastname` の最初の文字を char 型で読み取ります。その後、姓の最初の文字の 16 進数値から `A` の 16 進数値を引くことで、この文字のパーティション キーが決まります。
 
     ```CSharp
     string lastname = context.Request.QueryString["lastname"];
@@ -324,17 +341,22 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 
     処理が完了したら、出力を書き戻します。
 
-15. 最後の手順は、サービスのテストです。Visual Studio では、ローカル デプロイメントとクラウド デプロイメントにアプリケーション パラメーターを使用します。ローカルに 26 個のパーティションがあるサービスをテストする場合、次のように、AlphabetPartitions プロジェクトの ApplicationParameters フォルダーにある `Local.xml` ファイルを更新する必要があります。
+15. 最後の手順は、サービスのテストです。Visual Studio では、ローカル デプロイとクラウド デプロイにアプリケーション パラメーターを使用します。ローカルに 26 個のパーティションがあるサービスをテストする場合、次のように、AlphabetPartitions プロジェクトの ApplicationParameters フォルダーにある `Local.xml` ファイルを更新する必要があります。
 
     ```xml
     <Parameters>
       <Parameter Name="Processing_PartitionCount" Value="26" />
       <Parameter Name="WebApi_InstanceCount" Value="1" />
-  </Parameters>
-  ```
+    </Parameters>
+    ```
 
-16. デプロイが完了したら、Service Fabric Explorer でサービスとそのすべてのパーティションを確認できます。![Service Fabric Explorer のスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetservicerunning.png)
-17. ブラウザーで `http://localhost:8090/?lastname=somename` を入力してパーティション分割ロジックをテストできます。同じ文字で始まる各姓が同じパーティションに格納されていることがわかります。![ブラウザーのスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetinbrowser.png)
+16. デプロイが完了したら、Service Fabric Explorer でサービスとそのすべてのパーティションを確認できます。
+    
+    ![Service Fabric Explorer のスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetservicerunning.png)
+    
+17. ブラウザーで `http://localhost:8090/?lastname=somename` を入力してパーティション分割ロジックをテストできます。同じ文字で始まる各姓が同じパーティションに格納されていることがわかります。
+    
+    ![ブラウザーのスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetinbrowser.png)
 
 サンプルの完全なソース コードについては、[Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions) を参照してください。
 
@@ -350,4 +372,4 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 
-<!----HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/30/2015" 
+	ms.date="01/21/2016" 
 	ms.author="stepsic"/>
 
 
@@ -34,19 +34,19 @@ New Relic Standard は、Azure ユーザーであれば無料でご利用いた�
 
 料金情報については、[Microsoft Azure Marketplace の New Relic のページ](/marketplace/partners/newrelic/newrelic)を参照してください。
 
-> [AZURE.NOTE]コンピューティング インスタンス 10 個までについてのみ、料金を表示しています。10 個を超える場合は、ボリューム ディスカウント料金について New Relic (sales@newrelic.com) までお問い合わせください。
+> [AZURE.NOTE] コンピューティング インスタンス 10 個までについてのみ、料金を表示しています。10 個を超える場合は、ボリューム ディスカウント料金について New Relic (sales@newrelic.com) までお問い合わせください。
 
 Azure ユーザーは、New Relic エージェントのデプロイ時に、New Relic Pro の 2 週間の試用サブスクリプションをご利用になれます。
 
 Azure Marketplace を使用して New Relic にサインアップする
---
+
 New Relic は、Azure の Web ロール、Worker ロール、および Azure App Service とシームレスに統合されます。
 
 Azure Marketplace から New Relic に直接サインアップするには、次の簡単な 4 つの手順を実行します。
 
 ## 手順 1.New Relic アカウントを作成する
 
-1. [Azure ポータル](https://portal.azure.com)にログインし、隅にある **[新規]** をクリックします。
+1. [Azure ポータル](https://portal.azure.com/)にログインし、隅にある **[新規]** をクリックします。
 3. **[開発者向けサービス]** > **[New Relic APM]** の順にクリックします。
 4. 次を指定して New Relic アカウントを構成し、**[作成]** をクリックします。
 	- **名前**
@@ -58,11 +58,11 @@ Azure Marketplace から New Relic に直接サインアップするには、次
 
 11. **[作成]** をクリックすると、New Relic アカウントの作成プロセスが開始されます。**[通知]** ボタンをクリックすると、ステータスを監視できます。作成されたら、New Relic アカウントのブレードが表示されます。
 
-12. New Relic ライセンス キーを取得するには、ブレードの上部にある **[Essentials]** パネルを参照します。Web アプリケーション インスタンスは、このライセンス キーを、Web アプリケーションと New Relic アカウントを統合する際に、アプリケーション設定に自動的に登録します。
+12. New Relic ライセンス キーを取得するには、ブレードの上部にある **[Essentials]** パネルを参照します。Web Apps インスタンスは、このライセンス キーを、Web アプリと New Relic アカウントを統合するときに、アプリ設定に自動的に登録します。
 
 ## 手順 2. Web アプリ用に New Relic の統合を構成する
 
-1. [Azure ポータル](https://portal.azure.com)の Web アプリのブレードを開きます。
+1. [Azure ポータル](https://portal.azure.com/)の Web アプリのブレードを開きます。
 2. ブレードの上部にある [...] メニューで、**[タイルの追加]** をクリックします。
 3. **[監視]** タブで **[アプリケーションの概要]** を選択し、Web アプリのブレード上のタイルを表示する場所にドラックします。
 4. [完了] をクリックして、タイルの追加を完了します。
@@ -73,17 +73,17 @@ Azure Marketplace から New Relic に直接サインアップするには、次
 
 	保存操作が完了したら、Web アプリのブレードで **[すべての設定]** をクリックし、次に **[アプリケーションの設定]** をクリックします。New Relic をサポートする **NEWRELIC\_LICENSEKEY** の設定が、ブレードの **[アプリ設定]** セクションに追加されて表示されます。
 
-	>[AZURE.NOTE]新しいアプリ設定が有効になるまで、最大 30 秒かかる場合があります。設定をすぐに強制適用するには、Web アプリを再起動します。
+	>[AZURE.NOTE] 新しいアプリ設定が有効になるまで、最大 30 秒かかる場合があります。設定をすぐに強制適用するには、Web アプリを再起動します。
 
 ## 手順 3. ASP.NET Web アプリを発行する
 
-Visual Studio を使用して Web アプリを発行します。Web アプリが既に発行済みの場合は、もう一度発行します。これにより Web アプリのインスタンスに、New Relic の監視を有効にするために必要な New Relic NuGet パッケージが追加されます。
+Visual Studio を使用して Web アプリを発行します。Web アプリが既に発行済みの場合は、もう一度発行します。これにより Web Apps インスタンスに、New Relic の監視を有効にするために必要な New Relic NuGet パッケージが追加されます。
 
 ## 手順 4.New Relic でアプリケーションのパフォーマンスをチェックする
 
 New Relic のダッシュボードを表示するには、次の手順を実行します。
 
-2. [Azure ポータル](https://portal.azure.com)の Web アプリのブレードを開きます。
+2. [Azure ポータル](https://portal.azure.com/)の Web アプリのブレードを開きます。
 3. **[アプリケーション監視]** > **[アプリケーション名]** > **[New Relic で表示]** をクリックします。
 
 	![](./media/store-new-relic-web-sites-dotnet-application-performance-management/view-new-relic-data.png)
@@ -153,14 +153,14 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 
 詳細については、次に示すその他のリソースを参照してください。
 
- * [Azure Web Apps (Azure Web アプリ)](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/azure-websites#manual): New Relic の .NET エージェントのインストール手順 
+ * [Azure Web Apps での .NET エージェントのインストール](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/azure-preview-portal#install-new-relic-azure-webapps): New Relic の .NET エージェントのインストール手順 
  * [The New Relic User Interface (New Relic ユーザー インターフェイス)](https://newrelic.com/docs/site/the-new-relic-ui): New Relic UI の概要、ユーザー権限とプロファイルの設定、標準機能の使用、およびダッシュボードのドリルダウンの詳細
- * [Applications Overview dashboard (アプリケーションの [概要] ダッシュボード)](https://newrelic.com/docs/site/applications-overview): New Relic のアプリケーションの [概要] ダッシュボードを使用する際の機能
+ * [Applications Overview dashboard (アプリケーションの [概要] ダッシュボード)](https://newrelic.com/docs/site/applications-overview): New Relic のアプリケーションの [概要] ダッシュボードを使用するときの機能
  * [Apdex: Measuring user satisfaction (Apdex: ユーザー満足度の測定)](https://newrelic.com/docs/site/apdex): Apdex によってエンド ユーザーのアプリケーションに対する満足度がどのように測定されるかに関する概要
  * [Real User Monitoring](https://newrelic.com/docs/features/real-user-monitoring): Real User Monitoring (RUM) を使用して、ユーザーのブラウザーで Web ページの読み込みにかかった時間、アクセス元の地域、および使用しているブラウザーに関する詳細を確認する方法の概要
  * [Finding Help (ヘルプの利用)](https://newrelic.com/docs/site/finding-help): New Relic のオンライン ヘルプ センターで利用できるリソース
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
@@ -177,4 +177,4 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 [custom]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrcustom.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

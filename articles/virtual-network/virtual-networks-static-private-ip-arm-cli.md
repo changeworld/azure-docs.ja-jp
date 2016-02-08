@@ -233,7 +233,7 @@
 ## 既存の VM に静的プライベート IP アドレスを追加する方法
 上記のスクリプトを使用して作成された VM によって使用される NIC に静的プライベート IP アドレスを追加するには、次のコマンドを実行します。
 
-	azure netwrok nic set -g TestRG -n TestNIC2 -a 192.168.1.101
+	azure network nic set -g TestRG -n TestNIC2 -a 192.168.1.101
 
 予想される出力:
 
@@ -264,4 +264,4 @@
 - [インスタンスレベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip) アドレスについて理解する。
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

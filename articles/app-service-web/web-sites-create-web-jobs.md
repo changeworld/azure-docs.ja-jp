@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="01/12/2016" 
 	ms.author="tdykstra"/>
 
 # Web ジョブでバックグラウンド タスクを実行する
@@ -42,7 +42,7 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
 
 ## <a name="CreateOnDemand"></a>ポータルでのオンデマンドの Web ジョブの作成
 
-1. [Azure ポータル](http://portal.azure.com)の **[Web アプリ]** ブレードで、**[すべての設定] > [Web ジョブ]** をクリックし、**[Web ジョブ]** ブレードを表示します。
+1. [Azure ポータル](https://portal.azure.com)の **[Web アプリ]** ブレードで、**[すべての設定] > [Web ジョブ]** をクリックし、**[Web ジョブ]** ブレードを表示します。
 	
 	![[Web ジョブ] ブレード](./media/web-sites-create-web-jobs/wjblade.png)
 	
@@ -70,7 +70,7 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
 
 2. 連続的な Web ジョブを開始または停止するには、一覧で Web ジョブを右クリックし、**[開始]** または **[停止]** をクリックします。
 	
-> [AZURE.NOTE]Web アプリが複数のインスタンスで実行される場合、連続的に実行する Web ジョブはすべてのインスタンス上で実行されます。オンデマンドで実行する Web ジョブおよびスケジュールに従って実行するタスクは、負荷分散目的で Microsoft Azure によって選択された単一のインスタンス上で実行されます。
+> [AZURE.NOTE] Web アプリが複数のインスタンスで実行される場合、連続的に実行する Web ジョブはすべてのインスタンス上で実行されます。オンデマンドで実行する Web ジョブおよびスケジュールに従って実行するタスクは、負荷分散目的で Microsoft Azure によって選択された単一のインスタンス上で実行されます。
 	
 > 連続的に実行する Web ジョブをすべてのインスタンス上で確実に実行するには、Web アプリで [常時接続]* 構成設定を有効にします。そうしないと、SCM ホスト サイトが長時間アイドル状態になったときに Web ジョブが実行を停止する可能性があります。
 
@@ -201,7 +201,7 @@ Azure ポータルには、スケジュールされた Web ジョブを作成す
 - [基本] モードと [標準] モードには [常時接続] 機能が用意されており、この機能を有効にすると、Web アプリがアイドル状態にならなくなります。
 - デバッグできるのは、連続的に実行する Web ジョブだけです。スケジュールされた Web ジョブとオンデマンドの Web ジョブのデバッグはサポートされていません。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## <a name="NextSteps"></a>次のステップ
  
@@ -239,4 +239,4 @@ Azure ポータルには、スケジュールされた Web ジョブを作成す
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

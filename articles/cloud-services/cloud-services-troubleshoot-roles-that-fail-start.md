@@ -22,9 +22,9 @@
 
 ## Azure カスタマー サポートへの問い合わせ
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
 
-または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
+または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 
 ## DLL または依存コンポーネントの欠落
@@ -107,7 +107,7 @@ Web サイトにアクセスすると、詳しいエラー メッセージが表
 
 この診断方法の効果を最大限に高めるには、Windows がクリーン インストールされたコンピューターまたは仮想マシンを使用する必要があります。Azure 環境のシミュレーションには、Windows Server 2008 R2 x64 が最適です。
 
-1. スタンドアロン バージョンの [Azure SDK](https://azure.microsoft.com/downloads) をインストールします。
+1. スタンドアロン バージョンの [Azure SDK](https://azure.microsoft.com/downloads/) をインストールします。
 
 2. 開発コンピューターで、クラウド サービスのプロジェクトをビルドします。
 
@@ -167,4 +167,4 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

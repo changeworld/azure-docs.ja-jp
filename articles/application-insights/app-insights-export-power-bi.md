@@ -17,17 +17,17 @@
  
 # Stream Analytics を利用し、Application Insights のデータを Power BI に入力する
 
-この記事では、[Visual Studio Application Insights](app-insights-overview.md) から[エクスポート](app-insights-export-telemetry.md)されたデータを、[Stream Analytics](http://azure.microsoft.com/services/stream-analytics/) を使用して処理する方法を説明します。ターゲットの例として、[Microsoft Power BI](https://powerbi.microsoft.com/) にデータを送信します。
+この記事では、[Visual Studio Application Insights](app-insights-overview.md) から[エクスポート](app-insights-export-telemetry.md)されたデータを、[Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して処理する方法を説明します。ターゲットの例として、[Microsoft Power BI](https://powerbi.microsoft.com/) にデータを送信します。
 
 
-> [AZURE.NOTE]Application Insights から Power BI にデータを入力する簡単な方法は[アダプターを利用する](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-content-pack-application-insights/)ことです。このアダプターは Power BI Gallery の [サービス] にあります。この記事で説明する方法は、現在のところ、より多面的なものですが、Application Insights で Stream Analytics を利用する方法を紹介するものでもあります。
+> [AZURE.NOTE] Application Insights から Power BI にデータを入力する簡単な方法は[アダプターを利用する](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-content-pack-application-insights/)ことです。このアダプターは Power BI Gallery の [サービス] にあります。この記事で説明する方法は、現在のところ、より多面的なものですが、Application Insights で Stream Analytics を利用する方法を紹介するものでもあります。
 
 [Microsoft Power BI](https://powerbi.microsoft.com/) では、機能豊富で多様なビジュアルでデータが表示されます。複数のソースから情報をまとめる機能も備わっています。
 
 
 ![Application Insights の使用状況データの Power BI ビュー サンプル](./media/app-insights-export-power-bi/010.png)
 
-[Stream Analytics](http://azure.microsoft.com/services/stream-analytics/) はアダプターとして機能する Azure サービスであり、Application Insights からエクスポートされたデータを継続的に処理します。
+[Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) はアダプターとして機能する Azure サービスであり、Application Insights からエクスポートされたデータを継続的に処理します。
 
 ![Application Insights の使用状況データの Power BI ビュー サンプル](./media/app-insights-export-power-bi/020.png)
 
@@ -142,7 +142,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 * `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べて、その他の使用可能な種類を確認します。「[Application Insights エクスポート データ モデル](app-insights-export-data-model.md)」を参照してください。
 * `/{date}/{time}` はそのまま書き込まれるパターンです。
 
-> [AZURE.NOTE]ストレージを検査して、正しいパスを取得されることを確認してください。
+> [AZURE.NOTE] ストレージを検査して、正しいパスを取得されることを確認してください。
 
 #### 初期セットアップの完了
 
@@ -152,7 +152,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 ウィザードを閉じ、セットアップが完了するまで待機します。
 
-> [AZURE.TIP]サンプルのコマンドを使用し、データをダウンロードします。クエリをデバッグするために、それをテスト サンプルとして保存します。
+> [AZURE.TIP] サンプルのコマンドを使用し、データをダウンロードします。クエリをデバッグするために、それをテスト サンプルとして保存します。
 
 ## 出力の設定
 
@@ -269,4 +269,4 @@ Noam Ben Zeev で、Power BI にエクスポートする方法を確認できま
 * [Application Insights](app-insights-overview.md)
 * [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

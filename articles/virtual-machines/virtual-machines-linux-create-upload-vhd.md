@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/04/2015"
+	ms.date="01/22/2016"
 	ms.author="dkshir"/>
 
 # Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
@@ -26,7 +26,7 @@
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
-Azure の仮想マシンでは、仮想マシンの作成時に選択したイメージに基づいてオペレーティング システムが実行されます。イメージはストレージ アカウント内に VHD 形式 (.vhd ファイル) で保存されます。詳細については、「[Azure でのディスク](virtual-machines-disks-vhds.md)」および「[Azure でのイメージ](virtual-machines-images.md)」を参照してください。
+Azure 仮想マシンは、作成時に選択したイメージに基づいてオペレーティング システムを実行します。これらのイメージは、ストレージ アカウント内に VHD 形式 (.vhd ファイル) で保存されます。詳細については、「[Azure でのディスク](virtual-machines-disks-vhds.md)」および「[Azure でのイメージ](virtual-machines-images.md)」を参照してください。
 
 仮想マシンを作成するときに、実行するアプリケーションに合わせてオペレーティング システムの一部の設定をカスタマイズすることができます。手順については、「[カスタム仮想マシンの作成方法](virtual-machines-create-custom.md)」を参照してください。
 
@@ -46,7 +46,7 @@ Azure の仮想マシンでは、仮想マシンの作成時に選択したイ�
 
 - **Azure コマンド ライン インターフェイス** - Linux オペレーティング システムを使用してイメージを作成する場合は、[Azure コマンド ライン インターフェイス](../virtual-machines-command-line-tools.md)を使用して VHD をアップロードします。
 
-- **Azure Powershell ツール** - `Add-AzureVhd` コマンドレットを使用して、VHD をアップロードすることもできます。Azure Powershell コマンドレットをダウンロードするには、「[Azure Downloads (Azure のダウンロード)](http://azure.microsoft.com/downloads/)」を参照してください。詳細については、[Add-AzureVhd に関するページ](https://msdn.microsoft.com/library/azure/dn495173.aspx)を参照してください。
+- **Azure Powershell ツール** - `Add-AzureVhd` コマンドレットを使用して、VHD をアップロードすることもできます。Azure Powershell コマンドレットをダウンロードするには、「[Azure Downloads (Azure のダウンロード)](https://azure.microsoft.com/downloads/)」を参照してください。詳細については、[Add-AzureVhd に関するページ](https://msdn.microsoft.com/library/azure/dn495173.aspx)を参照してください。
 
 <a id="prepimage"> </a>
 ## 手順 1. アップロードするイメージを準備する
@@ -142,22 +142,26 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 
 	詳細については、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
-> [AZURE.NOTE]Azure サブスクリプションへのログインには、Azure CLI や Azure PowerShell のいずれかから、新しい Azure Active Directory メソッドを使用することをお勧めします。
+> [AZURE.NOTE] Azure サブスクリプションへのログインには、Azure CLI や Azure PowerShell のいずれかから、新しい Azure Active Directory メソッドを使用することをお勧めします。
 
 <a id="upload"> </a>
 ## 手順 3. Azure にイメージをアップロードする
 
+VHD ファイルをアップロードするストレージ アカウントが必要になります。既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成することができます。ストレージ アカウントを作成するには、「[ストレージ アカウントの作成](../storage-create-storage-account.md)」を参照してください。
+
+.vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。以下のコマンドの例では、**BlobStorageURL** は使用する予定のストレージ アカウントの URL であり、**YourImagesFolder** は Blob Storage 内でイメージを格納するコンテナーです。**VHDName** は、仮想ハード ディスクを識別するために [Azure ポータル](http://portal.azure.com)または [Azure クラシック ポータル](http://manage.windowsazure.com)に表示されるラベルです。**PathToVHDFile** は、コンピューター上の .vhd ファイルの完全なパスとファイル名です。
+
+
 ### Azure CLI を使用する場合
 
-Azure CLI を使用して、イメージをアップロードします。次のコマンドを使用してイメージをアップロードできます。
+Azure CLI でイメージをアップロードするには、次のコマンドを使用します。
 
-		azure vm image create <image-name> --location <location-of-the-data-center> --os Linux <source-path-to the vhd>
+		azure vm image create <ImageName> --blob-url <BlobStorageURL>/<YourImagesFolder>/<VHDName> --os Linux <PathToVHDFile>
+
+詳細については、「[Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](virtual-machines-command-line-tools.md)」を参照してください。
+
 
 ### PowerShell を使用する場合
-
-VHD ファイルをアップロードするストレージ アカウントが必要になります。既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成することができます。ストレージ アカウントを作成するには、[「ストレージ アカウントの作成」](../storage-create-storage-account.md)を参照してください。
-
-.vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。以下のコマンドの例では、**BlobStorageURL** は使用する予定のストレージ アカウントの URL であり、**YourImagesFolder** は BLOB ストレージ内でイメージを格納するコンテナーです。**VHDName** は、仮想ハード ディスクを識別するために [Azure クラシック ポータル](http://manage.windowsazure.com)に表示されるラベルです。**PathToVHDFile** は、.vhd ファイルの完全なパスとファイル名です。
 
 前の手順で使用した Azure PowerShell ウィンドウで、次のように入力します。
 
@@ -165,11 +169,9 @@ VHD ファイルをアップロードするストレージ アカウントが必
 
 詳細については、[Add-AzureVhd に関するページ](https://msdn.microsoft.com/library/azure/dn495173.aspx)を参照してください。
 
-> [AZURE.NOTE] [Azure Powershell 1.0 Preview バージョン](https://azure.microsoft.com/blog/azps-1-0-pre/)では、クラシック デプロイメント モデルとリソース マネージャーのデプロイメント モデル用のコマンドレットを処理する方法が大幅に変更されます。この記事ではまだ Preview バージョンを使用していません。
-
 
 [Step 1: Prepare the image to be uploaded]: #prepimage
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=AcomDC_1210_2015--->
+<!---HONumber=AcomDC_0128_2016-->

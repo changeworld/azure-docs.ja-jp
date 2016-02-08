@@ -34,7 +34,7 @@
 	![scaleout\_1][image-hdi-optimize-hive-scaleout_1]
 - 実行時に、クラスターを再作成せずにスケールアウトすることもできます。これは次のように表示されます。![scaleout\_1][image-hdi-optimize-hive-scaleout_2]
 
-HDInsight によってサポートされている異なる仮想マシンの詳細については、「[HDInsight の料金詳細](http://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+HDInsight によってサポートされている異なる仮想マシンの詳細については、「[HDInsight の料金詳細](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 ##Tez を有効にする
 
@@ -218,4 +218,4 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/partitioning_1.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

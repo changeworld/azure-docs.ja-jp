@@ -48,15 +48,15 @@
 	-	[Git](http://git-scm.com/documentation)
 	-	[PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。+ [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。- Visual Studio サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。+ [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- Visual Studio サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 >
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 運用 Web アプリをセットアップする
 
->[AZURE.NOTE]このチュートリアルで使用するスクリプトは、GitHub リポジトリからの継続的パブリッシングを自動的に構成します。これを行うには、GitHub 資格情報が既に Azure に保存されている必要があります。保存されていない場合、スクリプト化されたデプロイは、Web アプリに対するソース管理設定を構成しようとした時点で失敗します。
+>[AZURE.NOTE] このチュートリアルで使用するスクリプトは、GitHub リポジトリからの継続的パブリッシングを自動的に構成します。これを行うには、GitHub 資格情報が既に Azure に保存されている必要があります。保存されていない場合、スクリプト化されたデプロイは、Web アプリに対するソース管理設定を構成しようとした時点で失敗します。
 >
->GitHub 資格情報を Azure に保存するには、Web アプリを [Azure ポータル](https://portal.azure.com)で作成し、[GitHub のデプロイを構成](web-sites-publish-source-control.md#Step7)します。この操作を行うのは 1 回だけです。
+>GitHub 資格情報を Azure に保存するには、Web アプリを [Azure ポータル](https://portal.azure.com/)で作成し、[GitHub のデプロイを構成](web-sites-publish-source-control.md#Step7)します。この操作を行うのは 1 回だけです。
 
 一般的な DevOps シナリオでは、Azure でライブ実行されているアプリケーションがあり、継続的パブリッシングを通してそれを変更します。このシナリオでは、開発とテストの済んだテンプレートを運用環境にデプロイします。
 
@@ -84,7 +84,7 @@
 	![](./media/app-service-web-test-in-production-controlled-test-flight/00.2-swap-to-production.png)
 
 7.	スクリプトが終了したら、フロントエンドのアドレス (http://ToDoApp*&lt;your_suffix>*.azurewebsites.net/) を参照して、アプリケーションが運用環境で実行されていることを確認します。
-5.	[Azure ポータル](https://portal.azure.com)にログインして、何が作成されたかを調べます。
+5.	[Azure ポータル](https://portal.azure.com/)にログインして、何が作成されたかを調べます。
 
 	同じリソース グループ内に 2 つの Web アプリがあり、1 つは名前に `Api`サフィックスが付いていることを確認できます。リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。さまざまなリソースを参照し、それらを *&lt;repository\_root>*\\ARMTemplates\\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
 
@@ -215,7 +215,7 @@ ToDoApp アプリケーションのコードによれば **BUTTON** イベント
 
 5. **[お気に入り]** ボタンをクリックして、現在のメトリックス エクスプローラーの設定を **"Custom events: Production"** などとして保存します。後でデプロイ スロット ビューとの間で簡単に切り替えることができます。
 
-    > [AZURE.TIP]さらに高度な分析が必要な場合は、[Application Insights リソースを Power BI と統合](app-insights-export-power-bi.md)することを検討してください。
+    > [AZURE.TIP] さらに高度な分析が必要な場合は、[Application Insights リソースを Power BI と統合](app-insights-export-power-bi.md)することを検討してください。
 
 ### スロット固有のタグをサーバー アプリのメトリックに追加する
 こちらも片手落ちにならないようサーバー側のアプリもセットアップしましょう。ただし、JavaScript でインストルメントを実装したクライアント アプリとは異なり、サーバー アプリのスロット固有タグは .NET コードで実装します。
@@ -279,7 +279,7 @@ ToDoApp アプリケーションのコードによれば **BUTTON** イベント
 
     スクリプトの完了後、元のリソース グループに含まれていたリソースをすべて維持したうえで、最初に作成した "Staging" スロットと同じ構成を持った "beta" という名前のスロットが新たに作成されます。
 
-    >[AZURE.NOTE]ここで紹介した各種デプロイ環境の作成手法は、[Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)で用いられているものとは異なります。ここで作成しているのはデプロイ スロットを含んだデプロイ環境です。リソース グループを含んだデプロイ環境ではありません。リソース グループによるデプロイ環境を利用した場合、運用環境を開発者から遠ざけることができますが、運用環境でのテストは困難となります。運用環境でのテストは、スロットから成るデプロイ環境の方が簡単です。
+    >[AZURE.NOTE] ここで紹介した各種デプロイ環境の作成手法は、[Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)で用いられているものとは異なります。ここで作成しているのはデプロイ スロットを含んだデプロイ環境です。リソース グループを含んだデプロイ環境ではありません。リソース グループによるデプロイ環境を利用した場合、運用環境を開発者から遠ざけることができますが、運用環境でのテストは困難となります。運用環境でのテストは、スロットから成るデプロイ環境の方が簡単です。
 
 必要であれば、次の方法でアルファ版のアプリを作成することもできます。
 
@@ -328,7 +328,7 @@ ToDoApp アプリケーションのコードによれば **BUTTON** イベント
 
 3. Application Insights リソースで、environment="beta" としてメトリックをフィルタリングします。
 
-    > [AZURE.NOTE]フィルタリングしたビューを別のお気に入りとして保存しておくと、メトリック エクスプローラーの表示を運用環境とベータ環境とで簡単に切り替えることができます。
+    > [AZURE.NOTE] フィルタリングしたビューを別のお気に入りとして保存しておくと、メトリック エクスプローラーの表示を運用環境とベータ環境とで簡単に切り替えることができます。
 
 Application Insights で、次のような画面が表示されているとします。
 
@@ -375,4 +375,4 @@ Azure App Service を使用すると、中小規模の企業が顧客向けの�
 -	[Azure PowerShell](powershell-install-configure.md)
 -	[Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

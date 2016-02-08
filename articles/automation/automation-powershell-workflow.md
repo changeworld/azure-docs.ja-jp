@@ -129,7 +129,7 @@ InlineScript ブロックに値を渡すことはできますが、**$Using** �
 		$ServiceName = "MyService"
 	
 		$Output = InlineScript {
-			$Service = Get-Service -Name $Using:MyService
+			$Service = Get-Service -Name $Using:ServiceName
 			$Service.Stop()
 			$Service
 		}
@@ -206,7 +206,7 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 		Write-Output "All files copied."
 	}
 
-> [AZURE.NOTE]We do not recommend running child runbooks in parallel since this has been shown to give unreliable results.子 Runbook からの出力が表示されないことがあり、1 つの子 Runbook での設定が並列に実行されている他の子 Runbook に影響を与える可能性があります。
+> [AZURE.NOTE]  We do not recommend running child runbooks in parallel since this has been shown to give unreliable results.子 Runbook からの出力が表示されないことがあり、1 つの子 Runbook での設定が並列に実行されている他の子 Runbook に影響を与える可能性があります。
 
 
 ## チェックポイント
@@ -249,4 +249,4 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 
 - [Windows PowerShell ワークフローの概要](http://technet.microsoft.com/library/jj134242.aspx) 
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

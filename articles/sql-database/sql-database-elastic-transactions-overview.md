@@ -140,9 +140,9 @@ SQL DB のエラスティック データベース トランザクションに�
 
 ## 詳細情報
 
-Azure アプリケーションでエラスティック データベースの機能を使ったことがないという方は、 [ドキュメント マップ](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)を参照してください。質問がある場合は、[SQL Database のフォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](http://feedback.azure.com/forums/217321-sql-database)にお寄せください。
+Azure アプリケーションでエラスティック データベースの機能を使ったことがないという方は、 [ドキュメント マップ](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)を参照してください。質問がある場合は、[SQL Database のフォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

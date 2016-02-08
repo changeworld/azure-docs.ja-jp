@@ -34,11 +34,11 @@
 
 ## CORS の有効化
 
-通常、CORS (クロス オリジン リソース共有) は、API 自体ではなく別のホストから提供される HTML アプリケーションで必要となります。API アプリには、CORS を有効にするためのオプションが 2 つ以上あります。このセクションでは、これらのオプションの概要を説明します。
+通常、CORS (クロス オリジン リソース共有) は、API 自体ではなく別のホストから提供される HTML アプリケーションで必要となります。API Apps には、CORS を有効にするためのオプションが 2 つ以上あります。このセクションでは、これらのオプションの概要を説明します。
 
 ### API アプリ ゲートウェイの CORS の有効化
 
-API アプリ ゲートウェイは、Azure プレビュー ポータルを使用して、CORS を有効にするように構成できます。**MS_CrossDomainOrigins** *appSetting* を追加することで、どの URL に API アプリの呼び出しを許可するかを指定できます。このセクションでは、この *appSetting* を使用して、API ゲートウェイ レベルで CORS を有効にする方法を説明します。
+API アプリ ゲートウェイは、Azure プレビュー ポータルを使用して、CORS を有効にするように構成できます。**MS\_CrossDomainOrigins** *appSetting* を追加することで、どの URL に API アプリの呼び出しを許可するかを指定できます。このセクションでは、この *appSetting* を使用して、API ゲートウェイ レベルで CORS を有効にする方法を説明します。
 
 1. Azure プレビュー ポータルで、CORS を有効にする API アプリのブレードに移動します。移動後、API アプリの *[ゲートウェイ]* アイコンをクリックします。 
 
@@ -56,7 +56,7 @@ API アプリ ゲートウェイは、Azure プレビュー ポータルを使�
 
 	![ゲートウェイの [アプリケーション設定]](./media/app-service-api-javascript-client/22-gateway-app-settings-blade.png)
 
-1. **MS_CrossDomainOrigins** アプリケーション設定を追加します。設定の値は、API アプリへのアクセスを提供する HTTP ホストのコンマ区切り一覧にします。複数のホストへのアクセスを提供する場合は、*appSetting* の値を次のコードのように設定することができます。
+1. **MS\_CrossDomainOrigins** アプリケーション設定を追加します。設定の値は、API アプリへのアクセスを提供する HTTP ホストのコンマ区切り一覧にします。複数のホストへのアクセスを提供する場合は、*appSetting* の値を次のコードのように設定することができます。
 
 		http://foo.azurewebsites.net, https://foo.azurewebsites.net, http://contactlistwebapp.azurewebsites.net
 
@@ -68,11 +68,11 @@ API アプリ ゲートウェイは、Azure プレビュー ポータルを使�
 
 	![](./media/app-service-api-javascript-client/23-app-settings-set.png)
 
-**MS_CrossDomainOrigins** アプリケーション設定については、[Azure Mobile Service .NET の更新](http://azure.microsoft.com/blog/2014/07/28/azure-mobile-services-net-updates/)に関するブログ記事で詳しく説明されているため、設定値の詳細については、この記事を参照してください。
+**MS\_CrossDomainOrigins** アプリケーション設定については、[Azure Mobile Service .NET の更新](https://azure.microsoft.com/blog/2014/07/28/azure-mobile-services-net-updates/)に関するブログ記事で詳しく説明されているため、設定値の詳細については、この記事を参照してください。
 
 ### Web API コードでの CORS の有効化
 
-Web API で CORS を有効にするプロセスについては、[ASP.NET Web API 2 でのクロスオリジン要求の有効化](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)に関する ASP.NET の記事で詳しく説明されています。ASP.NET Web API を使用してビルドされた API アプリの場合、プロセスはまったく同じですが、以下に簡単にまとめています。API アプリは既に正しく設定されているため、CORS が有効になっている場合は、このセクションをスキップしてください。
+Web API で CORS を有効にするプロセスについては、[ASP.NET Web API 2 でのクロスオリジン要求の有効化](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)に関する ASP.NET の記事で詳しく説明されています。ASP.NET Web API を使用してビルドされた API Apps の場合、プロセスはまったく同じですが、以下に簡単にまとめています。API アプリは既に正しく設定されているため、CORS が有効になっている場合は、このセクションをスキップしてください。
 
 1. CORS 機能は、[Microsoft.AspNet.WebApi.Cors](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Cors/) NuGet パッケージによって提供されています。これをインストールするには、**Package Manager Console** を開いて、次の PowerShell スクリプトを実行します。 
 
@@ -82,7 +82,7 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/01-cors-installed.png)
 
-1. *App_Start/WebApiConfig.cs* ファイルを開きます。ファイルで **WebApiConfig** クラスの **Register** メソッドに次のコード行を追加します。
+1. *App\_Start/WebApiConfig.cs* ファイルを開きます。ファイルで **WebApiConfig** クラスの **Register** メソッドに次のコード行を追加します。
 
 		config.EnableCors();
 
@@ -312,9 +312,9 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
             $scope.refresh();
         });
 
-1. Index.html に追加したコードのベース URL (`http://localhost:1578`) のポート番号を、API プロジェクトの実際のポート番号に置き換えます。
+1\. Index.html に追加したコードのベース URL (`http://localhost:1578`) のポート番号を、API プロジェクトの実際のポート番号に置き換えます。
 
->[AZURE.NOTE]**注意**: HTML クライアント プロジェクトのポート番号を使用しないでください。API プロジェクトを右クリックし、**[デバッグ]、[新しいインスタンスを開始]** の順にクリックして、ポート番号を示すブラウザー ウィンドウを表示できます。
+>[AZURE.NOTE] **注意**: HTML クライアント プロジェクトのポート番号を使用しないでください。API プロジェクトを右クリックし、**[デバッグ]、[新しいインスタンスを開始]** の順にクリックして、ポート番号を示すブラウザー ウィンドウを表示できます。
 
 1. HTML クライアントを実行したときに API アプリ プロジェクトも実行されていることを確認します。実行されていない場合は、JavaScript HTML が正しく機能しません。ソリューションを右クリックして、**[プロパティ]** を選択します。その後、両方の Web プロジェクトを **[デバッグなしで開始]** に設定します。最初に API プロジェクトが実行されます。 
 
@@ -373,4 +373,4 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 この例は、API アプリへの認証されていないアクセスを示します。App Service での認証については、[API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

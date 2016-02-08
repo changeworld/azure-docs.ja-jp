@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="01/21/2016"
 	ms.author="billmath"/>
 
 # ディレクトリ統合ツールの比較
 
 ディレクトリ統合ツールは、長年にわたって成長および進化してきました。このドキュメントでは、このようなツールをまとめた表と、各ツールで使用できる機能の比較を示しています。
 
->[AZURE.NOTE]Azure AD Connect には、以前 Dirsync と AAD Sync としてリリースされたコンポーネントと機能が組み込まれています。これらのツールは、個別にリリースされなくなりました。今後の機能強化はすべて Azure AD Connect の更新プログラムに含まれるため、最新機能の入手場所はいつでもわかります。
+>[AZURE.NOTE] Azure AD Connect には、以前 Dirsync と AAD Sync としてリリースされたコンポーネントと機能が組み込まれています。これらのツールは、個別にリリースされなくなりました。今後の機能強化はすべて Azure AD Connect の更新プログラムに含まれるため、最新機能の入手場所はいつでもわかります。
 >
 >現在 Dirsync は引き続きサポートされていますが、今後のある時点で廃止される予定です。廃止された後、一定期間のみサポートされます。この期間の経過後は、Dirsync のサポートが終了します。
 
@@ -91,4 +91,4 @@ AD から Azure AD に流れる属性の削除の許可 | ● | ● | |
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

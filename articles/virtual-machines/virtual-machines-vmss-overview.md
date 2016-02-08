@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-machines-vmss-preview](../../includes/virtual-machines-vmss-preview-ps-include.md)]
 
-コンピューティング リソースをスケール アウトしたりスケール インしたりする必要のあるアプリケーションでは、複数の障害ドメインと更新ドメインに対してスケール操作が暗黙的にバランシングされます。VM スケール セットの概要については、最近の [Azure ブログでの発表](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview)を参照してください。
+コンピューティング リソースをスケール アウトしたりスケール インしたりする必要のあるアプリケーションでは、複数の障害ドメインと更新ドメインに対してスケール操作が暗黙的にバランシングされます。VM スケール セットの概要については、最近の [Azure ブログでの発表](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/)を参照してください。
 
 以下のビデオで、VM スケール セットが詳しく解説されています。
 
@@ -153,4 +153,4 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 **A.** はい。VM スケール セットは、3 つの FD と 5 つの UD を持つ、暗黙的な可用性セットです。virtualMachineProfile の下のものは、何も構成する必要はありません。今後のリリースでは、VM スケール セットが複数のテナントにまたがる可能性がありますが、現時点では 1 つの可用性セットです。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

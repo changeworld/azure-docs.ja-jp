@@ -26,7 +26,7 @@ OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表さ
 
 **2014 年 11 月 3 日**: ゲスト OS ファミリ 1 の延長サポートが終了し、完全に提供終了となりました。ファミリ 1 を利用しているすべてのサービスは、この影響を受けます。これらのサービスは、突然停止される可能性があります。自分で手動でこれらのサービスをアップグレードしない限り、サービスが継続される保証はありません。
 
-質問がある場合は、[Cloud Services フォーラム](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)にアクセスするか、または [Azure サポートにお問い合わせ](http://azure.microsoft.com/support/options/)ください。
+質問がある場合は、[Cloud Services フォーラム](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)にアクセスするか、または [Azure サポートにお問い合わせ](https://azure.microsoft.com/support/options/)ください。
 
 
 
@@ -81,4 +81,4 @@ foreach($subscription in Get-AzureSubscription) {
 ## 次のステップ
 最新の[ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -31,7 +31,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 - Visual Studio 2012 または 2013 のインストール。
-- [Azure .NET SDK](http://azure.microsoft.com/downloads/) のダウンロードとインストール。
+- [Azure .NET SDK](https://azure.microsoft.com/downloads/) のダウンロードとインストール。
 - サブスクリプションに Azure リソース グループを作成する。次に、サンプルの Azure PowerShell スクリプトを示します。Azure PowerShell については、「[Azure PowerShell のインストールおよび構成](../install-configure-powershell.md)」を参照してください。  
 
 
@@ -366,4 +366,4 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

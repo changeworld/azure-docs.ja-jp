@@ -56,20 +56,19 @@ Azure CDN がニーズを満たしていない場合は、Azure で実装され�
 次の表は、さまざまな場所の 1 バイト目の配信にかかる平均時間の例です。ターゲット Web ロールは、Azure 米国西部にデプロイされています。CDN を利用して時間が大きく短縮された場所と、CDN ノードとの近さには強い相関関係があります。Azure CDN ノードの場所の完全な一覧は、「[Azure コンテンツ配信ネットワーク (CDN) ノードの場所](cdn/cdn-pop-locations.md/)」を参照してください。
 
 
-|| 1 バイト目にかかる時間 (ms) (配信元) | 1 バイト目にかかる時間 (CDN) |CDN の時間短縮率 (%)|
+| 1 バイト目にかかる時間 (ms) (配信元) | 1 バイト目にかかる時間 (ms) (CDN) |%CDN 時間の改善|
 |-------------|------------------------|--------------------|------------------|
-|\*サンホセ (カリフォルニア州)| 47.5 | 46.5 | 2 % |
-|\*\*ダレス (バージニア州)| 109 | 40.5 | 169% |
+|* カリフォルニア州サンホセ| 47\.5 | 46\.5 | 2 % |
+|** バージニア州ダレス| 109 | 40\.5 | 169% |
 |ブエノス アイレス (アルゼンチン)| 210 | 151 | 39%|
-|\*ロンドン (英国)| 195 | 44 | 343%|
+|* ロンドン (英国)| 195 | 44 | 343%|
 |上海 (中国)| 242 | 206 | 17% |
-|\*シンガポール | 214 | 74 | 189 % |
-|\*東京 (日本) | 163 | 48 | 204 % |
+|* シンガポール | 214 | 74 | 189 % |
+|* 東京 (日本) | 163 | 48 | 204 % |
 |ソウル (韓国)| 190 | 190 | 0% |
 
 
-\*同じ都市に Azure CDN ノードがある。  
-\*\*隣接する都市に Azure CDN ノードがある。  
+*同じ都市に Azure CDN ノードがある。**隣接する都市に Azure CDN ノードがある。
 
 ## 課題  
 
@@ -206,13 +205,7 @@ CDN のエラーや一時的な使用不能状態のときにアプリケーシ�
 
 CDN のログ記録を有効にして、日常業務の一環としてこのログを監視します。
 
-CDN トラフィックを分析して使用パターンを確認することを検討してください。Azure ポータルには、
-+ 帯域幅、
-+ 転送データ、
-+ ヒット数 (状態コード)、
-+ キャッシュの状態、
-+ キャッシュ ヒット率、および 
-+ IPV4 要求と IPV6 要求の比率を監視できるツールがあります。
+CDN トラフィックを分析して使用パターンを確認することを検討してください。Azure ポータルには、+ 帯域幅、+ 転送データ、+ ヒット数 (状態コード)、+ キャッシュの状態、+ キャッシュ ヒット率、および + IPV4 要求と IPV6 要求の比率を監視できるツールがあります。
 
 詳細については、「[CDN の使用パターンを分析する](cdn/cdn-analyze-usage-patterns.md/)」を参照してください。
 
@@ -281,11 +274,10 @@ URL の書き換えを使用するには、リソースのバンドルにいく�
 ## 詳細情報
 
 
-+ [Azure CDN](http://azure.microsoft.com/services/cdn/)
++ [Azure CDN](https://azure.microsoft.com/services/cdn/)
 + [Azure Content Delievery Network (CDN) Documentation (Azure コンテンツ配信ネットワーク (CDN) のドキュメント)](https://azure.microsoft.com/documentation/services/cdn/)
 + [Web アプリケーションで Azure CDN からコンテンツを配信する](cdn/cdn-serve-content-from-cdn-in-your-web-application/)
 + [クラウド サービスと Azure CDN との統合](cdn/cdn-cloud-service-with-cdn.md/)
-+ [Microsoft Azure コンテンツ配信ネットワークのベスト プラクティス](http://azure.microsoft.com/blog/2011/03/18/best-practices-for-the-windows-azure-content-delivery-network/)
++ [Microsoft Azure コンテンツ配信ネットワークのベスト プラクティス](https://azure.microsoft.com/blog/2011/03/18/best-practices-for-the-windows-azure-content-delivery-network/)
 
-<!---HONumber=AcomDC_1223_2015-->
-
+<!---HONumber=AcomDC_0128_2016-->

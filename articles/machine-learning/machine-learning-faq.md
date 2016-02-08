@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/09/2015"
+	ms.date="01/25/2016"
 	ms.author="paulettm"/>
 
 # Azure Machine Learning に関してよく寄せられる質問 (FAQ): 課金、機能、制限、サポート
@@ -47,7 +47,7 @@ Machine Learning API サービスでは、Machine Learning Studio に組み込�
 
 **Machine Learning ではどのように請求が行われますか。**
 
-課金と料金の詳細については、「[Machine Learning 料金](http://azure.microsoft.com/pricing/details/machine-learning/)」をご覧ください。
+課金と料金の詳細については、「[Machine Learning 料金](https://azure.microsoft.com/pricing/details/machine-learning/)」をご覧ください。
 
 **Azure Machine Learning に無料試用版はありますか。**
 
@@ -93,8 +93,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **Amazon S3 からデータを読み取ることはできますか。**
 
-少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。
-<!--
+少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。<!--
 <SEE CLOUD DS PROCESS>
 -->
 
@@ -164,7 +163,7 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 
 **Machine Learning Studio で使用できるのはどの R パッケージですか。**
 
-Machine Learning Studio は、現在、400 を超える R パッケージをサポートしています。サポートされるパッケージは常に増加しています。サポートされる R パッケージの一覧を取得する方法については、「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」を参照してください。必要なパッケージがこの一覧にない場合は、[ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)でパッケージの名前を指定してください。
+Machine Learning Studio は、現在、400 を超える CRAN R パッケージをサポートしています。サポートされるパッケージは常に増加しています。サポートされる R パッケージの一覧を取得する方法については、「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」を参照してください。必要なパッケージがこの一覧にない場合は、[ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)でパッケージの名前を指定してください。
 
 **カスタム R モジュールを構築することはできますか。**
 
@@ -219,8 +218,9 @@ Retraining API を使用することもできます。サンプル コードは[
 
 RRS の場合は通常、Web サービスの応答に結果が表示されます。BLOB に書き込むこともできます。BES の場合、既定では BLOB に出力が書き込まれます。また、ライター モジュールを使用してデータベースやテーブルに出力を書き込むこともできます。
 
- **Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 
-いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
+ ****Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
+ 
+ ****エラー コードの詳細はどこで入手できますか。 エラー コードの詳細は[こちら](https://msdn.microsoft.com/library/azure/dn905910.aspx)をご覧ください。
 
 ## 拡張性
 
@@ -312,4 +312,4 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

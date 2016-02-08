@@ -25,9 +25,9 @@
 Studio を使用して Azure Machine Learning Web サービスを作成してデプロイする方法の詳細については、次をご覧ください。
 
 - [Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
-- [ML Studio を使ってみる](http://azure.microsoft.com/documentation/videos/getting-started-with-ml-studio/)
+- [ML Studio を使ってみる](https://azure.microsoft.com/documentation/videos/getting-started-with-ml-studio/)
 - [Azure Machine Learning のプレビュー](https://studio.azureml.net/)
-- [Machine Learning ドキュメント センター](http://azure.microsoft.com/documentation/services/machine-learning/)
+- [Machine Learning ドキュメント センター](https://azure.microsoft.com/documentation/services/machine-learning/)
 
 ## Azure Machine Learning Web サービス ##
 
@@ -103,4 +103,4 @@ Azure ML Web サービスに接続するには、ScoreData を渡す **urllib2**
 2. Web サービスからのキーを持つ apiKey を割り当てます。Azure の ML 承認キーを取得する方法を参照してください。
 3. 要求の URI を含む serviceUri を割り当てます。要求の URI を取得する方法を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

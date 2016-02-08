@@ -32,6 +32,6 @@ Microsoft Azure HDInsight では、クラスターで Hadoop タスクを実行�
 
 ## 関連項目
 
-* [HDInsight のラーニング パス](http://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
+* [HDInsight のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -32,7 +32,7 @@
 -	LAMP スタック用に仮想マシンを準備する方法。
 -	仮想マシンの LAMP サーバーに必要なソフトウェアのをインストールする方法。
 
-読者は既に Azure サブスクリプションを持っていることを前提にしています。持っていない場合は、[http://azure.microsoft.com](http://azure.microsoft.com) で無料試用版にサインアップしてください。MSDN サブスクリプションを持っている場合は、[Microsoft Azure 特別料金: MSDN、MPN、BizSpark の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39)をご覧ください。Azure の詳細については、「[Azure とは](http://azure.microsoft.com/overview/what-is-azure/)」を参照してください。
+読者は既に Azure サブスクリプションを持っていることを前提にしています。持っていない場合は、[http://azure.microsoft.com](https://azure.microsoft.com/) で無料試用版にサインアップしてください。MSDN サブスクリプションを持っている場合は、[Microsoft Azure 特別料金: MSDN、MPN、BizSpark の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39)をご覧ください。Azure の詳細については、「[Azure とは](https://azure.microsoft.com/overview/what-is-azure/)」を参照してください。
 
 このトピックに加え、既に仮想マシンをインストールしていており、別の Linux ディストリビューションへの LAMP スタックのインストールの基本について知りたい場合は、「[Azure 上の Linux 仮想マシンへの LAMP スタックのインストール](virtual-machines-linux-install-lamp-stack.md)」を参照してください。
 
@@ -350,7 +350,7 @@ LAMP スタックを正しく設定したら、既存の Web アプリケーシ�
 		sudo chgrp lampappgroup /var/www/html/  # Change the ownership to group lampappgroup
 		sudo chmod g+w /var/www/html/                 # grant write permission to group lampappgroup
 
-	>[AZURE.NOTE]/var/www/html/ のファイルを変更すると、再度のログインが必要になる場合があります。
+	>[AZURE.NOTE] /var/www/html/ のファイルを変更すると、再度のログインが必要になる場合があります。
 -	SFTP クライアント (FileZilla など) を使用して仮想マシンの DNS 名 (例: lampdemo.cloudapp.net) に接続し、/var/www/html に移動してサイトを公開します。![][18]
 
 
@@ -456,4 +456,4 @@ LAMP スタックを正しく設定したら、既存の Web アプリケーシ�
 [17]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-17.png
 [18]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-18.jpg
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->
