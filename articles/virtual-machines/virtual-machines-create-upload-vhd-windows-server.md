@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/10/2015"
+	ms.date="01/21/2016"
 	ms.author="cynthn"/>
 
 # Windows Server VHD の作成と Azure へのアップロード
@@ -32,11 +32,11 @@
 
 1. **Azure サブスクリプション** - お持ちでない方は、[無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。[MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。
 
-2. **Microsoft Azure PowerShell** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。このモジュールをダウンロードするには、[Microsoft Azure のダウンロード ページ](http://azure.microsoft.com/downloads/)にアクセスしてください。モジュールのインストールと構成のチュートリアルは[こちら](../powershell-install-configure.md)で入手できます。[Add-AzureVHD](http://msdn.microsoft.com/library/azure/dn495173.aspx) コマンドレットを使用して VHD をアップロードします。
+2. **Microsoft Azure PowerShell** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。このモジュールをダウンロードするには、[Microsoft Azure のダウンロード ページ](https://azure.microsoft.com/downloads/)にアクセスしてください。モジュールのインストールと構成のチュートリアルは[こちら](../powershell-install-configure.md)で入手できます。[Add-AzureVHD](http://msdn.microsoft.com/library/azure/dn495173.aspx) コマンドレットを使用して VHD をアップロードします。
 
 3. **.vhd ファイルに格納され、仮想マシンに接続されている Windows オペレーティング システム** - .vhd ファイルを作成するツールはいくつかあります。たとえば、Hyper-V を使用して仮想マシンを作成し、オペレーティング システムにインストールすることができます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。オペレーティング システムの詳細については、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](http://go.microsoft.com/fwlink/p/?LinkId=393550)」を参照してください。
 
-> [AZURE.IMPORTANT]VHDX 形式は、Microsoft Azure ではサポートされていません。Hyper-V マネージャーまたは [Convert-VHD コマンドレット](http://technet.microsoft.com/library/hh848454.aspx)を使用して、ディスクを VHD 形式に変換できます。詳細については、この[ブログの投稿](http://blogs.msdn.com/b/virtual_pc_guy/archive/2012/10/03/using-powershell-to-convert-a-vhd-to-a-vhdx.aspx)を参照してください。
+> [AZURE.IMPORTANT] VHDX 形式は、Microsoft Azure ではサポートされていません。Hyper-V マネージャーまたは [Convert-VHD コマンドレット](http://technet.microsoft.com/library/hh848454.aspx)を使用して、ディスクを VHD 形式に変換できます。詳細については、この[ブログの投稿](http://blogs.msdn.com/b/virtual_pc_guy/archive/2012/10/03/using-powershell-to-convert-a-vhd-to-a-vhdx.aspx)を参照してください。
 
 ## 手順 1: VHD を準備する 
 
@@ -66,7 +66,7 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
 ### オプション 1: ストレージ アカウントを作成する
 
-1. Azure クラシック ポータルにサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 
 2. コマンド バーで、**[新規]** をクリックします。
 
@@ -98,11 +98,11 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
 	![コンテナー名](./media/virtual-machines-create-upload-vhd-windows-server/storageaccount_containervalues.png)
 
-	> [AZURE.NOTE]既定では、コンテナーはプライベートであり、アカウント所有者のみがアクセスできます。コンテナー内の BLOB にはパブリック読み取りアクセスを許可し、コンテナーのプロパティやメタデータにはアクセスを許可しない場合は、**[パブリック BLOB]** オプションを使用します。コンテナーと BLOB に完全パブリック読み取りアクセスを許可するには、**[パブリック コンテナー]** オプションを使用します。
+	> [AZURE.NOTE] 既定では、コンテナーはプライベートであり、アカウント所有者のみがアクセスできます。コンテナー内の BLOB にはパブリック読み取りアクセスを許可し、コンテナーのプロパティやメタデータにはアクセスを許可しない場合は、**[パブリック BLOB]** オプションを使用します。コンテナーと BLOB に完全パブリック読み取りアクセスを許可するには、**[パブリック コンテナー]** オプションを使用します。
 
 ### オプション 2: ストレージ アカウントの情報を取得する
 
-1.	Azure クラシック ポータルにサインインします。
+1.	[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 
 2.	ナビゲーション ウィンドウで **[Storage]** をクリックします。
 
@@ -114,7 +114,7 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
 .vhd ファイルをアップロードする前に、コンピューターと Azure のサブスクリプションの間にセキュリティで保護された接続を確立する必要があります。接続の確立には、Microsoft Azure Active Directory 方式または証明書方式を使用できます。
 
-> [AZURE.TIP]Azure PowerShell を使用するには、[Microsoft Azure PowerShell のインストールおよび構成の方法](../install-configure-powershell.md)に関するページを参照してください。全般的な情報については、「[Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」を参照してください。
+> [AZURE.TIP] Azure PowerShell を使用するには、[Microsoft Azure PowerShell のインストールおよび構成の方法](../powershell-install-configure.md)に関するページを参照してください。全般的な情報については、「[Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」を参照してください。
 
 ### オプション 1: Microsoft Azure AD を使用する
 
@@ -150,7 +150,7 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
 	`Add-AzureVhd -Destination "<BlobStorageURL>/<YourImagesFolder>/<VHDName>.vhd" -LocalFilePath <PathToVHDFile>`
 
-	各値の説明: - **BlobStorageURL** は、ストレージ アカウントの URL です。- **YourImagesFolder** は、イメージを格納する BLOB ストレージ内のコンテナーです。- **VHDName** は、Azure クラシック ポータルに表示する仮想ハード ディスクを特定するための名前です。- **PathToVHDFile** は、.vhd ファイルの完全なパスと名前です。
+	各値の説明: - **BlobStorageURL** は、ストレージ アカウントの URL です。- **YourImagesFolder** は、イメージを格納する Blob Storage 内のコンテナーです。- **VHDName** は、Azure クラシック ポータルに表示する仮想ハード ディスクを特定するための名前です。- **PathToVHDFile** は、.vhd ファイルの完全なパスと名前です。
 
 	![PowerShell Add-AzureVHD](./media/virtual-machines-create-upload-vhd-windows-server/powershell_upload_vhd.png)
 
@@ -158,7 +158,7 @@ Add-AzureVhd コマンドレットの詳細については、[Add-AzureVhd に�
 
 ## 手順 5: カスタム イメージの一覧にイメージを追加する
 
-> [AZURE.TIP]Azure クラシック ポータルではなく Azure PowerShell を使用してイメージを追加するには、**Add-AzureVMImage** コマンドレットを使用します。次に例を示します。
+> [AZURE.TIP] Azure クラシック ポータルではなく Azure PowerShell を使用してイメージを追加するには、**Add-AzureVMImage** コマンドレットを使用します。次に例を示します。
 
 >	`Add-AzureVMImage -ImageName <ImageName> -MediaLocation <VHDLocation> -OS <OSType>`
 
@@ -188,19 +188,17 @@ Add-AzureVhd コマンドレットの詳細については、[Add-AzureVhd に�
 
 	![カスタム イメージ](./media/virtual-machines-create-upload-vhd-windows-server/vm_custom_image.png)
 
-	これで、仮想マシンを作成する際に **[マイ イメージ]** で新しいイメージが使用可能になりました。手順については、「[カスタム仮想マシンを作成する方法](virtual-machines-create-custom.md)」をご覧ください。
+	これで、仮想マシンを作成する際に **[マイ イメージ]** で新しいイメージが使用可能になりました。手順については、「[カスタム仮想マシンを作成する方法](virtual-machines-create-custom.md)」を参照してください。
 
 	![カスタム イメージからの VM の作成](./media/virtual-machines-create-upload-vhd-windows-server/create_vm_custom_image.png)
 
-	> [AZURE.TIP]VM を作成しようとするときにエラーが発生し、「VHD https://XXXXX... は YYYY バイトの仮想サイズをサポートしていません。このサイズは整数 (MB 単位) でなければなりません。」というエラー メッセージが表示される場合は、VHD が整数の MB ではないことを意味します。VHD のサイズを修正する必要があります。Azure クラシック ポータルの代わりに **Add-AzureVMImage** PowerShell コマンドレットを使用してイメージを追加してください (上記の手順 5 を参照)。Azure コマンドレットは、VHD が Azure 要件を満たしていることを確認します。
+	> [AZURE.TIP] VM を作成しようとするときにエラーが発生し、「VHD https://XXXXX... は YYYY バイトの仮想サイズをサポートしていません。このサイズは整数 (MB 単位) でなければなりません。」というエラー メッセージが表示される場合は、VHD が整数の MB ではないことを意味します。VHD のサイズを修正する必要があります。Azure クラシック ポータルの代わりに **Add-AzureVMImage** PowerShell コマンドレットを使用してイメージを追加してください (上記の手順 5 を参照)。Azure コマンドレットは、VHD が Azure 要件を満たしていることを確認します。
 
-## 次のステップ ##
 
-仮想マシンを作成したら、SQL Server 仮想マシンを作成してみてください。手順については、「[Microsoft Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」を参照してください。
 
 [Step 1: Prepare the image to be uploaded]: #prepimage
 [Step 2: Create a storage account in Azure]: #createstorage
 [Step 3: Prepare the connection to Azure]: #prepAzure
 [Step 4: Upload the .vhd file]: #upload
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

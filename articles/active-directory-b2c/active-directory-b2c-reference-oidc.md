@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="01/21/2016"
 	ms.author="dastrock"/>
 
 # Azure AD B2C プレビュー: OpenID Connect による Web サインイン
@@ -207,7 +207,8 @@ Content-Type: application/json
 | refresh\_token | OAuth 2.0 更新トークン。現在のトークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のトークンを取得します。Refresh\_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。詳細については、[B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を参照してください。更新トークンを受け取るには、認証要求とトークン要求の両方でスコープ `offline_access` を使用していなければなりません。 |
 | refresh\_token\_expires\_in | 更新トークンの最大有効期間 (秒)。ただし、更新トークンは任意の時点で無効になる場合があります。 |
 
-> [AZURE.NOTE]この時点で access\_token の場所がわからなければ、次の点を考慮してください。`openid` スコープを要求すると、Azure AD は応答で JWT `id_token` を発行します。この `id_token` は厳密には OAuth 2.0 access\_token ではなく、クライアントと同じ client\_id で表され、アプリの独自のバックエンド サービスと通信するときなどに利用できます。`id_token` は署名付きの JWT ベアラー トークンであり、HTTP 認証ヘッダーでリソースに送信し、要求の認証に利用できます。違いは、`id_token` には、特定のクライアント アプリケーションに与えられるアクセスをスコープ ダウンするメカニズムがないことにあります。ただし、(現行の Azure AD B2C プレビューでそうであるように) クライアント アプリケーションがバックエンド サービスと通信できる唯一のクライアントの場合、そのようなスコープ メカニズムは必要ありません。Azure AD B2C プレビューで追加のファースト パーティ リソースとサード パーティ リソースと通信する機能がクライアントに与えられるとき、access\_tokens が導入されます。ただし、そのときであっても、アプリの独自のバックエンド サーバスには `id_tokens` で通信することが推奨されます。Azure AD B2C プレビューで構築できるアプリケーションの種類については、[この記事](active-directory-b2c-apps.md)を参照してください。
+> [AZURE.NOTE]
+	この時点で access\_token の場所がわからなければ、次の点を考慮してください。`openid` スコープを要求すると、Azure AD は応答で JWT `id_token` を発行します。この `id_token` は厳密には OAuth 2.0 access\_token ではなく、クライアントと同じ client\_id で表され、アプリの独自のバックエンド サービスと通信するときなどに利用できます。`id_token` は署名付きの JWT ベアラー トークンであり、HTTP 認証ヘッダーでリソースに送信し、要求の認証に利用できます。違いは、`id_token` には、特定のクライアント アプリケーションに与えられるアクセスをスコープ ダウンするメカニズムがないことにあります。ただし、(現行の Azure AD B2C プレビューでそうであるように) クライアント アプリケーションがバックエンド サービスと通信できる唯一のクライアントの場合、そのようなスコープ メカニズムは必要ありません。Azure AD B2C プレビューで追加のファースト パーティ リソースとサード パーティ リソースと通信する機能がクライアントに与えられるとき、access\_tokens が導入されます。ただし、そのときであっても、アプリの独自のバックエンド サーバスには `id_tokens` で通信することが推奨されます。Azure AD B2C プレビューで構築できるアプリケーションの種類については、[この記事](active-directory-b2c-apps.md)を参照してください。
 
 エラー応答は次のようになります。
 
@@ -246,7 +247,7 @@ Content-Type: application/json
 	"scope": "openid offline_access",
 	"refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...",
 	"redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
-	"client_secret": "<your-application-secret>"	
+	"client_secret": "<your-application-secret>"
 }
 ```
 
@@ -300,11 +301,11 @@ Content-Type: application/json
 | error\_description | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
 
-<!-- 
+<!--
 
 Here is the entire flow for a native  app; each request is detailed in the sections below:
 
-![OAuth Auth Code Flow](./media/active-directory-b2c-reference-oauth-code/convergence_scenarios_native.png) 
+![OAuth Auth Code Flow](./media/active-directory-b2c-reference-oauth-code/convergence_scenarios_native.png)
 
 -->
 
@@ -325,7 +326,8 @@ p=b2c_1_sign_in
 | p | 必須 | アプリケーションにサインインするためにユーザーが最近使用したポリシー。 |
 | post\_logout\_redirect\_uri | 推奨 | ログアウトの完了後にユーザーをリダイレクトする URL。指定しない場合、Azure AD B2C はユーザーに汎用メッセージを表示します。 |
 
-> [AZURE.NOTE]ユーザーを `end_session_endpoint` にリダイレクトすると、Azure AD のユーザーのシングル サインオン状態が一部消去されますが、現在のところ、これはサインアウトとして有効ではありません。それどころか、ユーザーがサインインに利用する IDP を選択すると、資格情報を入力しなくても再認証されます。ソーシャル IDP の場合、そのような行動が予想されます。ユーザーが B2C ディレクトリからサインアウトするとき、Facebook アカウントからの完全なサインアウトを望んでいるとは限りません。ただし、ローカル アカウントの場合、ユーザーのセッションを適切に終了できなければなりません。ローカル アカウントのサインアウトが適切に機能しないのは、Azure AD プレビューの既知の[制限事項](active-directory-b2c-limitations.md)です。短期的な回避策は認証要求ごとに `&prompt=login` パラメーターを送信することです。要求された動作のように見えますが、B2C ディレクトリのアプリケーション間のシングル サインオンが終了します。
+> [AZURE.NOTE]
+	ユーザーを `end_session_endpoint` にリダイレクトすると、Azure AD のユーザーのシングル サインオン状態が一部消去されますが、現在のところ、これはサインアウトとして有効ではありません。それどころか、ユーザーがサインインに利用する IDP を選択すると、資格情報を入力しなくても再認証されます。ソーシャル IDP の場合、そのような行動が予想されます。ユーザーが B2C ディレクトリからサインアウトするとき、Facebook アカウントからの完全なサインアウトを望んでいるとは限りません。ただし、ローカル アカウントの場合、ユーザーのセッションを適切に終了できなければなりません。ローカル アカウントのサインアウトが適切に機能しないのは、Azure AD プレビューの既知の[制限事項](active-directory-b2c-limitations.md)です。短期的な回避策は認証要求ごとに `&prompt=login` パラメーターを送信することです。要求された動作のように見えますが、B2C ディレクトリのアプリケーション間のシングル サインオンが終了します。
 
 ## 独自の B2C ディレクトリを使用する
 
@@ -345,4 +347,4 @@ image goes here
 
 -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -18,13 +18,11 @@
 
 # Azure Mobile Apps Node.js SDK の使用方法
 
-[AZURE.INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]&nbsp;
-
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
 
 この記事では、Azure App Service Mobile Apps で Node.js バックエンドを使用する方法についての詳細な情報と例を提供します。
 
-> [AZURE.NOTE]この SDK はプレビュー段階です。そのため、運用環境でこの SDK を使用することは推奨されません。このドキュメントの例では、[azure-mobile-apps] の v2.0.0-beta2 を使用しています。
+> [AZURE.NOTE] この SDK はプレビュー段階です。そのため、運用環境でこの SDK を使用することは推奨されません。このドキュメントの例では、[azure-mobile-apps] の v2.0.0-rc2 を使用しています。
 
 ## <a name="Introduction"></a>はじめに
 
@@ -163,6 +161,14 @@ Azure App Service には、デプロイ前に確認する必要がある Node.js
 - [Node のバージョンを指定する]方法
 - [Node モジュールを使用する]方法
 
+### <a name="howto-enable-homepage"></a>方法: アプリケーションのホーム ページを有効にする
+
+多くのアプリケーションは Web とモバイル アプリを組み合わせており、ExpressJS フレームワークを使用すると、この 2 つを結合することができます。しかし、場合によっては、モバイル インターフェイスだけを実装することができます。アプリ サービスを確実に稼働させるために、ランディング ページを提供すると便利です。ホーム ページを指定するか、一時的なホーム ページを有効にします。一時的なホーム ページを有効にするには、Mobile App コンストラクターを次のように調整します。
+
+    var mobile = azureMobileApps({ homePage: true });
+
+ローカルで開発する場合にのみ、このオプションを利用する場合は、この設定を `azureMobile.js` ファイルに追加することができます。
+
 ## <a name="TableOperations"></a>テーブル操作
 
 azure-mobile-apps Node.js Server SDK では、WebAPI として Azure SQL Database に格納されたデータ テーブルを公開するためのメカニズムが提供されます。以下の 5 つの操作が提供されます。
@@ -246,7 +252,7 @@ Azure Mobile Apps Node SDK には、データをすぐに使用できる 3 つ�
 
 Azure Mobile Apps Node.js SDK では [mssql Node.js パッケージ]を使用して、SQL Express と SQL Database 両方への接続を確立および使用します。このパッケージでは、SQL Express インスタンスで TCP 接続を有効にする必要があります。
 
-> [AZURE.TIP]メモリ ドライバーでは、テスト用の完全な機能セットは提供されません。ローカルでバックエンドをテストする場合は、SQL Express データ ストアと mssql ドライバーを使用することをお勧めします。
+> [AZURE.TIP] メモリ ドライバーでは、テスト用の完全な機能セットは提供されません。ローカルでバックエンドをテストする場合は、SQL Express データ ストアと mssql ドライバーを使用することをお勧めします。
 
 1. [Microsoft SQL Server 2014 Express] をダウンロードしてインストールします。必ず、SQL Server 2014 Express with Tools エディションをインストールしてください。明示的に 64 ビットのサポートが要求された場合を除き、32 ビット バージョンを使用することで実行時のメモリ使用量が少なくなります。
 
@@ -368,7 +374,7 @@ Azure SQL Database をデータ ストアとして使用する方法は、Azure 
 
 モバイル アプリ バックエンドが作成されたら、既存の SQL データベースをモバイル アプリ バックエンドに接続するか、新しい SQL データベースを作成するかを選択できます。このセクションでは、新しい SQL データベースを作成します。
 
-> [AZURE.NOTE]新しいモバイル アプリ バックエンドと同じ場所に、既にデータベースがある場合は、**[既存のデータベースを使用する]** を選ぶと、そのデータベースを選択できます。別の場所にあるデータベースを使用することは、帯域幅コストと待機時間が増加するため、お勧めしません。
+> [AZURE.NOTE] 新しいモバイル アプリ バックエンドと同じ場所に、既にデータベースがある場合は、**[既存のデータベースを使用する]** を選ぶと、そのデータベースを選択できます。別の場所にあるデータベースを使用することは、帯域幅コストと待機時間が増加するため、お勧めしません。
 
 6. 新しいモバイル アプリ バックエンドで、**[設定]**、**[モバイル アプリ]**、**[データ]**、**[+ 追加]** の順にクリックします。
 
@@ -543,6 +549,24 @@ access プロパティが定義されていない場合は、非認証アクセ�
 
 initialize() メソッドを明示的に呼び出して、サービスの実行開始時にテーブルを作成することをお勧めします。
 
+### <a name="Swagger"></a>Swagger のサポートを有効にする
+
+Azure App Service Mobile Apps には、組み込みの [Swagger] のサポートが付属してします。Swagger のサポートを有効にするには、最初に依存関係として swagger ui をインストールします。
+
+    npm install --save swagger-ui
+
+インストールすると、Azure Mobile Apps コンストラクターで Swagger のサポートを有効にできます。
+
+    var mobile = azureMobileApps({ swagger: true });
+
+開発エディションでのみ Swagger サポートを有効にするには、`NODE_ENV` アプリの設定を利用することで行えます。
+
+    var mobile = azureMobileApps({ swagger: process.env.NODE_ENV !== 'production' });
+
+swagger エンドポイントは、http://\_yoursite\_.azurewebsites.net/swagger で特定されます。Swagger UI には `/swagger/ui` エンドポイントからアクセスできます。アプリケーション全体で認証を必要とするように選択している場合、Swagger は / エンドポイントに対してエラーを生成することに注意してください。最善の結果を得るため、Azure App Service の [認証/承認] 設定で認証されていない要求を許可するように選択し、`table.access` プロパティを使用して認証を制御します。
+
+ローカルで開発する場合にのみ、Swagger のサポートが必要な場合は、`azureMobile.js` ファイルに Swagger オプションを追加することができます。
+
 ## <a name="CustomAPI"></a>カスタム API
 
 /tables エンドポイント経由のデータ アクセス API に加え、Azure Mobile Apps ではカスタム API も提供できます。カスタム API はテーブル定義と同じような方法で定義され、認証を含む、すべての同じ機能にアクセスできます。
@@ -707,6 +731,7 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [Create a new Azure App Service]: ../app-service-web/
 [azure-mobile-apps]: https://www.npmjs.com/package/azure-mobile-apps
 [Express]: http://expressjs.com/
+[Swagger]: http://swagger.io/
 
 [Azure ポータル]: https://portal.azure.com/
 [OData]: http://www.odata.org
@@ -722,4 +747,4 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

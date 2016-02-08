@@ -18,7 +18,7 @@
 
 # Cortana Analytics Process の活用 - 1 TB (テラバイト) データセットで Azure HDInsight Hadoop クラスターを使用する
 
-このチュートリアルでは、[Azure HDInsight Hadoop クラスター](http://azure.microsoft.com/services/hdinsight/)によるエンド ツー エンドの Cortana Analytics Process を使用して、公開されている 1 つの [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) データセットからデータの格納、探索、特徴エンジニアリング、ダウンサンプリングを行う方法について説明します。Azure Machine Learning を使い、このデータに基づいてバイナリ分類モデルを構築します。また、これらのモデルのいずれかを Web サービスとして発行する方法も示します。
+このチュートリアルでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)によるエンド ツー エンドの Cortana Analytics Process を使用して、公開されている 1 つの [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) データセットからデータの格納、探索、特徴エンジニアリング、ダウンサンプリングを行う方法について説明します。Azure Machine Learning を使い、このデータに基づいてバイナリ分類モデルを構築します。また、これらのモデルのいずれかを Web サービスとして発行する方法も示します。
 
 IPython Notebook を使用して、このチュートリアルで説明するタスクを実行することもできます。この方法を試してみたい方は、「[Criteo walkthrough using a Hive ODBC connection (Hive ODBC の接続を使用した Criteo チュートリアル)](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)」のトピックをご覧ください。
 
@@ -663,4 +663,4 @@ Web サービス用の 2 つのリンクが左側に表示されます。
 
 以上で、Azure Machine Learning を使用して大規模なデータセットを処理する方法の総合的なチュートリアルは終了です。ここでは、テラバイト単位のデータから始めて、予測モデルを構築し、クラウドに Web サービスとしてデプロイしました。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

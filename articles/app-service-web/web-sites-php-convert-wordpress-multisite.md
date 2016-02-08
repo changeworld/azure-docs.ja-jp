@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="10/01/2015" 
+	ms.date="01/12/2016" 
 	ms.author="tomfitz"/>
 
 
@@ -76,10 +76,10 @@ Web アプリの *wp-admin* 領域にログインし、**[ツール]** メニュ
 
 ## Web アプリへのドメイン マッピングの有効化
 
-**無料** [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) プラン モードでは Web アプリへのカスタム ドメインの追加はサポートされません。**Shared** モードまたは **Standard** モードに切り替える必要があります。これを行うには、次の手順を実行します。
+**無料** [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) プラン モードでは Web Apps へのカスタム ドメインの追加はサポートされません。**Shared** モードまたは **Standard** モードに切り替える必要があります。これを行うには、次の手順を実行します。
 
 * Azure ポータルにログインして、自分の Web アプリに移動します。 
-* メイン コンテンツ領域の **[スケール]** タブをクリックします。
+* **[設定]** で **[スケールアップ]** タブをクリックします。
 * **[全般]** で、*[Shared]* または *[Standard]* を選択します。
 * **[保存]** をクリックします。
 
@@ -113,7 +113,7 @@ Azure ポータルを通じて Web アプリに戻り、**[設定]** をクリ�
 
 ここまでの手順が成功すると、DNS A レコードを通じてドメインを自分の Azure Web アプリに割り当てられるようになります。
 
-ここで重要なのは、Azure Web アプリでは CNAME と A レコードのどちらも許容されるものの、適切なドメイン マッピングを可能にするには A レコードを使う*必要*があるということです。Azure では、YOUR\_DOMAIN.azurewebsites.net で CNAME が作成されますが、CNAME は他の CNAME に転送することができません。
+ここで重要なのは、Azure Web Apps では CNAME と A レコードのどちらも許容されるものの、適切なドメイン マッピングを可能にするには A レコードを使う*必要*があるということです。Azure では、YOUR\_DOMAIN.azurewebsites.net で CNAME が作成されますが、CNAME は他の CNAME に転送することができません。
 
 DNS マネージャーに戻り、前の手順でメモした IP アドレスを指すように A レコードをセットアップします。
 
@@ -134,7 +134,7 @@ DNS マネージャーに戻り、前の手順でメモした IP アドレスを
 
 Azure Web Apps では、Web アプリに追加できるドメインの数に制限はありません。他のドメインを追加するには、各ドメインに対して「**ドメインの確認**」および「**ドメイン A レコードのセットアップ**」セクションの手順を繰り返します。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
@@ -153,4 +153,4 @@ Azure Web Apps では、Web アプリに追加できるドメインの数に制�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

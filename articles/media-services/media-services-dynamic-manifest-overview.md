@@ -192,7 +192,7 @@ Media Services のリリース 2.11 以降では、アセットにフィルタ�
 
 最大 3 つのフィルターを結合できます。
 
-詳細については、[この投稿](http://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support)を参照してください。
+詳細については、[この投稿](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)を参照してください。
 
 
 ##既知の問題と制限
@@ -236,4 +236,4 @@ Media Services のリリース 2.11 以降では、アセットにフィルタ�
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -46,7 +46,7 @@
 
  [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
 
- [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/dn528946)
+ [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
 
  [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
 
@@ -59,4 +59,4 @@
 
   
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

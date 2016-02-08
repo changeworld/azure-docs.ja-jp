@@ -29,7 +29,7 @@
 
 ## ポータルへのログオン
 
-この作業は Azure アカウントさえあれば、問題ありません。[アカウントがない場合も簡単に取得できます](http://azure.microsoft.com/pricing/free-trial/)。
+この作業は Azure アカウントさえあれば、問題ありません。[アカウントがない場合も簡単に取得できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## Canonical と MSOpenTech の Docker イメージを使用した VM の作成
 
@@ -78,4 +78,4 @@ Docker コマンドの発行を開始しますが、この Azure VM では既定
 [MSOpenTech]: http://msopentech.com/
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

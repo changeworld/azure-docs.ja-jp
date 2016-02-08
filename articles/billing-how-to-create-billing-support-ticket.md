@@ -24,7 +24,7 @@
 
 >[AZURE.NOTE]アカウント センターへのアクセス権があるのは Azure アカウント管理者だけです。
 
-1. [Azure サポート](http://azure.microsoft.com/support) Web サイトに移動して、**[サポートの要求]** をクリックします。これ以外に、Microsoft Azure ポータルまたは Azure アカウント センターからインシデントを送信する方法もあります。
+1. [Azure サポート](https://azure.microsoft.com/support/) Web サイトに移動して、**[サポートの要求]** をクリックします。これ以外に、Microsoft Azure ポータルまたは Azure アカウント センターからインシデントを送信する方法もあります。
 
  * [Azure ポータル](https://manage.windowsazure.com/)からサポート チケットを送信するには、アカウント名をクリックし、[Microsoft サポートに問い合わせる] をクリックします。
  * [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)からサポート チケットを送信するには、サブスクリプションをクリックし、[Microsoft サポートに問い合わせる] をクリックします。
@@ -49,4 +49,4 @@
 
 契約の条項に従って、Azure のサポート担当者から連絡があります。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/11/2016"
+	ms.date="01/21/2016"
 	ms.author="andkjell"/>
 
 # Azure AD Connect での接続に関する問題のトラブルシューティング
@@ -26,7 +26,7 @@ Azure AD Connect は、2 種類の構成方法によって Azure AD に接続し
 
 まず、[**machine.config**](active-directory-aadconnect-prerequisites.md#connectivity) が正しく構成されていることを確認する必要があります。 ![machineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/machineconfig.png)
 
-> [AZURE.NOTE]一部のブログでは、machine.config ではなく miiserver.exe.config に変更を加える必要があると記載されていますが、このファイルはアップグレードのたびに上書きされるため、初回インストール時には有効であっても、初回アップグレード時には機能しなくなります。このような理由から、machine.config を更新することをお勧めします。
+> [AZURE.NOTE] 一部のブログでは、machine.config ではなく miiserver.exe.config に変更を加える必要があると記載されていますが、このファイルはアップグレードのたびに上書きされるため、初回インストール時には有効であっても、初回アップグレード時には機能しなくなります。このような理由から、machine.config を更新することをお勧めします。
 
 次に、winhttp が構成されていることを確認する必要があります。これには、[**netsh**](active-directory-aadconnect-prerequisites.md#connectivity) を使用します。 ![netsh](./media/active-directory-aadconnect-troubleshoot-connectivity/netsh.png)
 
@@ -37,9 +37,7 @@ Azure AD Connect は、2 種類の構成方法によって Azure AD に接続し
 | URL | ポート | 説明 |
 | ---- | ---- | ---- |
 | mscrl.microsoft.com | HTTP/80 | CRL リストのダウンロードに使用します。 |
-| *.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。 |
-| *.windows.net | HTTPS/443 | Azure AD へのログインに使用します。 |
-| *.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリの構成およびデータのインポートとエクスポートに使用します。 |
+| **.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。 | | *.windows.net | HTTPS/443 | Azure AD へのログインに使用します。 | | *.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリの構成およびデータのインポートとエクスポートに使用します。 |
 
 ## ウィザードでのエラー
 インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。**[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用します。**[構成]** ページでは、使用するセキュリティ コンテキストを[同期エンジンのサービスを実行しているアカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に変更します。ここで行うプロキシ構成はコンピューターに対してグローバルになるため、構成になんらかの問題があると、ほとんどの場合はすぐにウィザードの **[Azure AD に接続]** ページに反映されることになります。
@@ -88,7 +86,7 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 - エンドポイントの adminwebservice と provisioningapi (下のログを参照) は検出エンドポイントであり、実際に使用するエンドポイントを見つけるために使用されるため、リージョンによって異なります。
 
 ### 参照用プロキシ ログ
-実際のプロキシ ログのダンプと、その取得元のインストール ウィザード ページを次に示します (エンドポイントが重複する項目は削除してあります)。これは、お使いの環境でのプロキシおよびネットワーク ログの参照用としてご利用ください。実際のエンドポイントは環境によって異なる場合があります (特に斜体で示したもの)。
+実際のプロキシ ログのダンプと、その取得元のインストール ウィザード ページを次に示します (エンドポイントが重複する項目は削除してあります)。これは、お使いの環境でのプロキシおよびネットワーク ログの参照用としてご利用ください。実際のエンドポイントは環境によって異なる場合があります (特に*斜体*で示したもの)。
 
 **Azure AD に接続**
 
@@ -126,4 +124,4 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 1/11/2016 8:49 | connect://*bba900-anchor*.microsoftonline.com:443
 1/11/2016 8:49 | connect://*bba800-anchor*.microsoftonline.com:443
 
-<!----HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

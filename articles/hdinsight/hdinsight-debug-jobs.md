@@ -14,18 +14,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="01/28/2016"
 	ms.author="jgao"/>
 
 # HDInsight で Hadoop のデバッグをする: ログの表示とエラーメッセージの解釈
 
 このトピックで取り上げるエラー メッセージは、Azure HDInsight で Hadoop のユーザーが Azure PowerShell を使用してサービスを管理する際に発生する可能性のあるエラー状況を理解するのに役立ちます。また、エラーから回復する手順も示されています。
 
-一部のエラー メッセージは、Azure ポータルで HDinsight クラスターを管理している場合にも表示されます。しかし、その場合に遭遇する可能性のあるエラー メッセージは、その状況で可能な対応策に制約があるため、さほどきめ細かいものではありません。その他のエラー メッセージは、対応策が明白な文脈で提供されています。たとえば、パラメーターの制約違反である場合、値が入力されたボックスの右側にポップアップ形式でメッセージが表示されます。下図は、要求されたデータ ノードの数が多すぎた場合です。対応策は、許容値である 33 以下まで数を減らすことです。
+一部のエラー メッセージは、Azure ポータルで HDinsight クラスターを管理している場合にも表示されます。しかし、その場合に遭遇する可能性のあるエラー メッセージは、その状況で可能な対応策に制約があるため、さほどきめ細かいものではありません。その他のエラー メッセージは、対応策が明白な文脈で提供されています。
 
-![HDInsight ポータルのエラー メッセージ][image-hdi-debugging-error-messages-portal]
-
-エラーが Azure HDInsight に固有となる状況では、そのエラーが何であるかを理解すると役に立つことがあります。さまざまなエラー コードとその修正方法を理解するには、「[HDInsight のエラー コード](#hdi-error-codes)」を参照してください。状況によっては、Hadoop ログ自体にアクセスします。それは Azure ポータルから直接実行できます。
+エラーが Azure HDInsight に固有となる状況では、そのエラーが何であるかを理解すると役に立つことがあります。さまざまなエラー コードとその修正方法を理解するには、「[HDInsight のエラー コード](#hdinsight-error-codes)」を参照してください。状況によっては、Hadoop ログ自体にアクセスします。それは Azure ポータルから直接実行できます。
 
 ## クラスターの状態とジョブ ログの表示
 
@@ -51,65 +49,9 @@
 
 * **HBase UI にアクセスします**。Azure ポータルから、HDInsight HBase クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[HBase UI]** をクリックします。
 
-## <a id="hdi-error-codes"></a>HDInsight のエラー コード
+## HDInsight のエラー コード
 
-Azure PowerShell またはポータルでユーザーが遭遇する可能性のあるエラーを以下に名前のアルファベット順で示します。エラーは「[エラーの説明と対応策](#discription-mitigation-errors)」セクションのエントリにリンクしており、このセクションでエラーに関する次の情報が与えられます。
-
-- **説明**: ユーザーに表示されるエラー メッセージ
-- **対応策**: エラーから回復するために使用できる手順
-
-
-
-- [AtleastOneSqlMetastoreMustBeProvided](#AtleastOneSqlMetastoreMustBeProvided)
-- [AzureRegionNotSupported](#AzureRegionNotSupported)
-- [ClusterContainerRecordNotFound](#ClusterContainerRecordNotFound)
-- [ClusterDnsNameInvalidReservedWord](#ClusterDnsNameInvalidReservedWord)
-- [ClusterNameUnavailable](#ClusterNameUnavailable)
-- [ClusterUserNameInvalid](#ClusterUserNameInvalid)
-- [ClusterUserNameInvalidReservedWord](#ClusterUserNameInvalidReservedWord)
-- [ContainerNameMisMatchWithDnsName](#ContainerNameMisMatchWithDnsName)
-- [DataNodeDefinitionNotFound](#DataNodeDefinitionNotFound)
-- [DeploymentDeletionFailure](#DeploymentDeletionFailure)
-- [DnsMappingNotFound](#DnsMappingNotFound)
-- [DuplicateClusterContainerRequest](#DuplicateClusterContainerRequest)
-- [DuplicateClusterInHostedService](#DuplicateClusterInHostedService)
-- [FailureToUpdateDeploymentStatus](#FailureToUpdateDeploymentStatus)
-- [HdiRestoreClusterAltered](#HdiRestoreClusterAltered)
-- [HeadNodeConfigNotFound](#HeadNodeConfigNotFound)
-- [HeadNodeConfigNotFound](#HeadNodeConfigNotFound)
-- [HostedServiceCreationFailure](#HostedServiceCreationFailure)
-- [HostedServiceHasProductionDeployment](#HostedServiceHasProductionDeployment)
-- [HostedServiceNotFound](#HostedServiceNotFound)
-- [HostedServiceWithNoDeployment](#HostedServiceWithNoDeployment)
-- [InsufficientResourcesCores](#InsufficientResourcesCores)
-- [InsufficientResourcesHostedServices](#InsufficientResourcesHostedServices)
-- [InternalErrorRetryRequest](#InternalErrorRetryRequest)
-- [InvalidAzureStorageLocation](#InvalidAzureStorageLocation)
-- [InvalidNodeSizeForDataNode](#InvalidNodeSizeForDataNode)
-- [InvalidNodeSizeForHeadNode](#InvalidNodeSizeForHeadNode)
-- [InvalidRightsForDeploymentDeletion](#InvalidRightsForDeploymentDeletion)
-- [InvalidStorageAccountBlobContainerName](#InvalidStorageAccountBlobContainerName)
-- [InvalidStorageAccountConfigurationSecretKey](#InvalidStorageAccountConfigurationSecretKey)
-- [InvalidVersionHeaderFormat](#InvalidVersionHeaderFormat)
-- [MoreThanOneHeadNode](#MoreThanOneHeadNode)
-- [OperationTimedOutRetryRequest](#OperationTimedOutRetryRequest)
-- [ParameterNullOrEmpty](#ParameterNullOrEmpty)
-- [PreClusterCreationValidationFailure](#PreClusterCreationValidationFailure)
-- [RegionCapabilityNotAvailable](#RegionCapabilityNotAvailable)
-- [StorageAccountNotColocated](#StorageAccountNotColocated)
-- [SubscriptionIdNotActive](#SubscriptionIdNotActive)
-- [SubscriptionIdNotFound](#SubscriptionIdNotFound)
-- [UnableToResolveDNS](#UnableToResolveDNS)
-- [UnableToVerifyLocationOfResource](#UnableToVerifyLocationOfResource)
-- [VersionCapabilityNotAvailable](#VersionCapabilityNotAvailable)
-- [VersionNotSupported](#VersionNotSupported)
-- [VersionNotSupportedInRegion](#VersionNotSupportedInRegion)
-- [WasbAccountConfigNotFound](#WasbAccountConfigNotFound)
-
-
-
-## <a id="discription-mitigation-errors"></a>エラーの説明と対応策
-
+Azure PowerShell またはポータルで発生する可能性があるエラーを以下に名前のアルファベット順で示します。
 
 ### <a id="AtleastOneSqlMetastoreMustBeProvided"></a>AtleastOneSqlMetastoreMustBeProvided
 - **説明**: Hive メタストアと Oozie メタストアにカスタム設定を使用するために、1 つ以上のコンポーネントに Azure SQL Database の詳細を指定してください。
@@ -296,8 +238,8 @@ Azure PowerShell またはポータルでユーザーが遭遇する可能性の
 
 * [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
 
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
+[hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn469975.aspx
 
 [image-hdi-debugging-error-messages-portal]: ./media/hdinsight-debug-jobs/hdi-debug-errormessages-portal.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

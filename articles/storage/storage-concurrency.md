@@ -278,9 +278,9 @@ Microsoft Azure Storage サービスは、非常に複雑なオンライン ア�
 
 Azure Storage の詳細については、以下を参照してください。
 
-- [Microsoft Azure Storage のホーム ページ](http://azure.microsoft.com/services/storage/)
+- [Microsoft Azure Storage のホーム ページ](https://azure.microsoft.com/services/storage/)
 - [Azure ストレージの概要](storage-introduction.md)
 - Storage Getting Started for [Blob](storage-dotnet-how-to-use-blobs.md), [Table](storage-dotnet-how-to-use-tables.md) and [Queues](storage-dotnet-how-to-use-queues.md) (Storage の入門ガイド: .NET から BLOB ストレージを使用する方法、.NET から BLOB ストレージを使用する方法、.NET からキュー ストレージを使用する方法)
 - Storage のアーキテクチャ – [Microsoft Azure Storage チーム ブログ: Microsoft Azure Storage : A Highly Available Cloud Storage Service with Strong Consistency (Microsoft Azure Storage: 高い整合性を持つ高可用クラウド ストレージ サービス)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!----HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -26,6 +26,7 @@ Azure Data Factory サービスをオンプレミスの Oracle データベー�
 - データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上にインストールされた Data Management Gateway。Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータをクラウド サービスに接続するソフトウェアです。Data Management Gateway の詳細については、[オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。 
 - [Oracle Data Access Components (ODAC) for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/index.html)。これは、ゲートウェイがインストールされているホスト コンピューターにインストールする必要があります。
 
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
 
 ## サンプル: Oracle から Azure BLOB にデータをコピーする
 
@@ -211,9 +212,9 @@ Azure Data Factory サービスをオンプレミスの Oracle データベー�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-type | type プロパティを **OnPremisesOracle** に設定する必要があります | あり
-connectionString | connectionString プロパティの Oracle Database インスタンスに接続するために必要な情報を指定します。 | あり 
-gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です | あり
+type | type プロパティを **OnPremisesOracle** に設定する必要があります | はい
+connectionString | connectionString プロパティの Oracle Database インスタンスに接続するために必要な情報を指定します。 | はい 
+gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です | はい
 
 オンプレミスの Oracle データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 ## Oracle データセットの type プロパティ
@@ -259,15 +260,15 @@ BLOB | Byte
 CHAR | String
 CLOB | String
 DATE | DateTime
-FLOAT | 小数点
-INTEGER | 小数点
+FLOAT | Decimal
+INTEGER | Decimal
 INTERVAL YEAR TO MONTH | Int32
 INTERVAL DAY TO SECOND | TimeSpan
 LONG | String
 LONG RAW | Byte
 NCHAR | String
 NCLOB | String
-NUMBER | 小数点
+NUMBER | Decimal
 NVARCHAR2 | String
 RAW | Byte
 ROWID | String
@@ -300,4 +301,4 @@ XML | String
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

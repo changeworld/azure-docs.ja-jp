@@ -43,7 +43,7 @@ Azure リソース マネージャー テンプレートでは、アプリケー
 
 リポジトリの一覧に、[201-web-app-sql-database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) フォルダーがあります。カスタム アプリケーションには多くの場合 Web アプリケーションと SQL データベースが含まれるため、本記事ではこれ以降、テンプレートの使い方を理解しやすいように、このテンプレートを例として使用します。このテンプレートで作成し、構成するすべての要素を詳しく説明することは、この記事の範囲を超えていますが、このテンプレートを使用して組織に実環境を構築したい場合は、「[Web アプリと SQL Database をプロビジョニングする](app-service-web/app-service-web-arm-with-sql-database-provision.md)」を参照して、十分に理解することをお勧めします。
 
-> [AZURE.NOTE]「[Web アプリと SQL Database をプロビジョニングする](http://azure.microsoft.com/documentation/templates/201-web-app-sql-database/)」の記事内にある [Azure へのデプロイ] ボタンをクリックすると、テンプレートを直接 Azure にデプロイできます。この操作はテンプレートについて詳しく知るのに役立ちますが、テンプレートとパラメーター値の編集やバージョン管理、アプリケーション コードと併せた保存はできません。本記事のこの手順では、テンプレートとパラメーター値をアプリケーション コードと共に保存してバージョン管理する方法について説明します。
+> [AZURE.NOTE] 「[Web アプリと SQL Database をプロビジョニングする](https://azure.microsoft.com/documentation/templates/201-web-app-sql-database/)」の記事内にある [Azure へのデプロイ] ボタンをクリックすると、テンプレートを直接 Azure にデプロイできます。この操作はテンプレートについて詳しく知るのに役立ちますが、テンプレートとパラメーター値の編集やバージョン管理、アプリケーション コードと併せた保存はできません。本記事のこの手順では、テンプレートとパラメーター値をアプリケーション コードと共に保存してバージョン管理する方法について説明します。
 
   **手順 1:** 201-web-app-sql-database フォルダー内の [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json) ファイルの内容を表示します。これが Azure リソース マネージャーのテンプレート ファイルです。表示モードで、[[Raw]](https://github.com/Azure/azure-quickstart-templates/raw/master/201-web-app-sql-database/azuredeploy.json) ボタンをクリックします。マウスで、このファイルの内容全体を選択し、"TestApp1 Template.json" という名前のファイルとしてコンピューターに保存します。
 
@@ -134,7 +134,7 @@ Azure リソース マネージャー テンプレートでは、アプリケー
 
 上記の運用前用パラメーター ファイルでは、**sku** パラメーターと **requestedServiceObjectiveName** パラメーターが*追加*されていますが、開発およびテスト用パラメーター ファイルでは追加されていませんでした。これは、これらのパラメーターに指定された既定値がテンプレートにあり、開発環境とテスト環境ではその既定値が使用されるのに対して、運用前環境ではこれらのパラメーターに既定以外の値が使用されるためです。
 
-運用前環境でこれらのパラメーターに既定以外の値が使用されるのは、運用環境で望ましいと考えられるパラメーター値をテストするためです。これらのパラメーターはいずれも、アプリケーションで使用される、Azure [Web アプリ ホスティング プラン](http://azure.microsoft.com/pricing/details/app-service/) ( **sku**) と Azure [SQL Database](http://azure.microsoft.com/pricing/details/sql-database/) (**requestedServiceObjectiveName**) に関連しています。SKU やサービス目標名が異なると、コストや機能も異なり、サポートするサービス レベル メトリックも異なります。
+運用前環境でこれらのパラメーターに既定以外の値が使用されるのは、運用環境で望ましいと考えられるパラメーター値をテストするためです。これらのパラメーターはいずれも、アプリケーションで使用される、Azure [Web アプリ ホスティング プラン](https://azure.microsoft.com/pricing/details/app-service/) ( **sku**) と Azure [SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) (**requestedServiceObjectiveName**) に関連しています。SKU やサービス目標名が異なると、コストや機能も異なり、サポートするサービス レベル メトリックも異なります。
 
 次の表に、テンプレートで指定されているこれらのパラメーターの既定値と、運用前用パラメーター ファイルで既定値の代わりに使用される値を一覧表示します。
 
@@ -144,7 +144,7 @@ Azure リソース マネージャー テンプレートでは、アプリケー
 | **requestedServiceObjectiveName** | S0 | S1 |
 
 ## 環境を作成する
-Azure リソースはすべて、[Azure リソース グループ](azure-portal/resource-group-portal.md)内に作成する必要があります。リソース グループを使用すると、Azure リソースをグループ化し、まとめて管理できます。組織内の特定のユーザーがリソース グループの作成、変更、削除、またはリソース グループ内のリソースの表示を実行できるように、[アクセス許可](./active-directory/role-based-access-control-configure.md)をリソース グループに割り当てることができます。リソース グループ内のリソースのアラートと請求情報は、[Azure プレビュー ポータル](https://portal.azure.com)で表示できます。また、リソース グループは Azure [リージョン](http://azure.microsoft.com/regions/)に作成されます。この記事では、すべてのリソースが米国中部リージョンに作成されます。実環境の作成を開始する際には、自社の要件に最も合ったリージョンを選択してください。
+Azure リソースはすべて、[Azure リソース グループ](azure-portal/resource-group-portal.md)内に作成する必要があります。リソース グループを使用すると、Azure リソースをグループ化し、まとめて管理できます。組織内の特定のユーザーがリソース グループの作成、変更、削除、またはリソース グループ内のリソースの表示を実行できるように、[アクセス許可](./active-directory/role-based-access-control-configure.md)をリソース グループに割り当てることができます。リソース グループ内のリソースのアラートと請求情報は、[Azure プレビュー ポータル](https://portal.azure.com)で表示できます。また、リソース グループは Azure [リージョン](https://azure.microsoft.com/regions/)に作成されます。この記事では、すべてのリソースが米国中部リージョンに作成されます。実環境の作成を開始する際には、自社の要件に最も合ったリージョンを選択してください。
 
   **手順 5:** 以下の方法のいずれかを使用して、開発環境およびテスト環境のリソース グループを作成します。どちらの方法でも、まったく同じ結果を達成できます。
 
@@ -313,7 +313,7 @@ Azure リソースはすべて、[Azure リソース グループ](azure-portal/
 
   リソースを削除してよいかどうかを確認するメッセージがポータルに表示されたら、[はい] をクリックします。リソース グループの内容は、本来あるべき内容と異なるものになりました。複数のリソース グループから複数のリソースを削除したり、リソースの一部の構成設定を変更したりなど、いろいろ試してみてください。
 
-> [AZURE.NOTE]リソース グループからリソースを削除するときに、Azure プレビュー ポータルを使用する代わりに、PowerShell の [Remove-AzureResource](https://msdn.microsoft.com/library/azure/dn757676.aspx) コマンドか CLI の "azure resource delete" コマンドを使用して、同じタスクを実行できます。
+> [AZURE.NOTE] リソース グループからリソースを削除するときに、Azure プレビュー ポータルを使用する代わりに、PowerShell の [Remove-AzureResource](https://msdn.microsoft.com/library/azure/dn757676.aspx) コマンドか CLI の "azure resource delete" コマンドを使用して、同じタスクを実行できます。
 
   **手順 8:** 手順 6 で使用したのと同じコマンドを使用して、リソース グループに環境を再デプロイします。ただし、今回は "Deployment1" を "Deployment2" で置き換えてください。 次の図の [概要] セクションに示されているように、テンプレート内のすべてのリソースが再び TestApp1-Development リソース グループに存在しています。Azure リソース マネージャーのテンプレートを使用して環境をデプロイする利点の 1 つは、いつでも簡単に環境を既知の状態に再デプロイできる点です。
 
@@ -382,6 +382,6 @@ Azure リソースはすべて、[Azure リソース グループ](azure-portal/
 - [Visual Studio Enterprise](https://www.visualstudio.com/products/visual-studio-enterprise-vs)、[Visual Studio のコード](http://www.visualstudio.com/products/code-vs)、または [Web Matrix](http://www.microsoft.com/web/webmatrix/) を使用したアプリケーション作成
 - 作成した環境への [Web アプリのデプロイ](app-service-web/web-sites-deploy.md)
 - [Visual Studio Release Management](http://msdn.microsoft.com/Library/vs/alm/Release/overview) を使用した、迅速かつ容易で頻度の高いリリースを可能にする、継続的なデプロイメントのマネージ パイプラインの作成
-- [Azure Dev/Test Lab](http://azure.microsoft.com/campaigns/devtest-lab/) のプレビューへの招待のリクエスト。このプレビューでは、テンプレートを使用して開発/テスト ラボ環境を管理し、組織内での使用に対するクォータとポリシーを構成できます。
+- [Azure Dev/Test Lab](https://azure.microsoft.com/campaigns/devtest-lab/) のプレビューへの招待のリクエスト。このプレビューでは、テンプレートを使用して開発/テスト ラボ環境を管理し、組織内での使用に対するクォータとポリシーを構成できます。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

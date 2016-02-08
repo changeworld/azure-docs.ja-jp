@@ -1,4 +1,11 @@
-<properties pageTitle="Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする (旧) | Microsoft Azure" description="オンプレミスの VMware 仮想マシンと Windows/Linux 物理サーバーから Azure へのレプリケーション、フェールオーバー、および復旧を調整するように Azure Site Recovery をセットアップするための従来のデプロイについて説明します。" " services="site-recovery" documentationCenter="" authors="rayne-wiselman" manager="jwhit" editor=""/>
+<properties
+	pageTitle="Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする (旧) | Microsoft Azure" 
+	description="オンプレミスの VMware 仮想マシンと Windows/Linux 物理サーバーから Azure へのレプリケーション、フェールオーバー、および復旧を調整するように Azure Site Recovery をセットアップするための従来のデプロイについて説明します。" " 
+	services="site-recovery"
+	documentationCenter=""
+	authors="rayne-wiselman"
+	manager="jwhit"
+	editor=""/>
 
 <tags
 	ms.service="site-recovery"
@@ -25,7 +32,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 - **VMware 仮想マシンを Azure にレプリケートする** - Site Recovery をデプロイして、オンプレミス VMware 仮想マシンから Azure Storage へのレプリケーション、フェールオーバー、および復旧を調整します。
 - **物理サーバーを Azure にレプリケートする** - Azure Site Recovery をデプロイして、Windows および Linux オンプレミス物理サーバーから Azure へのレプリケーション、フェールオーバー、および復旧を調整します。
 
->[AZURE.NOTE]この記事で説明されているシナリオには、**旧式の手順**が含まれています。新しいデプロイでは、この記事に従わないでください。代わりに、クラシック ポータル用の[強化されたデプロイ](site-recovery-vmware-to-azure-classic)の手順を使用してください。既に、この記事で説明されている方法でデプロイした場合は、以下の説明に従って新しいバージョンに移行することをお勧めします。
+>[AZURE.NOTE] この記事で説明されているシナリオには、**旧式の手順**が含まれています。新しいデプロイでは、この記事に従わないでください。代わりに、クラシック ポータル用の[強化されたデプロイ](site-recovery-vmware-to-azure-classic.md)の手順を使用してください。既に、この記事で説明されている方法でデプロイした場合は、以下の説明に従って新しいバージョンに移行することをお勧めします。
 
 
 ## 強化されたデプロイへの移行
@@ -49,33 +56,37 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 移行手順は、次のとおりです。
 
 1. [強化された機能](site-recovery-vmware-to-azure-classic.md#enhanced-deployment)について読み、新しい[アーキテクチャ](site-recovery-vmware-to-azure-classic.md#scenario-architecture)をしっかり理解して、強化されたデプロイの[前提条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)を確認します。
-2. [コンテナー登録キー](site-recovery-vmware-to-azure-classic.md#step-3:-download-a-vault-registration-key)を取得し、[統合セットアップ ウィザードを実行](site-recovery-vmware-to-azure-classic.md#step-4:-install-the-management-server)して、構成サーバー、プロセス サーバー、およびマスター ターゲット サーバーのコンポーネントを管理サーバーにインストールします。[容量計画](site-recovery-vmware-to-azure-classic.md#capacity-planning)についての詳細情報をお読みください。
-3. VMware vCenter サーバーがある場合は、アクセスするための[資格情報をセットアップ](site-recovery-vmware-to-azure-classic.md#step-5:-set-up-credentials-for-the-vcenter-server)して、Site Recovery が管理対象の VM を自動的に検出できるようにします。[必要なアクセス許可](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)についての詳細情報をお読みください。
-4. [vCenter サーバーまたは ESXi ホスト](site-recovery-vmware-to-azure-classic.md#step-6:-add-vcenter-servers-and-esxi-hosts)を追加します。ポータルを更新して資格情報を表示するまでに、最大で 15 分かかる場合があります。
-5. [新しい保護グループ](site-recovery-vmware-to-azure-classic.md#step-7:-create-a-protection-group)を作成します。ポータルを更新し、仮想マシンを検出して表示するまでに、最大で 15 分かかる場合があります。待機しない場合は、管理サーバー名を強調表示し (クリックせずに)、**[更新]** を選択します。
-6. 新しい保護グループの下の **[コンピューターの移行]** をクリックします。
+2. 現在保護しているマシンからモビリティ サービスをアンインストールします。新しい保護グループにマシンを追加すると、そのマシンに新しいバージョンのモビリティ サービスがインストールされます。
+3. [コンテナー登録キー](site-recovery-vmware-to-azure-classic.md#step-4-download-a-vault-registration-key)を取得し、[統合セットアップ ウィザードを実行](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server)して、構成サーバー、プロセス サーバー、およびマスター ターゲット サーバーのコンポーネントを管理サーバーにインストールします。[容量計画](site-recovery-vmware-to-azure-classic.md#capacity-planning)についての詳細情報をお読みください。
+4. VMware vCenter サーバーがある場合は、アクセスするための[資格情報をセットアップ](site-recovery-vmware-to-azure-classic.md#step-6-set-up-credentials-for-the-vcenter-server)して、Site Recovery が管理対象の VM を自動的に検出できるようにします。[必要なアクセス許可](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)についての詳細情報をお読みください。
+5. [vCenter サーバーまたは ESXi ホスト](site-recovery-vmware-to-azure-classic.md#step-7-add-vcenter-servers-and-esxi-hosts)を追加します。ポータルを更新して資格情報を表示するまでに、最大で 15 分かかる場合があります。
+6. [新しい保護グループ](site-recovery-vmware-to-azure-classic.md#step-8-create-a-protection-group)を作成します。ポータルを更新し、仮想マシンを検出して表示するまでに、最大で 15 分かかる場合があります。待機しない場合は、管理サーバー名を強調表示し (クリックせずに)、**[更新]** を選択します。
+7. 新しい保護グループの下の **[コンピューターの移行]** をクリックします。
 
 	![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration1.png)
 
-7. **[コンピューターの選択]** で、移行元の保護グループと、移行するコンピューターを選択します。
+8. **[コンピューターの選択]** で、移行元の保護グループと、移行するマシンを選択します。
 
 	![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration2.png)
-
-8. **[ターゲット設定の構成]** で、すべてのマシンに同じ設定を使用するかどうかを指定し、プロセス サーバーと Azure ストレージ アカウントを選択します。単一の管理サーバーをセットアップした場合、プロセス サーバーはその管理サーバーの IP アドレスになります。
+9. **[ターゲット設定の構成]** で、すべてのマシンに同じ設定を使用するかどうかを指定し、プロセス サーバーと Azure ストレージ アカウントを選択します。単一の管理サーバーをセットアップした場合、プロセス サーバーはその管理サーバーの IP アドレスになります。
 
 	![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration3.png)
 
-9. **[アカウントの指定]** で、保護されたマシンにモビリティ サービスの新しいバージョンを自動的にプッシュするために作成したアカウントを選択します。
+10. **[アカウントの指定]** で、保護されたマシンにモビリティ サービスの新しいバージョンを自動的にプッシュするために作成したアカウントを選択します。
 
 	![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration4.png)
 
-10. Site Recovery は、レプリケートされたデータを、指定された Azure ストレージ アカウントに移行します。オプションで、旧式のデプロイで使用したストレージ アカウントを再利用することができます。
-11. ジョブの終了後、仮想マシンは自動的に同期されます。同期の完了後、旧式の保護グループから仮想マシンを削除できます。
-12. すべてのマシンの移行後、旧式の保護グループを削除できます。
-13. 同期の完了後、マシンのフェールオーバーのプロパティと Azure ネットワーク設定を指定してください。
-14. 既存の復旧計画がある場合は、[復旧計画の移行] で、強化されたデプロイに移行できます。この操作は、すべての保護されたマシンが移行された後で行う必要があります。 
+11. Site Recovery は、レプリケートされたデータを、指定された Azure ストレージ アカウントに移行します。オプションで、旧式のデプロイで使用したストレージ アカウントを再利用することができます。
+12. ジョブの終了後、仮想マシンは自動的に同期されます。同期の完了後、旧式の保護グループから仮想マシンを削除できます。
+13. すべてのマシンの移行後、旧式の保護グループを削除できます。
+14. 同期の完了後、マシンのフェールオーバーのプロパティと Azure ネットワーク設定を指定してください。
+15. 既存の復旧計画がある場合は、**[復旧計画の移行]** オプションを使うと、強化されたデプロイに移行できます。この操作は、すべての保護されたマシンが移行された後で行う必要があります。 
 
 	![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration5.png)
+
+>[AZURE.NOTE] 移行の手順が完了したら、続いて[強化されたデプロイに関するこちらの記事](site-recovery-vmware-to-azure-classic.md)に進んでください。移行後は、この記事の残りの部分を読む必要はありません。また、この記事でこれ以降に説明している手順に従う必要もありません**。
+
+
 
 
 ## 必要なもの
@@ -94,7 +105,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 **オンプレミスのマシン** | VMware ハイパーバイザーで稼働しているオンプレミスの仮想マシン、または Windows や Linux を実行しているオンプレミスの物理サーバーです。 | 仮想マシンおよびサーバーに適用されるレプリケーションを設定します。マシンを個別にフェールオーバーすることもできますが、より一般的には、まとめてフェールオーバーする複数の仮想マシンを含む復旧計画の一部としてフェールオーバーします。
 **モビリティ サービス** | <p>保護する個々の仮想マシンまたは物理サーバーにインストールします。</p><p>手動でインストールすることも、サーバーの保護が有効になったときにプロセス サーバーによって自動的にプッシュしてインストールすることもできます。 | モビリティ サービスは、初期レプリケーション (再同期) の一環としてプロセス サーバーにデータを送信します。 サーバーが保護状態に達すると (再同期が完了すると)、モビリティ サービスは、ディスクへの書き込みのインメモリ キャプチャを実行し、それをプロセス サーバーに送信します。Windows Server のアプリケーションの整合性は、VSS フレームワークを使って実現されます。
 **Azure Site Recovery コンテナー** | Site Recovery サービスをサブスクライブした後で設定します。 | Site Recovery コンテナーにサーバーを登録します。コンテナーは、オンプレミスのサイトと Azure 間でのデータ レプリケーション、フェールオーバー、および復旧を調整およびオーケストレーションします。
-**レプリケーション メカニズム** | <p>**インターネット経由** — パブリック インターネット接続を介してセキュリティで保護された SSL/TLS 通信チャネルを使用して、保護されたオンプレミスのサーバーおよび Azure からのデータを通信およびレプリケートします。これは既定のオプションです。</p><p>**VPN/ExpressRoute** — オンプレミスのサーバーと Azure の通信およびデータ レプリケーションを VPN 接続を介して実行します。オンプレミスのサイトと Azure ネットワークとの間にサイト間 VPN または [ExpressRoute](../expressroute-introduction.md) 接続を設定する必要があります。</p><p>Site Recovery のデプロイの間にレプリケート方法を選択します。構成が済んだ後では、既に保護されているサーバーに対する保護に影響を与えずにメカニズムを変更することはできません。| <p>どちらのオプションでも、保護されたマシン上で受信ネットワーク ポートを開く必要があります。すべてのネットワーク通信は、オンプレミスのサイトから開始されます。</p> 
+**レプリケーション メカニズム** | <p>**インターネット経由** — パブリック インターネット接続を介してセキュリティで保護された SSL/TLS 通信チャネルを使用して、保護されたオンプレミスのサーバーおよび Azure からのデータを通信およびレプリケートします。これは既定のオプションです。</p><p>**VPN/ExpressRoute** — オンプレミスのサーバーと Azure の通信およびデータ レプリケーションを VPN 接続を介して実行します。オンプレミスのサイトと Azure ネットワークとの間にサイト間 VPN または ExpressRoute 接続を設定する必要があります。</p><p>Site Recovery のデプロイの間にレプリケート方法を選択します。構成が済んだ後では、既に保護されているサーバーに対する保護に影響を与えずにメカニズムを変更することはできません。| <p>どちらのオプションでも、保護されたマシン上で受信ネットワーク ポートを開く必要があります。すべてのネットワーク通信は、オンプレミスのサイトから開始されます。</p> 
 
 Site Recovery のコンポーネント、プロバイダー、エージェントの詳細については、「[Site Recovery のコンポーネント](site-recovery-components.md)」を参照してください。
 
@@ -194,7 +205,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 **コンポーネント** | **要件** | **詳細**
 --- | --- | --- 
-**Azure アカウント** | [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
+**Azure アカウント** | [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
 **Azure Storage** | <p>レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。</p><p>アカウントは [Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium Storage アカウント](../storage/storage-premium-storage-preview-portal.md)のいずれかとする必要があります。</p><p>アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。</p><p>詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)</p>」を参照してください。
 **Azure Virtual Network** | 構成サーバーとターゲット マスター サーバーのデプロイ先となる Azure 仮想ネットワークが必要になります。Azure 仮想ネットワークは、Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。ExpressRoute 接続または VPN 接続でデータをレプリケートする場合、Azure Virtual Network が、ExpressRoute 接続またはサイト間 VPN を介してオンプレミス ネットワークに接続されている必要があります。
 **Azure リソース** | すべてのコンポーネントをデプロイできるだけの十分な Azure リソースがあることを確認してください。詳細については、「[Azure サブスクリプションの制限](../azure-subscription-service-limits.md)」をご覧ください。
@@ -262,7 +273,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 4. **[新しい構成サーバーの詳細]** で以下を指定します。
 
 	- 接続先の構成サーバーの名前と資格情報。
-	- ネットワーク接続タイプのボックスの一覧から、[パブリック インターネット] または [VPN] を選択します。[AZURE.NOTE]この設定はデプロイ時に行う必要があり、後から変更することはできません。  
+	- ネットワーク接続タイプのボックスの一覧から、[パブリック インターネット] または [VPN] を選択します。[AZURE.NOTE] この設定はデプロイ時に行う必要があり、後から変更することはできません。  
 	- サーバーを配置する必要がある Azure ネットワークを選択します。ネットワーク接続の種類として VPN を指定した場合は、この Azure Virtual Network が、ExpressRoute 接続またはサイト間 VPN でオンプレミス サイトに接続されていることを確認してください。
 	- サーバーに割り当てる内部 IP アドレスとサブネットを指定します。サブネットの最初の 4 つの IP アドレスは Azure 内部用に確保されていることに注意してください。その他の利用可能な IP アドレスを使用します。
 	
@@ -282,7 +293,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 	
 	![VM エンドポイント](./media/site-recovery-vmware-to-azure-classic-legacy/vm-endpoints.png)
 
-    >[AZURE.WARNING]構成サーバーのデプロイ中に作成されたエンドポイントのパブリック ポート番号またはプライベート ポート番号は削除または変更しないでください。
+    >[AZURE.WARNING] 構成サーバーのデプロイ中に作成されたエンドポイントのパブリック ポート番号またはプライベート ポート番号は削除または変更しないでください。
 
 構成サーバーは、予約済み IP アドレスで自動的に作成される Azure クラウド サービスにデプロイされます。予約されたアドレスは、クラウド サービスで仮想マシン (構成サーバーを含む) の再起動の間に構成サーバーのクラウド サービスの IP アドレスが変わらないために必要です。構成サーバーを使用停止するときは予約されたパブリック IP アドレスを手動で予約解除する必要があります。そうしないと、予約されたまま残ります。サブスクリプションごとに 20 個の予約されたパブリック IP アドレスの既定の制限があります。予約済み IP アドレスの詳細は、[ここ](../virtual-network/virtual-networks-reserved-private-ip.md)を参照してください。
 
@@ -380,7 +391,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 サブネットの最初の 4 つの IP アドレスは Azure 内部用に確保されていることに注意してください。その他の利用可能な IP アドレスを指定します。
 
->[AZURE.NOTE] [Premium Storage アカウント](../storage/storage-premium-storage-preview-portal.md)を使用して IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、Standard DS4 を選択します。
+>[AZURE.NOTE] [Premium Storage アカウント](../storage/storage-premium-storage-preview-portal.md)を使用して IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、Standard DS4 を選択します。
 
 
 3. Windows マスター ターゲット サーバーの仮想マシンは、以下のエンドポイントで作成されます (パブリック エンドポイントは、デプロイの種類がパブリック インターネットである場合にのみ作成されます)。
@@ -396,7 +407,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 	- Custom1: パブリック ポートは、制御メタデータをインターネット経由で送信するためにプロセス サーバーによって使用されます。プライベート ポート 9080 は、プロセス サーバーがマスター ターゲット サーバーに VPN を介して制御データを送信するために使用されます。
 	- SSH: プライベート ポート 22
 
-    >[AZURE.WARNING]マスター ターゲット サーバーのデプロイ中に作成されたエンドポイントのパブリック ポート番号またはプライベート ポート番号は削除または変更しないでください。
+    >[AZURE.WARNING] マスター ターゲット サーバーのデプロイ中に作成されたエンドポイントのパブリック ポート番号またはプライベート ポート番号は削除または変更しないでください。
 
 5. **[Virtual Machines]** で、仮想マシンが起動するまで待機します。
 
@@ -427,11 +438,11 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 	![ターゲット サーバーの検証](./media/site-recovery-vmware-to-azure-classic-legacy/target-server-list.png)
 
->[AZURE.NOTE]登録が完了してからマスター ターゲット サーバーが構成サーバーにリストされるまでに最大 15 分かかることに注意してください。すぐに更新するには、構成サーバー ページの下部にある更新ボタンをクリックして、構成サーバーを更新します。
+>[AZURE.NOTE] 登録が完了してからマスター ターゲット サーバーが構成サーバーにリストされるまでに最大 15 分かかることに注意してください。すぐに更新するには、構成サーバー ページの下部にある更新ボタンをクリックして、構成サーバーを更新します。
 
 ## ステップ 4: オンプレミスのプロセス サーバーのデプロイ
 
->[AZURE.NOTE]再起動後も保持されるように、プロセス サーバーに静的 IP アドレスを構成することをお勧めします。
+>[AZURE.NOTE] 再起動後も保持されるように、プロセス サーバーに静的 IP アドレスを構成することをお勧めします。
 
 1. [クイック スタート] で、**[オンプレミスのプロセス サーバーのインストール]**、**[プロセス サーバーをダウンロードしてインストールする]** の順にクリックします。
 
@@ -668,7 +679,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
     ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i 104.40.75.37 -p 62519 -s y -c https -P passphrase.txt
 
->[AZURE.NOTE]適切なバージョンのモビリティ サービスを既に実行しているマシンを保護グループに追加する場合は、プッシュ インストールはスキップされます。
+>[AZURE.NOTE] 適切なバージョンのモビリティ サービスを既に実行しているマシンを保護グループに追加する場合は、プッシュ インストールはスキップされます。
 
 
 ## ステップ 9: 保護の有効化
@@ -790,16 +801,16 @@ Azure で実行しているフェールオーバーされたマシンをオン�
 5. チェック マークをクリックして、新しいプロセス サーバーへのレプリケーションを開始します。重要な状態になったプロセス サーバーからすべての仮想マシンを削除すると、重大な警告はダッシュボードに表示されなくなります。
 
 
-## Third-party software notices and information
+## サード パーティ製ソフトウェアに関する通知および情報
 
 Do Not Translate or Localize
 
-マイクロソフトの製品またはサービスで実行されるソフトウェアおよびファームウェアは、以下に記載されたプロジェクトの情報 (総称して " サード パーティのコード" と呼びます) に基づくか、その情報を組み込んでいます。Microsoft is the not original author of the Third Party Code.マイクロソフトは、サード パーティのコードの元の作成者ではありません。元の著作権情報と、マイクロソフトがサード パーティのコードなどを受け取った際に適用された使用許諾契約は、以下に記載されています。
+The software and firmware running in the Microsoft product or service is based on or incorporates material from the projects listed below (collectively, “Third Party Code”).Microsoft is the not original author of the Third Party Code.The original copyright notice and license, under which Microsoft received such Third Party Code, are set forth below.
 
-セクション A の情報は、以下に記載されたプロジェクトに含まれるサード パーティのコードのコンポーネントに関するものです。Such licenses and information are provided for informational purposes only.このサード パーティのコードは、マイクロソフトの製品またはサービスに対するマイクロソフトのソフトウェア使用許諾契約条件の下で、マイクロソフトからお客様に使用が再許諾されています。
+The information in Section A is regarding Third Party Code components from the projects listed below.Such licenses and information are provided for informational purposes only.This Third Party Code is being relicensed to you by Microsoft under Microsoft's software licensing terms for the Microsoft product or service.
 
-セクション B の情報は、マイクロソフトから当初の使用許諾契約条件の下でお客様に使用が許諾された、サード パーティのコードのコンポーネントに関するものです。
+The information in Section B is regarding Third Party Code components that are being made available to you by Microsoft under the original licensing terms.
 
-完全なファイルは、[Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=529428)から入手できる場合があります。マイクロソフトは、この契約の下で明示的には付与されないその他すべての権利を、黙示、禁反言、その他のいずれによるかを問わず留保します。
+The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/16/2015" 
+	ms.date="01/26/2015" 
 	ms.author="ryancraw"/>
 
 # DocumentDB のデータへのアクセスのセキュリティ保護 #
@@ -115,7 +115,7 @@ DocumentDB ユーザー リソースは DocumentDB データベースに関連�
 
     docUser = await client.CreateUserAsync(database.SelfLink, docUser);
 
-> [AZURE.NOTE]DocumentDB の各ユーザーは PermissionsLink プロパティを持ち、このプロパティを使用して、そのユーザーに関連付けられた権限の一覧を取得することができます。
+> [AZURE.NOTE] DocumentDB の各ユーザーは PermissionsLink プロパティを持ち、このプロパティを使用して、そのユーザーに関連付けられた権限の一覧を取得することができます。
 
 DocumentDB アクセス許可リソースは DocumentDB ユーザーに関連付けられています。各ユーザーは、0 個以上の DocumentDB アクセス許可を持つ可能性があります。アクセス許可リソースは、特定のアプリケーション リソースにアクセスするときに必要なセキュリティ トークンへのアクセスを提供します。アクセス許可リソースによって提供されることがある次の 2 つのアクセス レベルが使用できます。
 
@@ -123,7 +123,7 @@ DocumentDB アクセス許可リソースは DocumentDB ユーザーに関連付
 - Read: ユーザーは、リソースの内容を読み取りのみができますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
 
 
-> [AZURE.NOTE]DocumentDB ストアド プロシージャを実行するには、ストアド プロシージャを実行するコレクションの All 権限を持つ必要があります。
+> [AZURE.NOTE] DocumentDB ストアド プロシージャを実行するには、ストアド プロシージャを実行するコレクションの All 権限を持つ必要があります。
 
 
 次のコード スニペットは、アクセス許可リソースを作成し、アクセス許可リソースのリソース トークン (トークン) を読み取って、先ほど作成したユーザーにアクセス許可を関連付ける方法を示します。
@@ -154,7 +154,7 @@ DocumentDB アクセス許可リソースは DocumentDB ユーザーに関連付
             
     DocumentClient userClient = new DocumentClient(new Uri(endpointUrl),permList);
 
-> [AZURE.TIP]リソース トークンの既定の有効期間は 1 時間です。ただし、トークンの有効期間が明示的に指定される可能性があります (最大 5 時間)。
+> [AZURE.TIP] リソース トークンの既定の有効期間は 1 時間です。ただし、トークンの有効期間が明示的に指定される可能性があります (最大 5 時間)。
 
 ##<a name="NextSteps"></a>次のステップ
 
@@ -163,4 +163,4 @@ DocumentDB アクセス許可リソースは DocumentDB ユーザーに関連付
 - DocumentDB 認証トークンを作成する方法については、[ここ](https://msdn.microsoft.com/library/azure/dn783368.aspx)をクリックしてください。
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

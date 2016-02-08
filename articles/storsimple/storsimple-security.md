@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="11/16/2015"
+   ms.date="01/22/2016"
    ms.author="v-sharos"/>
 
 # StorSimple のセキュリティとデータの保護
@@ -38,9 +38,9 @@ Microsoft Azure StorSimple ソリューションは、互いに連携し合う 4
 
 StorSimple Manager サービスは、Microsoft Azure でホストされる管理サービスです。皆さんの会社で導入したすべての StorSimple デバイスは、このサービスを使用して管理されます。StorSimple Manager サービスにアクセスするには、Web ブラウザーから社内の資格情報を使用して Azure クラシック ポータルにログオンします。
 
-StorSimple Manager サービスにアクセスするには、StorSimple を含む Azure サブスクリプションを会社が保有している必要があります。Azure クラシック ポータルから利用できる機能は、保有するサブスクリプションによって決まります。Azure サブスクリプションを会社が保有していない場合、「[Azure への組織としてのサインアップ](../sign-up-organization.md)」で詳しい情報をご覧いただけます。
+StorSimple Manager サービスにアクセスするには、StorSimple を含む Azure サブスクリプションを会社が保有している必要があります。Azure クラシック ポータルから利用できる機能は、保有するサブスクリプションによって決まります。Azure サブスクリプションを会社が保有していない場合、「[Azure への組織としてのサインアップ](../active-directory/sign-up-organization.md)」で詳しい情報をご覧いただけます。
 
-StorSimple Manager サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。Microsoft Azure のセキュリティ機能の詳細については、「[Microsoft Azure セキュリティ センター](http://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
+StorSimple Manager サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。Microsoft Azure のセキュリティ機能の詳細については、「[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
 
 ## StorSimple デバイスの保護
 
@@ -56,7 +56,7 @@ Azure サブスクリプションで作成した StorSimple Manager サービス
 
 登録されたデバイスは、トークンを使用して Microsoft Azure と通信を行います。デバイスの登録後、サービス登録キーは使用されません。
 
-> [AZURE.NOTE]毎回の使用後にサービス登録キーを再生成することをお勧めします。
+> [AZURE.NOTE] 毎回の使用後にサービス登録キーを再生成することをお勧めします。
 
 ## パスワードによる StorSimple ソリューションの保護
 
@@ -127,7 +127,7 @@ StorSimple のパスワードの強度と保護を徹底するために、次の
 
 他のセクションで説明したように、StorSimple ソリューションにアクセスするユーザーの承認と認証には、パスワードが使用されます。セキュリティを考えるうえでもう一点重要なことは、ストレージ システム間でやり取りされる転送状態のデータと保管されている状態のデータを、承認されていないユーザーから保護することです。以降のセクションでは、StorSimple に備わっているデータ保護機能について説明します。
 
-> [AZURE.NOTE]StorSimple デバイス上や Microsoft Azure Storage 内に保存されているデータには、重複除去による、さらなる保護が適用されます。データ重複除去が有効である場合、データ オブジェクトは、そのマッピングとアクセスに使用されるメタデータとは別に保管されます。ボリューム構造やファイル システム、ファイル名などに基づいてデータを再構築するためのストレージ レベルのコンテキストにアクセスすることはできません。
+> [AZURE.NOTE] StorSimple デバイス上や Microsoft Azure Storage 内に保存されているデータには、重複除去による、さらなる保護が適用されます。データ重複除去が有効である場合、データ オブジェクトは、そのマッピングとアクセスに使用されるメタデータとは別に保管されます。ボリューム構造やファイル システム、ファイル名などに基づいてデータを再構築するためのストレージ レベルのコンテキストにアクセスすることはできません。
 
 ## サービスを流れるデータの保護
 
@@ -144,7 +144,7 @@ StorSimple Manager サービスの主な目的は、StorSimple デバイスの�
 
 サービス データ暗号化キーは、サービスに登録された最初のデバイス上でのみ生成されます。それ以降、サービスに登録するすべてのデバイスは、同じサービス データ暗号化キーを使用する必要があります。
 
-> [AZURE.IMPORTANT]
+> [AZURE.IMPORTANT] 
 > 
 > 必ずサービス データ暗号化キーのコピーを作成し、安全な場所に保存しておいてください。サービス データ暗号化キーのコピーは、承認された人がアクセスし、デバイスの管理者との間でやり取りしやすいように保管しておく必要があります。
 >
@@ -269,4 +269,4 @@ StorSimple ソリューションに保存されるデータとソリューショ
 [StorSimple デバイスをデプロイする](storsimple-deployment-walkthrough.md)
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

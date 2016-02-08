@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/23/2015" 
+	ms.date="01/22/2016" 
 	ms.author="awills"/>
  
 # PowerShell を使用した Application Insights リソースの作成
@@ -117,6 +117,27 @@ find | 置き換え
 `"myappname"` (小文字) | `"[toLower(parameters('appName'))]"`
 `"<WebTest Name="myWebTest" ...`<br/>` Url="http://fabrikam.com/home" ...>"`|`[concat('<WebTest Name="',` <br/> `parameters('webTestName'),` <br/> `'" ... Url="', parameters('Url'),` <br/> `'"...>')]" `
 
+## アプリが Azure の Web アプリの場合
+
+このリソースを追加するか、`siteextensions` リソースは既にある場合は、次のようにパラメーター化します。
+
+```json
+    {
+      "apiVersion": "2014-04-01",
+      "name": "Microsoft.ApplicationInsights.AzureWebSites",
+      "type": "siteextensions",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]",
+        "[resourceId('Microsoft.Web/Sites/config', parameters('siteName'), 'web')]",
+        "[resourceId('Microsoft.Web/sites/sourcecontrols', parameters('siteName'), 'web')]"
+      ],
+      "properties": { }
+    }
+
+```
+
+このリソースは、Azure の Web アプリに Application Insights SDK をデプロイします。
+
 ## リソース間の依存関係の設定
 
 Azure では、厳密な順序でリソースを設定する必要があります。次の設定を開始する前に、確実に 1 つの設定を完了するために、依存関係の行を追加します。
@@ -145,6 +166,7 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
                -webTestName aWebTest `
                -Url http://myapp.com `
                -text "Welcome!"
+               -siteName "MyAzureSite"
 
     ``` 
 
@@ -154,6 +176,7 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
     * -webTestName は、作成する Web テストの名前です。
     * -Url は、Web アプリの url です。
     * -text は、Web ページに表示される文字列です。
+    * -siteName は、Azure の Web サイトの場合に使用されます。
 
 
 ## メトリック アラートの定義
@@ -288,4 +311,4 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 
 ```
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

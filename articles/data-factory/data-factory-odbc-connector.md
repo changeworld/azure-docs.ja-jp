@@ -28,6 +28,8 @@ Data Factory のサービスでは、Data Management Gateway を使用したオ�
 
 Data Management Gateway とは別に、ゲートウェイ マシン上にデータ ストア用の ODBC ドライバーもインストールする必要があります。
 
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+
 ## サンプル: ODBC データ ストアから Azure BLOB にデータをコピーする
 
 下のサンプルで確認できる要素:
@@ -42,7 +44,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 最初の手順として、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」の指示に従って Data Management Gateway を設定してください。
 
-**ODBC のリンクされたサービス** このサンプルは、Windows 認証を使用します。使用可能なさまざまな種類の認証については、「[ODBC のリンクされたサービス](#odbc-linked-service-properties)」セクションを参照してください。
+**ODBC のリンクされたサービス**。次のサンプルは基本認証を使用しています。使用可能なさまざまな種類の認証については、「[ODBC のリンクされたサービス](#odbc-linked-service-properties)」セクションを参照してください。
 
 	{
 	    "name": "OnPremOdbcLinkedService",
@@ -51,16 +53,16 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 	        "type": "OnPremisesOdbc",
 	        "typeProperties":
 	        {
-	            "authenticationType": "Windows",
-	            "connectionString": "Driver={SQL Server};Server=servername; Database=<database>;",
-	            "userName": "<domain>\<user>",
-	            "password": "<password>",
+	            "authenticationType": "Basic",
+	            "connectionString": "Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;",
+	            "userName": "username",
+	            "password": "password",
 	            "gatewayName": "mygateway"
 	        }
 	    }
 	}
 
-**Azure ストレージのリンクされたサービス**
+**Azure Storage のリンクされたサービス**
 
 	{
 	  "name": "AzureStorageLinkedService",
@@ -218,13 +220,13 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- | 
-| type | type プロパティを **OnPremisesOdbc** に設定する必要があります | あり |
-| connectionString | 接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。下記の例をご覧ください。 | あり
-| 資格情報 | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。例: “Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;” | いいえ
-| authenticationType | ODBC データ ストアへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | あり | 
-| username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ | 
+| type | type プロパティを **OnPremisesOdbc** に設定する必要があります | はい |
+| connectionString | 接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。下記の例をご覧ください。 | はい
+| 資格情報 | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。例: “Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”. | いいえ
+| authenticationType | ODBC データ ストアへの接続に使用される認証の種類です。Anonymous と Basic のいずれかの値になります。 | はい | 
+| username | 基本認証を使用している場合は、ユーザー名を指定します。 | いいえ | 
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ | 
-| gatewayName | Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 | あり |
+| gatewayName | Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 | はい |
 
 
 オンプレミスの ODBC データ ストアの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
@@ -264,24 +266,6 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 	    }
 	}
 
-### Windows 認証を使用する
-
-	{
-	    "name": "odbc",
-	    "properties":
-	    {
-	        "type": "OnPremisesOdbc",
-	        "typeProperties":
-	        {
-	            "authenticationType": "Windows",
-	            "connectionString": "Driver={SQL Server};Server=servername; Database=TestDatabase;",
-	            "userName": "<domain>\<user>",
-	            "password": "<password>",
-	            "gatewayName": "mygateway"
-	        }
-	    }
-	} 
-
 
 ### 匿名認証を使用する
 
@@ -310,7 +294,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| tableName | リンクされたサービスが参照する ODBC データ ストアのテーブルの名前です。 | あり | 
+| tableName | リンクされたサービスが参照する ODBC データ ストアのテーブルの名前です。 | はい | 
 
 ## ODBC のコピー アクティビティの type プロパティ
 
@@ -322,7 +306,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | あり | 
+| query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | はい | 
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -340,4 +324,4 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

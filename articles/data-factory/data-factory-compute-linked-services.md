@@ -24,11 +24,10 @@
 
 この種類の構成では、コンピューティング環境は Azure Data Factory サービスにより完全管理されます。データを処理するためのジョブが送信される前に Data Factory サービスにより自動的に作成され、ジョブの完了時に削除されます。オンデマンドのコンピューティング環境のために「リンクされたサービス」を作成し、構成し、ジョブ実行、クラスター管理、ブートストラップ アクションの詳細設定を制御できます。
 
-> [AZURE.NOTE]オンデマンド構成は現在のところ、Azure HDInsight クラスターにのみ対応しています。
+> [AZURE.NOTE] オンデマンド構成は現在のところ、Azure HDInsight クラスターにのみ対応しています。
 
 ## Azure HDInsight のオンデマンドのリンクされたサービス
-
-オンデマンド HDInsight クラスターはデータを処理するために Azure Data Factory サービスによって自動的に作成されます。このクラスターはクラスターに関連付けられているストレージ アカウント (JSON の linkedServiceName プロパティ) と同じリージョンで作成されます。
+Azure Data Factory サービスは、データを処理するための Windows/Linux ベースのオンデマンド HDInsight クラスターを自動的に作成します。このクラスターはクラスターに関連付けられているストレージ アカウント (JSON の linkedServiceName プロパティ) と同じリージョンで作成されます。
 
 オンデマンド HDInsight のリンクされたサービスに関する次の**重要な**点に注意してください。
 
@@ -36,42 +35,73 @@
 - オンデマンド HDInsight クラスターで実行されるジョブのログは HDInsight クラスターに関連付けられているストレージ アカウントにコピーされます。これらのログには、Azure クラシック ポータルの **[アクティビティの実行の詳細]** ブレードからアクセスできます。詳細については、「[パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)」という記事を参照してください。
 - HDInsight クラスターが稼動し、ジョブを実行している時間に対してのみ課金されます。
 
-> [AZURE.IMPORTANT]オンデマンドで Azure HDInsight クラスターをプロビジョニングするには一般的に **15 分**以上かかります。
+> [AZURE.IMPORTANT] オンデマンドで Azure HDInsight クラスターをプロビジョニングするには一般的に **15 分**以上かかります。
 
 ### 例
+次の JSON は、オンデマンド HDInsight のリンクされたサービスを定義します。Data Factory は、データ スライスを処理するときに、**Windows ベースの** HDInsight クラスターを自動的に作成します。このサンプル JSON では **osType** が指定されていないことに注意してください。このプロパティの既定値は **Windows** です。
 
 	{
 	  "name": "HDInsightOnDemandLinkedService",
 	  "properties": {
 	    "type": "HDInsightOnDemand",
 	    "typeProperties": {
-	      "clusterSize": 4,
-	      "timeToLive": "00:05:00",
 	      "version": "3.2",
-		  "osType": "linux",
-	      "linkedServiceName": "MyBlobStore",
-		  "hcatalogLinkedServiceName": "AzureSqlLinkedService",
-	      "additionalLinkedServiceNames": [
-	        "otherLinkedServiceName1",
-	        "otherLinkedServiceName2"
-	      ]
+	      "clusterSize": 1,
+	      "timeToLive": "00:30:00",
+	      "linkedServiceName": "StorageLinkedService"
 	    }
 	  }
 	}
+
+
+次の JSON は、Linux ベースのオンデマンド HDInsight のリンクされたサービスを定義します。Data Factory サービスは、データ スライスを処理するときに、**Linux ベースの** HDInsight クラスターを自動的に作成します。**sshUserName** と **sshPassword** の値を指定する必要があります。
+
+
+	{
+	    "name": "HDInsightOnDemandLinkedService",
+	    "properties": {
+	        "hubName": "getstarteddf0121_hub",
+	        "type": "HDInsightOnDemand",
+	        "typeProperties": {
+	            "version": "3.2",
+	            "clusterSize": 4,
+	            "timeToLive": "00:05:00",
+	            "osType": "linux",
+	            "sshPassword": "MyPassword!",
+	            "sshUserName": "myuser",
+	            "linkedServiceName": "StorageLinkedService",
+	        }
+	    }
+	}
+
+> [AZURE.IMPORTANT] 
+HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**既定のコンテナー**を作成します。クラスターを削除しても、HDInsight はこのコンテナーを削除しません。これは設計によるものです。オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
+> 
+> 処理されるスライスが多いほど、Azure Blob Storage 内のコンテナーも増えます。ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。コンテナーの名前は、"adf**Data Factory 名**-**リンクされたサービス名**-日時スタンプ" というパターンになります。Azure BLOB ストレージ内のコンテナーを削除するには、[Microsoft ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用します。
 
 ### プロパティ
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-type | type プロパティは **HDInsightOnDemand** に設定されます。 | あり
-clusterSize | オンデマンド クラスターのサイズです。このオンデマンド クラスターに配置するノードの数を指定します。 | あり
+type | type プロパティは **HDInsightOnDemand** に設定されます。 | はい
+clusterSize | オンデマンド クラスターのサイズです。このオンデマンド クラスターに配置するノードの数を指定します。 | はい
 timetolive | <p>オンデマンド HDInsight クラスターに許可されるアイドル時間です。他のアクティブなジョブがクラスターにない場合、アクティビティ実行の完了後にオンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。</p><p>たとえば、アクティビティ実行に 6 分かかるときに timetolive が 5 分に設定されている場合、アクティビティ実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。別のアクティビティ実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。</p><p>オンデマンド HDInsight クラスターの作成は高額な作業であり (時間もかかることがあります)、オンデマンド HDInsight クラスターを再利用し、Data Factory のパフォーマンスを改善する必要がある場合にこの設定を利用します。</p><p>timetolive 値を 0 に設定した場合、アクティビティ実行の処理直後にクラスターが削除されます。その一方で、高い値を設定した場合、クラスターは不必要にアイドル状態を維持し、コストの上昇を招きます。そのため、ニーズに合わせて適切な値を設定することが重要です。</p><p>timetolive プロパティ値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターの同じインスタンスを共有できます。</p> | はい
 version | HDInsight クラスターのバージョン。既定値は、Windows クラスターでは 3.1、Linux クラスターでは 3.2 です。 | いいえ
-linkedServiceName | データの保存し、処理するためのオンデマンド クラスターで使用される BLOB ストアです。 | あり
+linkedServiceName | データの保存し、処理するためのオンデマンド クラスターで使用される BLOB ストアです。 | はい
 additionalLinkedServiceNames | Data Factory サービスがあなたの代わりに登録できるように、HDInsight の「リンクされたサービス」の追加ストレージ アカウントを指定します。 | いいえ
 osType | オペレーティング システムの種類。使用可能な値: Windows (既定値) および Linux | いいえ
 hcatalogLinkedServiceName | HCatalog データベースを指す Azure SQL のリンクされたサービスの名前。オンデマンド HDInsight クラスターは、Azure SQL データベースをメタストアとして使用して作成されます。 | いいえ
+sshUser | Linux ベースの HDInsight クラスターの SSH ユーザー。 | はい (Linux のみ)
+sshPassword | Linux ベースの HDInsight クラスターの SSH パスワード。 | はい (Linux のみ)
 
+
+#### additionalLinkedServiceNames JSON の例
+
+    "additionalLinkedServiceNames": [
+        "otherLinkedServiceName1",
+		"otherLinkedServiceName2"
+  	]
+ 
 ### 高度なプロパティ
 
 次のプロパティを指定し、オンデマンド HDInsight クラスターを詳細に設定することもできます。
@@ -135,7 +165,7 @@ zookeeperNodeSize | Zookeeper ノードのサイズを指定します。既定�
 #### ノードのサイズの指定
 上記のプロパティで指定する必要がある文字列値については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-size-specs.md#size-tables)」をご覧ください。値は、この記事に記載されている**コマンドレットと API** に準拠する必要があります。この記事に示すように、Large (既定値) サイズのデータ ノードのメモリ容量は 7 GB ですが、シナリオによってはこれでは不十分な場合があります。
 
-D4 サイズのヘッド ノードとワーカー ノードを作成する場合は、headNodeSize プロパティと dataNodeSize プロパティの値として **Standard\_D4** を指定する必要があります。
+D4 サイズのヘッド ノードと worker ノードを作成する場合は、headNodeSize プロパティと dataNodeSize プロパティの値として **Standard\_D4** を指定する必要があります。
 
 	"headNodeSize": "Standard_D4",	
 	"dataNodeSize": "Standard_D4",
@@ -178,12 +208,12 @@ Azure HDInsight の「リンクされたサービス」を作成し、独自の 
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-type | type プロパティは **HDInsight** に設定されます。 | あり
-clusterUri | HDInsight クラスターの URI です。 | あり
+type | type プロパティは **HDInsight** に設定されます。 | はい
+clusterUri | HDInsight クラスターの URI です。 | はい
 username | 既存の HDInsight クラスターに接続するために使用されるユーザーの名前を指定します。 | はい
 パスワード | ユーザー アカウントのパスワードを指定します。 | あり
-location | HDInsight クラスターの場所を指定します (例: WestUS)。 | あり
-linkedServiceName | HDInsight クラスターで使用される BLOB ストレージの「リンクされたサービス」の名前です。 | あり
+location | HDInsight クラスターの場所を指定します (例: WestUS)。 | はい
+linkedServiceName | HDInsight クラスターで使用される BLOB ストレージの「リンクされたサービス」の名前です。 | はい
 
 ## Azure Batch の「リンクされたサービス」
 
@@ -224,11 +254,11 @@ Azure Batch サービスの利用が初めての場合、次のトピックを�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-type | type プロパティは **AzureBatch** に設定されます。 | あり
+type | type プロパティは **AzureBatch** に設定されます。 | はい
 accountName | Azure Batch アカウントの名前です。 | あり
-accessKey | Azure Batch アカウントのアクセス キーです。 | あり
-poolName | 仮想マシンのプールの名前です。 | あり
-linkedServiceName | この Azure Batch の「リンクされたサービス」に関連付けられている Azure Storage の「リンクされたサービス」の名前です。この「リンクされたサービス」はアクティビティの実行に必要なファイルのステージングとアクティビティ実行ログの保存に利用されます。 | あり
+accessKey | Azure Batch アカウントのアクセス キーです。 | はい
+poolName | 仮想マシンのプールの名前です。 | はい
+linkedServiceName | この Azure Batch の「リンクされたサービス」に関連付けられている Azure Storage の「リンクされたサービス」の名前です。この「リンクされたサービス」はアクティビティの実行に必要なファイルのステージングとアクティビティ実行ログの保存に利用されます。 | はい
 
 
 ## Azure Machine Learning のリンクされたサービス
@@ -252,9 +282,9 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-Type | type プロパティは **AzureML** に設定されます。 | あり
-mlEndpoint | バッチ スコアリング URL です。 | あり
-apiKey | 公開されたワークスペース モデルの API です。 | あり
+Type | type プロパティは **AzureML** に設定されます。 | はい
+mlEndpoint | バッチ スコアリング URL です。 | はい
+apiKey | 公開されたワークスペース モデルの API です。 | はい
 
 
 ## Azure Data Lake Analytics リンク サービス
@@ -282,13 +312,13 @@ apiKey | 公開されたワークスペース モデルの API です。 | あ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-型 | type プロパティは **AzureDataLakeAnalytics** に設定する必要があります。 | あり
-accountName | Azure Data Lake Analytics アカウント名。 | あり
+型 | type プロパティは **AzureDataLakeAnalytics** に設定する必要があります。 | はい
+accountName | Azure Data Lake Analytics アカウント名。 | はい
 dataLakeAnalyticsUri | Azure Data Lake Analytics URI。 | いいえ
-authorization | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | あり
+authorization | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | はい
 subscriptionId | Azure サブスクリプション ID | いいえ (指定されていない場合は Data Factory のサブスクリプションが使用されます)。
 resourceGroupName | Azure リソース グループ名 | いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。
-sessionId | OAuth 承認セッションのセッション ID です。各セッション ID は一意であり、1 回のみ使用できます。セッション ID は、Data Factory Editor で自動生成されます。 | あり
+sessionId | OAuth 承認セッションのセッション ID です。各セッション ID は一意であり、1 回のみ使用できます。セッション ID は、Data Factory Editor で自動生成されます。 | はい
 
 **[認証]** ボタンを使用して生成した認証コードは、いずれ有効期限が切れます。さまざまな種類のユーザー アカウントの有効期限については、次の表を参照してください。認証**トークンの有効期限が切れる**と、次のエラー メッセージが表示される場合があります: "資格情報の操作エラー: invalid\_grant - AADSTS70002: 資格情報の検証中にエラーが発生しました。AADSTS70008: 指定されたアクセス権の付与は期限が切れているか、失効しています。トレース ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相関 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 タイムスタンプ: 2015-12-15 21:09:31Z"
 
@@ -296,8 +326,8 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 | ユーザー タイプ | 有効期限 |
 | :-------- | :----------- | 
 | 非 AAD ユーザー (@hotmail.com、@live.com など) | 12 時間 |
-| AAD ユーザーと OAuth ベースのソースがユーザーの Data Factory のテナントとは異なる[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)にあります。 | 12 時間 |
-| AAD ユーザーと OAuth ベースのソースがユーザーの Data Factory のテナントと同じテナントにあります。 | <p> ユーザーが自身の OAuth ベースのリンクされたサービスのソースに基づいて、少なくとも 14 日間に 1 回スライスを実行する場合、最大値は 90 日です。</p><p>予定されている 90 日の間に、ユーザーが 14 日間、そのソースに基づいてスライスを実行しない場合、最後のスライスから 14 日後に資格情報の有効期限が切れます。</p> | 
+| AAD ユーザーと OAuth ベースのソースがData Factory のテナントとは異なる[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)にある。 | 12 時間 |
+| AAD ユーザーと OAuth ベースのソースがData Factory のテナントと同じテナントにある。 | 14 日 |
 
 このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[認証]** ボタンを使用して再認証し、リンクされたサービスを再デプロイする必要があります。次のセクションのコードを使用して、sessionId と authorization プロパティの値をプログラムで生成することもできます。
 
@@ -334,4 +364,4 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 
 Azure SQL のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。このリンクされたサービスの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="09/11/2015"
+   ms.date="01/13/2016"
    ms.author="estfan; manasma"/>
 
 # 負荷をかけた状態での Azure Web アプリのパフォーマンス テスト
@@ -28,7 +28,7 @@ Web アプリを起動する前または更新プログラムを運用環境に�
 
 *	[Azure サブスクリプション][AzureSubscription]が必要です (まだ取得していない場合)。[無料で Azure アカウントを開く方法については、このページを参照してください][AzureFreeTrial]。
 
-*	パフォーマンス テストの履歴を保存するには、[Visual Studio Team Services (VSTS)][WhatIsVSTS] アカウントが必要です。パフォーマンス テストを設定するときに新しいアカウントを作成するか、アカウントの所有者である場合は既存のアカウントを使用します。[Visual Studio Team Services アカウントでほかにできること](#VSTSAccount)
+*	パフォーマンス テストの履歴を保存するには、[Visual Studio Team Services (Team Services)][WhatIsTeamServices] アカウントが必要です。パフォーマンス テストを設定するときに新しいアカウントを作成するか、アカウントの所有者である場合は既存のアカウントを使用します。[Visual Studio Team Services アカウントでほかにできること](#TeamServicesAccount)
 
 *	非運用環境にテストするアプリをデプロイします。運用環境で使用するプラン以外の App Service プランをアプリで使用するように設定します。これで、既存の顧客に影響が及んだり、運用環境のアプリの速度が低下したりすることがなくなります。
 
@@ -44,11 +44,11 @@ Web アプリを起動する前または更新プログラムを運用環境に�
 
 	![[ツール] > [パフォーマンス テスト] を選択][ExpandedTools]
  
-0.	次に、パフォーマンス テストの履歴を保存するために、[Visual Studio Team Services (VSTS)][WhatIsVSTS] アカウントをリンクします。
+0.	ここで、パフォーマンス テストの履歴を保存するための、[Visual Studio Team Services (Team Services)][WhatIsTeamServices] アカウントにリンクします。
 
-	使用できる VSTS アカウントがある場合は、そのアカウントを選択します。VSO アカウントを持っていない場合は、新しいアカウントを作成します。
+	使用できる Team Services アカウントがある場合は、そのアカウントを選択します。VSO アカウントを持っていない場合は、新しいアカウントを作成します。
 
-	![既存の VSTS アカウントを選択するか、新しいアカウントを作成します][ExistingNewVSTSAccount]
+	![既存の Team Services アカウントを選択するか、新しいアカウントを作成します][ExistingNewTeamServicesAccount]
 
 0.	パフォーマンス テストを作成します。詳細を設定し、テストを実行します。テストの実行中、リアルタイムで結果を確認できます。
 
@@ -86,30 +86,30 @@ A: パブリック プレビュー以降、Visual Studio Team Services アカウ
 
 A: Azure ポータルでこの時間を確認できます。
 
-![自分の VSTS アカウントに進みます][VSTSAccount]
+![Team Services アカウントに移動します。][TeamServicesAccount]
 
 ![使用した VUM の確認][CheckTestTime]
 
 <a name="VSOAccount"></a>
 #### Q: Visual Studio Team Services アカウントでほかにできることは何ですか。
 
-A: 新しいアカウントを見つけるには、```https://{accountname}.visualstudio.com``` にアクセスしてください。任意のツールまたは言語を使用して、コードの共有、ビルド、テスト、作業の追跡、ソフトウェアの出荷などの操作をすべてクラウドで実行できます。[Visual Studio Team Services][WhatIsVSTS] の機能とサービスがどのようにチームの共同作業と継続的なデプロイを支援するかについて学習してください。
+A: 新しいアカウントを見つけるには、```https://{accountname}.visualstudio.com``` にアクセスしてください。任意のツールまたは言語を使用して、コードの共有、ビルド、テスト、作業の追跡、ソフトウェアの出荷などの操作をすべてクラウドで実行できます。[Visual Studio Team Services][WhatIsTeamServices] の機能とサービスがどのようにチームの共同作業と継続的なデプロイを支援するかについて学習してください。
 
 <!--Image references-->
 [WebApp]: ./media/app-service-web-app-performance-test/azure-np-web-apps.png
 [TestOverview]: ./media/app-service-web-app-performance-test/azure-np-perf-test-overview.png
 [ExpandedTools]: ./media/app-service-web-app-performance-test/azure-np-web-app-details-tools-expanded.png
-[ExistingNewVSTSAccount]: ./media/app-service-web-app-performance-test/azure-np-no-vso-account.png
+[ExistingNewTeamServicesAccount]: ./media/app-service-web-app-performance-test/azure-np-no-vso-account.png
 [NewTest]: ./media/app-service-web-app-performance-test/azure-np-new-performance-test.png
 [TestRunning]: ./media/app-service-web-app-performance-test/azure-np-running-perf-test.png
 [TestDone]: ./media/app-service-web-app-performance-test/azure-np-perf-test-done.png
-[VSTSAccount]: ./media/app-service-web-app-performance-test/azure-np-vso-accounts.png
+[TeamServicesAccount]: ./media/app-service-web-app-performance-test/azure-np-vso-accounts.png
 [CheckTestTime]: ./media/app-service-web-app-performance-test/azure-np-vso-accounts-vum-summary.png
 
 <!--Reference links -->
 [AzurePortal]: https://portal.azure.com
 [AzureSubscription]: https://account.windowsazure.com/subscriptions
 [AzureFreeTrial]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
-[WhatIsVSTS]: https://www.visualstudio.com/products/what-is-visual-studio-online-vs
+[WhatIsTeamServices]: https://www.visualstudio.com/products/what-is-visual-studio-online-vs
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

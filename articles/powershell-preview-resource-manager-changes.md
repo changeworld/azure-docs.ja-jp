@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="powershell"
 	ms.workload="na"
-	ms.date="10/09/2015"
+	ms.date="01/26/2016"
 	ms.author="gauravbh;tomfitz"/>
 
 #Azure リソース マネージャーの管理 PowerShell コマンドレットに対する変更
@@ -91,4 +91,4 @@ Get-AzureRmResourceProvider コマンドレットを使用して、リソース 
 
 Azure リソース マネージャーにポリシーのサポートが追加されました。本リリースでは、ポリシーを管理するための PowerShell コマンドレットが追加されています。ポリシーに関する詳細については、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」を参照してください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

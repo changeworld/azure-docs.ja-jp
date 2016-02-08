@@ -17,7 +17,7 @@
  
 # チュートリアル: Stream Analytics を使用した Application Insights から SQL へのエクスポート
 
-この記事では、[連続エクスポート][export]と [Azure Stream Analytics](http://azure.microsoft.com/services/stream-analytics/) を使用してテレメトリ データを [Visual Studio Application Insights][start] から Azure SQL Database に移動する方法を示します。
+この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用してテレメトリ データを [Visual Studio Application Insights][start] から Azure SQL Database に移動する方法を示します。
 
 連続エクスポートにより、JSON 形式でテレメトリ データが Azure Storage に移動されます。Azure Stream Analytics を使って JSON オブジェクトを解析し、データベース テーブルに行を作成します。
 
@@ -35,7 +35,7 @@
 
 作業を開始するには:
 
-1. [Microsoft Azure のアカウント](http://azure.microsoft.com/pricing/)を取得します。
+1. [Microsoft Azure のアカウント](https://azure.microsoft.com/pricing/)を取得します。
 2. [Azure ポータル][portal]で、アプリに新しい Application Insights リソースを追加します。
 
     ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択し、アプリケーションの種類を選択します](./media/app-insights-code-sample-export-sql-stream-analytics/010-new-asp.png)
@@ -219,7 +219,7 @@ Application Insights リソースの名前と iKey を取得するには、概�
 
 ウィザードを閉じ、セットアップが完了するまで待機します。
 
->[AZURE.TIP]入力パスが正しく設定されていることを確認するには、Sample 関数を使用します。失敗した場合: 選択したサンプルの時間範囲でストレージにデータがあることを確認します。入力定義を編集し、ストレージ アカウント、パスのプレフィックス、日付形式が正しく設定されていることを確認します。
+>[AZURE.TIP] 入力パスが正しく設定されていることを確認するには、Sample 関数を使用します。失敗した場合: 選択したサンプルの時間範囲でストレージにデータがあることを確認します。入力定義を編集し、ストレージ アカウント、パスのプレフィックス、日付形式が正しく設定されていることを確認します。
 
 ## クエリの設定
 
@@ -315,4 +315,4 @@ SQL データベースを指定します。
 
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

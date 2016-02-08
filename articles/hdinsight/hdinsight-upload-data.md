@@ -56,7 +56,7 @@ Microsoft では、Azure BLOB ストレージを操作する次のユーティ�
 | [AzCopy][azure-azcopy] | | | ✔ |
 | [Hadoop コマンド](#commandline) | ✔ | ✔ | ✔ |
 
-> [AZURE.NOTE]Azure CLI、Azure PowerShell、AzCopy はすべて Azure の外部で使用できますが、Hadoop コマンドは HDInsight クラスターでのみ使用でき、ローカル ファイル システムのデータを Azure BLOB ストレージに読み込みます。
+> [AZURE.NOTE] Azure CLI、Azure PowerShell、AzCopy はすべて Azure の外部で使用できますが、Hadoop コマンドは HDInsight クラスターでのみ使用でき、ローカル ファイル システムのデータを Azure BLOB ストレージに読み込みます。
 
 ###<a id="xplatcli"></a>Azure CLI
 
@@ -94,7 +94,7 @@ Azure CLI は、Azure サービスを管理できるクロスプラットフォ�
 
 			azure storage blob download -a <storage-account-name> -k <primary-key> <container-name> <blob-name> <destination-file>
 
-> [AZURE.NOTE]常に同じストレージ アカウントで処理する場合は、各コマンドにアカウントとキーを指定する代わりに、次の環境変数を設定することができます。
+> [AZURE.NOTE] 常に同じストレージ アカウントで処理する場合は、各コマンドにアカウントとキーを指定する代わりに、次の環境変数を設定することができます。
 >
 > * **[AZURE\_STORAGE\_ACCOUNT]**: ストレージ アカウント名
 >
@@ -220,7 +220,7 @@ Azure Data Factory は完全に管理されたサービスで、データの保�
 
 Azure Data Factory は、Azure BLOB ストレージへのデータの移動や、Hive や Pig などの HDInsight 機能を直接使用するデータ パイプラインの作成に使用できます。
 
-詳細については、[Azure Data Factory のドキュメント](http://azure.microsoft.com/documentation/services/data-factory/)のページを参照してください。
+詳細については、[Azure Data Factory のドキュメント](https://azure.microsoft.com/documentation/services/data-factory/)のページを参照してください。
 
 ###<a id="sqoop"></a>Apache Sqoop
 
@@ -239,7 +239,7 @@ Azure BLOB ストレージには、次のプログラミング言語で Azure SD
 * Python
 * Ruby
 
-Azure SDK のインストールの詳細については、[Azure のダウンロード](http://azure.microsoft.com/downloads/)のページを参照してください。
+Azure SDK のインストールの詳細については、[Azure のダウンロード](https://azure.microsoft.com/downloads/)のページを参照してください。
 
 
 ## 次のステップ
@@ -284,4 +284,4 @@ Azure SDK のインストールの詳細については、[Azure のダウンロ
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

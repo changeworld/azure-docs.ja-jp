@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/28/2015"
+	ms.date="01/21/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Azure AD B2C テナントを作成する方法
@@ -26,7 +26,8 @@ Azure Active Directory (AD) B2C を使い始めるには、以下に示す 3 つ
 
 Azure サブスクリプションが既にある場合は、次の手順に進みます。ない場合は、[Azure サブスクリプション](sign-up-organization.md)にサインアップし、Azure AD B2C にアクセスできるようにします。
 
-> [AZURE.NOTE]現在、Azure AD B2C プレビューは無料で使用できますが、制限があります (テナントあたり最大 50,000 ユーザー)。[Azure クラシック ポータル](http://manage.windowsazure.com/)にアクセスするには、Azure サブスクリプションが必要です。
+> [AZURE.NOTE]
+現在、Azure AD B2C プレビューは無料で使用できますが、制限があります (テナントあたり最大 50,000 ユーザー)。[Azure クラシック ポータル](http://manage.windowsazure.com/)にアクセスするには、Azure サブスクリプションが必要です。
 
 ## 手順 2: Azure AD B2C テナントを作成する
 
@@ -60,16 +61,17 @@ Azure サブスクリプションが既にある場合は、次の手順に進�
 4. 新しいブラウザー タブまたはウィンドウで、B2C 機能ブレードが含まれた Azure ポータルが開きます。
 
     > [AZURE.IMPORTANT]
-    (テナント数が少ない場合に\) このページが正しく読み込まれないという既知の問題があります。この問題は、ブラウザーを更新することで解決されます。解決されない場合は、サポートにご連絡ください。
+    (テナント数が少ない場合に) このページが正しく読み込まれないという既知の問題があります。この問題は、ブラウザーを更新することで解決されます。解決されない場合は、サポートにご連絡ください。
 
 5. アクセスしやすいように、このブレードをスタート画面にピン留めします (右上隅)。
 
     ![B2C 機能ブレード](./media/active-directory-b2c-get-started/b2c-features-blade.png)
 
-    > [AZURE.NOTE] [Azure クラシック ポータル](https://manage.windowsazure.com/)では、テナントのユーザーとグループ、セルフサービスによるパスワードのリセット構成、会社のブランド化機能を管理できます。
+    > [AZURE.NOTE]
+    [Azure クラシック ポータル](https://manage.windowsazure.com/)では、テナントのユーザーとグループ、セルフサービスによるパスワードのリセット構成、会社のブランド化機能を管理できます。
 
 ## 次のステップ
 
 [Azure AD B2C へのアプリケーションの登録とクイック スタート アプリケーションの作成](active-directory-b2c-app-registration.md)に進みます。
 
-<!----HONumber=AcomDC_0107_2016--->
+<!---HONumber=AcomDC_0128_2016-->

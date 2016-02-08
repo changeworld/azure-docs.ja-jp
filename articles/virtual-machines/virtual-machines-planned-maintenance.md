@@ -50,7 +50,7 @@ Microsoft Azure の更新のクラスの場合、実行中の仮想マシンに�
 
 対照的に、可用性セットに配置されていないスタンドアロンの仮想マシンに対しては、単一インスタンス構成が使用されます。これらの仮想マシンは、同一の可用性セットに複数の仮想マシンがデプロイされていることを必要とするサービス レベル アグリーメント (SLA) の対象になりません。
 
-SLA の詳細については、「[サービス レベル アグリーメント](http://azure.microsoft.com/support/legal/sla/)」の「Cloud Services、Virtual Machines、Virtual Network」のセクションを参照してください。
+SLA の詳細については、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」の「Cloud Services、Virtual Machines、Virtual Network」のセクションを参照してください。
 
 
 ## マルチインスタンス構成の更新
@@ -126,4 +126,4 @@ Azure では、一連のリージョン ペアとしてリージョンがまと�
 [Virtual Machines Manage Availability]: virtual-machines-windows-tutorial.md
 [Understand planned versus unplanned maintenance]: virtual-machines-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

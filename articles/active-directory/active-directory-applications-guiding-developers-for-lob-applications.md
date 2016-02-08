@@ -3,7 +3,7 @@
 	description="IT プロフェッショナル向けに記述されたこの記事では、Azure アプリケーションを Active Directory を統合するためのガイドラインを示します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="IHenkel"
+	authors="kgremban"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/09/2015"
-	ms.author="inhenk"/>
+	ms.date="01/21/2016"
+	ms.author="kgremban"/>
 
 # Azure AD とアプリケーション: 開発者ガイド
 
 ## 概要
 
-このガイドでは、Azure Active Directory 用の基幹業務 (LoB) アプリケーションの開発の概要について説明します。特に Active Directory/Office 365 のグローバル管理者向けに記述されています。
+このガイドでは、Azure Active Directory (AD) 用の基幹業務 (LoB) アプリケーションの開発の概要について説明します。特に Active Directory/Office 365 のグローバル管理者向けに記述されています。
 
-Azure AD と統合されるアプリケーションを構築すると、組織内のユーザーは、Office 365 でシングル サインオンできます。アプリケーションを Azure AD と統合すると、アプリケーションに対して設定する認証ポリシーを管理できます。条件付きアクセスと多要素認証 (MFA) によってアプリを保護する方法については、次のドキュメントを参照してください。[アクセス ルールの構成](active-directory-conditional-access-azuread-connected-apps.md)
+Azure AD と統合されるアプリケーションを構築すると、組織内のユーザーは、Office 365 でシングル サインオンできます。アプリケーションを Azure AD と統合すると、アプリケーションに対して設定する認証ポリシーを管理できます。条件付きアクセスと多要素認証 (MFA) によってアプリを保護する方法については、「[アクセス ルールの構成](active-directory-conditional-access-azuread-connected-apps.md)」を参照してください。
 
 Azure Active Directory を使用するためには、アプリケーションを登録する必要があります。アプリケーションを登録することで、組織の開発者は、Azure AD を使用して、電子メール、予定表、ドキュメントなどのユーザー リソースへのアクセスを要求する組織のメンバーを認証できます。
 
@@ -41,11 +41,11 @@ Azure Active Directory を使用するためには、アプリケーションを
 	  - アプリのアクセス許可 (グローバル管理者のみ)。次に例を示します。
 	    - 別の Azure AD アプリケーションのロール メンバーシップ、または Azure リソース、リソースグループ、またはサブスクリプションに関係するロール メンバーシップ
 	  - 委任されたアクセス許可 (任意のユーザー)次に例を示します。
-	    - (AAD) サインインとプロファイルの読み取り
+	    - (Azure AD) サインインとプロファイルの読み取り
 	    - (Exchange) メールの送受信
 	    - (SharePoint) 閲覧
 
-> [AZURE.NOTE]既定では、すべてのメンバーがアプリケーションを登録できます。アプリケーションを登録するためのアクセス許可を特定のメンバーに制限する方法については、アプリケーションを Azure AD に追加する方法に関するドキュメントを参照してください。
+> [AZURE.NOTE]既定では、すべてのメンバーがアプリケーションを登録できます。アプリケーションを登録するためのアクセス許可を特定のメンバーに制限する方法については、「[How applications are added to Azure AD (アプリケーションを Azure AD に追加する方法)](active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)」を参照してください。
 
 開発者によるアプリケーションの作成をサポートするために、グローバル管理者として次の操作を行う必要があります。
 
@@ -53,7 +53,7 @@ Azure Active Directory を使用するためには、アプリケーションを
 - ユーザー割り当てを必要とするようにアプリを構成し、ユーザーを割り当てる
 - 既定のユーザー同意エクスペリエンスを抑制する
 
-## アクセス規則を構成する
+## アクセス規則の構成
 
 既に説明したように、次の記事で、任意のアプリケーションのアクセス規則を構成する方法の詳細を参照してください。
 
@@ -67,8 +67,7 @@ Azure Active Directory を使用するためには、アプリケーションを
 
 Azure AD Premium または Enterprise Mobility Suite (EMS) のサブスクライバーの場合は、グループを活用することを強くお勧めします。グループをアプリケーションに割り当てると、グループの所有者に継続的にアクセスの管理を委任できます。自分でグループを作成するか、グループ管理機能を使用して組織の責任者にグループの作成を依頼できます。
 
-- [アプリケーションへのユーザーの割り当て](active-directory-applications-guiding-developers-assigning-users.md)
-- [アプリケーションへのグループの割り当て](active-directory-applications-guiding-developers-assigning-groups.md)
+[アプリケーションへのユーザーの割り当て](active-directory-applications-guiding-developers-assigning-users.md) [アプリケーションへのグループの割り当て](active-directory-applications-guiding-developers-assigning-groups.md)
 
 ## ユーザーの同意の抑制
 
@@ -78,4 +77,4 @@ Azure AD Premium または Enterprise Mobility Suite (EMS) のサブスクライ
 
 ユーザーの同意と Azure での同意エクスペリエンスの詳細については、「[Azure Active Directory とアプリケーションの統合](active-directory-integrating-applications.md)」を参照してください 。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

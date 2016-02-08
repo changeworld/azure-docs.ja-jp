@@ -40,7 +40,7 @@ Azure Virtual Network は、すべての名前とトラフィック ルーティ
 
 ![](./media/virtual-machines-workload-high-availability-LOB-application/CreateLOBAppHybridCloud_3.png)
  
-[MSDN サブスクリプション](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/)または [Azure 試用サブスクリプション](http://azure.microsoft.com/pricing/free-trial/)を持っている場合、このような開発/テスト環境を無料で作成できます。
+[MSDN サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)または [Azure 試用サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)を持っている場合、このような開発/テスト環境を無料で作成できます。
 
 次の手順では、Azure で高可用な基幹業務アプリケーションを作成します。
 
@@ -86,4 +86,4 @@ Azure での高可用な基幹業務アプリケーションの基本的で代�
 
 - 構成を開始する前に、実稼働ワークロードの[概要](virtual-machines-workload-high-availability-lob-application-overview.md)を入手します。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

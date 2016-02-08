@@ -28,7 +28,7 @@
 
 このトピックでは、Twitter を使用して Azure Mobile Services で認証できるようにアプリケーションを登録する方法について説明します。
 
->[AZURE.NOTE]このチュートリアルはあらゆるプラットフォームにおいて拡張性の高いモバイル アプリケーションを作成するソリューションの [Azure Mobile Services](http://azure.microsoft.com/services/mobile-services/) について説明します。Mobile Services によって簡単にデータの同期化を行い、ユーザーを認証して、プッシュ通知を送信できます。このページはアプリケーションへユーザーをサインインさせる方法を説明する「[アプリへの認証の追加](mobile-services-ios-get-started-users.md)」チュートリアルをサポートしています。Mobile Services を初めて使用する場合は、チュートリアル「[Mobile Services の使用](mobile-services-ios-get-started.md)」を完了することをお勧めします。
+>[AZURE.NOTE] このチュートリアルはあらゆるプラットフォームにおいて拡張性の高いモバイル アプリケーションを作成するソリューションの [Azure Mobile Services](https://azure.microsoft.com/services/mobile-services/) について説明します。Mobile Services によって簡単にデータの同期化を行い、ユーザーを認証して、プッシュ通知を送信できます。このページはアプリケーションへユーザーをサインインさせる方法を説明する「[アプリへの認証の追加](mobile-services-ios-get-started-users.md)」チュートリアルをサポートしています。Mobile Services を初めて使用する場合は、チュートリアル「[Mobile Services の使用](mobile-services-ios-get-started.md)」を完了することをお勧めします。
 
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Twitter アカウントが必要になります。新しい Twitter アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a> にアクセスしてください。
 
@@ -47,11 +47,11 @@
 
    	これでアプリケーションが登録され、アプリケーションの詳細が表示されます。
 
-6. アプリケーションのダッシュ ボードで **[Keys and Access Tokens] ** タブをクリックし、**[Consumer key]** と **[Consumer secret]** の値をメモします。
+6. アプリケーションのダッシュ ボードで **[キーとアクセス トークン] ** タブをクリックし、**[Cコンシューマー キー]** と **[コンシューマー シークレット]** の値をメモします。
 
     > [AZURE.NOTE] コンシューマー シークレットは、重要なセキュリティ資格情報です。このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。
 
-7. **[Settings]** タブをクリックして下方向へスクロールし、**[Allow this application to be used to sign in with Twitter]** チェック ボックスをオンにして、**[Update Settings]** をクリックします。
+7. **[設定]** タブをクリックして下方向へスクロールし、**[このアプリケーションを使用して Twitter でログインする許可します]** チェック ボックスをオンにして、**[更新設定]** をクリックします。
 
 これで、コンシューマー キーとコンシューマー シークレットの値を Mobile Services に渡すことにより、アプリケーションで Twitter ログインを認証に使用する準備ができました。
 
@@ -66,4 +66,4 @@
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-dotnet/
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

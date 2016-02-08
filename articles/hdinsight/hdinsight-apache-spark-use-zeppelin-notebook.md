@@ -21,21 +21,21 @@
 
 Spark クラスターに Zeppelin Notebook をインストールする方法と、Zeppelin Notebook を使用する方法について説明します。
 
-> [AZURE.IMPORTANT]HDInsight の Spark クラスター向けの Zeppelin Notebook では、Azure HDInsight の Spark 環境で Zeppelin を使用する方法を紹介しています。HDInsight の Spark と連携して Notebook を使用する場合は、代わりに Jupyter Notebook を使用することをお勧めします。また、Jupyter Notebook では、Scala などの別のカーネル オプションも提供し、継続して機能が向上されます。HDInsight の Spark で Jupyter Notebook を使用する方法の詳細については、「[Jupyter Notebook を使用して Spark SQL クエリを実行する](hdinsight-apache-spark-jupyter-spark-sql.md#jupyter)」を参照してください。
+> [AZURE.IMPORTANT] HDInsight の Spark クラスター向けの Zeppelin Notebook では、Azure HDInsight の Spark 環境で Zeppelin を使用する方法を紹介しています。HDInsight の Spark と連携して Notebook を使用する場合は、代わりに Jupyter Notebook を使用することをお勧めします。また、Jupyter Notebook では、Scala などの別のカーネル オプションも提供し、継続して機能が向上されます。HDInsight の Spark で Jupyter Notebook を使用する方法の詳細については、「[Jupyter Notebook を使用して Spark SQL クエリを実行する](hdinsight-apache-spark-jupyter-spark-sql.md#jupyter)」を参照してください。
 
 **前提条件:**
 
-* このチュートリアルを開始する前に、Azure サブスクリプションが必要です。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+* このチュートリアルを開始する前に、Azure サブスクリプションが必要です。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * Apache Spark クラスター。手順については、[Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-provision-clusters.md)に関するページを参照してください。
 * SSH クライアントLinux および UNIX のディストリビューション、または Macintosh OS X の場合、オペレーティング システムに `ssh`コマンドが用意されています。Windows の場合は [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をお勧めします。
 
-	> [AZURE.NOTE]`ssh`または PuTTY 以外の SSH クライアントを使用する場合は、クライアントのマニュアルで SSH トンネルの確立方法を確認してください。
+	> [AZURE.NOTE] `ssh`または PuTTY 以外の SSH クライアントを使用する場合は、クライアントのマニュアルで SSH トンネルの確立方法を確認してください。
 
 * SOCKS プロキシを使用するように構成できる Web ブラウザー
 
 * __(省略可能)__: [FoxyProxy](http://getfoxyproxy.org/,) などのプラグイン。FoxyProxy は、トンネル経由で特定の要求のみをルーティングするルールを適用できます。
 
-	> [AZURE.WARNING]FoxyProxy などのプラグインを使用しない場合、ブラウザー経由で送信されたすべての要求が、トンネル経由でルーティングされる場合があります。その結果、ブラウザーの Web ページの読み込みが低速になる可能性があります。
+	> [AZURE.WARNING] FoxyProxy などのプラグインを使用しない場合、ブラウザー経由で送信されたすべての要求が、トンネル経由でルーティングされる場合があります。その結果、ブラウザーの Web ページの読み込みが低速になる可能性があります。
 
 ## クラスター作成の一部としての Zeppelin のインストール
 
@@ -151,13 +151,13 @@ SSH キーを使用してクラスターを構成した場合は、SSH 秘密キ
 
 ### ブラウザーからトンネルを使用する
 
-> [AZURE.NOTE]このセクションの手順では、FireFox ブラウザーを使用します。FireFox は、Linux、UNIX、Macintosh OS X、Windows の各システムで無料で使用できるためです。Google Chrome、Microsoft Edge、Apple Safari などの最近のブラウザーでも動作するはずですが、一部の手順で使用されている FoxyProxy プラグインがブラウザーによっては動作しない可能性があります。
+> [AZURE.NOTE] このセクションの手順では、FireFox ブラウザーを使用します。FireFox は、Linux、UNIX、Macintosh OS X、Windows の各システムで無料で使用できるためです。Google Chrome、Microsoft Edge、Apple Safari などの最近のブラウザーでも動作するはずですが、一部の手順で使用されている FoxyProxy プラグインがブラウザーによっては動作しない可能性があります。
 
 1. **SOCKS v5** プロキシとして **localhost:9876** を使用するようにブラウザーを構成します。Firefox の設定は次のようになります。9876 以外のポートを使用する場合は、そのポート番号に変更します。
 
 	![Firefox の設定の画像](./media/hdinsight-apache-spark-use-zeppelin-notebook/socks.png)
 
-	> [AZURE.NOTE]**[リモート DNS]** を選択するとドメイン ネーム システム (DNS) 要求は HDInsight クラスターを使用して解決されます。選択しないと、DNS はローカルに解決されます。
+	> [AZURE.NOTE] **[リモート DNS]** を選択するとドメイン ネーム システム (DNS) 要求は HDInsight クラスターを使用して解決されます。選択しないと、DNS はローカルに解決されます。
 
 2. Firefox でプロキシ設定を有効または無効にして、[http://www.whatismyip.com/](http://www.whatismyip.com/) などのサイトにアクセスして、トラフィックがトンネルを経由しているかどうかを確認します。設定が有効の場合、IP アドレスは Microsoft Azure データセンター内のコンピューターの IP アドレスになります。
 
@@ -191,7 +191,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	* **[パターン名]** - **zeppelinnotebook** - パターンのフレンドリ名です。
 
-	* **URL パターン** - **hn0** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン **hn0** を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
+	* **URL パターン** - ***hn0*** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン **hn0** を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
 
 		![foxyproxy のパターン](./media/hdinsight-apache-spark-use-zeppelin-notebook/foxypattern.png)
 
@@ -330,4 +330,4 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

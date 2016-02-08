@@ -27,7 +27,7 @@
 
 ## 前提条件
 
-* Azure サブスクリプション。無料評価版については、「[1 か月間の無料評価版](http://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
+* Azure サブスクリプション。無料評価版については、「[1 か月間の無料評価版](https://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
 * エラスティック データベース プール。「[エラスティック データベース プール](sql-database-elastic-pool.md)」をご覧ください。
 * エラスティック データベース ジョブ サービス コンポーネントのインストール。「[エラスティック データベース ジョブ サービスのインストール](sql-database-elastic-jobs-service-installation.md)」をご覧ください。
 
@@ -115,4 +115,4 @@
 
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

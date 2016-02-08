@@ -27,7 +27,7 @@
 V12 には継続的に機能が追加されます。したがって、Azure のサービス更新情報に間する Web ページにアクセスし、次のフィルターを使用することをお勧めします。
 
 
-- サービスを [[SQL Database]](http://azure.microsoft.com/updates/?service=sql-database) でフィルター処理します。
+- サービスを [[SQL Database]](https://azure.microsoft.com/updates/?service=sql-database) でフィルター処理します。
 - SQL Database の機能について、[General Availability] [(GA) のアナウンス](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability)でフィルター処理します。
 
 
@@ -132,7 +132,7 @@ Azure SQL Database を今すぐ V11 から V12 にアップグレードするこ
 以前のバージョンの SQL Database サービスでデータベースまたは論理サーバーが実行されているかどうかは、次の方法で簡単に確認できます。
 
 
-1. [Azure ポータル](http://portal.azure.com/)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
 2. **[参照]** をクリックします。
 3. **[SQL Server]** をクリックします。
 4. サーバーまたはデータベースの隣のアイコンから、現在の状態がわかります。
@@ -159,6 +159,6 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 - 2015 年 7 月 31 日までにすべてのリージョンが完全一般公開 (GA) に昇格しました。
 - V12 は 2014 年 12 月にリリースされましたが、プレビューの段階でした。
 
-[Microsoft Azure プレビューの使用条件に関する補足](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+[Microsoft Azure プレビューの使用条件に関する補足](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

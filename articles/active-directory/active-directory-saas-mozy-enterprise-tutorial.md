@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2015" 
+    ms.date="01/26/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Mozy Enterprise の統合
@@ -76,7 +76,7 @@
 
     ![Configure single sign-on](./media/active-directory-saas-mozy-enterprise-tutorial/IC777311.png "Configure single sign-on")
 
-3.  **[アプリ URL の構成]** ページで、**[Mozy Enterpris サインイン URL]** ボックスに、"https://\<tenant-name>.Mozyenterprise.com" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリ URL の構成]** ページで、**[Mozy Enterpris サインイン URL]** ボックスに、"*https://\<tenant-name>.Mozyenterprise.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
     ![Configure app URL](./media/active-directory-saas-mozy-enterprise-tutorial/IC777312.png "Configure app URL")
 
@@ -157,4 +157,4 @@ Azure AD ユーザーが Mozy Enterprise にログインできるようにする
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -17,7 +17,7 @@ ms.author="heidist" />
 
 #インデクサー操作 (Azure Search サービス REST API: 2015-02-28-Preview)#
 
-> [AZURE.NOTE]この記事では、[2015-02-28-Preview](./search-api-2015-02-28-preview) のインデクサーについて説明します。現在、[MSDN](http://go.mirosoft.com/fwlink/p/?LinkID=528173) の `2015-02-28` バージョンと、ここで説明する `2015-02-28-Preview` バージョンとの間に違いはありません。この API に変更がない場合でも、この記事では `2015-02-28-Preview` の完全なドキュメント セットを提供します。
+> [AZURE.NOTE] この記事では、[2015-02-28-Preview](./search-api-2015-02-28-preview) のインデクサーについて説明します。現在、[MSDN](http://go.mirosoft.com/fwlink/p/?LinkID=528173) の `2015-02-28` バージョンと、ここで説明する `2015-02-28-Preview` バージョンとの間に違いはありません。この API に変更がない場合でも、この記事では `2015-02-28-Preview` の完全なドキュメント セットを提供します。
 
 ## 概要 ##
 
@@ -38,7 +38,7 @@ Azure Search は Microsoft Azure のホスト型クラウド検索サービス�
 - Azure SQL Database と Azure VM の SQL Server
 - Azure DocumentDB 
 
-将来的にサポートするデータ ソースを増やす予定です。決定項目に優先順位を付けるために、[Azure Search フィードバックフォーラム](http://feedback.azure.com/forums/263029-azure-search)でフィードバックをご提供ください。
+将来的にサポートするデータ ソースを増やす予定です。決定項目に優先順位を付けるために、[Azure Search フィードバックフォーラム](https://feedback.azure.com/forums/263029-azure-search/)でフィードバックをご提供ください。
 
 インデクサーとデータ ソースのリソースに関連する上限については、「[サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
 
@@ -776,4 +776,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

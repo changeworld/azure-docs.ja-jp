@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/20/2016" 
+	ms.date="01/21/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -74,12 +74,12 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 <a name="cache-billing"></a>
 ## Azure Redis Cache の課金方法を教えてください。
 
-Azure Redis Cache の価格については、[ここ](http://azure.microsoft.com/pricing/details/cache/)を参照してください。価格ページには、1 時間単位の価格が表示されます。キャッシュは、キャッシュが作成された時間から削除された時間までの期間に関して、分単位で課金されます。キャッシュの課金を停止または一時停止するオプションはありません。
+Azure Redis Cache の価格については、[ここ](https://azure.microsoft.com/pricing/details/cache/)を参照してください。価格ページには、1 時間単位の価格が表示されます。キャッシュは、キャッシュが作成された時間から削除された時間までの期間に関して、分単位で課金されます。キャッシュの課金を停止または一時停止するオプションはありません。
 
 <a name="cache-timeouts"></a>
 ## タイムアウトが発生する理由
 
-タイムアウトは、Redis との対話に使用されているクライアントで発生します。ほとんどの場合、Redis サーバーでタイムアウトが発生することはありません。Redis サーバーに送信されたコマンドは、キューに格納されます。コマンドは、最終的に Redis サーバーによって取得され、実行されます。ただし、この処理中にクライアントがタイムアウトすることがあり、その場合は呼び出し元では例外が発生します。タイムアウトの問題のトラブルシューティングの詳細については、[Azure Redis Cache の StackExchange.Redis のタイムアウトの例外の調査](http://azure.microsoft.com/blog/2015/02/10/investigating-timeout-exceptions-in-stackexchange-redis-for-azure-redis-cache/)に関するページを参照してください。
+タイムアウトは、Redis との対話に使用されているクライアントで発生します。ほとんどの場合、Redis サーバーでタイムアウトが発生することはありません。Redis サーバーに送信されたコマンドは、キューに格納されます。コマンドは、最終的に Redis サーバーによって取得され、実行されます。ただし、この処理中にクライアントがタイムアウトすることがあり、その場合は呼び出し元では例外が発生します。タイムアウトの問題のトラブルシューティングの詳細については、[Azure Redis Cache の StackExchange.Redis のタイムアウトの例外の調査](https://azure.microsoft.com/blog/2015/02/10/investigating-timeout-exceptions-in-stackexchange-redis-for-azure-redis-cache/)に関するページを参照してください。
 
 <a name="cache-monitor"></a>
 ## キャッシュの正常性とパフォーマンスの監視方法
@@ -170,9 +170,18 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 
 -	ASP.NET で、web.config の `<processModel>` 構成要素の下にある ["minIoThreads" 構成設定][]を使用します。Azure WebSites の内部で実行している場合、この設定は構成オプションを介して公開されません。ただし、これは global.asax.cs の Application\_Start メソッドからプログラムで設定できるはずです (下記を参照)。
 
-> **重要な注意事項:** この構成要素で指定される値は、コアごとの設定となります。たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、`<processModel minIoThreads="50"/>` を使用します。
+> **重要な注意事項:** この構成要素で指定される値は、*コアごとの*設定となります。たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、`<processModel minIoThreads="50"/>` を使用します。
 
 -	ASP.NET の外部では、[ThreadPool.SetMinThreads(…)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API を使用します。
+
+<a name="server-gc"></a>
+## StackExchange.Redis を使用するときにサーバー GC を有効にしてクライアントでのスループットを向上させる
+
+StackExchange.Redis を使用するときにサーバー GC を有効にすると、クライアントが最適化され、パフォーマンスとスループットを向上させることができます。サーバー GC とそれを有効にする方法の詳細については、次の記事を参照してください。
+
+-	[サーバー GC を有効にするには](https://msdn.microsoft.com/library/ms229357.aspx)
+-	[ガベージ コレクションの基礎](https://msdn.microsoft.com/library/ee787088.aspx)
+-	[ガベージ コレクションとパフォーマンス](https://msdn.microsoft.com/library/ee851764.aspx)
 
 <a name="cache-redis-commands"></a>
 ## 一般的な Redis コマンドの使用に関するいくつかの考慮事項
@@ -229,12 +238,12 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 
 Microsoft Azure Redis Cache は、広く普及しているオープン ソースの Redis Cache をベースに、Microsoft によって管理された、セキュリティで保護された専用の Redis Cache へのアクセスを提供します。[Redis クライアント](http://redis.io/clients)についても、多くのプログラミング言語に対応してさまざまなクライアントが提供されています。各クライアントは、[Redis コマンド](http://redis.io/commands)を使用して Redis キャッシュ インスタンスを呼び出す独自の API を持ちます。
 
-クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントに加えて、Azure.com の[ Redis Cache のドキュメント](http://azure.microsoft.com/documentation/services/redis-cache/)のページには、さまざまな言語およびキャッシュ クライアントを使用して Azure Redis Cache を使用する方法に関するいくつかのチュートリアルがあります。
+クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントに加えて、Azure.com の[ Redis Cache のドキュメント](https://azure.microsoft.com/documentation/services/redis-cache/)のページには、さまざまな言語およびキャッシュ クライアントを使用して Azure Redis Cache を使用する方法に関するいくつかのチュートリアルがあります。
 
 
 ## どの Azure Cache を利用すればよいですか。
 
->[AZURE.IMPORTANT]すべての新規の開発に Azure Redis Cache を使用することをお勧めします。
+>[AZURE.IMPORTANT] すべての新規の開発に Azure Redis Cache を使用することをお勧めします。
 
 現在、Azure Cache には 3 つのサービスがあります。
 
@@ -273,4 +282,4 @@ In-Role Cache は 2016 年 11 月 30 日に終了となります。
 
 ["minIoThreads" 構成設定]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

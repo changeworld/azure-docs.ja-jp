@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/01/2015"
+   ms.date="01/25/2016"
    ms.author="mcoskun"/>
 
 # Reliable Services のバックアップと復元
@@ -87,7 +87,7 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo)
 
 サービス作成者は、次を実行して回復する必要があります。
 
-- **IReliableStateManager** をオーバーライドし、新しい **ReliableStateManager** を返し、データ損失イベントが発生した場合に呼び出されるコールバック関数を提供します。
+- **CreateReliableStateManager** をオーバーライドして新しい **ReliableStateManager** を返し、データ損失イベントが発生した場合に呼び出されるコールバック関数を提供します。
 
 - サービスのバックアップを含む外部の場所で最新のバックアップを見つけます。
 
@@ -118,7 +118,7 @@ protected override async Task<bool> OnDataLossAsync(CancellationToken cancellati
 }
 ```
 
->[AZURE.NOTE]RestorePolicy は既定で「Safe」に設定されます。つまり、バックアップ フォルダーにこのレプリカに含まれている状態と同じか、それより古い状態が含まれていることが検出された場合、**RestoreAsync** API は失敗し、ArgumentException をスローします。**RestorePolicy.Force** を使用して、この安全性チェックを省略できます。
+>[AZURE.NOTE] RestorePolicy は既定で「Safe」に設定されます。つまり、バックアップ フォルダーにこのレプリカに含まれている状態と同じか、それより古い状態が含まれていることが検出された場合、**RestoreAsync** API は失敗し、ArgumentException をスローします。**RestorePolicy.Force** を使用して、この安全性チェックを省略できます。
 
 ## サービスの削除または損失
 
@@ -158,4 +158,4 @@ Reliable State Manager には、**IReliableStateManager.RestoreAsync** API を�
 
 **RestoreAsync** は最初、それが呼び出されたプライマリ レプリカの既存状態をすべて削除します。次に、Reliable State Manager はバックアップ フォルダーに存在するすべての Reliable Objects を作成します。次に、Reliable Objects はバックアップ フォルダーのチェックポイントから復元するように指示されます。最後に、Reliable State Manager はバックアップ フォルダー内のログ レコードからそれ自体の状態を復元し、復元を実行します。復元プロセスの一環として、バックアップ フォルダーにコミット ログ レコードがある "開始ポイント" から始まる操作が Reliable Objects に対して再生されます。この手順により、復元したステートに一貫性が与えられます。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

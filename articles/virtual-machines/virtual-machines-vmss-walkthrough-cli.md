@@ -41,7 +41,7 @@
 
 1. **Microsoft Azure にサインインする** - コマンド ライン インターフェイス (Bash、端末、コマンド プロンプト) で、「`azure config mode arm`」と入力してリソース マネージャー モードになっていることを確認します。次に、「`azure login`」と入力して[会社または学校用の ID を使用してログイン](../xplat-cli-connect.md#use-the-log-in-method)し、使用する Azure アカウントの対話型ログイン エクスペリエンス用のプロンプトに従います。
 
-	> [AZURE.NOTE]職場または学校の ID を所有していて、2 要素認証が有効になっていないことがわかっている場合は、職場または学校の ID と共に `azure login -u` を使うと、対話型セッションを使わずにログインできます。職場または学校の ID がない場合は、[個人の Microsoft アカウントから職場または学校の ID を作成](resource-group-create-work-id-from-personal.md)できます。
+	> [AZURE.NOTE] 職場または学校の ID を所有していて、2 要素認証が有効になっていないことがわかっている場合は、職場または学校の ID と共に `azure login -u` を使うと、対話型セッションを使わずにログインできます。職場または学校の ID がない場合は、[個人の Microsoft アカウントから職場または学校の ID を作成](resource-group-create-work-id-from-personal.md)できます。
 
 2. **リソース グループを作成します**。リソースはすべてリソース グループにデプロイする必要があります。このチュートリアルでは、リソース グループに **vmsstest1** という名前を付けます。
 
@@ -604,4 +604,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 [Ubuntu/Apache/PHP アプリを実行する VM スケールセットの自動スケール](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) テンプレートをチェックアウトします (これは仮想マシン スケール セットの自動スケール機能を使用するように LAMP スタックをセットアップするテンプレートです)。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

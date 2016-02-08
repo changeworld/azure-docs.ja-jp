@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect のポート"
+	pageTitle="Azure AD Connect: ポート | Microsoft Azure"
 	description="このページは Azure AD Connect のために開く必要があるポートのテクニカル リファレンス ページです"
 	services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/11/2016"
+	ms.date="01/21/2016"
 	ms.author="billmath"/>
 
 # ハイブリッド ID で必要なポートとプロトコル
@@ -79,4 +79,4 @@ Office 365 のポートと IP アドレスの一覧については、「[Office 
 ### 表 6b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のエンドポイント
 エンドポイントの一覧については、[Azure AD Connect Health エージェントの「要件」セクション](active-directory-aadconnect-health.md#requirements)を参照してください 。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

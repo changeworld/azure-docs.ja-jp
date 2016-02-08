@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure テーブルとの間でのデータの移動 | Azure Data Factory" 
-	description="Azure Data Factory を使用して Azure テーブル ストレージに、または Azure テーブル ストレージからデータを移動する方法を説明します。" 
+	description="Azure Data Factory を使用して Azure Table Storage に、または Azure Table Storage からデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/06/2015" 
+	ms.date="01/26/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure テーブルとの間でのデータの移動
@@ -42,6 +42,8 @@
 	    }
 	  }
 	}
+
+Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。詳細については、「[リンクされたサービス](#linked-services)」セクションを参照してください。
 
 **Azure テーブルの入力データセット:**
 
@@ -203,6 +205,8 @@
 	  }
 	}
 
+Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。詳細については、「[リンクされたサービス](#linked-services)」セクションを参照してください。
+
 **Azure BLOB の入力データセット:**
 
 データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔: 1)。BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。フォルダー パスは開始時間の年、月、日の部分を利用し、ファイル名は開始時間の時刻部分を使用します。「“external”: “true”」設定は Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
@@ -340,14 +344,10 @@
 	   }
 	}
 
-## Azure Storage のリンクされたサービスのプロパティ
+## リンクされたサービス
+Azure BLOB ストレージを Azure Data Factory にリンクするために使用できるリンクされたサービスは 2 種類あります。それらは、**AzureStorage** のリンクされたサービスと **AzureStorageSas** のリンクされたサービスです。Azure Storage のリンクされたサービスは、Azure Storage へのグローバル アクセスを Data Factory に提供します。一方、Azure Storage SAS (Shared Access Signature) のリンクされたサービスは、Azure Storage への制限付き/期限付きアクセスを Data Factory に提供します。これら 2 つのリンクされたサービスには、これ以外の相違点はありません。ニーズに適したリンクされたサービスを選択します。以下のセクションで、これら 2 つのリンクされたサービスについて詳しく説明します。
 
-Azure Storage のリンクされたサービスを利用し、Azure ストレージ アカウントを Azure Data Factory にリンクできます。次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
-
-| プロパティ | 説明 | 必須 |
-| -------- | ----------- | -------- |
-| type | type プロパティを AzureStorage に設定する必要があります。 | あり |
-| connectionString | connectionString プロパティのために Azure ストレージに接続するために必要な情報を指定します。Azure クラシック ポータルから Azure ストレージの connectionString を取得できます。 | あり |
+[AZURE.INCLUDE [data-factory-azure-storage-linked-services](../../includes/data-factory-azure-storage-linked-services.md)]
 
 ## Azure テーブル データセットの type プロパティ
 
@@ -515,4 +515,4 @@ lastlogindate | Edm.DateTime
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

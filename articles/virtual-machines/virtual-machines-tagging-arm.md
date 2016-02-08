@@ -28,7 +28,7 @@
 
 まず、テンプレートを使用してタグを付けてみましょう。[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm)では、Compute (仮想マシン)、Storage (ストレージ アカウント)、および Network (パブリック IP アドレス、Virtual Network、およびネットワーク インターフェイス) というリソースにタグを設定します。
 
-[テンプレート リンク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm)から **[Azure へのデプロイ]** ボタンをクリックします。[Azure ポータル](http://portal.azure.com/)が開きます。ポータルにはこのテンプレートをデプロイできます。
+[テンプレート リンク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm)から **[Azure へのデプロイ]** ボタンをクリックします。[Azure ポータル](https://portal.azure.com/)が開きます。ポータルにはこのテンプレートをデプロイできます。
 
 ![タグを使用した単純なデプロイ](./media/virtual-machines-tagging-arm/deploy-to-azure-tags.png)
 
@@ -190,4 +190,4 @@ Azure リソース マネージャーで Compute、Network、および Storage �
 [Microsoft Azure の課金内容の確認]: ../billing-understand-your-bill.md
 [Microsoft Azure リソースの消費を把握する]: ../billing-usage-rate-card-overview.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -3,7 +3,7 @@
 	description="Azure AD Privileged Identity Management とは何か、およびその構成方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="IHenkel"
+	authors="kgremban"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/21/2015"
-	ms.author="inhenk"/>
+	ms.date="01/21/2016"
+	ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management
 
-Azure AD Privileged Identity Management を使用すると、特権 ID と、Azure AD および他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへの特権 ID のアクセスを管理、制御、監視できます。
+Azure Active Directory (AD) Privileged Identity Management を使用すると、特権 ID と、Azure AD および他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへの特権 ID のアクセスを管理、制御、監視できます。
 
 ユーザーが特権操作を実行できるよう、組織は多くのユーザーに Azure AD、Azure や Office 365 のリソース、他の SaaS アプリへの永続的な特権アクセスを付与することが必要になる場合がよくあります。多くの顧客にとって、これは、このようなユーザーが管理者特権で行っていることを十分に監視できないため、クラウドでホストされるリソースに対するセキュリティ リスクの増大になります。さらに、特権アクセス権を持つユーザー アカウントが侵害されると、全体的なクラウド セキュリティに影響を与える可能性があります。Azure AD Privileged Identity Management はこのリスクの解決に役立ちます。
 
@@ -45,9 +45,9 @@ Azure AD Privileged Identity Management では、次の組み込み Azure Active
 
 [Azure ポータル](https://portal.azure.com/)にアクセスすることで、Azure AD Privileged Identity Management の使用を開始できます。現在、Azure AD Privileged Identity Management は Azure ポータルのみに表示されます。クラシック ポータルには表示されません。ディレクトリの Azure AD Privileged Identity Management の有効化は、グローバル管理者が行う必要があります。
 
-![][1]
+![Azure ポータル - 特権 ID の検索 - スクリーンショット][1]
 
-この拡張機能を初期化したユーザーは、自動的にディレクトリの最初の**セキュリティ管理者**になります。セキュリティ管理者だけが、この拡張機能にアクセスして他の管理者のアクセスを管理できます。
+[拡張機能を初期化した](active-directory-privileged-identity-management-getting-started.md)ユーザーは、自動的にディレクトリの最初の**セキュリティ管理者**になります。セキュリティ管理者だけが、この拡張機能にアクセスして他の管理者のアクセスを管理できます。
 
 初期化中に、Azure AD Privileged Identity Management のタイルが Azure ポータルのスタート画面に追加されます。
 
@@ -59,13 +59,13 @@ Azure AD Privileged Identity Manager には、次のような重要な情報を�
 - 一時的管理者および永続的管理者の数
 - 管理者のアクセスの履歴
 
-![][2]
+![PIM ダッシュボード - スクリーンショット][2]
 
 ## 特権ロールの管理
 
 Azure AD Privileged Identity Management では、各ロールに永続的または一時的な管理者を追加または削除することによって、管理者を管理できます。
 
-![][3]
+![PIM の管理者の追加/削除 - スクリーンショット][3]
 
 ## ロール アクティブ化設定の構成
 
@@ -75,7 +75,7 @@ Azure AD Privileged Identity Management では、各ロールに永続的また�
 - ロールのアクティブ化の通知
 - ロール アクティブ化プロセス中にユーザーが提供する必要のある情報  
 
-![][4]
+![PIM 設定 - 管理者アクティブ化 - スクリーンショット][4]
 
 ## ロールのアクティブ化  
 
@@ -87,13 +87,13 @@ Azure AD Privileged Identity Management では、各ロールに永続的また�
 
 ロールのアクティブ化には時間制限があります。ロール アクティブ化の設定では、アクティブ化の期間だけでなく、ロールをアクティブ化するために管理者が指定する必要がある情報を構成できます。
 
-![][5]
+![PIM 管理者のロール アクティブ化要求 - スクリーン ショット][5]
 
 ## ロール アクティブ化の履歴
 
 Azure AD Privileged Identity Management を使用すると、特権ロールの割り当ての変更およびロールのアクティブ化の履歴を追跡することもできます。これは、監査ログ オプションを使用して行うことができます。
 
-![][6]
+![PIM アクティブ化履歴 - スクリーンショット][6]
 
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
@@ -106,4 +106,4 @@ Azure AD Privileged Identity Management を使用すると、特権ロールの�
 [5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
 [6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

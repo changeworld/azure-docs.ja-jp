@@ -21,11 +21,11 @@
 
 Hybrid Connection Manager (HCM) は、ワンクリック インストーラーであり、ネットワーク内のファイアウオールの背後にある IIS サーバーにインストールされます。HCM は、Azure Service Bus リレーを使用して、Azure 内にコネクタを持つオンプレミス システムを認証します。
 
-> [AZURE.NOTE]Hybrid Connection Manager は、ファイアウォールの背後にあるオンプレミス リソースに接続する場合にのみ必要です。オンプレミス システムに接続しない場合、Hybrid Connection Manager は必要ありません。
+> [AZURE.NOTE] Hybrid Connection Manager は、ファイアウォールの背後にあるオンプレミス リソースに接続する場合にのみ必要です。オンプレミス システムに接続しない場合、Hybrid Connection Manager は必要ありません。
 
 開始するには、以下が必要です。
 
-- Azure Service Bus リレー名前空間の SAS 接続文字列。どのレベルにリレーが含まれるかを特定するには、「[Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
+- Azure Service Bus リレー名前空間の SAS 接続文字列。どのレベルにリレーが含まれるかを特定するには、「[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
 - オンプレミス システムのサインイン情報 (ユーザー名とパスワード)。たとえば、オンプレミスの SQL Server に接続する場合は、SQL Server のログイン アカウントとパスワードが必要です。
 - オンプレミス サーバー情報 (ポート番号とサーバー名)たとえば、オンプレミスの SQL Server に接続する場合は SQL Server の名前と TCP ポート番号が必要です。
 
@@ -56,7 +56,7 @@ Azure ポータルで、Service Bus のルート SAS 接続文字列をコピー
 
 ここでもう一度コネクタを参照すると、ハイブリッド接続ステータスが **[接続済み]** になっています。場合によっては、コネクタを閉じて再度開く必要があります。<br/> 。![][4]
 
-> [AZURE.NOTE]セカンダリ接続文字列に切り替えるには、ハイブリッド接続のセットアップをもう一度実行し、**セカンダリ構成文字列** を入力します。
+> [AZURE.NOTE] セカンダリ接続文字列に切り替えるには、ハイブリッド接続のセットアップをもう一度実行し、**セカンダリ構成文字列** を入力します。
 
 
 ## TCP ポートとセキュリティ
@@ -119,7 +119,7 @@ Azure App Service コネクタにも、Hybrid Connection Manager があります
 
 ## 詳細
 
-[Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/> [Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)
+[Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/> [Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)
 
 
 
@@ -133,4 +133,4 @@ Azure App Service コネクタにも、Hybrid Connection Manager があります
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

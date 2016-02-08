@@ -5,7 +5,7 @@
 
 1. 「[How to Register with the Azure Active Directory (Azure Active Directory に登録する方法)]」のトピックに従って、Azure Active Directory にアプリケーションを登録します。
 
-2. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、Azure Active Directory の展開画面に戻り、目的のアクティブ ディレクトリをクリックします。
+2. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、Azure Active Directory 拡張機能に戻り、目的のアクティブ ディレクトリをクリックします。
 
 3. **[アプリケーション]** タブをクリックし、目的のアプリケーションをクリックします。
 
@@ -38,4 +38,4 @@
 <!-- URLs. -->
 [How to Register with the Azure Active Directory (Azure Active Directory に登録する方法)]: ../articles/mobile-services/mobile-services-how-to-register-active-directory-authentication.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -59,9 +59,9 @@ Azure 無料試用版プランでは、無償試用版を 1 回しかアクテ�
 
 ご提案:
 
-過去に Azure サブスクリプションをアクティブ化しているために無料試用版のアクティブ化に失敗した場合は、Azure 無料試用版プランではなく、[Microsoft Azure プランの詳細](http://azure.microsoft.com/support/legal/offer-details/)に一覧されている別の使用可能な Azure プランを使用してください。
+過去に Azure サブスクリプションをアクティブ化しているために無料試用版のアクティブ化に失敗した場合は、Azure 無料試用版プランではなく、[Microsoft Azure プランの詳細](https://azure.microsoft.com/support/legal/offer-details/)に一覧されている別の使用可能な Azure プランを使用してください。
 
 ## Azure サポートへのお問い合わせ
 前述のトラブルシューティング手順を実行してもサインアップに関する問題が解決しない場合は、[Azure サポート](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)にお問い合わせください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -13,7 +13,7 @@
 	ms.workload="data-management"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="hero-article"
+	ms.topic="article"
 	ms.date="11/16/2015"
 	ms.author="jodebrui"/>
 
@@ -52,7 +52,7 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 新しい Premium データベースに bacpac をインポートします。
 
-1. Azure [ポータル](http://portal.azure.com/)で次の操作を行います。
+1. Azure [ポータル](https://portal.azure.com/)で次の操作を行います。
  - サーバーに移動します。
  - [[データベースのインポート]](sql-database-import.md) オプションを選択します。
  - Premium 価格レベルを選択します。
@@ -159,7 +159,7 @@ INSERT INTO <new_memory_optimized_table>
 
 ### ネイティブ コンパイル向けの一般的な CREATE PROCEDURE
 
-ネイティブ コンパイル ストアド プロシージャを作成する T-SQL ステートメントは、一般的に、次のテンプレートのようになります。
+ネイティブ コンパイル ストアド プロシージャを作成する T-SQL は、一般的に、次のテンプレートのようになります。
 
 ```
 CREATE PROCEDURE schemaname.procedurename
@@ -220,7 +220,7 @@ CREATE PROCEDURE schemaname.procedurename
 
 運用環境でインメモリ機能の実装によるパフォーマンスへの影響を監視することを検討してください。
 
-- [インメモリ ストレージを監視する](https://azure.microsoft.com/documentation/articles/sql-database-in-memory-oltp-monitoring/)
+- [インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)
 
 - [動的管理ビューを使用した Azure SQL Database の監視](sql-database-monitoring-with-dmvs.md)
 
@@ -233,4 +233,4 @@ CREATE PROCEDURE schemaname.procedurename
 
 - [メモリ最適化アドバイザー](http://msdn.microsoft.com/library/dn284308.aspx)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -82,7 +82,7 @@ MFA サーバーによる、オンプレミス アプリケーション用の MF
 
 ##Azure Multi-Factor Authentication の入手方法
 
-Office 365 ユーザーと Azure 管理者に提供される機能だけでなく、Azure Multi-Factor Authentication で提供されるすべての機能を希望する場合は、次のようなオプションがあります。
+Office 365 ユーザーと Azure 管理者に提供される機能だけでなく、Azure Multi-Factor Authentication で提供されるすべての機能を利用するには、次のような方法があります。
 
 1.	Azure Multi-Factor Authentication のライセンスを購入し、ユーザーに割り当てる。
 2.	Azure Active Directory Premium や Enterprise Mobility Suite など、Azure Multi-Factor Authentication がバンドルされたライセンスを購入し、ユーザーに割り当てる。
@@ -94,7 +94,7 @@ Azure Multi-Factor Authentication プロバイダーには次の 2 つの使用�
 - **ユーザーごと**。通常は、定期的に認証が必要な固定数の従業員用に Multi-Factor Authentication を有効にすることを望む企業向けです。
 - **認証ごと**。通常は、認証を必要とする頻度が低い外部ユーザーの大規模グループ用に Multi-Factor Authentication を有効にすることを望む企業向けです。
 
-料金の詳細については、[「Azure MFA の料金」](http://azure.microsoft.com/pricing/details/multi-factor-authentication/)を参照してください。
+料金の詳細については、[「Azure MFA の料金」](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)を参照してください。
 
 組織に最適なシートごとまたは使用量ベースのモデルを選択してください。作業を開始するには、[「使用の開始」](multi-factor-authentication-get-started.md)を参照してください。
 
@@ -102,4 +102,4 @@ Azure Multi-Factor Authentication プロバイダーには次の 2 つの使用�
 
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

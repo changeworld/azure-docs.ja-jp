@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/06/2015" 
+	ms.date="01/26/2016" 
 	ms.author="spelluru"/>
 
 # Data Factory .NET SDK を使用して Azure Data Factory を作成、監視、管理する
@@ -86,7 +86,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 
         DataFactoryManagementClient client = new DataFactoryManagementClient(aadTokenCredentials, resourceManagerUri);
 
-	> [AZURE.NOTE]**resourcegroupname** は Azure リソース グループの名前に置き換えます。リソース グループを作成するには、[New-AzureResourceGroup](https://msdn.microsoft.com/library/Dn654594.aspx) コマンドレットを使用します。
+	> [AZURE.NOTE] **resourcegroupname** は Azure リソース グループの名前に置き換えます。リソース グループを作成するには、[New-AzureResourceGroup](https://msdn.microsoft.com/library/Dn654594.aspx) コマンドレットを使用します。
 
 7. **データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。
 
@@ -106,7 +106,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 
 8. **リンクされたサービス**を作成する次のコードを **Main** メソッドに追加します。
 
-	> [AZURE.NOTE]**ConnectionString** には、Azure ストレージ アカウントの**アカウント名**と**アカウント キー**を使用します。
+	> [AZURE.NOTE] **ConnectionString** には、Azure ストレージ アカウントの**アカウント名**と**アカウント キー**を使用します。
 
         // create a linked service
         Console.WriteLine("Creating a linked service");
@@ -379,7 +379,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 
 
 
-> [AZURE.NOTE]上記のサンプル コードでは、Azure 資格情報を入力するためのダイアログ ボックスが起動されます。ダイアログ ボックスを使用せずにプログラムでサインインする必要がある場合は、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md#authenticate-service-principal-with-certificate---powershell)」を参照してください。
+> [AZURE.NOTE] 上記のサンプル コードでは、Azure 資格情報を入力するためのダイアログ ボックスが起動されます。ダイアログ ボックスを使用せずにプログラムでサインインする必要がある場合は、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md#authenticate-service-principal-with-certificate---powershell)」を参照してください。
 
 
 [data-factory-introduction]: data-factory-introduction.md
@@ -392,4 +392,4 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

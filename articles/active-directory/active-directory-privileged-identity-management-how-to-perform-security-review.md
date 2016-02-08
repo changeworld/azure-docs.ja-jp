@@ -3,7 +3,7 @@
    description="Azure Privileged Identity Management 拡張機能で特権 ID にロールを追加する方法について説明します。"
    services="active-directory"
    documentationCenter=""
-   authors="IHenkel"
+   authors="kgremban"
    manager="stevenpo"
    editor=""/>
 
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/21/2015"
-   ms.author="inhenk"/>
+   ms.date="01/21/2016"
+   ms.author="kgremban"/>
 
 # Azure Privileged Identity Management: セキュリティ レビューの実行方法
 
-## セキュリティ レビューの実行
+
 [セキュリティ レビューが開始](active-directory-privileged-identity-management-how-to-start-security-review.md)されていると、非常に簡単に特権付きアクセスを確認できます。
 
 ## レビュー担当者の場合: アクセスの許可または拒否
@@ -49,7 +49,7 @@ Excel または CSV ファイルを使用できる他のプログラムで使用
 
 ## レビューの削除
 
-> AZURE.WARNING [削除の前に注意は表示されないので、本当に削除してよいレビューか確認してください。]
+> [AZURE.WARNING] 削除の前に注意は表示されないので、*本当に削除してよいのか*確認してください。
 
 1. PIM ダッシュボードに戻ります。
 2. ダッシュボードの **[セキュリティ レビュー]** セクションをクリックします。**[セキュリティ レビュー]** ブレードが表示されます。
@@ -60,4 +60,4 @@ Excel または CSV ファイルを使用できる他のプログラムで使用
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

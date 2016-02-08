@@ -32,7 +32,7 @@
 
 • Linux VM の場合 -- [Azure での動作保証済み Linux ディストリビューション](http://go.microsoft.com/fwlink/p/?LinkId=393551)
 
-Windows クライアント イメージについては、 MSDN Azure 特典のサブスクライバーと MSDN 開発テスト用従量課金制プラン (開発およびテスト用) のサブスクライバーを対象に、特定のバージョンの Windows 7 および Windows 8.1 が利用可能となっています。詳細については、「[Windows Client images for MSDN subscribers](http://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)」を参照してください
+Windows クライアント イメージについては、 MSDN Azure 特典のサブスクライバーと MSDN 開発テスト用従量課金制プラン (開発およびテスト用) のサブスクライバーを対象に、特定のバージョンの Windows 7 および Windows 8.1 が利用可能となっています。詳細については、「[Windows Client images for MSDN subscribers](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)」を参照してください
 
 ## 仮想マシンではどれくらいのストレージ容量を使用できますか。
 
@@ -118,7 +118,7 @@ Azure ではウイルス対策ソリューションとしていくつかのオ�
 
 - [Azure VM に Symantec Endpoint Protection をインストールし、構成する方法](http://go.microsoft.com/fwlink/p/?LinkId=404207)
 - [Azure VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](http://go.microsoft.com/fwlink/p/?LinkId=404206)
-- [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](http://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
+- [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## バックアップと回復についてはどのようなオプションがありますか。
 
@@ -136,7 +136,7 @@ VM が実行中または停止状態のときには料金が発生しますが�
 - Stop-AzureVM コマンドレットを使用する (Azure PowerShell モジュールで利用可能)。
 - サービス管理 REST API でロールのシャット ダウン操作を使用し、PostShutdownAction 要素に StoppedDeallocated を指定する。
 
-詳細については、「[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
+詳細については、「[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
 
 ## Azure では、メンテナンスのために VM が再起動されることはありますか。
 
@@ -146,7 +146,7 @@ Azure では、Azure データ センターでの定期的な計画メンテナ�
 
 スタンドアロン VM (可用性セットに含まれない VM) については、計画メンテナンスの 1 週間前までに Azure からサブスクリプションのサービス管理者に電子メールが送られ、更新中に VM が再起動される可能性がある旨が通知されます。その場合、VM 上で実行されているアプリケーションにダウンタイムが発生する可能性があります。
 
-計画メンテナンスのために再起動が発生した場合、利用者は Azure クラシック ポータルまたは Azure PowerShell を使用して再起動のログを確認できます。詳細については、「[Viewing VM Reboot Logs (VM の再起動ログの確認)](http://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/)」を参照してください。
+計画メンテナンスのために再起動が発生した場合、利用者は Azure クラシック ポータルまたは Azure PowerShell を使用して再起動のログを確認できます。詳細については、「[Viewing VM Reboot Logs (VM の再起動ログの確認)](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/)」を参照してください。
 
 冗長性を確保する必要がある場合は、同様に構成された VM を同じ可用性セット内に 2 つ以上配置してください。そうすることで、計画メンテナンスや計画外メンテナンスの際にも、最低 1 つの VM を利用できるようになります。Azure では、この構成について一定レベルの VM 可用性を保証しています。詳細については、「[仮想マシンの可用性管理](virtual-machines-manage-availability.md)」を参照してください。
 
@@ -158,4 +158,4 @@ Azure では、Azure データ センターでの定期的な計画メンテナ�
 
 [Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

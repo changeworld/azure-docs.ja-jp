@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/16/2015"
+	ms.date="01/26/2016"
 	ms.author="maheshu"/>
 
 
@@ -56,4 +56,10 @@ Contoso には、Web フロントエンド、SQL Server、およびバックエ�
 
 - アプリケーションが認証でユーザー名とパスワードを使用していることを確認します。証明書/スマート カード ベースの認証は、Azure AD ドメイン サービスでサポートされていません。
 
-<!---HONumber=AcomDC_1217_2015-->
+
+## Azure RemoteApp
+Azure RemoteApp は、ドメイン参加コレクションを作成する Contoso の管理者を有効にします。これにより、Azure RemoteApp で処理されるリモート アプリケーションがドメイン参加コンピューターで実行されたり、Windows 統合認証を使用して他のリソースにアクセスしたりできるようになります。Contoso は Azure AD ドメイン サービスを使用して、Azure RemoteApp ドメイン参加コレクションによって使用される管理対象ドメインを提供することができます。
+
+このデプロイメント シナリオの詳細については、「[Lift-and-shift your workloads with Azure RemoteApp and Azure AD Domain Services (Azure RemoteApp と Azure AD ドメイン サービスを使用したワークロードのリフト アンド シフト)](http://blogs.msdn.com/b/rds/archive/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services.aspx)」というタイトルのリモート デスクトップ サービスのブログを参照してください。
+
+<!---HONumber=AcomDC_0128_2016-->

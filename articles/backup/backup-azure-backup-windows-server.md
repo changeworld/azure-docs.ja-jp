@@ -14,13 +14,13 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="article"
-	 ms.date="01/19/2016"
+	 ms.date="01/22/2016"
 	 ms.author="jimpark;"/>
 
 # Windows Server または Windows クライアントのファイルとフォルダーを Azure にバックアップする
 この簡単な手順で Windows のファイルとフォルダーを Azure にバックアップできます。まだ実行していない場合は、[前提条件](backup-configure-vault.md#before-you-start)を完了して、Windows コンピューターをバックアップする環境を準備してから、操作を続行します。
 
-## ファイルのバックアップ
+## ファイルとフォルダーのバックアップ
 1. コンピューターが登録されたら、Microsoft Azure Backup mmc スナップインを開きます。
 
     ![Search result](./media/backup-azure-backup-windows-server/result.png)
@@ -52,4 +52,4 @@
 - [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

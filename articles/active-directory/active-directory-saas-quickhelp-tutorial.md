@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="prasannas"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2015"
+	ms.date="01/26/2016"
 	ms.author="jeedes"/>
 
 
@@ -35,7 +35,7 @@ QuickHelp と Azure AD の統合を構成するには、次のものが必要で
 - QuickHelp でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -93,7 +93,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
  
      a.**[サインオン URL]** ボックスに、ユーザーが QuickHelp サイトへのサインオンに使用する URL を入力します (例: *https://quickhelp.com/bsiazure/*))。
 
-     >[AZURE.NOTE]サインオン URL の値がわからない場合は、QuickHelp サポート チームに問い合わせてください。
+     >[AZURE.NOTE] サインオン URL の値がわからない場合は、QuickHelp サポート チームに問い合わせてください。
 
      b.**[次へ]** をクリックします。
 
@@ -107,7 +107,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 2. 上部のメニューで **[管理者]** をクリックします。<br><br>![シングル サインオンの構成][21]<br>
 
 
-1. **[QuickHelp の管理者]** メニューの **[設定]** をクリックします。<br><br>![シングル サインオンの構成][22]<br>
+1. **[QuickHelp の管理者]** メニューの **[設定]** をクリックします。<br><br>![Configure Single Sign-On][22]<br>
 
 1. **[認証設定]** をクリックします。
 
@@ -255,4 +255,4 @@ QuickHelp では、ジャストインタイム プロビジョニングがサポ
 [401]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_401.png
 [402]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_402.png
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

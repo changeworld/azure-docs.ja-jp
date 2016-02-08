@@ -46,7 +46,7 @@ Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618
 
 ##サンプルのダウンロード
 
-[ここ](http://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)からサンプルを取得し、実行します。
+[ここ](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)からサンプルを取得し、実行します。
 
 ##例
 
@@ -147,4 +147,4 @@ Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618
 
 [Media Encoder Standard と .NET を使用してサムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md) [Media Services でのエンコーディングの概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -27,7 +27,7 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 
 ## 前提条件
 
-- **Azure アカウント** - [Microsoft Azure](http://azure.microsoft.com/) アカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
+- **Azure アカウント** - [Microsoft Azure](https://azure.microsoft.com/) アカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
 
 
 ## ステップ 1: コンテナーの作成
@@ -130,4 +130,4 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 
 質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

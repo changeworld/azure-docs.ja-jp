@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2015" 
+    ms.date="01/26/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Mindflash の統合
@@ -86,7 +86,7 @@
 
 5.  Mindflash サポート チームに、メタデータ ファイルを送信します。
 
-    >[AZURE.NOTE]シングル サインオンの構成は、Mindflash サポート チームが実行する必要があります。構成が完了すると、サポート チームから通知が届きます。
+    >[AZURE.NOTE] シングル サインオンの構成は、Mindflash サポート チームが実行する必要があります。構成が完了すると、サポート チームから通知が届きます。
 
 6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -132,4 +132,4 @@ Azure AD ユーザーが Mindflash にログインできるようにするには
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -30,7 +30,7 @@ DevTest ラボ *アーティファクト*を使用すると、VM の作成時に
 
 ## アーティファクトを含む VM の追加
 
-1. [Azure プレビュー ポータル](http://portal.azure.com)にサインインします。
+1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
 
 1. **[参照]** をタップし、一覧の **[DevTest ラボ]** をタップします。
 
@@ -98,4 +98,4 @@ VM にアーティファクトを追加して構成する際に、**[アーテ�
 
 [VM のカスタム アーティファクトの作成](devtest-lab-artifact-author.md)方法を学習します。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

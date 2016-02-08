@@ -59,9 +59,9 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 構成を開始する前に、以下がそろっていることを確認します。
 
-- Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+- Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-- Azure PowerShell コマンドレット (1.0 以上)。このバージョンは、[ダウンロード ページ](http://azure.microsoft.com/downloads/)の「Windows PowerShell」セクションからダウンロードしてインストールできます。このドキュメントは、PowerShell 1.0 以降を対象に記述しています。この構成に必要なコマンドレットは、以前のバージョンにはありません。
+- Azure PowerShell コマンドレット (1.0 以上)。このバージョンは、[ダウンロード ページ](https://azure.microsoft.com/downloads/)の「Windows PowerShell」セクションからダウンロードしてインストールできます。このドキュメントは、PowerShell 1.0 以降を対象に記述しています。この構成に必要なコマンドレットは、以前のバージョンにはありません。
 
 - Azure リソース マネージャーおよび PowerShell の使用方法に精通していない場合は、[この記事](../articles/powershell-azure-resource-manager.md)を参照してください。
 
@@ -136,4 +136,4 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 		Get-AzureRmVirtualNetworkGatewayConnection -Name "Connection1" -ResourceGroupName "ForcedTunneling"
 		
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

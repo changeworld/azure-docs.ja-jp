@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="12/02/2015"
+   ms.date="01/21/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
@@ -50,7 +50,7 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 **新しいプレビュー機能:**
 
 - [Azure AD Connect Health for Sync](active-directory-aadconnect-health-sync.md)。
-- [Azure AD Domain Services](active-directory-ds-getting-started.md) のパスワード同期がサポートされました。
+- [Azure AD Domain Services](active-directory-get-started.md) のパスワード同期がサポートされました。
 
 **新しくサポートされたシナリオ:**
 
@@ -209,4 +209,4 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

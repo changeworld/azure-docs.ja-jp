@@ -60,7 +60,7 @@ Azure の仮想マシンで実行されている SQL Server への接続の構�
 
 これでクライアントからインターネット経由での接続は有効になりますが、すべてのユーザーが SQL Server に接続できるわけではありません。外部のクライアントは、ユーザー名とパスワードを修正する必要があります。セキュリティを強化するために、既知のポート 1433 を仮想マシンのパブリック エンドポイントに使用しないでください。また可能であれば、エンドポイントに ACL を追加して、許可されたクライアントのみにトラフィックを制限することを検討してください。エンドポイントで ACL を使用する手順については、「[エンドポイントの ACL の管理](virtual-machines-set-up-endpoints.md#manage-the-acl-on-an-endpoint)」を参照してください。
 
->[AZURE.NOTE]この手法を使用して SQL Server と通信する場合は、返されるすべてのデータがデータセンターからの送信トラフィックと見なされることに注意してください。このトラフィックには、通常の[送信データ転送価格](http://azure.microsoft.com/pricing/details/data-transfers)が適用されます。同じ Azure データ センター内の別のマシンまたはクラウド サービスからこの手法を使用する場合でも、やはりトラフィックが Azure のパブリック ロード バランサーを経由するため、同様の価格が適用されます。
+>[AZURE.NOTE] この手法を使用して SQL Server と通信する場合は、返されるすべてのデータがデータセンターからの送信トラフィックと見なされることに注意してください。このトラフィックには、通常の[送信データ転送価格](https://azure.microsoft.com/pricing/details/data-transfers/)が適用されます。同じ Azure データ センター内の別のマシンまたはクラウド サービスからこの手法を使用する場合でも、やはりトラフィックが Azure のパブリック ロード バランサーを経由するため、同様の価格が適用されます。
 
 ### 同一仮想ネットワーク内で SQL Server に接続する方法
 
@@ -110,4 +110,4 @@ Azure の仮想マシンで実行されている SQL Server のセキュリテ�
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

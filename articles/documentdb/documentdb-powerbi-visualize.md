@@ -66,38 +66,38 @@ PowerBI.com でレポートを共有するには、PowerBI.com のアカウン�
 
 DocumentDB アカウントから火山データを取得し、次のような対話型の Power BI レポートでデータを視覚化する必要があります。
 
-![Power BI Desktop のデータを視覚化する火山レポート](./media/documentdb-powerbi-visualize/power_bi_connector_pbireportfinal.png)
+![この Power BI チュートリアルを Power BI コネクタを使用して完了することで、Power BI Desktop 火山レポートでデータを視覚化できます。](./media/documentdb-powerbi-visualize/power_bi_connector_pbireportfinal.png)
 
 試してみる準備はできましたか。 それでは始めましょう。
 
 
 1. ワークステーションで Power BI Desktop を実行します。
-2. Power BI Desktop を起動すると、*ようこそ* 画面が表示されます。
+2. Power BI Desktop を起動すると、*ようこそ*画面が表示されます。
 
-	![Power BI Desktop 「ようこそ」 画面](./media/documentdb-powerbi-visualize/power_bi_connector_welcome.png)
+	![Power BI Desktop のようこそ画面- Power BI コネクタ](./media/documentdb-powerbi-visualize/power_bi_connector_welcome.png)
 
 3. *ようこそ*画面から直接、**データを取得し**、**最近使ったソース**を確認し、**他のレポートを開く**ことができます。右上隅の [X] をクリックして画面を閉じます。Power BI Desktop の **[レポート]** ビューが表示されます。
 
-	![Power BI Desktop レポート ビュー](./media/documentdb-powerbi-visualize/power_bi_connector_pbireportview.png)
+	![Power BI Desktop のレポート ビュー- Power BI コネクタ](./media/documentdb-powerbi-visualize/power_bi_connector_pbireportview.png)
 
 4. **[ホーム]** リボンをクリックし、**[データの取得]** をクリックします。**[データの取得]** ウィンドウが表示されます。
 
 5. **[Azure]** をクリックし、**[Microsoft Azure DocumentDB (ベータ版)]** を選択して、**[接続]** をクリックします。**[Microsoft Azure DocumentDB 接続]** ウィンドウが表示されます。
 
-	![Power BI Desktop データの取得](./media/documentdb-powerbi-visualize/power_bi_connector_pbigetdata.png)
+	![Power BI Desktop のデータの取得 - Power BI コネクタ](./media/documentdb-powerbi-visualize/power_bi_connector_pbigetdata.png)
 
 6. 次のように、データを取得する DocumentDB アカウント エンドポイント URL を指定し、**[OK]** をクリックします。URL は、Azure ポータルの **[キー]** ブレードで URI ボックスから取得するか、上記で指定されたデモ アカウント情報を使用することができます。詳細については、[キー](documentdb-manage-account.md#keys)に関するページを参照してください。
 
 
 	*注: このチュートリアルでは、オプションのフィールドであるデータベース名、コレクション名、および SQL ステートメントは指定しません。代わりに、ナビゲーターを使用して、データを取得するデータベースとコレクションを選択します。*
 
-    ![Power BI Desktop 接続ウィンドウ](./media/documentdb-powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
+    ![DocumentDB Power BI コネクタの Power BI チュートリアル - Desktop Connect ウィンドウ](./media/documentdb-powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
 
 7. このエンドポイントに初めて接続した場合は、アカウント キーの入力を求められます。アカウント キーを入力し、**[接続]** をクリックします。
 	
 	*注: レポートを作成する際は読み取り専用キーを使用することをお勧めします。これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。読み取り専用キーは、Azure ポータルの [読み取り専用キー] ブレードで取得できます。また、上記のデモ アカウント情報を使用することもできます。*
 
-    ![Power BI Desktop アカウント キーL](./media/documentdb-powerbi-visualize/power_bi_connector_pbidocumentdbkey.png)
+    ![DocumentDB Power BI コネクタの Power BI チュートリアル - アカウント キー](./media/documentdb-powerbi-visualize/power_bi_connector_pbidocumentdbkey.png)
 
 8. アカウントが正常に接続されると、**ナビゲーター**が表示されます。**ナビゲーター**には、アカウントで利用できるデータベースの一覧が表示されます。
 9. レポートのデータを取得するデータベースをクリックして展開します。データベースの下にコレクションの一覧が表示されます。  
@@ -106,7 +106,7 @@ DocumentDB アカウントから火山データを取得し、次のような対
 
 	*注: プレビュー ウィンドウに、**Record** アイテムの一覧が表示されます。Power BI では、ドキュメントは **Record** タイプとして表されます。同様に、ドキュメント内の入れ子になった JSON ブロックも、**Record** として表されます。*
 
-    ![Power BI Desktop ナビゲーター](./media/documentdb-powerbi-visualize/power_bi_connector_pbinavigator.png)
+    ![DocumentDB Power BI コネクタの Power BI チュートリアル - ナビゲーター ウィンドウ](./media/documentdb-powerbi-visualize/power_bi_connector_pbinavigator.png)
 
 11. データを変換するために、**[編集]** をクリックしてクエリ エディターを起動します。
 
@@ -115,20 +115,20 @@ DocumentDB アカウントから火山データを取得し、次のような対
 
 2. **[ドキュメント]** 列ヘッダーの右側にある展開コントロールをクリックします。フィールドの一覧を示すコンテキスト メニューが表示されます。Volcano Name、Country、Region、Location、Elevation、Type、Status、Last Know Eruption など、レポートに必要なフィールドを選択し、**[OK]** をクリックします。
     
-	![Power BI Desktop ドキュメント展開](./media/documentdb-powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png)
+	![DocumentDB Power BI コネクタの Power BI チュートリアル - ドキュメントの展開](./media/documentdb-powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png)
 
 3. 中央のウィンドウに、選択したフィールドを含む結果のプレビューが表示されます。
 
-	![Power BI Desktop 一括結果](./media/documentdb-powerbi-visualize/power_bi_connector_pbiresultflatten.png)
+	![DocumentDB Power BI コネクタの Power BI チュートリアル - フラット化された結果](./media/documentdb-powerbi-visualize/power_bi_connector_pbiresultflatten.png)
 
 4. この例では、Location プロパティは、ドキュメント内の GeoJSON ブロックです。ご覧のように、Power BI Desktop では Location は **Record** タイプとして表されます。
 5. [Location] 列ヘッダーの右側にある展開コントロールをクリックします。type フィールドと coordinates フィールドを含むコンテキスト メニューが表示されます。coordinates フィールドを選択して **[OK]** をクリックします。
 
-    ![Power BI Desktop 場所のレコード](./media/documentdb-powerbi-visualize/power_bi_connector_pbilocationrecord.png)
+    ![DocumentDB Power BI コネクタの Power BI チュートリアル - 場所レコード](./media/documentdb-powerbi-visualize/power_bi_connector_pbilocationrecord.png)
 
 6. 中央のウィンドウに、**List** タイプの [coordinates] 列が表示されます。このチュートリアルの冒頭に示されているように、ここで使用する GeoJSON データは、Latitude 値と Longitude 値が coordinates 配列に記録された Point タイプです。
 
-	*注: coordinates[0] 要素は経度を表し、coordinates[1] は緯度を表します。* ![Power BI Desktop 座標リスト](./media/documentdb-powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
+	*注: coordinates[0] 要素は経度を表し、coordinates[1] は緯度を表します。* ![DocumentDB Power BI コネクタの Power BI チュートリアル - 座標一覧](./media/documentdb-powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
 
 7. coordinates 配列をフラット化するために、LatLong という **カスタム列**を作成します。**[列の追加]** リボンを選択し、**[カスタム列の追加]** をクリックします。**[カスタム列の追加]** ウィンドウが表示されます。
 
@@ -138,24 +138,24 @@ DocumentDB アカウントから火山データを取得し、次のような対
 	
     *注: DAX 関数など Data Analysis Expressions(DAX) の詳細については、[Power BI Desktop における DAX の基本](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop)に関するページを参照してください。*
 
-    ![Power BI Desktop カスタム列](./media/documentdb-powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
+    ![DocumentDB Power BI コネクタの Power BI チュートリアル - カスタム列の追加](./media/documentdb-powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 
 10. これで、中央のウィンドウには Latitude と Longitude の値がコンマ区切りで設定された新しい [LatLong] 列が表示されます。
 
-	![Power BI Desktop カスタム LatLong](./media/documentdb-powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
+	![DocumentDB Power BI コネクタの Power BI チュートリアル - カスタム LatLong 列](./media/documentdb-powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
 
 11. このように、データをフラット化して表形式に変換することができました。クエリ エディターのすべての機能を活用して、DocumentDB のデータを整形および変換することができます。たとえば、Elevation のデータ型を**10 進数**に変更するには、**[ホーム]** リボンで **[データ型]** を変更します。
 
-    ![Power BI Desktop 種類の変更](./media/documentdb-powerbi-visualize/power_bi_connector_pbichangetype.png)
+    ![DocumentDB Power BI コネクタの Power BI チュートリアル - 列の型の変更](./media/documentdb-powerbi-visualize/power_bi_connector_pbichangetype.png)
 
 12. **[終了して適用]** をクリックしてデータ モデルを保存します。
     
-    ![Power BI Desktop 終了して適用](./media/documentdb-powerbi-visualize/power_bi_connector_pbicloseapply.png)
+    ![DocumentDB Power BI コネクタの Power BI チュートリアル - 閉じて適用](./media/documentdb-powerbi-visualize/power_bi_connector_pbicloseapply.png)
 
 ## レポートを作成する
 Power BI Desktop レポート ビューは、データを視覚化するためにレポート作成を開始できる場所です。**[レポート]** キャンバスにフィールドをドラッグ アンド ドロップすることにより、レポートを作成できます。
 
-![Power BI Desktop レポート ビュー](./media/documentdb-powerbi-visualize/power_bi_connector_pbireportview2.png)
+![Power BI Desktop のレポート ビュー- Power BI コネクタ](./media/documentdb-powerbi-visualize/power_bi_connector_pbireportview2.png)
  
 レポート ビューには以下が表示されます。
 
@@ -180,7 +180,7 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 
 6. これで、基本的なレポートを作成できました。別の視覚エフェクトを追加することで、レポートをさらにカスタマイズできます。この例では、レポートを対話的にするために Volcano Type スライサーを追加しました。
 
-    ![Power BI Desktop レポート最終](./media/documentdb-powerbi-visualize/power_bi_connector_pbireportfinal.png)
+    ![DocumentDB の Power BI チュートリアルの完了時の最終的な Power BI Desktop レポートのスクリーン ショット](./media/documentdb-powerbi-visualize/power_bi_connector_pbireportfinal.png)
 
 ## レポートを発行して共有する
 レポートを共有するには、PowerBI.com のアカウントが必要です。
@@ -194,4 +194,4 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 - Power BI の詳細については、[ここ](https://support.powerbi.com/knowledgebase)をクリックしてください。
 - DocumentDB の詳細については、[ここ](https://azure.microsoft.com/documentation/services/documentdb/)をクリックしてください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

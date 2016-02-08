@@ -56,10 +56,10 @@ Azure CDN がニーズを満たしていない場合は、Azure で実装され�
 次の表は、さまざまな場所の 1 バイト目の配信にかかる平均時間の例です。ターゲット Web ロールは、Azure 米国西部にデプロイされています。CDN を利用して時間が大きく短縮された場所と、CDN ノードとの近さには強い相関関係があります。Azure CDN ノードの場所の完全な一覧は、「[Azure コンテンツ配信ネットワーク (CDN) ノードの場所](cdn/cdn-pop-locations.md/)」を参照してください。
 
 
-|| 1 バイト目にかかる時間 (ms) (配信元) | 1 バイト目にかかる時間 (CDN) |CDN の時間短縮率 (%)|
+| 1 バイト目にかかる時間 (ms) (配信元) | 1 バイト目にかかる時間 (ms) (CDN) |%CDN 時間の改善|
 |-------------|------------------------|--------------------|------------------|
-|\*サンホセ (カリフォルニア州)| 47.5 | 46.5 | 2 % |
-|\*\*ダレス (バージニア州)| 109 | 40.5 | 169% |
+|\* カリフォルニア州サンホセ| 47.5 | 46.5 | 2 % |
+|\*\* バージニア州ダレス| 109 | 40.5 | 169% |
 |ブエノス アイレス (アルゼンチン)| 210 | 151 | 39%|
 |\*ロンドン (英国)| 195 | 44 | 343%|
 |上海 (中国)| 242 | 206 | 17% |
@@ -281,11 +281,10 @@ URL の書き換えを使用するには、リソースのバンドルにいく�
 ## 詳細情報
 
 
-+ [Azure CDN](http://azure.microsoft.com/services/cdn/)
++ [Azure CDN](https://azure.microsoft.com/services/cdn/)
 + [Azure Content Delievery Network (CDN) Documentation (Azure コンテンツ配信ネットワーク (CDN) のドキュメント)](https://azure.microsoft.com/documentation/services/cdn/)
 + [Web アプリケーションで Azure CDN からコンテンツを配信する](cdn/cdn-serve-content-from-cdn-in-your-web-application/)
 + [クラウド サービスと Azure CDN との統合](cdn/cdn-cloud-service-with-cdn.md/)
-+ [Microsoft Azure コンテンツ配信ネットワークのベスト プラクティス](http://azure.microsoft.com/blog/2011/03/18/best-practices-for-the-windows-azure-content-delivery-network/)
++ [Microsoft Azure コンテンツ配信ネットワークのベスト プラクティス](https://azure.microsoft.com/blog/2011/03/18/best-practices-for-the-windows-azure-content-delivery-network/)
 
-<!---HONumber=AcomDC_1223_2015-->
-
+<!---HONumber=AcomDC_0128_2016-->

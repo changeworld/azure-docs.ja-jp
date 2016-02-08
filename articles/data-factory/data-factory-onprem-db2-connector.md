@@ -31,6 +31,9 @@ Data Management Gateway で DB2 データベースに接続するには、[IBM D
 
 Windows 8 への IBM DB2 Data Server Driver のインストールに関しては、IBM から既知の問題が報告されています。追加のインストール手順が必要になります。Windows 8 での IBM DB2 Data Server Driver の詳細については、[http://www-01.ibm.com/support/docview.wss?uid=swg21618434](http://www-01.ibm.com/support/docview.wss?uid=swg21618434) を参照してください。
 
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+
+
 ## サンプル: DB2 から Azure BLOB にデータをコピーする
 
 下のサンプルで確認できる要素:
@@ -216,13 +219,13 @@ Windows 8 への IBM DB2 Data Server Driver のインストールに関しては
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- | 
 | type | type プロパティを **OnPremisesDB2** に設定する必要があります | はい |
-| server | DB2 サーバーの名前です。 | あり |
+| server | DB2 サーバーの名前です。 | はい |
 | database | DB2 データベースの名前です。 | あり |
 | schema | データベース内のスキーマの名前です。 | いいえ |
-| authenticationType | DB2 データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | あり |
+| authenticationType | DB2 データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | はい |
 | username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ |
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ |
-| gatewayName | Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 | あり |
+| gatewayName | Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 | はい |
 
 オンプレミスの DB2 データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
@@ -263,23 +266,23 @@ DB2 にデータを移動する場合、DB2 型から .NET 型に対する次の
 DB2 データベース型 | .NET Framework 型 
 ----------------- | ------------------- 
 SmallInt | Int16
-整数 | Int32
+Integer | Int32
 BigInt | Int64
 Real | Single
 Double | Double
 Float | Double
-小数点 | 小数点
-DecimalFloat | 小数点
-数値 | 小数点
-日付 | Datetime
-時刻 | TimeSpan
-タイムスタンプ | DateTime
+Decimal | Decimal
+DecimalFloat | Decimal
+Numeric | Decimal
+Date | Datetime
+Time | TimeSpan
+Timestamp | DateTime
 Xml | Byte
 Char | String
 VarChar | String
 LongVarChar | String
 DB2DynArray | String
-バイナリ | Byte
+Binary | Byte
 VarBinary | Byte
 LongVarBinary | Byte
 Graphic | String
@@ -289,17 +292,17 @@ Clob | String
 BLOB | Byte
 DbClob | String
 SmallInt | Int16
-整数 | Int32
+Integer | Int32
 BigInt | Int64
 Real | Single
 Double | Double
 Float | Double
-小数点 | 小数点
-DecimalFloat | 小数点
-数値 | 小数点
-日付 | Datetime
-時刻 | TimeSpan
-タイムスタンプ | DateTime
+Decimal | Decimal
+DecimalFloat | Decimal
+Numeric | Decimal
+Date | Datetime
+Time | TimeSpan
+Timestamp | DateTime
 Xml | Byte
 Char | String
 
@@ -309,4 +312,4 @@ Char | String
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

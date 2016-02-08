@@ -110,7 +110,7 @@ Mobile Engagement で作成した**キャンペーン**がそのように呼び�
 問題を自分で解決できない場合は、次のことを行うことができます。
 
 1. StackOverflow フォーラムと [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/windows/ja-JP/home?forum=azuremobileengagement)の既存のスレッドで実際の問題を検索し、ヒットしない場合はフォーラムで質問してください。 
-2. 不足している機能が見つかった場合は、[UserVoice フォーラム](http://feedback.azure.com/forums/285737-mobile-engagement)で要求を追加するか、要求について投票してください。
+2. 不足している機能が見つかった場合は、[UserVoice フォーラム](https://feedback.azure.com/forums/285737-mobile-engagement/)で要求を追加するか、要求について投票してください。
 3. Microsoft サポートを使用する場合は、次の詳細情報を指定してサポート インシデントを開いてください。 
 	- Azure サブスクリプション ID
 	- プラットフォーム (例: iOS、Android など)
@@ -120,4 +120,4 @@ Mobile Engagement で作成した**キャンペーン**がそのように呼び�
 	- Mobile Engagement SDK のバージョン (例: Android SDK v2.1.0)
 	- 表示されるエラー メッセージとシナリオを含むエラーの詳細
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

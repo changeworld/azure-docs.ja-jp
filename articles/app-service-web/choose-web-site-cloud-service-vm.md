@@ -123,7 +123,7 @@ Web 開発者とデザイナーのために、Azure App Service は、Git や FT
 
 ### <a id="lob"></a>社内ネットワークに接続する必要がある基幹業務アプリケーションがあります。
 
-基幹業務アプリケーションを作成する場合は、Web サイトから社内ネットワーク上のサービスやデータに直接アクセスすることが必要な場合があります。これは、App Service、Cloud Services、および Virtual Machines で、[Azure Virtual Network サービス](/services/virtual-network/)を使用して実現できます。App Service 上では、[VNET 統合機能](http://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)を使用して、見かけ上、社内ネットワークで動作しているかのように Azure アプリケーションを実行することができます。
+基幹業務アプリケーションを作成する場合は、Web サイトから社内ネットワーク上のサービスやデータに直接アクセスすることが必要な場合があります。これは、App Service、Cloud Services、および Virtual Machines で、[Azure Virtual Network サービス](/services/virtual-network/)を使用して実現できます。App Service 上では、[VNET 統合機能](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)を使用して、見かけ上、社内ネットワークで動作しているかのように Azure アプリケーションを実行することができます。
 
 ### <a id="mobile"></a>モバイル クライアント向けの REST API や Web サービスをホストします。
 
@@ -170,7 +170,8 @@ TFS によるコードのデプロイ|○|○|○|
 ETW イベントのリッスン||○|○|
 
 
-> [AZURE.NOTE]アカウントにサインアップする前に Azure App Service を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure App Service で、有効期限付きのスターター アプリを無償ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> [AZURE.NOTE]
+アカウントにサインアップする前に Azure App Service を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure App Service で、有効期限付きのスターター アプリを無償ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 
 ## <a id="nextsteps"></a> 次のステップ
@@ -204,4 +205,4 @@ ETW イベントのリッスン||○|○|
   [Storage]: http://www.windowsazure.com/documentation/services/storage/
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

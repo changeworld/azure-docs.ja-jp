@@ -3,11 +3,18 @@
    description="Windows Server または Windows クライアントからの復元方法について説明します。"
    services="backup"
    documentationCenter=""
-   authors="aashishr"
+   authors="Jim-Parker"
    manager="jwhit"
    editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/21/2015" ms.author="jimpark"; "aashishr"/>
+<tags
+   ms.service="backup"
+   ms.workload="storage-backup-recovery"
+	 ms.tgt_pltfrm="na"
+	 ms.devlang="na"
+	 ms.topic="article"
+	 ms.date="01/25/2016"
+	 ms.author="trinadhk; jimpark; markgal;"/>
 
 # Windows Server または Windows クライアント コンピューターへのファイルの復元
 この記事では、復元操作に必要な 2 種類の手順を説明します。
@@ -64,7 +71,7 @@
 - *ターゲット コンピューター* – データの回復先となるコンピューター。
 - *サンプルの資格情報コンテナー* – *ソース コンピューター*と*ターゲット コンピューター*が登録されているバックアップ資格情報コンテナー。<br/>
 
-> [AZURE.NOTE]コンピューターのバックアップは、以前のバージョンのオペレーティング システムが実行されているコンピューターには復元できません。たとえば、バックアップが Windows 7 コンピューターで行われた場合、Windows 8 以上のコンピューターにそのバックアップを復元できます。ただし、その逆は当てはまりません。
+> [AZURE.NOTE] コンピューターのバックアップは、以前のバージョンのオペレーティング システムが実行されているコンピューターには復元できません。たとえば、バックアップが Windows 7 コンピューターで行われた場合、Windows 8 以上のコンピューターにそのバックアップを復元できます。ただし、その逆は当てはまりません。
 
 1. *ターゲット コンピューター*の **Microsoft Azure Backup** スナップインを開きます。
 2. *ターゲット コンピューター*および*ソース コンピューター*が同じバックアップ資格情報コンテナーに登録されていることを確認します。
@@ -107,6 +114,6 @@
 ## 詳細情報
 - [Azure Backup の概要](http://go.microsoft.com/fwlink/p/?LinkId=222425)
 - [Azure 仮想マシンのバックアップ](backup-azure-vms-introduction.md)
-- [Microsoft ワークロードのバックアップ](backup-azure-dpm-introduction.md)
+- [Microsoft ワークロードのバックアップ ](backup-azure-dpm-introduction.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

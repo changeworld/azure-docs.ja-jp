@@ -22,9 +22,9 @@
 
 ## Azure カスタマー サポートへの問い合わせ
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
 
-または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
+または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 
 ## ランタイムの依存コンポーネントの不足
@@ -67,7 +67,7 @@ Azure は 64 ビット環境です。そのため、32 ビット ターゲット
 
 - Azure 内の有効なストレージ アカウントが `DiagnosticsConnectionString` の設定に指定されていること。既定では、エミュレートされたストレージ アカウントが指定されているため、アプリケーション パッケージをデプロイする前に、この設定を明示的に変更する必要があります。この設定を変更しなかった場合、ロール インスタンスが診断モニターを起動しようとしたときに例外がスローされます。ロール インスタンスが無限にリサイクルされる原因となる場合があります。
 
-- 接続文字列は次の[形式](../storage/storage-configure-connection-string.md)で指定します (プロトコルは HTTPS として指定する)。MyAccountName には該当するストレージ アカウントの名前を、MyAccountKey には該当するアクセス キーを指定してください。
+- 接続文字列は次の[形式](../storage/storage-configure-connection-string.md)で指定します (プロトコルは HTTPS として指定する)。*MyAccountName* には該当するストレージ アカウントの名前を、*MyAccountKey* には該当するアクセス キーを指定してください。
 
         DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 
@@ -77,7 +77,7 @@ Azure は 64 ビット環境です。そのため、32 ビット ターゲット
 
 ## エクスポートした証明書に秘密キーが含まれていない
 
-Web ロールを SSL で実行する場合は、エクスポートした管理証明書に秘密キーが含まれていることを確認してください。Windows 証明書マネージャーを使用して証明書をエクスポートする場合は必ず、[はい、秘密キーをエクスポートします] オプションを選択してください。証明書は PFX 形式でエクスポートする必要があります。現在サポートされている形式はこれだけです。
+Web ロールを SSL で実行する場合は、エクスポートした管理証明書に秘密キーが含まれていることを確認してください。*Windows 証明書マネージャー*を使用して証明書をエクスポートする場合は必ず、*[はい、秘密キーをエクスポートします]* オプションを選択してください。証明書は PFX 形式でエクスポートする必要があります。現在サポートされている形式はこれだけです。
 
 
 
@@ -95,4 +95,4 @@ Web ロールを SSL で実行する場合は、エクスポートした管理�
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [Run]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

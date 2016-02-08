@@ -37,7 +37,7 @@ Mobile Engagement SDK for Windows ユニバーサル アプリは次を対象と
 -   Windows Phone 8.1
 -   Windows 10 (デスクトップとモバイル ファミリ)
 
-> [AZURE.NOTE]Windows Phone Silverlight を対象としている場合は、「[Windows Phone Silverlight の統合手順](mobile-engagement-windows-phone-integrate-engagement.md)」を参照してください。
+> [AZURE.NOTE] Windows Phone Silverlight を対象としている場合は、「[Windows Phone Silverlight の統合手順](mobile-engagement-windows-phone-integrate-engagement.md)」を参照してください。
 
 ## Mobile Engagement ユニバーサル アプリ SDK をインストールします。
 
@@ -58,8 +58,6 @@ NuGet は、まだ UWP アプリケーションで SDK のリソースを自動�
 3.  ファイル エクスプローラーから Visual Studio のプロジェクトのルートに、**リソース** フォルダーをドラッグ アンド ドロップします。
 4.  Visual Studio でプロジェクトを選択し、**[ソリューション エクスプ ローラー]** の一番上にある **[すべてのファイルを表示]** アイコンをアクティブ化します。
 5.  一部のファイルは、プロジェクトには含まれません。一度にインポートするには、**リソース** フォルダーを右クリックして **[プロジェクトから除外]** を選択してから、もう一度**リソース** フォルダーを右クリックして **[プロジェクトに含める]** を選択し、フォルダー全体を再度含めます。これで、**リソース** フォルダーのすべてのファイルがプロジェクトに追加されます。
-
-抽出した Engagement パッケージは、*$(Solutiondir) \\Packages* または定義した *NuGet.config* ファイルにもあります。
 
 ## 機能を追加する
 
@@ -127,7 +125,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
           InitEngagement(args);
 		}
 
-> [AZURE.IMPORTANT] Engagement の初期化は、アプリケーションの別の場所には追加しないことを強くお勧めします。
+> [AZURE.IMPORTANT]  Engagement の初期化は、アプリケーションの別の場所には追加しないことを強くお勧めします。
 
 ## 基本的なレポート
 
@@ -169,7 +167,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 		  }
 		}
 
-> [AZURE.IMPORTANT]ページが `OnNavigatedTo` メソッドをオーバーライドする場合は、必ず `base.OnNavigatedTo(e)` を呼び出します。そうしないと、アクティビティが報告されません (`EngagementPage` は、`OnNavigatedTo` メソッド内で `StartActivity` を呼び出します)。
+> [AZURE.IMPORTANT] ページが `OnNavigatedTo` メソッドをオーバーライドする場合は、必ず `base.OnNavigatedTo(e)` を呼び出します。そうしないと、アクティビティが報告されません (`EngagementPage` は、`OnNavigatedTo` メソッド内で `StartActivity` を呼び出します)。
 
 #### XAML ファイル
 
@@ -232,7 +230,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 			  EngagementAgent.Instance.StartActivity("MyPage");
 			}
 
-> [AZURE.IMPORTANT]セッションは正常に終了してください。
+> [AZURE.IMPORTANT]  セッションは正常に終了してください。
 > 
 > Windows ユニバーサル SDK は、アプリケーションを終了する際に、自動的に `EndActivity` メソッドを呼び出します。そのため、ユーザーのアクティビティが変更されるたびに `StartActivity` メソッドを呼び出すことを**強く**お勧めします。`EndActivity` メソッドは**決して**呼び出さないでください。このメソッドは、現在のユーザーがアプリケーションを終了したと Engagement サーバーに通知するため、これによってすべてのアプリケーション ログが影響を受けるからです。
 
@@ -248,7 +246,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 Engagement の自動クラッシュ レポート機能を無効にできます。その場合、未処理の例外が発生しても、Engagement は何も行いません。
 
-> [AZURE.WARNING]この機能を無効にする計画がある場合は、アプリで未処理の例外が発生しても、エンゲージメントはクラッシュを報告せず、**さらに**セッションとジョブを終了しないことに注意してください。
+> [AZURE.WARNING] この機能を無効にする計画がある場合は、アプリで未処理の例外が発生しても、エンゲージメントはクラッシュを報告せず、**さらに**セッションとジョブを終了しないことに注意してください。
 
 自動クラッシュ レポートを無効にするには、宣言した方法に応じて、構成をカスタマイズするだけです。
 
@@ -279,10 +277,10 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 
 バースト モードではわずかにバッテリーの寿命が延びますが、Engagement の監視に影響を与えます。すべてのセッションとジョブの実行時間は、バーストのしきい値に丸められます (つまり、バーストのしきい値よりも短いセッションとジョブは、認識されない場合があります)。バーストのしきい値は、30000 (30 秒) よりも長くしないことをお勧めします。保存できるログは 300 項目に制限されていることに気を付けてください。送信時間が長すぎる場合は、ログがいくつか失われる可能性があります。
 
-> [AZURE.WARNING]また、バーストのしきい値は、1 秒よりも短い期間に設定することはできません。それを試みた場合、SDK はエラーのトレースを表示し、自動的に既定値 (0 秒) に再設定します。これにより、SDK はログをリアルタイムで報告するようになります。
+> [AZURE.WARNING] また、バーストのしきい値は、1 秒よりも短い期間に設定することはできません。それを試みた場合、SDK はエラーのトレースを表示し、自動的に既定値 (0 秒) に再設定します。これにより、SDK はログをリアルタイムで報告するようになります。
 
 [here]: http://www.nuget.org/packages/Capptain.WindowsCS
 [NuGet website]: http://docs.nuget.org/docs/start-here/overview
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

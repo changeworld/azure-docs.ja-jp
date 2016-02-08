@@ -26,7 +26,7 @@ Azure HDInsight を使用して、Hadoop クラスターで MapReduce ジョブ�
 - [**ワード カウント**][hdinsight-sample-wordcount]\: テキスト ファイル内の単語出現回数をカウントします。
 - [**C# ストリーミング ワード カウント**][hdinsight-sample-csharp-streaming]\: Hadoop ストリーミング インターフェイスを使用して、テキスト ファイル内の単語出現回数をカウントします。
 - [**Pi 推定**][hdinsight-sample-pi-estimator]\: 統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。
-- [**10 GB GraySort**][hdinsight-sample-10gb-graysort]\: HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
+- [**10 GB GraySort **][hdinsight-sample-10gb-graysort]\: HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
 
 >[AZURE.NOTE] ソース コードは「付録」にあります。
 
@@ -44,7 +44,7 @@ Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラ
  
 **前提条件**:
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - **HDInsight クラスター**。クラスターを作成できるさまざまな方法については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md)」を参照してください。
 - **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell 1.0 以上のインストール](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」を参照してください。
 
@@ -998,4 +998,4 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

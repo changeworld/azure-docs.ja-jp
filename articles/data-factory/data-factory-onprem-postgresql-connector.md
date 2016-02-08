@@ -30,6 +30,8 @@ Data Factory は、PostgreSQL から他のデータ ストアへのデータ移�
 
 Data Management Gateway で PostgreSQL Databases に接続するには、[PostgreSQL の Ngpsql データ プロバイダー](http://go.microsoft.com/fwlink/?linkid=282716)を Data Management Gateway と同じシステムにインストールする必要があります。
 
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+
 ## サンプル: PostgreSQL から Azure BLOB にデータをコピーする
 
 下のサンプルで確認できる要素:
@@ -214,14 +216,14 @@ Data Management Gateway で PostgreSQL Databases に接続するには、[Postgr
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-type | type プロパティを **OnPremisesPostgreSql** に設定する必要があります | あり
-server | PostgreSQL サーバーの名前です。 | あり 
-database | PostgreSQL データベースの名前です。 | あり 
+type | type プロパティを **OnPremisesPostgreSql** に設定する必要があります | はい
+server | PostgreSQL サーバーの名前です。 | はい 
+database | PostgreSQL データベースの名前です。 | はい 
 schema | データベース内のスキーマの名前です。 | いいえ 
-authenticationType | PostgreSQL データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | あり 
+authenticationType | PostgreSQL データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | はい 
 username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ 
 パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ 
-gatewayName | Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 | あり 
+gatewayName | Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 | はい 
 
 オンプレミスの PostgreSQL データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
@@ -263,11 +265,11 @@ PostgreSQL Databases 型 |	PostgreSQL エイリアス | .NET Framework 型
 abstime | | Datetime
 bigint | int8 | Int64
 bigserial | serial8 | Int64
-bit [ (n) ] | | Byte, String
-bit varying [ (n) ] | varbit | Byte, String
-ブール値 | bool | Boolean
+bit [ (n) ] | | Byte、String
+bit varying [ (n) ] | varbit | Byte、String
+boolean | bool | Boolean
 box | | Byte, String
-bytea | | Byte, String
+bytea | | Byte、String
 character [ (n) ] | char [ (n) ] | String
 character varying [ (n) ] | varchar [ (n) ] | String
 cid | | String
@@ -285,25 +287,25 @@ interval [ fields ] [ (p) ] | | Timespan
 json | | String
 jsonb | | Byte
 line | | Byte, String
-lseg | | Byte, String
-macaddr | | Byte, String
-money | | 小数点
-numeric [ (p, s) ] | decimal [ (p, s) ] | 小数点
+lseg | | Byte、String
+macaddr | | Byte、String
+money | | Decimal
+numeric [ (p, s) ] | decimal [ (p, s) ] | Decimal
 numrange | | String
 oid | | Int32
 path | | Byte, String
 pg\_lsn | | Int64
-point | | Byte, String
-polygon | | Byte, String
+point | | Byte、String
+polygon | | Byte、String
 real | float4 | Single
 smallint | int2 | Int16
 smallserial | serial2 | Int16
 serial | serial4 | Int32
-テキスト | | String
+text | | String
 
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

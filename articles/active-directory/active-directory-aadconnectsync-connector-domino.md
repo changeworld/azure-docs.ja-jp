@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect 同期: Lotus Domino Connector"
+   pageTitle="Azure AD Connect Sync: Lotus Domino Connector | Microsoft Azure"
    description="この記事では、Microsoft の Lotus Domino Connector を構成する方法について説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="01/14/2016"
+   ms.date="01/21/2016"
    ms.author="andkjell"/>
 
 # Lotus Domino Connector のテクニカル リファレンス
@@ -539,4 +539,4 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
 
 -	コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「[How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

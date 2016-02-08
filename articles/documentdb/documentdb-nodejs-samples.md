@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="DocumentDB 用の github の Node.js サンプル |Microsoft Azure" 
-	description="NoSQL データベースでの JSON ドキュメントに対する CRUD 操作など、DocumentDB の一般的なタスクに対する github の Node.js サンプルを検索します。" 
+	pageTitle="DocumentDB の NoSQL Node.js のサンプル | Microsoft Azure" 
+	description="NoSQL データベースでの JSON ドキュメントに対する CRUD 操作など、DocumentDB の一般的なタスクの Node.js サンプルを github で検索します。" 
+	keywords="node.js のサンプル"
 	services="documentdb" 
 	authors="mimig1" 
 	manager="jhubbard" 
@@ -17,26 +18,26 @@
 	ms.author="mimig"/>
 
 
-# DocumentDB Node.js samples
+# DocumentDB Node.js のサンプル
 
 > [AZURE.SELECTOR]
-- [.NET Samples](documentdb-dotnet-samples.md)
-- [Node.js Samples](documentdb-nodejs-samples.md)
+- [.NET Examples](documentdb-dotnet-samples.md)
+- [Node.js Examples](documentdb-nodejs-samples.md)
 - [Azure Code Sample Gallery](https://azure.microsoft.com/documentation/samples/?service=documentdb)
 
 DocumentDB のリソースで CRUD 操作などの一般的な操作を実行するサンプル ソリューションは、[azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) GitHub リポジトリに含まれています。この記事では、次の内容について説明します。
 
-- 各サンプル Node.js プロジェクト ファイルのタスクへのリンク。 
+- 各 Node.js サンプル プロジェクト ファイルのタスクへのリンク。 
 - 関連する API リファレンス コンテンツへのリンク。
 
 **前提条件**
 
-1. これらのサンプルを使用するには Azure アカウントが必要です。
+1. これらの Node.js サンプルを使用するには Azure アカウントが必要です。
     - [無料で Azure アカウントを開く](https://azure.microsoft.com/pricing/free-trial/)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。
    - [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)こともできます。Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 2. [Node.js SDK](documentdb-sdk-node.md) も必要です。 
 
-    > [AZURE.NOTE]各サンプルは自己完結型であり、自身をセットアップし、自身をクリーンアップします。そのため、サンプルでは、[DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html) への複数の呼び出しを発行します。これが行われるたびに、作成中のコレクションのパフォーマンス階層ごとに 1 時間の使用量に対するサブスクリプションが課金されます。
+    > [AZURE.NOTE] 各サンプルは自己完結型であり、自身をセットアップし、自身をクリーンアップします。そのため、サンプルでは、[DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html) への複数の呼び出しを発行します。これが行われるたびに、作成中のコレクションのパフォーマンス階層ごとに 1 時間の使用量に対するサブスクリプションが課金されます。
 
 ## データベースのサンプル
 
@@ -104,6 +105,6 @@ DocumentDB のリソースで CRUD 操作などの一般的な操作を実行す
 [ストアド プロシージャの作成](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.ServerSideScripts/app.js#L44-L71) | [DocumentClient.createStoredProcedure](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createStoredProcedure)
 [ストアド プロシージャの実行](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.ServerSideScripts/app.js#L73-L90) | [DocumentClient.executeStoredProcedure](http://azure.github.io/azure-documentdb-node/DocumentClient.html#executeStoredProcedure)
 
-サーバー側プログラミングの詳細については、 「[DocumentDB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md)」を参照してください。
+サーバー側プログラミングの詳細については、「[DocumentDB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md)」を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

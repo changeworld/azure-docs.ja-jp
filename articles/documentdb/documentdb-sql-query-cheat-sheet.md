@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="DocumentDB SQL チート シート PDF | Microsoft Azure" 
-	description="DocumentDB の SQL 構文を利用し、NoSQL データベースの JSON ドキュメントに対しクエリを実行する印刷可能な SQL チート シート PDF。" 
+	description="DocumentDB の SQL 構文を使用して NoSQL データベースの JSON ドキュメントに対してクエリを実行する際に役立つ、印刷可能な SQL チート シート PDF - SQL クイック リファレンス" 
 	keywords="sql チート シート, sql チート シート pdf, sql クエリ チート シート"
 	services="documentdb" 
 	documentationCenter="" 
@@ -29,7 +29,7 @@ SQL クエリ チート シートをダウンロードし、それをクイッ�
 
 **SQL チート シートはここでダウンロードします: [Microsoft Azure DocumentDB SQL のチート シート](http://go.microsoft.com/fwlink/?LinkId=623215)**
 
-![DocumentDB SQL クエリのチート シート: DocumentDB でサポートされる SQL 文法のクイック リファレンス。][cheat-sheet]
+![DocumentDB SQL クエリ チート シート: DocumentDB によってサポートされる SQL 構文のクイック リファレンス PDF - SQL チート シート、SQL チート シート PDF、SQL クイック リファレンス][cheat-sheet]
 
 [cheat-sheet]: ./media/documentdb-sql-query-cheat-sheet/microsoft-documentdb-sql-query-cheat-sheet-v2.png
 
@@ -39,4 +39,4 @@ SQL クエリ チート シートをダウンロードし、それをクイッ�
 - DocumentDB で利用できるクエリ オプションのチュートリアルについては、「[DocumentDB のクエリ](documentdb-sql-query.md)」を参照してください。
 - 関連リファレンス ドキュメントについては、「[DocumentDB SQL クエリ言語](https://msdn.microsoft.com/library/azure/dn782250.aspx)」を参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

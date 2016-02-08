@@ -42,7 +42,7 @@ Microsoft データ サイエンス仮想マシンは分析プロジェクトの
 
 Microsoft データ サイエンス仮想マシンを作成する前に、次を用意する必要があります。
 
-- **Azure サブスクリプション**: これを取得する場合は、[Azure 無試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**: これを取得する場合は、[Azure 無試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 *   **Azure ストレージ アカウント**: これを作成する場合は、[Azure ストレージ アカウントの作成](storage-create-storage-account.md#create-a-storage-account)に関するページを参照してください。既存のアカウントを使用しない場合は、VM を作成する手順の一環としてストレージ アカウントを作成することもできます。
 
@@ -51,7 +51,7 @@ Microsoft データ サイエンス仮想マシンを作成する前に、次を
 
 Microsoft データ サイエンス仮想マシンのインスタンスを作成する手順を以下に示します。
 
-1.	[Azure ポータル](https://portal.azure.com/#gallery/microsoft-ads.standard-data-science-vmstandard-data-science-vm)に一覧表示されている仮想マシンに移動します。
+1.	[Azure ポータル](https://ms.portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm)に一覧表示されている仮想マシンに移動します。
 2.	 下部にある **[作成]** ボタンをクリックして、ウィザードを起動します。![configure-data-science-vm](./media/machine-learning-data-science-provision-vm/configure-data-science-virtual-machine.png)
 3.	 以下のセクションでは、Microsoft データ サイエンス仮想マシンを作成するために使用されるウィザードの **5 つのステップ** (上の図の右に列挙してあります) の各ステップでの**入力**について説明します。以下は、これらの各ステップを構成するために必要な入力項目です。
 
@@ -111,21 +111,21 @@ VM が作成され、プロビジョニングされた後は、VM にインス�
 分析に R を使用できるように、VM に Microsoft R Server Developer エディションがインストールされています。Microsoft R Server は、サポート対象のスケーラブルで安全な R に基づく、広範にデプロイできるエンタープライズ クラスの分析プラットフォームです。さまざまなビッグ データ統計、予測モデリング、および機械学習の機能をサポートする R Server は、幅広い分析機能 (探索、分析、視覚化、モデリングなど) をサポートしています。オープン ソース R を使用、拡張することで、Microsoft R Server は R スクリプト、関数、CRAN パッケージと完全に互換性のある形式で、エンタープライズ規模でデータを分析します。また、Microsoft R Server でデータの並列処理やチャンク処理を追加することにより、オープン ソース R のメモリ内の制限に対処します。これにより、ユーザーはメイン メモリーに収まる容量よりはるかに大きいデータに対し分析を実行できます。さらに、IDE for R が VM にパッケージングされており、[スタート] メニューまたはデスクトップ上のアイコン "Revolution R Enterprise 8.0" をクリックしてアクセスできます。[RStudio](http://www.rstudio.com) のような他の IDE をダウンロードして使用することもできます。
 
 ### Python
-Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。Visual Studio 2015 Community 版でインストールされている、または IDLE や Spyder など、Anaconda でバンドルされている IDE の 1 つである Python Tools for Visual Studio (PTVS) を利用できます。検索バーで検索して (**Win** + **S** キー)、いずれかの IDE を起動できまます。
+Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。Visual Studio 2015 Community 版でインストールされている、または IDLE や Spyder など、Anaconda でバンドルされている IDE の 1 つである Python Tools for Visual Studio (PTVS) を利用できます。検索バーで検索して (**Win** + **S** キー)、いずれかの IDE を起動できまます。**注**: Anaconda Python 2.7 および 3.5 で Python Tools for Visual Studio をポイントするには、各バージョン用のカスタム環境を作成する必要があります。それには、Visual Studio 2015 Community 版で [ツール] -> [Python Tools] -> [Python Environments] に移動し、[+ Custom] をクリックして環境パスを設定します。Anaconda Python 2.7 のインストール先は C:\\Anaconda、Anaconda Python 3.5 は c:\\Anaconda\\envs\\py35 です。詳細な手順については、[PTVS のドキュメント](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it)を参照してください。
 
 ### Jupyter Notebook
 Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter ノートブックにも付属しています。Jupyter ノートブック サーバーは、Python 2、Python 3、R カーネルがあらかじめ構成されています。Notebook サーバーにアクセスするためのブラウザーを起動する Jupyter Notebook という名前のデスクトップ アイコンがあります。リモート デスクトップを通じて VM を利用している場合は、Jupyter ノートブック サーバーにアクセスするために、[https://localhost:9999/](https://localhost:9999/) を使用することもできます (注: 証明書の警告が表示されても続行します)。サンプルのノートブックがパッケージングされています (Python と R にそれぞれ 1 つずつ)。前の手順で作成したパスワードを使用して Jupyter ノートブックを認証すると、ノートブックのホーム ページにサンプルへのリンクを表示できます。
 
 ### Visual Studio 2015 Community エディション
-Visual Studio Community エディションが VM にインストールされています。これは、Microsoft の人気のある IDE の無料版で、評価用または非常に小規模なチーム用に使用できます。ライセンス条項は、[ここ](https://www.visualstudio.com/support/legal/mt171547)で確認することができます。Visual Studio を開くには、デスクトップ アイコンをダブルクリックするか、**[スタート]** メニューを使用します。**Win** + **S** キーを押し、「Visual Studio」と入力することで、プログラムを検索することもできます。
+Visual Studio Community エディションが VM にインストールされています。これは、Microsoft の人気のある IDE の無料版で、評価用または非常に小規模なチーム用に使用できます。ライセンス条項は、[ここ](https://www.visualstudio.com/support/legal/mt171547)で確認することができます。Visual Studio を開くには、デスクトップ アイコンをダブルクリックするか、**[スタート]** メニューを使用します。**Win** + **S** キーを押し、「Visual Studio」と入力することで、プログラムを検索することもできます。C#、Python などの言語でプロジェクトを作成できます。また、インストールされたプラグインにより、Azure Data Catalog、Azure HDInsight (Hadoop、Spark)、Azure Data Lake などの Azure サービスを簡単に操作できるようになります。
 
-注: 評価期間が終了したことを示すメッセージが表示される場合があります。Visual Studio Community エディションにアクセスするには、Microsoft アカウント資格情報を入力するか、Microsoft アカウント資格情報を作成して、それを入力します。C#、Python などの言語でプロジェクトを作成できます。また、インストールされたプラグインにより、Azure Data Catalog、Azure HDInsight (Hadoop、Spark)、Azure Data Lake などの Azure サービスを簡単に操作できるようになります。
+注: 評価期間が終了したことを示すメッセージが表示される場合があります。Visual Studio Community エディションにアクセスするには、Microsoft アカウント資格情報を入力するか、Microsoft アカウント資格情報を作成して、それを入力します。
 
 ### SQL Server Express
 SQL Server の制限付きバージョンも、Visual Studio Community エディションにパッケージ化されています。SQL サーバーにアクセスするには、**SQL Server Management Studio** を起動します。VM の名前は、サーバー名として設定されます。Windows の管理者としてログインする場合は、Windows 認証を使用します。SQL Server Management Studio にアクセスできたら、他のユーザーの作成、データベースの作成、データのインポート、SQL クエリの実行などを行うことができます。
 
 ### Azure 
-いくつかの Azure ツールが、VM にインストールされています。- Azure SDK ドキュメントにアクセスするためのデスクトップ ショートカットがあります。- **AzCopy** は、Microsoft Azure Storage アカウントとの間でデータを移動するために使用されます。- **Azure ストレージ エクスプローラー**は、Azure Storage アカウントに格納されているオブジェクトを参照するために使用されます。- **Microsoft Azure Powershell**。- スクリプト言語で Azure リソースを管理するために使用されるスクリプト言語も、VM にインストールされています。
+いくつかの Azure ツールが、VM にインストールされています。Azure SDK ドキュメントにアクセスするためのデスクトップ ショートカットがあります。**AzCopy** は、Microsoft Azure Storage アカウントとの間でデータを移動するために使用されます。**Azure Storage エクスプローラー**は、Azure Storage アカウントに格納されているオブジェクトを参照するために使用されます。Powershell スクリプト言語で Azure リソースを管理するための **Microsoft Azure Powershell** も VM にインストールされています。
 
 ###Power BI
 
@@ -144,4 +144,4 @@ SQL Server の制限付きバージョンも、Visual Studio Community エディ
 * [データ サイエンス プロセス](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を体系的に使用して、エンド ツー エンドの分析ソリューションを構築する方法を確認します。
 * [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) では、Cortana Analytics Suite を使用して機械学習やデータ分析のサンプルを入手できます。アクセスしやすいように、[スタート] メニューや仮想マシンのデスクトップにもアイコンが用意されています。 
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

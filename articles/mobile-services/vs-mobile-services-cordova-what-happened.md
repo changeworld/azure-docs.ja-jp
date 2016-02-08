@@ -3,7 +3,7 @@
 	description="Visual Studio 接続済みサービスを使用して Azure Mobile Services を追加したことによる Azure Cordova プロジェクトへの影響について説明します" 
 	services="mobile-services" 
 	documentationCenter="na" 
-	authors="TomArcher" 
+	authors="mlhoop" 
 	manager="douge" 
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="multiple" 
 	ms.topic="article" 
 	ms.date="01/05/2016" 
-	ms.author="tarcher"/>
+	ms.author="mlearned"/>
 
 # Visual Studio 接続済みサービスを使用して Azure Mobile Services を追加したことによる Azure Cordova プロジェクトへの影響
 
@@ -33,6 +33,6 @@
 	        "<insert your key>"
 	    );
 
-[モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
+[モバイル サービスの詳細を確認する](https://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

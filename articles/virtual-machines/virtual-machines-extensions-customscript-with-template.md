@@ -37,7 +37,7 @@ Azure リソース マネージャー テンプレートでは、リソース間
 
 ### 前提条件
 
-1. [ここ](http://azure.microsoft.com/downloads)から最新の Azure PowerShell コマンドレットまたは Azure CLI をインストールします。
+1. [ここ](https://azure.microsoft.com/downloads/)から最新の Azure PowerShell コマンドレットまたは Azure CLI をインストールします。
 2. スクリプトが既存の VM で実行されている場合、VM エージェントがその VM 上で有効であることをご確認ください。そうでない場合は、[こちら](virtual-machines-extensions-install)の手順に従ってインストールしてください。
 3. VM で実行するスクリプトを Azure Storage にアップロードします。スクリプトは、1 つか複数のストレージ コンテナーから取得できます。
 4. スクリプトを Github アカウントにアップロードすることもできます。
@@ -102,4 +102,4 @@ Azure リソース マネージャー テンプレートでは、リソース間
 
 <a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/" target="_blank">Linux VM のカスタム スクリプト拡張機能</a>。</br> <a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/" target="_blank">Windows VM のカスタム スクリプト拡張機能</a>。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

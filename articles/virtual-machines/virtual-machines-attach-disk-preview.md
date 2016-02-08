@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/14/2015"
+	ms.date="01/21/2016"
 	ms.author="cynthn"/>
 
 # Azure ポータルでデータ ディスクを接続する方法
@@ -27,21 +27,17 @@
 - Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。これらの仮想マシンでは、Premium および Standard のストレージ アカウントのディスクを使用できます。Premium Storage は特定のリージョンで使用できます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage-preview-portal.md)」を参照してください。
 - 仮想マシンに接続されているディスクは、実際には Azure ストレージ アカウントの .vhd ファイルです。詳細については、[仮想マシン用のディスクと VHD](virtual-machines-disks-vhds.md) に関するページを参照してください。
 - 新しいディスクの場合、接続時に Azure で自動的に作成されるので、最初に作成する必要はありません。
-- 既存のディスクの場合、Azure ストレージ アカウントで .vhd ファイルを使用できる必要があります。別の仮想マシンに接続されていない場合、既存のファイルを使用します。または、.vhd ファイルをストレージ アカウントにアップロードします。
+- 既存のディスクの場合、Azure ストレージ アカウントで .vhd ファイルを使用できる必要があります。別の仮想マシンに接続されていない場合は既存の .vhd を使用できます。そうでなければ、独自の .vhd ファイルをストレージ アカウントにアップロードできます。
 
 ## 仮想マシンの検索
 
 1. Azure ポータルにサインインします。
 
-2. ハブ メニューの **[参照]** をクリックします。
+2. ハブ メニューで **[仮想マシン]** をクリックします。
 
-3. 検索ブレードを下へスクロールし、**[仮想マシン]** をクリックします。
+3.	一覧から仮想マシンを選択します。
 
-	![仮想マシンのサイズ](./media/virtual-machines-attach-disk-preview/search-blade-preview-portal.png)
-
-4.	一覧から仮想マシンを選択します。
-
-5. 右側にある **[要点]** で **[すべての設定]** をクリックし、**[ディスク]** をクリックします。
+4. 右側にある **[要点]** で **[すべての設定]** をクリックし、**[ディスク]** をクリックします。
 
 	![ディスク設定を開く](./media/virtual-machines-attach-disk-preview/find-disk-settings.png)
 
@@ -90,4 +86,4 @@
 
 [Azure ストレージ アカウントについて]: ../storage-whatis-account/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

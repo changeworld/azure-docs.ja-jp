@@ -131,7 +131,7 @@ foreach (UserProfile activeUser in query)
 
 サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。
 
->[AZURE.NOTE]コレクションの作成は DocumentDB によって速度が制限されているため、ここに示したサンプル メソッドの一部では、処理が完了するまでに数分かかる場合があります。
+>[AZURE.NOTE] コレクションの作成は DocumentDB によって速度が制限されているため、ここに示したサンプル メソッドの一部では、処理が完了するまでに数分かかる場合があります。
 
 ##FAQ
 **DocumentDB がサーバー側のパーティション分割ではなくクライアント側のパーティション分割をサポートしているのはなぜですか。**
@@ -164,7 +164,7 @@ Microsoft では、.NET SDK のお客様からいただいたフィードバッ�
 * [MSDN の DocumentDB .NET SDK に関するドキュメント](https://msdn.microsoft.com/library/azure/dn948556.aspx)
 * [DocumentDB .NET のサンプル](https://github.com/Azure/azure-documentdb-net)
 * [DocumentDB の制限](documentdb-limits.md)
-* [パフォーマンスに関するヒントについての DocumentDB ブログ](http://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
+* [パフォーマンスに関するヒントについての DocumentDB ブログ](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

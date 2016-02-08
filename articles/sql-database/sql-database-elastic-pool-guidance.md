@@ -26,7 +26,7 @@
 - エラスティック データベース プールの詳細については、「[SQL Database のエラスティック データベース プールのリファレンス](sql-database-elastic-pool-reference.md)」を参照してください。
 
 
-> [AZURE.NOTE]Elastic Database プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。
+> [AZURE.NOTE] Elastic Database プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。
 
 ## エラスティック データベース プール
 
@@ -119,7 +119,7 @@ Single Database を個々に使用するのと、エラスティック データ
 
     プール価格 = *プール eDTUs* * *プール eDTU 単価*
 
-    料金情報については、「[SQL Database の価格](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
+    料金情報については、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 
 
 4. 手順 3 のプールの価格と、Single Database の適切なパフォーマンス レベルを使用した場合の価格を比較してください。
@@ -176,7 +176,7 @@ STA は、データベースの使用量の履歴を評価して、Single Databa
 
 スクリプトは実行中にのみデータを収集します。スクリプトは、運用時の一般的なワークロードに対しては、最低 1 日間実行する必要があります。1 週間以上の方がより正確な評価が可能でしょう。データベースに対する典型的なワークロードがある期間、スクリプトを実行します。
 
-> [AZURE.IMPORTANT]スクリプトの実行中は、PowerShell ウィンドウを開いたままにする必要があります。通常時およびピーク時の両方にわたる典型的なワークロードを示すデータが十分にキャプチャされ、スクリプトが十分な時間を実行されるまで、PowerShell ウィンドウは閉じないようにしてください。
+> [AZURE.IMPORTANT] スクリプトの実行中は、PowerShell ウィンドウを開いたままにする必要があります。通常時およびピーク時の両方にわたる典型的なワークロードを示すデータが十分にキャプチャされ、スクリプトが十分な時間を実行されるまで、PowerShell ウィンドウは閉じないようにしてください。
 
 ### スクリプトの前提条件 
 
@@ -189,7 +189,7 @@ STA は、データベースの使用量の履歴を評価して、Single Databa
 ### スクリプトの詳細
 
 
-スクリプトは、ローカル コンピューターまたはクラウド上の VM から実行できます。ローカル コンピューターから実行する場合、スクリプトは、ターゲット データベースからデータをダウンロードする必要があるためデータ送信費用が発生する可能性があります。次に、ターゲット データベースの数と、スクリプトの実行期間に基づくデータ量の評価を示します。Azure のデータ転送コストの詳細については、「[Data Transfers (データ転送) の料金詳細](http://azure.microsoft.com/pricing/details/data-transfers/)」を参照してください。
+スクリプトは、ローカル コンピューターまたはクラウド上の VM から実行できます。ローカル コンピューターから実行する場合、スクリプトは、ターゲット データベースからデータをダウンロードする必要があるためデータ送信費用が発生する可能性があります。次に、ターゲット データベースの数と、スクリプトの実行期間に基づくデータ量の評価を示します。Azure のデータ転送コストの詳細については、「[Data Transfers (データ転送) の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)」を参照してください。
        
  -     1 データベース 1 時間あたり = 38 KB
  -     1 データベース 1 日あたり = 900 KB
@@ -216,7 +216,7 @@ STA は、データベースの使用量の履歴を評価して、Single Databa
 
 スクリプトが完了すると、ターゲット サーバー内のすべての候補データベースを格納するために、エラスティック プールに必要な推定 eDTU 数が出力されます。この推定 eDTU は、これらのデータベースを格納するエラスティック データベース プールを作成および構成するため使用できます。プールが作成され、プールにデータベースを移動した後には、数日間厳密に監視する必要があります。そして必要に応じて、プール eDTU 構成に必要な調整を行う必要があります。
 
-> [AZURE.IMPORTANT]このスクリプトには、バージョン 1.0 *未満*の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページを参照してください。
+> [AZURE.IMPORTANT] このスクリプトには、バージョン 1.0 *未満*の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページを参照してください。
 
 
     
@@ -435,4 +435,4 @@ STA は、データベースの使用量の履歴を評価して、Single Databa
 [2]: ./media/sql-database-elastic-pool-guidance/four-databases.png
 [3]: ./media/sql-database-elastic-pool-guidance/twenty-databases.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

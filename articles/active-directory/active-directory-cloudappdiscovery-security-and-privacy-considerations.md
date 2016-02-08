@@ -47,7 +47,7 @@ Azure Active Directory テナントの管理者 (またはその代理人) は�
 
 ### エージェントによって収集されたデータ
 
-Web アプリケーションに接続すると、以下の一覧に概要が説明されている情報が、エージェントによって収集されます。情報は、管理者が検出用に構成したアプリケーションについてのみ収集されます。<br>エージェントが監視するクラウド アプリの一覧を編集することができます。そのためには、Microsoft [Azure ポータル](https://portal.azure.com)の [Cloud App Discovery] ブレードで、[**設定**]、[**データ収集**] の順に選択し、**[アプリ コレクション] ボックスの一覧**を操作します。詳細は、[Getting Started With Cloud App Discovery (Cloud App Discovery の概要) ](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)を参照してください。<br> **情報カテゴリ**: ユーザー情報<br> **説明**: <br>ターゲットの Web アプリケーションに対する要求を作成したプロセスの Windows ユーザー名 (例: DOMAIN\\username) とそのユーザーの Windows セキュリティ識別子 (SID)
+Web アプリケーションに接続すると、以下の一覧に概要が説明されている情報が、エージェントによって収集されます。情報は、管理者が検出用に構成したアプリケーションについてのみ収集されます。<br>エージェントが監視するクラウド アプリの一覧を編集することができます。そのためには、Microsoft [Azure ポータル](https://portal.azure.com/)の [Cloud App Discovery] ブレードで、[**設定**]、[**データ収集**] の順に選択し、**[アプリ コレクション] ボックスの一覧**を操作します。詳細は、[Getting Started With Cloud App Discovery (Cloud App Discovery の概要) ](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)を参照してください。<br> **情報カテゴリ**: ユーザー情報<br> **説明**: <br>ターゲットの Web アプリケーションに対する要求を作成したプロセスの Windows ユーザー名 (例: DOMAIN\\username) とそのユーザーの Windows セキュリティ識別子 (SID)
 
 
 **情報カテゴリ**: プロセス情報<br>**説明**:<br>ターゲットの Web アプリケーションに対する要求を作成したプロセスの名前 (例: "iexplore.exe")
@@ -88,7 +88,7 @@ HTTP 情報:
 
 
 
-> [AZURE.NOTE]上記の HTTP 情報は、暗号化されていないすべての接続について収集されます。TLS 接続では、ポータルで「詳細な検査」設定をオンにしているときにのみ、この情報がキャプチャされます。設定は、既定では「オン」です。詳細については、以下の説明と [Getting Started With Cloud App Discovery (Cloud App Discovery の概要)](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx) を参照してください。
+> [AZURE.NOTE] 上記の HTTP 情報は、暗号化されていないすべての接続について収集されます。TLS 接続では、ポータルで「詳細な検査」設定をオンにしているときにのみ、この情報がキャプチャされます。設定は、既定では「オン」です。詳細については、以下の説明と [Getting Started With Cloud App Discovery (Cloud App Discovery の概要)](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx) を参照してください。
 
 
 エージェントは、ネットワーク アクティビティに関するデータに加え、ソフトウェアとハードウェアの構成に関する匿名の情報、エラー報告、エージェントの使用方法に関する情報を収集します。
@@ -168,7 +168,7 @@ TLS によるインターセプションが、エンド ユーザー エクス�
 
 
 
-> [AZURE.NOTE]詳細については、[Getting Started With Cloud App Discovery (Cloud App Discovery の概要)](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx) を参照してください。
+> [AZURE.NOTE] 詳細については、[Getting Started With Cloud App Discovery (Cloud App Discovery の概要)](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx) を参照してください。
 
 <br>ポータルで、データにアクセスするすべてのユーザーは、Azure AD Premium ライセンスを持っている必要があります。
 
@@ -179,4 +179,4 @@ TLS によるインターセプションが、エンド ユーザー エクス�
 
 * [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

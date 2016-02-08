@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/08/2015"
+   ms.date="01/08/2016"
    ms.author="telmos" />
 
 # テンプレートを使用した静的パブリック IP を持つ VM のデプロイ
@@ -184,4 +184,4 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 		data:
 		info:    group create command OK
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

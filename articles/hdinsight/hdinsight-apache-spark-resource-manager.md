@@ -26,14 +26,14 @@ Azure HDInsight (Linux) の Spark には、クラスター リソースの管理
 
 次のものが必要です。
 
-- Azure サブスクリプション。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - HDInsight Linux での Apache Spark クラスター。手順については、[Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
 ## Ambari Web UI の起動方法
 
 1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。 
  
-2. Spark クラスター ブレードで、**[ダッシュボード]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。
+2. Spark クラスター ブレードで、**[ダッシュ ボード]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。
 
 	![Launch Ambari](./media/hdinsight-apache-spark-resource-manager/hdispark.cluster.launch.dashboard.png "リソース マネージャーを開始する")
 
@@ -109,7 +109,7 @@ Spark クラスターで現在実行されているアプリケーションを�
 
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-* [HDInsight での Spark を使用した Web サイト ログ分析](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### アプリケーションの作成と実行
 
@@ -136,4 +136,4 @@ Spark クラスターで現在実行されているアプリケーションを�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

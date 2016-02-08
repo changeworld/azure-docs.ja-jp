@@ -20,7 +20,7 @@
 
 # Azure HDInsight の Apache Spark を使用した Machine Learning アプリケーションの構築 (Windows)
 
-> [AZURE.NOTE]HDInsight は Linux 上に Spark クラスターを提供するようになりました。HDInsight Spark Linux クラスターで機械学習アプリケーションを作成する方法については、「[Azure HDInsight での Apache Spark を使用した Machine Learning アプリケーションの構築 (Linux)](hdinsight-apache-spark-ipython-notebook-machine-learning.md)」を参照してください。
+> [AZURE.NOTE] HDInsight は Linux 上に Spark クラスターを提供するようになりました。HDInsight Spark Linux クラスターで機械学習アプリケーションを作成する方法については、「[Azure HDInsight での Apache Spark を使用した Machine Learning アプリケーションの構築 (Linux)](hdinsight-apache-spark-ipython-notebook-machine-learning.md)」を参照してください。
 
 HDInsight の Apache Spark クラスターを使用して Machine Learning アプリケーションを作成する方法を説明します。この記事では、クラスターで使用できる Jupyter Notebook を使用してアプリケーションを作成およびテストする方法を説明します。このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。
 
@@ -28,7 +28,7 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
 
 次のものが必要です。
 
-- Azure サブスクリプション。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - Apache Spark クラスター。手順については、「[HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-provision-clusters.md)」を参照してください。 
 
 ##<a name="data"></a>データ
@@ -47,9 +47,9 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
 
 1. [Azure プレビュー ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 
-2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュ ボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
+2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
-	> [AZURE.NOTE]ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
+	> [AZURE.NOTE] ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
@@ -249,4 +249,4 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

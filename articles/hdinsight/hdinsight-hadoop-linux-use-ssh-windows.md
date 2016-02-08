@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="11/16/2015"
+   ms.date="01/22/2016"
    ms.author="larryfr"/>
 
 #HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する
@@ -25,7 +25,7 @@
 
 [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) では、コマンドライン インターフェイスを利用し、Linux ベース HDInsight クラスターで操作をリモート実行できます。このドキュメントでは、PuTTY SSH クライアントを使用した Windows ベースのクライアントからの HDInsight への接続について説明します。
 
-> [AZURE.NOTE]この記事の手順では、Windows ベースのクライアントを使用していることを前提としています。Linux、Unix、OS X クライアントを使用する場合は、[「Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する」](hdinsight-hadoop-linux-use-ssh-unix.md)をご覧ください。
+> [AZURE.NOTE] この記事の手順では、Windows ベースのクライアントを使用していることを前提としています。Linux、Unix、OS X クライアントを使用する場合は、[「Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する」](hdinsight-hadoop-linux-use-ssh-unix.md)をご覧ください。
 
 ##前提条件
 
@@ -73,15 +73,15 @@ SSH ユーザーはパスワードと公開キーのいずれかを認証に利�
 
 	![パスフレーズ](./media/hdinsight-hadoop-linux-use-ssh-windows/key.png)
 
-	> [AZURE.NOTE]キーにセキュリティで保護されたパスフレーズを使用することを強くお勧めします。ただし、パスフレーズを忘れた場合、それを回復する方法はありません。
+	> [AZURE.NOTE] キーにセキュリティで保護されたパスフレーズを使用することを強くお勧めします。ただし、パスフレーズを忘れた場合、それを回復する方法はありません。
 
 5. **[プライベート キーの保存]** をクリックして、キーを **.ppk** ファイルに保存します。このキーは、Linux ベースの HDInsight クラスターへの認証に使用されます。
 
-	> [AZURE.NOTE]こキーは Linux ベースの HDInsight クラスターへのアクセスに使用できるため、セキュリティ保護された場所に保存する必要があります。
+	> [AZURE.NOTE] こキーは Linux ベースの HDInsight クラスターへのアクセスに使用できるため、セキュリティ保護された場所に保存する必要があります。
 
 6. **[パブリック キーの保存]** をクリックして、キーを **.txt** ファイルとして保存します。これにより、Linux ベースの HDInsight クラスターを今後追加で作成するときにパブリック キーを再利用できます。
 
-	> [AZURE.NOTE]また、パブリック キーは PuTTYGen の上部に表示されます。Azure ポータルを使用してクラスターを作成するときに、このフィールドを右クリックし、値をコピーして、フォームに貼り付けることができます。
+	> [AZURE.NOTE] また、パブリック キーは PuTTYGen の上部に表示されます。Azure ポータルを使用してクラスターを作成するときに、このフィールドを右クリックし、値をコピーして、フォームに貼り付けることができます。
 
 ##Linux ベースの HDInsight クラスターの作成
 
@@ -129,11 +129,11 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 5. **[開く]** をクリックして、クラスターに接続します。
 
-	> [AZURE.NOTE]クラスターに初めて接続する場合は、セキュリティ の警告が返されます。問題はありません。**[はい]** を選択し、サーバーの RSA2 キーをキャッシュして続行します。
+	> [AZURE.NOTE] クラスターに初めて接続する場合は、セキュリティ の警告が返されます。問題はありません。**[はい]** を選択し、サーバーの RSA2 キーをキャッシュして続行します。
 
 6. プロンプトが表示されたら、クラスターの作成時に入力したユーザーを入力します。ユーザーにパスワードを指定している場合は、その入力も求められます。
 
-> [AZURE.NOTE]上記の手順ではポート 22 を使用していると想定しています。これは、HDInsight クラスターのヘッド ノード 0 に接続します。ポート 23 を使用した場合は、ヘッド ノード 1 に接続します。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
+> [AZURE.NOTE] 上記の手順ではポート 22 を使用していると想定しています。これは、HDInsight クラスターのヘッド ノード 0 に接続します。ポート 23 を使用した場合は、ヘッド ノード 1 に接続します。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
 
 ###ワーカー ノードへの接続
 
@@ -149,7 +149,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 3. [参照] ダイアログ ボックスが表示されたら、キーを含む .ppk ファイルを選択し、**[開く]** をクリックします。キーは Pageant に追加され、クラスターに接続すると PuTTY に渡されます。
 
-    > [AZURE.IMPORTANT]SSH キーを使用してアカウントのセキュリティを保護する場合は、前の手順を完了してからワーカー ノードに接続する必要があります。
+    > [AZURE.IMPORTANT] SSH キーを使用してアカウントのセキュリティを保護する場合は、前の手順を完了してからワーカー ノードに接続する必要があります。
 
 4. PuTTY を開きます。
 
@@ -175,7 +175,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
     *USERNAME* を SSH ユーザー名、*FQDN* をワーカー ノードの FQDN に置き換えます (例: `workernode0.workernode-0-e2f35e63355b4f15a31c460b6d4e1230.j1.internal.cloudapp.net`)。
 
-    > [AZURE.NOTE]SSH セッションの認証にパスワードを使用する場合は、もう一度パスワードを入力するように求めるメッセージ表示されます。SSH キーを使用する場合は、何も表示されずに接続が完了します。
+    > [AZURE.NOTE] SSH セッションの認証にパスワードを使用する場合は、もう一度パスワードを入力するように求めるメッセージ表示されます。SSH キーを使用する場合は、何も表示されずに接続が完了します。
 
 9. セッションが確立されると、PuTTY セッションのプロンプトが `username@hn0-clustername` から `username@wn0-clustername` に変わり、ワーカー ノードに接続したことを示します。この時点で実行するすべてのコマンドは、ワーカー ノードで実行されます。
 
@@ -213,7 +213,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 SSH を使用して、Web 要求などのローカルの要求を HDInsight クラスターにトンネリングできます。ここでは、最初から HDInsight クラスター ヘッド ノード上にあったかのように、要求が要求済みリソースにルーティングされます。
 
-> [AZURE.IMPORTANT]SSH トンネルは、Hadoop サービス用の Web UI にアクセスするための要件です。たとえば、ジョブ履歴 UI とリソース マネージャー UI は、両方とも SSH トンネルでのみアクセスできます。
+> [AZURE.IMPORTANT] SSH トンネルは、Hadoop サービス用の Web UI にアクセスするための要件です。たとえば、ジョブ履歴 UI とリソース マネージャー UI は、両方とも SSH トンネルでのみアクセスできます。
 
 SSH トンネルの作成と使用の詳細については、[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)方法に関するページを参照してください。
 
@@ -229,4 +229,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

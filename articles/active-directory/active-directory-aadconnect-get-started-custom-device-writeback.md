@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/18/2015"
+	ms.date="01/21/2016"
 	ms.author="billmath;andkjell"/>
 
 # Azure AD Connect でのデバイスの書き戻しの有効化
@@ -24,11 +24,11 @@ AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利�
 
 これにより、セキュリティが強化され、アプリケーションへのアクセスが信頼されたデバイスに対してのみ許可されることが保証されます。条件付きアクセスの詳細については、「[条件付きアクセス ポリシーを使用したリスクの管理](active-directory-conditional-access.md)」および「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](https://msdn.microsoft.com/library/azure/dn788908.aspx)」をご覧ください。
 
->[AZURE.NOTE]デバイスの書き戻しには、Azure AD Premium に対するサブスクリプションが必要です。
+>[AZURE.NOTE] デバイスの書き戻しには、Azure AD Premium に対するサブスクリプションが必要です。
 
 .
 
->[AZURE.IMPORTANT]デバイスは、ユーザーと同じフォレスト内にある必要があります。デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイはサポートされていません。
+>[AZURE.IMPORTANT] デバイスは、ユーザーと同じフォレスト内にある必要があります。デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイはサポートされていません。
 
 ## パート 1: Azure AD Connect のインストール
 1. カスタム設定または簡単設定を使用して Azure AD Connect をインストールします。すべてのユーザーとグループの同期に成功してから、デバイスの書き戻しを有効にすることをお勧めします。
@@ -129,4 +129,4 @@ Active Directory の構成を確認します。つまり、configuration 名前�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

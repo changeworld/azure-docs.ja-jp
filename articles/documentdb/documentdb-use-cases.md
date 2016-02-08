@@ -36,7 +36,7 @@ DocumentDB の一般的なユース ケースとして、Web アプリケーシ�
 
 さまざまなソーシャル ネットワークを統合するアプリケーションは、これらのネットワークから届くスキーマの変更に応答する必要があります。DocumentDB では既定で自動的にデータにインデックスが設定されるため、データに対していつでもクエリを実行できます。これにより、これらのアプリケーションでは、それぞれのニーズに応じて柔軟にプロジェクションを取得できます。
 
-ソーシャル アプリケーションの多くが世界規模で実行されており、予測できない使用パターンが発生することがあります。アプリケーション層は使用ニーズを満たすようにスケールするため、データ ストアを柔軟にスケールできることがきわめて重要です。DocumentDB では、DocumentDB アカウントにデータのパーティションを追加することでスケールアウトできます。また、複数のリージョンにわたって追加の DocumentDB アカウントを作成することもできます。DocumentDB サービス リージョンの可用性については、「[Azure のリージョン](http://azure.microsoft.com/regions/#services)」を参照してください。
+ソーシャル アプリケーションの多くが世界規模で実行されており、予測できない使用パターンが発生することがあります。アプリケーション層は使用ニーズを満たすようにスケールするため、データ ストアを柔軟にスケールできることがきわめて重要です。DocumentDB では、DocumentDB アカウントにデータのパーティションを追加することでスケールアウトできます。また、複数のリージョンにわたって追加の DocumentDB アカウントを作成することもできます。DocumentDB サービス リージョンの可用性については、「[Azure のリージョン](https://azure.microsoft.com/regions/#services)」を参照してください。
 
 ## カタログ データ
 カタログ データの使用シナリオでは、人物、場所、製品などのエンティティの一連の属性について保存とクエリが実行されます。カタログ データの例には、ユーザー アカウント、製品カタログ、IoT のデバイス レジストリ、部品表システムなどがあります。これらのデータの属性は、アプリケーションの要件によって異なり、さらに時間の経過と共に変化する場合があります。
@@ -68,7 +68,7 @@ IoT に対する Azure サービスの詳細については、[モノのイン�
 
 ## 次のステップ
  
-DocumentDB の利用を開始するには、[アカウント](http://azure.microsoft.com/pricing/free-trial/)を作成し、Microsoft の[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)を使用して DocumentDB について学習し、必要な情報を確認してください。
+DocumentDB の利用を開始するには、[アカウント](https://azure.microsoft.com/pricing/free-trial/)を作成し、Microsoft の[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)を使用して DocumentDB について学習し、必要な情報を確認してください。
 
 または、DocumentDB を使用しているお客様の詳細情報を確認したい場合は、次の顧客事例が提供されています。
 
@@ -79,4 +79,4 @@ DocumentDB の利用を開始するには、[アカウント](http://azure.micro
 - [XOMNI](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18667)。未来の店舗は、スピーディな検索と容易なデータ フローを基盤として運営されます。
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

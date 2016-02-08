@@ -75,8 +75,8 @@ Azure Active Directory (Azure AD) を使用し、ASP.NET MVC Web アプリケー
 
  - [MSDN フォーラム: Azure AD](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)
 
- - [Azure AD ドキュメント](http://azure.microsoft.com/documentation/services/active-directory/)
+ - [Azure AD ドキュメント](https://azure.microsoft.com/documentation/services/active-directory/)
 
  - [ブログの投稿: Azure AD の概要](http://blogs.msdn.com/b/brunoterkaly/archive/2014/03/03/introduction-to-windows-azure-active-directory.aspx)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

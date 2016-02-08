@@ -2,15 +2,16 @@
   pageTitle="Azure IoT Suite に関する FAQ | Microsoft Azure"
   description="IoT Suite に関してよく寄せられる質問です。"
   services=""
+  suite="iot-suite"
   documentationCenter=""
   authors="aguilaaj"
   manager="timlt"
   editor=""/>
 
 <tags
-  ms.service="na"
+  ms.service="iot-suite"
   ms.devlang="na"
-  ms.topic="hero-article"
+  ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="na"
   ms.date="11/17/2015"
@@ -42,4 +43,4 @@
 [lnk-classic-portal]: https://manage.windowsazure.com
 [lnk-delete-aad-tennant]: http://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

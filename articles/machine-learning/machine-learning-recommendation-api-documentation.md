@@ -33,7 +33,7 @@ Azure Machine Learning の Recommendations API は、次の論理グループに
 - <ins>基本モデル</ins> – モデルで基本的な操作が可能な API (例: モデルの作成、更新、削除)。
 - <ins>高度なモデル</ins> – モデルの高度なデータ分析を取得できるようにする API。
 - <ins>ビジネス ルールのモデル</ins> – モデルの推奨結果に関するビジネス ルールを管理できるようにする API。
-- <ins>カタログ</ins> – モデルのカタログに関する基本操作を実行できるようにする API。カタログには、使用状況データ項目に関するメタ データ情報が含まれています。
+- <ins>カタログ</ins> – モデルのカタログに関する基本操作を実行できるようにする API。カタログには、使用状況データ項目に関するメタデータ情報が含まれています。
 - <ins>機能</ins> - 項目のインサイトをカタログに表示でき、この情報を使用してより良い推奨事項を構築する方法を有効にする API。
 - <ins>使用状況データ</ins> – モデルの使用状況データに関する基本操作を実行できる API。基本フォームの使用状況データは、&#60;userId&#62;,&#60;itemId&#62; のペアを含む行で構成されます。
 - <ins>ビルド</ins> – モデルのビルドを起動し、このビルドに関連する基本操作を実行できるようにする API。モデルのビルドは、有効な使用状況データが存在する場合に起動できます。
@@ -49,6 +49,7 @@ Azure Machine Learning の Recommendations API は、次の論理グループに
 - 保持される使用状況ポイントの最大数は ~5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
 - POST で送信できるデータ (例: カタログ データのインポート、使用データのインポート) の最大サイズは 200 MB です。
 - 無効な推奨モデルのビルドの 1 秒あたりのトランザクションの数は ~2TPS です。有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
+- 推奨事項を取得するときに要求できる項目の最大数は 150 です。
 
 ##3\.API の概要
 
@@ -149,8 +150,8 @@ OData XML
 |:--------			|:--------								|
 |	id |	モデルの一意識別子 (大文字小文字を区別する) |
 |	apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -212,8 +213,8 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -283,8 +284,8 @@ OData XML
 |:--------			|:--------								|
 |	id | モデルの一意識別子 (大文字小文字を区別する) |
 |	apiVersion | 1\.0 |
-|||
-| Request Body | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能であることに注意してください。Description または ActiveBuildId を設定したくない場合は、タグ全体を削除します。|
+|
+| 要求本文 | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能です。Description や ActiveBuildId を設定したくない場合は、タグ全体を削除します。|
 
 **応答**:
 
@@ -301,8 +302,8 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 |	id |	モデルの一意識別子 (大文字小文字を区別する) |
 |	apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -345,8 +346,8 @@ OData XML
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -582,8 +583,8 @@ OData XML
 |	modelId |	モデルの一意識別子 |
 |	buildId |	省略可能 – 成功したビルドを識別する数値。 |
 |	apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -662,8 +663,8 @@ OData XML
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -833,8 +834,8 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -891,7 +892,7 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	apiVersion | 1\.0 |
-|||
+|
 | 要求本文 | 
 <ins>ビジネス ルールにアイテム ID を提供する際は、そのアイテムの 外部 ID が使用されていることを確認する(カタログ ファイルで使用した ID と同じ)</ins><br>
 <ins>BlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
@@ -952,8 +953,8 @@ OData XML
 |	modelId |	モデルの一意識別子 |
 |	filterId |	フィルターの一意識別子 |
 |	apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -969,8 +970,8 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -990,7 +991,7 @@ HTTP 状態コード: 200
 
 注: ファイルの最大サイズは、200 MB です。
 
-** 形式の詳細 **
+* * 形式の詳細 * *
 
 | 名前 | 必須 | 型 | 説明 |
 |:---|:---|:---|:---|
@@ -1057,8 +1058,8 @@ OData XML
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -1160,8 +1161,8 @@ OData XML
 |	modelId |	モデルの一意識別子 |
 |	token |	カタログ項目の名前のトークン。3 文字以上にする必要があります。 |
 |	apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -1380,8 +1381,8 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 |	forModelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -1447,8 +1448,8 @@ OData XML
 | endDate |	終了日。形式: yyyy/MM/ddTHH:mm:ss |
 | eventTypes |	イベント種類のコンマ区切りの文字列。すべてのイベントを取得する場合は null 値。 |
 | apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -1530,8 +1531,8 @@ OData XML
 | modelId |	モデルの一意識別子 |
 | フィールド |	モデルの使用状況ファイルの一意識別子。 |
 | apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -1570,8 +1571,8 @@ HTTP 状態コード: 200
 | fid |	モデルの使用状況ファイルの一意識別子。 |
 | ダウンロード | 1 |
 | apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -1626,8 +1627,8 @@ HTTP 状態コード: 200
 | modelId |	モデルの一意識別子 |
 | フィールド | 削除するファイルの一意識別子 |
 | apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -1645,8 +1646,8 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 | modelId |	モデルの一意識別子 |
 | apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -1669,8 +1670,8 @@ HTTP 状態コード: 200
 | modelId |	モデルの一意識別子 |
 |samplingSize| カタログ内に存在するデータに従い、特徴ごとに含める値の数。<br/>有効値:<br> -1 - すべてのサンプル。<br>0 - サンプリングなし。<br>N - 特徴名ごとに、N 個のサンプルを返します。|
 | apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 
 **応答**:
@@ -1752,8 +1753,8 @@ OData XML
 |samplingSize| カタログ内に存在するデータに従い、特徴ごとに含める値の数。<br/> 有効値:<br> -1 - すべてのサンプル。<br>0 - サンプリングなし。<br>N - 特徴名ごとに、N 個のサンプルを返します。|
 |rankBuildId| 順位付けのビルドの一意識別子。最後の順位付けのビルドの場合は -1。|
 | apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 
 **応答**:
@@ -1914,8 +1915,8 @@ FBT (よく一緒に購入されている品目) のビルドは「控えめな�
 | modelId |	モデルの一意識別子 |
 | userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例をご覧ください。<br>最大長: 50 |
 | apiVersion | 1\.0 |
-|||
-| Request Body | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。(パラメーターの詳細については、「パラメーターのビルド」セクションを参照してください。)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
+|
+| 要求本文 | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。(パラメーターの詳細については、「ビルド パラメーター」のセクションを参照してください。)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
 
 **応答**:
 
@@ -1990,8 +1991,8 @@ OData XML
 | userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例を参照してください。<br>最大長: 50 |
 | buildType | 呼び出すビルドの種類: <br/> - 推奨事項のビルドは、'Recommendation' <br> - 順位付けのビルドは 'Ranking' <br/> -FBT のビルドは ' Fbt'
 | apiVersion | 1\.0 |
-|||
-| 要求本文 | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、XML として本文に入れて送信します。(パラメーターの詳細と完全なリストについては、パラメーターのビルド セクションをご覧ください。)`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
+|
+| 要求本文 | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。(パラメーターの詳細と完全なリストについては、「ビルド パラメーター」のセクションを参照してください。)`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
 
 **応答**:
 
@@ -2658,7 +2659,7 @@ OData XML
 |:--------			|:--------								|
 | modelId | モデルの一意識別子 |
 | itemIds | 推奨項目のコンマ区切りの一覧。<br>アクティブなビルドが FBT の種類の場合は、1 つの項目のみを送信できます。<br>最大長: 1024 |
-| numberOfResults | 必要な結果の数 |
+| numberOfResults | 必要な結果の数 <br> 最大: 150 |
 | includeMetatadata | 将来的に利用 (常に false)
 | buildId | この推奨事項の要求で使用するビルド ID |
 | apiVersion | 1\.0 |
@@ -2688,7 +2689,7 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 | modelId | モデルの一意識別子 |
 | itemId | 推奨する項目です。<br>最大長: 1024 |
-| numberOfResults | 必要な結果の数 |
+| numberOfResults | 必要な結果の数 <br> 最大: 150 |
 | minimalScore | 返される結果に含めるために頻度のセットが持つべきスコアの最小値。 |
 | includeMetatadata | 将来的に利用 (常に false) |
 | apiVersion | 1\.0 |
@@ -2779,7 +2780,7 @@ OData XML
 |:--------			|:--------								|
 | modelId | モデルの一意識別子 |
 | itemId | 推奨する項目です。<br>最大長: 1024 |
-| numberOfResults | 必要な結果の数 |
+| numberOfResults | 必要な結果の数 <br> 最大: 150 |
 | minimalScore | 返される結果に含めるために頻度のセットが持つべきスコアの最小値。 |
 | includeMetatadata | 将来的に利用 (常に false) |
 | buildId | この推奨事項の要求で使用するビルド ID |
@@ -2854,7 +2855,7 @@ API では、ユーザーとその他に提供された項目の使用率の履�
 |:--------			|:--------								|
 | modelId | モデルの一意識別子 |
 | userId | ユーザーの一意識別子。 |
-| itemIds | 推奨項目のコンマ区切りの一覧。最大長: 1024 |
+| itemsIds | 推奨項目のコンマ区切りの一覧。最大長: 1024 |
 | numberOfResults | 必要な結果の数 |
 | includeMetatadata | 将来的に利用 (常に false) |
 | apiVersion | 1\.0 |
@@ -3023,8 +3024,8 @@ Azure Machine Learning Recommendations は、システムで永続的なエラ�
 |:--------			|:--------								|
 | modelId | 省略可能なパラメーター。省略すると、すべてのモデルのすべての通知が取得されます。<br>有効な値: モデルの一意識別子。|
 | apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答:**
 
@@ -3075,8 +3076,8 @@ OData XML
 |:--------			|:--------								|
 | modelId | モデルの一意識別子 |
 | apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -3093,8 +3094,8 @@ HTTP 状態コード: 200
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 | apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -3110,4 +3111,4 @@ HTTP 状態コード: 200
 © 2015 Microsoft.All rights reserved.
  
 
-<!----HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

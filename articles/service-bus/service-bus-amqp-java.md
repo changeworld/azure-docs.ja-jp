@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/07/2015"
+   ms.date="01/26/2016"
    ms.author="sethm" />
 
-# AMQP 1.0 で Java から Service Bus を使用する
+# AMQP 1.0 を使用した Java からの Service Bus の使用
 
 [AZURE.INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
 
-Java Message Service (JMS) は、Java プラットフォーム上でメッセージ指向ミドルウェアを操作するための標準 API です。Azure Service Bus は、Apache Qpid プロジェクトで開発された AMQP 1.0 ベースの JMS クライアント ライブラリでテストされています。このライブラリは JMS 1.1 API 全体をサポートしており、AMQP 1.0 に準拠するすべてのメッセージング サービスで使用できます。このシナリオは Service Bus for Windows Server (オンプレミスの Service Bus) でもサポートされています。詳細については、[Windows Server 用 Service Bus の AMQP][] に関するページを参照してください。
+Java Message Service (JMS) は、Java プラットフォーム上でメッセージ指向ミドルウェアを操作するための標準 API です。Microsoft Azure Service Bus は、Apache Qpid プロジェクトで開発された AMQP 1.0 ベースの JMS クライアント ライブラリでテストされています。このライブラリは JMS 1.1 API 全体をサポートしており、AMQP 1.0 に準拠するすべてのメッセージング サービスで使用できます。このシナリオは [Service Bus for Windows Server](https://msdn.microsoft.com/library/dn282144.aspx) (オンプレミスの Service Bus) でもサポートされています。詳細については、[Windows Server 用 Service Bus の AMQP][] に関するページを参照してください。
 
 ## Apache Qpid AMQP 1.0 JMS クライアント ライブラリをダウンロードする
 
@@ -86,7 +86,7 @@ amqps://[username]:[password]@[namespace].servicebus.windows.net
 | `[username]` | [Azure クラシック ポータル][]から取得した Service Bus 発行者名。 | | | | |
 | `[password]` | [Azure クラシック ポータル][]から取得した Service Bus 発行者キーの URL エンコード形式。 | | | | |
 
-> [AZURE.NOTE]パスワードは手動で URL エンコードする必要があります。便利な URL エンコード ユーティリティは、[http://www.w3schools.com/tags/ref\_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) で入手できます。
+> [AZURE.NOTE] パスワードは手動で URL エンコードする必要があります。便利な URL エンコード ユーティリティは、[http://www.w3schools.com/tags/ref\_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) で入手できます。
 
 たとえば、次の情報をポータルから取得したとします。
 
@@ -101,7 +101,7 @@ amqps://[username]:[password]@[namespace].servicebus.windows.net
 connectionfactory.SBCONNECTIONFACTORY = amqps://owner:abcdefg@test.servicebus.windows.net
 ```
 
-#### 送信先を構成する
+#### 送信先の構成
 
 Qpid Properties File JNDI Provider で送信先を定義するエントリの形式を次に示します。
 
@@ -446,4 +446,4 @@ Service Bus で AMQP 1.0 を介して JMS を使用する場合は、次の制�
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

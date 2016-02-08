@@ -19,7 +19,8 @@
 # Azure Data Factory を使用した Azure Data Lake Store との間でのデータの移動
 この記事では、Azure Data Factory のコピー アクティビティを利用し、Azure Data Lake Store と別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
-> [AZURE.NOTE]Azure Data Lake Store との間でデータを移動するには、コピー アクティビティを含むパイプラインを作成する前に Azure Data Lake Store アカウントを作成する必要があります。Azure Data Lake Store の詳細については、[Azure Data Lake Store の概要](../data-lake-store/data-lake-store-get-started-portal.md)に関するページを参照してください。
+> [AZURE.NOTE]
+Azure Data Lake Store との間でデータを移動するには、コピー アクティビティを含むパイプラインを作成する前に Azure Data Lake Store アカウントを作成する必要があります。Azure Data Lake Store の詳細については、[Azure Data Lake Store の概要](../data-lake-store/data-lake-store-get-started-portal.md)に関するページを参照してください。
 >  
 > Data Factory、リンクされたサービス、データセット、およびパイプラインを作成する詳細な手順については、[最初のパイプラインを作成するチュートリアル](data-factory-build-your-first-pipeline.md)に関するページを確認してください。Data Factory エディター、Visual Studio、または Azure PowerShell と JSON のスニペットを使用して、Data Factory エンティティを作成できます。
 
@@ -32,7 +33,7 @@
 4.	[AzureDataLakeStore](#azure-data-lake-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 4.	[BlobSource](#azure-blob-copy-activity-type-properties) と [AzureDataLakeStoreSink](#azure-data-lake-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルはある時系列に属するデータを 1 時間おきに Azure BLOB ストレージから Azure Data Lake Store にコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルはある時系列に属するデータを 1 時間おきに Azure BLOB Storage から Azure Data Lake Store にコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 
 **Azure Storage のリンクされたサービス:**
@@ -74,7 +75,7 @@
 5. (省略可能) JSON の **accountName**、**subscriptionID**、**resourceGroupName** などの省略可能なパラメーターの値を指定するか、これらのプロパティを JSON から削除します。
 6. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
-> [AZURE.IMPORTANT]**[認証]** ボタンを使用して生成した認証コードは、いずれ有効期限が切れます。**トークンの有効期限が切れたら**、**[認証]** ボタンを使用して**再認証**し、リンクされたサービスを再デプロイする必要があります。詳細については、「[Azure Data Lake Store のリンクされたサービス](#azure-data-lake-store-linked-service-properties)」のセクションを参照してください。
+> [AZURE.IMPORTANT] **[認証]** ボタンを使用して生成した認証コードは、いずれ有効期限が切れます。**トークンの有効期限が切れたら**、**[認証]** ボタンを使用して**再認証**し、リンクされたサービスを再デプロイする必要があります。詳細については、「[Azure Data Lake Store のリンクされたサービス](#azure-data-lake-store-linked-service-properties)」のセクションを参照してください。
 
 
 
@@ -238,9 +239,9 @@
 	    }
 	}
 
-> [AZURE.NOTE]承認 URL を取得するには、前の例の手順を参照してください。
+> [AZURE.NOTE] 承認 URL を取得するには、前の例の手順を参照してください。
 
-**Azure ストレージのリンクされたサービス:**
+**Azure Storage のリンクされたサービス:**
 
 	{
 	  "name": "StorageLinkedService",
@@ -396,14 +397,14 @@
 
 ## Azure Data Lake Store のリンクされたサービスのプロパティ
 
-Azure Storage のリンクされたサービスを利用し、Azure ストレージ アカウントを Azure Data Factory にリンクできます。次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+Azure Storage のリンクされたサービスを利用し、Azure Storage アカウントを Azure Data Factory にリンクできます。次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
 | :-------- | :----------- | :-------- |
 | type | type プロパティを **AzureDataLakeStore** に設定する必要があります。 | あり |
 | dataLakeUri | Azure Data Lake Store アカウントの情報を指定します。https://<Azure Data Lake account name>.azuredatalakestore.net/webhdfs/v1 という形式で指定します。 | あり |
-| authorization | **Data Factory エディター**で **[承認する]** をクリックして資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | あり |
-| sessionId | OAuth 承認セッションの OAuth セッション ID。各セッション ID は一意であり、1 回のみ使用できます。Data Factory エディターを使用すると自動的に生成されます。 | あり |  
+| authorization | **Data Factory エディター**で **[承認する]** をクリックして資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | はい |
+| sessionId | OAuth 承認セッションの OAuth セッション ID。各セッション ID は一意であり、1 回のみ使用できます。Data Factory エディターを使用すると自動的に生成されます。 | はい |  
 | accountName | Data Lake アカウント名 | いいえ |
 | subscriptionId | Azure サブスクリプション ID | いいえ (指定されていない場合は Data Factory のサブスクリプションが使用されます)。 |
 | resourceGroupName | Azure リソース グループ名 | いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。 |
@@ -414,8 +415,8 @@ Azure Storage のリンクされたサービスを利用し、Azure ストレー
 | ユーザー タイプ | 有効期限 |
 | :-------- | :----------- | 
 | 非 AAD ユーザー (@hotmail.com、@live.com など) | 12 時間 |
-| AAD ユーザーと OAuth ベースのソースがユーザーの Data Factory のテナントとは異なる[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)にあります。 | 12 時間 |
-| AAD ユーザーと OAuth ベースのソースがユーザーの Data Factory のテナントと同じテナントにあります。 | <p> ユーザーが自身の OAuth ベースのリンクされたサービスのソースに基づいて、少なくとも 14 日間に 1 回スライスを実行する場合、最大値は 90 日です。</p><p>予定されている 90 日の間に、ユーザーが 14 日間、そのソースに基づいてスライスを実行しない場合、最後のスライスから 14 日後に資格情報の有効期限が切れます。</p> |
+| AAD ユーザーと OAuth ベースのソースがData Factory のテナントとは異なる[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)にある。 | 12 時間 |
+| AAD ユーザーと OAuth ベースのソースがData Factory のテナントと同じテナントにある。 | 14 日 |
 
 このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[認証]** ボタンを使用して再認証し、リンクされたサービスを再デプロイする必要があります。次のセクションのコードを使用して、**sessionId** と **authorization** プロパティの値をプログラムで生成することもできます。
 
@@ -455,7 +456,7 @@ Azure Storage のリンクされたサービスを利用し、Azure ストレー
 
 | プロパティ | 説明 | 必須 |
 | :-------- | :----------- | :-------- |
-| folderPath | Azure Data Lake Store のコンテナーとフォルダーのパス。 | あり |
+| folderPath | Azure Data Lake Store のコンテナーとフォルダーのパス。 | はい |
 | fileName | <p>Azure Data Lake Store 内のファイルの名前。fileName は省略可能です。</p><p>fileName を指定した場合、アクティビティ (コピーを含む) は特定のファイルで機能します。</p><p>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。</p><p>出力データセットに fileName が指定されていない場合、Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p>) という形式の名前でファイルが生成されます。 | いいえ |
 | partitionedBy | partitionedBy は任意のプロパティです。これを使用し、時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。詳細と例については、「partitionedBy プロパティの活用」セクションを参照してください。 | いいえ |
 | BlobSink の format | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。 | いいえ |
@@ -604,4 +605,4 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

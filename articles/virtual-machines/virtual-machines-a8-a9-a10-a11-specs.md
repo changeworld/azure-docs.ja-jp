@@ -63,13 +63,13 @@ A10 および A11 インスタンスは、Azure サービスおよびインタ�
 
 ## サブスクリプションに関する考慮事項
 
-* **Azure アカウント** – 少数のコンピューティング集中型インスタンスより多数のインスタンスをデプロイする場合は、従量課金のサブスクリプションまたは他の購入オプションを検討してください。MSDN サブスクリプションを使用することもできます。「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。[Azure 無料試用版](http://azure.microsoft.com/pricing/free-trial/)を使用している場合は、使用できる Azure コンピューティング コアの数に制限があります。
+* **Azure アカウント** – 少数のコンピューティング集中型インスタンスより多数のインスタンスをデプロイする場合は、従量課金のサブスクリプションまたは他の購入オプションを検討してください。MSDN サブスクリプションを使用することもできます。「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用している場合は、使用できる Azure コンピューティング コアの数に制限があります。
 
-* **コア クォータ** – Azure サブスクリプションのコア クォータを、既定値のサブスクリプションあたり 20 コア (Azure サービス管理のデプロイメントの場合) またはリージョンあたり 20 コア (Azure リソース管理のデプロイメントの場合) から増やすことが必要な場合があります。8 コアまたは 16 コア インスタンスの多くのシナリオでは不十分です。初期テストの場合、100 コアへのクォータ増量を要求することを検討してください。そのためには、「[Azure の制限と増設について](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)」に従って無償サポート チケットを開きます。
+* **コア クォータ** – Azure サブスクリプションのコア クォータを、既定値のサブスクリプションあたり 20 コア (Azure サービス管理のデプロイの場合) またはリージョンあたり 20 コア (Azure リソース マネージャーのデプロイの場合) から増やすことが必要な場合があります。8 コアまたは 16 コア インスタンスの多くのシナリオでは不十分です。初期テストの場合、100 コアへのクォータ増量を要求することを検討してください。そのためには、「[Understanding Azure Limits and Increases (Azure の制限と増設について)](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)」に従って無償サポート チケットを開きます。
 
     >[AZURE.NOTE]Azure のクォータは容量保証ではなくクレジット制限です。使用したコアに対してのみ課金されます。
 
-* **仮想ネットワーク** – コンピューティング集中型インスタンスを使用するために、Azure Virtual Network は必要ありません。ただし、多くの IaaS シナリオの場合、またはアプリケーション ライセンス サーバーなどのオンプレミス リソースへのアクセスが必要なサイト間接続の場合は、少なくともクラウド ベースの Azure Virtual Network が必要になる可能性があります。インスタンスをデプロイする前に、新しい (リージョン) 仮想ネットワークを作成する必要があります。アフィニティ グループ内の仮想ネットワークに A8、A9、A10、または A11 VM を追加することはできません。詳細については、[Virtual Network のドキュメント](https://azure.microsoft.com/documentation/services/virtual-network/)を参照してください。
+* **仮想ネットワーク** – コンピューティング集中型インスタンスを使用するために、Azure Virtual Network は必要ありません。ただし、多くの IaaS シナリオの場合、またはアプリケーション ライセンス サーバーなどのオンプレミス リソースへのアクセスが必要なサイト間接続の場合は、少なくともクラウド ベースの Azure Virtual Network が必要になる可能性があります。インスタンスをデプロイする前に、新しい (リージョン) 仮想ネットワークを作成する必要があります。アフィニティ グループ内の仮想ネットワークに A8、A9、A10、または A11 VM を追加することはできません。詳細については、[仮想ネットワークのドキュメント](https://azure.microsoft.com/documentation/services/virtual-network/)を参照してください。
 
 * **クラウド サービスまたは可用性セット** – RDMA ネットワーク経由で接続するには、A8 および A9 インスタンスを同じクラウド サービス (Azure サービス管理で Linux ベースの VM または Windows ベースの VM を使用する IaaS シナリオ、または Windows Server を使用する PaaS シナリオ用) または同じ可用性セット (Azure リソース マネージャーでの Linux ベースの VM または Windows ベースの VM 用).にデプロイする必要があります。
 
@@ -91,9 +91,9 @@ Windows Server で HPC Pack を使って、多くのコンピューティング�
 
 単一のクラウド サービスまたは可用性セット内では、Linux RDMA ドライバーを使用してインスタンス間の通信を行う MPI アプリケーションが実行されていれば、A8 および A9 インスタンスは Azure の RDMA ネットワークにアクセスできます。現時点では、[Intel MPI Library 5](https://software.intel.com/ja-JP/intel-mpi-library/) では Azure Linux RDMA のみがサポートされています。
 
->[AZURE.NOTE]現在、Azure Linux RDMA ドライバーは、ドライバー拡張機能を介したインストールでは使用できません。これを使用する唯一の方法は、Azure Marketplace の RDMA 対応 SLES 12 イメージを使用することです。
+>[AZURE.NOTE] 現在、Azure Linux RDMA ドライバーは、ドライバー拡張機能を介したインストールでは使用できません。これを使用する唯一の方法は、Azure Marketplace の RDMA 対応 SLES 12 イメージを使用することです。
 
-以下の表に、Linux MPI アプリケーションがコンピューティング ノード (IaaS) のクラスターの RDMA ネットワークにアクセスするための前提条件を記載します。デプロイメントのオプションと構成手順については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-cluster-rdma.md)」を参照してください。
+以下の表に、Linux MPI アプリケーションがコンピューティング ノード (IaaS) のクラスターの RDMA ネットワークにアクセスするための前提条件を記載します。デプロイのオプションと構成手順については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-cluster-rdma.md)」を参照してください。
 
 前提条件 | 仮想マシン (IaaS)
 ------------ | -------------
@@ -104,30 +104,30 @@ MPI | Intel MPI Library 5
 
 単一のクラウド サービスまたは可用性セット内では、Microsoft Network Direct インターフェイスを使用してインスタンス間の通信を行う MPI アプリケーションが実行されていれば、A8 および A9 インスタンスは Azure の RDMA ネットワークにアクセスできます。A10 および A11 インスタンスには、RDMA ネットワークへのアクセスは含まれません。
 
-A8 または A9 インスタンスの仮想マシン (IaaS) およびクラウド サービス (PaaS) デプロイメント内の RDMA ネットワークにアクセスするための MPI アプリケーションの要件を、次の表に示します。標準的なデプロイのシナリオについては、「[Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](virtual-machines-windows-hpcpack-cluster-rdma.md)」を参照してください。
+A8 または A9 インスタンスの仮想マシン (IaaS) およびクラウド サービス (PaaS) デプロイ内の RDMA ネットワークにアクセスするための MPI アプリケーションの要件を、次の表に示します。標準的なデプロイのシナリオについては、「[Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](virtual-machines-windows-hpcpack-cluster-rdma.md)」を参照してください。
 
 
-前提条件 | 仮想マシン (IaaS) | Cloud Services (PaaS)
+前提条件 | 仮想マシン (IaaS) | クラウド サービス (PaaS)
 ---------- | ------------ | -------------
 オペレーティング システム | Windows Server 2012 R2 または Windows Server 2012 | Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 ゲスト OS ファミリ
 MPI | MS-MPI 2012 R2 以降 (スタンドアロンまたは HPC Pack 2012 R2 以降によってインストール済み)<br/><br/>Intel MPI Library 5 | MS-MPI 2012 R2 以降 (HPC Pack 2012 R2 以降によってインストール済み)<br/><br/>Intel MPI Library 5
 
 
->[AZURE.NOTE]IaaS シナリオの場合、HpcVmDrivers 拡張機能を VM に追加して RDMA 接続に必要な Windows ネットワーク デバイス ドライバーをインストールする必要があります。デプロイメントの方法によって、サイズ A8 または A9 の VM への HpcVmDrivers 拡張機能の追加は、自動的に行われることも、手動で行う必要があることもあります。拡張機能の追加については、「[仮想マシン拡張機能の管理](virtual-machines-extensions-install.md)」を参照してください。
+>[AZURE.NOTE]IaaS シナリオの場合、HpcVmDrivers 拡張機能を VM に追加して RDMA 接続に必要な Windows ネットワーク デバイス ドライバーをインストールする必要があります。デプロイの方法によって、サイズ A8 または A9 の VM への HpcVmDrivers 拡張機能の追加は、自動的に行われることも、手動で行う必要があることもあります。拡張機能の追加については、「[仮想マシン拡張機能の管理](virtual-machines-extensions-install.md)」を参照してください。
 
 
 ## その他の注意事項
 
-* **価格** - A8 ～ A11 の VM サイズは、標準の価格レベルでのみ提供されます。
+* **価格** - A8 ～ A11 の VM サイズは、Standard 価格レベルでのみ提供されます。
 
 * **サイズ変更** – A8 ～ A11 以外のサイズのインスタンスを、コンピューティング集中型インスタンス サイズ (A8 ～ 11) のいずれかにサイズ変更することはできません。また、コンピューティング集中型インスタンスを非コンピューティング集中型サイズにサイズ変更することはできません。これは、コンピューティング集中型インスタンスに固有の特殊なハードウェアとパフォーマンスの最適化のためです。
 
-* **RDMA ネットワーク アドレス空間** - Azure の RDMA ネットワークでは、アドレス空間 172.16.0.0/12 は予約済みです。Azure Virtual Network の A8 および A9 インスタンスで MPI アプリケーションを実行する場合、Virtual Network のアドレス空間が RDMA ネットワークと重複しないようにしてください。
+* **RDMA ネットワーク アドレス空間** - Azure の RDMA ネットワークでは、アドレス空間 172.16.0.0/12 は予約済みです。Azure 仮想ネットワークの A8 および A9 インスタンスで MPI アプリケーションを実行する場合は、仮想ネットワークのアドレス空間が RDMA ネットワークと重複しないようにしてください。
 
 ## 次のステップ
 
-* A8、A9、A10、および A11 インスタンスの可用性と料金の詳細については、「[Virtual Machines の料金](http://azure.microsoft.com/pricing/details/virtual-machines/)」および「[Cloud Services の料金](http://azure.microsoft.com/pricing/details/cloud-services/)」を参照してください。
+* A8、A9、A10、および A11 インスタンスの可用性と料金の詳細については、「[Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/)」および「[Cloud Services の料金](https://azure.microsoft.com/pricing/details/cloud-services/)」を参照してください。
 * A8 および A9 インスタンスを使用して Linux ベースのクラスターをデプロイし、Azure RDMA ネットワークにアクセスするように構成する方法については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-cluster-rdma.md)」を参照してください。
 * Windows 上の HPC Pack により A8 および A9 インスタンスのデプロイと使用を開始する方法については、「[Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](virtual-machines-windows-hpcpack-cluster-rdma.md)」を参照してください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

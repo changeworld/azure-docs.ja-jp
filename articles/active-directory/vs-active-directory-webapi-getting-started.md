@@ -26,7 +26,7 @@
  
 プロジェクトに含まれるすべてのコントローラーには、**Authorize** 属性が設定されています。この属性により、ユーザーがこれらのコントローラーによって定義された API にアクセスする際に認証が求められます。これらのコントローラーに匿名でアクセスできるようにするには、コントローラーからこの属性を削除します。より細かなレベルでアクセス許可を設定するには、コントローラー クラスではなく、認証を必要とするそれぞれのメソッドに対してこの属性を割り当てます。
 
-[Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
+[Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
  
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

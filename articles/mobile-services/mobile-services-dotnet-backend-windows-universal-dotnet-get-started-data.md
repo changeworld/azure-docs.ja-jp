@@ -39,7 +39,7 @@
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-universal-dotnet-get-started-data%2F)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-universal-dotnet-get-started-data%2F)を参照してください。
 * <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio 2013</a> (Update 3 以降のバージョン)。
 
 ##GetStartedWithData プロジェクトをダウンロードする
@@ -98,14 +98,14 @@
 
 このチュートリアルでは、ユニバーサル Windows アプリ プロジェクトでモバイル サービスのデータを操作できるようにするための基本について説明しました。次に、以下のその他のトピックのいずれかを読むことを検討してください。
 
-* [認証の使用]
-  <br/>アプリケーションのユーザーを認証する方法について説明します。
+* [認証の使用] 
+<br/>アプリケーションのユーザーを認証する方法について説明します。
 
 * [プッシュ通知の使用] 
-  <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
+<br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [Mobile Services C# の使用方法の概念リファレンス](mobile-services-windows-dotnet-how-to-use-client-library.md)
-  <br/>.NET で Mobile Services を使用する方法について説明します。
+* [Mobile Services C# の使用方法の概念リファレンス](mobile-services-windows-dotnet-how-to-use-client-library.md) 
+<br/>.NET で Mobile Services を使用する方法について説明します。
 
 
 <!-- Images. -->
@@ -119,11 +119,11 @@
 [認証の使用]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md
 [プッシュ通知の使用]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md
 
-[「オフライン データの同期の使用」]: mobile-services-windows-store-dotnet-get-started-offline-data.md
 [「オフライン データ同期の使用」]: mobile-services-windows-store-dotnet-get-started-offline-data.md
+
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
 [デベロッパー サンプル コード集のサイト]: http://go.microsoft.com/fwlink/p/?LinkID=510826
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

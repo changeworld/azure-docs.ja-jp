@@ -69,7 +69,7 @@ Azure AD は 5 ～ 10 分ごとに変更を確認します。SaaS アプリが�
 
 **エンジニアリング チームにフィードバックを送信する方法はありますか。**
 
-[Azure Active Directory フィードバック フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)からお問い合わせください。
+[Azure Active Directory フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
 
 ##自動プロビジョニングのしくみ
 
@@ -104,8 +104,8 @@ Azure AD とSaaS アプリ間で属性がマップされる方法の詳細につ
 
 自動ユーザー プロビジョニングをサポートするアプリに対して、まず、外部のプログラムでユーザーの作成、保守、削除を自動化するのに必要なエンドポイントを提供する必要があります。そのため、すべての SaaS アプリがこの機能と互換性があるとは限りません。これをサポートするアプリでは、Azure AD エンジニア リング チームがこれらのアプリケーションにプロビジョニング コネクタを作成でき、この作業の優先順位は現在と将来の顧客のニーズによって決まります。
 
-他のアプリのプロビジョニングに関するサポートを要求するために Azure AD エンジニア リング チームに問い合わせる場合は、[Azure Active Directory フィードバック フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)からメッセージを送信してください。
+他のアプリのプロビジョニングに関するサポートを要求するために Azure AD エンジニア リング チームに問い合わせる場合は、[Azure Active Directory フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からメッセージを送信してください。
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

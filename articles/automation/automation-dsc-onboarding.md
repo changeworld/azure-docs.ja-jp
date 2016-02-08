@@ -29,7 +29,7 @@
 *    オンプレミス、または Azure 以外のクラウド内の物理/仮想 Windows マシン
 *    オンプレミス、Azure、または Azure 以外のクラウド内の物理/仮想 Linux マシン
 
-さらに、**DSC metaconfiguration** を生成して上記のマシンのあらゆる組み合わせを包括的に Azure Automation DSC にオンボードできます。
+また、クラウドからコンピューター構成を管理する準備ができていない場合は、Azure Automation DSC をレポートのみのエンドポイントとして使用することもできます。この場合、オンプレミスの DSC で目的の構成を設定 (プッシュ) し、Azure Automation の目的の状態へのノード コンプライアンスに関する詳細なレポートを表示できます。
 
 次のセクションでは、各種類のマシンを Azure Automation DSC にオンボードできる方法の概要を示します。
 
@@ -40,7 +40,8 @@ Azure Automation DSC では、Azure ポータルまたは PowerShell を使用�
 
 ### Azure ポータル
 
-[Azure プレビュー ポータル](http://portal.azure.com/)で、**[参照]**、**[仮想マシン (クラシック)]** の順にクリックします。オンボードする Windows VM を選択します。仮想マシンのダッシュボード ブレードで、**[すべての設定]**、**[拡張機能]**、**[追加]**、**[Azure Automation DSC]**、**[作成]** の順にクリックします。ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396)、Automation アカウントの登録キーと登録 URL、および必要に応じて VM に割り当てるノード構成を入力します。
+[Azure プレビュー ポータル](http://portal.azure.com/)で、**[参照]**、**[仮想マシン (クラシック)]** の順にクリックします。オンボードする Windows VM を選択します。仮想マシンのダッシュボード ブレードで、**[すべての設定]**、**[拡張機能]**、**[追加]**、**[Azure Automation DSC]**、**[作成]** の順にクリックします。ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](https://msdn.microsoft.com/powershell/dsc/metaconfig4)、Automation アカウントの登録キーと登録 URL、および必要に応じて VM に割り当てるノード構成を入力します。
+
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
 
@@ -51,7 +52,7 @@ Azure Automation DSC では、Azure ポータルまたは PowerShell を使用�
 
     # log in to both Azure Service Management and Azure Resource Manager
     Add-AzureAccount
-    Login-AzureRmAccount
+    Add-AzureRmAccount
     
     # fill in correct values for your VM / Automation Account here
     $VMName = ""
@@ -76,19 +77,19 @@ Azure Automation DSC では、Azure ポータルまたは PowerShell を使用�
 
     # update these DSC agent Local Configuration Manager defaults if they do not match your use case.
     # See https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396 for more details
-    Properties = @{
-       RegistrationKey = @{
-         UserName = 'notused'
-         Password = 'PrivateSettingsRef:RegistrationKey'
-    }
-      RegistrationUrl = $RegistrationInfo.Endpoint
-      NodeConfigurationName = $NodeConfigName
-      ConfigurationMode = "ApplyAndMonitor"
-      ConfigurationModeFrequencyMins = 15
-      RefreshFrequencyMins = 30
-      RebootNodeIfNeeded = $False
-      ActionAfterReboot = "ContinueConfiguration"
-      AllowModuleOverwrite = $False
+     Properties = @{
+        RegistrationKey = @{
+          UserName = 'notused'
+          Password = 'PrivateSettingsRef:RegistrationKey'
+        }
+        RegistrationUrl = $RegistrationInfo.Endpoint
+        NodeConfigurationName = $NodeConfigName
+        ConfigurationMode = "ApplyAndMonitor"
+        ConfigurationModeFrequencyMins = 15
+        RefreshFrequencyMins = 30
+        RebootNodeIfNeeded = $False
+        ActionAfterReboot = "ContinueConfiguration"
+        AllowModuleOverwrite = $False
       }
     }
 
@@ -102,7 +103,7 @@ Azure Automation DSC では、Azure ポータルまたは PowerShell を使用�
      -VM $vm `
      -Publisher Microsoft.Powershell `
      -ExtensionName DSC `
-     -Version 2.6 `
+     -Version 2.13 `
      -PublicConfiguration $PublicConfiguration `
      -PrivateConfiguration $PrivateConfiguration `
      -ForceUpdate
@@ -116,21 +117,21 @@ Azure Automation DSC では、Azure ポータル、Azure リソース マネー�
 
 ### Azure ポータル
 
-[Azure プレビュー ポータル](http://portal.azure.com/)で、仮想マシンをオンボードする Azure Automation アカウントに移動します。Automation アカウントのダッシュボードで、**[DSC ノード]**、**[Azure VM の追加]** の順にクリックします。
+[Azure プレビュー ポータル](https://portal.azure.com/)で、仮想マシンをオンボードする Azure Automation アカウントに移動します。Automation アカウントのダッシュ ボードで、**[DSC ノード]**、**[Azure VM の追加]** の順にクリックします。
 
 **[オンボードする仮想マシンの選択]** で、オンボードする 1 つ以上の Azure Virtual Machines を選択します。
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_2.png)
 
 
-**[登録データの構成]** で、ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396)、および必要に応じて VM に割り当てるノード構成を入力します。
+**[登録データの構成]** で、ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](https://msdn.microsoft.com/powershell/dsc/metaconfig4)、および必要に応じて VM に割り当てるノード構成を入力します。
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_3.png)
 
  
 ### Azure リソース マネージャーのテンプレート
 
-Azure Virtual Machines は、Azure リソース マネージャーのテンプレートを使用して Azure Automation DSC にデプロイおよびオンボードできます。Azure Automation DSC に既存の VM をオンボードする例のテンプレートについては、「[DSC 拡張機能と Azure Automation DSC を使用して VM を構成する](http://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/)」を参照してください。このテンプレートに入力する際に使用する登録キーと登録 URL を見つける場合は、後述の「[**セキュリティで保護された登録**](#secure-registration)」を参照してください。
+Azure Virtual Machines は、Azure リソース マネージャーのテンプレートを使用して Azure Automation DSC にデプロイおよびオンボードできます。Azure Automation DSC に既存の VM をオンボードする例のテンプレートについては、「[DSC 拡張機能と Azure Automation DSC を使用して VM を構成する](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/)」を参照してください。このテンプレートに入力する際に使用する登録キーと登録 URL を見つける場合は、後述の「[**セキュリティで保護された登録**](#secure-registration)」を参照してください。
 
 ### PowerShell
 
@@ -140,9 +141,9 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
 
 オンプレミスの Windows マシンと (Amazon Web Services などの) Azure 以外のクラウド内の Windows マシンも、インターネットへの発信アクセスが可能な限り、いくつかの簡単な手順で Azure Automation DSC にオンボードすることができます。
 
-1. Azure Automation DSC にオンボードするマシンに最新バージョンの [WMF 5](http://www.microsoft.com/ja-JP/download/details.aspx?id=48729) がインストールされていることを確認します。
+1. Azure Automation DSC にオンボードするマシンに最新バージョンの [WMF 5](http://aka.ms/wmf5latest) がインストールされていることを確認します。
 2. 以下の「[**DSC メタ構成の生成**](#generating-dsc-metaconfigurations)」のセクションの指示に従って、必要な DSC メタ構成が含まれるフォルダーを生成します。
-3. 以下を使用して、オンボードするマシンに PowerShell DSC メタ構成をリモートで適用します。**このコマンドを実行するマシンには最新バージョンの [WMF 5](http://www.microsoft.com/ja-JP/download/details.aspx?id=48729) がインストールされている必要があります。**
+3. 以下を使用して、オンボードするマシンに PowerShell DSC メタ構成をリモートで適用します。**このコマンドを実行するマシンには最新バージョンの [WMF 5](http://aka.ms/wmf5latest) がインストールされている必要があります。**
 
 	`Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2`
 
@@ -153,9 +154,9 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
 
 オンプレミスの Linux マシン、Azure の Linux マシン、Azure 以外のクラウド内の Linux マシンも、インターネットへの発信アクセスが可能な限り、いくつかの簡単な手順で Azure Automation DSC にオンボードすることができます。
 
-1. Azure Automation DSC にオンボードするマシンに最新バージョンの [DSC Linux エージェント](http://www.microsoft.com/ja-JP/download/details.aspx?id=49150)がインストールされていることを確認します。
+1. Azure Automation DSC にオンボードするマシンに最新バージョンの [DSC Linux エージェント](http://www.microsoft.com/download/details.aspx?id=49150)がインストールされていることを確認します。
 
-2. [PowerShell DSC Local Configuration Manager の既定値](hhttps://msdn.microsoft.com/powershell/dsc/metaconfig4)がユース ケースに適しており、**両方とも** Azure Automation DSC とデータをやり取りするマシンをオンボードするには、次のようにします。
+2. [PowerShell DSC Local Configuration Manager の既定値](https://msdn.microsoft.com/powershell/dsc/metaconfig4)がユース ケースに適しており、**両方とも** Azure Automation DSC とデータをやり取りするマシンをオンボードするには、次のようにします。
 
 	*    Azure Automation DSC にオンボードする各 Linux マシンで、Register.py で PowerShell DSC Local Configuration Manager の既定値を使用してオンボードします。
 
@@ -178,7 +179,7 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
     	
     	Set-DscLocalConfigurationManager -CimSession $Session –Path C:\Users\joe\Desktop\DscMetaConfigs
 	
-このコマンドを実行するマシンには最新バージョンの [WMF 5](http://www.microsoft.com/ja-JP/download/details.aspx?id=48729) がインストールされている必要があります。
+このコマンドを実行するマシンには最新バージョンの [WMF 5](http://aka.ms/wmf5latest) がインストールされている必要があります。
 
 5.  PowerShell DSC メタ構成をリモートで適用できない場合は、オンボードする各 Linux マシンについて、手順 5. のフォルダーからそのマシンに対応するメタ構成を Linux マシンにコピーします。次に、以下を使用して、Azure Automation DSC にオンボードする各 Linux マシンで `SetDscLocalConfigurationManager.py` をローカルで呼び出します。
 
@@ -192,7 +193,7 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
 **注:** DSC メタ構成には Automation アカウントにマシンをオンボードするために必要な管理用の秘密が含まれています。作成した DSC メタ構成は適切に保護し、使用後は削除してください。
 
 ###DSC 構成の使用
-1.	ローカル環境のマシンで、管理者として PowerShell ISE を開きます。マシンには最新バージョンの [WMF 5](http://www.microsoft.com/ja-JP/download/details.aspx?id=48729) がインストールされている必要があります。
+1.	ローカル環境のマシンで、管理者として PowerShell ISE を開きます。マシンには最新バージョンの [WMF 5](http://aka.ms/wmf5latest) がインストールされている必要があります。
 
 2.	次のスクリプトをローカルにコピーします。このスクリプトには、メタ構成を作成するための PowerShell DSC 構成と、メタ構成の作成を開始するためのコマンドが含まれています。
     
@@ -279,11 +280,12 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
 
                 ReportServerWeb AzureAutomationDSC 
                 { 
-                ServerUrl = $RegistrationUrl 
-                RegistrationKey = $RegistrationKey 
+                    ServerUrl = $RegistrationUrl 
+                    RegistrationKey = $RegistrationKey 
                 }
             } 
         }
+        
         # Create the metaconfigurations
         # TODO: edit the below as needed for your use case
         DscMetaConfigs `
@@ -335,19 +337,26 @@ DSC 登録プロトコルに必要な情報は、Azure プレビュー ポータ
 
 Azure Automation DSC を使用すると、構成管理のための Azure Windows VM を簡単にオンボードできます。内部で、Azure VM Desired State Configuration 拡張機能を使用して、VM を Azure Automation DSC に登録します。Azure VM Desired State Configuration 拡張機能は非同期に実行されるため、その進行状況の追跡とその実行に関するトラブルシューティングが重要な場合があります。
 
->[AZURE.NOTE]Azure VM Desired State Configuration 拡張機能を使用する Azure Automation DSC への Azure Windows VM のオンボード方法では、ノードが Azure Automation に登録済みと表示されるまでに最大で 1 時間かかる場合があります。これは、VM を Azure Automation DSC にオンボードするために必要な Windows Management Framework 5.0 を、Azure VM DSC 拡張機能が VM にインストールするためです。
+>[AZURE.NOTE] Azure VM Desired State Configuration 拡張機能を使用する Azure Automation DSC への Azure Windows VM のオンボード方法では、ノードが Azure Automation に登録済みと表示されるまでに最大で 1 時間かかる場合があります。これは、VM を Azure Automation DSC にオンボードするために必要な Windows Management Framework 5.0 を、Azure VM DSC 拡張機能が VM にインストールするためです。
 
 トラブルシューティングを行う場合や、Azure VM Desired State Configuration 拡張機能の状態を表示する場合は、Azure プレビュー ポータルでオンボードされている VM に移動してから、**[すべての設定]**、**[拡張機能]**、**[DSC]** の順にクリックします。詳細は、**[詳細な状態の表示]** をクリックして表示できます。
 
 [![](./media/automation-dsc-onboarding/DSC_Onboarding_5.png)](https://technet.microsoft.com/library/dn249912.aspx)
 
-## 証明書の有効期限と登録
+## 証明書の有効期限と再登録
 
-登録すると、各ノードは、1 年後に有効期限が切れる認証用の一意の証明書を自動的にネゴシエートします。現時点では、PowerShell DSC 登録プロトコルは、有効期限が近づいたときに証明書を自動的に更新することはできないため、1 年後にノードを再登録する必要があります。再登録する前に、各ノードで Windows Management Framework 5.0 RTM が実行されていることを確認します。ノードの認証証明書の有効期限が切れるときにノードが再登録されない場合、ノードは Azure Automation と通信できなくなり、[反応なし] とマークされます。 再登録は、ノードを初めて登録したのと同じ方法で実行されます。証明書の有効期限が切れる 90 日以内または証明書の有効期限が切れた後で再登録を実行すると、新しい証明書が生成されて使用されます。
+Azure Automation DSC に DSC ノードとしてマシンを登録した後も、さまざまな理由で、そのノードを再登録する必要があります。
+
+* 登録すると、各ノードは、1 年後に有効期限が切れる認証用の一意の証明書を自動的にネゴシエートします。現時点では、PowerShell DSC 登録プロトコルは、有効期限が近づいたときに証明書を自動的に更新することはできないため、1 年後にノードを再登録する必要があります。再登録する前に、各ノードで Windows Management Framework 5.0 RTM が実行されていることを確認します。ノードの認証証明書の有効期限が切れるときにノードが再登録されない場合、ノードは Azure Automation と通信できなくなり、[反応なし] とマークされます。 証明書の有効期限が切れる 90 日以内または証明書の有効期限が切れた後で再登録を実行すると、新しい証明書が生成されて使用されます。
+
+* ConfigurationMode など、ノードの最初の登録時に設定した [PowerShell DSC Configuration Manager 値](https://msdn.microsoft.com/powershell/dsc/metaconfig4)を変更する場合。現在、DSC エージェント値を変更するには、再登録を使用する必要があります。1 つの例外は、ノードに割り当てられたノード構成です。この場合、Azure Automation DSC で直接変更できます。
+
+再登録は、ノードを最初に登録する場合と同様です。このドキュメントで説明しているオンボード方法のいずれかを使用します。ノードを再登録する前に、Azure Automation DSC のノードの登録を解除する必要はありません。
+
 
 ## 関連記事
 * [Azure Automation DSC の概要](automation-dsc-overview.md)
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
-* [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](http://azure.microsoft.com/pricing/details/automation/)
+* [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

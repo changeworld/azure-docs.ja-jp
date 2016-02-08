@@ -25,7 +25,7 @@
 ### Microsoft Azure DocumentDB とは 
 Microsoft Azure DocumentDB は、スケーラブルな NoSQL ドキュメントのサービスとしてのデータベースです。Microsoft Azure の機能と能力に支えられた管理プラットフォームによって、スキーマフリーのデータに高度なクエリを実行することができ、構成可能な信頼性の高いパフォーマンスの提供、および迅速な開発が可能となります。DocumentDB は、予測可能なスループット、遅延時間の短縮、およびスキーマフリー データ モデルが重要な要件となる、Web アプリケーションやモバイル アプリケーションに適したソリューションです。DocumentDB では、ネイティブ JSON データ モデルでスキーマの柔軟性と豊富なインデックス作成機能が提供され、統合 JavaScript でマルチドキュメント トランザクションがサポートされます。
   
-データベース質問および回答の詳細と、このサービスのデプロイおよび使用の手順については、[DocumentDB ドキュメント ページ](http://azure.microsoft.com/documentation/services/documentdb/)を参照してください。
+データベース質問および回答の詳細と、このサービスのデプロイおよび使用の手順については、[DocumentDB ドキュメント ページ](https://azure.microsoft.com/documentation/services/documentdb/)を参照してください。
 
 ### DocumentDB はどのような種類のデータベースですか?
 DocumentDB は、JSON 形式でデータを格納する NoSQL ドキュメント指向のデータベースです。DocumentDB では、高度な DocumentDB [SQL クエリ文法](documentdb-sql-query.md)で照会できる入れ子になった自立的データ構造がサポートされます。DocumentDB では、[ストアド プロシージャ、トリガー、およびユーザー定義関数](documentdb-programming.md)を使用して、サーバー側 JavaScript のトランザクション処理を高いパフォーマンスで実行できます。また、開発者によって調整可能な一貫性レベルを、関連付けられた[パフォーマンス レベル](documentdb-performance-levels.md)と共にサポートします。
@@ -52,7 +52,7 @@ DocumentDB は現在 HIPAA に準拠していませんが、Azure サービス�
 詳細については、「[DocumentDB 料金](http://go.microsoft.com/fwlink/p/?LinkID=402317)」ページを参照してください。DocumentDB の利用料金は、使用されたコレクションの数、コレクションがオンラインであった時間数、および各コレクションの[パフォーマンス レベル](documentdb-performance-levels.md)によって決まります。
 
 ### 無料試用版は使用できますか?
-Azure を初めて使用する場合は、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。これは 30 日間使用でき、すべての Azure サービスを試すには 200 ドルかかります。Visual Studio サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。
+Azure を初めて使用する場合は、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。これは 30 日間使用でき、すべての Azure サービスを試すには 200 ドルかかります。Visual Studio サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。
 
 ### DocumentDB に関するその他のヘルプはどのようにして得られますか?
 ヘルプが必要な場合は、[Stack Overflow](http://stackoverflow.com/questions/tagged/azure-documentdb) または [Azure DocumentDB MSDN デベロッパー フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)を利用するか、または [DocumentDB エンジニアリング チームとの 1 対 1 のチャット](http://www.askdocdb.com/)をスケジュールしてください。DocumentDB の最新のニュースと機能については、[Twitter](https://twitter.com/DocumentDB) をフォローしてください。
@@ -115,4 +115,4 @@ DocumentDB にドキュメントを一括挿入するには 3 つの方法があ
 [query]: documentdb-sql-query.md
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

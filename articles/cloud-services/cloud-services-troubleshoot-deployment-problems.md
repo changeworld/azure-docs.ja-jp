@@ -29,9 +29,9 @@
 
 ## Azure カスタマー サポートへの問い合わせ
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
 
-または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
+または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 
 
@@ -41,7 +41,7 @@
 
 1. Azure ポータルで、ご使用のクラウド サービスのデプロイメントをクリックします。
 2. Azure ポータルの **[プロパティ]** ウィンドウ ([入力エンドポイント]) で、ロール インスタンスのポートを確認します。
-3. ポート番号が 80 以外であった場合、アプリケーションにアクセスするときに、正しいポート値を URL に追加してください。既定以外のポートを指定するには、URL に続けてコロン (:) を入力し、スペースなしでポート番号を入力します。
+3. ポート番号が *80* 以外であった場合、アプリケーションにアクセスするときに、正しいポート値を URL に追加してください。既定以外のポートを指定するには、URL に続けてコロン (:) を入力し、スペースなしでポート番号を入力します。
 
 ## 問題: ロール インスタンスが勝手に再起動する
 
@@ -80,7 +80,7 @@ VIP スワップを妨げている原因が自動アップグレードである�
    * ロール インスタンスが [ビジー] 状態である場合、アプリケーション コードを見て、[StatusCheck](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.statuscheck) イベントを処理しているかどうかを確認します。場合によっては、このイベントを処理するコードを追加するか、コードに修正を加える必要があります。
    * [Azure PaaS コンピューティング診断データ] に関するブログ記事で、診断データとトラブルシューティングのシナリオを参照してください。
 
->[AZURE.WARNING]クラウド サービスを再起動した場合、デプロイメントのプロパティはリセットされ、元の問題に関する情報は事実上失われます。
+>[AZURE.WARNING] クラウド サービスを再起動した場合、デプロイメントのプロパティはリセットされ、元の問題に関する情報は事実上失われます。
 
 ## 次のステップ
 
@@ -88,4 +88,4 @@ VIP スワップを妨げている原因が自動アップグレードである�
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0121_2016--->
+<!---HONumber=AcomDC_0128_2016-->

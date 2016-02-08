@@ -28,7 +28,8 @@
 - **パスワード管理アクティビティ レポート**では、組織内で発生したパスワードのリセットおよび登録アクティビティの詳細が管理者に提供されます。
 - **パスワード ライトバック**では、クラウドからオンプレミスのパスワードを管理できるので、フェデレーション ユーザーまたはパスワード同期済みユーザーは、またはこれらのユーザーに代わって、上記のシナリオをすべて実行できます。パスワード ライトバックには Azure AD Premium が必要です。詳細については、「[Azure Active Directory Premium の概要](active-directory-get-started-premium.md)」を参照してください。
 
-> [AZURE.NOTE]Azure AD のワールドワイド インスタンスを使用している中国のお客様は、Azure AD Premium を利用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure AD Premium は現在サポートされていません。詳細については、[Azure Active Directory フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)からお問い合わせください。
+> [AZURE.NOTE]
+Azure AD のワールドワイド インスタンスを使用している中国のお客様は、Azure AD Premium を利用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure AD Premium は現在サポートされていません。詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
 
 次のリンクを使用して、最も関心のあるドキュメントに移動してください。
 
@@ -48,4 +49,4 @@
 - [Azure AD でのユーザーの作成または編集](active-directory-create-users.md)
 - [Azure AD でのグループの管理](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

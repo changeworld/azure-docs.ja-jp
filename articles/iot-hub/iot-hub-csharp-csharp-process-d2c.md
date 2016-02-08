@@ -41,7 +41,7 @@ Service Bus は、メッセージごとのチェックポイントと期間ベ�
 * **ProcessDeviceToCloudMessages**。[EventProcessorHost] クラスを使用して、Event Hubs と互換性のあるエンドポイントからメッセージを受信し、Azure BLOB にデータ ポイント メッセージを確実に格納し、対話型メッセージを Service Bus キューに転送します。
 * **ProcessD2CInteractiveMessages**。Service Bus キューから対話型メッセージをデキューします。
 
-> [AZURE.NOTE]IoT Hub には、多数のデバイス プラットフォームや言語 (C、Java、JavaScript など) に対する SDK サポートがあります。このチュートリアルでシミュレートされたデバイスと物理デバイスを交換する方法と Azure IoT Hub にデバイスを接続する一般的な方法の詳しい手順については、[Azure IoT デベロッパー センター]を参照してください。
+> [AZURE.NOTE] IoT Hub には、多数のデバイス プラットフォームや言語 (C、Java、JavaScript など) に対する SDK サポートがあります。このチュートリアルでシミュレートされたデバイスと物理デバイスを交換する方法と Azure IoT Hub にデバイスを接続する一般的な方法の詳しい手順については、[Azure IoT デベロッパー センター]を参照してください。
 
 このチュートリアルは、[HDInsight (Hadoop)] プロジェクトなど、Event Hubs と互換性のあるメッセージを使用する他の方法に直接適用できます。詳細については、「[Azure IoT Hub 開発者ガイド - デバイスからクラウド]」を参照してください。
 
@@ -49,7 +49,7 @@ Service Bus は、メッセージごとのチェックポイントと期間ベ�
 
 + Microsoft Visual Studio 2015
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[「Azure の無料試用版サイト」](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fprocess-d2c%2F target="\_blank") を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fprocess-d2c%2F target="\_blank") を参照してください。
 
 [Azure Storage] と [Azure Service Bus] について、ある程度の基本的な知識が必要です。
 
@@ -69,7 +69,7 @@ Service Bus は、メッセージごとのチェックポイントと期間ベ�
 
   ![][50]
 
-> [AZURE.NOTE]BLOB ファイルの更新内容を表示するために **MAX\_BLOCK\_SIZE** 定数を **StoreEventProcessor** クラスで **1024**などのより小さい値に削減することが必要になる場合があります。これは、シミュレーション対象デバイスによって送信されたデータのブロック サイズの制限に達するまでに時間がかかるためです。より小さいブロック サイズであれば、作成および更新される BLOB を表示するために長時間待機する必要はありません。ただし、より大きなブロック サイズを使用すると、アプリケーションの拡張性が向上します。
+> [AZURE.NOTE] BLOB ファイルの更新内容を表示するために **MAX\_BLOCK\_SIZE** 定数を **StoreEventProcessor** クラスで **1024**などのより小さい値に削減することが必要になる場合があります。これは、シミュレーション対象デバイスによって送信されたデータのブロック サイズの制限に達するまでに時間がかかるためです。より小さいブロック サイズであれば、作成および更新される BLOB を表示するために長時間待機する必要はありません。ただし、より大きなブロック サイズを使用すると、アプリケーションの拡張性が向上します。
 
 ## 次のステップ
 
@@ -116,4 +116,4 @@ IoT Hub に関するその他の情報:
 [Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
 [Azure IoT デベロッパー センター]: https://azure.microsoft.com/develop/iot
 
-<!------HONumber=AcomDC_0107_2016--->
+<!---HONumber=AcomDC_0128_2016-->

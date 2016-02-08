@@ -35,7 +35,7 @@
 * Android Studio 統合開発環境と最新の Android プラットフォームを含む [Android Developer Tools](https://developer.android.com/sdk/index.html)
 * Azure Mobile Android SDK。ダウンロードしたクイックスタート プロジェクトの一部として自動的に参照されます。
 * [Visual Studio Community 2013] 以降のバージョンがインストールされた PC (Node.js バックエンドでは不要)
-* [アクティブな Azure アカウント](http://azure.microsoft.com/pricing/free-trial/)
+* [アクティブな Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
 
 ## 新しい Azure モバイル アプリ バックエンドを作成する
 
@@ -56,4 +56,4 @@
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!----HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

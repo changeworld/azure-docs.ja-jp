@@ -50,13 +50,13 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 2.  Sqoop アクションは、Azure SQL データベースのテーブルに HiveQL 出力をエクスポートします。Sqoop の詳細については、「[HDInsight での Hadoop Sqoop の使用][hdinsight-use-sqoop]」を参照してください。
 
-> [AZURE.NOTE]HDInsight クラスターでサポートされている Oozie のバージョンについては、「[HDInsight で提供される Hadoop クラスター バージョンの新機能][hdinsight-versions]」を参照してください。
+> [AZURE.NOTE] HDInsight クラスターでサポートされている Oozie のバージョンについては、「[HDInsight で提供される Hadoop クラスター バージョンの新機能][hdinsight-versions]」を参照してください。
 
 ###前提条件
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。Windows PowerShell スクリプトを実行するには、管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。詳細については、「[Windows PowerShell スクリプトの実行][powershell-script]」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。Windows PowerShell スクリプトを実行するには、管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。詳細については、「[Windows PowerShell スクリプトの実行][powershell-script]」を参照してください。
 
 ##Oozie ワークフローと関連 HiveQL スクリプトを定義する
 
@@ -680,4 +680,4 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

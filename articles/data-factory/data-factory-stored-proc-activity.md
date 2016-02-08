@@ -21,7 +21,7 @@
 SQL Server ストアド プロシージャ アクティビティを Data Factory の[パイプライン](data-factory-create-pipelines.md)で使用して、次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。
 
 
-- Azure SQL データベース 
+- Azure SQL Database 
 - Azure SQL Data Warehouse  
 - エンタープライズ内または Azure VM 内の SQL Server データベース。データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上に Data Management Gateway をインストールする必要があります。Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータ ソースまたは Azure VM でホストされているデータ ソースをクラウド サービスに接続するソフトウェアです。Data Management Gateway の詳細については、[オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。 
 
@@ -49,17 +49,19 @@ SQL Server ストアド プロシージャ アクティビティを Data Factory
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-name | アクティビティの名前 | あり
+name | アクティビティの名前 | はい
 description | アクティビティの用途を説明するテキストです。 | いいえ
-type | SqlServerStoredProcedure | あり
+type | SqlServerStoredProcedure | はい
 inputs | 続行するストアド プロシージャ アクティビティに使用できる状態 (’Ready’ 状態) である必要がある入力データセット。ストアド プロシージャ アクティビティへの入力は、このアクティビティと他のアクティビティを関連付けるときの依存関係管理にのみ使用されます。入力データセットは、ストアド プロシージャでパラメーターとして使用できません。 | いいえ
-outputs | ストアド プロシージャ アクティビティで生成された出力データセット。出力テーブルでは、必ず Azure SQL Database または Azure SQL Data Warehouse を Data Factory にリンクするリンク サービスを使用します。ストアド プロシージャ アクティビティの出力は、後続の処理にストアド プロシージャ アクティビティの結果を渡すための手段として、およびこのアクティビティと他のアクティビティを関連付けるときの依存関係管理に使用できます。 | あり
-storedProcedureName | 出力テーブルに使用するリンク サービスで示される Azure SQL データベースまたは Azure SQL Data Warehouse のストアド プロシージャ名を指定します。 | あり
+outputs | ストアド プロシージャ アクティビティで生成された出力データセット。出力テーブルでは、必ず Azure SQL Database または Azure SQL Data Warehouse または SQL Server Database を Data Factory にリンクするリンクされたサービスを使用します。ストアド プロシージャ アクティビティの出力は、後続の処理にストアド プロシージャ アクティビティの結果を渡すための手段として、およびこのアクティビティと他のアクティビティを関連付けるときの依存関係管理に使用できます。 | はい
+storedProcedureName | 出力テーブルに使用するリンク サービスで示される Azure SQL データベースまたは Azure SQL Data Warehouse のストアド プロシージャ名を指定します。 | はい
 storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します | いいえ
 
 ## サンプルのチュートリアル
 
 ### サンプル テーブルとストアド プロシージャ
+> [AZURE.NOTE] このサンプルでは、Azure SQL Database を使用しますが、SQL Data Warehouse and SQL Server Database でも同じ方法で機能します。
+
 1. SQL Server Management Studio などのツールを使って Azure SQL Database に以下の**テーブル**を作成します。datetimestamp 列は、対応する ID が生成された日付と時刻です。 
 
 		CREATE TABLE dbo.sampletable
@@ -84,10 +86,10 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 		    VALUES (newid(), @DateTime)
 		END
 
-	> [AZURE.IMPORTANT]パラメーターの**名前**と**大文字と小文字**は (この例では DateTime) は、パイプライン/アクティビティ JSON に指定されたパラメーターのものと一致する必要があります。ストアド プロシージャ定義で、**@** がパラメーターのプレフィックスとして使用されていることを確認します。
+	> [AZURE.IMPORTANT] パラメーターの**名前**と**大文字と小文字**は (この例では DateTime) は、パイプライン/アクティビティ JSON に指定されたパラメーターのものと一致する必要があります。ストアド プロシージャ定義で、**@** がパラメーターのプレフィックスとして使用されていることを確認します。
 	
 ### Data Factory を作成する。  
-4. [Azure ポータル](http://portal.azure.com/)にログインした後、次の操作を行います。
+4. [Azure ポータル](https://portal.azure.com/)にログインした後、次の操作を行います。
 	1.	左側のメニューの **[新規]** をクリックします。 
 	2.	**[作成]** ブレードの **[データ分析]** をクリックします。
 	3.	**[データ分析]** ブレードの **[Data Factory]** をクリックします。
@@ -177,7 +179,7 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 
 	Azure Data Factory パイプラインの監視の詳細については、[パイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するページを参照してください。
 
-> [AZURE.NOTE]上の例では、SprocActivitySample に入力がありません。アップストリームのアクティビティ (つまり前の処理) とこれを関連付ける場合、アップストリーム アクティビティの出力をこのアクティビティの入力として使用できます。この場合、このアクティビティは、アップストリーム アクティビティが完了し、アップストリーム アクティビティの出力を使用できる状態 (Ready 状態) になるまで実行されません。入力は、ストアド プロシージャ アクティビティのパラメーターとして直接使用できません。
+> [AZURE.NOTE] 上の例では、SprocActivitySample に入力がありません。アップストリームのアクティビティ (つまり前の処理) とこれを関連付ける場合、アップストリーム アクティビティの出力をこのアクティビティの入力として使用できます。この場合、このアクティビティは、アップストリーム アクティビティが完了し、アップストリーム アクティビティの出力を使用できる状態 (Ready 状態) になるまで実行されません。入力は、ストアド プロシージャ アクティビティのパラメーターとして直接使用できません。
 
 ## 静的な値を渡す 
 次に、‘Document sample’ という静的値を含む ‘Scenario’ という別の列をテーブルに追加する例を考えてましょう。
@@ -205,4 +207,4 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 		}
 	}
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

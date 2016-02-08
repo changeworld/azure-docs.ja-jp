@@ -29,7 +29,7 @@ Azure PowerShell は、Azure のワークロードのデプロイと管理を制
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 ##Azure PowerShell 1.0 以上をインストールする
 
@@ -164,7 +164,7 @@ Azure PowerShell では、HDInsight の作成プロセス中に BLOB コンテ�
 ##クラスターのスケール
 クラスターのスケール設定機能を使用すると、Azure HDInsight で実行しているクラスターによって使用される worker ノードの数を、クラスターを再作成することなく、変更できます。
 
->[AZURE.NOTE]HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスター ポータル インターフェイスについての理解する](hdinsight-adminster-use-management-portal/#Get-familiar-with-the-cluster-portal-interface)」を参照してください。
+>[AZURE.NOTE] HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスター ポータル インターフェイスについての理解する](hdinsight-adminster-use-management-portal/#Get-familiar-with-the-cluster-portal-interface)」を参照してください。
 
 HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
 
@@ -241,7 +241,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 	
 	Grant-AzureRmHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $credential
 
->[AZURE.NOTE]アクセス許可を付与するか、取り消すことで、クラスターのユーザー名とパスワードがリセットされます。
+>[AZURE.NOTE] アクセス許可を付与するか、取り消すことで、クラスターのユーザー名とパスワードがリセットされます。
 
 これは、ポータルを使用して行うこともできます。[Azure ポータルを使用した HDInsight の管理][hdinsight-admin-portal]に関するページを参照してください。
 
@@ -332,4 +332,4 @@ ARM モードでは、各 HDInsight クラスターは Azure リソース グル
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

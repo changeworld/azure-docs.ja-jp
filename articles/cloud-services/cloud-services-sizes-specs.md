@@ -27,7 +27,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 サイズを決定する際に役立つ考慮事項は次のとおりです。
 
-* D シリーズ VM インスタンスは、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。詳細については、Azure ブログの投稿「[新しい D シリーズ仮想マシンのサイズ](http://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)」をご覧ください。  
+* D シリーズ VM インスタンスは、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。詳細については、Azure ブログの投稿「[新しい D シリーズ仮想マシンのサイズ](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)」をご覧ください。  
 
 *   オリジナルの D シリーズに続く Dv2 シリーズには、より強力な CPU が備わっています。Dv2 シリーズの CPU は D シリーズの CPU よりも、およそ 35% 高速です。これは最新世代の 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサに基づいており、Intel Turbo Boost Technology 2.0 を使用することで、最大 3.2 GHz まで実現できます。Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
 
@@ -90,4 +90,4 @@ Web ロール インスタンスのロール サイズを Small に設定する�
 
 [Azure のクラウド サービスのセットアップ](https://msdn.microsoft.com/library/hh124108)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

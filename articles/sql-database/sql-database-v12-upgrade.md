@@ -54,7 +54,7 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 
 ## アップグレードを開始する
 
-1. [Azure ポータル](http://portal.azure.com/)で、**[すべて参照]**、**[SQL サーバー]** の順に選択し、目的のサーバーを選択することで、アップグレードするサーバーを参照します。
+1. [Azure ポータル](https://portal.azure.com/)で、**[すべて参照]**、**[SQL サーバー]** の順に選択し、目的のサーバーを選択することで、アップグレードするサーバーを参照します。
 2. **[最新の SQL Database 更新]**、**[このサーバーをアップグレード]** の順に選択します。
 
       ![サーバーのアップグレード][1]
@@ -168,4 +168,4 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 [6]: ./media/sql-database-upgrade-server-portal/recommendations.png
 [7]: ./media/sql-database-upgrade-server-portal/new-elastic-pool.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

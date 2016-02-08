@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/09/2016"
+	ms.date="01/24/2016"
 	ms.author="glenga"/>
 
 # Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
@@ -25,7 +25,7 @@
 
 このトピックでは、Azure App Service Mobile Apps の主要なシナリオで .NET バックエンド サーバー SDK を使用する方法について説明します。Azure Mobile Apps SDK を使用すると、ASP.NET アプリケーションからモバイル クライアントを操作することができます。
 
->[AZURE.TIP] [Azure Mobile Apps 向け .NET サーバー SDK](https://github.com/Azure/azure-mobile-apps-net-server) は、オープン ソースとして GitHub で公開されています。リポジトリには、いくつかのサンプル プロジェクトと同様に、サーバー全体の SDK ユニット テスト スイートが含まれています。
+>[AZURE.TIP] [Azure Mobile Apps 向け .NET サーバー SDK](https://github.com/Azure/azure-mobile-apps-net-server) は、オープン ソースとして GitHub で公開されています。リポジトリには、いくつかのサンプル プロジェクトと同様に、サーバー全体の SDK ユニット テスト スイートが含まれています。
 
 ## リファレンス ドキュメント
 
@@ -43,7 +43,7 @@
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-&nbsp;&nbsp;9.**[テーブル API の作成]** の [はじめに] ブレードに戻り、**[バックエンド言語]** として **[C#]** を選択します。
+&nbsp;&nbsp;9.**[テーブル API の作成]** の _[はじめに]_ ブレードに戻り、**[バックエンド言語]** として **[C#]** を選択します。
 
 &nbsp;&nbsp;10.[ダウンロード] をクリックし、圧縮されたプロジェクト ファイルをローカル コンピューターに抽出して、Visual Studio でソリューションを開きます。
 
@@ -51,7 +51,7 @@
 
 Visual Studio で Mobile Apps プロジェクトを作成するには、[Azure SDK for .NET](https://azure.microsoft.com/downloads/) バージョン 2.8.1 以降をインストールする必要があります。SDK のインストールが完了したら、ASP.NET アプリケーションを新規作成します。
 
-1. **[新しいプロジェクト]** ダイアログを開きます ([ファイル]、**[新規作成]**、**[プロジェクト...]** の順にクリックします)。
+1. **[新しいプロジェクト]** ダイアログを開きます (*[ファイル]*、**[新規作成]**、**[プロジェクト...]** の順にクリックします)。
 
 2. **[テンプレート]**、**[Visual C#]** の順に展開し、**[Web]** を選択します。
 
@@ -59,7 +59,7 @@ Visual Studio で Mobile Apps プロジェクトを作成するには、[Azure S
 
 4. プロジェクト名を入力します。次に、 **[OK]** をクリックします
 
-5. ASP.NET 4.5.2 テンプレートの **[Azure Mobile App]** を選択します。このプロジェクトを発行できるクラウドに新しいモバイル アプリを作成するために、**[クラウドでホストする]** チェック ボックスをオンにします。
+5. _ASP.NET 4.5.2 テンプレート_の **[Azure Mobile App]** を選択します。このプロジェクトを発行できるクラウドに新しいモバイル アプリを作成するために、**[クラウドでホストする]** チェック ボックスをオンにします。
 
 6. **[OK]** をクリックします。アプリケーションが作成され、ソリューション エクスプローラーに表示されます。
 
@@ -124,7 +124,7 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 
 - [Microsoft.Azure.Mobile.Server.Quickstart] Mobile Apps の基本的なセットアップをサポートします。構成に追加するには、初期化中に **UseDefaultConfiguration** 拡張機能メソッドを呼び出します。この拡張機能には、Notifications、Authentication、Entity、Tables、Crossdomain、および Home パッケージが含まれています。これは、Azure ポータル からダウンロードするクイックスタート サーバー プロジェクトに相当します。
 
-- [Microsoft.Azure.Mobile.Server.Home](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) Web サイトのルートに、このモバイル アプリが実行される既定のページを実装します。構成に追加するには、**AddMobileAppHomeController** 拡張メソッドを呼び出します。
+- [Microsoft.Azure.Mobile.Server.Home](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) Web サイトのルートに、*このモバイル アプリが実行される既定のページ*を実装します。構成に追加するには、**AddMobileAppHomeController** 拡張メソッドを呼び出します。
 
 - [Microsoft.Azure.Mobile.Server.Tables](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) データ処理のためのクラスが含まれており、データ パイプラインを設定します。構成に追加するには、**AddTables** 拡張メソッドを呼び出します。
 
@@ -184,7 +184,7 @@ Azure SQL Database のデータへのアクセスに Entity Framework を使用�
 
 ## 方法: カスタム API コントローラーを定義する
 
-カスタム API コントローラーは、エンドポイントを公開して、モバイル アプリのバックエンドに最も基本的な機能を提供します。`MobileAppControllerAttribute` 属性を使用して、モバイル固有の API コント ローラーを登録できます。この属性は、ルートを登録し、Mobile Apps JSON シリアライザーも設定します。
+カスタム API コントローラーは、エンドポイントを公開して、モバイル アプリのバックエンドに最も基本的な機能を提供します。[MobileAppController] 属性を使用して、モバイル固有の API コント ローラーを登録できます。この属性は、ルートを登録し、Mobile Apps JSON シリアライザーも設定します。
 
 1. Visual Studio で、Controllers フォルダーを右クリックして、**[追加]**、**[コントローラー]** の順にクリックし、**[Web API 2 コントローラー - 空]** を選択して **[追加]** をクリックします。
 
@@ -194,7 +194,7 @@ Azure SQL Database のデータへのアクセスに Entity Framework を使用�
 
 		using Microsoft.Azure.Mobile.Server.Config;
 
-4. 次の例に従って、API コントローラーのクラス定義に **MobileAppControllerAttribute** を適用します。
+4. 次の例に従って、API コントローラーのクラス定義に **[MobileAppController]** 属性を適用します。
 
 		[MobileAppController] 
 		public class CustomController : ApiController
@@ -276,23 +276,23 @@ App Service Authentication/Authorization プロバイダーの中に使用した
 			}
 		}
 
-`MobileAppLoginHAppServiceLoginHandlerandler.CreateToken()` メソッドには、audience パラメーターと issuer パラメーターが含まれています。どちらも通常は、HTTPS スキームを使用して、アプリケーション ルートの URL に設定します。同様に、secretKey をアプリケーションの署名キーの値に設定する必要があります。これは機密性の高い値なので、共有したりクライアントに保存したりしないでください。この値を取得するには、App Service でホストされているときに WEBSITE\_AUTH\_SIGNING\_KEY 環境変数を参照します。ローカル デバッグの実行で必要な場合は、「[認証に関するローカル デバッグ](#local-debug)」セクションの手順に従ってキーを取得し、アプリケーション設定として保存します。
+`MobileAppLoginHAppServiceLoginHandlerandler.CreateToken()` メソッドには、_audience_ パラメーターと _issuer_ パラメーターが含まれています。どちらも通常は、HTTPS スキームを使用して、アプリケーション ルートの URL に設定します。同様に、_secretKey_ をアプリケーションの署名キーの値に設定する必要があります。これは機密性の高い値なので、共有したりクライアントに保存したりしないでください。この値を取得するには、App Service でホストされているときに _WEBSITE\_AUTH\_SIGNING\_KEY_ 環境変数を参照します。ローカル デバッグの実行で必要な場合は、「[認証に関するローカル デバッグ](#local-debug)」セクションの手順に従ってキーを取得し、アプリケーション設定として保存します。
 
 また、発行されたトークンの有効期間と、含めたい要求を指定する必要があります。サンプル コードに示すとおり、サブジェクトの要求を指定する必要があります。
 
-また、手動の HTTP POST の代わりに `loginAsync()` メソッド (プラットフォームによって名前が変わる可能性があります) を使用するようにクライアント コードを簡略化できます。POST するアサーション オブジェクトに関連付けられている、追加のトークン パラメーターを受け取るオーバーロードを使用します。この場合、プロバイダーは独自のカスタム名にする必要があります。その後、ログイン アクションはサーバー上のこのカスタム名が含まれる /.auth/login/{customProviderName} パスにある必要があります。このパスにコントローラーを配置するには、MobileAppConfiguration を適用する前に、HttpConfiguration にルートを追加します。
+また、手動の HTTP POST の代わりに `loginAsync()` メソッド (プラットフォームによって名前が変わる可能性があります) を使用するようにクライアント コードを簡略化できます。POST するアサーション オブジェクトに関連付けられている、追加のトークン パラメーターを受け取るオーバーロードを使用します。この場合、プロバイダーは独自のカスタム名にする必要があります。その後、ログイン アクションはサーバー上のこのカスタム名が含まれる _/.auth/login/{customProviderName}_ パスにある必要があります。このパスにコントローラーを配置するには、MobileAppConfiguration を適用する前に、HttpConfiguration にルートを追加します。
 
 		config.Routes.MapHttpRoute("CustomAuth", ".auth/login/CustomAuth", new { controller = "CustomAuth" }); 
 		
 上の文字列 "CustomAuth" をログイン操作をホストしているコント ローラーの名前で置き換えます。
 
->[AZURE.TIP]loginAsync() アプローチを使用することで、サービスの後続の呼び出しごとに認証トークンが添付されます。
+>[AZURE.TIP] loginAsync() アプローチを使用することで、サービスの後続の呼び出しごとに認証トークンが添付されます。
 
 ###<a name="user-info"></a>方法: 認証されたユーザー情報を取得する
 
 ユーザーが App Service によって認証されると、.NET バックエンド コードで、割り当てられたユーザー ID とその他の情報にアクセスできます。これは、バックエンドで特定のユーザーに対する承認を判断する場合に便利です。たとえば、特定のユーザーがテーブル行やその他のリソースにアクセスできるかどうかの判断などです。次のコードは、ログインしたユーザーのユーザー ID を取得する方法を示しています。
 
-    // Get the current user SID and create a tag for the current user.
+    // Get the SID of the current user.
     var claimsPrincipal = this.User as ClaimsPrincipal;
     string sid = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value;
 
@@ -420,7 +420,7 @@ Azure App Service には、ASP.NET アプリケーションのデバッグとト
 
 ### <a name="local-debug"></a>認証に関するローカル デバッグ
 
-クラウドに発行する前に変更をテストするために、ローカルでアプリケーションを実行できます。多くのアプリは、Visual Studio で F5 キーを押すだけで実行できます。ただし、認証を使用している場合は追加の考慮事項がいくつかあります。
+クラウドに発行する前に変更をテストするために、ローカルでアプリケーションを実行できます。多くのアプリは、Visual Studio で *F5* キーを押すだけで実行できます。ただし、認証を使用している場合は追加の考慮事項がいくつかあります。
 
 App Service Authentication/Authorization を使用してクラウド ベースのモバイル アプリを構成する必要があります。また、クライアントに代替ログイン ホストとしてクラウド エンドポイントを指定する必要があります。必要な手順の詳細については、選択したクライアント プラットフォーム ([iOS](app-service-mobile-ios-how-to-use-client-library.md)、[Windows/Xamarin](app-service-mobile-dotnet-how-to-use-client-library.md)) のドキュメントを参照してください。
 
@@ -434,7 +434,7 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 			TokenHandler = config.GetMobileAppTokenHandler()
 		});
 
-上記の例では、Web.config ファイル内のアプリケーション設定 authAudience と authIssuer を、HTTPS スキームを使用して、それぞれアプリケーション ルートの URL に構成する必要があります。同様に、authSigningKey をアプリケーションの署名キーの値に設定する必要があります。これは機密性の高い値なので、共有したりクライアントに保存したりしないでください。この値を取得するには、[Azure ポータル]でアプリに移動し、**[ツール]** をクリックします。**[Kudu]** を選択し、**[移動]** をクリックします。この操作により、サイトの Kudu 管理エンドポイントに移動します。**[環境]** をクリックし、WEBSITE\_AUTH\_SIGNING\_KEY で値を確認します。これがローカル アプリ構成の authSigningKey で使用する必要がある値です。
+上記の例では、Web.config ファイル内のアプリケーション設定 _authAudience_ と _authIssuer_ を、HTTPS スキームを使用して、それぞれアプリケーション ルートの URL に構成する必要があります。同様に、_authSigningKey_ をアプリケーションの署名キーの値に設定する必要があります。これは機密性の高い値なので、共有したりクライアントに保存したりしないでください。この値を取得するには、[Azure ポータル]でアプリに移動し、**[ツール]** をクリックします。**[Kudu]** を選択し、**[移動]** をクリックします。この操作により、サイトの Kudu 管理エンドポイントに移動します。**[環境]** をクリックし、_WEBSITE\_AUTH\_SIGNING\_KEY_ で値を確認します。これがローカル アプリ構成の _authSigningKey_ で使用する必要がある値です。
 
 ローカルで実行されているサーバーで、クライアントがクラウド ベースのエンドポイントから取得するトークンを検証できるようになりました。
 
@@ -446,4 +446,4 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

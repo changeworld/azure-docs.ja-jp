@@ -28,7 +28,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 
 ##前提条件
 
-- **Azure サブスクリプション**: [Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページをご覧ください。
+- **Azure サブスクリプション**: [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページをご覧ください。
 
 - **Linux ベースの HDInsight クラスター**: 「[Linux 上の HDInsight で Hive と Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
 
@@ -69,7 +69,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 
 **ソース コード**: これらのサンプルのソース コードは、HDInsight クラスター上の **/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples** にあります。
 
-> [AZURE.NOTE]このパスの `2.2.4.9-1` は、HDInsight クラスターの Hortonworks Data Platform のバージョンであり、HDInsight が更新されると変更される場合があります。
+> [AZURE.NOTE] このパスの `2.2.4.9-1` は、HDInsight クラスターの Hortonworks Data Platform のバージョンであり、HDInsight が更新されると変更される場合があります。
 
 ## サンプルの実行方法 ##
 
@@ -103,7 +103,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 
     この例の出力は ****wasb:///example/data/davinciwordcount** にあります。
 
-    > [AZURE.NOTE]wordcount サンプルのヘルプで説明したように、複数の入力ファイルを指定することもできます。たとえば、`hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` は davinci.txt と ulysses.txt の両方の単語をカウントします。
+    > [AZURE.NOTE] wordcount サンプルのヘルプで説明したように、複数の入力ファイルを指定することもできます。たとえば、`hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` は davinci.txt と ulysses.txt の両方の単語をカウントします。
 
 5. ジョブが完了したら、次のコマンドを使用して出力を表示します。
 
@@ -144,7 +144,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
     ? ? ? ? ? ? 2 ? ?
     ? ? ? ? 4 5 ? 7 8
 
-> [AZURE.NOTE]このパスの `2.2.4.9-1` の部分は、HDInsight クラスターが更新されると変更される場合があります。
+> [AZURE.NOTE] このパスの `2.2.4.9-1` の部分は、HDInsight クラスターが更新されると変更される場合があります。
 
 数独の例でこれを実行するには、次のコマンドを使用します。
 
@@ -236,4 +236,4 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

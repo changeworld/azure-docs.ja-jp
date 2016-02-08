@@ -22,7 +22,7 @@
 
 ## はじめに 
 
-この記事は、v 1.1.1.0 (プレビュー) を実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) にのみ適用されます。この記事では、初期セットアップ、StorSimple ファイル サーバーの登録、デバイス セットアップ、および SMB 共有の作成と接続の方法について説明します。仮想アレイをファイル サーバーまたは iSCSI サーバーとして完全にデプロイするために必要なデプロイメント チュートリアル シリーズの最後の記事です。
+この記事は、v 1.1.1.0 (プレビュー) を実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) にのみ適用されます。この記事では、初期セットアップ、StorSimple ファイル サーバーの登録、デバイス セットアップ、および SMB 共有の作成と接続の方法について説明します。仮想アレイをファイル サーバーまたは iSCSI サーバーとして完全にデプロイするために必要なデプロイ チュートリアル シリーズの最後の記事です。
 
 セットアップと構成のプロセスは、完了するまでに約 10 分かかることがあります。
 
@@ -57,7 +57,7 @@ StorSimple 仮想デバイスをセットアップして構成するには、次
 
 	![](./media/storsimple-ova-deploy3-fs-setup/image2.png)
 
-1.  仮想デバイスの Web UI に **StorSimpleAdmin** としてサインインします。「[Hyper-V で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[VMware で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の「手順 3: 仮想デバイスを起動する」で変更したデバイス管理者のパスワードを入力します。
+1.  仮想デバイスの Web UI に **StorSimpleAdmin** としてサインインします。「[Hyper-V で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[VMware で Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の「手順 3: 仮想デバイスを起動し、IP アドレスを取得する」で変更したデバイス管理者のパスワードを入力します。
 
 	![](./media/storsimple-ova-deploy3-fs-setup/image3.png)
 
@@ -101,7 +101,7 @@ StorSimple 仮想デバイスをセットアップして構成するには、次
 
 	**[Web プロキシ]** ページで、以下のことを実行します。
 
-	1.  **Web プロキシ URL** を次の形式で指定します。http://&lt;host-IP アドレスまたは FDQN&gt;:ポート番号。HTTPS URL はサポートされていないことに注意してください。
+	1.  **Web プロキシ URL** を次の形式で指定します。*http://&lt;host-IP アドレスまたは FDQN&gt;:ポート番号*。HTTPS URL はサポートされていないことに注意してください。
 
 	2.  **認証**に **[基本]**、**[NTLM]**、または **[なし]** を指定します。
 
@@ -169,7 +169,7 @@ StorSimple デバイスのデバイス構成を完了するには、次の手順
  ![](./media/storsimple-ova-deploy3-fs-setup/image17.png)
 
 
-> [AZURE.NOTE]
+> [AZURE.NOTE]                                                              
 >
 > **[構成]** ページにアクセスすれば、その他すべてのデバイス設定をいつでも変更できます。
 
@@ -199,7 +199,7 @@ StorSimple デバイスのデバイス構成を完了するには、次の手順
 
 1.  矢印アイコン ![](./media/storsimple-ova-deploy3-fs-setup/image19.png) をクリックして、次のページに進みます。
 
-1.  **[追加設定]** ページで、この共有にアクセスするユーザーまたはグループにアクセス許可を割り当てます。ユーザーまたはユーザー グループの名前を <john@contoso.com> の形式で指定します。この共有にアクセスする管理者特権を許可するには、(1 人のユーザーではなく) ユーザー グループを使用することをおすすめします。ここでアクセス許可を割り当てた後は、Windows エクスプローラーを使用してこれらのアクセス許可を変更することができます。
+1.  **[追加設定]** ページで、この共有にアクセスするユーザーまたはグループにアクセス許可を割り当てます。ユーザーまたはユーザー グループの名前を *<john@contoso.com>* の形式で指定します。この共有にアクセスする管理者特権を許可するには、(1 人のユーザーではなく) ユーザー グループを使用することをおすすめします。ここでアクセス許可を割り当てた後は、Windows エクスプローラーを使用してこれらのアクセス許可を変更することができます。
 
 	![](./media/storsimple-ova-deploy3-fs-setup/image20.png)
 
@@ -211,7 +211,7 @@ StorSimple デバイスのデバイス構成を完了するには、次の手順
 
 #### 共有に接続するには
 
-1.  ![](./media/storsimple-ova-deploy3-fs-setup/image22.png) + R キーを押します。[ファイル名を指定して実行] ウィンドウで、パスとして \<file server name> を指定し、ファイル サーバー名をファイル サーバーに割り当てたデバイス名に置き換えます。**[OK]** をクリックします。
+1.  ![](./media/storsimple-ova-deploy3-fs-setup/image22.png) + R キーを押します。[ファイル名を指定して実行] ウィンドウで、パスとして *\<file server name>* を指定し、*ファイル サーバー名*をファイル サーバーに割り当てたデバイス名に置き換えます。**[OK]** をクリックします。
 
 	![](./media/storsimple-ova-deploy3-fs-setup/image23.png)
 
@@ -231,4 +231,4 @@ StorSimple Virtual Array をファイル サーバーとして構成、登録す
 
 ローカル Web UI を使用して [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法の詳細を確認します。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

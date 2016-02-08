@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/07/2015"
+   ms.date="01/26/2016"
    ms.author="sethm" />
 
 # AMQP 1.0 で PHP から Service Bus を使用する
@@ -25,7 +25,7 @@ Proton-PHP は Proton-C にバインドされている PHP 言語です。つま
 
 Proton-C および関連するバインド (PHP を含む) は、[http://qpid.apache.org/download.html](http://qpid.apache.org/download.html) からダウンロードできます。ソース コード形式のファイルがダウンロードされます。コードをビルドするには、ダウンロードしたパッケージに含まれる指示に従って操作してください。
 
-> [AZURE.IMPORTANT]このドキュメントの執筆時点で、Proton-C での SSL サポートは Linux オペレーティング システムでのみ提供されています。Azure Service Bus では SSL を使用する必要があるため、Proton-C (および言語バインド) は、現時点では Linux から Service Bus へのアクセスにのみ使用できます。Windows で Proton-C と SSL を使用できるようにするための作業が進行中です。更新情報を頻繁に確認してください。
+> [AZURE.IMPORTANT] このドキュメントの執筆時点で、Proton-C での SSL サポートは Linux オペレーティング システムでのみ提供されています。Azure Service Bus では SSL を使用する必要があるため、Proton-C (および言語バインド) は、現時点では Linux から Service Bus へのアクセスにのみ使用できます。Windows で Proton-C と SSL を使用できるようにするための作業が進行中です。更新情報を頻繁に確認してください。
 
 ## PHP から Service Bus のキュー、トピック、サブスクリプションを使用する
 
@@ -156,7 +156,7 @@ if ($message->properties != null)
 
 | .NET プロパティの型 | PHP プロパティの型 | メモ |
 |--------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte | integer | - | | sbyte | integer | - | | char | Char | Proton-PHP class | | short | integer | - | | ushort | integer | - | | int | integer | - | | uint | Integer | - | | long | integer | - | | ulong | integer | - | | float | double | - | | double | double | - | | decimal | string | 現在、decimal は Proton でサポートされていません。 | | bool | boolean | - | | Guid | UUID | Proton-PHP クラス | | string | string | - | | DateTime | integer | - | | DateTimeOffset | DescribedType | AMQP 型にマップされる DateTimeOffset.UtcTicks:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> | | TimeSpan | DescribedType | AMQP 型にマップされる Timespan.Ticks:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> | | Uri | DescribedType | AMQP 型にマップされる Uri.AbsoluteUri:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type> |
+| byte | integer | - | | sbyte | integer | - | | char | Char | Proton-PHP class | | short | integer | - | | ushort | integer | - | | int | integer | - | | uint | Integer | - | | long | integer | - | | ulong | integer | - | | float | double | - | | double | double | - | | decimal | string | 現在、decimal は Proton でサポートされていません。 | | bool | boolean | - | | Guid | UUID | Proton-PHP クラス | | string | string | - | | DateTime | integer | - | | DateTimeOffset | DescribedType | AMQP 型にマップされる DateTimeOffset.UtcTicks:<type name="datetime-offset" class=restricted source="long"> <descriptor name="com.microsoft:datetime-offset" /></type> | | TimeSpan | DescribedType | AMQP 型にマップされる Timespan.Ticks:<type name="timespan" class=restricted source="long"> <descriptor name="com.microsoft:timespan" /></type> | | Uri | DescribedType | AMQP 型にマップされる Uri.AbsoluteUri:<type name="uri" class=restricted source="string"> <descriptor name="com.microsoft:uri" /></type> |
 
 ### 標準のプロパティ
 
@@ -173,7 +173,7 @@ if ($message->properties != null)
 
 | Service Bus .NET | Proton-PHP | メモ |
 |-------------------------|--------------------------------------------------------|--------------------------------------------------------|
-| ContentType | Message->content\_type | - | | CorrelationId | Message->correlation\_id | - | | EnqueuedTimeUtc | Message->annotations[x-opt-enqueued-time] | - | | Label | Message->subject | - | | MessageId | Message->id | - | | ReplyTo | Message->reply\_to | - | | ReplyToSessionId | Message->reply\_to\_group\_id | - | | ScheduledEnqueueTimeUtc | Message->annotations ["x-opt-scheduled-enqueue-time"] | - | | SessionId | Message->group\_id | - | | TimeToLive | Message->ttl | 変換、Proton-PHP TTL はミリ秒単位で定義されます。| | To | Message->address | - |
+| ContentType | Message->content\_type | - | | CorrelationId | Message->correlation\_id | - | | EnqueuedTimeUtc | Message->annotations[x-opt-enqueued-time] | - | | Label | Message->subject | - | | MessageId | Message->id | - | | ReplyTo | Message->reply\_to | - | | ReplyToSessionId | Message->reply\_to\_group\_id | - | | ScheduledEnqueueTimeUtc | Message->annotations ["x-opt-scheduled-enqueue-time"] | - | | SessionId | Message->group\_id | - | | TimeToLive | Message->ttl | Conversion, Proton-PHP TTL is defined in milliseconds. | | To | Message->address | - |
 
 ## 次のステップ
 
@@ -184,9 +184,7 @@ if ($message->properties != null)
 
 
 [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
-
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
-
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -22,7 +22,7 @@
 ソース管理することで、Azure Automation からソース管理にコードをプッシュしたり、ソース管理から Azure Automation に Runbook をプルしたりできます。この記事では、Azure Automation 環境内でソース管理を設定する方法について説明します。まず、Azure Automation を GitHub リポジトリにアクセスするよう構成し、ソース管理の統合を使用することで実行できるさまざまな操作について、順を追って説明します。
 
 
->[AZURE.NOTE]ソース管理では、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) および [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) のプル操作とプッシュ操作がサポートされていますが、[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) はサポートされません。<br><br>
+>[AZURE.NOTE] ソース管理では、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) および [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) のプル操作とプッシュ操作がサポートされていますが、[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) はサポートされません。<br><br>
 
 
 Automation アカウントのソース管理を構成するには、2 つの簡単な手順が必要です。ただし、既に GitHub アカウントを持っている場合、必要な手順は 1 つだけです。次に例を示します。
@@ -104,7 +104,7 @@ Runbook をチェックインすると、Azure Automation で Runbook に対し�
     ![[チェックイン] ボタン](media/automation-source-control-integration/automation_06_CheckinButton.png)
 
 
-     >[AZURE.NOTE]Azure Automation からチェックインすると、ソース管理に現在存在しているコードが上書きされます。チェックインするための対応する Git コマンド ライン命令は、**git add + git commit + git push** です。
+     >[AZURE.NOTE] Azure Automation からチェックインすると、ソース管理に現在存在しているコードが上書きされます。チェックインするための対応する Git コマンド ライン命令は、**git add + git commit + git push** です。
 
 3. **[チェックイン]** をクリックすると、確認メッセージが表示されるので、[はい] をクリックして続行します。
 
@@ -114,13 +114,13 @@ Runbook をチェックインすると、Azure Automation で Runbook に対し�
 
     ![チェックイン Runbook](media/automation-source-control-integration/automation_08_CheckinRunbook.png)
 
-    >[AZURE.NOTE]ソース管理 Runbook は、特別な Automation Runbook であり、表示または編集することはできません。これらは Runbook の一覧に表示されませんが、ジョブの一覧には同期ジョブが表示されます。
+    >[AZURE.NOTE] ソース管理 Runbook は、特別な Automation Runbook であり、表示または編集することはできません。これらは Runbook の一覧に表示されませんが、ジョブの一覧には同期ジョブが表示されます。
  
 5. 変更された Runbook の名前は、入力パラメーターとしてチェックイン Runbook に送信されます。**[リポジトリの同期]** ブレードで Runbook を展開すると、[ジョブの詳細を表示](automation-runbook-execution.md#viewing-job-status-using-the-azure-management-portal)できます。
 
     ![チェックイン入力](media/automation-source-control-integration/automation_09_CheckinInput.png)
 
-6. ジョブが完了したら GitHub リポジトリを更新して、変更を表示します。リポジトリにコミットすると、"**Azure Automation で *Runbook 名* が更新されました**" というコミット メッセージが表示されます。
+6. ジョブが完了したら GitHub リポジトリを更新して、変更を表示します。リポジトリにコミットすると、"**Azure Automation で *Runbook 名*が更新されました**" というコミット メッセージが表示されます。
 
 
 
@@ -137,7 +137,7 @@ Runbook をチェックインすると、Azure Automation で Runbook に対し�
     ![Runbook の同期](media/automation-source-control-integration/automation_11_SyncRunbook.png)
 
  
-    >[AZURE.NOTE]ソース管理から同期すると、ソース管理に現在含まれている**すべての** Runbook のうち、Automation アカウントに現在存在するドラフト バージョンの Runbook が上書きされます。同期するための対応する Git コマンド ライン命令は、**git pull** です。
+    >[AZURE.NOTE] ソース管理から同期すると、ソース管理に現在含まれている**すべての** Runbook のうち、Automation アカウントに現在存在するドラフト バージョンの Runbook が上書きされます。同期するための対応する Git コマンド ライン命令は、**git pull** です。
 
 
 ## ソース管理の問題のトラブルシューティング
@@ -158,4 +158,4 @@ GitHub アカウントから切断するには、[リポジトリの同期] ブ�
 
 ソース管理の統合の詳細については、次のリソースを参照してください。- [Azure Automation: Azure Automation でのソース管理の統合](https://azure.microsoft.com/blog/azure-automation-source-control-13/) - [お気に入りのソース管理システムに関するアンケート](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d) - [Azure Automation: Visual Studio Team Services を使用した Runbook ソース管理の統合](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

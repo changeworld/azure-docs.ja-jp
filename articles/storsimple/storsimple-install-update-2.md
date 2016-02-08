@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/12/2016"
+   ms.date="01/27/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスへの Update 2 のインストール
@@ -81,16 +81,16 @@ Update 2 には、デバイス ソフトウェアの更新プログラム、LSI 
 
 この方法で適用される修正プログラムを次の表に示します。
 
-| 順序 | KB | 名前 | パッケージの説明 | 更新の種類 |
-|--------|-----------|-------------------------|-----------------------------|-------------|
-| 1 | KB3121901 | ソフトウェア更新 | HcsMdsSfotwareUpdate.exe <br></br> CisMdsAgentUpdateBundle.exe | 通常 |
-| 2 | KB3121900 | LSI ドライバー | HcsLsiUpdate.exe | 通常 |
-| 3 | KB3080728 | Storport 修正 | Storport-KB3080728-x64.msu | 通常 |
-| 4 | KB3090322 | Spaceport 修正 | Spaceport-KB3090322-x64.msu | 通常 |
-| 5 | KB3121899 | ディスク ファームウェア | DiskFirmwarePackage.exe | メンテナンス |
+| 順序 | KB | 名前 | 更新の種類 |
+|--------|-----------|-------------------------|------------- |
+| 1 | KB3121901 | ソフトウェア更新 | 通常 |
+| 2 | KB3121900 | LSI ドライバー | 通常 |
+| 3 | KB3080728 | Storport 修正 | 通常 |
+| 4 | KB3090322 | Spaceport 修正 | 通常 |
+| 5 | KB3121899 | ディスク ファームウェア | メンテナンス |
 
 
-> [AZURE.IMPORTANT]
+> [AZURE.IMPORTANT] 
 > 
 > - デバイスがリリース (GA) バージョンを実行している場合、この更新プログラムの使用については、[Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。
 > - この手順は、Update 2 を適用するために 1 回だけ実行する必要があります。以降の更新プログラムは、Azure クラシック ポータルを使用して適用できます。
@@ -125,6 +125,6 @@ Update 2 を修正プログラムとして適用するには、次の手順を�
 
 ## 次のステップ
 
-詳細については、「[Update 2 リリース ノート](storsimple-update2-release-notes.md)」を参照してください。
+詳細については、[Update 2 リリース](storsimple-update2-release-notes.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

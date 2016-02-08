@@ -19,7 +19,7 @@
 
 #Azure App Service でのアプリのセキュリティ保護
 
-この記事は、Azure App Service で Web アプリ、モバイル アプリ バックエンド、API アプリをセキュリティで保護する際に役立ちます。
+この記事は、Azure App Service で Web アプリ、モバイル アプリ バックエンド、API アプリをセキュリティで保護するときに役立ちます。
 
 Azure App Service のセキュリティには、次の 2 つのレベルがあります。
 
@@ -89,7 +89,7 @@ ClearDB などのサードパーティのデータベース プロバイダー�
 ### 構成設定と接続文字列
 接続文字列、認証資格情報、およびその他の機密情報は構成ファイルに保存するのが一般的な方法です。残念ながら、これらのファイルは Web サイト上で公開される場合やパブリック リポジトリにチェックインされる場合があり、結果としてこの情報が危険にさらされる可能性があります。たとえば、[GitHub](https://github.com) で単純な検索を実行すると、パブリック リポジトリにシークレットが公開されている構成ファイルが無数に見つかります。
 
-この情報はアプリの構成ファイル以外に保持することをお勧めします。App Service では、ランタイム環境の一部である構成情報を**アプリ設定**および**接続文字列**として保存できます。大半のプログラミング言語では、値は、*環境変数*を介して実行時にアプリケーションに公開されます。.NET アプリケーションの場合、これらの値は実行時に .NET 構成に挿入されます。このような状況とは別に、これらの構成設定は、[Azure ポータル](http://portal.azure.com)またはユーティリティ (PowerShell や Azure CLI など) を使用して表示または構成する場合を除いて、暗号化されたままになります。
+この情報はアプリの構成ファイル以外に保持することをお勧めします。App Service では、ランタイム環境の一部である構成情報を**アプリ設定**および**接続文字列**として保存できます。大半のプログラミング言語では、値は、*環境変数*を介して実行時にアプリケーションに公開されます。.NET アプリケーションの場合、これらの値は実行時に .NET 構成に挿入されます。このような状況とは別に、これらの構成設定は、[Azure ポータル](https://portal.azure.com)またはユーティリティ (PowerShell や Azure CLI など) を使用して表示または構成する場合を除いて、暗号化されたままになります。
 
 App Service に構成情報を保存すると、アプリの管理者は、運用アプリの機密情報をロックダウンできます。開発者は、アプリの開発用に別の構成設定のセットを使用できます。この設定は、App Service で構成されている設定に自動的に置き換わります。開発者でさえ、運用アプリ用に構成された機密情報を知る必要はありません。App Service のアプリ設定と接続文字列の構成の詳細については、[Web アプリの構成](web-sites-configure.md)に関するページを参照してください。
 
@@ -99,7 +99,7 @@ Azure App Service は、**FTPS** を介してアプリのファイル システ�
 
 アプリの FTPS リンクは、次の手順で見つけることができます。
 
-1. [Azure ポータル](http://portal.azure.com) を開きます。
+1. [Azure ポータル](https://portal.azure.com) を開きます。
 2. **[すべて参照]** を選択します。
 3. **[参照]** ブレードで、**[App Services]** を選択します。
 4. **[App Services]** ブレードで、目的のアプリを選択します。
@@ -111,16 +111,16 @@ FTPS の詳細については、「[File Transfer Protocol](http://en.wikipedia.
 
 ## 次のステップ
 
-Azure プラットフォームのセキュリティ、**セキュリティ インシデントまたは迷惑行為**の報告方法、またはサイトの**侵入テスト**の実施予定を Microsoft に通知する方法の詳細については、[Microsoft Azure セキュリティ センター](http://azure.microsoft.com/support/trust-center/security/)のセキュリティのセクションを参照してください。
+Azure プラットフォームのセキュリティ、**セキュリティ インシデントまたは迷惑行為**の報告方法、またはサイトの**侵入テスト**の実施予定を Microsoft に通知する方法の詳細については、[Microsoft Azure のトラスト センター](https://azure.microsoft.com/support/trust-center/security/)のセキュリティのセクションを参照してください。
 
-App Service アプリの **web.config** ファイルまたは **applicationhost.config** ファイルの詳細については、「[Configuration options unlocked in Azure App Service Web Apps](http://azure.microsoft.com/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)」を参照してください。
+App Service アプリの **web.config** ファイルまたは **applicationhost.config** ファイルの詳細については、「[Azure App Service Web Apps でロック解除される構成オプション](https://azure.microsoft.com/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)」を参照してください。
 
 攻撃の検出に役立つことのある、App Service アプリのログ情報については、「[Azure App Service の Web アプリの診断ログの有効化](web-sites-enable-diagnostic-log.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
 
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

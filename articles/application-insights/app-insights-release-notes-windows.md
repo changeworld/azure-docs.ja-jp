@@ -16,7 +16,7 @@
  
 # Windows Phone と Windows ストア向けの Application Insights SDK のリリース ノート
 
-[Application Insights SDK](app-insights-windows-get-started.md) では、実行中のアプリに関するテレメトリを [Application Insights](http://azure.microsoft.com/services/application-insights/) に送信し、その使用状況とパフォーマンスを分析できます。
+[Application Insights SDK](app-insights-windows-get-started.md) では、実行中のアプリに関するテレメトリを [Application Insights](https://azure.microsoft.com/services/application-insights/) に送信し、その使用状況とパフォーマンスを分析できます。
 
 
 #### アプリケーションに SDK をインストールするには
@@ -95,4 +95,4 @@
 
 使用可能な以前のバージョンのリリース ノートはありません。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

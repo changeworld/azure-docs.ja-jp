@@ -27,7 +27,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 
 ## チュートリアルの準備をする
 1.	「[Azure Data Factory の概要][adfintroduction]」を読んで Azure Data Factory の概要を理解し、全体的な概念を把握します。
-2.	このチュートリアルを実施するには Azure サブスクリプションが必要です。サブスクリプションの入手方法の詳細については、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](http://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+2.	このチュートリアルを実施するには Azure サブスクリプションが必要です。サブスクリプションの入手方法の詳細については、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](https://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 3.	[Azure PowerShell][download-azure-powershell] をダウンロードしてコンピューターにインストールする必要があります。Data Factory コマンドレットを実行し、サンプル データと pig/hive スクリプトを BLOB ストレージにアップロードします。 
 2.	**(推奨)** ポータルとコマンドレットに慣れるための簡単なチュートリアルについての記事「[Azure Data Factory を使ってみる][adfgetstarted]」にあるチュートリアルを確認し、実際に行ってみます。
 3.	**(推奨)** パイプラインを作成してオンプレミスのデータ ソースから Azure BLOB ストアにデータを移動するチュートリアルについての記事「[Azure Data Factory で Pig と Hive を使用する][usepigandhive]」にあるチュートリアルを確認し、実際に行ってみます。
@@ -192,7 +192,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
  
 ## <a name="MainStep3"></a>手順 3. リンクされたサービスを作成する
 
-> [AZURE.NOTE]この記事では、Azure クラシック ポータル (具体的には Data Factory エディター) を使用して、リンクされたサービス、テーブル、パイプラインを作成する方法について説明します。Azure PowerShell を使用してこのチュートリアルを実行する場合は、[Azure PowerShell の使用に関するチュートリアル][adftutorial-using-powershell]を参照してください。
+> [AZURE.NOTE] この記事では、Azure クラシック ポータル (具体的には Data Factory エディター) を使用して、リンクされたサービス、テーブル、パイプラインを作成する方法について説明します。Azure PowerShell を使用してこのチュートリアルを実行する場合は、[Azure PowerShell の使用に関するチュートリアル][adftutorial-using-powershell]を参照してください。
 
 この手順では、以下のリンクされたサービスを作成します:
 
@@ -206,8 +206,6 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 1.	**[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
 
 	![[作成とデプロイ] タイル][image-author-deploy-tile]
-
-	Data Factory エディターの詳細については、トピック「[Data Factory エディター][data-factory-editor]」を参照してください。
 
 2.  **エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure Storage]** を選択します。Azure Storage のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。
 	
@@ -244,16 +242,16 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 			{
 			    "name": "HDInsightOnDemandLinkedService",
-				    "properties": {
+			    "properties": {
 			        "type": "HDInsightOnDemand",
 			        "description": "",
 			        "typeProperties": {
-		    	    "clusterSize": "4",
+			            "clusterSize": "4",
 			            "timeToLive": "00:30:00",
-		    	    "version": "3.2",
+			            "version": "3.2",
 			            "linkedServiceName": "StorageLinkedService"
 			        }
-		    	}
+			    }
 			}
 
 		リンクされたサービスの **type** は **HDInsightOnDemand** に設定されます。
@@ -324,7 +322,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
         "isPaused": false
 
 	このチュートリアルのサンプル データが 2014 年 5 月 1 日から 2014 年 5 月 5 日であるため、開始時刻と終了時刻が 2014 年 5 月 1 日および 2014 年 5 月 5 日に設定されていることに注意してください。
- 
+ 	
 	オンデマンド HDInsight のリンクされたサービスを使用する場合は、**linkedServiceName** プロパティを **HDInsightOnDemandLinkedService** に設定します。
 3. ツール バーの **[デプロイ]** クリックして、パイプラインを作成してデプロイします。エディターのタイトル バーに "**パイプラインが正常に作成されました**" というメッセージが表示されていることを確認します。
 4. 次のファイルの内容で手順 1. ～ 3. を繰り返します。 
@@ -358,8 +356,6 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 	1.	**スタート画面**で **[LogProcessingFactory]** をクリックします。データ ファクトリの作成中に、**[スタート画面に追加]** オプションが自動でオンになっています。
 
 		![監視スタート画面][image-data-factory-monitoring-startboard]
-
-	 	
 
 	2. **[参照]** をクリックし、**[参照]** ブレードで **[Data Factory]** を選択し、**[Data Factory]** ブレードで **[LogProcessingFactory]** を選択します。
 
@@ -423,7 +419,6 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
-[data-factory-editor]: data-factory-editor.md
 
 [adfsamples]: data-factory-samples.md
 [adfgetstarted]: data-factory-get-started.md
@@ -488,4 +483,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-new-datafactory-menu]: ./media/data-factory-tutorial/NewDataFactoryMenu.png
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

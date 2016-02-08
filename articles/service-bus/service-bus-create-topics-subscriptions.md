@@ -47,7 +47,7 @@ Azure Service Bus は、信頼性の高いメッセージ キュー機能や永�
 
 ## コード
 
-「[Service Bus キューを使用するアプリケーションを作成する](service-bus-create-queues.md)」では、Service Bus アカウントにサインアップしてサービス名前空間を作成する方法が説明されています。Service Bus の名前空間を使用するには、アプリケーションは Service Bus アセンブリ (具体的には Microsoft.ServiceBus.dll) を参照する必要があります。Service Bus 依存関係を参照する最も簡単な方法は、Service Bus の [Nuget パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)をインストールすることです。また、アセンブリは Azure SDK にも含まれます。SDK は [Azure SDK のダウンロード ページ](http://azure.microsoft.com/downloads/)からダウンロードできます。
+「[Service Bus キューを使用するアプリケーションを作成する](service-bus-create-queues.md)」では、Service Bus アカウントにサインアップしてサービス名前空間を作成する方法が説明されています。Service Bus の名前空間を使用するには、アプリケーションは Service Bus アセンブリ (具体的には Microsoft.ServiceBus.dll) を参照する必要があります。Service Bus 依存関係を参照する最も簡単な方法は、Service Bus の [Nuget パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)をインストールすることです。また、アセンブリは Azure SDK にも含まれます。SDK は [Azure SDK のダウンロード ページ](https://azure.microsoft.com/downloads/)からダウンロードできます。
 
 ### トピックとサブスクリプションを作成する
 
@@ -150,4 +150,4 @@ namespaceManager.CreateSubscription("DataCollectionTopic", "Dashboard", dashboar
 
 POS 小売シナリオでキューを使用する方法については、「[Service Bus キューを使用するアプリケーションを作成する](service-bus-create-queues.md)」を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

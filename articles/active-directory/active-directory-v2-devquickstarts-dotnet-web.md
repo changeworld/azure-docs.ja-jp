@@ -21,7 +21,7 @@
 v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/学校アカウントの両方に対応した Web アプリに認証をすばやく追加できます。ASP.NET Web アプリでは、.NET Framework 4.5 に含まれる Microsoft の OWIN ミドルウェアを使用することにより、これを達成できます。
 
   >[AZURE.NOTE]
-	この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
+    この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
 
  ここでは、Azure AD と v2.0 アプリ モデルを使用してアプリに対するユーザーのサインイン処理を行う、ユーザーに関する一部の情報を表示する、およびアプリからのユーザーのサインアウト処理を行う機能について、OWIN を使用して実装します。
 
@@ -46,18 +46,18 @@ v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/
 - 適切な**リダイレクト URI** を入力します。リダイレクト URI は、認証の応答が送られる Azure AD を示します。このチュートリアルの既定値は `https://localhost:44326/` です。
 
 ## 2\.アプリで OWIN 認証パイプラインを使用するよう設定します。
-ここでは、OpenID Connect 認証プロトコルを使用するように、OWIN ミドルウェアを構成します。  OWIN は、サインイン要求またはサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
+ここでは、OpenID Connect 認証プロトコルを使用するように、OWIN ミドルウェアを構成します。OWIN は、サインイン要求またはサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
 -	最初に、プロジェクトのルートにある `web.config` ファイルを開いて、`<appSettings>` セクションでアプリの構成値を入力します。
     -	`ida:ClientId` は、登録ポータルでアプリに割り当てられた**アプリケーション ID** です。
-    -	`ida:RedirectUri`は、ポータルで入力した**リダイレクト URI** です。
+    -	`ida:RedirectUri` は、ポータルで入力した**リダイレクト URI** です。
 
--    次に、パッケージ マネージャー コンソールを使用して、プロジェクトに OWIN ミドルウェア NuGet パッケージを追加します。
+-	次に、パッケージ マネージャー コンソールを使用して、プロジェクトに OWIN ミドルウェア NuGet パッケージを追加します。
 
 ```
-PM> Install-Package Microsoft.Owin.Security.OpenIdConnect 
-PM> Install-Package Microsoft.Owin.Security.Cookies 
-PM> Install-Package Microsoft.Owin.Host.SystemWeb 
+PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
+PM> Install-Package Microsoft.Owin.Security.Cookies
+PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
 -	"OWIN Startup クラス" を `Startup.cs` という名前のプロジェクトに追加します。プロジェクトを右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックして、"OWIN" を検索します。アプリが起動すると、OWIN ミドルウェアは `Configuration(...)` メソッドを呼び出します。
@@ -96,7 +96,7 @@ public void ConfigureAuth(IAppBuilder app)
 									 ClientId = clientId,
 									 Authority = String.Format(CultureInfo.InvariantCulture, aadInstance, "common", "/v2.0"),
 									 RedirectUri = redirectUri,
-									 Scope = "openid",
+									 Scope = "openid email profile",
 									 ResponseType = "id_token",
 									 PostLogoutRedirectUri = redirectUri,
 									 TokenValidationParameters = new TokenValidationParameters
@@ -111,7 +111,7 @@ public void ConfigureAuth(IAppBuilder app)
 			 }
 ```
 
-## 3\.OWIN を使用して、サインイン要求およびサインアウト要求を Azure AD に発行する
+## 3.OWIN を使用して、サインイン要求およびサインアウト要求を Azure AD に発行する
 これまでに、アプリは、OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと適切に通信するように構成されています。OWIN は、認証メッセージの構築、Azure AD からのトークンの検証、およびユーザー セッションの維持を行うためのすべての煩わしい処理を実行します。OWIN により処理されないのは、ユーザーにサインインおよびサインアウトの方法を提供する処理のみです。
 
 - コントローラーで承認タグを使用することにより、特定のページでは、サインインしてからでないとアクセスできないようにすることができます。`Controllers\HomeController.cs` を開いて、`[Authorize]` タグを About コントローラーに追加します。
@@ -208,10 +208,8 @@ public ActionResult About()
 
 [v2.0 アプリ モデルでの Web API の保護 >>](active-directory-devquickstarts-webapi-dotnet.md)
 
-その他のリソースについては、以下を参照してください。
+その他のリソースについては、以下を参照してください。 
 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md)
-- [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+ - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Sept15_HO3-->
-
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

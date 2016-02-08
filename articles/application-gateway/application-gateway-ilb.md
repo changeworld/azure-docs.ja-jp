@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="09/29/2015"
+   ms.date="01/21/2016"
    ms.author="joaoma"/>
 
 # 内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成
@@ -22,11 +22,11 @@
 - [Resource Manager Powershell steps](application-gateway-ilb-arm.md)
 
 
-アプリケーション ゲートウェイは、インターネットに接続する VIP のほか、内部ロード バランサー (ILB) エンドポイントとも呼ばれるインターネットに接続されていない内部エンドポイントを使用して構成できます。ILB を使用したゲートウェイの構成は、インターネットに接続されていない社内用ビジネス アプリケーションで便利です。また、セキュリティの境界でインターネットに接続されていない多階層アプリケーション内のサービスや階層でも便利ですが、ラウンド ロビンの負荷分散、セッションの持続性、または SSL 終了が必要です。この記事では、ILB を使用してアプリケーション ゲートウェイを構成する手順について説明します。
+Application Gateway は、インターネットに接続する仮想 IP のほか、内部ロード バランサー (ILB) エンドポイントとも呼ばれるインターネットに接続されていない内部エンドポイントを使用して構成できます。ILB を使用したゲートウェイの構成は、インターネットに接続されていない社内用ビジネス アプリケーションで便利です。また、セキュリティの境界でインターネットに接続されていない多階層アプリケーション内のサービスや階層でも便利ですが、ラウンド ロビンの負荷分散、セッションの持続性、または SSL 終了が必要です。この記事では、ILB を使用して Application Gateway を構成する手順について説明します。
 
 ## 開始する前に
 
-1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。最新バージョンは、[ダウンロード ページ](http://azure.microsoft.com/downloads/)の **Windows PowerShell** のセクションからダウンロードしてインストールできます。
+1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。最新バージョンは、[ダウンロード ページ](https://azure.microsoft.com/downloads/)の **Windows PowerShell** のセクションからダウンロードしてインストールできます。
 2. 有効なサブネットが存在する作業用の仮想ネットワークがあることを確認します。
 3. 仮想ネットワーク内、またはパブリック IP/VIP が割り当てられたバックエンド サーバーがあることを確認します。
 
@@ -212,4 +212,4 @@
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

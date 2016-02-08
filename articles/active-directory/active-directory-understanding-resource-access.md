@@ -1,26 +1,26 @@
 <properties 
-                pageTitle="Azure でのリソース アクセスについて" 
-                description="このトピックでは、完全な Azure ポータルでのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。" 
-                services="active-directory" 
-                documentationCenter="" 
-                authors="markusvi" 
-                manager="stevenpo" 
-                editor=""/>
+    pageTitle="Azure でのリソース アクセスについて" 
+    description="このトピックでは、完全な Azure ポータルでのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。" 
+    services="active-directory" 
+    documentationCenter="" 
+    authors="markusvi" 
+    manager="stevenpo" 
+    editor=""/>
 
 <tags 
-                ms.service="active-directory" 
-                ms.workload="identity" 
-                ms.tgt_pltfrm="na" 
-                ms.devlang="na" 
-                ms.topic="article" 
-                ms.date="10/30/2015" 
-                ms.author="markusvi"/>
+    ms.service="active-directory" 
+    ms.workload="identity" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="01/26/2016" 
+    ms.author="markusvi"/>
 
 
 # Azure でのリソース アクセスについて
 
 
-> [AZURE.NOTE]このトピックでは、完全な Azure ポータルでのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。Azure プレビュー ポータルで[ロール ベースのアクセス制御](role-based-access-control-configure.md)を使用して、Azure リソースをさらに細かく管理することもできます。
+> [AZURE.NOTE] このトピックでは、完全な Azure ポータルでのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。Azure プレビュー ポータルで[ロール ベースのアクセス制御](role-based-access-control-configure.md)を使用して、Azure リソースをさらに細かく管理することもできます。
 
 2013 年 10 月、Azure 管理ポータルとサービス管理 API は Azure Active Directory に統合されました。これは、Azure リソースへのアクセスを管理する際のユーザー エクスペリエンスの向上を目指し、その基盤を構築することを目的としています。Azure Active Directory には、ユーザー管理、オンプレミスのディレクトリ同期、多要素認証、アプリケーション アクセス制御など、優れた機能が用意されています。当然、こうした機能も、Azure リソースの管理に伴う作業すべてで使用できます。
 
@@ -37,7 +37,7 @@ Microsoft アカウントを使用してサインインした SA は、Azure 管
 
 
 
-> [AZURE.NOTE]Azure 管理ポータルの **[ディレクトリの編集]** コマンドは、職場または学校のアカウントを使用してサインインしたユーザーは利用できません。こうしたアカウントでは、自分が属しているディレクトリにしかサインインできないからです。
+> [AZURE.NOTE] Azure 管理ポータルの **[ディレクトリの編集]** コマンドは、職場または学校のアカウントを使用してサインインしたユーザーは利用できません。こうしたアカウントでは、自分が属しているディレクトリにしかサインインできないからです。
 
 <br><br>![簡単なユーザー ログイン フロー][3]
 
@@ -64,4 +64,4 @@ Microsoft アカウントを使用してサインインした SA は、Azure 管
 [3]: ./media/active-directory-understanding-resource-access/IC707933.png
 [4]: ./media/active-directory-understanding-resource-access/IC707934.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

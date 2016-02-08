@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/15/2015"
+   ms.date="01/26/2016"
    ms.author="abhisram"/>
 
 # Reliable Actors の診断とパフォーマンス監視
@@ -153,4 +153,4 @@ Reliable Actors ランタイムは、[アクターのアクティブ化と非ア
 |ActorActivated|5|情報|0x1|アクターがアクティブ化されました。|
 |ActorDeactivated|6|情報|0x1|アクターが非アクティブ化されました。|
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

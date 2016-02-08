@@ -20,15 +20,15 @@
 
 # Azure App Service と既存の Azure サービス
 
-この記事では、複数の Azure サービスを新しい統合型サービスの [Azure App Service](http://azure.microsoft.com/services/app-service/) に統合するための変更の一環である、既存の Azure サービスへの変更について概要を説明します。
+この記事では、複数の Azure サービスを新しい統合型サービスの [Azure App Service](https://azure.microsoft.com/services/app-service/) に統合するための変更の一環である、既存の Azure サービスへの変更について概要を説明します。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## 概要 
 
-[Azure App Service](http://azure.microsoft.com/services/app-service/) は新しくユニークなクラウド サービスであり、開発者がこのサービスを利用することで、すべてのプラットフォームおよびデバイス向けに、Web アプリやモバイル アプリを作成できるようになります。App Service は、繰り返しのコーディング機能の効率化、エンタープライズ システムと SaaS システムの統合、ビジネス プロセスの自動化などを実現しながら、安全性、信頼性、拡張性のニーズに応えられるよう設計された、統合型ソリューションです。
+[Azure App Service](https://azure.microsoft.com/services/app-service/) は新しくユニークなクラウド サービスであり、開発者がこのサービスを利用することで、すべてのプラットフォームおよびデバイス向けに、Web アプリやモバイル アプリを作成できるようになります。App Service は、繰り返しのコーディング機能の効率化、エンタープライズ システムと SaaS システムの統合、ビジネス プロセスの自動化などを実現しながら、安全性、信頼性、拡張性のニーズに応えられるよう設計された、統合型ソリューションです。
 
-App Service では、[Websites](http://azure.microsoft.com/services/websites/)、[Mobile Services](http://azure.microsoft.com/services/mobile-services/)、[Biztalk Services](http://azure.microsoft.com/services/biztalk-services/) などの既存の Azure サービスを 1 つの複合サービスに統合すると同時に、パワフルな新機能も追加しています。App Service では、次の種類のアプリをホストすることができます。
+App Service では、[Websites](https://azure.microsoft.com/services/websites/)、[Mobile Services](https://azure.microsoft.com/services/mobile-services/)、[Biztalk Services](https://azure.microsoft.com/services/biztalk-services/) などの既存の Azure サービスを 1 つの複合サービスに統合すると同時に、パワフルな新機能も追加しています。App Service では、次の種類のアプリをホストすることができます。
 
 -   Web Apps
 -   Mobile Apps
@@ -90,7 +90,7 @@ App Service では、[Websites](http://azure.microsoft.com/services/websites/)�
 </tbody>
 </table>
 
-詳細については、「[App Service のドキュメント](http://azure.microsoft.com/documentation/services/app-service/)」を参照してください。
+詳細については、「[App Service のドキュメント](https://azure.microsoft.com/documentation/services/app-service/)」を参照してください。
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

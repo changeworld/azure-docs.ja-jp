@@ -8,7 +8,14 @@
    editor=""
    keywords="バックアップ ソリューション、バックアップ サービス"/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/17/2015" ms.author="trinadhk";"giridham"; "arunak"; "jimpark"; "aashishr"/>
+<tags
+   ms.service="backup"
+   ms.workload="storage-backup-recovery"
+	 ms.tgt_pltfrm="na"
+	 ms.devlang="na"
+	 ms.topic="article"
+	 ms.date="01/26/2016"
+	 ms.author="trinadhk; giridham; arunak; markgal; jimpark;"/>
 
 # Azure Backup サービス - FAQ
 Azure Backup に関する一般的な質問を次に示します。Azure Backup ソリューションに関して他に不明な点がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)にアクセスして、質問を投稿してください。コミュニティのメンバーから回答を得ることができます。よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -41,7 +48,7 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 **Q6.資格情報コンテナーを課金エンティティと見なす必要がありますか。** <br/> A6.各資格情報コンテナーの詳細な課金内容を取得することはできますが、Azure サブスクリプションを課金エンティティと見なすことを強くお勧めします。すべてのサービで一貫性があると、管理が簡単です。
 
-**Q7.各資格情報コンテナーに登録できるサーバーやマシンの数に制限はありますか。** <br/> A7.はい。資格情報コンテナーにつき最大 50 のコンピューターを登録できます。Azure IaaS の仮想マシンの場合、コンテナーあたりの VM の上限は 100 です。さらにコンピューターを登録する必要がある場合は、新しい資格情報コンテナーを作成してください。
+**Q7.各資格情報コンテナーに登録できるサーバーやマシンの数に制限はありますか。** <br/> A7.はい。資格情報コンテナーにつき最大 50 のコンピューターを登録できます。Azure IaaS 仮想マシンの場合、コンテナーあたりの VM の上限は 200 です。さらにコンピューターを登録する必要がある場合は、新しい資格情報コンテナーを作成してください。
 
 **Q8.Windows サーバーとクライアントまたは SCDPM サーバーからバックアップできるデータの量に制限はありますか。** <br/> A8.番号
 
@@ -176,4 +183,4 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 バックアップが新しいキャッシュ場所で正常に動作したら、元のキャッシュ フォルダーを削除できます。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -58,7 +58,7 @@ azure モジュールは、Azure Storage アカウントに接続するために
 
 これらの値を取得するには、次の手順を実行します。
 
-1. [Azure ポータル](portal.azure.com)にログインします。
+1. [Azure ポータル](https://portal.azure.com)にログインします。
 
 2. ストレージ アカウントに移動します。
 
@@ -128,7 +128,7 @@ azure モジュールは、Azure Storage アカウントに接続するために
 	query = { :filter => "PartitionKey eq 'test-partition-key'" }
 	result, token = azure_table_service.query_entities("testtable", query)
 
-> [AZURE.NOTE]結果セットが大きすぎて単一のクエリで返すことができない場合は、継続トークンが返されます。この継続トークンを使用して、後続のページを取得できます。
+> [AZURE.NOTE] 結果セットが大きすぎて単一のクエリで返すことができない場合は、継続トークンが返されます。この継続トークンを使用して、後続のページを取得できます。
 
 ## エンティティ プロパティのサブセットを照会する
 
@@ -157,4 +157,4 @@ azure モジュールは、Azure Storage アカウントに接続するために
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

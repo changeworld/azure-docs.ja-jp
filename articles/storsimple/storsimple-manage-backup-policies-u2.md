@@ -36,7 +36,7 @@
 - **ポリシー名** – ポリシーに関連付けられた名前。次の種類のポリシーがあります。
 
    - スケジュールされたポリシー。ユーザーが明示的に作成します。
-   - 自動ポリシー。ボリュームの作成時にこのボリュームのオプションの既定のバックアップが有効になっている場合に作成されます。これらのポリシーの名前は、VolumeName\_Default という形式で指定されます。VolumeName は、ユーザーが Azure クラシック ポータルで構成する StorSimple ボリュームの名前です。自動ポリシーにより、デバイス時刻の 22 時 30分を起点として、1 日のクラウド スナップショットを取得します。
+   - 自動ポリシー。ボリュームの作成時にこのボリュームのオプションの既定のバックアップが有効になっている場合に作成されます。これらのポリシーの名前は、*VolumeName*\_Default という形式で指定されます。*VolumeName* は、ユーザーが Azure クラシック ポータルで構成する StorSimple ボリュームの名前です。自動ポリシーにより、デバイス時刻の 22 時 30分を起点として、1 日のクラウド スナップショットを取得します。
    - インポートされたポリシー。作成元は StorSimple Snapshot Manager です。このポリシーには、インポート元の StorSimple Snapshot Manager ホストについて説明するタグが付いています。
 
 - **ボリューム** – ポリシーに関連付けられているボリューム。バックアップ ポリシーに関連付けられているボリュームは、すべてバックアップの作成時にグループ化されます。
@@ -63,7 +63,7 @@
 
 ![ビデオ](./media/storsimple-manage-backup-policies-u2/Video_icon.png) **ビデオ**
 
-ローカルまたはクラウドのバックアップ ポリシーを作成する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/create-storsimple-backup-policies/)を参照してください。
+ローカルまたはクラウドのバックアップ ポリシーを作成する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/create-storsimple-backup-policies/)を参照してください。
 
 
 ## スケジュールの追加または変更
@@ -96,4 +96,4 @@ StorSimple デバイスからバックアップ ポリシーを削除するに�
 
 [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

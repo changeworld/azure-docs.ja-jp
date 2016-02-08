@@ -29,7 +29,7 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 
 この記事では、Windows PowerShell® と ARM を使って Azure Site Recovery をデプロイし、Azure に対してサーバーの保護を構成し、調整する方法を、例を交えながら説明します。この記事で紹介している例は、Azure PowerShell と ARM を使って Hyper-V ホスト上の仮想マシンを保護し、Azure にフェールオーバーして復旧させる方法を示しています。
 
-> [AZURE.NOTE]Azure Site Recovery PowerShell コマンドレットを使用すると、現在、VMM サイト対 VMM サイト、VMM サイト対 Azure、Hyper-V サイト対 Azure のシナリオを構成できます。その他の ASR シナリオについても近々サポートされる予定です。
+> [AZURE.NOTE] Azure Site Recovery PowerShell コマンドレットを使用すると、現在、VMM サイト対 VMM サイト、VMM サイト対 Azure、Hyper-V サイト対 Azure のシナリオを構成できます。その他の ASR シナリオについても近々サポートされる予定です。
 
 この記事の内容を使用するには PowerShell の専門家である必要はありませんが、モジュール、コマンドレット、セッションなどの基本的な概念を理解していることを前提としています。Windows PowerShell の詳細については、「[Windows PowerShell の概要](http://technet.microsoft.com/library/hh857337.aspx)」と「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
 
@@ -43,8 +43,8 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 
 次の前提条件を満たしていることを確認してください。
 
-- [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。また、「[Azure Site Recovery Manager の料金](http://azure.microsoft.com/pricing/details/site-recovery/)」も参照してください。
-- Azure PowerShell 1.0 が必要です。このリリースとそのインストール方法については、[Azure PowerShell 1.0](http://azure.microsoft.com/) に関するページを参照してください。
+- [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。また、「[Azure Site Recovery Manager の料金](https://azure.microsoft.com/pricing/details/site-recovery/)」も参照してください。
+- Azure PowerShell 1.0 が必要です。このリリースとそのインストール方法については、[Azure PowerShell 1.0](https://azure.microsoft.com/) に関するページを参照してください。
 - [AzureRM.SiteRecovery](https://www.powershellgallery.com/packages/AzureRM.SiteRecovery/) モジュールと [AzureRM.RecoveryServices](https://www.powershellgallery.com/packages/AzureRM.RecoveryServices/) モジュールをインストールしておく必要があります。最新版のモジュールを [PowerShell ギャラリー](https://www.powershellgallery.com/)から入手できます。
 
 この記事では、Azure Powershell と ARM を使ってサーバーの保護を構成、管理する方法とその例を紹介しています。この記事で用いている例は、Hyper-V ホスト上で動作する仮想マシンを Azure にレプリケートして保護する方法を紹介したものであり、以下に示した前提条件もその例に固有のものです。各種 ASR シナリオごとの詳細な要件については、そのシナリオに関連したドキュメントを参照してください。
@@ -87,7 +87,7 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 
 		Register-AzureRmProviderFeature -FeatureName betaAccess -ProviderNamespace Microsoft.RecoveryServices
 
-	>[AZURE.TIP]上のコマンドが正常に実行されてから、サブスクリプションで Recovery Services プロバイダーにアクセスできるようになるまでに最大 1 時間かかる場合があります。`Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices` コマンドを使って Recovery Services プロバイダーをサブスクリプションに登録しようとしても、しばらくの間、コマンドが失敗する場合があります。その場合は 1 時間待ってから再試行してください。
+	>[AZURE.TIP] 上のコマンドが正常に実行されてから、サブスクリプションで Recovery Services プロバイダーにアクセスできるようになるまでに最大 1 時間かかる場合があります。`Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices` コマンドを使って Recovery Services プロバイダーをサブスクリプションに登録しようとしても、しばらくの間、コマンドが失敗する場合があります。その場合は 1 時間待ってから再試行してください。
 
 	サブスクリプションで Recovery Services プロバイダーへのアクセスを有効にしたら、次のコマンドを実行して、サブスクリプションにプロバイダーを登録します。
 
@@ -113,7 +113,7 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 
 	既存の資格情報コンテナーの一覧は、`Get-AzureRmRecoveryServicesVault` コマンドレットを使用して取得できます。
 
-> [AZURE.NOTE]クラシック ポータルまたは Azure サービス管理 PowerShell モジュールを使って作成した ASR 資格情報コンテナーに対して操作を実行する場合は、`Get-AzureRmSiteRecoveryVault` コマンドレットを使用して、そうした資格情報コンテナーの一覧を取得できます。新たに実行するすべての操作について、Recovery Services の資格情報コンテナーを新しく作成することをお勧めします。過去に作成された Site Recovery の資格情報コンテナーも引き続きサポートされますが、最新の機能が備わっていません。
+> [AZURE.NOTE] クラシック ポータルまたは Azure サービス管理 PowerShell モジュールを使って作成した ASR 資格情報コンテナーに対して操作を実行する場合は、`Get-AzureRmSiteRecoveryVault` コマンドレットを使用して、そうした資格情報コンテナーの一覧を取得できます。新たに実行するすべての操作について、Recovery Services の資格情報コンテナーを新しく作成することをお勧めします。過去に作成された Site Recovery の資格情報コンテナーも引き続きサポートされますが、最新の機能が備わっていません。
 
 ## ステップ 3: コンテナー登録キーを生成する
 
@@ -164,7 +164,7 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 
 	返されたジョブをチェックし、レプリケーション ポリシーが正常に作成されたことを確認します。
 
-	>[AZURE.IMPORTANT]指定するストレージ アカウントは、Recovery Services の資格情報コンテナーと同じ Azure リージョンに存在すること、また geo レプリケーションが有効になっていることが必要です。
+	>[AZURE.IMPORTANT] 指定するストレージ アカウントは、Recovery Services の資格情報コンテナーと同じ Azure リージョンに存在すること、また geo レプリケーションが有効になっていることが必要です。
 	>
 	> - 指定した Recovery ストレージ アカウントのタイプが Azure Storage (クラシック) である場合、保護対象マシンのフェールオーバー後の復旧先は Azure IaaS (クラシック) となります。
 	> - 指定した Recovery ストレージ アカウントのタイプが Azure Storage (ARM) である場合、保護対象マシンのフェールオーバー後の復旧先は Azure IaaS (ARM) となります。
@@ -192,7 +192,7 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 		$Ostype = "Windows"                                 # "Windows" or "Linux"
 		$DRjob = Set-AzureRmSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity -Policy $Policy -Protection Enable -RecoveryAzureStorageAccountId $storageaccountID  -OS $OStype -OSDiskName $protectionEntity.Disks[0].Name
 
-	>[AZURE.IMPORTANT]指定するストレージ アカウントは、Recovery Services の資格情報コンテナーと同じ Azure リージョンに存在すること、また geo レプリケーションが有効になっていることが必要です。
+	>[AZURE.IMPORTANT] 指定するストレージ アカウントは、Recovery Services の資格情報コンテナーと同じ Azure リージョンに存在すること、また geo レプリケーションが有効になっていることが必要です。
 	>
 	> - 指定した Recovery ストレージ アカウントのタイプが Azure Storage (クラシック) である場合、保護対象マシンのフェールオーバー後の復旧先は Azure IaaS (クラシック) となります。
 	> - 指定した Recovery ストレージ アカウントのタイプが Azure Storage (ARM) である場合、保護対象マシンのフェールオーバー後の復旧先は Azure IaaS (ARM) となります。
@@ -261,4 +261,4 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 
     	$TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

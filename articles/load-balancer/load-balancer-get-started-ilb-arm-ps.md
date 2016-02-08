@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/07/2015"
+   ms.date="01/21/2015"
    ms.author="joaoma" />
 
 # PowerShell を使用した内部ロード バランサーの作成の開始
@@ -66,7 +66,7 @@ PowerShell 用 Azure モジュールが最新の製品版であり、Azure サ�
 
 
 
-### 手順 2
+### 手順 2.
 
 アカウントのサブスクリプションを確認する
 
@@ -87,7 +87,7 @@ PowerShell 用 Azure モジュールが最新の製品版であり、Azure サ�
 
 新しいリソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
 
-    PS C:\> New-AzureRmResourceGroup -Name NRP-RG -location "West US"
+    	PS C:\> New-AzureRmResourceGroup -Name NRP-RG -location "West US"
 
 Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。ロード バランサーを作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
 
@@ -189,8 +189,9 @@ LB-Nic2-BE という名前の 2 番目のネットワーク インターフェ�
 最終的に、結果として次の情報が表示されます。
 
 
-PS C:\> $backendnic1
+	PS C:\> $backendnic1
 
+予想される出力:
 
 	Name                 : lb-nic1-be
 	ResourceGroupName    : NRP-RG
@@ -240,8 +241,41 @@ PS C:\> $backendnic1
 
 コマンド Add-AzureRmVMNetworkInterface を使用して、NIC を仮想マシンに割り当てます。
 
-手順に従って仮想マシンを作成し、ドキュメント、NIC に割り当てるを検索する [の作成とリソース マネージャーと Azure PowerShell で Windows 仮想マシンを事前構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md#Example) オプション 4 または 5 です。
+ドキュメント「[リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md#Example)」のオプション 4 または 5 に従って手順を確認しながら仮想マシンを作成し、NIC に割り当てることができます。
 
+既に仮想マシンを作成済みの場合は、次の手順でネットワーク インターフェイスを追加することができます。
+
+#### 手順 1. 
+
+変数にロード バランサーのリソースを読み込みます (まだ実行していない場合)。変数名は $lb で、上記で作成したロード バランサーのリソースと同じ名前を使用します。
+
+	$lb= Get-AzureRmLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
+
+#### 手順 2. 
+
+変数にバックエンド構成を読み込みます。
+
+	$backend= Get-AzureRmLoadBalancerBackendAddressPoolConfig -name backendpool1 -LoadBalancer $lb
+
+#### 手順 3. 
+
+変数に作成済みのネットワーク インターフェイスを読み込みます。変数名は $nic で、使用するネットワーク インターフェイス名は、上記の例と同じです。
+
+	$nic=Get-AzureRmNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
+
+#### 手順 4.
+
+ネットワーク インターフェイス上のバックエンド構成を変更します。
+
+	PS C:\> $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
+
+#### 手順 5. 
+
+ネットワーク インターフェイス オブジェクトを保存します。
+
+	PS C:\> Set-AzureRmNetworkInterface -NetworkInterface $nic
+
+ネットワーク インターフェイスがロード バランサーのバックエンド プールに追加されると、そのロード バランサー リソースの負荷分散規則に基づいてネットワーク トラフィックの受信を開始します。
 
 ## 既存のロード バランサーの更新
 
@@ -271,7 +305,7 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 
 	Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 
->[AZURE.NOTE]オプションのスイッチ -Force を使用することで、削除のためのプロンプトを回避できます。
+>[AZURE.NOTE] オプションのスイッチ -Force を使用することで、削除のためのプロンプトを回避できます。
 
 
 
@@ -282,4 +316,4 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

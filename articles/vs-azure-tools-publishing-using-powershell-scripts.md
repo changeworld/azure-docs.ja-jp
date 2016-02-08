@@ -351,4 +351,4 @@ Windows PowerShell コマンド プロンプトで使用できる関数のヘル
 
 PowerShell スクリプトの詳細については、「[Windows PowerShell を使用したスクリプト](https://technet.microsoft.com/library/bb978526.aspx)」をお読みください。また、「[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)」で他の Azure PowerShell スクリプトもご覧ください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

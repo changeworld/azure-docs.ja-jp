@@ -71,7 +71,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT、AZURE\_STORAGE\_ACCESS\_KEY、および AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**TableService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの [Azure ポータル](portal.azure.com)で環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション]に関するトピックを参照してください。
+Azure Web サイトの [Azure ポータル](https://portal.azure.com)で環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション]に関するトピックを参照してください。
 
 ## テーブルの作成
 
@@ -125,7 +125,7 @@ Azure Web サイトの [Azure ポータル](portal.azure.com)で環境変数を�
 	  dueDate: {'_':new Date(2015, 6, 20), '$':'Edm.DateTime'}
 	};
 
-> [AZURE.NOTE]各レコードには、エンティティが挿入または更新される場合に Azure により設定される **Timestamp** フィールドもあります。
+> [AZURE.NOTE] 各レコードには、エンティティが挿入または更新される場合に Azure により設定される **Timestamp** フィールドもあります。
 
 **entityGenerator** を使用してエンティティを作成することもできます。次の例では、**entityGenerator** を使用して同じタスク エンティティを作成しています。
 
@@ -151,7 +151,7 @@ Azure Web サイトの [Azure ポータル](portal.azure.com)で環境変数を�
 
 	{ '.metadata': { etag: 'W/"datetime\'2015-02-25T01%3A22%3A22.5Z\'"' } }
 
-> [AZURE.NOTE]既定では、**insertEntity** は、`response` 情報の一部として、挿入されたエンティティを返しません。このエンティティに対して他の操作を実行する予定がある場合、または情報をキャッシュする場合は、`result` の一部として返されるようにすると便利です。そのためには、次のように **echoContent** を有効にします。
+> [AZURE.NOTE] 既定では、**insertEntity** は、`response` 情報の一部として、挿入されたエンティティを返しません。このエンティティに対して他の操作を実行する予定がある場合、または情報をキャッシュする場合は、`result` の一部として返されるようにすると便利です。そのためには、次のように **echoContent** を有効にします。
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
 
@@ -175,7 +175,7 @@ Azure Web サイトの [Azure ポータル](portal.azure.com)で環境変数を�
       }
     });
 
-> [AZURE.NOTE]既定では、エンティティを更新するときに、更新対象のデータが以前に別のプロセスにより変更されているかどうかは確認されません。同時更新をサポートするには、次の手順を実行します。
+> [AZURE.NOTE] 既定では、エンティティを更新するときに、更新対象のデータが以前に別のプロセスにより変更されているかどうかは確認されません。同時更新をサポートするには、次の手順を実行します。
 >
 > 1. 更新するオブジェクトの ETag を取得します。これは、任意のエンティティに関連する操作の `response` の一部として返され、`response['.metadata'].etag` を通じて取得できます。
 >
@@ -302,7 +302,7 @@ Azure Web サイトの [Azure ポータル](portal.azure.com)で環境変数を�
 	  }
 	});
 
-> [AZURE.NOTE]項目を削除する場合は、項目が別のプロセスによって変更されていないことを確認するために ETag を使用することを検討してください。ETag の使用の詳細については、「[エンティティを更新する](#update-an-entity)」を参照してください。
+> [AZURE.NOTE] 項目を削除する場合は、項目が別のプロセスによって変更されていないことを確認するために ETag を使用することを検討してください。ETag の使用の詳細については、「[エンティティを更新する](#update-an-entity)」を参照してください。
 
 ## テーブルを削除する
 
@@ -448,4 +448,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [ストレージを使用する Node.js Web アプリケーション]: ../storage-nodejs-use-table-storage-web-site.md
   [Create and deploy a Node.js application to an Azure website]: ../web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

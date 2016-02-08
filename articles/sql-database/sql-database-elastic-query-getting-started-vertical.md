@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/19/2015"
+	ms.date="01/26/2016"
 	ms.author="torsteng" />
 
 # データベース間クエリの概要 (垂直的パーティション分割) 
@@ -109,4 +109,4 @@ CustomerInformation テーブルの定義に一致する外部テーブルを Or
 
 <!--anchors-->
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -33,7 +33,7 @@ Visual Studio Application Insights には、Microsoft Azure *リソース*のア
 
 または、新しいサブスクリプションを作成することもできます。無料試用版では、Azure 内のすべてを試すことができます。評価期間が過ぎた後、無料サービスでは課金されないため、従量制サブスクリプションが適切であると感じるかもしれません。
 
-サブスクリプションへのアクセスを取得したら、Application Insights ([http://portal.azure.com](http://portal.azure.com)) にログインし、Live ID を使用してログインしてください。
+サブスクリプションへのアクセスを取得したら、Application Insights ([http://portal.azure.com](https://portal.azure.com)) にログインし、Live ID を使用してログインしてください。
 
 
 ## Application Insights リソースの作成
@@ -94,4 +94,4 @@ SDK には、コードを記述せずにテレメトリを送信する標準的�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

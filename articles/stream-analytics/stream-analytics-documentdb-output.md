@@ -19,7 +19,7 @@
 
 # Stream Analytics から Azure DocumentDB for JSON 出力をターゲットにする
 
-Stream Analytics では、[Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) for JSON 出力をターゲットにすることができるので、構造化されていない JSON データに対するデータ アーカイブと待機時間の短いクエリを有効にすることができます。この統合を実装する最適な方法について説明します。
+Stream Analytics では、[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) for JSON 出力をターゲットにすることができるので、構造化されていない JSON データに対するデータ アーカイブと待機時間の短いクエリを有効にすることができます。この統合を実装する最適な方法について説明します。
 
 DocumentDB を詳しく理解していない場合は、開始する前に [DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)を参照してください。
 
@@ -62,4 +62,4 @@ Stream Analytics で DocumentDB を出力として作成すると、以下に示
 -   **パーティション キー** – コレクション間で出力をパーティション分割するためのキーの指定に使用される、出力イベント内のフィールドの名前。コレクションの出力が 1 つの場合は、PartitionId など、任意の出力列を使用できます。  
 -   **Document ID** – 省略可能です。挿入操作または更新操作の基準となるプライマリ キーを指定するために使用される、出力イベント内のフィールドの名前。  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

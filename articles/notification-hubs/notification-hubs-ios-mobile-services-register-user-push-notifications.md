@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="ios" 
 	ms.devlang="objective-c" 
 	ms.topic="article" 
-	ms.date="11/01/2015" 
+	ms.date="01/19/2015" 
 	ms.author="yuaxu"/>
 
 # モバイル サービスを使用した現在のユーザーのプッシュ通知への登録
@@ -57,7 +57,7 @@
 
 	これにより、**deviceToken** プロパティが更新されます。
 
-	> [AZURE.NOTE]この時点では、このメソッドに他のコードは存在しません。チュートリアル「[Notification Hubs の使用](/manage/services/notification-hubs/get-started-notification-hubs-ios/"%20target="_blank")」を完了したときに追加された **registerNativeWithDeviceToken** メソッドへの呼び出しが既にある場合、その呼び出しをコメント解除するか、削除する必要があります。
+	> [AZURE.NOTE] この時点では、このメソッドに他のコードは存在しません。チュートリアル「[Notification Hubs の使用](/manage/services/notification-hubs/get-started-notification-hubs-ios/"%20target="_blank")」を完了したときに追加された **registerNativeWithDeviceToken** メソッドへの呼び出しが既にある場合、その呼び出しをコメント解除するか、削除する必要があります。
 
 5.  (省略可能) QSAppDelegate.m ファイルで、次のハンドラー メソッドを追加します。
 
@@ -105,7 +105,7 @@
 			    }];
 			}
 
-	> [AZURE.NOTE]これにより、ページが読み込まれるたびに登録が要求されるようになります。アプリケーションでは、この登録が常に最新の状態となるように、定期的な登録のみ行うことができます。
+	> [AZURE.NOTE] これにより、ページが読み込まれるたびに登録が要求されるようになります。アプリケーションでは、この登録が常に最新の状態となるように、定期的な登録のみ行うことができます。
 	
 これで、クライアント アプリケーションが更新されました。「[Notification Hubs によるユーザーへの通知]」に戻り、Notification Hubs を使用することで通知を送信するようにモバイル サービスを更新します。
 
@@ -122,4 +122,4 @@
 [Get Started with Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

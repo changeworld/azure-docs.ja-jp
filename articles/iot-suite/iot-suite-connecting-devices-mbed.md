@@ -2,13 +2,14 @@
    pageTitle="mbed で C を使用してデバイスを接続する |Microsoft Azure"
    description="C で記述され、mbed デバイスで実行されるアプリケーションを使用して、デバイスを Azure IoT Suite 構成済みリモート監視ソリューションに接続する方法について説明します。"
    services=""
+   suite="iot-suite"
    documentationCenter="na"
    authors="dominicbetts"
    manager="timlt"
    editor=""/>
 
 <tags
-   ms.service="na"
+   ms.service="iot-suite"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -101,4 +102,4 @@
 [lnk-mbed-getstarted]: https://developer.mbed.org/platforms/FRDM-K64F/#getting-started-with-mbed
 [lnk-mbed-pcconnect]: https://developer.mbed.org/platforms/FRDM-K64F/#pc-configuration
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

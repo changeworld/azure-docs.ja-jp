@@ -2,13 +2,14 @@
  pageTitle="Azure IoT の構成済みソリューション | Microsoft Azure"
  description="Azure IoT の構成済みソリューションとそのアーキテクチャ (追加リソースのリンクを含む) の説明。"
  services=""
+ suite="iot-suite"
  documentationCenter=""
  authors="dominicbetts"
  manager="timlt"
  editor=""/>
 
 <tags
- ms.service="na"
+ ms.service="iot-suite"
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="na"
@@ -92,7 +93,7 @@ IoT Hub は、受信したテレメトリを、コンシューマー グルー�
 - 特定のデバイスにコマンドを送信します。
 - ルールとアクションを管理します。
 
-> [AZURE.NOTE]ソリューション ポータルはソリューションの DocumentDB データベースの詳細なデバイス状態情報のストアと同期した IoT Hub [デバイス ID レジストリ][lnk-identity-registry]も保持します。
+> [AZURE.NOTE] ソリューション ポータルはソリューションの DocumentDB データベースの詳細なデバイス状態情報のストアと同期した IoT Hub [デバイス ID レジストリ][lnk-identity-registry]も保持します。
 
 この構成済みソリューションは、ソリューション ポータルは *IoT ソリューション バックエンド*の一部です。また、一般的な [IoT ソリューション アーキテクチャ][lnk-what-is-azure-iot]の*処理とビジネスの接続*に含まれています。
 
@@ -115,4 +116,4 @@ IoT の構成済みソリューションの詳細については、次のリソ�
 [lnk-preconf-get-started]: iot-suite-getstarted-preconfigured-solutions.md
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

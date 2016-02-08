@@ -454,6 +454,90 @@ if (error.code == MSErrorPreconditionFailed) {
 if (error?.code == MSErrorPreconditionFailed) {
 ```
 
+## <a name="adal"></a>方法: Active Directory 認証ライブラリを使用してユーザーを認証する
+
+Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。これはよりネイティブ UX の感覚を提供し、さらなるカスタマイズが可能なため、多くの場合、`loginAsync()` メソッドの使用よりも推奨されます。
+
+1. [Active Directory のログインに App Service を構成する方法](app-service-mobile-how-to-configure-active-directory-authentication.md)のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。iOS では、`<app-scheme>://<bundle-id>` 形式のリダイレクト URI が推奨 (必須ではなく) されます。詳細は、[ADAL iOS のクイック スタート](active-directory-devquickstarts-ios.md#em1-determine-what-your-redirect-uri-will-be-for-iosem)を参照してください。
+
+2. Cocoapods を使用して ADAL をインストールします。ポッドファイルを編集して以下を含め、**YOUR-PROJECT** を Xcode プロジェクトの名前に置き換えます。
+
+	source 'https://github.com/CocoaPods/Specs.git' link\_with ['YOUR-PROJECT'] xcodeproj 'YOUR-PROJECT'
+	
+	pod 'ADALiOS'
+
+3. ターミナルを使用して、プロジェクトを含むディレクトリから `pod install` を実行し、生成された Xcode ワークスペース (プロジェクトではなく) を開きます。
+
+4. ご使用の言語に応じて、以下のコードをアプリケーションに追加します。それぞれで、次の置換を行います。
+
+* **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は https://login.windows.net/contoso.onmicrosoft.com である必要があります。この値は、[Azure クラシック ポータル] の Azure Active Directory の [ドメイン] タブからコピーできます。
+
+* **INSERT-RESOURCE-ID-HERE** をモバイル アプリ バックエンドのクライアント ID に置き換えます。これはポータルの **[Azure Active Directory の設定]** の **[詳細]** タブから入手できます。
+
+* **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
+
+* **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用してサイトの _/.auth/login/done_ エンドポイントと置き換えます。この値は、_https://contoso.azurewebsites.net/.auth/login/done_ と同様です。
+
+**Objective-C**:
+
+	#import <ADALiOS/ADAuthenticationContext.h>
+	#import <ADALiOS/ADAuthenticationSettings.h>
+	// ...
+	- (void) authenticate:(UIViewController*) parent
+	           completion:(void (^) (MSUser*, NSError*))completionBlock;
+	{
+	    NSString *authority = @"INSERT-AUTHORITY-HERE";
+	    NSString *resourceId = @"INSERT-RESOURCE-ID-HERE";
+	    NSString *clientId = @"INSERT-CLIENT-ID-HERE";
+	    NSURL *redirectUri = [[NSURL alloc]initWithString:@"INSERT-REDIRECT-URI-HERE"];
+	    ADAuthenticationError *error;
+	    ADAuthenticationContext authContext = [ADAuthenticationContext authenticationContextWithAuthority:authority error:&error];
+	    authContext.parentController = parent;
+	    [ADAuthenticationSettings sharedInstance].enableFullScreen = YES;
+	    [authContext acquireTokenWithResource:resourceId
+	                                 clientId:clientId
+	                              redirectUri:redirectUri
+	                          completionBlock:^(ADAuthenticationResult *result) {
+	                              if (result.status != AD_SUCCEEDED)
+	                              {
+	                                  completionBlock(nil, result.error);;
+	                              }
+	                              else
+	                              {
+	                                  NSDictionary *payload = @{
+	                                                            @"access_token" : result.tokenCacheStoreItem.accessToken
+	                                                            };
+	                                  [client loginWithProvider:@"aad" token:payload completion:completionBlock];
+	                              }
+	                          }];
+	}
+
+
+**Swift**:
+
+	// add the following imports to your bridging header:
+	//     #import <ADALiOS/ADAuthenticationContext.h>
+	//     #import <ADALiOS/ADAuthenticationSettings.h>
+	
+	func authenticate(parent:UIViewController, completion: (MSUser?, NSError?) -> Void) {
+		let authority = "INSERT-AUTHORITY-HERE"
+		let resourceId = "INSERT-RESOURCE-ID-HERE"
+		let clientId = "INSERT-CLIENT-ID-HERE"
+		let redirectUri = NSURL(string: "INSERT-REDIRECT-URI-HERE")
+		var error: AutoreleasingUnsafeMutablePointer<ADAuthenticationError?> = nil
+		let authContext = ADAuthenticationContext(authority: authority, error: error)
+		authContext.parentController = parent
+		ADAuthenticationSettings.sharedInstance().enableFullScreen = true;
+		authContext.acquireTokenWithResource(resourceId, clientId: clientId, redirectUri: redirectUri, completionBlock: { (result) -> Void in
+			if result.status != AD_SUCCEEDED {
+				completion(nil, result.error)
+			}
+			else {
+				let payload:[String:String] = ["access_token":result.tokenCacheStoreItem.accessToken]
+				client.loginWithProvider("aad", token: payload, completion: completion)
+			}
+		})
+	}
 
 
 <!-- Anchors. -->
@@ -507,4 +591,4 @@ if (error?.code == MSErrorPreconditionFailed) {
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

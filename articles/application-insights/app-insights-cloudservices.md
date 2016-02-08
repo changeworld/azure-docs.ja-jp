@@ -21,7 +21,7 @@
 
 *Application Insights はプレビュー段階です。*
 
-[Microsoft Azure Cloud サービス アプリ](http://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を [Visual Studio Application Insights][start] で監視できます。アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
+[Microsoft Azure Cloud サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を [Visual Studio Application Insights][start] で監視できます。アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
 
 ![例](./media/app-insights-cloudservices/sample.png)
 
@@ -30,7 +30,7 @@
 
 #### Application Insights を使用してインストルメント化されたサンプル アプリケーション
 
-Application Insights がクラウド サービスに追加され、2 つの worker ロールが Azure でホストされている[サンプル アプリケーション](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)をご覧ください。
+Application Insights がクラウド サービスに追加され、2 つの woker ロールが Azure でホストされている[サンプル アプリケーション](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)をご覧ください。
 
 以降では、同じようにして独自のクラウド サービス プロジェクトを調整する方法について説明します。
 
@@ -279,4 +279,4 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

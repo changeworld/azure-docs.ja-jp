@@ -46,9 +46,9 @@
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「Set-ExecutionPolicy コマンドレットの使用」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「Set-ExecutionPolicy コマンドレットの使用」を参照してください。
 
 - **VPN 接続と DNS が構成された 2 つの Azure 仮想ネットワーク**。方法については、「[2 つの Azure 仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-replication-vnet]」および「[2 つの Azure 仮想ネットワーク間の DNS の構成][hdinsight-hbase-replication-dns]」を参照してください。
 
@@ -192,7 +192,7 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
 4. RDP セッションを閉じないでください。後で必要になります。
 5. 同じ手順を繰り返し、Contoso-HBase-US から Contoso-HBase-EU の headnode0 に対して ping を実行します。
 
->[AZURE.IMPORTANT]次の手順に進む前に、DNS が動作している必要があります。
+>[AZURE.IMPORTANT] 次の手順に進む前に、DNS が動作している必要があります。
 
 ## HBase テーブル間のレプリケーションの有効化
 
@@ -285,8 +285,8 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
 
 このチュートリアルでは、2 つのデータ センター間に HBase レプリケーションを構成する方法を説明しました。HDInsight と HBase の詳細については、以下を参照してください。
 
-- [HDInsight サービスのページ](http://azure.microsoft.com/services/hdinsight/)
-- [HDInsight のドキュメント](http://azure.microsoft.com/documentation/services/hdinsight/)
+- [HDInsight サービスのページ](https://azure.microsoft.com/services/hdinsight/)
+- [HDInsight のドキュメント](https://azure.microsoft.com/documentation/services/hdinsight/)
 - [Get started with Apache HBase in HDInsight (HDInsight での Apache HBase の使用)][hdinsight-hbase-get-started]
 - [HDInsight HBase の概要][hdinsight-hbase-overview]
 - [Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]
@@ -311,4 +311,4 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 [hdinsight-hbase-get-started]: ../hdinsight-hbase-get-started.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

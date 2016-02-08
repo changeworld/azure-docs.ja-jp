@@ -3,7 +3,7 @@
 	description="Visual Studio の JavaScript プロジェクトで Mobile Services を使用する方法" 
 	services="mobile-services" 
 	documentationCenter="" 
-	authors="TomArcher" 
+	authors="mlhoop" 
 	manager="douge" 
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="JavaScript" 
 	ms.topic="article" 
 	ms.date="01/05/2016" 
-	ms.author="tarcher"/>
+	ms.author="mlearned"/>
 
 # Visual Studio 接続済みサービスを使用して Azure Mobile Services を追加した後の JavaScript の使用開始
 
@@ -86,6 +86,6 @@ where メソッドを使用してクエリを変更できます。次の例で�
 
 
 
-[モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
+[モバイル サービスの詳細を確認する](https://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

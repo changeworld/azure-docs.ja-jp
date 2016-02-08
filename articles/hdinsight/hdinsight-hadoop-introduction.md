@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="12/02/2015"
+   ms.date="01/27/2016"
    ms.author="cgronlun"/>
 
 
@@ -85,7 +85,7 @@ HDInsight チームによって提供されるスクリプトの例は次のと�
 
 HDInsight クラスターには、次のコンポーネントとユーティリティが含まれています。
 
-* **[Ambari](#ambari)** - クラスターのプロビジョニング、管理、および監視。
+* **[Ambari](#ambari)**: クラスターのプロビジョニング、管理、監視、およびユーティリティ。
 
 * **[Avro](#avro)** (Microsoft .NET Library for Avro) - Microsoft.NET 環境向けのデータ シリアル化。
 
@@ -93,7 +93,7 @@ HDInsight クラスターには、次のコンポーネントとユーティリ�
 
 * **[Mahout](#mahout)**: 機械学習。
 
-* **[MapReduce および YARN](#mapreduce)**: 分散処理およびリソース管理。
+* **[MapReduce](#mapreduce)**: Hadoop 分散処理およびリソース管理用のレガシー フレームワーク。次世代リソース フレームワークの [YARN](#yarn) を参照してください。
 
 * **[Oozie](#oozie)**: ワークフロー管理。
 
@@ -105,13 +105,15 @@ HDInsight クラスターには、次のコンポーネントとユーティリ�
 
 * **[Tez](#tez)**: データ量の多い処理を効率的かつ大規模に実行可能。
 
+* **[YARN](#yarn)**: Hadoop コア ライブラリの一部であり、次世代の MapReduce ソフトウェア フレームワーク。
+
 * **[ZooKeeper](#zookeeper)** - 分散システムにおけるプロセスの調整。
 
-> [AZURE.NOTE]特定のコンポーネントとバージョン情報については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能][component-versioning]」をご覧ください。
+> [AZURE.NOTE] 特定のコンポーネントとバージョン情報については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能][component-versioning]」をご覧ください。
 
-###<a name="ambari"></a>Ambari
+### <a name="ambari"></a>Ambari
 
-Apache Ambari は、Apache Hadoop クラスターのプロビジョニング、管理、および監視を目的としています。演算子ツールの直観的なコレクションおよび Hadoop の複雑さが見えないようにする信頼性の高い、一連の API が含まれており、クラスターの操作を単純化しています。Linux ベースの HDInsight クラスターは、Ambari Web UI と Ambari REST API の両方を提供し、Windows ベースのクラスターは、REST API のサブセットを提供します。
+Apache Ambari は、Apache Hadoop クラスターのプロビジョニング、管理、および監視を目的としています。演算子ツールの直観的なコレクションおよび Hadoop の複雑さが見えないようにする信頼性の高い、一連の API が含まれており、クラスターの操作を単純化しています。Linux ベースの HDInsight クラスターは、Ambari Web UI と Ambari REST API の両方を提供し、Windows ベースのクラスターは、REST API のサブセットを提供します。HDInsight クラスターの Ambari ビューでは、プラグイン UI 機能を使用できます。
 
 「[Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」、「[Ambari API を使用した HDInsight の Hadoop クラスターの監視](hdinsight-monitor-use-ambari-api.md)」、「<a target="_blank" href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md">Apache Ambari API リファレンス</a>」をご覧ください。
 
@@ -134,12 +136,12 @@ Hadoop 分散ファイル システム (HDFS) は、MapReduce と YARN と共に
 
 <a target="_blank" href="https://mahout.apache.org/">Apache Mahout</a> は、Hadoop 上で実行される機械学習アルゴリズムのスケーラブルなライブラリです。統計の原則を使用して、機械学習アプリケーションは、データから学習すること、および過去の結果から将来の動作を決めることをシステムに教えます。「[HDInsight (Hadoop) で Apache Mahout を使用して映画のリコメンデーションを生成する](hdinsight-mahout.md)」を参照してください。
 
-### <a name="mapreduce"></a>MapReduce と YARN
-Hadoop MapReduce は、大規模なデータセットを並列処理するアプリケーションを記述するためのソフトウェア フレームワークです。MapReduce ジョブは、大規模なデータセットを分割し、データを処理のためにキーと値のペアに整理します。
+### <a name="mapreduce"></a>MapReduce
+Hadoop MapReduce は、大規模なデータセットを並列でバッチ処理するアプリケーションを記述するための Hadoop 用のレガシー ソフトウェア フレームワークです。MapReduce ジョブは、大規模なデータセットを分割し、データを処理のためにキーと値のペアに整理します。
 
-Apache YARN は、次世代の MapReduce (MapReduce 2.0、または MRv2) で、リソース管理とジョブ スケジューリング/監視という JobTracker の 2 つの主要なタスクを別個のエンティティに分けたものです。
+[YARN](#yarn) は、Hadoop の次世代リソース マネージャーおよびアプリケーション フレームワークであり、MapReduce 2.0 と呼ばれます。MapReduce ジョブは YARN で実行されます。
 
-MapReduce の詳細については、Hadoop Wiki で「<a target="_blank" href="http://wiki.apache.org/hadoop/MapReduce">MapReduce</a>」をご覧ください。YARN の詳細については、「<a target="_blank" href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">Apache Hadoop NextGen MapReduce (YARN) (Apache Hadoop の次世代の MapReduce (YARN))</a>」をご覧ください。
+MapReduce の詳細については、Hadoop Wiki で「<a target="_blank" href="http://wiki.apache.org/hadoop/MapReduce">MapReduce</a>」をご覧ください。
 
 ### <a name="oozie"></a>Oozie
 <a target="_blank" href="http://oozie.apache.org/">Apache Oozie</a> は Hadoop ジョブを管理するワークフローと調整システムです。Hadoop スタックと統合されていて、MapReduce、Pig、Hive、Sqoop の Hadoop ジョブをサポートしています。Java プログラムやシェル スクリプトのような、システム特有のジョブのスケジュールを設定するのに使用することもできます。[Hadoop での時間ベースの Oozie コーディネーターの使用方法](hdinsight-use-oozie-coordinator-time.md)を参照してください。
@@ -157,9 +159,49 @@ MapReduce の詳細については、Hadoop Wiki で「<a target="_blank" href="
 ### <a name="tez"></a>Tez
 <a  target="_blank" href="http://tez.apache.org/">Apache Tez</a> は、一般的なデータ処理で構成される複雑な非循環グラフを実行する Hadoop YARN 上に構築されたアプリケーション フレームワークです。これは、MapReduce の後を継ぐ柔軟で強力なフレームワークであり、Hive などのデータ量の多い処理を、より効率的かつ大規模に実行することができます。[Hive と HiveQL の使用に関するページの『パフォーマンスを改善するための Apache Tez の使用』](hdinsight-use-hive.md#usetez)を参照してください。
 
+### <a name="yarn"></a>YARN
+Apache YARN は次世代の MapReduce (MapReduce 2.0、または MRv2) であり、優れたスケーラビリティとリアルタイム処理によって MapReduce のバッチ処理を超えるデータ処理シナリオをサポートします。YARN は、リソース管理および分散アプリケーション フレームワークを提供します。MapReduce ジョブは YARN で実行されます。
+
+YARN の詳細については、「<a target="_blank" href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">Apache Hadoop NextGen MapReduce (YARN) (Apache Hadoop の次世代の MapReduce (YARN))</a>」をご覧ください。
+
 
 ### <a name="zookeeper"></a>ZooKeeper
 <a  target="_blank" href="http://zookeeper.apache.org/">Apache ZooKeeper</a> は、データ レジスタ (znode) の共有階層名前空間を使用して、大規模な分散システムのプロセスを調整します。znode には、状態、場所、構成など、プロセスを調整するのに必要な少量のメタ情報が含まれます。
+
+## HDInsight のプログラミング言語
+
+HDInsight クラスター (Hadoop、HBase、Storm、および Spark クラスター) は多数のプログラミング言語をサポートしますが、既定でインストールされないものがあります。既定でインストールされないライブラリ、モジュール、またはパッケージ コンポーネントは、スクリプト操作を使用してインストールします。[HDInsight でのスクリプト アクションの開発](hdinsight-hadoop-script-actions-linux.md)
+
+### 既定のプログラミング言語のサポート
+
+既定では、HDInsight クラスターは以下をサポートします。
+
+* Java
+
+* Python
+
+スクリプト アクションを使用して他の言語をインストールできます。[ HDInsight でスクリプト アクションを開発します](hdinsight-hadoop-script-actions-linux.md)。
+
+### Java 仮想マシン (JVM) 言語
+
+Java 以外の多くの言語を Java 仮想マシン (JVM) を使用して実行できます。ただし、一部の言語では、クラスターに追加コンポーネントをインストールする必要があります。
+
+次の JVM ベースの言語が HDInsight クラスターでサポートされます。
+
+* Clojure
+
+* Jython (Java 用の Python)
+
+* Scala
+
+### Hadoop 固有言語
+
+HDInsight クラスターでは、Hadoop エコシステムに固有の次の言語をサポートします。
+
+* Pig ジョブ用の Pig Latin
+
+* Hive ジョブ用の HiveQL と SparkSQL
+
 
 ## <a name="advantage"></a>クラウドで Hadoop を使用するメリット
 
@@ -189,7 +231,7 @@ HDInsight の Hadoop を使うその他のメリットについては、[HDInsig
 
 ### HDInsight の Hadoop ドキュメント
 
-* [HDInsight ドキュメント](http://azure.microsoft.com/documentation/services/hdinsight/) - Azure HDInsight のドキュメント ページ。記事やビデオなどのリソースへのリンクも記載しています。
+* [HDInsight ドキュメント](https://azure.microsoft.com/documentation/services/hdinsight/) - Azure HDInsight のドキュメント ページ。記事やビデオなどのリソースへのリンクも記載しています。
 
 * [Linux での HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md) - Linux に HDInsight Hadoop クラスターをプロビジョニングし、サンプルの Hive クエリを実行するためのクイック スタート チュートリアル。
 
@@ -250,4 +292,4 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 [component-versioning]: hdinsight-component-versioning.md
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

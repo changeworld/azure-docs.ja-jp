@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/29/2015"
+	ms.date="01/21/2016"
 	ms.author="josephd"/>
 
 # SharePoint サーバー ファームの作成
@@ -23,7 +23,7 @@
 
 Microsoft Azure ポータル Marketplace では、事前に構成された SharePoint Server 2013 ファームを簡単に作成できます。これにより、開発またはテストの環境で基本または高可用性の SharePoint ファームが必要な場合や、組織のコラボレーション ソリューションとして SharePoint Server 2013 を評価する場合の所要時間を大きく節約できます。
 
-> [AZURE.NOTE]Azure ポータルの Azure Marketplace の **SharePoint サーバー ファーム**項目は削除されました。
+> [AZURE.NOTE] Azure ポータルの Azure Marketplace の **SharePoint サーバー ファーム**項目は削除されました。
 
 この構成では、次の 3 つの仮想マシンの基本的な SharePoint ファームで構成されます。
 
@@ -51,7 +51,7 @@ Microsoft Azure ポータル Marketplace では、事前に構成された Share
 3. **[SharePoint 2013 HA ファーム]** ウィンドウで、**[作成]** をクリックします。
 4. **[SharePoint 2013 HA ファームの作成]** ウィンドウの 7 つの手順で設定を指定して、**[作成]** をクリックします。
 
-> [AZURE.NOTE]Microsoft は SharePoint Server 2016 IT Preview をリリースしています。SharePoint Server 2016 IT Preview とその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[SharePoint Server 2016 IT Preview を Azure でテストする](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」を参照してください。
+> [AZURE.NOTE] Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview とその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[SharePoint Server 2016 IT Preview を Azure でテストする](https://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」を参照してください。
 
 ## SharePoint ファームの管理
 
@@ -59,14 +59,10 @@ Microsoft Azure ポータル Marketplace では、事前に構成された Share
 
 SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint アプリケーション、その他の機能を構成できます。詳細については、「[SharePoint 2013 を構成する](http://technet.microsoft.com/library/ee836142.aspx)」を参照してください。
 
-> [AZURE.NOTE]Azure ポータルは、インターネットに接続する Web プレゼンスを持つクラウド専用の仮想ネットワークにこれら両ファームを作成します。組織のネットワークに戻るサイト間 VPN 接続や ExpressRoute 接続はありません。
+> [AZURE.NOTE] Azure ポータルは、インターネットに接続する Web プレゼンスを持つクラウド専用の仮想ネットワークにこれら両ファームを作成します。組織のネットワークに戻るサイト間 VPN 接続や ExpressRoute 接続はありません。
 
-## その他のリソース
+## 次のステップ
 
-[Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
+- Azure インフラストラクチャ サービスで、追加の [SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) 構成を検出します。
 
-[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
-
-[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)
-
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

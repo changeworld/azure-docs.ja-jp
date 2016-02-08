@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/16/2015"
+   ms.date="01/21/2016"
    ms.author="joaoma" />
 
 
@@ -70,11 +70,10 @@ Azure ロード バランサーを使用したテンプレートは、[GitHub �
 - [ロード バランサー REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
 
-## 関連項目
+## 次のステップ
 
-[ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
+[インターネットに接続するロード バランサーの作成を開始](load-balancer-get-started-internet-arm-ps.md)し、特定のロード バランサーのネットワーク トラフィックの動作に適した種類の[分散モード](load-balancer-distribution-mode.md)を構成することもできます。
 
-[ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
- 
+アプリケーションでロード バランサーの背後にあるサーバーの接続を維持する必要がある場合は、[ロード バランサーの TCP アイドル タイムアウトの設定](load-balancer-tcp-idle-timeout.md)に関する詳細を確認してください。Azure Load Balancer 使用時にアイドル接続動作について理解するのに役立ちます。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

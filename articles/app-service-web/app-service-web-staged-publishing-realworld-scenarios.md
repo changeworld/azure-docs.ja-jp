@@ -245,7 +245,7 @@ WordPress のコア更新プログラムはいずれも、`wp-config.php`、`wp-
 ```
 
 #### ステージング環境のセットアップ
-Azure Web 上で WordPress Web アプリが既に実行されている場合は、[Azure ポータル](http://portal.azure.com)にログインして WordPress Web アプリに移動します。そうでない場合は、Marketplace から Web アプリを作成することができます。詳細については、[ここ](web-sites-php-web-site-gallery.md)をクリックしてください。**[設定]**、**[デプロイメント スロット]**、**[追加]** の順にクリックして、名前ステージでデプロイメント スロットを作成します。デプロイメント スロットは、上記で作成したプライマリ Web アプリと同じリソースを共有する別の Web アプリケーションです。
+Azure Web 上で WordPress Web アプリが既に実行されている場合は、[Azure ポータル](https://portal.azure.com/)にログインして WordPress Web アプリに移動します。そうでない場合は、Marketplace から Web アプリを作成することができます。詳細については、[ここ](web-sites-php-web-site-gallery.md)をクリックしてください。**[設定]**、**[デプロイメント スロット]**、**[追加]** の順にクリックして、名前ステージでデプロイメント スロットを作成します。デプロイメント スロットは、上記で作成したプライマリ Web アプリと同じリソースを共有する別の Web アプリケーションです。
 
 ![ステージ デプロイメント スロットを作成する](./media/app-service-web-staged-publishing-realworld-scenarios/1setupstage.png)
 
@@ -287,7 +287,8 @@ WebMatrix または任意のツール (FTP、Git、PhpMyAdmin など) を使用�
 
 ![Wordpress のプレビュー変更をスワップする](./media/app-service-web-staged-publishing-realworld-scenarios/6swaps1.png)
 
- >[AZURE.NOTE]ファイルのみをプッシュすればよいシナリオでは (データベースは更新されない)、スワップを実行する前に、Azure ポータルの Web アプリ設定ブレードで、データベースに関連するすべての*アプリ設定*と*接続文字列の設定*について、**[スロット設定]** を**オン**にします。この場合、DB\_NAME、DB\_HOST、DB\_PASSWORD、DB\_USER、既定の接続文字列設定は、**スワップ**の実行時に、プレビュー変更に表示されません。この時点で、**スワップ**操作を完了すると、WordPress Web アプリには更新されたファイル**だけ**が含まれます。
+ >[AZURE.NOTE]
+ ファイルのみをプッシュすればよいシナリオでは (データベースは更新されない)、スワップを実行する前に、Azure ポータルの Web アプリ設定ブレードで、データベースに関連するすべての*アプリ設定*と*接続文字列の設定*について、**[スロット設定]** を**オン**にします。この場合、DB\_NAME、DB\_HOST、DB\_PASSWORD、DB\_USER、既定の接続文字列設定は、**スワップ**の実行時に、プレビュー変更に表示されません。この時点で、**スワップ**操作を完了すると、WordPress Web アプリには更新されたファイル**だけ**が含まれます。
 
 スワップを実行する前の運用 WordPress Web アプリを次に示します ![スロットをスワップする前の運用 Web アプリ](./media/app-service-web-staged-publishing-realworld-scenarios/7bfswap.png)
 
@@ -427,7 +428,7 @@ Web アプリをローカルでアップグレードする方法の詳細につ�
 
 ![Umbraco CMS をデプロイするためのスワップ プレビュー](./media/app-service-web-staged-publishing-realworld-scenarios/22umbswap.png)
 
-Web アプリとデータベースの両方をスワップすることのメリット: 1. アプリケーションに問題がある場合、別の**スワップ**操作で Web アプリの前のバージョンにロールバックすることができます。2.アップグレードでは、ステージング Web アプリから運用 Web アプリおよびデータベースに、ファイルおよびデータベースをデプロイする必要があります。ファイルとデータベースをデプロイする場合は、問題となる可能性のある事柄が多数あります。スロットの**スワップ**機能を使用することにより、アップグレード中のダウンタイムを短縮し、変更のデプロイ時に障害が発生するリスクを軽減することができます。3.[運用環境でのテスト](http://azure.microsoft.com/documentation/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/)機能を使用して**A/B テスト**を実行することができます。
+Web アプリとデータベースの両方をスワップすることのメリット: 1. アプリケーションに問題がある場合、別の**スワップ**操作で Web アプリの前のバージョンにロールバックすることができます。2.アップグレードでは、ステージング Web アプリから運用 Web アプリおよびデータベースに、ファイルおよびデータベースをデプロイする必要があります。ファイルとデータベースをデプロイする場合は、問題となる可能性のある事柄が多数あります。スロットの**スワップ**機能を使用することにより、アップグレード中のダウンタイムを短縮し、変更のデプロイ時に障害が発生するリスクを軽減することができます。3.[運用環境でのテスト](https://azure.microsoft.com/documentation/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/)機能を使用して**A/B テスト**を実行することができます。
 
 この例では、Umbraco Courier モジュールに類似したカスタム モジュールを作成して複数の環境でデプロイメントを管理する場合のプラットフォームの柔軟性について示しています。
 
@@ -438,4 +439,4 @@ Web アプリとデータベースの両方をスワップすることのメリ�
 
 [運用環境以外のデプロイメント スロットへの Web アクセスを禁止する方法](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

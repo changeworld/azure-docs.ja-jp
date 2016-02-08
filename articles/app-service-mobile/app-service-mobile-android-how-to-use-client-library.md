@@ -71,7 +71,7 @@ Azure にアクセスするには、アプリで INTERNET アクセス許可が�
 
 このセクションでは、Quickstart アプリのコードについて説明します。クイックスタートを行わなかった場合は、このコードを自分のアプリに追加する必要があります。
 
-> [AZURE.NOTE]"MobileServices" という文字列がコード内に頻繁に出現します。コードは実際には Mobile Apps SDK を参照します。これは過去のコードから一時的に持ち越されているだけです。
+> [AZURE.NOTE] "MobileServices" という文字列がコード内に頻繁に出現します。コードは実際には Mobile Apps SDK を参照します。これは過去のコードから一時的に持ち越されているだけです。
 
 
 ###<a name="data-object"></a>クライアント データ クラスを定義する
@@ -125,7 +125,7 @@ Mobile Apps バックエンドにテーブルを追加作成する方法につ�
 				"MobileAppUrl", // Replace with the above Site URL
 				this)
 
-このコードで、`MobileAppUrl` をモバイル アプリ バックエンドの URL に置き換えます。この URL は、[Azure ポータル](https://portal.azure.com)のモバイル アプリ バックエンド用ブレードで確認できます。このコード行をコンパイルするには、次の **import** ステートメントも追加する必要があります。
+このコードで、`MobileAppUrl` をモバイル アプリ バックエンドの URL に置き換えます。この URL は、[Azure ポータル](https://portal.azure.com/)のモバイル アプリ バックエンド用ブレードで確認できます。このコード行をコンパイルするには、次の **import** ステートメントも追加する必要があります。
 
 	import com.microsoft.windowsazure.mobileservices.*;
 
@@ -602,6 +602,85 @@ App Service は、Facebook、Google、Microsoft アカウント、Twitter、Azur
 
 期限切れトークンを使用しようとすると、"*401 許可されていません*" 応答が返されます。ユーザーは、ログインして新しいトークンを取得する必要があります。Mobile Services の呼び出しと Mobile Services からの応答を取得するフィルターを使用すると、アプリケーション内でモバイル サービスを呼び出すすべての場所にこれを処理するコードを書かずに済みます。フィルター コードは、401 の応答の有無をテストし、必要に応じてログイン プロセスをトリガーし、401 を生成した要求を再開します。トークンを調べて期限切れを確認することもできます。
 
+
+## <a name="adal"></a>方法: Active Directory 認証ライブラリを使用してユーザーを認証する
+
+Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。これはよりネイティブ UX の感覚を提供し、さらなるカスタマイズが可能なため、多くの場合、`loginAsync()` メソッドの使用よりも推奨されます。
+
+1. [Active Directory のログインに App Service を構成する方法](app-service-mobile-how-to-configure-active-directory-authentication.md)のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
+
+2. build.gradle ファイルに以下を含めて変更し、ADAL をインストールします。
+
+	repositories { mavenCentral() flatDir { dirs 'libs' } maven { url "YourLocalMavenRepoPath\\.m2\\repository" } } packagingOptions { exclude 'META-INF/MSFTSIG.RSA' exclude 'META-INF/MSFTSIG.SF' } dependencies { compile fileTree(dir: 'libs', include: ['*.jar']) compile('com.microsoft.aad:adal:1.1.1') { exclude group: 'com.android.support' } // Recent version is 1.1.1 compile 'com.android.support:support-v4:23.0.0' }
+
+3. 以下のコードをアプリケーションに追加して、次の置換を行います。
+
+* **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は https://login.windows.net/contoso.onmicrosoft.com である必要があります。この値は、[Azure クラシック ポータル] の Azure Active Directory の [ドメイン] タブからコピーできます。
+
+* **INSERT-RESOURCE-ID-HERE** をモバイル アプリ バックエンドのクライアント ID に置き換えます。これはポータルの **[Azure Active Directory の設定]** の **[詳細]** タブから入手できます。
+
+* **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
+
+* **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用してサイトの _/.auth/login/done_ エンドポイントと置き換えます。この値は、_https://contoso.azurewebsites.net/.auth/login/done_ と同様です。
+
+		private AuthenticationContext mContext;
+		private void authenticate() {
+		String authority = "INSERT-AUTHORITY-HERE";
+		String resourceId = "INSERT-RESOURCE-ID-HERE";
+		String clientId = "INSERT-CLIENT-ID-HERE";
+		String redirectUri = "INSERT-REDIRECT-URI-HERE";
+		try {
+		    mContext = new AuthenticationContext(this, authority, true);
+		    mContext.acquireToken(this, resourceId, clientId, redirectUri, PromptBehavior.Auto, "", callback);
+		} catch (Exception exc) {
+		    exc.printStackTrace();
+		}
+		}
+		private AuthenticationCallback<AuthenticationResult> callback = new AuthenticationCallback<AuthenticationResult>() {
+		@Override
+		public void onError(Exception exc) {
+		    if (exc instanceof AuthenticationException) {
+		        Log.d(TAG, "Cancelled");
+		    } else {
+		        Log.d(TAG, "Authentication error:" + exc.getMessage());
+		    }
+		}
+		@Override
+			public void onSuccess(AuthenticationResult result) {
+		    if (result == null || result.getAccessToken() == null
+		            || result.getAccessToken().isEmpty()) {
+		        Log.d(TAG, "Token is empty");
+		    } else {
+		        try {
+		            JSONObject payload = new JSONObject();
+		            payload.put("access_token", result.getAccessToken());
+		            ListenableFuture<MobileServiceUser> mLogin = mClient.login("aad", payload.toString());
+		            Futures.addCallback(mLogin, new FutureCallback<MobileServiceUser>() {
+		                @Override
+		                public void onFailure(Throwable exc) {
+		                    exc.printStackTrace();
+		                }
+		                @Override
+		                public void onSuccess(MobileServiceUser user) {
+		            		Log.d(TAG, "Login Complete");
+		                }
+		            });
+		        }
+		        catch (Exception exc){
+		            Log.d(TAG, "Authentication error:" + exc.getMessage());
+		        }
+		    }
+		}
+		};
+		@Override
+		protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (mContext != null) {
+		    mContext.onActivityResult(requestCode, resultCode, data);
+		}
+		}
+
+
 ## 方法: アプリにプッシュ通知を追加する
 
 Microsoft Azure Notification Hubs によるさまざまなプッシュ通知のサポート方法については、[概要](notification-hubs-overview.md/#integration-with-app-service-mobile-apps)をご覧ください。
@@ -762,4 +841,4 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 [Azure ポータル]: https://portal.azure.com
 [認証の使用]: app-service-mobile-android-get-started-users.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

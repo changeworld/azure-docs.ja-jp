@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/08/2015"
+   ms.date="01/26/2016"
    ms.author="sethm" />
 
 # Service Bus サンプル
 
-Service Bus のサンプルでは、Service Bus (クラウド サービス) と Service Bus for Windows Server の主な機能を紹介します。この記事では、使用可能なサンプルを分類して説明しています。また、各サンプルへのリンクも含まれています。
+Service Bus のサンプルでは、[Service Bus](https://azure.microsoft.com/services/service-bus/) (クラウド サービス) と [Service Bus for Windows Server](https://msdn.microsoft.com/library/dn282144.aspx) の主な機能を紹介します。この記事では、使用可能なサンプルを分類して説明しています。また、各サンプルへのリンクも含まれています。
 
->[AZURE.NOTE]Service Bus のサンプルは SDK と共にインストールされません。サンプルを入手するには、[Azure SDK のサンプル ページ](https://code.msdn.microsoft.com)にアクセスしてください。
+>[AZURE.NOTE] Service Bus のサンプルは SDK と共にインストールされません。サンプルを入手するには、[Azure SDK のサンプル ページ](https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=5)にアクセスしてください。
 
 ## Service Bus ブローカー メッセージング
 
@@ -126,10 +126,10 @@ Service Bus Relay のさまざまな機能を説明するサンプルです。
 
 ## 次のステップ
 
-Service Bus のその他の概要については、次のトピックを参照してください。
+Service Bus の概念の要約については、次のトピックを参照してください。
 
 - [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 - [Service Bus のアーキテクチャ](service-bus-architecture.md)
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

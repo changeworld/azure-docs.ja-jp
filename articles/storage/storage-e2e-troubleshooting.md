@@ -36,7 +36,7 @@ Microsoft Azure Storage を使用してクライアント アプリケーショ�
 
 	- **ストレージ ログ**は、Azure Storage サービスへの各要求をサーバー側のログに記録します。このログは、実行された操作、操作のステータス、遅延情報などを含む各要求の詳細データを追跡します。Storage Analytics がログに書き込む要求および応答データの詳細については、「[Storage Analytics のログの形式](http://msdn.microsoft.com/library/azure/hh343259.aspx)」を参照してください。
 
-- **Azure ポータル**。[Azure ポータル](portal.azure.com)では、ストレージ アカウントのメトリックとログを構成することができます。アプリケーションの経時的な動作を表すチャートやグラフを表示できるほか、指定したメトリックに関してアプリケーションが予期しない動作をした場合に通知するよう、アラートを構成することもできます。
+- **Azure ポータル**。[Azure ポータル](https://portal.azure.com)では、ストレージ アカウントのメトリックとログを構成することができます。アプリケーションの経時的な動作を表すチャートやグラフを表示できるほか、指定したメトリックに関してアプリケーションが予期しない動作をした場合に通知するよう、アラートを構成することもできます。
 
 	Azure ポータルでの監視の構成については、[ストレージ アカウントの監視方法](storage-monitor-storage-account.md)に関するページを参照してください。
 
@@ -46,7 +46,7 @@ Microsoft Azure Storage を使用してクライアント アプリケーショ�
 
 ## サンプル シナリオについて
 
-このチュートリアルでは、Azure Storage を呼び出すアプリケーションの成功率に関して、Azure Storage メトリックが低い割合を示すシナリオについて調べます。低い成功率メトリック (**PercentSuccess** として [Azure ポータル](portal.azure.com)とメトリック テーブル内に表示される) では、成功した操作を追跡しますが、299 を超える数字の HTTP 状態コードを返します。サーバー側のストレージ ログ ファイルには、これらの操作が **ClientOtherErrors** のトランザクション状態で記録されます。低い成功率メトリックの詳細については、「[メトリックの示す PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success)」を参照してください。
+このチュートリアルでは、Azure Storage を呼び出すアプリケーションの成功率に関して、Azure Storage メトリックが低い割合を示すシナリオについて調べます。低い成功率メトリック (**PercentSuccess** として [Azure ポータル](https://portal.azure.com)とメトリック テーブル内に表示される) では、成功した操作を追跡しますが、299 を超える数字の HTTP 状態コードを返します。サーバー側のストレージ ログ ファイルには、これらの操作が **ClientOtherErrors** のトランザクション状態で記録されます。低い成功率メトリックの詳細については、「[メトリックの示す PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success)」を参照してください。
 
 Azure Storage の操作では、その通常の機能の一部として 299 を超える数字の HTTP 状態コードを返す場合があります。しかしこれらのエラーは、クライアント アプリケーションのパフォーマンスを最適化できる可能性があることを示している場合もあります。
 
@@ -88,13 +88,13 @@ BLOB またはコンテナーが見つからないことが原因で、それら
 
 ### サーバー側のログとメトリックを構成する
 
-まず、クライアント アプリケーションから分析用データを取得できるよう、Azure Storage のログとメトリックを構成する必要があります。[Azure ポータル](portal.azure.com)や PowerShell を使用する方法、プログラミングによって構成する方法など、さまざまな方法でログとメトリックを構成することができます。ログとメトリックの構成の詳細については、MSDN の「[ストレージ メトリックの有効化とメトリック データの表示](http://msdn.microsoft.com/library/azure/dn782843.aspx)」および「[ストレージ ログの有効化とログ データへのアクセス](http://msdn.microsoft.com/library/azure/dn782840.aspx)」を参照してください。
+まず、クライアント アプリケーションから分析用データを取得できるよう、Azure Storage のログとメトリックを構成する必要があります。[Azure ポータル](https://portal.azure.com)や PowerShell を使用する方法、プログラミングによって構成する方法など、さまざまな方法でログとメトリックを構成することができます。ログとメトリックの構成の詳細については、MSDN の「[ストレージ メトリックの有効化とメトリック データの表示](http://msdn.microsoft.com/library/azure/dn782843.aspx)」および「[ストレージ ログの有効化とログ データへのアクセス](http://msdn.microsoft.com/library/azure/dn782840.aspx)」を参照してください。
 
 **Azure ポータルの使用**
 
-[Azure ポータル](portal.azure.com)を使用してストレージ アカウントのログとメトリックを構成するには、[ストレージ アカウントの監視方法](storage-monitor-storage-account.md)に関するページの手順に従ってください。
+[Azure ポータル](https://portal.azure.com)を使用してストレージ アカウントのログとメトリックを構成するには、[ストレージ アカウントの監視方法](storage-monitor-storage-account.md)に関するページの手順に従ってください。
 
-> [AZURE.NOTE]Azure ポータルを使用して分単位メトリックを設定することはできません。ただし、このチュートリアルのため、さらにアプリケーションが抱えるパフォーマンスの問題を調査するためにも、これを設定することをお勧めします。分単位メトリックは、PowerShell (以下を参照)、プログラム、ストレージ クライアント ライブラリのいずれかを使用して設定できます。
+> [AZURE.NOTE] Azure ポータルを使用して分単位メトリックを設定することはできません。ただし、このチュートリアルのため、さらにアプリケーションが抱えるパフォーマンスの問題を調査するためにも、これを設定することをお勧めします。分単位メトリックは、PowerShell (以下を参照)、プログラム、ストレージ クライアント ライブラリのいずれかを使用して設定できます。
 >
 > Azure ポータルで表示できるのは時間単位メトリックのみであり、分単位メトリックは表示できない点に注意してください。
 
@@ -164,19 +164,19 @@ Message Analyzer を使用して、クライアント アプリケーション�
 
 7. ダイアログを終了し、**[Restart]** をクリックして、ホスト名フィルターを配置した状態でトレースの収集を開始します。これで、Azure Storage ネットワーク トラフィックのみがトレースに含まれるようになります。
 
->[AZURE.NOTE]ネットワーク トレースの収集が完了したら、Fiddler で変更した HTTPS トラフィックを復号化する設定を元に戻すことを強くお勧めします。[Fiddler Options] ダイアログで、**[Capture HTTPS CONNECTs]** および **[Decrypt HTTPS Traffic]** チェックボックスをオフにします。
+>[AZURE.NOTE] ネットワーク トレースの収集が完了したら、Fiddler で変更した HTTPS トラフィックを復号化する設定を元に戻すことを強くお勧めします。[Fiddler Options] ダイアログで、**[Capture HTTPS CONNECTs]** および **[Decrypt HTTPS Traffic]** チェックボックスをオフにします。
 
 詳細については、Technet の[ネットワーク トレース機能の使用](http://technet.microsoft.com/library/jj674819.aspx)に関するページを参照してください。
 
 ## Azure ポータルでメトリック データを確認する
 
-アプリケーションが動作を開始してから一定の時間が経過すると、[Azure ポータル](portal.azure.com)に表示されるメトリック チャートを確認し、サービスがどのように動作しているかを観察することができます。最初に、Azure ポータルでストレージ アカウントに移動し、**[成功のパーセンテージ]** メトリックのチャートを追加します。
+アプリケーションが動作を開始してから一定の時間が経過すると、[Azure ポータル](https://portal.azure.com)に表示されるメトリック チャートを確認し、サービスがどのように動作しているかを観察することができます。最初に、Azure ポータルでストレージ アカウントに移動し、**[成功のパーセンテージ]** メトリックのチャートを追加します。
 
 Azure ポータルの監視チャート内には、他の追加済みのメトリックと共に **[成功のパーセンテージ]** が表示されています。次に調査するシナリオでは Message Analyzer でログを分析しますが、成功率が 100% をいくらか下回っています。
 
 監視ページへのメトリックの追加の詳細については、「[方法: メトリック テーブルへのメトリックの追加](storage-monitor-storage-account.md#addmonitoringmetrics)」を参照してください。
 
-> [AZURE.NOTE]ストレージ メトリックを有効にした後、Azure ポータルにメトリック データが表示されるまでには少し時間がかかる場合があります。これは、1 つ前の時間単位メトリックが、現在の単位時間が経過するまでは Azure ポータルに表示されないためです。また、分単位メトリックについては現在のところ Azure ポータルには表示されません。つまり、メトリックを有効にしたタイミングによっては、メトリック データが表示されるまでに最大で 2 時間を要する可能性があります。
+> [AZURE.NOTE] ストレージ メトリックを有効にした後、Azure ポータルにメトリック データが表示されるまでには少し時間がかかる場合があります。これは、1 つ前の時間単位メトリックが、現在の単位時間が経過するまでは Azure ポータルに表示されないためです。また、分単位メトリックについては現在のところ Azure ポータルには表示されません。つまり、メトリックを有効にしたタイミングによっては、メトリック データが表示されるまでに最大で 2 時間を要する可能性があります。
 
 ## AzCopy を使用してサーバー ログをローカル ディレクトリにコピーする
 
@@ -186,7 +186,7 @@ AzCopy コマンドライン ツールを使用して、これらのサーバー
 
 	AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
 
-AzCopy は、[Azure ダウンロード](http://azure.microsoft.com/downloads/)のページからダウンロードできます。AzCopy の使用方法の詳細については、[Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md)に関するページを参照してください。
+AzCopy は、[Azure ダウンロード](https://azure.microsoft.com/downloads/)のページからダウンロードできます。AzCopy の使用方法の詳細については、[Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md)に関するページを参照してください。
 
 サーバー側のログのダウンロードの詳細については、「[ストレージ ログの有効化とログ データへのアクセス](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata)」を参照してください。
 
@@ -211,7 +211,7 @@ Message Analyzer には、サーバー、クライアント、およびネット
 
 ![Message Analyzer の [Start] ページ](./media/storage-e2e-troubleshooting/mma-start-page-1.png)
 
-> [AZURE.NOTE]このチュートリアルのために、表示された Azure Storage アセットはすべてインストールしてください。
+> [AZURE.NOTE] このチュートリアルのために、表示された Azure Storage アセットはすべてインストールしてください。
 
 ### ログ ファイルを Message Analyzer にインポートする
 
@@ -255,7 +255,7 @@ Message Analyzer 向けの Storage アセットには Azure Storage View Layouts
 
 ![Azure Storage View Layout](./media/storage-e2e-troubleshooting/view-layout-client-request-id-module.png)
 
->[AZURE.NOTE]ログ ファイルの種類によって含まれる列は異なるため、Analysis Grid に複数のログ ファイルのデータが表示された場合、いくつかの列は任意の行に何のデータも含まれていない場合があります。たとえば前の図では、**[Timestamp]**、**[TimeElapsed]**、**[Source]**、**[Destination]** の各列について、クライアント ログの行には何のデータも表示されていませんが、この原因は、クライアント ログにはこれらの列が存在せず、ネットワーク トレースには存在するためです。同様に、**[Timestamp]** 列にはサーバー ログのタイムスタンプ データが表示されていますが、サーバー ログには含まれていない **[TimeElapsed]**、**[Source]**、**[Destination]** の各列には何も表示されていません。
+>[AZURE.NOTE] ログ ファイルの種類によって含まれる列は異なるため、Analysis Grid に複数のログ ファイルのデータが表示された場合、いくつかの列は任意の行に何のデータも含まれていない場合があります。たとえば前の図では、**[Timestamp]**、**[TimeElapsed]**、**[Source]**、**[Destination]** の各列について、クライアント ログの行には何のデータも表示されていませんが、この原因は、クライアント ログにはこれらの列が存在せず、ネットワーク トレースには存在するためです。同様に、**[Timestamp]** 列にはサーバー ログのタイムスタンプ データが表示されていますが、サーバー ログには含まれていない **[TimeElapsed]**、**[Source]**、**[Destination]** の各列には何も表示されていません。
 
 Azure Storage ビュー レイアウトを使用するだけでなく、独自のビュー レイアウトを定義して保存することもできます。データのグループ化に必要なその他のフィールドを選択し、そのグループをカスタム レイアウトの一部として保存することができます。
 
@@ -359,10 +359,10 @@ Message Analyzer を使用したログ データの分析に慣れてきたと�
 
 Azure Storage におけるエンド ツー エンド シナリオのトラブルシューティングの詳細については、次のリソースを参照してください。
 
-- [ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)
+- [Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)
 - [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx)
 - [ストレージ アカウントの監視方法](storage-monitor-storage-account.md)
 - [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 - [Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

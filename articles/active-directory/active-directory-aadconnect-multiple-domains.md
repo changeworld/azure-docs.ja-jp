@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/11/2016"
+	ms.date="01/21/2016"
 	ms.author="billmath"/>
 
 #複数ドメインのサポート
@@ -50,8 +50,8 @@ Azure AD PowerShell を使用してフェデレーションを構成する 2 番
 Azure AD の構成は次のようになります。
 
 - DomainName: fabrikam.com
-- IssuerURI: http://fabrikam.com/adfs/services/trust 
-- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/ 
+- IssuerURI: http://fabrikam.com/adfs/services/trust
+- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/
 
 IssuerURI は自分のドメインに基づく値に設定されているため一意ですが、エンドポイント URL の値は、元の contoso.com ドメインのときと同様に、まだ、fs.contoso100.com 上のフェデレーション サービスをポイントするように構成されていることに注意してください。つまり、すべてのドメインはまだ同じ AD FS システムをポイントし続けています。
 
@@ -74,11 +74,11 @@ PowerShell では、手動で SupportMultipleDomain スイッチを指定する�
 これの実行が完了すると、Azure AD には 2 つのドメインが構成されます。
 
 - DomainName: contoso.com
-- IssuerURI: http://contoso.com/adfs/services/trust 
-- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/ 
+- IssuerURI: http://contoso.com/adfs/services/trust
+- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/
 - DomainName: fabrikam.com
-- IssuerURI: http://fabrikam.com/adfs/services/trust 
-- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/ 
+- IssuerURI: http://fabrikam.com/adfs/services/trust
+- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/
 
 これで、contoso.com と fabrikam.com ドメインのユーザーのフェデレーション サインオンが機能するようになりました。ここで、サブドメインのユーザーのサインインの問題が 1 つ残ります。
 
@@ -91,4 +91,4 @@ Azure AD では、発行者を http://sub.contoso.com/adfs/services/trust とす
 
 要約すると、完全に異なる名前の複数のドメインとサブドメインを、すべて同じ AD FS サーバーにフェデレーション構成できました。すべてのユーザーの Issuer 値を正しく設定するには、いくつかの手順を追加で行います。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

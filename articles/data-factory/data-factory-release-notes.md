@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/09/2015" 
+	ms.date="01/26/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory リリース ノート
@@ -290,12 +290,12 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 -  Azure BLOB 内のテキスト ファイルのエンコードを指定できます。新しい [encodingName プロパティ](https://msdn.microsoft.com/library/dn894089.aspx#AzureBlob)を参照してください。 
 - SQL シンクにコピーするときに、追加のパラメーターを使用してストアド プロシージャを呼び出すことができます。    
 
-例を含む追加情報については、[Azure Data Factory の更新 - 新しいデータ ストア](http://azure.microsoft.com/blog/2015/03/30/azure-data-factory-update-new-data-stores/)に関する BLOB の投稿を参照してください。
+例を含む追加情報については、[Azure Data Factory の更新 - 新しいデータ ストア](https://azure.microsoft.com/blog/2015/03/30/azure-data-factory-update-new-data-stores/)に関する BLOB の投稿を参照してください。
 
 ## Data Factory の 2015 年 2 月 27 日リリース ノート
 
 ### 新機能
-- **Azure Data Factory エディター**Azure ポータルの一部である Data Factory エディターでは、リンクされたサービス、データ セット、パイプラインを定義する JSON ファイルを作成、編集、デプロイできます。このエディターの主な目的は、高速かつ軽量のユーザー インターフェイス (UI) を使用して、Azure PowerShell をインストールしたり PowerShell コマンドレットを導入せずに Azure Data Factory アーティファクトを作成することです。Data Factory エディターの概要とビデオについては、[Azure Data Factory エディター - 軽量の Web エディター][adf-editor-blog]に関するブログの投稿を参照してください。Data Factory エディターの詳細については、記事「[Data Factory エディター][adf-editor]」を参照してください。          
+- **Azure Data Factory エディター**Azure ポータルの一部である Data Factory エディターでは、リンクされたサービス、データ セット、パイプラインを定義する JSON ファイルを作成、編集、デプロイできます。このエディターの主な目的は、高速かつ軽量のユーザー インターフェイス (UI) を使用して、Azure PowerShell をインストールしたり PowerShell コマンドレットを導入せずに Azure Data Factory アーティファクトを作成することです。Data Factory エディターの概要とビデオについては、[Azure Data Factory エディター - 軽量の Web エディター][adf-editor-blog]に関するブログの投稿を参照してください。  
 
 ### 変更点
 
@@ -343,7 +343,6 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 
 [adf-azure-ml]: data-factory-azure-ml-batch-execution-activity.md
 [adf-custom-activities]: data-factory-use-custom-activities.md
-[adf-editor]: data-factory-editor.md
 
 [adf-editor-video]: http://channel9.msdn.com/Blogs/Windows-Azure/New-Azure-Data-Factory-Editor-UI
 [adf-editor-blog]: http://azure.microsoft.com/blog/2015/03/02/azure-data-factory-editor-a-light-weight-web-editor/
@@ -357,4 +356,4 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

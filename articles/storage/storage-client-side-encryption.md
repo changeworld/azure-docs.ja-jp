@@ -23,7 +23,7 @@
 
 ## 概要
 
-[.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)は、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは [Azure Key Vault](http://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
+[.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)は、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
 
 Java によるクライアント側の暗号化については、「[Java による Microsoft Azure Storage のクライアント側の暗号化](storage-client-side-encryption-java.md)」を参照してください。
 
@@ -62,7 +62,7 @@ Java によるクライアント側の暗号化については、「[Java によ
 
 暗号化中、クライアント ライブラリは 16 バイトのランダムな初期化ベクトル (IV) と 32 バイトのランダムなコンテンツ暗号化キー (CEK) を生成し、この情報を使用して BLOB データのエンベロープ暗号化を実行します。ラップされた CEK と一部の追加暗号化メタデータが、サービスの暗号化された BLOB と共に、BLOB メタデータとして格納されます。
 
-> [AZURE.WARNING]BLOB のメタデータを編集またはアップロードする場合は、このメタデータを保持している必要があります。このメタデータなしで新しいメタデータをアップロードした場合、ラップされた CEK、IV、およびその他のメタデータは失われ、BLOB コンテンツが再度取得可能になることはありません。
+> [AZURE.WARNING] BLOB のメタデータを編集またはアップロードする場合は、このメタデータを保持している必要があります。このメタデータなしで新しいメタデータをアップロードした場合、ラップされた CEK、IV、およびその他のメタデータは失われ、BLOB コンテンツが再度取得可能になることはありません。
 
 暗号化された BLOB のダウンロードには、便利なメソッド **DownloadTo***/**BlobReadStream** を使用した BLOB 全体のコンテンツの取得も含まれます。ラップされた CEK はラップ解除され、復号化されたデータをユーザーに返すために IV (この場合 BLOB メタデータとして格納された) と共に使用されます。
 
@@ -84,7 +84,7 @@ Java によるクライアント側の暗号化については、「[Java によ
 
 クライアント ライブラリでは、挿入および置換操作のエンティティ プロパティの暗号化がサポートされます。
 
->[AZURE.NOTE]現在、マージはサポートされていません。別のキーを使用してプロパティのサブセットが以前に暗号化されている場合、新しいプロパティをマージしたり、メタデータを更新したりするとデータ損失が発生します。マージでは、追加のサービス呼び出しをして既存のエンティティをサービスから読み込むか、プロパティごとに新しいキーを使用する必要があります。いずれの方法も、パフォーマンス上の理由でお勧めできません。
+>[AZURE.NOTE] 現在、マージはサポートされていません。別のキーを使用してプロパティのサブセットが以前に暗号化されている場合、新しいプロパティをマージしたり、メタデータを更新したりするとデータ損失が発生します。マージでは、追加のサービス呼び出しをして既存のエンティティをサービスから読み込むか、プロパティごとに新しいキーを使用する必要があります。いずれの方法も、パフォーマンス上の理由でお勧めできません。
 
 テーブル データの暗号化は、次のように機能します。
 
@@ -131,7 +131,7 @@ Key Vault の使用方法について詳しくは、[暗号化コードのサン
 
 暗号化のサポートは、.NET 用のストレージ クライアント ライブラリでのみ使用できます。Windows Phone と Windows ランタイムでは現在、暗号化はサポートされていません。
 
->[AZURE.IMPORTANT]クライアント側の暗号化を使用する場合は、次の重要な点に注意してください。
+>[AZURE.IMPORTANT] クライアント側の暗号化を使用する場合は、次の重要な点に注意してください。
 >
 >- 暗号化された BLOB を読み書きするときは、完全 BLOB アップロード コマンドと範囲/完全 BLOB ダウンロード コマンドを使用してください。Put Block、Put Block List、Write Pages、Clear Pages、または Append Block などのプロトコル操作で暗号化された BLOB に書き込まないでください。暗号化された BLOB が壊れたり、読み取り不可能になったりすることがあります。
 >- テーブルの場合、同様の制約があります。暗号化メタデータを更新せずに暗号化されたプロパティを更新する行為は避けてください。
@@ -246,4 +246,4 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 [.NET 用 Azure Storage クライアント ライブラリ NuGet パッケージ](http://www.nuget.org/packages/WindowsAzure.Storage/5.0.0)をダウンロードする。GitHub から [.NET 用 Azure Storage クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-net)をダウンロードする。Azure Key Vault NuGet の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および[拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。[Azure Key Vault ドキュメント](../articles/key-vault-whatis.md)にアクセスする。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

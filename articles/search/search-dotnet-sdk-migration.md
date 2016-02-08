@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Search .NET SDK バージョン 1.0.0-preview へのアップグレード | Microsoft Azure | ホスト型クラウド検索サービス"
-   description="Azure Search .NET SDK バージョン 1.0.0-preview へのアップグレード"
+   pageTitle="Azure Search .NET SDK バージョン 1.0.1-preview へのアップグレード | Microsoft Azure | ホスト型クラウド検索サービス"
+   description="Azure Search .NET SDK バージョン 1.0.1-preview へのアップグレード"
    services="search"
    documentationCenter=""
    authors="brjohnstmsft"
@@ -13,21 +13,21 @@
    ms.workload="search"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.date="01/20/2016"
+   ms.date="01/22/2016"
    ms.author="brjohnst"/>
 
-# Azure Search .NET SDK バージョン 1.0.0-preview へのアップグレード
+# Azure Search .NET SDK バージョン 1.0.1-preview へのアップグレード
 
-バージョン 0.13.0-preview 以前の [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用している場合、この記事を参考にして、最新バージョンの 1.0.0-preview を使用するようにアプリケーションをアップグレードできます。
+バージョン 0.13.0-preview 以前の [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用している場合、この記事を参考にして、最新バージョンの 1.0.1-preview を使用するようにアプリケーションをアップグレードできます。
 
 例を含む SDK の一般的なチュートリアルについては、「[.NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。
 
-Azure Search .NET SDK のバージョン 1.0.0-preview には、以前のバージョン (0.13.0-preview) との互換性が維持されない変更がいくつかあります。ほとんどは小さなものなので、コードの変更に必要な作業は最小限で済みます。新しいバージョンの SDK を使用するようにコードを変更する方法については、「[アップグレードの手順](#UpgradeSteps)」を参照してください。
+Azure Search .NET SDK のバージョン 1.0.1-preview には、以前のバージョン (0.13.0-preview) との互換性が維持されない変更がいくつかあります。ほとんどは小さなものなので、コードの変更に必要な作業は最小限で済みます。新しいバージョンの SDK を使用するようにコードを変更する方法については、「[アップグレードの手順](#UpgradeSteps)」を参照してください。
 
 <a name="WhatsNew"></a>
-## 1\.0.0-preview の新機能
+## 1\.0.1-preview の新機能
 
-バージョン 1.0.0-preview の対象となる REST API のバージョンは古いバージョンの Azure Search .NET SDK (2015-02-28) と同じなので、このリリースでの新しいサービス機能はありません。ただし、SDK の上級ユーザー向けの新しいクライアント側機能が 1 つあります。
+バージョン 1.0.1-preview の対象となる REST API のバージョンは古いバージョンの Azure Search .NET SDK (2015-02-28) と同じなので、このリリースでの新しいサービス機能はありません。ただし、クライアント側のシリアル化の新機能があります。
 
 SDK では、ドキュメントのシリアル化と逆シリアル化に JSON.NET を使用します。新しいバージョンの SDK は、`JsonConverter` と `IContractResolver` によるカスタム シリアル化をサポートします (詳細については [JSON.NET のドキュメント](http://www.newtonsoft.com/json/help/html/Introduction.htm)を参照)。この機能は、アプリケーションの既存のモデル クラスを Azure Search 用に適合させる場合、およびその他の高度なシナリオに役立ちます。たとえば、カスタム シリアル化を使用すると次のことが可能です。
  
@@ -37,12 +37,14 @@ SDK では、ドキュメントのシリアル化と逆シリアル化に JSON.N
 
 Azure Search .NET SDK のユニット テストにカスタム シリアル化を実装する例については、GitHub を参照してください。手始めとしては、[このフォルダー](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Search/Search.Tests/Tests/Models)が適しています。カスタム シリアル化のテストに使用されるクラスが含まれます。
 
+カスタム シリアル化に加え、新しい SDK は `SearchContinuationToken` オブジェクトのシリアル化もサポートします。これは、Azure Search を Web アプリケーションから呼び出して、検索結果をページングしながら継続トークンをブラウザーまたはモバイル クライアントと交換する必要がある場合に役立ちます。
+
 <a name="UpgradeSteps"></a>
 ## アップグレードの手順
 
 最初に、NuGet パッケージ マネージャー コンソールを使用して、または Visual Studio でプロジェクト参照を右クリックして [NuGet パッケージの管理...] を選択することにより、`Microsoft.Azure.Search` の NuGet 参照を更新します。
 
-> [AZURE.NOTE]Visual Studio を使用している場合は [プレリリースを含める] を選択することで、パッケージ マネージャー コンソールを使用している場合は `-IncludePrerelease` スイッチを使用して、プレリリース パッケージを参照できるようにします。
+> [AZURE.NOTE] Visual Studio を使用している場合は [プレリリースを含める] を選択することで、パッケージ マネージャー コンソールを使用している場合は `-IncludePrerelease` スイッチを使用して、プレリリース パッケージを参照できるようにします。
 
 NuGet が新しいパッケージとその依存関係をダウンロードした後、プロジェクトをリビルドします。次のようなビルド エラーが表示されます。
 
@@ -51,14 +53,14 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
     Program.cs(146,41,146,54): error CS1061: 'Microsoft.Azure.Search.IndexBatchException' does not contain a definition for 'IndexResponse' and no extension method 'IndexResponse' accepting a first argument of type 'Microsoft.Azure.Search.IndexBatchException' could be found (are you missing a using directive or an assembly reference?)
     Program.cs(163,13,163,42): error CS0246: The type or namespace name 'DocumentSearchResponse' could not be found (are you missing a using directive or an assembly reference?)
 
-次のステップとして、ビルド エラーを 1 つずつ修正します。ほとんどの修正では、SDK で名前が変更されたクラスとメソッドの名前を変更する必要があります。このような名前変更の一覧については、「[1\.0.0-preview における互換性が維持されない変更の一覧](#ListOfChanges)」を参照してください。
+次のステップとして、ビルド エラーを 1 つずつ修正します。ほとんどの修正では、SDK で名前が変更されたクラスとメソッドの名前を変更する必要があります。このような名前変更の一覧については、「[1\.0.1-preview における互換性が維持されない変更の一覧](#ListOfChanges)」を参照してください。
 
-カスタム クラスを使用してドキュメントをモデル化していて、それらのクラスに null 非許容プリミティブ型のプロパティ (たとえば、C# での `int` や `bool`) がある場合、1.0.0-preview バージョンの SDK で行われたバグ修正について認識しておく必要があります。詳細については、「[1\.0.0-preview でのバグ修正](#BugFixes)」を参照してください。
+カスタム クラスを使用してドキュメントをモデル化していて、それらのクラスに null 非許容プリミティブ型のプロパティ (たとえば、C# での `int` や `bool`) がある場合、1.0.1-preview バージョンの SDK で行われたバグ修正について認識しておく必要があります。詳細については、「[1\.0.1-preview でのバグ修正](#BugFixes)」を参照してください。
 
-最後に、ビルド エラーを修正した後は、必要に応じて、新しい機能を利用するようにアプリケーションを変更できます。新しい SDK のカスタム シリアル化機能の詳細については、「[1\.0.0-preview の新機能](#WhatsNew)」を参照してください。
+最後に、ビルド エラーを修正した後は、必要に応じて、新しい機能を利用するようにアプリケーションを変更できます。新しい SDK のカスタム シリアル化機能の詳細については、「[1\.0.1-preview の新機能](#WhatsNew)」を参照してください。
 
 <a name="ListOfChanges"></a>
-## 1\.0.0-preview における互換性が維持されない変更の一覧
+## 1\.0.1-preview における互換性が維持されない変更の一覧
 
 以下の一覧は、変更によってアプリケーション コードが影響を受ける可能性の高い順になっています。
 
@@ -112,7 +114,7 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 <a name="OperationMethodChanges"></a>
 ### 操作メソッドの変更
 
-Azure Search .NET SDK の各操作は、同期および非同期の呼び出し元に対するメソッドのオーバーロードのセットとして公開されます。これらのメソッド オーバーロードのシグネチャと要素分解は、バージョン 1.0.0-preview で変更されました。
+Azure Search .NET SDK の各操作は、同期および非同期の呼び出し元に対するメソッドのオーバーロードのセットとして公開されます。これらのメソッド オーバーロードのシグネチャと要素分解は、バージョン 1.0.1-preview で変更されました。
 
 たとえば、旧バージョンの SDK の「インデックス統計の取得」操作は、次のようなシグネチャを公開しました。
 
@@ -135,7 +137,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
         this IIndexOperations operations,
         string indexName);
 
-1\.0.0-preview バージョンでの同じ操作のメソッド シグネチャは、次のようになります。
+1\.0.1-preview バージョンでの同じ操作のメソッド シグネチャは、次のようになります。
 
 `IIndexesOperations` で、次のように記述します。
 
@@ -161,7 +163,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
         string indexName,
         SearchRequestOptions searchRequestOptions = default(SearchRequestOptions));
 
-バージョン 1.0.0-preview 以降では、Azure Search .NET SDK での操作メソッドの編成が異なります。
+バージョン 1.0.1-preview 以降では、Azure Search .NET SDK での操作メソッドの編成が異なります。
  
  - 省略可能なパラメーターが、追加メソッドのオーバーロードではなく、既定のパラメーターとしてモデル化されるようになっています。これにより、メソッドのオーバーロードの数が、場合によっては大幅に減少します。
  - 拡張メソッドで、HTTP の重要ではない細部の多くが呼び出し元に開示しないようになっています。たとえば、以前のバージョンの SDK では、HTTP 状態コードで応答オブジェクトが返されましたが、操作メソッドはエラーを示す状態コードに対して `CloudException` をスローするため、応答オブジェクトをチェックする必要はほとんどありませんでした。新しい拡張メソッドはモデル オブジェクトだけを返すので、コードでラップを解除する必要がある問題が減ります。
@@ -290,13 +292,13 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
             new Uri("http://myservice.search.windows.net"),
             new SearchCredentials("abc123")); 
 
-また、資格情報パラメーターの型が `ServiceClientCredentials` に変更されたことにも注意してください。`SearchCredentials` は `ServiceClientCredentials` から派生されているので、コードへの影響はないものと思われます。
+また、資格情報パラメーターの型が `ServiceClientCredentials` に変更されたことにも注意してください。`SearchCredentials` は `ServiceClientCredentials` から派生しているので、コードへの影響はないものと思われます。
 
 ### 要求 ID の受け渡し
 
 古いバージョンの SDK では、要求 ID は `SearchServiceClient` または `SearchIndexClient` で設定でき、REST API へのすべての要求に組み込まれました。これは、サポートに連絡する必要がある場合、Search サービスに関する問題のトラブルシューティングに役立ちました。しかし、すべての操作に同じ ID を使用するのではなく、操作ごとに一意の要求 ID を設定する方が便利です。このため、`SearchServiceClient` および `SearchIndexClient` の `SetClientRequestId` メソッドはなくなりました。代わりに、省略可能な `SearchRequestOptions` パラメーターを使用して、各操作メソッドに要求 ID を渡すことができます。
 
-> [AZURE.NOTE]SDK の今後のリリースでは、他の Azure SDK で使用されている方法と整合性があるように、クライアント オブジェクトでグローバルに要求 ID を設定する新しいメカニズムが追加されます。
+> [AZURE.NOTE] SDK の今後のリリースでは、他の Azure SDK で使用されている方法と整合性があるように、クライアント オブジェクトでグローバルに要求 ID を設定する新しいメカニズムが追加されます。
 
 #### 例
 
@@ -322,7 +324,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 テスト目的でこれらのインターフェイスのモックを作成した場合を除き、この変更がコードに影響する可能性はありません。
 
 <a name="BugFixes"></a>
-## 1\.0.0-preview でのバグ修正
+## 1\.0.1-preview でのバグ修正
 
 古いバージョンの Azure Search .NET SDK には、カスタム モデル クラスのシリアル化に関するバグがありました。このバグは、null 非許容値型のプロパティを使用してカスタム モデル クラスを作成した場合に発生する可能性がありました。
 
@@ -336,7 +338,7 @@ null 非許容値型のプロパティを使用してカスタム モデル ク�
 
 ### 修正の詳細
 
-この問題は、SDK のバージョン 1.0.0-preview で解決されました。次のようなモデル クラスがあるものとします。
+この問題は、SDK のバージョン 1.0.1-preview で解決されました。次のようなモデル クラスがあるものとします。
 
     public class Model
     {
@@ -364,4 +366,4 @@ SDK についてのご意見をお待ちしております。問題が発生し�
 
 Azure Search をお使いいただきありがとうございます。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

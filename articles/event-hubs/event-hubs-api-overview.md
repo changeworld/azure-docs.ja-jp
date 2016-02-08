@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/14/2015"
+   ms.date="01/26/2016"
    ms.author="sethm" />
 
 # Event Hubs API 概要
 
 この記事は主要な Event Hubs .NET クライアント API についてまとめてあります。2 つのカテゴリがあります。管理 API とランタイム API です。ランタイム API はメッセージの送受信に必要なすべての操作で構成されています。管理操作では、エンティティを作成、更新、削除することで Event Hubs エンティティの状態を管理できます。
 
-監視シナリオは管理とランタイムの両方にまたがります。.NET API に関する詳細なリファレンス ドキュメントについては、「[.NET クラス ライブラリ](https://msdn.microsoft.com/library/azure/mt419900.aspx)」リファレンスと「[EventProcessorHost API](https://msdn.microsoft.com/library/azure/mt445521.aspx)」リファレンスを参照してください。
+監視シナリオは管理とランタイムの両方にまたがります。.NET API に関する詳細なリファレンス ドキュメントについては、「[Service Bus .NET](https://msdn.microsoft.com/library/azure/mt419900.aspx)」と「[EventProcessorHost API](https://msdn.microsoft.com/library/azure/mt445521.aspx)」リファレンスを参照してください。
 
 ## 管理 API
 
@@ -84,7 +84,7 @@ await client.SendAsync(data);
 ### コンシューマーの作成
 
 ```
-// Create the Event Hub client
+// Create the Event Hubs client
 EventHubClient eventHubClient = EventHubClient.Create(EventHubName);
 
 // Get the default consumer group
@@ -120,6 +120,7 @@ msg = UnicodeEncoding.UTF8.GetString(info);
 ```
 // Checkpointing is done within the SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
 // Use the EventData.Offset value for checkpointing yourself, this value is unique per partition.
+
 string eventHubConnectionString = System.Configuration.ConfigurationManager.AppSettings["Microsoft.ServiceBus.ConnectionString"];
 string blobConnectionString = System.Configuration.ConfigurationManager.AppSettings["AzureStorageConnectionString"]; // Required for checkpoint/state
 
@@ -188,4 +189,4 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 - [Service Bus と Event Hubs の .NET API リファレンス](https://msdn.microsoft.com/library/azure/mt419900.aspx)
 - [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/azure/mt445521.aspx)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

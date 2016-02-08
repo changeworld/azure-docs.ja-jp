@@ -6,7 +6,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="objectivec"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="01/21/2016"
 	ms.author="brandwe"/>
 
 # Azure AD B2C プレビュー: iOS アプリケーションからの Web API の呼び出し
@@ -16,10 +16,12 @@
 Azure AD B2C を使用すると、強力なセルフサービス方式の ID 管理機能をわずかな手順で iOS アプリと Web API に追加できます。この記事では、OAuth 2.0 べアラー トークンを使用して node.js Web API を呼び出す iOS の "To-Do List" アプリを作成する方法を示します。iOS アプリと Web API は、どちらも Azure AD B2C を使用してユーザー ID を管理し、ユーザーを認証します。
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
-	
-> [AZURE.NOTE]このクイック スタートを完全に機能させるためには、前提条件として、Azure AD で B2C によって保護されている Web API が存在する必要があります。すぐに使用できる .Net と node.js 用の Web API が既にビルドされています。このチュートリアルでは、node.js Web API のサンプルが構成されているとみなします。「[Azure Active Directory Web-API for Node.js sample (Node.js 用 Azure Active Directory Web APIのサンプル)](active-directory-b2c-devquickstarts-api-node.md`)」を参照してください。
 
-> [AZURE.NOTE]この記事では、サインイン、サインアップ、およびプロファイル管理を Azure AD B2C で実装する方法については説明しません。ユーザーが既に認証された後での Web API の呼び出しに焦点を合わせています。まだ行っていない場合は、先に「[Azure AD B2C プレビュー: .NET Web アプリをビルドする](active-directory-b2c-devquickstarts-web-dotnet.md)」で Azure AD B2C の基本を学習してください。
+> [AZURE.NOTE]
+	このクイック スタートを完全に機能させるためには、前提条件として、Azure AD で B2C によって保護されている Web API が存在する必要があります。すぐに使用できる .Net と node.js 用の Web API が既にビルドされています。このチュートリアルでは、node.js Web API のサンプルが構成されているとみなします。「[Azure Active Directory Web-API for Node.js sample (Node.js 用 Azure Active Directory Web APIのサンプル)](active-directory-b2c-devquickstarts-api-node.md`)」を参照してください。
+
+> [AZURE.NOTE]
+	この記事では、サインイン、サインアップ、およびプロファイル管理を Azure AD B2C で実装する方法については説明しません。ユーザーが既に認証された後での Web API の呼び出しに焦点を合わせています。まだ行っていない場合は、先に「[Azure AD B2C プレビュー: .NET Web アプリをビルドする](active-directory-b2c-devquickstarts-web-dotnet.md)」で Azure AD B2C の基本を学習してください。
 
 ## 1\.Azure AD B2C ディレクトリの取得
 
@@ -42,7 +44,7 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポ
 
 - サインアップ ポリシーで、**表示名**と他のいくつかのサインアップ属性を選択します。
 - すべてのポリシーで、アプリケーション クレームとして**表示名**と**オブジェクト ID** を選択します。その他のクレームも選択できます。
-- ポリシーの作成後、各ポリシーの**名前**をメモしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名はすぐに必要になります。 
+- ポリシーの作成後、各ポリシーの**名前**をメモしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名はすぐに必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
@@ -58,7 +60,7 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポ
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS.git
 ```
 
-> [AZURE.NOTE]**スケルトンをダウンロードすることは、このチュートリアルを完了するために必要な作業です。** 完全に機能するアプリケーションを iOS 上に実装するのは複雑な作業であるため、**スケルトン**には、この後のチュートリアルを完了した後で実行される UX コードが含まれています。これは、開発者の時間を短縮するための手段です。UX コードは B2C を iOS アプリケーションに追加するトピックと深い関わりはありません。
+> [AZURE.NOTE] **スケルトンをダウンロードすることは、このチュートリアルを完了するために必要な作業です。** 完全に機能するアプリケーションを iOS 上に実装するのは複雑な作業であるため、**スケルトン**には、この後のチュートリアルを完了した後で実行される UX コードが含まれています。これは、開発者の時間を短縮するための手段です。UX コードは B2C を iOS アプリケーションに追加するトピックと深い関わりはありません。
 
 また、完成済みのアプリも、[.zip 形式で入手する](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/complete.zip)か、同じリポジトリの `complete` ブランチで利用できます。
 
@@ -197,16 +199,16 @@ completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionB
 {
     static samplesPolicyData *instance = nil;
     static dispatch_once_t onceToken;
-    
+
     dispatch_once(&onceToken, ^{
         instance = [[self alloc] init];
         NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"]];
         instance.policyName = [dictionary objectForKey:@"policyName"];
         instance.policyID = [dictionary objectForKey:@"policyID"];
 
-        
+
     });
-    
+
     return instance;
 }
 
@@ -231,20 +233,20 @@ completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionB
     {
         [self readApplicationSettings];
     }
-    
+
     [self getClaimsWithPolicyClearingCache:NO policy:policy params:nil parent:parent completionHandler:^(ADProfileInfo* userInfo, NSError* error) {
-        
+
         if (userInfo == nil)
         {
             completionBlock(nil, error);
         }
-        
+
         else {
-            
+
             completionBlock(userInfo, nil);
         }
     }];
-    
+
 }
 
 
@@ -252,7 +254,7 @@ completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionB
 
 このメソッドは非常に単純です。このメソッドでは、入力として、少し前に作成した `samplesPolicyData` オブジェクト、親 ViewController、およびコールバックを使用します。このコール バックは興味深いものであり、その内容は次のとおりです。
 
-1. `completionBlock` は型として ADProfileInfo を持っています。これは `userInfo` オブジェクトで返されます。ADProfileInfo は、サーバーからのすべての応答、特にクレームを保持する型です。 
+1. `completionBlock` は型として ADProfileInfo を持っています。これは `userInfo` オブジェクトで返されます。ADProfileInfo は、サーバーからのすべての応答、特にクレームを保持する型です。
 2. `readApplicationSettings` があります。これは、`settings.plist` に指定したデータを読み取ります。
 3. 最後に、やや大きな `getClaimsWithPolicyClearingCache` メソッドがあります。これが iOS 用の ADAL への実際の呼び出しであり、記述する必要がある呼び出しです。これは後で実行します。
 
@@ -274,19 +276,19 @@ GitHub からのスケルトンをダウンロードしている場合は、サ�
                 completionHandler:(void (^) (ADProfileInfo*, NSError*))completionBlock;
 {
     SamplesApplicationData* data = [SamplesApplicationData getInstance];
-    
-    
+
+
     ADAuthenticationError *error;
     authContext = [ADAuthenticationContext authenticationContextWithAuthority:data.authority error:&error];
     authContext.parentController = parent;
     NSURL *redirectUri = [[NSURL alloc]initWithString:data.redirectUriString];
-    
+
     if(!data.correlationId ||
        [[data.correlationId stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0)
     {
         authContext.correlationId = [[NSUUID alloc] initWithUUIDString:data.correlationId];
     }
-    
+
     [ADAuthenticationSettings sharedInstance].enableFullScreen = data.fullScreen;
     [authContext acquireTokenWithScopes:data.scopes
                       additionalScopes: data.additionalScopes
@@ -297,7 +299,7 @@ GitHub からのスケルトンをダウンロードしている場合は、サ�
                   extraQueryParameters: params.urlEncodedString
                                 policy: policy.policyID
                        completionBlock:^(ADAuthenticationResult *result) {
-                           
+
                            if (result.status != AD_SUCCEEDED)
                            {
                                completionBlock(nil, result.error);
@@ -369,53 +371,53 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock;
     {
         [self readApplicationSettings];
     }
-    
+
     SamplesApplicationData* data = [SamplesApplicationData getInstance];
-    
+
     [self craftRequest:[self.class trimString:data.taskWebApiUrlString]
                 parent:parent
      completionHandler:^(NSMutableURLRequest *request, NSError *error) {
-        
+
         if (error != nil)
         {
             completionBlock(nil, error);
         }
         else
         {
-            
+
             NSOperationQueue *queue = [[NSOperationQueue alloc]init];
-            
+
             [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                
+
                 if (error == nil && data != nil){
-                    
+
                     NSArray *tasks = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                    
+
                     //each object is a key value pair
                     NSDictionary *keyValuePairs;
                     NSMutableArray* sampleTaskItems = [[NSMutableArray alloc]init];
-                    
+
                     for(int i =0; i < tasks.count; i++)
                     {
                         keyValuePairs = [tasks objectAtIndex:i];
-                        
+
                         samplesTaskItem *s = [[samplesTaskItem alloc]init];
                         s.itemName = [keyValuePairs valueForKey:@"task"];
-                        
+
                         [sampleTaskItems addObject:s];
                     }
-                    
+
                     completionBlock(sampleTaskItems, nil);
                 }
                 else
                 {
                     completionBlock(nil, error);
                 }
-                
+
             }];
         }
     }];
-    
+
 }
 
 ```
@@ -430,7 +432,7 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock;
     completionHandler:(void (^)(NSMutableURLRequest*, NSError* error))completionBlock
 {
     [self getClaimsWithPolicyClearingCache:NO parent:parent completionHandler:^(NSString* accessToken, NSError* error){
-        
+
         if (accessToken == nil)
         {
             completionBlock(nil,error);
@@ -438,13 +440,13 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock;
         else
         {
             NSURL *webApiURL = [[NSURL alloc]initWithString:webApiUrlString];
-            
+
             NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:webApiURL];
-            
+
             NSString *authHeader = [NSString stringWithFormat:@"Bearer %@", accessToken];
-            
+
             [request addValue:authHeader forHTTPHeaderField:@"Authorization"];
-            
+
             completionBlock(request, nil);
         }
     }];
@@ -464,10 +466,10 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock
     {
         [self readApplicationSettings];
     }
-    
+
     SamplesApplicationData* data = [SamplesApplicationData getInstance];
     [self craftRequest:data.taskWebApiUrlString parent:parent completionHandler:^(NSMutableURLRequest* request, NSError* error){
-        
+
         if (error != nil)
         {
             completionBlock(NO, error);
@@ -475,27 +477,27 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock
         else
         {
             NSDictionary* taskInDictionaryFormat = [self convertTaskToDictionary:task];
-            
+
             NSData* requestBody = [NSJSONSerialization dataWithJSONObject:taskInDictionaryFormat options:0 error:nil];
-            
+
             [request setHTTPMethod:@"POST"];
             [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
             [request setHTTPBody:requestBody];
-            
+
             NSString *myString = [[NSString alloc] initWithData:requestBody encoding:NSUTF8StringEncoding];
 
             NSLog(@"Request was: %@", request);
             NSLog(@"Request body was: %@", myString);
-            
+
             NSOperationQueue *queue = [[NSOperationQueue alloc]init];
-            
+
             [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                
+
                 NSString* content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                 NSLog(@"%@", content);
-                
+
                 if (error == nil){
-                    
+
                     completionBlock(true, nil);
                 }
                 else
@@ -516,11 +518,11 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock
 +(NSDictionary*) convertTaskToDictionary:(samplesTaskItem*)task
 {
     NSMutableDictionary* dictionary = [[NSMutableDictionary alloc]init];
-    
+
     if (task.itemName){
         [dictionary setValue:task.itemName forKey:@"task"];
     }
-    
+
     return dictionary;
 }
 
@@ -537,10 +539,10 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock
     {
         [self readApplicationSettings];
     }
-    
+
     SamplesApplicationData* data = [SamplesApplicationData getInstance];
     [self craftRequest:data.taskWebApiUrlString parent:parent completionHandler:^(NSMutableURLRequest* request, NSError* error){
-        
+
         if (error != nil)
         {
             completionBlock(NO, error);
@@ -548,24 +550,24 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock
         else
         {
             NSDictionary* taskInDictionaryFormat = [self convertTaskToDictionary:task];
-            
+
             NSData* requestBody = [NSJSONSerialization dataWithJSONObject:taskInDictionaryFormat options:0 error:nil];
-            
+
             [request setHTTPMethod:@"DELETE"];
             [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
             [request setHTTPBody:requestBody];
-            
+
             NSLog(@"%@", request);
-            
+
             NSOperationQueue *queue = [[NSOperationQueue alloc]init];
-            
+
             [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                
+
                 NSString* content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                 NSLog(@"%@", content);
-                
+
                 if (error == nil){
-                    
+
                     completionBlock(true, nil);
                 }
                 else
@@ -586,9 +588,9 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock
 +(void) signOut
 {
     [authContext.tokenCacheStore removeAll:nil];
-    
+
     NSHTTPCookie *cookie;
-    
+
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (cookie in [storage cookies])
     {
@@ -615,4 +617,4 @@ API でタスクがユーザーごとに保存されたことを確認します�
 
 [B2C アプリの UX のカスタマイズ]()
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

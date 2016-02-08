@@ -37,7 +37,7 @@
 
 ![空のタスク一覧が表示されている Web ページ][node-table-finished]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 前提条件
 
@@ -88,7 +88,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 		├── mkdirp@0.3.5
 		└── commander@1.3.2 (keypress@0.1.0)
 
-	> [AZURE.NOTE]"-g" パラメーターにより、モジュールがグローバルにインストールされます。これにより、追加のパス情報を入力しなくても、**express** を使用して Web アプリのスキャフォールディングを生成できます。
+	> [AZURE.NOTE] "-g" パラメーターにより、モジュールがグローバルにインストールされます。これにより、追加のパス情報を入力しなくても、**express** を使用して Web アプリのスキャフォールディングを生成できます。
 
 4. アプリケーションのスキャフォールディングを作成するには、**express** コマンドを入力します。
 
@@ -175,7 +175,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 - category (文字列)
 - completed (ブール値)
 
-**PartitionKey** と **RowKey** は、Table サービスでテーブル キーとして使用されます。詳細については、「[Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
+**PartitionKey** と **RowKey** は、Table サービスでテーブル キーとして使用されます。詳細については、「[テーブル サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
 
 
 1. **tasklist** ディレクトリ内に、**models** という名前の新しいディレクトリを作成します。
@@ -258,7 +258,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 ### コントローラーの作成
 
-コント ローラーは、HTTP 要求を処理し、HTML 応答を表示します。
+*コント ローラー*は、HTTP 要求を処理し、HTML 応答を表示します。
 
 1. **tasklist/routes** ディレクトリに **tasklist.js** という名前の新しいファイルを作成し、テキスト エディターで開きます。
 
@@ -336,7 +336,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 		var accountName = nconf.get("STORAGE_NAME");
 		var accountKey = nconf.get("STORAGE_KEY");
 
-	> [AZURE.NOTE]nconf は、環境変数または後で作成する **config.json** ファイルから構成値を読み込みます。
+	> [AZURE.NOTE] nconf は、環境変数または後で作成する **config.json** ファイルから構成値を読み込みます。
 
 3. app.js ファイル内で、次の行が表示されるまで下へスクロールします。
 
@@ -534,7 +534,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 		info:   Executing `git remote add azure https://username@tabletasklist.azurewebsites.net/TableTasklist.git`
 		info:   site create command OK
 
-	> [AZURE.NOTE]これがサブスクリプションの最初の App Service Web アプリである場合、Azure ポータルを使用して Web アプリを作成するよう指示するメッセージが表示されます。詳細は、「[Azure App Service での Node.js Web アプリの構築とデプロイ]」を参照してください。
+	> [AZURE.NOTE] これがサブスクリプションの最初の App Service Web アプリである場合、Azure ポータルを使用して Web アプリを作成するよう指示するメッセージが表示されます。詳細は、「[Azure App Service での Node.js Web アプリの構築とデプロイ]」を参照してください。
 
 ### 環境変数の設定
 
@@ -588,7 +588,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 ## 次のステップ
 
-この記事の手順では、Table サービスを使用して情報を格納する方法を説明しましたが、MongoDB を使用することもできます。詳細については、[MongoDB を使用する Node.js Web アプリ]に関するページをご覧ください。
+この記事の手順では、テーブル サービスを使用して情報を格納する方法を説明しましたが、MongoDB を使用することもできます。詳細については、[MongoDB を使用する Node.js Web アプリ]に関するページをご覧ください。
 
 ## その他のリソース
 
@@ -637,4 +637,4 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 [app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
 [app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

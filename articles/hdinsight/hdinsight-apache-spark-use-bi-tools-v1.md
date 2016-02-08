@@ -20,7 +20,7 @@
 
 # Azure HDInsight での BI ツールと Apache Spark の使用 (Windows)
 
-> [AZURE.NOTE]HDInsight は Linux 上に Spark クラスターを提供するようになりました。HDInsight Linux 上の Spark クラスターで BI ツールを使用する方法については、「[Azure HDInsight (Linux) での BI ツールと Apache Spark の使用 (Linux)](hdinsight-apache-spark-use-bi-tools.md)」を参照してください。
+> [AZURE.NOTE] HDInsight は Linux 上に Spark クラスターを提供するようになりました。HDInsight Linux 上の Spark クラスターで BI ツールを使用する方法については、「[Azure HDInsight (Linux) での BI ツールと Apache Spark の使用 (Linux)](hdinsight-apache-spark-use-bi-tools.md)」を参照してください。
 
 Azure HDInsight の Apache Spark を使用して以下のことを行う方法を説明します。
 
@@ -31,7 +31,7 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
 
 次のものが必要です。
 
-- Azure サブスクリプション。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - Apache Spark クラスター。手順については、「[HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-provision-clusters.md)」を参照してください。
 - Microsoft Spark ODBC ドライバー (HDInsight の Spark で Tableau を使用するために必要) がインストールされたコンピューター。ドライバーは[ここ](http://go.microsoft.com/fwlink/?LinkId=616229)からインストールできます。
 - [Power BI](http://www.powerbi.com/) や [Tableau Desktop](http://www.tableau.com/products/desktop) などの BI ツール。Power BI の無料プレビュー サブスクリプションは [http://www.powerbi.com/](http://www.powerbi.com/) から入手できます。
@@ -44,9 +44,9 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
 
 1. [Azure プレビュー ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 
-2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュ ボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
+2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
-	> [AZURE.NOTE]ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
+	> [AZURE.NOTE] ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
@@ -214,4 +214,4 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

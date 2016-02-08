@@ -22,9 +22,9 @@
 > [AZURE.SELECTOR]
 - [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 - [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-- [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)  
+- [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
 
-> [AZURE.NOTE]
+>[AZURE.NOTE]
 > このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
 
 ##概要
@@ -38,7 +38,7 @@
 
 次の手順では、一般的なライブ ストリーミング アプリケーションの作成に関連するタスクを示します。
 
->[AZURE.NOTE]現在、ライブ イベントの最大推奨時間は 8 時間です。チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
+>[AZURE.NOTE] 現在、ライブ イベントの最大推奨時間は 8 時間です。チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
 
 1. ビデオ カメラをコンピューターに接続します。オンプレミスのライブ エンコーダーを起動して構成します。このエンコーダーはシングル ビットレート ストリームを RTMP、スムーズ ストリーミング、RTP (MPEG-TS) のいずれかで出力できます。詳しくは、「[Azure Media Services RTMP サポートおよびライブ エンコーダー](http://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
 
@@ -104,7 +104,7 @@
 
 ##サンプルのダウンロード
 
-[ここ](http://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/)からサンプルを取得し、実行します。
+[ここ](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/)からサンプルを取得し、実行します。
 
 
 ##With Media Services SDK for .NET を使用して開発を行うためにセットアップします。
@@ -524,4 +524,4 @@ app.config ファイルに appSettings セクションを追加し、Media Servi
 
 このトピックに必要な情報が含まれていないか、不足しているか、あるいはニーズを満たしていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
 
-<!----HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

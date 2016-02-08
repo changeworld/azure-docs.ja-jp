@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Service Bus 仲介型メッセージング .NET チュートリアル | Microsoft Azure"
-   description="仲介型メッセージング .NET チュートリアル。"
+   pageTitle="Service Bus ブローカー メッセージング .NET チュートリアル | Microsoft Azure"
+   description="ブローカー メッセージング .NET チュートリアル。"
    services="service-bus"
    documentationCenter="na"
    authors="sethmanheim"
@@ -15,17 +15,17 @@
    ms.date="09/14/2015"
    ms.author="sethm" />
 
-# Service Bus 仲介型メッセージング .NET チュートリアル
+# Service Bus ブローカー メッセージング .NET チュートリアル
 
 Azure Service Bus では、2 種類の包括的メッセージング ソリューションが提供されています。1 つ目は、クラウドで実行する一元的な "リレー" サービスによるもので、SOAP、WS-*、REST など、広範なトランスポート プロトコルと Web サービスの標準をサポートします。クライアントは、オンプレミス サービスと直接接続する必要はありません。また、クライアントはオンプレミス サービスの場所を知っている必要はありません。オンプレミス サービス側では、ファイアウォールの着信ポートを開く必要がありません。
 
-2 つ目のメッセージング ソリューションでは、"仲介型" メッセージング機能を使用します。この機能は、非同期的または分離されたメッセージング機能と考えることができ、Service Bus メッセージング インフラストラクチャを使用する発行/サブスクライブ、一時的な切り離し、負荷分散のシナリオをサポートします。分離型通信には、クライアントとサーバーを必要に応じて接続し、非同期に操作を実行できるなど多数の利点があります。
+2 つ目のメッセージング ソリューションでは、"ブローカー" メッセージング機能を使用します。この機能は、非同期的または分離されたメッセージング機能と考えることができ、Service Bus メッセージング インフラストラクチャを使用する発行/サブスクライブ、一時的な切り離し、負荷分散のシナリオをサポートします。分離型通信には、クライアントとサーバーを必要に応じて接続し、非同期に操作を実行できるなど多数の利点があります。
 
-このチュートリアルでは、Service Bus 仲介型メッセージングのコア コンポーネントの 1 つであるキューに関する概要と実践的使用例を説明します。このチュートリアルの一連のトピックでは、メッセージの一覧を設定し、キューを作成して、そのキューにメッセージを送信するアプリケーションを作成します。最後に、アプリケーションはキューからメッセージを受信して表示した後、リソースをクリーンアップして終了します。Service Bus の "リレー型" メッセージング機能を使用するアプリケーションを構築する方法を説明する該当のチュートリアルについては、「[Service Bus リレー型メッセージングのチュートリアル](service-bus-relay-tutorial.md)」を参照してください。
+このチュートリアルでは、Service Bus ブローカー メッセージングのコア コンポーネントの 1 つであるキューに関する概要と実践的使用例を説明します。このチュートリアルの一連のトピックでは、メッセージの一覧を設定し、キューを作成して、そのキューにメッセージを送信するアプリケーションを作成します。最後に、アプリケーションはキューからメッセージを受信して表示した後、リソースをクリーンアップして終了します。Service Bus の "リレー型" メッセージング機能を使用するアプリケーションを構築する方法を説明する該当のチュートリアルについては、「[Service Bus リレー型メッセージングのチュートリアル](service-bus-relay-tutorial.md)」を参照してください。
 
 ## 概要と前提条件
 
-キューでは、コンシューマーが競合している場合のメッセージ配信に先入先出法 (FIFO) を使用します。FIFO では、通常、メッセージはキューに追加された順番に受信され、処理されます。このとき、メッセージを受信して処理できるメッセージ コンシューマーは、メッセージ 1 件につき 1 つだけです。キューを使用する主なメリットは、アプリケーション コンポーネントの 一時的な結合の解除 を実現することです。つまり、メッセージはキューに永続的に格納されるため、プロデューサーとコンシューマーは同時にメッセージを送受信する必要はありません。関連する利点として 負荷平準化 があります。これにより、プロデューサーとコンシューマーは異なるレートでメッセージを送受信できます。
+キューでは、コンシューマーが競合している場合のメッセージ配信に先入先出法 (FIFO) を使用します。FIFO では、通常、メッセージはキューに追加された順番に受信され、処理されます。このとき、メッセージを受信して処理できるメッセージ コンシューマーは、メッセージ 1 件につき 1 つだけです。キューを使用する主なメリットは、アプリケーション コンポーネントの*一時的な結合の解除*を実現することです。つまり、メッセージはキューに永続的に格納されるため、プロデューサーとコンシューマーは同時にメッセージを送受信する必要はありません。関連する利点として*負荷平準化*があります。これにより、プロデューサーとコンシューマーは異なるレートでメッセージを送受信できます。
 
 このチュートリアルを始める前に済ましておく必要がある管理および準備の手順を次に示します。最初に、サービス名前空間を作成し、Shared Access Signature (SAS) キーを取得します。サービス名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。サービス名前空間が作成された時点で、SAS キーが生成されます。サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
@@ -94,7 +94,7 @@ Azure Service Bus では、2 種類の包括的メッセージング ソリュ�
 
 1. ソリューション エクスプ ローラーで、プロジェクトの名前 (この例では **QueueSample**) を右クリックし、**[追加]** をクリックして、**[既存の項目]** をクリックします。
 
-1. 手順 6 で作成した Data.csv ファイルの場所に移動します。ファイルをクリックし、**[追加]** をクリックします。ファイルの種類の一覧で **[すべてのファイル (.)]** が選択されていることを確認します。
+1. 手順 6 で作成した Data.csv ファイルの場所に移動します。ファイルをクリックし、**[追加]** をクリックします。ファイルの種類の一覧で **[すべてのファイル (*.*)]** が選択されていることを確認します。
 
 ### メッセージのリストを解析する関数を作成する
 
@@ -103,7 +103,7 @@ Azure Service Bus では、2 種類の包括的メッセージング ソリュ�
 	```
 	namespace Microsoft.ServiceBus.Samples
 	{
-	    publicclass Program
+	    public class Program
 	    {
 	
 	        private static DataTable issues;
@@ -202,14 +202,16 @@ Azure Service Bus では、2 種類の包括的メッセージング ソリュ�
 	```
 	namespace Microsoft.ServiceBus.Samples
 	{
-	    publicclass Program
+	    public class Program
 	    {
 	
-	        privatestatic DataTable issues;
-	        privatestatic List<BrokeredMessage> MessageList; 
-	        // Add these variablesprivatestaticstring ServiceNamespace;
-	        privatestaticstring sasKeyName = "RootManageSharedAccessKey";
-	        privatestaticstring sasKeyValue;
+	        private static DataTable issues;
+	        private static List<BrokeredMessage> MessageList; 
+
+	        // Add these variables
+			private static string ServiceNamespace;
+	        private static string sasKeyName = "RootManageSharedAccessKey";
+	        private static string sasKeyValue;
 	        …
 	```
 
@@ -219,11 +221,11 @@ Azure Service Bus では、2 種類の包括的メッセージング ソリュ�
 	static void CollectUserInput()
 	{
 	    // User service namespace
-	    Console.Write("Please enter the service namespace to use: ");
+	    Console.Write("Please enter the namespace to use: ");
 	    ServiceNamespace = Console.ReadLine();
 	
 	    // Issuer key
-	    Console.Write("Please enter the SAS key to use: ");
+	    Console.Write("Enter the SAS key to use: ");
 	    sasKeyValue = Console.ReadLine();
 	}
 	```
@@ -247,10 +249,6 @@ Azure Service Bus では、2 種類の包括的メッセージング ソリュ�
 
 Visual Studio の **[ビルド]** メニューの **[ソリューションのビルド]** をクリックするか、F6 キーを押して、ここまでの作業に問題がないことを確認します。
 
-管理資格情報を作成する
-
-これは、Service Bus メッセージング機能チュートリアルの 2 番目の手順です。この手順では、アプリケーションの承認に使用する Shared Access Signature (SAS) 資格情報を作成するために使用する管理操作を定義します。
-
 ## 管理資格情報を作成する
 
 この手順では、アプリケーションの承認に使用する Shared Access Signature (SAS) 資格情報を作成するために使用する管理操作を定義します。
@@ -262,7 +260,7 @@ Visual Studio の **[ビルド]** メニューの **[ソリューションのビ
 	{
 	…
 	}
-	staticvoid Queue()
+	static void Queue()
 	{
 	}
 	```
@@ -270,7 +268,7 @@ Visual Studio の **[ビルド]** メニューの **[ソリューションのビ
 1. 次の手順では、[TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) オブジェクトを使用して SAS 資格情報を作成します。作成メソッドは、`CollectUserInput()` メソッドで取得した SAS キーの名前と値を受け取ります。次のコードを `Queue()` メソッドに追加します。
 
 	```
-	staticvoid Queue()
+	static void Queue()
 	{
 	    // Create management credentials
 	    TokenProvider credentials = TokenProvider.CreateSharedAccessSignatureTokenProvider(sasKeyName,sasKeyValue);
@@ -642,7 +640,7 @@ Visual Studio で、**[ビルド]** メニューの **[ソリューションの�
 
 ## 次のステップ
 
-このチュートリアルでは、Service Bus の仲介型メッセージング機能を使用して、Service Bus クライアント アプリケーションとサービスを構築する方法を紹介しました。Service Bus の[リレー型メッセージング](service-bus-messaging-overview.md/#Relayed-messaging)を使用する類似のチュートリアルについては、「[Service Bus リレー型メッセージングのチュートリアル](service-bus-relay-tutorial.md)」を参照してください。
+このチュートリアルでは、Service Bus の ブローカー メッセージング機能を使用して、Service Bus クライアント アプリケーションとサービスを構築する方法を紹介しました。Service Bus の[リレー型メッセージング](service-bus-messaging-overview.md#Relayed-messaging)を使用する類似のチュートリアルについては、「[Service Bus リレー型メッセージングのチュートリアル](service-bus-relay-tutorial.md)」を参照してください。
 
 [Service Bus](https://azure.microsoft.com/services/service-bus/) の詳細については、次のトピックを参照してください。
 
@@ -652,4 +650,4 @@ Visual Studio で、**[ビルド]** メニューの **[ソリューションの�
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

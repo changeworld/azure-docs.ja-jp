@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Visual Studio を使用した Azure プロジェクトの作成 | Microsoft Azure"
    description="Visual Studio を使用した Azure プロジェクトの作成"
    services="visual-studio-online"
@@ -6,13 +6,13 @@
    authors="TomArcher"
    manager="douge"
    editor="" />
-<tags 
+<tags
    ms.service="multiple"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/18/2015"
+   ms.date="01/22/2016"
    ms.author="tarcher" />
 
 # Visual Studio を使用した Azure プロジェクトの作成
@@ -21,12 +21,12 @@ Azure Tools for Visual Studio には、Azure でクラウド サービスを作�
 
 Azure クラウド サービスのソリューションには、以下の種類のプロジェクトが含まれています。
 
-- **Azure プロジェクト** 
-    
-    Azure プロジェクトは、ソリューション内のロール プロジェクトに関連付けられています。また、サービス定義ファイルとサービス構成ファイルが含まれます。サービス定義ファイルは、必要なロール、エンドポイント、仮想マシンのサイズを含む、アプリケーションのランタイム設定を定義します。サービス構成ファイルでは、実行されるロールのインスタンス数とロールに定義されている設定の値を構成します。これらの設定の詳細については、「[方法: Visual Studio を使用した Azure クラウド サービスのロールの構成](https://msdn.microsoft.com/library/azure/hh369931.aspx)」を参照してください。
+- **Azure プロジェクト**
+
+    Azure プロジェクトは、ソリューション内のロール プロジェクトに関連付けられています。また、サービス定義ファイルとサービス構成ファイルが含まれます。サービス定義ファイルは、必要なロール、エンドポイント、仮想マシンのサイズを含む、アプリケーションのランタイム設定を定義します。サービス構成ファイルでは、実行されるロールのインスタンス数とロールに定義されている設定の値を構成します。これらの設定の詳細については、「[方法: Visual Studio を使用した Azure クラウド サービスのロールの構成](vs-azure-tools-configure-roles-for-cloud-service.md)」を参照してください。
 
 - **Web ロール プロジェクト**
- 
+
     worker ロールは、バック グラウンド処理を実行します。worker ロールは、ストレージ サービスや他のインターネット ベースのサービスと通信できます。worker ロールは、任意の数の HTTP、HTTPS、TCP エンドポイントを含むことができます。
 
     - **ASP.NET Web ロール** (Web フロントエンドを持つ ASP.NET アプリケーションの構築用)
@@ -62,4 +62,4 @@ Azure クラウド サービスのソリューションには、以下の種類�
 
 1. プロジェクトに追加したロールの名前を変更するには、**[新しい Azure プロジェクト]** ダイアログ ボックスでそのロールの上にマウス ポインターを置き、ロールの右側にある **[名前の変更]** アイコンをクリックします。追加後も、ソリューション内でロールの名前を変更できます。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

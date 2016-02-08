@@ -27,7 +27,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 
 このチュートリアルでは、バックアップ セットを使用して個々のボリュームを複製する方法について説明します。また、*一時的な*複製と*永続的な*複製の違いについても説明します。
 
->[AZURE.NOTE]
+>[AZURE.NOTE] 
 >
 >ローカル固定ボリュームは、階層化ボリュームとして複製されます。複製されたボリュームをローカル固定ボリュームにする必要がある場合は、複製操作が正常に完了した後でローカル固定ボリュームに変換できます。階層化ボリュームをローカル固定ボリュームに変換する方法については、「[ボリュームの種類を変更する](storsimple-manage-volumes-u2.md#change-the-volume-type)」を参照してください。
 >
@@ -82,7 +82,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
   1. **[デバイス]** ページに移動し、**[ボリューム コンテナー]** タブを選択します。
   2. 複製元のボリュームに関連付けられているボリューム コンテナーを選択します。ボリュームの一覧に、先ほど作成した複製が表示されます。
 
->[AZURE.NOTE]複製されたボリュームの監視と既定のバックアップは自動的に無効になっています。
+>[AZURE.NOTE] 複製されたボリュームの監視と既定のバックアップは自動的に無効になっています。
 
 このように作成された複製は一時的な複製です。複製の種類の詳細については、「[一時的な複製と永続的な複製](#transient-vs.-permanent-clones)」を参照してください。
 
@@ -104,7 +104,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
  
 ![ビデオ](./media/storsimple-clone-volume-u2/Video_icon.png) **ビデオ**
 
-StorSimple の複製機能と復元機能を使用して、削除されたファイルを回復する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/)を参照してください。
+StorSimple の複製機能と復元機能を使用して、削除されたファイルを回復する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/)を参照してください。
 
 ### 永続的な複製による運用環境でのテスト
 
@@ -117,4 +117,4 @@ StorSimple の複製機能と復元機能を使用して、削除されたファ
 
  
 
-<!----HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

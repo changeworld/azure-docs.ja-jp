@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Active Directory のエディション | Microsoft Azure"
-	description="Azure Active Directory の無料エディションと有料エディションの選択について説明します。"
+	description="Azure Active Directory の無料と有料のエディションの選択肢について説明するトピックです。Azure Active Directory Basic は無料のエディションで、Azure Active Directory Premium は有料のエディションです。"
 	services="active-directory"
 	documentationCenter=""
 	authors="MarkusVi"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/04/2015"
+	ms.date="01/25/2016"
 	ms.author="markvi"/>
 
 # Azure Active Directory のエディション
@@ -28,7 +28,7 @@ Azure Active Directory を強化するには、Azure Active Directory Basic エ�
 Office 365 サブスクリプションには、下の比較表に記載されているその他の Azure Active Directory 機能が含まれます。
 
 
-> [AZURE.NOTE]これらのエディションの価格オプションについては、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。<br>Azure Active Directory Premium と Azure Active Directory Basic は、現在、中国ではサポートされていません。詳細については、Azure Active Directory フォーラムからお問い合わせください。
+> [AZURE.NOTE] これらのエディションの価格オプションについては、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。<br>Azure Active Directory Premium と Azure Active Directory Basic は、現在、中国ではサポートされていません。詳細については、Azure Active Directory フォーラムからお問い合わせください。
 
 
 - **Azure Active Directory Basic**: このエディションは、クラウド優先のニーズを持つタスク ワーカー向けに設計されており、クラウド中心のアプリケーション アクセスおよびセルフサービス ID 管理のソリューションを提供します。Azure Active Directory Basic エディションでは、グループベースのアクセス管理、クラウド アプリケーション向けのセルフサービスのパスワード リセット、Azure Active Directory アプリケーション プロキシ (Azure Active Directory を使用してオンプレミス Web アプリケーションを発行するため) などの生産性の強化とコスト削減の機能が提供され、すべてがアップタイム 99.9% のエンタープライズレベルの SLA によって保証されます。
@@ -38,7 +38,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 すぐに Active Directory Premium にサインアップして使用する方法については、「[Azure Active Directory Premium の概要](active-directory-get-started-premium.md)」を参照してください。
 
 
-> [AZURE.NOTE]さまざまな Azure Active Directory の機能を "従量課金制" のエディションで使用できます。
+> [AZURE.NOTE] 
+さまざまな Azure Active Directory の機能を "従量課金制" のエディションで使用できます。
 >
 >- Active Directory B2C は、コンシューマー向けアプリケーションの ID およびアクセスの管理ソリューションです。詳しくは、「[Azure Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/)」を参照してください。
  
@@ -95,4 +96,4 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

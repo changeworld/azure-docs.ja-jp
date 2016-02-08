@@ -19,7 +19,7 @@
 
 一覧取得操作は、Azure Storage を使用する多くの開発シナリオで重要です。この記事では、C++ 用 Microsoft Azure Storage クライアント ライブラリで提供される一覧取得 API を使用して、Azure Storage 内のオブジェクトを最も効率的に列挙する方法について説明します。
 
->[AZURE.NOTE]このガイドは、C++ 用 Azure Storage クライアント ライブラリのバージョン 1.x を対象としています。このライブラリは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp) から入手できます。
+>[AZURE.NOTE] このガイドは、C++ 用 Azure Storage クライアント ライブラリのバージョン 1.x を対象としています。このライブラリは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp) から入手できます。
 
 ストレージ クライアント ライブラリを使用すると、Azure Storage 内のオブジェクトをさまざまな方法で一覧取得または照会することができます。この記事では、以下のシナリオを扱います。
 
@@ -182,6 +182,6 @@ Azure Storage および C++ 用クライアント ライブラリの詳細につ
 -	[C++ から Queue ストレージを使用する方法](storage-c-plus-plus-how-to-use-queues.md)
 -	[C++ 用 Azure Storage クライアント ライブラリのドキュメント](http://azure.github.io/azure-storage-cpp/)
 -	[Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
--	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
+-	[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

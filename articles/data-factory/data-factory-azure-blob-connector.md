@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure BLOB との間でのデータの移動 | Azure Data Factory" 
-	description="Azure Data Factory を使用して Azure BLOB ストレージに、または Azure BLOB ストレージからデータを移動する方法を説明します。" 
+	description="Azure Data Factory を使用して Azure BLOB Storage に、または Azure BLOB Storage からデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="01/26/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure BLOB との間でのデータの移動
@@ -53,6 +53,8 @@
 	    }
 	  }
 	}
+
+Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。詳細については、「[リンクされたサービス](#linked-services)」セクションを参照してください。
 
 **Azure BLOB の入力データセット:**
 
@@ -213,7 +215,7 @@
 	  }
 	}
 
-**Azure ストレージのリンクされたサービス:**
+**Azure Storage のリンクされたサービス:**
 
 	{
 	  "name": "StorageLinkedService",
@@ -224,6 +226,9 @@
 	    }
 	  }
 	}
+
+Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。詳細については、「[リンクされたサービス](#linked-services)」セクションを参照してください。
+
 
 **Azure SQL の入力データセット:**
 
@@ -254,9 +259,11 @@
 	  }
 	}
 
+
 **Azure BLOB の出力データセット:**
 
 データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+
 	
 	{
 	  "name": "AzureBlobOutput",
@@ -362,14 +369,10 @@
 		}
 	}
 
-## Azure Storage のリンクされたサービスのプロパティ
+## リンクされたサービス
+Azure BLOB ストレージを Azure Data Factory にリンクするために使用できるリンクされたサービスは 2 種類あります。それらは、**AzureStorage** のリンクされたサービスと **AzureStorageSas** のリンクされたサービスです。Azure Storage のリンクされたサービスは、Azure Storage へのグローバル アクセスを Data Factory に提供します。一方、Azure Storage SAS (Shared Access Signature) のリンクされたサービスは、Azure Storage への制限付き/期限付きアクセスを Data Factory に提供します。これら 2 つのリンクされたサービスには、これ以外の相違点はありません。ニーズに適したリンクされたサービスを選択します。以下のセクションで、これら 2 つのリンクされたサービスについて詳しく説明します。
 
-Azure Storage のリンクされたサービスを利用し、Azure ストレージ アカウントを Azure Data Factory にリンクできます。次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
-
-| プロパティ | 説明 | 必須 |
-| -------- | ----------- | -------- |
-| type | type プロパティを **AzureStorage** に設定する必要があります。 | あり |
-| connectionString | connectionString プロパティのために Azure ストレージに接続するために必要な情報を指定します。Azure クラシック ポータルから Azure ストレージの connectionString を取得できます。 | あり |
+[AZURE.INCLUDE [data-factory-azure-storage-linked-services](../../includes/data-factory-azure-storage-linked-services.md)]
 
 ## Azure BLOB データセットの type プロパティ
 
@@ -382,7 +385,7 @@ Azure Storage のリンクされたサービスを利用し、Azure ストレー
 | folderPath | BLOB ストレージのコンテナーとフォルダーのパス。例: myblobcontainer\\myblobfolder\\ | あり |
 | fileName | <p>blob. fileName の名前は任意です。</p><p>fileName を指定した場合、アクティビティ (コピーを含む) は特定の BLOB で機能します。</p><p>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべての BLOB が含まれます。</p><p>出力データセットに fileName が指定されていないとき、「Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p>)」の形式でファイルが生成されます。 | いいえ |
 | partitionedBy | partitionedBy は任意のプロパティです。これを使用し、時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。詳細と例については、「[partitionedBy プロパティの活用](#Leveraging-partitionedBy-property)」セクションを参照してください。 | いいえ
-| BlobSink の format | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。 | いいえ
+| format | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。 | いいえ
 | compression | データの圧縮の種類とレベルを指定します。サポートされる種類: GZip、Deflate、および BZip2。サポートされるレベル: Optimal および Fastest。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
 
 ### partitionedBy プロパティの活用
@@ -505,4 +508,4 @@ false | mergeFiles | <p>ソース フォルダ Folder1 が次のような構造�
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

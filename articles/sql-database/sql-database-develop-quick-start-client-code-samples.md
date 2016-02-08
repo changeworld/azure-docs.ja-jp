@@ -39,7 +39,7 @@
 - リレーショナル結果セットをオブジェクト指向の形式に変換するコード サンプル。
 
 
-> [AZURE.NOTE]現在、他の言語のコード サンプルも準備中であり、それらのリンクはこのトピックに追加される予定です。
+> [AZURE.NOTE] 現在、他の言語のコード サンプルも準備中であり、それらのリンクはこのトピックに追加される予定です。
 
 
 ## Linux 上のクライアント
@@ -86,7 +86,7 @@
 ## 関連項目
 
 
-- [多数の言語とプラットフォーム向けの SDK とツールのダウンロード](http://azure.microsoft.com/downloads/#cmd-line-tools)
+- [多数の言語とプラットフォーム向けの SDK とツールのダウンロード](https://azure.microsoft.com/downloads/#cmd-line-tools)
 - [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 - [一時的なエラーの数値コードの一覧](sql-database-develop-error-messages.md#bkmk_connection_errors)<br/>
 - [Azure SQL Database 開発作業の方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)
@@ -94,4 +94,4 @@
 - [Create your first Azure SQL Database (最初の Azure SQL Database を作成する)](sql-database-get-started.md)
 - [Entity Framework 6 here, EF 7 on GitHub (Entity Framework 6、GitHub における EF7)](http://entityframework.codeplex.com/)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

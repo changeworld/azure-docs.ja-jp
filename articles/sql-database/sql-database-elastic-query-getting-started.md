@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/15/2015"
+	ms.date="01/22/2016"
 	ms.author="SilviaDoomra" />
 
 # シャーディング (水平的パーティション分割) のためのエラスティック クエリの概要
@@ -44,7 +44,7 @@ Azure SQL Database 用の エラスティック データベース クエリ (�
 ## エラスティック クエリ データベースを作成する
 
 1. [Azure ポータル](https://portal.azure.com)を開き、ログインします。
-2. シャード セットアップと同じサーバーに新しい Azure SQL Database を作成します。このデータベースに "ElasticDBQuery" という名前を付けます。 
+2. シャード セットアップと同じサーバーに新しい Azure SQL Database を作成します。このデータベースに "ElasticDBQuery" という名前を付けます。
 
 	![Azure ポータルと価格レベル][3]
 
@@ -129,7 +129,7 @@ ElasticDBQuery データベースでこのクエリを実行します。
 ### コスト
 Elastic Database クエリ機能を使用する場合に追加の料金は発生しません。
 
-料金情報については、「[SQL Database の料金詳細](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
+料金情報については、「[SQL Database の料金詳細](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
@@ -142,4 +142,4 @@ Elastic Database クエリ機能を使用する場合に追加の料金は発生
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

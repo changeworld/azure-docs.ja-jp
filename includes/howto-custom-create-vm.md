@@ -7,13 +7,13 @@
 - 既存のクラウド サービスへの VM の追加
 - 可用性セットへの VM の追加
 
-> [AZURE.IMPORTANT]仮想マシンが仮想ネットワークを使用して、ホスト名を使用した直接接続またはクロスプレミス接続の設定ができるには、仮想マシンの作成時に必ず仮想ネットワークを指定する必要があります。仮想マシンが仮想ネットワークに接続するように設定できるのは、仮想マシンの作成時に限られています。仮想ネットワークの詳細については、「[Azure Virtual Network の概要](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
+> [AZURE.IMPORTANT] 仮想マシンが仮想ネットワークを使用して、ホスト名を使用した直接接続またはクロスプレミス接続の設定ができるには、仮想マシンの作成時に必ず仮想ネットワークを指定する必要があります。仮想マシンが仮想ネットワークに接続するように設定できるのは、仮想マシンの作成時に限られています。仮想ネットワークの詳細については、「[Azure Virtual Network の概要](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
 
 1. [Azure ポータル](http://manage.windowsazure.com)にサインインします。
 
 2. コマンド バーで、**[新規]** をクリックします。
 
-3. **[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+3. **[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
 4. 使用するイメージを選択し、矢印をクリックして続行します。
 
@@ -34,7 +34,7 @@
 	- 作成している仮想マシンがクラウド サービス内の最初の仮想マシンまたは唯一の仮想マシンである場合は、**[新しいクラウド サービスの作成]** を選択します。次に、**[クラウド サービス DNS 名]** に DNS 名を入力します。DNS 名の長さは 3 ～ 24 文字で、小文字と数字を使用できます。この名前は、クラウド サービスを介して仮想マシンにアクセスするときに使用する URI の一部になります。
 	- この仮想マシンをクラウド サービスに追加する場合は、一覧からそのクラウド サービスを選択します。
 
-	> [AZURE.NOTE]同じクラウド サービス内に仮想マシンを配置する方法の詳細については、「[How to connect virtual machines in a cloud service(クラウド サービス内の仮想マシンを相互に接続する方法)](http://www.windowsazure.com/manage/windows/how-to-guides/connect-to-a-cloud-service/)」を参照してください。
+	> [AZURE.NOTE] 同じクラウド サービス内に仮想マシンを配置する方法の詳細については、「[How to connect virtual machines in a cloud service(クラウド サービス内の仮想マシンを相互に接続する方法)](https://azure.microsoft.com/manage/windows/how-to-guides/connect-to-a-cloud-service/)」を参照してください。
 
 12. **[リージョン/アフィニティ グループ/Virtual Network]** で、仮想マシンに使用するリージョン、アフィニティ グループ、または仮想ネットワークを選択します。アフィニティ グループの詳細については、[Virtual Network のアフィニティ グループに関するページ](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)を参照してください。
 
@@ -58,4 +58,4 @@
 - [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-linux-how-to-log-on.md)
 - [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-log-on-windows-server.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

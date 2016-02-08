@@ -1,6 +1,7 @@
 <properties 
 	pageTitle="Azure Multi-Factor Authentication を使用した Azure MFA サインイン エクスペリエンス" 
-	description="このページでは、Azure MFA で利用可能な各種サインイン方法を確認できる参照先情報を示します。" 
+	description="このページでは、Azure MFA で利用可能な各種サインイン方法を確認できる参照先情報を示します。"
+	keywords="ユーザー認証, サインイン エクスペリエンス, 携帯電話でのサインイン, 会社の電話でのサインイン" 
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
@@ -13,11 +14,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/19/2015" 
+	ms.date="01/25/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication を使用したサインイン エクスペリエンス
-> [AZURE.NOTE]このページで提供する次のドキュメントでは、一般的なサインイン エクスペリエンスを示します。サインインのヘルプについては、「[Azure Multi-Factor Authentication での問題](multi-factor-authentication-end-user-manage-settings.md)」を参照してください。
+> [AZURE.NOTE]  このページで提供する次のドキュメントでは、一般的なサインイン エクスペリエンスを示します。サインインのヘルプについては、「[Azure Multi-Factor Authentication での問題](multi-factor-authentication-end-user-manage-settings.md)」を参照してください。
 
 
 
@@ -103,4 +104,4 @@
 
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0128_2016-->

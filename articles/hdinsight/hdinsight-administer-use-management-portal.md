@@ -35,7 +35,7 @@
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - **Azure ストレージ アカウント** - HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。Azure BLOB ストレージと HDInsight クラスターのシームレスな統合の詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)に関するページを参照してください。Azure ストレージ アカウントの作成の詳細については、[ストレージ アカウントの作成方法](../storage-create-storage-account.md)に関するページを参照してください。
 
 ##ポータルを開く
@@ -64,7 +64,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。�
 - クラスターの作成中に、HDInsight .NET SDK または Azure PowerShell でクラスター カスタマイズ パラメーターを使用します。そうすることで、クラスターの有効期間中はこれらの構成変更が保持され、Azure プラットフォームが保守のために定期的に実行するクラスター ノードの再イメージ化の影響も受けません。クラスター カスタマイズ パラメーターの使用方法の詳細については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md)」をご覧ください。
 - Mahout や Cascading などの一部のネイティブ Java コンポーネントは、JAR ファイルとしてクラスター上で実行できます。これらの JAR ファイルは、Azure BLOB ストレージに分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。詳細については、[プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)に関するページを参照してください。
 
-	>[AZURE.NOTE]HDInsight クラスターへの JAR ファイルのデプロイ、または HDInsight クラスターでの JAR ファイルの呼び出しに関する問題がある場合は、[Microsoft サポート](http://azure.microsoft.com/support/options/)にお問い合わせください。
+	>[AZURE.NOTE] HDInsight クラスターへの JAR ファイルのデプロイ、または HDInsight クラスターでの JAR ファイルの呼び出しに関する問題がある場合は、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
 	> Cascading は HDInsight ではサポートされておらず、Microsoft サポートの対象でもありません。サポートされているコンポーネントの一覧については、「[HDInsight によって提供されるクラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。
 
@@ -95,17 +95,17 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。�
 	- メニューをカスタマイズするには、メニュー上の任意の場所を右クリックし、**[カスタマイズ]** をクリックします。
 	- **[設定]** と **[すべての設定]**: クラスター用の **[設定]** ブレードを表示します。このブレードを使用して、クラスターの詳しい構成情報にアクセスできます。
 	- **[ダッシュボード]**、**[クラスター ダッシュボード]**、**[URL]: これらはすべてクラスター ダッシュボードにアクセスするために使用します。クラスター ダッシュボードは、Linux ベースのクラスター用の Ambari Web です。
-	- **[リモート デスクトップ]**: RDP を使用してクラスターに接続します。
+- **[リモート デスクトップ]**: RDP を使用してクラスターに接続します。
 	- **[クラスターのスケーリング]**: このクラスターの worker ノードの数を変更できます。
 	- **[削除]**: クラスターを削除します。
 	- **[クイック スタート]** (![雲と雷のアイコン = クイック スタート](./media/hdinsight-administer-use-portal-linux/quickstart.png)): HDInsight の操作を開始するために役立つ情報を表示します。
 	- **[ユーザー]** (![ユーザー アイコン](./media/hdinsight-administer-use-portal-linux/users.png)): このクラスターの_ポータル管理_に対する、Azure サブスクリプションの他のユーザーの権限を設定できます。
 	
-		> [AZURE.IMPORTANT]これは、Azure プレビュー ポータルでのこのクラスターへのアクセスと権限だけに影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
+		> [AZURE.IMPORTANT] これは、Azure プレビュー ポータルでのこのクラスターへのアクセスと権限だけに影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
 	- **[タグ]** (![タグ アイコン](./media/hdinsight-administer-use-portal-linux/tags.png)): タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。たとえば、__プロジェクト__という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。
 	- **[ドキュメント]**: Azure HDInsight のドキュメントへのリンクです。
 	
-	> [AZURE.IMPORTANT]HDInsight クラスターによって提供されるサービスを管理するには、Ambari Web または Ambari REST API を使用する必要があります。Ambari の使用の詳細については、「[Ambari を使用した HDInsight クラスターの管理 (プレビュー)](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
+	> [AZURE.IMPORTANT] HDInsight クラスターによって提供されるサービスを管理するには、Ambari Web または Ambari REST API を使用する必要があります。Ambari の使用の詳細については、「[Ambari を使用した HDInsight クラスターの管理 (プレビュー)](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 
 	**[使用状況]**:
 	
@@ -124,7 +124,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。�
 	- **[リモート デスクトップ]**: リモート デスクトップ (RDP) アクセスを有効および無効にし、RDP ユーザー名を構成します。RDP ユーザー名は HTTP ユーザー名とは別にする必要があります。
 	- **[指名パートナー]**:
     
-    > [AZURE.NOTE]これは使用可能な設定の汎用リストです。すべてのクラスターの種類でこれらの設定がすべて表示されるわけではありません。
+    > [AZURE.NOTE] これは使用可能な設定の汎用リストです。すべてのクラスターの種類でこれらの設定がすべて表示されるわけではありません。
 
 6. **[プロパティ]** をクリックします。
 
@@ -157,7 +157,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。�
 ##クラスターのスケール
 クラスターのスケール設定機能を使用すると、Azure HDInsight で実行しているクラスターによって使用される worker ノードの数を、クラスターを再作成することなく、変更できます。
 
->[AZURE.NOTE]HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスターの一覧と表示](hdinsight-adminster-use-management-portal/#list-and-show-clusters)」をご覧ください。
+>[AZURE.NOTE] HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスターの一覧と表示](hdinsight-adminster-use-management-portal/#list-and-show-clusters)」をご覧ください。
 
 HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
 
@@ -248,7 +248,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 既定では、これらのサービスへのアクセス許可が付与されます。Azure ポータルからアクセス許可を取り消す/付与することができます。
 
->[AZURE.NOTE]アクセス許可を付与するか、取り消すことで、クラスターのユーザー名とパスワードがリセットされます。
+>[AZURE.NOTE] アクセス許可を付与するか、取り消すことで、クラスターのユーザー名とパスワードがリセットされます。
 
 **HTTP Web サービスのアクセス許可を付与する/取り消すには**
 
@@ -329,7 +329,7 @@ HDInsight クエリ コンソールには、次の機能が用意されていま
 
 HDInsight クラスター ブレードの __[使用状況]__ セクションには、サブスクリプションで HDInsight 用に使用できるコアの数、このクラスターに割り当てられているコアの数、およびこのクラスター内のノードへのコアの割り当て方法に関する情報が表示されます。「[クラスターの一覧と表示](#list-and-show-clusters)」をご覧ください。
 
-> [AZURE.IMPORTANT]HDInsight クラスターによって提供されるサービスを監視するには、Ambari Web または Ambari REST API を使用する必要があります。Ambari の使用の詳細については、「[Ambari を使用した HDInsight クラスターの管理 (プレビュー)](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
+> [AZURE.IMPORTANT] HDInsight クラスターによって提供されるサービスを監視するには、Ambari Web または Ambari REST API を使用する必要があります。Ambari の使用の詳細については、「[Ambari を使用した HDInsight クラスターの管理 (プレビュー)](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 
 
 ##Hadoop UI を開く
@@ -354,7 +354,7 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 	![HDInsight によるリモート デスクトップ構成の有効化と無効化](./media/hdinsight-administer-use-management-portal/hdinsight.portal.remote.desktop.png)
 
 	[有効期限] の既定値は 1 週間です。
-> [AZURE.NOTE]HDInsight .NET SDK を使用して、クラスターに対するリモート デスクトップを有効にすることもできます。HDInsight クライアント オブジェクトで、**EnableRdp** メソッドを次の形式で使用します: **client.EnableRdp(clustername, location, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**。同様に、クラスターに対するリモート デスクトップを無効にするには、**client.DisableRdp(clustername, location)** を使用します。これらのメソッドの詳細については、[HDInsight .NET SDK のリファレンス](http://go.microsoft.com/fwlink/?LinkId=529017)を参照してください。この方法は、Windows で実行されている HDInsight クラスターにのみ適用できます。
+> [AZURE.NOTE] HDInsight .NET SDK を使用して、クラスターに対するリモート デスクトップを有効にすることもできます。HDInsight クライアント オブジェクトで、**EnableRdp** メソッドを次の形式で使用します: **client.EnableRdp(clustername, location, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**。同様に、クラスターに対するリモート デスクトップを無効にするには、**client.DisableRdp(clustername, location)** を使用します。これらのメソッドの詳細については、[HDInsight .NET SDK のリファレンス](http://go.microsoft.com/fwlink/?LinkId=529017)を参照してください。この方法は、Windows で実行されている HDInsight クラスターにのみ適用できます。
 
 **RDP を使用してクラスターに接続するには**
 
@@ -399,4 +399,4 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

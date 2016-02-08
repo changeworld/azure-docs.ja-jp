@@ -67,7 +67,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 Azure モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 `AZURE_STORAGE_ACCOUNT` と `AZURE_STORAGE_ACCESS_KEY`、または `AZURE_STORAGE_CONNECTION_STRING` を読み取ります。これらの環境変数が設定されていない場合は、**createBlobService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web アプリの [Azure ポータル](portal.azure.com)で環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション]に関するトピックを参照してください。
+Azure Web アプリの [Azure ポータル](https://portal.azure.com)で環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション]に関するトピックを参照してください。
 
 ## コンテナーを作成する
 
@@ -75,7 +75,7 @@ Azure Web アプリの [Azure ポータル](portal.azure.com)で環境変数を�
 
     var blobSvc = azure.createBlobService();
 
-> [AZURE.NOTE]**createBlobServiceAnonymous** を使用してホスト アドレスを指定すると、BLOB に匿名でアクセスできます。たとえば、`var blobSvc = azure.createBlobServiceAnonymous('https://myblob.blob.core.windows.net/');` を使用します。
+> [AZURE.NOTE] **createBlobServiceAnonymous** を使用してホスト アドレスを指定すると、BLOB に匿名でアクセスできます。たとえば、`var blobSvc = azure.createBlobServiceAnonymous('https://myblob.blob.core.windows.net/');` を使用します。
 
 [AZURE.INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
@@ -182,7 +182,7 @@ BLOB はブロックベースまたはページ ベースのいずれにもで�
 	  }
 	});
 
-> [AZURE.NOTE]ページ blob は、512 バイトの "ページ" で構成されています。512 の倍数でないサイズのデータをアップロードするとエラーになる場合があります。
+> [AZURE.NOTE] ページ blob は、512 バイトの "ページ" で構成されています。512 の倍数でないサイズのデータをアップロードするとエラーになる場合があります。
 
 ## コンテナー内の BLOB を一覧表示する
 
@@ -270,7 +270,7 @@ ETag を使用している場合、一般的なパターンは次のとおりで
 
 **myblob** に対するその後の操作では、`options.leaseId` パラメーターを指定する必要があります。占有 ID は、**acquireLease** から `result.id` として返されます。
 
-> [AZURE.NOTE]既定では、占有期間は無限です。`options.leaseDuration` パラメーターを指定することで、有限の期間 (15 ～ 60 秒) を指定できます。
+> [AZURE.NOTE] 既定では、占有期間は無限です。`options.leaseDuration` パラメーターを指定することで、有限の期間 (15 ～ 60 秒) を指定できます。
 
 占有を削除するには、**releaseLease** を使用します。占有を中断するものの、元の期間が期限切れになるまでは新しい占有が取得されないようにするには、**breakLease** を使用します。
 
@@ -278,7 +278,7 @@ ETag を使用している場合、一般的なパターンは次のとおりで
 
 共有アクセス署名 (SAS) は、ストレージ アカウント名やキーを指定せずに BLOB やコンテナーへのきめ細やかで安全なアクセスを提供する方法です。SAS は、モバイル アプリからの BLOB へのアクセスを許可する場合など、データへの制限されたアクセスを提供する場合によく使用されます。
 
-> [AZURE.NOTE]BLOB への匿名のアクセスも許可できるものの、共有アクセス署名ではより制御されたアクセスを提供することができます。SAS は生成の必要があるためです。
+> [AZURE.NOTE] BLOB への匿名のアクセスも許可できるものの、共有アクセス署名ではより制御されたアクセスを提供することができます。SAS は生成の必要があるためです。
 
 クラウドベースのサービスなどの信頼されたアプリケーションは、**BlobService** の **generateSharedAccessSignature** を使用して共有アクセス署名を生成し、信頼されていないか、モバイル アプリなどの部分的に信頼されたアプリケーションにこれを提供します。共有アクセス署名は、ポリシーを使用して作成されます。共有アクセス署名には、有効期間の開始日と終了日、共有アクセス署名フォルダーに付与されているアクセス レベルが記述されています。
 
@@ -377,4 +377,4 @@ ACL を設定したら、ポリシーの ID に基づいて共有アクセス署
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

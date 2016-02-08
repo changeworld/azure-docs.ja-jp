@@ -23,12 +23,12 @@ Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提
 
 **主な利点:**
 
-- 接続プロバイダーによるオンプレミス ネットワークと Microsoft クラウド間のレイヤー 3 接続。接続には、任意の環境間 (IP VPN) 接続、ポイント ツー ポイントのイーサネット接続、イーサネット交換による仮想交差接続があります。
+- 接続プロバイダーによるオンプレミス ネットワークと Microsoft Cloud 間のレイヤー 3 接続。接続には、任意の環境間 (IP VPN) 接続、ポイント ツー ポイントのイーサネット接続、イーサネット交換による仮想交差接続があります。
 - 地政学的領域のすべての地域にわたる Microsoft のクラウド サービスへの接続。
 - ExpressRoute プレミアム アドオンを持つすべての領域にわたる Microsoft サービスへのグローバル接続。
 - 業界標準プロトコル (BGP) でのネットワークと Microsoft 間の動的ルーティング。
 - あらゆるピアリングの場所に冗長性を組み込むという高い信頼性。
-- 接続アップタイム [SLA](http://azure.microsoft.com/support/legal/sla/)。
+- 接続アップタイム [SLA](https://azure.microsoft.com/support/legal/sla/)。
 - QoS と、Skype for Business など、特別なアプリケーションのためのサービスの複数のクラス。
 
 詳細については、[ExpressRoute の FAQ](expressroute-faqs.md) を参照してください。
@@ -55,7 +55,7 @@ Microsoft は業界標準の動的ルーティング プロトコル (BGP) を�
 
 ### 冗長性
 
-各 ExpressRoute 回線は、接続プロバイダー/ネットワーク エッジから 2 つの Microsoft Enterprise エッジ ルーター (WSEE) への 2 つの接続で構成されます。Microsoft は接続プロバイダー/あなたの側から 2 つの BGP 接続を必要とします。MSEE につき 1 つです。あなたの側で冗長デバイス/イーサネット回線をデプロイしないことを選択できます。ただし、接続プロバイダーは冗長デバイスを利用することで冗長性が与えられる方法で接続を Microsoft に渡します。冗長レイヤー 3 接続構成は [SLA](http://azure.microsoft.com/support/legal/sla/) を有効にするための必須条件です。
+各 ExpressRoute 回線は、接続プロバイダー/ネットワーク エッジから 2 つの Microsoft Enterprise エッジ ルーター (WSEE) への 2 つの接続で構成されます。Microsoft は接続プロバイダー/あなたの側から 2 つの BGP 接続を必要とします。MSEE につき 1 つです。あなたの側で冗長デバイス/イーサネット回線をデプロイしないことを選択できます。ただし、接続プロバイダーは冗長デバイスを利用することで冗長性が与えられる方法で接続を Microsoft に渡します。冗長レイヤー 3 接続構成は [SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするための必須条件です。
 
 ### Microsoft クラウド サービスへの接続
 
@@ -124,4 +124,4 @@ Microsoft は特殊な地政学的領域と顧客区分のために隔離され�
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

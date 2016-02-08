@@ -27,7 +27,7 @@ Microsoft で販売者アカウントを登録する方法の詳細な手順に�
 - Azure 発行プロセスの関係者が、このアドレスへのリンクを含む電子メールを受信するようにします。電子メールは、発行プロセスを完了するために、監視および応答する必要があります。
 - 1 人のユーザーのみに関連付けられたアカウントを使用するのは避けてください。そのユーザーが会社を退職した場合、SKU に関する情報へのアクセスや発行機能に影響することがあります。
 
-> [AZURE.IMPORTANT]無料プランのみを発行する予定 (またはライセンス持ち込み) であれば、会社の税金や銀行情報を入力する必要はありません。
+> [AZURE.IMPORTANT] 無料プランのみを発行する予定 (またはライセンス持ち込み) であれば、会社の税金や銀行情報を入力する必要はありません。
 
 > プラン作成を開始するには、会社の登録を完了する必要があります。ただし、会社が Microsoftデベロッパー センターで税金と銀行情報を入力している途中でも、開発者は[発行ポータル](https://publish.windowsazure.com)で仮想マシン イメージの作成を開始し、それらのイメージの認定取得、および Azure ステージング環境でのテストを実行できます。販売者アカウントの承認が必要になるのは、プランを Azure Marketplace に発行する最後の手順のみです。
 
@@ -35,10 +35,11 @@ Microsoft で販売者アカウントを登録する方法の詳細な手順に�
 
 
 ## Azure の「従量課金制」サブスクリプションを取得する
-これは、VM イメージを作成して、それらのイメージを [Azure Marketplace](http://azure.microsoft.com/marketplace) に渡すために使用するサブスクリプションです。既存のサブスクリプションがない場合は、ここでサインアップしてください。https://account.windowsazure.com/signup?offer=ms-azr-0003p
+これは、VM イメージを作成して、それらのイメージを [Azure Marketplace](https://azure.microsoft.com/marketplace/) に渡すために使用するサブスクリプションです。既存のサブスクリプションがない場合は、ここでサインアップしてください。https://account.windowsazure.com/signup?offer=ms-azr-0003p
 
 ## 「販売元」の国
-> [AZURE.WARNING]Azure Marketplace でサービスを販売するには、登録済みエンティティが、承認されたいずれかの「販売元」の国からのものである必要があります。この制限は、支払いおよび課税上の理由から生じます。「販売元」の国の範囲は今後拡大される予定です。完全な一覧については、[Azure Marketplace 参加ポリシー](http://go.microsoft.com/fwlink/?LinkID=526833)のセクション 1b を参照してください。
+> [AZURE.WARNING]
+Azure Marketplace でサービスを販売するには、登録済みエンティティが、承認されたいずれかの「販売元」の国からのものである必要があります。この制限は、支払いおよび課税上の理由から生じます。「販売元」の国の範囲は今後拡大される予定です。完全な一覧については、[Azure Marketplace 参加ポリシー](http://go.microsoft.com/fwlink/?LinkID=526833)のセクション 1b を参照してください。
 
 ## 次のステップ
 次は、プランの種類ごとの技術的な前提条件を紹介します。Azure Marketplace 向けに作成するプランの種類に合わせて、記事へのリンクをクリックしてください。
@@ -50,4 +51,4 @@ Microsoft で販売者アカウントを登録する方法の詳細な手順に�
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

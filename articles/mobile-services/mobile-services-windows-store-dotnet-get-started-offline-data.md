@@ -33,7 +33,7 @@
 
 このチュートリアルでは、「[Mobile Services の使用]」チュートリアルで使用した Universal アプリケーション プロジェクトを更新して、Azure Mobile Services のオフライン機能をサポートできるようにします。その後、切断されたオフラインの状況でデータを追加し、それらの項目をオンライン データベースに同期してから、[Azure クラシック ポータル]にログインして、アプリケーションを実行したときにデータに加えた変更を表示します。
 
->[AZURE.NOTE]このチュートリアルの目的は、Azure を使用して Windows ストア アプリケーションのデータを格納および取得できるようにするためのモバイル サービスのしくみを説明することにあります。Mobile Services を初めて使用する場合は、チュートリアル「[Mobile Services の使用]」を完了する必要があります。
+>[AZURE.NOTE] このチュートリアルの目的は、Azure を使用して Windows ストア アプリケーションのデータを格納および取得できるようにするためのモバイル サービスのしくみを説明することにあります。Mobile Services を初めて使用する場合は、チュートリアル「[Mobile Services の使用]」を完了する必要があります。
 
 ##前提条件
 
@@ -44,27 +44,27 @@
 * [Azure Mobile Services SDK バージョン 1.3.0 (またはこれ以降)][Mobile Services SDK Nuget]
 * [Azure Mobile Services SQLite Store バージョン 1.0.0 (またはこれ以降)][SQLite store nuget]
 * [SQLite for Windows 8.1](http://www.sqlite.org/download.html)
-* Azure アカウント。アカウントがない場合は、Azure 試用版にサインアップして最大 10 の無料モバイル サービスを取得し、試用期間が終わった後でも使用し続けることができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)を参照してください。
+* Azure アカウント。アカウントがない場合は、Azure 試用版にサインアップして最大 10 の無料モバイル サービスを取得し、試用期間が終わった後でも使用し続けることができます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)を参照してください。
 
 ## <a name="enable-offline-app"></a>オフライン機能をサポートするようにアプリケーションを更新する
 
 Azure Mobile Services のオフライン機能を使用すると、モバイル サービスに対してオフラインになっている状況でも、ローカル データベースとやり取りすることができます。アプリケーションでこれらの機能を使用するには、`MobileServiceClient.SyncContext` をローカル ストアに初期化します。その後、`IMobileServiceSyncTable` インターフェイスを使用してテーブルを参照します。このチュートリアルでは、ローカル ストアに SQLite を使用します。
 
->[AZURE.NOTE]このセクションをスキップして、既にオフラインをサポートしているプロジェクト例を、GitHub の Mobile Services のサンプル リポジトリから取得することもできます。オフライン サポートが有効になっているサンプル プロジェクトは [TodoList オフライン サンプル]にあります。
+>[AZURE.NOTE] このセクションをスキップして、既にオフラインをサポートしているプロジェクト例を、GitHub の Mobile Services のサンプル リポジトリから取得することもできます。オフライン サポートが有効になっているサンプル プロジェクトは [TodoList オフライン サンプル]にあります。
 
 1. Windows 8.1 および Windows Phone 8.1 の SQLite ランタイムをインストールします。
 
     * **Windows 8.1 Runtime:** [SQLite for Windows 8.1] をインストール。
     * **Windows Phone 8.1**: [SQLite for Windows Phone 8.1] をインストール。
 
-    >[AZURE.NOTE]Internet Explorer を使用している場合は、SQLite をインストールするためにこのリンクをクリックすると、.vsix を .zip ファイルとしてダウンロードするためのプロンプトが表示されることがあります。ファイルに .zip ではなく .vsix 拡張子を付けて、ハード ドライブ上の場所に保存します。エクスプローラーで .vsix ファイルをダブルクリックすると、インストールが実行されます。
+    >[AZURE.NOTE] Internet Explorer を使用している場合は、SQLite をインストールするためにこのリンクをクリックすると、.vsix を .zip ファイルとしてダウンロードするためのプロンプトが表示されることがあります。ファイルに .zip ではなく .vsix 拡張子を付けて、ハード ドライブ上の場所に保存します。エクスプローラーで .vsix ファイルをダブルクリックすると、インストールが実行されます。
 
 2. Visual Studio で、「[Mobile Services の使用]」チュートリアルで完了したプロジェクトを開きます。Windows 8.1 ランタイムおよび Windows Phone 8.1 プロジェクト向けの **WindowsAzure.MobileServices.SQLiteStore** NuGet パッケージをインストールします。
 
     * **Windows 8.1:** ソリューション エクスプローラーで、Windows 8.1 プロジェクトを右クリックし、[**Nuget パッケージの管理**] をクリックして NuGet パッケージ マネージャーを実行します。**SQLiteStore** を検索して、`WindowsAzure.MobileServices.SQLiteStore` パッケージをインストールします。
     * **Windows Phone 8.1:** Windows Phone 8.1 プロジェクトを右クリックし、[**Nuget パッケージの管理**] をクリックして NuGet パッケージ マネージャーを実行します。**SQLiteStore** を検索して、`WindowsAzure.MobileServices.SQLiteStore` パッケージをインストールします。
 
-    >[AZURE.NOTE]インストールで古いバージョンの SQLite への参照が作成される場合は、重複した参照だけを削除できます。
+    >[AZURE.NOTE] インストールで古いバージョンの SQLite への参照が作成される場合は、重複した参照だけを削除できます。
 
     ![][2]
 
@@ -183,7 +183,7 @@ Azure Mobile Services のオフライン機能を使用すると、モバイル 
 
     この例では、リモート `todoTable` ですべてのレコードを取得しますが、クエリを渡すことによりレコードをフィルタリングすることも可能です。`PullAsync` の最初のパラメーターは増分同期に使用されるクエリ ID ですが、この同期では、`UpdatedAt` タイムスタンプを使用して最後の同期から変更があったレコードのみを取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。増分同期を解除するには、`null` をクエリ ID として渡します。これによってプル操作ごとにすべてのレコードを取得することになり、効率が悪くなる可能性があります。
 
-    >[AZURE.NOTE]* モバイル サービス データベースでレコードが削除されたときに、デバイスのローカル ストアからレコードを削除するには、[論理的な削除] を有効にする必要があります。有効にしない場合は、アプリで定期的に `IMobileServiceSyncTable.PurgeAsync()` を呼び出して、ローカル ストアを削除する必要があります。
+    >[AZURE.NOTE] * モバイル サービス データベースでレコードが削除されたときに、デバイスのローカル ストアからレコードを削除するには、[論理的な削除] を有効にする必要があります。有効にしない場合は、アプリで定期的に `IMobileServiceSyncTable.PurgeAsync()` を呼び出して、ローカル ストアを削除する必要があります。
 
     `MobileServicePushFailedException` はプッシュ操作とプル操作の両方で発生する場合があることに注意してください。リレーションシップを持つすべてのテーブルに一貫性があることを確認するために、プル操作で内部的にプッシュが実行されることから、この例外はプルで発生する可能性があります。次のチュートリアル「[Mobile Services のオフライン サポートでの競合を処理する]」では、これらの同期関連の例外の処理方法について説明します。
 
@@ -283,4 +283,4 @@ Azure Mobile Services のオフライン機能を使用すると、モバイル 
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

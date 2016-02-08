@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/23/2015"
+   ms.date="01/27/2016"
    ms.author="bwren" />
 
 # Azure Automation での変数アセット
@@ -29,7 +29,7 @@ Automation 変数は、Runbook または DSC 構成でエラーが発生した�
 
 変数が作成されると、暗号化して保存するように指定できます。変数が暗号化されると、Azure Automation に安全に保存され、その値は Azure PowerShell モジュールに含まれている [Get-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913772.aspx) コマンドレットからは取得できません。暗号化された値は、Runbook または DSC 構成の **Get-AutomationVariable** アクティビティからのみ取得できます。
 
->[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。これらの資産は暗号化され、各オートメーション アカウント用に生成された一意のキーを使用して Azure Automation に保存されます。This key is encrypted by a master certificate and stored in Azure Automation.セキュリティで保護された資産を格納する前に、Automation アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
+>[AZURE.NOTE]Secure assets in Azure Automation include credentials, certificates, connections, and encrypted variables.これらの資産は、各 Automation アカウント用に生成された一意のキーを使用して暗号化され、Azure Automation に保存されます。This key is encrypted by a master certificate and stored in Azure Automation.セキュリティで保護された資産を格納する前に、Automation アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
 
 ## 変数の型
 
@@ -55,7 +55,7 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 |Get-AutomationVariable|既存の変数の値を取得します。|
 |Set-AutomationVariable|既存の変数の値を設定します。|
 
->[AZURE.NOTE]Runbook または DSC 構成内で **Get-AutomationVariable** の –Name パラメーターに変数を使用すると、設計時に Runbook または DSC 構成と Automation 変数の間の依存関係の検出が複雑になる可能性があるため、使用しないようにする必要があります。
+>[AZURE.NOTE] Runbook または DSC 構成内で **Get-AutomationVariable** の –Name パラメーターに変数を使用すると、設計時に Runbook または DSC 構成と Automation 変数の間の依存関係の検出が複雑になる可能性があるため、使用しないようにする必要があります。
 
 ## 新しい Automation 変数の作成
 
@@ -188,4 +188,4 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0128_2016-->

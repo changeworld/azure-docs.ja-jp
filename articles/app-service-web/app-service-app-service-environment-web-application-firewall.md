@@ -19,7 +19,7 @@
 # App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する
 
 ## 概要 ##
-[Azure Marketplace](http://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) で入手できる [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure) などの Web アプリケーション ファイアウォールは、着信 Web トラフィックを検査して、block SQL 注入、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS などの攻撃をブロックすることによって、Web アプリケーションを保護します。さらに、データ損失防止 (DLP) のためにバックエンド Web サーバーからの応答を検査します。App Service 環境が提供する分離と追加スケーリングと組み合わせることで、悪意のある要求と大量のトラフィックに対処する必要がある、ビジネスに不可欠な Web アプリケーションをホストする理想的な環境が用意されます。
+[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) で入手できる [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure) などの Web アプリケーション ファイアウォールは、着信 Web トラフィックを検査して、block SQL 注入、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS などの攻撃をブロックすることによって、Web アプリケーションを保護します。さらに、データ損失防止 (DLP) のためにバックエンド Web サーバーからの応答を検査します。App Service 環境が提供する分離と追加スケーリングと組み合わせることで、悪意のある要求と大量のトラフィックに対処する必要がある、ビジネスに不可欠な Web アプリケーションをホストする理想的な環境が用意されます。
 
 \+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -35,7 +35,7 @@ App Service 環境の構成については、このテーマに関する[ドキ�
 Barracuda には、その WAF を Azure の仮想マシンにデプロイすることに関する[詳細な記事](https://techlib.barracuda.com/WAF/AzureDeploy)があります。ただし、これらの手順に従うときは、冗長性を持たせ、単一障害点の発生を防ぐために、少なくとも 2 つの WAF インスタンスの VM を同じクラウド サービスにデプロイします。
 
 ### クラウド サービスへのエンドポイントの追加 ###
-2 つ以上の WAF VM インスタンスをクラウド サービスに用意した後、[Azure ポータル](https://portal.azure.com)を使用して、次の図に示すように、アプリケーションで使用される HTTP エンドポイントと HTTPS エンドポイントを追加できます。
+2 つ以上の WAF VM インスタンスをクラウド サービスに用意した後、[Azure ポータル](https://portal.azure.com/)を使用して、次の図に示すように、アプリケーションで使用される HTTP エンドポイントと HTTPS エンドポイントを追加できます。
 
 ![エンドポイントを構成する][ConfigureEndpoint]
 
@@ -99,4 +99,4 @@ SourceAddressPrefix を、WAF のクラウド サービスの仮想 IP アドレ
 [ConfigureTrafficManager]: ./media/app-service-app-service-environment-web-application-firewall/ConfigureTrafficManager.png
 [WebsiteTranslations]: ./media/app-service-app-service-environment-web-application-firewall/WebsiteTranslations.png
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

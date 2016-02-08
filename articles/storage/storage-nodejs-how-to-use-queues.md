@@ -66,7 +66,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT、AZURE\_STORAGE\_ACCESS\_KEY、および AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**createQueueService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの [Azure ポータル](portal.azure.com)で環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション]に関するトピックを参照してください。
+Azure Web サイトの [Azure ポータル](https://portal.azure.com)で環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション]に関するトピックを参照してください。
 
 ## 方法: キューを作成する
 
@@ -123,7 +123,7 @@ Azure Web サイトの [Azure ポータル](portal.azure.com)で環境変数を�
 
 `result` にはメッセージが含まれます。
 
-> [AZURE.NOTE]キューにメッセージがないときに **peekMessages** を使用した場合、エラーは返されませんが、メッセージも返されません。
+> [AZURE.NOTE] キューにメッセージがないときに **peekMessages** を使用した場合、エラーは返されませんが、メッセージも返されません。
 
 ## 方法: 次のメッセージをデキューする
 
@@ -147,9 +147,10 @@ Azure Web サイトの [Azure ポータル](portal.azure.com)で環境変数を�
 	  }
 	});
 
-> [AZURE.NOTE]既定では、メッセージが非表示になるのは 30 秒間のみで、それ以降は他のクライアントから参照できます。**getMessages** で `options.visibilityTimeout` を使用すれば、別の値を指定できます。
+> [AZURE.NOTE] 既定では、メッセージが非表示になるのは 30 秒間のみで、それ以降は他のクライアントから参照できます。**getMessages** で `options.visibilityTimeout` を使用すれば、別の値を指定できます。
 
-> [AZURE.NOTE]キューにメッセージがないときに **getMessages** を使用した場合、エラーは返されませんが、メッセージも返されません。
+> [AZURE.NOTE]
+キューにメッセージがないときに **getMessages** を使用した場合、エラーは返されませんが、メッセージも返されません。
 
 ## 方法: キューに配置されたメッセージの内容を変更する
 
@@ -330,4 +331,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
   [WebMatrix による Web サイトの作成とデプロイ]: ../web-sites-nodejs-use-webmatrix.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

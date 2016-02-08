@@ -33,7 +33,7 @@ Microsoft Azure StorSimple デバイスのデプロイへようこそ。これ�
 
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。開始する前に、構成チェック リストを確認することをお勧めします。デプロイと構成のプロセスは、完了するまでに時間がかかることがあります。
 
-> [AZURE.NOTE]Microsoft Azure の Web サイトで発行されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。7000 シリーズ デバイスの詳細については、[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) を参照してください。7000 シリーズのデプロイについては、『[StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。
+> [AZURE.NOTE] Microsoft Azure の Web サイトで発行されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。7000 シリーズ デバイスの詳細については、[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) を参照してください。7000 シリーズのデプロイについては、『[StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。
 
 ## デプロイの手順
 
@@ -111,11 +111,11 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 
 開始する前に次の点を確認します。
 
-- アクセスの資格情報を持つ Microsoft アカウントがある。
+- アクセスの資格情報を持つ Microsoft アカウントがあること。
 
 - アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがある。
 
-- StorSimple Manager サービスの Microsoft Azure サブスクリプションが有効である。サブスクリプションは [Enterprise Agreement](http://azure.microsoft.com/pricing/enterprise-agreement/) から購入する必要があります。
+- StorSimple Manager サービスの Microsoft Azure サブスクリプションが有効である。サブスクリプションは [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) から購入する必要があります。
 
 - PuTTY などのターミナル エミュレーション ソフトウェアにアクセスできる。
 
@@ -146,7 +146,7 @@ StorSimple Manager サービスでは、複数の StorSimple デバイスを管�
 
 [AZURE.INCLUDE [storsimple-create-new-service](../../includes/storsimple-create-new-service.md)]
 
-> [AZURE.IMPORTANT]サービスでストレージ アカウントの自動作成を有効にしていない場合は、サービスの作成が完了してから、1 つ以上のストレージ アカウントを作成する必要があります。このストレージ アカウントは、ボリューム コンテナーを作成するときに使用します。
+> [AZURE.IMPORTANT] サービスでストレージ アカウントの自動作成を有効にしていない場合は、サービスの作成が完了してから、1 つ以上のストレージ アカウントを作成する必要があります。このストレージ アカウントは、ボリューム コンテナーを作成するときに使用します。
 >
 > * ストレージ アカウントを自動的に作成していない場合は、「[サービスの新しいストレージ アカウントを構成する](#configure-a-new-storage-account-for-the-service)」に移動して詳細な手順をご確認ください。 
 > * ストレージ アカウントの自動作成を有効にしている場合は、「[手順 2. サービス登録キーを取得する](#step-2-get-the-service-registration-key)」に進みます。
@@ -190,7 +190,7 @@ StorSimple デバイスの最小構成を完了するには、次の手順を実
 
 ボリューム コンテナーを作成したら、サーバーの StorSimple デバイスでストレージ ボリュームをプロビジョニングできます。ボリュームを作成するには、Azure クラシック ポータルで次の手順を実行します。
 
-> [AZURE.IMPORTANT]StorSimple Manager は、仮想プロビジョニングされたボリュームのみを作成できます。完全にプロビジョニングされたボリュームまたは部分的にプロビジョニングされたボリュームを作成することはできません。
+> [AZURE.IMPORTANT] StorSimple Manager は、仮想プロビジョニングされたボリュームのみを作成できます。完全にプロビジョニングされたボリュームまたは部分的にプロビジョニングされたボリュームを作成することはできません。
 
 [AZURE.INCLUDE [storsimple-create-volume](../../includes/storsimple-create-volume.md)]
 
@@ -254,7 +254,7 @@ StorSimple 用 Windows PowerShell に接続するには、PuTTY などのター�
 
 3.	更新ジョブが作成されます。**[ジョブ]** に移動して、更新の状態を監視します。
 
-	> [AZURE.NOTE]更新ジョブが開始されるとすぐ、状態は 50% として表示されます。更新ジョブの完了後、状態が 100% に変わります。更新プログラムのプロセスでは、リアルタイムの状態は表示されません。
+	> [AZURE.NOTE] 更新ジョブが開始されるとすぐ、状態は 50% として表示されます。更新ジョブの完了後、状態が 100% に変わります。更新プログラムのプロセスでは、リアルタイムの状態は表示されません。
 
 4.	デバイスが正常に更新された後、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にしていた場合は有効にします。
 
@@ -279,7 +279,7 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 Linux ホストに接続されている StorSimple デバイスの MPIO のインストール手順については、「[Linux ホストの MPIO の構成](storsimple-configure-mpio-on-linux.md)」をご覧ください。
 
 
-> [AZURE.NOTE]StorSimple 仮想デバイスでは、MPIO がサポートされていません。
+> [AZURE.NOTE] StorSimple 仮想デバイスでは、MPIO がサポートされていません。
 
 
 
@@ -290,4 +290,4 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 - [StorSimple Manager サービス](storsimple-manager-service-administration.md)を使用して StorSimple デバイスを管理します。
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

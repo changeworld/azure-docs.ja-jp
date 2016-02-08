@@ -24,7 +24,7 @@ Azure プラットフォーム サービスのコアである Azure Scheduler �
 
 ### geo 冗長サービスのデプロイ
 
-Azure Scheduler は、現在 Azure が対応しているほとんどすべての geo リージョンで UI を介して利用できます。Azure Scheduler を使用できるリージョンの一覧については、[このページ](http://azure.microsoft.com/regions/#services)を参照してください。ホストされているリージョン内のデータ センターが使用不可と表示されている場合、Azure Scheduler のフェールオーバー機能により、他のデータ センターからそのサービスを利用できます。
+Azure Scheduler は、現在 Azure が対応しているほとんどすべての geo リージョンで UI を介して利用できます。Azure Scheduler を使用できるリージョンの一覧については、[このページ](https://azure.microsoft.com/regions/#services)を参照してください。ホストされているリージョン内のデータ センターが使用不可と表示されている場合、Azure Scheduler のフェールオーバー機能により、他のデータ センターからそのサービスを利用できます。
 
 ### geo リージョンのジョブ レプリケーション
 
@@ -72,10 +72,9 @@ Azure Scheduler ジョブの対象のエンドポイントにアクセスでき�
 
  [Azure Scheduler で複雑なスケジュールと高度な定期実行を構築する方法](scheduler-advanced-complexity.md)
 
- [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/dn528946)
+ [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
 
  [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
-
 
  [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
 
@@ -88,4 +87,4 @@ Azure Scheduler ジョブの対象のエンドポイントにアクセスでき�
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

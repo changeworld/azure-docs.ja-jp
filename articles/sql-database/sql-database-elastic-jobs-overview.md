@@ -40,7 +40,7 @@
 * 実行スケジュールを定義する
 * Azure SQL Database の集合から 1 つの対象テーブルにデータを集める
 
-> [AZURE.NOTE]Azure ポータルでは、SQL Azure エラスティック プールに限定された一連の少ない機能のみ利用できます。現在のすべての機能にアクセスするには、PowerShell API を使用してください。
+> [AZURE.NOTE] Azure ポータルでは、SQL Azure エラスティック プールに限定された一連の少ない機能のみ利用できます。現在のすべての機能にアクセスするには、PowerShell API を使用してください。
 
 ## シナリオ
 
@@ -88,10 +88,10 @@
 ## コンポーネントと価格 
 次のコンポーネントは、連携して管理ジョブのアドホック実行を可能にする Azure クラウド サービスを作成します。コンポーネントはサブスクリプションで、セットアップ時に自動的にインストールされ、構成されます。これらはすべて同じ自動生成された名前を持っているため、サービスを識別できます。名前は一意であり、プレフィックス "edj" とその後に続くランダムに生成された 21 文字で構成されます。
 
-* **Azure Cloud Service**: エラスティック データベース ジョブ (プレビュー) は、顧客によってホストされる AzureCloud Service として配信され、要求されたタスクを実行します。ポータルから、サービスは Microsoft Azure サブスクリプションにデプロイされ、ホストされます。デプロイされる既定のサービスは、高可用性のための 2 つの worker ロールの最小値で実行されます。各 worker ロール (ElasticDatabaseJobWorker) の既定のサイズは A0 インスタンスで実行されます。料金については、「[Cloud Services 料金](http://azure.microsoft.com/pricing/details/cloud-services/)」をご覧ください。 
-* **Azure SQL Database**: このサービスは、**管理データベース**と呼ばれる Azure SQL Database を使用してすべてのジョブ メタデータを保持します。既定のサービス層は、S0 です。詳細については、「[SQL Database の料金](http://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
-* **Azure Service Bus**: Azure Service Bus は、Azure Cloud Service 内の作業を調整します。「[Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
-* **Azure Storage**: Azure ストレージ アカウントは問題にさらにデバッグが必要な場合に、診断出力のログ記録を格納するために使用されます ([Azure 診断](cloud-services-dotnet-diagnostics.md)の一般的な方法)。料金については、「[Azure Storage の料金](http://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
+* **Azure Cloud Service**: エラスティック データベース ジョブ (プレビュー) は、顧客によってホストされる AzureCloud Service として配信され、要求されたタスクを実行します。ポータルから、サービスは Microsoft Azure サブスクリプションにデプロイされ、ホストされます。デプロイされる既定のサービスは、高可用性のための 2 つの worker ロールの最小値で実行されます。各 worker ロール (ElasticDatabaseJobWorker) の既定のサイズは A0 インスタンスで実行されます。料金については、「[Cloud Services 料金](https://azure.microsoft.com/pricing/details/cloud-services/)」をご覧ください。 
+* **Azure SQL Database**: このサービスは、**管理データベース**と呼ばれる Azure SQL Database を使用してすべてのジョブ メタデータを保持します。既定のサービス層は、S0 です。詳細については、「[SQL Database の料金](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+* **Azure Service Bus**: Azure Service Bus は、Azure Cloud Service 内の作業を調整します。「[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
+* **Azure Storage**: Azure ストレージ アカウントは問題にさらにデバッグが必要な場合に、診断出力のログ記録を格納するために使用されます ([Azure 診断](cloud-services-dotnet-diagnostics.md)の一般的な方法)。料金については、「[Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
 
 ## エラスティック データベース ジョブの機能
 1.	Azure SQL Database には、すべてのメタデータと状態データが保存される管理データベースが指定されています。
@@ -124,4 +124,4 @@
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -59,7 +59,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 これらの値を取得するには、次の手順を実行します。
 
-1. [Azure ポータル](portal.azure.com)にログインします。
+1. [Azure ポータル](https://portal.azure.com)にログインします。
 2. 使用するストレージ アカウントを表示します。
 3. ナビゲーション ウィンドウの下部にある **[キーの管理]** をクリックします。
 4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーには、プライマリとセカンダリのどちらでも使用できます。
@@ -146,4 +146,4 @@ BLOB をダウンロードするには、**get\_blob()** メソッドを使用�
 - GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 - [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -22,7 +22,7 @@
 
 本書では、Microsoft Azure での最も一般的な制限について具体的に説明しています。現時点では、すべての Azure サービスを網羅していませんのでご了承ください。今後、Azure Platform 全体を広くカバーするように制限を展開し、更新していく予定です。
 
-> [AZURE.NOTE]「**既定の制限**」を超える制限の引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料)](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) してください。以下の表の「**上限**」の値を超える制限の引き上げはできません。「**上限**」列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
+> [AZURE.NOTE] 「**既定の制限**」を超える制限の引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料)](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) してください。以下の表の「**上限**」の値を超える制限の引き上げはできません。「**上限**」列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
 
 ## 制限と Azure リソース マネージャー
 
@@ -278,8 +278,8 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 ## 関連項目
 
-[Understanding Azure Limits and Increases (Azure の制限と増設について)](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+[Understanding Azure Limits and Increases (Azure の制限と増設について)](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 
 [Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -39,7 +39,7 @@ REST インターフェイスを有効にして HTTPS でクラスターにジ�
 
 詳細な手順については、「[Microsoft HPC Pack Web コンポーネントのインストール](http://technet.microsoft.com/library/hh314627.aspx)」を参照してください。
 
->[AZURE.TIP]一部の Azure クイックスタート テンプレートでは、Web コンポーネントが自動的にインストールされ、構成されます。[HPC Pack IaaS デプロイメント スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)を利用してクラスターを作成する場合、デプロイメントの一環として任意で Web コンポーネントをインストールし、構成します。
+>[AZURE.TIP] 一部の Azure クイックスタート テンプレートでは、Web コンポーネントが自動的にインストールされ、構成されます。[HPC Pack IaaS デプロイメント スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)を利用してクラスターを作成する場合、デプロイメントの一環として任意で Web コンポーネントをインストールし、構成します。
 
 **Web コンポーネントをインストールするには**
 
@@ -64,9 +64,9 @@ REST インターフェイスを有効にして HTTPS でクラスターにジ�
     .\Set-HPCWebComponents.ps1 –Service REST –enable
     ```
 
-4. 証明書の選択を求められたら、ヘッド ノードのパブリック DNS 名に対応する証明書を選択します。たとえば、HPC Pack IaaS デプロイ スクリプトを使用してクラスターを作成する場合、証明書名は CN=&lt;HeadNodeDnsName&gt;.cloudapp.net 形式になります。Azure クイックスタート テンプレートを使用する場合、証明書名は、CN=&lt;HeadNodeDnsName&gt;.&lt;region&gt;.cloudapp.azure 形式になります。
+4. 証明書の選択を求められたら、ヘッド ノードのパブリック DNS 名に対応する証明書を選択します。たとえば、HPC Pack IaaS デプロイ スクリプトを使用してクラスターを作成する場合、証明書名は CN=&lt;*HeadNodeDnsName*&gt;.cloudapp.net 形式になります。Azure クイックスタート テンプレートを使用する場合、証明書名は、CN=&lt;*HeadNodeDnsName*&gt;.&lt;*region*&gt;.cloudapp.azure 形式になります。
 
-    >[AZURE.NOTE]オンプレミス コンピューターからヘッド ノードに後でジョブを送信するには、この証明書を選択する必要があります。Active Directory ドメインのヘッド ノードのコンピューター名に一致する証明書を選択したり、構成したりしないでください (CN=*MyHPCHeadNode.HpcAzure.local* など)。
+    >[AZURE.NOTE] オンプレミス コンピューターからヘッド ノードに後でジョブを送信するには、この証明書を選択する必要があります。Active Directory ドメインのヘッド ノードのコンピューター名に一致する証明書を選択したり、構成したりしないでください (CN=*MyHPCHeadNode.HpcAzure.local* など)。
 
 5. Web ポータルのジョブ送信を構成するには、次のコマンドを入力します。
 
@@ -114,7 +114,7 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 
 
 
->[AZURE.SECURITY]クライアント コンピューターがヘッド ノードの証明機関を認識しないため、セキュリティ警告が表示されることがあります。テスト目的であるため、この警告を無視し、証明書インポートを完了します。
+>[AZURE.SECURITY] クライアント コンピューターがヘッド ノードの証明機関を認識しないため、セキュリティ警告が表示されることがあります。テスト目的であるため、この警告を無視し、証明書インポートを完了します。
 
 ## 手順 3: クラスターでテスト ジョブを実行する
 
@@ -134,7 +134,7 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
     job list /scheduler:https://<HeadNodeDnsName>.<region>.cloudapp.azure.com /all
     ```
 
-    >[AZURE.TIP]スケジューラ URL には、IP アドレスではなく、ヘッド ノードの完全 DNS 名を使用します。IP アドレスを指定した場合、「The server certificate needs to either have a valid chain of trust or to be placed in the trusted root store (サーバー証明書は有効な信頼チェーンを持つか、信頼されたルート ストアに置かれている必要があります)」のようなエラーが表示されます。
+    >[AZURE.TIP] スケジューラ URL には、IP アドレスではなく、ヘッド ノードの完全 DNS 名を使用します。IP アドレスを指定した場合、「The server certificate needs to either have a valid chain of trust or to be placed in the trusted root store (サーバー証明書は有効な信頼チェーンを持つか、信頼されたルート ストアに置かれている必要があります)」のようなエラーが表示されます。
 
 3. 入力を求められたら、HPC クラスター管理者または構成済みの別のクラスター ユーザーのユーザー名 (&lt;DomainName&gt;\\&lt;UserName&gt; 形式) とパスワードを入力します。ジョブ操作が多ければ、資格情報をローカルに保存できます。
 
@@ -188,4 +188,4 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 <!--Image references-->
 [jobsubmit]: ./media/virtual-machines-hpcpack-cluster-submit-jobs/jobsubmit.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

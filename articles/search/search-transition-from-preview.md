@@ -27,7 +27,7 @@ Azure Search は Microsoft Azure のホスト型クラウド検索サービス�
 
 Azure Search は一般公開されているので、新しいリリースに移行されることをお勧めします。2015-02-28 は、一般提供されている Azure Search リリースの公式 API バージョンです。このバージョンについては、「[MSDN ](https://msdn.microsoft.com/library/azure/dn798933.aspx)」に記載されています。
 
-次にリリースするプレビュー バージョン [2015-02-28-Preview](search-api-2015-02-28-preview.md) には、まだ開発段階にある機能が搭載されています。[Azure Search フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azuresearch)または[フィードバック ページ](http://feedback.azure.com/forums/263029-azure-search)のいずれかでプレビュー API についてフィードバックすることができます。
+次にリリースするプレビュー バージョン [2015-02-28-Preview](search-api-2015-02-28-preview.md) には、まだ開発段階にある機能が搭載されています。[Azure Search フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azuresearch)または [フィードバック ページ] (https://feedback.azure.com/forums/263029-azure-search/)のいずれかでプレビュー API についてフィードバックすることができます。
 
 ###移行時のチェックリスト###
 
@@ -144,4 +144,4 @@ API バージョン `2015-02-28` は SLA でサポートされています。[�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -27,11 +27,11 @@
 
 このチュートリアルは、コンピューティング クラスターまたは HPC Pack を使用した経験がない読者を対象に作成されています。これは、ハイブリッド コンピューティング クラスターを迅速にデプロイする方法のデモンストレーションを目的としています。大規模なハイブリッド HPC Pack クラスターを運用環境にデプロイするための考慮事項と手順については、[詳細なガイダンス](http://go.microsoft.com/fwlink/p/?LinkID=200493)を参照してください。Azure Virtual Machines での自動クラスター デプロイメントなど、HPC Pack に関するその他のシナリオについては、「[Microsoft HPC Pack を使用して Azure でハイパフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション](../virtual-machines/virtual-machines-hpcpack-cluster-options.md)」を参照してください。
 
->[AZURE.NOTE]Azure では、各種のワークロードに適合するように、コンピューティング リソース向けに[さまざまなサイズ](../virtual-machines/virtual-machines-size-specs.md)が用意されています。たとえば、A8 と A9 インスタンスでは、高いパフォーマンスとアクセスが組み合わされ、特定の HPC アプリケーションで必要となる、待機時間が短い高スループットのアプリケーション ネットワークが実現されます。「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md)」を参照してください。
+>[AZURE.NOTE] Azure では、各種のワークロードに適合するように、コンピューティング リソース向けに[さまざまなサイズ](../virtual-machines/virtual-machines-size-specs.md)が用意されています。たとえば、A8 と A9 インスタンスでは、高いパフォーマンスとアクセスが組み合わされ、特定の HPC アプリケーションで必要となる、待機時間が短い高スループットのアプリケーション ネットワークが実現されます。「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md)」を参照してください。
 
 ## 前提条件
 
-* **Azure サブスクリプション** - アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* **Azure サブスクリプション** - アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 * **Windows Server 2012 R2 または Windows Server 2012 を実行するオンプレミスのコンピューター** - このコンピューターが HPC クラスターのヘッド ノードになります。Windows Server をまだ実行していない場合は、[評価版](http://technet.microsoft.com/evalcenter/dn205286.aspx)をダウンロードしてインストールできます。
 
@@ -348,4 +348,4 @@ Azure のクラスター リソースを使用する場合、HPC クラスター
 [stop_node4]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node4.png
 [view_instances2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/view_instances2.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

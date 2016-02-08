@@ -3,7 +3,7 @@
 	description="Visual Studio 接続済みサービスを使用して Azure Mobile Services に Cordova プロジェクトを接続した後の最初の手順について説明します。"
 	services="mobile-services"
 	documentationCenter=""
-	authors="TomArcher"
+	authors="mlhoop"
 	manager="douge"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="multiple"
 	ms.topic="article"
 	ms.date="01/05/2016"
-	ms.author="tarcher"/>
+	ms.author="mlearned"/>
 
 # Mobile Services の使用 (Cordova プロジェクト)
 
@@ -88,6 +88,6 @@ where メソッドを使用してクエリを変更できます。次の例で�
         items.splice(items.indexOf(todoItem), 1);
     });
 
-[モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
+[モバイル サービスの詳細を確認する](https://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

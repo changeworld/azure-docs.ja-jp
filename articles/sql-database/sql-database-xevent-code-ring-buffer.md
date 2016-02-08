@@ -51,7 +51,7 @@
 ## 前提条件
 
 
-- Azure アカウントとサブスクリプション。[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+- Azure アカウントとサブスクリプション。[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
 
 - テーブルを作成できるデータベース。
@@ -385,4 +385,4 @@ Azure SQL Database での拡張イベントに関する主なトピックは次�
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

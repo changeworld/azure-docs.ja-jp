@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="na" 
-   ms.date="10/15/2015"
+   ms.date="01/25/2016"
    ms.author="coreyp"/>
    
 #Azure Automation DSC での構成のコンパイル#
@@ -56,9 +56,9 @@ Azure Automation を使用して、Desired State Configuration (DSC) 構成を�
     $CompilationJob = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "SampleConfig"
     
     while($CompilationJob.EndTime –eq $null -and $CompilationJob.Exception –eq $null)       	
-    {$CompilationJob = $CompilationJob | Get-AzureRmAutomationDscCompilationJob
+    {
+    	$CompilationJob = $CompilationJob | Get-AzureRmAutomationDscCompilationJob
     	Start-Sleep -Seconds 3
-    
     }
     
     $CompilationJob | Get-AzureRmAutomationDscCompilationJobOutput –Stream Any 
@@ -66,32 +66,33 @@ Azure Automation を使用して、Desired State Configuration (DSC) 構成を�
 
 ##基本パラメーター##
 
-DSC 構成のパラメーターの宣言 (パラメーターの種類、プロパティなど) は、Azure Automation Runbook と同じように動作します。Runbook のパラメーターの詳細については、「[Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)」を参照してください。
+DSC 構成のパラメーターの宣言 (パラメーターの種類、プロパティなど) は、Azure Automation Runbook と同じように動作します。Runbook のパラメーターの詳細については、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
 
 次の例では、コンパイル時に生成される、**ParametersExample.sample** ノード構成のプロパティの値を指定するために、**FeatureName** と **IsPresent** という 2 つのパラメーターを使用します。
 
-    Configuration ParametersExample {
+    Configuration ParametersExample
+    {
     	param(
-    	[Parameter(Mandatory=$true)]
+    		[Parameter(Mandatory=$true)]
     
-    	[string] $FeatureName,
+    		[string] $FeatureName,
     
-    	[Parameter(Mandatory=$true)]
-    	[boolean] $IsPresent
+    		[Parameter(Mandatory=$true)]
+    		[boolean] $IsPresent
+    	)
     
-    )
+    	$EnsureString = "Present"
+    	if($IsPresent -eq $false)
+    	{
+    		$EnsureString = "Absent"
+    	}
     
-    $EnsureString = "Present"
-    if($IsPresent -eq $false) {
-    	$EnsureString = "Absent"
-    
-    }
-    
-    Node "sample" {
-    
-    	WindowsFeature ($FeatureName + "Feature") {
-    		Ensure = $EnsureString
-    		Name = $FeatureName
+    	Node "sample"
+    	{
+    		WindowsFeature ($FeatureName + "Feature")
+    		{
+    			Ensure = $EnsureString
+    			Name = $FeatureName
     		}
     	}
     }
@@ -123,31 +124,28 @@ PSCredentials をパラメーターとして渡す方法の詳細については
 
 PowerShell DSC の使用時に、**ConfigurationData** によって、環境固有の構成と構造上の構成を分離することができます。**ConfigurationData** の詳細については、[PowerShell DSC で "環境" から "物" を分離する](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx)ことに関する記事を参照してください。
 
->[AZURE.NOTE]Azure ポータルではなく、Azure PowerShell を使用して Azure Automation DSC でコンパイルする場合に、**ConfigurationData** を使用できます。
+>[AZURE.NOTE] Azure ポータルではなく、Azure PowerShell を使用して Azure Automation DSC でコンパイルする場合に、**ConfigurationData** を使用できます。
 
 次の DSC 構成の例では、**$ConfigurationData** および **$AllNodes** キーワードを介して **ConfigurationData** を使用します。この例では、[**xWebAdministration** モジュール](https://www.powershellgallery.com/packages/xWebAdministration/)も必要になります。
 
-     Configuration ConfigurationDataSample {
+     Configuration ConfigurationDataSample
+     {
     	Import-DscResource -ModuleName xWebAdministration -Name MSFT_xWebsite
     
     	Write-Verbose $ConfigurationData.NonNodeData.SomeMessage 
     
     	Node $AllNodes.Where{$_.Role -eq "WebServer"}.NodeName
     	{
-    
     		xWebsite Site
     		{
-    
     			Name = $Node.SiteName
     			PhysicalPath = $Node.SiteContents
     			Ensure   = "Present"
     		}
-    
     	}
- 
     }
 
-PowerShell を使用して、上記の DSC 構成をコンパイルできます。このコンパイルにより、Azure Automation DSC プル サーバーに、**ConfigurationDataSample.MyVM1** と **ConfigurationDataSample.MyVM3** の 2 つのノード構成を追加します。
+上記の DSC 構成は PowerShell を使用してコンパイルできます。以下の PowerShell では、**ConfigurationDataSample.MyVM1** と **ConfigurationDataSample.MyVM3** という 2 つのノード構成が Azure Automation DSC プル サーバーに追加されます。
 
     $ConfigData = @{
     	AllNodes = @(
@@ -195,45 +193,39 @@ Azure Automation の DSC 構成では **Get-AutomationPSCredential** を使用�
 
 次の例は、Automation 資格情報資産を使用する DSC 構成の例です。
 
-    Configuration CredentialSample {
-    
+    Configuration CredentialSample
+    {
        $Cred = Get-AutomationPSCredential -Name "SomeCredentialAsset"
     
-    	Node $AllNodes.NodeName { 
-    
-    		File ExampleFile { 
+    	Node $AllNodes.NodeName
+    	{ 
+    		File ExampleFile
+    		{ 
     			SourcePath = "\\Server\share\path\file.ext" 
     			DestinationPath = "C:\destinationPath" 
     			Credential = $Cred 
-    
        		}
-    
     	}
-    
     }
 
-PowerShell を使用して上記の DSC 構成をコンパイルできます。コンパイルすると、Azure Automation DSC プル サーバーに **CredentialSample.MyVM1** と **CredentialSample.MyVM2** の 2 つのノード構成が追加されます。
+上記の DSC 構成は PowerShell を使用してコンパイルできます。以下の PowerShell では、**CredentialSample.MyVM1** と **CredentialSample.MyVM2** という 2 つのノード構成が Azure Automation DSC プル サーバーに追加されます。
 
 
     $ConfigData = @{
     	AllNodes = @(
-    		 @{
+    		@{
     			NodeName = "*"
     			PSDscAllowPlainTextPassword = $True
     		},
-    
     		@{
     			NodeName = "MyVM1"
     		},
-    
     		@{
     			NodeName = "MyVM2"
     		}
     	)
-    } 
-    
-    
+    }
     
     Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "CredentialSample" -ConfigurationData $ConfigData
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

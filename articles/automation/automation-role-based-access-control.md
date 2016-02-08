@@ -37,13 +37,13 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 
 ## Azure ポータルを使用して Automation アカウントの RBAC を構成する
 
-1.	[Azure ポータル](http://portal.azure.com/)にログインし、[Automation アカウント] ブレードから、ご利用の Automation アカウントを開きます。  
+1.	[Azure ポータル](https://portal.azure.com/)にログインし、[Automation アカウント] ブレードから、ご利用の Automation アカウントを開きます。  
 
 2.	右上隅にある **[アクセス]** コントロールをクリックします。表示された **[ユーザー]** ブレードで、ご利用の Automation アカウントを管理するための新しいユーザー、グループ、アプリケーションを追加できるほか、その Automation アカウント用に構成できる既存のロールを確認できます。
 
     ![Access button](media/automation-role-based-access-control/automation-01-access-button.png)
 
->[AZURE.NOTE]**[サブスクリプション管理]** は、既定のユーザーとして最初から存在します。Active Directory のサブスクリプション管理グループには、Azure サブスクリプションのサービス管理者と共同管理者が含まれます。サービス管理者は、Azure サブスクリプションとそのリソースの所有者であり、Automation アカウントにも所有者ロールが継承されます。つまり、サブスクリプションの**サービス管理者と共同管理者**のアクセス権が**継承**されます。それ以外のユーザーについてはアクセス権を**割り当てる**ことになります。**[サブスクリプション管理]** をクリックすると、その権限の詳細が表示されます。
+>[AZURE.NOTE]  **[サブスクリプション管理]** は、既定のユーザーとして最初から存在します。Active Directory のサブスクリプション管理グループには、Azure サブスクリプションのサービス管理者と共同管理者が含まれます。サービス管理者は、Azure サブスクリプションとそのリソースの所有者であり、Automation アカウントにも所有者ロールが継承されます。つまり、サブスクリプションの**サービス管理者と共同管理者**のアクセス権が**継承**されます。それ以外のユーザーについてはアクセス権を**割り当てる**ことになります。**[サブスクリプション管理]** をクリックすると、その権限の詳細が表示されます。
 
 ### 新しいユーザーの追加とロールの割り当て
 
@@ -67,7 +67,7 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 
 ![Assign role from users blade](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
    
->[AZURE.NOTE]ロールベースのアクセス制御は、Automation アカウント レベルでのみ設定できます。Automation アカウントより下のリソース レベルで設定することはできません。
+>[AZURE.NOTE] ロールベースのアクセス制御は、Automation アカウント レベルでのみ設定できます。Automation アカウントより下のリソース レベルで設定することはできません。
 
 ロールは、単一のユーザー、グループ、またはアプリケーションに複数割り当てることができます。たとえば、**Automation オペレーター** ロールと**閲覧者ロール**をユーザーに追加した場合、そのユーザーは、すべての Automation リソースを表示することに加え、Runbook ジョブを実行することができます。ドロップダウンを展開すると、ユーザーに割り当てられているロールの一覧を表示できます。
 
@@ -136,7 +136,7 @@ Automation アカウントに対するロールベースのアクセス制御は
 
 ## 次のステップ
 -  Azure Automation に対して RBAC を構成する各種の方法については、「[Azure PowerShell を使用したロールベースのアクセス制御 (RBAC) の管理](../active-directory/role-based-access-control-manage-access-powershell.md)」を参照してください。
-- Runbook を開始するさまざまな方法については、「[Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)」を参照してください。
+- Runbook を開始するさまざまな方法については、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
 - 種類については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

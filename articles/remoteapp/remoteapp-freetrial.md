@@ -24,10 +24,10 @@ Azure サブスクリプションをお持ちであれば、[Azure RemoteApp を
 
 評価版モードでは、2 つのコレクションとコレクションごとに 10 人までのユーザーを作成できます。その他の制限はありません。いつでも、評価版から有料サブスクリプションに変換できます。30 日が経過しても有料サブスクリプションに変換しない場合は、コレクションは無効状態になります。
 
->[AZURE.NOTE]評価版モードで作成したコレクションには、Azure SLA は適用されません。
+>[AZURE.NOTE] 評価版モードで作成したコレクションには、Azure SLA は適用されません。
 
-すぐに使用したい場合 [クラウド デプロイメントの作成](http://azure.microsoft.com/documentation/videos/azure-remoteapp-cloud-deployment-overview/)方法に関する動画をご覧ください。
+すぐに使用したい場合 [クラウド デプロイメントの作成](https://azure.microsoft.com/documentation/videos/azure-remoteapp-cloud-deployment-overview/)方法に関する動画をご覧ください。
 
-フィードバックが欲しい場合 [ディスカッション フォーラム](http://feedback.azure.com/forums/247748-azure-remoteapp)に質問を投稿してください。[Azure サポート プラン](http://azure.microsoft.com/support/plans/)に加入している場合は、サポート ケースを送信できます。[フィードバック フォーラム](http://feedback.azure.com/forums/247748-azure-remoteapp)には、どなたでもフィードバックを送信できます。
+フィードバックが欲しい場合 [ディスカッション フォーラム](https://feedback.azure.com/forums/247748-azure-remoteapp/)に質問を投稿してください。[Azure サポート プラン](https://azure.microsoft.com/support/plans/)に加入している場合は、サポート ケースを送信できます。[フィードバック フォーラム](https://feedback.azure.com/forums/247748-azure-remoteapp/)には、どなたでもフィードバックを送信できます。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -18,6 +18,12 @@
 
 #Windows Phone Silverlight SDK リリース ノート
 
+##3\.2.0 (01/22/2016)
+*MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.3.0** の一部
+
+-   アクション url で カスタム スキームと ms appx および ms appdata を使用できるようになりました。
+-   安定性が向上しました。
+  
 ##3\.1.0 (11/20/2015)
 *MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.2.0** の一部
 
@@ -37,4 +43,4 @@
 -   セキュリティの強化。
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0128_2016-->

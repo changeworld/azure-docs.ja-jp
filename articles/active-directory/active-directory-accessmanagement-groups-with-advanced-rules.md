@@ -37,8 +37,9 @@ Azure ポータルを使用すると、Azure Active Directory (Azure AD) で高�
 
 サポートされているパラメーターと式のルール演算子の全一覧については、以降のセクションを参照してください。
 
-高度なルール本体の合計文字数が 255 文字を超えないようにしてください。
-> [AZURE.NOTE]文字列演算と正規表現演算は、大文字と小文字が区別されません。定数に $null を使用することで Null チェックを実行することもできます (例: user.department -eq $null)。二重引用符 (") を含んだ文字列は、バック クォート文字 (`) でエスケープする必要があります (例: user.department -eq "Sa`"les")。
+高度なルール本体の合計文字数が 2048 文字を超えないようにしてください。
+> [AZURE.NOTE]
+文字列演算と正規表現演算は、大文字と小文字が区別されません。定数に $null を使用することで Null チェックを実行することもできます (例: user.department -eq $null)。二重引用符 (") を含んだ文字列は、バック クォート文字 (`) でエスケープする必要があります (例: user.department -eq "Sa`"les")。
 
 ##サポートされている式のルール演算子
 次の表に、高度なルール本体で使用できる、サポートされているすべての式のルール演算子とその構文を示します。
@@ -59,7 +60,7 @@ Azure ポータルを使用すると、Azure Active Directory (Azure AD) で高�
 |----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | エラー: 属性がサポートされていません。 | (user.invalidProperty -eq "Value") | (user.department -eq "value")プロパティは、サポートされているプロパティの一覧に示したいずれかのプロパティと一致している必要があります。 |
 | エラー: 属性で演算子がサポートされていません。 | (user.accountEnabled -contains true) | (user.accountEnabled -eq true)プロパティはブール型です。前掲の一覧からブール型でサポートされている演算子 (-eq または -ne) を使用してください。 |
-| エラー: クエリ コンパイル エラー。 | (user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "@domain.ext") | (user.department -eq "Sales") -and (user.department -eq "Marketing") 論理演算子は、上記のサポートされるプロパティ リストのいずれかと一致する必要があります。(user.userPrincipalName -match ".@domain.ext") または (user.userPrincipalName -match "@domain.ext$") は正規表現ではエラーになります。 |
+| エラー: クエリ コンパイル エラー。 | (user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") | (user.department -eq "Sales") -and (user.department -eq "Marketing") 論理演算子は、上記のサポートされるプロパティ リストのいずれかと一致する必要があります。(user.userPrincipalName -match ".*@domain.ext") または (user.userPrincipalName -match "@domain.ext$") は正規表現ではエラーになります。 |
 | エラー: バイナリ式の形式が正しくありません。 | (user.department –eq “Sales”) (user.department -eq "Sales")(user.department-eq"Sales") | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")クエリにいくつかの誤りが存在します。かっこの位置が正しくありません。 |
 | エラー: 動的メンバーシップの設定中に不明なエラーが発生しました。 | (user.accountEnabled -eq "True" AND user.userPrincipalName -contains "alias@domain") | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")クエリにいくつかの誤りが存在します。かっこの位置が正しくありません。 |
 
@@ -148,14 +149,27 @@ Azure ポータルを使用すると、Azure Active Directory (Azure AD) で高�
 | otherMails | 任意の文字列値 | (user.otherMails -contains "alias@domain") |
 | proxyAddresses | SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -contains "SMTP: alias@domain") |
 
+## 拡張属性とカスタム属性
+拡張属性とカスタム属性は、動的なメンバーシップ ルールでサポートされます。
+
+拡張属性はオンプレミスの Window Server AD から同期され、"ExtensionAttributeX" という形式です (X は 1 ～ 15)。拡張属性を使用するルールの例を次に示します。
+
+(user.extensionAttribute15 -eq "Marketing")
+
+カスタム属性はオンプレミスの Windows Server AD または接続された SaaS アプリケーションから同期され、形式は "user.extension\_[GUID]\_\_[Attribute]" です。[GUID] は AAD で属性を作成したアプリケーションの AAD での一意の識別子、[Attribute] は作成された属性の名前です。カスタム属性を使用するルールの例を次に示します
+
+user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
+
+カスタム属性名は、Graph Explorer を使用してユーザーの属性をクエリして属性名を検索することにより、ディレクトリで見つけることができます。
+
 ## 直接の部下のルール
 ユーザーのマネージャー属性に基づいてグループにメンバーを設定できるようになりました。
 "Manager" グループとしてグループを構成するには
 --------------------------------------------------------------------------------
 1. 管理者ポータルで、**[構成]** タブをクリックし、**[高度なルール]** を選択します。
-2. 次の直接の部下用の構文を使用してルールを入力します: Direct Reports for {UserID\_of\_manager}。直接の部下用の有効なルールの例は次のようになります。 
+2. 次の直属の部下の構文を使用してルールを入力します。*Direct Reports for {UserID\_of\_manager}*。直属の部下の有効なルールの例を示します。 
 
-Direct Reports for 62e19b97-8b3d-4d4a-a106-4ce66896a863
+Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
 
 ここで、"62e19b97-8b3d-4d4a-a106-4ce66896a863" はマネージャーのオブジェクト ID を示しています。オブジェクト ID は、AAD 管理ポータルにある、マネージャーであるユーザーのユーザー ページの [プロファイル] タブで確認できます。
 
@@ -173,4 +187,4 @@ Direct Reports for 62e19b97-8b3d-4d4a-a106-4ce66896a863
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

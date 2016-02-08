@@ -91,7 +91,7 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
 ## Azure AD インスタンスへのアプリの追加方法
 Azure AD にアプリを追加するにはさまざまな方法があります。
 
-* [Azure Active Directory アプリ ギャラリー](http://azure.microsoft.com/updates/azure-active-directory-over-1000-apps/)からアプリを追加します
+* [Azure Active Directory アプリ ギャラリー](https://azure.microsoft.com/updates/azure-active-directory-over-1000-apps/)からアプリを追加します
 * Azure Active Directory に統合されているサードパーティのアプリにサインアップ/サインインします (例: [Smartsheet](https://app.smartsheet.com/b/home)、[DocuSign](https://www.docusign.net/member/MemberLogin.aspx))
     * サインアップ/サインインの間に、ユーザーには、アプリに対してプロファイルにアクセスするためのアクセス許可および他のアクセス許可を与えることが求められます。最初のユーザーがそれに同意した時点で、アプリを表すサービス プリンシパルがディレクトリに追加されます。
 * [Office 365](http://products.office.com/) などの Microsoft オンライン サービスにサインアップ/サインインします
@@ -146,4 +146,4 @@ Azure AD にアプリケーションを追加する方法およびアプリ用�
 [apps_service_principals_directory]: media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
 [app_settings]: media/active-directory-how-applications-are-added/IntegratedAppSettings.jpg
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

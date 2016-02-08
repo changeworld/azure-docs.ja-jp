@@ -17,7 +17,7 @@
 
 # Azure Web アプリのパフォーマンスの監視
 
-[Azure ポータル](http://portal.azure.com)を使用すると、[Azure Web アプリ](../app-service-web/app-service-web-overview.md)または [Virtual Machines](../virtual-machines/virtual-machines-about.md) のアプリケーションの依存関係の統計と詳細を収集する監視を設定できます。
+[Azure ポータル](https://portal.azure.com)を使用すると、[Azure Web アプリ](../app-service-web/app-service-web-overview.md)または [Virtual Machines](../virtual-machines/virtual-machines-about.md) のアプリケーションの依存関係の統計と詳細を収集する監視を設定できます。
 
 Azure は、*拡張機能*を活用してアプリケーション パフォーマンス監視 (*APM*) をサポートします。これらの拡張機能はアプリケーションにインストールされ、データを収集し、監視サービスにレポートを返します。
 
@@ -83,4 +83,4 @@ Application Insights のブレードが表示されたら、[パフォーマン�
 * Application Insights で [Web ページの可用性と応答性を監視](../app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

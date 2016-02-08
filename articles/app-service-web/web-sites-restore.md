@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/07/2015" 
+	ms.date="01/26/2016" 
 	ms.author="cephalin"/>
 
 # Azure App Service でのアプリの復元
@@ -22,7 +22,7 @@
 
 App Service の復元機能を使用すると、リンクされたデータベース (SQL Database または MySQL) をオンデマンドで使用してアプリを以前の状態に戻したり、元のアプリのいずれかのバックアップに基づいて新しいアプリを作成したりすることができます。最新バージョンと並行して実行される新しいアプリを作成すると、A/B テストを実施する場合に役立ちます。
 
-App Service の復元機能 ([Azure ポータル](http://portal.azure.com)の **[Backup]** ブレードで利用可能) は、Standard および Premium の価格レベルでのみ使用できます。Standard または Premium レベルを使用しているアプリをスケーリングする方法については、「[Azure App Service のアプリをスケーリングする](web-sites-scale.md)」を参照してください。Premium レベルでは、日次バックアップの実行回数を Standard レベルよりも多く設定できます。
+App Service の復元機能 ([Azure ポータル](https://portal.azure.com)の **[Backup]** ブレードで利用可能) は、Standard および Premium の価格レベルでのみ使用できます。Standard または Premium レベルを使用しているアプリをスケーリングする方法については、「[Azure App Service のアプリをスケーリングする](web-sites-scale.md)」を参照してください。Premium レベルでは、日次バックアップの実行回数を Standard レベルよりも多く設定できます。
 
 <a name="PreviousBackup"></a>
 ## 以前に作成したバックアップからアプリを復元するには
@@ -41,7 +41,7 @@ App Service の復元機能 ([Azure ポータル](http://portal.azure.com)の **
 
 	![](./media/web-sites-restore/022ChooseDestination.png)
 	
-	>[AZURE.WARNING]**[上書き]** を選択すると、既存のアプリに関連するすべてのデータが削除されます。**[OK]** をクリックする前に、実行する操作内容が正しいことを確認します。
+	>[AZURE.WARNING] **[上書き]** を選択すると、既存のアプリに関連するすべてのデータが削除されます。**[OK]** をクリックする前に、実行する操作内容が正しいことを確認します。
 	
 	**[既存のアプリ]** を選択して、アプリのバックアップを同じリソース グループ内の別のアプリに復元することができます。このオプションを使用する前に、リソース グループ内に別のアプリを作成済みであり、データベース構成を、アプリのバックアップ内に定義されている構成にミラーリングしている必要があります。
 	
@@ -80,11 +80,11 @@ App Service の復元機能 ([Azure ポータル](http://portal.azure.com)の **
 	
 詳細ブレードに、操作に関連する利用可能な情報が表示されます。
 	
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 次のステップ
 
-REST API を使用して、App Service アプリのバックアップと復元を実行することもできます (「[REST を使用して App Service アプリのバックアップと復元を実行する](websites-csm-backup.md)」をご覧ください)。
+REST API を使用して、App Service アプリのバックアップと復元を実行することもできます (「[REST を使用して App Service アプリのバックアップと復元を実行する](websites-csm-backup.md)」を参照してください)。
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
@@ -106,4 +106,4 @@ REST API を使用して、App Service アプリのバックアップと復元�
 [OperationDetails]: ./media/web-sites-restore/13OperationDetails.png
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -26,7 +26,7 @@ Stream Analytics ジョブを作成するときは、データ変換出力の使
 
 ## SQL Database ##
 
-[Azure SQL Database](http://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。Stream Analytics ジョブは、Azure SQL Database の既存のテーブルに書き込みます。テーブル スキーマは、ジョブから出力されるフィールドとその型に正確に一致する必要があります。次の表に、SQL Database の出力を作成するためのプロパティ名とその説明を示します。
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。Stream Analytics ジョブは、Azure SQL Database の既存のテーブルに書き込みます。テーブル スキーマは、ジョブから出力されるフィールドとその型に正確に一致する必要があります。次の表に、SQL Database の出力を作成するためのプロパティ名とその説明を示します。
 
 | プロパティ名 | 説明 |
 |---------------|-------------|
@@ -118,7 +118,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 
 Stream Analytics ジョブの出力として [Power BI](https://powerbi.microsoft.com/) を使用し、分析結果の豊富な視覚化エクスペリエンスを提供できます。この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
 
-> [AZURE.NOTE]現時点では、Power BI 出力の作成および構成は Azure プレビュー ポータルでサポートされていません。
+> [AZURE.NOTE] 現時点では、Power BI 出力の作成および構成は Azure プレビュー ポータルでサポートされていません。
 
 ### Power BI アカウントを承認する
 
@@ -145,7 +145,7 @@ Power BI アカウントを認証すると、Power BI 出力のプロパティ�
 
 Power BI 出力およびダッシュボードの構成のチュートリアルについては、[Azure Stream Analytics & Power BI](stream-analytics-power-bi-dashboard.md) の記事を参照してください。
 
-> [AZURE.NOTE]Power BI ダッシュボードにデータセットとテーブルを明示的に作成しないでください。ジョブが開始され、このジョブによって出力が Power BI に流し込まれるときに、データセットとテーブルが自動的に設定されます。ジョブ クエリで結果が生成されない場合、データセットとテーブルは作成されません。また、この Stream Analytics ジョブで指定したものと同じ名前のデータセットとテーブルが Power BI に既に存在する場合は、既存のデータが上書きされるので注意してください。
+> [AZURE.NOTE] Power BI ダッシュボードにデータセットとテーブルを明示的に作成しないでください。ジョブが開始され、このジョブによって出力が Power BI に流し込まれるときに、データセットとテーブルが自動的に設定されます。ジョブ クエリで結果が生成されない場合、データセットとテーブルは作成されません。また、この Stream Analytics ジョブで指定したものと同じ名前のデータセットとテーブルが Power BI に既に存在する場合は、既存のデータが上書きされるので注意してください。
 
 ### Power BI の承認を更新する
 
@@ -210,7 +210,7 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 
 ## DocumentDB
 
-[Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) は完全に管理された NoSQL ドキュメント データベース サービスであり、スキーマのないデータに対するクエリとトランザクション、予測可能で信頼性のあるパフォーマンス、および迅速な開発を実現します。
+[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) は完全に管理された NoSQL ドキュメント データベース サービスであり、スキーマのないデータに対するクエリとトランザクション、予測可能で信頼性のあるパフォーマンス、および迅速な開発を実現します。
 
 次の表に、DocumentDB 出力を作成するためのプロパティ名とその説明を示します。
 
@@ -267,4 +267,4 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

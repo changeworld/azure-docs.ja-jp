@@ -46,7 +46,7 @@ Azure リソース グループで Azure CLI を使用するには、適切な A
 
 ### Azure アカウントとサブスクリプションを設定する
 
-Azure サブスクリプションをまだ持っていない場合でも、Visual Studio サブスクリプションがあれば、[Visual Studio サブスクライバー向けの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をアクティブ化できます。または、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+Azure サブスクリプションをまだ持っていない場合でも、Visual Studio サブスクリプションがあれば、[Visual Studio サブスクライバー向けの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をアクティブ化できます。または、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
 Azure リソース管理テンプレートを使用するには、職場のアカウント、学校のアカウント、Microsoft アカウントのいずれかの ID を所有している必要があります。いずれかのアカウントを所有している場合、次のコマンドを入力します。
 
@@ -59,7 +59,7 @@ Azure リソース管理テンプレートを使用するには、職場のア�
     Enter the code E1A2B3C4D to authenticate. If you're signing in as an Azure
     AD application, use the --username and --password parameters.
 
-> [AZURE.NOTE]Azure アカウントを持っていない場合、別の種類のアカウントが必要であることを示すエラー メッセージが表示されます。現在の Azure アカウントから作成する方法については、「[Azure Active Directory で職場または学校の ID を作成する](../virtual-machines/resource-group-create-work-id-from-personal.md)」を参照してください。
+> [AZURE.NOTE] Azure アカウントを持っていない場合、別の種類のアカウントが必要であることを示すエラー メッセージが表示されます。現在の Azure アカウントから作成する方法については、「[Azure Active Directory で職場または学校の ID を作成する](../virtual-machines/resource-group-create-work-id-from-personal.md)」を参照してください。
 
 ブラウザーで [https://aka.ms/devicelogin](https://aka.ms/devicelogin) を開き、コマンド出力で生成されたコードを入力します。
 
@@ -136,7 +136,7 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
 コマンド プロンプトで次のコマンドを入力し、新規または既存のリソース グループで DocumentDB アカウントを作成します。
 
-> [AZURE.TIP]Azure PowerShell または Windows PowerShell でこのコマンドを実行する場合、予想外のコマンドに関するエラーを受け取ります。代わりに、Windows PowerShell コマンド プロンプトでこのコマンドを実行します。
+> [AZURE.TIP] Azure PowerShell または Windows PowerShell でこのコマンドを実行する場合、予想外のコマンドに関するエラーを受け取ります。代わりに、Windows PowerShell コマンド プロンプトでこのコマンドを実行します。
 
     azure resource create -g <resourcegroupname> -n <databaseaccountname> -r "Microsoft.DocumentDB/databaseAccounts" -o "2015-04-08" -l <databaseaccountlocation> -p "{"databaseAccountOfferType":"Standard"}" 
 
@@ -314,7 +314,7 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
 リソース グループまたはデータベース アカウントの作成中に `Deployment provisioning state was not successful` のようなエラーが発生する場合、いくつかのトラブルシューティング方法があります。
 
-> [AZURE.NOTE]データベース アカウント名に正しくない文字を指定するか、DocumentDB を使用できない場所を指定すると、デプロイメント エラーが発生します。データベース アカウント名に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。有効なデータベース アカウントの場所一覧については、[Azure リージョンのページ](https://azure.microsoft.com/regions/#services)を参照してください。
+> [AZURE.NOTE] データベース アカウント名に正しくない文字を指定するか、DocumentDB を使用できない場所を指定すると、デプロイメント エラーが発生します。データベース アカウント名に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。有効なデータベース アカウントの場所一覧については、[Azure リージョンのページ](https://azure.microsoft.com/regions/#services)を参照してください。
 
 - 出力に次の `Error information has been recorded to C:\Users\wendy\.azure\azure.err` が含まれている場合は、azure.err ファイルでエラー情報を確認してください。
 
@@ -349,6 +349,6 @@ DocumentDB の詳細については、以下の資料を参照してください
 -	[DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 -	[DocumentDB のリソース モデルと概念](documentdb-resources.md)
 
-使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」を参照してください。
+使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0128_2016-->

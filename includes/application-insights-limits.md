@@ -1,4 +1,4 @@
- 制限は、選択する[価格レベル](http://azure.microsoft.com/pricing/details/application-insights/)によって異なります。
+ 制限は、選択する[価格レベル](https://azure.microsoft.com/pricing/details/application-insights/)によって異なります。
 
 **リソース** | **既定の制限** | **上限**
 -------- | ------------- | -------------
@@ -21,4 +21,4 @@
  
 [Application Insights の価格とクォータについて](app-insights-pricing.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

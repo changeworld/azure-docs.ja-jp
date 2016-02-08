@@ -26,15 +26,15 @@ Azure Media Services には、ほとんどのプラットフォーム (iOS デ�
 
 ##Azure Media Player
 
-[Azure Media Player](http://aka.ms/ampinfo) は、さまざまなブラウザーやデバイス上で Microsoft Azure Media Services からメディア コンテンツを再生できる組み込みの Web ビデオ プレーヤーです。Azure Media Seria Player では、HTML5、Media Source Extensions (MSE)、Encrypted Media Extensions (EME) といった業界標準を使用して、強化されたアダプティブ ストリーミングを提供します。デバイスやブラウザーでこれらの標準を使用できない場合、Azure Media Player は Flash や Silverlight をフォールバック テクノロジとして使用します。使用する再生テクノロジにかかわらず、開発者は統一された JavaScript インターフェイスを使用して API にアクセスできます。これにより、Azure Media Services で提供されるコンテンツを、さまざまなデバイスやブラウザーで追加作業なしで再生できるようになります。
+[Azure Media Player](http://aka.ms/ampinfo) は、さまざまなブラウザーやデバイス上で Microsoft Azure Media Services からメディア コンテンツを再生できる組み込みの Web ビデオ プレーヤーです。Azure Media Player では、HTML5、Media Source Extensions (MSE)、Encrypted Media Extensions (EME) といった業界標準を使用して、強化されたアダプティブ ストリーミングを提供します。デバイスやブラウザーでこれらの標準を使用できない場合、Azure Media Player は Flash や Silverlight をフォールバック テクノロジとして使用します。使用する再生テクノロジにかかわらず、開発者は統一された JavaScript インターフェイスを使用して API にアクセスできます。これにより、Azure Media Services で提供されるコンテンツを、さまざまなデバイスやブラウザーで追加作業なしで再生できるようになります。
 
-Microsoft Azure Media Services では、DASH、スムーズ ストリーミング、HLS ストリーミングなどの形式でコンテンツを提供して再生できます。Azure Media Player はこれらの多用な形式を考慮し、プラットフォームやブラウザーの性能に基づいて最適なリンクを自動的に再生します。また、Microsoft Azure Media Services では PlayReady 暗号化や AES-128 ビットエンベロープ暗号化を使用したアセットの動的暗号化も可能です。Azure Media Player では、コンテンツが適切に構成されていれば、PlayReady 暗号化や AES-128 ビットエンベロープ暗号化されたコンテンツの暗号化を解除できます。
+Microsoft Azure Media Services では、DASH、スムーズ ストリーミング、HLS ストリーミングなどの形式でコンテンツを提供して再生できます。Azure Media Player はこれらの多用な形式を考慮し、プラットフォームやブラウザーの性能に基づいて最適なリンクを自動的に再生します。また、Microsoft Azure Media Services では PlayReady 暗号化や AES-128 ビットエンベロープ暗号化を使用した資産の動的暗号化も可能です。Azure Media Player では、コンテンツが適切に構成されていれば、PlayReady 暗号化や AES-128 ビットエンベロープ暗号化されたコンテンツの暗号化を解除できます。
 
 詳細:
 
 - [Azure Media Player](http://aka.ms/ampinfo)
 - [Azure Media Player のドキュメント](http://aka.ms/ampdocs) 
-- [Azure Media Player の概要に関するブログ](http://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player)
+- [Azure Media Player の概要に関するブログ](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/)
 - [Azure Media Player を最新の状態に維持するためのサインアップのページ](http://aka.ms/ampsignup)
 - [新しい機能に関する要望、アイデア、フィードバックを追加するページ](http://aka.ms/ampuservoice) 
 
@@ -82,4 +82,4 @@ Azure Media Services では、Windows メディア プラットフォームの�
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js)
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

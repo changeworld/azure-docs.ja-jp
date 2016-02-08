@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="01/22/2016"
 	ms.author="kgremban"/>
 
 # Azure AD アプリケーション プロキシの有効化
-> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 Microsoft Azure Active Directory アプリケーション プロキシを使用すると、SharePoint サイト、Outlook Web Access、IIS ベースのアプリなどのアプリケーションをプライベート ネットワーク内で発行し、ネットワーク外部のユーザーにセキュリティで保護されたアクセスを提供できます。従業員は、自宅から自分のデバイスでアプリケーションにログインし、このクラウド ベースのプロキシを使用して認証を行うことができます。
 
@@ -30,7 +30,7 @@ Microsoft Azure Active Directory アプリケーション プロキシを使用�
 
 - Microsoft Azure AD の [Basic または Premium サブスクリプション](active-directory-editions.md)に加え、自分が全体管理者となっている Azure AD ディレクトリ。
 - アプリケーション プロキシ コネクタをインストールできる Windows Server 2012 R2 または Windows 8.1 以降が実行されているサーバー。このサーバーは、クラウド内のアプリケーション プロキシ サービスに HTTPS 要求を送信できることと、発行予定のアプリケーションに HTTPS で接続できることが必要です。
-- 経路上にファイアウォールが存在する場合、コネクタからアプリケーション プロキシに送信される HTTPS (TCP) 要求を許可するようにファイアウォールを開放する必要があります。コネクタは、上位ドメイン msappproxy.net に属しているサブドメインと併せて、これらのポートを使用します。**送信**トラフィックに対しては、以下のポートを**すべて**開放してください。
+- 経路上にファイアウォールが存在する場合、コネクタからアプリケーション プロキシに送信される HTTPS (TCP) 要求を許可するようにファイアウォールを開放する必要があります。コネクタは、上位ドメイン msappproxy.net および servicebus.windows.net に属しているサブドメインと併せて、これらのポートを使用します。**送信**トラフィックに対しては、以下のポートを**すべて**開放してください。
 
 ポート番号 | 説明
 --- | ---
@@ -95,4 +95,4 @@ Microsoft Azure Active Directory アプリケーション プロキシを使用�
 * [Azure ID](fundamentals-identity.md)
 * [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

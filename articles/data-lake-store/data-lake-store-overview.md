@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/28/2015"
+   ms.date="01/22/2016"
    ms.author="nitinme"/>
 
 # Azure Data Lake Store の概要
 
 Azure Data Lake Store は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。Azure Data Lake を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、および取り込み速度のデータを 1 か所でキャプチャすることができます。
 
-> [AZURE.TIP]Azure Data Lake Store サービスの調査を開始するには、[Data Lake Store ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/data-lake-store-self-guided-training/)を使用してください。
+> [AZURE.TIP] Azure Data Lake Store サービスの調査を開始するには、[Data Lake Store ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/data-lake-store-self-guided-training/)を使用してください。
 
 Azure Data Lake Store には、Hadoop (HDInsight クラスターで使用可能) から、WebHDFS 互換の REST API を使用してアクセスできます。Azure Data Lake Store は、格納されたデータを分析できるように特別に設計されており、データ分析シナリオに合わせてパフォーマンスの調整が行われます。これには、企業における実際のユース ケースで不可欠なエンタープライズ レベルのすべての機能 (セキュリティ、管理の容易性、スケーラビリティ、信頼性、および可用性) が既定で組み込まれています。
 
@@ -55,6 +55,8 @@ Data Lake Store では、格納されたデータに対してエンタープラ�
 
 Azure Data Lake Store では、任意のデータをネイティブ形式でそのまま格納することができ、事前の変換は必要ありません。Data Lake Store では、データを読み込む前にスキーマを定義する必要はなく、分析時にデータを解釈しスキーマを定義するかどうかは個々の分析フレームワークに任されます。任意のサイズおよび形式のファイルを格納できるようにすると、Data Lake Store は構造化データ、半構造化データ、および非構造化データを処理できるようになります。
 
+Azure Data Lake Store のデータ コンテナーは本質的にはフォルダーとファイルです。格納されたデータを、SDK、Azure ポータル、Azure Powershell を使用して操作します。これらのインターフェイスと適切なコンテナーを使用してストアにデータを配置する限り、あらゆる種類のデータを格納できます。Data Lake Store では、格納されているデータの種類に基づくデータの特別な処理は実行されません。
+
 
 ## <a name="DataLakeStoreSecurity"></a>Azure Data Lake Store でのデータのセキュリティ保護
 
@@ -83,7 +85,7 @@ Azure ポータルを使用して Data Lake Store をプロビジョニングす
 
 - [Azure Data Lake Analytics の使用を開始する](data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
-- [.NET SDK で Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
+- [.NET SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
   
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

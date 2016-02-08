@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="01/11/2016"
+   ms.date="01/21/2016"
    ms.author="shoatman;billmath"/>
 
 # Windows Azure Active Directory 同期 (DirSync) の Azure AD Connect へのアップグレード
@@ -37,7 +37,7 @@
 | [インプレース アップグレード](#in-place-upgrade) | アップグレード時間が 3 時間未満と予想される場合に推奨されるオプションです。 |
 | [並列デプロイ](#parallel-deployment) | アップグレード時間が 3 時間を超えると予想される場合に推奨されるオプションです。 |
 
->[AZURE.NOTE]DirSync から Azure AD Connect へのアップグレードを計画している場合は、アップグレードより前に DirSync を自分でアンインストールしないでください。Azure AD Connect が DirSync から構成を読み取って移行し、サーバーを検査した後に、アンインストールします。
+>[AZURE.NOTE] DirSync から Azure AD Connect へのアップグレードを計画している場合は、アップグレードより前に DirSync を自分でアンインストールしないでください。Azure AD Connect が DirSync から構成を読み取って移行し、サーバーを検査した後に、アンインストールします。
 
 **インプレース アップグレード**
 
@@ -146,7 +146,7 @@ Azure AD Connect を新しいサーバーにインストールする場合、Azu
 8. **[構成の準備完了]** ページで **[構成が完了したら、同期処理を開始してください。]** チェック ボックスをオンのままにします。サーバーが[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)に移行するため、この時点では Azure AD に変更がエクスポートされません。
 9. **[インストール]** をクリックします。
 
->[AZURE.NOTE]Windows Server Active Directory と Azure Active Directory の間で同期が開始されますが、変更は Azure AD にエクスポートされません。一度にアクティブにし変更をエクスポートできる同期ツールは 1 つだけです。これは[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)と呼ばれます。
+>[AZURE.NOTE] Windows Server Active Directory と Azure Active Directory の間で同期が開始されますが、変更は Azure AD にエクスポートされません。一度にアクティブにし変更をエクスポートできる同期ツールは 1 つだけです。これは[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)と呼ばれます。
 
 ### Azure AD Connect の同期を開始する準備が完了していることを確認する
 
@@ -169,8 +169,8 @@ Azure AD Connect が DirSync からの引き継ぎの準備を完了している
 
 ### DirSync (古いサーバー) をアンインストールする
 
-- **[プログラムと機能]** で **[Microsoft Azure Active Directory 同期ツール]** を見つけます。
-- **[Microsoft Azure Active Directory 同期ツール]** をアンインストールします。
+- **[プログラムと機能]** で **[Windows Azure Active Directory 同期ツール]** を見つけます。
+- **[Windows Azure Active Directory 同期ツール]** をアンインストールします。
 - アンインストールが完了するまで 15 分ほどかかる場合があります。
 
 DirSync がアンインストールされていると、アクティブなサーバーが Azure AD にエクスポートされません。オンプレミスの Active Directory のすべての変更が引き続き Azure AD に同期されるには、次の手順を完了する必要があります。
@@ -197,4 +197,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!----HONumber=AcomDC_0121_2016--->
+<!---HONumber=AcomDC_0128_2016-->

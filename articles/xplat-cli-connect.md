@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/30/2015"
+	ms.date="12/29/2015"
 	ms.author="danlep"/>
 
 # Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続
@@ -35,7 +35,7 @@ Azure CLI からサブスクリプションに接続する方法には、次の 
 
 Azure アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][free-trial]を参照してください。
 
->[AZURE.NOTE]バージョン 0.9.10 より前のバージョンの Azure CLI を使用している場合、`azure login` コマンドは職場または学校のアカウント ID でのみ使用できます。Microsoft アカウント ID は機能しません。ただし、Azure CLI バージョン 0.9.10 以降では、対話型の `azure login` コマンドを使用して、任意の ID でアカウントにログインできます。
+>[AZURE.NOTE] バージョン 0.9.10 より前のバージョンの Azure CLI を使用している場合、`azure login` コマンドは職場または学校のアカウント ID でのみ使用できます。Microsoft アカウント ID は機能しません。ただし、Azure CLI バージョン 0.9.10 以降では、対話型の `azure login` コマンドを使用して、任意の ID でアカウントにログインできます。
 >
 CLI バージョン 0.9.9 以降は、多要素認証をサポートしています。
 
@@ -46,9 +46,9 @@ CLI バージョン 0.9.9 以降は、多要素認証をサポートしていま
 引数なしで `azure login` コマンドを使用して、次のいずれかによる対話型認証を行います。
 
 - 多要素認証を必要とする職場または学校のアカウント ID
-- Microsoft アカウント ID (リソース マネージャー デプロイメント モード機能にアクセスする場合)
+- Microsoft アカウント ID (リソース マネージャー デプロイ モード機能にアクセスする場合)
 
-> [AZURE.NOTE]どちらの場合も、認証と承認は Azure Active Directory を使用して行われます。Microsoft アカウントの ID を使用する場合、ログ プロセスは Azure Active Directory の既定のドメインにアクセスします(無料試用版にサインアップした場合は、Azure Active Directory によってアカウントの既定のドメインが作成されていることに気づかないことがあります)。
+> [AZURE.NOTE]  どちらの場合も、認証と承認は Azure Active Directory を使用して行われます。Microsoft アカウントの ID を使用する場合、ログ プロセスは Azure Active Directory の既定のドメインにアクセスします(無料試用版にサインアップした場合は、Azure Active Directory によってアカウントの既定のドメインが作成されていることに気づかないことがあります)。
 
 対話型ログインは簡単です。「`azure login`」と入力し、次に示すように画面の指示に従います。
 
@@ -96,9 +96,9 @@ CLI バージョン 0.9.9 以降は、多要素認証をサポートしていま
 
 これにより、既定のブラウザーが開き、[Azure クラシック ポータル][portal]にサインインするよう求められます。サインインした後、`.publishsettings` ファイルがダウンロードされます。ファイルを保存した場所をメモしておきます。
 
-	> [AZURE.NOTE] If your account is associated with multiple Azure Active Directory tenants, you may be prompted to select which Active Directory you wish to download a publish settings file for.
-	>
-	> Once selected using the download page, or by visiting the Azure classic portal, the selected Active Directory becomes the default used by the classic portal and download page. Once a default has been established, you will see the text '__click here to return to the selection page__' at the top of the download page. Use the provided link to return to the selection page.
+> [AZURE.NOTE] アカウントが複数の Azure Active Directory テナントに関連付けられている場合は、発行の設定ファイルのダウンロード対象となる Active Directory を選択するよう促されることがあります。
+>
+> ダウンロード ページを使用して選択するか、Azure クラシック ポータルにアクセスして選択すると、選択した Active Directory が、クラシック ポータルおよびダウンロード ページで既定として使用されようになります。既定を確定した後、'__click here to return to the selection page (選択ページに戻るにはここをクリックしてください)__' というテキストが、ダウンロード ページの上部に表示されます。選択されたページに戻るには、用意されているリンクを使用します。
 
 * **発行設定ファイルをインポートするには**、次のコマンドを実行します。
 
@@ -123,7 +123,7 @@ CLI バージョン 0.9.9 以降は、多要素認証をサポートしていま
 
 この結果、既定のサブスクリプションは Azure-sub-2 に変更されます。
 
-> [AZURE.NOTE]既定のサブスクリプションの変更は、直ちにグローバルで適用されます。新しい Azure CLI コマンドを実行するときには、同じコマンドライン インスタンスからでも別のインスタンスからでも、この新しい既定のサブスクリプションが使用されます。
+> [AZURE.NOTE] 既定のサブスクリプションの変更は、直ちにグローバルで適用されます。新しい Azure CLI コマンドを実行するときには、同じコマンドライン インスタンスからでも別のインスタンスからでも、この新しい既定のサブスクリプションが使用されます。
 
 Azure CLI で既定以外のサブスクリプションを使用して、既定のサブスクリプションを変更しないようにするには、コマンドで `--subscription` オプションを使用して、その操作に使用するサブスクリプションの名前を指定します。
 
@@ -145,7 +145,7 @@ Azure サブスクリプションに接続すると、その Azure CLI コマン
 
 * Azure CLI の詳細、ソース コードのダウンロード、問題のレポート、プロジェクトへの協力については、[GitHub リポジトリの Azure CLI](https://github.com/azure/azure-xplat-cli) のページを参照してください。
 
-* Azure CLI、または Azure を利用していて問題が発生した場合は、[Azure のフォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home)をご覧ください。
+* Azure CLI、または Azure を利用していて問題が発生した場合は、[Azure のフォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home)を参照してください。
 
 
 
@@ -158,4 +158,4 @@ Azure サブスクリプションに接続すると、その Azure CLI コマン
 [cliasm]: virtual-machines/virtual-machines-command-line-tools.md
 [cliarm]: xplat-cli-azure-resource-manager.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

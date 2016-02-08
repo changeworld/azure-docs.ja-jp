@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="01/12/2016"
+   ms.date="01/21/2016"
    ms.author="andkjell;billmath"/>
 
 # Azure AD Connect の前提条件
@@ -23,7 +23,7 @@
 Azure AD Connect をインストールする前に、いくつか必要な項目があります。
 
 ### Azure AD
-- Azure サブスクリプションまたは [Azure 試用版サブスクリプション](http://azure.microsoft.com/pricing/free-trial/)。Azure ポータルへのアクセスにのみ必要です。Azure AD Connect の使用には不要です。PowerShell または Office 365 を使用している場合は、Azure サブスクリプションがなくても Azure AD Connect を使用できます。Office 365 ライセンスを持っている場合は、Office 365 ポータルも使用できます。有料の Office 365 ライセンスを使用して、Office 365 ポータルから Azure ポータルにアクセスすることもできます。
+- Azure サブスクリプションまたは [Azure 試用版サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)。Azure ポータルへのアクセスにのみ必要です。Azure AD Connect の使用には不要です。PowerShell または Office 365 を使用している場合は、Azure サブスクリプションがなくても Azure AD Connect を使用できます。Office 365 ライセンスを持っている場合は、Office 365 ポータルも使用できます。有料の Office 365 ライセンスを使用して、Office 365 ポータルから Azure ポータルにアクセスすることもできます。
 - Azure AD で使用する予定の[ドメインを追加して検証](active-directory-add-domain.md)します。たとえばユーザー向けに contoso.com を使用する予定の場合は、そのドメインが検証されていること、および使用しているのドメインが既定のドメインである contoso.onmicrosoft.com だけではないことを確認します。
 - Azure AD ディレクトリでは、既定で 50,000個のオブジェクトが許可されます。ドメインを検証すると、制限が 300,000 個のオブジェクトに増加します。Azure AD でさらに多くのオブジェクトが必要な場合は、制限をさらに増加させるサポート ケースを開く必要があります。500,000 個を超えるオブジェクトが必要な場合は、Office 365、Azure AD Basic、Azure AD Premium、または Enterprise Mobility Suite などのライセンスが必要です。
 
@@ -166,4 +166,4 @@ AD FS または Web アプリケーション サーバーを実行するコン�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

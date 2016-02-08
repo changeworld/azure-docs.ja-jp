@@ -24,7 +24,7 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [リソース マネージャー モデル](https://azure.microsoft.com/documentation/templates/docker-wordpress-mysql/)。
 
 
-Docker とコンテナーの知識がない場合は、「[Docker high level whiteboard (Docker の概要ホワイトボード)](http://azure.microsoft.com/documentation/videos/docker-high-level-whiteboard/)」をご覧ください。
+Docker とコンテナーの知識がない場合は、「[Docker high level whiteboard (Docker の概要ホワイトボード)](https://azure.microsoft.com/documentation/videos/docker-high-level-whiteboard/)」をご覧ください。
 
 ## 手順 1: Docker ホストとしての Linux VM のセットアップ
 
@@ -34,7 +34,7 @@ Azure のさまざまな手順と Azure Markeplace で入手できるイメー�
 
 Docker がインストールされた Linux VM を実行したら、SSH を使用してクライアント コンピューターから VM に接続します。必要に応じて、次の 2 つのコマンドを実行して [Compose](https://github.com/docker/compose/blob/882dc673ce84b0b29cd59b6815cb93f74a6c4134/docs/install.md) をインストールします。
 
->[AZURE.TIP]Docker VM 拡張機能を使用して VM を作成した場合、Compose は既にインストールされています。これらのコマンドを省略して、手順 3. に進んでください。VM に Docker を自分でインストールした場合は、Compose をインストールするだけでかまいません。
+>[AZURE.TIP] Docker VM 拡張機能を使用して VM を作成した場合、Compose は既にインストールされています。これらのコマンドを省略して、手順 3. に進んでください。VM に Docker を自分でインストールした場合は、Compose をインストールするだけでかまいません。
 
 ```
 $ curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
@@ -49,7 +49,7 @@ Compose のインストールをテストするには、次のコマンドを実
 $ docker-compose --version
 ```
 
-のような出力が表示されます `docker-compose 1.4.1`。
+`docker-compose 1.4.1` のような出力が表示されます。
 
 
 ## 手順3: docker-compose.yml 構成ファイルの作成
@@ -89,7 +89,7 @@ Creating wordpress\_db\_1...
 Creating wordpress\_wordpress\_1...
 ```
 
->[AZURE.NOTE]コンテナーがバックグラウンドで継続的に実行されるように、必ず起動時に **-d** オプションを使用してください。
+>[AZURE.NOTE] コンテナーがバックグラウンドで継続的に実行されるように、必ず起動時に **-d** オプションを使用してください。
 
 コンテナーが起動していることを確認するために、「`docker-compose ps`」と入力します。次のような結果が表示されます。
 
@@ -118,7 +118,7 @@ WordPress スタート画面が表示されます。この画面の手順に従�
 ## 次のステップ
 
 * 複数コンテナー アプリのビルドとデプロイのその他の例については、[Compose CLI リファレンス](http://docs.docker.com/compose/reference/)と[ユーザー ガイド](http://docs.docker.com/compose/)を参照してください。
-* 自分で用意するか[コミュニティ](http://azure.microsoft.com/documentation/templates/)から取得した Azure リソース マネージャー テンプレートを利用して、Docker を搭載した Azure VM や Compose を搭載したアプリケーション セットアップをデプロイできます。たとえば、[Deploy a WordPress blog with Docker](https://azure.microsoft.com/documentation/templates/docker-wordpress-mysql/) テンプレートは、Docker と Compose を使用して、Ubuntu VM に WordPress と MySQL バックエンドを迅速にデプロイします。
+* 自分で用意するか[コミュニティ](https://azure.microsoft.com/documentation/templates/)から取得した Azure リソース マネージャー テンプレートを利用して、Docker を搭載した Azure VM や Compose を搭載したアプリケーション セットアップをデプロイできます。たとえば、[Deploy a WordPress blog with Docker](https://azure.microsoft.com/documentation/templates/docker-wordpress-mysql/) テンプレートは、Docker と Compose を使用して、Ubuntu VM に WordPress と MySQL バックエンドを迅速にデプロイします。
 * Docker Compose と [Docker Swarm](virtual-machines-docker-swarm.md) クラスターを統合できます。このシナリオについては、
 [Docker Compose/Swarm の統合](https://github.com/docker/compose/blob/master/SWARM.md)に関するページを参照してください。
 
@@ -126,4 +126,4 @@ WordPress スタート画面が表示されます。この画面の手順に従�
 
 [wordpress_start]: ./media/virtual-machines-docker-compose-quickstart/WordPress.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

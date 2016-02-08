@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="01/19/2016" 
+	ms.date="01/25/2016" 
 	ms.author="ryancraw"/>
 
 # DocumentDB SDK
@@ -36,6 +36,10 @@
 </table></br>
 
 ##リリース ノート
+
+###<a name="1.5.2"/>1.5.2</a>
+
+- [#95](https://github.com/Azure/azure-documentdb-node/issues/95) -EventEmitter リスナー リーク警告の問題を修正
 
 ###<a name="1.5.1"/>1.5.1</a>
 
@@ -98,12 +102,14 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 提供終了の SDK で DocumentDB に要求した場合、サービスにより却下されます。
 
-> [AZURE.WARNING]バージョン **1.0.0** 以前のすべてのバージョンの Azure DocumentDB SDK for Node.js は **2016 年 2 月 29 日**で提供が終了します。
+> [AZURE.WARNING]
+バージョン **1.0.0** 以前のすべてのバージョンの Azure DocumentDB SDK for Node.js は **2016 年 2 月 29 日**で提供が終了します。
 
 <br/>
 
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
+| [1\.5.2](#1.5.2) | 2016 年 1 月 22 日 |--- 
 | [1\.5.1](#1.5.1) | 2016 年 1 月 4 日 |--- 
 | [1\.5.0](#1.5.0) | 2015 年 12 月 31 日 |---
 | [1\.4.0](#1.4.0) | 2015 年 10 月 06 日 |--- 
@@ -130,4 +136,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

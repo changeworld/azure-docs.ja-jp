@@ -25,7 +25,7 @@
 
 この記事では、Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程について、概要を説明します。
 
->[AZURE.NOTE]機械学習モデルを開発し、デプロイする方法はほかにもありますが、この記事では Machine Learning Studio を使用する方法に焦点を当てています。R を使用して予測 Web サービスを作成する方法の詳細については、[RStudio と Azure ML を使用した予測 Web アプリの開発とデプロイ](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)に関するブログ記事を参照してください。
+>[AZURE.NOTE] 機械学習モデルを開発し、デプロイする方法はほかにもありますが、この記事では Machine Learning Studio を使用する方法に焦点を当てています。R を使用して予測 Web サービスを作成する方法の詳細については、[RStudio と Azure ML を使用した予測 Web アプリの開発とデプロイ](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)に関するブログ記事を参照してください。
 
 Azure Machine Learning Studio は主に*予測分析モデル*の開発とデプロイを目的に設計されていますが、予測分析モデルを含まない実験の開発に使用することもできます。たとえば、データを入力して操作し、結果を出力するだけの実験などです。この非予測実験は、予測分析実験と同様に、Web サービスとしてデプロイすることができますが、この実験では機械学習モデルのトレーニングやスコア付けが実施されないため、より簡単なプロセスになります。これは Studio の一般的な使用方法ではありません。一般的な使用方法については以下で説明し、Studio の機能を網羅することにします。
 
@@ -57,7 +57,7 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 
 この変換プロセスでは、トレーニング実験は破棄されません。このプロセスが完了すると、2 つのタブが Studio に表示されます。1 つがトレーニング実験用で、もう 1 つが予測実験用です。このように、Web サービスをデプロイする前に、トレーニング実験に変更を加えて予測実験を再構築できます。また、トレーニング実験のコピーを保存しておいて、新たに別の実験を始めることもできます。
 
->[AZURE.NOTE]**[Web サービスの設定]** をクリックすると、トレーニング実験を予測実験に変換する自動処理が開始されます。ほとんどの場合、この方法を利用できます。トレーニング実験が複雑な場合 (結合するトレーニングのパスが複数ある場合など) は、この変換を手動で実行した方が良いこともあります。この変換処理の機能の詳細については、「[Machine Learning のトレーニング実験から予測実験に変換する](machine-learning-convert-training-experiment-to-scoring-experiment.md)」を参照してください。
+>[AZURE.NOTE] **[Web サービスの設定]** をクリックすると、トレーニング実験を予測実験に変換する自動処理が開始されます。ほとんどの場合、この方法を利用できます。トレーニング実験が複雑な場合 (結合するトレーニングのパスが複数ある場合など) は、この変換を手動で実行した方が良いこともあります。この変換処理の機能の詳細については、「[Machine Learning のトレーニング実験から予測実験に変換する](machine-learning-convert-training-experiment-to-scoring-experiment.md)」を参照してください。
 
 ### Web サービス
 
@@ -160,4 +160,4 @@ Machine Learning Studio では、Web サービスのボタン (**[Web サービ�
 
 -   [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](machine-learning-walkthrough-develop-predictive-solution.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

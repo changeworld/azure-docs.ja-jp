@@ -62,12 +62,12 @@ Azure Search はプロジェクトに大きな変革をもたらしました。A
 
 前の図の緑色のボックスは、WhatToPedia ソリューションが次のサービスに基づいて構築されていることを示しています。
 
-- [Azure Search](http://azure.microsoft.com/services/search/)
-- [MVC 4 を使用する Azure Websites ](http://azure.microsoft.com/services/websites/)
+- [Azure Search](https://azure.microsoft.com/services/search/)
+- [MVC 4 を使用する Azure Websites ](https://azure.microsoft.com/services/websites/)
 - [スケジュールされたタスク用の Azure Web ジョブ](../websites-webjobs-resources.md)
-- [Azure SQL Database](http://azure.microsoft.com/services/sql-database/)
-- [Azure BLOB ストレージ](http://azure.microsoft.com/services/storage/)
-- [SendGrid 電子メール配信](http://azure.microsoft.com/marketplace/partners/sendgrid/sendgrid-azure/)
+- [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)
+- [Azure BLOB ストレージ](https://azure.microsoft.com/services/storage/)
+- [SendGrid 電子メール配信](https://azure.microsoft.com/marketplace/partners/sendgrid/sendgrid-azure/)
 
 ソリューションの中核は、データと検索です。Reseller プロバイダーからエンドユーザーへのデータ フローを次に示します。
 
@@ -170,7 +170,7 @@ Azure Web ジョブを使用して、インデックスに対してデータを�
 
 ジョブは、スケジュール済みの Web タスクとして 5 分ごとに実行するようにスケジュールされます。計算によると、サービス タスクは 3 分間に約 3,000 のドキュメントをアップロードしますが、これは要件の範囲内でした。
 
-> [AZURE.NOTE]Azure Search には、最近導入されたプロトタイプ インデクサー機能があります。この機能は、最初のリリースで使用するには間に合いませんでしたが、データ読み込み操作を自動化するためのインデクサー ジョブを使用したのと同じ問題を解決すると考えられます。
+> [AZURE.NOTE] Azure Search には、最近導入されたプロトタイプ インデクサー機能があります。この機能は、最初のリリースで使用するには間に合いませんでしたが、データ読み込み操作を自動化するためのインデクサー ジョブを使用したのと同じ問題を解決すると考えられます。
 
 
 ###バックアップ戦略
@@ -193,7 +193,7 @@ Azure SQL Database 内のサブスクライバー データは、最も重要な
 
 実装中の最大の課題は、プレビュー バージョンであるため、情報および共有エクスペリエンスを見つけるのが困難であった点です。全容の一端が明らかになると、REST API および JSON データ形式によって Azure Search サービスは使用がごく簡単であることがわかりました。JQuery JSON.Net などのほとんどのオープン ソース プラグインからフレームワークを直接呼び出すことがき、また、実験やデバッグを迅速に行うために Fiddler などのツールを使用できました。
 
-> [AZURE.NOTE]これにより、データを用意するだけでなく、プロトタイプの構築担当者はテクノロジがどのように動作するかを早期に理解できました。また、生産性が向上するとともに、組み込み機能の真価を享受することができました。検索クエリの構造、ファセット ナビゲーション、フィルターなどを強化する必要がある場合は、プロトタイピングに時間がかかることが予想されます。
+> [AZURE.NOTE] これにより、データを用意するだけでなく、プロトタイプの構築担当者はテクノロジがどのように動作するかを早期に理解できました。また、生産性が向上するとともに、組み込み機能の真価を享受することができました。検索クエリの構造、ファセット ナビゲーション、フィルターなどを強化する必要がある場合は、プロトタイピングに時間がかかることが予想されます。
 
 ###検索プレゼンテーション ページでのファセットの制御
 
@@ -217,7 +217,7 @@ Azure SQL Database 内のサブスクライバー データは、最も重要な
 
 - [Azure Search 専用の MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azuresearch)
 - [StackOverflow にもタグが付けられています](http://stackoverflow.com/questions/tagged/azure-search)
-- [Azure.com のドキュメント ページ](http://azure.microsoft.com/documentation/services/search/)
+- [Azure.com のドキュメント ページ](https://azure.microsoft.com/documentation/services/search/)
 - [MSDN の Azure Search ドキュメント](http://msdn.microsoft.com/library/azure/dn798933.aspx)
 
 
@@ -421,4 +421,4 @@ Azure SQL Database 内のサブスクライバー データは、最も重要な
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

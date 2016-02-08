@@ -36,7 +36,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 ### Azure の前提条件
 
-- [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
+- [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
 - レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。[Azure ストレージについてはこちらを参照してください。](../storage/storage-introduction.md)
 - 保護する仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-best-practices.md#virtual-machines)に準拠していることを確認する必要があります。
 
@@ -449,4 +449,4 @@ if($isJobLeftForProcessing)
 
 Azure Site Recovery PowerShell コマンドレットの詳細を[確認します](https://msdn.microsoft.com/library/dn850420.aspx)</a>。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

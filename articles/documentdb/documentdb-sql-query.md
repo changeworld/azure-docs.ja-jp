@@ -1,7 +1,7 @@
 <properties 
-	pageTitle="NoSQL データベースである DocumentDB での SQL クエリ | Microsoft Azure" 
-	description="NoSQL データベースである DocumentDB に対して SQL クエリのステートメントを使用する方法について説明します。SQL クエリは、JSON クエリ言語として、ビッグ データを分析するために使用できます。" 
-	keywords="sql クエリ、sql クエリ、sql の構文、json クエリ言語、データベースの概念と sql クエリ"
+	pageTitle="DocumentDB の SQL 構文と SQL クエリ | Microsoft Azure" 
+	description="DocumentDB (NoSQL データベース) の SQL 構文、データベースの概念、および SQL クエリについて説明します。DocumentDB では、JSON クエリ言語として SQL を使用できます。" 
+	keywords="sql 構文、sql クエリ、json クエリ言語、データベースの概念と sql クエリ"
 	services="documentdb" 
 	documentationCenter="" 
 	authors="arramac" 
@@ -17,12 +17,12 @@
 	ms.date="12/14/2015" 
 	ms.author="arramac"/>
 
-# DocumentDB における SQL クエリ
+# DocumentDB における SQL クエリと SQL 構文
 Microsoft Azure DocumentDB は、JSON クエリ言語として SQL (Structured Query Language) を使用するドキュメントのクエリをサポートしています。DocumentDB は完全にスキーマフリーです。データベース エンジン内で JSON データ モデルを直接処理することで、明示的なスキーマやセカンダリ インデックスの作成を必要とせずに、JSON ドキュメントの自動インデックス作成を実現しています。
 
 マイクロソフトは、以下の 2 点を目標に DocumentDB 向けのクエリ言語を設計しました。
 
--	新しいクエリ言語を開発するのではなく、SQL をサポートすることにしました。SQL は最も幅広く普及したクエリ言語の 1 つです。DocumentDB SQL は、JSON ドキュメントに対するリッチ クエリを、正式なプログラミング モデルを通して実現します。
+-	新しい JSON クエリ言語を開発するのではなく、SQL をサポートすることにしました。SQL は最も幅広く普及したクエリ言語の 1 つです。DocumentDB SQL は、JSON ドキュメントに対するリッチ クエリを、正式なプログラミング モデルを通して実現します。
 -	マイクロソフトでは、データベース エンジン内で JavaScript を直接実行できる JSON ドキュメント データベースを設計するため、JavaScript のプログラミング モデルに基づいてクエリ言語を開発することにしました。DocumentDB SQL は、JavaScript の型システム、式評価、関数呼び出しを基盤としています。これによって、リレーショナル プロジェクション、JSON ドキュメント間の階層型ナビゲーション、自己結合、空間クエリ、完全に JavaScript で記述されたユーザー定義関数 (UDF) の呼び出しなどに対して、自然なプログラミング モデルが提供されます。 
 
 マイクロソフトでは、アプリケーションとデータベース間の不整合を削減し、開発者の生産性を高めるには、こうした方針が鍵になると考えています。
@@ -997,7 +997,7 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 
 これで、この UDF をプロジェクション内のクエリで使用できるようになりました。UDF をクエリ内から呼び出すときは、大文字と小文字が区別されるプレフィックス "udf." で修飾する必要があります。
 
->[AZURE.NOTE]2015 年 3 月 17 日以前では、SELECT REGEX\_MATCH() のような、"udf." プレフィックスのない UDF 呼び出しが DocumentDB でサポートされていました。この呼び出しパターンは廃止されました。
+>[AZURE.NOTE] 2015 年 3 月 17 日以前では、SELECT REGEX\_MATCH() のような、"udf." プレフィックスのない UDF 呼び出しが DocumentDB でサポートされていました。この呼び出しパターンは廃止されました。
 
 **クエリ**
 
@@ -1489,7 +1489,7 @@ ST\_WITHIN のポリゴン引数に指定できるのは、単一のリングだ
       "id": "WakefieldFamily",
     }]
     
->[AZURE.NOTE]DocumentDB クエリで型が一致しないときの動作と同様、いずれかの引数に指定された場所の値が無効であったり形式に誤りがあったりした場合、その値は**未定義**として評価され、評価対象となったドキュメントはクエリの結果からスキップされます。クエリから結果が返されなかった場合は、ST\_ISVALIDDETAILED を実行して、空間データ型が無効である理由をデバッグしてください。
+>[AZURE.NOTE] DocumentDB クエリで型が一致しないときの動作と同様、いずれかの引数に指定された場所の値が無効であったり形式に誤りがあったりした場合、その値は**未定義**として評価され、評価対象となったドキュメントはクエリの結果からスキップされます。クエリから結果が返されなかった場合は、ST\_ISVALIDDETAILED を実行して、空間データ型が無効である理由をデバッグしてください。
 
 空間オブジェクトが有効であるかどうかは、ST\_ISVALID と ST\_ISVALIDDETAILED を使用してチェックできます。たとえば以下のクエリでは、範囲外の緯度値 (-132.8) を指定して、ポイントの有効性をチェックしています。ST\_ISVALID で返されるのはブール値だけであるのに対し、ST\_ISVALIDDETAILED では、ブール値に加え、無効と考えられる理由の文字列が返されます。
 
@@ -1527,7 +1527,7 @@ LINQ は、計算処理をオブジェクトのストリームに対するクエ
 
 DocumentDB を使用した LINQ クエリ サポートのアーキテクチャは以下の図のようになります。開発者は DocumentDB クライアントを使用して **IQueryable** オブジェクトを作成できます。このオブジェクトが DocumentDB クエリ プロバイダーを直接照会することで、LINQ クエリが DocumentDB クエリに変換されます。次にクエリが DocumentDB サーバーに渡されることで、結果セットが JSON 形式で取得されます。返された結果は、クライアント側で .NET オブジェクトのストリームに逆シリアル化されます。
 
-![DocumentDB を使用した LINQ クエリ サポートのアーキテクチャ][1]
+![DocumentDB を使用する LINQ クエリをサポートするアーキテクチャ - SQL 構文、JSON クエリ言語、データベースの概念と SQL クエリ][1]
  
 
 
@@ -2144,4 +2144,4 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 [consistency-levels]: documentdb-consistency-levels.md
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

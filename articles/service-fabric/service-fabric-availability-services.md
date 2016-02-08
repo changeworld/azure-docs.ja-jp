@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/26/2015"
+   ms.date="01/20/2016"
    ms.author="aprameyr"/>
 
 # Service Fabric サービスの可用性
@@ -38,7 +38,7 @@ Azure Service Fabric サービスには、ステートレスなものとステ�
 ### レプリカ ロール
 レプリカのロールは、そのレプリカによって管理されている状態のライフサイクルを管理するために使用されます。ロールがプライマリになっているレプリカは、読み取り要求を処理します。また、状態を更新し、レプリカ セット内のアクティブ セカンダリに変更内容をレプリケートして、書き込み要求も処理します。アクティブ セカンダリのロールは、プライマリ レプリカがレプリケートした状態の変更を受信し、その状態のビューを更新することです。
 
->[AZURE.NOTE] [Reliable Actors フレームワーク](service-fabric-reliable-actors-introduction.md)など、抽象度の高いプログラミング モデルの場合、開発者がレプリカ ロールの概念を意識することはありません。
+>[AZURE.NOTE] [Reliable Actors フレームワーク](service-fabric-reliable-actors-introduction.md)など、抽象度の高いプログラミング モデルの場合、開発者がレプリカ ロールの概念を意識することはありません。
 
 ## 次のステップ
 
@@ -50,4 +50,4 @@ Service Fabric の概念の詳細については、次を参照してくださ�
 
 - [状態の定義と管理](service-fabric-concepts-state.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

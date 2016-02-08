@@ -20,7 +20,7 @@
 Azure RemoteApp では、ユーザーと共有するすべてのプログラムをホスティングするために Windows Server 2012 R2 のテンプレート イメージを使用します。カスタム RemoteApp テンプレート イメージを作成するには、既存のイメージを使うことも新しく作成することもできます。
 
 
-> [AZURE.TIP]Azure VM からイメージを作成できることをご存知でしたか。 これは本当の話で、イメージをインポートする時間を削減できます。手順は、[こちら](remoteapp-image-on-azurevm.md)で確認してください。
+> [AZURE.TIP] Azure VM からイメージを作成できることをご存知でしたか。 これは本当の話で、イメージをインポートする時間を削減できます。手順は、[こちら](remoteapp-image-on-azurevm.md)で確認してください。
 
 Azure RemoteApp で使用するためにアップロードできるイメージの要件は次のとおりです。
 
@@ -43,7 +43,7 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 
 サービスを作成する前に、以下の操作が必要です。
 
-- RemoteApp に[サインアップ](http://azure.microsoft.com/services/remoteapp/)します。
+- RemoteApp に[サインアップ](https://azure.microsoft.com/services/remoteapp/)します。
 - RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。詳細については、「[Configure Azure Active Directory for RemoteApp](remoteapp-ad.md)」を参照してください。
 - オンプレミスのネットワークに関する情報、つまり IP アドレス情報と VPN デバイスの詳細情報を収集します。
 - [Azure PowerShell](../install-configure-powershell.md) モジュールをインストールします。
@@ -142,4 +142,4 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 - [RemoteApp のクラウド コレクションの作成方法](remoteapp-create-cloud-deployment.md)
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -38,13 +38,13 @@
 
 コンテナーのアクセス許可は次の方法で設定できます。
 
-- [Azure ポータル](portal.azure.com)から設定。
+- [Azure ポータル](https://portal.azure.com)から設定。
 - ストレージ クライアント ライブラリまたは REST API を使用して、プログラムで設定。
 - PowerShell を使用して設定。Azure PowerShell からのコンテナー アクセス許可の設定については、[Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full#how-to-manage-azure-blobs)に関するページを参照してください。
 
 ### Azure ポータルからコンテナーのアクセス許可を設定する
 
-[Azure ポータル](portal.azure.com)からコンテナーのアクセス許可を設定するには、次の手順に従います。
+[Azure ポータル](https://portal.azure.com)からコンテナーのアクセス許可を設定するには、次の手順に従います。
 
 1. ストレージ アカウントのダッシュボードに移動します。
 2. 一覧からコンテナーの名前を選択します。コンテナーの名前を選択するには、[名前] 列の右側をクリックする必要があります。名前をクリックすると、コンテナーにドリル ダウンしてその BLOB が表示されます。
@@ -155,4 +155,4 @@
 - [共有アクセス署名: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)
 - [Shared Access Signature を使用したアクセスの委任](https://msdn.microsoft.com/library/azure/ee395415.aspx) 
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

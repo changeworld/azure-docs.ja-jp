@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,16 +12,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/31/2015"
+   ms.date="01/26/2016"
    ms.author="alkohli" />
 
 # StorSimple のハードウェア コンポーネントの交換
 
 ## 概要
 
-ハードウェア コンポーネントの交換に関するチュートリアルでは、Microsoft Azure StorSimple デバイスのハードウェア コンポーネントと、それらのコンポーネントを取り外して交換するために必要な手順について説明します。この記事は安全性アイコンについて説明し、詳細なチュートリアルへの参照情報や、交換可能なコンポーネントの一覧を掲載しています。
+ハードウェア コンポーネントの交換に関するチュートリアルでは、Microsoft Azure StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントと、それらのコンポーネントを取り外して交換するために必要な手順について説明します。この記事は安全性アイコンについて説明し、詳細なチュートリアルへの参照情報や、交換可能なコンポーネントの一覧を掲載しています。
 
->[AZURE.IMPORTANT]StorSimple のコンポーネントを取り外して交換する前に、[安全性アイコンの表記規則](#safety-icon-conventions)とその他の[安全に関する注意事項](storsimple-safety.md)を必ず確認してください。
+>[AZURE.IMPORTANT] StorSimple のコンポーネントを取り外して交換する前に、[安全性アイコンの表記規則](#safety-icon-conventions)とその他の[安全に関する注意事項](storsimple-safety.md)を必ず確認してください。
  
 ### 安全性アイコンの表記規則
 
@@ -32,8 +32,8 @@
 |![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png)| **危険!** | 回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。この記号の文字は、最も重大な状況の場合にのみ使用されます。|
 |![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png)| **警告!** | 回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。|
 |![注意アイコン](./media/storsimple-hardware-component-replacement/Caution.png)| **注意!** |回避しなければ、軽度または中程度の負傷を招く可能性のある危険な状況を示します。|
-|![注意事項アイコン](./media/storsimple-hardware-component-replacement/NoticeIcon.png)| **注意事項:** | 重要だが、危険に関連するものではない情報を示します。|
-|![感電の危険アイコン](./media/storsimple-hardware-component-replacement/Electric.png) | **感電の危険** | 電圧が高いことを示します。|
+|![Notice icon](./media/storsimple-hardware-component-replacement/NoticeIcon.png)| **注意事項:** | 重要だが、危険に関連するものではない情報を示します。|
+|![Electrical shock icon](./media/storsimple-hardware-component-replacement/Electric.png) | **感電の危険** | 電圧が高いことを示します。|
 |![ヘビー ウェイト アイコン](./media/storsimple-hardware-component-replacement/Weight.png)| **ヘビー ウェイト**| |
 |![ユーザーによる保守不可能な部品アイコン](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png)| **ユーザーによる保守不可能な部品** | 適切な訓練を受けている場合を除き、触らないでください。|
 |![指示確認アイコン](./media/storsimple-hardware-component-replacement/ReadInstructions.png)|**最初にすべての指示を確認してください**| |
@@ -45,28 +45,28 @@
 
 コンポーネントを交換する前に、次の情報を考慮してください。
 
-![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png) ![感電を示すアイコン](./media/storsimple-hardware-component-replacement/Electric.png) **警告!**
+![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png) ![Electrical Shock Icon](./media/storsimple-hardware-component-replacement/Electric.png) **警告!**
 
 - StorSimple デバイスのコンポーネントに触るときは、静電気除去マットまたは帯電防止マットを使用して、身体の静電気を逃がしてください。
 
 - 回路に触れないでください。回路が露出してる可能性があるコンポーネントに触るときは、用意されているハンドルとガイドを使用してください。
 
-![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png) ![注意のアイコン](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **注意事項:**
+![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png) ![Notice Icon](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **注意事項:**
 
 モジュールを交換するときは、**エンクロージャの後部に空のベイを絶対に残さないでください**。問題のある部分を取り外す前に、交換用モジュールまたは空のモジュールを用意してください。
 
 ## ハードウェア コンポーネントの交換手順
 
-Microsoft Azure StorSimple デバイスは、主エンクロージャまたは EBOD エンクロージャに収納されるさまざまなプラグイン モジュールで構成されています。8100 は 1 つの主エンクロージャを持つデバイスであり、8600 は 1 つの主エンクロージャと 1 つの EBOD エンクロージャを持つデュアル エンクロージャ デバイスです。
+StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは EBOD エンクロージャに収納されるさまざまなプラグイン モジュールで構成されています。8100 は 1 つの主エンクロージャを持つデバイスであり、8600 は 1 つの主エンクロージャと 1 つの EBOD エンクロージャを持つデュアル エンクロージャ デバイスです。
 
 デバイスの主なハードウェア コンポーネントを次の表にまとめて示します。**交換手順**の欄に示されているリンクをクリックすると、関連付けられているチュートリアルに移動します。
 
 |コンポーネント|台数|プラグイン モジュール?|交換手順
 |:---------|:--------|:--------------|:---------------------|
 | シャーシ|1|いいえ|[StorSimple デバイスのシャーシを交換する](storsimple-chassis-replacement.md) |
-|プライマリ コントローラー|2|あり| [StorSimple デバイスのコントローラー モジュールを交換する](storsimple-controller-replacement.md) |
-|764W 電源冷却モジュール (PCM)|2|あり| [StorSimple デバイスの電源冷却モジュールを交換する](storsimple-power-cooling-module-replacement.md) |
-|バックアップ バッテリ|2|あり| [StorSimple デバイスのバックアップ バッテリ モジュールを交換する](storsimple-battery-replacement.md) |
+|プライマリ コントローラー|2|はい| [StorSimple デバイスのコントローラー モジュールを交換する](storsimple-controller-replacement.md) |
+|764W 電源冷却モジュール (PCM)|2|はい| [StorSimple デバイスの電源冷却モジュールを交換する](storsimple-power-cooling-module-replacement.md) |
+|バックアップ バッテリ|2|はい| [StorSimple デバイスのバックアップ バッテリ モジュールを交換する](storsimple-battery-replacement.md) |
 |ディスク ドライブ|12|はい| [StorSimple デバイスのディスク ドライブを交換する](storsimple-disk-drive-replacement.md) |
 
 **表 1** 主エンクロージャ内のハードウェア コンポーネント
@@ -76,8 +76,8 @@ Microsoft Azure StorSimple デバイスは、主エンクロージャまたは E
 |コンポーネント|台数|プラグイン モジュール?| 交換手順
 |:---------|:--------|:--------------|:---------------------|
 |シャーシ|1|いいえ| [StorSimple デバイスのシャーシを交換する](storsimple-chassis-replacement.md) |
-|EBOD コントローラー|2|あり| [StorSimple デバイスの EBOD コントローラーを交換する](storsimple-EBOD-controller-replacement.md) |
-|580W 電源冷却モジュール (PCM)|2|あり| [StorSimple デバイスの電源冷却モジュールを交換する](storsimple-power-cooling-module-replacement.md) |
+|EBOD コントローラー|2|はい| [StorSimple デバイスの EBOD コントローラーを交換する](storsimple-EBOD-controller-replacement.md) |
+|580W 電源冷却モジュール (PCM)|2|はい| [StorSimple デバイスの電源冷却モジュールを交換する](storsimple-power-cooling-module-replacement.md) |
 |ディスク ドライブ|12|はい| [StorSimple デバイスのディスク ドライブを交換する](storsimple-disk-drive-replacement.md) |
 
 **表 2** EBOD エンクロージャ内のハードウェア コンポーネント
@@ -122,9 +122,9 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 
 - シャーシ (統合操作パネルを含む)
 
-- 764W 電源冷却モジュール
+- 764 W AC PCM
 
-- 580W 電源冷却モジュール
+- 580 W AC PCM
 
 - ドライブ キャリア モジュール付きハード ディスク ドライブ
 
@@ -142,4 +142,4 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 
 StorSimple のハードウェア コンポーネントを交換する前に、すべての[安全に関する情報](storsimple-safety.md)を確認します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

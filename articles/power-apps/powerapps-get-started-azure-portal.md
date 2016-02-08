@@ -94,7 +94,7 @@ AD テナントが用意できましたので、次に新しい Azure サブス�
 
 
 ## 手順 3: Azure 作業サブスクリプションで PowerApps Enterprise にサインアップする
-> [AZURE.NOTE]次の手順では、サブスクリプションの管理者が Azure ポータルにサインインし、要求を送信する必要があります。
+> [AZURE.NOTE] 次の手順では、サブスクリプションの管理者が Azure ポータルにサインインし、要求を送信する必要があります。
 
 AD テナントと Azure サブスクリプションが準備できましたので、作業サブスクリプションの管理者は次に PowerApps Enterprise にサインアップできます。管理者はまた、社内のユーザーを '管理' PowerApps に追加し (ユーザーにアクセス許可を与えることも含む)、Azure サブスクリプションに公開された PowerApps を管理することができます。
 
@@ -133,7 +133,7 @@ PowerApps の API と接続に加えて、モバイル アプリ、Web アプリ
 - PowerApps 管理者 (PowerApps の "所有者") またはサブスクリプション管理者として Azure ポータルにサインインしている。
 
 ### アプリ サービス環境を作成する
-> [AZURE.NOTE]アプリ サービス環境を作成するオプションが表示されない場合、テナントのアプリ サービス環境は既に作成されています。詳細を表示するには、**[設定]** を選択してアプリ サービス環境を開きます。
+> [AZURE.NOTE] アプリ サービス環境を作成するオプションが表示されない場合、テナントのアプリ サービス環境は既に作成されています。詳細を表示するには、**[設定]** を選択してアプリ サービス環境を開きます。
 
 1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
  
@@ -143,13 +143,13 @@ PowerApps の API と接続に加えて、モバイル アプリ、Web アプリ
 
 4. **[PowerApps]** ブレードで、**[App Service Environment を作成して使用を開始する]** を選択するか、*[設定]* の **[App Service Environment ]** を選択します。![][5]
 
-	> [AZURE.NOTE]**[App Service Environment を作成して使用を開始する]** をクリックすると、App Service Environment の詳細を示すブレードが追加で表示されます。そのブレード上で作成リンクをクリックするだけで、作成ブレードが起動します。
+	> [AZURE.NOTE] **[App Service Environment を作成して使用を開始する]** をクリックすると、App Service Environment の詳細を示すブレードが追加で表示されます。そのブレード上で作成リンクをクリックするだけで、作成ブレードが起動します。
 
 5. 次に、名前を入力し、使用するサブスクリプションを選択し、新しいリソース グループを選択または作成し、仮想ネットワークを選択します。仮想ネットワークは、選択するとその後変更できなくなるので**注意してください**。![][6] App Service Environmentでの仮想ネットワークの動作の詳細については、「[App Service Environment の作成方法](../app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。
 
 6. **[追加]** を選択して、アプリ サービス環境の作成を完了します。
 
-> [AZURE.TIP]PowerApps を使用してアプリ サービス環境を作成する場合は、コンピューティング リソース プールを構成するよう求められません。この手順は自動的に処理されます。
+> [AZURE.TIP] PowerApps を使用してアプリ サービス環境を作成する場合は、コンピューティング リソース プールを構成するよう求められません。この手順は自動的に処理されます。
 
 このアプリ サービス環境には、Web アプリ、モバイル アプリ、API アプリを追加することもできます。実際には、App Service Environment でサポートされている任意のものを追加するための環境です。
 
@@ -159,9 +159,9 @@ PowerApps の API と接続に加えて、モバイル アプリ、Web アプリ
 
 1. 先ほど作成したアプリ サービス環境を選択します。
 2. [Essentials] で、**[リソース グループ]** プロパティを選択します。これにより、アプリ サービス環境を含むリソース グループが開きます。![][7]
-3. RBAC アイコンを選択してアクセス許可を管理します。![][8]ユーザーの追加やロールの割り当ては、Azure 内で[ロールベースのアクセス制御](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure)を使用する場合と似ています。
+3. RBAC アイコンを選択してアクセス許可を管理します。![][8]ユーザーの追加やロールの割り当ては、Azure 内で[ロールベースのアクセス制御]( https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)を使用する場合と似ています。
 
-> [AZURE.NOTE]現時点で、アプリ サービス環境に RBAC アクセス許可を付与することはできません。親のリソース グループ レベルでは RBAC アクセス許可を付与することができます。
+> [AZURE.NOTE] 現時点で、アプリ サービス環境に RBAC アクセス許可を付与することはできません。親のリソース グループ レベルでは RBAC アクセス許可を付与することができます。
 
 ## まとめと次のステップ
 これで会社は PowerApps にサインアップし、アプリ サービス環境を取得しました。次に、アプリで使用可能な API と接続を追加することができます。
@@ -181,4 +181,4 @@ PowerApps の API と接続に加えて、モバイル アプリ、Web アプリ
 [7]: ./media/powerapps-get-started-azure-portal/aseessentials.png
 [8]: ./media/powerapps-get-started-azure-portal/resourcegrouprbac.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

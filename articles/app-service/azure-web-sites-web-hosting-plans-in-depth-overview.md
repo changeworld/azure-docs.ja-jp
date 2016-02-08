@@ -61,7 +61,7 @@ App Service プランは 1 つのリソース グループに複数割り当て�
  
 ## アプリを別の App Service プランに移動する
 
-別の App Service プランへのアプリの移動は、[Azure ポータル](http://portal.azure.com)で行うことができます。アプリは、同じ地理的リージョンのプラン間で移動できます。
+別の App Service プランへのアプリの移動は、[Azure ポータル](https://portal.azure.com)で行うことができます。アプリは、同じ地理的リージョンのプラン間で移動できます。
 
 アプリを別のプランに移動するには、移動するアプリを表示し、**[App Service プランの変更]** をクリックします。
  
@@ -89,15 +89,12 @@ App Service プランは、アプリ間で共有できる一連の機能と容�
 
 ## 変更内容
 
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
- 
- 
- 
- <!-- Images. -->
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+   
 [pricingtier]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/appserviceplan-pricingtier.png
 [assign]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/assing-appserviceplan.png
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

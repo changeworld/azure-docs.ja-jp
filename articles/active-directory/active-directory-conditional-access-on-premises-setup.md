@@ -21,7 +21,8 @@
 
 ユーザーに各自のデバイスを Azure Active Directory Device Registration サービスに社内参加させるよう求めることにより、ユーザーが個人的に所有しているデバイスを組織で認識済みとしてマークすることができます。Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用してオンプレミス アプリケーションへの条件付きアクセスを有効にするための手順を以下に示します。
 
-> [AZURE.NOTE]Azure Active Directory Device Registration Service の条件付きアクセス ポリシーに登録されているデバイスを使用する場合は、Office 365 のライセンスまたは Azure AD Premium ライセンスが必要になります。これには、Active Directory フェデレーション サービス (AD FS) によってオンプレミス リソースに適用されるポリシーが含まれます。
+> [AZURE.NOTE]
+Azure Active Directory Device Registration Service の条件付きアクセス ポリシーに登録されているデバイスを使用する場合は、Office 365 のライセンスまたは Azure AD Premium ライセンスが必要になります。これには、Active Directory フェデレーション サービス (AD FS) によってオンプレミス リソースに適用されるポリシーが含まれます。
 
 オンプレミスの条件付きアクセス シナリオの詳細については、「[任意のデバイスからの職場への参加による業務用アプリケーション間の SSO とシームレスな 2 要素認証](https://technet.microsoft.com/library/dn280945.aspx)」をご覧ください。
 
@@ -118,13 +119,14 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 5.	**デプロイと管理**に関するセクションで、手順 1. ～ 3. に従って、Azure Active Directory をローカル ディレクトリと統合します。
   1.	ドメインを追加します。
   2.	Azure AD Connect のインストールと実行: 「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」の手順に従って Azure AD Connect をインストールします。
-  3. ディレクトリの同期を確認および管理します。この手順では、シングル サインオンの手順を利用できます。>[AZURE.NOTE]上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。>[AZURE.NOTE]プレビュー機能を構成する必要はありません。
+  3. ディレクトリの同期を確認および管理します。この手順では、シングル サインオンの手順を利用できます。>[AZURE.NOTE] 上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。>[AZURE.NOTE] プレビュー機能を構成する必要はありません。
   
    
 
 
 ## Active Directory ドメイン サービス スキーマをアップグレードする
-> [AZURE.NOTE]Active Directory スキーマのアップグレードを行うと、それを元に戻すことはできません。これは最初にテスト環境で実行することをお勧めします。
+> [AZURE.NOTE]
+Active Directory スキーマのアップグレードを行うと、それを元に戻すことはできません。これは最初にテスト環境で実行することをお勧めします。
 
 1. エンタープライズ管理者権限とスキーマ管理者権限を両方とも有するアカウントでドメイン コントローラーにログインします。
 2. **[media]\\support\\adprep** ディレクトリとサブディレクトリを、いずれかの Active Directory ドメイン コントローラーにコピーします。 
@@ -132,12 +134,13 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 4. コマンド プロンプトから、adprep ディレクトリに移動し、**adprep.exe /forestprep** を実行します。画面の手順に従ってスキーマのアップグレードを完了します。
 
 ## デバイスをサポートするために Active Directory の準備を行う
->[AZURE.NOTE]これは、デバイスをサポートするために Active Directory フォレストを準備する際に実行する必要のある 1 回限りの操作です。この手順を完了するには、エンタープライズ管理者権限を使用してログオンする必要があり、Active Directory フォレストに Windows Server 2012 R2 スキーマが組み込まれている必要があります。
+>[AZURE.NOTE] これは、デバイスをサポートするために Active Directory フォレストを準備する際に実行する必要のある 1 回限りの操作です。この手順を完了するには、エンタープライズ管理者権限を使用してログオンする必要があり、Active Directory フォレストに Windows Server 2012 R2 スキーマが組み込まれている必要があります。
 
 
 ##デバイスをサポートするために Active Directory フォレストの準備を行う
 
-> [AZURE.NOTE]これは、デバイスをサポートするために Active Directory フォレストを準備する際に実行する必要のある 1 回限りの操作です。この手順を完了するには、エンタープライズ管理者権限を使用してログオンする必要があり、Active Directory フォレストに Windows Server 2012 R2 スキーマが組み込まれている必要があります。
+> [AZURE.NOTE]
+これは、デバイスをサポートするために Active Directory フォレストを準備する際に実行する必要のある 1 回限りの操作です。この手順を完了するには、エンタープライズ管理者権限を使用してログオンする必要があり、Active Directory フォレストに Windows Server 2012 R2 スキーマが組み込まれている必要があります。
 
 ### Active Directory フォレストを準備する
 
@@ -183,6 +186,9 @@ Azure Active Directory Device Registration では、iOS デバイスに対して
 3. **[参加]** を選択します。
 4. メッセージが表示されたら、資格情報でサインインします。これでデバイスが参加します。
 
+###Azure Active Directory Device Registration を使用して Windows 7 デバイスを参加させる
+デバイス登録ソフトウェア パッケージのデプロイに必要な Windows 7 ドメイン参加済みデバイスを登録するにはこのソフトウェア パッケージは Windows 7 向け社内参加と呼ばれ、[Microsoft Connect Web サイト](https://connect.microsoft.com/site1164)からダウンロードできます。パッケージの使用方法については、「 [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)」から確認できます。
+
 ### Azure Active Directory Device Registration を使用して Android デバイスを参加させる
 
 [「Android 用の Azure Authenticator」](active-directory-conditional-access-azure-authenticator-app.md)トピックに、Android デバイスに Azure 認証アプリをインストールして、仕事用アカウントを追加するための手順が説明されています。Android デバイスで仕事用アカウントが正常に作成されると、そのデバイスを組織に社内参加させることができます。
@@ -198,7 +204,8 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 次のシナリオを考慮します。AD FS でアプリケーションの証明書利用者の信頼を作成し、登録されたデバイスのみを許可する発行承認規則を構成します。これで、登録されたデバイスのみにアプリケーションへのアクセスが許可されます。ユーザーがアプリケーションに容易にアクセスできるようにするには、ユーザーのデバイスを参加させる手順を含むカスタム アクセス拒否メッセージを構成します。これで、ユーザーはアプリケーションにアクセスするために、シームレスな方法でデバイスを登録できます。
 
 次の手順に、このシナリオを実装する方法を示します。
->[AZURE.NOTE]ここでは、AD FS でアプリケーションに対して証明書利用者の信頼を構成済みであると想定します。
+>[AZURE.NOTE]
+ここでは、AD FS でアプリケーションに対して証明書利用者の信頼を構成済みであると想定します。
 
 1. AD FS MMC ツールを開き、[AD FS] > [信頼関係] > [証明書利用者の信頼] の順に移動します。
 2. この新しいアクセス ルールが適用されるアプリケーションを特定します。アプリケーションを右クリックし、[要求規則の編集...] を選択します。
@@ -237,4 +244,4 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 
 ![ユーザーがデバイスを Azure AD に登録していなかった場合に表示されるエラーのスクリーン ショット](./media/active-directory-conditional-access/error-azureDRS-device-not-registered.gif)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -23,7 +23,7 @@
 この記事では、Visual Studio の "リソース グループの配置" を使用して Azure 仮想マシン スケール セットをデプロイする方法について説明します。
 
 
-[Azure 仮想マシン スケール セット](azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/)は、自動スケールと負荷分散のためのオプションを簡単に組み込んで、同様の仮想マシンを一元的にデプロイし、管理するための Azure コンピューティング リソースです。VM スケール セットのプロビジョニングとデプロイは、[Azure リソース マネージャー (ARM) テンプレート](https://github.com/Azure/azure-quickstart-templates)を使って行うことができます。ARM テンプレートは、Azure CLI、PowerShell、REST を使ってデプロイできるほか、Visual Studio から直接デプロイすることもできます。Visual Studio には、"Azure リソース グループの配置" プロジェクトの一環としてデプロイできるサンプル テンプレート一式が用意されています。
+[Azure 仮想マシン スケール セット](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/)は、自動スケールと負荷分散のためのオプションを簡単に組み込んで、同様の仮想マシンを一元的にデプロイし、管理するための Azure コンピューティング リソースです。VM スケール セットのプロビジョニングとデプロイは、[Azure リソース マネージャー (ARM) テンプレート](https://github.com/Azure/azure-quickstart-templates)を使って行うことができます。ARM テンプレートは、Azure CLI、PowerShell、REST を使ってデプロイできるほか、Visual Studio から直接デプロイすることもできます。Visual Studio には、"Azure リソース グループの配置" プロジェクトの一環としてデプロイできるサンプル テンプレート一式が用意されています。
 
 Azure リソース グループとしてデプロイすることによって、関連する一連の Azure リソースを集約し、1 回のデプロイ操作で発行することができます。詳細については、「[Visual Studio での Azure リソース グループの作成とデプロイ](../vs-azure-tools-resource-groups-deployment-projects-create-deploy/)」を参照してください。
 
@@ -108,4 +108,4 @@ Visual Studio を使って VM スケール セットを正常にデプロイし�
 [output_window]: ./media/virtual-machines-vmss-vstemplates/9-Output.png
 [cloud_explorer]: ./media/virtual-machines-vmss-vstemplates/12-CloudExplorer.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -22,7 +22,7 @@
 
 このチュートリアルでは、復旧計画に拡張性を持たせるために Azure Site Recovery と Azure Automation を統合する方法について説明します。復旧計画では、セカンダリ クラウドへのレプリケーションと Azure へのレプリケーションという両方のシナリオで、Azure Site Recovery を使用して保護された仮想マシンの復旧を調整できます。復旧計画により、復旧を**常に正確**、**反復可能**で、**自動化**されるようにすることもできます。仮想マシンを Azure にフェールオーバーする場合は、Azure Automation と統合して復旧計画を拡張し、Runbook を実行する機能を使用できます。そのため、強力な自動タスクを実行できます。
 
-Azure Automation について聞いたことがない場合は、[ここ](http://azure.microsoft.com/services/automation/)でサインアップして、[ここ](http://azure.microsoft.com/documentation/scripts/)からサンプル スクリプトをダウンロードしてください。[Azure Site Recovery](http://azure.microsoft.com/services/site-recovery/)の詳細を確認し、[ここ](http://azure.microsoft.com/blog/?p=166264)にある復旧計画を使用した Azure への復旧の調整方法を参照してください。
+Azure Automation について聞いたことがない場合は、[ここ](https://azure.microsoft.com/services/automation/)でサインアップして、[ここ](https://azure.microsoft.com/documentation/scripts/)からサンプル スクリプトをダウンロードしてください。[Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/)の詳細を確認し、[ここ](https://azure.microsoft.com/blog/?p=166264)にある復旧計画を使用した Azure への復旧の調整方法を参照してください。
 
 このチュートリアルでは、Azure Automation Runbook を復旧計画に統合する方法を説明します。以前は手動での介入を必要とした単純なタスクを自動化し、複数の手順の復旧を 1 回のクリックの復旧アクションに変換する方法を説明します。また、単純なスクリプトで問題が発生する場合に、トラブルシューティングする方法も説明します。
 
@@ -310,4 +310,4 @@ Runbook を計画に追加したら、テスト フェールオーバーを開�
 
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

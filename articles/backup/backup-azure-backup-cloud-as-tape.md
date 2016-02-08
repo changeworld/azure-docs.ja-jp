@@ -47,7 +47,7 @@ Backup スケジュールは、バックアップ操作の頻度を示します�
 
 回復ポイントの合計数は 56 です。
 
-> [AZURE.NOTE]Azure のバックアップでは、回復ポイントの数に制限はありません。
+> [AZURE.NOTE] Azure のバックアップでは、回復ポイントの数に制限はありません。
 
 ## 詳細な構成
 上記の画面の **[変更]** をクリックすることによって、顧客はより柔軟に保持スケジュールを指定することができます。
@@ -60,4 +60,4 @@ Azure Backup について詳しくは、以下をご覧ください。
 - [Azure Backup の概要](backup-introduction-to-azure-backup.md)
 - [Azure Backup を試す](backup-try-azure-backup-in-10-mins)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

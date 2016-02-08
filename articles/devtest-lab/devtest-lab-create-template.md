@@ -24,7 +24,7 @@
 
 ## VM テンプレートの作成
 
-1. [Azure プレビュー ポータル](http://portal.azure.com)にサインインします。
+1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
 
 1. **[参照]** をタップし、一覧の **[DevTest ラボ]** をタップします。
 
@@ -86,4 +86,4 @@
 
 VM を作成するときに使用する VM テンプレートを追加したら、次に [VM を DevTest ラボに追加](devtest-lab-add-vm-with-artifacts)します。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -47,7 +47,7 @@ Microsoft Azure クラウド サービスに関する問題を診断するため
 ## 前提条件
 
 - 生成された zip ファイルを保存するための、拡張機能のストレージ アカウントを所有している必要があります。
-- Azure PowerShell コマンドレット V0.8.0 以降を使用している必要があります。詳細については、[Azure のダウンロード](http://azure.microsoft.com/downloads/)に関するページを参照してください。
+- Azure PowerShell コマンドレット V0.8.0 以降を使用している必要があります。詳細については、[Azure のダウンロード](https://azure.microsoft.com/downloads/)に関するページを参照してください。
 
 ## 拡張機能の追加
 
@@ -126,7 +126,7 @@ Virtual Machines に関しては、**Set-AzureVMExtension** という既存の A
         $AdditionalDataList+= $a1
               #more locations can be added....
   
-    > [AZURE.NOTE]このロールには固定ドライブが使用されていないため、トークン `%roleroot%` を使用してルート ドライブを指定します。
+    > [AZURE.NOTE] このロールには固定ドライブが使用されていないため、トークン `%roleroot%` を使用してルート ドライブを指定します。
 
 4. 収集されたファイルのアップロード先となる Azure ストレージ アカウントの名前とキーを指定します。
 
@@ -521,4 +521,4 @@ SetAzureVMLogCollector.ps1
 
 ログは、すっきりと 1 か所から調査またはコピーすることができます。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

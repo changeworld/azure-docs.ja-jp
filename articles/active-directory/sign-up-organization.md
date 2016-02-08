@@ -31,8 +31,8 @@
 
 **その他のリソース**
 
-* [Microsoft Azure のブログ](http://azure.microsoft.com/blog/)
+* [Microsoft Azure のブログ](https://azure.microsoft.com/blog/)
 * [Azure AD とは](active-directory-whatis.md)
 * [クラウド内のオンプレミスの ID インフラストラクチャの使用](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

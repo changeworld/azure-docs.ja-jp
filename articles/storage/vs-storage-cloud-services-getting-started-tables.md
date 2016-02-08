@@ -30,7 +30,7 @@ Azure テーブル ストレージ サービスを使用すると、大量の構
 
 - プログラムを使用してテーブルを操作する方法の詳細については、[.NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md)に関するページをご覧ください。
 - Azure Storage の一般情報については、「[ストレージのドキュメント](https://azure.microsoft.com/documentation/services/storage/)」をご覧ください。
-- Azure Cloud Services の一般情報については、「[Cloud Services のドキュメント](http://azure.microsoft.com/documentation/services/cloud-services/)」をご覧ください。
+- Azure Cloud Services の一般情報については、「[Cloud Services のドキュメント](https://azure.microsoft.com/documentation/services/cloud-services/)」をご覧ください。
 - ASP.NET アプリケーションのプログラミングについての詳細は、「[ASP.NET](http://www.asp.net)」をご覧ください。
 
 ## コードでテーブルにアクセスする
@@ -50,7 +50,7 @@ Azure テーブル ストレージ サービスを使用すると、大量の構
 		 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
 		   CloudConfigurationManager.GetSetting("<storage account name>
          _AzureStorageConnectionString"));
-> [AZURE.NOTE]上記のコードはすべて、以下の例に示すコードの前に使用してください。
+> [AZURE.NOTE]  上記のコードはすべて、以下の例に示すコードの前に使用してください。
 
 3. ストレージ アカウント内のテーブル オブジェクトを参照する **CloudTableClient** オブジェクトを取得します。
 
@@ -269,4 +269,4 @@ Azure テーブルは、「コードでテーブルにアクセスする」セ�
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0128_2016-->

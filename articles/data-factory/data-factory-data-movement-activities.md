@@ -47,7 +47,7 @@ Data Management Gateway を使用すると、Azure IaaS VM (サービスとし�
 | <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li><li>[オンプレミス/Azure IaaS の Oracle Database](data-factory-onprem-oracle-connector.md)</li><li>[オンプレミス/Azure IaaS の MySQL Database](data-factory-onprem-mysql-connector.md)</li><li>[オンプレミス/Azure IaaS の DB2 Database](data-factory-onprem-db2-connector.md)</li><li>[オンプレミス/Azure IaaS の Teradata Database](data-factory-onprem-teradata-connector.md)</li><li>[オンプレミス/Azure IaaS の Sybase Database](data-factory-onprem-sybase-connector.md)</li><li>[オンプレミス/Azure IaaS の PostgreSQL Database](data-factory-onprem-postgresql-connector.md)</li><li>[ODBC データ ソース](data-factory-odbc-connector.md)</li><li>[Hadoop 分散ファイル システム (HDFS)](data-factory-hdfs-connector.md)</li></ul> | <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li></ul> |
 
 
-> [AZURE.NOTE]Azure DocumentDB と他の Azure サービス (Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、Azure DocumentDB、Azure Data Lake Store など) との間でのみ移動できます。Azure Document DB の完全なマトリックスも間もなくサポートされます。
+> [AZURE.NOTE] Azure DocumentDB と他の Azure サービス (Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、Azure DocumentDB、Azure Data Lake Store など) との間でのみ移動できます。Azure Document DB の完全なマトリックスも間もなくサポートされます。
 
 ## チュートリアル
 コピー アクティビティの使用のクイック チュートリアルについては、「[チュートリアル: Azure Data Factory パイプラインでコピー アクティビティを使用する](data-factory-get-started.md)」を参照してください。このチュートリアルでは、コピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。次のセクションは、コピー アクティビティでサポートされているすべてのソースとシンクの一覧です。
@@ -60,9 +60,9 @@ Data Management Gateway を使用すると、Azure IaaS VM (サービスとし�
 ### <a name="global"></a>グローバルに使用できるデータの移動
 Azure Data Factory 自体は、米国西部と北ヨーロッパのリージョンのみで利用できますが、Data Movement Service を利用したコピー アクティビティは、以下のリージョンと場所でグローバルに使用できます。グローバルに使用できるトポロジは、ほとんどの場合にリージョンをまたがるホップを回避する効率的なデータ移動を保証します。
 
-| リージョン | [地理的な場所] |
+| リージョン | 地理的な場所 |
 | ------ | --------- | 
-| 米国中央部 | 米国 |
+| 米国中部 | 米国 |
 | 米国東部 | 米国 |
 | 米国東部 2 | 米国 |
 | 米国中北部 | 米国 |
@@ -115,4 +115,4 @@ Azure Data Factory 自体は、米国西部と北ヨーロッパのリージョ�
 ### コピー アクティビティのパフォーマンスとチューニング 
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因について、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。また、内部テスト実行時の実際のパフォーマンスを一覧表示すると共に、コピー アクティビティのパフォーマンスを最適化するさまざまな方法を説明します。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

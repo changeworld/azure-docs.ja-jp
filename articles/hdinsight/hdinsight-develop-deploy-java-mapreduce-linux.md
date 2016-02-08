@@ -223,7 +223,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 3. コマンドが終了すると、__wordcountjava/target__ ディレクトリに __wordcountjava-1.0-SNAPSHOT.jar__ という名前のファイルが格納されます。
 
-	> [AZURE.NOTE]__wordcountjava-1.0-SNAPSHOT.jar__ ファイルは uberjar です。これには、WordCount ジョブだけでなく、ジョブの実行時に必要な依存関係も含まれます。
+	> [AZURE.NOTE] __wordcountjava-1.0-SNAPSHOT.jar__ ファイルは uberjar です。これには、WordCount ジョブだけでなく、ジョブの実行時に必要な依存関係も含まれます。
 
 
 ##<a id="upload"></a>jar をアップロードする
@@ -236,7 +236,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 これにより、ファイルがローカル システムからヘッド ノードにコピーされます。
 
-> [AZURE.NOTE]SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。たとえば、「`scp -i /path/to/private/key wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`」のように入力します。
+> [AZURE.NOTE] SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。たとえば、「`scp -i /path/to/private/key wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`」のように入力します。
 
 ##<a name="run"></a>MapReduce ジョブを実行する
 
@@ -270,7 +270,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 - [HDInsight の Hadoop での Pig の使用][hdinsight-use-pig]
 - [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-詳細については、[Java デベロッパー センター](http://azure.microsoft.com/develop/java/)も参照してください。
+詳細については、[Java デベロッパー センター](https://azure.microsoft.com/develop/java/)も参照してください。
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
@@ -292,4 +292,4 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 [powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

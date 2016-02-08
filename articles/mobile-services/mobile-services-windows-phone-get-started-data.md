@@ -37,7 +37,7 @@
 
 + Visual Studio 2012 Express for Windows Phone 8 および Windows 8 で実行する [Windows Phone 8 SDK] が必要になります。このチュートリアルを完了して、Windows Phone 8.1 アプリケーションを作成するには、Visual Studio 2013 Update 2 以降が必要です。
 
-+ Azure アカウント。アカウントがない場合は、無料試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Farticles%2Fdocumentation%2Fmobile-services-windows-phone-get-started-data%2F)を参照してください。
++ Azure アカウント。アカウントがない場合は、無料試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Farticles%2Fdocumentation%2Fmobile-services-windows-phone-get-started-data%2F)を参照してください。
 
 ##<a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
 
@@ -69,7 +69,7 @@
 
 ##<a name="update-app"></a>モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する
 
-モバイル サービスの準備が整ったら、ローカル コレクションの代わりに Mobile Services に項目を格納するようにアプリケーションを更新します。
+モバイル サービスの準備が整ったら、ローカル コレクションの代わりにモバイル サービスに項目を格納するようにアプリケーションを更新します。
 
 1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクト名を右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
@@ -77,7 +77,7 @@
 
   	![][7]
 
-  	これにより、Mobile Services クライアント ライブラリがプロジェクトに追加されます。
+  	これにより、モバイル サービス クライアント ライブラリがプロジェクトに追加されます。
 
 3. [Azure クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
@@ -124,7 +124,7 @@
         private IMobileServiceTable<TodoItem> todoTable =
 			App.MobileService.GetTable<TodoItem>();
 
-   	このコードは、モバイル サービス対応のバインディング コレクション (**items**) と SQL Database テーブルのプロキシ クラス **TodoItem** (**todoTable**) を作成します。
+   	このコードは、モバイル サービス対応のバインディング コレクション (**items**) と SQL データベース テーブルのプロキシ クラス **TodoItem** (**todoTable**) を作成します。
 
 7. **InsertTodoItem** メソッド内で、**TodoItem**.**Id** プロパティを設定するコード行を削除し、**async** 修飾子をメソッドに追加して、次のコード行をコメント解除します。
 
@@ -144,7 +144,7 @@
 
    	これにより、項目の更新がモバイル サービスに送信されます。
 
-バックエンド ストレージの Mobile Services を使用するようにアプリケーションを更新した後は、Mobile Services に対してアプリケーションをテストします。
+バックエンド ストレージのモバイル サービスを使用するようにアプリケーションを更新した後は、モバイル サービスに対してアプリケーションをテストします。
 
 ##<a name="test-app"></a>新しいモバイル サービスに対するアプリケーションのテスト
 
@@ -160,13 +160,13 @@
 
    	![][9]
 
-   	**TodoItem** テーブルに、Mobile Services によって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
+   	**TodoItem** テーブルに、モバイル サービスによって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
 
 これでチュートリアルは終了します。
 
 ## <a name="next-steps"> </a>次のステップ
 
-このチュートリアルでは、Windows Phone 8 アプリで Mobile Services のデータを操作できるようにするための基本について説明しました。次に、以下のその他のトピックのいずれかを読むことを検討してください。
+このチュートリアルでは、Windows Phone 8 アプリでモバイル サービスのデータを操作できるようにするための基本について説明しました。次に、以下のその他のトピックのいずれかを読むことを検討してください。
 
 * [アプリへの認証の追加](mobile-services-windows-phone-get-started-users.md) <br/>アプリケーションのユーザーを認証する方法について説明します。
 
@@ -196,4 +196,4 @@
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=271146
 [デベロッパー サンプル コード集のサイト]: http://go.microsoft.com/fwlink/p/?LinkId=271146
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

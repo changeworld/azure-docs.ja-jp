@@ -27,7 +27,7 @@
 ## 前提条件
 Powershell コマンドレットを使用するための要件:
 
-- 最新の Azure コマンドライン SDK は、[こちらで入手できます](http://azure.microsoft.com/downloads/)
+- 最新の Azure コマンドライン SDK は、[こちらで入手できます](https://azure.microsoft.com/downloads/)
 
 VM で拡張機能を使用するための要件:
 
@@ -49,7 +49,7 @@ VM で拡張機能を使用するための要件:
 
 Set-AzureVMSqlServerExtension [-VM] <IPersistentVM> [[-Version] <string>] [-AutoBackupSettings <AutoBackupSettings>] [-AutoPatchingSetttings <AutoPatchingSetttings>] [-Confirm] [-WhatIf] [<CommonParameters>]
 
-> [AZURE.NOTE]–Version パラメーターは、省略することをお勧めします。省略すると、最新バージョンの拡張機能が既定値になります。
+> [AZURE.NOTE] –Version パラメーターは、省略することをお勧めします。省略すると、最新バージョンの拡張機能が既定値になります。
 
 ### 例
 	Get-AzureVM –ServiceName serviceName –Name vmName | Set-AzureVMSqlServerExtension –AutoBackupSettings $abs | Update-AzureVM**
@@ -65,7 +65,7 @@ Set-AzureVMSqlServerExtension [-VM] <IPersistentVM> [[-Version] <string>] [-Auto
 
 Get-AzureVMSqlServerExtension [[-VM] <IPersistentVM>] [[-Version] <string>] [<CommonParameters>]
 
-> [AZURE.NOTE]–Version パラメーターは省略できます。省略すると、最新バージョンの拡張機能が既定値になります。
+> [AZURE.NOTE] –Version パラメーターは省略できます。省略すると、最新バージョンの拡張機能が既定値になります。
 
 ### 例
 	Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
@@ -78,4 +78,4 @@ VM からこの拡張機能を削除する場合は、次の Azure Powershell �
 ### 構文
 Remove-AzureVMSqlServerExtension -VM <IPersistentVM> [<CommonParameters>]
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

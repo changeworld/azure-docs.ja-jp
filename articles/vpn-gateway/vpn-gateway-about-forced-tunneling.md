@@ -98,7 +98,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 - 構成済みの仮想ネットワーク。
 
-- Web Platform Installer を使用した、Azure PowerShell コマンドレットの最新バージョン。[ダウンロード ページ](http://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
+- Web Platform Installer を使用した、Azure PowerShell コマンドレットの最新バージョン。[ダウンロード ページ](https://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
 
 ## 強制トンネリングについて
 
@@ -157,4 +157,4 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 	Remove-AzureVnetGatewayDefaultSites -VNetName <virtualNetworkName>
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

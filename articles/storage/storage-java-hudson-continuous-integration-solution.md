@@ -86,11 +86,11 @@ Hudson で BLOB サービスを使用するには、Azure Storage プラグイ�
 2. **[Manage Hudson]** ページで **[Configure System]** をクリックします。
 3. **[Microsoft Azure Storage Account Configuration]** セクションで、次の操作を行います。
 
-    a.[Azure ポータル](portal.azure.com) で取得したストレージ アカウント名を入力します。
+    a.[Azure ポータル](https://portal.azure.com) で取得したストレージ アカウント名を入力します。
 
-    b.同様に、[Azure ポータル](portal.azure.com)で取得したストレージ アカウント キーを入力します。
+    b.同様に、[Azure ポータル](https://portal.azure.com)で取得したストレージ アカウント キーを入力します。
 
-    c.パブリック Azure クラウドを使用している場合、**[Blob Service Endpoint URL]** には既定値を使用します。これとは異なる Azure クラウドを使用している場合には、[Azure ポータル](portal.azure.com)でストレージ アカウント用に指定されたエンドポイントを使用します。
+    c.パブリック Azure クラウドを使用している場合、**[Blob Service Endpoint URL]** には既定値を使用します。これとは異なる Azure クラウドを使用している場合には、[Azure ポータル](https://portal.azure.com)でストレージ アカウント用に指定されたエンドポイントを使用します。
 
     d.**[Validate storage credentials]** をクリックしてストレージ アカウントを検証します。
 
@@ -129,7 +129,7 @@ Hudson で BLOB サービスを使用するには、Azure Storage プラグイ�
 13. Hudson ダッシュボードで、**[Build Now]** をクリックして **MyJob** を実行します。コンソール出力でステータスを確認します。ビルド後のアクションによってビルド アーティファクトのアップロードが開始されると、コンソール出力に Azure Storage に関するステータス メッセージが表示されます。
 14. ジョブが正常に完了すると、パブリック BLOB を開いてビルド アーティファクトを確認できます。
 
-    a.[Azure ポータル](portal.azure.com)にサインインします。
+    a.[Azure ポータル](https://portal.azure.com)にサインインします。
 
     b.**[Storage]** をクリックします。
 
@@ -166,7 +166,7 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
 
-    (ここに挙げた形式は、パブリック Azure クラウドに適用されるものです。これとは異なる Azure クラウドを使用している場合は、[Azure ポータル](portal.azure.com)内のエンドポイントを使用して URL エンドポイントを指定します。)
+    (ここに挙げた形式は、パブリック Azure クラウドに適用されるものです。これとは異なる Azure クラウドを使用している場合は、[Azure ポータル](https://portal.azure.com)内のエンドポイントを使用して URL エンドポイントを指定します。)
 
     この形式では、`storageaccount` はストレージ アカウントの名前、`container_name` はコンテナーの名前、`blob_name` は BLOB の名前をそれぞれ表します。コンテナー名にはパスを複数使用することができます。その場合には、スラッシュ (**/**) で区切ります。このチュートリアルで例に使用したコンテナー名は **MyJob**、共通仮想パスは **${BUILD\_ID}/${BUILD\_NUMBER}** でした。このため、BLOB の URL は次のようになります。
 
@@ -177,4 +177,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   [ストレージ アカウントの作成方法]: http://go.microsoft.com/fwlink/?LinkId=279823
   [Meet Hudson (Hudson について)]: http://wiki.eclipse.org/Hudson-ci/Meet_Hudson
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

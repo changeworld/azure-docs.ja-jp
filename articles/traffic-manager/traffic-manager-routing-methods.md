@@ -31,7 +31,7 @@ Traffic Manager での 3 つのトラフィック ルーティング方法を次
 
 Azure Websites では、Web サイトのモードに関係なく、データセンター内の Web サイト向けにフェールオーバーおよびラウンド ロビンによるトラフィック ルーティング方法が既に用意されています。Traffic Manager を使用すると、異なるデータセンター内の Web サイトに対して、フェールオーバーおよびラウンド ロビンによるトラフィック ルーティング方法を指定できます。
 
->[AZURE.NOTE]DNS の有効期限 (TTL) により、DNS クライアントおよびリゾルバーは、解決された名前が DNS サーバー上でキャッシュされる期間を認識します。クライアントは、名前のローカル DNS キャッシュ エントリの期限が切れるまで、指定されたエンドポイントを使用してドメイン名を解決します。
+>[AZURE.NOTE] DNS の有効期限 (TTL) により、DNS クライアントおよびリゾルバーは、解決された名前が DNS サーバー上でキャッシュされる期間を認識します。クライアントは、名前のローカル DNS キャッシュ エントリの期限が切れるまで、指定されたエンドポイントを使用してドメイン名を解決します。
 
 ## フェールオーバーによるトラフィック ルーティング方法
 
@@ -85,7 +85,7 @@ Azure Websites では、Web サイトのモードに関係なく、データセ�
 
 REST API の使用方法の詳細については、「[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=313584)」を参照してください。
 
-Azure PowerShell コマンドレットの使用方法の詳細については、「[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)」を参照してください。構成の例については、Azure ブログの「[Azure Traffic Manager External Endpoints and Weighted Round Robin via PowerShell](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)」を参照してください。
+Azure PowerShell コマンドレットの使用方法の詳細については、「[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)」を参照してください。構成の例については、Azure ブログの「[Azure Traffic Manager External Endpoints and Weighted Round Robin via PowerShell](https://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)」を参照してください。
 
 単一のクライアントからのプロファイルをテストして、均等ラウンド ロビンまたは重み付けラウンド ロビンの動作を確認するには、プロファイルの均等値または重み値に従って、DNS 名が異なるエンドポイントの IP アドレスに解決されることを確認します。テストの際には、クライアント側の DNS キャッシュを無効にするか、毎回 DNS キャッシュをクリアして、新しい DNS 名のクエリが送信されるようにする必要があります。
 
@@ -130,4 +130,4 @@ Traffic Manager に関する独自のプレゼンテーション用の PowerPoin
 [エンドポイントの追加](traffic-manager-endpoints.md)
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

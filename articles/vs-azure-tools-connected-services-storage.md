@@ -90,8 +90,8 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
      - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-     - [Storage (azure.microsoft.com)](http://azure.microsoft.com/services/storage)
+     - [Storage (azure.microsoft.com)](https://azure.microsoft.com/services/storage/)
 
-     - [Storage のドキュメント (azure.microsoft.com)](http://azure.microsoft.com/documentation/services/storage/)
+     - [Storage のドキュメント (azure.microsoft.com)](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->

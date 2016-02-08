@@ -34,9 +34,9 @@
 ##前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。手順については、[Azure PowerShell のインストールおよび構成に関するページ](../install-configure-powershell.md)を参照してください。PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「[Set-ExecutionPolicy コマンドレットの使用][2]」をご覧ください。
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。手順については、[Azure PowerShell のインストールおよび構成に関するページ](../install-configure-powershell.md)を参照してください。PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「[Set-ExecutionPolicy コマンドレットの使用][2]」をご覧ください。
 
 	Azure PowerShell スクリプトを実行する前に、次のコマンドレットを使用して Azure サブスクリプションに接続されていることを確認します。
 
@@ -84,7 +84,7 @@ DNS サーバーはオプションですが、場合によっては必要にな�
 
 **Azure ストレージ アカウントと BLOB ストレージ コンテナーを作成してクラスターで使用するには**
 
-> [AZURE.NOTE]HDInsight クラスターは、データ保存するために Azure BLOB ストレージを使用します。詳細については、「[Use Azure Blob storage with Hadoop in HDInsight (HDInsight での Hadoop と Azure BLOB ストレージの使用)](../hdinsight-use-blob-storage.md)」を参照してください。ストレージ アカウントと BLOB ストレージ コンテナーが必要です。ストレージ アカウントの場所は、仮想ネットワークの場所およびクラスターの場所と一致している必要があります。
+> [AZURE.NOTE] HDInsight クラスターは、データ保存するために Azure BLOB ストレージを使用します。詳細については、「[Use Azure Blob storage with Hadoop in HDInsight (HDInsight での Hadoop と Azure BLOB ストレージの使用)](../hdinsight-use-blob-storage.md)」を参照してください。ストレージ アカウントと BLOB ストレージ コンテナーが必要です。ストレージ アカウントの場所は、仮想ネットワークの場所およびクラスターの場所と一致している必要があります。
 
 その他の HDInsight クラスターのように HBase クラスターにも既定のファイル システムとして Azure ストレージ アカウントと BLOB ストレージ コンテナーが必要になります。ストレージ アカウントの場所は、仮想ネットワークの場所およびクラスターの場所と一致している必要があります。詳細については、「[Use Azure Blob storage with Hadoop in HDInsight (HDInsight での Hadoop と Azure BLOB ストレージの使用)][hdinsight-storage]」を参照してください。HBase クラスターをプロビジョニングする場合、新規作成するか既存のものを使用するオプションがあります。この手順では、Azure クラシック ポータルを使用したストレージ アカウントと BLOB ストレージ コンテナーを作成する方法を説明します。
 
@@ -109,7 +109,7 @@ DNS サーバーはオプションですが、場合によっては必要にな�
 
 **Azure クラシック ポータルを使用して HBase クラスターをプロビジョニングするには**
 
-> [AZURE.NOTE]Azure PowerShell を使用した新しい HBase クラスターのプロビジョニングの詳細については、「[Azure PowerShell を使用して HBase クラスターをプロビジョニングする](#powershell)」をご覧ください。
+> [AZURE.NOTE] Azure PowerShell を使用した新しい HBase クラスターのプロビジョニングの詳細については、「[Azure PowerShell を使用して HBase クラスターをプロビジョニングする](#powershell)」をご覧ください。
 
 1. [Azure クラシック ポータル][azure-portal]にサインインします。
 
@@ -117,78 +117,76 @@ DNS サーバーはオプションですが、場合によっては必要にな�
 
 3. クラスターの名前を入力して、クラスターの種類として HBase を選択し、Windows Server 2012 オペレーティング システムを選択します。その後 HDInsight のバージョンを選択して右側のボタンをクリックします。
 
-	![Provide details for the HBase cluster][img-provision-cluster-page1]
+	![HBase クラスターの詳細][img-provision-cluster-page1]
 
 
-	> [AZURE.NOTE]HBase クラスターの場合、使用可能な OS オプションは Windows Server のみになります。
+	> [AZURE.NOTE] HBase クラスターの場合、使用可能な OS オプションは Windows Server のみになります。
 
 4. **[クラスターの構成]** ページで、次を入力するか選択します。
 
-	![Provide details for the HBase cluster](./media/hdinsight-hbase-provision-vnet/hbasewizard2.png)
+	![HBase クラスターの詳細](./media/hdinsight-hbase-provision-vnet/hbasewizard2.png)
 
 	<table border='1'>
-		<tr><th>プロパティ</th><th>値</th></tr>
-		<tr><td>データ ノード</td><td>デプロイするデータ ノードの数を選択します。テストでは、単一ノード クラスターを作成します。<br />クラスター サイズの制限は、Azure サブスクリプションによって変わります。制限値を上げるには、Azure の課金サポートにお問い合わせください。</td></tr>
+	<tr><th>プロパティ</th><th>値</th></tr>
+	<tr><td>データ ノード</td><td>デプロイするデータ ノードの数を選択します。テストでは、単一ノード クラスターを作成します。<br />クラスター サイズの制限は、Azure サブスクリプションによって変わります。制限値を上げるには、Azure の課金サポートにお問い合わせください。</td></tr>
 		<tr><td>リージョン/仮想ネットワーク</td><td><p>リージョン、またはすでに作成済みの場合は Azure 仮想ネットワークを選択します。このチュートリアルでは、以前に作成したネットワークの選択し、対応するサブネットを選択します。既定の名前は <b>Subnet-1</b> です。</p></td></tr>
-		<tr><td>ヘッド ノード サイズ</td><td><p>ヘッド ノードの VM サイズを選択します。</p></td></tr>
-		<tr><td>データ ノード サイズ</td><td><p>データ ノードの VM サイズを選択します。</p></td></tr>
-		<tr><td>Zookeeper サイズ</td><td><p>Zookeeper ノードの VM サイズを選択します。</p></td></tr>
+	<tr><td>ヘッド ノード サイズ</td><td><p>ヘッド ノードの VM サイズを選択します。</p></td></tr>
+	<tr><td>データ ノード サイズ</td><td><p>データ ノードの VM サイズを選択します。</p></td></tr>
+	<tr><td>Zookeeper サイズ</td><td><p>Zookeeper ノードの VM サイズを選択します。</p></td></tr>
 	</table>
-
 	>[AZURE.NOTE]VM の選択に基づき、料金が異なる場合があります。HDInsight は、クラスター ノードにすべて Standard レベルの VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」をご覧ください。
 
 	右側のボタンをクリックします。
 
 5. このクラスターで使用する Hadoop ユーザーの [ユーザー名] と [パスワード] を入力してから、右側のボタンをクリックします。
 
-	![Provide Storage account for Hadoop HDInsight cluster](./media/hdinsight-hbase-provision-vnet/hbasewizard3.png)
+	![Hadoop HDInsight クラスター用のストレージ アカウントの指定](./media/hdinsight-hbase-provision-vnet/hbasewizard3.png)
 
 	<table border='1'>
-		<tr><th>プロパティ</th><th>値</th></tr>
-		<tr><td>HTTP ユーザー名</td>
-			<td>HDInsight クラスターのユーザー名を指定します。</td></tr>
-		<tr><td>HTTP パスワード / パスワードの確認</td>
-			<td>HDInsight クラスターのユーザー パスワードを指定します。</td></tr>
-		<tr><td>Enable remote desktop for cluster (クラスターのリモート デスクトップ アクセスを有効にする)</td>
-			<td>このチェック ボックスをオンにして、プロビジョニングされるとクラスター ノードにリモートにできるリモート デスクトップ ユーザーのユーザー名、パスワード、有効期限を指定します。また、クラスターがプロビジョニングされた後にリモート デスクトップを有効にすることもできます。手順については、「<a href="hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」をご覧ください。</td></tr>
-	</table>
+	<tr><th>プロパティ</th><th>値</th></tr>
+	<tr><td>HTTP ユーザー名</td>
+		<td>HDInsight クラスターのユーザー名を指定します。</td></tr>
+	<tr><td>HTTP パスワード / パスワードの確認</td>
+		<td>HDInsight クラスターのユーザー パスワードを指定します。</td></tr>
+	<tr><td>Enable remote desktop for cluster (クラスターのリモート デスクトップ アクセスを有効にする)</td>
+		<td>このチェック ボックスをオンにして、プロビジョニングされるとクラスター ノードにリモートにできるリモート デスクトップ ユーザーのユーザー名、パスワード、有効期限を指定します。また、クラスターがプロビジョニングされた後にリモート デスクトップを有効にすることもできます。手順については、「<a href="hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」をご覧ください。</td></tr>
+</table>
 
 6. **[ストレージ アカウント]** ページで、次の値を指定します。
 
-    ![Provide Storage account for Hadoop HDInsight cluster](./media/hdinsight-hbase-provision-vnet/hbasewizard4.png)
+    ![Hadoop HDInsight クラスター用のストレージ アカウントの指定](./media/hdinsight-hbase-provision-vnet/hbasewizard4.png)
 
 	<table border='1'>
-		<tr><th>プロパティ</th><th>値</th></tr>
-		<tr><td>ストレージ アカウント</td>
+	<tr><th>プロパティ</th><th>値</th></tr>
+	<tr><td>ストレージ アカウント</td>
 			<td>HDInsight クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを指定します。次の 3 つのオプションのいずれかを選択できます。
-			<ul>
-				<li><strong>既存のストレージを使用する</strong></li>
-				<li><strong>新しいストレージを作成する</strong></li>
-				<li><strong>別のサブスクリプションのストレージを使用する</strong></li>
-			</ul>
-			</td></tr>
-		<tr><td>アカウント名</td>
-			<td><ul>
-				<li>既存のストレージを使用する場合は、<strong>[アカウント名]</strong> で既存のストレージ アカウントを選択します。ドロップダウンの一覧には、クラスターをプロビジョニングする対象として選択したデータ センターにあるストレージ アカウントのみが表示されます。</li>
-				<li><strong>[新しいストレージを作成する]</strong> または <strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、ストレージ アカウント名を指定する必要があります。</li>
-			</ul></td></tr>
-		<tr><td>アカウント キー</td>
-			<td><strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、そのストレージ アカウントのアカウント キーを指定します。</td></tr>
-		<tr><td>既定のコンテナー</td>
-			<td><p>ストレージ アカウントの既定のコンテナーを指定します。既定のコンテナーは、HDInsight クラスターの既定のファイル システムとして使用されます。<strong>[ストレージ アカウント]</strong> フィールドで <strong>[既存のストレージを使用する]</strong> を選択したにもかかわらずそのアカウントに既存のコンテナーがない場合は、既定でクラスターと同じ名前のコンテナーが作成されます。クラスター名と同じ名前のコンテナーが既に存在する場合は、コンテナー名に連番が付加されます。たとえば、mycontainer1、mycontainer2、などとなります。ただし、既存のストレージ アカウントに指定したクラスター名と異なる名前のコンテナーがある場合は、そのコンテナーを使用できます。</p>
-	        <p>新しいストレージの作成または別の Azure サブスクリプションのストレージの使用を選択した場合は、既定のコンテナー名を指定する必要があります。</p>
-	    </td></tr>
-		<tr><td>追加のストレージ アカウント</td>
+		<ul>
+			<li><strong>既存のストレージを使用する</strong></li>
+			<li><strong>新しいストレージを作成する</strong></li>
+			<li><strong>別のサブスクリプションのストレージを使用する</strong></li>
+		</ul>
+		</td></tr>
+	<tr><td>アカウント名</td>
+		<td><ul>
+			<li>既存のストレージを使用する場合は、<strong>[アカウント名]</strong> で既存のストレージ アカウントを選択します。ドロップダウンの一覧には、クラスターをプロビジョニングする対象として選択したデータ センターにあるストレージ アカウントのみが表示されます。</li>
+			<li><strong>[新しいストレージを作成する]</strong> または <strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、ストレージ アカウント名を指定する必要があります。</li>
+		</ul></td></tr>
+	<tr><td>アカウント キー</td>
+		<td><strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、そのストレージ アカウントのアカウント キーを指定します。</td></tr>
+	<tr><td>既定のコンテナー</td>
+		<td><p>ストレージ アカウントの既定のコンテナーを指定します。既定のコンテナーは、HDInsight クラスターの既定のファイル システムとして使用されます。<strong>[ストレージ アカウント]</strong> フィールドで <strong>[既存のストレージを使用する]</strong> を選択したにもかかわらずそのアカウントに既存のコンテナーがない場合は、既定でクラスターと同じ名前のコンテナーが作成されます。クラスター名と同じ名前のコンテナーが既に存在する場合は、コンテナー名に連番が付加されます。たとえば、mycontainer1、mycontainer2、などとなります。ただし、既存のストレージ アカウントに指定したクラスター名と異なる名前のコンテナーがある場合は、そのコンテナーを使用できます。</p>
+        <p>新しいストレージの作成または別の Azure サブスクリプションのストレージの使用を選択した場合は、既定のコンテナー名を指定する必要があります。</p>
+    </td></tr>
+	<tr><td>追加のストレージ アカウント</td>
 			<td>必要に応じてクラスターに追加するストレージ アカウントを指定します。HDInsight は複数のストレージ アカウントをサポートします。クラスターで使用できる追加ストレージ アカウントの数に制限はありません。ただし、Azure ポータルを使用してクラスターを作成する場合は、UI の制約により 7 が上限になります。ここで指定した追加のストレージ アカウントのそれぞれに対する <strong>[ストレージ アカウント]</strong> ページがウィザードに追加され、そこでアカウント情報を指定できます。たとえば、上のスクリーンショットでは、追加のストレージ アカウントが選択されていないため、ページがウィザードに追加されることはありません。</td></tr>
 	</table>
-
 	右矢印をクリックします。
 
 7. **[Script Actions]** ページで、右下にあるチェック マークを選択します。このチュートリアルではクラスターの設定をカスタマイズする必要はないため、**[スクリプト アクションの追加]** はクリックしないでください。
 
-	![Configure Script Action to customize an HDInsight HBase cluster][img-provision-cluster-page5]
+	![HDInsight HBase クラスターをカスタマイズするためのスクリプト アクションの構成][img-provision-cluster-page5]
 
-	> [AZURE.NOTE]このページは、セットアップ時のクラスターのカスタマイズで使用できます。詳細については、「[Script Action を使用した HDInsight のカスタマイズ](hdinsight-hadoop-customize-cluster.md)」に関するページをご覧ください。
+	> [AZURE.NOTE] このページは、セットアップ時のクラスターのカスタマイズで使用できます。詳細については、「[Script Action を使用した HDInsight のカスタマイズ](hdinsight-hadoop-customize-cluster.md)」に関するページをご覧ください。
 
 新しい HBase クラスターの使用を開始する場合は、「[HDInsight の Hadoop 環境で HBase を使用する](../hdinsight-hbase-get-started.md)」に記載されている手順を使用できます。
 
@@ -308,7 +306,7 @@ DNS サーバーはオプションですが、場合によっては必要にな�
 
 		これは、DNS サフィックスを返します。たとえば、**yourclustername.b4.internal.cloudapp.net** です。
 
-	> [AZURE.NOTE]リモート デスクトップを使用して HBase クラスターに接続し (ヘッド ノードに接続されます)、コマンド プロンプトから **ipconfig** を実行して DNS サフィックスを取得することもできます。RDP を有効にし、リモート デスクトップ プロトコル (RDP) を使用してクラスターに接続する手順については、「[Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-portal]」をご覧ください。
+	> [AZURE.NOTE] リモート デスクトップを使用して HBase クラスターに接続し (ヘッド ノードに接続されます)、コマンド プロンプトから **ipconfig** を実行して DNS サフィックスを取得することもできます。RDP を有効にし、リモート デスクトップ プロトコル (RDP) を使用してクラスターに接続する手順については、「[Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-portal]」をご覧ください。
 	>
 	> ![hdinsight.hbase.dns.surffix][img-dns-surffix]
 
@@ -337,7 +335,7 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
     	<value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
 	</property>
 
-> [AZURE.NOTE]独自の DNS サーバーの使用方法を含め、Azure Virtual Network の名前解決の詳細については、「[名前解決 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
+> [AZURE.NOTE] 独自の DNS サーバーの使用方法を含め、Azure Virtual Network の名前解決の詳細については、「[名前解決 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
 
 ##Azure PowerShell を使用して HBase クラスターをプロビジョニングする
 
@@ -434,4 +432,4 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 [img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "新しい HBase クラスターのプロビジョニングの詳細"
 [img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Script Action を使って HBase クラスターをカスタマイズする"
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

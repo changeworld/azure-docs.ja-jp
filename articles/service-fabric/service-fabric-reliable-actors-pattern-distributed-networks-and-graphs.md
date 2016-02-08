@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="09/29/2015"
-   ms.author="claudioc"/>
+   ms.author="vturecek"/>
 
 # Reliable Actors の設計パターン: 分散ネットワークおよびグラフ
 Azure Service Fabric Reliable Actors プログラミング モデルは、関係に関する複雑なソリューションのモデル化とそれらの関係のオブジェクトとしてのモデル化に自然に適合します。
@@ -230,4 +230,4 @@ public Task PublishMessageAsync(long participantId, string message)
 [1]: ./media/service-fabric-reliable-actors-pattern-distributed-networks-and-graphs/distributedNetworks_arch1.png
 [2]: ./media/service-fabric-reliable-actors-pattern-distributed-networks-and-graphs/distributedNetworks_arch2.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

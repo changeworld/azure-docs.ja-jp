@@ -80,7 +80,7 @@ Azure のデータ サイエンス環境をセット アップするには、
 
 3. [データ サイエンス仮想マシンをプロビジョニングする](machine-learning-data-science-setup-sql-server-virtual-machine.md)。この仮想マシンは SQL Server と IPython Notebook サーバーの役割をします。
 
-	> [AZURE.NOTE]サンプル スクリプトと IPython Notebook は、セットアップ プロセス中、データ サイエンス仮想マシンにダウンロードされます。VM のインストール後スクリプトが完了すると、サンプルの Sample Scripts: `C:\Users<user_name>\Documents\Data Science Scripts` と Sample IPython Notebooks: `C:\Users<user_name>\Documents\IPython Notebooks\DataScienceSamples` が VM のドキュメント ライブラリに入ります。`<user_name>` は VM の Windows ログイン名です。ここでのサンプル フォルダーは **Sample Scripts** と **Sample IPython Notebooks** です。
+	> [AZURE.NOTE] サンプル スクリプトと IPython Notebook は、セットアップ プロセス中、データ サイエンス仮想マシンにダウンロードされます。VM のインストール後スクリプトが完了すると、サンプルの Sample Scripts: `C:\Users<user_name>\Documents\Data Science Scripts` と Sample IPython Notebooks: `C:\Users<user_name>\Documents\IPython Notebooks\DataScienceSamples` が VM のドキュメント ライブラリに入ります。`<user_name>` は VM の Windows ログイン名です。ここでのサンプル フォルダーは **Sample Scripts** と **Sample IPython Notebooks** です。
 
 
 データセットのサイズ、データ ソースの場所、選択された Azure の対象環境に基づくと、このシナリオは[シナリオ 5: ローカル ファイルの大規模データセット (Azure VM の SQL Server を対象)](../machine-learning-data-science-plan-sample-scenarios.md#largelocaltodb) と類似しています。
@@ -612,7 +612,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
 2. [Azure Machine Learning Studio ](https://studio.azureml.net)にログインします。
 
-3. Studio のホーム ページには、豊富な情報、ビデオ、チュートリアル、モジュール リファレンスへのリンク、およびその他のリソースが用意されています。Azure Machine Learning の詳細については、[Azure Machine Learning ドキュメント センター](http://azure.microsoft.com/documentation/services/machine-learning/)を参照してください。
+3. Studio のホーム ページには、豊富な情報、ビデオ、チュートリアル、モジュール リファレンスへのリンク、およびその他のリソースが用意されています。Azure Machine Learning の詳細については、[Azure Machine Learning ドキュメント センター](https://azure.microsoft.com/documentation/services/machine-learning/)を参照してください。
 
 一般的なトレーニング実験は以下のもので構成されています。
 
@@ -649,7 +649,7 @@ SQL Server データベースから直接データを読み取る、二項分類
 
 ![Azure ML トレーニング][10]
 
-> [AZURE.IMPORTANT]前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、**3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]**、**[tip\_amount]**、**[total\_amount]** は除外します。使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
+> [AZURE.IMPORTANT] 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、**3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]**、**[tip\_amount]**、**[total\_amount]** は除外します。使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
 >
 > 不要な列またはターゲット リークを除外するために、[プロジェクトの列][project-columns]モジュールまたは[メタデータ エディター][metadata-editor]を使用できます。詳細については、「[プロジェクト列][project-columns]」と「[メタデータ エディター][metadata-editor]」リファレンス ページを参照してください。
 
@@ -714,4 +714,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0128_2016-->

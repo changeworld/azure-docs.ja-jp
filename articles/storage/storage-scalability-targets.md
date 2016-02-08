@@ -21,15 +21,15 @@
 
 このトピックでは、Microsoft Azure Storage のスケーラビリティとパフォーマンスについて説明します。その他の Azure の制約に関する概要は、「[Azure サブスクリプションとサービスの制限、クォータ、および制約](../azure-subscription-service-limits.md)」を参照してください。
 
->[AZURE.NOTE]すべてのストレージ アカウントは新しいフラット ネットワーク トポロジで実行され、ストレージ アカウントがいつ作成されたかにかかわらず、以下に示すスケーラビリティおよびパフォーマンスのターゲットがサポートされます。のフラット ネットワーク アーキテクチャおよびスケーラビリティの詳細については、[Microsoft Azure Storage の高い整合性を持つ高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)に関するページを参照してください。
+>[AZURE.NOTE] すべてのストレージ アカウントは新しいフラット ネットワーク トポロジで実行され、ストレージ アカウントがいつ作成されたかにかかわらず、以下に示すスケーラビリティおよびパフォーマンスのターゲットがサポートされます。のフラット ネットワーク アーキテクチャおよびスケーラビリティの詳細については、[Microsoft Azure Storage の高い整合性を持つ高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)に関するページを参照してください。
 
 <!-- -->
 
->[AZURE.IMPORTANT]ここで示すスケーラビリティおよびパフォーマンスのターゲットは、ハイエンドのターゲットですが、達成可能です。いかなる場合でも、ストレージ アカウントで達成される要求レートおよび帯域幅は、格納されたオブジェクトのサイズ、使用されているアクセス パターン、およびアプリケーションで実行されているワークロードの種類によって異なります。必ずサービスをテストして、パフォーマンスがユーザー要件を満たしているかどうかを確認してください。可能であれば、トラフィック量の急増を回避し、トラフィックがパーティション間でうまく分散されるようにしてください。
+>[AZURE.IMPORTANT] ここで示すスケーラビリティおよびパフォーマンスのターゲットは、ハイエンドのターゲットですが、達成可能です。いかなる場合でも、ストレージ アカウントで達成される要求レートおよび帯域幅は、格納されたオブジェクトのサイズ、使用されているアクセス パターン、およびアプリケーションで実行されているワークロードの種類によって異なります。必ずサービスをテストして、パフォーマンスがユーザー要件を満たしているかどうかを確認してください。可能であれば、トラフィック量の急増を回避し、トラフィックがパーティション間でうまく分散されるようにしてください。
 
 >ワークロードがアプリケーションのパーティションで処理できる上限に達すると、Azure Storage はエラー コード 503 (サーバーがビジー状態) またはエラー コード 500 (操作タイムアウト) の応答を返しはじめます。このような状況になった場合、アプリケーションで指数関数的バックオフによる再試行ポリシーを使用する必要があります。指数関数的バックオフによって、そのパーティションへの負荷が減少し、そのパーティションへのトラフィック量の増加が緩和されます。
 
-アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合、複数のストレージ アカウントを使用し、それらのストレージ アカウント間でデータが分割されるようにアプリケーションを構築できます。ボリューム ディスカウント料金の詳細については、「[Azure Storage 料金](http://azure.microsoft.com/pricing/details/storage/)」を参照してください。
+アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合、複数のストレージ アカウントを使用し、それらのストレージ アカウント間でデータが分割されるようにアプリケーションを構築できます。ボリューム ディスカウント料金の詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
 
 ## Blob、キュー、テーブル、およびファイルのスケーラビリティ ターゲット
@@ -78,11 +78,11 @@ Azure Storage に格納されているデータを含むすべてのオブジェ
 
 ## 関連項目
 
-- [Storage の料金詳細](http://azure.microsoft.com/pricing/details/storage/)
+- [Storage の料金詳細](https://azure.microsoft.com/pricing/details/storage/)
 - [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)
 - [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal/)
 - [Azure Storage のレプリケーション](storage-redundancy.md)
 - [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](storage-performance-checklist.md)
 - [Microsoft Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="web"
-	ms.date="11/06/2015"
+	ms.date="01/26/2016"
 	ms.author="tomfitz"/>
 
 #Azure App Service のエンタープライズ クラスの WordPress
@@ -26,11 +26,11 @@ Azure App Service は、基幹業務系の大規模な [WordPress][wordpress] �
 
 * **MySQL データベース** - [Azure Marketplace に含まれている ClearDB][cdbnstore] を介して利用できるほか、[Windows][mysqlwindows] または [Linux][mysqllinux] を実行する Azure Virtual Machines で独自の MySQL インストールを管理できます。
 
-    > [AZURE.NOTE]ClearDB では複数の MySQL 構成を利用でき、構成ごとにパフォーマンス特性が異なります。Azure ストアで提供されているオファリングの詳細については [Azure ストア][cdbnstore]を、ClearDB が公表しているオファリングについては [ClearDB の料金情報](http://www.cleardb.com/pricing.view)を参照してください。
+    > [AZURE.NOTE] ClearDB では複数の MySQL 構成を利用でき、構成ごとにパフォーマンス特性が異なります。Azure ストアで提供されているオファリングの詳細については [Azure ストア][cdbnstore]を、ClearDB が公表しているオファリングについては [ClearDB の料金情報](http://www.cleardb.com/pricing.view)を参照してください。
 
 * **PHP 5.2.4 以上** - Azure App Service は現在、[PHP バージョン 5.4、5.5、5.6][phpwebsite] を提供しています。
 
-	> [AZURE.NOTE]最新のセキュリティ更新プログラムが適用されるよう、常に最新バージョンの PHP で実行することをお勧めします。
+	> [AZURE.NOTE] 最新のセキュリティ更新プログラムが適用されるよう、常に最新バージョンの PHP で実行することをお勧めします。
 
 ###基本的なデプロイ
 
@@ -53,11 +53,11 @@ Azure [Traffic Manager][trafficmanager] を使用すると、WordPress サイト
 
 ###メディア ストレージとキャッシュを用いる複数リージョンのデプロイ
 
-サイトがアップロードを受け入れている場合、またはメディア ファイルをホストする場合は、Azure BLOB ストレージを使用します。キャッシュが必要な場合は、[Redis Cache][rediscache]、[Memcached Cloud](https://azure.microsoft.com/marketplace/partners/garantiadata/memcached/)、[MemCachier](https://azure.microsoft.com/marketplace/partners/memcachier/memcachier/)、または [Azure ストア](http://azure.microsoft.com/gallery/store/)で取り扱われている別のキャッシュ オファリングの使用を検討してください。
+サイトがアップロードを受け入れている場合、またはメディア ファイルをホストする場合は、Azure BLOB ストレージを使用します。キャッシュが必要な場合は、[Redis Cache][rediscache]、[Memcached Cloud](https://azure.microsoft.com/marketplace/partners/garantiadata/memcached/)、[MemCachier](https://azure.microsoft.com/marketplace/partners/memcachier/memcachier/)、または [Azure ストア](https://azure.microsoft.com/gallery/store/)で取り扱われている別のキャッシュ オファリングの使用を検討してください。
 
 ![Azure の Web アプリは、Managed Cache、Blob ストレージ、CDN を使用した CDBR の高可用性のルーターを MySQL に使用し、複数のリージョンでホストされています。][performance-diagram]
 
-BLOB ストレージは、既定では複数のリージョンにまたがって地理的に分散されるため、すべてのサイトにファイルをレプリケートしなくてもかまいません。また、BLOB ストレージ用に Azure [Content Delivery Network (CDN)][cdn] を有効にして、ユーザーに近いエンド ノードへとファイルを配信することもできます。
+BLOB ストレージは、既定では複数のリージョンにまたがって地理的に分散されるため、すべてのサイトにファイルをレプリケートしなくてもかまいません。また、BLOB ストレージ用に Azure [コンテンツ配信ネットワーク (CDN)][cdn] を有効にして、ユーザーに近いエンド ノードへとファイルを配信することもできます。
 
 ###計画
 
@@ -96,7 +96,7 @@ BLOB ストレージは、既定では複数のリージョンにまたがって
 
 * **[WordPress][export]** のエクスポート - この方法では、ブログのコンテンツをエクスポートし、次に [WordPress importer プラグイン][import]を使用して、Azure App Service 上の新しい WordPress サイトにインポートします。
 
-	> [AZURE.NOTE]このプロセスでブログのコンテンツは移行できますが、プラグインやテーマ、その他のカスタマイズ内容は移行できません。これらは、改めて手動でインストールする必要があります。
+	> [AZURE.NOTE] このプロセスでブログのコンテンツは移行できますが、プラグインやテーマ、その他のカスタマイズ内容は移行できません。これらは、改めて手動でインストールする必要があります。
 
 * **手動での移行** - [バックアップしたサイト][wordpressbackup]と[データベース][wordpressdbbackup]を、手動で Azure App Service のWeb アプリとそれに関連付けられた MySQL データベースとして復元します。これにより、高度にカスタマイズされたサイトを移行できると共に、プラグインやテーマ、さらには他のカスタマイズを手動でインストールする手間が大幅に軽減されます。
 
@@ -232,7 +232,7 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 
 * [Tips for WordPress on Azure (Azure で WordPress を運用するヒント)](http://www.johnpapa.net/azurecleardbmysql/)
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
@@ -282,4 +282,4 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 [cdn]: ../cdn-how-to-use.md
  
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

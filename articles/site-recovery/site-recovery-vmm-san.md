@@ -59,7 +59,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 **前提条件** | **詳細** 
 --- | ---
-**Azure**| [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の料金については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)を参照してください。 
+**Azure**| [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の料金については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)を参照してください。 
 **VMM** | 少なくとも 1 台の VMM サーバーを、物理または仮想スタンドアロン サーバーとして、または仮想クラスターとしてデプロイする必要があります。<br/><br/>VMM サーバーは、最新の累積更新プログラムが適用された System Center 2012 R2 を実行する必要があります。<br/><br/>保護するプライマリ VMM サーバー上に少なくとも 1 つのクラウドを構成し、保護と回復を行うために使用するセカンダリ VMM サーバー上に 1 つのクラウドを構成する必要があります。<br/><br/>保護するソース クラウドには、1 つ以上のVMM ホスト グループを含める必要があります。<br/><br/>すべての VMM クラウドに Hyper-V キャパシティ プロファイルを設定する必要があります。<br/><br/>VMM クラウドの設定の詳細については、[VMM クラウドのファブリックの構成](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)に関するページと、[チュートリアル: System Center 2012 SP1 VMM を使用したプライベート クラウドの作成](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)に関するページを参照してください。
 **Hyper-V** | プライマリ サイトとセカンダリ サイトに 1 つ上の Hyper-V クラスターが必要であり、ソース Hyper-V クラスターに 1 台以上の VM が必要です。プライマリとセカンダリの場所にある VMM ホスト グループは、各グループが 1 つ以上の Hyper-V クラスタを持っている必要があります。<br/><br/>ホストとターゲットの Hyper-V サーバーは、少なくとも Hｙｐｅｒ-V ロールが割り当てられ、最新の更新プログラムがインストールされた Windows Server 2012 を実行中である必要があります。<br/><br/>保護する VM を含む Hyper-V サーバーは VMM クラウドに配置されている必要があります。<br/><br/>Hyper-V をクラスターで実行する場合、静的 IP アドレス ベースのクラスターがあると、クラスター ブローカーは自動的に作成されないことに注意してください。クラスター ブローカーを手動で構成する必要があります。詳細については、[こちら](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)を参照してください。
 **SAN 記憶域** | SAN レプリケーションを使用して、iSCSI またはファイバー チャネル ストレージがあるか、共有仮想ハード ディスク (vhdx) を使用するゲスト クラスター化仮想マシンをレプリケートできます。<br/><br/>2 つの SAN アレイを設定する必要があります (プライマリ サイト内とセカンダリ サイト内にそれぞれ１ つ)。<br/><br/>これらのアレイの間にネットワーク インフラストラクチャを設定する必要がありますピアリングとレプリケーションが構成されていること。ストレージ アレイの要件に従ってレプリケーション ライセンスが設定されている必要があります。<br/><br/>Hyper-V ホスト サーバーとストレージ アレイの間にネットワークを設定して、ホストが ISCSI またはファイバーチャネルを使用して LUN と通信できるようにする必要があります。<br/><br/> [サポートされるストレージ アレイ](http://social.technet.microsoft.com/wiki/contents/articles/28317.deploying-azure-site-recovery-with-vmm-and-san-supported-storage-arrays.aspx)の一覧を確認します。<br/><br/>ストレージ アレイ メーカーによって提供された SMI-Sプロバイダーをインストールする必要があり、SAN アレイはそのプロバイダーによって管理される必要があります。プロバイダーをそれぞれのドキュメントに従って設定します。<br/><br/> VMM サーバーが IP アドレスまたはFQDN によってネットワーク経由でアクセスできるサーバー上にアレイ用の SMI-S プロバイダーがあることを確認します。<br/><br/>各 SAN アレイには、このデプロイで 1 つ以上のストレージ プールを使用できる必要があります。プライマリ サイトの VMM サーバーがプライマリ アレイを管理し、セカンダリ VMM サーバーがセカンダリ アレイを管理します。<br/><br/>プライマリ サイトの VMM サーバーがプライマリ アレイを管理し、セカンダリ VMM サーバーがセカンダリ アレイを管理する必要があります。
@@ -190,12 +190,12 @@ VMM コンソールで SAN を追加し、分類します。
 	- カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシ設定を構成すると、プロキシの接続を確認するためのテストが実施されます。
 	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合、プロキシのアドレスやポートなどの詳細を入力する必要があります。
 	- VMM サーバーと Hyper-V ホストから次の URL にアクセスできる必要があります。
-		- *.hypervrecoverymanager.windowsazure.com
-		- *.accesscontrol.windows.net
-		- *.backup.windowsazure.com
-		- *.blob.core.windows.net
-		- *.store.core.windows.net
-	- 「[Azure Datacenter の IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+		- **.hypervrecoverymanager.windowsazure.com
+- **.accesscontrol.windows.net
+- **.backup.windowsazure.com
+- **.blob.core.windows.net
+- **.store.core.windows.net
+- 「[Azure Datacenter の IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、[設定] ワークスペースを開いて [セキュリティ] を展開し、[実行アカウント] をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
 
 10. **[登録キー]** で、Azure Site Recovery からダウンロードして VMM サーバーにコピーした登録キーを選択します。
@@ -212,7 +212,7 @@ VMM コンソールで SAN を追加し、分類します。
 
 	![サーバー登録](./media/site-recovery-vmm-san/friendly-name.png)
 
-15. **[次へ]** をクリックしてプロセスを完了します。登録後に、VMM サーバーからのメタデータが、Azure Site Recovery によって取得されます。サーバーは、コンテナーの **[サーバー]** ページの [VMM サーバー] タブに表示されます。
+15. **[次へ]** をクリックしてプロセスを完了します。登録後に、VMM サーバーからのメタデータが、Azure Site Recovery によって取得されます。サーバーは、コンテナーの **[サーバー]** ページの *[VMM サーバー]* タブに表示されます。
 
 ### コマンド ラインを使用したインストール
 
@@ -320,9 +320,7 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 デプロイをテストして、仮想マシンとデータが想定どおりにフェールオーバーされるかどうかを確認します。そのためには、レプリケーション グループを選択して、復旧計画を作成します。次に、その計画に従ってテスト フェールオーバーを実行します。
 
 1. **[復旧計画]** タブで、**[復旧計画の作成]** をクリックします。
-2. 復旧計画の名前、ソースおよびターゲット VMM サーバーを指定します。ソース サーバーには、フェールオーバーと復旧が有効になった仮想マシンが必要になります。**[SAN]** を選択して、SAN レプリケーションが構成されたクラウドだけを表示します。
-3.
-	![復旧計画の作成](./media/site-recovery-vmm-san/r-plan.png)
+2. 復旧計画の名前、ソースおよびターゲット VMM サーバーを指定します。ソース サーバーには、フェールオーバーと復旧が有効になった仮想マシンが必要になります。**[SAN]** を選択して、SAN レプリケーションが構成されたクラウドだけを表示します。3. ![復旧計画の作成](./media/site-recovery-vmm-san/r-plan.png)
 
 4. **[仮想マシンの選択]** で、レプリケーション グループを選択します。レプリケーション グループに関連付けられているすべての仮想マシンを選択し、復旧計画に追加します。これらの仮想マシンは、復旧計画の既定のグループ「グループ 1」に追加されます。必要に応じて、他のグループを追加することもできます。レプリケーションの後、仮想マシンは復旧計画のグループの順序に従って起動することに注意してください。
 
@@ -359,4 +357,4 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 
 テスト フェールオーバーを実行して、環境が期待どおりに動作することを確認したら、[こちらで](site-recovery-failover.md)異なる種類のフェールオーバーについて参照します。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

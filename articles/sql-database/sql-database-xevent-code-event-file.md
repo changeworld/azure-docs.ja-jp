@@ -41,7 +41,7 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
 ## 前提条件
 
 
-- Azure アカウントとサブスクリプション。[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+- Azure アカウントとサブスクリプション。[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
 
 - テーブルを作成できるデータベース。
@@ -597,4 +597,4 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

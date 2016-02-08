@@ -31,9 +31,9 @@
 
   ![図][img-pubportal-publish-pushproduction]
 
-> [AZURE.IMPORTANT]**[ドラフト]** 状態の間は、プランをいつでも削除できます (つまり、**ステージングにプッシュ**や**本番にプッシュ**されていない状態)。ドラフトを削除するページの下部にある **[履歴]** タブの **[ドラフトの破棄]** ボタンをクリックします。
+> [AZURE.IMPORTANT] **[ドラフト]** 状態の間は、プランをいつでも削除できます (つまり、**ステージングにプッシュ**や**本番にプッシュ**されていない状態)。ドラフトを削除するページの下部にある **[履歴]** タブの **[ドラフトの破棄]** ボタンをクリックします。
 
-> 仮想マシン イメージの場合、データ センター全体をレプリケーションするには、24 ～ 48 時間かかります。レプリケーションが完了すると、プランが [Azure Marketplace](http://azure.microsoft.com/marketplace) に一覧表示されます。
+> 仮想マシン イメージの場合、データ センター全体をレプリケーションするには、24 ～ 48 時間かかります。レプリケーションが完了すると、プランが [Azure Marketplace](https://azure.microsoft.com/marketplace/) に一覧表示されます。
 
 ## 次のステップ
 プランが公開されたら、顧客シナリオをテストし、ステージング環境でテストおよび検証したとおりに、運用環境でもすべてのコントラクトと機能が適切に機能することを検証します。
@@ -45,4 +45,4 @@
 [img-pubportal-menu-publish]: media/marketplace-publishing-push-to-production/pubportal-menu-publish.png
 [img-pubportal-publish-pushproduction]: media/marketplace-publishing-push-to-production/pubportal-publish-pushproduction.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -38,7 +38,7 @@
 **[Framework バージョン]**。アプリでこれらのフレームワークを使用する場合は、以下のオプションを設定します。
 
 - **.NET Framework**: .NET Framework のバージョンを設定します。 
-- **PHP**: PHP のバージョンを設定するか、PHP を無効にする場合は **[オフ]** を設定します。
+- **PHP**: PHP のバージョンを設定するか、PHP を無効にする場合は [オフ] を設定します。
 - **Java**: Java のバージョンを選択するか、Java を無効にする場合は **[オフ]** を選択します。**[Web コンテナー]** オプションを使用して Tomcat か Jetty のバージョンを選択します。
 - **Python**: Python のバージョンを選択するか、Python を無効にする場合は **[オフ]** を選択します。
 
@@ -50,9 +50,9 @@
 
 <a name="alwayson"></a>**常時接続**。既定では、アイドル状態がしばらく続くと Web アプリはアンロードされます。これにより、システムではリソースを節約できます。基本モードと標準モードでは、**[常時接続]** を有効にすると、アプリが常に読み込まれた状態になります。アプリで継続的な Web ジョブを実行する場合は、**[常時接続]** を有効にする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。
 
-**マネージ パイプライン バージョン**。IIS [パイプライン モード](http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application)を設定します。この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、統合 (既定) のままにしておきます。
+**マネージ パイプライン バージョン**。IIS [パイプライン モード](http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application)を設定します。この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、[統合] (既定) のままにしておきます。
 
-**自動スワップ**。デプロイ スロットの自動スワップを有効にした場合、アプリ サービスは、スロットに対して更新をプッシュしたときに、Web アプリを運用環境に自動的にスワップします。詳細については、[Azure App Service の Web アプリに対するステージング スロットへのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
+**自動スワップ**。デプロイ スロットの自動スワップを有効にした場合、App Service は、スロットに対して更新をプッシュしたときに、Web アプリを運用環境に自動的にスワップします。詳細については、[Azure App Service の Web アプリに対するステージング スロットへのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
 
 
 ### デバッグ
@@ -152,8 +152,8 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 
 ### デプロイメント
 
-- 継続的なデプロイを設定します。「[Azure App Service での Git を使用した Web アプリのデプロイ](web-sites-publish-source-control.md)」を参照してください。
-- デプロイメント スロット:[Azure App Service での Web アプリのステージング環境へのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
+- 継続的なデプロイを設定します。「[Azure App Service での Git を使用した Web Apps のデプロイ](web-sites-publish-source-control.md)」を参照してください。
+- デプロイメント スロット:[Azure App Service での Web Apps のステージング環境へのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
 
 デプロイ スロットを表示するには、**[すべて設定]** > **[デプロイ スロット]** をクリックします。
 
@@ -164,17 +164,17 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 
 詳細については、「[方法: Web エンドポイントの状態を監視する](http://go.microsoft.com/fwLink/?LinkID=279906&clcid=0x409)」をご覧ください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 次のステップ
 
 - [カスタム ドメイン名の構成](web-sites-custom-domain-name.md)
 - [HTTPS の有効化](web-sites-configure-ssl-certificate.md)
 - [Azure App Service での Web アプリの拡張](web-sites-scale.md)
-- [Azure App Service での Web アプリの監視の基本](web-sites-monitor.md)
+- [Azure App Service での Web Apps の監視の基本](web-sites-monitor.md)
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0128_2016-->

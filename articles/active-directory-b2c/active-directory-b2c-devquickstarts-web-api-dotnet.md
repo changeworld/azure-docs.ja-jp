@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="01/21/2016"
 	ms.author="dastrock"/>
 
 # Azure AD B2C プレビュー: .NET Web アプリから Web API を呼び出す
@@ -24,11 +24,11 @@ Azure AD B2C を使用すると、簡単な手順で強力なセルフサービ�
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
-この記事では、Azure AD B2C でサインイン、サインアップ、プロファイルの管理を実装する方法については説明しません。ユーザーが既に認証された後での Web API の呼び出しに焦点を合わせています。まだ行っていない場合は、先に「[.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)」で Azure AD B2C の基本を学習してください。
+この記事では、Azure AD B2C でサインイン、サインアップ、プロファイルの管理を実装する方法については説明しません。ユーザーが既に認証された後での Web API の呼び出しに焦点を合わせています。まだ行っていない場合は、先に「[Azure AD B2C プレビュー: .NET Web アプリをビルドする](active-directory-b2c-devquickstarts-web-dotnet.md)」で Azure AD B2C の基本を学習してください。
 
 ## 1\.Azure AD B2C ディレクトリの取得
 
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。ディレクトリをまだ用意していない場合、先に進む前に「[Azure AD B2C プレビュー: Azure AD B2C ディレクトリの作成方法](active-directory-b2c-get-started.md)」を参照してください。
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリの作成](active-directory-b2c-get-started.md)に関するページを参照してください。
 
 ## 2\.アプリケーションの作成
 
@@ -37,7 +37,7 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 - アプリケーションに **Web アプリまたは Web API** を含めます。
 - `https://localhost:44316/` を**応答 URL** として入力します。これはこのサンプル コードで使用する既定の URL です。
 - アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
-- アプリに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
+- アプリケーションに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
@@ -47,7 +47,7 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポ
 
 - サインアップ ポリシーで、**表示名**と他のいくつかのサインアップ属性を選択します。
 - すべてのポリシーで、アプリケーション クレームとして**表示名**と**オブジェクト ID** を選択します。その他のクレームも選択できます。
-- ポリシーの作成後、各ポリシーの**名前**をメモしておきます。名前には、プレフィックス `b2c_1_` が付加されます。これらのポリシー名はすぐに必要になります。
+- ポリシーの作成後、各ポリシーの**名前**をメモしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名はすぐに必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
@@ -83,12 +83,12 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-Web
     <add key="ida:PolicyId" value="{Enter the name of one of the policies you created, like `b2c_1_my_sign_in_policy`}" />
 </appSettings>
 ```
-  
+
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 
 この記事では、`TaskService` のセキュリティ保護の詳細は説明しません。Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、
-[Web API の概要に関する記事](active-directory-b2c-devquickstarts-api-dotnet.md)をご覧ください。
+「[Azure AD B2C プレビュー: .Net Web API を構築する](active-directory-b2c-devquickstarts-api-dotnet.md)」をご覧ください。
 
 ## 6.タスク Web アプリの構成
 
@@ -248,11 +248,11 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 	// The token will be stored in the ADAL token cache, for use in our controllers
 	AuthenticationResult result = await authContext.AcquireTokenByAuthorizationCodeAsync(notification.Code, new Uri(redirectUri), credential, new string[] { clientId }, mostRecentPolicy);
 }
-``` 
+```
 
 #### コントローラーでのアクセス トークンの取得
 
-`TaskService` バックエンド用のアクセス トークンを取得し、ADAL のトークン キャッシュに保存しました。次は、これを実際に使用する必要があります。`TasksController` は `TaskService` API と通信する役割を担い、HTTP 要求を API に送信してタスクの読み取り、作成、削除を行います。HTTP 要求を送信する前に、ADAL からアクセス トークンを取得します。
+`TaskService` バックエンド用のアクセス トークンを取得し、ADAL のトークン キャッシュに保存しました。次は、これを実際に使用する必要があります。`TasksController` は `TaskService` API と通信する役割を担い、HTTP 要求を API に送信してタスクの読み取り、作成、および削除を行います。HTTP 要求を送信する前に、ADAL からアクセス トークンを取得します。
 
 ```C#
 // Controllers\TasksController.cs
@@ -268,7 +268,7 @@ public async Task<ActionResult> Index()
 
 		// We don't care which policy is used to access the TaskService, so let's use the most recent policy
 		string mostRecentPolicy = ClaimsPrincipal.Current.FindFirst(Startup.AcrClaimType).Value;
-		
+
 		// Here you ask for a token using the web app's clientId as the scope, since the web app and service share the same clientId.
 		// AcquireTokenSilentAsync will return a token from the token cache, and throw an exception if it cannot do so.
 		AuthenticationContext authContext = new AuthenticationContext(authority, new NaiveSessionCache(userObjectID));
@@ -283,7 +283,7 @@ public async Task<ActionResult> Index()
 	}
 	...
 }
-``` 
+```
 
 ADAL では、トークンのキャッシング、トークンの有効期限が切れたときの更新、例外をスローしてもう一度サインインする必要がある場合の通知を処理します。アプリでトークンが必要になったときにすべきことは、`AuthenticationContext.AcquireTokenSilentAsync(...)` を呼び出すことだけです。
 
@@ -296,9 +296,9 @@ ADAL では、トークンのキャッシング、トークンの有効期限が
 
 public async Task<ActionResult> Index()
 {
-	... 
-	
-	try 
+	...
+
+	try
 	{
 		HttpClient client = new HttpClient();
 		HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, serviceUrl + "/api/tasks");
@@ -316,7 +316,7 @@ public async Task<ActionResult> Index()
 		}
 		else
 		{
-			// If the call failed with access denied, then drop the current access token from the cache, 
+			// If the call failed with access denied, then drop the current access token from the cache,
 			// and show the user an error indicating they might need to sign-in again.
 			if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
 			{
@@ -361,8 +361,8 @@ public void SignOut()
 
 		HttpContext.GetOwinContext().Authentication.SignOut(
 		new AuthenticationProperties(
-			new Dictionary<string, string> 
-			{ 
+			new Dictionary<string, string>
+			{
 				{Startup.PolicyKey, ClaimsPrincipal.Current.FindFirst(Startup.AcrClaimType).Value}
 			}), OpenIdConnectAuthenticationDefaults.AuthenticationType, CookieAuthenticationDefaults.AuthenticationType);
 	}
@@ -389,4 +389,4 @@ You can now move onto more advanced B2C topics.  You may want to try:
 
 -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

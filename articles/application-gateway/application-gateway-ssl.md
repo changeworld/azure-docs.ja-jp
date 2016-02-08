@@ -27,7 +27,7 @@ Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL)
 
 ## 開始する前に
 
-1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。最新バージョンは、[ダウンロード ページ](http://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションからダウンロードしてインストールできます。
+1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。[ダウンロード ページ](https://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
 2. 有効なサブネットがある作業用の仮想ネットワークがあることを確認します。
 3. 仮想ネットワーク内、またはパブリック IP/VIP が割り当てられたバックエンド サーバーがあることを確認します。
 
@@ -235,4 +235,4 @@ SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

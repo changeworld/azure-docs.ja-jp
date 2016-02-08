@@ -257,7 +257,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 ## その他のリソース
 
-[Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
+[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [Azure Virtual Machines に関する FAQ](http://msdn.microsoft.com/library/azure/dn683781.aspx)
 
@@ -265,4 +265,4 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

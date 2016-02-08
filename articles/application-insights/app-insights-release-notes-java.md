@@ -16,7 +16,7 @@
 
 # Java 向けの Application Insights SDK のリリース ノート
 
-[Application Insights SDK for Java](app-insights-java-get-started.md) では、実行中のアプリに関するテレメトリを [Application Insights](http://azure.microsoft.com/services/application-insights/) に送信し、その使用状況とパフォーマンスを分析できます。
+[Application Insights SDK for Java](app-insights-java-get-started.md) では、実行中のアプリに関するテレメトリを [Application Insights](https://azure.microsoft.com/services/application-insights/) に送信し、その使用状況とパフォーマンスを分析できます。
 
 #### アプリケーションに SDK をインストールするには
 
@@ -73,4 +73,4 @@
 - 新しい ```trackDependency``` API メソッドを利用し、依存関係を手動で追跡できます。
 - 報告された項目に ```SyntheticSource``` プロパティを追加し、利用統計情報項目に合成のタグを付けることができます。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="01/21/2016"
 	ms.author="dastrock"/>
 
 # Azure AD B2C プレビュー: Windows デスクトップ アプリを作成する
@@ -26,7 +26,7 @@ With Azure AD B2C を使用すると、簡単な手順で強力なセルフサ�
 
 ## 1\.Azure AD B2C ディレクトリの取得
 
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。ディレクトリをまだ用意していない場合、先に進む前に [B2C ディレクトリの作成](active-directory-b2c-get-started.md)に関するページを参照してください。
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリの作成](active-directory-b2c-get-started.md)に関するページを参照してください。
 
 ## 2\.アプリケーションの作成
 
@@ -45,7 +45,7 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポ
 - ID プロバイダーのブレードで、**[ユーザー ID サインアップ]** または **[電子メール サインアップ]** を選択します。
 - サインアップ ポリシーで、**表示名**と他のいくつかのサインアップ属性を選択します。
 - すべてのポリシーで、アプリケーション クレームとして **表示名**と**オブジェクト ID** を選択します。その他の要求も選択できます。
-- ポリシーの作成後、各ポリシーの**名前**をメモしておきます。名前には、プレフィックス `b2c_1_` が付加されます。これらのポリシー名はすぐに必要になります。
+- ポリシーの作成後、各ポリシーの**名前**をメモしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名はすぐに必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
@@ -79,11 +79,10 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClie
     <add key="ida:PolicyId" value="{Enter the name of one of the policies you created, like `b2c_1_my_sign_in_policy`}" />
   </appSettings>
 ```
-  
+
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、
-[Web API の概要に関する記事](active-directory-b2c-devquickstarts-api-dotnet.md)をご覧ください。
+Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、「[Azure AD B2C プレビュー: .Net Web API を構築する](active-directory-b2c-devquickstarts-api-dotnet.md)」をご覧ください。
 
 ## 6.ポリシーの実行
 `TaskService` で要求を認証する準備が完了したので、`TaskClient` を実装できます。アプリは、HTTP 認証要求を送信することで、Azure AD B2C と通信します。このとき、要求の一環として実行するポリシーを指定します。
@@ -113,7 +112,7 @@ public static class Globals
 	public static string redirectUri = "urn:ietf:wg:oauth:2.0:oob";
 
 }
-``` 
+```
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
@@ -132,7 +131,7 @@ public partial class MainWindow : Window
 		base.OnInitialized(e);
 
 		// The authority parameter can be constructed by appending the name of your tenant to 'https://login.microsoftonline.com/'.
-		// ADAL implements an in-memory cache by default.  Since we want tokens to persist when the user closes the app, 
+		// ADAL implements an in-memory cache by default.  Since we want tokens to persist when the user closes the app,
 		// we've extended the ADAL TokenCache and created a simple FileCache in this app.
 		authContext = new AuthenticationContext("https://login.microsoftonline.com/contoso.onmicrosoft.com", new FileCache());
 		...
@@ -160,14 +159,14 @@ private async void SignUp(object sender, RoutedEventArgs e)
 		SignUpButton.Visibility = Visibility.Collapsed;
 		EditProfileButton.Visibility = Visibility.Visible;
 		SignOutButton.Visibility = Visibility.Visible;
-		
+
 		// When the request completes successfully, you can get user information form the AuthenticationResult
 		UsernameLabel.Content = result.UserInfo.Name;
 
 		// After the sign up successfully completes, display the user's To-Do List
 		GetTodoList();
 	}
-	
+
 	// Handle any exeptions that occurred during execution of the policy.
 	catch (AdalException ex)
 	{
@@ -221,7 +220,7 @@ private async void EditProfile(object sender, RoutedEventArgs e)
                     new PlatformParameters(PromptBehavior.Always, null), Globals.editProfilePolicy);
 ```
 
-いずれの場合も、ADAL は `AuthenticationResult` でトークンを返すか、または例外をスローします。ADAL からトークンを取得するたびに、`AuthenticationResult.UserInfo` オブジェクトを使用してアプリ内の UI などのユーザー データを更新できます。ADAL は、アプリケーションの他の部分で使用するために、トークンのキャッシュも行います。
+いずれの場合も、ADAL は `AuthenticationResult` でトークンを返すか、または例外をスローします。ADAL からトークンを取得するたびに、`AuthenticationResult.UserInfo` オブジェクトを使用して、アプリ内のユーザー データ (UI など) を更新できます。ADAL は、アプリケーションの他の部分で使用するために、トークンのキャッシュも行います。
 
 ## 7\.API を呼び出す
 ADAL を使用してポリシーを実行し、トークンを取得しました。しかし、ポリシーを実行することなく、既存のキャッシュされたトークンをチェックしたいことがよくあります。例として、アプリで `TaskService` からユーザーの To-Do リストを取得する場合が挙げられます。同じ `authContext.AcquireTokenAsync(...)` メソッドを使用し、やはり `clientId` をスコープ パラメーターとして使用しますが、この場合は `PromptBehavior.Never` を使用します。
@@ -236,12 +235,12 @@ private async void GetTodoList()
 		TokenCacheItem tci = authContext.TokenCache.ReadItems().Where(i => i.Scope.Contains(Globals.clientId) && !string.IsNullOrEmpty(i.Policy)).FirstOrDefault();
 		string existingPolicy = tci == null ? null : tci.Policy;
 
-		// We use the PromptBehavior.Never flag to indicate that ADAL should throw an exception if a token 
-		// could not be acquired from the cache, rather than automatically prompting the user to sign in. 
+		// We use the PromptBehavior.Never flag to indicate that ADAL should throw an exception if a token
+		// could not be acquired from the cache, rather than automatically prompting the user to sign in.
 		result = await authContext.AcquireTokenAsync(new string[] { Globals.clientId },
 			null, Globals.clientId, new Uri(Globals.redirectUri),
 			new PlatformParameters(PromptBehavior.Never, null), existingPolicy);
-	
+
 	}
 
 	// If a token could not be acquired silently, we'll catch the exception and show the user a message.
@@ -284,7 +283,7 @@ private async void GetTodoList()
 	// Call the To Do list service.
 	HttpResponseMessage response = await httpClient.GetAsync(taskServiceUrl + "/api/tasks");
 	...
-``` 
+```
 
 ユーザーにサインインを求めずにトークン キャッシュ内のトークンを確認する必要があるときはいつでも、これと同じパターンを使用できます。たとえば、アプリの起動時に、`FileCache` で既存のトークンをチェックして、アプリが実行されるたびにユーザーのサインイン セッションを維持することができます。この最初の実行を処理する同じコードが、`MainWindow` の `OnInitialized` イベントで使用されています。
 
@@ -323,7 +322,7 @@ private void SignOut(object sender, RoutedEventArgs e)
 - [Facebook を IDP として設定する](active-directory-b2c-setup-fb-app.md)
 - [Google を IDP として設定する](active-directory-b2c-setup-goog-app.md)
 - [Amazon を IDP として設定する](active-directory-b2c-setup-amzn-app.md)
-- [LinkedIn を IDP として設定する](active-directory-b2c-setup-li-app.md) 
+- [LinkedIn を IDP として設定する](active-directory-b2c-setup-li-app.md)
 
 ID プロバイダーを B2C ディレクトリに追加したら、3 つのポリシーに戻って各ポリシーを編集し、[ポリシーに関するリファレンス記事](active-directory-b2c-reference-policies.md)で説明されているように、新しい IDP を加える必要があります。ポリシーを保存したら、もう一度アプリを実行するだけです。各 ID エクスペリエンスに、サインインおよびサインアップの選択肢として新しい IDP が追加されていることがわかります。
 
@@ -345,4 +344,4 @@ You can now move onto more advanced B2C topics.  You may want to try:
 
 -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

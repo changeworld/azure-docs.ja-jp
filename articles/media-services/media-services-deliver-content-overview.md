@@ -54,7 +54,7 @@ Media Services では、アセットにフィルターを定義できます。�
 
 ロケーターには、有効期限があります。ポータルを使用してアセットを発行すると、有効期限が 100 年のロケーターが作成されます。
 
->[AZURE.NOTE]2015 年 3 月以前にポータルを使用してロケーターを作成した場合は、ロケーターの有効期限は 2 年間になります。
+>[AZURE.NOTE] 2015 年 3 月以前にポータルを使用してロケーターを作成した場合は、ロケーターの有効期限は 2 年間になります。
 
 ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
  
@@ -104,7 +104,7 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
 
-詳細については、[この投稿](http://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support)を参照してください。
+詳細については、[この投稿](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)を参照してください。
 
 
 **スムーズ ストリーミング形式**
@@ -190,4 +190,4 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 [ストレージ キーの展開後に Media Services ロケーターを更新する](media-services-roll-storage-access-keys.md)
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

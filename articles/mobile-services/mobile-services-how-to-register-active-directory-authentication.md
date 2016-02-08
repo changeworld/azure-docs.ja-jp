@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="11/15/2015"
+	ms.date="01/14/2016"
 	ms.author="ricksal"/>
 
 # アプリケーションを登録して Azure Active Directory アカウント ログインを使用する
@@ -31,13 +31,13 @@
 
 ##アプリを登録する
 
->[AZURE.NOTE]このトピックで説明する手順は、アプリケーションで[サービス主導型ログイン操作](http://msdn.microsoft.com/library/azure/dn283952.aspx)を使用する場合にチュートリアル「[Mobile Services アプリへの認証の追加](../mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md)」と併せて使用するように作られています。アプリケーションの要件として Azure Active Directory および .NET バックエンド モバイル サービスに対して[クライアント主導型ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)が必要な場合は、「[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証](mobile-services-windows-store-dotnet-adal-sso-authentication.md)」チュートリアルに従ってください。
+>[AZURE.NOTE] このトピックで説明する手順は、アプリケーションで[サービス主導型ログイン操作](http://msdn.microsoft.com/library/azure/dn283952.aspx)を使用する場合にチュートリアル「[Mobile Services アプリへの認証の追加](../mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md)」と併せて使用するように作られています。アプリケーションの要件として Azure Active Directory および .NET バックエンド モバイル サービスに対して[クライアント主導型ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)が必要な場合は、「[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証](mobile-services-windows-store-dotnet-adal-sso-authentication.md)」チュートリアルに従ってください。
 
 1. [Azure クラシック ポータル]にログオンし、モバイル サービスに移動して、**[ID]** タブをクリックします。**Azure Active Directory** の ID プロバイダー セクションまでスクロールして、そこに表示されている **[アプリの URL]** をコピーします。
 
     ![AAD 用のモバイル サービス アプリ URL](./media/mobile-services-how-to-register-active-directory-authentication/mobile-services-copy-app-url-waad-auth.png)
 
-2. [Azure クラシック ポータル]の **[Active Directory]** に移動してご利用のディレクトリをクリックし、**[ドメイン]** をクリックして、ディレクトリの既定のドメインをメモしておきます。
+2. [クラシック ポータル]の **[Active Directory]** に移動してご利用のディレクトリをクリックし、**[ドメイン]** をクリックして、ディレクトリの既定のドメインをメモしておきます。
 
 3. **[アプリケーション]**、**[追加]**、**[組織で開発中のアプリケーションを追加]** を順にクリックします。
 
@@ -68,5 +68,6 @@
 
 <!-- URLs. -->
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
+[クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

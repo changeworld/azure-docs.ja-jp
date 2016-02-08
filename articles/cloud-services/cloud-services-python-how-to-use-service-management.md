@@ -20,13 +20,13 @@
 
 このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。**Azure SDK for Python** の [ServiceManagementService](../python-how-to-install.md) クラスは、[Azure クラシック ポータル][management-portal]で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイメント、データ管理サービスおよび仮想マシンの作成、更新、削除**など) の多くへのプログラムによるアクセスをサポートしています。この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
 
-> [AZURE.NOTE]サービス管理 API は、新しいリソース管理 API (現在のところ、プレビュー リリースで使用できます) によって置き換えられます。Python から新しいリソース管理 API を使用する詳細については、「[Azure リソース管理ドキュメント](http://azure-sdk-for-python.readthedocs.org/)」を参照してください。
+> [AZURE.NOTE] サービス管理 API は、新しいリソース管理 API (現在のところ、プレビュー リリースで使用できます) によって置き換えられます。Python から新しいリソース管理 API を使用する詳細については、「[Azure リソース管理ドキュメント](http://azure-sdk-for-python.readthedocs.org/)」を参照してください。
 
 
 ## <a name="WhatIs"> </a>サービス管理とは
 サービス管理 API を使用すると、[Azure クラシック ポータル][management-portal]を通じて使用できるサービス管理機能の多くにプログラムでアクセスできます。Azure SDK for Python を使用すると、クラウド サービスとストレージ アカウントを管理できます。
 
-サービス管理 API を使用するには、[Azure アカウントを作成する](http://azure.microsoft.com/pricing/free-trial/)必要があります。
+サービス管理 API を使用するには、[Azure アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/)必要があります。
 
 ## <a name="Concepts"> </a>概念
 Azure SDK for Python は、REST API である [Azure サービス管理 API][svc-mgmt-rest-api] をラップします。すべての API 操作は SSL 上で実行され、X.509 v3 証明書を使用して相互認証されます。管理サービスへのアクセスは、Azure で実行されているサービス内から行うことも、HTTPS 要求の送信と HTTPS 応答の受信の機能を持つ任意のアプリケーションからインターネット上で直接行うこともできます。
@@ -34,7 +34,7 @@ Azure SDK for Python は、REST API である [Azure サービス管理 API][svc
 ## <a name="Connect"> </a>方法: サービス管理に接続する
 サービス管理エンドポイントに接続するには、Azure サブスクリプション ID、および有効な管理証明書が必要です。サブスクリプション ID は [Azure クラシック ポータル][management-portal]から入手できます。
 
-> [AZURE.NOTE]Azure SDK for Python v0.8.0 以降、Windows で実行中の OpenSSL で作成した証明書を使用できるようになりました。これには、Python 2.7.4 以降が必要です。.pfx 証明書のサポートは今後削除される可能性があるため、.pfx の代わりに OpenSSL を使用することをお勧めします。
+> [AZURE.NOTE] Azure SDK for Python v0.8.0 以降、Windows で実行中の OpenSSL で作成した証明書を使用できるようになりました。これには、Python 2.7.4 以降が必要です。.pfx 証明書のサポートは今後削除される可能性があるため、.pfx の代わりに OpenSSL を使用することをお勧めします。
 
 ### Windows、Mac または Linux での管理証明書 (OpenSSL)
 [OpenSSL](http://www.openssl.org/) を使用して管理証明書を作成できます。実際は 2 つの証明書を作成する必要があります。1 つはサーバー用 (`.cer` ファイル)、もう 1 つはクライアント用 (`.pem` ファイル) です。`.pem` ファイルを作成するには、次のコマンドを実行します。
@@ -435,4 +435,4 @@ Windows 仮想マシンをキャプチャする方法についての詳細は、
 
 [クラウド サービス]: https://azure.microsoft.com/ja-JP/documentation/services/cloud-services/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

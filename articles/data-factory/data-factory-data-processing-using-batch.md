@@ -53,7 +53,7 @@
 
 ### 前提条件
 
-1.  **Azure サブスクリプション**。Azure サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。「[無料試用版](http://azure.microsoft.com/pricing/free-trial/)」を参照してください。
+1.  **Azure サブスクリプション**。Azure サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。「[無料試用版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
 2.  **Azure ストレージ アカウント**。このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。サンプル ソリューションでは、Blob Storage を使用します。
 
@@ -396,7 +396,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 ここでは、Execute メソッドのコードの詳細と注意事項について説明します。
 
-1.	入力コレクションを反復処理するメンバーは、[Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) 名前空間にあります。BLOB コレクションの反復処理では、**BlobContinuationToken** クラスを使用する必要があります。基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。詳細については、「[.NET から Blob Storage を使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。基本的なループを次に示します。
+1.	入力コレクションを反復処理するメンバーは、[Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) 名前空間にあります。BLOB コレクションの反復処理では、**BlobContinuationToken** クラスを使用する必要があります。基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。詳細については、「[.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。基本的なループを次に示します。
 
 		// Initialize the continuation token.
 		BlobContinuationToken continuationToken = null;
@@ -500,7 +500,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 ### 手順 1: Data Factory を作成する
 
-1.  [Azure ポータル](http://portal.azure.com/)にログインした後、次の操作を行います。
+1.  [Azure ポータル](https://portal.azure.com/)にログインした後、次の操作を行います。
 
     1.  左側のメニューの **[新規]** をクリックします。
 
@@ -707,7 +707,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 この手順では、以前に作成したカスタム アクティビティである、1 つのアクティビティでパイプラインを作成します。
 
-> [AZURE.IMPORTANT]BLOB コンテナー内の入力フォルダーに **file.txt** をまだアップロードしていない場合は、パイプラインを作成する前に行ってください。**isPaused** プロパティがパイプラインの JSON で false に設定されているため、パイプラインは **start** の日を過ぎると、すぐに実行されます。
+> [AZURE.IMPORTANT] BLOB コンテナー内の入力フォルダーに **file.txt** をまだアップロードしていない場合は、パイプラインを作成する前に行ってください。**isPaused** プロパティがパイプラインの JSON で false に設定されているため、パイプラインは **start** の日を過ぎると、すぐに実行されます。
 
 1.  Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] \(省略記号)** をクリックすると表示されます。
 
@@ -761,11 +761,11 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 	-   **AssemblyName** を DLL の名前 (**MyDotNetActivity.dll**) に設定します。
 
-	-   **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。基本的に、コード内の \<namespace\>.\<classname\> です。
+	-   **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。基本的に、コード内の <namespace>.<classname> です。
 
 	-   **PackageLinkedService** は **StorageLinkedService** に設定されます。これは、カスタム アクティビティの zip ファイルを含む Blob Storage を示します。入力/出力ファイルとカスタム アクティビティ zip ファイルに別の Azure Storage アカウントを使用している場合、Azure Storage のリンクされたサービスを別に作成する必要があります。この記事では、同じ Azure Storage アカウントを使用している前提で説明します。
 
-	-   **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。形式は \<containerforthezip\>/\<nameofthezip.zip\> です。
+	-   **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。形式は <containerforthezip>/<nameofthezip.zip> です。
 
 	-   カスタム アクティビティは入力として **InputDataset**、出力として **OutputDataset** を使用します。
 
@@ -929,4 +929,4 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
     -   [Azure Batch ライブラリ .NET の概要](../batch/batch-dotnet-get-started.md)
 
-<!----HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0128_2016-->

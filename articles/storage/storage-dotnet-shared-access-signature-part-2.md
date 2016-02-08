@@ -34,7 +34,7 @@
 
 ## 第 1 部 : コンソール アプリケーションの作成と共有アクセス署名の生成
 
-まず、Azure .NET 用ストレージ クライアント ライブラリがインストールされていることを確認します。クライアント ライブラリの最新アセンブリを含む [NuGet パッケージ](http://nuget.org/packages/WindowsAzure.Storage/ "NuGet パッケージ") をインストールできます。最新の修正プログラムが確実に含まれるように、この方法をお勧めします。また、[Azure SDK for .NET](http://azure.microsoft.com/downloads/) の最新バージョンの一部として、クライアント ライブラリをダウンロードすることもできます。
+まず、Azure .NET 用ストレージ クライアント ライブラリがインストールされていることを確認します。クライアント ライブラリの最新アセンブリを含む [NuGet パッケージ](http://nuget.org/packages/WindowsAzure.Storage/ "NuGet パッケージ") をインストールできます。最新の修正プログラムが確実に含まれるように、この方法をお勧めします。また、[Azure SDK for .NET](https://azure.microsoft.com/downloads/) の最新バージョンの一部として、クライアント ライブラリをダウンロードすることもできます。
 
 Visual Studio で、新しい Windows コンソール アプリケーションを作成し、**GenerateSharedAccessSignatures** という名前を付けます。次の方法のいずれかを使用して、**Microsoft.WindowsAzure.Configuration.dll** および **Microsoft.WindowsAzure.Storage.dll** への参照を追加します。
 
@@ -311,7 +311,7 @@ GenerateSharedAccessSignatures コンソール アプリケーションを実行
 
 前の例で作成した共有アクセス署名をテストするために、署名を使用して、コンテナーと BLOB で操作を実行する、もう 1 つのコンソール アプリケーションを作成します。
 
-> [AZURE.NOTE]チュートリアルの第 1 部の完了後、24 時間を超える時間が経過している場合、生成した署名は無効になっています。その場合は、最初のコンソール アプリケーションでコードを実行して、チュートリアルの第 2 部で使用するための新しい共有アクセス署名を生成する必要があります。
+> [AZURE.NOTE] チュートリアルの第 1 部の完了後、24 時間を超える時間が経過している場合、生成した署名は無効になっています。その場合は、最初のコンソール アプリケーションでコードを実行して、チュートリアルの第 2 部で使用するための新しい共有アクセス署名を生成する必要があります。
 
 Visual Studio で、新しい Windows コンソール アプリケーションを作成し、**ConsumeSharedAccessSignatures** という名前を付けます。前に追加した場合と同様に、**Microsoft.WindowsAzure.Configuration.dll** および **Microsoft.WindowsAzure.Storage.dll** への参照を追加します。
 
@@ -554,4 +554,4 @@ Program.cs ファイルの先頭に、次の **using** ステートメントを�
 [sas-console-output-1]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-1.PNG
 [sas-console-output-2]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-2.PNG
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0128_2016-->

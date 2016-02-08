@@ -40,9 +40,9 @@ Azure 仮想ネットワークに DNS サーバーを追加して構成し、仮
 ##前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
 
 	PowerShell スクリプトを実行する前に、次のコマンドレットを使用して Azure サブスクリプションに接続されていることを確認します。
 
@@ -54,7 +54,7 @@ Azure 仮想ネットワークに DNS サーバーを追加して構成し、仮
 
 - **VPN で接続された 2 つの Azure 仮想ネットワーク**。方法については、「[2 つの Azure 仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-geo-replication-vnet]」を参照してください。
 
->[AZURE.NOTE]Azure のサービス名と仮想マシン名は一意である必要があります。このチュートリアルで使用する名前は、Contoso-[Azure Service/VM name]-[EU/US] です。たとえば、Contoso-VNet-EU は北ヨーロッパ データ センターの Azure 仮想ネットワークです。Contoso-DNS-US は East U.S. データ センターの DNS サーバー VM です。独自の名前を使用する必要があります。
+>[AZURE.NOTE] Azure のサービス名と仮想マシン名は一意である必要があります。このチュートリアルで使用する名前は、Contoso-[Azure Service/VM name]-[EU/US] です。たとえば、Contoso-VNet-EU は北ヨーロッパ データ センターの Azure 仮想ネットワークです。Contoso-DNS-US は East U.S. データ センターの DNS サーバー VM です。独自の名前を使用する必要があります。
  
  
 ##DNS サーバーとして使用する Azure 仮想マシンの作成
@@ -220,4 +220,4 @@ DNS サーバーには静的 IP アドレスが必要です。この手順は、
 
 [img-vnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-DNS/HDInsight.HBase.VPN.diagram.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -171,7 +171,7 @@ Cloud Services の Web ロールと worker ロールを使っているときに�
 
 バックグラウンド タスクの実装形態によっては、Azure Web Apps や Cloud Services にデプロイできなかったり、便利ではなかったりすることもあります。Windows のサービスや、サード パーティのユーティリティ、サード パーティの実行可能プログラムがその代表的な例です。また、アプリケーションのホスティング環境とは異なる実行環境向けに作成されたプログラムも同様です。たとえば、Unix や Linux のプログラムを Windows アプリケーションまたは .NET アプリケーションから実行するケースなどが該当します。Azure Virtual Machines には、さまざまなオペレーティング システムが用意されているので、そこから目的のオペレーティング システムを選んで、仮想マシン上で必要なサービスまたは実行可能ファイルを運用することができます。
 
-どのようなときに Virtual Machines を使うかについては、[Azure App Services、Cloud Services、Virtual Machines の比較](choose-web-site-cloud-service-vm.md)に関するページを参照してください。Virtual Machines の選択肢については、[Azure の仮想マシンとクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)に関するページを参照してください。Virtual Machines で利用できるオペレーティング システムと既製イメージの詳細については、[Azure の仮想マシン ギャラリー](http://azure.microsoft.com/gallery/virtual-machines/)を参照してください。
+どのようなときに Virtual Machines を使うかについては、[Azure App Services、Cloud Services、Virtual Machines の比較](choose-web-site-cloud-service-vm.md)に関するページを参照してください。Virtual Machines の選択肢については、[Azure の仮想マシンとクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)に関するページを参照してください。Virtual Machines で利用できるオペレーティング システムと既製イメージの詳細については、[Azure の仮想マシン ギャラリー](https://azure.microsoft.com/gallery/virtual-machines/)を参照してください。
 
 バックグラウンド タスクを別の仮想マシンで開始するには、いくつかの方法があります。
 
@@ -191,7 +191,7 @@ Azure 仮想マシンにバックグラウンド タスクをデプロイする�
 
 ### 詳細情報
 
-- Azure の [Virtual Machines](http://azure.microsoft.com/services/virtual-machines/)
+- Azure の [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
 - [Azure Virtual Machines に関する FAQ](virtual-machines-questions.md)
 
 ## 設計上の考慮事項
@@ -317,4 +317,4 @@ Web ロールと worker ロールが開始、実行、停止される過程に�
 - [Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - [クラウド サービスの診断を有効にする方法](cloud-services-dotnet-diagnostics.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0128_2016-->
