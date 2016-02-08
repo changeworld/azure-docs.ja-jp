@@ -81,7 +81,7 @@ Azure データセンターのサーバーは、クラスターにパーティ�
 
 4. 新しいデプロイのアフィニティ グループを削除する - アフィニティ グループは推奨されなくなりました。上の 1. の手順に従って、新しいクラウド サービスをデプロイしてください。クラウド サービスがアフィニティ グループ内にないことを確認します。
 
-5. リージョン Virtual Network に変換する - 「[アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法](https://azure.microsoft.com/documentation/articles/virtual-networks-migrate-to-regional-vnet/)」を参照してください。
+5. リージョン Virtual Network に変換する - 「[アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法]( https://azure.microsoft.com/documentation/articles/virtual-networks-migrate-to-regional-vnet/)」を参照してください。
 
 ## その他のリソース
 ### Azure カスタマー サポートへの問い合わせ

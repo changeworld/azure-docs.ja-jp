@@ -77,7 +77,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | パラメーター | | 説明 |
 | ----------------------- | ------------------------------- | ----------------------- |
-| client\_id | 必須 | [Azure ポータル](https://portal.azure.com/)からアプリに割り当てられたアプリケーション ID。 |
+| client\_id | 必須 | [Azure ポータル](https://portal.azure.com)からアプリに割り当てられたアプリケーション ID。 |
 | response\_type | 必須 | OpenID Connect には `id_token` を指定する必要があります。Web アプリで Web API を呼び出すためのトークンも必要になる場合、ここで行ったように、`code+id_token` を利用できます。 |
 | redirect\_uri | 必須 | アプリ の redirect\_uri。アプリは、この URI で認証応答を送受信することができます。ポータルで登録したいずれかの redirect\_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
 | scope | 必須 | スコープのスペース区切りリスト。1 つのスコープ値は、要求されている両方のアクセス許可を Azure AD を示します。`openid` スコープは、ユーザーをサインインさせ、**id\_tokens** の形式でユーザーに関するデータを取得するためのアクセス許可を示します (これについては後に詳しく説明します)。Web アプリの場合、`offline_access` スコープは任意です。リソースに長期アクセスするためにアプリは **refresh\_token** を必要とすることを示します。 |
@@ -133,7 +133,8 @@ Azure AD B2C には、OpenID Connect メタデータ エンドポイントがあ
 
 id\_token の署名で使用されたポリシー (とメタデータのフェッチ場所) は 2 つの方法で判断できます。最初の方法です。ポリシー名が id\_token の `acr` 要求に含まれています。id\_token の要求を解析する方法については、「[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)」を参照してください。もう 1 つの方法です。要求を発行するとき、`state` パラメーターの値に含まれるポリシーを符号化し、それから復号化して使用されたポリシーを判断します。いずれの方法も完全に有効です。
 
-OpenID Connect メタデータ エンドポイントからメタデータ ドキュメントを取得したら、このエンドポイントにある RSA256 公開鍵を利用し、id\_token の署名を検証できます。このエンドポイントには常時、複数のキーがリストされており、それぞれのキーは `kid` で識別されます。id\_token のヘッダーにはさらに `kid` 要求が格納されていて、複数のキーのうち、どのキーが id\_token の署名に使用されたかが、この要求によって示されます。[トークンの検証](active-directory-b2c-reference-tokens.md#validating-tokens)と[署名キーのロールオーバーに関する重要な情報](active-directory-b2c-reference-tokens.md#validating-tokens)を含む詳細については、[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を参照してください。<!--TODO: Improve the information on this-->
+OpenID Connect メタデータ エンドポイントからメタデータ ドキュメントを取得したら、このエンドポイントにある RSA256 公開鍵を利用し、id\_token の署名を検証できます。このエンドポイントには常時、複数のキーがリストされており、それぞれのキーは `kid` で識別されます。id\_token のヘッダーにはさらに `kid` 要求が格納されていて、複数のキーのうち、どのキーが id\_token の署名に使用されたかが、この要求によって示されます。[トークンの検証](active-directory-b2c-reference-tokens.md#validating-tokens)と[署名キーのロールオーバーに関する重要な情報](active-directory-b2c-reference-tokens.md#validating-tokens)を含む詳細については、[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を参照してください。
+<!--TODO: Improve the information on this-->
 
 id\_token の署名を検証した後に、確認の必要な要求がいくつか存在します。
 
@@ -174,12 +175,12 @@ Content-Type: application/json
 | パラメーター | | 説明 |
 | ----------------------- | ------------------------------- | --------------------- |
 | p | 必須 | 認証コードの取得に使用されたポリシー。この要求に別のポリシーを使用することはできません。**このパラメーターはクエリ文字列に追加されることに注意してください。**POST 本文ではありません。 |
-| client\_id | 必須 | [Azure ポータル](https://portal.azure.com/)からアプリに割り当てられたアプリケーション ID。 |
+| client\_id | 必須 | [Azure ポータル](https://portal.azure.com)からアプリに割り当てられたアプリケーション ID。 |
 | grant\_type | 必須 | 承認コード フローでは `authorization_code` を指定する必要があります。 |
 | scope | 必須 | スコープのスペース区切りリスト。1 つのスコープ値は、要求されている両方のアクセス許可を Azure AD を示します。`openid` スコープは、ユーザーをサインインさせ、**id\_tokens** の形式でユーザーに関するデータを取得するためのアクセス許可を示します。クライアントと同じアプリケーション ID で表され、アプリの独自のバックエンド Web API にトークンを届けるために利用できます。`offline_access` 範囲は、リソースに長期アクセスするためにアプリは **refresh\_token** を必要とすることを示します。 |
 | code | 必須 | フローの最初の段階で取得した authorization\_code。 |
 | redirect\_uri | 必須 | authorization\_code を受け取った、アプリケーションの redirect\_uri。 |
-| client\_secret | 必須 | [Azure ポータル](https://portal.azure.com/)で生成したアプリケーション シークレット。このアプリケーション シークレットは重要なセキュリティ アーティファクトであり、サーバーに安全に保管する必要があります。また、慎重を期して、このクライアント シークレットを定期的に変更してください。 |
+| client\_secret | 必須 | [Azure ポータル](https://portal.azure.com)で生成したアプリケーション シークレット。このアプリケーション シークレットは重要なセキュリティ アーティファクトであり、サーバーに安全に保管する必要があります。また、慎重を期して、このクライアント シークレットを定期的に変更してください。 |
 
 正常なトークン応答は次のようになります。
 
@@ -253,12 +254,12 @@ Content-Type: application/json
 | パラメーター | | 説明 |
 | ----------------------- | ------------------------------- | -------- |
 | p | 必須 | 元の更新トークンの取得に使用されたポリシー。この要求に別のポリシーを使用することはできません。**このパラメーターはクエリ文字列に追加されることに注意してください。**POST 本文ではありません。 |
-| client\_id | 必須 | [Azure ポータル](https://portal.azure.com/)からアプリに割り当てられたアプリケーション ID。 |
+| client\_id | 必須 | [Azure ポータル](https://portal.azure.com)からアプリに割り当てられたアプリケーション ID。 |
 | grant\_type | 必須 | この段階の承認コード フローでは `refresh_token` を指定する必要があります。 |
 | scope | 必須 | スコープのスペース区切りリスト。1 つのスコープ値は、要求されている両方のアクセス許可を Azure AD を示します。`openid` スコープは、ユーザーをサインインさせ、**id\_tokens** の形式でユーザーに関するデータを取得するためのアクセス許可を示します。クライアントと同じアプリケーション ID で表され、アプリの独自のバックエンド Web API にトークンを届けるために利用できます。`offline_access` 範囲は、リソースに長期アクセスするためにアプリは **refresh\_token** を必要とすることを示します。 |
 | redirect\_uri | 必須 | authorization\_code を受け取った、アプリケーションの redirect\_uri。 |
 | refresh\_token | 必須 | フローの第 2 段階で取得した元の refresh\_token。更新トークンを受け取るには、認証要求とトークン要求の両方でスコープ `offline_access` を使用していなければなりません。 |
-| client\_secret | 必須 | [Azure ポータル](https://portal.azure.com/)で生成したアプリケーション シークレット。このアプリケーション シークレットは重要なセキュリティ アーティファクトであり、サーバーに安全に保管する必要があります。また、慎重を期して、このクライアント シークレットを定期的に変更してください。 |
+| client\_secret | 必須 | [Azure ポータル](https://portal.azure.com)で生成したアプリケーション シークレット。このアプリケーション シークレットは重要なセキュリティ アーティファクトであり、サーバーに安全に保管する必要があります。また、慎重を期して、このクライアント シークレットを定期的に変更してください。 |
 
 正常なトークン応答は次のようになります。
 

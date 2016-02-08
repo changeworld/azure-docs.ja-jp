@@ -1,4 +1,11 @@
-<properties pageTitle="Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする (旧) | Microsoft Azure" description="オンプレミスの VMware 仮想マシンと Windows/Linux 物理サーバーから Azure へのレプリケーション、フェールオーバー、および復旧を調整するように Azure Site Recovery をセットアップするための従来のデプロイについて説明します。" " services="site-recovery" documentationCenter="" authors="rayne-wiselman" manager="jwhit" editor=""/>
+<properties
+	pageTitle="Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする (旧) | Microsoft Azure" 
+	description="オンプレミスの VMware 仮想マシンと Windows/Linux 物理サーバーから Azure へのレプリケーション、フェールオーバー、および復旧を調整するように Azure Site Recovery をセットアップするための従来のデプロイについて説明します。" " 
+	services="site-recovery"
+	documentationCenter=""
+	authors="rayne-wiselman"
+	manager="jwhit"
+	editor=""/>
 
 <tags
 	ms.service="site-recovery"

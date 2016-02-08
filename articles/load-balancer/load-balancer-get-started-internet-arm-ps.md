@@ -78,7 +78,7 @@ PowerShell 用 Azure リソース マネージャー (ARM) モジュールが最
     	PS C:\> New-AzureRmResourceGroup -Name NRP-RG -location "West US"
 
 
-## Virtual Network と、フロント エンド IP プールのパブリック IP アドレスの作成
+## 仮想ネットワークと、フロント エンド IP プールのパブリック IP アドレスの作成
 
 ### 手順 1.
 
@@ -285,7 +285,7 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 
 	$slb | Set-AzureRmLoadBalancer
 
-## Load Balancer の削除
+## ロード バランサーの削除
 
 コマンド `Remove-AzureLoadBalancer` を使用して、リソース グループ "NRP-RG" から、前に作成された "NRP-LB" という名前のロード バランサーを削除します。
 

@@ -51,7 +51,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 1. 登録する VMM サーバーから[管理ポータル](https://portal.azure.com)にサインインします。
 
-2. **[Data Services]**、**[Recovery Services]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
+2. **[Data Services]**、**[復旧サービス]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
 
 3. **[新規作成]**、**[簡易作成]** の順にクリックします。
 
@@ -106,12 +106,12 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 	- カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシ設定を構成すると、プロキシの接続を確認するためのテストが実施されます。
 	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合、プロキシのアドレスやポートなどの詳細を入力する必要があります。
 	- VMM サーバーと Hyper-V ホストから次の URL にアクセスできる必要があります。
-		- **.hypervrecoverymanager.windowsazure.com
-- **.accesscontrol.windows.net
-- **.backup.windowsazure.com
-- **.blob.core.windows.net
-- **.store.core.windows.net
-- 「[Azure Datacenter の IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+		- *.hypervrecoverymanager.windowsazure.com
+		- *.accesscontrol.windows.net
+		- *.backup.windowsazure.com
+		- *.blob.core.windows.net
+		- *.store.core.windows.net
+	- 「[Azure Datacenter の IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、**[設定]** ワークスペースを開いて **[セキュリティ]** を展開し、**[実行アカウント]** をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
 
 8. **[登録キー]** で、Azure Site Recovery からダウンロードして VMM サーバーにコピーした登録キーを選択します。
@@ -235,7 +235,7 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 
 1. ソースとターゲットの両方の VMM サーバーでストレージ分類を定義します。[詳細情報](https://technet.microsoft.com/library/gg610685.aspx)。分類は、ソースおよびターゲットのクラウド内の Hyper-V ホスト サーバーで使用できる必要があります。分類のストレージの種類は同じでなくてもかまいません。たとえば、SMB 共有が含まれているソース分類を CSV が含まれているターゲット分類に割り当てることができます。
 2. 分類を定義したら、マッピングを作成できます。 **[クイック スタート]** ページで、**[ストレージのマップ]** をクリックします。
-3. **[Storage]** タブで、**[ストレージ分類のマップ]** をクリックします。
+1. **[ストレージ]** タブで、**[ストレージ分類のマップ]** をクリックします。
 4. **[ストレージ分類のマップ]** タブで、ソースとターゲットの VMM サーバーの分類を選択します。設定を保存します。
 
 	![ターゲット ネットワークの選択](./media/site-recovery-vmm-to-vmm/storage-mapping.png)
@@ -244,7 +244,7 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 ## ステップ 7: 仮想マシンの保護を有効化する
 サーバー、クラウド、およびネットワークを正しく構成した後で、クラウド内の仮想マシンの保護を有効にすることができます。
 
-1. Virtual Machines が配置されているクラウドの **[Virtual Machines]** タブで、**[保護を有効にする]**、**[仮想マシンの追加]** の順にクリックします。
+1. 仮想マシンが配置されているクラウドの **[Virtual Machines]** タブで、**[保護を有効にする]**、**[仮想マシンの追加]** の順にクリックします。 
 2. クラウド内の仮想マシンのリストから、保護する仮想マシンを選択します。
 
 	![仮想マシンの保護の有効化](./media/site-recovery-vmm-to-vmm/enable-protection.png)

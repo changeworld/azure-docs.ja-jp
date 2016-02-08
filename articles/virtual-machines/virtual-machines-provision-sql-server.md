@@ -107,7 +107,7 @@ Azure でサポートされる SQL Server イメージの最新情報につい�
 
 3. **[Windows セキュリティ]** ダイアログ ボックスで、**[別のアカウントを使用]** をクリックします。
 
-	![Click Use another account](./media/virtual-machines-provision-sql-server/credentials.png)
+	![[別のアカウントを使用] をクリックする](./media/virtual-machines-provision-sql-server/credentials.png)
 
 4. `machinename\username` の形式で、ドメイン名に管理者名が付くマシンの名前を使用します。パスワードを入力し、マシンに接続します。
 

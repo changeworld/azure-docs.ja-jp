@@ -293,8 +293,25 @@ REST API の場合、「[リソース プロバイダーの情報の取得](http
 
 このような場合はポータルに移動し、ファイルをデプロイするリージョンのクォータを増加させるように、サポートに問題を報告してください。
 
-> [AZURE.NOTE] リソース グループの場合、クォータはサブスクリプション全体ではなく個々 のリージョンに対するものであることに注意してください。米国西部に 30 のコアをデプロイする必要がある場合は、米国西部に 30 のリソース マネージャーのコアを要求する必要があります。アクセスできるリージョンのいずれかで 30 のコアをデプロイする必要がある場合は、すべてのリージョンで 30 のリソース　マネージャー コアを要求する必要があります。<!-- --> コアについて具体的に把握するには、たとえば、次のコマンドを使用して適切なクォータ量を要求すべきリージョンを確認できます。このコマンドは、**jq** にパイプ出力して json 解析を行います。 <!-- --> azure provider show Microsoft.Compute --json | jq '.resourceTypes | select(.name == "virtualMachines") | { name,apiVersions, locations}' { "name": "virtualMachines", "apiVersions": [ "2015-05-01-preview", "2014-12-01-preview" ], "locations": [ "East US", "West US", "West Europe", "East Asia", "Southeast Asia" ] }
-
+> [AZURE.NOTE] リソース グループの場合、クォータはサブスクリプション全体ではなく個々 のリージョンに対するものであることに注意してください。米国西部に 30 のコアをデプロイする必要がある場合は、米国西部に 30 のリソース マネージャーのコアを要求する必要があります。アクセスできるリージョンのいずれかで 30 のコアをデプロイする必要がある場合は、すべてのリージョンで 30 のリソース　マネージャー コアを要求する必要があります。
+<!-- -->
+コアについて具体的に把握するには、たとえば、次のコマンドを使用して適切なクォータ量を要求すべきリージョンを確認できます。このコマンドは、**jq** にパイプ出力して json 解析を行います。
+<!-- -->
+        azure provider show Microsoft.Compute --json | jq '.resourceTypes[] | select(.name == "virtualMachines") | { name,apiVersions, locations}'
+        {
+          "name": "virtualMachines",
+          "apiVersions": [
+            "2015-05-01-preview",
+            "2014-12-01-preview"
+          ],
+          "locations": [
+            "East US",
+            "West US",
+            "West Europe",
+            "East Asia",
+            "Southeast Asia"
+          ]
+        }
 
 ## リソース プロバイダーの登録の確認
 

@@ -23,12 +23,12 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 
 プライベート IP アドレスは、VPN ゲートウェイまたは ExpressRoute 回線を使用してネットワークを Azure に拡張するときに、Azure 仮想ネットワーク (VNet)、およびオンプレミス ネットワーク内での通信に使用します。
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-network-ip-addresses-overview-classic.md)。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [クラシック デプロイメント モデル](virtual-network-ip-addresses-overview-classic.md)。
 
 クラシック デプロイ モデルの知識がある場合は、「[differences in IP addressing between classic and Resource Manager (クラシック デプロイとリソース マネージャーでの IP アドレス指定の相違点)](virtual-network-ip-addresses-overview-classic.md#Differences-between-Resource-Manager-and-classic-deployments)」を確認してください。
 
 ## パブリック IP アドレス
-パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[SQL データベース](sql-database-technical-overview.md)、[Azure Storage](storage-introduction.md) など、Azure の公開されたサービスと通信できます。
+パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Redis Cache](https://azure.microsoft.com/services/cache)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs)、[SQL データベース](sql-database-technical-overview.md)、[Azure ストレージ](storage-introduction.md)など、Azure の公開されたサービスと通信できます。
 
 Azure リソース マネージャーで、[パブリック IP](resource-groups-networking.md#public-ip-address) アドレスは、独自のプロパティを持つリソースです。パブリック IP アドレスのリソースは、次のリソースのいずれかと関連付けることができます。
 

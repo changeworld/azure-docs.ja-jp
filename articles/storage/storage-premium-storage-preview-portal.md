@@ -41,7 +41,7 @@ Azure Premium Storage を使用するには、[無料試用版](https://azure.mi
 
 - 現在 Premium Storage をサポートするリージョンの一覧については、「[リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services)」を参照してください。
 
-- Premium Storage は Azure ページ BLOB のみをサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使用されます。Azure ページ BLOB については、[ブロック BLOB とページ BLOB](http://msdn.microsoft.com/library/azure/ee691964.aspx)に関するページをご覧ください。Premium Storage は Azure ブロック BLOB、Azure ファイル、Azure テーブル、Azure キューをサポートしていません。
+- Premium Storage は Azure ページ BLOB のみをサポートしています。これは、Azure 仮想マシン (VM) の永続ディスクを保持するために使用されます。Azure ページ BLOB については、[ブロック BLOB とページ BLOB](http://msdn.microsoft.com/library/azure/ee691964.aspx)に関するページをご覧ください。Premium Storage は Azure ブロック BLOB、Azure ファイル、Azure テーブル、Azure キューをサポートしていません。
 
 - Premium Storage アカウントローカル冗長 (LRS) であり、1 つのリージョン内にデータのコピーを 3 つ保持します。Premium Storage を使用するときの geo レプリケーションに関する考慮事項については、この記事の「[Premium Storage を使用するときのスナップショットと Copy BLOB](#snapshots-and-copy-blob-whja-JPing-premium-storage)」をご覧ください。
 
@@ -242,7 +242,7 @@ Premium Storage を使用するときには、課金に関する次の考慮事�
 Premium Storage、DS シリーズの VM、GS シリーズの VM の料金についての詳細は、次の項目を参照してください。
 
 - [Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)
-- [Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/)
+- [仮想マシンの料金](https://azure.microsoft.com/pricing/details/virtual-machines/)
 
 ## 仮想マシンのデータ ディスク用に Premium Storage アカウントを作成する
 

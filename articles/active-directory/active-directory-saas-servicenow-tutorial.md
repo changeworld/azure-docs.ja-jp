@@ -72,15 +72,15 @@
 
 1.  Azure AD クラシック ポータルの **ServiceNow** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC749323.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC749323.png "シングル サインオンの構成")
 
 2.  **[ユーザーの ServiceNow へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC749324.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC749324.png "シングル サインオンの構成")
 
 3.  **[アプリケーション設定の構成]** ページで、次の手順を実行します。
 
-    ![Configure app URL](./media/active-directory-saas-servicenow-tutorial/IC769497.png "Configure app URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/IC769497.png "Configure app URL")
 
     a. **[ServiceNow サインオン URL]** ボックスに、ServiceNow アプリケーションへのサインオンにユーザーが使用する URL を入力します (例: *https://\<InstanceName>.service-now.com*)。
 
@@ -90,24 +90,24 @@
 
 4.  **[シングル サインオンの自動構成]** ページで、**[シングル サインオン用にこのアプリケーションを手動で構成する]** をクリックし、**[次へ]** をクリックします。
 
-    ![Configure app URL](./media/active-directory-saas-servicenow-tutorial/IC7694971.png "Configure app URL")
+    ![アプリ URL の構成](./media/active-directory-saas-servicenow-tutorial/IC769497.png "アプリケーション URL の構成")
 
 
 
 4.  **[ServiceNow でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをローカルにコンピューターに保存して、**[次へ]** をクリックします。
 
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC749325.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC749325.png "シングル サインオンの構成")
 
 1. ServiceNow アプリケーションに管理者としてサインオンします。
 
 2. 左側のナビゲーション ウィンドウで、**[Properties]** をクリックします。
 
-    ![Configure app URL](./media/active-directory-saas-servicenow-tutorial/IC7694980.png "Configure app URL")
+    ![アプリケーション URL の構成(./media/active-directory-saas-servicenow-tutorial/IC7694980.png "アプリケーション URL の構成")
 
 
 3. **[Multiple Provider SSO Properties]** ダイアログで、次の手順を実行します。
 
-    ![Configure app URL](./media/active-directory-saas-servicenow-tutorial/IC7694981.png "Configure app URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/IC7694981.png "アプリケーション URL の構成")
 
     a.**[Enable multiple provider SSO]** で **[Yes]** を選択します。
 
@@ -121,17 +121,17 @@
 
 1. 左側のナビゲーション ウィンドウで、**[x509 Certificates]** をクリックします。
 
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694973.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694973.png "Configure single sign-on")
 
 
 1. **[x509 Certificates]** ダイアログで、**[New]** をクリックします。
 
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694974.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694974.png "Configure single sign-on")
 
 
 1. **[X.509 Certificates]** ダイアログで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Configure single sign-on")
 
     a.**[新規]** をクリックします。
 
@@ -153,21 +153,21 @@
 
 1. 左側のナビゲーション ウィンドウで、**[Identity Providers]** をクリックします。
 
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694976.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694976.png "Configure single sign-on")
 
 1. **[Identity Providers]** で、**[New]** をクリックします。
 
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694977.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694977.png "Configure single sign-on")
 
 
 1. **[Identity Providers]** ダイアログで、**[SAML2 Update1?]** をクリックします。
 
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694978.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694978.png "Configure single sign-on")
 
 
 1. [SAML2 Update1 Properties] ダイアログで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694982.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694982.png "Configure single sign-on")
 
 
     **[Name]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
@@ -209,11 +209,11 @@
 
 6. Azure AD クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Configure single sign-on")
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
  
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "Configure single sign-on")
 
 
 
@@ -229,19 +229,19 @@
 
 2. **[自動ユーザー プロビジョニングを有効にするための ServiceNow の資格情報を入力してください]** ページで、以下の構成設定を入力します： ユーザー プロビジョニングの構成
 
-     2\.1.**[ServiceNow インスタンス名]** ボックスに、ServiceNow インスタンス名を入力します。
+     2.1.**[ServiceNow インスタンス名]** ボックスに、ServiceNow インスタンス名を入力します。
 
-     2\.2.**[ServiceNow 管理ユーザー名]** ボックスに、ServiceNow 管理者アカウントの名前を入力します。
+     2.2.**[ServiceNow 管理ユーザー名]** ボックスに、ServiceNow 管理者アカウントの名前を入力します。
 
-     2\.3.**[ServiceNow 管理パスワード]** ボックスに、このアカウントのパスワードを入力します。
+     2.3.**[ServiceNow 管理パスワード]** ボックスに、このアカウントのパスワードを入力します。
 
-     2\.4.**[検証]** をクリックして、構成を確認します。
+     2.4.**[検証]** をクリックして、構成を確認します。
 
-     2\.5.**[次へ]** をクリックして、**[次のステップ]** ページを開きます。
+     2.5.**[次へ]** をクリックして、**[次のステップ]** ページを開きます。
 
-     2\.6.このアプリケーションのすべてのユーザーをプロビジョニングする場合は、**[ディレクトリ内のすべてのユーザー アカウントをこのアプリケーションに自動的にプロビジョニングする]** を選択します。<br><br> ![次のステップ](./media/active-directory-saas-servicenow-tutorial/IC698804.png "次のステップ")
+     2.6.このアプリケーションのすべてのユーザーをプロビジョニングする場合は、**[ディレクトリ内のすべてのユーザー アカウントをこのアプリケーションに自動的にプロビジョニングする]** を選択します。<br><br> ![次のステップ](./media/active-directory-saas-servicenow-tutorial/IC698804.png "次のステップ")
 
-     2\.7.**[次のステップ]** ページで、**[完了]** をクリックして構成を保存します。
+     2.7.**[次のステップ]** ページで、**[完了]** をクリックして構成を保存します。
 
 
 
@@ -267,7 +267,7 @@
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-servicenow-tutorial/IC767830.png "Yes")
+    ![あり](./media/active-directory-saas-servicenow-tutorial/IC767830.png "あり")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 

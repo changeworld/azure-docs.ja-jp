@@ -159,7 +159,7 @@ PowerApps の API と接続に加えて、モバイル アプリ、Web アプリ
 
 1. 先ほど作成したアプリ サービス環境を選択します。
 2. [Essentials] で、**[リソース グループ]** プロパティを選択します。これにより、アプリ サービス環境を含むリソース グループが開きます。![][7]
-3. RBAC アイコンを選択してアクセス許可を管理します。![][8]ユーザーの追加やロールの割り当ては、Azure 内で[ロールベースのアクセス制御](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)を使用する場合と似ています。
+3. RBAC アイコンを選択してアクセス許可を管理します。![][8]ユーザーの追加やロールの割り当ては、Azure 内で[ロールベースのアクセス制御]( https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)を使用する場合と似ています。
 
 > [AZURE.NOTE] 現時点で、アプリ サービス環境に RBAC アクセス許可を付与することはできません。親のリソース グループ レベルでは RBAC アクセス許可を付与することができます。
 

@@ -390,9 +390,12 @@ Ambari の Web UI を使用すると、クラスターの作成中に、スク�
 
 	![操作のスクリーンショット](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
 
-	この下で、ヘッド ノード、ワーカー ノード、および zookeeper ノードごとにログが整理されています。例: * **ヘッドノード** - `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net` * **ワーカー ノード** - `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net` * **zookeeper ノード** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
+	この下で、ヘッド ノード、ワーカー ノード、および zookeeper ノードごとにログが整理されています。例: 
+	* **ヘッドノード** - `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net` 
+	* **ワーカー ノード** - `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net` 
+	* **zookeeper ノード** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
-* 対応するホストのすべての stdout と stderr が、ストレージ アカウントにアップロードされます。各スクリプト アクションに対して、**output-*.txt** と **errors-*.txt** が 1 つずつあります。output-*.txt ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。たとえば、次のように入力します。
+* 対応するホストのすべての stdout と stderr が、ストレージ アカウントにアップロードされます。各スクリプト アクションに対して、**output-*.txt** と **errors-\*.txt** が 1 つずつあります。output-*.txt ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。たとえば、次のように入力します。
 
 		'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 

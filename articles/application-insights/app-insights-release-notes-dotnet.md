@@ -61,7 +61,7 @@
 
 ## バージョン 2.0.0-beta2
 - ITelemetryProcessor のサポート、コードまたは構成ファイルを使用して構成する機能が追加されました。[SDK でのカスタム フィルターの有効化](app-insights-api-filtering-sampling/#filtering)
-- コンテキストの初期化子が削除されました。代わりに、[テレメトリの初期化子](https://azure.microsoft.com/documentation/articles/app-insights-api-filtering-sampling/#filtering)を使用します。
+- コンテキストの初期化子が削除されました。代わりに、[テレメトリの初期化子]( https://azure.microsoft.com/documentation/articles/app-insights-api-filtering-sampling/#filtering)を使用します。
 - Application Insights for .Net framework 4.6 が更新されました。 
 - カスタム イベント名に最大 512 文字まで使用できるようになりました。
 - プロパティ ```OperationContext.Name``` の名前が ```RootName``` に変更されました。

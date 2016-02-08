@@ -339,9 +339,20 @@ Message Analyzer を使用したログ データの分析に慣れてきたと�
 | 調査目的… | 使用するフィルター式… | 式を適用するログ (クライアント、サーバー、ネットワーク、すべて) |
 |------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | キューのメッセージ配信での予期しない遅延 | AzureStorageClientDotNetV4.Description に "失敗した操作の再試行" が含まれている。 | クライアント |
-| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 || HTTP.Response.StatusCode == 503 | ネットワーク |
+| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 &#124;&#124; HTTP.Response.StatusCode == 503 | ネットワーク |
 | PercentTimeoutError の増加 | HTTP.Response.StatusCode == 500 | ネットワーク |
-| PercentTimeoutError の増加 (すべて) |    **StatusCode == 500 | すべて | | PercentNetworkError の増加 | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | クライアント | | HTTP 403 (Forbidden) メッセージ | HTTP.Response.StatusCode == 403 | ネットワーク | | HTTP 404 (Not found) メッセージ | HTTP.Response.StatusCode == 404 | ネットワーク | | 404 (すべて) | *StatusCode == 404 | すべて | | Shared Access Signature (SAS) 認証の問題 | AzureStorageLog.RequestStatus == "SASAuthorizationError" | ネットワーク | | HTTP 409 (Conflict) メッセージ | HTTP.Response.StatusCode == 409 | ネットワーク | | 409 (すべて) | *StatusCode == 409 | すべて | | PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある | AzureStorageLog.RequestStatus == "ClientOtherError" | サーバー | | Nagle 警告 | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | サーバー | | サーバーとネットワーク ログの時間範囲 | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | サーバー、ネットワーク | | サーバー ログの時間範囲 | AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 | サーバー |
+| PercentTimeoutError の増加 (すべて) |    *StatusCode == 500 | すべて |
+| PercentNetworkError の増加 | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | クライアント |
+| HTTP 403 (Forbidden) メッセージ | HTTP.Response.StatusCode == 403 | ネットワーク |
+| HTTP 404 (Not found) メッセージ | HTTP.Response.StatusCode == 404 | ネットワーク |
+| 404 (すべて) | *StatusCode == 404 | すべて |
+| Shared Access Signature (SAS) 認証の問題 | AzureStorageLog.RequestStatus == "SASAuthorizationError" | ネットワーク |
+| HTTP 409 (Conflict) メッセージ | HTTP.Response.StatusCode == 409 | ネットワーク |
+| 409 (すべて) | *StatusCode == 409 | すべて |
+| PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある | AzureStorageLog.RequestStatus == "ClientOtherError" | サーバー |
+| Nagle 警告 | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | サーバー |
+| サーバーとネットワーク ログの時間範囲 | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | サーバー、ネットワーク |
+| サーバー ログの時間範囲 | AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 | サーバー |
 
 
 ## 次のステップ

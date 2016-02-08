@@ -222,7 +222,7 @@ Cloud Services を使用すると、Azure がユーザーに代わってイン�
 
 ![アプリケーション パターン (Cloud Services)](./media/virtual-machines-sql-server-application-patterns-and-development-strategies/IC728013.png)
 
-このアプリケーション パターンを実装する別の方法としては、次の図に示すように、プレゼンテーション層とビジネス層の両方のコンポーネントを含む統合 Web ロールを使用します。このアプリケーション パターンは、ステートフルな設計を必要とするアプリケーションに有効です。Azure では Web ロールと worker ロールでステートレスなコンピューティング ノードが提供されるため、[Azure Caching](https://azure.microsoft.com/documentation/services/redis-cache/)、[Azure Table Storage](../storage/storage-dotnet-how-to-use-tables.md)、[Azure SQL Database](../sql-database/sql-database-technical-overview.md) のいずれかのテクノロジを使用して、セッション状態を格納するロジックを実装することをお勧めします。
+このアプリケーション パターンを実装する別の方法としては、次の図に示すように、プレゼンテーション層とビジネス層の両方のコンポーネントを含む統合 Web ロールを使用します。このアプリケーション パターンは、ステートフルな設計を必要とするアプリケーションに有効です。Azure では Web ロールと worker ロールでステートレスなコンピューティング ノードが提供されるため、[Azure Caching](http://azure.microsoft.com/documentation/services/redis-cache/)、[Azure テーブル ストレージ](../storage/storage-dotnet-how-to-use-tables.md)、[Azure SQL Database](../sql-database/sql-database-technical-overview.md) のいずれかのテクノロジを使用して、セッション状態を格納するロジックを実装することをお勧めします。
 
 ![アプリケーション パターン (Cloud Services)](./media/virtual-machines-sql-server-application-patterns-and-development-strategies/IC728014.png)
 
@@ -292,7 +292,7 @@ n 層ハイブリッド アプリケーション パターンでは、指定の�
 
 	Azure の SQL Server に接続する方法の詳細については、「[Azure での SQL Server 仮想マシンへの接続](virtual-machines-sql-server-connectivity.md)」を参照してください。
 
-1. オンプレミスのデータを Azure の仮想マシン ディスクにバックアップするようにスケジュールされたジョブとアラートを設定します。詳細については、[Azure Blob Storage サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)に関するページおよび「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」を参照してください。
+1. オンプレミスのデータを Azure の仮想マシン ディスクにバックアップするようにスケジュールされたジョブとアラートを設定します。詳細については、[Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)に関するページおよび「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」を参照してください。
 
 1. アプリケーションのニーズに応じて、次の 3 つの一般的なシナリオのいずれかを実装できます。
 

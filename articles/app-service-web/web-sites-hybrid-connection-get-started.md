@@ -75,7 +75,11 @@ Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTT
 	
 	![ハイブリッド接続の作成][TwinCreateHCBlades]
 	
-	**[ハイブリッド接続の作成]** ブレードで、次の操作を行います。- **[名前]** に、接続の名前を入力します。- **[ホスト名]** に、リソースをホストするオンプレミスのコンピューターの名前を入力します。- **[ポート]** に、オンプレミスのリソースが使用するポート番号 (SQL Server の既定のインスタンスの場合は 1433) を入力します。- **[BizTalk サービス]** をクリックします。
+	**[ハイブリッド接続の作成]** ブレードで、次の操作を行います。
+	- **[名前]** に、接続の名前を入力します。
+	- **[ホスト名]** に、リソースをホストするオンプレミスのコンピューターの名前を入力します。
+	- **[ポート]** に、オンプレミスのリソースが使用するポート番号 (SQL Server の既定のインスタンスの場合は 1433) を入力します。
+	- **[BizTalk サービス]** をクリックします。
 
 
 4. **[BizTalk サービスの作成]** ブレードが開きます。BizTalk サービスの名前を入力し、**[OK]** をクリックします。
@@ -90,17 +94,15 @@ Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTT
 	
 6. 処理が完了すると、ポータルの通知領域に接続の作成が完了したことが通知されます。
 	<!-- TODO
-
-Everything fails at this step. I can't create a BizTalk service in the dogfood portal. I switch to the classic portal
-(full portal) and created the BizTalk service but it doesn't seem to let you connnect them - When you finish the
-Create hybrid conn step, you get the following error
-Failed to create hybrid connection RelecIoudHC. The 
-resource type could not be found in the namespace 
-'Microsoft.BizTaIkServices for api version 2014-06-01'.
-
-The error indicates it couldn't find the type, not the instance.
-![Success notification][CreateHCSuccessNotification]
--->
+	Everything fails at this step. I can't create a BizTalk service in the dogfood portal. I switch to the classic portal
+	(full portal) and created the BizTalk service but it doesn't seem to let you connnect them - When you finish the
+	Create hybrid conn step, you get the following error
+	Failed to create hybrid connection RelecIoudHC. The 
+	resource type could not be found in the namespace 
+	'Microsoft.BizTaIkServices for api version 2014-06-01'.
+	The error indicates it couldn't find the type, not the instance.
+	![Success notification][CreateHCSuccessNotification]
+	-->
 7. Web アプリのブレードの **[ハイブリッド接続]** アイコンは、ハイブリッド接続が 1 つ作成されたことを示しています。
 	
 	![1 つのハイブリッド接続が作成された][CreateHCOneConnectionCreated]

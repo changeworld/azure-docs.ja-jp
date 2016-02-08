@@ -72,7 +72,7 @@ Azure AD Connect により、オンプレミスのコンピューターをクラ
  [*connector account name*] を、AD Connector アカウントとして使用したドメイン アカウントに置き換えます。
 
 >[AZURE.NOTE]
-Get-Credential というポップアップが表示されたときに入力する資格情報のユーザー名は、**user@example.com* 形式にする必要があります。
+Get-Credential というポップアップが表示されたときに入力する資格情報のユーザー名は、*user@example.com* 形式にする必要があります。
 
 ### AD FS の要求規則を構成する
 これにより、AD FS 経由での Kerberos/NTLM を使用した認証がコンピューターに許可されるため、Azure DRS には即座にコンピューターを登録できます。この手順を実行しないと、コンピューターは Azure AD への到達が遅くなります (Azure AD Connect の同期時間の影響を受けます)。

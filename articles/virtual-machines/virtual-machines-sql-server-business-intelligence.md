@@ -388,7 +388,9 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 	|ポート|型|説明|
 |---|---|---|
-|**80**|TCP|レポート サーバー リモート アクセス (*).| |**1433**|TCP|SQL Server Management Studio (*).| |**1434**|UDP|SQL Server Browser。これは、VM がドメインに参加しているときに必要となります。|
+|**80**|TCP|レポート サーバー リモート アクセス (*).|
+|**1433**|TCP|SQL Server Management Studio (*).|
+|**1434**|UDP|SQL Server Browser。これは、VM がドメインに参加しているときに必要となります。|
 |**2382**|TCP|SQL Server Browser。|
 |**2383**|TCP|SQL Server Analysis Services の既定のインスタンスとクラスター化された名前付きインスタンス。|
 |**ユーザー定義**|TCP|選択したポート番号で Analysis Services の名前付きインスタンスの静的ポートを作成し、ファイアウォールでそのポート番号のブロックを解除します。|
@@ -425,7 +427,7 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Using Power BI in a Hybrid Environment (ハイブリッド環境での Power BI の使用)](https://msdn.microsoft.com/library/dn798994.aspx)
 
->[AZURE.NOTE] [Submit feedback and contact information through Microsoft SQL Server Connect](https://connect.microsoft.com/SQLServer/Feedback)
+>[AZURE.NOTE] [Microsoft SQL Server Connect でフィードバックと連絡先情報を送信する](https://connect.microsoft.com/SQLServer/Feedback)
 
 ### コミュニティ コンテンツ
 

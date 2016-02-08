@@ -93,7 +93,10 @@ Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、*
 コンテナーのメタデータの取得|	あり|	いいえ|
 コンテナーのメタデータの設定|	あり|	あり|
 コンテナー ACL の取得|	あり|	いいえ|
-コンテナー ACL の設定|	あり|	あり (*)| Delete Container| なし| あり| Lease Container| あり| あり| List BLOB| なし| なし 
+コンテナー ACL の設定|	あり|	あり (*)|
+Delete Container| なし| あり|
+Lease Container| あり| あり|
+List BLOB| なし| なし 
 
 (*) SetContainerACL で定義されたアクセス許可はキャッシュされます。このアクセス許可の更新の伝達には 30 秒間かかり、その間は更新の整合性は保証されません。
 
@@ -107,7 +110,16 @@ Get Blob Properties|	あり|	あり|
 Set Blob Properties|	あり|	あり|
 Get Blob Metadata|	あり|	あり|
 Set Blob Metadata|	あり|	あり|
-Lease BLOB (*)| あり| あり| Snapshot BLOB| あり| あり| Copy BLOB| あり| あり (コピー元 BLOBとコピー先 BLOB)| Abort Copy BLOB| なし| なし| Delete BLOB| なし| あり| Put Block| なし| なし| Put Block List| あり| あり| Get Block List| あり| なし| Put Page| あり| あり| Get Page Ranges| あり| あり
+Lease BLOB (*)| あり| あり|
+Snapshot BLOB| あり| あり|
+Copy BLOB| あり| あり (コピー元 BLOBとコピー先 BLOB)|
+Abort Copy BLOB| なし| なし|
+Delete BLOB| なし| あり|
+Put Block| なし| なし|
+Put Block List| あり| あり|
+Get Block List| あり| なし|
+Put Page| あり| あり|
+Get Page Ranges| あり| あり
 
 (*) Lease BLOB では、BLOB の ETag は変更されません。
 

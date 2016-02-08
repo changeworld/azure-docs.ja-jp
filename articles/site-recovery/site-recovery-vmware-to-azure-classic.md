@@ -183,7 +183,7 @@ Azure Site Recovery でレプリケーションに使用される帯域幅を増
 **前提条件** | **詳細**
 --- | ---
 **Azure アカウント**| [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の価格については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)を参照してください。 
-**Azure Storage** | レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/>要件に応じて、[Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium Storage アカウント](../storage/storage-premium-storage-preview-portal.md)が必要です。アカウントは Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Premium Storage アカウントへのレプリケーションは現在サポートされていないため、使用しないでください。<br/><br/>Azure Storage については[こちら](../storage/storage-introduction.md)を参照してください。
+**Azure Storage** | レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/>要件に応じて、[Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium ストレージ アカウント](../storage/storage-premium-storage-preview-portal.md)が必要です。アカウントは Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Premium ストレージ アカウントへのレプリケーションは現在サポートされていないため、使用しないでください。<br/><br/>Azure Storage については[こちら](../storage/storage-introduction.md)を参照してください。
 **Azure ネットワーク** | フェールオーバーが発生した場合に Azure VM が接続する Azure 仮想ネットワークが必要です。Azure 仮想ネットワークは、Site Recovery コンテナーと同じリージョン内にある必要があります。<br/><br/>Azure へのフェールオーバー後にフェールバックするには、Azure ネットワークからオンプレミス サイトへの VPN 接続 (Azure ExpressRoute) の設定が必要になります。 
 
 
@@ -226,7 +226,7 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 
 ## 手順 4: コンテナー登録キーをダウンロードする
 
-1. 管理サーバーから Azure の Site Recovery コンソールを開きます。**[Recovery Services]** ページで、コンテナーをクリックして [クイック スタート] ページを開きます。[クイック スタート] は、アイコンを使っていつでも開くことができます。
+1. 管理サーバーから Azure の Site Recovery コンソールを開きます。**[復旧サービス]** ページで、コンテナーをクリックして [クイック スタート] ページを開きます。[クイック スタート] は、アイコンを使っていつでも開くことができます。
 
 	![[クイック スタート] アイコン](./media/site-recovery-vmware-to-azure-classic/quick-start-icon.png)
 
@@ -341,7 +341,7 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 3. アカウントを追加するには、**cspsconfigtool** を開きます。cspsconfigtool はデスクトップにショートカットがあり、[インストール場所]\\home\\svsystems\\bin フォルダーに保存されています。
 2. **[アカウントの管理]** タブの **[アカウントの追加]** をクリックします。
 
-	![Add account](./media/site-recovery-vmware-to-azure-classic/credentials1.png)
+	![アカウントの追加](./media/site-recovery-vmware-to-azure-classic/credentials1.png)
 
 3. **[アカウントの詳細]** で、vCenter サーバーへのアクセスに使用できる資格情報を追加します。アカウント名がポータルに表示されるまでに、15 分以上かかることがあります。すぐに更新するには、**[構成サーバー]** タブの [更新] をクリックします。
 
@@ -455,7 +455,8 @@ VMware VM をレプリケートする場合、vCenter サーバー (または ES
 ソース オペレーティング システム | モビリティ サービスのインストール ファイル
 --- | ---
 Windows Server (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_Windows\_* release.exe
-CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
+CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz
+SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
 Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
 
 
@@ -536,7 +537,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 次の手順で保護グループにマシンを追加します。
 
-1. **[保護された項目]**、**[保護グループ]**、**[マシン]**、[マシンの追加] の順にクリックします。\\ベスト プラクティスとして 
+1. **[保護された項目]**、**[保護グループ]**、**[マシン]**、[マシンの追加] の順にクリックします。ベスト プラクティスとして 
 2. **[仮想マシンの選択]** で VMware 仮想マシンを保護している場合は、仮想マシンを管理している vCenter サーバー (または仮想マシンが実行している EXSi ホスト) を選択し、マシンを選択します。
 
 	![保護を有効にする](./media/site-recovery-vmware-to-azure-classic/enable-protection2.png)
@@ -545,7 +546,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 	![保護を有効にする](./media/site-recovery-vmware-to-azure-classic/enable-protection1.png)
 		
-4. **[ターゲット リソースの指定]** で、レプリケーションを使用しているストレージ アカウントを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。現在、Premium Storage アカウントはサポートされていません。
+4. **[ターゲット リソースの指定]** で、レプリケーションを使用しているストレージ アカウントを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。現在、Premium ストレージ アカウントはサポートされていません。
 
 	![保護を有効にする](./media/site-recovery-vmware-to-azure-classic/enable-protection3.png)
 

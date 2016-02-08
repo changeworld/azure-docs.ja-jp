@@ -39,7 +39,7 @@ New Relic Standard は、Azure ユーザーであれば無料でご利用いた�
 Azure ユーザーは、New Relic エージェントのデプロイ時に、New Relic Pro の 2 週間の試用サブスクリプションをご利用になれます。
 
 Azure Marketplace を使用して New Relic にサインアップする
-
+--
 New Relic は、Azure の Web ロール、Worker ロール、および Azure App Service とシームレスに統合されます。
 
 Azure Marketplace から New Relic に直接サインアップするには、次の簡単な 4 つの手順を実行します。
@@ -58,7 +58,7 @@ Azure Marketplace から New Relic に直接サインアップするには、次
 
 11. **[作成]** をクリックすると、New Relic アカウントの作成プロセスが開始されます。**[通知]** ボタンをクリックすると、ステータスを監視できます。作成されたら、New Relic アカウントのブレードが表示されます。
 
-12. New Relic ライセンス キーを取得するには、ブレードの上部にある **[Essentials]** パネルを参照します。Web Apps インスタンスは、このライセンス キーを、Web アプリと New Relic アカウントを統合するときに、アプリ設定に自動的に登録します。
+12. New Relic ライセンス キーを取得するには、ブレードの上部にある **[Essentials]** パネルを参照します。Web アプリケーション  インスタンスは、このライセンス キーを、Web アプリと New Relic アカウントを統合するときに、アプリ設定に自動的に登録します。
 
 ## 手順 2. Web アプリ用に New Relic の統合を構成する
 
@@ -77,7 +77,7 @@ Azure Marketplace から New Relic に直接サインアップするには、次
 
 ## 手順 3. ASP.NET Web アプリを発行する
 
-Visual Studio を使用して Web アプリを発行します。Web アプリが既に発行済みの場合は、もう一度発行します。これにより Web Apps インスタンスに、New Relic の監視を有効にするために必要な New Relic NuGet パッケージが追加されます。
+Visual Studio を使用して Web アプリを発行します。Web アプリが既に発行済みの場合は、もう一度発行します。これにより Web アプリのインスタンスに、New Relic の監視を有効にするために必要な New Relic NuGet パッケージが追加されます。
 
 ## 手順 4.New Relic でアプリケーションのパフォーマンスをチェックする
 

@@ -147,7 +147,11 @@ Azure 発行ポータルは、プランの発行と管理に使用されます�
 
   >[AZURE.TIP] 参加ポリシーについては、[Azure Web サイト](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)を参照してください。
 
-  > デベロッパー センターの登録で問題が発生した場合は、次の手順でサポート チケットを記録してください。1. [サポート](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&supportregion=ja-JP&pesid=15635&ccsid=635847950577064286)に問い合わせる。2.**[デベロッパー センター]** を選択する。3.**[プロファイル]** を選択する。4.連絡方法を選択する。
+  > デベロッパー センターの登録で問題が発生した場合は、次の手順でサポート チケットを記録してください。
+  1. [サポート](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&supportregion=ja-JP&pesid=15635&ccsid=635847950577064286)に問い合わせる。
+  2.**[デベロッパー センター]** を選択する。
+  3.**[プロファイル]** を選択する。
+  4.連絡方法を選択する。
 
 
 

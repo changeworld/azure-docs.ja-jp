@@ -50,7 +50,7 @@ Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラ
 
 ## <a name="hdinsight-sample-wordcount"></a>ワード カウント - Java 
 
-MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (****wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
+MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
 
 ソース コードは「[付録 A](#apendix-a---the-word-count-MapReduce-program-in-java)」にあります。
 
@@ -120,7 +120,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 > [AZURE.NOTE] このチュートリアルの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。Linux ベースの HDInsight クラスターのストリーミング例は、「[HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)」をご覧ください。
 
-この例では、mapper と reducer は、[stdin][stdin-stdout-stderr] から入力を (1 行ずつ) 読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
+この例では、mapper と reducer は、[stdin][stdin-stdout-stderr] (1 行ずつ) から入力を  読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
 
 **mapper** 用の実行可能ファイルが指定されると、各 mapper タスクは mapper 開始時に別のプロセスとしてその実行可能ファイルを起動します。mapper タスクは実行されると、入力を行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。
 

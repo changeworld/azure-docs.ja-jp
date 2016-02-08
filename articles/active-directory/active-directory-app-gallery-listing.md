@@ -33,7 +33,7 @@ Azure Active Directory でのシングル サインオンをサポートする�
 
 * Azure AD チームが統合のテストに使用できるアプリケーションのテスト テナントまたはアカウントの資格情報を記載してください。  
 
-* [Azure AD Consent フレームワーク](https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/#overview-of-the-consent-framework/)を使用して Azure AD チームがサインインし、Azure AD のインスタンスをアプリケーションに接続する手順を説明してください。
+* [Azure AD Consent フレームワーク]( https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/#overview-of-the-consent-framework/)を使用して Azure AD チームがサインインし、Azure AD のインスタンスをアプリケーションに接続する手順を説明してください。
 
 * Azure AD チームがアプリケーションでシングル サインオンをテストするために必要な詳細な手順があれば、説明してください。
 

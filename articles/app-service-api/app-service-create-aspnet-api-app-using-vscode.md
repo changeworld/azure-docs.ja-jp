@@ -312,7 +312,7 @@ ASP.NET API プロジェクトを API アプリとしてデプロイできるよ
 
 > [AZURE.NOTE] このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[無料評価版にサインアップする](/pricing/free-trial/)か、[MSDN サブスクライバーの特典を有効に](/pricing/member-offers/msdn-benefits-details/)してください。無料評価版の [App Service アプリのサンプル](http://tryappservice.azure.com)を試すこともできます。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)にログインします。
+1. [Azure プレビュー ポータル](https://portal.azure.com)にログインします。
 
 2. ポータルの左下にある **[新規]** をクリックします。
 
