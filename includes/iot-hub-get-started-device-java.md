@@ -27,7 +27,7 @@
 
 4. pom.xml ファイルを保存して閉じます。
 
-5. テキスト エディターを使用し、simulated-device\\src\\main\\java\\com\\mycompany\\app\\App.java ファイルを開きます。
+5. テキスト エディターを使用し、simulated-device\src\main\java\com\mycompany\app\App.java ファイルを開きます。
 
 6. ファイルに次の **import** ステートメントを追加します。
 
@@ -156,6 +156,6 @@
 > [AZURE.NOTE] わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。運用環境のコードでは、[一時的な障害処理][lnk-transient-faults]に関する MSDN の記事で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
 <!-- Links -->
-[lnk-transient-faults]: https://msdn.microsoft.com/ja-JP/library/hh680901(v=pandp.50).aspx
+[lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
 <!---HONumber=AcomDC_0204_2016-->

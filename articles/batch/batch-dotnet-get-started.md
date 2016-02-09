@@ -84,7 +84,8 @@ private const string StorageAccountKey  = "";
 
 [Azure ポータル][azure_portal]の各サービスのアカウント ブレード内に Batch および Storage アカウント資格情報があります。
 
-![Batch credentials in the portal][9] ![Storage credentials in the portal][10]<br/>
+![Batch credentials in the portal][9]
+![Storage credentials in the portal][10]<br/>
 
 資格情報を使用してプロジェクトを更新したら、ソリューション エクスプローラーでソリューションを右クリックし、**[ソリューションのビルド]** をクリックします。メッセージに従って NuGet パッケージの復元を確認します。
 
@@ -96,7 +97,8 @@ private const string StorageAccountKey  = "";
 
 ## 手順 1: ストレージ コンテナーを作成する
 
-![Azure Storage でコンテナーを作成する][1] <br/>
+![Azure Storage でコンテナーを作成する][1] 
+<br/>
 
 Batch には、Azure Storage とやり取りするための組み込みのサポートが含まれています。Storage アカウント内のコンテナーは、Batch アカウントで実行するタスクに対して、実行に必要なファイルを提供します。また、タスクによって生成される出力データを格納する場所も提供します。*DotNetTutorial* クライアント アプリケーションで最初に実行する手順は、[Azure Blob Storage](./../storage/storage-introduction.md) で 3 つのコンテナーを作成することです。
 
@@ -152,7 +154,8 @@ private static async Task CreateContainerIfNotExistAsync(CloudBlobClient blobCli
 
 ## 手順 2: タスク アプリケーションとデータ ファイルをアップロードする
 
-![タスク アプリケーションと入力 (データ) ファイルをコンテナーにアップロードする][2] <br/>
+![タスク アプリケーションと入力 (データ) ファイルをコンテナーにアップロードする][2] 
+<br/>
 
 ファイルのアップロード操作で、*DotNetTutorial* にローカル コンピューターの **application** と **input** のファイル パスのコレクションをまず定義します。次に、それらのファイルを前の手順で作成したコンテナーにアップロードします。
 
@@ -238,7 +241,8 @@ Shared Access Signature (SAS) は、URL の一部に含めると、Azure Storage
 
 ## 手順 3: Batch プールを作成する
 
-![Create a Batch pool][3] <br/>
+![Create a Batch pool][3] 
+<br/>
 
 アプリケーションとデータ ファイルを Storage アカウントにアップロードすると、*DotNetTutorial* は Batch .NET ライブラリを使用して Batch サービスとのやり取りを開始します。その処理のために、まず [BatchClient][net_batchclient] が作成されます。
 
@@ -323,7 +327,8 @@ private static async Task CreateJobAsync(BatchClient batchClient, string jobId, 
 
 ## 手順 5: ジョブにタスクを追加する
 
-![ジョブにタスクを追加する][5]<br/> *(1) タスクをジョブに追加します。(2) ノードで実行されるようにタスクをスケジュールします。(3) タスクで処理対象のデータ ファイルをダウンロードします。*
+![ジョブにタスクを追加する][5]<br/> 
+*(1) タスクをジョブに追加します。(2) ノードで実行されるようにタスクをスケジュールします。(3) タスクで処理対象のデータ ファイルをダウンロードします。*
 
 実際に作業を実行するには、タスクをジョブに追加する必要があります。コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][net_task_resourcefiles] (プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][net_task] を構成します。*DotNetTutorial* サンプル プロジェクトでは、各タスクで処理されるファイルは 1 つだけです。したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
 
@@ -341,7 +346,7 @@ private static async Task<List<CloudTask>> AddTasksAsync(BatchClient batchClient
     foreach (ResourceFile inputFile in inputFiles)
     {
         string taskId = "topNtask" + inputFiles.IndexOf(inputFile);
-        string taskCommandLine = String.Format("cmd /c %AZ_BATCH_NODE_SHARED_DIR%\\TaskApplication.exe {0} 3 "{1}"", inputFile.FilePath, outputContainerSasUrl);
+        string taskCommandLine = String.Format("cmd /c %AZ_BATCH_NODE_SHARED_DIR%\\TaskApplication.exe {0} 3 \"{1}\"", inputFile.FilePath, outputContainerSasUrl);
 
         CloudTask task = new CloudTask(taskId, taskCommandLine);
         task.ResourceFiles = new List<ResourceFile> { inputFile };
@@ -402,7 +407,8 @@ private static void UploadFileToContainer(string filePath, string containerSas)
 
 ## 手順 6: タスクを監視する
 
-![タスクを監視する][6]<br/> *クライアント アプリケーションで (1) タスクの完了と成功の状態を監視し、(2) タスクから結果データを Azure Storage にアップロードします。*
+![タスクを監視する][6]<br/> 
+*クライアント アプリケーションで (1) タスクの完了と成功の状態を監視し、(2) タスクから結果データを Azure Storage にアップロードします。*
 
 タスクをジョブに追加すると、そのジョブに関連付けられたプール内のコンピューティング ノードに実行待ちとして自動的にキューに追加され、スケジュールされます。指定した設定に基づき、Batch は、すべてのタスクのキュー、スケジュール、再試行など、タスク管理作業を処理します。タスクの実行を監視する方法は多数ありますが、DotNetTutorial では、完了と、タスクの失敗または成功の状態のみをレポートする簡単な例を説明します。
 
