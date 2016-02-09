@@ -14,7 +14,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="12/04/2015"
+	ms.date="02/04/2016"
 	ms.author="jeffstok" />
 
 
@@ -84,7 +84,7 @@ Event Hub に送信されるレコードが表示されます。このリアル�
 
 ### Stream Analytics のジョブの準備
 
-1.	Azure ポータルで、**[新規]、[Data Services]、[Stream Analytics]、[簡易作成]** の順にクリックします。
+1.	Azure ポータルで、**[新規]、[データ サービス]、[Stream Analytics]、[簡易作成]** の順にクリックします。
 2.	次の値を指定してから、**[Stream Analytics ジョブの作成]** をクリックします。
 
 	* **[ジョブ名]**: ジョブ名を入力します。
@@ -241,7 +241,7 @@ Blob Storage 用のコンテナーがまだない場合は、次の手順に従�
 
 ## 不正行為の検出出力の表示
 
-不正なイベントが出力されたときにリアルタイムで表示するには、[Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/)や [Azure エクスプローラー](http://www.cerebrata.com/products/azure-explorer/introduction)などのツールを使用します。
+不正なイベントが出力されたときにリアルタイムで表示するには、[Azure Storage エクスプローラー](https://azurestorageexplorer.codeplex.com/)や [Azure エクスプローラー](http://www.cerebrata.com/products/azure-explorer/introduction)などのツールを使用します。
 
 ![不正行為の検出: 不正なイベントをリアルタイムで表示](./media/stream-analytics-get-started/stream-ananlytics-view-real-time-fraudent-events.png)
 
@@ -257,4 +257,4 @@ Blob Storage 用のコンテナーがまだない場合は、次の手順に従�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!----HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

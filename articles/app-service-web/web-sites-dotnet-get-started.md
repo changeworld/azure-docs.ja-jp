@@ -42,7 +42,7 @@
 * Visual Studio **サーバー エクスプローラー** を使用して、リモート ファイルを開き、リモート デバッグ セッションを開始する方法。 
 * [Azure ポータル](/overview/preview-portal/)を使用して Web アプリを監視および管理する方法
 
-> [AZURE.NOTE]このチュートリアルでは、Azure App Service と共に ASP.NET を使用する方法を説明しており、ASP.NET Web アプリケーションの開発方法については扱っていません。ASP.NET MVC 5 の概要については、[ASP.NET](http://asp.net/) サイトの [ASP.NET MVC 5 の使用](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)に関するページを参照してください。Azure App Service の使用方法についてより詳しく説明している他の記事へのリンクについては、「[次のステップ](#next-steps)」セクションを参照してください。
+> [AZURE.NOTE] このチュートリアルでは、Azure App Service と共に ASP.NET を使用する方法を説明しており、ASP.NET Web アプリケーションの開発方法については扱っていません。ASP.NET MVC 5 の概要については、[ASP.NET](http://asp.net/) サイトの [ASP.NET MVC 5 の使用](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)に関するページを参照してください。Azure App Service の使用方法についてより詳しく説明している他の記事へのリンクについては、「[次のステップ](#next-steps)」セクションを参照してください。
 > 
 > このチュートリアルの範囲と方針の向上にご協力ください。ここに記載されているトピック以外に入門用のチュートリアルとして扱ってほしいトピックがありましたら、このチュートリアルの最後にある [Disqus コメント欄](#comments)でご意見をお寄せください。
 
@@ -97,7 +97,7 @@ Azure アカウントにサインアップする前に Azure App Service を開�
 
 6. **[認証の変更]** ダイアログ ボックスで、**[認証なし]** をクリックし、**[OK]** をクリックします。
 
-	![No Authentication](./media/web-sites-dotnet-get-started/GS13noauth.png)
+	![[認証なし]](./media/web-sites-dotnet-get-started/GS13noauth.png)
 
 	作成しているサンプル アプリケーションでは、ユーザーはログインできません。「[次のステップ](#next-steps)」セクションは、認証と承認を実装するチュートリアルにリンクしています。
 
@@ -296,9 +296,9 @@ Web アプリをテストしてデバッグしているときにリモート サ
 
 * [App Service プランを選択または作成する方法](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)
 
-* [リソース グループを選択または作成する方法](../azure-preview-portal-using-resource-groups.md)
+* [リソース グループを選択または作成する方法](../azure-portal/resource-group-portal.md)
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0204_2016-->

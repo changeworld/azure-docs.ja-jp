@@ -14,21 +14,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/02/2015"
+	ms.date="01/29/2016"
 	ms.author="jgao"/>
 
 
 
-# HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する (Windows)
+# HBase チュートリアル: HDInsight の Windows ベースの Hadoop で Apache HBase を使用する
 
 [AZURE.INCLUDE [hbase-selector](../../includes/hdinsight-hbase-selector.md)]
 
-
 HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Apache Hive を使用してテーブルを照会する方法について説明します。HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関するページを参照してください。
 
-> [AZURE.NOTE] このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。Linux ベースのクラスターを使用する方法については、「[HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する (Linux)](hdinsight-hbase-tutorial-get-started-linux.md)」を参照してください。
->
-> Linux ベースの HDInsight クラスター上の HBase (バージョン 0.98.0) は、(Apache Hadoop と YARN 2.4.0 を基盤とする) HDInsight 3.1 クラスターでのみ使用できます。バージョン情報については、「[What's new in the Hadoop cluster versions provided by HDInsight? (HDInsight で提供される Hadoop クラスター バージョンの新機能)][hdinsight-versions]」を参照してください。
+このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターの情報を参照する場合は、ページ上部にあるタブ セレクターを使用して切り替えてください。
+
+> [AZURE.NOTE] Linux ベースの HDInsight クラスター上の HBase (バージョン 0.98.0) は、(Apache Hadoop と YARN 2.4.0 を基盤とする) HDInsight 3.1 クラスターでのみ使用できます。バージョン情報については、「[What's new in the Hadoop cluster versions provided by HDInsight? (HDInsight で提供される Hadoop クラスター バージョンの新機能)][hdinsight-versions]」を参照してください。
 
 ###前提条件
 
@@ -61,13 +60,14 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 		> 学習目的で HBase を使用する場合は、コスト削減のため、クラスター サイズには必ず 1 を選択し、クラスターの使用後にクラスターを削除してください。
 
-	- **省略可能な構成** - Azure 仮想ネットワークの構成、スクリプト アクションの構成、および追加ストレージ アカウントの追加を行います。
+	- **省略可能な構成** - Azure Virtual Network の構成、スクリプト アクションの構成、および追加ストレージ アカウントの追加を行います。
 
 4. **[作成]** をクリックします。
 
 >[AZURE.NOTE] HBase クラスターを削除したら、同じ既定のストレージ アカウントと既定の BLOB コンテナーを使用して、別の HBase クラスターを作成できます。新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。
 
-## HBase シェルの使用
+## テーブルを作成してデータを挿入する
+
 現在、2 つの方法で HBase にアクセスできます。このセクションでは、HBase シェルを使用する方法について説明します。次のセクションでは、.NET SDK を使用する方法について説明します。
 
 多くの場合、データは次のような表形式で表示されます。
@@ -331,4 +331,4 @@ Web UI を開くには、RDP を使用してクラスターに接続した後、
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

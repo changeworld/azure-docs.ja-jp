@@ -32,12 +32,12 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 
 - Azure ポータルを使用して IoT Hub を作成する。
 - IoT Hub におけるデバイス ID を作成する。
-- クラウド バックエンドに製品利用統計情報を送信するシミュレーションされたデバイスを作成します。
+- クラウド バックエンドにテレメトリを送信するシミュレーション対象デバイスを作成する。
 
 このチュートリアルの最後には、次の 3 つの Java コンソール アプリケーションが作成されています。
 
 * **create-device-identity**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイスを接続します。
-* **read-d2c-messages**。シミュレーション対象デバイスから送信された製品利用統計情報を表示します。
+* **read-d2c-messages**。シミュレーション対象デバイスから送信されたテレメトリを表示します。
 * **simulated-device**。以前に作成したデバイス ID で IoT ハブに接続して、1 秒ごとにテレメトリ メッセージを送信します。
 
 > [AZURE.NOTE] デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの作成に利用できる各種 SDK に関する情報は、「[IoT Hub SDK][lnk-hub-sdks]」の記事で取り上げています。
@@ -48,7 +48,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 
 + Maven 3。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」には、このチュートリアルのために Maven をインストールする方法があります。Windows と Linux の両方が対象となっています。
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
++ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
 
 ## IoT Hub の作成
 
@@ -104,7 +104,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 
     ![][7]
 
-2. simulated-device フォルダーで、コマンド プロンプトで次のコマンドを実行し、IoT Hub への製品利用統計情報データの送信を開始します。
+2. simulated-device フォルダーで、コマンド プロンプトで次のコマンドを実行し、IoT Hub へのテレメトリ データの送信を開始します。
 
     ```
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
@@ -141,4 +141,4 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 [lnk-resource-groups]: resource-group-portal.md
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

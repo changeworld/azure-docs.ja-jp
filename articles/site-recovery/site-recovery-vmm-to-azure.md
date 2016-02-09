@@ -81,9 +81,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 1. 登録する VMM サーバーから[管理ポータル](https://portal.azure.com)にサインインします。
 
 
-2. を展開し
-3. *[Data Services]* をクリックし、*[Recovery Services]* を展開し、*[Site Recovery コンテナー]*クリックします。
-*
+3. *[Data Services]* をクリックし、*[Recovery Services]* を展開し、*[Site Recovery コンテナー]*クリックします。*
 3. *[新規作成]*、*[簡易作成]* の順にクリックします。
 
 
@@ -124,13 +122,13 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 	![Microsoft 更新プログラム](./media/site-recovery-vmm-to-azure/VMMASRInstallMUScreen.png)
 
 
-1.  インストール場所は、**<SystemDrive>\\Program Files\\Microsoft System Center 2012 R2\\Virtual Machine Manager\\bin** に設定されています。[インストール] ボタンをクリックすると、プロバイダーのインストールが開始されます。
+1.  インストール場所は、**<SystemDrive>\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin** に設定されています。[インストール] ボタンをクリックすると、プロバイダーのインストールが開始されます。
 	![InstallLocation](./media/site-recovery-vmm-to-azure/VMMASRInstallLocationScreen.png)
 
 
 
 1. プロバイダーのインストール後は、[登録] ボタンをクリックしてサーバーをコンテナーに登録します。
-![InstallComplete](./media/site-recovery-vmm-to-azure/VMMASRInstallComplete.png)
+	![InstallComplete](./media/site-recovery-vmm-to-azure/VMMASRInstallComplete.png)
 
 5. **[インターネット接続]** で、VMM サーバーで実行中のプロバイダーがインターネットに接続する方法を指定します。*[既定のシステム プロキシ設定を使用]* を選択して、サーバー上に構成されている既定のインターネット接続設定を使用します。
 
@@ -143,7 +141,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 		- *.backup.windowsazure.com 
 		- *.blob.core.windows.net 
 		- *.store.core.windows.net 
-	- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」および HTTPS (443) プロトコルで説明されている IP アドレスを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+	- 「[Azure Datacenter の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)」および HTTPS (443) プロトコルで説明されている IP アドレスを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、[設定] ワークスペースを開いて [セキュリティ] を展開し、[実行アカウント] をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
 
@@ -378,7 +376,7 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 <LI>完全な運用環境で Azure Site Recovery の計画とデプロイを実行するには、「<a href="http://go.microsoft.com/fwlink/?LinkId=321294">Azure Site Recovery 計画ガイド</a>」と「<a href="http://go.microsoft.com/fwlink/?LinkId=321295">Azure Site Recovery デプロイ ガイド</a>」を参照してください。</LI>
 
 
-<LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI> 
+<LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI>
 </UL>
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

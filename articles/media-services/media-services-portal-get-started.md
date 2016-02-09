@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/05/2015"
+	ms.date="01/28/2016"
 	ms.author="juliako"/>
 
 
@@ -25,7 +25,8 @@
 
 このチュートリアルでは、Azure クラシック ポータルを使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について、手順を追って説明します。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
+
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -91,9 +92,9 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 	新しいユニットの割り当ては完了するまでに約 20 分かかります。
 
-	>[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
+	>[AZURE.NOTE] 現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
 	>
-	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、「[Azure の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、「[Azure の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」をご覧ください。
 
 ## コンテンツをアップロードする
 
@@ -120,6 +121,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 ## コンテンツのエンコード
 
 ### 概要
+
 インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。Media Services には、コンテンツのエンコード方法 (使用するコーデック、ファイル形式、解像度、ビットレートなど) を指定できる Media Encoder が用意されています。
 
 クライアントに対するアダプティブ ビットレート ストリーミング配信は、Azure Media Services の代表的な用途の 1 つです。アダプティブ ビットレート ストリーミングでは、現在のネットワーク帯域幅、CPU 使用率などの条件に基づいてビデオが表示されるため、高低のビットレート ストリームの切り替えをクライアント側で行うことができます。Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
@@ -140,21 +142,12 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 ここでは、Azure クラシック ポータルを使用して、Azure Media Encoder でコンテンツをエンコードする手順について説明します。
 
 1.  エンコードの対象となるファイルを選択します。そのファイル タイプのエンコードがサポートされている場合、[コンテンツ] ページの一番下にある **[プロセス]** ボタンが有効になります。
-4. **[プロセス]** ダイアログ ボックスで **[Azure Media Encoder]** プロセッサを選択します。
+4. **[プロセス]** ダイアログ ボックスで **[Media Encoder Standard]** プロセッサを選択します。
 5. いずれかの**エンコーディング構成**を選択します。
 
 	![Process2][process2]
 
-	**[アダプティブ ストリーミング用のプリセット (動的パッケージング)]**、**[プログレッシブ ダウンロード用のプリセット]**、**[アダプティブ ストリーミング用のレガシー プリセット]** の各プリセットの意味については、「[Azure Media Encoder 用のタスク プリセット文字列](https://msdn.microsoft.com/library/azure/dn619392.aspx)」をご覧ください。
-
-	以下、**[その他]** の構成について説明します。
-
-	+ **PlayReady コンテンツ保護を使用したエンコード**。このプリセットは、PlayReady Content Protection を使用してエンコードされた資産を生成します。  
-
-		既定では、Media Services PlayReady ライセンス サービスが使用されます。クライアントが PlayReady 暗号化コンテンツを再生するためにライセンスを取得可能な他のサービスを指定するには、REST または Media Services .NET SDK API を使用します。詳細については、「[静的暗号化を使用したコンテンツの保護]()」を参照し、Media Encryptor プリセットの **licenseAcquisitionUrl** プロパティを設定してください。代わりに、「**Using PlayReady Dynamic Encryption and License Delivery Service (PlayReady 動的暗号化とライセンス配信サービスの使用)**」に説明されているように、動的暗号化を使用して [PlayReadyLicenseAcquisitionUrl](http://go.microsoft.com/fwlink/?LinkId=507720) プロパティを設定することもできます。
-	+ **[PC/Mac での再生 (Flash/Silverlight を使用)]**。このプリセットは、次のような特徴を持つスムーズ ストリーミング資産を作成します。AAC を使用して 96 kbps で CBR エンコードされた 44.1 kHz 16 ビット/サンプルのステレオ オーディオ、および H.264 Main Profile を使用して 3400 ～ 400 kbps の範囲で 6 ビットレートで CBR エンコードされた 720p ビデオ、および 2 秒の GOP。
-	+ **[HTML5 (IE/Chrome/Safari) を使用した再生]**。このプリセットは、次のような特徴を持つ単一の MP4 ファイルを作成します。AAC を使用して 128 kbps で CBR エンコードされた 44.1 kHz 16 ビット/サンプルのステレオ オーディオ、および H.264 Main Profile を使用して 4500 kbps で CBR エンコードされた 720p ビデオ。
-	+ **[iOS デバイスおよび PC/Mac での再生]**。このプリセットは、スムーズ ストリーミング資産 (上述) と同じ特徴を持つ資産を作成しますが、Apple HLS ストリームを iOS デバイスに配信するときに使用できる形式で作成します。
+	[Media Encoder Standard 用のタスク プリセット文字列](https://msdn.microsoft.com/ja-JP/library/mt269960)に関するトピックでは、各プリセットの意味を説明しています。
 
 5. 次に、わかりやすい出力コンテンツ名を入力するか、既定値をそのまま使用します。チェック ボタンをクリックすると、エンコード処理が開始され、進捗状況はポータルの下部で確認できます。
 6. **[OK]** を選択します。
@@ -193,11 +186,11 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 ロケーターには、有効期限があります。ポータルを使用して資産を発行すると、有効期限が 100 年のロケーターが作成されます。
 
->[AZURE.NOTE]2015 年 3 月より前にポータルを使用してロケーターを作成した場合、有効期限が 2 年のロケーターが作成されています。
+>[AZURE.NOTE] 2015 年 3 月より前にポータルを使用してロケーターを作成した場合、有効期限が 2 年のロケーターが作成されています。
 
 ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) API または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
 
-### Publish
+### 発行
 
 ポータルを使用して資産を発行するには、次の操作を行います。
 
@@ -260,4 +253,4 @@ Azure クラシック ポータルには、ビデオのテストに使用でき�
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-portal-get-started/media-services-portal-player.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0204_2016-->

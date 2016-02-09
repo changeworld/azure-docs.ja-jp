@@ -12,7 +12,7 @@
       ms.tgt_pltfrm="na"
       ms.devlang="dotnet"
       ms.topic="hero-article"
-      ms.date="01/24/2015"
+      ms.date="02/03/2015"
       ms.author="robinsh" />
 
 # Windows で Azure File Storage を使用する
@@ -21,15 +21,15 @@
 
 ## 概要
 
-Azure File Storage は、標準の[サーバー メッセージ ブロック (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を使用してクラウドでファイル共有を提供するサービスです。SMB 2.1 と SMB 3.0 の両方がサポートされます。Azure File Storage を使用すると、コストがかかる書き換えを行わずに、ファイル共有に依存しているレガシ アプリケーションをすばやく Azure に移行することができます。Azure 仮想マシンまたはクラウド サービスで実行されているアプリケーション、またはオンプレミスのクライアントから実行されているアプリケーションは、デスクトップ アプリケーションが一般的な SMB 共有をマウントするのと同じように、クラウドにファイル共有をマウントできます。このため、任意の数のアプリケーション コンポーネントが、File ストレージ共有をマウントして同時にアクセスできます。
+Azure File Storage は、標準の[サーバー メッセージ ブロック (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を使用してクラウドでファイル共有を提供するサービスです。SMB 2.1 と SMB 3.0 の両方がサポートされます。Azure File Storage を使用すると、コストがかかる書き換えを行わずに、ファイル共有に依存しているレガシ アプリケーションをすばやく Azure に移行することができます。Azure 仮想マシンまたはクラウド サービスで実行されているアプリケーション、またはオンプレミスのクライアントから実行されているアプリケーションは、デスクトップ アプリケーションが一般的な SMB 共有をマウントするのと同じように、クラウドにファイル共有をマウントできます。このため、任意の数のアプリケーション コンポーネントが、File Storage 共有をマウントして同時にアクセスできます。
 
-ファイル ストレージ共有は標準の SMB ファイル共有であるため、Azure で実行されているアプリケーションは、ファイル システム I/O API を介して共有内のデータにアクセスできます。そのため、開発者は、既存のコードとスキルを活用して、既存のアプリケーションを移行することができます。IT プロフェッショナルは、Azure アプリケーションの管理の一環として、PowerShell コマンドレットを使用して、ファイル ストレージ共有を作成、マウント、管理できます。
+File Storage 共有は標準の SMB ファイル共有であるため、Azure で実行されているアプリケーションは、ファイル システム I/O API を介して共有内のデータにアクセスできます。そのため、開発者は、既存のコードとスキルを活用して、既存のアプリケーションを移行することができます。IT プロフェッショナルは、Azure アプリケーションの管理の一環として、PowerShell コマンドレットを使用して、File Storage 共有を作成、マウント、管理できます。
 
 Azure のファイル共有は、[Azure ポータル](https://portal.azure.com)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。また、これらのファイル共有は SMB 共有であるため、それらには標準の使い慣れたファイル システム API を使用してアクセスできます。
 
 Linux で File Storage を使用する方法の詳細については、「[Linux で Azure File ストレージを使用する方法](storage-how-to-use-files-linux.md)」を参照してください。
 
-File Storage のスケーラビリティおよびパフォーマンスのターゲットの詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md#scalability-targets-for-standard-storage-accounts)」を参照してください。
+File Storage のスケーラビリティおよびパフォーマンスのターゲットの詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md#scalability-targets-for-blobs-queues-tables-and-files)」を参照してください。
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -138,7 +138,7 @@ PowerShell の使用を準備するために、Azure PowerShell コマンドレ�
 
 ### ストレージ アカウントおよびキーのコンテキストの作成
 
-次に、ストレージ アカウント コンテキストを作成します。コンテキストによってストレージ アカウント名とアカウント キーがカプセル化されます。[Azure ポータル](https://portal.azure.com)からアカウント キーをコピーする手順については、「[ストレージ アクセス キーの表示、コピー、および再生成](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+次に、ストレージ アカウント コンテキストを作成します。コンテキストによってストレージ アカウント名とアカウント キーがカプセル化されます。[Azure ポータル](https://portal.azure.com)からアカウント キーをコピーする手順については、「[ストレージ アクセス キーの表示とコピー](storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
 
 次の例の `storage-account-name` と `storage-account-key` は、実際のストレージ アカウント名とキーに置き換えてください。
 
@@ -228,14 +228,14 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 仮想マシンにリモート接続した後で、`net use` コマンドを実行してファイル共有をマウントできます。その場合は次の構文を使用します。`<storage-account-name>` を実際のストレージ アカウントの名前に置き換え、`<share-name>` を実際の File Storage 共有に置き換えてください。
 
-    net use <drive-letter>: \<storage-account-name>.file.core.windows.net<share-name>
+    net use <drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
 
 	example :
 	net use z: \\samples.file.core.windows.net\logs
 
 前の手順でストレージ アカウントの資格情報を適用したため、`net use` コマンドで資格情報を指定する必要はありません。資格情報をまだ適用していない場合は、次の例に示されているように、`net use` コマンドに渡されるパラメーターとして資格情報を指定してください。
 
-    net use <drive-letter>: \<storage-account-name>.file.core.windows.net<share-name> /u:<storage-account-name> <storage-account-key>
+    net use <drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /u:<storage-account-name> <storage-account-key>
 
 	example :
 	net use z: \\samples.file.core.windows.net\logs /u:samples <storage-account-key>
@@ -261,7 +261,7 @@ File Storage をプログラミングする場合、.NET と Java のストレ�
 
 Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage NuGet パッケージをインストールするには、次の手順を実行します。
 
-1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から \[コンソール アプリケーション]\**をクリックします。
+1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から \[コンソール アプリケーション]**をクリックします。
 2. コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
 3. プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
@@ -279,7 +279,7 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
 	    </appSettings>
 	</configuration>
 
-> [AZURE.NOTE]最新バージョンの Azure ストレージ エミュレーターでは、File ストレージがサポートされません。File ストレージを使用するには、接続文字列は、クラウド内の Azure ストレージ アカウントを対象とする必要があります。
+> [AZURE.NOTE] 最新バージョンの Azure ストレージ エミュレーターでは、File Storage がサポートされません。File Storage を使用するには、接続文字列は、クラウド内の Azure ストレージ アカウントを対象とする必要があります。
 
 ### 名前空間宣言の追加
 
@@ -371,9 +371,9 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降で
         Console.WriteLine("Current share quota: {0} GB", share.Properties.Quota);
     }
 
-### ファイルまたはファイル共有の共有アクセス署名の生成
+### ファイルまたはファイル共有の Shared Access Signature の生成
 
-Azure Storage クライアント ライブラリのバージョン 5.x 以降、ファイル共有または個々のファイルの Shared Access Signature (SAS) を生成できます。また、ファイル共有に共有アクセス ポリシーを作成して、共有アクセス署名を管理することもできます。共有アクセス ポリシーを作成することをお勧めします。これにより、侵害されそうな場合に SAS を取り消すことができます。
+Azure Storage クライアント ライブラリのバージョン 5.x 以降、ファイル共有または個々のファイルの Shared Access Signature (SAS) を生成できます。また、ファイル共有に共有アクセス ポリシーを作成して、Shared Access Signature を管理することもできます。共有アクセス ポリシーを作成することをお勧めします。これにより、侵害されそうな場合に SAS を取り消すことができます。
 
 次の例では、共有上に共有アクセス ポリシーを作成し、そのポリシーを使用して共有上のファイルの SAS に制約を指定します。
 
@@ -425,7 +425,7 @@ Shared Access Signature の作成および使用の詳細については、「[S
 
 Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。次のセクションでは、プログラムを使用してこれらのコピー操作を実行する方法を示します。
 
-また、AzCopy を使用してあるファイルを別のファイルにコピーしたり、BLOB をファイルにコピーしたり、その反対の操作をしたりすることもできます。AzCopy を使用したファイルのコピーの詳細については、[Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md#copy-files-in-azure-file-storage-with-azcopy-preview-version-only)に関するページを参照してください。
+また、AzCopy を使用してあるファイルを別のファイルにコピーしたり、BLOB をファイルにコピーしたり、その反対の操作をしたりすることもできます。AzCopy を使用したファイルのコピーの詳細については、[Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md#copy-files-in-azure-file-storage-with-azcopy)に関するページを参照してください。
 
 > [AZURE.NOTE] BLOB をファイルにコピーしたり、ファイルを BLOB にコピーしたりする場合は、同じストレージ アカウント内でコピーする場合でも、Shared Access Signature (SAS) を使用してソース オブジェクトを認証する必要があります。
 
@@ -522,17 +522,17 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降で
 
 同じ方法で、ファイルに BLOB をコピーできます。ソース オブジェクトが BLOB である場合、SAS を作成して、コピー操作中にその BLOB へのアクセスを認証します。
 
-## メトリックを使用した File ストレージのトラブルシューティング
+## メトリックを使用した File Storage のトラブルシューティング
 
-Azure ストレージ分析で File ストレージのメトリックがサポートされるようになりました。メトリック データを使用すると、要求のトレースや問題の診断ができます。
+Azure ストレージ分析で File Storage のメトリックがサポートされるようになりました。メトリック データを使用すると、要求のトレースや問題の診断ができます。
 
 [Azure ポータル](https://portal.azure.com)から File Storage のメトリックを有効にすることができます。REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの 1 つを使用して、プログラムでメトリックを有効にすることも可能です。
 
-## File ストレージのよく寄せられる質問
+## File Storage のよく寄せられる質問
 
-1. **File ストレージでは、Active Directory ベースの認証はサポートされていますか。** 
+1. **File Storage では、Active Directory ベースの認証はサポートされていますか。** 
 
-	現在、AD ベースの認証や、ACL はサポートしていませんが、今後サポートする可能性はあります。現時点では、ファイル共有の認証には、Azure Storage のアカウント キーを使用しています。REST API またはクライアント ライブラリを使用した共有アクセス署名 (SAS) での回避策を提供しています。SAS を使用すると、指定した時間間隔の間に有効な特定のアクセス許可を持つトークンを生成できます。たとえば、特定のファイルへの読み取り専用のアクセス許可を持つトークンを生成できます。トークンを所有するすべてのユーザーは、そのファイルへの読み取り専用アクセスをその有効期間の間持ちます。
+	現在、AD ベースの認証や、ACL はサポートしていませんが、今後サポートする可能性はあります。現時点では、ファイル共有の認証には、Azure Storage のアカウント キーを使用しています。REST API またはクライアント ライブラリを使用した Shared Access Signature (SAS) での回避策を提供しています。SAS を使用すると、指定した時間間隔の間に有効な特定のアクセス許可を持つトークンを生成できます。たとえば、特定のファイルへの読み取り専用のアクセス許可を持つトークンを生成できます。トークンを所有するすべてのユーザーは、そのファイルへの読み取り専用アクセスをその有効期間の間持ちます。
 
 	SAS は、REST API またはクライアント ライブラリを使用してのみサポートされます。SMB プロトコルを使用してファイル共有をマウントした場合、SAS を使用してそのコンテンツへのアクセスを委任することはできません。
 
@@ -548,21 +548,21 @@ Azure ストレージ分析で File ストレージのメトリックがサポ�
 
 	はい。同じリージョン内のトラフィックは無料です。
 
-5. **オンプレミスの仮想マシンから Azure File ストレージへの接続は、Azure ExpressRoute に依存していますか。**
+5. **オンプレミスの仮想マシンから Azure File Storage への接続は、Azure ExpressRoute に依存していますか。**
 
 	いいえ。ExpressRoute がない場合も、インターネット アクセス用にポート 445 (TCP 送信) が開いている場合は、オンプレミスからファイル共有にアクセスできます。ただし、必要であれば File Storage で ExpressRoute を使用できます。
 
-6. **Azure File ストレージの 1 つの用途は、フェールオーバー クラスターの "ファイル共有監視" ですか。**
+6. **Azure File Storage の 1 つの用途は、フェールオーバー クラスターの "ファイル共有監視" ですか。**
 
 	現在これはサポートされていません。
  
-7. **現在 File ストレージのレプリケーションは、LRS または GRS を介してのみ実行できるのですか。**
+7. **現在 File Storage のレプリケーションは、LRS または GRS を介してのみ実行できるのですか。**
 
 	RA-GRS もサポート予定ですが、まだ予定は公表できません。
 
-8. **いつ Azure File ストレージに既存のストレージ アカウントを使用できるようになりますか。**
+8. **いつ Azure File Storage に既存のストレージ アカウントを使用できるようになりますか。**
 
-	現在 Azure File ストレージですべてのストレージ アカウントが有効です。
+	現在 Azure File Storage ですべてのストレージ アカウントが有効です。
 
 9. **REST API に名前変更操作も追加されますか。**
 
@@ -578,17 +578,17 @@ Azure ストレージ分析で File ストレージのメトリックがサポ�
 
 12. **File Storage にファイルを解凍する際にパフォーマンスが低かった場合は、どうすればよいですか。**
 
-	File ストレージに大量のファイルを転送する場合、ネットワーク転送に最適化されている AzCopy、Azure Powershell (Windows)、または Azure CLI (Linux または Unix) を使用することをお勧めします。
+	File Storage に大量のファイルを転送する場合、ネットワーク転送に最適化されている AzCopy、Azure Powershell (Windows)、または Azure CLI (Linux または Unix) を使用することをお勧めします。
 
 ## 次のステップ
 
-Azure File ストレージの詳細については、次のリンクを参照してください。
+Azure File Storage の詳細については、次のリンクを参照してください。
 
 ### 概念に関する記事とビデオ
 
-- [Azure File Storage: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
+- Azure File Storage: Windows および Linux 用の円滑なクラウド SMB ファイル システム
+- https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
 - [Linux で Azure File Storage を使用する方法](storage-how-to-use-files-linux.md)
-- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
 ### File Storage 用のツールのサポート
 
@@ -603,10 +603,9 @@ Azure File ストレージの詳細については、次のリンクを参照し
 
 ### ブログ記事
 
-- [Azure File Storage の一般提供開始](http://go.microsoft.com/fwlink/?LinkID=626728&clcid=0x409)
-- [Azure File ストレージの詳細情報](http://go.microsoft.com/fwlink/?LinkID=626729&clcid=0x409) 
+- [Azure File Storage の一般提供開始](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
+- [Inside Azure File Storage (Azure File Storage の内部)](https://azure.microsoft.com/blog/inside-azure-file-storage/) 
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
-- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

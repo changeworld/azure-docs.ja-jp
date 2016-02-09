@@ -32,7 +32,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 
 - Azure ポータルを使用して IoT Hub を作成する。
 - IoT Hub におけるデバイス ID を作成する。
-- クラウド バックエンドに製品利用統計情報を送信するシミュレーションされたデバイスを作成します。
+- クラウド バックエンドにテレメトリを送信するシミュレーション対象デバイスを作成する。
 
 このチュートリアルの最後には、次の 3 つの Node.js コンソール アプリケーションが作成されています。
 
@@ -46,7 +46,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 
 + Node.js バージョン 0.12.x 以降。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」には、このチュートリアルのために Node.js をインストールする方法があります。Windows と Linux の両方が対象となっています。
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
++ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
 
 ## IoT Hub の作成
 
@@ -102,7 +102,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 
     ![][7]
 
-2. **simulateddevice** フォルダーで、コマンド プロンプトで次のコマンドを実行し、IoT Hub への製品利用統計情報データの送信を開始します。
+2. **simulateddevice** フォルダーで、コマンド プロンプトで次のコマンドを実行し、IoT Hub へのテレメトリ データの送信を開始します。
 
     ```
     node SimulatedDevice.js
@@ -139,4 +139,4 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 [lnk-resource-groups]: resource-group-portal.md
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

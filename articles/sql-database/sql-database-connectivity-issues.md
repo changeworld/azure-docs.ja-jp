@@ -5,7 +5,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="dalechen"
-	manager="msmets"
+	manager="felixwu"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/06/2016"
+	ms.date="02/02/2016"
 	ms.author="daleche"/>
 
 
@@ -28,11 +28,16 @@
 
 一時エラー (一過性の障害) には、すぐに自動的に解決する根本原因があります。一時エラーを起こす偶発的原因として、Azure システムが、各種ワークロードの負荷分散を行うために行うハードウェア リソースの瞬間的切り替えがあります。この再構成の進行中、Azure SQL Database への接続の問題が発生する場合があります。
 
-クライアント プログラムで ADO.NET を使用している場合、**SqlException** のスローによって一時エラーが報告されます。[SQL Database クライアント アプリケーション SQL エラー コード](sql-database-develop-error-messages.md)のトピックの冒頭付近に一時エラーの一覧があります。この表に記載されているエラー番号と **Number** プロパティを比較してください。
+クライアント プログラムで ADO.NET を使用している場合、**SqlException** のスローによって一時エラーが報告されます。
+[SQL Database クライアント アプリケーション SQL エラー コード](sql-database-develop-error-messages.md)のトピックの冒頭付近に一時エラーの一覧があります。この表に記載されているエラー番号と **Number** プロパティを比較してください。
 
 ### 接続とコマンド
 
-次に応じて SQL 接続を再試行または再度確立します: * **接続試行中に一時エラーが発生**: 数秒間の遅延後に接続を再試行します。 * **SQL クエリ コマンドの実行中に一時エラーが発生**: コマンドをすぐに再試行しないでください。ある程度の時間差を伴って接続が新たに確立されます。その後でコマンドを再試行してください。
+以下の条件に応じて、SQL 接続を再試行するか、再度確立します。
+
+* **接続の試行中に一時エラーが発生した場合**: 数秒待って接続を再試行する必要があります。
+
+* **SQL クエリ コマンドの実行中に一時エラーが発生した場合**: そのコマンドをすぐに再試行することは避けてください。ある程度の時間差を伴って接続が新たに確立されます。その後でコマンドを再試行してください。
 
 
 <a id="j-retry-logic-transient-faults" name="j-retry-logic-transient-faults"></a>
@@ -101,39 +106,39 @@ ADO.NET を使用するクライアントの*ブロック期間*については�
 
 
 再試行ロジックをテストする手段として、プログラムの実行中にクライアント コンピューターをネットワークから切断する方法が挙げられます。この場合、次のエラーが発生します。
-- **SqlException.Number** = 11001 
+- **SqlException.Number** = 11001
 - メッセージ: "そのようなホストは不明です。"
 
 
 最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
 
 
-具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。 
-1.エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。
-2.通常と同様に初回接続を試みます。
-3.エラーが捕捉された後、11001 をリストから削除します。
-4.コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。
-- それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。
-5.再度接続を試みます。
+具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。
+1. エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。
+2. 通常と同様に初回接続を試みます。
+3. エラーが捕捉された後、11001 をリストから削除します。
+4. コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。
+ - それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。
+5. 再度接続を試みます。
 
 
 ### 接続時に間違った綴りのデータベース名を使用することによるテスト
 
 
 意図的に間違ったユーザー名を使って初回接続を試みます。この場合、次のエラーが発生します。
-- **SqlException.Number** = 18456 
+- **SqlException.Number** = 18456
 - メッセージ: "ユーザー 'WRONG\_MyUserName' はログインできませんでした。"
 
 
 最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
 
 
-具体的には、プログラムで実行時パラメーターを通じ、次の処理を行います。 
-1.エラーのリストに対して一時的に 18456 を追加し、一過性と見なします。
-2.意図的に 'WRONG\_' をユーザー名に追加します。
-3.エラーが捕捉された後、18456 をリストから削除します。
-4.ユーザー名から 'WRONG\_' を削除します。
-5.再度接続を試みます。
+具体的には、プログラムで実行時パラメーターを通じ、次の処理を行います。
+1. エラーのリストに対して一時的に 18456 を追加し、一過性と見なします。
+2. 意図的に 'WRONG\_' をユーザー名に追加します。
+3. エラーが捕捉された後、18456 をリストから削除します。
+4. ユーザー名から 'WRONG\_' を削除します。
+5. 再度接続を試みます。
 
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
@@ -249,7 +254,7 @@ ADO.NET 4.6.1:
 接続プールから取得した接続オブジェクトを使用するとき、すぐに使用しないのであれば、プログラムで一時的に接続を閉じるようお勧めします。接続を再度開いたとしても、新しい接続の作成に伴う処理負荷はわずかです。
 
 
-ADO.NET 4.0 以前のバージョンを使用している場合は、最新の ADO.NET. にアップグレードすることをお勧めします。2015 年 11 月時点では、[ADO.NET 4.6.1 をダウンロード](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx)できます。
+ADO.NET 4.0 以前のバージョンを使用している場合は、最新の ADO.NET. にアップグレードすることをお勧めします。2015 年 11 月の時点では、[ADO.NET 4.6.1 をダウンロード](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx)できます。
 
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
@@ -286,7 +291,7 @@ Windows では [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=1
 
 
 ```
-[C:\Users\johndoe]
+[C:\Users\johndoe\]
 >> portqry.exe -n johndoesvr9.database.windows.net -p tcp -e 1433
 
 Querying target system called:
@@ -298,7 +303,7 @@ Name resolved to 23.100.117.95
 querying...
 TCP port 1433 (ms-sql-s service): LISTENING
 
-[C:\Users\johndoe]
+[C:\Users\johndoe\]
 >>
 ```
 
@@ -314,7 +319,8 @@ TCP port 1433 (ms-sql-s service): LISTENING
 診断には、クライアントで発生したエラーのログが役立ちます。Azure SQL Database が内部的に記録するエラー データとそれらのログ エントリを相互に関連付けることも可能です。
 
 
-Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ クラスが用意されています。 - [Logging アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440731.aspx)に関するページ
+Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ クラスが用意されています。 
+- [Logging アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440731.aspx)に関するページ
 
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
@@ -327,7 +333,7 @@ Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ
 
 | ログのクエリ | 説明 |
 | :-- | :-- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、一時エラーや接続エラーの原因となるおそれのあるイベントなど、個々のイベントに関する情報が表示されます。<br/><br/>クライアント プログラムでいつ問題が発生したかの情報に対し、**start\_time** や **end\_time** の値を相互に関連付けることをお勧めします。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、一時エラーや接続エラーの原因となるおそれのあるイベントなど、個々のイベントに関する情報が表示されます。<br/><br/>クライアント プログラムで問題が発生したタイミングに関する情報に対し、**start\_time** や **end\_time** の値を相互に関連付けることをお勧めします。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` | [sys.database\_connection\_stats](http://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
 
 
@@ -385,8 +391,8 @@ Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークで�
 - [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
 
 
-EntLib60 を活かせる領域のひとつとして、一時エラーを処理するための再試行ロジックがあります。
- - [Transient Fault Handling アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
+EntLib60 を活かせる領域の 1 つとして、一時エラーを処理するための再試行ロジックがあります。
+- [4 - Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block (4 - 忍耐はすべての勝利の秘訣: 一時エラー処理アプリケーション ブロックの使用)](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
 
 
 再試行ロジックに EntLib60 を使用した簡単な C# コード サンプルは、以下のページからダウンロードできます。
@@ -428,7 +434,7 @@ EntLib60 に関する情報は以下のリンクから入手できます。
 
 - 無料の[電子ブック: Microsoft Enterprise Library 開発者ガイド、第 2 版](http://www.microsoft.com/download/details.aspx?id=41145)
 
-- ベスト プラクティス: [再試行全般のガイダンス](best-practices-retry-general.md)には、再試行のロジックが詳しく解説されていてお勧めです。
+- ベスト プラクティス: [再試行全般のガイダンス](../best-practices-retry-general.md)には、再試行のロジックが詳しく解説されていてお勧めです。
 
 - NuGet ダウンロード ([Enterprise Library - Transient Fault Handling アプリケーション ブロック 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/))
 
@@ -445,7 +451,8 @@ EntLib60 に関する情報は以下のリンクから入手できます。
 - Logging ブロックは、ログ出力先が備えるログ機能を抽象化したものです。対象となるログ ストアの場所や種類に関係なく、アプリケーション コードの一貫性を確保することができます。
 
 
-詳細については、[Logging アプリケーション ブロックの使用](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)に関するページを参照してください。
+詳細については、
+[Logging アプリケーション ブロックの使用](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)に関するページを参照してください。
 
 
 ### EntLib60 IsTransient メソッドのソース コード
@@ -531,4 +538,4 @@ public bool IsTransient(Exception ex)
 
 - [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->
