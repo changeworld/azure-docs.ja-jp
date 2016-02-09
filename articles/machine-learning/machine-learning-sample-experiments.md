@@ -28,7 +28,9 @@
 ![](./media/machine-learning-sample-experiments/image1.png) 
 4. 実験をクリックして詳細を表示します。実験を実行、変更するには、**[Open in Studio]** をクリックします。
 ![](./media/machine-learning-sample-experiments/image2.png) 
-5.  Microsoft アカウントの資格情報でサインインします。Machine Learning ワークスペースをまだ持っていない場合は、無料評価版のワークスペースが作成されます。[Machine Learning 無料評価版に含まれる内容を確認](https://azure.microsoft.com/pricing/details/machine-learning/) ![](./media/machine-learning-sample-experiments/image3.png) 
+5.  Microsoft アカウントの資格情報でサインインします。Machine Learning ワークスペースをまだ持っていない場合は、無料評価版のワークスペースが作成されます。[Machine Learning 無料評価版に含まれる内容を確認]( https://azure.microsoft.com/pricing/details/machine-learning/)
+
+![](./media/machine-learning-sample-experiments/image3.png) 
 
 ## Studio でテンプレートとして使用する
 1. Microsoft アカウントの資格情報で [Studio](https://studio.azureml.net) にサインインしたら、**[新規]*** をクリックして新しい実験を作成します。
@@ -41,4 +43,4 @@
 - [Web サービス API を作成する](machine-learning-publish-a-machine-learning-web-service.md)
 - [すぐに使用できるアプリケーションを参照する](https://datamarket.azure.com/browse?query=machine+learning)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!----HONumber=AcomDC_0204_2016-->
