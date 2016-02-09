@@ -18,7 +18,7 @@
 
 # Azure App Service での API Apps の認証と承認
 
-[AZURE.INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
+[AZURE.INCLUDE [セレクター](../../includes/app-service-api-auth-selector.md)]
 
 ## 概要 
 
@@ -29,7 +29,7 @@ Azure App Service は、[OAuth 2.0](#oauth) と [OpenID Connect](#oauth) を実�
 * 受信した API 要求の前処理を行います。つまり、App Service でサポートされる言語またはフレームワークが処理されます。
 * 認証処理をどこまで独自のコードで行うかに関して、いくつかの選択肢が提供されています。
 * エンド ユーザーとサービス アカウントの両方の認証に対応します。 
-* ID プロバイダーとして、Azure Active Directory、Facebook、Google、Twitter、Microsoft Account の 5 つがサポートされます。
+* ID プロバイダーとして、Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントの 5 つがサポートされます。
 * API Apps、Web Apps、Mobile Apps のいずれについても同じ処理が行われます。
 
 ![](./media/app-service-api-authentication/api-apps-overview.png)
@@ -53,16 +53,14 @@ App Service は、API アプリに対する匿名 HTTP 要求の到達を禁止�
 
 1. 認証済みの要求のみ API アプリへの到達を許可する。
 
-	ブラウザーから匿名の要求を受信した場合、その要求は、App Service によってログオン ページにリダイレクトされます。
+	ブラウザーから匿名要求を受信した場合、App Service は、選択した認証プロバイダー (Azure AD、Google、Twitter など) のログオン ページにリダイレクトされます。
 
-	使用する認証プロバイダー (Google、Twitter など) があらかじめ決まっている場合、ログオン処理を App Service で行うように構成することができます。または、独自の URL を指定しておき、そこに匿名の要求を App Service からリダイレクトさせる方法もあります。そのうえで、認証プロバイダーをユーザーが選択できるようにします。
-
-	この選択肢をアプリで採用した場合、認証コードを自分で記述する必要は一切ありません。また、最も重要な要求は HTTP ヘッダー内に指定されているため承認処理も単純です。
+	この選択肢をアプリで採用した場合、認証コードを自分で記述する必要は一切ありません。また、最も重要な要求は HTTP ヘッダー内に指定されているため承認コードも単純です。
 
 2. すべての要求に API アプリへの到達を許可したうえで、認証済みの要求を検証し、HTTP ヘッダー内の認証情報を受け渡しする。
 
-	この選択肢では、匿名の要求を柔軟に処理することができ、ごく一般的な要求にアクセスするコードが記述しやすくなります。1 つ目の選択肢とは異なり、匿名ユーザーに API の利用を禁止する場合は、独自にコードを記述する必要があります。
-
+	この選択肢では、匿名要求をより柔軟に処理することができますが、匿名ユーザーに API の利用を禁止する場合は、独自にコードを記述する必要があります。最も一般的な要求は HTTP 要求のヘッダーで渡されるため、承認コードは比較的単純です。
+	
 3. すべての要求に API への到達を許可し、要求に含まれる認証情報に対して何も実行しない。
 
 	この選択肢を採用した場合、認証と承認に伴う一切の処理をアプリケーション コードに委ねることになります。
@@ -71,7 +69,7 @@ App Service は、API アプリに対する匿名 HTTP 要求の到達を禁止�
 
 ![](./media/app-service-api-authentication/authblade.png)
 
-1 つ目と 2 つ目の選択肢については、**[App Service 認証]** をオンにし、**[要求が認証されなかったときに実行する処理]** ドロップダウン リストの **[ログイン]** または **[要求を許可 (何もしない)]** を選択します。**[ログイン]** を選択した場合は、認証プロバイダーを選んで、その構成を行う必要があります。
+1 つ目と 2 つ目の選択肢については、**[App Service 認証]** をオンにし、**[要求が認証されない場合に実行するアクション]** ボックスの一覧で **[ログイン]** または **[要求の許可 (操作不要)]** を選択します。**[ログイン]** を選択した場合は、認証プロバイダーを選んで、その構成を行う必要があります。
 
 ![](./media/app-service-api-authentication/actiontotake.png)
 
@@ -83,13 +81,13 @@ App Service 認証では、内部的なシナリオ (API アプリから別の A
 
 サービス間シナリオでは、呼び出し先の API アプリを Azure Active Directory で保護し、その API アプリを呼び出すときに AAD サービス プリンシパル承認トークンを提供します。クライアント ID とクライアント シークレットを AAD アプリケーションから提供して、トークンを取得します。Mobile Services Zumo トークンの処理で使用されていたような Azure 専用の特殊なコードは不要です。このシナリオについて、ASP.NET API アプリを使った例が、[API Apps のサービス プリンシパル認証](app-service-api-dotnet-service-principal-auth.md)に関するチュートリアルで紹介されています。
 
-App Service 認証を使わずにサービス間の認証を行う場合、クライアント証明書または基本認証を利用することができます。Azure のクライアント証明書の詳細については、「[Web Apps の TLS 相互認証を構成する方法](../app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。ASP.NET での基本認証の詳細については、「[ASP.NET Web API 2 での認証フィルター](http://www.asp.net/web-api/overview/security/authentication-filters)」を参照してください。
+App Service 認証を使わずにサービス間の認証を行う場合、クライアント証明書または基本認証を利用することができます。Azure のクライアント証明書の詳細については、「[Web Apps の TLS 相互認証を構成する方法](../app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。ASP.NET での基本認証の詳細については、「[Authentication Filters in ASP.NET Web API 2 (ASP.NET Web API 2 の認証フィルター)](http://www.asp.net/web-api/overview/security/authentication-filters)」を参照してください。
 
 App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、「[App Service でホストされたカスタム API のロジック アプリでの使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」で説明されています。
 
 ## クライアント認証
 
-モバイル クライアントから認証を処理する方法の詳細については、「[モバイル アプリの認証に関するドキュメント](../app-service-mobile/app-service-mobile-ios-get-started-users.md)」を参照してください。App Service 認証は、モバイル アプリと API アプリと同じ方法で処理されます。
+モバイル クライアントから認証を処理する方法の詳細については、[モバイル アプリの認証に関するドキュメント](../app-service-mobile/app-service-mobile-ios-get-started-users.md)を参照してください。App Service 認証は、モバイル アプリと API アプリと同じ方法で処理されます。
   
 ## 詳細情報
 
@@ -118,4 +116,4 @@ Azure Active Directory を使用する認証の詳細については、次のリ
 
 Azure App Service における Node と Java の使用について詳しくは、[Node.js デベロッパー センター](/develop/nodejs/)と [Java デベロッパー センター](/develop/java/)を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

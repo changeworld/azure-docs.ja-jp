@@ -38,7 +38,7 @@
 
 ## 代替アーキテクチャ: Websites および WebJobs
 
-このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。これに代わる方法として、フロントエンドを [Azure Web サイト](/services/web-sites/)で実行し、バックエンド用に (現時点でプレビュー段階の) [Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)機能を使用する方法があります。Web ジョブを使用するチュートリアルについては、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](../websites-dotnet-webjobs-sdk-get-started.md)」を参照してください。自分のシナリオに最適なサービスを選択する方法の詳細については、「[Azure Websites、Cloud Services、および Virtual Machines の比較](../choose-web-site-cloud-service-vm.md)」を参照してください。
+このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。これに代わる方法として、フロントエンドを [Azure Web サイト](/services/web-sites/)で実行し、バックエンド用に (現時点でプレビュー段階の) [Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)機能を使用する方法があります。Web ジョブを使用するチュートリアルについては、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md)」を参照してください。自分のシナリオに最適なサービスを選択する方法の詳細については、「[Azure Websites、Cloud Services、および Virtual Machines の比較](../app-service-web/choose-web-site-cloud-service-vm.md)」を参照してください。
 
 ## 学習内容
 
@@ -51,7 +51,7 @@
 
 ## 前提条件
 
-このチュートリアルは、[Web ロール](fundamentals-application-models.md#CloudServices)、 *worker ロール* などの用語を含む *Azure Cloud Services の基本概念* を理解している方を対象にしています。また、Visual Studio で [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) または [Web フォーム](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) プロジェクトを操作する方法を理解していることも前提としています。サンプル アプリケーションでは MVC を使用しますが、チュートリアルのほとんどは Web フォームにも当てはまります。
+このチュートリアルは、[Web ロール](fundamentals-application-models.md#CloudServices)、*worker ロール*などの用語を含む *Azure Cloud Services の基本概念*を理解している方を対象にしています。また、Visual Studio で [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) または [Web フォーム](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) プロジェクトを操作する方法を理解していることも前提としています。サンプル アプリケーションでは MVC を使用しますが、チュートリアルのほとんどは Web フォームにも当てはまります。
 
 Azure サブスクリプションがなくてもアプリケーションをローカルに実行できますが、アプリケーションをクラウドにデプロイするには Azure サブスクリプションが必要になります。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668)か、[無料試用版にサインアップ](/pricing/free-trial/?WT.mc_id=A55E3C668)してください。
 
@@ -66,7 +66,8 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
 このアプリでは、広告を SQL データベースに格納します。その際、テーブルを作成してデータにアクセスするために Entity Framework Code First を使用します。それぞれの広告に対し、フルサイズ画像用と縮小表示画像用の 2 つの URL がデータベースに格納されます。
 
-![広告表](./media/cloud-services-dotnet-get-started/adtable.png)
+![広告表  
+](./media/cloud-services-dotnet-get-started/adtable.png)
 
 ユーザーが画像をアップロードすると、Web ロールで実行されているフロントエンドによってその画像が [Azure BLOB](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) に格納され、広告情報がその BLOB を示す URL と共にデータベースに格納されます。同時に、メッセージが Azure キューに書き込まれます。worker ロールで実行されているバックエンド プロセスは、定期的にキューをポーリングして新しいメッセージの有無を確認します。新しいメッセージが出現すると、worker ロールはその画像の縮小表示を作成し、その広告の縮小表示 URL データベース フィールドを更新します。次の図に、アプリケーションの各パーツのやり取りを示します。
 
@@ -92,7 +93,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
 1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
 
-	クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure *コンピューティング エミュレーター* と Azure *ストレージ エミュレーター* が自動的に起動されます。コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。ストレージ エミュレーターは、[SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) を使用して、Azure クラウド ストレージをシミュレートします。
+	クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure *コンピューティング エミュレーター*と Azure *ストレージ エミュレーター*が自動的に起動されます。コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。ストレージ エミュレーターは、[SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) を使用して、Azure クラウド ストレージをシミュレートします。
 
 	クラウド サービス プロジェクトを初めて実行するときは、エミュレーターが起動されるまで 1 分程度かかります。エミュレーターの起動が完了すると、既定のブラウザーが開き、アプリケーションのホーム ページが表示されます。
 
@@ -157,7 +158,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 
 1. [Azure クラシック ポータル](http://manage.windowsazure.com)で、**[新規]、[Data Services]、[SQL Database]、[簡易作成]** の順にクリックします。
 
-1. **[データベース名]** ボックスに「 *contosoads* 」と入力します。
+1. **[データベース名]** ボックスに「*contosoads*」と入力します。
 
 1. **[サーバー]** ボックスの一覧の **[新しい SQL データベース サーバー]** を選択します。
 
@@ -219,7 +220,7 @@ Web プロジェクトと worker ロール プロジェクトはそれぞれ独�
 
 Web ロールと worker ロールのクラウド サービス環境設定には、[Web.config の変換](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)を使用します。
 
->[AZURE.NOTE]このセクションと次のセクションでは、資格情報をプロジェクト ファイルに格納します。[機密データは、パブリックなソース コード リポジトリに格納しないでください](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets)。
+>[AZURE.NOTE] このセクションと次のセクションでは、資格情報をプロジェクト ファイルに格納します。[機密データは、パブリックなソース コード リポジトリに格納しないでください](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets)。
 
 1. ContosoAdsWeb プロジェクトで、アプリケーションの *Web.config* ファイルの *Web.Release.config* 変換ファイルを開き、`<connectionStrings>` 要素が含まれているコメント ブロックを削除した後、次のコードをその場所に貼り付けます。
 
@@ -323,7 +324,8 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
 
 2. **Azure アプリケーションの発行**ウィザードの [**サインイン**] 手順で、[**次へ**] をクリックします。
 
-	![[サインイン] 手順](./media/cloud-services-dotnet-get-started/pubsignin.png)
+	![[サインイン] 手順  
+](./media/cloud-services-dotnet-get-started/pubsignin.png)
 
 3. ウィザードの **[設定]** 手順で、**[次へ]** をクリックします。
 
@@ -347,7 +349,7 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
 
 9. この段階で、アプリケーションをローカルで実行したときと同様に、広告を作成、表示、編集して、アプリをテストできます。
 
->[AZURE.NOTE]テストが終了したら、クラウド サービスを削除または停止します。クラウド サービスを使用していない場合でも仮想マシンのリソースが予約されるため、課金が発生します。またクラウド サービスを実行したままにしておくと、その URL を見つけた他のユーザーが広告を作成したり表示したりする可能性があります。[Azure クラシック ポータル](http://manage.windowsazure.com)で、クラウド サービスの **[ダッシュボード]** タブに移動し、ページの下部の **[削除]** ボタンをクリックします。一時的に他のユーザーがこのサイトにアクセスできないようにするには、代わりに **[停止]** をクリックします。この場合は、課金が継続されます。同様の手順で、不要になった SQL データベースとストレージ アカウントを削除できます。
+>[AZURE.NOTE] テストが終了したら、クラウド サービスを削除または停止します。クラウド サービスを使用していない場合でも仮想マシンのリソースが予約されるため、課金が発生します。またクラウド サービスを実行したままにしておくと、その URL を見つけた他のユーザーが広告を作成したり表示したりする可能性があります。[Azure クラシック ポータル](http://manage.windowsazure.com)で、クラウド サービスの **[ダッシュボード]** タブに移動し、ページの下部の **[削除]** ボタンをクリックします。一時的に他のユーザーがこのサイトにアクセスできないようにするには、代わりに **[停止]** をクリックします。この場合は、課金が継続されます。同様の手順で、不要になった SQL データベースとストレージ アカウントを削除できます。
 
 ## アプリケーションを最初から作成する
 
@@ -470,11 +472,11 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 3. ContosoAdsCommon プロジェクトで、*Class1.cs* ファイルを削除します。その場所に、ダウンロードしたプロジェクトから *Ad.cs* ファイルと *ContosoAdscontext.cs* ファイルを追加します。
 
 3. ContosoAdsWeb プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
-	- *Global.asax.cs* .  
-	- *Views\Shared* フォルダー: <em>\_Layout.cshtml</em>。
-	- *Views\Home* フォルダー: *Index.cshtml* 。
-	- *Controllers* フォルダー: *AdController.cs* 。
-	- *Views\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル。
+	- *Global.asax.cs*。  
+	- *Views \\shared* フォルダー: <em>\_Layout.cshtml</em>。
+	- *Views\\Home* フォルダー: *Index.cshtml*。
+	- *Controllers* フォルダー: *AdController.cs*。
+	- *Views\\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル。
 
 3. ContosoAdsWorker プロジェクトで、ダウンロードしたプロジェクトから *WorkerRole.cs* を追加します。
 
@@ -577,11 +579,11 @@ ContosoAdsContext クラスは、Entity Framework によって SQL データベ�
 
 ### ContosoAdsWeb - \_Layout.cshtml
 
-*_Layout.cshtml* ファイルは、アプリ名をヘッダーとフッターに設定し、"Ads" メニュー エントリを作成します。
+*\_Layout.cshtml* ファイルは、アプリ名をヘッダーとフッターに設定し、"Ads" メニュー エントリを作成します。
 
-### ContosoAdsWeb - Views\Home\Index.cshtml
+### ContosoAdsWeb - Views\\Home\\Index.cshtml
 
-*Views\Home\Index.cshtml* ファイルは、ホーム ページにカテゴリ リンクを表示します。リンクは、querystring 変数の `Category` enum の整数値を Ads Index ページに渡します。
+*Views\\Home\\Index.cshtml* ファイルは、ホーム ページにカテゴリ リンクを表示します。リンクは、querystring 変数の `Category` enum の整数値を Ads Index ページに渡します。
 
 		<li>@Html.ActionLink("Cars", "Index", "Ad", new { category = (int)Category.Cars }, null)</li>
 		<li>@Html.ActionLink("Real estate", "Index", "Ad", new { category = (int)Category.RealEstate }, null)</li>
@@ -736,7 +738,7 @@ Azure worker ロール環境は、worker ロールの起動時に `WorkerRole` �
 
 ループの各イテレーションの後でキュー メッセージが見つからなかった場合、プログラムは 1 秒間スリープ状態になります。これにより、worker ロールによって過剰な CPU 時間およびストレージ トランザクション コストが発生しないようにしています。Microsoft Customer Advisory Team では、ある開発者に関する話を紹介しています。この開発者は、この処理を組み込むのを忘れて運用環境にデプロイし、休暇に出かけてしまったのです。開発者が休暇から戻ると、その不注意によって休暇分を超える損失が生じていました。
 
-ときには、キュー メッセージの内容が原因で処理エラーが生じることがあります。このようなメッセージは *有害メッセージ* と呼ばれ、エラーをログに記録してループを再開するだけでは、このメッセージを処理する試みが際限なく繰り返されることになります。そこで、catch ブロックに if ステートメントを含めて、アプリが現在のメッセージを処理しようと試みた回数を調べ、その回数が 5 回を超えた場合はメッセージをキューから削除するようにしています。
+ときには、キュー メッセージの内容が原因で処理エラーが生じることがあります。このようなメッセージは*有害メッセージ*と呼ばれ、エラーをログに記録してループを再開するだけでは、このメッセージを処理する試みが際限なく繰り返されることになります。そこで、catch ブロックに if ステートメントを含めて、アプリが現在のメッセージを処理しようと試みた回数を調べ、その回数が 5 回を超えた場合はメッセージをキューから削除するようにしています。
 
 `ProcessQueueMessage` は、キュー メッセージが見つかったときに呼び出されます。
 
@@ -769,7 +771,7 @@ Azure worker ロール環境は、worker ロールの起動時に `WorkerRole` �
 
 このコードには、データベースを読み取って画像の URL を取得する操作、画像を縮小表示に変換する操作、縮小表示を BLOB に保存する操作、縮小表示 BLOB の URL を反映するようにデータベースを更新する操作、およびキュー メッセージを削除する操作が含まれています。
 
->[AZURE.NOTE]`ConvertImageToThumbnailJPG` メソッドのコードでは、簡略化のために System.Drawing 名前空間のクラスを使用しています。ただし、この名前空間のクラスは Windows フォーム用に設計されています。これらのクラスは、Windows または ASP.NET サービスでの使用に関してサポートされていません。イメージの処理オプションの詳細については、「[イメージの動的生成](http://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx)」 と「[イメージのサイズ変更の詳細](http://www.hanselminutes.com/313/deep-inside-image-resizing-and-scaling-with-aspnet-and-iis-with-imageresizingnet-author-na)」をご覧ください。
+>[AZURE.NOTE] `ConvertImageToThumbnailJPG` メソッドのコードでは、簡略化のために System.Drawing 名前空間のクラスを使用しています。ただし、この名前空間のクラスは Windows フォーム用に設計されています。これらのクラスは、Windows または ASP.NET サービスでの使用に関してサポートされていません。イメージの処理オプションの詳細については、「[イメージの動的生成](http://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx)」 と「[イメージのサイズ変更の詳細](http://www.hanselminutes.com/313/deep-inside-image-resizing-and-scaling-with-aspnet-and-iis-with-imageresizingnet-author-na)」をご覧ください。
 
 ## トラブルシューティング
 
@@ -815,4 +817,4 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 * [Cloud Services の管理方法](cloud-services-how-to-manage.md)
 * [Azure Storage](/documentation/services/storage/)
 
-<!----HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -5,7 +5,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="dalechen"
-	manager="msmets"
+	manager="felixwu"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/06/2016"
+	ms.date="02/02/2016"
 	ms.author="daleche"/>
 
 
@@ -32,7 +32,11 @@
 
 ### 接続とコマンド
 
-次に応じて SQL 接続を再試行または再度確立します: * **接続試行中に一時エラーが発生**: 数秒間の遅延後に接続を再試行します。 * **SQL クエリ コマンドの実行中に一時エラーが発生**: コマンドをすぐに再試行しないでください。ある程度の時間差を伴って接続が新たに確立されます。その後でコマンドを再試行してください。
+以下の条件に応じて、SQL 接続を再試行するか、再度確立します。
+
+* **接続の試行中に一時エラーが発生した場合**: 数秒待って接続を再試行する必要があります。
+
+* **SQL クエリ コマンドの実行中に一時エラーが発生した場合**: そのコマンドをすぐに再試行することは避けてください。ある程度の時間差を伴って接続が新たに確立されます。その後でコマンドを再試行してください。
 
 
 <a id="j-retry-logic-transient-faults" name="j-retry-logic-transient-faults"></a>
@@ -100,40 +104,25 @@ ADO.NET を使用するクライアントの*ブロック期間*については�
 ### ネットワークから切断することによるテスト
 
 
-再試行ロジックをテストする手段として、プログラムの実行中にクライアント コンピューターをネットワークから切断する方法が挙げられます。この場合、次のエラーが発生します。
-- **SqlException.Number** = 11001 
-- メッセージ: "そのようなホストは不明です。"
+再試行ロジックをテストする手段として、プログラムの実行中にクライアント コンピューターをネットワークから切断する方法が挙げられます。この場合、次のエラーが発生します。- **SqlException.Number** = 11001 - メッセージ: "そのようなホストは不明です。"
 
 
 最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
 
 
-具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。 
-1.エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。
-2.通常と同様に初回接続を試みます。
-3.エラーが捕捉された後、11001 をリストから削除します。
-4.コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。
-- それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。
-5.再度接続を試みます。
+具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。 1.エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。2.通常と同様に初回接続を試みます。3.エラーが捕捉された後、11001 をリストから削除します。4.コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。- それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。5.再度接続を試みます。
 
 
 ### 接続時に間違った綴りのデータベース名を使用することによるテスト
 
 
-意図的に間違ったユーザー名を使って初回接続を試みます。この場合、次のエラーが発生します。
-- **SqlException.Number** = 18456 
-- メッセージ: "ユーザー 'WRONG\_MyUserName' はログインできませんでした。"
+意図的に間違ったユーザー名を使って初回接続を試みます。この場合、次のエラーが発生します。- **SqlException.Number** = 18456 - メッセージ: "ユーザー 'WRONG\_MyUserName' はログインできませんでした。"
 
 
 最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
 
 
-具体的には、プログラムで実行時パラメーターを通じ、次の処理を行います。 
-1.エラーのリストに対して一時的に 18456 を追加し、一過性と見なします。
-2.意図的に 'WRONG\_' をユーザー名に追加します。
-3.エラーが捕捉された後、18456 をリストから削除します。
-4.ユーザー名から 'WRONG\_' を削除します。
-5.再度接続を試みます。
+具体的には、プログラムで実行時パラメーターを通じ、次の処理を行います。 1.エラーのリストに対して一時的に 18456 を追加し、一過性と見なします。2.意図的に 'WRONG\_' をユーザー名に追加します。3.エラーが捕捉された後、18456 をリストから削除します。4.ユーザー名から 'WRONG\_' を削除します。5.再度接続を試みます。
 
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
@@ -241,15 +230,13 @@ Azure 仮想マシン (VM) でクライアント プログラムがホストさ�
 **System.Data.SqlClient.SqlConnection** などの ADO.NET クラスを使って Azure SQL Database に接続する場合は、.NET Framework Version 4.6.1 以降の使用をお勧めします。
 
 
-ADO.NET 4.6.1:
- - サポート対象プロトコルに TDS 7.4 が追加されています。4.0 の後に行われた接続の機能強化も含まれています。
-- 接続プーリングがサポートされます。加えて、プログラムに割り当てた接続オブジェクトが正常に動作しているかどうかを効率的に検証することが可能です。
+ADO.NET 4.6.1: - サポート対象プロトコルに TDS 7.4 が追加されています。4.0 の後に行われた接続の機能強化も含まれています。- 接続プーリングがサポートされます。加えて、プログラムに割り当てた接続オブジェクトが正常に動作しているかどうかを効率的に検証することが可能です。
 
 
 接続プールから取得した接続オブジェクトを使用するとき、すぐに使用しないのであれば、プログラムで一時的に接続を閉じるようお勧めします。接続を再度開いたとしても、新しい接続の作成に伴う処理負荷はわずかです。
 
 
-ADO.NET 4.0 以前のバージョンを使用している場合は、最新の ADO.NET. にアップグレードすることをお勧めします。2015 年 11 月時点では、[ADO.NET 4.6.1 をダウンロード](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx)できます。
+ADO.NET 4.0 以前のバージョンを使用している場合は、最新の ADO.NET. にアップグレードすることをお勧めします。2015 年 11 月の時点では、[ADO.NET 4.6.1 をダウンロード](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx)できます。
 
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
@@ -260,9 +247,7 @@ ADO.NET 4.0 以前のバージョンを使用している場合は、最新の A
 プログラムから Azure SQL Database に接続できないときの診断方法として 1 つ考えられるのは、ユーティリティ プログラムを使用して接続する方法です。診断対象のプログラムと同じライブラリを使用して接続するユーティリティがあれば理想的です。
 
 
-Windows コンピューターでは、次のユーティリティが利用できます。
-- SQL Server Management Studio (ssms.exe)。接続には ADO.NET が使用されます。
-- sqlcmd.exe。接続には [ODBC](http://msdn.microsoft.com/library/jj730308.aspx) が使用されます。
+Windows コンピューターでは、次のユーティリティが利用できます。- SQL Server Management Studio (ssms.exe)。接続には ADO.NET が使用されます。- sqlcmd.exe。接続には [ODBC](http://msdn.microsoft.com/library/jj730308.aspx) が使用されます。
 
 
 接続後、短い SQL SELECT クエリが正しく動作するかどうかをテストしてください。
@@ -276,10 +261,7 @@ Windows コンピューターでは、次のユーティリティが利用でき
 ポートの問題から接続に失敗している可能性があるとします。ポートの構成に関するレポート作成に対応したユーティリティをご使用のコンピューターから実行してください。
 
 
-Linux では、次のユーティリティが利用できます。 
-- `netstat -nap` 
-- `nmap -sS -O 127.0.0.1` 
-- (IP アドレスの部分は適宜置き換えてください)
+Linux では、次のユーティリティが利用できます。 - `netstat -nap` - `nmap -sS -O 127.0.0.1` - (IP アドレスの部分は適宜置き換えてください)
 
 
 Windows では [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。以下の例では、Azure SQL Database サーバー上のポートの状況と、ノート PC 上で動作しているポートとを照会しています。
@@ -327,7 +309,7 @@ Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ
 
 | ログのクエリ | 説明 |
 | :-- | :-- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、一時エラーや接続エラーの原因となるおそれのあるイベントなど、個々のイベントに関する情報が表示されます。<br/><br/>クライアント プログラムでいつ問題が発生したかの情報に対し、**start\_time** や **end\_time** の値を相互に関連付けることをお勧めします。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、一時エラーや接続エラーの原因となるおそれのあるイベントなど、個々のイベントに関する情報が表示されます。<br/><br/>クライアント プログラムで問題が発生したタイミングに関する情報に対し、**start\_time** や **end\_time** の値を相互に関連付けることをお勧めします。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` | [sys.database\_connection\_stats](http://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>**ヒント:** これを実行するには **master** データベースに接続する必要があります。 |
 
 
@@ -381,16 +363,13 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 ## Enterprise Library 6
 
 
-Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (Azure SQL Database サービスもその一つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。EntLib60 の利便性が発揮される個々の領域の説明については、まず以下のトピックにアクセスしてください。 
-- [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
+Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (Azure SQL Database サービスもその一つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。EntLib60 の利便性が発揮される個々の領域の説明については、まず以下のトピックにアクセスしてください。 - [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
 
 
-EntLib60 を活かせる領域のひとつとして、一時エラーを処理するための再試行ロジックがあります。
- - [Transient Fault Handling アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
+EntLib60 を活かせる領域の 1 つとして、一時エラーを処理するための再試行ロジックがあります。 - [4 - Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block (4 - 忍耐はすべての勝利の秘訣: 一時エラー処理アプリケーション ブロックの使用)](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
 
 
-再試行ロジックに EntLib60 を使用した簡単な C# コード サンプルは、以下のページからダウンロードできます。
- - [Enterprise Library 6 の再試行ロジックを使って SQL Database に接続するコード サンプル (C#)](sql-database-develop-entlib-csharp-retry-windows.md)
+再試行ロジックに EntLib60 を使用した簡単な C# コード サンプルは、以下のページからダウンロードできます。 - [Enterprise Library 6 の再試行ロジックを使って SQL Database に接続するコード サンプル (C#)](sql-database-develop-entlib-csharp-retry-windows.md)
 
 
 > [AZURE.NOTE] EntLib60 のソース コードは、[ダウンロード サイト](http://go.microsoft.com/fwlink/p/?LinkID=290898)から入手できます。EntLib に対して機能の追加や保守目的での更新を行う予定はありません。
@@ -428,7 +407,7 @@ EntLib60 に関する情報は以下のリンクから入手できます。
 
 - 無料の[電子ブック: Microsoft Enterprise Library 開発者ガイド、第 2 版](http://www.microsoft.com/download/details.aspx?id=41145)
 
-- ベスト プラクティス: [再試行全般のガイダンス](best-practices-retry-general.md)には、再試行のロジックが詳しく解説されていてお勧めです。
+- ベスト プラクティス: [再試行全般のガイダンス](../best-practices-retry-general.md)には、再試行のロジックが詳しく解説されていてお勧めです。
 
 - NuGet ダウンロード ([Enterprise Library - Transient Fault Handling アプリケーション ブロック 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/))
 
@@ -531,4 +510,4 @@ public bool IsTransient(Exception ex)
 
 - [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

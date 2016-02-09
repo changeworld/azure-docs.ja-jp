@@ -150,7 +150,7 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 ## コードを編集して API 実装を追加する
 このセクションでは、生成されたコードのサーバー側の実装をカスタム コードに置き換えます。新しいコードは、Contact エンティティの ArrayList を呼び出し元のクライアントに返します。
 
-1. [Visual Studio Code](https://code.visualstudio.com) か、使い慣れたテキスト エディターを使用して、*src/gen/java/swagger/model* フォルダーにある *Contact.java* モデル ファイルを開きます。 
+1. [Visual Studio Code](https://code.visualstudio.com) または使い慣れたテキスト エディターを使用して、*src/gen/java/io/swagger/model* フォルダーにある *Contact.java* モデル ファイルを開きます。 
 
     ![Open Contact Model File](media/app-service-api-java-api-app/open-contact-model-file.png)
 
@@ -163,7 +163,7 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 			this.emailAddress = email;
 		}
 
-1. [Visual Studio Code](https://code.visualstudio.com) か、使い慣れたテキスト エディターを使用して、*src/main/java/swagger/api/impl* フォルダーにある *ContactsApiServiceImpl.java* サービス実装ファイルを開きます。
+1. [Visual Studio Code](https://code.visualstudio.com) または使い慣れたテキスト エディターを使用して、*src/main/java/io/swagger/api/impl* フォルダーにある *ContactsApiServiceImpl.java* サービス実装ファイルを開きます。
 
     ![Open Contact Service Code File](media/app-service-api-java-api-app/open-contact-service-code-file.png)
 
@@ -295,4 +295,4 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 
 Azure での Java の使用に関する詳細については、「[Java デベロッパー センター](/develop/java/)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

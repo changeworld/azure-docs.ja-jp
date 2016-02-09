@@ -210,6 +210,20 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 
 ここでテストをポータルにアップロードします。テストを実行するたびに、動的な値が使用されます。
 
+## OAuth サインイン
+
+ユーザーが自身の OAuth パスワード (Microsoft、Google、Facebook など) を使ってアプリにサインインしている場合は、SAML プラグインを使用することで、複数手順の Web テストでのサインインのシミュレーションを行うことができます。
+
+![Sample web test for OAuth](./media/app-insights-monitor-web-app-availability/81.png)
+
+サンプル テストでは、次の手順を実行します。
+
+1. テスト対象の Web アプリに OAuth エンドポイントのアドレスを要求します。
+2. SAML プラグインを使用してサインインします。
+3. サインインした状態で、残りのテストを実行します。
+
+SAML プラグインにより、手順 2. で使用される `Assert` 変数が設定されます。
+
 ## <a name="edit"></a> テストの編集または無効化
 
 個々のテストを開くと、テストを編集したり無効にしたりできます。
@@ -253,4 +267,4 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

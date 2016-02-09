@@ -18,7 +18,7 @@
 
 # Azure App Service での API Apps のサービス プリンシパル認証
 
-[AZURE.INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
+[AZURE.INCLUDE [セレクター](../../includes/app-service-api-auth-selector.md)]
 
 ## 概要
 
@@ -392,4 +392,4 @@ Azure Active Directory の詳細については、次のリソースを参照し
 
 Visual Studio を使用するか、[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)から[デプロイメントを自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)して、Visual Studio プロジェクトを API アプリにデプロイする他の方法については、「[Azure App Service へのアプリのデプロイ](web-sites-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle=".NET を使用した Azure Search へのデータのインポート | Microsoft Azure | ホステッド クラウド検索サービス"
-	description=".NET SDK または .NET を使用して Azure Search のインデックスにデータをアップロードする方法"
+	description=".NET SDK または .NET ライブラリを使用して Azure Search のインデックスにデータをアップロードする方法"
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
@@ -31,7 +31,7 @@
 
 "hotels" という名前のインデックスがあると仮定すると、データをインポートするためのメソッドを次のように作成できます。
 
-`Main` の次の手順では、新しく作成したインデックスを設定します。この処理は次のメソッドで行います。
+`Main` 内の次の手順では、新しく作成したインデックスにデータを読み込みます。この処理は次のメソッドで行います。
 
     private static void UploadDocuments(SearchIndexClient indexClient)
     {
@@ -98,7 +98,8 @@
 
         try
         {
-            indexClient.Documents.Index(IndexBatch.Create(documents.Select(doc => IndexAction.Create(doc))));
+            var batch = IndexBatch.Upload(sitecoreItems);
+            indexClient.Documents.Index(batch);
         }
         catch (IndexBatchException e)
         {
@@ -107,7 +108,7 @@
             // retrying. For this simple demo, we just log the failed document keys and continue.
             Console.WriteLine(
                 "Failed to index some of the documents: {0}",
-                String.Join(", ", e.IndexResponse.Results.Where(r => !r.Succeeded).Select(r => r.Key)));
+                String.Join(", ", e.IndexingResults.Where(r => !r.Succeeded).Select(r => r.Key)));
         }
 
         // Wait a while for indexing to complete.
@@ -118,10 +119,10 @@
 
 2 番目の部分では、各 `Hotel` に対して `IndexAction` を作成した後、それらを新しい `IndexBatch` にグループ化します。その後、バッチは `Documents.Index` メソッドによって Azure Search インデックスにアップロードされます。
 
-> [AZURE.NOTE]この例では、単にドキュメントをアップロードします。既存ドキュメントへの変更のマージまたはドキュメントの削除を行う場合は、対応する `IndexActionType` で `IndexAction` を作成できます。既定の操作が `Upload` なので、この例では `IndexActionType` を指定する必要はありません。
+> [AZURE.NOTE] この例では、単にドキュメントをアップロードします。既存ドキュメントに変更をマージする場合や、ドキュメントを削除する場合は、対応する `Merge`、`MergeOrUpload`、または `Delete` の各メソッドを使用できます。
 
 このメソッドの 3 番目の部分は、インデックス作成の重要なエラー ケースを処理する catch ブロックです。Azure Search がバッチ内の一部のドキュメントのインデックス作成に失敗した場合、`Documents.Index` は `IndexBatchException` をスローします。サービスの負荷が高いときにドキュメントのインデックスを作成すると、これが発生する場合があります。**コードでこのケースを明示的に処理することを強くお勧めします。** しばらく待ってから失敗したドキュメントのインデックス作成を再試行したり、サンプルと同じようにログに記録してから続けることができます。または、アプリケーションのデータ整合性要件に応じて他の処理を行うこともできます。
 
 最後に、メソッドは 2 秒間遅延します。インデックスの作成は Azure Search サービスで非同期的に行われるので、サンプル アプリケーションは短い時間待機して、確実にドキュメントを検索に使用できるようにする必要があります。通常、このような遅延は、デモ、テスト、およびサンプル アプリケーションでのみ必要です。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="01/20/2016" 
+	ms.date="02/02/2016" 
 	ms.author="juliako"/>
 
 
@@ -29,8 +29,6 @@ Microsoft Azure Media Services を使用すると、暗号化した MPEG-DASH、
 Media Services では、Microsoft PlayReady ライセンスの配信サービスが提供されます。また、Media Services で提供される API を使用して、保護されたコンテンツをユーザーが再生するときに PlayReady DRM ランタイムが適用する権限と制限を構成できます。ユーザーが PlayReady で保護されたコンテンツを要求すると、プレーヤー アプリケーションが AMS ライセンス サービスにライセンスを要求します。AMS ライセンス サービスは、プレーヤーが承認されていれば、ライセンスをプレーヤーに発行します。PlayReady ライセンスには、クライアント プレーヤーがコンテンツの暗号化解除とストリーミングに使用できる暗号化解除キーが含まれています。
 
 Media Services .NET SDK バージョン 3.5.2 以降、Media Services を使用すると Widevine ライセンス テンプレートを構成し、Widevine ライセンスを取得することもできます。
-
->[AZURE.NOTE]Azure Media Sevices によって提供される Widevine ライセンス配信サービスはプレビュー期間中です。詳細については、[この投稿](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)を参照してください。
 
 [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) の各 AMS パートナーを使用して、Widevine ライセンスを提供することもできます。詳細については、[Axinom](media-services-axinom-integration.md) および [castLabs](media-services-castlabs-integration.md) との統合を参照してください。
 
@@ -84,7 +82,7 @@ Azure Media Services で Widevine を使用して暗号化するときの制限�
 
 ##ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードする
 
-動的暗号化を使用する場合に必要となるのは、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産の作成のみです。そうすれば、マニフェストおよびフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。詳細については、「[動的パッケージの概要](media-services-dynamic-packaging-overview.md)」を参照してください。
+動的暗号化を使用する場合に必要となるのは、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産の作成のみです。そうすれば、マニフェストおよびフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。詳細については、トピック「[動的パッケージの概要](media-services-dynamic-packaging-overview.md)」を参照してください。
 
 エンコード手順については、「[Media Encoder Standard を使用して資産をエンコードする方法](media-services-dotnet-encode-with-media-encoder-standard.md)」を参照してください。
 	
@@ -631,6 +629,6 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 [Configure Widevine packaging with AMS (AMS を使用して Widevine パッケージを構成する)](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
 
-[Announcing Google Widevine license delivery services public preview in Azure Media Services (Azure Media Services での Google Widevine ライセンス配信サービス パブリック プレビューのお知らせ)](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)
+[Azure Media Services での Google Widevine ライセンス配信サービスのお知らせ](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

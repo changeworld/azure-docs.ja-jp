@@ -6,7 +6,7 @@
 	documentationCenter="java" 
 	authors="aliuy" 
 	manager="jhubbard" 
-	editor="monicar"/>
+	editor="mimig"/>
 
 <tags 
 	ms.service="documentdb" 
@@ -14,7 +14,7 @@
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="NA" 
 	ms.workload="data-services" 
-	ms.date="10/20/2015" 
+	ms.date="01/29/2015" 
 	ms.author="andrl"/>
 
 # DocumentDB を使用した Java Web アプリケーションの作成
@@ -34,7 +34,7 @@
 
 ![My ToDo List Java アプリケーション](./media/documentdb-java-application/image1.png)
 
-> [AZURE.TIP]このアプリケーション開発チュートリアルは、Java を使用した経験がある読者を対象としています。Java や[前提条件となるツール](#Prerequisites)を初めて扱う方は、完全な [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) プロジェクトを GitHub からダウンロードし、[この記事の最後にある手順](#GetProject)に従ってプロジェクトをビルドすることをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
+> [AZURE.TIP] このアプリケーション開発チュートリアルは、Java を使用した経験がある読者を対象としています。Java や[前提条件となるツール](#Prerequisites)を初めて扱う方は、完全な [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) プロジェクトを GitHub からダウンロードし、[この記事の最後にある手順](#GetProject)に従ってプロジェクトをビルドすることをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
 
 ##<a id="Prerequisites"></a>この Java Web アプリケーション チュートリアルの前提条件
 このアプリケーション開発チュートリアルを読み始める前に、次の項目を用意する必要があります。
@@ -95,7 +95,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 4. **[Select Dependency]** ウィンドウで、次の操作を行います。
  - **[GroupId]** ボックスに、「com.microsoft.azure」と入力します。
  - **[Artifact Id]** ボックスに、「azure-documentdb」と入力します。
- - **[Version]** ボックスに、「1.4.0」と入力します。
+ - **[Version]** ボックスに「1.5.1」と入力します。
 
 	![DocumentDB Java アプリケーション SDK をインストールする](./media/documentdb-java-application/image13.png)
 
@@ -104,7 +104,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	    <dependency>
 		    <groupId>com.microsoft.azure</groupId>
 		    <artifactId>azure-documentdb</artifactId>
-		    <version>1.4.0</version>
+		    <version>1.5.1</version>
 	    </dependency>
 
 5. **[Ok]** をクリックします。Maven によって DocumentDB Java SDK がインストールされます。
@@ -786,4 +786,4 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 [1]: media/documentdb-java-application/keys.png
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="HBase のチュートリアル: Hadoop での HBase の使用 | Microsoft Azure"
+	pageTitle="HBase のチュートリアル: Hadoop で Linux ベースの HBase クラスターを使用する | Microsoft Azure"
 	description="HDInsight の Hadoop で Apache HBase を使用するには、この HBase チュートリアルの手順に従ってください。HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。"
 	keywords="Apache HBase, HBase, HBase シェル, HBase チュートリアル"
 	services="hdinsight"
@@ -14,64 +14,53 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/02/2015"
+	ms.date="02/01/2016"
 	ms.author="jgao"/>
 
 
 
-# HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する (Linux)
+# HBase チュートリアル: HDInsight の Linux ベースの Hadoop で Apache HBase を使用する 
 
 [AZURE.INCLUDE [hbase-selector](../../includes/hdinsight-hbase-selector.md)]
 
-
 HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Hive を使用してテーブルを照会する方法について説明します。HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関するページを参照してください。
 
-> [AZURE.NOTE] このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターについては、「[HDInsight の Hadoop で Apache HBase を使用する (Windows)](hdinsight-hbase-tutorial-get-started.md)」を参照してください。
+このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターの情報を参照する場合は、ページ上部にあるタブ セレクターを使用して切り替えてください。
 
 ###前提条件
 
 この HBase のチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- PuTTY と PuTTYGen (Windows クライアント)。これらのユーティリティは [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から入手できます。
+- [Secure Shell (SSU)](hdinsight-hadoop-linux-use-ssh-unixl.md)。 
 - [curl](http://curl.haxx.se/download.html)。
 
 ## HBase クラスターの作成
 
-[AZURE.INCLUDE [provisioningnote](../../includes/hdinsight-provisioning.md)]
+以下の手順では、Azure ARM テンプレートを使用して HBase クラスターを作成します。この手順で使用するパラメーターとその他のクラスター作成方法について理解するには、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
-**Azure プレビュー ポータルを使用して HBase クラスターを作成するには**
+1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。ARM テンプレートはパブリック BLOB コンテナー内にあります。 
 
+    [![Azure へのデプロイ](./media/hdinsight-hbase-tutorial-get-started-linux/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2FHbase.json)
 
-1. [Azure プレビュー ポータル][azure-portal]にサインインします。
-2. 左上の **[新規]** をクリックし、**[データ + 分析]**、**[HDInsight]** の順にクリックします。
-3. 次の値を入力します。
+2. **[パラメーター]** ブレードで、次の各項目を入力します。
 
+    - **ClusterName**: 作成する HBase クラスターの名前を入力します。
+    - **ClusterStorageAccountName**: 各クラスターには Azure BLOB ストレージ アカウントとの依存関係があります。クラスターを削除すると、データはストレージ アカウントに保持されます。
+    - **クラスターのログイン名とパスワード**: 既定のログイン名は **admin** です。
+    - **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。この名前は変更できます。その他のパラメーターは省略可能です。  
+3. **[OK]** をクリックしてパラメーターを保存します。
+4. **[カスタム デプロイ]** ブレードで **[リソース グループ]** ドロップダウン ボックスをクリックし、**[新規]** をクリックして新しいリソース グループを作成します。リソース グループとは、クラスター、依存するストレージ アカウント、その他のリンクされたリソースをグループ化しているコンテナーです。
+5. **[法律条項]** をクリックし、**[作成]** をクリックします。
+6. **[作成]** をクリックします。クラスターの作成には約 20 分かかります。
 
-	- **クラスター名** - このクラスターを識別するための名前を入力します。
-	- **クラスターの種類** - **[HBase]** を選択します。
-	- **クラスターのオペレーティング システム** - **[Linux]** を選択します。Windows ベースのクラスターを作成する場合は、「[HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する (Windows)](hdinsight-hbase-tutorial-get-started.md)」を参照してください。
-	- **バージョン** - HBase のバージョンを選択します。
-	- **サブスクリプション** - このクラスターを作成するために使用する Azure サブスクリプションを選択します。
-	- **リソース グループ** - 新しいリソース グループを作成するか、既存のリソース グループを選択します。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」をご覧ください。
-	- **資格情報**。HTTP Web サービス ユーザーのパスワードを入力します。既定のユーザー名は **admin** です。さらに、SSH ユーザーを認証するために使用される **[SSH ユーザー名]** と、**[パスワード]** または **[公開キー]** のどちらかを入力する必要があります。公開キーを使用することをお勧めします。HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
-
-		- [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-		- [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md) **[選択]** をクリックして変更を保存します。
-	- **データ ソース** - クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを新しく作成するか、既存の Azure ストレージ アカウントを選択します。既定のストレージ アカウントの場所によってクラスターの場所が決まります。既定のストレージ アカウントとクラスターは、同じデータ センター内に配置されている必要があります。
-	- **ノード料金レベル** - HBase クラスター用のリージョン サーバーの数を選択します。
-
-		> [AZURE.WARNING] HBase サービスの高可用性を実現するには、最低 **3 つ**のノードを含むクラスターを作成する必要があります。これで 1 つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
-
-		> 学習目的で HBase を使用する場合は、コスト削減のため、クラスター サイズには必ず 1 を選択し、クラスターの使用後にクラスターを削除してください。
-
-	- **省略可能な構成** - Azure 仮想ネットワークの構成、スクリプト アクションの構成、および追加ストレージ アカウントの追加を行います。
-
-4. **[作成]** をクリックします。
 
 >[AZURE.NOTE] HBase クラスターを削除したら、同じ既定の BLOB コンテナーを使用して別の HBase クラスターを作成できます。新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。
 
-## HBase シェルの使用
+## テーブルを作成してデータを挿入する
+
+SSH を使用して HBase クラスターに接続し、HBase シェルを使用して HBase テーブルの作成、データの挿入、およびデータの照会を行うことができます。Linux、Unix、OS X、および Windows からの SSH の使用方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」と「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」を参照してください。
+ 
 
 多くの場合、データは次のような表形式で表示されます。
 
@@ -86,18 +75,7 @@ BigTable の実装である HBase では、同じデータが次のように表�
 
 **HBase シェルを使用するには**
 
->[AZURE.NOTE] ここで説明する手順は、Windows コンピューターの手順です。Linux、Unix、または OS X から Linux ベースの HDInsight クラスターに接続する手順については、「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。1. **PuTTY** を開きます。記事の冒頭に掲載されている前提条件を参照してください。2.作成プロセスでユーザー アカウントの作成時に SSH キーを指定した場合は、次の手順に従って、クラスターへの認証時に使用する秘密キーを選択する必要があります。
-
-	In **Category**, expand **Connection**, expand **SSH**, and select **Auth**. Finally, click **Browse** and select the .ppk file that contains your private key.
-
-3. **[Category]** で、**[Session]** をクリックします。
-4. PuTTY セッション画面の基本オプションで、次の値を入力します。
-
-	- ホスト名: [ホスト名 (または IP アドレス)] フィールドの HDInsight サーバーの SSH アドレス。SSH アドレスは、クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します (*mycluster-ssh.azurehdinsight.net* など)
-	- ポート: 22。ヘッド ノード 0 の SSH ポートは 22 です。「[Linux での HDInsight の使用方法 (プレビュー)](hdinsight-hadoop-linux-information.md#remote-access-to-services)」を参照してください。
-4. **[開く]** をクリックして、クラスターに接続します。
-5. プロンプトが表示されたら、クラスターの作成時に入力したユーザーを入力します。ユーザーにパスワードを指定している場合は、その入力も求められます。
-6. 次のコマンドを実行します。
+1. SSH から次のコマンドを実行します。
 
 		hbase shell
 
@@ -123,7 +101,6 @@ BigTable の実装である HBase では、同じデータが次のように表�
 
 	Hbase テーブル スキーマの詳細については、「[Introduction to HBase Schema Design (HBase スキーマの設計の概要)][hbase-schema]」を参照してください。HBase コマンドについての詳細は、「[Apache HBase reference guide (Apache HBase リファレンス ガイド)][hbase-quick-start]」をご覧ください。
 
-
 6. シェルを終了します。
 
 		exit
@@ -133,7 +110,7 @@ BigTable の実装である HBase では、同じデータが次のように表�
 HBase では、いくつかの方法でテーブルにデータを読み込ことができます。詳細については、[一括読み込み](http://hbase.apache.org/book.html#arch.bulk.load)に関するページを参照してください。
 
 
-サンプルのデータ ファイルがパブリック BLOB コンテナー wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt にアップロードされています。このデータ ファイルの内容は次のとおりです。
+サンプルのデータ ファイルがパブリック BLOB コンテナー **wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt* にアップロードされています。このデータ ファイルの内容は次のとおりです。
 
 	8396	Calvin Raji		230-555-0191	230-555-0191	5415 San Gabriel Dr.
 	16600	Karen Wu		646-555-0113	230-555-0192	9265 La Paz
@@ -150,8 +127,7 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
 > [AZURE.NOTE] この手順では、前回の手順で作成した Contacts HBase テーブルを使用します。
 
-1. **PuTTY** を開き、クラスターに接続します。前の手順の指示を参照してください。
-3. 次のコマンドを実行して、データ ファイルをストア ファイルに変換し、Dimporttsv.bulk.output で指定された相対パスに格納します。
+1. SSH から次のコマンドを実行して、データ ファイルを StoreFile に変換し、Dimporttsv.bulk.output で指定された相対パスに格納します。HBase シェル内にいる場合は、exit コマンドを使用して終了します。
 
 		hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
 
@@ -163,10 +139,9 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
 
 
-## Hive を使用して HBase テーブルを照会する
+## Hive を使用して HBase を照会する
 
 Hive を使用して HBase テーブルのデータを照会できます。このセクションでは、HBase テーブルにマッピングする Hive テーブルを作成し、作成した Hive テーブルを使用して HBase テーブルのデータを照会します。
-
 
 1. **PuTTY** を開き、クラスターに接続します。前の手順の指示を参照してください。
 2. Hive シェルを開きます。
@@ -277,7 +252,7 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 
 
 
-## 次の手順
+## 次のステップ
 この HDInsight の HBase のチュートリアルでは、HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
 
 詳細については、次を参照してください。
@@ -312,4 +287,4 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

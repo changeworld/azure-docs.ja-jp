@@ -41,8 +41,8 @@
 			sp.Filter = filter;
 		}
 	
-		DocumentSearchResponse<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
-		foreach (SearchResult<Hotel> result in response)
+		DocumentSearchResult<Hotel> documentSearchResult = indexClient.Documents.Search<Hotel>(searchText, sp);
+		foreach (SearchResult<Hotel> result in documentSearchResult.Results)
 		{
 			Console.WriteLine(result.Document);
 		}
@@ -63,4 +63,4 @@
 
 2 番目の呼び出しでは、OData の $filter 式、category eq 'Luxury' を使用しています。この式は、カテゴリ フィールドが文字列 "Luxury" に完全に一致するドキュメントのみ検索によって返されるように制限します。OData の構文の詳細については、[Azure Search の OData 式の構文](https://msdn.microsoft.com/library/azure/dn798921.aspx)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

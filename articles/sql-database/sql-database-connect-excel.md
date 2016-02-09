@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/09/2015"
+	ms.date="02/04/2016"
 	ms.author="joseidz"/>
 
 
@@ -46,7 +46,7 @@ Excel にデータをインポートするために Excel を SQL データベ�
 
 4.	**[ログオン資格情報]** セクションで、**[次のユーザー名とパスワードを使用する]** をクリックし、SQL Database サーバーを作成した際に設定した**ユーザー名**と**パスワード**を入力して、**[次へ]** をクリックします。
 
-	> [AZURE.TIP]Excel の [PowerPivot](https://www.microsoft.com/download/details.aspx?id=102) アドインと [Power Query](https://www.microsoft.com/download/details.aspx?id=39379) アドインは、よく似た機能を備えています。
+	> [AZURE.TIP] Excel の [PowerPivot](https://www.microsoft.com/download/details.aspx?id=102) アドインと [Power Query](https://www.microsoft.com/download/details.aspx?id=39379) アドインは、よく似た機能を備えています。
 
 5. **[データベースとテーブルの選択]** ダイアログ ボックスで、プルダウン メニューから **[AdventureWorks]** データベースを選択し、テーブルとビューの一覧から **[vGetAllCategories]** を選択して、**[次へ]** をクリックします。
 
@@ -77,4 +77,4 @@ Excel にデータをインポートするために Excel を SQL データベ�
 [4]: ./media/sql-database-connect-excel/power-pivot-results.png
 [5]: ./media/sql-database-connect-excel/select-database-and-table.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

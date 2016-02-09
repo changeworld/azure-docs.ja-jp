@@ -13,11 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="01/18/2016"
+	ms.date="01/28/2016"
 	ms.author="juliako"/>
 
 
 # .NET SDK を使用したオンデマンド コンテンツ配信の概要
+
 
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
@@ -39,7 +40,7 @@
 1.  Media Services アカウントの作成 (Azure クラシック ポータルを使用)
 2.  ストリーミング エンドポイントの構成 (ポータルを使用)
 3.  Visual Studio プロジェクトの作成と構成
-5.  メディア サービス アカウントに接続します。
+5.  Media Services アカウントに接続します。
 6.  新しい資産を作成し、ビデオ ファイルをアップロードします。
 7.  一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします。
 8.  資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得します。
@@ -65,13 +66,13 @@
 
 1. Azure クラシック ポータルで、**[新規]**、**[メディア サービス]**、**[簡易作成]** の順にクリックします。
 
-	![メディア サービスの簡易作成](./media/media-services-dotnet-get-started/wams-QuickCreate.png)
+![Media Services の簡易作成](./media/media-services-dotnet-get-started/wams-QuickCreate.png)
 
-2. **[名前]** ボックスに新しいアカウントの名前を入力します。メディア サービス アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。
+2. **[名前]** ボックスに新しいアカウントの名前を入力します。Media Services アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。
 
-3. **[リージョン]** ボックスで、メディア サービス アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能な Media Services リージョンのみが表示されます。
+3. **[リージョン]** ボックスで、Media Services アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能な Media Services リージョンのみが表示されます。
 
-4. **[ストレージ アカウント]** ボックスで、メディア サービス アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。メディア サービス アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
+4. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの Blob Storage となるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
 
 5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
 
@@ -83,7 +84,7 @@
 
 ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services アカウント名、プライマリ キー、セカンダリ キーがダイアログに表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。
 
-![[メディア サービス] ページ](./media/media-services-dotnet-get-started/wams-mediaservices-page.png)
+![[Media Services] ページ](./media/media-services-dotnet-get-started/wams-mediaservices-page.png)
 
 アカウント名をダブルクリックすると、既定で **[クイック スタート]** ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
 
@@ -96,7 +97,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
 - mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードします (エンコーディングの手順は後述)。
-- コンテンツ配信元となる**ストリーミング エンドポイント**のストリーミング ユニットを少なくとも 1 つ取得する。
+- コンテンツ配信元となる**ストリーミング エンドポイント**のストリーミング ユニットを少なくとも 1 つ取得します。
 
 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
 
@@ -116,7 +117,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 >[AZURE.NOTE] 現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
 >
-> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、「[Media Services の料金詳細](http://go.microsoft.com/fwlink/?LinkId=275107)」をご覧ください。
+> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、「[Azure の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」をご覧ください。
 
 
 
@@ -130,7 +131,12 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 4. App.config ファイルを開き (既定で追加されていない場合はファイルをプロジェクトに追加してください)、ファイルに *appSettings* セクションを追加します。Azure Media Services のアカウント名とアカウント キーの値を設定します。次の例をご覧ください。アカウント名とキー情報を取得するには、Azure クラシック ポータルを開いて Media Services のアカウントを選択し、**[キーの管理]** をクリックします。
 
-<configuration> ... <appSettings> <add key="MediaServicesAccountName" value="Media-Services-Account-Name" /> <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" /> </appSettings>
+		<configuration>
+		...
+		  <appSettings>
+		    <add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
+		    <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
+		  </appSettings>
 		  
 		</configuration>
 
@@ -145,13 +151,13 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 		using System.Threading;
 		using System.IO;
 		using Microsoft.WindowsAzure.MediaServices.Client;
-		using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
+		
 
 6. プロジェクト ディレクトリに新しいフォルダーを作成し、エンコード、ストリーミング、プログレッシブ ダウンロードの対象となる .mp4 ファイルか .wmv ファイルをコピーします。この例では、"C:\\VideoFiles" というパスを使用しています。
 
 ##Media Services アカウントへの接続
 
-Media Services を .NET で使用するとき、Media Services に関連したプログラミング タスクの大半、たとえば、各種オブジェクト (資産、資産ファイル、ジョブ、アクセス ポリシー、ロケーターなど) の作成、更新、アクセス、削除の作業で、**CloudMediaContext** クラスが必要となります。
+Media Services を .NET で使用するとき、Media Services アカウントに関連したプログラミング タスクの大半、たとえば、各種オブジェクト (資産、資産ファイル、ジョブ、アクセス ポリシー、ロケーターなど) の作成、更新、アクセス、削除の作業で、**CloudMediaContext** クラスが必要となります。
 
 既定の Program クラスを次のコードで上書きします。このコードは、App.config ファイルから接続値を読み取り、**CloudMediaContext** オブジェクトを作成して Media Services に接続する方法を示しています。Media Services への接続の詳細については、「[Media Services SDK for .NET を使用した Media Services への接続](http://msdn.microsoft.com/library/azure/jj129571.aspx)」をご覧ください。
 
@@ -208,7 +214,7 @@ Media Services を .NET で使用するとき、Media Services に関連した�
 
 Media Services で、デジタル ファイルを資産にアップロードし (取り込み) ます。**Asset** エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。 ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。資産内のこれらのファイルを**資産ファイル**といいます。
 
-以下に定義した **UploadFile** メソッドは、(.NET SDK Extensions で定義されている) **CreateFromFile** を呼び出します。**CreateFromFile** によって、指定されたソース ファイルのアップロード先となる新しいアセットが作成されます。
+以下に定義した **UploadFile** メソッドは、(.NET SDK Extensions で定義されている) **CreateFromFile** を呼び出します。**CreateFromFile** によって、指定されたソース ファイルのアップロード先となる新しい資産が作成されます。
 
 **CreateFromFile** メソッドの **AssetCreationOptions** 引数には、次のいずれかの資産作成オプションを指定できます。
 
@@ -250,10 +256,9 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 - mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする。  
 - コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも 1 つ取得する。
 
-以下のコードは、エンコーディング ジョブの送信方法を示したものです。このジョブには、**Azure Media Encoder** を使用して mezzanine ファイルを一連のアダプティブ ビットレート MP4 にトランスコードするよう指定するタスクが 1 つ存在します。このコードは、ジョブを送信してその完了を待機します。
+以下のコードは、エンコーディング ジョブの送信方法を示したものです。このジョブには、**Media Encoder Standard** を使用して mezzanine ファイルを一連のアダプティブ ビットレート MP4 にトランスコードするよう指定するタスクが 1 つ存在します。このコードは、ジョブを送信してその完了を待機します。
 
-ジョブが完了したら、資産をストリーミングしたり、コード変換によって作成された MP4 ファイルをプログレッシブにダウンロードしたりできます。
-MP4 ファイルをプログレッシブにダウンロードするためにオンデマンド ストリーミング ユニットを取得する必要はありません。
+ジョブが完了したら、資産をストリーミングしたり、コード変換によって作成された MP4 ファイルをプログレッシブにダウンロードしたりできます。MP4 ファイルをプログレッシブにダウンロードするためにオンデマンド ストリーミング ユニットを取得する必要はありません。
 
 次のメソッドを Program クラスに追加します。
 
@@ -446,6 +451,6 @@ MPEG DASH
 
 <!-- URLs. -->
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
-  [管理ポータル]: http://manage.windowsazure.com/
+  [Portal]: http://manage.windowsazure.com/
 
-<!----HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

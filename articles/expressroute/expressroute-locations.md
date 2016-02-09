@@ -43,7 +43,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 |**地理的リージョン**|**Azure リージョン**|**ExpressRoute の場所**|
 |---|---|---|---|
-|**米国政府のクラウド**|米国政府アイオワ、米国政府バージニア|アイオワ州、バージニア州|シカゴ、ワシントン DC|
+|**米国政府のクラウド**|米国政府アイオワ、米国政府バージニア|シカゴ、ワシントン DC|
 |**中国のクラウド**|中国北部、中国東部|北京、上海|
 
 
@@ -94,8 +94,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **サービス プロバイダー** |**Microsoft Azure** | **Office 365** | **場所** |
 |-----------------------|--------------------|----------------|---------------|
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | サポートされていません | シカゴ、ワシントン DC |
-| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | サポートされていません | シカゴ+、ワシントン DC |
-| **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされていません | シカゴ+、ワシントン DC |
+| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | サポートされていません | シカゴ、ワシントン DC |
+| **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされていません | シカゴ、ワシントン DC |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | サポートされていません | シカゴ、ワシントン DC |
 
 #### 中国のクラウド
@@ -133,7 +133,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |---|---|
 |**[Nimbo](http://www.nimbo.com/)**|米国||
 |**[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)**|ヨーロッパ・中東・アフリカ|
-|**[プロジェクト リーダー](http://www.projectleadership.net/azure)** | 米国 |
+|**[Project Leadership](http://www.projectleadership.net/azure)** | 米国 |
 |**[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | 米国 |
 
 ## 次のステップ
@@ -141,4 +141,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->

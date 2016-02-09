@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="02/01/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # SQL Data Warehouse の作成
@@ -31,7 +31,7 @@
 - データベースをホストするサーバーを作成する。
 - AdventureWorksDW サンプル データベースを含んだデータベースを作成する。
 
-既存のデータベースを SQL Data Warehouse に移行する場合、[移行の概要](./sql-data-warehouse-get-started-overview-migrate.md)に関するページを参照するか、[移行ユーティリティ](./sql-data-warehouse-migrate-migration-utility.md)を使用してください。
+既存のデータベースを SQL Data Warehouse に移行する場合、[移行の概要](./sql-data-warehouse-overview-migrate.md)に関するページを参照するか、[移行ユーティリティ](./sql-data-warehouse-migrate-migration-utility.md)を使用してください。
 
 SQL Data Warehouse へのデータの読み込みについては、[読み込みの概要](./sql-data-warehouse-overview-load.md)に関するページを参照してください。
 
@@ -54,12 +54,12 @@ SQL Data Warehouse へのデータの読み込みについては、[読み込み
 
 SQL Database および SQL Data Warehouse では、各データベースがサーバーに割り当てられ、それぞれのサーバーが地理的な場所に割り当てられます。このサーバーを論理 SQL サーバーといいます。
 
-> [AZURE.NOTE]<a name="note"></a>論理 SQL サーバーの特徴:
+> [AZURE.NOTE] <a name="note"></a>論理 SQL サーバー:
   >
-  > + 地理的に同じ場所にある複数のデータベースの構成に一貫性を与える効果があります。
-  > + オンプレミス サーバーに使用されるような物理的なハードウェアではありません。サービスのソフトウェアの構成要素です。*論理サーバー*と呼ばれるのはそのためです。
-  > + パフォーマンスを損ねずに複数のデータベースをホストすることができます。
-  > + 名前は SQL Server ではなく *SQL サーバー*です。SQL **サーバー**が Azure の論理サーバーであるのに対し、SQL **Server** は Microsoft のオンプレミス データベース製品です。
+  > + 地理的に同じ場所に複数のデータベースを構成するための、一貫性のある方法を提供します。
+  > + オンプレミスのサーバーのような物理的なハードウェアではありません。サービスのソフトウェアの構成要素です。*論理サーバー*と呼ばれているのは、そのためです。
+  > + 複数のデータベースを、それぞれのパフォーマンスに影響を与えずにホストできます。
+  > + 名前にはカタカナの *"サーバー"* を使用しています。SQL **サーバー**が Azure の論理サーバーであるのに対し、SQL **Server** は Microsoft のオンプレミス データベース製品です。
 
 1. **[サーバー]**、**[新しいサーバーの作成]** をクリックします。サーバーの料金は発生しません。使用する V12 論理 SQL サーバーが既にある場合は、既存のサーバーを選択し、次の手順に進みます。 
 
@@ -74,7 +74,7 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 	- **[V12 サーバーの作成]**: SQL Data Warehouse の場合は常に [はい] を選択してください。 
 	- **[Azure サービスにサーバーへのアクセスを許可する]**: SQL Data Warehouse の場合は常にオンになります。
 
-    >[AZURE.NOTE]サーバー名、サーバー管理者名、パスワードは、必ずどこかに記録してください。この情報は、サーバーにログオンするときに必要になります。
+    >[AZURE.NOTE] サーバー名、サーバー管理者名、パスワードは、必ずどこかに記録してください。この情報は、サーバーにログオンするときに必要になります。
 
 1. **[OK]** をクリックして論理 SQL サーバーの構成設定を保存し、[SQL Data Warehouse] ブレードに戻ります。
 
@@ -90,7 +90,7 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
     
     - **[パフォーマンス]**: 最初は 400 DWU にすることをお勧めします。データベースのパフォーマンス レベルは、スライダーを左右に動かして調整します。データベースの作成後に調整することもできます。 
 
-        > [AZURE.NOTE]SQL Data Warehouse では、パフォーマンスを Data Warehouse ユニット (DWU) で測定します。DWU を増やすと、データベース操作に使用できるコンピューティング リソースが SQL Data Warehouse によって増やされます。ワークロードのパフォーマンスと DWU との関係は、ワークロードを実行するうちにわかるようになります。
+        > [AZURE.NOTE] SQL Data Warehouse では、パフォーマンスを Data Warehouse ユニット (DWU) で測定します。DWU を増やすと、データベース操作に使用できるコンピューティング リソースが SQL Data Warehouse によって増やされます。ワークロードのパフォーマンスと DWU との関係は、ワークロードを実行するうちにわかるようになります。
         > 
         > パフォーマンス レベルは、データベースの作成後に迅速かつ簡単に変更できます。たとえば、データベースを使用していない場合は、左にスライダーを移動し、コストを削減します。または、さらにリソースが必要な場合はパフォーマンスを上げます。コストを 0 にするには、データベースを一時停止します。これが、SQL Data Warehouse の拡張性です。
 
@@ -123,7 +123,7 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 
 1. 一連の IP アドレスでファイアウォールの規則を作成します。この作業は後から行うこともできます。
 
-	>[AZURE.IMPORTANT]IP アドレスは不定期で変更される可能性があるため、新しいファイアウォール規則を作成するまでサーバーにアクセスできなくなる場合があります。一貫したアクセスを確保するために、IP アドレスの範囲を追加することをお勧めします。詳細については、[ファイアウォール設定の構成方法](../sql-database/sql-database-configure-firewall-settings.md)に関するページを参照してください。
+	>[AZURE.IMPORTANT] IP アドレスは不定期で変更される可能性があるため、新しいファイアウォール規則を作成するまでサーバーにアクセスできなくなる場合があります。一貫したアクセスを確保するために、IP アドレスの範囲を追加することをお勧めします。詳細については、[ファイアウォール設定の構成方法](../sql-database/sql-database-configure-firewall-settings.md)に関するページを参照してください。
 
     規則を作成するには、名前と IP アドレス範囲を入力し、**[保存]** をクリックします。
 
@@ -135,4 +135,4 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 
 SQL Data Warehouse のサンプル データベースの作成は以上で完了です。いつでもデータベースに[接続](./sql-data-warehouse-get-started-connect.md)することができます。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0204_2016-->

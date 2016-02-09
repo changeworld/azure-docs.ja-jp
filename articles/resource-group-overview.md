@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/15/2016"
+   ms.date="02/02/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーの概要
@@ -87,7 +87,7 @@ Marketplace からソリューションを作成すると、ソリューショ�
 
 テンプレートを構造化する方法のガイダンスについては、「[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](best-practices-resource-manager-design-templates.md)」を参照してください。
 
-ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments-preview-portal.md)」を参照してください。
+ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments.md)」を参照してください。
 
 ## タグ
 
@@ -119,7 +119,7 @@ Marketplace からソリューションを作成すると、ソリューショ�
 
 PowerShell に関する詳細については、[リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)および [Azure Resource Manager Cmdlets (Azure リソース マネージャーのコマンドレッド)](https://msdn.microsoft.com/library/azure/dn757692.aspx) を参照してください。
 
-Azure CLI の詳細については、[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](./virtual-machines/xplat-cli-azure-resource-manager.md)を参照してください。
+Azure CLI の詳細については、[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](./xplat-cli-azure-resource-manager.md)を参照してください。
 
 REST API の詳細については、[Azure リソース マネージャー REST API リファレンス](https://msdn.microsoft.com/library/azure/dn790568.aspx)を参照してください。
 
@@ -138,4 +138,4 @@ Azure リソース マネージャーでは、クロス オリジン リソー�
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->
